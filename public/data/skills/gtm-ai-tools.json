@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gtm-ai-tools",
+  "slug": "gtm-ai-tools",
+  "name": "Gtm Ai Tools",
+  "headline": "GTM AI Tools for Enhanced Workflow Automation",
+  "short_description": "The gtm-ai-tools repository offers a suite of utilities designed for GTM Engineers to enhance their workflows. It automates lead discovery, CRM data hygiene, and AI-driven outreach, significantly improving efficiency in go-to-market operations.",
+  "tier": "Silver",
+  "category": "SDRAEMarketingRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "dhisana-ai",
+  "install_command": "claude install dhisana-ai/gtm-ai-tools",
+  "source_repo_url": "https://github.com/dhisana-ai/gtm-ai-tools",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "lead generation",
+    "AI tools",
+    "CRM",
+    "GTM"
+  ],
+  "sections": {
+    "overview": "GTM Workflows Builder is an open-source agent that helps GTM engineers automate lead discovery, enrichment, qualification, and CRM data hygiene. Describe any workflow in natural language and the AI agent generates a ready-to-use tool, then runs tests and outputs results. The platform includes pre-built tools for lead discovery, enrichment, qualification, and AI-powered outreach content generation, with support for multiple destinations like CRMs, Dhisana webhooks, and Clay tables. Deploy locally with Docker or in the cloud via Fly.io, with all tools free and open source.\nAutomating lead discovery processes\nEnhancing CRM data quality\nGenerating personalized outreach content\nStreamlining qualification workflows\n1. **AI Lead Scraper**: Integrate with your CRM to automatically import new leads.\n2. **Intent Data Analyzer**: Use the tool's API to pull intent data and feed it into your CRM.\n3. **CRM Data Cleaner**: Schedule regular cleanups to maintain data hygiene.\n4. **Data Enrichment Tool**: Set up automated workflows to enrich existing CRM data.\n\nThese tools can significantly improve your efficiency and ensure your CRM data is always up-to-date and accurate.\n```",
+    "setup": "Terminal\nCopy\n`claude install dhisana-ai/gtm-ai-tools`\n`git clone https://github.com/dhisana-ai/gtm-ai-tools`",
+    "usage": "```\nI'm a GTM Engineer at [COMPANY] in the [INDUSTRY] sector. I need to automate lead discovery and CRM data hygiene. Can you suggest specific tools from the gtm-ai-tools repository that would help me streamline these processes? Also, provide a brief overview of how to integrate these tools into my existing workflow.\n```\nCopy\n\n```\n# Recommended Tools for GTM Automation\n\nBased on your requirements, here are the top tools from the gtm-ai-tools repository that can help streamline your lead discovery and CRM data hygiene processes:",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "gtm-ai-tools#main-content",
+      "gtm-ai-tools#overview",
+      "gtm-ai-tools#setup",
+      "gtm-ai-tools#examples",
+      "gtm-ai-tools#tools",
+      "gtm-ai-tools#mcp",
+      "gtm-ai-tools#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "GTM Workflows Builder là một agent mã nguồn mở giúp các GTM engineer tự động hóa quy trình tìm kiếm lead, làm giàu dữ liệu (enrichment), đánh giá chất lượng lead (qualification) và chuẩn hóa dữ liệu CRM. Bạn chỉ cần mô tả quy trình bằng ngôn ngữ tự nhiên, AI agent sẽ tạo ra một công cụ sẵn sàng sử dụng, sau đó chạy thử nghiệm và trả về kết quả. Nền tảng này tích hợp sẵn các công cụ để tìm kiếm lead, enrich dữ liệu, qualify lead và tự động tạo nội dung outreach bằng AI, đồng thời hỗ trợ nhiều điểm đích (destination) như CRM, Dhisana webhook và Clay table. Bạn có thể deploy cục bộ bằng Docker hoặc deploy lên đám mây qua Fly.io, toàn bộ công cụ đều miễn phí và là mã nguồn mở.\nTự động hóa quy trình tìm kiếm lead\nNâng cao chất lượng dữ liệu CRM\nTự động tạo nội dung outreach cá nhân hóa\nTối ưu hóa quy trình qualify lead\n1. **AI Lead Scraper**: Tích hợp với CRM của bạn để tự động import lead mới.\n2. **Intent Data Analyzer**: Sử dụng API của công cụ để lấy dữ liệu ý định mua hàng (intent data) và đồng bộ vào CRM.\n3. **CRM Data Cleaner**: Lập lịch dọn dẹp định kỳ để đảm bảo chất lượng dữ liệu CRM.\n4. **Data Enrichment Tool**: Thiết lập quy trình tự động để enrich dữ liệu CRM hiện có.\n\nNhững công cụ này có thể cải thiện đáng kể hiệu suất làm việc của bạn và đảm bảo dữ liệu CRM luôn chính xác cũng như được cập nhật mới nhất.\n```",
+    "setup_vi": "Terminal\nSao chép\n`claude install dhisana-ai/gtm-ai-tools`\n`git clone https://github.com/dhisana-ai/gtm-ai-tools`",
+    "usage_vi": "```\nTôi là một GTM Engineer tại [COMPANY] thuộc lĩnh vực [INDUSTRY]. Tôi cần tự động hóa quy trình tìm kiếm lead và chuẩn hóa dữ liệu CRM. Bạn có thể đề xuất các công cụ cụ thể từ repository gtm-ai-tools để giúp tôi tối ưu hóa các quy trình này không? Đồng thời, hãy hướng dẫn sơ lược cách tích hợp các công cụ này vào quy trình làm việc hiện tại của tôi.\n```\nSao chép\n\n```\n# Các công cụ khuyến nghị cho tự động hóa GTM\n\nDựa trên yêu cầu của bạn, dưới đây là các công cụ hàng đầu từ repository gtm-ai-tools giúp tối ưu hóa quy trình tìm kiếm lead và chuẩn hóa dữ liệu CRM của bạn:"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:29.397072Z",
+    "http_status": 200,
+    "content_hash": "647d66ec6e106f229a5ddda1f33d327fe5c1a37669f9274b2d268333bd3d7510",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gtm-ai-tools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gtm-ai-tools.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ GTM AI giúp tối ưu hóa tự động hóa quy trình làm việc",
+  "short_description_vi": "Repository gtm-ai-tools cung cấp một bộ tiện ích được thiết kế cho các GTM Engineer để tối ưu hóa quy trình làm việc. Bộ công cụ giúp tự động hóa quá trình tìm kiếm lead, chuẩn hóa dữ liệu CRM và tối ưu hóa hoạt động outreach bằng AI, từ đó nâng cao đáng kể hiệu suất vận hành go-to-market."
+}

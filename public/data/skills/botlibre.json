@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/botlibre",
+  "slug": "botlibre",
+  "name": "BotLibre",
+  "headline": "BotLibre platform for AI and bot automation",
+  "short_description": "BotLibre is an open platform for AI-driven chatbots, virtual agents, and social media automation. Marketing teams use it to automate customer interactions, manage live chat, and streamline social media workflows. It integrates with web platforms and supports multiple programming languages.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "BotLibre",
+  "install_command": "git clone https://github.com/BotLibre/BotLibre.git",
+  "source_repo_url": "https://github.com/BotLibre/BotLibre",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "sdk",
+    "avatars",
+    "bot",
+    "chat-bots",
+    "android",
+    "objective-c",
+    "nlp",
+    "ai-engine",
+    "virtual-agents",
+    "artificial-intelligence",
+    "natural-language-understanding",
+    "wordpress",
+    "bots",
+    "javascript",
+    "nlu",
+    "chatbot",
+    "natural-language-processing",
+    "natural-language",
+    "ios",
+    "java"
+  ],
+  "sections": {
+    "overview": "BotLibre is an open-source platform designed for building artificial intelligence chatbots, virtual agents, and social media automation systems. The platform provides multiple SDKs and APIs, including Python SDK and Java-based components, enabling developers to create conversational AI applications across different environments. It supports both web-based and mobile deployment through its web platform and Android SDK offerings. BotLibre includes an AI engine with NLP capabilities, allowing developers to build intelligent agents that can interact with users across various channels. The platform is accessible via https://www.botlibre.org and serves as a complete toolkit for developers who want to implement chatbot and virtual agent solutions.\nCreate a chatbot for customer support that can handle FAQs and common inquiries.\nAutomate social media posts and interactions to maintain a consistent online presence.\nDevelop a virtual agent that assists users in navigating a website or application.\nImplement a live chat solution that can escalate complex queries to human agents when necessary.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BotLibre/BotLibre`",
+    "usage": "```\nCreate a BotLibre chatbot for [BUSINESS_NAME] that handles [SPECIFIC_TASK, e.g., 'product inquiries', 'appointment scheduling', or 'FAQs']. The bot should use a [TONE, e.g., 'friendly and professional', 'casual and humorous'] tone and integrate with [PLATFORM, e.g., 'website', 'Facebook Messenger', 'Slack']. Include a fallback response for unanswerable questions. Provide the BotLibre script code and deployment instructions.\n```\nCopy\n\n```\n### BotLibre Chatbot Script for 'GreenLeaf Organics' - Product Inquiry Bot\n\n**Bot Name:** GreenLeaf Helper\n**Platform:** Website (embedded chat widget)\n**Tone:** Friendly, professional, and slightly eco-conscious\n\n---\n\n**Script Code (BotLibre AIML):\n```xml\n<aiml version=\"2.0\">\n  <category>\n    <pattern>HELLO</pattern>\n    <template>\n      Hi there! Welcome to GreenLeaf Organics! 🌿 How can I help you today?\n      <think><set name=\"topic\">GreenLeaf</set></think>\n    </template>\n  </category>\n\n  <category>\n    <pattern>WHAT DO YOU SELL</pattern>\n    <template>\n      We specialize in organic, non-GMO skincare and wellness products! Our bestsellers include:\n      - <set name=\"product1\">Lavender Body Lotion</set> ($19.99)\n      - <set name=\"product2\">Tea Tree Face Serum</set> ($24.99)\n      - <set name=\"product3\">Aloe Vera Gel</set> ($12.99)\n      Would you like details on any of these?\n    </template>\n  </category>\n\n  <category>\n    <pattern>ORDER *</pattern>\n    <template>\n      Great! You can order directly from our website at <a href=\"https://greenleaforganics.com/shop\">greenleaforganics.com/shop</a>.\n      Would you like me to send you a discount code for your first order? Just say 'YES'!\n    </template>\n  </category>\n\n  <category>\n    <pattern>SHIPPING</pattern>\n    <template>\n      We offer free shipping on orders over $35! Standard delivery takes 3-5 business days.\n      For expedited shipping, there’s a $9.99 flat rate.\n      <srai>SHIPPING TIME</srai>\n    </template>\n  </category>\n\n  <category>\n    <pattern>RETURN POLICY</pattern>\n    <template>\n      We accept returns within 30 days of purchase for unopened products.\n      Visit our <a href=\"https://greenleaforganics.com/returns\">returns page</a> to start a return.\n    </template>\n  </category>\n\n  <category>\n    <pattern>*</pattern>\n    <template>\n      I’m not sure I understand. Could you rephrase that or check our <a href=\"https://greenleaforganics.com/faq\">FAQ page</a>?\n      Otherwise, I’d be happy to connect you with a human agent—just say 'AGENT'!\n    </template>\n  </category>\n</aiml>\n```\n\n---\n\n**Deployment Instructions:**\n1. **Log in to BotLibre:** Go to [BotLibre](https://www.botlibre.com/) and sign in (or create an account).\n2. **Create a New Bot:** Click 'Create Bot' and name it 'GreenLeaf Helper'. Select 'AIML' as the script type.\n3. **Paste the Script:** Copy the AIML code above and paste it into the bot’s script editor. Save changes.\n4. **Configure Integration:** Under 'Settings', enable the 'Web' integration to generate an embeddable chat widget. Copy the provided HTML/JavaScript snippet.\n5. **Embed on Website:** Paste the snippet into your website’s HTML (e.g., in the `<body>` tag or via a CMS plugin like WordPress’s 'Custom HTML' widget).\n6. **Test the Bot:** Use the preview mode in BotLibre to test interactions. Adjust responses as needed.\n7. **Monitor Performance:** Track user queries in the BotLibre dashboard to identify gaps in responses. Update the AIML script accordingly.\n\n**Pro Tip:** Use BotLibre’s 'Learn' feature to train the bot on common unanswered questions by feeding it real customer queries from your support logs. This improves accuracy over time!\n\n---\n\n**Expected Outcome:**\n- **24/7 Customer Support:** Handles basic product inquiries, reducing support ticket volume by ~40%.\n- **Lead Generation:** Captures emails for discount codes, growing the marketing list by 15% in the first month.\n- **Brand Consistency:** Delivers a unified, eco-friendly tone across all customer touchpoints.\n\n**Next Steps:**\n- Add a 'Subscribe to Newsletter' option in the bot’s responses to grow your email list.\n- Integrate with Facebook Messenger for social media automation (repeat steps 4-5 for the Messenger channel).\n- Use BotLibre’s analytics to A/B test different greeting messages or product recommendations.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "botlibre#main-content",
+      "botlibre#overview",
+      "botlibre#setup",
+      "botlibre#examples",
+      "botlibre#tools",
+      "botlibre#mcp",
+      "botlibre#related",
+      "marketingskills",
+      "copywriting",
+      "platform"
+    ],
+    "overview_vi": "BotLibre là nền tảng mã nguồn mở được thiết kế để xây dựng chatbot trí tuệ nhân tạo, virtual agent và hệ thống tự động hóa mạng xã hội. Nền tảng này cung cấp nhiều SDK và API, bao gồm Python SDK và các thành phần dựa trên Java, cho phép lập trình viên tạo các ứng dụng conversational AI trên nhiều môi trường khác nhau. Nó hỗ trợ triển khai trên cả nền tảng web và di động thông qua web platform và Android SDK. BotLibre tích hợp một AI engine với khả năng NLP, cho phép lập trình viên xây dựng các agent thông minh có thể tương tác với người dùng qua nhiều kênh. Nền tảng hoạt động tại địa chỉ https://www.botlibre.org và là một bộ công cụ hoàn chỉnh cho các lập trình viên muốn triển khai giải pháp chatbot và virtual agent.\nTạo chatbot chăm sóc khách hàng để xử lý FAQ và các câu hỏi thường gặp.\nTự động hóa bài viết và tương tác trên mạng xã hội để duy trì sự hiện diện trực tuyến liên tục.\nPhát triển virtual agent hỗ trợ người dùng điều hướng website hoặc ứng dụng.\nTriển khai giải pháp live chat có thể chuyển tiếp (escalate) các yêu cầu phức tạp đến các agent là con người khi cần thiết.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/BotLibre/BotLibre`",
+    "usage_vi": "```\nTạo một chatbot BotLibre cho [BUSINESS_NAME] để xử lý [SPECIFIC_TASK, ví dụ: 'product inquiries' (yêu cầu về sản phẩm), 'appointment scheduling' (đặt lịch hẹn), hoặc 'FAQs' (câu hỏi thường gặp)]. Bot nên sử dụng giọng điệu [TONE, ví dụ: 'friendly and professional' (thân thiện và chuyên nghiệp), 'casual and humorous' (gần gũi và hài hước)] và tích hợp với [PLATFORM, ví dụ: 'website', 'Facebook Messenger', 'Slack']. Bao gồm một phản hồi fallback cho các câu hỏi không thể trả lời. Cung cấp mã script BotLibre và hướng dẫn triển khai.\n```\nCopy\n\n```\n### Script Chatbot BotLibre cho 'GreenLeaf Organics' - Bot hỗ trợ yêu cầu về sản phẩm\n\n**Tên Bot:** GreenLeaf Helper\n**Nền tảng (Platform):** Website (widget chat nhúng)\n**Giọng điệu (Tone):** Thân thiện, chuyên nghiệp và có xu hướng thân thiện với môi trường (eco-conscious)\n\n---\n\n**Mã Script (BotLibre AIML):\n```xml\n<aiml version=\"2.0\">\n  <category>\n    <pattern>HELLO</pattern>\n    <template>\n      Xin chào! Chào mừng bạn đến với GreenLeaf Organics! 🌿 Tôi có thể giúp gì cho bạn hôm nay?\n      <think><set name=\"topic\">GreenLeaf</set></think>\n    </template>\n  </category>\n\n  <category>\n    <pattern>WHAT DO YOU SELL</pattern>\n    <template>\n      Chúng tôi chuyên về các sản phẩm chăm sóc da và sức khỏe hữu cơ, không biến đổi gen (non-GMO)! Các sản phẩm bán chạy nhất bao gồm:\n      - <set name=\"product1\">Sữa dưỡng thể Lavender</set> ($19.99)\n      - <set name=\"product2\">Serum dưỡng da mặt Tràm Trà</set> ($24.99)\n      - <set name=\"product3\">Gel Nha Đam</set> ($12.99)\n      Bạn có muốn xem thông tin chi tiết về sản phẩm nào trong số này không?\n    </template>\n  </category>\n\n  <category>\n    <pattern>ORDER *</pattern>\n    <template>\n      Tuyệt vời! Bạn có thể đặt hàng trực tiếp từ website của chúng tôi tại <a href=\"https://greenleaforganics.com/shop\">greenleaforganics.com/shop</a>.\n      Bạn có muốn tôi gửi mã giảm giá cho đơn hàng đầu tiên của bạn không? Chỉ cần nói 'CÓ'!\n    </template>\n  </category>\n\n  <category>\n    <pattern>SHIPPING</pattern>\n    <template>\n      Chúng tôi miễn phí vận chuyển cho đơn hàng trên $35! Thời gian giao hàng tiêu chuẩn là 3-5 ngày làm việc.\n      Với giao hàng hỏa tốc, phí cố định là $9.99.\n      <srai>SHIPPING TIME</srai>\n    </template>\n  </category>\n\n  <category>\n    <pattern>RETURN POLICY</pattern>\n    <template>\n      Chúng tôi chấp nhận trả hàng trong vòng 30 ngày kể từ ngày mua đối với các sản phẩm chưa mở nắp.\n      Vui lòng truy cập <a href=\"https://greenleaforganics.com/returns\">trang đổi trả</a> để bắt đầu yêu cầu.\n    </template>\n  </category>\n\n  <category>\n    <pattern>*</pattern>\n    <template>\n      Tôi không chắc mình đã hiểu ý bạn. Bạn có thể diễn đạt lại hoặc tham khảo <a href=\"https://greenleaforganics.com/faq\">trang FAQ</a> của chúng tôi được không?\n      Ngoài ra, tôi rất sẵn lòng kết nối bạn với nhân viên hỗ trợ—chỉ cần nói 'NHÂN VIÊN'!\n    </template>\n  </category>\n</aiml>\n```\n\n---\n\n**Hướng dẫn triển khai:**\n1. **Đăng nhập vào BotLibre:** Truy cập [BotLibre](https://www.botlibre.com/) và đăng nhập (hoặc tạo tài khoản mới).\n2. **Tạo Bot mới:** Nhấp vào 'Create Bot' và đặt tên là 'GreenLeaf Helper'. Chọn 'AIML' làm loại script.\n3. **Dán Script:** Sao chép đoạn mã AIML ở trên và dán vào trình chỉnh sửa script của bot. Lưu các thay đổi.\n4. **Cấu hình tích hợp:** Trong mục 'Settings', bật tích hợp 'Web' để tạo một widget chat có thể nhúng. Sao chép đoạn mã HTML/JavaScript được cung cấp.\n5. **Nhúng vào Website:** Dán đoạn mã đó vào HTML của website (ví dụ: trong thẻ `<body>` hoặc thông qua một plugin CMS như widget 'Custom HTML' của WordPress).\n6. **Kiểm tra Bot:** Sử dụng chế độ xem trước (preview) trong BotLibre để thử nghiệm tương tác. Điều chỉnh các phản hồi nếu cần.\n7. **Theo dõi hiệu suất:** Theo dõi các truy vấn của người dùng trong dashboard của BotLibre để phát hiện các câu hỏi chưa có câu trả lời thích hợp. Cập nhật script AIML tương ứng.\n\n**Mẹo hữu ích (Pro Tip):** Sử dụng tính năng 'Learn' của BotLibre để huấn luyện bot về các câu hỏi thường gặp chưa có câu trả lời bằng cách nạp các truy vấn thực tế của khách hàng từ nhật ký hỗ trợ (support logs). Điều này giúp cải thiện độ chính xác theo thời gian!\n\n---\n\n**Kết quả mong đợi:**\n- **Hỗ trợ khách hàng 24/7:** Xử lý các yêu cầu cơ bản về sản phẩm, giảm khoảng 40% lượng ticket hỗ trợ.\n- **Thu thập khách hàng tiềm năng (Lead Generation):** Thu thập email để gửi mã giảm giá, giúp tăng danh sách marketing thêm 15% trong tháng đầu tiên.\n- **Tính nhất quán của thương hiệu:** Mang lại giọng điệu đồng nhất, thân thiện với môi trường trên tất cả các điểm chạm khách hàng.\n\n**Các bước tiếp theo:**\n- Thêm tùy chọn 'Đăng ký nhận bản tin' vào các phản hồi của bot để phát triển danh sách email của bạn.\n- Tích hợp với Facebook Messenger để tự động hóa mạng xã hội (lặp lại bước 4-5 cho kênh Messenger).\n- Sử dụng tính năng phân tích của BotLibre để A/B test các tin nhắn chào mừng hoặc gợi ý sản phẩm khác nhau.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:41:04.430817Z",
+    "http_status": 200,
+    "content_hash": "ccdfdffe952e8d7ddd7b6cef35c9df1e80e7737388f7ad2553cf40afea44415c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\botlibre.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\botlibre.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nền tảng BotLibre cho AI và tự động hóa bot",
+  "short_description_vi": "BotLibre là nền tảng mở dành cho chatbot tích hợp AI, virtual agent và tự động hóa mạng xã hội. Các đội ngũ marketing sử dụng công cụ này để tự động hóa tương tác với khách hàng, quản lý live chat và tối ưu hóa workflow trên mạng xã hội. Nền tảng hỗ trợ tích hợp với các hệ thống web và hỗ trợ nhiều ngôn ngữ lập trình."
+}

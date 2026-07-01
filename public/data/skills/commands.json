@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/commands",
+  "slug": "commands",
+  "name": "Claude Code Slash Commands",
+  "headline": "Claude Code Slash Commands - Automate Workflows",
+  "short_description": "Production-ready slash commands for Claude Code enable intelligent automation and multi-agent orchestration. Developers and operations teams use these commands to streamline workflows, connect tools, and improve productivity in software development.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "wshobson",
+  "install_command": "git clone https://github.com/wshobson/commands.git",
+  "source_repo_url": "https://github.com/wshobson/commands",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "orchestration",
+    "productivity",
+    "claudecode",
+    "claudecode-config",
+    "slash-command",
+    "anthropic",
+    "slash-commands",
+    "ai-agents",
+    "slashcommands",
+    "claude",
+    "workflows",
+    "claude-commands",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "The commands skill provides a comprehensive collection of 57 production-ready slash commands designed specifically for Claude Code, including 15 workflows and 42 tools. Workflows enable multi-agent orchestration systems that coordinate complex, multi-step operations across different development domains, while tools provide specialized single-purpose utilities for focused development tasks. These commands streamline common software development workflows by automating repetitive operations and connecting tools through intelligent orchestration. Developers and operations teams use this skill to improve productivity, reduce manual steps, and maintain consistency across development processes. The skill requires Claude Code and Git for repository management.\nAutomate the implementation of OAuth2 authentication for secure user access.\nStreamline CI/CD pipeline processes to enhance deployment efficiency.\nConduct comprehensive security scans to identify and remediate vulnerabilities.\nFacilitate multi-agent code reviews to ensure quality and performance across projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wshobson/commands`",
+    "usage": "```\nWrite a production-ready slash command for Claude Code to [TASK]. Use [TOOLS] if needed. Ensure the command is idempotent, handles errors gracefully, and includes logging. Example: '/deploy --env staging --component api --version 1.2.3'\n```\nCopy\n\n```\nHere’s a production-ready slash command for Claude Code to automate a database migration in a staging environment:\n\n```\n/command /migrate-db --env staging --schema updates/v2024.05.15\n\nExecuting migration for environment: staging\nSchema version: v2024.05.15\n\n1. Checking database connection... ✅\n2. Validating schema files... ✅\n3. Running migrations...\n   - Migrating table 'users'... ✅\n   - Adding column 'last_login'... ✅\n   - Creating index 'idx_email'... ✅\n4. Verifying migration integrity... ✅\n\nMigration completed successfully in 42s.\nLog file saved to: /logs/migration-staging-20240515-1422.log\n\nNext steps:\n- Run smoke tests: /test --env staging --suite db\n- Promote to production: /promote --env prod --schema v2024.05.15\n```\n\nThe command includes:\n- Environment validation (staging/production)\n- Schema versioning for traceability\n- Step-by-step execution with status checks\n- Error handling for connection or schema issues\n- Logging for audit trails\n- Clear next steps for follow-up actions\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "commands#main-content",
+      "commands#overview",
+      "commands#setup",
+      "commands#examples",
+      "commands#tools",
+      "commands#mcp",
+      "commands#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The commands skill provides a comprehensive collection of 57 production-ready slash commands designed specifically for Claude Code, including 15 workflows and 42 tools. Workflows enable multi-agent orchestration systems that coordinate complex, multi-step operations across different development domains, while tools provide specialized single-purpose utilities for focused development tasks. These commands streamline common software development workflows by automating repetitive operations and connecting tools through intelligent orchestration. Developers and operations teams use this skill to improve productivity, reduce manual steps, and maintain consistency across development processes. The skill requires Claude Code and Git for repository management.\nAutomate the implementation of OAuth2 authentication for secure user access.\nStreamline CI/CD pipeline processes to enhance deployment efficiency.\nConduct comprehensive security scans to identify and remediate vulnerabilities.\nFacilitate multi-agent code reviews to ensure quality and performance across projects.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wshobson/commands`",
+    "usage_vi": "```\nWrite a production-ready slash command for Claude Code to [TASK]. Use [TOOLS] if needed. Ensure the command is idempotent, handles errors gracefully, and includes logging. Example: '/deploy --env staging --component api --version 1.2.3'\n```\nCopy\n\n```\nHere’s a production-ready slash command for Claude Code to automate a database migration in a staging environment:\n\n```\n/command /migrate-db --env staging --schema updates/v2024.05.15\n\nExecuting migration for environment: staging\nSchema version: v2024.05.15\n\n1. Checking database connection... ✅\n2. Validating schema files... ✅\n3. Running migrations...\n   - Migrating table 'users'... ✅\n   - Adding column 'last_login'... ✅\n   - Creating index 'idx_email'... ✅\n4. Verifying migration integrity... ✅\n\nMigration completed successfully in 42s.\nLog file saved to: /logs/migration-staging-20240515-1422.log\n\nNext steps:\n- Run smoke tests: /test --env staging --suite db\n- Promote to production: /promote --env prod --schema v2024.05.15\n```\n\nThe command includes:\n- Environment validation (staging/production)\n- Schema versioning for traceability\n- Step-by-step execution with status checks\n- Error handling for connection or schema issues\n- Logging for audit trails\n- Clear next steps for follow-up actions\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:33:52.809979Z",
+    "http_status": 200,
+    "content_hash": "5809a4f3bb8f322e5b97e6a6b1d46325cc0f4325ac1f00fd6c808274a4f89c9a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\commands.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\commands.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Slash Commands - Automate Workflows",
+  "short_description_vi": "Production-ready slash commands for Claude Code enable intelligent automation and multi-agent orchestration. Developers and operations teams use these commands to streamline workflows, connect tools, and improve productivity in software development."
+}

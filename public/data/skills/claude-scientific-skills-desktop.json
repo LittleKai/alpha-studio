@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-scientific-skills-desktop",
+  "slug": "claude-scientific-skills-desktop",
+  "name": "browser-use",
+  "headline": "Offline scientific skills corpus for Claude on",
+  "short_description": "A Claude Desktop extension (.mcpb) that delivers the claude-scientific-skills corpus via a tiny librarian tool surface. Built as a self-contained Bun binary (no Node/Python required for users). Offline fat bundle by default; optional thin/auto-update mode.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "silverstein",
+  "install_command": "git clone https://github.com/silverstein/claude-scientific-skills-desktop.git",
+  "source_repo_url": "https://github.com/silverstein/claude-scientific-skills-desktop",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "claude",
+    "science-research",
+    "mcpb"
+  ],
+  "sections": {
+    "overview": "Scientific Skills Desktop is a Claude Desktop extension (.mcpb) that provides access to a curated corpus of 128+ scientific skills spanning bioinformatics, cheminformatics, proteomics, clinical research, materials science, and physics. Built as a self-contained Bun binary, it requires no Node.js or Python installation and operates as an offline fat bundle by default, with optional thin/auto-update capability. The extension exposes three core tools—search_skills, read_skill, and list_skills—enabling researchers and developers to discover and access domain-specific knowledge across 26+ data sources including PubMed, ChEMBL, UniProt, and ClinicalTrials.gov. Just-in-time skill loading prevents prompt bloat while maintaining fast access to libraries like RDKit, Scanpy, DeepChem, and Qiskit. Ideal for computational biologists, chemists, and ML researchers who need instant access to vetted scientific methodologies without managing external dependencies.\nSearch and retrieve bioinformatics workflows for protein analysis and genomic data processing\nDiscover cheminformatics methods for molecular modeling and drug screening\nAccess proteomics and clinical research protocols from PubMed and ClinicalTrials.gov\nQuery materials science and physics skills integrated with specialized libraries\n- **Company**: GreenTech Innovations\n- **Industry**: Renewable Energy\n- **Data**: Solar panel efficiency metrics over the past 5 years\n- **Goal**: Identify patterns and optimize panel placement for maximum efficiency",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/silverstein/claude-scientific-skills-desktop`",
+    "usage": "```\nAct as a scientific research assistant. I'm working on a project for [COMPANY] in the [INDUSTRY] sector. I need help analyzing [DATA] to [SPECIFIC GOAL]. Provide a step-by-step plan to achieve this, including any necessary tools or methods.\n```\nCopy\n\n```\n# Scientific Research Assistance Plan",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-scientific-skills-desktop#main-content",
+      "claude-scientific-skills-desktop#overview",
+      "claude-scientific-skills-desktop#setup",
+      "claude-scientific-skills-desktop#examples",
+      "claude-scientific-skills-desktop#tools",
+      "claude-scientific-skills-desktop#mcp",
+      "claude-scientific-skills-desktop#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Scientific Skills Desktop is a Claude Desktop extension (.mcpb) that provides access to a curated corpus of 128+ scientific skills spanning bioinformatics, cheminformatics, proteomics, clinical research, materials science, and physics. Built as a self-contained Bun binary, it requires no Node.js or Python installation and operates as an offline fat bundle by default, with optional thin/auto-update capability. The extension exposes three core tools—search_skills, read_skill, and list_skills—enabling researchers and developers to discover and access domain-specific knowledge across 26+ data sources including PubMed, ChEMBL, UniProt, and ClinicalTrials.gov. Just-in-time skill loading prevents prompt bloat while maintaining fast access to libraries like RDKit, Scanpy, DeepChem, and Qiskit. Ideal for computational biologists, chemists, and ML researchers who need instant access to vetted scientific methodologies without managing external dependencies.\nSearch and retrieve bioinformatics workflows for protein analysis and genomic data processing\nDiscover cheminformatics methods for molecular modeling and drug screening\nAccess proteomics and clinical research protocols from PubMed and ClinicalTrials.gov\nQuery materials science and physics skills integrated with specialized libraries\n- **Company**: GreenTech Innovations\n- **Industry**: Renewable Energy\n- **Data**: Solar panel efficiency metrics over the past 5 years\n- **Goal**: Identify patterns and optimize panel placement for maximum efficiency",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/silverstein/claude-scientific-skills-desktop`",
+    "usage_vi": "```\nAct as a scientific research assistant. I'm working on a project for [COMPANY] in the [INDUSTRY] sector. I need help analyzing [DATA] to [SPECIFIC GOAL]. Provide a step-by-step plan to achieve this, including any necessary tools or methods.\n```\nCopy\n\n```\n# Scientific Research Assistance Plan"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:19:26.592962Z",
+    "http_status": 200,
+    "content_hash": "297ff14b0c30d894306c422b8e7192aa9b78be9f25663fa51feb4717fb9005d2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-scientific-skills-desktop.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-scientific-skills-desktop.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Offline scientific skills corpus for Claude on",
+  "short_description_vi": "A Claude Desktop extension (.mcpb) that delivers the claude-scientific-skills corpus via a tiny librarian tool surface. Built as a self-contained Bun binary (no Node/Python required for users). Offline fat bundle by default; optional thin/auto-update mode."
+}

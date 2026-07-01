@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kreuzberg",
+  "slug": "kreuzberg",
+  "name": "kreuzberg",
+  "headline": "Kreuzberg: Advanced Document Intelligence Framework",
+  "short_description": "Kreuzberg is a versatile document intelligence framework built on a Rust core, enabling extraction of text, metadata, and structured information from a wide array of formats including PDFs and Office documents. It supports multiple programming languages and can be accessed via CLI or REST API, making it ideal for developers seeking strong document processing solutions.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "kreuzberg-dev",
+  "install_command": "claude install kreuzberg-dev/kreuzberg",
+  "source_repo_url": "https://github.com/kreuzberg-dev/kreuzberg",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "table-extraction",
+    "document-intelligence",
+    "metadata-extraction",
+    "pdf-extraction",
+    "text-extraction"
+  ],
+  "sections": {
+    "overview": "Kreuzberg is a document intelligence framework built on a Rust core, designed to extract text, metadata, and structured information from multiple document formats including PDFs and Office files. It provides developers with flexible access through both command-line interface and REST API endpoints, enabling integration into various workflows and applications. The framework supports multiple programming languages, making it accessible to teams working across different tech stacks. Kreuzberg addresses document processing challenges by combining the performance of Rust with practical accessibility through standard APIs, ideal for applications requiring reliable document parsing and data extraction at scale.\nExtracting data from invoices for financial analysis and reporting.\nAutomating document processing workflows in CRM systems to improve efficiency.\nGenerating structured reports from unstructured text to facilitate data analysis.\nEnhancing search capabilities in document repositories for faster information retrieval.",
+    "setup": "Terminal\nCopy\n`claude install kreuzberg-dev/kreuzberg`\n`git clone https://github.com/kreuzberg-dev/kreuzberg`",
+    "usage": "```\nExtract the key metadata and text content from the document '[DOCUMENT_NAME]' in [FORMAT]. Identify the main topics discussed, any important dates mentioned, and the author's name if available. Return the results in JSON format with separate fields for metadata, topics, dates, and author.\n```\nCopy\n\n```\n```json\n{\n  \"metadata\": {\n    \"document_name\": \"Q3_Financial_Report.pdf\",\n    \"format\": \"PDF\",\n    \"page_count\": 28,\n    \"creation_date\": \"2023-10-15\",\n    \"last_modified\": \"2023-10-20\"\n  },\n  \"topics\": [\n    \"Quarterly Financial Performance\",\n    \"Market Trends\",\n    \"Future Outlook\",\n    \"Risk Assessment\"\n  ],\n  \"dates\": [\n    \"2023-07-01\",\n    \"2023-09-30\",\n    \"2023-10-15\"\n  ],\n  \"author\": \"Jane Doe, CFO\"\n}\n```\n\nThe document 'Q3_Financial_Report.pdf' is a 28-page PDF that was created on October 15, 2023, and last modified on October 20, 2023. The main topics covered in the report include the company's quarterly financial performance, current market trends, future outlook, and risk assessment. Key dates mentioned are July 1, 2023, September 30, 2023, and October 15, 2023. The report was authored by Jane Doe, the Chief Financial Officer.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "kreuzberg#main-content",
+      "kreuzberg#overview",
+      "kreuzberg#setup",
+      "kreuzberg#examples",
+      "kreuzberg#tools",
+      "kreuzberg#mcp",
+      "kreuzberg#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Kreuzberg là một document intelligence framework với lõi Rust, được thiết kế để trích xuất văn bản, metadata và thông tin có cấu trúc từ nhiều định dạng tài liệu khác nhau bao gồm cả PDF và các tệp Office. Framework cung cấp cho các nhà phát triển khả năng truy cập linh hoạt thông qua cả giao diện dòng lệnh (CLI) và các endpoint REST API, giúp dễ dàng tích hợp vào nhiều quy trình làm việc (workflow) và ứng dụng khác nhau. Framework này hỗ trợ nhiều ngôn ngữ lập trình, giúp các nhóm phát triển làm việc trên các tech stack khác nhau dễ dàng tiếp cận. Kreuzberg giải quyết các thách thức trong xử lý tài liệu bằng cách kết hợp hiệu năng vượt trội của Rust với khả năng tiếp cận thực tế thông qua các API tiêu chuẩn, cực kỳ phù hợp cho các ứng dụng đòi hỏi parse tài liệu và trích xuất dữ liệu đáng tin cậy ở quy mô lớn.\nTrích xuất dữ liệu từ hóa đơn phục vụ phân tích tài chính và báo cáo.\nTự động hóa quy trình xử lý tài liệu trong hệ thống CRM để nâng cao hiệu suất.\nTạo báo cáo có cấu trúc từ văn bản phi cấu trúc nhằm đơn giản hóa việc phân tích dữ liệu.\nTối ưu hóa khả năng tìm kiếm trong các kho lưu trữ tài liệu giúp truy xuất thông tin nhanh hơn.",
+    "setup_vi": "Terminal\nSao chép\n`claude install kreuzberg-dev/kreuzberg`\n`git clone https://github.com/kreuzberg-dev/kreuzberg`",
+    "usage_vi": "```\nTrích xuất các metadata chính và nội dung văn bản từ tài liệu '[DOCUMENT_NAME]' dưới định dạng [FORMAT]. Xác định các chủ đề chính được thảo luận, bất kỳ ngày quan trọng nào được đề cập và tên tác giả nếu có. Trả về kết quả dưới định dạng JSON với các trường riêng biệt cho metadata, topics (chủ đề), dates (ngày tháng) và author (tác giả).\n```\nSao chép\n\n```json\n{\n  \"metadata\": {\n    \"document_name\": \"Q3_Financial_Report.pdf\",\n    \"format\": \"PDF\",\n    \"page_count\": 28,\n    \"creation_date\": \"2023-10-15\",\n    \"last_modified\": \"2023-10-20\"\n  },\n  \"topics\": [\n    \"Quarterly Financial Performance\",\n    \"Market Trends\",\n    \"Future Outlook\",\n    \"Risk Assessment\"\n  ],\n  \"dates\": [\n    \"2023-07-01\",\n    \"2023-09-30\",\n    \"2023-10-15\"\n  ],\n  \"author\": \"Jane Doe, CFO\"\n}\n```\n\nTài liệu 'Q3_Financial_Report.pdf' là một tệp PDF dài 28 trang được tạo vào ngày 15 tháng 10 năm 2023 và sửa đổi lần cuối vào ngày 20 tháng 10 năm 2023. Các chủ đề chính được đề cập trong báo cáo bao gồm hiệu quả tài chính hàng quý của công ty, xu hướng thị trường hiện tại, triển vọng tương lai và đánh giá rủi ro. Các ngày quan trọng được đề cập là ngày 1 tháng 7 năm 2023, ngày 30 tháng 9 năm 2023 và ngày 15 tháng 10 năm 2023. Báo cáo do Jane Doe, Giám đốc Tài chính (CFO), soạn thảo."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:15:00.132002Z",
+    "http_status": 200,
+    "content_hash": "ac27e0b74fa6fda1212b872e1aebb0ca84acb38613214c20351e996229ab5799",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kreuzberg.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kreuzberg.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kreuzberg: Framework phân tích tài liệu thông minh nâng cao",
+  "short_description_vi": "Kreuzberg là một document intelligence framework đa năng với lõi Rust, hỗ trợ trích xuất văn bản, metadata và thông tin có cấu trúc từ nhiều định dạng khác nhau bao gồm PDF và tài liệu Office. Framework này hỗ trợ nhiều ngôn ngữ lập trình và có thể truy cập qua CLI hoặc REST API, là lựa chọn lý tưởng cho các nhà phát triển đang tìm kiếm giải pháp xử lý tài liệu mạnh mẽ."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/socialmediaautomation",
+  "slug": "socialmediaautomation",
+  "name": "SocialMediaAutomation",
+  "headline": "SocialMediaAutomation: Auto-Upload to Instagram &",
+  "short_description": "A Python-based automation skill that generates and uploads media content to Instagram and TikTok automatically, with support for AI-generated images and video via DALL-E and Sora.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "PatrickMihalcea",
+  "install_command": "git clone https://github.com/PatrickMihalcea/SocialMediaAutomation.git",
+  "source_repo_url": "https://github.com/PatrickMihalcea/SocialMediaAutomation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "SocialMediaAutomation is a Python skill that scripts the automatic upload of media to Instagram and TikTok, reducing the manual effort of social media posting. The project includes modules for AI-generated image creation using DALL-E and video generation via Sora, along with font and music asset support for compositing content. It is structured with a src directory, unit testing via pytest, and dependency management through requirements.txt. Content creators, marketers, and developers looking to schedule or batch-publish AI-generated media will find this skill useful for building automated social pipelines.\nAutomatically upload AI-generated images to Instagram on a recurring basis\nPost AI-generated video content to TikTok without manual intervention\nBatch-generate and publish social media content using DALL-E or Sora\nOverlay custom text and music onto generated media before publishing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PatrickMihalcea/SocialMediaAutomation`",
+    "usage": "```\nCreate a Python script to automate uploading media to [PLATFORM] for [COMPANY]. The script should handle [NUMBER] posts per day, with captions from [CAPTION_SOURCE] and images/videos from [MEDIA_FOLDER]. Ensure it complies with [PLATFORM]'s API guidelines and includes error handling for failed uploads.\n```\nCopy\n\n```\n# Instagram Automation Script\n\n```python\nimport os\nimport schedule\nimport time\nfrom instagrapi import Client\n\n# Initialize client\ncl = Client()\ncl.login(\"username\", \"password\")\n\n# Upload media\ndef upload_media():\n    media_folder = \"/path/to/media\"\n    for filename in os.listdir(media_folder):\n        if filename.endswith(\".jpg\") or filename.endswith(\".mp4\"):\n            cl.photo_upload(\n                f\"{media_folder}/{filename}\",\n                f\"#AutomatedPost #{os.getenv('HASHTAG')}\"\n            )\n\n# Schedule uploads\nschedule.every().day.at(\"14:00\").do(upload_media)\n\n# Keep script running\nwhile True:\n    schedule.run_pending()\n    time.sleep(1)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "socialmediaautomation#main-content",
+      "socialmediaautomation#overview",
+      "socialmediaautomation#setup",
+      "socialmediaautomation#examples",
+      "socialmediaautomation#tools",
+      "socialmediaautomation#mcp",
+      "socialmediaautomation#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SocialMediaAutomation is a Python skill that scripts the automatic upload of media to Instagram and TikTok, reducing the manual effort of social media posting. The project includes modules for AI-generated image creation using DALL-E and video generation via Sora, along with font and music asset support for compositing content. It is structured with a src directory, unit testing via pytest, and dependency management through requirements.txt. Content creators, marketers, and developers looking to schedule or batch-publish AI-generated media will find this skill useful for building automated social pipelines.\nAutomatically upload AI-generated images to Instagram on a recurring basis\nPost AI-generated video content to TikTok without manual intervention\nBatch-generate and publish social media content using DALL-E or Sora\nOverlay custom text and music onto generated media before publishing",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PatrickMihalcea/SocialMediaAutomation`",
+    "usage_vi": "```\nCreate a Python script to automate uploading media to [PLATFORM] for [COMPANY]. The script should handle [NUMBER] posts per day, with captions from [CAPTION_SOURCE] and images/videos from [MEDIA_FOLDER]. Ensure it complies with [PLATFORM]'s API guidelines and includes error handling for failed uploads.\n```\nCopy\n\n```\n# Instagram Automation Script\n\n```python\nimport os\nimport schedule\nimport time\nfrom instagrapi import Client\n\n# Initialize client\ncl = Client()\ncl.login(\"username\", \"password\")\n\n# Upload media\ndef upload_media():\n    media_folder = \"/path/to/media\"\n    for filename in os.listdir(media_folder):\n        if filename.endswith(\".jpg\") or filename.endswith(\".mp4\"):\n            cl.photo_upload(\n                f\"{media_folder}/{filename}\",\n                f\"#AutomatedPost #{os.getenv('HASHTAG')}\"\n            )\n\n# Schedule uploads\nschedule.every().day.at(\"14:00\").do(upload_media)\n\n# Keep script running\nwhile True:\n    schedule.run_pending()\n    time.sleep(1)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:10.814839Z",
+    "http_status": 200,
+    "content_hash": "3c79ed0c100d63cc4b82267629dfdec0e2a9ab776929460f58ee9467acf8ef90",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\socialmediaautomation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\socialmediaautomation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SocialMediaAutomation: Auto-Upload to Instagram &",
+  "short_description_vi": "A Python-based automation skill that generates and uploads media content to Instagram and TikTok automatically, with support for AI-generated images and video via DALL-E and Sora."
+}

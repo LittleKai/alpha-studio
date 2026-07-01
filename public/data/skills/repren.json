@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/repren",
+  "slug": "repren",
+  "name": "repren",
+  "headline": "repren - Automated Refactoring Tool",
+  "short_description": "Automate file and code refactoring with repren. Use regex to rename files, directories, and code elements. Integrates with Claude Code skill for advanced refactoring. Ideal for developers and operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "jlevy",
+  "install_command": "git clone https://github.com/jlevy/repren.git",
+  "source_repo_url": "https://github.com/jlevy/repren",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "regular-expression",
+    "refactoring",
+    "search-and-replace",
+    "python",
+    "renames",
+    "command-line"
+  ],
+  "sections": {
+    "overview": "repren is a command-line refactoring tool that performs search-and-replace operations and file renaming at scale using regular expressions. It handles simultaneous renames (like swapping foo and bar without intermediate steps), case-preserving variants across lowerCamel, UpperCamel, and underscore conventions, and recursive directory operations with atomic file safety. The tool includes dry-run mode, automatic backups, and undo capabilities to prevent data loss. It has zero runtime dependencies and works on Python 3.10-3.14, making it lightweight and secure for developers, operations teams, and AI agents automating bulk refactors.\nRename variables across multiple source files while ensuring case variations are preserved.\nPerform bulk renaming of files and directories based on specific patterns in their names.\nExecute complex search-and-replace operations using regular expressions to update documentation or code comments.\nRun a dry run to preview changes before applying them to ensure accuracy and safety.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jlevy/repren`",
+    "usage": "```\nUse repren to refactor [FILES/PROJECT] by renaming [ELEMENT_TYPE] from [OLD_PATTERN] to [NEW_PATTERN]. Show me the changes before applying them. Example: 'Use repren to refactor the entire project by renaming all Python files from *.py to *.py.bak. Show me the changes before applying them.'\n```\nCopy\n\n```\nHere’s a preview of the refactoring changes for your `src/` directory using repren:\n\n**File Renames:**\n- `src/utils.py` → `src/helpers.py`\n- `src/models/user.py` → `src/entities/user_entity.py`\n- `src/tests/test_utils.py` → `src/tests/test_helpers.py`\n\n**Code Element Renames (Python):**\n- Function `calculate_total()` → `compute_total()` in `src/services/billing.py`\n- Class `UserManager` → `UserService` in `src/models/user.py`\n- Variable `user_id` → `account_id` in `src/controllers/api.py` (3 occurrences)\n\n**Directory Renames:**\n- `src/legacy/` → `src/deprecated/`\n\nAll changes follow the regex pattern `^.*\\.py$` → `*.py.bak` for files and `User.*` → `Account.*` for code elements. Would you like me to apply these changes? If so, I’ll use `repren` with the `--dry-run` flag first, then execute the refactor.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "repren#main-content",
+      "repren#overview",
+      "repren#setup",
+      "repren#examples",
+      "repren#tools",
+      "repren#mcp",
+      "repren#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "repren là một công cụ refactoring giao diện dòng lệnh (CLI) giúp thực hiện các thao tác tìm kiếm-thay thế và đổi tên file trên diện rộng bằng cách sử dụng regular expression (regex). Công cụ này hỗ trợ đổi tên đồng thời (ví dụ: hoán đổi giữa foo và bar mà không cần bước trung gian), bảo toàn quy tắc viết hoa/thường (case-preserving) trên các chuẩn đặt tên lowerCamel, UpperCamel và snake_case (underscore), cũng như thực hiện các thao tác đệ quy trên thư mục với tính năng an toàn file nguyên tử (atomic file safety). Công cụ cũng tích hợp chế độ dry-run, tự động sao lưu và khả năng hoàn tác (undo) để tránh mất mát dữ liệu. Không yêu cầu bất kỳ dependency nào khi chạy và tương thích với Python 3.10-3.14, giúp repren cực kỳ nhẹ và an toàn cho developer, đội ngũ operations cũng như các AI agent khi cần tự động hóa các tác vụ refactor hàng loạt.\nĐổi tên biến trên nhiều file nguồn mà vẫn đảm bảo giữ nguyên các biến thể viết hoa/thường.\nĐổi tên hàng loạt file và thư mục dựa trên các pattern cụ thể trong tên của chúng.\nThực hiện các thao tác tìm kiếm-thay thế phức tạp sử dụng regular expression để cập nhật tài liệu hoặc comment trong code.\nChạy thử nghiệm (dry run) để xem trước các thay đổi trước khi áp dụng thực tế nhằm đảm bảo tính chính xác và an toàn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jlevy/repren`",
+    "usage_vi": "```\nSử dụng repren để refactor [FILES/PROJECT] bằng cách đổi tên [ELEMENT_TYPE] từ [OLD_PATTERN] sang [NEW_PATTERN]. Cho tôi xem các thay đổi trước khi áp dụng. Ví dụ: 'Sử dụng repren để refactor toàn bộ dự án bằng cách đổi tên tất cả các file Python từ *.py thành *.py.bak. Cho tôi xem các thay đổi trước khi áp dụng.'\n```\nCopy\n\n```\nDưới đây là bản xem trước (preview) các thay đổi refactoring cho thư mục `src/` của bạn sử dụng repren:\n\n**Đổi tên file:**\n- `src/utils.py` → `src/helpers.py`\n- `src/models/user.py` → `src/entities/user_entity.py`\n- `src/tests/test_utils.py` → `src/tests/test_helpers.py`\n\n**Đổi tên thành phần code (Python):**\n- Hàm `calculate_total()` → `compute_total()` trong `src/services/billing.py`\n- Class `UserManager` → `UserService` trong `src/models/user.py`\n- Biến `user_id` → `account_id` trong `src/controllers/api.py` (xuất hiện 3 lần)\n\n**Đổi tên thư mục:**\n- `src/legacy/` → `src/deprecated/`\n\nTất cả các thay đổi tuân theo pattern regex `^.*\\.py$` → `*.py.bak` cho file và `User.*` → `Account.*` cho các thành phần code. Bạn có muốn tôi áp dụng các thay đổi này không? Nếu có, tôi sẽ sử dụng `repren` với flag `--dry-run` trước, sau đó mới thực hiện refactor.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:22.874461Z",
+    "http_status": 200,
+    "content_hash": "170d7d217ff43ec4207040eafbef89df485996543ead8045e2bc88fd36e82777",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\repren.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\repren.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "repren - Công cụ Refactoring tự động",
+  "short_description_vi": "Tự động hóa refactoring file và code với repren. Sử dụng regex để đổi tên file, thư mục và các thành phần mã nguồn. Tích hợp với Claude Code skill để refactoring nâng cao. Giải pháp lý tưởng cho developer và đội ngũ operations."
+}

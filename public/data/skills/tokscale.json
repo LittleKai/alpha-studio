@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tokscale",
+  "slug": "tokscale",
+  "name": "browser-use",
+  "headline": "Tokscale - Track AI Token Usage",
+  "short_description": "Tokscale is a CLI tool for tracking token usage and costs across AI coding assistants like OpenCode, Claude Code, and Gemini CLI. It helps developers and operations teams monitor usage, optimize costs, and integrate with IDEs like Cursor and AmpCode.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "junhoyeo",
+  "install_command": "git clone https://github.com/junhoyeo/tokscale.git",
+  "source_repo_url": "https://github.com/junhoyeo/tokscale",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "cursor-ide",
+    "ai-agents",
+    "droid",
+    "ampcode",
+    "gemini",
+    "opencode",
+    "token-usage",
+    "oh",
+    "oh-my-opencode",
+    "claude",
+    "opentui",
+    "cursor",
+    "codex",
+    "gemini-cli",
+    "ai",
+    "gpt"
+  ],
+  "sections": {
+    "overview": "Tokscale is a CLI tool designed to monitor token consumption and associated costs across multiple AI coding assistants. It provides developers and operations teams with visibility into usage patterns, enabling cost optimization and budget management. The tool integrates with popular IDEs and coding environments, offering detailed analytics including per-minute token breakdowns through its interactive terminal UI. Users can configure settings to match their needs, with optional minutely aggregation for granular usage tracking. Tokscale solves the challenge of tracking expenses across distributed AI coding workflows.\nMonitor token usage across multiple AI platforms to optimize costs.\nAnalyze daily token consumption trends to identify peak usage times.\nVisualize contributions and performance over time with interactive graphs.\nSubmit usage data to leaderboards for competitive analysis and community engagement.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/junhoyeo/tokscale`",
+    "usage": "```\nUse tokscale to analyze the token usage and costs for [PROJECT_NAME] over the past [TIME_PERIOD]. Compare the usage across [TOOLS_OR_MODELS] and identify the top 3 most expensive operations. Suggest optimizations to reduce costs by at least [PERCENTAGE]%.\n```\nCopy\n\n```\nHere’s the token usage and cost analysis for the 'E-Commerce API' project over the past 30 days using tokscale:\n\n**Total Token Usage:** 1,245,678 tokens\n- OpenCode: 678,901 tokens ($135.78)\n- Claude Code: 456,789 tokens ($91.36)\n- Gemini CLI: 110,988 tokens ($22.20)\n\n**Top 3 Most Expensive Operations:**\n1. **Database Schema Migration** (Claude Code): 234,567 tokens ($46.91) – Generated 50+ SQL files with verbose comments.\n2. **API Documentation Update** (OpenCode): 189,012 tokens ($37.80) – Used multi-turn prompts to refine Swagger docs.\n3. **Test Suite Refactor** (Gemini CLI): 98,765 tokens ($19.75) – Overly detailed test case explanations.\n\n**Cost Optimization Recommendations:**\n- **Truncate verbose comments** in generated SQL files to reduce tokens by ~30%.\n- **Use summarization tools** (e.g., `summarize` CLI) for API docs to cut input/output tokens by 40%.\n- **Enable caching** in test suites to avoid re-generating identical test cases (saves ~25% tokens).\n\n**Projected Savings:** ~$75/month with these changes.\n\nRun `tokscale --export-csv` to generate a detailed breakdown for your team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tokscale#main-content",
+      "tokscale#overview",
+      "tokscale#setup",
+      "tokscale#examples",
+      "tokscale#tools",
+      "tokscale#mcp",
+      "tokscale#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Tokscale is a CLI tool designed to monitor token consumption and associated costs across multiple AI coding assistants. It provides developers and operations teams with visibility into usage patterns, enabling cost optimization and budget management. The tool integrates with popular IDEs and coding environments, offering detailed analytics including per-minute token breakdowns through its interactive terminal UI. Users can configure settings to match their needs, with optional minutely aggregation for granular usage tracking. Tokscale solves the challenge of tracking expenses across distributed AI coding workflows.\nMonitor token usage across multiple AI platforms to optimize costs.\nAnalyze daily token consumption trends to identify peak usage times.\nVisualize contributions and performance over time with interactive graphs.\nSubmit usage data to leaderboards for competitive analysis and community engagement.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/junhoyeo/tokscale`",
+    "usage_vi": "```\nUse tokscale to analyze the token usage and costs for [PROJECT_NAME] over the past [TIME_PERIOD]. Compare the usage across [TOOLS_OR_MODELS] and identify the top 3 most expensive operations. Suggest optimizations to reduce costs by at least [PERCENTAGE]%.\n```\nCopy\n\n```\nHere’s the token usage and cost analysis for the 'E-Commerce API' project over the past 30 days using tokscale:\n\n**Total Token Usage:** 1,245,678 tokens\n- OpenCode: 678,901 tokens ($135.78)\n- Claude Code: 456,789 tokens ($91.36)\n- Gemini CLI: 110,988 tokens ($22.20)\n\n**Top 3 Most Expensive Operations:**\n1. **Database Schema Migration** (Claude Code): 234,567 tokens ($46.91) – Generated 50+ SQL files with verbose comments.\n2. **API Documentation Update** (OpenCode): 189,012 tokens ($37.80) – Used multi-turn prompts to refine Swagger docs.\n3. **Test Suite Refactor** (Gemini CLI): 98,765 tokens ($19.75) – Overly detailed test case explanations.\n\n**Cost Optimization Recommendations:**\n- **Truncate verbose comments** in generated SQL files to reduce tokens by ~30%.\n- **Use summarization tools** (e.g., `summarize` CLI) for API docs to cut input/output tokens by 40%.\n- **Enable caching** in test suites to avoid re-generating identical test cases (saves ~25% tokens).\n\n**Projected Savings:** ~$75/month with these changes.\n\nRun `tokscale --export-csv` to generate a detailed breakdown for your team.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:54:33.777962Z",
+    "http_status": 200,
+    "content_hash": "a66d2a2aed9ae981e354387f36e28d15c84fca53d8f2350e5926554bde007f2f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tokscale.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tokscale.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Tokscale - Track AI Token Usage",
+  "short_description_vi": "Tokscale is a CLI tool for tracking token usage and costs across AI coding assistants like OpenCode, Claude Code, and Gemini CLI. It helps developers and operations teams monitor usage, optimize costs, and integrate with IDEs like Cursor and AmpCode."
+}

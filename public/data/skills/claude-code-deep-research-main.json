@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-deep-research-main",
+  "slug": "claude-code-deep-research-main",
+  "name": "Claude-Code-Deep-Research-main",
+  "headline": "deep research with claude code step-by-step",
+  "short_description": "Automates deep research using Claude Code's agent framework. Benefits operations teams by streamlining complex research tasks. Connects to Claude Code's Skills and Commands system for efficient data gathering and analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "liangdabiao",
+  "install_command": "git clone https://github.com/liangdabiao/Claude-Code-Deep-Research-main.git",
+  "source_repo_url": "https://github.com/liangdabiao/Claude-Code-Deep-Research-main",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Deep Research automates comprehensive research tasks using a multi-agent framework with Graph of Thoughts reasoning and citation validation. The skill deploys parallel research agents to gather and synthesize findings across multiple sources, rating citations by quality (A-E scale) and validating factual claims. It structures research output into executive summaries, full reports, bibliographies, and methodology documentation. Operations teams and research-heavy workflows benefit from streamlined topic exploration, question refinement, research planning, and findings synthesis—all managed through native Claude Code Skills and Commands.\nMarket research reports with citation-backed competitive analysis\nTechnical assessments comparing solutions or frameworks\nHealthcare and clinical research literature reviews\nPolicy research with peer-reviewed source validation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/Claude-Code-Deep-Research-main`",
+    "usage": "```\nUse Claude Code to automate deep research on [TOPIC]. Follow these steps: 1) Identify 5-7 key subtopics/questions to explore. 2) Gather data from [SOURCES] (prioritize official docs, peer-reviewed papers, or primary sources). 3) Analyze findings for patterns, contradictions, or gaps. 4) Synthesize into a structured report with bullet points, tables, or summaries. 5) Flag any unresolved questions or areas requiring further investigation. Sources must be cited with direct links. [TOPIC] = [PLACEHOLDER]\n```\nCopy\n\n```\nDeep Research Report: 'The Impact of AI on Cybersecurity Workforce Skills'\n\n**Key Subtopics Explored:**\n1. AI-driven threat detection tools (2023 market leaders)\n2. Skill gaps in cybersecurity teams (2024 surveys)\n3. AI's role in automating SOC tasks\n4. Regulatory impacts (NIST, ISO 27001 updates)\n5. Cost-benefit analysis of AI adoption in cybersecurity\n\n**Data Gathering Results:**\n- **Threat Detection:** Palo Alto Cortex XDR (2023) reduced mean time to detect (MTTD) by 45% vs. traditional SIEMs (source: [Palo Alto 2023 Report](https://www.paloaltonetworks.com/resources)). Darktrace’s autonomous response cut incident response time by 60% (source: [Darktrace 2024 Case Study](https://darktrace.com/resources)).\n- **Skill Gaps:** 68% of cybersecurity professionals lack AI/ML expertise (ISC² 2024 Workforce Study). 42% of organizations cite \"AI literacy\" as their top hiring challenge (source: [ISC² 2024 Report](https://www.isc2.org/Research)).\n- **Regulatory:** NIST SP 800-207 (Zero Trust Architecture) now includes AI-driven identity verification requirements (source: [NIST.gov](https://csrc.nist.gov)). ISO 27001:2022 mandates AI risk assessments for cloud services.\n\n**Key Findings:**\n1. **AI Adoption Accelerates:** 72% of enterprises plan to increase AI investment in cybersecurity by 2025 (Gartner 2024).\n2. **Skill Shortage Critical:** Only 18% of cybersecurity roles require AI/ML expertise (LinkedIn 2024 Data).\n3. **Regulatory Pressure:** Organizations must align with NIST/ISO frameworks or face compliance risks.\n\n**Unresolved Questions:**\n- How do SMEs (small/medium enterprises) balance AI adoption with budget constraints?\n- What are the long-term ethical implications of AI-driven cybersecurity decisions?\n\n**Recommendations:**\n- Prioritize upskilling in AI/ML for SOC teams (e.g., SANS SEC595 course).\n- Pilot AI tools in non-critical environments to measure ROI before full deployment.\n\n*Sources compiled on [DATE]. All links verified and accessible as of [DATE].*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-deep-research-main#main-content",
+      "claude-code-deep-research-main#overview",
+      "claude-code-deep-research-main#setup",
+      "claude-code-deep-research-main#examples",
+      "claude-code-deep-research-main#tools",
+      "claude-code-deep-research-main#mcp",
+      "claude-code-deep-research-main#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Deep Research automates comprehensive research tasks using a multi-agent framework with Graph of Thoughts reasoning and citation validation. The skill deploys parallel research agents to gather and synthesize findings across multiple sources, rating citations by quality (A-E scale) and validating factual claims. It structures research output into executive summaries, full reports, bibliographies, and methodology documentation. Operations teams and research-heavy workflows benefit from streamlined topic exploration, question refinement, research planning, and findings synthesis—all managed through native Claude Code Skills and Commands.\nMarket research reports with citation-backed competitive analysis\nTechnical assessments comparing solutions or frameworks\nHealthcare and clinical research literature reviews\nPolicy research with peer-reviewed source validation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/Claude-Code-Deep-Research-main`",
+    "usage_vi": "```\nUse Claude Code to automate deep research on [TOPIC]. Follow these steps: 1) Identify 5-7 key subtopics/questions to explore. 2) Gather data from [SOURCES] (prioritize official docs, peer-reviewed papers, or primary sources). 3) Analyze findings for patterns, contradictions, or gaps. 4) Synthesize into a structured report with bullet points, tables, or summaries. 5) Flag any unresolved questions or areas requiring further investigation. Sources must be cited with direct links. [TOPIC] = [PLACEHOLDER]\n```\nCopy\n\n```\nDeep Research Report: 'The Impact of AI on Cybersecurity Workforce Skills'\n\n**Key Subtopics Explored:**\n1. AI-driven threat detection tools (2023 market leaders)\n2. Skill gaps in cybersecurity teams (2024 surveys)\n3. AI's role in automating SOC tasks\n4. Regulatory impacts (NIST, ISO 27001 updates)\n5. Cost-benefit analysis of AI adoption in cybersecurity\n\n**Data Gathering Results:**\n- **Threat Detection:** Palo Alto Cortex XDR (2023) reduced mean time to detect (MTTD) by 45% vs. traditional SIEMs (source: [Palo Alto 2023 Report](https://www.paloaltonetworks.com/resources)). Darktrace’s autonomous response cut incident response time by 60% (source: [Darktrace 2024 Case Study](https://darktrace.com/resources)).\n- **Skill Gaps:** 68% of cybersecurity professionals lack AI/ML expertise (ISC² 2024 Workforce Study). 42% of organizations cite \"AI literacy\" as their top hiring challenge (source: [ISC² 2024 Report](https://www.isc2.org/Research)).\n- **Regulatory:** NIST SP 800-207 (Zero Trust Architecture) now includes AI-driven identity verification requirements (source: [NIST.gov](https://csrc.nist.gov)). ISO 27001:2022 mandates AI risk assessments for cloud services.\n\n**Key Findings:**\n1. **AI Adoption Accelerates:** 72% of enterprises plan to increase AI investment in cybersecurity by 2025 (Gartner 2024).\n2. **Skill Shortage Critical:** Only 18% of cybersecurity roles require AI/ML expertise (LinkedIn 2024 Data).\n3. **Regulatory Pressure:** Organizations must align with NIST/ISO frameworks or face compliance risks.\n\n**Unresolved Questions:**\n- How do SMEs (small/medium enterprises) balance AI adoption with budget constraints?\n- What are the long-term ethical implications of AI-driven cybersecurity decisions?\n\n**Recommendations:**\n- Prioritize upskilling in AI/ML for SOC teams (e.g., SANS SEC595 course).\n- Pilot AI tools in non-critical environments to measure ROI before full deployment.\n\n*Sources compiled on [DATE]. All links verified and accessible as of [DATE].*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:26:51.637183Z",
+    "http_status": 200,
+    "content_hash": "0bd396d522ba2336a9bf34872703e9e62709dd255e7243934b5cb7f499d269e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-deep-research-main.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-deep-research-main.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "deep research with claude code step-by-step",
+  "short_description_vi": "Automates deep research using Claude Code's agent framework. Benefits operations teams by streamlining complex research tasks. Connects to Claude Code's Skills and Commands system for efficient data gathering and analysis."
+}

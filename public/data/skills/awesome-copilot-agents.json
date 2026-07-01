@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-copilot-agents",
+  "slug": "awesome-copilot-agents",
+  "name": "Awesome Copilot Agents",
+  "headline": "Copilot agent skills for GitHub AI",
+  "short_description": "Enhance GitHub Copilot AI with curated instructions, prompts, and agent skills. Ideal for developers and operations teams to streamline workflows and improve code generation. Integrates with VSCode Copilot Chat and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "Code-and-Sorts",
+  "install_command": "git clone https://github.com/Code-and-Sorts/awesome-copilot-agents.git",
+  "source_repo_url": "https://github.com/Code-and-Sorts/awesome-copilot-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "github-copilot",
+    "awesome",
+    "copilot-prompting",
+    "vscode-copilot-chat",
+    "custom-agents",
+    "prompt-engineering",
+    "ai-agents",
+    "awesome-list",
+    "agent-skills",
+    "copilot-instructions"
+  ],
+  "sections": {
+    "overview": "awesome-copilot-agents is a curated directory of GitHub Copilot customizations including instructions, prompts, agent skills, and MCPs organized by programming language, framework, and workflow. It provides repository-specific context such as coding standards, frameworks, and project rules to improve Copilot's code suggestions. The collection includes boilerplate templates for languages like Python, JavaScript, Go, Rust, and Java, plus specialized instructions for frameworks like Express, Azure Functions, and Terraform. It helps developers streamline workflows by guiding Copilot with contextual details about their project's tech stack, coding style, and team practices.\nCreate tailored Copilot instructions for specific programming languages and frameworks.\nGenerate structured prompts for AI-assisted development tasks like PRD creation and task execution.\nUtilize boilerplate templates to standardize coding practices across projects.\nImplement custom agents to enhance Copilot's contextual understanding of your codebase.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Code-and-Sorts/awesome-copilot-agents`",
+    "usage": "```\nAct as an expert developer assistant. Use the following curated instructions to enhance GitHub Copilot's capabilities: [INSTRUCTIONS]. When generating code, follow these best practices: [BEST_PRACTICES]. For this task, I need you to [TASK_DESCRIPTION]. Provide the output in [OUTPUT_FORMAT].\n```\nCopy\n\n```\nBased on your instructions, I've enhanced GitHub Copilot's capabilities to assist with your task. Here's the optimized code for implementing a user authentication system with JWT in Node.js, following the best practices you provided:\n\n```javascript\n// Import required modules\nconst express = require('express');\nconst jwt = require('jsonwebtoken');\nconst bcrypt = require('bcrypt');\nconst bodyParser = require('body-parser');\n\n// Initialize Express app\nconst app = express();\napp.use(bodyParser.json());\n\n// Mock user database\nconst users = [];\n\n// Generate JWT token\nconst generateToken = (user) => {\n  return jwt.sign(\n    { id: user.id, email: user.email },\n    process.env.JWT_SECRET,\n    { expiresIn: '1h' }\n  );\n};\n\n// Register endpoint\napp.post('/register', async (req, res) => {\n  try {\n    const { email, password } = req.body;\n    const hashedPassword = await bcrypt.hash(password, 10);\n    const user = { id: Date.now().toString(), email, password: hashedPassword };\n    users.push(user);\n    const token = generateToken(user);\n    res.status(201).json({ token }); // Return token in JSON format\n  } catch (error) {\n    res.status(500).json({ error: error.message }); // Return error in JSON format\n  }\n});\n\n// Login endpoint\napp.post('/login', async (req, res) => {\n  try {\n    const { email, password } = req.body;\n    const user = users.find(u => u.email === email);\n    if (!user) {\n      return res.status(401).json({ error: 'Invalid credentials' }); // Return error in JSON format\n    }\n    const validPassword = await bcrypt.compare(password, user.password);\n    if (!validPassword) {\n      return res.status(401).json({ error: 'Invalid credentials' }); // Return error in JSON format\n    }\n    const token = generateToken(user);\n    res.json({ token }); // Return token in JSON format\n  } catch (error) {\n    res.status(500).json({ error: error.message }); // Return error in JSON format\n  }\n});\n\n// Start server\nconst PORT = process.env.PORT || 3000;\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n```\n\nI've also included error handling and JSON format responses as per your requirements. The code follows the best practices you provided, such as using async/await, proper error handling, and secure password hashing.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-copilot-agents#main-content",
+      "awesome-copilot-agents#overview",
+      "awesome-copilot-agents#setup",
+      "awesome-copilot-agents#examples",
+      "awesome-copilot-agents#tools",
+      "awesome-copilot-agents#mcp",
+      "awesome-copilot-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "awesome-copilot-agents is a curated directory of GitHub Copilot customizations including instructions, prompts, agent skills, and MCPs organized by programming language, framework, and workflow. It provides repository-specific context such as coding standards, frameworks, and project rules to improve Copilot's code suggestions. The collection includes boilerplate templates for languages like Python, JavaScript, Go, Rust, and Java, plus specialized instructions for frameworks like Express, Azure Functions, and Terraform. It helps developers streamline workflows by guiding Copilot with contextual details about their project's tech stack, coding style, and team practices.\nCreate tailored Copilot instructions for specific programming languages and frameworks.\nGenerate structured prompts for AI-assisted development tasks like PRD creation and task execution.\nUtilize boilerplate templates to standardize coding practices across projects.\nImplement custom agents to enhance Copilot's contextual understanding of your codebase.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Code-and-Sorts/awesome-copilot-agents`",
+    "usage_vi": "```\nAct as an expert developer assistant. Use the following curated instructions to enhance GitHub Copilot's capabilities: [INSTRUCTIONS]. When generating code, follow these best practices: [BEST_PRACTICES]. For this task, I need you to [TASK_DESCRIPTION]. Provide the output in [OUTPUT_FORMAT].\n```\nCopy\n\n```\nBased on your instructions, I've enhanced GitHub Copilot's capabilities to assist with your task. Here's the optimized code for implementing a user authentication system with JWT in Node.js, following the best practices you provided:\n\n```javascript\n// Import required modules\nconst express = require('express');\nconst jwt = require('jsonwebtoken');\nconst bcrypt = require('bcrypt');\nconst bodyParser = require('body-parser');\n\n// Initialize Express app\nconst app = express();\napp.use(bodyParser.json());\n\n// Mock user database\nconst users = [];\n\n// Generate JWT token\nconst generateToken = (user) => {\n  return jwt.sign(\n    { id: user.id, email: user.email },\n    process.env.JWT_SECRET,\n    { expiresIn: '1h' }\n  );\n};\n\n// Register endpoint\napp.post('/register', async (req, res) => {\n  try {\n    const { email, password } = req.body;\n    const hashedPassword = await bcrypt.hash(password, 10);\n    const user = { id: Date.now().toString(), email, password: hashedPassword };\n    users.push(user);\n    const token = generateToken(user);\n    res.status(201).json({ token }); // Return token in JSON format\n  } catch (error) {\n    res.status(500).json({ error: error.message }); // Return error in JSON format\n  }\n});\n\n// Login endpoint\napp.post('/login', async (req, res) => {\n  try {\n    const { email, password } = req.body;\n    const user = users.find(u => u.email === email);\n    if (!user) {\n      return res.status(401).json({ error: 'Invalid credentials' }); // Return error in JSON format\n    }\n    const validPassword = await bcrypt.compare(password, user.password);\n    if (!validPassword) {\n      return res.status(401).json({ error: 'Invalid credentials' }); // Return error in JSON format\n    }\n    const token = generateToken(user);\n    res.json({ token }); // Return token in JSON format\n  } catch (error) {\n    res.status(500).json({ error: error.message }); // Return error in JSON format\n  }\n});\n\n// Start server\nconst PORT = process.env.PORT || 3000;\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n```\n\nI've also included error handling and JSON format responses as per your requirements. The code follows the best practices you provided, such as using async/await, proper error handling, and secure password hashing.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:32.213985Z",
+    "http_status": 200,
+    "content_hash": "5d148b9f5def73b771cb9d6c0b4c1e97350c4395eac8417710eadba4c7fe0f3a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-copilot-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-copilot-agents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Copilot agent skills for GitHub AI",
+  "short_description_vi": "Enhance GitHub Copilot AI with curated instructions, prompts, and agent skills. Ideal for developers and operations teams to streamline workflows and improve code generation. Integrates with VSCode Copilot Chat and Claude agents."
+}

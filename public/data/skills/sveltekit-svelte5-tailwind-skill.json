@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sveltekit-svelte5-tailwind-skill",
+  "slug": "sveltekit-svelte5-tailwind-skill",
+  "name": "Sveltekit Svelte5 Tailwind Skill",
+  "headline": "SvelteKit + Svelte 5 + Tailwind v4 Integration",
+  "short_description": "Claude skill providing 24 searchable guides for building full-stack web applications with SvelteKit 2, Svelte 5 runes, and Tailwind CSS v4, with integration-specific documentation covering setup, deployment, and common challenges.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "claude-skills",
+  "install_command": "git clone https://github.com/claude-skills/sveltekit-svelte5-tailwind-skill.git",
+  "source_repo_url": "https://github.com/claude-skills/sveltekit-svelte5-tailwind-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill provides comprehensive, searchable documentation for building modern web applications using SvelteKit 2, Svelte 5 (with runes), and Tailwind CSS v4. It addresses integration challenges specific to combining these three frameworks, including Svelte 5's new reactivity system with server-side rendering constraints and Tailwind v4's Vite plugin architecture. The skill includes 24 problem-focused guides covering setup, core concepts, forms and styling, deployment adapters, migration paths, and troubleshooting. Developers working with this modern stack can use the 5-stage search methodology to research recommended patterns before implementation, ensuring proper configuration of plugin order, CSS imports, rune usage in SSR contexts, and form state management.\nSetting up new SvelteKit projects with Svelte 5 and Tailwind v4 configuration\nMigrating existing Svelte 4 or Tailwind v3 projects to the latest versions\nDebugging SSR issues with Svelte 5 runes and server-side constraints\nImplementing progressive enhancement with form actions and enhanced reactivity",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/claude-skills/sveltekit-svelte5-tailwind-skill`\n1. **Initialize the project**:\n   ```bash\n   npm create svelte@latest [PROJECT_NAME]\n   cd [PROJECT_NAME]\n   npm install\n   ```\n2. **Install Svelte 5 and Tailwind CSS**:\n   ```bash\n   npm install svelte@next tailwindcss postcss autoprefixer\n   npx tailwindcss init\n   ```",
+    "usage": "```\nCreate a SvelteKit 2 project with Svelte 5 and Tailwind CSS v4. The project should include [FEATURES] and follow [DESIGN_GUIDELINES]. Provide the complete setup instructions, including package installations, configuration files, and basic project structure. Ensure the project is optimized for [COMPANY] in the [INDUSTRY] sector.\n```\nCopy\n\n```\n# SvelteKit 2 with Svelte 5 and Tailwind CSS v4 Setup Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sveltekit-svelte5-tailwind-skill#main-content",
+      "sveltekit-svelte5-tailwind-skill#overview",
+      "sveltekit-svelte5-tailwind-skill#setup",
+      "sveltekit-svelte5-tailwind-skill#examples",
+      "sveltekit-svelte5-tailwind-skill#tools",
+      "sveltekit-svelte5-tailwind-skill#mcp",
+      "sveltekit-svelte5-tailwind-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này cung cấp tài liệu hướng dẫn toàn diện, có thể tìm kiếm để xây dựng các ứng dụng web hiện đại sử dụng SvelteKit 2, Svelte 5 (với runes) và Tailwind CSS v4. Tài liệu tập trung giải quyết các thách thức tích hợp đặc thù khi kết hợp ba framework này, bao gồm hệ thống reactivity mới của Svelte 5 với các ràng buộc về server-side rendering (SSR) và kiến trúc Vite plugin của Tailwind v4. Skill bao gồm 24 hướng dẫn tập trung giải quyết vấn đề thực tế từ setup, khái niệm cốt lõi, form & styling, deployment adapters, lộ trình migration cho đến troubleshooting. Các developer làm việc với stack công nghệ hiện đại này có thể áp dụng quy trình tìm kiếm 5 bước để nghiên cứu các pattern chuẩn trước khi triển khai, đảm bảo cấu hình đúng thứ tự plugin, CSS import, cách sử dụng rune trong môi trường SSR và quản lý form state.\n\n- Setup dự án SvelteKit mới với cấu hình Svelte 5 và Tailwind v4\n- Migrate các dự án Svelte 4 hoặc Tailwind v3 hiện tại lên phiên bản mới nhất\n- Debug các sự cố SSR với Svelte 5 runes và các ràng buộc phía server\n- Triển khai progressive enhancement với form actions và reactivity nâng cao",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/claude-skills/sveltekit-svelte5-tailwind-skill`\n\n1. **Khởi tạo dự án**:\n   ```bash\n   npm create svelte@latest [PROJECT_NAME]\n   cd [PROJECT_NAME]\n   npm install\n   ```\n2. **Cài đặt Svelte 5 và Tailwind CSS**:\n   ```bash\n   npm install svelte@next tailwindcss postcss autoprefixer\n   npx tailwindcss init\n   ```",
+    "usage_vi": "```\nTạo một dự án SvelteKit 2 với Svelte 5 và Tailwind CSS v4. Dự án cần bao gồm [FEATURES] và tuân theo [DESIGN_GUIDELINES]. Cung cấp hướng dẫn setup chi tiết, bao gồm cài đặt package, các file cấu hình và cấu trúc dự án cơ bản. Đảm bảo dự án được tối ưu hóa cho [COMPANY] thuộc lĩnh vực [INDUSTRY].\n```\nSao chép\n\n```\n# Hướng dẫn setup SvelteKit 2 với Svelte 5 và Tailwind CSS v4\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:30:43.248030Z",
+    "http_status": 200,
+    "content_hash": "f514697defa22cd0219677ccb593b914082130858d7e6ab5e4a449e3bf890650",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sveltekit-svelte5-tailwind-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sveltekit-svelte5-tailwind-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tích hợp SvelteKit + Svelte 5 + Tailwind v4",
+  "short_description_vi": "Skill Claude cung cấp 24 tài liệu hướng dẫn có thể tìm kiếm để xây dựng các ứng dụng web full-stack với SvelteKit 2, Svelte 5 runes và Tailwind CSS v4, đi kèm tài liệu chuyên biệt về tích hợp bao gồm setup, deployment và các thách thức thường gặp."
+}

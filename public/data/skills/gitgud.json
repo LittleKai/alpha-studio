@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gitgud",
+  "slug": "gitgud",
+  "name": "browser-use",
+  "headline": "GitGud - Maintain Coding Skills with AI",
+  "short_description": "GitGud is a Claude Code plugin that assigns manual coding challenges with gamification to help developers maintain their coding skills. It benefits software engineers and operations teams by ensuring they stay proficient in coding while using AI tools. The plugin integrates with Claude Code and can be applied in daily coding practice, interview preparation, and skill assessment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "MissingPackage",
+  "install_command": "git clone https://github.com/MissingPackage/gitgud.git",
+  "source_repo_url": "https://github.com/MissingPackage/gitgud",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "claude-code",
+    "ai-agents",
+    "claude-plugin",
+    "software-engineering",
+    "coding-interviews",
+    "claude-ai",
+    "claude",
+    "coding-challenge",
+    "ai"
+  ],
+  "sections": {
+    "overview": "GitGud ensures developers maintain hands-on coding skills while leveraging AI assistants like Claude Code. Every N requests, the plugin assigns a contextual coding task matched to your current work—such as API, database, testing, or security challenges—without writing the code for you. The plugin includes gamification features like streak tracking, achievement badges, and a skip system to keep practice engaging. Progress persists across sessions in ~/.gitgud/ and syncs between Claude Code and Cursor IDE. Fully configurable frequency, difficulty, and daily skips let you adapt the challenge cadence to your workflow.\nDaily coding practice while using Claude Code for productivity\nInterview preparation with regular skill assessments\nPreventing skill atrophy in teams relying heavily on AI coding assistants\nTracking personal coding progress with achievements and streaks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MissingPackage/gitgud`",
+    "usage": "```\nUse the GitGud plugin in Claude Code to generate a [DIFFICULTY_LEVEL] coding challenge focused on [TOPIC/AREA]. The challenge should include: 1) A clear problem statement, 2) Constraints or requirements, 3) Example test cases, and 4) A scoring system based on [CRITERIA]. After completing the challenge, provide a self-assessment of my solution using the plugin's feedback features. Finally, suggest 3 ways to improve my approach based on the feedback.\n```\nCopy\n\n```\n### GitGud Coding Challenge: Binary Search Tree Validation (Difficulty: Hard)\n\n**Problem Statement:**\nWrite a function `validate_bst(root)` that checks if a binary tree is a valid Binary Search Tree (BST). A BST is valid if for every node:\n- The left subtree contains only nodes with values less than the node's value.\n- The right subtree contains only nodes with values greater than the node's value.\n- Both the left and right subtrees must also be BSTs.\n\n**Constraints:**\n- The tree may contain duplicate values (treat duplicates as invalid for BST property).\n- The tree can have up to 10,000 nodes.\n- You must solve this in O(n) time complexity.\n\n**Example Test Cases:**\n```python\n# Valid BST\n     4\n    / \\\n   2   6\n  / \\ / \\\n 1  3 5  7\nvalidate_bst(root) → True\n\n# Invalid BST (duplicate values)\n     4\n    / \\\n   2   6\n  / \\ / \\\n 1  4 5  7\nvalidate_bst(root) → False\n\n# Invalid BST (wrong order)\n     4\n    / \\\n   2   6\n  / \\ / \\\n 1  5 3  7\nvalidate_bst(root) → False\n```\n\n**Scoring System:**\n- Correctness: 50% (passes all test cases)\n- Efficiency: 30% (O(n) time complexity)\n- Code Quality: 20% (readability, comments, edge cases)\n\n**Your Solution:**\n```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef validate_bst(root):\n    def helper(node, lower=float('-inf'), upper=float('inf')):\n        if not node:\n            return True\n        val = node.val\n        if val <= lower or val >= upper:\n            return False\n        return (helper(node.left, lower, val) and\n                helper(node.right, val, upper))\n    return helper(root)\n```\n\n**GitGud Feedback:**\n✅ Correctness: 50/50 (passes all test cases)\n⚠️ Efficiency: 25/30 (meets O(n) but could optimize space further)\n✅ Code Quality: 20/20 (clean, well-commented)\n\n**Suggested Improvements:**\n1. Use an iterative approach (DFS with stack) to reduce space complexity from O(n) to O(h), where h is the tree height.\n2. Add edge case handling for empty trees or single-node trees explicitly in the problem statement.\n3. Consider adding a test case with a very large tree (e.g., 10,000 nodes) to verify scalability.\n\n**Next Challenge:** Would you like to attempt a dynamic programming problem next, or focus on optimizing this solution further?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gitgud#main-content",
+      "gitgud#overview",
+      "gitgud#setup",
+      "gitgud#examples",
+      "gitgud#tools",
+      "gitgud#mcp",
+      "gitgud#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GitGud ensures developers maintain hands-on coding skills while leveraging AI assistants like Claude Code. Every N requests, the plugin assigns a contextual coding task matched to your current work—such as API, database, testing, or security challenges—without writing the code for you. The plugin includes gamification features like streak tracking, achievement badges, and a skip system to keep practice engaging. Progress persists across sessions in ~/.gitgud/ and syncs between Claude Code and Cursor IDE. Fully configurable frequency, difficulty, and daily skips let you adapt the challenge cadence to your workflow.\nDaily coding practice while using Claude Code for productivity\nInterview preparation with regular skill assessments\nPreventing skill atrophy in teams relying heavily on AI coding assistants\nTracking personal coding progress with achievements and streaks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MissingPackage/gitgud`",
+    "usage_vi": "```\nUse the GitGud plugin in Claude Code to generate a [DIFFICULTY_LEVEL] coding challenge focused on [TOPIC/AREA]. The challenge should include: 1) A clear problem statement, 2) Constraints or requirements, 3) Example test cases, and 4) A scoring system based on [CRITERIA]. After completing the challenge, provide a self-assessment of my solution using the plugin's feedback features. Finally, suggest 3 ways to improve my approach based on the feedback.\n```\nCopy\n\n```\n### GitGud Coding Challenge: Binary Search Tree Validation (Difficulty: Hard)\n\n**Problem Statement:**\nWrite a function `validate_bst(root)` that checks if a binary tree is a valid Binary Search Tree (BST). A BST is valid if for every node:\n- The left subtree contains only nodes with values less than the node's value.\n- The right subtree contains only nodes with values greater than the node's value.\n- Both the left and right subtrees must also be BSTs.\n\n**Constraints:**\n- The tree may contain duplicate values (treat duplicates as invalid for BST property).\n- The tree can have up to 10,000 nodes.\n- You must solve this in O(n) time complexity.\n\n**Example Test Cases:**\n```python\n# Valid BST\n     4\n    / \\\n   2   6\n  / \\ / \\\n 1  3 5  7\nvalidate_bst(root) → True\n\n# Invalid BST (duplicate values)\n     4\n    / \\\n   2   6\n  / \\ / \\\n 1  4 5  7\nvalidate_bst(root) → False\n\n# Invalid BST (wrong order)\n     4\n    / \\\n   2   6\n  / \\ / \\\n 1  5 3  7\nvalidate_bst(root) → False\n```\n\n**Scoring System:**\n- Correctness: 50% (passes all test cases)\n- Efficiency: 30% (O(n) time complexity)\n- Code Quality: 20% (readability, comments, edge cases)\n\n**Your Solution:**\n```python\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef validate_bst(root):\n    def helper(node, lower=float('-inf'), upper=float('inf')):\n        if not node:\n            return True\n        val = node.val\n        if val <= lower or val >= upper:\n            return False\n        return (helper(node.left, lower, val) and\n                helper(node.right, val, upper))\n    return helper(root)\n```\n\n**GitGud Feedback:**\n✅ Correctness: 50/50 (passes all test cases)\n⚠️ Efficiency: 25/30 (meets O(n) but could optimize space further)\n✅ Code Quality: 20/20 (clean, well-commented)\n\n**Suggested Improvements:**\n1. Use an iterative approach (DFS with stack) to reduce space complexity from O(n) to O(h), where h is the tree height.\n2. Add edge case handling for empty trees or single-node trees explicitly in the problem statement.\n3. Consider adding a test case with a very large tree (e.g., 10,000 nodes) to verify scalability.\n\n**Next Challenge:** Would you like to attempt a dynamic programming problem next, or focus on optimizing this solution further?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:54.122765Z",
+    "http_status": 200,
+    "content_hash": "cc3968075a2a94644431f69599587c63a4d74d87268decb4baa1bdab4f2433e7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gitgud.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gitgud.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GitGud - Maintain Coding Skills with AI",
+  "short_description_vi": "GitGud is a Claude Code plugin that assigns manual coding challenges with gamification to help developers maintain their coding skills. It benefits software engineers and operations teams by ensuring they stay proficient in coding while using AI tools. The plugin integrates with Claude Code and can be applied in daily coding practice, interview preparation, and skill assessment."
+}

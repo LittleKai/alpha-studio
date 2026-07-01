@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-supercharged",
+  "slug": "claude-skills-supercharged",
+  "name": "browser-use",
+  "headline": "enhanced claude skills for workflow efficiency",
+  "short_description": "Claude Skills Supercharged enhances workflow automation by integrating Haiku prompt analysis and critical skill scoring. It benefits operations teams by enabling context-driven, friction-free workflows. The skill connects to Claude agents and TypeScript-based systems, improving efficiency in automated processes.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "jefflester",
+  "install_command": "git clone https://github.com/jefflester/claude-skills-supercharged.git",
+  "source_repo_url": "https://github.com/jefflester/claude-skills-supercharged",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Skills Supercharged automates skill injection for Claude Code by analyzing prompts with Claude Haiku 4.5 and scoring skill relevance with 95%+ accuracy. The system automatically loads high-confidence skills (>0.65 confidence) into context, tracks loaded skills per session to prevent duplicates, and caches results for 1 hour to reduce costs. It eliminates manual skill invocation, supports bidirectional skill affinity loading, and includes dependency resolution with circular dependency detection. Development teams benefit from friction-free workflows where the right context loads automatically—reducing setup time and improving coding efficiency.\nAutomatically load python-best-practices when writing Python code\nInject api-security skill when discussing REST API endpoints\nLoad git-workflow skill for commit message and branching questions\nAuto-inject guardrail skills to enforce critical best practices",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jefflester/claude-skills-supercharged`",
+    "usage": "```\nAnalyze the [WORKFLOW_NAME] workflow for [COMPANY] using Claude Skills Supercharged. Evaluate the current automation efficiency score and identify the top 3 bottlenecks causing friction. For each bottleneck, provide a TypeScript-based remediation script that integrates with the existing Haiku prompt system. Include critical skill scoring for the proposed changes and estimate the time saved per week in hours.\n```\nCopy\n\n```\n### Workflow Analysis: Customer Onboarding Automation\n\n**Current State:**\nThe customer onboarding workflow at Acme Corp processes 150 new accounts weekly with a 42% automation efficiency score. The primary bottlenecks are:\n1. **Manual document verification** (3.2 hours/day) - 12% efficiency loss\n2. **API rate limiting** (1.8 hours/day) - 7% efficiency loss\n3. **Approval chain delays** (2.5 hours/day) - 9% efficiency loss\n\n**Critical Skill Scoring:**\n- Document verification automation: 8.7/10 (High impact, low complexity)\n- API optimization: 7.9/10 (Medium impact, requires testing)\n- Approval chain redesign: 9.1/10 (High impact, high complexity)\n\n**Proposed Remediations:**\n1. **TypeScript Script for Document Verification:**\n```typescript\n// Integrates with Haiku prompt system\nconst verifyDocuments = async (documents: Document[]) => {\n  const aiAnalysis = await haiku.analyze({\n    prompt: `Verify these documents for ${documents.length} new accounts`,\n    documents,\n    criteria: ['signature', 'date', 'completeness']\n  });\n  return aiAnalysis.results;\n};\n```\nThis reduces manual review time by 75% (2.4 hours/day saved).\n\n2. **API Optimization Script:**\n```typescript\n// Implements exponential backoff\nconst processWithBackoff = async (tasks: Task[]) => {\n  const results = await pRetry(async () => {\n    return await api.processBatch(tasks);\n  }, {\n    retries: 5,\n    minTimeout: 1000\n  });\n  return results;\n};\n```\nSaves 1.5 hours/day by eliminating rate limit errors.\n\n3. **Approval Chain Redesign:**\nImplemented parallel approvals with conditional routing:\n- Small accounts (<$10K): Auto-approved\n- Medium accounts ($10K-$100K): Single approver\n- Large accounts (>$100K): 2-step approval\n\n**Expected Results:**\n- New efficiency score: 78% (+36% improvement)\n- Weekly time savings: 18.6 hours\n- ROI: 3.2 weeks to implementation payback\n\n**Next Steps:**\n1. Deploy document verification script in staging (Week 1)\n2. Test API optimization in production (Week 2)\n3. Implement approval chain redesign (Week 3)\n4. Monitor efficiency score for 2 weeks post-deployment\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-supercharged#main-content",
+      "claude-skills-supercharged#overview",
+      "claude-skills-supercharged#setup",
+      "claude-skills-supercharged#examples",
+      "claude-skills-supercharged#tools",
+      "claude-skills-supercharged#mcp",
+      "claude-skills-supercharged#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skills Supercharged automates skill injection for Claude Code by analyzing prompts with Claude Haiku 4.5 and scoring skill relevance with 95%+ accuracy. The system automatically loads high-confidence skills (>0.65 confidence) into context, tracks loaded skills per session to prevent duplicates, and caches results for 1 hour to reduce costs. It eliminates manual skill invocation, supports bidirectional skill affinity loading, and includes dependency resolution with circular dependency detection. Development teams benefit from friction-free workflows where the right context loads automatically—reducing setup time and improving coding efficiency.\nAutomatically load python-best-practices when writing Python code\nInject api-security skill when discussing REST API endpoints\nLoad git-workflow skill for commit message and branching questions\nAuto-inject guardrail skills to enforce critical best practices",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jefflester/claude-skills-supercharged`",
+    "usage_vi": "```\nAnalyze the [WORKFLOW_NAME] workflow for [COMPANY] using Claude Skills Supercharged. Evaluate the current automation efficiency score and identify the top 3 bottlenecks causing friction. For each bottleneck, provide a TypeScript-based remediation script that integrates with the existing Haiku prompt system. Include critical skill scoring for the proposed changes and estimate the time saved per week in hours.\n```\nCopy\n\n```\n### Workflow Analysis: Customer Onboarding Automation\n\n**Current State:**\nThe customer onboarding workflow at Acme Corp processes 150 new accounts weekly with a 42% automation efficiency score. The primary bottlenecks are:\n1. **Manual document verification** (3.2 hours/day) - 12% efficiency loss\n2. **API rate limiting** (1.8 hours/day) - 7% efficiency loss\n3. **Approval chain delays** (2.5 hours/day) - 9% efficiency loss\n\n**Critical Skill Scoring:**\n- Document verification automation: 8.7/10 (High impact, low complexity)\n- API optimization: 7.9/10 (Medium impact, requires testing)\n- Approval chain redesign: 9.1/10 (High impact, high complexity)\n\n**Proposed Remediations:**\n1. **TypeScript Script for Document Verification:**\n```typescript\n// Integrates with Haiku prompt system\nconst verifyDocuments = async (documents: Document[]) => {\n  const aiAnalysis = await haiku.analyze({\n    prompt: `Verify these documents for ${documents.length} new accounts`,\n    documents,\n    criteria: ['signature', 'date', 'completeness']\n  });\n  return aiAnalysis.results;\n};\n```\nThis reduces manual review time by 75% (2.4 hours/day saved).\n\n2. **API Optimization Script:**\n```typescript\n// Implements exponential backoff\nconst processWithBackoff = async (tasks: Task[]) => {\n  const results = await pRetry(async () => {\n    return await api.processBatch(tasks);\n  }, {\n    retries: 5,\n    minTimeout: 1000\n  });\n  return results;\n};\n```\nSaves 1.5 hours/day by eliminating rate limit errors.\n\n3. **Approval Chain Redesign:**\nImplemented parallel approvals with conditional routing:\n- Small accounts (<$10K): Auto-approved\n- Medium accounts ($10K-$100K): Single approver\n- Large accounts (>$100K): 2-step approval\n\n**Expected Results:**\n- New efficiency score: 78% (+36% improvement)\n- Weekly time savings: 18.6 hours\n- ROI: 3.2 weeks to implementation payback\n\n**Next Steps:**\n1. Deploy document verification script in staging (Week 1)\n2. Test API optimization in production (Week 2)\n3. Implement approval chain redesign (Week 3)\n4. Monitor efficiency score for 2 weeks post-deployment\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:26:11.689396Z",
+    "http_status": 200,
+    "content_hash": "0ccd447e3fa87218112581e80f822bf1c63666dc802b0e80530626eca511adf3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-supercharged.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-supercharged.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "enhanced claude skills for workflow efficiency",
+  "short_description_vi": "Claude Skills Supercharged enhances workflow automation by integrating Haiku prompt analysis and critical skill scoring. It benefits operations teams by enabling context-driven, friction-free workflows. The skill connects to Claude agents and TypeScript-based systems, improving efficiency in automated processes."
+}

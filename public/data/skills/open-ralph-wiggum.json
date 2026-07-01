@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-ralph-wiggum",
+  "slug": "open-ralph-wiggum",
+  "name": "browser-use",
+  "headline": "Open Ralph Wiggum - AI Coding Loops",
+  "short_description": "Open Ralph Wiggum enables developers to run iterative AI coding loops with Claude Code, Codex, and OpenCode. Type 'ralph \"prompt\"' to start or use a prompt file. Check status and automate repetitive coding tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Th0rgal",
+  "install_command": "git clone https://github.com/Th0rgal/open-ralph-wiggum.git",
+  "source_repo_url": "https://github.com/Th0rgal/open-ralph-wiggum",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "opencode",
+    "open-code",
+    "ralph-wiggum",
+    "ralph"
+  ],
+  "sections": {
+    "overview": "Open Ralph Wiggum is a tool that enables developers to execute iterative AI coding loops integrated with Claude Code and Cursor Agent. Users can start the automation by typing 'ralph \"prompt\"' or using a prompt file, which triggers multi-step coding iterations. The skill handles stream-based output from Claude Code with support for partial messages and JSON formatting. It automates repetitive coding tasks by managing the feedback loop between prompts and AI-generated code, reducing manual intervention. Developers benefit from faster code generation and testing cycles without needing to manually manage each iteration.\nAutomate the creation of a REST API with CRUD operations and tests.\nIteratively develop a CLI tool while monitoring progress.\nManage complex projects by breaking them into smaller tasks with structured tracking.\nRun self-correcting loops for code refactoring and bug fixing.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Th0rgal/open-ralph-wiggum`",
+    "usage": "```\nUse open-ralph-wiggum to automate the following iterative coding task: [DESCRIBE_TASK]. Start by running 'ralph \"[INITIAL_PROMPT]\"' to initiate the loop. Monitor progress with 'ralph status' and iterate until the task is complete. Example: 'ralph \"Refactor the user authentication module in /src/auth to use JWT tokens instead of sessions. Start by analyzing the current codebase.\"'\n```\nCopy\n\n```\n```bash\n$ ralph \"Refactor the user authentication module in /src/auth to use JWT tokens instead of sessions. Start by analyzing the current codebase.\"\n\nRalph Wiggum v1.2.0 | Iteration 1/5\nAnalyzing /src/auth... Found 12 files using session-based auth.\n\nSuggested changes:\n1. Replace session middleware with JWT in /src/auth/middleware.js\n2. Update /src/auth/models/User.js to store refresh tokens\n3. Modify /src/auth/routes/login.js to issue JWT tokens\n\nApplying changes to /src/auth/middleware.js...\n✅ Successfully replaced session middleware with JWT\n✅ Updated 4 functions to handle token validation\n\nRalph Wiggum v1.2.0 | Iteration 2/5\nVerifying changes...\n⚠️ Warning: /src/auth/routes/logout.js still uses session.destroy()\nSuggested fix: Replace with token invalidation\n\nApplying changes to /src/auth/routes/logout.js...\n✅ Updated logout route to invalidate JWT tokens\n\nRalph Wiggum v1.2.0 | Iteration 3/5\nRunning tests...\n✅ All 18 auth tests passing (2 new JWT-specific tests added)\n✅ Code coverage: 92% (up from 85%)\n\nRalph Wiggum v1.2.0 | Iteration 4/5\nChecking security implications...\n✅ No hardcoded secrets found in JWT implementation\n✅ Token expiration set to 15 minutes (refresh token: 7 days)\n\nRalph Wiggum v1.2.0 | Iteration 5/5\nFinal review complete. Changes ready for PR.\n\nSummary of changes:\n- 12 files modified\n- 4 new test cases added\n- Security vulnerabilities addressed\n- Performance improved by 12% (reduced session storage overhead)\n\nNext steps:\n1. Review changes in /src/auth/\n2. Run 'npm test' locally\n3. Create PR with title 'feat(auth): migrate to JWT-based authentication'\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-ralph-wiggum#main-content",
+      "open-ralph-wiggum#overview",
+      "open-ralph-wiggum#setup",
+      "open-ralph-wiggum#examples",
+      "open-ralph-wiggum#tools",
+      "open-ralph-wiggum#mcp",
+      "open-ralph-wiggum#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open Ralph Wiggum is a tool that enables developers to execute iterative AI coding loops integrated with Claude Code and Cursor Agent. Users can start the automation by typing 'ralph \"prompt\"' or using a prompt file, which triggers multi-step coding iterations. The skill handles stream-based output from Claude Code with support for partial messages and JSON formatting. It automates repetitive coding tasks by managing the feedback loop between prompts and AI-generated code, reducing manual intervention. Developers benefit from faster code generation and testing cycles without needing to manually manage each iteration.\nAutomate the creation of a REST API with CRUD operations and tests.\nIteratively develop a CLI tool while monitoring progress.\nManage complex projects by breaking them into smaller tasks with structured tracking.\nRun self-correcting loops for code refactoring and bug fixing.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Th0rgal/open-ralph-wiggum`",
+    "usage_vi": "```\nUse open-ralph-wiggum to automate the following iterative coding task: [DESCRIBE_TASK]. Start by running 'ralph \"[INITIAL_PROMPT]\"' to initiate the loop. Monitor progress with 'ralph status' and iterate until the task is complete. Example: 'ralph \"Refactor the user authentication module in /src/auth to use JWT tokens instead of sessions. Start by analyzing the current codebase.\"'\n```\nCopy\n\n```\n```bash\n$ ralph \"Refactor the user authentication module in /src/auth to use JWT tokens instead of sessions. Start by analyzing the current codebase.\"\n\nRalph Wiggum v1.2.0 | Iteration 1/5\nAnalyzing /src/auth... Found 12 files using session-based auth.\n\nSuggested changes:\n1. Replace session middleware with JWT in /src/auth/middleware.js\n2. Update /src/auth/models/User.js to store refresh tokens\n3. Modify /src/auth/routes/login.js to issue JWT tokens\n\nApplying changes to /src/auth/middleware.js...\n✅ Successfully replaced session middleware with JWT\n✅ Updated 4 functions to handle token validation\n\nRalph Wiggum v1.2.0 | Iteration 2/5\nVerifying changes...\n⚠️ Warning: /src/auth/routes/logout.js still uses session.destroy()\nSuggested fix: Replace with token invalidation\n\nApplying changes to /src/auth/routes/logout.js...\n✅ Updated logout route to invalidate JWT tokens\n\nRalph Wiggum v1.2.0 | Iteration 3/5\nRunning tests...\n✅ All 18 auth tests passing (2 new JWT-specific tests added)\n✅ Code coverage: 92% (up from 85%)\n\nRalph Wiggum v1.2.0 | Iteration 4/5\nChecking security implications...\n✅ No hardcoded secrets found in JWT implementation\n✅ Token expiration set to 15 minutes (refresh token: 7 days)\n\nRalph Wiggum v1.2.0 | Iteration 5/5\nFinal review complete. Changes ready for PR.\n\nSummary of changes:\n- 12 files modified\n- 4 new test cases added\n- Security vulnerabilities addressed\n- Performance improved by 12% (reduced session storage overhead)\n\nNext steps:\n1. Review changes in /src/auth/\n2. Run 'npm test' locally\n3. Create PR with title 'feat(auth): migrate to JWT-based authentication'\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:54:49.531434Z",
+    "http_status": 200,
+    "content_hash": "3184d80dda2f4d461df704a7734c410acb260d0e39810ee1d1e5f10968645cca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\open-ralph-wiggum.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\open-ralph-wiggum.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Open Ralph Wiggum - AI Coding Loops",
+  "short_description_vi": "Open Ralph Wiggum enables developers to run iterative AI coding loops with Claude Code, Codex, and OpenCode. Type 'ralph \"prompt\"' to start or use a prompt file. Check status and automate repetitive coding tasks."
+}

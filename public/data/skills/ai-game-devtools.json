@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-game-devtools",
+  "slug": "ai-game-devtools",
+  "name": "AI Game Development Tools",
+  "headline": "AI Game Development Tools - Enhance Your Game",
+  "short_description": "AI Game DevTools provides engineers with AI-powered resources for game development. It covers LLMs, world models, code generation, and asset creation. Integrates with ChatGPT and GitHub Copilot to streamline game development workflows.",
+  "tier": "Gold",
+  "category": "GrowthMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "Yuan-ManX",
+  "install_command": "claude install Yuan-ManX/ai-game-devtools",
+  "source_repo_url": "https://github.com/Yuan-ManX/ai-game-devtools",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI tools",
+    "machine learning",
+    "game AI",
+    "game development",
+    "deep learning"
+  ],
+  "sections": {
+    "overview": "AI Game DevTools is a comprehensive directory of AI resources designed for game developers. It aggregates tools and models across multiple categories including large language models, world models, agents, code generation, and asset creation tools for images, textures, shaders, 3D models, animations, video, audio, music, and voice synthesis. The hub helps developers discover and integrate AI-powered solutions into game development workflows, covering both technical implementation and creative asset generation.\nCreating AI-driven game characters that adapt to player behavior and enhance gameplay.\nAutomating the generation of game assets such as textures and 3D models to save development time.\nEnhancing game analytics with AI to gain insights into player engagement and improve game design.\nDeveloping interactive game environments that respond dynamically to player actions.",
+    "setup": "Terminal\nCopy\n`claude install Yuan-ManX/ai-game-devtools`\n`git clone https://github.com/Yuan-ManX/ai-game-devtools`",
+    "usage": "```\nGenerate a Python script using [GAME_ENGINE] that creates a [GAME_MECHANIC] feature. The script should include [SPECIFIC_FUNCTIONALITY] and be compatible with [TARGET_PLATFORM]. Ensure the code is well-commented and follows best practices for [GAME_GENRE].\n```\nCopy\n\n```\nHere's a Python script for Unity that creates a procedural dungeon generator for an RPG. The script includes room placement, corridor generation, and basic obstacle avoidance. It's designed for PC platforms and follows best practices for open-world RPGs.\n\n```python\n# Procedural Dungeon Generator for Unity\n# Designed for PC platforms, open-world RPGs\n\nimport UnityEngine\nimport System.Collections.Generic\n\npublic class DungeonGenerator : MonoBehaviour {\n    public int width = 10;\n    public int height = 10;\n    public int roomSizeMin = 4;\n    public int roomSizeMax = 8;\n    public int corridorWidth = 2;\n    \n    private List<Room> rooms = new List<Room>();\n    private List<Vector2Int> corridorPoints = new List<Vector2Int>();\n    \n    void Start() {\n        GenerateDungeon();\n    }\n    \n    void GenerateDungeon() {\n        // Clear existing dungeon\n        foreach (Transform child in transform) {\n            Destroy(child.gameObject);\n        }\n        \n        // Generate rooms\n        GenerateRooms();\n        \n        // Connect rooms with corridors\n        ConnectRoomsWithCorridors();\n        \n        // Create visual representation\n        CreateVisualRepresentation();\n    }\n    \n    void GenerateRooms() {\n        // Implementation for room generation\n        // ...\n    }\n    \n    void ConnectRoomsWithCorridors() {\n        // Implementation for corridor generation\n        // ...\n    }\n    \n    void CreateVisualRepresentation() {\n        // Implementation for visual representation\n        // ...\n    }\n}\n```\n\nThis script provides a solid foundation for a procedural dungeon generator. You can extend it by adding more complex room types, enemy placement, or loot distribution.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "ai-game-devtools#main-content",
+      "ai-game-devtools#overview",
+      "ai-game-devtools#setup",
+      "ai-game-devtools#examples",
+      "ai-game-devtools#tools",
+      "ai-game-devtools#mcp",
+      "ai-game-devtools#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "AI Game DevTools là một danh mục toàn diện về các tài nguyên AI dành cho nhà phát triển game. Nó tổng hợp các công cụ và mô hình trên nhiều danh mục khác nhau, bao gồm các mô hình ngôn ngữ lớn (LLM), world model, agent, sinh code và các công cụ tạo asset cho hình ảnh, texture, shader, mô hình 3D, animation, video, audio, âm nhạc và tổng hợp giọng nói. Cổng thông tin này giúp các nhà phát triển khám phá và tích hợp các giải pháp hỗ trợ bởi AI vào workflow phát triển game, hỗ trợ cả việc triển khai kỹ thuật lẫn tạo asset sáng tạo.\nTạo các nhân vật game vận hành bằng AI có khả năng thích ứng với hành vi của người chơi và nâng cao trải nghiệm gameplay.\nTự động hóa việc tạo các asset game như texture và mô hình 3D để tiết kiệm thời gian phát triển.\nTăng cường phân tích game bằng AI để hiểu rõ hơn về mức độ tương tác của người chơi và cải thiện thiết kế game.\nPhát triển các môi trường game tương tác phản hồi linh hoạt theo hành động của người chơi.",
+    "setup_vi": "Terminal\nCopy\n`claude install Yuan-ManX/ai-game-devtools`\n`git clone https://github.com/Yuan-ManX/ai-game-devtools`",
+    "usage_vi": "```\nTạo một script Python sử dụng [GAME_ENGINE] để xây dựng tính năng [GAME_MECHANIC]. Script này cần bao gồm [SPECIFIC_FUNCTIONALITY] và tương thích với [TARGET_PLATFORM]. Đảm bảo code được chú thích rõ ràng và tuân thủ các best practice cho [GAME_GENRE].\n```\nCopy\n\n```\nDưới đây là script Python cho Unity giúp tạo dungeon theo thuật toán (procedural dungeon generator) cho game RPG. Script bao gồm việc sắp xếp phòng, tạo hành lang và tránh chướng ngại vật cơ bản. Nó được thiết kế cho nền tảng PC và tuân thủ các best practice cho game RPG thế giới mở.\n\n```python\n# Trình tạo Dungeon theo thuật toán cho Unity\n# Thiết kế cho nền tảng PC, game RPG thế giới mở\n\nimport UnityEngine\nimport System.Collections.Generic\n\npublic class DungeonGenerator : MonoBehaviour {\n    public int width = 10;\n    public int height = 10;\n    public int roomSizeMin = 4;\n    public int roomSizeMax = 8;\n    public int corridorWidth = 2;\n    \n    private List<Room> rooms = new List<Room>();\n    private List<Vector2Int> corridorPoints = new List<Vector2Int>();\n    \n    void Start() {\n        GenerateDungeon();\n    }\n    \n    void GenerateDungeon() {\n        // Xóa dungeon hiện tại\n        foreach (Transform child in transform) {\n            Destroy(child.gameObject);\n        }\n        \n        // Tạo các phòng\n        GenerateRooms();\n        \n        // Kết nối các phòng bằng hành lang\n        ConnectRoomsWithCorridors();\n        \n        // Tạo hiển thị trực quan\n        CreateVisualRepresentation();\n    }\n    \n    void GenerateRooms() {\n        // Logic tạo phòng\n        // ...\n    }\n    \n    void ConnectRoomsWithCorridors() {\n        // Logic tạo hành lang\n        // ...\n    }\n    \n    void CreateVisualRepresentation() {\n        // Logic hiển thị trực quan\n        // ...\n    }\n}\n```\n\nScript này cung cấp một nền tảng vững chắc cho trình tạo dungeon theo thuật toán. Bạn có thể mở rộng nó bằng cách thêm các loại phòng phức tạp hơn, vị trí kẻ địch hoặc phân phối vật phẩm (loot distribution).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:47:16.367804Z",
+    "http_status": 200,
+    "content_hash": "277aa366fa22f7562f60faecc2ab784a5d8d2119fc23dafc7d9391dc3a6c8777",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-game-devtools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-game-devtools.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ Phát triển Game bằng AI - Nâng tầm Game của bạn",
+  "short_description_vi": "AI Game DevTools cung cấp cho các kỹ sư tài nguyên hỗ trợ bởi AI để phát triển game. Bộ công cụ bao gồm LLM, world model, sinh code và tạo asset. Tích hợp mượt mà với ChatGPT và GitHub Copilot để tối ưu hóa workflow phát triển game."
+}

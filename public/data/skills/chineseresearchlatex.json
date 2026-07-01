@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/chineseresearchlatex",
+  "slug": "chineseresearchlatex",
+  "name": "ChineseResearchLaTeX",
+  "headline": "ChineseResearchLaTeX: templates collection",
+  "short_description": "Automates document formatting for Chinese research using LaTeX templates. Benefits researchers and operations teams by standardizing document creation. Connects to Python workflows and integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "huangwb8",
+  "install_command": "git clone https://github.com/huangwb8/ChineseResearchLaTeX.git",
+  "source_repo_url": "https://github.com/huangwb8/ChineseResearchLaTeX",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "ChineseResearchLaTeX provides a comprehensive collection of LaTeX templates designed specifically for Chinese academic documents, including theses, research papers, and grant proposals. The skill automates document formatting by offering institution-specific templates that enforce consistent styling, typography, and structure across research projects. It includes support for multiple universities and document types such as bachelor theses, master theses, postdoctoral reports, and foundation grant applications like NSFC and GDNSF. Researchers and academic operations teams use this skill to eliminate manual formatting work and ensure compliance with institutional formatting requirements. The templates integrate with Python workflows and Claude agents for seamless document generation.\nAutomate the formatting of research papers using predefined LaTeX templates.\nManage and verify references in grant applications to ensure compliance with submission guidelines.\nConvert existing Word/PDF templates into LaTeX format for easier editing and collaboration.\nUtilize AI to optimize the structure and content of research proposals based on best practices.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/huangwb8/ChineseResearchLaTeX`",
+    "usage": "```\nFormat this Chinese research paper using a LaTeX template. The paper is titled '[TITLE]' and authored by '[AUTHOR]'. The abstract is '[ABSTRACT]'. The main sections are: [SECTIONS]. Use the '[TEMPLATE_NAME]' template and ensure all Chinese characters are properly encoded. Include a bibliography section with these references: [REFERENCES].\n```\nCopy\n\n```\nHere is the formatted LaTeX document for your Chinese research paper:\n\n\\documentclass[12pt]{article}\n\\usepackage[UTF8]{ctex}\n\\usepackage{amsmath}\n\\usepackage{graphicx}\n\\title{影响气候变化的经济因素分析}\n\\author{李明}\n\\date{\\today}\n\n\\begin{document}\n\n\\maketitle\n\n\\begin{abstract}\n本研究旨在探讨经济增长与气候变化之间的关系，通过分析中国过去三十年的数据，发现工业化进程对温室气体排放的显著影响。\\end{abstract}\n\n\\section{引言}\n气候变化已成为全球关注的重大问题...\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "chineseresearchlatex#main-content",
+      "chineseresearchlatex#overview",
+      "chineseresearchlatex#setup",
+      "chineseresearchlatex#examples",
+      "chineseresearchlatex#tools",
+      "chineseresearchlatex#mcp",
+      "chineseresearchlatex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ChineseResearchLaTeX cung cấp một bộ sưu tập toàn diện các template LaTeX được thiết kế riêng cho các tài liệu học thuật tiếng Trung, bao gồm luận văn, bài báo nghiên cứu và đề xuất xin tài trợ. Skill này tự động hóa việc định dạng tài liệu bằng cách cung cấp các template đặc thù cho từng viện nghiên cứu hoặc trường học, giúp đảm bảo tính nhất quán về kiểu dáng, typography và cấu trúc trong suốt các dự án nghiên cứu. Skill hỗ trợ nhiều trường đại học cùng các loại tài liệu khác nhau như luận văn cử nhân, luận văn thạc sĩ, báo cáo sau tiến sĩ và hồ sơ xin tài trợ quỹ như NSFC và GDNSF. Các nhà nghiên cứu và đội ngũ vận hành học thuật sử dụng skill này để loại bỏ các công đoạn định dạng thủ công và đảm bảo tuân thủ các yêu cầu định dạng của tổ chức. Các template này tích hợp tốt với các workflow Python và Claude agent để tạo tài liệu một cách liền mạch.\nTự động hóa việc định dạng bài báo nghiên cứu bằng các template LaTeX được định nghĩa sẵn.\nQuản lý và đối chiếu tài liệu tham khảo trong hồ sơ xin tài trợ để đảm bảo tuân thủ các hướng dẫn nộp hồ sơ.\nChuyển đổi các template Word/PDF hiện có sang định dạng LaTeX để dễ dàng chỉnh sửa và cộng tác.\nTận dụng AI để tối ưu hóa cấu trúc và nội dung của các đề xuất nghiên cứu dựa trên các thực tiễn tốt nhất (best practices).",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/huangwb8/ChineseResearchLaTeX`",
+    "usage_vi": "```\nĐịnh dạng bài báo nghiên cứu tiếng Trung này bằng template LaTeX. Bài báo có tiêu đề là '[TITLE]' và tác giả là '[AUTHOR]'. Phần tóm tắt là '[ABSTRACT]'. Các phần chính gồm: [SECTIONS]. Sử dụng template '[TEMPLATE_NAME]' và đảm bảo tất cả các ký tự tiếng Trung được mã hóa chính xác. Thêm phần tài liệu tham khảo với các nguồn sau: [REFERENCES].\n```\nCopy\n\n```\nDưới đây là tài liệu LaTeX đã được định dạng cho bài báo nghiên cứu tiếng Trung của bạn:\n\n\\documentclass[12pt]{article}\n\\usepackage[UTF8]{ctex}\n\\usepackage{amsmath}\n\\usepackage{graphicx}\n\\title{影响气候变化的经济因素分析}\n\\author{李明}\n\\date{\\today}\n\n\\begin{document}\n\n\\maketitle\n\n\\begin{abstract}\n本研究旨在探讨经济增长与气候变化之间的关系，通过分析中国过去三十年的数据，发现工业化进程对温室气体排放的显著影响。\\end{abstract}\n\n\\section{引言}\n气候变化已成为全球关注的重大问题...\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:10:43.495350Z",
+    "http_status": 200,
+    "content_hash": "0637a56f0d386ca2f7b1e3d3ab5087a8ee2f6f78bfcf9b26f417d06e30a2de97",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chineseresearchlatex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chineseresearchlatex.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ChineseResearchLaTeX: bộ sưu tập template",
+  "short_description_vi": "Tự động hóa việc định dạng tài liệu nghiên cứu tiếng Trung bằng các template LaTeX. Mang lại lợi ích cho các nhà nghiên cứu và đội ngũ vận hành nhờ chuẩn hóa quy trình tạo tài liệu. Kết nối với các workflow Python và tích hợp với các Claude agent."
+}

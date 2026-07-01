@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-context-kit",
+  "slug": "agent-context-kit",
+  "name": "browser-use",
+  "headline": "agent context kit: ai coding framework",
+  "short_description": "Agent Context Kit provides a framework for AI coding agents to build Python backend services using Domain Driven Design and Hexagonal Architecture. It ensures consistent coding standards and patterns for agents like Cursor, Claude Code, and Windsurf. Benefits operations teams by accelerating development while maintaining high-quality, maintainable code.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "110 min",
+  "author": "bardiakhosravi",
+  "install_command": "git clone https://github.com/bardiakhosravi/agent-context-kit.git",
+  "source_repo_url": "https://github.com/bardiakhosravi/agent-context-kit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "windsurf",
+    "domain-driven-design",
+    "hexagonal-architecture",
+    "cursor"
+  ],
+  "sections": {
+    "overview": "Tenets provides opinionated, battle-tested architectural rules that AI coding agents follow when building backend services using Domain-Driven Design and Hexagonal Architecture. It installs with a single CLI command and integrates with Claude Code, Cursor, GitHub Copilot, and custom agents to enforce consistent design patterns across generated code. By embedding DDD and Hexagonal Architecture context upfront, Tenets ensures AI-generated features respect domain boundaries, separate business logic from infrastructure, and maintain architectural compliance without manual enforcement. It extends Spec-Kit templates with DDD planning sections and includes a repository-local code review agent that inspects diffs against the Tenets rulebook. Development teams benefit from faster AI-assisted coding while maintaining predictable, reviewable, production-ready architecture.\nEnforce consistent Hexagonal Architecture patterns across Claude Code, Cursor, and Copilot-generated code\nExtend Spec-Kit planning templates with DDD bounded context and domain model sections\nRun automated code review agents that verify AI-generated diffs against architecture rules\nPrevent architectural drift by embedding design guardrails into agent instructions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bardiakhosravi/agent-context-kit`",
+    "usage": "```\nCreate a Python backend service for [COMPANY] in the [INDUSTRY] sector using the Agent Context Kit. The service should handle [DATA] processing with the following requirements: [REQUIREMENTS]. Follow Domain Driven Design and Hexagonal Architecture principles. Provide the complete codebase with clear documentation.\n```\nCopy\n\n```\n```python\n# Domain Layer\nclass OrderService:\n    def __init__(self, order_repository):\n        self.order_repository = order_repository\n\n    def create_order(self, order_data):\n        # Business logic for order creation\n        order = Order(**order_data)\n        self.order_repository.save(order)\n        return order\n\n# Application Layer\nclass OrderApplicationService:\n    def __init__(self, order_service):\n        self.order_service = order_service\n\n    def process_order(self, order_data):\n        # Application logic for order processing\n        order = self.order_service.create_order(order_data)\n        # Additional processing logic\n        return order\n\n# Infrastructure Layer\nclass OrderRepository:\n    def save(self, order):\n        # Database operations for saving order\n        pass\n\n# Main Application\nif __name__ == '__main__':\n    order_repository = OrderRepository()\n    order_service = OrderService(order_repository)\n    order_application_service = OrderApplicationService(order_service)\n    order_data = {\n        'customer_id': '123',\n        'items': [\n            {'product_id': '456', 'quantity': 2}\n        ]\n    }\n    order = order_application_service.process_order(order_data)\n    print(f'Order created: {order}')\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-context-kit#main-content",
+      "agent-context-kit#overview",
+      "agent-context-kit#setup",
+      "agent-context-kit#examples",
+      "agent-context-kit#tools",
+      "agent-context-kit#mcp",
+      "agent-context-kit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Tenets provides opinionated, battle-tested architectural rules that AI coding agents follow when building backend services using Domain-Driven Design and Hexagonal Architecture. It installs with a single CLI command and integrates with Claude Code, Cursor, GitHub Copilot, and custom agents to enforce consistent design patterns across generated code. By embedding DDD and Hexagonal Architecture context upfront, Tenets ensures AI-generated features respect domain boundaries, separate business logic from infrastructure, and maintain architectural compliance without manual enforcement. It extends Spec-Kit templates with DDD planning sections and includes a repository-local code review agent that inspects diffs against the Tenets rulebook. Development teams benefit from faster AI-assisted coding while maintaining predictable, reviewable, production-ready architecture.\nEnforce consistent Hexagonal Architecture patterns across Claude Code, Cursor, and Copilot-generated code\nExtend Spec-Kit planning templates with DDD bounded context and domain model sections\nRun automated code review agents that verify AI-generated diffs against architecture rules\nPrevent architectural drift by embedding design guardrails into agent instructions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bardiakhosravi/agent-context-kit`",
+    "usage_vi": "```\nCreate a Python backend service for [COMPANY] in the [INDUSTRY] sector using the Agent Context Kit. The service should handle [DATA] processing with the following requirements: [REQUIREMENTS]. Follow Domain Driven Design and Hexagonal Architecture principles. Provide the complete codebase with clear documentation.\n```\nCopy\n\n```\n```python\n# Domain Layer\nclass OrderService:\n    def __init__(self, order_repository):\n        self.order_repository = order_repository\n\n    def create_order(self, order_data):\n        # Business logic for order creation\n        order = Order(**order_data)\n        self.order_repository.save(order)\n        return order\n\n# Application Layer\nclass OrderApplicationService:\n    def __init__(self, order_service):\n        self.order_service = order_service\n\n    def process_order(self, order_data):\n        # Application logic for order processing\n        order = self.order_service.create_order(order_data)\n        # Additional processing logic\n        return order\n\n# Infrastructure Layer\nclass OrderRepository:\n    def save(self, order):\n        # Database operations for saving order\n        pass\n\n# Main Application\nif __name__ == '__main__':\n    order_repository = OrderRepository()\n    order_service = OrderService(order_repository)\n    order_application_service = OrderApplicationService(order_service)\n    order_data = {\n        'customer_id': '123',\n        'items': [\n            {'product_id': '456', 'quantity': 2}\n        ]\n    }\n    order = order_application_service.process_order(order_data)\n    print(f'Order created: {order}')\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:36:29.072526Z",
+    "http_status": 200,
+    "content_hash": "9769ad997e847a646143d0522450837937492895c4b92d4530e424289dd35762",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-context-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-context-kit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agent context kit: ai coding framework",
+  "short_description_vi": "Agent Context Kit provides a framework for AI coding agents to build Python backend services using Domain Driven Design and Hexagonal Architecture. It ensures consistent coding standards and patterns for agents like Cursor, Claude Code, and Windsurf. Benefits operations teams by accelerating development while maintaining high-quality, maintainable code."
+}

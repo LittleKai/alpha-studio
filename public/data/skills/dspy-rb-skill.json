@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dspy-rb-skill",
+  "slug": "dspy-rb-skill",
+  "name": "Dspy Rb Skill",
+  "headline": "DSPy.rb Skill: Type-Safe Ruby LLM Development",
+  "short_description": "A Claude skill that gives Claude deep knowledge of DSPy.rb for building type-safe LLM applications in Ruby using Sorbet types, composable modules, and ReAct/CodeAct agents.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "70 min",
+  "author": "vicentereig",
+  "install_command": "git clone https://github.com/vicentereig/dspy-rb-skill.git",
+  "source_repo_url": "https://github.com/vicentereig/dspy-rb-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "claude-skill",
+    "dspy",
+    "ruby",
+    "claude",
+    "ai"
+  ],
+  "sections": {
+    "overview": "The DSPy.rb Claude Skill equips Claude with deep knowledge of the DSPy.rb framework, enabling it to assist Ruby developers in building type-safe LLM applications. Once installed, Claude can help define signatures with Sorbet types including enums, structs, and arrays, and guide developers in composing modular LLM workflows. The skill covers creating ReAct and CodeAct agents with tool calling, implementing recursive types using JSON Schema $defs format, and adding field descriptions to T::Struct for improved LLM understanding. It also supports optimization workflows using MIPROv2 and GEPA, as well as testing with RSpec and VCR and deploying to production with observability and error handling. Ruby developers building AI-powered applications with DSPy.rb are the primary beneficiaries of this skill.\nDefine type-safe DSPy signatures with Sorbet enums, structs, and arrays\nCreate ReAct and CodeAct agents with tool calling in Ruby\nImplement LLM pipeline optimization using MIPROv2 and GEPA\nTest and evaluate LLM applications with RSpec and VCR",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vicentereig/dspy-rb-skill`",
+    "usage": "```\nI'm developing a Ruby application using DSPy.rb for type-safe LLM integration. I need help with [SPECIFIC TASK] in my project. Here's my current code: [CODE SNIPPET]. Can you help me [IMPROVE/DEBUG/EXTEND] this functionality while maintaining type safety?\n```\nCopy\n\n```\n```ruby\n# Type-safe LLM integration example for a customer support chatbot\n\nclass SupportChatbot < DSPy::LLM\n  # Define input and output types\n  input_type :string, description: \"User's support query\"\n  output_type :string, description: \"Generated support response\"\n\n  # Initialize with specific LLM configuration\n  def initialize(llm_config: { model: \"gpt-3.5-turbo\", temperature: 0.7 })\n    super(llm_config)\n  end\n\n  # Custom processing method\n  def process_query(query)\n    # Type-safe validation\n    raise ArgumentError, \"Query must be a string\" unless query.is_a?(String)\n\n    # Generate response with type safety\n    response = generate(\n      prompt: \"Answer this support query: #{query}\",\n      max_tokens: 150\n    )\n\n    # Post-processing with type checking\n    if response.is_a?(String)\n      \"Support Response: #{response}\"\n    else\n      raise \"Invalid response type received\"\n    end\n  end\nend\n\n# Usage example\nchatbot = SupportChatbot.new\nresponse = chatbot.process_query(\"How do I reset my password?\")\nputs response\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dspy-rb-skill#main-content",
+      "dspy-rb-skill#overview",
+      "dspy-rb-skill#setup",
+      "dspy-rb-skill#examples",
+      "dspy-rb-skill#tools",
+      "dspy-rb-skill#mcp",
+      "dspy-rb-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DSPy.rb Claude Skill trang bị cho Claude kiến thức chuyên sâu về framework DSPy.rb, giúp hỗ trợ lập trình viên Ruby xây dựng các ứng dụng LLM type-safe. Sau khi cài đặt, Claude có thể trợ giúp định nghĩa các signature bằng các Sorbet types (bao gồm enum, struct và array), đồng thời hướng dẫn phát triển các workflow LLM dạng module. Skill này cũng bao gồm việc tạo các agent ReAct và CodeAct với tool calling, triển khai các kiểu dữ liệu đệ quy bằng định dạng JSON Schema $defs, và thêm mô tả trường vào T::Struct để giúp LLM hiểu ngữ cảnh tốt hơn. Ngoài ra, skill còn hỗ trợ các workflow tối ưu hóa bằng MIPROv2 và GEPA, kiểm thử với RSpec và VCR, cũng như triển khai production tích hợp observability và xử lý lỗi. Các nhà phát triển Ruby xây dựng ứng dụng AI bằng DSPy.rb là đối tượng hưởng lợi chính từ skill này.\nĐịnh nghĩa các DSPy signature type-safe với Sorbet enum, struct và array\nTạo các agent ReAct và CodeAct với tool calling trong Ruby\nTriển khai tối ưu hóa LLM pipeline bằng MIPROv2 và GEPA\nKiểm thử và đánh giá các ứng dụng LLM với RSpec và VCR",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/vicentereig/dspy-rb-skill`",
+    "usage_vi": "```\nTôi đang phát triển một ứng dụng Ruby sử dụng DSPy.rb để tích hợp LLM type-safe. Tôi cần hỗ trợ về [SPECIFIC TASK] trong dự án của mình. Đây là mã nguồn hiện tại của tôi: [CODE SNIPPET]. Bạn có thể giúp tôi [IMPROVE/DEBUG/EXTEND] chức năng này mà vẫn đảm bảo tính type-safe không?\n```\nCopy\n\n```ruby\n# Ví dụ tích hợp LLM type-safe cho chatbot hỗ trợ khách hàng\n\nclass SupportChatbot < DSPy::LLM\n  # Định nghĩa kiểu dữ liệu đầu vào và đầu ra\n  input_type :string, description: \"User's support query\"\n  output_type :string, description: \"Generated support response\"\n\n  # Khởi tạo cấu hình LLM cụ thể\n  def initialize(llm_config: { model: \"gpt-3.5-turbo\", temperature: 0.7 })\n    super(llm_config)\n  end\n\n  # Phương thức xử lý tùy chỉnh\n  def process_query(query)\n    # Xác thực type-safe\n    raise ArgumentError, \"Query must be a string\" unless query.is_a?(String)\n\n    # Tạo phản hồi đảm bảo type-safety\n    response = generate(\n      prompt: \"Answer this support query: #{query}\",\n      max_tokens: 150\n    )\n\n    # Hậu xử lý với kiểm tra kiểu dữ liệu\n    if response.is_a?(String)\n      \"Support Response: #{response}\"\n    else\n      raise \"Invalid response type received\"\n    end\n  end\nend\n\n# Ví dụ sử dụng\nchatbot = SupportChatbot.new\nresponse = chatbot.process_query(\"How do I reset my password?\")\nputs response\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:02.449469Z",
+    "http_status": 200,
+    "content_hash": "e1f25fb8204233f0d22cc489c8f31a3073a494f2f257053a523f514bf25bcca5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dspy-rb-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dspy-rb-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DSPy.rb Skill: Phát triển LLM Type-Safe bằng Ruby",
+  "short_description_vi": "Một Claude skill cung cấp cho Claude kiến thức chuyên sâu về DSPy.rb để xây dựng các ứng dụng LLM type-safe trong Ruby sử dụng Sorbet types, các composable module và các agent ReAct/CodeAct."
+}

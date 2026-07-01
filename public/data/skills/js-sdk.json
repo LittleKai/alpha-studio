@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/js-sdk",
+  "slug": "js-sdk",
+  "name": "browser-use",
+  "headline": "Alby JS SDK - Bitcoin Payment Integration",
+  "short_description": "JavaScript SDK for integrating Alby OAuth2 Wallet API and Nostr Wallet Connect API. Enables zero-custody bitcoin payments in apps. Connects to lightning network via Nostr Wallet Connect or Alby Wallet API.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "getAlby",
+  "install_command": "git clone https://github.com/getAlby/js-sdk.git",
+  "source_repo_url": "https://github.com/getAlby/js-sdk",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "javascript",
+    "nostrwalletconnect",
+    "oauth2",
+    "sdk",
+    "nostr",
+    "lightning-network",
+    "bitcoin"
+  ],
+  "sections": {
+    "overview": "The Alby JS SDK enables developers to integrate Bitcoin lightning payments directly into web and Node.js applications with minimal code. It supports two integration methods: Nostr Wallet Connect (NWC), an open protocol connecting to any NWC-enabled wallet, and the Alby OAuth API for deeper wallet functionality. Developers can accept payments, request invoices, and send Bitcoin lightning transactions while maintaining zero custody of user funds. The SDK handles credential management, payment routing, and WebLN implementations, making it accessible for building payment-enabled apps, agents, and services.\nAccept lightning payments in web applications\nSend Bitcoin payments programmatically via lightning network\nRequest and receive payments with invoice generation\nBuild payment features into AI agents and LLM-powered apps",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/getAlby/js-sdk`",
+    "usage": "```\nIntegrate the Alby OAuth2 Wallet API and Nostr Wallet Connect API into a [PLATFORM_NAME] application using the JavaScript SDK. Implement [SPECIFIC_FEATURE] such as sending a Lightning Network payment of [AMOUNT] sats to [RECEIVER_PUBKEY] or [RECEIVER_LNURL]. Ensure the integration follows best practices for zero-custody bitcoin payments and handles OAuth2 authentication securely. Include error handling for failed transactions or connection issues.\n```\nCopy\n\n```\nHere’s a complete integration example for a web-based bitcoin tipping app called *TipBit* that allows users to send payments via Lightning Network using the Alby OAuth2 Wallet API and Nostr Wallet Connect. The app leverages the `@getalby/js-sdk` library to handle authentication, payment requests, and transaction broadcasting.\n\n**Step 1: Setup and Authentication**\nFirst, we initialize the SDK with the Alby OAuth2 client credentials and Nostr Wallet Connect configuration. The user authenticates via Alby’s OAuth2 flow, granting the app permission to interact with their wallet. We store the access token securely in the browser’s `localStorage` for subsequent requests.\n\n```javascript\nimport { AlbyWallet } from '@getalby/sdk';\nimport { NostrWalletConnect } from '@getalby/nostr-wallet-connect';\n\nconst albyWallet = new AlbyWallet({\n  clientId: 'tipbit-app-client-id',\n  clientSecret: 'tipbit-app-client-secret',\n  scopes: ['invoices:read', 'invoices:create', 'payments:send']\n});\n\n// Redirect user to Alby OAuth2 authorization page\nconst authUrl = albyWallet.getAuthorizationUrl({\n  redirectUri: 'https://tipbit.app/auth/callback'\n});\nwindow.location.href = authUrl;\n```\n\n**Step 2: Nostr Wallet Connect Integration**\nOnce authenticated, we establish a Nostr Wallet Connect session to interact with the user’s Lightning wallet. This allows us to send payments without custody of the user’s funds. We subscribe to payment events to track transaction status in real-time.\n\n```javascript\nconst nwc = new NostrWalletConnect({\n  nostrWalletConnectUrl: 'nostrwalletconnect://...',\n  appName: 'TipBit'\n});\n\n// Listen for payment events\nnwc.on('payment', (event) => {\n  console.log('Payment event:', event);\n  if (event.status === 'paid') {\n    alert(`Payment of ${event.amount} sats received!`);\n  }\n});\n```\n\n**Step 3: Sending a Payment**\nThe app now allows users to send a tip of 10,000 sats to a content creator’s Lightning address. The SDK constructs the payment request, signs it with the user’s Nostr key, and broadcasts it to the Lightning Network. We handle potential errors, such as insufficient balance or network issues, and provide user feedback.\n\n```javascript\nasync function sendTip(lnAddress, amountSats) {\n  try {\n    const paymentRequest = await nwc.makeInvoice({\n      amount: amountSats,\n      description: 'Tip for great content!'\n    });\n    \n    const paymentResult = await nwc.payInvoice({\n      invoice: paymentRequest.invoice,\n      amount: amountSats\n    });\n    \n    console.log('Payment successful:', paymentResult);\n    return paymentResult;\n  } catch (error) {\n    console.error('Payment failed:', error);\n    alert('Failed to send tip. Please try again.');\n  }\n}\n\n// Example usage\nsendTip('creator@lnaddress.com', 10000);\n```\n\n**Step 4: Error Handling and User Feedback**\nThe integration includes robust error handling to manage scenarios like expired invoices, network failures, or insufficient funds. For example, if the user’s wallet balance is too low, the app displays a friendly message and suggests alternative payment methods, such as connecting a different wallet.\n\n```javascript\nnwc.on('error', (error) => {\n  console.error('NWC Error:', error);\n  if (error.message.includes('insufficient_balance')) {\n    alert('Your wallet balance is too low. Please add funds or connect another wallet.');\n  }\n});\n```\n\nThis implementation ensures that TipBit users can send and receive bitcoin payments in a non-custodial manner, with seamless integration into their existing Lightning wallets. The SDK handles the complexities of OAuth2 authentication, Nostr Wallet Connect, and Lightning Network interactions, allowing developers to focus on building user-friendly features.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "js-sdk#main-content",
+      "js-sdk#overview",
+      "js-sdk#setup",
+      "js-sdk#examples",
+      "js-sdk#tools",
+      "js-sdk#mcp",
+      "js-sdk#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Alby JS SDK enables developers to integrate Bitcoin lightning payments directly into web and Node.js applications with minimal code. It supports two integration methods: Nostr Wallet Connect (NWC), an open protocol connecting to any NWC-enabled wallet, and the Alby OAuth API for deeper wallet functionality. Developers can accept payments, request invoices, and send Bitcoin lightning transactions while maintaining zero custody of user funds. The SDK handles credential management, payment routing, and WebLN implementations, making it accessible for building payment-enabled apps, agents, and services.\nAccept lightning payments in web applications\nSend Bitcoin payments programmatically via lightning network\nRequest and receive payments with invoice generation\nBuild payment features into AI agents and LLM-powered apps",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/getAlby/js-sdk`",
+    "usage_vi": "```\nIntegrate the Alby OAuth2 Wallet API and Nostr Wallet Connect API into a [PLATFORM_NAME] application using the JavaScript SDK. Implement [SPECIFIC_FEATURE] such as sending a Lightning Network payment of [AMOUNT] sats to [RECEIVER_PUBKEY] or [RECEIVER_LNURL]. Ensure the integration follows best practices for zero-custody bitcoin payments and handles OAuth2 authentication securely. Include error handling for failed transactions or connection issues.\n```\nCopy\n\n```\nHere’s a complete integration example for a web-based bitcoin tipping app called *TipBit* that allows users to send payments via Lightning Network using the Alby OAuth2 Wallet API and Nostr Wallet Connect. The app leverages the `@getalby/js-sdk` library to handle authentication, payment requests, and transaction broadcasting.\n\n**Step 1: Setup and Authentication**\nFirst, we initialize the SDK with the Alby OAuth2 client credentials and Nostr Wallet Connect configuration. The user authenticates via Alby’s OAuth2 flow, granting the app permission to interact with their wallet. We store the access token securely in the browser’s `localStorage` for subsequent requests.\n\n```javascript\nimport { AlbyWallet } from '@getalby/sdk';\nimport { NostrWalletConnect } from '@getalby/nostr-wallet-connect';\n\nconst albyWallet = new AlbyWallet({\n  clientId: 'tipbit-app-client-id',\n  clientSecret: 'tipbit-app-client-secret',\n  scopes: ['invoices:read', 'invoices:create', 'payments:send']\n});\n\n// Redirect user to Alby OAuth2 authorization page\nconst authUrl = albyWallet.getAuthorizationUrl({\n  redirectUri: 'https://tipbit.app/auth/callback'\n});\nwindow.location.href = authUrl;\n```\n\n**Step 2: Nostr Wallet Connect Integration**\nOnce authenticated, we establish a Nostr Wallet Connect session to interact with the user’s Lightning wallet. This allows us to send payments without custody of the user’s funds. We subscribe to payment events to track transaction status in real-time.\n\n```javascript\nconst nwc = new NostrWalletConnect({\n  nostrWalletConnectUrl: 'nostrwalletconnect://...',\n  appName: 'TipBit'\n});\n\n// Listen for payment events\nnwc.on('payment', (event) => {\n  console.log('Payment event:', event);\n  if (event.status === 'paid') {\n    alert(`Payment of ${event.amount} sats received!`);\n  }\n});\n```\n\n**Step 3: Sending a Payment**\nThe app now allows users to send a tip of 10,000 sats to a content creator’s Lightning address. The SDK constructs the payment request, signs it with the user’s Nostr key, and broadcasts it to the Lightning Network. We handle potential errors, such as insufficient balance or network issues, and provide user feedback.\n\n```javascript\nasync function sendTip(lnAddress, amountSats) {\n  try {\n    const paymentRequest = await nwc.makeInvoice({\n      amount: amountSats,\n      description: 'Tip for great content!'\n    });\n    \n    const paymentResult = await nwc.payInvoice({\n      invoice: paymentRequest.invoice,\n      amount: amountSats\n    });\n    \n    console.log('Payment successful:', paymentResult);\n    return paymentResult;\n  } catch (error) {\n    console.error('Payment failed:', error);\n    alert('Failed to send tip. Please try again.');\n  }\n}\n\n// Example usage\nsendTip('creator@lnaddress.com', 10000);\n```\n\n**Step 4: Error Handling and User Feedback**\nThe integration includes robust error handling to manage scenarios like expired invoices, network failures, or insufficient funds. For example, if the user’s wallet balance is too low, the app displays a friendly message and suggests alternative payment methods, such as connecting a different wallet.\n\n```javascript\nnwc.on('error', (error) => {\n  console.error('NWC Error:', error);\n  if (error.message.includes('insufficient_balance')) {\n    alert('Your wallet balance is too low. Please add funds or connect another wallet.');\n  }\n});\n```\n\nThis implementation ensures that TipBit users can send and receive bitcoin payments in a non-custodial manner, with seamless integration into their existing Lightning wallets. The SDK handles the complexities of OAuth2 authentication, Nostr Wallet Connect, and Lightning Network interactions, allowing developers to focus on building user-friendly features.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:17:19.396359Z",
+    "http_status": 200,
+    "content_hash": "93b74d0766fb15e3c2acf3177e0f4383eca395f434ab42027ba1952e15658ab0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\js-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\js-sdk.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Alby JS SDK - Bitcoin Payment Integration",
+  "short_description_vi": "JavaScript SDK for integrating Alby OAuth2 Wallet API and Nostr Wallet Connect API. Enables zero-custody bitcoin payments in apps. Connects to lightning network via Nostr Wallet Connect or Alby Wallet API."
+}

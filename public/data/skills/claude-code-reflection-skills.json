@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-reflection-skills",
+  "slug": "claude-code-reflection-skills",
+  "name": "browser-use",
+  "headline": "Claude Code reflection skills for self-management",
+  "short_description": "Claude Code Reflection Skills enable self-management and reflection for AI agents. Operations teams benefit from improved debugging, self-improvement, and workflow optimization. Integrates with Claude Code plugins to enhance automation and productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "CodeAlive-AI",
+  "install_command": "git clone https://github.com/CodeAlive-AI/claude-code-reflection-skills.git",
+  "source_repo_url": "https://github.com/CodeAlive-AI/claude-code-reflection-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code Reflection Skills is a collection of 22 agent skills designed for AI-driven software development across multiple platforms including Claude Code, Cursor, Codex CLI, and 10+ other agents. The skills cover agent reflection and meta-management—allowing agents to install MCP servers, manage hooks, configure settings, and optimize their own configurations without manual editing. Additional skills address engineering practices like prompt engineering, bug-fix protocols, planning gates, and repository history investigation, plus research tools, multi-agent orchestration, and system health maintenance. Teams use these skills to improve debugging, enable self-improvement workflows, and optimize productivity by letting AI agents manage their own tooling and processes.\nAuto-configure MCP servers across 10+ coding agents from a single command\nSet up hooks, settings, and subagents without manual JSON/YAML file editing\nImplement structured bug-fix and code review protocols with agent enforcement\nOptimize Claude Code repository configurations and agent behavior",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CodeAlive-AI/claude-code-reflection-skills`",
+    "usage": "```\nUse the claude-code-reflection-skills plugin to analyze the execution of [SCRIPT_NAME] in [DIRECTORY_PATH]. Identify potential inefficiencies, bugs, or optimization opportunities in the code. Provide a step-by-step reflection on what worked well, what didn't, and specific suggestions for improvement. Focus on [SPECIFIC_AREA] (e.g., performance, readability, error handling).\n```\nCopy\n\n```\nReflection on 'data_pipeline.py' in '/projects/analytics/automation':\n\n**Execution Summary:** The script processed 12,487 records from 'raw_data.csv' to 'cleaned_data.csv' in 4 minutes 12 seconds, with 0 errors. Memory usage peaked at 1.8GB, and CPU utilization averaged 68%.\n\n**Strengths:**\n- Efficient use of pandas' vectorized operations reduced processing time by 34% compared to the previous version.\n- Comprehensive error handling in the 'validate_data()' function caught 12 invalid records, preventing downstream failures.\n- Modular structure made it easy to isolate and test individual components.\n\n**Areas for Improvement:**\n1. **Memory Optimization:** The script loads the entire dataset into memory at once. For datasets >100K records, consider using 'chunksize' in pandas.read_csv() or Dask for out-of-core processing. Current memory usage could lead to OOM errors on smaller machines.\n2. **Error Recovery:** While errors are caught, the script currently exits after logging the first 12 invalid records. Add a 'continue_processing' flag to skip invalid records and log them to a separate file for review.\n3. **Parallel Processing:** The 'transform_data()' function processes records sequentially. Implement multiprocessing (e.g., using Python's 'multiprocessing.Pool') to split work across CPU cores, targeting a 40% reduction in runtime.\n4. **Logging:** Add timestamps to log messages to track progress more granularly. Current logs lack context for long-running operations.\n\n**Suggested Workflow Adjustments:**\n- Replace the current 'pandas' implementation with 'polars' for better memory efficiency and speed.\n- Add a pre-commit hook to run 'black' and 'isort' for consistent code formatting.\n- Implement a retry mechanism for API calls in 'fetch_external_data()' to handle transient failures.\n\n**Next Steps:**\n1. Implement memory optimization in a branch named 'memory_optimization'.\n2. Add parallel processing to the 'transform_data()' function.\n3. Test with a dataset of 500K records to validate improvements.\n\n**Impact:** These changes could reduce runtime by 50% and memory usage by 60% for large datasets, while improving reliability.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-reflection-skills#main-content",
+      "claude-code-reflection-skills#overview",
+      "claude-code-reflection-skills#setup",
+      "claude-code-reflection-skills#examples",
+      "claude-code-reflection-skills#tools",
+      "claude-code-reflection-skills#mcp",
+      "claude-code-reflection-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Reflection Skills is a collection of 22 agent skills designed for AI-driven software development across multiple platforms including Claude Code, Cursor, Codex CLI, and 10+ other agents. The skills cover agent reflection and meta-management—allowing agents to install MCP servers, manage hooks, configure settings, and optimize their own configurations without manual editing. Additional skills address engineering practices like prompt engineering, bug-fix protocols, planning gates, and repository history investigation, plus research tools, multi-agent orchestration, and system health maintenance. Teams use these skills to improve debugging, enable self-improvement workflows, and optimize productivity by letting AI agents manage their own tooling and processes.\nAuto-configure MCP servers across 10+ coding agents from a single command\nSet up hooks, settings, and subagents without manual JSON/YAML file editing\nImplement structured bug-fix and code review protocols with agent enforcement\nOptimize Claude Code repository configurations and agent behavior",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CodeAlive-AI/claude-code-reflection-skills`",
+    "usage_vi": "```\nUse the claude-code-reflection-skills plugin to analyze the execution of [SCRIPT_NAME] in [DIRECTORY_PATH]. Identify potential inefficiencies, bugs, or optimization opportunities in the code. Provide a step-by-step reflection on what worked well, what didn't, and specific suggestions for improvement. Focus on [SPECIFIC_AREA] (e.g., performance, readability, error handling).\n```\nCopy\n\n```\nReflection on 'data_pipeline.py' in '/projects/analytics/automation':\n\n**Execution Summary:** The script processed 12,487 records from 'raw_data.csv' to 'cleaned_data.csv' in 4 minutes 12 seconds, with 0 errors. Memory usage peaked at 1.8GB, and CPU utilization averaged 68%.\n\n**Strengths:**\n- Efficient use of pandas' vectorized operations reduced processing time by 34% compared to the previous version.\n- Comprehensive error handling in the 'validate_data()' function caught 12 invalid records, preventing downstream failures.\n- Modular structure made it easy to isolate and test individual components.\n\n**Areas for Improvement:**\n1. **Memory Optimization:** The script loads the entire dataset into memory at once. For datasets >100K records, consider using 'chunksize' in pandas.read_csv() or Dask for out-of-core processing. Current memory usage could lead to OOM errors on smaller machines.\n2. **Error Recovery:** While errors are caught, the script currently exits after logging the first 12 invalid records. Add a 'continue_processing' flag to skip invalid records and log them to a separate file for review.\n3. **Parallel Processing:** The 'transform_data()' function processes records sequentially. Implement multiprocessing (e.g., using Python's 'multiprocessing.Pool') to split work across CPU cores, targeting a 40% reduction in runtime.\n4. **Logging:** Add timestamps to log messages to track progress more granularly. Current logs lack context for long-running operations.\n\n**Suggested Workflow Adjustments:**\n- Replace the current 'pandas' implementation with 'polars' for better memory efficiency and speed.\n- Add a pre-commit hook to run 'black' and 'isort' for consistent code formatting.\n- Implement a retry mechanism for API calls in 'fetch_external_data()' to handle transient failures.\n\n**Next Steps:**\n1. Implement memory optimization in a branch named 'memory_optimization'.\n2. Add parallel processing to the 'transform_data()' function.\n3. Test with a dataset of 500K records to validate improvements.\n\n**Impact:** These changes could reduce runtime by 50% and memory usage by 60% for large datasets, while improving reliability.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:00:34.167730Z",
+    "http_status": 200,
+    "content_hash": "03d0f0215608815a5c9cfcd3f78839025db63115f4c53fddbe950f3bb3915968",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-reflection-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-reflection-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code reflection skills for self-management",
+  "short_description_vi": "Claude Code Reflection Skills enable self-management and reflection for AI agents. Operations teams benefit from improved debugging, self-improvement, and workflow optimization. Integrates with Claude Code plugins to enhance automation and productivity."
+}

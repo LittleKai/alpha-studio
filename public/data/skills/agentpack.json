@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentpack",
+  "slug": "agentpack",
+  "name": "agentpack",
+  "headline": "Agentpack: Safe Deployment for Coding-Agent Assets",
+  "short_description": "Agentpack is a control plane for deploying coding-agent assets across tools. It manages agent instructions and skills, benefiting developers and operations teams. It integrates with CLI tools and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "liqiongyu",
+  "install_command": "git clone https://github.com/liqiongyu/agentpack.git",
+  "source_repo_url": "https://github.com/liqiongyu/agentpack",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "mcp",
+    "cli",
+    "developer-tools",
+    "codex",
+    "rust",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Agentpack is a declarative control plane that manages and deploys coding-agent assets—including agent instructions, skills, Claude Code slash commands, and Codex custom prompts—across multiple tools from a centralized manifest. It enables cross-tool consistency by treating your agent configuration as a single source of truth, synced via git and deployable with preview-first, diff-aware workflows. The tool provides snapshot-based rollback capabilities and manifest-protected safe deletes, making deployments reusable and auditable. Developers and operations teams use Agentpack to maintain consistent agent setups across machines and tools, with stable automation contracts via JSON and MCP for orchestration.\nDeploy the same agent instructions and skills to Codex, Claude Code, Cursor, and VSCode simultaneously\nPreview and diff agent asset changes before applying deployments across tools\nSync agent configurations across multiple machines using git as a single source of truth\nRollback agent deployments to previous snapshots with full audit trails",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liqiongyu/agentpack`",
+    "usage": "```\nI want to use Agentpack to deploy a coding agent for [COMPANY] in the [INDUSTRY] sector. The agent should be able to [SPECIFIC TASK]. Provide a step-by-step guide to set this up, including any necessary configurations and best practices.\n```\nCopy\n\n```\n# Agentpack Deployment Guide for [COMPANY] in [INDUSTRY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentpack#main-content",
+      "agentpack#overview",
+      "agentpack#setup",
+      "agentpack#examples",
+      "agentpack#tools",
+      "agentpack#mcp",
+      "agentpack#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agentpack là một declarative control plane giúp quản lý và triển khai các asset coding-agent—bao gồm instruction, skill của agent, các slash command của Claude Code và custom prompt của Codex—trên nhiều công cụ từ một manifest tập trung. Công cụ này đảm bảo tính nhất quán giữa các công cụ bằng cách coi cấu hình agent của bạn như một single source of truth, được đồng bộ hóa qua git và có thể triển khai với các workflow ưu tiên xem trước (preview-first) và nhận biết thay đổi (diff-aware). Agentpack cung cấp khả năng rollback dựa trên snapshot và tính năng xóa an toàn được bảo vệ bởi manifest, giúp các lượt triển khai có thể tái sử dụng và kiểm toán được. Các developer và đội ngũ vận hành sử dụng Agentpack để duy trì các setup agent nhất quán trên nhiều máy và công cụ, với các ràng buộc tự động hóa ổn định qua JSON và MCP để điều phối (orchestration).\n- Triển khai đồng thời cùng một instruction và skill của agent lên Codex, Claude Code, Cursor và VSCode\n- Xem trước và so sánh thay đổi (diff) của các asset agent trước khi áp dụng triển khai trên các công cụ\n- Đồng bộ hóa cấu hình agent trên nhiều máy bằng cách sử dụng git làm single source of truth\n- Rollback các lượt triển khai agent về các snapshot trước đó với đầy đủ audit trail",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/liqiongyu/agentpack`",
+    "usage_vi": "```\nTôi muốn sử dụng Agentpack để triển khai một coding agent cho [COMPANY] trong lĩnh vực [INDUSTRY]. Agent này cần có khả năng [SPECIFIC TASK]. Hãy cung cấp hướng dẫn từng bước để setup, bao gồm mọi cấu hình cần thiết và các best practice.\n```\nCopy\n\n```\n# Hướng dẫn triển khai Agentpack cho [COMPANY] trong lĩnh vực [INDUSTRY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:56:22.897759Z",
+    "http_status": 200,
+    "content_hash": "5b3dad86ee38d674c7e78e245455730e144349436a1961a4ebd79e440ad4695f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentpack.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentpack.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Agentpack: Triển khai an toàn cho các asset coding-agent",
+  "short_description_vi": "Agentpack là một control plane để triển khai các asset coding-agent trên nhiều công cụ. Công cụ này giúp quản lý các instruction và skill của agent, mang lại lợi ích cho cả developer lẫn đội ngũ vận hành. Agentpack tích hợp tốt với các công cụ CLI và hỗ trợ các Claude agent."
+}

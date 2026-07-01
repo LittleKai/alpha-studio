@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudeforge",
+  "slug": "claudeforge",
+  "name": "ClaudeForge",
+  "headline": "ClaudeForge工具",
+  "short_description": "ClaudeForge automates the creation and maintenance of CLAUDE.md files for Claude Code projects. It ensures alignment with Anthropic’s best practices, benefiting developers and operations teams. The tool connects to Python workflows and integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "alirezarezvani",
+  "install_command": "git clone https://github.com/alirezarezvani/ClaudeForge.git",
+  "source_repo_url": "https://github.com/alirezarezvani/ClaudeForge",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agentic-ai",
+    "claude-subagents",
+    "agentic-workflow",
+    "claude-skill",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ClaudeForge is a toolkit that eliminates manual CLAUDE.md creation and maintenance for Claude Code projects. It uses intelligent analysis to scan your repository, detect project context, and generate customized CLAUDE.md files that follow Anthropic's official format. The tool includes an interactive slash command (/enhance-claude-md) for creating new files or enhancing existing ones, plus a background Guardian agent that automatically keeps CLAUDE.md synchronized with codebase changes. ClaudeForge supports modular architectures with context-specific files, adapts guidelines to your tech stack (TypeScript, Python, React, FastAPI, etc.), and adjusts complexity based on team size. It benefits development teams by reducing documentation overhead while ensuring consistent, high-quality project guidelines.\nCreate comprehensive CLAUDE.md files from scratch for new Claude Code projects\nEnhance existing CLAUDE.md files with missing sections and improved structure\nMaintain CLAUDE.md synchronization automatically when codebase changes\nGenerate modular CLAUDE.md files for complex projects (backend/, frontend/, database/)\nA Python-based ETL pipeline that processes customer transaction data from S3, transforms it using PySpark, and loads it into Snowflake. Built with modular design for scalability and includes unit tests for data quality validation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alirezarezvani/ClaudeForge`\n1. Clone repository: `git clone git@github.com:company/data-pipeline.git`\n2. Create virtual environment: `python -m venv .venv`\n3. Activate environment: `source .venv/bin/activate` (Linux/Mac) or `.venv\\Scripts\\activate` (Windows)\n4. Install dependencies: `pip install -r requirements.txt`\n5. Set environment variables in `.env` file:\n   - `SNOWFLAKE_ACCOUNT=xy12345.us-east-2.aws`\n   - `SNOWFLAKE_USER=etl_user`\n   - `SNOWFLAKE_PASSWORD=secure_password_here`",
+    "usage": "```\nGenerate a CLAUDE.md file for the [PROJECT_NAME] repository following Anthropic's best practices. Include sections for: 1) Project Overview, 2) Key Dependencies, 3) Development Setup, 4) Common Commands, 5) Testing Guidelines, and 6) Deployment Notes. Use [PROJECT_DESCRIPTION] as the starting point. Ensure the file is compatible with Claude Code's context window and includes clear instructions for new contributors.\n```\nCopy\n\n```\n```markdown\n# CLAUDE.md - Project: `data-pipeline`",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudeforge#main-content",
+      "claudeforge#overview",
+      "claudeforge#setup",
+      "claudeforge#examples",
+      "claudeforge#tools",
+      "claudeforge#mcp",
+      "claudeforge#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ClaudeForge là một bộ công cụ giúp loại bỏ việc tạo và duy trì thủ công file CLAUDE.md cho các dự án Claude Code. Bằng cách sử dụng phân tích thông minh để quét repository, công cụ này tự động nhận diện ngữ cảnh dự án và tạo ra các file CLAUDE.md tùy chỉnh tuân theo đúng định dạng chuẩn của Anthropic. Bộ công cụ tích hợp một slash command tương tác (/enhance-claude-md) để tạo mới hoặc tối ưu hóa các file hiện có, cùng một Guardian agent chạy ngầm để tự động đồng bộ hóa CLAUDE.md mỗi khi codebase thay đổi. ClaudeForge hỗ trợ các kiến trúc modular với các file cấu hình riêng cho từng ngữ cảnh, tự động điều chỉnh guideline theo tech stack của bạn (TypeScript, Python, React, FastAPI, v.v.) và tùy biến độ phức tạp dựa trên quy mô đội ngũ. Công cụ này giúp các đội ngũ phát triển giảm thiểu công sức viết tài liệu (documentation overhead) trong khi vẫn đảm bảo các nguyên tắc hướng dẫn dự án luôn nhất quán và chất lượng.\n\nTạo mới hoàn toàn các file CLAUDE.md toàn diện cho các dự án Claude Code mới\nNâng cấp các file CLAUDE.md hiện có bằng cách bổ sung các phần còn thiếu và tối ưu cấu trúc\nTự động duy trì đồng bộ CLAUDE.md khi codebase thay đổi\nTạo các file CLAUDE.md dạng modular cho các dự án phức tạp (backend/, frontend/, database/)\nMột ETL pipeline viết bằng Python giúp xử lý dữ liệu giao dịch khách hàng từ S3, biến đổi bằng PySpark và nạp vào Snowflake. Pipeline được thiết kế theo dạng modular để dễ dàng mở rộng quy mô, đồng thời tích hợp sẵn các unit test để xác thực chất lượng dữ liệu.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/alirezarezvani/ClaudeForge`\n1. Clone repository: `git clone git@github.com:company/data-pipeline.git`\n2. Tạo môi trường ảo (virtual environment): `python -m venv .venv`\n3. Kích hoạt môi trường: `source .venv/bin/activate` (Linux/Mac) hoặc `.venv\\Scripts\\activate` (Windows)\n4. Cài đặt các thư viện phụ thuộc (dependencies): `pip install -r requirements.txt`\n5. Thiết lập các biến môi trường trong file `.env`:\n   - `SNOWFLAKE_ACCOUNT=xy12345.us-east-2.aws`\n   - `SNOWFLAKE_USER=etl_user`\n   - `SNOWFLAKE_PASSWORD=secure_password_here`",
+    "usage_vi": "```\nTạo file CLAUDE.md cho repository [PROJECT_NAME] tuân theo các best practice của Anthropic. Bao gồm các phần: 1) Project Overview, 2) Key Dependencies, 3) Development Setup, 4) Common Commands, 5) Testing Guidelines, và 6) Deployment Notes. Sử dụng [PROJECT_DESCRIPTION] làm thông tin bắt đầu. Đảm bảo file tương thích với context window của Claude Code và chứa hướng dẫn rõ ràng cho các contributor mới.\n```\nSao chép\n\n```\n```markdown\n# CLAUDE.md - Project: `data-pipeline`"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:23.218245Z",
+    "http_status": 200,
+    "content_hash": "68f08b60bf4fbf3c9a1c40109517f4f1a363a65e644b79e3b4fc222279a4775a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudeforge.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudeforge.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ ClaudeForge",
+  "short_description_vi": "ClaudeForge tự động hóa việc tạo và duy trì các file CLAUDE.md cho các dự án Claude Code. Công cụ này đảm bảo sự tương thích với các best practice của Anthropic, mang lại lợi ích lớn cho cả đội ngũ phát triển (developers) và vận hành (operations). Ngoài ra, công cụ còn kết nối mượt mà với các workflow Python và tích hợp trực tiếp với các Claude agent."
+}

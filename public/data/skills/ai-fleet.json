@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-fleet",
+  "slug": "ai-fleet",
+  "name": "browser-use",
+  "headline": "ai-fleet: Manage Parallel AI Systems Efficiently",
+  "short_description": "AI agent fleet manager for parallel agentic systems like claude code and codex. Operations teams use it to spin up and command multiple AI developer agents from the terminal. Connects to tmux for managing agent workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "nachoal",
+  "install_command": "git clone https://github.com/nachoal/ai-fleet.git",
+  "source_repo_url": "https://github.com/nachoal/ai-fleet",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "llm",
+    "tmux"
+  ],
+  "sections": {
+    "overview": "ai-fleet is a project-based fleet management tool that lets you create, orchestrate, and monitor multiple AI developer agents running in parallel from the command line. Each agent operates in an isolated git worktree with its own tmux session, enabling true parallel execution of AI-driven development tasks. The tool supports fanout operations to launch N agents with the same prompt, multi-agent workflows with different tasks, and batch management with real-time CPU/memory monitoring. Teams can initialize fleet management per project with `.aifleet/config.toml`, automatically copy credential files, run custom setup commands, and send interactive prompts to running agents. Operations teams and developers use it to parallelize code fixes, testing, documentation, and refactoring across multiple AI agents simultaneously.\nLaunch 5+ agents in parallel to refactor different modules simultaneously\nRun independent agents on authentication, testing, and documentation tasks concurrently\nScale code review and bug-fix operations across multiple isolated agent worktrees\nMonitor and manage multiple AI development tasks with real-time CPU/RAM metrics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nachoal/ai-fleet`\n- **Agent 1**: Focused on backend development (Node.js)\n- **Agent 2**: Handling frontend development (React)\n- **Agent 3**: Database design and optimization",
+    "usage": "```\nI need to create a fleet of AI developer agents to work on [PROJECT]. Each agent should focus on a different task: [TASK_1], [TASK_2], and [TASK_3]. Use AI-fleet to spin up 3 agents, assign tasks, and manage their workflows in tmux. Provide the terminal commands and expected outputs.\n```\nCopy\n\n```\n```markdown\n# AI Fleet Management for Web Application Development",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-fleet#main-content",
+      "ai-fleet#overview",
+      "ai-fleet#setup",
+      "ai-fleet#examples",
+      "ai-fleet#tools",
+      "ai-fleet#mcp",
+      "ai-fleet#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ai-fleet is a project-based fleet management tool that lets you create, orchestrate, and monitor multiple AI developer agents running in parallel from the command line. Each agent operates in an isolated git worktree with its own tmux session, enabling true parallel execution of AI-driven development tasks. The tool supports fanout operations to launch N agents with the same prompt, multi-agent workflows with different tasks, and batch management with real-time CPU/memory monitoring. Teams can initialize fleet management per project with `.aifleet/config.toml`, automatically copy credential files, run custom setup commands, and send interactive prompts to running agents. Operations teams and developers use it to parallelize code fixes, testing, documentation, and refactoring across multiple AI agents simultaneously.\nLaunch 5+ agents in parallel to refactor different modules simultaneously\nRun independent agents on authentication, testing, and documentation tasks concurrently\nScale code review and bug-fix operations across multiple isolated agent worktrees\nMonitor and manage multiple AI development tasks with real-time CPU/RAM metrics",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nachoal/ai-fleet`\n- **Agent 1**: Focused on backend development (Node.js)\n- **Agent 2**: Handling frontend development (React)\n- **Agent 3**: Database design and optimization",
+    "usage_vi": "```\nI need to create a fleet of AI developer agents to work on [PROJECT]. Each agent should focus on a different task: [TASK_1], [TASK_2], and [TASK_3]. Use AI-fleet to spin up 3 agents, assign tasks, and manage their workflows in tmux. Provide the terminal commands and expected outputs.\n```\nCopy\n\n```\n```markdown\n# AI Fleet Management for Web Application Development"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:11:46.317621Z",
+    "http_status": 200,
+    "content_hash": "4bf5945d57acf17f90abe1cf3ef533826d6a68a9e637323fc52b8659304d6eea",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-fleet.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-fleet.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ai-fleet: Manage Parallel AI Systems Efficiently",
+  "short_description_vi": "AI agent fleet manager for parallel agentic systems like claude code and codex. Operations teams use it to spin up and command multiple AI developer agents from the terminal. Connects to tmux for managing agent workflows."
+}

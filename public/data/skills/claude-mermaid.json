@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-mermaid",
+  "slug": "claude-mermaid",
+  "name": "Claude Mermaid",
+  "headline": "mcp server for mermaid diagrams automation",
+  "short_description": "Claude Mermaid MCP Server renders Mermaid diagrams in Claude Code with live reload. Operations teams use it to visualize workflows, system architectures, and processes. It integrates with Claude Code for real-time updates and expert guidance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "veelenga",
+  "install_command": "git clone https://github.com/veelenga/claude-mermaid.git",
+  "source_repo_url": "https://github.com/veelenga/claude-mermaid",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Mermaid MCP Server is an MCP integration that renders Mermaid diagrams with automatic live reload functionality across Claude Code, Cursor, Cline, and other MCP-compatible clients. As you edit diagram code, changes appear instantly in your browser preview without manual refreshing. The tool supports multiple export formats including SVG, PNG, and PDF, with customizable themes (default, forest, dark, neutral), dimensions, and background colors. Built-in interactive features let you pan diagrams by dragging and zoom using browser controls. It includes a Claude skill with best practices and expert guidance for diagram creation, making it ideal for documentation workflows, system architecture visualization, and iterative design refinement.\nVisualize system architecture and infrastructure diagrams in real-time\nCreate and refine deployment pipelines and workflow diagrams with live updates\nGenerate sequence diagrams for payment processes and user authentication flows\nDocument database schemas and entity relationships with instant preview",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/veelenga/claude-mermaid`",
+    "usage": "```\nUse the claude-mermaid MCP Server to generate a [DIAGRAM_TYPE] diagram for [SUBJECT]. Include [KEY_ELEMENTS] and ensure the diagram is optimized for [PURPOSE: e.g., documentation, troubleshooting, onboarding]. Update the diagram in real-time as needed during our session. Example: 'Generate a sequence diagram for the user authentication flow in our microservices architecture. Include the API gateway, auth service, and database layers. Optimize it for troubleshooting common login failures.'\n```\nCopy\n\n```\nHere’s a sequence diagram for the user authentication flow in Acme Corp’s microservices architecture, rendered live via the claude-mermaid MCP Server. The diagram includes the following key components:\n\n```mermaid\nsequenceDiagram\n    participant User\n    participant API_Gateway as API Gateway\n    participant Auth_Service as Auth Service\n    participant User_DB as User Database\n    participant Session_DB as Session Database\n\n    User->>API_Gateway: POST /login {email, password}\n    API_Gateway->>Auth_Service: Validate credentials\n    Auth_Service->>User_DB: Query user record\n    User_DB-->>Auth_Service: User data (hashed password)\n    Auth_Service->>Auth_Service: Verify password\n    alt Valid credentials\n        Auth_Service->>Session_DB: Create session token\n        Session_DB-->>Auth_Service: Session token\n        Auth_Service-->>API_Gateway: 200 OK {token}\n        API_Gateway-->>User: 200 OK {token}\n    else Invalid credentials\n        Auth_Service-->>API_Gateway: 401 Unauthorized\n        API_Gateway-->>User: 401 Unauthorized\n    end\n```\n\n**Key Insights:**\n- The API Gateway acts as the single entry point, routing login requests to the Auth Service.\n- The Auth Service handles both credential validation and session token generation.\n- Session tokens are stored in a dedicated database for scalability.\n- Error handling is centralized at the Auth Service level, ensuring consistent responses.\n\n**Next Steps:**\n- Add rate-limiting logic to the API Gateway to prevent brute-force attacks.\n- Implement token refresh endpoints for long-lived sessions.\n- Consider adding multi-factor authentication (MFA) as an optional flow.\n\nWould you like to modify any elements or add additional components (e.g., logging, monitoring)?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-mermaid#main-content",
+      "claude-mermaid#overview",
+      "claude-mermaid#setup",
+      "claude-mermaid#examples",
+      "claude-mermaid#tools",
+      "claude-mermaid#mcp",
+      "claude-mermaid#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Mermaid MCP Server là một tích hợp MCP giúp render biểu đồ Mermaid với tính năng tự động live reload trên Claude Code, Cursor, Cline và các client tương thích với MCP khác. Khi bạn chỉnh sửa mã nguồn của biểu đồ, các thay đổi sẽ xuất hiện ngay lập tức trong bản xem trước trên trình duyệt mà không cần làm mới thủ công. Công cụ hỗ trợ nhiều định dạng xuất bao gồm SVG, PNG và PDF, với các theme có thể tùy chỉnh (default, forest, dark, neutral), kích thước và màu nền. Các tính năng tương tác tích hợp sẵn cho phép bạn di chuyển (pan) biểu đồ bằng cách kéo và thu phóng (zoom) bằng trình điều khiển của trình duyệt. Nó bao gồm một skill Claude đi kèm với các best practice và hướng dẫn chuyên sâu để tạo biểu đồ, giúp nó trở nên lý tưởng cho quy trình tài liệu hóa, trực quan hóa kiến trúc hệ thống và tinh chỉnh thiết kế.\n\nTrực quan hóa kiến trúc hệ thống và sơ đồ hạ tầng theo thời gian thực\nTạo và tinh chỉnh pipeline triển khai cũng như sơ đồ quy trình với các cập nhật trực tiếp\nTạo sequence diagram cho các quy trình thanh toán và luồng xác thực người dùng\nTài liệu hóa schema cơ sở dữ liệu và mối quan hệ thực thể với bản xem trước tức thì",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/veelenga/claude-mermaid`",
+    "usage_vi": "```\nSử dụng claude-mermaid MCP Server để tạo biểu đồ [DIAGRAM_TYPE] cho [SUBJECT]. Bao gồm [KEY_ELEMENTS] và đảm bảo biểu đồ được tối ưu hóa cho [PURPOSE: ví dụ: tài liệu hóa, khắc phục sự cố, onboarding]. Cập nhật biểu đồ theo thời gian thực khi cần thiết trong phiên làm việc của chúng ta. Ví dụ: 'Tạo sequence diagram cho luồng xác thực người dùng trong kiến trúc microservices của chúng tôi. Bao gồm API gateway, auth service và các tầng cơ sở dữ liệu. Tối ưu hóa biểu đồ này để khắc phục các sự cố đăng nhập thường gặp.'\n```\nCopy\n\n```\nDưới đây là sequence diagram cho luồng xác thực người dùng trong kiến trúc microservices của Acme Corp, được render live thông qua claude-mermaid MCP Server. Biểu đồ bao gồm các thành phần chính sau:\n\n```mermaid\nsequenceDiagram\n    participant User\n    participant API_Gateway as API Gateway\n    participant Auth_Service as Auth Service\n    participant User_DB as User Database\n    participant Session_DB as Session Database\n\n    User->>API_Gateway: POST /login {email, password}\n    API_Gateway->>Auth_Service: Validate credentials\n    Auth_Service->>User_DB: Query user record\n    User_DB-->>Auth_Service: User data (hashed password)\n    Auth_Service->>Auth_Service: Verify password\n    alt Valid credentials\n        Auth_Service->>Session_DB: Create session token\n        Session_DB-->>Auth_Service: Session token\n        Auth_Service-->>API_Gateway: 200 OK {token}\n        API_Gateway-->>User: 200 OK {token}\n    else Invalid credentials\n        Auth_Service-->>API_Gateway: 401 Unauthorized\n        API_Gateway-->>User: 401 Unauthorized\n    end\n```\n\n**Thông tin chính:**\n- API Gateway đóng vai trò là điểm truy cập duy nhất (single entry point), định tuyến các yêu cầu đăng nhập đến Auth Service.\n- Auth Service xử lý cả việc xác thực thông tin đăng nhập và tạo session token.\n- Các session token được lưu trữ trong một cơ sở dữ liệu riêng biệt để đảm bảo khả năng mở rộng (scalability).\n- Việc xử lý lỗi được tập trung tại Auth Service, đảm bảo phản hồi nhất quán.\n\n**Các bước tiếp theo:**\n- Thêm logic rate-limiting vào API Gateway để ngăn chặn các cuộc tấn công brute-force.\n- Triển khai các endpoint làm mới token (token refresh) cho các phiên làm việc dài hạn.\n- Xem xét việc tích hợp xác thực đa yếu tố (MFA) như một luồng tùy chọn.\n\nBạn có muốn chỉnh sửa thành phần nào hoặc thêm các thành phần bổ sung (ví dụ: logging, monitoring) không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:40:51.427392Z",
+    "http_status": 200,
+    "content_hash": "cf0bc2dfa28099fbef3b0a9518e2b2dc6988d52cc4d1800627195be0b7efc194",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-mermaid.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-mermaid.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP server tự động hóa biểu đồ Mermaid",
+  "short_description_vi": "Claude Mermaid MCP Server render các biểu đồ Mermaid trong Claude Code với tính năng live reload. Các đội ngũ vận hành sử dụng công cụ này để trực quan hóa quy trình làm việc, kiến trúc hệ thống và các tiến trình. Nó tích hợp trực tiếp với Claude Code để cập nhật theo thời gian thực và cung cấp hướng dẫn chuyên sâu."
+}

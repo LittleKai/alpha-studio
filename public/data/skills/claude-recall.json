@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-recall",
+  "slug": "claude-recall",
+  "name": "browser-use",
+  "headline": "claude long-term memory: project context recall",
+  "short_description": "Claude Recall is a long-term memory layer for MoltBot and Claude Code that automatically learns and recalls project context. It benefits operations teams by maintaining continuity across interactions, reducing repetitive explanations, and improving efficiency. The skill integrates with Claude Code and MoltBot, enhancing workflows by retaining context from previous interactions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "nhevers",
+  "install_command": "git clone https://github.com/nhevers/claude-recall.git",
+  "source_repo_url": "https://github.com/nhevers/claude-recall",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "memory",
+    "plugin",
+    "nodejs",
+    "claude",
+    "typescript",
+    "mcp",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Claude Recall adds persistent memory to Claude Code and MoltBot, automatically capturing discoveries, decisions, and code patterns from each session. At the start of new sessions, it injects relevant context from past work, eliminating the need to re-explain project details. The system uses semantic search via MCP tools to find contextual information, tracks token usage and session analytics, and provides a web viewer at localhost:37777 for browsing and organizing memories. Teams working on ongoing projects benefit from reduced context-switching overhead and faster onboarding to previous work. Memory is stored locally in SQLite and searchable through ChromaDB vector search.\nMaintaining auth implementation details across development sessions\nTracking project decisions and architectural choices over time\nReducing repetitive context explanations in multi-session workflows\nBuilding institutional knowledge for operations and engineering teams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nhevers/claude-recall`",
+    "usage": "```\nUse Claude Recall to retrieve and synthesize the most relevant project context for [TASK]. Focus on [SPECIFIC_ASPECTS] such as [EXAMPLE_1], [EXAMPLE_2], or [EXAMPLE_3]. Provide a concise summary of the key details, decisions, and dependencies that impact this task. If no relevant context exists, state that explicitly and suggest how to capture it going forward.\n```\nCopy\n\n```\nFor the task of refactoring the `user-authentication` service in the AcmeCorp platform, Claude Recall retrieved the following context:\n\n**Key Decisions:**\n- The team decided in Q2 2024 to migrate from JWT to OAuth2 for all authentication flows, with a 6-month sunset period for legacy tokens. This was documented in Slack thread #auth-2024-06-15.\n- The legacy `password-reset` endpoint was deprecated in favor of a new `/v2/reset-password` endpoint, which now requires email verification via SendGrid. This change was implemented in PR #421 but never fully communicated to the frontend team.\n\n**Dependencies:**\n- The new OAuth2 implementation depends on the `auth-service` v3.2.1, which is currently in staging but not yet deployed to production.\n- The frontend team is still using the deprecated `/reset-password` endpoint, causing user confusion during password resets.\n\n**Open Questions:**\n- Should we enforce the OAuth2 migration deadline despite the frontend team's delay?\n- How should we handle tokens issued during the transition period?\n\n**Recommendation:** Prioritize a sync with the frontend team to align on the OAuth2 migration timeline and communicate the deprecation of the old endpoint. The refactoring task should include a backward-compatible fallback for legacy tokens until the migration is complete.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-recall#main-content",
+      "claude-recall#overview",
+      "claude-recall#setup",
+      "claude-recall#examples",
+      "claude-recall#tools",
+      "claude-recall#mcp",
+      "claude-recall#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Recall adds persistent memory to Claude Code and MoltBot, automatically capturing discoveries, decisions, and code patterns from each session. At the start of new sessions, it injects relevant context from past work, eliminating the need to re-explain project details. The system uses semantic search via MCP tools to find contextual information, tracks token usage and session analytics, and provides a web viewer at localhost:37777 for browsing and organizing memories. Teams working on ongoing projects benefit from reduced context-switching overhead and faster onboarding to previous work. Memory is stored locally in SQLite and searchable through ChromaDB vector search.\nMaintaining auth implementation details across development sessions\nTracking project decisions and architectural choices over time\nReducing repetitive context explanations in multi-session workflows\nBuilding institutional knowledge for operations and engineering teams",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nhevers/claude-recall`",
+    "usage_vi": "```\nUse Claude Recall to retrieve and synthesize the most relevant project context for [TASK]. Focus on [SPECIFIC_ASPECTS] such as [EXAMPLE_1], [EXAMPLE_2], or [EXAMPLE_3]. Provide a concise summary of the key details, decisions, and dependencies that impact this task. If no relevant context exists, state that explicitly and suggest how to capture it going forward.\n```\nCopy\n\n```\nFor the task of refactoring the `user-authentication` service in the AcmeCorp platform, Claude Recall retrieved the following context:\n\n**Key Decisions:**\n- The team decided in Q2 2024 to migrate from JWT to OAuth2 for all authentication flows, with a 6-month sunset period for legacy tokens. This was documented in Slack thread #auth-2024-06-15.\n- The legacy `password-reset` endpoint was deprecated in favor of a new `/v2/reset-password` endpoint, which now requires email verification via SendGrid. This change was implemented in PR #421 but never fully communicated to the frontend team.\n\n**Dependencies:**\n- The new OAuth2 implementation depends on the `auth-service` v3.2.1, which is currently in staging but not yet deployed to production.\n- The frontend team is still using the deprecated `/reset-password` endpoint, causing user confusion during password resets.\n\n**Open Questions:**\n- Should we enforce the OAuth2 migration deadline despite the frontend team's delay?\n- How should we handle tokens issued during the transition period?\n\n**Recommendation:** Prioritize a sync with the frontend team to align on the OAuth2 migration timeline and communicate the deprecation of the old endpoint. The refactoring task should include a backward-compatible fallback for legacy tokens until the migration is complete.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:25:14.175735Z",
+    "http_status": 200,
+    "content_hash": "5bb6a5d4aad5a6d4676701b5424348fd0c584400789e4d375ba4367078f63aea",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-recall.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-recall.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude long-term memory: project context recall",
+  "short_description_vi": "Claude Recall is a long-term memory layer for MoltBot and Claude Code that automatically learns and recalls project context. It benefits operations teams by maintaining continuity across interactions, reducing repetitive explanations, and improving efficiency. The skill integrates with Claude Code and MoltBot, enhancing workflows by retaining context from previous interactions."
+}

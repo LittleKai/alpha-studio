@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lessons-learned",
+  "slug": "lessons-learned",
+  "name": "PMA - Project Management Assistant",
+  "headline": "Lessons Learned: Claude Code skill for Project",
+  "short_description": "This skill helps users manage project lessons effectively, ensuring all lessons learned during tasks are captured and evaluated. Ideal for project managers and teams aiming to enhance learning from their work.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "shihyuho",
+  "install_command": "git clone https://github.com/shihyuho/skills",
+  "source_repo_url": "https://github.com/shihyuho/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "lessons",
+    "learned",
+    "project-management"
+  ],
+  "sections": {
+    "overview": "The README provided does not contain a 'Lessons Learned' skill. The available skills listed include ADR (Architecture Decision Records), writing agents, SDK management, code coverage, review briefing, TL;DR generation, learning tools, rephrasing utilities, kickoff workflows, and artifact anatomy—but no lessons learned management skill is documented. Without official README documentation, accurate technical content cannot be provided.\nRun recall before starting implementation tasks.\nCapture lessons during task correction.\nEvaluate lessons at the end of tasks.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/shihyuho/skills --skill lessons-learned`\n`git clone https://github.com/shihyuho/skills`",
+    "usage": "```\nAct as a project lessons learned facilitator. Help me capture, document, and evaluate key lessons from [PROJECT_NAME] in [INDUSTRY]. Focus on successes, failures, and actionable improvements. Structure the output as a lessons learned report with sections for: 1) What happened, 2) Why it happened, 3) What we learned, and 4) Action items. Include specific examples from [DATA] or [TEAM_MEMBERS].\n```\nCopy\n\n```\n### Lessons Learned Report: Q3 2024 E-commerce Platform Migration\n\n#### 1. What Happened\n- **Success**: The migration from legacy monolithic architecture to microservices was completed 2 weeks ahead of schedule, with zero downtime during the transition.\n- **Challenge**: The team underestimated the complexity of data synchronization between old and new systems, leading to 3 minor data inconsistencies reported by customers.\n\n#### 2. Why It Happened\n- **Success Factor**: Weekly cross-functional sync meetings (led by Sarah from DevOps) ensured alignment between development, QA, and operations teams.\n- **Challenge Cause**: The data migration script (developed by the backend team) did not account for edge cases in order statuses, as identified in [PROJECT_TRACKER].\n\n#### 3. What We Learned\n- **Process Improvement**: Implement a dedicated data validation sprint post-migration to catch discrepancies early (estimated 20% reduction in post-launch issues).\n- **Team Insight**: The DevOps team’s proactive monitoring tools (e.g., Prometheus alerts) were critical in identifying performance bottlenecks during the migration.\n\n#### 4. Action Items\n- [ ] Schedule a retro with the backend team to address data sync gaps (Owner: Alex, Due: Oct 15).\n- [ ] Update the migration playbook to include a data validation checklist (Owner: Priya, Due: Oct 20).\n\n**Next Steps**: Share this report with the leadership team and schedule a workshop to refine the migration process for Q4 projects.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "lessons-learned#main-content",
+      "lessons-learned#overview",
+      "lessons-learned#setup",
+      "lessons-learned#examples",
+      "lessons-learned#related",
+      "pma-project-management-assistant"
+    ],
+    "overview_vi": "The README provided does not contain a 'Lessons Learned' skill. The available skills listed include ADR (Architecture Decision Records), writing agents, SDK management, code coverage, review briefing, TL;DR generation, learning tools, rephrasing utilities, kickoff workflows, and artifact anatomy—but no lessons learned management skill is documented. Without official README documentation, accurate technical content cannot be provided.\nRun recall before starting implementation tasks.\nCapture lessons during task correction.\nEvaluate lessons at the end of tasks.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/shihyuho/skills --skill lessons-learned`\n`git clone https://github.com/shihyuho/skills`",
+    "usage_vi": "```\nAct as a project lessons learned facilitator. Help me capture, document, and evaluate key lessons from [PROJECT_NAME] in [INDUSTRY]. Focus on successes, failures, and actionable improvements. Structure the output as a lessons learned report with sections for: 1) What happened, 2) Why it happened, 3) What we learned, and 4) Action items. Include specific examples from [DATA] or [TEAM_MEMBERS].\n```\nCopy\n\n```\n### Lessons Learned Report: Q3 2024 E-commerce Platform Migration\n\n#### 1. What Happened\n- **Success**: The migration from legacy monolithic architecture to microservices was completed 2 weeks ahead of schedule, with zero downtime during the transition.\n- **Challenge**: The team underestimated the complexity of data synchronization between old and new systems, leading to 3 minor data inconsistencies reported by customers.\n\n#### 2. Why It Happened\n- **Success Factor**: Weekly cross-functional sync meetings (led by Sarah from DevOps) ensured alignment between development, QA, and operations teams.\n- **Challenge Cause**: The data migration script (developed by the backend team) did not account for edge cases in order statuses, as identified in [PROJECT_TRACKER].\n\n#### 3. What We Learned\n- **Process Improvement**: Implement a dedicated data validation sprint post-migration to catch discrepancies early (estimated 20% reduction in post-launch issues).\n- **Team Insight**: The DevOps team’s proactive monitoring tools (e.g., Prometheus alerts) were critical in identifying performance bottlenecks during the migration.\n\n#### 4. Action Items\n- [ ] Schedule a retro with the backend team to address data sync gaps (Owner: Alex, Due: Oct 15).\n- [ ] Update the migration playbook to include a data validation checklist (Owner: Priya, Due: Oct 20).\n\n**Next Steps**: Share this report with the leadership team and schedule a workshop to refine the migration process for Q4 projects.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:42:24.687888Z",
+    "http_status": 200,
+    "content_hash": "e4c165f4c587076886bb08880fb6795bf55435123122504fd6af1ef2c3d0a621",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lessons-learned.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lessons-learned.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Lessons Learned: Claude Code skill for Project",
+  "short_description_vi": "This skill helps users manage project lessons effectively, ensuring all lessons learned during tasks are captured and evaluated. Ideal for project managers and teams aiming to enhance learning from their work."
+}

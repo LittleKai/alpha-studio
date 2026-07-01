@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/architecture-diagram-generator",
+  "slug": "architecture-diagram-generator",
+  "name": "Blueprinter",
+  "headline": "Architecture Diagram Generator: Build Layered",
+  "short_description": "The Architecture Diagram Generator allows users to create structured HTML architecture diagrams using Markdown. It's designed for developers and designers who want to visualize their architectural structures in a flexible layout.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "markdown-viewer",
+  "install_command": "git clone https://github.com/markdown-viewer/skills",
+  "source_repo_url": "https://github.com/markdown-viewer/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "diagram-generation",
+    "generator",
+    "diagram",
+    "architecture"
+  ],
+  "sections": {
+    "overview": "The Architecture Diagram Generator lets you create structured HTML architecture diagrams directly in Markdown without code blocks. It supports flexible layouts—single column for simple architectures, three-column for complex systems with monitoring and security concerns—organized by semantic layers including User, Application, AI/Logic, Data, and Infrastructure. The tool provides 12 pre-built color styles (Steel Blue, Ember Warm, Neon Dark, and others) matched to different project types, from enterprise banking to startup SaaS. It handles grid-based component layouts, layer-based organization with consistent color semantics, and advanced patterns like pipelines, sidebars, and connectors. Developers and architects use it to document technology stacks, microservices topology, multi-tier applications, CI/CD flows, and system overviews.\nDesigning web application architecture\nVisualizing software component interactions\nCreating infrastructure diagrams for cloud solutions\nDocumenting system architecture for presentations",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/markdown-viewer/skills --skill architecture`\n`git clone https://github.com/markdown-viewer/skills`",
+    "usage": "```\nCreate a structured HTML architecture diagram in Markdown format for the [COMPANY]'s [INDUSTRY] system. Include the following components: [DATA]. Use Mermaid.js syntax for the diagram. Provide a brief explanation of each component's role in the system.\n```\nCopy\n\n```\n# Architecture Diagram for GreenTech Solutions' IoT Platform\n\n```mermaid\ngraph TD\n    subgraph IoT Platform\n        A[IoT Devices] -->|MQTT| B[Message Broker]\n        B -->|REST API| C[Data Processing Layer]\n        C -->|Kafka| D[Analytics Engine]\n        D -->|PostgreSQL| E[Data Lake]\n        E -->|GraphQL API| F[Dashboard UI]\n    end\n    \n    subgraph External Systems\n        G[Mobile App] -->|HTTPS| F\n        H[Third-Party Analytics] -->|Webhooks| D\n    end\n\n    style A fill:#4CAF50,stroke:#388E3C\n    style F fill:#2196F3,stroke:#1976D2\n    style E fill:#FF9800,stroke:#F57C00\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "architecture-diagram-generator#main-content",
+      "architecture-diagram-generator#overview",
+      "architecture-diagram-generator#setup",
+      "architecture-diagram-generator#examples",
+      "architecture-diagram-generator#tools",
+      "architecture-diagram-generator#mcp",
+      "architecture-diagram-generator#related",
+      "blueprinter"
+    ],
+    "overview_vi": "The Architecture Diagram Generator lets you create structured HTML architecture diagrams directly in Markdown without code blocks. It supports flexible layouts—single column for simple architectures, three-column for complex systems with monitoring and security concerns—organized by semantic layers including User, Application, AI/Logic, Data, and Infrastructure. The tool provides 12 pre-built color styles (Steel Blue, Ember Warm, Neon Dark, and others) matched to different project types, from enterprise banking to startup SaaS. It handles grid-based component layouts, layer-based organization with consistent color semantics, and advanced patterns like pipelines, sidebars, and connectors. Developers and architects use it to document technology stacks, microservices topology, multi-tier applications, CI/CD flows, and system overviews.\nDesigning web application architecture\nVisualizing software component interactions\nCreating infrastructure diagrams for cloud solutions\nDocumenting system architecture for presentations",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/markdown-viewer/skills --skill architecture`\n`git clone https://github.com/markdown-viewer/skills`",
+    "usage_vi": "```\nCreate a structured HTML architecture diagram in Markdown format for the [COMPANY]'s [INDUSTRY] system. Include the following components: [DATA]. Use Mermaid.js syntax for the diagram. Provide a brief explanation of each component's role in the system.\n```\nCopy\n\n```\n# Architecture Diagram for GreenTech Solutions' IoT Platform\n\n```mermaid\ngraph TD\n    subgraph IoT Platform\n        A[IoT Devices] -->|MQTT| B[Message Broker]\n        B -->|REST API| C[Data Processing Layer]\n        C -->|Kafka| D[Analytics Engine]\n        D -->|PostgreSQL| E[Data Lake]\n        E -->|GraphQL API| F[Dashboard UI]\n    end\n    \n    subgraph External Systems\n        G[Mobile App] -->|HTTPS| F\n        H[Third-Party Analytics] -->|Webhooks| D\n    end\n\n    style A fill:#4CAF50,stroke:#388E3C\n    style F fill:#2196F3,stroke:#1976D2\n    style E fill:#FF9800,stroke:#F57C00\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:35:48.463883Z",
+    "http_status": 200,
+    "content_hash": "bd62cd843d25743fa9d5c91d1b012adf4ad9ed5e0d0dd8cdac083e3017a6b0e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\architecture-diagram-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\architecture-diagram-generator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Architecture Diagram Generator: Build Layered",
+  "short_description_vi": "The Architecture Diagram Generator allows users to create structured HTML architecture diagrams using Markdown. It's designed for developers and designers who want to visualize their architectural structures in a flexible layout."
+}

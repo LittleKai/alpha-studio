@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/frontend-design",
+  "slug": "frontend-design",
+  "name": "Frontend Design",
+  "headline": "Enhance Your Frontend Design with Anthropics",
+  "short_description": "Create production-grade frontend interfaces with high design quality. Ideal for marketing teams needing custom, non-generic UI designs. Works with React and CSS. Integrates with Claude Code, Cursor, Windsurf, and Cline.",
+  "tier": "Gold",
+  "category": "Designers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "ShyftAI",
+  "install_command": "claude install anthropics/skills/frontend-design",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude CodeCursorWindsurfCline"
+  ],
+  "tags": [
+    "frontend",
+    "ui",
+    "react",
+    "css",
+    "creative"
+  ],
+  "sections": {
+    "overview": "Unlock the potential of your sales, marketing, and RevOps teams with Frontend Design by anthropics. This innovative skill allows for rapid development and refinement of user interfaces, enabling teams to deliver exceptional web and mobile experiences. As a result, you can engage customers more effectively and shorten your product launch timelines. With Frontend Design, you can easily create responsive designs and prototypes that align with your brand's vision. The collaborative features make it simple for teams to gather feedback and iterate quickly, ensuring that your designs are not only visually stunning but also optimized for performance. Experience increased efficiency and market readiness, ultimately driving revenue growth and customer satisfaction.\nCreate responsive web designs that adapt seamlessly to various screen sizes.\nDevelop user interface prototypes to visualize and test design concepts quickly.\nOptimize user experience for mobile apps by implementing best design practices.\nCollaborate on design feedback and revisions to enhance team productivity.",
+    "setup": "Terminal\nCopy\n`claude install anthropics/skills/frontend-design`\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nDesign a production-ready frontend component for [PAGE_TYPE] using React and Tailwind CSS. The component should follow modern design principles with [COLOR_SCHEME] and [TYPOGRAPHY]. Include responsive behavior for [BREAKPOINTS]. Provide the component code, a live preview description, and usage instructions for [FRAMEWORK]. Ensure accessibility compliance with WCAG 2.1 AA standards.\n```\nCopy\n\n```\nHere’s a production-ready hero section for a SaaS landing page with a dark gradient background, modern typography, and a prominent CTA button. The component is built with React and Tailwind CSS, fully responsive, and includes hover animations for better UX.\n\n```jsx\nimport React from 'react';\n\nconst HeroSection = () => {\n  return (\n    <section className=\"relative bg-gradient-to-r from-slate-900 via-purple-900 to-slate-800 overflow-hidden\">\n      <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20\">\n        <div className=\"text-center\">\n          <h1 className=\"text-4xl md:text-6xl font-bold tracking-tight text-white\">\n            Build Faster with Our AI-Powered Platform\n          </h1>\n          <p className=\"mt-6 max-w-3xl mx-auto text-xl text-slate-300\">\n            Streamline your workflow with intelligent automation and seamless integrations.\n            Trusted by 10,000+ teams worldwide.\n          </p>\n          <div className=\"mt-10 flex justify-center\">\n            <button className=\"inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105\">\n              Start Free Trial\n            </button>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport default HeroSection;\n```\n\n**Live Preview Description:**\nThe hero section features a full-width gradient background transitioning from deep slate to vibrant purple. The headline uses a bold, modern font (Inter) at 4xl on mobile and 6xl on desktop, with tight letter spacing for readability. The supporting text is in a lighter slate shade at 1xl, centered below the headline. The CTA button is a rounded pill shape with a subtle shadow, indigo background, and scales slightly on hover for interactive feedback. The entire section collapses to a single column on mobile devices.\n\n**Usage Instructions:**\n1. Save the component as `HeroSection.jsx` in your React project.\n2. Import and render it in your page component:\n   ```jsx\n   import HeroSection from './components/HeroSection';\n   \n   function HomePage() {\n     return (\n       <div>\n         <HeroSection />\n         {/* Other page content */}\n       </div>\n     );\n   }\n   ```\n3. Customize the text, colors, and button actions by modifying the props or component directly.\n4. For Next.js projects, ensure Tailwind CSS is properly configured in your `tailwind.config.js`.\n5. Test responsiveness using Chrome DevTools or real devices to verify breakpoints (sm: 640px, md: 768px, lg: 1024px).\n\n**Accessibility Notes:**\n- The color contrast between text and background meets WCAG 2.1 AA standards (contrast ratio > 4.5:1).\n- The button has a focus ring for keyboard navigation.\n- Semantic HTML structure is used for screen readers.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline"
+    ],
+    "related_skills": [
+      "frontend-design#main-content",
+      "frontend-design#overview",
+      "frontend-design#setup",
+      "frontend-design#examples",
+      "frontend-design#tools",
+      "frontend-design#mcp",
+      "frontend-design#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Khai phá tiềm năng của các đội ngũ sales, marketing và RevOps với tính năng Frontend Design từ Anthropics. Skill cải tiến này cho phép phát triển và tinh chỉnh giao diện người dùng một cách nhanh chóng, giúp các đội ngũ mang lại trải nghiệm web và di động xuất sắc. Nhờ đó, bạn có thể tiếp cận khách hàng hiệu quả hơn và rút ngắn thời gian ra mắt sản phẩm. Với Frontend Design, bạn dễ dàng tạo ra các thiết kế responsive và prototype phù hợp với định hướng thương hiệu. Các tính năng cộng tác giúp các đội ngũ dễ dàng thu thập phản hồi và cải tiến nhanh chóng, đảm bảo thiết kế của bạn không chỉ đẹp mắt mà còn tối ưu hiệu năng. Trải nghiệm hiệu suất vượt trội và khả năng sẵn sàng tung ra thị trường, thúc đẩy tăng trưởng doanh thu cùng sự hài lòng của khách hàng.\nThiết kế web responsive tự động tương thích mượt mà với nhiều kích thước màn hình.\nPhát triển prototype giao diện để trực quan hóa và kiểm thử nhanh các ý tưởng thiết kế.\nTối ưu hóa trải nghiệm người dùng (UX) cho ứng dụng di động bằng cách áp dụng các thực tiễn thiết kế tốt nhất.\nCùng cộng tác để phản hồi và chỉnh sửa thiết kế nhằm nâng cao hiệu suất làm việc nhóm.",
+    "setup_vi": "Terminal\nSao chép\n`claude install anthropics/skills/frontend-design`\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nThiết kế một component frontend chuẩn production cho [PAGE_TYPE] sử dụng React và Tailwind CSS. Component cần tuân thủ các nguyên lý thiết kế hiện đại với [COLOR_SCHEME] và [TYPOGRAPHY]. Hỗ trợ responsive cho các [BREAKPOINTS]. Cung cấp mã nguồn component, phần mô tả live preview, và hướng dẫn sử dụng cho [FRAMEWORK]. Đảm bảo tuân thủ tiêu chuẩn tiếp cận WCAG 2.1 AA.\n```\nSao chép\n\n```\nDưới đây là một hero section chuẩn production dành cho landing page SaaS với nền gradient tối màu, typography hiện đại và nút CTA nổi bật. Component này được xây dựng bằng React và Tailwind CSS, hỗ trợ responsive hoàn toàn, đi kèm hiệu ứng hover giúp tăng trải nghiệm người dùng (UX).\n\n```jsx\nimport React from 'react';\n\nconst HeroSection = () => {\n  return (\n    <section className=\"relative bg-gradient-to-r from-slate-900 via-purple-900 to-slate-800 overflow-hidden\">\n      <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20\">\n        <div className=\"text-center\">\n          <h1 className=\"text-4xl md:text-6xl font-bold tracking-tight text-white\">\n            Build Faster with Our AI-Powered Platform\n          </h1>\n          <p className=\"mt-6 max-w-3xl mx-auto text-xl text-slate-300\">\n            Streamline your workflow with intelligent automation and seamless integrations.\n            Trusted by 10,000+ teams worldwide.\n          </p>\n          <div className=\"mt-10 flex justify-center\">\n            <button className=\"inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105\">\n              Start Free Trial\n            </button>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport default HeroSection;\n```\n\n**Mô tả Live Preview:**\nPhần hero section sở hữu nền gradient toàn màn hình chuyển màu từ xám đá (slate) đậm sang tím rực rỡ. Tiêu đề chính sử dụng phông chữ đậm, hiện đại (Inter) với kích thước 4xl trên thiết bị di động và 6xl trên máy tính để bàn, kết hợp khoảng cách chữ hẹp để tăng độ đọc hiểu. Phần văn bản phụ trợ sử dụng tông màu xám đá nhạt hơn ở cỡ 1xl, căn giữa ngay dưới tiêu đề. Nút CTA có thiết kế dạng bo tròn (pill shape) với hiệu ứng đổ bóng nhẹ, nền màu chàm (indigo) và tự động phóng to nhẹ khi di chuột qua để tạo tương tác phản hồi. Toàn bộ section sẽ tự động co giãn về một cột duy nhất trên các thiết bị di động.\n\n**Hướng dẫn sử dụng:**\n1. Lưu component này dưới tên `HeroSection.jsx` trong dự án React của bạn.\n2. Import và render nó trong component trang của bạn:\n   ```jsx\n   import HeroSection from './components/HeroSection';\n   \n   function HomePage() {\n     return (\n       <div>\n         <HeroSection />\n         {/* Các nội dung khác của trang */}\n       </div>\n     );\n   }\n   ```\n3. Tùy chỉnh văn bản, màu sắc và hành động của nút bằng cách sửa đổi trực tiếp các props hoặc component.\n4. Đối với các dự án Next.js, hãy đảm bảo Tailwind CSS được cấu hình chính xác trong file `tailwind.config.js`.\n5. Kiểm thử responsive bằng Chrome DevTools hoặc thiết bị thực tế để xác minh các breakpoints (sm: 640px, md: 768px, lg: 1024px).\n\n**Lưu ý về Khả năng tiếp cận (Accessibility):**\n- Độ tương phản màu sắc giữa văn bản và nền đáp ứng tiêu chuẩn WCAG 2.1 AA (tỷ lệ tương phản > 4.5:1).\n- Nút bấm có viền focus (focus ring) hỗ trợ điều hướng bằng bàn phím.\n- Sử dụng cấu trúc HTML ngữ nghĩa (semantic HTML) tối ưu cho các trình đọc màn hình (screen readers).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:26.393265Z",
+    "http_status": 200,
+    "content_hash": "cc1108eae6eb6e0038b86872a583cf0dee900f13e58566cd83dec5d0219f25d8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\frontend-design.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\frontend-design.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nâng tầm thiết kế frontend của bạn cùng Anthropics",
+  "short_description_vi": "Tạo giao diện frontend chuẩn production với chất lượng thiết kế cao. Giải pháp lý tưởng cho các đội ngũ marketing cần thiết kế UI tùy chỉnh và độc đáo. Tương thích tốt với React và CSS. Tích hợp mượt mà với Claude Code, Cursor, Windsurf và Cline."
+}

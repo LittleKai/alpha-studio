@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/duckdb-acp",
+  "slug": "duckdb-acp",
+  "name": "DuckDB ACP",
+  "headline": "DuckDB ACP - Natural Language SQL Queries",
+  "short_description": "DuckDB ACP enables natural language to SQL queries using AI agents like Claude Code. Operations teams can query data in plain English, reducing SQL dependency and speeding up analysis. It integrates directly into DuckDB workflows, connecting with existing data pipelines and tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "sidequery",
+  "install_command": "git clone https://github.com/sidequery/duckdb-acp.git",
+  "source_repo_url": "https://github.com/sidequery/duckdb-acp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "duckdb-extension",
+    "duckdb",
+    "agents",
+    "acp",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "DuckDB ACP is a DuckDB extension that converts plain English questions into SQL queries using Claude Code and the Agent Client Protocol. The extension supports two syntaxes: statement syntax (CLAUDE what is the total revenue?) and table functions (SELECT * FROM claude('query')). It automatically explores your database schema to generate accurate, contextual queries while maintaining safety through default mutation blocking. Query latency typically ranges from 5-30 seconds, and the extension requires DuckDB 1.1.0+, Node.js or bun, and valid Anthropic API credentials. Operations teams, data analysts, and SQL-averse teams benefit from reduced SQL dependency and faster analysis workflows.\nOperations teams querying databases without SQL expertise\nRapid exploratory data analysis using plain English questions\nReducing SQL dependency in data pipelines and workflows\nAccelerating ad-hoc analytics for business users",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sidequery/duckdb-acp`",
+    "usage": "```\nUse DuckDB ACP to translate this natural language query into a SQL query for [DATABASE_NAME]: '[NATURAL_LANGUAGE_QUERY]'. Execute the query and return the results in a clean table format. If the query involves joins, aggregations, or complex filtering, break down the steps in comments before the SQL. Example: 'Show me the top 5 products by revenue in Q2 2024, grouped by category.'\n```\nCopy\n\n```\n```sql\n-- Step 1: Filter sales data for Q2 2024 (April 1 - June 30)\n-- Step 2: Group by product_id and category, sum revenue\n-- Step 3: Sort by total revenue descending, limit to top 5\n\nSELECT \n    p.product_id,\n    p.category,\n    SUM(s.revenue) AS total_revenue,\n    COUNT(*) AS transaction_count\nFROM sales s\nJOIN products p ON s.product_id = p.product_id\nWHERE s.sale_date BETWEEN '2024-04-01' AND '2024-06-30'\nGROUP BY p.product_id, p.category\nORDER BY total_revenue DESC\nLIMIT 5;\n```\n\n**Query Results:**\n| product_id | category     | total_revenue | transaction_count |\n|------------|--------------|---------------|-------------------|\n| PRD-789    | Electronics  | $124,560.00   | 245               |\n| PRD-456    | Home & Garden| $98,720.00    | 189               |\n| PRD-123    | Clothing     | $87,340.00    | 312               |\n| PRD-321    | Sports       | $76,500.00    | 156               |\n| PRD-654    | Books        | $65,200.00    | 287               |\n\n*Note: Revenue figures are in USD. Data includes all completed transactions in Q2 2024.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "duckdb-acp#main-content",
+      "duckdb-acp#overview",
+      "duckdb-acp#setup",
+      "duckdb-acp#examples",
+      "duckdb-acp#tools",
+      "duckdb-acp#mcp",
+      "duckdb-acp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DuckDB ACP là một extension của DuckDB giúp chuyển đổi các câu hỏi tiếng Anh thông thường thành truy vấn SQL bằng cách sử dụng Claude Code và Agent Client Protocol. Extension này hỗ trợ hai dạng cú pháp: cú pháp câu lệnh (statement syntax - ví dụ: CLAUDE what is the total revenue?) và hàm bảng (table functions - ví dụ: SELECT * FROM claude('query')). Công cụ tự động khám phá database schema của bạn để tạo ra các truy vấn chính xác, phù hợp ngữ cảnh, đồng thời đảm bảo an toàn nhờ cơ chế chặn ghi/thay đổi dữ liệu (mutation blocking) mặc định. Độ trễ truy vấn thường dao động trong khoảng 5-30 giây. Extension yêu cầu DuckDB phiên bản 1.1.0 trở lên, Node.js hoặc bun, và thông tin xác thực API Anthropic hợp lệ. Các đội ngũ vận hành, nhà phân tích dữ liệu và các phòng ban không chuyên về SQL sẽ được hưởng lợi từ việc giảm phụ thuộc vào SQL và đẩy nhanh quy trình phân tích.\nCác đội ngũ vận hành cần truy vấn cơ sở dữ liệu mà không cần chuyên môn sâu về SQL\nPhân tích dữ liệu thăm dò nhanh chóng bằng các câu hỏi tiếng Anh thông thường\nGiảm sự phụ thuộc vào SQL trong các data pipeline và workflow\nTăng tốc quá trình phân tích ad-hoc cho người dùng doanh nghiệp",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng tham khảo GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sidequery/duckdb-acp`",
+    "usage_vi": "```\nSử dụng DuckDB ACP để dịch truy vấn bằng ngôn ngữ tự nhiên sau thành truy vấn SQL cho [DATABASE_NAME]: '[NATURAL_LANGUAGE_QUERY]'. Thực thi truy vấn và trả về kết quả dưới dạng bảng trực quan. Nếu truy vấn có chứa join, gom nhóm (aggregation) hoặc bộ lọc phức tạp, hãy chia nhỏ các bước thực hiện bằng comment trước mã SQL. Ví dụ: 'Hiển thị 5 sản phẩm có doanh thu cao nhất trong Quý 2/2024, gom nhóm theo danh mục.'\n```\nSao chép\n\n```\n```sql\n-- Bước 1: Lọc dữ liệu bán hàng trong Quý 2/2024 (từ 01/04 đến 30/06)\n-- Bước 2: Gom nhóm theo product_id và category, tính tổng doanh thu\n-- Bước 3: Sắp xếp theo tổng doanh thu giảm dần, giới hạn 5 kết quả hàng đầu\n\nSELECT \n    p.product_id,\n    p.category,\n    SUM(s.revenue) AS total_revenue,\n    COUNT(*) AS transaction_count\nFROM sales s\nJOIN products p ON s.product_id = p.product_id\nWHERE s.sale_date BETWEEN '2024-04-01' AND '2024-06-30'\nGROUP BY p.product_id, p.category\nORDER BY total_revenue DESC\nLIMIT 5;\n```\n\n**Kết quả truy vấn:**\n| product_id | category     | total_revenue | transaction_count |\n|------------|--------------|---------------|-------------------|\n| PRD-789    | Electronics  | $124,560.00   | 245               |\n| PRD-456    | Home & Garden| $98,720.00    | 189               |\n| PRD-123    | Clothing     | $87,340.00    | 312               |\n| PRD-321    | Sports       | $76,500.00    | 156               |\n| PRD-654    | Books        | $65,200.00    | 287               |\n\n*Lưu ý: Số liệu doanh thu được tính bằng USD. Dữ liệu bao gồm tất cả các giao dịch đã hoàn thành trong Quý 2/2024.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:15:35.239885Z",
+    "http_status": 200,
+    "content_hash": "743e64e508b4af570b0449a756ff1085cf9533e9195faddba90d6a276956575f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\duckdb-acp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\duckdb-acp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DuckDB ACP - Truy vấn SQL bằng Ngôn ngữ Tự nhiên",
+  "short_description_vi": "DuckDB ACP hỗ trợ chuyển đổi ngôn ngữ tự nhiên thành các truy vấn SQL thông qua các AI agent như Claude Code. Nhờ đó, các đội ngũ vận hành có thể truy vấn dữ liệu bằng tiếng Anh thông thường, giảm bớt sự phụ thuộc vào SQL và tăng tốc quá trình phân tích. Công cụ này tích hợp trực tiếp vào các workflow của DuckDB, kết nối dễ dàng với các data pipeline và công cụ hiện có."
+}

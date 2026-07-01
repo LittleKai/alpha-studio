@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/upgrading-expo",
+  "slug": "upgrading-expo",
+  "name": "Upgrading Expo",
+  "headline": "Upgrade Your Expo Projects Effortlessly",
+  "short_description": "Upgrade your Expo projects with the Upgrading Expo skill. This powerful tool simplifies the upgrade process, ensuring your applications stay up-to-date with the latest features and enhancements, ultimately saving you time and resources.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "expo",
+  "install_command": "claude install expo/skills/upgrading-expo",
+  "source_repo_url": "https://github.com/expo/skills",
+  "works_with": [
+    "Claude CodeCursorWindsurfCline"
+  ],
+  "tags": [
+    "Automation",
+    "Expo",
+    "Efficiency",
+    "Upgrade",
+    "App Development"
+  ],
+  "sections": {
+    "overview": "The Upgrading Expo skill is designed to revolutionize how teams manage their Expo projects. By automating the upgrade process, it ensures that your applications remain current without the usual hassle, allowing your Sales, Marketing, and RevOps teams to focus on what truly matters: driving growth and engagement. With significant time savings and reduced risk of errors, this skill empowers your teams to deliver better products faster, enhancing overall productivity. In today's fast-paced digital landscape, keeping your applications up to date is crucial. The Upgrading Expo skill not only simplifies upgrades but also enhances app performance, ensuring that your users always experience the best features. Say goodbye to lengthy manual upgrades and hello to a more efficient development cycle, ultimately positioning your organization for success in the competitive market.\nAutomate the upgrade process for existing Expo applications to ensure they are always up-to-date.\nReduce downtime during app updates by implementing a seamless upgrade workflow.\nEnhance application performance by integrating the latest features from Expo.\nMinimize manual errors in project upgrades through automated checks and balances.",
+    "setup": "Terminal\nCopy\n`claude install expo/skills/upgrading-expo`\n`git clone https://github.com/expo/skills`",
+    "usage": "```\nUpgrade my Expo project from version [CURRENT_VERSION] to [TARGET_VERSION]. Provide step-by-step instructions, including any necessary package updates, configuration changes, and potential breaking changes I should be aware of. Also, suggest any new features or improvements I can leverage in the new version.\n```\nCopy\n\n```\nTo upgrade your Expo project from version 48.0.0 to 50.0.0, follow these steps:\n\n1. **Update Expo CLI**: First, update the Expo CLI globally on your system using npm or yarn:\n   ```bash\n   npm install -g expo-cli\n   # or\n   yarn global add expo-cli\n   ```\n\n2. **Update Expo in your project**: Navigate to your project directory and update the Expo dependency:\n   ```bash\n   npm install expo@~50.0.0\n   # or\n   yarn add expo@~50.0.0\n   ```\n\n3. **Update other dependencies**: Check the Expo 50.0.0 release notes for any required updates to other dependencies. For example, you might need to update react-native, react, and other community packages:\n   ```bash\n   npm install react@18.2.0 react-dom@18.2.0 react-native@0.72.0\n   # or\n   yarn add react@18.2.0 react-dom@18.2.0 react-native@0.72.0\n   ```\n\n4. **Update configuration files**: Review the Expo 50.0.0 documentation for any changes to configuration files like app.json or app.config.js. Update these files accordingly.\n\n5. **Test your project**: After updating, test your project thoroughly to ensure everything works as expected. Pay special attention to any breaking changes mentioned in the release notes.\n\n6. **Leverage new features**: Expo 50.0.0 introduces several new features and improvements. Some notable ones include:\n   - **Improved Performance**: Expo 50.0.0 includes performance optimizations that can make your app faster and more responsive.\n   - **New APIs**: The new version introduces new APIs for features like camera enhancements, improved file system access, and more.\n   - **Enhanced Developer Experience**: The developer experience has been improved with better error messages, faster builds, and more intuitive tooling.\n\nBy following these steps, you can ensure a smooth upgrade process and take advantage of the latest features and improvements in Expo 50.0.0.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline"
+    ],
+    "related_skills": [
+      "upgrading-expo#main-content",
+      "upgrading-expo#overview",
+      "upgrading-expo#setup",
+      "upgrading-expo#examples",
+      "upgrading-expo#tools",
+      "upgrading-expo#mcp",
+      "upgrading-expo#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The Upgrading Expo skill is designed to revolutionize how teams manage their Expo projects. By automating the upgrade process, it ensures that your applications remain current without the usual hassle, allowing your Sales, Marketing, and RevOps teams to focus on what truly matters: driving growth and engagement. With significant time savings and reduced risk of errors, this skill empowers your teams to deliver better products faster, enhancing overall productivity. In today's fast-paced digital landscape, keeping your applications up to date is crucial. The Upgrading Expo skill not only simplifies upgrades but also enhances app performance, ensuring that your users always experience the best features. Say goodbye to lengthy manual upgrades and hello to a more efficient development cycle, ultimately positioning your organization for success in the competitive market.\nAutomate the upgrade process for existing Expo applications to ensure they are always up-to-date.\nReduce downtime during app updates by implementing a seamless upgrade workflow.\nEnhance application performance by integrating the latest features from Expo.\nMinimize manual errors in project upgrades through automated checks and balances.",
+    "setup_vi": "Terminal\nCopy\n`claude install expo/skills/upgrading-expo`\n`git clone https://github.com/expo/skills`",
+    "usage_vi": "```\nUpgrade my Expo project from version [CURRENT_VERSION] to [TARGET_VERSION]. Provide step-by-step instructions, including any necessary package updates, configuration changes, and potential breaking changes I should be aware of. Also, suggest any new features or improvements I can leverage in the new version.\n```\nCopy\n\n```\nTo upgrade your Expo project from version 48.0.0 to 50.0.0, follow these steps:\n\n1. **Update Expo CLI**: First, update the Expo CLI globally on your system using npm or yarn:\n   ```bash\n   npm install -g expo-cli\n   # or\n   yarn global add expo-cli\n   ```\n\n2. **Update Expo in your project**: Navigate to your project directory and update the Expo dependency:\n   ```bash\n   npm install expo@~50.0.0\n   # or\n   yarn add expo@~50.0.0\n   ```\n\n3. **Update other dependencies**: Check the Expo 50.0.0 release notes for any required updates to other dependencies. For example, you might need to update react-native, react, and other community packages:\n   ```bash\n   npm install react@18.2.0 react-dom@18.2.0 react-native@0.72.0\n   # or\n   yarn add react@18.2.0 react-dom@18.2.0 react-native@0.72.0\n   ```\n\n4. **Update configuration files**: Review the Expo 50.0.0 documentation for any changes to configuration files like app.json or app.config.js. Update these files accordingly.\n\n5. **Test your project**: After updating, test your project thoroughly to ensure everything works as expected. Pay special attention to any breaking changes mentioned in the release notes.\n\n6. **Leverage new features**: Expo 50.0.0 introduces several new features and improvements. Some notable ones include:\n   - **Improved Performance**: Expo 50.0.0 includes performance optimizations that can make your app faster and more responsive.\n   - **New APIs**: The new version introduces new APIs for features like camera enhancements, improved file system access, and more.\n   - **Enhanced Developer Experience**: The developer experience has been improved with better error messages, faster builds, and more intuitive tooling.\n\nBy following these steps, you can ensure a smooth upgrade process and take advantage of the latest features and improvements in Expo 50.0.0.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:14:14.635682Z",
+    "http_status": 200,
+    "content_hash": "e7f207b6bb3a39a02aff256009d920087a5b294d959b8676b931201bf69a2282",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\upgrading-expo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\upgrading-expo.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Upgrade Your Expo Projects Effortlessly",
+  "short_description_vi": "Upgrade your Expo projects with the Upgrading Expo skill. This powerful tool simplifies the upgrade process, ensuring your applications stay up-to-date with the latest features and enhancements, ultimately saving you time and resources."
+}

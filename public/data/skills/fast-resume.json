@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/fast-resume",
+  "slug": "fast-resume",
+  "name": "browser-use",
+  "headline": "Fast-resume - Quickly Resume Coding Sessions",
+  "short_description": "Fast-resume is a Python-based CLI tool that helps developers quickly locate and resume specific coding agent sessions. It benefits developers and operations teams by streamlining workflows and reducing time spent searching for previous work. The tool connects to Claude agents and integrates with existing coding environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "angristan",
+  "install_command": "git clone https://github.com/angristan/fast-resume.git",
+  "source_repo_url": "https://github.com/angristan/fast-resume",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "opencode",
+    "agent-cli",
+    "codex-cli",
+    "coding-agent",
+    "textual",
+    "tantivy"
+  ],
+  "sections": {
+    "overview": "Fast-resume solves the problem of scattered coding agent sessions by providing unified full-text search across Claude Code, Codex, Copilot, and other coding agents. Built on Rust-powered Tantivy, it indexes entire conversation content—not just titles—enabling developers and operations teams to quickly locate specific sessions using fuzzy matching and keyword filters. The tool features a fzf-style terminal interface with live preview and direct session resumption, supporting intelligent yolo mode handling for agents that allow auto-approval. Installation is straightforward via Homebrew or PyPI, making it accessible for teams managing multiple concurrent coding agent workflows.\nFind previous coding sessions by searching conversation content across multiple agents\nResume interrupted development work without navigating through agent interfaces\nLocate specific technical discussions or solutions mentioned in past sessions\nFilter sessions by agent type, directory, or date range for faster navigation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/angristan/fast-resume`",
+    "usage": "```\nUse the fast-resume CLI tool to locate and resume a coding agent session for [PROJECT_NAME] from the last [TIME_PERIOD]. Filter sessions by [LANGUAGE] and [TAGS] if applicable. Provide the exact command to run and summarize the key details of the resumed session.\n```\nCopy\n\n```\n```bash\n$ fast-resume --project \"E-commerce API\" --time \"last 7 days\" --language \"Python\" --tags \"authentication,database\"\n\nResumed session: 'E-commerce API - Authentication Refactor'\nSession ID: claudecode-20240515-142233\nTags: authentication, database, refactor\nLanguage: Python\nLast active: 2 days ago\nKey files in context:\n- /src/auth/models.py (modified 3 days ago)\n- /tests/test_auth.py (modified 1 day ago)\n- /docs/api_spec.md (viewed 5 hours ago)\n\nNext steps suggested by the agent:\n1. Review the failing test in test_auth.py (line 42)\n2. Implement JWT token refresh logic in models.py\n3. Update API spec with new endpoint /refresh\n\nTo continue where you left off, run:\n$ claude --resume claudecode-20240515-142233\n```\n\nThe resumed session immediately loaded the authentication refactor project with all relevant files and test failures in context. The agent's previous work on JWT token handling was preserved, including partial implementations in models.py and corresponding test cases. The API specification document was also available, showing the planned endpoint structure. This saved approximately 20 minutes of setup time compared to starting a new session.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "fast-resume#main-content",
+      "fast-resume#overview",
+      "fast-resume#setup",
+      "fast-resume#examples",
+      "fast-resume#tools",
+      "fast-resume#mcp",
+      "fast-resume#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Fast-resume solves the problem of scattered coding agent sessions by providing unified full-text search across Claude Code, Codex, Copilot, and other coding agents. Built on Rust-powered Tantivy, it indexes entire conversation content—not just titles—enabling developers and operations teams to quickly locate specific sessions using fuzzy matching and keyword filters. The tool features a fzf-style terminal interface with live preview and direct session resumption, supporting intelligent yolo mode handling for agents that allow auto-approval. Installation is straightforward via Homebrew or PyPI, making it accessible for teams managing multiple concurrent coding agent workflows.\nFind previous coding sessions by searching conversation content across multiple agents\nResume interrupted development work without navigating through agent interfaces\nLocate specific technical discussions or solutions mentioned in past sessions\nFilter sessions by agent type, directory, or date range for faster navigation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/angristan/fast-resume`",
+    "usage_vi": "```\nUse the fast-resume CLI tool to locate and resume a coding agent session for [PROJECT_NAME] from the last [TIME_PERIOD]. Filter sessions by [LANGUAGE] and [TAGS] if applicable. Provide the exact command to run and summarize the key details of the resumed session.\n```\nCopy\n\n```\n```bash\n$ fast-resume --project \"E-commerce API\" --time \"last 7 days\" --language \"Python\" --tags \"authentication,database\"\n\nResumed session: 'E-commerce API - Authentication Refactor'\nSession ID: claudecode-20240515-142233\nTags: authentication, database, refactor\nLanguage: Python\nLast active: 2 days ago\nKey files in context:\n- /src/auth/models.py (modified 3 days ago)\n- /tests/test_auth.py (modified 1 day ago)\n- /docs/api_spec.md (viewed 5 hours ago)\n\nNext steps suggested by the agent:\n1. Review the failing test in test_auth.py (line 42)\n2. Implement JWT token refresh logic in models.py\n3. Update API spec with new endpoint /refresh\n\nTo continue where you left off, run:\n$ claude --resume claudecode-20240515-142233\n```\n\nThe resumed session immediately loaded the authentication refactor project with all relevant files and test failures in context. The agent's previous work on JWT token handling was preserved, including partial implementations in models.py and corresponding test cases. The API specification document was also available, showing the planned endpoint structure. This saved approximately 20 minutes of setup time compared to starting a new session.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:08:53.351478Z",
+    "http_status": 200,
+    "content_hash": "bc9db5478748ca536c8558c0b5530329ace8503275e5a83956f449747e9a33ae",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fast-resume.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fast-resume.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Fast-resume - Quickly Resume Coding Sessions",
+  "short_description_vi": "Fast-resume is a Python-based CLI tool that helps developers quickly locate and resume specific coding agent sessions. It benefits developers and operations teams by streamlining workflows and reducing time spent searching for previous work. The tool connects to Claude agents and integrates with existing coding environments."
+}

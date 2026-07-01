@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/superpowers",
+  "slug": "superpowers",
+  "name": "react-native-best-practices",
+  "headline": "Superpowers: Enhance Your Productivity with AI",
+  "short_description": "Superpowers is an AI agent skill that enhances productivity and decision-making for sales teams. It accelerates workflows by automating data analysis and providing actionable insights. Supported by Claude Code, Cursor, Windsurf, Cline, and Codex, it integrates with existing sales tools to streamline processes and improve outcomes.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/obra",
+  "source_repo_url": "https://github.com/sh/obra",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "data analysis",
+    "AI",
+    "productivity",
+    "automation"
+  ],
+  "sections": {
+    "overview": "Superpowers is an AI agent skill designed to enhance productivity and decision-making within sales teams. It accelerates workflows by automating data analysis and delivering actionable insights that streamline sales processes. The skill integrates seamlessly with existing sales tools and is supported by major development platforms including Claude Code, Cursor, Windsurf, Cline, and Codex.\nAutomating repetitive tasks\nGenerating creative content\nAnalyzing data trends",
+    "setup": "Terminal\nCopy\n`npx skills add sh/obra`\n`git clone https://github.com/sh/obra`",
+    "usage": "```\nAnalyze the SaaS spending data from Productiv for [COMPANY_NAME]. Identify the top 5 most expensive software subscriptions in [DEPARTMENT_NAME] for the past 12 months. For each subscription, calculate the potential savings if we downgrade to a lower-tier plan or consolidate licenses. Provide a prioritized list of recommendations with estimated annual savings and implementation timeline. Include any compliance risks or renewal deadlines that require immediate attention.\n```\nCopy\n\n```\n### SaaS Spending Analysis for Acme Corp - Marketing Department (2023-2024)\n\n**Top 5 Most Expensive Subscriptions:**\n1. **HubSpot Marketing Hub Professional**\n   - Annual Cost: $36,000 (30 licenses @ $1,200/year each)\n   - Usage Analysis: Only 18 active users in the past 90 days\n   - Recommendation: Downgrade to Starter plan ($15,000/year) → **Annual Savings: $21,000**\n   - Compliance Note: Contract expires in 60 days; renewal decision required by EOD Friday\n\n2. **Adobe Creative Cloud Enterprise**\n   - Annual Cost: $28,800 (24 licenses @ $1,200/year each)\n   - Usage Analysis: 12 licenses used <10 hours/month\n   - Recommendation: Consolidate to 15 licenses ($18,000/year) → **Annual Savings: $10,800**\n   - Implementation Timeline: 30 days (license redistribution required)\n\n3. **Salesforce Marketing Cloud**\n   - Annual Cost: $24,000 (base package)\n   - Usage Analysis: 60% of features unused (email campaigns only)\n   - Recommendation: Switch to Essential plan ($12,000/year) → **Annual Savings: $12,000**\n   - Risk: Data migration required; plan for 90-day transition\n\n4. **Zoom Webinars Pro**\n   - Annual Cost: $12,000 (unlimited webinars)\n   - Usage Analysis: 8 webinars hosted in 2023 (avg. 250 attendees)\n   - Recommendation: Switch to Basic plan ($3,000/year) + pay-per-webinar ($50/event) → **Annual Savings: $8,500**\n   - Compliance Note: Auto-renewal in 45 days; must opt out by email\n\n5. **Slack Pro**\n   - Annual Cost: $9,600 (80 users @ $120/year each)\n   - Usage Analysis: 45 active users (56% utilization)\n   - Recommendation: Reduce to 50 licenses ($6,000/year) → **Annual Savings: $3,600**\n   - Implementation: Immediate (user deactivation in 7 days)\n\n**Total Potential Annual Savings: $55,900**\n\n**Action Items:**\n1. **This Week:** Contact HubSpot and Salesforce for downgrade quotes; schedule renewal calls\n2. **Next 30 Days:** Redistribute Adobe licenses; migrate Salesforce data\n3. **Ongoing:** Set up monthly reviews with Productiv to track usage and flag underutilized tools\n\n**Compliance Alerts:**\n- 3 subscriptions require renewal decisions within 60 days\n- 2 tools have unused licenses that may violate license agreements\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "superpowers#main-content",
+      "superpowers#overview",
+      "superpowers#setup",
+      "superpowers#examples",
+      "superpowers#tools",
+      "superpowers#mcp",
+      "superpowers#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Superpowers is an AI agent skill designed to enhance productivity and decision-making within sales teams. It accelerates workflows by automating data analysis and delivering actionable insights that streamline sales processes. The skill integrates seamlessly with existing sales tools and is supported by major development platforms including Claude Code, Cursor, Windsurf, Cline, and Codex.\nAutomating repetitive tasks\nGenerating creative content\nAnalyzing data trends",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/obra`\n`git clone https://github.com/sh/obra`",
+    "usage_vi": "```\nAnalyze the SaaS spending data from Productiv for [COMPANY_NAME]. Identify the top 5 most expensive software subscriptions in [DEPARTMENT_NAME] for the past 12 months. For each subscription, calculate the potential savings if we downgrade to a lower-tier plan or consolidate licenses. Provide a prioritized list of recommendations with estimated annual savings and implementation timeline. Include any compliance risks or renewal deadlines that require immediate attention.\n```\nCopy\n\n```\n### SaaS Spending Analysis for Acme Corp - Marketing Department (2023-2024)\n\n**Top 5 Most Expensive Subscriptions:**\n1. **HubSpot Marketing Hub Professional**\n   - Annual Cost: $36,000 (30 licenses @ $1,200/year each)\n   - Usage Analysis: Only 18 active users in the past 90 days\n   - Recommendation: Downgrade to Starter plan ($15,000/year) → **Annual Savings: $21,000**\n   - Compliance Note: Contract expires in 60 days; renewal decision required by EOD Friday\n\n2. **Adobe Creative Cloud Enterprise**\n   - Annual Cost: $28,800 (24 licenses @ $1,200/year each)\n   - Usage Analysis: 12 licenses used <10 hours/month\n   - Recommendation: Consolidate to 15 licenses ($18,000/year) → **Annual Savings: $10,800**\n   - Implementation Timeline: 30 days (license redistribution required)\n\n3. **Salesforce Marketing Cloud**\n   - Annual Cost: $24,000 (base package)\n   - Usage Analysis: 60% of features unused (email campaigns only)\n   - Recommendation: Switch to Essential plan ($12,000/year) → **Annual Savings: $12,000**\n   - Risk: Data migration required; plan for 90-day transition\n\n4. **Zoom Webinars Pro**\n   - Annual Cost: $12,000 (unlimited webinars)\n   - Usage Analysis: 8 webinars hosted in 2023 (avg. 250 attendees)\n   - Recommendation: Switch to Basic plan ($3,000/year) + pay-per-webinar ($50/event) → **Annual Savings: $8,500**\n   - Compliance Note: Auto-renewal in 45 days; must opt out by email\n\n5. **Slack Pro**\n   - Annual Cost: $9,600 (80 users @ $120/year each)\n   - Usage Analysis: 45 active users (56% utilization)\n   - Recommendation: Reduce to 50 licenses ($6,000/year) → **Annual Savings: $3,600**\n   - Implementation: Immediate (user deactivation in 7 days)\n\n**Total Potential Annual Savings: $55,900**\n\n**Action Items:**\n1. **This Week:** Contact HubSpot and Salesforce for downgrade quotes; schedule renewal calls\n2. **Next 30 Days:** Redistribute Adobe licenses; migrate Salesforce data\n3. **Ongoing:** Set up monthly reviews with Productiv to track usage and flag underutilized tools\n\n**Compliance Alerts:**\n- 3 subscriptions require renewal decisions within 60 days\n- 2 tools have unused licenses that may violate license agreements\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:23:04.935151Z",
+    "http_status": 200,
+    "content_hash": "4c133ed2b91be6248eb29b4477d5f483b8821ccdeebd0925f9dc2e0049994fbe",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\superpowers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\superpowers.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Superpowers: Enhance Your Productivity with AI",
+  "short_description_vi": "Superpowers is an AI agent skill that enhances productivity and decision-making for sales teams. It accelerates workflows by automating data analysis and providing actionable insights. Supported by Claude Code, Cursor, Windsurf, Cline, and Codex, it integrates with existing sales tools to streamline processes and improve outcomes."
+}

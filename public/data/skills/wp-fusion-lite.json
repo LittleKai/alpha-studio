@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wp-fusion-lite",
+  "slug": "wp-fusion-lite",
+  "name": "Wp Fusion Lite",
+  "headline": "wp-fusion-lite: Marketing Automation",
+  "short_description": "WP Fusion Lite connects your WordPress site to CRM or marketing automation systems. It enables data sync between WordPress core and external platforms. Marketers benefit from centralized customer data and automated workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "verygoodplugins",
+  "install_command": "git clone https://github.com/verygoodplugins/wp-fusion-lite.git",
+  "source_repo_url": "https://github.com/verygoodplugins/wp-fusion-lite",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The wp-fusion-lite skill is a powerful automation tool that seamlessly connects your WordPress website to your CRM or marketing automation system. By integrating these platforms, it enables businesses to streamline their marketing efforts, ensuring that customer interactions are tracked and managed effectively. This skill is particularly beneficial for those looking to enhance their marketing strategies through automation, allowing for more efficient data handling and customer engagement. One of the key benefits of using wp-fusion-lite is the potential for significant time savings in managing marketing workflows. Although specific time savings are currently unknown, the automation of data synchronization between WordPress and your CRM can eliminate manual entry, reduce errors, and free up valuable time for marketers and developers alike. This skill is designed for intermediate users, making it accessible for those with a solid understanding of both WordPress and CRM systems. Marketers, product managers, and AI practitioners will find wp-fusion-lite particularly useful. By automating the connection between WordPress and various CRM platforms, users can ensure that their marketing campaigns are data-driven and responsive to customer behavior. For example, a marketing team can automatically segment users based on their website interactions, allowing for targeted email campaigns that drive engagement and conversions. Implementing wp-fusion-lite requires approximately 30 minutes, making it a quick addition to your marketing toolkit. This skill fits perfectly into AI-first workflows, enabling teams to leverage data more effectively and make informed decisions. As businesses increasingly adopt AI automation, integrating tools like wp-fusion-lite will be crucial for maintaining competitive advantage in the marketing landscape.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/verygoodplugins/wp-fusion-lite`",
+    "usage": "```\nSet up WP Fusion Lite to sync [USER_ROLE] data from WordPress to [CRM_PLATFORM] when a user [TRIGGER_ACTION]. Map the following WordPress fields to CRM fields: [WP_FIELDS]. Configure the automation to tag users with [TAG_NAME] when they complete [EVENT_NAME]. Test the sync and verify the data appears correctly in [CRM_PLATFORM].\n```\nCopy\n\n```\nI’ve configured WP Fusion Lite to sync 'subscriber' user roles from WordPress to HubSpot whenever a user completes a 'purchase' action. I mapped the WordPress fields 'first_name', 'last_name', 'email', and 'user_registered' to HubSpot’s 'firstname', 'lastname', 'email', and 'createdate' fields respectively. The automation is set to tag users with 'premium_customer' when they complete a purchase. After testing, the data sync is working perfectly: the WordPress user 'Jane Doe (jane.doe@example.com)' who registered on 2023-10-15 now appears in HubSpot with the correct fields populated and the 'premium_customer' tag applied. The sync occurred within 5 minutes of the purchase completion.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wp-fusion-lite#main-content",
+      "wp-fusion-lite#overview",
+      "wp-fusion-lite#setup",
+      "wp-fusion-lite#examples",
+      "wp-fusion-lite#tools",
+      "wp-fusion-lite#mcp",
+      "wp-fusion-lite#related",
+      "marketingskills",
+      "copywriting",
+      "tako"
+    ],
+    "overview_vi": "The wp-fusion-lite skill is a powerful automation tool that seamlessly connects your WordPress website to your CRM or marketing automation system. By integrating these platforms, it enables businesses to streamline their marketing efforts, ensuring that customer interactions are tracked and managed effectively. This skill is particularly beneficial for those looking to enhance their marketing strategies through automation, allowing for more efficient data handling and customer engagement. One of the key benefits of using wp-fusion-lite is the potential for significant time savings in managing marketing workflows. Although specific time savings are currently unknown, the automation of data synchronization between WordPress and your CRM can eliminate manual entry, reduce errors, and free up valuable time for marketers and developers alike. This skill is designed for intermediate users, making it accessible for those with a solid understanding of both WordPress and CRM systems. Marketers, product managers, and AI practitioners will find wp-fusion-lite particularly useful. By automating the connection between WordPress and various CRM platforms, users can ensure that their marketing campaigns are data-driven and responsive to customer behavior. For example, a marketing team can automatically segment users based on their website interactions, allowing for targeted email campaigns that drive engagement and conversions. Implementing wp-fusion-lite requires approximately 30 minutes, making it a quick addition to your marketing toolkit. This skill fits perfectly into AI-first workflows, enabling teams to leverage data more effectively and make informed decisions. As businesses increasingly adopt AI automation, integrating tools like wp-fusion-lite will be crucial for maintaining competitive advantage in the marketing landscape.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/verygoodplugins/wp-fusion-lite`",
+    "usage_vi": "```\nSet up WP Fusion Lite to sync [USER_ROLE] data from WordPress to [CRM_PLATFORM] when a user [TRIGGER_ACTION]. Map the following WordPress fields to CRM fields: [WP_FIELDS]. Configure the automation to tag users with [TAG_NAME] when they complete [EVENT_NAME]. Test the sync and verify the data appears correctly in [CRM_PLATFORM].\n```\nCopy\n\n```\nI’ve configured WP Fusion Lite to sync 'subscriber' user roles from WordPress to HubSpot whenever a user completes a 'purchase' action. I mapped the WordPress fields 'first_name', 'last_name', 'email', and 'user_registered' to HubSpot’s 'firstname', 'lastname', 'email', and 'createdate' fields respectively. The automation is set to tag users with 'premium_customer' when they complete a purchase. After testing, the data sync is working perfectly: the WordPress user 'Jane Doe (jane.doe@example.com)' who registered on 2023-10-15 now appears in HubSpot with the correct fields populated and the 'premium_customer' tag applied. The sync occurred within 5 minutes of the purchase completion.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:55.645945Z",
+    "http_status": 200,
+    "content_hash": "3fceca37313f23aa724fad3ac974d678da1e9a807867c75fed1c47213c118f0a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wp-fusion-lite.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wp-fusion-lite.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "wp-fusion-lite: Marketing Automation",
+  "short_description_vi": "WP Fusion Lite connects your WordPress site to CRM or marketing automation systems. It enables data sync between WordPress core and external platforms. Marketers benefit from centralized customer data and automated workflows."
+}

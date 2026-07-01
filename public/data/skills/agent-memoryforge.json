@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-memoryforge",
+  "slug": "agent-memoryforge",
+  "name": "browser-use",
+  "headline": "7-layer intelligent memory for AI agents",
+  "short_description": "Agent-MemoryForge enables AI agents to retain and recall information across multiple modalities. Operations teams benefit from improved agent performance in tasks requiring historical context. It connects to Azure OpenAI and Neo4j for memory storage and retrieval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "hellangleZ",
+  "install_command": "git clone https://github.com/hellangleZ/Agent-MemoryForge.git",
+  "source_repo_url": "https://github.com/hellangleZ/Agent-MemoryForge",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Agent-MemoryForge is a memory infrastructure product designed for AI agents that need persistent, searchable, and auditable memory across conversations and tasks. It works as a dedicated memory layer alongside existing agent frameworks like LangChain, LangGraph, OpenAI Agents SDK, AutoGen, and CrewAI—without requiring replacement of your current stack. The system provides tenant and workspace isolation, short-term conversation checkpoints, active working memory, semantic facts, graph relationships, and async memory distillation through an authenticated REST API and Python SDK. Operations teams benefit from structured memory management, quota accounting, encrypted workspace secrets, and audit logs that support debugging and compliance requirements.\nMulti-tenant SaaS platforms needing isolated customer memory and workspace governance\nEnterprise agent systems requiring audit trails and operator visibility into memory state\nComplex task agents that maintain working memory, preferences, and semantic facts across sessions\nAgent migrations between frameworks while preserving accumulated memory and context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hellangleZ/Agent-MemoryForge`",
+    "usage": "```\nAct as an AI agent with persistent memory enabled by Agent-MemoryForge. When provided with [TASK_CONTEXT], [PREVIOUS_INTERACTIONS], and [NEW_INPUT], synthesize this information to generate a coherent response that demonstrates continuity with past interactions. Use the following format for your response: \n\n**Context Summary:** [2-3 sentence recap of prior relevant interactions]\n\n**Actionable Insight:** [Specific recommendation or solution based on the combined context]\n\n**Memory Update:** [What new information should be stored for future interactions?]\n\nInput: [TASK_CONTEXT], [PREVIOUS_INTERACTIONS], [NEW_INPUT]\n```\nCopy\n\n```\n{\n  \"Context Summary\": \"In our previous interaction on 2024-05-15, we discussed the performance issues of the 'Aurora' microservice in the 'Eclipse' cluster. The root cause was identified as a memory leak in the 'data-processor' container, which was consuming 95% of available memory. We implemented a temporary fix by restarting the container and increasing its memory limit from 2GB to 4GB.\",\n\n  \"Actionable Insight\": \"The 'Aurora' microservice has been stable since the memory limit increase, but the underlying issue persists. The 'data-processor' container is now consuming 88% of its allocated 4GB memory, indicating the leak is still active but slower. I recommend scheduling a maintenance window to deploy the permanent fix (patch version 1.2.3) and monitoring memory usage for 24 hours post-deployment. The patch includes a garbage collection optimization that should reduce memory consumption by ~40%.\",\n\n  \"Memory Update\": \"1. Aurora microservice memory leak persists but is controlled with 4GB limit. 2. Patch version 1.2.3 is ready for deployment. 3. Schedule maintenance window for 2024-05-22 at 02:00 UTC. 4. Monitor memory usage post-deployment for 24 hours. 5. Document the temporary fix in the runbook for future reference.\"\n}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-memoryforge#main-content",
+      "agent-memoryforge#overview",
+      "agent-memoryforge#setup",
+      "agent-memoryforge#examples",
+      "agent-memoryforge#tools",
+      "agent-memoryforge#mcp",
+      "agent-memoryforge#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent-MemoryForge is a memory infrastructure product designed for AI agents that need persistent, searchable, and auditable memory across conversations and tasks. It works as a dedicated memory layer alongside existing agent frameworks like LangChain, LangGraph, OpenAI Agents SDK, AutoGen, and CrewAI—without requiring replacement of your current stack. The system provides tenant and workspace isolation, short-term conversation checkpoints, active working memory, semantic facts, graph relationships, and async memory distillation through an authenticated REST API and Python SDK. Operations teams benefit from structured memory management, quota accounting, encrypted workspace secrets, and audit logs that support debugging and compliance requirements.\nMulti-tenant SaaS platforms needing isolated customer memory and workspace governance\nEnterprise agent systems requiring audit trails and operator visibility into memory state\nComplex task agents that maintain working memory, preferences, and semantic facts across sessions\nAgent migrations between frameworks while preserving accumulated memory and context",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hellangleZ/Agent-MemoryForge`",
+    "usage_vi": "```\nAct as an AI agent with persistent memory enabled by Agent-MemoryForge. When provided with [TASK_CONTEXT], [PREVIOUS_INTERACTIONS], and [NEW_INPUT], synthesize this information to generate a coherent response that demonstrates continuity with past interactions. Use the following format for your response: \n\n**Context Summary:** [2-3 sentence recap of prior relevant interactions]\n\n**Actionable Insight:** [Specific recommendation or solution based on the combined context]\n\n**Memory Update:** [What new information should be stored for future interactions?]\n\nInput: [TASK_CONTEXT], [PREVIOUS_INTERACTIONS], [NEW_INPUT]\n```\nCopy\n\n```\n{\n  \"Context Summary\": \"In our previous interaction on 2024-05-15, we discussed the performance issues of the 'Aurora' microservice in the 'Eclipse' cluster. The root cause was identified as a memory leak in the 'data-processor' container, which was consuming 95% of available memory. We implemented a temporary fix by restarting the container and increasing its memory limit from 2GB to 4GB.\",\n\n  \"Actionable Insight\": \"The 'Aurora' microservice has been stable since the memory limit increase, but the underlying issue persists. The 'data-processor' container is now consuming 88% of its allocated 4GB memory, indicating the leak is still active but slower. I recommend scheduling a maintenance window to deploy the permanent fix (patch version 1.2.3) and monitoring memory usage for 24 hours post-deployment. The patch includes a garbage collection optimization that should reduce memory consumption by ~40%.\",\n\n  \"Memory Update\": \"1. Aurora microservice memory leak persists but is controlled with 4GB limit. 2. Patch version 1.2.3 is ready for deployment. 3. Schedule maintenance window for 2024-05-22 at 02:00 UTC. 4. Monitor memory usage post-deployment for 24 hours. 5. Document the temporary fix in the runbook for future reference.\"\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:06.577859Z",
+    "http_status": 200,
+    "content_hash": "5bad71e41ce2a6c72bcf89987dcd8c6568dfc11cc2979cc048fbeb8d72b5016d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-memoryforge.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-memoryforge.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "7-layer intelligent memory for AI agents",
+  "short_description_vi": "Agent-MemoryForge enables AI agents to retain and recall information across multiple modalities. Operations teams benefit from improved agent performance in tasks requiring historical context. It connects to Azure OpenAI and Neo4j for memory storage and retrieval."
+}

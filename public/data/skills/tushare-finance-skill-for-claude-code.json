@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tushare-finance-skill-for-claude-code",
+  "slug": "tushare-finance-skill-for-claude-code",
+  "name": "Tushare-Finance-Skill-for-Claude-Code",
+  "headline": "Tushare Finance Skill for Claude Code",
+  "short_description": "A Claude Code skill that connects AI agents to the Tushare financial data API, enabling automated retrieval of Chinese stock market data. Designed for developers and analysts building finance automation workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "55 min",
+  "author": "StanleyChanH",
+  "install_command": "git clone https://github.com/StanleyChanH/Tushare-Finance-Skill-for-Claude-Code.git",
+  "source_repo_url": "https://github.com/StanleyChanH/Tushare-Finance-Skill-for-Claude-Code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Tushare Finance Skill for Claude Code integrates the Tushare financial data platform directly into AI agent workflows, allowing Claude Code and similar tools to query Chinese stock market data programmatically. It includes a Python API client with batch query support and command-line tools for flexible data access. The skill ships with a quick reference guide and structured documentation to help developers get started with finance automation tasks. It is suited for developers, quants, and analysts who want to automate data retrieval, analysis, or reporting pipelines using AI coding assistants.\nFetching historical Chinese stock price data inside a Claude Code session\nRunning batch queries against the Tushare API from an AI agent workflow\nAutomating financial data retrieval for analysis or reporting scripts\nUsing command-line tools to pull Tushare data without writing custom API code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/StanleyChanH/Tushare-Finance-Skill-for-Claude-Code`",
+    "usage": "```\nI need to automate financial data analysis using Tushare in Python. Generate a script that fetches stock data for [COMPANY] in the [INDUSTRY] sector from [START_DATE] to [END_DATE], calculates key financial metrics like P/E ratio, and exports the results to a CSV file. Include error handling and logging.\n```\nCopy\n\n```\n```python\nimport tushare as ts\nimport pandas as pd\n\n# Initialize Tushare with your token\npro = ts.pro_api('[YOUR_TUSHARE_TOKEN]')\n\n# Fetch stock data for Apple Inc. in the Technology sector\ntry:\n    df = pro.daily(ts_code='000001.SZ', start_date='2023-01-01', end_date='2023-12-31')\n    df['P/E Ratio'] = df['close'] / df['pe']  # Calculate P/E Ratio\n    df.to_csv('apple_stock_data.csv', index=False)\n    print(\"Data fetched and saved successfully.\")\nexcept Exception as e:\n    print(f\"An error occurred: {e}\")\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tushare-finance-skill-for-claude-code#main-content",
+      "tushare-finance-skill-for-claude-code#overview",
+      "tushare-finance-skill-for-claude-code#setup",
+      "tushare-finance-skill-for-claude-code#examples",
+      "tushare-finance-skill-for-claude-code#tools",
+      "tushare-finance-skill-for-claude-code#mcp",
+      "tushare-finance-skill-for-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Tushare Finance Skill for Claude Code integrates the Tushare financial data platform directly into AI agent workflows, allowing Claude Code and similar tools to query Chinese stock market data programmatically. It includes a Python API client with batch query support and command-line tools for flexible data access. The skill ships with a quick reference guide and structured documentation to help developers get started with finance automation tasks. It is suited for developers, quants, and analysts who want to automate data retrieval, analysis, or reporting pipelines using AI coding assistants.\nFetching historical Chinese stock price data inside a Claude Code session\nRunning batch queries against the Tushare API from an AI agent workflow\nAutomating financial data retrieval for analysis or reporting scripts\nUsing command-line tools to pull Tushare data without writing custom API code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/StanleyChanH/Tushare-Finance-Skill-for-Claude-Code`",
+    "usage_vi": "```\nI need to automate financial data analysis using Tushare in Python. Generate a script that fetches stock data for [COMPANY] in the [INDUSTRY] sector from [START_DATE] to [END_DATE], calculates key financial metrics like P/E ratio, and exports the results to a CSV file. Include error handling and logging.\n```\nCopy\n\n```\n```python\nimport tushare as ts\nimport pandas as pd\n\n# Initialize Tushare with your token\npro = ts.pro_api('[YOUR_TUSHARE_TOKEN]')\n\n# Fetch stock data for Apple Inc. in the Technology sector\ntry:\n    df = pro.daily(ts_code='000001.SZ', start_date='2023-01-01', end_date='2023-12-31')\n    df['P/E Ratio'] = df['close'] / df['pe']  # Calculate P/E Ratio\n    df.to_csv('apple_stock_data.csv', index=False)\n    print(\"Data fetched and saved successfully.\")\nexcept Exception as e:\n    print(f\"An error occurred: {e}\")\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:54.194824Z",
+    "http_status": 200,
+    "content_hash": "a1c60302eaf656fee3c71a784792c24906ca407e4ed71c275cce75bd214c818c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tushare-finance-skill-for-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tushare-finance-skill-for-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tushare Finance Skill for Claude Code",
+  "short_description_vi": "A Claude Code skill that connects AI agents to the Tushare financial data API, enabling automated retrieval of Chinese stock market data. Designed for developers and analysts building finance automation workflows."
+}

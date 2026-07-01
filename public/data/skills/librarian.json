@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/librarian",
+  "slug": "librarian",
+  "name": "Librarian",
+  "headline": "Librarian - Search Developer Docs",
+  "short_description": "Librarian is a CLI tool for coding agents to search up-to-date developer documentation. It supports GitHub repos and public websites, enabling agents to provide accurate code solutions. Ideal for operations teams automating documentation retrieval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "iannuttall",
+  "install_command": "git clone https://github.com/iannuttall/librarian.git",
+  "source_repo_url": "https://github.com/iannuttall/librarian",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Librarian is a CLI tool designed to give AI agents access to current, accurate developer documentation. It fetches and indexes documentation from GitHub repositories and public websites, supporting hybrid search across both keyword and semantic meaning. The tool solves the problem of AI agents generating outdated or incorrect code by providing real-time context from authoritative sources. Librarian supports version-specific searches, works with private repos via GitHub tokens, and includes an MCP server interface for seamless agent integration. Operations teams and developers automating documentation retrieval benefit from faster, more accurate AI-assisted coding.\nProvide AI coding assistants with current framework/library documentation during development\nAutomate documentation retrieval for internal ops team workflows\nSearch multiple GitHub repos and public docs from a single indexed library\nVersion-specific documentation lookups to match project dependencies",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iannuttall/librarian`",
+    "usage": "```\nUse the Librarian CLI tool to search for [TOPIC] in the documentation of [REPO/WEBSITE]. Focus on finding the most recent and relevant examples, code snippets, or configuration details. Provide a summary of the key findings and include direct links to the most useful resources. If no results are found, suggest alternative sources or keywords to refine the search.\n```\nCopy\n\n```\nAfter running `librarian search --repo=docker/cli --topic=\"container networking\"`, the tool returned the following results:\n\n1. **Docker Networking Overview** (Updated: 2023-11-15)\n   - Link: https://docs.docker.com/network/\n   - Key Details: Explains Docker's default bridge network, how to create custom networks, and best practices for container communication. Includes a code snippet for creating an overlay network:\n ```bash\n     docker network create --driver=overlay my-overlay-network\n ```\n\n2. **Networking in Docker Compose** (Updated: 2023-10-22)\n   - Link: https://docs.docker.com/compose/networking/\n   - Key Details: Covers how Docker Compose handles networking, including how services can communicate across different networks. Example snippet:\n ```yaml\n     services:\n       web:\n         networks:\n           - frontend\n       db:\n         networks:\n           - backend\n ```\n\n3. **Troubleshooting Docker Networking Issues** (Updated: 2023-09-10)\n   - Link: https://docs.docker.com/config/containers/container-networking/\n   - Key Details: Provides commands to inspect and debug network configurations, such as `docker network inspect` and `docker exec -it <container> ping <host>`.\n\nThe tool also suggested refining the search with keywords like \"bridge network\" or \"host networking\" if more specific results are needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "librarian#main-content",
+      "librarian#overview",
+      "librarian#setup",
+      "librarian#examples",
+      "librarian#tools",
+      "librarian#mcp",
+      "librarian#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Librarian là một CLI tool được thiết kế để cung cấp cho các AI agent quyền truy cập vào tài liệu developer chính xác và cập nhật nhất. Công cụ này tự động lấy và lập chỉ mục (index) tài liệu từ các GitHub repository và website công khai, hỗ trợ tìm kiếm kết hợp (hybrid search) giữa từ khóa và ngữ nghĩa (semantic). Công cụ giải quyết vấn đề AI agent tạo ra code lỗi thời hoặc không chính xác bằng cách cung cấp ngữ cảnh thời gian thực từ các nguồn uy tín. Librarian hỗ trợ tìm kiếm theo từng phiên bản cụ thể, hoạt động với các private repo thông qua GitHub token, và tích hợp sẵn giao diện MCP server giúp kết nối mượt mà với các agent. Các operations team và developer khi tự động hóa việc truy xuất tài liệu sẽ được hưởng lợi từ việc lập trình hỗ trợ bởi AI nhanh hơn và chính xác hơn.\n\nCung cấp tài liệu framework/thư viện mới nhất cho các trợ lý lập trình AI (AI coding assistant) trong quá trình phát triển\nTự động hóa việc truy xuất tài liệu cho workflow của các ops team nội bộ\nTìm kiếm trên nhiều GitHub repo và tài liệu công khai từ một thư viện đã được lập chỉ mục duy nhất\nTra cứu tài liệu theo từng phiên bản cụ thể để phù hợp với dependency của dự án",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/iannuttall/librarian`",
+    "usage_vi": "```\nSử dụng CLI tool Librarian để tìm kiếm [TOPIC] trong tài liệu của [REPO/WEBSITE]. Tập trung tìm kiếm các ví dụ, đoạn code mẫu hoặc cấu hình chi tiết và mới nhất. Cung cấp bản tóm tắt các kết quả chính và chèn liên kết trực tiếp đến các tài nguyên hữu ích nhất. Nếu không tìm thấy kết quả, hãy gợi ý các nguồn hoặc từ khóa thay thế để tinh chỉnh tìm kiếm.\n```\nCopy\n\n```\nSau khi chạy lệnh `librarian search --repo=docker/cli --topic=\"container networking\"`, công cụ trả về các kết quả sau:\n\n1. **Docker Networking Overview** (Cập nhật: 15-11-2023)\n   - Link: https://docs.docker.com/network/\n   - Chi tiết chính: Giải thích về bridge network mặc định của Docker, cách tạo network tùy chỉnh và các best practice cho việc giao tiếp giữa các container. Đi kèm đoạn code mẫu để tạo overlay network:\n ```bash\n     docker network create --driver=overlay my-overlay-network\n ```\n\n2. **Networking in Docker Compose** (Cập nhật: 22-10-2023)\n   - Link: https://docs.docker.com/compose/networking/\n   - Chi tiết chính: Hướng dẫn cách Docker Compose xử lý network, bao gồm cách các service giao tiếp qua các network khác nhau. Đoạn code ví dụ:\n ```yaml\n     services:\n       web:\n         networks:\n           - frontend\n       db:\n         networks:\n           - backend\n ```\n\n3. **Troubleshooting Docker Networking Issues** (Cập nhật: 10-09-2023)\n   - Link: https://docs.docker.com/config/containers/container-networking/\n   - Chi tiết chính: Cung cấp các lệnh để kiểm tra và debug cấu hình network, chẳng hạn như `docker network inspect` và `docker exec -it <container> ping <host>`.\n\nCông cụ cũng gợi ý tinh chỉnh tìm kiếm bằng các từ khóa như \"bridge network\" hoặc \"host networking\" nếu bạn cần kết quả chi tiết hơn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:31:05.499516Z",
+    "http_status": 200,
+    "content_hash": "fb827ea0e2a00e359aa6b88801a7050f85c5c61564fa558d34ded4da83575d5f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\librarian.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\librarian.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Librarian - Tìm kiếm tài liệu dành cho developer",
+  "short_description_vi": "Librarian là một CLI tool hỗ trợ các coding agent tìm kiếm tài liệu developer cập nhật nhất. Công cụ hỗ trợ các GitHub repo và website công khai, giúp các agent đưa ra giải pháp code chính xác. Đây là giải pháp lý tưởng cho các operations team muốn tự động hóa việc truy xuất tài liệu."
+}

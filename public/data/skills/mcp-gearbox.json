@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-gearbox",
+  "slug": "mcp-gearbox",
+  "name": "MCP Gearbox",
+  "headline": "MCP Gearbox - Manage MCP Servers",
+  "short_description": "MCP Gearbox is a desktop app for managing Model Context Protocol (MCP) servers across multiple AI agents. It benefits developers and operations teams by simplifying server management. The tool connects to AI agent workflows and integrates with TypeScript-based development environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "rohitsoni007",
+  "install_command": "git clone https://github.com/rohitsoni007/mcp-gearbox.git",
+  "source_repo_url": "https://github.com/rohitsoni007/mcp-gearbox",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "electron",
+    "open-source",
+    "qoder",
+    "react",
+    "tailwindcss",
+    "mcp-server",
+    "mcp",
+    "shadcn-ui",
+    "typescript",
+    "developer-tools",
+    "claude-code",
+    "tool",
+    "gearbox",
+    "model-context-protocol",
+    "desktop-app",
+    "ai",
+    "ai-agents",
+    "ai-tools",
+    "dev-tools"
+  ],
+  "sections": {
+    "overview": "MCP Gearbox is a desktop application built with Electron and React that streamlines the management of Model Context Protocol servers for AI code assistants and development tools. The application provides a visual interface for discovering, installing, configuring, and managing MCP servers across multiple agents including Claude Code, Cursor, Continue, GitHub Copilot, and others. Instead of manually editing JSON configuration files, users can browse available servers, install them with one click, and toggle them on or off from a unified dashboard. The tool is designed for developers and operations teams who need to manage server configurations efficiently without technical complexity.\nDevelopers managing multiple MCP servers across different AI code assistants\nTeams centralizing MCP server configuration without editing JSON files\nAI enthusiasts discovering and installing community MCP servers\nDevOps teams automating server setup for local AI development workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rohitsoni007/mcp-gearbox`",
+    "usage": "```\nUse MCP Gearbox to [ACTION] for [PURPOSE]. For example: 'Use MCP Gearbox to start the [SERVER_NAME] server and verify its status in the dashboard.' or 'Use MCP Gearbox to update the configuration for the [SERVER_NAME] server and restart it to apply changes.'\n```\nCopy\n\n```\nHere’s how MCP Gearbox streamlined server management for a team working with multiple AI agents:\n\n1. **Server Discovery & Initialization**: The team used MCP Gearbox to scan their development environment and identify three MCP servers: `mcp-file-system`, `mcp-git`, and `mcp-database`. They initialized all servers with a single command: `mcp-gearbox start --all`. Within 30 seconds, all servers were running, and their statuses were displayed in the dashboard as 'Active' with green indicators.\n\n2. **Configuration Update**: The team needed to adjust the `mcp-git` server’s polling interval from 5 seconds to 1 second to improve real-time updates. Using MCP Gearbox’s configuration editor, they modified the `config.json` file directly in the app, saved the changes, and clicked 'Restart Server' to apply the update. The server restarted without errors, and the new interval was verified in the logs.\n\n3. **Performance Monitoring**: After deploying a new AI agent workflow, the team monitored server performance using MCP Gearbox’s built-in metrics. They noticed that the `mcp-database` server’s CPU usage spiked to 85% during peak hours. They used the app’s 'Logs' tab to identify a slow query and optimized it by adding an index. CPU usage dropped to 45% within minutes.\n\n4. **Graceful Shutdown**: At the end of the day, the team shut down all servers cleanly using `mcp-gearbox stop --all`. The app displayed a confirmation message: 'All servers stopped successfully,' and the team’s local development environment was left in a clean state for the next day.\n\nThe entire process saved the team approximately 2 hours of manual work per week by centralizing server management, reducing configuration errors, and providing real-time visibility into server health.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-gearbox#main-content",
+      "mcp-gearbox#overview",
+      "mcp-gearbox#setup",
+      "mcp-gearbox#examples",
+      "mcp-gearbox#tools",
+      "mcp-gearbox#mcp",
+      "mcp-gearbox#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP Gearbox is a desktop application built with Electron and React that streamlines the management of Model Context Protocol servers for AI code assistants and development tools. The application provides a visual interface for discovering, installing, configuring, and managing MCP servers across multiple agents including Claude Code, Cursor, Continue, GitHub Copilot, and others. Instead of manually editing JSON configuration files, users can browse available servers, install them with one click, and toggle them on or off from a unified dashboard. The tool is designed for developers and operations teams who need to manage server configurations efficiently without technical complexity.\nDevelopers managing multiple MCP servers across different AI code assistants\nTeams centralizing MCP server configuration without editing JSON files\nAI enthusiasts discovering and installing community MCP servers\nDevOps teams automating server setup for local AI development workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rohitsoni007/mcp-gearbox`",
+    "usage_vi": "```\nUse MCP Gearbox to [ACTION] for [PURPOSE]. For example: 'Use MCP Gearbox to start the [SERVER_NAME] server and verify its status in the dashboard.' or 'Use MCP Gearbox to update the configuration for the [SERVER_NAME] server and restart it to apply changes.'\n```\nCopy\n\n```\nHere’s how MCP Gearbox streamlined server management for a team working with multiple AI agents:\n\n1. **Server Discovery & Initialization**: The team used MCP Gearbox to scan their development environment and identify three MCP servers: `mcp-file-system`, `mcp-git`, and `mcp-database`. They initialized all servers with a single command: `mcp-gearbox start --all`. Within 30 seconds, all servers were running, and their statuses were displayed in the dashboard as 'Active' with green indicators.\n\n2. **Configuration Update**: The team needed to adjust the `mcp-git` server’s polling interval from 5 seconds to 1 second to improve real-time updates. Using MCP Gearbox’s configuration editor, they modified the `config.json` file directly in the app, saved the changes, and clicked 'Restart Server' to apply the update. The server restarted without errors, and the new interval was verified in the logs.\n\n3. **Performance Monitoring**: After deploying a new AI agent workflow, the team monitored server performance using MCP Gearbox’s built-in metrics. They noticed that the `mcp-database` server’s CPU usage spiked to 85% during peak hours. They used the app’s 'Logs' tab to identify a slow query and optimized it by adding an index. CPU usage dropped to 45% within minutes.\n\n4. **Graceful Shutdown**: At the end of the day, the team shut down all servers cleanly using `mcp-gearbox stop --all`. The app displayed a confirmation message: 'All servers stopped successfully,' and the team’s local development environment was left in a clean state for the next day.\n\nThe entire process saved the team approximately 2 hours of manual work per week by centralizing server management, reducing configuration errors, and providing real-time visibility into server health.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:54.068782Z",
+    "http_status": 200,
+    "content_hash": "c339aa9b61937d82f48b00d2cb508978537757b40c575cce1240880c8354adc0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-gearbox.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-gearbox.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP Gearbox - Manage MCP Servers",
+  "short_description_vi": "MCP Gearbox is a desktop app for managing Model Context Protocol (MCP) servers across multiple AI agents. It benefits developers and operations teams by simplifying server management. The tool connects to AI agent workflows and integrates with TypeScript-based development environments."
+}

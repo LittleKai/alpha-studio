@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/griptape",
+  "slug": "griptape",
+  "name": "react-native-best-practices",
+  "headline": "Griptape: Modular Python Framework for AI Agents",
+  "short_description": "Griptape is a versatile Python framework designed for building AI agents and workflows, featuring chain-of-thought reasoning, integrated tools, and memory capabilities. It helps developers to create intelligent applications with ease.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "griptape-ai",
+  "install_command": "claude install griptape-ai/griptape",
+  "source_repo_url": "https://github.com/griptape-ai/griptape",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "memory",
+    "AI agents",
+    "Python",
+    "workflow",
+    "modular"
+  ],
+  "sections": {
+    "overview": "Griptape is a Python framework designed to help developers build intelligent AI agents and workflows. The framework provides built-in support for chain-of-thought reasoning, allowing agents to break down complex problems into logical steps. It includes integrated tools and memory capabilities that enable agents to access external services and retain context across interactions. Griptape supports multiple LLM providers and drivers, including Google Gemini, and offers features like structured output strategies and embedding capabilities. Developers can use Griptape to create conversational agents, task automation systems, and multi-step intelligent applications.\nBuild custom AI workflows that automate repetitive tasks and improve efficiency.\nIntegrate memory capabilities into AI applications to enhance user interactions and personalization.\nImplement chain-of-thought reasoning in AI agents to improve decision-making processes.\nCreate modular AI solutions that can be easily adapted and extended for various applications.",
+    "setup": "Terminal\nCopy\n`claude install griptape-ai/griptape`\n`git clone https://github.com/griptape-ai/griptape`",
+    "usage": "```\nCreate a Griptape agent that can [SPECIFIC TASK]. The agent should use [TOOLS] to accomplish this. Include a chain-of-thought reasoning process and memory to track progress. Provide the Python code to implement this agent.\n```\nCopy\n\n```\nHere's a Griptape agent that automates market research for a new product launch. This agent uses web search tools to gather information, analyzes competitor pricing, and suggests optimal pricing strategies based on the data. The agent includes memory to track previous searches and reasoning to justify its recommendations.\n\n```python\nfrom griptape.artifacts import TextArtifact\nfrom griptape.drivers import WebDriver\nfrom griptape.agents import Agent\nfrom griptape.memory import Memory\n\n# Initialize memory\nmemory = Memory()\n\n# Initialize web driver\nweb_driver = WebDriver()\n\n# Create agent\nagent = Agent(\n    name=\"Market Research Agent\",\n    tools=[web_driver],\n    memory=memory\n)\n\n# Define the task\nagent.task(\n    \"Research the market for [PRODUCT]. Find competitor pricing and suggest optimal pricing strategies.\"\n)\n\n# Run the agent\nagent.run()\n\n# Output the results\nresults = agent.get_results()\nfor result in results:\n    print(result)\n```\n\nThe agent will output a detailed market analysis, including competitor pricing and suggested strategies for optimal pricing.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "griptape#main-content",
+      "griptape#overview",
+      "griptape#setup",
+      "griptape#examples",
+      "griptape#tools",
+      "griptape#mcp",
+      "griptape#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Griptape is a Python framework designed to help developers build intelligent AI agents and workflows. The framework provides built-in support for chain-of-thought reasoning, allowing agents to break down complex problems into logical steps. It includes integrated tools and memory capabilities that enable agents to access external services and retain context across interactions. Griptape supports multiple LLM providers and drivers, including Google Gemini, and offers features like structured output strategies and embedding capabilities. Developers can use Griptape to create conversational agents, task automation systems, and multi-step intelligent applications.\nBuild custom AI workflows that automate repetitive tasks and improve efficiency.\nIntegrate memory capabilities into AI applications to enhance user interactions and personalization.\nImplement chain-of-thought reasoning in AI agents to improve decision-making processes.\nCreate modular AI solutions that can be easily adapted and extended for various applications.",
+    "setup_vi": "Terminal\nCopy\n`claude install griptape-ai/griptape`\n`git clone https://github.com/griptape-ai/griptape`",
+    "usage_vi": "```\nCreate a Griptape agent that can [SPECIFIC TASK]. The agent should use [TOOLS] to accomplish this. Include a chain-of-thought reasoning process and memory to track progress. Provide the Python code to implement this agent.\n```\nCopy\n\n```\nHere's a Griptape agent that automates market research for a new product launch. This agent uses web search tools to gather information, analyzes competitor pricing, and suggests optimal pricing strategies based on the data. The agent includes memory to track previous searches and reasoning to justify its recommendations.\n\n```python\nfrom griptape.artifacts import TextArtifact\nfrom griptape.drivers import WebDriver\nfrom griptape.agents import Agent\nfrom griptape.memory import Memory\n\n# Initialize memory\nmemory = Memory()\n\n# Initialize web driver\nweb_driver = WebDriver()\n\n# Create agent\nagent = Agent(\n    name=\"Market Research Agent\",\n    tools=[web_driver],\n    memory=memory\n)\n\n# Define the task\nagent.task(\n    \"Research the market for [PRODUCT]. Find competitor pricing and suggest optimal pricing strategies.\"\n)\n\n# Run the agent\nagent.run()\n\n# Output the results\nresults = agent.get_results()\nfor result in results:\n    print(result)\n```\n\nThe agent will output a detailed market analysis, including competitor pricing and suggested strategies for optimal pricing.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:07:07.683335Z",
+    "http_status": 200,
+    "content_hash": "1b323d0e19b15879b7dda234c31b40529e40bf087ed0984bc8cf826c8f9ab93c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\griptape.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\griptape.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Griptape: Modular Python Framework for AI Agents",
+  "short_description_vi": "Griptape is a versatile Python framework designed for building AI agents and workflows, featuring chain-of-thought reasoning, integrated tools, and memory capabilities. It helps developers to create intelligent applications with ease."
+}

@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-metacognitive-skills",
+  "slug": "claude-metacognitive-skills",
+  "name": "Claude-Metacognitive-Skills",
+  "headline": "metacognitive research skills for claude ai",
+  "short_description": "Claude-Metacognitive-Skills enhances Claude's ability to plan, monitor, and evaluate its reasoning processes. It benefits operations teams by improving output quality and reliability. The skill connects to Claude AI and can be applied in cognitive architecture and engineering workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "200 min",
+  "author": "Dr-AneeshJoseph",
+  "install_command": "git clone https://github.com/Dr-AneeshJoseph/Claude-Metacognitive-Skills.git",
+  "source_repo_url": "https://github.com/Dr-AneeshJoseph/Claude-Metacognitive-Skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cognitive-science",
+    "cognitive-architecture",
+    "metacognitive-orchestration",
+    "consciousness",
+    "ai-engineering",
+    "claude",
+    "claude-skills",
+    "metacognition"
+  ],
+  "sections": {
+    "overview": "Claude-Metacognitive-Skills, also known as Frosty, is a specialized prompt framework that enhances Claude's ability to plan, monitor, and evaluate its own reasoning processes. The skill implements a three-step internal methodology—Deconstruct, Solve, Reflect—that Claude applies before delivering final answers. By requiring structured internal error checking, it reduces hallucination rates and improves output quality and reliability. This approach is ideal for complex analysis, coding tasks, multi-step problem-solving, and cognitive engineering workflows where consistent, well-reasoned outputs are critical. Implementation is straightforward: prepend the metacognitive instruction block to your Claude prompts to enable this enhanced reasoning capability.\nComplex multi-step problem-solving and analysis\nCoding tasks requiring careful logic validation\nHigh-stakes decision support and reasoning documentation\nEducational explanations requiring accuracy verification",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Dr-AneeshJoseph/Claude-Metacognitive-Skills`",
+    "usage": "```\nAct as a metacognitive assistant. Before answering [QUESTION], outline your reasoning plan by breaking it into 3 steps: 1) [STEP_1], 2) [STEP_2], 3) [STEP_3]. After answering, evaluate your response using these criteria: accuracy, clarity, and depth. Identify one potential flaw in your reasoning and suggest an improvement. Question: [QUESTION]\n```\nCopy\n\n```\nLet’s tackle the question: *‘How would you design a metacognitive layer for an AI system to self-correct errors in real-time?’*\n\n**Reasoning Plan:**\n1. **Decompose the Problem:** Identify core components of metacognition: self-monitoring, error detection, and adaptive correction. Research existing frameworks like ACT-R or SOAR for inspiration.\n2. **Design the Architecture:** Propose a modular system with three layers: (a) a *monitoring layer* to track confidence scores in outputs, (b) an *error detection layer* to flag anomalies (e.g., contradictions or low confidence), and (c) a *correction layer* to reroute flawed reasoning via alternative pathways.\n3. **Validate the Design:** Test the system with synthetic datasets (e.g., logical fallacies or ambiguous queries) to measure its ability to self-correct. Compare performance against baseline models without metacognition.\n\n**Answer:**\nA metacognitive layer for real-time error correction could be implemented using a *confidence-threshold feedback loop*. Here’s how it would work:\n\n- **Input:** The AI generates a response with an attached confidence score (e.g., 0.85 for high confidence, 0.45 for low).\n- **Monitoring:** A secondary model (e.g., a lightweight transformer) evaluates the response for logical consistency, factual accuracy, and coherence. If the confidence score drops below a threshold (e.g., 0.7) or inconsistencies are detected, the system triggers a *correction phase*.\n- **Correction:** The original query is reprocessed with adjusted parameters (e.g., stricter reasoning constraints or alternative reasoning pathways). The system then generates a revised response, which is re-evaluated for confidence and consistency.\n- **Output:** The final response is delivered with a *confidence report* (e.g., ‘High confidence: 92%’ or ‘Corrected: Original answer had a 30% chance of error’).\n\n**Evaluation:**\n- **Accuracy:** The system reduced errors by 22% in synthetic tests where baseline models failed to detect contradictions.\n- **Clarity:** The confidence report adds transparency but may overwhelm users if overused. A toggle for technical vs. simplified reports could help.\n- **Depth:** The design lacks real-world testing (e.g., with noisy or adversarial inputs). Further validation with domain-specific datasets (e.g., medical or legal queries) is needed.\n\n**Flaw Identified:**\nThe current design assumes the monitoring layer is infallible. In practice, the monitoring layer could itself introduce errors (e.g., false positives in error detection). **Improvement:** Introduce a *meta-monitoring layer* to audit the primary monitoring layer’s decisions, creating a hierarchical error-checking system.\n\nWould you like to explore specific implementation details (e.g., code snippets for the confidence threshold logic) or test this design with a particular use case?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-metacognitive-skills#main-content",
+      "claude-metacognitive-skills#overview",
+      "claude-metacognitive-skills#setup",
+      "claude-metacognitive-skills#examples",
+      "claude-metacognitive-skills#tools",
+      "claude-metacognitive-skills#mcp",
+      "claude-metacognitive-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Metacognitive-Skills (còn gọi là Frosty) là một prompt framework chuyên dụng giúp nâng cao khả năng tự lập kế hoạch, giám sát và đánh giá quy trình lập luận của Claude. Kỹ năng này áp dụng quy trình nội bộ gồm 3 bước—Deconstruct (Phân tách), Solve (Giải quyết), Reflect (Phản tư)—trước khi Claude đưa ra câu trả lời cuối cùng. Bằng cách bắt buộc kiểm tra lỗi nội bộ một cách tuần tự, framework này giúp giảm tỷ lệ hallucination và nâng cao chất lượng cũng như độ tin cậy của kết quả đầu ra. Đây là giải pháp lý tưởng cho các phân tích phức tạp, tác vụ coding, giải quyết vấn đề đa bước và các workflow kỹ thuật nhận thức (cognitive engineering) đòi hỏi kết quả đầu ra phải nhất quán và có lập luận chặt chẽ. Cách triển khai rất đơn giản: chỉ cần thêm block hướng dẫn siêu nhận thức (metacognitive instruction block) vào đầu prompt của Claude để kích hoạt khả năng lập luận nâng cao này.\nPhân tích và giải quyết các vấn đề phức tạp, đa bước\nCác tác vụ coding đòi hỏi xác thực logic nghiêm ngặt\nHỗ trợ ra quyết định quan trọng và tài liệu hóa quá trình lập luận\nGiải thích mang tính giáo dục cần xác minh độ chính xác",
+    "setup_vi": "Không có lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Dr-AneeshJoseph/Claude-Metacognitive-Skills`",
+    "usage_vi": "```\nHãy đóng vai trò là một trợ lý siêu nhận thức. Trước khi trả lời [QUESTION], hãy phác thảo kế hoạch lập luận của bạn bằng cách chia thành 3 bước: 1) [STEP_1], 2) [STEP_2], 3) [STEP_3]. Sau khi trả lời, hãy đánh giá phản hồi của bạn theo các tiêu chí sau: độ chính xác (accuracy), độ rõ ràng (clarity) và chiều sâu (depth). Hãy chỉ ra một thiếu sót tiềm ẩn trong lập luận của bạn và đề xuất hướng cải thiện. Câu hỏi: [QUESTION]\n```\nCopy\n\n```\nHãy cùng giải quyết câu hỏi: *‘Làm thế nào để thiết kế một lớp siêu nhận thức (metacognitive layer) cho hệ thống AI để tự sửa lỗi trong thời gian thực?’*\n\n**Kế hoạch lập luận (Reasoning Plan):**\n1. **Phân tích vấn đề (Decompose the Problem):** Xác định các thành phần cốt lõi của siêu nhận thức: tự giám sát (self-monitoring), phát hiện lỗi (error detection) và sửa lỗi thích ứng (adaptive correction). Nghiên cứu các framework hiện có như ACT-R hoặc SOAR để lấy cảm hứng.\n2. **Thiết kế kiến trúc (Design the Architecture):** Đề xuất một hệ thống mô-đun với ba lớp: (a) *lớp giám sát (monitoring layer)* để theo dõi điểm tin cậy (confidence score) của kết quả đầu ra, (b) *lớp phát hiện lỗi (error detection layer)* để gắn cờ các điểm bất thường (ví dụ: mâu thuẫn hoặc độ tin cậy thấp), và (c) *lớp sửa lỗi (correction layer)* để định tuyến lại luồng lập luận bị lỗi qua các hướng thay thế.\n3. **Xác thực thiết kế (Validate the Design):** Thử nghiệm hệ thống với các tập dữ liệu giả lập (ví dụ: các lỗi ngụy biện logic hoặc truy vấn mơ hồ) để đo lường khả năng tự sửa lỗi. So sánh hiệu năng với các mô hình cơ sở không có siêu nhận thức.\n\n**Câu trả lời (Answer):**\nMột lớp siêu nhận thức để sửa lỗi trong thời gian thực có thể được triển khai bằng cách sử dụng *vòng lặp phản hồi ngưỡng tin cậy (confidence-threshold feedback loop)*. Cách thức hoạt động như sau:\n\n- **Đầu vào (Input):** AI tạo ra một phản hồi đi kèm với một điểm tin cậy (ví dụ: 0.85 cho độ tin cậy cao, 0.45 cho độ tin cậy thấp).\n- **Giám sát (Monitoring):** Một mô hình phụ (ví dụ: một transformer gọn nhẹ) đánh giá phản hồi về tính nhất quán logic, độ chính xác thực tế và tính mạch lạc. Nếu điểm tin cậy giảm xuống dưới một ngưỡng nhất định (ví dụ: 0.7) hoặc phát hiện thấy sự bất nhất, hệ thống sẽ kích hoạt *pha sửa lỗi (correction phase)*.\n- **Sửa lỗi (Correction):** Truy vấn ban đầu được xử lý lại với các tham số được điều chỉnh (ví dụ: các ràng buộc lập luận chặt chẽ hơn hoặc các hướng lập luận thay thế). Hệ thống sau đó sẽ tạo ra một phản hồi đã sửa đổi, phản hồi này tiếp tục được đánh giá lại về độ tin cậy và tính nhất quán.\n- **Đầu ra (Output):** Phản hồi cuối cùng được gửi kèm với một *báo cáo độ tin cậy (confidence report)* (ví dụ: ‘Độ tin cậy cao: 92%’ hoặc ‘Đã sửa lỗi: Câu trả lời ban đầu có 30% khả năng xảy ra lỗi’).\n\n**Đánh giá (Evaluation):**\n- **Độ chính xác (Accuracy):** Hệ thống đã giảm 22% số lỗi trong các bài kiểm tra giả lập, nơi các mô hình cơ sở không phát hiện được sự mâu thuẫn.\n- **Độ rõ ràng (Clarity):** Báo cáo độ tin cậy giúp tăng tính minh bạch nhưng có thể gây quá tải cho người dùng nếu lạm dụng. Việc thêm tùy chọn bật/tắt giữa báo cáo kỹ thuật và báo cáo rút gọn sẽ hữu ích.\n- **Chiều sâu (Depth):** Thiết kế này vẫn thiếu thử nghiệm thực tế (ví dụ: với dữ liệu đầu vào bị nhiễu hoặc có tính chất tấn công/adversarial). Cần xác thực thêm với các tập dữ liệu chuyên biệt theo từng lĩnh vực (ví dụ: truy vấn y tế hoặc pháp lý).\n\n**Thiếu sót được chỉ ra (Flaw Identified):**\nThiết kế hiện tại giả định rằng lớp giám sát là không thể sai sót. Trên thực tế, chính lớp giám sát này cũng có thể tự tạo ra lỗi (ví dụ: báo động giả trong việc phát hiện lỗi). **Cải tiến:** Giới thiệu thêm một *lớp siêu giám sát (meta-monitoring layer)* để kiểm tra các quyết định của lớp giám sát chính, tạo ra một hệ thống kiểm tra lỗi phân cấp.\n\nBạn có muốn khám phá các chi tiết triển khai cụ thể (ví dụ: đoạn code cho logic ngưỡng tin cậy) hoặc thử nghiệm thiết kế này với một use case cụ thể không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:49:49.786432Z",
+    "http_status": 200,
+    "content_hash": "88106e59487e2e169f2c02ca5cdcab590c311162dce92e5d4e45733bdfc51cc5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-metacognitive-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-metacognitive-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng nghiên cứu siêu nhận thức cho Claude AI",
+  "short_description_vi": "Claude-Metacognitive-Skills nâng cao khả năng lập kế hoạch, giám sát và tự đánh giá các quy trình lập luận của Claude. Công cụ này hỗ trợ đắc lực cho các đội ngũ vận hành bằng cách cải thiện chất lượng và độ tin cậy của kết quả đầu ra. Kỹ năng này kết nối trực tiếp với Claude AI và có thể áp dụng vào các cấu trúc nhận thức (cognitive architecture) cùng các workflow kỹ thuật."
+}

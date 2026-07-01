@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sendur",
+  "slug": "sendur",
+  "name": "sendur",
+  "headline": "Sendur: AI-Powered Lead Generation & Outreach",
+  "short_description": "Sendur is an AI-driven platform that automates lead generation and outreach, utilizing n8n workflows and human oversight to enhance prospecting, email creation, and follow-up processes.",
+  "tier": "Silver",
+  "category": "SDRAEMarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "walimorris",
+  "install_command": "claude install walimorris/sendur",
+  "source_repo_url": "https://github.com/walimorris/sendur",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "automation",
+    "AI",
+    "email outreach",
+    "lead generation",
+    "prospecting"
+  ],
+  "sections": {
+    "overview": "Sendur is an AI-augmented lead generation automation platform that combines n8n workflows, AI agents, and human review to streamline prospect discovery and outreach. The system automatically searches the web for business leads based on industry profiles, enriches them with relevant details, and generates AI-drafted emails. A built-in human-in-the-loop review process lets you approve leads and emails before dispatch via n8n webhooks. All lead data is persisted in the system, with built-in validation and deduplication to ensure data quality. The platform integrates with OpenAI and SerpAPI for intelligent lead discovery and email generation.\nAutomating email outreach to potential leads\nCreating personalized follow-up emails\nStreamlining prospecting workflows\nIntegrating with CRM systems for lead management",
+    "setup": "Terminal\nCopy\n`claude install walimorris/sendur`\n`git clone https://github.com/walimorris/sendur`",
+    "usage": "```\nI'm using Sendur to improve my sales outreach for [COMPANY]. My target industry is [INDUSTRY]. I need help with [SPECIFIC TASK, e.g., lead generation, email creation, follow-up strategy]. Can you suggest a workflow using Sendur's AI capabilities and n8n automation?\n```\nCopy\n\n```\n# Sendur Sales Outreach Workflow for [COMPANY] in [INDUSTRY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "sendur#main-content",
+      "sendur#overview",
+      "sendur#setup",
+      "sendur#examples",
+      "sendur#tools",
+      "sendur#mcp",
+      "sendur#related",
+      "proposal-system-generates",
+      "leads-db",
+      "sales-outreach-automation-langgraph"
+    ],
+    "overview_vi": "Sendur là nền tảng tự động hóa lead generation được tăng cường bằng AI, kết hợp các workflow n8n, AI agent và quy trình kiểm duyệt của con người nhằm tinh giản việc tìm kiếm khách hàng triển vọng và outreach. Hệ thống tự động quét web để tìm kiếm lead doanh nghiệp dựa trên hồ sơ ngành nghề, bổ sung thông tin chi tiết (data enrichment) và soạn thảo email nháp bằng AI. Quy trình kiểm duyệt human-in-the-loop tích hợp sẵn cho phép bạn phê duyệt danh sách lead và email trước khi gửi đi thông qua n8n webhook. Toàn bộ dữ liệu lead được lưu trữ trong hệ thống, đi kèm tính năng xác thực (validation) và loại bỏ trùng lặp (deduplication) để đảm bảo chất lượng dữ liệu. Nền tảng tích hợp với OpenAI và SerpAPI để hỗ trợ tìm kiếm lead và tạo email một cách thông minh.\n\nTự động hóa quy trình email outreach đến các lead tiềm năng\nTạo email follow-up cá nhân hóa\nTinh giản các workflow tìm kiếm khách hàng triển vọng (prospecting)\nTích hợp với các hệ thống CRM để quản lý lead",
+    "setup_vi": "Terminal\nSao chép\n`claude install walimorris/sendur`\n`git clone https://github.com/walimorris/sendur`",
+    "usage_vi": "```\nTôi đang sử dụng Sendur để cải thiện quy trình sales outreach cho [COMPANY]. Ngành hàng mục tiêu của tôi là [INDUSTRY]. Tôi cần hỗ trợ về [SPECIFIC TASK, ví dụ: lead generation, soạn thảo email, chiến lược follow-up]. Bạn có thể đề xuất một workflow sử dụng các tính năng AI của Sendur kết hợp tự động hóa qua n8n không?\n```\nSao chép\n\n```\n# Workflow Sendur Sales Outreach cho [COMPANY] trong ngành [INDUSTRY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:22:34.055402Z",
+    "http_status": 200,
+    "content_hash": "5ab37123b93207c84e9cbb02c556782ccff053e37ce1f2b55420f912c9d367e3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sendur.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sendur.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sendur: Giải pháp Lead Generation & Outreach tối ưu bằng AI",
+  "short_description_vi": "Sendur là nền tảng vận hành bằng AI giúp tự động hóa quy trình lead generation và outreach, kết hợp các workflow n8n và sự giám sát của con người để tối ưu hóa việc tìm kiếm khách hàng tiềm năng, soạn thảo email và quy trình follow-up."
+}

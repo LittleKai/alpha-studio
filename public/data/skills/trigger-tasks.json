@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/trigger-tasks",
+  "slug": "trigger-tasks",
+  "name": "Trigger Tasks",
+  "headline": "Trigger Tasks: Durable Background Jobs",
+  "short_description": "Create durable background tasks for AI agents with automatic retries, queuing, and scheduling. Designed for developers building reliable asynchronous workflows and integrations.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "triggerdotdev",
+  "install_command": "git clone https://github.com/triggerdotdev/skills",
+  "source_repo_url": "https://github.com/triggerdotdev/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "tasks",
+    "task-management",
+    "trigger"
+  ],
+  "sections": {
+    "overview": "Trigger.dev Tasks enable developers to build reliable asynchronous workflows and background jobs with automatic retry logic, queuing, and concurrency control. The skill supports task creation with input validation via Zod schemas, batch triggering, and inter-task communication through trigger-and-wait patterns. Built-in features include debouncing, idempotency, error handling, cron-based scheduling, and real-time progress tracking via metadata. This is essential for AI agents that need long-running execution, webhook processing, file uploads, or recurring scheduled work without blocking main applications.\nCreating background jobs or async workflows\nBuilding AI agents with long-running tasks\nProcessing webhooks, emails, or file uploads\nScheduling recurring tasks using cron",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/triggerdotdev/skills --skill trigger-tasks`\n`git clone https://github.com/triggerdotdev/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "trigger-tasks#main-content",
+      "trigger-tasks#overview",
+      "trigger-tasks#setup",
+      "trigger-tasks#examples",
+      "trigger-tasks#tools",
+      "trigger-tasks#mcp",
+      "trigger-tasks#related",
+      "massgen-skill"
+    ],
+    "overview_vi": "Trigger.dev Tasks giúp các lập trình viên dễ dàng xây dựng các workflow bất đồng bộ và background job đáng tin cậy nhờ cơ chế tự động retry, queuing và concurrency control. Skill này hỗ trợ tạo tác vụ xác thực dữ liệu đầu vào qua Zod schema, trigger hàng loạt (batch triggering) và giao tiếp giữa các task theo mô hình trigger-and-wait. Các tính năng tích hợp sẵn bao gồm debouncing, idempotency, xử lý lỗi, lập lịch qua cron và theo dõi tiến trình thời gian thực bằng metadata. Đây là công cụ không thể thiếu cho các AI agent cần thực thi tác vụ chạy lâu (long-running), xử lý webhook, upload file hoặc chạy tác vụ định kỳ mà không gây block ứng dụng chính.\n\nTạo background job hoặc workflow bất đồng bộ\nXây dựng AI agent với các tác vụ chạy lâu (long-running tasks)\nXử lý webhook, email hoặc upload file\nLập lịch tác vụ định kỳ bằng cron",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/triggerdotdev/skills --skill trigger-tasks`\n`git clone https://github.com/triggerdotdev/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nVui lòng kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:59:34.249430Z",
+    "http_status": 200,
+    "content_hash": "ecc03f521729a2fc1266ae3f068bfca78e005216fee373d304eff246f9176d9d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trigger-tasks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trigger-tasks.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trigger Tasks: Quản lý Background Job bền bỉ",
+  "short_description_vi": "Tạo các background task bền bỉ cho AI agent với tính năng tự động retry, xếp hàng (queuing) và lập lịch. Được thiết kế dành cho các lập trình viên xây dựng workflow bất đồng bộ và tích hợp hệ thống có độ tin cậy cao."
+}

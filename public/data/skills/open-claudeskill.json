@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-claudeskill",
+  "slug": "open-claudeskill",
+  "name": "Open-ClaudeSkill",
+  "headline": "Open-ClaudeSkill: Universal AI Automation",
+  "short_description": "Enables any MCP-compatible AI agent to use Claude's Skill system. Benefits operations teams by allowing progressive disclosure of skills. Connects to any MCP-supported agent application.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "QianjieTech",
+  "install_command": "git clone https://github.com/QianjieTech/Open-ClaudeSkill.git",
+  "source_repo_url": "https://github.com/QianjieTech/Open-ClaudeSkill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Open-ClaudeSkill is an innovative automation skill that allows users to integrate Claude's Skill system into any MCP-compatible AI agent through a process known as progressive disclosure. This universal, standards-based approach simplifies the deployment of AI automation capabilities, making it accessible and easy for developers and product managers alike. With a focus on enhancing workflow automation, this skill streamlines the integration process, allowing teams to leverage AI agents effectively. The key benefits of Open-ClaudeSkill include its ease of use and compatibility with existing MCP frameworks. Although specific time savings are currently unknown, the skill's design is aimed at reducing the complexity typically associated with AI automation integration. By implementing this skill, teams can expect to save valuable development time, allowing them to focus on higher-level tasks and innovations. The intermediate difficulty level means that users should have some familiarity with AI systems and programming, but the implementation can be completed in approximately 30 minutes, making it a practical choice for busy teams. This skill is particularly beneficial for developers, product managers, and AI practitioners looking to enhance their AI-first workflows. By integrating Open-ClaudeSkill, teams can create more responsive and intelligent AI agents that can adapt to various tasks and user needs. For example, a product manager could use this skill to equip an AI agent with capabilities to automate customer support responses, thereby improving customer satisfaction and reducing response times. In summary, Open-ClaudeSkill serves as a vital tool for those looking to enhance their AI automation capabilities. Its straightforward implementation process, combined with its ability to work within existing frameworks, makes it an excellent choice for organizations aiming to optimize their workflows. As businesses increasingly adopt AI-first strategies, skills like Open-ClaudeSkill will play a crucial role in ensuring that teams can effectively harness the power of AI agents.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/QianjieTech/Open-ClaudeSkill`",
+    "usage": "```\nUse the Open-ClaudeSkill MCP tool to list all available skills for [AGENT_NAME] or [TOOL_NAME]. Then, activate the skill '[SKILL_NAME]' with the following parameters: [PARAMETERS]. Provide a summary of the skill's functionality and suggest any required next steps for integration.\n```\nCopy\n\n```\nFor the AI agent 'Claude-Operations-Bot' running in a Kubernetes cluster, the Open-ClaudeSkill MCP tool was queried to list all available skills. The response included 12 active skills, such as 'log-analyzer', 'deployment-validator', and 'incident-triage'. The 'incident-triage' skill was activated with parameters: { \"severity\": \"high\", \"service\": \"api-gateway\", \"time_range\": \"last-24h\" }.\n\nThe skill's functionality was summarized as follows: It ingests logs from the api-gateway service over the last 24 hours, filters for high-severity incidents, and generates a prioritized list of issues with suggested remediation steps. The skill also flags any recurring patterns that may indicate systemic problems.\n\nNext steps for integration:\n1. Configure the skill to automatically trigger when a new high-severity incident is detected in the api-gateway service.\n2. Set up a Slack webhook to receive the prioritized issue list in real-time.\n3. Test the skill with a controlled incident to validate its output before full deployment.\n\nThe Open-ClaudeSkill tool successfully bridged the MCP-compatible agent with the Claude Skill system, enabling progressive disclosure of capabilities without requiring manual intervention.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-claudeskill#main-content",
+      "open-claudeskill#overview",
+      "open-claudeskill#setup",
+      "open-claudeskill#examples",
+      "open-claudeskill#tools",
+      "open-claudeskill#mcp",
+      "open-claudeskill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open-ClaudeSkill is an innovative automation skill that allows users to integrate Claude's Skill system into any MCP-compatible AI agent through a process known as progressive disclosure. This universal, standards-based approach simplifies the deployment of AI automation capabilities, making it accessible and easy for developers and product managers alike. With a focus on enhancing workflow automation, this skill streamlines the integration process, allowing teams to leverage AI agents effectively. The key benefits of Open-ClaudeSkill include its ease of use and compatibility with existing MCP frameworks. Although specific time savings are currently unknown, the skill's design is aimed at reducing the complexity typically associated with AI automation integration. By implementing this skill, teams can expect to save valuable development time, allowing them to focus on higher-level tasks and innovations. The intermediate difficulty level means that users should have some familiarity with AI systems and programming, but the implementation can be completed in approximately 30 minutes, making it a practical choice for busy teams. This skill is particularly beneficial for developers, product managers, and AI practitioners looking to enhance their AI-first workflows. By integrating Open-ClaudeSkill, teams can create more responsive and intelligent AI agents that can adapt to various tasks and user needs. For example, a product manager could use this skill to equip an AI agent with capabilities to automate customer support responses, thereby improving customer satisfaction and reducing response times. In summary, Open-ClaudeSkill serves as a vital tool for those looking to enhance their AI automation capabilities. Its straightforward implementation process, combined with its ability to work within existing frameworks, makes it an excellent choice for organizations aiming to optimize their workflows. As businesses increasingly adopt AI-first strategies, skills like Open-ClaudeSkill will play a crucial role in ensuring that teams can effectively harness the power of AI agents.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/QianjieTech/Open-ClaudeSkill`",
+    "usage_vi": "```\nUse the Open-ClaudeSkill MCP tool to list all available skills for [AGENT_NAME] or [TOOL_NAME]. Then, activate the skill '[SKILL_NAME]' with the following parameters: [PARAMETERS]. Provide a summary of the skill's functionality and suggest any required next steps for integration.\n```\nCopy\n\n```\nFor the AI agent 'Claude-Operations-Bot' running in a Kubernetes cluster, the Open-ClaudeSkill MCP tool was queried to list all available skills. The response included 12 active skills, such as 'log-analyzer', 'deployment-validator', and 'incident-triage'. The 'incident-triage' skill was activated with parameters: { \"severity\": \"high\", \"service\": \"api-gateway\", \"time_range\": \"last-24h\" }.\n\nThe skill's functionality was summarized as follows: It ingests logs from the api-gateway service over the last 24 hours, filters for high-severity incidents, and generates a prioritized list of issues with suggested remediation steps. The skill also flags any recurring patterns that may indicate systemic problems.\n\nNext steps for integration:\n1. Configure the skill to automatically trigger when a new high-severity incident is detected in the api-gateway service.\n2. Set up a Slack webhook to receive the prioritized issue list in real-time.\n3. Test the skill with a controlled incident to validate its output before full deployment.\n\nThe Open-ClaudeSkill tool successfully bridged the MCP-compatible agent with the Claude Skill system, enabling progressive disclosure of capabilities without requiring manual intervention.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:33.170870Z",
+    "http_status": 200,
+    "content_hash": "8c3c906560cebe45fe537ce2a121939b746640689473dc8737353d8fadf0586d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-claudeskill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-claudeskill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Open-ClaudeSkill: Universal AI Automation",
+  "short_description_vi": "Enables any MCP-compatible AI agent to use Claude's Skill system. Benefits operations teams by allowing progressive disclosure of skills. Connects to any MCP-supported agent application."
+}

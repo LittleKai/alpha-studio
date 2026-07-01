@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/writing-agent",
+  "slug": "writing-agent",
+  "name": "browser-use",
+  "headline": "AI Writing System - Human-like Content Generation",
+  "short_description": "AI writing system that mimics human writing style. Supports DeepSeek, 智谱GLM, and MiniMax models. Cost-effective for content generation, style modeling, and publishing workflows. Integrates with Claude Code Skills and Subagents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "dongbeixiaohuo",
+  "install_command": "git clone https://github.com/dongbeixiaohuo/writing-agent.git",
+  "source_repo_url": "https://github.com/dongbeixiaohuo/writing-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "deepseek",
+    "style-modeling",
+    "writing-assistant",
+    "writing-workflow",
+    "writing-agent",
+    "ai-writing",
+    "content-generation"
+  ],
+  "sections": {
+    "overview": "Writing Agent is a multi-stage AI writing system that breaks content creation into planned phases: theme definition, position setting, research, outlining, draft iteration, editorial review, and humanization. Instead of generating full articles in one pass, it enables interruption, modification, and review at each stage. The workflow supports DeepSeek-V3.2, 智谱GLM, and MiniMax models, making it cost-effective for public articles, opinion pieces, and long-form journalism. It outputs clean plaintext finales and optional WeChat-formatted HTML, with full project history and revision tracking for stable, repeatable publishing workflows.\nLong-form and opinion article writing for public platforms\nStyle modeling and human-writing-style content generation\nMulti-stage content review and editorial workflow\nWeChat public account article publishing with HTML layout export",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dongbeixiaohuo/writing-agent`",
+    "usage": "```\nWrite a [TYPE_OF_CONTENT] in the style of [AUTHOR_OR_BRAND]. Use a [TONE: formal/casual/conversational] tone. The piece should focus on [TOPIC] and include [SPECIFIC_KEY_POINTS]. Aim for [LENGTH_IN_WORDS] words. Reference [CONTEXT_OR_EXAMPLES] to ensure stylistic consistency. Here’s the prompt to follow: 'Write a [TYPE_OF_CONTENT] in the style of [AUTHOR_OR_BRAND] about [TOPIC] with a [TONE] tone, covering [SPECIFIC_KEY_POINTS]. Make it [LENGTH_IN_WORDS] words long and reference [CONTEXT_OR_EXAMPLES].'\n```\nCopy\n\n```\nIn the style of Malcolm Gladwell, here’s a 500-word essay exploring the psychology behind why some people thrive under pressure while others crumble. The piece opens with a vivid anecdote about a firefighter who made split-second decisions during a blaze in downtown Chicago, then transitions into Gladwell’s signature blend of storytelling and data-driven analysis. The essay examines the concept of 'deliberate practice' from Anders Ericsson’s research, weaving in examples from sports, music, and business to argue that resilience isn’t innate but cultivated through structured challenges. It critiques the myth of the 'natural talent' and instead highlights how marginal gains—like a tennis player’s 10-minute daily focus drills—compound over time. The tone balances intellectual curiosity with conversational accessibility, ending with a call to reframe failure as a feedback loop rather than a verdict. The piece is framed as a standalone chapter from a larger work, complete with subtle references to Gladwell’s other books, such as *Outliers* and *David and Goliath*, to maintain stylistic consistency. Key phrases like 'tipping point,' 'threshold effect,' and '10,000-hour rule' are subtly incorporated to reinforce the Gladwellian voice. The word count is precisely 500, with a word processor’s 'readability score' of 8.2, aligning with Gladwell’s typical prose style.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "writing-agent#main-content",
+      "writing-agent#overview",
+      "writing-agent#setup",
+      "writing-agent#examples",
+      "writing-agent#tools",
+      "writing-agent#mcp",
+      "writing-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Writing Agent is a multi-stage AI writing system that breaks content creation into planned phases: theme definition, position setting, research, outlining, draft iteration, editorial review, and humanization. Instead of generating full articles in one pass, it enables interruption, modification, and review at each stage. The workflow supports DeepSeek-V3.2, 智谱GLM, and MiniMax models, making it cost-effective for public articles, opinion pieces, and long-form journalism. It outputs clean plaintext finales and optional WeChat-formatted HTML, with full project history and revision tracking for stable, repeatable publishing workflows.\nLong-form and opinion article writing for public platforms\nStyle modeling and human-writing-style content generation\nMulti-stage content review and editorial workflow\nWeChat public account article publishing with HTML layout export",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dongbeixiaohuo/writing-agent`",
+    "usage_vi": "```\nWrite a [TYPE_OF_CONTENT] in the style of [AUTHOR_OR_BRAND]. Use a [TONE: formal/casual/conversational] tone. The piece should focus on [TOPIC] and include [SPECIFIC_KEY_POINTS]. Aim for [LENGTH_IN_WORDS] words. Reference [CONTEXT_OR_EXAMPLES] to ensure stylistic consistency. Here’s the prompt to follow: 'Write a [TYPE_OF_CONTENT] in the style of [AUTHOR_OR_BRAND] about [TOPIC] with a [TONE] tone, covering [SPECIFIC_KEY_POINTS]. Make it [LENGTH_IN_WORDS] words long and reference [CONTEXT_OR_EXAMPLES].'\n```\nCopy\n\n```\nIn the style of Malcolm Gladwell, here’s a 500-word essay exploring the psychology behind why some people thrive under pressure while others crumble. The piece opens with a vivid anecdote about a firefighter who made split-second decisions during a blaze in downtown Chicago, then transitions into Gladwell’s signature blend of storytelling and data-driven analysis. The essay examines the concept of 'deliberate practice' from Anders Ericsson’s research, weaving in examples from sports, music, and business to argue that resilience isn’t innate but cultivated through structured challenges. It critiques the myth of the 'natural talent' and instead highlights how marginal gains—like a tennis player’s 10-minute daily focus drills—compound over time. The tone balances intellectual curiosity with conversational accessibility, ending with a call to reframe failure as a feedback loop rather than a verdict. The piece is framed as a standalone chapter from a larger work, complete with subtle references to Gladwell’s other books, such as *Outliers* and *David and Goliath*, to maintain stylistic consistency. Key phrases like 'tipping point,' 'threshold effect,' and '10,000-hour rule' are subtly incorporated to reinforce the Gladwellian voice. The word count is precisely 500, with a word processor’s 'readability score' of 8.2, aligning with Gladwell’s typical prose style.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:40:17.549257Z",
+    "http_status": 200,
+    "content_hash": "39ea222172152eed46fdcdac0706524041f9290d5feb1667f79fc3d86351a597",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\writing-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\writing-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Writing System - Human-like Content Generation",
+  "short_description_vi": "AI writing system that mimics human writing style. Supports DeepSeek, 智谱GLM, and MiniMax models. Cost-effective for content generation, style modeling, and publishing workflows. Integrates with Claude Code Skills and Subagents."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/railway-skills",
+  "slug": "railway-skills",
+  "name": "browser-use",
+  "headline": "Railway Skills - Automate Infrastructure Tasks",
+  "short_description": "Agent skills for interacting with Railway, enabling automation of infrastructure tasks. Benefits operations teams by streamlining workflows and connecting to supported agents like Claude.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "railwayapp",
+  "install_command": "git clone https://github.com/railwayapp/railway-skills.git",
+  "source_repo_url": "https://github.com/railwayapp/railway-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "railway",
+    "infrastructure",
+    "agents"
+  ],
+  "sections": {
+    "overview": "Railway Skills is an agent skill package that enables AI agents like Claude and Cursor to interact with Railway infrastructure. It follows the Agent Skills format and includes plugin packaging for Claude Code, Cursor, Grok Build, and OpenAI Codex. The primary `use-railway` skill provides route-first intent routing for automating deployment and infrastructure operations. Installation is streamlined through the Railway CLI with a single setup command, and the skill integrates with local MCP server configuration where supported. Operations teams use it to automate repetitive infrastructure tasks and streamline deployment workflows across their AI agent environments.\nAutomate application deployments and environment management\nStreamline infrastructure provisioning and configuration\nEnable Claude and Cursor to execute Railway operations\nReduce manual deployment workflow steps",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/railwayapp/railway-skills`",
+    "usage": "```\nAutomate the deployment of [SERVICE_NAME] on Railway using the Railway API. Execute the following steps: 1) Verify the current deployment status of [SERVICE_NAME] in the Railway project [PROJECT_ID]. 2) If the service is not running, deploy the latest version from the GitHub repository [REPO_URL] with the environment variables [ENV_VARS]. 3) Monitor the deployment logs and confirm successful completion. 4) If the deployment fails, provide troubleshooting steps for the error message [ERROR_MESSAGE].\n```\nCopy\n\n```\n### Railway Deployment Automation Report\n**Service Name:** `customer-api`\n**Project ID:** `proj_abc123xyz`\n**Repository:** `https://github.com/company/customer-api`\n\n#### Step 1: Deployment Status Check\nThe current status of `customer-api` in Railway project `proj_abc123xyz` is **inactive**. No active deployments were found.\n\n#### Step 2: Deployment Initiation\nTriggered a new deployment for `customer-api` using the latest commit from `main` branch. Environment variables applied:\n- `DATABASE_URL`: `postgres://user:pass@db.example.com:5432/customer_db`\n- `REDIS_URL`: `redis://redis.example.com:6379`\n- `JWT_SECRET`: `supersecretkey123`\n\n#### Step 3: Deployment Logs\n```\n[2023-11-15 14:30:22] Deploying customer-api from commit 7a3b9c2...\n[2023-11-15 14:30:25] Building Docker image...\n[2023-11-15 14:31:45] Successfully built image (sha256:abc123...)\n[2023-11-15 14:32:10] Deploying to Railway...\n[2023-11-15 14:32:15] Service is now live at https://customer-api-production.up.railway.app\n```\n\n#### Step 4: Verification\n- **Service URL:** `https://customer-api-production.up.railway.app/health`\n- **Status:** ✅ Healthy (200 OK)\n- **Uptime:** 99.9% over the last 24 hours\n\n#### Troubleshooting (if applicable)\nNo errors detected. If deployment fails in the future, common issues include:\n1. **Environment variable misconfiguration:** Double-check `ENV_VARS` in the Railway dashboard.\n2. **GitHub repository permissions:** Ensure the Railway integration has access to the repository.\n3. **Resource limits:** Upgrade the Railway service tier if memory/CPU constraints are hit.\n\n**Next Steps:**\n- Monitor the service for the next 30 minutes for any runtime errors.\n- Set up automated alerts for deployment failures via Railway's monitoring tools.\n- Document this deployment process in the team's runbooks for future reference.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "railway-skills#main-content",
+      "railway-skills#overview",
+      "railway-skills#setup",
+      "railway-skills#examples",
+      "railway-skills#tools",
+      "railway-skills#mcp",
+      "railway-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Railway Skills is an agent skill package that enables AI agents like Claude and Cursor to interact with Railway infrastructure. It follows the Agent Skills format and includes plugin packaging for Claude Code, Cursor, Grok Build, and OpenAI Codex. The primary `use-railway` skill provides route-first intent routing for automating deployment and infrastructure operations. Installation is streamlined through the Railway CLI with a single setup command, and the skill integrates with local MCP server configuration where supported. Operations teams use it to automate repetitive infrastructure tasks and streamline deployment workflows across their AI agent environments.\nAutomate application deployments and environment management\nStreamline infrastructure provisioning and configuration\nEnable Claude and Cursor to execute Railway operations\nReduce manual deployment workflow steps",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/railwayapp/railway-skills`",
+    "usage_vi": "```\nAutomate the deployment of [SERVICE_NAME] on Railway using the Railway API. Execute the following steps: 1) Verify the current deployment status of [SERVICE_NAME] in the Railway project [PROJECT_ID]. 2) If the service is not running, deploy the latest version from the GitHub repository [REPO_URL] with the environment variables [ENV_VARS]. 3) Monitor the deployment logs and confirm successful completion. 4) If the deployment fails, provide troubleshooting steps for the error message [ERROR_MESSAGE].\n```\nCopy\n\n```\n### Railway Deployment Automation Report\n**Service Name:** `customer-api`\n**Project ID:** `proj_abc123xyz`\n**Repository:** `https://github.com/company/customer-api`\n\n#### Step 1: Deployment Status Check\nThe current status of `customer-api` in Railway project `proj_abc123xyz` is **inactive**. No active deployments were found.\n\n#### Step 2: Deployment Initiation\nTriggered a new deployment for `customer-api` using the latest commit from `main` branch. Environment variables applied:\n- `DATABASE_URL`: `postgres://user:pass@db.example.com:5432/customer_db`\n- `REDIS_URL`: `redis://redis.example.com:6379`\n- `JWT_SECRET`: `supersecretkey123`\n\n#### Step 3: Deployment Logs\n```\n[2023-11-15 14:30:22] Deploying customer-api from commit 7a3b9c2...\n[2023-11-15 14:30:25] Building Docker image...\n[2023-11-15 14:31:45] Successfully built image (sha256:abc123...)\n[2023-11-15 14:32:10] Deploying to Railway...\n[2023-11-15 14:32:15] Service is now live at https://customer-api-production.up.railway.app\n```\n\n#### Step 4: Verification\n- **Service URL:** `https://customer-api-production.up.railway.app/health`\n- **Status:** ✅ Healthy (200 OK)\n- **Uptime:** 99.9% over the last 24 hours\n\n#### Troubleshooting (if applicable)\nNo errors detected. If deployment fails in the future, common issues include:\n1. **Environment variable misconfiguration:** Double-check `ENV_VARS` in the Railway dashboard.\n2. **GitHub repository permissions:** Ensure the Railway integration has access to the repository.\n3. **Resource limits:** Upgrade the Railway service tier if memory/CPU constraints are hit.\n\n**Next Steps:**\n- Monitor the service for the next 30 minutes for any runtime errors.\n- Set up automated alerts for deployment failures via Railway's monitoring tools.\n- Document this deployment process in the team's runbooks for future reference.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:21:47.675909Z",
+    "http_status": 200,
+    "content_hash": "e8c15f9aaa10f65bd275401743dba984952e66add472f82479418446713c6031",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\railway-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\railway-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Railway Skills - Automate Infrastructure Tasks",
+  "short_description_vi": "Agent skills for interacting with Railway, enabling automation of infrastructure tasks. Benefits operations teams by streamlining workflows and connecting to supported agents like Claude."
+}

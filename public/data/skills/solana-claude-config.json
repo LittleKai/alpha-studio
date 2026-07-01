@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/solana-claude-config",
+  "slug": "solana-claude-config",
+  "name": "Solana Claude Config",
+  "headline": "Solana Claude Config - Full-Stack Solana Dev",
+  "short_description": "Claude Code configs for expert Solana builders. Configures agents, commands, hooks, and settings for Web, Anchor, Pinnochio, Unity, and Mobile projects. Optimizes token efficiency and integrates best practices for full-stack Solana development.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "solanabr",
+  "install_command": "git clone https://github.com/solanabr/solana-claude-config.git",
+  "source_repo_url": "https://github.com/solanabr/solana-claude-config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "unity-csharp",
+    "claude-agent",
+    "claude-code",
+    "claude-skills",
+    "trident",
+    "solana-engineer",
+    "claude-md",
+    "solana-agents",
+    "anchor",
+    "solana",
+    "playsolana",
+    "solana-mobile-stack",
+    "claude-subagents",
+    "claude-commands",
+    "pinocchio",
+    "solana-program"
+  ],
+  "sections": {
+    "overview": "solana-claude-config is a comprehensive `.claude/` configuration that transforms Claude into a Solana development expert. It includes 15 specialized agents for tasks like architecture, Anchor smart contracts, Pinocchio programs, DeFi, tokens, frontend, and mobile development, plus 29 workflow commands for building, testing, deploying, and profiling. The configuration integrates 7 MCP servers for on-chain data, documentation, and local validator control, while using progressive skill loading to minimize token consumption. Designed for full-stack Solana builders working with Web, Anchor, Pinocchio, Unity, and Mobile projects, it combines best practices from multiple ecosystem sources into a single, adaptable setup.\nArchitecting full-stack Solana applications with multi-agent workflows\nDeveloping and testing Anchor smart contracts with specialized agent guidance\nBuilding Solana frontends and mobile apps with context-optimized configs\nDeploying and profiling Solana programs with automated workflow commands",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/solanabr/solana-claude-config`",
+    "usage": "```\nConfigure a [PROJECT_TYPE] Solana project using Claude Code with the following requirements: [REQUIREMENTS]. Use the solana-claude-config skill to generate a project-specific configuration file that includes: (1) Anchor workspace setup for [ANCHOR_VERSION], (2) Pinocchio optimization flags for [TARGET_CHAIN], (3) Unity SDK integration for [UNITY_VERSION], (4) Mobile wallet adapter settings for [WALLET_ADAPTER], and (5) Token efficiency rules for [TOKEN_STANDARD]. Include best practices for [DEVELOPMENT_PHASE].\n```\nCopy\n\n```\nHere's your fully configured Solana project setup for a Unity-based mobile game integrating token2022 standards:\n\n```yaml\n# .claude/solana-config.yaml\nproject_type: unity-mobile\nanchor_version: 0.29.0\npinocchio_flags:\n  target_chain: devnet\n  optimization_level: aggressive\n  enable_logs: true\nunity_sdk:\n  version: 1.5.3\n  android_package: com.solana.game.unity\n  ios_bundle_id: com.solana.game.unity\nwallet_adapter:\n  supported: [phantom, solflare, backpocket]\n  auto_connect: true\ntoken_standards:\n  primary: token2022\n  secondary: spl-token\n  efficiency_rules:\n    - max_decimals: 9\n    - freeze_authority: none\n    - transfer_fee: 0.01%\n    - default_mint_authority: program\n\ndevelopment_phase: alpha\nrecommended_commands:\n  - anchor build --verifiable\n  - pinocchio optimize --all\n  - unity-export:android\n  - solana-test-validator --reset\n```\n\nKey optimizations implemented:\n1. **Token2022 Integration**: Enabled with 9 decimal places and 0.01% transfer fee for microtransactions in-game\n2. **Pinocchio Optimization**: Aggressive settings for devnet with logging enabled to capture performance metrics\n3. **Unity Mobile Setup**: Configured for both Android (package: com.solana.game.unity) and iOS (bundle: com.solana.game.unity) with wallet adapter support\n4. **Anchor 0.29.0**: Latest stable version with verifiable builds for production deployment\n5. **Wallet Adapters**: Pre-configured for Phantom, Solflare, and Backpocket with auto-connect enabled\n\nThis configuration will automatically apply when you run `claude code` in this project directory, setting up all necessary hooks and commands for seamless development.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "solana-claude-config#main-content",
+      "solana-claude-config#overview",
+      "solana-claude-config#setup",
+      "solana-claude-config#examples",
+      "solana-claude-config#tools",
+      "solana-claude-config#mcp",
+      "solana-claude-config#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "solana-claude-config is a comprehensive `.claude/` configuration that transforms Claude into a Solana development expert. It includes 15 specialized agents for tasks like architecture, Anchor smart contracts, Pinocchio programs, DeFi, tokens, frontend, and mobile development, plus 29 workflow commands for building, testing, deploying, and profiling. The configuration integrates 7 MCP servers for on-chain data, documentation, and local validator control, while using progressive skill loading to minimize token consumption. Designed for full-stack Solana builders working with Web, Anchor, Pinocchio, Unity, and Mobile projects, it combines best practices from multiple ecosystem sources into a single, adaptable setup.\nArchitecting full-stack Solana applications with multi-agent workflows\nDeveloping and testing Anchor smart contracts with specialized agent guidance\nBuilding Solana frontends and mobile apps with context-optimized configs\nDeploying and profiling Solana programs with automated workflow commands",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/solanabr/solana-claude-config`",
+    "usage_vi": "```\nConfigure a [PROJECT_TYPE] Solana project using Claude Code with the following requirements: [REQUIREMENTS]. Use the solana-claude-config skill to generate a project-specific configuration file that includes: (1) Anchor workspace setup for [ANCHOR_VERSION], (2) Pinocchio optimization flags for [TARGET_CHAIN], (3) Unity SDK integration for [UNITY_VERSION], (4) Mobile wallet adapter settings for [WALLET_ADAPTER], and (5) Token efficiency rules for [TOKEN_STANDARD]. Include best practices for [DEVELOPMENT_PHASE].\n```\nCopy\n\n```\nHere's your fully configured Solana project setup for a Unity-based mobile game integrating token2022 standards:\n\n```yaml\n# .claude/solana-config.yaml\nproject_type: unity-mobile\nanchor_version: 0.29.0\npinocchio_flags:\n  target_chain: devnet\n  optimization_level: aggressive\n  enable_logs: true\nunity_sdk:\n  version: 1.5.3\n  android_package: com.solana.game.unity\n  ios_bundle_id: com.solana.game.unity\nwallet_adapter:\n  supported: [phantom, solflare, backpocket]\n  auto_connect: true\ntoken_standards:\n  primary: token2022\n  secondary: spl-token\n  efficiency_rules:\n    - max_decimals: 9\n    - freeze_authority: none\n    - transfer_fee: 0.01%\n    - default_mint_authority: program\n\ndevelopment_phase: alpha\nrecommended_commands:\n  - anchor build --verifiable\n  - pinocchio optimize --all\n  - unity-export:android\n  - solana-test-validator --reset\n```\n\nKey optimizations implemented:\n1. **Token2022 Integration**: Enabled with 9 decimal places and 0.01% transfer fee for microtransactions in-game\n2. **Pinocchio Optimization**: Aggressive settings for devnet with logging enabled to capture performance metrics\n3. **Unity Mobile Setup**: Configured for both Android (package: com.solana.game.unity) and iOS (bundle: com.solana.game.unity) with wallet adapter support\n4. **Anchor 0.29.0**: Latest stable version with verifiable builds for production deployment\n5. **Wallet Adapters**: Pre-configured for Phantom, Solflare, and Backpocket with auto-connect enabled\n\nThis configuration will automatically apply when you run `claude code` in this project directory, setting up all necessary hooks and commands for seamless development.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:37:15.674712Z",
+    "http_status": 200,
+    "content_hash": "ed4c67c5760db603c172cef412a8f03f91e6f914385466d12255bfa58fc0e720",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\solana-claude-config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\solana-claude-config.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Solana Claude Config - Full-Stack Solana Dev",
+  "short_description_vi": "Claude Code configs for expert Solana builders. Configures agents, commands, hooks, and settings for Web, Anchor, Pinnochio, Unity, and Mobile projects. Optimizes token efficiency and integrates best practices for full-stack Solana development."
+}

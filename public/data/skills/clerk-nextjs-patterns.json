@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clerk-nextjs-patterns",
+  "slug": "clerk-nextjs-patterns",
+  "name": "Kernel Auth Skill",
+  "headline": "clerk-nextjs-patterns: Next.js Auth Patterns",
+  "short_description": "This skill provides advanced patterns for implementing authentication in Next.js applications using Clerk. Developers can learn about server vs. client authentication, middleware strategies, and user-scoped caching.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "clerk",
+  "install_command": "git clone https://github.com/clerk/skills",
+  "source_repo_url": "https://github.com/clerk/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "clerk",
+    "nextjs",
+    "patterns",
+    "authentication"
+  ],
+  "sections": {
+    "overview": "clerk-nextjs-patterns provides framework-specific patterns for implementing Clerk authentication in Next.js applications. The skill guides developers through server-side and client-side authentication approaches, middleware configuration, Server Actions integration, and user-scoped caching strategies. It helps teams build secure, performant authentication layers without starting from scratch. Use this skill when setting up authentication in new Next.js projects or refactoring existing auth implementations to follow Clerk best practices.\nImplement secure authentication in Next.js applications\nProtect API routes based on user authentication status\nUtilize caching strategies to enhance performance of user data",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/clerk/skills --skill clerk-nextjs-patterns`\n`git clone https://github.com/clerk/skills`",
+    "usage": "```\nGenerate a Next.js authentication pattern using Clerk for [COMPANY], a [INDUSTRY] company. Focus on [SPECIFIC_FEATURE, e.g., server-side protected routes, client-side user caching, or middleware-based auth]. Include code snippets for [SERVER_COMPONENT or CLIENT_COMPONENT] and explain the trade-offs of your approach. Assume we're using Next.js 14+ and Clerk's latest SDK.\n```\nCopy\n\n```\n# Next.js + Clerk Authentication Pattern for Acme Corp",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "clerk-nextjs-patterns#main-content",
+      "clerk-nextjs-patterns#overview",
+      "clerk-nextjs-patterns#setup",
+      "clerk-nextjs-patterns#examples",
+      "clerk-nextjs-patterns#related",
+      "kernel-auth-skill"
+    ],
+    "overview_vi": "clerk-nextjs-patterns provides framework-specific patterns for implementing Clerk authentication in Next.js applications. The skill guides developers through server-side and client-side authentication approaches, middleware configuration, Server Actions integration, and user-scoped caching strategies. It helps teams build secure, performant authentication layers without starting from scratch. Use this skill when setting up authentication in new Next.js projects or refactoring existing auth implementations to follow Clerk best practices.\nImplement secure authentication in Next.js applications\nProtect API routes based on user authentication status\nUtilize caching strategies to enhance performance of user data",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/clerk/skills --skill clerk-nextjs-patterns`\n`git clone https://github.com/clerk/skills`",
+    "usage_vi": "```\nGenerate a Next.js authentication pattern using Clerk for [COMPANY], a [INDUSTRY] company. Focus on [SPECIFIC_FEATURE, e.g., server-side protected routes, client-side user caching, or middleware-based auth]. Include code snippets for [SERVER_COMPONENT or CLIENT_COMPONENT] and explain the trade-offs of your approach. Assume we're using Next.js 14+ and Clerk's latest SDK.\n```\nCopy\n\n```\n# Next.js + Clerk Authentication Pattern for Acme Corp"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:40:58.739300Z",
+    "http_status": 200,
+    "content_hash": "d37cda59ff3da8548750b0bca490b33508d6ce6f3075ab4881aed80c2998ace7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\clerk-nextjs-patterns.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\clerk-nextjs-patterns.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "clerk-nextjs-patterns: Next.js Auth Patterns",
+  "short_description_vi": "This skill provides advanced patterns for implementing authentication in Next.js applications using Clerk. Developers can learn about server vs. client authentication, middleware strategies, and user-scoped caching."
+}

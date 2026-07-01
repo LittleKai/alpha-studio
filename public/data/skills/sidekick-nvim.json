@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sidekick-nvim",
+  "slug": "sidekick-nvim",
+  "name": "browser-use",
+  "headline": "sidekick.nvim - AI Coding Assistant for Neovim",
+  "short_description": "sidekick.nvim integrates Copilot LSP's Next Edit Suggestions with a built-in terminal for AI CLI. Review and apply diffs, chat with AI assistants, and streamline coding without leaving Neovim. Benefits developers by reducing context switching and improving productivity.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "folke",
+  "install_command": "git clone https://github.com/folke/sidekick.nvim.git",
+  "source_repo_url": "https://github.com/folke/sidekick.nvim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "copilot",
+    "copilot-cli",
+    "neovim",
+    "codex-cli",
+    "neovim-plugin",
+    "gemini-cli",
+    "nvim",
+    "nvim-plugin"
+  ],
+  "sections": {
+    "overview": "sidekick.nvim is a Neovim plugin that brings AI-assisted development directly into your editor. It integrates with Copilot LSP's Next Edit Suggestions and provides a built-in terminal for running AI CLI commands. The plugin allows developers to review and apply code diffs, interact with AI assistants, and streamline their workflow without leaving the editor. By consolidating AI tools and suggestions within Neovim, sidekick.nvim reduces context switching and helps developers maintain focus during coding sessions.\nReceive intelligent code suggestions in real-time as you write code.\nInteract with AI command-line tools like Claude and Codex directly from Neovim.\nAutomatically visualize code changes with rich diffs and inline highlighting.\nUtilize a library of pre-defined prompts for common coding tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/folke/sidekick.nvim`",
+    "usage": "```\nUse sidekick.nvim in Neovim to [ACTION] in [FILE_TYPE]. For example: 'Use sidekick.nvim to refactor the Python class in src/utils.py to follow PEP 8 guidelines. Review the diffs and apply the changes.'\n```\nCopy\n\n```\nHere’s how sidekick.nvim would assist with your request to refactor the Python class in `src/utils.py`:\n\n1. **Next Edit Suggestions**: Sidekick.nvim detects the Python file and suggests a refactor to align with PEP 8. The AI assistant highlights the class `DataProcessor` and proposes:\n   ```python\n   class DataProcessor:\n       def __init__(self, input_data):\n           self.input_data = input_data\n           \n       def process(self):\n           # Logic here\n           pass\n   ```\n   becomes:\n   ```python\n   class DataProcessor:\n       def __init__(self, input_data):\n           self.input_data = input_data\n\n       def process(self):\n           # Logic here\n           pass\n   ```\n\n2. **Review Diffs**: The diff view in Neovim shows the changes side-by-side. You can navigate between hunks using `]c` and `[c` (standard Neovim motions). Sidekick.nvim also provides a summary of the changes:\n   - Added blank line after `__init__` method (PEP 8 compliance).\n   - No functional changes; purely stylistic.\n\n3. **Apply Changes**: Press `<leader>aa` (default keybind for \"Apply All\" in sidekick.nvim) to accept all diffs. Alternatively, use `<leader>ac` to accept the current hunk or `<leader>ar` to reject it.\n\n4. **Terminal Integration**: If you need to test the changes, open the built-in terminal with `<leader>at` and run:\n   ```bash\n   python -m pytest tests/test_utils.py -v\n   ```\n   The terminal buffers the output, so you can review test results without leaving Neovim.\n\n5. **Chat with AI**: If you’re unsure about the refactor, open the chat interface with `<leader>ac` and ask:\n   \"Is this PEP 8 refactor correct? Should I add type hints?\"\n   The AI responds with:\n   ```\n   The refactor is correct for PEP 8. Adding type hints is optional but recommended for better code clarity. Example:\n   ```python\n   def __init__(self, input_data: list[str]) -> None:\n   ```\n\nAfter applying the changes, save the file with `:w` and continue coding seamlessly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sidekick-nvim#main-content",
+      "sidekick-nvim#overview",
+      "sidekick-nvim#setup",
+      "sidekick-nvim#examples",
+      "sidekick-nvim#tools",
+      "sidekick-nvim#mcp",
+      "sidekick-nvim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "sidekick.nvim is a Neovim plugin that brings AI-assisted development directly into your editor. It integrates with Copilot LSP's Next Edit Suggestions and provides a built-in terminal for running AI CLI commands. The plugin allows developers to review and apply code diffs, interact with AI assistants, and streamline their workflow without leaving the editor. By consolidating AI tools and suggestions within Neovim, sidekick.nvim reduces context switching and helps developers maintain focus during coding sessions.\nReceive intelligent code suggestions in real-time as you write code.\nInteract with AI command-line tools like Claude and Codex directly from Neovim.\nAutomatically visualize code changes with rich diffs and inline highlighting.\nUtilize a library of pre-defined prompts for common coding tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/folke/sidekick.nvim`",
+    "usage_vi": "```\nUse sidekick.nvim in Neovim to [ACTION] in [FILE_TYPE]. For example: 'Use sidekick.nvim to refactor the Python class in src/utils.py to follow PEP 8 guidelines. Review the diffs and apply the changes.'\n```\nCopy\n\n```\nHere’s how sidekick.nvim would assist with your request to refactor the Python class in `src/utils.py`:\n\n1. **Next Edit Suggestions**: Sidekick.nvim detects the Python file and suggests a refactor to align with PEP 8. The AI assistant highlights the class `DataProcessor` and proposes:\n   ```python\n   class DataProcessor:\n       def __init__(self, input_data):\n           self.input_data = input_data\n           \n       def process(self):\n           # Logic here\n           pass\n   ```\n   becomes:\n   ```python\n   class DataProcessor:\n       def __init__(self, input_data):\n           self.input_data = input_data\n\n       def process(self):\n           # Logic here\n           pass\n   ```\n\n2. **Review Diffs**: The diff view in Neovim shows the changes side-by-side. You can navigate between hunks using `]c` and `[c` (standard Neovim motions). Sidekick.nvim also provides a summary of the changes:\n   - Added blank line after `__init__` method (PEP 8 compliance).\n   - No functional changes; purely stylistic.\n\n3. **Apply Changes**: Press `<leader>aa` (default keybind for \"Apply All\" in sidekick.nvim) to accept all diffs. Alternatively, use `<leader>ac` to accept the current hunk or `<leader>ar` to reject it.\n\n4. **Terminal Integration**: If you need to test the changes, open the built-in terminal with `<leader>at` and run:\n   ```bash\n   python -m pytest tests/test_utils.py -v\n   ```\n   The terminal buffers the output, so you can review test results without leaving Neovim.\n\n5. **Chat with AI**: If you’re unsure about the refactor, open the chat interface with `<leader>ac` and ask:\n   \"Is this PEP 8 refactor correct? Should I add type hints?\"\n   The AI responds with:\n   ```\n   The refactor is correct for PEP 8. Adding type hints is optional but recommended for better code clarity. Example:\n   ```python\n   def __init__(self, input_data: list[str]) -> None:\n   ```\n\nAfter applying the changes, save the file with `:w` and continue coding seamlessly.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:37.425769Z",
+    "http_status": 200,
+    "content_hash": "c0a2b66a40d8e08e36895884c9a0445a21f42a9ca4a1d4744d17187b1cfbf929",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sidekick-nvim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sidekick-nvim.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "sidekick.nvim - AI Coding Assistant for Neovim",
+  "short_description_vi": "sidekick.nvim integrates Copilot LSP's Next Edit Suggestions with a built-in terminal for AI CLI. Review and apply diffs, chat with AI assistants, and streamline coding without leaving Neovim. Benefits developers by reducing context switching and improving productivity."
+}

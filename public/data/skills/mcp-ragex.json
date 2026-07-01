@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-ragex",
+  "slug": "mcp-ragex",
+  "name": "browser-use",
+  "headline": "RAGex: Semantic Code Search for Claude Code",
+  "short_description": "MCP server for intelligent code search: semantic (RAG), symbolic (tree-sitter), and regex (ripgrep) search modes. Built for Claude Code and AI coding assistants.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "jbenshetler",
+  "install_command": "git clone https://github.com/jbenshetler/mcp-ragex.git",
+  "source_repo_url": "https://github.com/jbenshetler/mcp-ragex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "claude-code",
+    "developer-tools",
+    "mcp-server",
+    "rag",
+    "tree-sitter",
+    "code-analysis",
+    "chromadb",
+    "code-search",
+    "ripgrep",
+    "coding-assistant",
+    "mcp",
+    "model-context-protocol-servers",
+    "embeddings",
+    "semantic-search"
+  ],
+  "sections": {
+    "overview": "RAGex is an MCP server that gives Claude Code intelligent search capabilities across your entire codebase using three complementary modes: semantic search for natural language queries, tree-sitter symbolic search for code structure, and ripgrep regex patterns for exact matching. It indexes your project locally in Docker, with no code leaving your machine, and returns results in sub-seconds to help Claude understand existing patterns and avoid duplicate code. The skill automatically detects the best search mode based on your query, supports 30+ programming languages, and works with both AMD64 and ARM64 platforms, including NVIDIA GPU acceleration for faster indexing.\nFinding existing authentication functions when Claude proposes building a new auth system\nDiscovering coding conventions and patterns in your codebase before Claude generates new code\nLocating database query examples to ensure Claude uses your project's established patterns\nSearching for error handling implementations across the codebase",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jbenshetler/mcp-ragex`",
+    "usage": "```\nI'm working on a project for [COMPANY], a [INDUSTRY] company. I need to search through [NUMBER] lines of [PROGRAMMING_LANGUAGE] code for a specific pattern. Use the MCP server with all three search modes: semantic, symbolic, and regex. The pattern I'm looking for is: [PATTERN]. Return the results in a clear, organized format.\n```\nCopy\n\n```\n# Code Search Results",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-ragex#main-content",
+      "mcp-ragex#overview",
+      "mcp-ragex#setup",
+      "mcp-ragex#examples",
+      "mcp-ragex#tools",
+      "mcp-ragex#mcp",
+      "mcp-ragex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "RAGex is an MCP server that gives Claude Code intelligent search capabilities across your entire codebase using three complementary modes: semantic search for natural language queries, tree-sitter symbolic search for code structure, and ripgrep regex patterns for exact matching. It indexes your project locally in Docker, with no code leaving your machine, and returns results in sub-seconds to help Claude understand existing patterns and avoid duplicate code. The skill automatically detects the best search mode based on your query, supports 30+ programming languages, and works with both AMD64 and ARM64 platforms, including NVIDIA GPU acceleration for faster indexing.\nFinding existing authentication functions when Claude proposes building a new auth system\nDiscovering coding conventions and patterns in your codebase before Claude generates new code\nLocating database query examples to ensure Claude uses your project's established patterns\nSearching for error handling implementations across the codebase",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jbenshetler/mcp-ragex`",
+    "usage_vi": "```\nI'm working on a project for [COMPANY], a [INDUSTRY] company. I need to search through [NUMBER] lines of [PROGRAMMING_LANGUAGE] code for a specific pattern. Use the MCP server with all three search modes: semantic, symbolic, and regex. The pattern I'm looking for is: [PATTERN]. Return the results in a clear, organized format.\n```\nCopy\n\n```\n# Code Search Results"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:36:24.064377Z",
+    "http_status": 200,
+    "content_hash": "4d2f3028c8f65c084874a7412cd65dae9c09813b4f23bf29224753052c42a50c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-ragex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-ragex.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "RAGex: Semantic Code Search for Claude Code",
+  "short_description_vi": "MCP server for intelligent code search: semantic (RAG), symbolic (tree-sitter), and regex (ripgrep) search modes. Built for Claude Code and AI coding assistants."
+}

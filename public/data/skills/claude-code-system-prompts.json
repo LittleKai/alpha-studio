@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-system-prompts",
+  "slug": "claude-code-system-prompts",
+  "name": "browser-use",
+  "headline": "Comprehensive Claude Code system prompts",
+  "short_description": "All parts of Claude Code's system prompt, 18 builtin tool descriptions, sub agent prompts (Plan/Explore/Task), utility prompts (CLAUDE.md, compact,  statusline, magic docs, WebFetch, Bash cmd, security review, agent creation).  Updated for each Claude Code version.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "Piebald-AI",
+  "install_command": "git clone https://github.com/Piebald-AI/claude-code-system-prompts.git",
+  "source_repo_url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "system-prompts",
+    "claude-code-system-prompts"
+  ],
+  "sections": {
+    "overview": "Claude Code System Prompts is a comprehensive repository maintained by Piebald AI that contains all components of Claude Code's system prompt, including the core system instructions, descriptions for 18 built-in tools, and specialized sub-agent prompts for planning, exploration, and task execution. The repository also includes utility prompts for CLAUDE.md context, compact formatting, statusline updates, magic documentation, WebFetch integration, Bash command handling, security reviews, and agent creation workflows. Maintained with version-specific updates via an active changelog, this resource is essential for developers who want to understand how Claude Code operates internally or customize their AI agent configurations. The prompts are organized in a dedicated system-prompts directory and include cross-platform tool implementations.\nAutomate the generation of documentation files using CLAUDE.md prompts.\nCreate custom AI agents tailored to specific tasks using the agent creation prompts.\nPerform comprehensive security reviews of code changes to identify vulnerabilities.\nSummarize conversations effectively to maintain clarity in team communications.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/claude-code-system-prompts`\n1. **Prerequisites**: Ensure `claude-code` v0.12.3+ is installed. Add `WebFetch` to your `CLAUDE.md` tools list:\n   ```\n   tools:\n     - name: WebFetch\n       description: Fetch and parse web content with rate limiting and error handling\n   ```\n2. **Environment**: Set `USER_AGENT` in your shell:\n   ```bash\n   export USER_AGENT=\"AuroraBot/1.0 (+https://aurora.example.com/bot-info)\"\n   ```",
+    "usage": "```\nGenerate a [UTILITY_PROMPT_NAME] for [PROJECT_NAME] using Claude Code's system prompts. Focus on [SPECIFIC_GOAL] and ensure it follows the structure of existing utility prompts (e.g., CLAUDE.md, compact, statusline). Include [RELEVANT_SECTIONS] such as setup, workflow, and key commands. Reference the latest Claude Code version for compatibility.\n```\nCopy\n\n```\n```markdown\n# Utility Prompt: WebFetch for Project Aurora\n\n**Purpose**: Automate web-based data collection for Project Aurora's competitor pricing analysis. This prompt integrates with Claude Code's `WebFetch` tool to scrape and parse pricing data from e-commerce sites while respecting `robots.txt` and rate limits.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-system-prompts#main-content",
+      "claude-code-system-prompts#overview",
+      "claude-code-system-prompts#setup",
+      "claude-code-system-prompts#examples",
+      "claude-code-system-prompts#tools",
+      "claude-code-system-prompts#mcp",
+      "claude-code-system-prompts#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code System Prompts is a comprehensive repository maintained by Piebald AI that contains all components of Claude Code's system prompt, including the core system instructions, descriptions for 18 built-in tools, and specialized sub-agent prompts for planning, exploration, and task execution. The repository also includes utility prompts for CLAUDE.md context, compact formatting, statusline updates, magic documentation, WebFetch integration, Bash command handling, security reviews, and agent creation workflows. Maintained with version-specific updates via an active changelog, this resource is essential for developers who want to understand how Claude Code operates internally or customize their AI agent configurations. The prompts are organized in a dedicated system-prompts directory and include cross-platform tool implementations.\nAutomate the generation of documentation files using CLAUDE.md prompts.\nCreate custom AI agents tailored to specific tasks using the agent creation prompts.\nPerform comprehensive security reviews of code changes to identify vulnerabilities.\nSummarize conversations effectively to maintain clarity in team communications.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/claude-code-system-prompts`\n1. **Prerequisites**: Ensure `claude-code` v0.12.3+ is installed. Add `WebFetch` to your `CLAUDE.md` tools list:\n   ```\n   tools:\n     - name: WebFetch\n       description: Fetch and parse web content with rate limiting and error handling\n   ```\n2. **Environment**: Set `USER_AGENT` in your shell:\n   ```bash\n   export USER_AGENT=\"AuroraBot/1.0 (+https://aurora.example.com/bot-info)\"\n   ```",
+    "usage_vi": "```\nGenerate a [UTILITY_PROMPT_NAME] for [PROJECT_NAME] using Claude Code's system prompts. Focus on [SPECIFIC_GOAL] and ensure it follows the structure of existing utility prompts (e.g., CLAUDE.md, compact, statusline). Include [RELEVANT_SECTIONS] such as setup, workflow, and key commands. Reference the latest Claude Code version for compatibility.\n```\nCopy\n\n```\n```markdown\n# Utility Prompt: WebFetch for Project Aurora\n\n**Purpose**: Automate web-based data collection for Project Aurora's competitor pricing analysis. This prompt integrates with Claude Code's `WebFetch` tool to scrape and parse pricing data from e-commerce sites while respecting `robots.txt` and rate limits."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:24:35.631800Z",
+    "http_status": 200,
+    "content_hash": "dbdf1495afee4aa7a1873dc9622fe7529448a85300179ce26719e9c5ba5b1079",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-system-prompts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-system-prompts.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Comprehensive Claude Code system prompts",
+  "short_description_vi": "All parts of Claude Code's system prompt, 18 builtin tool descriptions, sub agent prompts (Plan/Explore/Task), utility prompts (CLAUDE.md, compact,  statusline, magic docs, WebFetch, Bash cmd, security review, agent creation).  Updated for each Claude Code version."
+}

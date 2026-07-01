@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-reactnative-expo-agent-system",
+  "slug": "claude-code-reactnative-expo-agent-system",
+  "name": "browser-use",
+  "headline": "React Native/Expo agent toolkit for Claude Code",
+  "short_description": "AI-powered development toolkit with 7 production agents for React Native/Expo mobile apps. Automates accessibility, design systems, security, performance, and testing. Built for Claude Code v2.0.5+.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "senaiverse",
+  "install_command": "git clone https://github.com/senaiverse/claude-code-reactnative-expo-agent-system.git",
+  "source_repo_url": "https://github.com/senaiverse/claude-code-reactnative-expo-agent-system",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "ai-agents",
+    "code-quality",
+    "powershell",
+    "claude-agents",
+    "expo",
+    "react-native"
+  ],
+  "sections": {
+    "overview": "This AI agent system provides automated development workflows for React Native and Expo mobile apps through 7 specialized agents covering design systems, accessibility compliance, security, performance, and testing. Built for Claude Code v2.0.5 and later, it works across Windows, macOS, and Linux environments with Expo SDK 50+ and React Native 0.74+. The system addresses common production issues like design inconsistencies, WCAG accessibility violations, package version conflicts, and performance regressions by automating code review tasks and compliance checks. Developers install the agents project-wide or globally via interactive scripts, then invoke them through Claude Code commands to catch issues before code review. The toolkit includes configuration files, installation scripts, and documentation for both quick setup and comprehensive customization.\nEnforce design token consistency across React Native component libraries\nAutomatically verify WCAG 2.2 accessibility compliance for App Store submissions\nScan dependencies for security vulnerabilities and version conflicts\nMonitor performance regressions and maintain performance budgets",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/senaiverse/claude-code-reactnative-expo-agent-system`",
+    "usage": "```\nUse the claude-code-reactnative-expo-agent-system to [TASK] for my React Native/Expo project at [PROJECT_PATH]. Focus on [PRIORITY_AREA: e.g., accessibility, performance, security, design system consistency]. Generate a detailed report with code changes, test cases, and implementation steps. Prioritize [CONSTRAINTS: e.g., iOS compatibility, Android parity, Expo SDK 50+].\n```\nCopy\n\n```\n### React Native/Expo Accessibility Audit & Remediation Report\n\n**Project:** *FitnessTrack v2.4.1* (Expo SDK 50.0.0, React Native 0.73.6)\n**Generated:** 2024-05-15 | **Agents Used:** AccessibilityAgent, TestingAgent, CodeReviewAgent\n\n---\n\n#### 🔍 **Critical Issues (12 found)**\n1. **Screen Reader Incompatibility** in `WorkoutScreen.js`:\n   - `Image` components missing `accessible={true} alt` props\n   - `Button` components using icons without `accessibilityLabel`\n   - *Impact:* Screen readers fail to describe interactive elements\n   - *Fix:* Added `accessible={true} accessibilityLabel=\"Start 30-minute HIIT workout\"` to all interactive elements\n\n2. **Color Contrast Violations** (WCAG 2.1 AA):\n   - Primary button text (#FFFFFF) on gradient background (#4A90E2) → Contrast ratio: 2.1:1 (needs 4.5:1)\n   - *Fix:* Updated button styles to use `#E0E0E0` text with 5.2:1 contrast\n\n3. **Dynamic Text Scaling:**\n   - `Text` components not respecting system font size changes\n   - *Fix:* Added `allowFontScaling={true}` and `adjustsFontSizeToFit={true}` where needed\n\n---\n\n#### ✅ **Automated Fixes Applied**\n- **AccessibilityAgent:** Scanned 47 components, auto-added `accessibilityRole` and `accessibilityLabel` to 32 interactive elements\n- **TestingAgent:** Generated Jest snapshots for all fixed components with `axe-core` accessibility tests\n- **CodeReviewAgent:** Flagged 8 potential regressions (e.g., `TouchableOpacity` wrapped in `View` without `accessible={false}`)\n\n---\n\n#### 📋 **Implementation Steps**\n1. **Merge Branch:** `git checkout accessibility-fixes && git pull origin main`\n2. **Apply Changes:**\n   ```bash\n   npx expo prebuild --clean\n   npx expo run:android\n   npx expo run:ios\n   ```\n3. **Verify Fixes:**\n   - Run `npx @axe-core/react-native` in development mode\n   - Test with VoiceOver (iOS) and TalkBack (Android)\n4. **Documentation:** Update `docs/accessibility.md` with new patterns\n\n---\n\n#### 📊 **Performance Impact**\n- Bundle size: +0.8% (added `react-native-a11y` dependency)\n- Memory usage: No significant change\n- Build time: +2s (due to snapshot generation)\n\n**Recommendation:** Deploy these changes in the next patch release (v2.4.2) as they improve compliance without breaking existing functionality.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-reactnative-expo-agent-system#main-content",
+      "claude-code-reactnative-expo-agent-system#overview",
+      "claude-code-reactnative-expo-agent-system#setup",
+      "claude-code-reactnative-expo-agent-system#examples",
+      "claude-code-reactnative-expo-agent-system#tools",
+      "claude-code-reactnative-expo-agent-system#mcp",
+      "claude-code-reactnative-expo-agent-system#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This AI agent system provides automated development workflows for React Native and Expo mobile apps through 7 specialized agents covering design systems, accessibility compliance, security, performance, and testing. Built for Claude Code v2.0.5 and later, it works across Windows, macOS, and Linux environments with Expo SDK 50+ and React Native 0.74+. The system addresses common production issues like design inconsistencies, WCAG accessibility violations, package version conflicts, and performance regressions by automating code review tasks and compliance checks. Developers install the agents project-wide or globally via interactive scripts, then invoke them through Claude Code commands to catch issues before code review. The toolkit includes configuration files, installation scripts, and documentation for both quick setup and comprehensive customization.\nEnforce design token consistency across React Native component libraries\nAutomatically verify WCAG 2.2 accessibility compliance for App Store submissions\nScan dependencies for security vulnerabilities and version conflicts\nMonitor performance regressions and maintain performance budgets",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/senaiverse/claude-code-reactnative-expo-agent-system`",
+    "usage_vi": "```\nUse the claude-code-reactnative-expo-agent-system to [TASK] for my React Native/Expo project at [PROJECT_PATH]. Focus on [PRIORITY_AREA: e.g., accessibility, performance, security, design system consistency]. Generate a detailed report with code changes, test cases, and implementation steps. Prioritize [CONSTRAINTS: e.g., iOS compatibility, Android parity, Expo SDK 50+].\n```\nCopy\n\n```\n### React Native/Expo Accessibility Audit & Remediation Report\n\n**Project:** *FitnessTrack v2.4.1* (Expo SDK 50.0.0, React Native 0.73.6)\n**Generated:** 2024-05-15 | **Agents Used:** AccessibilityAgent, TestingAgent, CodeReviewAgent\n\n---\n\n#### 🔍 **Critical Issues (12 found)**\n1. **Screen Reader Incompatibility** in `WorkoutScreen.js`:\n   - `Image` components missing `accessible={true} alt` props\n   - `Button` components using icons without `accessibilityLabel`\n   - *Impact:* Screen readers fail to describe interactive elements\n   - *Fix:* Added `accessible={true} accessibilityLabel=\"Start 30-minute HIIT workout\"` to all interactive elements\n\n2. **Color Contrast Violations** (WCAG 2.1 AA):\n   - Primary button text (#FFFFFF) on gradient background (#4A90E2) → Contrast ratio: 2.1:1 (needs 4.5:1)\n   - *Fix:* Updated button styles to use `#E0E0E0` text with 5.2:1 contrast\n\n3. **Dynamic Text Scaling:**\n   - `Text` components not respecting system font size changes\n   - *Fix:* Added `allowFontScaling={true}` and `adjustsFontSizeToFit={true}` where needed\n\n---\n\n#### ✅ **Automated Fixes Applied**\n- **AccessibilityAgent:** Scanned 47 components, auto-added `accessibilityRole` and `accessibilityLabel` to 32 interactive elements\n- **TestingAgent:** Generated Jest snapshots for all fixed components with `axe-core` accessibility tests\n- **CodeReviewAgent:** Flagged 8 potential regressions (e.g., `TouchableOpacity` wrapped in `View` without `accessible={false}`)\n\n---\n\n#### 📋 **Implementation Steps**\n1. **Merge Branch:** `git checkout accessibility-fixes && git pull origin main`\n2. **Apply Changes:**\n   ```bash\n   npx expo prebuild --clean\n   npx expo run:android\n   npx expo run:ios\n   ```\n3. **Verify Fixes:**\n   - Run `npx @axe-core/react-native` in development mode\n   - Test with VoiceOver (iOS) and TalkBack (Android)\n4. **Documentation:** Update `docs/accessibility.md` with new patterns\n\n---\n\n#### 📊 **Performance Impact**\n- Bundle size: +0.8% (added `react-native-a11y` dependency)\n- Memory usage: No significant change\n- Build time: +2s (due to snapshot generation)\n\n**Recommendation:** Deploy these changes in the next patch release (v2.4.2) as they improve compliance without breaking existing functionality.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:42:35.544213Z",
+    "http_status": 200,
+    "content_hash": "fe8f56afcc3b895594b2fa04af42fe7c6d4f43d04483756c9ab7df6a6e5d1185",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-reactnative-expo-agent-system.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-reactnative-expo-agent-system.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "React Native/Expo agent toolkit for Claude Code",
+  "short_description_vi": "AI-powered development toolkit with 7 production agents for React Native/Expo mobile apps. Automates accessibility, design systems, security, performance, and testing. Built for Claude Code v2.0.5+."
+}

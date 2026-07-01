@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/create-assistant",
+  "slug": "create-assistant",
+  "name": "Create Assistant",
+  "headline": "create-assistant: Voice AI Assistants",
+  "short_description": "This skill allows users to create and configure voice AI assistants that can handle real-time conversations on phone and web using the Vapi API. It's designed for developers looking to integrate voice capabilities into their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "vapiai",
+  "install_command": "git clone https://github.com/vapiai/skills",
+  "source_repo_url": "https://github.com/vapiai/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "create",
+    "voice-ai",
+    "assistant"
+  ],
+  "sections": {
+    "overview": "This skill enables developers to create fully configured voice AI assistants using the Vapi API, combining language models, text-to-speech voices, and speech-to-text transcribers for real-time conversations. Assistants support multiple model providers including OpenAI, Anthropic, Google, and Groq, with configurable voices from Vapi, ElevenLabs, OpenAI, and other providers. You can define system prompts, set first message behavior, enable natural backchanneling, add tools for dynamic actions, and configure advanced settings like HIPAA compliance and background sound. This is ideal for building customer support bots, phone agents, appointment schedulers, and any conversational AI that handles voice interactions across phone and web channels.\nAutomating customer service interactions via voice.\nCreating voice assistants for web applications.\nEnabling real-time phone conversations with users.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/vapiai/skills --skill create-assistant`\n`git clone https://github.com/vapiai/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "create-assistant#main-content",
+      "create-assistant#overview",
+      "create-assistant#setup",
+      "create-assistant#examples",
+      "create-assistant#tools",
+      "create-assistant#mcp",
+      "create-assistant#related"
+    ],
+    "overview_vi": "Skill này giúp các nhà phát triển tạo ra các trợ lý AI giọng nói được cấu hình hoàn chỉnh bằng Vapi API, kết hợp giữa mô hình ngôn ngữ, giọng đọc text-to-speech và bộ chuyển đổi speech-to-text để tương tác trong thời gian thực. Các trợ lý hỗ trợ nhiều nhà cung cấp mô hình bao gồm OpenAI, Anthropic, Google và Groq, với các giọng nói có thể cấu hình từ Vapi, ElevenLabs, OpenAI và các nhà cung cấp khác. Bạn có thể định nghĩa system prompt, thiết lập hành vi cho tin nhắn đầu tiên, bật tính năng backchanneling tự nhiên, thêm công cụ cho các hành động động, và cấu hình các cài đặt nâng cao như tuân thủ tiêu chuẩn HIPAA và âm thanh nền. Đây là giải pháp lý tưởng để xây dựng bot hỗ trợ khách hàng, phone agent, hệ thống đặt lịch hẹn và bất kỳ AI hội thoại nào xử lý tương tác giọng nói trên các kênh điện thoại và web.\n\nTự động hóa các tương tác dịch vụ khách hàng qua giọng nói.\nTạo trợ lý giọng nói cho các ứng dụng web.\nThiết lập các cuộc hội thoại điện thoại thời gian thực với người dùng.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/vapiai/skills --skill create-assistant`\n`git clone https://github.com/vapiai/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nVui lòng kiểm tra GitHub repository hoặc tài liệu để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:53:33.388802Z",
+    "http_status": 200,
+    "content_hash": "1533978a2c48cab4e042601d97bdb23c8036bbc93dd6dcfa90fa9ae075510af4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\create-assistant.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\create-assistant.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "create-assistant: Trợ lý AI giọng nói",
+  "short_description_vi": "Skill này cho phép người dùng tạo và cấu hình các trợ lý AI giọng nói có khả năng xử lý hội thoại theo thời gian thực trên điện thoại và web thông qua Vapi API. Skill được thiết kế dành cho các nhà phát triển muốn tích hợp tính năng giọng nói vào ứng dụng của mình."
+}

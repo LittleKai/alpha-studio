@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/epistemic-protocols",
+  "slug": "epistemic-protocols",
+  "name": "browser-use",
+  "headline": "Epistemic Protocols - Transform Unknown Unknowns",
+  "short_description": "Claude Code plugins for epistemic dialogue. Transforms unknown unknowns into known unknowns. Benefits operations teams by identifying blind spots. Integrates with Claude for AI collaboration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "jongwony",
+  "install_command": "git clone https://github.com/jongwony/epistemic-protocols.git",
+  "source_repo_url": "https://github.com/jongwony/epistemic-protocols",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "plugin",
+    "ai-collaboration",
+    "metacognition",
+    "epistemology"
+  ],
+  "sections": {
+    "overview": "Epistemic Protocols inserts structured checkpoints across planning, analysis, decision, execution, verification, and comprehension to surface misalignment between you and AI before it hardens into code or downstream work. The skill spans 14 protocols—including Aitesis for clarifying unstated needs, Prosoche for execution guardrails, Anamnesis for session recall, and Katalepsis for comprehension verification—each triggered by a slash command when specific collaboration problems arise. Rather than redoing entire implementations after discovering wrong direction, these protocols fix misalignment at the plan level where a single conversation turn can resolve what might otherwise cost hours of rework. Teams benefit by identifying blind spots early, keeping AI and human intent aligned throughout complex projects.\nPrevent wrong direction from hardening into code by catching misalignment at the plan level\nSurface unstated AI assumptions and missing context before autonomous execution\nVerify AI comprehension of major changes before approval or handoff\nRecover and distill session context when transferring work across conversations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jongwony/epistemic-protocols`",
+    "usage": "```\nUse the epistemic-protocols plugin to facilitate a structured dialogue with [TEAM/STAKEHOLDER] about [PROJECT/INITIATIVE]. Focus on uncovering unknown unknowns by asking: 'What assumptions are we making about [TOPIC] that we haven't explicitly tested?' and 'What evidence would change our minds about [ASSUMPTION]?' Document the discussion in a table with columns: Assumption, Evidence For, Evidence Against, and Next Experiment. Share the output with the team and schedule a follow-up to review findings.\n```\nCopy\n\n```\n### Epistemic Dialogue: Launching New Customer Support Portal\n\n**Team:** Product, Engineering, Customer Success\n**Topic:** Assumptions about user adoption of the new support portal\n\n| Assumption | Evidence For | Evidence Against | Next Experiment |\n|------------|--------------|------------------|-----------------|\n| Users prefer self-service over live chat | 78% of survey respondents want 24/7 access | Only 30% of power users have tried the beta | Deploy A/B test: 50% of new users see portal homepage with self-service options first |\n| Support agents will adopt the new tool | Training sessions show 90% completion rate | Agents report 'too many clicks' in usability tests | Measure agent ticket resolution time pre/post-training |\n| Portal reduces ticket volume by 40% | Competitor portals show 35% reduction | Historical data shows seasonal spikes in tickets | Track ticket volume for 8 weeks post-launch |\n\n**Blind Spots Identified:**\n1. **Integration with existing CRM:** No testing done on how portal data syncs with Salesforce. Next step: Schedule API integration review with Engineering.\n2. **Mobile usability:** Only 15% of beta testers were mobile users. Next step: Conduct mobile-specific usability tests.\n\n**Follow-up Actions:**\n- Product team to prioritize mobile UX improvements by [DATE].\n- Customer Success to survey 100 beta users on portal pain points.\n\n*Output generated using epistemic-protocols plugin in Claude Code.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "epistemic-protocols#main-content",
+      "epistemic-protocols#overview",
+      "epistemic-protocols#setup",
+      "epistemic-protocols#examples",
+      "epistemic-protocols#tools",
+      "epistemic-protocols#mcp",
+      "epistemic-protocols#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Epistemic Protocols inserts structured checkpoints across planning, analysis, decision, execution, verification, and comprehension to surface misalignment between you and AI before it hardens into code or downstream work. The skill spans 14 protocols—including Aitesis for clarifying unstated needs, Prosoche for execution guardrails, Anamnesis for session recall, and Katalepsis for comprehension verification—each triggered by a slash command when specific collaboration problems arise. Rather than redoing entire implementations after discovering wrong direction, these protocols fix misalignment at the plan level where a single conversation turn can resolve what might otherwise cost hours of rework. Teams benefit by identifying blind spots early, keeping AI and human intent aligned throughout complex projects.\nPrevent wrong direction from hardening into code by catching misalignment at the plan level\nSurface unstated AI assumptions and missing context before autonomous execution\nVerify AI comprehension of major changes before approval or handoff\nRecover and distill session context when transferring work across conversations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jongwony/epistemic-protocols`",
+    "usage_vi": "```\nUse the epistemic-protocols plugin to facilitate a structured dialogue with [TEAM/STAKEHOLDER] about [PROJECT/INITIATIVE]. Focus on uncovering unknown unknowns by asking: 'What assumptions are we making about [TOPIC] that we haven't explicitly tested?' and 'What evidence would change our minds about [ASSUMPTION]?' Document the discussion in a table with columns: Assumption, Evidence For, Evidence Against, and Next Experiment. Share the output with the team and schedule a follow-up to review findings.\n```\nCopy\n\n```\n### Epistemic Dialogue: Launching New Customer Support Portal\n\n**Team:** Product, Engineering, Customer Success\n**Topic:** Assumptions about user adoption of the new support portal\n\n| Assumption | Evidence For | Evidence Against | Next Experiment |\n|------------|--------------|------------------|-----------------|\n| Users prefer self-service over live chat | 78% of survey respondents want 24/7 access | Only 30% of power users have tried the beta | Deploy A/B test: 50% of new users see portal homepage with self-service options first |\n| Support agents will adopt the new tool | Training sessions show 90% completion rate | Agents report 'too many clicks' in usability tests | Measure agent ticket resolution time pre/post-training |\n| Portal reduces ticket volume by 40% | Competitor portals show 35% reduction | Historical data shows seasonal spikes in tickets | Track ticket volume for 8 weeks post-launch |\n\n**Blind Spots Identified:**\n1. **Integration with existing CRM:** No testing done on how portal data syncs with Salesforce. Next step: Schedule API integration review with Engineering.\n2. **Mobile usability:** Only 15% of beta testers were mobile users. Next step: Conduct mobile-specific usability tests.\n\n**Follow-up Actions:**\n- Product team to prioritize mobile UX improvements by [DATE].\n- Customer Success to survey 100 beta users on portal pain points.\n\n*Output generated using epistemic-protocols plugin in Claude Code.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:28:35.044902Z",
+    "http_status": 200,
+    "content_hash": "883a502e45ecc002830b472a646bf76c86ffb6871918fb8ae0366fbd983b2425",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\epistemic-protocols.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\epistemic-protocols.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Epistemic Protocols - Transform Unknown Unknowns",
+  "short_description_vi": "Claude Code plugins for epistemic dialogue. Transforms unknown unknowns into known unknowns. Benefits operations teams by identifying blind spots. Integrates with Claude for AI collaboration."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skill",
+  "slug": "agent-skill",
+  "name": "Agent Skill",
+  "headline": "agent-skill for AI automation tasks",
+  "short_description": "Agent-skill enables AI agents to search codebases using Abstract Syntax Tree (AST) patterns. It benefits developers and operations teams by allowing structural code search beyond simple text matching. The skill integrates with Claude Code plugin marketplace and is applied in code analysis, refactoring, and maintenance tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "ast-grep",
+  "install_command": "git clone https://github.com/ast-grep/agent-skill.git",
+  "source_repo_url": "https://github.com/ast-grep/agent-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "ast-grep agent skill teaches Claude Code how to write and use ast-grep rules to perform advanced structural code searches. Unlike traditional text-based search tools, ast-grep understands code structure, allowing you to find patterns like async functions without error handling, specific hook usage in React components, or console.log calls in class methods. The skill integrates with Claude Code plugin marketplace and works across multiple languages. Developers and operations teams benefit from more precise code analysis, refactoring, and maintenance tasks by searching based on code semantics rather than just text matching.\nFind all async functions that do not implement error handling.\nLocate React components that utilize a specific custom hook.\nIdentify functions with more than three parameters for potential refactoring.\nSearch for console.log calls within class methods to improve logging practices.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ast-grep/agent-skill`",
+    "usage": "```\nSearch the codebase in [DIRECTORY_PATH] for all instances where [AST_PATTERN] is used. Return the file paths, line numbers, and the exact code snippets for each match. Focus on [LANGUAGE] files and ignore test directories. Example AST pattern: 'function calls to `logger.error()` with a string literal as the first argument'.\n```\nCopy\n\n```\nI analyzed the `src/` directory in the `acme-payments` repository (Node.js codebase) for all instances where `try-catch` blocks contain a `console.error()` call with a string literal as the first argument. Here are the findings:\n\n1. **File:** `src/services/payment-processor.js` (Line 42)\n   ```javascript\n   try {\n     await processPayment(request);\n   } catch (error) {\n     console.error(\"Payment processing failed\", error); // Match\n   }\n   ```\n\n2. **File:** `src/utils/logger.js` (Line 18)\n   ```javascript\n   function logError(error) {\n     try {\n       throw error;\n     } catch (err) {\n       console.error(\"Error occurred:\", err.message); // Match\n     }\n   }\n   ```\n\n3. **File:** `src/controllers/order-controller.js` (Line 89)\n   ```javascript\n   try {\n     await validateOrder(order);\n   } catch (validationError) {\n     console.error(\"Invalid order data\", validationError); // Match\n   }\n   ```\n\n**Summary:** Found 3 matches across 2 files. All instances follow the pattern of a `try-catch` block containing a `console.error()` call with a string literal as the first argument. This pattern is commonly used for error logging but may benefit from structured logging (e.g., using `winston` or `pino`) for better error tracking in production environments.\n\n**Recommendation:** Consider refactoring these to use a centralized logging utility to ensure consistent error formatting and metadata inclusion.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-skill#main-content",
+      "agent-skill#overview",
+      "agent-skill#setup",
+      "agent-skill#examples",
+      "agent-skill#tools",
+      "agent-skill#mcp",
+      "agent-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ast-grep agent skill teaches Claude Code how to write and use ast-grep rules to perform advanced structural code searches. Unlike traditional text-based search tools, ast-grep understands code structure, allowing you to find patterns like async functions without error handling, specific hook usage in React components, or console.log calls in class methods. The skill integrates with Claude Code plugin marketplace and works across multiple languages. Developers and operations teams benefit from more precise code analysis, refactoring, and maintenance tasks by searching based on code semantics rather than just text matching.\nFind all async functions that do not implement error handling.\nLocate React components that utilize a specific custom hook.\nIdentify functions with more than three parameters for potential refactoring.\nSearch for console.log calls within class methods to improve logging practices.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ast-grep/agent-skill`",
+    "usage_vi": "```\nSearch the codebase in [DIRECTORY_PATH] for all instances where [AST_PATTERN] is used. Return the file paths, line numbers, and the exact code snippets for each match. Focus on [LANGUAGE] files and ignore test directories. Example AST pattern: 'function calls to `logger.error()` with a string literal as the first argument'.\n```\nCopy\n\n```\nI analyzed the `src/` directory in the `acme-payments` repository (Node.js codebase) for all instances where `try-catch` blocks contain a `console.error()` call with a string literal as the first argument. Here are the findings:\n\n1. **File:** `src/services/payment-processor.js` (Line 42)\n   ```javascript\n   try {\n     await processPayment(request);\n   } catch (error) {\n     console.error(\"Payment processing failed\", error); // Match\n   }\n   ```\n\n2. **File:** `src/utils/logger.js` (Line 18)\n   ```javascript\n   function logError(error) {\n     try {\n       throw error;\n     } catch (err) {\n       console.error(\"Error occurred:\", err.message); // Match\n     }\n   }\n   ```\n\n3. **File:** `src/controllers/order-controller.js` (Line 89)\n   ```javascript\n   try {\n     await validateOrder(order);\n   } catch (validationError) {\n     console.error(\"Invalid order data\", validationError); // Match\n   }\n   ```\n\n**Summary:** Found 3 matches across 2 files. All instances follow the pattern of a `try-catch` block containing a `console.error()` call with a string literal as the first argument. This pattern is commonly used for error logging but may benefit from structured logging (e.g., using `winston` or `pino`) for better error tracking in production environments.\n\n**Recommendation:** Consider refactoring these to use a centralized logging utility to ensure consistent error formatting and metadata inclusion.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:35.455076Z",
+    "http_status": 200,
+    "content_hash": "7b72414e1d5b9ef8ce9ea238eca273d231cc9cceeac6561ffd938e52122676b0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agent-skill for AI automation tasks",
+  "short_description_vi": "Agent-skill enables AI agents to search codebases using Abstract Syntax Tree (AST) patterns. It benefits developers and operations teams by allowing structural code search beyond simple text matching. The skill integrates with Claude Code plugin marketplace and is applied in code analysis, refactoring, and maintenance tasks."
+}

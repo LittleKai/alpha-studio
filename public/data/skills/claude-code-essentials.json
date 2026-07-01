@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-essentials",
+  "slug": "claude-code-essentials",
+  "name": "Claude Code Essentials",
+  "headline": "claude code essentials: prompts and templates",
+  "short_description": "A collection of 29+ slash commands and 9 specialized agents for systematic spec-driven development workflows in Claude Code, enabling requirements through implementation with built-in validation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "benjaminr",
+  "install_command": "git clone https://github.com/benjaminr/claude-code-essentials.git",
+  "source_repo_url": "https://github.com/benjaminr/claude-code-essentials",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agents",
+    "slash-commands",
+    "claude-agents",
+    "spec-driven-development",
+    "agentic-workflow",
+    "claude",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Code Essentials provides a comprehensive framework for structured software development using 29+ slash commands organized across spec-driven development, code analysis, project management, and testing. The skill implements a four-stage workflow—Requirements, Design, Planning, and Implementation—with EARS notation for clear, testable specifications and progressive validation at each stage. It includes 9 specialized sub-agents covering code standards, documentation, performance profiling, testing, infrastructure engineering, full-stack development, AI/ML solutions, Git workflows, and design systems. Each project maintains feature-specific context through CLAUDE.md files that track design decisions and implementation notes, while global installation makes commands available across all projects. Developers benefit from automated quality gates, memory-driven context management, and built-in support for modern technology stacks including Python, JavaScript, Next.js, FastAPI, AWS, and Terraform.\nInitialize structured development workflows with spec-driven requirements using EARS notation\nGenerate and validate technical specifications, designs, and implementation plans progressively\nExecute parallel feature development across multiple specifications with orchestration commands\nAnalyze and improve code quality, performance, security, and test coverage systematically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/benjaminr/claude-code-essentials`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project for [COMPANY] in the [INDUSTRY] sector. I need help with [SPECIFIC_TASK]. Can you provide me with a concise code snippet using best practices, along with a brief explanation of how it works?\n```\nCopy\n\n```\n# Code Snippet for Data Analysis in Python\n\n```python\nimport pandas as pd\n\n# Load the dataset\nfile_path = 'sales_data.csv'\ndata = pd.read_csv(file_path)\n\n# Data cleaning\n# Remove rows with missing values\ndata = data.dropna()\n\n# Convert date column to datetime format\ndata['Date'] = pd.to_datetime(data['Date'])\n\n# Data analysis\n# Group by month and calculate total sales\nmonthly_sales = data.groupby(data['Date'].dt.to_period('M'))['Sales'].sum()\n\n# Print the result\nprint(monthly_sales)\n```\n\nThis code snippet demonstrates how to load, clean, and analyze sales data using Python's pandas library. It first loads the data from a CSV file, then removes any rows with missing values. The date column is converted to a datetime format to facilitate time-based analysis. Finally, the data is grouped by month, and the total sales for each month are calculated and printed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-essentials#main-content",
+      "claude-code-essentials#overview",
+      "claude-code-essentials#setup",
+      "claude-code-essentials#examples",
+      "claude-code-essentials#tools",
+      "claude-code-essentials#mcp",
+      "claude-code-essentials#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Essentials cung cấp một framework toàn diện cho việc phát triển phần mềm có cấu trúc bằng cách sử dụng hơn 29 slash command được phân loại theo các nhóm: phát triển định hướng đặc tả (spec-driven development), phân tích mã nguồn (code analysis), quản lý dự án và kiểm thử (testing). Skill này triển khai quy trình làm việc gồm 4 giai đoạn—Yêu cầu (Requirements), Thiết kế (Design), Lập kế hoạch (Planning) và Triển khai (Implementation)—kết hợp cú pháp EARS để tạo ra các đặc tả rõ ràng, dễ kiểm thử và cơ chế validation lũy tiến ở từng giai đoạn. Nó bao gồm 9 sub-agent chuyên dụng đảm nhận các vai trò: tiêu chuẩn code (code standards), tài liệu hóa (documentation), profiling hiệu năng, kiểm thử, kỹ thuật hạ tầng (infrastructure engineering), phát triển full-stack, giải pháp AI/ML, Git workflow và design system. Mỗi dự án sẽ duy trì ngữ cảnh riêng của từng tính năng thông qua các file CLAUDE.md để theo dõi các quyết định thiết kế và ghi chú triển khai, trong khi cơ chế cài đặt global giúp các câu lệnh luôn khả dụng trên mọi dự án. Các nhà phát triển sẽ được hưởng lợi từ các chốt kiểm soát chất lượng tự động (automated quality gates), quản lý ngữ cảnh dựa trên bộ nhớ (memory-driven context management) và sự hỗ trợ tích hợp sẵn cho các tech stack hiện đại bao gồm Python, JavaScript, Next.js, FastAPI, AWS và Terraform.\nKhởi tạo quy trình phát triển có cấu trúc với các yêu cầu định hướng đặc tả bằng cú pháp EARS\nTự động tạo và xác thực các tài liệu đặc tả kỹ thuật, thiết kế và kế hoạch triển khai theo từng giai đoạn\nSong song phát triển các tính năng trên nhiều tài liệu đặc tả khác nhau bằng các lệnh điều phối (orchestration commands)\nPhân tích và cải thiện chất lượng code, hiệu năng, bảo mật cũng như độ bao phủ kiểm thử (test coverage) một cách hệ thống",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/benjaminr/claude-code-essentials`",
+    "usage_vi": "```\nTôi đang làm việc trong một dự án [PROGRAMMING_LANGUAGE] cho [COMPANY] thuộc lĩnh vực [INDUSTRY]. Tôi cần hỗ trợ về [SPECIFIC_TASK]. Bạn có thể cung cấp cho tôi một đoạn code ngắn gọn áp dụng các best practice, kèm theo giải thích ngắn về cách hoạt động của nó không?\n```\nCopy\n\n```\n# Đoạn code phân tích dữ liệu bằng Python\n\n```python\nimport pandas as pd\n\n# Tải tập dữ liệu\nfile_path = 'sales_data.csv'\ndata = pd.read_csv(file_path)\n\n# Làm sạch dữ liệu\n# Loại bỏ các dòng có giá trị bị thiếu (missing values)\ndata = data.dropna()\n\n# Chuyển đổi cột ngày tháng sang định dạng datetime\ndata['Date'] = pd.to_datetime(data['Date'])\n\n# Phân tích dữ liệu\n# Nhóm theo tháng và tính tổng doanh thu\nmonthly_sales = data.groupby(data['Date'].dt.to_period('M'))['Sales'].sum()\n\n# In kết quả\nprint(monthly_sales)\n```\n\nĐoạn code này minh họa cách tải, làm sạch và phân tích dữ liệu doanh thu bằng thư viện pandas của Python. Đầu tiên, nó tải dữ liệu từ một file CSV, sau đó loại bỏ tất cả các dòng bị thiếu giá trị. Cột ngày tháng được chuyển đổi sang định dạng datetime để hỗ trợ việc phân tích theo thời gian. Cuối cùng, dữ liệu được nhóm theo tháng, và tổng doanh thu của từng tháng sẽ được tính toán và in ra màn hình.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:32.256934Z",
+    "http_status": 200,
+    "content_hash": "c26cc8fc387a9a2fe802e640a7fc562d2a96941c045a25b65f4a092a7a60e989",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-essentials.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-essentials.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Essentials: Prompt và Template thiết yếu",
+  "short_description_vi": "Bộ sưu tập gồm hơn 29 slash command và 9 agent chuyên dụng cho quy trình phát triển định hướng đặc tả (spec-driven development) một cách hệ thống trong Claude Code, hỗ trợ toàn diện từ khâu xác định yêu cầu đến triển khai thực tế cùng cơ chế validation tích hợp sẵn."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/saucedemo-cypress-test",
+  "slug": "saucedemo-cypress-test",
+  "name": "Saucedemo_Cypress_Test",
+  "headline": "Saucedemo Cypress Test: E2E Automation Tests",
+  "short_description": "A suite of automation tests written with JavaScript and automated with Cypress JS framework, for the website https://www.saucedemo.com/, in order to practice my automation testing skills with Cypress.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "MirceaMacarie",
+  "install_command": "git clone https://github.com/MirceaMacarie/Saucedemo_Cypress_Test.git",
+  "source_repo_url": "https://github.com/MirceaMacarie/Saucedemo_Cypress_Test",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill provides a complete automation test suite built with Cypress and JavaScript for testing the saucedemo.com demo shopping website. It covers end-to-end user flows including login validation, product selection, cart management, and checkout processes. The suite includes organized test cases that verify both functional behavior and UI details like buttons, titles, and text elements. It runs on Google Chrome and demonstrates how to structure and execute automated tests using Cypress, making it ideal for developers learning e2e testing practices or validating shopping cart workflows.\nLearning Cypress framework fundamentals with a real e-commerce application\nAutomating login flow validation and authentication testing\nTesting shopping cart functionality and product selection\nValidating UI elements and static content across checkout pages",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MirceaMacarie/Saucedemo_Cypress_Test`",
+    "usage": "```\nCreate a Cypress test suite for the SauceDemo website (https://www.saucedemo.com/) to automate the following scenarios: [SCENARIOS]. Ensure the tests are written in JavaScript and include assertions for [SPECIFIC ELEMENTS] on the page. Provide the complete code with clear comments.\n```\nCopy\n\n```\n# Cypress Test Suite for SauceDemo Website\n\n```javascript\ndescribe('SauceDemo Website Automation', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com/')\n    cy.get('#user-name').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n  })\n\n  it('should add items to the cart and proceed to checkout', () => {\n    // Add items to the cart\n    cy.get('#add-to-cart-sauce-labs-backpack').click()\n    cy.get('#add-to-cart-sauce-labs-bike-light').click()\n\n    // Verify items are in the cart\n    cy.get('.shopping_cart_link').click()\n    cy.get('.cart_item').should('have.length', 2)\n\n    // Proceed to checkout\n    cy.get('#checkout').click()\n    cy.get('#first-name').type('John')\n    cy.get('#last-name').type('Doe')\n    cy.get('#postal-code').type('12345')\n    cy.get('#continue').click()\n    cy.get('.summary_info').should('contain', 'SauceCard #31337')\n  })\n\n  it('should verify the inventory page elements', () => {\n    cy.get('.inventory_list').should('be.visible')\n    cy.get('.inventory_item').should('have.length', 6)\n    cy.get('.product_sort_container').should('be.visible')\n  })\n})\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "saucedemo-cypress-test#main-content",
+      "saucedemo-cypress-test#overview",
+      "saucedemo-cypress-test#setup",
+      "saucedemo-cypress-test#examples",
+      "saucedemo-cypress-test#tools",
+      "saucedemo-cypress-test#mcp",
+      "saucedemo-cypress-test#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill provides a complete automation test suite built with Cypress and JavaScript for testing the saucedemo.com demo shopping website. It covers end-to-end user flows including login validation, product selection, cart management, and checkout processes. The suite includes organized test cases that verify both functional behavior and UI details like buttons, titles, and text elements. It runs on Google Chrome and demonstrates how to structure and execute automated tests using Cypress, making it ideal for developers learning e2e testing practices or validating shopping cart workflows.\nLearning Cypress framework fundamentals with a real e-commerce application\nAutomating login flow validation and authentication testing\nTesting shopping cart functionality and product selection\nValidating UI elements and static content across checkout pages",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MirceaMacarie/Saucedemo_Cypress_Test`",
+    "usage_vi": "```\nCreate a Cypress test suite for the SauceDemo website (https://www.saucedemo.com/) to automate the following scenarios: [SCENARIOS]. Ensure the tests are written in JavaScript and include assertions for [SPECIFIC ELEMENTS] on the page. Provide the complete code with clear comments.\n```\nCopy\n\n```\n# Cypress Test Suite for SauceDemo Website\n\n```javascript\ndescribe('SauceDemo Website Automation', () => {\n  beforeEach(() => {\n    cy.visit('https://www.saucedemo.com/')\n    cy.get('#user-name').type('standard_user')\n    cy.get('#password').type('secret_sauce')\n    cy.get('#login-button').click()\n  })\n\n  it('should add items to the cart and proceed to checkout', () => {\n    // Add items to the cart\n    cy.get('#add-to-cart-sauce-labs-backpack').click()\n    cy.get('#add-to-cart-sauce-labs-bike-light').click()\n\n    // Verify items are in the cart\n    cy.get('.shopping_cart_link').click()\n    cy.get('.cart_item').should('have.length', 2)\n\n    // Proceed to checkout\n    cy.get('#checkout').click()\n    cy.get('#first-name').type('John')\n    cy.get('#last-name').type('Doe')\n    cy.get('#postal-code').type('12345')\n    cy.get('#continue').click()\n    cy.get('.summary_info').should('contain', 'SauceCard #31337')\n  })\n\n  it('should verify the inventory page elements', () => {\n    cy.get('.inventory_list').should('be.visible')\n    cy.get('.inventory_item').should('have.length', 6)\n    cy.get('.product_sort_container').should('be.visible')\n  })\n})\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:43:21.255974Z",
+    "http_status": 200,
+    "content_hash": "d289b6ef75c60be292de1ed0a3530467de9de5ef8a3eff5a0af905ef41305be4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\saucedemo-cypress-test.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\saucedemo-cypress-test.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Saucedemo Cypress Test: E2E Automation Tests",
+  "short_description_vi": "A suite of automation tests written with JavaScript and automated with Cypress JS framework, for the website https://www.saucedemo.com/, in order to practice my automation testing skills with Cypress."
+}

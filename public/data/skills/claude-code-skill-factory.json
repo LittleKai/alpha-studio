@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-skill-factory",
+  "slug": "claude-code-skill-factory",
+  "name": "Claude Code Skill Factory",
+  "headline": "Claude Code Skill Factory - Build AI Skills Easily",
+  "short_description": "The Claude Code Skill Factory is an open-source toolkit designed for developers to build and deploy Claude Skills and Code Agents efficiently. It streamlines the creation of structured skill templates and automates workflow integration, making AI agent development faster and more accessible.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "alirezarezvani",
+  "install_command": "claude install alirezarezvani/claude-code-skill-factory",
+  "source_repo_url": "https://github.com/alirezarezvani/claude-code-skill-factory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "toolkit",
+    "open-source",
+    "Claude Skills",
+    "AI agents"
+  ],
+  "sections": {
+    "overview": "Claude Code Skill Factory is an open-source toolkit that streamlines the creation of Claude Skills and Code Agents through pre-built structured templates. It automates workflow integration and provides developers with reusable components to accelerate AI agent development. The project includes Hook Factory v2.0 with interactive mode, automated installers, and comprehensive hook templates for event handling and validation. Security features cover HIPAA, GDPR, and comprehensive credential management. Developers benefit from faster skill deployment, reduced boilerplate code, and production-ready security audits built into the framework.\nBuild custom AI skills to enhance customer support interactions.\nAutomate repetitive data entry tasks using intelligent AI agents.\nCreate interactive Slack commands to facilitate team collaboration.\nIntegrate AI workflows seamlessly into existing applications for improved efficiency.",
+    "setup": "Terminal\nCopy\n`claude install alirezarezvani/claude-code-skill-factory`\n`git clone https://github.com/alirezarezvani/claude-code-skill-factory`",
+    "usage": "```\nI want to create a new Claude Skill using the Claude Code Skill Factory. The skill should [DESCRIBE SKILL PURPOSE]. The skill should integrate with [SPECIFIC TOOLS OR PLATFORMS]. Provide a step-by-step guide to build and deploy this skill, including code templates and best practices for integration.\n```\nCopy\n\n```\nTo create a Claude Skill for managing project tasks using the Claude Code Skill Factory, follow these steps:\n\n1. **Set Up Your Development Environment**:\n   - Install the necessary dependencies, including Python 3.8 or later and the Claude Code Skill Factory package.\n   - Clone the Claude Code Skill Factory repository from GitHub.\n   \n2. **Define Your Skill Requirements**:\n   - Create a new directory for your skill and navigate into it.\n   - Use the `skill init` command to initialize a new skill project. This will generate a basic structure for your skill, including configuration files and templates.\n   \n3. **Implement the Skill Logic**:\n   - Open the `skill.py` file and define the core functionality of your skill. For example, you might want to create a skill that can add, update, and delete tasks from a project management tool like Trello.\n   - Use the provided templates and examples to guide your implementation. The Claude Code Skill Factory includes pre-built functions for common tasks, such as making API calls and handling user inputs.\n   \n4. **Integrate with External Tools**:\n   - If your skill needs to interact with external tools or APIs, use the `skill integrate` command to set up the necessary connections.\n   - For example, to integrate with Trello, you would need to provide your API key and configure the skill to make authenticated requests to the Trello API.\n   \n5. **Test and Deploy Your Skill**:\n   - Use the `skill test` command to run unit tests and validate the functionality of your skill.\n   - Once you are satisfied with the results, use the `skill deploy` command to package and deploy your skill to the Claude platform.\n   - Monitor the deployment process and address any issues that arise.\n   \nBy following these steps, you can efficiently build and deploy a Claude Skill for managing project tasks using the Claude Code Skill Factory. The toolkit streamlines the development process, making it faster and more accessible for developers.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-skill-factory#main-content",
+      "claude-code-skill-factory#overview",
+      "claude-code-skill-factory#setup",
+      "claude-code-skill-factory#examples",
+      "claude-code-skill-factory#tools",
+      "claude-code-skill-factory#mcp",
+      "claude-code-skill-factory#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claude Code Skill Factory là một bộ công cụ mã nguồn mở giúp tối ưu hóa việc tạo Claude Skill và Code Agent thông qua các template cấu trúc có sẵn. Bộ công cụ này tự động hóa việc tích hợp workflow và cung cấp cho nhà phát triển các thành phần có thể tái sử dụng để đẩy nhanh quá trình phát triển AI agent. Dự án bao gồm Hook Factory v2.0 với chế độ tương tác (interactive mode), các trình cài đặt tự động, và các template hook toàn diện để xử lý sự kiện cũng như validation. Các tính năng bảo mật bao gồm hỗ trợ tuân thủ HIPAA, GDPR và quản lý credential toàn diện. Nhà phát triển sẽ được hưởng lợi từ việc triển khai skill nhanh hơn, giảm thiểu mã nguồn boilerplate, và các tính năng kiểm định bảo mật (security audit) sẵn sàng cho môi trường production được tích hợp sẵn trong framework.\nXây dựng các AI skill tùy chỉnh để nâng cao tương tác hỗ trợ khách hàng.\nTự động hóa các tác vụ nhập dữ liệu lặp đi lặp lại bằng cách sử dụng các AI agent thông minh.\nTạo các lệnh Slack tương tác để hỗ trợ cộng tác nhóm.\nTích hợp liền mạch các workflow AI vào các ứng dụng hiện có để nâng cao hiệu suất.",
+    "setup_vi": "Terminal\nSao chép\n`claude install alirezarezvani/claude-code-skill-factory`\n`git clone https://github.com/alirezarezvani/claude-code-skill-factory`",
+    "usage_vi": "```\nTôi muốn tạo một Claude Skill mới bằng cách sử dụng Claude Code Skill Factory. Skill này sẽ [MÔ TẢ MỤC ĐÍCH CỦA SKILL]. Skill này cần tích hợp với [CÁC CÔNG CỤ HOẶC NỀN TẢNG CỤ THỂ]. Hãy cung cấp hướng dẫn từng bước để xây dựng và triển khai skill này, bao gồm cả các code template và các best practice để tích hợp.\n```\nSao chép\n\n```\nĐể tạo một Claude Skill quản lý công việc dự án bằng Claude Code Skill Factory, hãy làm theo các bước sau:\n\n1. **Thiết lập môi trường phát triển (Set Up Your Development Environment)**:\n   - Cài đặt các dependency cần thiết, bao gồm Python 3.8 trở lên và gói Claude Code Skill Factory.\n   - Clone repository Claude Code Skill Factory từ GitHub.\n   \n2. **Xác định yêu cầu cho Skill của bạn (Define Your Skill Requirements)**:\n   - Tạo một thư mục mới cho skill của bạn và di chuyển vào đó.\n   - Sử dụng lệnh `skill init` để khởi tạo một dự án skill mới. Lệnh này sẽ tạo ra cấu trúc cơ bản cho skill của bạn, bao gồm các file cấu hình và template.\n   \n3. **Triển khai Logic cho Skill (Implement the Skill Logic)**:\n   - Mở file `skill.py` và định nghĩa chức năng cốt lõi cho skill của bạn. Ví dụ: bạn có thể muốn tạo một skill có thể thêm, cập nhật và xóa các công việc từ một công cụ quản lý dự án như Trello.\n   - Sử dụng các template và ví dụ đi kèm để hướng dẫn việc triển khai. Claude Code Skill Factory cung cấp sẵn các hàm cho các tác vụ phổ biến, chẳng hạn như gọi API và xử lý dữ liệu đầu vào của người dùng.\n   \n4. **Tích hợp với các công cụ bên ngoài (Integrate with External Tools)**:\n   - Nếu skill của bạn cần tương tác với các công cụ hoặc API bên ngoài, hãy sử dụng lệnh `skill integrate` để thiết lập các kết nối cần thiết.\n   - Ví dụ, để tích hợp với Trello, bạn cần cung cấp API key của mình và cấu hình skill để thực hiện các yêu cầu đã được xác thực (authenticated requests) đến Trello API.\n   \n5. **Kiểm thử và Triển khai Skill của bạn (Test and Deploy Your Skill)**:\n   - Sử dụng lệnh `skill test` để chạy các unit test và xác thực chức năng của skill.\n   - Khi đã hài lòng với kết quả, hãy sử dụng lệnh `skill deploy` để đóng gói và triển khai skill của bạn lên nền tảng Claude.\n   - Giám sát quá trình triển khai và xử lý bất kỳ sự cố nào phát sinh.\n   \nBằng cách làm theo các bước này, bạn có thể xây dựng và triển khai một Claude Skill để quản lý công việc dự án một cách hiệu quả bằng cách sử dụng Claude Code Skill Factory. Bộ công cụ này tối ưu hóa quy trình phát triển, giúp các nhà phát triển tiếp cận nhanh chóng và dễ dàng hơn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:02:17.711400Z",
+    "http_status": 200,
+    "content_hash": "76fe5f3e84cc19d357d1b9b2c8649dc7a72188e52a516ebced460f2b5e0ae757",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-skill-factory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-skill-factory.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Skill Factory - Dễ dàng xây dựng các AI Skill",
+  "short_description_vi": "Claude Code Skill Factory là một bộ công cụ mã nguồn mở được thiết kế giúp các nhà phát triển xây dựng và triển khai các Claude Skill cũng như Code Agent một cách hiệu quả. Bộ công cụ này tối ưu hóa việc tạo các template skill có cấu trúc và tự động hóa việc tích hợp workflow, giúp quá trình phát triển AI agent trở nên nhanh chóng và dễ tiếp cận hơn."
+}

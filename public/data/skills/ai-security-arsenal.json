@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-security-arsenal",
+  "slug": "ai-security-arsenal",
+  "name": "browser-use",
+  "headline": "AI Security Arsenal: Tools for Researchers",
+  "short_description": "AI Security Arsenal automates security testing, penetration testing, and assessment workflows. It integrates with Claude Code, Claude Desktop, OpenCode, and other AI coding tools. Security researchers benefit from automated security assessments and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "hardw00t",
+  "install_command": "git clone https://github.com/hardw00t/ai-security-arsenal.git",
+  "source_repo_url": "https://github.com/hardw00t/ai-security-arsenal",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "AI Security Arsenal is a collection of modular skills designed to automate security testing, penetration testing, and security assessment workflows for Claude Code, Cursor, and other AI coding agents. It covers mobile security (Android and iOS), web application testing (DAST and API security), cloud infrastructure assessment, network penetration testing, static code analysis, supply chain security, and threat modeling. Each skill follows a consistent router-based architecture with lazy-loaded workflows, methodologies, payloads, and schemas that allow agents to load only what they need for each task. Security researchers and penetration testers use it to accelerate manual testing phases, automate repetitive assessment tasks, and generate structured findings that integrate with SARIF converters, Jira, and DefectDojo. The arsenal was last validated in April 2026 against frontier coding agents like Claude Opus 4.x.\nAutomated Android and iOS mobile app penetration testing with runtime manipulation\nDynamic application security testing (DAST) across multiple domains in parallel\nREST and GraphQL API security assessment against OWASP API Top 10\nInfrastructure as Code and container security scanning for cloud environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hardw00t/ai-security-arsenal`",
+    "usage": "```\nAnalyze the security vulnerabilities in [COMPANY]'s [INDUSTRY] application using AI Security Arsenal. Focus on [DATA] such as user authentication, data encryption, and API endpoints. Provide a detailed report with remediation steps.\n```\nCopy\n\n```\n# Security Assessment Report for TechCorp's E-Commerce Platform",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-security-arsenal#main-content",
+      "ai-security-arsenal#overview",
+      "ai-security-arsenal#setup",
+      "ai-security-arsenal#examples",
+      "ai-security-arsenal#tools",
+      "ai-security-arsenal#mcp",
+      "ai-security-arsenal#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI Security Arsenal is a collection of modular skills designed to automate security testing, penetration testing, and security assessment workflows for Claude Code, Cursor, and other AI coding agents. It covers mobile security (Android and iOS), web application testing (DAST and API security), cloud infrastructure assessment, network penetration testing, static code analysis, supply chain security, and threat modeling. Each skill follows a consistent router-based architecture with lazy-loaded workflows, methodologies, payloads, and schemas that allow agents to load only what they need for each task. Security researchers and penetration testers use it to accelerate manual testing phases, automate repetitive assessment tasks, and generate structured findings that integrate with SARIF converters, Jira, and DefectDojo. The arsenal was last validated in April 2026 against frontier coding agents like Claude Opus 4.x.\nAutomated Android and iOS mobile app penetration testing with runtime manipulation\nDynamic application security testing (DAST) across multiple domains in parallel\nREST and GraphQL API security assessment against OWASP API Top 10\nInfrastructure as Code and container security scanning for cloud environments",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hardw00t/ai-security-arsenal`",
+    "usage_vi": "```\nAnalyze the security vulnerabilities in [COMPANY]'s [INDUSTRY] application using AI Security Arsenal. Focus on [DATA] such as user authentication, data encryption, and API endpoints. Provide a detailed report with remediation steps.\n```\nCopy\n\n```\n# Security Assessment Report for TechCorp's E-Commerce Platform"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:51:59.922670Z",
+    "http_status": 200,
+    "content_hash": "7301546450c45b39bd288bb94444e78387e4d5a4bbdf08be3b8dfd88d4c5fc07",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-security-arsenal.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-security-arsenal.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Security Arsenal: Tools for Researchers",
+  "short_description_vi": "AI Security Arsenal automates security testing, penetration testing, and assessment workflows. It integrates with Claude Code, Claude Desktop, OpenCode, and other AI coding tools. Security researchers benefit from automated security assessments and workflows."
+}

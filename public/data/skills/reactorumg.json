@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reactorumg",
+  "slug": "reactorumg",
+  "name": "browser-use",
+  "headline": "ReactorUMG - Build UIs with React in Unreal Engine",
+  "short_description": "ReactorUMG is a plugin for Unreal Engine that enables developers to build UMG game UI and editor UI using React. It benefits game developers and UI designers by streamlining UI development workflows. The plugin connects React's component-based architecture with Unreal Engine's UMG system, allowing for more efficient and maintainable UI code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "Caleb196x",
+  "install_command": "git clone https://github.com/Caleb196x/ReactorUMG.git",
+  "source_repo_url": "https://github.com/Caleb196x/ReactorUMG",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "umg",
+    "unreal-engine-5",
+    "editor",
+    "react",
+    "aicode",
+    "codex",
+    "ai",
+    "ui"
+  ],
+  "sections": {
+    "overview": "ReactorUMG is an Unreal Engine 5.x plugin that bridges React's component-based architecture with UMG, enabling developers to write game UI and editor tools using native React, TypeScript, and TSX syntax. The plugin supports live preview and hot reload during development, React Hooks, function and class components, and PuerTS scripting for engine interaction. It is particularly suited for building editor extension tools and UI development workflows that benefit from AI-assisted code generation and modern front-end practices like componentization and static type checking. The plugin currently targets editor UI tools and Windows, Android, and Linux platforms for runtime UI.\nBuild editor utility panels and extension tools with React and TypeScript\nCreate game UI with live preview and hot reload during development\nGenerate editor UI quickly using AI-assisted coding workflows\nDevelop reusable UI component libraries for Unreal Engine projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Caleb196x/ReactorUMG`",
+    "usage": "```\nUse ReactorUMG in Unreal Engine to [TASK]. For example: 'Create a dynamic health bar component in ReactorUMG that updates in real-time based on player health data. Ensure the component is reusable across different UI screens and supports localization.' Include [PLACEHOLDERS] for customization like [UI_LAYOUT], [DATA_SOURCE], or [PERFORMANCE_REQUIREMENTS].\n```\nCopy\n\n```\nHere’s a ReactorUMG implementation for a modular health bar that dynamically updates based on player health data. The component is written in React (JSX) and integrated into Unreal Engine’s UMG system via ReactorUMG. The health bar uses a reusable `HealthBar` component with props for `currentHealth`, `maxHealth`, and `colorScheme` (e.g., 'red', 'green', 'blue'). The data is sourced from a custom Unreal Engine `PlayerState` class that emits health updates via a delegate. The component also includes a localization-ready text label that adapts to the game’s language settings.\n\n```jsx\n// HealthBar.jsx\nimport React from 'react';\nimport { Text, ProgressBar } from '@reactorumg/react-components';\nimport { useLocalization } from '@reactorumg/localization';\n\nconst HealthBar = ({ currentHealth, maxHealth, colorScheme = 'red' }) => {\n  const { t } = useLocalization();\n  const percentage = Math.max(0, Math.min(100, (currentHealth / maxHealth) * 100));\n\n  return (\n    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>\n      <Text id=\"health_label\" style={{ color: colorScheme }}>\n        {t('Health')}: {currentHealth}/{maxHealth}\n      </Text>\n      <ProgressBar\n        value={percentage}\n        max={100}\n        style={{ width: '200px', height: '20px' }}\n        barStyle={{ backgroundColor: colorScheme }}\n      />\n    </div>\n  );\n};\n\nexport default HealthBar;\n```\n\nIn Unreal Engine, the `HealthBar` component is exposed to UMG via ReactorUMG’s `UMG React Component` node. The `PlayerState` class broadcasts health updates to the React component using a custom event. The component is then placed in the game’s HUD widget, where it automatically updates when the player’s health changes. This approach reduces boilerplate code and makes the UI more maintainable, as the health bar logic is centralized in React while still leveraging Unreal Engine’s native systems for performance and integration.\n\nTo test this, load the game and verify that the health bar updates smoothly when taking damage or healing. Check the console for any ReactorUMG warnings or errors, and ensure the localization strings are correctly loaded from the game’s translation files.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "reactorumg#main-content",
+      "reactorumg#overview",
+      "reactorumg#setup",
+      "reactorumg#examples",
+      "reactorumg#tools",
+      "reactorumg#mcp",
+      "reactorumg#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ReactorUMG is an Unreal Engine 5.x plugin that bridges React's component-based architecture with UMG, enabling developers to write game UI and editor tools using native React, TypeScript, and TSX syntax. The plugin supports live preview and hot reload during development, React Hooks, function and class components, and PuerTS scripting for engine interaction. It is particularly suited for building editor extension tools and UI development workflows that benefit from AI-assisted code generation and modern front-end practices like componentization and static type checking. The plugin currently targets editor UI tools and Windows, Android, and Linux platforms for runtime UI.\nBuild editor utility panels and extension tools with React and TypeScript\nCreate game UI with live preview and hot reload during development\nGenerate editor UI quickly using AI-assisted coding workflows\nDevelop reusable UI component libraries for Unreal Engine projects",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Caleb196x/ReactorUMG`",
+    "usage_vi": "```\nUse ReactorUMG in Unreal Engine to [TASK]. For example: 'Create a dynamic health bar component in ReactorUMG that updates in real-time based on player health data. Ensure the component is reusable across different UI screens and supports localization.' Include [PLACEHOLDERS] for customization like [UI_LAYOUT], [DATA_SOURCE], or [PERFORMANCE_REQUIREMENTS].\n```\nCopy\n\n```\nHere’s a ReactorUMG implementation for a modular health bar that dynamically updates based on player health data. The component is written in React (JSX) and integrated into Unreal Engine’s UMG system via ReactorUMG. The health bar uses a reusable `HealthBar` component with props for `currentHealth`, `maxHealth`, and `colorScheme` (e.g., 'red', 'green', 'blue'). The data is sourced from a custom Unreal Engine `PlayerState` class that emits health updates via a delegate. The component also includes a localization-ready text label that adapts to the game’s language settings.\n\n```jsx\n// HealthBar.jsx\nimport React from 'react';\nimport { Text, ProgressBar } from '@reactorumg/react-components';\nimport { useLocalization } from '@reactorumg/localization';\n\nconst HealthBar = ({ currentHealth, maxHealth, colorScheme = 'red' }) => {\n  const { t } = useLocalization();\n  const percentage = Math.max(0, Math.min(100, (currentHealth / maxHealth) * 100));\n\n  return (\n    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>\n      <Text id=\"health_label\" style={{ color: colorScheme }}>\n        {t('Health')}: {currentHealth}/{maxHealth}\n      </Text>\n      <ProgressBar\n        value={percentage}\n        max={100}\n        style={{ width: '200px', height: '20px' }}\n        barStyle={{ backgroundColor: colorScheme }}\n      />\n    </div>\n  );\n};\n\nexport default HealthBar;\n```\n\nIn Unreal Engine, the `HealthBar` component is exposed to UMG via ReactorUMG’s `UMG React Component` node. The `PlayerState` class broadcasts health updates to the React component using a custom event. The component is then placed in the game’s HUD widget, where it automatically updates when the player’s health changes. This approach reduces boilerplate code and makes the UI more maintainable, as the health bar logic is centralized in React while still leveraging Unreal Engine’s native systems for performance and integration.\n\nTo test this, load the game and verify that the health bar updates smoothly when taking damage or healing. Check the console for any ReactorUMG warnings or errors, and ensure the localization strings are correctly loaded from the game’s translation files.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:29:24.381550Z",
+    "http_status": 200,
+    "content_hash": "cc3bd2584093dcb6cbbb61e9264770230bf2ff4627eb8690bdd7e3e26c0f8d09",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reactorumg.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reactorumg.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ReactorUMG - Build UIs with React in Unreal Engine",
+  "short_description_vi": "ReactorUMG is a plugin for Unreal Engine that enables developers to build UMG game UI and editor UI using React. It benefits game developers and UI designers by streamlining UI development workflows. The plugin connects React's component-based architecture with Unreal Engine's UMG system, allowing for more efficient and maintainable UI code."
+}

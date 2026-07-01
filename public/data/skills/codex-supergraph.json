@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codex-supergraph",
+  "slug": "codex-supergraph",
+  "name": "Related Skills",
+  "headline": "Codex Supergraph: On-Chain Data GraphQL API",
+  "short_description": "Codex Supergraph integrates multiple data sources into a unified API. It is ideal for developers seeking to streamline their data interactions.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "codex-data",
+  "install_command": "git clone https://github.com/codex-data/skills",
+  "source_repo_url": "https://github.com/codex-data/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "codex",
+    "data-integration",
+    "supergraph"
+  ],
+  "sections": {
+    "overview": "Codex Supergraph is a GraphQL API integration skill that enables AI agents to access real-time and historical blockchain data from the Codex on-chain data platform. The skill supports querying token prices, pair metadata, OHLCV bars, maker events, holder information, and establishing live WebSocket subscriptions for streaming data. Setup requires an API key from codex.io and follows the Agent Skills specification for seamless integration into Claude Code, Cursor, and other AI-powered applications. Developers building data-driven applications benefit from unified access to on-chain information without managing multiple data source connections.\nAggregate data from multiple APIs in a single query.\nSimplify data fetching for application developers.\nImprove performance by reducing the number of requests needed.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/codex-data/skills --skill codex-supergraph`\n`git clone https://github.com/codex-data/skills`",
+    "usage": "```\nGenerate a unified API schema for [COMPANY]'s [INDUSTRY] data sources using Codex Supergraph. Merge [DATA_SOURCE_1], [DATA_SOURCE_2], and [DATA_SOURCE_3] into a single, normalized API. Include authentication, rate limits, and error handling. Provide the schema in GraphQL format.\n```\nCopy\n\n```\n# Unified API Schema for Acme Retail's Data Sources",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "codex-supergraph#main-content",
+      "codex-supergraph#overview",
+      "codex-supergraph#setup",
+      "codex-supergraph#examples",
+      "codex-supergraph#tools",
+      "codex-supergraph#mcp",
+      "codex-supergraph#related"
+    ],
+    "overview_vi": "Codex Supergraph is a GraphQL API integration skill that enables AI agents to access real-time and historical blockchain data from the Codex on-chain data platform. The skill supports querying token prices, pair metadata, OHLCV bars, maker events, holder information, and establishing live WebSocket subscriptions for streaming data. Setup requires an API key from codex.io and follows the Agent Skills specification for seamless integration into Claude Code, Cursor, and other AI-powered applications. Developers building data-driven applications benefit from unified access to on-chain information without managing multiple data source connections.\nAggregate data from multiple APIs in a single query.\nSimplify data fetching for application developers.\nImprove performance by reducing the number of requests needed.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/codex-data/skills --skill codex-supergraph`\n`git clone https://github.com/codex-data/skills`",
+    "usage_vi": "```\nGenerate a unified API schema for [COMPANY]'s [INDUSTRY] data sources using Codex Supergraph. Merge [DATA_SOURCE_1], [DATA_SOURCE_2], and [DATA_SOURCE_3] into a single, normalized API. Include authentication, rate limits, and error handling. Provide the schema in GraphQL format.\n```\nCopy\n\n```\n# Unified API Schema for Acme Retail's Data Sources"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:08:22.676859Z",
+    "http_status": 200,
+    "content_hash": "f12e998ed8bf2b514de534db0f2d794a1bea385c50830027cba7a774c0c6b4f5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codex-supergraph.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codex-supergraph.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Codex Supergraph: On-Chain Data GraphQL API",
+  "short_description_vi": "Codex Supergraph integrates multiple data sources into a unified API. It is ideal for developers seeking to streamline their data interactions."
+}

@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/models",
+  "slug": "models",
+  "name": "Models",
+  "headline": "Models - Browse AI Models and Track Coding Agents",
+  "short_description": "CLI and TUI for browsing AI models and tracking coding agents. Quickly look up context windows, pricing, capabilities, and more for 2000+ models across 75+ providers. Access changelog information across 12+ coding agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "arimxyer",
+  "install_command": "git clone https://github.com/arimxyer/models.git",
+  "source_repo_url": "https://github.com/arimxyer/models",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "sst-inspired",
+    "sst",
+    "anamolyco",
+    "gemini-cli",
+    "opencode",
+    "codex",
+    "models",
+    "claude-code",
+    "coding-agents",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Models is a terminal application that centralizes information about AI models, benchmarks, coding agents, and provider status pages. It aggregates ~4,000 models across 85+ providers from models.dev with filtering by capability, price, context, and provider category. The tool includes ~1,000 benchmark entries from four sources (Artificial Analysis, Epoch AI, Arena, LLM Stats) for head-to-head model comparison using scatter plots and radar charts. You can track 11+ coding agents with automatic version detection, GitHub release integration, and styled changelogs. Additionally, it monitors live health status for 22 AI providers across 7 status page platforms, displaying incidents and maintenance information in a unified dashboard.\nCompare AI models by context window, pricing, and capabilities across multiple providers\nTrack coding agent versions and changelogs for Claude Code, Cursor, and other tools\nAnalyze model performance benchmarks from multiple independent sources\nMonitor AI provider status pages and service health in real-time",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/arimxyer/models`",
+    "usage": "```\nUse the CLI/TUI tool to browse AI models and coding agents. Look up the [MODEL_NAME] model from [PROVIDER] and compare its context window, pricing, and capabilities with [ALTERNATIVE_MODEL] from [ALTERNATIVE_PROVIDER]. Check the changelog for [CODING_AGENT] to see recent updates. Summarize the key differences in a table format.\n```\nCopy\n\n```\n### Model Comparison: Claude 3.5 Sonnet vs. GPT-4o\n\n| Feature                | Claude 3.5 Sonnet (Anthropic) | GPT-4o (OpenAI)          |\n|------------------------|-------------------------------|--------------------------|\n| **Context Window**     | 200,000 tokens                | 128,000 tokens           |\n| **Pricing (Input)**    | $3.00 / 1M tokens             | $5.00 / 1M tokens        |\n| **Pricing (Output)**   | $15.00 / 1M tokens            | $15.00 / 1M tokens       |\n| **Max Output Length**  | 8,192 tokens                  | 4,096 tokens             |\n| **Multimodal Support** | Yes (text, images)            | Yes (text, images, audio)|\n| **Strengths**          | Coding, reasoning, long docs  | Creativity, speed        |\n\n### Coding Agent Changelog: Cursor\n\n**Recent Updates (v0.32.0 - v0.34.0):**\n- Added native support for Claude 3.5 Sonnet with 200K context window.\n- Improved codebase indexing speed by 40% for large repositories.\n- Fixed a bug where multi-file edits would occasionally overwrite changes.\n- Added real-time collaboration features for team-based coding.\n\n**Recommendation:** If your workflow involves large codebases or long documents, Claude 3.5 Sonnet is the better choice due to its superior context window and competitive pricing. For rapid prototyping or creative tasks, GPT-4o may be preferable.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "models#main-content",
+      "models#overview",
+      "models#setup",
+      "models#examples",
+      "models#tools",
+      "models#mcp",
+      "models#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Models là một ứng dụng terminal giúp tập trung hóa thông tin về các AI model, benchmark, coding agent và trang trạng thái của nhà cung cấp. Công cụ này tổng hợp khoảng 4.000 model từ hơn 85 nhà cung cấp trên models.dev, cho phép lọc theo tính năng, giá cả, context và danh mục nhà cung cấp. Công cụ tích hợp khoảng 1.000 dữ liệu benchmark từ bốn nguồn (Artificial Analysis, Epoch AI, Arena, LLM Stats) để so sánh trực tiếp các model bằng biểu đồ phân tán (scatter plot) và biểu đồ radar. Bạn có thể theo dõi hơn 11 coding agent với tính năng tự động phát hiện phiên bản, tích hợp GitHub release và định dạng changelog trực quan. Ngoài ra, ứng dụng còn giám sát trạng thái hoạt động thực tế của 22 nhà cung cấp AI trên 7 nền tảng trang trạng thái, hiển thị các sự cố và thông tin bảo trì trên một dashboard tập trung.\n\nSo sánh các AI model theo context window, giá cả và tính năng giữa nhiều nhà cung cấp khác nhau\nTheo dõi phiên bản coding agent và changelog của Claude Code, Cursor cùng các công cụ khác\nPhân tích benchmark hiệu năng của model từ nhiều nguồn độc lập\nGiám sát thời gian thực các trang trạng thái và sức khỏe dịch vụ của nhà cung cấp AI",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/arimxyer/models`",
+    "usage_vi": "Sử dụng công cụ CLI/TUI để duyệt các AI model và coding agent. Tra cứu model [MODEL_NAME] từ [PROVIDER] và so sánh context window, giá cả cũng như tính năng của nó với [ALTERNATIVE_MODEL] từ [ALTERNATIVE_PROVIDER]. Kiểm tra changelog của [CODING_AGENT] để xem các cập nhật gần đây. Tóm tắt các khác biệt chính dưới dạng bảng.\n\n### So sánh Model: Claude 3.5 Sonnet vs. GPT-4o\n\n| Tính năng | Claude 3.5 Sonnet (Anthropic) | GPT-4o (OpenAI) |\n|---|---|---|\n| **Context Window** | 200,000 token | 128,000 token |\n| **Giá cả (Input)** | $3.00 / 1 triệu token | $5.00 / 1 triệu token |\n| **Giá cả (Output)** | $15.00 / 1 triệu token | $15.00 / 1 triệu token |\n| **Độ dài Output Tối đa** | 8,192 token | 4,096 token |\n| **Hỗ trợ Đa phương thức** | Có (văn bản, hình ảnh) | Có (văn bản, hình ảnh, âm thanh) |\n| **Điểm mạnh** | Coding, lập luận, tài liệu dài | Sáng tạo, tốc độ |\n\n### Changelog của Coding Agent: Cursor\n\n**Cập nhật gần đây (v0.32.0 - v0.34.0):**\n- Thêm hỗ trợ gốc (native support) cho Claude 3.5 Sonnet với context window 200K.\n- Cải thiện 40% tốc độ lập chỉ mục (indexing) codebase đối với các kho lưu trữ lớn.\n- Sửa lỗi chỉnh sửa nhiều file đôi khi ghi đè lên các thay đổi.\n- Thêm các tính năng cộng tác thời gian thực cho lập trình nhóm.\n\n**Khuyến nghị:** Nếu workflow của bạn yêu cầu xử lý codebase lớn hoặc tài liệu dài, Claude 3.5 Sonnet là lựa chọn tốt hơn nhờ context window vượt trội và mức giá cạnh tranh. Đối với việc xây dựng prototype nhanh hoặc các tác vụ sáng tạo, GPT-4o có thể sẽ phù hợp hơn."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:08:44.459219Z",
+    "http_status": 200,
+    "content_hash": "03ee98077a4d68dcf91994024e0ba7f737998ef0691394b0b76dc9961391452b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\models.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\models.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Models - Duyệt AI Model và Theo dõi Coding Agent",
+  "short_description_vi": "CLI và TUI hỗ trợ duyệt AI model và theo dõi coding agent. Tra cứu nhanh context window, giá cả, tính năng và nhiều thông tin khác của hơn 2000 model từ hơn 75 nhà cung cấp. Truy cập thông tin changelog của hơn 12 coding agent."
+}

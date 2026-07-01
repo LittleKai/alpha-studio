@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillz",
+  "slug": "skillz",
+  "name": "langchain-salesforce",
+  "headline": "Skillz: MCP Server for AI Skills Integration",
+  "short_description": "Skillz is an MCP server designed for loading AI skills, serving as a shim for clients that do not utilize Claude. This versatile tool enhances AI agent capabilities and streamlines integration with various applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "intellectronica",
+  "install_command": "claude install intellectronica/skillz",
+  "source_repo_url": "https://github.com/intellectronica/skillz",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "AI skills",
+    "Python",
+    "server",
+    "MCP",
+    "integration"
+  ],
+  "sections": {
+    "overview": "Skillz is an MCP server that discovers and exposes Claude-style skills—defined by a SKILL.md file with YAML front matter and optional resource files—as callable tools for any MCP client. It supports flexible skill packaging via directories or zip archives, and can execute bundled helper scripts. Skillz enables AI agents like Copilot, Cursor, and Gemini CLI to access skills originally designed for Claude, bridging compatibility gaps. The server defaults to ~/.skillz for skill discovery and supports both flat and nested directory structures, with a Docker option for sandboxed execution.\nIntegrating AI skills into existing applications\nEnhancing non-Claude clients with AI capabilities\nStreamlining skill loading processes for AI agents",
+    "setup": "Terminal\nCopy\n`claude install intellectronica/skillz`\n`git clone https://github.com/intellectronica/skillz`",
+    "usage": "```\nLoad the [SKILL_NAME] skill into the Skillz MCP server. Use this skill to [TASK]. Provide the necessary [INPUT_DATA] to execute the skill effectively. For example, 'Load the 'Meeting Transcript Analyzer' skill into the Skillz MCP server. Use this skill to analyze the meeting transcripts from [MEETING_DATE] and extract key action items.'\n```\nCopy\n\n```\nThe 'Meeting Transcript Analyzer' skill has been successfully loaded into the Skillz MCP server. The skill analyzed the meeting transcripts from the quarterly planning session held on October 15, 2023. Here are the key action items identified: 1. Schedule a follow-up meeting with the marketing team to finalize the Q4 campaign strategy. 2. Assign the task of creating a detailed project timeline to the project manager by October 20, 2023. 3. Review the budget allocation for the new product launch and provide feedback by October 25, 2023. The skill has also generated a summary report and a standup deck for the next team meeting.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "skillz#main-content",
+      "skillz#overview",
+      "skillz#setup",
+      "skillz#examples",
+      "skillz#tools",
+      "skillz#mcp",
+      "skillz#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "Skillz is an MCP server that discovers and exposes Claude-style skills—defined by a SKILL.md file with YAML front matter and optional resource files—as callable tools for any MCP client. It supports flexible skill packaging via directories or zip archives, and can execute bundled helper scripts. Skillz enables AI agents like Copilot, Cursor, and Gemini CLI to access skills originally designed for Claude, bridging compatibility gaps. The server defaults to ~/.skillz for skill discovery and supports both flat and nested directory structures, with a Docker option for sandboxed execution.\nIntegrating AI skills into existing applications\nEnhancing non-Claude clients with AI capabilities\nStreamlining skill loading processes for AI agents",
+    "setup_vi": "Terminal\nCopy\n`claude install intellectronica/skillz`\n`git clone https://github.com/intellectronica/skillz`",
+    "usage_vi": "```\nLoad the [SKILL_NAME] skill into the Skillz MCP server. Use this skill to [TASK]. Provide the necessary [INPUT_DATA] to execute the skill effectively. For example, 'Load the 'Meeting Transcript Analyzer' skill into the Skillz MCP server. Use this skill to analyze the meeting transcripts from [MEETING_DATE] and extract key action items.'\n```\nCopy\n\n```\nThe 'Meeting Transcript Analyzer' skill has been successfully loaded into the Skillz MCP server. The skill analyzed the meeting transcripts from the quarterly planning session held on October 15, 2023. Here are the key action items identified: 1. Schedule a follow-up meeting with the marketing team to finalize the Q4 campaign strategy. 2. Assign the task of creating a detailed project timeline to the project manager by October 20, 2023. 3. Review the budget allocation for the new product launch and provide feedback by October 25, 2023. The skill has also generated a summary report and a standup deck for the next team meeting.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:42:38.734751Z",
+    "http_status": 200,
+    "content_hash": "9eccb11e1395b2c8991ada83c3affff362d0a400ebef859198e73df811f770ac",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillz.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillz.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skillz: MCP Server for AI Skills Integration",
+  "short_description_vi": "Skillz is an MCP server designed for loading AI skills, serving as a shim for clients that do not utilize Claude. This versatile tool enhances AI agent capabilities and streamlines integration with various applications."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/planning-with-files",
+  "slug": "planning-with-files",
+  "name": "slack-gif-creator",
+  "headline": "Optimize Your Workflow with Planning-with-Files",
+  "short_description": "The planning-with-files skill uses Manus-style persistent markdown planning to streamline workflows, enhancing productivity and collaboration. Ideal for teams looking to optimize project management and documentation processes.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "OthmanAdi",
+  "install_command": "claude install OthmanAdi/planning-with-files",
+  "source_repo_url": "https://github.com/OthmanAdi/planning-with-files",
+  "works_with": [
+    "ClaudeChatGPTCursor"
+  ],
+  "tags": [
+    "automation",
+    "project-management",
+    "markdown",
+    "workflow",
+    "collaboration"
+  ],
+  "sections": {
+    "overview": "Planning-with-files is a skill that implements Manus-style persistent markdown planning to organize and track project tasks and documentation. It integrates with AI agents including Claude Code and Cursor, allowing seamless plan injection and management through markdown files. The skill uses standardized delimiters for plan data injection, enabling reliable parsing and execution across different environments. Teams use it to maintain structured planning artifacts that persist across agent sessions, reducing context loss and improving workflow continuity. The skill supports multiple language variants and adapter integrations (.codebuddy, .codex, .cursor), making it compatible with various development workflows.\nCreate and manage comprehensive project plans using markdown files for better organization.\nCollaborate effectively with team members by sharing and editing documentation in real-time.\nAutomate the tracking of tasks and updates to keep all stakeholders informed.\nIntegrate markdown files with existing workflows to streamline processes and reduce manual effort.",
+    "setup": "Terminal\nCopy\n`claude install OthmanAdi/planning-with-files`\n`git clone https://github.com/OthmanAdi/planning-with-files`",
+    "usage": "```\nCreate a Manus-style persistent markdown plan for [PROJECT NAME] using Productiv data. Include sections for [KEY TOPICS] such as budget forecasting, expense tracking, and real-time financial analytics. Ensure the plan is actionable and collaborative, with clear next steps for each team member.\n```\nCopy\n\n```\nHere's a Manus-style persistent markdown plan for the Q3 2023 Marketing Campaign using Productiv data:\n\n# Q3 2023 Marketing Campaign Plan",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT, Cursor"
+    ],
+    "related_skills": [
+      "planning-with-files#main-content",
+      "planning-with-files#overview",
+      "planning-with-files#setup",
+      "planning-with-files#examples",
+      "planning-with-files#tools",
+      "planning-with-files#mcp",
+      "planning-with-files#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Planning-with-files is a skill that implements Manus-style persistent markdown planning to organize and track project tasks and documentation. It integrates with AI agents including Claude Code and Cursor, allowing seamless plan injection and management through markdown files. The skill uses standardized delimiters for plan data injection, enabling reliable parsing and execution across different environments. Teams use it to maintain structured planning artifacts that persist across agent sessions, reducing context loss and improving workflow continuity. The skill supports multiple language variants and adapter integrations (.codebuddy, .codex, .cursor), making it compatible with various development workflows.\nCreate and manage comprehensive project plans using markdown files for better organization.\nCollaborate effectively with team members by sharing and editing documentation in real-time.\nAutomate the tracking of tasks and updates to keep all stakeholders informed.\nIntegrate markdown files with existing workflows to streamline processes and reduce manual effort.",
+    "setup_vi": "Terminal\nCopy\n`claude install OthmanAdi/planning-with-files`\n`git clone https://github.com/OthmanAdi/planning-with-files`",
+    "usage_vi": "```\nCreate a Manus-style persistent markdown plan for [PROJECT NAME] using Productiv data. Include sections for [KEY TOPICS] such as budget forecasting, expense tracking, and real-time financial analytics. Ensure the plan is actionable and collaborative, with clear next steps for each team member.\n```\nCopy\n\n```\nHere's a Manus-style persistent markdown plan for the Q3 2023 Marketing Campaign using Productiv data:\n\n# Q3 2023 Marketing Campaign Plan"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:24:57.490443Z",
+    "http_status": 200,
+    "content_hash": "4957fa8e4d29471c79b283d1c9523cd63918872cc14e0eb83b4e583c2b896e3c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\planning-with-files.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\planning-with-files.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Optimize Your Workflow with Planning-with-Files",
+  "short_description_vi": "The planning-with-files skill uses Manus-style persistent markdown planning to streamline workflows, enhancing productivity and collaboration. Ideal for teams looking to optimize project management and documentation processes."
+}

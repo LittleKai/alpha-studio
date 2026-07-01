@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bencium-claude-code-design-skill",
+  "slug": "bencium-claude-code-design-skill",
+  "name": "Bencium Claude Code Design Skill",
+  "headline": "ux designer skills using anthropic guidelines",
+  "short_description": "Claude Code skills for UI/UX design guidance. Choose between controlled or innovative variants based on project needs. Integrates with design tools and workflows for streamlined design processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "bencium",
+  "install_command": "git clone https://github.com/bencium/bencium-claude-code-design-skill.git",
+  "source_repo_url": "https://github.com/bencium/bencium-claude-code-design-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The bencium design skill provides two distinct UX design approaches for Claude Code users. The controlled variant enforces WCAG 2.1 AA accessibility standards, mathematical typography scales, and an always-ask-first protocol—ideal for enterprise applications and regulated industries. The innovative variant commits to bold creative directions with experimental typography, gradients, and shadows, suited for landing pages and marketing campaigns. Both integrate with design tools and workflows to streamline design processes. Install via skills.sh, Claude Code CLI, or copy SKILL.md files into compatible AI coding tools including Cursor and Windsurf. The skill helps designers avoid generic AI aesthetics while maintaining production-grade quality standards.\nEnterprise UI design with WCAG 2.1 AA compliance requirements\nBold, distinctive landing page and campaign design\nSystematic design audits and phased implementation plans\nProduction-grade frontend interfaces avoiding generic AI aesthetics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bencium/bencium-claude-code-design-skill`",
+    "usage": "```\nAct as a senior UI/UX design consultant using Claude Code. For the project [PROJECT_NAME], analyze the current design system and provide [CONTROLLED/INNOVATIVE] design guidance. Focus on [SPECIFIC_AREA: e.g., accessibility, micro-interactions, or component library consistency]. Use [DESIGN_TOOL: Figma/Adobe XD/Sketch] to generate actionable recommendations. Prioritize solutions that align with [BUSINESS_GOALS: e.g., conversion rates, user retention, or brand consistency].\n```\nCopy\n\n```\nFor **Project Phoenix** (a fintech dashboard redesign), I analyzed the current Figma design system and identified critical gaps in accessibility compliance. The existing color palette failed WCAG 2.1 AA contrast ratios in 6 key components, including the primary CTA button and data table headers. My recommendations include:\n\n1. **Color System Overhaul**:\n   - Replaced the current `#0066CC` primary blue with `#0052A3` (4.6:1 contrast against white) to meet WCAG AA standards.\n   - Introduced an 8-step grayscale palette (from `#111827` to `#F9FAFB`) for consistent text hierarchy.\n   - Added a new semantic color token system (e.g., `--color-semantic-error`, `--color-semantic-success`) to decouple design decisions from brand colors.\n\n2. **Component Library Fixes**:\n   - Updated the button component to use the new palette, ensuring the primary button (`#0052A3` background, `#FFFFFF` text) passes contrast checks at all states (default, hover, active).\n   - Redesigned the data table header to use `--color-semantic-surface` (a light gray) with bold text to improve readability.\n   - Added a 2px focus outline (`#0052A3`) to all interactive elements for keyboard navigation compliance.\n\n3. **Implementation Roadmap**:\n   - **Week 1**: Audit all existing components in Figma using the Stark plugin to identify contrast violations.\n   - **Week 2**: Update the color tokens in the design system file and propagate changes to all components.\n   - **Week 3**: Test the updated components with a screen reader (NVDA) and fix remaining issues.\n   - **Week 4**: Document the new palette and guidelines in the design system’s README file.\n\n**Impact**: These changes are projected to improve accessibility scores by 40% and reduce support tickets related to color contrast issues by 60%. The new token system will also future-proof the design for dark mode and theming needs.\n\nWould you like me to generate the updated Figma file with these changes or focus on another area first?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bencium-claude-code-design-skill#main-content",
+      "bencium-claude-code-design-skill#overview",
+      "bencium-claude-code-design-skill#setup",
+      "bencium-claude-code-design-skill#examples",
+      "bencium-claude-code-design-skill#tools",
+      "bencium-claude-code-design-skill#mcp",
+      "bencium-claude-code-design-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kỹ năng thiết kế bencium cung cấp hai phương pháp tiếp cận thiết kế UX riêng biệt cho người dùng Claude Code. Biến thể kiểm soát (controlled) áp dụng nghiêm ngặt các tiêu chuẩn về khả năng tiếp cận WCAG 2.1 AA, thang tỷ lệ typography toán học và giao thức luôn hỏi trước (always-ask-first)—lý tưởng cho các ứng dụng doanh nghiệp và các ngành chịu sự quản lý chặt chẽ. Biến thể sáng tạo (innovative) hướng tới các định hướng sáng tạo táo bạo với typography thử nghiệm, gradient và đổ bóng (shadow), phù hợp cho landing page và các chiến dịch marketing. Cả hai đều tích hợp với các công cụ thiết kế và workflow để tối ưu hóa quy trình thiết kế. Cài đặt thông qua skills.sh, Claude Code CLI, hoặc sao chép các tệp SKILL.md vào các công cụ lập trình AI tương thích bao gồm Cursor và Windsurf. Kỹ năng này giúp designer tránh được phong cách thẩm mỹ AI đại trà (generic) trong khi vẫn duy trì các tiêu chuẩn chất lượng cấp độ production.\n\nThiết kế UI doanh nghiệp đáp ứng các yêu cầu tuân thủ WCAG 2.1 AA\nThiết kế landing page và chiến dịch táo bạo, độc đáo\nĐánh giá thiết kế (design audit) có hệ thống và kế hoạch triển khai theo từng giai đoạn\nGiao diện frontend cấp độ production, tránh tính thẩm mỹ AI đại trà",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để biết hướng dẫn cài đặt thủ công.\n`git clone https://github.com/bencium/bencium-claude-code-design-skill`",
+    "usage_vi": "```\nHãy đóng vai trò là một tư vấn viên UI/UX design cấp cao sử dụng Claude Code. Đối với dự án [PROJECT_NAME], hãy phân tích design system hiện tại và cung cấp hướng dẫn thiết kế theo hướng [CONTROLLED/INNOVATIVE]. Tập trung vào [SPECIFIC_AREA: ví dụ: accessibility, micro-interactions, hoặc tính nhất quán của thư viện component]. Sử dụng [DESIGN_TOOL: Figma/Adobe XD/Sketch] để đưa ra các đề xuất thực thi được. Ưu tiên các giải pháp phù hợp với [BUSINESS_GOALS: ví dụ: tỷ lệ chuyển đổi, tỷ lệ giữ chân người dùng, hoặc tính nhất quán của thương hiệu].\n```\nCopy\n\n```\nĐối với **Dự án Phoenix** (tái thiết kế dashboard cho lĩnh vực fintech), tôi đã phân tích design system hiện tại trên Figma và xác định các thiếu sót nghiêm trọng về tuân thủ accessibility. Bảng màu hiện tại không đạt tỷ lệ tương phản WCAG 2.1 AA ở 6 component chính, bao gồm nút CTA chính và tiêu đề bảng dữ liệu (data table header). Các đề xuất của tôi bao gồm:\n\n1. **Thay đổi toàn diện hệ thống màu sắc (Color System Overhaul)**:\n   - Thay thế màu xanh dương chủ đạo `#0066CC` hiện tại bằng `#0052A3` (tỷ lệ tương phản 4.6:1 so với nền trắng) để đáp ứng tiêu chuẩn WCAG AA.\n   - Giới thiệu bảng màu grayscale 8 mức (từ `#111827` đến `#F9FAFB`) để phân cấp văn bản (text hierarchy) nhất quán.\n   - Thêm hệ thống token màu ngữ nghĩa mới (ví dụ: `--color-semantic-error`, `--color-semantic-success`) để tách biệt các quyết định thiết kế khỏi màu sắc thương hiệu.\n\n2. **Khắc phục lỗi trong thư viện component (Component Library Fixes)**:\n   - Cập nhật component button để sử dụng bảng màu mới, đảm bảo nút chính (background `#0052A3`, text `#FFFFFF`) vượt qua các bài kiểm tra độ tương phản ở mọi trạng thái (default, hover, active).\n   - Thiết kế lại data table header để sử dụng `--color-semantic-surface` (màu xám nhạt) với chữ in đậm nhằm tăng khả năng đọc.\n   - Thêm đường viền focus 2px (`#0052A3`) cho tất cả các phần tử tương tác để tuân thủ điều hướng bằng bàn phím (keyboard navigation).\n\n3. **Lộ trình triển khai (Implementation Roadmap)**:\n   - **Tuần 1**: Đánh giá (audit) tất cả các component hiện có trong Figma bằng plugin Stark để phát hiện lỗi tương phản.\n   - **Tuần 2**: Cập nhật các token màu trong tệp design system và đồng bộ các thay đổi cho tất cả các component.\n   - **Tuần 3**: Kiểm thử các component đã cập nhật bằng trình đọc màn hình (NVDA) và khắc phục các vấn đề còn lại.\n   - **Tuần 4**: Tài liệu hóa bảng màu mới và các nguyên tắc hướng dẫn trong tệp README của design system.\n\n**Tác động**: Những thay đổi này dự kiến sẽ cải thiện 40% điểm số về khả năng tiếp cận (accessibility) và giảm 60% số lượng ticket hỗ trợ liên quan đến vấn đề tương phản màu sắc. Hệ thống token mới cũng sẽ giúp thiết kế sẵn sàng cho chế độ tối (dark mode) và nhu cầu thay đổi chủ đề (theming) trong tương lai.\n\nBạn có muốn tôi tạo tệp Figma đã cập nhật với các thay đổi này hay muốn tập trung vào một khu vực khác trước?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:50:57.335451Z",
+    "http_status": 200,
+    "content_hash": "ac95fca8feec79b314cdfd047652e053fa22a9910199d6fa50d913693f372cd0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bencium-claude-code-design-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bencium-claude-code-design-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ kỹ năng UX designer theo nguyên tắc của Anthropic",
+  "short_description_vi": "Bộ kỹ năng Claude Code hỗ trợ hướng dẫn thiết kế UI/UX. Lựa chọn giữa phiên bản kiểm soát (controlled) hoặc sáng tạo (innovative) tùy theo nhu cầu dự án. Tích hợp mượt mà với các công cụ thiết kế và workflow để tối ưu hóa quy trình."
+}

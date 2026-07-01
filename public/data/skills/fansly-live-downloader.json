@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/fansly-live-downloader",
+  "slug": "fansly-live-downloader",
+  "name": "Cam4 Downloader",
+  "headline": "Fansly Live Downloader: Record & Download Videos",
+  "short_description": "Fansly Live Downloader is a browser extension designed for users who want to record and download Fansly live streams and saved videos for offline viewing. It supports active live streams, recorded videos, and VR content, enabling easy detection and export of files in MP4 format.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "serpdownloaders",
+  "install_command": "git clone https://github.com/serpapps/fansly-live-downloader",
+  "source_repo_url": "https://github.com/serpapps/fansly-live-downloader",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "downloader",
+    "live",
+    "fansly",
+    "browser-extension"
+  ],
+  "sections": {
+    "overview": "Fansly Live Downloader is a browser extension designed for recording active Fansly live streams and downloading saved recordings in MP4 format. The extension detects available media directly in your browser session and provides quality selection for different resolution options. It supports live broadcasts, saved videos, and compatible VR content, with automatic saving to a dedicated folder. Installation is straightforward—download from GitHub releases, install the extension, navigate to any Fansly stream or saved video page, and use the in-page controls or popup to begin recording or downloading. The tool eliminates the need for desktop recording software or manual stream extraction, offering a browser-based workflow for archiving content you have access to.\nRecord live Fansly broadcasts while they are happening\nDownload saved recordings from supported video pages\nKeep supported VR captures with playback-friendly metadata\nChoose from available stream qualities",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill fansly-live-downloader`\n`git clone https://github.com/serpapps/fansly-live-downloader`",
+    "usage": "```\nDownload [VIDEO_TYPE] from Fansly using the Fansly Live Downloader browser extension. Record and save [VIDEO_URL] in MP4 format for offline viewing. Ensure the extension captures the highest available quality and includes metadata such as timestamps and creator details. [VIDEO_TYPE] can be a live stream, recorded video, or VR content.\n```\nCopy\n\n```\n### Fansly Video Download Complete\n\n**Video Details:**\n- **Title:** Behind-the-Scenes at the New York Fashion Week\n- **Creator:** @LuxuryLifestyle\n- **Type:** Recorded Video\n- **Duration:** 12 minutes 45 seconds\n- **Resolution:** 1080p\n- **File Size:** 1.2 GB\n- **Downloaded At:** 2024-05-20 14:30:00 UTC\n\n**Download Location:**\n- **Folder:** ~/Downloads/Fansly_Videos\n- **File Name:** LuxuryLifestyle_NYFW_BTS_2024-05-20.mp4\n\n**Metadata Captured:**\n- Creator handle: @LuxuryLifestyle\n- Upload date: 2024-05-15\n- Tags: #FashionWeek #BehindTheScenes #Luxury\n\n**Usage Notes:**\n- Video is DRM-free and compatible with most media players.\n- For VR content, use a compatible VR player for full immersion.\n- Recommended to back up the file to cloud storage (e.g., Google Drive, iCloud) for long-term access.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "fansly-live-downloader#main-content",
+      "fansly-live-downloader#overview",
+      "fansly-live-downloader#setup",
+      "fansly-live-downloader#examples",
+      "fansly-live-downloader#related",
+      "pinterest-downloader",
+      "tiktok-video-downloader",
+      "cam4-downloader"
+    ],
+    "overview_vi": "Fansly Live Downloader is a browser extension designed for recording active Fansly live streams and downloading saved recordings in MP4 format. The extension detects available media directly in your browser session and provides quality selection for different resolution options. It supports live broadcasts, saved videos, and compatible VR content, with automatic saving to a dedicated folder. Installation is straightforward—download from GitHub releases, install the extension, navigate to any Fansly stream or saved video page, and use the in-page controls or popup to begin recording or downloading. The tool eliminates the need for desktop recording software or manual stream extraction, offering a browser-based workflow for archiving content you have access to.\nRecord live Fansly broadcasts while they are happening\nDownload saved recordings from supported video pages\nKeep supported VR captures with playback-friendly metadata\nChoose from available stream qualities",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill fansly-live-downloader`\n`git clone https://github.com/serpapps/fansly-live-downloader`",
+    "usage_vi": "```\nDownload [VIDEO_TYPE] from Fansly using the Fansly Live Downloader browser extension. Record and save [VIDEO_URL] in MP4 format for offline viewing. Ensure the extension captures the highest available quality and includes metadata such as timestamps and creator details. [VIDEO_TYPE] can be a live stream, recorded video, or VR content.\n```\nCopy\n\n```\n### Fansly Video Download Complete\n\n**Video Details:**\n- **Title:** Behind-the-Scenes at the New York Fashion Week\n- **Creator:** @LuxuryLifestyle\n- **Type:** Recorded Video\n- **Duration:** 12 minutes 45 seconds\n- **Resolution:** 1080p\n- **File Size:** 1.2 GB\n- **Downloaded At:** 2024-05-20 14:30:00 UTC\n\n**Download Location:**\n- **Folder:** ~/Downloads/Fansly_Videos\n- **File Name:** LuxuryLifestyle_NYFW_BTS_2024-05-20.mp4\n\n**Metadata Captured:**\n- Creator handle: @LuxuryLifestyle\n- Upload date: 2024-05-15\n- Tags: #FashionWeek #BehindTheScenes #Luxury\n\n**Usage Notes:**\n- Video is DRM-free and compatible with most media players.\n- For VR content, use a compatible VR player for full immersion.\n- Recommended to back up the file to cloud storage (e.g., Google Drive, iCloud) for long-term access.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:09:31.611667Z",
+    "http_status": 200,
+    "content_hash": "e5f5856173d05ae60124890e7c769ccf239185e17e3a55f6bd4168a259b0cbcd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fansly-live-downloader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fansly-live-downloader.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Fansly Live Downloader: Record & Download Videos",
+  "short_description_vi": "Fansly Live Downloader is a browser extension designed for users who want to record and download Fansly live streams and saved videos for offline viewing. It supports active live streams, recorded videos, and VR content, enabling easy detection and export of files in MP4 format."
+}

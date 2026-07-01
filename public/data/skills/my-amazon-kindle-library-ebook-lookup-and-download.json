@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/my-amazon-kindle-library-ebook-lookup-and-download",
+  "slug": "my-amazon-kindle-library-ebook-lookup-and-download",
+  "name": "Related Skills",
+  "headline": "Amazon Kindle Library Ebook Lookup & Download",
+  "short_description": "This skill allows users to search and download ebooks from their personal Amazon Kindle library, including purchased titles and synced personal documents. Ideal for users with licensed content who need an internal tool for managing their ebooks.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "montagao",
+  "install_command": "git clone https://github.com/montagao/skills",
+  "source_repo_url": "https://github.com/montagao/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "kindle",
+    "library",
+    "library-management",
+    "amazon",
+    "ebook"
+  ],
+  "sections": {
+    "overview": "This skill lets you search your personal Amazon Kindle library by title or author and download ebooks in multiple formats including PDF, EPUB, MOBI, and Kindle formats. It works with books you've purchased plus any personal documents synced to your Amazon account. The skill requires an API key for download functionality but supports searching without authentication. After downloading, use the ebook-extractor skill to convert files to plain text for analysis or processing.\nSearch for ebooks in my Kindle library\nDownload purchased Kindle titles\nSync personal documents from Amazon library",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/montagao/skills --skill library-ebooks`\n`git clone https://github.com/montagao/skills`",
+    "usage": "```\nSearch my Amazon Kindle library for books matching [TITLE], [AUTHOR], or [KEYWORD]. List available formats (e.g., AZW3, PDF, MOBI) and download links for any matches. Include metadata like publication date, file size, and DRM status if available. Verify that the files are compatible with [DEVICE TYPE, e.g., Kindle Paperwhite, Kobo, or Calibre].\n```\nCopy\n\n```\n### Amazon Kindle Library Search Results\n\n**Title:** *The Midnight Library* by Matt Haig\n**Publication Date:** October 27, 2020\n**File Format:** AZW3 (Kindle), PDF, MOBI\n**File Size:** 2.1 MB (AZW3), 3.4 MB (PDF)\n**DRM Status:** Enabled (Kindle Unlimited) / Disabled (Personal Document)\n\n#### Download Links:\n- **AZW3 (Kindle):** [Download AZW3](https://kindle.amazon.com/library/download?file=1234567890)\n- **PDF:** [Download PDF](https://kindle.amazon.com/library/download?file=9876543210&format=pdf)\n- **MOBI:** [Download MOBI](https://kindle.amazon.com/library/download?file=5555555555&format=mobi)\n\n**Compatibility Notes:**\n- AZW3 and MOBI are natively supported on Kindle devices.\n- PDF is best viewed on larger screens (e.g., tablets or computers).\n- For Calibre, use the MOBI or AZW3 format.\n\n#### Additional Metadata:\n- **Publisher:** Viking\n- **ASIN:** B085Q5X5X1\n- **Last Synced:** June 10, 2024\n\nWould you like me to check for other formats or verify compatibility with a specific device?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "my-amazon-kindle-library-ebook-lookup-and-download#main-content",
+      "my-amazon-kindle-library-ebook-lookup-and-download#overview",
+      "my-amazon-kindle-library-ebook-lookup-and-download#setup",
+      "my-amazon-kindle-library-ebook-lookup-and-download#examples",
+      "my-amazon-kindle-library-ebook-lookup-and-download#tools",
+      "my-amazon-kindle-library-ebook-lookup-and-download#mcp",
+      "my-amazon-kindle-library-ebook-lookup-and-download#related"
+    ],
+    "overview_vi": "This skill lets you search your personal Amazon Kindle library by title or author and download ebooks in multiple formats including PDF, EPUB, MOBI, and Kindle formats. It works with books you've purchased plus any personal documents synced to your Amazon account. The skill requires an API key for download functionality but supports searching without authentication. After downloading, use the ebook-extractor skill to convert files to plain text for analysis or processing.\nSearch for ebooks in my Kindle library\nDownload purchased Kindle titles\nSync personal documents from Amazon library",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/montagao/skills --skill library-ebooks`\n`git clone https://github.com/montagao/skills`",
+    "usage_vi": "```\nSearch my Amazon Kindle library for books matching [TITLE], [AUTHOR], or [KEYWORD]. List available formats (e.g., AZW3, PDF, MOBI) and download links for any matches. Include metadata like publication date, file size, and DRM status if available. Verify that the files are compatible with [DEVICE TYPE, e.g., Kindle Paperwhite, Kobo, or Calibre].\n```\nCopy\n\n```\n### Amazon Kindle Library Search Results\n\n**Title:** *The Midnight Library* by Matt Haig\n**Publication Date:** October 27, 2020\n**File Format:** AZW3 (Kindle), PDF, MOBI\n**File Size:** 2.1 MB (AZW3), 3.4 MB (PDF)\n**DRM Status:** Enabled (Kindle Unlimited) / Disabled (Personal Document)\n\n#### Download Links:\n- **AZW3 (Kindle):** [Download AZW3](https://kindle.amazon.com/library/download?file=1234567890)\n- **PDF:** [Download PDF](https://kindle.amazon.com/library/download?file=9876543210&format=pdf)\n- **MOBI:** [Download MOBI](https://kindle.amazon.com/library/download?file=5555555555&format=mobi)\n\n**Compatibility Notes:**\n- AZW3 and MOBI are natively supported on Kindle devices.\n- PDF is best viewed on larger screens (e.g., tablets or computers).\n- For Calibre, use the MOBI or AZW3 format.\n\n#### Additional Metadata:\n- **Publisher:** Viking\n- **ASIN:** B085Q5X5X1\n- **Last Synced:** June 10, 2024\n\nWould you like me to check for other formats or verify compatibility with a specific device?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:59:46.196385Z",
+    "http_status": 200,
+    "content_hash": "97525d5da713c40c844132aa4081635315f3a6488f0494347e8793b50f2e821a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\my-amazon-kindle-library-ebook-lookup-and-download.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\my-amazon-kindle-library-ebook-lookup-and-download.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Amazon Kindle Library Ebook Lookup & Download",
+  "short_description_vi": "This skill allows users to search and download ebooks from their personal Amazon Kindle library, including purchased titles and synced personal documents. Ideal for users with licensed content who need an internal tool for managing their ebooks."
+}

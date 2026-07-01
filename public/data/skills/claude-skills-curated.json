@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-curated",
+  "slug": "claude-skills-curated",
+  "name": "Claude Skills Curated",
+  "headline": "Curated Claude Skills for efficiency",
+  "short_description": "A curated collection of top Claude Code skills, plugins, and resources for operations teams. Streamlines workflows by providing pre-vetted tools for automation tasks. Integrates with Claude agents to enhance productivity and efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "jackculpan",
+  "install_command": "git clone https://github.com/jackculpan/claude-skills-curated.git",
+  "source_repo_url": "https://github.com/jackculpan/claude-skills-curated",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Skills Curated is an organized directory of Claude Code resources, including skills, plugins, subagents, and automation tools. Each resource is rated on a three-tier scale to help users identify essential, high-quality, and specialized tools for their needs. The collection covers official resources from Anthropic, skill collections with hundreds of community contributions, browser automation capabilities, MCP servers, and learning materials. Operations teams and developers can quickly find pre-vetted tools for automation tasks, development workflows, and productivity enhancement. The directory serves as a central reference point for discovering battle-tested resources across multiple categories.\nFinding essential Claude Code skills and plugins for development teams\nDiscovering specialized subagents for full-stack development and DevOps\nLocating browser automation tools for testing and workflow automation\nIdentifying MCP servers for repository management and code search",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jackculpan/claude-skills-curated`",
+    "usage": "```\nGenerate a curated list of the top 3 [TYPE] for [TEAM/ROLE] that solve [SPECIFIC_PROBLEM]. Include the skill name, a 1-sentence description, and a direct link to the resource. Focus on tools that integrate with [PLATFORM/TOOLCHAIN]. Example: 'Generate a curated list of the top 3 automation skills for DevOps teams that streamline CI/CD pipelines. Include the skill name, a 1-sentence description, and a direct link to the resource. Focus on tools that integrate with GitHub Actions.'\n```\nCopy\n\n```\nHere’s a curated list of the top 3 automation skills for operations teams that streamline incident response workflows, all tested and vetted for reliability in production environments:\n\n1. **claude-skills-incident-mgmt**\n   Automates the creation and assignment of incident tickets in PagerDuty or ServiceNow based on Slack alerts, reducing mean time to resolution (MTTR) by up to 30%. [View skill](https://github.com/claude-skills/incident-mgmt)\n\n2. **claude-skills-log-parser**\n   Parses and correlates logs from AWS CloudWatch, Datadog, and Splunk to identify root causes of outages, generating actionable insights in under 2 minutes. [View skill](https://github.com/claude-skills/log-parser)\n\n3. **claude-skills-auto-remediation**\n   Auto-remediates common AWS infrastructure issues (e.g., EC2 instance failures, RDS storage alerts) by triggering predefined Lambda functions, reducing manual intervention by 40%. [View skill](https://github.com/claude-skills/auto-remediation)\n\n*All skills are pre-configured to work with Claude Code and integrate seamlessly with your existing toolchain (Slack, PagerDuty, AWS). For advanced setups, refer to the [Claude Skills Documentation](https://docs.claude.ai/skills).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-curated#main-content",
+      "claude-skills-curated#overview",
+      "claude-skills-curated#setup",
+      "claude-skills-curated#examples",
+      "claude-skills-curated#tools",
+      "claude-skills-curated#mcp",
+      "claude-skills-curated#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skills Curated là một thư mục được sắp xếp khoa học chứa các tài nguyên Claude Code, bao gồm các skill, plugin, subagent và công cụ tự động hóa. Mỗi tài nguyên được đánh giá theo thang đo 3 cấp độ để giúp người dùng dễ dàng xác định các công cụ thiết yếu, chất lượng cao và chuyên biệt phù hợp với nhu cầu của mình. Bộ sưu tập này bao gồm các tài nguyên chính thức từ Anthropic, các bộ sưu tập skill với hàng trăm đóng góp từ cộng đồng, khả năng tự động hóa trình duyệt (browser automation), các MCP server và tài liệu học tập. Đội ngũ vận hành và nhà phát triển có thể nhanh chóng tìm thấy các công cụ đã được kiểm duyệt cho các tác vụ tự động hóa, quy trình phát triển và nâng cao năng suất. Thư mục này đóng vai trò như một điểm tham chiếu trung tâm để khám phá các tài nguyên đã được kiểm chứng qua thực tế (battle-tested) trên nhiều danh mục khác nhau.\nTìm kiếm các Claude Code skill và plugin thiết yếu cho đội ngũ phát triển\nKhám phá các subagent chuyên dụng cho phát triển full-stack và DevOps\nĐịnh vị các công cụ browser automation để kiểm thử và tự động hóa quy trình làm việc\nXác định các MCP server cho việc quản lý repository và tìm kiếm code",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jackculpan/claude-skills-curated`",
+    "usage_vi": "```\nTạo danh sách tuyển chọn gồm 3 [TYPE] hàng đầu dành cho [TEAM/ROLE] để giải quyết [SPECIFIC_PROBLEM]. Bao gồm tên skill, mô tả ngắn gọn trong 1 câu và liên kết trực tiếp đến tài nguyên. Tập trung vào các công cụ tích hợp với [PLATFORM/TOOLCHAIN]. Ví dụ: 'Tạo danh sách tuyển chọn gồm 3 automation skill hàng đầu dành cho đội ngũ DevOps giúp tối ưu hóa CI/CD pipeline. Bao gồm tên skill, mô tả ngắn gọn trong 1 câu và liên kết trực tiếp đến tài nguyên. Tập trung vào các công cụ tích hợp với GitHub Actions.'\n```\nCopy\n\n```\nDưới đây là danh sách tuyển chọn gồm 3 automation skill hàng đầu dành cho đội ngũ vận hành giúp tối ưu hóa quy trình xử lý sự cố (incident response), tất cả đều đã được kiểm thử và xác thực về độ tin cậy trong môi trường production:\n\n1. **claude-skills-incident-mgmt**\n   Tự động hóa việc tạo và phân công ticket sự cố trong PagerDuty hoặc ServiceNow dựa trên các cảnh báo từ Slack, giúp giảm thời gian trung bình để khắc phục (MTTR) lên tới 30%. [Xem skill](https://github.com/claude-skills/incident-mgmt)\n\n2. **claude-skills-log-parser**\n   Phân tích cú pháp (parse) và liên kết các log từ AWS CloudWatch, Datadog và Splunk để xác định nguyên nhân gốc rễ của sự cố gián đoạn, đưa ra các phân tích có thể hành động ngay (actionable insights) trong chưa đầy 2 phút. [Xem skill](https://github.com/claude-skills/log-parser)\n\n3. **claude-skills-auto-remediation**\n   Tự động khắc phục các sự cố hạ tầng AWS phổ biến (ví dụ: lỗi instance EC2, cảnh báo dung lượng lưu trữ RDS) bằng cách kích hoạt các Lambda function đã được định nghĩa trước, giảm 40% thao tác thủ công. [Xem skill](https://github.com/claude-skills/auto-remediation)\n\n*Tất cả các skill đều được cấu hình sẵn để hoạt động với Claude Code và tích hợp mượt mà với toolchain hiện tại của bạn (Slack, PagerDuty, AWS). Đối với các thiết lập nâng cao, vui lòng tham khảo [Tài liệu Claude Skills](https://docs.claude.ai/skills).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:37:44.428644Z",
+    "http_status": 200,
+    "content_hash": "0f57fa982ff4fe5057938bf6e6220c2401efaf4f92b197a31d2eb2a35d682dde",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skills-curated.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skills-curated.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ Claude skill tuyển chọn giúp tối ưu hiệu suất làm việc",
+  "short_description_vi": "Bộ sưu tập tuyển chọn các Claude Code skill, plugin và tài nguyên hàng đầu dành cho đội ngũ vận hành. Tối ưu hóa quy trình làm việc bằng cách cung cấp các công cụ tự động hóa đã được kiểm duyệt kỹ lưỡng. Dễ dàng tích hợp với các Claude agent để nâng cao năng suất và hiệu quả."
+}

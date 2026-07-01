@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pilot",
+  "slug": "pilot",
+  "name": "browser-use",
+  "headline": "Pilot - Autonomous Development Pipeline",
+  "short_description": "Autonomous development pipeline that receives tickets, implements features, and creates PRs. Benefits operations teams by automating feature development and PR creation. Connects to Linear for ticket management and Slack for notifications.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "alekspetrov",
+  "install_command": "git clone https://github.com/alekspetrov/pilot.git",
+  "source_repo_url": "https://github.com/alekspetrov/pilot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "autonomous-agents",
+    "claude-code",
+    "developer-tools",
+    "devops",
+    "automation",
+    "slack",
+    "linear",
+    "golang",
+    "claude",
+    "ai",
+    "cli"
+  ],
+  "sections": {
+    "overview": "Pilot is an autonomous development pipeline that integrates with GitHub, Linear, Jira, and Asana to automatically pick up labeled tickets, analyze requirements, implement solutions using Claude Code, run quality gates (tests, linting, builds), and open pull requests for human review. The system plans implementations by analyzing the codebase, writes production-ready code, and handles the full development cycle up to PR creation. It supports multiple autopilot modes (dev, stage, prod) for varying levels of autonomy, from skipping CI checks to requiring human approval before merge. Development teams benefit by reducing manual ticket triage, implementation time, and code review overhead, while maintaining human control over final approval.\nAutomatically implement GitHub issues labeled with 'pilot' while team sleeps\nDecompose complex epics into sequential subtasks executed automatically\nReduce backlog processing time by auto-implementing quick fixes and features\nIntegrate ticket management systems (Linear, Jira, Asana) with CI/CD automation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alekspetrov/pilot`",
+    "usage": "```\nI need Pilot to help with a new feature for [COMPANY] in the [INDUSTRY] sector. The feature should [DESCRIBE FEATURE]. Please create a development pipeline, implement the feature, and generate a PR. Use the following [DATA] as a reference. Notify me on Slack when complete.\n```\nCopy\n\n```\n# Feature Implementation for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pilot#main-content",
+      "pilot#overview",
+      "pilot#setup",
+      "pilot#examples",
+      "pilot#tools",
+      "pilot#mcp",
+      "pilot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Pilot is an autonomous development pipeline that integrates with GitHub, Linear, Jira, and Asana to automatically pick up labeled tickets, analyze requirements, implement solutions using Claude Code, run quality gates (tests, linting, builds), and open pull requests for human review. The system plans implementations by analyzing the codebase, writes production-ready code, and handles the full development cycle up to PR creation. It supports multiple autopilot modes (dev, stage, prod) for varying levels of autonomy, from skipping CI checks to requiring human approval before merge. Development teams benefit by reducing manual ticket triage, implementation time, and code review overhead, while maintaining human control over final approval.\nAutomatically implement GitHub issues labeled with 'pilot' while team sleeps\nDecompose complex epics into sequential subtasks executed automatically\nReduce backlog processing time by auto-implementing quick fixes and features\nIntegrate ticket management systems (Linear, Jira, Asana) with CI/CD automation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alekspetrov/pilot`",
+    "usage_vi": "```\nI need Pilot to help with a new feature for [COMPANY] in the [INDUSTRY] sector. The feature should [DESCRIBE FEATURE]. Please create a development pipeline, implement the feature, and generate a PR. Use the following [DATA] as a reference. Notify me on Slack when complete.\n```\nCopy\n\n```\n# Feature Implementation for [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:13:58.065374Z",
+    "http_status": 200,
+    "content_hash": "f258d814613d1aa37677d59b995657f99462caa7257755ae445d2666a887c14f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pilot.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Pilot - Autonomous Development Pipeline",
+  "short_description_vi": "Autonomous development pipeline that receives tickets, implements features, and creates PRs. Benefits operations teams by automating feature development and PR creation. Connects to Linear for ticket management and Slack for notifications."
+}

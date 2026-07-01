@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/langchain-salesforce",
+  "slug": "langchain-salesforce",
+  "name": "ai-agent-demo",
+  "headline": "Langchain Integration for Salesforce CRM",
+  "short_description": "The langchain-salesforce integration helps users to use Salesforce CRM with Langchain's capabilities, enabling SOQL queries, object schema inspection, and efficient CRUD operations. Perfect for enhancing CRM workflows with AI-driven insights.",
+  "tier": "Gold",
+  "category": "SDRAERevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "colesmcintosh",
+  "install_command": "claude install colesmcintosh/langchain-salesforce",
+  "source_repo_url": "https://github.com/colesmcintosh/langchain-salesforce",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "python",
+    "soql",
+    "salesforce",
+    "crm",
+    "langchain"
+  ],
+  "sections": {
+    "overview": "langchain-salesforce connects Salesforce CRM to LangChain applications, allowing AI agents to execute SOQL queries, inspect object schemas, and perform create, read, update, and delete operations on Salesforce records. The tool supports both production and sandbox environments through configurable domain settings. It provides operations like query execution, object description, record creation and updates, deletion, and field metadata retrieval. Developers can use this integration to automate CRM workflows, enhance data retrieval with AI-driven insights, and build intelligent agents that interact directly with Salesforce data without manual API calls.\nAutomate SOQL queries for lead generation\nInspect Salesforce object schemas for data analysis\nPerform CRUD operations on Salesforce records\nEnhance sales reporting with AI-driven insights",
+    "setup": "Terminal\nCopy\n`claude install colesmcintosh/langchain-salesforce`\n`git clone https://github.com/colesmcintosh/langchain-salesforce`",
+    "usage": "```\nUsing the langchain-salesforce integration, query the Salesforce CRM for all opportunities with a close date within the next 30 days for [ACCOUNT_NAME]. Return the results in a table format including Opportunity Name, Amount, Close Date, and Stage. Then, analyze these opportunities and suggest the top 3 actions the sales team should prioritize this week to improve conversion rates.\n```\nCopy\n\n```\nBased on your request, here are the opportunities for Acme Corp with a close date within the next 30 days:\n\n| Opportunity Name | Amount | Close Date | Stage |\n|-----------------|--------|-------------|-------|\n| Enterprise Deal  | $500,000 | 2023-11-15 | Proposal Sent |\n| Cloud Migration  | $250,000 | 2023-11-20 | Negotiation/Review |\n| Support Contract | $100,000 | 2023-12-01 | Value Proposition |\n\nAnalysis and Recommendations:\n1. **Enterprise Deal**: This is the largest opportunity and is currently in the Proposal Sent stage. The sales team should prioritize following up with the key decision-makers to address any concerns and move the deal forward. Schedule a call with the CTO to discuss implementation timelines and address any technical questions.\n2. **Cloud Migration**: This opportunity is in the Negotiation/Review stage and has a close date of November 20th. The sales team should focus on understanding the client's budget constraints and offer flexible payment terms if necessary. Prepare a revised proposal with the requested changes and send it to the client for review.\n3. **Support Contract**: This opportunity is in the Value Proposition stage and has a close date of December 1st. The sales team should emphasize the benefits of the support contract, such as faster response times and dedicated account management. Share customer success stories and case studies to build confidence in the support services.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "langchain-salesforce#main-content",
+      "langchain-salesforce#overview",
+      "langchain-salesforce#setup",
+      "langchain-salesforce#examples",
+      "langchain-salesforce#tools",
+      "langchain-salesforce#mcp",
+      "langchain-salesforce#related",
+      "claude-skills",
+      "firecrawl",
+      "ai-agent-demo"
+    ],
+    "overview_vi": "langchain-salesforce connects Salesforce CRM to LangChain applications, allowing AI agents to execute SOQL queries, inspect object schemas, and perform create, read, update, and delete operations on Salesforce records. The tool supports both production and sandbox environments through configurable domain settings. It provides operations like query execution, object description, record creation and updates, deletion, and field metadata retrieval. Developers can use this integration to automate CRM workflows, enhance data retrieval with AI-driven insights, and build intelligent agents that interact directly with Salesforce data without manual API calls.\nAutomate SOQL queries for lead generation\nInspect Salesforce object schemas for data analysis\nPerform CRUD operations on Salesforce records\nEnhance sales reporting with AI-driven insights",
+    "setup_vi": "Terminal\nCopy\n`claude install colesmcintosh/langchain-salesforce`\n`git clone https://github.com/colesmcintosh/langchain-salesforce`",
+    "usage_vi": "```\nUsing the langchain-salesforce integration, query the Salesforce CRM for all opportunities with a close date within the next 30 days for [ACCOUNT_NAME]. Return the results in a table format including Opportunity Name, Amount, Close Date, and Stage. Then, analyze these opportunities and suggest the top 3 actions the sales team should prioritize this week to improve conversion rates.\n```\nCopy\n\n```\nBased on your request, here are the opportunities for Acme Corp with a close date within the next 30 days:\n\n| Opportunity Name | Amount | Close Date | Stage |\n|-----------------|--------|-------------|-------|\n| Enterprise Deal  | $500,000 | 2023-11-15 | Proposal Sent |\n| Cloud Migration  | $250,000 | 2023-11-20 | Negotiation/Review |\n| Support Contract | $100,000 | 2023-12-01 | Value Proposition |\n\nAnalysis and Recommendations:\n1. **Enterprise Deal**: This is the largest opportunity and is currently in the Proposal Sent stage. The sales team should prioritize following up with the key decision-makers to address any concerns and move the deal forward. Schedule a call with the CTO to discuss implementation timelines and address any technical questions.\n2. **Cloud Migration**: This opportunity is in the Negotiation/Review stage and has a close date of November 20th. The sales team should focus on understanding the client's budget constraints and offer flexible payment terms if necessary. Prepare a revised proposal with the requested changes and send it to the client for review.\n3. **Support Contract**: This opportunity is in the Value Proposition stage and has a close date of December 1st. The sales team should emphasize the benefits of the support contract, such as faster response times and dedicated account management. Share customer success stories and case studies to build confidence in the support services.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:49:05.350748Z",
+    "http_status": 200,
+    "content_hash": "2ddfa3fdf6332c75c4c4774462d19a5ec8d625b7f2906d3e51d3eab144b03714",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langchain-salesforce.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langchain-salesforce.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Langchain Integration for Salesforce CRM",
+  "short_description_vi": "The langchain-salesforce integration helps users to use Salesforce CRM with Langchain's capabilities, enabling SOQL queries, object schema inspection, and efficient CRUD operations. Perfect for enhancing CRM workflows with AI-driven insights."
+}

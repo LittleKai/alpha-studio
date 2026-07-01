@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-mastery",
+  "slug": "claude-code-mastery",
+  "name": "browser-use",
+  "headline": "claude code mastery: detailed claude guide",
+  "short_description": "Claude Code Mastery enables operations teams to optimize Claude Code for automation. It covers CLAUDE.md, MCP servers, commands, and hooks. Teams can streamline workflows and improve efficiency by leveraging single-purpose chats.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "TheDecipherist",
+  "install_command": "git clone https://github.com/TheDecipherist/claude-code-mastery.git",
+  "source_repo_url": "https://github.com/TheDecipherist/claude-code-mastery",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "anthropic",
+    "ai-agents",
+    "claude-md",
+    "llm",
+    "coding-assistant",
+    "claude",
+    "mcp-servers"
+  ],
+  "sections": {
+    "overview": "Claude Code Mastery is an automation skill designed for operations teams seeking to optimize Claude Code workflows. It provides guidance on CLAUDE.md configuration, MCP server integration, command setup, and hook implementation. The skill helps teams streamline processes and improve operational efficiency through structured, single-purpose chat interactions.\nConfiguring CLAUDE.md files to standardize Claude Code behavior across team projects\nSetting up MCP servers to extend Claude Code capabilities for automation tasks\nImplementing command structures to reduce manual intervention in repetitive workflows\nCreating hooks to trigger automated actions within existing operational pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TheDecipherist/claude-code-mastery`",
+    "usage": "```\nI need to optimize my automation workflow using Claude Code Mastery. Here's my current setup: [DESCRIBE SETUP]. I want to implement [SPECIFIC AUTOMATION GOAL]. Can you provide a step-by-step guide using CLAUDE.md and MCP servers? Include any necessary commands or hooks.\n```\nCopy\n\n```\nBased on your setup and goal of automating customer onboarding, here's how to optimize your workflow using Claude Code Mastery:\n\n1. **Setup CLAUDE.md**: Create a new CLAUDE.md file in your project directory. Define your automation tasks as follows:\n```markdown\n# Customer Onboarding Automation\n- **Task**: Send welcome email\n  - **Command**: `send_email --template welcome --recipient {customer_email}`\n  - **Hook**: `post_customer_creation`\n\n- **Task**: Create user account\n  - **Command**: `create_account --name {customer_name} --email {customer_email}`\n  - **Hook**: `post_email_sent`\n```\n\n2. **Configure MCP Servers**: Update your MCP server configuration to include the following:\n```json\n{\n  \"hooks\": {\n    \"post_customer_creation\": {\n      \"type\": \"webhook\",\n      \"url\": \"https://api.yourplatform.com/onboarding/start\"\n    }\n  }\n}\n```\n\n3. **Implement Commands**: Create single-purpose chats for each command. For example, the `send_email` command chat should:\n- Accept `template` and `recipient` parameters\n- Use your email service's API to send the email\n- Return a success/failure status\n\n4. **Test Your Workflow**: Trigger the onboarding process and verify that each task is executed in the correct order. Monitor the MCP server logs for any errors.\n\nBy following these steps, you'll have a streamlined customer onboarding process that leverages Claude Code Mastery for automation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-mastery#main-content",
+      "claude-code-mastery#overview",
+      "claude-code-mastery#setup",
+      "claude-code-mastery#examples",
+      "claude-code-mastery#tools",
+      "claude-code-mastery#mcp",
+      "claude-code-mastery#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Mastery is an automation skill designed for operations teams seeking to optimize Claude Code workflows. It provides guidance on CLAUDE.md configuration, MCP server integration, command setup, and hook implementation. The skill helps teams streamline processes and improve operational efficiency through structured, single-purpose chat interactions.\nConfiguring CLAUDE.md files to standardize Claude Code behavior across team projects\nSetting up MCP servers to extend Claude Code capabilities for automation tasks\nImplementing command structures to reduce manual intervention in repetitive workflows\nCreating hooks to trigger automated actions within existing operational pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TheDecipherist/claude-code-mastery`",
+    "usage_vi": "```\nI need to optimize my automation workflow using Claude Code Mastery. Here's my current setup: [DESCRIBE SETUP]. I want to implement [SPECIFIC AUTOMATION GOAL]. Can you provide a step-by-step guide using CLAUDE.md and MCP servers? Include any necessary commands or hooks.\n```\nCopy\n\n```\nBased on your setup and goal of automating customer onboarding, here's how to optimize your workflow using Claude Code Mastery:\n\n1. **Setup CLAUDE.md**: Create a new CLAUDE.md file in your project directory. Define your automation tasks as follows:\n```markdown\n# Customer Onboarding Automation\n- **Task**: Send welcome email\n  - **Command**: `send_email --template welcome --recipient {customer_email}`\n  - **Hook**: `post_customer_creation`\n\n- **Task**: Create user account\n  - **Command**: `create_account --name {customer_name} --email {customer_email}`\n  - **Hook**: `post_email_sent`\n```\n\n2. **Configure MCP Servers**: Update your MCP server configuration to include the following:\n```json\n{\n  \"hooks\": {\n    \"post_customer_creation\": {\n      \"type\": \"webhook\",\n      \"url\": \"https://api.yourplatform.com/onboarding/start\"\n    }\n  }\n}\n```\n\n3. **Implement Commands**: Create single-purpose chats for each command. For example, the `send_email` command chat should:\n- Accept `template` and `recipient` parameters\n- Use your email service's API to send the email\n- Return a success/failure status\n\n4. **Test Your Workflow**: Trigger the onboarding process and verify that each task is executed in the correct order. Monitor the MCP server logs for any errors.\n\nBy following these steps, you'll have a streamlined customer onboarding process that leverages Claude Code Mastery for automation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:05:52.638480Z",
+    "http_status": 200,
+    "content_hash": "a87a9379898ac7a9e92c27be93c4c76cab29f9afe669fa93efd67c419a303590",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mastery.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mastery.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code mastery: detailed claude guide",
+  "short_description_vi": "Claude Code Mastery enables operations teams to optimize Claude Code for automation. It covers CLAUDE.md, MCP servers, commands, and hooks. Teams can streamline workflows and improve efficiency by leveraging single-purpose chats."
+}

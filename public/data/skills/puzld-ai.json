@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/puzld-ai",
+  "slug": "puzld-ai",
+  "name": "Puzld.ai",
+  "headline": "Puzld.ai - Multi-LLM Orchestration",
+  "short_description": "Puzld.ai is a multi-LLM orchestration framework that enables agentic execution, memory, and training data generation. It benefits operations teams by automating complex workflows and integrating with AI agents like Claude. The framework connects to various LLMs and tools, streamlining business processes and enhancing productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "MedChaouch",
+  "install_command": "git clone https://github.com/MedChaouch/Puzld.ai.git",
+  "source_repo_url": "https://github.com/MedChaouch/Puzld.ai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai",
+    "claude-code",
+    "codex",
+    "ai-agents",
+    "gemini-cli",
+    "llm",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "Puzld.ai is a terminal-native framework for orchestrating multiple AI agents including Claude, Gemini, Codex, Ollama, and Mistral. It automatically routes tasks to the best agent, chains agents in pipelines for multi-step workflows, and provides agentic mode where LLMs can explore your codebase, propose file edits, and request permission before applying changes. The framework includes memory and RAG capabilities to store decisions and code for future context, an observation layer that logs interactions for training data generation, and comparison modes to run multiple agents in parallel and see different perspectives. Puzld.ai supports workflows, autopilot planning, multi-agent collaboration (correct, debate, consensus modes), and full codebase indexing with AST parsing and semantic search.\nCompare responses from Claude and Gemini side-by-side for research and coding tasks\nChain multiple agents in pipelines: analyze with Gemini, then code with Claude, then review\nLet LLMs safely explore and edit files in your codebase with permission prompts\nGenerate training data from agent interactions and observations for fine-tuning",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MedChaouch/Puzld.ai`",
+    "usage": "```\nUse Puzld.ai to automate [WORKFLOW_NAME] for [TEAM_OR_DEPARTMENT]. The workflow involves [STEP_1], followed by [STEP_2], and concludes with [STEP_3]. Configure the orchestration to handle [EDGE_CASES_OR_ERRORS] and integrate with [TOOLS_OR_APIS]. Generate a step-by-step execution plan with error-handling strategies and success metrics.\n```\nCopy\n\n```\nPuzld.ai orchestration for automating the 'Customer Onboarding' workflow in the Sales Operations team has been successfully executed. The workflow consisted of three core steps: (1) **Data Validation** – Puzld.ai first validated the incoming customer data from Salesforce against the CRM’s required fields, flagging 12 records with missing or inconsistent data (e.g., invalid email formats or unpopulated account types). These were routed to a human reviewer for correction. (2) **Document Generation** – For the 88 valid records, Puzld.ai triggered the generation of personalized onboarding documents using a fine-tuned LLM model. The documents included a welcome letter, contract summary, and setup checklist, all generated in under 2 minutes per customer. (3) **Integration & Notification** – The generated documents were automatically saved to SharePoint, and a Slack notification was sent to the assigned account manager with a direct link to the folder. The entire process ran in 47 minutes for 100 customers, reducing manual effort by 70%. Error handling included retry logic for API timeouts and a fallback to a secondary LLM model if the primary model failed to generate a document. Success metrics: 95% automation rate, 0% data errors in final output, and 100% customer documents delivered within 24 hours of onboarding initiation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "puzld-ai#main-content",
+      "puzld-ai#overview",
+      "puzld-ai#setup",
+      "puzld-ai#examples",
+      "puzld-ai#tools",
+      "puzld-ai#mcp",
+      "puzld-ai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Puzld.ai is a terminal-native framework for orchestrating multiple AI agents including Claude, Gemini, Codex, Ollama, and Mistral. It automatically routes tasks to the best agent, chains agents in pipelines for multi-step workflows, and provides agentic mode where LLMs can explore your codebase, propose file edits, and request permission before applying changes. The framework includes memory and RAG capabilities to store decisions and code for future context, an observation layer that logs interactions for training data generation, and comparison modes to run multiple agents in parallel and see different perspectives. Puzld.ai supports workflows, autopilot planning, multi-agent collaboration (correct, debate, consensus modes), and full codebase indexing with AST parsing and semantic search.\nCompare responses from Claude and Gemini side-by-side for research and coding tasks\nChain multiple agents in pipelines: analyze with Gemini, then code with Claude, then review\nLet LLMs safely explore and edit files in your codebase with permission prompts\nGenerate training data from agent interactions and observations for fine-tuning",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MedChaouch/Puzld.ai`",
+    "usage_vi": "```\nUse Puzld.ai to automate [WORKFLOW_NAME] for [TEAM_OR_DEPARTMENT]. The workflow involves [STEP_1], followed by [STEP_2], and concludes with [STEP_3]. Configure the orchestration to handle [EDGE_CASES_OR_ERRORS] and integrate with [TOOLS_OR_APIS]. Generate a step-by-step execution plan with error-handling strategies and success metrics.\n```\nCopy\n\n```\nPuzld.ai orchestration for automating the 'Customer Onboarding' workflow in the Sales Operations team has been successfully executed. The workflow consisted of three core steps: (1) **Data Validation** – Puzld.ai first validated the incoming customer data from Salesforce against the CRM’s required fields, flagging 12 records with missing or inconsistent data (e.g., invalid email formats or unpopulated account types). These were routed to a human reviewer for correction. (2) **Document Generation** – For the 88 valid records, Puzld.ai triggered the generation of personalized onboarding documents using a fine-tuned LLM model. The documents included a welcome letter, contract summary, and setup checklist, all generated in under 2 minutes per customer. (3) **Integration & Notification** – The generated documents were automatically saved to SharePoint, and a Slack notification was sent to the assigned account manager with a direct link to the folder. The entire process ran in 47 minutes for 100 customers, reducing manual effort by 70%. Error handling included retry logic for API timeouts and a fallback to a secondary LLM model if the primary model failed to generate a document. Success metrics: 95% automation rate, 0% data errors in final output, and 100% customer documents delivered within 24 hours of onboarding initiation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:12.528305Z",
+    "http_status": 200,
+    "content_hash": "432b2b69a516783caf7c1326f29ce48230cf12c3251f4808548316616b0453fa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\puzld-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\puzld-ai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Puzld.ai - Multi-LLM Orchestration",
+  "short_description_vi": "Puzld.ai is a multi-LLM orchestration framework that enables agentic execution, memory, and training data generation. It benefits operations teams by automating complex workflows and integrating with AI agents like Claude. The framework connects to various LLMs and tools, streamlining business processes and enhancing productivity."
+}

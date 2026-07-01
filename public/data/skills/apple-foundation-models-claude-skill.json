@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/apple-foundation-models-claude-skill",
+  "slug": "apple-foundation-models-claude-skill",
+  "name": "apple_foundation_models_claude_skill",
+  "headline": "apple foundation models skill for AI automation",
+  "short_description": "Automate AI tasks on Apple devices using Claude. Developers build on-device AI capabilities for iOS 26+ and macOS 26+ with Python. Integrates with Apple's Foundation Models framework.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Eyadkelleh",
+  "install_command": "git clone https://github.com/Eyadkelleh/apple_foundation_models_claude_skill.git",
+  "source_repo_url": "https://github.com/Eyadkelleh/apple_foundation_models_claude_skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill provides comprehensive documentation for integrating Apple's Foundation Models framework into iOS, iPadOS, macOS, and visionOS applications. It guides developers through implementing on-device language model inference using SystemLanguageModel, managing conversations with LanguageModelSession, and building advanced patterns including guided generation for structured outputs, tool calling for custom capabilities, and streaming responses. The skill covers critical implementation topics such as prompting strategies, safety guardrails, localization support, and performance optimization. Developers gain access to complete API reference documentation, code examples, and best practices for deploying privacy-first AI features that run entirely on-device without external API calls or data transmission.\nBuilding privacy-first text generation features in iOS apps with on-device inference\nImplementing guided generation to extract structured data from user input\nCreating tool-calling integrations that extend model capabilities with custom functions\nDeveloping multilingual AI features with localization support",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Eyadkelleh/apple_foundation_models_claude_skill`",
+    "usage": "```\nI'm developing an iOS 26+ app for [COMPANY] in the [INDUSTRY] sector. I need to automate [SPECIFIC TASK] using Claude's capabilities through Apple's Foundation Models framework. Provide a Python code snippet that integrates Claude with my app, focusing on [KEY FEATURE] to ensure [DESIRED OUTCOME].\n```\nCopy\n\n```\n```python\n# Import necessary libraries\nfrom apple.foundation_models import FoundationModel\nfrom apple.foundation_models.claude import Claude\n\n# Initialize Claude model\nclaude_model = FoundationModel(\n    model_name=\"claude\",\n    model_path=\"/path/to/claude/model\"\n)\n\n# Define the task automation function\ndef automate_task(input_data):\n    # Process input data\n    processed_data = preprocess_data(input_data)\n    \n    # Use Claude for task automation\n    result = claude_model.predict(\n        prompt=f\"Automate {processed_data} for {company_name}\"\n    )\n    \n    # Return the result\n    return result\n\n# Example usage\ncompany_name = \"TechSolutions Inc.\"\ninput_data = \"customer support tickets\"\nautomate_task(input_data)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "apple-foundation-models-claude-skill#main-content",
+      "apple-foundation-models-claude-skill#overview",
+      "apple-foundation-models-claude-skill#setup",
+      "apple-foundation-models-claude-skill#examples",
+      "apple-foundation-models-claude-skill#tools",
+      "apple-foundation-models-claude-skill#mcp",
+      "apple-foundation-models-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này cung cấp tài liệu hướng dẫn toàn diện để tích hợp framework Foundation Models của Apple vào các ứng dụng iOS, iPadOS, macOS và visionOS. Tài liệu sẽ hướng dẫn lập trình viên cách triển khai inference mô hình ngôn ngữ on-device bằng SystemLanguageModel, quản lý các cuộc hội thoại với LanguageModelSession, và xây dựng các pattern nâng cao bao gồm guided generation để tạo output có cấu trúc, tool calling cho các tính năng tùy chỉnh, và streaming phản hồi. Skill này cũng đề cập đến các chủ đề triển khai quan trọng như chiến lược prompting, cơ chế kiểm duyệt an toàn (safety guardrails), hỗ trợ bản địa hóa (localization), và tối ưu hóa hiệu năng. Lập trình viên sẽ được tiếp cận tài liệu tham khảo API đầy đủ, các ví dụ code và các best practice để triển khai những tính năng AI ưu tiên quyền riêng tư, chạy hoàn toàn on-device mà không cần gọi API bên ngoài hay truyền dữ liệu ra ngoài.\nXây dựng các tính năng tạo văn bản ưu tiên quyền riêng tư trong ứng dụng iOS bằng inference on-device\nTriển khai guided generation để trích xuất dữ liệu có cấu trúc từ input của người dùng\nTạo các tích hợp tool-calling giúp mở rộng khả năng của mô hình bằng các hàm tùy chỉnh\nPhát triển các tính năng AI đa ngôn ngữ với sự hỗ trợ bản địa hóa (localization)",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Eyadkelleh/apple_foundation_models_claude_skill`",
+    "usage_vi": "```\nTôi đang phát triển một ứng dụng iOS 26+ cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tôi cần tự động hóa [SPECIFIC TASK] bằng cách sử dụng các khả năng của Claude thông qua framework Foundation Models của Apple. Hãy cung cấp một đoạn code Python tích hợp Claude vào ứng dụng của tôi, tập trung vào [KEY FEATURE] để đảm bảo [DESIRED OUTCOME].\n```\nCopy\n\n```python\n# Import các thư viện cần thiết\nfrom apple.foundation_models import FoundationModel\nfrom apple.foundation_models.claude import Claude\n\n# Khởi tạo mô hình Claude\nclaude_model = FoundationModel(\n    model_name=\"claude\",\n    model_path=\"/path/to/claude/model\"\n)\n\n# Định nghĩa hàm tự động hóa tác vụ\ndef automate_task(input_data):\n    # Xử lý dữ liệu đầu vào\n    processed_data = preprocess_data(input_data)\n    \n    # Sử dụng Claude để tự động hóa tác vụ\n    result = claude_model.predict(\n        prompt=f\"Automate {processed_data} for {company_name}\"\n    )\n    \n    # Trả về kết quả\n    return result\n\n# Ví dụ sử dụng\ncompany_name = \"TechSolutions Inc.\"\ninput_data = \"customer support tickets\"\nautomate_task(input_data)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:20.339535Z",
+    "http_status": 200,
+    "content_hash": "02893424a3f5222bb0d7e6e13c4262702a48458ece5f28dd142e1b17647ac62e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apple-foundation-models-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apple-foundation-models-claude-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill Apple Foundation Models dành cho tự động hóa AI",
+  "short_description_vi": "Tự động hóa các tác vụ AI trên thiết bị Apple bằng Claude. Lập trình viên có thể xây dựng các tính năng AI on-device cho iOS 26+ và macOS 26+ bằng Python. Tích hợp trực tiếp với framework Foundation Models của Apple."
+}

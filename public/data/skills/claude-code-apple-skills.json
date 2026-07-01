@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-apple-skills",
+  "slug": "claude-code-apple-skills",
+  "name": "Claude Code Apple Skills",
+  "headline": "Claude Code's Apple automation skills",
+  "short_description": "AI automation skill for Apple platform development. Helps plan and build apps, maintain code quality, and ensure HIG compliance. Benefits developers and operations teams working on iOS and macOS applications.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "rshankras",
+  "install_command": "git clone https://github.com/rshankras/claude-code-apple-skills.git",
+  "source_repo_url": "https://github.com/rshankras/claude-code-apple-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code Apple Skills is a comprehensive collection of 139 specialized skills organized across 23 categories for Apple platform development. It provides generators for production-ready Swift code, product workflow skills from idea validation to App Store launch, and platform-specific tools for iOS, macOS, watchOS, and visionOS. The skill set includes code review, UI review, testing infrastructure, accessibility guidance, performance profiling, security patterns, and App Store optimization support. Developers can request code generation for common features like authentication, analytics, networking, subscriptions, and widgets, while also accessing tools for app planning, HIG compliance checks, and release audits. Installation copies skills to Claude Code or global Cursor configuration for immediate access.\nGenerate production-ready Swift code for auth flows, networking layers, analytics, and subscriptions\nPlan and validate app ideas from concept through App Store submission\nReview iOS and macOS code for quality, accessibility, and HIG compliance\nBuild features across iOS, macOS, watchOS, and visionOS platforms",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rshankras/claude-code-apple-skills`",
+    "usage": "```\nAct as an expert Apple platform developer and use claude-code to help me [TASK]. For example: 'Plan the architecture for a new iOS app that tracks local hiking trails with offline maps and AR features. Include a modular design, recommended SwiftUI components, and Core Data schema.' Provide code snippets, file structure, and implementation steps. Focus on HIG compliance and performance optimizations for Apple Silicon.\n```\nCopy\n\n```\nHere’s a modular architecture plan for your hiking trail app, designed for iOS 17+ and optimized for Apple Silicon (M-series chips). The app will use SwiftUI for UI, Core Data for offline maps, and RealityKit for AR trail visualization. \n\n**Project Structure:**\n```\nHikeTrailApp/\n├── Core/\n│   ├── Models/Trail.swift (Encodable/Decodable for Core Data)\n│   ├── Services/LocationManager.swift (CLLocationManager wrapper)\n│   └── Utilities/HapticFeedback.swift\n├── Features/\n│   ├── MapView/MapView.swift (MKMapView + Core Data integration)\n│   ├── ARTrailView/ARTrailView.swift (RealityKit scene)\n│   └── TrailList/TrailListView.swift (List with filters)\n├── Resources/\n│   ├── Assets.xcassets (HIG-compliant icons/colors)\n│   └── Preview Content/\n└── HikeTrailApp.swift (App entry point with dependency injection)\n```\n\n**Key Implementations:**\n1. **Offline Maps:** Core Data will cache trail data with `@FetchRequest` for efficient retrieval. Use `NSPersistentContainer` with background context merging to avoid UI freezes.\n2. **AR Trail Visualization:** RealityKit’s `ARView` will overlay 3D trail markers. Preload 3D assets to reduce runtime stuttering on older devices. \n3. **HIG Compliance:** \n   - Use `SF Symbols` for all icons (e.g., `figure.hiking` for trail difficulty).\n   - Implement dynamic type scaling in `MapView` with `UIFontMetrics`.\n   - Add haptic feedback for AR interactions via `UIImpactFeedbackGenerator`.\n\n**Performance Optimizations:**\n- Enable Metal API validation in `Info.plist` for AR debugging.\n- Use `DispatchQueue.global(qos: .userInitiated)` for heavy Core Data operations.\n- Profile with Xcode’s Metal System Trace tool to identify GPU bottlenecks in AR scenes.\n\n**Next Steps:**\n1. Create a new SwiftUI project in Xcode and add the folder structure above.\n2. Implement `Trail.swift` with Core Data attributes (e.g., `name`, `distance`, `elevationGain`).\n3. Set up a basic `MapView` with `MKMapView` and test offline caching with a small dataset.\n\nWould you like me to generate the Core Data model file or the `ARTrailView` boilerplate next?\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-apple-skills#main-content",
+      "claude-code-apple-skills#overview",
+      "claude-code-apple-skills#setup",
+      "claude-code-apple-skills#examples",
+      "claude-code-apple-skills#tools",
+      "claude-code-apple-skills#mcp",
+      "claude-code-apple-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Apple Skills là bộ sưu tập toàn diện gồm 139 kỹ năng chuyên biệt được tổ chức thành 23 danh mục dành cho việc phát triển ứng dụng trên nền tảng Apple. Bộ công cụ này cung cấp khả năng tự động tạo code Swift sẵn sàng cho production, tối ưu hóa quy trình phát triển sản phẩm từ bước xác thực ý tưởng đến khi phát hành trên App Store, cùng các công cụ chuyên biệt cho iOS, macOS, watchOS và visionOS. Bộ kỹ năng bao gồm review code, review UI, thiết lập hạ tầng kiểm thử, hướng dẫn về khả năng tiếp cận (accessibility), đo kiểm hiệu năng (performance profiling), các pattern bảo mật và hỗ trợ tối ưu hóa App Store (ASO). Lập trình viên có thể yêu cầu tạo code cho các tính năng phổ biến như xác thực (auth), phân tích (analytics), kết nối mạng (networking), đăng ký thuê bao (subscriptions) và widget, đồng thời truy cập các công cụ để lập kế hoạch ứng dụng, kiểm tra tuân thủ HIG và kiểm định phát hành (release audit). Quá trình cài đặt sẽ sao chép các kỹ năng vào Claude Code hoặc cấu hình Cursor toàn cục để có thể sử dụng ngay lập tức.\nTạo code Swift sẵn sàng cho production cho các luồng xác thực, tầng mạng (networking layers), phân tích dữ liệu và đăng ký thuê bao\nLập kế hoạch và xác thực ý tưởng ứng dụng từ giai đoạn sơ khởi cho đến khi gửi lên App Store\nReview code iOS và macOS để đảm bảo chất lượng, khả năng tiếp cận và tuân thủ HIG\nXây dựng các tính năng trên các nền tảng iOS, macOS, watchOS và visionOS",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/rshankras/claude-code-apple-skills`",
+    "usage_vi": "```\nĐóng vai là một lập trình viên chuyên nghiệp trên nền tảng Apple và sử dụng claude-code để giúp tôi [TASK]. Ví dụ: 'Lập kế hoạch kiến trúc cho một ứng dụng iOS mới giúp theo dõi các đường mòn leo núi địa phương với bản đồ ngoại tuyến (offline maps) và các tính năng AR. Bao gồm thiết kế mô-đun (modular design), các component SwiftUI được đề xuất và schema Core Data.' Cung cấp các đoạn code snippet, cấu trúc thư mục và các bước triển khai. Tập trung vào việc tuân thủ HIG và tối ưu hóa hiệu năng cho Apple Silicon.\n```\nCopy\n\n```\nDưới đây là kế hoạch kiến trúc dạng mô-đun cho ứng dụng theo dõi đường mòn leo núi của bạn, được thiết kế cho iOS 17+ và tối ưu hóa cho Apple Silicon (chip dòng M). Ứng dụng sẽ sử dụng SwiftUI cho giao diện (UI), Core Data cho bản đồ ngoại tuyến và RealityKit để trực quan hóa đường đi bằng AR. \n\n**Cấu trúc dự án:**\n```\nHikeTrailApp/\n├── Core/\n│   ├── Models/Trail.swift (Encodable/Decodable cho Core Data)\n│   ├── Services/LocationManager.swift (CLLocationManager wrapper)\n│   └── Utilities/HapticFeedback.swift\n├── Features/\n│   ├── MapView/MapView.swift (Tích hợp MKMapView + Core Data)\n│   ├── ARTrailView/ARTrailView.swift (RealityKit scene)\n│   └── TrailList/TrailListView.swift (Danh sách kèm bộ lọc)\n├── Resources/\n│   ├── Assets.xcassets (Icon/màu sắc tuân thủ HIG)\n│   └── Preview Content/\n└── HikeTrailApp.swift (App entry point với dependency injection)\n```\n\n**Các triển khai chính:**\n1. **Bản đồ ngoại tuyến (Offline Maps):** Core Data sẽ cache dữ liệu đường đi bằng `@FetchRequest` để truy xuất hiệu quả. Sử dụng `NSPersistentContainer` với background context merging nhằm tránh tình trạng đơ UI.\n2. **Trực quan hóa đường đi bằng AR:** `ARView` của RealityKit sẽ phủ các điểm đánh dấu đường đi 3D. Hãy tải trước (preload) các asset 3D để giảm thiểu tình trạng giật lag khi ứng dụng chạy trên các thiết bị cũ. \n3. **Tuân thủ HIG:** \n   - Sử dụng `SF Symbols` cho tất cả các icon (ví dụ: `figure.hiking` cho mức độ khó của đường đi).\n   - Triển khai mở rộng cỡ chữ linh hoạt (dynamic type scaling) trong `MapView` bằng `UIFontMetrics`.\n   - Thêm phản hồi xúc giác (haptic feedback) cho các tương tác AR qua `UIImpactFeedbackGenerator`.\n\n**Tối ưu hóa hiệu năng:**\n- Bật Metal API validation trong `Info.plist` để debug AR.\n- Sử dụng `DispatchQueue.global(qos: .userInitiated)` cho các tác vụ Core Data nặng.\n- Profile (đo hiệu năng) bằng công cụ Metal System Trace của Xcode để xác định các điểm nghẽn (bottleneck) GPU trong các phân cảnh AR.\n\n**Các bước tiếp theo:**\n1. Tạo một dự án SwiftUI mới trong Xcode và tạo cấu trúc thư mục như trên.\n2. Triển khai `Trail.swift` với các thuộc tính Core Data (ví dụ: `name`, `distance`, `elevationGain`).\n3. Thiết lập một `MapView` cơ bản với `MKMapView` và kiểm tra tính năng cache ngoại tuyến với một tập dữ liệu nhỏ.\n\nBạn có muốn tôi tạo file model Core Data hoặc code boilerplate cho `ARTrailView` tiếp theo không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:46:41.406018Z",
+    "http_status": 200,
+    "content_hash": "af8a06a94af788ef53539bcea649ca3490755335d74662df3ec398f1b4d3d85b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-apple-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-apple-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ kỹ năng tự động hóa Apple của Claude Code",
+  "short_description_vi": "Kỹ năng tự động hóa bằng AI dành cho việc phát triển ứng dụng trên nền tảng Apple. Hỗ trợ lập kế hoạch, xây dựng ứng dụng, duy trì chất lượng code và đảm bảo tuân thủ HIG. Mang lại lợi ích thiết thực cho các nhà phát triển và đội ngũ vận hành dự án iOS và macOS."
+}

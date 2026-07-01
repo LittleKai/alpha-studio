@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-cheat-sheet",
+  "slug": "claude-code-cheat-sheet",
+  "name": "Claude Code Cheat Sheet",
+  "headline": "claude code cheat sheet for quick mastery",
+  "short_description": "A collection of Claude Code tips, tricks, and workflows to help operations teams automate tasks. Benefits users who need to quickly master Claude Code for business applications. Connects to Claude AI and Claude API.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "Njengah",
+  "install_command": "git clone https://github.com/Njengah/claude-code-cheat-sheet.git",
+  "source_repo_url": "https://github.com/Njengah/claude-code-cheat-sheet",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-desktop",
+    "claudecode",
+    "claude-3",
+    "claudecode-mcp",
+    "claude-api",
+    "claude",
+    "claude-3-opus",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Code Cheat Sheet is a structured resource organized across six skill levels—from basic commands through master-level techniques—designed to accelerate learning for users new to Claude Code. The guide covers installation, interactive REPL usage, and progressive command complexity, enabling operations teams and developers to quickly adopt Claude Code for automation tasks. It includes subagents documentation for deploying specialized AI agents in development workflows. Users can reference specific command categories by skill level rather than learning sequentially, making it practical for both beginners and experienced developers seeking advanced techniques. The cheat sheet includes interactive setup instructions and version management to ensure users start correctly.\nQuickly install and set up Claude Code for immediate use.\nAutomate code reviews by generating security and performance reports from git diffs.\nCreate custom commands to streamline repetitive tasks in your development workflow.\nIntegrate Claude Code with CI/CD pipelines for automated testing and deployment.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Njengah/claude-code-cheat-sheet`",
+    "usage": "```\nGenerate a Claude Code cheat sheet for automating [TASK_TYPE] in [BUSINESS_CONTEXT]. Include: 1) Essential commands for [SPECIFIC_ACTION], 2) Error handling patterns for [COMMON_ISSUE], 3) Performance optimization tips for [SCALABILITY_NEED]. Format as a markdown table with columns: Command, Description, Example, Best Practices.\n```\nCopy\n\n```\n### Claude Code Cheat Sheet: Automating CSV Data Processing for Sales Operations\n\n| **Command**               | **Description**                          | **Example**                                                                 | **Best Practices**                          |\n|---------------------------|------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------|\n| `read_csv()`              | Load CSV files into DataFrames           | `df = read_csv(\"sales_data.csv\", parse_dates=[\"order_date\"])`            | Use `dtype` to optimize memory usage        |\n| `group_by()` + `agg()`    | Aggregate sales by region                | `df.groupby(\"region\")[\"revenue\"].agg([\"sum\", \"mean\"])`                | Filter data before aggregation for speed    |\n| `to_csv()`                | Export processed data                    | `df.to_csv(\"processed_sales.csv\", index=False)`                           | Set `index=False` to avoid redundant columns|\n| `apply()`                 | Custom transformations                   | `df[\"discounted_revenue\"] = df.apply(lambda x: x[\"revenue\"] * 0.9, axis=1)` | Use vectorized operations when possible     |\n| `merge()`                 | Combine sales with customer data         | `merged = df.merge(customers_df, on=\"customer_id\", how=\"left\")`          | Specify `how=\"left\"` to preserve all sales |\n\n**Error Handling:**\n- Use `try-except` blocks for file operations:\n```python\ntry:\n    df = read_csv(\"missing_file.csv\")\nexcept FileNotFoundError:\n    print(\"File not found. Check path.\")\n```\n\n**Performance Tips:**\n- For large datasets, use `chunksize` in `read_csv()`\n- Filter columns early: `df[[\"col1\", \"col2\"]]`\n- Use `dask` for out-of-memory datasets\n\n**Workflow Integration:**\n1. Schedule with `cron` (Linux/macOS) or Task Scheduler (Windows)\n2. Log errors to `error_log.txt`\n3. Send completion email via `smtplib`\n```python\nimport smtplib\nfrom email.message import EmailMessage\n\nmsg = EmailMessage()\nmsg.set_content(\"Sales data processing completed successfully.\")\nmsg[\"Subject\"] = \"Sales Data Update\"\nmsg[\"From\"] = \"ops@company.com\"\nmsg[\"To\"] = \"manager@company.com\"\n\nwith smtplib.SMTP(\"smtp.company.com\", 587) as server:\n    server.starttls()\n    server.login(\"user\", \"pass\")\n    server.send_message(msg)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-cheat-sheet#main-content",
+      "claude-code-cheat-sheet#overview",
+      "claude-code-cheat-sheet#setup",
+      "claude-code-cheat-sheet#examples",
+      "claude-code-cheat-sheet#tools",
+      "claude-code-cheat-sheet#mcp",
+      "claude-code-cheat-sheet#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Cheat Sheet là tài liệu tra cứu có cấu trúc được sắp xếp theo sáu cấp độ kỹ năng—từ các lệnh cơ bản đến các kỹ thuật bậc thầy—được thiết kế để tăng tốc quá trình học cho người mới bắt đầu sử dụng Claude Code. Tài liệu hướng dẫn chi tiết về cài đặt, cách sử dụng REPL tương tác và nâng cao dần độ phức tạp của câu lệnh, giúp các đội ngũ vận hành và nhà phát triển nhanh chóng áp dụng Claude Code vào các tác vụ tự động hóa. Tài liệu cũng bao gồm phần hướng dẫn về subagents để triển khai các AI agent chuyên biệt vào workflow phát triển phần mềm. Người dùng có thể tham khảo trực tiếp các nhóm lệnh cụ thể theo cấp độ kỹ năng thay vì phải học tuần tự, tạo sự tiện lợi cho cả người mới bắt đầu lẫn các lập trình viên giàu kinh nghiệm đang tìm kiếm kỹ thuật nâng cao. Cheat sheet này cung cấp các hướng dẫn setup tương tác và quản lý phiên bản để đảm bảo người dùng bắt đầu đúng cách.\nCài đặt và setup nhanh Claude Code để sử dụng ngay lập tức.\nTự động hóa việc review code bằng cách tạo các báo cáo hiệu năng và bảo mật từ git diff.\nTạo các lệnh tùy chỉnh để tối ưu hóa các tác vụ lặp đi lặp lại trong workflow phát triển của bạn.\nTích hợp Claude Code vào CI/CD pipeline để tự động hóa việc kiểm thử và triển khai.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Njengah/claude-code-cheat-sheet`",
+    "usage_vi": "```\nTạo một Claude Code cheat sheet để tự động hóa [TASK_TYPE] trong [BUSINESS_CONTEXT]. Bao gồm: 1) Các lệnh thiết yếu cho [SPECIFIC_ACTION], 2) Các mẫu xử lý lỗi cho [COMMON_ISSUE], 3) Các mẹo tối ưu hóa hiệu năng cho [SCALABILITY_NEED]. Định dạng dưới dạng bảng markdown với các cột: Command, Description, Example, Best Practices.\n```\nSao chép\n\n```\n### Claude Code Cheat Sheet: Tự động hóa xử lý dữ liệu CSV cho hoạt động bán hàng (Sales Operations)\n\n| **Command**               | **Description**                          | **Example**                                                                 | **Best Practices**                          |\n|---------------------------|------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------|\n| `read_csv()`              | Tải file CSV vào DataFrame               | `df = read_csv(\"sales_data.csv\", parse_dates=[\"order_date\"])`            | Sử dụng `dtype` để tối ưu hóa bộ nhớ        |\n| `group_by()` + `agg()`    | Gom nhóm doanh thu theo khu vực          | `df.groupby(\"region\")[\"revenue\"].agg([\"sum\", \"mean\"])`                | Lọc dữ liệu trước khi gom nhóm để tăng tốc  |\n| `to_csv()`                | Xuất dữ liệu đã xử lý                    | `df.to_csv(\"processed_sales.csv\", index=False)`                           | Thiết lập `index=False` để tránh các cột thừa|\n| `apply()`                 | Biến đổi dữ liệu tùy chỉnh                | `df[\"discounted_revenue\"] = df.apply(lambda x: x[\"revenue\"] * 0.9, axis=1)` | Sử dụng các phép toán vector hóa khi có thể |\n| `merge()`                 | Kết hợp doanh số với dữ liệu khách hàng  | `merged = df.merge(customers_df, on=\"customer_id\", how=\"left\")`          | Chỉ định `how=\"left\"` để giữ lại toàn bộ dữ liệu bán hàng |\n\n**Xử lý lỗi (Error Handling):**\n- Sử dụng các khối `try-except` cho các thao tác tệp tin:\n```python\ntry:\n    df = read_csv(\"missing_file.csv\")\nexcept FileNotFoundError:\n    print(\"Không tìm thấy tệp. Vui lòng kiểm tra lại đường dẫn.\")\n```\n\n**Mẹo tối ưu hiệu năng:**\n- Đối với các tập dữ liệu lớn, sử dụng `chunksize` trong `read_csv()`\n- Lọc các cột từ sớm: `df[[\"col1\", \"col2\"]]`\n- Sử dụng `dask` cho các tập dữ liệu vượt quá dung lượng bộ nhớ (out-of-memory)\n\n**Tích hợp Workflow:**\n1. Lên lịch với `cron` (Linux/macOS) hoặc Task Scheduler (Windows)\n2. Ghi nhật ký lỗi vào `error_log.txt`\n3. Gửi email thông báo hoàn thành qua `smtplib`\n```python\nimport smtplib\nfrom email.message import EmailMessage\n\nmsg = EmailMessage()\nmsg.set_content(\"Quá trình xử lý dữ liệu bán hàng đã hoàn tất thành công.\")\nmsg[\"Subject\"] = \"Cập nhật dữ liệu bán hàng\"\nmsg[\"From\"] = \"ops@company.com\"\nmsg[\"To\"] = \"manager@company.com\"\n\nwith smtplib.SMTP(\"smtp.company.com\", 587) as server:\n    server.starttls()\n    server.login(\"user\", \"pass\")\n    server.send_message(msg)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:20:37.484112Z",
+    "http_status": 200,
+    "content_hash": "cda721dd5ff6981ca93b8613773e0a3b8ea390d73a878289b2f18ff5ee1301bf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-cheat-sheet.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-cheat-sheet.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code cheat sheet giúp làm chủ nhanh chóng",
+  "short_description_vi": "Bộ tổng hợp các mẹo, thủ thuật và workflow của Claude Code giúp các đội ngũ vận hành tự động hóa tác vụ. Mang lại lợi ích cho người dùng cần nhanh chóng làm chủ Claude Code trong các ứng dụng doanh nghiệp. Kết nối trực tiếp với Claude AI và Claude API."
+}

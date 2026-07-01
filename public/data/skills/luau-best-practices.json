@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/luau-best-practices",
+  "slug": "luau-best-practices",
+  "name": "cocos-creator-3x-cn",
+  "headline": "Luau Best Practices: Clean Code Patterns for Roblox",
+  "short_description": "This skill provides best practices for coding in Luau, aimed at Roblox game developers. It emphasizes server authority, clear code intent, and efficient validations.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "dig1t",
+  "install_command": "git clone https://github.com/dig1t/skills",
+  "source_repo_url": "https://github.com/dig1t/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "best",
+    "practices",
+    "game-development",
+    "luau"
+  ],
+  "sections": {
+    "overview": "This skill provides production-quality patterns for Luau development on Roblox. It guides you through core principles like server authority, fail-fast validation, and explicit code intent, with concrete examples for naming conventions, file organization, module patterns, and error handling. The skill covers critical topics including pcall usage for external APIs, memory leak prevention with maids and weak references, and server-authoritative security practices with input validation and rate limiting. Use it when writing new modules, reviewing code quality, setting up project structure, implementing error handling, or refactoring existing code. It helps Roblox developers follow Roblox-specific conventions and avoid common anti-patterns like deprecated async functions and inefficient loops.\nImprove code quality in Roblox games\nEstablish clear coding guidelines\nEnhance collaboration among developers",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/dig1t/skills --skill luau-best-practices`\n`git clone https://github.com/dig1t/skills`",
+    "usage": "```\nProvide Luau best practices for [ROBLOX_GAME] in [GAME_SECTION], focusing on [SPECIFIC_ISSUE]. Include examples of efficient validations and server authority patterns.\n```\nCopy\n\n```\n### Luau Best Practices for [ROBLOX_GAME] - [GAME_SECTION]\n\n#### **1. Server Authority & Validation**\n✅ **Do:** Use `ServerScriptService` for critical logic to prevent client exploits.\n```lua\n-- Server-side validation example\nlocal Players = game:GetService(\"Players\")\nPlayers.PlayerAdded:Connect(function(player)\n    if player.UserId == 123456789 then -- Admin check\n        player:SetAttribute(\"IsAdmin\", true)\n    end\nend)\n```\n\n❌ **Avoid:** Trusting client-side inputs for game-critical systems (e.g., currency, inventory).\n\n#### **2. Clear Intent with Type Annotations**\n✅ **Do:** Use Luau type checking to document and enforce expected data shapes.\n```lua\ntype PlayerStats = {\n    Health: number,\n    Coins: number,\n    Inventory: { Item: string }\n}\nlocal function updateStats(player: Player, stats: PlayerStats)\n    -- Logic here\nend\n```\n\n#### **3. Efficient Event Handling**\n✅ **Do:** Debounce rapid events (e.g., clicks) to reduce server load.\n```lua\nlocal debounce = false\nlocal function onClick(player: Player)\n    if debounce then return end\n    debounce = true\n    -- Process click\n    task.delay(0.5, function() debounce = false end)\nend\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "luau-best-practices#main-content",
+      "luau-best-practices#overview",
+      "luau-best-practices#setup",
+      "luau-best-practices#examples",
+      "luau-best-practices#related",
+      "godot-skill",
+      "cocos-creator-3x-cn"
+    ],
+    "overview_vi": "This skill provides production-quality patterns for Luau development on Roblox. It guides you through core principles like server authority, fail-fast validation, and explicit code intent, with concrete examples for naming conventions, file organization, module patterns, and error handling. The skill covers critical topics including pcall usage for external APIs, memory leak prevention with maids and weak references, and server-authoritative security practices with input validation and rate limiting. Use it when writing new modules, reviewing code quality, setting up project structure, implementing error handling, or refactoring existing code. It helps Roblox developers follow Roblox-specific conventions and avoid common anti-patterns like deprecated async functions and inefficient loops.\nImprove code quality in Roblox games\nEstablish clear coding guidelines\nEnhance collaboration among developers",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/dig1t/skills --skill luau-best-practices`\n`git clone https://github.com/dig1t/skills`",
+    "usage_vi": "```\nProvide Luau best practices for [ROBLOX_GAME] in [GAME_SECTION], focusing on [SPECIFIC_ISSUE]. Include examples of efficient validations and server authority patterns.\n```\nCopy\n\n```\n### Luau Best Practices for [ROBLOX_GAME] - [GAME_SECTION]\n\n#### **1. Server Authority & Validation**\n✅ **Do:** Use `ServerScriptService` for critical logic to prevent client exploits.\n```lua\n-- Server-side validation example\nlocal Players = game:GetService(\"Players\")\nPlayers.PlayerAdded:Connect(function(player)\n    if player.UserId == 123456789 then -- Admin check\n        player:SetAttribute(\"IsAdmin\", true)\n    end\nend)\n```\n\n❌ **Avoid:** Trusting client-side inputs for game-critical systems (e.g., currency, inventory).\n\n#### **2. Clear Intent with Type Annotations**\n✅ **Do:** Use Luau type checking to document and enforce expected data shapes.\n```lua\ntype PlayerStats = {\n    Health: number,\n    Coins: number,\n    Inventory: { Item: string }\n}\nlocal function updateStats(player: Player, stats: PlayerStats)\n    -- Logic here\nend\n```\n\n#### **3. Efficient Event Handling**\n✅ **Do:** Debounce rapid events (e.g., clicks) to reduce server load.\n```lua\nlocal debounce = false\nlocal function onClick(player: Player)\n    if debounce then return end\n    debounce = true\n    -- Process click\n    task.delay(0.5, function() debounce = false end)\nend\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:29:21.901090Z",
+    "http_status": 200,
+    "content_hash": "604d00d42a1e074f228937946f69e75ceb81bbb9dd4bf6636226c53ac0eab9b0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\luau-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\luau-best-practices.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Luau Best Practices: Clean Code Patterns for Roblox",
+  "short_description_vi": "This skill provides best practices for coding in Luau, aimed at Roblox game developers. It emphasizes server authority, clear code intent, and efficient validations."
+}

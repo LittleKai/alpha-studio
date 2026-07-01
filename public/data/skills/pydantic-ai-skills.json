@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pydantic-ai-skills",
+  "slug": "pydantic-ai-skills",
+  "name": "Pydantic AI Skills",
+  "headline": "Pydantic AI Skills - Agent Skills Framework",
+  "short_description": "Pydantic AI skill for building and managing Agent Skills. Enables AI agents to progressively discover, load, and execute specialized tasks. Supports filesystem and programmatic skills. Integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "DougTrajano",
+  "install_command": "git clone https://github.com/DougTrajano/pydantic-ai-skills.git",
+  "source_repo_url": "https://github.com/DougTrajano/pydantic-ai-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "pydantic-ai",
+    "agentic-ai",
+    "ai-agents",
+    "python",
+    "agent-framework",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "pydantic-ai-skills is a standardized framework for creating and managing Agent Skills within Pydantic AI, following the open Agent Skills specification maintained by Anthropic. It enables AI agents to progressively discover and load modular collections of instructions, scripts, and tools for domain-specific tasks, reducing token usage through lazy loading. The package supports both filesystem-based skills defined as Markdown directories and programmatic skills created with Python decorators or dataclasses. It integrates directly with Pydantic AI agents through the SkillsCapability or SkillsToolset APIs, providing type-safe skill definitions with automatic validation and built-in security features like path traversal prevention.\nBuilding research assistants that dynamically load domain-specific skills like arXiv search or web research\nCreating multi-skill agents that selectively load instructions based on task relevance\nDeveloping modular AI applications with reusable skill packages across projects\nImplementing progressive disclosure patterns to optimize token usage in agent prompts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/DougTrajano/pydantic-ai-skills`",
+    "usage": "```\nAct as a Pydantic AI skill manager. Load the following skill: [SKILL_NAME]. Execute it with the parameters: [PARAMETERS]. If the skill requires filesystem access, use the path: [FILESYSTEM_PATH]. If the skill needs to integrate with a Claude agent, include the agent's context: [AGENT_CONTEXT]. Return the output in a structured format with clear execution steps and results.\n```\nCopy\n\n```\n```json\n{\n  \"skill_name\": \"file_processor\",\n  \"execution_steps\": [\n    {\n      \"step\": 1,\n      \"action\": \"Loading skill from filesystem\",\n      \"status\": \"success\",\n      \"details\": {\n        \"path\": \"/skills/file_processor.py\",\n        \"dependencies\": [\"pandas>=1.5.0\", \"numpy>=1.23.0\"]\n      }\n    },\n    {\n      \"step\": 2,\n      \"action\": \"Validating skill parameters\",\n      \"status\": \"success\",\n      \"details\": {\n        \"input_file\": \"/data/input.csv\",\n        \"output_format\": \"json\",\n        \"chunk_size\": 1000\n      }\n    },\n    {\n      \"step\": 3,\n      \"action\": \"Executing skill logic\",\n      \"status\": \"success\",\n      \"details\": {\n        \"records_processed\": 5000,\n        \"processing_time\": \"2.3s\",\n        \"output_file\": \"/data/output.json\"\n      }\n    },\n    {\n      \"step\": 4,\n      \"action\": \"Generating execution report\",\n      \"status\": \"success\",\n      \"details\": {\n        \"total_skills_loaded\": 1,\n        \"successful_executions\": 1,\n        \"failed_executions\": 0,\n        \"validation_errors\": 0\n      }\n    }\n  ],\n  \"final_output\": {\n    \"status\": \"completed\",\n    \"result\": \"File processed successfully. Output saved to /data/output.json\",\n    \"metrics\": {\n      \"processing_speed\": \"2173.91 records/sec\",\n      \"memory_usage\": \"128MB\"\n    }\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pydantic-ai-skills#main-content",
+      "pydantic-ai-skills#overview",
+      "pydantic-ai-skills#setup",
+      "pydantic-ai-skills#examples",
+      "pydantic-ai-skills#tools",
+      "pydantic-ai-skills#mcp",
+      "pydantic-ai-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "pydantic-ai-skills là một framework chuẩn hóa để tạo và quản lý Agent Skills trong Pydantic AI, tuân theo đặc tả mở Agent Skills được duy trì bởi Anthropic. Framework này cho phép các AI agent phát hiện và tải theo tiến trình các bộ chỉ dẫn (instructions), script và công cụ dạng mô-đun cho các tác vụ chuyên biệt, giúp giảm lượng token tiêu thụ nhờ cơ chế lazy loading. Thư viện hỗ trợ cả filesystem-based skills (được định nghĩa dưới dạng thư mục Markdown) và programmatic skills (được tạo bằng Python decorator hoặc dataclass). Nó tích hợp trực tiếp với các Pydantic AI agent thông qua các API SkillsCapability hoặc SkillsToolset, cung cấp các định nghĩa skill dạng type-safe với tính năng tự động validate và các cơ chế bảo mật tích hợp sẵn như ngăn chặn path traversal.\nXây dựng các trợ lý nghiên cứu tự động tải động (dynamically load) các skill chuyên môn như tìm kiếm arXiv hoặc nghiên cứu web\nTạo các agent đa kỹ năng (multi-skill agents) tự động lọc và tải chỉ dẫn dựa trên mức độ liên quan đến tác vụ\nPhát triển các ứng dụng AI dạng mô-đun với các gói skill có thể tái sử dụng cho nhiều dự án khác nhau\nTriển khai các design pattern hiển thị thông tin lũy tiến (progressive disclosure) để tối ưu hóa lượng token sử dụng trong prompt của agent",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/DougTrajano/pydantic-ai-skills`",
+    "usage_vi": "```\nHãy đóng vai trò là một Pydantic AI skill manager. Tải skill sau: [SKILL_NAME]. Thực thi skill đó với các tham số: [PARAMETERS]. Nếu skill yêu cầu quyền truy cập filesystem, hãy sử dụng đường dẫn: [FILESYSTEM_PATH]. Nếu skill cần tích hợp với một Claude agent, hãy đính kèm context của agent: [AGENT_CONTEXT]. Trả về kết quả đầu ra dưới dạng cấu trúc với các bước thực thi và kết quả rõ ràng.\n```\nCopy\n\n```\n```json\n{\n  \"skill_name\": \"file_processor\",\n  \"execution_steps\": [\n    {\n      \"step\": 1,\n      \"action\": \"Tải skill từ filesystem\",\n      \"status\": \"success\",\n      \"details\": {\n        \"path\": \"/skills/file_processor.py\",\n        \"dependencies\": [\"pandas>=1.5.0\", \"numpy>=1.23.0\"]\n      }\n    },\n    {\n      \"step\": 2,\n      \"action\": \"Xác thực các tham số của skill\",\n      \"status\": \"success\",\n      \"details\": {\n        \"input_file\": \"/data/input.csv\",\n        \"output_format\": \"json\",\n        \"chunk_size\": 1000\n      }\n    },\n    {\n      \"step\": 3,\n      \"action\": \"Thực thi logic của skill\",\n      \"status\": \"success\",\n      \"details\": {\n        \"records_processed\": 5000,\n        \"processing_time\": \"2.3s\",\n        \"output_file\": \"/data/output.json\"\n      }\n    },\n    {\n      \"step\": 4,\n      \"action\": \"Tạo báo cáo thực thi\",\n      \"status\": \"success\",\n      \"details\": {\n        \"total_skills_loaded\": 1,\n        \"successful_executions\": 1,\n        \"failed_executions\": 0,\n        \"validation_errors\": 0\n      }\n    }\n  ],\n  \"final_output\": {\n    \"status\": \"completed\",\n    \"result\": \"Xử lý tệp thành công. Kết quả đã được lưu tại /data/output.json\",\n    \"metrics\": {\n      \"processing_speed\": \"2173.91 bản ghi/giây\",\n      \"memory_usage\": \"128MB\"\n    }\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:00:46.928526Z",
+    "http_status": 200,
+    "content_hash": "587ad8fde08d0d218344d8a509cf23831f30f0a32b4f24c28863e7c9f080162f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\pydantic-ai-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\pydantic-ai-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Pydantic AI Skills - Agent Skills Framework",
+  "short_description_vi": "Pydantic AI skill hỗ trợ xây dựng và quản lý Agent Skills. Cho phép các AI agent chủ động phát hiện, tải và thực thi các tác vụ chuyên biệt theo tiến trình. Hỗ trợ filesystem và programmatic skills. Tích hợp trực tiếp với các Claude agent."
+}

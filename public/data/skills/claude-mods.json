@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-mods",
+  "slug": "claude-mods",
+  "name": "Claude Mods",
+  "headline": "custom claude commands and agents development",
+  "short_description": "A collection of custom commands, skills, and agents for Claude Code, organized as a plugin with bash scripts and markdown definitions for automating git, CI/CD, debugging, and macOS operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "0xDarkMatter",
+  "install_command": "git clone https://github.com/0xDarkMatter/claude-mods.git",
+  "source_repo_url": "https://github.com/0xDarkMatter/claude-mods",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "developer-tools",
+    "ai-tools",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claude-mods is a structured plugin repository for Claude Code that provides reusable skills, slash commands, and background agents covering common development workflows. Skills are organized into categories including git operations, CI/CD, debugging, refactoring, and macOS system tasks, with safety-tiered routing that separates read-only, safe-write, and destructive operations. The orchestrator-dispatch pattern delegates mechanical work to background agents like git-agent, keeping the main skill logic clean and composable. The project is built entirely from markdown and bash, with no npm runtime dependencies, making it lightweight to install and maintain. Developers who rely on Claude Code for daily engineering tasks benefit from a ready-made library of commands they can drop into their own projects.\nAutomating git operations with safety-tiered routing for read, write, and destructive commands\nRunning macOS health audits and quick diagnostics via terminal panel UI scripts\nOrchestrating CI/CD pipeline tasks through dedicated Claude Code skill definitions\nUsing background agent workers to handle mechanical git and GitHub tasks without blocking the main session",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/0xDarkMatter/claude-mods`",
+    "usage": "```\nCreate a custom command for Claude Code that [DESCRIBE ACTION]. The command should be named [COMMAND NAME] and should [DETAIL SPECIFIC FUNCTIONALITY]. Include any necessary parameters and provide an example of how to use it.\n```\nCopy\n\n```\n```python\n# Custom Command: Data Analyzer\n# Description: Analyzes CSV data and provides summary statistics\n# Parameters:\n#   - file_path: Path to the CSV file\n#   - columns: List of columns to analyze (optional)\n# Example Usage:\n#   !analyze_data --file_path data.csv --columns age,income\n\ndef analyze_data(file_path, columns=None):\n    import pandas as pd\n    \n    # Load the data\n    data = pd.read_csv(file_path)\n    \n    # If columns are specified, filter the data\n    if columns:\n        data = data[columns]\n    \n    # Generate summary statistics\n    summary = data.describe()\n    \n    return summary\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-mods#main-content",
+      "claude-mods#overview",
+      "claude-mods#setup",
+      "claude-mods#examples",
+      "claude-mods#tools",
+      "claude-mods#mcp",
+      "claude-mods#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-mods là một repository plugin có cấu trúc dành cho Claude Code, cung cấp các skill có thể tái sử dụng, các lệnh gạch chéo (slash command) và các background agent hỗ trợ các workflow phát triển phổ biến. Các skill được phân loại theo từng nhóm bao gồm thao tác Git, CI/CD, debug, refactor code và các tác vụ hệ thống macOS, đi kèm cơ chế định tuyến phân tầng bảo mật (safety-tiered routing) giúp tách biệt rõ ràng giữa các thao tác chỉ đọc (read-only), ghi an toàn (safe-write) và các thao tác có tính hủy hoại (destructive). Mô hình orchestrator-dispatch ủy thác các công việc lặp đi lặp lại (mechanical work) cho các background agent như git-agent, giúp giữ cho logic chính của skill luôn gọn gàng và dễ dàng kết hợp (composable). Dự án được xây dựng hoàn toàn bằng markdown và bash, không phụ thuộc vào npm runtime, giúp việc cài đặt và bảo trì trở nên vô cùng nhẹ nhàng. Các lập trình viên sử dụng Claude Code cho các tác vụ kỹ thuật hàng ngày sẽ được thừa hưởng một thư viện lệnh có sẵn để tích hợp trực tiếp vào dự án của mình.\nTự động hóa các thao tác Git với cơ chế định tuyến phân tầng bảo mật cho các lệnh đọc, ghi và các lệnh có tính hủy hoại\nChạy kiểm tra sức khỏe hệ thống macOS và chẩn đoán nhanh thông qua các script giao diện terminal panel\nĐiều phối các tác vụ CI/CD pipeline thông qua các định nghĩa skill chuyên biệt của Claude Code\nSử dụng các background agent worker để xử lý các tác vụ Git và GitHub lặp đi lặp lại mà không gây nghẽn phiên làm việc chính",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/0xDarkMatter/claude-mods`",
+    "usage_vi": "```\nTạo một lệnh tùy chỉnh cho Claude Code để [MÔ TẢ HÀNH ĐỘNG]. Lệnh này nên có tên là [TÊN LỆNH] và cần [MÔ TẢ CHI TIẾT TÍNH NĂNG CỤ THỂ]. Hãy bao gồm các tham số cần thiết và cung cấp ví dụ về cách sử dụng.\n```\nSao chép\n\n```python\n# Lệnh tùy chỉnh: Data Analyzer\n# Mô tả: Phân tích dữ liệu CSV và cung cấp thống kê tổng quan\n# Tham số:\n#   - file_path: Đường dẫn đến file CSV\n#   - columns: Danh sách các cột cần phân tích (tùy chọn)\n# Ví dụ sử dụng:\n#   !analyze_data --file_path data.csv --columns age,income\n\ndef analyze_data(file_path, columns=None):\n    import pandas as pd\n    \n    # Tải dữ liệu\n    data = pd.read_csv(file_path)\n    \n    # Nếu các cột được chỉ định, lọc dữ liệu\n    if columns:\n        data = data[columns]\n    \n    # Tạo thống kê tổng quan\n    summary = data.describe()\n    \n    return summary\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:04.497141Z",
+    "http_status": 200,
+    "content_hash": "413322906dd49e4b59f7817cc545725764dcdb863b704da2f9bdcab52ca169ba",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-mods.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-mods.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phát triển các lệnh tùy chỉnh và agent cho Claude",
+  "short_description_vi": "Bộ sưu tập các lệnh tùy chỉnh, skill và agent dành cho Claude Code, được thiết kế dưới dạng plugin đi kèm các bash script và định nghĩa markdown giúp tự động hóa Git, CI/CD, debug cũng như các thao tác trên macOS."
+}

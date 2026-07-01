@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codecompanion-history-nvim",
+  "slug": "codecompanion-history-nvim",
+  "name": "browser-use",
+  "headline": "Manage AI chat history with Codecompanion",
+  "short_description": "CodeCompanion History Extension for Neovim saves, browses, and restores chat sessions. Developers using CodeCompanion AI chat plugin can manage conversation history. Integrates with Neovim and supports Claude AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "ravitemer",
+  "install_command": "git clone https://github.com/ravitemer/codecompanion-history.nvim.git",
+  "source_repo_url": "https://github.com/ravitemer/codecompanion-history.nvim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "gemini",
+    "chatplugin",
+    "devtools",
+    "extension",
+    "chatgpt",
+    "claude",
+    "goose",
+    "neovim",
+    "mcp",
+    "neovim-plugin",
+    "ai",
+    "codecompanion",
+    "grok"
+  ],
+  "sections": {
+    "overview": "CodeCompanion History Extension is a Neovim plugin that extends the CodeCompanion AI chat plugin with persistent session management. It enables automatic or manual saving of chat conversations, browsing of saved sessions with preview capabilities, and full restoration of chat state including message history, tools, LLM settings, system prompts, variables, and references. The extension supports multiple picker interfaces (Telescope, Snacks, fzf-lua) for easy session navigation, includes smart title generation for saved chats, and offers optional automatic chat expiration. For developers using Neovim with CodeCompanion, this plugin solves the problem of losing conversation context by preserving complete chat sessions that can be resumed at any time, including a vector-based memory system for searching through chat summaries.\nResume long-running coding conversations without losing context or message history\nOrganize and browse multiple AI chat sessions within Neovim editor\nAutomatically generate and search through chat summaries for quick reference\nBackup and duplicate chat sessions for variations or archival purposes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ravitemer/codecompanion-history.nvim`",
+    "usage": "```\nUse CodeCompanion History Extension for Neovim to [ACTION: restore/analyze/summarize] the chat session from [DATE/TIME] or [SESSION_NAME] in [PROJECT_DIRECTORY]. Focus on [SPECIFIC_TOPIC: e.g., error debugging, feature implementation, or refactoring]. Extract [OUTPUT_TYPE: key decisions, code snippets, or unresolved questions] and organize them into a [FORMAT: markdown table, bullet points, or actionable checklist].\n```\nCopy\n\n```\n### Restored Chat Session: 'Debugging Python Memory Leak' (Session ID: 2024-05-15_14-30)\n**Project:** `backend-services/api-gateway`\n\n#### Key Decisions:\n| Decision Point | Context | Outcome |\n|----------------|---------|---------|\n| **Switched to `tracemalloc`** | Original profiler missed memory spikes | Identified `UserSessionManager` as leak source |\n| **Added `weakref` to cache** | Prevented circular references in `RedisClient` | Reduced memory usage by 42% (from 1.2GB to 700MB) |\n\n#### Code Snippets:\n```python\n# Before (Leak)\nclass UserSessionManager:\n    def __init__(self):\n        self.sessions = {}  # Unbounded cache\n\n# After (Fixed)\nimport weakref\nclass UserSessionManager:\n    def __init__(self):\n        self.sessions = weakref.WeakValueDictionary()  # Auto-cleanup\n```\n\n#### Unresolved Questions:\n1. **Thread safety:** Does `weakref` handle concurrent access safely? (Needs testing)\n2. **Cache eviction policy:** Should we implement LRU for `sessions`?\n\n---\n*Session restored from CodeCompanion History Extension (v1.2.0). Next steps: [ ] Test thread safety, [ ] Implement LRU cache.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codecompanion-history-nvim#main-content",
+      "codecompanion-history-nvim#overview",
+      "codecompanion-history-nvim#setup",
+      "codecompanion-history-nvim#examples",
+      "codecompanion-history-nvim#tools",
+      "codecompanion-history-nvim#mcp",
+      "codecompanion-history-nvim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodeCompanion History Extension is a Neovim plugin that extends the CodeCompanion AI chat plugin with persistent session management. It enables automatic or manual saving of chat conversations, browsing of saved sessions with preview capabilities, and full restoration of chat state including message history, tools, LLM settings, system prompts, variables, and references. The extension supports multiple picker interfaces (Telescope, Snacks, fzf-lua) for easy session navigation, includes smart title generation for saved chats, and offers optional automatic chat expiration. For developers using Neovim with CodeCompanion, this plugin solves the problem of losing conversation context by preserving complete chat sessions that can be resumed at any time, including a vector-based memory system for searching through chat summaries.\nResume long-running coding conversations without losing context or message history\nOrganize and browse multiple AI chat sessions within Neovim editor\nAutomatically generate and search through chat summaries for quick reference\nBackup and duplicate chat sessions for variations or archival purposes",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ravitemer/codecompanion-history.nvim`",
+    "usage_vi": "```\nUse CodeCompanion History Extension for Neovim to [ACTION: restore/analyze/summarize] the chat session from [DATE/TIME] or [SESSION_NAME] in [PROJECT_DIRECTORY]. Focus on [SPECIFIC_TOPIC: e.g., error debugging, feature implementation, or refactoring]. Extract [OUTPUT_TYPE: key decisions, code snippets, or unresolved questions] and organize them into a [FORMAT: markdown table, bullet points, or actionable checklist].\n```\nCopy\n\n```\n### Restored Chat Session: 'Debugging Python Memory Leak' (Session ID: 2024-05-15_14-30)\n**Project:** `backend-services/api-gateway`\n\n#### Key Decisions:\n| Decision Point | Context | Outcome |\n|----------------|---------|---------|\n| **Switched to `tracemalloc`** | Original profiler missed memory spikes | Identified `UserSessionManager` as leak source |\n| **Added `weakref` to cache** | Prevented circular references in `RedisClient` | Reduced memory usage by 42% (from 1.2GB to 700MB) |\n\n#### Code Snippets:\n```python\n# Before (Leak)\nclass UserSessionManager:\n    def __init__(self):\n        self.sessions = {}  # Unbounded cache\n\n# After (Fixed)\nimport weakref\nclass UserSessionManager:\n    def __init__(self):\n        self.sessions = weakref.WeakValueDictionary()  # Auto-cleanup\n```\n\n#### Unresolved Questions:\n1. **Thread safety:** Does `weakref` handle concurrent access safely? (Needs testing)\n2. **Cache eviction policy:** Should we implement LRU for `sessions`?\n\n---\n*Session restored from CodeCompanion History Extension (v1.2.0). Next steps: [ ] Test thread safety, [ ] Implement LRU cache.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:16:57.595923Z",
+    "http_status": 200,
+    "content_hash": "62878c3706da02de40df6d553d35b97c27f58ee95ec44d11f20b3c535860b8ee",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codecompanion-history-nvim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codecompanion-history-nvim.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Manage AI chat history with Codecompanion",
+  "short_description_vi": "CodeCompanion History Extension for Neovim saves, browses, and restores chat sessions. Developers using CodeCompanion AI chat plugin can manage conversation history. Integrates with Neovim and supports Claude AI agents."
+}

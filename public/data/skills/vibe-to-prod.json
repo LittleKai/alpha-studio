@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibe-to-prod",
+  "slug": "vibe-to-prod",
+  "name": "browser-use",
+  "headline": "Vibe-to-Prod - Automate Full-Stack Development",
+  "short_description": "Vibe-to-prod is a full-stack template for AI-assisted developers. It automates the software development lifecycle, from coding to production. It benefits developers and operations teams by reducing deployment time. It connects to Firebase, Pulumi, and integrates with Claude for AI-assisted development.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "muyen",
+  "install_command": "git clone https://github.com/muyen/vibe-to-prod.git",
+  "source_repo_url": "https://github.com/muyen/vibe-to-prod",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "pulumi",
+    "nextjs",
+    "full-stack",
+    "ai-assisted-development",
+    "golang",
+    "firebase",
+    "production-ready",
+    "starter-template",
+    "devops"
+  ],
+  "sections": {
+    "overview": "Vibe-to-prod is a complete template that bridges the gap between rapid AI-assisted coding and production-grade deployments. It provides testing, security scanning, CI/CD pipelines, infrastructure-as-code via Pulumi, and automated deployment to Google Cloud Run—eliminating weeks of setup work. The template includes a Go backend with Echo framework, Next.js frontend, Firebase for authentication and database, and GitHub Actions for continuous integration. Developers and operations teams benefit from reproducible infrastructure, structured logging, health checks, and fully isolated development and production environments. This reduces deployment time from weeks to hours while maintaining security and reliability standards.\nLaunching production applications from AI-generated code without manual CI/CD setup\nSetting up multi-environment deployments (dev/prod) with infrastructure-as-code\nAutomating security scanning and testing across the full development lifecycle\nDeploying serverless backends to Cloud Run with zero-downtime deployments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/muyen/vibe-to-prod`",
+    "usage": "```\nConvert the [PROJECT_IDEA] into a full-stack Firebase + Pulumi template. Generate a complete project structure with: 1) Firebase backend (Firestore, Auth, Functions), 2) Pulumi infrastructure (GCP/AWS resources), 3) React frontend (TypeScript), 4) CI/CD pipeline (GitHub Actions), and 5) AI-assisted development hooks for Claude. Include placeholder comments for [CUSTOM_CONFIGURATION] like environment variables, API keys, and domain settings. Output the entire project as a zip file structure with file contents in code blocks.\n```\nCopy\n\n```\n```\nProject Structure:\nmy-app/\n├── firebase/\n│   ├── functions/src/index.ts (Firebase Functions with AI hooks)\n│   ├── firestore.rules (security rules)\n│   └── .firebaserc (Firebase project config)\n├── pulumi/\n│   ├── index.ts (Pulumi stack with GCP resources)\n│   ├── config.ts (Pulumi configuration)\n│   └── package.json\n├── frontend/\n│   ├── src/\n│   │   ├── components/\n│   │   ├── pages/\n│   │   ├── App.tsx\n│   │   └── index.tsx\n│   ├── package.json\n│   └── tsconfig.json\n├── .github/workflows/\n│   └── deploy.yml (CI/CD pipeline)\n└── README.md (Setup instructions)\n\nFile Contents Example (pulumi/index.ts):\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gcp from \"@pulumi/gcp\";\n\n// [CUSTOM_CONFIGURATION] - Replace with your project ID\nconst projectId = \"my-app-12345\";\n\n// Deploy Firebase Hosting\nconst firebaseHosting = new gcp.firebase.HostingSite(\"my-app-hosting\", {\n  project: projectId,\n  siteId: \"my-app\",\n  appId: pulumi.output(gcp.firebase.getProjectConfig({ project: projectId })).appId,\n});\n\n// Deploy Cloud Run service for backend\nconst backendService = new gcp.cloudrun.Service(\"backend-service\", {\n  location: \"us-central1\",\n  template: {\n    spec: {\n      containers: [{\n        image: \"gcr.io/PROJECT_ID/backend-image:latest\",\n        env: [{ name: \"FIREBASE_CONFIG\", value: JSON.stringify({ /* [CUSTOM_CONFIGURATION] */ }) }],\n      }],\n    },\n  },\n});\n\nexport const url = backendService.statuses[0].url;\n```\n\nSetup Instructions:\n1. Run `npm install` in pulumi/ and firebase/functions/\n2. Configure Firebase: `firebase login && firebase init`\n3. Deploy infrastructure: `pulumi up`\n4. Deploy backend: `cd firebase/functions && npm run deploy`\n5. Deploy frontend: `cd frontend && npm run deploy`\n\nThe template includes pre-configured AI hooks for Claude in the Firebase Functions (functions/src/index.ts) that provide:\n- Automated API documentation generation\n- Security rule validation suggestions\n- Performance optimization recommendations\n- Cost estimation for GCP resources\n\nAll components are wired together with environment-specific configurations that can be customized via [CUSTOM_CONFIGURATION] placeholders in each file.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibe-to-prod#main-content",
+      "vibe-to-prod#overview",
+      "vibe-to-prod#setup",
+      "vibe-to-prod#examples",
+      "vibe-to-prod#tools",
+      "vibe-to-prod#mcp",
+      "vibe-to-prod#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Vibe-to-prod is a complete template that bridges the gap between rapid AI-assisted coding and production-grade deployments. It provides testing, security scanning, CI/CD pipelines, infrastructure-as-code via Pulumi, and automated deployment to Google Cloud Run—eliminating weeks of setup work. The template includes a Go backend with Echo framework, Next.js frontend, Firebase for authentication and database, and GitHub Actions for continuous integration. Developers and operations teams benefit from reproducible infrastructure, structured logging, health checks, and fully isolated development and production environments. This reduces deployment time from weeks to hours while maintaining security and reliability standards.\nLaunching production applications from AI-generated code without manual CI/CD setup\nSetting up multi-environment deployments (dev/prod) with infrastructure-as-code\nAutomating security scanning and testing across the full development lifecycle\nDeploying serverless backends to Cloud Run with zero-downtime deployments",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/muyen/vibe-to-prod`",
+    "usage_vi": "```\nConvert the [PROJECT_IDEA] into a full-stack Firebase + Pulumi template. Generate a complete project structure with: 1) Firebase backend (Firestore, Auth, Functions), 2) Pulumi infrastructure (GCP/AWS resources), 3) React frontend (TypeScript), 4) CI/CD pipeline (GitHub Actions), and 5) AI-assisted development hooks for Claude. Include placeholder comments for [CUSTOM_CONFIGURATION] like environment variables, API keys, and domain settings. Output the entire project as a zip file structure with file contents in code blocks.\n```\nCopy\n\n```\n```\nProject Structure:\nmy-app/\n├── firebase/\n│   ├── functions/src/index.ts (Firebase Functions with AI hooks)\n│   ├── firestore.rules (security rules)\n│   └── .firebaserc (Firebase project config)\n├── pulumi/\n│   ├── index.ts (Pulumi stack with GCP resources)\n│   ├── config.ts (Pulumi configuration)\n│   └── package.json\n├── frontend/\n│   ├── src/\n│   │   ├── components/\n│   │   ├── pages/\n│   │   ├── App.tsx\n│   │   └── index.tsx\n│   ├── package.json\n│   └── tsconfig.json\n├── .github/workflows/\n│   └── deploy.yml (CI/CD pipeline)\n└── README.md (Setup instructions)\n\nFile Contents Example (pulumi/index.ts):\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as gcp from \"@pulumi/gcp\";\n\n// [CUSTOM_CONFIGURATION] - Replace with your project ID\nconst projectId = \"my-app-12345\";\n\n// Deploy Firebase Hosting\nconst firebaseHosting = new gcp.firebase.HostingSite(\"my-app-hosting\", {\n  project: projectId,\n  siteId: \"my-app\",\n  appId: pulumi.output(gcp.firebase.getProjectConfig({ project: projectId })).appId,\n});\n\n// Deploy Cloud Run service for backend\nconst backendService = new gcp.cloudrun.Service(\"backend-service\", {\n  location: \"us-central1\",\n  template: {\n    spec: {\n      containers: [{\n        image: \"gcr.io/PROJECT_ID/backend-image:latest\",\n        env: [{ name: \"FIREBASE_CONFIG\", value: JSON.stringify({ /* [CUSTOM_CONFIGURATION] */ }) }],\n      }],\n    },\n  },\n});\n\nexport const url = backendService.statuses[0].url;\n```\n\nSetup Instructions:\n1. Run `npm install` in pulumi/ and firebase/functions/\n2. Configure Firebase: `firebase login && firebase init`\n3. Deploy infrastructure: `pulumi up`\n4. Deploy backend: `cd firebase/functions && npm run deploy`\n5. Deploy frontend: `cd frontend && npm run deploy`\n\nThe template includes pre-configured AI hooks for Claude in the Firebase Functions (functions/src/index.ts) that provide:\n- Automated API documentation generation\n- Security rule validation suggestions\n- Performance optimization recommendations\n- Cost estimation for GCP resources\n\nAll components are wired together with environment-specific configurations that can be customized via [CUSTOM_CONFIGURATION] placeholders in each file.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:17:14.008393Z",
+    "http_status": 200,
+    "content_hash": "ed208fad1cd011368415fd383f184b283016877a6595e5d4dd996b7dd1301b7b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vibe-to-prod.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vibe-to-prod.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Vibe-to-Prod - Automate Full-Stack Development",
+  "short_description_vi": "Vibe-to-prod is a full-stack template for AI-assisted developers. It automates the software development lifecycle, from coding to production. It benefits developers and operations teams by reducing deployment time. It connects to Firebase, Pulumi, and integrates with Claude for AI-assisted development."
+}

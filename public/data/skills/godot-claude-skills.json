@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/godot-claude-skills",
+  "slug": "godot-claude-skills",
+  "name": "Godot-Claude-Skills",
+  "headline": "Godot-Claude-Skills: AI-Powered Game Development",
+  "short_description": "Godot-Claude-Skills integrates Claude AI into the Godot game engine for automating development tasks. Developers use it to generate game logic, manage assets, and accelerate level design through AI-assisted scripting. Reduces manual coding overhead in game projects.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Randroids-Dojo",
+  "install_command": "git clone https://github.com/Randroids-Dojo/Godot-Claude-Skills.git",
+  "source_repo_url": "https://github.com/Randroids-Dojo/Godot-Claude-Skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Godot-Claude-Skills is a Claude Code skill that streamlines Godot 4.x game development by integrating AI-assisted automation for testing, building, and deployment. It includes GdUnit4 integration for unit and scene testing, PlayGodot framework for end-to-end game automation, and Python helper scripts for running tests and exporting builds. The skill supports web and desktop exports, GitHub Actions CI/CD pipelines, and deployment to Vercel, GitHub Pages, and itch.io. Game developers use it to accelerate testing workflows, automate builds, and reduce manual deployment overhead across their projects.\nGenerate GDScript code for game mechanics and interactive systems\nAutomate asset management and level design tasks\nAccelerate prototyping by AI-assisted code generation\nDebug and refactor existing Godot game scripts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Randroids-Dojo/Godot-Claude-Skills`\n1. Attach this script to your enemy scene.\n2. Set up waypoints in the `_ready()` function or create them in the scene.\n3. Connect the `_on_Player_detected()` and `_on_Player_lost()` signals to your player detection system.\n4. Adjust the `speed`, `chase_speed`, and `attack_range` variables to fit your game.\n5. Implement your own attack logic in the `attack()` function.\n```",
+    "usage": "```\nI'm a game developer working on a [GENRE] game in Godot. I need help with [SPECIFIC TASK, e.g., 'automating enemy AI behavior', 'generating procedural terrain', or 'optimizing shader code']. Can you provide a Godot-compatible script or workflow to accomplish this? Please include explanations of the code and any necessary setup instructions.\n```\nCopy\n\n```\n# Automated Enemy AI Behavior for Godot\n\nHere's a script to automate enemy AI behavior in your Godot game. This script will make enemies patrol between waypoints, chase the player when detected, and attack when in range.\n\n```gdscript\nextends CharacterBody2D\n\n# Waypoints for patrol\nvar waypoints = []\nvar current_waypoint = 0\nvar speed = 200\nvar chase_speed = 300\nvar attack_range = 200\nvar player_detected = false\n\nfunc _ready():\n    # Initialize waypoints (replace with your own waypoints)\n    waypoints = [$Vector2(100, 100), $Vector2(300, 100), $Vector2(300, 300), $Vector2(100, 300)]\n\nfunc _process(delta):\n    if player_detected:\n        chase_player(delta)\n    else:\n        patrol(delta)\n\nfunc patrol(delta):\n    var target_position = waypoints[current_waypoint]\n    var direction = (target_position - position).normalized()\n    velocity = direction * speed\n    move_and_slide()\n    \n    # Check if reached waypoint\n    if position.distance_to(target_position) < 10:\n        current_waypoint = (current_waypoint + 1) % waypoints.size()\n\nfunc chase_player(delta):\n    var player = get_node('/root/Player')\n    var direction = (player.position - position).normalized()\n    velocity = direction * chase_speed\n    move_and_slide()\n    \n    # Check if player is in attack range\n    if position.distance_to(player.position) < attack_range:\n        attack()\n\nfunc attack():\n    print(\"Enemy attacking player!\")\n    # Add your attack logic here\n\nfunc _on_Player_detected():\n    player_detected = true\n\nfunc _on_Player_lost():\n    player_detected = false\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "godot-claude-skills#main-content",
+      "godot-claude-skills#overview",
+      "godot-claude-skills#setup",
+      "godot-claude-skills#examples",
+      "godot-claude-skills#tools",
+      "godot-claude-skills#mcp",
+      "godot-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Godot-Claude-Skills là một skill của Claude Code giúp tối ưu hóa quy trình phát triển game Godot 4.x bằng cách tích hợp tự động hóa hỗ trợ bởi AI cho việc testing, build và deploy. Skill này bao gồm tích hợp GdUnit4 để test unit và scene, framework PlayGodot cho tự động hóa game end-to-end, và các script bổ trợ bằng Python để chạy test và export bản build. Công cụ hỗ trợ export web và desktop, các pipeline CI/CD của GitHub Actions, và triển khai lên Vercel, GitHub Pages và itch.io. Lập trình viên game có thể sử dụng công cụ này để tăng tốc workflow testing, tự động hóa build và giảm thiểu công sức deploy thủ công trên toàn dự án.\nTạo code GDScript cho các cơ chế game và hệ thống tương tác\nTự động hóa các tác vụ quản lý asset và thiết kế level\nĐẩy nhanh quá trình tạo prototype bằng cách tạo code hỗ trợ bởi AI\nDebug và refactor các script game Godot hiện có",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Randroids-Dojo/Godot-Claude-Skills`\n1. Đính kèm script này vào enemy scene của bạn.\n2. Thiết lập các waypoint trong hàm `_ready()` hoặc tạo chúng trực tiếp trong scene.\n3. Kết nối các signal `_on_Player_detected()` và `_on_Player_lost()` với hệ thống phát hiện người chơi.\n4. Điều chỉnh các biến `speed`, `chase_speed`, và `attack_range` cho phù hợp với game của bạn.\n5. Tự triển khai logic tấn công trong hàm `attack()` của bạn.\n```",
+    "usage_vi": "```\nTôi là một nhà phát triển game đang làm việc trên một dự án game thuộc thể loại [GENRE] trong Godot. Tôi cần trợ giúp về [SPECIFIC TASK, ví dụ: 'tự động hóa hành vi AI của kẻ địch', 'tạo địa hình thuật toán (procedural terrain)', hoặc 'tối ưu hóa code shader']. Bạn có thể cung cấp một script tương thích với Godot hoặc workflow để thực hiện việc này không? Vui lòng kèm theo giải thích về code và bất kỳ hướng dẫn setup cần thiết nào.\n```\nSao chép\n\n```\n# Tự động hóa hành vi AI của kẻ địch trong Godot\n\nDưới đây là script để tự động hóa hành vi AI của kẻ địch trong game Godot của bạn. Script này sẽ giúp kẻ địch tuần tra giữa các waypoint, đuổi theo người chơi khi phát hiện và tấn công khi vào phạm vi.\n\n```gdscript\nextends CharacterBody2D\n\n# Các waypoint để tuần tra\nvar waypoints = []\nvar current_waypoint = 0\nvar speed = 200\nvar chase_speed = 300\nvar attack_range = 200\nvar player_detected = false\n\nfunc _ready():\n    # Khởi tạo các waypoint (thay thế bằng waypoint của riêng bạn)\n    waypoints = [$Vector2(100, 100), $Vector2(300, 100), $Vector2(300, 300), $Vector2(100, 300)]\n\nfunc _process(delta):\n    if player_detected:\n        chase_player(delta)\n    else:\n        patrol(delta)\n\nfunc patrol(delta):\n    var target_position = waypoints[current_waypoint]\n    var direction = (target_position - position).normalized()\n    velocity = direction * speed\n    move_and_slide()\n    \n    # Kiểm tra xem đã đến waypoint chưa\n    if position.distance_to(target_position) < 10:\n        current_waypoint = (current_waypoint + 1) % waypoints.size()\n\nfunc chase_player(delta):\n    var player = get_node('/root/Player')\n    var direction = (player.position - position).normalized()\n    velocity = direction * chase_speed\n    move_and_slide()\n    \n    # Kiểm tra xem người chơi có trong phạm vi tấn công không\n    if position.distance_to(player.position) < attack_range:\n        attack()\n\nfunc attack():\n    print(\"Enemy attacking player!\")\n    # Thêm logic tấn công của bạn tại đây\n\nfunc _on_Player_detected():\n    player_detected = true\n\nfunc _on_Player_lost():\n    player_detected = false\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:30.215697Z",
+    "http_status": 200,
+    "content_hash": "f8d6b12ee3f020eec3181602337a6279f035832a0b2633a59e8e24e0cd3206b9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\godot-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\godot-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Godot-Claude-Skills: Phát triển game tích hợp AI",
+  "short_description_vi": "Godot-Claude-Skills tích hợp Claude AI vào game engine Godot để tự động hóa các tác vụ phát triển. Lập trình viên có thể sử dụng công cụ này để tạo logic game, quản lý asset và đẩy nhanh tiến độ thiết kế level thông qua các script hỗ trợ bởi AI. Giúp giảm thiểu công sức viết code thủ công trong các dự án game."
+}

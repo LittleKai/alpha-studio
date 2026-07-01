@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-relay",
+  "slug": "cc-relay",
+  "name": "browser-use",
+  "headline": "cc-relay: fast LLMs API Gateway",
+  "short_description": "CC-Relay is a fast LLM API gateway written in Go. It routes Claude Code requests to multiple Anthropic-compatible providers. Operations teams use it to optimize LLM API calls, reduce costs, and improve reliability. It connects to various LLM providers like Anthropic, OpenAI, and Mistral.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "omarluq",
+  "install_command": "git clone https://github.com/omarluq/cc-relay.git",
+  "source_repo_url": "https://github.com/omarluq/cc-relay",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ollama",
+    "llm-gat",
+    "vertex-ai",
+    "claude-ai",
+    "gemini",
+    "claude-code",
+    "kimi-k2",
+    "anthropic",
+    "zai",
+    "claude-api",
+    "claude",
+    "llm-proxy",
+    "openai",
+    "glm-4-7",
+    "mistral-ai",
+    "bedrock",
+    "gemini-api",
+    "llm-api",
+    "openai-api",
+    "llm-gateway-system"
+  ],
+  "sections": {
+    "overview": "CC-Relay is a fast LLM API gateway written in Go that solves the single-provider limitation of Claude Code by routing requests across multiple Anthropic-compatible providers. It enables operations teams to pool rate limits across multiple API keys, automatically route simpler tasks to lighter and cheaper models, and implement failover to prevent service interruption. The gateway supports Anthropic, AWS Bedrock, Azure, Google Vertex, and Anthropic-compatible services like MiniMax, Z.AI, and Ollama. Teams use CC-Relay to reduce LLM API costs, improve reliability through automatic provider failover, and integrate both enterprise and personal API credentials in a single unified gateway.\nPool rate limits across multiple Anthropic API keys to increase throughput\nRoute simple tasks to cheaper models while reserving Claude for complex requests\nImplement automatic failover between providers to prevent downtime\nIntegrate AWS Bedrock, Azure, or Google Vertex alongside personal API keys",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/omarluq/cc-relay`",
+    "usage": "```\nUse cc-relay to route [TASK_DESCRIPTION] to the most cost-effective Anthropic-compatible provider. Compare response quality, latency, and cost across providers like Anthropic, OpenAI, and Mistral. Return a summary with provider recommendations and estimated savings compared to direct Anthropic API calls. Include the raw response from the selected provider.\n```\nCopy\n\n```\n### CC-Relay Routing Report: Marketing Content Generation\n**Task:** Generate 10 variations of a blog post introduction for a SaaS product targeting HR managers, with a focus on employee engagement metrics.\n\n**Provider Comparison (Tested 50 requests):\n1. **Anthropic Claude 3.5 Sonnet**\n   - Avg Latency: 2.1s\n   - Cost per 1000 tokens: $3.00\n   - Quality Score (1-10): 9.2\n   - Success Rate: 98%\n\n2. **OpenAI o1-mini**\n   - Avg Latency: 1.8s\n   - Cost per 1000 tokens: $1.10\n   - Quality Score: 8.7\n   - Success Rate: 99%\n\n3. **Mistral Large**\n   - Avg Latency: 1.5s\n   - Cost per 1000 tokens: $0.45\n   - Quality Score: 8.5\n   - Success Rate: 97%\n\n**Recommendation:** Route all requests to **Mistral Large** for this task. While quality is slightly lower than Anthropic, the 85% cost reduction ($3.00 → $0.45 per 1K tokens) justifies the trade-off for marketing content generation. The 1.5s latency is acceptable for this use case.\n\n**Sample Output (Mistral Large):**\n```markdown\n**Variation 1:**\n\"Unlock the power of employee engagement with [Product Name]'s AI-driven analytics. Our platform transforms raw HR data into actionable insights, helping you identify top performers and address retention risks before they escalate.\"\n\n**Variation 2:**\n\"Boost team productivity by 34% with [Product Name]'s real-time engagement dashboards. Designed for HR leaders who need to move fast without sacrificing accuracy, our solution provides the clarity you need to make data-backed decisions.\"\n```\n\n**Estimated Monthly Savings:** $1,245 (assuming 500K tokens/month for this task)\n**Next Steps:** Monitor Mistral's quality consistency over 1 week before full migration. Set up cc-relay alerts for latency spikes >2s or quality drops below 8.0.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-relay#main-content",
+      "cc-relay#overview",
+      "cc-relay#setup",
+      "cc-relay#examples",
+      "cc-relay#tools",
+      "cc-relay#mcp",
+      "cc-relay#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CC-Relay is a fast LLM API gateway written in Go that solves the single-provider limitation of Claude Code by routing requests across multiple Anthropic-compatible providers. It enables operations teams to pool rate limits across multiple API keys, automatically route simpler tasks to lighter and cheaper models, and implement failover to prevent service interruption. The gateway supports Anthropic, AWS Bedrock, Azure, Google Vertex, and Anthropic-compatible services like MiniMax, Z.AI, and Ollama. Teams use CC-Relay to reduce LLM API costs, improve reliability through automatic provider failover, and integrate both enterprise and personal API credentials in a single unified gateway.\nPool rate limits across multiple Anthropic API keys to increase throughput\nRoute simple tasks to cheaper models while reserving Claude for complex requests\nImplement automatic failover between providers to prevent downtime\nIntegrate AWS Bedrock, Azure, or Google Vertex alongside personal API keys",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/omarluq/cc-relay`",
+    "usage_vi": "```\nUse cc-relay to route [TASK_DESCRIPTION] to the most cost-effective Anthropic-compatible provider. Compare response quality, latency, and cost across providers like Anthropic, OpenAI, and Mistral. Return a summary with provider recommendations and estimated savings compared to direct Anthropic API calls. Include the raw response from the selected provider.\n```\nCopy\n\n```\n### CC-Relay Routing Report: Marketing Content Generation\n**Task:** Generate 10 variations of a blog post introduction for a SaaS product targeting HR managers, with a focus on employee engagement metrics.\n\n**Provider Comparison (Tested 50 requests):\n1. **Anthropic Claude 3.5 Sonnet**\n   - Avg Latency: 2.1s\n   - Cost per 1000 tokens: $3.00\n   - Quality Score (1-10): 9.2\n   - Success Rate: 98%\n\n2. **OpenAI o1-mini**\n   - Avg Latency: 1.8s\n   - Cost per 1000 tokens: $1.10\n   - Quality Score: 8.7\n   - Success Rate: 99%\n\n3. **Mistral Large**\n   - Avg Latency: 1.5s\n   - Cost per 1000 tokens: $0.45\n   - Quality Score: 8.5\n   - Success Rate: 97%\n\n**Recommendation:** Route all requests to **Mistral Large** for this task. While quality is slightly lower than Anthropic, the 85% cost reduction ($3.00 → $0.45 per 1K tokens) justifies the trade-off for marketing content generation. The 1.5s latency is acceptable for this use case.\n\n**Sample Output (Mistral Large):**\n```markdown\n**Variation 1:**\n\"Unlock the power of employee engagement with [Product Name]'s AI-driven analytics. Our platform transforms raw HR data into actionable insights, helping you identify top performers and address retention risks before they escalate.\"\n\n**Variation 2:**\n\"Boost team productivity by 34% with [Product Name]'s real-time engagement dashboards. Designed for HR leaders who need to move fast without sacrificing accuracy, our solution provides the clarity you need to make data-backed decisions.\"\n```\n\n**Estimated Monthly Savings:** $1,245 (assuming 500K tokens/month for this task)\n**Next Steps:** Monitor Mistral's quality consistency over 1 week before full migration. Set up cc-relay alerts for latency spikes >2s or quality drops below 8.0.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:39:22.042741Z",
+    "http_status": 200,
+    "content_hash": "e19d9a4c19f72b2873203886990982f370d7e6de16c7de3902e9f99b07f2e39e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-relay.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-relay.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "cc-relay: fast LLMs API Gateway",
+  "short_description_vi": "CC-Relay is a fast LLM API gateway written in Go. It routes Claude Code requests to multiple Anthropic-compatible providers. Operations teams use it to optimize LLM API calls, reduce costs, and improve reliability. It connects to various LLM providers like Anthropic, OpenAI, and Mistral."
+}

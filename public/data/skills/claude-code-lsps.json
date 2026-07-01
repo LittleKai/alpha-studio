@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-lsps",
+  "slug": "claude-code-lsps",
+  "name": "browser-use",
+  "headline": "claude code lsps: plugin marketplace with lsp",
+  "short_description": "Claude Code Plugin Marketplace with LSP servers enables developers to integrate language server protocols into their workflows. Operations teams benefit from automated code analysis, linting, and refactoring. Connects to IDEs and code editors for real-time feedback and improved code quality.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Piebald-AI",
+  "install_command": "git clone https://github.com/Piebald-AI/claude-code-lsps.git",
+  "source_repo_url": "https://github.com/Piebald-AI/claude-code-lsps",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "lsp",
+    "lsp-server",
+    "tweakcc"
+  ],
+  "sections": {
+    "overview": "Claude Code LSPs is a marketplace of Language Server Protocol plugins that bring code intelligence to Claude Code. The skill offers LSP servers for TypeScript, Rust, Python, Go, Java, Kotlin, Scala, C/C++, PHP, Ruby, C#, PowerShell, HTML/CSS, LaTeX, Julia, Vue, Svelte, OCaml, Ada, Dart, Solidity, Elixir, Bash, and Markdown. Claude can use these servers to navigate code with features like go-to-definition, find references, hover information, document symbols, call hierarchy, and workspace symbol search. Developers installing language-specific components (rust-analyzer, vtsls, pyright, gopls, jdtls, and others) gain powerful code analysis and navigation capabilities directly within their Claude Code workflow.\nNavigate large codebases with go-to-definition and find-references across TypeScript, Rust, Python, and Go projects\nPerform code analysis and symbol lookup for Java, Kotlin, and C/C++ with IDE-level language server features\nUnderstand function call hierarchies and dependencies in complex applications using incoming/outgoing call analysis\nEnable real-time code intelligence for web development with TypeScript, Vue, Svelte, and HTML/CSS LSP support",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/claude-code-lsps`",
+    "usage": "```\nSet up a [LANGUAGE] project in [IDE_NAME] using the Claude Code Plugin Marketplace with LSP servers. Configure the project to enable [SPECIFIC_FEATURES] like linting, refactoring, or real-time diagnostics. Provide the exact steps to install the required LSP server, configure the plugin, and verify the setup works. Include troubleshooting tips for common issues like missing dependencies or misconfigured paths.\n```\nCopy\n\n```\n### Setup Complete for Python Project in VS Code\n\n**Project Details:**\n- Language: Python 3.11\n- IDE: VS Code (v1.85.1)\n- Features Enabled: Pylint (linting), Black (formatting), Pyright (type checking)\n- LSP Server: Python LSP Server (pylsp)\n\n**Steps Executed:**\n1. **Installed LSP Server:**\n   ```bash\n   pip install python-lsp-server[all]\n   ```\n   Verified installation with `pylsp --version` (output: `pylsp 1.10.0`).\n\n2. **Configured VS Code:**\n   - Opened Command Palette (`Ctrl+Shift+P`) and ran `Claude Code: Install Plugin`.\n   - Searched for `Python LSP Server` and installed the plugin.\n   - Updated `settings.json` to include:\n ```json\n     {\n       \"claude.code.lsps\": {\n         \"python\": {\n           \"command\": \"pylsp\",\n           \"args\": [\"--check-parent-process\"],\n           \"env\": {\"PYTHONPATH\": \"/home/user/.venv/bin/python\"}\n         }\n       },\n       \"[python]\": {\n         \"editor.defaultFormatter\": \"ms-python.black-formatter\",\n         \"editor.formatOnSave\": true\n       }\n     }\n ```\n\n3. **Verified Setup:**\n   - Opened a Python file (`main.py`) with syntax errors.\n   - Errors appeared in real-time with suggestions to fix them.\n   - Ran `Format Document` (Black) and confirmed auto-formatting worked.\n\n**Troubleshooting:**\n- If LSP server fails to start, check the output log in VS Code (`View > Output > Claude Code LSP`).\n- For missing dependencies, run `pip install -r requirements.txt` in the project root.\n- If paths are misconfigured, update `PYTHONPATH` in `settings.json` to point to the correct virtual environment.\n\n**Result:**\nThe project now has real-time linting, formatting, and type checking enabled. The team can collaborate with consistent code quality standards.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-lsps#main-content",
+      "claude-code-lsps#overview",
+      "claude-code-lsps#setup",
+      "claude-code-lsps#examples",
+      "claude-code-lsps#tools",
+      "claude-code-lsps#mcp",
+      "claude-code-lsps#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code LSPs is a marketplace of Language Server Protocol plugins that bring code intelligence to Claude Code. The skill offers LSP servers for TypeScript, Rust, Python, Go, Java, Kotlin, Scala, C/C++, PHP, Ruby, C#, PowerShell, HTML/CSS, LaTeX, Julia, Vue, Svelte, OCaml, Ada, Dart, Solidity, Elixir, Bash, and Markdown. Claude can use these servers to navigate code with features like go-to-definition, find references, hover information, document symbols, call hierarchy, and workspace symbol search. Developers installing language-specific components (rust-analyzer, vtsls, pyright, gopls, jdtls, and others) gain powerful code analysis and navigation capabilities directly within their Claude Code workflow.\nNavigate large codebases with go-to-definition and find-references across TypeScript, Rust, Python, and Go projects\nPerform code analysis and symbol lookup for Java, Kotlin, and C/C++ with IDE-level language server features\nUnderstand function call hierarchies and dependencies in complex applications using incoming/outgoing call analysis\nEnable real-time code intelligence for web development with TypeScript, Vue, Svelte, and HTML/CSS LSP support",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/claude-code-lsps`",
+    "usage_vi": "```\nSet up a [LANGUAGE] project in [IDE_NAME] using the Claude Code Plugin Marketplace with LSP servers. Configure the project to enable [SPECIFIC_FEATURES] like linting, refactoring, or real-time diagnostics. Provide the exact steps to install the required LSP server, configure the plugin, and verify the setup works. Include troubleshooting tips for common issues like missing dependencies or misconfigured paths.\n```\nCopy\n\n```\n### Setup Complete for Python Project in VS Code\n\n**Project Details:**\n- Language: Python 3.11\n- IDE: VS Code (v1.85.1)\n- Features Enabled: Pylint (linting), Black (formatting), Pyright (type checking)\n- LSP Server: Python LSP Server (pylsp)\n\n**Steps Executed:**\n1. **Installed LSP Server:**\n   ```bash\n   pip install python-lsp-server[all]\n   ```\n   Verified installation with `pylsp --version` (output: `pylsp 1.10.0`).\n\n2. **Configured VS Code:**\n   - Opened Command Palette (`Ctrl+Shift+P`) and ran `Claude Code: Install Plugin`.\n   - Searched for `Python LSP Server` and installed the plugin.\n   - Updated `settings.json` to include:\n ```json\n     {\n       \"claude.code.lsps\": {\n         \"python\": {\n           \"command\": \"pylsp\",\n           \"args\": [\"--check-parent-process\"],\n           \"env\": {\"PYTHONPATH\": \"/home/user/.venv/bin/python\"}\n         }\n       },\n       \"[python]\": {\n         \"editor.defaultFormatter\": \"ms-python.black-formatter\",\n         \"editor.formatOnSave\": true\n       }\n     }\n ```\n\n3. **Verified Setup:**\n   - Opened a Python file (`main.py`) with syntax errors.\n   - Errors appeared in real-time with suggestions to fix them.\n   - Ran `Format Document` (Black) and confirmed auto-formatting worked.\n\n**Troubleshooting:**\n- If LSP server fails to start, check the output log in VS Code (`View > Output > Claude Code LSP`).\n- For missing dependencies, run `pip install -r requirements.txt` in the project root.\n- If paths are misconfigured, update `PYTHONPATH` in `settings.json` to point to the correct virtual environment.\n\n**Result:**\nThe project now has real-time linting, formatting, and type checking enabled. The team can collaborate with consistent code quality standards.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:34:01.572484Z",
+    "http_status": 200,
+    "content_hash": "2220264bf156337c29657abc8cdc7a69c561aa685bb3ad3f5bd1bb1cd38183eb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-lsps.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-lsps.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code lsps: plugin marketplace with lsp",
+  "short_description_vi": "Claude Code Plugin Marketplace with LSP servers enables developers to integrate language server protocols into their workflows. Operations teams benefit from automated code analysis, linting, and refactoring. Connects to IDEs and code editors for real-time feedback and improved code quality."
+}

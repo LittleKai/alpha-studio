@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xclaude-plugin",
+  "slug": "xclaude-plugin",
+  "name": "xClaude Plugin",
+  "headline": "xClaude Plugin - Automate iOS Development",
+  "short_description": "The xClaude plugin automates iOS development workflows by integrating Xcode, Simulator, and IDB tools into modular MCPs. Developers can build, test, and automate tasks through natural language interactions with Claude, improving efficiency and reducing manual effort.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "conorluddy",
+  "install_command": "git clone https://github.com/conorluddy/xclaude-plugin.git",
+  "source_repo_url": "https://github.com/conorluddy/xclaude-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "swift",
+    "llm",
+    "claude",
+    "mcp",
+    "claude-mcp",
+    "claude-code-plugin",
+    "ios",
+    "claude-plugins",
+    "xcodebuild",
+    "developer-tools",
+    "agentic",
+    "claude-code",
+    "agentic-workflow",
+    "claudecode",
+    "tooling",
+    "plugin",
+    "context-engineering",
+    "xcode"
+  ],
+  "sections": {
+    "overview": "xClaude Plugin provides modular MCP servers that automate iOS development workflows within Claude Code. The plugin includes 8 workflow-specific MCPs (xc-build, xc-launch, xc-interact, xc-ai-assist, xc-setup, xc-testing, xc-meta, and xc-all) sharing 24 tools across Xcode, Simulator, and IDB. Developers enable only the MCPs they need, keeping context window lean while intelligently encapsulating build output, test results, and logs as structured JSON instead of raw logs. This architecture reduces token consumption by ~87% compared to monolithic tools. The plugin supports rapid development loops where Claude orchestrates multi-step workflows—building projects, installing apps, launching simulators, capturing screenshots, running tests, and automating UI interactions—all through natural conversation.\nBuild validation and error extraction without manual log parsing\nAutomated build-install-launch workflows for rapid development iteration\nUI interaction testing and accessibility tree queries without screenshots\nAI-driven UI iteration with code modification, rebuild, and visual feedback",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/conorluddy/xclaude-plugin`",
+    "usage": "```\nUse the xClaude plugin to automate [TASK] in my iOS project. The task involves [SPECIFIC_ACTION] using [TOOLS_OR_FRAMEWORKS]. Generate the necessary commands or scripts and explain how to execute them. For example: 'Use the xClaude plugin to automate the process of running unit tests on an iOS app built with SwiftUI and Combine. Generate the commands to build, test, and generate a coverage report, then explain how to run these commands in Xcode and the Simulator.'\n```\nCopy\n\n```\nHere’s how you can automate running unit tests for your iOS app using the xClaude plugin. First, ensure you have the xClaude plugin installed in your Xcode project and that the MCP server is running. The plugin integrates with Xcode’s build system, Simulator, and the `xcodebuild` command-line tool, allowing you to execute tasks without manually opening Xcode.\n\nTo automate unit testing, you can use the following commands:\n\n```bash\n# Build the app for testing\nxcodebuild build-for-testing \\\n  -workspace YourApp.xcworkspace \\\n  -scheme YourAppScheme \\\n  -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' \\\n  -derivedDataPath ./DerivedData\n\n# Run tests and generate a coverage report\nxcodebuild test-without-building \\\n  -xctestrun ./DerivedData/Logs/Test/Test.xctestrun \\\n  -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' \\\n  -resultBundlePath ./TestResults.xcresult \\\n  -enableCodeCoverage YES\n\n# Generate a coverage report in HTML format\nxcrun llvm-cov export -format=\"lcov\" \\\n  -instr-profile ./DerivedData/Logs/Test/CodeCoverage.xccovarchive/Info.plist \\\n  ./DerivedData/Build/Products/Debug-iphonesimulator/YourApp.app/YourApp > coverage.lcov\n\n# Convert the LCOV report to HTML for visualization\ngenhtml coverage.lcov -o coverage_report\n```\n\nTo execute these commands using the xClaude plugin, you can frame your request in natural language:\n\n**Prompt:** \"Use the xClaude plugin to automate running unit tests for my iOS app built with SwiftUI and Combine. Generate the commands to build, test, and generate a coverage report, then explain how to run these commands in Xcode and the Simulator.\"\n\nThe plugin will generate the commands, explain the prerequisites (e.g., ensuring the Simulator is set to iPhone 15 with iOS 17.0), and provide step-by-step instructions for running them. You can then copy these commands into your terminal or integrate them into a CI/CD pipeline. The plugin also supports saving these commands as reusable scripts for future automation tasks, reducing repetitive manual effort.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xclaude-plugin#main-content",
+      "xclaude-plugin#overview",
+      "xclaude-plugin#setup",
+      "xclaude-plugin#examples",
+      "xclaude-plugin#tools",
+      "xclaude-plugin#mcp",
+      "xclaude-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "xClaude Plugin provides modular MCP servers that automate iOS development workflows within Claude Code. The plugin includes 8 workflow-specific MCPs (xc-build, xc-launch, xc-interact, xc-ai-assist, xc-setup, xc-testing, xc-meta, and xc-all) sharing 24 tools across Xcode, Simulator, and IDB. Developers enable only the MCPs they need, keeping context window lean while intelligently encapsulating build output, test results, and logs as structured JSON instead of raw logs. This architecture reduces token consumption by ~87% compared to monolithic tools. The plugin supports rapid development loops where Claude orchestrates multi-step workflows—building projects, installing apps, launching simulators, capturing screenshots, running tests, and automating UI interactions—all through natural conversation.\nBuild validation and error extraction without manual log parsing\nAutomated build-install-launch workflows for rapid development iteration\nUI interaction testing and accessibility tree queries without screenshots\nAI-driven UI iteration with code modification, rebuild, and visual feedback",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/conorluddy/xclaude-plugin`",
+    "usage_vi": "```\nUse the xClaude plugin to automate [TASK] in my iOS project. The task involves [SPECIFIC_ACTION] using [TOOLS_OR_FRAMEWORKS]. Generate the necessary commands or scripts and explain how to execute them. For example: 'Use the xClaude plugin to automate the process of running unit tests on an iOS app built with SwiftUI and Combine. Generate the commands to build, test, and generate a coverage report, then explain how to run these commands in Xcode and the Simulator.'\n```\nCopy\n\n```\nHere’s how you can automate running unit tests for your iOS app using the xClaude plugin. First, ensure you have the xClaude plugin installed in your Xcode project and that the MCP server is running. The plugin integrates with Xcode’s build system, Simulator, and the `xcodebuild` command-line tool, allowing you to execute tasks without manually opening Xcode.\n\nTo automate unit testing, you can use the following commands:\n\n```bash\n# Build the app for testing\nxcodebuild build-for-testing \\\n  -workspace YourApp.xcworkspace \\\n  -scheme YourAppScheme \\\n  -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' \\\n  -derivedDataPath ./DerivedData\n\n# Run tests and generate a coverage report\nxcodebuild test-without-building \\\n  -xctestrun ./DerivedData/Logs/Test/Test.xctestrun \\\n  -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' \\\n  -resultBundlePath ./TestResults.xcresult \\\n  -enableCodeCoverage YES\n\n# Generate a coverage report in HTML format\nxcrun llvm-cov export -format=\"lcov\" \\\n  -instr-profile ./DerivedData/Logs/Test/CodeCoverage.xccovarchive/Info.plist \\\n  ./DerivedData/Build/Products/Debug-iphonesimulator/YourApp.app/YourApp > coverage.lcov\n\n# Convert the LCOV report to HTML for visualization\ngenhtml coverage.lcov -o coverage_report\n```\n\nTo execute these commands using the xClaude plugin, you can frame your request in natural language:\n\n**Prompt:** \"Use the xClaude plugin to automate running unit tests for my iOS app built with SwiftUI and Combine. Generate the commands to build, test, and generate a coverage report, then explain how to run these commands in Xcode and the Simulator.\"\n\nThe plugin will generate the commands, explain the prerequisites (e.g., ensuring the Simulator is set to iPhone 15 with iOS 17.0), and provide step-by-step instructions for running them. You can then copy these commands into your terminal or integrate them into a CI/CD pipeline. The plugin also supports saving these commands as reusable scripts for future automation tasks, reducing repetitive manual effort.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:15:49.923385Z",
+    "http_status": 200,
+    "content_hash": "a7bea624b648d2b391311f5a0d5d221d2fe6e98e420a6088703ca362e292ee87",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xclaude-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xclaude-plugin.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "xClaude Plugin - Automate iOS Development",
+  "short_description_vi": "The xClaude plugin automates iOS development workflows by integrating Xcode, Simulator, and IDB tools into modular MCPs. Developers can build, test, and automate tasks through natural language interactions with Claude, improving efficiency and reducing manual effort."
+}

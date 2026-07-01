@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/learn-opencode",
+  "slug": "learn-opencode",
+  "name": "browser-use",
+  "headline": "OpenCode 中文实战课源码与内容仓库",
+  "short_description": "Chinese AI practical course with source code and learning resources covering beginner to advanced workflows. Designed for operations teams and intermediate users to master AI tool integration and automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "vbgate",
+  "install_command": "git clone https://github.com/vbgate/learn-opencode.git",
+  "source_repo_url": "https://github.com/vbgate/learn-opencode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "opencode-plugin",
+    "opencode-ai",
+    "opencode",
+    "opencode-cluster",
+    "opencode-plugins"
+  ],
+  "sections": {
+    "overview": "learn-opencode is a comprehensive Chinese learning repository for AI practical skills, featuring one-lesson-per-page resources across five learning stages and three scenario tracks (creation, development, operations). The course includes 138,000+ characters of in-depth tutorials, 66+ study notes, and 20+ prompt templates, supporting domestic AI models like DeepSeek, Zhipu, and MiniMax. Built with VitePress and designed for beginners to intermediate users, it helps operations teams quickly master AI tool integration and automation workflows. The skill set includes scripts and configurations to implement practical AI-driven automation tasks effectively.\nQuickly set up an AI programming environment for personal or professional projects.\nAutomate content creation for blogs, social media, or marketing campaigns using AI tools.\nEnhance coding efficiency by integrating AI for debugging and code refactoring.\nStreamline data processing tasks with automated scripts powered by AI.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vbgate/learn-opencode`",
+    "usage": "```\n请基于 OpenCode 中文实战课源码与内容仓库，为 [TEAM_NAME] 运维团队生成一个可执行的自动化脚本模板。要求：\n1. 使用 Shell 脚本实现 [SPECIFIC_TASK]，如日志清理、配置备份或监控告警。\n2. 集成 [AI_TOOL_NAME] 的 API 调用，如 Claude 代理或其他 AI 工具。\n3. 包含错误处理、日志记录和通知机制（如邮件或钉钉）。\n4. 确保脚本可在 Linux 环境中直接运行，并提供详细的注释。\n\n示例用法：\n```bash\n./automation_script.sh --task log_cleanup --days 7 --notify admin@example.com\n```\n```\nCopy\n\n```\n### 自动化日志清理脚本示例\n\n**脚本名称**: `log_cleanup_automation.sh`\n**版本**: v1.0\n**适用场景**: 运维团队定期清理应用日志，避免磁盘空间被占满。\n\n```bash\n#!/bin/bash\n\n# 配置变量\nLOG_DIR=\"/var/log/myapp\"\nRETENTION_DAYS=7\nNOTIFY_EMAIL=\"ops-team@example.com\"\nAI_TOOL_API=\"http://localhost:8080/api/claude-agent\"\n\n# 日志记录函数\nlog() {\n    echo \"[$(date '+%Y-%m-%d %H:%M:%S')] $1\" >> /var/log/automation.log\n}\n\n# 错误处理函数\nhandle_error() {\n    log \"ERROR: $1\"\n    curl -X POST -H \"Content-Type: application/json\" -d \"{\\\"message\\\": \\\"日志清理失败: $1\\\"}\" \"$AI_TOOL_API\"\n    exit 1\n}\n\n# 检查日志目录是否存在\nif [ ! -d \"$LOG_DIR\" ]; then\n    handle_error \"日志目录 $LOG_DIR 不存在\"\nfi\n\n# 删除超过保留天数的日志文件\nlog \"开始清理日志目录: $LOG_DIR\"\nfind \"$LOG_DIR\" -name \"*.log\" -type f -mtime +$RETENTION_DAYS -exec rm -f {} \\; 2>/dev/null\n\nif [ $? -eq 0 ]; then\n    log \"成功清理日志文件\"\n    # 调用 AI 工具生成清理报告\n    curl -X POST -H \"Content-Type: application/json\" -d \"{\\\"task\\\": \\\"log_cleanup\\\", \\\"details\\\": \\\"已清理 $RETENTION_DAYS 天前的日志\\\"}\" \"$AI_TOOL_API\"\nelse\n    handle_error \"日志清理过程中出现错误\"\nfi\n\n# 发送通知邮件\nif [ -n \"$NOTIFY_EMAIL\" ]; then\n    echo \"日志清理完成\" | mail -s \"[自动化脚本] 日志清理成功\" \"$NOTIFY_EMAIL\"\nfi\n\nlog \"脚本执行完成\"\n```\n\n**执行结果示例**:\n```\n$ ./log_cleanup_automation.sh\n[2024-05-20 14:30:45] 开始清理日志目录: /var/log/myapp\n[2024-05-20 14:30:46] 成功清理日志文件\n[2024-05-20 14:30:46] 脚本执行完成\n```\n\n**AI 工具调用结果**:\n```json\n{\n  \"response\": \"已成功清理 /var/log/myapp 目录下超过 7 天的日志文件。建议定期检查磁盘空间使用情况。\",\n  \"status\": \"success\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "learn-opencode#main-content",
+      "learn-opencode#overview",
+      "learn-opencode#setup",
+      "learn-opencode#examples",
+      "learn-opencode#tools",
+      "learn-opencode#mcp",
+      "learn-opencode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "learn-opencode is a comprehensive Chinese learning repository for AI practical skills, featuring one-lesson-per-page resources across five learning stages and three scenario tracks (creation, development, operations). The course includes 138,000+ characters of in-depth tutorials, 66+ study notes, and 20+ prompt templates, supporting domestic AI models like DeepSeek, Zhipu, and MiniMax. Built with VitePress and designed for beginners to intermediate users, it helps operations teams quickly master AI tool integration and automation workflows. The skill set includes scripts and configurations to implement practical AI-driven automation tasks effectively.\nQuickly set up an AI programming environment for personal or professional projects.\nAutomate content creation for blogs, social media, or marketing campaigns using AI tools.\nEnhance coding efficiency by integrating AI for debugging and code refactoring.\nStreamline data processing tasks with automated scripts powered by AI.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vbgate/learn-opencode`",
+    "usage_vi": "```\n请基于 OpenCode 中文实战课源码与内容仓库，为 [TEAM_NAME] 运维团队生成一个可执行的自动化脚本模板。要求：\n1. 使用 Shell 脚本实现 [SPECIFIC_TASK]，如日志清理、配置备份或监控告警。\n2. 集成 [AI_TOOL_NAME] 的 API 调用，如 Claude 代理或其他 AI 工具。\n3. 包含错误处理、日志记录和通知机制（如邮件或钉钉）。\n4. 确保脚本可在 Linux 环境中直接运行，并提供详细的注释。\n\n示例用法：\n```bash\n./automation_script.sh --task log_cleanup --days 7 --notify admin@example.com\n```\n```\nCopy\n\n```\n### 自动化日志清理脚本示例\n\n**脚本名称**: `log_cleanup_automation.sh`\n**版本**: v1.0\n**适用场景**: 运维团队定期清理应用日志，避免磁盘空间被占满。\n\n```bash\n#!/bin/bash\n\n# 配置变量\nLOG_DIR=\"/var/log/myapp\"\nRETENTION_DAYS=7\nNOTIFY_EMAIL=\"ops-team@example.com\"\nAI_TOOL_API=\"http://localhost:8080/api/claude-agent\"\n\n# 日志记录函数\nlog() {\n    echo \"[$(date '+%Y-%m-%d %H:%M:%S')] $1\" >> /var/log/automation.log\n}\n\n# 错误处理函数\nhandle_error() {\n    log \"ERROR: $1\"\n    curl -X POST -H \"Content-Type: application/json\" -d \"{\\\"message\\\": \\\"日志清理失败: $1\\\"}\" \"$AI_TOOL_API\"\n    exit 1\n}\n\n# 检查日志目录是否存在\nif [ ! -d \"$LOG_DIR\" ]; then\n    handle_error \"日志目录 $LOG_DIR 不存在\"\nfi\n\n# 删除超过保留天数的日志文件\nlog \"开始清理日志目录: $LOG_DIR\"\nfind \"$LOG_DIR\" -name \"*.log\" -type f -mtime +$RETENTION_DAYS -exec rm -f {} \\; 2>/dev/null\n\nif [ $? -eq 0 ]; then\n    log \"成功清理日志文件\"\n    # 调用 AI 工具生成清理报告\n    curl -X POST -H \"Content-Type: application/json\" -d \"{\\\"task\\\": \\\"log_cleanup\\\", \\\"details\\\": \\\"已清理 $RETENTION_DAYS 天前的日志\\\"}\" \"$AI_TOOL_API\"\nelse\n    handle_error \"日志清理过程中出现错误\"\nfi\n\n# 发送通知邮件\nif [ -n \"$NOTIFY_EMAIL\" ]; then\n    echo \"日志清理完成\" | mail -s \"[自动化脚本] 日志清理成功\" \"$NOTIFY_EMAIL\"\nfi\n\nlog \"脚本执行完成\"\n```\n\n**执行结果示例**:\n```\n$ ./log_cleanup_automation.sh\n[2024-05-20 14:30:45] 开始清理日志目录: /var/log/myapp\n[2024-05-20 14:30:46] 成功清理日志文件\n[2024-05-20 14:30:46] 脚本执行完成\n```\n\n**AI 工具调用结果**:\n```json\n{\n  \"response\": \"已成功清理 /var/log/myapp 目录下超过 7 天的日志文件。建议定期检查磁盘空间使用情况。\",\n  \"status\": \"success\"\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:37:06.554279Z",
+    "http_status": 200,
+    "content_hash": "893ac2e0ceafd941bacdd94067c6ed267586a1ce9e17c0ab538c97b9b8047905",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-opencode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-opencode.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "OpenCode 中文实战课源码与内容仓库",
+  "short_description_vi": "Chinese AI practical course with source code and learning resources covering beginner to advanced workflows. Designed for operations teams and intermediate users to master AI tool integration and automation."
+}

@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/invoke-opencode-acp",
+  "slug": "invoke-opencode-acp",
+  "name": "Invoke-opencode-acp",
+  "headline": "Invoke-opencode-acp - Delegate tasks via ACP",
+  "short_description": "Invoke-opencode-acp is a Claude Code CLI skill that delegates complex tasks to an OpenCode subagent via ACP protocol, reducing token usage by 50-90%. It benefits operations teams by optimizing costs and improving efficiency in AI-driven workflows. The skill connects to Claude Code CLI and supports JSON-RPC for integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "phonowell",
+  "install_command": "git clone https://github.com/phonowell/invoke-opencode-acp.git",
+  "source_repo_url": "https://github.com/phonowell/invoke-opencode-acp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "acp-protocol",
+    "cost-saving",
+    "json-rpc",
+    "token-optimization",
+    "llm-tool",
+    "nodejs",
+    "cli",
+    "opencode",
+    "agent-delegation",
+    "claude-skills",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "invoke-opencode-acp is a Claude Code CLI skill that delegates complex tasks to an OpenCode subagent through the ACP protocol, significantly reducing token consumption in your main conversation. Instead of Claude processing every file and iteration, the subagent works independently on objectives like multi-file refactoring, batch operations, and code reviews, returning only a concise summary. This approach saves 50-90% tokens by offloading work to alternative models while keeping your main conversation responsive. The skill is ideal for operations teams managing AI-driven workflows, large codebases, and batch file operations where token optimization directly impacts costs. Installation requires Claude Code CLI, OpenCode, and Node.js, with straightforward command-line integration.\nMulti-file code refactoring with type hints or style updates\nBatch documentation updates across multiple markdown files\nCodebase-wide security reviews and vulnerability audits\nGit workflows including commits, pull requests, and branch operations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/phonowell/invoke-opencode-acp`",
+    "usage": "```\nI want to use the invoke-opencode-acp skill to [TASK]. Here are the details: [COMPANY] is in the [INDUSTRY] sector. The data I need to process is [DATA]. Please provide a step-by-step plan to accomplish this using the OpenCode subagent.\n```\nCopy\n\n```\n# Task Delegation Plan for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "invoke-opencode-acp#main-content",
+      "invoke-opencode-acp#overview",
+      "invoke-opencode-acp#setup",
+      "invoke-opencode-acp#examples",
+      "invoke-opencode-acp#tools",
+      "invoke-opencode-acp#mcp",
+      "invoke-opencode-acp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "invoke-opencode-acp is a Claude Code CLI skill that delegates complex tasks to an OpenCode subagent through the ACP protocol, significantly reducing token consumption in your main conversation. Instead of Claude processing every file and iteration, the subagent works independently on objectives like multi-file refactoring, batch operations, and code reviews, returning only a concise summary. This approach saves 50-90% tokens by offloading work to alternative models while keeping your main conversation responsive. The skill is ideal for operations teams managing AI-driven workflows, large codebases, and batch file operations where token optimization directly impacts costs. Installation requires Claude Code CLI, OpenCode, and Node.js, with straightforward command-line integration.\nMulti-file code refactoring with type hints or style updates\nBatch documentation updates across multiple markdown files\nCodebase-wide security reviews and vulnerability audits\nGit workflows including commits, pull requests, and branch operations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/phonowell/invoke-opencode-acp`",
+    "usage_vi": "```\nI want to use the invoke-opencode-acp skill to [TASK]. Here are the details: [COMPANY] is in the [INDUSTRY] sector. The data I need to process is [DATA]. Please provide a step-by-step plan to accomplish this using the OpenCode subagent.\n```\nCopy\n\n```\n# Task Delegation Plan for [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:41:42.703683Z",
+    "http_status": 200,
+    "content_hash": "5a1055e1386e182d91fee8a40df128526e2ec58a371a8c4b6f7c024a7cbbe90a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\invoke-opencode-acp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\invoke-opencode-acp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Invoke-opencode-acp - Delegate tasks via ACP",
+  "short_description_vi": "Invoke-opencode-acp is a Claude Code CLI skill that delegates complex tasks to an OpenCode subagent via ACP protocol, reducing token usage by 50-90%. It benefits operations teams by optimizing costs and improving efficiency in AI-driven workflows. The skill connects to Claude Code CLI and supports JSON-RPC for integration."
+}

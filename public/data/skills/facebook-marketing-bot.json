@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/facebook-marketing-bot",
+  "slug": "facebook-marketing-bot",
+  "name": "Facebook_Marketing_BOT",
+  "headline": "Facebook Marketing BOT: Automate Bulk Messenger",
+  "short_description": "a simple cursor automation to send messages to individual facebook page's customer (one by one). This requires no authentication or FACEBOOK API, just a simple GUI automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "akifislam",
+  "install_command": "git clone https://github.com/akifislam/Facebook_Marketing_BOT.git",
+  "source_repo_url": "https://github.com/akifislam/Facebook_Marketing_BOT",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "python3",
+    "pyautogui",
+    "no-authentication",
+    "facebook-marketing-automation",
+    "facebook-messenger-bot"
+  ],
+  "sections": {
+    "overview": "Facebook Page Marketing BOT is a PyAutoGUI-based automation tool that sends bulk messages to your Facebook page's customer conversations without requiring API authentication or complex setup. It works by automating mouse cursor movements and clicks to navigate your Meta Business Suite and sequentially message customers on Facebook Messenger. The tool solves the repetitive problem of manually messaging individual customers one-by-one, making it ideal for small businesses and page managers who need to send daily updates or promotions. Simply position your cursor at the first conversation in your Messenger panel and run the bot to automatically send your message to each customer in sequence. This approach uses GUI automation rather than API calls, making it accessible to users without developer credentials.\nDaily food/menu updates from restaurant or catering Facebook pages to customer base\nBatch customer engagement and outreach campaigns for small businesses\nPromotional message distribution to existing page followers and customers\nCustomer notification systems for product availability or special offers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/akifislam/Facebook_Marketing_BOT`",
+    "usage": "```\nAct as a Facebook Marketing BOT. I will provide you with a list of customer names and messages. Your task is to simulate sending messages to each customer on their Facebook page. Here's the data: [CUSTOMER_NAMES], [MESSAGES]. For each customer, respond with a confirmation like 'Message sent to [CUSTOMER_NAME]'.\n```\nCopy\n\n```\nMessage sent to Sarah Johnson\n\nMessage sent to Michael Chen\n\nMessage sent to Priya Patel\n\nMessage sent to David Wilson\n\nMessage sent to Emma Davis\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "facebook-marketing-bot#main-content",
+      "facebook-marketing-bot#overview",
+      "facebook-marketing-bot#setup",
+      "facebook-marketing-bot#examples",
+      "facebook-marketing-bot#tools",
+      "facebook-marketing-bot#mcp",
+      "facebook-marketing-bot#related",
+      "marketingskills",
+      "copywriting",
+      "mautic-typo3"
+    ],
+    "overview_vi": "Facebook Page Marketing BOT là một công cụ tự động hóa dựa trên PyAutoGUI, giúp gửi tin nhắn hàng loạt đến các cuộc hội thoại với khách hàng trên trang Facebook của bạn mà không cần xác thực API hay setup phức tạp. Công cụ hoạt động bằng cách tự động hóa chuyển động và lượt click của con trỏ chuột để điều hướng trên Meta Business Suite và gửi tin nhắn lần lượt cho khách hàng trên Facebook Messenger. Công cụ này giải quyết vấn đề lặp đi lặp lại khi phải nhắn tin thủ công cho từng khách hàng, rất lý tưởng cho các doanh nghiệp nhỏ và người quản lý trang cần gửi cập nhật hàng ngày hoặc chương trình khuyến mãi. Chỉ cần đặt con trỏ chuột tại cuộc hội thoại đầu tiên trong bảng điều khiển Messenger và chạy bot để tự động gửi tin nhắn tuần tự đến từng khách hàng. Phương pháp này sử dụng tự động hóa GUI thay vì gọi API, giúp những người dùng không có thông tin xác thực nhà phát triển (developer credentials) vẫn có thể tiếp cận được.\n\nCập nhật thực đơn/món ăn hàng ngày từ các trang Facebook của nhà hàng hoặc dịch vụ ăn uống đến tệp khách hàng\nCác chiến dịch tiếp cận và tương tác với khách hàng hàng loạt cho doanh nghiệp nhỏ\nPhân phối tin nhắn khuyến mãi đến những người theo dõi trang và khách hàng hiện tại\nHệ thống thông báo cho khách hàng về tình trạng còn hàng của sản phẩm hoặc các ưu đãi đặc biệt",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/akifislam/Facebook_Marketing_BOT`",
+    "usage_vi": "```\nĐóng vai trò là một Facebook Marketing BOT. Tôi sẽ cung cấp cho bạn danh sách tên khách hàng và tin nhắn. Nhiệm vụ của bạn là mô phỏng việc gửi tin nhắn đến từng khách hàng trên trang Facebook của họ. Dưới đây là dữ liệu: [CUSTOMER_NAMES], [MESSAGES]. Với mỗi khách hàng, hãy phản hồi bằng một xác nhận như 'Đã gửi tin nhắn cho [CUSTOMER_NAME]'.\n```\nSao chép\n\n```\nĐã gửi tin nhắn cho Sarah Johnson\n\nĐã gửi tin nhắn cho Michael Chen\n\nĐã gửi tin nhắn cho Priya Patel\n\nĐã gửi tin nhắn cho David Wilson\n\nĐã gửi tin nhắn cho Emma Davis\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:16:22.509910Z",
+    "http_status": 200,
+    "content_hash": "600595b7cb2a35769697660da58e084b47b7a3995f93438137cfd99b971ae4d1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\facebook-marketing-bot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\facebook-marketing-bot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Facebook Marketing BOT: Tự động gửi tin nhắn Messenger hàng loạt",
+  "short_description_vi": "Công cụ tự động hóa con trỏ chuột đơn giản để gửi tin nhắn đến từng khách hàng của trang Facebook (gửi lần lượt). Công cụ này không yêu cầu xác thực hay API Facebook, chỉ cần tự động hóa GUI đơn giản."
+}

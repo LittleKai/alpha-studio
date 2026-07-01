@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/svelte-skills-kit",
+  "slug": "svelte-skills-kit",
+  "name": "browser-use",
+  "headline": "Svelte Skills Kit - Automate Svelte Development",
+  "short_description": "Svelte and SvelteKit skills for Claude Code. Enables developers to automate frontend tasks, generate components, and optimize workflows. Integrates with Svelte 5 and SvelteKit projects, streamlining development processes.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "spences10",
+  "install_command": "git clone https://github.com/spences10/svelte-skills-kit.git",
+  "source_repo_url": "https://github.com/spences10/svelte-skills-kit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "sveltekit",
+    "svelte",
+    "claude"
+  ],
+  "sections": {
+    "overview": "svelte-skills-kit is a Claude Code plugin that distributes specialized Svelte and SvelteKit skills for automating frontend development. It includes 10 focused skills covering Svelte 5 runes ($state, $derived, $effect), component patterns, styling directives, SvelteKit routing and data flow, deployment adapters, and ecosystem guidance. Developers install the marketplace wrapper via `/plugin install svelte-skills` to access tools for component generation, load functions, form actions, and PWA configuration. The skills are synced from the canonical vendor-agnostic skills repository, supporting both Claude Code and other compatible agents.\nGenerate Svelte components using Bits UI, Ark UI, and Melt UI patterns\nAutomate SvelteKit routing, layouts, and error handling setup\nImplement Svelte 5 runes ($state, $derived, $effect) correctly in projects\nConfigure SvelteKit deployment adapters and Vite settings",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spences10/svelte-skills-kit`",
+    "usage": "```\nGenerate a Svelte 5 component for a [COMPANY] dashboard that displays [DATA] in a responsive grid layout. Include TypeScript support and ensure it follows the latest Svelte 5 conventions. Make it reusable and well-documented.\n```\nCopy\n\n```\n# Svelte 5 Data Grid Component\n\n```svelte\n<script lang=\"ts\">\n  import { onMount } from 'svelte';\n  import type { DataItem } from './types';\n\n  export let data: DataItem[] = [];\n  export let columns: string[] = [];\n\n  let gridData: DataItem[] = [];\n\n  onMount(() => {\n    gridData = data;\n  });\n\n  function handleSort(column: string) {\n    gridData.sort((a, b) => {\n      return a[column] > b[column] ? 1 : -1;\n    });\n  }\n</script>\n\n<div class=\"data-grid\">\n  <table>\n    <thead>\n      <tr>\n        {#each columns as column}\n          <th on:click={() => handleSort(column)}>{column}</th>\n        {/each}\n      </tr>\n    </thead>\n    <tbody>\n      {#each gridData as item}\n        <tr>\n          {#each columns as column}\n            <td>{item[column]}</td>\n          {/each}\n        </tr>\n      {/each}\n    </tbody>\n  </table>\n</div>\n\n<style>\n  .data-grid {\n    width: 100%;\n    overflow-x: auto;\n  }\n  table {\n    width: 100%;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 8px 16px;\n    text-align: left;\n    border: 1px solid #ddd;\n  }\n  th {\n    background-color: #f2f2f2;\n    cursor: pointer;\n  }\n  th:hover {\n    background-color: #e6e6e6;\n  }\n</style>\n```\n\n\n1. Import the component into your Svelte 5 project:\n   ```typescript\n   import DataGrid from './components/DataGrid.svelte';\n   ```\n2. Use the component with your data:\n   ```svelte\n   <DataGrid data={yourData} columns={['id', 'name', 'email', 'role']} />\n   ```\n3. Customize the component by modifying the TypeScript interface in the types file.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "svelte-skills-kit#main-content",
+      "svelte-skills-kit#overview",
+      "svelte-skills-kit#setup",
+      "svelte-skills-kit#examples",
+      "svelte-skills-kit#tools",
+      "svelte-skills-kit#mcp",
+      "svelte-skills-kit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "svelte-skills-kit is a Claude Code plugin that distributes specialized Svelte and SvelteKit skills for automating frontend development. It includes 10 focused skills covering Svelte 5 runes ($state, $derived, $effect), component patterns, styling directives, SvelteKit routing and data flow, deployment adapters, and ecosystem guidance. Developers install the marketplace wrapper via `/plugin install svelte-skills` to access tools for component generation, load functions, form actions, and PWA configuration. The skills are synced from the canonical vendor-agnostic skills repository, supporting both Claude Code and other compatible agents.\nGenerate Svelte components using Bits UI, Ark UI, and Melt UI patterns\nAutomate SvelteKit routing, layouts, and error handling setup\nImplement Svelte 5 runes ($state, $derived, $effect) correctly in projects\nConfigure SvelteKit deployment adapters and Vite settings",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spences10/svelte-skills-kit`",
+    "usage_vi": "```\nGenerate a Svelte 5 component for a [COMPANY] dashboard that displays [DATA] in a responsive grid layout. Include TypeScript support and ensure it follows the latest Svelte 5 conventions. Make it reusable and well-documented.\n```\nCopy\n\n```\n# Svelte 5 Data Grid Component\n\n```svelte\n<script lang=\"ts\">\n  import { onMount } from 'svelte';\n  import type { DataItem } from './types';\n\n  export let data: DataItem[] = [];\n  export let columns: string[] = [];\n\n  let gridData: DataItem[] = [];\n\n  onMount(() => {\n    gridData = data;\n  });\n\n  function handleSort(column: string) {\n    gridData.sort((a, b) => {\n      return a[column] > b[column] ? 1 : -1;\n    });\n  }\n</script>\n\n<div class=\"data-grid\">\n  <table>\n    <thead>\n      <tr>\n        {#each columns as column}\n          <th on:click={() => handleSort(column)}>{column}</th>\n        {/each}\n      </tr>\n    </thead>\n    <tbody>\n      {#each gridData as item}\n        <tr>\n          {#each columns as column}\n            <td>{item[column]}</td>\n          {/each}\n        </tr>\n      {/each}\n    </tbody>\n  </table>\n</div>\n\n<style>\n  .data-grid {\n    width: 100%;\n    overflow-x: auto;\n  }\n  table {\n    width: 100%;\n    border-collapse: collapse;\n  }\n  th, td {\n    padding: 8px 16px;\n    text-align: left;\n    border: 1px solid #ddd;\n  }\n  th {\n    background-color: #f2f2f2;\n    cursor: pointer;\n  }\n  th:hover {\n    background-color: #e6e6e6;\n  }\n</style>\n```\n\n\n1. Import the component into your Svelte 5 project:\n   ```typescript\n   import DataGrid from './components/DataGrid.svelte';\n   ```\n2. Use the component with your data:\n   ```svelte\n   <DataGrid data={yourData} columns={['id', 'name', 'email', 'role']} />\n   ```\n3. Customize the component by modifying the TypeScript interface in the types file."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:37:33.224706Z",
+    "http_status": 200,
+    "content_hash": "991da913bb5381d43b08cbdc6183cf36873f315ee69807fc989770da85dfcc0d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\svelte-skills-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\svelte-skills-kit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Svelte Skills Kit - Automate Svelte Development",
+  "short_description_vi": "Svelte and SvelteKit skills for Claude Code. Enables developers to automate frontend tasks, generate components, and optimize workflows. Integrates with Svelte 5 and SvelteKit projects, streamlining development processes."
+}

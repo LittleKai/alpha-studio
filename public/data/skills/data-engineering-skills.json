@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/data-engineering-skills",
+  "slug": "data-engineering-skills",
+  "name": "Data Engineering Skills",
+  "headline": "Data Engineering Skills - Automate dbt and",
+  "short_description": "Data engineering skills for analytics and data engineers working with dbt and Snowflake. Automate data pipelines, transform data, and generate SQL code. Integrates with Claude Code for AI-assisted data workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "AltimateAI",
+  "install_command": "git clone https://github.com/AltimateAI/data-engineering-skills.git",
+  "source_repo_url": "https://github.com/AltimateAI/data-engineering-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "dbt",
+    "claude",
+    "claude-skills",
+    "data-engineering",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Data Engineering Skills is a collection of Claude Code skills built for analytics and data engineers working with dbt and Snowflake. The skills encode proven workflows and best practices, transforming Claude into a capable data engineering assistant for tasks like model creation, error debugging, test schema design, documentation, SQL-to-dbt migration, refactoring, and query optimization. Benchmark results show 53% accuracy on real-world dbt tasks and 84% pass rate on Snowflake query optimization. Skills activate automatically based on your request and work standalone or integrate with Altimate's MCP server for real-time project and warehouse access.\nCreate dbt models following project conventions and best practices\nDebug dbt compilation and runtime errors with systematic troubleshooting\nWrite and test dbt schema tests matching existing project patterns\nOptimize expensive Snowflake queries using query history and performance analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AltimateAI/data-engineering-skills`",
+    "usage": "```\nAct as an expert data engineer using dbt and Snowflake. For the project [PROJECT_NAME], write a dbt model to transform [SOURCE_TABLE] into [TARGET_TABLE] with these requirements: [TRANSFORMATION_RULES]. Include error handling for null values in [COLUMN_LIST]. Generate the SQL code and explain the dbt model structure. Add a test for data quality that checks [TEST_CONDITION].\n```\nCopy\n\n```\n```sql\n-- dbt model: stg_customers.sql\n-- Transforms raw customer data into a clean staging table\n\n{{\n  config(\n    materialized='table',\n    schema='staging',\n    tags=['customer']\n  )\n}}\n\nWITH source_data AS (\n  SELECT\n    customer_id,\n    first_name,\n    last_name,\n    email,\n    signup_date,\n    country,\n    CASE\n      WHEN email IS NULL THEN 'missing_email'\n      ELSE email\n    END AS cleaned_email,\n    CASE\n      WHEN country IN ('USA', 'United States') THEN 'US'\n      WHEN country IN ('UK', 'United Kingdom') THEN 'UK'\n      ELSE 'Other'\n    END AS region\n  FROM {{ source('raw', 'customers') }}\n),\n\ncleaned_data AS (\n  SELECT\n    customer_id,\n    TRIM(first_name) AS first_name,\n    TRIM(last_name) AS last_name,\n    cleaned_email,\n    signup_date::DATE AS signup_date,\n    region,\n    CURRENT_TIMESTAMP AS etl_loaded_at\n  FROM source_data\n  WHERE customer_id IS NOT NULL\n)\n\nSELECT * FROM cleaned_data;\n\n-- Data quality test\n{% test not_null('customer_id') %}\nSELECT * FROM {{ this }}\nWHERE customer_id IS NULL;\n{% endtest %}\n\n{% test accepted_values('region', ['US', 'UK', 'Other']) %}\nSELECT * FROM {{ this }}\nWHERE region NOT IN ('US', 'UK', 'Other');\n{% endtest %}\n```\n\n**Model Structure Explanation:**\nThis dbt model follows a clean staging pattern by:\n1. First creating a CTE (`source_data`) that handles raw data cleaning including null handling for emails and standardizing country codes\n2. Then creating a `cleaned_data` CTE that applies additional transformations like trimming whitespace and proper date casting\n3. Finally selecting all columns from the cleaned data CTE\n\n**Key Features Implemented:**\n- Null handling for critical fields (customer_id, email)\n- Data type conversion (signup_date to DATE)\n- Standardization of categorical data (country to region)\n- Timestamp for tracking load times\n- Two data quality tests: one for null values in customer_id and another for valid region values\n\n**Usage Notes:**\nThis model should be run as part of your dbt project's staging layer. The tests will automatically run during `dbt test` and fail the build if any records violate the constraints. The `etl_loaded_at` field helps track when data was last processed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "data-engineering-skills#main-content",
+      "data-engineering-skills#overview",
+      "data-engineering-skills#setup",
+      "data-engineering-skills#examples",
+      "data-engineering-skills#tools",
+      "data-engineering-skills#mcp",
+      "data-engineering-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Data Engineering Skills là bộ sưu tập các kỹ năng của Claude Code được xây dựng dành cho các analytics engineer và data engineer làm việc với dbt và Snowflake. Các kỹ năng này tích hợp các quy trình làm việc hiệu quả và best practice đã được kiểm chứng, biến Claude thành một trợ lý data engineering đắc lực cho các tác vụ như tạo model, debug lỗi, thiết kế test schema, viết tài liệu, chuyển đổi SQL sang dbt, refactor và tối ưu hóa truy vấn (query optimization). Kết quả benchmark cho thấy độ chính xác đạt 53% đối với các tác vụ dbt thực tế và tỷ lệ vượt qua đạt 84% đối với tối ưu hóa truy vấn Snowflake. Các kỹ năng này tự động kích hoạt dựa trên yêu cầu của bạn, hoạt động độc lập hoặc tích hợp với MCP server của Altimate để truy cập dự án và kho dữ liệu (warehouse) theo thời gian thực.\nTạo các model dbt tuân thủ quy ước dự án và best practices\nDebug lỗi biên dịch (compilation) và lỗi runtime của dbt bằng quy trình xử lý sự cố hệ thống\nViết và kiểm thử các schema test trong dbt khớp với các pattern hiện có của dự án\nTối ưu hóa các truy vấn Snowflake tốn tài nguyên bằng cách sử dụng lịch sử truy vấn và phân tích hiệu năng",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/AltimateAI/data-engineering-skills`",
+    "usage_vi": "```\nĐóng vai trò là một chuyên gia data engineer sử dụng dbt và Snowflake. Đối với dự án [PROJECT_NAME], hãy viết một model dbt để biến đổi [SOURCE_TABLE] thành [TARGET_TABLE] với các yêu cầu sau: [TRANSFORMATION_RULES]. Bao gồm xử lý lỗi cho các giá trị null trong [COLUMN_LIST]. Tạo mã SQL và giải thích cấu trúc model dbt. Thêm một test kiểm tra chất lượng dữ liệu cho điều kiện [TEST_CONDITION].\n```\nCopy\n\n```sql\n-- dbt model: stg_customers.sql\n-- Biến đổi dữ liệu khách hàng thô thành một bảng staging sạch\n\n{{\n  config(\n    materialized='table',\n    schema='staging',\n    tags=['customer']\n  )\n}}\n\nWITH source_data AS (\n  SELECT\n    customer_id,\n    first_name,\n    last_name,\n    email,\n    signup_date,\n    country,\n    CASE\n      WHEN email IS NULL THEN 'missing_email'\n      ELSE email\n    END AS cleaned_email,\n    CASE\n      WHEN country IN ('USA', 'United States') THEN 'US'\n      WHEN country IN ('UK', 'United Kingdom') THEN 'UK'\n      ELSE 'Other'\n    END AS region\n  FROM {{ source('raw', 'customers') }}\n),\n\ncleaned_data AS (\n  SELECT\n    customer_id,\n    TRIM(first_name) AS first_name,\n    TRIM(last_name) AS last_name,\n    cleaned_email,\n    signup_date::DATE AS signup_date,\n    region,\n    CURRENT_TIMESTAMP AS etl_loaded_at\n  FROM source_data\n  WHERE customer_id IS NOT NULL\n)\n\nSELECT * FROM cleaned_data;\n\n-- Kiểm tra chất lượng dữ liệu\n{% test not_null('customer_id') %}\nSELECT * FROM {{ this }}\nWHERE customer_id IS NULL;\n{% endtest %}\n\n{% test accepted_values('region', ['US', 'UK', 'Other']) %}\nSELECT * FROM {{ this }}\nWHERE region NOT IN ('US', 'UK', 'Other');\n{% endtest %}\n```\n\n**Giải thích cấu trúc Model:**\nModel dbt này tuân thủ pattern staging sạch bằng cách:\n1. Trước tiên tạo một CTE (`source_data`) để xử lý việc làm sạch dữ liệu thô, bao gồm xử lý null cho email và chuẩn hóa mã quốc gia\n2. Sau đó tạo một CTE `cleaned_data` để áp dụng các phép biến đổi bổ sung như loại bỏ khoảng trắng dư thừa (trim whitespace) và ép kiểu ngày tháng (date casting) chính xác\n3. Cuối cùng, select tất cả các cột từ CTE dữ liệu đã được làm sạch\n\n**Các tính năng chính được triển khai:**\n- Xử lý giá trị null cho các trường quan trọng (customer_id, email)\n- Chuyển đổi kiểu dữ liệu (signup_date sang DATE)\n- Chuẩn hóa dữ liệu phân loại (country sang region)\n- Thêm timestamp để theo dõi thời gian load dữ liệu\n- Hai test kiểm tra chất lượng dữ liệu: một test kiểm tra giá trị null trong customer_id và một test kiểm tra các giá trị region hợp lệ\n\n**Lưu ý khi sử dụng:**\nModel này nên được chạy như một phần trong layer staging thuộc dự án dbt của bạn. Các test sẽ tự động chạy trong quá trình thực thi lệnh `dbt test` và sẽ báo lỗi build nếu có bất kỳ bản ghi nào vi phạm các ràng buộc. Trường `etl_loaded_at` giúp theo dõi thời điểm dữ liệu được xử lý lần cuối."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:03.828336Z",
+    "http_status": 200,
+    "content_hash": "a5058e743d6deb58df15de93aa9cf602d0c7c35c9320f825df244dd0c02cf46f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\data-engineering-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\data-engineering-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng Data Engineering - Tự động hóa dbt và",
+  "short_description_vi": "Các kỹ năng data engineering dành cho các analytics engineer và data engineer làm việc với dbt và Snowflake. Tự động hóa các data pipeline, biến đổi dữ liệu và sinh mã SQL. Tích hợp với Claude Code để tối ưu hóa quy trình xử lý dữ liệu với sự hỗ trợ của AI."
+}

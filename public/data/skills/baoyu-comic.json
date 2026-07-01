@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/baoyu-comic",
+  "slug": "baoyu-comic",
+  "name": "browser-use",
+  "headline": "Baoyu Comic AI Automation Skill",
+  "short_description": "Automates repetitive tasks in operations using Claude Code. Improves efficiency for operations teams. Integrates with Node.js environments and supports TypeScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "jimliu",
+  "install_command": "git clone https://github.com/jimliu/baoyu-skills.git",
+  "source_repo_url": "https://github.com/jimliu/baoyu-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Baoyu-comic is an AI skill that automates the creation of comic-style visual content for Claude Code and similar AI agent environments. It supports multiple style options including chalkboard style, enabling flexible layout and design customization. The skill integrates seamlessly with Node.js environments and TypeScript, allowing developers and content teams to generate visual content programmatically. Use it to streamline content creation workflows, reduce manual design effort, and maintain consistent visual styling across projects. This tool is particularly useful for teams automating repetitive creative tasks.\nGenerate comic strips from blog posts to enhance reader engagement.\nCreate educational comics that simplify complex topics for students.\nTransform user stories into comic formats for better visualization in presentations.\nAutomate the production of marketing comics to promote products on social media.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jimliu/baoyu-skills`",
+    "usage": "```\nAutomate the following repetitive task in our operations workflow using Claude Code: [DESCRIBE TASK]. The task currently involves [DETAIL PROCESS]. We want to integrate this with our existing Node.js environment and ensure it supports TypeScript. Provide a step-by-step implementation plan and the necessary code snippets.\n```\nCopy\n\n```\nTo automate the task of processing daily sales reports, we can use Claude Code to streamline the following steps: 1. Fetching data from our Salesforce CRM, 2. Cleaning and formatting the data, 3. Generating a summary report, and 4. Sending the report to the relevant stakeholders via email. Here is the implementation plan:\n\n1. **Fetching Data**: Use the Salesforce REST API to fetch the daily sales data. Ensure you have the necessary API credentials and permissions.\n2. **Data Cleaning**: Implement a data cleaning function in TypeScript to handle missing values, standardize formats, and filter out any irrelevant data.\n3. **Report Generation**: Create a function to generate a summary report. This can include calculating key metrics such as total sales, average deal size, and top-performing products.\n4. **Email Notification**: Use a Node.js email library like Nodemailer to send the generated report to the stakeholders.\n\nBelow is a sample code snippet for fetching data from Salesforce:\n\n```typescript\nimport axios from 'axios';\n\nconst fetchSalesData = async () => {\n  try {\n    const response = await axios.get('https://your-salesforce-instance.salesforce.com/services/data/v56.0/query', {\n      params: {\n        q: 'SELECT Id, Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = TODAY'\n      },\n      headers: {\n        Authorization: `Bearer ${yourAccessToken}`\n      }\n    });\n    return response.data.records;\n  } catch (error) {\n    console.error('Error fetching sales data:', error);\n    throw error;\n  }\n};\n\nfetchSalesData();\n```\n\nThis automation will significantly reduce the time and effort required to process daily sales reports, allowing the operations team to focus on more strategic tasks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "baoyu-comic#main-content",
+      "baoyu-comic#overview",
+      "baoyu-comic#setup",
+      "baoyu-comic#examples",
+      "baoyu-comic#tools",
+      "baoyu-comic#mcp",
+      "baoyu-comic#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Baoyu-comic is an AI skill that automates the creation of comic-style visual content for Claude Code and similar AI agent environments. It supports multiple style options including chalkboard style, enabling flexible layout and design customization. The skill integrates seamlessly with Node.js environments and TypeScript, allowing developers and content teams to generate visual content programmatically. Use it to streamline content creation workflows, reduce manual design effort, and maintain consistent visual styling across projects. This tool is particularly useful for teams automating repetitive creative tasks.\nGenerate comic strips from blog posts to enhance reader engagement.\nCreate educational comics that simplify complex topics for students.\nTransform user stories into comic formats for better visualization in presentations.\nAutomate the production of marketing comics to promote products on social media.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jimliu/baoyu-skills`",
+    "usage_vi": "```\nAutomate the following repetitive task in our operations workflow using Claude Code: [DESCRIBE TASK]. The task currently involves [DETAIL PROCESS]. We want to integrate this with our existing Node.js environment and ensure it supports TypeScript. Provide a step-by-step implementation plan and the necessary code snippets.\n```\nCopy\n\n```\nTo automate the task of processing daily sales reports, we can use Claude Code to streamline the following steps: 1. Fetching data from our Salesforce CRM, 2. Cleaning and formatting the data, 3. Generating a summary report, and 4. Sending the report to the relevant stakeholders via email. Here is the implementation plan:\n\n1. **Fetching Data**: Use the Salesforce REST API to fetch the daily sales data. Ensure you have the necessary API credentials and permissions.\n2. **Data Cleaning**: Implement a data cleaning function in TypeScript to handle missing values, standardize formats, and filter out any irrelevant data.\n3. **Report Generation**: Create a function to generate a summary report. This can include calculating key metrics such as total sales, average deal size, and top-performing products.\n4. **Email Notification**: Use a Node.js email library like Nodemailer to send the generated report to the stakeholders.\n\nBelow is a sample code snippet for fetching data from Salesforce:\n\n```typescript\nimport axios from 'axios';\n\nconst fetchSalesData = async () => {\n  try {\n    const response = await axios.get('https://your-salesforce-instance.salesforce.com/services/data/v56.0/query', {\n      params: {\n        q: 'SELECT Id, Name, Amount, CloseDate FROM Opportunity WHERE CloseDate = TODAY'\n      },\n      headers: {\n        Authorization: `Bearer ${yourAccessToken}`\n      }\n    });\n    return response.data.records;\n  } catch (error) {\n    console.error('Error fetching sales data:', error);\n    throw error;\n  }\n};\n\nfetchSalesData();\n```\n\nThis automation will significantly reduce the time and effort required to process daily sales reports, allowing the operations team to focus on more strategic tasks.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:41:13.667472Z",
+    "http_status": 200,
+    "content_hash": "61030983f4d926b8512c38f3ccd81b83bb25ddcde2262095ce0f8f81cd81e6db",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\baoyu-comic.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\baoyu-comic.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Baoyu Comic AI Automation Skill",
+  "short_description_vi": "Automates repetitive tasks in operations using Claude Code. Improves efficiency for operations teams. Integrates with Node.js environments and supports TypeScript."
+}

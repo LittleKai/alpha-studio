@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-007-agents",
+  "slug": "claude-007-agents",
+  "name": "Claude 007 Agents",
+  "headline": "claude-007-agents: AI Automation",
+  "short_description": "A unified AI agent orchestration system featuring 10's of specialized agents across 14 categories for modern software development. Built with advanced coordination intelligence, resilience engineering, and structured logging   capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "avivl",
+  "install_command": "git clone https://github.com/avivl/claude-007-agents.git",
+  "source_repo_url": "https://github.com/avivl/claude-007-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "agentic-ai",
+    "subagents",
+    "claudecode-subagents",
+    "ai-agents",
+    "claude",
+    "claude-code",
+    "sub-agents"
+  ],
+  "sections": {
+    "overview": "The claude-007-agents skill is a sophisticated AI agent orchestration system designed to enhance workflow automation in modern software development. This skill features a network of specialized agents across 14 categories, each equipped with advanced coordination intelligence and resilience engineering capabilities. By utilizing structured logging, developers can easily monitor and manage the performance of these agents, ensuring a seamless integration into existing workflows. One of the key benefits of the claude-007-agents skill is its ability to significantly streamline AI automation processes. While specific time savings are not quantified, the efficiency gained from using a unified orchestration system can lead to faster project completion times and reduced operational overhead. With an implementation time of just 30 minutes, this skill is accessible for intermediate users looking to enhance their development practices without extensive setup. This skill is particularly valuable for developers, product managers, and AI practitioners who are involved in software development projects. By leveraging the capabilities of claude-007-agents, teams can automate repetitive tasks, improve collaboration among agents, and ensure that their workflows are optimized for performance. For instance, a product manager could use this skill to coordinate testing and deployment processes, while a developer could automate code reviews and integration tasks, thereby freeing up time for more strategic initiatives. Implementing claude-007-agents requires an intermediate level of technical expertise, making it suitable for users familiar with AI automation and workflow management. As organizations increasingly adopt AI-first strategies, integrating this skill into their workflows can enhance productivity and innovation. By adopting the claude-007-agents skill, teams can position themselves at the forefront of AI automation, driving efficiency and achieving better results in their software development endeavors.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/avivl/claude-007-agents`",
+    "usage": "```\nAct as a unified AI agent orchestration system to solve [TASK]. Use the most appropriate agent(s) from the following categories: [CATEGORY_LIST]. Coordinate agents to break this into subtasks, handle dependencies, and resolve conflicts. Log progress in [STRUCTURED_FORMAT]. Report final output and key decision points. Task: [TASK_DESCRIPTION]\n```\nCopy\n\n```\n```json\n{\n  \"task\": \"Build a full-stack e-commerce prototype with Stripe integration, PostgreSQL database, and React frontend\",\n  \"agents_used\": [\n    {\"name\": \"BackendArchitectAgent\", \"role\": \"Design database schema and API endpoints\", \"output\": \"Generated ERD with 10 tables (Users, Products, Orders, etc.) and RESTful endpoints for CRUD operations\"},\n    {\"name\": \"FrontendDevAgent\", \"role\": \"Create React components and state management\", \"output\": \"Implemented 15 components with Redux Toolkit, responsive design with TailwindCSS\"},\n    {\"name\": \"DevOpsAgent\", \"role\": \"Configure CI/CD pipeline and deployment\", \"output\": \"Set up GitHub Actions workflow with Docker, deployed to Vercel with PostgreSQL on Supabase\"},\n    {\"name\": \"QAAgent\", \"role\": \"Test all components and integrations\", \"output\": \"Validated 47 test cases including Stripe webhooks and payment flows\"}\n  ],\n  \"conflicts_resolved\": [\n    {\"issue\": \"Database schema mismatch with frontend types\", \"resolution\": \"BackendAgent regenerated schema with JSON fields matching frontend types\"},\n    {\"issue\": \"Stripe webhook endpoint timing out\", \"resolution\": \"DevOpsAgent increased timeout to 30s and added retry logic\"}\n  ],\n  \"final_output\": {\n    \"status\": \"SUCCESS\",\n    \"artifacts\": [\n      \"GitHub repository (https://github.com/acme/ecom-prototype)\",\n      \"Live demo (https://ecom.acme.dev)\",\n      \"Postman collection for API testing\"\n    ],\n    \"next_steps\": \"Run load testing with 1000 concurrent users and optimize database indexes\"\n  },\n  \"logs\": [\n    {\"timestamp\": \"2024-05-15T14:23:01Z\", \"agent\": \"Orchestrator\", \"message\": \"Task initialized with 4 agents\"},\n    {\"timestamp\": \"2024-05-15T14:25:12Z\", \"agent\": \"BackendArchitectAgent\", \"message\": \"Generated initial schema\"},\n    {\"timestamp\": \"2024-05-15T14:32:45Z\", \"agent\": \"ConflictResolver\", \"message\": \"Resolved schema mismatch\"},\n    {\"timestamp\": \"2024-05-15T15:12:03Z\", \"agent\": \"Orchestrator\", \"message\": \"All agents completed successfully\"}\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-007-agents#main-content",
+      "claude-007-agents#overview",
+      "claude-007-agents#setup",
+      "claude-007-agents#examples",
+      "claude-007-agents#tools",
+      "claude-007-agents#mcp",
+      "claude-007-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill claude-007-agents là một hệ thống điều phối AI agent tinh vi được thiết kế để tăng cường tự động hóa quy trình làm việc (workflow) trong phát triển phần mềm hiện đại. Skill này sở hữu một mạng lưới các agent chuyên dụng thuộc 14 danh mục khác nhau, mỗi agent được trang bị trí tuệ điều phối nâng cao và khả năng phục hồi hệ thống (resilience engineering). Nhờ tích hợp ghi log có cấu trúc (structured logging), lập trình viên có thể dễ dàng giám sát và quản lý hiệu năng của các agent này, đảm bảo tích hợp mượt mà vào các workflow hiện có. Một trong những lợi ích chính của skill claude-007-agents là khả năng tinh giản đáng kể các quy trình tự động hóa bằng AI. Dù lượng thời gian tiết kiệm được chưa có số liệu định lượng cụ thể, hiệu quả đạt được từ việc sử dụng một hệ thống điều phối hợp nhất giúp đẩy nhanh tiến độ hoàn thành dự án và giảm chi phí vận hành (operational overhead). Với thời gian triển khai chỉ khoảng 30 phút, skill này rất dễ tiếp cận đối với người dùng ở trình độ trung cấp muốn cải thiện quy trình phát triển mà không cần setup phức tạp. Skill này đặc biệt hữu ích cho các lập trình viên, product manager và kỹ sư AI đang tham gia vào các dự án phát triển phần mềm. Bằng cách tận dụng các tính năng của claude-007-agents, các đội ngũ có thể tự động hóa các tác vụ lặp đi lặp lại, cải thiện khả năng cộng tác giữa các agent và đảm bảo workflow được tối ưu hóa về mặt hiệu năng. Ví dụ, product manager có thể sử dụng skill này để điều phối quá trình kiểm thử (testing) và triển khai (deployment), trong khi lập trình viên có thể tự động hóa việc review code và các tác vụ tích hợp, từ đó giải phóng thời gian cho các sáng kiến chiến lược hơn. Việc triển khai claude-007-agents đòi hỏi kiến thức kỹ thuật ở mức trung cấp, phù hợp với những người dùng đã quen thuộc với tự động hóa AI và quản lý workflow. Khi các doanh nghiệp ngày càng áp dụng nhiều chiến lược ưu tiên AI (AI-first), việc tích hợp skill này vào workflow sẽ giúp tăng cường năng suất và thúc đẩy đổi mới sáng tạo. Bằng cách áp dụng skill claude-007-agents, các đội ngũ có thể đón đầu xu hướng tự động hóa bằng AI, thúc đẩy hiệu quả và đạt được kết quả tốt hơn trong các dự án phát triển phần mềm.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/avivl/claude-007-agents`",
+    "usage_vi": "```\nHãy đóng vai trò là một hệ thống điều phối AI agent hợp nhất để giải quyết [TASK]. Sử dụng (các) agent phù hợp nhất từ các danh mục sau: [CATEGORY_LIST]. Điều phối các agent để chia nhỏ nhiệm vụ này thành các tác vụ con (subtask), xử lý các phụ thuộc (dependency) và giải quyết xung đột. Ghi log tiến trình theo định dạng [STRUCTURED_FORMAT]. Báo cáo kết quả đầu ra cuối cùng và các điểm quyết định chính. Nhiệm vụ: [TASK_DESCRIPTION]\n```\nSao chép\n\n```\n```json\n{\n  \"task\": \"Xây dựng bản mẫu (prototype) e-commerce full-stack tích hợp Stripe, cơ sở dữ liệu PostgreSQL và frontend React\",\n  \"agents_used\": [\n    {\"name\": \"BackendArchitectAgent\", \"role\": \"Thiết kế database schema và các API endpoint\", \"output\": \"Đã tạo ERD với 10 bảng (Users, Products, Orders, v.v.) và các RESTful endpoint cho các thao tác CRUD\"},\n    {\"name\": \"FrontendDevAgent\", \"role\": \"Tạo các component React và quản lý state\", \"output\": \"Đã triển khai 15 component với Redux Toolkit, thiết kế responsive với TailwindCSS\"},\n    {\"name\": \"DevOpsAgent\", \"role\": \"Cấu hình pipeline CI/CD và deployment\", \"output\": \"Đã thiết lập GitHub Actions workflow với Docker, deploy lên Vercel với PostgreSQL trên Supabase\"},\n    {\"name\": \"QAAgent\", \"role\": \"Kiểm thử toàn bộ các component và tích hợp\", \"output\": \"Đã xác thực 47 test case bao gồm Stripe webhook và luồng thanh toán\"}\n  ],\n  \"conflicts_resolved\": [\n    {\"issue\": \"Lỗi lệch khớp database schema với các kiểu dữ liệu của frontend\", \"resolution\": \"BackendAgent đã tạo lại schema với các trường JSON khớp với các kiểu dữ liệu của frontend\"},\n    {\"issue\": \"Endpoint Stripe webhook bị timeout\", \"resolution\": \"DevOpsAgent đã tăng timeout lên 30 giây và thêm cơ chế thử lại (retry logic)\"}\n  ],\n  \"final_output\": {\n    \"status\": \"SUCCESS\",\n    \"artifacts\": [\n      \"GitHub repository (https://github.com/acme/ecom-prototype)\",\n      \"Live demo (https://ecom.acme.dev)\",\n      \"Postman collection để kiểm thử API\"\n    ],\n    \"next_steps\": \"Chạy kiểm thử tải (load testing) với 1000 người dùng đồng thời và tối ưu hóa các index trong cơ sở dữ liệu\"\n  },\n  \"logs\": [\n    {\"timestamp\": \"2024-05-15T14:23:01Z\", \"agent\": \"Orchestrator\", \"message\": \"Nhiệm vụ được khởi tạo với 4 agent\"},\n    {\"timestamp\": \"2024-05-15T14:25:12Z\", \"agent\": \"BackendArchitectAgent\", \"message\": \"Đã tạo schema ban đầu\"},\n    {\"timestamp\": \"2024-05-15T14:32:45Z\", \"agent\": \"ConflictResolver\", \"message\": \"Đã giải quyết lỗi lệch khớp schema\"},\n    {\"timestamp\": \"2024-05-15T15:12:03Z\", \"agent\": \"Orchestrator\", \"message\": \"Tất cả các agent đã hoàn thành thành công\"}\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:30.253418Z",
+    "http_status": 200,
+    "content_hash": "bcf0094807d789427512bcd5c58b154fee2bf004548d1d114357f01e48ffbbf3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-007-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-007-agents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-007-agents: Tự động hóa bằng AI",
+  "short_description_vi": "Hệ thống điều phối AI agent hợp nhất tích hợp hàng chục agent chuyên dụng thuộc 14 danh mục cho quy trình phát triển phần mềm hiện đại. Được xây dựng với cơ chế điều phối thông minh nâng cao, kỹ nghệ phục hồi (resilience engineering) và khả năng ghi log có cấu trúc (structured logging)."
+}

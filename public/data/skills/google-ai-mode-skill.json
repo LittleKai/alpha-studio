@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/google-ai-mode-skill",
+  "slug": "google-ai-mode-skill",
+  "name": "Google AI Mode Skill",
+  "headline": "Google AI Mode Skill - Web Research for Claude Code",
+  "short_description": "Enables Claude Code to perform web research using Google AI Mode with citations. Benefits operations teams needing token-efficient, automated research. Connects to Claude Code CLI for zero-config setup and persistent browser profiles.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "PleasePrompto",
+  "install_command": "git clone https://github.com/PleasePrompto/google-ai-mode-skill.git",
+  "source_repo_url": "https://github.com/PleasePrompto/google-ai-mode-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "web-research",
+    "citations",
+    "ai-search",
+    "python",
+    "google-ai-mode",
+    "browser-automation",
+    "claude-skill",
+    "claude-code",
+    "patchright"
+  ],
+  "sections": {
+    "overview": "This skill integrates Google AI Mode directly into Claude Code, enabling AI-synthesized web research instead of traditional search. Rather than Claude reading multiple pages, Google AI Mode synthesizes information from dozens of sources into a single cited answer, reducing token consumption. The skill launches a stealth browser, extracts results with inline citations, and converts them to clean Markdown. It requires local Claude Code installation and works with persistent browser profiles to eliminate CAPTCHAs after initial setup. Ideal for operations teams and developers needing grounded, sourced answers on coding, comparisons, regulations, reviews, health, and finance topics.\nNext.js 15 best practices research with code examples and citations\nPostgreSQL vs MySQL technical comparisons with benchmarks\nEU AI regulation updates and startup compliance guidance\nProduct comparisons (headphones, tools) with specs and reviews",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PleasePrompto/google-ai-mode-skill`",
+    "usage": "```\nUse Google AI Mode to research [TOPIC] with citations. Focus on recent sources (last 12 months) and prioritize official documentation, peer-reviewed papers, or industry reports. Summarize key findings in bullet points with direct links to sources. Include a 'Sources' section at the end with full citations. [TOPIC] = [PLACEHOLDER]\n```\nCopy\n\n```\n### Research Summary: AI-Powered Customer Support Automation Trends (2024)\n\n**Key Findings:**\n- **Adoption Rate:** 68% of Fortune 500 companies have deployed AI chatbots for customer support in 2024, up from 42% in 2023 (Gartner, 2024).\n- **Cost Savings:** Companies using AI support automation report a 35% reduction in customer service operational costs (McKinsey, 2024).\n- **Accuracy Improvements:** AI models like Google’s Vertex AI and Anthropic’s Claude 3 now achieve 89% first-contact resolution rates in tier-1 support (Forrester, 2024).\n- **Integration Challenges:** 52% of businesses cite difficulty integrating AI tools with legacy CRM systems as a major barrier (Deloitte, 2024).\n\n**Emerging Trends:**\n- **Voice AI:** 23% of companies are piloting voice-based AI support, with a projected 40% growth in adoption by Q3 2025 (IDC, 2024).\n- **Emotion Detection:** New models can detect customer frustration in real-time with 82% accuracy, enabling proactive escalation (IBM Research, 2024).\n\n**Sources:**\n1. Gartner. (2024). *AI in Customer Service: Market Guide 2024*. Retrieved from https://www.gartner.com/en/customer-service-support/insights/ai-customer-service-trends\n2. McKinsey & Company. (2024). *The Economic Potential of Generative AI*. Retrieved from https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-economic-potential-of-generative-ai\n3. Forrester Research. (2024). *The State of AI-Powered Customer Service*. Retrieved from https://www.forrester.com/report/The+State+Of+AI+Powered+Customer+Service/-/E-RES178943\n4. Deloitte. (2024). *AI Adoption in Enterprise: 2024 Benchmark Report*. Retrieved from https://www2.deloitte.com/us/en/insights/focus/tech-trends/2024/ai-adoption-in-enterprise.html\n5. IDC. (2024). *Worldwide AI Software Platforms Market Shares, 2023*. Retrieved from https://www.idc.com/getdoc.jsp?containerId=US51234524\n6. IBM Research. (2024). *Emotion-Aware AI for Customer Support*. Retrieved from https://research.ibm.com/blog/emotion-aware-ai-customer-service\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "google-ai-mode-skill#main-content",
+      "google-ai-mode-skill#overview",
+      "google-ai-mode-skill#setup",
+      "google-ai-mode-skill#examples",
+      "google-ai-mode-skill#tools",
+      "google-ai-mode-skill#mcp",
+      "google-ai-mode-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này tích hợp trực tiếp Google AI Mode vào Claude Code, mang đến khả năng nghiên cứu web được tổng hợp bởi AI thay vì tìm kiếm truyền thống. Thay vì bắt Claude phải đọc nhiều trang web, Google AI Mode tự động tổng hợp thông tin từ hàng chục nguồn khác nhau thành một câu trả lời duy nhất kèm trích dẫn, giúp tối ưu hóa lượng token tiêu thụ. Skill này tự động khởi chạy stealth browser, trích xuất kết quả kèm trích dẫn inline và chuyển đổi thành định dạng Markdown sạch sẽ. Yêu cầu cài đặt Claude Code local và tương thích với persistent browser profiles để loại bỏ CAPTCHA sau lần setup đầu tiên. Rất phù hợp cho các đội ngũ vận hành và nhà phát triển cần các câu trả lời thực tế, có nguồn dẫn rõ ràng về lập trình, so sánh kỹ thuật, quy định pháp lý, đánh giá, y tế và tài chính.\nNghiên cứu best practices của Next.js 15 kèm ví dụ code và trích dẫn\nSo sánh kỹ thuật PostgreSQL vs MySQL kèm benchmark\nCập nhật quy định AI của EU và hướng dẫn tuân thủ dành cho startup\nSo sánh sản phẩm (tai nghe, công cụ) kèm thông số kỹ thuật và đánh giá",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/PleasePrompto/google-ai-mode-skill`",
+    "usage_vi": "```\nSử dụng Google AI Mode để nghiên cứu về [TOPIC] kèm trích dẫn. Tập trung vào các nguồn gần đây (trong vòng 12 tháng qua) và ưu tiên tài liệu chính thức, các bài báo bình duyệt (peer-reviewed papers) hoặc báo cáo ngành. Tóm tắt các phát hiện chính dưới dạng danh sách đầu dòng kèm liên kết trực tiếp đến nguồn. Thêm phần 'Nguồn tham khảo' ở cuối với đầy đủ trích dẫn. [TOPIC] = [PLACEHOLDER]\n```\nCopy\n\n```\n### Tóm tắt nghiên cứu: Xu hướng tự động hóa hỗ trợ khách hàng bằng AI (2024)\n\n**Các phát hiện chính:**\n- **Tỷ lệ áp dụng:** 68% doanh nghiệp trong danh sách Fortune 500 đã triển khai chatbot AI để hỗ trợ khách hàng vào năm 2024, tăng từ 42% trong năm 2023 (Gartner, 2024).\n- **Tiết kiệm chi phí:** Các công ty áp dụng tự động hóa hỗ trợ bằng AI báo cáo giảm 35% chi phí vận hành dịch vụ khách hàng (McKinsey, 2024).\n- **Cải thiện độ chính xác:** Các mô hình AI như Vertex AI của Google và Claude 3 của Anthropic hiện đạt tỷ lệ giải quyết ngay trong lần liên hệ đầu tiên (first-contact resolution rate) là 89% đối với hỗ trợ tier-1 (Forrester, 2024).\n- **Thách thức tích hợp:** 52% doanh nghiệp cho biết khó khăn trong việc tích hợp các công cụ AI với các hệ thống CRM cũ (legacy CRM) là một rào cản lớn (Deloitte, 2024).\n\n**Các xu hướng mới nổi:**\n- **Voice AI:** 23% công ty đang thử nghiệm hỗ trợ khách hàng bằng AI dạng thoại (voice-based AI), với mức tăng trưởng áp dụng dự kiến đạt 40% vào quý 3 năm 2025 (IDC, 2024).\n- **Nhận diện cảm xúc:** Các mô hình mới có khả năng phát hiện sự thất vọng của khách hàng theo thời gian thực với độ chính xác 82%, cho phép chủ động chuyển tiếp yêu cầu hỗ trợ (IBM Research, 2024).\n\n**Nguồn tham khảo:**\n1. Gartner. (2024). *AI in Customer Service: Market Guide 2024*. Truy cập từ https://www.gartner.com/en/customer-service-support/insights/ai-customer-service-trends\n2. McKinsey & Company. (2024). *The Economic Potential of Generative AI*. Truy cập từ https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-economic-potential-of-generative-ai\n3. Forrester Research. (2024). *The State of AI-Powered Customer Service*. Truy cập từ https://www.forrester.com/report/The+State+Of+AI+Powered+Customer+Service/-/E-RES178943\n4. Deloitte. (2024). *AI Adoption in Enterprise: 2024 Benchmark Report*. Truy cập từ https://www2.deloitte.com/us/en/insights/focus/tech-trends/2024/ai-adoption-in-enterprise.html\n5. IDC. (2024). *Worldwide AI Software Platforms Market Shares, 2023*. Truy cập từ https://www.idc.com/getdoc.jsp?containerId=US51234524\n6. IBM Research. (2024). *Emotion-Aware AI for Customer Support*. Truy cập từ https://research.ibm.com/blog/emotion-aware-ai-customer-service\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:20:18.128591Z",
+    "http_status": 200,
+    "content_hash": "ab82204fbd91d792a48e580963c193a3cb67b7de609b66c76d96f820ffd97936",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\google-ai-mode-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\google-ai-mode-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Google AI Mode Skill - Nghiên cứu Web cho Claude Code",
+  "short_description_vi": "Cho phép Claude Code thực hiện nghiên cứu web bằng Google AI Mode kèm theo trích dẫn. Phù hợp cho các đội ngũ vận hành cần nghiên cứu tự động và tiết kiệm token. Kết nối trực tiếp với Claude Code CLI giúp setup zero-config và hỗ trợ persistent browser profiles."
+}

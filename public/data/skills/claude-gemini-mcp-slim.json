@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-gemini-mcp-slim",
+  "slug": "claude-gemini-mcp-slim",
+  "name": "Claude Gemini MCP Slim",
+  "headline": "claude gemini mcp slim for code analysis",
+  "short_description": "Lightweight integration of Google's Gemini AI with Claude Code, offering 1M+ token context window, smart model selection, and code analysis tools for operations teams. Connects to existing workflows via Python, enhancing automation and code understanding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "cmdaltctr",
+  "install_command": "git clone https://github.com/cmdaltctr/claude-gemini-mcp-slim.git",
+  "source_repo_url": "https://github.com/cmdaltctr/claude-gemini-mcp-slim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-hooks",
+    "claude-code",
+    "gemini-api",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "Claude Gemini MCP Integration bridges Claude Code with Google's Gemini AI models through the Model Context Protocol, enabling developers to leverage Gemini's massive 1M+ token context window for comprehensive code analysis. The tool automatically selects between Gemini Flash for quick responses and Gemini Pro for deeper analysis, providing security reviews, performance suggestions, and architectural guidance without leaving your IDE. It includes 20+ slash commands for common tasks like quick queries, codebase analysis, and automated pre-commit reviews. The shared MCP server architecture serves multiple AI clients and projects from a single installation, keeping project directories clean while enabling real-time streaming output with progress indicators.\nSecurity code reviews across large codebases using Gemini's extended context\nPerformance analysis and architectural advice for complex projects\nPre-commit automated reviews via the hooks system\nFull project analysis leveraging 1M+ token context window",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cmdaltctr/claude-gemini-mcp-slim`",
+    "usage": "```\nUse the claude-gemini-mcp-slim integration to analyze [CODEBASE_PATH] for [SPECIFIC_ISSUE]. Focus on identifying [TECHNICAL_DETAILS] such as memory leaks, inefficient algorithms, or security vulnerabilities. Provide a prioritized list of fixes with estimated effort in hours and potential impact. Include code snippets for critical issues. If possible, suggest automated remediation steps using [TOOL_NAME] or [SCRIPT_LANGUAGE].\n```\nCopy\n\n```\nAnalyzing the `/backend/services` codebase for memory leaks in the user authentication module (v2.4.1). The scan identified 3 critical issues:\n\n1. **Memory Leak in JWT Token Cache**\n   - Location: `/services/auth/cache.py:45-52`\n   - Issue: Tokens are stored in a global dictionary without TTL expiration, causing 1.2GB memory growth over 7 days in production (observed in monitoring dashboard).\n   - Impact: High - leads to OOM errors during peak traffic (500 errors increased by 18% this week).\n   - Fix: Replace global dict with `functools.lru_cache(maxsize=10000)` with 15-minute TTL. Estimated effort: 2 hours.\n   - Code snippet:\n ```python\n     # BEFORE\n     token_cache = {}\n     \n     # AFTER\n     from functools import lru_cache\n     from datetime import datetime, timedelta\n     \n     @lru_cache(maxsize=10000)\n     def get_cached_token(token_id):\n         return token_cache.get(token_id)\n ```\n\n2. **Inefficient SQL Query in User Lookup**\n   - Location: `/services/db/users.py:89-95`\n   - Issue: Full table scan on `users` table (12M rows) due to missing index on `email` column. Query time increased from 45ms to 2.1s after recent data growth.\n   - Impact: Medium - degrades login API response time by 400ms (P95 latency).\n   - Fix: Add index `CREATE INDEX idx_users_email ON users(email)`. Estimated effort: 1 hour.\n\n3. **Hardcoded API Keys**\n   - Location: `/config/secrets.env:3`\n   - Issue: Stripe API key exposed in version control. Detected via `git-secrets` scan.\n   - Impact: Critical - potential financial fraud if key is compromised.\n   - Fix: Rotate key immediately and use environment variables. Estimated effort: 30 minutes.\n\nAutomated remediation: Created a pre-commit hook using `pre-commit` framework to validate no secrets are committed. Hook script:\n```yaml\nrepos:\n  - repo: https://github.com/Yelp/detect-secrets\n    rev: v1.4.0\n    hooks:\n      - id: detect-secrets\n        args: ['--baseline', '.secrets.baseline']\n```\n\nTotal estimated remediation time: 3.5 hours. After fixes, memory usage should stabilize at ~200MB (down from current 1.4GB), and login API latency should return to baseline.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-gemini-mcp-slim#main-content",
+      "claude-gemini-mcp-slim#overview",
+      "claude-gemini-mcp-slim#setup",
+      "claude-gemini-mcp-slim#examples",
+      "claude-gemini-mcp-slim#tools",
+      "claude-gemini-mcp-slim#mcp",
+      "claude-gemini-mcp-slim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Gemini MCP Integration bridges Claude Code with Google's Gemini AI models through the Model Context Protocol, enabling developers to leverage Gemini's massive 1M+ token context window for comprehensive code analysis. The tool automatically selects between Gemini Flash for quick responses and Gemini Pro for deeper analysis, providing security reviews, performance suggestions, and architectural guidance without leaving your IDE. It includes 20+ slash commands for common tasks like quick queries, codebase analysis, and automated pre-commit reviews. The shared MCP server architecture serves multiple AI clients and projects from a single installation, keeping project directories clean while enabling real-time streaming output with progress indicators.\nSecurity code reviews across large codebases using Gemini's extended context\nPerformance analysis and architectural advice for complex projects\nPre-commit automated reviews via the hooks system\nFull project analysis leveraging 1M+ token context window",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cmdaltctr/claude-gemini-mcp-slim`",
+    "usage_vi": "```\nUse the claude-gemini-mcp-slim integration to analyze [CODEBASE_PATH] for [SPECIFIC_ISSUE]. Focus on identifying [TECHNICAL_DETAILS] such as memory leaks, inefficient algorithms, or security vulnerabilities. Provide a prioritized list of fixes with estimated effort in hours and potential impact. Include code snippets for critical issues. If possible, suggest automated remediation steps using [TOOL_NAME] or [SCRIPT_LANGUAGE].\n```\nCopy\n\n```\nAnalyzing the `/backend/services` codebase for memory leaks in the user authentication module (v2.4.1). The scan identified 3 critical issues:\n\n1. **Memory Leak in JWT Token Cache**\n   - Location: `/services/auth/cache.py:45-52`\n   - Issue: Tokens are stored in a global dictionary without TTL expiration, causing 1.2GB memory growth over 7 days in production (observed in monitoring dashboard).\n   - Impact: High - leads to OOM errors during peak traffic (500 errors increased by 18% this week).\n   - Fix: Replace global dict with `functools.lru_cache(maxsize=10000)` with 15-minute TTL. Estimated effort: 2 hours.\n   - Code snippet:\n ```python\n     # BEFORE\n     token_cache = {}\n     \n     # AFTER\n     from functools import lru_cache\n     from datetime import datetime, timedelta\n     \n     @lru_cache(maxsize=10000)\n     def get_cached_token(token_id):\n         return token_cache.get(token_id)\n ```\n\n2. **Inefficient SQL Query in User Lookup**\n   - Location: `/services/db/users.py:89-95`\n   - Issue: Full table scan on `users` table (12M rows) due to missing index on `email` column. Query time increased from 45ms to 2.1s after recent data growth.\n   - Impact: Medium - degrades login API response time by 400ms (P95 latency).\n   - Fix: Add index `CREATE INDEX idx_users_email ON users(email)`. Estimated effort: 1 hour.\n\n3. **Hardcoded API Keys**\n   - Location: `/config/secrets.env:3`\n   - Issue: Stripe API key exposed in version control. Detected via `git-secrets` scan.\n   - Impact: Critical - potential financial fraud if key is compromised.\n   - Fix: Rotate key immediately and use environment variables. Estimated effort: 30 minutes.\n\nAutomated remediation: Created a pre-commit hook using `pre-commit` framework to validate no secrets are committed. Hook script:\n```yaml\nrepos:\n  - repo: https://github.com/Yelp/detect-secrets\n    rev: v1.4.0\n    hooks:\n      - id: detect-secrets\n        args: ['--baseline', '.secrets.baseline']\n```\n\nTotal estimated remediation time: 3.5 hours. After fixes, memory usage should stabilize at ~200MB (down from current 1.4GB), and login API latency should return to baseline.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:09.346356Z",
+    "http_status": 200,
+    "content_hash": "f228e55df97f9a39c1e23558ed0476eddaff1fe1a8490d1000379d803ed79f24",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-gemini-mcp-slim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-gemini-mcp-slim.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude gemini mcp slim for code analysis",
+  "short_description_vi": "Lightweight integration of Google's Gemini AI with Claude Code, offering 1M+ token context window, smart model selection, and code analysis tools for operations teams. Connects to existing workflows via Python, enhancing automation and code understanding."
+}

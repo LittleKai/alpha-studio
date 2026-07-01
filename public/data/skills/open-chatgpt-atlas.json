@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-chatgpt-atlas",
+  "slug": "open-chatgpt-atlas",
+  "name": "Open ChatGPT Atlas",
+  "headline": "Open ChatGPT Atlas - Browser Automation",
+  "short_description": "Open-source alternative to ChatGPT Atlas. Enables operations teams to automate browser-based tasks using AI agents. Integrates with Chromium and Electron.js for desktop automation. Supports Claude and other AI models.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "ComposioHQ",
+  "install_command": "git clone https://github.com/ComposioHQ/open-chatgpt-atlas.git",
+  "source_repo_url": "https://github.com/ComposioHQ/open-chatgpt-atlas",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "chatgpt-atlas-download",
+    "ai-automation",
+    "chatgpt",
+    "electron-js",
+    "chromium",
+    "openai",
+    "ai-browser",
+    "chatgpt-atlas",
+    "browser-use-agent",
+    "gpt",
+    "electron-js-desktop",
+    "browser-extension"
+  ],
+  "sections": {
+    "overview": "Open ChatGPT Atlas is an open-source alternative to ChatGPT Atlas that enables AI agents to automate browser-based tasks using Gemini 2.5 Computer Use. It operates in two modes: Browser Tools Mode for visual automation with screenshots and clicks, and Tool Router Mode for accessing 500+ integrations including Gmail, Slack, and GitHub through Composio. The extension runs directly in Chrome or Edge with no backend required, featuring a React-based chat sidebar, visual click indicators, and safety confirmations for sensitive actions. Built on Node.js and deployable as both a browser extension and standalone Electron application, it supports natural language instructions for automation tasks.\nAutomate checking unread messages in Gmail with a simple command.\nCreate and manage GitHub issues directly through chat prompts.\nSend messages to Slack channels without manual input.\nNavigate to websites and perform actions like scrolling or clicking with natural language commands.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ComposioHQ/open-chatgpt-atlas`",
+    "usage": "```\nAutomate the following browser-based task using open-chatgpt-atlas: [TASK_DESCRIPTION]. Use Chromium/Electron.js to interact with [WEBSITE_URL]. Ensure the AI agent follows these steps: [STEP_1], [STEP_2], and [STEP_3]. Handle errors like [COMMON_ERRORS] gracefully. Return a structured JSON report with [REQUIRED_FIELDS].\n```\nCopy\n\n```\n```json\n{\n  \"task_summary\": \"Automated login and data extraction from the client portal of Acme Corp.\",\n  \"steps_completed\": [\n    {\n      \"step\": 1,\n      \"action\": \"Navigated to https://portal.acmecorp.com\",\n      \"status\": \"success\",\n      \"timestamp\": \"2023-11-15T14:30:22Z\",\n      \"output\": \"Login page loaded successfully\"\n    },\n    {\n      \"step\": 2,\n      \"action\": \"Entered username 'ops_team@acmecorp.com' and password 'SecurePass123!'\",\n      \"status\": \"success\",\n      \"timestamp\": \"2023-11-15T14:30:45Z\",\n      \"output\": \"Authentication successful, redirected to dashboard\"\n    },\n    {\n      \"step\": 3,\n      \"action\": \"Clicked on 'Reports' tab and exported CSV for Q3 2023\",\n      \"status\": \"success\",\n      \"timestamp\": \"2023-11-15T14:31:12Z\",\n      \"output\": {\n        \"file_path\": \"/downloads/acme_q3_2023.csv\",\n        \"rows_extracted\": 1247,\n        \"columns\": [\"ClientID\", \"Revenue\", \"Status\", \"LastUpdated\"]\n      }\n    }\n  ],\n  \"errors_encountered\": [],\n  \"performance_metrics\": {\n    \"total_time_seconds\": 50,\n    \"memory_usage_mb\": 45.2,\n    \"cpu_usage_percent\": 12.5\n  },\n  \"recommendations\": [\n    \"Optimize the CSV export process to reduce file size by 15%\",\n    \"Add a retry mechanism for failed authentication attempts\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-chatgpt-atlas#main-content",
+      "open-chatgpt-atlas#overview",
+      "open-chatgpt-atlas#setup",
+      "open-chatgpt-atlas#examples",
+      "open-chatgpt-atlas#tools",
+      "open-chatgpt-atlas#mcp",
+      "open-chatgpt-atlas#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open ChatGPT Atlas là giải pháp thay thế mã nguồn mở cho ChatGPT Atlas, cho phép các AI agent tự động hóa các tác vụ trên trình duyệt bằng Gemini 2.5 Computer Use. Công cụ hoạt động ở hai chế độ: Browser Tools Mode để tự động hóa giao diện trực quan bằng ảnh chụp màn hình và thao tác click, và Tool Router Mode để truy cập hơn 500 tích hợp bao gồm Gmail, Slack và GitHub thông qua Composio. Tiện ích mở rộng này chạy trực tiếp trên Chrome hoặc Edge mà không cần backend, sở hữu sidebar chat phát triển bằng React, các chỉ báo click trực quan và tính năng xác nhận an toàn cho các hành động nhạy cảm. Được xây dựng trên Node.js và có thể triển khai dưới dạng tiện ích mở rộng trình duyệt hoặc ứng dụng Electron độc lập, dự án này hỗ trợ các câu lệnh bằng ngôn ngữ tự nhiên cho các tác vụ tự động hóa.\nTự động kiểm tra thư chưa đọc trong Gmail bằng một câu lệnh đơn giản.\nTạo và quản lý các issue trên GitHub trực tiếp qua khung chat.\nGửi tin nhắn đến các kênh Slack mà không cần thao tác thủ công.\nĐiều hướng đến các trang web và thực hiện các hành động như cuộn hoặc click bằng các câu lệnh ngôn ngữ tự nhiên.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ComposioHQ/open-chatgpt-atlas`",
+    "usage_vi": "```\nTự động hóa tác vụ trên trình duyệt sau bằng open-chatgpt-atlas: [TASK_DESCRIPTION]. Sử dụng Chromium/Electron.js để tương tác với [WEBSITE_URL]. Đảm bảo AI agent thực hiện các bước sau: [STEP_1], [STEP_2] và [STEP_3]. Xử lý các lỗi như [COMMON_ERRORS] một cách khéo léo. Trả về báo cáo dạng JSON có cấu trúc với [REQUIRED_FIELDS].\n```\nCopy\n\n```\n```json\n{\n  \"task_summary\": \"Tự động đăng nhập và trích xuất dữ liệu từ cổng thông tin khách hàng của Acme Corp.\",\n  \"steps_completed\": [\n    {\n      \"step\": 1,\n      \"action\": \"Đã điều hướng đến https://portal.acmecorp.com\",\n      \"status\": \"success\",\n      \"timestamp\": \"2023-11-15T14:30:22Z\",\n      \"output\": \"Tải trang đăng nhập thành công\"\n    },\n    {\n      \"step\": 2,\n      \"action\": \"Đã nhập username 'ops_team@acmecorp.com' và password 'SecurePass123!'\",\n      \"status\": \"success\",\n      \"timestamp\": \"2023-11-15T14:30:45Z\",\n      \"output\": \"Xác thực thành công, đã chuyển hướng đến dashboard\"\n    },\n    {\n      \"step\": 3,\n      \"action\": \"Đã click vào tab 'Reports' và xuất CSV cho Q3 2023\",\n      \"status\": \"success\",\n      \"timestamp\": \"2023-11-15T14:31:12Z\",\n      \"output\": {\n        \"file_path\": \"/downloads/acme_q3_2023.csv\",\n        \"rows_extracted\": 1247,\n        \"columns\": [\"ClientID\", \"Revenue\", \"Status\", \"LastUpdated\"]\n      }\n    }\n  ],\n  \"errors_encountered\": [],\n  \"performance_metrics\": {\n    \"total_time_seconds\": 50,\n    \"memory_usage_mb\": 45.2,\n    \"cpu_usage_percent\": 12.5\n  },\n  \"recommendations\": [\n    \"Tối ưu hóa quy trình xuất CSV để giảm dung lượng file xuống 15%\",\n    \"Thêm cơ chế thử lại (retry) cho các lần đăng nhập thất bại\"\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:46:18.861095Z",
+    "http_status": 200,
+    "content_hash": "8ef210cd984c588e3359f8e11f0f62d7a5e0710fa32a6f3f06b0fc0a032398c1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-chatgpt-atlas.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-chatgpt-atlas.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Open ChatGPT Atlas - Tự động hóa trình duyệt",
+  "short_description_vi": "Giải pháp thay thế mã nguồn mở cho ChatGPT Atlas. Cho phép các đội ngũ vận hành tự động hóa các tác vụ trên trình duyệt bằng AI agent. Tích hợp với Chromium và Electron.js để tự động hóa trên desktop. Hỗ trợ Claude và các mô hình AI khác."
+}

@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/anyrouter-check-in",
+  "slug": "anyrouter-check-in",
+  "name": "Anyrouter Check In",
+  "headline": "anyrouter check-in: multi-account platform",
+  "short_description": "Automates check-ins for AnyRouter and AgentRouter across multiple platforms and accounts. Compatible with NewAPI and OneAPI-based platforms. Integrates with Auo for Claude Code token switching.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "millylee",
+  "install_command": "git clone https://github.com/millylee/anyrouter-check-in.git",
+  "source_repo_url": "https://github.com/millylee/anyrouter-check-in",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "check-in",
+    "claudecode",
+    "anyrouter",
+    "newapi",
+    "codex",
+    "agentrouter",
+    "claude-code",
+    "oneapi"
+  ],
+  "sections": {
+    "overview": "anyrouter-check-in automates the check-in process for AnyRouter and AgentRouter across multiple platforms and user accounts. The tool is compatible with NewAPI and OneAPI-based platforms, providing seamless integration for users managing multiple router instances. It includes integration with Auo for Claude Code token switching, enabling efficient token management across different development environments. The skill handles repetitive check-in tasks, reducing manual account management overhead and improving workflow efficiency for AI agent users.\nAutomate daily check-ins for multiple AnyRouter and AgentRouter accounts to ensure account activity.\nReceive notifications via various channels when check-ins are successful or fail.\nEasily switch between different Claude Code Tokens for seamless integration with multiple services.\nConfigure custom providers for platforms that require specific API paths or authentication methods.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/millylee/anyrouter-check-in`",
+    "usage": "```\nCheck in on the status of all AnyRouter and AgentRouter accounts across [PLATFORMS] using [API_TYPE]. Provide a summary of active sessions, errors, and any accounts that need attention. Also, switch to [CLAUDE_CODE] for the next 3 responses using Auto for Claude Code.\n```\nCopy\n\n```\nHere's the status of your AnyRouter and AgentRouter accounts across Slack, Microsoft Teams, and Google Workspace using NewAPI:\n\n1. Active Sessions:\n   - Slack: 45 active sessions (0 errors)\n   - Microsoft Teams: 32 active sessions (2 errors)\n   - Google Workspace: 18 active sessions (1 error)\n\n2. Accounts Needing Attention:\n   - Microsoft Teams Account 'sales-team-3': Authentication error (Token expired)\n   - Google Workspace Account 'support-team-2': Rate limit exceeded\n\n3. Recommendations:\n   - Renew the authentication token for 'sales-team-3' in Microsoft Teams\n   - Implement rate limiting for 'support-team-2' in Google Workspace\n   - Monitor the overall usage to ensure it stays within the expected range\n\nI've switched to Claude Code 'python-3.9' for the next 3 responses using Auto for Claude Code.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "anyrouter-check-in#main-content",
+      "anyrouter-check-in#overview",
+      "anyrouter-check-in#setup",
+      "anyrouter-check-in#examples",
+      "anyrouter-check-in#tools",
+      "anyrouter-check-in#mcp",
+      "anyrouter-check-in#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "anyrouter-check-in tự động hóa quy trình check-in cho AnyRouter và AgentRouter trên nhiều nền tảng và tài khoản người dùng. Công cụ này tương thích với các nền tảng dựa trên NewAPI và OneAPI, mang lại khả năng tích hợp liền mạch cho người dùng quản lý nhiều instance router. Công cụ tích hợp với Auo để chuyển đổi token Claude Code, giúp quản lý token hiệu quả trên các môi trường phát triển khác nhau. Skill này xử lý các tác vụ check-in lặp đi lặp lại, giảm bớt gánh nặng quản lý tài khoản thủ công và nâng cao hiệu suất quy trình làm việc cho người dùng AI agent.\n\nTự động hóa việc check-in hàng ngày cho nhiều tài khoản AnyRouter và AgentRouter để đảm bảo tài khoản luôn hoạt động.\nNhận thông báo qua nhiều kênh khác nhau khi check-in thành công hoặc thất bại.\nDễ dàng chuyển đổi giữa các Claude Code Token khác nhau để tích hợp liền mạch với nhiều dịch vụ.\nCấu hình các provider tùy chỉnh cho các nền tảng yêu cầu đường dẫn API hoặc phương thức xác thực cụ thể.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/millylee/anyrouter-check-in`",
+    "usage_vi": "```\nKiểm tra trạng thái của tất cả tài khoản AnyRouter và AgentRouter trên [PLATFORMS] bằng [API_TYPE]. Cung cấp bảng tóm tắt các session đang hoạt động, các lỗi phát sinh và các tài khoản cần lưu ý. Đồng thời, chuyển sang [CLAUDE_CODE] cho 3 phản hồi tiếp theo bằng cách sử dụng Auto cho Claude Code.\n```\nCopy\n\n```\nDưới đây là trạng thái các tài khoản AnyRouter và AgentRouter của bạn trên Slack, Microsoft Teams và Google Workspace bằng NewAPI:\n\n1. Session đang hoạt động:\n   - Slack: 45 session đang hoạt động (0 lỗi)\n   - Microsoft Teams: 32 session đang hoạt động (2 lỗi)\n   - Google Workspace: 18 session đang hoạt động (1 lỗi)\n\n2. Tài khoản cần lưu ý:\n   - Tài khoản Microsoft Teams 'sales-team-3': Lỗi xác thực (Token đã hết hạn)\n   - Tài khoản Google Workspace 'support-team-2': Vượt quá giới hạn lượt yêu cầu (Rate limit exceeded)\n\n3. Khuyến nghị:\n   - Gia hạn token xác thực cho 'sales-team-3' trên Microsoft Teams\n   - Thiết lập giới hạn rate limit cho 'support-team-2' trên Google Workspace\n   - Theo dõi mức độ sử dụng tổng thể để đảm bảo nằm trong phạm vi dự kiến\n\nTôi đã chuyển sang Claude Code 'python-3.9' cho 3 phản hồi tiếp theo bằng cách sử dụng Auto cho Claude Code.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:47:13.214065Z",
+    "http_status": 200,
+    "content_hash": "b82cda49392ac67e2101af6463f13726bc1604d3fd4e792654ac09177475a2d7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\anyrouter-check-in.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\anyrouter-check-in.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "anyrouter check-in: hỗ trợ đa tài khoản và nền tảng",
+  "short_description_vi": "Tự động hóa quá trình check-in cho AnyRouter và AgentRouter trên nhiều nền tảng và tài khoản. Tương thích với các nền tảng dựa trên NewAPI và OneAPI. Tích hợp với Auo để chuyển đổi token Claude Code."
+}

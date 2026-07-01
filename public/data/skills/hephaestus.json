@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hephaestus",
+  "slug": "hephaestus",
+  "name": "browser-use",
+  "headline": "Hephaestus - Dynamic Workflow Automation",
+  "short_description": "Hephaestus is a semi-structured agentic framework that enables autonomous agents to build workflows by discovering tasks dynamically. Operations teams benefit from reduced upfront planning and increased adaptability. It connects to Python-based tools and workflows, leveraging Claude agents for task discovery and execution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Ido-Levi",
+  "install_command": "git clone https://github.com/Ido-Levi/Hephaestus.git",
+  "source_repo_url": "https://github.com/Ido-Levi/Hephaestus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "autonomous-agents",
+    "ai-agents",
+    "llm",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Hephaestus enables AI agents to construct workflows dynamically by discovering tasks in real-time, rather than requiring predefined branching logic upfront. The framework organizes work into logical phase types—such as Analysis, Implementation, and Validation—allowing agents to spawn new tasks based on actual findings. Guardian and Conductor agents monitor workflow alignment, detect duplicate work, and steer agents toward phase goals. Built-in features include RAG-powered collective memory via Qdrant, Git worktree isolation for parallel agent development, and a Kanban ticket system with dependency tracking. Teams using Hephaestus reduce planning overhead while gaining adaptability to unexpected discoveries during complex operations.\nAutomatically generate software from a Product Requirements Document (PRD).\nSystematically analyze, fix, and verify bugs in existing codebases.\nScan and index a codebase to enhance knowledge management.\nAdd new features to existing applications following established patterns.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ido-Levi/Hephaestus`",
+    "usage": "```\nCreate a workflow for [PROCESS] using Hephaestus. The workflow should include [NUMBER] tasks. The tasks should be discovered dynamically and executed using Python-based tools. The workflow should be adaptable to changes in [VARIABLES].\n```\nCopy\n\n```\nBased on your request, I've created a dynamic workflow for the data processing process. The workflow includes 5 tasks: data collection, data cleaning, data transformation, data analysis, and data visualization. The tasks were discovered and executed using Python-based tools such as Pandas, NumPy, and Matplotlib. The workflow is adaptable to changes in data sources, data formats, and analysis requirements. The workflow is as follows: 1. Data Collection: The workflow starts with data collection from various sources such as CSV files, Excel files, and databases. The data is collected using Python-based tools such as Pandas and SQLAlchemy. 2. Data Cleaning: The collected data is then cleaned to remove any inconsistencies, duplicates, and missing values. The data cleaning process is performed using Python-based tools such as Pandas and NumPy. 3. Data Transformation: The cleaned data is then transformed to make it suitable for analysis. The data transformation process is performed using Python-based tools such as Pandas and NumPy. 4. Data Analysis: The transformed data is then analyzed to extract meaningful insights. The data analysis process is performed using Python-based tools such as Pandas, NumPy, and Scikit-learn. 5. Data Visualization: The analyzed data is then visualized to present the insights in a clear and concise manner. The data visualization process is performed using Python-based tools such as Matplotlib and Seaborn.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hephaestus#main-content",
+      "hephaestus#overview",
+      "hephaestus#setup",
+      "hephaestus#examples",
+      "hephaestus#tools",
+      "hephaestus#mcp",
+      "hephaestus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Hephaestus enables AI agents to construct workflows dynamically by discovering tasks in real-time, rather than requiring predefined branching logic upfront. The framework organizes work into logical phase types—such as Analysis, Implementation, and Validation—allowing agents to spawn new tasks based on actual findings. Guardian and Conductor agents monitor workflow alignment, detect duplicate work, and steer agents toward phase goals. Built-in features include RAG-powered collective memory via Qdrant, Git worktree isolation for parallel agent development, and a Kanban ticket system with dependency tracking. Teams using Hephaestus reduce planning overhead while gaining adaptability to unexpected discoveries during complex operations.\nAutomatically generate software from a Product Requirements Document (PRD).\nSystematically analyze, fix, and verify bugs in existing codebases.\nScan and index a codebase to enhance knowledge management.\nAdd new features to existing applications following established patterns.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ido-Levi/Hephaestus`",
+    "usage_vi": "```\nCreate a workflow for [PROCESS] using Hephaestus. The workflow should include [NUMBER] tasks. The tasks should be discovered dynamically and executed using Python-based tools. The workflow should be adaptable to changes in [VARIABLES].\n```\nCopy\n\n```\nBased on your request, I've created a dynamic workflow for the data processing process. The workflow includes 5 tasks: data collection, data cleaning, data transformation, data analysis, and data visualization. The tasks were discovered and executed using Python-based tools such as Pandas, NumPy, and Matplotlib. The workflow is adaptable to changes in data sources, data formats, and analysis requirements. The workflow is as follows: 1. Data Collection: The workflow starts with data collection from various sources such as CSV files, Excel files, and databases. The data is collected using Python-based tools such as Pandas and SQLAlchemy. 2. Data Cleaning: The collected data is then cleaned to remove any inconsistencies, duplicates, and missing values. The data cleaning process is performed using Python-based tools such as Pandas and NumPy. 3. Data Transformation: The cleaned data is then transformed to make it suitable for analysis. The data transformation process is performed using Python-based tools such as Pandas and NumPy. 4. Data Analysis: The transformed data is then analyzed to extract meaningful insights. The data analysis process is performed using Python-based tools such as Pandas, NumPy, and Scikit-learn. 5. Data Visualization: The analyzed data is then visualized to present the insights in a clear and concise manner. The data visualization process is performed using Python-based tools such as Matplotlib and Seaborn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:46:48.359523Z",
+    "http_status": 200,
+    "content_hash": "bb764091c632afc5ad3719c6b650bc01f630f1bd20aa4b5c22c1097248919b08",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hephaestus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hephaestus.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Hephaestus - Dynamic Workflow Automation",
+  "short_description_vi": "Hephaestus is a semi-structured agentic framework that enables autonomous agents to build workflows by discovering tasks dynamically. Operations teams benefit from reduced upfront planning and increased adaptability. It connects to Python-based tools and workflows, leveraging Claude agents for task discovery and execution."
+}

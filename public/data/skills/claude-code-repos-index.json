@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-repos-index",
+  "slug": "claude-code-repos-index",
+  "name": "Claude Code repos index",
+  "headline": "Claude Code repos index - starter templates",
+  "short_description": "Index of Claude Code repositories with starter templates for common and creative automation tasks. Benefits operations teams by providing reusable code patterns for agentic AI CLIs. Connects to Python workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "danielrosehill",
+  "install_command": "git clone https://github.com/danielrosehill/Claude-Code-Repos-Index.git",
+  "source_repo_url": "https://github.com/danielrosehill/Claude-Code-Repos-Index",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-code-cli",
+    "index-repos"
+  ],
+  "sections": {
+    "overview": "Claude Code Repos Index is a curated collection of pre-configured agent workspaces and project templates organized across 15+ domains including systems administration, productivity, legal research, financial planning, and communications. Each workspace follows a consistent pattern with defined folder structures, CLAUDE.md agent instructions, slash commands, and MCP configurations to create purpose-built environments. The index includes 28 cluster plugins that ship domain primitives globally and provision scaffolds on demand, eliminating the need to fork separate template repos for each workflow. Operations teams and AI engineers benefit from ready-to-adapt code patterns and reusable agent configurations that work across Claude Code, Cursor, and other agentic AI CLIs.\nSystems administration and remote server management with Claude agents\nLegal research and documentation workspaces\nFinancial planning and career development templates\nProductivity and project planning with conversational AI",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/danielrosehill/Claude-Code-Repos-Index`",
+    "usage": "```\nGenerate a starter template for a [TASK] automation using Claude Code. Use the most relevant repository from the Claude-Code-Repos-Index as a base. Include [PLACEHOLDERS] for customization like project name, input/output paths, and API keys. Structure the template with clear comments and error handling.\n```\nCopy\n\n```\n```python\n# File: github_issue_automation.py\n# Description: Automates GitHub issue triage using Claude Code\n# Repository: claude-code-repos-index/issue-automation-template\n# Version: 1.2.0\n\nimport os\nfrom github import Github\nfrom typing import List, Dict\n\n# [PLACEHOLDER] Replace with your GitHub personal access token\nGITHUB_TOKEN = os.getenv('GITHUB_TOKEN', 'ghp_[REDACTED]')\n\n# [PLACEHOLDER] Replace with target repository owner/name\nREPO_OWNER = '[ORGANIZATION]'\nREPO_NAME = '[REPO_NAME]'\n\n# [PLACEHOLDER] Define issue labels to monitor\nMONITOR_LABELS = ['bug', 'enhancement', 'needs-triage']\n\n# [PLACEHOLDER] Define response templates for different issue types\ndef get_response_template(issue: Dict) -> str:\n    if 'bug' in issue['labels']:\n        return \"\"\"\n        Thanks for reporting this issue! Our team has been notified and will investigate within 48 hours.\n        \n        Reproduction steps:\n        1. [First Step]\n        2. [Second Step]\n        3. [Third Step]\n        \n        Expected vs. Actual behavior:\n        [Description of expected behavior]\n        [Description of actual behavior]\n        \"\"\"\n    elif 'enhancement' in issue['labels']:\n        return \"\"\"\n        Great suggestion! We've added this to our product backlog.\n        \n        Priority: [High/Medium/Low]\n        Estimated effort: [X story points]\n        \"\"\"\n    return \"Thank you for your feedback!\"\n\n# Main automation function\ndef triage_github_issues():\n    try:\n        # Initialize GitHub client\n        g = Github(GITHUB_TOKEN)\n        repo = g.get_repo(f\"{REPO_OWNER}/{REPO_NAME}\")\n        \n        # Fetch issues with monitoring labels\n        issues = repo.get_issues(labels=MONITOR_LABELS)\n        \n        for issue in issues:\n            if not issue.pull_request:  # Skip PRs\n                # [PLACEHOLDER] Add custom triage logic here\n                response = get_response_template(issue.model_dump())\n                issue.create_comment(response)\n                print(f\"Commented on issue #{issue.number}\")\n                \n    except Exception as e:\n        print(f\"Error in GitHub issue automation: {str(e)}\")\n        raise\n\nif __name__ == \"__main__\":\n    triage_github_issues()\n```\n\n**Key Features of This Template:**\n1. **Modular Design**: Separates GitHub API calls from business logic\n2. **Environment Variables**: Uses `GITHUB_TOKEN` for secure credential handling\n3. **Extensible**: Easy to add new label handlers in `get_response_template()`\n4. **Error Handling**: Catches and reports automation failures\n5. **Claude Code Ready**: Includes type hints and clear docstrings for agentic execution\n\n**Usage Example:**\n```bash\n# Set your GitHub token\n$ export GITHUB_TOKEN=ghp_your_token_here\n\n# Run the automation\n$ claude run github_issue_automation.py --repo-owner myorg --repo-name myrepo\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-repos-index#main-content",
+      "claude-code-repos-index#overview",
+      "claude-code-repos-index#setup",
+      "claude-code-repos-index#examples",
+      "claude-code-repos-index#tools",
+      "claude-code-repos-index#mcp",
+      "claude-code-repos-index#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Repos Index is a curated collection of pre-configured agent workspaces and project templates organized across 15+ domains including systems administration, productivity, legal research, financial planning, and communications. Each workspace follows a consistent pattern with defined folder structures, CLAUDE.md agent instructions, slash commands, and MCP configurations to create purpose-built environments. The index includes 28 cluster plugins that ship domain primitives globally and provision scaffolds on demand, eliminating the need to fork separate template repos for each workflow. Operations teams and AI engineers benefit from ready-to-adapt code patterns and reusable agent configurations that work across Claude Code, Cursor, and other agentic AI CLIs.\nSystems administration and remote server management with Claude agents\nLegal research and documentation workspaces\nFinancial planning and career development templates\nProductivity and project planning with conversational AI",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/danielrosehill/Claude-Code-Repos-Index`",
+    "usage_vi": "```\nGenerate a starter template for a [TASK] automation using Claude Code. Use the most relevant repository from the Claude-Code-Repos-Index as a base. Include [PLACEHOLDERS] for customization like project name, input/output paths, and API keys. Structure the template with clear comments and error handling.\n```\nCopy\n\n```\n```python\n# File: github_issue_automation.py\n# Description: Automates GitHub issue triage using Claude Code\n# Repository: claude-code-repos-index/issue-automation-template\n# Version: 1.2.0\n\nimport os\nfrom github import Github\nfrom typing import List, Dict\n\n# [PLACEHOLDER] Replace with your GitHub personal access token\nGITHUB_TOKEN = os.getenv('GITHUB_TOKEN', 'ghp_[REDACTED]')\n\n# [PLACEHOLDER] Replace with target repository owner/name\nREPO_OWNER = '[ORGANIZATION]'\nREPO_NAME = '[REPO_NAME]'\n\n# [PLACEHOLDER] Define issue labels to monitor\nMONITOR_LABELS = ['bug', 'enhancement', 'needs-triage']\n\n# [PLACEHOLDER] Define response templates for different issue types\ndef get_response_template(issue: Dict) -> str:\n    if 'bug' in issue['labels']:\n        return \"\"\"\n        Thanks for reporting this issue! Our team has been notified and will investigate within 48 hours.\n        \n        Reproduction steps:\n        1. [First Step]\n        2. [Second Step]\n        3. [Third Step]\n        \n        Expected vs. Actual behavior:\n        [Description of expected behavior]\n        [Description of actual behavior]\n        \"\"\"\n    elif 'enhancement' in issue['labels']:\n        return \"\"\"\n        Great suggestion! We've added this to our product backlog.\n        \n        Priority: [High/Medium/Low]\n        Estimated effort: [X story points]\n        \"\"\"\n    return \"Thank you for your feedback!\"\n\n# Main automation function\ndef triage_github_issues():\n    try:\n        # Initialize GitHub client\n        g = Github(GITHUB_TOKEN)\n        repo = g.get_repo(f\"{REPO_OWNER}/{REPO_NAME}\")\n        \n        # Fetch issues with monitoring labels\n        issues = repo.get_issues(labels=MONITOR_LABELS)\n        \n        for issue in issues:\n            if not issue.pull_request:  # Skip PRs\n                # [PLACEHOLDER] Add custom triage logic here\n                response = get_response_template(issue.model_dump())\n                issue.create_comment(response)\n                print(f\"Commented on issue #{issue.number}\")\n                \n    except Exception as e:\n        print(f\"Error in GitHub issue automation: {str(e)}\")\n        raise\n\nif __name__ == \"__main__\":\n    triage_github_issues()\n```\n\n**Key Features of This Template:**\n1. **Modular Design**: Separates GitHub API calls from business logic\n2. **Environment Variables**: Uses `GITHUB_TOKEN` for secure credential handling\n3. **Extensible**: Easy to add new label handlers in `get_response_template()`\n4. **Error Handling**: Catches and reports automation failures\n5. **Claude Code Ready**: Includes type hints and clear docstrings for agentic execution\n\n**Usage Example:**\n```bash\n# Set your GitHub token\n$ export GITHUB_TOKEN=ghp_your_token_here\n\n# Run the automation\n$ claude run github_issue_automation.py --repo-owner myorg --repo-name myrepo\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:33:23.849716Z",
+    "http_status": 200,
+    "content_hash": "604b4471a8feb2a6efa9356400b4217621c2049380f5f15c1646581d922d0753",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-repos-index.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-repos-index.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code repos index - starter templates",
+  "short_description_vi": "Index of Claude Code repositories with starter templates for common and creative automation tasks. Benefits operations teams by providing reusable code patterns for agentic AI CLIs. Connects to Python workflows and supports Claude agents."
+}

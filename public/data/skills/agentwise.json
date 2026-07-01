@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentwise",
+  "slug": "agentwise",
+  "name": "agentwise",
+  "headline": "agentwise: Optimize Multi-Agent Workflows",
+  "short_description": "Agentwise enables multi-agent orchestration for Claude Code, optimizing tokens by 15-30% and improving agent performance through self-improvement and automatic verification. Developers and operations teams benefit from streamlined workflows and reduced costs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "VibeCodingWithPhil",
+  "install_command": "git clone https://github.com/VibeCodingWithPhil/agentwise.git",
+  "source_repo_url": "https://github.com/VibeCodingWithPhil/agentwise",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "orchestration",
+    "multi-agent",
+    "mcp",
+    "token-optimization",
+    "typescript",
+    "nodejs",
+    "development-tools",
+    "workflow-automation",
+    "ai-agents",
+    "requirements-planning",
+    "ai-powered",
+    "database-integration",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "agentwise is a powerful automation skill designed for Claude Code, enabling multi-agent orchestration that optimizes token usage by 15-30%. This skill features self-improving agents that adapt over time and automatic verification processes to ensure reliability and efficiency in your workflows. By leveraging agentwise, developers and AI practitioners can streamline complex tasks that involve multiple AI agents, enhancing productivity and reducing overhead. The key benefits of agentwise include significant token optimization, which can lead to cost savings in environments where token usage directly impacts performance and expenses. While the exact time savings are currently unknown, the efficiency gained from automating agent interactions and improving their performance can lead to faster project delivery and reduced manual intervention. This skill is particularly valuable for teams focused on AI automation and workflow automation, allowing them to maximize the potential of their AI agents. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their AI-first workflows. It is especially relevant for those working in environments where multi-agent systems are commonplace, such as data engineering, machine learning, and software development. Practical use cases include automating data processing tasks, managing complex decision-making processes in real-time, and enhancing the responsiveness of AI-driven applications. Implementation of agentwise is categorized as intermediate, requiring approximately 30 minutes to set up. Users should be familiar with Claude Code and have a basic understanding of multi-agent systems to fully leverage its capabilities. By integrating agentwise into your existing workflows, you can create a more efficient and adaptive AI environment that aligns with modern automation needs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VibeCodingWithPhil/agentwise`",
+    "usage": "```\nSet up an Agentwise multi-agent orchestration system for [PROJECT_NAME] to optimize token usage and improve agent performance. Define [AGENT_ROLES] (e.g., planner, executor, verifier) and their [INTERACTION_PROTOCOLS]. Implement self-improvement mechanisms for [SPECIFIC_METRICS] (e.g., task completion rate, token efficiency) and automatic verification for [QUALITY_CHECKS]. Provide a step-by-step implementation plan with code snippets and expected improvements in [TOKEN_SAVINGS_PERCENTAGE] and [PERFORMANCE_GAINS].\n```\nCopy\n\n```\nHere’s a concrete implementation of Agentwise for a fictional project called 'DocuGenius,' an automated documentation generator for Python projects. The system orchestrates three agents: a **Planner** (breaks down tasks), an **Executor** (writes code/docs), and a **Verifier** (validates output against requirements). The Planner first analyzes the project structure using `tree -I '__pycache__|.git'` and generates a task breakdown like:\n\n```\n1. Analyze project structure (Planner)\n2. Generate docstrings for core modules (Executor)\n3. Validate docstring coverage (Verifier)\n4. Self-improve Planner’s task breakdown (Agentwise)\n```\n\nThe Executor then writes docstrings for `utils.py` and `models.py`, producing:\n\n```python\n# utils.py\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    \"\"\"\n    Calculate the discounted price of a product.\n\n    Args:\n        price: Original price of the product.\n        discount_rate: Percentage discount to apply (e.g., 0.2 for 20%).\n\n    Returns:\n        The discounted price as a float.\n    \"\"\"\n    return price * (1 - discount_rate)\n```\n\nThe Verifier checks coverage against a predefined rule set (e.g., 90% of public functions must have docstrings) and flags missing documentation in `config.py`. Agentwise then triggers a self-improvement loop: the Planner revises its task breakdown to include `config.py` explicitly, reducing redundant verification steps. Over 10 iterations, the system achieves a **22% reduction in token usage** (from 18,000 to 14,040 tokens) and improves task completion rate from 78% to 94%.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentwise#main-content",
+      "agentwise#overview",
+      "agentwise#setup",
+      "agentwise#examples",
+      "agentwise#tools",
+      "agentwise#mcp",
+      "agentwise#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "agentwise là một skill tự động hóa mạnh mẽ được thiết kế cho Claude Code, hỗ trợ điều phối multi-agent giúp tối ưu hóa lượng token sử dụng từ 15-30%. Skill này sở hữu các agent tự cải tiến có khả năng thích ứng theo thời gian và các quy trình tự động xác thực nhằm đảm bảo độ tin cậy cũng như tính hiệu quả cho các workflow của bạn. Bằng cách tận dụng agentwise, các nhà phát triển và chuyên gia AI có thể tinh giản các tác vụ phức tạp liên quan đến nhiều AI agent, từ đó nâng cao năng suất và giảm tải chi phí vận hành. Lợi ích cốt lõi của agentwise bao gồm việc tối ưu hóa token đáng kể, giúp tiết kiệm chi phí trong các môi trường mà lượng token sử dụng ảnh hưởng trực tiếp đến hiệu năng và ngân sách. Dù chưa có số liệu chính xác về lượng thời gian tiết kiệm được, nhưng hiệu quả có được từ việc tự động hóa tương tác giữa các agent và cải thiện hiệu suất của chúng có thể giúp đẩy nhanh tiến độ dự án và giảm thiểu can thiệp thủ công. Skill này đặc biệt giá trị đối với các đội ngũ tập trung vào tự động hóa AI và tự động hóa workflow, cho phép họ khai thác tối đa tiềm năng của các AI agent. Đây là skill lý tưởng dành cho các nhà phát triển, product manager và chuyên gia AI đang tìm cách nâng cấp các workflow ưu tiên AI (AI-first workflow). Nó đặc biệt phù hợp cho những ai đang làm việc trong môi trường phổ biến hệ thống multi-agent như kỹ thuật dữ liệu (data engineering), học máy (machine learning) và phát triển phần mềm. Các case study thực tế bao gồm tự động hóa tác vụ xử lý dữ liệu, quản lý các quy trình ra quyết định phức tạp theo thời gian thực và tăng cường khả năng phản hồi của các ứng dụng dựa trên AI. Việc triển khai agentwise được xếp ở mức độ trung bình, mất khoảng 30 phút để setup. Người dùng nên quen thuộc với Claude Code và có hiểu biết cơ bản về hệ thống multi-agent để khai thác tối đa năng lực của nó. Bằng cách tích hợp agentwise vào các workflow hiện tại, bạn có thể tạo ra một môi trường AI hiệu quả và có khả năng thích ứng cao hơn, đáp ứng tốt nhu cầu tự động hóa hiện đại.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/VibeCodingWithPhil/agentwise`",
+    "usage_vi": "```\nThiết lập hệ thống điều phối multi-agent Agentwise cho [PROJECT_NAME] để tối ưu hóa lượng token sử dụng và cải thiện hiệu suất của agent. Định nghĩa các vai trò [AGENT_ROLES] (ví dụ: planner, executor, verifier) và giao thức tương tác của chúng [INTERACTION_PROTOCOLS]. Triển khai cơ chế tự cải tiến cho [SPECIFIC_METRICS] (ví dụ: tỷ lệ hoàn thành tác vụ, hiệu quả sử dụng token) và tự động xác thực cho các bước kiểm tra chất lượng [QUALITY_CHECKS]. Cung cấp kế hoạch triển khai từng bước kèm theo các đoạn code và cải tiến kỳ vọng cho [TOKEN_SAVINGS_PERCENTAGE] và [PERFORMANCE_GAINS].\n```\nCopy\n\n```\nDưới đây là một ví dụ triển khai thực tế của Agentwise cho một dự án giả định có tên là 'DocuGenius' - một công cụ tạo tài liệu tự động cho các dự án Python. Hệ thống này điều phối ba agent bao gồm: **Planner** (chia nhỏ tác vụ), **Executor** (viết code/tài liệu) và **Verifier** (xác thực đầu ra dựa trên các yêu cầu). Đầu tiên, Planner sẽ phân tích cấu trúc dự án bằng lệnh `tree -I '__pycache__|.git'` và tạo ra bảng phân rã tác vụ như sau:\n\n```\n1. Phân tích cấu trúc dự án (Planner)\n2. Tạo docstring cho các module cốt lõi (Executor)\n3. Xác thực độ bao phủ của docstring (Verifier)\n4. Tự cải tiến bảng phân rã tác vụ của Planner (Agentwise)\n```\n\nSau đó, Executor viết docstring cho `utils.py` và `models.py`, tạo ra kết quả:\n\n```python\n# utils.py\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    \"\"\"\n    Tính giá sau khi giảm giá của một sản phẩm.\n\n    Args:\n        price: Giá gốc của sản phẩm.\n        discount_rate: Tỷ lệ phần trăm giảm giá áp dụng (ví dụ: 0.2 cho 20%).\n\n    Returns:\n        Giá sau khi giảm dưới dạng số thực (float).\n    \"\"\"\n    return price * (1 - discount_rate)\n```\n\nVerifier sẽ kiểm tra độ bao phủ dựa trên một bộ quy tắc được định nghĩa trước (ví dụ: 90% các hàm public phải có docstring) và gắn cờ phần tài liệu còn thiếu trong file `config.py`. Sau đó, Agentwise sẽ kích hoạt một vòng lặp tự cải tiến (self-improvement loop): Planner sửa lại bảng phân rã tác vụ để đưa `config.py` vào một cách rõ ràng, giúp giảm bớt các bước xác thực dư thừa. Sau 10 vòng lặp, hệ thống đã **giảm được 22% lượng token sử dụng** (từ 18.000 xuống còn 14.040 token) và nâng tỷ lệ hoàn thành tác vụ từ 78% lên 94%.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:25.561386Z",
+    "http_status": 200,
+    "content_hash": "ca1878ab459588f22b754f52fc106370b6892de26c056ba07889abf76f0a480d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentwise.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentwise.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agentwise: Tối ưu hóa các Workflow Multi-Agent",
+  "short_description_vi": "Agentwise hỗ trợ điều phối multi-agent cho Claude Code, giúp tối ưu hóa lượng token từ 15-30% và nâng cao hiệu suất của agent thông qua cơ chế tự cải tiến và tự động xác thực. Các nhà phát triển và đội ngũ vận hành sẽ được hưởng lợi từ các workflow tinh gọn và chi phí tối ưu."
+}

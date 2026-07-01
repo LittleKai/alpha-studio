@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-sandbox-skill",
+  "slug": "agent-sandbox-skill",
+  "name": "browser-use",
+  "headline": "Manage isolated environments with sandbox skill",
+  "short_description": "Agent sandbox skill manages isolated execution environments for AI agents. Enables safe code execution, full-stack app building, and engineering tasks. Integrates with E2B Sandboxes, supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "disler",
+  "install_command": "git clone https://github.com/disler/agent-sandbox-skill.git",
+  "source_repo_url": "https://github.com/disler/agent-sandbox-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Agent Sandbox Skill provides isolated execution environments powered by E2B Sandboxes, allowing AI agents like Claude and Gemini to safely run untrusted code, install packages, and build complete full-stack applications without affecting your local system. The skill offers full isolation, allowing multiple independent agent forks to scale compute workloads securely. Built-in features include browser automation via Playwright, persistent context management across agent turns, and structured prompts optimized for CLI agents. This is ideal for engineers who need their AI agents to handle code execution, testing, and application scaffolding tasks autonomously while maintaining security and control.\nSafe execution of untrusted code and scripts in isolated environments\nFull-stack web application scaffolding and deployment with Vue, FastAPI, and SQLite\nAutomated testing and validation of code changes in sandboxes\nBrowser automation and visual testing of web applications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/disler/agent-sandbox-skill`",
+    "usage": "```\nSet up an isolated agent sandbox environment for [TASK] using E2B Sandboxes. Install required dependencies, execute [COMMAND], and return the output. Ensure the environment is cleaned up after execution. Use the following command structure: 'e2b sandbox create --template [TEMPLATE] --command \"[COMMAND]\"'.\n```\nCopy\n\n```\n```\nSandbox Environment Created: sandbox-abc123\nTemplate: python-3.11-full\nCommand Executed: pip install requests && python app.py\n\nOutput:\n=== Requests Installation ===\nCollecting requests\n  Downloading requests-2.31.0-py3-none-any.whl (62 kB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 1.2 MB/s\nInstalling collected packages: requests\nSuccessfully installed requests-2.31.0\n\n=== App Execution ===\nStarting weather data fetch...\nAPI Response: {\"city\": \"San Francisco\", \"temp\": 68, \"conditions\": \"Partly Cloudy\"}\nData processed and saved to /tmp/weather.json\n\nSandbox Cleanup: Terminated sandbox-abc123\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-sandbox-skill#main-content",
+      "agent-sandbox-skill#overview",
+      "agent-sandbox-skill#setup",
+      "agent-sandbox-skill#examples",
+      "agent-sandbox-skill#tools",
+      "agent-sandbox-skill#mcp",
+      "agent-sandbox-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent Sandbox Skill provides isolated execution environments powered by E2B Sandboxes, allowing AI agents like Claude and Gemini to safely run untrusted code, install packages, and build complete full-stack applications without affecting your local system. The skill offers full isolation, allowing multiple independent agent forks to scale compute workloads securely. Built-in features include browser automation via Playwright, persistent context management across agent turns, and structured prompts optimized for CLI agents. This is ideal for engineers who need their AI agents to handle code execution, testing, and application scaffolding tasks autonomously while maintaining security and control.\nSafe execution of untrusted code and scripts in isolated environments\nFull-stack web application scaffolding and deployment with Vue, FastAPI, and SQLite\nAutomated testing and validation of code changes in sandboxes\nBrowser automation and visual testing of web applications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/disler/agent-sandbox-skill`",
+    "usage_vi": "```\nSet up an isolated agent sandbox environment for [TASK] using E2B Sandboxes. Install required dependencies, execute [COMMAND], and return the output. Ensure the environment is cleaned up after execution. Use the following command structure: 'e2b sandbox create --template [TEMPLATE] --command \"[COMMAND]\"'.\n```\nCopy\n\n```\n```\nSandbox Environment Created: sandbox-abc123\nTemplate: python-3.11-full\nCommand Executed: pip install requests && python app.py\n\nOutput:\n=== Requests Installation ===\nCollecting requests\n  Downloading requests-2.31.0-py3-none-any.whl (62 kB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 1.2 MB/s\nInstalling collected packages: requests\nSuccessfully installed requests-2.31.0\n\n=== App Execution ===\nStarting weather data fetch...\nAPI Response: {\"city\": \"San Francisco\", \"temp\": 68, \"conditions\": \"Partly Cloudy\"}\nData processed and saved to /tmp/weather.json\n\nSandbox Cleanup: Terminated sandbox-abc123\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:43:14.737555Z",
+    "http_status": 200,
+    "content_hash": "d7a948345bb767a6d059db3c838d324afbd2a9d6a0fb7707b1320443cf01bcc4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-sandbox-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-sandbox-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Manage isolated environments with sandbox skill",
+  "short_description_vi": "Agent sandbox skill manages isolated execution environments for AI agents. Enables safe code execution, full-stack app building, and engineering tasks. Integrates with E2B Sandboxes, supports Claude agents."
+}

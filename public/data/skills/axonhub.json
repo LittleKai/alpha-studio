@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/axonhub",
+  "slug": "axonhub",
+  "name": "browser-use",
+  "headline": "AxonHub: Unified AI Gateway System",
+  "short_description": "AxonHub is a unified AI gateway system that provides a single API for OpenAI, Anthropic, Gemini, and AI SDK compatible models. It enables developers to integrate multiple AI services into their applications without managing separate APIs. This simplifies AI integration for operations teams, reducing complexity and improving efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "looplj",
+  "install_command": "git clone https://github.com/looplj/axonhub.git",
+  "source_repo_url": "https://github.com/looplj/axonhub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-ai",
+    "anthropic",
+    "ai-sdk",
+    "aisdk",
+    "agents",
+    "codex",
+    "ai",
+    "openai",
+    "agent"
+  ],
+  "sections": {
+    "overview": "AxonHub provides a unified API gateway that abstracts multiple AI service providers—OpenAI, Anthropic, Gemini, and AI SDK-compatible models—behind a single interface. Instead of managing separate API keys and endpoints for each provider, developers integrate once with AxonHub and route requests flexibly across models. This reduces operational complexity and eliminates the overhead of maintaining multiple service integrations. Teams can switch between AI providers or load-balance across models without changing application code, improving deployment flexibility and resilience. AxonHub is particularly valuable for applications that require multi-model support or need to transition between AI providers.\nIntegrate multiple AI models into a single application for enhanced functionality.\nAutomate the management of AI requests and responses across different providers.\nImplement real-time monitoring and tracing of AI interactions for better debugging.\nUtilize adaptive load balancing to optimize performance based on model availability.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/looplj/axonhub`",
+    "usage": "```\nUse AxonHub to [TASK] across multiple AI models (e.g., OpenAI, Anthropic, Gemini) with a single API call. For example: 'Generate a product description for [PRODUCT] using the most creative model available, then analyze sentiment with the most accurate model, and finally summarize the results in a table.' Include [INPUT_DATA] if needed.\n```\nCopy\n\n```\n### Multi-Model AI Workflow Results\n\n**Input:** Product description request for 'EcoCharge Pro' wireless charger.\n\n**Step 1: Creative Generation (using Anthropic Claude 3.5 Sonnet via AxonHub)**\nGenerated 3 unique product descriptions:\n1. \"The EcoCharge Pro redefines wireless charging with 15W fast charging, a sleek bamboo finish, and Qi2 compatibility. Designed for eco-conscious professionals who demand both performance and sustainability in one elegant device.\"\n2. \"Charge your devices guilt-free with the EcoCharge Pro—crafted from 100% recycled aluminum, delivering 90% charging efficiency while reducing e-waste. Your tech deserves a second chance.\"\n3. \"Say goodbye to tangled cables. The EcoCharge Pro combines 20W fast charging with a minimalist design that blends seamlessly into any workspace. Perfect for the modern minimalist who values both speed and style.\"\n\n**Step 2: Sentiment Analysis (using OpenAI GPT-4o via AxonHub)**\nAnalyzed sentiment across all descriptions:\n- Description 1: 85% positive (focus on innovation and sustainability)\n- Description 2: 92% positive (strong eco-conscious appeal)\n- Description 3: 88% positive (emphasis on convenience and design)\n\n**Step 3: Results Summary (using AxonHub's unified response formatting)**\n| Model Used       | Output Focus       | Sentiment Score | Key Strengths                     |\n|------------------|--------------------|-----------------|-----------------------------------|\n| Anthropic        | Creativity         | N/A             | Unique angles, sustainability     |\n| OpenAI           | Sentiment Analysis | 85-92%          | High accuracy, nuanced scoring    |\n\n**Recommendation:** Use Description 2 for marketing campaigns targeting eco-conscious consumers due to its highest sentiment score and strong sustainability messaging.\n\n**AxonHub Benefits:** All models accessed via a single API endpoint, reducing integration time by 70% compared to managing separate SDKs.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "axonhub#main-content",
+      "axonhub#overview",
+      "axonhub#setup",
+      "axonhub#examples",
+      "axonhub#tools",
+      "axonhub#mcp",
+      "axonhub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AxonHub provides a unified API gateway that abstracts multiple AI service providers—OpenAI, Anthropic, Gemini, and AI SDK-compatible models—behind a single interface. Instead of managing separate API keys and endpoints for each provider, developers integrate once with AxonHub and route requests flexibly across models. This reduces operational complexity and eliminates the overhead of maintaining multiple service integrations. Teams can switch between AI providers or load-balance across models without changing application code, improving deployment flexibility and resilience. AxonHub is particularly valuable for applications that require multi-model support or need to transition between AI providers.\nIntegrate multiple AI models into a single application for enhanced functionality.\nAutomate the management of AI requests and responses across different providers.\nImplement real-time monitoring and tracing of AI interactions for better debugging.\nUtilize adaptive load balancing to optimize performance based on model availability.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/looplj/axonhub`",
+    "usage_vi": "```\nUse AxonHub to [TASK] across multiple AI models (e.g., OpenAI, Anthropic, Gemini) with a single API call. For example: 'Generate a product description for [PRODUCT] using the most creative model available, then analyze sentiment with the most accurate model, and finally summarize the results in a table.' Include [INPUT_DATA] if needed.\n```\nCopy\n\n```\n### Multi-Model AI Workflow Results\n\n**Input:** Product description request for 'EcoCharge Pro' wireless charger.\n\n**Step 1: Creative Generation (using Anthropic Claude 3.5 Sonnet via AxonHub)**\nGenerated 3 unique product descriptions:\n1. \"The EcoCharge Pro redefines wireless charging with 15W fast charging, a sleek bamboo finish, and Qi2 compatibility. Designed for eco-conscious professionals who demand both performance and sustainability in one elegant device.\"\n2. \"Charge your devices guilt-free with the EcoCharge Pro—crafted from 100% recycled aluminum, delivering 90% charging efficiency while reducing e-waste. Your tech deserves a second chance.\"\n3. \"Say goodbye to tangled cables. The EcoCharge Pro combines 20W fast charging with a minimalist design that blends seamlessly into any workspace. Perfect for the modern minimalist who values both speed and style.\"\n\n**Step 2: Sentiment Analysis (using OpenAI GPT-4o via AxonHub)**\nAnalyzed sentiment across all descriptions:\n- Description 1: 85% positive (focus on innovation and sustainability)\n- Description 2: 92% positive (strong eco-conscious appeal)\n- Description 3: 88% positive (emphasis on convenience and design)\n\n**Step 3: Results Summary (using AxonHub's unified response formatting)**\n| Model Used       | Output Focus       | Sentiment Score | Key Strengths                     |\n|------------------|--------------------|-----------------|-----------------------------------|\n| Anthropic        | Creativity         | N/A             | Unique angles, sustainability     |\n| OpenAI           | Sentiment Analysis | 85-92%          | High accuracy, nuanced scoring    |\n\n**Recommendation:** Use Description 2 for marketing campaigns targeting eco-conscious consumers due to its highest sentiment score and strong sustainability messaging.\n\n**AxonHub Benefits:** All models accessed via a single API endpoint, reducing integration time by 70% compared to managing separate SDKs.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:42:26.539961Z",
+    "http_status": 200,
+    "content_hash": "a38906c19b5123acd274e0e91adfd2bdd4fb0ac25d2e9ccaada4fb3f8ec589aa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\axonhub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\axonhub.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AxonHub: Unified AI Gateway System",
+  "short_description_vi": "AxonHub is a unified AI gateway system that provides a single API for OpenAI, Anthropic, Gemini, and AI SDK compatible models. It enables developers to integrate multiple AI services into their applications without managing separate APIs. This simplifies AI integration for operations teams, reducing complexity and improving efficiency."
+}

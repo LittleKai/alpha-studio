@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/langgraph-email-automation",
+  "slug": "langgraph-email-automation",
+  "name": "browser-use",
+  "headline": "Langgraph Email Automation - Automate Customer",
+  "short_description": "Automate customer support emails with multi-agent system built on Langchain and Langgraph. Categorizes emails, synthesizes queries, drafts responses, and verifies content. Integrates with Gmail API for workflow.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "kaymen99",
+  "install_command": "git clone https://github.com/kaymen99/langgraph-email-automation.git",
+  "source_repo_url": "https://github.com/kaymen99/langgraph-email-automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-customer-support",
+    "email-automation",
+    "ai-agents",
+    "customer-support",
+    "customer-support-automation",
+    "langgraph",
+    "ai-customer-service",
+    "rag",
+    "llama3",
+    "langchain",
+    "rag-application",
+    "ai-automation",
+    "gmail-api",
+    "rag-agents"
+  ],
+  "sections": {
+    "overview": "This skill automates customer support email workflows using Langgraph-based AI agents and Retrieval-Augmented Generation (RAG). The system continuously monitors Gmail inboxes, categorizes incoming emails into complaint, inquiry, feedback, or unrelated categories, and automatically generates personalized responses. For product or service questions, it retrieves accurate information from business documents via RAG. Each draft undergoes automated quality assurance checks before sending, reducing manual workload while maintaining response quality and consistency.\nAutomating high-volume customer complaint responses in support teams\nCategorizing and triaging product inquiry emails for faster resolution\nGenerating accurate answers to FAQ-type product questions using document RAG\nEnsuring consistent email quality and formatting across support communications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kaymen99/langgraph-email-automation`",
+    "usage": "```\nAct as a multi-agent email automation system for customer support. First, categorize this email: [EMAIL_CONTENT]. Then, synthesize the customer's query into a clear summary. Draft a professional response addressing all concerns, ensuring it aligns with [COMPANY_TONE_GUIDELINES]. Finally, verify the response for accuracy, tone, and completeness before finalizing. Use the Gmail API to send the response to [CUSTOMER_EMAIL]. Include a summary of actions taken for the support team.\n```\nCopy\n\n```\nEmail Received (Subject: 'Issue with Order #12345'):\n\nHi Support Team,\n\nI placed an order on May 15th (Order #12345) but haven’t received any updates on its status. It’s been over a week, and I’m starting to worry. Can you please provide a tracking number or an estimated delivery date?\n\nThanks,\nSarah Johnson\n\n---\n\n**Processing Steps:**\n\n1. **Categorization:** Order Status Inquiry (Priority: High)\n2. **Query Synthesis:** Customer is inquiring about the status of Order #12345, placed on May 15th. No tracking number or delivery estimate has been provided.\n3. **Draft Response:**\n\nSubject: Re: Issue with Order #12345\n\nHi Sarah,\n\nThank you for reaching out and for your patience. I sincerely apologize for the delay in updating you on your order. We’ve experienced an unexpected surge in orders, which has caused a temporary backlog in our processing system.\n\nI’ve expedited the review of Order #12345, and it is now being prepared for shipment. You should receive a tracking number via email within the next 24 hours. The estimated delivery date is May 28th. If you don’t receive this update, please reply to this email, and I’ll personally follow up.\n\nAgain, I apologize for the inconvenience and appreciate your understanding. If you have any other questions, don’t hesitate to ask.\n\nBest regards,\n[Support Agent Name]\nCustomer Support Team\n\n4. **Verification:**\n   - Tone: Professional, empathetic, and solution-oriented.\n   - Accuracy: Confirmed Order #12345 exists in the system and is in \"Processing\" status.\n   - Completeness: Addresses the customer’s concerns, provides a clear next step, and sets expectations.\n\n**Action Taken:** Response sent to sarah.johnson@example.com via Gmail API. A log entry has been created in the support dashboard for tracking.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "langgraph-email-automation#main-content",
+      "langgraph-email-automation#overview",
+      "langgraph-email-automation#setup",
+      "langgraph-email-automation#examples",
+      "langgraph-email-automation#tools",
+      "langgraph-email-automation#mcp",
+      "langgraph-email-automation#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill automates customer support email workflows using Langgraph-based AI agents and Retrieval-Augmented Generation (RAG). The system continuously monitors Gmail inboxes, categorizes incoming emails into complaint, inquiry, feedback, or unrelated categories, and automatically generates personalized responses. For product or service questions, it retrieves accurate information from business documents via RAG. Each draft undergoes automated quality assurance checks before sending, reducing manual workload while maintaining response quality and consistency.\nAutomating high-volume customer complaint responses in support teams\nCategorizing and triaging product inquiry emails for faster resolution\nGenerating accurate answers to FAQ-type product questions using document RAG\nEnsuring consistent email quality and formatting across support communications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kaymen99/langgraph-email-automation`",
+    "usage_vi": "```\nAct as a multi-agent email automation system for customer support. First, categorize this email: [EMAIL_CONTENT]. Then, synthesize the customer's query into a clear summary. Draft a professional response addressing all concerns, ensuring it aligns with [COMPANY_TONE_GUIDELINES]. Finally, verify the response for accuracy, tone, and completeness before finalizing. Use the Gmail API to send the response to [CUSTOMER_EMAIL]. Include a summary of actions taken for the support team.\n```\nCopy\n\n```\nEmail Received (Subject: 'Issue with Order #12345'):\n\nHi Support Team,\n\nI placed an order on May 15th (Order #12345) but haven’t received any updates on its status. It’s been over a week, and I’m starting to worry. Can you please provide a tracking number or an estimated delivery date?\n\nThanks,\nSarah Johnson\n\n---\n\n**Processing Steps:**\n\n1. **Categorization:** Order Status Inquiry (Priority: High)\n2. **Query Synthesis:** Customer is inquiring about the status of Order #12345, placed on May 15th. No tracking number or delivery estimate has been provided.\n3. **Draft Response:**\n\nSubject: Re: Issue with Order #12345\n\nHi Sarah,\n\nThank you for reaching out and for your patience. I sincerely apologize for the delay in updating you on your order. We’ve experienced an unexpected surge in orders, which has caused a temporary backlog in our processing system.\n\nI’ve expedited the review of Order #12345, and it is now being prepared for shipment. You should receive a tracking number via email within the next 24 hours. The estimated delivery date is May 28th. If you don’t receive this update, please reply to this email, and I’ll personally follow up.\n\nAgain, I apologize for the inconvenience and appreciate your understanding. If you have any other questions, don’t hesitate to ask.\n\nBest regards,\n[Support Agent Name]\nCustomer Support Team\n\n4. **Verification:**\n   - Tone: Professional, empathetic, and solution-oriented.\n   - Accuracy: Confirmed Order #12345 exists in the system and is in \"Processing\" status.\n   - Completeness: Addresses the customer’s concerns, provides a clear next step, and sets expectations.\n\n**Action Taken:** Response sent to sarah.johnson@example.com via Gmail API. A log entry has been created in the support dashboard for tracking.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:23:57.654990Z",
+    "http_status": 200,
+    "content_hash": "02c1aae84f4370396b2ce00def50d167d3cf8f3da89a24c1d4f83f9fcf1f4c8a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langgraph-email-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langgraph-email-automation.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Langgraph Email Automation - Automate Customer",
+  "short_description_vi": "Automate customer support emails with multi-agent system built on Langchain and Langgraph. Categorizes emails, synthesizes queries, drafts responses, and verifies content. Integrates with Gmail API for workflow."
+}

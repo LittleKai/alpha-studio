@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-stacks",
+  "slug": "claude-stacks",
+  "name": "Claude Stacks",
+  "headline": "Quick import/export for Claude agents and settings",
+  "short_description": "Claude Stacks automates the import/export of Claude AI configurations, including MCPs, agents, commands, hooks, and settings. Operations teams can quickly migrate or back up configurations across environments. It connects to Claude AI and integrates with existing workflows via CLI.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "Commands-com",
+  "install_command": "git clone https://github.com/Commands-com/claude-stacks.git",
+  "source_repo_url": "https://github.com/Commands-com/claude-stacks",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claudecode",
+    "cli",
+    "cli-tool",
+    "claude",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Stacks is a CLI tool for exporting and importing Claude Code environment configurations as portable stack files. It captures MCP server setups, custom commands, agent configurations, hook scripts, and project settings, enabling teams to quickly migrate or replicate development environments across machines and projects. The tool integrates with Commands.com marketplace for sharing stacks with the community, and includes automated security analysis of hook scripts to identify potential risks before installation.\nBackup and restore Claude Code configurations across team members\nShare MCP server setups and project configurations via Commands.com marketplace\nMigrate development environments between projects or machines\nDistribute standardized development stacks to new team members",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Commands-com/claude-stacks`",
+    "usage": "```\nExport the current Claude AI configuration for [COMPANY] including all MCPs, agents, commands, hooks, and settings. Save the configuration to a file named [CONFIG_NAME].\n```\nCopy\n\n```\n```json\n{\n  \"version\": \"1.0\",\n  \"configurations\": {\n    \"mcps\": [\n      {\n        \"name\": \"Customer Support MCP\",\n        \"description\": \"Handles customer inquiries and support tickets\",\n        \"commands\": [\n          {\n            \"name\": \"create_ticket\",\n            \"description\": \"Creates a new support ticket\",\n            \"parameters\": {\n              \"priority\": \"string\",\n              \"description\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"agents\": [\n      {\n        \"name\": \"Support Agent\",\n        \"description\": \"Assists with customer support tasks\",\n        \"hooks\": [\n          {\n            \"name\": \"ticket_creation_hook\",\n            \"description\": \"Triggers when a new ticket is created\",\n            \"actions\": [\n              {\n                \"name\": \"notify_team\",\n                \"description\": \"Notifies the support team about the new ticket\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"settings\": {\n      \"default_language\": \"English\",\n      \"timezone\": \"UTC\"\n    }\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-stacks#main-content",
+      "claude-stacks#overview",
+      "claude-stacks#setup",
+      "claude-stacks#examples",
+      "claude-stacks#tools",
+      "claude-stacks#mcp",
+      "claude-stacks#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Stacks là một công cụ CLI hỗ trợ xuất và nhập các cấu hình môi trường Claude Code dưới dạng các tệp stack di động. Công cụ này ghi lại các setup MCP server, custom command, cấu hình agent, hook script và thiết lập dự án, giúp các đội ngũ nhanh chóng di chuyển hoặc nhân bản môi trường phát triển trên các máy tính và dự án khác nhau. Ngoài ra, công cụ còn tích hợp với chợ ứng dụng Commands.com để chia sẻ các stack với cộng đồng, đồng thời cung cấp tính năng tự động phân tích bảo mật cho các hook script nhằm phát hiện các rủi ro tiềm ẩn trước khi cài đặt.\n\nSao lưu và khôi phục cấu hình Claude Code giữa các thành viên trong đội ngũ\nChia sẻ setup MCP server và cấu hình dự án qua chợ ứng dụng Commands.com\nDi chuyển môi trường phát triển giữa các dự án hoặc máy tính khác nhau\nPhân phối các stack phát triển chuẩn hóa cho thành viên mới trong đội ngũ",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Commands-com/claude-stacks`",
+    "usage_vi": "```\nXuất cấu hình Claude AI hiện tại của [COMPANY] bao gồm toàn bộ các MCP, agent, command, hook và thiết lập. Lưu cấu hình vào một tệp có tên [CONFIG_NAME].\n```\nCopy\n\n```\n```json\n{\n  \"version\": \"1.0\",\n  \"configurations\": {\n    \"mcps\": [\n      {\n        \"name\": \"Customer Support MCP\",\n        \"description\": \"Xử lý các yêu cầu của khách hàng và phiếu hỗ trợ\",\n        \"commands\": [\n          {\n            \"name\": \"create_ticket\",\n            \"description\": \"Tạo phiếu hỗ trợ mới\",\n            \"parameters\": {\n              \"priority\": \"string\",\n              \"description\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"agents\": [\n      {\n        \"name\": \"Support Agent\",\n        \"description\": \"Hỗ trợ các tác vụ chăm sóc khách hàng\",\n        \"hooks\": [\n          {\n            \"name\": \"ticket_creation_hook\",\n            \"description\": \"Kích hoạt khi một phiếu hỗ trợ mới được tạo\",\n            \"actions\": [\n              {\n                \"name\": \"notify_team\",\n                \"description\": \"Thông báo cho đội ngũ hỗ trợ về phiếu hỗ trợ mới\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"settings\": {\n      \"default_language\": \"English\",\n      \"timezone\": \"UTC\"\n    }\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:05:01.991852Z",
+    "http_status": 200,
+    "content_hash": "31c94b88eec82358a9c565d055ef81e48475916f7b553f24fe5a6817838f5bd0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-stacks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-stacks.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nhập/xuất nhanh cho các Claude agent và thiết lập",
+  "short_description_vi": "Claude Stacks tự động hóa quy trình nhập/xuất cấu hình Claude AI, bao gồm các MCP, agent, command, hook và thiết lập. Đội ngũ vận hành có thể nhanh chóng di chuyển hoặc sao lưu cấu hình giữa các môi trường khác nhau. Công cụ này kết nối trực tiếp với Claude AI và tích hợp vào luồng công việc hiện tại thông qua CLI."
+}

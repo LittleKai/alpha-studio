@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini-superclaude-mcp-server",
+  "slug": "gemini-superclaude-mcp-server",
+  "name": "Gemini SuperClaude MCP Server",
+  "headline": "Gemini SuperClaude MCP Server - Intelligent Command",
+  "short_description": "Gemini SuperClaude MCP Server enables intelligent command routing and dynamic persona switching for Gemini CLI. Operations teams benefit from real MCP server orchestration, improving workflow automation and efficiency. It connects to Gemini CLI and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "Dianel555",
+  "install_command": "git clone https://github.com/Dianel555/gemini-superclaude-mcp-server.git",
+  "source_repo_url": "https://github.com/Dianel555/gemini-superclaude-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "gemini-cli",
+    "superclaude",
+    "gemini",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Gemini SuperClaude MCP Server is a Node.js-based MCP server that integrates SuperClaude Framework v4.0.9 with Gemini CLI, delivering 22 specialized `/sc:` commands and 14 domain-expert agents for intelligent task routing. The system automatically selects the right agent—from security engineers to performance specialists—based on context analysis, and coordinates 6 integrated MCP servers including Sequential, Playwright, and Morphllm. Operations teams benefit from real MCP server orchestration that improves workflow automation, supports cross-session persistence via Serena, and includes a business panel for multi-expert analysis. Installation is straightforward via npm, with commands automatically registered in Gemini CLI through TOML configuration.\nAutomate system architecture and design decisions using specialized agents\nRoute security analysis tasks to threat-focused agents for vulnerability assessment\nOrchestrate multi-step complex reasoning across sequential MCP servers\nManage CI/CD pipelines and infrastructure automation with DevOps-focused agents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Dianel555/gemini-superclaude-mcp-server`\n\n### **1. Initial Setup**\n- Install the latest version of Gemini CLI.\n- Download the Gemini SuperClaude MCP Server package.\n- Run the installation script with admin privileges.\n\n### **2. Configuration**\n- Open the configuration file `mcp_config.json`.\n- Set the `command_routing` to `intelligent` for dynamic task allocation.\n- Define the `persona_switching` parameter to `dynamic` for adaptive responses.\n\n### **3. Workflow Integration**\n- Integrate the server with [COMPANY]'s existing automation tools.\n- Map out the [SPECIFIC WORKFLOW] tasks to the appropriate personas.\n- Test the setup with sample data to ensure smooth operation.\n\n### **4. Optimization**\n- Monitor server performance using the built-in analytics dashboard.\n- Adjust the `command_routing` and `persona_switching` parameters based on performance metrics.\n- Schedule regular updates to keep the server running efficiently.\n```",
+    "usage": "```\nI'm setting up a Gemini SuperClaude MCP Server for [COMPANY] in the [INDUSTRY] sector. I need to configure it to handle [SPECIFIC WORKFLOW] with the following requirements: [REQUIREMENT 1], [REQUIREMENT 2], and [REQUIREMENT 3]. Provide a step-by-step guide to set up and optimize the server for these tasks.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gemini-superclaude-mcp-server#main-content",
+      "gemini-superclaude-mcp-server#overview",
+      "gemini-superclaude-mcp-server#setup",
+      "gemini-superclaude-mcp-server#examples",
+      "gemini-superclaude-mcp-server#tools",
+      "gemini-superclaude-mcp-server#mcp",
+      "gemini-superclaude-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini SuperClaude MCP Server is a Node.js-based MCP server that integrates SuperClaude Framework v4.0.9 with Gemini CLI, delivering 22 specialized `/sc:` commands and 14 domain-expert agents for intelligent task routing. The system automatically selects the right agent—from security engineers to performance specialists—based on context analysis, and coordinates 6 integrated MCP servers including Sequential, Playwright, and Morphllm. Operations teams benefit from real MCP server orchestration that improves workflow automation, supports cross-session persistence via Serena, and includes a business panel for multi-expert analysis. Installation is straightforward via npm, with commands automatically registered in Gemini CLI through TOML configuration.\nAutomate system architecture and design decisions using specialized agents\nRoute security analysis tasks to threat-focused agents for vulnerability assessment\nOrchestrate multi-step complex reasoning across sequential MCP servers\nManage CI/CD pipelines and infrastructure automation with DevOps-focused agents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Dianel555/gemini-superclaude-mcp-server`\n\n### **1. Initial Setup**\n- Install the latest version of Gemini CLI.\n- Download the Gemini SuperClaude MCP Server package.\n- Run the installation script with admin privileges.\n\n### **2. Configuration**\n- Open the configuration file `mcp_config.json`.\n- Set the `command_routing` to `intelligent` for dynamic task allocation.\n- Define the `persona_switching` parameter to `dynamic` for adaptive responses.\n\n### **3. Workflow Integration**\n- Integrate the server with [COMPANY]'s existing automation tools.\n- Map out the [SPECIFIC WORKFLOW] tasks to the appropriate personas.\n- Test the setup with sample data to ensure smooth operation.\n\n### **4. Optimization**\n- Monitor server performance using the built-in analytics dashboard.\n- Adjust the `command_routing` and `persona_switching` parameters based on performance metrics.\n- Schedule regular updates to keep the server running efficiently.\n```",
+    "usage_vi": "```\nI'm setting up a Gemini SuperClaude MCP Server for [COMPANY] in the [INDUSTRY] sector. I need to configure it to handle [SPECIFIC WORKFLOW] with the following requirements: [REQUIREMENT 1], [REQUIREMENT 2], and [REQUIREMENT 3]. Provide a step-by-step guide to set up and optimize the server for these tasks.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:07.389559Z",
+    "http_status": 200,
+    "content_hash": "bb9b89e53df5fdd0cb0bfb5632e3b431565314cedb9d8c3f610da0ce66eaea38",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-superclaude-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-superclaude-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Gemini SuperClaude MCP Server - Intelligent Command",
+  "short_description_vi": "Gemini SuperClaude MCP Server enables intelligent command routing and dynamic persona switching for Gemini CLI. Operations teams benefit from real MCP server orchestration, improving workflow automation and efficiency. It connects to Gemini CLI and supports Claude agents."
+}

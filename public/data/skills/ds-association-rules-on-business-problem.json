@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ds-association-rules-on-business-problem",
+  "slug": "ds-association-rules-on-business-problem",
+  "name": "popsicle",
+  "headline": "Association Rules Analysis: Retail Data Mining",
+  "short_description": "Context  A real online retail transaction data set of two years. Content  This is a transnational data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.The company mainly sells unique all-occasion gifts. Many customers of the company are wholesalers. Column Descriptors  InvoiceNo: Invoice number. Nominal, a 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "mathchi",
+  "install_command": "git clone https://github.com/mathchi/DS_Association-Rules-on-Business-Problem.git",
+  "source_repo_url": "https://github.com/mathchi/DS_Association-Rules-on-Business-Problem",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill applies association rule mining to a real UK online retail dataset containing over two years of transactions from a non-store gift retailer. The dataset includes invoice details, product codes, quantities, pricing, and customer information across multiple countries, enabling analysis of which products are frequently purchased together. By mining association rules from this multivariate, time-series transaction data, marketing teams can uncover product relationships, optimize cross-selling strategies, and segment customers based on purchasing behavior. The skill supports RFM model-based customer segmentation and market analysis for precision marketing and business decision-making.\nIdentify frequently co-purchased products for cross-selling recommendations\nSegment wholesale customers based on transaction patterns and order values\nAnalyze product affinity to optimize gift bundle offerings\nDetect seasonal purchasing trends across the 24-month transaction history",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mathchi/DS_Association-Rules-on-Business-Problem`",
+    "usage": "```\nAnalyze the provided retail transaction dataset to identify association rules that can help [COMPANY] improve their marketing strategy. Focus on frequent itemsets and rules with a minimum support of 0.01 and confidence of 0.5. Highlight any interesting patterns or insights related to [INDUSTRY] trends or customer behavior.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ds-association-rules-on-business-problem#main-content",
+      "ds-association-rules-on-business-problem#overview",
+      "ds-association-rules-on-business-problem#setup",
+      "ds-association-rules-on-business-problem#examples",
+      "ds-association-rules-on-business-problem#tools",
+      "ds-association-rules-on-business-problem#mcp",
+      "ds-association-rules-on-business-problem#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "This skill applies association rule mining to a real UK online retail dataset containing over two years of transactions from a non-store gift retailer. The dataset includes invoice details, product codes, quantities, pricing, and customer information across multiple countries, enabling analysis of which products are frequently purchased together. By mining association rules from this multivariate, time-series transaction data, marketing teams can uncover product relationships, optimize cross-selling strategies, and segment customers based on purchasing behavior. The skill supports RFM model-based customer segmentation and market analysis for precision marketing and business decision-making.\nIdentify frequently co-purchased products for cross-selling recommendations\nSegment wholesale customers based on transaction patterns and order values\nAnalyze product affinity to optimize gift bundle offerings\nDetect seasonal purchasing trends across the 24-month transaction history",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mathchi/DS_Association-Rules-on-Business-Problem`",
+    "usage_vi": "```\nAnalyze the provided retail transaction dataset to identify association rules that can help [COMPANY] improve their marketing strategy. Focus on frequent itemsets and rules with a minimum support of 0.01 and confidence of 0.5. Highlight any interesting patterns or insights related to [INDUSTRY] trends or customer behavior.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:54:10.515118Z",
+    "http_status": 200,
+    "content_hash": "96153fca952ffd43bb724db907da2836cfaa8a0c67bd168348140893de6cdd95",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ds-association-rules-on-business-problem.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ds-association-rules-on-business-problem.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Association Rules Analysis: Retail Data Mining",
+  "short_description_vi": "Context  A real online retail transaction data set of two years. Content  This is a transnational data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.The company mainly sells unique all-occasion gifts. Many customers of the company are wholesalers. Column Descriptors  InvoiceNo: Invoice number. Nominal, a 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it"
+}

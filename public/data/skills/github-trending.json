@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/github-trending",
+  "slug": "github-trending",
+  "name": "browser-use",
+  "headline": "GitHub Trending - Track Trending Projects",
+  "short_description": "Automate tracking of trending GitHub projects using GitHub Actions. Ideal for operations teams to monitor open-source trends, identify new tools, and integrate them into workflows. Connects to GitHub repositories and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "aneasystone",
+  "install_command": "git clone https://github.com/aneasystone/github-trending.git",
+  "source_repo_url": "https://github.com/aneasystone/github-trending",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "GitHub Trending automates monitoring of GitHub's trending projects page using GitHub Actions, enabling teams to stay informed about emerging open-source tools and libraries. The skill integrates directly with GitHub workflows to track trending repositories across all programming languages or specific categories. Operations and development teams use it to discover new tools, evaluate emerging technologies, and integrate promising projects into their workflows. The automation runs on a schedule you define, capturing trending projects with timestamps and metadata for historical tracking and analysis.\nMonitor emerging open-source tools and frameworks in your tech stack\nTrack trending projects across specific programming languages\nBuild a historical log of GitHub trending projects for team review\nAutomate discovery of new libraries and tools for integration evaluation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aneasystone/github-trending`",
+    "usage": "```\nSet up a GitHub Actions workflow to track trending GitHub repositories based on [LANGUAGE] and [TIME_RANGE]. Configure the workflow to run [FREQUENCY] and post the results to [DESTINATION_CHANNEL]. Include a step to filter repositories by [MIN_STARS] and [TOPIC].\n```\nCopy\n\n```\nHere’s a sample output from a GitHub Actions workflow that tracks trending Python repositories over the past week and posts the results to a Slack channel:\n\n**Trending Python Repositories (Past 7 Days)**\n\n1. **LangChain (12,450 ⭐)**\n   - Description: Framework for developing applications powered by language models.\n   - URL: https://github.com/langchain-ai/langchain\n   - Topics: llm, python, ai\n   - Stars gained this week: +890\n\n2. **FastAPI (65,200 ⭐)**\n   - Description: Modern, fast (high-performance) web framework for building APIs with Python.\n   - URL: https://github.com/tiangolo/fastapi\n   - Topics: python, web, api\n   - Stars gained this week: +620\n\n3. **Django (72,100 ⭐)**\n   - Description: The web framework for perfectionists with deadlines.\n   - URL: https://github.com/django/django\n   - Topics: python, web, framework\n   - Stars gained this week: +450\n\n**Action Items:**\n- Review LangChain for potential integration into the AI toolkit.\n- Evaluate FastAPI for upcoming API projects.\n- Monitor Django for security updates (recent CVE-2023-43669).\n\nNext scheduled run: 2023-11-15 09:00 UTC.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "github-trending#main-content",
+      "github-trending#overview",
+      "github-trending#setup",
+      "github-trending#examples",
+      "github-trending#tools",
+      "github-trending#mcp",
+      "github-trending#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GitHub Trending automates monitoring of GitHub's trending projects page using GitHub Actions, enabling teams to stay informed about emerging open-source tools and libraries. The skill integrates directly with GitHub workflows to track trending repositories across all programming languages or specific categories. Operations and development teams use it to discover new tools, evaluate emerging technologies, and integrate promising projects into their workflows. The automation runs on a schedule you define, capturing trending projects with timestamps and metadata for historical tracking and analysis.\nMonitor emerging open-source tools and frameworks in your tech stack\nTrack trending projects across specific programming languages\nBuild a historical log of GitHub trending projects for team review\nAutomate discovery of new libraries and tools for integration evaluation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aneasystone/github-trending`",
+    "usage_vi": "```\nSet up a GitHub Actions workflow to track trending GitHub repositories based on [LANGUAGE] and [TIME_RANGE]. Configure the workflow to run [FREQUENCY] and post the results to [DESTINATION_CHANNEL]. Include a step to filter repositories by [MIN_STARS] and [TOPIC].\n```\nCopy\n\n```\nHere’s a sample output from a GitHub Actions workflow that tracks trending Python repositories over the past week and posts the results to a Slack channel:\n\n**Trending Python Repositories (Past 7 Days)**\n\n1. **LangChain (12,450 ⭐)**\n   - Description: Framework for developing applications powered by language models.\n   - URL: https://github.com/langchain-ai/langchain\n   - Topics: llm, python, ai\n   - Stars gained this week: +890\n\n2. **FastAPI (65,200 ⭐)**\n   - Description: Modern, fast (high-performance) web framework for building APIs with Python.\n   - URL: https://github.com/tiangolo/fastapi\n   - Topics: python, web, api\n   - Stars gained this week: +620\n\n3. **Django (72,100 ⭐)**\n   - Description: The web framework for perfectionists with deadlines.\n   - URL: https://github.com/django/django\n   - Topics: python, web, framework\n   - Stars gained this week: +450\n\n**Action Items:**\n- Review LangChain for potential integration into the AI toolkit.\n- Evaluate FastAPI for upcoming API projects.\n- Monitor Django for security updates (recent CVE-2023-43669).\n\nNext scheduled run: 2023-11-15 09:00 UTC.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:22:29.329052Z",
+    "http_status": 200,
+    "content_hash": "e9de6d801983f106592a5d697bff9aca1155d4a408c71743487b74980423558d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\github-trending.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\github-trending.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GitHub Trending - Track Trending Projects",
+  "short_description_vi": "Automate tracking of trending GitHub projects using GitHub Actions. Ideal for operations teams to monitor open-source trends, identify new tools, and integrate them into workflows. Connects to GitHub repositories and workflows."
+}

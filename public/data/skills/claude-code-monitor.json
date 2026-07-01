@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-monitor",
+  "slug": "claude-code-monitor",
+  "name": "Claude Code Monitor",
+  "headline": "claude-code-monitor: Real-time Monitoring Dashboard",
+  "short_description": "Real-time dashboard for monitoring multiple Claude Code sessions. CLI and mobile web UI with QR code access. Supports terminal focus switching for iTerm2, Terminal.app, and Ghostty on macOS. Ideal for operations teams managing multiple coding sessions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "onikan27",
+  "install_command": "git clone https://github.com/onikan27/claude-code-monitor.git",
+  "source_repo_url": "https://github.com/onikan27/claude-code-monitor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The claude-code-monitor skill provides a real-time dashboard designed for monitoring multiple Claude Code sessions simultaneously. This skill features a command-line interface (CLI) and a mobile web UI, enabling users to access their sessions easily via QR code. It supports terminal focus switching for popular terminal applications like iTerm2, Terminal.app, and Ghostty, making it a versatile tool for macOS users who need to keep track of various workflows efficiently. One of the key benefits of the claude-code-monitor skill is its ability to streamline the monitoring process, allowing developers and AI practitioners to focus on their tasks without constantly switching between sessions. While specific time savings are not quantified, the skill's design aims to enhance productivity by providing a centralized view of ongoing sessions, thus reducing the time spent on manual monitoring. This skill is particularly useful for developers and product managers who work with multiple Claude Code instances and require an efficient way to oversee their operations. It can also benefit AI practitioners looking to optimize their workflow automation processes. By utilizing claude-code-monitor, users can ensure they are always informed about the status of their sessions, enabling quicker decision-making and troubleshooting. Implementation of the claude-code-monitor skill is categorized as intermediate, with an estimated setup time of around 30 minutes. Users will need a macOS environment to utilize this skill effectively. As businesses increasingly adopt AI-first workflows, integrating such monitoring tools becomes essential for maintaining operational efficiency and ensuring that AI automation processes run smoothly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/onikan27/claude-code-monitor`",
+    "usage": "```\nSet up a real-time monitoring dashboard for [NUMBER] active Claude Code sessions running [PROJECT_NAME] on [OPERATING_SYSTEM]. Focus on [KEY_METRICS: CPU usage, memory consumption, active files, or error rates]. Use the claude-code-monitor CLI tool to generate a shareable QR code for mobile access. Prioritize sessions with [CRITERIA: high error rates or resource spikes].\n```\nCopy\n\n```\n```\nclaude-code-monitor v1.2.3 - Real-time Session Dashboard\n\nActive Sessions (5/5):\n┌─────────────────────────────────────────────────────────────────────┐\n│ ID  │ Project       │ Status   │ CPU% │ Memory  │ Active File          │ Errors │\n├─────────────────────────────────────────────────────────────────────┤\n│ 101 │ E-commerce    │ Running  │ 45%  │ 1.2GB   │ /src/models/user.js  │ 0      │\n│ 102 │ API Gateway   │ Running  │ 78%  │ 2.1GB   │ /src/routes/auth.js  │ 3      │\n│ 103 │ Data Pipeline │ Paused   │ 12%  │ 0.8GB   │ /src/transformers.py │ 0      │\n│ 104 │ Mobile App    │ Running  │ 62%  │ 1.5GB   │ /lib/utils/network.js │ 1      │\n│ 105 │ Admin Panel   │ Running  │ 33%  │ 0.9GB   │ /src/components/Navbar│ 0      │\n└─────────────────────────────────────────────────────────────────────┘\n\nCritical Alerts:\n- Session #102 (API Gateway): 3 errors in /src/routes/auth.js (JWT validation failures)\n- Session #104 (Mobile App): High memory usage (1.5GB) - potential leak in network.js\n\nMobile Access:\n📱 QR Code: [Generated QR code linking to https://monitor.claude.local/session/102]\n   Expires: 2024-05-20 14:30 UTC\n\nTerminal Focus Controls:\n⌘+1: Switch to E-commerce (Session 101)\n⌘+2: Switch to API Gateway (Session 102)\n⌘+3: Switch to Data Pipeline (Session 103)\n⌘+4: Switch to Mobile App (Session 104)\n⌘+5: Switch to Admin Panel (Session 105)\n\nNext Steps:\n1. Investigate Session 102 errors - check JWT middleware configuration\n2. Profile Session 104 memory usage using claude-code-monitor profile 104\n3. Schedule Session 103 resume for 15:00 UTC\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-monitor#main-content",
+      "claude-code-monitor#overview",
+      "claude-code-monitor#setup",
+      "claude-code-monitor#examples",
+      "claude-code-monitor#tools",
+      "claude-code-monitor#mcp",
+      "claude-code-monitor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill claude-code-monitor cung cấp một dashboard thời gian thực được thiết kế để giám sát đồng thời nhiều session Claude Code. Skill này tích hợp cả giao diện dòng lệnh (CLI) và web UI trên di động, giúp người dùng dễ dàng truy cập các session của mình thông qua mã QR. Nó hỗ trợ chuyển đổi focus giữa các ứng dụng terminal phổ biến như iTerm2, Terminal.app và Ghostty, biến đây thành một công cụ linh hoạt cho người dùng macOS cần theo dõi nhiều luồng công việc (workflows) một cách hiệu quả. Một trong những lợi ích chính của skill claude-code-monitor là khả năng tối ưu hóa quy trình giám sát, cho phép các lập trình viên và chuyên gia AI tập trung vào công việc của họ mà không phải liên tục chuyển đổi qua lại giữa các session. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, thiết kế của skill này hướng tới việc nâng cao năng suất bằng cách cung cấp một góc nhìn tập trung vào các session đang chạy, từ đó giảm thời gian giám sát thủ công. Skill này đặc biệt hữu ích cho các nhà phát triển và quản lý sản phẩm (product managers) làm việc với nhiều instance Claude Code và cần một phương thức hiệu quả để giám sát các hoạt động của mình. Nó cũng mang lại lợi ích cho các chuyên gia AI đang muốn tối ưu hóa quy trình tự động hóa workflow của họ. Bằng cách sử dụng claude-code-monitor, người dùng có thể đảm bảo luôn nắm bắt kịp thời trạng thái của các session, giúp đưa ra quyết định và khắc phục sự cố nhanh hơn. Việc triển khai skill claude-code-monitor được xếp vào mức độ trung bình (intermediate), với thời gian setup ước tính khoảng 30 phút. Người dùng sẽ cần môi trường macOS để sử dụng skill này một cách hiệu quả. Trong bối cảnh các doanh nghiệp ngày càng áp dụng nhiều workflow ưu tiên AI (AI-first), việc tích hợp các công cụ giám sát như vậy là rất cần thiết để duy trì hiệu quả vận hành và đảm bảo các quy trình tự động hóa bằng AI hoạt động trơn tru.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/onikan27/claude-code-monitor`",
+    "usage_vi": "```\nThiết lập một dashboard giám sát thời gian thực cho [NUMBER] session Claude Code đang hoạt động chạy [PROJECT_NAME] trên hệ điều hành [OPERATING_SYSTEM]. Tập trung vào [KEY_METRICS: mức sử dụng CPU, dung lượng bộ nhớ tiêu thụ, các file đang hoạt động, hoặc tỷ lệ lỗi]. Sử dụng công cụ CLI claude-code-monitor để tạo mã QR có thể chia sẻ để truy cập trên di động. Ưu tiên các session có [CRITERIA: tỷ lệ lỗi cao hoặc tài nguyên tăng đột biến].\n```\nCopy\n\n```\n```\nclaude-code-monitor v1.2.3 - Dashboard giám sát Session theo Thời gian thực\n\nSession đang hoạt động (5/5):\n┌─────────────────────────────────────────────────────────────────────┐\n│ ID  │ Dự án         │ Trạng thái │ CPU% │ Bộ nhớ  │ File đang hoạt động  │ Lỗi  │\n├─────────────────────────────────────────────────────────────────────┤\n│ 101 │ E-commerce    │ Running    │ 45%  │ 1.2GB   │ /src/models/user.js  │ 0    │\n│ 102 │ API Gateway   │ Running    │ 78%  │ 2.1GB   │ /src/routes/auth.js  │ 3    │\n│ 103 │ Data Pipeline │ Paused     │ 12%  │ 0.8GB   │ /src/transformers.py │ 0    │\n│ 104 │ Mobile App    │ Running    │ 62%  │ 1.5GB   │ /lib/utils/network.js │ 1    │\n│ 105 │ Admin Panel   │ Running    │ 33%  │ 0.9GB   │ /src/components/Navbar│ 0    │\n└─────────────────────────────────────────────────────────────────────┘\n\nCảnh báo nghiêm trọng:\n- Session #102 (API Gateway): 3 lỗi tại /src/routes/auth.js (Lỗi xác thực JWT)\n- Session #104 (Mobile App): Sử dụng bộ nhớ cao (1.5GB) - có thể bị rò rỉ bộ nhớ (leak) trong network.js\n\nTruy cập trên Di động:\n📱 Mã QR: [Mã QR đã tạo liên kết đến https://monitor.claude.local/session/102]\n   Hết hạn: 2024-05-20 14:30 UTC\n\nPhím tắt chuyển Focus Terminal:\n⌘+1: Chuyển sang E-commerce (Session 101)\n⌘+2: Chuyển sang API Gateway (Session 102)\n⌘+3: Chuyển sang Data Pipeline (Session 103)\n⌘+4: Chuyển sang Mobile App (Session 104)\n⌘+5: Chuyển sang Admin Panel (Session 105)\n\nCác bước tiếp theo:\n1. Điều tra lỗi ở Session 102 - kiểm tra cấu hình middleware JWT\n2. Phân tích (profile) mức sử dụng bộ nhớ của Session 104 bằng lệnh: claude-code-monitor profile 104\n3. Lên lịch khôi phục (resume) Session 103 vào lúc 15:00 UTC\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:25:51.332206Z",
+    "http_status": 200,
+    "content_hash": "c73c8560620688a7cb88fea5ec150c5c5c65a4a2e21e25872c636024acb10543",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-monitor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-monitor.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-code-monitor: Dashboard giám sát theo thời gian thực",
+  "short_description_vi": "Dashboard thời gian thực giúp giám sát nhiều session Claude Code cùng lúc. Tích hợp CLI và giao diện web di động truy cập qua mã QR. Hỗ trợ chuyển đổi focus giữa các ứng dụng terminal như iTerm2, Terminal.app và Ghostty trên macOS. Công cụ lý tưởng cho các đội ngũ vận hành (operations) cần quản lý nhiều session code."
+}

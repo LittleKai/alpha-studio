@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wamarketing",
+  "slug": "wamarketing",
+  "name": "popsicle",
+  "headline": "waMarketing: Bulk WhatsApp Messaging Automation",
+  "short_description": "Python script that automates sending bulk WhatsApp messages to contacts listed in an Excel file, using Selenium to control WhatsApp Web and pandas to read contact data.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "python-togo",
+  "install_command": "git clone https://github.com/python-togo/waMarketing.git",
+  "source_repo_url": "https://github.com/python-togo/waMarketing",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "bulkmessage",
+    "marketing",
+    "marketing-automation",
+    "whatsapp",
+    "hacktoberfest",
+    "collaborate"
+  ],
+  "sections": {
+    "overview": "waMarketing is a Python-based automation script that sends bulk WhatsApp messages by reading contact details from an Excel (.xlsx) file and controlling WhatsApp Web through Selenium. Originally built for IndabaX Togo to message event attendees, it eliminates the manual effort of sending individual WhatsApp messages to large contact lists. The script requires Python 3.6+, a Chrome browser, and ChromeDriver, making it straightforward to set up on any standard development environment. It is well-suited for event organizers, community managers, and marketers who need to reach many WhatsApp contacts efficiently without a paid API.\nSending event invitations or reminders to a list of attendees stored in Excel\nDistributing bulk announcements to community members via WhatsApp Web\nNotifying clients or customers about updates using contact data from a spreadsheet\nAutomating post-event follow-up messages to conference participants",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/python-togo/waMarketing`",
+    "usage": "```\nI need to send bulk WhatsApp messages for [COMPANY] in the [INDUSTRY] sector. I have a list of [NUMBER] contacts and want to send a promotional message about [PRODUCT/SERVICE]. Can you help me draft a compelling message and provide guidance on best practices for bulk WhatsApp marketing?\n```\nCopy\n\n```\n# WhatsApp Bulk Messaging Strategy for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wamarketing#main-content",
+      "wamarketing#overview",
+      "wamarketing#setup",
+      "wamarketing#examples",
+      "wamarketing#tools",
+      "wamarketing#mcp",
+      "wamarketing#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "waMarketing is a Python-based automation script that sends bulk WhatsApp messages by reading contact details from an Excel (.xlsx) file and controlling WhatsApp Web through Selenium. Originally built for IndabaX Togo to message event attendees, it eliminates the manual effort of sending individual WhatsApp messages to large contact lists. The script requires Python 3.6+, a Chrome browser, and ChromeDriver, making it straightforward to set up on any standard development environment. It is well-suited for event organizers, community managers, and marketers who need to reach many WhatsApp contacts efficiently without a paid API.\nSending event invitations or reminders to a list of attendees stored in Excel\nDistributing bulk announcements to community members via WhatsApp Web\nNotifying clients or customers about updates using contact data from a spreadsheet\nAutomating post-event follow-up messages to conference participants",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/python-togo/waMarketing`",
+    "usage_vi": "```\nI need to send bulk WhatsApp messages for [COMPANY] in the [INDUSTRY] sector. I have a list of [NUMBER] contacts and want to send a promotional message about [PRODUCT/SERVICE]. Can you help me draft a compelling message and provide guidance on best practices for bulk WhatsApp marketing?\n```\nCopy\n\n```\n# WhatsApp Bulk Messaging Strategy for [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:07:23.284522Z",
+    "http_status": 200,
+    "content_hash": "8ea02aec3693122b4ffce38e4717fcd80fdc6b147903564b5f83adf10bf42a3a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wamarketing.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wamarketing.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "waMarketing: Bulk WhatsApp Messaging Automation",
+  "short_description_vi": "Python script that automates sending bulk WhatsApp messages to contacts listed in an Excel file, using Selenium to control WhatsApp Web and pandas to read contact data."
+}

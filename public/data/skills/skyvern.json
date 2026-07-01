@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skyvern",
+  "slug": "skyvern",
+  "name": "skyvern",
+  "headline": "Skyvern: AI-Powered Browser Automation Tool",
+  "short_description": "Skyvern is an AI-powered tool designed to automate browser-based workflows seamlessly. With support for various frameworks like Puppeteer and Playwright, it enhances productivity by streamlining repetitive tasks in web environments.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "Skyvern-AI",
+  "install_command": "claude install Skyvern-AI/skyvern",
+  "source_repo_url": "https://github.com/Skyvern-AI/skyvern",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "RPA",
+    "automation",
+    "browser",
+    "AI",
+    "workflow"
+  ],
+  "sections": {
+    "overview": "Skyvern is an AI-powered automation tool designed to handle browser-based workflows programmatically. It leverages artificial intelligence to understand and execute repetitive web tasks, reducing manual effort in web environments. The platform supports multiple browser automation frameworks, allowing developers to integrate it into existing automation pipelines. Skyvern streamlines productivity by automating complex interactions across web applications, from data entry to form submissions. It's built for teams and developers who need reliable, intelligent automation for web-based processes.\nAutomate data entry in web forms to reduce manual input errors and save time.\nScrape data from various websites for market analysis and reporting.\nTest web applications using automated scripts to ensure functionality and performance.\nIntegrate web workflows with other software tools to streamline operations.",
+    "setup": "Terminal\nCopy\n`claude install Skyvern-AI/skyvern`\n`git clone https://github.com/Skyvern-AI/skyvern`",
+    "usage": "```\nAutomate the process of extracting [DATA_TYPE] from [WEBSITE_URL] using Skyvern. Set up a workflow to scrape [SPECIFIC_DATA_POINTS] and export them to [DESTINATION_FILE_FORMAT] on a [FREQUENCY] basis. Ensure the data is formatted for easy integration with [TOOL_NAME] for further analysis.\n```\nCopy\n\n```\nHere's an example of a Skyvern automation workflow for extracting product pricing data from an e-commerce website:\n\n1. **Workflow Setup**: Configure Skyvern to navigate to 'https://example-ecommerce.com/products' using Playwright.\n2. **Data Extraction**: Extract product names, prices, and stock status for all items on the page.\n3. **Data Formatting**: Format the extracted data into a CSV file with columns: Product Name, Price, Stock Status, and Last Updated.\n4. **Export Schedule**: Set the workflow to run daily at 8 AM and save the CSV file to a Google Drive folder named 'Product Pricing Data'.\n5. **Integration**: The CSV file is automatically imported into Productiv for real-time financial analytics and budget forecasting.\n\nThe workflow ensures that the latest pricing data is always available for financial analysis, helping to track market trends and adjust budgets accordingly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "skyvern#main-content",
+      "skyvern#overview",
+      "skyvern#setup",
+      "skyvern#examples",
+      "skyvern#tools",
+      "skyvern#mcp",
+      "skyvern#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Skyvern is an AI-powered automation tool designed to handle browser-based workflows programmatically. It leverages artificial intelligence to understand and execute repetitive web tasks, reducing manual effort in web environments. The platform supports multiple browser automation frameworks, allowing developers to integrate it into existing automation pipelines. Skyvern streamlines productivity by automating complex interactions across web applications, from data entry to form submissions. It's built for teams and developers who need reliable, intelligent automation for web-based processes.\nAutomate data entry in web forms to reduce manual input errors and save time.\nScrape data from various websites for market analysis and reporting.\nTest web applications using automated scripts to ensure functionality and performance.\nIntegrate web workflows with other software tools to streamline operations.",
+    "setup_vi": "Terminal\nCopy\n`claude install Skyvern-AI/skyvern`\n`git clone https://github.com/Skyvern-AI/skyvern`",
+    "usage_vi": "```\nAutomate the process of extracting [DATA_TYPE] from [WEBSITE_URL] using Skyvern. Set up a workflow to scrape [SPECIFIC_DATA_POINTS] and export them to [DESTINATION_FILE_FORMAT] on a [FREQUENCY] basis. Ensure the data is formatted for easy integration with [TOOL_NAME] for further analysis.\n```\nCopy\n\n```\nHere's an example of a Skyvern automation workflow for extracting product pricing data from an e-commerce website:\n\n1. **Workflow Setup**: Configure Skyvern to navigate to 'https://example-ecommerce.com/products' using Playwright.\n2. **Data Extraction**: Extract product names, prices, and stock status for all items on the page.\n3. **Data Formatting**: Format the extracted data into a CSV file with columns: Product Name, Price, Stock Status, and Last Updated.\n4. **Export Schedule**: Set the workflow to run daily at 8 AM and save the CSV file to a Google Drive folder named 'Product Pricing Data'.\n5. **Integration**: The CSV file is automatically imported into Productiv for real-time financial analytics and budget forecasting.\n\nThe workflow ensures that the latest pricing data is always available for financial analysis, helping to track market trends and adjust budgets accordingly.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:20.795855Z",
+    "http_status": 200,
+    "content_hash": "abdd411ec346de23e397a4bb1cfba212deacc531fc529ce54db60f2e6b5f02e5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skyvern.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skyvern.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skyvern: AI-Powered Browser Automation Tool",
+  "short_description_vi": "Skyvern is an AI-powered tool designed to automate browser-based workflows seamlessly. With support for various frameworks like Puppeteer and Playwright, it enhances productivity by streamlining repetitive tasks in web environments."
+}

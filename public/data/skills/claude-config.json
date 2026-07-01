@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-config",
+  "slug": "claude-config",
+  "name": "Claude Config",
+  "headline": "Personal Claude Config: Commands & Skills",
+  "short_description": "A personal Claude Code configuration repo providing reusable skills, agents, hooks, and scripts for structured software development workflows. Built for developers who want consistent, opinionated AI-assisted coding practices.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "Nirusan",
+  "install_command": "git clone https://github.com/Nirusan/claude-config.git",
+  "source_repo_url": "https://github.com/Nirusan/claude-config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "claude-config is a personal configuration repository for Claude Code that organizes reusable skills, sub-agents, lifecycle hooks, and helper scripts into a structured development toolkit. Skills cover workflows like TDD, debugging, brainstorming, implementation planning, git operations, code review, and skill routing. A SessionStart hook auto-injects a skill-router at startup, helping Claude select the right workflow for each task automatically. The repository includes an install script that sets up hooks and skills, a sync script for keeping configurations current, and MCP server integration for tools like Brave Search, Firecrawl, Supabase, and a sandboxed Playwright browser CLI. It is designed for individual developers who want to standardize and accelerate their Claude Code sessions with battle-tested, evolving conventions.\nAuto-routing Claude to the correct skill (TDD, debug, brainstorm, etc.) at session start via the skill-router hook\nEnforcing mandatory TDD and structured implementation planning across coding tasks\nRunning two-stage code reviews that check spec compliance before code quality\nManaging git workflows including branch finishing options like merge, PR creation, or discard",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Nirusan/claude-config`",
+    "usage": "```\nConfigure my Claude instance with the following settings: [SETTINGS]. I want to use the following commands: [COMMANDS]. Enable these agents: [AGENTS]. Install these skills: [SKILLS]. Add these plugins: [PLUGINS]. Make sure everything is properly integrated and working together.\n```\nCopy\n\n```\n# Claude Configuration Summary",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-config#main-content",
+      "claude-config#overview",
+      "claude-config#setup",
+      "claude-config#examples",
+      "claude-config#tools",
+      "claude-config#mcp",
+      "claude-config#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-config là một repo cấu hình cá nhân dành cho Claude Code, giúp tổ chức các skill tái sử dụng, sub-agent, lifecycle hook và helper script thành một bộ công cụ phát triển có cấu trúc. Các skill này hỗ trợ các workflow như TDD, debug, brainstorm, lập kế hoạch triển khai, các thao tác git, code review và skill routing. Hook SessionStart tự động chèn một skill-router khi khởi động, giúp Claude tự động chọn đúng workflow cho từng tác vụ. Repo này bao gồm một script cài đặt giúp setup các hook và skill, một script đồng bộ để cập nhật cấu hình, và tích hợp MCP server cho các công cụ như Brave Search, Firecrawl, Supabase cùng một Playwright browser CLI trong môi trường sandbox. Repo được thiết kế cho các lập trình viên cá nhân muốn chuẩn hóa và tăng tốc các phiên làm việc với Claude Code bằng các quy ước thực tế đã được kiểm chứng và liên tục cải tiến.\nTự động điều hướng (auto-routing) Claude đến skill phù hợp (TDD, debug, brainstorm,...) khi bắt đầu phiên làm việc thông qua hook skill-router\nBắt buộc áp dụng TDD và lập kế hoạch triển khai có cấu trúc cho các tác vụ lập trình\nChạy quy trình code review hai bước để kiểm tra mức độ tuân thủ đặc tả (spec) trước khi đánh giá chất lượng mã nguồn\nQuản lý các workflow git, bao gồm các tùy chọn hoàn tất nhánh như merge, tạo PR hoặc hủy bỏ (discard)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Nirusan/claude-config`",
+    "usage_vi": "```\nCấu hình instance Claude của tôi với các cài đặt sau: [SETTINGS]. Tôi muốn sử dụng các lệnh sau: [COMMANDS]. Kích hoạt các agent này: [AGENTS]. Cài đặt các skill này: [SKILLS]. Thêm các plugin này: [PLUGINS]. Đảm bảo mọi thứ được tích hợp chính xác và hoạt động trơn tru với nhau.\n```\nCopy\n\n```\n# Tóm tắt cấu hình Claude"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:47:58.169194Z",
+    "http_status": 200,
+    "content_hash": "70cbf0642afd74326eff247a7fbe713f6ec4a01eab7459f593343e905e750576",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-config.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cấu hình Claude cá nhân: Command & Skill",
+  "short_description_vi": "Một repo cấu hình Claude Code cá nhân cung cấp các skill, agent, hook và script có thể tái sử dụng cho các workflow phát triển phần mềm có cấu trúc. Được thiết kế dành cho các lập trình viên muốn áp dụng các thực tiễn lập trình hỗ trợ bởi AI một cách nhất quán và có quy chuẩn."
+}

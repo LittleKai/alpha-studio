@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/activepieces",
+  "slug": "activepieces",
+  "name": "Activepieces",
+  "headline": "Activepieces - AI Workflow Automation Platform",
+  "short_description": "Activepieces is a powerful AI workflow automation platform that enables users to create and manage AI agents and multi-channel processes (MCPs) effortlessly. With over 400 MCP servers, it offers a no-code solution for automating workflows and enhancing productivity.",
+  "tier": "Gold",
+  "category": "RevOpsGrowthMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "activepieces",
+  "install_command": "claude install activepieces/activepieces",
+  "source_repo_url": "https://github.com/activepieces/activepieces",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "workflow-automation",
+    "MCP",
+    "ai-agent",
+    "no-code-automation"
+  ],
+  "sections": {
+    "overview": "Activepieces is an open-source automation platform designed for building and managing AI workflows and integrations. The project demonstrates active development with thousands of commits and a large community of contributors, supporting integration with various external services and tools. It provides a foundation for automating multi-step processes and connecting different systems together. The platform enables teams to create custom automation workflows programmatically through its codebase. Activepieces serves organizations looking to build scalable, customizable automation solutions for their business processes.\nAutomate marketing campaigns to improve engagement and conversion rates.\nIntegrate various CRM systems to synchronize customer data effortlessly.\nStreamline customer support workflows by automating ticket management.\nGenerate data-driven reports automatically for better decision-making.",
+    "setup": "Terminal\nCopy\n`claude install activepieces/activepieces`\n`git clone https://github.com/activepieces/activepieces`",
+    "usage": "```\nCreate an Activepieces workflow that integrates with Productiv to automate the process of generating monthly financial reports. The workflow should fetch real-time financial data from Productiv, analyze it using predefined metrics, and then generate a PDF report. Use [DATA_SOURCES] and [ANALYSIS_METRICS] as inputs. Ensure the workflow is triggered automatically on the first day of each month.\n```\nCopy\n\n```\nThe Activepieces workflow has been successfully created. Here are the details:\n\n1. **Trigger**: The workflow is set to run automatically on the first day of each month at 8:00 AM.\n2. **Data Sources**: The workflow fetches real-time financial data from Productiv, including revenue, expenses, and profit margins.\n3. **Analysis Metrics**: The workflow analyzes the data using predefined metrics such as month-over-month growth, expense trends, and profit margins.\n4. **Report Generation**: The workflow generates a PDF report that includes charts, graphs, and key insights. The report is saved in the specified Google Drive folder and sent via email to the finance team.\n5. **Notifications**: The workflow sends a notification to the finance team Slack channel once the report is generated and shared.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "activepieces#main-content",
+      "activepieces#overview",
+      "activepieces#setup",
+      "activepieces#examples",
+      "activepieces#tools",
+      "activepieces#mcp",
+      "activepieces#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Activepieces là một nền tảng tự động hóa nguồn mở được thiết kế để xây dựng và quản lý các workflow và tích hợp AI. Dự án thể hiện sự phát triển tích cực với hàng nghìn commit cùng cộng đồng đóng góp đông đảo, hỗ trợ tích hợp với nhiều công cụ và dịch vụ bên ngoài khác nhau. Nền tảng cung cấp cơ sở để tự động hóa các quy trình nhiều bước và kết nối các hệ thống khác nhau lại với nhau. Nó cho phép các đội ngũ tạo ra các workflow tự động hóa tùy chỉnh bằng lập trình thông qua codebase của mình. Activepieces phục vụ các tổ chức đang tìm kiếm giải pháp tự động hóa có khả năng mở rộng và tùy biến cho các quy trình doanh nghiệp của họ.\nTự động hóa các chiến dịch marketing để cải thiện tỷ lệ tương tác và chuyển đổi.\nTích hợp nhiều hệ thống CRM khác nhau để đồng bộ dữ liệu khách hàng một cách dễ dàng.\nTối ưu hóa workflow hỗ trợ khách hàng bằng cách tự động hóa việc quản lý ticket.\nTự động tạo các báo cáo dựa trên dữ liệu để đưa ra quyết định chính xác hơn.",
+    "setup_vi": "Terminal\nSao chép\n`claude install activepieces/activepieces`\n`git clone https://github.com/activepieces/activepieces`",
+    "usage_vi": "```\nTạo một workflow Activepieces tích hợp với Productiv để tự động hóa quy trình tạo báo cáo tài chính hàng tháng. Workflow này cần lấy dữ liệu tài chính theo thời gian thực từ Productiv, phân tích bằng các chỉ số được xác định trước, sau đó tạo một báo cáo PDF. Sử dụng [DATA_SOURCES] và [ANALYSIS_METRICS] làm đầu vào. Đảm bảo workflow được kích hoạt tự động vào ngày đầu tiên của mỗi tháng.\n```\nSao chép\n\n```\nWorkflow Activepieces đã được tạo thành công. Dưới đây là thông tin chi tiết:\n\n1. **Trigger**: Workflow được thiết lập để chạy tự động vào ngày đầu tiên của mỗi tháng lúc 8:00 sáng.\n2. **Data Sources**: Workflow lấy dữ liệu tài chính theo thời gian thực từ Productiv, bao gồm doanh thu, chi phí và biên lợi nhuận.\n3. **Analysis Metrics**: Workflow phân tích dữ liệu bằng các chỉ số được định nghĩa trước như tăng trưởng theo từng tháng, xu hướng chi phí và biên lợi nhuận.\n4. **Report Generation**: Workflow tạo một báo cáo PDF bao gồm các biểu đồ, đồ thị và phân tích chuyên sâu quan trọng. Báo cáo được lưu trong thư mục Google Drive được chỉ định và gửi qua email cho đội ngũ tài chính.\n5. **Notifications**: Workflow gửi thông báo đến kênh Slack của đội ngũ tài chính sau khi báo cáo được tạo và chia sẻ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:52.624993Z",
+    "http_status": 200,
+    "content_hash": "ebf726382bb97386f11771ae41564446cc3c2876ea3b76969d6437da9083aecd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\activepieces.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\activepieces.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Activepieces - Nền tảng tự động hóa workflow bằng AI",
+  "short_description_vi": "Activepieces là một nền tảng tự động hóa workflow bằng AI mạnh mẽ, giúp người dùng dễ dàng tạo và quản lý các AI agent cũng như quy trình đa kênh (MCP). Với hơn 400 MCP server, nền tảng này cung cấp giải pháp no-code để tự động hóa workflow và nâng cao năng suất."
+}

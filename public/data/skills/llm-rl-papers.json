@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llm-rl-papers",
+  "slug": "llm-rl-papers",
+  "name": "browser-use",
+  "headline": "LLM-RL-Papers - Automates Research Monitoring",
+  "short_description": "Automates monitoring of arXiv for LLM and RL research focused on control applications. Benefits operations teams by identifying relevant papers and facilitating contributions via PRs. Connects to research workflows and documentation tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "WindyLab",
+  "install_command": "git clone https://github.com/WindyLab/LLM-RL-Papers.git",
+  "source_repo_url": "https://github.com/WindyLab/LLM-RL-Papers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "control",
+    "papers",
+    "reinfrocement-learning",
+    "docs"
+  ],
+  "sections": {
+    "overview": "LLM RL Papers is a curated repository that automates monitoring of arXiv research at the intersection of large language models and reinforcement learning, with emphasis on control applications including robotics and game agents. The skill maintains organized paper collections sorted by methodology—such as action-based approaches, reward function design, environment configuration, and data generation—making it easy for researchers to identify relevant work. It includes survey reviews covering multi-agent RL, game agents, and LLM-enhanced RL taxonomies. Operations and research teams benefit from centralized tracking of emerging techniques and can contribute discoveries via pull requests, streamlining knowledge sharing workflows.\nAutomate the monitoring of new research papers on LLM and RL for timely updates.\nFacilitate collaboration by allowing users to submit pull requests for noteworthy papers.\nEnhance control systems in robotics by integrating insights from the latest research.\nSupport game development by applying findings from LLM and RL research to character behavior.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WindyLab/LLM-RL-Papers`",
+    "usage": "```\nMonitor arXiv for new papers matching the query '[LLM OR \"large language model\" OR \"reinforcement learning\"] AND [control OR \"control systems\" OR \"robotics\"]' with a frequency of [DAILY/WEEKLY]. For each relevant paper, extract: title, authors, abstract, arXiv ID, publication date, and direct PDF link. Then, generate a structured summary highlighting: 1) Key contributions, 2) Methodology, 3) Control applications addressed, 4) Relevance score (1-10) for our research focus. Finally, suggest potential contributions or PRs by identifying gaps in the paper's approach or areas for extension. Format the output as a markdown table with clickable links for easy reference.\n```\nCopy\n\n```\n### Weekly arXiv Monitoring Report: LLM & RL for Control Applications\n*Generated on: October 12, 2023*\n\n| **Title** | **Authors** | **arXiv ID** | **Date** | **Relevance** | **Key Contributions** | **Control Applications** | **Suggested PRs** |\n|-----------|------------|--------------|----------|---------------|-----------------------|--------------------------|-------------------|\n| **Language Models as Zero-Shot Controllers for Robotics** | Smith et al. | [2310.04463](https://arxiv.org/abs/2310.04463) | Oct 6, 2023 | 9/10 | Introduces a framework for using LLMs to generate control policies for robotic systems without task-specific training. | Robotics (manipulation, navigation), Adaptive control | Extend to multi-robot coordination; Integrate with model predictive control (MPC) for real-time adjustments. |\n| **Reinforcement Learning for Adaptive Cruise Control in Autonomous Vehicles** | Lee et al. | [2310.04512](https://arxiv.org/abs/2310.04512) | Oct 5, 2023 | 8/10 | Proposes a DDPG-based RL agent for adaptive cruise control (ACC) with improved safety and fuel efficiency. | Autonomous vehicles, Adaptive control | Implement in a high-fidelity simulator; Compare against PID controllers for robustness. |\n| **Hierarchical Reinforcement Learning for Industrial Process Control** | Chen et al. | [2310.04689](https://arxiv.org/abs/2310.04689) | Oct 4, 2023 | 7/10 | Presents a hierarchical RL approach to optimize industrial process control with reduced computational overhead. | Industrial control systems, Hierarchical control | Validate on a benchmark process (e.g., Tennessee Eastman); Explore transfer learning to new processes. |\n\n**Summary:**\nThis week’s papers highlight growing interest in combining LLMs with control systems, particularly in robotics and autonomous vehicles. The Smith et al. paper stands out for its zero-shot applicability, while Lee et al. and Chen et al. focus on improving RL-based control in specific domains. **Actionable next steps:** 1) Review the Smith et al. paper for potential integration with our existing robotic control stack, 2) Replicate the ACC experiment in CARLA for benchmarking, 3) Explore hierarchical RL for our chemical process control use case.\n\n**Notes:**\n- All papers are open-access and include code repositories (linked in the PDF).\n- The Chen et al. paper includes a supplementary GitHub repo with pre-trained models.\n- Consider reaching out to authors for collaboration opportunities, especially for the Smith et al. work.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "llm-rl-papers#main-content",
+      "llm-rl-papers#overview",
+      "llm-rl-papers#setup",
+      "llm-rl-papers#examples",
+      "llm-rl-papers#tools",
+      "llm-rl-papers#mcp",
+      "llm-rl-papers#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LLM RL Papers is a curated repository that automates monitoring of arXiv research at the intersection of large language models and reinforcement learning, with emphasis on control applications including robotics and game agents. The skill maintains organized paper collections sorted by methodology—such as action-based approaches, reward function design, environment configuration, and data generation—making it easy for researchers to identify relevant work. It includes survey reviews covering multi-agent RL, game agents, and LLM-enhanced RL taxonomies. Operations and research teams benefit from centralized tracking of emerging techniques and can contribute discoveries via pull requests, streamlining knowledge sharing workflows.\nAutomate the monitoring of new research papers on LLM and RL for timely updates.\nFacilitate collaboration by allowing users to submit pull requests for noteworthy papers.\nEnhance control systems in robotics by integrating insights from the latest research.\nSupport game development by applying findings from LLM and RL research to character behavior.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WindyLab/LLM-RL-Papers`",
+    "usage_vi": "```\nMonitor arXiv for new papers matching the query '[LLM OR \"large language model\" OR \"reinforcement learning\"] AND [control OR \"control systems\" OR \"robotics\"]' with a frequency of [DAILY/WEEKLY]. For each relevant paper, extract: title, authors, abstract, arXiv ID, publication date, and direct PDF link. Then, generate a structured summary highlighting: 1) Key contributions, 2) Methodology, 3) Control applications addressed, 4) Relevance score (1-10) for our research focus. Finally, suggest potential contributions or PRs by identifying gaps in the paper's approach or areas for extension. Format the output as a markdown table with clickable links for easy reference.\n```\nCopy\n\n```\n### Weekly arXiv Monitoring Report: LLM & RL for Control Applications\n*Generated on: October 12, 2023*\n\n| **Title** | **Authors** | **arXiv ID** | **Date** | **Relevance** | **Key Contributions** | **Control Applications** | **Suggested PRs** |\n|-----------|------------|--------------|----------|---------------|-----------------------|--------------------------|-------------------|\n| **Language Models as Zero-Shot Controllers for Robotics** | Smith et al. | [2310.04463](https://arxiv.org/abs/2310.04463) | Oct 6, 2023 | 9/10 | Introduces a framework for using LLMs to generate control policies for robotic systems without task-specific training. | Robotics (manipulation, navigation), Adaptive control | Extend to multi-robot coordination; Integrate with model predictive control (MPC) for real-time adjustments. |\n| **Reinforcement Learning for Adaptive Cruise Control in Autonomous Vehicles** | Lee et al. | [2310.04512](https://arxiv.org/abs/2310.04512) | Oct 5, 2023 | 8/10 | Proposes a DDPG-based RL agent for adaptive cruise control (ACC) with improved safety and fuel efficiency. | Autonomous vehicles, Adaptive control | Implement in a high-fidelity simulator; Compare against PID controllers for robustness. |\n| **Hierarchical Reinforcement Learning for Industrial Process Control** | Chen et al. | [2310.04689](https://arxiv.org/abs/2310.04689) | Oct 4, 2023 | 7/10 | Presents a hierarchical RL approach to optimize industrial process control with reduced computational overhead. | Industrial control systems, Hierarchical control | Validate on a benchmark process (e.g., Tennessee Eastman); Explore transfer learning to new processes. |\n\n**Summary:**\nThis week’s papers highlight growing interest in combining LLMs with control systems, particularly in robotics and autonomous vehicles. The Smith et al. paper stands out for its zero-shot applicability, while Lee et al. and Chen et al. focus on improving RL-based control in specific domains. **Actionable next steps:** 1) Review the Smith et al. paper for potential integration with our existing robotic control stack, 2) Replicate the ACC experiment in CARLA for benchmarking, 3) Explore hierarchical RL for our chemical process control use case.\n\n**Notes:**\n- All papers are open-access and include code repositories (linked in the PDF).\n- The Chen et al. paper includes a supplementary GitHub repo with pre-trained models.\n- Consider reaching out to authors for collaboration opportunities, especially for the Smith et al. work.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:20:43.911464Z",
+    "http_status": 200,
+    "content_hash": "83c68a4304e68d68ce01abc8f8533a3befb0105de738d73aeec94bf7f7bd754a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llm-rl-papers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llm-rl-papers.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LLM-RL-Papers - Automates Research Monitoring",
+  "short_description_vi": "Automates monitoring of arXiv for LLM and RL research focused on control applications. Benefits operations teams by identifying relevant papers and facilitating contributions via PRs. Connects to research workflows and documentation tools."
+}

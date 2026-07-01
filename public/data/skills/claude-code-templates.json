@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-templates",
+  "slug": "claude-code-templates",
+  "name": "Claude Code Templates",
+  "headline": "Configure and monitor Claude Code via CLI",
+  "short_description": "CLI tool for configuring and monitoring Claude Code. Operations teams use it to streamline workflows, reduce manual setup, and ensure consistent configurations. Integrates with npm for easy installation and updates.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "davila7",
+  "install_command": "git clone https://github.com/davila7/claude-code-templates.git",
+  "source_repo_url": "https://github.com/davila7/claude-code-templates",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "anthropic",
+    "anthropic-claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claude-code-templates is a comprehensive repository for discovering, organizing, and managing reusable Claude Code skills and components. It provides a structured directory system with API endpoints for collections management, component browsing, and template organization. The project includes a CLI tool, dashboard interface, and serverless functions for handling user collections and component metadata. Teams can leverage pre-built templates to accelerate development and maintain consistent patterns across Claude Code implementations. The system supports component discovery, cart functionality for template selection, and API-driven access to templates and collections.\nAutomate the generation of unit tests for your codebase using predefined commands.\nIntegrate GitHub actions to streamline your development workflow and enhance collaboration.\nSet up performance optimization hooks to automatically improve your application's efficiency.\nUtilize AI agents to conduct security audits and ensure code integrity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/davila7/claude-code-templates`",
+    "usage": "```\nGenerate a Claude Code template for [PROJECT_NAME] that includes: 1) Pre-configured linters and formatters for [LANGUAGE], 2) A setup script to install dependencies via npm, 3) A monitoring hook to validate configurations, and 4) Documentation comments explaining each section. Use [PROJECT_NAME] as the placeholder for the project directory name.\n```\nCopy\n\n```\nHere’s a Claude Code template for a React-based dashboard project named `dashboard-ui`:\n\n```\n# .claude-project-template\n{\n  \"name\": \"dashboard-ui\",\n  \"language\": \"javascript\",\n  \"linters\": {\n    \"eslint\": {\n      \"config\": \".eslintrc.json\",\n      \"rules\": {\n        \"react/react-in-jsx-scope\": \"off\",\n        \"no-unused-vars\": \"warn\"\n      }\n    },\n    \"prettier\": {\n      \"config\": \".prettierrc\",\n      \"options\": {\n        \"semi\": false,\n        \"singleQuote\": true\n      }\n    }\n  },\n  \"setup\": {\n    \"commands\": [\n      \"npm install\",\n      \"npx husky install\",\n      \"npm run lint:fix\"\n    ]\n  },\n  \"monitoring\": {\n    \"hooks\": {\n      \"post-setup\": \"npm run test\",\n      \"pre-commit\": \"npm run lint\"\n    }\n  },\n  \"docs\": {\n    \"linters\": \"ESLint and Prettier are configured for React. See .eslintrc.json and .prettierrc for details.\",\n    \"setup\": \"Run `npm install` to install dependencies. Husky is used for Git hooks.\"\n  }\n}\n```\n\nThis template ensures:\n- Consistent linting and formatting for React components.\n- Automated dependency installation via npm.\n- Git hooks for pre-commit linting checks.\n- Clear documentation for onboarding new developers.\n\nTo use this template, save it as `.claude-project-template` in your project root and run `claude-code-templates apply` to apply the configuration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-templates#main-content",
+      "claude-code-templates#overview",
+      "claude-code-templates#setup",
+      "claude-code-templates#examples",
+      "claude-code-templates#tools",
+      "claude-code-templates#mcp",
+      "claude-code-templates#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-code-templates là một repository toàn diện để khám phá, tổ chức và quản lý các skill và component Claude Code có thể tái sử dụng. Dự án cung cấp một hệ thống thư mục có cấu trúc với các API endpoint để quản lý collection, duyệt component và tổ chức template. Dự án bao gồm một công cụ CLI, giao diện dashboard và các serverless function để xử lý các collection của người dùng và metadata của component. Các đội ngũ phát triển có thể tận dụng các template dựng sẵn để tăng tốc độ phát triển và duy trì các pattern nhất quán trong các triển khai Claude Code. Hệ thống hỗ trợ khám phá component, tính năng giỏ hàng để lựa chọn template và truy cập template/collection qua API.\n\nTự động hóa việc tạo unit test cho codebase bằng các lệnh định sẵn.\nTích hợp GitHub Actions để tối ưu hóa quy trình phát triển và tăng cường cộng tác.\nSetup các hook tối ưu hiệu năng để tự động cải thiện hiệu suất của ứng dụng.\nSử dụng các AI agent để tiến hành audit bảo mật và đảm bảo tính toàn vẹn của code.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/davila7/claude-code-templates`",
+    "usage_vi": "```\nGenerate a Claude Code template for [PROJECT_NAME] that includes: 1) Pre-configured linters and formatters for [LANGUAGE], 2) A setup script to install dependencies via npm, 3) A monitoring hook to validate configurations, and 4) Documentation comments explaining each section. Use [PROJECT_NAME] as the placeholder for the project directory name.\n```\nCopy\n\n```\nDưới đây là template Claude Code cho một dự án dashboard dựa trên React có tên là `dashboard-ui`:\n\n```\n# .claude-project-template\n{\n  \"name\": \"dashboard-ui\",\n  \"language\": \"javascript\",\n  \"linters\": {\n    \"eslint\": {\n      \"config\": \".eslintrc.json\",\n      \"rules\": {\n        \"react/react-in-jsx-scope\": \"off\",\n        \"no-unused-vars\": \"warn\"\n      }\n    },\n    \"prettier\": {\n      \"config\": \".prettierrc\",\n      \"options\": {\n        \"semi\": false,\n        \"singleQuote\": true\n      }\n    }\n  },\n  \"setup\": {\n    \"commands\": [\n      \"npm install\",\n      \"npx husky install\",\n      \"npm run lint:fix\"\n    ]\n  },\n  \"monitoring\": {\n    \"hooks\": {\n      \"post-setup\": \"npm run test\",\n      \"pre-commit\": \"npm run lint\"\n    }\n  },\n  \"docs\": {\n    \"linters\": \"ESLint và Prettier được cấu hình cho React. Xem .eslintrc.json và .prettierrc để biết chi tiết.\",\n    \"setup\": \"Chạy `npm install` để cài đặt các dependency. Husky được sử dụng cho các Git hook.\"\n  }\n}\n```\n\nTemplate này đảm bảo:\n- Linting và formatting nhất quán cho các component React.\n- Tự động cài đặt dependency qua npm.\n- Các Git hook cho việc check linting trước khi commit (pre-commit).\n- Tài liệu rõ ràng cho việc onboarding lập trình viên mới.\n\nĐể sử dụng template này, hãy lưu nó với tên `.claude-project-template` tại thư mục gốc của dự án và chạy `claude-code-templates apply` để áp dụng cấu hình.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:48.476221Z",
+    "http_status": 200,
+    "content_hash": "fd90e92ff34365e318084ed8751ecc92278c69c91dab645a87660356256f6f5f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-templates.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-templates.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cấu hình và giám sát Claude Code qua CLI",
+  "short_description_vi": "Công cụ CLI để cấu hình và giám sát Claude Code. Các đội ngũ vận hành sử dụng công cụ này để tối ưu hóa quy trình làm việc, giảm thiểu các bước setup thủ công và đảm bảo cấu hình nhất quán. Tích hợp với npm để cài đặt và cập nhật dễ dàng."
+}

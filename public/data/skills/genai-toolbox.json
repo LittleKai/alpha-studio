@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/genai-toolbox",
+  "slug": "genai-toolbox",
+  "name": "Related Skills",
+  "headline": "GenAI Toolbox: Open Source MCP for Databases",
+  "short_description": "The genai-toolbox is an open-source MCP server designed for integration with various databases, including BigQuery, MongoDB, and PostgreSQL. It helps developers to use AI capabilities across multiple database platforms, enhancing data management and analytics.",
+  "tier": "Gold",
+  "category": "GrowthRevOpsDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "googleapis",
+  "install_command": "claude install googleapis/genai-toolbox",
+  "source_repo_url": "https://github.com/googleapis/genai-toolbox",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI",
+    "MCP",
+    "databases",
+    "integration",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "The genai-toolbox is an open-source MCP server maintained by Google APIs that enables AI agents to interact with multiple database platforms. It supports BigQuery, MongoDB, and PostgreSQL, allowing developers to leverage AI capabilities for database operations and analytics. The toolbox facilitates seamless integration between AI tools like Claude Code and Cursor with your existing database infrastructure. It provides a standardized interface for database queries and management across different database systems. This enables AI agents to perform data operations, analysis, and management tasks directly within supported database environments.\nIntegrating AI with BigQuery to perform advanced data analytics and generate real-time insights.\nAutomating routine database queries using AI agents to reduce manual effort and increase efficiency.\nBuilding custom AI solutions for data management that adapt to specific business requirements.\nEnhancing data retrieval processes across MongoDB and PostgreSQL with intelligent query optimization.",
+    "setup": "Terminal\nCopy\n`claude install googleapis/genai-toolbox`\n`git clone https://github.com/googleapis/genai-toolbox`",
+    "usage": "```\nUsing the genai-toolbox, connect to my [DATABASE_TYPE] database and retrieve all documents where [FIELD_NAME] matches [VALUE]. Format the output as a JSON array with the following fields: [FIELD_LIST]. For example, if the database is MongoDB and the field is 'address.zip', the output should include 'firstname', 'lastname', and 'email'.\n```\nCopy\n\n```\nHere is the output from a MongoDB database query using the genai-toolbox: \n\n```json\n[\n  {\n    \"firstname\": \"Bob\",\n    \"lastname\": \"Smith\",\n    \"email\": \"bob@smith.com\",\n    \"address\": {\n      \"street\": \"100 Main St\",\n      \"city\": \"Anytown\",\n      \"state\": \"MO\",\n      \"zip\": \"11111\"\n    }\n  },\n  {\n    \"firstname\": \"Alice\",\n    \"lastname\": \"Johnson\",\n    \"email\": \"alice@johnson.com\",\n    \"address\": {\n      \"street\": \"200 Elm St\",\n      \"city\": \"Othertown\",\n      \"state\": \"NY\",\n      \"zip\": \"11111\"\n    }\n  }\n]\n```\n\nThis output shows two documents where the 'address.zip' field matches '11111'. The fields 'firstname', 'lastname', and 'email' are included as requested.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "genai-toolbox#main-content",
+      "genai-toolbox#overview",
+      "genai-toolbox#setup",
+      "genai-toolbox#examples",
+      "genai-toolbox#tools",
+      "genai-toolbox#mcp",
+      "genai-toolbox#related"
+    ],
+    "overview_vi": "The genai-toolbox is an open-source MCP server maintained by Google APIs that enables AI agents to interact with multiple database platforms. It supports BigQuery, MongoDB, and PostgreSQL, allowing developers to leverage AI capabilities for database operations and analytics. The toolbox facilitates seamless integration between AI tools like Claude Code and Cursor with your existing database infrastructure. It provides a standardized interface for database queries and management across different database systems. This enables AI agents to perform data operations, analysis, and management tasks directly within supported database environments.\nIntegrating AI with BigQuery to perform advanced data analytics and generate real-time insights.\nAutomating routine database queries using AI agents to reduce manual effort and increase efficiency.\nBuilding custom AI solutions for data management that adapt to specific business requirements.\nEnhancing data retrieval processes across MongoDB and PostgreSQL with intelligent query optimization.",
+    "setup_vi": "Terminal\nCopy\n`claude install googleapis/genai-toolbox`\n`git clone https://github.com/googleapis/genai-toolbox`",
+    "usage_vi": "```\nUsing the genai-toolbox, connect to my [DATABASE_TYPE] database and retrieve all documents where [FIELD_NAME] matches [VALUE]. Format the output as a JSON array with the following fields: [FIELD_LIST]. For example, if the database is MongoDB and the field is 'address.zip', the output should include 'firstname', 'lastname', and 'email'.\n```\nCopy\n\n```\nHere is the output from a MongoDB database query using the genai-toolbox: \n\n```json\n[\n  {\n    \"firstname\": \"Bob\",\n    \"lastname\": \"Smith\",\n    \"email\": \"bob@smith.com\",\n    \"address\": {\n      \"street\": \"100 Main St\",\n      \"city\": \"Anytown\",\n      \"state\": \"MO\",\n      \"zip\": \"11111\"\n    }\n  },\n  {\n    \"firstname\": \"Alice\",\n    \"lastname\": \"Johnson\",\n    \"email\": \"alice@johnson.com\",\n    \"address\": {\n      \"street\": \"200 Elm St\",\n      \"city\": \"Othertown\",\n      \"state\": \"NY\",\n      \"zip\": \"11111\"\n    }\n  }\n]\n```\n\nThis output shows two documents where the 'address.zip' field matches '11111'. The fields 'firstname', 'lastname', and 'email' are included as requested.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:12.830706Z",
+    "http_status": 200,
+    "content_hash": "8851992d1dd8387f53ea080d11f977b742bbeb2e29b87d6e74b1ada34dbf7ab7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\genai-toolbox.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\genai-toolbox.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GenAI Toolbox: Open Source MCP for Databases",
+  "short_description_vi": "The genai-toolbox is an open-source MCP server designed for integration with various databases, including BigQuery, MongoDB, and PostgreSQL. It helps developers to use AI capabilities across multiple database platforms, enhancing data management and analytics."
+}

@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/research-units-pipeline-skills",
+  "slug": "research-units-pipeline-skills",
+  "name": "Research Units Pipeline Skills",
+  "headline": "Research Units Pipeline Skills - Automate Research",
+  "short_description": "Research pipelines as semantic execution units: each skill declares inputs/outputs, acceptance criteria, and guardrails. Evidence-first methodology prevents hollow writing through structured intermediate artifacts.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "WILLOSCAR",
+  "install_command": "git clone https://github.com/WILLOSCAR/research-units-pipeline-skills.git",
+  "source_repo_url": "https://github.com/WILLOSCAR/research-units-pipeline-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "research-tool",
+    "vibecoding",
+    "skills",
+    "units",
+    "vibe",
+    "vibe-coding",
+    "codex",
+    "research-paper",
+    "research",
+    "tools",
+    "claude",
+    "research-project",
+    "gpt",
+    "claude-code",
+    "pipeline"
+  ],
+  "sections": {
+    "overview": "Research Units Pipeline Skills is a file-first automation system that transforms research and writing goals into structured, auditable workflows. It organizes work into five layers—capability surface, workflow protocol, execution ledger, evidence loop, and learning layer—where each research skill declares explicit inputs, outputs, acceptance criteria, and guardrails. The system emphasizes artifact-first execution: intermediate outputs (evidence packs, reviews, briefs) are written to disk so later stages build on them, and weak deliverables can be traced back to specific skills, protocols, or model limits for targeted repair. Eight core workflows cover arxiv surveys, paper reviews, evidence synthesis, research briefs, idea brainstorms, tutorials, and graduate theses, all sharing the same architecture of reusable skills, pipeline contracts, and workspace state management.\nLiterature surveys with explicit evidence stacks before PDF delivery\nSingle-paper peer review or lab assessment with full traceability\nEvidence synthesis under explicit screening and extraction protocols\nFast topic understanding and reading-path generation from paper sets",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WILLOSCAR/research-units-pipeline-skills`",
+    "usage": "```\nAnalyze the [PIPELINE_NAME] pipeline as a semantic execution unit. Identify all declared skills in the pipeline, including their inputs, outputs, acceptance criteria, and guardrails. For each skill, verify if the declared artifacts are semantically consistent with the pipeline's purpose. Highlight any discrepancies or missing guardrails. Provide a structured report with sections for skills, artifacts, and validation findings. Pipeline definition: [PIPELINE_DEFINITION]\n```\nCopy\n\n```\n### Pipeline Analysis: Customer Onboarding Automation Pipeline\n\n#### **1. Declared Skills in the Pipeline**\n\n| Skill Name | Inputs | Outputs | Acceptance Criteria | Guardrails | Validation Status |\n|------------|--------|---------|---------------------|-----------|-------------------|\n| **validate_customer_data** | `customer_id`, `email`, `phone` | `is_valid: bool`, `validation_errors: list` | `is_valid` must be `True` if all fields meet format rules | `email` must not be empty, `phone` must be 10 digits | ✅ **Valid** - All artifacts align with criteria. |\n| **fetch_credit_score** | `customer_id`, `ssn` | `credit_score: int`, `credit_report: dict` | `credit_score` must be between 300-850 | `ssn` must be masked in logs | ⚠️ **Warning** - `ssn` is not masked in declared artifacts. |\n| **generate_contract** | `customer_id`, `credit_score`, `plan_type` | `contract_pdf: file`, `contract_id: str` | `contract_pdf` must be generated within 5 seconds | `plan_type` must be one of: `basic`, `premium`, `enterprise` | ❌ **Invalid** - No performance guardrail for `contract_pdf` generation time. |\n\n#### **2. Semantic Consistency Findings**\n\n- **Discrepancy in `fetch_credit_score`:** The skill declares `ssn` as an input, but the guardrail for masking is not enforced in the output artifacts. This could lead to PII exposure in logs or intermediate storage.\n- **Missing Guardrail in `generate_contract`:** The pipeline does not enforce a timeout for contract generation, which could cause delays in the onboarding process.\n- **Incomplete Artifacts in `validate_customer_data`:** While the skill declares `validation_errors` as an output, the pipeline does not specify how these errors are propagated to downstream skills (e.g., `notify_support_team`).\n\n#### **3. Recommendations**\n\n1. **Enforce PII Masking:** Update the `fetch_credit_score` skill to ensure `ssn` is never logged or stored in plaintext. Use a secure hashing mechanism for storage.\n2. **Add Performance Guardrails:** Introduce a 5-second timeout for `generate_contract` to prevent pipeline stalls. Log failures for SLA tracking.\n3. **Define Error Propagation:** Add a `validation_errors` field to the pipeline's global state so downstream skills can react to data quality issues.\n\n#### **4. Pipeline Health Score: 65/100**\n\nThe pipeline has **3 critical gaps** that could lead to runtime failures or compliance violations. Addressing these will improve reliability and security.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "research-units-pipeline-skills#main-content",
+      "research-units-pipeline-skills#overview",
+      "research-units-pipeline-skills#setup",
+      "research-units-pipeline-skills#examples",
+      "research-units-pipeline-skills#tools",
+      "research-units-pipeline-skills#mcp",
+      "research-units-pipeline-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Research Units Pipeline Skills là một hệ thống tự động hóa ưu tiên tệp tin (file-first) giúp chuyển đổi các mục tiêu nghiên cứu và bài viết thành các workflow có cấu trúc và có thể kiểm toán (auditable). Hệ thống tổ chức công việc thành năm lớp (layer) — capability surface, workflow protocol, execution ledger, evidence loop và learning layer — trong đó mỗi skill nghiên cứu sẽ khai báo rõ ràng input, output, tiêu chí nghiệm thu (acceptance criteria) và guardrail. Hệ thống nhấn mạnh vào việc thực thi ưu tiên artifact (artifact-first): các đầu ra trung gian (evidence packs, reviews, briefs) được ghi trực tiếp vào đĩa để các giai đoạn sau kế thừa, đồng thời các kết quả đầu ra kém chất lượng có thể được truy vết ngược lại các skill, giao thức (protocol) hoặc giới hạn của mô hình cụ thể để khắc phục một cách chuẩn xác. Tám workflow cốt lõi bao gồm khảo sát arXiv (arxiv surveys), bình duyệt bài báo khoa học (paper reviews), tổng hợp bằng chứng (evidence synthesis), tóm tắt nghiên cứu (research briefs), lên ý tưởng (idea brainstorms), hướng dẫn (tutorials) và luận văn tốt nghiệp (graduate theses), tất cả đều chia sẻ chung một kiến trúc gồm các skill có thể tái sử dụng, hợp đồng pipeline (pipeline contracts) và quản lý trạng thái workspace (workspace state management).\nKhảo sát tài liệu với các evidence stack rõ ràng trước khi xuất PDF\nBình duyệt bài báo đơn lẻ hoặc đánh giá phòng thí nghiệm với khả năng truy vết toàn diện\nTổng hợp bằng chứng theo các giao thức (protocol) sàng lọc và trích xuất rõ ràng\nNhanh chóng nắm bắt chủ đề và tạo lộ trình đọc từ tập hợp các bài báo khoa học",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/WILLOSCAR/research-units-pipeline-skills`",
+    "usage_vi": "```\nPhân tích pipeline [PIPELINE_NAME] như một đơn vị thực thi ngữ nghĩa. Xác định tất cả các skill được khai báo trong pipeline, bao gồm input, output, tiêu chí nghiệm thu (acceptance criteria) và guardrail của chúng. Với mỗi skill, xác minh xem các artifact được khai báo có nhất quán về mặt ngữ nghĩa với mục tiêu của pipeline hay không. Chỉ ra các điểm không nhất quán hoặc các guardrail bị thiếu. Cung cấp một báo cáo có cấu trúc gồm các phần dành cho skill, artifact và kết quả xác thực. Định nghĩa pipeline: [PIPELINE_DEFINITION]\n```\nCopy\n\n```\n### Phân tích Pipeline: Quy trình tự động hóa Onboarding khách hàng\n\n#### **1. Các Skill được khai báo trong Pipeline**\n\n| Tên Skill | Input | Output | Tiêu chí nghiệm thu | Guardrail | Trạng thái xác thực |\n|------------|--------|---------|---------------------|-----------|-------------------|\n| **validate_customer_data** | `customer_id`, `email`, `phone` | `is_valid: bool`, `validation_errors: list` | `is_valid` phải là `True` nếu tất cả các trường khớp với định dạng | `email` không được để trống, `phone` phải có 10 chữ số | ✅ **Hợp lệ** - Tất cả các artifact đều khớp với tiêu chí. |\n| **fetch_credit_score** | `customer_id`, `ssn` | `credit_score: int`, `credit_report: dict` | `credit_score` phải nằm trong khoảng 300-850 | `ssn` phải được ẩn (masked) trong log | ⚠️ **Cảnh báo** - `ssn` không được ẩn trong các artifact được khai báo. |\n| **generate_contract** | `customer_id`, `credit_score`, `plan_type` | `contract_pdf: file`, `contract_id: str` | `contract_pdf` phải được tạo trong vòng 5 giây | `plan_type` phải là một trong các giá trị: `basic`, `premium`, `enterprise` | ❌ **Không hợp lệ** - Thiếu guardrail hiệu năng cho thời gian tạo contract_pdf. |\n\n#### **2. Kết quả đánh giá tính nhất quán ngữ nghĩa**\n\n- **Điểm bất hợp lý trong `fetch_credit_score`:** Skill này khai báo `ssn` làm input, nhưng guardrail về việc ẩn thông tin không được áp dụng trong các output artifact. Điều này có thể dẫn đến việc lộ thông tin cá nhân (PII) trong log hoặc bộ nhớ lưu trữ trung gian.\n- **Thiếu Guardrail trong `generate_contract`:** Pipeline không giới hạn thời gian timeout cho việc tạo hợp đồng, điều này có thể gây trễ cho toàn bộ quy trình onboarding.\n- **Artifact chưa hoàn thiện trong `validate_customer_data`:** Mặc dù skill khai báo `validation_errors` làm output, pipeline lại không chỉ rõ cách các lỗi này được truyền (propagate) tới các skill phía sau (ví dụ: `notify_support_team`).\n\n#### **3. Khuyến nghị**\n\n1. **Áp dụng ẩn thông tin PII:** Cập nhật skill `fetch_credit_score` để đảm bảo `ssn` không bao giờ được ghi log hoặc lưu trữ dưới dạng văn bản thuần (plaintext). Hãy sử dụng cơ chế hash bảo mật để lưu trữ.\n2. **Thêm Guardrail hiệu năng:** Thiết lập thời gian timeout 5 giây cho `generate_contract` để tránh nghẽn pipeline. Ghi nhận các trường hợp thất bại để theo dõi SLA.\n3. **Định nghĩa cơ chế truyền lỗi:** Thêm trường `validation_errors` vào trạng thái toàn cục (global state) của pipeline để các skill phía sau có thể xử lý các vấn đề về chất lượng dữ liệu.\n\n#### **4. Điểm sức khỏe Pipeline: 65/100**\n\nPipeline này có **3 lỗi nghiêm trọng** có thể dẫn đến lỗi runtime hoặc vi phạm tuân thủ (compliance). Khắc phục các lỗi này sẽ giúp cải thiện độ tin cậy và tính bảo mật của hệ thống.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:17:17.461318Z",
+    "http_status": 200,
+    "content_hash": "e8ee0b91119c61d09539c98ab0f27031e9dd3c9b9cb0840f468fead6e0f945f2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\research-units-pipeline-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\research-units-pipeline-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Research Units Pipeline Skills - Tự động hóa quy trình nghiên cứu",
+  "short_description_vi": "Xây dựng các pipeline nghiên cứu như những đơn vị thực thi ngữ nghĩa (semantic execution units): mỗi skill tự khai báo input/output, tiêu chí nghiệm thu (acceptance criteria) và các ràng buộc an toàn (guardrails). Phương pháp tiếp cận ưu tiên bằng chứng (evidence-first) giúp tránh việc viết nội dung sáo rỗng nhờ vào các artifact trung gian được cấu trúc chặt chẽ."
+}

@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/redtube-downloader",
+  "slug": "redtube-downloader",
+  "name": "RedTube Downloader",
+  "headline": "RedTube Downloader: Download Videos",
+  "short_description": "RedTube Downloader is a browser extension that enables users to easily save supported RedTube videos. It simplifies the downloading process by detecting available quality options and exporting videos as MP4 files for offline viewing.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "serpdownloaders",
+  "install_command": "git clone https://github.com/serpapps/redtube-video-downloader",
+  "source_repo_url": "https://github.com/serpapps/redtube-video-downloader",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "downloader",
+    "browser-extension",
+    "redtube"
+  ],
+  "sections": {
+    "overview": "RedTube Downloader is a browser extension designed to simplify downloading videos from RedTube. The extension automatically detects available quality options for supported videos and exports them as MP4 files, enabling offline viewing. Users can save their preferred videos directly from the browser without complex workflows. The tool is ideal for anyone who wants to preserve RedTube content locally while maintaining video quality.\nSave supported RedTube videos from watch pages\nDetect available quality variants exposed by the player\nExport MP4 files for easier replay and archiving\nAvoid manual source hunting in the browser",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill redtube-video-downloader`\n`git clone https://github.com/serpapps/redtube-video-downloader`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "redtube-downloader#main-content",
+      "redtube-downloader#overview",
+      "redtube-downloader#setup",
+      "redtube-downloader#examples",
+      "redtube-downloader#related",
+      "cam4-downloader",
+      "hentaihaven-downloader",
+      "ashemaletube-downloader"
+    ],
+    "overview_vi": "RedTube Downloader là một browser extension được thiết kế để đơn giản hóa việc tải video từ RedTube. Extension này tự động phát hiện các tùy chọn chất lượng hiện có của các video được hỗ trợ và xuất thành file MP4 để xem offline. Người dùng có thể trực tiếp lưu các video yêu thích từ trình duyệt mà không cần thực hiện các bước phức tạp. Đây là công cụ lý tưởng cho những ai muốn lưu trữ nội dung RedTube về máy (local) mà vẫn giữ nguyên chất lượng video.\nLưu các video RedTube được hỗ trợ trực tiếp từ trang xem video\nPhát hiện các tùy chọn chất lượng sẵn có từ player\nXuất file MP4 giúp dễ dàng phát lại và lưu trữ\nTránh việc phải tự tìm nguồn video thủ công trên trình duyệt",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/serpdownloaders/skills --skill redtube-video-downloader`\n`git clone https://github.com/serpapps/redtube-video-downloader`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nVui lòng kiểm tra repository trên GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:33:01.934688Z",
+    "http_status": 200,
+    "content_hash": "2082c587b45167ce2c77b96c5f9fd9529d4574984f8fec41472bcbc828f33f1c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\redtube-downloader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\redtube-downloader.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "RedTube Downloader: Tải video",
+  "short_description_vi": "RedTube Downloader là một browser extension giúp người dùng dễ dàng lưu các video được hỗ trợ từ RedTube. Tiện ích này đơn giản hóa quy trình tải xuống bằng cách tự động phát hiện các tùy chọn chất lượng video hiện có và xuất thành file MP4 để xem offline."
+}

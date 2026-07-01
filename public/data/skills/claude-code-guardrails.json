@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-guardrails",
+  "slug": "claude-code-guardrails",
+  "name": "browser-use",
+  "headline": "protective hooks for claude code",
+  "short_description": "Claude Code Guardrails is a protective system for Claude Code that prevents accidental code loss. It uses branch protection, automatic checkpointing, and safe commit squashing. Benefits developers and operations teams by ensuring code integrity during development.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "wangbooth",
+  "install_command": "git clone https://github.com/wangbooth/Claude-Code-Guardrails.git",
+  "source_repo_url": "https://github.com/wangbooth/Claude-Code-Guardrails",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-code-hooks",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "Claude Code Guardrails is a smart guardrail system that prevents accidental code loss during Claude Code development. It uses three core mechanisms: protected branch interception (blocks writes to main branch), file-level snapshot commits (captures only changed files), and smart commit merging (organizes multiple checkpoints into clean task commits). The system also detects uncommitted manual changes and backs up critical files like .gitignore before modifications. Developers and operations teams benefit from automatic version tracking, clean Git history, and rollback capabilities without manual intervention.\nPrevent direct modifications to main branch during AI-assisted coding\nProtect uncommitted manual changes from being overwritten by Claude Code\nMaintain precise version history with file-level snapshot commits\nAutomatically backup configuration files before Claude Code modifications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wangbooth/Claude-Code-Guardrails`",
+    "usage": "```\nAct as Claude Code Guardrails. I'm working on a project for [COMPANY] in the [INDUSTRY] sector. I need to implement the following code changes: [CODE_CHANGES]. Ensure these changes are protected with branch protection, automatic checkpointing, and safe commit squashing. Provide a step-by-step guide to implement these changes safely.\n```\nCopy\n\n```\n# Code Guardrails Implementation Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-guardrails#main-content",
+      "claude-code-guardrails#overview",
+      "claude-code-guardrails#setup",
+      "claude-code-guardrails#examples",
+      "claude-code-guardrails#tools",
+      "claude-code-guardrails#mcp",
+      "claude-code-guardrails#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Guardrails is a smart guardrail system that prevents accidental code loss during Claude Code development. It uses three core mechanisms: protected branch interception (blocks writes to main branch), file-level snapshot commits (captures only changed files), and smart commit merging (organizes multiple checkpoints into clean task commits). The system also detects uncommitted manual changes and backs up critical files like .gitignore before modifications. Developers and operations teams benefit from automatic version tracking, clean Git history, and rollback capabilities without manual intervention.\nPrevent direct modifications to main branch during AI-assisted coding\nProtect uncommitted manual changes from being overwritten by Claude Code\nMaintain precise version history with file-level snapshot commits\nAutomatically backup configuration files before Claude Code modifications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wangbooth/Claude-Code-Guardrails`",
+    "usage_vi": "```\nAct as Claude Code Guardrails. I'm working on a project for [COMPANY] in the [INDUSTRY] sector. I need to implement the following code changes: [CODE_CHANGES]. Ensure these changes are protected with branch protection, automatic checkpointing, and safe commit squashing. Provide a step-by-step guide to implement these changes safely.\n```\nCopy\n\n```\n# Code Guardrails Implementation Guide"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:28:49.945661Z",
+    "http_status": 200,
+    "content_hash": "7cd765bc6386092923c0e6cf4d44da49492d574a11813f369f3f1686c0d7a53b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-guardrails.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-guardrails.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "protective hooks for claude code",
+  "short_description_vi": "Claude Code Guardrails is a protective system for Claude Code that prevents accidental code loss. It uses branch protection, automatic checkpointing, and safe commit squashing. Benefits developers and operations teams by ensuring code integrity during development."
+}

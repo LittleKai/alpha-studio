@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xlovecam-downloader",
+  "slug": "xlovecam-downloader",
+  "name": "TikTok Video Downloader",
+  "headline": "XLoveCam Downloader: Record & Download Videos",
+  "short_description": "XLoveCam Downloader is a browser extension for users wanting to keep XLoveCam broadcasts and saved videos available offline. It detects and records active streams or downloads saved videos in MP4 format for later viewing.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "serpdownloaders",
+  "install_command": "git clone https://github.com/serpapps/xlovecam-downloader",
+  "source_repo_url": "https://github.com/serpapps/xlovecam-downloader",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "xlovecam",
+    "browser-extension",
+    "downloader"
+  ],
+  "sections": {
+    "overview": "XLoveCam Downloader is a browser extension that detects and captures live XLoveCam broadcasts and downloads saved videos directly to your computer as MP4 files. The extension works by identifying active streams in your browser, offering quality selection options, and saving content to a dedicated folder for offline access. It solves the problem of live broadcasts disappearing after they end and provides a browser-based alternative to generic recording tools that often fail on streaming delivery methods. The extension supports Chrome, Firefox, Edge, Brave, Opera, and other major browsers. Users get 3 free downloads to test the workflow before choosing a paid license for unlimited downloads.\nRecord live XLoveCam streams\nDownload saved videos from model pages\nPreserve VR captures with metadata\nChoose from multiple stream qualities",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill xlovecam-downloader`\n`git clone https://github.com/serpapps/xlovecam-downloader`",
+    "usage": "```\nI need to download [XLOVECAM_VIDEO_URL] from XLoveCam using the XLoveCam Downloader browser extension. The video is a [BROADCAST_TYPE: live stream/saved video] in [QUALITY: HD/4K/720p] format. Extract the highest quality available and save it as an MP4 file to my local device. Ensure the file is named [CUSTOM_FILENAME.mp4] and include metadata if possible.\n```\nCopy\n\n```\n```\n✅ **Download Complete: XLoveCam Video**\n\n**File Details:**\n- **Name:** *TokyoNightLive_20241015_HD.mp4*\n- **Size:** 1.2 GB\n- **Resolution:** 1920x1080 (HD)\n- **Duration:** 45 minutes\n- **Format:** MP4 (H.264 Codec)\n\n**Download Location:**\n`C:\\Users\\YourName\\Downloads\\XLoveCam\\`\n\n**Verification:**\n- File integrity confirmed (no corruption).\n- Metadata includes streamer name, timestamp, and original quality.\n\n📌 **Next Steps:**\n- Move to external storage if needed.\n- Use VLC or MPV for playback.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "xlovecam-downloader#main-content",
+      "xlovecam-downloader#overview",
+      "xlovecam-downloader#setup",
+      "xlovecam-downloader#examples",
+      "xlovecam-downloader#related",
+      "pinterest-downloader",
+      "fansly-live-downloader",
+      "tiktok-video-downloader"
+    ],
+    "overview_vi": "XLoveCam Downloader is a browser extension that detects and captures live XLoveCam broadcasts and downloads saved videos directly to your computer as MP4 files. The extension works by identifying active streams in your browser, offering quality selection options, and saving content to a dedicated folder for offline access. It solves the problem of live broadcasts disappearing after they end and provides a browser-based alternative to generic recording tools that often fail on streaming delivery methods. The extension supports Chrome, Firefox, Edge, Brave, Opera, and other major browsers. Users get 3 free downloads to test the workflow before choosing a paid license for unlimited downloads.\nRecord live XLoveCam streams\nDownload saved videos from model pages\nPreserve VR captures with metadata\nChoose from multiple stream qualities",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill xlovecam-downloader`\n`git clone https://github.com/serpapps/xlovecam-downloader`",
+    "usage_vi": "```\nI need to download [XLOVECAM_VIDEO_URL] from XLoveCam using the XLoveCam Downloader browser extension. The video is a [BROADCAST_TYPE: live stream/saved video] in [QUALITY: HD/4K/720p] format. Extract the highest quality available and save it as an MP4 file to my local device. Ensure the file is named [CUSTOM_FILENAME.mp4] and include metadata if possible.\n```\nCopy\n\n```\n```\n✅ **Download Complete: XLoveCam Video**\n\n**File Details:**\n- **Name:** *TokyoNightLive_20241015_HD.mp4*\n- **Size:** 1.2 GB\n- **Resolution:** 1920x1080 (HD)\n- **Duration:** 45 minutes\n- **Format:** MP4 (H.264 Codec)\n\n**Download Location:**\n`C:\\Users\\YourName\\Downloads\\XLoveCam\\`\n\n**Verification:**\n- File integrity confirmed (no corruption).\n- Metadata includes streamer name, timestamp, and original quality.\n\n📌 **Next Steps:**\n- Move to external storage if needed.\n- Use VLC or MPV for playback.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:15:43.925123Z",
+    "http_status": 200,
+    "content_hash": "9612d84a42010d0a359afde38504a1626f2fb355cf767c73c81f07c8fda0260a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xlovecam-downloader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xlovecam-downloader.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "XLoveCam Downloader: Record & Download Videos",
+  "short_description_vi": "XLoveCam Downloader is a browser extension for users wanting to keep XLoveCam broadcasts and saved videos available offline. It detects and records active streams or downloads saved videos in MP4 format for later viewing."
+}

@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skrills",
+  "slug": "skrills",
+  "name": "browser-use",
+  "headline": "Skrills - Automate Skill Coordination",
+  "short_description": "Skrills automates skill coordination between Codex, Copilot, and Claude Code. It validates, analyzes, and syncs skills, subagents, commands, and configurations across multiple CLIs. Operations teams use it to maintain consistency and streamline workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "athola",
+  "install_command": "git clone https://github.com/athola/skrills.git",
+  "source_repo_url": "https://github.com/athola/skrills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codex-skills",
+    "skills",
+    "copilot",
+    "mcp-server",
+    "copilot-skills",
+    "codex-cli",
+    "mcp",
+    "codex",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "Skrills is a Rust-based skills support engine that validates, analyzes, and syncs skills across four AI coding assistant environments: Claude Code, Codex CLI, GitHub Copilot CLI, and Cursor. It detects missing frontmatter, incompatible fields, and validation issues specific to each target, with automatic fixes available. The tool performs multi-directional sync of eight asset types—skills, commands, agents, MCP servers, hooks, rules, preferences, and plugin assets—from a single binary. It includes token analytics for context-window management, dependency resolution with cycle detection, and a 36-tool MCP server that exposes operations over stdio or HTTP. Operations teams use Skrills to eliminate manual skill coordination work and maintain compatibility across multiple CLI environments.\nValidate skills against multiple CLI requirements before deployment\nSync skill libraries and configurations across Claude Code, Codex, Copilot, and Cursor\nAnalyze token usage per skill and identify context-window reduction opportunities\nMonitor skill health and validation status via TUI or browser dashboard",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/athola/skrills`",
+    "usage": "```\nAct as a Skrills automation coordinator. For the following [SKILL_NAME], validate its configuration, analyze its dependencies, and sync it across Codex, Copilot, and Claude Code. Ensure consistency in [CONFIGURATION_PARAMETERS] and resolve any conflicts. Output a report with: 1) Validation status, 2) Dependency graph, 3) Sync actions taken, and 4) Next steps for the operations team.\n```\nCopy\n\n```\n### Skrills Automation Report: `code-review-assistant`\n\n**Validation Status:** ✅ All configurations validated successfully across Codex, Copilot, and Claude Code. No syntax errors or deprecated commands detected.\n\n**Dependency Graph:**\n- `code-review-assistant` (v2.1.3) depends on:\n  - `eslint` (v8.56.0) for linting\n  - `prettier` (v3.2.5) for formatting\n  - `jest` (v29.7.0) for testing\n  - `codex-cli` (v1.4.2) for CLI integration\n\n**Sync Actions Taken:**\n1. Updated `prettier` config in Copilot to match Codex and Claude Code.\n2. Resolved a conflict in `jest` configuration where Copilot had an outdated version; synced to v29.7.0.\n3. Added missing `codex-cli` dependency to Copilot’s environment.\n4. Generated a unified `.skrills.json` file for all three tools with consistent settings.\n\n**Next Steps for Operations Team:**\n- Deploy the updated `code-review-assistant` to production after testing in staging.\n- Monitor the `eslint` and `prettier` logs for 48 hours to ensure no runtime conflicts.\n- Schedule a team sync to review any new skills added to the workflow.\n\n**Conflicts Resolved:** 1 (Jest version mismatch).\n**Skills Synced:** 4 (code-review-assistant, eslint, prettier, jest).\n**Time Saved:** ~45 minutes (manual sync would have taken ~1.5 hours).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skrills#main-content",
+      "skrills#overview",
+      "skrills#setup",
+      "skrills#examples",
+      "skrills#tools",
+      "skrills#mcp",
+      "skrills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skrills is a Rust-based skills support engine that validates, analyzes, and syncs skills across four AI coding assistant environments: Claude Code, Codex CLI, GitHub Copilot CLI, and Cursor. It detects missing frontmatter, incompatible fields, and validation issues specific to each target, with automatic fixes available. The tool performs multi-directional sync of eight asset types—skills, commands, agents, MCP servers, hooks, rules, preferences, and plugin assets—from a single binary. It includes token analytics for context-window management, dependency resolution with cycle detection, and a 36-tool MCP server that exposes operations over stdio or HTTP. Operations teams use Skrills to eliminate manual skill coordination work and maintain compatibility across multiple CLI environments.\nValidate skills against multiple CLI requirements before deployment\nSync skill libraries and configurations across Claude Code, Codex, Copilot, and Cursor\nAnalyze token usage per skill and identify context-window reduction opportunities\nMonitor skill health and validation status via TUI or browser dashboard",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/athola/skrills`",
+    "usage_vi": "```\nAct as a Skrills automation coordinator. For the following [SKILL_NAME], validate its configuration, analyze its dependencies, and sync it across Codex, Copilot, and Claude Code. Ensure consistency in [CONFIGURATION_PARAMETERS] and resolve any conflicts. Output a report with: 1) Validation status, 2) Dependency graph, 3) Sync actions taken, and 4) Next steps for the operations team.\n```\nCopy\n\n```\n### Skrills Automation Report: `code-review-assistant`\n\n**Validation Status:** ✅ All configurations validated successfully across Codex, Copilot, and Claude Code. No syntax errors or deprecated commands detected.\n\n**Dependency Graph:**\n- `code-review-assistant` (v2.1.3) depends on:\n  - `eslint` (v8.56.0) for linting\n  - `prettier` (v3.2.5) for formatting\n  - `jest` (v29.7.0) for testing\n  - `codex-cli` (v1.4.2) for CLI integration\n\n**Sync Actions Taken:**\n1. Updated `prettier` config in Copilot to match Codex and Claude Code.\n2. Resolved a conflict in `jest` configuration where Copilot had an outdated version; synced to v29.7.0.\n3. Added missing `codex-cli` dependency to Copilot’s environment.\n4. Generated a unified `.skrills.json` file for all three tools with consistent settings.\n\n**Next Steps for Operations Team:**\n- Deploy the updated `code-review-assistant` to production after testing in staging.\n- Monitor the `eslint` and `prettier` logs for 48 hours to ensure no runtime conflicts.\n- Schedule a team sync to review any new skills added to the workflow.\n\n**Conflicts Resolved:** 1 (Jest version mismatch).\n**Skills Synced:** 4 (code-review-assistant, eslint, prettier, jest).\n**Time Saved:** ~45 minutes (manual sync would have taken ~1.5 hours).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:39:37.916019Z",
+    "http_status": 200,
+    "content_hash": "2693e62a6bf69b81bc936c0e6205da056a4611f91f06a48fb48b5502bbbd7527",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skrills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skrills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skrills - Automate Skill Coordination",
+  "short_description_vi": "Skrills automates skill coordination between Codex, Copilot, and Claude Code. It validates, analyzes, and syncs skills, subagents, commands, and configurations across multiple CLIs. Operations teams use it to maintain consistency and streamline workflows."
+}

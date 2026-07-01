@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini-for-claude-code",
+  "slug": "gemini-for-claude-code",
+  "name": "Gemini For Claude Code",
+  "headline": "gemini-for-claude-code: Enhance AI Automation",
+  "short_description": "This Python program acts as a proxy, enabling Claude Code to interact with Google's Gemini models. It translates API requests and responses between the two systems. Use this to use Gemini's capabilities within Claude Code workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "coffeegrind123",
+  "install_command": "git clone https://github.com/coffeegrind123/gemini-for-claude-code.git",
+  "source_repo_url": "https://github.com/coffeegrind123/gemini-for-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "litellm",
+    "anthropic",
+    "google",
+    "claude",
+    "gemini",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The gemini-for-claude-code skill is an innovative Python program designed to integrate Claude Code with Google's Gemini models, facilitating seamless AI automation. This skill allows developers and AI practitioners to leverage the advanced capabilities of Gemini models, enhancing their workflow automation processes. By utilizing this skill, users can streamline their AI projects and improve efficiency in their development cycles. One of the key benefits of the gemini-for-claude-code skill is its ability to simplify complex tasks, allowing for quicker implementation of AI solutions. Although the exact time savings are currently unknown, the skill's intermediate complexity and 30-minute implementation time suggest that users can expect to significantly reduce the time spent on integrating AI models into their applications. This efficiency is particularly valuable for product managers and developers who are looking to optimize their workflows and deliver products faster. This skill is particularly suited for developers and AI practitioners who are focused on creating sophisticated AI applications. It can be utilized in various scenarios, such as enhancing data processing capabilities, automating machine learning workflows, or even developing intelligent chatbots that utilize Gemini's advanced natural language processing features. For example, a developer could use this skill to automate the data ingestion process for a machine learning model, allowing them to focus on model tuning and performance optimization instead. With an intermediate difficulty level, users should have a solid understanding of Python programming and AI concepts to effectively implement this skill. As businesses increasingly adopt AI-first workflows, integrating tools like gemini-for-claude-code can significantly enhance productivity and innovation. By adopting this skill, organizations can ensure they remain competitive in the rapidly evolving AI landscape.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coffeegrind123/gemini-for-claude-code`",
+    "usage": "```\nUse the gemini-for-claude-code proxy to [TASK] with Google's Gemini model. For example: 'Summarize the attached research paper on quantum computing and extract the key methodologies used.' Ensure you specify any constraints like word count or focus areas. Execute the task by leveraging the proxy's API translation capabilities to handle the request seamlessly within Claude Code.\n```\nCopy\n\n```\n```\n# Using gemini-for-claude-code to analyze a research paper\n\n**Task**: Summarize the attached research paper on quantum computing and extract the key methodologies used. Focus on the experimental design and results.\n\n**Output**:\n\n### Summary of Quantum Computing Research Paper\n**Title**: \"Advancements in Topological Quantum Computing: A Comparative Study of Error Correction Methods\"\n**Authors**: Dr. Elena Vasquez, Dr. Marcus Chen\n**Journal**: *Nature Quantum Technologies* (2023)\n\n#### Key Findings:\n1. **Error Correction Breakthrough**: The paper introduces a novel error correction method using surface codes, reducing qubit overhead by 40% compared to traditional approaches.\n2. **Experimental Validation**: Tested on a 50-qubit superconducting quantum processor, achieving a 99.9% fidelity rate in logical qubit operations.\n3. **Methodology**: Combined hybrid quantum-classical algorithms with machine learning for real-time error detection and correction.\n\n#### Extracted Methodologies:\n- **Experimental Setup**: 50-qubit superconducting processor with cryogenic cooling to 15 millikelvin.\n- **Error Correction**: Surface code implementation with a distance-5 lattice for fault tolerance.\n- **Data Analysis**: Quantum process tomography used to characterize gate operations and identify error sources.\n- **Machine Learning Integration**: A neural network trained on historical error patterns to predict and preemptively correct errors.\n\n**Next Steps**:\n- Replicate the surface code methodology in a smaller-scale quantum processor for validation.\n- Explore the integration of the proposed error correction system with existing quantum cloud platforms.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gemini-for-claude-code#main-content",
+      "gemini-for-claude-code#overview",
+      "gemini-for-claude-code#setup",
+      "gemini-for-claude-code#examples",
+      "gemini-for-claude-code#tools",
+      "gemini-for-claude-code#mcp",
+      "gemini-for-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill gemini-for-claude-code là một chương trình Python sáng tạo được thiết kế để tích hợp Claude Code với các model Gemini của Google, giúp tự động hóa AI một cách liền mạch. Skill này cho phép các lập trình viên và chuyên gia AI tận dụng các khả năng tiên tiến của các model Gemini, từ đó tối ưu hóa các quy trình tự động hóa workflow của họ. Bằng cách sử dụng skill này, người dùng có thể hợp lý hóa các dự án AI và nâng cao hiệu suất trong chu kỳ phát triển của mình. Một trong những lợi ích chính của skill gemini-for-claude-code là khả năng đơn giản hóa các tác vụ phức tạp, giúp triển khai các giải pháp AI nhanh chóng hơn. Mặc dù chưa xác định được chính xác lượng thời gian tiết kiệm được, nhưng với độ phức tạp trung bình và thời gian triển khai khoảng 30 phút, người dùng có thể kỳ vọng giảm đáng kể thời gian tích hợp các model AI vào ứng dụng của họ. Hiệu suất này đặc biệt có giá trị đối với các product manager và developer đang muốn tối ưu hóa workflow và bàn giao sản phẩm nhanh hơn. Skill này cực kỳ phù hợp cho các developer và chuyên gia AI tập trung vào việc xây dựng các ứng dụng AI phức tạp. Nó có thể được ứng dụng trong nhiều kịch bản khác nhau, chẳng hạn như nâng cao năng lực xử lý dữ liệu, tự động hóa workflow machine learning, hoặc thậm chí phát triển chatbot thông minh sử dụng các tính năng xử lý ngôn ngữ tự nhiên tiên tiến của Gemini. Ví dụ, một developer có thể sử dụng skill này để tự động hóa quá trình nạp dữ liệu (data ingestion) cho một model machine learning, nhờ đó tập trung hơn vào việc tinh chỉnh model (model tuning) và tối ưu hóa hiệu năng. Với độ khó ở mức trung bình, người dùng cần có hiểu biết vững vàng về lập trình Python và các khái niệm AI để triển khai skill này một cách hiệu quả. Khi các doanh nghiệp ngày càng áp dụng nhiều workflow ưu tiên AI (AI-first workflows), việc tích hợp các công cụ như gemini-for-claude-code có thể tăng cường đáng kể năng suất và đổi mới sáng tạo. Bằng cách áp dụng skill này, các tổ chức có thể đảm bảo duy trì lợi thế cạnh tranh trong bối cảnh AI đang phát triển nhanh chóng.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/coffeegrind123/gemini-for-claude-code`",
+    "usage_vi": "```\nSử dụng proxy gemini-for-claude-code để [TASK] với model Gemini của Google. Ví dụ: 'Tóm tắt bài báo nghiên cứu về điện toán lượng tử được đính kèm và trích xuất các phương pháp chính được sử dụng.' Hãy đảm bảo bạn đã chỉ rõ các ràng buộc như số lượng từ hoặc các khía cạnh cần tập trung. Thực hiện tác vụ bằng cách tận dụng khả năng dịch API của proxy để xử lý request một cách liền mạch trong Claude Code.\n```\nCopy\n\n```\n# Sử dụng gemini-for-claude-code để phân tích một bài báo nghiên cứu\n\n**Tác vụ**: Tóm tắt bài báo nghiên cứu về điện toán lượng tử được đính kèm và trích xuất các phương pháp chính được sử dụng. Tập trung vào thiết kế thử nghiệm và kết quả.\n\n**Kết quả**:\n\n### Tóm tắt bài báo nghiên cứu điện toán lượng tử\n**Tiêu đề**: \"Advancements in Topological Quantum Computing: A Comparative Study of Error Correction Methods\"\n**Tác giả**: TS. Elena Vasquez, TS. Marcus Chen\n**Tạp chí**: *Nature Quantum Technologies* (2023)\n\n#### Các phát hiện chính:\n1. **Đột phá về sửa lỗi**: Bài báo giới thiệu một phương pháp sửa lỗi mới sử dụng mã bề mặt (surface codes), giúp giảm 40% lượng qubit hao phí so với các phương pháp tiếp cận truyền thống.\n2. **Xác thực thực nghiệm**: Được thử nghiệm trên bộ xử lý lượng tử siêu dẫn 50-qubit, đạt tỷ lệ độ trung thực (fidelity rate) 99,9% trong các hoạt động qubit logic.\n3. **Phương pháp luận**: Kết hợp các thuật toán lai cổ điển - lượng tử (hybrid quantum-classical algorithms) với machine learning để phát hiện và khắc phục lỗi theo thời gian thực.\n\n#### Các phương pháp được trích xuất:\n- **Setup thử nghiệm**: Bộ xử lý siêu dẫn 50-qubit với hệ thống làm lạnh sâu xuống 15 millikelvin.\n- **Sửa lỗi**: Triển khai mã bề mặt với mạng tinh thể khoảng cách 5 (distance-5 lattice) để kháng lỗi (fault tolerance).\n- **Phân tích dữ liệu**: Phép chụp cắt lớp quá trình lượng tử (quantum process tomography) được sử dụng để đặc tả các hoạt động của cổng logic và xác định nguồn lỗi.\n- **Tích hợp Machine Learning**: Một mạng neural được huấn luyện trên các mẫu lỗi lịch sử để dự đoán và sửa lỗi một cách chủ động.\n\n**Các bước tiếp theo**:\n- Tái tạo phương pháp mã bề mặt trên bộ xử lý lượng tử quy mô nhỏ hơn để xác thực.\n- Nghiên cứu việc tích hợp hệ thống sửa lỗi được đề xuất với các nền tảng đám mây lượng tử hiện có.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:18.721479Z",
+    "http_status": 200,
+    "content_hash": "7a57552875fd8eeca1cfe452c51c9387bf9483b6b1d3d4d2a3c86c3386e3627d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-for-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-for-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "gemini-for-claude-code: Tăng cường tự động hóa AI",
+  "short_description_vi": "Chương trình Python này hoạt động như một proxy, cho phép Claude Code tương tác với các model Gemini của Google. Nó biên dịch các API request và response giữa hai hệ thống. Hãy sử dụng công cụ này để tận dụng khả năng của Gemini trong các workflow của Claude Code."
+}

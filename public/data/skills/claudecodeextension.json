@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudecodeextension",
+  "slug": "claudecodeextension",
+  "name": "ClaudeCodeExtension",
+  "headline": "Claude Code VS .NET扩展",
+  "short_description": "A Visual Studio .NET extension that provides a better interface for Claude Code CLI, OpenAI Codex and Cursor Agent with support for multi-line prompts and image attachments for high productivity and vibe coding",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "dliedke",
+  "install_command": "git clone https://github.com/dliedke/ClaudeCodeExtension.git",
+  "source_repo_url": "https://github.com/dliedke/ClaudeCodeExtension",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai",
+    "code-assistant",
+    "codex",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Extension brings AI-assisted coding directly into Visual Studio as a dockable terminal panel. It supports Claude Code, Cursor Agent, OpenAI Codex, Windsurf, and other AI providers, allowing developers to run agents without leaving the IDE. The extension enables multi-line prompts with file and image attachments, formatted code selection insertion, and an integrated diff viewer for Git projects. Features include prompt history, custom slash commands, session resumption, and Claude usage tracking. It simplifies .NET and full-stack development workflows by combining editor context with AI agent capabilities in a single tool window.\nRunning Claude Code or Cursor Agent directly in Visual Studio without external terminals\nAttaching images and files to AI prompts for context-rich coding assistance\nReviewing uncommitted Git changes in a dedicated diff viewer while prompting agents\nSaving and reusing custom commands and canned prompts for repetitive tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dliedke/ClaudeCodeExtension`",
+    "usage": "```\nUse the ClaudeCodeExtension in VS Code to [TASK]. For example: 'Generate a C# class that implements a [FEATURE] for [PROJECT_NAME]. Include unit tests using xUnit and mock the [DEPENDENCY] with Moq. Attach a screenshot of the expected UI layout if needed.'\n```\nCopy\n\n```\nHere’s the implementation for a `PaymentProcessor` class in your `ECommerceApp` project, including unit tests and a mock for the `IPaymentGateway` dependency. The extension generated this directly in your VS Code workspace with multi-line prompts and inline image attachments for the UI mockup.\n\n```csharp\n// PaymentProcessor.cs\nusing System;\nusing System.Threading.Tasks;\nusing Moq;\n\nnamespace ECommerceApp.Services\n{\n    public interface IPaymentGateway\n    {\n        Task<bool> ProcessPaymentAsync(decimal amount, string cardNumber);\n    }\n\n    public class PaymentProcessor\n    {\n        private readonly IPaymentGateway _paymentGateway;\n\n        public PaymentProcessor(IPaymentGateway paymentGateway)\n        {\n            _paymentGateway = paymentGateway;\n        }\n\n        public async Task<PaymentResult> ProcessOrderAsync(Order order)\n        {\n            if (order.TotalAmount <= 0)\n                return new PaymentResult(false, \"Invalid order amount\");\n\n            var success = await _paymentGateway.ProcessPaymentAsync(\n                order.TotalAmount, \n                order.PaymentDetails.CardNumber\n            );\n\n            return new PaymentResult(success, success ? \"Payment successful\" : \"Payment failed\");\n        }\n    }\n\n    public record PaymentResult(bool Success, string Message);\n}\n```\n\n```csharp\n// PaymentProcessorTests.cs\nusing Xunit;\nusing Moq;\n\nnamespace ECommerceApp.Tests.Services\n{\n    public class PaymentProcessorTests\n    {\n        [Fact]\n        public async Task ProcessOrderAsync_ValidOrder_ReturnsSuccess()\n        {\n            // Arrange\n            var mockGateway = new Mock<IPaymentGateway>();\n            mockGateway.Setup(g => g.ProcessPaymentAsync(100.50m, \"4111111111111111\"))\n                      .ReturnsAsync(true);\n\n            var processor = new PaymentProcessor(mockGateway.Object);\n            var order = new Order(100.50m, new PaymentDetails(\"4111111111111111\"));\n\n            // Act\n            var result = await processor.ProcessOrderAsync(order);\n\n            // Assert\n            Assert.True(result.Success);\n            Assert.Equal(\"Payment successful\", result.Message);\n        }\n    }\n}\n```\n\nThe extension also generated a UI mockup for the payment form (attached as an image) and suggested adding validation for card expiration dates. The entire workflow took 2 minutes from prompt to working code.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudecodeextension#main-content",
+      "claudecodeextension#overview",
+      "claudecodeextension#setup",
+      "claudecodeextension#examples",
+      "claudecodeextension#tools",
+      "claudecodeextension#mcp",
+      "claudecodeextension#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Extension brings AI-assisted coding directly into Visual Studio as a dockable terminal panel. It supports Claude Code, Cursor Agent, OpenAI Codex, Windsurf, and other AI providers, allowing developers to run agents without leaving the IDE. The extension enables multi-line prompts with file and image attachments, formatted code selection insertion, and an integrated diff viewer for Git projects. Features include prompt history, custom slash commands, session resumption, and Claude usage tracking. It simplifies .NET and full-stack development workflows by combining editor context with AI agent capabilities in a single tool window.\nRunning Claude Code or Cursor Agent directly in Visual Studio without external terminals\nAttaching images and files to AI prompts for context-rich coding assistance\nReviewing uncommitted Git changes in a dedicated diff viewer while prompting agents\nSaving and reusing custom commands and canned prompts for repetitive tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dliedke/ClaudeCodeExtension`",
+    "usage_vi": "```\nUse the ClaudeCodeExtension in VS Code to [TASK]. For example: 'Generate a C# class that implements a [FEATURE] for [PROJECT_NAME]. Include unit tests using xUnit and mock the [DEPENDENCY] with Moq. Attach a screenshot of the expected UI layout if needed.'\n```\nCopy\n\n```\nHere’s the implementation for a `PaymentProcessor` class in your `ECommerceApp` project, including unit tests and a mock for the `IPaymentGateway` dependency. The extension generated this directly in your VS Code workspace with multi-line prompts and inline image attachments for the UI mockup.\n\n```csharp\n// PaymentProcessor.cs\nusing System;\nusing System.Threading.Tasks;\nusing Moq;\n\nnamespace ECommerceApp.Services\n{\n    public interface IPaymentGateway\n    {\n        Task<bool> ProcessPaymentAsync(decimal amount, string cardNumber);\n    }\n\n    public class PaymentProcessor\n    {\n        private readonly IPaymentGateway _paymentGateway;\n\n        public PaymentProcessor(IPaymentGateway paymentGateway)\n        {\n            _paymentGateway = paymentGateway;\n        }\n\n        public async Task<PaymentResult> ProcessOrderAsync(Order order)\n        {\n            if (order.TotalAmount <= 0)\n                return new PaymentResult(false, \"Invalid order amount\");\n\n            var success = await _paymentGateway.ProcessPaymentAsync(\n                order.TotalAmount, \n                order.PaymentDetails.CardNumber\n            );\n\n            return new PaymentResult(success, success ? \"Payment successful\" : \"Payment failed\");\n        }\n    }\n\n    public record PaymentResult(bool Success, string Message);\n}\n```\n\n```csharp\n// PaymentProcessorTests.cs\nusing Xunit;\nusing Moq;\n\nnamespace ECommerceApp.Tests.Services\n{\n    public class PaymentProcessorTests\n    {\n        [Fact]\n        public async Task ProcessOrderAsync_ValidOrder_ReturnsSuccess()\n        {\n            // Arrange\n            var mockGateway = new Mock<IPaymentGateway>();\n            mockGateway.Setup(g => g.ProcessPaymentAsync(100.50m, \"4111111111111111\"))\n                      .ReturnsAsync(true);\n\n            var processor = new PaymentProcessor(mockGateway.Object);\n            var order = new Order(100.50m, new PaymentDetails(\"4111111111111111\"));\n\n            // Act\n            var result = await processor.ProcessOrderAsync(order);\n\n            // Assert\n            Assert.True(result.Success);\n            Assert.Equal(\"Payment successful\", result.Message);\n        }\n    }\n}\n```\n\nThe extension also generated a UI mockup for the payment form (attached as an image) and suggested adding validation for card expiration dates. The entire workflow took 2 minutes from prompt to working code.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:58.512297Z",
+    "http_status": 200,
+    "content_hash": "731d9932639188395cfbda507b7c5d31059cc71a0c9cdbe255bd597fff923c62",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudecodeextension.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudecodeextension.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code VS .NET扩展",
+  "short_description_vi": "A Visual Studio .NET extension that provides a better interface for Claude Code CLI, OpenAI Codex and Cursor Agent with support for multi-line prompts and image attachments for high productivity and vibe coding"
+}

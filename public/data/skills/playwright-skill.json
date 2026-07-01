@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/playwright-skill",
+  "slug": "playwright-skill",
+  "name": "Playwright Skill for Claude",
+  "headline": "Playwright Skill for Claude - Browser Automation",
+  "short_description": "The Playwright Skill for Claude enables browser automation, allowing users to write and execute custom scripts for testing and validation. Perfect for developers seeking to enhance their automation workflows with Playwright.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "lackeyjb",
+  "install_command": "claude install lackeyjb/playwright-skill",
+  "source_repo_url": "https://github.com/lackeyjb/playwright-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "e2e-testing",
+    "developer-tools",
+    "playwright",
+    "browser-automation"
+  ],
+  "sections": {
+    "overview": "Playwright Skill integrates Playwright browser automation into Claude, allowing you to write and execute scripts that interact with web applications. The skill supports custom HTTP headers, dynamic path resolution, and works across multiple installation methods including the Claude plugin system. It enables automated testing, web scraping, form interaction, and validation workflows without manual browser operation. Developers can leverage Claude's reasoning capabilities combined with Playwright's cross-browser automation to build sophisticated testing and data collection workflows.\nAutomate end-to-end testing for web applications to ensure functionality across different browsers.\nValidate user interface interactions by simulating user actions and verifying expected outcomes.\nRun performance tests on web pages to assess load times and responsiveness under various conditions.\nCreate automated workflows for repetitive browser tasks such as data entry or form submissions.",
+    "setup": "Terminal\nCopy\n`claude install lackeyjb/playwright-skill`\n`git clone https://github.com/lackeyjb/playwright-skill`",
+    "usage": "```\nWrite a Playwright script to automate the process of [TASK] on [WEBSITE]. The script should include error handling for [SPECIFIC SCENARIOS] and log the results to a file named [FILENAME].\n```\nCopy\n\n```\nHere's a Playwright script to automate the process of checking the price of a product on Amazon and logging the results:\n\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch();\n  const page = await browser.newPage();\n  try {\n    await page.goto('https://www.amazon.com');\n    await page.fill('#twotabsearchtextbox', 'PlayStation 5');\n    await page.click('#nav-search-submit-button');\n    const productPrice = await page.textContent('#search > div.s-result-list.sgrow > div:nth-child(1) > div > div > div > div > div > div > div > div > span.a-price > span.a-offscreen');\n    console.log(`The price of PlayStation 5 is ${productPrice}`);\n    await fs.writeFile('product_price.log', `The price of PlayStation 5 is ${productPrice}`);\n  } catch (error) {\n    console.error('An error occurred:', error);\n    await fs.writeFile('product_price.log', `An error occurred: ${error}`);\n  } finally {\n    await browser.close();\n  }\n})();\n```\n\nThis script will open a browser, navigate to Amazon, search for 'PlayStation 5', extract the price of the first result, and log it to a file named 'product_price.log'. If any error occurs during the process, it will be caught and logged to the same file.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "playwright-skill#main-content",
+      "playwright-skill#overview",
+      "playwright-skill#setup",
+      "playwright-skill#examples",
+      "playwright-skill#tools",
+      "playwright-skill#mcp",
+      "playwright-skill#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Playwright Skill tích hợp tính năng tự động hóa trình duyệt của Playwright vào Claude, cho phép bạn viết và thực thi các script tương tác với ứng dụng web. Skill này hỗ trợ các custom HTTP header, phân giải đường dẫn động (dynamic path resolution), và tương thích với nhiều phương thức cài đặt khác nhau bao gồm cả hệ thống plugin của Claude. Nó hỗ trợ kiểm thử tự động, cào dữ liệu web (web scraping), tương tác với biểu mẫu (form), và các workflow xác thực mà không cần thao tác trình duyệt thủ công. Các nhà phát triển có thể tận dụng khả năng lập luận của Claude kết hợp với tính năng tự động hóa đa trình duyệt của Playwright để xây dựng các workflow kiểm thử và thu thập dữ liệu phức tạp.\nTự động hóa kiểm thử end-to-end cho các ứng dụng web để đảm bảo hoạt động ổn định trên nhiều trình duyệt khác nhau.\nXác thực các tương tác trên giao diện người dùng bằng cách mô phỏng hành động của người dùng và kiểm tra kết quả mong muốn.\nChạy thử nghiệm hiệu năng trên các trang web để đánh giá thời gian tải và khả năng phản hồi trong nhiều điều kiện khác nhau.\nTạo các workflow tự động cho các tác vụ lặp đi lặp lại trên trình duyệt như nhập dữ liệu hoặc gửi biểu mẫu (form submission).",
+    "setup_vi": "Terminal\nSao chép\n`claude install lackeyjb/playwright-skill`\n`git clone https://github.com/lackeyjb/playwright-skill`",
+    "usage_vi": "```\nViết một script Playwright để tự động hóa quy trình [TASK] trên [WEBSITE]. Script cần bao gồm xử lý lỗi cho [SPECIFIC SCENARIOS] và ghi lại kết quả vào một tệp có tên là [FILENAME].\n```\nSao chép\n\n```\nDưới đây là script Playwright để tự động hóa quy trình kiểm tra giá của một sản phẩm trên Amazon và ghi lại kết quả:\n\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch();\n  const page = await browser.newPage();\n  try {\n    await page.goto('https://www.amazon.com');\n    await page.fill('#twotabsearchtextbox', 'PlayStation 5');\n    await page.click('#nav-search-submit-button');\n    const productPrice = await page.textContent('#search > div.s-result-list.sgrow > div:nth-child(1) > div > div > div > div > div > div > div > div > span.a-price > span.a-offscreen');\n    console.log(`The price of PlayStation 5 is ${productPrice}`);\n    await fs.writeFile('product_price.log', `The price of PlayStation 5 is ${productPrice}`);\n  } catch (error) {\n    console.error('An error occurred:', error);\n    await fs.writeFile('product_price.log', `An error occurred: ${error}`);\n  } finally {\n    await browser.close();\n  }\n})();\n```\n\nScript này sẽ mở trình duyệt, điều hướng đến Amazon, tìm kiếm 'PlayStation 5', trích xuất giá của kết quả đầu tiên và ghi nhận vào tệp có tên 'product_price.log'. Nếu xảy ra bất kỳ lỗi nào trong quá trình thực hiện, lỗi đó sẽ được bắt và ghi lại vào cùng một tệp.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:18:44.425466Z",
+    "http_status": 200,
+    "content_hash": "778bd917cad09221a69d9bc9b9db6485e06f8a3f29d128bec66b63bf7525b675",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\playwright-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\playwright-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Playwright Skill cho Claude - Tự động hóa trình duyệt",
+  "short_description_vi": "Playwright Skill cho Claude hỗ trợ tự động hóa trình duyệt, cho phép người dùng viết và thực thi các script tùy chỉnh để kiểm thử và xác thực. Đây là giải pháp hoàn hảo cho các nhà phát triển muốn tối ưu hóa workflow tự động hóa của mình với Playwright."
+}

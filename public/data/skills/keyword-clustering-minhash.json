@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/keyword-clustering-minhash",
+  "slug": "keyword-clustering-minhash",
+  "name": "popsicle",
+  "headline": "Keyword Clustering MinHash: SERP Similarity Tool",
+  "short_description": "This Python script clusters keywords based on the similarity of their associated URLs using MinHash and MinHashLSH. The clustering process helps identify keywords that return similar search engine result pages (SERPs), which can be useful for SEO and content optimization strategies.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "dartseoengineer",
+  "install_command": "git clone https://github.com/dartseoengineer/keyword-clustering-minhash.git",
+  "source_repo_url": "https://github.com/dartseoengineer/keyword-clustering-minhash",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "marketing",
+    "seo",
+    "keywords",
+    "clustering"
+  ],
+  "sections": {
+    "overview": "This Python script identifies keyword clusters by analyzing the similarity of their associated search engine result pages (SERPs). It uses MinHash to create similarity sketches of URLs and Locality Sensitive Hashing (LSH) to group keywords that return comparable results. The tool helps SEO professionals discover keywords with overlapping search results, enabling more strategic content optimization and competitive analysis. By processing CSV input files with configurable thresholds, it outputs clustered keywords that share similar SERP landscapes, streamlining keyword research workflows.\nIdentify keyword opportunities with overlapping SERPs for content consolidation\nDiscover competitor keywords ranking in similar search results\nPrioritize content optimization by grouping related keyword clusters\nAnalyze keyword difficulty by clustering based on search result similarity",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dartseoengineer/keyword-clustering-minhash`",
+    "usage": "```\nI need to cluster these keywords based on their associated URLs using MinHash and MinHashLSH. Here's the [DATA] in CSV format: [PASTE DATA]. Can you provide the Python code to perform this clustering and explain the results?\n```\nCopy\n\n```\n# Keyword Clustering Results",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "keyword-clustering-minhash#main-content",
+      "keyword-clustering-minhash#overview",
+      "keyword-clustering-minhash#setup",
+      "keyword-clustering-minhash#examples",
+      "keyword-clustering-minhash#tools",
+      "keyword-clustering-minhash#mcp",
+      "keyword-clustering-minhash#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "This Python script identifies keyword clusters by analyzing the similarity of their associated search engine result pages (SERPs). It uses MinHash to create similarity sketches of URLs and Locality Sensitive Hashing (LSH) to group keywords that return comparable results. The tool helps SEO professionals discover keywords with overlapping search results, enabling more strategic content optimization and competitive analysis. By processing CSV input files with configurable thresholds, it outputs clustered keywords that share similar SERP landscapes, streamlining keyword research workflows.\nIdentify keyword opportunities with overlapping SERPs for content consolidation\nDiscover competitor keywords ranking in similar search results\nPrioritize content optimization by grouping related keyword clusters\nAnalyze keyword difficulty by clustering based on search result similarity",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dartseoengineer/keyword-clustering-minhash`",
+    "usage_vi": "```\nI need to cluster these keywords based on their associated URLs using MinHash and MinHashLSH. Here's the [DATA] in CSV format: [PASTE DATA]. Can you provide the Python code to perform this clustering and explain the results?\n```\nCopy\n\n```\n# Keyword Clustering Results"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:47:44.359566Z",
+    "http_status": 200,
+    "content_hash": "7516e93769b443edae0b714741c363b96a55384ba5f26d183fb9889936687d1e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\keyword-clustering-minhash.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\keyword-clustering-minhash.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Keyword Clustering MinHash: SERP Similarity Tool",
+  "short_description_vi": "This Python script clusters keywords based on the similarity of their associated URLs using MinHash and MinHashLSH. The clustering process helps identify keywords that return similar search engine result pages (SERPs), which can be useful for SEO and content optimization strategies."
+}

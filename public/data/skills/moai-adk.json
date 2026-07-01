@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/moai-adk",
+  "slug": "moai-adk",
+  "name": "MoAI-ADK",
+  "headline": "MoAI-ADK - Agentic AI Development Kit",
+  "short_description": "MoAI-ADK is a Python framework for building agentic AI workflows. It enables developers to create autonomous agents that can perform complex tasks. Operations teams benefit from automated workflows. It connects to Claude for AI capabilities.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "modu-ai",
+  "install_command": "git clone https://github.com/modu-ai/moai-adk.git",
+  "source_repo_url": "https://github.com/modu-ai/moai-adk",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claudecode",
+    "agentic-ai",
+    "vibe-coding",
+    "agentic-workflow",
+    "claude",
+    "agentic-coding"
+  ],
+  "sections": {
+    "overview": "MoAI-ADK is a Python framework designed for developers to build agentic AI workflows and autonomous agents that handle complex tasks. The framework integrates with Claude to leverage advanced AI capabilities for workflow automation. It provides a structured approach to creating agents that can operate independently to solve operational challenges. The framework supports comprehensive development cycles with extensive documentation and version management, making it suitable for teams building production-grade autonomous systems. Operations teams benefit from automated workflows that reduce manual intervention and improve process efficiency.\nAutomate the generation of project specifications to streamline the development process.\nIntegrate AI agents to assist in code refactoring while preserving existing functionality.\nUtilize LSP integration for real-time diagnostics and feedback during the coding workflow.\nImplement parallel development environments to enhance team collaboration on large projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/modu-ai/moai-adk`",
+    "usage": "```\nCreate a MoAI-ADK workflow that automates [TASK] for our operations team. The workflow should include [NUMBER] agents with the following responsibilities: [AGENT RESPONSIBILITIES]. Each agent should use Claude's capabilities to [SPECIFIC AI TASKS]. Provide the Python code for this workflow and explain how it integrates with our existing systems.\n```\nCopy\n\n```\nHere's a MoAI-ADK workflow that automates incident response for our operations team. This workflow includes 3 agents with the following responsibilities:\n\n1. Incident Detection Agent: Monitors our systems for anomalies and creates incident tickets when issues are detected.\n2. Incident Analysis Agent: Uses Claude to analyze incident data and determine the root cause.\n3. Incident Resolution Agent: Implements predefined remediation steps and escalates to human operators when necessary.\n\n```python\n# Import necessary modules\nfrom moai_adk import Agent, Workflow\nfrom moai_adk.clients import ClaudeClient\n\n# Initialize Claude client\nclaud_client = ClaudeClient(api_key='your_api_key_here')\n\n# Define agents\nclass IncidentDetectionAgent(Agent):\n    def __init__(self):\n        super().__init__(name='Incident Detection Agent')\n\n    async def run(self):\n        # Monitor systems for anomalies\n        # Create incident tickets when issues are detected\n        pass\n\nclass IncidentAnalysisAgent(Agent):\n    def __init__(self):\n        super().__init__(name='Incident Analysis Agent')\n        self.claud_client = claud_client\n\n    async def run(self, incident_data):\n        # Use Claude to analyze incident data\n        # Determine the root cause\n        analysis = self.claud_client.analyze(incident_data)\n        return analysis\n\nclass IncidentResolutionAgent(Agent):\n    def __init__(self):\n        super().__init__(name='Incident Resolution Agent')\n\n    async def run(self, analysis):\n        # Implement remediation steps\n        # Escalate to human operators when necessary\n        pass\n\n# Define workflow\nclass IncidentResponseWorkflow(Workflow):\n    def __init__(self):\n        super().__init__(name='Incident Response Workflow')\n        self.agents = [\n            IncidentDetectionAgent(),\n            IncidentAnalysisAgent(),\n            IncidentResolutionAgent()\n        ]\n\n    async def run(self):\n        # Run agents in sequence\n        incident_data = await self.agents[0].run()\n        analysis = await self.agents[1].run(incident_data)\n        await self.agents[2].run(analysis)\n\n# Run workflow\nif __name__ == '__main__':\n    workflow = IncidentResponseWorkflow()\n    workflow.run()\n```\n\nThis workflow integrates with our existing systems by using our incident management API to create and update tickets. The Incident Detection Agent monitors our systems using our existing monitoring tools. The Incident Resolution Agent uses our runbook automation system to implement remediation steps.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "moai-adk#main-content",
+      "moai-adk#overview",
+      "moai-adk#setup",
+      "moai-adk#examples",
+      "moai-adk#tools",
+      "moai-adk#mcp",
+      "moai-adk#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MoAI-ADK là một Python framework được thiết kế cho lập trình viên để xây dựng các workflow Agentic AI và các agent tự trị giúp xử lý các tác vụ phức tạp. Framework này tích hợp với Claude để tận dụng các khả năng AI nâng cao cho việc tự động hóa workflow. Nó cung cấp một phương pháp tiếp cận có cấu trúc để tạo ra các agent có thể hoạt động độc lập nhằm giải quyết các thách thức vận hành. Framework này hỗ trợ chu kỳ phát triển toàn diện với tài liệu chi tiết và quản lý phiên bản, phù hợp cho các đội ngũ xây dựng các hệ thống tự trị chuẩn production. Các bộ phận vận hành sẽ được hưởng lợi từ các workflow tự động giúp giảm thiểu can thiệp thủ công và nâng cao hiệu suất quy trình.\nTự động hóa việc tạo đặc tả dự án (project specifications) để tối ưu hóa quy trình phát triển.\nTích hợp các AI agent để hỗ trợ refactor code trong khi vẫn bảo toàn các tính năng hiện tại.\nTận dụng tích hợp LSP để chẩn đoán lỗi và phản hồi theo thời gian thực trong quá trình lập trình.\nTriển khai các môi trường phát triển song song nhằm nâng cao hiệu quả cộng tác nhóm trong các dự án lớn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/modu-ai/moai-adk`",
+    "usage_vi": "```\nHãy tạo một workflow MoAI-ADK giúp tự động hóa [TASK] cho đội ngũ vận hành của chúng tôi. Workflow này cần bao gồm [NUMBER] agent với các nhiệm vụ sau: [AGENT RESPONSIBILITIES]. Mỗi agent nên sử dụng các khả năng của Claude để [SPECIFIC AI TASKS]. Cung cấp mã nguồn Python cho workflow này và giải thích cách tích hợp nó với các hệ thống hiện tại của chúng tôi.\n```\nCopy\n\n```\nDưới đây là một workflow MoAI-ADK giúp tự động hóa quy trình xử lý sự cố (incident response) cho đội ngũ vận hành. Workflow này bao gồm 3 agent với các nhiệm vụ sau:\n\n1. Incident Detection Agent: Giám sát hệ thống để phát hiện bất thường và tạo ticket sự cố khi phát hiện vấn đề.\n2. Incident Analysis Agent: Sử dụng Claude để phân tích dữ liệu sự cố và xác định nguyên nhân gốc rễ.\n3. Incident Resolution Agent: Thực hiện các bước khắc phục đã được thiết lập sẵn và chuyển tiếp (escalate) cho nhân sự vận hành khi cần thiết.\n\n```python\n# Import các module cần thiết\nfrom moai_adk import Agent, Workflow\nfrom moai_adk.clients import ClaudeClient\n\n# Khởi tạo Claude client\nclaud_client = ClaudeClient(api_key='your_api_key_here')\n\n# Định nghĩa các agent\nclass IncidentDetectionAgent(Agent):\n    def __init__(self):\n        super().__init__(name='Incident Detection Agent')\n\n    async def run(self):\n        # Giám sát hệ thống để phát hiện bất thường\n        # Tạo ticket sự cố khi phát hiện vấn đề\n        pass\n\nclass IncidentAnalysisAgent(Agent):\n    def __init__(self):\n        super().__init__(name='Incident Analysis Agent')\n        self.claud_client = claud_client\n\n    async def run(self, incident_data):\n        # Sử dụng Claude để phân tích dữ liệu sự cố\n        # Xác định nguyên nhân gốc rễ\n        analysis = self.claud_client.analyze(incident_data)\n        return analysis\n\nclass IncidentResolutionAgent(Agent):\n    def __init__(self):\n        super().__init__(name='Incident Resolution Agent')\n\n    async def run(self, analysis):\n        # Thực hiện các bước khắc phục sự cố\n        # Chuyển tiếp cho nhân sự vận hành khi cần thiết\n        pass\n\n# Định nghĩa workflow\nclass IncidentResponseWorkflow(Workflow):\n    def __init__(self):\n        super().__init__(name='Incident Response Workflow')\n        self.agents = [\n            IncidentDetectionAgent(),\n            IncidentAnalysisAgent(),\n            IncidentResolutionAgent()\n        ]\n\n    async def run(self):\n        # Chạy các agent theo tuần tự\n        incident_data = await self.agents[0].run()\n        analysis = await self.agents[1].run(incident_data)\n        await self.agents[2].run(analysis)\n\n# Chạy workflow\nif __name__ == '__main__':\n    workflow = IncidentResponseWorkflow()\n    workflow.run()\n```\n\nWorkflow này tích hợp với các hệ thống hiện có của chúng tôi bằng cách sử dụng API quản lý sự cố để tạo và cập nhật ticket. Incident Detection Agent giám sát hệ thống của chúng tôi qua các công cụ giám sát hiện có. Incident Resolution Agent sử dụng hệ thống tự động hóa runbook để thực hiện các bước khắc phục.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:53:17.365909Z",
+    "http_status": 200,
+    "content_hash": "1f214c03d2708babac0bc56f04ab184887b6e5d0a70ac5b85c73799d141b039c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\moai-adk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\moai-adk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MoAI-ADK - Bộ công cụ phát triển Agentic AI",
+  "short_description_vi": "MoAI-ADK là một Python framework để xây dựng các workflow Agentic AI. Nó cho phép lập trình viên tạo ra các agent tự trị có khả năng thực hiện các tác vụ phức tạp. Bộ phận vận hành sẽ được hưởng lợi từ các workflow tự động này nhờ khả năng kết nối với Claude để khai thác các tính năng AI."
+}

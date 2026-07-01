@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/job-applicator",
+  "slug": "job-applicator",
+  "name": "Job Applicator",
+  "headline": "job-applicator: Automate Bulk Job Applications",
+  "short_description": "Automated job application tool that uses Selenium and ChromeDriver to apply to jobs at scale, with DynamoDB used for tracking and batching application records.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "CYINT",
+  "install_command": "git clone https://github.com/CYINT/job-applicator.git",
+  "source_repo_url": "https://github.com/CYINT/job-applicator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "job-applicator is a Python-based automation tool built by CYINT that streamlines the process of submitting job applications in bulk. It uses Selenium with ChromeDriver (Windows) to interact with job listing pages programmatically. Application records are stored and tracked in AWS DynamoDB, with batching logic implemented to handle runs of more than 100 jobs at a time. The project is managed with Poetry for dependency handling and includes a PowerShell runner script for Windows environments. It is suited for job seekers or recruiters who need to apply to a high volume of positions without manual effort.\nAutomatically submit applications to hundreds of job listings in a single run\nTrack applied jobs at scale using AWS DynamoDB as a persistent record store\nBatch-process large sets of job applications exceeding 100 records per run\nRun scheduled or on-demand job application campaigns via a PowerShell script on Windows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CYINT/job-applicator`",
+    "usage": "```\nAct as a job application assistant. I will provide the following details: [COMPANY], [JOB TITLE], [YOUR EXPERIENCE], and [YOUR SKILLS]. Generate a tailored cover letter and resume summary for this job application. Ensure the tone matches the company culture and highlights my relevant experience.\n```\nCopy\n\n```\n# Cover Letter\n\nDear Hiring Manager,\n\nI am excited to apply for the [JOB TITLE] position at [COMPANY]. With my background in [INDUSTRY] and my proven track record in [RELEVANT SKILL], I am confident that my skills and experiences align perfectly with the requirements of this role.\n\nIn my previous role at [PREVIOUS COMPANY], I successfully [ACHIEVEMENT]. I am eager to bring this level of dedication and success to [COMPANY].\n\nThank you for considering my application. I look forward to the opportunity to discuss how my background, skills, and certifications will be in line with [COMPANY]’s goals and objectives.\n\nSincerely,\n[YOUR NAME]\n\n# Resume Summary\n\nResults-driven professional with over [NUMBER] years of experience in [INDUSTRY]. Proven ability to [RELEVANT SKILL] and [RELEVANT SKILL]. Adept at [RELEVANT SKILL] and [RELEVANT SKILL]. Seeking to leverage my expertise to drive success at [COMPANY].\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "job-applicator#main-content",
+      "job-applicator#overview",
+      "job-applicator#setup",
+      "job-applicator#examples",
+      "job-applicator#tools",
+      "job-applicator#mcp",
+      "job-applicator#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "job-applicator là một công cụ tự động hóa được phát triển bằng Python bởi CYINT, giúp tối ưu hóa quy trình nộp hồ sơ xin việc hàng loạt. Công cụ này sử dụng Selenium kết hợp với ChromeDriver (Windows) để tương tác lập trình với các trang tin tuyển dụng. Các bản ghi ứng tuyển được lưu trữ và theo dõi trong AWS DynamoDB, tích hợp logic phân lô (batching) để xử lý các phiên chạy có trên 100 việc làm cùng lúc. Dự án được quản lý bằng Poetry để xử lý các dependency và đi kèm một script chạy PowerShell cho môi trường Windows. Công cụ này rất phù hợp cho người tìm việc hoặc nhà tuyển dụng có nhu cầu nộp hồ sơ vào lượng lớn vị trí tuyển dụng mà không cần thao tác thủ công.\n\nTự động nộp hồ sơ cho hàng trăm tin tuyển dụng chỉ trong một lần chạy\nTheo dõi các công việc đã ứng tuyển trên quy mô lớn bằng AWS DynamoDB làm kho lưu trữ bản ghi lâu dài\nXử lý theo lô các bộ hồ sơ ứng tuyển lớn vượt quá 100 bản ghi mỗi lần chạy\nChạy các chiến dịch ứng tuyển theo lịch trình hoặc theo yêu cầu thông qua script PowerShell trên Windows",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/CYINT/job-applicator`",
+    "usage_vi": "```\nĐóng vai trò là một trợ lý ứng tuyển việc làm. Tôi sẽ cung cấp các thông tin sau: [COMPANY], [JOB TITLE], [YOUR EXPERIENCE], và [YOUR SKILLS]. Hãy tạo một thư xin việc (cover letter) và phần tóm tắt hồ sơ (resume summary) được tùy biến riêng cho vị trí ứng tuyển này. Đảm bảo văn phong phù hợp với văn hóa công ty và làm nổi bật các kinh nghiệm liên quan của tôi.\n```\nCopy\n\n```\n# Thư xin việc (Cover Letter)\n\nKính gửi Bộ phận Tuyển dụng,\n\nTôi rất hào hứng được ứng tuyển vào vị trí [JOB TITLE] tại [COMPANY]. Với nền tảng trong lĩnh vực [INDUSTRY] và năng lực đã được chứng minh về [RELEVANT SKILL], tôi tự tin rằng các kỹ năng và kinh nghiệm của mình hoàn toàn đáp ứng các yêu cầu của vị trí này.\n\nTrong công việc trước đây tại [PREVIOUS COMPANY], tôi đã thành công trong việc [ACHIEVEMENT]. Tôi rất mong muốn mang tinh thần trách nhiệm và sự thành công này đến với [COMPANY].\n\nCảm ơn quý công ty đã xem xét hồ sơ của tôi. Tôi rất mong có cơ hội trao đổi thêm về việc các kỹ năng, nền tảng và chứng chỉ của tôi sẽ đóng góp thế nào vào các mục tiêu của [COMPANY].\n\nTrân trọng,\n[YOUR NAME]\n\n# Tóm tắt Hồ sơ (Resume Summary)\n\nChuyên gia định hướng kết quả với hơn [NUMBER] năm kinh nghiệm trong lĩnh vực [INDUSTRY]. Đã chứng minh được khả năng [RELEVANT SKILL] và [RELEVANT SKILL]. Thành thạo [RELEVANT SKILL] và [RELEVANT SKILL]. Mong muốn áp dụng chuyên môn của mình để đóng góp vào sự thành công của [COMPANY].\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:07:36.923131Z",
+    "http_status": 200,
+    "content_hash": "460cb810d7358f68aa77310bfdeeaee87dcd1039d73d30aa1f4b2ae676381729",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\job-applicator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\job-applicator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "job-applicator: Tự động ứng tuyển hàng loạt",
+  "short_description_vi": "Công cụ tự động nộp hồ sơ xin việc hàng loạt sử dụng Selenium và ChromeDriver, kết hợp với DynamoDB để theo dõi và xử lý các bản ghi ứng tuyển theo lô (batching)."
+}

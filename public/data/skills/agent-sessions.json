@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-sessions",
+  "slug": "agent-sessions",
+  "name": "browser-use",
+  "headline": "Session analytics tool for Codex and Claude",
+  "short_description": "Session browser + Agents Analytics + Limits tracker for Codex CLI,  Claude Code, OpenCode, Gemini CLI, Factory Droid  & GitHub Copilot CLI. Search ALL past sessions, filter by folder·repo, resume instantly, see rate limits in real-time. Native macOS app.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "jazzyalex",
+  "install_command": "git clone https://github.com/jazzyalex/agent-sessions.git",
+  "source_repo_url": "https://github.com/jazzyalex/agent-sessions",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-workflow",
+    "developer-tools",
+    "indie-hacker",
+    "productivity-tools",
+    "antrophic",
+    "macos",
+    "gpt-5",
+    "agents",
+    "vibe-coding",
+    "usage-tracking",
+    "session-management",
+    "codex-cli",
+    "codex",
+    "ai",
+    "openai"
+  ],
+  "sections": {
+    "overview": "Agent Sessions is a local-first macOS application that centralizes session management for multiple AI coding agents including Codex, Claude, Cursor, OpenCode, Hermes, OpenClaw, Gemini CLI, GitHub Copilot CLI, and Pi. It lets you search through all past sessions, filter by folder and repository, inspect transcripts, browse generated images, and instantly resume work from the command line. The app includes Agent Cockpit for monitoring active iTerm2 sessions in real-time, a Limits Widget for tracking Codex and Claude usage with run-out predictions, and local-only indexing designed to handle large session histories. All data stays on your Mac with no telemetry or remote uploads.\nSearch and filter across months of AI agent sessions from multiple tools in one interface\nResume interrupted coding sessions with one-click Terminal commands\nMonitor Codex and Claude rate limits and usage in real-time with predictive alerts\nBrowse generated screenshots and visual outputs from past sessions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jazzyalex/agent-sessions`",
+    "usage": "```\nSearch all past [SESSION_TYPE] sessions (e.g., GitHub Copilot CLI, Claude Code, Codex CLI) filtered by [FOLDER/REPO PATH] and [DATE RANGE]. Resume the most relevant session instantly. Show real-time rate limit status for [API_PROVIDER] (e.g., GitHub, Anthropic, OpenAI). If limits are near exhaustion, suggest immediate mitigation steps like switching to a different API key or reducing concurrent requests.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-sessions#main-content",
+      "agent-sessions#overview",
+      "agent-sessions#setup",
+      "agent-sessions#examples",
+      "agent-sessions#tools",
+      "agent-sessions#mcp",
+      "agent-sessions#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent Sessions is a local-first macOS application that centralizes session management for multiple AI coding agents including Codex, Claude, Cursor, OpenCode, Hermes, OpenClaw, Gemini CLI, GitHub Copilot CLI, and Pi. It lets you search through all past sessions, filter by folder and repository, inspect transcripts, browse generated images, and instantly resume work from the command line. The app includes Agent Cockpit for monitoring active iTerm2 sessions in real-time, a Limits Widget for tracking Codex and Claude usage with run-out predictions, and local-only indexing designed to handle large session histories. All data stays on your Mac with no telemetry or remote uploads.\nSearch and filter across months of AI agent sessions from multiple tools in one interface\nResume interrupted coding sessions with one-click Terminal commands\nMonitor Codex and Claude rate limits and usage in real-time with predictive alerts\nBrowse generated screenshots and visual outputs from past sessions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jazzyalex/agent-sessions`",
+    "usage_vi": "```\nSearch all past [SESSION_TYPE] sessions (e.g., GitHub Copilot CLI, Claude Code, Codex CLI) filtered by [FOLDER/REPO PATH] and [DATE RANGE]. Resume the most relevant session instantly. Show real-time rate limit status for [API_PROVIDER] (e.g., GitHub, Anthropic, OpenAI). If limits are near exhaustion, suggest immediate mitigation steps like switching to a different API key or reducing concurrent requests.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:50:13.238506Z",
+    "http_status": 200,
+    "content_hash": "3c5e180798f09d1474b7e161fc97f82559aa0511d912122019c583bce2f7322d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-sessions.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-sessions.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Session analytics tool for Codex and Claude",
+  "short_description_vi": "Session browser + Agents Analytics + Limits tracker for Codex CLI,  Claude Code, OpenCode, Gemini CLI, Factory Droid  & GitHub Copilot CLI. Search ALL past sessions, filter by folder·repo, resume instantly, see rate limits in real-time. Native macOS app."
+}

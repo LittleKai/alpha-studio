@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bash-scripting-cheatsheet",
+  "slug": "bash-scripting-cheatsheet",
+  "name": "Bash-Scripting-Cheatsheet",
+  "headline": "Bash scripting guide for automation",
+  "short_description": "Explore Bash scripting mastery with our comprehensive repository. From beginner basics to advanced techniques, dive into practical examples and expert guides for efficient automation. Dive into practical examples and guides to enhance automation skills and streamline workflows efficiently.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "king04aman",
+  "install_command": "git clone https://github.com/king04aman/Bash-Scripting-Cheatsheet.git",
+  "source_repo_url": "https://github.com/king04aman/Bash-Scripting-Cheatsheet",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "shell-scripting",
+    "scripting-language",
+    "shellscript",
+    "bash-scripts",
+    "devops",
+    "linux",
+    "programing",
+    "sysadmin",
+    "bash",
+    "bashscripting",
+    "bash-script",
+    "command-line",
+    "scripting"
+  ],
+  "sections": {
+    "overview": "The Bash Scripting Cheat Sheet is a comprehensive reference repository for learning and mastering Bash scripting across Unix/Linux environments. It covers essential concepts including variables, control structures (if statements, loops, case statements), functions, file operations, and text processing with tools like sed and awk. The resource includes practical examples for system administration tasks such as monitoring CPU and disk usage, managing network connectivity, backing up files, and generating passwords. Designed for both beginners and experienced developers, it provides quick-reference guides for command-line arguments, I/O redirectors, debugging techniques, and best practices for efficient shell script automation.\nLearning Bash scripting fundamentals and advanced syntax\nSystem monitoring and administration automation\nFile backup and compression operations\nText processing and file manipulation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/king04aman/Bash-Scripting-Cheatsheet`",
+    "usage": "```\nAct as a Bash scripting expert. Provide a cheatsheet for [SPECIFIC_TASK], including common commands, syntax, and practical examples. Focus on efficiency and automation.\n```\nCopy\n\n```\n# Bash Scripting Cheatsheet for File Management\n\n### Copying Files with Timestamps\n```bash\ncp file.txt /backup/directory/file_$(date +%Y%m%d).txt\n```\n\n### Finding and Deleting Old Files\n```bash\nfind /path/to/files -type f -mtime +30 -exec rm {} \\;\n```\n\n### Automating Backups\n```bash\n#!/bin/bash\n# Backup script\nSOURCE_DIR=\"/home/user/documents\"\nDEST_DIR=\"/backup/documents_$(date +%Y%m%d)\"\nmkdir -p $DEST_DIR\nrsync -av $SOURCE_DIR/ $DEST_DIR/\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bash-scripting-cheatsheet#main-content",
+      "bash-scripting-cheatsheet#overview",
+      "bash-scripting-cheatsheet#setup",
+      "bash-scripting-cheatsheet#examples",
+      "bash-scripting-cheatsheet#tools",
+      "bash-scripting-cheatsheet#mcp",
+      "bash-scripting-cheatsheet#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Bash Scripting Cheat Sheet là một kho tài liệu tra cứu toàn diện để học và làm chủ Bash scripting trên các môi trường Unix/Linux. Tài liệu này bao gồm các khái niệm thiết yếu như biến, cấu trúc điều khiển (câu lệnh if, vòng lặp, câu lệnh case), hàm, các thao tác với tệp và xử lý văn bản bằng các công cụ như sed và awk. Tài nguyên này cũng cung cấp các ví dụ thực tế cho các tác vụ quản trị hệ thống như giám sát hiệu năng CPU và dung lượng đĩa, quản lý kết nối mạng, sao lưu tệp và tạo mật khẩu tự động. Được thiết kế dành cho cả người mới bắt đầu lẫn các lập trình viên giàu kinh nghiệm, tài liệu cung cấp các hướng dẫn tra cứu nhanh về đối số dòng lệnh (command-line arguments), điều hướng I/O (I/O redirectors), kỹ thuật debug và các best practice để tự động hóa shell script hiệu quả.\nHọc các kiến thức cơ bản và cú pháp nâng cao của Bash scripting\nTự động hóa giám sát và quản trị hệ thống\nCác thao tác sao lưu và nén tệp\nXử lý văn bản và thao tác với tệp tin",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/king04aman/Bash-Scripting-Cheatsheet`",
+    "usage_vi": "```\nĐóng vai trò là một chuyên gia Bash scripting. Cung cấp một tài liệu tra cứu nhanh (cheatsheet) cho [TÁC_VỤ_CỤ_THỂ], bao gồm các lệnh phổ biến, cú pháp và ví dụ thực tế. Tập trung vào tính hiệu quả và tự động hóa.\n```\nSao chép\n\n```\n# Tài liệu tra cứu nhanh Bash Scripting cho Quản lý Tệp tin\n\n### Sao chép tệp kèm theo Dấu mốc Thời gian (Timestamp)\n```bash\ncp file.txt /backup/directory/file_$(date +%Y%m%d).txt\n```\n\n### Tìm và xóa các tệp cũ\n```bash\nfind /path/to/files -type f -mtime +30 -exec rm {} \\;\n```\n\n### Tự động hóa sao lưu\n```bash\n#!/bin/bash\n# Script sao lưu\nSOURCE_DIR=\"/home/user/documents\"\nDEST_DIR=\"/backup/documents_$(date +%Y%m%d)\"\nmkdir -p $DEST_DIR\nrsync -av $SOURCE_DIR/ $DEST_DIR/\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:20:50.810302Z",
+    "http_status": 200,
+    "content_hash": "81484adb2cf6c26ce4debee13a0f713704e215e8a524f7d4d291874a2e7c42e6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bash-scripting-cheatsheet.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bash-scripting-cheatsheet.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hướng dẫn Bash scripting phục vụ tự động hóa",
+  "short_description_vi": "Làm chủ Bash scripting với kho lưu trữ (repository) toàn diện của chúng tôi. Từ những kiến thức cơ bản cho người mới bắt đầu đến các kỹ thuật nâng cao, hãy cùng khám phá các ví dụ thực tế và hướng dẫn chuyên sâu để tự động hóa công việc một cách hiệu quả. Đi sâu vào các ví dụ thực hành giúp bạn nâng cao kỹ năng tự động hóa và tối ưu hóa quy trình làm việc một cách trơn tru."
+}

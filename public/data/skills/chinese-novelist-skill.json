@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/chinese-novelist-skill",
+  "slug": "chinese-novelist-skill",
+  "name": "Chinese Novelist Skill",
+  "headline": "chinese-novelist-skill: AI novel creation",
+  "short_description": "Automatically generates complete Chinese novels with over 20 chapters in minutes. Ideal for content creators, publishers, and marketers needing quick, engaging narratives. Integrates with Claude for AI-driven storytelling.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "PenglongHuang",
+  "install_command": "git clone https://github.com/PenglongHuang/chinese-novelist-skill.git",
+  "source_repo_url": "https://github.com/PenglongHuang/chinese-novelist-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The chinese-novelist skill automates the creation of full-length Chinese novels through a multi-layer question-and-answer system that guides users through story conception, planning, and execution. It features preference memory that learns your creative style across sessions, allowing the AI to tailor narratives to your preferences over time. The skill supports three writing modes—serial, sub-agent parallel, and agent teams—to accommodate different workflow needs. Built-in quality assurance automatically validates word count and narrative coherence, with automatic rewrites for content that falls short. Ideal for content creators, publishers, and writers who struggle with completion, the skill eliminates creative bottlenecks and delivers polished, structured narratives efficiently.\nGenerate complete Chinese novels for content marketing campaigns\nCreate serialized story content for publishing platforms\nProduce multiple novel drafts with consistent character development\nResume interrupted writing projects from saved breakpoints",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PenglongHuang/chinese-novelist-skill`",
+    "usage": "```\nWrite a complete Chinese novel titled '[TITLE]' in the style of [GENRE, e.g., historical romance, fantasy adventure, modern drama]. The novel should have at least 20 chapters, each with a unique title and a word count of 2000-3000 characters. Include rich character development, intricate plot twists, and immersive world-building. Start with Chapter 1: '[CHAPTER_TITLE]'. Ensure the language is fluent, evocative, and culturally authentic. [ADDITIONAL_CONTEXT, e.g., 'Set in the Tang Dynasty,' 'Focus on a forbidden love story,' 'Include supernatural elements'].\n```\nCopy\n\n```\n《红尘旧梦》\n\n第一章：落花时节\n\n公元789年，长安城外的驿站。一场突如其来的暴雨将整个驿站困在泥泞之中。年轻的书生李明轩，因科举落第，心灰意冷地踏上回乡之路。就在这时，他遇到了一位神秘女子——林清儿。她身着白衣，面容清冷，手持一把折扇，扇面上绘着一朵盛开的牡丹。\n\n「公子，借一步说话。」林清儿的声音如同春日微风，轻柔却带着不容拒绝的坚定。李明轩疑惑地跟随她来到驿站后院的一间茅屋。屋内陈设简陋，唯有一张古旧的桌案上摆放着一本泛黄的线装书——《洛神赋》。\n\n「这本书是家父留下的遗物，」林清儿双手捧起书卷，眼中闪过一丝哀伤。「但我无法解开其中的秘密。公子才高八斗，可否为我解惑？」\n\n李明轩接过书卷，翻开第一页，却发现书中夹杂着一张泛黄的纸条，上面写着一行蝇头小楷：「天机不可泄露，唯有有缘人方能得之。」他心中一凛，这分明是一句暗示。就在这时，外面传来一阵急促的马蹄声，似乎有人正在追赶什么人。\n\n林清儿脸色大变：「糟了！他们追来了！」\n\n李明轩还未反应过来，一群黑衣人已经破门而入。为首的男子冷笑着说道：「林清儿，你以为躲在这里就能逃脱吗？」\n\n就在这时，一阵狂风骤起，将茅屋的屋顶掀翻。一只巨大的黑鹰从天而降，将李明轩和林清儿卷入风中，消失在茫茫雨夜之中。\n\n第二章：鹰击长空\n\n李明轩醒来时，发现自己和林清儿躺在一片荒凉的山谷中。周围古树参天，藤蔓交错，空气中弥漫着一股淡淡的药香。林清儿已经站起身，正在四处查看。\n\n「这里是哪里？」李明轩揉揉酸痛的头，环顾四周。\n\n「我也不清楚，」林清儿摇摇头。「但这里似乎有什么力量在守护着我们。」\n\n就在这时，一阵悦耳的铃声传来。两人循声望去，只见不远处有一位白发苍苍的老者，手持一串佛珠，正在缓缓走来。老者的目光如炬，仿佛能看透人的内心。\n\n「施主，你们来到这里，必有天命。」老者开口道，「我是此谷的守护者，名叫无尘。这座山谷名为『忘川谷』，传说中只有有缘之人才能进入。」\n\n李明轩和林清儿对视一眼，心中都充满了疑惑。他们为何会被卷入这场神秘的际遇？这座山谷又隐藏着什么样的秘密？\n\n无尘老者微微一笑：「走吧，我带你们去见一个人。」\n\n说罢，老者转身向谷内走去。李明轩和林清儿互相搀扶着，跟随老者的脚步，踏上了探索忘川谷的旅程。\n\n（本章约2800字，共20余章，后续情节包括李明轩与林清儿在忘川谷中的奇遇、与神秘组织的斗争、以及一段跨越时空的爱恋故事。）\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "chinese-novelist-skill#main-content",
+      "chinese-novelist-skill#overview",
+      "chinese-novelist-skill#setup",
+      "chinese-novelist-skill#examples",
+      "chinese-novelist-skill#tools",
+      "chinese-novelist-skill#mcp",
+      "chinese-novelist-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The chinese-novelist skill automates the creation of full-length Chinese novels through a multi-layer question-and-answer system that guides users through story conception, planning, and execution. It features preference memory that learns your creative style across sessions, allowing the AI to tailor narratives to your preferences over time. The skill supports three writing modes—serial, sub-agent parallel, and agent teams—to accommodate different workflow needs. Built-in quality assurance automatically validates word count and narrative coherence, with automatic rewrites for content that falls short. Ideal for content creators, publishers, and writers who struggle with completion, the skill eliminates creative bottlenecks and delivers polished, structured narratives efficiently.\nGenerate complete Chinese novels for content marketing campaigns\nCreate serialized story content for publishing platforms\nProduce multiple novel drafts with consistent character development\nResume interrupted writing projects from saved breakpoints",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PenglongHuang/chinese-novelist-skill`",
+    "usage_vi": "```\nWrite a complete Chinese novel titled '[TITLE]' in the style of [GENRE, e.g., historical romance, fantasy adventure, modern drama]. The novel should have at least 20 chapters, each with a unique title and a word count of 2000-3000 characters. Include rich character development, intricate plot twists, and immersive world-building. Start with Chapter 1: '[CHAPTER_TITLE]'. Ensure the language is fluent, evocative, and culturally authentic. [ADDITIONAL_CONTEXT, e.g., 'Set in the Tang Dynasty,' 'Focus on a forbidden love story,' 'Include supernatural elements'].\n```\nCopy\n\n```\n《红尘旧梦》\n\n第一章：落花时节\n\n公元789年，长安城外的驿站。一场突如其来的暴雨将整个驿站困在泥泞之中。年轻的书生李明轩，因科举落第，心灰意冷地踏上回乡之路。就在这时，他遇到了一位神秘女子——林清儿。她身着白衣，面容清冷，手持一把折扇，扇面上绘着一朵盛开的牡丹。\n\n「公子，借一步说话。」林清儿的声音如同春日微风，轻柔却带着不容拒绝的坚定。李明轩疑惑地跟随她来到驿站后院的一间茅屋。屋内陈设简陋，唯有一张古旧的桌案上摆放着一本泛黄的线装书——《洛神赋》。\n\n「这本书是家父留下的遗物，」林清儿双手捧起书卷，眼中闪过一丝哀伤。「但我无法解开其中的秘密。公子才高八斗，可否为我解惑？」\n\n李明轩接过书卷，翻开第一页，却发现书中夹杂着一张泛黄的纸条，上面写着一行蝇头小楷：「天机不可泄露，唯有有缘人方能得之。」他心中一凛，这分明是一句暗示。就在这时，外面传来一阵急促的马蹄声，似乎有人正在追赶什么人。\n\n林清儿脸色大变：「糟了！他们追来了！」\n\n李明轩还未反应过来，一群黑衣人已经破门而入。为首的男子冷笑着说道：「林清儿，你以为躲在这里就能逃脱吗？」\n\n就在这时，一阵狂风骤起，将茅屋的屋顶掀翻。一只巨大的黑鹰从天而降，将李明轩和林清儿卷入风中，消失在茫茫雨夜之中。\n\n第二章：鹰击长空\n\n李明轩醒来时，发现自己和林清儿躺在一片荒凉的山谷中。周围古树参天，藤蔓交错，空气中弥漫着一股淡淡的药香。林清儿已经站起身，正在四处查看。\n\n「这里是哪里？」李明轩揉揉酸痛的头，环顾四周。\n\n「我也不清楚，」林清儿摇摇头。「但这里似乎有什么力量在守护着我们。」\n\n就在这时，一阵悦耳的铃声传来。两人循声望去，只见不远处有一位白发苍苍的老者，手持一串佛珠，正在缓缓走来。老者的目光如炬，仿佛能看透人的内心。\n\n「施主，你们来到这里，必有天命。」老者开口道，「我是此谷的守护者，名叫无尘。这座山谷名为『忘川谷』，传说中只有有缘之人才能进入。」\n\n李明轩和林清儿对视一眼，心中都充满了疑惑。他们为何会被卷入这场神秘的际遇？这座山谷又隐藏着什么样的秘密？\n\n无尘老者微微一笑：「走吧，我带你们去见一个人。」\n\n说罢，老者转身向谷内走去。李明轩和林清儿互相搀扶着，跟随老者的脚步，踏上了探索忘川谷的旅程。\n\n（本章约2800字，共20余章，后续情节包括李明轩与林清儿在忘川谷中的奇遇、与神秘组织的斗争、以及一段跨越时空的爱恋故事。）\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:35.486231Z",
+    "http_status": 200,
+    "content_hash": "327d4d3dc67faefac80b7f691ba5dc063683b72a56820a6a4e716ad273fa816a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chinese-novelist-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chinese-novelist-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "chinese-novelist-skill: AI novel creation",
+  "short_description_vi": "Automatically generates complete Chinese novels with over 20 chapters in minutes. Ideal for content creators, publishers, and marketers needing quick, engaging narratives. Integrates with Claude for AI-driven storytelling."
+}

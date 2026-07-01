@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/supabase-postgres-best-practices",
+  "slug": "supabase-postgres-best-practices",
+  "name": "Supabase Postgres Best Practices",
+  "headline": "Supabase Postgres Best Practices for Teams",
+  "short_description": "The Supabase Postgres Best Practices skill helps teams to optimize their Postgres databases for performance and efficiency. By implementing proven strategies, users can enhance application responsiveness and reduce operational costs, driving better outcomes for Sales, Marketing, and RevOps teams.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "supabase",
+  "install_command": "claude install supabase/agent-skills/supabase-postgres-best-practices",
+  "source_repo_url": "https://github.com/supabase/agent-skills",
+  "works_with": [
+    "Claude CodeCursorWindsurfCline"
+  ],
+  "tags": [
+    "Postgres",
+    "data management",
+    "Supabase",
+    "best practices",
+    "database optimization"
+  ],
+  "sections": {
+    "overview": "Unlock the full potential of your Supabase Postgres database with our expertly crafted Best Practices skill. Tailored for Sales, Marketing, and RevOps teams, this skill provides actionable insights that help streamline operations, enhance data security, and improve overall application performance. Implementing these best practices not only saves valuable time but also reduces costs, ultimately driving better business outcomes. With a focus on practical use cases, users will benefit from optimized query performance, faster data retrieval, and robust security measures. By adopting these strategies, teams can achieve significant time savings in their daily operations, allowing them to focus on core business activities and strategic initiatives. Experience the transformative impact of effective database management with Supabase Postgres Best Practices.\nOptimize complex SQL queries to improve execution time.\nStreamline data retrieval processes for faster application responses.\nImplement advanced indexing strategies to enhance query performance.\nReview and refine database schemas to eliminate performance bottlenecks.",
+    "setup": "Terminal\nCopy\n`claude install supabase/agent-skills/supabase-postgres-best-practices`\n`git clone https://github.com/supabase/agent-skills`",
+    "usage": "```\nAnalyze the current schema and configuration of our Supabase Postgres database for [PROJECT_NAME]. Identify 3-5 specific optimizations we should implement to improve performance and efficiency. For each recommendation, explain the expected benefit and provide the SQL commands or configuration changes needed to implement it.\n```\nCopy\n\n```\nAfter reviewing your Supabase Postgres database for the 'Customer Insights Dashboard' project, I've identified several optimization opportunities:\n\n1. **Index Optimization**: Your 'user_activity' table has a high write volume but lacks proper indexes. Adding a partial index on the 'last_active' column for active users (last_active > NOW() - INTERVAL '30 days') would significantly improve query performance for your active user analytics. Implementation:\n\n```sql\nCREATE INDEX idx_user_activity_active ON user_activity(last_active) WHERE last_active > NOW() - INTERVAL '30 days';\n```\n\n2. **Connection Pooling**: Your current connection pool settings are suboptimal for your traffic patterns. I recommend adjusting the pool settings to:\n\n```sql\nALTER SYSTEM SET max_connections = 200;\nALTER SYSTEM SET shared_buffers = '4GB';\n```\n\n3. **Query Optimization**: Several of your frequently run queries can be optimized. For example, the daily revenue calculation query can be improved by:\n\n```sql\nCREATE MATERIALIZED VIEW daily_revenue AS SELECT date_trunc('day', created_at) AS day, SUM(amount) AS total FROM transactions GROUP BY day;\n```\n\n4. **Storage Configuration**: Enable auto-vacuum for your large tables to maintain performance during heavy write operations:\n\n```sql\nALTER TABLE large_data_table SET (autovacuum_enabled = true);\n```\n\n5. **Monitoring Setup**: Implement regular performance monitoring with these queries:\n\n```sql\n-- Slow queries\nSELECT query, calls, total_exec_time FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 10;\n\n-- Lock contention\nSELECT blocked_locks.pid AS blocked_pid, blocking_locks.pid AS blocking_pid, blocked_activity.query AS blocked_statement, blocking_activity.query AS blocking_statement\nFROM pg_catalog.pg_locks blocked_locks\nJOIN pg_catalog.pg_stat_activity blocked_activity ON blocked_activity.pid = blocked_locks.pid\nJOIN pg_catalog.pg_locks blocking_locks ON blocking_locks.locktype = blocked_locks.locktype AND blocking_locks.DATABASE IS NOT DISTINCT FROM blocked_locks.DATABASE AND blocking_locks.relation IS NOT DISTINCT FROM blocked_locks.relation AND blocking_locks.page IS NOT DISTINCT FROM blocked_locks.page AND blocking_locks.tuple IS NOT DISTINCT FROM blocked_locks.tuple AND blocking_locks.virtualxid IS NOT DISTINCT FROM blocked_locks.virtualxid AND blocking_locks.transactionid IS NOT DISTINCT FROM blocked_locks.transactionid AND blocking_locks.classid IS NOT DISTINCT FROM blocked_locks.classid AND blocking_locks.objid IS NOT DISTINCT FROM blocked_locks.objid AND blocking_locks.objsubid IS NOT DISTINCT FROM blocked_locks.objsubid AND blocking_locks.pid != blocked_locks.pid\nJOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid;\n```\n\nThese optimizations should significantly improve your database performance and reduce operational costs.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline"
+    ],
+    "related_skills": [
+      "supabase-postgres-best-practices#main-content",
+      "supabase-postgres-best-practices#overview",
+      "supabase-postgres-best-practices#setup",
+      "supabase-postgres-best-practices#examples",
+      "supabase-postgres-best-practices#tools",
+      "supabase-postgres-best-practices#mcp",
+      "supabase-postgres-best-practices#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Khai phá toàn bộ tiềm năng cơ sở dữ liệu Supabase Postgres của bạn với skill Best Practices được thiết kế chuyên nghiệp của chúng tôi. Được thiết kế riêng cho các đội ngũ Sales, Marketing và RevOps, skill này cung cấp các phân tích thực tế giúp tinh giản vận hành, tăng cường bảo mật dữ liệu và nâng cao hiệu năng tổng thể của ứng dụng. Việc áp dụng các best practices này không chỉ tiết kiệm thời gian quý báu mà còn giảm thiểu chi phí, từ đó thúc đẩy kết quả kinh doanh tốt hơn. Tập trung vào các trường hợp sử dụng thực tế, người dùng sẽ được hưởng lợi từ hiệu năng truy vấn tối ưu, truy xuất dữ liệu nhanh hơn và các biện pháp bảo mật mạnh mẽ. Bằng cách áp dụng các chiến lược này, các đội ngũ có thể tiết kiệm đáng kể thời gian trong vận hành hàng ngày, cho phép họ tập trung vào các hoạt động kinh doanh cốt lõi và các sáng kiến chiến lược. Hãy trải nghiệm tác động mang tính đột phá từ việc quản lý cơ sở dữ liệu hiệu quả với Supabase Postgres Best Practices.\nTối ưu hóa các truy vấn SQL phức tạp để cải thiện thời gian thực thi.\nTinh giản quy trình truy xuất dữ liệu để ứng dụng phản hồi nhanh hơn.\nTriển khai các chiến lược lập chỉ mục (indexing) nâng cao để tăng hiệu năng truy vấn.\nXem xét và cải tiến database schema để loại bỏ các nút thắt cổ chai về hiệu năng.",
+    "setup_vi": "Terminal\nCopy\n`claude install supabase/agent-skills/supabase-postgres-best-practices`\n`git clone https://github.com/supabase/agent-skills`",
+    "usage_vi": "```\nPhân tích schema và cấu hình hiện tại của cơ sở dữ liệu Supabase Postgres cho dự án [PROJECT_NAME]. Xác định 3-5 điểm tối ưu hóa cụ thể cần triển khai để cải thiện hiệu năng và hiệu quả hoạt động. Với mỗi đề xuất, hãy giải thích lợi ích kỳ vọng và cung cấp các lệnh SQL hoặc các thay đổi cấu hình cần thiết để triển khai.\n```\nCopy\n\n```\nSau khi kiểm tra cơ sở dữ liệu Supabase Postgres cho dự án 'Customer Insights Dashboard', tôi đã xác định được một số cơ hội tối ưu hóa:\n\n1. **Tối ưu hóa Index**: Bảng 'user_activity' của bạn có lượng ghi lớn nhưng lại thiếu index phù hợp. Việc thêm một partial index trên cột 'last_active' cho những người dùng hoạt động (last_active > NOW() - INTERVAL '30 days') sẽ cải thiện đáng kể hiệu năng truy vấn cho phần phân tích người dùng hoạt động. Cách triển khai:\n\n```sql\nCREATE INDEX idx_user_activity_active ON user_activity(last_active) WHERE last_active > NOW() - INTERVAL '30 days';\n```\n\n2. **Connection Pooling**: Cấu hình connection pool hiện tại của bạn chưa tối ưu cho các mô hình traffic. Tôi khuyên bạn nên điều chỉnh cấu hình pool thành:\n\n```sql\nALTER SYSTEM SET max_connections = 200;\nALTER SYSTEM SET shared_buffers = '4GB';\n```\n\n3. **Tối ưu hóa Truy vấn**: Một vài truy vấn chạy thường xuyên của bạn có thể được tối ưu hóa. Ví dụ, truy vấn tính toán doanh thu hàng ngày có thể được cải thiện bằng cách:\n\n```sql\nCREATE MATERIALIZED VIEW daily_revenue AS SELECT date_trunc('day', created_at) AS day, SUM(amount) AS total FROM transactions GROUP BY day;\n```\n\n4. **Cấu hình Lưu trữ**: Kích hoạt auto-vacuum cho các bảng lớn của bạn để duy trì hiệu năng trong các thao tác ghi dữ liệu lớn:\n\n```sql\nALTER TABLE large_data_table SET (autovacuum_enabled = true);\n```\n\n5. **Thiết lập Giám sát**: Triển khai việc giám sát hiệu năng định kỳ bằng các truy vấn sau:\n\n```sql\n-- Các truy vấn chậm (Slow queries)\nSELECT query, calls, total_exec_time FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 10;\n\n-- Tranh chấp Lock (Lock contention)\nSELECT blocked_locks.pid AS blocked_pid, blocking_locks.pid AS blocking_pid, blocked_activity.query AS blocked_statement, blocking_activity.query AS blocking_statement\nFROM pg_catalog.pg_locks blocked_locks\nJOIN pg_catalog.pg_stat_activity blocked_activity ON blocked_activity.pid = blocked_locks.pid\nJOIN pg_catalog.pg_locks blocking_locks ON blocking_locks.locktype = blocked_locks.locktype AND blocking_locks.DATABASE IS NOT DISTINCT FROM blocked_locks.DATABASE AND blocking_locks.relation IS NOT DISTINCT FROM blocked_locks.relation AND blocking_locks.page IS NOT DISTINCT FROM blocked_locks.page AND blocking_locks.tuple IS NOT DISTINCT FROM blocked_locks.tuple AND blocking_locks.virtualxid IS NOT DISTINCT FROM blocked_locks.virtualxid AND blocking_locks.transactionid IS NOT DISTINCT FROM blocked_locks.transactionid AND blocking_locks.classid IS NOT DISTINCT FROM blocked_locks.classid AND blocking_locks.objid IS NOT DISTINCT FROM blocked_locks.objid AND blocking_locks.objsubid IS NOT DISTINCT FROM blocked_locks.objsubid AND blocking_locks.pid != blocked_locks.pid\nJOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid;\n```\n\nNhững tối ưu hóa này sẽ cải thiện đáng kể hiệu năng cơ sở dữ liệu của bạn và giảm chi phí vận hành.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:51:00.458795Z",
+    "http_status": 200,
+    "content_hash": "cdbf6b8d80c3bd1891fded6d01014df89984baff9e670cbd189169881d4b9ac5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\supabase-postgres-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\supabase-postgres-best-practices.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Best Practices về Supabase Postgres dành cho Đội ngũ",
+  "short_description_vi": "Skill Supabase Postgres Best Practices giúp các đội ngũ tối ưu hóa cơ sở dữ liệu Postgres của họ để đạt hiệu năng và hiệu quả cao nhất. Bằng cách triển khai các chiến lược đã được chứng minh, người dùng có thể tăng cường khả năng phản hồi của ứng dụng và giảm chi phí vận hành, mang lại kết quả tốt hơn cho các đội ngũ Sales, Marketing và RevOps."
+}

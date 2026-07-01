@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-server-excel",
+  "slug": "mcp-server-excel",
+  "name": "browser-use",
+  "headline": "Excel MCP Server - AI-Powered Excel Automation",
+  "short_description": "Excel MCP Server & CLI enables AI-powered Excel automation via COM API. Operations teams use it to automate Excel tasks, manage data connections, and generate reports. It integrates with Windows-based Excel workflows and connects to tools like Power Query, Power Pivot, and VBA.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "sbroenne",
+  "install_command": "git clone https://github.com/sbroenne/mcp-server-excel.git",
+  "source_repo_url": "https://github.com/sbroenne/mcp-server-excel",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "excel-charts",
+    "excel-tables",
+    "vba",
+    "claude-ai",
+    "dax",
+    "named-ranges",
+    "conditional-formatting",
+    "excel-pivottables",
+    "excel-automation",
+    "ai-automation",
+    "dotnet",
+    "power-query",
+    "power-pivot",
+    "model-context-protocol",
+    "mcp-server",
+    "github-copilot",
+    "excel",
+    "data-connections",
+    "com-automation",
+    "windows"
+  ],
+  "sections": {
+    "overview": "ExcelMcp is an MCP server that enables AI assistants like Claude and GitHub Copilot to automate Excel through conversational commands. It provides 25 specialized tools covering Power Query, DAX measures, VBA macros, PivotTables, Charts, Excel Tables, and data formatting—with 230 total operations. Unlike third-party libraries that manipulate .xlsx files directly, ExcelMcp uses Excel's official COM API, ensuring complete safety and compatibility. The server runs on Windows with Excel 2016 or later and supports real-time interactive development, allowing you to create queries, inspect results, and refine them instantly. It's designed for data analysts, developers, and business users who need to automate repetitive Excel workflows while maintaining code in version control.\nAutomate Power Query workflows and M code management for data import and transformation\nCreate and configure PivotTables, Charts, and Slicers through natural language commands\nBuild DAX measures and relationships in the Data Model for advanced analytics\nFormat ranges, apply conditional formatting, and create Excel Tables with styling",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sbroenne/mcp-server-excel`",
+    "usage": "```\nAutomate the following Excel task using the MCP Excel Server: [DESCRIBE TASK, e.g., 'Update the Q3 sales report by pulling data from [FILE_PATH] and refreshing all Power Query connections']. Ensure the operation is performed in [FILE_PATH] with [SHEET_NAME] as the active sheet. If data validation is required, flag any errors in a new sheet named 'Validation_Errors'.\n```\nCopy\n\n```\n```\nExcel Automation Report - Q3 Sales Update\n=========================================\n\nTask: Updated Q3 sales report by refreshing Power Query connections and validating data.\n\nFiles Processed:\n- Source: C:\\Reports\\Q3_Sales_Data.xlsx\n- Output: C:\\Reports\\Q3_Sales_Report_Final.xlsx\n\nOperations Performed:\n1. Refreshed Power Query connections to pull latest data from SQL Server (Server: SQL_PROD, Database: SalesDB).\n2. Validated 1,247 rows of sales data against business rules:\n   - Price > 0: 1,247 passed (0 failed)\n   - Quantity > 0: 1,247 passed (0 failed)\n   - Date within Q3 2023: 1,247 passed (0 failed)\n3. Generated validation summary in new sheet 'Validation_Errors' (empty - no issues found).\n4. Saved file with timestamp: 2023-10-15 14:32:10.\n\nNext Steps:\n- Review the refreshed report in C:\\Reports\\Q3_Sales_Report_Final.xlsx\n- Share with stakeholders via [EMAIL_LIST]\n- Schedule automated refresh for next Monday at 8 AM.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-server-excel#main-content",
+      "mcp-server-excel#overview",
+      "mcp-server-excel#setup",
+      "mcp-server-excel#examples",
+      "mcp-server-excel#tools",
+      "mcp-server-excel#mcp",
+      "mcp-server-excel#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ExcelMcp is an MCP server that enables AI assistants like Claude and GitHub Copilot to automate Excel through conversational commands. It provides 25 specialized tools covering Power Query, DAX measures, VBA macros, PivotTables, Charts, Excel Tables, and data formatting—with 230 total operations. Unlike third-party libraries that manipulate .xlsx files directly, ExcelMcp uses Excel's official COM API, ensuring complete safety and compatibility. The server runs on Windows with Excel 2016 or later and supports real-time interactive development, allowing you to create queries, inspect results, and refine them instantly. It's designed for data analysts, developers, and business users who need to automate repetitive Excel workflows while maintaining code in version control.\nAutomate Power Query workflows and M code management for data import and transformation\nCreate and configure PivotTables, Charts, and Slicers through natural language commands\nBuild DAX measures and relationships in the Data Model for advanced analytics\nFormat ranges, apply conditional formatting, and create Excel Tables with styling",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sbroenne/mcp-server-excel`",
+    "usage_vi": "```\nAutomate the following Excel task using the MCP Excel Server: [DESCRIBE TASK, e.g., 'Update the Q3 sales report by pulling data from [FILE_PATH] and refreshing all Power Query connections']. Ensure the operation is performed in [FILE_PATH] with [SHEET_NAME] as the active sheet. If data validation is required, flag any errors in a new sheet named 'Validation_Errors'.\n```\nCopy\n\n```\n```\nExcel Automation Report - Q3 Sales Update\n=========================================\n\nTask: Updated Q3 sales report by refreshing Power Query connections and validating data.\n\nFiles Processed:\n- Source: C:\\Reports\\Q3_Sales_Data.xlsx\n- Output: C:\\Reports\\Q3_Sales_Report_Final.xlsx\n\nOperations Performed:\n1. Refreshed Power Query connections to pull latest data from SQL Server (Server: SQL_PROD, Database: SalesDB).\n2. Validated 1,247 rows of sales data against business rules:\n   - Price > 0: 1,247 passed (0 failed)\n   - Quantity > 0: 1,247 passed (0 failed)\n   - Date within Q3 2023: 1,247 passed (0 failed)\n3. Generated validation summary in new sheet 'Validation_Errors' (empty - no issues found).\n4. Saved file with timestamp: 2023-10-15 14:32:10.\n\nNext Steps:\n- Review the refreshed report in C:\\Reports\\Q3_Sales_Report_Final.xlsx\n- Share with stakeholders via [EMAIL_LIST]\n- Schedule automated refresh for next Monday at 8 AM.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:30:37.164350Z",
+    "http_status": 200,
+    "content_hash": "6ddd368aa23264fe78ef35c436a24b2cbdbdfa5465fb2af78353d00c1b4aa5b8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-server-excel.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-server-excel.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Excel MCP Server - AI-Powered Excel Automation",
+  "short_description_vi": "Excel MCP Server & CLI enables AI-powered Excel automation via COM API. Operations teams use it to automate Excel tasks, manage data connections, and generate reports. It integrates with Windows-based Excel workflows and connects to tools like Power Query, Power Pivot, and VBA."
+}

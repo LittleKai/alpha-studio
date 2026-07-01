@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deep-research-web-ui",
+  "slug": "deep-research-web-ui",
+  "name": "Deep Research Web UI",
+  "headline": "Deep Research Web UI - AI Research Assistant",
+  "short_description": "The deep-research-web-ui is an AI-powered research assistant that conducts in-depth research on any topic by leveraging search engines, web scraping, and large language models. Ideal for users seeking comprehensive insights and data-driven conclusions.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "AnotiaWang",
+  "install_command": "claude install AnotiaWang/deep-research-web-ui",
+  "source_repo_url": "https://github.com/AnotiaWang/deep-research-web-ui",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "AI",
+    "web scraping",
+    "research assistant",
+    "deep learning",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "Deep-research-web-ui is an AI research assistant that automates comprehensive topic research by combining search engine integration, web scraping capabilities, and large language model analysis. The tool conducts multi-step research workflows to gather and synthesize information from across the web, enabling users to obtain data-driven conclusions without manual research. It supports multiple reasoning models including DeepSeek R1 and integrates with search providers like Tavily and Google PSE for flexible information gathering. The skill maintains research history, supports internationalization (i18n), and includes error handling for reliable operation. Ideal for researchers, analysts, and professionals who need thorough, well-sourced insights on complex topics.\nConduct extensive market research for new product launches to identify potential customer segments.\nGather competitive analysis data to understand market positioning and strategies of competitors.\nCompile academic literature reviews efficiently by automating the search and extraction of relevant papers.\nPerform trend analysis across various industries to identify emerging patterns and opportunities.",
+    "setup": "Terminal\nCopy\n`claude install AnotiaWang/deep-research-web-ui`\n`git clone https://github.com/AnotiaWang/deep-research-web-ui`",
+    "usage": "```\nConduct in-depth research on [TOPIC] using the deep-research-web-ui skill. Focus on gathering the most recent (last 12 months) and credible sources. Extract key insights, trends, and data points. Organize findings into a structured report with sections for: Overview, Key Trends, Data & Statistics, Expert Opinions, and Actionable Recommendations. Prioritize sources from [PREFERRED_DOMAINS, e.g., academic journals, government reports, industry publications]. Use the Type tool to collaborate with team members and refine the research output.\n```\nCopy\n\n```\n### Deep Research Report: The Impact of Remote Work on Employee Productivity (2023-2024)\n\n#### Overview\nRemote work has become a permanent fixture in the modern workplace, with 63% of high-growth companies adopting hybrid or fully remote models as of Q4 2023 (McKinsey, 2023). This shift has prompted extensive research into its effects on productivity, collaboration, and employee well-being. Our investigation analyzed 47 peer-reviewed studies, industry reports, and real-world case studies to identify actionable insights for organizations navigating this transition.\n\n#### Key Trends\n1. **Productivity Paradox**: While 78% of remote workers report higher productivity (Gartner, 2024), 42% of managers express concerns about visibility and accountability (Harvard Business Review, 2023).\n2. **Tool Adoption**: Companies using AI-driven productivity tools (e.g., Asana, Notion) saw a 23% increase in task completion rates (Forrester, 2024).\n3. **Burnout Risk**: 34% of remote employees report burnout symptoms, up from 28% in 2022 (Buffer, 2023).\n\n#### Data & Statistics\n- **Output Metrics**: A Stanford study (2023) found remote workers completed 13.5% more tasks per hour than in-office counterparts.\n- **Collaboration Gaps**: 61% of remote teams struggle with cross-functional collaboration (Deloitte, 2024).\n- **Retention Impact**: Employees with remote flexibility are 2.5x more likely to stay at their jobs (LinkedIn, 2023).\n\n#### Expert Opinions\nDr. Sarah Chen, Professor of Organizational Psychology at MIT, notes: \"The key to remote productivity isn’t just about tools—it’s about intentional design. Companies that set clear expectations and provide autonomy see the best results.\"\n\n#### Actionable Recommendations\n1. **Implement AI-Powered Workflow Tools**: Deploy tools like Type’s AI agents to automate routine tasks and track progress transparently.\n2. **Redesign Performance Metrics**: Shift from hours worked to outcomes achieved, using platforms like Type to monitor deliverables.\n3. **Prioritize Well-being**: Introduce mandatory \"focus hours\" and mental health check-ins to mitigate burnout.\n\n*Sources: McKinsey (2023), Gartner (2024), Harvard Business Review (2023), Stanford Study (2023), Deloitte (2024), Buffer (2023), LinkedIn (2023).*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "deep-research-web-ui#main-content",
+      "deep-research-web-ui#overview",
+      "deep-research-web-ui#setup",
+      "deep-research-web-ui#examples",
+      "deep-research-web-ui#tools",
+      "deep-research-web-ui#mcp",
+      "deep-research-web-ui#related",
+      "automated-ai-web-researcher-ollama",
+      "dark-web-scraping-guide",
+      "deep-research"
+    ],
+    "overview_vi": "Deep-research-web-ui là một trợ lý nghiên cứu AI giúp tự động hóa quá trình nghiên cứu chủ đề toàn diện bằng cách kết hợp tích hợp công cụ tìm kiếm, khả năng web scraping và phân tích của mô hình ngôn ngữ lớn. Công cụ này thực hiện các quy trình nghiên cứu nhiều bước để thu thập và tổng hợp thông tin từ khắp nơi trên web, giúp người dùng có được các kết luận dựa trên dữ liệu mà không cần nghiên cứu thủ công. Nó hỗ trợ nhiều mô hình suy luận (reasoning models) bao gồm DeepSeek R1 và tích hợp với các nhà cung cấp dịch vụ tìm kiếm như Tavily và Google PSE để thu thập thông tin linh hoạt. Skill này giúp duy trì lịch sử nghiên cứu, hỗ trợ đa ngôn ngữ (i18n) và tích hợp cơ chế xử lý lỗi để đảm bảo hệ thống vận hành ổn định. Đây là công cụ lý tưởng cho các nhà nghiên cứu, nhà phân tích và các chuyên gia cần những thông tin chi tiết chuyên sâu, có nguồn gốc rõ ràng về các chủ đề phức tạp.\nThực hiện nghiên cứu thị trường chuyên sâu cho các đợt ra mắt sản phẩm mới để xác định các phân khúc khách hàng tiềm năng.\nThu thập dữ liệu phân tích cạnh tranh để hiểu rõ định vị thị trường và chiến lược của các đối thủ cạnh tranh.\nTổng hợp các bài đánh giá tài liệu học thuật một cách hiệu quả bằng cách tự động hóa việc tìm kiếm và trích xuất các bài báo liên quan.\nThực hiện phân tích xu hướng trên nhiều ngành công nghiệp khác nhau để xác định các mô hình và cơ hội mới nổi.",
+    "setup_vi": "Terminal\nSao chép\n`claude install AnotiaWang/deep-research-web-ui`\n`git clone https://github.com/AnotiaWang/deep-research-web-ui`",
+    "usage_vi": "```\nTiến hành nghiên cứu chuyên sâu về [TOPIC] bằng cách sử dụng skill deep-research-web-ui. Tập trung thu thập các nguồn uy tín và mới nhất (trong vòng 12 tháng qua). Trích xuất các thông tin chuyên sâu, xu hướng và điểm dữ liệu chính. Sắp xếp các phát hiện vào một báo cáo có cấu trúc với các phần: Tổng quan, Xu hướng chính, Dữ liệu & Thống kê, Ý kiến chuyên gia, và Khuyến nghị khả thi. Ưu tiên các nguồn từ [PREFERRED_DOMAINS, ví dụ: tạp chí học thuật, báo cáo chính phủ, ấn phẩm ngành]. Sử dụng công cụ Type để cộng tác với các thành viên trong nhóm và tinh chỉnh kết quả nghiên cứu.\n```\nSao chép\n\n```\n### Báo cáo Nghiên cứu Chuyên sâu: Tác động của Làm việc Từ xa đến Hiệu suất Nhân viên (2023-2024)\n\n#### Tổng quan\nLàm việc từ xa đã trở thành một phần cố định trong môi trường làm việc hiện đại, với 63% công ty có mức tăng trưởng cao áp dụng mô hình hybrid (lai) hoặc hoàn toàn từ xa tính đến quý 4 năm 2023 (McKinsey, 2023). Sự chuyển dịch này đã thúc đẩy các nghiên cứu sâu rộng về ảnh hưởng của nó đối với hiệu suất, sự hợp tác và phúc lợi của nhân viên. Cuộc khảo sát của chúng tôi đã phân tích 47 nghiên cứu được bình duyệt (peer-reviewed), báo cáo ngành và các tình huống nghiên cứu thực tế (case studies) để rút ra các thông tin chi tiết có thể áp dụng cho các tổ chức đang trải qua quá trình chuyển đổi này.\n\n#### Xu hướng chính\n1. **Nghịch lý Hiệu suất**: Mặc dù 78% nhân viên làm việc từ xa báo cáo hiệu suất cao hơn (Gartner, 2024), 42% các nhà quản lý bày tỏ lo ngại về mức độ hiện diện và trách nhiệm giải trình (Harvard Business Review, 2023).\n2. **Ứng dụng Công cụ**: Các công ty sử dụng công cụ nâng cao hiệu suất tích hợp AI (ví dụ: Asana, Notion) đã ghi nhận tỷ lệ hoàn thành công việc tăng 23% (Forrester, 2024).\n3. **Nguy cơ Kiệt sức**: 34% nhân viên làm việc từ xa báo cáo các triệu chứng kiệt sức (burnout), tăng từ 28% vào năm 2022 (Buffer, 2023).\n\n#### Dữ liệu & Thống kê\n- **Chỉ số Đầu ra**: Một nghiên cứu của Stanford (2023) cho thấy nhân viên làm việc từ xa hoàn thành nhiều hơn 13,5% số tác vụ mỗi giờ so với các đồng nghiệp làm việc tại văn phòng.\n- **Khoảng cách Hợp tác**: 61% các nhóm làm việc từ xa gặp khó khăn trong việc cộng tác chéo (cross-functional collaboration) (Deloitte, 2024).\n- **Tác động đến Giữ chân Nhân sự**: Nhân viên có sự linh hoạt khi làm việc từ xa có khả năng gắn bó với công việc cao gấp 2,5 lần (LinkedIn, 2023).\n\n#### Ý kiến Chuyên gia\nTiến sĩ Sarah Chen, Giáo sư Tâm lý học Tổ chức tại MIT, nhận định: \"Chìa khóa cho hiệu suất làm việc từ xa không chỉ nằm ở công cụ—mà là ở việc thiết kế quy trình làm việc một cách có chủ đích. Các công ty đưa ra kỳ vọng rõ ràng và trao quyền tự chủ sẽ đạt được kết quả tốt nhất.\"\n\n#### Khuyến nghị Khả thi\n1. **Triển khai Công cụ Quy trình Công việc Tích hợp AI**: Sử dụng các công cụ như AI agent của Type để tự động hóa các tác vụ lặp đi lặp lại và theo dõi tiến độ một cách minh bạch.\n2. **Thiết kế lại Chỉ số Đo lường Hiệu suất**: Chuyển đổi từ số giờ làm việc sang kết quả đạt được, sử dụng các nền tảng như Type để giám sát các sản phẩm bàn giao (deliverables).\n3. **Ưu tiên Phúc lợi**: Thiết lập các \"giờ tập trung\" (focus hours) bắt buộc và các buổi kiểm tra sức khỏe tinh thần định kỳ nhằm giảm thiểu tình trạng kiệt sức.\n\n*Nguồn: McKinsey (2023), Gartner (2024), Harvard Business Review (2023), Stanford Study (2023), Deloitte (2024), Buffer (2023), LinkedIn (2023).*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:45:33.226112Z",
+    "http_status": 200,
+    "content_hash": "606e34875df7bdabbee2ad2719629776a886fbe683add6918ec6659906fcb72c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deep-research-web-ui.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deep-research-web-ui.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Deep Research Web UI - Trợ lý Nghiên cứu AI",
+  "short_description_vi": "deep-research-web-ui là một trợ lý nghiên cứu tích hợp AI, giúp thực hiện nghiên cứu chuyên sâu về bất kỳ chủ đề nào nhờ tận dụng công cụ tìm kiếm, web scraping và các mô hình ngôn ngữ lớn (LLM). Đây là giải pháp lý tưởng cho những người dùng cần tìm kiếm thông tin chi tiết toàn diện và các kết luận dựa trên dữ liệu."
+}

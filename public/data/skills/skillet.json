@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillet",
+  "slug": "skillet",
+  "name": "Skillet",
+  "headline": "Skillet - Run Agent Skills as Shell Scripts",
+  "short_description": "Run Agent Skills as shell scripts. Integrates with Claude for automation. Useful for operations teams to execute tasks without manual intervention. Connects to existing shell environments and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "8 min",
+  "author": "martinemde",
+  "install_command": "git clone https://github.com/martinemde/skillet.git",
+  "source_repo_url": "https://github.com/martinemde/skillet",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "agent-skills",
+    "claude-code",
+    "skills"
+  ],
+  "sections": {
+    "overview": "Skillet transforms Claude agent skills into executable shell commands, enabling teams to automate tasks without manual intervention. It reads skill definitions directly, applies configured permissions and model settings, and formats Claude's output beautifully using the Charm library. Instead of managing separate scripts or dealing with raw JSON output, you run skills from the command line like standard shell utilities. Skillet supports local skills stored in `.claude/skills/` directories and remote skills via URL, making it ideal for operations teams integrating automation into existing workflows.\nRun code review skills from the command line as shell scripts\nAutomate transcript summarization across multiple files in parallel\nConvert deprecated Claude commands to executable skills\nParse and browse Claude conversation history with formatted output",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/martinemde/skillet`",
+    "usage": "```\nRun the 'System Monitoring' Agent Skill as a shell script for [COMPANY] in the [INDUSTRY] sector. Use the following [DATA] to monitor server health: CPU usage, memory consumption, and disk space. Provide the output in a structured format.\n```\nCopy\n\n```\n# System Monitoring Report\n\n- **Average Load**: 45%\n- **Peak Load**: 78%\n- **Idle Time**: 55%",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillet#main-content",
+      "skillet#overview",
+      "skillet#setup",
+      "skillet#examples",
+      "skillet#tools",
+      "skillet#mcp",
+      "skillet#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skillet transforms Claude agent skills into executable shell commands, enabling teams to automate tasks without manual intervention. It reads skill definitions directly, applies configured permissions and model settings, and formats Claude's output beautifully using the Charm library. Instead of managing separate scripts or dealing with raw JSON output, you run skills from the command line like standard shell utilities. Skillet supports local skills stored in `.claude/skills/` directories and remote skills via URL, making it ideal for operations teams integrating automation into existing workflows.\nRun code review skills from the command line as shell scripts\nAutomate transcript summarization across multiple files in parallel\nConvert deprecated Claude commands to executable skills\nParse and browse Claude conversation history with formatted output",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/martinemde/skillet`",
+    "usage_vi": "```\nRun the 'System Monitoring' Agent Skill as a shell script for [COMPANY] in the [INDUSTRY] sector. Use the following [DATA] to monitor server health: CPU usage, memory consumption, and disk space. Provide the output in a structured format.\n```\nCopy\n\n```\n# System Monitoring Report\n\n- **Average Load**: 45%\n- **Peak Load**: 78%\n- **Idle Time**: 55%"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:37.541555Z",
+    "http_status": 200,
+    "content_hash": "bd583adf35d8dda905726038aad758ebfa5620819ea579757810fc1436241502",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillet.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillet.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skillet - Run Agent Skills as Shell Scripts",
+  "short_description_vi": "Run Agent Skills as shell scripts. Integrates with Claude for automation. Useful for operations teams to execute tasks without manual intervention. Connects to existing shell environments and workflows."
+}

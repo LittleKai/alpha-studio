@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-agent-leaderboard",
+  "slug": "claude-agent-leaderboard",
+  "name": "Claude Agent Leaderboard",
+  "headline": "agent leaderboard analysis in Claude",
+  "short_description": "Analyze and report on agent and skill execution contributions in Claude Code. Operations teams use it to parse execution logs, calculate call counts, success rates, and rankings. Integrates with Claude Code plugins.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "kubony",
+  "install_command": "git clone https://github.com/kubony/claude-agent-leaderboard.git",
+  "source_repo_url": "https://github.com/kubony/claude-agent-leaderboard",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Agent Leaderboard analyzes execution logs from Claude Code to measure agent, skill, and command performance. It parses session logs to calculate call counts, success rates, average execution times, and identify unused registered agents. The skill generates reports in multiple formats—text tables, ASCII bar charts, markdown, and JSON—with filtering options for date ranges, individual projects, or global analysis. Teams can track weekly top performers, detect out-of-memory crashes, and analyze agent chaining patterns and temporal usage trends. It requires Python 3.8+ with no external dependencies and installs as a Claude Code plugin or manual skill.\nTrack which agents and skills are most frequently used across projects\nCalculate success rates and identify reliability issues in agent execution\nGenerate weekly performance reports for operations and team visibility\nDetect registered but unused agents to optimize skill development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kubony/claude-agent-leaderboard`",
+    "usage": "```\nAnalyze the agent and skill execution logs for [COMPANY] in the [INDUSTRY] sector. Calculate the call counts, success rates, and rankings for each agent and skill. Provide a detailed report with visualizations and actionable insights. Focus on the [DATA] period from [START_DATE] to [END_DATE].\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-agent-leaderboard#main-content",
+      "claude-agent-leaderboard#overview",
+      "claude-agent-leaderboard#setup",
+      "claude-agent-leaderboard#examples",
+      "claude-agent-leaderboard#tools",
+      "claude-agent-leaderboard#mcp",
+      "claude-agent-leaderboard#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Agent Leaderboard phân tích log thực thi từ Claude Code để đo lường hiệu suất của agent, skill và command. Công cụ này parse log phiên hoạt động để tính toán số lượt gọi, tỷ lệ thành công, thời gian thực thi trung bình và xác định các agent đã đăng ký nhưng không sử dụng. Skill này hỗ trợ tạo báo cáo dưới nhiều định dạng khác nhau—bảng văn bản, biểu đồ cột ASCII, markdown và JSON—với các tùy chọn lọc theo khoảng thời gian, dự án riêng lẻ hoặc phân tích toàn cục. Các đội ngũ có thể theo dõi những nhân tố đạt hiệu suất cao nhất hàng tuần, phát hiện lỗi crash do tràn bộ nhớ (out-of-memory), cũng như phân tích các mô hình liên kết agent (agent chaining) và xu hướng sử dụng theo thời gian. Dự án yêu cầu Python 3.8+, không có dependency bên ngoài và có thể cài đặt dưới dạng plugin của Claude Code hoặc setup skill thủ công.\nTheo dõi các agent và skill được sử dụng thường xuyên nhất trên các dự án\nTính toán tỷ lệ thành công và phát hiện các vấn đề về độ tin cậy khi thực thi agent\nTạo báo cáo hiệu suất hàng tuần cho đội ngũ vận hành và tăng khả năng giám sát của nhóm\nPhát hiện các agent đã đăng ký nhưng không sử dụng để tối ưu hóa quá trình phát triển skill",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kubony/claude-agent-leaderboard`",
+    "usage_vi": "```\nPhân tích log thực thi của agent và skill cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tính toán số lượt gọi, tỷ lệ thành công và xếp hạng cho từng agent và skill. Cung cấp báo cáo chi tiết kèm theo trực quan hóa dữ liệu và các đề xuất thực tế (actionable insights). Tập trung vào khoảng thời gian dữ liệu [DATA] từ [START_DATE] đến [END_DATE].\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:31:33.553584Z",
+    "http_status": 200,
+    "content_hash": "b6b8ba14f0ad44e0eae3da5028ece8666a53d77b4f7ebcd8c73eebf284c240e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-leaderboard.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-leaderboard.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phân tích bảng xếp hạng agent trong Claude",
+  "short_description_vi": "Phân tích và báo cáo đóng góp thực thi của agent và skill trong Claude Code. Đội ngũ vận hành sử dụng công cụ này để parse log thực thi, tính toán số lượt gọi, tỷ lệ thành công và xếp hạng. Tích hợp trực tiếp với các plugin của Claude Code."
+}

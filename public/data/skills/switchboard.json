@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/switchboard",
+  "slug": "switchboard",
+  "name": "Switchboard",
+  "headline": "Switchboard - Automate Operations Tasks",
+  "short_description": "Switchboard is an AI agent for each MCP that automates operations tasks. It connects to Claude and integrates with npm packages. It benefits operations teams by streamlining workflows and reducing manual effort.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "George5562",
+  "install_command": "git clone https://github.com/George5562/Switchboard.git",
+  "source_repo_url": "https://github.com/George5562/Switchboard",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "npm",
+    "claude-code",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "Switchboard is an MCP proxy that aggregates multiple child Model Context Protocols into single suite tools, presenting them to AI hosts like Claude Code and Cursor with on-demand subtool expansion. Instead of exposing all tools upfront, Switchboard discovers child MCPs, creates one aggregated tool per MCP, and spawns child processes only when needed—dramatically reducing token overhead. The proxy typically achieves 85-90% token reduction across typical MCP aggregations, with some large MCPs like Supabase saving 95% of tokens (20,000+ → ~1,000). Setup is zero-config: run `switchboard init` to auto-migrate existing MCP configurations, and Switchboard handles discovery, routing, and lazy initialization automatically.\nReduce token consumption when using multiple MCPs with Claude Code or Cursor\nAggregate 50+ common MCPs with auto-populated tool descriptions\nStreamline operations workflows by combining related tools into single suite interfaces\nOptimize large MCP implementations like Supabase with lazy child process spawning",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/George5562/Switchboard`",
+    "usage": "```\nAct as Switchboard, an AI agent for MCP [MCP_NAME]. Automate the following operations task: [TASK_DESCRIPTION]. Use npm package [PACKAGE_NAME] to complete this task. Provide a step-by-step plan and execute it.\n```\nCopy\n\n```\n# Switchboard Automation Plan for MCP-001",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "switchboard#main-content",
+      "switchboard#overview",
+      "switchboard#setup",
+      "switchboard#examples",
+      "switchboard#tools",
+      "switchboard#mcp",
+      "switchboard#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Switchboard là một MCP proxy giúp gộp nhiều Model Context Protocol con thành các bộ công cụ (suite tools) duy nhất, cung cấp chúng cho các AI host như Claude Code và Cursor với khả năng mở rộng subtool theo yêu cầu. Thay vì hiển thị tất cả công cụ ngay từ đầu, Switchboard tự động phát hiện (discover) các MCP con, tạo ra một công cụ gộp duy nhất cho mỗi MCP, và chỉ khởi chạy (spawn) các tiến trình con khi cần thiết — giúp giảm đáng kể lượng token tiêu thụ (token overhead). Proxy này thường giúp giảm 85-90% lượng token trên các MCP được gộp thông thường, đặc biệt một số MCP lớn như Supabase có thể tiết kiệm tới 95% token (từ 20.000+ xuống còn ~1.000). Quá trình setup hoàn toàn không cần cấu hình (zero-config): chỉ cần chạy lệnh `switchboard init` để tự động chuyển đổi các cấu hình MCP hiện có, Switchboard sẽ tự động xử lý việc phát hiện, điều hướng (routing) và lazy initialization.\n\nGiảm lượng token tiêu thụ khi sử dụng nhiều MCP với Claude Code hoặc Cursor\nGộp hơn 50 MCP phổ biến với mô tả công cụ được tự động điền sẵn\nTối ưu hóa quy trình vận hành bằng cách kết hợp các công cụ liên quan vào giao diện bộ công cụ duy nhất\nTối ưu hóa việc triển khai các MCP lớn như Supabase bằng cơ chế lazy child process spawning",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/George5562/Switchboard`",
+    "usage_vi": "```\nĐóng vai trò là Switchboard, một AI agent cho MCP [MCP_NAME]. Tự động hóa tác vụ vận hành sau: [TASK_DESCRIPTION]. Sử dụng package npm [PACKAGE_NAME] để hoàn thành tác vụ này. Cung cấp kế hoạch từng bước và thực hiện nó.\n```\nSao chép\n\n```\n# Kế hoạch tự động hóa Switchboard cho MCP-001\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:16:18.361287Z",
+    "http_status": 200,
+    "content_hash": "5a144d78135c7d78569b6db345a046c16dc8f371762d3be318eee36cdd2a14a5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\switchboard.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\switchboard.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Switchboard - Tự động hóa các tác vụ vận hành",
+  "short_description_vi": "Switchboard là một AI agent cho từng MCP giúp tự động hóa các tác vụ vận hành. Công cụ này kết nối với Claude và tích hợp với các package npm, mang lại lợi ích cho các đội ngũ vận hành nhờ tối ưu hóa quy trình làm việc và giảm thiểu nỗ lực thủ công."
+}

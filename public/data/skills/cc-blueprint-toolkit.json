@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-blueprint-toolkit",
+  "slug": "cc-blueprint-toolkit",
+  "name": "browser-use",
+  "headline": "Claude Code Plugin for blueprint development",
+  "short_description": "The cc-blueprint-toolkit is a Claude Code Plugin for smart blueprint-driven development. It enables operations teams to automate code generation and development workflows. The toolkit connects to Claude AI and integrates with development environments to streamline PRD and PRP processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "croffasia",
+  "install_command": "git clone https://github.com/croffasia/cc-blueprint-toolkit.git",
+  "source_repo_url": "https://github.com/croffasia/cc-blueprint-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "development-tools",
+    "ai-development-tools",
+    "awesome-claude-prompts",
+    "prd",
+    "automation",
+    "prp",
+    "awesome-claude",
+    "claude-ai",
+    "code-generation",
+    "claude-code-commands",
+    "ai-development",
+    "claude-agents",
+    "autonomous-development",
+    "awesome-claude-code",
+    "claude-code-subagents",
+    "autopilot"
+  ],
+  "sections": {
+    "overview": "The cc-blueprint-toolkit is a Claude Code plugin that streamlines feature development through intelligent blueprint generation and execution. It guides developers through structured planning via brainstorming sessions, then creates detailed implementation plans (PRPs) that break complex features into manageable tasks. The plugin analyzes your codebase patterns and conventions, ensuring generated code matches your existing style. It works across any tech stack—React, Python, Go, PHP, and more—and reduces typical feature delivery from 2-4 hours to 15 minutes. Solo developers, startups, and teams benefit from faster shipping, higher code quality, and reduced technical debt.\nPlanning and implementing user authentication with OAuth2\nRapidly building frontend components in React, Vue, or Angular\nCreating backend APIs and database schemas\nAutomating code generation for full-stack features",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/croffasia/cc-blueprint-toolkit`",
+    "usage": "```\nUse the cc-blueprint-toolkit to generate a [TYPE] blueprint for [PROJECT_NAME] based on the following requirements: [REQUIREMENTS_LIST]. Include [INTEGRATIONS] and [DEPLOYMENT_STRATEGY]. Ensure the blueprint follows [ARCHITECTURE_GUIDELINES] and includes [SECURITY_CONSIDERATIONS].\n```\nCopy\n\n```\n### Project: E-Commerce Microservices Migration\n**Blueprint Generated:** Full-stack blueprint for migrating a monolithic e-commerce platform to microservices.\n\n**Requirements:**\n- Break down monolith into 5 services (User Auth, Product Catalog, Order Management, Payment Processing, Inventory).\n- Implement event-driven architecture with Kafka for inter-service communication.\n- Containerize using Docker and orchestrate with Kubernetes.\n- Add CI/CD pipeline with GitHub Actions.\n- Ensure 99.9% uptime with multi-region deployment.\n\n**Architecture Overview:**\n- **User Auth Service:** JWT-based authentication, OAuth2 integration.\n- **Product Catalog Service:** REST API with GraphQL for flexible queries.\n- **Order Management Service:** Saga pattern for distributed transactions.\n- **Payment Processing Service:** Stripe integration with idempotency keys.\n- **Inventory Service:** Redis caching for real-time stock updates.\n\n**Integration Points:**\n- Kafka topics: `user-events`, `order-events`, `payment-events`.\n- Shared database schema for reference data (e.g., product categories).\n- Service mesh (Istio) for observability and traffic management.\n\n**Security Considerations:**\n- Network policies for pod-to-pod communication.\n- Secrets management via HashiCorp Vault.\n- Rate limiting and API gateway (Kong) for DDoS protection.\n\n**Deployment Strategy:**\n- Blue-green deployment for User Auth and Product Catalog.\n- Canary releases for Order Management and Payment Processing.\n- Automated rollback on failure detection (Prometheus + Grafana).\n\n**Next Steps:**\n1. Generate Terraform scripts for Kubernetes cluster setup.\n2. Create OpenAPI specs for each service.\n3. Draft runbooks for incident response.\n4. Set up monitoring dashboards in Datadog.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-blueprint-toolkit#main-content",
+      "cc-blueprint-toolkit#overview",
+      "cc-blueprint-toolkit#setup",
+      "cc-blueprint-toolkit#examples",
+      "cc-blueprint-toolkit#tools",
+      "cc-blueprint-toolkit#mcp",
+      "cc-blueprint-toolkit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The cc-blueprint-toolkit is a Claude Code plugin that streamlines feature development through intelligent blueprint generation and execution. It guides developers through structured planning via brainstorming sessions, then creates detailed implementation plans (PRPs) that break complex features into manageable tasks. The plugin analyzes your codebase patterns and conventions, ensuring generated code matches your existing style. It works across any tech stack—React, Python, Go, PHP, and more—and reduces typical feature delivery from 2-4 hours to 15 minutes. Solo developers, startups, and teams benefit from faster shipping, higher code quality, and reduced technical debt.\nPlanning and implementing user authentication with OAuth2\nRapidly building frontend components in React, Vue, or Angular\nCreating backend APIs and database schemas\nAutomating code generation for full-stack features",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/croffasia/cc-blueprint-toolkit`",
+    "usage_vi": "```\nUse the cc-blueprint-toolkit to generate a [TYPE] blueprint for [PROJECT_NAME] based on the following requirements: [REQUIREMENTS_LIST]. Include [INTEGRATIONS] and [DEPLOYMENT_STRATEGY]. Ensure the blueprint follows [ARCHITECTURE_GUIDELINES] and includes [SECURITY_CONSIDERATIONS].\n```\nCopy\n\n```\n### Project: E-Commerce Microservices Migration\n**Blueprint Generated:** Full-stack blueprint for migrating a monolithic e-commerce platform to microservices.\n\n**Requirements:**\n- Break down monolith into 5 services (User Auth, Product Catalog, Order Management, Payment Processing, Inventory).\n- Implement event-driven architecture with Kafka for inter-service communication.\n- Containerize using Docker and orchestrate with Kubernetes.\n- Add CI/CD pipeline with GitHub Actions.\n- Ensure 99.9% uptime with multi-region deployment.\n\n**Architecture Overview:**\n- **User Auth Service:** JWT-based authentication, OAuth2 integration.\n- **Product Catalog Service:** REST API with GraphQL for flexible queries.\n- **Order Management Service:** Saga pattern for distributed transactions.\n- **Payment Processing Service:** Stripe integration with idempotency keys.\n- **Inventory Service:** Redis caching for real-time stock updates.\n\n**Integration Points:**\n- Kafka topics: `user-events`, `order-events`, `payment-events`.\n- Shared database schema for reference data (e.g., product categories).\n- Service mesh (Istio) for observability and traffic management.\n\n**Security Considerations:**\n- Network policies for pod-to-pod communication.\n- Secrets management via HashiCorp Vault.\n- Rate limiting and API gateway (Kong) for DDoS protection.\n\n**Deployment Strategy:**\n- Blue-green deployment for User Auth and Product Catalog.\n- Canary releases for Order Management and Payment Processing.\n- Automated rollback on failure detection (Prometheus + Grafana).\n\n**Next Steps:**\n1. Generate Terraform scripts for Kubernetes cluster setup.\n2. Create OpenAPI specs for each service.\n3. Draft runbooks for incident response.\n4. Set up monitoring dashboards in Datadog.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:35.016410Z",
+    "http_status": 200,
+    "content_hash": "2ba38a687c8c270aa31625e9e67f46a4353f3f71c86b3f16ea332e92d4309981",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-blueprint-toolkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-blueprint-toolkit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Plugin for blueprint development",
+  "short_description_vi": "The cc-blueprint-toolkit is a Claude Code Plugin for smart blueprint-driven development. It enables operations teams to automate code generation and development workflows. The toolkit connects to Claude AI and integrates with development environments to streamline PRD and PRP processes."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/academic-writing-skills",
+  "slug": "academic-writing-skills",
+  "name": "browser-use",
+  "headline": "Academic writing skills with AI assistance",
+  "short_description": "Academic writing assistant for Claude Code. Supports LaTeX and Typst for English papers and Chinese theses. Helps researchers and students automate formatting, citations, and draft generation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "bahayonghang",
+  "install_command": "git clone https://github.com/bahayonghang/academic-writing-skills.git",
+  "source_repo_url": "https://github.com/bahayonghang/academic-writing-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Academic Writing Skills is a collection of six specialized tools for researchers and students working in Claude Code. It handles post-draft validation and polish for LaTeX papers (English and Chinese), Typst documents, cover letters, and bibliography management. Each skill targets a specific workflow: compile diagnostics, reviewer-style auditing, grammar and logic checking, citation verification, and de-AI editing. The skills are designed to improve existing drafts rather than generate papers from scratch, with outputs ranging from diff-style suggestions to structured audit reports. Installation is via npm, and workflows are driven by natural language prompts.\nCompile and debug LaTeX errors in English conference and journal papers\nAudit Chinese theses against GB/T 7714 bibliography standards and university templates\nRun peer-review-style critiques on manuscripts to identify blockers and polish issues\nSearch and export citations from BibTeX libraries in LaTeX or Typst format",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bahayonghang/academic-writing-skills`",
+    "usage": "```\nI'm writing a research paper on [TOPIC] in the field of [FIELD]. Can you help me draft an introduction section with proper academic tone and structure? Also, please suggest 3-5 key references I should cite. Format the output in LaTeX.\n```\nCopy\n\n```\n# Research Paper Introduction Draft",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "academic-writing-skills#main-content",
+      "academic-writing-skills#overview",
+      "academic-writing-skills#setup",
+      "academic-writing-skills#examples",
+      "academic-writing-skills#tools",
+      "academic-writing-skills#mcp",
+      "academic-writing-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Academic Writing Skills is a collection of six specialized tools for researchers and students working in Claude Code. It handles post-draft validation and polish for LaTeX papers (English and Chinese), Typst documents, cover letters, and bibliography management. Each skill targets a specific workflow: compile diagnostics, reviewer-style auditing, grammar and logic checking, citation verification, and de-AI editing. The skills are designed to improve existing drafts rather than generate papers from scratch, with outputs ranging from diff-style suggestions to structured audit reports. Installation is via npm, and workflows are driven by natural language prompts.\nCompile and debug LaTeX errors in English conference and journal papers\nAudit Chinese theses against GB/T 7714 bibliography standards and university templates\nRun peer-review-style critiques on manuscripts to identify blockers and polish issues\nSearch and export citations from BibTeX libraries in LaTeX or Typst format",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bahayonghang/academic-writing-skills`",
+    "usage_vi": "```\nI'm writing a research paper on [TOPIC] in the field of [FIELD]. Can you help me draft an introduction section with proper academic tone and structure? Also, please suggest 3-5 key references I should cite. Format the output in LaTeX.\n```\nCopy\n\n```\n# Research Paper Introduction Draft"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:04:18.872868Z",
+    "http_status": 200,
+    "content_hash": "54703b8d5dc00009ddc27dbacda0536a8a11ccc473176e9f9483e4e27a515d05",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\academic-writing-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\academic-writing-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Academic writing skills with AI assistance",
+  "short_description_vi": "Academic writing assistant for Claude Code. Supports LaTeX and Typst for English papers and Chinese theses. Helps researchers and students automate formatting, citations, and draft generation."
+}

@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/devseeker",
+  "slug": "devseeker",
+  "name": "browser-use",
+  "headline": "Devseeker: Open-Source AI Coding Agent",
+  "short_description": "Devseeker is an open-source AI coding agent that automates software development tasks. It is designed for developers who want an autonomous agent to generate, modify, and manage code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "iBz-04",
+  "install_command": "git clone https://github.com/iBz-04/Devseeker.git",
+  "source_repo_url": "https://github.com/iBz-04/Devseeker",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "autonomous-agents",
+    "agentic-workflow",
+    "agentic-ai",
+    "claude-code",
+    "aider",
+    "codex-github",
+    "copilot",
+    "claude-code-sdk",
+    "python",
+    "cli-agent",
+    "coding-assistant",
+    "coding-agents",
+    "cursor-ai",
+    "llm-agents",
+    "langchain",
+    "codex",
+    "ai-agent"
+  ],
+  "sections": {
+    "overview": "Devseeker is an open-source AI coding agent built to automate coding workflows for developers. Hosted on GitHub with an active development history, it provides an autonomous agent capable of handling software development tasks end-to-end. The project includes a Python-based core, a Rust native component, and supports configuration via environment variables. It is structured to support testing, scripted automation, and project scaffolding out of the box. Devseeker is suited for developers looking to integrate AI-driven code generation and automation into their existing workflows.\nAutomatically generating code files and project scaffolding from natural language prompts\nRunning autonomous coding tasks without manual step-by-step intervention\nIntegrating AI code generation into CI/CD or scripted automation pipelines\nUsing a Rust native layer for performance-sensitive coding agent operations\nThis script processes CSV data and generates summary statistics. It uses pandas for efficient data manipulation.\n\n```python\nimport pandas as pd\n\n# Load the dataset\nfile_path = 'sales_data.csv'\ndata = pd.read_csv(file_path)\n\n# Calculate summary statistics\nsummary_stats = data.describe()\n\n# Save results to a new file\noutput_path = 'summary_statistics.csv'\nsummary_stats.to_csv(output_path)\n\nprint(f'Summary statistics saved to {output_path}')\n```",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iBz-04/Devseeker`",
+    "usage": "```\nAct as Devseeker, an open-source AI coding agent. I need help with [PROGRAMMING_LANGUAGE] code for [SPECIFIC_TASK]. Provide clean, well-commented code and explain how it works. If there are multiple approaches, suggest the best one for [USE_CASE].\n```\nCopy\n\n```\n# Devseeker Code Solution for Data Processing in Python",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "devseeker#main-content",
+      "devseeker#overview",
+      "devseeker#setup",
+      "devseeker#examples",
+      "devseeker#tools",
+      "devseeker#mcp",
+      "devseeker#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Devseeker is an open-source AI coding agent built to automate coding workflows for developers. Hosted on GitHub with an active development history, it provides an autonomous agent capable of handling software development tasks end-to-end. The project includes a Python-based core, a Rust native component, and supports configuration via environment variables. It is structured to support testing, scripted automation, and project scaffolding out of the box. Devseeker is suited for developers looking to integrate AI-driven code generation and automation into their existing workflows.\nAutomatically generating code files and project scaffolding from natural language prompts\nRunning autonomous coding tasks without manual step-by-step intervention\nIntegrating AI code generation into CI/CD or scripted automation pipelines\nUsing a Rust native layer for performance-sensitive coding agent operations\nThis script processes CSV data and generates summary statistics. It uses pandas for efficient data manipulation.\n\n```python\nimport pandas as pd\n\n# Load the dataset\nfile_path = 'sales_data.csv'\ndata = pd.read_csv(file_path)\n\n# Calculate summary statistics\nsummary_stats = data.describe()\n\n# Save results to a new file\noutput_path = 'summary_statistics.csv'\nsummary_stats.to_csv(output_path)\n\nprint(f'Summary statistics saved to {output_path}')\n```",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iBz-04/Devseeker`",
+    "usage_vi": "```\nAct as Devseeker, an open-source AI coding agent. I need help with [PROGRAMMING_LANGUAGE] code for [SPECIFIC_TASK]. Provide clean, well-commented code and explain how it works. If there are multiple approaches, suggest the best one for [USE_CASE].\n```\nCopy\n\n```\n# Devseeker Code Solution for Data Processing in Python"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:32:52.633823Z",
+    "http_status": 200,
+    "content_hash": "28f8292f4a316403bb6542189b58ad1344aab9bc7cd740b2a57a96fa995cf037",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\devseeker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\devseeker.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Devseeker: Open-Source AI Coding Agent",
+  "short_description_vi": "Devseeker is an open-source AI coding agent that automates software development tasks. It is designed for developers who want an autonomous agent to generate, modify, and manage code."
+}

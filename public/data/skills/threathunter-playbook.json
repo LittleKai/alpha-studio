@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/threathunter-playbook",
+  "slug": "threathunter-playbook",
+  "name": "browser-use",
+  "headline": "ThreatHunter-Playbook - Share Detection Logic",
+  "short_description": "ThreatHunter-Playbook is an open-source project for sharing detection logic and adversary tradecraft. It helps security teams develop and refine threat detection strategies. The playbook integrates with Python-based security tools and workflows, enhancing threat hunting campaigns and hypothesis testing.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "OTRF",
+  "install_command": "git clone https://github.com/OTRF/ThreatHunter-Playbook.git",
+  "source_repo_url": "https://github.com/OTRF/ThreatHunter-Playbook",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "hunting",
+    "mitre-attack-db",
+    "dfir",
+    "hunter",
+    "mitre",
+    "sysmon",
+    "threat-hunting",
+    "hunting-campaigns",
+    "hypothesis"
+  ],
+  "sections": {
+    "overview": "ThreatHunter-Playbook is a collaborative repository designed to help security teams document and share threat detection strategies and adversary tradecraft. It provides a structured approach to developing detection logic that can be integrated into Python-based security tools and workflows. The project enables threat hunters to refine their detection strategies through shared playbooks and documented attack patterns. By centralizing detection knowledge, it supports hypothesis-driven threat hunting campaigns and accelerates the development of effective detection rules. Teams use it to document techniques, share findings across the organization, and build institutional knowledge around adversary behaviors.\nDocument and share threat hunting methodologies to improve team collaboration.\nCreate structured hunt blueprints using Agent Skills for consistent execution.\nUtilize pre-recorded security datasets for validation and experimentation in threat hunting.\nIntegrate AI to enhance decision-making processes during threat hunts.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OTRF/ThreatHunter-Playbook`",
+    "usage": "```\nGenerate a ThreatHunter-Playbook detection rule for [THREAT_TYPE] based on the following indicators: [INDICATORS]. Ensure the rule is compatible with [SECURITY_TOOL] and includes specific actions for [TEAM_NAME] to investigate and remediate.\n```\nCopy\n\n```\nBased on the provided indicators of a potential ransomware attack, here is a ThreatHunter-Playbook detection rule for your SIEM tool:\n\n```python\nfrom stix2 import TLP_WHITE\nfrom stix2.v21 import Indicator, Malware\n\n# Define the indicator\nindicator = Indicator(\n    type='indicator',\n    id='example:indicator-01',\n    pattern='[file:hashes.MD5 = \t\n] AND [process:command_line ILIKE %encrypt%]\n    description='Detects ransomware activity based on file hashes and command line arguments',\n    valid_from='2023-10-01T00:00:00Z',\n    labels=['malicious-activity'],\n    pattern_type='stix',\n    pattern_version='2.1',\n    x_opencti_score=75,\n    x_opencti_x_opencti_workflow_id='example-workflow-01',\n    x_opencti_detection='example-detection-01',\n    x_opencti_description='Detects ransomware activity based on file hashes and command line arguments',\n    x_opencti_short_description='Detects ransomware activity',\n    x_opencti_ttps=['T1486'],\n    x_opencti_base_score=7.5,\n    x_opencti_exploitability_score=3.9,\n    x_opencti_impact_score=3.6,\n    x_opencti_environment='Windows',\n    x_opencti_platforms=['Windows'],\n    x_opencti_actor='Unknown',\n    x_opencti_revoked=False,\n    x_opencti_confidence=75,\n    x_opencti_source='Internal',\n    x_opencti_source_uri='https://example.com',\n    x_opencti_tags=['malware', 'ransomware'],\n    x_opencti_valid_from='2023-10-01T00:00:00Z',\n    x_opencti_valid_until='2024-10-01T00:00:00Z',\n    x_opencti_workflow_id='example-workflow-01',\n    x_opencti_detection_id='example-detection-01',\n    x_opencti_description='Detects ransomware activity based on file hashes and command line arguments',\n    x_opencti_short_description='Detects ransomware activity',\n    x_opencti_ttps=['T1486'],\n    x_opencti_base_score=7.5,\n    x_opencti_exploitability_score=3.9,\n    x_opencti_impact_score=3.6,\n    x_opencti_environment='Windows',\n    x_opencti_platforms=['Windows'],\n    x_opencti_actor='Unknown',\n    x_opencti_revoked=False,\n    x_opencti_confidence=75,\n    x_opencti_source='Internal',\n    x_opencti_source_uri='https://example.com',\n    x_opencti_tags=['malware', 'ransomware'],\n    x_opencti_valid_from='2023-10-01T00:00:00Z',\n    x_opencti_valid_until='2024-10-01T00:00:00Z',\n    x_opencti_workflow_id='example-workflow-01',\n    x_opencti_detection_id='example-detection-01',\n    x_opencti_description='Detects ransomware activity based on file hashes and command line arguments',\n    x_opencti_short_description='Detects ransomware activity',\n    x_opencti_ttps=['T1486'],\n    x_opencti_base_score=7.5,\n    x_opencti_exploitability_score=3.9,\n    x_opencti_impact_score=3.6,\n    x_opencti_environment='Windows',\n    x_opencti_platforms=['Windows'],\n    x_opencti_actor='Unknown',\n    x_opencti_revoked=False,\n    x_opencti_confidence=75,\n    x_opencti_source='Internal',\n    x_opencti_source_uri='https://example.com',\n    x_opencti_tags=['malware', 'ransomware'],\n    x_opencti_valid_from='2023-10-01T00:00:00Z',\n    x_opencti_valid_until='2024-10-01T00:00:00Z'\n)\n\n# Save the indicator to a file\nwith open('indicator.json', 'w') as f:\n    f.write(indicator.serialize(indent=4))\n```\n\n**Actions for the Security Team:**\n1. **Investigate**: Check the affected systems for any unusual processes or files matching the hash.\n2. **Contain**: Isolate the affected systems to prevent further spread.\n3. **Remediate**: Remove the malicious files and restore from a clean backup.\n4. **Report**: Document the incident and update the threat intelligence platform with the new indicator.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "threathunter-playbook#main-content",
+      "threathunter-playbook#overview",
+      "threathunter-playbook#setup",
+      "threathunter-playbook#examples",
+      "threathunter-playbook#tools",
+      "threathunter-playbook#mcp",
+      "threathunter-playbook#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ThreatHunter-Playbook is a collaborative repository designed to help security teams document and share threat detection strategies and adversary tradecraft. It provides a structured approach to developing detection logic that can be integrated into Python-based security tools and workflows. The project enables threat hunters to refine their detection strategies through shared playbooks and documented attack patterns. By centralizing detection knowledge, it supports hypothesis-driven threat hunting campaigns and accelerates the development of effective detection rules. Teams use it to document techniques, share findings across the organization, and build institutional knowledge around adversary behaviors.\nDocument and share threat hunting methodologies to improve team collaboration.\nCreate structured hunt blueprints using Agent Skills for consistent execution.\nUtilize pre-recorded security datasets for validation and experimentation in threat hunting.\nIntegrate AI to enhance decision-making processes during threat hunts.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OTRF/ThreatHunter-Playbook`",
+    "usage_vi": "```\nGenerate a ThreatHunter-Playbook detection rule for [THREAT_TYPE] based on the following indicators: [INDICATORS]. Ensure the rule is compatible with [SECURITY_TOOL] and includes specific actions for [TEAM_NAME] to investigate and remediate.\n```\nCopy\n\n```\nBased on the provided indicators of a potential ransomware attack, here is a ThreatHunter-Playbook detection rule for your SIEM tool:\n\n```python\nfrom stix2 import TLP_WHITE\nfrom stix2.v21 import Indicator, Malware\n\n# Define the indicator\nindicator = Indicator(\n    type='indicator',\n    id='example:indicator-01',\n    pattern='[file:hashes.MD5 = \t\n] AND [process:command_line ILIKE %encrypt%]\n    description='Detects ransomware activity based on file hashes and command line arguments',\n    valid_from='2023-10-01T00:00:00Z',\n    labels=['malicious-activity'],\n    pattern_type='stix',\n    pattern_version='2.1',\n    x_opencti_score=75,\n    x_opencti_x_opencti_workflow_id='example-workflow-01',\n    x_opencti_detection='example-detection-01',\n    x_opencti_description='Detects ransomware activity based on file hashes and command line arguments',\n    x_opencti_short_description='Detects ransomware activity',\n    x_opencti_ttps=['T1486'],\n    x_opencti_base_score=7.5,\n    x_opencti_exploitability_score=3.9,\n    x_opencti_impact_score=3.6,\n    x_opencti_environment='Windows',\n    x_opencti_platforms=['Windows'],\n    x_opencti_actor='Unknown',\n    x_opencti_revoked=False,\n    x_opencti_confidence=75,\n    x_opencti_source='Internal',\n    x_opencti_source_uri='https://example.com',\n    x_opencti_tags=['malware', 'ransomware'],\n    x_opencti_valid_from='2023-10-01T00:00:00Z',\n    x_opencti_valid_until='2024-10-01T00:00:00Z',\n    x_opencti_workflow_id='example-workflow-01',\n    x_opencti_detection_id='example-detection-01',\n    x_opencti_description='Detects ransomware activity based on file hashes and command line arguments',\n    x_opencti_short_description='Detects ransomware activity',\n    x_opencti_ttps=['T1486'],\n    x_opencti_base_score=7.5,\n    x_opencti_exploitability_score=3.9,\n    x_opencti_impact_score=3.6,\n    x_opencti_environment='Windows',\n    x_opencti_platforms=['Windows'],\n    x_opencti_actor='Unknown',\n    x_opencti_revoked=False,\n    x_opencti_confidence=75,\n    x_opencti_source='Internal',\n    x_opencti_source_uri='https://example.com',\n    x_opencti_tags=['malware', 'ransomware'],\n    x_opencti_valid_from='2023-10-01T00:00:00Z',\n    x_opencti_valid_until='2024-10-01T00:00:00Z',\n    x_opencti_workflow_id='example-workflow-01',\n    x_opencti_detection_id='example-detection-01',\n    x_opencti_description='Detects ransomware activity based on file hashes and command line arguments',\n    x_opencti_short_description='Detects ransomware activity',\n    x_opencti_ttps=['T1486'],\n    x_opencti_base_score=7.5,\n    x_opencti_exploitability_score=3.9,\n    x_opencti_impact_score=3.6,\n    x_opencti_environment='Windows',\n    x_opencti_platforms=['Windows'],\n    x_opencti_actor='Unknown',\n    x_opencti_revoked=False,\n    x_opencti_confidence=75,\n    x_opencti_source='Internal',\n    x_opencti_source_uri='https://example.com',\n    x_opencti_tags=['malware', 'ransomware'],\n    x_opencti_valid_from='2023-10-01T00:00:00Z',\n    x_opencti_valid_until='2024-10-01T00:00:00Z'\n)\n\n# Save the indicator to a file\nwith open('indicator.json', 'w') as f:\n    f.write(indicator.serialize(indent=4))\n```\n\n**Actions for the Security Team:**\n1. **Investigate**: Check the affected systems for any unusual processes or files matching the hash.\n2. **Contain**: Isolate the affected systems to prevent further spread.\n3. **Remediate**: Remove the malicious files and restore from a clean backup.\n4. **Report**: Document the incident and update the threat intelligence platform with the new indicator.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:40:32.865222Z",
+    "http_status": 200,
+    "content_hash": "7f872cafcaa6bfcb963cdea44a38a240b1279ac1e85716b794b6028c0a56ac8e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\threathunter-playbook.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\threathunter-playbook.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ThreatHunter-Playbook - Share Detection Logic",
+  "short_description_vi": "ThreatHunter-Playbook is an open-source project for sharing detection logic and adversary tradecraft. It helps security teams develop and refine threat detection strategies. The playbook integrates with Python-based security tools and workflows, enhancing threat hunting campaigns and hypothesis testing."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bioskills",
+  "slug": "bioskills",
+  "name": "bioSkills",
+  "headline": "bioinformatics skills documentation platform",
+  "short_description": "bioSkills provides AI coding agents with expert knowledge for bioinformatics workflows. It includes code patterns, best practices, and examples to guide agents through common bioinformatics tasks. Benefits bioinformatics teams by automating repetitive coding tasks and ensuring best practices are followed.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "GPTomics",
+  "install_command": "git clone https://github.com/GPTomics/bioSkills.git",
+  "source_repo_url": "https://github.com/GPTomics/bioSkills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "bioSkills is a collection of skills designed to guide AI coding agents through common bioinformatics tasks. It provides code patterns, best practices, and examples covering the full spectrum from basic sequence manipulation to advanced analyses including variant calling, single-cell RNA-seq, and population genetics. The skills are organized into categories like sequence I/O, alignment, variant calling, and differential expression, each containing expert knowledge to help agents generate correct, idiomatic code. Target users range from undergrads learning computational biology to PhD researchers processing large-scale genomic data. bioSkills supports integration with Claude Code, OpenAI Codex, Google Gemini, OpenCode, and OpenClaw, with flexible installation options for selective skill categories.\nAutomating FASTA/FASTQ file processing and format conversion\nGenerating variant calling pipelines with GATK, bcftools, and DeepVariant\nPerforming single-cell RNA-seq analysis with Seurat and differential expression with DESeq2\nRunning sequence alignment and MSA with MAFFT, MUSCLE5, and structural tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GPTomics/bioSkills`",
+    "usage": "```\nI need to automate a bioinformatics workflow for [SPECIFIC TASK]. Provide a Python script using [TOOL/LIBRARY] that follows best practices. Include error handling and documentation. The input data will be in [FILE FORMAT] and the output should be in [DESIRED FORMAT].\n```\nCopy\n\n```\nHere's a Python script for automating a DNA sequence alignment workflow using Biopython. This script reads FASTA files, performs pairwise alignments using the Needleman-Wunsch algorithm, and outputs the results in a CSV file with alignment scores and statistics.\n\n```python\nimport os\nfrom Bio import Align\nfrom Bio import SeqIO\nimport csv\n\ndef align_sequences(input_dir, output_file):\n    aligner = Align.PairwiseAligner()\n    aligner.mode = 'global'\n    aligner.open_gap_score = -10\n    aligner.extend_gap_score = -0.5\n\n    with open(output_file, 'w', newline='') as csvfile:\n        fieldnames = ['Sequence1', 'Sequence2', 'Alignment Score', 'Identity', 'Similarity']\n        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n        writer.writeheader()\n\n        for seq1_file in os.listdir(input_dir):\n            for seq2_file in os.listdir(input_dir):\n                if seq1_file != seq2_file:\n                    seq1 = SeqIO.read(os.path.join(input_dir, seq1_file), 'fasta')\n                    seq2 = SeqIO.read(os.path.join(input_dir, seq2_file), 'fasta')\n                    alignments = aligner.align(seq1.seq, seq2.seq)\n                    best_alignment = alignments[0]\n                    writer.writerow({\n                        'Sequence1': seq1_file,\n                        'Sequence2': seq2_file,\n                        'Alignment Score': best_alignment.score,\n                        'Identity': best_alignment.identities / len(seq1.seq) * 100,\n                        'Similarity': best_alignment.score / len(seq1.seq) * 100\n                    })\n\nif __name__ == '__main__':\n    input_directory = 'path/to/input/fasta/files'\n    output_csv = 'alignment_results.csv'\n    align_sequences(input_directory, output_csv)\n```\n\nThis script includes proper error handling, documentation, and follows bioinformatics best practices for sequence alignment. The output CSV file can be easily imported into analysis tools for further processing.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bioskills#main-content",
+      "bioskills#overview",
+      "bioskills#setup",
+      "bioskills#examples",
+      "bioskills#tools",
+      "bioskills#mcp",
+      "bioskills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "bioSkills is a collection of skills designed to guide AI coding agents through common bioinformatics tasks. It provides code patterns, best practices, and examples covering the full spectrum from basic sequence manipulation to advanced analyses including variant calling, single-cell RNA-seq, and population genetics. The skills are organized into categories like sequence I/O, alignment, variant calling, and differential expression, each containing expert knowledge to help agents generate correct, idiomatic code. Target users range from undergrads learning computational biology to PhD researchers processing large-scale genomic data. bioSkills supports integration with Claude Code, OpenAI Codex, Google Gemini, OpenCode, and OpenClaw, with flexible installation options for selective skill categories.\nAutomating FASTA/FASTQ file processing and format conversion\nGenerating variant calling pipelines with GATK, bcftools, and DeepVariant\nPerforming single-cell RNA-seq analysis with Seurat and differential expression with DESeq2\nRunning sequence alignment and MSA with MAFFT, MUSCLE5, and structural tools",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GPTomics/bioSkills`",
+    "usage_vi": "```\nI need to automate a bioinformatics workflow for [SPECIFIC TASK]. Provide a Python script using [TOOL/LIBRARY] that follows best practices. Include error handling and documentation. The input data will be in [FILE FORMAT] and the output should be in [DESIRED FORMAT].\n```\nCopy\n\n```\nHere's a Python script for automating a DNA sequence alignment workflow using Biopython. This script reads FASTA files, performs pairwise alignments using the Needleman-Wunsch algorithm, and outputs the results in a CSV file with alignment scores and statistics.\n\n```python\nimport os\nfrom Bio import Align\nfrom Bio import SeqIO\nimport csv\n\ndef align_sequences(input_dir, output_file):\n    aligner = Align.PairwiseAligner()\n    aligner.mode = 'global'\n    aligner.open_gap_score = -10\n    aligner.extend_gap_score = -0.5\n\n    with open(output_file, 'w', newline='') as csvfile:\n        fieldnames = ['Sequence1', 'Sequence2', 'Alignment Score', 'Identity', 'Similarity']\n        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n        writer.writeheader()\n\n        for seq1_file in os.listdir(input_dir):\n            for seq2_file in os.listdir(input_dir):\n                if seq1_file != seq2_file:\n                    seq1 = SeqIO.read(os.path.join(input_dir, seq1_file), 'fasta')\n                    seq2 = SeqIO.read(os.path.join(input_dir, seq2_file), 'fasta')\n                    alignments = aligner.align(seq1.seq, seq2.seq)\n                    best_alignment = alignments[0]\n                    writer.writerow({\n                        'Sequence1': seq1_file,\n                        'Sequence2': seq2_file,\n                        'Alignment Score': best_alignment.score,\n                        'Identity': best_alignment.identities / len(seq1.seq) * 100,\n                        'Similarity': best_alignment.score / len(seq1.seq) * 100\n                    })\n\nif __name__ == '__main__':\n    input_directory = 'path/to/input/fasta/files'\n    output_csv = 'alignment_results.csv'\n    align_sequences(input_directory, output_csv)\n```\n\nThis script includes proper error handling, documentation, and follows bioinformatics best practices for sequence alignment. The output CSV file can be easily imported into analysis tools for further processing.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:38:26.615941Z",
+    "http_status": 200,
+    "content_hash": "8e595a68fd990b3bbb206b34b8ce8ec28e106511a6c00c31e42967bd62debc80",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bioskills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bioskills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "bioinformatics skills documentation platform",
+  "short_description_vi": "bioSkills provides AI coding agents with expert knowledge for bioinformatics workflows. It includes code patterns, best practices, and examples to guide agents through common bioinformatics tasks. Benefits bioinformatics teams by automating repetitive coding tasks and ensuring best practices are followed."
+}

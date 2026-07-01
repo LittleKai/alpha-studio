@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skill-creator",
+  "slug": "agent-skill-creator",
+  "name": "browser-use",
+  "headline": "agent-skill-creator for Claude agent tasks",
+  "short_description": "Agent-skill-creator is a meta-skill that enables Claude Code to autonomously build complete agents using Claude Skills. It automates the creation of intelligent agents for operations teams, reducing manual workflows and improving efficiency. The skill connects to Python-based workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "FrancyJGLisboa",
+  "install_command": "git clone https://github.com/FrancyJGLisboa/agent-skill-creator.git",
+  "source_repo_url": "https://github.com/FrancyJGLisboa/agent-skill-creator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Agent-skill-creator is a meta-skill designed for Claude Code that automates the creation of complete intelligent agents using Claude Skills framework. It reduces manual workflow configuration by enabling autonomous agent building tailored for operations teams. The skill supports Python-based workflows and integrates with Claude agents to streamline agent development. It includes validation patterns, prerequisite checking, and diagnostic capabilities to ensure skill quality and reliability. Teams can use it to rapidly prototype and deploy agents without writing boilerplate code.\nRapidly prototype multi-skill agents for operational workflows\nAutomate repetitive agent scaffolding and validation tasks\nBuild agents that interact with Python-based backend systems\nDiscover and compose existing skills into new agent configurations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/FrancyJGLisboa/agent-skill-creator`",
+    "usage": "```\nUse the agent-skill-creator skill to design a [AGENT_NAME] agent that automates [SPECIFIC_TASK] for [TEAM_DEPARTMENT]. The agent should include: 1) A clear [PRIMARY_FUNCTION] with [INPUT_REQUIREMENTS], 2) [INTEGRATION_POINTS] with existing tools like [TOOL_EXAMPLES], 3) Error handling for [COMMON_FAILURE_CASES], and 4) A logging system to track [METRICS_TO_CAPTURE]. Generate the complete agent code and documentation.\n```\nCopy\n\n```\nHere's the generated **InventorySyncAgent** for the Operations team, designed to automate stock level updates across Shopify and SAP systems:\n\n```python\nimport json\nfrom typing import Dict, List\nfrom datetime import datetime\n\nclass InventorySyncAgent:\n    \"\"\"Automates real-time inventory synchronization between Shopify and SAP systems.\"\"\"\n    \n    def __init__(self, shopify_api_key: str, sap_endpoint: str):\n        self.shopify_api_key = shopify_api_key\n        self.sap_endpoint = sap_endpoint\n        self.last_sync_time = None\n        self.sync_log = []\n    \n    def sync_inventory(self, product_ids: List[str] = None) -> Dict:\n        \"\"\"Sync inventory levels for specified products or all products.\"\"\"\n        try:\n            # Fetch current inventory from Shopify\n            shopify_inventory = self._fetch_shopify_inventory(product_ids)\n            \n            # Update SAP with inventory data\n            sap_response = self._update_sap_inventory(shopify_inventory)\n            \n            # Log successful sync\n            self._log_sync(\"success\", len(shopify_inventory), sap_response)\n            return {\"status\": \"success\", \"updated_products\": len(shopify_inventory)}\n            \n        except Exception as e:\n            self._log_sync(\"failed\", 0, str(e))\n            raise\n    \n    def _fetch_shopify_inventory(self, product_ids: List[str]) -> List[Dict]:\n        # Implementation would use Shopify API\n        return [{\"sku\": \"SKU123\", \"quantity\": 42, \"last_updated\": \"2023-11-15T10:30:00Z\"}]\n    \n    def _update_sap_inventory(self, inventory_data: List[Dict]) -> Dict:\n        # Implementation would call SAP API\n        return {\"status\": 200, \"message\": \"Inventory updated successfully\"}\n    \n    def _log_sync(self, status: str, products_count: int, details: str):\n        log_entry = {\n            \"timestamp\": datetime.utcnow().isoformat(),\n            \"status\": status,\n            \"products_processed\": products_count,\n            \"details\": details\n        }\n        self.sync_log.append(log_entry)\n        # In production, this would write to a database or file\n```\n\n### Key Features:\n1. **Automated Sync**: Handles real-time updates between Shopify and SAP\n2. **Error Handling**: Catches and logs API failures\n3. **Audit Trail**: Maintains sync history for compliance\n4. **Selective Sync**: Can target specific products or sync all\n\n### Integration Points:\n- Shopify API (via REST)\n- SAP OData API\n- Logging system (file/database)\n\n### Usage Example:\n```python\nagent = InventorySyncAgent(\n    shopify_api_key=\"shpat_abc123\",\n    sap_endpoint=\"https://sap.example.com/odata\"\n)\nresult = agent.sync_inventory(product_ids=[\"SKU123\", \"SKU456\"])\nprint(f\"Synced {result['updated_products']} products\")\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-skill-creator#main-content",
+      "agent-skill-creator#overview",
+      "agent-skill-creator#setup",
+      "agent-skill-creator#examples",
+      "agent-skill-creator#tools",
+      "agent-skill-creator#mcp",
+      "agent-skill-creator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent-skill-creator is a meta-skill designed for Claude Code that automates the creation of complete intelligent agents using Claude Skills framework. It reduces manual workflow configuration by enabling autonomous agent building tailored for operations teams. The skill supports Python-based workflows and integrates with Claude agents to streamline agent development. It includes validation patterns, prerequisite checking, and diagnostic capabilities to ensure skill quality and reliability. Teams can use it to rapidly prototype and deploy agents without writing boilerplate code.\nRapidly prototype multi-skill agents for operational workflows\nAutomate repetitive agent scaffolding and validation tasks\nBuild agents that interact with Python-based backend systems\nDiscover and compose existing skills into new agent configurations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/FrancyJGLisboa/agent-skill-creator`",
+    "usage_vi": "```\nUse the agent-skill-creator skill to design a [AGENT_NAME] agent that automates [SPECIFIC_TASK] for [TEAM_DEPARTMENT]. The agent should include: 1) A clear [PRIMARY_FUNCTION] with [INPUT_REQUIREMENTS], 2) [INTEGRATION_POINTS] with existing tools like [TOOL_EXAMPLES], 3) Error handling for [COMMON_FAILURE_CASES], and 4) A logging system to track [METRICS_TO_CAPTURE]. Generate the complete agent code and documentation.\n```\nCopy\n\n```\nHere's the generated **InventorySyncAgent** for the Operations team, designed to automate stock level updates across Shopify and SAP systems:\n\n```python\nimport json\nfrom typing import Dict, List\nfrom datetime import datetime\n\nclass InventorySyncAgent:\n    \"\"\"Automates real-time inventory synchronization between Shopify and SAP systems.\"\"\"\n    \n    def __init__(self, shopify_api_key: str, sap_endpoint: str):\n        self.shopify_api_key = shopify_api_key\n        self.sap_endpoint = sap_endpoint\n        self.last_sync_time = None\n        self.sync_log = []\n    \n    def sync_inventory(self, product_ids: List[str] = None) -> Dict:\n        \"\"\"Sync inventory levels for specified products or all products.\"\"\"\n        try:\n            # Fetch current inventory from Shopify\n            shopify_inventory = self._fetch_shopify_inventory(product_ids)\n            \n            # Update SAP with inventory data\n            sap_response = self._update_sap_inventory(shopify_inventory)\n            \n            # Log successful sync\n            self._log_sync(\"success\", len(shopify_inventory), sap_response)\n            return {\"status\": \"success\", \"updated_products\": len(shopify_inventory)}\n            \n        except Exception as e:\n            self._log_sync(\"failed\", 0, str(e))\n            raise\n    \n    def _fetch_shopify_inventory(self, product_ids: List[str]) -> List[Dict]:\n        # Implementation would use Shopify API\n        return [{\"sku\": \"SKU123\", \"quantity\": 42, \"last_updated\": \"2023-11-15T10:30:00Z\"}]\n    \n    def _update_sap_inventory(self, inventory_data: List[Dict]) -> Dict:\n        # Implementation would call SAP API\n        return {\"status\": 200, \"message\": \"Inventory updated successfully\"}\n    \n    def _log_sync(self, status: str, products_count: int, details: str):\n        log_entry = {\n            \"timestamp\": datetime.utcnow().isoformat(),\n            \"status\": status,\n            \"products_processed\": products_count,\n            \"details\": details\n        }\n        self.sync_log.append(log_entry)\n        # In production, this would write to a database or file\n```\n\n### Key Features:\n1. **Automated Sync**: Handles real-time updates between Shopify and SAP\n2. **Error Handling**: Catches and logs API failures\n3. **Audit Trail**: Maintains sync history for compliance\n4. **Selective Sync**: Can target specific products or sync all\n\n### Integration Points:\n- Shopify API (via REST)\n- SAP OData API\n- Logging system (file/database)\n\n### Usage Example:\n```python\nagent = InventorySyncAgent(\n    shopify_api_key=\"shpat_abc123\",\n    sap_endpoint=\"https://sap.example.com/odata\"\n)\nresult = agent.sync_inventory(product_ids=[\"SKU123\", \"SKU456\"])\nprint(f\"Synced {result['updated_products']} products\")\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:47:38.015815Z",
+    "http_status": 200,
+    "content_hash": "5b3070e82ab49a3ac3774bbf26e214655a34ffc554486a25f4ffe8f0e54c739c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-skill-creator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-skill-creator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agent-skill-creator for Claude agent tasks",
+  "short_description_vi": "Agent-skill-creator is a meta-skill that enables Claude Code to autonomously build complete agents using Claude Skills. It automates the creation of intelligent agents for operations teams, reducing manual workflows and improving efficiency. The skill connects to Python-based workflows and supports Claude agents."
+}

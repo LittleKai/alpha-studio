@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/glooit",
+  "slug": "glooit",
+  "name": "langchain-salesforce",
+  "headline": "glooit - AI Agent Configuration Synchronization Tool",
+  "short_description": "glooit ensures synchronization of AI agent rules and configurations across various development tools like Claude Code and Cursor. This tool enhances productivity by maintaining consistency in AI agent setups.",
+  "tier": "Silver",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "nikuscs",
+  "install_command": "claude install nikuscs/glooit",
+  "source_repo_url": "https://github.com/nikuscs/glooit",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "agent management",
+    "productivity",
+    "automation",
+    "development tools",
+    "AI synchronization"
+  ],
+  "sections": {
+    "overview": "glooit centralizes AI agent configuration management for teams using multiple coding assistants. Instead of maintaining separate rule files for Claude Code, Cursor, Codex, OpenCode, and Roo Code, you write rules once in a source directory and glooit automatically syncs them to each tool's native format and location. The tool supports rules, commands, skills, agents, MCP servers, and agent hooks, with options for symlink mode (instant updates) or copy mode (explicit syncing). It's designed for multi-agent teams, monorepos with different package rules, CI/CD pipelines, and teams transitioning between AI assistant tools.\nSync AI agent configurations across multiple platforms\nMaintain consistent rules for AI agents\nAutomate updates in AI development tools\nEnhance collaboration among development teams",
+    "setup": "Terminal\nCopy\n`claude install nikuscs/glooit`\n`git clone https://github.com/nikuscs/glooit`",
+    "usage": "```\nSynchronize the AI agent configurations for [PROJECT_NAME] across [TOOL_1], [TOOL_2], and [TOOL_3]. Ensure that all rules, commands, and skills are consistent. Provide a summary of the changes made.\n```\nCopy\n\n```\n# AI Agent Configuration Synchronization Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor"
+    ],
+    "related_skills": [
+      "glooit#main-content",
+      "glooit#overview",
+      "glooit#setup",
+      "glooit#examples",
+      "glooit#tools",
+      "glooit#mcp",
+      "glooit#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "glooit centralizes AI agent configuration management for teams using multiple coding assistants. Instead of maintaining separate rule files for Claude Code, Cursor, Codex, OpenCode, and Roo Code, you write rules once in a source directory and glooit automatically syncs them to each tool's native format and location. The tool supports rules, commands, skills, agents, MCP servers, and agent hooks, with options for symlink mode (instant updates) or copy mode (explicit syncing). It's designed for multi-agent teams, monorepos with different package rules, CI/CD pipelines, and teams transitioning between AI assistant tools.\nSync AI agent configurations across multiple platforms\nMaintain consistent rules for AI agents\nAutomate updates in AI development tools\nEnhance collaboration among development teams",
+    "setup_vi": "Terminal\nCopy\n`claude install nikuscs/glooit`\n`git clone https://github.com/nikuscs/glooit`",
+    "usage_vi": "```\nSynchronize the AI agent configurations for [PROJECT_NAME] across [TOOL_1], [TOOL_2], and [TOOL_3]. Ensure that all rules, commands, and skills are consistent. Provide a summary of the changes made.\n```\nCopy\n\n```\n# AI Agent Configuration Synchronization Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:33.931580Z",
+    "http_status": 200,
+    "content_hash": "62b2b00c012260a1f60458fbf908f290a61fa5e5cd4313f3d506488f8fc10ce4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\glooit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\glooit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "glooit - AI Agent Configuration Synchronization Tool",
+  "short_description_vi": "glooit ensures synchronization of AI agent rules and configurations across various development tools like Claude Code and Cursor. This tool enhances productivity by maintaining consistency in AI agent setups."
+}

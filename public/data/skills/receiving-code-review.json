@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/receiving-code-review",
+  "slug": "receiving-code-review",
+  "name": "Receiving Code Review",
+  "headline": "receiving-code-review: Code Reviews",
+  "short_description": "The receiving-code-review skill streamlines the code review process by automating feedback collection and response management. This enhances collaboration among developers, saving time and improving code quality.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "obra",
+  "install_command": "git clone https://github.com/obra/superpowers.git",
+  "source_repo_url": "https://github.com/obra/superpowers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The receiving-code-review skill is designed to optimize the code review process by automating the collection of feedback and managing responses efficiently. This skill integrates seamlessly into your existing workflow, allowing developers to focus on writing quality code while ensuring that all necessary feedback is gathered and addressed promptly. By automating these tasks, teams can reduce the time spent on manual reviews, leading to faster development cycles. One of the key benefits of using the receiving-code-review skill is its ability to enhance collaboration among team members. With automated notifications and organized feedback channels, developers can easily track comments and suggestions from peers. This not only saves time but also ensures that no critical feedback is overlooked. The skill's straightforward setup allows teams to implement it quickly, making it an ideal choice for projects with tight deadlines. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to improve their workflow automation. It can be used in various scenarios, such as when onboarding new team members who need to familiarize themselves with the codebase or during sprint reviews where multiple code changes are evaluated. For instance, a team working on a large-scale application can use this skill to streamline their code review process, ensuring that all changes are reviewed efficiently before deployment. In terms of implementation, the receiving-code-review skill is user-friendly and requires minimal setup, making it accessible even for teams with limited experience in automation. By incorporating this skill into an AI-first workflow, teams can leverage AI automation to enhance productivity and maintain high code quality, ultimately leading to better software products and reduced time to market.\nAutomating the collection of code review feedback to save time for developers.\nFacilitating real-time collaboration among remote development teams during code reviews.\nStreamlining the onboarding process for new developers by providing structured feedback.\nEnhancing the efficiency of sprint reviews by organizing and managing feedback effectively.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage": "```\nI'm preparing for a code review on [PROJECT_NAME]. Please help me draft a comprehensive review request email to my team. Include key details like the branch location, the main changes made, and specific areas I'd like feedback on. Also, suggest a timeline for the review process. Finally, provide a template for responding to review comments efficiently.\n```\nCopy\n\n```\nSubject: Code Review Request for [PROJECT_NAME] - Branch: feature/login-authentication\n\nHi Team,\n\nI've completed the initial implementation of the new login authentication system for [PROJECT_NAME]. The changes are located in the branch 'feature/login-authentication'.\n\nKey changes include:\n- Implementation of OAuth 2.0 for third-party logins\n- Enhanced password security with bcrypt hashing\n- New API endpoints for user authentication\n\nI'd particularly appreciate feedback on:\n1. The security measures implemented in the new login flow\n2. The performance impact of the bcrypt hashing on user login times\n3. Any potential improvements to the API design\n\nI'd like to aim for completing this review by [TARGET_DATE], so please provide your feedback by [FEEDBACK_DEADLINE].\n\nFor responding to review comments, you can use this template:\n\n> Thanks for your feedback, [REVIEWER_NAME]. I've considered your point about [SPECIFIC_FEEDBACK]. I agree that [AGREEMENT_POINTS] and plan to implement the following changes:\n- [CHANGE_1]\n- [CHANGE_2]\n\nI'll address these changes by [IMPLEMENTATION_DATE] and update the branch accordingly.\n\nBest regards,\n[YOUR_NAME]\n\nLooking forward to your valuable insights!\n\n[YOUR_NAME]\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "receiving-code-review#main-content",
+      "receiving-code-review#overview",
+      "receiving-code-review#setup",
+      "receiving-code-review#examples",
+      "receiving-code-review#tools",
+      "receiving-code-review#mcp",
+      "receiving-code-review#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The receiving-code-review skill is designed to optimize the code review process by automating the collection of feedback and managing responses efficiently. This skill integrates seamlessly into your existing workflow, allowing developers to focus on writing quality code while ensuring that all necessary feedback is gathered and addressed promptly. By automating these tasks, teams can reduce the time spent on manual reviews, leading to faster development cycles. One of the key benefits of using the receiving-code-review skill is its ability to enhance collaboration among team members. With automated notifications and organized feedback channels, developers can easily track comments and suggestions from peers. This not only saves time but also ensures that no critical feedback is overlooked. The skill's straightforward setup allows teams to implement it quickly, making it an ideal choice for projects with tight deadlines. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to improve their workflow automation. It can be used in various scenarios, such as when onboarding new team members who need to familiarize themselves with the codebase or during sprint reviews where multiple code changes are evaluated. For instance, a team working on a large-scale application can use this skill to streamline their code review process, ensuring that all changes are reviewed efficiently before deployment. In terms of implementation, the receiving-code-review skill is user-friendly and requires minimal setup, making it accessible even for teams with limited experience in automation. By incorporating this skill into an AI-first workflow, teams can leverage AI automation to enhance productivity and maintain high code quality, ultimately leading to better software products and reduced time to market.\nAutomating the collection of code review feedback to save time for developers.\nFacilitating real-time collaboration among remote development teams during code reviews.\nStreamlining the onboarding process for new developers by providing structured feedback.\nEnhancing the efficiency of sprint reviews by organizing and managing feedback effectively.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage_vi": "```\nI'm preparing for a code review on [PROJECT_NAME]. Please help me draft a comprehensive review request email to my team. Include key details like the branch location, the main changes made, and specific areas I'd like feedback on. Also, suggest a timeline for the review process. Finally, provide a template for responding to review comments efficiently.\n```\nCopy\n\n```\nSubject: Code Review Request for [PROJECT_NAME] - Branch: feature/login-authentication\n\nHi Team,\n\nI've completed the initial implementation of the new login authentication system for [PROJECT_NAME]. The changes are located in the branch 'feature/login-authentication'.\n\nKey changes include:\n- Implementation of OAuth 2.0 for third-party logins\n- Enhanced password security with bcrypt hashing\n- New API endpoints for user authentication\n\nI'd particularly appreciate feedback on:\n1. The security measures implemented in the new login flow\n2. The performance impact of the bcrypt hashing on user login times\n3. Any potential improvements to the API design\n\nI'd like to aim for completing this review by [TARGET_DATE], so please provide your feedback by [FEEDBACK_DEADLINE].\n\nFor responding to review comments, you can use this template:\n\n> Thanks for your feedback, [REVIEWER_NAME]. I've considered your point about [SPECIFIC_FEEDBACK]. I agree that [AGREEMENT_POINTS] and plan to implement the following changes:\n- [CHANGE_1]\n- [CHANGE_2]\n\nI'll address these changes by [IMPLEMENTATION_DATE] and update the branch accordingly.\n\nBest regards,\n[YOUR_NAME]\n\nLooking forward to your valuable insights!\n\n[YOUR_NAME]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:45:14.129170Z",
+    "http_status": 200,
+    "content_hash": "be16dab363fe6ff0212c0d5200e7bb0605e65b7106590764fff1d03bcd71d6f2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\receiving-code-review.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\receiving-code-review.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "receiving-code-review: Code Reviews",
+  "short_description_vi": "The receiving-code-review skill streamlines the code review process by automating feedback collection and response management. This enhances collaboration among developers, saving time and improving code quality."
+}

@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-usage-monitor",
+  "slug": "claude-code-usage-monitor",
+  "name": "Claude-Code-Usage-Monitor",
+  "headline": "claude code real-time usage monitor",
+  "short_description": "Real-time monitoring of Claude Code usage with predictive analytics and warnings. Ideal for operations teams to track usage, avoid limits, and optimize workflows. Integrates with Python-based systems and terminal environments.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Maciek-roboblog",
+  "install_command": "git clone https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor.git",
+  "source_repo_url": "https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "limits",
+    "analytics",
+    "claude",
+    "terminal",
+    "usage-tracking",
+    "claude-code",
+    "claude-usage",
+    "monitoring",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Claude-Code-Usage-Monitor provides real-time visibility into Claude Code usage patterns with predictive analytics capabilities. The tool tracks usage metrics and generates warnings when approaching defined limits, enabling operations teams to prevent service interruptions and optimize resource allocation. It integrates directly with Python-based systems and terminal environments, making it accessible for development and operations workflows. By combining current usage data with predictive forecasting, teams can make informed decisions about workload distribution and usage planning before limits are reached.\nMonitor real-time token usage during Claude AI sessions to prevent exceeding limits.\nAnalyze historical usage data to optimize future Claude AI interactions and reduce costs.\nReceive intelligent predictions and warnings about session limits based on past usage patterns.\nAutomatically switch plans based on usage to ensure optimal performance and cost management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor`",
+    "usage": "```\nSet up real-time monitoring for Claude Code usage in [PROJECT_NAME] with predictive analytics. Track [SPECIFIC_METRICS] (e.g., tokens per hour, concurrent sessions, API call frequency) and generate warnings when usage approaches [THRESHOLD_PERCENTAGE]% of [LIMIT_TYPE] (e.g., daily quota, concurrent session cap). Provide a 24-hour forecast of usage trends and suggest optimization strategies to avoid hitting limits. Include a breakdown of top resource-consuming operations and their estimated costs if applicable.\n```\nCopy\n\n```\n### Claude Code Usage Monitor Report - Project: Acme Corp Analytics Suite\n**Report Generated:** 2024-06-15 14:32:00 UTC\n\n#### Current Usage Status\n- **Daily Token Usage:** 18,450 / 20,000 tokens (92.25% of daily limit)\n- **Concurrent Sessions:** 4 / 5 active sessions (80% of concurrent session cap)\n- **API Call Frequency:** 127 calls/hour (avg. 2.12/min)\n- **Estimated Cost:** $187.20 today (projected: $201.45 by EOD)\n\n#### Predictive Analytics\n- **24-hour Forecast:** Token usage will reach 98.7% of daily limit by 18:45 UTC\n- **Peak Risk Period:** 16:00-19:00 UTC (high batch processing activity)\n- **Concurrent Session Risk:** 95% probability of hitting cap at 17:30 UTC\n\n#### Top Resource Consumers\n1. **Data Processing Pipeline** (45% of tokens): Batch processing 500K records (avg. 2.3M tokens/session)\n2. **Report Generation** (32% of tokens): Monthly financial reports (avg. 1.8M tokens/session)\n3. **Model Fine-tuning** (15% of tokens): Hyperparameter optimization (avg. 900K tokens/session)\n4. **API Integration Tests** (8% of tokens): Automated test suites\n\n#### Warnings & Recommendations\n⚠️ **CRITICAL:** Concurrent session limit will be reached in 3.2 hours. Suggest:\n- Pause non-critical batch jobs until after 19:00 UTC\n- Split the data processing pipeline into smaller batches\n- Consider temporarily reducing concurrent fine-tuning sessions\n\n📊 **Cost Optimization:** Current spending is 12% over budget. Recommend:\n- Implement token batching for report generation\n- Schedule heavy processing for off-peak hours (after 20:00 UTC)\n- Review fine-tuning job configurations for efficiency\n\n#### Next Steps\n1. Run `claude-code-monitor --pause-batch-jobs` to temporarily halt low-priority operations\n2. Execute `claude-code-monitor --optimize-pipeline` to restructure the data processing workflow\n3. Schedule a team review at 16:00 UTC to reassess priorities\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-usage-monitor#main-content",
+      "claude-code-usage-monitor#overview",
+      "claude-code-usage-monitor#setup",
+      "claude-code-usage-monitor#examples",
+      "claude-code-usage-monitor#tools",
+      "claude-code-usage-monitor#mcp",
+      "claude-code-usage-monitor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Code-Usage-Monitor provides real-time visibility into Claude Code usage patterns with predictive analytics capabilities. The tool tracks usage metrics and generates warnings when approaching defined limits, enabling operations teams to prevent service interruptions and optimize resource allocation. It integrates directly with Python-based systems and terminal environments, making it accessible for development and operations workflows. By combining current usage data with predictive forecasting, teams can make informed decisions about workload distribution and usage planning before limits are reached.\nMonitor real-time token usage during Claude AI sessions to prevent exceeding limits.\nAnalyze historical usage data to optimize future Claude AI interactions and reduce costs.\nReceive intelligent predictions and warnings about session limits based on past usage patterns.\nAutomatically switch plans based on usage to ensure optimal performance and cost management.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Maciek-roboblog/Claude-Code-Usage-Monitor`",
+    "usage_vi": "```\nSet up real-time monitoring for Claude Code usage in [PROJECT_NAME] with predictive analytics. Track [SPECIFIC_METRICS] (e.g., tokens per hour, concurrent sessions, API call frequency) and generate warnings when usage approaches [THRESHOLD_PERCENTAGE]% of [LIMIT_TYPE] (e.g., daily quota, concurrent session cap). Provide a 24-hour forecast of usage trends and suggest optimization strategies to avoid hitting limits. Include a breakdown of top resource-consuming operations and their estimated costs if applicable.\n```\nCopy\n\n```\n### Claude Code Usage Monitor Report - Project: Acme Corp Analytics Suite\n**Report Generated:** 2024-06-15 14:32:00 UTC\n\n#### Current Usage Status\n- **Daily Token Usage:** 18,450 / 20,000 tokens (92.25% of daily limit)\n- **Concurrent Sessions:** 4 / 5 active sessions (80% of concurrent session cap)\n- **API Call Frequency:** 127 calls/hour (avg. 2.12/min)\n- **Estimated Cost:** $187.20 today (projected: $201.45 by EOD)\n\n#### Predictive Analytics\n- **24-hour Forecast:** Token usage will reach 98.7% of daily limit by 18:45 UTC\n- **Peak Risk Period:** 16:00-19:00 UTC (high batch processing activity)\n- **Concurrent Session Risk:** 95% probability of hitting cap at 17:30 UTC\n\n#### Top Resource Consumers\n1. **Data Processing Pipeline** (45% of tokens): Batch processing 500K records (avg. 2.3M tokens/session)\n2. **Report Generation** (32% of tokens): Monthly financial reports (avg. 1.8M tokens/session)\n3. **Model Fine-tuning** (15% of tokens): Hyperparameter optimization (avg. 900K tokens/session)\n4. **API Integration Tests** (8% of tokens): Automated test suites\n\n#### Warnings & Recommendations\n⚠️ **CRITICAL:** Concurrent session limit will be reached in 3.2 hours. Suggest:\n- Pause non-critical batch jobs until after 19:00 UTC\n- Split the data processing pipeline into smaller batches\n- Consider temporarily reducing concurrent fine-tuning sessions\n\n📊 **Cost Optimization:** Current spending is 12% over budget. Recommend:\n- Implement token batching for report generation\n- Schedule heavy processing for off-peak hours (after 20:00 UTC)\n- Review fine-tuning job configurations for efficiency\n\n#### Next Steps\n1. Run `claude-code-monitor --pause-batch-jobs` to temporarily halt low-priority operations\n2. Execute `claude-code-monitor --optimize-pipeline` to restructure the data processing workflow\n3. Schedule a team review at 16:00 UTC to reassess priorities\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:31:46.531419Z",
+    "http_status": 200,
+    "content_hash": "271c73a3db3938ed82c322c3d5a022156cc1dbb208acbbadf8027c22d00bcd64",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-usage-monitor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-usage-monitor.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude code real-time usage monitor",
+  "short_description_vi": "Real-time monitoring of Claude Code usage with predictive analytics and warnings. Ideal for operations teams to track usage, avoid limits, and optimize workflows. Integrates with Python-based systems and terminal environments."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mini-claude-code",
+  "slug": "mini-claude-code",
+  "name": "browser-use",
+  "headline": "Mini Claude Code - Build Custom Coding Agents",
+  "short_description": "Build custom coding agents with Claude. Operations teams create automated workflows. Integrates with Kode CLI for agent development.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "shareAI-lab",
+  "install_command": "git clone https://github.com/shareAI-lab/mini-claude-code.git",
+  "source_repo_url": "https://github.com/shareAI-lab/mini-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Mini Claude Code is an educational framework that teaches how to build coding agents by implementing five progressive versions, each adding one architectural concept. It demonstrates that every agent follows the same core pattern: the model calls tools until done. The repository works with Kode CLI, Claude Code, Cursor, and any platform supporting the Agent Skills Spec. Developers learn through hands-on code examples ranging from ~50 lines (single bash tool) to ~550 lines (full skills mechanism), understanding how to structure tool execution, planning, subagents, and domain expertise. This approach demystifies how production agents work while providing a template for custom agent development.\nLearning how AI agents fundamentally work through progressive code examples\nBuilding custom coding agents for operations teams and automation workflows\nUnderstanding the agent loop pattern before deploying production agents\nScaffolding new agent projects with configurable complexity levels",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/mini-claude-code`",
+    "usage": "```\nBuild a custom coding agent using [AGENT_NAME] that automates [SPECIFIC_TASK] in [PROGRAMMING_LANGUAGE]. The agent should integrate with [TOOLS_OR_FRAMEWORKS] and follow these requirements: [LIST_REQUIREMENTS]. Use the Kode CLI to scaffold the project and generate the initial agent template. Include error handling for [COMMON_ERRORS] and logging for [LOGGING_LEVEL].\n```\nCopy\n\n```\nHere’s a custom coding agent named `data-pipeline-validator` built to automate CSV file validation and transformation in Python. The agent integrates with Pandas for data processing, SQLite for metadata tracking, and GitHub Actions for CI/CD. Requirements included: (1) Validate CSV headers against a schema file, (2) Convert data types per column specification, (3) Log validation errors to a Slack channel, and (4) Generate a summary report in Markdown.\n\nThe agent was scaffolded using Kode CLI with the command: `kode new data-pipeline-validator --language python --framework pandas`. The initial template included a `validator.py` file with a `CSVValidator` class, a `config.yaml` for settings, and a `tests/` directory with pytest cases. Error handling was implemented for missing files, schema mismatches, and data type conversion failures. Logging was configured to output to both console (INFO level) and Slack (ERROR level) using the `slack_sdk` library.\n\nThe agent processes files from an S3 bucket, validates them against a schema stored in GitHub, and moves valid files to a `processed/` folder while logging errors to `#data-errors` in Slack. A summary report is generated for each run, including row counts, validation errors, and processing time. The agent was deployed via GitHub Actions, with the workflow triggering on new CSV uploads to the S3 bucket. Initial testing showed a 95% reduction in manual validation time and caught 12 schema mismatches that would have caused downstream errors.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mini-claude-code#main-content",
+      "mini-claude-code#overview",
+      "mini-claude-code#setup",
+      "mini-claude-code#examples",
+      "mini-claude-code#tools",
+      "mini-claude-code#mcp",
+      "mini-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Mini Claude Code is an educational framework that teaches how to build coding agents by implementing five progressive versions, each adding one architectural concept. It demonstrates that every agent follows the same core pattern: the model calls tools until done. The repository works with Kode CLI, Claude Code, Cursor, and any platform supporting the Agent Skills Spec. Developers learn through hands-on code examples ranging from ~50 lines (single bash tool) to ~550 lines (full skills mechanism), understanding how to structure tool execution, planning, subagents, and domain expertise. This approach demystifies how production agents work while providing a template for custom agent development.\nLearning how AI agents fundamentally work through progressive code examples\nBuilding custom coding agents for operations teams and automation workflows\nUnderstanding the agent loop pattern before deploying production agents\nScaffolding new agent projects with configurable complexity levels",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/mini-claude-code`",
+    "usage_vi": "```\nBuild a custom coding agent using [AGENT_NAME] that automates [SPECIFIC_TASK] in [PROGRAMMING_LANGUAGE]. The agent should integrate with [TOOLS_OR_FRAMEWORKS] and follow these requirements: [LIST_REQUIREMENTS]. Use the Kode CLI to scaffold the project and generate the initial agent template. Include error handling for [COMMON_ERRORS] and logging for [LOGGING_LEVEL].\n```\nCopy\n\n```\nHere’s a custom coding agent named `data-pipeline-validator` built to automate CSV file validation and transformation in Python. The agent integrates with Pandas for data processing, SQLite for metadata tracking, and GitHub Actions for CI/CD. Requirements included: (1) Validate CSV headers against a schema file, (2) Convert data types per column specification, (3) Log validation errors to a Slack channel, and (4) Generate a summary report in Markdown.\n\nThe agent was scaffolded using Kode CLI with the command: `kode new data-pipeline-validator --language python --framework pandas`. The initial template included a `validator.py` file with a `CSVValidator` class, a `config.yaml` for settings, and a `tests/` directory with pytest cases. Error handling was implemented for missing files, schema mismatches, and data type conversion failures. Logging was configured to output to both console (INFO level) and Slack (ERROR level) using the `slack_sdk` library.\n\nThe agent processes files from an S3 bucket, validates them against a schema stored in GitHub, and moves valid files to a `processed/` folder while logging errors to `#data-errors` in Slack. A summary report is generated for each run, including row counts, validation errors, and processing time. The agent was deployed via GitHub Actions, with the workflow triggering on new CSV uploads to the S3 bucket. Initial testing showed a 95% reduction in manual validation time and caught 12 schema mismatches that would have caused downstream errors.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:45:34.329916Z",
+    "http_status": 200,
+    "content_hash": "d6020b1695477c7a65c9a638e8d294fc933741b6435ace89c48cf3d984b77964",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mini-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mini-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mini Claude Code - Build Custom Coding Agents",
+  "short_description_vi": "Build custom coding agents with Claude. Operations teams create automated workflows. Integrates with Kode CLI for agent development."
+}

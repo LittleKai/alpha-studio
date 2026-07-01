@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-powerline",
+  "slug": "claude-powerline",
+  "name": "Claude Powerline",
+  "headline": "claude-powerline: Enhance Your Statusline",
+  "short_description": "Claude Powerline is a vim-style statusline for Claude Code that provides real-time usage tracking, git integration, and custom themes. It enhances developer productivity by displaying essential information in a lightweight, customizable interface.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "Owloops",
+  "install_command": "git clone https://github.com/Owloops/claude-powerline.git",
+  "source_repo_url": "https://github.com/Owloops/claude-powerline",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "git",
+    "statusline",
+    "cli",
+    "developer-tools",
+    "lightweight",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The claude-powerline skill provides a visually appealing vim-style powerline statusline for Claude Code, enhancing the user interface and experience. This skill is designed for developers who want to improve their coding environment by integrating a stylish and informative statusline that displays essential information at a glance. With its intermediate complexity, it requires about 30 minutes to implement, making it a quick yet impactful addition to your development toolkit. One of the key benefits of the claude-powerline skill is its ability to streamline your workflow. By providing real-time feedback and status updates directly in your coding interface, it helps developers maintain focus and efficiency. Although specific time savings are not quantified, the enhanced visibility of critical information can lead to quicker decision-making and fewer context-switching interruptions, ultimately saving time in the development process. This skill is particularly beneficial for developers and product managers who prioritize a clean and efficient coding environment. It is also relevant for AI practitioners looking to optimize their workflows. For instance, a developer working on a data engineering project can benefit from having immediate access to version control status, branch information, and other critical indicators, all displayed elegantly in the powerline. Implementing the claude-powerline skill is straightforward for those with intermediate coding skills. It requires basic familiarity with Claude Code and its customization options. This skill fits seamlessly into AI-first workflows by enhancing the user interface of AI development environments, allowing for a more intuitive and efficient coding experience. By integrating this skill into your setup, you can create a more productive workspace that aligns with modern AI automation practices.\nMonitor real-time session costs and budget alerts during development.\nQuickly check git branch status and commit history without leaving the terminal.\nCustomize the statusline appearance to match personal or team branding.\nTrack performance metrics such as response times and message counts in Claude sessions.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Owloops/claude-powerline`",
+    "usage": "```\nEnable and configure the claude-powerline statusline in Claude Code for [PROJECT_NAME]. Set the theme to [THEME_NAME] (e.g., 'solarized', 'dracula') and ensure it displays: current git branch, uncommitted changes, file path, line/column position, and Claude's CPU/memory usage. Customize the prompt to show [CUSTOM_SECTIONS] (e.g., 'test status', 'debug mode').\n```\nCopy\n\n```\n```\n┌─ claude-powerline (solarized-dark) ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n│  ~/projects/acme-web (main) +2 -1  15:32:47  2.4GB  45%  1.2GHz  42/128  src/components/Button.tsx:42:10  █\n└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\n\nActive file: src/components/Button.tsx\nGit status: main branch, 2 staged changes (+2 -1)\nSystem: 45% CPU, 2.4GB RAM used, 1.2GHz active core\nClaude: 42/128 context tokens used\n\n[Custom sections enabled: test status (✓ 8/8 passing), debug mode (off)]\n```\n\nThe statusline updates in real-time as you navigate files or make changes. The color scheme adapts to your terminal's theme (solarized-dark in this example). The git integration shows branch status with symbols: + for staged changes, - for unstaged, and ! for untracked. The file path truncates intelligently when space is limited. CPU/memory metrics help you monitor resource usage during heavy operations like model inference or file analysis.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-powerline#main-content",
+      "claude-powerline#overview",
+      "claude-powerline#setup",
+      "claude-powerline#examples",
+      "claude-powerline#tools",
+      "claude-powerline#mcp",
+      "claude-powerline#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill claude-powerline mang đến một statusline dạng powerline phong cách vim đẹp mắt cho Claude Code, giúp cải thiện giao diện và trải nghiệm người dùng. Skill này được thiết kế cho các nhà phát triển muốn nâng cấp môi trường lập trình của mình bằng cách tích hợp một thanh trạng thái phong cách và giàu thông tin, hiển thị mọi thông số cần thiết trong nháy mắt. Với độ phức tạp ở mức trung bình (intermediate), bạn chỉ mất khoảng 30 phút để triển khai, biến nó thành một phần bổ sung nhanh chóng nhưng vô cùng hiệu quả cho bộ công cụ phát triển của bạn. Một trong những lợi ích chính của skill claude-powerline là khả năng tối ưu hóa quy trình làm việc. Bằng cách cung cấp phản hồi và cập nhật trạng thái theo thời gian thực ngay trên giao diện lập trình, nó giúp lập trình viên duy trì sự tập trung và hiệu quả. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, việc hiển thị rõ ràng các thông tin quan trọng sẽ giúp đưa ra quyết định nhanh hơn và giảm thiểu việc phải chuyển đổi ngữ cảnh (context-switching), từ đó tiết kiệm thời gian trong quá trình phát triển. Skill này đặc biệt hữu ích cho các nhà phát triển và quản lý sản phẩm chú trọng đến một môi trường code gọn gàng và hiệu quả. Nó cũng phù hợp với các chuyên gia AI muốn tối ưu hóa quy trình làm việc của mình. Ví dụ, một kỹ sư phát triển dự án kỹ thuật dữ liệu (data engineering) có thể hưởng lợi từ việc truy cập nhanh vào trạng thái kiểm soát phiên bản (version control), thông tin branch và các chỉ số quan trọng khác, tất cả đều được hiển thị tinh tế trên powerline. Việc triển khai skill claude-powerline khá đơn giản đối với những người có kỹ năng lập trình ở mức trung bình. Bạn chỉ cần có hiểu biết cơ bản về Claude Code và các tùy chọn tùy biến của nó. Skill này tích hợp mượt mà vào các quy trình làm việc ưu tiên AI (AI-first) bằng cách cải thiện giao diện người dùng của môi trường phát triển AI, mang lại trải nghiệm lập trình trực quan và hiệu quả hơn. Bằng cách tích hợp skill này vào setup của mình, bạn có thể tạo ra một không gian làm việc năng suất hơn, phù hợp với các phương thức tự động hóa AI hiện đại.\nTheo dõi chi phí phiên làm việc (session) theo thời gian thực và nhận cảnh báo ngân sách trong quá trình phát triển.\nKiểm tra nhanh trạng thái git branch và lịch sử commit mà không cần rời terminal.\nTùy chỉnh giao diện statusline để phù hợp với nhận diện thương hiệu cá nhân hoặc đội ngũ.\nTheo dõi các chỉ số hiệu suất như thời gian phản hồi và số lượng tin nhắn trong các phiên Claude.",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Owloops/claude-powerline`",
+    "usage_vi": "```\nKích hoạt và cấu hình statusline claude-powerline trong Claude Code cho [PROJECT_NAME]. Đặt theme thành [THEME_NAME] (ví dụ: 'solarized', 'dracula') và đảm bảo hiển thị: git branch hiện tại, các thay đổi chưa commit, đường dẫn file, vị trí dòng/cột, và mức sử dụng CPU/bộ nhớ của Claude. Tùy chỉnh prompt để hiển thị [CUSTOM_SECTIONS] (ví dụ: 'test status', 'debug mode').\n```\nCopy\n\n```\n```\n┌─ claude-powerline (solarized-dark) ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\n│  ~/projects/acme-web (main) +2 -1  15:32:47  2.4GB  45%  1.2GHz  42/128  src/components/Button.tsx:42:10  █\n└─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\n\nFile đang hoạt động: src/components/Button.tsx\nTrạng thái Git: branch main, 2 thay đổi đã được staged (+2 -1)\nHệ thống: 45% CPU, đã dùng 2.4GB RAM, active core 1.2GHz\nClaude: đã dùng 42/128 context tokens\n\n[Các phần tùy chỉnh đã kích hoạt: trạng thái test (✓ 8/8 pass), debug mode (tắt)]\n```\n\nStatusline cập nhật theo thời gian thực khi bạn điều hướng qua các file hoặc thực hiện thay đổi. Phối màu sẽ tự động điều chỉnh theo theme của terminal (trong ví dụ này là solarized-dark). Tích hợp git hiển thị trạng thái branch bằng các ký hiệu: + cho các thay đổi đã staged, - cho các thay đổi chưa staged, và ! cho các file chưa được theo dõi (untracked). Đường dẫn file được tự động rút ngắn một cách thông minh khi không gian hiển thị bị giới hạn. Các chỉ số CPU/bộ nhớ giúp bạn theo dõi việc sử dụng tài nguyên hệ thống trong các tác vụ nặng như suy luận mô hình (model inference) hoặc phân tích file."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:49:29.516611Z",
+    "http_status": 200,
+    "content_hash": "544f6c7e90721192d8b4f796b9c2a578acd5709eb23991f0e4f8b1f03fff1aab",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-powerline.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-powerline.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-powerline: Nâng tầm Statusline của bạn",
+  "short_description_vi": "Claude Powerline là một statusline phong cách vim dành cho Claude Code, hỗ trợ theo dõi hiệu năng thời gian thực, tích hợp git và tùy chỉnh theme. Công cụ này giúp nâng cao năng suất của nhà phát triển bằng cách hiển thị các thông tin thiết yếu trên một giao diện nhẹ và dễ tùy biến."
+}

@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/universal-dev-standards",
+  "slug": "universal-dev-standards",
+  "name": "Universal Dev Standards",
+  "headline": "Universal Dev Standards: Your Projects",
+  "short_description": "Universal, language-agnostic development standards for software projects. Includes coding standards, git workflows, testing guidelines, documentation structure, and AI collaboration rules. Benefits developers, engineering managers, and DevOps teams by ensuring consistency and quality across projects. Integrates with git, CI/CD pipelines, and developer tools.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "AsiaOstrich",
+  "install_command": "git clone https://github.com/AsiaOstrich/universal-dev-standards.git",
+  "source_repo_url": "https://github.com/AsiaOstrich/universal-dev-standards",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "quality-assurance",
+    "skills",
+    "software-engineering",
+    "ai-collaboration",
+    "commit-conventions",
+    "development-standards",
+    "testing-standards",
+    "git-workflow",
+    "semantic-versioning",
+    "claude-code",
+    "developer-tools",
+    "conventional-commits",
+    "devops",
+    "documentation",
+    "spec-driven-development",
+    "best-practices",
+    "code-review",
+    "coding-standards"
+  ],
+  "sections": {
+    "overview": "The Universal Dev Standards skill is designed to establish a cohesive framework for software development across various programming languages. By providing language-agnostic coding standards, git workflows, testing guidelines, documentation structures, and AI collaboration rules, this skill ensures that teams can maintain consistency and quality in their projects. It is particularly beneficial for teams looking to standardize their development processes, making it easier to onboard new members and collaborate effectively. One of the key benefits of implementing Universal Dev Standards is the potential for significant time savings in project setup and maintenance. By adhering to established guidelines, teams can reduce the time spent on code reviews and debugging, as well as streamline the onboarding process for new developers. Although the exact time savings are not quantified, the efficiency gained from a standardized approach can lead to faster project delivery and improved team productivity. This skill is ideal for developers, product managers, and AI practitioners who are involved in software projects. It is particularly relevant for teams working in environments where multiple programming languages are used, as it provides a unified set of standards that can be applied regardless of the technology stack. For example, a team developing a web application using both frontend and backend technologies can benefit from consistent documentation and testing practices, leading to a smoother development cycle. With an intermediate level of complexity, the Universal Dev Standards skill can be implemented in approximately 30 minutes, making it accessible for teams looking to enhance their workflows quickly. As organizations increasingly adopt AI-first strategies, this skill fits seamlessly into AI-driven workflows by establishing clear guidelines for AI collaboration. By integrating these standards, teams can leverage AI tools more effectively, ensuring that their development practices align with modern automation needs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AsiaOstrich/universal-dev-standards`",
+    "usage": "```\nGenerate a universal development standards document for a [LANGUAGE] project named [PROJECT_NAME]. Include sections for: 1) Coding standards (e.g., naming conventions, formatting rules), 2) Git workflow (branching strategy, commit messages, PR guidelines), 3) Testing guidelines (unit, integration, E2E), 4) Documentation structure (README, API docs, architecture decisions), and 5) AI collaboration rules (how to use AI tools like GitHub Copilot, code review assistance). Use [TEAM_SIZE] as the team size and [PROJECT_COMPLEXITY] (low/medium/high).\n```\nCopy\n\n```\n### Universal Development Standards for Project: **E-Commerce Platform**\n\n#### 1. Coding Standards\n**Language:** Python 3.11\n- **Naming Conventions:** Use snake_case for variables/functions, PascalCase for classes. Example: `def calculate_total_price()` not `def CalculateTotalPrice()`.\n- **Formatting:** Follow PEP 8 with 120-character line limits. Use `black` for auto-formatting in CI.\n- **Imports:** Group imports by standard library, third-party, and local. Example:\n  ```python\n  import os\n  import sys\n  \n  import requests\n  from flask import Flask\n  \n  from app.utils import helper\n  ```\n\n#### 2. Git Workflow\n**Branching Strategy:** GitHub Flow with protected `main` branch.\n- **Branches:** Feature branches prefixed with `feature/`, e.g., `feature/payment-gateway`.\n- **Commits:** Use Conventional Commits (e.g., `feat(payment): add Stripe integration`).\n- **Pull Requests:** Require 2 approvals, link to Jira ticket, and pass CI checks.\n\n#### 3. Testing Guidelines\n**Coverage:** Minimum 80% unit test coverage for core modules.\n- **Unit Tests:** Use `pytest` with fixtures for dependencies. Example:\n  ```python\n  def test_calculate_discount():\n      assert calculate_discount(100, 20) == 80\n  ```\n- **Integration Tests:** Test API endpoints with `pytest` and `FastAPI TestClient`.\n- **E2E Tests:** Use Playwright for user flows (e.g., checkout process).\n\n#### 4. Documentation Structure\n- **README.md:** Project overview, setup instructions, and architecture diagram.\n- **API Docs:** Auto-generated with Swagger/OpenAPI. Example endpoint:\n  ```\n  GET /api/v1/products/{id} -> Returns product details.\n  ```\n- **ADRs:** Architecture Decision Records in `/docs/adr/` (e.g., `adr-001-use-postgres.md`).\n\n#### 5. AI Collaboration Rules\n- **GitHub Copilot:** Use for boilerplate code (e.g., FastAPI endpoints) but manually review suggestions.\n- **Code Review:** AI tools (e.g., CodeClimate) flag style issues; human review required for logic.\n- **Documentation:** Use AI to draft ADRs or READMEs, but validate with team leads.\n\n**Team Size:** 8 developers\n**Project Complexity:** High (microservices, payment integration)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "universal-dev-standards#main-content",
+      "universal-dev-standards#overview",
+      "universal-dev-standards#setup",
+      "universal-dev-standards#examples",
+      "universal-dev-standards#tools",
+      "universal-dev-standards#mcp",
+      "universal-dev-standards#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill 'Universal Dev Standards' được thiết kế nhằm thiết lập một framework thống nhất cho việc phát triển phần mềm trên nhiều ngôn ngữ lập trình khác nhau. Bằng cách cung cấp các tiêu chuẩn viết code (coding standards) không phụ thuộc vào ngôn ngữ, quy trình git workflow, hướng dẫn kiểm thử, cấu trúc tài liệu và quy tắc cộng tác với AI, skill này đảm bảo các đội ngũ phát triển có thể duy trì tính nhất quán và chất lượng trong các dự án của mình. Đây là giải pháp đặc biệt hữu ích cho các đội ngũ muốn chuẩn hóa quy trình phát triển, giúp việc onboard thành viên mới và cộng tác hiệu quả trở nên dễ dàng hơn. Một trong những lợi ích chính khi áp dụng Universal Dev Standards là khả năng tiết kiệm đáng kể thời gian setup và bảo trì dự án. Bằng cách tuân thủ các hướng dẫn đã được thiết lập, các đội ngũ có thể giảm thời gian dành cho việc review code và debug, đồng thời tối ưu hóa quy trình onboard cho lập trình viên mới. Dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, hiệu quả có được từ phương pháp chuẩn hóa này có thể giúp đẩy nhanh tiến độ bàn giao dự án và nâng cao năng suất của toàn đội ngũ. Skill này là lựa chọn lý tưởng cho các developer, product manager và kỹ sư AI tham gia vào các dự án phần mềm. Nó đặc biệt phù hợp với các đội ngũ làm việc trong môi trường đa ngôn ngữ lập trình, nhờ cung cấp một bộ tiêu chuẩn thống nhất có thể áp dụng bất kể tech stack nào. Ví dụ, một đội ngũ phát triển ứng dụng web sử dụng cả công nghệ frontend và backend có thể hưởng lợi từ việc đồng bộ hóa tài liệu và quy trình kiểm thử, giúp chu kỳ phát triển diễn ra mượt mà hơn. Với độ phức tạp ở mức trung bình (intermediate), skill Universal Dev Standards có thể được triển khai trong khoảng 30 phút, giúp các đội ngũ dễ dàng tiếp cận và nhanh chóng cải thiện workflow của mình. Trong bối cảnh các tổ chức ngày càng áp dụng nhiều chiến lược ưu tiên AI (AI-first), skill này sẽ khớp nối liền mạch vào các workflow do AI vận hành nhờ thiết lập các nguyên tắc rõ ràng cho việc cộng tác với AI. Bằng cách tích hợp các tiêu chuẩn này, các đội ngũ có thể khai thác các công cụ AI hiệu quả hơn, đảm bảo quy trình phát triển của họ luôn đồng bộ với các nhu cầu tự động hóa hiện đại.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/AsiaOstrich/universal-dev-standards`",
+    "usage_vi": "```\nTạo một tài liệu tiêu chuẩn phát triển chung cho dự án [LANGUAGE] có tên là [PROJECT_NAME]. Bao gồm các phần: 1) Coding standards (ví dụ: quy ước đặt tên, quy tắc định dạng), 2) Git workflow (chiến lược phân nhánh, commit message, hướng dẫn PR), 3) Hướng dẫn kiểm thử (unit, integration, E2E), 4) Cấu trúc tài liệu (README, API docs, quyết định kiến trúc - ADR), và 5) Quy tắc cộng tác với AI (cách sử dụng các công cụ AI như GitHub Copilot, hỗ trợ review code). Sử dụng [TEAM_SIZE] làm quy mô đội ngũ và [PROJECT_COMPLEXITY] (thấp/trung bình/cao).\n```\nSao chép\n\n```\n### Tiêu chuẩn Phát triển Chung cho Dự án: **E-Commerce Platform**\n\n#### 1. Coding Standards\n**Ngôn ngữ:** Python 3.11\n- **Quy ước đặt tên (Naming Conventions):** Sử dụng snake_case cho biến/hàm, PascalCase cho class. Ví dụ: `def calculate_total_price()` chứ không dùng `def CalculateTotalPrice()`.\n- **Định dạng (Formatting):** Tuân thủ PEP 8 với giới hạn 120 ký tự trên mỗi dòng. Sử dụng `black` để tự động định dạng (auto-format) trong CI.\n- **Imports:** Nhóm các import theo thư viện tiêu chuẩn, bên thứ ba và nội bộ. Ví dụ:\n  ```python\n  import os\n  import sys\n  \n  import requests\n  from flask import Flask\n  \n  from app.utils import helper\n  ```\n\n#### 2. Git Workflow\n**Chiến lược phân nhánh (Branching Strategy):** GitHub Flow với nhánh `main` được bảo vệ (protected).\n- **Nhánh (Branches):** Các nhánh feature được tiền tố hóa với `feature/`, ví dụ: `feature/payment-gateway`.\n- **Commits:** Sử dụng Conventional Commits (ví dụ: `feat(payment): add Stripe integration`).\n- **Pull Requests:** Yêu cầu tối thiểu 2 lượt approve, liên kết với ticket Jira và phải pass các bước check của CI.\n\n#### 3. Hướng dẫn Kiểm thử (Testing Guidelines)\n**Độ bao phủ (Coverage):** Tối thiểu 80% test coverage cho unit test đối với các module cốt lõi.\n- **Unit Tests:** Sử dụng `pytest` kèm fixtures cho các dependency. Ví dụ:\n  ```python\n  def test_calculate_discount():\n      assert calculate_discount(100, 20) == 80\n  ```\n- **Integration Tests:** Kiểm thử các API endpoint bằng `pytest` và `FastAPI TestClient`.\n- **E2E Tests:** Sử dụng Playwright cho các luồng người dùng (ví dụ: quy trình thanh toán - checkout process).\n\n#### 4. Cấu trúc Tài liệu (Documentation Structure)\n- **README.md:** Tổng quan dự án, hướng dẫn setup và sơ đồ kiến trúc.\n- **API Docs:** Tự động tạo bằng Swagger/OpenAPI. Ví dụ endpoint:\n  ```\n  GET /api/v1/products/{id} -> Trả về thông tin chi tiết sản phẩm.\n  ```\n- **ADRs:** Tài liệu Quyết định Kiến trúc (Architecture Decision Records) đặt trong thư mục `/docs/adr/` (ví dụ: `adr-001-use-postgres.md`).\n\n#### 5. Quy tắc Cộng tác với AI (AI Collaboration Rules)\n- **GitHub Copilot:** Sử dụng cho mã nguồn boilerplate (ví dụ: các endpoint FastAPI) nhưng phải review thủ công các gợi ý.\n- **Review Code:** Các công cụ AI (ví dụ: CodeClimate) sẽ gắn cờ các lỗi style code; còn logic vẫn yêu cầu con người review.\n- **Tài liệu:** Sử dụng AI để viết bản thảo ADR hoặc README, nhưng phải được kiểm chứng lại bởi team lead.\n\n**Quy mô Đội ngũ:** 8 developer\n**Độ phức tạp Dự án:** Cao (microservices, tích hợp thanh toán)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:44:19.357717Z",
+    "http_status": 200,
+    "content_hash": "631a6e56a4cbdee51e99373a476d6798aa251b76ba978eff89472380912cc670",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\universal-dev-standards.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\universal-dev-standards.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tiêu chuẩn Phát triển Chung: Dự án của bạn",
+  "short_description_vi": "Các tiêu chuẩn phát triển chung, không phụ thuộc vào ngôn ngữ lập trình dành cho các dự án phần mềm. Bao gồm coding standards, quy trình git workflow, hướng dẫn kiểm thử (testing guidelines), cấu trúc tài liệu (documentation structure) và các quy tắc cộng tác với AI. Mang lại lợi ích cho các developer, engineering manager và đội ngũ DevOps bằng cách đảm bảo tính nhất quán và chất lượng trên toàn bộ dự án. Tích hợp tốt với git, các CI/CD pipeline và công cụ phát triển."
+}

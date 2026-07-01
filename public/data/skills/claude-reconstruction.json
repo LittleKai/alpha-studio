@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-reconstruction",
+  "slug": "claude-reconstruction",
+  "name": "claude-Reconstruction",
+  "headline": "claude engineering docs and skills organization",
+  "short_description": "Provide Claude with complete and effective engineering documentation, organize skills/plugins/error question banks/MCP skill collections, handle full Claude engineering adaptation capabilities, and expand decision trees, library knowledge bases, and other functionalities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "Arxchibobo",
+  "install_command": "git clone https://github.com/Arxchibobo/claude-Reconstruction.git",
+  "source_repo_url": "https://github.com/Arxchibobo/claude-Reconstruction",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Reconstruction is a 5-layer engineering configuration system designed to make Claude Code behave like a senior engineer rather than a chatbot. It intelligently loads only relevant documentation per task type, reducing context window consumption from 60% to approximately 20%, while enforcing a structured workflow of planning, confirmation, execution, and delivery. The system includes 8 specialist agents (Planner, Architect, Code Reviewer, Security Analyst, and others), a 15-pattern error library, and persistent memory that survives conversation resets. It automates 95% of decisions autonomously—only asking for user input in 4 specific cases: missing credentials, mutually exclusive approaches, contradictory requirements, or irreversible high-risk operations. Developers benefit from reduced cognitive overhead, faster autonomous execution, and patterns that improve across sessions without manual reporting.\nReduce Claude Code context consumption for complex multi-file projects\nAutomate full engineering workflows without constant user confirmations\nEnforce consistent coding standards and security rules across sessions\nRoute complex architectural or security decisions to specialist agents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arxchibobo/claude-Reconstruction`",
+    "usage": "```\nAct as a Claude Reconstruction expert. I need to organize my engineering documentation for [COMPANY], a [INDUSTRY] company. Here's the [DATA] I have: [INSERT DATA]. Please help me structure this information into a comprehensive knowledge base, including decision trees and error question banks.\n```\nCopy\n\n```\n# Engineering Documentation Structure for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-reconstruction#main-content",
+      "claude-reconstruction#overview",
+      "claude-reconstruction#setup",
+      "claude-reconstruction#examples",
+      "claude-reconstruction#tools",
+      "claude-reconstruction#mcp",
+      "claude-reconstruction#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Reconstruction is a 5-layer engineering configuration system designed to make Claude Code behave like a senior engineer rather than a chatbot. It intelligently loads only relevant documentation per task type, reducing context window consumption from 60% to approximately 20%, while enforcing a structured workflow of planning, confirmation, execution, and delivery. The system includes 8 specialist agents (Planner, Architect, Code Reviewer, Security Analyst, and others), a 15-pattern error library, and persistent memory that survives conversation resets. It automates 95% of decisions autonomously—only asking for user input in 4 specific cases: missing credentials, mutually exclusive approaches, contradictory requirements, or irreversible high-risk operations. Developers benefit from reduced cognitive overhead, faster autonomous execution, and patterns that improve across sessions without manual reporting.\nReduce Claude Code context consumption for complex multi-file projects\nAutomate full engineering workflows without constant user confirmations\nEnforce consistent coding standards and security rules across sessions\nRoute complex architectural or security decisions to specialist agents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arxchibobo/claude-Reconstruction`",
+    "usage_vi": "```\nAct as a Claude Reconstruction expert. I need to organize my engineering documentation for [COMPANY], a [INDUSTRY] company. Here's the [DATA] I have: [INSERT DATA]. Please help me structure this information into a comprehensive knowledge base, including decision trees and error question banks.\n```\nCopy\n\n```\n# Engineering Documentation Structure for GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:38:13.498725Z",
+    "http_status": 200,
+    "content_hash": "42a9c224d397b087480ebc31f2976414168ba3c094d44e1996a7680548f66db0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-reconstruction.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-reconstruction.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude engineering docs and skills organization",
+  "short_description_vi": "Provide Claude with complete and effective engineering documentation, organize skills/plugins/error question banks/MCP skill collections, handle full Claude engineering adaptation capabilities, and expand decision trees, library knowledge bases, and other functionalities."
+}

@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hive",
+  "slug": "hive",
+  "name": "browser-use",
+  "headline": "Hive - Outcome-driven agent framework",
+  "short_description": "Hive is an outcome-driven agent development framework that evolves. It benefits operations teams by automating workflows and improving efficiency. It connects to Python-based tools and workflows, enabling self-improving agents that adapt to business needs.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "adenhq",
+  "install_command": "git clone https://github.com/adenhq/hive.git",
+  "source_repo_url": "https://github.com/adenhq/hive",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "autonomous-agents",
+    "claude-code",
+    "anthropic",
+    "python",
+    "self-improving",
+    "agent-skills",
+    "self-hosted",
+    "automation",
+    "self-improving-ai",
+    "agent-framework",
+    "awesome",
+    "ai-evaluation",
+    "claude",
+    "observability-ai",
+    "human-in-the-loop",
+    "self-improving-agent",
+    "openai",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Hive is an outcome-driven agent development framework designed to automate workflows and enhance operational efficiency for teams. It enables agents to connect with Python-based tools and workflows, allowing them to adapt and improve over time based on business needs. The framework supports Model Context Protocol (MCP) integration for extending agent capabilities and maintains browser automation, terminal tools, and file operation capabilities. Built with a focus on practical automation, Hive helps operations teams reduce manual work by deploying self-improving agents that learn and refine their approaches to recurring tasks.\nAutomate the creation of specialized worker agents for sales, marketing, or operations based on natural language goals.\nImplement real-time monitoring and observability for agent performance and decision-making processes.\nFacilitate continuous evaluation and adaptation of agents to improve their effectiveness over time.\nDeploy agents in a headless environment with CI/CD integration for streamlined operations.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adenhq/hive`",
+    "usage": "```\nUsing the Hive framework, design a self-improving agent to automate [SPECIFIC_WORKFLOW] in [TEAM_DEPARTMENT]. The agent should start with [INITIAL_TASKS] and iteratively improve based on feedback from [METRICS_OR_DATA_SOURCE]. Include error handling for [COMMON_FAILURE_POINTS] and integration with [TOOLS_OR_APIS]. Provide the first iteration of the agent code in Python.\n```\nCopy\n\n```\nHere’s a self-improving agent designed to automate the onboarding workflow for our Customer Success team at Acme Corp. The agent’s initial tasks include creating Jira tickets for new user accounts, sending Slack welcome messages, and logging the onboarding status in Google Sheets. It starts by pulling data from our CRM (HubSpot) via API and iteratively improves based on onboarding completion rates (tracked in our internal dashboard) and user feedback collected via Typeform surveys.\n\nFirst iteration code:\n```python\nimport requests\nfrom datetime import datetime\nimport pandas as pd\n\nclass OnboardingAgent:\n    def __init__(self):\n        self.crm_api_key = \"hsp_abc123xyz\"\n        self.slack_webhook = \"https://hooks.slack.com/services/T123/B456/C789\"\n        self.jira_api = \"https://acme.atlassian.net/rest/api/2/issue\"\n        self.jira_auth = (\"onboarding-agent@acme.com\", \"api_token_123\")\n        self.metrics = []\n\n    def fetch_new_users(self):\n        url = \"https://api.hubapi.com/crm/v3/objects/contacts\"\n        params = {\"limit\": 100, \"properties\": [\"email\", \"firstname\", \"lastname\", \"user_type\"]}\n        headers = {\"Authorization\": f\"Bearer {self.crm_api_key}\"}\n        response = requests.get(url, headers=headers, params=params)\n        return response.json()[\"results\"]\n\n    def create_jira_ticket(self, user):\n        payload = {\n            \"fields\": {\n                \"project\": {\"key\": \"ONB\"},\n                \"summary\": f\"Onboard {user['firstname']} {user['lastname']} ({user['email']})\",\n                \"description\": f\"New user type: {user['user_type']}. Email: {user['email']}\",\n                \"issuetype\": {\"name\": \"Task\"}\n            }\n        }\n        response = requests.post(self.jira_api, json=payload, auth=self.jira_auth)\n        return response.json()['key']\n\n    def send_slack_welcome(self, user):\n        message = {\n            \"text\": f\"Welcome to Acme, {user['firstname']}! Your account is being onboarded. Check #onboarding for updates.\"\n        }\n        requests.post(self.slack_webhook, json=message)\n\n    def log_metrics(self, user, jira_key, success):\n        self.metrics.append({\n            \"timestamp\": datetime.now().isoformat(),\n            \"user_email\": user['email'],\n            \"jira_ticket\": jira_key,\n            \"success\": success\n        })\n        df = pd.DataFrame(self.metrics)\n        df.to_csv(\"onboarding_metrics.csv\", index=False)\n\n    def run(self):\n        new_users = self.fetch_new_users()\n        for user in new_users:\n            try:\n                jira_key = self.create_jira_ticket(user)\n                self.send_slack_welcome(user)\n                self.log_metrics(user, jira_key, True)\n            except Exception as e:\n                self.log_metrics(user, None, False)\n                print(f\"Error onboarding {user['email']}: {str(e)}\")\n\nagent = OnboardingAgent()\nagent.run()\n```\n\nNext steps for iteration:\n1. Add error handling for API rate limits and retry failed tasks.\n2. Integrate with our internal dashboard to pull onboarding completion rates weekly and adjust the agent’s logic (e.g., prioritize high-value users).\n3. Use Typeform feedback to refine the Slack welcome message and Jira ticket templates. The agent will self-improve by analyzing which templates lead to faster onboarding completions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hive#main-content",
+      "hive#overview",
+      "hive#setup",
+      "hive#examples",
+      "hive#tools",
+      "hive#mcp",
+      "hive#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Hive is an outcome-driven agent development framework designed to automate workflows and enhance operational efficiency for teams. It enables agents to connect with Python-based tools and workflows, allowing them to adapt and improve over time based on business needs. The framework supports Model Context Protocol (MCP) integration for extending agent capabilities and maintains browser automation, terminal tools, and file operation capabilities. Built with a focus on practical automation, Hive helps operations teams reduce manual work by deploying self-improving agents that learn and refine their approaches to recurring tasks.\nAutomate the creation of specialized worker agents for sales, marketing, or operations based on natural language goals.\nImplement real-time monitoring and observability for agent performance and decision-making processes.\nFacilitate continuous evaluation and adaptation of agents to improve their effectiveness over time.\nDeploy agents in a headless environment with CI/CD integration for streamlined operations.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adenhq/hive`",
+    "usage_vi": "```\nUsing the Hive framework, design a self-improving agent to automate [SPECIFIC_WORKFLOW] in [TEAM_DEPARTMENT]. The agent should start with [INITIAL_TASKS] and iteratively improve based on feedback from [METRICS_OR_DATA_SOURCE]. Include error handling for [COMMON_FAILURE_POINTS] and integration with [TOOLS_OR_APIS]. Provide the first iteration of the agent code in Python.\n```\nCopy\n\n```\nHere’s a self-improving agent designed to automate the onboarding workflow for our Customer Success team at Acme Corp. The agent’s initial tasks include creating Jira tickets for new user accounts, sending Slack welcome messages, and logging the onboarding status in Google Sheets. It starts by pulling data from our CRM (HubSpot) via API and iteratively improves based on onboarding completion rates (tracked in our internal dashboard) and user feedback collected via Typeform surveys.\n\nFirst iteration code:\n```python\nimport requests\nfrom datetime import datetime\nimport pandas as pd\n\nclass OnboardingAgent:\n    def __init__(self):\n        self.crm_api_key = \"hsp_abc123xyz\"\n        self.slack_webhook = \"https://hooks.slack.com/services/T123/B456/C789\"\n        self.jira_api = \"https://acme.atlassian.net/rest/api/2/issue\"\n        self.jira_auth = (\"onboarding-agent@acme.com\", \"api_token_123\")\n        self.metrics = []\n\n    def fetch_new_users(self):\n        url = \"https://api.hubapi.com/crm/v3/objects/contacts\"\n        params = {\"limit\": 100, \"properties\": [\"email\", \"firstname\", \"lastname\", \"user_type\"]}\n        headers = {\"Authorization\": f\"Bearer {self.crm_api_key}\"}\n        response = requests.get(url, headers=headers, params=params)\n        return response.json()[\"results\"]\n\n    def create_jira_ticket(self, user):\n        payload = {\n            \"fields\": {\n                \"project\": {\"key\": \"ONB\"},\n                \"summary\": f\"Onboard {user['firstname']} {user['lastname']} ({user['email']})\",\n                \"description\": f\"New user type: {user['user_type']}. Email: {user['email']}\",\n                \"issuetype\": {\"name\": \"Task\"}\n            }\n        }\n        response = requests.post(self.jira_api, json=payload, auth=self.jira_auth)\n        return response.json()['key']\n\n    def send_slack_welcome(self, user):\n        message = {\n            \"text\": f\"Welcome to Acme, {user['firstname']}! Your account is being onboarded. Check #onboarding for updates.\"\n        }\n        requests.post(self.slack_webhook, json=message)\n\n    def log_metrics(self, user, jira_key, success):\n        self.metrics.append({\n            \"timestamp\": datetime.now().isoformat(),\n            \"user_email\": user['email'],\n            \"jira_ticket\": jira_key,\n            \"success\": success\n        })\n        df = pd.DataFrame(self.metrics)\n        df.to_csv(\"onboarding_metrics.csv\", index=False)\n\n    def run(self):\n        new_users = self.fetch_new_users()\n        for user in new_users:\n            try:\n                jira_key = self.create_jira_ticket(user)\n                self.send_slack_welcome(user)\n                self.log_metrics(user, jira_key, True)\n            except Exception as e:\n                self.log_metrics(user, None, False)\n                print(f\"Error onboarding {user['email']}: {str(e)}\")\n\nagent = OnboardingAgent()\nagent.run()\n```\n\nNext steps for iteration:\n1. Add error handling for API rate limits and retry failed tasks.\n2. Integrate with our internal dashboard to pull onboarding completion rates weekly and adjust the agent’s logic (e.g., prioritize high-value users).\n3. Use Typeform feedback to refine the Slack welcome message and Jira ticket templates. The agent will self-improve by analyzing which templates lead to faster onboarding completions.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:08:35.161221Z",
+    "http_status": 200,
+    "content_hash": "078949dcdfa9192035ee804e37bf0a557f7557185d1b368e1970bf78812e725e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hive.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hive.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Hive - Outcome-driven agent framework",
+  "short_description_vi": "Hive is an outcome-driven agent development framework that evolves. It benefits operations teams by automating workflows and improving efficiency. It connects to Python-based tools and workflows, enabling self-improving agents that adapt to business needs."
+}

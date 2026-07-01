@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/find-arbitrage-opps",
+  "slug": "find-arbitrage-opps",
+  "name": "Trade Prediction Markets",
+  "headline": "Find Arbitrage Opportunities",
+  "short_description": "This skill identifies arbitrage opportunities by comparing prices for trading pairs across various exchanges connected through Hummingbot. It is designed for traders looking to optimize their trades by leveraging price discrepancies.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "hummingbot",
+  "install_command": "git clone https://github.com/hummingbot/skills",
+  "source_repo_url": "https://github.com/hummingbot/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "arbitrage",
+    "find",
+    "opps",
+    "trading"
+  ],
+  "sections": {
+    "overview": "The find-arbitrage-opps skill automates the discovery of arbitrage opportunities by comparing prices for fungible trading pairs across multiple exchanges connected through Hummingbot. It scans integrated exchange connectors to identify price discrepancies that traders can exploit for profit. This skill eliminates manual price monitoring and enables traders to quickly spot market inefficiencies. By leveraging Hummingbot's exchange connectivity, users can evaluate arbitrage potential across their configured trading venues without manual research.\nCompare prices for BTC across multiple exchanges.\nIdentify profit opportunities for USDT trading pairs.\nAutomate trading strategies using real-time price data.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/hummingbot/skills --skill find-arbitrage-opps`\n`git clone https://github.com/hummingbot/skills`",
+    "usage": "```\nAnalyze the following trading pairs across [EXCHANGE1], [EXCHANGE2], and [EXCHANGE3] to identify any arbitrage opportunities for [CRYPTO_PAIR]. Return the results in a table with columns: Exchange, Bid Price, Ask Price, Spread (%), and Potential Profit ($). Include data for [DATE] at [TIME]. Focus on opportunities where the spread exceeds [MIN_SPREAD_THRESHOLD]%. Use current market data from Hummingbot. [CRYPTO_PAIR] = [E.g., BTC/USDT, ETH/USDC]\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "find-arbitrage-opps#main-content",
+      "find-arbitrage-opps#overview",
+      "find-arbitrage-opps#setup",
+      "find-arbitrage-opps#examples",
+      "find-arbitrage-opps#related",
+      "trade-prediction-markets"
+    ],
+    "overview_vi": "The find-arbitrage-opps skill automates the discovery of arbitrage opportunities by comparing prices for fungible trading pairs across multiple exchanges connected through Hummingbot. It scans integrated exchange connectors to identify price discrepancies that traders can exploit for profit. This skill eliminates manual price monitoring and enables traders to quickly spot market inefficiencies. By leveraging Hummingbot's exchange connectivity, users can evaluate arbitrage potential across their configured trading venues without manual research.\nCompare prices for BTC across multiple exchanges.\nIdentify profit opportunities for USDT trading pairs.\nAutomate trading strategies using real-time price data.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/hummingbot/skills --skill find-arbitrage-opps`\n`git clone https://github.com/hummingbot/skills`",
+    "usage_vi": "```\nAnalyze the following trading pairs across [EXCHANGE1], [EXCHANGE2], and [EXCHANGE3] to identify any arbitrage opportunities for [CRYPTO_PAIR]. Return the results in a table with columns: Exchange, Bid Price, Ask Price, Spread (%), and Potential Profit ($). Include data for [DATE] at [TIME]. Focus on opportunities where the spread exceeds [MIN_SPREAD_THRESHOLD]%. Use current market data from Hummingbot. [CRYPTO_PAIR] = [E.g., BTC/USDT, ETH/USDC]\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:58:23.965334Z",
+    "http_status": 200,
+    "content_hash": "09ed7f47eb2fbe7f9ed2b4272ae2f766eef3b8c8bc19b89c89cd2dcf4f0b2629",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\find-arbitrage-opps.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\find-arbitrage-opps.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Find Arbitrage Opportunities",
+  "short_description_vi": "This skill identifies arbitrage opportunities by comparing prices for trading pairs across various exchanges connected through Hummingbot. It is designed for traders looking to optimize their trades by leveraging price discrepancies."
+}

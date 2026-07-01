@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/copilot-api",
+  "slug": "copilot-api",
+  "name": "Copilot API",
+  "headline": "Copilot API - GitHub Copilot Proxy",
+  "short_description": "Copilot API exposes GitHub Copilot through an OpenAI and Anthropic-compatible API, enabling direct usage with Claude Code. Operations teams can integrate AI-powered code suggestions into their workflows, improving developer productivity and code quality. Connects to GitHub Copilot, Claude Code, and other AI models.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "prassaaa",
+  "install_command": "git clone https://github.com/prassaaa/copilot-api.git",
+  "source_repo_url": "https://github.com/prassaaa/copilot-api",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "grok",
+    "gemini-ai",
+    "open-ai",
+    "github-copilot",
+    "reverse-engineering",
+    "claude",
+    "claude-code",
+    "open-ai-compatible-api"
+  ],
+  "sections": {
+    "overview": "Copilot API is a reverse-engineered proxy server that exposes GitHub Copilot through OpenAI and Anthropic API formats, enabling integration with Claude Code and other compatible tools. It provides a mobile-first dashboard for managing multiple GitHub accounts, monitoring token quota usage across Chat, Completions, and Premium tiers, and testing endpoints via an integrated API playground. The server supports automatic account rotation using four strategies (sticky, round-robin, quota-based, hybrid), real-time request logging with Server-Sent Events, and model fallback capabilities. Developers and operations teams can use it to integrate AI-powered code suggestions directly into their workflows without needing proprietary Copilot integrations. Built with Bun, it runs locally and requires only a GitHub account with Copilot access.\nIntegrate GitHub Copilot with Claude Code without an Anthropic API key\nRoute Copilot requests through tools requiring OpenAI-compatible APIs\nMonitor and manage Copilot quota usage across multiple GitHub accounts\nTest Copilot API endpoints with the built-in playground before production use",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/prassaaa/copilot-api`",
+    "usage": "```\nUse the Copilot API to generate [LANGUAGE] code for [DESCRIBE_FUNCTIONALITY]. Ensure the code follows best practices for [SPECIFIC_STANDARD, e.g., performance, readability, security]. Include comments explaining key sections. Output the code in a single code block. Example: 'Use the Copilot API to generate Python code for a REST API endpoint that processes user authentication tokens. Follow PEP 8 guidelines and include JWT validation.'\n```\nCopy\n\n```\n```python\nimport jwt\nfrom flask import Flask, request, jsonify\nfrom datetime import datetime, timedelta\n\napp = Flask(__name__)\n\n# Secret key for JWT token signing (in production, use environment variables)\nSECRET_KEY = 'your-secret-key-here'\n\n@app.route('/authenticate', methods=['POST'])\ndef authenticate():\n    \"\"\"\n    Authenticate a user and return a JWT token.\n    Expects JSON payload: {'username': 'user', 'password': 'pass'}\n    \"\"\"\n    data = request.get_json()\n    username = data.get('username')\n    password = data.get('password')\n\n    # Validate credentials (in production, use a database or auth service)\n    if username != 'admin' or password != 'securepassword123':\n        return jsonify({'error': 'Invalid credentials'}), 401\n\n    # Generate JWT token with 1-hour expiration\n    token = jwt.encode({\n        'username': username,\n        'exp': datetime.utcnow() + timedelta(hours=1)\n    }, SECRET_KEY, algorithm='HS256')\n\n    return jsonify({'token': token}), 200\n\nif __name__ == '__main__':\n    app.run(debug=True)\n```\n\n### Key Features:\n- **JWT Validation**: Uses PyJWT for secure token handling.\n- **Error Handling**: Returns 401 for invalid credentials.\n- **Expiration**: Tokens expire after 1 hour for security.\n- **Flask Integration**: Follows REST API conventions.\n\n### Next Steps:\n1. Replace `SECRET_KEY` with an environment variable in production.\n2. Add rate limiting to prevent brute-force attacks.\n3. Integrate with a user database for real authentication.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "copilot-api#main-content",
+      "copilot-api#overview",
+      "copilot-api#setup",
+      "copilot-api#examples",
+      "copilot-api#tools",
+      "copilot-api#mcp",
+      "copilot-api#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Copilot API là một reverse-engineered proxy server giúp cung cấp GitHub Copilot dưới dạng định dạng API tương thích với OpenAI và Anthropic, cho phép tích hợp với Claude Code và các công cụ tương thích khác. Nó cung cấp một dashboard ưu tiên thiết bị di động (mobile-first) để quản lý nhiều tài khoản GitHub, giám sát lượng sử dụng token quota trên các gói Chat, Completions và Premium, và kiểm thử các endpoint thông qua một API playground tích hợp sẵn. Server này hỗ trợ tự động xoay vòng tài khoản (account rotation) theo 4 chiến lược (sticky, round-robin, quota-based, hybrid), ghi log request theo thời gian thực bằng Server-Sent Events và có khả năng chuyển đổi dự phòng (model fallback). Các nhà phát triển và đội ngũ vận hành có thể sử dụng nó để tích hợp các gợi ý code bằng AI trực tiếp vào quy trình làm việc của họ mà không cần các tích hợp Copilot độc quyền. Được xây dựng bằng Bun, ứng dụng chạy locally và chỉ yêu cầu một tài khoản GitHub có quyền truy cập Copilot.\n\nTích hợp GitHub Copilot với Claude Code mà không cần Anthropic API key\nĐịnh tuyến các request Copilot qua các công cụ yêu cầu API tương thích với OpenAI\nGiám sát và quản lý việc sử dụng Copilot quota trên nhiều tài khoản GitHub\nKiểm thử các endpoint của Copilot API bằng playground tích hợp sẵn trước khi đưa vào production",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/prassaaa/copilot-api`",
+    "usage_vi": "```\nSử dụng Copilot API để tạo mã nguồn [LANGUAGE] cho [DESCRIBE_FUNCTIONALITY]. Đảm bảo mã nguồn tuân thủ các thực hành tốt nhất (best practices) về [SPECIFIC_STANDARD, ví dụ: hiệu năng, tính dễ đọc, bảo mật]. Bao gồm chú thích giải thích các phần quan trọng. Trả về mã nguồn trong một block code duy nhất. Ví dụ: 'Sử dụng Copilot API để tạo mã nguồn Python cho một endpoint REST API xử lý token xác thực người dùng. Tuân thủ nguyên tắc PEP 8 và bao gồm xác thực JWT.'\n```\nCopy\n\n```\n```python\nimport jwt\nfrom flask import Flask, request, jsonify\nfrom datetime import datetime, timedelta\n\napp = Flask(__name__)\n\n# Secret key for JWT token signing (in production, use environment variables)\nSECRET_KEY = 'your-secret-key-here'\n\n@app.route('/authenticate', methods=['POST'])\ndef authenticate():\n    \"\"\"\n    Authenticate a user and return a JWT token.\n    Expects JSON payload: {'username': 'user', 'password': 'pass'}\n    \"\"\"\n    data = request.get_json()\n    username = data.get('username')\n    password = data.get('password')\n\n    # Validate credentials (in production, use a database or auth service)\n    if username != 'admin' or password != 'securepassword123':\n        return jsonify({'error': 'Invalid credentials'}), 401\n\n    # Generate JWT token with 1-hour expiration\n    token = jwt.encode({\n        'username': username,\n        'exp': datetime.utcnow() + timedelta(hours=1)\n    }, SECRET_KEY, algorithm='HS256')\n\n    return jsonify({'token': token}), 200\n\nif __name__ == '__main__':\n    app.run(debug=True)\n```\n\n### Các tính năng chính:\n- **Xác thực JWT**: Sử dụng PyJWT để xử lý token bảo mật.\n- **Xử lý lỗi**: Trả về mã 401 khi thông tin xác thực không hợp lệ.\n- **Thời gian hết hạn**: Token sẽ hết hạn sau 1 giờ để đảm bảo bảo mật.\n- **Tích hợp Flask**: Tuân thủ các quy chuẩn của REST API.\n\n### Các bước tiếp theo:\n1. Thay thế `SECRET_KEY` bằng một biến môi trường (environment variable) trong môi trường production.\n2. Thêm giới hạn tần suất (rate limiting) để ngăn chặn các cuộc tấn công brute-force.\n3. Tích hợp với cơ sở dữ liệu người dùng để thực hiện xác thực thực tế."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:16:23.000313Z",
+    "http_status": 200,
+    "content_hash": "7b712907e4051536bc99ba85edc7d4f4b46633c8b88e1ab4364733355fadf7bf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\copilot-api.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\copilot-api.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Copilot API - GitHub Copilot Proxy",
+  "short_description_vi": "Copilot API cung cấp GitHub Copilot thông qua một API tương thích với OpenAI và Anthropic, cho phép sử dụng trực tiếp với Claude Code. Các đội ngũ vận hành có thể tích hợp các gợi ý code bằng AI vào quy trình làm việc của mình, giúp nâng cao năng suất của lập trình viên và chất lượng mã nguồn. Kết nối trực tiếp với GitHub Copilot, Claude Code và các mô hình AI khác."
+}

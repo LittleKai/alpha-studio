@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/servers",
+  "slug": "servers",
+  "name": "react-native-best-practices",
+  "headline": "Model Context Protocol Servers - Enhance AI",
+  "short_description": "The Model Context Protocol Servers enable integration and management of AI models, enhancing their deployment and performance. Built with TypeScript, this repository supports developers in creating strong AI applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "270 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/servers",
+  "source_repo_url": "https://github.com/modelcontextprotocol/servers",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "protocols",
+    "AI models",
+    "TypeScript",
+    "integration",
+    "server management"
+  ],
+  "sections": {
+    "overview": "The Model Context Protocol Servers repository is a collection of reference server implementations designed for developers building AI agent skills and integrations. It provides the foundational code and patterns needed to create servers compatible with Claude, Cursor, and other AI platforms that support the Model Context Protocol. Developers can use these implementations as examples and building blocks for extending AI agent capabilities with custom tools and integrations. The repository is actively maintained with TypeScript implementations and supports both official and community-driven server development. This resource helps developers standardize how they expose tools and resources to AI agents through the MCP specification.\nDeploy AI models in production environments with minimal downtime.\nIntegrate multiple AI services to create a cohesive application ecosystem.\nOptimize model performance through resource management and scaling.\nManage server resources efficiently to ensure high availability of AI applications.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/servers`\n`git clone https://github.com/modelcontextprotocol/servers`",
+    "usage": "```\nCreate a TypeScript server using the Model Context Protocol to integrate [AI_MODEL] into my application. The server should handle [SPECIFIC_TASK], such as real-time data processing or batch predictions. Include error handling and logging for [LOGGING_LEVEL] (e.g., debug, info, error).\n```\nCopy\n\n```\nHere's a TypeScript server implementation using the Model Context Protocol to integrate a sentiment analysis model into your application:\n\n```typescript\nimport { ModelContextProtocol } from 'model-context-protocol';\nimport { SentimentAnalysisModel } from './sentiment-analysis-model';\n\nclass SentimentAnalysisServer {\n  private model: SentimentAnalysisModel;\n  private logger: any;\n\n  constructor(loggingLevel: string) {\n    this.model = new SentimentAnalysisModel();\n    this.logger = this.initializeLogger(loggingLevel);\n  }\n\n  private initializeLogger(loggingLevel: string): any {\n    // Initialize logger based on the specified logging level\n    // ...\n  }\n\n  public async analyzeSentiment(text: string): Promise<string> {\n    try {\n      this.logger.info(`Analyzing sentiment for text: ${text}`);\n      const sentiment = await this.model.predict(text);\n      this.logger.info(`Sentiment analysis result: ${sentiment}`);\n      return sentiment;\n    } catch (error) {\n      this.logger.error(`Error analyzing sentiment: ${error.message}`);\n      throw error;\n    }\n  }\n}\n\nexport default SentimentAnalysisServer;\n```\n\nThis server handles real-time sentiment analysis tasks, with error handling and logging for the specified logging level. The server can be easily integrated into your application to provide sentiment analysis capabilities.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "servers#main-content",
+      "servers#overview",
+      "servers#setup",
+      "servers#examples",
+      "servers#tools",
+      "servers#mcp",
+      "servers#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The Model Context Protocol Servers repository is a collection of reference server implementations designed for developers building AI agent skills and integrations. It provides the foundational code and patterns needed to create servers compatible with Claude, Cursor, and other AI platforms that support the Model Context Protocol. Developers can use these implementations as examples and building blocks for extending AI agent capabilities with custom tools and integrations. The repository is actively maintained with TypeScript implementations and supports both official and community-driven server development. This resource helps developers standardize how they expose tools and resources to AI agents through the MCP specification.\nDeploy AI models in production environments with minimal downtime.\nIntegrate multiple AI services to create a cohesive application ecosystem.\nOptimize model performance through resource management and scaling.\nManage server resources efficiently to ensure high availability of AI applications.",
+    "setup_vi": "Terminal\nCopy\n`claude install modelcontextprotocol/servers`\n`git clone https://github.com/modelcontextprotocol/servers`",
+    "usage_vi": "```\nCreate a TypeScript server using the Model Context Protocol to integrate [AI_MODEL] into my application. The server should handle [SPECIFIC_TASK], such as real-time data processing or batch predictions. Include error handling and logging for [LOGGING_LEVEL] (e.g., debug, info, error).\n```\nCopy\n\n```\nHere's a TypeScript server implementation using the Model Context Protocol to integrate a sentiment analysis model into your application:\n\n```typescript\nimport { ModelContextProtocol } from 'model-context-protocol';\nimport { SentimentAnalysisModel } from './sentiment-analysis-model';\n\nclass SentimentAnalysisServer {\n  private model: SentimentAnalysisModel;\n  private logger: any;\n\n  constructor(loggingLevel: string) {\n    this.model = new SentimentAnalysisModel();\n    this.logger = this.initializeLogger(loggingLevel);\n  }\n\n  private initializeLogger(loggingLevel: string): any {\n    // Initialize logger based on the specified logging level\n    // ...\n  }\n\n  public async analyzeSentiment(text: string): Promise<string> {\n    try {\n      this.logger.info(`Analyzing sentiment for text: ${text}`);\n      const sentiment = await this.model.predict(text);\n      this.logger.info(`Sentiment analysis result: ${sentiment}`);\n      return sentiment;\n    } catch (error) {\n      this.logger.error(`Error analyzing sentiment: ${error.message}`);\n      throw error;\n    }\n  }\n}\n\nexport default SentimentAnalysisServer;\n```\n\nThis server handles real-time sentiment analysis tasks, with error handling and logging for the specified logging level. The server can be easily integrated into your application to provide sentiment analysis capabilities.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:19.844419Z",
+    "http_status": 200,
+    "content_hash": "2c3ae3836738b4a550f3ca5cab4ca228bff71ab93d282f39f30a180ac866c348",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\servers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\servers.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Model Context Protocol Servers - Enhance AI",
+  "short_description_vi": "The Model Context Protocol Servers enable integration and management of AI models, enhancing their deployment and performance. Built with TypeScript, this repository supports developers in creating strong AI applications."
+}

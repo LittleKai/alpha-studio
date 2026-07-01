@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rss2newsletter",
+  "slug": "rss2newsletter",
+  "name": "RSS to Newsletter",
+  "headline": "RSS to Newsletter - Convert Feeds to Emails",
+  "short_description": "Convert RSS or Atom feeds into email newsletters. Marketing teams benefit from automated content distribution. Connects to Amazon SES, Mailchimp, and Sendy for email delivery.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "ElliotKillick",
+  "install_command": "git clone https://github.com/ElliotKillick/rss2newsletter.git",
+  "source_repo_url": "https://github.com/ElliotKillick/rss2newsletter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "listmonk-api",
+    "email-marketing",
+    "rss2email",
+    "feed",
+    "newsletter",
+    "minimalist",
+    "atom-feed",
+    "rss-feed",
+    "mailchimp",
+    "amazon-ses",
+    "marketing",
+    "blog",
+    "rss-to-email",
+    "rss",
+    "sendy-newsletter",
+    "marketing-automation",
+    "cli",
+    "automation",
+    "sendy",
+    "minimal"
+  ],
+  "sections": {
+    "overview": "rss2newsletter automates the conversion of RSS and Atom feeds into formatted email newsletters, eliminating manual content distribution. It integrates with listmonk and Amazon SES to send emails at a fraction of proprietary platform costs. The tool automatically extracts content images using OpenGraph metadata and requires minimal setup—download listmonk, install rss2newsletter via pip, configure a template, and start sending. Built as a lightweight, open-source alternative to Mailchimp's RSS-to-Email feature, it supports feeds from blogs, news sites, and social media. Teams managing content distribution, newsletter publishers, and cost-conscious marketers benefit from its simplicity and affordability.\nAutomated blog post distribution to subscriber email lists\nPublishing curated news feeds as branded newsletters\nCost-effective alternative to Mailchimp for RSS-based campaigns\nLightweight newsletter automation for small teams or personal projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ElliotKillick/rss2newsletter`",
+    "usage": "```\nConvert the latest 5-10 entries from the RSS feed at [RSS_FEED_URL] into a polished email newsletter. Format it for [EMAIL_PLATFORM: Amazon SES/Mailchimp/Sendy]. Include a subject line, header image from [HEADER_IMAGE_URL], and a 'Read More' CTA button linking back to the original articles. Use a [TONE: professional/casual/fun] voice and keep the length under [MAX_LENGTH: 800 words]. Add a brief introduction paragraph summarizing the key themes in this issue. Ensure all links are tracked with UTM parameters using [SOURCE: newsletter], [MEDIUM: email], and [CAMPAIGN: [NEWSLETTER_NAME]].\n```\nCopy\n\n```\nSubject: 🚀 Tech Trends: AI Breakthroughs, Cloud Updates & Cybersecurity Alerts\n\n**Header Image:** https://example.com/images/tech-newsletter-header.jpg\n\n**Welcome to the June Tech Digest!**\n\nThis month’s newsletter covers groundbreaking AI developments, critical cloud infrastructure updates, and urgent cybersecurity alerts that could impact your systems. Whether you're a developer, IT leader, or tech enthusiast, these insights will keep you ahead of the curve.\n\n---\n\n**🔥 Top Stories This Week**\n\n**1. Google Unveils PaLM 2: The Next Leap in AI Language Models**\n*June 15, 2024 | 5 min read*\n\nGoogle has announced PaLM 2, its most advanced language model yet, boasting improved reasoning, coding, and multilingual capabilities. Early benchmarks show a 23% reduction in errors for complex tasks compared to its predecessor.\n\n🔗 [Read More](https://example.com/google-palm2?utm_source=newsletter&utm_medium=email&utm_campaign=tech-digest-june-2024)\n\n**2. AWS Announces 30% Price Drop for Graviton3 Processors**\n*June 14, 2024 | 3 min read*\n\nAmazon Web Services is reducing costs for Graviton3-based instances by up to 30%, making ARM-based cloud computing more accessible. This move is expected to save enterprises thousands in annual cloud bills.\n\n🔗 [Read More](https://example.com/aws-graviton3-price-drop?utm_source=newsletter&utm_medium=email&utm_campaign=tech-digest-june-2024)\n\n**3. Critical Zero-Day Vulnerability Discovered in Apache Log4j**\n*June 13, 2024 | 4 min read*\n\nA new zero-day exploit in Apache Log4j (CVE-2024-XXXX) allows remote code execution. Security teams are urged to patch immediately. Our security team has provided mitigation steps in this issue.\n\n🔗 [Read More](https://example.com/apache-log4j-vulnerability?utm_source=newsletter&utm_medium=email&utm_campaign=tech-digest-june-2024)\n\n---\n\n**📊 This Week in Numbers**\n- **AI Adoption:** 68% of enterprises now use AI in at least one business function (up from 55% last year).\n- **Cloud Spend:** Companies migrating to multi-cloud architectures see a 22% reduction in costs.\n- **Security Breaches:** 43% of breaches in 2024 involved third-party vendors.\n\n---\n\n**💡 Pro Tip of the Week**\n\"Always test new AI models in a sandbox environment before deploying to production. PaLM 2’s improved capabilities come with new edge cases that require thorough validation.\"\n\n---\n\n**📅 Upcoming Events**\n- **AWS re:Inforce 2024** | July 9-10 | Virtual\n- **Google Cloud Next 2024** | July 22-24 | San Francisco\n- **Black Hat USA 2024** | August 3-8 | Las Vegas\n\n---\n\n**📢 Share the Newsletter**\nKnow someone who’d love this content? Forward this email or [share on LinkedIn](https://linkedin.com/share?url=https://example.com/tech-digest-june-2024).\n\n**🔗 Unsubscribe** | **📧 Update Preferences**\n\n*Tech Digest is curated by the AI Content Team. For feedback, reply to this email.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "rss2newsletter#main-content",
+      "rss2newsletter#overview",
+      "rss2newsletter#setup",
+      "rss2newsletter#examples",
+      "rss2newsletter#tools",
+      "rss2newsletter#mcp",
+      "rss2newsletter#related",
+      "marketingskills",
+      "copywriting",
+      "leo-bot"
+    ],
+    "overview_vi": "rss2newsletter automates the conversion of RSS and Atom feeds into formatted email newsletters, eliminating manual content distribution. It integrates with listmonk and Amazon SES to send emails at a fraction of proprietary platform costs. The tool automatically extracts content images using OpenGraph metadata and requires minimal setup—download listmonk, install rss2newsletter via pip, configure a template, and start sending. Built as a lightweight, open-source alternative to Mailchimp's RSS-to-Email feature, it supports feeds from blogs, news sites, and social media. Teams managing content distribution, newsletter publishers, and cost-conscious marketers benefit from its simplicity and affordability.\nAutomated blog post distribution to subscriber email lists\nPublishing curated news feeds as branded newsletters\nCost-effective alternative to Mailchimp for RSS-based campaigns\nLightweight newsletter automation for small teams or personal projects",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ElliotKillick/rss2newsletter`",
+    "usage_vi": "```\nConvert the latest 5-10 entries from the RSS feed at [RSS_FEED_URL] into a polished email newsletter. Format it for [EMAIL_PLATFORM: Amazon SES/Mailchimp/Sendy]. Include a subject line, header image from [HEADER_IMAGE_URL], and a 'Read More' CTA button linking back to the original articles. Use a [TONE: professional/casual/fun] voice and keep the length under [MAX_LENGTH: 800 words]. Add a brief introduction paragraph summarizing the key themes in this issue. Ensure all links are tracked with UTM parameters using [SOURCE: newsletter], [MEDIUM: email], and [CAMPAIGN: [NEWSLETTER_NAME]].\n```\nCopy\n\n```\nSubject: 🚀 Tech Trends: AI Breakthroughs, Cloud Updates & Cybersecurity Alerts\n\n**Header Image:** https://example.com/images/tech-newsletter-header.jpg\n\n**Welcome to the June Tech Digest!**\n\nThis month’s newsletter covers groundbreaking AI developments, critical cloud infrastructure updates, and urgent cybersecurity alerts that could impact your systems. Whether you're a developer, IT leader, or tech enthusiast, these insights will keep you ahead of the curve.\n\n---\n\n**🔥 Top Stories This Week**\n\n**1. Google Unveils PaLM 2: The Next Leap in AI Language Models**\n*June 15, 2024 | 5 min read*\n\nGoogle has announced PaLM 2, its most advanced language model yet, boasting improved reasoning, coding, and multilingual capabilities. Early benchmarks show a 23% reduction in errors for complex tasks compared to its predecessor.\n\n🔗 [Read More](https://example.com/google-palm2?utm_source=newsletter&utm_medium=email&utm_campaign=tech-digest-june-2024)\n\n**2. AWS Announces 30% Price Drop for Graviton3 Processors**\n*June 14, 2024 | 3 min read*\n\nAmazon Web Services is reducing costs for Graviton3-based instances by up to 30%, making ARM-based cloud computing more accessible. This move is expected to save enterprises thousands in annual cloud bills.\n\n🔗 [Read More](https://example.com/aws-graviton3-price-drop?utm_source=newsletter&utm_medium=email&utm_campaign=tech-digest-june-2024)\n\n**3. Critical Zero-Day Vulnerability Discovered in Apache Log4j**\n*June 13, 2024 | 4 min read*\n\nA new zero-day exploit in Apache Log4j (CVE-2024-XXXX) allows remote code execution. Security teams are urged to patch immediately. Our security team has provided mitigation steps in this issue.\n\n🔗 [Read More](https://example.com/apache-log4j-vulnerability?utm_source=newsletter&utm_medium=email&utm_campaign=tech-digest-june-2024)\n\n---\n\n**📊 This Week in Numbers**\n- **AI Adoption:** 68% of enterprises now use AI in at least one business function (up from 55% last year).\n- **Cloud Spend:** Companies migrating to multi-cloud architectures see a 22% reduction in costs.\n- **Security Breaches:** 43% of breaches in 2024 involved third-party vendors.\n\n---\n\n**💡 Pro Tip of the Week**\n\"Always test new AI models in a sandbox environment before deploying to production. PaLM 2’s improved capabilities come with new edge cases that require thorough validation.\"\n\n---\n\n**📅 Upcoming Events**\n- **AWS re:Inforce 2024** | July 9-10 | Virtual\n- **Google Cloud Next 2024** | July 22-24 | San Francisco\n- **Black Hat USA 2024** | August 3-8 | Las Vegas\n\n---\n\n**📢 Share the Newsletter**\nKnow someone who’d love this content? Forward this email or [share on LinkedIn](https://linkedin.com/share?url=https://example.com/tech-digest-june-2024).\n\n**🔗 Unsubscribe** | **📧 Update Preferences**\n\n*Tech Digest is curated by the AI Content Team. For feedback, reply to this email.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:44.015741Z",
+    "http_status": 200,
+    "content_hash": "d5be394323c9f0a3327be1a83c4cb0643372bd92faf5ea2651e4d828709f8a7c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rss2newsletter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rss2newsletter.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "RSS to Newsletter - Convert Feeds to Emails",
+  "short_description_vi": "Convert RSS or Atom feeds into email newsletters. Marketing teams benefit from automated content distribution. Connects to Amazon SES, Mailchimp, and Sendy for email delivery."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/antigravity-awesome-skills",
+  "slug": "antigravity-awesome-skills",
+  "name": "200+ Agentic Skills for AI Agents",
+  "headline": "200+ Agentic Skills for AI Agents - Antigravity",
+  "short_description": "Discover the ultimate collection of 200+ high-performance agentic skills tailored for Claude Code, Antigravity, and Cursor. These battle-tested skills include official offerings from Anthropic and Vercel, ensuring top-notch performance for AI agents.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "sickn33",
+  "install_command": "claude install sickn33/antigravity-awesome-skills",
+  "source_repo_url": "https://github.com/sickn33/antigravity-awesome-skills",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "autonomous-coding",
+    "security-auditing",
+    "agentic-skills",
+    "claude-code",
+    "react-patterns"
+  ],
+  "sections": {
+    "overview": "Antigravity Awesome Skills is a comprehensive directory of agentic skills designed for AI development platforms including Claude Code, Antigravity, and Cursor. The collection features 200+ battle-tested skills that have been validated for production use. It includes official offerings from leading organizations like Anthropic and Vercel, ensuring quality and reliability. The repository is actively maintained with regular updates and community contributions, making it a resource for developers building with AI agents.\nAutomate repetitive coding tasks to save time and reduce errors.\nEnhance security auditing processes by integrating automated vulnerability scanning.\nImplement advanced React patterns to improve application performance and maintainability.\nStreamline development workflows by automating deployment and CI/CD processes.",
+    "setup": "Terminal\nCopy\n`claude install sickn33/antigravity-awesome-skills`\n`git clone https://github.com/sickn33/antigravity-awesome-skills`",
+    "usage": "```\nDeploy a [TYPE] application on Vercel using the [FRAMEWORK] framework. Ensure the deployment includes [SPECIFIC_FEATURES] such as automatic preview environments and incremental static regeneration. Provide step-by-step instructions for setting up the Git repository and configuring the vercel.json file.\n```\nCopy\n\n```\nTo deploy a Next.js application on Vercel with automatic preview environments and incremental static regeneration, follow these steps:\n\n1. **Set Up Your Git Repository**: Initialize a new Git repository for your Next.js project and push your code to a GitHub, GitLab, or Bitbucket repository.\n\n2. **Install Vercel CLI**: Install the Vercel CLI by running `npm install -g vercel` in your terminal.\n\n3. **Configure vercel.json**: Create a `vercel.json` file in the root of your project with the following configuration:\n```json\n{\n  \"version\": 2,\n  \"builds\": [\n    {\n      \"src\": \"next.config.js\",\n      \"use\": \"@vercel/next\"\n    }\n  ],\n  \"routes\": [\n    {\n      \"src\": \"/(.*)\",\n      \"dest\": \"/index.html\"\n    }\n  ]\n}\n```\n\n4. **Deploy Your Application**: Run `vercel` in your terminal. Follow the prompts to link your project to your Vercel account and deploy your application.\n\n5. **Enable Automatic Preview Environments**: In the Vercel dashboard, navigate to your project settings and enable automatic preview environments for each Git push.\n\n6. **Configure Incremental Static Regeneration**: Add the following code to your `next.config.js` file to enable incremental static regeneration:\n```javascript\nmodule.exports = {\n  images: {\n    domains: ['example.com'],\n  },\n  reactStrictMode: true,\n  swcMinify: true,\n  experimental: {\n    incrementalStaticRegeneration: true,\n  },\n}\n```\n\nYour Next.js application is now deployed on Vercel with automatic preview environments and incremental static regeneration enabled.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "antigravity-awesome-skills#main-content",
+      "antigravity-awesome-skills#overview",
+      "antigravity-awesome-skills#setup",
+      "antigravity-awesome-skills#examples",
+      "antigravity-awesome-skills#tools",
+      "antigravity-awesome-skills#mcp",
+      "antigravity-awesome-skills#related",
+      "claude-skills",
+      "firecrawl",
+      "compass-hr-ai-module"
+    ],
+    "overview_vi": "Antigravity Awesome Skills is a comprehensive directory of agentic skills designed for AI development platforms including Claude Code, Antigravity, and Cursor. The collection features 200+ battle-tested skills that have been validated for production use. It includes official offerings from leading organizations like Anthropic and Vercel, ensuring quality and reliability. The repository is actively maintained with regular updates and community contributions, making it a resource for developers building with AI agents.\nAutomate repetitive coding tasks to save time and reduce errors.\nEnhance security auditing processes by integrating automated vulnerability scanning.\nImplement advanced React patterns to improve application performance and maintainability.\nStreamline development workflows by automating deployment and CI/CD processes.",
+    "setup_vi": "Terminal\nCopy\n`claude install sickn33/antigravity-awesome-skills`\n`git clone https://github.com/sickn33/antigravity-awesome-skills`",
+    "usage_vi": "```\nDeploy a [TYPE] application on Vercel using the [FRAMEWORK] framework. Ensure the deployment includes [SPECIFIC_FEATURES] such as automatic preview environments and incremental static regeneration. Provide step-by-step instructions for setting up the Git repository and configuring the vercel.json file.\n```\nCopy\n\n```\nTo deploy a Next.js application on Vercel with automatic preview environments and incremental static regeneration, follow these steps:\n\n1. **Set Up Your Git Repository**: Initialize a new Git repository for your Next.js project and push your code to a GitHub, GitLab, or Bitbucket repository.\n\n2. **Install Vercel CLI**: Install the Vercel CLI by running `npm install -g vercel` in your terminal.\n\n3. **Configure vercel.json**: Create a `vercel.json` file in the root of your project with the following configuration:\n```json\n{\n  \"version\": 2,\n  \"builds\": [\n    {\n      \"src\": \"next.config.js\",\n      \"use\": \"@vercel/next\"\n    }\n  ],\n  \"routes\": [\n    {\n      \"src\": \"/(.*)\",\n      \"dest\": \"/index.html\"\n    }\n  ]\n}\n```\n\n4. **Deploy Your Application**: Run `vercel` in your terminal. Follow the prompts to link your project to your Vercel account and deploy your application.\n\n5. **Enable Automatic Preview Environments**: In the Vercel dashboard, navigate to your project settings and enable automatic preview environments for each Git push.\n\n6. **Configure Incremental Static Regeneration**: Add the following code to your `next.config.js` file to enable incremental static regeneration:\n```javascript\nmodule.exports = {\n  images: {\n    domains: ['example.com'],\n  },\n  reactStrictMode: true,\n  swcMinify: true,\n  experimental: {\n    incrementalStaticRegeneration: true,\n  },\n}\n```\n\nYour Next.js application is now deployed on Vercel with automatic preview environments and incremental static regeneration enabled.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:39.104429Z",
+    "http_status": 200,
+    "content_hash": "15843a8abf69fb6fb48951ddcd27c4a0ba85055a2e8fc169c2049f0e91d61a57",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\antigravity-awesome-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\antigravity-awesome-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "200+ Agentic Skills for AI Agents - Antigravity",
+  "short_description_vi": "Discover the ultimate collection of 200+ high-performance agentic skills tailored for Claude Code, Antigravity, and Cursor. These battle-tested skills include official offerings from Anthropic and Vercel, ensuring top-notch performance for AI agents."
+}

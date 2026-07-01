@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/superset",
+  "slug": "superset",
+  "name": "superset",
+  "headline": "Superset: Orchestrate Your Coding Agents",
+  "short_description": "Superset is a terminal for orchestrating multiple AI agents like Claude Code and OpenCode. It allows operations teams to run parallel agents on their machines, streamlining coding tasks and workflow automation. Connects to CLI-based agents and integrates with existing development environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "superset-sh",
+  "install_command": "git clone https://github.com/superset-sh/superset.git",
+  "source_repo_url": "https://github.com/superset-sh/superset",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "parallel-agents",
+    "cli",
+    "terminal-ui",
+    "electron",
+    "superset",
+    "agents",
+    "worktrees",
+    "coding-agent",
+    "cli-agents",
+    "cursor-agent",
+    "conductor",
+    "ai-agents",
+    "terminal",
+    "orchestration",
+    "tui",
+    "claudecode",
+    "opencode",
+    "codex",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Superset is an innovative automation skill designed for orchestrating multiple agents, including Claude Code and OpenCode, directly from your terminal. This skill allows developers and AI practitioners to run a team of CLI agents on their machines, enabling seamless collaboration and task execution. By leveraging Superset, users can manage various coding agents in parallel, significantly enhancing productivity and efficiency in development workflows. One of the key benefits of using Superset is its ability to isolate different projects within separate git worktrees, effectively avoiding conflicts that can arise during development. This feature is particularly valuable for teams working on multiple projects simultaneously. Additionally, Superset provides a centralized interface for monitoring the status of various agents, allowing users to receive notifications and updates in real-time. This streamlined approach not only saves time but also simplifies the management of complex development environments. Superset is ideal for developers, product managers, and AI practitioners who are looking to optimize their workflow automation. With its intermediate implementation difficulty, users can set up Superset in approximately 30 minutes. The skill is particularly beneficial for those who need to quickly review and edit code changes, thanks to its built-in diff viewer. Moreover, it allows for the establishment of automated environments for new projects using workspace presets, making it easier to onboard new team members or initiate new tasks. Incorporating Superset into your AI-first workflows can significantly enhance your team's efficiency and collaboration. As organizations increasingly adopt AI automation, having a robust tool like Superset can help streamline processes and improve overall productivity. With its practical use cases, such as running multiple coding agents in parallel and monitoring their performance from a single interface, Superset stands out as a valuable asset for anyone looking to leverage AI agent skills effectively.\nRun multiple coding agents in parallel to speed up development tasks.\nIsolate different projects in separate git worktrees to avoid conflicts.\nMonitor the status of various agents from a single interface and receive notifications.\nQuickly review and edit code changes using the built-in diff viewer.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/superset-sh/superset`",
+    "usage": "```\nUse Superset to orchestrate [TASK_DESCRIPTION] by running [NUMBER] parallel AI agents (e.g., Claude Code, OpenCode) on [SPECIFIC_MACHINE/ENVIRONMENT]. Coordinate their work to [OBJECTIVE], ensuring efficient resource allocation and conflict resolution. Monitor progress via [MONITORING_TOOL] and provide a consolidated report of results. Example: 'Use Superset to refactor the legacy authentication module in our Python monorepo by running 4 parallel AI agents on my local dev machine. Each agent should handle a different service layer (API, database, caching, auth logic). Coordinate their changes to ensure backward compatibility, monitor progress via VS Code terminal, and provide a consolidated diff report of all modifications.'\n```\nCopy\n\n```\nSuperset successfully orchestrated the refactor of the legacy authentication module across 4 parallel AI agents. Agent 1 (API layer) restructured the FastAPI endpoints, reducing route complexity by 35% and adding OpenAPI 3.1 documentation. Agent 2 (database layer) optimized the PostgreSQL schema, reducing query latency by 42% for user sessions and adding partial indexes for common lookup patterns. Agent 3 (caching layer) implemented a Redis-based cache with TTL policies, reducing database load by 68% during peak hours. Agent 4 (auth logic) migrated from JWT to OAuth2 with PKCE, improving security posture while maintaining 100% backward compatibility with existing mobile clients.\n\nProgress tracking showed: Agent 1 completed in 12m 45s, Agent 2 in 18m 22s, Agent 3 in 9m 11s, and Agent 4 in 22m 3s. Superset detected a potential conflict in session management between Agents 2 and 4 (both modified the user_session table), automatically resolving it by prioritizing Agent 4's changes and adding a migration script for Agent 2's optimizations. The consolidated diff report shows 18 files modified, 4 new files added (including a migration script and cache configuration), and zero breaking changes. All tests passed with 98.7% coverage. The new architecture reduces authentication-related latency by 55% and improves security compliance with OWASP ASVS requirements. A follow-up Superset run is recommended to update the API documentation and add load testing scenarios.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "superset#main-content",
+      "superset#overview",
+      "superset#setup",
+      "superset#examples",
+      "superset#tools",
+      "superset#mcp",
+      "superset#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Superset là một skill tự động hóa sáng tạo được thiết kế để điều phối nhiều agent, bao gồm Claude Code và OpenCode, trực tiếp từ terminal của bạn. Skill này cho phép các nhà phát triển và chuyên gia AI chạy một nhóm các CLI agent trên máy của họ, giúp thực thi tác vụ và cộng tác một cách liền mạch. Bằng cách tận dụng Superset, người dùng có thể quản lý song song nhiều coding agent khác nhau, nâng cao đáng kể năng suất và hiệu quả trong quy trình phát triển. Một trong những lợi ích chính của việc sử dụng Superset là khả năng cô lập các dự án khác nhau trong các git worktree riêng biệt, giúp tránh các xung đột có thể phát sinh trong quá trình phát triển một cách hiệu quả. Tính năng này đặc biệt giá trị đối với các đội ngũ làm việc trên nhiều dự án cùng một lúc. Ngoài ra, Superset cung cấp một giao diện tập trung để giám sát trạng thái của các agent khác nhau, cho phép người dùng nhận thông báo và cập nhật theo thời gian thực. Phương pháp tiếp cận tối ưu này không chỉ tiết kiệm thời gian mà còn đơn giản hóa việc quản lý các môi trường phát triển phức tạp. Superset là lựa chọn lý tưởng cho các nhà phát triển, quản lý sản phẩm và chuyên gia AI đang tìm cách tối ưu hóa quy trình tự động hóa của họ. Với độ khó triển khai ở mức trung bình, người dùng có thể setup Superset trong khoảng 30 phút. Skill này đặc biệt hữu ích cho những ai cần nhanh chóng xem xét và chỉnh sửa các thay đổi mã nguồn nhờ trình xem diff tích hợp sẵn. Hơn nữa, nó cho phép thiết lập môi trường tự động cho các dự án mới bằng cách sử dụng các workspace preset, giúp dễ dàng hơn trong việc onboard thành viên mới hoặc bắt đầu các tác vụ mới. Việc tích hợp Superset vào các quy trình làm việc định hướng AI (AI-first workflow) có thể nâng cao đáng kể hiệu quả và khả năng cộng tác của đội ngũ. Khi các tổ chức ngày càng áp dụng nhiều giải pháp tự động hóa bằng AI, việc sở hữu một công cụ mạnh mẽ như Superset sẽ giúp hợp lý hóa các quy trình và cải thiện năng suất tổng thể. Với các trường hợp sử dụng thực tế như chạy song song nhiều coding agent và giám sát hiệu suất của chúng từ một giao diện duy nhất, Superset nổi bật như một giải pháp giá trị cho bất kỳ ai muốn khai thác hiệu quả các skill của AI agent.\nChạy song song nhiều coding agent để đẩy nhanh các tác vụ phát triển.\nCô lập các dự án khác nhau trong các git worktree riêng biệt để tránh xung đột.\nGiám sát trạng thái của nhiều agent khác nhau từ một giao diện duy nhất và nhận thông báo.\nNhanh chóng xem xét và chỉnh sửa các thay đổi code bằng trình xem diff tích hợp.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/superset-sh/superset`",
+    "usage_vi": "```\nSử dụng Superset để điều phối [TASK_DESCRIPTION] bằng cách chạy [NUMBER] AI agent song song (ví dụ: Claude Code, OpenCode) trên [SPECIFIC_MACHINE/ENVIRONMENT]. Phối hợp hoạt động của các agent để đạt được [OBJECTIVE], đảm bảo phân bổ tài nguyên hiệu quả và giải quyết xung đột. Giám sát tiến độ thông qua [MONITORING_TOOL] và cung cấp báo cáo kết quả tổng hợp. Ví dụ: 'Sử dụng Superset để refactor module xác thực cũ (legacy authentication module) trong Python monorepo của chúng tôi bằng cách chạy 4 AI agent song song trên máy dev local của tôi. Mỗi agent sẽ xử lý một tầng dịch vụ khác nhau (API, database, caching, auth logic). Phối hợp các thay đổi của chúng để đảm bảo tính tương thích ngược, giám sát tiến độ qua terminal của VS Code và cung cấp báo cáo diff tổng hợp về tất cả các thay đổi.'\n```\nCopy\n\n```\nSuperset đã điều phối thành công việc refactor module xác thực cũ trên 4 AI agent song song. Agent 1 (tầng API) đã tái cấu trúc các endpoint FastAPI, giảm 35% độ phức tạp của route và bổ sung tài liệu OpenAPI 3.1. Agent 2 (tầng database) đã tối ưu hóa schema PostgreSQL, giảm 42% độ trễ truy vấn cho các session của người dùng và thêm các index một phần (partial indexes) cho các mẫu tìm kiếm phổ biến. Agent 3 (tầng caching) đã triển khai cache dựa trên Redis với các chính sách TTL, giảm 68% tải lượng database trong giờ cao điểm. Agent 4 (auth logic) đã chuyển đổi từ JWT sang OAuth2 với PKCE, nâng cao tính bảo mật trong khi vẫn duy trì khả năng tương thích ngược 100% với các mobile client hiện tại.\n\nTheo dõi tiến độ cho thấy: Agent 1 hoàn thành trong 12 phút 45 giây, Agent 2 trong 18 phút 22 giây, Agent 3 trong 9 phút 11 giây, và Agent 4 trong 22 phút 3 giây. Superset đã phát hiện một xung đột tiềm ẩn trong việc quản lý session giữa Agent 2 và Agent 4 (cả hai đều sửa đổi bảng user_session), tự động giải quyết xung đột đó bằng cách ưu tiên các thay đổi của Agent 4 và thêm một migration script cho các tối ưu hóa của Agent 2. Báo cáo diff tổng hợp hiển thị 18 file được sửa đổi, 4 file mới được thêm vào (bao gồm một migration script và cấu hình cache), và không có breaking change nào. Tất cả các bài kiểm tra (test) đều vượt qua với độ bao phủ (coverage) 98,7%. Kiến trúc mới giúp giảm 55% độ trễ liên quan đến xác thực và cải thiện mức độ tuân thủ bảo mật với các yêu cầu của OWASP ASVS. Khuyến nghị chạy Superset tiếp theo để cập nhật tài liệu API và thêm các kịch bản kiểm thử tải (load testing).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:38.712146Z",
+    "http_status": 200,
+    "content_hash": "d4d482aedb503a94db4d01dd52eba974ace22aba8dcf8f0859ecd770fd452d6b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\superset.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\superset.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Superset: Điều phối các Coding Agent của bạn",
+  "short_description_vi": "Superset là một terminal giúp điều phối nhiều AI agent như Claude Code và OpenCode. Công cụ này cho phép các đội ngũ vận hành chạy song song nhiều agent trên thiết bị của họ, giúp tối ưu hóa các tác vụ lập trình và tự động hóa quy trình làm việc. Superset kết nối với các agent dựa trên CLI và tích hợp với các môi trường phát triển hiện có."
+}

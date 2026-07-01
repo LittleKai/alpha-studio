@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sfmc-scripting",
+  "slug": "sfmc-scripting",
+  "name": "SFMC Scripting",
+  "headline": "SFMC Scripting - Manage SFMC Data Extensions",
+  "short_description": "Node.js toolkit for safely auditing and deleting Data Extensions and folders in Salesforce Marketing Cloud (SFMC). Features dependency checking, dry-run mode, schema backups, protected item detection, and comprehensive audit logging.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "aali87",
+  "install_command": "git clone https://github.com/aali87/sfmc-scripting.git",
+  "source_repo_url": "https://github.com/aali87/sfmc-scripting",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "marketing-cloud",
+    "sfmc",
+    "rest-api",
+    "marketing-automation",
+    "nodejs",
+    "cli",
+    "devops",
+    "data-extensions",
+    "data-governance",
+    "soap-api",
+    "salesforce-marketing-cloud",
+    "salesforce",
+    "data-management"
+  ],
+  "sections": {
+    "overview": "SFMC Scripting is a Node.js toolkit designed for Salesforce Marketing Cloud administrators and developers who need to safely manage Data Extensions at scale. The toolkit provides dependency analysis across queries, automations, journeys, and triggered sends to prevent accidental breakage. All operations default to dry-run mode, requiring explicit confirmation before making changes, while automatic schema backups and resumable operations protect against data loss. Features include multi-business unit support, 24-hour metadata caching to minimize API calls, and protected item detection to prevent deletion of system-critical resources. Whether cleaning up archive folders, analyzing stale data extensions, or bulk-deleting with confidence, this toolkit brings safety and visibility to SFMC Data Extension lifecycle management.\nAudit folder contents and identify unused or stale Data Extensions before deletion\nPreview dependencies and potential impacts before deleting Data Extensions or automations\nBulk delete archived Data Extensions with automatic cleanup of safe dependent queries\nAnalyze Business Units to identify candidates for deletion based on activity thresholds",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aali87/sfmc-scripting`",
+    "usage": "```\nI need to clean up outdated Data Extensions in our [COMPANY] SFMC account. Here's what I want to do: [DESCRIBE TASK]. Please provide a step-by-step guide using the SFMC Scripting toolkit, including any necessary precautions or best practices for [INDUSTRY] compliance.\n```\nCopy\n\n```\n# SFMC Data Extension Cleanup Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sfmc-scripting#main-content",
+      "sfmc-scripting#overview",
+      "sfmc-scripting#setup",
+      "sfmc-scripting#examples",
+      "sfmc-scripting#tools",
+      "sfmc-scripting#mcp",
+      "sfmc-scripting#related",
+      "marketingskills",
+      "copywriting",
+      "twitter-bot"
+    ],
+    "overview_vi": "SFMC Scripting là một bộ công cụ Node.js được thiết kế cho các quản trị viên và nhà phát triển Salesforce Marketing Cloud để quản lý an toàn các Data Extension ở quy mô lớn. Bộ công cụ này cung cấp khả năng phân tích phụ thuộc trên các query, automation, journey và triggered send nhằm ngăn chặn các sự cố đứt gãy hệ thống ngoài ý muốn. Mọi thao tác đều mặc định ở chế độ dry-run, yêu cầu xác nhận rõ ràng trước khi thực hiện thay đổi, trong khi tính năng tự động sao lưu schema và khôi phục hoạt động dở dang giúp bảo vệ dữ liệu không bị mất mát. Các tính năng nổi bật bao gồm hỗ trợ nhiều Business Unit, cache metadata trong 24 giờ để giảm thiểu số lượng API call, và phát hiện các mục được bảo vệ nhằm ngăn chặn việc xóa các tài nguyên quan trọng của hệ thống. Dù là dọn dẹp thư mục lưu trữ, phân tích các data extension cũ không dùng đến, hay tự tin xóa hàng loạt, bộ công cụ này đều mang lại sự an toàn và tính minh bạch cho quy trình quản lý vòng đời của SFMC Data Extension.\nKiểm tra nội dung thư mục và xác định các Data Extension cũ hoặc không sử dụng trước khi xóa\nXem trước các phần phụ thuộc và tác động tiềm ẩn trước khi xóa Data Extension hoặc automation\nXóa hàng loạt các Data Extension đã lưu trữ cùng với việc tự động dọn dẹp các query phụ thuộc an toàn\nPhân tích các Business Unit để xác định các đối tượng cần xóa dựa trên ngưỡng hoạt động",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/aali87/sfmc-scripting`",
+    "usage_vi": "```\nTôi cần dọn dẹp các Data Extension đã lỗi thời trong tài khoản SFMC của [COMPANY]. Dưới đây là những gì tôi muốn làm: [DESCRIBE TASK]. Vui lòng cung cấp hướng dẫn từng bước sử dụng bộ công cụ SFMC Scripting, bao gồm các biện pháp phòng ngừa cần thiết hoặc thực hành tốt nhất (best practices) để đảm bảo tuân thủ tiêu chuẩn của [INDUSTRY].\n```\nCopy\n\n```\n# Hướng dẫn dọn dẹp SFMC Data Extension\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:39:41.654109Z",
+    "http_status": 200,
+    "content_hash": "cbb4c20016ca6450193448ce01a6fe20a60a9d168811ef22d69ca7e8f583ca33",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sfmc-scripting.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sfmc-scripting.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SFMC Scripting - Quản lý SFMC Data Extensions",
+  "short_description_vi": "Bộ công cụ Node.js giúp kiểm tra và xóa an toàn các Data Extension cũng như thư mục trong Salesforce Marketing Cloud (SFMC). Hỗ trợ kiểm tra phụ thuộc, chế độ dry-run, sao lưu schema, phát hiện các mục được bảo vệ và ghi log audit toàn diện."
+}

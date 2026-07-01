@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/stt-mcp-server-linux",
+  "slug": "stt-mcp-server-linux",
+  "name": "browser-use",
+  "headline": "STT-MCP-Server-Linux - Voice Control for Tmux",
+  "short_description": "Local speech-to-text MCP server for Linux, enabling hands-free control of Tmux sessions. Ideal for operations teams using Claude Code, it connects to Linux systems and integrates with Tmux workflows for efficient command execution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "marcindulak",
+  "install_command": "git clone https://github.com/marcindulak/stt-mcp-server-linux.git",
+  "source_repo_url": "https://github.com/marcindulak/stt-mcp-server-linux",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "tmux",
+    "linux",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "stt-mcp-server-linux is a local speech-to-text MCP server designed for Linux systems, enabling hands-free control through push-to-talk functionality via the Right Ctrl key. It integrates directly with Tmux sessions and Claude Code, allowing transcribed text to be injected into the input stream for seamless command execution. The server runs in a Docker container with access to host input and audio devices, using the Whisper tiny model for transcription by default. It supports both MCP mode for integration with Claude and standalone mode for direct Tmux use. The tool is ideal for operations teams, developers, and system administrators seeking efficient voice-controlled workflows.\nHands-free command execution in Tmux sessions using voice\nVoice-controlled Claude Code interactions within terminal environments\nAccessibility enhancement for developers with mobility constraints\nRapid terminal command input without typing in operations workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/marcindulak/stt-mcp-server-linux`\n1. **Clone the repository**:\n   ```bash\n   git clone https://github.com/yourusername/stt-mcp-server-linux.git\n   cd stt-mcp-server-linux\n   ```\n2. **Install dependencies**:\n   ```bash\n   pip install -r requirements.txt\n   ```\n3. **Configure the server**:\n   - Edit the `config.ini` file to match your system settings.\n   - Set the correct Tmux socket path if needed.",
+    "usage": "```\nSet up a local speech-to-text MCP server on my Linux system. I want to control my Tmux sessions using voice commands. My [COMPANY] is in the [INDUSTRY] sector, and I need to process [DATA] efficiently. Guide me through the installation and configuration process.\n```\nCopy\n\n```\n# Local Speech-to-Text MCP Server Setup Guide\n\n- Start the server:\n  ```bash\n  python server.py\n  ```\n- Use voice commands to control your Tmux sessions.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "stt-mcp-server-linux#main-content",
+      "stt-mcp-server-linux#overview",
+      "stt-mcp-server-linux#setup",
+      "stt-mcp-server-linux#examples",
+      "stt-mcp-server-linux#tools",
+      "stt-mcp-server-linux#mcp",
+      "stt-mcp-server-linux#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "stt-mcp-server-linux is a local speech-to-text MCP server designed for Linux systems, enabling hands-free control through push-to-talk functionality via the Right Ctrl key. It integrates directly with Tmux sessions and Claude Code, allowing transcribed text to be injected into the input stream for seamless command execution. The server runs in a Docker container with access to host input and audio devices, using the Whisper tiny model for transcription by default. It supports both MCP mode for integration with Claude and standalone mode for direct Tmux use. The tool is ideal for operations teams, developers, and system administrators seeking efficient voice-controlled workflows.\nHands-free command execution in Tmux sessions using voice\nVoice-controlled Claude Code interactions within terminal environments\nAccessibility enhancement for developers with mobility constraints\nRapid terminal command input without typing in operations workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/marcindulak/stt-mcp-server-linux`\n1. **Clone the repository**:\n   ```bash\n   git clone https://github.com/yourusername/stt-mcp-server-linux.git\n   cd stt-mcp-server-linux\n   ```\n2. **Install dependencies**:\n   ```bash\n   pip install -r requirements.txt\n   ```\n3. **Configure the server**:\n   - Edit the `config.ini` file to match your system settings.\n   - Set the correct Tmux socket path if needed.",
+    "usage_vi": "```\nSet up a local speech-to-text MCP server on my Linux system. I want to control my Tmux sessions using voice commands. My [COMPANY] is in the [INDUSTRY] sector, and I need to process [DATA] efficiently. Guide me through the installation and configuration process.\n```\nCopy\n\n```\n# Local Speech-to-Text MCP Server Setup Guide\n\n- Start the server:\n  ```bash\n  python server.py\n  ```\n- Use voice commands to control your Tmux sessions."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:46:42.379767Z",
+    "http_status": 200,
+    "content_hash": "0632b6df68bc8a0c70515bd5db56ad106f26a4903aecc31f66bcd9c3d2d1ff22",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\stt-mcp-server-linux.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\stt-mcp-server-linux.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "STT-MCP-Server-Linux - Voice Control for Tmux",
+  "short_description_vi": "Local speech-to-text MCP server for Linux, enabling hands-free control of Tmux sessions. Ideal for operations teams using Claude Code, it connects to Linux systems and integrates with Tmux workflows for efficient command execution."
+}

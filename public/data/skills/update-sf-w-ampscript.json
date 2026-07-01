@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/update-sf-w-ampscript",
+  "slug": "update-sf-w-ampscript",
+  "name": "Update Sf W Ampscript",
+  "headline": "Update Salesforce from Marketing Cloud with",
+  "short_description": "Update Salesforce Sales and Service Cloud records directly from Marketing Cloud using AMPscript and Automation Studio, enabling one-way bidirectional data sync.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "MarketingThibs",
+  "install_command": "git clone https://github.com/MarketingThibs/update-sf-w-ampscript.git",
+  "source_repo_url": "https://github.com/MarketingThibs/update-sf-w-ampscript",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ampscript-language",
+    "marketing-cloud",
+    "salesforce-developers",
+    "sfmc",
+    "ampscript",
+    "exacttarget",
+    "marketingcloud"
+  ],
+  "sections": {
+    "overview": "This skill enables Marketing Cloud users to update Salesforce Sales Cloud and Service Cloud records using AMPscript Salesforce Functions within Automation Studio. Since Marketing Cloud Connect doesn't support bidirectional synchronization, this approach uses a data extension populated by SQL or automated filters, combined with an AMPscript HTML content block executed in a Script Activity. The solution supports scheduled automations that loop through matching records and update specific Salesforce object fields using the UpdateSingleSalesforceObject function. Teams managing cross-cloud data workflows benefit from this method to automate field updates, status changes, and link generation without manual intervention.\nAutomatically update Salesforce account status based on Marketing Cloud campaign engagement\nSync encrypted tracking links from Marketing Cloud to Salesforce custom fields\nUpdate opportunity records in Salesforce triggered by Marketing Cloud automation events\nPopulate Salesforce contact fields with personalized data from Marketing Cloud daily runs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MarketingThibs/update-sf-w-ampscript`",
+    "usage": "```\nUpdate Sales/Service Cloud records from Marketing Cloud using AMPscript. [COMPANY] is [INDUSTRY]. Here is the [DATA] to update: [DATA]. Use Automation Studio to ensure the updates are processed efficiently. Provide the AMPscript code to accomplish this task.\n```\nCopy\n\n```\n```ampscript\n%%[\n  VAR @rows, @row, @rowCount, @email, @firstName, @lastName, @company, @industry\n  SET @rows = RetrieveSalesforceObjects('Contact', 'Id, Email, FirstName, LastName, Company__c, Industry__c', 'Email', '=', '=')\n  SET @rowCount = rowcount(@rows)\n\n  FOR @row = 1 TO @rowCount DO\n    SET @email = field(@rows, 'Email', @row)\n    SET @firstName = field(@rows, 'FirstName', @row)\n    SET @lastName = field(@rows, 'LastName', @row)\n    SET @company = field(@rows, 'Company__c', @row)\n    SET @industry = field(@rows, 'Industry__c', @row)\n\n    UPSERTDATA('Contact', 1, 'Email', @email, 'FirstName', @firstName, 'LastName', @lastName, 'Company__c', @company, 'Industry__c', @industry)\n  NEXT @row\n]%%\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "update-sf-w-ampscript#main-content",
+      "update-sf-w-ampscript#overview",
+      "update-sf-w-ampscript#setup",
+      "update-sf-w-ampscript#examples",
+      "update-sf-w-ampscript#tools",
+      "update-sf-w-ampscript#mcp",
+      "update-sf-w-ampscript#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "Skill này cho phép người dùng Marketing Cloud cập nhật các bản ghi Salesforce Sales Cloud và Service Cloud bằng cách sử dụng các hàm AMPscript Salesforce trong Automation Studio. Vì Marketing Cloud Connect không hỗ trợ đồng bộ hóa hai chiều, phương pháp này sử dụng một data extension được đổ dữ liệu bằng SQL hoặc bộ lọc tự động, kết hợp với một HTML content block của AMPscript được thực thi trong một Script Activity. Giải pháp hỗ trợ các tiến trình tự động hóa theo lịch trình (scheduled automations) giúp lặp qua các bản ghi phù hợp và cập nhật các trường đối tượng Salesforce cụ thể thông qua hàm UpdateSingleSalesforceObject. Các đội ngũ quản lý luồng dữ liệu liên đám mây (cross-cloud) sẽ được hưởng lợi từ phương pháp này để tự động hóa việc cập nhật trường dữ liệu, thay đổi trạng thái và tạo liên kết mà không cần can thiệp thủ công.\nTự động cập nhật trạng thái tài khoản Salesforce dựa trên mức độ tương tác chiến dịch trong Marketing Cloud\nĐồng bộ hóa các liên kết theo dõi được mã hóa từ Marketing Cloud sang các trường tùy chỉnh (custom fields) của Salesforce\nCập nhật các bản ghi cơ hội (opportunity) trong Salesforce được kích hoạt từ các sự kiện tự động hóa của Marketing Cloud\nĐiền dữ liệu cá nhân hóa từ các tiến trình chạy hàng ngày của Marketing Cloud vào các trường liên hệ (contact) trên Salesforce",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/MarketingThibs/update-sf-w-ampscript`",
+    "usage_vi": "```\nCập nhật các bản ghi Sales/Service Cloud từ Marketing Cloud bằng AMPscript. [COMPANY] hoạt động trong ngành [INDUSTRY]. Dưới đây là [DATA] cần cập nhật: [DATA]. Sử dụng Automation Studio để đảm bảo các bản cập nhật được xử lý hiệu quả. Cung cấp mã AMPscript để thực hiện tác vụ này.\n```\nCopy\n\n```\n```ampscript\n%%[\n  VAR @rows, @row, @rowCount, @email, @firstName, @lastName, @company, @industry\n  SET @rows = RetrieveSalesforceObjects('Contact', 'Id, Email, FirstName, LastName, Company__c, Industry__c', 'Email', '=', '=')\n  SET @rowCount = rowcount(@rows)\n\n  FOR @row = 1 TO @rowCount DO\n    SET @email = field(@rows, 'Email', @row)\n    SET @firstName = field(@rows, 'FirstName', @row)\n    SET @lastName = field(@rows, 'LastName', @row)\n    SET @company = field(@rows, 'Company__c', @row)\n    SET @industry = field(@rows, 'Industry__c', @row)\n\n    UPSERTDATA('Contact', 1, 'Email', @email, 'FirstName', @firstName, 'LastName', @lastName, 'Company__c', @company, 'Industry__c', @industry)\n  NEXT @row\n]%%\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:58:02.249124Z",
+    "http_status": 200,
+    "content_hash": "51b4754de382da1a2dcdeb5c450428ebd55a03b5904d177d1bb22ed7583b9a99",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\update-sf-w-ampscript.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\update-sf-w-ampscript.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cập nhật Salesforce từ Marketing Cloud bằng",
+  "short_description_vi": "Cập nhật trực tiếp các bản ghi Salesforce Sales và Service Cloud từ Marketing Cloud bằng AMPscript và Automation Studio, hỗ trợ đồng bộ dữ liệu hai chiều một hướng."
+}

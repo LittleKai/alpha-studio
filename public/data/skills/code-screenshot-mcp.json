@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/code-screenshot-mcp",
+  "slug": "code-screenshot-mcp",
+  "name": "Code Screenshot MCP",
+  "headline": "Generate code screenshots from Claude",
+  "short_description": "Automates code screenshot generation from Claude for documentation, tutorials, and internal knowledge sharing. Connects to Claude and generates visual code assets for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "MoussaabBadla",
+  "install_command": "git clone https://github.com/MoussaabBadla/code-screenshot-mcp.git",
+  "source_repo_url": "https://github.com/MoussaabBadla/code-screenshot-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "codescreenshot",
+    "mcp",
+    "claude-code",
+    "mcp-server"
+  ],
+  "sections": {
+    "overview": "Code Screenshot Generator MCP is a Model Context Protocol server that enables Claude to create visually polished code screenshots with syntax highlighting and professional themes. It supports direct code input, file-based screenshots with line range selection, git diff visualization, and batch processing of multiple files. The tool automatically detects programming languages from file extensions and offers five customizable color themes including Dracula, Nord, Monokai, and GitHub variants. Teams use it to quickly generate visual code assets for documentation, tutorials, knowledge bases, and internal sharing without manual screenshot tools.\nGenerate code snippets for technical documentation and API guides\nCreate syntax-highlighted visuals for tutorial blogs and educational content\nBatch screenshot multiple source files for code review presentations\nVisualize git diffs for change logs and commit documentation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MoussaabBadla/code-screenshot-mcp`",
+    "usage": "```\nGenerate a clean, professional screenshot of the code snippet below for documentation purposes. Format it for readability with syntax highlighting, and include a subtle drop shadow. Code to screenshot: ```[CODE]```. Ensure the background is light (e.g., #f8f8f8) and the font is monospace (e.g., Fira Code or JetBrains Mono). Add a 1px border in a neutral color (#e0e0e0) around the code block.\n```\nCopy\n\n```\nHere’s a screenshot of a Python function for calculating Fibonacci numbers, formatted for documentation:\n\n![Code Screenshot](https://via.placeholder.com/800x400/f8f8f8/e0e0e0?text=def+fibonacci(n):%0A++++if+n+<=+1:%0A++++++++return+n%0A++++return+fibonacci(n-1)+%2B+fibonacci(n-2)%0A%0Aresult+%3D+fibonacci(10)%0Aprint(result)+%23+Output:+55)\n\nThe screenshot features:\n- Syntax highlighting (keywords in blue, strings in green, comments in gray).\n- A light gray border (#e0e0e0) around the code block.\n- Monospace font (JetBrains Mono) for clarity.\n- Subtle drop shadow for a polished look.\n- Background color #f8f8f8 for readability.\n\nThis format is ideal for embedding in Markdown docs, Confluence pages, or internal wikis.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "code-screenshot-mcp#main-content",
+      "code-screenshot-mcp#overview",
+      "code-screenshot-mcp#setup",
+      "code-screenshot-mcp#examples",
+      "code-screenshot-mcp#tools",
+      "code-screenshot-mcp#mcp",
+      "code-screenshot-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Code Screenshot Generator MCP is a Model Context Protocol server that enables Claude to create visually polished code screenshots with syntax highlighting and professional themes. It supports direct code input, file-based screenshots with line range selection, git diff visualization, and batch processing of multiple files. The tool automatically detects programming languages from file extensions and offers five customizable color themes including Dracula, Nord, Monokai, and GitHub variants. Teams use it to quickly generate visual code assets for documentation, tutorials, knowledge bases, and internal sharing without manual screenshot tools.\nGenerate code snippets for technical documentation and API guides\nCreate syntax-highlighted visuals for tutorial blogs and educational content\nBatch screenshot multiple source files for code review presentations\nVisualize git diffs for change logs and commit documentation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MoussaabBadla/code-screenshot-mcp`",
+    "usage_vi": "```\nGenerate a clean, professional screenshot of the code snippet below for documentation purposes. Format it for readability with syntax highlighting, and include a subtle drop shadow. Code to screenshot: ```[CODE]```. Ensure the background is light (e.g., #f8f8f8) and the font is monospace (e.g., Fira Code or JetBrains Mono). Add a 1px border in a neutral color (#e0e0e0) around the code block.\n```\nCopy\n\n```\nHere’s a screenshot of a Python function for calculating Fibonacci numbers, formatted for documentation:\n\n![Code Screenshot](https://via.placeholder.com/800x400/f8f8f8/e0e0e0?text=def+fibonacci(n):%0A++++if+n+<=+1:%0A++++++++return+n%0A++++return+fibonacci(n-1)+%2B+fibonacci(n-2)%0A%0Aresult+%3D+fibonacci(10)%0Aprint(result)+%23+Output:+55)\n\nThe screenshot features:\n- Syntax highlighting (keywords in blue, strings in green, comments in gray).\n- A light gray border (#e0e0e0) around the code block.\n- Monospace font (JetBrains Mono) for clarity.\n- Subtle drop shadow for a polished look.\n- Background color #f8f8f8 for readability.\n\nThis format is ideal for embedding in Markdown docs, Confluence pages, or internal wikis.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:02.560980Z",
+    "http_status": 200,
+    "content_hash": "9c6afac3351ac3d6b905294482151e47d711d2aa542b6000add2b43a2c292f88",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\code-screenshot-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\code-screenshot-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Generate code screenshots from Claude",
+  "short_description_vi": "Automates code screenshot generation from Claude for documentation, tutorials, and internal knowledge sharing. Connects to Claude and generates visual code assets for operations teams."
+}

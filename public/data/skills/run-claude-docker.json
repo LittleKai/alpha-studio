@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/run-claude-docker",
+  "slug": "run-claude-docker",
+  "name": "Run Claude Docker",
+  "headline": "Run Claude Docker - Isolated Code Execution",
+  "short_description": "Run claude code in isolated docker containers. Ideal for operations teams needing to automate tasks with claude code in a secure, containerized environment. Connects to MCP servers like Unsplash, Context7, and Playwright.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "icanhasjonas",
+  "install_command": "git clone https://github.com/icanhasjonas/run-claude-docker.git",
+  "source_repo_url": "https://github.com/icanhasjonas/run-claude-docker",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code",
+    "docker"
+  ],
+  "sections": {
+    "overview": "This skill automates Claude code execution within Docker containers, providing a secure, isolated environment for operations and development teams. It comes with a single standalone script that automatically builds and manages Docker images, eliminating manual configuration. Pre-configured MCP servers for Unsplash, Context7, and Playwright are ready to use immediately. The tool protects your host system through Docker boundaries with read-only mounts while preserving Claude authentication and forwarding environment variables. Container persistence across runs reduces startup time and retains modifications made during previous sessions.\nAutomate code analysis and codebase reviews in isolated environments\nRun web scraping and browser automation tasks with Playwright integration\nSearch and download photos from Unsplash without exposing host system\nExecute untrusted or experimental Claude code safely in containerized mode",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/icanhasjonas/run-claude-docker`",
+    "usage": "```\nRun the following Claude code in an isolated Docker container to [DESCRIBE_TASK]. Use the [MCP_SERVER] MCP server for [SPECIFIC_FUNCTION]. Ensure the container is ephemeral and removes itself after execution. Here's the code to run: ```[CLAUDE_CODE]```. Output the results in a structured format and include any logs or errors encountered during execution.\n```\nCopy\n\n```\n```\nDocker Container Execution Report\n================================\n\nTask: Scrape 100 high-resolution images from Unsplash matching the query 'sunset over mountains' and save metadata to a JSON file.\nMCP Server: Unsplash\nClaude Code:\n```python\nfrom mcp import ClientSession\nimport json\n\nasync def main():\n    async with ClientSession() as session:\n        images = []\n        for i in range(100):\n            result = await session.call_tool(\n                \"unsplash_search\",\n                {\"query\": \"sunset over mountains\", \"page\": i+1}\n            )\n            images.extend(result['results'])\n        \n        with open('unsplash_images.json', 'w') as f:\n            json.dump(images, f)\n\nif __name__ == \"__main__\":\n    import asyncio\n    asyncio.run(main())\n```\n\nExecution Log:\n- Container ID: a1b2c3d4e5f6\n- Image Used: ghcr.io/anthropics/claude-code:latest\n- Start Time: 2024-05-20T14:30:22Z\n- End Time: 2024-05-20T14:35:47Z\n- Duration: 5 minutes 25 seconds\n- Exit Code: 0\n- Output File: unsplash_images.json (1.2MB, 100 entries)\n\nSample Metadata:\n{\n  \"id\": \"abc123\",\n  \"url\": \"https://images.unsplash.com/photo-1234567890\",\n  \"description\": \"Sunset over snow-capped mountains\",\n  \"author\": \"Jane Doe\",\n  \"downloads\": 12456\n}\n```\n\nNote: The container automatically removed itself after execution. No residual files or processes remained on the host system.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "run-claude-docker#main-content",
+      "run-claude-docker#overview",
+      "run-claude-docker#setup",
+      "run-claude-docker#examples",
+      "run-claude-docker#tools",
+      "run-claude-docker#mcp",
+      "run-claude-docker#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill automates Claude code execution within Docker containers, providing a secure, isolated environment for operations and development teams. It comes with a single standalone script that automatically builds and manages Docker images, eliminating manual configuration. Pre-configured MCP servers for Unsplash, Context7, and Playwright are ready to use immediately. The tool protects your host system through Docker boundaries with read-only mounts while preserving Claude authentication and forwarding environment variables. Container persistence across runs reduces startup time and retains modifications made during previous sessions.\nAutomate code analysis and codebase reviews in isolated environments\nRun web scraping and browser automation tasks with Playwright integration\nSearch and download photos from Unsplash without exposing host system\nExecute untrusted or experimental Claude code safely in containerized mode",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/icanhasjonas/run-claude-docker`",
+    "usage_vi": "```\nRun the following Claude code in an isolated Docker container to [DESCRIBE_TASK]. Use the [MCP_SERVER] MCP server for [SPECIFIC_FUNCTION]. Ensure the container is ephemeral and removes itself after execution. Here's the code to run: ```[CLAUDE_CODE]```. Output the results in a structured format and include any logs or errors encountered during execution.\n```\nCopy\n\n```\n```\nDocker Container Execution Report\n================================\n\nTask: Scrape 100 high-resolution images from Unsplash matching the query 'sunset over mountains' and save metadata to a JSON file.\nMCP Server: Unsplash\nClaude Code:\n```python\nfrom mcp import ClientSession\nimport json\n\nasync def main():\n    async with ClientSession() as session:\n        images = []\n        for i in range(100):\n            result = await session.call_tool(\n                \"unsplash_search\",\n                {\"query\": \"sunset over mountains\", \"page\": i+1}\n            )\n            images.extend(result['results'])\n        \n        with open('unsplash_images.json', 'w') as f:\n            json.dump(images, f)\n\nif __name__ == \"__main__\":\n    import asyncio\n    asyncio.run(main())\n```\n\nExecution Log:\n- Container ID: a1b2c3d4e5f6\n- Image Used: ghcr.io/anthropics/claude-code:latest\n- Start Time: 2024-05-20T14:30:22Z\n- End Time: 2024-05-20T14:35:47Z\n- Duration: 5 minutes 25 seconds\n- Exit Code: 0\n- Output File: unsplash_images.json (1.2MB, 100 entries)\n\nSample Metadata:\n{\n  \"id\": \"abc123\",\n  \"url\": \"https://images.unsplash.com/photo-1234567890\",\n  \"description\": \"Sunset over snow-capped mountains\",\n  \"author\": \"Jane Doe\",\n  \"downloads\": 12456\n}\n```\n\nNote: The container automatically removed itself after execution. No residual files or processes remained on the host system.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:38:31.176642Z",
+    "http_status": 200,
+    "content_hash": "1426d322d0432862396f243b36d8dd9c9ad1e027dda25839cf13f24cf57db51c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\run-claude-docker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\run-claude-docker.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Run Claude Docker - Isolated Code Execution",
+  "short_description_vi": "Run claude code in isolated docker containers. Ideal for operations teams needing to automate tasks with claude code in a secure, containerized environment. Connects to MCP servers like Unsplash, Context7, and Playwright."
+}

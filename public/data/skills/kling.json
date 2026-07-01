@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kling",
+  "slug": "kling",
+  "name": "Kling",
+  "headline": "Kling - Self-Hosted Marketing Automation",
+  "short_description": "Kling is a self-hosted marketing automation platform for e-commerce that reduces costs by 70-90%. It enables automated email and SMS campaigns using natural language prompts, benefiting marketing teams. It connects to e-commerce platforms and CRM systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "kling-to",
+  "install_command": "git clone https://github.com/kling-to/kling.git",
+  "source_repo_url": "https://github.com/kling-to/kling",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Kling is a self-hosted marketing automation platform designed as a Klaviyo alternative for e-commerce businesses. It enables teams to create automated email and SMS campaigns using natural language prompts, eliminating the need for technical expertise. The platform includes 30+ behavioral customer segmentation filters, giving marketers precise targeting capabilities while maintaining full control over customer data. By self-hosting, businesses reduce marketing automation costs by 70-90% compared to traditional SaaS solutions. Kling integrates with e-commerce platforms and CRM systems to streamline campaign execution.\nBuild automated email and SMS campaigns without coding using natural language prompts\nSegment e-commerce customers with 30+ behavioral filters for targeted marketing\nReduce marketing technology costs by 70-90% with self-hosted deployment\nMaintain data privacy and control by hosting Kling on your own infrastructure",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kling-to/kling`",
+    "usage": "```\nDesign a 30-day automated email and SMS campaign for [ECOMMERCE_PLATFORM] using Kling to [GOAL: e.g., increase repeat purchases by 20% or reduce cart abandonment]. Use [PRODUCT_CATEGORY] as the focus. Include 3 welcome emails, 2 abandoned cart sequences, and 1 post-purchase follow-up. Specify the tone as [TONE: e.g., friendly and casual, professional and data-driven].\n```\nCopy\n\n```\nHere’s a 30-day automated campaign for *GreenLeaf Organics*, an organic skincare brand using Shopify. The goal is to increase repeat purchases by 25% by targeting customers who bought their bestselling *Hydrating Face Serum* in the last 30 days.\n\n**Day 1-3: Welcome Series**\n*Email 1 (Day 1):* \"Welcome to GreenLeaf! Here’s 15% off your next order—use code WELCOME15 at checkout.\" Open rate: 42% (industry avg: 21%).\n*Email 2 (Day 3):* \"Meet Sarah, your skincare expert! Book a free 15-minute consultation to customize your routine.\" Click-through rate: 18%.\n*SMS (Day 5):* \"Your serum is waiting! Reply ‘SERUM’ for a quick reorder link.\" Conversion rate: 12%.\n\n**Day 7-14: Abandoned Cart Recovery**\n*Email 1 (Day 7):* \"Your serum is almost gone! Complete your order in 24 hours for free shipping.\" Revenue recovered: $1,247.\n*SMS (Day 9):* \"Still thinking about it? Your serum is selling fast! [REORDER_LINK]\" Revenue recovered: $892.\n*Email 2 (Day 12):* \"Last chance! Your serum + a free travel-sized cleanser for $5 off.\" Revenue recovered: $678.\n\n**Day 15-30: Post-Purchase Upsell**\n*Email (Day 15):* \"Loved your serum? Try our *Glow Boost Serum* for 20% off when you bundle it with your next order.\" Upsell revenue: $3,456.\n*SMS (Day 21):* \"Your serum is 75% gone—time for a refill! [REORDER_LINK]\" Repeat purchase rate: 31%.\n\n**Performance Metrics:**\n- Total revenue generated: $6,273\n- Open rate: 45% (vs. industry avg: 21%)\n- Click-through rate: 22%\n- Cost per acquisition: $0.42 (vs. $1.89 with third-party tools).\n\n*Kling’s automation reduced manual effort by 85% while improving engagement metrics by 40%.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kling#main-content",
+      "kling#overview",
+      "kling#setup",
+      "kling#examples",
+      "kling#tools",
+      "kling#mcp",
+      "kling#related",
+      "marketingskills",
+      "copywriting",
+      "youlikehits-point-bot"
+    ],
+    "overview_vi": "Kling là nền tảng tự động hóa marketing self-hosted được thiết kế như một giải pháp thay thế Klaviyo cho các doanh nghiệp e-commerce. Nền tảng này cho phép các đội ngũ tạo chiến dịch email và SMS tự động bằng câu lệnh ngôn ngữ tự nhiên (prompt) mà không cần kiến thức kỹ thuật chuyên sâu. Hệ thống tích hợp hơn 30 bộ lọc phân khúc khách hàng theo hành vi, giúp nhà tiếp thị nhắm mục tiêu chính xác mà vẫn toàn quyền kiểm soát dữ liệu khách hàng. Nhờ hình thức self-hosting, doanh nghiệp có thể cắt giảm chi phí tự động hóa marketing từ 70-90% so với các giải pháp SaaS truyền thống. Kling tích hợp với các nền tảng e-commerce và hệ thống CRM để tối ưu hóa việc thực thi chiến dịch.\n\nXây dựng các chiến dịch email và SMS tự động không cần code bằng câu lệnh ngôn ngữ tự nhiên\nPhân khúc khách hàng e-commerce với hơn 30 bộ lọc hành vi để tiếp thị trúng đích\nGiảm 70-90% chi phí công nghệ marketing nhờ triển khai self-hosted\nĐảm bảo quyền riêng tư và kiểm soát dữ liệu bằng cách host Kling trên hạ tầng riêng của bạn",
+    "setup_vi": "Không có sẵn lệnh cài đặt nhanh. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kling-to/kling`",
+    "usage_vi": "```\nThiết kế chiến dịch email và SMS tự động kéo dài 30 ngày cho [ECOMMERCE_PLATFORM] sử dụng Kling để đạt mục tiêu [GOAL: ví dụ: tăng số lần mua lại thêm 20% hoặc giảm tỷ lệ bỏ giỏ hàng]. Tập trung vào danh mục sản phẩm [PRODUCT_CATEGORY]. Bao gồm 3 email chào mừng, 2 chuỗi email bỏ giỏ hàng và 1 email chăm sóc sau mua hàng. Sử dụng giọng văn [TONE: ví dụ: thân thiện và gần gũi, chuyên nghiệp và dựa trên số liệu].\n```\nSao chép\n\n```\nDưới đây là chiến dịch tự động 30 ngày dành cho *GreenLeaf Organics*, một thương hiệu mỹ phẩm hữu cơ sử dụng Shopify. Mục tiêu là tăng tỷ lệ mua lại thêm 25% bằng cách nhắm mục tiêu vào những khách hàng đã mua sản phẩm bán chạy nhất *Hydrating Face Serum* trong 30 ngày qua.\n\n**Ngày 1-3: Chuỗi Chào mừng**\n*Email 1 (Ngày 1):* \"Chào mừng bạn đến với GreenLeaf! Giảm ngay 15% cho đơn hàng tiếp theo của bạn—sử dụng mã WELCOME15 khi thanh toán.\" Tỷ lệ mở: 42% (trung bình ngành: 21%).\n*Email 2 (Ngày 3):* \"Gặp gỡ Sarah, chuyên gia chăm sóc da của bạn! Đặt lịch tư vấn miễn phí 15 phút để thiết kế lộ trình chăm sóc da riêng biệt.\" Tỷ lệ nhấp (CTR): 18%.\n*SMS (Ngày 5):* \"Serum của bạn đang chờ! Soạn ‘SERUM’ để nhận nhanh link đặt lại hàng.\" Tỷ lệ chuyển đổi: 12%.\n\n**Ngày 7-14: Khôi phục Giỏ hàng Bỏ quên**\n*Email 1 (Ngày 7):* \"Serum của bạn sắp hết hàng! Hoàn tất đơn hàng trong 24 giờ tới để được miễn phí vận chuyển.\" Doanh thu thu hồi: $1,247.\n*SMS (Ngày 9):* \"Bạn vẫn đang cân nhắc? Serum của bạn đang bán rất chạy! [REORDER_LINK]\" Doanh thu thu hồi: $892.\n*Email 2 (Ngày 12):* \"Cơ hội cuối cùng! Nhận ngay serum + sữa rửa mặt phiên bản du lịch miễn phí và được giảm $5.\" Doanh thu thu hồi: $678.\n\n**Ngày 15-30: Bán thêm sau mua hàng (Post-Purchase Upsell)**\n*Email (Ngày 15):* \"Bạn yêu thích serum của chúng tôi chứ? Thử ngay *Glow Boost Serum* với ưu đãi giảm 20% khi mua kèm đơn hàng tiếp theo.\" Doanh thu bán thêm: $3,456.\n*SMS (Ngày 21):* \"Serum của bạn đã dùng hết 75% rồi—đến lúc mua thêm rồi! [REORDER_LINK]\" Tỷ lệ mua lại: 31%.\n\n**Chỉ số hiệu quả (Performance Metrics):**\n- Tổng doanh thu tạo ra: $6,273\n- Tỷ lệ mở: 45% (so với trung bình ngành: 21%)\n- Tỷ lệ nhấp (CTR): 22%\n- Chi phí trên mỗi lượt chuyển đổi (CPA): $0.42 (so với $1.89 khi dùng các công cụ bên thứ ba).\n\n*Hệ thống tự động hóa của Kling đã giảm 85% công sức vận hành thủ công, đồng thời cải thiện 40% các chỉ số tương tác.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:52:12.907849Z",
+    "http_status": 200,
+    "content_hash": "3fdc3957bd33a5df3393ffb9f40d5ca967fc59fb61ccf411d56179b7a63239d3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kling.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kling.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kling - Tự động hóa Marketing Self-Hosted",
+  "short_description_vi": "Kling là nền tảng tự động hóa marketing self-hosted dành cho e-commerce giúp giảm chi phí từ 70-90%. Nền tảng này hỗ trợ tạo các chiến dịch email và SMS tự động bằng câu lệnh ngôn ngữ tự nhiên (prompt), mang lại nhiều lợi ích cho đội ngũ marketing. Kling kết nối trực tiếp với các nền tảng e-commerce và hệ thống CRM."
+}

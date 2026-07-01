@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spritecook-generate-sprites",
+  "slug": "spritecook-generate-sprites",
+  "name": "SpriteCook Generate Sprites",
+  "headline": "SpriteCook Generate Sprites: Game Asset Generation",
+  "short_description": "Use this skill for still-image generation, particularly aimed at game art assets. It is designed for developers using SpriteCook to create pixel art and HD styles from text prompts.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "spritecook",
+  "install_command": "git clone https://github.com/spritecook/skills",
+  "source_repo_url": "https://github.com/spritecook/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "sprites",
+    "spritecook",
+    "image-generation",
+    "generate"
+  ],
+  "sections": {
+    "overview": "SpriteCook Generate Sprites teaches AI agents how to create production-ready game art assets in pixel art or detailed/HD styles from text descriptions. The skill handles mode selection, model configuration, and crop settings to ensure consistent, game-ready output. It supports style continuity through reference assets and precise asset editing workflows. Developers can generate sprites for platformers, top-down games, and other sprite-based projects without leaving their code editor. When paired with the SpriteCook MCP server, agents can autonomously produce animation-ready assets and export them directly to game engines.\nGenerate pixel art for a game\nCreate HD style assets from descriptive prompts\nAutomate art asset production for gaming projects",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/spritecook/skills --skill spritecook-generate-sprites`\n`git clone https://github.com/spritecook/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "spritecook-generate-sprites#main-content",
+      "spritecook-generate-sprites#overview",
+      "spritecook-generate-sprites#setup",
+      "spritecook-generate-sprites#examples",
+      "spritecook-generate-sprites#tools",
+      "spritecook-generate-sprites#mcp",
+      "spritecook-generate-sprites#related",
+      "app-icon-generation",
+      "gpt-image-2",
+      "lovstudio-image-creator"
+    ],
+    "overview_vi": "SpriteCook Generate Sprites hướng dẫn các AI agent cách tạo các game art asset sẵn sàng đưa vào sản xuất (production-ready) theo phong cách pixel art hoặc chi tiết/HD từ mô tả văn bản. Skill này tự động xử lý việc chọn chế độ, cấu hình model và thiết lập crop để đảm bảo đầu ra đồng nhất, sẵn sàng sử dụng trong game. Nó hỗ trợ duy trì tính nhất quán về phong cách thông qua các reference asset và quy trình chỉnh sửa asset chính xác. Nhà phát triển có thể tạo sprite cho các game platformer, top-down và các dự án dạng sprite khác ngay trong trình soạn thảo code của mình. Khi kết hợp với SpriteCook MCP server, các agent có thể tự động tạo ra các asset sẵn sàng làm chuyển động (animation-ready) và xuất trực tiếp sang các game engine.\n\nTạo pixel art cho game\nTạo các asset phong cách HD từ prompt mô tả\nTự động hóa khâu sản xuất art asset cho các dự án game",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/spritecook/skills --skill spritecook-generate-sprites`\n`git clone https://github.com/spritecook/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nTham khảo repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:09.450220Z",
+    "http_status": 200,
+    "content_hash": "b31850fe7e3274c96f21155102d30f060a3fd595b36a2e6474c1561f3f1888ff",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spritecook-generate-sprites.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spritecook-generate-sprites.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SpriteCook Generate Sprites: Tạo game asset",
+  "short_description_vi": "Sử dụng skill này để tạo hình ảnh tĩnh, đặc biệt tối ưu cho các game art asset. Skill được thiết kế dành cho các nhà phát triển sử dụng SpriteCook để tạo pixel art và phong cách HD từ các text prompt."
+}

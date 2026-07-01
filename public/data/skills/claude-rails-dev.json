@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-rails-dev",
+  "slug": "claude-rails-dev",
+  "name": "Claude Rails Dev",
+  "headline": "ai automation with claude rails dev",
+  "short_description": "Claude Rails Developer Kit automates Ruby on Rails application development. It transforms Claude Code into a specialized Rails engineering team for your terminal. Ideal for operations teams building modern web applications.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "alec-c4",
+  "install_command": "git clone https://github.com/alec-c4/claude-rails-dev.git",
+  "source_repo_url": "https://github.com/alec-c4/claude-rails-dev",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-skills",
+    "rspec",
+    "ruby-on-rails",
+    "skills",
+    "ruby",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Rails Developer Kit is a modular, role-based AI coding environment designed to automate Ruby on Rails 8.0+ application development. It uses Claude's native slash commands to dynamically assign specialized roles—Architect, Developer, Auditor, DevOps, Designer, and more—to handle complex tasks end-to-end. The kit supports modern Rails stack including Hotwire, Inertia.js, GraphQL, and Kamal deployment, with built-in enforcement of TDD workflows, security audits via Brakeman, and production-ready features like i18n and feature flags. Operations teams and Rails developers can activate the Orchestrator to intelligently route tasks or summon specific specialists directly, transforming Claude Code into an autonomous team that lives in your terminal.\nBootstrap new Rails 8.0+ applications with schema planning and architecture review\nImplement features end-to-end with TDD and automated code review\nRun security audits and QA checks on commits and pull requests\nPlan and execute DevOps tasks including Docker containerization and CI/CD pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alec-c4/claude-rails-dev`",
+    "usage": "```\nAct as a senior Ruby on Rails developer using claude-rails-dev. Initialize a new Rails application with [RAILS_VERSION] (e.g., 7.1.3) using [DATABASE] (e.g., PostgreSQL) and [TEMPLATE] (e.g., --api). Configure [FEATURES] (e.g., authentication with Devise, background jobs with Sidekiq, real-time features with Action Cable). Generate a [STRUCTURE] (e.g., modular monolith with domain-driven design) and [TOOLS] (e.g., RuboCop, RSpec, Factory Bot). Document the setup process and provide a README with [DEPLOYMENT_INSTRUCTIONS] (e.g., Docker, Heroku, AWS).\n```\nCopy\n\n```\nI’ve initialized a new Rails 7.1.3 API-only application using PostgreSQL with Devise for authentication, Sidekiq for background jobs, and Action Cable for real-time features. The project follows a modular monolith structure with domain-driven design, organizing code into `app/domains/users`, `app/domains/posts`, etc. Key gems added include:\n- `devise` for authentication\n- `sidekiq` for background processing\n- `redis` for caching and Action Cable\n- `rubocop-rails` for linting\n- `rspec-rails` and `factory_bot_rails` for testing\n\nThe application is containerized with Docker, with separate services for the Rails app, PostgreSQL, and Redis. A `docker-compose.yml` file is provided for local development, and deployment instructions for Heroku are included in the README. The setup includes:\n- Environment variables configured via `dotenv-rails`\n- Database migrations for Users and Posts models\n- RSpec test suite with basic request specs\n- CI/CD pipeline configured with GitHub Actions\n\nTo get started, run `docker-compose up --build` and visit `http://localhost:3000`. The Devise user registration and login endpoints are available at `/users/sign_up` and `/users/sign_in`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-rails-dev#main-content",
+      "claude-rails-dev#overview",
+      "claude-rails-dev#setup",
+      "claude-rails-dev#examples",
+      "claude-rails-dev#tools",
+      "claude-rails-dev#mcp",
+      "claude-rails-dev#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Rails Developer Kit là một môi trường lập trình AI dạng mô-đun, phân vai (role-based) được thiết kế để tự động hóa việc phát triển ứng dụng Ruby on Rails 8.0+. Công cụ này sử dụng các lệnh gạch chéo (slash commands) gốc của Claude để phân bổ động các vai trò chuyên biệt—Architect, Developer, Auditor, DevOps, Designer, và nhiều vai trò khác—nhằm xử lý các tác vụ phức tạp từ đầu đến cuối (end-to-end). Bộ công cụ hỗ trợ stack Rails hiện đại bao gồm Hotwire, Inertia.js, GraphQL và deploy bằng Kamal, đồng thời tích hợp sẵn quy trình bắt buộc TDD, kiểm định bảo mật (security audit) qua Brakeman và các tính năng sẵn sàng cho production như i18n hay feature flags. Các đội ngũ vận hành và lập trình viên Rails có thể kích hoạt Orchestrator để điều hướng tác vụ một cách thông minh hoặc triệu gọi trực tiếp các chuyên gia cụ thể, biến Claude Code thành một đội ngũ tự vận hành hoạt động ngay trên terminal của bạn.\nKhởi tạo (Bootstrap) các ứng dụng Rails 8.0+ mới đi kèm lập kế hoạch schema và review kiến trúc\nTriển khai các tính năng end-to-end với TDD và code review tự động\nChạy các đợt kiểm định bảo mật (security audit) và kiểm tra QA trên các commit và pull request\nLập kế hoạch và thực hiện các tác vụ DevOps bao gồm đóng gói container bằng Docker và thiết lập pipeline CI/CD",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/alec-c4/claude-rails-dev`",
+    "usage_vi": "```\nĐóng vai là một lập trình viên Ruby on Rails cao cấp (senior) sử dụng claude-rails-dev. Hãy khởi tạo một ứng dụng Rails mới phiên bản [RAILS_VERSION] (ví dụ: 7.1.3), sử dụng cơ sở dữ liệu [DATABASE] (ví dụ: PostgreSQL) và [TEMPLATE] (ví dụ: --api). Cấu hình các tính năng [FEATURES] (ví dụ: xác thực với Devise, background job với Sidekiq, tính năng thời gian thực với Action Cable). Tạo cấu trúc [STRUCTURE] (ví dụ: modular monolith với domain-driven design) và tích hợp các công cụ [TOOLS] (ví dụ: RuboCop, RSpec, Factory Bot). Tài liệu hóa quy trình setup và cung cấp một file README chứa hướng dẫn triển khai [DEPLOYMENT_INSTRUCTIONS] (ví dụ: Docker, Heroku, AWS).\n```\nCopy\n\n```\nTôi đã khởi tạo một ứng dụng Rails 7.1.3 API-only mới sử dụng PostgreSQL, tích hợp Devise để xác thực, Sidekiq cho background job và Action Cable cho các tính năng thời gian thực. Dự án tuân theo cấu trúc modular monolith với thiết kế hướng miền (domain-driven design), tổ chức mã nguồn thành `app/domains/users`, `app/domains/posts`, v.v. Các gem chính được thêm vào bao gồm:\n- `devise` để xác thực\n- `sidekiq` để xử lý background\n- `redis` cho caching và Action Cable\n- `rubocop-rails` để linting\n- `rspec-rails` và `factory_bot_rails` cho việc viết test\n\nỨng dụng đã được container hóa bằng Docker, với các service riêng biệt cho Rails app, PostgreSQL và Redis. File `docker-compose.yml` được cung cấp sẵn cho môi trường phát triển local, và hướng dẫn deploy lên Heroku đã được đính kèm trong README. Bản setup bao gồm:\n- Biến môi trường được cấu hình qua `dotenv-rails`\n- Database migration cho các model Users và Posts\n- Bộ test RSpec với các request spec cơ bản\n- Pipeline CI/CD được cấu hình bằng GitHub Actions\n\nĐể bắt đầu, hãy chạy lệnh `docker-compose up --build` và truy cập `http://localhost:3000`. Các endpoint đăng ký và đăng nhập của Devise đã sẵn sàng tại `/users/sign_up` và `/users/sign_in`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:12.515592Z",
+    "http_status": 200,
+    "content_hash": "56a4a6539b85841d0cd1d21ff944b99b502959adde77bfcf90ac3d4a46aaa1a4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rails-dev.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rails-dev.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động hóa AI với Claude Rails Dev",
+  "short_description_vi": "Claude Rails Developer Kit giúp tự động hóa quá trình phát triển ứng dụng Ruby on Rails. Bộ công cụ này biến Claude Code thành một đội ngũ kỹ sư Rails chuyên trách hoạt động ngay trên terminal của bạn. Đây là giải pháp lý tưởng cho các đội ngũ vận hành (operations teams) đang xây dựng các ứng dụng web hiện đại."
+}

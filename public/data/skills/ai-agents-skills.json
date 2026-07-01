@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-agents-skills",
+  "slug": "ai-agents-skills",
+  "name": "Ai Agents Skills",
+  "headline": "AI Agent Skills Repository for Developers",
+  "short_description": "Discover a curated repository of specialized skills for AI coding agents, enhancing productivity and efficiency in development tasks. This collection, created by Yuval Avidani, is designed to help developers using AI tools like GitHub Copilot and others.",
+  "tier": "Silver",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "hoodini",
+  "install_command": "claude install hoodini/ai-agents-skills",
+  "source_repo_url": "https://github.com/hoodini/ai-agents-skills",
+  "works_with": [
+    "ClaudeGitHub CopilotCursorWindsurf"
+  ],
+  "tags": [
+    "productivity",
+    "GitHub Copilot",
+    "coding agents",
+    "AI skills",
+    "repository"
+  ],
+  "sections": {
+    "overview": "Agent Skills Repository is a collection of 15+ integrated skills designed for AI coding agents to streamline creative and development tasks. The skills are organized in a three-tier pyramid architecture, with yuv-pilot orchestrating intent routing to specialized tools like yuv-decks for presentations, yuv-viral-video for short-form content, parallax-landing-page for cinematic websites, and video-edit for caption and transcript workflows. Installation is a single command that sets up the full stack with ffmpeg, Node, Python, and cross-tool symlinks to ~/.copilot/skills and ~/.agents/skills, supporting macOS, Linux, and Windows. Projects automatically save to ~/Documents/yuv-projects/ organized by type (decks, landings, videos) for easy discovery. The system uses contextual brand application—three palette modes (Neon, Decks, Warm Editorial) activate only when YUV.AI branding is signaled, leaving generic requests to the agent's default behavior.\nEnhancing code suggestions for developers\nAutomating repetitive coding tasks\nImproving code quality with AI assistance\nFacilitating faster debugging processes",
+    "setup": "Terminal\nCopy\n`claude install hoodini/ai-agents-skills`\n`git clone https://github.com/hoodini/ai-agents-skills`",
+    "usage": "```\nExplore the curated repository of AI coding agent skills at [REPOSITORY_URL] to find specialized tools that can automate or enhance [SPECIFIC_DEVELOPMENT_TASK]. Focus on skills that integrate with [TARGET_PLATFORM, e.g., GitHub Copilot, VS Code, or your CI/CD pipeline]. Provide a summary of the top 3 most relevant skills, including their use cases and setup instructions.\n```\nCopy\n\n```\nHere’s a curated selection of AI coding agent skills from Yuval Avidani’s repository that can significantly boost your development workflow:\n\n1. **Custom Agents Template** (https://github.com/docs/custom-agents-template)\n   - **Use Case**: Enterprise-level customization for GitHub Copilot agents, enabling teams to define domain-specific workflows, templates, and automation rules.\n   - **Setup**: Clone the repository, customize the `agents.json` configuration file to define your team’s tools and guidelines, and deploy via GitHub Actions. For example, a frontend team could configure agents to auto-generate React components from Figma designs.\n   - **Why It Matters**: Reduces onboarding time by 40% and standardizes repetitive tasks like PR reviews or dependency updates.\n\n2. **Open-Reusables** (https://github.com/docs/open-reusables)\n   - **Use Case**: A VS Code extension that streamlines access to reusable code snippets, variables, or configurations directly from markdown documentation (e.g., GitHub READMEs or internal wikis).\n   - **Setup**: Install the extension from the VS Code Marketplace, then tag reusable code blocks in your markdown files with `<!-- reusable: [snippet-name] -->`. Trigger the extension via the command palette (`Ctrl+Shift+P`) to insert snippets.\n   - **Why It Matters**: Cuts down copy-paste errors and ensures consistency across projects by centralizing reusable assets.\n\n3. **Version Identifier** (https://github.com/docs/version-identifier)\n   - **Use Case**: A playground for experimenting with version control automation, such as auto-generating changelogs or enforcing semantic versioning in PRs.\n   - **Setup**: Fork the repository and modify the `version-identifier.yml` workflow to match your project’s branching strategy. Integrate with GitHub Actions to run the workflow on every push to `main` or `develop`.\n   - **Why It Matters**: Eliminates manual version tracking and reduces release-related bugs by 30%.\n\n**Pro Tip**: Pair these skills with GitHub Copilot’s custom instructions to further refine agent behavior. For example, use the `custom-agents-template` to define a Copilot agent that auto-generates unit tests for JavaScript functions based on your team’s testing framework (Jest, Mocha, etc.).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, GitHub Copilot, Cursor, Windsurf"
+    ],
+    "related_skills": [
+      "ai-agents-skills#main-content",
+      "ai-agents-skills#overview",
+      "ai-agents-skills#setup",
+      "ai-agents-skills#examples",
+      "ai-agents-skills#tools",
+      "ai-agents-skills#mcp",
+      "ai-agents-skills#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Agent Skills Repository là bộ sưu tập gồm hơn 15 kỹ năng tích hợp được thiết kế dành riêng cho các AI coding agent nhằm tinh giản các tác vụ sáng tạo và phát triển phần mềm. Các kỹ năng này được tổ chức theo kiến trúc kim tự tháp ba tầng, với yuv-pilot điều phối việc định tuyến intent đến các công cụ chuyên biệt như yuv-decks để tạo slide thuyết trình, yuv-viral-video cho nội dung video ngắn, parallax-landing-page cho các trang web hiệu ứng điện ảnh (cinematic), và video-edit cho quy trình xử lý phụ đề và bản ghi (caption và transcript). Quá trình cài đặt chỉ gói gọn trong một câu lệnh duy nhất giúp thiết lập toàn bộ stack với ffmpeg, Node, Python, cùng các liên kết tượng trưng (symlink) chéo giữa các công cụ đến ~/.copilot/skills và ~/.agents/skills, hỗ trợ tốt trên macOS, Linux và Windows. Các dự án sẽ tự động lưu vào ~/Documents/yuv-projects/ và được phân loại theo định dạng (decks, landings, videos) để dễ dàng tìm kiếm. Hệ thống áp dụng nhận diện thương hiệu theo ngữ cảnh—ba chế độ bảng màu (Neon, Decks, Warm Editorial) chỉ kích hoạt khi có tín hiệu định dạng thương hiệu YUV.AI, trong khi các yêu cầu chung khác sẽ được xử lý theo hành vi mặc định của agent.\nNâng cao gợi ý mã nguồn cho nhà phát triển\nTự động hóa các tác vụ lập trình lặp đi lặp lại\nCải thiện chất lượng code với sự hỗ trợ từ AI\nTối ưu hóa và đẩy nhanh quy trình gỡ lỗi (debugging)",
+    "setup_vi": "Terminal\nCopy\n`claude install hoodini/ai-agents-skills`\n`git clone https://github.com/hoodini/ai-agents-skills`",
+    "usage_vi": "```\nKhám phá kho lưu trữ tuyển chọn các kỹ năng của AI coding agent tại [REPOSITORY_URL] để tìm kiếm các công cụ chuyên biệt giúp tự động hóa hoặc cải thiện [SPECIFIC_DEVELOPMENT_TASK]. Tập trung vào các kỹ năng tích hợp với [TARGET_PLATFORM, ví dụ: GitHub Copilot, VS Code, hoặc pipeline CI/CD của bạn]. Cung cấp bản tóm tắt về 3 kỹ năng phù hợp nhất, bao gồm cả use case và hướng dẫn setup của chúng.\n```\nCopy\n\n```\nDưới đây là danh sách tuyển chọn các kỹ năng dành cho AI coding agent từ kho lưu trữ của Yuval Avidani giúp tối ưu hóa đáng kể quy trình phát triển (workflow) của bạn:\n\n1. **Custom Agents Template** (https://github.com/docs/custom-agents-template)\n   - **Use Case**: Khả năng tùy chỉnh cấp doanh nghiệp cho các GitHub Copilot agent, cho phép các đội ngũ định nghĩa các workflow, template và quy tắc tự động hóa đặc thù theo lĩnh vực (domain-specific).\n   - **Setup**: Clone repository này, tùy chỉnh file cấu hình `agents.json` để định nghĩa các công cụ cũng như nguyên tắc của đội ngũ bạn, rồi deploy thông qua GitHub Actions. Ví dụ: một đội ngũ frontend có thể cấu hình agent để tự động tạo (auto-generate) các component React từ thiết kế Figma.\n   - **Why It Matters**: Giảm 40% thời gian làm quen (onboarding) của thành viên mới và chuẩn hóa các tác vụ lặp đi lặp lại như review PR hoặc cập nhật dependency.\n\n2. **Open-Reusables** (https://github.com/docs/open-reusables)\n   - **Use Case**: Một extension VS Code giúp đơn giản hóa việc truy cập vào các đoạn code tái sử dụng (code snippet), biến hoặc cấu hình trực tiếp từ tài liệu markdown (ví dụ: file README trên GitHub hoặc wiki nội bộ).\n   - **Setup**: Cài đặt extension từ VS Code Marketplace, sau đó gắn thẻ (tag) các khối code tái sử dụng trong các file markdown của bạn bằng cú pháp `<!-- reusable: [snippet-name] -->`. Kích hoạt extension thông qua command palette (`Ctrl+Shift+P`) để chèn snippet.\n   - **Why It Matters**: Giảm thiểu lỗi do copy-paste và đảm bảo tính nhất quán giữa các dự án bằng cách quản lý tập trung các tài nguyên có thể tái sử dụng.\n\n3. **Version Identifier** (https://github.com/docs/version-identifier)\n   - **Use Case**: Một môi trường thử nghiệm (playground) để thử nghiệm tính năng tự động hóa kiểm soát phiên bản (version control), chẳng hạn như tự động tạo changelog hoặc bắt buộc áp dụng semantic versioning trong các PR.\n   - **Setup**: Fork repository này và sửa đổi workflow `version-identifier.yml` sao cho phù hợp với chiến lược phân nhánh (branching strategy) của dự án. Tích hợp với GitHub Actions để chạy workflow mỗi khi có lượt push vào nhánh `main` hoặc `develop`.\n   - **Why It Matters**: Loại bỏ việc theo dõi phiên bản thủ công và giảm 30% các lỗi liên quan đến bản phát hành (release).\n\n**Pro Tip**: Kết hợp các kỹ năng này với các chỉ dẫn tùy chỉnh (custom instructions) của GitHub Copilot để tinh chỉnh thêm hành vi của agent. Ví dụ: sử dụng `custom-agents-template` để định nghĩa một Copilot agent tự động tạo các unit test cho các hàm JavaScript dựa trên testing framework của đội ngũ bạn (Jest, Mocha, v.v.).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:45:18.151743Z",
+    "http_status": 200,
+    "content_hash": "f15df46a7d48941f2aca22da3d0fee42c4930f62b3d3447b2e6934106c8cab4d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-agents-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-agents-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kho lưu trữ Kỹ năng AI Agent dành cho Nhà phát triển",
+  "short_description_vi": "Khám phá kho lưu trữ tuyển chọn các kỹ năng chuyên biệt dành cho AI coding agent, giúp nâng cao năng suất và hiệu quả trong các tác vụ phát triển phần mềm. Bộ sưu tập này, do Yuval Avidani xây dựng, được thiết kế để hỗ trợ các nhà phát triển đang sử dụng các công cụ AI như GitHub Copilot và các công cụ tương tự."
+}

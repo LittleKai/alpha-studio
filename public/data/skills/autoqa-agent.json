@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autoqa-agent",
+  "slug": "autoqa-agent",
+  "name": "browser-use",
+  "headline": "AutoQA-Agent automated testing CLI tool",
+  "short_description": "AutoQA-Agent is an open-source CLI tool built with Claude Agent SDK for automated testing. It helps operations teams streamline quality assurance by integrating with existing workflows and tools. The tool is designed to enhance testing efficiency and accuracy.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "terryso",
+  "install_command": "git clone https://github.com/terryso/AutoQA-Agent.git",
+  "source_repo_url": "https://github.com/terryso/AutoQA-Agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "bmad",
+    "agent-sdk",
+    "bmad-method",
+    "autoqa"
+  ],
+  "sections": {
+    "overview": "AutoQA-Agent enables teams to write acceptance tests in natural language Markdown that are automatically converted into executable test flows. Built on Claude Agent SDK and Playwright, it uses intelligent locator strategies and self-healing assertions to reduce test fragility from UI changes. The tool supports exploration and test plan generation workflows, captures comprehensive artifacts including screenshots and traces, and automatically exports passing tests as Playwright code. QA teams and product managers can participate in test creation without scripting knowledge, while operations teams benefit from streamlined quality assurance integrated into existing workflows.\nWrite acceptance tests in Markdown for non-technical team members\nAutomatically generate test plans by exploring web applications\nReduce test maintenance by using intelligent locator strategies with self-healing\nExport recorded browser interactions as Playwright test code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/terryso/AutoQA-Agent`",
+    "usage": "```\nUse AutoQA-Agent to automate the testing of [FEATURE/COMPONENT] in [PROJECT_NAME]. Run a full regression suite with [TEST_TYPES] (e.g., unit, integration, E2E) and generate a report highlighting [FOCUS_AREAS] (e.g., performance bottlenecks, flaky tests). Compare results against baseline from [PREVIOUS_RUN_ID] and flag any regressions. Include screenshots for UI-related failures.\n```\nCopy\n\n```\nAutoQA-Agent v1.2.3 | Regression Test Report for Project: 'E-Commerce Checkout Flow'\n\n=== EXECUTION SUMMARY ===\nTotal Tests: 428\nPassed: 412 (96.26%)\nFailed: 11 (2.57%)\nSkipped: 5 (1.17%)\nExecution Time: 18m 42s\nBaseline Comparison: 99.1% pass rate (↓ 2.84%)\n\n=== CRITICAL REGRESSIONS ===\n1. Payment Gateway Integration (Integration Test)\n   - Error: Timeout after 30s (Expected: <10s)\n   - Screenshot: /reports/screenshots/payment_timeout_20240515.png\n   - Fix Priority: HIGH (Affects 80% of transactions)\n\n2. Mobile Checkout UI (E2E Test)\n   - Error: 'Add to Cart' button not clickable on iOS Safari\n   - Screenshot: /reports/screenshots/mobile_ui_break_20240515.png\n   - Fix Priority: HIGH (Mobile traffic: 65%)\n\n3. Discount Code Validation (Unit Test)\n   - Error: 15% discount applied incorrectly for first-time users\n   - Logs: /reports/logs/discount_error_20240515.log\n\n=== PERFORMANCE INSIGHTS ===\n- API Latency: 120ms avg (↑ 22ms from baseline)\n- Memory Usage: 1.8GB (↑ 15%)\n- Suggested Action: Optimize database queries in checkout service\n\n=== RECOMMENDATIONS ===\n1. Investigate payment gateway timeout (JIRA ticket: PROJ-456)\n2. Review mobile UI breakage with frontend team (Slack channel: #mobile-dev)\n3. Schedule performance tuning session for checkout service\n\nFull report available at: /reports/regression_20240515.html\nAttach this report to your PR for review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "autoqa-agent#main-content",
+      "autoqa-agent#overview",
+      "autoqa-agent#setup",
+      "autoqa-agent#examples",
+      "autoqa-agent#tools",
+      "autoqa-agent#mcp",
+      "autoqa-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AutoQA-Agent enables teams to write acceptance tests in natural language Markdown that are automatically converted into executable test flows. Built on Claude Agent SDK and Playwright, it uses intelligent locator strategies and self-healing assertions to reduce test fragility from UI changes. The tool supports exploration and test plan generation workflows, captures comprehensive artifacts including screenshots and traces, and automatically exports passing tests as Playwright code. QA teams and product managers can participate in test creation without scripting knowledge, while operations teams benefit from streamlined quality assurance integrated into existing workflows.\nWrite acceptance tests in Markdown for non-technical team members\nAutomatically generate test plans by exploring web applications\nReduce test maintenance by using intelligent locator strategies with self-healing\nExport recorded browser interactions as Playwright test code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/terryso/AutoQA-Agent`",
+    "usage_vi": "```\nUse AutoQA-Agent to automate the testing of [FEATURE/COMPONENT] in [PROJECT_NAME]. Run a full regression suite with [TEST_TYPES] (e.g., unit, integration, E2E) and generate a report highlighting [FOCUS_AREAS] (e.g., performance bottlenecks, flaky tests). Compare results against baseline from [PREVIOUS_RUN_ID] and flag any regressions. Include screenshots for UI-related failures.\n```\nCopy\n\n```\nAutoQA-Agent v1.2.3 | Regression Test Report for Project: 'E-Commerce Checkout Flow'\n\n=== EXECUTION SUMMARY ===\nTotal Tests: 428\nPassed: 412 (96.26%)\nFailed: 11 (2.57%)\nSkipped: 5 (1.17%)\nExecution Time: 18m 42s\nBaseline Comparison: 99.1% pass rate (↓ 2.84%)\n\n=== CRITICAL REGRESSIONS ===\n1. Payment Gateway Integration (Integration Test)\n   - Error: Timeout after 30s (Expected: <10s)\n   - Screenshot: /reports/screenshots/payment_timeout_20240515.png\n   - Fix Priority: HIGH (Affects 80% of transactions)\n\n2. Mobile Checkout UI (E2E Test)\n   - Error: 'Add to Cart' button not clickable on iOS Safari\n   - Screenshot: /reports/screenshots/mobile_ui_break_20240515.png\n   - Fix Priority: HIGH (Mobile traffic: 65%)\n\n3. Discount Code Validation (Unit Test)\n   - Error: 15% discount applied incorrectly for first-time users\n   - Logs: /reports/logs/discount_error_20240515.log\n\n=== PERFORMANCE INSIGHTS ===\n- API Latency: 120ms avg (↑ 22ms from baseline)\n- Memory Usage: 1.8GB (↑ 15%)\n- Suggested Action: Optimize database queries in checkout service\n\n=== RECOMMENDATIONS ===\n1. Investigate payment gateway timeout (JIRA ticket: PROJ-456)\n2. Review mobile UI breakage with frontend team (Slack channel: #mobile-dev)\n3. Schedule performance tuning session for checkout service\n\nFull report available at: /reports/regression_20240515.html\nAttach this report to your PR for review.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:36:51.992202Z",
+    "http_status": 200,
+    "content_hash": "fc98ddaa62b0dc92574b84c35de526d81cb07e2f5fb2f9c51a84866335259b7a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autoqa-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autoqa-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AutoQA-Agent automated testing CLI tool",
+  "short_description_vi": "AutoQA-Agent is an open-source CLI tool built with Claude Agent SDK for automated testing. It helps operations teams streamline quality assurance by integrating with existing workflows and tools. The tool is designed to enhance testing efficiency and accuracy."
+}

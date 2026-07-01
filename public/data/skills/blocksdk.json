@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/blocksdk",
+  "slug": "blocksdk",
+  "name": "blocksdk",
+  "headline": "salesforce content builder sdk",
+  "short_description": "The Block SDK for Salesforce Marketing Cloud Content Builder simplifies third-party block development. It provides domain validation and simple method calls for cross-document messaging. Marketing teams and developers can use it to create custom blocks that integrate with Salesforce Marketing Cloud.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "salesforce-marketingcloud",
+  "install_command": "git clone https://github.com/salesforce-marketingcloud/blocksdk.git",
+  "source_repo_url": "https://github.com/salesforce-marketingcloud/blocksdk",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Salesforce Marketing Cloud Content Builder Block SDK simplifies third-party block development by providing domain validation and wrapped cross-document messaging methods. It supports both script tag and Node module installation, enabling developers to create custom blocks that integrate seamlessly with Marketing Cloud's editor. The SDK offers methods for managing block content, metadata, and editor width, as well as authentication flows via SSO and OAuth2. Marketing teams and developers use it to extend Content Builder functionality with custom blocks tailored to their specific workflows and integrations.\nCreate custom content blocks that integrate with third-party services in Marketing Cloud\nBuild authentication-enabled blocks using SSO or OAuth2\nDevelop blocks that manage dynamic content and metadata for email campaigns\nDesign specialized block editors with custom tabs and configurable widths",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/salesforce-marketingcloud/blocksdk`",
+    "usage": "```\nUse the Block SDK for Salesforce Marketing Cloud Content Builder to create a custom block that [FUNCTIONALITY]. Ensure the block includes [SPECIFIC_FEATURES] such as [EXAMPLE_FEATURE]. Test the block for cross-document messaging with [REQUIRED_INTEGRATIONS]. Provide the code snippet and documentation for deployment in [TARGET_ENVIRONMENT].\n```\nCopy\n\n```\nHere’s a custom block for Salesforce Marketing Cloud Content Builder that dynamically fetches and displays real-time weather data for a subscriber’s location. The block uses the Block SDK to validate the domain (contentbuilder.salesforce.com) and implements cross-document messaging to communicate with the parent iframe via `postMessage`. \n\n**Code Snippet:**\n```javascript\n// weather-block.js\nimport { BlockSDK } from 'blocksdk';\n\nconst sdk = new BlockSDK();\n\n// Validate domain and set up messaging\nsdk.validateDomain('contentbuilder.salesforce.com');\nsdk.onMessage((event) => {\n  if (event.data.type === 'locationUpdate') {\n    fetchWeatherData(event.data.payload.zipCode)\n      .then(data => {\n        sdk.sendMessage({\n          type: 'weatherData',\n          payload: data\n        });\n      });\n  }\n});\n\n// Fetch weather data from a third-party API\nasync function fetchWeatherData(zipCode) {\n  const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${zipCode}`);\n  return await response.json();\n}\n\n// Render weather data in the block\nfunction renderWeather(data) {\n  const block = document.getElementById('weather-block');\n  block.innerHTML = `\n    <div class=\"weather-card\">\n      <h3>${data.location.name}, ${data.location.region}</h3>\n      <p>Temperature: ${data.current.temp_f}°F</p>\n      <p>Condition: ${data.current.condition.text}</p>\n      <img src=\"${data.current.condition.icon}\" alt=\"Weather icon\">\n    </div>\n  `;\n}\n```\n\n**Documentation for Deployment:**\n1. Upload the `weather-block.js` file to your Salesforce Marketing Cloud Content Builder via the **Code Resource** option.\n2. Create a new custom block in Content Builder and link it to the uploaded code resource.\n3. Configure the block settings to include a `zipCode` parameter for dynamic location input.\n4. Test the block in an email template by previewing it with a subscriber’s location data.\n5. Deploy the block to your production environment after validating cross-document messaging in staging.\n\n**Validation Results:**\n- Domain validation passed: `contentbuilder.salesforce.com` is whitelisted.\n- Cross-document messaging tested with `postMessage` and `onMessage` handlers.\n- Weather data successfully fetched and rendered for zip codes 94105 (San Francisco) and 10001 (New York).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "blocksdk#main-content",
+      "blocksdk#overview",
+      "blocksdk#setup",
+      "blocksdk#examples",
+      "blocksdk#tools",
+      "blocksdk#mcp",
+      "blocksdk#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "The Salesforce Marketing Cloud Content Builder Block SDK simplifies third-party block development by providing domain validation and wrapped cross-document messaging methods. It supports both script tag and Node module installation, enabling developers to create custom blocks that integrate seamlessly with Marketing Cloud's editor. The SDK offers methods for managing block content, metadata, and editor width, as well as authentication flows via SSO and OAuth2. Marketing teams and developers use it to extend Content Builder functionality with custom blocks tailored to their specific workflows and integrations.\nCreate custom content blocks that integrate with third-party services in Marketing Cloud\nBuild authentication-enabled blocks using SSO or OAuth2\nDevelop blocks that manage dynamic content and metadata for email campaigns\nDesign specialized block editors with custom tabs and configurable widths",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/salesforce-marketingcloud/blocksdk`",
+    "usage_vi": "```\nUse the Block SDK for Salesforce Marketing Cloud Content Builder to create a custom block that [FUNCTIONALITY]. Ensure the block includes [SPECIFIC_FEATURES] such as [EXAMPLE_FEATURE]. Test the block for cross-document messaging with [REQUIRED_INTEGRATIONS]. Provide the code snippet and documentation for deployment in [TARGET_ENVIRONMENT].\n```\nCopy\n\n```\nHere’s a custom block for Salesforce Marketing Cloud Content Builder that dynamically fetches and displays real-time weather data for a subscriber’s location. The block uses the Block SDK to validate the domain (contentbuilder.salesforce.com) and implements cross-document messaging to communicate with the parent iframe via `postMessage`. \n\n**Code Snippet:**\n```javascript\n// weather-block.js\nimport { BlockSDK } from 'blocksdk';\n\nconst sdk = new BlockSDK();\n\n// Validate domain and set up messaging\nsdk.validateDomain('contentbuilder.salesforce.com');\nsdk.onMessage((event) => {\n  if (event.data.type === 'locationUpdate') {\n    fetchWeatherData(event.data.payload.zipCode)\n      .then(data => {\n        sdk.sendMessage({\n          type: 'weatherData',\n          payload: data\n        });\n      });\n  }\n});\n\n// Fetch weather data from a third-party API\nasync function fetchWeatherData(zipCode) {\n  const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${zipCode}`);\n  return await response.json();\n}\n\n// Render weather data in the block\nfunction renderWeather(data) {\n  const block = document.getElementById('weather-block');\n  block.innerHTML = `\n    <div class=\"weather-card\">\n      <h3>${data.location.name}, ${data.location.region}</h3>\n      <p>Temperature: ${data.current.temp_f}°F</p>\n      <p>Condition: ${data.current.condition.text}</p>\n      <img src=\"${data.current.condition.icon}\" alt=\"Weather icon\">\n    </div>\n  `;\n}\n```\n\n**Documentation for Deployment:**\n1. Upload the `weather-block.js` file to your Salesforce Marketing Cloud Content Builder via the **Code Resource** option.\n2. Create a new custom block in Content Builder and link it to the uploaded code resource.\n3. Configure the block settings to include a `zipCode` parameter for dynamic location input.\n4. Test the block in an email template by previewing it with a subscriber’s location data.\n5. Deploy the block to your production environment after validating cross-document messaging in staging.\n\n**Validation Results:**\n- Domain validation passed: `contentbuilder.salesforce.com` is whitelisted.\n- Cross-document messaging tested with `postMessage` and `onMessage` handlers.\n- Weather data successfully fetched and rendered for zip codes 94105 (San Francisco) and 10001 (New York).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:12.422105Z",
+    "http_status": 200,
+    "content_hash": "fc92582223eccfce1032e50ba1b39acbd2f9741f233affce318d546f5ecec82a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\blocksdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\blocksdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "salesforce content builder sdk",
+  "short_description_vi": "The Block SDK for Salesforce Marketing Cloud Content Builder simplifies third-party block development. It provides domain validation and simple method calls for cross-document messaging. Marketing teams and developers can use it to create custom blocks that integrate with Salesforce Marketing Cloud."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/qq-email",
+  "slug": "qq-email",
+  "name": "Related Skills",
+  "headline": "QQ Email: IMAP/SMTP Management",
+  "short_description": "This skill allows users to send, receive, and manage QQ email through IMAP and SMTP protocols. It is designed for QQ email users who need efficient email handling and configuration.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "shadowcz007",
+  "install_command": "git clone https://github.com/shadowcz007/skills",
+  "source_repo_url": "https://github.com/shadowcz007/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "email",
+    "email-management"
+  ],
+  "sections": {
+    "overview": "The QQ Email skill enables automated email handling for QQ mailbox users through standard IMAP and SMTP protocols. It allows you to send emails via SMTP, receive messages via IMAP with flexible filtering options (by message count or date range), and retrieve complete message bodies including attachments. The skill is designed for workflows that require programmatic access to QQ email accounts, such as automated notification systems, email monitoring, or integration with multi-account management tools. Configuration requires a QQ email account and its corresponding authorization code.\nSend emails via QQ\nReceive emails using QQ IMAP\nCheck email status in QQ\nDelegate email sending",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/shadowcz007/skills --skill qq-email`\n`git clone https://github.com/shadowcz007/skills`",
+    "usage": "```\nHelp me set up and manage my QQ email account using IMAP and SMTP. I need to configure [EMAIL_CLIENT] for sending and receiving emails, sync my folders, and troubleshoot common issues like connection errors or sync delays. Here are my current settings: [IMAP_SERVER], [SMTP_SERVER], [PORT_NUMBERS], [SECURITY_TYPE].\n```\nCopy\n\n```\nHere’s a step-by-step guide to configure your QQ email with IMAP/SMTP in [EMAIL_CLIENT] (e.g., Outlook, Thunderbird, or Apple Mail):\n\n### **IMAP Configuration**\n- **Incoming Server (IMAP):** imap.qq.com\n- **Port:** 993\n- **Security:** SSL/TLS\n- **Username:** Your full QQ email address (e.g., username@qq.com)\n- **Password:** Your QQ email password\n\n### **SMTP Configuration**\n- **Outgoing Server (SMTP):** smtp.qq.com\n- **Port:** 465 or 587\n- **Security:** SSL/TLS or STARTTLS (depending on your client)\n- **Authentication:** Required (use same username/password as IMAP)\n\n### **Troubleshooting Tips**\n- **Connection Errors:** Ensure your firewall or antivirus isn’t blocking ports 993 (IMAP) or 465/587 (SMTP).\n- **Sync Delays:** Check your internet connection and verify that IMAP is enabled in your QQ email settings (Settings > Forwarding and POP/IMAP).\n- **Authentication Failures:** Reset your QQ email password if login issues persist.\n\nWould you like help testing the setup or diagnosing a specific issue?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "qq-email#main-content",
+      "qq-email#overview",
+      "qq-email#setup",
+      "qq-email#examples",
+      "qq-email#tools",
+      "qq-email#mcp",
+      "qq-email#related"
+    ],
+    "overview_vi": "The QQ Email skill enables automated email handling for QQ mailbox users through standard IMAP and SMTP protocols. It allows you to send emails via SMTP, receive messages via IMAP with flexible filtering options (by message count or date range), and retrieve complete message bodies including attachments. The skill is designed for workflows that require programmatic access to QQ email accounts, such as automated notification systems, email monitoring, or integration with multi-account management tools. Configuration requires a QQ email account and its corresponding authorization code.\nSend emails via QQ\nReceive emails using QQ IMAP\nCheck email status in QQ\nDelegate email sending",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/shadowcz007/skills --skill qq-email`\n`git clone https://github.com/shadowcz007/skills`",
+    "usage_vi": "```\nHelp me set up and manage my QQ email account using IMAP and SMTP. I need to configure [EMAIL_CLIENT] for sending and receiving emails, sync my folders, and troubleshoot common issues like connection errors or sync delays. Here are my current settings: [IMAP_SERVER], [SMTP_SERVER], [PORT_NUMBERS], [SECURITY_TYPE].\n```\nCopy\n\n```\nHere’s a step-by-step guide to configure your QQ email with IMAP/SMTP in [EMAIL_CLIENT] (e.g., Outlook, Thunderbird, or Apple Mail):\n\n### **IMAP Configuration**\n- **Incoming Server (IMAP):** imap.qq.com\n- **Port:** 993\n- **Security:** SSL/TLS\n- **Username:** Your full QQ email address (e.g., username@qq.com)\n- **Password:** Your QQ email password\n\n### **SMTP Configuration**\n- **Outgoing Server (SMTP):** smtp.qq.com\n- **Port:** 465 or 587\n- **Security:** SSL/TLS or STARTTLS (depending on your client)\n- **Authentication:** Required (use same username/password as IMAP)\n\n### **Troubleshooting Tips**\n- **Connection Errors:** Ensure your firewall or antivirus isn’t blocking ports 993 (IMAP) or 465/587 (SMTP).\n- **Sync Delays:** Check your internet connection and verify that IMAP is enabled in your QQ email settings (Settings > Forwarding and POP/IMAP).\n- **Authentication Failures:** Reset your QQ email password if login issues persist.\n\nWould you like help testing the setup or diagnosing a specific issue?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:03:13.559451Z",
+    "http_status": 200,
+    "content_hash": "18e54c8db6e8e7c3d6bb095a1400091175652aa9094fff26a722d9d2a6497529",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\qq-email.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\qq-email.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "QQ Email: IMAP/SMTP Management",
+  "short_description_vi": "This skill allows users to send, receive, and manage QQ email through IMAP and SMTP protocols. It is designed for QQ email users who need efficient email handling and configuration."
+}

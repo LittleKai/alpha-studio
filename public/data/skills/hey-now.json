@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hey-now",
+  "slug": "hey-now",
+  "name": "Hey Now",
+  "headline": "hey-now: Automate Social Media Marketing",
+  "short_description": "CLI for spamming social media with Smash Mouth's All Star",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "bozdoz",
+  "install_command": "git clone https://github.com/bozdoz/hey-now.git",
+  "source_repo_url": "https://github.com/bozdoz/hey-now",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "messenger",
+    "whatsapp",
+    "puppeteer",
+    "slack",
+    "hangouts",
+    "javascript"
+  ],
+  "sections": {
+    "overview": "The hey-now skill is a unique command-line interface (CLI) tool designed specifically for marketing professionals. Its primary function is to automate the posting of Smash Mouth's iconic song, All Star, across various social media platforms. By leveraging this skill, users can enhance their social media engagement and create a buzz around their brand in a fun and memorable way. While the time savings are currently unknown, the ease of use and quick implementation time of just 30 minutes make it an appealing option for marketers looking to add a creative twist to their campaigns. One of the key benefits of the hey-now skill is its ability to streamline social media marketing efforts. In an age where content saturation is rampant, this skill allows marketers to stand out by leveraging a nostalgic and recognizable tune that resonates with many audiences. The intermediate complexity means that users should have a basic understanding of command-line operations, but the straightforward implementation process ensures that even those with moderate technical skills can utilize it effectively. This skill can be integrated into broader marketing workflows, allowing for more efficient campaign management. This skill is particularly suited for marketers, social media managers, and product managers in the marketing department. It offers a playful approach to engagement, making it ideal for brands looking to connect with their audience in a lighthearted manner. For example, a marketing team could schedule a series of posts using hey-now to coincide with a promotional event, creating a cohesive and entertaining campaign that captures attention and encourages sharing. Implementing the hey-now skill requires a basic understanding of CLI tools, but the 30-minute setup time makes it accessible for those willing to learn. As businesses increasingly adopt AI-first workflows, incorporating fun and engaging automation tools like hey-now can enhance user experience and drive brand loyalty. By automating repetitive tasks and adding a unique flair to social media strategies, marketers can focus on higher-level strategic initiatives, ultimately leading to more effective campaigns.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bozdoz/hey-now`",
+    "usage": "```\nCreate a CLI script that will automatically post the lyrics to 'All Star' by Smash Mouth to [SOCIAL_MEDIA_PLATFORM] every [TIME_INTERVAL] hours for [NUMBER_OF_POSTS] posts. Ensure the script includes error handling and rate limiting to avoid account suspension.\n```\nCopy\n\n```\n```python\nimport requests\nimport time\n\n# Social media API credentials\nAPI_KEY = 'your_api_key_here'\nACCESS_TOKEN = 'your_access_token_here'\n\n# Lyrics to 'All Star' by Smash Mouth\nlyrics = [\n    \"Somebody once told me the world is gonna roll me\",\n    \"I ain't the sharpest tool in the shed\",\n    \"She was looking kind of dumb with her finger and her thumb\",\n    \"In the shape of an 'L' on her forehead\"\n    # Add the rest of the lyrics here\n]\n\n# Function to post a lyric to social media\ndef post_lyric(lyric):\n    url = 'https://api.socialmedia.com/v1/posts'\n    headers = {\n        'Authorization': f'Bearer {ACCESS_TOKEN}',\n        'Content-Type': 'application/json'\n    }\n    data = {\n        'text': lyric\n    }\n    response = requests.post(url, headers=headers, json=data)\n    return response.status_code\n\n# Main function to post lyrics at regular intervals\ndef main():\n    for i in range(len(lyrics)):\n        status_code = post_lyric(lyrics[i])\n        if status_code == 200:\n            print(f\"Successfully posted lyric {i+1}: {lyrics[i]}\")\n        else:\n            print(f\"Failed to post lyric {i+1}: {lyrics[i]}\")\n        time.sleep(3600)  # Wait for 1 hour before posting the next lyric\n\nif __name__ == '__main__':\n    main()\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hey-now#main-content",
+      "hey-now#overview",
+      "hey-now#setup",
+      "hey-now#examples",
+      "hey-now#tools",
+      "hey-now#mcp",
+      "hey-now#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "Skill hey-now là một công cụ giao diện dòng lệnh (CLI) độc đáo được thiết kế dành riêng cho các chuyên gia tiếp thị. Chức năng chính của nó là tự động hóa việc đăng bài hát nổi tiếng 'All Star' của Smash Mouth lên nhiều nền tảng mạng xã hội khác nhau. Bằng cách tận dụng skill này, người dùng có thể tăng cường tương tác trên mạng xã hội và tạo hiệu ứng truyền thông (buzz) xung quanh thương hiệu của họ một cách thú vị và đáng nhớ. Mặc dù lượng thời gian tiết kiệm được hiện chưa thể xác định, nhưng tính dễ sử dụng cùng thời gian triển khai nhanh chóng chỉ khoảng 30 phút khiến nó trở thành một lựa chọn hấp dẫn cho các nhà tiếp thị muốn thêm một chút sáng tạo vào chiến dịch của mình. Một trong những lợi ích chính của skill hey-now là khả năng tối ưu hóa các nỗ lực tiếp thị trên mạng xã hội. Trong thời đại bão hòa nội dung như hiện nay, skill này cho phép các nhà tiếp thị trở nên nổi bật bằng cách tận dụng một giai điệu quen thuộc và hoài niệm, dễ dàng kết nối với nhiều đối tượng người nghe. Độ phức tạp ở mức trung bình đồng nghĩa với việc người dùng nên có hiểu biết cơ bản về các thao tác dòng lệnh, nhưng quy trình triển khai đơn giản đảm bảo ngay cả những người có kỹ năng kỹ thuật vừa phải cũng có thể sử dụng hiệu quả. Skill này có thể được tích hợp vào các quy trình marketing rộng lớn hơn, giúp quản lý chiến dịch hiệu quả hơn. Skill này đặc biệt phù hợp với các nhà tiếp thị, quản lý mạng xã hội và quản lý sản phẩm (product manager) trong bộ phận marketing. Nó mang lại một cách tiếp cận tương tác đầy thú vị, lý tưởng cho các thương hiệu muốn kết nối với khán giả của mình một cách vui vẻ, nhẹ nhàng. Ví dụ, một đội ngũ marketing có thể lên lịch cho một loạt bài đăng bằng hey-now trùng với một sự kiện quảng cáo, tạo ra một chiến dịch gắn kết và đầy tính giải trí để thu hút sự chú ý và thúc đẩy chia sẻ. Việc triển khai skill hey-now đòi hỏi hiểu biết cơ bản về các công cụ CLI, nhưng thời gian setup chỉ khoảng 30 phút giúp nó dễ dàng tiếp cận với những ai sẵn sàng học hỏi. Khi các doanh nghiệp ngày càng áp dụng nhiều quy trình làm việc ưu tiên AI (AI-first workflows), việc kết hợp các công cụ tự động hóa thú vị và hấp dẫn như hey-now có thể cải thiện trải nghiệm người dùng và thúc đẩy lòng trung thành với thương hiệu. Bằng cách tự động hóa các tác vụ lặp đi lặp lại và mang lại nét độc đáo cho chiến lược mạng xã hội, các nhà tiếp thị có thể tập trung vào các sáng kiến chiến lược cấp cao hơn, cuối cùng mang lại các chiến dịch hiệu quả hơn.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/bozdoz/hey-now`",
+    "usage_vi": "```\nTạo một script CLI tự động đăng lời bài hát 'All Star' của Smash Mouth lên [SOCIAL_MEDIA_PLATFORM] mỗi [TIME_INTERVAL] giờ một lần cho đến khi đạt [NUMBER_OF_POSTS] bài đăng. Hãy đảm bảo script có cơ chế xử lý lỗi (error handling) và giới hạn tần suất gửi yêu cầu (rate limiting) để tránh bị khóa tài khoản.\n```\nCopy\n\n```python\nimport requests\nimport time\n\n# Thông tin xác thực API mạng xã hội\nAPI_KEY = 'your_api_key_here'\nACCESS_TOKEN = 'your_access_token_here'\n\n# Lời bài hát 'All Star' của Smash Mouth\nlyrics = [\n    \"Somebody once told me the world is gonna roll me\",\n    \"I ain't the sharpest tool in the shed\",\n    \"She was looking kind of dumb with her finger and her thumb\",\n    \"In the shape of an 'L' on her forehead\"\n    # Thêm phần còn lại của lời bài hát tại đây\n]\n\n# Hàm đăng lời bài hát lên mạng xã hội\ndef post_lyric(lyric):\n    url = 'https://api.socialmedia.com/v1/posts'\n    headers = {\n        'Authorization': f'Bearer {ACCESS_TOKEN}',\n        'Content-Type': 'application/json'\n    }\n    data = {\n        'text': lyric\n    }\n    response = requests.post(url, headers=headers, json=data)\n    return response.status_code\n\n# Hàm chính để đăng lời bài hát định kỳ\ndef main():\n    for i in range(len(lyrics)):\n        status_code = post_lyric(lyrics[i])\n        if status_code == 200:\n            print(f\"Successfully posted lyric {i+1}: {lyrics[i]}\")\n        else:\n            print(f\"Failed to post lyric {i+1}: {lyrics[i]}\")\n        time.sleep(3600)  # Đợi 1 giờ trước khi đăng câu tiếp theo\n\nif __name__ == '__main__':\n    main()\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:02:04.824143Z",
+    "http_status": 200,
+    "content_hash": "81eb4f73fe125d77b72b88702b8f612577237f4426ebc4b7e75cc59375f55902",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hey-now.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hey-now.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "hey-now: Tự động hóa Tiếp thị qua Mạng xã hội",
+  "short_description_vi": "CLI để spam mạng xã hội bằng bài hát All Star của Smash Mouth"
+}

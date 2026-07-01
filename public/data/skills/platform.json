@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/platform",
+  "slug": "platform",
+  "name": "Parcelvoy",
+  "headline": "Parcelvoy - Multi-channel Marketing Automation",
+  "short_description": "Parcelvoy is an open-source multi-channel marketing automation platform. It enables marketers to send data-driven emails, SMS, push notifications, and more. It connects to various tools and workflows for omnichannel campaign management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "parcelvoy",
+  "install_command": "git clone https://github.com/parcelvoy/platform.git",
+  "source_repo_url": "https://github.com/parcelvoy/platform",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "lcm",
+    "push-notifications",
+    "omni",
+    "omnichannel",
+    "marketing",
+    "webhook",
+    "lifecyle-marketing",
+    "email",
+    "multichannel",
+    "sms",
+    "messages",
+    "notifications",
+    "campaign"
+  ],
+  "sections": {
+    "overview": "Parcelvoy is an open-source marketing automation platform that enables teams to send data-driven emails, push notifications, and text messages across multiple channels. It provides a drag-and-drop journey builder for creating complex customer workflows, dynamic segmentation tools for targeting users based on events and behavior, and campaign management for scheduling messages to specific audiences. The platform includes built-in integrations via SDKs and APIs, SSO authentication with SAML and OpenID support, and deploys easily with Docker. Marketers and developers benefit from complete control over their martech stack through self-hosted deployment.\nAutomate email campaigns to target specific user segments based on their interactions.\nCreate personalized SMS notifications for users based on their preferences and behaviors.\nDesign multi-step customer journeys that trigger messages at key points in the user lifecycle.\nIntegrate with existing applications to pull user data for more effective marketing campaigns.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/parcelvoy/platform`",
+    "usage": "```\nAct as a Parcelvoy marketing automation specialist. Create a multi-channel campaign strategy for [BUSINESS_NAME] to promote [PRODUCT/SERVICE] to [TARGET_AUDIENCE]. Include: 1) Email sequence with subject lines and content hooks, 2) SMS follow-up messages, 3) Push notification timing, 4) Integration touchpoints with [TOOLS_PLATFORMS], and 5) Key metrics to track success. Prioritize personalization and conversion optimization.\n```\nCopy\n\n```\nFor **EcoGlow Candles** (a sustainable home fragrance brand targeting millennial eco-conscious consumers), here’s a 14-day omnichannel campaign to launch their new \"Bamboo Wick Collection\":\n\n**Email Sequence (3 emails):**\n1. *Subject:* \"Bamboo Wicks Burn 30% Longer 🌿\" – Preview the new collection with a 15% discount for first-time buyers. *CTA:* \"Shop Now\" linking to the product page.\n2. *Subject:* \"Your Exclusive Early Access 🔥\" – Share customer testimonials and a limited-time bundle offer (candle + diffuser). *CTA:* \"Claim Deal.\"\n3. *Subject:* \"Last Chance: 10% Off Ends Tonight\" – Urgency-driven with a countdown timer and abandoned cart reminder.\n\n**SMS Follow-ups (2 messages):**\n- Day 3: \"Hi [First Name]! Your bamboo candle is waiting—use code **BAMBOO15** at checkout. 🕯️\" (Sent at 12 PM local time).\n- Day 7: \"P.S. Your diffuser ships free with orders over $40! 🌱\" (Sent at 6 PM, post-work hours).\n\n**Push Notifications (3 alerts):**\n- Day 1: \"New scent alert! 🌿 Discover the Bamboo Wick Collection—only at EcoGlow.\" (Sent at 9 AM).\n- Day 5: \"Your cart is still warm 🔥 Complete checkout now for 10% off!\" (Sent at 8 PM).\n- Day 12: \"Final hours! 10% off ends at midnight. ⏳\" (Sent at 10 PM).\n\n**Integration Touchpoints:**\n- Sync Parcelvoy with **Shopify** for real-time inventory updates and order tracking.\n- Connect to **Google Analytics 4** to track UTM parameters and conversion paths.\n- Use **Segment** to unify customer data from email, SMS, and push channels.\n\n**Key Metrics:**\n- Open rates (target: 25% for emails, 35% for SMS).\n- Click-through rates (target: 5% for emails, 8% for SMS).\n- Conversion rate (target: 3% from email, 4% from SMS).\n- Revenue per campaign (target: $12,000).\n\n*Tools Used:* Parcelvoy (campaign builder), Shopify (e-commerce), Google Analytics 4 (tracking), Segment (data unification).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "platform#main-content",
+      "platform#overview",
+      "platform#setup",
+      "platform#examples",
+      "platform#tools",
+      "platform#mcp",
+      "platform#related",
+      "marketingskills",
+      "copywriting",
+      "hootsuite-mcp-server"
+    ],
+    "overview_vi": "Parcelvoy là một nền tảng tự động hóa marketing mã nguồn mở cho phép các đội ngũ gửi email dựa trên dữ liệu (data-driven), push notification và tin nhắn văn bản trên nhiều kênh khác nhau. Nền tảng cung cấp một drag-and-drop journey builder (trình dựng hành trình kéo-thả) để tạo các workflow khách hàng phức tạp, các công cụ phân khúc động (dynamic segmentation) để nhắm mục tiêu người dùng dựa trên sự kiện và hành vi, cùng tính năng quản lý chiến dịch để lập lịch gửi tin nhắn đến các nhóm đối tượng cụ thể. Nền tảng tích hợp sẵn các kết nối qua SDK và API, xác thực SSO hỗ trợ SAML và OpenID, và dễ dàng triển khai bằng Docker. Các marketer và nhà phát triển được hưởng lợi từ việc kiểm soát hoàn toàn martech stack của mình thông qua hình thức triển khai self-hosted.\nTự động hóa các chiến dịch email để nhắm mục tiêu đến các phân khúc người dùng cụ thể dựa trên tương tác của họ.\nTạo các thông báo SMS cá nhân hóa cho người dùng dựa trên sở thích và hành vi của họ.\nThiết kế hành trình khách hàng nhiều bước để kích hoạt gửi tin nhắn tại các thời điểm quan trọng trong vòng đời người dùng (user lifecycle).\nTích hợp với các ứng dụng hiện có để lấy dữ liệu người dùng nhằm tối ưu hiệu quả cho các chiến dịch marketing.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/parcelvoy/platform`",
+    "usage_vi": "```\nHãy đóng vai là một chuyên gia tự động hóa marketing của Parcelvoy. Hãy xây dựng một chiến lược chiến dịch đa kênh cho [BUSINESS_NAME] để quảng bá [PRODUCT/SERVICE] tới [TARGET_AUDIENCE]. Bao gồm: 1) Chuỗi email kèm dòng tiêu đề và câu dẫn nội dung (content hook), 2) Tin nhắn SMS tiếp theo, 3) Thời gian gửi push notification, 4) Các điểm chạm tích hợp (integration touchpoints) với [TOOLS_PLATFORMS], và 5) Các chỉ số chính (key metrics) để theo dõi hiệu quả. Ưu tiên cá nhân hóa và tối ưu hóa chuyển đổi.\n```\nSao chép\n\n```\nDưới đây là chiến dịch đa kênh kéo dài 14 ngày dành cho **EcoGlow Candles** (một thương hiệu hương thơm gia đình bền vững hướng tới người tiêu dùng millennial quan tâm đến môi trường) để ra mắt bộ sưu tập mới \"Bamboo Wick Collection\":\n\n**Chuỗi Email (3 email):**\n1. *Tiêu đề:* \"Nến bấc tre cháy lâu hơn 30% 🌿\" – Giới thiệu trước bộ sưu tập mới kèm ưu đãi giảm giá 15% cho người mua lần đầu. *CTA:* \"Mua ngay\" liên kết đến trang sản phẩm.\n2. *Tiêu đề:* \"Quyền truy cập sớm độc quyền của bạn 🔥\" – Chia sẻ đánh giá của khách hàng và ưu đãi combo giới hạn thời gian (nến + máy khuếch tán). *CTA:* \"Nhận ưu đãi\".\n3. *Tiêu đề:* \"Cơ hội cuối cùng: Giảm giá 10% kết thúc tối nay\" – Tạo cảm giác cấp bách với đồng hồ đếm ngược và nhắc nhở giỏ hàng bị bỏ quên.\n\n**SMS tiếp theo (2 tin nhắn):**\n- Ngày 3: \"Chào [First Name]! Hũ nến bấc tre của bạn đang chờ—sử dụng mã **BAMBOO15** khi thanh toán nhé. 🕯️\" (Gửi lúc 12 giờ trưa giờ địa phương).\n- Ngày 7: \"T.B: Bạn sẽ được miễn phí vận chuyển máy khuếch tán cho đơn hàng trên $40! 🌱\" (Gửi lúc 6 giờ tối, sau giờ làm việc).\n\n**Push Notification (3 cảnh báo):**\n- Ngày 1: \"Sản phẩm mới lên kệ! 🌿 Khám phá Bộ sưu tập Bamboo Wick—chỉ có tại EcoGlow.\" (Gửi lúc 9 giờ sáng).\n- Ngày 5: \"Giỏ hàng của bạn vẫn còn nóng hổi 🔥 Hoàn tất thanh toán ngay để được giảm 10%!\" (Gửi lúc 8 giờ tối).\n- Ngày 12: \"Những giờ cuối cùng! Giảm giá 10% sẽ kết thúc vào nửa đêm. ⏳\" (Gửi lúc 10 giờ tối).\n\n**Điểm chạm tích hợp (Integration Touchpoints):**\n- Đồng bộ Parcelvoy với **Shopify** để cập nhật kho hàng theo thời gian thực và theo dõi đơn hàng.\n- Kết nối với **Google Analytics 4** để theo dõi các tham số UTM và hành trình chuyển đổi.\n- Sử dụng **Segment** để hợp nhất dữ liệu khách hàng từ các kênh email, SMS và push notification.\n\n**Chỉ số chính (Key Metrics):**\n- Tỷ lệ mở (mục tiêu: 25% cho email, 35% cho SMS).\n- Tỷ lệ nhấp (mục tiêu: 5% cho email, 8% cho SMS).\n- Tỷ lệ chuyển đổi (mục tiêu: 3% từ email, 4% từ SMS).\n- Doanh thu trên mỗi chiến dịch (mục tiêu: $12,000).\n\n*Công cụ sử dụng:* Parcelvoy (trình tạo chiến dịch), Shopify (thương mại điện tử), Google Analytics 4 (theo dõi), Segment (hợp nhất dữ liệu).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:11.166464Z",
+    "http_status": 200,
+    "content_hash": "310a3dac88a6a8011831f647175695616239a07e0ce1e6ff42c43e5f92cdadb9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\platform.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\platform.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Parcelvoy - Tự động hóa Marketing Đa kênh",
+  "short_description_vi": "Parcelvoy là một nền tảng tự động hóa marketing đa kênh mã nguồn mở. Nền tảng này cho phép các marketer gửi email dựa trên dữ liệu (data-driven), SMS, push notification và nhiều hình thức khác. Nó hỗ trợ kết nối với nhiều công cụ và workflow khác nhau để quản lý chiến dịch đa kênh (omnichannel)."
+}

@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/marm-systems",
+  "slug": "marm-systems",
+  "name": "browser-use",
+  "headline": "MARM-Systems - AI Memory & Multi-Agent Coordination",
+  "short_description": "Turn AI into a persistent, memory-powered collaborator. Universal MCP Server (supports HTTP, STDIO, and WebSocket) enabling cross-platform AI memory, multi-agent coordination, and context sharing. Built with MARM protocol for structured reasoning that evolves with your work.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Lyellr88",
+  "install_command": "git clone https://github.com/Lyellr88/MARM-Systems.git",
+  "source_repo_url": "https://github.com/Lyellr88/MARM-Systems",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "docker-image",
+    "mcp-server",
+    "marm",
+    "memory-management",
+    "claude",
+    "fastapi",
+    "mcp",
+    "opensource",
+    "knowledge-based-systems",
+    "gemini-cli",
+    "embeddings",
+    "openai",
+    "semantic-search"
+  ],
+  "sections": {
+    "overview": "MARM MCP provides a local-first memory infrastructure for Claude, Gemini, Qwen, and other MCP clients, enabling AI agents to retain decisions, context, and project history across sessions instead of forgetting after each conversation. It operates as a universal MCP Server supporting HTTP, STDIO, and WebSocket transports, with a memory model built on sessions, structured logs, notebooks, summaries, and semantic memories. The system handles session routing, hybrid recall with semantic re-ranking, serialized writes, and rate-limit presets to support everything from solo developers to multi-agent swarms. MARM uses SQLite with WAL mode, connection pooling, and an intelligent write queue to scale safely without losing data integrity. Developers benefit from persistent project history, shared context across agents, and intelligent recall that stays useful as memory grows.\nSolo developers maintaining project context and technical decisions across long-running sessions\nMulti-agent teams sharing persistent memory and coordinating work through structured logs\nDevOps and infrastructure engineers tracking complex configurations across services and deployments\nResearch teams reusing notebooks, summaries, and semantic memories across collaborative work",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Lyellr88/MARM-Systems`",
+    "usage": "```\nSet up a persistent memory system for [PROJECT_NAME] using MARM-Systems. Configure the Universal MCP Server to support [PROTOCOL: HTTP/STDIO/WebSocket] for [USE_CASE: cross-platform collaboration/multi-agent coordination/context sharing]. Define memory retention policies for [DATA_TYPES: user inputs, tool outputs, reasoning steps, context snapshots]. Initialize the MARM protocol with [REASONING_STRUCTURE: step-by-step reasoning, hypothesis tracking, or decision logs] for [TEAM_SIZE: solo/team] workflows. Test the system by processing [SAMPLE_INPUT: a sample task or query] and verify memory persistence across [SESSIONS: restarts, device changes, or agent handoffs].\n```\nCopy\n\n```\n### MARM-Systems Setup Report for Project 'NeuralBridge'\n\n**Configuration Summary:**\n- Protocol: WebSocket (primary) + STDIO (fallback)\n- Memory Retention: 30-day rolling window with priority flagging for critical context\n- Reasoning Structure: Hypothesis → Evidence → Decision (HED) framework\n- Team Size: 5 agents (Research, Analysis, Integration, Validation, Reporting)\n\n**Memory Snapshot (Post-Setup):**\n```json\n{\n  \"project_context\": {\n    \"name\": \"NeuralBridge\",\n    \"objective\": \"Develop a cross-platform neural network inference engine\",\n    \"milestones\": [\n      {\"id\": \"M1\", \"status\": \"completed\", \"date\": \"2024-05-15\", \"output\": \"Initial architecture validated\"},\n      {\"id\": \"M2\", \"status\": \"in_progress\", \"date\": \"2024-06-01\", \"output\": \"GPU acceleration module in testing\"}\n    ]\n  },\n  \"agent_states\": {\n    \"Research\": {\"active_hypotheses\": [\"Quantum-inspired optimization may reduce inference latency\"], \"last_activity\": \"2024-06-10T14:32:00Z\"},\n    \"Integration\": {\"pending_tasks\": [\"Resolve CUDA compatibility issues with PyTorch 2.1\"], \"last_activity\": \"2024-06-10T15:15:00Z\"}\n  },\n  \"shared_context\": {\n    \"user_preferences\": {\"output_format\": \"markdown\", \"verbosity\": \"concise\"},\n    \"tool_versions\": {\"python\": \"3.11\", \"torch\": \"2.1.0\", \"cuda\": \"12.1\"}\n  }\n}\n```\n\n**Test Results:**\n1. **Cross-Session Persistence:** Successfully restored context after server restart (verified via WebSocket reconnection).\n2. **Multi-Agent Coordination:** Research agent's hypothesis propagated to Integration agent without manual input.\n3. **Reasoning Trace:** HED framework captured 12 reasoning steps for the GPU acceleration module, including rejected alternatives (e.g., \"FPGA acceleration ruled out due to development time constraints\").\n\n**Next Steps:**\n- Configure priority memory for the upcoming client demo (due 2024-06-15).\n- Enable real-time context sharing between the Validation and Reporting agents for automated report generation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "marm-systems#main-content",
+      "marm-systems#overview",
+      "marm-systems#setup",
+      "marm-systems#examples",
+      "marm-systems#tools",
+      "marm-systems#mcp",
+      "marm-systems#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MARM MCP provides a local-first memory infrastructure for Claude, Gemini, Qwen, and other MCP clients, enabling AI agents to retain decisions, context, and project history across sessions instead of forgetting after each conversation. It operates as a universal MCP Server supporting HTTP, STDIO, and WebSocket transports, with a memory model built on sessions, structured logs, notebooks, summaries, and semantic memories. The system handles session routing, hybrid recall with semantic re-ranking, serialized writes, and rate-limit presets to support everything from solo developers to multi-agent swarms. MARM uses SQLite with WAL mode, connection pooling, and an intelligent write queue to scale safely without losing data integrity. Developers benefit from persistent project history, shared context across agents, and intelligent recall that stays useful as memory grows.\nSolo developers maintaining project context and technical decisions across long-running sessions\nMulti-agent teams sharing persistent memory and coordinating work through structured logs\nDevOps and infrastructure engineers tracking complex configurations across services and deployments\nResearch teams reusing notebooks, summaries, and semantic memories across collaborative work",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Lyellr88/MARM-Systems`",
+    "usage_vi": "```\nSet up a persistent memory system for [PROJECT_NAME] using MARM-Systems. Configure the Universal MCP Server to support [PROTOCOL: HTTP/STDIO/WebSocket] for [USE_CASE: cross-platform collaboration/multi-agent coordination/context sharing]. Define memory retention policies for [DATA_TYPES: user inputs, tool outputs, reasoning steps, context snapshots]. Initialize the MARM protocol with [REASONING_STRUCTURE: step-by-step reasoning, hypothesis tracking, or decision logs] for [TEAM_SIZE: solo/team] workflows. Test the system by processing [SAMPLE_INPUT: a sample task or query] and verify memory persistence across [SESSIONS: restarts, device changes, or agent handoffs].\n```\nCopy\n\n```\n### MARM-Systems Setup Report for Project 'NeuralBridge'\n\n**Configuration Summary:**\n- Protocol: WebSocket (primary) + STDIO (fallback)\n- Memory Retention: 30-day rolling window with priority flagging for critical context\n- Reasoning Structure: Hypothesis → Evidence → Decision (HED) framework\n- Team Size: 5 agents (Research, Analysis, Integration, Validation, Reporting)\n\n**Memory Snapshot (Post-Setup):**\n```json\n{\n  \"project_context\": {\n    \"name\": \"NeuralBridge\",\n    \"objective\": \"Develop a cross-platform neural network inference engine\",\n    \"milestones\": [\n      {\"id\": \"M1\", \"status\": \"completed\", \"date\": \"2024-05-15\", \"output\": \"Initial architecture validated\"},\n      {\"id\": \"M2\", \"status\": \"in_progress\", \"date\": \"2024-06-01\", \"output\": \"GPU acceleration module in testing\"}\n    ]\n  },\n  \"agent_states\": {\n    \"Research\": {\"active_hypotheses\": [\"Quantum-inspired optimization may reduce inference latency\"], \"last_activity\": \"2024-06-10T14:32:00Z\"},\n    \"Integration\": {\"pending_tasks\": [\"Resolve CUDA compatibility issues with PyTorch 2.1\"], \"last_activity\": \"2024-06-10T15:15:00Z\"}\n  },\n  \"shared_context\": {\n    \"user_preferences\": {\"output_format\": \"markdown\", \"verbosity\": \"concise\"},\n    \"tool_versions\": {\"python\": \"3.11\", \"torch\": \"2.1.0\", \"cuda\": \"12.1\"}\n  }\n}\n```\n\n**Test Results:**\n1. **Cross-Session Persistence:** Successfully restored context after server restart (verified via WebSocket reconnection).\n2. **Multi-Agent Coordination:** Research agent's hypothesis propagated to Integration agent without manual input.\n3. **Reasoning Trace:** HED framework captured 12 reasoning steps for the GPU acceleration module, including rejected alternatives (e.g., \"FPGA acceleration ruled out due to development time constraints\").\n\n**Next Steps:**\n- Configure priority memory for the upcoming client demo (due 2024-06-15).\n- Enable real-time context sharing between the Validation and Reporting agents for automated report generation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:32:26.350790Z",
+    "http_status": 200,
+    "content_hash": "b78624fb37751ad9125a6be02aea0b25111a4e2876b2d3afe4479c53fbdfdca8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\marm-systems.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\marm-systems.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MARM-Systems - AI Memory & Multi-Agent Coordination",
+  "short_description_vi": "Turn AI into a persistent, memory-powered collaborator. Universal MCP Server (supports HTTP, STDIO, and WebSocket) enabling cross-platform AI memory, multi-agent coordination, and context sharing. Built with MARM protocol for structured reasoning that evolves with your work."
+}

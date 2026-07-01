@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dingo-marketing",
+  "slug": "dingo-marketing",
+  "name": "Dingo Marketing",
+  "headline": "Dingo-Marketing: AI Marketing Automation for GitHub",
+  "short_description": "Dingo-Marketing is an AI-driven marketing automation platform tailored for GitHub projects, streamlining marketing efforts through intelligent automation. It enhances project visibility and engagement, making it easier for developers to promote their work effectively.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "DataEval",
+  "install_command": "claude install DataEval/dingo-marketing",
+  "source_repo_url": "https://github.com/DataEval/dingo-marketing",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "GitHub",
+    "project promotion",
+    "automation",
+    "AI",
+    "marketing automation"
+  ],
+  "sections": {
+    "overview": "Dingo-Marketing is an OpenClaw skill that automates the creation of release announcement posts for open-source projects across multiple platforms. Given release notes or a GitHub Release URL, it generates platform-specific posts tailored for Reddit technical communities, Twitter/X (in thread and single tweet formats, with English and Chinese versions), Xiaohongshu in three content variants, and Hacker News with engineering-focused tone. The skill uses project configuration files and platform-specific templates to adapt messaging and style for each audience. Open-source maintainers and project teams use it to efficiently promote releases without manually crafting separate posts for each platform. Setup involves installing the skill in OpenClaw or using the included templates as a prompt kit with any LLM.\nAutomating social media posts for GitHub projects\nGenerating marketing content for project documentation\nAnalyzing project engagement metrics\nCreating targeted email campaigns for project updates",
+    "setup": "Terminal\nCopy\n`claude install DataEval/dingo-marketing`\n`git clone https://github.com/DataEval/dingo-marketing`",
+    "usage": "```\nAct as a marketing automation expert for GitHub projects. Create a 30-day marketing plan for [PROJECT_NAME], a [PROJECT_TYPE] project in the [INDUSTRY] space. Include specific actions for days 1-7, focusing on [TARGET_AUDIENCE]. Use [DATA] to inform your strategy.\n```\nCopy\n\n```\n# 30-Day Marketing Plan for 'CodeCraft' - A Web Development Project",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "dingo-marketing#main-content",
+      "dingo-marketing#overview",
+      "dingo-marketing#setup",
+      "dingo-marketing#examples",
+      "dingo-marketing#tools",
+      "dingo-marketing#mcp",
+      "dingo-marketing#related",
+      "marketingskills",
+      "copywriting",
+      "earnshare"
+    ],
+    "overview_vi": "Dingo-Marketing is an OpenClaw skill that automates the creation of release announcement posts for open-source projects across multiple platforms. Given release notes or a GitHub Release URL, it generates platform-specific posts tailored for Reddit technical communities, Twitter/X (in thread and single tweet formats, with English and Chinese versions), Xiaohongshu in three content variants, and Hacker News with engineering-focused tone. The skill uses project configuration files and platform-specific templates to adapt messaging and style for each audience. Open-source maintainers and project teams use it to efficiently promote releases without manually crafting separate posts for each platform. Setup involves installing the skill in OpenClaw or using the included templates as a prompt kit with any LLM.\nAutomating social media posts for GitHub projects\nGenerating marketing content for project documentation\nAnalyzing project engagement metrics\nCreating targeted email campaigns for project updates",
+    "setup_vi": "Terminal\nCopy\n`claude install DataEval/dingo-marketing`\n`git clone https://github.com/DataEval/dingo-marketing`",
+    "usage_vi": "```\nAct as a marketing automation expert for GitHub projects. Create a 30-day marketing plan for [PROJECT_NAME], a [PROJECT_TYPE] project in the [INDUSTRY] space. Include specific actions for days 1-7, focusing on [TARGET_AUDIENCE]. Use [DATA] to inform your strategy.\n```\nCopy\n\n```\n# 30-Day Marketing Plan for 'CodeCraft' - A Web Development Project"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:26:13.799883Z",
+    "http_status": 200,
+    "content_hash": "4d6052803489d2321ad82c4c8c59361bc61c5ded10dcff89769558db90e97e18",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dingo-marketing.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dingo-marketing.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Dingo-Marketing: AI Marketing Automation for GitHub",
+  "short_description_vi": "Dingo-Marketing is an AI-driven marketing automation platform tailored for GitHub projects, streamlining marketing efforts through intelligent automation. It enhances project visibility and engagement, making it easier for developers to promote their work effectively."
+}

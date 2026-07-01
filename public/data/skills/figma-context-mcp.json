@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/figma-context-mcp",
+  "slug": "figma-context-mcp",
+  "name": "react-native-best-practices",
+  "headline": "Figma-Context-MCP: Enhance AI Coding Workflows",
+  "short_description": "Figma-Context-MCP is a powerful server that delivers Figma layout information to AI coding agents like Cursor, enhancing design-to-code workflows. It streamlines the integration of design assets into development processes, making it an essential tool for teams leveraging AI in their projects.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "GLips",
+  "install_command": "claude install GLips/Figma-Context-MCP",
+  "source_repo_url": "https://github.com/GLips/Figma-Context-MCP",
+  "works_with": [
+    "Cursor"
+  ],
+  "tags": [
+    "AI",
+    "coding",
+    "layout",
+    "TypeScript",
+    "Figma"
+  ],
+  "sections": {
+    "overview": "Figma-Context-MCP is an MCP (Model Context Protocol) server that bridges design and development by providing AI coding agents with direct access to Figma layout information. It integrates with AI-powered coding tools like Cursor and Claude Code, allowing developers to reference design assets and specifications while writing code. The server supports per-request Figma API keys for flexible authentication. This skill streamlines the design-to-code workflow by eliminating manual design handoff processes and enabling AI agents to understand layout context, styling, and component structure directly from Figma files.\nIntegrate Figma designs into code seamlessly, reducing manual coding efforts.\nAutomate layout extraction for development, ensuring accuracy and saving time.\nEnhance collaboration between designers and developers by providing real-time design updates.\nFacilitate quick iterations on design changes by automatically updating code.",
+    "setup": "Terminal\nCopy\n`claude install GLips/Figma-Context-MCP`\n`git clone https://github.com/GLips/Figma-Context-MCP`",
+    "usage": "```\nI'm working on a project in Figma with the file ID [FILE_ID]. I need to extract the layout information and send it to an AI coding agent like Cursor. Can you help me set up the Figma-Context-MCP server to stream this data? The design file includes [DESCRIBE_DESIGN_ELEMENTS] and I need to ensure all the necessary details are captured for accurate code generation.\n```\nCopy\n\n```\nTo set up the Figma-Context-MCP server for your project, follow these steps:\n\n1. **Install the MCP Server**: First, you need to install the Figma-Context-MCP server. You can find the installation instructions in the [Figma MCP Server Guide](https://help.figma.com/hc/articles/32132100833559-Guide-to-the-Figma-MCP-server). Make sure you have the necessary dependencies installed on your system.\n\n2. **Configure the Server**: Once installed, configure the MCP server to connect to your Figma file. You will need to provide the Figma file ID, which is [FILE_ID]. This can be found in the URL of your Figma design file. The URL typically looks like `https://www.figma.com/file/[FILE_ID]/[FILE_NAME]`. Copy the [FILE_ID] part and paste it into the server configuration.\n\n3. **Specify Design Elements**: In the server configuration, specify the design elements you want to extract. For your project, you mentioned [DESCRIBE_DESIGN_ELEMENTS]. Ensure that all these elements are included in the configuration. This might involve specifying layers, frames, or components that are crucial for your design.\n\n4. **Start the Server**: After configuring, start the MCP server. The server will begin streaming the layout information from your Figma file to the AI coding agent. You can monitor the server logs to ensure that the data is being streamed correctly.\n\n5. **Integrate with AI Coding Agent**: Finally, integrate the MCP server with your AI coding agent, such as Cursor. This involves setting up the necessary API endpoints and ensuring that the AI agent can receive and process the layout information from the MCP server. Refer to the documentation of your AI coding agent for specific integration steps.\n\nBy following these steps, you should be able to successfully set up the Figma-Context-MCP server and stream your design data to the AI coding agent for accurate code generation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Cursor"
+    ],
+    "related_skills": [
+      "figma-context-mcp#main-content",
+      "figma-context-mcp#overview",
+      "figma-context-mcp#setup",
+      "figma-context-mcp#examples",
+      "figma-context-mcp#tools",
+      "figma-context-mcp#mcp",
+      "figma-context-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Figma-Context-MCP is an MCP (Model Context Protocol) server that bridges design and development by providing AI coding agents with direct access to Figma layout information. It integrates with AI-powered coding tools like Cursor and Claude Code, allowing developers to reference design assets and specifications while writing code. The server supports per-request Figma API keys for flexible authentication. This skill streamlines the design-to-code workflow by eliminating manual design handoff processes and enabling AI agents to understand layout context, styling, and component structure directly from Figma files.\nIntegrate Figma designs into code seamlessly, reducing manual coding efforts.\nAutomate layout extraction for development, ensuring accuracy and saving time.\nEnhance collaboration between designers and developers by providing real-time design updates.\nFacilitate quick iterations on design changes by automatically updating code.",
+    "setup_vi": "Terminal\nCopy\n`claude install GLips/Figma-Context-MCP`\n`git clone https://github.com/GLips/Figma-Context-MCP`",
+    "usage_vi": "```\nI'm working on a project in Figma with the file ID [FILE_ID]. I need to extract the layout information and send it to an AI coding agent like Cursor. Can you help me set up the Figma-Context-MCP server to stream this data? The design file includes [DESCRIBE_DESIGN_ELEMENTS] and I need to ensure all the necessary details are captured for accurate code generation.\n```\nCopy\n\n```\nTo set up the Figma-Context-MCP server for your project, follow these steps:\n\n1. **Install the MCP Server**: First, you need to install the Figma-Context-MCP server. You can find the installation instructions in the [Figma MCP Server Guide](https://help.figma.com/hc/articles/32132100833559-Guide-to-the-Figma-MCP-server). Make sure you have the necessary dependencies installed on your system.\n\n2. **Configure the Server**: Once installed, configure the MCP server to connect to your Figma file. You will need to provide the Figma file ID, which is [FILE_ID]. This can be found in the URL of your Figma design file. The URL typically looks like `https://www.figma.com/file/[FILE_ID]/[FILE_NAME]`. Copy the [FILE_ID] part and paste it into the server configuration.\n\n3. **Specify Design Elements**: In the server configuration, specify the design elements you want to extract. For your project, you mentioned [DESCRIBE_DESIGN_ELEMENTS]. Ensure that all these elements are included in the configuration. This might involve specifying layers, frames, or components that are crucial for your design.\n\n4. **Start the Server**: After configuring, start the MCP server. The server will begin streaming the layout information from your Figma file to the AI coding agent. You can monitor the server logs to ensure that the data is being streamed correctly.\n\n5. **Integrate with AI Coding Agent**: Finally, integrate the MCP server with your AI coding agent, such as Cursor. This involves setting up the necessary API endpoints and ensuring that the AI agent can receive and process the layout information from the MCP server. Refer to the documentation of your AI coding agent for specific integration steps.\n\nBy following these steps, you should be able to successfully set up the Figma-Context-MCP server and stream your design data to the AI coding agent for accurate code generation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:28:48.878368Z",
+    "http_status": 200,
+    "content_hash": "ec0db253e79584dd83960de43e4ff2453ea288c3349c17b1f4298c5ed2657b77",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\figma-context-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\figma-context-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Figma-Context-MCP: Enhance AI Coding Workflows",
+  "short_description_vi": "Figma-Context-MCP is a powerful server that delivers Figma layout information to AI coding agents like Cursor, enhancing design-to-code workflows. It streamlines the integration of design assets into development processes, making it an essential tool for teams leveraging AI in their projects."
+}

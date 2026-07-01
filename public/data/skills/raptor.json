@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/raptor",
+  "slug": "raptor",
+  "name": "nuwax",
+  "headline": "Raptor: AI Security Agent for Cyber Operations",
+  "short_description": "Raptor transforms Claude Code into a versatile AI security agent, enabling offensive and defensive operations through rule creation and orchestration of security tools. It enhances adversarial thinking for effective research and security strategies.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "gadievron",
+  "install_command": "claude install gadievron/raptor",
+  "source_repo_url": "https://github.com/gadievron/raptor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "Adversarial Thinking",
+    "Research",
+    "Cybersecurity",
+    "AI Security",
+    "Automation"
+  ],
+  "sections": {
+    "overview": "Raptor transforms AI agents into security-focused tools capable of offensive and defensive operations through rule creation and orchestrated security tool execution. The skill leverages adversarial thinking patterns to enhance security research and strategy development. It provides capabilities for understanding code attack surfaces through trace analysis and enrichment, enabling agents to map vulnerabilities and test security controls. Raptor integrates with code analysis workflows to support both exploit discovery and patch validation. Designed for security researchers and penetration testers who need AI-assisted analysis of complex codebases.\nConduct comprehensive penetration testing to identify vulnerabilities in applications.\nAutomate security assessments to ensure continuous compliance and risk management.\nSimulate cyber attacks to evaluate the effectiveness of existing security measures.\nDevelop and implement defensive strategies based on real-time threat intelligence.",
+    "setup": "Terminal\nCopy\n`claude install gadievron/raptor`\n`git clone https://github.com/gadievron/raptor`",
+    "usage": "```\nCreate a Raptor agent to simulate a phishing campaign targeting [INDUSTRY] companies. Use the following rules: [RULES]. The agent should identify vulnerabilities in [SPECIFIC SECURITY TOOLS] and suggest mitigations. Provide a step-by-step report of the simulated attack and defense process.\n```\nCopy\n\n```\nRaptor Agent Simulation Report\n\n**Target Industry:** Healthcare\n**Rules:** Simulate a spear-phishing campaign with a 72-hour window, targeting HR departments. Use social engineering tactics to bypass email filters.\n**Security Tools:** Microsoft Defender for Office 365, KnowBe4\n\n**Simulation Steps:**\n1. **Reconnaissance:** Identified 15 target companies with publicly listed HR contacts. Gathered personal data from LinkedIn and company websites.\n2. **Phishing Email Crafting:** Created personalized emails mimicking a benefits provider, with a malicious link to a fake login page.\n3. **Bypass Attempts:** Tested email against Microsoft Defender filters. Initial emails were flagged, but slight modifications (e.g., changing the sender domain slightly) allowed some emails to bypass filters.\n4. **User Interaction:** Simulated user clicks on the malicious link. Tracked engagement rates (25% opened emails, 12% clicked the link).\n5. **Defense Evasion:** KnowBe4's security awareness training reduced click rates by 40% in trained employees compared to untrained ones.\n6. **Mitigation Suggestions:** Recommend enabling multi-factor authentication (MFA) for all HR portals, increasing email filter sensitivity, and conducting quarterly phishing simulations for all employees.\n\n**Conclusion:** The simulation revealed vulnerabilities in email filtering and user awareness. Implementing the suggested mitigations would significantly reduce the risk of successful phishing attacks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "raptor#main-content",
+      "raptor#overview",
+      "raptor#setup",
+      "raptor#examples",
+      "raptor#tools",
+      "raptor#mcp",
+      "raptor#related",
+      "claude-skills",
+      "firecrawl",
+      "nuwax"
+    ],
+    "overview_vi": "Raptor transforms AI agents into security-focused tools capable of offensive and defensive operations through rule creation and orchestrated security tool execution. The skill leverages adversarial thinking patterns to enhance security research and strategy development. It provides capabilities for understanding code attack surfaces through trace analysis and enrichment, enabling agents to map vulnerabilities and test security controls. Raptor integrates with code analysis workflows to support both exploit discovery and patch validation. Designed for security researchers and penetration testers who need AI-assisted analysis of complex codebases.\nConduct comprehensive penetration testing to identify vulnerabilities in applications.\nAutomate security assessments to ensure continuous compliance and risk management.\nSimulate cyber attacks to evaluate the effectiveness of existing security measures.\nDevelop and implement defensive strategies based on real-time threat intelligence.",
+    "setup_vi": "Terminal\nCopy\n`claude install gadievron/raptor`\n`git clone https://github.com/gadievron/raptor`",
+    "usage_vi": "```\nCreate a Raptor agent to simulate a phishing campaign targeting [INDUSTRY] companies. Use the following rules: [RULES]. The agent should identify vulnerabilities in [SPECIFIC SECURITY TOOLS] and suggest mitigations. Provide a step-by-step report of the simulated attack and defense process.\n```\nCopy\n\n```\nRaptor Agent Simulation Report\n\n**Target Industry:** Healthcare\n**Rules:** Simulate a spear-phishing campaign with a 72-hour window, targeting HR departments. Use social engineering tactics to bypass email filters.\n**Security Tools:** Microsoft Defender for Office 365, KnowBe4\n\n**Simulation Steps:**\n1. **Reconnaissance:** Identified 15 target companies with publicly listed HR contacts. Gathered personal data from LinkedIn and company websites.\n2. **Phishing Email Crafting:** Created personalized emails mimicking a benefits provider, with a malicious link to a fake login page.\n3. **Bypass Attempts:** Tested email against Microsoft Defender filters. Initial emails were flagged, but slight modifications (e.g., changing the sender domain slightly) allowed some emails to bypass filters.\n4. **User Interaction:** Simulated user clicks on the malicious link. Tracked engagement rates (25% opened emails, 12% clicked the link).\n5. **Defense Evasion:** KnowBe4's security awareness training reduced click rates by 40% in trained employees compared to untrained ones.\n6. **Mitigation Suggestions:** Recommend enabling multi-factor authentication (MFA) for all HR portals, increasing email filter sensitivity, and conducting quarterly phishing simulations for all employees.\n\n**Conclusion:** The simulation revealed vulnerabilities in email filtering and user awareness. Implementing the suggested mitigations would significantly reduce the risk of successful phishing attacks.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:27:20.034687Z",
+    "http_status": 200,
+    "content_hash": "c0854278d487b0180df2e6501756781d56a3089ec0409f340ad653981b6b2c72",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\raptor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\raptor.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Raptor: AI Security Agent for Cyber Operations",
+  "short_description_vi": "Raptor transforms Claude Code into a versatile AI security agent, enabling offensive and defensive operations through rule creation and orchestration of security tools. It enhances adversarial thinking for effective research and security strategies."
+}

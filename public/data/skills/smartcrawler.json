@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/smartcrawler",
+  "slug": "smartcrawler",
+  "name": "SmartCrawler",
+  "headline": "SmartCrawler: Web Crawler with Duplicate Detection",
+  "short_description": "A smart web crawler built in Rust that uses Claude AI to select the most relevant URLs from website sitemaps based on crawling objectives.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "pixlie",
+  "install_command": "git clone https://github.com/pixlie/SmartCrawler.git",
+  "source_repo_url": "https://github.com/pixlie/SmartCrawler",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "crawler",
+    "vibe-coding",
+    "claude-code",
+    "claude-api"
+  ],
+  "sections": {
+    "overview": "SmartCrawler is a web crawler built in Rust that uses WebDriver to extract and parse HTML content from multiple web pages simultaneously. It features intelligent duplicate detection to automatically filter redundant content patterns across domains, and template pattern recognition to identify variable content like dynamic counts or timestamps. The tool provides structured HTML tree views with detailed filtering information, making it useful for researchers, developers, and data extraction workflows. SmartCrawler supports both Firefox and Chrome WebDrivers and runs on Windows, macOS, and Linux with minimal system requirements.\nExtract and deduplicate content from multi-page websites for research\nIdentify template patterns in dynamically generated web content\nCrawl multiple domain URLs in a single session for comparative analysis\nParse structured HTML data with automatic filtering of duplicate patterns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pixlie/SmartCrawler`",
+    "usage": "```\nI'm using SmartCrawler to analyze [WEBSITE] in the [INDUSTRY] sector. My objective is to find URLs related to [TOPIC]. Please evaluate these sitemap URLs and select the 10 most relevant ones based on my objective. Return the results in a numbered list with brief explanations for each selection.\n```\nCopy\n\n```\n# Relevant URLs for [WEBSITE] Analysis\n\nBased on your objective to find content about [TOPIC] in the [INDUSTRY] sector, here are the top 10 most relevant URLs from the sitemap:\n\n1. **/industry-trends/[TOPIC]** - This URL directly matches your topic and is likely to contain comprehensive industry analysis.\n2. **/case-studies/[TOPIC]-success** - A case study page that demonstrates real-world applications of [TOPIC].\n3. **/whitepapers/[TOPIC]-research** - A research whitepaper that provides in-depth insights into [TOPIC].\n4. **/blog/category/[TOPIC]** - A blog category page that aggregates all posts related to [TOPIC].\n5. **/products/[TOPIC]-solutions** - A product page that lists solutions specifically designed for [TOPIC].\n6. **/events/[TOPIC]-conference** - An event page for an upcoming conference focused on [TOPIC].\n7. **/webinars/[TOPIC]-webinar** - A webinar page that offers an educational session on [TOPIC].\n8. **/resources/[TOPIC]-guide** - A comprehensive guide that covers various aspects of [TOPIC].\n9. **/news/[TOPIC]-updates** - A news section that provides the latest updates and developments related to [TOPIC].\n10. **/about/team/[TOPIC]-experts** - A team page that highlights experts specializing in [TOPIC].\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "smartcrawler#main-content",
+      "smartcrawler#overview",
+      "smartcrawler#setup",
+      "smartcrawler#examples",
+      "smartcrawler#tools",
+      "smartcrawler#mcp",
+      "smartcrawler#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SmartCrawler là một web crawler được viết bằng Rust, sử dụng WebDriver để trích xuất và phân tích cú pháp (parse) nội dung HTML từ nhiều trang web cùng một lúc. Công cụ này sở hữu tính năng phát hiện trùng lặp thông minh giúp tự động lọc các mẫu nội dung dư thừa giữa các tên miền (domain), cùng khả năng nhận diện mẫu template để xác định các nội dung thay đổi như số đếm động hoặc mốc thời gian. SmartCrawler cung cấp chế độ xem cấu trúc cây HTML trực quan đi kèm thông tin lọc chi tiết, rất hữu ích cho các nhà nghiên cứu, lập trình viên và các quy trình trích xuất dữ liệu. Công cụ hỗ trợ cả Firefox và Chrome WebDriver, chạy được trên Windows, macOS và Linux với yêu cầu hệ thống tối thiểu.\nTrích xuất và loại bỏ trùng lặp nội dung từ các trang web nhiều trang để phục vụ nghiên cứu\nNhận diện các mẫu template trong nội dung web được tạo động\nCrawl nhiều URL tên miền trong cùng một session để phân tích so sánh\nPhân tích cú pháp dữ liệu HTML có cấu trúc và tự động lọc các mẫu trùng lặp",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/pixlie/SmartCrawler`",
+    "usage_vi": "```\nTôi đang sử dụng SmartCrawler để phân tích [WEBSITE] trong lĩnh vực [INDUSTRY]. Mục tiêu của tôi là tìm các URL liên quan đến [TOPIC]. Vui lòng đánh giá các URL sitemap này và chọn ra 10 URL phù hợp nhất dựa trên mục tiêu của tôi. Trả về kết quả dưới dạng danh sách được đánh số kèm theo giải thích ngắn gọn cho mỗi lựa chọn.\n```\nCopy\n\n```\n# Các URL phù hợp để phân tích [WEBSITE]\n\nDựa trên mục tiêu tìm kiếm nội dung về [TOPIC] trong lĩnh vực [INDUSTRY] của bạn, dưới đây là 10 URL phù hợp nhất từ sitemap:\n\n1. **/industry-trends/[TOPIC]** - URL này khớp trực tiếp với chủ đề của bạn và có khả năng chứa phân tích toàn diện về ngành.\n2. **/case-studies/[TOPIC]-success** - Trang nghiên cứu điển hình (case study) chứng minh các ứng dụng thực tế của [TOPIC].\n3. **/whitepapers/[TOPIC]-research** - Sách trắng nghiên cứu (whitepaper) cung cấp thông tin chuyên sâu về [TOPIC].\n4. **/blog/category/[TOPIC]** - Trang danh mục blog tổng hợp tất cả các bài viết liên quan đến [TOPIC].\n5. **/products/[TOPIC]-solutions** - Trang sản phẩm liệt kê các giải pháp được thiết kế riêng cho [TOPIC].\n6. **/events/[TOPIC]-conference** - Trang sự kiện cho hội thảo sắp tới tập trung vào [TOPIC].\n7. **/webinars/[TOPIC]-webinar** - Trang webinar cung cấp buổi chia sẻ kiến thức về [TOPIC].\n8. **/resources/[TOPIC]-guide** - Tài liệu hướng dẫn toàn diện bao quát các khía cạnh khác nhau của [TOPIC].\n9. **/news/[TOPIC]-updates** - Mục tin tức cung cấp các cập nhật và diễn biến mới nhất liên quan đến [TOPIC].\n10. **/about/team/[TOPIC]-experts** - Trang giới thiệu đội ngũ làm nổi bật các chuyên gia chuyên về [TOPIC].\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:46:45.952038Z",
+    "http_status": 200,
+    "content_hash": "bbdfa22aa2187b2b4b3f24cb240289951d3a91295ba6cd78dda22880c08579ee",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\smartcrawler.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\smartcrawler.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SmartCrawler: Web Crawler tích hợp tính năng phát hiện trùng lặp",
+  "short_description_vi": "Một web crawler thông minh viết bằng Rust, sử dụng Claude AI để chọn lọc các URL phù hợp nhất từ sitemap của website dựa trên mục tiêu thu thập dữ liệu."
+}

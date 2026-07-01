@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vueuse-functions",
+  "slug": "vueuse-functions",
+  "name": "VueUse Functions",
+  "headline": "VueUse Skills: Composable Guidance for AI Agents",
+  "short_description": "This skill is a decision-and-implementation guide for VueUse composables, helping users apply over 200 functions effectively in Vue.js and Nuxt projects. It maps requirements to suitable VueUse functions and promotes maintainable and performant code solutions.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "vueuse",
+  "install_command": "git clone https://github.com/vueuse/skills",
+  "source_repo_url": "https://github.com/vueuse/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "functions",
+    "development",
+    "vueuse"
+  ],
+  "sections": {
+    "overview": "VueUse Skills is an agent skill designed to help AI tools like Claude Code and Cursor use VueUse composables accurately and efficiently. It provides progressive disclosure of function information, starting with overviews and loading detailed usage on demand, which reduces token consumption and prevents hallucinations from invented APIs. The skill covers over 200 VueUse functions and works offline-first without additional permissions. It includes customizable policies so users can override function invocation rules in prompts or configuration files. Developers can install it via npm or through the Claude Code Marketplace and use it by simply instructing their agent to leverage VueUse when building Vue or Nuxt applications.\nAssisting user development work in Vue.js/Nuxt\nImproving code readability and maintainability with VueUse composables\nProviding integration solutions for Firebase, Electron, and RxJS",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/vueuse/skills --skill vueuse-functions`\n`git clone https://github.com/vueuse/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "vueuse-functions#main-content",
+      "vueuse-functions#overview",
+      "vueuse-functions#setup",
+      "vueuse-functions#examples",
+      "vueuse-functions#related",
+      "gadget-best-practices",
+      "notion-cli",
+      "dinero-best-practices"
+    ],
+    "overview_vi": "VueUse Skills là một agent skill được thiết kế nhằm hỗ trợ các công cụ AI như Claude Code và Cursor sử dụng các VueUse composable một cách chính xác và hiệu quả. Skill này áp dụng cơ chế hiển thị thông tin tiệm tiến (progressive disclosure), bắt đầu bằng phần tổng quan và chỉ tải hướng dẫn sử dụng chi tiết khi có yêu cầu. Nhờ đó, giúp tối ưu hóa lượng token tiêu thụ và hạn chế tình trạng AI tự suy diễn (hallucination) ra các API không tồn tại. Skill hỗ trợ hơn 200 function của VueUse, hoạt động theo cơ chế offline-first và không yêu cầu thêm quyền truy cập. Ngoài ra, nó còn đi kèm các policy có thể tùy chỉnh để người dùng ghi đè các quy tắc gọi function ngay trong prompt hoặc file cấu hình. Lập trình viên có thể cài đặt thông qua npm hoặc Claude Code Marketplace, sau đó sử dụng bằng cách yêu cầu agent ưu tiên dùng VueUse khi xây dựng ứng dụng Vue hoặc Nuxt.\n\nHỗ trợ lập trình viên phát triển ứng dụng Vue.js/Nuxt\nCải thiện độ đọc hiểu và khả năng bảo trì của code với các VueUse composable\nCung cấp giải pháp tích hợp cho Firebase, Electron và RxJS",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/vueuse/skills --skill vueuse-functions`\n`git clone https://github.com/vueuse/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nTham khảo repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:13:46.491176Z",
+    "http_status": 200,
+    "content_hash": "142e428b24f155f5f493348141d1e77b33d341dd866e01631a9b68c86cb5864c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vueuse-functions.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vueuse-functions.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VueUse Skills: Hướng dẫn sử dụng Composable cho AI Agent",
+  "short_description_vi": "Skill này là cẩm nang đưa ra quyết định và triển khai các VueUse composable, giúp người dùng áp dụng hiệu quả hơn 200 function trong các dự án Vue.js và Nuxt. Skill hỗ trợ ánh xạ yêu cầu thực tế với các function VueUse phù hợp, hướng tới các giải pháp code dễ bảo trì và tối ưu hiệu năng."
+}

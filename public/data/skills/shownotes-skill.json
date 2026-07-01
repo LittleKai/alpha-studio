@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/shownotes-skill",
+  "slug": "shownotes-skill",
+  "name": "browser-use",
+  "headline": "Shownotes Skill: Podcast Transcription & Show Notes",
+  "short_description": "Automatically extract transcripts from podcasts and YouTube videos, then generate professionally formatted show notes with summaries, quotes, and takeaways.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "forcequit",
+  "install_command": "git clone https://github.com/forcequit/shownotes-skill.git",
+  "source_repo_url": "https://github.com/forcequit/shownotes-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Shownotes skill transforms Claude into a podcast discovery and transcription assistant. It searches Apple Podcasts and YouTube, extracts transcripts, and automatically generates comprehensive show notes in Markdown and HTML formats. The skill creates executive summaries, identifies key topics, extracts notable quotes, and provides actionable takeaways—perfect for podcasters, content creators, and researchers who need to repurpose audio content quickly. It integrates with the shownotes.io API to access a database of previously transcribed episodes and handle new transcription requests.\nFind and transcribe podcast episodes from Apple Podcasts or YouTube\nGenerate show notes with summaries, quotes, and timestamps\nCreate shareable HTML pages and Markdown content from transcripts\nSearch podcast archives by topic, show name, or guest",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/forcequit/shownotes-skill`",
+    "usage": "```\nAct as a podcast shownotes generator. Create detailed shownotes for a podcast episode about [TOPIC] from [COMPANY] in the [INDUSTRY] sector. Include a brief summary, key takeaways, and timestamps for major segments. Use the following data: [DATA]. Format the shownotes for easy reading and SEO optimization.\n```\nCopy\n\n```\n# Podcast Shownotes: The Future of Sustainable Packaging\n\n**Company:** GreenPack Solutions\n**Industry:** Sustainable Packaging\n**Episode Duration:** 45 minutes",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "shownotes-skill#main-content",
+      "shownotes-skill#overview",
+      "shownotes-skill#setup",
+      "shownotes-skill#examples",
+      "shownotes-skill#tools",
+      "shownotes-skill#mcp",
+      "shownotes-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Shownotes skill transforms Claude into a podcast discovery and transcription assistant. It searches Apple Podcasts and YouTube, extracts transcripts, and automatically generates comprehensive show notes in Markdown and HTML formats. The skill creates executive summaries, identifies key topics, extracts notable quotes, and provides actionable takeaways—perfect for podcasters, content creators, and researchers who need to repurpose audio content quickly. It integrates with the shownotes.io API to access a database of previously transcribed episodes and handle new transcription requests.\nFind and transcribe podcast episodes from Apple Podcasts or YouTube\nGenerate show notes with summaries, quotes, and timestamps\nCreate shareable HTML pages and Markdown content from transcripts\nSearch podcast archives by topic, show name, or guest",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/forcequit/shownotes-skill`",
+    "usage_vi": "```\nAct as a podcast shownotes generator. Create detailed shownotes for a podcast episode about [TOPIC] from [COMPANY] in the [INDUSTRY] sector. Include a brief summary, key takeaways, and timestamps for major segments. Use the following data: [DATA]. Format the shownotes for easy reading and SEO optimization.\n```\nCopy\n\n```\n# Podcast Shownotes: The Future of Sustainable Packaging\n\n**Company:** GreenPack Solutions\n**Industry:** Sustainable Packaging\n**Episode Duration:** 45 minutes"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:33:24.205160Z",
+    "http_status": 200,
+    "content_hash": "2bdd9e5bbb864db107e91fce6d7159a582ddbc9cc12ebf41b48d44e51c0a3930",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\shownotes-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\shownotes-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Shownotes Skill: Podcast Transcription & Show Notes",
+  "short_description_vi": "Automatically extract transcripts from podcasts and YouTube videos, then generate professionally formatted show notes with summaries, quotes, and takeaways."
+}

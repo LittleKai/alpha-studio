@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillkit",
+  "slug": "skillkit",
+  "name": "react-native-best-practices",
+  "headline": "Skillkit: Universal Skills Loader for AI Coding",
+  "short_description": "Skillkit is a universal skills loader designed for AI coding agents, enabling integration with platforms like Claude Code, Cursor, Codex, and Gemini CLI. This tool enhances the capabilities of AI agents by providing a comprehensive set of skills for efficient coding and automation.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "rohitg00",
+  "install_command": "claude install rohitg00/skillkit",
+  "source_repo_url": "https://github.com/rohitg00/skillkit",
+  "works_with": [
+    "ClaudeCursorCodexGemini"
+  ],
+  "tags": [
+    "skills",
+    "coding",
+    "automation",
+    "ai",
+    "cli"
+  ],
+  "sections": {
+    "overview": "Skillkit is a skills loader designed to extend the capabilities of AI coding agents across multiple platforms including Claude Code, Cursor, Codex, and Gemini CLI. It provides a standardized way to load and integrate custom skills into AI agents, enabling them to perform specialized coding and automation tasks. The tool supports 46+ agents and offers Python client libraries for developers building custom integrations. Skillkit simplifies the process of equipping AI agents with domain-specific capabilities without requiring platform-specific implementations. It's built for developers who need to enhance their AI agents with reusable, composable skills.\nLoading coding skills for AI agents\nEnhancing productivity in coding tasks\nAutomating repetitive coding processes\nIntegrating multiple AI coding agents",
+    "setup": "Terminal\nCopy\n`claude install rohitg00/skillkit`\n`git clone https://github.com/rohitg00/skillkit`",
+    "usage": "```\nUse Skillkit to integrate [PLATFORM_NAME] with [TARGET_AI_AGENT] for [SPECIFIC_TASK]. Ensure the integration follows the Skillkit framework by: 1) Loading the required skill module for [PLATFORM_NAME], 2) Configuring the skill with [PLATFORM_SPECIFIC_SETTINGS], 3) Executing the task using [TARGET_AI_AGENT]'s API or CLI, and 4) Validating the output for accuracy. Document the integration steps in a [FORMAT] file for future reference.\n```\nCopy\n\n```\n### Skillkit Integration Report: Productiv + Cursor\n\n**Integration Overview:**\nSuccessfully integrated Productiv's SaaS spending analytics with Cursor AI using Skillkit. The integration enables Cursor to fetch real-time SaaS spending data, identify cost-saving opportunities, and generate automated compliance reports directly within the Cursor IDE.\n\n**Steps Executed:**\n1. **Skill Module Loaded:** Installed the `skillkit-productiv` module via `pip install skillkit-productiv` and verified compatibility with Cursor v1.2.3.\n2. **Configuration:** Set up the Productiv API key in Cursor's `.env` file:\n   ```\n   PRODUCTIV_API_KEY=sk_live_abc123xyz456\n   PRODUCTIV_ORG_ID=org_789xyz123\n   ```\n3. **Task Execution:** Cursor executed the following Skillkit command to fetch SaaS spending data:\n   ```bash\n   skillkit productiv --action fetch-spending --start-date 2024-01-01 --end-date 2024-06-30\n   ```\n   Output:\n   ```json\n   {\n     \"total_spend\": 125000,\n     \"top_5_apps\": [\n       {\"app\": \"Slack\", \"spend\": 45000, \"users\": 250},\n       {\"app\": \"Zoom\", \"spend\": 32000, \"users\": 300},\n       {\"app\": \"Salesforce\", \"spend\": 28000, \"users\": 150},\n       {\"app\": \"Notion\", \"spend\": 12000, \"users\": 200},\n       {\"app\": \"GitHub\", \"spend\": 8000, \"users\": 100}\n     ],\n     \"savings_opportunities\": [\n       {\"app\": \"Slack\", \"potential_savings\": 9000, \"recommendation\": \"Reduce to 200 users\"},\n       {\"app\": \"Zoom\", \"potential_savings\": 6400, \"recommendation\": \"Switch to annual plan\"}\n     ]\n   }\n   ```\n4. **Validation:** Cross-checked the fetched data with Productiv's dashboard. All metrics matched with a 99.8% accuracy rate. Cursor generated a compliance report highlighting 3 redundant licenses (Adobe Creative Cloud, Dropbox Business) and flagged 2 upcoming renewals (June 30, 2024).\n\n**Files Generated:**\n- `productiv_integration.md`: Step-by-step integration guide.\n- `compliance_report_2024_Q2.json`: Automated compliance tracking report.\n\n**Next Steps:**\n- Schedule a review of the identified savings opportunities with the finance team.\n- Set up automated alerts in Cursor for upcoming renewals 30 days in advance.\n\n**Recommendations:**\n- Use Skillkit's `skillkit productiv --action optimize-licenses` to auto-generate license reduction recommendations.\n- Integrate with Jira to create tickets for unused license revocations.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor, Codex, Gemini"
+    ],
+    "related_skills": [
+      "skillkit#main-content",
+      "skillkit#overview",
+      "skillkit#setup",
+      "skillkit#examples",
+      "skillkit#tools",
+      "skillkit#mcp",
+      "skillkit#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Skillkit is a skills loader designed to extend the capabilities of AI coding agents across multiple platforms including Claude Code, Cursor, Codex, and Gemini CLI. It provides a standardized way to load and integrate custom skills into AI agents, enabling them to perform specialized coding and automation tasks. The tool supports 46+ agents and offers Python client libraries for developers building custom integrations. Skillkit simplifies the process of equipping AI agents with domain-specific capabilities without requiring platform-specific implementations. It's built for developers who need to enhance their AI agents with reusable, composable skills.\nLoading coding skills for AI agents\nEnhancing productivity in coding tasks\nAutomating repetitive coding processes\nIntegrating multiple AI coding agents",
+    "setup_vi": "Terminal\nCopy\n`claude install rohitg00/skillkit`\n`git clone https://github.com/rohitg00/skillkit`",
+    "usage_vi": "```\nUse Skillkit to integrate [PLATFORM_NAME] with [TARGET_AI_AGENT] for [SPECIFIC_TASK]. Ensure the integration follows the Skillkit framework by: 1) Loading the required skill module for [PLATFORM_NAME], 2) Configuring the skill with [PLATFORM_SPECIFIC_SETTINGS], 3) Executing the task using [TARGET_AI_AGENT]'s API or CLI, and 4) Validating the output for accuracy. Document the integration steps in a [FORMAT] file for future reference.\n```\nCopy\n\n```\n### Skillkit Integration Report: Productiv + Cursor\n\n**Integration Overview:**\nSuccessfully integrated Productiv's SaaS spending analytics with Cursor AI using Skillkit. The integration enables Cursor to fetch real-time SaaS spending data, identify cost-saving opportunities, and generate automated compliance reports directly within the Cursor IDE.\n\n**Steps Executed:**\n1. **Skill Module Loaded:** Installed the `skillkit-productiv` module via `pip install skillkit-productiv` and verified compatibility with Cursor v1.2.3.\n2. **Configuration:** Set up the Productiv API key in Cursor's `.env` file:\n   ```\n   PRODUCTIV_API_KEY=sk_live_abc123xyz456\n   PRODUCTIV_ORG_ID=org_789xyz123\n   ```\n3. **Task Execution:** Cursor executed the following Skillkit command to fetch SaaS spending data:\n   ```bash\n   skillkit productiv --action fetch-spending --start-date 2024-01-01 --end-date 2024-06-30\n   ```\n   Output:\n   ```json\n   {\n     \"total_spend\": 125000,\n     \"top_5_apps\": [\n       {\"app\": \"Slack\", \"spend\": 45000, \"users\": 250},\n       {\"app\": \"Zoom\", \"spend\": 32000, \"users\": 300},\n       {\"app\": \"Salesforce\", \"spend\": 28000, \"users\": 150},\n       {\"app\": \"Notion\", \"spend\": 12000, \"users\": 200},\n       {\"app\": \"GitHub\", \"spend\": 8000, \"users\": 100}\n     ],\n     \"savings_opportunities\": [\n       {\"app\": \"Slack\", \"potential_savings\": 9000, \"recommendation\": \"Reduce to 200 users\"},\n       {\"app\": \"Zoom\", \"potential_savings\": 6400, \"recommendation\": \"Switch to annual plan\"}\n     ]\n   }\n   ```\n4. **Validation:** Cross-checked the fetched data with Productiv's dashboard. All metrics matched with a 99.8% accuracy rate. Cursor generated a compliance report highlighting 3 redundant licenses (Adobe Creative Cloud, Dropbox Business) and flagged 2 upcoming renewals (June 30, 2024).\n\n**Files Generated:**\n- `productiv_integration.md`: Step-by-step integration guide.\n- `compliance_report_2024_Q2.json`: Automated compliance tracking report.\n\n**Next Steps:**\n- Schedule a review of the identified savings opportunities with the finance team.\n- Set up automated alerts in Cursor for upcoming renewals 30 days in advance.\n\n**Recommendations:**\n- Use Skillkit's `skillkit productiv --action optimize-licenses` to auto-generate license reduction recommendations.\n- Integrate with Jira to create tickets for unused license revocations.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:31:06.889498Z",
+    "http_status": 200,
+    "content_hash": "c9c96aa972205e08344ae7b074fc3e0738adf02a42029b4ce31b9f1cfc3442af",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillkit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skillkit: Universal Skills Loader for AI Coding",
+  "short_description_vi": "Skillkit is a universal skills loader designed for AI coding agents, enabling integration with platforms like Claude Code, Cursor, Codex, and Gemini CLI. This tool enhances the capabilities of AI agents by providing a comprehensive set of skills for efficient coding and automation."
+}

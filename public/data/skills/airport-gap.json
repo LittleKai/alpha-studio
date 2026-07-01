@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/airport-gap",
+  "slug": "airport-gap",
+  "name": "airport_gap",
+  "headline": "airport_gap API for test automation skills",
+  "short_description": "RESTful API for practicing API automation testing with airport data, distance calculations, and user account features.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "dennmart",
+  "install_command": "git clone https://github.com/dennmart/airport_gap.git",
+  "source_repo_url": "https://github.com/dennmart/airport_gap",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Airport Gap is a RESTful API designed to help developers improve their API automation testing skills. It provides access to a comprehensive airport database from OpenFlights.org, calculates distances between airports, and supports user account features like saving favorite airports. The API is built as a Rails 7 application and can be deployed locally, via Docker, or to production servers using Kamal. Developers can create a free account at airportgap.com and use it as a sandbox environment to practice automated testing techniques.\nLearning API testing fundamentals with a public REST API\nWriting and practicing automated API test scripts\nTesting request/response handling and error scenarios\nBuilding integration tests for airport data workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dennmart/airport_gap`",
+    "usage": "```\nAct as an API for an airport system. I will send you requests to simulate various airport operations. For example, you can check flight status, manage passenger check-ins, or handle baggage claims. Here's my first request: [REQUEST].\n```\nCopy\n\n```\n```markdown\n# Flight Status Check",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "airport-gap#main-content",
+      "airport-gap#overview",
+      "airport-gap#setup",
+      "airport-gap#examples",
+      "airport-gap#tools",
+      "airport-gap#mcp",
+      "airport-gap#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Airport Gap là một RESTful API được thiết kế nhằm giúp các lập trình viên nâng cao kỹ năng API automation testing. API này cung cấp quyền truy cập vào cơ sở dữ liệu sân bay toàn diện từ OpenFlights.org, hỗ trợ tính toán khoảng cách giữa các sân bay và cung cấp các tính năng tài khoản người dùng như lưu sân bay yêu thích. Được xây dựng trên nền tảng Rails 7, ứng dụng có thể được triển khai local, qua Docker, hoặc đưa lên các máy chủ production bằng Kamal. Các nhà phát triển có thể đăng ký tài khoản miễn phí tại airportgap.com để làm môi trường sandbox thực hành các kỹ thuật test tự động.\n\nHọc các kiến thức nền tảng về API testing với một REST API public\nViết và thực hành các script test API tự động\nKiểm thử khả năng xử lý request/response và các kịch bản lỗi\nXây dựng các integration test cho quy trình xử lý dữ liệu sân bay",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dennmart/airport_gap`",
+    "usage_vi": "```\nĐóng vai trò là một API cho hệ thống sân bay. Tôi sẽ gửi cho bạn các request để mô phỏng các hoạt động khác nhau của sân bay. Ví dụ: bạn có thể kiểm tra trạng thái chuyến bay, quản lý check-in của hành khách hoặc xử lý nhận hành lý. Đây là request đầu tiên của tôi: [REQUEST].\n```\nCopy\n\n```\n```markdown\n# Kiểm tra trạng thái chuyến bay"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:08.341883Z",
+    "http_status": 200,
+    "content_hash": "cb7a9275d9937b6c21906e84b8b81b7cec5f4079205045d5afc8bdbae8337a20",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\airport-gap.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\airport-gap.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "API airport_gap phục vụ rèn luyện kỹ năng test automation",
+  "short_description_vi": "RESTful API để thực hành API automation testing với dữ liệu sân bay, tính toán khoảng cách và các tính năng tài khoản người dùng."
+}

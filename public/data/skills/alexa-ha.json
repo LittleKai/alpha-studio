@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/alexa-ha",
+  "slug": "alexa-ha",
+  "name": "Alexa Ha",
+  "headline": "alexa-ha voice control home automation",
+  "short_description": "Alexa HA enables voice control of home automation systems via Amazon Echo. It benefits operations teams managing smart homes or buildings. The skill connects to home automation tools and workflows, allowing users to control devices with voice commands.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "unityfire",
+  "install_command": "git clone https://github.com/unityfire/alexa-ha.git",
+  "source_repo_url": "https://github.com/unityfire/alexa-ha",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Alexa HA was a free, open-source Alexa Skill that connected Amazon Echo devices to OpenHAB home automation systems. It allowed users to control lights, dimmers, thermostats, locks, shutters, and other smart home devices through voice commands. The skill automatically generated Alexa utterances based on configured devices and rooms, and supported custom server-side rules, scene modes, and device state queries. Deployment options included semi-direct connections, proxied webserver setups, or AWS Lambda microservices. The project is no longer maintained; OpenHAB now provides an official Alexa Skill for this integration.\nControl lights, dimmers, and color settings by voice across individual rooms or groups\nAdjust thermostat target temperatures and check device states remotely\nTrigger home automation scenes and modes (home, away, relax, sleep, security)\nExecute custom server-side rules with voice commands for complex automations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/unityfire/alexa-ha`",
+    "usage": "```\nUse the Alexa Home Automation (HA) skill to execute [COMMAND] in [ROOM/DEVICE] of [LOCATION]. Example commands: 'Turn off all lights in the living room,' 'Set the thermostat to 72 degrees,' or 'Lock the front door.' Ensure the command is specific to a smart home device or system you control via Alexa.\n```\nCopy\n\n```\nExecuting your request to **set the thermostat to 72 degrees in the master bedroom** via Alexa Home Automation (HA) skill...\n\n*Alexa voice command sent:* 'Alexa, set the thermostat to 72 degrees in the master bedroom.'\n\n**Response from Home Automation System:**\n- Thermostat (Nest Learning Thermostat) status: **Updated to 72°F** (previously 68°F).\n- Energy savings estimate: **$0.12/hour** (based on current outdoor temperature of 55°F).\n- Smart home hub confirmation: **Synced with Alexa and Google Home.**\n\n**Additional Context:**\n- The command was processed in **1.2 seconds** (network latency included).\n- No conflicts detected with other scheduled automations (e.g., 'Good Morning' routine at 7 AM).\n- Device logs show this is the **3rd adjustment today**; no abnormal activity detected.\n\nWould you like to adjust another device or review the thermostat’s energy usage history?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "alexa-ha#main-content",
+      "alexa-ha#overview",
+      "alexa-ha#setup",
+      "alexa-ha#examples",
+      "alexa-ha#tools",
+      "alexa-ha#mcp",
+      "alexa-ha#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Alexa HA từng là một Alexa Skill mã nguồn mở miễn phí giúp kết nối các thiết bị Amazon Echo với hệ thống tự động hóa nhà thông minh OpenHAB. Nó cho phép người dùng điều khiển đèn, dimmer (thiết bị điều chỉnh độ sáng), bộ điều nhiệt, khóa cửa, rèm cửa và các thiết bị nhà thông minh khác thông qua câu lệnh giọng nói. Skill này tự động tạo các mẫu câu lệnh (utterance) cho Alexa dựa trên các thiết bị và phòng đã cấu hình, đồng thời hỗ trợ các rule tùy chỉnh phía server-side, các chế độ ngữ cảnh (scene) và truy vấn trạng thái thiết bị. Các tùy chọn triển khai bao gồm kết nối bán trực tiếp (semi-direct), setup webserver qua proxy, hoặc các microservice trên AWS Lambda. Dự án này hiện không còn được bảo trì; OpenHAB hiện đã cung cấp một Alexa Skill chính thức cho việc tích hợp này.\nĐiều khiển đèn, dimmer và cài đặt màu sắc bằng giọng nói theo từng phòng riêng biệt hoặc theo nhóm\nĐiều chỉnh nhiệt độ mục tiêu của bộ điều nhiệt và kiểm tra trạng thái thiết bị từ xa\nKích hoạt các ngữ cảnh (scene) và chế độ tự động hóa nhà thông minh (ở nhà, đi vắng, thư giãn, đi ngủ, an ninh)\nThực thi các rule tùy chỉnh phía server-side bằng lệnh giọng nói cho các tác vụ tự động hóa phức tạp",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/unityfire/alexa-ha`",
+    "usage_vi": "```\nSử dụng skill Alexa Home Automation (HA) để thực hiện [LỆNH] tại [PHÒNG/THIẾT BỊ] thuộc [VỊ TRÍ]. Các lệnh ví dụ: 'Tắt toàn bộ đèn trong phòng khách', 'Đặt bộ điều nhiệt thành 72 độ' hoặc 'Khóa cửa trước'. Hãy đảm bảo lệnh này khớp với thiết bị hoặc hệ thống nhà thông minh mà bạn điều khiển qua Alexa.\n```\nCopy\n\n```\nĐang thực hiện yêu cầu **đặt bộ điều nhiệt thành 72 độ trong phòng ngủ chính** qua skill Alexa Home Automation (HA)...\n\n*Đã gửi lệnh giọng nói Alexa:* 'Alexa, set the thermostat to 72 degrees in the master bedroom.'\n\n**Phản hồi từ Hệ thống Tự động hóa Nhà thông minh:**\n- Trạng thái bộ điều nhiệt (Nest Learning Thermostat): **Đã cập nhật thành 72°F** (trước đó là 68°F).\n- Ước tính tiết kiệm năng lượng: **0,12 USD/giờ** (dựa trên nhiệt độ ngoài trời hiện tại là 55°F).\n- Xác nhận từ bộ điều khiển trung tâm (smart home hub): **Đã đồng bộ với Alexa và Google Home.**\n\n**Thông tin bổ sung:**\n- Lệnh được xử lý trong **1,2 giây** (bao gồm cả độ trễ mạng).\n- Không phát hiện xung đột với các kịch bản tự động hóa đã lên lịch khác (ví dụ: routine 'Chào buổi sáng' lúc 7:00 sáng).\n- Nhật ký thiết bị (device logs) cho thấy đây là **lần điều chỉnh thứ 3 trong ngày**; không phát hiện hoạt động bất thường.\n\nBạn có muốn điều chỉnh thiết bị khác hoặc xem lại lịch sử tiêu thụ năng lượng của bộ điều nhiệt không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:13:18.755374Z",
+    "http_status": 200,
+    "content_hash": "1064a72a4b2defdad63a237dcdd05f94db81e7814827cb12a44ba7b8b8b995e7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\alexa-ha.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\alexa-ha.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "alexa-ha: điều khiển bằng giọng nói cho tự động hóa nhà thông minh",
+  "short_description_vi": "Alexa HA cho phép điều khiển các hệ thống tự động hóa nhà thông minh bằng giọng nói thông qua Amazon Echo. Công cụ này hỗ trợ hiệu quả cho các đội ngũ vận hành quản lý nhà thông minh hoặc tòa nhà. Skill này kết nối với các công cụ và workflow tự động hóa nhà thông minh, cho phép người dùng điều khiển thiết bị bằng các câu lệnh giọng nói."
+}

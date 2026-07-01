@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/amp-for-hardware",
+  "slug": "amp-for-hardware",
+  "name": "AMP_for_hardware",
+  "headline": "amp_for_hardware: alternatives for reward functions",
+  "short_description": "AMP for Hardware enables operations teams to automate complex hardware tasks using adversarial motion priors. It benefits engineers by reducing the need for intricate reward functions, streamlining robotic control and automation workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "escontra",
+  "install_command": "git clone https://github.com/escontra/AMP_for_hardware.git",
+  "source_repo_url": "https://github.com/escontra/AMP_for_hardware",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "AMP for Hardware implements adversarial motion priors to streamline robotic control and hardware automation tasks. Rather than requiring engineers to design complex reward functions, this approach uses learned motion priors to guide policy training. The codebase includes support for legged robots, example checkpoints, datasets, and reinforcement learning components. It's designed to reduce engineering overhead in robotic automation by substituting adversarial motion priors for hand-crafted reward engineering. Teams can train and deploy policies more efficiently across diverse hardware platforms.\nTrain legged robots to navigate complex terrains using minimal reference data.\nImplement adversarial motion priors to enhance robotic control without complex reward functions.\nEvaluate and visualize the performance of trained policies in simulated environments.\nIntegrate with Isaac Gym for high-performance robotic simulations and training.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/escontra/AMP_for_hardware`",
+    "usage": "```\nGenerate an adversarial motion prior (AMP) configuration for automating [TASK] on [HARDWARE_PLATFORM]. Define the state space, action space, and reward function to optimize for [OBJECTIVE, e.g., 'minimizing cycle time while maintaining precision']. Include constraints for [SAFETY_CRITERIA, e.g., 'avoiding collisions with obstacles'] and a termination condition for [SUCCESS_METRIC, e.g., 'achieving <5mm positional error']. Provide the AMP configuration in YAML format.\n```\nCopy\n\n```\n```yaml\n# AMP Configuration for Automated PCB Soldering on UR5e Robot\nstate_space:\n  - joint_positions: [0.0, -1.57, 0.0, -1.57, 0.0, 0.0]\n  - end_effector_pose: [0.5, 0.2, 0.1, 0.0, 0.0, 0.0]\n  - temperature_sensor: 250.0  # Target soldering temp in °C\n  - vision_system:\n      - solder_pad_detection: [0.02, 0.03, 0.0]  # Relative to pad center\n      - component_alignment: [0.0, 0.0, 0.0]\n\naction_space:\n  - joint_velocities: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]  # rad/s\n  - end_effector_force: [5.0, 5.0, 5.0]  # N\n  - soldering_iron_temp: [200.0, 300.0]  # °C range\n\nreward_function:\n  components:\n    - alignment_reward: 10.0 * exp(-distance_to_center^2 / 0.01)\n    - temperature_reward: 5.0 * (1 - abs(target_temp - current_temp) / 50.0)\n    - cycle_time_penalty: -0.1 * (current_time - start_time)\n    - collision_penalty: -100.0 if end_effector_force > 20.0\n\nconstraints:\n  - max_joint_velocity: 0.5 rad/s\n  - min_soldering_temp: 200°C\n  - max_force: 15N\n  - obstacle_avoidance: distance_to_obstacle > 0.1m\n\ntermination:\n  success_metric: positional_error < 0.005m AND temperature_error < 5°C\n  max_steps: 500\n  early_stop: if solder_pad_detection_confidence < 0.8\n```\n\n**Key Observations:**\n1. The configuration prioritizes precise alignment (10x reward multiplier) while maintaining soldering temperature within ±5°C of target (5x reward).\n2. The cycle time penalty (-0.1 per second) discourages unnecessary delays but doesn't dominate the reward structure.\n3. Safety is enforced through hard constraints (max force, obstacle distance) rather than penalties to prevent damage.\n4. The early stop condition prevents wasted steps when the vision system fails to detect the solder pad.\n\nThis AMP configuration was trained for 2 hours on a UR5e robot with a custom soldering end-effector. The resulting policy achieved 98% first-pass yield on test PCBs, reducing manual rework by 40% compared to traditional PID control methods.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "amp-for-hardware#main-content",
+      "amp-for-hardware#overview",
+      "amp-for-hardware#setup",
+      "amp-for-hardware#examples",
+      "amp-for-hardware#tools",
+      "amp-for-hardware#mcp",
+      "amp-for-hardware#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AMP for Hardware triển khai adversarial motion priors để tối ưu hóa việc điều khiển robot và các tác vụ tự động hóa phần cứng. Thay vì yêu cầu kỹ sư phải thiết kế các reward function phức tạp, phương pháp này sử dụng các motion prior đã được học để định hướng quá trình huấn luyện policy. Codebase này hỗ trợ các robot đi bằng chân (legged robot), các checkpoint mẫu, dataset và các thành phần reinforcement learning (học tăng cường). Dự án được thiết kế để giảm thiểu công sức kỹ thuật trong tự động hóa robot bằng cách thay thế việc thiết kế thủ công các reward function bằng adversarial motion priors. Các đội ngũ có thể huấn luyện và triển khai policy hiệu quả hơn trên nhiều nền tảng phần cứng khác nhau.\n\nHuấn luyện robot đi bằng chân di chuyển trên các địa hình phức tạp với lượng dữ liệu tham chiếu tối thiểu.\nTriển khai adversarial motion priors để tăng cường khả năng điều khiển robot mà không cần các reward function phức tạp.\nĐánh giá và trực quan hóa hiệu suất của các policy đã được huấn luyện trong môi trường mô phỏng.\nTích hợp với Isaac Gym để mô phỏng và huấn luyện robot hiệu năng cao.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/escontra/AMP_for_hardware`",
+    "usage_vi": "```\nTạo cấu hình adversarial motion prior (AMP) để tự động hóa [TASK] trên [HARDWARE_PLATFORM]. Định nghĩa state space, action space và reward function để tối ưu hóa cho [OBJECTIVE, ví dụ: 'tối thiểu hóa thời gian chu kỳ trong khi vẫn duy trì độ chính xác']. Bao gồm các ràng buộc cho [SAFETY_CRITERIA, ví dụ: 'tránh va chạm với vật cản'] và điều kiện dừng cho [SUCCESS_METRIC, ví dụ: 'đạt sai số vị trí <5mm']. Cung cấp cấu hình AMP ở định dạng YAML.\n```\nCopy\n\n```yaml\n# Cấu hình AMP cho việc hàn PCB tự động trên Robot UR5e\nstate_space:\n  - joint_positions: [0.0, -1.57, 0.0, -1.57, 0.0, 0.0]\n  - end_effector_pose: [0.5, 0.2, 0.1, 0.0, 0.0, 0.0]\n  - temperature_sensor: 250.0  # Nhiệt độ hàn mục tiêu (°C)\n  - vision_system:\n      - solder_pad_detection: [0.02, 0.03, 0.0]  # Tương đối so với tâm solder pad\n      - component_alignment: [0.0, 0.0, 0.0]\n\naction_space:\n  - joint_velocities: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]  # rad/s\n  - end_effector_force: [5.0, 5.0, 5.0]  # N\n  - soldering_iron_temp: [200.0, 300.0]  # Khoảng nhiệt độ (°C)\n\nreward_function:\n  components:\n    - alignment_reward: 10.0 * exp(-distance_to_center^2 / 0.01)\n    - temperature_reward: 5.0 * (1 - abs(target_temp - current_temp) / 50.0)\n    - cycle_time_penalty: -0.1 * (current_time - start_time)\n    - collision_penalty: -100.0 if end_effector_force > 20.0\n\nconstraints:\n  - max_joint_velocity: 0.5 rad/s\n  - min_soldering_temp: 200°C\n  - max_force: 15N\n  - obstacle_avoidance: distance_to_obstacle > 0.1m\n\ntermination:\n  success_metric: positional_error < 0.005m AND temperature_error < 5°C\n  max_steps: 500\n  early_stop: if solder_pad_detection_confidence < 0.8\n```\n\n**Các điểm lưu ý chính:**\n1. Cấu hình ưu tiên việc căn chỉnh chính xác (hệ số nhân reward 10x) trong khi vẫn duy trì nhiệt độ hàn trong khoảng ±5°C so với mục tiêu (reward 5x).\n2. Phạt thời gian chu kỳ (cycle time penalty) (-0.1 mỗi giây) giúp hạn chế các sự chậm trễ không cần thiết nhưng không chiếm tỷ trọng quá lớn trong cấu trúc reward.\n3. An toàn được đảm bảo thông qua các ràng buộc cứng (lực tối đa, khoảng cách vật cản) thay vì các mức phạt (penalty) để tránh gây hư hại thiết bị.\n4. Điều kiện dừng sớm (early stop) giúp tránh lãng phí các bước thực thi khi hệ thống camera (vision system) không phát hiện được solder pad.\n\nCấu hình AMP này đã được huấn luyện trong 2 giờ trên robot UR5e với đầu hàn (end-effector) tùy chỉnh. Policy thu được đạt tỷ lệ sản phẩm đạt chuẩn ngay từ lần đầu (first-pass yield) là 98% trên các PCB thử nghiệm, giúp giảm 40% lượng công việc phải sửa lại thủ công so với các phương pháp điều khiển PID truyền thống."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:00:17.589871Z",
+    "http_status": 200,
+    "content_hash": "d8c1889cb3e77d0d25b32a35b0529e45c730d3c8d96010efe81d70006116e3e0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\amp-for-hardware.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\amp-for-hardware.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "amp_for_hardware: các giải pháp thay thế cho reward function",
+  "short_description_vi": "AMP for Hardware cho phép các đội ngũ vận hành tự động hóa các tác vụ phần cứng phức tạp bằng cách sử dụng adversarial motion priors. Giải pháp này hỗ trợ các kỹ sư giảm bớt sự phụ thuộc vào các reward function phức tạp, giúp tối ưu hóa quy trình điều khiển robot và tự động hóa."
+}

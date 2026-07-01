@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-auto-resume",
+  "slug": "claude-auto-resume",
+  "name": "Claude Auto Resume",
+  "headline": "claude-auto-resume: Automate CLI task resumption",
+  "short_description": "Automatically resumes Claude CLI tasks when usage limits are lifted. Ideal for operations teams managing AI workloads. Integrates with shell scripts and custom commands.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "terryso",
+  "install_command": "git clone https://github.com/terryso/claude-auto-resume.git",
+  "source_repo_url": "https://github.com/terryso/claude-auto-resume",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "auto-resume",
+    "claude",
+    "claude-ai",
+    "shell-script"
+  ],
+  "sections": {
+    "overview": "claude-auto-resume is a automation tool that monitors and automatically resumes Claude CLI tasks when API usage limits are lifted. It detects rate limit errors and retries operations without manual intervention, eliminating the need to restart interrupted workflows. The tool supports shell script integration and custom command execution through command-line flags, making it practical for operations teams managing large-scale AI workloads. It runs on macOS, Linux, and Windows (PowerShell), providing cross-platform support for diverse deployment environments. By automating task resumption, it reduces operational overhead and ensures long-running Claude CLI operations complete successfully despite temporary API constraints.\nAutomatically resume interrupted Claude tasks when usage limits are lifted.\nExecute custom shell commands after waiting for usage limits, such as restarting services or running builds.\nContinue previous conversations with Claude without needing to manually re-enter prompts.\nUtilize the script in isolated development environments to automate repetitive tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/terryso/claude-auto-resume`",
+    "usage": "```\nI need to automatically resume a paused Claude CLI task after usage limits reset. The task was running with the command: [CLAUDE_CLI_COMMAND]. Check if the task is still in the queue or paused. If paused, resume it using [RESUME_METHOD] (e.g., 'claude --resume [TASK_ID]'). Monitor progress and log the output to [LOG_FILE_PATH]. Notify me via [NOTIFICATION_METHOD] (e.g., Slack, email) when the task completes or fails.\n```\nCopy\n\n```\nResuming paused Claude CLI task for 'claude --analyze dataset.csv --model haiku-3.5' (Task ID: cli_7f8a2b1c).\n\nStatus Check:\n- Current usage: 85/100 tokens (15 tokens remaining)\n- Queue position: 3rd in line (estimated wait: 12 minutes)\n- Last checkpoint: Processed 4,215 records out of 10,000\n\nResume Command Executed:\n> claude --resume cli_7f8a2b1c --continue\n\nOutput Log (auto-appended to /var/log/claude/resume_job_20240515.log):\n[2024-05-15 14:32:10] Resuming task cli_7f8a2b1c...\n[2024-05-15 14:32:12] Task resumed successfully. Progress: 4,215/10,000 records processed.\n[2024-05-15 14:32:15] Processing batch 142... (4,216-4,235)\n\nEstimated Completion:\n- Records remaining: 5,785\n- Estimated time to completion: 2 hours 15 minutes (at current rate of 2,300 records/hour)\n\nNotification Sent:\n✅ Slack: 'Task cli_7f8a2b1c has resumed. Progress: 42.15% complete. ETA: ~16:47 UTC.'\n\nNext Steps:\n1. Monitor the log file for errors: `tail -f /var/log/claude/resume_job_20240515.log`\n2. Check task status in 30 minutes: `claude --status cli_7f8a2b1c`\n3. If the task stalls again, manually intervene with: `claude --force-resume cli_7f8a2b1c`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-auto-resume#main-content",
+      "claude-auto-resume#overview",
+      "claude-auto-resume#setup",
+      "claude-auto-resume#examples",
+      "claude-auto-resume#tools",
+      "claude-auto-resume#mcp",
+      "claude-auto-resume#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-auto-resume is a automation tool that monitors and automatically resumes Claude CLI tasks when API usage limits are lifted. It detects rate limit errors and retries operations without manual intervention, eliminating the need to restart interrupted workflows. The tool supports shell script integration and custom command execution through command-line flags, making it practical for operations teams managing large-scale AI workloads. It runs on macOS, Linux, and Windows (PowerShell), providing cross-platform support for diverse deployment environments. By automating task resumption, it reduces operational overhead and ensures long-running Claude CLI operations complete successfully despite temporary API constraints.\nAutomatically resume interrupted Claude tasks when usage limits are lifted.\nExecute custom shell commands after waiting for usage limits, such as restarting services or running builds.\nContinue previous conversations with Claude without needing to manually re-enter prompts.\nUtilize the script in isolated development environments to automate repetitive tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/terryso/claude-auto-resume`",
+    "usage_vi": "```\nI need to automatically resume a paused Claude CLI task after usage limits reset. The task was running with the command: [CLAUDE_CLI_COMMAND]. Check if the task is still in the queue or paused. If paused, resume it using [RESUME_METHOD] (e.g., 'claude --resume [TASK_ID]'). Monitor progress and log the output to [LOG_FILE_PATH]. Notify me via [NOTIFICATION_METHOD] (e.g., Slack, email) when the task completes or fails.\n```\nCopy\n\n```\nResuming paused Claude CLI task for 'claude --analyze dataset.csv --model haiku-3.5' (Task ID: cli_7f8a2b1c).\n\nStatus Check:\n- Current usage: 85/100 tokens (15 tokens remaining)\n- Queue position: 3rd in line (estimated wait: 12 minutes)\n- Last checkpoint: Processed 4,215 records out of 10,000\n\nResume Command Executed:\n> claude --resume cli_7f8a2b1c --continue\n\nOutput Log (auto-appended to /var/log/claude/resume_job_20240515.log):\n[2024-05-15 14:32:10] Resuming task cli_7f8a2b1c...\n[2024-05-15 14:32:12] Task resumed successfully. Progress: 4,215/10,000 records processed.\n[2024-05-15 14:32:15] Processing batch 142... (4,216-4,235)\n\nEstimated Completion:\n- Records remaining: 5,785\n- Estimated time to completion: 2 hours 15 minutes (at current rate of 2,300 records/hour)\n\nNotification Sent:\n✅ Slack: 'Task cli_7f8a2b1c has resumed. Progress: 42.15% complete. ETA: ~16:47 UTC.'\n\nNext Steps:\n1. Monitor the log file for errors: `tail -f /var/log/claude/resume_job_20240515.log`\n2. Check task status in 30 minutes: `claude --status cli_7f8a2b1c`\n3. If the task stalls again, manually intervene with: `claude --force-resume cli_7f8a2b1c`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:31.798227Z",
+    "http_status": 200,
+    "content_hash": "14373739ceb5bb8a891bdee8a840e2c8dafb4e1312bb6d994acd37830daa84cc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-auto-resume.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-auto-resume.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-auto-resume: Automate CLI task resumption",
+  "short_description_vi": "Automatically resumes Claude CLI tasks when usage limits are lifted. Ideal for operations teams managing AI workloads. Integrates with shell scripts and custom commands."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/par-cc-usage",
+  "slug": "par-cc-usage",
+  "name": "PAR CC Usage",
+  "headline": "PAR CC Usage - Claude Code Monitoring",
+  "short_description": "Monitors and analyzes Claude Code usage in real-time. Helps operations teams track API calls, usage patterns, and costs. Integrates with CLI and terminal workflows for easy deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "paulrobello",
+  "install_command": "git clone https://github.com/paulrobello/par_cc_usage.git",
+  "source_repo_url": "https://github.com/paulrobello/par_cc_usage",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "terminal",
+    "anthropic-claude",
+    "claude-code",
+    "cli"
+  ],
+  "sections": {
+    "overview": "PAR CC Usage is a real-time monitoring tool for tracking Claude Code consumption across projects and sessions. It provides live token tracking, burn rate analytics with per-minute granularity, cost calculations using LiteLLM pricing data, and intelligent 5-hour billing block management. The tool features advanced analytics including ETA projections, P90 progress indicators, multi-session support, and webhook notifications for usage alerts. Operations teams use it to monitor API calls, identify usage patterns, control costs, and integrate with CLI workflows on Linux, macOS, and Windows.\nTrack real-time token usage across multiple Claude Code projects and sessions\nMonitor burn rates and project completion ETAs for billing period management\nCalculate and analyze costs per model with LiteLLM pricing integration\nIdentify usage patterns and anomalies through session-level analytics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/paulrobello/par_cc_usage`",
+    "usage": "```\nMonitor and analyze Claude Code (par_cc) usage in real-time for [TEAM/ORGANIZATION]. Track [SPECIFIC_METRICS: API calls, token usage, cost, or performance bottlenecks] over the last [TIME_PERIOD: 24 hours/7 days]. Flag any anomalies or unexpected spikes in usage. Provide a summary of top contributors and suggest optimizations to reduce costs or improve efficiency. Output should include actionable recommendations for [TEAM_LEAD/DEVOPS_ENGINEER].\n```\nCopy\n\n```\n### Claude Code Usage Report - Engineering Team (Last 24 Hours)\n\n**Summary:**\nTotal API calls: 12,487 (↑ 18% from baseline of 10,500)\nTotal tokens processed: 4.2M (↑ 22%)\nEstimated cost: $187.34 (↑ $32.10 vs. daily average of $155.24)\n\n**Top 5 Highest Usage Projects:**\n1. **Project Alpha** (AI-Powered Chatbot): 3,214 calls, 1.1M tokens\n2. **Project Beta** (Data Pipeline): 2,890 calls, 980K tokens\n3. **Project Gamma** (API Gateway): 1,765 calls, 650K tokens\n4. **Project Delta** (Internal Tooling): 1,432 calls, 520K tokens\n5. **Project Epsilon** (Legacy Migration): 987 calls, 310K tokens\n\n**Anomalies Detected:**\n- Project Alpha shows a 35% spike in API calls between 2:00 AM - 4:00 AM UTC (likely a batch processing job).\n- Project Gamma has 15% higher token usage per call than average (potential inefficiency in prompt design).\n\n**Cost Optimization Recommendations:**\n1. **Project Alpha:** Implement caching for frequent queries to reduce redundant API calls. Potential savings: ~$45/day.\n2. **Project Beta:** Review the data pipeline logic—consider batching smaller operations into larger chunks. Potential savings: ~$30/day.\n3. **Project Gamma:** Audit prompt templates for verbosity. A 10% reduction in token count could save ~$18/day.\n\n**Action Items:**\n- [ ] Schedule a review with Project Alpha team to discuss caching strategy.\n- [ ] Run a token-efficiency audit for Project Gamma prompts.\n- [ ] Set up automated alerts for usage spikes >20% above baseline.\n\n**Next Steps:**\nRun `par_cc_usage --export --format csv` to generate a detailed report for finance. Flag the 2:00 AM - 4:00 AM window in Project Alpha for further investigation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "par-cc-usage#main-content",
+      "par-cc-usage#overview",
+      "par-cc-usage#setup",
+      "par-cc-usage#examples",
+      "par-cc-usage#tools",
+      "par-cc-usage#mcp",
+      "par-cc-usage#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "PAR CC Usage là công cụ giám sát theo thời gian thực để theo dõi lượng tiêu thụ Claude Code trên các dự án và phiên làm việc (session). Công cụ này cung cấp tính năng theo dõi token trực tiếp, phân tích tốc độ tiêu thụ (burn rate) chi tiết đến từng phút, tính toán chi phí bằng dữ liệu giá của LiteLLM và quản lý block thanh toán 5 giờ thông minh. Ngoài ra, công cụ còn tích hợp các tính năng phân tích nâng cao bao gồm dự báo ETA, chỉ số tiến trình P90, hỗ trợ đa phiên và thông báo qua webhook để cảnh báo mức độ sử dụng. Các đội ngũ vận hành sử dụng công cụ này để giám sát cuộc gọi API, nhận diện mô hình sử dụng, kiểm soát chi phí và tích hợp với quy trình CLI trên Linux, macOS và Windows.\n\nTheo dõi lượng sử dụng token theo thời gian thực trên nhiều dự án và phiên Claude Code khác nhau\nGiám sát tốc độ tiêu thụ và ETA hoàn thành dự án để quản lý chu kỳ thanh toán\nTính toán và phân tích chi phí cho từng mô hình với tích hợp bảng giá LiteLLM\nNhận diện mô hình sử dụng và các điểm bất thường thông qua phân tích ở cấp độ phiên làm việc",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/paulrobello/par_cc_usage`",
+    "usage_vi": "```\nMonitor and analyze Claude Code (par_cc) usage in real-time for [TEAM/ORGANIZATION]. Track [SPECIFIC_METRICS: API calls, token usage, cost, or performance bottlenecks] over the last [TIME_PERIOD: 24 hours/7 days]. Flag any anomalies or unexpected spikes in usage. Provide a summary of top contributors and suggest optimizations to reduce costs or improve efficiency. Output should include actionable recommendations for [TEAM_LEAD/DEVOPS_ENGINEER].\n```\nCopy\n\n```\n### Báo cáo sử dụng Claude Code - Đội ngũ Kỹ thuật (24 giờ qua)\n\n**Tóm tắt:**\nTổng số lượt gọi API: 12.487 (↑ 18% so với mức cơ sở 10.500)\nTổng số token đã xử lý: 4,2M (↑ 22%)\nChi phí ước tính: $187,34 (↑ $32,10 so với trung bình hàng ngày là $155,24)\n\n**Top 5 dự án sử dụng nhiều nhất:**\n1. **Project Alpha** (Chatbot tích hợp AI): 3.214 lượt gọi, 1,1M token\n2. **Project Beta** (Data Pipeline): 2.890 lượt gọi, 980K token\n3. **Project Gamma** (API Gateway): 1.765 lượt gọi, 650K token\n4. **Project Delta** (Công cụ nội bộ): 1.432 lượt gọi, 520K token\n5. **Project Epsilon** (Chuyển đổi hệ thống cũ): 987 lượt gọi, 310K token\n\n**Bất thường được phát hiện:**\n- Project Alpha có lượng cuộc gọi API tăng vọt 35% trong khoảng từ 2:00 AM - 4:00 AM UTC (nhiều khả năng do tác vụ xử lý hàng loạt - batch job).\n- Project Gamma có lượng sử dụng token trên mỗi cuộc gọi cao hơn 15% so với trung bình (có thể do thiết kế prompt chưa tối ưu).\n\n**Khuyến nghị tối ưu hóa chi phí:**\n1. **Project Alpha:** Triển khai cơ chế lưu nháp (caching) cho các truy vấn thường gặp để giảm các lượt gọi API trùng lặp. Tiết kiệm ước tính: ~$45/ngày.\n2. **Project Beta:** Xem xét lại logic của data pipeline — cân nhắc gom các tác vụ nhỏ thành các khối (batch) lớn hơn. Tiết kiệm ước tính: ~$30/ngày.\n3. **Project Gamma:** Kiểm tra lại độ dài và tính chi tiết của các mẫu prompt. Giảm 10% số lượng token có thể tiết kiệm khoảng ~$18/ngày.\n\n**Các hành động cần thực hiện:**\n- [ ] Lên lịch họp với đội ngũ Project Alpha để thảo luận về chiến lược caching.\n- [ ] Thực hiện kiểm tra hiệu quả sử dụng token đối với các prompt của Project Gamma.\n- [ ] Thiết lập cảnh báo tự động khi mức sử dụng tăng đột biến >20% so với mức cơ sở.\n\n**Bước tiếp theo:**\nChạy lệnh `par_cc_usage --export --format csv` để tạo báo cáo chi tiết cho bộ phận tài chính. Đánh dấu khoảng thời gian từ 2:00 AM - 4:00 AM của Project Alpha để điều tra thêm.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:19:05.643538Z",
+    "http_status": 200,
+    "content_hash": "ad25873d37d4f05a819f9d943d531e8cf3cc35436cdbcb17e8e2d506f9615dd0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\par-cc-usage.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\par-cc-usage.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "PAR CC Usage - Giám sát Claude Code",
+  "short_description_vi": "Giám sát và phân tích mức độ sử dụng Claude Code theo thời gian thực. Giúp các đội ngũ vận hành theo dõi các lượt gọi API, mô hình sử dụng và chi phí. Tích hợp trực tiếp với CLI và quy trình làm việc trên terminal để triển khai dễ dàng."
+}

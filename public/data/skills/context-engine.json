@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/context-engine",
+  "slug": "context-engine",
+  "name": "Context-Engine",
+  "headline": "Context-Engine - AI Context Compression for",
+  "short_description": "Context-Engine MCP compresses and manages context for AI agents, improving efficiency and accuracy in operations. It benefits teams using AI agents for tasks like code generation, data analysis, and customer support. The tool connects to various AI models and databases, streamlining workflows and reducing latency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Context-Engine-AI",
+  "install_command": "git clone https://github.com/Context-Engine-AI/Context-Engine.git",
+  "source_repo_url": "https://github.com/Context-Engine-AI/Context-Engine",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "glm",
+    "llm",
+    "cursor",
+    "mcp-server",
+    "ollama-api",
+    "mcp",
+    "context",
+    "refrag",
+    "compression",
+    "ai-agents",
+    "decoder",
+    "codex",
+    "context-engine",
+    "llm-inference",
+    "qdrant",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Context Engine is an MCP skill that equips AI coding assistants like Claude, Cursor, and Gemini with advanced code intelligence capabilities. It provides semantic search, symbol graph navigation for finding callers and definitions, persistent memory across sessions, and cross-repository code tracing. The skill teaches assistants to use batch queries for token efficiency (75%+ savings), search git history, identify structural patterns, and handle multi-repo codebases. Developers benefit from faster code comprehension, more accurate AI-assisted coding, and reduced latency in workflows involving code generation, analysis, and navigation.\nSemantic code search across large codebases\nFinding function callers, callees, and definitions\nTracing cross-repository code flows and dependencies\nStoring and retrieving context across AI chat sessions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Context-Engine-AI/Context-Engine`",
+    "usage": "```\nUse Context-Engine MCP to optimize the context for an AI agent handling [TASK_DESCRIPTION]. Focus on [KEY_OBJECTIVES], such as [OBJECTIVE_1], [OBJECTIVE_2], or [OBJECTIVE_3]. Ensure the agent has access to the most relevant data from [DATABASE/SOURCE_1], [DATABASE/SOURCE_2], or [DATABASE/SOURCE_3] while minimizing noise. Provide a structured summary of the optimized context for the agent to use.\n```\nCopy\n\n```\nFor a customer support AI agent tasked with resolving a billing dispute, Context-Engine MCP optimized the context by extracting and compressing the following key data points from the CRM and billing system:\n\n1. **Customer Profile**: Jane Doe (Customer ID: CUST-45678), active since 2022, premium subscription tier, and a history of 3 prior billing disputes resolved in her favor.\n\n2. **Current Issue**: Duplicate charge of $49.99 on invoice #INV-2024-0589, dated May 15, 2024. The charge appears for the \"Premium Support Add-on\" service, which Jane claims she never subscribed to.\n\n3. **Support Interaction History**: Jane contacted support on May 16 via chat, where the agent escalated the issue to the billing team but no resolution was provided. The chat transcript indicates Jane was frustrated and requested a callback.\n\n4. **Billing System Data**: The duplicate charge is linked to a system glitch in the subscription management module, which erroneously added the \"Premium Support Add-on\" to Jane’s account on May 14. The glitch has since been patched, but the charge remains.\n\n5. **Policy Context**: According to company policy, duplicate charges for services not explicitly subscribed to should be refunded within 24 hours of verification. Jane’s account qualifies for this policy.\n\n**Optimized Context Summary**:\n- **Primary Issue**: Duplicate charge for unsubscribed service.\n- **Customer Sentiment**: Frustrated, escalated to billing team.\n- **Resolution Path**: Refund the $49.99 charge immediately and credit Jane’s account with a 10% discount on her next bill for the inconvenience.\n- **Next Steps**: Notify Jane via email with the refund confirmation and discount code, and log the issue in the system to prevent recurrence.\n\nThe AI agent now has a concise, actionable context to resolve the issue efficiently without sifting through irrelevant data.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "context-engine#main-content",
+      "context-engine#overview",
+      "context-engine#setup",
+      "context-engine#examples",
+      "context-engine#tools",
+      "context-engine#mcp",
+      "context-engine#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Context Engine là một MCP skill trang bị cho các trợ lý lập trình AI như Claude, Cursor và Gemini khả năng hiểu mã nguồn (code intelligence) nâng cao. Công cụ cung cấp tính năng tìm kiếm ngữ nghĩa (semantic search), điều hướng đồ thị ký hiệu (symbol graph navigation) để tìm kiếm caller và definition, lưu trữ bộ nhớ bền vững (persistent memory) qua các session, và truy vết mã nguồn liên kho lưu trữ (cross-repository). Skill này giúp các trợ lý AI biết cách sử dụng batch query để tối ưu hóa token (tiết kiệm hơn 75%), tìm kiếm git history, nhận diện các pattern cấu trúc và xử lý các codebase dạng multi-repo. Lập trình viên sẽ được hưởng lợi từ việc hiểu code nhanh hơn, lập trình với sự hỗ trợ của AI chính xác hơn và giảm độ trễ trong các workflow liên quan đến code generation, phân tích và điều hướng mã nguồn.\n\n- Tìm kiếm ngữ nghĩa (semantic search) trên các codebase lớn\n- Tìm kiếm function caller, callee và definition\n- Truy vết dependency và luồng code cross-repository\n- Lưu trữ và truy xuất ngữ cảnh qua các session chat với AI",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Context-Engine-AI/Context-Engine`",
+    "usage_vi": "```\nSử dụng Context-Engine MCP để tối ưu hóa ngữ cảnh cho AI agent đang xử lý [TASK_DESCRIPTION]. Tập trung vào các mục tiêu chính [KEY_OBJECTIVES], chẳng hạn như [OBJECTIVE_1], [OBJECTIVE_2] hoặc [OBJECTIVE_3]. Đảm bảo agent có quyền truy cập vào dữ liệu liên quan nhất từ [DATABASE/SOURCE_1], [DATABASE/SOURCE_2] hoặc [DATABASE/SOURCE_3] đồng thời giảm thiểu thông tin nhiễu. Cung cấp một bản tóm tắt có cấu trúc của ngữ cảnh đã tối ưu hóa để agent sử dụng.\n```\nCopy\n\n```\nĐối với một AI agent hỗ trợ khách hàng được giao nhiệm vụ giải quyết tranh chấp hóa đơn, Context-Engine MCP đã tối ưu hóa ngữ cảnh bằng cách trích xuất và nén các điểm dữ liệu chính sau từ hệ thống CRM và hệ thống thanh toán:\n\n1. **Thông tin khách hàng (Customer Profile)**: Jane Doe (Mã khách hàng: CUST-45678), hoạt động từ năm 2022, gói đăng ký Premium và có lịch sử 3 lần tranh chấp hóa đơn trước đó được giải quyết có lợi cho khách hàng.\n\n2. **Vấn đề hiện tại**: Bị tính phí trùng lặp 49,99 USD trên hóa đơn #INV-2024-0589 ngày 15 tháng 5 năm 2024. Khoản phí này xuất hiện cho dịch vụ bổ sung \"Premium Support Add-on\" mà Jane khẳng định cô chưa từng đăng ký.\n\n3. **Lịch sử tương tác hỗ trợ**: Jane đã liên hệ với bộ phận hỗ trợ vào ngày 16 tháng 5 qua chat, nhân viên hỗ trợ đã chuyển tiếp vấn đề này lên bộ phận thanh toán nhưng chưa có giải pháp nào được đưa ra. Nội dung chat cho thấy Jane đang thất vọng và yêu cầu một cuộc gọi lại (callback).\n\n4. **Dữ liệu hệ thống thanh toán**: Khoản phí trùng lặp này bắt nguồn từ lỗi hệ thống trong module quản lý đăng ký, khiến hệ thống tự động thêm dịch vụ \"Premium Support Add-on\" vào tài khoản của Jane vào ngày 14 tháng 5 một cách sai sót. Lỗi này hiện đã được vá, nhưng khoản phí vẫn chưa được hoàn.\n\n5. **Ngữ cảnh chính sách**: Theo chính sách của công ty, các khoản phí trùng lặp cho các dịch vụ không được đăng ký rõ ràng sẽ được hoàn trả trong vòng 24 giờ sau khi xác minh. Tài khoản của Jane đủ điều kiện áp dụng chính sách này.\n\n**Tóm tắt ngữ cảnh đã tối ưu hóa (Optimized Context Summary)**:\n- **Vấn đề chính**: Tính phí trùng lặp cho dịch vụ chưa đăng ký.\n- **Thái độ khách hàng**: Thất vọng, đã chuyển tiếp cho bộ phận thanh toán.\n- **Hướng giải quyết**: Hoàn trả ngay lập tức khoản phí 49,99 USD và tặng thêm 10% chiết khấu cho hóa đơn tiếp theo của Jane để bù đắp sự bất tiện.\n- **Các bước tiếp theo**: Gửi email xác nhận hoàn tiền và mã giảm giá cho Jane, đồng thời ghi nhận sự cố vào hệ thống để tránh tái diễn.\n\nAI agent hiện đã có ngữ cảnh ngắn gọn, có thể hành động ngay để giải quyết vấn đề một cách hiệu quả mà không cần lọc qua các dữ liệu không liên quan.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:15:52.560944Z",
+    "http_status": 200,
+    "content_hash": "341bded522555d62936b3da7d78dcf3f79f29538662198e5bccffa41bfe6cbd3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\context-engine.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\context-engine.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Context-Engine - Nén ngữ cảnh AI cho",
+  "short_description_vi": "Context-Engine MCP nén và quản lý ngữ cảnh cho các AI agent, giúp tăng hiệu suất và độ chính xác khi vận hành. Công cụ này mang lại lợi ích cho các đội ngũ sử dụng AI agent cho các tác vụ như code generation, phân tích dữ liệu và hỗ trợ khách hàng. Nó kết nối với nhiều mô hình AI và cơ sở dữ liệu khác nhau, giúp tối ưu hóa workflow và giảm thiểu độ trễ (latency)."
+}

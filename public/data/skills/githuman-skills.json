@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/githuman-skills",
+  "slug": "githuman-skills",
+  "name": "Githuman Skills",
+  "headline": "GitHuman Skills: AI Code Review for Claude Code",
+  "short_description": "Claude Code skill for GitHuman that enables AI-generated code review workflows, helping developers stage files, manage comments, and track follow-up work before committing changes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "mcollina",
+  "install_command": "git clone https://github.com/mcollina/githuman-skills.git",
+  "source_repo_url": "https://github.com/mcollina/githuman-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "GitHuman Skills integrate code review capabilities directly into Claude Code, allowing developers to systematically review AI-generated changes before committing. The skill teaches Claude how to start the GitHuman review interface, stage files for inspection, manage inline comments and suggestions, track todos for follow-up work, and export reviews for documentation. This workflow helps teams maintain code quality and catch issues in AI-assisted development. GitHuman Skills are particularly valuable for development teams using Claude Code who need structured review processes for automated code generation.\nReview AI-generated code changes before merging to main branch\nStage and inspect multiple files in a single review session\nTrack inline comments and suggestions on AI-generated code\nManage follow-up todos discovered during code review",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mcollina/githuman-skills`",
+    "usage": "```\nReview the following AI-generated code changes for a [COMPANY] project in the [INDUSTRY] sector. The changes are: [CODE_CHANGES]. Provide a detailed code review focusing on: 1) Potential security vulnerabilities, 2) Code efficiency, 3) Best practices adherence, and 4) Any industry-specific considerations. Use clear, actionable feedback.\n```\nCopy\n\n```\n# Code Review for AI-Generated Changes",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "githuman-skills#main-content",
+      "githuman-skills#overview",
+      "githuman-skills#setup",
+      "githuman-skills#examples",
+      "githuman-skills#tools",
+      "githuman-skills#mcp",
+      "githuman-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GitHuman Skills integrate code review capabilities directly into Claude Code, allowing developers to systematically review AI-generated changes before committing. The skill teaches Claude how to start the GitHuman review interface, stage files for inspection, manage inline comments and suggestions, track todos for follow-up work, and export reviews for documentation. This workflow helps teams maintain code quality and catch issues in AI-assisted development. GitHuman Skills are particularly valuable for development teams using Claude Code who need structured review processes for automated code generation.\nReview AI-generated code changes before merging to main branch\nStage and inspect multiple files in a single review session\nTrack inline comments and suggestions on AI-generated code\nManage follow-up todos discovered during code review",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mcollina/githuman-skills`",
+    "usage_vi": "```\nReview the following AI-generated code changes for a [COMPANY] project in the [INDUSTRY] sector. The changes are: [CODE_CHANGES]. Provide a detailed code review focusing on: 1) Potential security vulnerabilities, 2) Code efficiency, 3) Best practices adherence, and 4) Any industry-specific considerations. Use clear, actionable feedback.\n```\nCopy\n\n```\n# Code Review for AI-Generated Changes"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:45:49.297857Z",
+    "http_status": 200,
+    "content_hash": "d911f2221f5868b1952bdad88cdb86c9292487d346442571f08f662a17c2fa2c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\githuman-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\githuman-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GitHuman Skills: AI Code Review for Claude Code",
+  "short_description_vi": "Claude Code skill for GitHuman that enables AI-generated code review workflows, helping developers stage files, manage comments, and track follow-up work before committing changes."
+}

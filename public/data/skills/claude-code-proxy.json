@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-proxy",
+  "slug": "claude-code-proxy",
+  "name": "browser-use",
+  "headline": "Integrate Claude Code with diverse models via proxy",
+  "short_description": "Claude Code Proxy is a lightweight HTTP proxy that enables Claude Code to work with OpenRouter (200+ models), OpenAI Direct (GPT-5), and Ollama (local inference). It supports full tool integration, streaming, and thinking blocks. Ideal for operations teams looking to streamline AI model access and integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "nielspeter",
+  "install_command": "git clone https://github.com/nielspeter/claude-code-proxy.git",
+  "source_repo_url": "https://github.com/nielspeter/claude-code-proxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "gemini",
+    "llm",
+    "antrophic",
+    "chatgpt",
+    "ai-proxy",
+    "claude",
+    "golang",
+    "sonnet",
+    "openrouter",
+    "ai",
+    "openai"
+  ],
+  "sections": {
+    "overview": "Claude Code Proxy is a lightweight Go-based HTTP proxy that bridges Claude Code with multiple AI providers: OpenRouter (200+ models including GPT, Grok, Gemini), OpenAI Direct (GPT-5 reasoning), and Ollama (free local inference). It provides full compatibility with Claude Code features including tool calling, extended thinking blocks, streaming responses, and real-time token tracking. The proxy uses adaptive per-model detection to automatically learn which parameters each model supports, requiring zero hardcoding. With zero runtime dependencies, fast startup times under 10ms, and daemon mode for serving multiple Claude Code sessions, it's designed for operations teams needing streamlined AI model access and integration.\nRoute Claude Code sessions to cost-effective models via OpenRouter without changing client code\nEnable local-only inference with Ollama while maintaining Claude Code compatibility\nAccess GPT-5 reasoning models directly through Claude Code interface\nManage multi-provider model access with automatic capability detection per model",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nielspeter/claude-code-proxy`\n\n### Step 1: Install the Proxy\n\n1. Clone the repository:\n   ```bash\n   git clone https://github.com/claude-code-proxy/claude-code-proxy.git\n   ```\n2. Navigate to the project directory:\n   ```bash\n   cd claude-code-proxy\n   ```\n3. Install dependencies:\n   ```bash\n   npm install\n   ```\n\n### Step 2: Configure the Proxy\n\n1. Create a `.env` file in the root directory.\n2. Add the following environment variables:\n   ```env\n   PORT=3000\n   OPENAI_API_KEY=your_openai_api_key\n   OLLAMA_API_KEY=your_ollama_api_key\n   ```\n3. Save the file.\n\n### Step 3: Run the Proxy\n\n1. Start the proxy server:\n   ```bash\n   npm start\n   ```\n2. The proxy should now be running on `http://localhost:3000`.\n\n### Step 4: Integrate with Claude Code\n\n1. Open Claude Code.\n2. Navigate to the settings menu.\n3. Add the proxy URL (`http://localhost:3000`) as a custom endpoint.\n4. Save the settings.\n\n### Security Considerations\n\n- Ensure that the proxy server is running in a secure environment.\n- Regularly update the proxy software to the latest version.\n- Monitor the proxy logs for any suspicious activity.\n```",
+    "usage": "```\nSet up a Claude Code Proxy to connect to [AI_PLATFORM] for accessing [MODEL_NAME]. Provide step-by-step instructions, including necessary configurations and security considerations for [COMPANY] in the [INDUSTRY] sector.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-proxy#main-content",
+      "claude-code-proxy#overview",
+      "claude-code-proxy#setup",
+      "claude-code-proxy#examples",
+      "claude-code-proxy#tools",
+      "claude-code-proxy#mcp",
+      "claude-code-proxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Proxy is a lightweight Go-based HTTP proxy that bridges Claude Code with multiple AI providers: OpenRouter (200+ models including GPT, Grok, Gemini), OpenAI Direct (GPT-5 reasoning), and Ollama (free local inference). It provides full compatibility with Claude Code features including tool calling, extended thinking blocks, streaming responses, and real-time token tracking. The proxy uses adaptive per-model detection to automatically learn which parameters each model supports, requiring zero hardcoding. With zero runtime dependencies, fast startup times under 10ms, and daemon mode for serving multiple Claude Code sessions, it's designed for operations teams needing streamlined AI model access and integration.\nRoute Claude Code sessions to cost-effective models via OpenRouter without changing client code\nEnable local-only inference with Ollama while maintaining Claude Code compatibility\nAccess GPT-5 reasoning models directly through Claude Code interface\nManage multi-provider model access with automatic capability detection per model",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nielspeter/claude-code-proxy`\n\n### Step 1: Install the Proxy\n\n1. Clone the repository:\n   ```bash\n   git clone https://github.com/claude-code-proxy/claude-code-proxy.git\n   ```\n2. Navigate to the project directory:\n   ```bash\n   cd claude-code-proxy\n   ```\n3. Install dependencies:\n   ```bash\n   npm install\n   ```\n\n### Step 2: Configure the Proxy\n\n1. Create a `.env` file in the root directory.\n2. Add the following environment variables:\n   ```env\n   PORT=3000\n   OPENAI_API_KEY=your_openai_api_key\n   OLLAMA_API_KEY=your_ollama_api_key\n   ```\n3. Save the file.\n\n### Step 3: Run the Proxy\n\n1. Start the proxy server:\n   ```bash\n   npm start\n   ```\n2. The proxy should now be running on `http://localhost:3000`.\n\n### Step 4: Integrate with Claude Code\n\n1. Open Claude Code.\n2. Navigate to the settings menu.\n3. Add the proxy URL (`http://localhost:3000`) as a custom endpoint.\n4. Save the settings.\n\n### Security Considerations\n\n- Ensure that the proxy server is running in a secure environment.\n- Regularly update the proxy software to the latest version.\n- Monitor the proxy logs for any suspicious activity.\n```",
+    "usage_vi": "```\nSet up a Claude Code Proxy to connect to [AI_PLATFORM] for accessing [MODEL_NAME]. Provide step-by-step instructions, including necessary configurations and security considerations for [COMPANY] in the [INDUSTRY] sector.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:05:12.759005Z",
+    "http_status": 200,
+    "content_hash": "9ef00aad02300a16354ea46ad933072cb26128c2862573a735fdae615e465864",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-proxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-proxy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Integrate Claude Code with diverse models via proxy",
+  "short_description_vi": "Claude Code Proxy is a lightweight HTTP proxy that enables Claude Code to work with OpenRouter (200+ models), OpenAI Direct (GPT-5), and Ollama (local inference). It supports full tool integration, streaming, and thinking blocks. Ideal for operations teams looking to streamline AI model access and integration."
+}

@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-server-code-execution-mode",
+  "slug": "mcp-server-code-execution-mode",
+  "name": "MCP Server Code Execution Mode",
+  "headline": "MCP Server Code Execution Mode - Run Python in",
+  "short_description": "An MCP server that executes Python code in isolated rootless containers with optional MCP server proxying. Implementation of Anthropic's and Cloudflare's ideas for reducing MCP tool definitions context bloat.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "elusznik",
+  "install_command": "git clone https://github.com/elusznik/mcp-server-code-execution-mode.git",
+  "source_repo_url": "https://github.com/elusznik/mcp-server-code-execution-mode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "orchestration",
+    "agents",
+    "agentic-ai",
+    "mcp",
+    "anthropic",
+    "podman",
+    "code-execution",
+    "token-optimization",
+    "python",
+    "model-context-protocol",
+    "claude",
+    "claude-code",
+    "docker"
+  ],
+  "sections": {
+    "overview": "This MCP server implements Anthropic's code execution pattern to solve token bloat in multi-server agent setups. Instead of loading hundreds of tool schemas into the LLM context, it exposes a single `run_python` tool, letting the LLM write Python code to discover and compose other MCP tools on demand. The server proxies any stdio MCP server into rootless containers with capability dropping and network isolation, maintaining constant ~200-token overhead regardless of how many tools you manage. It's built for data science workflows requiring native Python libraries and enterprise-grade isolation, addressing a key limitation of JavaScript-based alternatives.\nMulti-server agent setups where schema bloat consumes 30K+ context tokens per query\nData science agents needing native pandas, numpy, and scikit-learn integration\nSecure execution of untrusted MCP tools in isolated container environments\nLarge-scale tool catalogs (50+ servers) where fixed schema preloading breaks context limits",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/elusznik/mcp-server-code-execution-mode`",
+    "usage": "```\nUse the mcp-server-code-execution-mode to execute the following Python code in an isolated container: [PYTHON_CODE]. If the code requires external dependencies, specify them as [DEPENDENCIES]. For complex workflows, chain multiple executions with [INPUT_DATA] and [OUTPUT_FORMAT].\n```\nCopy\n\n```\n```python\n# Example: Data Processing Pipeline\nimport pandas as pd\nimport numpy as np\n\n# Input data (simulated)\nsales_data = pd.DataFrame({\n    'date': pd.date_range(start='2023-01-01', periods=100),\n    'product_id': np.random.choice(['A100', 'B200', 'C300'], 100),\n    'revenue': np.random.uniform(1000, 5000, 100).round(2),\n    'region': np.random.choice(['North', 'South', 'East', 'West'], 100)\n})\n\n# Data processing\nprocessed = (\n    sales_data\n    .groupby(['product_id', 'region'])\n    .agg({'revenue': ['sum', 'mean', 'count']})\n    .reset_index()\n)\n\n# Output\nprocessed.columns = ['product_id', 'region', 'total_revenue', 'avg_revenue', 'transaction_count']\nprocessed['total_revenue'] = processed['total_revenue'].round(2)\nprocessed['avg_revenue'] = processed['avg_revenue'].round(2)\n\nprint(\"Top 5 Revenue-Generating Product-Region Pairs:\")\nprint(processed.nlargest(5, 'total_revenue').to_string(index=False))\n```\n\n**Execution Log:**\n- Container: Ubuntu 22.04 (rootless, 2GB RAM)\n- Dependencies: pandas==2.0.3, numpy==1.24.3 (installed via pip in 8s)\n- Runtime: 1.2s\n- Memory Usage: 142MB peak\n\n**Output:**\n```\nTop 5 Revenue-Generating Product-Region Pairs:\n product_id region  total_revenue  avg_revenue  transaction_count\n      A100   West        24567.89     2456.79               10\n      B200   North       22345.67     2234.57               10\n      C300   South       21890.12     2189.01               10\n      A100   East        20123.45     2012.35               10\n      B200   West        19876.54     1987.65               10\n```\n\n**Security Notes:**\n- Filesystem: Ephemeral (no persistence after execution)\n- Network: Disabled by default (enable with --allow-network if needed)\n- User: Non-root (UID 1000)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-server-code-execution-mode#main-content",
+      "mcp-server-code-execution-mode#overview",
+      "mcp-server-code-execution-mode#setup",
+      "mcp-server-code-execution-mode#examples",
+      "mcp-server-code-execution-mode#tools",
+      "mcp-server-code-execution-mode#mcp",
+      "mcp-server-code-execution-mode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP server này triển khai pattern thực thi mã của Anthropic để giải quyết vấn đề phình to token (token bloat) trong các thiết lập agent đa server. Thay vì tải hàng trăm schema của tool vào ngữ cảnh LLM, nó chỉ hiển thị một tool `run_python` duy nhất, cho phép LLM viết mã Python để tự khám phá và liên kết các MCP tool khác khi có nhu cầu. Server này hoạt động như một proxy cho bất kỳ stdio MCP server nào vào trong các container rootless có tính năng capability dropping và cô lập mạng, giúp duy trì mức overhead cố định khoảng ~200 token bất kể bạn quản lý bao nhiêu tool. Nó được xây dựng cho các workflow khoa học dữ liệu (data science) yêu cầu các thư viện Python gốc và cơ chế cô lập cấp doanh nghiệp, giải quyết một hạn chế lớn của các giải pháp thay thế dựa trên JavaScript.\n\n- Các thiết lập agent đa server nơi việc phình to schema tiêu tốn hơn 30K context token cho mỗi truy vấn\n- Các data science agent cần tích hợp pandas, numpy và scikit-learn gốc\n- Thực thi an toàn các MCP tool không đáng tin cậy trong môi trường container cô lập\n- Danh mục tool quy mô lớn (hơn 50 server) nơi việc tải trước schema cố định vượt quá giới hạn ngữ cảnh",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/elusznik/mcp-server-code-execution-mode`",
+    "usage_vi": "```\nSử dụng mcp-server-code-execution-mode để thực thi mã Python sau trong một container cô lập: [PYTHON_CODE]. Nếu mã yêu cầu các thư viện phụ thuộc bên ngoài, hãy chỉ định chúng dưới dạng [DEPENDENCIES]. Đối với các workflow phức tạp, hãy chuỗi hóa (chain) nhiều lượt thực thi với [INPUT_DATA] và [OUTPUT_FORMAT].\n```\nSao chép\n\n```python\n# Ví dụ: Pipeline xử lý dữ liệu\nimport pandas as pd\nimport numpy as np\n\n# Dữ liệu đầu vào (mô phỏng)\nsales_data = pd.DataFrame({\n    'date': pd.date_range(start='2023-01-01', periods=100),\n    'product_id': np.random.choice(['A100', 'B200', 'C300'], 100),\n    'revenue': np.random.uniform(1000, 5000, 100).round(2),\n    'region': np.random.choice(['North', 'South', 'East', 'West'], 100)\n})\n\n# Xử lý dữ liệu\nprocessed = (\n    sales_data\n    .groupby(['product_id', 'region'])\n    .agg({'revenue': ['sum', 'mean', 'count']})\n    .reset_index()\n)\n\n# Đầu ra\nprocessed.columns = ['product_id', 'region', 'total_revenue', 'avg_revenue', 'transaction_count']\nprocessed['total_revenue'] = processed['total_revenue'].round(2)\nprocessed['avg_revenue'] = processed['avg_revenue'].round(2)\n\nprint(\"Top 5 Revenue-Generating Product-Region Pairs:\")\nprint(processed.nlargest(5, 'total_revenue').to_string(index=False))\n```\n\n**Log thực thi:**\n- Container: Ubuntu 22.04 (rootless, 2GB RAM)\n- Dependencies: pandas==2.0.3, numpy==1.24.3 (cài đặt qua pip trong 8 giây)\n- Runtime: 1.2s\n- Memory Usage: peak 142MB\n\n**Kết quả (Output):**\n```\nTop 5 Revenue-Generating Product-Region Pairs:\n product_id region  total_revenue  avg_revenue  transaction_count\n      A100   West        24567.89     2456.79               10\n      B200   North       22345.67     2234.57               10\n      C300   South       21890.12     2189.01               10\n      A100   East        20123.45     2012.35               10\n      B200   West        19876.54     1987.65               10\n```\n\n**Lưu ý bảo mật:**\n- Filesystem: Ephemeral (tạm thời, không lưu trữ dữ liệu sau khi thực thi)\n- Network: Bị vô hiệu hóa theo mặc định (kích hoạt bằng --allow-network nếu cần)\n- User: Non-root (UID 1000)"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:17:36.824354Z",
+    "http_status": 200,
+    "content_hash": "c96ae629d2b5bd7a1078ad4e04c2b6f04ee441ba26b4279c7a7b61ce74002791",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-code-execution-mode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-code-execution-mode.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Chế độ thực thi mã của MCP Server - Chạy Python trong",
+  "short_description_vi": "Một MCP server thực thi mã Python trong các container rootless cô lập với tùy chọn proxying MCP server. Triển khai các ý tưởng của Anthropic và Cloudflare nhằm giảm thiểu sự phình to ngữ cảnh (context bloat) từ định nghĩa tool của MCP."
+}

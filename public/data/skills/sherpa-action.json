@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sherpa-action",
+  "slug": "sherpa-action",
+  "name": "Sherpa-Action",
+  "headline": "Sherpa-Action: Deploy Your Code Effortlessly",
+  "short_description": "Sherpa-Action automates code deployment to any cloud provider using plain English commands. Developers and operations teams benefit from faster, error-free deployments. It connects to cloud platforms like AWS and Cloudflare, handling infrastructure setup, DNS, and SSL certificates.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "sherpa-sh",
+  "install_command": "git clone https://github.com/sherpa-sh/Sherpa-Action.git",
+  "source_repo_url": "https://github.com/sherpa-sh/Sherpa-Action",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "aws",
+    "claude-code-plugin",
+    "claude-code-plugins",
+    "deployment",
+    "github-actions",
+    "claude-code",
+    "ci-cd",
+    "devops",
+    "cloudflare",
+    "ai-ops",
+    "continuous-deployment",
+    "nextjs",
+    "github-action",
+    "sherpa-sh",
+    "ai-developer-tools",
+    "infrastructure-as-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Sherpa-Action is an innovative AI automation skill designed to streamline the code deployment process. By allowing users to deploy their code to any cloud environment using plain English, it eliminates the complexities often associated with traditional deployment methods. This skill caters to developers and product managers who want to enhance their workflow automation without needing extensive technical knowledge or command line proficiency. The key benefits of Sherpa-Action include its ability to significantly reduce the time spent on deployment tasks. While specific time savings are currently unknown, the skill's user-friendly interface and straightforward instructions can lead to a more efficient deployment process, freeing developers to focus on higher-value tasks. Additionally, the intermediate complexity of the skill means that users can expect a manageable learning curve, making it accessible for those with a moderate level of technical expertise. This skill is particularly beneficial for developers and product managers who are looking to integrate AI agent skills into their workflows. It is an excellent fit for teams aiming to adopt an AI-first approach, as it simplifies the deployment process and enhances collaboration. Use cases for Sherpa-Action include deploying web applications, microservices, and serverless functions, all of which can be executed with minimal effort and maximum clarity. Implementing Sherpa-Action takes approximately 30 minutes, making it a quick addition to any developer's toolkit. As organizations increasingly prioritize workflow automation, this skill stands out as a practical solution for those seeking to optimize their deployment processes. By integrating Sherpa-Action into your development workflow, you can leverage AI automation to achieve greater efficiency and productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sherpa-sh/Sherpa-Action`",
+    "usage": "```\nDeploy [APPLICATION_NAME] to [CLOUD_PROVIDER] with the following requirements: [LIST_REQUIREMENTS]. Ensure the deployment includes [SPECIFIC_FEATURES] and handles [EDGE_CASES]. Use [DEPLOYMENT_STRATEGY] for zero-downtime rollout. Generate the exact commands and configuration files needed for a successful deployment.\n```\nCopy\n\n```\nHere’s your deployment plan for the `Acme Analytics Dashboard` to AWS with zero-downtime rollout:\n\n**1. Infrastructure Setup:**\n- Created a new EC2 instance (t3.medium) in us-east-1 with Ubuntu 22.04.\n- Configured an Auto Scaling Group (min=2, max=5) with a target group for port 8080.\n- Set up an Application Load Balancer (ALB) with HTTPS termination using an ACM certificate for `analytics.acme.com`.\n\n**2. Deployment Script:**\n```bash\n# Install dependencies\nexport DEBIAN_FRONTEND=noninteractive\nsudo apt-get update -y\nsudo apt-get install -y docker.io nginx certbot python3-certbot-nginx\n\n# Start Docker service\nsudo systemctl start docker\nsudo systemctl enable docker\n\n# Pull and run the container\nsudo docker pull acme/analytics-dashboard:v1.2.0\nsudo docker run -d --name analytics-dashboard -p 8080:8080 acme/analytics-dashboard:v1.2.0\n\n# Configure Nginx for SSL termination\nsudo certbot --nginx -d analytics.acme.com --non-interactive --agree-tos -m devops@acme.com\n```\n\n**3. DNS and SSL:**\n- Updated Route 53 to point `analytics.acme.com` to the ALB DNS name (alb-123456789.us-east-1.elb.amazonaws.com).\n- SSL certificate issued via Let’s Encrypt and auto-renewal configured.\n\n**4. Verification:**\n- Health checks confirm all instances are running (2/2 healthy).\n- Dashboard accessible at `https://analytics.acme.com` with no SSL warnings.\n\n**Next Steps:**\n- Monitor CloudWatch logs for errors.\n- Schedule a canary deployment for the next version (v1.2.1) using the same strategy.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sherpa-action#main-content",
+      "sherpa-action#overview",
+      "sherpa-action#setup",
+      "sherpa-action#examples",
+      "sherpa-action#tools",
+      "sherpa-action#mcp",
+      "sherpa-action#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sherpa-Action là một skill tự động hóa bằng AI mang tính đột phá, được thiết kế để tối ưu hóa quy trình triển khai code. Bằng cách cho phép người dùng triển khai code lên bất kỳ môi trường cloud nào bằng ngôn ngữ tiếng Anh tự nhiên, công cụ này loại bỏ hoàn toàn các bước phức tạp thường gặp ở các phương pháp deploy truyền thống. Skill này hướng đến các nhà phát triển (developer) và quản lý sản phẩm (product manager) muốn tăng cường tự động hóa quy trình làm việc (workflow) mà không cần kiến thức kỹ thuật quá chuyên sâu hay thành thạo các câu lệnh command line. Lợi ích cốt lõi của Sherpa-Action là khả năng cắt giảm đáng kể thời gian thực hiện các tác vụ triển khai. Dù mức thời gian tiết kiệm cụ thể chưa được xác định ở hiện tại, giao diện thân thiện cùng hướng dẫn trực quan của skill này chắc chắn sẽ mang lại một quy trình deploy hiệu quả hơn, giải phóng lập trình viên để tập trung vào các công việc có giá trị cao hơn. Bên cạnh đó, với độ phức tạp ở mức trung bình, người dùng có thể dễ dàng làm quen và sử dụng mà không gặp quá nhiều trở ngại về mặt kỹ thuật. Đây là giải pháp lý tưởng cho các developer và product manager đang tìm kiếm cách tích hợp các skill AI agent vào workflow của mình. Nó cực kỳ phù hợp với các đội ngũ muốn áp dụng phương pháp tiếp cận ưu tiên AI (AI-first), giúp đơn giản hóa quy trình deploy và tăng cường hiệu quả cộng tác. Các use case tiêu biểu của Sherpa-Action bao gồm triển khai ứng dụng web, microservices và serverless functions – tất cả đều được thực hiện một cách nhanh chóng với độ chuẩn xác cao nhất. Việc thiết lập Sherpa-Action chỉ mất khoảng 30 phút, giúp bạn nhanh chóng bổ sung công cụ này vào kho tài nguyên của mình. Khi các doanh nghiệp ngày càng chú trọng vào tự động hóa quy trình, Sherpa-Action nổi lên như một giải pháp thực tiễn để tối ưu hóa việc deploy. Tích hợp Sherpa-Action vào quy trình phát triển sẽ giúp bạn khai thác sức mạnh của tự động hóa AI để đạt hiệu suất và năng suất vượt trội.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sherpa-sh/Sherpa-Action`",
+    "usage_vi": "```\nDeploy [APPLICATION_NAME] to [CLOUD_PROVIDER] with the following requirements: [LIST_REQUIREMENTS]. Ensure the deployment includes [SPECIFIC_FEATURES] and handles [EDGE_CASES]. Use [DEPLOYMENT_STRATEGY] for zero-downtime rollout. Generate the exact commands and configuration files needed for a successful deployment.\n```\nCopy\n\n```\nDưới đây là kế hoạch triển khai (deployment plan) ứng dụng `Acme Analytics Dashboard` lên AWS bằng chiến lược zero-downtime rollout:\n\n**1. Thiết lập hạ tầng (Infrastructure Setup):**\n- Tạo một EC2 instance mới (t3.medium) tại vùng us-east-1 chạy Ubuntu 22.04.\n- Cấu hình Auto Scaling Group (tối thiểu 2, tối đa 5) với target group cho cổng 8080.\n- Thiết lập Application Load Balancer (ALB) hỗ trợ HTTPS termination bằng chứng chỉ ACM cho tên miền `analytics.acme.com`.\n\n**2. Deployment Script:**\n```bash\n# Cài đặt các package phụ thuộc\nexport DEBIAN_FRONTEND=noninteractive\nsudo apt-get update -y\nsudo apt-get install -y docker.io nginx certbot python3-certbot-nginx\n\n# Khởi động dịch vụ Docker\nsudo systemctl start docker\nsudo systemctl enable docker\n\n# Pull và chạy container\nsudo docker pull acme/analytics-dashboard:v1.2.0\nsudo docker run -d --name analytics-dashboard -p 8080:8080 acme/analytics-dashboard:v1.2.0\n\n# Cấu hình Nginx để xử lý SSL termination\nsudo certbot --nginx -d analytics.acme.com --non-interactive --agree-tos -m devops@acme.com\n```\n\n**3. DNS và SSL:**\n- Cập nhật Route 53 trỏ tên miền `analytics.acme.com` về địa chỉ DNS của ALB (alb-123456789.us-east-1.elb.amazonaws.com).\n- Chứng chỉ SSL được cấp qua Let’s Encrypt và đã cấu hình tự động gia hạn (auto-renewal).\n\n**4. Kiểm tra (Verification):**\n- Health check xác nhận toàn bộ instance đang chạy bình thường (2/2 healthy).\n- Truy cập được dashboard qua địa chỉ `https://analytics.acme.com` mà không gặp cảnh báo SSL.\n\n**Các bước tiếp theo (Next Steps):**\n- Giám sát log trên CloudWatch để kiểm tra lỗi.\n- Lập lịch triển khai canary (canary deployment) cho phiên bản tiếp theo (v1.2.1) bằng cách áp dụng cùng chiến lược này.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:17:24.929285Z",
+    "http_status": 200,
+    "content_hash": "56bf3725af5e1a4ff71054addda55542ce3c80e200a5e47f4538c2e69fbcd559",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sherpa-action.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sherpa-action.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sherpa-Action: Triển khai Code Vô cùng Dễ dàng",
+  "short_description_vi": "Sherpa-Action tự động hóa quy trình triển khai code lên bất kỳ nhà cung cấp dịch vụ cloud nào bằng các câu lệnh tiếng Anh tự nhiên. Đội ngũ phát triển và vận hành hệ thống (DevOps/Operations) sẽ được tối ưu hóa thời gian với các đợt triển khai nhanh chóng và hạn chế tối đa lỗi. Công cụ này kết nối trực tiếp với các nền tảng cloud như AWS và Cloudflare, tự động xử lý từ việc thiết lập hạ tầng (infrastructure setup), cấu hình DNS cho đến cấp chứng chỉ SSL."
+}

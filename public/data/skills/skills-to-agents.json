@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-to-agents",
+  "slug": "skills-to-agents",
+  "name": "Skills To Agents",
+  "headline": "skills-to-agents: Automate Coding Support",
+  "short_description": "Automatically enables Claude-style Skills for coding agents that support AGENTS.md. Benefits developers and operations teams by streamlining agent workflows. Integrates with GitHub Actions for easy deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "dave1010",
+  "install_command": "git clone https://github.com/dave1010/skills-to-agents.git",
+  "source_repo_url": "https://github.com/dave1010/skills-to-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The skills-to-agents automation skill provides automatic support for Claude Skills within any coding agent that adheres to the AGENTS.md framework. This skill simplifies the integration of AI capabilities into your coding workflows, allowing developers to leverage pre-built skills without extensive manual configuration. By streamlining the process of adding AI functionalities, this skill enhances the efficiency of coding agents, making it easier to implement AI-driven solutions. Key benefits of the skills-to-agents skill include reduced setup time and improved productivity for developers and AI practitioners. While specific time savings are currently unknown, the skill's intermediate complexity suggests that users can expect to implement it within approximately 30 minutes. This efficiency allows teams to focus on higher-level tasks and innovation rather than getting bogged down in the intricacies of integrating AI capabilities. This skill is particularly beneficial for developers and product managers looking to enhance their AI automation workflows. By automating the support for Claude Skills, teams can create more intelligent applications that respond dynamically to user needs. For instance, a developer could use this skill to quickly integrate a natural language processing feature into a customer service agent, significantly improving response times and user satisfaction. Implementing the skills-to-agents skill requires an intermediate level of technical expertise, making it suitable for those familiar with coding and AI principles. As organizations increasingly adopt AI-first workflows, this skill becomes a valuable asset in enhancing the capabilities of AI agents, ensuring that teams can efficiently harness the power of automation to drive innovation and productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dave1010/skills-to-agents`",
+    "usage": "```\nEnable the skills-to-agents feature for [AGENT_NAME] by generating an AGENTS.md file with the following skills: [SKILLS_LIST]. Ensure the file includes proper configuration for GitHub Actions workflow [WORKFLOW_NAME] to automate deployment. Validate the setup by testing the agent's response to a sample task: [SAMPLE_TASK].\n```\nCopy\n\n```\n```markdown\n# AGENTS.md for CodeReviewAgent",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skills-to-agents#main-content",
+      "skills-to-agents#overview",
+      "skills-to-agents#setup",
+      "skills-to-agents#examples",
+      "skills-to-agents#tools",
+      "skills-to-agents#mcp",
+      "skills-to-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill tự động hóa skills-to-agents cung cấp khả năng tự động hỗ trợ các Claude Skill bên trong bất kỳ coding agent nào tuân thủ framework AGENTS.md. Skill này đơn giản hóa việc tích hợp các khả năng AI vào workflow lập trình của bạn, cho phép lập trình viên tận dụng các skill được xây dựng sẵn mà không cần cấu hình thủ công phức tạp. Bằng cách tối ưu hóa quá trình thêm các tính năng AI, skill này nâng cao hiệu quả của các coding agent, giúp việc triển khai các giải pháp dựa trên AI trở nên dễ dàng hơn. Các lợi ích chính của skill skills-to-agents bao gồm giảm thời gian setup và cải thiện năng suất cho các lập trình viên cũng như những người làm việc trong lĩnh vực AI. Mặc dù chưa xác định được thời gian tiết kiệm cụ thể, độ phức tạp ở mức trung bình của skill này cho thấy người dùng có thể hoàn thành việc triển khai trong khoảng 30 phút. Hiệu quả này cho phép các đội ngũ tập trung vào các tác vụ cấp cao hơn và đổi mới sáng tạo, thay vì bị sa lầy vào những chi tiết phức tạp khi tích hợp các tính năng AI. Skill này đặc biệt hữu ích cho các lập trình viên và product manager đang muốn cải thiện workflow tự động hóa AI của họ. Bằng cách tự động hóa việc hỗ trợ Claude Skills, các đội ngũ có thể tạo ra các ứng dụng thông minh hơn, phản hồi linh hoạt theo nhu cầu của người dùng. Ví dụ, một lập trình viên có thể sử dụng skill này để tích hợp nhanh chóng tính năng xử lý ngôn ngữ tự nhiên vào một customer service agent, giúp cải thiện đáng kể thời gian phản hồi và độ hài lòng của người dùng. Việc triển khai skill skills-to-agents yêu cầu trình độ kỹ thuật ở mức trung bình, phù hợp với những người đã quen thuộc với các nguyên lý lập trình và AI. Khi các tổ chức ngày càng áp dụng nhiều workflow ưu tiên AI (AI-first), skill này trở thành một tài sản quý giá giúp nâng cao năng lực của các AI agent, đảm bảo các đội ngũ có thể khai thác hiệu quả sức mạnh của tự động hóa để thúc đẩy đổi mới và năng suất.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dave1010/skills-to-agents`",
+    "usage_vi": "```\nKích hoạt tính năng skills-to-agents cho [AGENT_NAME] bằng cách tạo một file AGENTS.md với các skill sau: [SKILLS_LIST]. Hãy đảm bảo file này bao gồm cấu hình phù hợp cho workflow GitHub Actions [WORKFLOW_NAME] để tự động hóa việc triển khai. Xác thực setup bằng cách kiểm tra phản hồi của agent đối với một tác vụ mẫu: [SAMPLE_TASK].\n```\nSao chép\n\n```\n```markdown\n# AGENTS.md cho CodeReviewAgent"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:43.771214Z",
+    "http_status": 200,
+    "content_hash": "05d9d9180e38f7c196f7107cb3c066ff2e0bdc9efe6125002abbb495c81c1a79",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-to-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-to-agents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "skills-to-agents: Tự động hóa hỗ trợ lập trình",
+  "short_description_vi": "Tự động kích hoạt các Skill theo phong cách Claude cho các coding agent hỗ trợ AGENTS.md. Mang lại lợi ích cho lập trình viên và đội ngũ vận hành nhờ tối ưu hóa workflow của agent. Tích hợp trực tiếp với GitHub Actions giúp triển khai dễ dàng."
+}

@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-ssh-manager",
+  "slug": "mcp-ssh-manager",
+  "name": "browser-use",
+  "headline": "mcp-ssh-manager: Remote SSH Management",
+  "short_description": "MCP SSH Manager enables remote SSH server management via Model Context Protocol. It supports 37 tools for DevOps automation, backups, database operations, and health monitoring. Compatible with Claude Code and OpenAI Codex, it streamlines remote server management for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "bvisible",
+  "install_command": "git clone https://github.com/bvisible/mcp-ssh-manager.git",
+  "source_repo_url": "https://github.com/bvisible/mcp-ssh-manager",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "backup",
+    "erpnext",
+    "remote-server",
+    "toml",
+    "claude-code",
+    "anthropic",
+    "deployment",
+    "frappe",
+    "ssh",
+    "database",
+    "ssh-mcp",
+    "monitoring",
+    "model-context-protocol",
+    "mcp-server",
+    "ssh-manager",
+    "mcp",
+    "openai-codex",
+    "mcp-ssh",
+    "devops"
+  ],
+  "sections": {
+    "overview": "The mcp-ssh-manager skill is designed for efficient remote SSH management, providing users with 37 tools that facilitate various tasks such as backups, database operations, and health monitoring. Built on Claude Code and powered by OpenAI Codex, this skill simplifies the complexities of managing SSH servers, making it an invaluable asset for DevOps professionals. By automating routine SSH tasks, users can focus on more strategic initiatives, ultimately enhancing productivity. One of the key benefits of the mcp-ssh-manager is its ability to save time on repetitive tasks. Although specific time savings are not quantified, the streamlined processes it offers can significantly reduce the hours spent on SSH management. This skill is particularly beneficial for developers, product managers, and AI practitioners who require reliable and efficient remote server management solutions. By automating these workflows, teams can allocate their resources more effectively and improve overall operational efficiency. Practical use cases for the mcp-ssh-manager include automating health checks on servers, scheduling regular backups, and performing database operations without manual intervention. For instance, a DevOps team can set up automated health monitoring to receive alerts on server performance, allowing them to address issues proactively rather than reactively. This not only enhances server reliability but also minimizes downtime, leading to better service delivery. With an intermediate implementation difficulty, users can expect to set up the mcp-ssh-manager skill in approximately 30 minutes. While the complexity is moderate, the investment of time yields substantial returns in workflow automation. As organizations increasingly adopt AI-first strategies, integrating tools like mcp-ssh-manager into their workflows will be crucial for maintaining competitive advantages in efficiency and responsiveness.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bvisible/mcp-ssh-manager`",
+    "usage": "```\nUse the MCP SSH Manager to [ACTION] on [SERVER_IP] with the following details: [COMMAND_OR_TASK]. Ensure you handle authentication via [METHOD: password/key] and verify the [RESULT_CHECK: success/failure]. Provide a summary of the output and any errors encountered.\n```\nCopy\n\n```\nSuccessfully executed the following tasks on server **192.168.1.100** (Ubuntu 22.04, SSH key-authenticated):\n\n1. **Disk Usage Check**\n   ```bash\n   df -h\n   ```\n   **Output:**\n   ```\n   Filesystem      Size  Used Avail Use% Mounted on\n   /dev/sda1        50G   22G   26G  46% /\n   /dev/sdb1       100G   45G   50G  48% /mnt/backup\n   ```\n   *Analysis:* Root partition (`/`) has 26GB free (46% usage), which is within safe limits. Backup drive (`/mnt/backup`) is at 48%—no immediate action needed.\n\n2. **Database Backup**\n   ```bash\n   pg_dump -U postgres -d app_db -F c -f /mnt/backup/app_db_$(date +%Y%m%d).dump\n   ```\n   **Output:**\n   ```\n   pg_dump: dumping database 'app_db' to file '/mnt/backup/app_db_20240515.dump'\n   ```\n   *Status:* Backup completed successfully. File size: **1.8GB**. Verified checksum: **SHA256: a1b2c3...**\n\n3. **Service Status Check**\n   ```bash\n   systemctl status nginx --no-pager\n   ```\n   **Output:**\n   ```\n   ● nginx.service - A high performance web server and a reverse proxy server\n      Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)\n      Active: active (running) since Wed 2024-05-15 08:30:00 UTC; 2h ago\n   ```\n   *Status:* Nginx is running and healthy.\n\n**Summary:**\n- All tasks completed without errors.\n- No critical alerts (disk usage, backups, or services).\n- Recommendation: Schedule a weekly backup retention cleanup for `/mnt/backup`.\n\n**Errors:** None.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-ssh-manager#main-content",
+      "mcp-ssh-manager#overview",
+      "mcp-ssh-manager#setup",
+      "mcp-ssh-manager#examples",
+      "mcp-ssh-manager#tools",
+      "mcp-ssh-manager#mcp",
+      "mcp-ssh-manager#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The mcp-ssh-manager skill is designed for efficient remote SSH management, providing users with 37 tools that facilitate various tasks such as backups, database operations, and health monitoring. Built on Claude Code and powered by OpenAI Codex, this skill simplifies the complexities of managing SSH servers, making it an invaluable asset for DevOps professionals. By automating routine SSH tasks, users can focus on more strategic initiatives, ultimately enhancing productivity. One of the key benefits of the mcp-ssh-manager is its ability to save time on repetitive tasks. Although specific time savings are not quantified, the streamlined processes it offers can significantly reduce the hours spent on SSH management. This skill is particularly beneficial for developers, product managers, and AI practitioners who require reliable and efficient remote server management solutions. By automating these workflows, teams can allocate their resources more effectively and improve overall operational efficiency. Practical use cases for the mcp-ssh-manager include automating health checks on servers, scheduling regular backups, and performing database operations without manual intervention. For instance, a DevOps team can set up automated health monitoring to receive alerts on server performance, allowing them to address issues proactively rather than reactively. This not only enhances server reliability but also minimizes downtime, leading to better service delivery. With an intermediate implementation difficulty, users can expect to set up the mcp-ssh-manager skill in approximately 30 minutes. While the complexity is moderate, the investment of time yields substantial returns in workflow automation. As organizations increasingly adopt AI-first strategies, integrating tools like mcp-ssh-manager into their workflows will be crucial for maintaining competitive advantages in efficiency and responsiveness.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bvisible/mcp-ssh-manager`",
+    "usage_vi": "```\nUse the MCP SSH Manager to [ACTION] on [SERVER_IP] with the following details: [COMMAND_OR_TASK]. Ensure you handle authentication via [METHOD: password/key] and verify the [RESULT_CHECK: success/failure]. Provide a summary of the output and any errors encountered.\n```\nCopy\n\n```\nSuccessfully executed the following tasks on server **192.168.1.100** (Ubuntu 22.04, SSH key-authenticated):\n\n1. **Disk Usage Check**\n   ```bash\n   df -h\n   ```\n   **Output:**\n   ```\n   Filesystem      Size  Used Avail Use% Mounted on\n   /dev/sda1        50G   22G   26G  46% /\n   /dev/sdb1       100G   45G   50G  48% /mnt/backup\n   ```\n   *Analysis:* Root partition (`/`) has 26GB free (46% usage), which is within safe limits. Backup drive (`/mnt/backup`) is at 48%—no immediate action needed.\n\n2. **Database Backup**\n   ```bash\n   pg_dump -U postgres -d app_db -F c -f /mnt/backup/app_db_$(date +%Y%m%d).dump\n   ```\n   **Output:**\n   ```\n   pg_dump: dumping database 'app_db' to file '/mnt/backup/app_db_20240515.dump'\n   ```\n   *Status:* Backup completed successfully. File size: **1.8GB**. Verified checksum: **SHA256: a1b2c3...**\n\n3. **Service Status Check**\n   ```bash\n   systemctl status nginx --no-pager\n   ```\n   **Output:**\n   ```\n   ● nginx.service - A high performance web server and a reverse proxy server\n      Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)\n      Active: active (running) since Wed 2024-05-15 08:30:00 UTC; 2h ago\n   ```\n   *Status:* Nginx is running and healthy.\n\n**Summary:**\n- All tasks completed without errors.\n- No critical alerts (disk usage, backups, or services).\n- Recommendation: Schedule a weekly backup retention cleanup for `/mnt/backup`.\n\n**Errors:** None.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:04:04.982203Z",
+    "http_status": 200,
+    "content_hash": "b768eef9a3015ec1e1efdb11b840b7dc23d2b138bf607c91750260364b61f1c0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-ssh-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-ssh-manager.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mcp-ssh-manager: Remote SSH Management",
+  "short_description_vi": "MCP SSH Manager enables remote SSH server management via Model Context Protocol. It supports 37 tools for DevOps automation, backups, database operations, and health monitoring. Compatible with Claude Code and OpenAI Codex, it streamlines remote server management for operations teams."
+}

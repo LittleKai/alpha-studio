@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opencode-web",
+  "slug": "opencode-web",
+  "name": "browser-use",
+  "headline": "OpenCode Web: Browser Interface for OpenCode API",
+  "short_description": "OpenCode Web is a browser-based interface for the OpenCode API that lets developers interact with AI coding agents through the web. It streams agent responses in real-time, visualizes tool executions, and provides full OpenCode API access without CLI installation. Built for teams who need browser-accessible AI coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "chris-tse",
+  "install_command": "git clone https://github.com/chris-tse/opencode-web.git",
+  "source_repo_url": "https://github.com/chris-tse/opencode-web",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-ai",
+    "opencode",
+    "bun",
+    "vite",
+    "react"
+  ],
+  "sections": {
+    "overview": "OpenCode Web is a browser-based interface for the OpenCode API that enables developers to interact with AI coding agents directly through a web browser. The platform provides web access to OpenCode workflows without requiring CLI installation, making it ideal for teams who prefer browser-based development environments. OpenCode Web streams agent responses in real-time, visualizes tool executions, and supports debugging of OpenCode API integrations through an intuitive web interface. Developers use OpenCode Web to test OpenCode API behaviors, prototype agent workflows, and collaborate on AI-assisted coding tasks through the browser interface. The platform supports multiple AI agents including Claude Code, providing a web layer for the broader OpenCode ecosystem. OpenCode Web eliminates environment setup overhead while maintaining full access to OpenCode API capabilities. Teams choose OpenCode Web for its seamless OpenCode integration and browser-first approach to AI coding workflows.\nRunning OpenCode Web workflows through browser interface\nTesting OpenCode API integrations without CLI setup\nBrowser-based OpenCode debugging and visualization\nCollaborative OpenCode Web development via web access",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/chris-tse/opencode-web`",
+    "usage": "```\nUse OpenCode Web to [TASK] in a browser-based AI coding environment. For example: 'Debug the memory leak in the Node.js API server at [REPO_URL] using OpenCode Web. Run the agent with the --memory flag and analyze the heap snapshots generated in the tool visualization panel.'\n```\nCopy\n\n```\nHere’s how OpenCode Web handled the debugging task for a fictional Node.js API server:\n\n1. **Agent Setup**: I pasted the repository URL (https://github.com/acme/api-server) into OpenCode Web’s agent interface and selected the 'Debug Memory Leak' preset. The agent initialized with the command:\n   ```bash\n   opencode --memory --repo https://github.com/acme/api-server\n   ```\n\n2. **Real-Time Streaming**: The agent’s response streamed in the browser, showing its first step: analyzing the `package.json` for memory-heavy dependencies. It flagged `heapdump` and `bunyan` as potential culprits and suggested running a baseline memory profile.\n\n3. **Tool Visualization**: The tool execution panel displayed a live graph of memory usage, spiking at 1.2GB during a load test. The agent automatically generated a heap snapshot (`heapdump-20240515-142233.heapsnapshot`) and linked it in the interface.\n\n4. **Analysis & Fix**: The agent identified a circular reference in the `UserService` class, where `User` objects retained references to their `Order` collections, preventing garbage collection. It suggested:\n   ```javascript\n   // In UserService.js\n   class UserService {\n     constructor() {\n       this.users = new Map();\n     }\n     \n     getUser(id) {\n       const user = this.users.get(id);\n       user.orders = null; // Explicitly break reference\n       return user;\n     }\n   }\n   ```\n\n5. **Validation**: The agent reran the memory test, showing a stable 450MB usage. The tool panel confirmed no leaks, and the fix was committed directly via the OpenCode Web’s integrated Git interface.\n\n**Key Takeaway**: OpenCode Web’s real-time streaming and visualization saved 45 minutes of manual debugging by surfacing the issue and fix in one workflow.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "opencode-web#main-content",
+      "opencode-web#overview",
+      "opencode-web#setup",
+      "opencode-web#examples",
+      "opencode-web#tools",
+      "opencode-web#mcp",
+      "opencode-web#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OpenCode Web is a browser-based interface for the OpenCode API that enables developers to interact with AI coding agents directly through a web browser. The platform provides web access to OpenCode workflows without requiring CLI installation, making it ideal for teams who prefer browser-based development environments. OpenCode Web streams agent responses in real-time, visualizes tool executions, and supports debugging of OpenCode API integrations through an intuitive web interface. Developers use OpenCode Web to test OpenCode API behaviors, prototype agent workflows, and collaborate on AI-assisted coding tasks through the browser interface. The platform supports multiple AI agents including Claude Code, providing a web layer for the broader OpenCode ecosystem. OpenCode Web eliminates environment setup overhead while maintaining full access to OpenCode API capabilities. Teams choose OpenCode Web for its seamless OpenCode integration and browser-first approach to AI coding workflows.\nRunning OpenCode Web workflows through browser interface\nTesting OpenCode API integrations without CLI setup\nBrowser-based OpenCode debugging and visualization\nCollaborative OpenCode Web development via web access",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/chris-tse/opencode-web`",
+    "usage_vi": "```\nUse OpenCode Web to [TASK] in a browser-based AI coding environment. For example: 'Debug the memory leak in the Node.js API server at [REPO_URL] using OpenCode Web. Run the agent with the --memory flag and analyze the heap snapshots generated in the tool visualization panel.'\n```\nCopy\n\n```\nHere’s how OpenCode Web handled the debugging task for a fictional Node.js API server:\n\n1. **Agent Setup**: I pasted the repository URL (https://github.com/acme/api-server) into OpenCode Web’s agent interface and selected the 'Debug Memory Leak' preset. The agent initialized with the command:\n   ```bash\n   opencode --memory --repo https://github.com/acme/api-server\n   ```\n\n2. **Real-Time Streaming**: The agent’s response streamed in the browser, showing its first step: analyzing the `package.json` for memory-heavy dependencies. It flagged `heapdump` and `bunyan` as potential culprits and suggested running a baseline memory profile.\n\n3. **Tool Visualization**: The tool execution panel displayed a live graph of memory usage, spiking at 1.2GB during a load test. The agent automatically generated a heap snapshot (`heapdump-20240515-142233.heapsnapshot`) and linked it in the interface.\n\n4. **Analysis & Fix**: The agent identified a circular reference in the `UserService` class, where `User` objects retained references to their `Order` collections, preventing garbage collection. It suggested:\n   ```javascript\n   // In UserService.js\n   class UserService {\n     constructor() {\n       this.users = new Map();\n     }\n     \n     getUser(id) {\n       const user = this.users.get(id);\n       user.orders = null; // Explicitly break reference\n       return user;\n     }\n   }\n   ```\n\n5. **Validation**: The agent reran the memory test, showing a stable 450MB usage. The tool panel confirmed no leaks, and the fix was committed directly via the OpenCode Web’s integrated Git interface.\n\n**Key Takeaway**: OpenCode Web’s real-time streaming and visualization saved 45 minutes of manual debugging by surfacing the issue and fix in one workflow.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:29:05.930325Z",
+    "http_status": 200,
+    "content_hash": "e5ce27a729b74919d00dc1c74ff9a56d6abc90c545614b6af49d449c980f3ec6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\opencode-web.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\opencode-web.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "OpenCode Web: Browser Interface for OpenCode API",
+  "short_description_vi": "OpenCode Web is a browser-based interface for the OpenCode API that lets developers interact with AI coding agents through the web. It streams agent responses in real-time, visualizes tool executions, and provides full OpenCode API access without CLI installation. Built for teams who need browser-accessible AI coding workflows."
+}

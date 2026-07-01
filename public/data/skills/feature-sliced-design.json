@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/feature-sliced-design",
+  "slug": "feature-sliced-design",
+  "name": "Feature-Sliced Design",
+  "headline": "Feature-Sliced Design: Frontend Code Structure",
+  "short_description": "Feature-Sliced Design (FSD) provides a methodology for structuring code in layers based on usage. It's designed for teams to implement a practical structure in their projects, emphasizing simplicity and gradual complexity.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "feature-sliced",
+  "install_command": "git clone https://github.com/feature-sliced/skills",
+  "source_repo_url": "https://github.com/feature-sliced/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "feature",
+    "design",
+    "sliced"
+  ],
+  "sections": {
+    "overview": "Feature-Sliced Design (FSD) v2.1 is an official methodology for structuring frontend projects across six standardized layers: app, pages, widgets, features, entities, and shared. The approach follows a 'start simple, extract when needed' philosophy, allowing teams to begin with minimal layers and add complexity only when code is actively reused across multiple locations. FSD enforces strict import rules—modules may only import from layers below them—preventing circular dependencies and maintaining clear separation of concerns. The skill guides decisions on where code belongs, how to define public APIs, resolve cross-imports, manage static assets, integrate with frameworks like Next.js and Nuxt, and migrate from non-FSD codebases. It's designed for teams building scalable frontend applications who need practical structure without premature abstraction.\nStructuring large-scale applications efficiently.\nMaintaining codebase organization as project grows.\nFacilitating team collaboration with clear boundaries of responsibility.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/feature-sliced/skills --skill feature-sliced-design`\n`git clone https://github.com/feature-sliced/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "feature-sliced-design#main-content",
+      "feature-sliced-design#overview",
+      "feature-sliced-design#setup",
+      "feature-sliced-design#examples",
+      "feature-sliced-design#related",
+      "logo-designer"
+    ],
+    "overview_vi": "Feature-Sliced Design (FSD) v2.1 là phương pháp luận chính thức để cấu trúc các dự án frontend theo 6 lớp tiêu chuẩn: app, pages, widgets, features, entities và shared. Hướng tiếp cận này tuân theo triết lý 'bắt đầu đơn giản, tách nhỏ khi cần', cho phép các đội ngũ bắt đầu với số lượng lớp tối thiểu và chỉ tăng thêm độ phức tạp khi code được tái sử dụng thực tế ở nhiều nơi. FSD áp dụng các quy tắc import nghiêm ngặt—các module chỉ được import từ các lớp bên dưới chúng—giúp ngăn ngừa lỗi phụ thuộc vòng lặp (circular dependencies) và duy trì sự phân tách rõ ràng giữa các thành phần (separation of concerns). Kỹ năng này hướng dẫn bạn cách đưa ra quyết định đặt code ở đâu, định nghĩa public API thế nào, giải quyết import chéo (cross-imports), quản lý tài nguyên tĩnh (static assets), tích hợp với các framework như Next.js hay Nuxt, và chuyển đổi từ các codebase không sử dụng FSD. Đây là giải pháp được thiết kế cho các đội ngũ xây dựng ứng dụng frontend có khả năng mở rộng (scalable), cần một cấu trúc thực tế mà không bị trừu tượng hóa quá sớm.\nCấu trúc hiệu quả các ứng dụng quy mô lớn.\nDuy trì tổ chức của codebase khi dự án phát triển.\nThúc đẩy sự hợp tác trong đội ngũ với ranh giới trách nhiệm rõ ràng.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/feature-sliced/skills --skill feature-sliced-design`\n`git clone https://github.com/feature-sliced/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nVui lòng kiểm tra repository trên GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:08:50.168310Z",
+    "http_status": 200,
+    "content_hash": "6b94e50e6e0c40f9159c2c1274a111c88669cf48d1b09c9d8b54311de3a0f02f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\feature-sliced-design.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\feature-sliced-design.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Feature-Sliced Design: Cấu trúc code Frontend",
+  "short_description_vi": "Feature-Sliced Design (FSD) cung cấp một phương pháp luận để cấu trúc code theo các lớp (layer) dựa trên mục đích sử dụng. Phương pháp này được thiết kế giúp các đội ngũ phát triển áp dụng một cấu trúc thực tế vào dự án, hướng tới sự tối giản và tăng dần độ phức tạp."
+}

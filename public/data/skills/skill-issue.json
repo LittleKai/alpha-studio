@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-issue",
+  "slug": "skill-issue",
+  "name": "browser-use",
+  "headline": "skill-issue - Audit AI Agent Skills",
+  "short_description": "skill-issue audits AI agent skills to identify issues before they impact operations. It benefits operations teams by ensuring AI agents perform optimally. It connects to other AI agent skills and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "krispuckett",
+  "install_command": "git clone https://github.com/krispuckett/skill-issue.git",
+  "source_repo_url": "https://github.com/krispuckett/skill-issue",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "skill-issue is an agent auditing skill that inventories all installed skills, tracks their usage from logs, and checks health by verifying required binaries and environment variables. It scans skill directories for SKILL.md files, analyzes dependencies, and generates a markdown report recommending which skills to keep, review, or remove based on health and activity over a configurable period. The tool runs read-only and never modifies, installs, or removes anything—making it safe for operations teams to use on production skill portfolios. Perfect for DevOps engineers and AI operations managers who need visibility into skill performance and dependency health without manual auditing.\nRemove unused skills cluttering your project after analyzing 7-day usage patterns\nIdentify skills with missing dependencies before they break agent workflows\nTrack which skills are actively used across your agent infrastructure\nAudit environment variables and CLI tool requirements for all skills at once\n**Purpose**: Automates customer support responses in the retail industry\n**Data Used**: Customer inquiries, product databases, order statuses\n**Related Skills**: Order processing, inventory management, customer feedback analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/krispuckett/skill-issue`",
+    "usage": "```\nAudit the following AI agent skill for potential issues. The skill is designed to [DESCRIBE SKILL PURPOSE] in the [INDUSTRY] industry. The skill uses [DATA] and interacts with [RELATED SKILLS]. Identify any potential issues that could impact operations, such as data handling problems, integration issues, or performance bottlenecks.\n```\nCopy\n\n```\n# AI Agent Skill Audit Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-issue#main-content",
+      "skill-issue#overview",
+      "skill-issue#setup",
+      "skill-issue#examples",
+      "skill-issue#tools",
+      "skill-issue#mcp",
+      "skill-issue#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "skill-issue is an agent auditing skill that inventories all installed skills, tracks their usage from logs, and checks health by verifying required binaries and environment variables. It scans skill directories for SKILL.md files, analyzes dependencies, and generates a markdown report recommending which skills to keep, review, or remove based on health and activity over a configurable period. The tool runs read-only and never modifies, installs, or removes anything—making it safe for operations teams to use on production skill portfolios. Perfect for DevOps engineers and AI operations managers who need visibility into skill performance and dependency health without manual auditing.\nRemove unused skills cluttering your project after analyzing 7-day usage patterns\nIdentify skills with missing dependencies before they break agent workflows\nTrack which skills are actively used across your agent infrastructure\nAudit environment variables and CLI tool requirements for all skills at once\n**Purpose**: Automates customer support responses in the retail industry\n**Data Used**: Customer inquiries, product databases, order statuses\n**Related Skills**: Order processing, inventory management, customer feedback analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/krispuckett/skill-issue`",
+    "usage_vi": "```\nAudit the following AI agent skill for potential issues. The skill is designed to [DESCRIBE SKILL PURPOSE] in the [INDUSTRY] industry. The skill uses [DATA] and interacts with [RELATED SKILLS]. Identify any potential issues that could impact operations, such as data handling problems, integration issues, or performance bottlenecks.\n```\nCopy\n\n```\n# AI Agent Skill Audit Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:42:42.482174Z",
+    "http_status": 200,
+    "content_hash": "ed9c82970913e1d47205d435e4786fa323b575a49da88a19fed42ffddfaacd68",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-issue.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-issue.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "skill-issue - Audit AI Agent Skills",
+  "short_description_vi": "skill-issue audits AI agent skills to identify issues before they impact operations. It benefits operations teams by ensuring AI agents perform optimally. It connects to other AI agent skills and workflows."
+}

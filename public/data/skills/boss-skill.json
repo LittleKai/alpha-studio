@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/boss-skill",
+  "slug": "boss-skill",
+  "name": "browser-use",
+  "headline": "boss-skill for automated R&D pipelines",
+  "short_description": "Boss Skill automates the entire research and development pipeline from requirement to deployment. It coordinates multiple AI agents to streamline workflows for operations teams. The skill integrates with Claude Code, Cursor, and Trae to enhance productivity and reduce manual effort.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "echoVic",
+  "install_command": "git clone https://github.com/echoVic/boss-skill.git",
+  "source_repo_url": "https://github.com/echoVic/boss-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "trae",
+    "ai-agents",
+    "bmad-workflow",
+    "bmad",
+    "skill",
+    "cursor"
+  ],
+  "sections": {
+    "overview": "Boss Skill is an AI agent orchestration framework that automates the entire software development lifecycle from initial requirements through deployment. It coordinates nine specialized agents—PM, Architect, UI Designer, Tech Lead, Scrum Master, Frontend, Backend, QA, and DevOps—to streamline feature development for teams. The skill automatically clarifies incomplete requirements, generates design documents and architecture specifications, decomposes tasks, executes development in parallel, runs quality gates, and manages deployment. It produces auditable artifacts stored in a `.boss/` directory with event logs and execution records. Compatible with Claude Code, OpenClaw, Codex, Antigravity, and Hermes, Boss Skill reduces manual coordination overhead and ensures consistent delivery processes for mid-sized API, full-stack, and UI projects.\nAutomating new feature development from requirement to production deployment\nGenerating PRD, architecture, and task breakdown documents automatically\nRunning parallel frontend and backend development with quality gates\nMaintaining auditable artifact trails and execution logs for compliance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/echoVic/boss-skill`",
+    "usage": "```\nAct as a Boss Skill automation orchestrator. Use [COMPANY_NAME]'s [TEAM_NAME] workflow to automate the R&D pipeline for [PROJECT_NAME]. Coordinate between the following AI agents: 1) [AGENT_1_ROLE] for [TASK_1], 2) [AGENT_2_ROLE] for [TASK_2], and 3) [AGENT_3_ROLE] for [TASK_3]. Ensure seamless handoffs between agents and log all actions in [LOGGING_PLATFORM]. Begin with [INITIAL_INPUT].\n```\nCopy\n\n```\n### Boss Skill Automation Report: Project Phoenix\n**Company:** TechNova Solutions | **Team:** Advanced R&D | **Project:** AI-Powered IoT Security Suite\n\n**Agent Coordination Log:**\n1. **Requirements Agent** (Claude Code) parsed the initial brief: 'Develop a lightweight encryption module for IoT devices with <100ms latency.' It identified 3 critical gaps in the spec and flagged them for the Product Manager via Slack integration.\n\n2. **Design Agent** (Cursor) generated 5 architecture diagrams in Mermaid format, selecting the most scalable option (Option C) based on the team's preference for microservices. The agent auto-generated a 12-page technical design doc with section headers matching the company's template.\n\n3. **Development Agent** (Trae) initialized the repo with:\n   - Pre-configured Dockerfile (Alpine-based for minimal footprint)\n   - Rust/Cargo.toml with dependencies: `ring = \"0.16\"`, `tokio = { version = \"1.0\", features = [\"full\"] }`\n   - GitHub Actions workflow for CI/CD (test matrix: Linux/Windows/macOS)\n   - Auto-generated 90% test coverage (fuzz tests included)\n\n**Deployment Agent** (Claude Code) triggered the release pipeline after the QA Agent (Cursor) approved the build. The agent:\n- Tagged the release as `v1.0.0-alpha`\n- Deployed to staging environment via Terraform scripts\n- Sent a summary to the #engineering channel in Discord with:\n  ```\n  🚀 Project Phoenix Alpha Deployed\n  - Build: 342f5a1\n  - Staging URL: https://staging.phoenix.technova.com\n  - Rollback command: `terraform apply -var=\"env=staging\" -var=\"rollback=true\"`\n  ```\n\n**Metrics:**\n- Total automation time: 2 hours 17 minutes (vs. 3.5 days manual)\n- Agent handoffs: 12 (all successful)\n- Manual intervention required: 0\n\n**Next Steps:**\n- The QA Agent has scheduled a 1-hour regression test window for tomorrow at 10 AM.\n- The Product Manager received the requirements gaps report and will prioritize them in the next sprint planning.\n- The Development Agent has paused and is waiting for feedback on the alpha build.\n\n**Recommendation:** Proceed to beta phase if no critical issues are found in staging. The automation pipeline is now ready for continuous deployment triggers.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "boss-skill#main-content",
+      "boss-skill#overview",
+      "boss-skill#setup",
+      "boss-skill#examples",
+      "boss-skill#tools",
+      "boss-skill#mcp",
+      "boss-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Boss Skill is an AI agent orchestration framework that automates the entire software development lifecycle from initial requirements through deployment. It coordinates nine specialized agents—PM, Architect, UI Designer, Tech Lead, Scrum Master, Frontend, Backend, QA, and DevOps—to streamline feature development for teams. The skill automatically clarifies incomplete requirements, generates design documents and architecture specifications, decomposes tasks, executes development in parallel, runs quality gates, and manages deployment. It produces auditable artifacts stored in a `.boss/` directory with event logs and execution records. Compatible with Claude Code, OpenClaw, Codex, Antigravity, and Hermes, Boss Skill reduces manual coordination overhead and ensures consistent delivery processes for mid-sized API, full-stack, and UI projects.\nAutomating new feature development from requirement to production deployment\nGenerating PRD, architecture, and task breakdown documents automatically\nRunning parallel frontend and backend development with quality gates\nMaintaining auditable artifact trails and execution logs for compliance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/echoVic/boss-skill`",
+    "usage_vi": "```\nAct as a Boss Skill automation orchestrator. Use [COMPANY_NAME]'s [TEAM_NAME] workflow to automate the R&D pipeline for [PROJECT_NAME]. Coordinate between the following AI agents: 1) [AGENT_1_ROLE] for [TASK_1], 2) [AGENT_2_ROLE] for [TASK_2], and 3) [AGENT_3_ROLE] for [TASK_3]. Ensure seamless handoffs between agents and log all actions in [LOGGING_PLATFORM]. Begin with [INITIAL_INPUT].\n```\nCopy\n\n```\n### Boss Skill Automation Report: Project Phoenix\n**Company:** TechNova Solutions | **Team:** Advanced R&D | **Project:** AI-Powered IoT Security Suite\n\n**Agent Coordination Log:**\n1. **Requirements Agent** (Claude Code) parsed the initial brief: 'Develop a lightweight encryption module for IoT devices with <100ms latency.' It identified 3 critical gaps in the spec and flagged them for the Product Manager via Slack integration.\n\n2. **Design Agent** (Cursor) generated 5 architecture diagrams in Mermaid format, selecting the most scalable option (Option C) based on the team's preference for microservices. The agent auto-generated a 12-page technical design doc with section headers matching the company's template.\n\n3. **Development Agent** (Trae) initialized the repo with:\n   - Pre-configured Dockerfile (Alpine-based for minimal footprint)\n   - Rust/Cargo.toml with dependencies: `ring = \"0.16\"`, `tokio = { version = \"1.0\", features = [\"full\"] }`\n   - GitHub Actions workflow for CI/CD (test matrix: Linux/Windows/macOS)\n   - Auto-generated 90% test coverage (fuzz tests included)\n\n**Deployment Agent** (Claude Code) triggered the release pipeline after the QA Agent (Cursor) approved the build. The agent:\n- Tagged the release as `v1.0.0-alpha`\n- Deployed to staging environment via Terraform scripts\n- Sent a summary to the #engineering channel in Discord with:\n  ```\n  🚀 Project Phoenix Alpha Deployed\n  - Build: 342f5a1\n  - Staging URL: https://staging.phoenix.technova.com\n  - Rollback command: `terraform apply -var=\"env=staging\" -var=\"rollback=true\"`\n  ```\n\n**Metrics:**\n- Total automation time: 2 hours 17 minutes (vs. 3.5 days manual)\n- Agent handoffs: 12 (all successful)\n- Manual intervention required: 0\n\n**Next Steps:**\n- The QA Agent has scheduled a 1-hour regression test window for tomorrow at 10 AM.\n- The Product Manager received the requirements gaps report and will prioritize them in the next sprint planning.\n- The Development Agent has paused and is waiting for feedback on the alpha build.\n\n**Recommendation:** Proceed to beta phase if no critical issues are found in staging. The automation pipeline is now ready for continuous deployment triggers.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:44:53.751659Z",
+    "http_status": 200,
+    "content_hash": "c5a348bab2ff33e79a5897d85b56f9ea2cec51f4e616394a5fe28afbf5811154",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\boss-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\boss-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "boss-skill for automated R&D pipelines",
+  "short_description_vi": "Boss Skill automates the entire research and development pipeline from requirement to deployment. It coordinates multiple AI agents to streamline workflows for operations teams. The skill integrates with Claude Code, Cursor, and Trae to enhance productivity and reduce manual effort."
+}

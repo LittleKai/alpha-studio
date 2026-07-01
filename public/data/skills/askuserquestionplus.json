@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/askuserquestionplus",
+  "slug": "askuserquestionplus",
+  "name": "browser-use",
+  "headline": "AskUserQuestionPlus: User Interaction",
+  "short_description": "AskUserQuestionPlus is a Streamable HTTP MCP server for asking user questions via a web interface. It benefits operations teams by automating user interactions and integrating with Claude agents. The tool connects to web-based workflows and supports HTML interfaces.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "JoJoJotarou",
+  "install_command": "git clone https://github.com/JoJoJotarou/AskUserQuestionPlus.git",
+  "source_repo_url": "https://github.com/JoJoJotarou/AskUserQuestionPlus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ask-user-questions",
+    "mcp",
+    "codex",
+    "model-context-protocol",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "AskUserQuestionPlus is an innovative Claude Code skill designed to facilitate user interaction through a web interface. This automation tool acts as a Streamable HTTP server, enabling developers to pose questions to users seamlessly. Inspired by the Claude Code AskUserQuestion Tool, it offers an intuitive way to gather user feedback or data, making it an essential asset for any AI-driven project. With an implementation time of just 30 minutes, this skill is accessible for those with intermediate technical expertise. The key benefits of AskUserQuestionPlus lie in its ability to streamline user questioning processes, which can significantly enhance user engagement and data collection efforts. While specific time savings are currently unknown, the efficiency gained by automating user interactions can lead to faster decision-making and improved product iterations. By integrating this skill into your workflow, you can focus on higher-level tasks while the automation handles routine inquiries. This skill is particularly relevant for developers, product managers, and AI practitioners who are involved in user experience design and data collection. It serves as a practical tool for gathering insights during product development or user testing phases. For instance, a product manager could use AskUserQuestionPlus to solicit feedback on a new feature from beta testers, while a developer might implement it to gather user preferences in real-time during a web application session. With its intermediate complexity, AskUserQuestionPlus requires some technical knowledge for setup but is straightforward enough for those familiar with web technologies. It fits perfectly into AI-first workflows by enhancing user interaction capabilities, allowing teams to leverage real-time data for better decision-making. By adopting this skill, organizations can significantly improve their user engagement strategies and create more responsive AI systems.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JoJoJotarou/AskUserQuestionPlus`",
+    "usage": "```\nUse the AskUserQuestionPlus tool to ask a user the following question via a web interface: '[QUESTION]'. Set the response format to '[FORMAT]' (e.g., text, number, date, dropdown with options). Include a brief context or instructions if needed: '[CONTEXT]'. Return the user's response in a structured format for further processing.\n```\nCopy\n\n```\n```json\n{\n  \"user_response\": \"Yes\",\n  \"metadata\": {\n    \"question\": \"Would you like to proceed with the order for Product X?\",\n    \"format\": \"dropdown\",\n    \"options\": [\"Yes\", \"No\", \"Needs clarification\"],\n    \"context\": \"This is required to confirm the order before processing.\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\",\n    \"user_id\": \"user_12345\",\n    \"session_id\": \"session_67890\"\n  }\n}\n```\n\n**How this was generated:**\nThe AskUserQuestionPlus tool was triggered via an HTTP POST request to the MCP server endpoint. The payload included the question, response format (dropdown with predefined options), and contextual instructions. The server rendered a lightweight web interface, prompting the user to select one of the options. The response was captured, timestamped, and returned in JSON format for downstream automation (e.g., order processing or status updates). The tool’s integration with Claude agents allows for seamless handoff of structured data, reducing manual intervention in workflows like order confirmation, approvals, or feedback collection.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "askuserquestionplus#main-content",
+      "askuserquestionplus#overview",
+      "askuserquestionplus#setup",
+      "askuserquestionplus#examples",
+      "askuserquestionplus#tools",
+      "askuserquestionplus#mcp",
+      "askuserquestionplus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AskUserQuestionPlus is an innovative Claude Code skill designed to facilitate user interaction through a web interface. This automation tool acts as a Streamable HTTP server, enabling developers to pose questions to users seamlessly. Inspired by the Claude Code AskUserQuestion Tool, it offers an intuitive way to gather user feedback or data, making it an essential asset for any AI-driven project. With an implementation time of just 30 minutes, this skill is accessible for those with intermediate technical expertise. The key benefits of AskUserQuestionPlus lie in its ability to streamline user questioning processes, which can significantly enhance user engagement and data collection efforts. While specific time savings are currently unknown, the efficiency gained by automating user interactions can lead to faster decision-making and improved product iterations. By integrating this skill into your workflow, you can focus on higher-level tasks while the automation handles routine inquiries. This skill is particularly relevant for developers, product managers, and AI practitioners who are involved in user experience design and data collection. It serves as a practical tool for gathering insights during product development or user testing phases. For instance, a product manager could use AskUserQuestionPlus to solicit feedback on a new feature from beta testers, while a developer might implement it to gather user preferences in real-time during a web application session. With its intermediate complexity, AskUserQuestionPlus requires some technical knowledge for setup but is straightforward enough for those familiar with web technologies. It fits perfectly into AI-first workflows by enhancing user interaction capabilities, allowing teams to leverage real-time data for better decision-making. By adopting this skill, organizations can significantly improve their user engagement strategies and create more responsive AI systems.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JoJoJotarou/AskUserQuestionPlus`",
+    "usage_vi": "```\nUse the AskUserQuestionPlus tool to ask a user the following question via a web interface: '[QUESTION]'. Set the response format to '[FORMAT]' (e.g., text, number, date, dropdown with options). Include a brief context or instructions if needed: '[CONTEXT]'. Return the user's response in a structured format for further processing.\n```\nCopy\n\n```\n```json\n{\n  \"user_response\": \"Yes\",\n  \"metadata\": {\n    \"question\": \"Would you like to proceed with the order for Product X?\",\n    \"format\": \"dropdown\",\n    \"options\": [\"Yes\", \"No\", \"Needs clarification\"],\n    \"context\": \"This is required to confirm the order before processing.\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\",\n    \"user_id\": \"user_12345\",\n    \"session_id\": \"session_67890\"\n  }\n}\n```\n\n**How this was generated:**\nThe AskUserQuestionPlus tool was triggered via an HTTP POST request to the MCP server endpoint. The payload included the question, response format (dropdown with predefined options), and contextual instructions. The server rendered a lightweight web interface, prompting the user to select one of the options. The response was captured, timestamped, and returned in JSON format for downstream automation (e.g., order processing or status updates). The tool’s integration with Claude agents allows for seamless handoff of structured data, reducing manual intervention in workflows like order confirmation, approvals, or feedback collection.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:28:18.067485Z",
+    "http_status": 200,
+    "content_hash": "6cafe94c2fa3589a82bcbf7f3a91b184241575087a9c20b67150d277111e2a9a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\askuserquestionplus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\askuserquestionplus.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AskUserQuestionPlus: User Interaction",
+  "short_description_vi": "AskUserQuestionPlus is a Streamable HTTP MCP server for asking user questions via a web interface. It benefits operations teams by automating user interactions and integrating with Claude agents. The tool connects to web-based workflows and supports HTML interfaces."
+}

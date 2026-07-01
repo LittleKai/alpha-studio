@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/salvo-skills",
+  "slug": "salvo-skills",
+  "name": "Salvo Skills",
+  "headline": "salvo-skills: AI Agent Skills for Salvo Rust",
+  "short_description": "A curated collection of AI agent skills for the Salvo Rust web framework, covering auth, routing, middleware, and more for Claude Code, Cursor, and similar tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "salvo-rs",
+  "install_command": "git clone https://github.com/salvo-rs/salvo-skills.git",
+  "source_repo_url": "https://github.com/salvo-rs/salvo-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "salvo-skills is a repository of 28 structured skill files designed to help AI coding agents like Claude Code and Cursor correctly implement features of the Salvo Rust web framework. Each skill covers a specific capability—such as JWT authentication, CORS, CSRF protection, rate limiting, WebSockets, SSE, TLS/ACME, file handling, compression, and OpenAPI documentation—with examples verified against the actual Salvo API. The skill files have been carefully audited to fix API mismatches and reduce context overhead, making them reliable references for AI-assisted Rust web development. Rust developers and teams using AI agents to scaffold or extend Salvo-based applications benefit from accurate, concise guidance that prevents common mistakes.\nGenerating correct JWT authentication middleware for a Salvo API using Claude Code\nScaffolding rate-limited endpoints with accurate Salvo quota and guard configuration\nSetting up WebSocket or SSE handlers in a Salvo app via an AI coding assistant\nConfiguring TLS with ACME certificate management using verified Salvo API patterns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/salvo-rs/salvo-skills`",
+    "usage": "```\nCreate a salvo skill for an AI agent that automates [SPECIFIC TASK] in [INDUSTRY]. The skill should include [NUMBER] steps, with clear instructions for each. Ensure the skill is compatible with platforms like Claude and GitHub.\n```\nCopy\n\n```\n# Salvo Skill: Automated Social Media Scheduling for Marketing Agencies\n\n**Description**: This salvo skill automates the process of scheduling social media posts for marketing agencies, ensuring consistent brand messaging across platforms.\n\n**Steps**:\n1. **Input Collection**: Gather post content, images, and scheduling times from the user.\n2. **Platform Integration**: Connect to social media APIs (Facebook, Twitter, LinkedIn).\n3. **Post Creation**: Format posts according to each platform's guidelines.\n4. **Scheduling**: Schedule posts at the specified times.\n5. **Confirmation**: Send a confirmation email to the user with scheduled post details.\n\n**Compatibility**: Claude, GitHub\n\n**Usage**: Ideal for marketing teams looking to streamline their social media management process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "salvo-skills#main-content",
+      "salvo-skills#overview",
+      "salvo-skills#setup",
+      "salvo-skills#examples",
+      "salvo-skills#tools",
+      "salvo-skills#mcp",
+      "salvo-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "salvo-skills là một kho lưu trữ (repository) gồm 28 file skill có cấu trúc, được thiết kế để giúp các AI coding agent như Claude Code và Cursor triển khai chính xác các tính năng của web framework Salvo Rust. Mỗi skill bao quát một chức năng cụ thể—như JWT authentication, CORS, CSRF protection, rate limiting, WebSockets, SSE, TLS/ACME, xử lý file, nén dữ liệu và tài liệu OpenAPI—với các ví dụ đã được kiểm chứng thực tế trên Salvo API. Các file skill này đã được kiểm tra kỹ lưỡng nhằm sửa các lỗi không khớp API và giảm thiểu hao phí ngữ cảnh (context overhead), biến chúng thành tài liệu tham khảo đáng tin cậy cho việc phát triển web bằng Rust có sự hỗ trợ của AI. Các lập trình viên Rust và các đội ngũ phát triển sử dụng AI agent để scaffold hoặc mở rộng các ứng dụng Salvo sẽ được hưởng lợi từ những hướng dẫn chính xác, ngắn gọn, giúp ngăn ngừa các sai sót phổ biến.\nTạo chính xác JWT authentication middleware cho Salvo API bằng Claude Code\nScaffold các endpoint được giới hạn tần suất (rate-limited) với cấu hình quota và guard chuẩn xác của Salvo\nThiết lập các WebSocket hoặc SSE handler trong ứng dụng Salvo thông qua trợ lý lập trình AI\nCấu hình TLS với trình quản lý chứng chỉ ACME sử dụng các pattern Salvo API đã được xác thực",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/salvo-rs/salvo-skills`",
+    "usage_vi": "```\nTạo một salvo skill cho AI agent giúp tự động hóa [SPECIFIC TASK] trong [INDUSTRY]. Skill này nên bao gồm [NUMBER] bước, với hướng dẫn rõ ràng cho từng bước. Đảm bảo skill tương thích với các nền tảng như Claude và GitHub.\n```\nCopy\n\n```\n# Salvo Skill: Lên lịch đăng bài mạng xã hội tự động cho các Agency Marketing\n\n**Mô tả**: Salvo skill này tự động hóa quy trình lên lịch đăng bài trên mạng xã hội cho các agency marketing, đảm bảo thông điệp thương hiệu nhất quán trên các nền tảng.\n\n**Các bước**:\n1. **Thu thập dữ liệu đầu vào**: Thu thập nội dung bài viết, hình ảnh và thời gian lên lịch từ người dùng.\n2. **Tích hợp nền tảng**: Kết nối với API của các mạng xã hội (Facebook, Twitter, LinkedIn).\n3. **Tạo bài viết**: Định dạng bài viết theo nguyên tắc của từng nền tảng.\n4. **Lên lịch**: Lên lịch đăng bài vào các thời điểm đã chỉ định.\n5. **Xác nhận**: Gửi email xác nhận cho người dùng kèm thông tin chi tiết về bài viết đã lên lịch.\n\n**Khả năng tương thích**: Claude, GitHub\n\n**Cách dùng**: Lý tưởng cho các đội ngũ marketing muốn tối ưu hóa quy trình quản lý mạng xã hội của họ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:49:47.159135Z",
+    "http_status": 200,
+    "content_hash": "642b8fb9eb94fa534ba40c900c5637116d5ac57a390e6d5a1950eeff2bad4989",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\salvo-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\salvo-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "salvo-skills: AI Agent Skills dành cho Salvo Rust",
+  "short_description_vi": "Bộ sưu tập chọn lọc các AI agent skills dành cho web framework Salvo Rust, hỗ trợ auth, routing, middleware và nhiều tính năng khác cho Claude Code, Cursor cùng các công cụ tương tự."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-max",
+  "slug": "ai-max",
+  "name": "Ai Max",
+  "headline": "ai-max: Comprehensive Claude Code Repository",
+  "short_description": "AI MAX is a production-ready repository of agents, skills, hooks, commands, rules, and MCP configurations for Claude Code. It enables operations teams to quickly enhance their AI workflows with pre-built, ready-to-use components. The repository connects to Claude Code, streamlining automation tasks and improving operational efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "zhukunpenglinyutong",
+  "install_command": "git clone https://github.com/zhukunpenglinyutong/ai-max.git",
+  "source_repo_url": "https://github.com/zhukunpenglinyutong/ai-max",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "AI MAX is a comprehensive repository designed to enhance Claude Code with production-ready agents, skills, hooks, commands, rules, and MCP configurations. It provides operations teams and developers with pre-built, ready-to-use components accessible via slash commands like /aimax:plan, /aimax:tdd, /aimax:code-review, and /aimax:auto. The repository includes specialized sub-agents for planning, architecture, test-driven development, code review, and security analysis, along with workflow definitions covering TDD methodology, security reviews, coding standards, and backend/frontend patterns. Installation via npm (npm install -g aimax) enables one-command setup with an interactive CLI for selecting components, streamlining automation tasks and improving operational efficiency without manual configuration.\nAutomating test-driven development workflows with /aimax:tdd\nGenerating implementation plans and architecture decisions with /aimax:plan\nPerforming comprehensive code reviews for quality and security with /aimax:code-review\nCreating end-to-end tests using Playwright with /aimax:e2e",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zhukunpenglinyutong/ai-max`",
+    "usage": "```\nUse the AI MAX repository to [TASK] in Claude Code. For example: 'Deploy the AI MAX MCP server to monitor [SYSTEM_NAME] and alert on [CRITICAL_METRICS].' or 'Configure the AI MAX command hook to auto-generate a weekly report from [DATA_SOURCE] and save it to [OUTPUT_PATH].'\n```\nCopy\n\n```\n```\n# AI MAX MCP Server Deployment Report\n**System Monitored:** Production Database Cluster (PostgreSQL 15)\n**Critical Metrics Tracked:** CPU Usage > 85%, Memory > 90%, Disk I/O > 1000 ops/sec\n**Alerts Triggered:** 3 (High CPU on Node-3, Memory Spike on Node-1, Disk I/O on Node-2)",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-max#main-content",
+      "ai-max#overview",
+      "ai-max#setup",
+      "ai-max#examples",
+      "ai-max#tools",
+      "ai-max#mcp",
+      "ai-max#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI MAX là một kho lưu trữ toàn diện được thiết kế để nâng cấp Claude Code với các agent, skill, hook, command, rule và cấu hình MCP sẵn sàng cho production. Nó cung cấp cho các đội ngũ vận hành và lập trình viên các thành phần xây dựng sẵn, có thể sử dụng ngay thông qua các slash command như /aimax:plan, /aimax:tdd, /aimax:code-review và /aimax:auto. Kho lưu trữ này bao gồm các sub-agent chuyên dụng cho việc lập kế hoạch, thiết kế kiến trúc, phát triển hướng kiểm thử (TDD), review code và phân tích bảo mật, cùng với các định nghĩa workflow bao gồm phương pháp TDD, đánh giá bảo mật, tiêu chuẩn viết code và các pattern backend/frontend. Việc cài đặt qua npm (npm install -g aimax) cho phép setup chỉ bằng một câu lệnh thông qua một CLI tương tác để lựa chọn thành phần, giúp tối giản hóa các tác vụ tự động hóa và nâng cao hiệu quả vận hành mà không cần cấu hình thủ công.\n\nTự động hóa quy trình phát triển hướng kiểm thử (TDD) với /aimax:tdd\nTạo kế hoạch triển khai và quyết định kiến trúc với /aimax:plan\nTiến hành review code toàn diện để đảm bảo chất lượng và bảo mật với /aimax:code-review\nTạo các kiểm thử end-to-end sử dụng Playwright với /aimax:e2e",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/zhukunpenglinyutong/ai-max`",
+    "usage_vi": "```\nSử dụng kho lưu trữ AI MAX để [TASK] trong Claude Code. Ví dụ: 'Triển khai MCP server của AI MAX để giám sát [TÊN_HỆ_THỐNG] và cảnh báo về [CHỈ_SỐ_QUAN_TRỌNG].' hoặc 'Cấu hình command hook của AI MAX để tự động tạo báo cáo hàng tuần từ [NGUỒN_DỮ_LIỆU] và lưu vào [ĐƯỜNG_DẪN_KẾT_QUẢ].'\n```\nCopy\n\n```\n```\n# Báo cáo triển khai AI MAX MCP Server\n**Hệ thống được giám sát:** Cụm cơ sở dữ liệu Production (PostgreSQL 15)\n**Các chỉ số quan trọng được theo dõi:** Mức sử dụng CPU > 85%, Bộ nhớ > 90%, Disk I/O > 1000 ops/giây\n**Cảnh báo đã kích hoạt:** 3 (CPU cao trên Node-3, Bộ nhớ tăng đột biến trên Node-1, Disk I/O trên Node-2)"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:19:27.987816Z",
+    "http_status": 200,
+    "content_hash": "4a03edb45afc712dd1c4711c75f49d8cec1ff0c79e8bf7a30e2994f49dade5cd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-max.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-max.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ai-max: Kho lưu trữ toàn diện dành cho Claude Code",
+  "short_description_vi": "AI MAX là một kho lưu trữ sẵn sàng cho production chứa các agent, skill, hook, command, rule và cấu hình MCP dành cho Claude Code. Nó giúp các đội ngũ vận hành nhanh chóng tối ưu hóa quy trình làm việc AI bằng các thành phần xây dựng sẵn, có thể sử dụng ngay. Kho lưu trữ này kết nối trực tiếp với Claude Code, giúp đơn giản hóa các tác vụ tự động hóa và nâng cao hiệu suất vận hành."
+}

@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/repomix",
+  "slug": "repomix",
+  "name": "browser-use",
+  "headline": "Repomix - Pack Repositories for AI Tools",
+  "short_description": "Repomix is a powerful tool that packs your entire repository into a single, AI-friendly file. Perfect for when you need to feed your codebase to Large Language Models (LLMs) or other AI tools like Claude, ChatGPT, DeepSeek, Perplexity, Gemini, Gemma, Llama, Grok, and more.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "yamadashy",
+  "install_command": "git clone https://github.com/yamadashy/repomix.git",
+  "source_repo_url": "https://github.com/yamadashy/repomix",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "artificial-intelligence",
+    "typescript",
+    "gemini",
+    "chatbot",
+    "developer-tools",
+    "javascript",
+    "anthropic",
+    "language-model",
+    "genai",
+    "deepseek",
+    "generative-ai",
+    "claude",
+    "openai",
+    "mcp",
+    "ai",
+    "gpt",
+    "llm",
+    "nodejs",
+    "chatgpt",
+    "llama"
+  ],
+  "sections": {
+    "overview": "Repomix consolidates your entire codebase into a single formatted file designed for consumption by large language models and AI tools. It streamlines the process of feeding complete repository context to Claude, ChatGPT, DeepSeek, Perplexity, Gemini, Gemma, Llama, Grok, and other AI platforms. This eliminates manual file selection and formatting when sharing code with AI agents or using AI-assisted development workflows. The tool is particularly useful for code analysis, documentation generation, and collaborative development where AI needs complete project context. By converting complex repository structures into a single optimized file, it maximizes token efficiency and improves AI understanding of your codebase.\nQuickly package your entire codebase for AI analysis and suggestions.\nGenerate an AI-friendly file to assist in code refactoring tasks.\nUse token counting to ensure your code fits within LLM context limits.\nEasily exclude sensitive files from AI processing using .gitignore.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yamadashy/repomix`",
+    "usage": "```\nPlease analyze the [REPO_NAME] codebase contained in this file. Identify the top 3 technical debt items that should be addressed first based on [CRITERIA]. For each item, provide a detailed explanation of the issue, its potential impact, and suggest specific refactoring steps.\n```\nCopy\n\n```\nAfter analyzing the 'E-Commerce Platform' codebase, here are the top 3 technical debt items identified:\n\n1. **Legacy Payment Processing Module**: This module uses outdated encryption standards (AES-128) which is no longer considered secure. The impact is significant as it handles sensitive customer payment data. Recommended refactoring steps include:\n   - Migrate to AES-256 encryption\n   - Implement PCI-DSS compliant tokenization\n   - Add HSTS headers for all payment-related endpoints\n   - Schedule regular security audits\n\n2. **Monolithic Database Schema**: The current schema has grown organically over 5 years and now contains over 300 tables with complex interdependencies. This makes maintenance and scaling increasingly difficult. Recommended refactoring steps include:\n   - Implement database partitioning for high-traffic tables\n   - Create a data access layer to abstract schema complexity\n   - Begin planning for microservices architecture migration\n   - Document all table relationships and dependencies\n\n3. **Inconsistent Error Handling**: The application exhibits inconsistent error handling patterns across different modules, leading to poor user experience and potential security vulnerabilities. Recommended refactoring steps include:\n   - Implement a centralized error handling framework\n   - Standardize error codes and messages\n   - Add comprehensive error logging with correlation IDs\n   - Create user-friendly error pages for client-side errors\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "repomix#main-content",
+      "repomix#overview",
+      "repomix#setup",
+      "repomix#examples",
+      "repomix#tools",
+      "repomix#mcp",
+      "repomix#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Repomix consolidates your entire codebase into a single formatted file designed for consumption by large language models and AI tools. It streamlines the process of feeding complete repository context to Claude, ChatGPT, DeepSeek, Perplexity, Gemini, Gemma, Llama, Grok, and other AI platforms. This eliminates manual file selection and formatting when sharing code with AI agents or using AI-assisted development workflows. The tool is particularly useful for code analysis, documentation generation, and collaborative development where AI needs complete project context. By converting complex repository structures into a single optimized file, it maximizes token efficiency and improves AI understanding of your codebase.\nQuickly package your entire codebase for AI analysis and suggestions.\nGenerate an AI-friendly file to assist in code refactoring tasks.\nUse token counting to ensure your code fits within LLM context limits.\nEasily exclude sensitive files from AI processing using .gitignore.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yamadashy/repomix`",
+    "usage_vi": "```\nPlease analyze the [REPO_NAME] codebase contained in this file. Identify the top 3 technical debt items that should be addressed first based on [CRITERIA]. For each item, provide a detailed explanation of the issue, its potential impact, and suggest specific refactoring steps.\n```\nCopy\n\n```\nAfter analyzing the 'E-Commerce Platform' codebase, here are the top 3 technical debt items identified:\n\n1. **Legacy Payment Processing Module**: This module uses outdated encryption standards (AES-128) which is no longer considered secure. The impact is significant as it handles sensitive customer payment data. Recommended refactoring steps include:\n   - Migrate to AES-256 encryption\n   - Implement PCI-DSS compliant tokenization\n   - Add HSTS headers for all payment-related endpoints\n   - Schedule regular security audits\n\n2. **Monolithic Database Schema**: The current schema has grown organically over 5 years and now contains over 300 tables with complex interdependencies. This makes maintenance and scaling increasingly difficult. Recommended refactoring steps include:\n   - Implement database partitioning for high-traffic tables\n   - Create a data access layer to abstract schema complexity\n   - Begin planning for microservices architecture migration\n   - Document all table relationships and dependencies\n\n3. **Inconsistent Error Handling**: The application exhibits inconsistent error handling patterns across different modules, leading to poor user experience and potential security vulnerabilities. Recommended refactoring steps include:\n   - Implement a centralized error handling framework\n   - Standardize error codes and messages\n   - Add comprehensive error logging with correlation IDs\n   - Create user-friendly error pages for client-side errors\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:57:39.273557Z",
+    "http_status": 200,
+    "content_hash": "c31036db54110a363bb1ac7dbb1f3c535d0a346b61071eb6e0bfc8180414b009",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\repomix.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\repomix.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Repomix - Pack Repositories for AI Tools",
+  "short_description_vi": "Repomix is a powerful tool that packs your entire repository into a single, AI-friendly file. Perfect for when you need to feed your codebase to Large Language Models (LLMs) or other AI tools like Claude, ChatGPT, DeepSeek, Perplexity, Gemini, Gemma, Llama, Grok, and more."
+}

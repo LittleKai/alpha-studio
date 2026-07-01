@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/theagenticbrowser",
+  "slug": "theagenticbrowser",
+  "name": "TheAgenticBrowser",
+  "headline": "TheAgenticBrowser: Open-Source Web Automation Tool",
+  "short_description": "TheAgenticBrowser is an open-source AI agent designed for efficient web automation and data scraping. Built in Python, it helps users to streamline their data collection processes with ease and flexibility.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "TheAgenticAI",
+  "install_command": "claude install TheAgenticAI/TheAgenticBrowser",
+  "source_repo_url": "https://github.com/TheAgenticAI/TheAgenticBrowser",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "AI agent",
+    "data scraping",
+    "open-source",
+    "Python",
+    "web automation"
+  ],
+  "sections": {
+    "overview": "Agentic Browser is an open-source Python system that automates browser interactions through a coordinated multi-agent architecture. Three specialized agents—Planner, Browser, and Critique—work together in a feedback loop to execute complex web tasks from natural language requests. The system handles web research, data extraction from e-commerce sites, form filling, and cross-domain navigation with context awareness. Built on the PydanticAI framework, it enables developers to streamline web automation by breaking tasks into executable steps, performing precise browser actions, and verifying results automatically. This approach solves repetitive web scraping and data collection challenges while maintaining accuracy through continuous evaluation and plan refinement.\nAutomate the extraction of product prices and specifications from multiple e-commerce websites for market analysis.\nCollect competitive intelligence by scraping data from competitor websites to inform business strategies.\nGather leads from online directories by automating the search and extraction of contact information.\nMonitor price changes on e-commerce sites to track market trends and adjust pricing strategies accordingly.",
+    "setup": "Terminal\nCopy\n`claude install TheAgenticAI/TheAgenticBrowser`\n`git clone https://github.com/TheAgenticAI/TheAgenticBrowser`",
+    "usage": "```\nUse TheAgenticBrowser to scrape [TARGET_WEBSITE_URL] and extract all product listings, including [PRODUCT_NAME], [PRICE], [AVAILABILITY], and [PRODUCT_URL]. Save the results in a structured format (CSV/JSON) for further analysis. If pagination is required, navigate through all pages automatically. Use headless mode for efficiency.\n```\nCopy\n\n```\n```json\n[\n  {\n    \"product_name\": \"Wireless Bluetooth Headphones\",\n    \"price\": \"$59.99\",\n    \"availability\": \"In Stock\",\n    \"product_url\": \"https://example.com/products/wireless-headphones\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Smartphone Case - Black\",\n    \"price\": \"$24.95\",\n    \"availability\": \"Out of Stock\",\n    \"product_url\": \"https://example.com/products/smartphone-case-black\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Laptop Stand - Adjustable\",\n    \"price\": \"$45.00\",\n    \"availability\": \"In Stock\",\n    \"product_url\": \"https://example.com/products/laptop-stand\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Mechanical Keyboard - RGB\",\n    \"price\": \"$89.99\",\n    \"availability\": \"In Stock\",\n    \"product_url\": \"https://example.com/products/mechanical-keyboard\",\n    \"timestamp\": \"https://example.com/products/mechanical-keyboard\"\n  }\n]\n```\n\n### Summary of Scraped Data\nTheAgenticBrowser successfully scraped 4 product listings from the target website. The data includes real-time pricing, availability status, and direct links to each product page. Notably, one item (Smartphone Case - Black) is currently out of stock, while the remaining three products are available for purchase. The structured output is ready for integration into a product comparison tool or inventory management system. For pagination-heavy sites, TheAgenticBrowser would automatically navigate through all pages, ensuring no data is missed. The headless mode ensures the process runs efficiently without consuming unnecessary browser resources.\n\n### Next Steps\n1. **Data Validation**: Cross-check the scraped data with the website to ensure accuracy, especially for dynamic content like prices or availability.\n2. **Integration**: Import the JSON/CSV file into a database or analytics tool (e.g., Google Sheets, Airtable, or a custom dashboard) for further processing.\n3. **Automation**: Schedule periodic scrapes (e.g., daily or weekly) to keep the dataset updated using a cron job or task scheduler.\n4. **Error Handling**: Configure TheAgenticBrowser to retry failed requests or log errors for troubleshooting.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "theagenticbrowser#main-content",
+      "theagenticbrowser#overview",
+      "theagenticbrowser#setup",
+      "theagenticbrowser#examples",
+      "theagenticbrowser#tools",
+      "theagenticbrowser#mcp",
+      "theagenticbrowser#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Agentic Browser is an open-source Python system that automates browser interactions through a coordinated multi-agent architecture. Three specialized agents—Planner, Browser, and Critique—work together in a feedback loop to execute complex web tasks from natural language requests. The system handles web research, data extraction from e-commerce sites, form filling, and cross-domain navigation with context awareness. Built on the PydanticAI framework, it enables developers to streamline web automation by breaking tasks into executable steps, performing precise browser actions, and verifying results automatically. This approach solves repetitive web scraping and data collection challenges while maintaining accuracy through continuous evaluation and plan refinement.\nAutomate the extraction of product prices and specifications from multiple e-commerce websites for market analysis.\nCollect competitive intelligence by scraping data from competitor websites to inform business strategies.\nGather leads from online directories by automating the search and extraction of contact information.\nMonitor price changes on e-commerce sites to track market trends and adjust pricing strategies accordingly.",
+    "setup_vi": "Terminal\nCopy\n`claude install TheAgenticAI/TheAgenticBrowser`\n`git clone https://github.com/TheAgenticAI/TheAgenticBrowser`",
+    "usage_vi": "```\nUse TheAgenticBrowser to scrape [TARGET_WEBSITE_URL] and extract all product listings, including [PRODUCT_NAME], [PRICE], [AVAILABILITY], and [PRODUCT_URL]. Save the results in a structured format (CSV/JSON) for further analysis. If pagination is required, navigate through all pages automatically. Use headless mode for efficiency.\n```\nCopy\n\n```\n```json\n[\n  {\n    \"product_name\": \"Wireless Bluetooth Headphones\",\n    \"price\": \"$59.99\",\n    \"availability\": \"In Stock\",\n    \"product_url\": \"https://example.com/products/wireless-headphones\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Smartphone Case - Black\",\n    \"price\": \"$24.95\",\n    \"availability\": \"Out of Stock\",\n    \"product_url\": \"https://example.com/products/smartphone-case-black\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Laptop Stand - Adjustable\",\n    \"price\": \"$45.00\",\n    \"availability\": \"In Stock\",\n    \"product_url\": \"https://example.com/products/laptop-stand\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Mechanical Keyboard - RGB\",\n    \"price\": \"$89.99\",\n    \"availability\": \"In Stock\",\n    \"product_url\": \"https://example.com/products/mechanical-keyboard\",\n    \"timestamp\": \"https://example.com/products/mechanical-keyboard\"\n  }\n]\n```\n\n### Summary of Scraped Data\nTheAgenticBrowser successfully scraped 4 product listings from the target website. The data includes real-time pricing, availability status, and direct links to each product page. Notably, one item (Smartphone Case - Black) is currently out of stock, while the remaining three products are available for purchase. The structured output is ready for integration into a product comparison tool or inventory management system. For pagination-heavy sites, TheAgenticBrowser would automatically navigate through all pages, ensuring no data is missed. The headless mode ensures the process runs efficiently without consuming unnecessary browser resources.\n\n### Next Steps\n1. **Data Validation**: Cross-check the scraped data with the website to ensure accuracy, especially for dynamic content like prices or availability.\n2. **Integration**: Import the JSON/CSV file into a database or analytics tool (e.g., Google Sheets, Airtable, or a custom dashboard) for further processing.\n3. **Automation**: Schedule periodic scrapes (e.g., daily or weekly) to keep the dataset updated using a cron job or task scheduler.\n4. **Error Handling**: Configure TheAgenticBrowser to retry failed requests or log errors for troubleshooting.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:45:55.590846Z",
+    "http_status": 200,
+    "content_hash": "db73a579a090fb03962ea3c80a2965371f7fc67e9e7d69681cf9ee1c4067551e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\theagenticbrowser.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\theagenticbrowser.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TheAgenticBrowser: Open-Source Web Automation Tool",
+  "short_description_vi": "TheAgenticBrowser is an open-source AI agent designed for efficient web automation and data scraping. Built in Python, it helps users to streamline their data collection processes with ease and flexibility."
+}

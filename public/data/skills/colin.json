@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/colin",
+  "slug": "colin",
+  "name": "Colin",
+  "headline": "Colin - Context Engine for Agent Skills",
+  "short_description": "Colin is a context engine that keeps agent skills fresh by referencing live sources like GitHub, Linear, Notion, and HTTP endpoints. It benefits operations teams by automating skill updates and ensuring agents have the most current information. Colin integrates with Python-based workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "PrefectHQ",
+  "install_command": "git clone https://github.com/PrefectHQ/colin.git",
+  "source_repo_url": "https://github.com/PrefectHQ/colin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "agent-skills",
+    "skills",
+    "context",
+    "claude",
+    "claude-skills",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "Colin is a context engine designed to keep AI agent skills current by pulling live data from sources like GitHub, Linear, Notion, and HTTP endpoints. It uses template-based skill definitions with automatic dependency tracking and caching, so only stale content gets recompiled—saving compute resources and ensuring agents always have the latest information. Colin integrates directly with Claude Code, writing compiled skills to the skills folder for immediate availability. The engine tracks source versions and LLM call results separately, intelligently reusing cached outputs when source data hasn't changed. Operations teams benefit by automating the labor-intensive task of keeping agent knowledge synchronized with live systems.\nMaintain real-time team status dashboards by syncing Linear issues and GitHub commits into agent skills\nAutomatically extract and compile blockers and priorities from weekly notes using LLM processing\nKeep knowledge bases fresh without manual updates by referencing live Notion documents\nBuild time-sensitive skills with configurable cache expiration to ensure currency",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PrefectHQ/colin`",
+    "usage": "```\nUse Colin to fetch the latest updates from [SOURCE_TYPE: GitHub/Linear/Notion/HTTP_ENDPOINT] for [REPOSITORY/PROJECT/DOCUMENT/URL]. Extract key changes, new issues, or recent updates and summarize them in bullet points. Focus on [SPECIFIC_FOCUS: bugs, new features, documentation changes, etc.]. Provide a brief analysis of how these updates might impact [RELATED_TASK/PROJECT].\n```\nCopy\n\n```\nHere’s the latest update from the **Acme Corp Engineering** GitHub repository (as of 2024-05-20):\n\n**Recent Changes:**\n- **Bug Fixes:** Resolved a critical memory leak in the `data_processor.py` module (PR #456, merged 2024-05-19). The issue was causing crashes in high-volume data pipelines.\n- **New Features:** Added a `real_time_monitoring` flag to the `api_client.py` class (PR #457, merged 2024-05-18). This enables real-time error tracking for the `/v2/analytics` endpoint.\n- **Documentation:** Updated the `README.md` to include setup instructions for the new `docker-compose.yml` file (PR #455, merged 2024-05-17).\n\n**Impact on Current Project:**\nThe memory leak fix is critical for the upcoming Q2 data migration. The `real_time_monitoring` feature could reduce debugging time by 30% for the analytics team. The documentation update ensures new team members can onboard faster.\n\n**Next Steps:**\n- Test the `data_processor.py` fix in the staging environment.\n- Explore integrating the `real_time_monitoring` flag into the existing logging system.\n- Update internal wikis to reflect the new Docker setup instructions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "colin#main-content",
+      "colin#overview",
+      "colin#setup",
+      "colin#examples",
+      "colin#tools",
+      "colin#mcp",
+      "colin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Colin là một context engine được thiết kế để giữ cho các skill của AI agent luôn cập nhật bằng cách truy xuất dữ liệu trực tiếp từ các nguồn như GitHub, Linear, Notion và các HTTP endpoint. Công cụ này sử dụng các định nghĩa skill dựa trên template với tính năng tự động theo dõi dependency và caching, nhờ đó chỉ những nội dung đã cũ (stale) mới được biên dịch lại (recompile) — giúp tiết kiệm tài nguyên tính toán và đảm bảo agent luôn có thông tin mới nhất. Colin tích hợp trực tiếp với Claude Code, ghi các skill đã biên dịch vào thư mục skills để có thể sử dụng ngay lập tức. Engine này theo dõi các phiên bản nguồn (source versions) và kết quả gọi LLM một cách riêng biệt, tự động tái sử dụng các kết quả đã cache một cách thông minh khi dữ liệu nguồn không thay đổi. Các operations team sẽ được hưởng lợi nhờ việc tự động hóa tác vụ thủ công tốn sức trong việc đồng bộ hóa kiến thức của agent với các hệ thống thực tế.\n\nDuy trì các dashboard trạng thái của đội ngũ theo thời gian thực bằng cách đồng bộ hóa issue trên Linear và commit trên GitHub vào các skill của agent\nTự động trích xuất và biên dịch các blocker cũng như mức độ ưu tiên từ ghi chú hàng tuần bằng cách xử lý LLM\nGiữ cho các cơ sở tri thức luôn mới mà không cần cập nhật thủ công bằng cách tham chiếu đến các tài liệu Notion trực tiếp\nXây dựng các skill có tính nhạy cảm về thời gian với cấu hình hết hạn cache (cache expiration) để đảm bảo tính cập nhật",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/PrefectHQ/colin`",
+    "usage_vi": "```\nSử dụng Colin để lấy các bản cập nhật mới nhất từ [SOURCE_TYPE: GitHub/Linear/Notion/HTTP_ENDPOINT] cho [REPOSITORY/PROJECT/DOCUMENT/URL]. Trích xuất các thay đổi chính, các issue mới hoặc các cập nhật gần đây và tóm tắt chúng dưới dạng gạch đầu dòng. Tập trung vào [SPECIFIC_FOCUS: bugs, new features, documentation changes, v.v.]. Cung cấp một phân tích ngắn gọn về việc các cập nhật này có thể ảnh hưởng thế nào đến [RELATED_TASK/PROJECT].\n```\nCopy\n\n```\nDưới đây là cập nhật mới nhất từ repository GitHub của **Acme Corp Engineering** (tính đến ngày 20-05-2024):\n\n**Thay đổi gần đây:**\n- **Sửa lỗi (Bug Fixes):** Khắc phục lỗi rò rỉ bộ nhớ (memory leak) nghiêm trọng trong module `data_processor.py` (PR #456, đã merge ngày 19-05-2024). Lỗi này từng gây crash trong các data pipeline dung lượng lớn.\n- **Tính năng mới (New Features):** Thêm flag `real_time_monitoring` vào class `api_client.py` (PR #457, đã merge ngày 18-05-2024). Tính năng này cho phép theo dõi lỗi theo thời gian thực cho endpoint `/v2/analytics`.\n- **Tài liệu (Documentation):** Cập nhật `README.md` để bổ sung hướng dẫn setup cho file `docker-compose.yml` mới (PR #455, đã merge ngày 17-05-2024).\n\n**Tác động đến dự án hiện tại:**\nViệc sửa lỗi rò rỉ bộ nhớ là rất quan trọng cho đợt migration dữ liệu Q2 sắp tới. Tính năng `real_time_monitoring` có thể giúp đội ngũ analytics giảm 30% thời gian debugging. Cập nhật tài liệu giúp các thành viên mới của đội ngũ onboard nhanh hơn.\n\n**Các bước tiếp theo:**\n- Test bản sửa lỗi `data_processor.py` trên môi trường staging.\n- Tìm hiểu việc tích hợp flag `real_time_monitoring` vào hệ thống logging hiện có.\n- Cập nhật wiki nội bộ để phản ánh hướng dẫn setup Docker mới.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:40.273636Z",
+    "http_status": 200,
+    "content_hash": "d0be7d24a946429601b73d4c075bbc1dd046cac67e8e0a614a64eee641ee8328",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\colin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\colin.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Colin - Context Engine cho Agent Skills",
+  "short_description_vi": "Colin là một context engine giúp duy trì tính cập nhật cho các skill của agent bằng cách tham chiếu đến các nguồn dữ liệu trực tiếp như GitHub, Linear, Notion và các HTTP endpoint. Công cụ này hỗ trợ đắc lực cho các operations team bằng cách tự động hóa việc cập nhật skill và đảm bảo agent luôn có thông tin mới nhất. Colin tích hợp với các workflow chạy trên Python và hỗ trợ các Claude agent."
+}

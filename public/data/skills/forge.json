@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/forge",
+  "slug": "forge",
+  "name": "Forge",
+  "headline": "Forge - AI Agent Orchestration for Coding",
+  "short_description": "The Vibe Coding++™ platform enables orchestration of multiple AI agents for collaborative coding. Developers can experiment with isolated attempts and ship code they understand. It features multi-agent kanban with MCP integration, streamlining project management and task automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "automagik-dev",
+  "install_command": "git clone https://github.com/automagik-dev/forge.git",
+  "source_repo_url": "https://github.com/automagik-dev/forge",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automagik",
+    "multi-agent",
+    "typescript",
+    "kanban",
+    "developer-tools",
+    "hacktoberfest",
+    "coding-agents",
+    "agents",
+    "mcp",
+    "task-management",
+    "project-management",
+    "open-source",
+    "git-worktree",
+    "ai-coding",
+    "rust",
+    "cursor",
+    "vibe-coding",
+    "gemini",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Forge is a vibe coding++ platform that bridges the gap between human control and AI execution. It provides a persistent kanban board where you plan tasks, assign them to different AI providers and specialized agents, and execute them in parallel using isolated Git worktrees. Instead of losing work in chat history, Forge keeps all tasks organized and visible, allowing you to try different providers or agents on the same task, compare results, and review changes before merging. The platform supports 8+ AI providers including Claude, Cursor, and Gemini, with custom agent specialization for test-writing, security audits, refactoring, and more. Developers gain 10x productivity through simultaneous task execution while maintaining complete visibility and understanding of what ships.\nRunning multiple coding tasks in parallel with different AI agents while maintaining isolation\nExperimenting with different AI providers on the same task to find optimal results\nManaging long-term development work in a persistent kanban instead of scattered chat history\nReviewing and comparing AI-generated code attempts before merging to production",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/automagik-dev/forge`",
+    "usage": "```\nUse the Vibe Coding++™ platform to [TASK] with multi-agent collaboration. Set up a kanban board in the platform with [AGENTS] assigned to [STAGES]. Integrate with [MCP_TOOLS] for automation where needed. Document the process in [FORMAT] for review. Example: 'Refactor the legacy authentication system in the e-commerce app, assigning the security agent to validate changes and the testing agent to automate regression tests, then export the kanban board as a markdown table.'\n```\nCopy\n\n```\n### Multi-Agent Collaboration Report: Legacy Authentication System Refactor\n\n**Project Overview:**\nThe team used Vibe Coding++™ to refactor a monolithic authentication system in an e-commerce app (12,000+ daily users) over a 3-week sprint. The goal was to modularize the codebase, improve security, and automate testing while maintaining 100% uptime during the transition.\n\n**Kanban Board (Multi-Agent Workflow):**\n| Stage               | Agent Role               | Assigned Agent       | Status       | Outputs                                                                 |\n|---------------------|--------------------------|----------------------|--------------|-------------------------------------------------------------------------|\n| **Backlog**         | Requirements Analysis    | Product Owner Agent  | Completed    | 15 user stories prioritized; 3 critical security gaps identified        |\n| **Design**          | Architecture Planning    | System Design Agent  | Completed    | Modular auth service blueprint (5 microservices); threat model updated   |\n| **Implementation**  | Code Refactoring         | Senior Dev Agent     | In Progress  | 80% of legacy auth logic migrated to new `auth-service` (4500 LOC)      |\n| **Security Review** | Penetration Testing      | Security Agent       | Completed    | 12 vulnerabilities patched (CVSS scores reduced from 7.8 to 3.2 avg)     |\n| **Testing**         | Automated Regression     | QA Agent             | In Progress  | 234/250 test cases passing; 16 new edge cases added                      |\n| **Deployment**      | CI/CD Pipeline           | DevOps Agent         | Pending      | Blue-green deployment strategy configured; rollback plan documented     |\n\n**Key Achievements:**\n1. **Security:** Reduced attack surface by 65% through modularization and input validation.\n2. **Performance:** Authentication latency dropped from 420ms to 180ms (57% improvement).\n3. **Automation:** 92% of regression tests now run in CI/CD via the QA Agent’s MCP-integrated scripts.\n4. **Documentation:** Auto-generated API docs and threat model exported to Confluence.\n\n**Challenges & Mitigations:**\n- **Challenge:** Legacy session management broke during migration.\n  **Solution:** Implemented a dual-write pattern with temporary backward compatibility.\n- **Challenge:** Security Agent flagged a race condition in token refresh logic.\n  **Solution:** Added distributed locking via Redis; tests now run in parallel safely.\n\n**Next Steps:**\n- Complete testing and deploy `auth-service-v2` to staging.\n- Monitor error rates and performance for 48 hours post-deployment.\n- Schedule a retrospective with the Product Owner Agent to refine the workflow.\n\n**Metrics Dashboard (MCP-Integrated):**\n- Code Coverage: 94% (target: 90%)\n- Security Score: 9.2/10 (target: 8.5/10)\n- Deployment Frequency: 3x/week (target: 2x/week)\n- Mean Time to Recovery (MTTR): 12 minutes (target: 30 minutes)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "forge#main-content",
+      "forge#overview",
+      "forge#setup",
+      "forge#examples",
+      "forge#tools",
+      "forge#mcp",
+      "forge#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Forge là nền tảng vibe coding++ giúp thu hẹp khoảng cách giữa sự kiểm soát của con người và khả năng thực thi của AI. Hệ thống cung cấp một bảng kanban lưu trữ lâu dài để bạn lập kế hoạch, phân công tác vụ cho các nhà cung cấp AI và agent chuyên biệt khác nhau, rồi thực thi song song bằng các Git worktree độc lập. Thay vì để thất lạc tiến độ trong lịch sử chat, Forge giúp sắp xếp và hiển thị trực quan mọi tác vụ, cho phép bạn thử nghiệm nhiều nhà cung cấp hoặc agent khác nhau trên cùng một task, so sánh kết quả và review các thay đổi trước khi merge. Nền tảng hỗ trợ hơn 8 nhà cung cấp AI bao gồm Claude, Cursor và Gemini, cùng khả năng tùy biến agent chuyên biệt cho việc viết test, audit bảo mật, refactor, v.v. Lập trình viên có thể tăng năng suất gấp 10 lần thông qua việc thực thi tác vụ đồng thời mà vẫn nắm rõ và kiểm soát hoàn toàn những gì được triển khai.\n\n- Chạy song song nhiều tác vụ lập trình với các AI agent khác nhau trong khi vẫn đảm bảo tính cô lập (isolation)\n- Thử nghiệm các nhà cung cấp AI khác nhau trên cùng một tác vụ để tìm ra kết quả tối ưu\n- Quản lý công việc phát triển dài hạn trên bảng kanban lưu trữ lâu dài thay vì lịch sử chat phân tán\n- Review và so sánh các phiên bản code do AI tạo ra trước khi merge vào production",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/automagik-dev/forge`",
+    "usage_vi": "```\nSử dụng nền tảng Vibe Coding++™ để [TASK] với sự cộng tác của nhiều agent. Thiết lập một bảng kanban trên nền tảng với các [AGENTS] được phân công vào các [STAGES]. Tích hợp với các [MCP_TOOLS] để tự động hóa khi cần thiết. Tài liệu hóa quy trình theo [FORMAT] để review. Ví dụ: 'Refactor hệ thống xác thực cũ trong ứng dụng thương mại điện tử, phân công security agent để xác thực các thay đổi và testing agent để tự động hóa các bài test hồi quy, sau đó xuất bảng kanban dưới dạng bảng markdown.'\n```\nCopy\n\n```\n### Báo cáo Cộng tác Đa Agent: Refactor Hệ thống Xác thực Cũ (Legacy Authentication)\n\n**Tổng quan Dự án:**\nNhóm đã sử dụng Vibe Coding++™ để refactor hệ thống xác thực monolithic trong một ứng dụng thương mại điện tử (hơn 12.000 người dùng hàng ngày) trong suốt sprint kéo dài 3 tuần. Mục tiêu là mô-đun hóa codebase, cải thiện bảo mật và tự động hóa việc kiểm thử trong khi vẫn đảm bảo hệ thống hoạt động liên tục (100% uptime) trong quá trình chuyển đổi.\n\n**Bảng Kanban (Quy trình làm việc Đa Agent):**\n| Giai đoạn          | Vai trò Agent            | Agent được phân công | Trạng thái   | Kết quả đầu ra                                                          |\n|---------------------|--------------------------|----------------------|--------------|-------------------------------------------------------------------------|\n| **Backlog**         | Phân tích Yêu cầu        | Product Owner Agent  | Hoàn thành   | Ưu tiên 15 user story; phát hiện 3 lỗ hổng bảo mật nghiêm trọng         |\n| **Thiết kế**        | Hoạch định Kiến trúc     | System Design Agent  | Hoàn thành   | Bản thiết kế dịch vụ auth dạng mô-đun (5 microservices); cập nhật threat model |\n| **Triển khai**      | Refactor Code            | Senior Dev Agent     | Đang xử lý   | Di chuyển 80% logic auth cũ sang `auth-service` mới (4500 LOC)          |\n| **Review Bảo mật**  | Đánh giá Xâm nhập        | Security Agent       | Hoàn thành   | Vá 12 lỗ hổng (điểm CVSS trung bình giảm từ 7.8 xuống 3.2)               |\n| **Kiểm thử**        | Kiểm thử Hồi quy Tự động | QA Agent             | Đang xử lý   | Vượt qua 234/250 test case; bổ sung 16 trường hợp biên (edge case) mới  |\n| **Triển khai**      | CI/CD Pipeline           | DevOps Agent         | Đang chờ     | Cấu hình chiến lược triển khai blue-green; lập tài liệu phương án rollback |\n\n**Các Thành tựu Chính:**\n1. **Bảo mật:** Giảm 65% bề mặt tấn công (attack surface) nhờ mô-đun hóa và kiểm tra dữ liệu đầu vào (input validation).\n2. **Hiệu năng:** Độ trễ xác thực giảm từ 420ms xuống 180ms (cải thiện 57%).\n3. **Tự động hóa:** 92% các bài test hồi quy hiện đang chạy trên CI/CD thông qua các script tích hợp MCP của QA Agent.\n4. **Tài liệu:** Tự động tạo tài liệu API và threat model xuất sang Confluence.\n\n**Thách thức & Giải pháp:**\n- **Thách thức:** Quản lý session cũ bị lỗi trong quá trình di chuyển.\n  **Giải pháp:** Triển khai mô hình viết song song (dual-write) để tạm thời tương thích ngược.\n- **Thách thức:** Security Agent phát hiện lỗi tranh chấp dữ liệu (race condition) trong logic làm mới token.\n  **Giải pháp:** Thêm cơ chế distributed locking qua Redis; các bài test hiện tại đã chạy song song an toàn.\n\n**Các bước Tiếp theo:**\n- Hoàn tất kiểm thử và triển khai `auth-service-v2` lên môi trường staging.\n- Giám sát tỷ lệ lỗi và hiệu năng trong 48 giờ sau khi deploy.\n- Lên lịch họp retrospective với Product Owner Agent để tối ưu hóa quy trình làm việc.\n\n**Bảng chỉ số đo lường (Tích hợp MCP):**\n- Độ bao phủ Code (Code Coverage): 94% (mục tiêu: 90%)\n- Điểm bảo mật: 9.2/10 (mục tiêu: 8.5/10)\n- Tần suất Deploy (Deployment Frequency): 3 lần/tuần (mục tiêu: 2 lần/tuần)\n- Thời gian phục hồi trung bình (MTTR): 12 phút (mục tiêu: 30 phút)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:13:01.902849Z",
+    "http_status": 200,
+    "content_hash": "182e1c99187a8b3bb1c74f70379224ca0322f40dad6a7c6a32bc9258b7315c0b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\forge.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\forge.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Forge - Điều phối AI Agent hỗ trợ Lập trình",
+  "short_description_vi": "Nền tảng Vibe Coding++™ cho phép điều phối nhiều AI agent để cùng cộng tác lập trình. Lập trình viên có thể thử nghiệm trên các môi trường độc lập và tự tin triển khai (ship) code mà mình hiểu rõ. Hệ thống tích hợp bảng kanban đa agent cùng kết nối MCP, giúp tối ưu hóa quy trình quản lý dự án và tự động hóa tác vụ."
+}

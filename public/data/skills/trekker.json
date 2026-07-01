@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/trekker",
+  "slug": "trekker",
+  "name": "Trekker",
+  "headline": "Trekker - CLI Issue Tracker for AI Agents",
+  "short_description": "Trekker is a CLI issue tracker for AI coding agents. It stores tasks, epics, and dependencies in a local SQLite database. No server required. Ideal for operations teams managing AI agent workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "obsfx",
+  "install_command": "git clone https://github.com/obsfx/trekker.git",
+  "source_repo_url": "https://github.com/obsfx/trekker",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "issue-tracker",
+    "context",
+    "cli",
+    "workflow",
+    "ai-agents",
+    "issues",
+    "prompt-engineering",
+    "task-manager",
+    "claude",
+    "bun",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Trekker is a command-line issue tracker purpose-built for AI coding agents like Claude Code and Cursor. It uses a local SQLite database to store tasks, epics, subtasks, and task dependencies—no server infrastructure needed. Trekker helps AI agents maintain persistent task memory across sessions, enabling them to track progress, find unblocked work, and manage project structure through a simple CLI interface. Operations teams and developers using AI agents benefit from full-text search, dependency tracking, customizable task prefixes, and optional kanban board visualization via a separate dashboard package.\nTrack AI agent progress on multi-step coding projects with task dependencies\nMaintain persistent task memory for AI agents across multiple sessions\nManage epics and subtasks with custom naming conventions for your project\nSearch and filter tasks to help AI agents discover what work is ready to start",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obsfx/trekker`",
+    "usage": "```\nUse the Trekker CLI to manage the AI coding agent's task list. List all open tasks tagged with [TAG] and their dependencies. For each task, add a comment with the command: 'trekker comment [TASK_ID] \"[COMMENT_TEXT]\"'. Finally, generate a summary of the agent's current workload and highlight any blockers.\n```\nCopy\n\n```\nHere’s the current state of your AI coding agent’s task list, filtered for tasks tagged with **#data-pipeline**:\n\n1. **Task #T-404** - *Optimize SQL query for user analytics* (Priority: High)\n   - **Status**: In Progress (Assigned to: Agent-7)\n   - **Dependencies**: \n     - Task #T-399 (Complete) - Schema migration for user table\n     - Task #T-400 (Blocked) - Missing test data (Blocker: Data team)\n   - **Comments**:\n     - *Agent-7*: \"Query runs 30% faster after indexing user_id. Next: validate with production-like data.\"\n\n2. **Task #T-405** - *Refactor ETL pipeline for real-time updates* (Priority: Medium)\n   - **Status**: Open (Assigned to: Agent-5)\n   - **Dependencies**: None\n   - **Comments**:\n     - *Agent-5*: \"Need approval for cloud resource allocation.\"\n\n3. **Task #T-406** - *Document API changes for v2.1* (Priority: Low)\n   - **Status**: Open (Assigned to: Agent-3)\n   - **Dependencies**: Task #T-404 (In Progress)\n\n### Summary:\n- **Total Open Tasks**: 3\n- **Blockers**: 1 (Task #T-400)\n- **High-Priority Tasks**: 1\n- **Agents Overloaded**: Agent-7 (2 tasks) - Consider reassigning Task #T-406.\n\n**Action Items**:\n1. Unblock Task #T-400 by coordinating with the data team.\n2. Assign Task #T-406 to Agent-2 to balance workload.\n3. Schedule a sync with Agent-7 to review progress on Task #T-404.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "trekker#main-content",
+      "trekker#overview",
+      "trekker#setup",
+      "trekker#examples",
+      "trekker#tools",
+      "trekker#mcp",
+      "trekker#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Trekker là một CLI issue tracker được thiết kế riêng cho các AI coding agent như Claude Code và Cursor. Nó sử dụng cơ sở dữ liệu SQLite local để lưu trữ task, epic, subtask và task dependency mà không cần cơ sở hạ tầng server. Trekker giúp các AI agent duy trì bộ nhớ task liên tục (persistent task memory) qua các session, cho phép chúng theo dõi tiến độ, tìm các công việc không bị nghẽn (unblocked work) và quản lý cấu trúc dự án thông qua giao diện CLI đơn giản. Các đội ngũ vận hành và lập trình viên sử dụng AI agent sẽ được hưởng lợi từ các tính năng như tìm kiếm toàn văn (full-text search), theo dõi dependency, tùy chỉnh tiền tố task (task prefix) và tùy chọn trực quan hóa bảng kanban qua một gói dashboard riêng biệt.\nTheo dõi tiến độ của AI agent trong các dự án code nhiều bước với các task dependency\nDuy trì bộ nhớ task liên tục cho các AI agent qua nhiều session\nQuản lý epic và subtask với quy ước đặt tên tùy chỉnh cho dự án của bạn\nTìm kiếm và lọc task giúp AI agent dễ dàng phát hiện những công việc đã sẵn sàng để bắt đầu",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/obsfx/trekker`",
+    "usage_vi": "```\nSử dụng Trekker CLI để quản lý danh sách task của AI coding agent. Liệt kê tất cả các task đang mở được gắn thẻ [TAG] và các dependency của chúng. Với mỗi task, thêm comment bằng lệnh: 'trekker comment [TASK_ID] \"[COMMENT_TEXT]\"'. Cuối cùng, tạo một bản tóm tắt về khối lượng công việc hiện tại của agent và làm nổi bật các blocker.\n```\nCopy\n\n```\nDưới đây là trạng thái hiện tại trong danh sách task của AI coding agent, được lọc theo thẻ **#data-pipeline**:\n\n1. **Task #T-404** - *Tối ưu hóa truy vấn SQL cho phân tích người dùng* (Độ ưu tiên: Cao)\n   - **Trạng thái**: In Progress (Phân công: Agent-7)\n   - **Dependencies**:\n     - Task #T-399 (Complete) - Schema migration cho bảng user\n     - Task #T-400 (Blocked) - Thiếu test data (Blocker: Data team)\n   - **Comments**:\n     - *Agent-7*: \"Truy vấn chạy nhanh hơn 30% sau khi đánh index cho user_id. Bước tiếp theo: validate với dữ liệu thực tế (production-like data).\"\n\n2. **Task #T-405** - *Refactor pipeline ETL để cập nhật thời gian thực* (Độ ưu tiên: Trung bình)\n   - **Trạng thái**: Open (Phân công: Agent-5)\n   - **Dependencies**: Không có\n   - **Comments**:\n     - *Agent-5*: \"Cần phê duyệt để cấp phát tài nguyên đám mây (cloud resource).\"\n\n3. **Task #T-406** - *Viết tài liệu thay đổi API cho v2.1* (Độ ưu tiên: Thấp)\n   - **Trạng thái**: Open (Phân công: Agent-3)\n   - **Dependencies**: Task #T-404 (In Progress)\n\n### Tóm tắt:\n- **Tổng số Open Task**: 3\n- **Blockers**: 1 (Task #T-400)\n- **Task độ ưu tiên cao**: 1\n- **Agent quá tải**: Agent-7 (2 task) - Cân nhắc phân công lại Task #T-406.\n\n**Hành động cần thực hiện (Action Items)**:\n1. Gỡ nghẽn (Unblock) Task #T-400 bằng cách phối hợp với data team.\n2. Giao Task #T-406 cho Agent-2 để cân bằng khối lượng công việc.\n3. Lên lịch họp sync với Agent-7 để xem xét tiến độ của Task #T-404.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:37:02.649610Z",
+    "http_status": 200,
+    "content_hash": "95e96d7d13f167724182f8b901d3763f425f1d15a39f4d0465c2b9bffb32bb57",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trekker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trekker.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trekker - CLI Issue Tracker dành cho AI Agent",
+  "short_description_vi": "Trekker là một CLI issue tracker dành cho các AI coding agent. Công cụ này lưu trữ các task, epic và dependency trong cơ sở dữ liệu SQLite local mà không cần server. Đây là giải pháp lý tưởng cho các đội ngũ vận hành đang quản lý workflow của AI agent."
+}

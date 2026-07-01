@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/browser-echo",
+  "slug": "browser-echo",
+  "name": "Browser Echo",
+  "headline": "browser-echo: Stream Browser Logs Effortlessly",
+  "short_description": "Stream browser logs to terminal for AI coding assistants. Ideal for developers using Cursor AI, Claude Code, GitHub Copilot CLI, or Gemi. No setup required, works with TypeScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "instructa",
+  "install_command": "git clone https://github.com/instructa/browser-echo.git",
+  "source_repo_url": "https://github.com/instructa/browser-echo",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "cursor",
+    "logging",
+    "gemini-cli",
+    "browser",
+    "codex-cli",
+    "log",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "The browser-echo skill is an innovative automation tool designed to stream browser logs directly to your terminal, facilitating real-time monitoring and debugging without any setup hassle. This skill is particularly beneficial for developers and AI practitioners who require immediate access to browser logs for analysis or troubleshooting. With a focus on efficiency, browser-echo allows you to bypass traditional logging methods, enabling a more streamlined development process. One of the key benefits of using browser-echo is the significant time savings it offers. By eliminating the need for complex configurations and setups, users can implement this skill in just 30 minutes. This rapid deployment allows teams to focus on their core tasks, enhancing productivity and reducing the time spent on logging issues. While the exact time savings are currently unknown, the immediate availability of browser logs can lead to quicker resolutions of problems, ultimately saving hours in development cycles. This skill is ideal for developers, product managers, and AI practitioners who work in environments where real-time data is crucial. Whether you are debugging a web application or monitoring user interactions, browser-echo provides the necessary insights to improve your workflows. Its medium GTM relevance suggests that while it may not be essential for every project, it offers significant value in scenarios where immediate access to browser logs is required. Implementing the browser-echo skill is classified as intermediate in difficulty, making it accessible for those with a basic understanding of AI automation and workflow automation. It fits seamlessly into AI-first workflows by enhancing the capabilities of AI agents, allowing them to react and adapt based on real-time data. For example, a developer could use browser-echo to monitor user behavior during testing phases, enabling rapid adjustments to the application based on live feedback. Overall, browser-echo is a powerful addition to any automation toolkit, streamlining processes and enhancing productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/instructa/browser-echo`",
+    "usage": "```\nStream browser console logs to terminal for debugging [WEBSITE_URL]. Focus on errors, warnings, and network requests. Use [FILTER_KEYWORDS] to narrow down issues. Share insights in real-time as they appear.\n```\nCopy\n\n```\n```\n[Browser Console Logs - Real-Time Stream]\n\n[10:23:45 AM] ERROR: Failed to load resource: the server responded with a status of 404 (Not Found) - https://cdn.example.com/js/vendor.js\n[10:23:45 AM] WARN: Deprecation: 'useLayoutEffect' is deprecated in React 19. Use 'useEffect' instead.\n[10:23:46 AM] INFO: Network Request: POST /api/v2/submit-form - Status: 200 - Duration: 124ms\n[10:23:47 AM] ERROR: TypeError: Cannot read property 'map' of undefined (at bundle.js:45:12)\n\n[Analysis]\n- 1 critical error (404 resource) blocking page load.\n- 1 React deprecation warning (future compatibility risk).\n- 1 successful API call (no issues).\n- 1 runtime error in bundle.js (likely breaking user flow).\n\n[Recommended Actions]\n1. Fix the 404 by hosting vendor.js at the correct CDN path.\n2. Update React imports to use 'useEffect' instead of 'useLayoutEffect'.\n3. Add error boundaries around bundle.js operations to prevent crashes.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "browser-echo#main-content",
+      "browser-echo#overview",
+      "browser-echo#setup",
+      "browser-echo#examples",
+      "browser-echo#tools",
+      "browser-echo#mcp",
+      "browser-echo#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The browser-echo skill is an innovative automation tool designed to stream browser logs directly to your terminal, facilitating real-time monitoring and debugging without any setup hassle. This skill is particularly beneficial for developers and AI practitioners who require immediate access to browser logs for analysis or troubleshooting. With a focus on efficiency, browser-echo allows you to bypass traditional logging methods, enabling a more streamlined development process. One of the key benefits of using browser-echo is the significant time savings it offers. By eliminating the need for complex configurations and setups, users can implement this skill in just 30 minutes. This rapid deployment allows teams to focus on their core tasks, enhancing productivity and reducing the time spent on logging issues. While the exact time savings are currently unknown, the immediate availability of browser logs can lead to quicker resolutions of problems, ultimately saving hours in development cycles. This skill is ideal for developers, product managers, and AI practitioners who work in environments where real-time data is crucial. Whether you are debugging a web application or monitoring user interactions, browser-echo provides the necessary insights to improve your workflows. Its medium GTM relevance suggests that while it may not be essential for every project, it offers significant value in scenarios where immediate access to browser logs is required. Implementing the browser-echo skill is classified as intermediate in difficulty, making it accessible for those with a basic understanding of AI automation and workflow automation. It fits seamlessly into AI-first workflows by enhancing the capabilities of AI agents, allowing them to react and adapt based on real-time data. For example, a developer could use browser-echo to monitor user behavior during testing phases, enabling rapid adjustments to the application based on live feedback. Overall, browser-echo is a powerful addition to any automation toolkit, streamlining processes and enhancing productivity.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/instructa/browser-echo`",
+    "usage_vi": "```\nStream browser console logs to terminal for debugging [WEBSITE_URL]. Focus on errors, warnings, and network requests. Use [FILTER_KEYWORDS] to narrow down issues. Share insights in real-time as they appear.\n```\nCopy\n\n```\n```\n[Browser Console Logs - Real-Time Stream]\n\n[10:23:45 AM] ERROR: Failed to load resource: the server responded with a status of 404 (Not Found) - https://cdn.example.com/js/vendor.js\n[10:23:45 AM] WARN: Deprecation: 'useLayoutEffect' is deprecated in React 19. Use 'useEffect' instead.\n[10:23:46 AM] INFO: Network Request: POST /api/v2/submit-form - Status: 200 - Duration: 124ms\n[10:23:47 AM] ERROR: TypeError: Cannot read property 'map' of undefined (at bundle.js:45:12)\n\n[Analysis]\n- 1 critical error (404 resource) blocking page load.\n- 1 React deprecation warning (future compatibility risk).\n- 1 successful API call (no issues).\n- 1 runtime error in bundle.js (likely breaking user flow).\n\n[Recommended Actions]\n1. Fix the 404 by hosting vendor.js at the correct CDN path.\n2. Update React imports to use 'useEffect' instead of 'useLayoutEffect'.\n3. Add error boundaries around bundle.js operations to prevent crashes.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:39.917494Z",
+    "http_status": 200,
+    "content_hash": "40e80c35548608327ab2ffba1c737ba78827f27ce29e18d4ceef109e763427e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browser-echo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browser-echo.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "browser-echo: Stream Browser Logs Effortlessly",
+  "short_description_vi": "Stream browser logs to terminal for AI coding assistants. Ideal for developers using Cursor AI, Claude Code, GitHub Copilot CLI, or Gemi. No setup required, works with TypeScript."
+}

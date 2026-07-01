@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/trigger-mails",
+  "slug": "trigger-mails",
+  "name": "Trigger Mails",
+  "headline": "Trigger-Mails: Weather-Based Email Automation",
+  "short_description": "Workflow automation that triggers promotional emails based on weather conditions using OpenWeatherMap API and Sendgrid. Ideal for marketing teams automating customer outreach.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "zenaton-samples",
+  "install_command": "git clone https://github.com/zenaton-samples/trigger-mails.git",
+  "source_repo_url": "https://github.com/zenaton-samples/trigger-mails",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "marketing-automation",
+    "scheduling",
+    "workflow",
+    "connectors",
+    "developer-tools",
+    "process"
+  ],
+  "sections": {
+    "overview": "This skill implements a marketing automation workflow that monitors weather data and sends targeted promotional emails based on temperature conditions. It integrates OpenWeatherMap API to track daily temperatures and Sendgrid to deliver emails, automatically triggering a tropical vacation promotion after three consecutive days below 40°F. The workflow continues monitoring until either the cold weather threshold is met or a specified time period ends, then sends an alternative promotional email. Built on Zenaton's workflow orchestration platform, it demonstrates how to combine external APIs with time-based logic to create condition-triggered marketing campaigns. Agencies and e-commerce businesses can use this pattern to automate seasonal promotions tied to real-world environmental data.\nTourism and travel agencies triggering vacation promotions during cold weather seasons\nE-commerce retailers sending weather-triggered product recommendations\nMarketing teams automating seasonal campaign activation based on temperature thresholds\nAgencies demonstrating workflow automation powered by external API data",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zenaton-samples/trigger-mails`",
+    "usage": "```\nCreate a marketing automation workflow that sends personalized emails to customers based on weather data. Use the OpenWeather API to fetch weather data for [CITY] and SendGrid to send emails. The email should include a subject line like 'Stay Cozy with [COMPANY] During [WEATHER_CONDITION]' and a body that recommends products based on the weather. For example, if it's cold, recommend warm clothing or if it's sunny, recommend sunglasses.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "trigger-mails#main-content",
+      "trigger-mails#overview",
+      "trigger-mails#setup",
+      "trigger-mails#examples",
+      "trigger-mails#tools",
+      "trigger-mails#mcp",
+      "trigger-mails#related",
+      "marketingskills",
+      "copywriting",
+      "leo-bot"
+    ],
+    "overview_vi": "This skill implements a marketing automation workflow that monitors weather data and sends targeted promotional emails based on temperature conditions. It integrates OpenWeatherMap API to track daily temperatures and Sendgrid to deliver emails, automatically triggering a tropical vacation promotion after three consecutive days below 40°F. The workflow continues monitoring until either the cold weather threshold is met or a specified time period ends, then sends an alternative promotional email. Built on Zenaton's workflow orchestration platform, it demonstrates how to combine external APIs with time-based logic to create condition-triggered marketing campaigns. Agencies and e-commerce businesses can use this pattern to automate seasonal promotions tied to real-world environmental data.\nTourism and travel agencies triggering vacation promotions during cold weather seasons\nE-commerce retailers sending weather-triggered product recommendations\nMarketing teams automating seasonal campaign activation based on temperature thresholds\nAgencies demonstrating workflow automation powered by external API data",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zenaton-samples/trigger-mails`",
+    "usage_vi": "```\nCreate a marketing automation workflow that sends personalized emails to customers based on weather data. Use the OpenWeather API to fetch weather data for [CITY] and SendGrid to send emails. The email should include a subject line like 'Stay Cozy with [COMPANY] During [WEATHER_CONDITION]' and a body that recommends products based on the weather. For example, if it's cold, recommend warm clothing or if it's sunny, recommend sunglasses.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:45:20.382024Z",
+    "http_status": 200,
+    "content_hash": "4a41393d2cddbe33c0308767e9f8f00d4a5559224c9431941e9a3c60c2825791",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trigger-mails.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trigger-mails.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trigger-Mails: Weather-Based Email Automation",
+  "short_description_vi": "Workflow automation that triggers promotional emails based on weather conditions using OpenWeatherMap API and Sendgrid. Ideal for marketing teams automating customer outreach."
+}

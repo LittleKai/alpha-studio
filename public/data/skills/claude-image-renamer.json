@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-image-renamer",
+  "slug": "claude-image-renamer",
+  "name": "browser-use",
+  "headline": "AI image renamer for descriptive filenames",
+  "short_description": "AI-powered tool that renames screenshots using OCR and vision analysis. Operations teams benefit from searchable, standardized filenames. Connects to command-line workflows for batch processing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "jftuga",
+  "install_command": "git clone https://github.com/jftuga/claude-image-renamer.git",
+  "source_repo_url": "https://github.com/jftuga/claude-image-renamer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "command-line-tool",
+    "rename-files",
+    "claude",
+    "ocr",
+    "cli"
+  ],
+  "sections": {
+    "overview": "claude-image-renamer automatically generates descriptive filenames for screenshots by combining OCR text extraction with Claude's vision capabilities. The tool sanitizes macOS screenshot filenames, analyzes image content, and produces clean, searchable lowercase filenames with underscores—ideal for operations teams managing large volumes of screenshots. It supports batch processing of multiple images, handles naming conflicts automatically, and can be integrated into macOS Folder Actions for fully automated workflows. The script requires Claude Code CLI and optionally uses an OCR binary for enhanced accuracy.\nBatch rename screenshots for searchable file organization\nAutomate screenshot renaming via macOS Folder Actions on Desktop\nExtract and standardize screenshot filenames in documentation workflows\nIntegrate image renaming into command-line CI/CD pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jftuga/claude-image-renamer`",
+    "usage": "```\nAnalyze the attached screenshot and generate a descriptive filename following this format: [COMPANY]_[INDUSTRY]_[DATE]_[DESCRIPTION]. Use OCR to extract text and vision analysis to identify key elements. For example, if the screenshot shows a dashboard with sales data from Acme Corp in the tech industry, the filename should be acme_corp_tech_2023-11-15_sales_dashboard.\n```\nCopy\n\n```\n# Screenshot Analysis",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-image-renamer#main-content",
+      "claude-image-renamer#overview",
+      "claude-image-renamer#setup",
+      "claude-image-renamer#examples",
+      "claude-image-renamer#tools",
+      "claude-image-renamer#mcp",
+      "claude-image-renamer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-image-renamer automatically generates descriptive filenames for screenshots by combining OCR text extraction with Claude's vision capabilities. The tool sanitizes macOS screenshot filenames, analyzes image content, and produces clean, searchable lowercase filenames with underscores—ideal for operations teams managing large volumes of screenshots. It supports batch processing of multiple images, handles naming conflicts automatically, and can be integrated into macOS Folder Actions for fully automated workflows. The script requires Claude Code CLI and optionally uses an OCR binary for enhanced accuracy.\nBatch rename screenshots for searchable file organization\nAutomate screenshot renaming via macOS Folder Actions on Desktop\nExtract and standardize screenshot filenames in documentation workflows\nIntegrate image renaming into command-line CI/CD pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jftuga/claude-image-renamer`",
+    "usage_vi": "```\nAnalyze the attached screenshot and generate a descriptive filename following this format: [COMPANY]_[INDUSTRY]_[DATE]_[DESCRIPTION]. Use OCR to extract text and vision analysis to identify key elements. For example, if the screenshot shows a dashboard with sales data from Acme Corp in the tech industry, the filename should be acme_corp_tech_2023-11-15_sales_dashboard.\n```\nCopy\n\n```\n# Screenshot Analysis"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:54:43.192491Z",
+    "http_status": 200,
+    "content_hash": "a4b9194e2ee9f0316514806b23319eebc31463c617d04e502261a037a331a577",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-image-renamer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-image-renamer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI image renamer for descriptive filenames",
+  "short_description_vi": "AI-powered tool that renames screenshots using OCR and vision analysis. Operations teams benefit from searchable, standardized filenames. Connects to command-line workflows for batch processing."
+}

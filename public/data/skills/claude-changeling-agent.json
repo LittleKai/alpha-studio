@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-changeling-agent",
+  "slug": "claude-changeling-agent",
+  "name": "Claude Changeling Agent",
+  "headline": "claude-changeling-agent: Context retention tool",
+  "short_description": "Changeling lets Claude Code switch between, combine, or invent AI agent personas on demand by loading definition files from a local agent library.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "flyingrobots",
+  "install_command": "git clone https://github.com/flyingrobots/claude-changeling-agent.git",
+  "source_repo_url": "https://github.com/flyingrobots/claude-changeling-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "context-efficiency",
+    "developer-tools",
+    "claude-agents",
+    "prompt-engineering",
+    "ai-agent",
+    "anthropic-claude",
+    "meta-agent",
+    "persona-switching",
+    "context-optimization",
+    "agent-management",
+    "ai-workflow",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Changeling is a Claude Code agent skill that reads persona definition files from ~/.claude/@lib/agents/ and assumes those identities to complete tasks. It supports single-persona mode, fusion mode (blending two or more agents simultaneously), and ad-hoc mode where you describe a persona in plain language without needing a file at all. This makes it practical for developers who maintain a library of specialized agents—such as a prompt engineer, code reviewer, or any custom role—and want to invoke the right expertise for a given task without switching tools or sessions. Typical invocations follow the pattern: @agent-changeling become <identity> [fused with <identity_2>] <task>.\nSwitch Claude Code into a prompt-engineer persona to critique or refine agent prompts\nFuse two specialized agents (e.g., code-reviewer and security-auditor) for combined analysis\nInvoke an ad-hoc persona described in plain language when no agent file exists\nMaintain a local library of agent definitions and load them on demand per task",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/flyingrobots/claude-changeling-agent`",
+    "usage": "```\nAct as a changeling agent for [COMPANY]. Your role is to monitor [INDUSTRY] trends, track [DATA] changes, and alert me when significant shifts occur. Provide weekly summaries and flag anomalies. Focus on [SPECIFIC_METRIC] as a priority.\n```\nCopy\n\n```\n# Weekly Industry Trends Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-changeling-agent#main-content",
+      "claude-changeling-agent#overview",
+      "claude-changeling-agent#setup",
+      "claude-changeling-agent#examples",
+      "claude-changeling-agent#tools",
+      "claude-changeling-agent#mcp",
+      "claude-changeling-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Changeling là một agent skill của Claude Code, hoạt động bằng cách đọc các file định nghĩa persona từ thư mục ~/.claude/@lib/agents/ và đóng vai các danh tính (identity) đó để hoàn thành tác vụ. Công cụ này hỗ trợ chế độ đơn persona (single-persona mode), chế độ kết hợp (fusion mode - gộp hai hoặc nhiều agent cùng lúc), và chế độ ad-hoc (mô tả persona bằng ngôn ngữ tự nhiên trực tiếp mà không cần file). Điều này cực kỳ hữu ích cho các lập trình viên đang duy trì một thư viện các agent chuyên biệt (như prompt engineer, code reviewer, hoặc bất kỳ vai trò tùy chỉnh nào) và muốn triệu hồi đúng chuyên môn cho từng tác vụ cụ thể mà không phải chuyển đổi công cụ hay session. Cú pháp gọi lệnh phổ biến: @agent-changeling become <identity> [fused with <identity_2>] <task>.\n\n- Chuyển Claude Code sang persona prompt-engineer để đánh giá hoặc tinh chỉnh các prompt của agent\n- Kết hợp hai agent chuyên biệt (ví dụ: code-reviewer và security-auditor) để thực hiện phân tích tổng hợp\n- Gọi một persona ad-hoc được mô tả bằng ngôn ngữ tự nhiên khi chưa có file định nghĩa agent\n- Duy trì thư viện định nghĩa agent cục bộ và tải chúng theo yêu cầu cho từng tác vụ",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/flyingrobots/claude-changeling-agent`",
+    "usage_vi": "```\nĐóng vai trò là một changeling agent cho [COMPANY]. Nhiệm vụ của bạn là theo dõi các xu hướng của [INDUSTRY], giám sát các thay đổi của [DATA], và cảnh báo cho tôi khi có những biến động lớn xảy ra. Cung cấp báo cáo tóm tắt hàng tuần và cảnh báo các điểm bất thường. Ưu tiên tập trung vào [SPECIFIC_METRIC].\n```\nCopy\n\n```\n# Báo cáo Xu hướng Ngành Hàng tuần\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:20:01.897992Z",
+    "http_status": 200,
+    "content_hash": "9a5285f892a15b5611bf2fc1e98dc21b3ae8cc5461a44d38060d71141e1942cf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-changeling-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-changeling-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-changeling-agent: Công cụ duy trì ngữ cảnh",
+  "short_description_vi": "Changeling cho phép Claude Code linh hoạt chuyển đổi, kết hợp hoặc tự tạo các persona AI agent theo yêu cầu bằng cách tải các file định nghĩa từ thư viện agent cục bộ."
+}

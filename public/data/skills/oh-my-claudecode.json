@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/oh-my-claudecode",
+  "slug": "oh-my-claudecode",
+  "name": "browser-use",
+  "headline": "oh-my-claudecode: Multi-Agent Orchestration Tool",
+  "short_description": "oh-my-claudecode offers a powerful multi-agent orchestration for Claude Code, featuring five execution modes for diverse automation needs. With over 31 skills and 32 specialized agents, it ensures a user experience without a learning curve.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Yeachan-Heo",
+  "install_command": "claude install Yeachan-Heo/oh-my-claudecode",
+  "source_repo_url": "https://github.com/Yeachan-Heo/oh-my-claudecode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "multi-agent-systems",
+    "automation",
+    "claude",
+    "parallel-execution"
+  ],
+  "sections": {
+    "overview": "oh-my-claudecode is a multi-agent orchestration system built for Claude Code that streamlines complex automation workflows through five distinct execution modes. The framework includes over 31 reusable skills and 32 specialized agents, each tailored for specific automation scenarios. It supports domain-aware configuration and provides agents like the Designer agent that override default editorial patterns for domain-specific optimization. The system handles state management, real-time monitoring via JSON sidecars, and operates across multiple orchestration modes including PreCompact. Developers can leverage this framework to automate diverse tasks without requiring deep domain expertise, as the agents handle task decomposition and execution.\nAutomate the generation of REST APIs with minimal input.\nExecute multiple coding agents in parallel to speed up development.\nManage complex project workflows through coordinated agent actions.\nImplement sequential task management for structured development processes.",
+    "setup": "Terminal\nCopy\n`claude install Yeachan-Heo/oh-my-claudecode`\n`git clone https://github.com/Yeachan-Heo/oh-my-claudecode`",
+    "usage": "```\nI want to use oh-my-claudecode to automate a data analysis task in Mode. Here's my goal: [DESCRIBE GOAL]. I have the following data sources available: [LIST DATA SOURCES]. Please suggest a multi-agent workflow using oh-my-claudecode's execution modes to achieve this. Include specific agents you'd recommend and how they should collaborate.\n```\nCopy\n\n```\nBased on your goal of analyzing customer churn trends and your available data sources (Salesforce, Google Analytics, and a customer survey database), I recommend using oh-my-claudecode's 'Sequential' execution mode with these specialized agents:\n\n1. Data Ingestion Agent: First, use this agent to pull customer interaction data from Salesforce and web traffic data from Google Analytics. It will clean and format the data for analysis.\n\n2. Data Analysis Agent: Next, deploy this agent to perform exploratory data analysis. It will identify patterns in customer behavior leading to churn, such as decreased website engagement or changes in purchase frequency.\n\n3. Visualization Agent: Then, use this agent to create interactive dashboards in Mode. It will generate visualizations that highlight key churn indicators and trends over time.\n\n4. Insight Generation Agent: Finally, this agent will analyze the survey data to correlate qualitative feedback with the quantitative trends identified earlier. It will provide actionable insights, such as suggesting specific customer segments to target with retention campaigns.\n\nThe agents will work sequentially, with each passing its outputs to the next. This workflow will give you a comprehensive view of your churn problem and actionable recommendations to address it.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "oh-my-claudecode#main-content",
+      "oh-my-claudecode#overview",
+      "oh-my-claudecode#setup",
+      "oh-my-claudecode#examples",
+      "oh-my-claudecode#tools",
+      "oh-my-claudecode#mcp",
+      "oh-my-claudecode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "oh-my-claudecode is a multi-agent orchestration system built for Claude Code that streamlines complex automation workflows through five distinct execution modes. The framework includes over 31 reusable skills and 32 specialized agents, each tailored for specific automation scenarios. It supports domain-aware configuration and provides agents like the Designer agent that override default editorial patterns for domain-specific optimization. The system handles state management, real-time monitoring via JSON sidecars, and operates across multiple orchestration modes including PreCompact. Developers can leverage this framework to automate diverse tasks without requiring deep domain expertise, as the agents handle task decomposition and execution.\nAutomate the generation of REST APIs with minimal input.\nExecute multiple coding agents in parallel to speed up development.\nManage complex project workflows through coordinated agent actions.\nImplement sequential task management for structured development processes.",
+    "setup_vi": "Terminal\nCopy\n`claude install Yeachan-Heo/oh-my-claudecode`\n`git clone https://github.com/Yeachan-Heo/oh-my-claudecode`",
+    "usage_vi": "```\nI want to use oh-my-claudecode to automate a data analysis task in Mode. Here's my goal: [DESCRIBE GOAL]. I have the following data sources available: [LIST DATA SOURCES]. Please suggest a multi-agent workflow using oh-my-claudecode's execution modes to achieve this. Include specific agents you'd recommend and how they should collaborate.\n```\nCopy\n\n```\nBased on your goal of analyzing customer churn trends and your available data sources (Salesforce, Google Analytics, and a customer survey database), I recommend using oh-my-claudecode's 'Sequential' execution mode with these specialized agents:\n\n1. Data Ingestion Agent: First, use this agent to pull customer interaction data from Salesforce and web traffic data from Google Analytics. It will clean and format the data for analysis.\n\n2. Data Analysis Agent: Next, deploy this agent to perform exploratory data analysis. It will identify patterns in customer behavior leading to churn, such as decreased website engagement or changes in purchase frequency.\n\n3. Visualization Agent: Then, use this agent to create interactive dashboards in Mode. It will generate visualizations that highlight key churn indicators and trends over time.\n\n4. Insight Generation Agent: Finally, this agent will analyze the survey data to correlate qualitative feedback with the quantitative trends identified earlier. It will provide actionable insights, such as suggesting specific customer segments to target with retention campaigns.\n\nThe agents will work sequentially, with each passing its outputs to the next. This workflow will give you a comprehensive view of your churn problem and actionable recommendations to address it.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:02:55.999438Z",
+    "http_status": 200,
+    "content_hash": "6fbe9f245f54d2207a433ad50112ffe76985a7c617414d1f893c21145eb77c6c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oh-my-claudecode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oh-my-claudecode.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "oh-my-claudecode: Multi-Agent Orchestration Tool",
+  "short_description_vi": "oh-my-claudecode offers a powerful multi-agent orchestration for Claude Code, featuring five execution modes for diverse automation needs. With over 31 skills and 32 specialized agents, it ensures a user experience without a learning curve."
+}

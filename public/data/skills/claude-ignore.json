@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-ignore",
+  "slug": "claude-ignore",
+  "name": "Claude Ignore",
+  "headline": "claude ignore tool for file pattern exclusion",
+  "short_description": "Claude-ignore is a pre-tool-use hook that prevents Claude from reading files matching patterns in .claudeignore files. It benefits developers and operations teams by controlling file access, similar to .gitignore. It integrates with Claude Code and is useful for managing sensitive or irrelevant files in automated workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "li-zhixin",
+  "install_command": "git clone https://github.com/li-zhixin/claude-ignore.git",
+  "source_repo_url": "https://github.com/li-zhixin/claude-ignore",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code",
+    "ignore"
+  ],
+  "sections": {
+    "overview": "Claude-ignore is a PreToolUse hook for Claude Code that prevents Claude from reading files matching patterns defined in .claudeignore files, similar to how .gitignore works in Git. It discovers and applies ignore patterns hierarchically, starting from the current directory up through parent directories, allowing flexible configuration across different project levels. When Claude attempts to read a file, the hook checks against all discovered patterns and blocks access if there's a match, exiting with code 2 to prevent the read operation. This tool is designed for developers and operations teams who need to control access to sensitive files, environment variables, secrets, or irrelevant project files during automated workflows. Setup is straightforward using the init command or manual configuration in .claude/settings.json.\nPrevent Claude from accessing .env files and API keys during code analysis\nBlock reads of sensitive configuration or credential files in automated workflows\nExclude large or irrelevant directories from Claude's file access to improve efficiency\nMaintain different ignore rules across subdirectories within a single project",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/li-zhixin/claude-ignore`",
+    "usage": "```\nUse claude-ignore to exclude files matching patterns in [.claudeignore_PATH]. List all files in [DIRECTORY_PATH] that would be ignored by claude-ignore. For each ignored file, provide its path and reason for exclusion based on the .claudeignore rules. Example: 'Exclude node_modules/ due to node_modules/ in .claudeignore'\n```\nCopy\n\n```\nHere are the files that would be ignored by claude-ignore in the project directory `/home/user/project`, based on the rules in `.claudeignore` located at `/home/user/project/.claudeignore`:\n\n1. **`/home/user/project/node_modules/react-dom/server.js`**\n   - Excluded due to pattern `node_modules/` in `.claudeignore`.\n   - Reason: This file is part of a dependency directory and is not relevant for code analysis.\n\n2. **`/home/user/project/.env.local`**\n   - Excluded due to pattern `.env*` in `.claudeignore`.\n   - Reason: This file contains sensitive environment variables and should not be accessed.\n\n3. **`/home/user/project/build/output.log`**\n   - Excluded due to pattern `build/output.log` in `.claudeignore`.\n   - Reason: This file is a generated log and not part of the source code.\n\n4. **`/home/user/project/temp/cache/12345.json`**\n   - Excluded due to pattern `temp/` in `.claudeignore`.\n   - Reason: This file is part of a temporary cache directory and is not needed for analysis.\n\n5. **`/home/user/project/docs/legacy/README_old.md`**\n   - Excluded due to pattern `docs/legacy/` in `.claudeignore`.\n   - Reason: This file is part of an outdated documentation directory.\n\nTotal files ignored: 5\nTotal files accessible: 42\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-ignore#main-content",
+      "claude-ignore#overview",
+      "claude-ignore#setup",
+      "claude-ignore#examples",
+      "claude-ignore#tools",
+      "claude-ignore#mcp",
+      "claude-ignore#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-ignore là một PreToolUse hook dành cho Claude Code giúp ngăn Claude đọc các file khớp với các pattern được định nghĩa trong file .claudeignore, tương tự như cách hoạt động của .gitignore trong Git. Công cụ này tự động phát hiện và áp dụng các pattern loại trừ theo cấu trúc phân cấp, bắt đầu từ thư mục hiện hành ngược lên các thư mục cha, cho phép cấu hình linh hoạt ở nhiều cấp độ dự án khác nhau. Khi Claude cố gắng đọc một file, hook này sẽ đối chiếu với tất cả các pattern tìm thấy và chặn quyền truy cập nếu khớp, đồng thời thoát với exit code 2 để ngăn chặn thao tác đọc. Công cụ này được thiết kế dành cho các lập trình viên và đội ngũ operations cần kiểm soát quyền truy cập vào các file nhạy cảm, biến môi trường (environment variables), thông tin bảo mật (secrets), hoặc các file không liên quan trong các workflow tự động. Việc setup rất đơn giản bằng cách sử dụng lệnh init hoặc cấu hình thủ công trong .claude/settings.json.\n- Ngăn Claude truy cập vào các file .env và API key trong quá trình phân tích code\n- Chặn đọc các file cấu hình nhạy cảm hoặc credential trong các workflow tự động\n- Loại trừ các thư mục lớn hoặc không liên quan khỏi quyền truy cập file của Claude để tối ưu hiệu suất\n- Duy trì các quy tắc loại trừ khác nhau giữa các thư mục con trong cùng một dự án",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/li-zhixin/claude-ignore`",
+    "usage_vi": "```\nSử dụng claude-ignore để loại trừ các file khớp với các pattern trong [.claudeignore_PATH]. Liệt kê tất cả các file trong [DIRECTORY_PATH] sẽ bị bỏ qua bởi claude-ignore. Với mỗi file bị bỏ qua, cung cấp đường dẫn và lý do loại trừ dựa trên các quy tắc của .claudeignore. Ví dụ: 'Loại trừ node_modules/ do có node_modules/ trong .claudeignore'\n```\nCopy\n\n```\nDưới đây là các file sẽ bị bỏ qua bởi claude-ignore trong thư mục dự án `/home/user/project`, dựa trên các quy tắc trong file `.claudeignore` đặt tại `/home/user/project/.claudeignore`:\n\n1. **`/home/user/project/node_modules/react-dom/server.js`**\n   - Bị loại trừ do khớp với pattern `node_modules/` trong `.claudeignore`.\n   - Lý do: File này nằm trong thư mục dependency và không liên quan đến việc phân tích code.\n\n2. **`/home/user/project/.env.local`**\n   - Bị loại trừ do khớp với pattern `.env*` trong `.claudeignore`.\n   - Lý do: File này chứa các biến môi trường nhạy cảm và không được phép truy cập.\n\n3. **`/home/user/project/build/output.log`**\n   - Bị loại trừ do khớp với pattern `build/output.log` trong `.claudeignore`.\n   - Lý do: File này là log được sinh ra tự động và không phải là một phần của source code.\n\n4. **`/home/user/project/temp/cache/12345.json`**\n   - Bị loại trừ do khớp với pattern `temp/` trong `.claudeignore`.\n   - Lý do: File này thuộc thư mục cache tạm thời và không cần thiết cho việc phân tích.\n\n5. **`/home/user/project/docs/legacy/README_old.md`**\n   - Bị loại trừ do khớp với pattern `docs/legacy/` trong `.claudeignore`.\n   - Lý do: File này nằm trong thư mục tài liệu cũ (legacy).\n\nTổng số file bị bỏ qua: 5\nTổng số file có thể truy cập: 42\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:09:18.750681Z",
+    "http_status": 200,
+    "content_hash": "f8f9b5eca7489d851f8ea2964cbce8a6fc4b7646ff88e2fa15e69f38e248b548",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-ignore.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-ignore.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ loại trừ file theo pattern cho Claude (claude-ignore)",
+  "short_description_vi": "Claude-ignore là một pre-tool-use hook giúp ngăn Claude đọc các file khớp với các pattern trong file .claudeignore. Công cụ này hỗ trợ lập trình viên và đội ngũ operations kiểm soát quyền truy cập file tương tự như .gitignore. Nó tích hợp trực tiếp với Claude Code và rất hữu ích trong việc quản lý các file nhạy cảm hoặc không liên quan trong các workflow tự động."
+}

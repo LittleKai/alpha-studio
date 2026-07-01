@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentkits-marketing",
+  "slug": "agentkits-marketing",
+  "name": "Agentkits Marketing",
+  "headline": "agentkits-marketing for AI automation",
+  "short_description": "AgentKits Marketing automates marketing tasks for AI assistants. It connects to Claude Code, Cursor, GitHub Copilot, and other AI agents. Teams use it to streamline campaigns, analyze performance, and optimize workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "agentkits",
+  "install_command": "git clone https://github.com/agentkits/agentkits-marketing.git",
+  "source_repo_url": "https://github.com/agentkits/agentkits-marketing",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "AgentKits Marketing is an enterprise-grade automation toolkit designed for SaaS founders, marketers, and growth teams using Claude Code, Cursor, GitHub Copilot, and compatible AI assistants. The package includes 18 specialized marketing agents, 93 slash commands, and 28 skills organized around core marketing functions: campaign planning and execution, content creation and copywriting, SEO optimization and programmatic SEO, conversion rate optimization (CRO), email sequences and automation, lead qualification and scoring, sales enablement, and performance analytics. It provides production-ready workflows for the complete marketing lifecycle—from lead generation and attraction through conversion optimization to customer retention and upsell strategies. Teams can install the full suite or individual components (agents, skills, or commands only) via Claude Code's plugin marketplace or npx across multiple platforms. The toolkit serves as both an operational system for AI agents to execute marketing tasks and a comprehensive reference library of marketing frameworks, best practices, and templates.\nCreate and manage multi-channel marketing campaigns with AI-driven planning and brief generation\nOptimize landing pages and conversion funnels using CRO specialists and A/B testing frameworks\nBuild scalable SEO programs through programmatic content generation and keyword optimization\nDesign and execute email marketing sequences and automation workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/agentkits/agentkits-marketing`",
+    "usage": "```\nAct as an AgentKits Marketing automation assistant. Use [PLATFORM] to [TASK]. For example: 'Use AgentKits Marketing with Cursor to generate a LinkedIn ad campaign for [PRODUCT] targeting [AUDIENCE] with [BUDGET].' Include metrics like CTR and conversion rate in your recommendations.\n```\nCopy\n\n```\nGenerated a LinkedIn ad campaign for 'EcoGlow Skincare' targeting eco-conscious millennials (ages 25-35) with a $5,000 budget using AgentKits Marketing in Cursor. The campaign includes three ad variations:\n\n1. **Headline:** 'Glow Naturally with EcoGlow'\n   **Copy:** 'Switch to our vegan, cruelty-free skincare. 92% of users saw reduced wrinkles in 4 weeks. Shop now—limited stock!' \n   **CTR Target:** 3.2%\n   **Budget Allocation:** $2,000\n\n2. **Headline:** 'Your Skin Deserves Better'\n   **Copy:** 'Clean ingredients. No toxins. Just radiant skin. Try our bestseller today.'\n   **CTR Target:** 2.8%\n   **Budget Allocation:** $1,500\n\n3. **Headline:** 'Join the Green Beauty Movement'\n   **Copy:** 'Be part of the 10,000+ who’ve transformed their skincare routine. Get 15% off your first order.'\n   **CTR Target:** 3.5%\n   **Budget Allocation:** $1,500\n\n**Performance Metrics (Simulated After 7 Days):**\n- **Total Impressions:** 45,000\n- **CTR:** 3.1% (above target)\n- **Conversions:** 128 (purchases)\n- **Conversion Rate:** 2.8%\n- **ROAS:** 4.2x\n\n**Optimization Recommendations:**\n1. Pause Ad #2 (CTR at 2.1%, below target) and reallocate its budget to Ad #3.\n2. A/B test new visuals for Ad #1 to improve engagement.\n3. Schedule retargeting ads for users who visited the site but didn’t purchase.\n\n**Next Steps:**\n- Use AgentKits Marketing’s 'Performance Dashboard' in Cursor to monitor real-time metrics.\n- Set up automated alerts for CTR drops below 2.5%.\n- Export the winning ad copy to Meta Ads Manager for cross-platform testing.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentkits-marketing#main-content",
+      "agentkits-marketing#overview",
+      "agentkits-marketing#setup",
+      "agentkits-marketing#examples",
+      "agentkits-marketing#tools",
+      "agentkits-marketing#mcp",
+      "agentkits-marketing#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgentKits Marketing là bộ công cụ tự động hóa cấp doanh nghiệp (enterprise-grade) được thiết kế cho các nhà sáng lập SaaS, marketer và growth team sử dụng Claude Code, Cursor, GitHub Copilot cũng như các trợ lý AI tương thích. Bộ công cụ bao gồm 18 agent marketing chuyên biệt, 93 slash command và 28 skill được tổ chức xoay quanh các chức năng marketing cốt lõi: lập kế hoạch và thực thi chiến dịch, sáng tạo nội dung và copywriting, tối ưu hóa SEO và programmatic SEO, tối ưu hóa tỷ lệ chuyển đổi (CRO), thiết lập chuỗi email và tự động hóa, đánh giá và chấm điểm lead, hỗ trợ bán hàng (sales enablement) và phân tích hiệu suất. Công cụ này cung cấp các workflow production-ready cho toàn bộ vòng đời marketing — từ việc thu hút và tạo lead cho đến tối ưu hóa chuyển đổi, giữ chân khách hàng và các chiến lược upsell. Các đội ngũ có thể cài đặt toàn bộ suite hoặc từng thành phần riêng lẻ (chỉ agent, skill hoặc command) qua plugin marketplace của Claude Code hoặc npx trên nhiều nền tảng. Bộ công cụ này vừa là hệ thống vận hành để các AI agent thực thi tác vụ marketing, vừa là thư viện tham khảo toàn diện về các framework marketing, best practice và template.\nTạo và quản lý các chiến dịch marketing đa kênh với tính năng lập kế hoạch và tạo brief tự động bằng AI\nTối ưu hóa trang đích và phễu chuyển đổi nhờ các chuyên gia CRO và framework thử nghiệm A/B\nXây dựng các chiến dịch SEO quy mô lớn thông qua tạo nội dung tự động (programmatic) và tối ưu hóa từ khóa\nThiết kế và triển khai các chuỗi email marketing cùng workflow tự động hóa",
+    "setup_vi": "Không có sẵn lệnh cài đặt nhanh. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/agentkits/agentkits-marketing`",
+    "usage_vi": "```\nHãy đóng vai trò là một trợ lý tự động hóa AgentKits Marketing. Sử dụng [PLATFORM] để thực hiện [TASK]. Ví dụ: 'Sử dụng AgentKits Marketing với Cursor để tạo một chiến dịch quảng cáo LinkedIn cho [PRODUCT] hướng đến đối tượng [AUDIENCE] với ngân sách [BUDGET].' Đưa các chỉ số như CTR và tỷ lệ chuyển đổi vào đề xuất của bạn.\n```\nCopy\n\n```\nĐã tạo chiến dịch quảng cáo LinkedIn cho 'EcoGlow Skincare' hướng đến nhóm khách hàng millennial quan tâm đến môi trường (25-35 tuổi) với ngân sách $5,000 bằng cách sử dụng AgentKits Marketing trong Cursor. Chiến dịch bao gồm ba biến thể quảng cáo:\n\n1. **Headline:** 'Tỏa sáng tự nhiên cùng EcoGlow'\n   **Copy:** 'Chuyển sang dùng mỹ phẩm thuần chay, không thử nghiệm trên động vật. 92% người dùng đã giảm nếp nhăn sau 4 tuần. Mua ngay — số lượng có hạn!'\n   **CTR Target:** 3.2%\n   **Budget Allocation:** $2,000\n\n2. **Headline:** 'Làn da của bạn xứng đáng được nâng niu hơn'\n   **Copy:** 'Thành phần sạch. Không độc hại. Chỉ có làn da rạng rỡ. Trải nghiệm sản phẩm bán chạy nhất của chúng tôi ngay hôm nay.'\n   **CTR Target:** 2.8%\n   **Budget Allocation:** $1,500\n\n3. **Headline:** 'Tham gia cộng đồng làm đẹp xanh'\n   **Copy:** 'Đồng hành cùng hơn 10.000 người đã thay đổi thói quen chăm sóc da của họ. Nhận ngay ưu đãi giảm 15% cho đơn hàng đầu tiên.'\n   **CTR Target:** 3.5%\n   **Budget Allocation:** $1,500\n\n**Performance Metrics (Simulated After 7 Days):**\n- **Total Impressions:** 45,000\n- **CTR:** 3.1% (vượt mục tiêu)\n- **Conversions:** 128 (lượt mua hàng)\n- **Conversion Rate:** 2.8%\n- **ROAS:** 4.2x\n\n**Optimization Recommendations:**\n1. Tạm dừng Quảng cáo số 2 (CTR đạt 2.1%, dưới mức mục tiêu) và chuyển ngân sách sang Quảng cáo số 3.\n2. Thử nghiệm A/B (A/B test) các hình ảnh mới cho Quảng cáo số 1 để tăng tương tác.\n3. Lên lịch quảng cáo bám đuổi (retargeting) cho những người dùng đã truy cập trang web nhưng chưa mua hàng.\n\n**Next Steps:**\n- Sử dụng 'Performance Dashboard' của AgentKits Marketing trong Cursor để theo dõi các chỉ số theo thời gian thực.\n- Thiết lập cảnh báo tự động khi CTR giảm xuống dưới 2.5%.\n- Xuất nội dung quảng cáo hiệu quả nhất sang Meta Ads Manager để thử nghiệm đa nền tảng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:15:56.123141Z",
+    "http_status": 200,
+    "content_hash": "fbda033a8d9810d1cabbf4bcca0fc5e01a25c630b469517f9068bf4f9bcc7a44",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentkits-marketing.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentkits-marketing.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agentkits-marketing cho AI automation",
+  "short_description_vi": "AgentKits Marketing tự động hóa các tác vụ marketing cho trợ lý AI. Công cụ này kết nối trực tiếp với Claude Code, Cursor, GitHub Copilot và các AI agent khác, giúp các đội ngũ tinh giản chiến dịch, phân tích hiệu suất và tối ưu hóa quy trình làm việc."
+}

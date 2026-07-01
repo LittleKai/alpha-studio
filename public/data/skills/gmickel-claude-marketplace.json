@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gmickel-claude-marketplace",
+  "slug": "gmickel-claude-marketplace",
+  "name": "browser-use",
+  "headline": "gmickel-claude-marketplace - AI Coding & Workflow",
+  "short_description": "Claude Code plugins for reliable AI coding. Flow-Next: plan-first workflows, Ralph autonomous mode (overnight coding with fresh context), multi-model review gates via RepoPrompt/Codex, re-anchoring to prevent drift, receipt-based gating.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "gmickel",
+  "install_command": "git clone https://github.com/gmickel/gmickel-claude-marketplace.git",
+  "source_repo_url": "https://github.com/gmickel/gmickel-claude-marketplace",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ralph-mode",
+    "anthropic",
+    "code-review",
+    "planning",
+    "autonomous-agent",
+    "claude-code-plugin",
+    "ai-workflow",
+    "marketplace",
+    "workflow",
+    "execution",
+    "plugin",
+    "ai-agent",
+    "cli"
+  ],
+  "sections": {
+    "overview": "Flow-Next is a workflow layer for AI coding agents that addresses the safety gaps created when agents compress weeks of work into hours. It replaces ad-hoc chat-based coordination with a six-stage handover system: durable specs, dependency-ordered task graphs, fresh-context worker runs, cross-model adversarial review, and receipts. Each artifact is reviewable independently and verified by a different model. The system decomposes work into context-sized slices, re-anchors workers to prevent token bleed and stale assumptions, and records proof of completion at every step. Everything lives in your repo under .flow/ with zero external dependencies—uninstall with `rm -rf .flow/`. Built for Claude Code, OpenAI Codex, Factory Droid, and Grok Build with 28 agent-native skills covering the full lifecycle from idea to maintenance.\nAutomate the planning and execution of coding tasks to improve workflow efficiency.\nRun autonomous coding sessions overnight with Ralph mode to maximize productivity.\nConduct cross-model code reviews to ensure quality and adherence to specifications.\nUtilize dependency graphs to manage task execution order and avoid forgotten requirements.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gmickel/gmickel-claude-marketplace`",
+    "usage": "```\nI want to use Claude Code plugins to automate my coding workflow. Set up a Flow-Next workflow for [PROJECT_NAME] with the following tasks: [TASK_LIST]. Enable Ralph autonomous mode to work overnight with fresh context. Implement multi-model review gates using RepoPrompt and Codex. Add re-anchoring to prevent drift and receipt-based gating for quality control.\n```\nCopy\n\n```\nWorkflow Setup Complete:\n\n1. Flow-Next Workflow Created:\n   - Project: E-commerce Website Redesign\n   - Tasks: Database migration, UI component creation, API integration\n   - Estimated Duration: 3 days\n\n2. Ralph Autonomous Mode Activated:\n   - Scheduled to run overnight from 10 PM to 6 AM\n   - Fresh context loaded: Latest design mockups, updated requirements\n   - Focus Areas: UI component creation, API documentation review\n\n3. Multi-Model Review Gates Implemented:\n   - RepoPrompt: Code quality and style checks\n   - Codex: Functional correctness and security reviews\n   - Scheduled for every 4 hours\n\n4. Re-anchoring and Gating:\n   - Re-anchoring points set at key milestones\n   - Receipt-based gating for database migration and API integration\n   - Notifications enabled for manual review points\n\nNext Steps:\n- Review initial code outputs from Ralph's overnight work\n- Provide feedback for re-anchoring points\n- Monitor review gate results and address any issues\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gmickel-claude-marketplace#main-content",
+      "gmickel-claude-marketplace#overview",
+      "gmickel-claude-marketplace#setup",
+      "gmickel-claude-marketplace#examples",
+      "gmickel-claude-marketplace#tools",
+      "gmickel-claude-marketplace#mcp",
+      "gmickel-claude-marketplace#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Flow-Next is a workflow layer for AI coding agents that addresses the safety gaps created when agents compress weeks of work into hours. It replaces ad-hoc chat-based coordination with a six-stage handover system: durable specs, dependency-ordered task graphs, fresh-context worker runs, cross-model adversarial review, and receipts. Each artifact is reviewable independently and verified by a different model. The system decomposes work into context-sized slices, re-anchors workers to prevent token bleed and stale assumptions, and records proof of completion at every step. Everything lives in your repo under .flow/ with zero external dependencies—uninstall with `rm -rf .flow/`. Built for Claude Code, OpenAI Codex, Factory Droid, and Grok Build with 28 agent-native skills covering the full lifecycle from idea to maintenance.\nAutomate the planning and execution of coding tasks to improve workflow efficiency.\nRun autonomous coding sessions overnight with Ralph mode to maximize productivity.\nConduct cross-model code reviews to ensure quality and adherence to specifications.\nUtilize dependency graphs to manage task execution order and avoid forgotten requirements.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gmickel/gmickel-claude-marketplace`",
+    "usage_vi": "```\nI want to use Claude Code plugins to automate my coding workflow. Set up a Flow-Next workflow for [PROJECT_NAME] with the following tasks: [TASK_LIST]. Enable Ralph autonomous mode to work overnight with fresh context. Implement multi-model review gates using RepoPrompt and Codex. Add re-anchoring to prevent drift and receipt-based gating for quality control.\n```\nCopy\n\n```\nWorkflow Setup Complete:\n\n1. Flow-Next Workflow Created:\n   - Project: E-commerce Website Redesign\n   - Tasks: Database migration, UI component creation, API integration\n   - Estimated Duration: 3 days\n\n2. Ralph Autonomous Mode Activated:\n   - Scheduled to run overnight from 10 PM to 6 AM\n   - Fresh context loaded: Latest design mockups, updated requirements\n   - Focus Areas: UI component creation, API documentation review\n\n3. Multi-Model Review Gates Implemented:\n   - RepoPrompt: Code quality and style checks\n   - Codex: Functional correctness and security reviews\n   - Scheduled for every 4 hours\n\n4. Re-anchoring and Gating:\n   - Re-anchoring points set at key milestones\n   - Receipt-based gating for database migration and API integration\n   - Notifications enabled for manual review points\n\nNext Steps:\n- Review initial code outputs from Ralph's overnight work\n- Provide feedback for re-anchoring points\n- Monitor review gate results and address any issues\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:43:45.531768Z",
+    "http_status": 200,
+    "content_hash": "091580e97ec11886bf048808f4a3847cd89c2f0c4ea374013b0c9d9746704396",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gmickel-claude-marketplace.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gmickel-claude-marketplace.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "gmickel-claude-marketplace - AI Coding & Workflow",
+  "short_description_vi": "Claude Code plugins for reliable AI coding. Flow-Next: plan-first workflows, Ralph autonomous mode (overnight coding with fresh context), multi-model review gates via RepoPrompt/Codex, re-anchoring to prevent drift, receipt-based gating."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codmate",
+  "slug": "codmate",
+  "name": "CodMate",
+  "headline": "CodMate - Manage CLI AI Sessions",
+  "short_description": "CodMate is a macOS SwiftUI app for managing CLI AI sessions: browse, search, organize, resume, and review work produced by Codex, Claude Code, and Gemini CLI.  It focuses on speed, a compact three-column UI, and “ship it” workflows like Project Review (Git Changes) and one-click Resume/New.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "loocor",
+  "install_command": "git clone https://github.com/loocor/codmate.git",
+  "source_repo_url": "https://github.com/loocor/codmate",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "swift",
+    "gemini-cli",
+    "codex-cli",
+    "codmate",
+    "claude-code",
+    "swiftui"
+  ],
+  "sections": {
+    "overview": "CodMate is a native macOS application designed to streamline management of CLI AI sessions from multiple providers including Claude Code, Codex, and Gemini. The app provides a compact three-column UI optimized for speed and efficiency, allowing developers to browse, search, organize, and resume previous AI work sessions. Key workflows include Project Review for analyzing Git changes and one-click Resume/New functionality to quickly continue or start fresh sessions. CodMate integrates with the AI development workflow, helping teams track and manage the output of multiple AI coding assistants from a single interface. The application is built with SwiftUI and uses a SwiftPM-only build system for seamless integration on modern macOS systems.\nQuickly search and filter through AI session history to find relevant outputs.\nOrganize AI sessions into projects and tasks for better management and collaboration.\nResume previous CLI sessions instantly in your preferred terminal application.\nReview Git changes and generate AI-assisted commit messages directly within the app.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/loocor/codmate`",
+    "usage": "```\nUse CodMate to [ACTION] for [PROJECT/PURPOSE]. For example: 'Use CodMate to resume the last CLI AI session for the [PROJECT_NAME] repository and review the changes made to the [FILE_PATH] file.'\n```\nCopy\n\n```\n### CodMate Session Review: E-commerce API Refactor\n\n**Session ID:** `2024-05-15_14-30-47_claude_code`\n**Project:** `acme-ecommerce-api`\n**Last Modified:** 2 hours ago\n\n#### Changes Reviewed:\n1. **`src/controllers/orderController.js`**\n   - Added `cancelOrder` endpoint with transaction support.\n   - Refactored `createOrder` to validate inventory in real-time.\n   - **Lines 45-60:** New validation logic for stock levels.\n\n2. **`src/models/Order.js`**\n   - Added `status` enum: `PENDING`, `PROCESSING`, `CANCELLED`, `SHIPPED`.\n   - **Line 12:** Default status set to `PENDING`.\n\n3. **`tests/order.test.js`**\n   - Added test case for `cancelOrder` endpoint.\n   - **Lines 88-102:** Mocked database calls for edge cases.\n\n#### Key Findings:\n- **Critical:** The `cancelOrder` endpoint lacks rate-limiting (security risk).\n- **Improvement:** Logging for `createOrder` validation failures is too verbose.\n- **Ship-Ready:** All changes are tested and pass CI/CD pipeline.\n\n#### Next Steps:\n- [ ] Add rate-limiting middleware to `cancelOrder`.\n- [ ] Simplify validation error logs in `orderController.js`.\n- [ ] Merge PR #42 after review.\n\n---\n*Reviewed in CodMate v1.2.1 | Session Duration: 47 minutes*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codmate#main-content",
+      "codmate#overview",
+      "codmate#setup",
+      "codmate#examples",
+      "codmate#tools",
+      "codmate#mcp",
+      "codmate#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodMate là ứng dụng native trên macOS được thiết kế để tối ưu hóa việc quản lý các CLI AI session từ nhiều nhà cung cấp khác nhau, bao gồm Claude Code, Codex và Gemini. Ứng dụng sở hữu giao diện UI 3 cột gọn gàng, được tối ưu hóa về tốc độ và hiệu suất, giúp các nhà phát triển dễ dàng duyệt, tìm kiếm, sắp xếp và tiếp tục các session làm việc trước đó với AI. Các workflow chính bao gồm Project Review để phân tích các thay đổi Git và tính năng Resume/New một cú nhấp chuột để nhanh chóng tiếp tục hoặc bắt đầu một session mới. CodMate tích hợp mượt mà vào workflow phát triển phần mềm bằng AI, hỗ trợ các đội ngũ theo dõi và quản lý output từ nhiều trợ lý lập trình AI khác nhau trên một giao diện duy nhất. Ứng dụng được xây dựng bằng SwiftUI và sử dụng hệ thống build thuần SwiftPM để tích hợp liền mạch trên các hệ điều hành macOS hiện đại.\nNhanh chóng tìm kiếm và lọc lịch sử session AI để tìm các output liên quan.\nSắp xếp các session AI theo dự án và tác vụ để quản lý và cộng tác tốt hơn.\nTiếp tục ngay lập tức các session CLI trước đó trên ứng dụng terminal ưa thích của bạn.\nXem lại các thay đổi Git và tạo các commit message có sự hỗ trợ của AI ngay trong ứng dụng.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/loocor/codmate`",
+    "usage_vi": "```\nSử dụng CodMate để [HÀNH ĐỘNG] cho [DỰ ÁN/MỤC ĐÍCH]. Ví dụ: 'Sử dụng CodMate để tiếp tục CLI AI session gần nhất của repository [PROJECT_NAME] và xem lại các thay đổi trong file [FILE_PATH].'\n```\nCopy\n\n```\n### Đánh giá Session của CodMate: Tối ưu cấu trúc E-commerce API (Refactor)\n\n**Session ID:** `2024-05-15_14-30-47_claude_code`\n**Project:** `acme-ecommerce-api`\n**Last Modified:** 2 giờ trước\n\n#### Các thay đổi đã xem lại:\n1. **`src/controllers/orderController.js`**\n   - Thêm endpoint `cancelOrder` hỗ trợ transaction.\n   - Refactor `createOrder` để kiểm tra tồn kho theo thời gian thực (real-time).\n   - **Dòng 45-60:** Thêm logic kiểm tra mức tồn kho mới.\n\n2. **`src/models/Order.js`**\n   - Thêm enum `status`: `PENDING`, `PROCESSING`, `CANCELLED`, `SHIPPED`.\n   - **Dòng 12:** Trạng thái mặc định được đặt thành `PENDING`.\n\n3. **`tests/order.test.js`**\n   - Thêm test case cho endpoint `cancelOrder`.\n   - **Dòng 88-102:** Mock các truy vấn database cho các trường hợp biên (edge cases).\n\n#### Phát hiện chính:\n- **Nghiêm trọng:** Endpoint `cancelOrder` thiếu rate-limiting (nguy cơ bảo mật).\n- **Cải tiến:** Nhật ký log khi kiểm tra `createOrder` thất bại quá rườm rà (verbose).\n- **Sẵn sàng triển khai (Ship-Ready):** Tất cả thay đổi đã được kiểm thử và pass pipeline CI/CD.\n\n#### Các bước tiếp theo:\n- [ ] Thêm middleware rate-limiting vào `cancelOrder`.\n- [ ] Đơn giản hóa log lỗi kiểm tra trong `orderController.js`.\n- [ ] Merge PR #42 sau khi duyệt.\n\n---\n*Được đánh giá trong CodMate v1.2.1 | Thời gian Session: 47 phút*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:26:11.823292Z",
+    "http_status": 200,
+    "content_hash": "efbc683335838ce3a24e9c08b6f99fbd4ae3f115e0d7942d46db616633534f1e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codmate.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codmate.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CodMate - Quản lý các CLI AI Session",
+  "short_description_vi": "CodMate là ứng dụng SwiftUI trên macOS giúp quản lý các CLI AI session: duyệt, tìm kiếm, sắp xếp, tiếp tục và xem lại kết quả công việc từ Codex, Claude Code và Gemini CLI. Ứng dụng tập trung vào tốc độ, giao diện UI 3 cột gọn gàng và các workflow “ship it” như Project Review (kiểm tra thay đổi Git) và tính năng Resume/New chỉ với một cú nhấp chuột."
+}

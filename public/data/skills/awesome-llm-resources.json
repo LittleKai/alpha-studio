@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-llm-resources",
+  "slug": "awesome-llm-resources",
+  "name": "awesome-LLM-resources",
+  "headline": "Comprehensive LLM resources guide",
+  "short_description": "A curated list of the world's best LLM resources for operations teams. It covers multimodal generation, agents, coding assistance, AI proofreading, data processing, model training, and inference. Connects to Claude for enhanced workflows.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "WangRongsheng",
+  "install_command": "git clone https://github.com/WangRongsheng/awesome-LLM-resources.git",
+  "source_repo_url": "https://github.com/WangRongsheng/awesome-LLM-resources",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "qwen",
+    "webui",
+    "openai",
+    "large-language-models",
+    "book",
+    "retrieval-augmented-generation",
+    "course",
+    "llm",
+    "awesome-list",
+    "mistral",
+    "llama",
+    "rag"
+  ],
+  "sections": {
+    "overview": "awesome-LLM-resources is a continuously updated directory curating the world's best large language model resources organized by capability: multimodal generation, AI agents, coding assistance, AI proofreading, data processing, model training, and inference optimization. The repository aggregates tools, frameworks, and documentation relevant to operations teams implementing LLM-based solutions. It serves as a central reference point for discovering established resources across the LLM ecosystem. The collection enables teams to quickly identify and integrate appropriate tools for their specific automation and AI workflow needs.\nAutomate the process of fine-tuning language models with curated datasets.\nUtilize multimodal generation techniques to create diverse content types.\nImplement agent-based systems for task automation in software development.\nExtract and process large datasets efficiently for training LLMs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WangRongsheng/awesome-LLM-resources`",
+    "usage": "```\nGenerate a curated list of the top 5 [CATEGORY] resources for [TEAM/ROLE] teams. Include resources for [SPECIFIC_TASK] with brief descriptions. Prioritize tools that integrate with Claude or offer API access. Format the output as a markdown table with columns: Resource Name, Type, Key Features, Use Case, and Link. Example categories: multimodal generation, agent frameworks, coding assistants, AI proofreading, data processing, model training, or inference optimization.\n```\nCopy\n\n```\n### Curated LLM Resources for Data Processing Teams\n\n| Resource Name | Type | Key Features | Use Case | Link |\n|---------------|------|--------------|----------|------|\n| **Dust.tt** | Agent Framework | Multi-agent orchestration, Claude integration, custom tool creation | Automating data cleaning pipelines with AI agents | [dust.tt](https://dust.tt) |\n| **Unstructured.io** | Data Processing | PDF/Excel parsing, OCR, API-first architecture | Extracting structured data from unstructured documents | [unstructured.io](https://unstructured.io) |\n| **LlamaIndex** | Data Framework | Vector database integration, RAG pipelines, multi-modal support | Building searchable knowledge bases from company data | [llamaindex.ai](https://llamaindex.ai) |\n| **Pydantic AI** | Validation Tool | Structured outputs, type safety, Claude Code integration | Validating LLM-generated JSON outputs in production | [pydantic.dev](https://pydantic.dev) |\n| **Vercel AI SDK** | Inference Toolkit | Streaming responses, multi-model support, Claude compatibility | Deploying real-time AI-powered data processing APIs | [vercel.com/ai](https://vercel.com/ai) |\n\n**Why These Resources?**\nThese tools were selected based on their proven performance in production environments, Claude integration capabilities, and ability to handle real-world data processing challenges. Dust.tt's multi-agent system excels at breaking down complex data workflows into manageable tasks, while Unstructured.io's API-first approach makes it ideal for batch processing large document collections. LlamaIndex bridges the gap between raw data and actionable insights by enabling semantic search across heterogeneous data sources.\n\nFor teams already using Claude, Pydantic AI provides the missing link between unstructured LLM outputs and structured data pipelines, while Vercel's AI SDK offers the deployment infrastructure needed to scale these solutions. Each tool addresses a critical bottleneck in modern data operations workflows, from ingestion to validation to deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-llm-resources#main-content",
+      "awesome-llm-resources#overview",
+      "awesome-llm-resources#setup",
+      "awesome-llm-resources#examples",
+      "awesome-llm-resources#tools",
+      "awesome-llm-resources#mcp",
+      "awesome-llm-resources#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "awesome-LLM-resources is a continuously updated directory curating the world's best large language model resources organized by capability: multimodal generation, AI agents, coding assistance, AI proofreading, data processing, model training, and inference optimization. The repository aggregates tools, frameworks, and documentation relevant to operations teams implementing LLM-based solutions. It serves as a central reference point for discovering established resources across the LLM ecosystem. The collection enables teams to quickly identify and integrate appropriate tools for their specific automation and AI workflow needs.\nAutomate the process of fine-tuning language models with curated datasets.\nUtilize multimodal generation techniques to create diverse content types.\nImplement agent-based systems for task automation in software development.\nExtract and process large datasets efficiently for training LLMs.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WangRongsheng/awesome-LLM-resources`",
+    "usage_vi": "```\nGenerate a curated list of the top 5 [CATEGORY] resources for [TEAM/ROLE] teams. Include resources for [SPECIFIC_TASK] with brief descriptions. Prioritize tools that integrate with Claude or offer API access. Format the output as a markdown table with columns: Resource Name, Type, Key Features, Use Case, and Link. Example categories: multimodal generation, agent frameworks, coding assistants, AI proofreading, data processing, model training, or inference optimization.\n```\nCopy\n\n```\n### Curated LLM Resources for Data Processing Teams\n\n| Resource Name | Type | Key Features | Use Case | Link |\n|---------------|------|--------------|----------|------|\n| **Dust.tt** | Agent Framework | Multi-agent orchestration, Claude integration, custom tool creation | Automating data cleaning pipelines with AI agents | [dust.tt](https://dust.tt) |\n| **Unstructured.io** | Data Processing | PDF/Excel parsing, OCR, API-first architecture | Extracting structured data from unstructured documents | [unstructured.io](https://unstructured.io) |\n| **LlamaIndex** | Data Framework | Vector database integration, RAG pipelines, multi-modal support | Building searchable knowledge bases from company data | [llamaindex.ai](https://llamaindex.ai) |\n| **Pydantic AI** | Validation Tool | Structured outputs, type safety, Claude Code integration | Validating LLM-generated JSON outputs in production | [pydantic.dev](https://pydantic.dev) |\n| **Vercel AI SDK** | Inference Toolkit | Streaming responses, multi-model support, Claude compatibility | Deploying real-time AI-powered data processing APIs | [vercel.com/ai](https://vercel.com/ai) |\n\n**Why These Resources?**\nThese tools were selected based on their proven performance in production environments, Claude integration capabilities, and ability to handle real-world data processing challenges. Dust.tt's multi-agent system excels at breaking down complex data workflows into manageable tasks, while Unstructured.io's API-first approach makes it ideal for batch processing large document collections. LlamaIndex bridges the gap between raw data and actionable insights by enabling semantic search across heterogeneous data sources.\n\nFor teams already using Claude, Pydantic AI provides the missing link between unstructured LLM outputs and structured data pipelines, while Vercel's AI SDK offers the deployment infrastructure needed to scale these solutions. Each tool addresses a critical bottleneck in modern data operations workflows, from ingestion to validation to deployment.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:36:14.072215Z",
+    "http_status": 200,
+    "content_hash": "8d564b5d76707b57035235e0fc69a07c0a6bcf8d0fdde838be136a3880b311ee",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-llm-resources.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-llm-resources.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Comprehensive LLM resources guide",
+  "short_description_vi": "A curated list of the world's best LLM resources for operations teams. It covers multimodal generation, agents, coding assistance, AI proofreading, data processing, model training, and inference. Connects to Claude for enhanced workflows."
+}

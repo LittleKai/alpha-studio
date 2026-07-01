@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/massgen-skill",
+  "slug": "massgen-skill",
+  "name": "trigger-tasks",
+  "headline": "MassGen Skill: Multi-Agent Task Delegation",
+  "short_description": "MassGen Skill helps users delegate tasks to their AI-powered team. It is designed for users looking to streamline task management using AI.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "massgen",
+  "install_command": "git clone https://github.com/massgen/skills",
+  "source_repo_url": "https://github.com/massgen/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "task-management",
+    "massgen"
+  ],
+  "sections": {
+    "overview": "MassGen Skill invokes a multi-agent system to handle complex tasks in parallel—writing, code generation, reviews, planning, specs, research, and design. Instead of a single AI agent working sequentially, MassGen coordinates multiple agents iterating together, which beats solo iteration. The skill integrates with your codebase via read or write modes, supports custom evaluation criteria to shape output quality, and runs entirely in the background with a web interface for monitoring and reviewing changes before they're applied.\nAutomate repetitive tasks\nManage team assignments\nCoordinate workflows with AI assistance\nIntegrate with existing applications",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/massgen/skills --skill massgen`\n`git clone https://github.com/massgen/skills`",
+    "usage": "```\nCreate a detailed task list for [COMPANY]'s [INDUSTRY] team, breaking down [PROJECT NAME] into actionable steps. Assign each task to the most relevant team member or AI tool, including deadlines and dependencies. Prioritize tasks based on [CRITICAL FACTOR, e.g., ROI, urgency, or resource availability]. Ensure the plan aligns with [COMPANY]'s strategic goals and includes clear success metrics for each task.\n```\nCopy\n\n```\n**Task Breakdown for 'Q3 Product Launch' at GreenTech Solutions**\n\n**Strategic Goals:** Increase market share by 15% in renewable energy sector by Q4 2024.\n\n| Task ID | Task Description | Assigned To | Deadline | Dependencies | Success Metric |\n|---------|------------------|-------------|----------|--------------|----------------|\n| T-1 | Market research on solar panel trends | AI Research Assistant | 2024-06-15 | None | Report with 3 key trends and 10 competitor insights |\n| T-2 | Design 3 product prototypes | AI Design Team | 2024-06-22 | T-1 | 3 high-fidelity mockups with sustainability scores >8.5/10 |\n| T-3 | Draft press release for launch | Marketing Team + AI Copywriter | 2024-07-01 | T-2 | Press release approved by legal team and ready for distribution |\n| T-4 | Schedule 50+ media interviews | PR Agency + AI Scheduler | 2024-07-10 | T-3 | 90% of interviews confirmed with key industry publications |\n| T-5 | Beta test prototypes with 100 customers | Customer Success Team | 2024-07-15 | T-2 | 80% positive feedback (4+ stars) and feature request log |\n\n**Critical Path:** T-1 → T-2 → T-3 → T-4\n\n**Success Metrics:**\n- 15% increase in market share (tracked via sales data)\n- 50+ media mentions in Q3\n- Customer satisfaction score ≥4.5/5 post-launch\n\n**Risks & Mitigations:**\n- Prototype delays → AI Design Team to work in parallel with 2 shifts\n- Media unavailability → AI Scheduler to propose 3 alternative time slots per request\n\nNext steps: Review task dependencies and adjust deadlines if needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "massgen-skill#main-content",
+      "massgen-skill#overview",
+      "massgen-skill#setup",
+      "massgen-skill#examples",
+      "massgen-skill#related",
+      "trigger-tasks"
+    ],
+    "overview_vi": "MassGen Skill invokes a multi-agent system to handle complex tasks in parallel—writing, code generation, reviews, planning, specs, research, and design. Instead of a single AI agent working sequentially, MassGen coordinates multiple agents iterating together, which beats solo iteration. The skill integrates with your codebase via read or write modes, supports custom evaluation criteria to shape output quality, and runs entirely in the background with a web interface for monitoring and reviewing changes before they're applied.\nAutomate repetitive tasks\nManage team assignments\nCoordinate workflows with AI assistance\nIntegrate with existing applications",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/massgen/skills --skill massgen`\n`git clone https://github.com/massgen/skills`",
+    "usage_vi": "```\nCreate a detailed task list for [COMPANY]'s [INDUSTRY] team, breaking down [PROJECT NAME] into actionable steps. Assign each task to the most relevant team member or AI tool, including deadlines and dependencies. Prioritize tasks based on [CRITICAL FACTOR, e.g., ROI, urgency, or resource availability]. Ensure the plan aligns with [COMPANY]'s strategic goals and includes clear success metrics for each task.\n```\nCopy\n\n```\n**Task Breakdown for 'Q3 Product Launch' at GreenTech Solutions**\n\n**Strategic Goals:** Increase market share by 15% in renewable energy sector by Q4 2024.\n\n| Task ID | Task Description | Assigned To | Deadline | Dependencies | Success Metric |\n|---------|------------------|-------------|----------|--------------|----------------|\n| T-1 | Market research on solar panel trends | AI Research Assistant | 2024-06-15 | None | Report with 3 key trends and 10 competitor insights |\n| T-2 | Design 3 product prototypes | AI Design Team | 2024-06-22 | T-1 | 3 high-fidelity mockups with sustainability scores >8.5/10 |\n| T-3 | Draft press release for launch | Marketing Team + AI Copywriter | 2024-07-01 | T-2 | Press release approved by legal team and ready for distribution |\n| T-4 | Schedule 50+ media interviews | PR Agency + AI Scheduler | 2024-07-10 | T-3 | 90% of interviews confirmed with key industry publications |\n| T-5 | Beta test prototypes with 100 customers | Customer Success Team | 2024-07-15 | T-2 | 80% positive feedback (4+ stars) and feature request log |\n\n**Critical Path:** T-1 → T-2 → T-3 → T-4\n\n**Success Metrics:**\n- 15% increase in market share (tracked via sales data)\n- 50+ media mentions in Q3\n- Customer satisfaction score ≥4.5/5 post-launch\n\n**Risks & Mitigations:**\n- Prototype delays → AI Design Team to work in parallel with 2 shifts\n- Media unavailability → AI Scheduler to propose 3 alternative time slots per request\n\nNext steps: Review task dependencies and adjust deadlines if needed.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:41:22.216161Z",
+    "http_status": 200,
+    "content_hash": "6a2f0e3202c5a171730aa0d9455a7fa82a63e54f8c989c6936ccd9aa9523aa60",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\massgen-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\massgen-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MassGen Skill: Multi-Agent Task Delegation",
+  "short_description_vi": "MassGen Skill helps users delegate tasks to their AI-powered team. It is designed for users looking to streamline task management using AI."
+}

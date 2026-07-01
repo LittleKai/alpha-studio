@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/github-action-feed-to-social-media",
+  "slug": "github-action-feed-to-social-media",
+  "name": "Github Action Feed To Social Media",
+  "headline": "Feed to Social Media: Auto-post RSS to multiple",
+  "short_description": "GitHub Action that automatically posts the latest RSS/Atom feed item to Mastodon, Twitter, Discord, Slack, or Bluesky with customizable formatting.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "lwojcik",
+  "install_command": "git clone https://github.com/lwojcik/github-action-feed-to-social-media.git",
+  "source_repo_url": "https://github.com/lwojcik/github-action-feed-to-social-media",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "discord",
+    "mastodon",
+    "github-actions",
+    "autoposter",
+    "posse",
+    "bluesky",
+    "rss",
+    "atom",
+    "bsky",
+    "twitter",
+    "atproto",
+    "slack",
+    "github-action",
+    "social-media",
+    "feed"
+  ],
+  "sections": {
+    "overview": "This GitHub Action monitors RSS and Atom feeds, detects new items, and automatically posts them to your choice of social media platforms including Mastodon, Twitter, Discord, Slack, and Bluesky. It uses a configurable strategy to identify the newest feed item (by publication date, first, or last in feed) and maintains a cache to prevent duplicate posts. Each supported platform can use its own custom post format with template tags like {title}, {link}, {description}, and iTunes-specific fields, allowing you to optimize messages for platform-specific features and character limits. The Action handles authentication via API tokens and webhooks, with sensitive credentials stored as encrypted GitHub secrets.\nAutomatically share new blog posts across multiple social networks\nCross-post podcast episodes to Discord and Slack communities\nDistribute news feed updates to team communication channels\nUpdate Mastodon profile metadata with latest feed information",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lwojcik/github-action-feed-to-social-media`",
+    "usage": "```\nCreate a GitHub Action that automatically posts the latest item from [RSS_FEED_URL] to [PLATFORM_NAME] (e.g., Mastodon, Twitter, Discord, Slack, Bluesky). The post should include the title, a short excerpt, and a link to the full article. Ensure the action runs daily and handles errors gracefully. Provide the complete YAML configuration for the workflow.\n```\nCopy\n\n```\n# GitHub Action for RSS to Social Media Posting\n\nHere's a complete GitHub Action workflow that posts the latest RSS feed item to Mastodon:\n\n```yaml\nname: RSS to Mastodon\n\non:\n  schedule:\n    - cron: '0 0 * * *'\n\njobs:\n  post-to-mastodon:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v2\n\n      - name: Post to Mastodon\n        uses: jasonetco/rss-to-mastodon-action@v1\n        with:\n          rss-feed-url: 'https://example.com/feed.xml'\n          mastodon-instance: 'mastodon.social'\n          mastodon-access-token: ${{ secrets.MASTODON_ACCESS_TOKEN }}\n          post-title: true\n          post-excerpt: true\n          post-link: true\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "github-action-feed-to-social-media#main-content",
+      "github-action-feed-to-social-media#overview",
+      "github-action-feed-to-social-media#setup",
+      "github-action-feed-to-social-media#examples",
+      "github-action-feed-to-social-media#tools",
+      "github-action-feed-to-social-media#mcp",
+      "github-action-feed-to-social-media#related",
+      "marketingskills",
+      "copywriting",
+      "burbnbot"
+    ],
+    "overview_vi": "GitHub Action này giúp giám sát các RSS và Atom feed, phát hiện nội dung mới và tự động đăng lên các nền tảng mạng xã hội tùy chọn bao gồm Mastodon, Twitter, Discord, Slack và Bluesky. Action sử dụng một cơ chế cấu hình linh hoạt để xác định bài viết mới nhất (theo ngày xuất bản, vị trí đầu tiên hoặc cuối cùng trong feed) và duy trì bộ nhớ cache để tránh đăng trùng lặp. Mỗi nền tảng được hỗ trợ có thể sử dụng định dạng bài đăng tùy chỉnh riêng với các thẻ mẫu (template tags) như {title}, {link}, {description} và các trường dành riêng cho iTunes, giúp bạn tối ưu hóa nội dung theo tính năng và giới hạn ký tự của từng nền tảng. Action xử lý xác thực qua API token và webhook, đảm bảo an toàn cho các thông tin đăng nhập nhạy cảm bằng cách lưu trữ dưới dạng GitHub Secrets được mã hóa.\nTự động chia sẻ bài viết blog mới lên nhiều mạng xã hội\nĐăng chéo các tập podcast lên cộng đồng Discord và Slack\nPhân phối các cập nhật từ nguồn cấp tin tức đến các kênh giao tiếp của đội ngũ\nCập nhật siêu dữ liệu (metadata) trên hồ sơ Mastodon với thông tin feed mới nhất",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/lwojcik/github-action-feed-to-social-media`",
+    "usage_vi": "```\nTạo một GitHub Action tự động đăng bài viết mới nhất từ [RSS_FEED_URL] lên [PLATFORM_NAME] (ví dụ: Mastodon, Twitter, Discord, Slack, Bluesky). Bài đăng cần bao gồm tiêu đề, một đoạn trích ngắn và liên kết dẫn đến bài viết đầy đủ. Đảm bảo action chạy hàng ngày và xử lý lỗi một cách trơn tru. Cung cấp cấu hình YAML hoàn chỉnh cho workflow.\n```\nCopy\n\n```\n# GitHub Action để tự động đăng RSS lên mạng xã hội\n\nDưới đây là workflow GitHub Action hoàn chỉnh giúp đăng bài viết mới nhất từ RSS feed lên Mastodon:\n\n```yaml\nname: RSS to Mastodon\n\non:\n  schedule:\n    - cron: '0 0 * * *'\n\njobs:\n  post-to-mastodon:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v2\n\n      - name: Post to Mastodon\n        uses: jasonetco/rss-to-mastodon-action@v1\n        with:\n          rss-feed-url: 'https://example.com/feed.xml'\n          mastodon-instance: 'mastodon.social'\n          mastodon-access-token: ${{ secrets.MASTODON_ACCESS_TOKEN }}\n          post-title: true\n          post-excerpt: true\n          post-link: true\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:37.402453Z",
+    "http_status": 200,
+    "content_hash": "ec2418e85bbc83bb550081e17ca9853c964dfe4dfba1f57573370b4d3177e1d3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-action-feed-to-social-media.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-action-feed-to-social-media.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Feed to Social Media: Tự động đăng RSS lên nhiều nền tảng",
+  "short_description_vi": "GitHub Action giúp tự động đăng bài viết mới nhất từ RSS/Atom feed lên Mastodon, Twitter, Discord, Slack hoặc Bluesky với định dạng tùy chỉnh."
+}

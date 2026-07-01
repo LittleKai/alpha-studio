@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-reachout",
+  "slug": "agent-reachout",
+  "name": "browser-use",
+  "headline": "agent-reachout: Stay Updated via Telegram",
+  "short_description": "Agent Reachout enables Claude Code to send messages to you on Telegram when it completes tasks or requires decisions. This is useful for operations teams managing automated workflows, ensuring timely updates and reducing manual check-ins. It connects Claude Code agents to Telegram, streamlining communication and improving productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "vibe-with-me-tools",
+  "install_command": "git clone https://github.com/vibe-with-me-tools/agent-reachout.git",
+  "source_repo_url": "https://github.com/vibe-with-me-tools/agent-reachout",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-ai",
+    "llm",
+    "notifications",
+    "productivity",
+    "messaging",
+    "claude-code-plugin",
+    "mcp",
+    "telegram",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "The agent-reachout skill for Claude Code is designed to enhance communication efficiency by sending notifications directly to your Telegram account. This automation skill alerts you when Claude Code has completed a task or requires your input for decision-making. By integrating this skill into your workflow, you can ensure that you are always in the loop, even when you are away from your primary work environment. One of the key benefits of using the agent-reachout skill is the ability to streamline your workflow automation. By receiving timely updates on Telegram, you can make quicker decisions without having to constantly check your work platform. This skill is particularly valuable for developers, product managers, and AI practitioners who often juggle multiple tasks and need to prioritize their time effectively. Although the exact time savings are not quantified, the reduction in context-switching can lead to significant productivity gains. This skill is suitable for professionals across various roles who are looking to improve their responsiveness and decision-making speed. Whether you are managing a development team or overseeing product launches, agent-reachout helps you maintain oversight of critical tasks without being tethered to your desk. Practical use cases include receiving alerts for completed builds, updates on project milestones, or requests for approvals, allowing for seamless collaboration and timely responses. Implementing the agent-reachout skill is classified as intermediate in difficulty, taking approximately 30 minutes to set up. Users will need a basic understanding of Claude Code and Telegram integration to get started. This skill fits well into AI-first workflows by leveraging automation to enhance communication, ensuring that important updates are delivered directly to you, thus enabling a more agile and responsive work environment.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vibe-with-me-tools/agent-reachout`",
+    "usage": "```\nConfigure an automated Telegram notification from Claude Code to [YOUR_TELEGRAM_USERNAME] when [TASK_DESCRIPTION] is completed or requires attention. Include a summary of the results or the specific decision needed in the message. Example: 'Set up a Telegram alert to my username @ops_manager when the data pipeline [TASK] finishes processing or fails. The message should include the status, timestamp, and any errors encountered.'\n```\nCopy\n\n```\n```\n🚨 **Claude Code Task Alert** 🚨\n\n**Task:** Data Pipeline Processing for Q3 Sales Report\n**Status:** ✅ Completed Successfully\n**Timestamp:** 2024-05-15 14:32:10 UTC\n**Duration:** 2h 15m\n**Output:** \n- Processed 12,487 records\n- Generated 3 reports (CSV, PDF, Excel)\n- Uploaded to S3 bucket: `reports/q3-sales-2024/`\n\n**Next Steps:** \n- Review reports in the shared drive.\n- Notify stakeholders via email (template attached).\n- Archive raw data to cold storage.\n\n**Errors:** None\n```\n\n*Sent to @ops_manager via Telegram at 14:32 UTC.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-reachout#main-content",
+      "agent-reachout#overview",
+      "agent-reachout#setup",
+      "agent-reachout#examples",
+      "agent-reachout#tools",
+      "agent-reachout#mcp",
+      "agent-reachout#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The agent-reachout skill for Claude Code is designed to enhance communication efficiency by sending notifications directly to your Telegram account. This automation skill alerts you when Claude Code has completed a task or requires your input for decision-making. By integrating this skill into your workflow, you can ensure that you are always in the loop, even when you are away from your primary work environment. One of the key benefits of using the agent-reachout skill is the ability to streamline your workflow automation. By receiving timely updates on Telegram, you can make quicker decisions without having to constantly check your work platform. This skill is particularly valuable for developers, product managers, and AI practitioners who often juggle multiple tasks and need to prioritize their time effectively. Although the exact time savings are not quantified, the reduction in context-switching can lead to significant productivity gains. This skill is suitable for professionals across various roles who are looking to improve their responsiveness and decision-making speed. Whether you are managing a development team or overseeing product launches, agent-reachout helps you maintain oversight of critical tasks without being tethered to your desk. Practical use cases include receiving alerts for completed builds, updates on project milestones, or requests for approvals, allowing for seamless collaboration and timely responses. Implementing the agent-reachout skill is classified as intermediate in difficulty, taking approximately 30 minutes to set up. Users will need a basic understanding of Claude Code and Telegram integration to get started. This skill fits well into AI-first workflows by leveraging automation to enhance communication, ensuring that important updates are delivered directly to you, thus enabling a more agile and responsive work environment.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vibe-with-me-tools/agent-reachout`",
+    "usage_vi": "```\nConfigure an automated Telegram notification from Claude Code to [YOUR_TELEGRAM_USERNAME] when [TASK_DESCRIPTION] is completed or requires attention. Include a summary of the results or the specific decision needed in the message. Example: 'Set up a Telegram alert to my username @ops_manager when the data pipeline [TASK] finishes processing or fails. The message should include the status, timestamp, and any errors encountered.'\n```\nCopy\n\n```\n```\n🚨 **Claude Code Task Alert** 🚨\n\n**Task:** Data Pipeline Processing for Q3 Sales Report\n**Status:** ✅ Completed Successfully\n**Timestamp:** 2024-05-15 14:32:10 UTC\n**Duration:** 2h 15m\n**Output:** \n- Processed 12,487 records\n- Generated 3 reports (CSV, PDF, Excel)\n- Uploaded to S3 bucket: `reports/q3-sales-2024/`\n\n**Next Steps:** \n- Review reports in the shared drive.\n- Notify stakeholders via email (template attached).\n- Archive raw data to cold storage.\n\n**Errors:** None\n```\n\n*Sent to @ops_manager via Telegram at 14:32 UTC.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:35:45.523630Z",
+    "http_status": 200,
+    "content_hash": "517571d5d920a08d1f5de8b7e45d79f2ca52c61f9b0dc9c50a54e6bfca78a55a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-reachout.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-reachout.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agent-reachout: Stay Updated via Telegram",
+  "short_description_vi": "Agent Reachout enables Claude Code to send messages to you on Telegram when it completes tasks or requires decisions. This is useful for operations teams managing automated workflows, ensuring timely updates and reducing manual check-ins. It connects Claude Code agents to Telegram, streamlining communication and improving productivity."
+}

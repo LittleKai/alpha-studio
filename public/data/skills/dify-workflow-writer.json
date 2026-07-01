@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dify-workflow-writer",
+  "slug": "dify-workflow-writer",
+  "name": "browser-use",
+  "headline": "Dify Workflow Writer: Write DSL Files",
+  "short_description": "Claude Code skill for writing production-ready Dify workflow DSL files in YAML, covering variable syntax, node configuration, and architectural patterns.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "yoloyolo8",
+  "install_command": "git clone https://github.com/yoloyolo8/dify-workflow-writer.git",
+  "source_repo_url": "https://github.com/yoloyolo8/dify-workflow-writer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The dify-workflow-writer skill teaches Claude Code how to create, modify, and debug Dify workflow DSL (YAML) files. It provides expert guidance on correct variable syntax patterns like {{#NODE_ID.VAR#}}, templates for all Dify node types (LLM, HTTP, Code, IF/ELSE, Iteration), and common gotchas to avoid. The skill includes four proven workflow architectural patterns and comprehensive troubleshooting for import failures and schema errors. This is essential for developers building multi-step AI workflows in Dify, from simple LLM chains to complex API integrations with conditional branching and error handling.\nCreating multi-step LLM workflows with proper variable references and node connections\nDebugging DSL import failures and variable syntax errors\nBuilding HTTP request + LLM processing chains\nImplementing conditional logic and iteration patterns in workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoloyolo8/dify-workflow-writer`",
+    "usage": "```\nWrite a Dify workflow DSL file for [COMPANY] that automates [INDUSTRY]-specific data processing. The workflow should include [DATA] extraction, transformation, and loading into [TARGET_SYSTEM]. Ensure the workflow handles errors and includes logging.\n```\nCopy\n\n```\n# Dify Workflow DSL for Customer Data Processing\n\n```dsl\nworkflow \"Customer Data Processing\" {\n  description = \"Automates extraction, transformation, and loading of customer data\"\n  version = \"1.0\"\n\n  input {\n    field \"source_file\" type = \"string\"\n    field \"target_system\" type = \"string\"\n  }\n\n  steps {\n    step \"extract_data\" {\n      action = \"extract_csv\"\n      input {\n        file_path = \"${source_file}\"\n      }\n      output {\n        field \"extracted_data\" type = \"array\"\n      }\n    }\n\n    step \"transform_data\" {\n      action = \"transform_data\"\n      input {\n        data = \"${extracted_data}\"\n      }\n      output {\n        field \"transformed_data\" type = \"array\"\n      }\n    }\n\n    step \"load_data\" {\n      action = \"load_to_database\"\n      input {\n        data = \"${transformed_data}\"\n        target = \"${target_system}\"\n      }\n    }\n  }\n\n  error_handling {\n    on_error {\n      action = \"log_error\"\n      input {\n        message = \"Error occurred in workflow\"\n      }\n    }\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dify-workflow-writer#main-content",
+      "dify-workflow-writer#overview",
+      "dify-workflow-writer#setup",
+      "dify-workflow-writer#examples",
+      "dify-workflow-writer#tools",
+      "dify-workflow-writer#mcp",
+      "dify-workflow-writer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The dify-workflow-writer skill teaches Claude Code how to create, modify, and debug Dify workflow DSL (YAML) files. It provides expert guidance on correct variable syntax patterns like {{#NODE_ID.VAR#}}, templates for all Dify node types (LLM, HTTP, Code, IF/ELSE, Iteration), and common gotchas to avoid. The skill includes four proven workflow architectural patterns and comprehensive troubleshooting for import failures and schema errors. This is essential for developers building multi-step AI workflows in Dify, from simple LLM chains to complex API integrations with conditional branching and error handling.\nCreating multi-step LLM workflows with proper variable references and node connections\nDebugging DSL import failures and variable syntax errors\nBuilding HTTP request + LLM processing chains\nImplementing conditional logic and iteration patterns in workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoloyolo8/dify-workflow-writer`",
+    "usage_vi": "```\nWrite a Dify workflow DSL file for [COMPANY] that automates [INDUSTRY]-specific data processing. The workflow should include [DATA] extraction, transformation, and loading into [TARGET_SYSTEM]. Ensure the workflow handles errors and includes logging.\n```\nCopy\n\n```\n# Dify Workflow DSL for Customer Data Processing\n\n```dsl\nworkflow \"Customer Data Processing\" {\n  description = \"Automates extraction, transformation, and loading of customer data\"\n  version = \"1.0\"\n\n  input {\n    field \"source_file\" type = \"string\"\n    field \"target_system\" type = \"string\"\n  }\n\n  steps {\n    step \"extract_data\" {\n      action = \"extract_csv\"\n      input {\n        file_path = \"${source_file}\"\n      }\n      output {\n        field \"extracted_data\" type = \"array\"\n      }\n    }\n\n    step \"transform_data\" {\n      action = \"transform_data\"\n      input {\n        data = \"${extracted_data}\"\n      }\n      output {\n        field \"transformed_data\" type = \"array\"\n      }\n    }\n\n    step \"load_data\" {\n      action = \"load_to_database\"\n      input {\n        data = \"${transformed_data}\"\n        target = \"${target_system}\"\n      }\n    }\n  }\n\n  error_handling {\n    on_error {\n      action = \"log_error\"\n      input {\n        message = \"Error occurred in workflow\"\n      }\n    }\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:17:38.286141Z",
+    "http_status": 200,
+    "content_hash": "e8c81d95e7447d03fa2ef60a5bbccb912ec236d81368563b2db255830fd2307e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dify-workflow-writer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dify-workflow-writer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Dify Workflow Writer: Write DSL Files",
+  "short_description_vi": "Claude Code skill for writing production-ready Dify workflow DSL files in YAML, covering variable syntax, node configuration, and architectural patterns."
+}

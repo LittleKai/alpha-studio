@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/6s191-mit-deeplearning",
+  "slug": "6s191-mit-deeplearning",
+  "name": "6S191_MIT_DeepLearning",
+  "headline": "MIT Introduction to Deep Learning Course Overview",
+  "short_description": "MIT's Introduction to Deep Learning course equips students with foundational knowledge in deep learning algorithms and hands-on experience in TensorFlow, focusing on applications in computer vision, NLP, and more.",
+  "tier": "Silver",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "abusufyanvu",
+  "install_command": "claude install abusufyanvu/6S191_MIT_DeepLearning",
+  "source_repo_url": "https://github.com/abusufyanvu/6S191_MIT_DeepLearning",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "education",
+    "deep learning",
+    "TensorFlow",
+    "NLP",
+    "computer vision"
+  ],
+  "sections": {
+    "overview": "MIT 6.S191 provides foundational knowledge of deep learning algorithms through practical TensorFlow labs covering computer vision, natural language processing, and biological applications. The course assumes basic calculus, linear algebra, and probability knowledge, with Python experience helpful but not required. Students work through interactive Jupyter notebooks in Google Colab with GPU acceleration, implementing neural networks by completing hands-on exercises. The course includes the open-source mitdeeplearning Python package with convenience functions used throughout the labs. This resource is ideal for learners seeking structured, practical introduction to deep learning from MIT researchers.\nBuilding neural networks for image classification\nGenerating music using RNNs\nImplementing deep learning for natural language processing\nCreating computer vision applications for sports coaching",
+    "setup": "Terminal\nCopy\n`claude install abusufyanvu/6S191_MIT_DeepLearning`\n`git clone https://github.com/abusufyanvu/6S191_MIT_DeepLearning`",
+    "usage": "```\nCreate a deep learning project proposal for [PROJECT_NAME] using TensorFlow. The proposal should include: 1) A clear problem statement, 2) Dataset requirements (size, format, sources), 3) Model architecture (e.g., CNN for vision, RNN for NLP), 4) Training and evaluation plan (metrics, validation strategy), 5) Deployment considerations (e.g., Quip integration for collaborative documentation), and 6) Timeline with milestones. Reference MIT 6S191 course concepts where relevant.\n```\nCopy\n\n```\n### Deep Learning Project Proposal: Automated Invoice Processing for Acme Corp\n\n**Problem Statement:**\nAcme Corp processes 5,000+ invoices monthly, with 18% containing errors that require manual correction, costing $120K annually in labor. Current OCR tools fail to extract structured data from 34% of invoices due to inconsistent layouts. This project will develop a deep learning model to automate invoice data extraction with >95% accuracy.\n\n**Dataset Requirements:**\n- 20,000 annotated invoices (PDF/JPEG) from 2022-2024\n- Labeled fields: vendor name, invoice number, date, total amount, line items\n- Data sources: Acme's internal archive + synthetic data generation (5,000 samples)\n- Format: COCO JSON for object detection + custom CSV for OCR ground truth\n\n**Model Architecture:**\n- Hybrid approach combining:\n  1. LayoutLMv3 (Microsoft) for document layout understanding\n  2. Tesseract OCR for text extraction\n  3. CRNN (Convolutional Recurrent Neural Network) for line-item parsing\n- Training on NVIDIA A100 GPU (8x) with mixed-precision\n- Loss function: Cross-entropy for classification + Dice loss for segmentation\n\n**Training & Evaluation Plan:**\n- Metrics: F1-score (primary), precision/recall per field, inference time\n- Validation: 5-fold cross-validation + holdout test set (20%)\n- Augmentation: Rotation (-15° to +15°), brightness adjustment, synthetic noise\n- Baseline: Existing OCR tool (92% accuracy baseline)\n\n**Deployment Considerations:**\n- Quip Integration: Embed model outputs in Quip documents for team review\n  - Create shared workspace for finance team to validate/correct predictions\n  - Use Quip's spreadsheet embeds to track model performance metrics\n  - Implement chat notifications for low-confidence predictions\n- API endpoint: FastAPI on AWS SageMaker (latency <500ms)\n- Rollout strategy: Phased deployment to 10% of invoices initially\n\n**Timeline:**\n- Week 1-2: Data collection & annotation (5,000 samples)\n- Week 3-4: Model prototyping (LayoutLMv3 baseline)\n- Week 5-6: OCR integration & CRNN training\n- Week 7-8: Hyperparameter tuning & evaluation\n- Week 9: Quip integration & user testing\n- Week 10: Production deployment & documentation\n\n**Budget:**\n- GPU compute: $12,000 (AWS SageMaker)\n- Annotation tools: $3,500 (Label Studio)\n- Quip enterprise license: $1,800/year\n\n**Risk Mitigation:**\n- Data scarcity: Use synthetic data generation (5,000 samples)\n- Model drift: Implement continuous monitoring in Quip dashboards\n- Integration delays: Pre-configure Quip templates for finance team workflows\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "6s191-mit-deeplearning#main-content",
+      "6s191-mit-deeplearning#overview",
+      "6s191-mit-deeplearning#setup",
+      "6s191-mit-deeplearning#examples",
+      "6s191-mit-deeplearning#tools",
+      "6s191-mit-deeplearning#mcp",
+      "6s191-mit-deeplearning#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "MIT 6.S191 provides foundational knowledge of deep learning algorithms through practical TensorFlow labs covering computer vision, natural language processing, and biological applications. The course assumes basic calculus, linear algebra, and probability knowledge, with Python experience helpful but not required. Students work through interactive Jupyter notebooks in Google Colab with GPU acceleration, implementing neural networks by completing hands-on exercises. The course includes the open-source mitdeeplearning Python package with convenience functions used throughout the labs. This resource is ideal for learners seeking structured, practical introduction to deep learning from MIT researchers.\nBuilding neural networks for image classification\nGenerating music using RNNs\nImplementing deep learning for natural language processing\nCreating computer vision applications for sports coaching",
+    "setup_vi": "Terminal\nCopy\n`claude install abusufyanvu/6S191_MIT_DeepLearning`\n`git clone https://github.com/abusufyanvu/6S191_MIT_DeepLearning`",
+    "usage_vi": "```\nCreate a deep learning project proposal for [PROJECT_NAME] using TensorFlow. The proposal should include: 1) A clear problem statement, 2) Dataset requirements (size, format, sources), 3) Model architecture (e.g., CNN for vision, RNN for NLP), 4) Training and evaluation plan (metrics, validation strategy), 5) Deployment considerations (e.g., Quip integration for collaborative documentation), and 6) Timeline with milestones. Reference MIT 6S191 course concepts where relevant.\n```\nCopy\n\n```\n### Deep Learning Project Proposal: Automated Invoice Processing for Acme Corp\n\n**Problem Statement:**\nAcme Corp processes 5,000+ invoices monthly, with 18% containing errors that require manual correction, costing $120K annually in labor. Current OCR tools fail to extract structured data from 34% of invoices due to inconsistent layouts. This project will develop a deep learning model to automate invoice data extraction with >95% accuracy.\n\n**Dataset Requirements:**\n- 20,000 annotated invoices (PDF/JPEG) from 2022-2024\n- Labeled fields: vendor name, invoice number, date, total amount, line items\n- Data sources: Acme's internal archive + synthetic data generation (5,000 samples)\n- Format: COCO JSON for object detection + custom CSV for OCR ground truth\n\n**Model Architecture:**\n- Hybrid approach combining:\n  1. LayoutLMv3 (Microsoft) for document layout understanding\n  2. Tesseract OCR for text extraction\n  3. CRNN (Convolutional Recurrent Neural Network) for line-item parsing\n- Training on NVIDIA A100 GPU (8x) with mixed-precision\n- Loss function: Cross-entropy for classification + Dice loss for segmentation\n\n**Training & Evaluation Plan:**\n- Metrics: F1-score (primary), precision/recall per field, inference time\n- Validation: 5-fold cross-validation + holdout test set (20%)\n- Augmentation: Rotation (-15° to +15°), brightness adjustment, synthetic noise\n- Baseline: Existing OCR tool (92% accuracy baseline)\n\n**Deployment Considerations:**\n- Quip Integration: Embed model outputs in Quip documents for team review\n  - Create shared workspace for finance team to validate/correct predictions\n  - Use Quip's spreadsheet embeds to track model performance metrics\n  - Implement chat notifications for low-confidence predictions\n- API endpoint: FastAPI on AWS SageMaker (latency <500ms)\n- Rollout strategy: Phased deployment to 10% of invoices initially\n\n**Timeline:**\n- Week 1-2: Data collection & annotation (5,000 samples)\n- Week 3-4: Model prototyping (LayoutLMv3 baseline)\n- Week 5-6: OCR integration & CRNN training\n- Week 7-8: Hyperparameter tuning & evaluation\n- Week 9: Quip integration & user testing\n- Week 10: Production deployment & documentation\n\n**Budget:**\n- GPU compute: $12,000 (AWS SageMaker)\n- Annotation tools: $3,500 (Label Studio)\n- Quip enterprise license: $1,800/year\n\n**Risk Mitigation:**\n- Data scarcity: Use synthetic data generation (5,000 samples)\n- Model drift: Implement continuous monitoring in Quip dashboards\n- Integration delays: Pre-configure Quip templates for finance team workflows\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:17:37.853187Z",
+    "http_status": 200,
+    "content_hash": "a7f80713fba4ceec15451cf1fc2bc4c754d8909b3328c22a0c4e245d0c628e8e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\6s191-mit-deeplearning.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\6s191-mit-deeplearning.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MIT Introduction to Deep Learning Course Overview",
+  "short_description_vi": "MIT's Introduction to Deep Learning course equips students with foundational knowledge in deep learning algorithms and hands-on experience in TensorFlow, focusing on applications in computer vision, NLP, and more."
+}

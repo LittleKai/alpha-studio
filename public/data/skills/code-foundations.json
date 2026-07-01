@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/code-foundations",
+  "slug": "code-foundations",
+  "name": "Code Foundations",
+  "headline": "code-foundations for Claude Code skills",
+  "short_description": "Code Foundations provides software engineering best practices from Code Complete and A Philosophy of Software Design. It helps developers write maintainable, scalable code. It integrates with Claude Code for automated code reviews, refactoring, and architecture planning.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "ryanthedev",
+  "install_command": "git clone https://github.com/ryanthedev/code-foundations.git",
+  "source_repo_url": "https://github.com/ryanthedev/code-foundations",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Code Foundations is a Claude plugin that enforces software engineering best practices from Code Complete and A Philosophy of Software Design. It guides developers through a structured workflow: research to clarify requirements, plan to design implementation, and build with mandatory quality gates. Each phase includes automated checklists, architectural reviews, and verification steps that catch issues before commit. The plugin prevents technical debt by loading domain-specific skills during planning and gated execution, ensuring code meets maintainability and scalability standards. It also provides scientific debugging workflows to systematically track down bugs.\nPlanning feature implementations with architectural review before coding\nExecuting multi-phase builds with automated quality gates and peer review\nDebugging intermittent failures using predict-log-run-resolve methodology\nClarifying vague requirements through facilitated conversation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryanthedev/code-foundations`",
+    "usage": "```\nReview this [CODE_SNIPPET] for adherence to software engineering best practices. Identify any potential issues related to maintainability, scalability, or readability. Suggest specific improvements following the principles from Code Complete and A Philosophy of Software Design. Also, provide a brief explanation for each recommendation.\n```\nCopy\n\n```\nAfter reviewing the provided code snippet, here are my observations and recommendations:\n\n1. **Function Length**: The `process_data` function is 120 lines long, which violates the Single Responsibility Principle. Break it down into smaller functions, each handling a specific task. This will improve readability and maintainability.\n\n2. **Parameter List**: The `generate_report` function has 7 parameters. Consider using a configuration object or a builder pattern to reduce the number of parameters and make the function call more readable.\n\n3. **Error Handling**: The code lacks proper error handling. Implement try-catch blocks to handle potential exceptions and provide meaningful error messages.\n\n4. **Code Duplication**: There are several instances of duplicated code in the `validate_data` function. Extract the common logic into a separate function to adhere to the DRY (Don't Repeat Yourself) principle.\n\n5. **Naming Conventions**: Some variable names are not descriptive enough. For example, `data` could be more specific, like `user_data` or `transaction_data`. Descriptive names improve code readability and understanding.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "code-foundations#main-content",
+      "code-foundations#overview",
+      "code-foundations#setup",
+      "code-foundations#examples",
+      "code-foundations#tools",
+      "code-foundations#mcp",
+      "code-foundations#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Code Foundations is a Claude plugin that enforces software engineering best practices from Code Complete and A Philosophy of Software Design. It guides developers through a structured workflow: research to clarify requirements, plan to design implementation, and build with mandatory quality gates. Each phase includes automated checklists, architectural reviews, and verification steps that catch issues before commit. The plugin prevents technical debt by loading domain-specific skills during planning and gated execution, ensuring code meets maintainability and scalability standards. It also provides scientific debugging workflows to systematically track down bugs.\nPlanning feature implementations with architectural review before coding\nExecuting multi-phase builds with automated quality gates and peer review\nDebugging intermittent failures using predict-log-run-resolve methodology\nClarifying vague requirements through facilitated conversation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryanthedev/code-foundations`",
+    "usage_vi": "```\nReview this [CODE_SNIPPET] for adherence to software engineering best practices. Identify any potential issues related to maintainability, scalability, or readability. Suggest specific improvements following the principles from Code Complete and A Philosophy of Software Design. Also, provide a brief explanation for each recommendation.\n```\nCopy\n\n```\nAfter reviewing the provided code snippet, here are my observations and recommendations:\n\n1. **Function Length**: The `process_data` function is 120 lines long, which violates the Single Responsibility Principle. Break it down into smaller functions, each handling a specific task. This will improve readability and maintainability.\n\n2. **Parameter List**: The `generate_report` function has 7 parameters. Consider using a configuration object or a builder pattern to reduce the number of parameters and make the function call more readable.\n\n3. **Error Handling**: The code lacks proper error handling. Implement try-catch blocks to handle potential exceptions and provide meaningful error messages.\n\n4. **Code Duplication**: There are several instances of duplicated code in the `validate_data` function. Extract the common logic into a separate function to adhere to the DRY (Don't Repeat Yourself) principle.\n\n5. **Naming Conventions**: Some variable names are not descriptive enough. For example, `data` could be more specific, like `user_data` or `transaction_data`. Descriptive names improve code readability and understanding.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:37:45.650748Z",
+    "http_status": 200,
+    "content_hash": "bca9e035980f0606c1b76111ce3c62f8ccee9e46a4e6fcd5e0eab8a8fb4c90dc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\code-foundations.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\code-foundations.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "code-foundations for Claude Code skills",
+  "short_description_vi": "Code Foundations provides software engineering best practices from Code Complete and A Philosophy of Software Design. It helps developers write maintainable, scalable code. It integrates with Claude Code for automated code reviews, refactoring, and architecture planning."
+}

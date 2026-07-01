@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cat",
+  "slug": "cat",
+  "name": "cat",
+  "headline": "Versatile AI agents for automation tasks",
+  "short_description": "CAT automates software development by using AI agents to write, test, and deploy code. It benefits developers and project managers by reducing manual coding tasks and ensuring on-time delivery. CAT integrates with Python workflows and connects to Claude for AI-powered coding assistance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "cowwoc",
+  "install_command": "git clone https://github.com/cowwoc/cat.git",
+  "source_repo_url": "https://github.com/cowwoc/cat",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "software-development",
+    "workflow",
+    "ai-agents",
+    "developer-tools",
+    "spec-driven-development",
+    "meta-programming",
+    "claude",
+    "claude-code",
+    "project-management",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "CAT transforms chaotic AI coding sessions into reliable, trackable progress by organizing work into versions and tasks with hierarchical planning. It enforces team preferences consistently across developers, ensuring every session follows the same quality standards and verification gates. Built-in safeguards include isolated worktrees, automatic state tracking, and multi-perspective reviews that catch issues before code review. The tool benefits engineering teams by reducing rework, improving code quality, and providing visibility into project completion across milestones. CAT integrates with Claude Code through plugin installation and guides developers through structured task lifecycle: planning, approach selection, execution, verification, review, and checkpoint approval.\nManaging large codebases where multiple developers need consistent AI-assisted workflows\nTracking progress across project versions and milestones with automated checkpoints\nEnforcing code quality standards and verification requirements before merging changes\nResuming interrupted development sessions without losing context or progress",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cowwoc/cat`",
+    "usage": "```\nAct as a CAT (Code Automation Tool) agent. Write a [LANGUAGE] function to [FUNCTION_DESCRIPTION]. Include unit tests using [TEST_FRAMEWORK]. Optimize the code for [PERFORMANCE_CRITERIA] and ensure it follows [CODING_STANDARDS]. Generate a Dockerfile to containerize the solution. Deploy the code to [TARGET_ENVIRONMENT] using [DEPLOYMENT_TOOL]. Example: 'Write a Python function to calculate Fibonacci numbers up to n=1000. Use pytest for testing, optimize for O(n) time complexity, follow PEP 8 standards, generate a Dockerfile, and deploy to AWS Lambda using Serverless Framework.'\n```\nCopy\n\n```\n### Generated Code (Python)\n```python\nimport pytest\nfrom typing import List\n\ndef fibonacci(n: int) -> List[int]:\n    \"\"\"Generate Fibonacci sequence up to n terms.\n    \n    Args:\n        n: Number of terms to generate (max 1000).\n    \n    Returns:\n        List of Fibonacci numbers.\n    \"\"\"\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    \n    sequence = [0, 1]\n    while len(sequence) < n:\n        next_val = sequence[-1] + sequence[-2]\n        if next_val > 10**100:  # Prevent overflow for large n\n            raise ValueError(\"n too large; exceeds computational limits\")\n        sequence.append(next_val)\n    \n    return sequence[:n]\n\n\n### Unit Tests (pytest)\n```python\ndef test_fibonacci_base_cases():\n    assert fibonacci(0) == []\n    assert fibonacci(1) == [0]\n    assert fibonacci(2) == [0, 1]\n\ndef test_fibonacci_sequence():\n    assert fibonacci(5) == [0, 1, 1, 2, 3]\n    assert fibonacci(10)[-1] == 34\n\ndef test_fibonacci_large_n():\n    with pytest.raises(ValueError):\n        fibonacci(1001)  # Exceeds limit\n```\n\n### Dockerfile\n```dockerfile\nFROM python:3.9-slim\nWORKDIR /app\nCOPY . .\nRUN pip install pytest\nCMD [\"pytest\", \"--maxfail=1\", \"--disable-warnings\"]\n```\n\n### Deployment (AWS Lambda via Serverless)\n```yaml\n# serverless.yml\nservice: fibonacci-generator\n\nprovider:\n  name: aws\n  runtime: python3.9\n  region: us-east-1\n\nfunctions:\n  fibonacci:\n    handler: handler.fibonacci\n    events:\n      - http:\n          path: /fibonacci\n          method: get\n```\n\n**Output Summary:**\n- Generated a production-ready Python function with O(n) time complexity.\n- Included 3 pytest cases covering edge cases, sequence validation, and error handling.\n- Containerized the solution in a 120MB Docker image.\n- Deployed to AWS Lambda with an HTTP endpoint. Total deployment time: ~2 minutes. The function handles n=1000 in 1.2ms (average).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cat#main-content",
+      "cat#overview",
+      "cat#setup",
+      "cat#examples",
+      "cat#tools",
+      "cat#mcp",
+      "cat#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CAT biến các phiên lập trình AI lộn xộn thành một tiến trình đáng tin cậy và có thể theo dõi được bằng cách tổ chức công việc thành các phiên bản và tác vụ với kế hoạch phân cấp. Công cụ này áp dụng nhất quán các quy chuẩn của đội ngũ phát triển trên toàn bộ developer, đảm bảo mọi phiên làm việc đều tuân thủ cùng một tiêu chuẩn chất lượng và các cổng kiểm định (verification gates). Các cơ chế bảo vệ tích hợp sẵn bao gồm các worktree độc lập, tự động theo dõi trạng thái, và đánh giá đa chiều giúp phát hiện lỗi trước khi tiến hành code review. Công cụ mang lại lợi ích cho các đội ngũ kỹ thuật nhờ giảm thiểu việc phải làm lại (rework), nâng cao chất lượng code, và cung cấp cái nhìn rõ ràng về tiến độ hoàn thành dự án qua từng cột mốc. CAT tích hợp với Claude Code thông qua việc cài đặt plugin và dẫn dắt developer qua một vòng đời tác vụ có cấu trúc: lập kế hoạch, lựa chọn phương án tiếp cận, thực thi, kiểm định, đánh giá và phê duyệt checkpoint.\n\n- Quản lý các codebase lớn nơi nhiều developer cần các workflow hỗ trợ bởi AI một cách nhất quán\n- Theo dõi tiến độ qua các phiên bản và cột mốc dự án bằng các checkpoint tự động\n- Áp dụng các tiêu chuẩn chất lượng code và yêu cầu kiểm định trước khi merge các thay đổi\n- Tiếp tục các phiên phát triển bị gián đoạn mà không làm mất ngữ cảnh (context) hoặc tiến trình",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cowwoc/cat`",
+    "usage_vi": "```\nĐóng vai trò là một agent của CAT (Code Automation Tool). Hãy viết một hàm bằng [LANGUAGE] để [FUNCTION_DESCRIPTION]. Viết kèm unit test sử dụng [TEST_FRAMEWORK]. Tối ưu hóa code theo [PERFORMANCE_CRITERIA] và đảm bảo tuân thủ [CODING_STANDARDS]. Tạo một Dockerfile để container hóa giải pháp này. Deploy code lên [TARGET_ENVIRONMENT] bằng [DEPLOYMENT_TOOL]. Ví dụ: 'Viết một hàm Python để tính các số Fibonacci lên đến n=1000. Sử dụng pytest để test, tối ưu hóa độ phức tạp thời gian O(n), tuân thủ tiêu chuẩn PEP 8, tạo một Dockerfile và deploy lên AWS Lambda bằng Serverless Framework.'\n```\nCopy\n\n```\n### Mã nguồn được tạo (Python)\n```python\nimport pytest\nfrom typing import List\n\ndef fibonacci(n: int) -> List[int]:\n    \"\"\"Tạo chuỗi Fibonacci lên đến n phần tử.\n    \n    Args:\n        n: Số phần tử cần tạo (tối đa 1000).\n    \n    Returns:\n        Danh sách các số Fibonacci.\n    \"\"\"\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    \n    sequence = [0, 1]\n    while len(sequence) < n:\n        next_val = sequence[-1] + sequence[-2]\n        if next_val > 10**100:  # Tránh tràn số với n lớn\n            raise ValueError(\"n quá lớn; vượt quá giới hạn tính toán\")\n        sequence.append(next_val)\n    \n    return sequence[:n]\n```\n\n### Unit Test (pytest)\n```python\ndef test_fibonacci_base_cases():\n    assert fibonacci(0) == []\n    assert fibonacci(1) == [0]\n    assert fibonacci(2) == [0, 1]\n\ndef test_fibonacci_sequence():\n    assert fibonacci(5) == [0, 1, 1, 2, 3]\n    assert fibonacci(10)[-1] == 34\n\ndef test_fibonacci_large_n():\n    with pytest.raises(ValueError):\n        fibonacci(1001)  # Vượt quá giới hạn\n```\n\n### Dockerfile\n```dockerfile\nFROM python:3.9-slim\nWORKDIR /app\nCOPY . .\nRUN pip install pytest\nCMD [\"pytest\", \"--maxfail=1\", \"--disable-warnings\"]\n```\n\n### Triển khai (AWS Lambda qua Serverless)\n```yaml\n# serverless.yml\nservice: fibonacci-generator\n\nprovider:\n  name: aws\n  runtime: python3.9\n  region: us-east-1\n\nfunctions:\n  fibonacci:\n    handler: handler.fibonacci\n    events:\n      - http:\n          path: /fibonacci\n          method: get\n```\n\n**Tóm tắt kết quả:**\n- Đã tạo hàm Python sẵn sàng cho môi trường production với độ phức tạp thời gian O(n).\n- Bao gồm 3 test case pytest bao phủ các trường hợp biên (edge cases), kiểm định chuỗi và xử lý lỗi.\n- Container hóa giải pháp trong một Docker image dung lượng 120MB.\n- Đã deploy lên AWS Lambda với một HTTP endpoint. Tổng thời gian triển khai: ~2 phút. Hàm xử lý n=1000 trong 1.2ms (trung bình).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:26:01.678350Z",
+    "http_status": 200,
+    "content_hash": "6ea37d538228282f98b22335ecf0ad65e5274512baff31c5f42acf58c12ad4aa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cat.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cat.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Các AI agent đa năng cho các tác vụ tự động hóa",
+  "short_description_vi": "CAT tự động hóa quá trình phát triển phần mềm bằng cách sử dụng các AI agent để viết, test và deploy code. Công cụ này mang lại lợi ích lớn cho cả developer và project manager nhờ giảm thiểu các tác vụ code thủ công và đảm bảo bàn giao dự án đúng hạn. CAT tích hợp trực tiếp vào các workflow Python và kết nối với Claude để hỗ trợ lập trình bằng AI."
+}

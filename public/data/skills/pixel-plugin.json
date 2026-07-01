@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pixel-plugin",
+  "slug": "pixel-plugin",
+  "name": "browser-use",
+  "headline": "Pixel-plugin - Create Pixel Art with Aseprite",
+  "short_description": "The pixel-plugin enables natural language creation and animation of pixel art in Aseprite. Operations teams can generate sprites, apply retro palettes, and export to game engines. It connects Claude Code to Aseprite via the pixel-mcp server.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "willibrandon",
+  "install_command": "git clone https://github.com/willibrandon/pixel-plugin.git",
+  "source_repo_url": "https://github.com/willibrandon/pixel-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "sprite-editor",
+    "aseprite",
+    "animation",
+    "pixel-art",
+    "mcp",
+    "sprites"
+  ],
+  "sections": {
+    "overview": "The pixel-plugin connects Claude Code to Aseprite via the pixel-mcp server, enabling pixel art creation through natural language commands. Users can generate sprites, apply retro console palettes (NES, Game Boy, PICO-8, C64), and create frame-by-frame animations without manual pixel-by-pixel drawing. The plugin supports advanced techniques like dithering, color palette optimization, and shading, then exports to game-ready formats including PNG, GIF, spritesheet layouts, and JSON metadata for Unity, Godot, and Phaser. Game developers, pixel artists, and operations teams benefit from rapid sprite generation and animation workflows.\nGenerate Game Boy-style character sprites with idle animations\nCreate NES-compatible tiles with dithering effects\nBuild pixel art game assets with multi-frame animations\nExport spritesheets with game engine metadata for Unity and Godot",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/willibrandon/pixel-plugin`",
+    "usage": "```\nCreate a pixel art sprite of a [ITEM] for a [GENRE] game. Use a [STYLE] aesthetic with a [COLOR_PALETTE]. Add subtle animation frames to show [ACTION]. Export the sprite sheet in PNG format with transparent background.\n```\nCopy\n\n```\n# Pixel Art Sprite: Fireball\n\n**Description**: A fiery projectile for a fantasy RPG, animated with a flickering effect.\n\n**Style**: Retro 16-bit\n**Color Palette**: Red, orange, yellow, black\n\n**Animation Frames**:\n- Frame 1: Core glow\n- Frame 2: Outer flames\n- Frame 3: Flicker\n- Frame 4: Core glow\n\n**Export**: PNG with transparent background, 32x32 pixels\n\n**Sprite Sheet Preview**:\n![Fireball Sprite Sheet](https://example.com/fireball_sprite_sheet.png)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pixel-plugin#main-content",
+      "pixel-plugin#overview",
+      "pixel-plugin#setup",
+      "pixel-plugin#examples",
+      "pixel-plugin#tools",
+      "pixel-plugin#mcp",
+      "pixel-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The pixel-plugin connects Claude Code to Aseprite via the pixel-mcp server, enabling pixel art creation through natural language commands. Users can generate sprites, apply retro console palettes (NES, Game Boy, PICO-8, C64), and create frame-by-frame animations without manual pixel-by-pixel drawing. The plugin supports advanced techniques like dithering, color palette optimization, and shading, then exports to game-ready formats including PNG, GIF, spritesheet layouts, and JSON metadata for Unity, Godot, and Phaser. Game developers, pixel artists, and operations teams benefit from rapid sprite generation and animation workflows.\nGenerate Game Boy-style character sprites with idle animations\nCreate NES-compatible tiles with dithering effects\nBuild pixel art game assets with multi-frame animations\nExport spritesheets with game engine metadata for Unity and Godot",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/willibrandon/pixel-plugin`",
+    "usage_vi": "```\nCreate a pixel art sprite of a [ITEM] for a [GENRE] game. Use a [STYLE] aesthetic with a [COLOR_PALETTE]. Add subtle animation frames to show [ACTION]. Export the sprite sheet in PNG format with transparent background.\n```\nCopy\n\n```\n# Pixel Art Sprite: Fireball\n\n**Description**: A fiery projectile for a fantasy RPG, animated with a flickering effect.\n\n**Style**: Retro 16-bit\n**Color Palette**: Red, orange, yellow, black\n\n**Animation Frames**:\n- Frame 1: Core glow\n- Frame 2: Outer flames\n- Frame 3: Flicker\n- Frame 4: Core glow\n\n**Export**: PNG with transparent background, 32x32 pixels\n\n**Sprite Sheet Preview**:\n![Fireball Sprite Sheet](https://example.com/fireball_sprite_sheet.png)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:49:14.345355Z",
+    "http_status": 200,
+    "content_hash": "eb491f4144067f39a77d902c21fb80aa99e0b8f9052623c0436e45b87a675767",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pixel-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pixel-plugin.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Pixel-plugin - Create Pixel Art with Aseprite",
+  "short_description_vi": "The pixel-plugin enables natural language creation and animation of pixel art in Aseprite. Operations teams can generate sprites, apply retro palettes, and export to game engines. It connects Claude Code to Aseprite via the pixel-mcp server."
+}

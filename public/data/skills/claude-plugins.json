@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-plugins",
+  "slug": "claude-plugins",
+  "name": "react-native-best-practices",
+  "headline": "Claude-Plugins: Discover AI Coding Tools",
+  "short_description": "Discover, install, and manage public Claude plugins and agent skills effortlessly with Claude-Plugins. This lightweight registry enhances your AI coding experience by streamlining access to essential tools.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Kamalnrf",
+  "install_command": "claude install Kamalnrf/claude-plugins",
+  "source_repo_url": "https://github.com/Kamalnrf/claude-plugins",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "AI coding",
+    "plugins",
+    "claude",
+    "registry",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "Claude-Plugins is a unified registry and CLI tool for discovering and installing Claude Code plugins and agent skills across multiple AI coding clients including Claude Code, Cursor, Windsurf, VS Code, and others. The project maintains a searchable registry of 11,989 Claude Code plugins and 63,065 agent skills accessible at claude-plugins.dev. Two command-line tools—claude-plugins for Claude Code plugins and skills-installer for agent skills—provide installation, management, and search capabilities. The registry automatically discovers and indexes public plugins and skills from GitHub, enabling autonomous skill discovery through a meta skill that helps agents proactively find and install relevant tools.\nQuickly find and install plugins tailored for Claude to enhance your coding capabilities.\nManage and switch between multiple agent skills for a more streamlined coding experience.\nUtilize the interactive search feature to discover new skills and plugins directly from your terminal.\nProactively have your agent search for and install relevant skills before starting new coding tasks.",
+    "setup": "Terminal\nCopy\n`claude install Kamalnrf/claude-plugins`\n`git clone https://github.com/Kamalnrf/claude-plugins`",
+    "usage": "```\nUse the claude-plugins registry to [ACTION] for [PURPOSE]. For example: 'Use the claude-plugins registry to discover and install a plugin that enhances Python code analysis for [PROJECT_NAME].' Or 'Use the claude-plugins registry to find and deploy an agent skill that automates API documentation generation for [TEAM_NAME].'\n```\nCopy\n\n```\nI've reviewed the claude-plugins registry and found **3 plugins** that match your request to enhance Python code analysis for your 'Finance Dashboard' project. Here's what I recommend:\n\n1. **Python Code Analyzer Pro** (v2.1.4)\n   - **Purpose**: Deep static analysis for Python projects with custom rule sets\n   - **Installation**: Run `claude plugins install python-code-analyzer-pro`\n   - **Key Features**: Detects security vulnerabilities, performance bottlenecks, and style issues\n   - **Setup Time**: 2 minutes\n   - **Best For**: Teams maintaining financial applications with strict compliance requirements\n\n2. **TypeDoc Generator** (v1.3.2)\n   - **Purpose**: Automates API documentation generation from Python docstrings\n   - **Installation**: `claude plugins install typedoc-generator`\n   - **Key Features**: Integrates with Sphinx, supports Markdown, and generates interactive docs\n   - **Setup Time**: 3 minutes\n   - **Best For**: Projects requiring up-to-date API documentation for external stakeholders\n\n3. **Pytest Coverage Reporter** (v0.9.8)\n   - **Purpose**: Generates detailed test coverage reports with visualizations\n   - **Installation**: `claude plugins install pytest-coverage-reporter`\n   - **Key Features**: Shows uncovered lines, branch coverage, and historical trends\n   - **Setup Time**: 1 minute\n   - **Best For**: Teams needing to maintain high test coverage standards\n\n**Recommended Workflow**:\n1. Install Python Code Analyzer Pro first to identify critical issues\n2. Use TypeDoc Generator to document your API endpoints\n3. Deploy Pytest Coverage Reporter to ensure test coverage meets your 80% threshold\n\nWould you like me to generate the exact commands for your specific project structure or help prioritize which plugin to install first?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-plugins#main-content",
+      "claude-plugins#overview",
+      "claude-plugins#setup",
+      "claude-plugins#examples",
+      "claude-plugins#tools",
+      "claude-plugins#mcp",
+      "claude-plugins#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claude-Plugins is a unified registry and CLI tool for discovering and installing Claude Code plugins and agent skills across multiple AI coding clients including Claude Code, Cursor, Windsurf, VS Code, and others. The project maintains a searchable registry of 11,989 Claude Code plugins and 63,065 agent skills accessible at claude-plugins.dev. Two command-line tools—claude-plugins for Claude Code plugins and skills-installer for agent skills—provide installation, management, and search capabilities. The registry automatically discovers and indexes public plugins and skills from GitHub, enabling autonomous skill discovery through a meta skill that helps agents proactively find and install relevant tools.\nQuickly find and install plugins tailored for Claude to enhance your coding capabilities.\nManage and switch between multiple agent skills for a more streamlined coding experience.\nUtilize the interactive search feature to discover new skills and plugins directly from your terminal.\nProactively have your agent search for and install relevant skills before starting new coding tasks.",
+    "setup_vi": "Terminal\nCopy\n`claude install Kamalnrf/claude-plugins`\n`git clone https://github.com/Kamalnrf/claude-plugins`",
+    "usage_vi": "```\nUse the claude-plugins registry to [ACTION] for [PURPOSE]. For example: 'Use the claude-plugins registry to discover and install a plugin that enhances Python code analysis for [PROJECT_NAME].' Or 'Use the claude-plugins registry to find and deploy an agent skill that automates API documentation generation for [TEAM_NAME].'\n```\nCopy\n\n```\nI've reviewed the claude-plugins registry and found **3 plugins** that match your request to enhance Python code analysis for your 'Finance Dashboard' project. Here's what I recommend:\n\n1. **Python Code Analyzer Pro** (v2.1.4)\n   - **Purpose**: Deep static analysis for Python projects with custom rule sets\n   - **Installation**: Run `claude plugins install python-code-analyzer-pro`\n   - **Key Features**: Detects security vulnerabilities, performance bottlenecks, and style issues\n   - **Setup Time**: 2 minutes\n   - **Best For**: Teams maintaining financial applications with strict compliance requirements\n\n2. **TypeDoc Generator** (v1.3.2)\n   - **Purpose**: Automates API documentation generation from Python docstrings\n   - **Installation**: `claude plugins install typedoc-generator`\n   - **Key Features**: Integrates with Sphinx, supports Markdown, and generates interactive docs\n   - **Setup Time**: 3 minutes\n   - **Best For**: Projects requiring up-to-date API documentation for external stakeholders\n\n3. **Pytest Coverage Reporter** (v0.9.8)\n   - **Purpose**: Generates detailed test coverage reports with visualizations\n   - **Installation**: `claude plugins install pytest-coverage-reporter`\n   - **Key Features**: Shows uncovered lines, branch coverage, and historical trends\n   - **Setup Time**: 1 minute\n   - **Best For**: Teams needing to maintain high test coverage standards\n\n**Recommended Workflow**:\n1. Install Python Code Analyzer Pro first to identify critical issues\n2. Use TypeDoc Generator to document your API endpoints\n3. Deploy Pytest Coverage Reporter to ensure test coverage meets your 80% threshold\n\nWould you like me to generate the exact commands for your specific project structure or help prioritize which plugin to install first?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:57:45.888043Z",
+    "http_status": 200,
+    "content_hash": "83438fac1d66a5e87bfd7d9ec66b51bb74fddf8778516bac58f3212b14f0959c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-plugins.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-plugins.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude-Plugins: Discover AI Coding Tools",
+  "short_description_vi": "Discover, install, and manage public Claude plugins and agent skills effortlessly with Claude-Plugins. This lightweight registry enhances your AI coding experience by streamlining access to essential tools."
+}

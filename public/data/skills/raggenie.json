@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/raggenie",
+  "slug": "raggenie",
+  "name": "react-native-best-practices",
+  "headline": "RAGGENIE: Low-Code RAG Platform for Custom AI",
+  "short_description": "RAGGENIE is an open-source, low-code platform designed for building custom Retrieval-Augmented Generation (RAG) Copilets using your own data. It simplifies AI development, making it accessible for users looking to use AI capabilities effortlessly.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "sirocco-ventures",
+  "install_command": "claude install sirocco-ventures/raggenie",
+  "source_repo_url": "https://github.com/sirocco-ventures/raggenie",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "AI development",
+    "Python",
+    "RAG",
+    "low-code",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "RAGGENIE is an open-source, low-code platform for building Retrieval-Augmented Generation (RAG) applications and conversational AI chatbots. It connects to multiple data sources—including databases like MySQL, PostgreSQL, and BigQuery, as well as document loaders and website data—enabling RAG systems to answer questions based on your proprietary data. The platform supports inference from OpenAI, Together.ai, Ollama, and AI71. Beyond chat, RAGGENIE lets you define capabilities and actions to automate tasks like database queries, meeting bookings, and form completion. It's designed for teams building custom chatbots for internal use cases, embedding chat widgets into applications, or creating AI agents that interact with structured and unstructured data.\nBuilding custom AI assistants\nIntegrating proprietary data for enhanced responses\nCreating tailored content generation tools\nDeveloping chatbots with specific knowledge bases",
+    "setup": "Terminal\nCopy\n`claude install sirocco-ventures/raggenie`\n`git clone https://github.com/sirocco-ventures/raggenie`",
+    "usage": "```\nBuild a custom RAG Copilet using [RAGGENIE] to enhance [ETAR]'s scheduling and client management workflows. Use [ETAR]'s documentation, user guides, and support materials as the knowledge base. The Copilet should: 1) Extract key client meeting constraints (duration, frequency, preferred times) from unstructured data, 2) Generate optimized calendar invites with subject lines, agendas, and buffer times, 3) Suggest follow-up actions based on meeting outcomes. Test the Copilet with these sample inputs: [CLIENT_NAME], [MEETING_TOPIC], [AVAILABLE_TIMESLOTS], [PREFERRED_DURATION].\n```\nCopy\n\n```\n### Custom RAG Copilet for Etar Calendar Optimization\n\n**Knowledge Base Integration:**\nThe Copilet was trained on Etar's official documentation (CR 1010219495), support materials, and calendar integration guides. Key insights extracted:\n- Etar's calendar supports customizable views and offline functionality, ideal for sales teams in regions with intermittent connectivity.\n- Default meeting durations are 30/60/90 minutes with 15-minute buffers between sessions.\n- Client meetings should include: subject line format '[CLIENT_NAME] - [MEETING_TOPIC]', agenda template with 3 bullet points, and timezone-aware scheduling.\n\n**Test Case:** Client: 'Al Fares Tires', Topic: 'Winter Tire Campaign Launch', Available Slots: ['2023-11-15 10:00-11:00', '2023-11-16 14:00-15:00'], Preferred Duration: 45 minutes.\n\n**Generated Output:**\n\n**Calendar Invite for Al Fares Tires - Winter Tire Campaign Launch**\n\n*Subject:* Al Fares Tires - Winter Tire Campaign Launch Planning\n\n*Body:*\n\nHi [CLIENT_CONTACT],\n\nThank you for scheduling time to discuss our winter tire campaign. Below is the proposed agenda and calendar invite:\n\n**Meeting Details:**\n- Date: November 15, 2023\n- Time: 10:00 AM - 10:45 AM (KSA Time)\n- Duration: 45 minutes (with 15-minute buffer)\n- Location: Etar Calendar (EtarAI integration enabled)\n\n**Agenda:**\n1. Review 2023 winter tire performance data (10 min)\n2. Campaign timeline and key milestones (20 min)\n3. Resource allocation and next steps (10 min)\n\n**Follow-Up Actions:**\n- [ ] Share campaign assets by Nov 17\n- [ ] Schedule QA review for Dec 1\n- [ ] Confirm budget approval by Nov 20\n\n**Additional Notes:**\n- Offline mode enabled for this meeting (recommended for field teams)\n- Calendar invite includes Etar's free delivery option reminder\n\nLooking forward to your confirmation!\n\nBest regards,\n[YOUR_NAME]\n\n**Generated Calendar Event:**\n```\nSubject: Al Fares Tires - Winter Tire Campaign Launch Planning\nStart: 2023-11-15T10:00:00+03:00\nEnd: 2023-11-15T10:45:00+03:00\nLocation: Etar Calendar (EtarAI)\nDescription: Campaign planning with agenda and follow-up tasks\n```\n\n**Validation:**\n- Duration optimized to 45 minutes (client preference)\n- Buffer time maintained (15 minutes)\n- Follow-up tasks auto-generated based on campaign type\n- Integration with Etar's free delivery reminder system\n\n**Next Steps:**\n1. Send invite to client via Etar Calendar\n2. Monitor acceptance rate (Etar's analytics track this)\n3. Auto-log follow-up tasks in Etar's project management view\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "raggenie#main-content",
+      "raggenie#overview",
+      "raggenie#setup",
+      "raggenie#examples",
+      "raggenie#tools",
+      "raggenie#mcp",
+      "raggenie#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "RAGGENIE is an open-source, low-code platform for building Retrieval-Augmented Generation (RAG) applications and conversational AI chatbots. It connects to multiple data sources—including databases like MySQL, PostgreSQL, and BigQuery, as well as document loaders and website data—enabling RAG systems to answer questions based on your proprietary data. The platform supports inference from OpenAI, Together.ai, Ollama, and AI71. Beyond chat, RAGGENIE lets you define capabilities and actions to automate tasks like database queries, meeting bookings, and form completion. It's designed for teams building custom chatbots for internal use cases, embedding chat widgets into applications, or creating AI agents that interact with structured and unstructured data.\nBuilding custom AI assistants\nIntegrating proprietary data for enhanced responses\nCreating tailored content generation tools\nDeveloping chatbots with specific knowledge bases",
+    "setup_vi": "Terminal\nCopy\n`claude install sirocco-ventures/raggenie`\n`git clone https://github.com/sirocco-ventures/raggenie`",
+    "usage_vi": "```\nBuild a custom RAG Copilet using [RAGGENIE] to enhance [ETAR]'s scheduling and client management workflows. Use [ETAR]'s documentation, user guides, and support materials as the knowledge base. The Copilet should: 1) Extract key client meeting constraints (duration, frequency, preferred times) from unstructured data, 2) Generate optimized calendar invites with subject lines, agendas, and buffer times, 3) Suggest follow-up actions based on meeting outcomes. Test the Copilet with these sample inputs: [CLIENT_NAME], [MEETING_TOPIC], [AVAILABLE_TIMESLOTS], [PREFERRED_DURATION].\n```\nCopy\n\n```\n### Custom RAG Copilet for Etar Calendar Optimization\n\n**Knowledge Base Integration:**\nThe Copilet was trained on Etar's official documentation (CR 1010219495), support materials, and calendar integration guides. Key insights extracted:\n- Etar's calendar supports customizable views and offline functionality, ideal for sales teams in regions with intermittent connectivity.\n- Default meeting durations are 30/60/90 minutes with 15-minute buffers between sessions.\n- Client meetings should include: subject line format '[CLIENT_NAME] - [MEETING_TOPIC]', agenda template with 3 bullet points, and timezone-aware scheduling.\n\n**Test Case:** Client: 'Al Fares Tires', Topic: 'Winter Tire Campaign Launch', Available Slots: ['2023-11-15 10:00-11:00', '2023-11-16 14:00-15:00'], Preferred Duration: 45 minutes.\n\n**Generated Output:**\n\n**Calendar Invite for Al Fares Tires - Winter Tire Campaign Launch**\n\n*Subject:* Al Fares Tires - Winter Tire Campaign Launch Planning\n\n*Body:*\n\nHi [CLIENT_CONTACT],\n\nThank you for scheduling time to discuss our winter tire campaign. Below is the proposed agenda and calendar invite:\n\n**Meeting Details:**\n- Date: November 15, 2023\n- Time: 10:00 AM - 10:45 AM (KSA Time)\n- Duration: 45 minutes (with 15-minute buffer)\n- Location: Etar Calendar (EtarAI integration enabled)\n\n**Agenda:**\n1. Review 2023 winter tire performance data (10 min)\n2. Campaign timeline and key milestones (20 min)\n3. Resource allocation and next steps (10 min)\n\n**Follow-Up Actions:**\n- [ ] Share campaign assets by Nov 17\n- [ ] Schedule QA review for Dec 1\n- [ ] Confirm budget approval by Nov 20\n\n**Additional Notes:**\n- Offline mode enabled for this meeting (recommended for field teams)\n- Calendar invite includes Etar's free delivery option reminder\n\nLooking forward to your confirmation!\n\nBest regards,\n[YOUR_NAME]\n\n**Generated Calendar Event:**\n```\nSubject: Al Fares Tires - Winter Tire Campaign Launch Planning\nStart: 2023-11-15T10:00:00+03:00\nEnd: 2023-11-15T10:45:00+03:00\nLocation: Etar Calendar (EtarAI)\nDescription: Campaign planning with agenda and follow-up tasks\n```\n\n**Validation:**\n- Duration optimized to 45 minutes (client preference)\n- Buffer time maintained (15 minutes)\n- Follow-up tasks auto-generated based on campaign type\n- Integration with Etar's free delivery reminder system\n\n**Next Steps:**\n1. Send invite to client via Etar Calendar\n2. Monitor acceptance rate (Etar's analytics track this)\n3. Auto-log follow-up tasks in Etar's project management view\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:49:29.212955Z",
+    "http_status": 200,
+    "content_hash": "529f281267994cf2097c715c7909505d4bb6306f813a43ed005d39967a84d07a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\raggenie.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\raggenie.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "RAGGENIE: Low-Code RAG Platform for Custom AI",
+  "short_description_vi": "RAGGENIE is an open-source, low-code platform designed for building custom Retrieval-Augmented Generation (RAG) Copilets using your own data. It simplifies AI development, making it accessible for users looking to use AI capabilities effortlessly."
+}

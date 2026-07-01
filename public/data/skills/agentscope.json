@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentscope",
+  "slug": "agentscope",
+  "name": "agentscope",
+  "headline": "Agentscope: Build LLM Apps with Agent Programming",
+  "short_description": "AgentScope enables developers to build LLM applications using agent-oriented programming. It supports multi-agent systems, multi-modal interactions, and integrates with Claude. Ideal for creating complex chatbots and automation workflows.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "agentscope-ai",
+  "install_command": "git clone https://github.com/agentscope-ai/agentscope.git",
+  "source_repo_url": "https://github.com/agentscope-ai/agentscope",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "llm",
+    "multi-agent",
+    "mcp",
+    "chatbot",
+    "react-agent",
+    "multi-modal",
+    "llm-agent",
+    "large-language-models"
+  ],
+  "sections": {
+    "overview": "AgentScope is a framework designed for developers to build LLM applications using agent-oriented programming paradigms. It enables the creation of multi-agent systems capable of handling multi-modal interactions, allowing agents to process and respond to various types of input. The framework integrates with major LLM providers and is particularly suited for building complex chatbots, automation workflows, and collaborative agent systems. AgentScope abstracts away the complexity of managing multiple agents while providing structured patterns for agent communication and task execution. Developers can use AgentScope to create sophisticated applications that require coordinated multi-agent behavior without managing low-level LLM integration details.\nCreate a responsive chatbot that can handle customer inquiries and provide real-time support.\nDevelop a voice assistant capable of executing commands and providing information through natural language.\nImplement a multi-agent system for complex workflows, allowing agents to collaborate and share information seamlessly.\nAutomate data processing tasks using specialized agents that can handle various data formats and sources.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/agentscope-ai/agentscope`",
+    "usage": "```\nUse AgentScope to design a multi-agent system for [TASK]. Define [AGENT_ROLES] and their interactions. Specify [INPUT_DATA] and [OUTPUT_FORMAT]. Ensure the agents coordinate to achieve [GOAL].\n```\nCopy\n\n```\nIn a customer support automation workflow, we deployed a 3-agent system using AgentScope:\n\n1. **Intake Agent**: Received customer queries via email and Slack, extracting key details like order numbers and issue types. For example, it processed a query about a delayed shipment for Order #4567, categorizing it as a 'shipping delay' with high priority.\n\n2. **Research Agent**: Queried the company’s CRM and logistics database to gather relevant data. It found that Order #4567 was shipped on June 10th but delayed due to a regional carrier issue. The agent also pulled the customer’s contact preferences and past interactions.\n\n3. **Resolution Agent**: Drafted a personalized response to the customer, apologizing for the delay and offering a 15% discount on their next purchase. It scheduled the response to be sent via the customer’s preferred channel (email) and logged the interaction in the CRM.\n\nThe system reduced average response time from 4 hours to 20 minutes and improved customer satisfaction scores by 22% in pilot testing. The agents communicated asynchronously, with the Research Agent triggering the Resolution Agent only after confirming the shipment status.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentscope#main-content",
+      "agentscope#overview",
+      "agentscope#setup",
+      "agentscope#examples",
+      "agentscope#tools",
+      "agentscope#mcp",
+      "agentscope#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgentScope là một framework được thiết kế để giúp các nhà phát triển xây dựng ứng dụng LLM dựa trên mô hình lập trình hướng agent. Framework này hỗ trợ tạo ra các hệ thống multi-agent có khả năng xử lý tương tác đa phương thức (multi-modal), cho phép các agent tiếp nhận và phản hồi nhiều loại dữ liệu đầu vào khác nhau. AgentScope tích hợp với các nhà cung cấp LLM lớn, đặc biệt phù hợp để xây dựng các chatbot phức tạp, workflow tự động hóa và các hệ thống agent cộng tác. AgentScope ẩn đi sự phức tạp của việc quản lý nhiều agent, đồng thời cung cấp các pattern cấu trúc để các agent giao tiếp và thực thi tác vụ. Nhà phát triển có thể sử dụng AgentScope để tạo ra các ứng dụng tinh vi đòi hỏi sự phối hợp hành vi giữa các agent mà không cần bận tâm đến các chi tiết tích hợp LLM ở cấp độ thấp (low-level).\n\nTạo chatbot phản hồi nhanh, có khả năng xử lý các yêu cầu của khách hàng và hỗ trợ trong thời gian thực.\nPhát triển trợ lý giọng nói có khả năng thực thi lệnh và cung cấp thông tin qua ngôn ngữ tự nhiên.\nTriển khai hệ thống multi-agent cho các workflow phức tạp, cho phép các agent cộng tác và chia sẻ thông tin một cách liền mạch.\nTự động hóa các tác vụ xử lý dữ liệu bằng cách sử dụng các agent chuyên biệt có thể xử lý nhiều định dạng và nguồn dữ liệu khác nhau.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/agentscope-ai/agentscope`",
+    "usage_vi": "```\nSử dụng AgentScope để thiết kế một hệ thống multi-agent cho [TASK]. Xác định [AGENT_ROLES] và tương tác giữa các agent. Chỉ định [INPUT_DATA] và [OUTPUT_FORMAT]. Đảm bảo các agent phối hợp nhịp nhàng để đạt được [GOAL].\n```\nCopy\n\n```\nTrong một workflow tự động hóa chăm sóc khách hàng, chúng tôi đã triển khai hệ thống gồm 3 agent sử dụng AgentScope:\n\n1. **Intake Agent**: Tiếp nhận các yêu cầu của khách hàng qua email và Slack, trích xuất các thông tin chính như số đơn hàng và loại sự cố. Ví dụ: agent này đã xử lý một yêu cầu về việc đơn hàng #4567 bị giao chậm, phân loại yêu cầu này là 'shipping delay' (giao hàng chậm) với mức độ ưu tiên cao.\n\n2. **Research Agent**: Truy vấn CRM và cơ sở dữ liệu logistics của công ty để thu thập thông tin liên quan. Agent phát hiện Đơn hàng #4567 đã được gửi đi vào ngày 10 tháng 6 nhưng bị trễ do sự cố từ phía đơn vị vận chuyển khu vực. Agent cũng lấy ra thông tin về phương thức liên lạc ưu tiên và lịch sử tương tác trước đó của khách hàng.\n\n3. **Resolution Agent**: Soạn thảo phản hồi cá nhân hóa gửi tới khách hàng, xin lỗi vì sự chậm trễ và tặng mã giảm giá 15% cho lần mua hàng tiếp theo. Agent lên lịch gửi phản hồi qua kênh ưu thích của khách hàng (email) và ghi nhận tương tác vào CRM.\n\nHệ thống đã giúp giảm thời gian phản hồi trung bình từ 4 giờ xuống còn 20 phút và tăng 22% điểm số hài lòng của khách hàng trong giai đoạn thử nghiệm (pilot testing). Các agent giao tiếp bất đồng bộ, trong đó Research Agent chỉ kích hoạt Resolution Agent sau khi đã xác nhận xong trạng thái vận chuyển.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:11:10.589683Z",
+    "http_status": 200,
+    "content_hash": "9b0e1f68d59405dc3240b4704862146592df6a43b73ce18a8f02e7691bd30da1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentscope.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentscope.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AgentScope: Xây dựng ứng dụng LLM với Lập trình hướng Agent",
+  "short_description_vi": "AgentScope giúp các nhà phát triển dễ dàng xây dựng ứng dụng LLM bằng phương pháp lập trình hướng agent. Framework này hỗ trợ hệ thống multi-agent, tương tác đa phương thức (multi-modal) và tích hợp sẵn với Claude; cực kỳ lý tưởng để phát triển các chatbot phức tạp cũng như các workflow tự động hóa."
+}

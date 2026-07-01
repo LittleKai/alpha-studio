@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-workflow",
+  "slug": "ai-workflow",
+  "name": "Ai Workflow",
+  "headline": "AI Workflow Skills for Marketing & Productivity",
+  "short_description": "Unlock instant domain expertise with 170+ pre-built skills for top AI tools like Claude Code, Cursor, and Codex. Streamline workflows across marketing, SEO, trading, and more without repetitive training.",
+  "tier": "Gold",
+  "category": "MarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "nicepkg",
+  "install_command": "claude install nicepkg/ai-workflow",
+  "source_repo_url": "https://github.com/nicepkg/ai-workflow",
+  "works_with": [
+    "ClaudeCursorCodex"
+  ],
+  "tags": [
+    "AI tools",
+    "marketing",
+    "pre-built skills",
+    "SEO",
+    "workflow automation"
+  ],
+  "sections": {
+    "overview": "AI Workflow provides 170+ pre-built skill collections organized into 6 professional workflows: Content Creator, Marketing Pro, Video Creator, Stock Trader, Product Manager, and Talk to Slidev. Each workflow packages industry best practices, frameworks, and standards so your AI assistant arrives pre-trained for your domain. Install complete workflows or individual skills with a single command via `npx add-skill`. Supports Claude Code, Cursor, GitHub Copilot, Codex, OpenCode, and 9+ additional AI tools, with both project-level and global installation options.\nAutomating marketing campaigns\nEnhancing SEO strategies\nStreamlining project management workflows\nOptimizing trading algorithms",
+    "setup": "Terminal\nCopy\n`claude install nicepkg/ai-workflow`\n`git clone https://github.com/nicepkg/ai-workflow`",
+    "usage": "```\nUse Productiv's real-time SaaS spending data to generate a cost-optimization report for [DEPARTMENT/TEAM] at [COMPANY]. Identify [NUMBER] redundant or underutilized software licenses, calculate potential annual savings of $[AMOUNT], and recommend [NUMBER] specific tools to consolidate or eliminate. Include renewal dates and compliance risks for each identified opportunity.\n```\nCopy\n\n```\n### SaaS Cost Optimization Report: Engineering Team at TechNova Inc.\n\n**Executive Summary:**\nAfter analyzing Productiv’s real-time SaaS spending data for TechNova’s Engineering team (120 employees), we identified **$47,250 in annual savings** by consolidating redundant tools and eliminating underutilized licenses. The report highlights 8 high-impact opportunities, including 3 tools slated for renewal in Q3 2024 that can be replaced or consolidated.\n\n**Top 3 Savings Opportunities:**\n1. **Jira vs. Linear:** The team currently spends **$18,000/year** on Jira Cloud Premium for 120 users, but only **35 users** actively create or manage issues monthly. Productiv’s utilization data shows Linear (already licensed for 40 users) could fully replace Jira, saving **$12,600/year** and consolidating project management into a single tool. *Renewal: August 2024.*\n\n2. **Slack vs. Microsoft Teams:** Slack is licensed for all 120 employees at **$15/user/month**, but Teams (included in Microsoft 365) is used by 85% of the team. Eliminating Slack’s **$21,600/year** subscription would reduce costs while improving collaboration. *Renewal: July 2024.*\n\n3. **Notion vs. Confluence:** Notion is licensed for **$10/user/month** across 60 users, but Confluence (already licensed for 100 users) is underutilized. Migrating documentation to Confluence would save **$6,000/year** and align with existing Atlassian tools. *Renewal: September 2024.*\n\n**Compliance Risks:**\n- **Zendesk Suite** ($9,600/year) has 20 unused licenses tied to former employees. Failure to reclaim these would result in **$2,400 in unnecessary annual spend** and potential audit issues.\n- **Figma** ($4,800/year) is licensed for 50 users, but only 12 are active. Renewal in November 2024 presents an opportunity to downsize without disrupting workflows.\n\n**Action Items:**\n1. **Q2 2024:** Initiate migration from Jira to Linear (target completion: June 30).\n2. **Q2 2024:** Reclaim 20 Zendesk licenses and notify HR of offboarding process changes.\n3. **Q3 2024:** Negotiate Slack renewal with a 50% downsized license or explore alternative pricing tiers.\n\n**Potential Roadblocks:**\n- Engineering leadership may resist migrating from Jira due to team familiarity. Mitigation: Pilot Linear with a small team and gather feedback.\n- Teams users may prefer Slack for integrations. Mitigation: Highlight Teams’ native Microsoft 365 integrations and cost savings.\n\n**Next Steps:**\n- Use Productiv’s API to automate license reclamation for Zendesk.\n- Schedule a workshop with Finance to align on budget reallocation for the $47,250 savings.\n\n*Data Source: Productiv SaaS Management Platform (as of May 15, 2024).*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor, Codex"
+    ],
+    "related_skills": [
+      "ai-workflow#main-content",
+      "ai-workflow#overview",
+      "ai-workflow#setup",
+      "ai-workflow#examples",
+      "ai-workflow#tools",
+      "ai-workflow#mcp",
+      "ai-workflow#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "AI Workflow cung cấp hơn 170 bộ sưu tập kỹ năng dựng sẵn được tổ chức thành 6 workflow chuyên nghiệp: Content Creator, Marketing Pro, Video Creator, Stock Trader, Product Manager và Talk to Slidev. Mỗi workflow đóng gói các best practice, framework và tiêu chuẩn ngành để trợ lý AI của bạn được huấn luyện sẵn cho lĩnh vực mong muốn. Cài đặt toàn bộ workflow hoặc từng kỹ năng riêng lẻ chỉ với một câu lệnh duy nhất qua `npx add-skill`. Hỗ trợ Claude Code, Cursor, GitHub Copilot, Codex, OpenCode và hơn 9 công cụ AI khác, với cả tùy chọn cài đặt cấp dự án hoặc toàn cục (global).\nTự động hóa các chiến dịch marketing\nNâng cao chiến lược SEO\nTối ưu hóa quy trình quản lý dự án\nTối ưu hóa các thuật toán trading",
+    "setup_vi": "Terminal\nSao chép\n`claude install nicepkg/ai-workflow`\n`git clone https://github.com/nicepkg/ai-workflow`",
+    "usage_vi": "```\nSử dụng dữ liệu chi tiêu SaaS theo thời gian thực của Productiv để tạo báo cáo tối ưu hóa chi phí cho [PHÒNG BAN/ĐỘI NGŨ] tại [CÔNG TY]. Xác định [SỐ LƯỢNG] bản quyền phần mềm (license) dư thừa hoặc ít sử dụng, tính toán số tiền tiết kiệm tiềm năng hàng năm là $[SỐ TIỀN], và đề xuất [SỐ LƯỢNG] công cụ cụ thể để hợp nhất hoặc loại bỏ. Đính kèm ngày gia hạn và rủi ro tuân thủ cho mỗi cơ hội được xác định.\n```\nSao chép\n\n```\n### Báo cáo tối ưu hóa chi phí SaaS: Đội ngũ Engineering tại TechNova Inc.\n\n**Tóm tắt dự án (Executive Summary):**\nSau khi phân tích dữ liệu chi tiêu SaaS theo thời gian thực từ Productiv cho đội ngũ Engineering của TechNova (120 nhân sự), chúng tôi đã xác định được **$47.250 chi phí tiết kiệm hàng năm** bằng cách hợp nhất các công cụ dư thừa và loại bỏ các license ít sử dụng. Báo cáo này chỉ ra 8 cơ hội có tác động lớn, bao gồm 3 công cụ dự kiến gia hạn vào Quý 3 năm 2024 có thể được thay thế hoặc hợp nhất.\n\n**Top 3 cơ hội tiết kiệm chi phí hàng đầu:**\n1. **Jira vs. Linear:** Đội ngũ hiện đang chi trả **$18.000/năm** cho gói Jira Cloud Premium cho 120 người dùng, nhưng chỉ có **35 người dùng** thực sự tạo hoặc quản lý các issue hàng tháng. Dữ liệu sử dụng từ Productiv cho thấy Linear (đã có sẵn license cho 40 người dùng) có thể thay thế hoàn toàn Jira, giúp tiết kiệm **$12.600/năm** và quy về một công cụ quản lý dự án duy nhất. *Thời điểm gia hạn: Tháng 8 năm 2024.*\n\n2. **Slack vs. Microsoft Teams:** Slack được cấp license cho toàn bộ 120 nhân sự với mức giá **$15/người dùng/tháng**, nhưng Teams (đã đi kèm trong Microsoft 365) lại được sử dụng bởi 85% đội ngũ. Việc loại bỏ gói đăng ký Slack trị giá **$21.600/năm** sẽ giúp giảm chi phí mà vẫn đảm bảo hiệu quả cộng tác. *Thời điểm gia hạn: Tháng 7 năm 2024.*\n\n3. **Notion vs. Confluence:** Notion được cấp license với giá **$10/người dùng/tháng** cho 60 người dùng, trong khi Confluence (đã có sẵn license cho 100 người dùng) đang không được sử dụng hết công suất. Việc chuyển đổi tài liệu sang Confluence sẽ tiết kiệm được **$6.000/năm** và đồng bộ hóa với hệ sinh thái các công cụ Atlassian hiện có. *Thời điểm gia hạn: Tháng 9 năm 2024.*\n\n**Rủi ro tuân thủ:**\n- **Zendesk Suite** ($9.600/năm) hiện có 20 license chưa sử dụng liên kết với các cựu nhân viên. Việc không thu hồi các license này sẽ dẫn đến việc **lãng phí chi phí hàng năm là $2.400** và có thể gặp vấn đề khi kiểm toán.\n- **Figma** ($4.800/năm) được cấp license cho 50 người dùng, nhưng chỉ có 12 người dùng đang hoạt động. Việc gia hạn vào tháng 11 năm 2024 là cơ hội tốt để cắt giảm quy mô license mà không ảnh hưởng đến quy trình làm việc.\n\n**Các hành động cần thực hiện (Action Items):**\n1. **Quý 2 năm 2024:** Bắt đầu chuyển đổi từ Jira sang Linear (mục tiêu hoàn thành: 30 tháng 6).\n2. **Quý 2 năm 2024:** Thu hồi lại 20 license Zendesk và thông báo cho bộ phận HR về việc thay đổi quy trình offboarding.\n3. **Quý 3 năm 2024:** Đàm phán gia hạn Slack với quy mô giảm 50% số lượng license hoặc tìm hiểu các gói giá khác.\n\n**Trở ngại tiềm ẩn:**\n- Ban lãnh đạo kỹ thuật (Engineering leadership) có thể phản đối việc chuyển đổi từ Jira do thói quen của đội ngũ. Giải pháp giảm thiểu: Thử nghiệm Linear với một nhóm nhỏ để thu thập phản hồi.\n- Người dùng Teams có thể vẫn thích Slack vì các tích hợp (integration) tốt hơn. Giải pháp giảm thiểu: Nhấn mạnh các tính năng tích hợp sẵn của Teams với Microsoft 365 và lợi ích tiết kiệm chi phí.\n\n**Các bước tiếp theo:**\n- Sử dụng API của Productiv để tự động hóa việc thu hồi license cho Zendesk.\n- Lên lịch một buổi thảo luận với bộ phận Tài chính để thống nhất phương án tái phân bổ ngân sách cho khoản tiết kiệm $47.250 này.\n\n*Nguồn dữ liệu: Nền tảng quản lý SaaS Productiv (tính đến ngày 15 tháng 5 năm 2024).*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:04:21.518297Z",
+    "http_status": 200,
+    "content_hash": "2d373d7a569526d586c4d4b1ec4a4c95669ecc421a7b71c86b55074ee631adeb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-workflow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-workflow.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng AI Workflow cho Marketing & Năng suất làm việc",
+  "short_description_vi": "Sở hữu ngay kiến thức chuyên môn tức thì với hơn 170 kỹ năng dựng sẵn dành cho các công cụ AI hàng đầu như Claude Code, Cursor và Codex. Tối ưu hóa quy trình làm việc cho marketing, SEO, trading và nhiều lĩnh vực khác mà không cần huấn luyện lặp đi lặp lại."
+}

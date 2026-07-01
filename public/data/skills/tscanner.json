@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tscanner",
+  "slug": "tscanner",
+  "name": "browser-use",
+  "headline": "TScanner - Code Quality Scanner for AI-Generated",
+  "short_description": "TScanner is a code quality scanner designed for AI-generated code. It helps developers and operations teams identify issues in AI-produced code, ensuring better quality and reliability. It integrates with popular development tools and workflows, such as ESLint and CLI, to streamline the code review process.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "lucasvtiradentes",
+  "install_command": "git clone https://github.com/lucasvtiradentes/tscanner.git",
+  "source_repo_url": "https://github.com/lucasvtiradentes/tscanner",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codex",
+    "rust",
+    "code-quality",
+    "ai-assisted-development",
+    "eslint",
+    "biomejs",
+    "linter",
+    "cursor",
+    "code-scanner",
+    "ai",
+    "ai-coding",
+    "cli"
+  ],
+  "sections": {
+    "overview": "TScanner is a code quality scanner designed to enforce project conventions and patterns across your codebase. It provides 38 ready-to-use rules and supports custom rules via regex, scripts, or AI to catch inconsistencies before they reach production. The tool integrates seamlessly into your workflow via VS Code extension for real-time feedback, CLI for terminal scanning, and GitHub Actions for PR validation. TScanner solves the problem of repeatedly reviewing the same code violations by automating quality checks once rules are defined. It's particularly useful for teams working with AI-generated code, ensuring consistent standards across all contributions.\nEnforce naming conventions and import styles across projects\nValidate AI-generated code in real-time before acceptance\nAuto-comment PR violations to streamline code review\nMaintain project consistency with custom regex and script rules",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lucasvtiradentes/tscanner`",
+    "usage": "```\nRun TScanner on the AI-generated code in [DIRECTORY_PATH] and generate a report highlighting [SPECIFIC_ISSUES] such as security vulnerabilities, performance bottlenecks, or style violations. Focus on issues that could impact production stability. Include actionable fixes for each identified problem.\n```\nCopy\n\n```\nTScanner v1.2.0 - Code Quality Report\nGenerated: 2023-11-15 | Scanned: 47 files | Issues Found: 12\n\nCritical Issues (3):\n1. [SECURITY] - Insecure API Key Storage in /src/utils/api.js (Line 42)\n   - Issue: API key hardcoded in plaintext\n   - Risk: Credential exposure\n   - Fix: Use environment variables and secret management\n   - Suggested: Replace with process.env.API_KEY\n\n2. [PERFORMANCE] - Inefficient Loop in /src/processors/data.js (Line 89)\n   - Issue: Nested loop with O(n²) complexity\n   - Impact: 300ms average response time increase\n   - Fix: Implement memoization or use Set for deduplication\n   - Suggested: Replace with Map-based lookup\n\n3. [RELIABILITY] - Missing Error Handling in /src/services/user.js (Line 112)\n   - Issue: Uncaught promise rejection\n   - Risk: Application crash under load\n   - Fix: Add try/catch block with proper logging\n   - Suggested: Wrap async operations in try/catch\n\nModerate Issues (9):\n- [STYLE] - Inconsistent indentation in /src/components/Button.tsx\n- [MAINTAINABILITY] - Magic numbers in /src/config/constants.js\n- [TESTABILITY] - Untested edge cases in /src/utils/validation.js\n\nRecommendations:\n- Run TScanner in CI/CD pipeline before deployment\n- Address critical issues within 24 hours\n- Schedule refactoring for moderate issues next sprint\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tscanner#main-content",
+      "tscanner#overview",
+      "tscanner#setup",
+      "tscanner#examples",
+      "tscanner#tools",
+      "tscanner#mcp",
+      "tscanner#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TScanner is a code quality scanner designed to enforce project conventions and patterns across your codebase. It provides 38 ready-to-use rules and supports custom rules via regex, scripts, or AI to catch inconsistencies before they reach production. The tool integrates seamlessly into your workflow via VS Code extension for real-time feedback, CLI for terminal scanning, and GitHub Actions for PR validation. TScanner solves the problem of repeatedly reviewing the same code violations by automating quality checks once rules are defined. It's particularly useful for teams working with AI-generated code, ensuring consistent standards across all contributions.\nEnforce naming conventions and import styles across projects\nValidate AI-generated code in real-time before acceptance\nAuto-comment PR violations to streamline code review\nMaintain project consistency with custom regex and script rules",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lucasvtiradentes/tscanner`",
+    "usage_vi": "```\nRun TScanner on the AI-generated code in [DIRECTORY_PATH] and generate a report highlighting [SPECIFIC_ISSUES] such as security vulnerabilities, performance bottlenecks, or style violations. Focus on issues that could impact production stability. Include actionable fixes for each identified problem.\n```\nCopy\n\n```\nTScanner v1.2.0 - Code Quality Report\nGenerated: 2023-11-15 | Scanned: 47 files | Issues Found: 12\n\nCritical Issues (3):\n1. [SECURITY] - Insecure API Key Storage in /src/utils/api.js (Line 42)\n   - Issue: API key hardcoded in plaintext\n   - Risk: Credential exposure\n   - Fix: Use environment variables and secret management\n   - Suggested: Replace with process.env.API_KEY\n\n2. [PERFORMANCE] - Inefficient Loop in /src/processors/data.js (Line 89)\n   - Issue: Nested loop with O(n²) complexity\n   - Impact: 300ms average response time increase\n   - Fix: Implement memoization or use Set for deduplication\n   - Suggested: Replace with Map-based lookup\n\n3. [RELIABILITY] - Missing Error Handling in /src/services/user.js (Line 112)\n   - Issue: Uncaught promise rejection\n   - Risk: Application crash under load\n   - Fix: Add try/catch block with proper logging\n   - Suggested: Wrap async operations in try/catch\n\nModerate Issues (9):\n- [STYLE] - Inconsistent indentation in /src/components/Button.tsx\n- [MAINTAINABILITY] - Magic numbers in /src/config/constants.js\n- [TESTABILITY] - Untested edge cases in /src/utils/validation.js\n\nRecommendations:\n- Run TScanner in CI/CD pipeline before deployment\n- Address critical issues within 24 hours\n- Schedule refactoring for moderate issues next sprint\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:44:58.018610Z",
+    "http_status": 200,
+    "content_hash": "e3c44d8c87d213b2e991b18b885c051d66551db25076cabad004cb2edfc143e8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tscanner.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tscanner.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "TScanner - Code Quality Scanner for AI-Generated",
+  "short_description_vi": "TScanner is a code quality scanner designed for AI-generated code. It helps developers and operations teams identify issues in AI-produced code, ensuring better quality and reliability. It integrates with popular development tools and workflows, such as ESLint and CLI, to streamline the code review process."
+}

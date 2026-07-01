@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codeguide-starter-fullstack",
+  "slug": "codeguide-starter-fullstack",
+  "name": "Codeguide Starter Fullstack",
+  "headline": "codeguide-starter-fullstack: AI Agent Boilerplate",
+  "short_description": "Codeguide Starter Fullstack is a boilerplate for AI coding agents, featuring Next.js 15, TypeScript, and database integration. It enables developers to quickly build modern web applications with authentication and dark mode support, reducing setup time and improving productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "CodeGuide-dev",
+  "install_command": "git clone https://github.com/CodeGuide-dev/codeguide-starter-fullstack.git",
+  "source_repo_url": "https://github.com/CodeGuide-dev/codeguide-starter-fullstack",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "qwen-code",
+    "boilerplate",
+    "nextjs",
+    "shadcn-ui",
+    "claude-code",
+    "drizzle-orm",
+    "starter-kit",
+    "better-auth"
+  ],
+  "sections": {
+    "overview": "Codeguide Starter Fullstack is a production-ready boilerplate template for building modern web applications with Next.js 15, TypeScript, and PostgreSQL. It includes pre-configured authentication via Better Auth, type-safe database operations with Drizzle ORM, and 40+ shadcn/ui components for rapid UI development. The starter features dark mode support with system preference detection, Tailwind CSS v4 styling, and full Docker support for containerized development and deployment. Developers can eliminate repetitive setup work and focus on building features, with environment configuration, database migrations, and responsive design already implemented.\nRapidly prototype fullstack web applications with AI coding agents\nSet up user authentication and database schemas without manual configuration\nBuild responsive web UIs leveraging pre-configured shadcn/ui components\nDeploy containerized applications using Docker and Docker Compose",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CodeGuide-dev/codeguide-starter-fullstack`",
+    "usage": "```\nGenerate a production-ready Next.js 15 full-stack application using the Codeguide Starter Fullstack template. Initialize the project with TypeScript, set up [DATABASE_TYPE] database integration, and implement [AUTH_METHOD] authentication. Include dark mode support and [SPECIFIC_FEATURE] as a core functionality. Provide the complete project structure, configuration files, and a working example of [ENDPOINT_OR_PAGE].\n```\nCopy\n\n```\n```bash\n# Project initialization\nnpx create-next-app@latest my-fullstack-app --ts --eslint --app --src-dir --import-alias \"@/*\"\ncd my-fullstack-app\n\n# Install dependencies\nnpm install @prisma/client @next-auth/prisma-adapter next-auth bcryptjs zod react-hook-form @hookform/resolvers\nnpm install -D prisma tailwindcss postcss autoprefixer @types/bcryptjs @types/node\n\n# Initialize Prisma with PostgreSQL\nnpx prisma init\n# Configure database connection in prisma/schema.prisma\nnpx prisma generate\nnpx prisma db push\n\n# Setup NextAuth.js\n# Create app/api/auth/[...nextauth]/route.ts with Google OAuth provider\n# Configure auth options in lib/auth.ts\n\n# Create dark mode context in lib/context/DarkModeContext.tsx\n# Implement Tailwind dark mode classes in tailwind.config.js\n\n# Create a sample page: app/dashboard/page.tsx\n'use client'\nimport { useSession } from 'next-auth/react'\nimport { redirect } from 'next/navigation'\n\nexport default function DashboardPage() {\n  const { data: session } = useSession()\n  \n  if (!session) redirect('/login')\n  \n  return (\n    <div className=\"min-h-screen bg-gray-100 dark:bg-gray-900 p-8\">\n      <h1 className=\"text-3xl font-bold text-gray-900 dark:text-white\">Dashboard</h1>\n      <p className=\"mt-4 text-gray-600 dark:text-gray-300\">Welcome, {session.user?.name}!</p>\n      <div className=\"mt-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow\">\n        <h2 className=\"text-xl font-semibold text-gray-800 dark:text-white\">Recent Activity</h2>\n        <ul className=\"mt-4 space-y-2\">\n          <li className=\"text-gray-600 dark:text-gray-300\">• Project X updated</li>\n          <li className=\"text-gray-600 dark:text-gray-300\">• Task Y completed</li>\n        </ul>\n      </div>\n    </div>\n  )\n}\n\n# Create API route: app/api/user/route.ts\nimport { NextResponse } from 'next/server'\nimport { getServerSession } from 'next-auth'\nimport { authOptions } from '@/lib/auth'\n\nexport async function GET() {\n  const session = await getServerSession(authOptions)\n  \n  if (!session) {\n    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })\n  }\n  \n  return NextResponse.json({\n    user: {\n      id: session.user.id,\n      name: session.user.name,\n      email: session.user.email\n    }\n  })\n}\n\n# Complete project structure:\nmy-fullstack-app/\n├── app/\n│   ├── (auth)/login/page.tsx\n│   ├── api/\n│   │   ├── auth/[...nextauth]/route.ts\n│   │   └── user/route.ts\n│   ├── dashboard/page.tsx\n│   └── layout.tsx\n├── lib/\n│   ├── auth.ts\n│   ├── context/\n│   │   └── DarkModeContext.tsx\n│   └── prisma.ts\n├── prisma/\n│   └── schema.prisma\n├── public/\n├── src/\n├── tailwind.config.js\n├── tsconfig.json\n└── package.json\n\n# Environment variables (.env.local):\nDATABASE_URL=\"postgresql://user:password@localhost:5432/mydb\"\nNEXTAUTH_URL=\"http://localhost:3000\"\nNEXTAUTH_SECRET=\"your-secret-key\"\nGOOGLE_CLIENT_ID=\"your-google-client-id\"\nGOOGLE_CLIENT_SECRET=\"your-google-client-secret\"\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codeguide-starter-fullstack#main-content",
+      "codeguide-starter-fullstack#overview",
+      "codeguide-starter-fullstack#setup",
+      "codeguide-starter-fullstack#examples",
+      "codeguide-starter-fullstack#tools",
+      "codeguide-starter-fullstack#mcp",
+      "codeguide-starter-fullstack#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Codeguide Starter Fullstack is a production-ready boilerplate template for building modern web applications with Next.js 15, TypeScript, and PostgreSQL. It includes pre-configured authentication via Better Auth, type-safe database operations with Drizzle ORM, and 40+ shadcn/ui components for rapid UI development. The starter features dark mode support with system preference detection, Tailwind CSS v4 styling, and full Docker support for containerized development and deployment. Developers can eliminate repetitive setup work and focus on building features, with environment configuration, database migrations, and responsive design already implemented.\nRapidly prototype fullstack web applications with AI coding agents\nSet up user authentication and database schemas without manual configuration\nBuild responsive web UIs leveraging pre-configured shadcn/ui components\nDeploy containerized applications using Docker and Docker Compose",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CodeGuide-dev/codeguide-starter-fullstack`",
+    "usage_vi": "```\nGenerate a production-ready Next.js 15 full-stack application using the Codeguide Starter Fullstack template. Initialize the project with TypeScript, set up [DATABASE_TYPE] database integration, and implement [AUTH_METHOD] authentication. Include dark mode support and [SPECIFIC_FEATURE] as a core functionality. Provide the complete project structure, configuration files, and a working example of [ENDPOINT_OR_PAGE].\n```\nCopy\n\n```\n```bash\n# Project initialization\nnpx create-next-app@latest my-fullstack-app --ts --eslint --app --src-dir --import-alias \"@/*\"\ncd my-fullstack-app\n\n# Install dependencies\nnpm install @prisma/client @next-auth/prisma-adapter next-auth bcryptjs zod react-hook-form @hookform/resolvers\nnpm install -D prisma tailwindcss postcss autoprefixer @types/bcryptjs @types/node\n\n# Initialize Prisma with PostgreSQL\nnpx prisma init\n# Configure database connection in prisma/schema.prisma\nnpx prisma generate\nnpx prisma db push\n\n# Setup NextAuth.js\n# Create app/api/auth/[...nextauth]/route.ts with Google OAuth provider\n# Configure auth options in lib/auth.ts\n\n# Create dark mode context in lib/context/DarkModeContext.tsx\n# Implement Tailwind dark mode classes in tailwind.config.js\n\n# Create a sample page: app/dashboard/page.tsx\n'use client'\nimport { useSession } from 'next-auth/react'\nimport { redirect } from 'next/navigation'\n\nexport default function DashboardPage() {\n  const { data: session } = useSession()\n  \n  if (!session) redirect('/login')\n  \n  return (\n    <div className=\"min-h-screen bg-gray-100 dark:bg-gray-900 p-8\">\n      <h1 className=\"text-3xl font-bold text-gray-900 dark:text-white\">Dashboard</h1>\n      <p className=\"mt-4 text-gray-600 dark:text-gray-300\">Welcome, {session.user?.name}!</p>\n      <div className=\"mt-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow\">\n        <h2 className=\"text-xl font-semibold text-gray-800 dark:text-white\">Recent Activity</h2>\n        <ul className=\"mt-4 space-y-2\">\n          <li className=\"text-gray-600 dark:text-gray-300\">• Project X updated</li>\n          <li className=\"text-gray-600 dark:text-gray-300\">• Task Y completed</li>\n        </ul>\n      </div>\n    </div>\n  )\n}\n\n# Create API route: app/api/user/route.ts\nimport { NextResponse } from 'next/server'\nimport { getServerSession } from 'next-auth'\nimport { authOptions } from '@/lib/auth'\n\nexport async function GET() {\n  const session = await getServerSession(authOptions)\n  \n  if (!session) {\n    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })\n  }\n  \n  return NextResponse.json({\n    user: {\n      id: session.user.id,\n      name: session.user.name,\n      email: session.user.email\n    }\n  })\n}\n\n# Complete project structure:\nmy-fullstack-app/\n├── app/\n│   ├── (auth)/login/page.tsx\n│   ├── api/\n│   │   ├── auth/[...nextauth]/route.ts\n│   │   └── user/route.ts\n│   ├── dashboard/page.tsx\n│   └── layout.tsx\n├── lib/\n│   ├── auth.ts\n│   ├── context/\n│   │   └── DarkModeContext.tsx\n│   └── prisma.ts\n├── prisma/\n│   └── schema.prisma\n├── public/\n├── src/\n├── tailwind.config.js\n├── tsconfig.json\n└── package.json\n\n# Environment variables (.env.local):\nDATABASE_URL=\"postgresql://user:password@localhost:5432/mydb\"\nNEXTAUTH_URL=\"http://localhost:3000\"\nNEXTAUTH_SECRET=\"your-secret-key\"\nGOOGLE_CLIENT_ID=\"your-google-client-id\"\nGOOGLE_CLIENT_SECRET=\"your-google-client-secret\"\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:17.552784Z",
+    "http_status": 200,
+    "content_hash": "b76c642fef503ffd4bf4dc6454bd83f1133620fd2e3cfc90367738f6993c2fa2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codeguide-starter-fullstack.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codeguide-starter-fullstack.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "codeguide-starter-fullstack: AI Agent Boilerplate",
+  "short_description_vi": "Codeguide Starter Fullstack is a boilerplate for AI coding agents, featuring Next.js 15, TypeScript, and database integration. It enables developers to quickly build modern web applications with authentication and dark mode support, reducing setup time and improving productivity."
+}

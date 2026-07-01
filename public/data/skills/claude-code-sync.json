@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-sync",
+  "slug": "claude-code-sync",
+  "name": "Claude Code Sync",
+  "headline": "Sync Claude Code history easily with Rust CLI",
+  "short_description": "Syncs Claude Code conversation history across machines using git repositories. Ideal for developers and teams working with multiple devices. Integrates with git workflows for version control and collaboration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "perfectra1n",
+  "install_command": "git clone https://github.com/perfectra1n/claude-code-sync.git",
+  "source_repo_url": "https://github.com/perfectra1n/claude-code-sync",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "git",
+    "sync",
+    "cli",
+    "terminal-based",
+    "claude",
+    "terminal",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claude-code-sync is a command-line tool that backs up and synchronizes your Claude Code conversation history by pushing it to a git repository. It discovers conversation files stored locally in ~/.claude/projects/ and syncs them across multiple computers while maintaining version control. The tool handles multi-machine workflows by automatically merging non-conflicting changes, detecting conflicts when the same session is modified on different machines, and resolving them through an interactive TUI. Developers and teams can use it to prevent conversation loss, maintain consistency across devices, track conversation changes over time, and integrate Claude Code history into existing git workflows—with optional support for Git LFS for large files and Mercurial as an alternative backend.\nBack up Claude Code conversations to prevent data loss\nKeep conversation history synchronized across multiple development machines\nTrack and version control changes to Claude Code sessions over time\nResolve conflicts when conversations are modified on different computers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/perfectra1n/claude-code-sync`",
+    "usage": "```\nSet up [GIT_REPO_URL] as a remote for my Claude Code sync repository. Initialize the sync process to track changes in [PROJECT_DIRECTORY] and push updates to [REMOTE_BRANCH]. Ensure all files in [INCLUDED_EXTENSIONS] are monitored for changes. Resolve any merge conflicts by preferring local changes over remote ones.\n```\nCopy\n\n```\nSuccessfully initialized Claude Code sync for your project 'web-portal' in /Users/dev/projects/web-portal. The repository is now linked to your GitHub remote at git@github.com:your-team/web-portal-claude-sync.git with branch 'claude-sync'.\n\nCurrent sync status:\n- 42 files tracked (js, ts, json, md)\n- Last sync: 2 hours ago (commit 7a3b1c2)\n- Pending changes: 3 files modified locally (src/components/Button.tsx, package.json, README.md)\n- Remote changes: 1 new file added (src/utils/api.ts)\n\nMerge conflict detected in src/components/Button.tsx:\n- Local: Added new prop 'disabled' to Button component\n- Remote: Modified Button component styles\n- Resolution: Applied local changes (preferred) and preserved remote styling\n\nNext steps:\n1. Review the merged changes in src/components/Button.tsx\n2. Run 'git push claude-sync' to sync with remote\n3. Verify all tests pass in your local environment\n\nSync completed successfully in 1.2 seconds. All files are now synchronized across your devices.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-sync#main-content",
+      "claude-code-sync#overview",
+      "claude-code-sync#setup",
+      "claude-code-sync#examples",
+      "claude-code-sync#tools",
+      "claude-code-sync#mcp",
+      "claude-code-sync#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-code-sync là một công cụ dòng lệnh (CLI) giúp sao lưu và đồng bộ lịch sử trò chuyện Claude Code bằng cách push lên git repository. Công cụ tự động tìm các file trò chuyện được lưu cục bộ trong thư mục ~/.claude/projects/ và đồng bộ chúng giữa nhiều máy tính khác nhau mà vẫn đảm bảo quản lý phiên bản (version control). claude-code-sync tối ưu hóa workflow đa thiết bị bằng cách tự động merge các thay đổi không gây xung đột, phát hiện conflict khi cùng một session bị chỉnh sửa trên các máy khác nhau, và hỗ trợ giải quyết qua giao diện TUI tương tác. Lập trình viên và các team có thể sử dụng công cụ này để tránh mất mát dữ liệu trò chuyện, duy trì tính đồng nhất giữa các thiết bị, theo dõi lịch sử thay đổi của các session theo thời gian, và tích hợp lịch sử Claude Code vào git workflow hiện tại — hỗ trợ cả Git LFS cho các file lớn và Mercurial như một backend thay thế.\nSao lưu các cuộc trò chuyện Claude Code để tránh mất dữ liệu\nĐồng bộ lịch sử trò chuyện liên tục giữa nhiều máy tính phát triển\nTheo dõi và quản lý phiên bản các thay đổi của session Claude Code theo thời gian\nGiải quyết conflict khi cuộc trò chuyện bị chỉnh sửa đồng thời trên các máy tính khác nhau",
+    "setup_vi": "Hiện chưa có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/perfectra1n/claude-code-sync`",
+    "usage_vi": "```\nThiết lập [GIT_REPO_URL] làm remote cho repository đồng bộ Claude Code của tôi. Khởi tạo quá trình đồng bộ để theo dõi các thay đổi trong [PROJECT_DIRECTORY] và push các cập nhật lên [REMOTE_BRANCH]. Đảm bảo tất cả các file có phần mở rộng trong [INCLUDED_EXTENSIONS] đều được giám sát thay đổi. Giải quyết mọi merge conflict bằng cách ưu tiên các thay đổi cục bộ (local) hơn các thay đổi từ xa (remote).\n```\nCopy\n\n```\nKhởi tạo thành công đồng bộ Claude Code cho dự án 'web-portal' tại /Users/dev/projects/web-portal. Repository hiện đã được liên kết với GitHub remote tại git@github.com:your-team/web-portal-claude-sync.git trên branch 'claude-sync'.\n\nTrạng thái đồng bộ hiện tại:\n- Đang track 42 file (js, ts, json, md)\n- Lần đồng bộ cuối: 2 giờ trước (commit 7a3b1c2)\n- Thay đổi chưa hoàn thành: 3 file bị sửa đổi cục bộ (src/components/Button.tsx, package.json, README.md)\n- Thay đổi trên remote: Đã thêm 1 file mới (src/utils/api.ts)\n\nPhát hiện merge conflict trong src/components/Button.tsx:\n- Local: Đã thêm prop 'disabled' mới vào component Button\n- Remote: Đã sửa đổi style của component Button\n- Hướng giải quyết: Đã áp dụng các thay đổi local (được ưu tiên) và giữ nguyên phần styling từ remote\n\nCác bước tiếp theo:\n1. Xem lại các thay đổi đã được merge trong src/components/Button.tsx\n2. Chạy lệnh 'git push claude-sync' để đồng bộ với remote\n3. Xác nhận tất cả các test đều pass trên môi trường local của bạn\n\nĐồng bộ hoàn tất thành công trong 1.2 giây. Tất cả các file hiện đã được đồng bộ hóa trên các thiết bị của bạn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:54.356475Z",
+    "http_status": 200,
+    "content_hash": "6136d20dc20d98064db550a5c47a7eb1e109da070c8789dd1392f6c9a583aa6b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-sync.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-sync.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Đồng bộ lịch sử Claude Code dễ dàng với Rust CLI",
+  "short_description_vi": "Đồng bộ lịch sử trò chuyện Claude Code giữa các máy tính bằng git repository. Giải pháp lý tưởng cho lập trình viên và đội ngũ làm việc trên nhiều thiết bị. Tích hợp mượt mà với git workflow để quản lý phiên bản và cộng tác hiệu quả."
+}

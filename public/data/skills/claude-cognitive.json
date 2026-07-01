@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-cognitive",
+  "slug": "claude-cognitive",
+  "name": "Claude Cognitive",
+  "headline": "Working memory for Claude Code automation",
+  "short_description": "Claude Cognitive provides persistent context and multi-instance coordination for Claude Code. It enables operations teams to maintain working memory across multiple instances, improving productivity and token optimization. Integrates with Python-based workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "GMaN1911",
+  "install_command": "git clone https://github.com/GMaN1911/claude-cognitive.git",
+  "source_repo_url": "https://github.com/GMaN1911/claude-cognitive",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "productivity",
+    "token-optimization",
+    "developer-tools",
+    "context-management",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Cognitive solves the statelessness problem in Claude Code by providing working memory across instances. It uses two core systems: a Context Router that intelligently injects files based on attention dynamics (HOT/WARM/COLD tiers with keyword activation and decay), and a Pool Coordinator that shares state across multiple concurrent instances to prevent duplicate work and maintain long-running session context. Validated on production codebases with 1+ million lines and 8 concurrent instances, Claude Cognitive delivers 64-95% token savings while enabling new instances to be productive on the first message. It integrates with Python-based workflows and supports persistent development sessions spanning days or weeks.\nAutomatically maintain context across multiple Claude Code instances during long development sessions.\nReduce token usage by intelligently managing file context based on usage patterns.\nCoordinate efforts between different instances to avoid duplicate work on shared codebases.\nQuickly inject relevant code context based on recent interactions, improving initial response accuracy.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GMaN1911/claude-cognitive`",
+    "usage": "```\nI'm setting up a Claude Cognitive instance to manage [SPECIFIC_WORKFLOW]. I need help configuring the persistent context to maintain [TYPE_OF_DATA] across multiple sessions. Also, provide guidance on optimizing token usage for this use case. Include any relevant Python code snippets for integration.\n```\nCopy\n\n```\nBased on your request to manage customer support ticket escalations, I've configured your Claude Cognitive instance with the following parameters:\n\n1. Persistent Context Settings:\n   - Context Window: 8192 tokens\n   - Memory Retention: 7-day rolling window\n   - Data Structure: JSON-based ticket objects with priority flags\n\n2. Multi-Instance Coordination:\n   - Instance Count: 3 (for load balancing)\n   - Synchronization Interval: 5-minute syncs\n   - Conflict Resolution: Last-write-wins with audit trail\n\n3. Token Optimization:\n   ```python\n   def optimize_tokens(ticket_data):\n       # Compress ticket descriptions using this algorithm\n       compressed = compress_description(ticket_data['description'])\n       ticket_data['description'] = compressed\n       return ticket_data\n   ```\n\n4. Integration Code:\n   ```python\n   from claude_cognitive import CognitiveManager\n   manager = CognitiveManager(api_key='your_key')\n   manager.add_workflow('ticket_escalation', context_settings)\n   ```\n\nThis configuration will maintain ticket context across instances while optimizing token usage by compressing text data. The system will automatically sync ticket statuses every 5 minutes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-cognitive#main-content",
+      "claude-cognitive#overview",
+      "claude-cognitive#setup",
+      "claude-cognitive#examples",
+      "claude-cognitive#tools",
+      "claude-cognitive#mcp",
+      "claude-cognitive#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Cognitive giải quyết vấn đề phi trạng thái (statelessness) trong Claude Code bằng cách cung cấp bộ nhớ làm việc (working memory) giữa các instance. Hệ thống sử dụng hai thành phần cốt lõi: Context Router tự động inject các file một cách thông minh dựa trên cơ chế phân cấp độ chú ý (các tầng HOT/WARM/COLD với tính năng kích hoạt bằng từ khóa và tự động suy giảm độ ưu tiên - decay), và Pool Coordinator giúp chia sẻ trạng thái giữa nhiều instance chạy đồng thời nhằm tránh trùng lặp công việc và duy trì context cho các session chạy dài. Đã được kiểm chứng trên các production codebase với hơn 1 triệu dòng code và 8 instance chạy song song, Claude Cognitive giúp tiết kiệm từ 64-95% lượng token tiêu thụ, đồng thời giúp các instance mới hoạt động hiệu quả ngay từ message đầu tiên. Công cụ này tích hợp mượt mà với các workflow Python và hỗ trợ duy trì các session phát triển liên tục kéo dài nhiều ngày hoặc nhiều tuần.\n\n- Tự động duy trì context trên nhiều instance Claude Code trong suốt các session phát triển dài.\n- Giảm mức tiêu thụ token bằng cách quản lý thông minh context của file dựa trên tần suất sử dụng.\n- Phối hợp hoạt động giữa các instance khác nhau để tránh trùng lặp công việc trên các codebase dùng chung.\n- Nhanh chóng inject các code context liên quan dựa trên các tương tác gần nhất, giúp cải thiện độ chính xác của phản hồi ban đầu.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/GMaN1911/claude-cognitive`",
+    "usage_vi": "```\nTôi đang thiết lập một instance Claude Cognitive để quản lý [SPECIFIC_WORKFLOW]. Tôi cần hỗ trợ cấu hình persistent context nhằm duy trì [TYPE_OF_DATA] trên nhiều session khác nhau. Ngoài ra, hãy hướng dẫn cách tối ưu hóa lượng token tiêu thụ cho use case này. Vui lòng đính kèm các đoạn code Python liên quan để tích hợp.\n```\nCopy\n\n```\nDựa trên yêu cầu quản lý việc chuyển cấp ticket hỗ trợ khách hàng (customer support ticket escalations) của bạn, tôi đã cấu hình instance Claude Cognitive với các thông số sau:\n\n1. Cấu hình Persistent Context:\n   - Context Window: 8192 token\n   - Memory Retention: Rolling window 7 ngày\n   - Cấu trúc dữ liệu: Các đối tượng ticket dạng JSON kèm priority flag\n\n2. Phối hợp Multi-Instance:\n   - Số lượng Instance: 3 (để cân bằng tải)\n   - Tần suất đồng bộ hóa (Synchronization Interval): Đồng bộ mỗi 5 phút\n   - Xử lý xung đột (Conflict Resolution): Last-write-wins kèm audit trail\n\n3. Tối ưu hóa Token:\n   ```python\n   def optimize_tokens(ticket_data):\n       # Nén phần mô tả ticket sử dụng thuật toán này\n       compressed = compress_description(ticket_data['description'])\n       ticket_data['description'] = compressed\n       return ticket_data\n   ```\n\n4. Code tích hợp:\n   ```python\n   from claude_cognitive import CognitiveManager\n   manager = CognitiveManager(api_key='your_key')\n   manager.add_workflow('ticket_escalation', context_settings)\n   ```\n\nCấu hình này sẽ duy trì ticket context trên các instance, đồng thời tối ưu hóa lượng token bằng cách nén dữ liệu văn bản. Hệ thống sẽ tự động đồng bộ hóa trạng thái ticket mỗi 5 phút.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:07.710818Z",
+    "http_status": 200,
+    "content_hash": "ea853f6c44e4b675fabf0675ff839d7279adb694e9340466d5cf8c39d028e754",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-cognitive.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-cognitive.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ nhớ làm việc cho tự động hóa Claude Code",
+  "short_description_vi": "Claude Cognitive cung cấp persistent context và khả năng điều phối multi-instance cho Claude Code. Giải pháp này giúp các đội ngũ vận hành duy trì bộ nhớ làm việc trên nhiều instance, giúp tăng năng suất và tối ưu hóa lượng token tiêu thụ. Tích hợp mượt mà với các workflow Python và hỗ trợ các Claude agent."
+}

@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/custom-modes-roo-code",
+  "slug": "custom-modes-roo-code",
+  "name": "Custom-Modes-Roo-Code",
+  "headline": "Custom-Modes-Roo-Code - AI Coding Assistance",
+  "short_description": "Custom-Modes-Roo-Code enables developers to create tailored AI coding assistance configurations for the Roo Code VS Code extension. It benefits developers and teams by optimizing workflows for specific projects or coding styles. The skill connects to VS Code and integrates with Claude for enhanced coding assistance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "jtgsystems",
+  "install_command": "git clone https://github.com/jtgsystems/Custom-Modes-Roo-Code.git",
+  "source_repo_url": "https://github.com/jtgsystems/Custom-Modes-Roo-Code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "llm",
+    "vscode-extension",
+    "security-first",
+    "python",
+    "performance-optimization",
+    "sparc-methodology",
+    "agents",
+    "development-workflow",
+    "nextjs",
+    "clean-architecture",
+    "docker",
+    "kubernetes",
+    "fastapi",
+    "web",
+    "tools",
+    "roocode",
+    "react",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Custom-Modes-Roo-Code is a comprehensive library of 225 specialized AI agent configurations designed for the Roo Code VS Code extension. It enables developers to create customized AI coding assistance tailored to specific projects, frameworks, and development workflows. The skill includes agents across 10 categories—from AI/ML and backend development to DevOps, security, and domain-specific specialties—plus 11 advanced reasoning personas for complex cognitive tasks. Each agent is configured with 2026 technology stack standards including React 19+, Node.js 22+, Python 3.13+, and Kubernetes 1.32+. Developers can clone the repository, convert YAML-based agent configurations to VS Code format using provided Python tooling, and immediately integrate security-first, production-ready personas into their coding environment.\nCreate role-specific AI coding assistants for full-stack, backend, frontend, or DevOps teams\nConfigure ML/AI development agents with specialized MLOps and computer vision expertise\nDeploy security-first coding agents with compliance and penetration testing capabilities\nSet up language-specific personas for Python, JavaScript, Rust, Go, Java, or other tech stacks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jtgsystems/Custom-Modes-Roo-Code`",
+    "usage": "```\nGenerate a custom Roo Code configuration for [PROJECT_NAME] that optimizes [SPECIFIC_TASK] in [PROGRAMMING_LANGUAGE]. Include best practices for [FRAMEWORK/LIBRARY] and [DEVELOPMENT_STYLE]. The config should prioritize [PERFORMANCE/READABILITY/MAINTAINABILITY] and include [SPECIFIC_TOOLS/PLUGINS]. Output the configuration as a JSON file with comments explaining key decisions.\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"React-TS-Styled-Components-Config\",\n  \"description\": \"Optimized Roo Code config for React TypeScript projects using styled-components with strict TypeScript, ESLint, and Prettier rules.\",\n  \"settings\": {\n    \"ai_model\": \"claude-3-opus-20240229\",\n    \"context_window\": 16384,\n    \"temperature\": 0.3,\n    \"top_p\": 0.9,\n    \"max_tokens\": 4096,\n    \"stop_sequences\": [\"\\n\\nHuman:\", \"\\n\\nAssistant:\"]\n  },\n  \"tools\": {\n    \"eslint\": {\n      \"enabled\": true,\n      \"config_file\": \".eslintrc.json\",\n      \"rules\": {\n        \"@typescript-eslint/explicit-function-return-type\": \"error\",\n        \"react/prop-types\": \"off\",\n        \"import/no-extraneous-dependencies\": [\"error\", {\"devDependencies\": true}]\n      }\n    },\n    \"prettier\": {\n      \"enabled\": true,\n      \"config_file\": \".prettierrc\",\n      \"printWidth\": 100,\n      \"tabWidth\": 2,\n      \"useTabs\": false,\n      \"semi\": true,\n      \"singleQuote\": true,\n      \"trailingComma\": \"es5\"\n    },\n    \"typescript\": {\n      \"enabled\": true,\n      \"tsconfig_file\": \"tsconfig.json\",\n      \"strict\": true,\n      \"noImplicitAny\": true,\n      \"strictNullChecks\": true\n    },\n    \"styled_components\": {\n      \"enabled\": true,\n      \"babel_plugin\": true,\n      \"displayName\": true,\n      \"ssr\": true\n    }\n  },\n  \"prompts\": {\n    \"file_header\": \"// React TypeScript Component - styled-components\\n// Project: [PROJECT_NAME]\\n// Author: [YOUR_NAME]\\n// Date: {{date}}\\n\\n\",\n    \"component_template\": \"import React from 'react'\\nimport styled from 'styled-components'\\n\\ninterface {{ComponentName}}Props {\\n  [props]\\n}\\n\\nexport const {{ComponentName}}: React.FC<{{ComponentName}}Props> = ({ [props] }) => {\\n  return (\\n    <{{StyledComponentName}}>\\n      [content]\\n    </{{StyledComponentName}}>\\n  )\\n}\\n\\nconst {{StyledComponentName}} = styled.div`\\n  [styles]\\n`\\n\",\n    \"test_template\": \"import { render, screen } from '@testing-library/react'\\nimport '@testing-library/jest-dom'\\nimport {{ComponentName}} from './{{ComponentName}}'\\n\\ndescribe('{{ComponentName}}', () => {\\n  it('renders correctly', () => {\\n    render(<{{ComponentName}} [props] />)\\n    expect(screen.getByText('[expected text]')).toBeInTheDocument()\\n  })\\n})\\n\"\n  },\n  \"workflows\": {\n    \"new_component\": {\n      \"steps\": [\n        \"Generate component skeleton using component_template\",\n        \"Add TypeScript interfaces for props\",\n        \"Create styled component with appropriate styles\",\n        \"Generate test file using test_template\",\n        \"Run ESLint and Prettier to format code\"\n      ]\n    },\n    \"refactor\": {\n      \"steps\": [\n        \"Analyze existing component structure\",\n        \"Suggest TypeScript improvements\",\n        \"Optimize styled-components usage\",\n        \"Update tests to match new implementation\",\n        \"Verify ESLint and Prettier compliance\"\n      ]\n    }\n  }\n}\n```\n\nThis configuration is designed for a React TypeScript project using styled-components. It enforces strict TypeScript rules, includes ESLint and Prettier for consistent code quality, and provides templates for component creation and testing. The settings optimize the AI's context window and response quality for React-specific tasks. The workflows automate common development patterns, reducing boilerplate code and improving consistency across the team. The configuration includes specific rules for styled-components to ensure proper integration with the styling library.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "custom-modes-roo-code#main-content",
+      "custom-modes-roo-code#overview",
+      "custom-modes-roo-code#setup",
+      "custom-modes-roo-code#examples",
+      "custom-modes-roo-code#tools",
+      "custom-modes-roo-code#mcp",
+      "custom-modes-roo-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Custom-Modes-Roo-Code là một thư viện toàn diện gồm 225 cấu hình AI agent chuyên biệt được thiết kế cho extension Roo Code trên VS Code. Công cụ này cho phép lập trình viên tạo các trợ lý hỗ trợ lập trình AI tùy chỉnh, phù hợp với từng dự án, framework và workflow phát triển cụ thể. Skill này bao gồm các agent thuộc 10 danh mục khác nhau—từ AI/ML, phát triển backend cho đến DevOps, bảo mật và các chuyên ngành đặc thù—cùng với 11 persona suy luận nâng cao dành cho các tác vụ tư duy phức tạp. Mỗi agent được cấu hình theo các tiêu chuẩn tech stack năm 2026 bao gồm React 19+, Node.js 22+, Python 3.13+ và Kubernetes 1.32+. Lập trình viên có thể git clone repository này, chuyển đổi các cấu hình agent dạng YAML sang định dạng của VS Code bằng các công cụ Python được cung cấp sẵn, và tích hợp ngay lập tức các persona ưu tiên bảo mật, sẵn sàng cho môi trường production vào môi trường lập trình của mình.\n\n- Tạo các trợ lý lập trình AI theo từng vai trò cụ thể cho các đội ngũ full-stack, backend, frontend hoặc DevOps\n- Cấu hình các agent phát triển ML/AI với chuyên môn sâu về MLOps và computer vision\n- Triển khai các agent lập trình ưu tiên bảo mật với khả năng kiểm định tuân thủ (compliance) và đánh giá bảo mật (penetration testing)\n- Thiết lập các persona tối ưu cho từng ngôn ngữ như Python, JavaScript, Rust, Go, Java hoặc các tech stack khác",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jtgsystems/Custom-Modes-Roo-Code`",
+    "usage_vi": "```\nTạo một cấu hình Roo Code tùy chỉnh cho [PROJECT_NAME] giúp tối ưu hóa [SPECIFIC_TASK] trong [PROGRAMMING_LANGUAGE]. Bao gồm các best practice cho [FRAMEWORK/LIBRARY] và [DEVELOPMENT_STYLE]. Cấu hình cần ưu tiên [PERFORMANCE/READABILITY/MAINTAINABILITY] và tích hợp [SPECIFIC_TOOLS/PLUGINS]. Xuất cấu hình dưới dạng file JSON kèm theo các bình luận giải thích cho các quyết định quan trọng.\n```\nCopy\n\n```json\n{\n  \"name\": \"React-TS-Styled-Components-Config\",\n  \"description\": \"Cấu hình Roo Code được tối ưu hóa cho các dự án React TypeScript sử dụng styled-components với các quy tắc nghiêm ngặt cho TypeScript, ESLint và Prettier.\",\n  \"settings\": {\n    \"ai_model\": \"claude-3-opus-20240229\",\n    \"context_window\": 16384,\n    \"temperature\": 0.3,\n    \"top_p\": 0.9,\n    \"max_tokens\": 4096,\n    \"stop_sequences\": [\"\\n\\nHuman:\", \"\\n\\nAssistant:\"]\n  },\n  \"tools\": {\n    \"eslint\": {\n      \"enabled\": true,\n      \"config_file\": \".eslintrc.json\",\n      \"rules\": {\n        \"@typescript-eslint/explicit-function-return-type\": \"error\",\n        \"react/prop-types\": \"off\",\n        \"import/no-extraneous-dependencies\": [\"error\", {\"devDependencies\": true}]\n      }\n    },\n    \"prettier\": {\n      \"enabled\": true,\n      \"config_file\": \".prettierrc\",\n      \"printWidth\": 100,\n      \"tabWidth\": 2,\n      \"useTabs\": false,\n      \"semi\": true,\n      \"singleQuote\": true,\n      \"trailingComma\": \"es5\"\n    },\n    \"typescript\": {\n      \"enabled\": true,\n      \"tsconfig_file\": \"tsconfig.json\",\n      \"strict\": true,\n      \"noImplicitAny\": true,\n      \"strictNullChecks\": true\n    },\n    \"styled_components\": {\n      \"enabled\": true,\n      \"babel_plugin\": true,\n      \"displayName\": true,\n      \"ssr\": true\n    }\n  },\n  \"prompts\": {\n    \"file_header\": \"// React TypeScript Component - styled-components\\n// Project: [PROJECT_NAME]\\n// Author: [YOUR_NAME]\\n// Date: {{date}}\\n\\n\",\n    \"component_template\": \"import React from 'react'\\nimport styled from 'styled-components'\\n\\ninterface {{ComponentName}}Props {\\n  [props]\\n}\\n\\nexport const {{ComponentName}}: React.FC<{{ComponentName}}Props> = ({ [props] }) => {\\n  return (\\n    <{{StyledComponentName}}>\\n      [content]\\n    </{{StyledComponentName}}>\\n  )\\n}\\n\\nconst {{StyledComponentName}} = styled.div`\\n  [styles]\\n`\\n\",\n    \"test_template\": \"import { render, screen } from '@testing-library/react'\\nimport '@testing-library/jest-dom'\\nimport {{ComponentName}} from './{{ComponentName}}'\\n\\ndescribe('{{ComponentName}}', () => {\\n  it('renders correctly', () => {\\n    render(<{{ComponentName}} [props] />)\\n    expect(screen.getByText('[expected text]')).toBeInTheDocument()\\n  })\\n})\\n\"\n  },\n  \"workflows\": {\n    \"new_component\": {\n      \"steps\": [\n        \"Tạo component skeleton sử dụng component_template\",\n        \"Thêm các interface TypeScript cho prop\",\n        \"Tạo styled component với style phù hợp\",\n        \"Tạo file test sử dụng test_template\",\n        \"Chạy ESLint và Prettier để định dạng code\"\n      ]\n    },\n    \"refactor\": {\n      \"steps\": [\n        \"Phân tích cấu trúc component hiện tại\",\n        \"Gợi ý các cải tiến cho TypeScript\",\n        \"Tối ưu hóa việc sử dụng styled-components\",\n        \"Cập nhật test để phù hợp với phần triển khai mới\",\n        \"Xác minh sự tuân thủ các quy tắc ESLint và Prettier\"\n      ]\n    }\n  }\n}\n```\n\nCấu hình này được thiết kế cho dự án React TypeScript sử dụng styled-components. Nó áp dụng các quy tắc TypeScript nghiêm ngặt, tích hợp ESLint và Prettier để đảm bảo chất lượng code đồng nhất, đồng thời cung cấp các template để tạo component và viết test. Các thiết lập giúp tối ưu hóa context window của AI và chất lượng phản hồi cho các tác vụ đặc thù của React. Các workflow giúp tự động hóa các mô hình phát triển phổ biến, giảm thiểu code mẫu (boilerplate code) và nâng cao tính đồng bộ trong toàn đội ngũ. Cấu hình cũng bao gồm các quy tắc cụ thể cho styled-components nhằm đảm bảo việc tích hợp mượt mà với thư viện styling này."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:41:09.515080Z",
+    "http_status": 200,
+    "content_hash": "e6a58dcc3e4d8b7dd953e26d8637d8e0619ec369239b197116ea9539bdbd0040",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\custom-modes-roo-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\custom-modes-roo-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Custom-Modes-Roo-Code - Hỗ trợ lập trình bằng AI",
+  "short_description_vi": "Custom-Modes-Roo-Code cho phép lập trình viên tạo các cấu hình hỗ trợ lập trình bằng AI được thiết kế riêng cho extension Roo Code trên VS Code. Công cụ này mang lại lợi ích cho lập trình viên và các đội ngũ phát triển bằng cách tối ưu hóa các workflow cho từng dự án hoặc phong cách viết code cụ thể. Skill này kết nối với VS Code và tích hợp với Claude để tăng cường khả năng hỗ trợ lập trình."
+}

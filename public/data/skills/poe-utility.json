@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/poe-utility",
+  "slug": "poe-utility",
+  "name": "POE_Utility",
+  "headline": "POE_Utility - Automates Path of Exile Tasks",
+  "short_description": "AutoHotKey utilities for Path of Exile. Automates looting, flask management, and skill casting. Benefits players by reducing repetitive tasks. Connects to Path of Exile client.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "heyfey",
+  "install_command": "git clone https://github.com/heyfey/POE_Utility.git",
+  "source_repo_url": "https://github.com/heyfey/POE_Utility",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "poe",
+    "ahk",
+    "pathofexile",
+    "autohotkey",
+    "path-of-exile",
+    "gaming"
+  ],
+  "sections": {
+    "overview": "POE_Utility is an AutoHotkey script that automates repetitive tasks in Path of Exile, including auto-looting filtered items, automatic flask drinking based on health/mana detection, and one-key flask sequences. It works by detecting specific pixel colors on screen, paired with item filter modifications, to identify and interact with items and flasks automatically. The script reduces manual clicking during gameplay by executing pre-configured key sequences and monitoring character status bars. Players can customize which items to loot and which flasks or skills to use through configuration files, making it adaptable to different character builds and playstyles.\nAutomatically pick up currency items, maps, and valuable drops based on custom item filter colors\nTrigger flask usage automatically when health or mana drops below configured thresholds\nExecute multi-flask combinations with a single keypress for burst defense or offense\nReduce repetitive clicking during long farming or dungeon runs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/heyfey/POE_Utility`",
+    "usage": "```\nCreate an AutoHotKey script for Path of Exile that automates [TASK] (e.g., looting, flask management, skill casting). The script should be compatible with the latest version of Path of Exile and include error handling for [SCENARIO] (e.g., low health, full inventory). Provide the script in a code block and explain how to install and use it.\n```\nCopy\n\n```\n```ahk\n; AutoHotKey Script for Path of Exile Flask Management\n\n#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.\nSendMode Input  ; Recommended for new scripts due to its superior speed and reliability.\nSetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.\n\n; Hotkeys for Flask Management\nF1::\n    if (GetKeyState(\"SC001\", \"P\")) {\n        Send {F1}\n        Sleep 100\n        Send {F1}\n    }\nreturn\n\nF2::\n    if (GetKeyState(\"SC002\", \"P\")) {\n        Send {F2}\n        Sleep 100\n        Send {F2}\n    }\nreturn\n\n; Error Handling for Low Health\n~F3::\n    if (GetKeyState(\"SC003\", \"P\")) {\n        if (PixelGetColor(500, 500) = 0xFF0000) {  ; Assuming red color indicates low health\n            MsgBox, Low Health Detected! Use your flask immediately!\n            Send {F3}\n        }\n    }\nreturn\n```\n\n**Installation and Usage Instructions**\n1. Copy the script above into a text editor and save it with a `.ahk` extension (e.g., `POE_Flask_Management.ahk`).\n2. Install AutoHotKey from [AutoHotKey Website](https://www.autohotkey.com/).\n3. Double-click the saved `.ahk` file to run the script.\n4. In Path of Exile, press the corresponding function keys (F1, F2, F3) to activate the flask management and error handling features.\n5. Customize the script by modifying the hotkeys or adding new features as needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "poe-utility#main-content",
+      "poe-utility#overview",
+      "poe-utility#setup",
+      "poe-utility#examples",
+      "poe-utility#tools",
+      "poe-utility#mcp",
+      "poe-utility#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "POE_Utility là một script AutoHotkey giúp tự động hóa các tác vụ lặp đi lặp lại trong Path of Exile, bao gồm tự động nhặt các vật phẩm theo bộ lọc, tự động dùng flask dựa trên nhận diện máu/mana, và kích hoạt chuỗi flask bằng một phím duy nhất. Script hoạt động bằng cách nhận diện màu pixel cụ thể trên màn hình, kết hợp với các tùy biến bộ lọc vật phẩm (item filter), để tự động nhận dạng và tương tác với vật phẩm cũng như flask. Script giúp giảm thiểu việc click chuột thủ công trong quá trình chơi game bằng cách thực thi các chuỗi phím đã được cấu hình sẵn và giám sát thanh trạng thái nhân vật. Người chơi có thể tùy chỉnh các vật phẩm muốn nhặt và các flask hoặc kỹ năng muốn sử dụng thông qua các file cấu hình, giúp dễ dàng tương thích với nhiều lối xây dựng nhân vật (character build) và phong cách chơi khác nhau.\n\n- Tự động nhặt các loại tiền tệ (currency), bản đồ (map) và các vật phẩm giá trị rơi ra dựa trên màu sắc tùy chỉnh của bộ lọc vật phẩm\n- Tự động kích hoạt dùng flask khi máu hoặc mana giảm xuống dưới ngưỡng được cấu hình\n- Thực thi tổ hợp nhiều flask chỉ với một lần nhấn phím để tăng tốc phòng thủ hoặc tấn công\n- Giảm thiểu click chuột lặp đi lặp lại trong các đợt farm hoặc đi phụ bản kéo dài",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/heyfey/POE_Utility`",
+    "usage_vi": "```\nTạo một script AutoHotKey cho Path of Exile để tự động hóa [TASK] (ví dụ: nhặt đồ, quản lý flask, thi triển kỹ năng). Script phải tương thích với phiên bản Path of Exile mới nhất và đi kèm tính năng xử lý lỗi cho [SCENARIO] (ví dụ: máu thấp, đầy rương đồ). Cung cấp script trong một code block và giải thích cách cài đặt cũng như sử dụng.\n```\nCopy\n\n```\n```ahk\n; Script AutoHotKey để quản lý Flask trong Path of Exile\n\n#NoEnv  ; Khuyên dùng để tối ưu hiệu suất và khả năng tương thích với các phiên bản AutoHotkey tương lai.\nSendMode Input  ; Khuyên dùng cho các script mới nhờ tốc độ và độ tin cậy vượt trội.\nSetWorkingDir %A_ScriptDir%  ; Đảm bảo thư mục làm việc nhất quán.\n\n; Hotkey để quản lý Flask\nF1::\n    if (GetKeyState(\"SC001\", \"P\")) {\n        Send {F1}\n        Sleep 100\n        Send {F1}\n    }\nreturn\n\nF2::\n    if (GetKeyState(\"SC002\", \"P\")) {\n        Send {F2}\n        Sleep 100\n        Send {F2}\n    }\nreturn\n\n; Xử lý lỗi khi máu thấp\n~F3::\n    if (GetKeyState(\"SC003\", \"P\")) {\n        if (PixelGetColor(500, 500) = 0xFF0000) {  ; Giả định màu đỏ biểu thị máu thấp\n            MsgBox, Low Health Detected! Use your flask immediately!\n            Send {F3}\n        }\n    }\nreturn\n```\n\n**Hướng dẫn Cài đặt và Sử dụng**\n1. Sao chép đoạn script trên vào một trình soạn thảo văn bản và lưu lại với phần mở rộng `.ahk` (ví dụ: `POE_Flask_Management.ahk`).\n2. Tải và cài đặt AutoHotKey từ [Trang web AutoHotKey](https://www.autohotkey.com/).\n3. Nhấp đúp vào tệp `.ahk` đã lưu để chạy script.\n4. Trong game Path of Exile, nhấn các phím chức năng tương ứng (F1, F2, F3) để kích hoạt tính năng quản lý flask và xử lý lỗi.\n5. Tùy chỉnh script bằng cách sửa đổi hotkey hoặc thêm các tính năng mới nếu cần."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:23:10.759341Z",
+    "http_status": 200,
+    "content_hash": "c2727a5ebddda75c9e3d874127c6f748d6eae47a8345644a8e08730471d34907",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\poe-utility.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\poe-utility.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "POE_Utility - Tự động hóa các tác vụ trong Path of Exile",
+  "short_description_vi": "Bộ công cụ AutoHotKey cho Path of Exile. Tự động hóa việc nhặt đồ, quản lý flask và thi triển kỹ năng. Giúp người chơi giảm thiểu các thao tác lặp đi lặp lại. Kết nối với client Path of Exile."
+}

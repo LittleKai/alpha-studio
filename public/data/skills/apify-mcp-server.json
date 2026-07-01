@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/apify-mcp-server",
+  "slug": "apify-mcp-server",
+  "name": "Apify MCP Server",
+  "headline": "apify mcp server: extract web data effectively",
+  "short_description": "The Apify MCP server enables your AI agents to extract data from social media, search engines, maps, e-commerce sites, or any other website using thousands of ready-made scrapers, crawlers, and automation tools available on the Apify Store.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "apify",
+  "install_command": "git clone https://github.com/apify/apify-mcp-server.git",
+  "source_repo_url": "https://github.com/apify/apify-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "ai",
+    "agents",
+    "mcp-server"
+  ],
+  "sections": {
+    "overview": "The Apify MCP server integrates AI agents with the Apify platform, providing access to thousands of pre-built scrapers, crawlers, and automation tools for web data extraction. It enables agents running on Claude Code, Cursor, and other platforms to extract structured data from social media, search engines, maps, e-commerce sites, and any other website. The server handles authentication with the Apify API and manages access to the Apify Store's catalog of ready-made actors. Developers can configure the server with their Apify API token to unlock web scraping capabilities directly within their AI agent workflows. This integration reduces development time by eliminating the need to build custom scrapers from scratch.\nAutomate the extraction of product prices and reviews from e-commerce websites for market analysis.\nGather social media engagement metrics from multiple platforms to evaluate marketing campaign performance.\nExtract contact details from Google Maps for lead generation in sales and marketing.\nScrape Google Search Engine Results Pages (SERPs) to analyze SEO performance and keyword rankings.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/apify/apify-mcp-server`",
+    "usage": "```\nUse the Apify MCP server to scrape [WEBSITE_URL] and extract [SPECIFIC_DATA_TYPE] such as product listings, customer reviews, or contact details. Focus on [KEY_ATTRIBUTES] like pricing, ratings, or availability. Export the results in [DESIRED_FORMAT] (CSV, JSON, or Excel) and include a summary of key insights or trends. Example: 'Use the Apify MCP server to scrape https://www.amazon.com/product-reviews/B08N5KWB9H and extract customer reviews, ratings, and review dates. Focus on reviews with 1-3 stars and highlight common complaints about durability or battery life. Export the results as a CSV and include a summary of the top 3 recurring issues.'\n```\nCopy\n\n```\n### Scraped Data Summary: Amazon Product Reviews for 'Wireless Bluetooth Earbuds X1'\n\n**Source URL:** https://www.amazon.com/product-reviews/B08N5KWB9H\n**Scraping Tool Used:** Apify MCP server with the 'Amazon Product Reviews Scraper'\n**Total Reviews Extracted:** 1,247\n**Date Range:** Last 12 months\n\n#### Key Metrics:\n- **Average Rating:** 3.2/5 stars\n- **Total 1-3 Star Reviews:** 412 (33% of total)\n- **Most Common Complaints:**\n  1. **Poor Battery Life (189 mentions):** Users report the earbuds last only 3-4 hours on a single charge, far below the advertised 8 hours.\n  2. **Fit Issues (124 mentions):** Many customers note the earbuds fall out during workouts or active use.\n  3. **Sound Quality (98 mentions):** Complaints about muffled audio or lack of bass in lower-priced models.\n\n#### Sample Reviews (1-3 stars):\n1. **\"Battery dies in 3 hours\"** (⭐⭐) - *Reviewed on 2023-11-15*\n   \"Advertised as 8 hours, but real-world usage is closer to 3. Charging case is bulky and slow to recharge.\"\n\n2. **\"Earbuds keep falling out\"** (⭐) - *Reviewed on 2023-12-03*\n   \"Went for a run and had to stop twice to put them back in. Not sweat-resistant like the description claims.\"\n\n3. **\"Sound is tinny\"** (⭐⭐) - *Reviewed on 2024-01-20*\n   \"For the price, I expected better bass. Highs are sharp, but mids and lows are weak.\"\n\n#### Export Details:\n- **File Format:** CSV\n- **Columns Included:** Review Date, Rating, Review Title, Review Text, Verified Purchase, Helpful Votes\n- **File Size:** 1.2 MB (1,247 rows)\n\n#### Recommendations:\n- **For Competitor Analysis:** Highlight the battery life issue in marketing materials for your own wireless earbuds. Consider offering a 24-month warranty to build trust.\n- **For Product Improvement:** Invest in battery optimization or offer a swap program for customers who report issues.\n- **For Customer Support:** Proactively reach out to customers who left 1-2 star reviews to offer replacements or refunds as a goodwill gesture.\n\n**Next Steps:**\n1. Use this data to inform your product roadmap for the next generation of earbuds.\n2. Share the CSV file with your customer support team to identify customers who may need follow-up.\n3. Compare these findings with reviews of your own products to identify gaps in your offerings.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "apify-mcp-server#main-content",
+      "apify-mcp-server#overview",
+      "apify-mcp-server#setup",
+      "apify-mcp-server#examples",
+      "apify-mcp-server#tools",
+      "apify-mcp-server#mcp",
+      "apify-mcp-server#related",
+      "marketingskills",
+      "copywriting",
+      "platform"
+    ],
+    "overview_vi": "The Apify MCP server integrates AI agents with the Apify platform, providing access to thousands of pre-built scrapers, crawlers, and automation tools for web data extraction. It enables agents running on Claude Code, Cursor, and other platforms to extract structured data from social media, search engines, maps, e-commerce sites, and any other website. The server handles authentication with the Apify API and manages access to the Apify Store's catalog of ready-made actors. Developers can configure the server with their Apify API token to unlock web scraping capabilities directly within their AI agent workflows. This integration reduces development time by eliminating the need to build custom scrapers from scratch.\nAutomate the extraction of product prices and reviews from e-commerce websites for market analysis.\nGather social media engagement metrics from multiple platforms to evaluate marketing campaign performance.\nExtract contact details from Google Maps for lead generation in sales and marketing.\nScrape Google Search Engine Results Pages (SERPs) to analyze SEO performance and keyword rankings.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/apify/apify-mcp-server`",
+    "usage_vi": "```\nUse the Apify MCP server to scrape [WEBSITE_URL] and extract [SPECIFIC_DATA_TYPE] such as product listings, customer reviews, or contact details. Focus on [KEY_ATTRIBUTES] like pricing, ratings, or availability. Export the results in [DESIRED_FORMAT] (CSV, JSON, or Excel) and include a summary of key insights or trends. Example: 'Use the Apify MCP server to scrape https://www.amazon.com/product-reviews/B08N5KWB9H and extract customer reviews, ratings, and review dates. Focus on reviews with 1-3 stars and highlight common complaints about durability or battery life. Export the results as a CSV and include a summary of the top 3 recurring issues.'\n```\nCopy\n\n```\n### Scraped Data Summary: Amazon Product Reviews for 'Wireless Bluetooth Earbuds X1'\n\n**Source URL:** https://www.amazon.com/product-reviews/B08N5KWB9H\n**Scraping Tool Used:** Apify MCP server with the 'Amazon Product Reviews Scraper'\n**Total Reviews Extracted:** 1,247\n**Date Range:** Last 12 months\n\n#### Key Metrics:\n- **Average Rating:** 3.2/5 stars\n- **Total 1-3 Star Reviews:** 412 (33% of total)\n- **Most Common Complaints:**\n  1. **Poor Battery Life (189 mentions):** Users report the earbuds last only 3-4 hours on a single charge, far below the advertised 8 hours.\n  2. **Fit Issues (124 mentions):** Many customers note the earbuds fall out during workouts or active use.\n  3. **Sound Quality (98 mentions):** Complaints about muffled audio or lack of bass in lower-priced models.\n\n#### Sample Reviews (1-3 stars):\n1. **\"Battery dies in 3 hours\"** (⭐⭐) - *Reviewed on 2023-11-15*\n   \"Advertised as 8 hours, but real-world usage is closer to 3. Charging case is bulky and slow to recharge.\"\n\n2. **\"Earbuds keep falling out\"** (⭐) - *Reviewed on 2023-12-03*\n   \"Went for a run and had to stop twice to put them back in. Not sweat-resistant like the description claims.\"\n\n3. **\"Sound is tinny\"** (⭐⭐) - *Reviewed on 2024-01-20*\n   \"For the price, I expected better bass. Highs are sharp, but mids and lows are weak.\"\n\n#### Export Details:\n- **File Format:** CSV\n- **Columns Included:** Review Date, Rating, Review Title, Review Text, Verified Purchase, Helpful Votes\n- **File Size:** 1.2 MB (1,247 rows)\n\n#### Recommendations:\n- **For Competitor Analysis:** Highlight the battery life issue in marketing materials for your own wireless earbuds. Consider offering a 24-month warranty to build trust.\n- **For Product Improvement:** Invest in battery optimization or offer a swap program for customers who report issues.\n- **For Customer Support:** Proactively reach out to customers who left 1-2 star reviews to offer replacements or refunds as a goodwill gesture.\n\n**Next Steps:**\n1. Use this data to inform your product roadmap for the next generation of earbuds.\n2. Share the CSV file with your customer support team to identify customers who may need follow-up.\n3. Compare these findings with reviews of your own products to identify gaps in your offerings.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:53.293573Z",
+    "http_status": 200,
+    "content_hash": "01c49bc2c9ca0c5b741665e41a6be4039c5e991695ea5aa2c307d3121917e02d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apify-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apify-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "apify mcp server: extract web data effectively",
+  "short_description_vi": "The Apify MCP server enables your AI agents to extract data from social media, search engines, maps, e-commerce sites, or any other website using thousands of ready-made scrapers, crawlers, and automation tools available on the Apify Store."
+}

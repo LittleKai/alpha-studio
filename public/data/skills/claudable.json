@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudable",
+  "slug": "claudable",
+  "name": "Claudable",
+  "headline": "claudable open-source web builder with Claude",
+  "short_description": "Claudable is an open-source web builder that uses local CLI agents like Claude Code, Codex, and Gemini CLI to automate web development. It enables developers to build and deploy products quickly, reducing manual coding efforts. It connects to local CLI agents and integrates with web development workflows.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "opactorai",
+  "install_command": "git clone https://github.com/opactorai/Claudable.git",
+  "source_repo_url": "https://github.com/opactorai/Claudable",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "codingagent",
+    "gemini",
+    "lovable",
+    "codex",
+    "web-builder",
+    "local",
+    "claude",
+    "free",
+    "claude-code",
+    "qwen"
+  ],
+  "sections": {
+    "overview": "Claudable is an open-source web builder designed to streamline web development workflows by integrating with local CLI agents such as Claude Code. The tool automates repetitive coding tasks, allowing developers to focus on higher-level design and architecture decisions. It connects directly to AI agent environments and reduces manual coding efforts through intelligent automation. Claudable supports rapid prototyping and deployment, making it ideal for developers who want to accelerate their development cycles. The platform is built on modern web technologies and provides a command-line interface for seamless integration into existing development environments.\nQuickly generate a personal portfolio website by describing your desired features.\nCreate a task management application with user authentication and a dark mode interface.\nBuild a blog platform that integrates with a PostgreSQL database for content management.\nDeploy a fully functional e-commerce site with payment integration in minutes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/opactorai/Claudable`",
+    "usage": "```\nUse Claudable with [LOCAL_CLI_AGENT] to automate the creation of a [WEBSITE_TYPE] for [PROJECT_NAME]. Include responsive design, [PAGES], and [FEATURES]. Deploy the project to [HOSTING_SERVICE] after testing locally. Document the process in a README.md file.\n```\nCopy\n\n```\n### Claudable Automation Output for 'EcoMart' Project\n\n**Project Overview:**\nEcoMart is a responsive e-commerce website built using Claudable with Claude Code CLI agent. The project includes 5 pages (Home, Products, About, Cart, Checkout), a product search feature, and a contact form. The site was deployed to Vercel after local testing.\n\n**Generated Files & Structure:**\n```\necomart/\n├── src/\n│   ├── components/\n│   │   ├── Header.jsx (sticky navigation with logo)\n│   │   ├── ProductCard.jsx (dynamic grid layout)\n│   │   ├── Cart.jsx (local storage integration)\n│   │   └── Footer.jsx (social links)\n│   ├── pages/\n│   │   ├── Home.jsx (hero section + featured products)\n│   │   ├── Products.jsx (filterable product grid)\n│   │   ├── About.jsx (company story)\n│   │   ├── Cart.jsx (persistent cart state)\n│   │   └── Checkout.jsx (Stripe integration)\n│   ├── styles/\n│   │   ├── globals.css (Tailwind directives)\n│   │   └── theme.js (color palette)\n│   └── data/\n│       └── products.json (mock product data)\n├── public/\n│   ├── images/\n│   │   ├── logo.png\n│   │   └── hero-bg.jpg\n│   └── favicon.ico\n├── package.json (auto-generated with dependencies)\n├── tailwind.config.js (responsive breakpoints)\n├── .gitignore\n└── README.md (deployment steps)\n```\n\n**Key Automations:**\n1. **Component Generation:** Claudable scaffolded all React components with JSX structure, Tailwind classes, and placeholder data.\n2. **State Management:** Added Zustand for cart persistence (localStorage) and Zustand for product filtering.\n3. **API Mocking:** Created a mock API route (`/api/products`) using Vercel’s serverless functions for testing.\n4. **Deployment Script:** Generated a `deploy.sh` script with Vercel CLI commands for one-click deployment.\n5. **Testing:** Ran `npm run dev` locally, then `vercel deploy` to push to production.\n\n**Performance Metrics:**\n- Lighthouse Score: 98 (Performance), 100 (Accessibility), 95 (SEO)\n- Bundle Size: 124KB (minified + gzipped)\n- Time Saved: ~8 hours vs. manual setup\n\n**README.md Snippet:**\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudable#main-content",
+      "claudable#overview",
+      "claudable#setup",
+      "claudable#examples",
+      "claudable#tools",
+      "claudable#mcp",
+      "claudable#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claudable là một công cụ dựng web nguồn mở được thiết kế để tối ưu hóa quy trình phát triển web thông qua việc tích hợp với các local CLI agent như Claude Code. Công cụ này tự động hóa các tác vụ lập trình lặp đi lặp lại, cho phép lập trình viên tập trung vào các quyết định thiết kế và kiến trúc ở cấp độ cao hơn. Nhờ khả năng kết nối trực tiếp với môi trường AI agent và giảm thiểu việc viết code thủ công bằng tự động hóa thông minh, Claudable hỗ trợ tạo prototype và triển khai nhanh chóng, rất phù hợp cho những ai muốn rút ngắn chu kỳ phát triển. Nền tảng được xây dựng trên các công nghệ web hiện đại và cung cấp giao diện dòng lệnh (CLI) để tích hợp mượt mà vào môi trường phát triển hiện tại của bạn.\nNhanh chóng tạo một trang web portfolio cá nhân bằng cách mô tả các tính năng mong muốn.\nTạo ứng dụng quản lý công việc có xác thực người dùng và giao diện dark mode.\nXây dựng nền tảng blog tích hợp cơ sở dữ liệu PostgreSQL để quản lý nội dung.\nTriển khai một trang web thương mại điện tử đầy đủ chức năng tích hợp thanh toán chỉ trong vài phút.",
+    "setup_vi": "Hiện chưa có lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/opactorai/Claudable`",
+    "usage_vi": "```\nSử dụng Claudable với [LOCAL_CLI_AGENT] để tự động hóa việc tạo [WEBSITE_TYPE] cho [PROJECT_NAME]. Bao gồm thiết kế responsive, [PAGES], và [FEATURES]. Triển khai dự án lên [HOSTING_SERVICE] sau khi chạy thử nghiệm cục bộ. Ghi lại quy trình vào file README.md.\n```\nCopy\n\n```\n### Kết quả tự động hóa từ Claudable cho dự án 'EcoMart'\n\n**Tổng quan dự án:**\nEcoMart là một website thương mại điện tử responsive được xây dựng bằng Claudable kết hợp với CLI agent Claude Code. Dự án bao gồm 5 trang (Trang chủ, Sản phẩm, Giới thiệu, Giỏ hàng, Thanh toán), tính năng tìm kiếm sản phẩm và form liên hệ. Trang web đã được triển khai lên Vercel sau khi test cục bộ.\n\n**Cấu trúc & các file được tạo:**\n```\necomart/\n├── src/\n│   ├── components/\n│   │   ├── Header.jsx (thanh điều hướng cố định kèm logo)\n│   │   ├── ProductCard.jsx (giao diện lưới động)\n│   │   ├── Cart.jsx (tích hợp local storage)\n│   │   └── Footer.jsx (liên kết mạng xã hội)\n│   ├── pages/\n│   │   ├── Home.jsx (phần hero + sản phẩm nổi bật)\n│   │   ├── Products.jsx (lưới sản phẩm có bộ lọc)\n│   │   ├── About.jsx (giới thiệu công ty)\n│   │   ├── Cart.jsx (trạng thái giỏ hàng lưu trữ liên tục)\n│   │   └── Checkout.jsx (tích hợp thanh toán Stripe)\n│   ├── styles/\n│   │   ├── globals.css (chỉ thị Tailwind)\n│   │   └── theme.js (bảng màu)\n│   └── data/\n│       └── products.json (dữ liệu sản phẩm mẫu)\n├── public/\n│   ├── images/\n│   │   ├── logo.png\n│   │   └── hero-bg.jpg\n│   └── favicon.ico\n├── package.json (tự động tạo kèm các dependency)\n├── tailwind.config.js (các breakpoint hỗ trợ responsive)\n├── .gitignore\n└── README.md (các bước triển khai)\n```\n\n**Các tính năng tự động hóa chính:**\n1. **Tạo Component:** Claudable đã dựng khung (scaffold) cho toàn bộ các component React với cấu trúc JSX, các class Tailwind và dữ liệu mẫu (placeholder).\n2. **Quản lý trạng thái (State Management):** Tích hợp Zustand để lưu trữ giỏ hàng (localStorage) và Zustand để lọc sản phẩm.\n3. **Mock API:** Tạo một route API giả lập (`/api/products`) sử dụng serverless function của Vercel để phục vụ cho việc testing.\n4. **Script triển khai:** Tạo file script `deploy.sh` chứa các lệnh Vercel CLI để triển khai nhanh chỉ với một cú nhấp chuột.\n5. **Testing:** Chạy `npm run dev` ở local, sau đó dùng `vercel deploy` để đưa lên môi trường production.\n\n**Chỉ số hiệu năng (Performance Metrics):**\n- Lighthouse Score: 98 (Performance), 100 (Accessibility), 95 (SEO)\n- Kích thước Bundle: 124KB (nén minified + gzipped)\n- Thời gian tiết kiệm được: khoảng 8 giờ so với thiết lập thủ công\n\n**Đoạn mã README.md trích dẫn:**\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:54:37.705632Z",
+    "http_status": 200,
+    "content_hash": "2099cc7e285121e4c9d2ea35a922e95412f28af9104239a27cce1411c89ba154",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudable.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudable.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình dựng web nguồn mở Claudable tích hợp với Claude",
+  "short_description_vi": "Claudable là một trình dựng web nguồn mở sử dụng các local CLI agent như Claude Code, Codex và Gemini CLI để tự động hóa quá trình phát triển web. Công cụ này giúp lập trình viên xây dựng và triển khai sản phẩm nhanh chóng, giảm thiểu công sức viết code thủ công nhờ khả năng kết nối trực tiếp với các local CLI agent và tích hợp vào workflow phát triển web."
+}

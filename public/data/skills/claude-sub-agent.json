@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-sub-agent",
+  "slug": "claude-sub-agent",
+  "name": "Claude Sub Agent",
+  "headline": "AI-driven workflows with Claude Code sub-agents",
+  "short_description": "AI-driven workflow system that transforms project ideas into production-ready code using specialized Claude Code Sub-Agents. Benefits operations teams by automating development workflows and coordinating AI agents in phases. Integrates with existing development tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "zhsama",
+  "install_command": "git clone https://github.com/zhsama/claude-sub-agent.git",
+  "source_repo_url": "https://github.com/zhsama/claude-sub-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "claude-code",
+    "workflow",
+    "multi-agent-system"
+  ],
+  "sections": {
+    "overview": "Claude Sub-Agent is a structured workflow system that leverages Claude Code's Sub-Agents capability to create an end-to-end development pipeline. It automates the transformation of project ideas into production-ready code through specialized agents handling requirements analysis, system design, task planning, implementation, testing, code review, and final validation. The system includes automated quality gates at three checkpoints to ensure consistent standards and comprehensive documentation generation throughout the development lifecycle. Teams benefit from faster development cycles, systematic error reduction, and clear workflows that improve collaboration and code quality.\nAutomate the creation of a task management web application with user authentication.\nGenerate a personal blog platform by orchestrating the entire development workflow.\nDevelop a CRM system with customer management and analytics features while maintaining high-quality standards.\nCreate a microservices-based e-commerce platform by running specific phases of development.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zhsama/claude-sub-agent`",
+    "usage": "```\nTransform the project idea '[PROJECT_IDEA]' into production-ready code using a phased approach with specialized Claude Code Sub-Agents. First, generate a detailed technical specification including architecture, dependencies, and API contracts. Then, implement the core functionality in [LANGUAGE/PLATFORM]. Finally, write unit tests and integration tests, and ensure the code passes all quality checks. Use [EXISTING_TOOLS] for version control and deployment. Document the entire process in [FORMAT].\n```\nCopy\n\n```\nProject Idea: Build a RESTful API for a task management system with user authentication, task CRUD operations, and real-time notifications.\n\n**Phase 1: Technical Specification**\n- Architecture: Microservice with Express.js backend, PostgreSQL database, and Redis for caching.\n- Dependencies: Express, Passport.js, Sequelize ORM, Socket.io, Jest, Docker.\n- API Contracts: \n  - POST /api/auth/login → { email, password } → { token }\n  - GET /api/tasks → { userId } → [ { id, title, status, dueDate } ]\n  - POST /api/tasks → { title, dueDate } → { id, title }\n  - PUT /api/tasks/:id → { status } → { success }\n  - DELETE /api/tasks/:id → { success }\n- Deployment: Docker containers on AWS ECS with CI/CD via GitHub Actions.\n\n**Phase 2: Core Implementation**\n- Created a new GitHub repository 'task-manager-api' with MIT license.\n- Implemented user authentication with JWT tokens using Passport.js.\n- Developed task CRUD endpoints with Sequelize ORM for PostgreSQL.\n- Added real-time notifications using Socket.io for task updates.\n- Structured the codebase with clear separation of concerns (routes, controllers, models, services).\n\n**Phase 3: Testing and Deployment**\n- Wrote unit tests for all controllers and services using Jest (95% coverage).\n- Implemented integration tests for API endpoints (Postman collection included).\n- Added Dockerfile and docker-compose.yml for local development.\n- Configured GitHub Actions workflow for automated testing and deployment to AWS ECS.\n- Generated API documentation using Swagger/OpenAPI.\n\n**Output:**\n- GitHub repository: https://github.com/your-org/task-manager-api\n- Docker images: task-manager-api:latest\n- API documentation: https://api.task-manager.example.com/docs\n- Deployment status: Successfully deployed to AWS ECS (Region: us-east-1, Cluster: task-manager-prod).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-sub-agent#main-content",
+      "claude-sub-agent#overview",
+      "claude-sub-agent#setup",
+      "claude-sub-agent#examples",
+      "claude-sub-agent#tools",
+      "claude-sub-agent#mcp",
+      "claude-sub-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Sub-Agent là một hệ thống quy trình làm việc có cấu trúc, tận dụng khả năng Sub-Agent của Claude Code để tạo ra một pipeline phát triển end-to-end hoàn chỉnh. Hệ thống tự động hóa việc chuyển đổi các ý tưởng dự án thành mã nguồn sẵn sàng cho môi trường production thông qua các agent chuyên biệt đảm nhận phân tích yêu cầu, thiết kế hệ thống, lập kế hoạch tác vụ, triển khai, kiểm thử, code review và xác thực cuối cùng. Hệ thống tích hợp các cổng kiểm soát chất lượng (quality gate) tự động tại ba checkpoint nhằm đảm bảo các tiêu chuẩn nhất quán và tự động tạo tài liệu toàn diện trong suốt vòng đời phát triển. Các đội ngũ phát triển sẽ được hưởng lợi từ chu kỳ phát triển nhanh hơn, giảm thiểu lỗi hệ thống và có quy trình làm việc rõ ràng giúp cải thiện khả năng cộng tác cũng như chất lượng mã nguồn.\nTự động hóa việc tạo ứng dụng web quản lý công việc có tính năng xác thực người dùng.\nTạo nền tảng blog cá nhân bằng cách điều phối toàn bộ quy trình phát triển.\nPhát triển hệ thống CRM với các tính năng quản lý khách hàng và phân tích số liệu nhưng vẫn đảm bảo các tiêu chuẩn chất lượng cao.\nXây dựng nền tảng thương mại điện tử dựa trên kiến trúc microservices bằng cách chạy các giai đoạn phát triển cụ thể.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/zhsama/claude-sub-agent`",
+    "usage_vi": "```\nChuyển đổi ý tưởng dự án '[PROJECT_IDEA]' thành mã nguồn sẵn sàng cho môi trường production bằng cách tiếp cận theo từng giai đoạn với các Claude Code Sub-Agent chuyên biệt. Đầu tiên, hãy tạo một đặc tả kỹ thuật chi tiết bao gồm kiến trúc, các dependency và các API contract. Sau đó, triển khai các chức năng cốt lõi bằng [LANGUAGE/PLATFORM]. Cuối cùng, viết unit test và integration test, đồng thời đảm bảo mã nguồn vượt qua tất cả các bước kiểm tra chất lượng. Sử dụng [EXISTING_TOOLS] để quản lý phiên bản và triển khai (deployment). Tài liệu hóa toàn bộ quy trình dưới định dạng [FORMAT].\n```\nCopy\n\n```\nProject Idea: Xây dựng một RESTful API cho hệ thống quản lý công việc với tính năng xác thực người dùng, các thao tác CRUD cho công việc và thông báo thời gian thực.\n\n**Phase 1: Technical Specification**\n- Architecture: Microservice với Express.js backend, cơ sở dữ liệu PostgreSQL và Redis để lưu cache.\n- Dependencies: Express, Passport.js, Sequelize ORM, Socket.io, Jest, Docker.\n- API Contracts: \n  - POST /api/auth/login → { email, password } → { token }\n  - GET /api/tasks → { userId } → [ { id, title, status, dueDate } ]\n  - POST /api/tasks → { title, dueDate } → { id, title }\n  - PUT /api/tasks/:id → { status } → { success }\n  - DELETE /api/tasks/:id → { success }\n- Deployment: Container Docker trên AWS ECS với CI/CD qua GitHub Actions.\n\n**Phase 2: Core Implementation**\n- Đã tạo một kho lưu trữ GitHub mới 'task-manager-api' với giấy phép MIT.\n- Triển khai xác thực người dùng bằng token JWT sử dụng Passport.js.\n- Phát triển các endpoint CRUD cho công việc bằng Sequelize ORM cho PostgreSQL.\n- Thêm thông báo thời gian thực sử dụng Socket.io cho các cập nhật công việc.\n- Tổ chức cấu trúc mã nguồn với sự phân chia trách nhiệm rõ ràng (routes, controllers, models, services).\n\n**Phase 3: Testing and Deployment**\n- Viết unit test cho tất cả các controller và service sử dụng Jest (độ bao phủ 95%).\n- Triển khai integration test cho các endpoint API (bao gồm cả Postman collection).\n- Thêm Dockerfile và docker-compose.yml phục vụ phát triển local.\n- Cấu hình workflow GitHub Actions để tự động kiểm thử và triển khai lên AWS ECS.\n- Tạo tài liệu API bằng Swagger/OpenAPI.\n\n**Output:**\n- Kho lưu trữ GitHub: https://github.com/your-org/task-manager-api\n- Docker images: task-manager-api:latest\n- Tài liệu API: https://api.task-manager.example.com/docs\n- Trạng thái triển khai: Đã triển khai thành công lên AWS ECS (Region: us-east-1, Cluster: task-manager-prod).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:52:43.870998Z",
+    "http_status": 200,
+    "content_hash": "8f2bbe9797b6ee3962ac02e2fb8ab9b4e8a2cc7462178b876514ba7f47660a5e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-sub-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-sub-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quy trình làm việc vận hành bởi AI với các sub-agent của Claude Code",
+  "short_description_vi": "Hệ thống quy trình làm việc vận hành bởi AI giúp chuyển đổi ý tưởng dự án thành mã nguồn sẵn sàng cho môi trường production bằng cách sử dụng các Claude Code Sub-Agent chuyên biệt. Hệ thống mang lại lợi ích cho các đội ngũ vận hành nhờ tự động hóa quy trình phát triển và điều phối các AI agent theo từng giai đoạn, đồng thời tích hợp mượt mà với các công cụ và quy trình phát triển hiện có."
+}

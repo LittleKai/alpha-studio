@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-opentelemetry-setup",
+  "slug": "claude-code-opentelemetry-setup",
+  "name": "browser-use",
+  "headline": "Automate AI telemetry with",
+  "short_description": "Automate OpenTelemetry setup for Claude Code to monitor AI usage. Track costs, token usage, and cache efficiency with Prometheus, Loki, and Grafana dashboards. Ideal for operations teams managing AI workloads.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "centminmod",
+  "install_command": "git clone https://github.com/centminmod/claude-code-opentelemetry-setup.git",
+  "source_repo_url": "https://github.com/centminmod/claude-code-opentelemetry-setup",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-code-monitoring",
+    "grafana-dashboard",
+    "prometheus-metrics",
+    "loki",
+    "ai-metrics",
+    "opentelemetry",
+    "grafana",
+    "prometheus",
+    "claudecode-monitoring",
+    "claudecode"
+  ],
+  "sections": {
+    "overview": "This skill automates the setup of a complete observability stack for Claude Code, integrating OpenTelemetry Collector, Prometheus, Loki, and Grafana. It enables real-time tracking of AI usage costs, token consumption by type (input, output, cache creation, cache read), and cache hit rates through pre-built dashboards. The accompanying Claude Code Usage Metrics MCP Server provides 14 tools for querying usage data, including current costs, token breakdowns, cache efficiency, recent prompts, and tool execution logs. Operations teams managing AI workloads benefit from comprehensive monitoring that surfaces performance metrics and cost insights directly within Claude Code.\nMonitor daily Claude Code costs and token usage in real-time\nAnalyze cache efficiency and hit rates to optimize AI model interactions\nTrack tool execution performance and identify slow or failing operations\nQuery usage metrics programmatically via MCP tools within Claude Code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/centminmod/claude-code-opentelemetry-setup`",
+    "usage": "```\nSet up OpenTelemetry for Claude Code to monitor AI usage. Configure tracking for [METRICS] like costs, token usage, and cache efficiency. Integrate with [TOOLS] such as Prometheus, Loki, and Grafana. Provide step-by-step instructions for deployment and dashboard setup.\n```\nCopy\n\n```\nTo set up OpenTelemetry for Claude Code, follow these steps:\n\n1. **Install OpenTelemetry Collector**: Download and install the OpenTelemetry Collector from the official repository. Ensure it is compatible with your operating system.\n2. **Configure OpenTelemetry**: Edit the configuration file to include the necessary exporters for Prometheus, Loki, and Grafana. Specify the metrics you want to track, such as costs, token usage, and cache efficiency.\n3. **Deploy the Collector**: Start the OpenTelemetry Collector with the configured settings. Verify that it is running correctly by checking the logs.\n4. **Set Up Dashboards**: Use Grafana to create dashboards that visualize the data collected by OpenTelemetry. Import pre-built dashboards or create custom ones tailored to your needs.\n5. **Monitor and Optimize**: Regularly review the dashboards to monitor AI usage. Use the insights to optimize performance and reduce costs.\n\nBy following these steps, you can effectively track and manage your AI workloads with OpenTelemetry.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-opentelemetry-setup#main-content",
+      "claude-code-opentelemetry-setup#overview",
+      "claude-code-opentelemetry-setup#setup",
+      "claude-code-opentelemetry-setup#examples",
+      "claude-code-opentelemetry-setup#tools",
+      "claude-code-opentelemetry-setup#mcp",
+      "claude-code-opentelemetry-setup#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill automates the setup of a complete observability stack for Claude Code, integrating OpenTelemetry Collector, Prometheus, Loki, and Grafana. It enables real-time tracking of AI usage costs, token consumption by type (input, output, cache creation, cache read), and cache hit rates through pre-built dashboards. The accompanying Claude Code Usage Metrics MCP Server provides 14 tools for querying usage data, including current costs, token breakdowns, cache efficiency, recent prompts, and tool execution logs. Operations teams managing AI workloads benefit from comprehensive monitoring that surfaces performance metrics and cost insights directly within Claude Code.\nMonitor daily Claude Code costs and token usage in real-time\nAnalyze cache efficiency and hit rates to optimize AI model interactions\nTrack tool execution performance and identify slow or failing operations\nQuery usage metrics programmatically via MCP tools within Claude Code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/centminmod/claude-code-opentelemetry-setup`",
+    "usage_vi": "```\nSet up OpenTelemetry for Claude Code to monitor AI usage. Configure tracking for [METRICS] like costs, token usage, and cache efficiency. Integrate with [TOOLS] such as Prometheus, Loki, and Grafana. Provide step-by-step instructions for deployment and dashboard setup.\n```\nCopy\n\n```\nTo set up OpenTelemetry for Claude Code, follow these steps:\n\n1. **Install OpenTelemetry Collector**: Download and install the OpenTelemetry Collector from the official repository. Ensure it is compatible with your operating system.\n2. **Configure OpenTelemetry**: Edit the configuration file to include the necessary exporters for Prometheus, Loki, and Grafana. Specify the metrics you want to track, such as costs, token usage, and cache efficiency.\n3. **Deploy the Collector**: Start the OpenTelemetry Collector with the configured settings. Verify that it is running correctly by checking the logs.\n4. **Set Up Dashboards**: Use Grafana to create dashboards that visualize the data collected by OpenTelemetry. Import pre-built dashboards or create custom ones tailored to your needs.\n5. **Monitor and Optimize**: Regularly review the dashboards to monitor AI usage. Use the insights to optimize performance and reduce costs.\n\nBy following these steps, you can effectively track and manage your AI workloads with OpenTelemetry.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:43:07.180326Z",
+    "http_status": 200,
+    "content_hash": "762c10432f34c7368dafb682ced1fa59a6f492067e1ff69c5bdc30eb97af5116",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-opentelemetry-setup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-opentelemetry-setup.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Automate AI telemetry with",
+  "short_description_vi": "Automate OpenTelemetry setup for Claude Code to monitor AI usage. Track costs, token usage, and cache efficiency with Prometheus, Loki, and Grafana dashboards. Ideal for operations teams managing AI workloads."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/newsnotfound",
+  "slug": "newsnotfound",
+  "name": "newsnotfound",
+  "headline": "NewsNotFound: AI-Powered Article Generation",
+  "short_description": "NewsNotFound automates news article creation using GPT and LLM technologies. Journalists and media teams benefit from faster content generation. It connects to AI writing tools like ChatGPT and GitHub Copilot, streamlining workflows for newsrooms and content creators.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "joshwallerr",
+  "install_command": "claude install joshwallerr/newsnotfound",
+  "source_repo_url": "https://github.com/joshwallerr/newsnotfound",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI writing",
+    "automation",
+    "article generation",
+    "news",
+    "GPT"
+  ],
+  "sections": {
+    "overview": "NewsNotFound is an AI-powered article creation system that automates the entire news writing workflow, from scraping and clustering headlines to generating final articles with cover images. The system processes news across multiple categories—including world news, technology, finance, politics, and regional UK coverage—on automated schedules throughout the day. It uses GPT-4 to produce neutral, fact-based articles designed to minimize bias, with built-in stages for fact verification, headline generation, and article structuring. NewsNotFound solves the challenge of creating trustworthy, unbiased news content at scale, benefiting newsrooms, independent media outlets, and content creators who need consistent, AI-assisted article generation without manual bias checking.\nAutomating news article generation\nCreating content for blogs\nGenerating summaries for news articles\nAssisting writers with topic ideas",
+    "setup": "Terminal\nCopy\n`claude install joshwallerr/newsnotfound`\n`git clone https://github.com/joshwallerr/newsnotfound`",
+    "usage": "```\nGenerate a news article about [TOPIC] using a journalistic style with a headline, lede, and 3-4 body paragraphs. Include quotes from [EXPERT_NAME], a [TITLE] at [ORGANIZATION], and cite [DATA_SOURCE] for statistics. Use a 5W1H framework (who, what, when, where, why, how) to structure the content. Format the article for a [PUBLICATION_TYPE] audience.\n```\nCopy\n\n```\n### **AI-Powered Automation Startup Automa Secures $12M Series A Led by Sequoia Capital**\n\n*San Francisco, CA – June 10, 2024* – Automa, the AI-driven automation platform, today announced a $12 million Series A funding round led by Sequoia Capital, with participation from existing investors Accel and GV. The round comes as the company reports a 300% year-over-year increase in enterprise adoption, driven by demand for AI-powered workflow automation in sales, marketing, and customer support.\n\n\"This funding validates our mission to democratize automation for businesses of all sizes,\" said **Jane Doe**, CEO of Automa. \"Our platform now processes over 5 million workflows monthly, helping teams cut repetitive tasks by 80% while improving accuracy.\" The company’s latest feature, *Automa Copilot*, integrates with tools like Salesforce and HubSpot to suggest next-best actions for sales reps in real time.\n\nAccording to a **McKinsey report (2024)**, companies using AI-driven automation report a 25% reduction in operational costs and a 40% boost in employee productivity. Automa’s platform is particularly popular among mid-market firms, with 60% of its user base in the $50M–$500M revenue range. \"We’re seeing adoption not just in tech but in healthcare and finance, where compliance and scalability are critical,\" added Doe.\n\nThe funding will accelerate Automa’s R&D, with plans to expand its AI training datasets to support multilingual workflows and integrate with emerging tools like GitHub Copilot. \"Our goal is to become the default automation layer for every SaaS stack,\" Doe stated. Automa currently serves 12,000 customers, including Slack, Dropbox, and Zoom, and plans to double its team to 200 by year-end.\n\n*For media inquiries, contact:*\n**Media Relations**\nAutoma\npress@automa.com\n+1 (415) 555-0123\n\n*About Automa:*\nAutoma is an AI-powered automation platform that helps businesses streamline workflows across sales, marketing, and operations. Founded in 2021, the company has raised $18M to date and is headquartered in San Francisco with remote teams globally.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "newsnotfound#main-content",
+      "newsnotfound#overview",
+      "newsnotfound#setup",
+      "newsnotfound#examples",
+      "newsnotfound#tools",
+      "newsnotfound#mcp",
+      "newsnotfound#related",
+      "humanizer-zh",
+      "constrained-text-generation-studio",
+      "humanizer"
+    ],
+    "overview_vi": "NewsNotFound is an AI-powered article creation system that automates the entire news writing workflow, from scraping and clustering headlines to generating final articles with cover images. The system processes news across multiple categories—including world news, technology, finance, politics, and regional UK coverage—on automated schedules throughout the day. It uses GPT-4 to produce neutral, fact-based articles designed to minimize bias, with built-in stages for fact verification, headline generation, and article structuring. NewsNotFound solves the challenge of creating trustworthy, unbiased news content at scale, benefiting newsrooms, independent media outlets, and content creators who need consistent, AI-assisted article generation without manual bias checking.\nAutomating news article generation\nCreating content for blogs\nGenerating summaries for news articles\nAssisting writers with topic ideas",
+    "setup_vi": "Terminal\nCopy\n`claude install joshwallerr/newsnotfound`\n`git clone https://github.com/joshwallerr/newsnotfound`",
+    "usage_vi": "```\nGenerate a news article about [TOPIC] using a journalistic style with a headline, lede, and 3-4 body paragraphs. Include quotes from [EXPERT_NAME], a [TITLE] at [ORGANIZATION], and cite [DATA_SOURCE] for statistics. Use a 5W1H framework (who, what, when, where, why, how) to structure the content. Format the article for a [PUBLICATION_TYPE] audience.\n```\nCopy\n\n```\n### **AI-Powered Automation Startup Automa Secures $12M Series A Led by Sequoia Capital**\n\n*San Francisco, CA – June 10, 2024* – Automa, the AI-driven automation platform, today announced a $12 million Series A funding round led by Sequoia Capital, with participation from existing investors Accel and GV. The round comes as the company reports a 300% year-over-year increase in enterprise adoption, driven by demand for AI-powered workflow automation in sales, marketing, and customer support.\n\n\"This funding validates our mission to democratize automation for businesses of all sizes,\" said **Jane Doe**, CEO of Automa. \"Our platform now processes over 5 million workflows monthly, helping teams cut repetitive tasks by 80% while improving accuracy.\" The company’s latest feature, *Automa Copilot*, integrates with tools like Salesforce and HubSpot to suggest next-best actions for sales reps in real time.\n\nAccording to a **McKinsey report (2024)**, companies using AI-driven automation report a 25% reduction in operational costs and a 40% boost in employee productivity. Automa’s platform is particularly popular among mid-market firms, with 60% of its user base in the $50M–$500M revenue range. \"We’re seeing adoption not just in tech but in healthcare and finance, where compliance and scalability are critical,\" added Doe.\n\nThe funding will accelerate Automa’s R&D, with plans to expand its AI training datasets to support multilingual workflows and integrate with emerging tools like GitHub Copilot. \"Our goal is to become the default automation layer for every SaaS stack,\" Doe stated. Automa currently serves 12,000 customers, including Slack, Dropbox, and Zoom, and plans to double its team to 200 by year-end.\n\n*For media inquiries, contact:*\n**Media Relations**\nAutoma\npress@automa.com\n+1 (415) 555-0123\n\n*About Automa:*\nAutoma is an AI-powered automation platform that helps businesses streamline workflows across sales, marketing, and operations. Founded in 2021, the company has raised $18M to date and is headquartered in San Francisco with remote teams globally.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:32.216508Z",
+    "http_status": 200,
+    "content_hash": "b2a97ec39602ae65722737064f0650ed436201d6a054ed78b867320392efbf52",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\newsnotfound.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\newsnotfound.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "NewsNotFound: AI-Powered Article Generation",
+  "short_description_vi": "NewsNotFound automates news article creation using GPT and LLM technologies. Journalists and media teams benefit from faster content generation. It connects to AI writing tools like ChatGPT and GitHub Copilot, streamlining workflows for newsrooms and content creators."
+}

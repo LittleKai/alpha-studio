@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-workflows",
+  "slug": "claude-code-workflows",
+  "name": "Claude Code Workflows",
+  "headline": "Claude Code Workflows - AI-Driven Development Tools",
+  "short_description": "Claude Code Workflows offers production-ready development workflows enhanced by specialized AI agents, streamlining coding processes and improving code quality for developers. Ideal for teams looking to boost productivity and automate their development tasks.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "270 min",
+  "author": "shinpr",
+  "install_command": "claude install shinpr/claude-code-workflows",
+  "source_repo_url": "https://github.com/shinpr/claude-code-workflows",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "productivity",
+    "developer-tools",
+    "automation",
+    "ai-agents",
+    "code-quality"
+  ],
+  "sections": {
+    "overview": "Claude Code Workflows automates development pipelines by routing user requests through specialized agents based on task complexity. Small tasks skip directly to implementation, while medium and large tasks flow through requirement analysis, PRD generation, codebase analysis, technical design, and quality verification before execution. The system produces code that passes tests and matches design documentation, with support for backend, frontend, and full-stack projects. Workflows include reverse engineering for legacy code, diagnosis for failing tests, and decomposition for complex tasks into manageable units.\nAutomating code reviews\nEnhancing code quality checks\nStreamlining development workflows\nIntegrating AI for prompt engineering",
+    "setup": "Terminal\nCopy\n`claude install shinpr/claude-code-workflows`\n`git clone https://github.com/shinpr/claude-code-workflows`",
+    "usage": "```\nCreate a development workflow for [PROJECT_NAME] using [PROGRAMMING_LANGUAGE]. The workflow should include [NUMBER] stages, each with specific tasks and deliverables. Ensure the workflow integrates [TOOLS_FRAMEWORKS] and follows [DESIGN_PATTERNS]. Provide a timeline for each stage and suggest AI agents to automate repetitive tasks.\n```\nCopy\n\n```\nHere's a production-ready development workflow for the 'E-Commerce Platform' project using Python. The workflow includes 5 stages, each with specific tasks and deliverables, designed to streamline the development process and improve code quality.\n\n**Stage 1: Planning and Design**\n- Task 1: Define project scope and requirements\n- Task 2: Create system architecture diagram\n- Task 3: Design database schema\n- Deliverable: Project plan and design documents\n- Timeline: 1 week\n- AI Agent: Design Assistant for creating architecture diagrams\n\n**Stage 2: Setup and Configuration**\n- Task 1: Set up development environment\n- Task 2: Configure version control system (Git)\n- Task 3: Set up CI/CD pipeline\n- Deliverable: Configured development environment\n- Timeline: 1 week\n- AI Agent: DevOps Assistant for CI/CD pipeline configuration\n\n**Stage 3: Development**\n- Task 1: Implement core features\n- Task 2: Write unit tests\n- Task 3: Conduct code reviews\n- Deliverable: Working code with unit tests\n- Timeline: 4 weeks\n- AI Agent: Code Review Assistant for automated code reviews\n\n**Stage 4: Testing**\n- Task 1: Perform integration testing\n- Task 2: Conduct performance testing\n- Task 3: Fix bugs and issues\n- Deliverable: Tested and stable code\n- Timeline: 2 weeks\n- AI Agent: Test Automation Assistant for generating test cases\n\n**Stage 5: Deployment and Monitoring**\n- Task 1: Deploy application to production\n- Task 2: Set up monitoring and logging\n- Task 3: Gather user feedback\n- Deliverable: Deployed application with monitoring\n- Timeline: 1 week\n- AI Agent: Monitoring Assistant for setting up logging and alerts\n\nThis workflow integrates Django, React, and Docker, following the MVC design pattern. The suggested AI agents automate repetitive tasks, improving productivity and code quality.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "claude-code-workflows#main-content",
+      "claude-code-workflows#overview",
+      "claude-code-workflows#setup",
+      "claude-code-workflows#examples",
+      "claude-code-workflows#tools",
+      "claude-code-workflows#mcp",
+      "claude-code-workflows#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claude Code Workflows automates development pipelines by routing user requests through specialized agents based on task complexity. Small tasks skip directly to implementation, while medium and large tasks flow through requirement analysis, PRD generation, codebase analysis, technical design, and quality verification before execution. The system produces code that passes tests and matches design documentation, with support for backend, frontend, and full-stack projects. Workflows include reverse engineering for legacy code, diagnosis for failing tests, and decomposition for complex tasks into manageable units.\nAutomating code reviews\nEnhancing code quality checks\nStreamlining development workflows\nIntegrating AI for prompt engineering",
+    "setup_vi": "Terminal\nCopy\n`claude install shinpr/claude-code-workflows`\n`git clone https://github.com/shinpr/claude-code-workflows`",
+    "usage_vi": "```\nCreate a development workflow for [PROJECT_NAME] using [PROGRAMMING_LANGUAGE]. The workflow should include [NUMBER] stages, each with specific tasks and deliverables. Ensure the workflow integrates [TOOLS_FRAMEWORKS] and follows [DESIGN_PATTERNS]. Provide a timeline for each stage and suggest AI agents to automate repetitive tasks.\n```\nCopy\n\n```\nHere's a production-ready development workflow for the 'E-Commerce Platform' project using Python. The workflow includes 5 stages, each with specific tasks and deliverables, designed to streamline the development process and improve code quality.\n\n**Stage 1: Planning and Design**\n- Task 1: Define project scope and requirements\n- Task 2: Create system architecture diagram\n- Task 3: Design database schema\n- Deliverable: Project plan and design documents\n- Timeline: 1 week\n- AI Agent: Design Assistant for creating architecture diagrams\n\n**Stage 2: Setup and Configuration**\n- Task 1: Set up development environment\n- Task 2: Configure version control system (Git)\n- Task 3: Set up CI/CD pipeline\n- Deliverable: Configured development environment\n- Timeline: 1 week\n- AI Agent: DevOps Assistant for CI/CD pipeline configuration\n\n**Stage 3: Development**\n- Task 1: Implement core features\n- Task 2: Write unit tests\n- Task 3: Conduct code reviews\n- Deliverable: Working code with unit tests\n- Timeline: 4 weeks\n- AI Agent: Code Review Assistant for automated code reviews\n\n**Stage 4: Testing**\n- Task 1: Perform integration testing\n- Task 2: Conduct performance testing\n- Task 3: Fix bugs and issues\n- Deliverable: Tested and stable code\n- Timeline: 2 weeks\n- AI Agent: Test Automation Assistant for generating test cases\n\n**Stage 5: Deployment and Monitoring**\n- Task 1: Deploy application to production\n- Task 2: Set up monitoring and logging\n- Task 3: Gather user feedback\n- Deliverable: Deployed application with monitoring\n- Timeline: 1 week\n- AI Agent: Monitoring Assistant for setting up logging and alerts\n\nThis workflow integrates Django, React, and Docker, following the MVC design pattern. The suggested AI agents automate repetitive tasks, improving productivity and code quality.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:26:45.738923Z",
+    "http_status": 200,
+    "content_hash": "e74b773ec0a56f1a00df59e457e9a1aae216449dd90f28d7482af5da4df788f5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-workflows.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-workflows.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Workflows - AI-Driven Development Tools",
+  "short_description_vi": "Claude Code Workflows offers production-ready development workflows enhanced by specialized AI agents, streamlining coding processes and improving code quality for developers. Ideal for teams looking to boost productivity and automate their development tasks."
+}

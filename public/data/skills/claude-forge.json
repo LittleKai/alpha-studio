@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-forge",
+  "slug": "claude-forge",
+  "name": "Claude Forge",
+  "headline": "claude forge for organizing code skills",
+  "short_description": "An experiment in organizing Claude Code skills. Token-optimized configurations for Go, Python, Rails, and Terraform with patterns extracted from real projects.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "maroffo",
+  "install_command": "git clone https://github.com/maroffo/claude-forge.git",
+  "source_repo_url": "https://github.com/maroffo/claude-forge",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Forge is a four-tier system for organizing Claude Code skills and agents into a deterministic, rules-driven workflow. It combines identity and workflow rules (always active), on-demand review agents, user-invoked language and tool skills, and runtime enforcement hooks that ensure Claude follows established patterns even if it forgets. The system is tuned for Claude Opus 4.8 with token-optimized configurations for Go, Python, Rails, and Terraform extracted from real projects. Installation is simple via one-liner script or manual copy, and the architecture automatically loads rules, launches agents based on file patterns, and activates skills contextually. Runtime hooks enforce code quality gates, prevent direct commits to main, validate commit intent, require documentation markers, and route files to appropriate reviewers.\nEnforce consistent coding patterns across Go, Python, Rails, and Terraform projects\nAutomate code review routing based on file type and repository conventions\nPrevent unsafe commits with pre-commit gates and main-branch guards\nMaintain project identity and workflow rules across Claude Code sessions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/maroffo/claude-forge`",
+    "usage": "```\nAct as a code assistant for [COMPANY], a [INDUSTRY] company. I need help with [PROGRAMMING_LANGUAGE] code. Use the claude-forge configurations to optimize my code for [SPECIFIC_TASK]. Provide clear, concise instructions and token-efficient solutions.\n```\nCopy\n\n```\n# Code Optimization for [COMPANY] (Retail Industry)",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-forge#main-content",
+      "claude-forge#overview",
+      "claude-forge#setup",
+      "claude-forge#examples",
+      "claude-forge#tools",
+      "claude-forge#mcp",
+      "claude-forge#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Forge là một hệ thống phân tầng gồm 4 lớp giúp tổ chức các code skill và agent của Claude Code thành một workflow xác định (deterministic) và vận hành theo quy tắc (rules-driven). Hệ thống kết hợp các quy tắc identity và workflow (luôn hoạt động), các review agent theo yêu cầu (on-demand), các skill về ngôn ngữ và công cụ do người dùng kích hoạt, cùng các runtime hook để ép buộc thực thi, đảm bảo Claude luôn tuân thủ các pattern đã thiết lập ngay cả khi bị \"quên\". Hệ thống được tinh chỉnh cho Claude Opus 4.8 với các cấu hình tối ưu hóa token cho Go, Python, Rails và Terraform được đúc kết từ các dự án thực tế. Việc cài đặt rất đơn giản thông qua một dòng script hoặc sao chép thủ công. Kiến trúc của hệ thống sẽ tự động load các rule, khởi chạy agent dựa trên pattern của file và kích hoạt các skill tương ứng theo ngữ cảnh. Các runtime hook giúp kiểm soát chất lượng code (code quality gates), ngăn chặn commit trực tiếp vào nhánh main, xác thực mục đích commit, yêu cầu gắn nhãn tài liệu (documentation markers) và điều hướng file đến các reviewer phù hợp.\nÁp dụng nhất quán các coding pattern trên các dự án Go, Python, Rails và Terraform\nTự động điều hướng code review dựa trên loại file và quy ước của kho lưu trữ (repository conventions)\nNgăn chặn các commit không an toàn bằng các pre-commit gate và cơ chế bảo vệ nhánh main (main-branch guards)\nDuy trì các quy tắc identity và workflow của dự án xuyên suốt các session của Claude Code",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/maroffo/claude-forge`",
+    "usage_vi": "```\nĐóng vai trò là trợ lý viết code cho [COMPANY], một công ty trong lĩnh vực [INDUSTRY]. Tôi cần hỗ trợ về code [PROGRAMMING_LANGUAGE]. Hãy sử dụng cấu hình của claude-forge để tối ưu hóa code của tôi cho nhiệm vụ [SPECIFIC_TASK]. Đưa ra các hướng dẫn rõ ràng, súc tích và giải pháp tối ưu hóa token.\n```\nSao chép\n\n```\n# Tối ưu hóa Code cho [COMPANY] (Ngành Bán lẻ)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:09:59.781925Z",
+    "http_status": 200,
+    "content_hash": "8d8ea2fdc8b308dbd194b6715e9eb08b74af2dd02ebb02c6d9abd74d5cbc5040",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-forge.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-forge.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude forge giúp tổ chức các code skill",
+  "short_description_vi": "Một dự án thử nghiệm nhằm tổ chức các code skill của Claude Code. Cung cấp các cấu hình tối ưu hóa token cho Go, Python, Rails và Terraform, dựa trên các pattern được đúc kết từ các dự án thực tế."
+}

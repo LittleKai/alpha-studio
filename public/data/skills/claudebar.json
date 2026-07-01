@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudebar",
+  "slug": "claudebar",
+  "name": "ClaudeBar",
+  "headline": "claudebar: track ai usage on macOS",
+  "short_description": "ClaudeBar is a macOS menu bar app that tracks AI coding assistant usage quotas for Claude, Codex, Antigravity, and Gemini. Developers can monitor their usage limits and avoid unexpected interruptions. It integrates with popular AI coding tools and provides real-time usage data.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "tddworks",
+  "install_command": "git clone https://github.com/tddworks/ClaudeBar.git",
+  "source_repo_url": "https://github.com/tddworks/ClaudeBar",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "githubcopilot",
+    "glm4",
+    "codex",
+    "antigravity",
+    "gemini",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ClaudeBar is a lightweight macOS menu bar application designed to help developers monitor their AI coding assistant usage quotas without leaving their workflow. The app displays real-time usage data directly in the menu bar, making it easy to check remaining quota limits at a glance. By providing immediate visibility into usage consumption, ClaudeBar helps developers avoid unexpected service interruptions or quota overages. The tool integrates with popular AI coding assistants and supports quota tracking across multiple providers. This is essential for teams and individual developers who rely on AI-assisted coding tools and need to manage their usage efficiently.\nMonitor your AI coding assistant quotas to avoid exceeding limits during development.\nCustomize your monitoring experience by enabling or disabling specific AI providers.\nReceive real-time notifications when your usage status changes to warning or critical.\nSwitch between light, dark, and festive themes to match your macOS appearance.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tddworks/ClaudeBar`",
+    "usage": "```\nCheck my current AI coding assistant usage quotas across [TOOLS: Claude/Codex/Antigravity/Gemini] using ClaudeBar. Show me my remaining [DAILY/WEEKLY/MONTHLY] limits and highlight any tools that are approaching their threshold. Provide a breakdown of usage trends over the past [TIME PERIOD: week/month] and suggest optimal times to use each tool based on my historical patterns.\n```\nCopy\n\n```\nHere’s your AI coding assistant usage snapshot as of **June 12, 2025, 3:47 PM** (last updated via ClaudeBar v2.1.3):\n\n| Tool      | Daily Limit | Remaining | Weekly Limit | Remaining | Monthly Limit | Remaining |\n|-----------|-------------|-----------|--------------|-----------|---------------|-----------|\n| **Claude** | 100 requests | **12 left** (88% used) | 500 requests | **245 left** (51% used) | 2,000 requests | **1,123 left** (44% used) |\n| **Codex**  | 50 requests  | **0 left** (100% used) ⚠️ | 300 requests | **189 left** (37% used) | 1,500 requests | **876 left** (42% used) |\n| **Antigravity** | 200 requests | **187 left** (6% used) | 1,000 requests | **765 left** (23% used) | 4,000 requests | **3,210 left** (20% used) |\n| **Gemini** | 150 requests | **45 left** (70% used) | 750 requests | **321 left** (57% used) | 3,000 requests | **1,987 left** (34% used) |\n\n**Key Insights:**\n- **Codex hit its daily limit at 2:15 PM today**—switch to Antigravity or Gemini for critical tasks until midnight.\n- **Claude’s weekly usage is accelerating** (up 34% from last week). Consider batching requests or using Antigravity for lighter queries.\n- **Best time to use Codex:** Early mornings (6–8 AM) or after midnight when limits reset.\n- **Trend Alert:** Your Antigravity usage spiked 200% yesterday—likely due to [YOUR PROJECT NAME]’s API testing. Monitor for quota exhaustion.\n\n**Recommendations:**\n1. **Immediate:** Pause Codex until tomorrow; use Antigravity for debugging.\n2. **This Week:** Schedule heavy Claude tasks (e.g., code reviews) for mornings to avoid midday spikes.\n3. **Long-Term:** Set up ClaudeBar desktop notifications for daily/weekly thresholds (e.g., \"Codex daily limit in 2 hours\").\n\n*Data sourced from local ClaudeBar app (macOS Sonoma 14.5). Last sync: 10 mins ago.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudebar#main-content",
+      "claudebar#overview",
+      "claudebar#setup",
+      "claudebar#examples",
+      "claudebar#tools",
+      "claudebar#mcp",
+      "claudebar#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ClaudeBar là một ứng dụng menu bar gọn nhẹ trên macOS được thiết kế để giúp lập trình viên giám sát quota sử dụng AI coding assistant mà không làm ảnh hưởng đến workflow. Ứng dụng hiển thị dữ liệu sử dụng theo thời gian thực ngay trên menu bar, giúp bạn dễ dàng kiểm tra nhanh giới hạn quota còn lại. Nhờ khả năng hiển thị trực quan mức độ tiêu thụ tài nguyên, ClaudeBar giúp lập trình viên tránh được tình trạng gián đoạn dịch vụ đột ngột hoặc vượt quá quota. Công cụ này tích hợp với các AI coding assistant phổ biến và hỗ trợ theo dõi quota từ nhiều nhà cung cấp khác nhau. Đây là giải pháp thiết thực cho cả đội ngũ phát triển và lập trình viên cá nhân thường xuyên làm việc với các công cụ lập trình AI và cần quản lý mức độ sử dụng hiệu quả.\nGiám sát quota của AI coding assistant để tránh vượt quá giới hạn trong quá trình phát triển.\nTùy chỉnh trải nghiệm giám sát bằng cách bật hoặc tắt các nhà cung cấp AI cụ thể.\nNhận thông báo theo thời gian thực khi trạng thái sử dụng chuyển sang mức cảnh báo hoặc nguy cấp.\nChuyển đổi giữa các theme sáng (light), tối (dark) và lễ hội (festive) để đồng bộ với giao diện macOS.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/tddworks/ClaudeBar`",
+    "usage_vi": "```\nKiểm tra quota sử dụng AI coding assistant hiện tại của tôi trên các [TOOLS: Claude/Codex/Antigravity/Gemini] bằng ClaudeBar. Hiển thị giới hạn còn lại theo [DAILY/WEEKLY/MONTHLY] và làm nổi bật các công cụ sắp đạt đến ngưỡng giới hạn. Cung cấp bảng phân tích xu hướng sử dụng trong [TIME PERIOD: week/month] qua và đề xuất thời gian tối ưu để sử dụng từng công cụ dựa trên lịch sử hoạt động của tôi.\n```\nCopy\n\n```\nDưới đây là thông tin tóm tắt về mức sử dụng AI coding assistant của bạn tính đến **15:47 ngày 12 tháng 6 năm 2025** (cập nhật lần cuối qua ClaudeBar v2.1.3):\n\n| Tool      | Giới hạn ngày | Còn lại | Giới hạn tuần | Còn lại | Giới hạn tháng | Còn lại |\n|-----------|-------------|-----------|--------------|-----------|---------------|-----------|\n| **Claude** | 100 yêu cầu | **Còn 12** (đã dùng 88%) | 500 yêu cầu | **Còn 245** (đã dùng 51%) | 2.000 yêu cầu | **Còn 1.123** (đã dùng 44%) |\n| **Codex**  | 50 yêu cầu  | **Còn 0** (đã dùng 100%) ⚠️ | 300 yêu cầu | **Còn 189** (đã dùng 37%) | 1.500 yêu cầu | **Còn 876** (đã dùng 42%) |\n| **Antigravity** | 200 yêu cầu | **Còn 187** (đã dùng 6%) | 1.000 yêu cầu | **Còn 765** (đã dùng 23%) | 4.000 yêu cầu | **Còn 3.210** (đã dùng 20%) |\n| **Gemini** | 150 yêu cầu | **Còn 45** (đã dùng 70%) | 750 yêu cầu | **Còn 321** (đã dùng 57%) | 3.000 yêu cầu | **Còn 1.987** (đã dùng 34%) |\n\n**Thông tin quan trọng:**\n- **Codex đã đạt giới hạn ngày vào lúc 14:15 hôm nay**—hãy chuyển sang Antigravity hoặc Gemini cho các tác vụ quan trọng cho đến nửa đêm.\n- **Tần suất sử dụng Claude hàng tuần đang tăng nhanh** (tăng 34% so với tuần trước). Hãy cân nhắc gom nhóm các request hoặc sử dụng Antigravity cho các câu hỏi đơn giản hơn.\n- **Thời gian tốt nhất để sử dụng Codex:** Sáng sớm (6:00 – 8:00) hoặc sau nửa đêm khi giới hạn được reset.\n- **Cảnh báo xu hướng:** Lượng sử dụng Antigravity của bạn đã tăng vọt 200% vào ngày hôm qua—nhiều khả năng là do việc test API của dự án [YOUR PROJECT NAME]. Hãy giám sát để tránh cạn kiệt quota.\n\n**Khuyến nghị:**\n1. **Tức thời:** Tạm dừng sử dụng Codex cho đến ngày mai; sử dụng Antigravity để debug.\n2. **Tuần này:** Lên lịch cho các tác vụ nặng trên Claude (ví dụ: code review) vào buổi sáng để tránh tình trạng quá tải vào giữa ngày.\n3. **Dài hạn:** Thiết lập thông báo desktop từ ClaudeBar cho các ngưỡng giới hạn ngày/tuần (ví dụ: \\\"Codex đạt giới hạn ngày trong 2 giờ nữa\\\").\n\n*Dữ liệu được lấy từ ứng dụng ClaudeBar cục bộ trên máy (macOS Sonoma 14.5). Đồng bộ lần cuối: 10 phút trước.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:09.640128Z",
+    "http_status": 200,
+    "content_hash": "5c964dd7cd926d51b71cc6db157dcb765b5d2f4b6a96e528ec9449952a0d15c5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudebar.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudebar.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ClaudeBar: theo dõi mức sử dụng AI trên macOS",
+  "short_description_vi": "ClaudeBar là ứng dụng menu bar trên macOS giúp theo dõi quota sử dụng các AI coding assistant như Claude, Codex, Antigravity và Gemini. Các nhà phát triển có thể dễ dàng giám sát giới hạn sử dụng của mình để tránh bị gián đoạn công việc đột ngột. Ứng dụng tích hợp mượt mà với các công cụ AI coding phổ biến và cung cấp dữ liệu sử dụng theo thời gian thực."
+}

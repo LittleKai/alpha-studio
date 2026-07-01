@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cave-agent",
+  "slug": "cave-agent",
+  "name": "Cave Agent",
+  "headline": "Stateful runtime management LLM agent",
+  "short_description": "CaveAgent enables stateful runtime management for LLM agents, allowing injection, manipulation, and retrieval of Python objects across turns. Operations teams can use it to build persistent, stateful workflows with Claude agents, integrating with Python-based tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "acodercat",
+  "install_command": "git clone https://github.com/acodercat/cave-agent.git",
+  "source_repo_url": "https://github.com/acodercat/cave-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "CaveAgent transforms LLM agents from text-in-text-out systems into stateful runtime operators that work with native Python objects. It provides two runtime backends—IPythonRuntime for same-process execution with zero-copy object access, and IPyKernelRuntime for process-isolated execution with crash resilience. You can inject DataFrames, database connections, models, and custom class instances as first-class variables that persist across turns without serialization. The runtime executes Python code directly, retrieves manipulated objects as native types, and supports both function calling and agent skills. This approach eliminates context window bloat from large state objects and enables complex workflows like data visualization, multi-agent coordination, and real-time streaming.\nData analysis and visualization workflows with persistent DataFrames and chart configurations\nDatabase operations where agents execute SQL queries against live connections\nMulti-turn stateful workflows requiring object manipulation across agent turns\nSandboxed code execution in multi-tenant environments using process isolation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/acodercat/cave-agent`",
+    "usage": "```\nUse CaveAgent to inject the Python object [OBJECT_NAME] with the following state: [OBJECT_STATE]. Then, retrieve and modify the object to [MODIFICATION_GOAL] in the next turn. Ensure the object persists across agent interactions and tool calls. Provide the updated state of the object after the modification.\n```\nCopy\n\n```\n```python\n# Initial state injection\nfrom cave_agent import CaveAgent\nagent = CaveAgent()\n\n# Injecting a persistent object (e.g., a configuration manager)\nconfig_manager = {\n    \"api_keys\": {\n        \"weather_service\": \"abc123-xyz456\",\n        \"payment_gateway\": \"secure_key_789\"\n    },\n    \"retry_policy\": {\n        \"max_attempts\": 3,\n        \"backoff_seconds\": [1, 5, 10]\n    },\n    \"last_updated\": \"2024-05-20T14:30:00Z\"\n}\n\nagent.inject_object(\"config_manager\", config_manager)\n\n# First interaction: Retrieve and update the object\nretrieved_config = agent.get_object(\"config_manager\")\nretrieved_config[\"api_keys\"][\"weather_service\"] = \"new_key_999\"\nretrieved_config[\"last_updated\"] = \"2024-05-20T15:15:00Z\"\n\nagent.update_object(\"config_manager\", retrieved_config)\n\n# Second interaction: Verify persistence and state\nfinal_config = agent.get_object(\"config_manager\")\nprint(final_config)\n```\n\n**Output:**\n```\n{\n    \"api_keys\": {\n        \"weather_service\": \"new_key_999\",\n        \"payment_gateway\": \"secure_key_789\"\n    },\n    \"retry_policy\": {\n        \"max_attempts\": 3,\n        \"backoff_seconds\": [1, 5, 10]\n    },\n    \"last_updated\": \"2024-05-20T15:15:00Z\"\n}\n```\n\nThe `config_manager` object was successfully injected, retrieved, modified, and persisted across two agent interactions. The `weather_service` API key was updated, and the `last_updated` timestamp reflects the most recent change. Operations teams can use this pattern to maintain stateful configurations, session data, or workflow variables without losing context between agent turns.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cave-agent#main-content",
+      "cave-agent#overview",
+      "cave-agent#setup",
+      "cave-agent#examples",
+      "cave-agent#tools",
+      "cave-agent#mcp",
+      "cave-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CaveAgent transforms LLM agents from text-in-text-out systems into stateful runtime operators that work with native Python objects. It provides two runtime backends—IPythonRuntime for same-process execution with zero-copy object access, and IPyKernelRuntime for process-isolated execution with crash resilience. You can inject DataFrames, database connections, models, and custom class instances as first-class variables that persist across turns without serialization. The runtime executes Python code directly, retrieves manipulated objects as native types, and supports both function calling and agent skills. This approach eliminates context window bloat from large state objects and enables complex workflows like data visualization, multi-agent coordination, and real-time streaming.\nData analysis and visualization workflows with persistent DataFrames and chart configurations\nDatabase operations where agents execute SQL queries against live connections\nMulti-turn stateful workflows requiring object manipulation across agent turns\nSandboxed code execution in multi-tenant environments using process isolation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/acodercat/cave-agent`",
+    "usage_vi": "```\nUse CaveAgent to inject the Python object [OBJECT_NAME] with the following state: [OBJECT_STATE]. Then, retrieve and modify the object to [MODIFICATION_GOAL] in the next turn. Ensure the object persists across agent interactions and tool calls. Provide the updated state of the object after the modification.\n```\nCopy\n\n```\n```python\n# Initial state injection\nfrom cave_agent import CaveAgent\nagent = CaveAgent()\n\n# Injecting a persistent object (e.g., a configuration manager)\nconfig_manager = {\n    \"api_keys\": {\n        \"weather_service\": \"abc123-xyz456\",\n        \"payment_gateway\": \"secure_key_789\"\n    },\n    \"retry_policy\": {\n        \"max_attempts\": 3,\n        \"backoff_seconds\": [1, 5, 10]\n    },\n    \"last_updated\": \"2024-05-20T14:30:00Z\"\n}\n\nagent.inject_object(\"config_manager\", config_manager)\n\n# First interaction: Retrieve and update the object\nretrieved_config = agent.get_object(\"config_manager\")\nretrieved_config[\"api_keys\"][\"weather_service\"] = \"new_key_999\"\nretrieved_config[\"last_updated\"] = \"2024-05-20T15:15:00Z\"\n\nagent.update_object(\"config_manager\", retrieved_config)\n\n# Second interaction: Verify persistence and state\nfinal_config = agent.get_object(\"config_manager\")\nprint(final_config)\n```\n\n**Output:**\n```\n{\n    \"api_keys\": {\n        \"weather_service\": \"new_key_999\",\n        \"payment_gateway\": \"secure_key_789\"\n    },\n    \"retry_policy\": {\n        \"max_attempts\": 3,\n        \"backoff_seconds\": [1, 5, 10]\n    },\n    \"last_updated\": \"2024-05-20T15:15:00Z\"\n}\n```\n\nThe `config_manager` object was successfully injected, retrieved, modified, and persisted across two agent interactions. The `weather_service` API key was updated, and the `last_updated` timestamp reflects the most recent change. Operations teams can use this pattern to maintain stateful configurations, session data, or workflow variables without losing context between agent turns.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:29.430862Z",
+    "http_status": 200,
+    "content_hash": "82c0d7165f3686c962c4a37b50b6d74c05485d6a06ac8ab809f176bfa3a8bc88",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cave-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cave-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Stateful runtime management LLM agent",
+  "short_description_vi": "CaveAgent enables stateful runtime management for LLM agents, allowing injection, manipulation, and retrieval of Python objects across turns. Operations teams can use it to build persistent, stateful workflows with Claude agents, integrating with Python-based tools and workflows."
+}

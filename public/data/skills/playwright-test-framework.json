@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/playwright-test-framework",
+  "slug": "playwright-test-framework",
+  "name": "Playwright Test Framework",
+  "headline": "Playwright Test Framework - Automated Web Testing",
+  "short_description": "Automated end-to-end testing framework built with Playwright and Java, tailored for any website. Designed for scalability and maintainability, this framework covers critical test scenarios with strong assertions and clean, modular code. Perfect for those looking to speed up their test automation journey or enhance their Playwright skills!",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "iamcharankumar",
+  "install_command": "git clone https://github.com/iamcharankumar/playwright_test_framework.git",
+  "source_repo_url": "https://github.com/iamcharankumar/playwright_test_framework",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "web-performance-analytics",
+    "jacoco",
+    "codecov-badge",
+    "maven-pom",
+    "parallelization",
+    "web-test-automation",
+    "playwright-java",
+    "testng-framework",
+    "discord-integration",
+    "chrome-devtools-protocol",
+    "java-17"
+  ],
+  "sections": {
+    "overview": "This framework combines Playwright with Java to deliver automated end-to-end testing for websites with a focus on scalability and maintainability. It uses a modular architecture with clean code patterns, supporting Chrome, Firefox, and Edge browsers in both local and headless modes. The framework includes Chrome DevTools Protocol integration for network error monitoring, parallel test execution via Maven, and GitHub Actions CI/CD integration. Built with TestNG, it covers smoke, regression, and E2E test scenarios with robust assertions. Teams can integrate test reports with ReportPortal and Discord notifications, track code coverage with CodeCov, and leverage multi-threaded test execution for faster feedback cycles.\nAutomated regression testing for e-commerce and SaaS applications\nCross-browser testing with Chrome, Firefox, and Edge in CI/CD pipelines\nNetwork error detection and monitoring during test execution via CDP\nParallel test execution with configurable thread counts for faster feedback",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iamcharankumar/playwright_test_framework`",
+    "usage": "```\nCreate a Playwright test suite for [WEBSITE_URL] that validates the following critical user flows: [FLOW_1], [FLOW_2], and [FLOW_3]. Include setup for headless/headed mode, parallel execution, and a report generation step. Use [TEST_DATA] as input values where applicable. Ensure tests follow Page Object Model (POM) pattern and include assertions for UI elements, API responses, and performance metrics.\n```\nCopy\n\n```\n```javascript\n// playwright.config.js\nmodule.exports = {\n  testDir: './tests',\n  timeout: 30000,\n  fullyParallel: true,\n  retries: 1,\n  workers: 3,\n  reporter: [['list'], ['json', { outputFile: 'test-results.json' }]],\n  use: {\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },\n};\n\n// tests/login.spec.js\nconst { test, expect } = require('@playwright/test');\nconst { LoginPage } = require('../pages/login.page');\nconst { DashboardPage } = require('../pages/dashboard.page');\nconst testData = require('../test-data.json');\n\ntest.describe('Login Flow Tests', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://acme-corp.com/login');\n  });\n\n  test('Successful login with valid credentials', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    const dashboardPage = new DashboardPage(page);\n\n    await loginPage.fillEmail(testData.validUser.email);\n    await loginPage.fillPassword(testData.validUser.password);\n    await loginPage.clickLoginButton();\n\n    await expect(dashboardPage.getWelcomeMessage()).toBeVisible();\n    await expect(dashboardPage.getWelcomeMessage()).toContainText('Welcome, John Doe!');\n    await expect(page).toHaveURL('https://acme-corp.com/dashboard');\n  });\n\n  test('Failed login with invalid credentials', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n\n    await loginPage.fillEmail(testData.invalidUser.email);\n    await loginPage.fillPassword(testData.invalidUser.password);\n    await loginPage.clickLoginButton();\n\n    await expect(loginPage.getErrorMessage()).toBeVisible();\n    await expect(loginPage.getErrorMessage()).toContainText('Invalid email or password');\n  });\n\n  test('Password reset flow', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    const resetPage = new ResetPasswordPage(page);\n\n    await loginPage.clickForgotPasswordLink();\n    await resetPage.fillEmail(testData.validUser.email);\n    await resetPage.clickSendLinkButton();\n\n    await expect(resetPage.getSuccessMessage()).toBeVisible();\n    await expect(resetPage.getSuccessMessage()).toContainText('Password reset link sent');\n\n    const email = await resetPage.getLastEmail();\n    expect(email.subject).toContain('Password Reset');\n    expect(email.body).toContain('Reset your password');\n  });\n});\n\n// reports/html-report/index.html\n// Generated after test execution showing 3/3 tests passed with 0 failures\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "playwright-test-framework#main-content",
+      "playwright-test-framework#overview",
+      "playwright-test-framework#setup",
+      "playwright-test-framework#examples",
+      "playwright-test-framework#tools",
+      "playwright-test-framework#mcp",
+      "playwright-test-framework#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Framework này kết hợp Playwright với Java để cung cấp giải pháp kiểm thử end-to-end tự động cho website, tập trung vào khả năng mở rộng và bảo trì. Framework sử dụng kiến trúc mô-đun với các clean code pattern, hỗ trợ các trình duyệt Chrome, Firefox và Edge ở cả chế độ chạy local và headless. Hệ thống tích hợp Chrome DevTools Protocol (CDP) để giám sát lỗi mạng, thực thi kiểm thử song song qua Maven và tích hợp CI/CD qua GitHub Actions. Được xây dựng dựa trên TestNG, framework bao quát các kịch bản kiểm thử smoke, regression và E2E với các assertion mạnh mẽ. Các đội ngũ phát triển có thể tích hợp báo cáo kiểm thử với ReportPortal và thông báo qua Discord, theo dõi độ bao phủ mã nguồn (code coverage) bằng CodeCov, và tận dụng tính năng chạy kiểm thử đa luồng để rút ngắn chu kỳ phản hồi.\n- Tự động hóa kiểm thử regression (kiểm thử hồi quy) cho các ứng dụng thương mại điện tử và SaaS\n- Kiểm thử đa trình duyệt với Chrome, Firefox và Edge trong pipeline CI/CD\n- Phát hiện và giám sát lỗi mạng trong quá trình thực thi kiểm thử qua CDP\n- Thực thi kiểm thử song song với số lượng luồng (thread count) có thể cấu hình để nhận phản hồi nhanh hơn",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/iamcharankumar/playwright_test_framework`",
+    "usage_vi": "```\nTạo một test suite Playwright cho [WEBSITE_URL] để xác thực các luồng người dùng quan trọng sau: [FLOW_1], [FLOW_2] và [FLOW_3]. Cấu hình chạy ở chế độ headless/headed, thực thi song song và có bước tạo báo cáo. Sử dụng [TEST_DATA] làm giá trị đầu vào khi cần thiết. Đảm bảo các bài kiểm thử tuân theo mô hình Page Object Model (POM) và bao gồm các assertion cho các phần tử UI, phản hồi API và các chỉ số hiệu năng.\n```\nCopy\n\n```javascript\n// playwright.config.js\nmodule.exports = {\n  testDir: './tests',\n  timeout: 30000,\n  fullyParallel: true,\n  retries: 1,\n  workers: 3,\n  reporter: [['list'], ['json', { outputFile: 'test-results.json' }]],\n  use: {\n    trace: 'on-first-retry',\n    screenshot: 'only-on-failure',\n  },\n};\n\n// tests/login.spec.js\nconst { test, expect } = require('@playwright/test');\nconst { LoginPage } = require('../pages/login.page');\nconst { DashboardPage } = require('../pages/dashboard.page');\nconst testData = require('../test-data.json');\n\ntest.describe('Login Flow Tests', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://acme-corp.com/login');\n  });\n\n  test('Successful login with valid credentials', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    const dashboardPage = new DashboardPage(page);\n\n    await loginPage.fillEmail(testData.validUser.email);\n    await loginPage.fillPassword(testData.validUser.password);\n    await loginPage.clickLoginButton();\n\n    await expect(dashboardPage.getWelcomeMessage()).toBeVisible();\n    await expect(dashboardPage.getWelcomeMessage()).toContainText('Welcome, John Doe!');\n    await expect(page).toHaveURL('https://acme-corp.com/dashboard');\n  });\n\n  test('Failed login with invalid credentials', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n\n    await loginPage.fillEmail(testData.invalidUser.email);\n    await loginPage.fillPassword(testData.invalidUser.password);\n    await loginPage.clickLoginButton();\n\n    await expect(loginPage.getErrorMessage()).toBeVisible();\n    await expect(loginPage.getErrorMessage()).toContainText('Invalid email or password');\n  });\n\n  test('Password reset flow', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    const resetPage = new ResetPasswordPage(page);\n\n    await loginPage.clickForgotPasswordLink();\n    await resetPage.fillEmail(testData.validUser.email);\n    await resetPage.clickSendLinkButton();\n\n    await expect(resetPage.getSuccessMessage()).toBeVisible();\n    await expect(resetPage.getSuccessMessage()).toContainText('Password reset link sent');\n\n    const email = await resetPage.getLastEmail();\n    expect(email.subject).toContain('Password Reset');\n    expect(email.body).toContain('Reset your password');\n  });\n});\n\n// reports/html-report/index.html\n// Được tạo sau khi thực thi kiểm thử, hiển thị 3/3 bài test thành công và 0 thất bại\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:36.842042Z",
+    "http_status": 200,
+    "content_hash": "9d051f3dca72467139c973fdf4cd3b9d3d9b289b2de792a6fc09707eda73792e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\playwright-test-framework.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\playwright-test-framework.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Playwright Test Framework - Tự động hóa kiểm thử Web",
+  "short_description_vi": "Framework kiểm thử end-to-end tự động được xây dựng bằng Playwright và Java, được thiết kế phù hợp cho mọi trang web. Hướng tới khả năng mở rộng và bảo trì dễ dàng, framework này bao quát các kịch bản kiểm thử quan trọng với các assertion mạnh mẽ cùng mã nguồn sạch, dạng mô-đun. Hoàn hảo cho những ai muốn đẩy nhanh lộ trình tự động hóa kiểm thử hoặc nâng cao kỹ năng Playwright của mình!"
+}

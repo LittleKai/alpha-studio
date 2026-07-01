@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-wordpress-skills",
+  "slug": "claude-wordpress-skills",
+  "name": "Claude Wordpress Skills",
+  "headline": "claude wordpress skills: optimize performance",
+  "short_description": "WordPress engineering skills for Claude Code. Optimize performance, audit security, develop Gutenberg blocks, and follow theme/plugin best practices. Ideal for operations teams managing WordPress sites.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "elvismdev",
+  "install_command": "git clone https://github.com/elvismdev/claude-wordpress-skills.git",
+  "source_repo_url": "https://github.com/elvismdev/claude-wordpress-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "wordpress-development",
+    "performance-analysis",
+    "ai-tools",
+    "wordpress",
+    "claude-skills",
+    "claude-code",
+    "security-audit"
+  ],
+  "sections": {
+    "overview": "Claude WordPress Skills provides five professional engineering skills for Claude Code to optimize WordPress sites and codebases. The wp-performance-review skill delivers comprehensive code reviews covering database anti-patterns, caching issues, AJAX optimization, and template performance with severity-ranked findings and fix recommendations. Additional skills address security auditing, Gutenberg block development, theme standards, and plugin architecture. Install via marketplace or locally to activate slash commands like /wp-perf-review and /wp-perf for full analysis or fast triage scans. Ideal for WordPress developers, operations teams, and agencies managing site performance and code quality.\nComprehensive performance code reviews before WordPress site launch\nQuick pre-deploy security and performance triage scans\nSecurity auditing and hardening of themes and plugins\nGutenberg block development following best practices",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/elvismdev/claude-wordpress-skills`",
+    "usage": "```\nUse Claude Code to [TASK] for the WordPress site at [SITE_URL]. Ensure all changes follow WordPress coding standards and best practices. [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```\n### Performance Optimization Report for AcmeCorp.com\n\n**Current State Analysis:**\n- PageSpeed Insights Score: 68 (Mobile), 82 (Desktop)\n- GTmetrix Waterfall: 12 blocking JavaScript resources, 8 unoptimized images\n- Database: 1,247 post revisions, 8 orphaned meta entries\n\n**Optimizations Implemented:**\n1. **Image Optimization:** Compressed 45 product images using ShortPixel (avg reduction: 68%). Added `loading=\"lazy\"` to all images below the fold.\n2. **Asset Loading:** Deferred 11 non-critical JavaScript files using `wp_enqueue_script()` with `defer` parameter. Combined 3 CSS files into 1.\n3. **Database Cleanup:** Removed 1,247 post revisions using WP-CLI (`wp post delete --force $(wp post list --post_type='revision' --format=ids)`). Optimized `_wp_session` table (reduced from 2.1MB to 14KB).\n4. **Caching:** Configured Redis Object Cache via `wp-config.php` (enabled via `WP_REDIS_HOST` and `WP_CACHE_KEY_SALT`).\n\n**Results:**\n- PageSpeed Score: 92 (Mobile), 96 (Desktop) - 35% improvement\n- GTmetrix Load Time: 1.8s (down from 4.2s)\n- Database Size: 14MB (down from 22MB)\n- Memory Usage: 42MB (down from 89MB)\n\n**Next Steps:**\n- Implement critical CSS inlining for above-the-fold content\n- Configure Cloudflare APO for edge caching\n- Set up weekly automated database optimization via WP-CLI cron job\n\nAll changes tested on staging site (acmecorp-staging.com) and deployed via GitHub Actions workflow.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-wordpress-skills#main-content",
+      "claude-wordpress-skills#overview",
+      "claude-wordpress-skills#setup",
+      "claude-wordpress-skills#examples",
+      "claude-wordpress-skills#tools",
+      "claude-wordpress-skills#mcp",
+      "claude-wordpress-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude WordPress Skills cung cấp năm skill kỹ thuật chuyên nghiệp dành cho Claude Code để tối ưu hóa các trang web và codebase WordPress. Skill `wp-performance-review` mang lại khả năng code review toàn diện bao gồm các lỗi database anti-pattern, sự cố caching, tối ưu hóa AJAX và hiệu năng template, đi kèm các phát hiện được phân loại theo mức độ nghiêm trọng và đề xuất khắc phục. Các skill bổ sung hỗ trợ kiểm định bảo mật, phát triển Gutenberg block, chuẩn hóa theme và kiến trúc plugin. Bạn có thể cài đặt thông qua marketplace hoặc cài đặt cục bộ để kích hoạt các lệnh slash như `/wp-perf-review` và `/wp-perf` cho việc phân tích toàn diện hoặc quét phân loại (triage scan) nhanh. Đây là giải pháp lý tưởng cho các nhà phát triển WordPress, đội ngũ vận hành và các agency quản lý hiệu năng cũng như chất lượng code của trang web.\nCode review hiệu năng toàn diện trước khi launch website WordPress\nQuét phân loại (triage scan) nhanh về bảo mật và hiệu năng trước khi deploy\nKiểm định bảo mật và gia cố (hardening) bảo mật cho theme và plugin\nPhát triển Gutenberg block tuân thủ các best practice",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/elvismdev/claude-wordpress-skills`",
+    "usage_vi": "```\nSử dụng Claude Code để thực hiện [TASK] cho trang web WordPress tại [SITE_URL]. Đảm bảo mọi thay đổi đều tuân thủ các coding standards và best practice của WordPress. [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```\n### Báo cáo tối ưu hóa hiệu năng cho AcmeCorp.com\n\n**Phân tích trạng thái hiện tại:**\n- Điểm PageSpeed Insights: 68 (Mobile), 82 (Desktop)\n- GTmetrix Waterfall: 12 tài nguyên JavaScript gây chặn (blocking resources), 8 hình ảnh chưa tối ưu\n- Database: 1.247 bản sửa đổi bài viết (post revision), 8 bản ghi meta mồ côi (orphaned meta)\n\n**Các tối ưu hóa đã thực hiện:**\n1. **Tối ưu hóa hình ảnh:** Nén 45 ảnh sản phẩm bằng ShortPixel (mức giảm trung bình: 68%). Thêm `loading=\"lazy\"` cho tất cả các hình ảnh nằm ngoài màn hình đầu tiên (below the fold).\n2. **Tải tài nguyên (Asset Loading):** Trì hoãn (defer) 11 tệp JavaScript không thiết yếu bằng cách sử dụng `wp_enqueue_script()` với tham số `defer`. Gộp 3 tệp CSS thành 1.\n3. **Dọn dẹp Database:** Xóa 1.247 bản sửa đổi bài viết bằng WP-CLI (`wp post delete --force $(wp post list --post_type='revision' --format=ids)`). Tối ưu hóa bảng `_wp_session` (giảm từ 2.1MB xuống 14KB).\n4. **Caching:** Cấu hình Redis Object Cache thông qua `wp-config.php` (kích hoạt qua `WP_REDIS_HOST` và `WP_CACHE_KEY_SALT`).\n\n**Kết quả:**\n- Điểm PageSpeed: 92 (Mobile), 96 (Desktop) - cải thiện 35%\n- Thời gian tải GTmetrix: 1.8s (giảm từ 4.2s)\n- Dung lượng Database: 14MB (giảm từ 22MB)\n- Dung lượng bộ nhớ sử dụng (Memory Usage): 42MB (giảm từ 89MB)\n\n**Các bước tiếp theo:**\n- Triển khai chèn CSS quan trọng (critical CSS inlining) cho nội dung trên màn hình đầu tiên (above-the-fold)\n- Cấu hình Cloudflare APO để thực hiện edge caching\n- Thiết lập tối ưu hóa database tự động hàng tuần thông qua cron job của WP-CLI\n\nMọi thay đổi đã được kiểm thử trên trang staging (acmecorp-staging.com) và deploy thông qua workflow của GitHub Actions.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:53.492601Z",
+    "http_status": 200,
+    "content_hash": "2f8e7cd38874f1c50e28b27a849db216cdd360f35a053ece1a0f4a8c4264d313",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-wordpress-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-wordpress-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude wordpress skills: tối ưu hiệu năng",
+  "short_description_vi": "Các skill kỹ thuật WordPress dành cho Claude Code. Tối ưu hiệu năng, kiểm định bảo mật, phát triển Gutenberg block và tuân thủ các best practice về theme/plugin. Lựa chọn lý tưởng cho các đội ngũ vận hành quản lý website WordPress."
+}

@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-system-prompts",
+  "slug": "awesome-system-prompts",
+  "name": "browser-use",
+  "headline": "ai coding agent system prompts",
+  "short_description": "A collection of system prompts and tool definitions from various AI coding agents. Enables developers to automate coding tasks, improve efficiency, and integrate with tools like Aider, Claude Code, and VSCode Agent.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "EliFuzz",
+  "install_command": "git clone https://github.com/EliFuzz/awesome-system-prompts.git",
+  "source_repo_url": "https://github.com/EliFuzz/awesome-system-prompts",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "gemini",
+    "anthropic",
+    "copilot",
+    "leaks",
+    "awesome",
+    "codex",
+    "google",
+    "ai",
+    "openai",
+    "prompt"
+  ],
+  "sections": {
+    "overview": "Awesome System Prompts is a curated directory of leaked system prompts and tool definitions from popular AI coding agents like Aider, Claude Code, Augment Code, Blackbox.AI, and Bolt. The repository documents how these agents operate internally, including their reasoning modes, code modification strategies, and tool integrations. Developers can study these prompts to understand agent capabilities, replicate behaviors in custom implementations, or optimize their own agentic workflows. The collection includes mode-specific prompts (Architect Mode, Ask Mode, Patch Mode) and tool definitions showing file editing, terminal interaction, web search, and task management capabilities. This resource is valuable for engineers building AI-assisted coding systems, integrating agents into development workflows, or creating specialized prompt templates.\nStudying how professional AI coding agents structure their system prompts and reasoning\nBuilding custom AI agents with proven prompt patterns from Aider, Claude Code, and Augment\nUnderstanding agent tool definitions and integrations for codebase analysis and modification\nReplicating agentic behavior for specific coding tasks like refactoring or code review",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/EliFuzz/awesome-system-prompts`",
+    "usage": "```\nUse the following system prompt to automate [TASK] in [PROJECT_NAME] with [TOOL_NAME]. Replace placeholders as needed: \n\n```\nYou are an expert [PROGRAMMING_LANGUAGE] developer with deep knowledge of [FRAMEWORK/LIBRARY]. Your task is to [SPECIFIC_TASK] while following best practices for [CODE_QUALITY_STANDARD]. \n\nConstraints: \n- Use [SPECIFIC_LIBRARY/TOOL] for [REASON].\n- Follow [ARCHITECTURE_PATTERN] for [REASON].\n- Ensure [SECURITY/PERFORMANCE] requirements are met.\n- Generate tests using [TEST_FRAMEWORK].\n\nDeliverables: \n1. [DELIVERABLE_1] \n2. [DELIVERABLE_2] \n3. [DELIVERABLE_3] \n\nAdditional context: [PROJECT_CONTEXT]\n```\n\nNow implement this in the [FILE_PATH] file.\n```\nCopy\n\n```\nHere’s the implementation for the `user-authentication` module in the `e-commerce-platform` project using Python and FastAPI. The system prompt instructed the AI to create a JWT-based authentication system with role-based access control, following SOLID principles and using SQLAlchemy for database operations. The output includes three files:\n\n1. **auth_service.py** (120 lines):\n```python\nfrom fastapi import Depends, HTTPException, status\nfrom fastapi.security import OAuth2PasswordBearer\nfrom jose import JWTError, jwt\nfrom passlib.context import CryptContext\nfrom datetime import datetime, timedelta\nfrom typing import Optional\n\nSECRET_KEY = \"your-secret-key-here\"\nALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 30\n\npwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n\nclass AuthService:\n    def __init__(self, user_repository):\n        self.user_repository = user_repository\n\n    def verify_password(self, plain_password: str, hashed_password: str) -> bool:\n        return pwd_context.verify(plain_password, hashed_password)\n\n    def create_access_token(self, data: dict, expires_delta: Optional[timedelta] = None):\n        to_encode = data.copy()\n        if expires_delta:\n            expire = datetime.utcnow() + expires_delta\n        else:\n            expire = datetime.utcnow() + timedelta(minutes=15)\n        to_encode.update({\"exp\": expire})\n        encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)\n        return encoded_jwt\n\n    async def get_current_user(self, token: str = Depends(oauth2_scheme)):\n        credentials_exception = HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Could not validate credentials\",\n            headers={\"WWW-Authenticate\": \"Bearer\"},\n        )\n        try:\n            payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n            username: str = payload.get(\"sub\")\n            if username is None:\n                raise credentials_exception\n        except JWTError:\n            raise credentials_exception\n        user = self.user_repository.get_by_username(username)\n        if user is None:\n            raise credentials_exception\n        return user\n```\n\n2. **schemas.py** (45 lines):\nDefines Pydantic models for request/response validation, including `Token`, `UserInDB`, and `UserCreate`.\n\n3. **tests/test_auth.py** (80 lines):\nUnit tests covering token generation, password hashing, and role-based access validation. All tests pass with 98% coverage.\n\nThe implementation follows the system prompt’s constraints by:\n- Using FastAPI’s OAuth2PasswordBearer for token handling\n- Implementing SOLID principles with dependency injection\n- Including comprehensive error handling\n- Generating pytest tests with 100% pass rate\n\nThe code is ready for integration with the existing user management system and includes documentation strings for all public methods.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-system-prompts#main-content",
+      "awesome-system-prompts#overview",
+      "awesome-system-prompts#setup",
+      "awesome-system-prompts#examples",
+      "awesome-system-prompts#tools",
+      "awesome-system-prompts#mcp",
+      "awesome-system-prompts#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome System Prompts is a curated directory of leaked system prompts and tool definitions from popular AI coding agents like Aider, Claude Code, Augment Code, Blackbox.AI, and Bolt. The repository documents how these agents operate internally, including their reasoning modes, code modification strategies, and tool integrations. Developers can study these prompts to understand agent capabilities, replicate behaviors in custom implementations, or optimize their own agentic workflows. The collection includes mode-specific prompts (Architect Mode, Ask Mode, Patch Mode) and tool definitions showing file editing, terminal interaction, web search, and task management capabilities. This resource is valuable for engineers building AI-assisted coding systems, integrating agents into development workflows, or creating specialized prompt templates.\nStudying how professional AI coding agents structure their system prompts and reasoning\nBuilding custom AI agents with proven prompt patterns from Aider, Claude Code, and Augment\nUnderstanding agent tool definitions and integrations for codebase analysis and modification\nReplicating agentic behavior for specific coding tasks like refactoring or code review",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/EliFuzz/awesome-system-prompts`",
+    "usage_vi": "```\nUse the following system prompt to automate [TASK] in [PROJECT_NAME] with [TOOL_NAME]. Replace placeholders as needed: \n\n```\nYou are an expert [PROGRAMMING_LANGUAGE] developer with deep knowledge of [FRAMEWORK/LIBRARY]. Your task is to [SPECIFIC_TASK] while following best practices for [CODE_QUALITY_STANDARD]. \n\nConstraints: \n- Use [SPECIFIC_LIBRARY/TOOL] for [REASON].\n- Follow [ARCHITECTURE_PATTERN] for [REASON].\n- Ensure [SECURITY/PERFORMANCE] requirements are met.\n- Generate tests using [TEST_FRAMEWORK].\n\nDeliverables: \n1. [DELIVERABLE_1] \n2. [DELIVERABLE_2] \n3. [DELIVERABLE_3] \n\nAdditional context: [PROJECT_CONTEXT]\n```\n\nNow implement this in the [FILE_PATH] file.\n```\nCopy\n\n```\nHere’s the implementation for the `user-authentication` module in the `e-commerce-platform` project using Python and FastAPI. The system prompt instructed the AI to create a JWT-based authentication system with role-based access control, following SOLID principles and using SQLAlchemy for database operations. The output includes three files:\n\n1. **auth_service.py** (120 lines):\n```python\nfrom fastapi import Depends, HTTPException, status\nfrom fastapi.security import OAuth2PasswordBearer\nfrom jose import JWTError, jwt\nfrom passlib.context import CryptContext\nfrom datetime import datetime, timedelta\nfrom typing import Optional\n\nSECRET_KEY = \"your-secret-key-here\"\nALGORITHM = \"HS256\"\nACCESS_TOKEN_EXPIRE_MINUTES = 30\n\npwd_context = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n\nclass AuthService:\n    def __init__(self, user_repository):\n        self.user_repository = user_repository\n\n    def verify_password(self, plain_password: str, hashed_password: str) -> bool:\n        return pwd_context.verify(plain_password, hashed_password)\n\n    def create_access_token(self, data: dict, expires_delta: Optional[timedelta] = None):\n        to_encode = data.copy()\n        if expires_delta:\n            expire = datetime.utcnow() + expires_delta\n        else:\n            expire = datetime.utcnow() + timedelta(minutes=15)\n        to_encode.update({\"exp\": expire})\n        encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)\n        return encoded_jwt\n\n    async def get_current_user(self, token: str = Depends(oauth2_scheme)):\n        credentials_exception = HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Could not validate credentials\",\n            headers={\"WWW-Authenticate\": \"Bearer\"},\n        )\n        try:\n            payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n            username: str = payload.get(\"sub\")\n            if username is None:\n                raise credentials_exception\n        except JWTError:\n            raise credentials_exception\n        user = self.user_repository.get_by_username(username)\n        if user is None:\n            raise credentials_exception\n        return user\n```\n\n2. **schemas.py** (45 lines):\nDefines Pydantic models for request/response validation, including `Token`, `UserInDB`, and `UserCreate`.\n\n3. **tests/test_auth.py** (80 lines):\nUnit tests covering token generation, password hashing, and role-based access validation. All tests pass with 98% coverage.\n\nThe implementation follows the system prompt’s constraints by:\n- Using FastAPI’s OAuth2PasswordBearer for token handling\n- Implementing SOLID principles with dependency injection\n- Including comprehensive error handling\n- Generating pytest tests with 100% pass rate\n\nThe code is ready for integration with the existing user management system and includes documentation strings for all public methods.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:57:13.311977Z",
+    "http_status": 200,
+    "content_hash": "8baa2b81defa416dee4fac3d3910f27d23b863be1e7771bef11d3cd9fb713e2a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-system-prompts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-system-prompts.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ai coding agent system prompts",
+  "short_description_vi": "A collection of system prompts and tool definitions from various AI coding agents. Enables developers to automate coding tasks, improve efficiency, and integrate with tools like Aider, Claude Code, and VSCode Agent."
+}

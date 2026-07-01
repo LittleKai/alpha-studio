@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clear-framework-prompt-engineering-mkufhxwb",
+  "slug": "clear-framework-prompt-engineering-mkufhxwb",
+  "name": "CLEAR Framework Prompt Engineering",
+  "headline": "CLEAR Framework Prompt Engineering: Effective AI",
+  "short_description": "This skill helps users design precise and effective prompts for AI tools by applying the CLEAR framework, which emphasizes clarity, logic, examples, adaptation, and results. It enables users to build strong AI-driven solutions by clearly defining business requirements and expected outcomes.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Terminal",
+  "estimated_time_saving": "45 min",
+  "author": "shyft-ai",
+  "install_command": "",
+  "source_repo_url": "",
+  "works_with": [
+    "Claude CodeCursorWindsurf"
+  ],
+  "tags": [
+    "automation",
+    "AI prompts",
+    "CLEAR framework",
+    "prompt engineering",
+    "business systems"
+  ],
+  "sections": {
+    "overview": "The CLEAR Framework Prompt Engineering skill is designed to assist users in crafting precise and effective prompts for AI tools by leveraging the CLEAR framework. This framework emphasizes five critical components: Clarity, Logic, Examples, Adaptation, and Results. By applying these principles, users can clearly define business requirements and expected outcomes, leading to the development of robust AI-driven solutions. This skill is particularly useful for those looking to enhance their AI automation capabilities and improve workflow automation processes. One of the key benefits of using the CLEAR Framework is the potential for significant time savings in the prompt design process. While specific time savings are not quantified, the skill allows users to streamline their prompt creation, enabling them to focus more on developing AI solutions rather than getting bogged down in the intricacies of prompt engineering. This efficiency is crucial for developers, product managers, and AI practitioners who need to deliver results quickly in a competitive environment. This skill is ideal for individuals involved in AI development, particularly those tasked with creating automated workflows or specific business solutions. Whether you are a developer looking to enhance your AI agent skills or a product manager aiming to implement effective AI automation strategies, the CLEAR Framework Prompt Engineering skill can help you achieve your goals. Practical use cases include crafting detailed AI prompts for business automation, designing prompts for creating automated workflows, and developing prompts for generating specific business solutions tailored to organizational needs. Implementation of the CLEAR Framework Prompt Engineering skill is categorized as intermediate, with an estimated time to implement of around 30 minutes. This makes it accessible for those with some prior experience in AI development. As organizations increasingly adopt AI-first workflows, mastering prompt engineering becomes essential. This skill not only enhances individual capabilities but also aligns with broader organizational goals of leveraging AI automation to drive efficiency and innovation.\nCrafting detailed AI prompts for business automation\nDesigning prompts for creating automated workflows\nDeveloping prompts for generating specific business solutions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.",
+    "usage": "```\nEnsure your AI prompt includes the following components:\n\n1. **Clarity**: Clearly define the problem with specific, measurable outcomes. For example, 'Create a one-page qualification SOP that identifies companies with 50+ employees in manufacturing that also expressed interest in automation within the last 90 days.'\n\n2. **Logic**: Break down the process into sequential steps with clear decision points. Include logical reasoning that the AI can follow.\n\n3. **Examples**: Provide scenarios or edge cases, detailing what should happen in each case. For instance, 'If a lead scores above 80 points, route to a senior sales rep; below 50, send to a nurture sequence.'\n\n4. **Adaptation**: Be prepared to iteratively refine the prompt based on AI feedback. Engage in a conversation with the AI to improve the initial output.\n\n5. **Results**: Define concrete metrics or criteria to validate the AI's outputs against business requirements, ensuring the solution meets expected results.\n```\nCopy\n\n```\nCreate an outline for an automated lead qualification system. It is for a B2B manufacturing consultancy. Incoming leads will come from LinkedIn ads and cold email. The lead qualification system should score them based on company size. If there are 50+ employees, it’s 30 points. If the industry is manufacturing, add 25 points. If the engagement level, like a downloaded white paper, is 20 points or booked a demo, it's 40 points. Leads scoring 80+ should automatically route to a senior sales rep with a Slack notification. Leads scoring 50 to 79 should get scheduled for an automated demo booking. And leads below 50 should enter a six-week nurturing sequence with industry-specific case studies. The system should integrate with HubSpot and track conversion rates at each stage.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf"
+    ],
+    "related_skills": [
+      "clear-framework-prompt-engineering-mkufhxwb#main-content",
+      "clear-framework-prompt-engineering-mkufhxwb#overview",
+      "clear-framework-prompt-engineering-mkufhxwb#setup",
+      "clear-framework-prompt-engineering-mkufhxwb#examples",
+      "clear-framework-prompt-engineering-mkufhxwb#tools",
+      "clear-framework-prompt-engineering-mkufhxwb#mcp",
+      "clear-framework-prompt-engineering-mkufhxwb#related",
+      "genkit-js",
+      "local-ai-agent-setup-mkug5lvf",
+      "building-ai-agents-with-pydantic-ai"
+    ],
+    "overview_vi": "Skill Prompt Engineering với Khung CLEAR được thiết kế để hỗ trợ người dùng xây dựng các prompt chính xác và hiệu quả cho các công cụ AI thông qua việc áp dụng khung CLEAR. Khung này nhấn mạnh vào năm thành phần cốt lõi: Clarity (Rõ ràng), Logic (Logic), Examples (Ví dụ), Adaptation (Thích ứng) và Results (Kết quả). Bằng cách áp dụng các nguyên tắc này, người dùng có thể xác định rõ ràng các yêu cầu kinh doanh và kết quả mong đợi, từ đó phát triển các giải pháp vận hành bằng AI mạnh mẽ. Skill này đặc biệt hữu ích cho những ai đang muốn nâng cao năng lực tự động hóa bằng AI và tối ưu hóa quy trình tự động hóa workflow. Một trong những lợi ích chính của việc sử dụng Khung CLEAR là khả năng tiết kiệm đáng kể thời gian trong quá trình thiết kế prompt. Dù thời gian tiết kiệm cụ thể chưa được định lượng, skill này giúp người dùng tinh giản hóa quy trình tạo prompt, giúp họ tập trung nhiều hơn vào việc phát triển giải pháp AI thay vì bị sa lầy vào những chi tiết phức tạp của prompt engineering. Sự hiệu quả này là yếu tố cốt lõi đối với các developer, product manager và kỹ sư AI - những người cần mang lại kết quả nhanh chóng trong một môi trường đầy cạnh tranh. Skill này là lựa chọn lý tưởng cho những ai tham gia vào việc phát triển AI, đặc biệt là những người được giao nhiệm vụ tạo ra các workflow tự động hoặc các giải pháp kinh doanh cụ thể. Dù bạn là một developer đang muốn nâng cao kỹ năng xây dựng AI agent hay một product manager đang hướng tới việc triển khai các chiến lược tự động hóa bằng AI hiệu quả, skill Prompt Engineering với Khung CLEAR đều có thể giúp bạn đạt được mục tiêu. Các trường hợp sử dụng thực tế bao gồm việc soạn thảo các prompt AI chi tiết cho tự động hóa doanh nghiệp, thiết kế prompt để tạo các workflow tự động, và phát triển prompt nhằm tạo ra các giải pháp kinh doanh cụ thể được tùy chỉnh theo nhu cầu của tổ chức. Việc triển khai skill Prompt Engineering với Khung CLEAR được xếp vào cấp độ trung cấp (intermediate), với thời gian triển khai ước tính khoảng 30 phút. Điều này giúp những người đã có một số kinh nghiệm nhất định về phát triển AI có thể dễ dàng tiếp cận. Khi các tổ chức ngày càng ứng dụng nhiều quy trình làm việc ưu tiên AI (AI-first workflows), việc làm chủ prompt engineering trở nên vô cùng thiết yếu. Skill này không chỉ nâng cao năng lực cá nhân mà còn đồng bộ với các mục tiêu rộng lớn hơn của tổ chức trong việc tận dụng tự động hóa bằng AI để thúc đẩy hiệu suất và sự đổi mới.\n\nXây dựng các prompt AI chi tiết cho tự động hóa doanh nghiệp\nThiết kế các prompt để tạo ra các workflow tự động\nPhát triển các prompt để tạo ra các giải pháp doanh nghiệp cụ thể",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.",
+    "usage_vi": "```\nHãy đảm bảo prompt AI của bạn bao gồm các thành phần sau:\n\n1. **Clarity (Rõ ràng)**: Xác định rõ ràng vấn đề với các kết quả cụ thể, có thể đo lường được. Ví dụ: 'Tạo một quy trình chuẩn (SOP) đánh giá năng lực dài một trang để xác định các công ty có trên 50 nhân viên trong ngành sản xuất, đồng thời đã bày tỏ sự quan tâm đến tự động hóa trong vòng 90 ngày qua.'\n\n2. **Logic (Logic)**: Chia nhỏ quy trình thành các bước tuần tự với các điểm quyết định rõ ràng. Bao gồm cả lập luận logic để AI có thể làm theo.\n\n3. **Examples (Ví dụ)**: Cung cấp các tình huống hoặc trường hợp biên (edge cases), chi tiết hóa những gì sẽ xảy ra trong từng trường hợp. Ví dụ: 'Nếu lead đạt trên 80 điểm, chuyển hướng đến đại diện bán hàng cấp cao (senior sales rep); nếu dưới 50 điểm, gửi vào chuỗi chăm sóc (nurture sequence).'\n\n4. **Adaptation (Thích ứng)**: Sẵn sàng tinh chỉnh prompt lặp đi lặp lại dựa trên phản hồi của AI. Hãy hội thoại với AI để cải thiện kết quả đầu ra ban đầu.\n\n5. **Results (Kết quả)**: Định nghĩa các chỉ số hoặc tiêu chí cụ thể để xác thực đầu ra của AI so với các yêu cầu kinh doanh, đảm bảo giải pháp đáp ứng các kết quả kỳ vọng.\n```\nCopy\n\n```\nHãy tạo một dàn ý cho hệ thống đánh giá chất lượng lead tự động (automated lead qualification system). Hệ thống này dành cho một công ty tư vấn sản xuất B2B. Các lead đầu vào sẽ đến từ quảng cáo LinkedIn và cold email. Hệ thống đánh giá lead nên tính điểm dựa trên quy mô công ty. Nếu có từ 50 nhân viên trở lên, cộng 30 điểm. Nếu thuộc ngành sản xuất, cộng 25 điểm. Nếu mức độ tương tác như tải white paper thì cộng 20 điểm, hoặc đã đặt lịch demo thì cộng 40 điểm. Các lead đạt từ 80 điểm trở lên sẽ tự động chuyển hướng đến một senior sales rep kèm theo thông báo trên Slack. Các lead từ 50 đến 79 điểm sẽ được tự động xếp lịch hẹn demo. Và các lead dưới 50 điểm sẽ được đưa vào chuỗi chăm sóc kéo dài sáu tuần với các case study đặc thù của ngành. Hệ thống cần tích hợp với HubSpot và theo dõi tỷ lệ chuyển đổi ở từng giai đoạn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:26:10.237857Z",
+    "http_status": 200,
+    "content_hash": "ba76bc1e74d7a6a0006cca7bd893384306f849c4006eef80cdcb0f495772ccf2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clear-framework-prompt-engineering-mkufhxwb.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clear-framework-prompt-engineering-mkufhxwb.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Prompt Engineering với Khung CLEAR: Tối ưu hóa Hiệu quả AI",
+  "short_description_vi": "Skill này hỗ trợ người dùng thiết kế các prompt chính xác và hiệu quả cho các công cụ AI bằng cách áp dụng khung CLEAR (tập trung vào tính rõ ràng, logic, ví dụ minh họa, sự thích ứng và kết quả). Qua đó, người dùng có thể xây dựng các giải pháp vận hành bằng AI mạnh mẽ nhờ xác định rõ ràng các yêu cầu kinh doanh và kết quả kỳ vọng."
+}

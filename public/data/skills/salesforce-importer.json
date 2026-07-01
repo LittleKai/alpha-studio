@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/salesforce-importer",
+  "slug": "salesforce-importer",
+  "name": "popsicle",
+  "headline": "Salesforce-Importer: Automate Data Uploads",
+  "short_description": "Data Import Automation is for anyone that is using the Salesforce Data Import Wizard or Data Loader on a regular basis to get the same set of external data uploaded to Salesforce.      If you have ever saved a field map file (sdl file) from Data Loader then automation is probably a good option.       Common tasks that are ideal for Data Import Automation are donation records coming from periodic financial reports, business cards/contacts from marketing events, external databases not integrated i",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "501Commons",
+  "install_command": "git clone https://github.com/501Commons/Salesforce-Importer.git",
+  "source_repo_url": "https://github.com/501Commons/Salesforce-Importer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "salesforce-data-loader"
+  ],
+  "sections": {
+    "overview": "Salesforce-Importer automates the repetitive task of uploading external data to Salesforce using the Data Loader. It eliminates manual data import wizard steps by automating field mapping and file processing on a scheduled or manual basis. The tool is ideal for organizations that regularly import donation records, event contacts, or data from non-integrated external databases. Setup involves configuring batch files to point to your data source directory and recipient email list, then running the importer manually or scheduling it with Windows Task Scheduler. The importer handles CSV generation, Excel authentication, and error notifications via email.\nAutomating periodic donation record imports from financial reports\nScheduling regular contact uploads from marketing event data\nImporting data from external databases not yet integrated with Salesforce\nRunning batch imports from shared storage locations like Dropbox or OneDrive",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/501Commons/Salesforce-Importer`",
+    "usage": "```\nI need to automate importing [DATA_TYPE] from [SOURCE_SYSTEM] into Salesforce using Data Import Automation. Here's the field mapping I've used before: [FIELD_MAPPING]. Can you generate a script to automate this process on a [FREQUENCY] basis?\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "salesforce-importer#main-content",
+      "salesforce-importer#overview",
+      "salesforce-importer#setup",
+      "salesforce-importer#examples",
+      "salesforce-importer#tools",
+      "salesforce-importer#mcp",
+      "salesforce-importer#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Salesforce-Importer automates the repetitive task of uploading external data to Salesforce using the Data Loader. It eliminates manual data import wizard steps by automating field mapping and file processing on a scheduled or manual basis. The tool is ideal for organizations that regularly import donation records, event contacts, or data from non-integrated external databases. Setup involves configuring batch files to point to your data source directory and recipient email list, then running the importer manually or scheduling it with Windows Task Scheduler. The importer handles CSV generation, Excel authentication, and error notifications via email.\nAutomating periodic donation record imports from financial reports\nScheduling regular contact uploads from marketing event data\nImporting data from external databases not yet integrated with Salesforce\nRunning batch imports from shared storage locations like Dropbox or OneDrive",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/501Commons/Salesforce-Importer`",
+    "usage_vi": "```\nI need to automate importing [DATA_TYPE] from [SOURCE_SYSTEM] into Salesforce using Data Import Automation. Here's the field mapping I've used before: [FIELD_MAPPING]. Can you generate a script to automate this process on a [FREQUENCY] basis?\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:51.946010Z",
+    "http_status": 200,
+    "content_hash": "a1297142cb4eae325295dd6188be4f9870126bd287c3497d4527b4143cb95b63",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\salesforce-importer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\salesforce-importer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Salesforce-Importer: Automate Data Uploads",
+  "short_description_vi": "Data Import Automation is for anyone that is using the Salesforce Data Import Wizard or Data Loader on a regular basis to get the same set of external data uploaded to Salesforce.      If you have ever saved a field map file (sdl file) from Data Loader then automation is probably a good option.       Common tasks that are ideal for Data Import Automation are donation records coming from periodic financial reports, business cards/contacts from marketing events, external databases not integrated i"
+}

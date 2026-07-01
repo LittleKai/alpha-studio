@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/voapi",
+  "slug": "voapi",
+  "name": "VoAPI",
+  "headline": "VoAPI: AI Model Integration",
+  "short_description": "VoAPI is an AI model API aggregation and distribution system. It enables developers to integrate multiple AI models into their applications. It supports Claude and other models, making it ideal for building AI-powered tools and services.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "VoAPI",
+  "install_command": "git clone https://github.com/VoAPI/VoAPI.git",
+  "source_repo_url": "https://github.com/VoAPI/VoAPI",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "chatgpt",
+    "openai",
+    "ai-agents",
+    "voapi",
+    "api-gateway",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "VoAPI is a next-generation intelligent AI large-model API aggregation and distribution system designed to streamline the integration of multiple AI models into a single application. This skill enables developers to create seamless user experiences by managing user access, permissions, and implementing custom rules for API data forwarding. With its high performance and scalability, VoAPI is tailored for those looking to enhance their AI automation capabilities in a cohesive manner. The key benefits of using VoAPI include significant time savings in deployment and management of AI models. By facilitating easy deployment with Docker, developers can rapidly iterate and deploy AI solutions, minimizing downtime and maximizing productivity. Although the exact time savings are not quantified, the streamlined processes and real-time monitoring of API usage and performance metrics contribute to more efficient resource management, allowing teams to focus on innovation rather than maintenance. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their workflow automation capabilities. It is suitable for teams that require robust management of AI services and want to implement custom solutions that adapt to user input. Use cases include integrating diverse AI models for a unified application experience, managing team access to various AI services, and monitoring performance metrics to optimize resource allocation. With an intermediate implementation difficulty, VoAPI can be set up in approximately 30 minutes, making it accessible for teams with some experience in AI automation. By incorporating VoAPI into AI-first workflows, organizations can leverage its capabilities to create more responsive and intelligent applications, ultimately driving better user engagement and satisfaction.\nIntegrate multiple AI models into a single application for seamless user experiences.\nManage user access and permissions for different AI services within a team.\nImplement custom rules for API data forwarding to tailor responses based on user input.\nMonitor API usage and performance metrics in real-time for better resource management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VoAPI/VoAPI`",
+    "usage": "```\nDesign a VoAPI integration for [APPLICATION_NAME] that dynamically routes user requests to the most suitable AI model based on [REQUEST_TYPE] and [PERFORMANCE_METRICS]. Include fallback logic for model failures and a caching strategy for frequent queries. Output the configuration in JSON format with explanations for each routing decision.\n```\nCopy\n\n```\n```json\n{\n  \"application_name\": \"Customer Support Bot\",\n  \"routing_strategy\": {\n    \"request_type\": \"technical_support\",\n    \"primary_model\": \"claude-3-opus\",\n    \"fallback_models\": [\"gpt-4-turbo\", \"llama-3-70b\"],\n    \"performance_metrics\": {\n      \"latency_threshold\": \"2000ms\",\n      \"accuracy_threshold\": \"0.85\",\n      \"cost_per_request\": \"$0.002\"\n    },\n    \"caching\": {\n      \"enabled\": true,\n      \"ttl\": \"3600\",\n      \"cache_key_format\": \"{user_id}_{request_hash}\"\n    },\n    \"routing_logic\": {\n      \"claude-3-opus\": {\n        \"use_case\": \"complex technical troubleshooting\",\n        \"max_tokens\": 4000,\n        \"temperature\": 0.3,\n        \"priority\": 1\n      },\n      \"gpt-4-turbo\": {\n        \"use_case\": \"general technical queries\",\n        \"max_tokens\": 2000,\n        \"temperature\": 0.7,\n        \"priority\": 2\n      },\n      \"llama-3-70b\": {\n        \"use_case\": \"cost-sensitive requests\",\n        \"max_tokens\": 1500,\n        \"temperature\": 0.5,\n        \"priority\": 3\n      }\n    }\n  },\n  \"fallback_handling\": {\n    \"retry_attempts\": 2,\n    \"retry_delay_ms\": 500,\n    \"escalation_path\": \"human_support@company.com\"\n  },\n  \"monitoring\": {\n    \"metrics_to_track\": [\"model_success_rate\", \"latency_ms\", \"cost_per_query\"],\n    \"alert_thresholds\": {\n      \"success_rate\": \"0.9\",\n      \"latency\": \"3000\"\n    }\n  }\n}\n```\n\n**Explanation:**\nThis VoAPI configuration routes technical support requests to the most suitable model based on complexity and cost. The primary model (claude-3-opus) handles complex issues with high accuracy requirements, while gpt-4-turbo serves as the first fallback for simpler queries. Llama-3-70b is reserved for cost-sensitive requests where latency and token limits are less critical. The caching strategy stores responses for identical queries for 1 hour to reduce redundant API calls. If all models fail to respond within 2 seconds, the system automatically escalates to human support. Monitoring tracks success rates, latency, and costs to optimize routing decisions over time.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "voapi#main-content",
+      "voapi#overview",
+      "voapi#setup",
+      "voapi#examples",
+      "voapi#tools",
+      "voapi#mcp",
+      "voapi#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "VoAPI is a next-generation intelligent AI large-model API aggregation and distribution system designed to streamline the integration of multiple AI models into a single application. This skill enables developers to create seamless user experiences by managing user access, permissions, and implementing custom rules for API data forwarding. With its high performance and scalability, VoAPI is tailored for those looking to enhance their AI automation capabilities in a cohesive manner. The key benefits of using VoAPI include significant time savings in deployment and management of AI models. By facilitating easy deployment with Docker, developers can rapidly iterate and deploy AI solutions, minimizing downtime and maximizing productivity. Although the exact time savings are not quantified, the streamlined processes and real-time monitoring of API usage and performance metrics contribute to more efficient resource management, allowing teams to focus on innovation rather than maintenance. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their workflow automation capabilities. It is suitable for teams that require robust management of AI services and want to implement custom solutions that adapt to user input. Use cases include integrating diverse AI models for a unified application experience, managing team access to various AI services, and monitoring performance metrics to optimize resource allocation. With an intermediate implementation difficulty, VoAPI can be set up in approximately 30 minutes, making it accessible for teams with some experience in AI automation. By incorporating VoAPI into AI-first workflows, organizations can leverage its capabilities to create more responsive and intelligent applications, ultimately driving better user engagement and satisfaction.\nIntegrate multiple AI models into a single application for seamless user experiences.\nManage user access and permissions for different AI services within a team.\nImplement custom rules for API data forwarding to tailor responses based on user input.\nMonitor API usage and performance metrics in real-time for better resource management.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VoAPI/VoAPI`",
+    "usage_vi": "```\nDesign a VoAPI integration for [APPLICATION_NAME] that dynamically routes user requests to the most suitable AI model based on [REQUEST_TYPE] and [PERFORMANCE_METRICS]. Include fallback logic for model failures and a caching strategy for frequent queries. Output the configuration in JSON format with explanations for each routing decision.\n```\nCopy\n\n```\n```json\n{\n  \"application_name\": \"Customer Support Bot\",\n  \"routing_strategy\": {\n    \"request_type\": \"technical_support\",\n    \"primary_model\": \"claude-3-opus\",\n    \"fallback_models\": [\"gpt-4-turbo\", \"llama-3-70b\"],\n    \"performance_metrics\": {\n      \"latency_threshold\": \"2000ms\",\n      \"accuracy_threshold\": \"0.85\",\n      \"cost_per_request\": \"$0.002\"\n    },\n    \"caching\": {\n      \"enabled\": true,\n      \"ttl\": \"3600\",\n      \"cache_key_format\": \"{user_id}_{request_hash}\"\n    },\n    \"routing_logic\": {\n      \"claude-3-opus\": {\n        \"use_case\": \"complex technical troubleshooting\",\n        \"max_tokens\": 4000,\n        \"temperature\": 0.3,\n        \"priority\": 1\n      },\n      \"gpt-4-turbo\": {\n        \"use_case\": \"general technical queries\",\n        \"max_tokens\": 2000,\n        \"temperature\": 0.7,\n        \"priority\": 2\n      },\n      \"llama-3-70b\": {\n        \"use_case\": \"cost-sensitive requests\",\n        \"max_tokens\": 1500,\n        \"temperature\": 0.5,\n        \"priority\": 3\n      }\n    }\n  },\n  \"fallback_handling\": {\n    \"retry_attempts\": 2,\n    \"retry_delay_ms\": 500,\n    \"escalation_path\": \"human_support@company.com\"\n  },\n  \"monitoring\": {\n    \"metrics_to_track\": [\"model_success_rate\", \"latency_ms\", \"cost_per_query\"],\n    \"alert_thresholds\": {\n      \"success_rate\": \"0.9\",\n      \"latency\": \"3000\"\n    }\n  }\n}\n```\n\n**Explanation:**\nThis VoAPI configuration routes technical support requests to the most suitable model based on complexity and cost. The primary model (claude-3-opus) handles complex issues with high accuracy requirements, while gpt-4-turbo serves as the first fallback for simpler queries. Llama-3-70b is reserved for cost-sensitive requests where latency and token limits are less critical. The caching strategy stores responses for identical queries for 1 hour to reduce redundant API calls. If all models fail to respond within 2 seconds, the system automatically escalates to human support. Monitoring tracks success rates, latency, and costs to optimize routing decisions over time.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:40:09.497122Z",
+    "http_status": 200,
+    "content_hash": "8b9cea133729bf060255a9fcfcd3e81be3f6c1c4191fe39e5fa56a015d5d0882",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\voapi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\voapi.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VoAPI: AI Model Integration",
+  "short_description_vi": "VoAPI is an AI model API aggregation and distribution system. It enables developers to integrate multiple AI models into their applications. It supports Claude and other models, making it ideal for building AI-powered tools and services."
+}

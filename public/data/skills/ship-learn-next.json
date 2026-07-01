@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ship-learn-next",
+  "slug": "ship-learn-next",
+  "name": "Ship Learn Next",
+  "headline": "ship-learn-next: ML Deployment",
+  "short_description": "The ship-learn-next skill automates the process of deploying machine learning models, enabling integration into workflows. It streamlines the deployment pipeline, saving developers time and reducing errors.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "softaworks",
+  "install_command": "git clone https://github.com/softaworks/agent-toolkit.git",
+  "source_repo_url": "https://github.com/softaworks/agent-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The ship-learn-next Claude Code skill is designed to simplify the deployment of machine learning models into production environments. By automating the deployment pipeline, this skill allows developers to focus on building and refining their models rather than getting bogged down in the complexities of deployment processes. It integrates seamlessly with existing workflows, ensuring that machine learning applications can be delivered faster and more reliably. One of the key benefits of using ship-learn-next is the significant time savings it offers. By automating repetitive tasks associated with model deployment, developers can reduce the time spent on manual configurations and troubleshooting. This efficiency not only accelerates the delivery of AI solutions but also minimizes the risk of human error, leading to more stable and reliable applications. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their workflow automation capabilities. It is ideal for teams that deploy machine learning models frequently and need a reliable solution to streamline their processes. Practical use cases include deploying predictive analytics models for e-commerce platforms, automating the rollout of customer segmentation models, and integrating AI-driven recommendations into web applications. Implementation of the ship-learn-next skill is straightforward, making it accessible even for those with moderate technical expertise. It fits perfectly into AI-first workflows, allowing organizations to adopt a more agile approach to machine learning deployment. By leveraging this skill, teams can ensure that their AI initiatives are not only innovative but also efficient and scalable.\nDeploy predictive analytics models for e-commerce platforms\nAutomate rollout of customer segmentation models\nIntegrate AI-driven recommendations into web applications\nStreamline deployment of fraud detection algorithms",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage": "```\nDeploy the [MODEL_NAME] model to the [ENVIRONMENT] environment. Ensure it's integrated with [SPECIFIC_SYSTEM] for real-time predictions. Validate the deployment by running [TEST_CASES] and provide a summary of the results.\n```\nCopy\n\n```\nThe [MODEL_NAME] model has been successfully deployed to the [ENVIRONMENT] environment. It is now integrated with [SPECIFIC_SYSTEM] for real-time predictions. The deployment process involved the following steps: 1. Packaging the model using Docker, 2. Pushing the container to the specified registry, 3. Deploying the container to the target environment, and 4. Configuring the necessary endpoints for prediction requests. The deployment was validated by running [TEST_CASES], and the results indicate that the model is performing as expected with an accuracy of 95%. The model is now ready for use in the production environment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ship-learn-next#main-content",
+      "ship-learn-next#overview",
+      "ship-learn-next#setup",
+      "ship-learn-next#examples",
+      "ship-learn-next#tools",
+      "ship-learn-next#mcp",
+      "ship-learn-next#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Claude Code ship-learn-next được thiết kế để đơn giản hóa việc triển khai các mô hình machine learning vào môi trường production. Bằng cách tự động hóa pipeline triển khai, skill này giúp các nhà phát triển tập trung vào việc xây dựng và tinh chỉnh mô hình thay vì bị sa lầy vào những phức tạp của quy trình vận hành. Nó tích hợp liền mạch với các workflow hiện tại, đảm bảo các ứng dụng machine learning có thể được bàn giao nhanh hơn và đáng tin cậy hơn. Một trong những lợi ích chính khi sử dụng ship-learn-next là khả năng tiết kiệm thời gian đáng kể. Nhờ tự động hóa các tác vụ lặp đi lặp lại liên quan đến việc triển khai mô hình, lập trình viên có thể giảm bớt thời gian dành cho việc cấu hình thủ công và troubleshooting. Sự hiệu quả này không chỉ đẩy nhanh tiến độ bàn giao các giải pháp AI mà còn giảm thiểu rủi ro do lỗi con người, mang lại các ứng dụng hoạt động ổn định và tin cậy hơn. Skill này đặc biệt hữu ích cho các nhà phát triển, product manager và chuyên gia AI đang muốn nâng cao khả năng tự động hóa workflow. Đây là giải pháp lý tưởng cho các đội ngũ thường xuyên triển khai mô hình machine learning và cần một công cụ đáng tin cậy để tối ưu hóa quy trình. Các case thực tế bao gồm triển khai mô hình phân tích dự đoán cho nền tảng thương mại điện tử, tự động hóa việc rollout mô hình phân khúc khách hàng và tích hợp hệ thống gợi ý bằng AI vào ứng dụng web. Việc thiết lập skill ship-learn-next rất đơn giản, giúp những người có chuyên môn kỹ thuật ở mức trung bình cũng có thể dễ dàng tiếp cận. Nó hoàn toàn tương thích với các workflow ưu tiên AI (AI-first workflows), cho phép các tổ chức áp dụng phương pháp tiếp cận linh hoạt (agile) hơn trong việc triển khai machine learning. Bằng cách tận dụng skill này, các đội ngũ có thể đảm bảo các sáng kiến AI của mình không chỉ sáng tạo mà còn hiệu quả và có khả năng mở rộng.\nTriển khai các mô hình phân tích dự đoán cho nền tảng thương mại điện tử\nTự động hóa việc rollout mô hình phân khúc khách hàng\nTích hợp hệ thống gợi ý dựa trên AI vào ứng dụng web\nTối ưu hóa quy trình triển khai thuật toán phát hiện gian lận",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage_vi": "```\nTriển khai mô hình [MODEL_NAME] vào môi trường [ENVIRONMENT]. Đảm bảo tích hợp với [SPECIFIC_SYSTEM] để thực hiện dự đoán theo thời gian thực (real-time). Xác thực triển khai bằng cách chạy [TEST_CASES] và cung cấp báo cáo tóm tắt kết quả.\n```\nSao chép\n\n```\nMô hình [MODEL_NAME] đã được triển khai thành công vào môi trường [ENVIRONMENT]. Mô hình hiện đã được tích hợp với [SPECIFIC_SYSTEM] để thực hiện dự đoán real-time. Quy trình triển khai bao gồm các bước sau: 1. Đóng gói mô hình bằng Docker, 2. Push container lên registry được chỉ định, 3. Triển khai container vào môi trường đích, và 4. Cấu hình các endpoint cần thiết cho các request dự đoán. Quá trình triển khai đã được xác thực bằng cách chạy [TEST_CASES], và kết quả cho thấy mô hình hoạt động đúng kỳ vọng với độ chính xác 95%. Mô hình hiện đã sẵn sàng để đưa vào sử dụng trong môi trường production.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:40.615349Z",
+    "http_status": 200,
+    "content_hash": "edeb3557ac6400b25d80a0a0547bc2b797420f644283f2e53792b9ee5d57c9c3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ship-learn-next.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ship-learn-next.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ship-learn-next: Triển khai ML",
+  "short_description_vi": "Skill ship-learn-next tự động hóa quy trình triển khai các mô hình machine learning, cho phép tích hợp dễ dàng vào các workflow. Công cụ này tối ưu hóa pipeline triển khai, giúp nhà phát triển tiết kiệm thời gian và giảm thiểu sai sót."
+}

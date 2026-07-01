@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/anyproxyai",
+  "slug": "anyproxyai",
+  "name": "anyproxyai",
+  "headline": "anyproxyai: manage multiple ai apis easily",
+  "short_description": "AnyProxyAi - Universal AI API Gateway GUI | 通用 AI API 网关 GUI - Route, convert and manage multiple AI provider APIs (OpenAI, Claude, Gemini) through a single unified interface. 通过本地统一接口路由、转换和管理多个 AI 服务商 API相互转换。Built with Wails + Vue 3.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "cniu6",
+  "install_command": "git clone https://github.com/cniu6/anyproxyai.git",
+  "source_repo_url": "https://github.com/cniu6/anyproxyai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "api-router",
+    "proxy-server",
+    "anthropic",
+    "openai",
+    "vue3",
+    "wails",
+    "golang",
+    "claude",
+    "gemini",
+    "openai-api",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "AnyProxyAi is a cross-platform desktop application that unifies access to multiple AI provider APIs through a single local endpoint. It automatically converts between OpenAI, Claude (Anthropic), Gemini, Claude Code, and Cursor IDE formats, eliminating the need to rewrite code for different AI services. The tool features intelligent request routing across multiple API backends, real-time usage statistics with token monitoring, and a visual dashboard showing request performance and model rankings. Users configure routes by adding API keys and endpoints once, then point their applications to the local proxy at http://localhost:5642. Built with Go and Wails, it runs natively on Windows, macOS, and Linux without dependencies.\nRoute Claude Code and Cursor IDE requests to OpenAI or Anthropic backends\nConsolidate multiple AI API subscriptions into one unified interface\nMonitor token usage and API costs across different providers in real-time\nLoad balance requests across multiple API keys or endpoints automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cniu6/anyproxyai`",
+    "usage": "```\nUse AnyProxyAi to route a request from [SOURCE_PROVIDER] (e.g., OpenAI) to [TARGET_PROVIDER] (e.g., Claude) while converting the payload format. The request should include: [REQUEST_BODY]. Ensure the output is formatted for [TARGET_PROVIDER]'s API specifications. Log the conversion process and return the response from [TARGET_PROVIDER] in a structured format.\n```\nCopy\n\n```\n### Request Conversion & Routing Report\n**Source Provider:** OpenAI (gpt-4-1106-preview)\n**Target Provider:** Claude (claude-3-opus-20240229)\n**Request ID:** proxy_20240515_142233\n\n#### Original OpenAI Payload:\n```json\n{\n  \"model\": \"gpt-4-1106-preview\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Explain quantum computing in simple terms.\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"temperature\": 0.7\n}\n```\n\n#### Converted Payload for Claude:\n```json\n{\n  \"model\": \"claude-3-opus-20240229\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Explain quantum computing in simple terms.\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"temperature\": 0.7,\n  \"system\": \"You are a helpful assistant.\"\n}\n```\n\n#### Routing Log:\n- **Step 1:** Payload extracted from OpenAI request.\n- **Step 2:** Converted `model` and `system` fields to match Claude's API.\n- **Step 3:** Sent to Claude API via AnyProxyAi gateway.\n\n#### Response from Claude:\n```json\n{\n  \"id\": \"msg_20240515_142234\",\n  \"type\": \"message\",\n  \"role\": \"assistant\",\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Quantum computing leverages the principles of quantum mechanics to process information in ways that classical computers cannot. Imagine bits as tiny switches that can be either 0 or 1. Quantum bits (qubits) can exist in multiple states at once, thanks to a property called superposition. This allows quantum computers to perform complex calculations much faster for certain problems, like cryptography or simulating molecules. However, they're not better for all tasks—classical computers still excel at everyday computing.\"\n    }\n  ],\n  \"model\": \"claude-3-opus-20240229\",\n  \"stop_reason\": \"end_turn\",\n  \"usage\": {\n    \"input_tokens\": 25,\n    \"output_tokens\": 120\n  }\n}\n```\n\n#### Conversion Summary:\n- **Input Tokens:** 25\n- **Output Tokens:** 120\n- **Total Cost (Approx):** $0.004 (Claude pricing)\n- **Latency:** 1.2s (including conversion overhead)\n\n**Note:** AnyProxyAi automatically handled the API key injection and response parsing for the target provider.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "anyproxyai#main-content",
+      "anyproxyai#overview",
+      "anyproxyai#setup",
+      "anyproxyai#examples",
+      "anyproxyai#tools",
+      "anyproxyai#mcp",
+      "anyproxyai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AnyProxyAi là một ứng dụng desktop đa nền tảng giúp hợp nhất quyền truy cập vào API của nhiều nhà cung cấp AI thông qua một local endpoint duy nhất. Ứng dụng tự động chuyển đổi giữa các định dạng của OpenAI, Claude (Anthropic), Gemini, Claude Code và Cursor IDE, giúp loại bỏ việc phải viết lại mã nguồn cho các dịch vụ AI khác nhau. Công cụ này tích hợp tính năng định tuyến request thông minh trên nhiều API backend, thống kê mức độ sử dụng theo thời gian thực với chức năng giám sát token, cùng một dashboard trực quan hiển thị hiệu suất request và bảng xếp hạng mô hình. Người dùng chỉ cần cấu hình route bằng cách thêm API key và endpoint một lần duy nhất, sau đó trỏ ứng dụng của mình đến local proxy tại http://localhost:5642. Được xây dựng bằng Go và Wails, ứng dụng chạy native trên Windows, macOS và Linux mà không cần cài đặt thêm dependency nào khác.\n\nĐịnh tuyến các request từ Claude Code và Cursor IDE đến các backend OpenAI hoặc Anthropic\nHợp nhất nhiều gói đăng ký AI API vào một giao diện duy nhất\nGiám sát lượng token tiêu thụ và chi phí API theo thời gian thực giữa các nhà cung cấp khác nhau\nTự động cân bằng tải request trên nhiều API key hoặc endpoint khác nhau",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cniu6/anyproxyai`",
+    "usage_vi": "```\nSử dụng AnyProxyAi để định tuyến request từ [SOURCE_PROVIDER] (ví dụ: OpenAI) đến [TARGET_PROVIDER] (ví dụ: Claude) đồng thời chuyển đổi định dạng payload. Request cần bao gồm: [REQUEST_BODY]. Đảm bảo dữ liệu đầu ra được định dạng theo đặc tả API của [TARGET_PROVIDER]. Ghi log quá trình chuyển đổi và trả về phản hồi từ [TARGET_PROVIDER] dưới dạng cấu trúc.\n```\nCopy\n\n```\n### Báo cáo Định tuyến & Chuyển đổi Request\n**Nhà cung cấp nguồn:** OpenAI (gpt-4-1106-preview)\n**Nhà cung cấp đích:** Claude (claude-3-opus-20240229)\n**Request ID:** proxy_20240515_142233\n\n#### Payload OpenAI gốc:\n```json\n{\n  \"model\": \"gpt-4-1106-preview\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Explain quantum computing in simple terms.\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"temperature\": 0.7\n}\n```\n\n#### Payload đã chuyển đổi cho Claude:\n```json\n{\n  \"model\": \"claude-3-opus-20240229\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Explain quantum computing in simple terms.\"\n    }\n  ],\n  \"max_tokens\": 150,\n  \"temperature\": 0.7,\n  \"system\": \"You are a helpful assistant.\"\n}\n```\n\n#### Log định tuyến (Routing Log):\n- **Bước 1:** Trích xuất payload từ request OpenAI.\n- **Bước 2:** Chuyển đổi các trường `model` và `system` để khớp với API của Claude.\n- **Bước 3:** Gửi đến API Claude thông qua gateway AnyProxyAi.\n\n#### Phản hồi từ Claude:\n```json\n{\n  \"id\": \"msg_20240515_142234\",\n  \"type\": \"message\",\n  \"role\": \"assistant\",\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Máy tính lượng tử tận dụng các nguyên lý của cơ học lượng tử để xử lý thông tin theo những cách mà máy tính cổ điển không thể làm được. Hãy tưởng tượng các bit như những công tắc nhỏ chỉ có thể là 0 hoặc 1. Các bit lượng tử (qubits) có thể tồn tại ở nhiều trạng thái cùng một lúc, nhờ vào một đặc tính gọi là chồng chất (superposition). Điều này cho phép máy tính lượng tử thực hiện các phép tính phức tạp nhanh hơn nhiều đối với một số bài toán nhất định, như mật mã học hoặc mô phỏng phân tử. Tuy nhiên, chúng không tốt hơn cho mọi tác vụ—máy tính cổ điển vẫn vượt trội ở các tác vụ tính toán hàng ngày.\"\n    }\n  ],\n  \"model\": \"claude-3-opus-20240229\",\n  \"stop_reason\": \"end_turn\",\n  \"usage\": {\n    \"input_tokens\": 25,\n    \"output_tokens\": 120\n  }\n}\n```\n\n#### Tóm tắt chuyển đổi:\n- **Input Tokens:** 25\n- **Output Tokens:** 120\n- **Tổng chi phí (Ước tính):** $0.004 (giá của Claude)\n- **Độ trễ:** 1.2 giây (bao gồm cả thời gian xử lý chuyển đổi)\n\n**Lưu ý:** AnyProxyAi tự động xử lý việc chèn (inject) API key và phân tích cú pháp (parse) phản hồi từ nhà cung cấp đích.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:54:20.470514Z",
+    "http_status": 200,
+    "content_hash": "a97ac33e0d6566ee71bacdae699b9ca2a617181fd6ed9fef985c91b54105867e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\anyproxyai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\anyproxyai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "anyproxyai: quản lý nhiều AI API dễ dàng",
+  "short_description_vi": "AnyProxyAi - GUI AI API Gateway toàn diện | Định tuyến, chuyển đổi và quản lý API từ nhiều nhà cung cấp AI (OpenAI, Claude, Gemini) thông qua một giao diện hợp nhất duy nhất. Phát triển bằng Wails + Vue 3."
+}

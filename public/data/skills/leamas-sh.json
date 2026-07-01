@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/leamas-sh",
+  "slug": "leamas-sh",
+  "name": "browser-use",
+  "headline": "Leamas.sh - Claude AI Package Manager",
+  "short_description": "Leamas.sh is a package manager for Claude AI, enabling operations teams to install AI agents and commands via CLI. It streamlines workflow automation, integrates with shell environments, and supports Claude agents for task automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "leamas-ai",
+  "install_command": "git clone https://github.com/leamas-ai/leamas.sh.git",
+  "source_repo_url": "https://github.com/leamas-ai/leamas.sh",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-commands",
+    "claudecode-subagents",
+    "claude",
+    "claude-agents",
+    "claudecode"
+  ],
+  "sections": {
+    "overview": "Leamas.sh is a CLI package manager designed to simplify installing Claude AI agents and command kits. It eliminates manual file management by downloading and placing agents in the correct directories automatically, supporting both local project-specific and global installations. The tool works with agent kits (domain-specific AI expertise) and command kits (workflow automation), caching downloads for faster reinstalls and requiring only bash and curl with no external dependencies. Users can browse available kits, install them locally or globally using simple commands, and contribute their own kits to the community. Leamas integrates directly with Claude's directory structure, making agents and commands immediately available for use in projects.\nInstall specialized AI agent kits for web development, DevOps, or data science across projects\nSet up global agents for common tasks available across all projects\nChain multiple agents together using command kits for multi-step automation\nShare custom agents and commands with teams by contributing kits to the repository",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/leamas-ai/leamas.sh`\n```bash\ncurl -fsSL https://leamas.sh/install.sh | sh\n```\n\n```bash\nleamas list agents\n```",
+    "usage": "```\nInstall leamas.sh and set up a custom AI agent for [COMPANY] in the [INDUSTRY] sector. The agent should automate [SPECIFIC TASK], using [DATA] from [SOURCE]. Provide step-by-step instructions and any necessary configuration details.\n```\nCopy\n\n```\n# AI Agent Setup for [COMPANY] in the [INDUSTRY] Sector",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "leamas-sh#main-content",
+      "leamas-sh#overview",
+      "leamas-sh#setup",
+      "leamas-sh#examples",
+      "leamas-sh#tools",
+      "leamas-sh#mcp",
+      "leamas-sh#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Leamas.sh is a CLI package manager designed to simplify installing Claude AI agents and command kits. It eliminates manual file management by downloading and placing agents in the correct directories automatically, supporting both local project-specific and global installations. The tool works with agent kits (domain-specific AI expertise) and command kits (workflow automation), caching downloads for faster reinstalls and requiring only bash and curl with no external dependencies. Users can browse available kits, install them locally or globally using simple commands, and contribute their own kits to the community. Leamas integrates directly with Claude's directory structure, making agents and commands immediately available for use in projects.\nInstall specialized AI agent kits for web development, DevOps, or data science across projects\nSet up global agents for common tasks available across all projects\nChain multiple agents together using command kits for multi-step automation\nShare custom agents and commands with teams by contributing kits to the repository",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/leamas-ai/leamas.sh`\n```bash\ncurl -fsSL https://leamas.sh/install.sh | sh\n```\n\n```bash\nleamas list agents\n```",
+    "usage_vi": "```\nInstall leamas.sh and set up a custom AI agent for [COMPANY] in the [INDUSTRY] sector. The agent should automate [SPECIFIC TASK], using [DATA] from [SOURCE]. Provide step-by-step instructions and any necessary configuration details.\n```\nCopy\n\n```\n# AI Agent Setup for [COMPANY] in the [INDUSTRY] Sector"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:37:09.155433Z",
+    "http_status": 200,
+    "content_hash": "d5b0cc6f6cb5a94bd1de9a3e26c9ea205a225c1a12e4da388374114f9f563a9e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\leamas-sh.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\leamas-sh.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Leamas.sh - Claude AI Package Manager",
+  "short_description_vi": "Leamas.sh is a package manager for Claude AI, enabling operations teams to install AI agents and commands via CLI. It streamlines workflow automation, integrates with shell environments, and supports Claude agents for task automation."
+}

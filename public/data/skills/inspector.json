@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/inspector",
+  "slug": "inspector",
+  "name": "inspector",
+  "headline": "Inspector: Visual Testing Tool for MCP Servers",
+  "short_description": "Inspector is a powerful visual testing tool designed specifically for MCP servers, enabling developers to ensure the quality and performance of their applications. With its strong features, it streamlines the testing process, making it essential for teams focused on delivering flawless user experiences.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/inspector",
+  "source_repo_url": "https://github.com/modelcontextprotocol/inspector",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "automation",
+    "MCP servers",
+    "quality assurance",
+    "TypeScript",
+    "visual testing"
+  ],
+  "sections": {
+    "overview": "Inspector is a dedicated testing tool designed for MCP (Model Context Protocol) servers, allowing developers to inspect and validate server behavior and performance. It provides a visual interface for examining MCP server interactions, helping teams identify issues and verify correct server implementation. Inspector integrates with the MCP ecosystem to streamline the testing workflow for developers building and maintaining MCP-based applications. By offering visibility into server operations and responses, it supports quality assurance processes for AI agent integrations and MCP server deployments.\nAutomating visual regression tests for web applications to catch UI discrepancies early.\nEnsuring UI consistency across different browser versions to maintain a uniform user experience.\nIntegrating visual tests into CI/CD pipelines for continuous quality assurance.\nIdentifying visual bugs before production deployment to prevent user-facing issues.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/inspector`\n`git clone https://github.com/modelcontextprotocol/inspector`",
+    "usage": "```\nUse Inspector to analyze the performance of the [APPLICATION_NAME] on MCP servers. Identify the top 3 performance bottlenecks based on [CRITERIA] such as response time, memory usage, or CPU load. For each bottleneck, suggest specific optimizations and estimate the potential performance improvement.\n```\nCopy\n\n```\nAfter running Inspector on the 'E-Commerce Platform' application, the following performance bottlenecks were identified:\n\n1. **Database Query Optimization**: The product search query is taking an average of 1.2 seconds to execute, which is causing delays in page loading. Optimizing the query by adding appropriate indexes and refining the search algorithm could reduce this time by up to 40%.\n\n2. **Image Loading**: The application loads high-resolution product images without lazy loading, resulting in a 1.5-second delay in initial page rendering. Implementing lazy loading and compressing images could improve the initial load time by 30%.\n\n3. **API Response Time**: The checkout API is experiencing high latency due to unnecessary data processing. Streamlining the API response by reducing redundant data processing could enhance the response time by 25%.\n\nBy addressing these bottlenecks, the overall performance of the 'E-Commerce Platform' can be significantly improved, leading to a better user experience and increased customer satisfaction.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "inspector#main-content",
+      "inspector#overview",
+      "inspector#setup",
+      "inspector#examples",
+      "inspector#tools",
+      "inspector#mcp",
+      "inspector#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Inspector là công cụ kiểm thử chuyên dụng dành cho các MCP (Model Context Protocol) server, cho phép lập trình viên kiểm tra và xác thực hành vi cũng như hiệu năng của server. Công cụ cung cấp giao diện trực quan để xem xét các tương tác của MCP server, giúp đội ngũ phát triển phát hiện lỗi và xác minh việc triển khai server chính xác. Inspector tích hợp với hệ sinh thái MCP để tối ưu hóa quy trình kiểm thử cho các lập trình viên xây dựng và duy trì các ứng dụng dựa trên MCP. Bằng cách cung cấp khả năng giám sát trực quan các hoạt động và phản hồi của server, Inspector hỗ trợ đắc lực cho quá trình đảm bảo chất lượng (QA) khi tích hợp AI agent và triển khai MCP server.\nTự động hóa các bài test visual regression cho ứng dụng web để sớm phát hiện các điểm sai lệch UI.\nĐảm bảo tính nhất quán của UI trên nhiều phiên bản trình duyệt khác nhau để duy trì trải nghiệm người dùng đồng bộ.\nTích hợp visual test vào các pipeline CI/CD để liên tục đảm bảo chất lượng.\nPhát hiện các visual bug trước khi deploy production nhằm tránh các lỗi hiển thị tới người dùng.",
+    "setup_vi": "Terminal\nSao chép\n`claude install modelcontextprotocol/inspector`\n`git clone https://github.com/modelcontextprotocol/inspector`",
+    "usage_vi": "```\nSử dụng Inspector để phân tích hiệu năng của [APPLICATION_NAME] trên các MCP server. Hãy xác định 3 bottleneck hiệu năng lớn nhất dựa trên các [CRITERIA] như response time, memory usage, hoặc CPU load. Với mỗi bottleneck, hãy đề xuất phương án tối ưu hóa cụ thể và ước tính mức độ cải thiện hiệu năng có thể đạt được.\n```\nSao chép\n\n```\nSau khi chạy Inspector trên ứng dụng 'E-Commerce Platform', các bottleneck hiệu năng sau đã được phát hiện:\n\n1. **Tối ưu hóa Database Query**: Truy vấn tìm kiếm sản phẩm mất trung bình 1.2 giây để thực thi, gây trễ khi tải trang. Việc tối ưu hóa truy vấn bằng cách thêm các index phù hợp và tinh chỉnh thuật toán tìm kiếm có thể giảm thời gian này lên tới 40%.\n\n2. **Tải hình ảnh (Image Loading)**: Ứng dụng tải các hình ảnh sản phẩm độ phân giải cao mà không áp dụng lazy loading, dẫn đến việc render trang ban đầu bị chậm 1.5 giây. Việc triển khai lazy loading và nén hình ảnh có thể cải thiện thời gian tải trang ban đầu thêm 30%.\n\n3. **API Response Time**: API checkout đang gặp độ trễ cao do xử lý dữ liệu thừa. Tối giản response của API bằng cách giảm bớt các bước xử lý dữ liệu không cần thiết có thể cải thiện response time thêm 25%.\n\nBằng cách khắc phục các bottleneck này, hiệu năng tổng thể của 'E-Commerce Platform' có thể được cải thiện đáng kể, mang lại trải nghiệm người dùng tốt hơn và nâng cao mức độ hài lòng của khách hàng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:38:40.010415Z",
+    "http_status": 200,
+    "content_hash": "56db4a630cee1aebb8586ed78c62a6bb6968353618c07735216d77e04c8cd2a8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\inspector.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\inspector.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Inspector: Công cụ kiểm thử trực quan cho MCP Server",
+  "short_description_vi": "Inspector là công cụ kiểm thử trực quan mạnh mẽ được thiết kế dành riêng cho các MCP server, giúp lập trình viên đảm bảo chất lượng và hiệu năng của ứng dụng. Với nhiều tính năng vượt trội, Inspector tối ưu hóa quy trình kiểm thử, là giải pháp không thể thiếu cho các đội ngũ phát triển đang hướng tới trải nghiệm người dùng hoàn hảo."
+}

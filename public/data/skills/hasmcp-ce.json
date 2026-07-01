@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hasmcp-ce",
+  "slug": "hasmcp-ce",
+  "name": "HasMCP-CE",
+  "headline": "HasMCP-CE - Convert API to MCP Servers",
+  "short_description": "HasMCP Community Edition converts API endpoints into MCP Servers without coding. Ideal for developers and SaaS owners who want to avoid maintaining MCP spec changes. Integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "hasmcp",
+  "install_command": "git clone https://github.com/hasmcp/hasmcp-ce.git",
+  "source_repo_url": "https://github.com/hasmcp/hasmcp-ce",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-protocol",
+    "mcp-authorization",
+    "mcp-host",
+    "ai-automation",
+    "mcp",
+    "mcp-security",
+    "mcp-auth",
+    "mcp-servers-directory",
+    "mcp-builder",
+    "self-hosted",
+    "openapi",
+    "mcp-servers",
+    "mcp-server",
+    "mcp-gateway",
+    "mcp-auth-client",
+    "mcp-tools",
+    "ai-agent-tools",
+    "ai-agents-framework",
+    "ai-agent",
+    "model-context-protocol"
+  ],
+  "sections": {
+    "overview": "HasMCP-CE transforms REST API endpoints into fully functional MCP Servers through automated OpenAPI specification parsing or manual endpoint configuration. The tool supports OAuth2 authentication, per-endpoint toggling, header proxying, and token management across short and long-term credentials. Real-time logs and analytics provide visibility into MCP method calls and server performance. Developers and SaaS platform owners benefit by eliminating manual MCP server development and reducing maintenance overhead as the MCP specification evolves. The Community Edition runs self-hosted via Docker with SQLite or PostgreSQL backends, while a cloud version offers advanced features like request/response optimization and user management.\nExpose internal APIs as MCP Servers for Claude agent integration\nConvert SaaS platform APIs into MCP endpoints without custom development\nRapid prototyping of MCP Servers from existing REST APIs\nMaintain multiple API integrations with centralized endpoint toggling",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hasmcp/hasmcp-ce`",
+    "usage": "```\nConvert the following API endpoints into an MCP Server for [COMPANY] in the [INDUSTRY] sector. The API endpoints are: [API_ENDPOINTS]. Ensure the MCP Server is compatible with Claude agents and follows best practices for [INDUSTRY] standards.\n```\nCopy\n\n```\n# MCP Server Conversion for TechSolutions Inc. (Healthcare Sector)",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hasmcp-ce#main-content",
+      "hasmcp-ce#overview",
+      "hasmcp-ce#setup",
+      "hasmcp-ce#examples",
+      "hasmcp-ce#tools",
+      "hasmcp-ce#mcp",
+      "hasmcp-ce#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "HasMCP-CE chuyển đổi các REST API endpoint thành các MCP Server hoạt động đầy đủ tính năng thông qua việc tự động phân tích (parsing) đặc tả OpenAPI hoặc cấu hình endpoint thủ công. Công cụ này hỗ trợ xác thực OAuth2, bật/tắt riêng biệt từng endpoint, proxy header và quản lý token cho cả thông tin xác thực ngắn hạn và dài hạn. Hệ thống log và phân tích thời gian thực giúp theo dõi trực quan các lượt gọi method MCP và hiệu năng của server. Các nhà phát triển và chủ sở hữu nền tảng SaaS sẽ được hưởng lợi nhờ loại bỏ việc tự phát triển MCP server thủ công và giảm chi phí bảo trì khi đặc tả MCP thay đổi. Phiên bản Community Edition chạy dưới dạng self-hosted thông qua Docker với backend SQLite hoặc PostgreSQL, trong khi phiên bản cloud cung cấp các tính năng nâng cao như tối ưu hóa request/response và quản lý người dùng.\nExpose các API nội bộ thành MCP Server để tích hợp với Claude agent\nChuyển đổi API của nền tảng SaaS thành các MCP endpoint mà không cần phát triển thêm code tùy biến\nTạo nhanh prototype cho các MCP Server từ các REST API hiện có\nDuy trì nhiều tích hợp API với tính năng bật/tắt endpoint tập trung",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/hasmcp/hasmcp-ce`",
+    "usage_vi": "```\nChuyển đổi các API endpoint sau thành MCP Server cho [COMPANY] thuộc lĩnh vực [INDUSTRY]. Các API endpoint là: [API_ENDPOINTS]. Đảm bảo MCP Server tương thích với các Claude agent và tuân thủ các tiêu chuẩn best practice của ngành [INDUSTRY].\n```\nSao chép\n\n```\n# Chuyển đổi MCP Server cho TechSolutions Inc. (Lĩnh vực Y tế)"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:58:55.231449Z",
+    "http_status": 200,
+    "content_hash": "40957fcd8c2fcab9a49f84bf03e542dac95ed44d8195d6a939a1d55669245f89",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hasmcp-ce.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hasmcp-ce.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "HasMCP-CE - Chuyển đổi API thành MCP Server",
+  "short_description_vi": "HasMCP Community Edition giúp chuyển đổi các API endpoint thành MCP Server mà không cần lập trình. Đây là giải pháp lý tưởng cho các nhà phát triển và chủ sở hữu SaaS muốn tránh việc phải bảo trì khi đặc tả MCP thay đổi. Tích hợp mượt mà với các Claude agent."
+}

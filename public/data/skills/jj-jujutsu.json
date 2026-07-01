@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jj-jujutsu",
+  "slug": "jj-jujutsu",
+  "name": "git-auto-commit-push",
+  "headline": "jj (Jujutsu): Claude Code skill for Version Control",
+  "short_description": "jj is a version control tool that coexists with Git, focusing on changes rather than branches. It is designed for agent-assisted development workflows, allowing users to manage changes seamlessly without a staging area.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "onevcat",
+  "install_command": "git clone https://github.com/onevcat/skills",
+  "source_repo_url": "https://github.com/onevcat/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "jujutsu",
+    "version-control"
+  ],
+  "sections": {
+    "overview": "jj is a version control tool created by onevcat that operates alongside Git, emphasizing change-based workflows rather than branch-centric development. It eliminates the traditional staging area, allowing developers to manage changes more directly. jj is specifically designed to support agent-assisted development workflows, making it suitable for environments where AI agents collaborate with version control systems.\nManaging agent-assisted development workflows\nTracking modifications without staging\nWorking with remote Git repositories using bookmarks",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/onevcat/skills --skill onevcat-jj`\n`git clone https://github.com/onevcat/skills`",
+    "usage": "```\nAct as a jj (Jujutsu) expert and help me [DESCRIBE YOUR GOAL: e.g., 'rebase my changes onto the latest main branch', 'split a large commit into smaller ones', 'resolve a merge conflict']. Use the following data: [CURRENT_BRANCH], [TARGET_BRANCH], [FILES_TO_STAGE], [COMMIT_MESSAGE].\n```\nCopy\n\n```\n# Jujutsu Workflow Assistance",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "jj-jujutsu#main-content",
+      "jj-jujutsu#overview",
+      "jj-jujutsu#setup",
+      "jj-jujutsu#examples",
+      "jj-jujutsu#related",
+      "git-auto-commit-push"
+    ],
+    "overview_vi": "jj is a version control tool created by onevcat that operates alongside Git, emphasizing change-based workflows rather than branch-centric development. It eliminates the traditional staging area, allowing developers to manage changes more directly. jj is specifically designed to support agent-assisted development workflows, making it suitable for environments where AI agents collaborate with version control systems.\nManaging agent-assisted development workflows\nTracking modifications without staging\nWorking with remote Git repositories using bookmarks",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/onevcat/skills --skill onevcat-jj`\n`git clone https://github.com/onevcat/skills`",
+    "usage_vi": "```\nAct as a jj (Jujutsu) expert and help me [DESCRIBE YOUR GOAL: e.g., 'rebase my changes onto the latest main branch', 'split a large commit into smaller ones', 'resolve a merge conflict']. Use the following data: [CURRENT_BRANCH], [TARGET_BRANCH], [FILES_TO_STAGE], [COMMIT_MESSAGE].\n```\nCopy\n\n```\n# Jujutsu Workflow Assistance"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:25:45.030227Z",
+    "http_status": 200,
+    "content_hash": "7943428b26471a773d4e277c07fc8d382e395674b2f96eb68e2a7504bf7ca04f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jj-jujutsu.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jj-jujutsu.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "jj (Jujutsu): Claude Code skill for Version Control",
+  "short_description_vi": "jj is a version control tool that coexists with Git, focusing on changes rather than branches. It is designed for agent-assisted development workflows, allowing users to manage changes seamlessly without a staging area."
+}

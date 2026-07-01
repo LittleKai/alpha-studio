@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/my-ai-tools",
+  "slug": "my-ai-tools",
+  "name": "browser-use",
+  "headline": "my-ai-tools - AI coding tool configuration",
+  "short_description": "Comprehensive configuration management for AI coding tools - Replicate my complete setup for Claude Code, OpenCode, Amp, Codex and CCS with custom configurations, MCP servers, plugins, and commands.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "jellydn",
+  "install_command": "git clone https://github.com/jellydn/my-ai-tools.git",
+  "source_repo_url": "https://github.com/jellydn/my-ai-tools",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "amp",
+    "open-code",
+    "codex"
+  ],
+  "sections": {
+    "overview": "my-ai-tools is a comprehensive configuration management system designed for developers using multiple AI coding assistants. It enables bidirectional synchronization of complete tool setups—including MCP servers, custom skills, plugins, and commands—across Claude Code, OpenCode, Cursor, Codex, Gemini CLI, and over a dozen other AI agents. The skill includes a one-line installer and pre-configured agent teams for specialized workflows like code review, testing, and documentation. It addresses the friction of manually replicating configurations across different AI tools, allowing teams to maintain consistent AI-assisted development environments and share optimized agent setups.\nReplicate entire AI tool configurations across Claude Code, OpenCode, and Cursor in seconds\nShare pre-configured agent teams and custom skills with development teams\nSynchronize MCP server integrations and plugins across multiple AI coding assistants\nMaintain consistent AI-assisted development environments across different tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jellydn/my-ai-tools`",
+    "usage": "```\nReplicate my complete AI coding tool setup by generating a comprehensive configuration for [TOOL_NAME: Claude Code/OpenCode/Amp/Codex/CCS]. Include all custom configurations, MCP servers, plugins, and commands from my existing setup. Ensure the output is structured as a ready-to-use config file or installation script. Reference my current setup details: [TOOL_NAME] version [VERSION], preferred plugins [PLUGIN_LIST], MCP servers [MCP_SERVERS], and custom commands [CUSTOM_COMMANDS].\n```\nCopy\n\n```\n```json\n{\n  \"tool\": \"Claude Code\",\n  \"version\": \"1.2.3\",\n  \"config\": {\n    \"plugins\": [\n      {\n        \"name\": \"GitHub Copilot\",\n        \"version\": \"1.15.0\",\n        \"settings\": {\n          \"suggestions\": \"enabled\",\n          \"auto_accept\": false\n        }\n      },\n      {\n        \"name\": \"Prettier\",\n        \"version\": \"2.8.4\",\n        \"settings\": {\n          \"printWidth\": 80,\n          \"tabWidth\": 2,\n          \"useTabs\": false\n        }\n      }\n    ],\n    \"mcp_servers\": [\n      {\n        \"name\": \"git-mcp\",\n        \"config\": {\n          \"repo_path\": \"~/projects/repo\",\n          \"auto_commit\": true\n        }\n      },\n      {\n        \"name\": \"docker-mcp\",\n        \"config\": {\n          \"compose_file\": \"docker-compose.dev.yml\",\n          \"auto_restart\": true\n        }\n      }\n    ],\n    \"custom_commands\": [\n      {\n        \"name\": \"run-tests\",\n        \"command\": \"npm test -- --watchAll\",\n        \"description\": \"Run all tests in watch mode\"\n      },\n      {\n        \"name\": \"format-code\",\n        \"command\": \"npx prettier --write .\",\n        \"description\": \"Format all code in the project\"\n      }\n    ],\n    \"settings\": {\n      \"theme\": \"Dark+ (default dark)\",\n      \"font_size\": 14,\n      \"tab_size\": 2,\n      \"auto_indent\": true,\n      \"line_numbers\": \"on\",\n      \"syntax_highlighting\": \"enabled\"\n    }\n  }\n}\n```\n\n### Installation Script (Bash)\n```bash\n#!/bin/bash\n# Install dependencies\nnpm install -g prettier eslint\n\n# Clone MCP servers\nmkdir -p ~/.config/mcp-servers\ngit clone https://github.com/github/github-mcp.git ~/.config/mcp-servers/github\ncd ~/.config/mcp-servers/github && npm install\n\n# Configure Claude Code\necho '{\n  \"plugins\": [\"GitHub Copilot\", \"Prettier\"],\n  \"mcp_servers\": [\"git-mcp\", \"docker-mcp\"],\n  \"custom_commands\": [\"run-tests\", \"format-code\"],\n  \"settings\": {\n    \"theme\": \"Dark+ (default dark)\",\n    \"font_size\": 14,\n    \"tab_size\": 2\n  }\n}' > ~/.claude/settings.json\n```\n\nThis configuration ensures your AI coding tools are optimized for productivity with your preferred workflows, including automated formatting, version control integration, and custom commands for common tasks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "my-ai-tools#main-content",
+      "my-ai-tools#overview",
+      "my-ai-tools#setup",
+      "my-ai-tools#examples",
+      "my-ai-tools#tools",
+      "my-ai-tools#mcp",
+      "my-ai-tools#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "my-ai-tools is a comprehensive configuration management system designed for developers using multiple AI coding assistants. It enables bidirectional synchronization of complete tool setups—including MCP servers, custom skills, plugins, and commands—across Claude Code, OpenCode, Cursor, Codex, Gemini CLI, and over a dozen other AI agents. The skill includes a one-line installer and pre-configured agent teams for specialized workflows like code review, testing, and documentation. It addresses the friction of manually replicating configurations across different AI tools, allowing teams to maintain consistent AI-assisted development environments and share optimized agent setups.\nReplicate entire AI tool configurations across Claude Code, OpenCode, and Cursor in seconds\nShare pre-configured agent teams and custom skills with development teams\nSynchronize MCP server integrations and plugins across multiple AI coding assistants\nMaintain consistent AI-assisted development environments across different tools",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jellydn/my-ai-tools`",
+    "usage_vi": "```\nReplicate my complete AI coding tool setup by generating a comprehensive configuration for [TOOL_NAME: Claude Code/OpenCode/Amp/Codex/CCS]. Include all custom configurations, MCP servers, plugins, and commands from my existing setup. Ensure the output is structured as a ready-to-use config file or installation script. Reference my current setup details: [TOOL_NAME] version [VERSION], preferred plugins [PLUGIN_LIST], MCP servers [MCP_SERVERS], and custom commands [CUSTOM_COMMANDS].\n```\nCopy\n\n```\n```json\n{\n  \"tool\": \"Claude Code\",\n  \"version\": \"1.2.3\",\n  \"config\": {\n    \"plugins\": [\n      {\n        \"name\": \"GitHub Copilot\",\n        \"version\": \"1.15.0\",\n        \"settings\": {\n          \"suggestions\": \"enabled\",\n          \"auto_accept\": false\n        }\n      },\n      {\n        \"name\": \"Prettier\",\n        \"version\": \"2.8.4\",\n        \"settings\": {\n          \"printWidth\": 80,\n          \"tabWidth\": 2,\n          \"useTabs\": false\n        }\n      }\n    ],\n    \"mcp_servers\": [\n      {\n        \"name\": \"git-mcp\",\n        \"config\": {\n          \"repo_path\": \"~/projects/repo\",\n          \"auto_commit\": true\n        }\n      },\n      {\n        \"name\": \"docker-mcp\",\n        \"config\": {\n          \"compose_file\": \"docker-compose.dev.yml\",\n          \"auto_restart\": true\n        }\n      }\n    ],\n    \"custom_commands\": [\n      {\n        \"name\": \"run-tests\",\n        \"command\": \"npm test -- --watchAll\",\n        \"description\": \"Run all tests in watch mode\"\n      },\n      {\n        \"name\": \"format-code\",\n        \"command\": \"npx prettier --write .\",\n        \"description\": \"Format all code in the project\"\n      }\n    ],\n    \"settings\": {\n      \"theme\": \"Dark+ (default dark)\",\n      \"font_size\": 14,\n      \"tab_size\": 2,\n      \"auto_indent\": true,\n      \"line_numbers\": \"on\",\n      \"syntax_highlighting\": \"enabled\"\n    }\n  }\n}\n```\n\n### Installation Script (Bash)\n```bash\n#!/bin/bash\n# Install dependencies\nnpm install -g prettier eslint\n\n# Clone MCP servers\nmkdir -p ~/.config/mcp-servers\ngit clone https://github.com/github/github-mcp.git ~/.config/mcp-servers/github\ncd ~/.config/mcp-servers/github && npm install\n\n# Configure Claude Code\necho '{\n  \"plugins\": [\"GitHub Copilot\", \"Prettier\"],\n  \"mcp_servers\": [\"git-mcp\", \"docker-mcp\"],\n  \"custom_commands\": [\"run-tests\", \"format-code\"],\n  \"settings\": {\n    \"theme\": \"Dark+ (default dark)\",\n    \"font_size\": 14,\n    \"tab_size\": 2\n  }\n}' > ~/.claude/settings.json\n```\n\nThis configuration ensures your AI coding tools are optimized for productivity with your preferred workflows, including automated formatting, version control integration, and custom commands for common tasks.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:17.359221Z",
+    "http_status": 200,
+    "content_hash": "1ac1fc83ebc721173e50a05ad1c463e464ba63ce1a1f210cf189de703da53404",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\my-ai-tools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\my-ai-tools.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "my-ai-tools - AI coding tool configuration",
+  "short_description_vi": "Comprehensive configuration management for AI coding tools - Replicate my complete setup for Claude Code, OpenCode, Amp, Codex and CCS with custom configurations, MCP servers, plugins, and commands."
+}

@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccproxy-api",
+  "slug": "ccproxy-api",
+  "name": "Ccproxy API",
+  "headline": "ccproxy-api unified AI access tool",
+  "short_description": "CCProxy API provides unified access to multiple AI providers like Claude and Codex through a single interface. It uses existing subscriptions without requiring API key billing. Ideal for operations teams looking to streamline AI integration and management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "CaddyGlow",
+  "install_command": "git clone https://github.com/CaddyGlow/ccproxy-api.git",
+  "source_repo_url": "https://github.com/CaddyGlow/ccproxy-api",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "python",
+    "anthropic",
+    "claude-code",
+    "codex",
+    "fastapi",
+    "anthropic-api",
+    "claude",
+    "openai"
+  ],
+  "sections": {
+    "overview": "CCProxy API is a plugin-based local reverse proxy that consolidates access to multiple AI providers—Anthropic Claude, OpenAI Codex, and GitHub Copilot—behind a single consistent API surface. It reuses existing provider credentials and tokens (OAuth flows, CLI files, or credential stores) without requiring separate API key billing or account management. The proxy maintains a shared model-mapping layer so teams can switch between providers or load-balance across credentials without rewriting client code. Built-in plugins provide structured logging, analytics, metrics (Prometheus-compatible), request tracing, and an interactive dashboard. Operations teams benefit from centralized management, credential rotation, cost tracking, and detailed instrumentation for debugging and monitoring.\nRoute AI requests across multiple providers with a single client implementation\nLoad-balance between Claude, Codex, and Copilot using credential rotation\nCentralize logging, metrics, and analytics for all AI API traffic\nDebug and trace requests across different AI provider backends",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CaddyGlow/ccproxy-api`",
+    "usage": "```\nUse the CCProxy API to execute [TASK] across [AI_PROVIDER_1] and [AI_PROVIDER_2]. Return the results in a structured format with clear labels for each provider's output. Example: 'Summarize the attached technical documentation for [TOPIC] using both Claude and Codex, then compare their responses for accuracy and depth.'\n```\nCopy\n\n```\n```json\n{\n  \"task\": \"Generate a Python script to scrape product pricing from [ECOMMERCE_SITE]\",\n  \"providers\": {\n    \"Claude\": {\n      \"response\": \"```python\\nimport requests\\nfrom bs4 import BeautifulSoup\\n\\nurl = '[ECOMMERCE_SITE]/products'\\nheaders = {'User-Agent': 'Mozilla/5.0'}\\nresponse = requests.get(url, headers=headers)\\nsoup = BeautifulSoup(response.text, 'html.parser')\\nprices = [p.text.strip() for p in soup.select('.price')]\\nprint(prices)\\n```\",\n      \"confidence\": \"High\",\n      \"limitations\": \"Assumes consistent HTML structure; may fail if site uses dynamic rendering\"\n    },\n    \"Codex\": {\n      \"response\": \"```python\\nimport requests\\nfrom bs4 import BeautifulSoup\\n\\n# Add retry logic and error handling\\nMAX_RETRIES = 3\\nfor attempt in range(MAX_RETRIES):\\n    try:\\n        response = requests.get('[ECOMMERCE_SITE]/products', timeout=10)\\n        response.raise_for_status()\\n        break\\n    except requests.exceptions.RequestException as e:\\n        print(f'Attempt {attempt + 1} failed: {e}')\\n        if attempt == MAX_RETRIES - 1:\\n            raise\\n\\nsoup = BeautifulSoup(response.text, 'html.parser')\\n# Handle potential CAPTCHA or anti-bot measures\\nprices = [p.text.strip() for p in soup.select('.product-price') if p.text.strip()]\\nprint(prices)\\n```\",\n      \"confidence\": \"Medium\",\n      \"limitations\": \"Requires manual adjustment for site-specific selectors; may trigger rate limits\"\n    }\n  },\n  \"comparison\": {\n    \"claude_code_quality\": \"Simpler but less robust\",\n    \"codex_code_quality\": \"More production-ready with error handling\",\n    \"recommended_approach\": \"Use Codex's version with added logging and proxy rotation for reliability\"\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccproxy-api#main-content",
+      "ccproxy-api#overview",
+      "ccproxy-api#setup",
+      "ccproxy-api#examples",
+      "ccproxy-api#tools",
+      "ccproxy-api#mcp",
+      "ccproxy-api#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCProxy API is a plugin-based local reverse proxy that consolidates access to multiple AI providers—Anthropic Claude, OpenAI Codex, and GitHub Copilot—behind a single consistent API surface. It reuses existing provider credentials and tokens (OAuth flows, CLI files, or credential stores) without requiring separate API key billing or account management. The proxy maintains a shared model-mapping layer so teams can switch between providers or load-balance across credentials without rewriting client code. Built-in plugins provide structured logging, analytics, metrics (Prometheus-compatible), request tracing, and an interactive dashboard. Operations teams benefit from centralized management, credential rotation, cost tracking, and detailed instrumentation for debugging and monitoring.\nRoute AI requests across multiple providers with a single client implementation\nLoad-balance between Claude, Codex, and Copilot using credential rotation\nCentralize logging, metrics, and analytics for all AI API traffic\nDebug and trace requests across different AI provider backends",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CaddyGlow/ccproxy-api`",
+    "usage_vi": "```\nUse the CCProxy API to execute [TASK] across [AI_PROVIDER_1] and [AI_PROVIDER_2]. Return the results in a structured format with clear labels for each provider's output. Example: 'Summarize the attached technical documentation for [TOPIC] using both Claude and Codex, then compare their responses for accuracy and depth.'\n```\nCopy\n\n```\n```json\n{\n  \"task\": \"Generate a Python script to scrape product pricing from [ECOMMERCE_SITE]\",\n  \"providers\": {\n    \"Claude\": {\n      \"response\": \"```python\\nimport requests\\nfrom bs4 import BeautifulSoup\\n\\nurl = '[ECOMMERCE_SITE]/products'\\nheaders = {'User-Agent': 'Mozilla/5.0'}\\nresponse = requests.get(url, headers=headers)\\nsoup = BeautifulSoup(response.text, 'html.parser')\\nprices = [p.text.strip() for p in soup.select('.price')]\\nprint(prices)\\n```\",\n      \"confidence\": \"High\",\n      \"limitations\": \"Assumes consistent HTML structure; may fail if site uses dynamic rendering\"\n    },\n    \"Codex\": {\n      \"response\": \"```python\\nimport requests\\nfrom bs4 import BeautifulSoup\\n\\n# Add retry logic and error handling\\nMAX_RETRIES = 3\\nfor attempt in range(MAX_RETRIES):\\n    try:\\n        response = requests.get('[ECOMMERCE_SITE]/products', timeout=10)\\n        response.raise_for_status()\\n        break\\n    except requests.exceptions.RequestException as e:\\n        print(f'Attempt {attempt + 1} failed: {e}')\\n        if attempt == MAX_RETRIES - 1:\\n            raise\\n\\nsoup = BeautifulSoup(response.text, 'html.parser')\\n# Handle potential CAPTCHA or anti-bot measures\\nprices = [p.text.strip() for p in soup.select('.product-price') if p.text.strip()]\\nprint(prices)\\n```\",\n      \"confidence\": \"Medium\",\n      \"limitations\": \"Requires manual adjustment for site-specific selectors; may trigger rate limits\"\n    }\n  },\n  \"comparison\": {\n    \"claude_code_quality\": \"Simpler but less robust\",\n    \"codex_code_quality\": \"More production-ready with error handling\",\n    \"recommended_approach\": \"Use Codex's version with added logging and proxy rotation for reliability\"\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:14:02.332967Z",
+    "http_status": 200,
+    "content_hash": "82e0d6bd7f2b63738a09d50d92f7a10f782610f833ac7b1d2ec73692bdd6d79d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccproxy-api.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccproxy-api.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ccproxy-api unified AI access tool",
+  "short_description_vi": "CCProxy API provides unified access to multiple AI providers like Claude and Codex through a single interface. It uses existing subscriptions without requiring API key billing. Ideal for operations teams looking to streamline AI integration and management."
+}

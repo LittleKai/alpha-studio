@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-social-media-posting-automation",
+  "slug": "n8n-social-media-posting-automation",
+  "name": "popsicle",
+  "headline": "n8n Social Media Posting Automation: Marketing",
+  "short_description": "The n8n workflows in this repository automate the posting of sermon info and details to Facebook and other social media platforms upon the publishing of a new sermon to a WordPress site or SermonAudio account",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "SermonPress-AI",
+  "install_command": "git clone https://github.com/SermonPress-AI/n8n-social-media-posting-automation.git",
+  "source_repo_url": "https://github.com/SermonPress-AI/n8n-social-media-posting-automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The n8n Social Media Posting Automation skill is designed to streamline the process of posting sermon information and details to various social media platforms, including Facebook, whenever a new sermon is published to a WordPress site or SermonAudio account. By utilizing n8n workflows, this automation eliminates the need for manual posting, allowing users to focus on creating content rather than distributing it. This skill is particularly beneficial for marketers looking to enhance their outreach and engagement on social media channels. One of the key benefits of implementing this skill is the significant time savings it offers. While the exact time savings are currently unknown, automating the posting process can free up valuable hours that marketers can redirect towards strategic planning and content creation. With an implementation time of just 30 minutes, teams can quickly set up this automation and start reaping the benefits of increased efficiency and consistency in their social media marketing efforts. This skill is ideal for marketing professionals, product managers, and AI practitioners who are involved in content distribution and social media strategy. By integrating this automation into their workflows, users can ensure that their sermon-related content reaches a wider audience without the repetitive task of manual posting. For example, a church or organization that regularly publishes sermons can maintain an active social media presence effortlessly, allowing them to engage with their community more effectively. The implementation of the n8n Social Media Posting Automation skill is categorized as intermediate, requiring some familiarity with n8n workflows and social media APIs. However, the straightforward setup process makes it accessible for those willing to invest a bit of time. As organizations increasingly adopt AI-first workflows, this skill serves as a practical tool for enhancing marketing efforts, ensuring that content is shared promptly and efficiently across platforms.\nThis n8n workflow automates the process of posting sermon details to Facebook and other social media platforms whenever a new sermon is published on a WordPress site or SermonAudio account. The workflow consists of the following nodes:\n\n1. **Trigger Node**: Monitors the WordPress site or SermonAudio account for new sermon publications.\n2. **Data Extraction Node**: Extracts the sermon title, description, and relevant media.\n3. **Formatting Node**: Formats the extracted information into a post suitable for social media.\n4. **Scheduling Node**: Schedules the post to be published at a specified time.\n5. **Posting Node**: Automatically posts the sermon details to Facebook and other social media platforms.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SermonPress-AI/n8n-social-media-posting-automation`",
+    "usage": "```\nCreate an n8n workflow that automates posting sermon details to Facebook and other social media platforms when a new sermon is published on a WordPress site or SermonAudio account. The workflow should include the following steps: 1) Monitor the WordPress site or SermonAudio account for new sermon publications. 2) Extract the sermon title, description, and any relevant media (e.g., audio, video, or image). 3) Format the extracted information into a post suitable for Facebook and other social media platforms. 4) Schedule the post to be published at a specified time. 5) Automatically post the sermon details to Facebook and other social media platforms. Ensure the workflow is robust and can handle errors gracefully. Provide the n8n workflow code and any additional configuration steps required.\n```\nCopy\n\n```\n# n8n Workflow for Automated Sermon Posting to Social Media",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "n8n-social-media-posting-automation#main-content",
+      "n8n-social-media-posting-automation#overview",
+      "n8n-social-media-posting-automation#setup",
+      "n8n-social-media-posting-automation#examples",
+      "n8n-social-media-posting-automation#tools",
+      "n8n-social-media-posting-automation#mcp",
+      "n8n-social-media-posting-automation#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "The n8n Social Media Posting Automation skill is designed to streamline the process of posting sermon information and details to various social media platforms, including Facebook, whenever a new sermon is published to a WordPress site or SermonAudio account. By utilizing n8n workflows, this automation eliminates the need for manual posting, allowing users to focus on creating content rather than distributing it. This skill is particularly beneficial for marketers looking to enhance their outreach and engagement on social media channels. One of the key benefits of implementing this skill is the significant time savings it offers. While the exact time savings are currently unknown, automating the posting process can free up valuable hours that marketers can redirect towards strategic planning and content creation. With an implementation time of just 30 minutes, teams can quickly set up this automation and start reaping the benefits of increased efficiency and consistency in their social media marketing efforts. This skill is ideal for marketing professionals, product managers, and AI practitioners who are involved in content distribution and social media strategy. By integrating this automation into their workflows, users can ensure that their sermon-related content reaches a wider audience without the repetitive task of manual posting. For example, a church or organization that regularly publishes sermons can maintain an active social media presence effortlessly, allowing them to engage with their community more effectively. The implementation of the n8n Social Media Posting Automation skill is categorized as intermediate, requiring some familiarity with n8n workflows and social media APIs. However, the straightforward setup process makes it accessible for those willing to invest a bit of time. As organizations increasingly adopt AI-first workflows, this skill serves as a practical tool for enhancing marketing efforts, ensuring that content is shared promptly and efficiently across platforms.\nThis n8n workflow automates the process of posting sermon details to Facebook and other social media platforms whenever a new sermon is published on a WordPress site or SermonAudio account. The workflow consists of the following nodes:\n\n1. **Trigger Node**: Monitors the WordPress site or SermonAudio account for new sermon publications.\n2. **Data Extraction Node**: Extracts the sermon title, description, and relevant media.\n3. **Formatting Node**: Formats the extracted information into a post suitable for social media.\n4. **Scheduling Node**: Schedules the post to be published at a specified time.\n5. **Posting Node**: Automatically posts the sermon details to Facebook and other social media platforms.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SermonPress-AI/n8n-social-media-posting-automation`",
+    "usage_vi": "```\nCreate an n8n workflow that automates posting sermon details to Facebook and other social media platforms when a new sermon is published on a WordPress site or SermonAudio account. The workflow should include the following steps: 1) Monitor the WordPress site or SermonAudio account for new sermon publications. 2) Extract the sermon title, description, and any relevant media (e.g., audio, video, or image). 3) Format the extracted information into a post suitable for Facebook and other social media platforms. 4) Schedule the post to be published at a specified time. 5) Automatically post the sermon details to Facebook and other social media platforms. Ensure the workflow is robust and can handle errors gracefully. Provide the n8n workflow code and any additional configuration steps required.\n```\nCopy\n\n```\n# n8n Workflow for Automated Sermon Posting to Social Media"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:57:01.334620Z",
+    "http_status": 200,
+    "content_hash": "cbac9c3f80d4dd845ca3c6ed1affb6ccb6df3c57bd76ce3f2d3aed1c4189fb97",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\n8n-social-media-posting-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\n8n-social-media-posting-automation.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "n8n Social Media Posting Automation: Marketing",
+  "short_description_vi": "The n8n workflows in this repository automate the posting of sermon info and details to Facebook and other social media platforms upon the publishing of a new sermon to a WordPress site or SermonAudio account"
+}

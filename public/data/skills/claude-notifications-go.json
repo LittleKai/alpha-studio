@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-notifications-go",
+  "slug": "claude-notifications-go",
+  "name": "Claude Notifications Go",
+  "headline": "claude notifications: smart alerts for teams",
+  "short_description": "Cross-platform smart notifications plugin for Claude Code. Supports 6 notification types, instant delivery, and context analysis. Zero dependencies, webhooks, and easy installation. Ideal for operations teams managing Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "777genius",
+  "install_command": "git clone https://github.com/777genius/claude-notifications-go.git",
+  "source_repo_url": "https://github.com/777genius/claude-notifications-go",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cross-platform",
+    "claude-code",
+    "notifications",
+    "sounds",
+    "claude",
+    "webhooks"
+  ],
+  "sections": {
+    "overview": "Claude Notifications is a cross-platform plugin that delivers intelligent alerts when Claude Code completes tasks, finishes code reviews, encounters questions, or hits session limits. It supports six notification types with native sound playback and works on macOS, Linux, and Windows. The plugin includes click-to-focus functionality for macOS and Linux that switches you directly to the correct terminal window and tab, plus git branch display in notification titles. It integrates with webhooks for Slack, Discord, Telegram, Microsoft Teams, PagerDuty, and custom endpoints, making it ideal for operations teams managing Claude agent workflows and monitoring task execution in real-time.\nMonitor Claude agent task completion and code review progress across multiple projects\nReceive instant alerts for API errors, rate limits, and session limit warnings\nRoute Claude Code notifications to Slack, Discord, or Teams for team-wide visibility\nJump directly to the correct terminal window and tab from notifications on macOS/Linux",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/777genius/claude-notifications-go`",
+    "usage": "```\nSet up [NOTIFICATION_TYPE] alerts for [CLAUDE_AGENT_NAME] using claude-notifications-go. Configure the alert to trigger when [TRIGGER_CONDITION] occurs during [WORKFLOW_STEP]. Send the notification to [DESTINATION_CHANNEL] with the following message format: '[SUMMARY_LINE] - [DETAILED_CONTEXT]'. Test the notification by simulating [TEST_SCENARIO].\n```\nCopy\n\n```\n```json\n{\n  \"notification_config\": {\n    \"agent\": \"claude-data-analyzer\",\n    \"type\": \"workflow_completion\",\n    \"trigger\": \"csv_analysis_failed\",\n    \"destination\": \"#ops-alerts\",\n    \"message_template\": \"⚠️ Data Analysis Failed - {file}: {error_message}\\nDuration: {duration}s | Retries: {retry_count}\",\n    \"test_result\": {\n      \"status\": \"success\",\n      \"output\": \"Alert sent to #ops-alerts at 2024-05-15T14:32:18Z\\nContent: ⚠️ Data Analysis Failed - sales_data.csv: Invalid column 'revenue'\\nDuration: 45s | Retries: 2\"\n    }\n  }\n}\n```\n\n**Configuration Details:**\n- **Agent:** `claude-data-analyzer` (handles quarterly sales reports)\n- **Trigger:** CSV parsing failure detected during step 3 of the workflow\n- **Destination:** Slack channel `#ops-alerts` with @channel mention for critical failures\n- **Message Breakdown:**\n  - Emoji indicator (⚠️) for visual scanning\n  - File name and specific error (invalid column)\n  - Performance metrics (duration, retry count)\n- **Test Scenario:** Simulated a malformed CSV with missing 'revenue' column\n- **Delivery Confirmation:** Webhook response showed 200 OK with message ID `alert_12456`\n\n**Next Steps:**\n1. Verify the alert appears in your Slack channel within 30 seconds\n2. Check claude-notifications-go logs for any delivery errors: `cat /var/log/claude-notifications.log`\n3. Adjust the message template if needed by editing `~/.claude/notifications/config.json`\n\n**Performance Metrics:**\n- Average delivery latency: 1.2s (tested over 50 notifications)\n- Supported platforms: macOS (x86/ARM), Linux (x86/ARM), Windows (WSL)\n- Memory footprint: <5MB per agent instance\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-notifications-go#main-content",
+      "claude-notifications-go#overview",
+      "claude-notifications-go#setup",
+      "claude-notifications-go#examples",
+      "claude-notifications-go#tools",
+      "claude-notifications-go#mcp",
+      "claude-notifications-go#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Notifications is a cross-platform plugin that delivers intelligent alerts when Claude Code completes tasks, finishes code reviews, encounters questions, or hits session limits. It supports six notification types with native sound playback and works on macOS, Linux, and Windows. The plugin includes click-to-focus functionality for macOS and Linux that switches you directly to the correct terminal window and tab, plus git branch display in notification titles. It integrates with webhooks for Slack, Discord, Telegram, Microsoft Teams, PagerDuty, and custom endpoints, making it ideal for operations teams managing Claude agent workflows and monitoring task execution in real-time.\nMonitor Claude agent task completion and code review progress across multiple projects\nReceive instant alerts for API errors, rate limits, and session limit warnings\nRoute Claude Code notifications to Slack, Discord, or Teams for team-wide visibility\nJump directly to the correct terminal window and tab from notifications on macOS/Linux",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/777genius/claude-notifications-go`",
+    "usage_vi": "```\nSet up [NOTIFICATION_TYPE] alerts for [CLAUDE_AGENT_NAME] using claude-notifications-go. Configure the alert to trigger when [TRIGGER_CONDITION] occurs during [WORKFLOW_STEP]. Send the notification to [DESTINATION_CHANNEL] with the following message format: '[SUMMARY_LINE] - [DETAILED_CONTEXT]'. Test the notification by simulating [TEST_SCENARIO].\n```\nCopy\n\n```\n```json\n{\n  \"notification_config\": {\n    \"agent\": \"claude-data-analyzer\",\n    \"type\": \"workflow_completion\",\n    \"trigger\": \"csv_analysis_failed\",\n    \"destination\": \"#ops-alerts\",\n    \"message_template\": \"⚠️ Data Analysis Failed - {file}: {error_message}\\nDuration: {duration}s | Retries: {retry_count}\",\n    \"test_result\": {\n      \"status\": \"success\",\n      \"output\": \"Alert sent to #ops-alerts at 2024-05-15T14:32:18Z\\nContent: ⚠️ Data Analysis Failed - sales_data.csv: Invalid column 'revenue'\\nDuration: 45s | Retries: 2\"\n    }\n  }\n}\n```\n\n**Configuration Details:**\n- **Agent:** `claude-data-analyzer` (handles quarterly sales reports)\n- **Trigger:** CSV parsing failure detected during step 3 of the workflow\n- **Destination:** Slack channel `#ops-alerts` with @channel mention for critical failures\n- **Message Breakdown:**\n  - Emoji indicator (⚠️) for visual scanning\n  - File name and specific error (invalid column)\n  - Performance metrics (duration, retry count)\n- **Test Scenario:** Simulated a malformed CSV with missing 'revenue' column\n- **Delivery Confirmation:** Webhook response showed 200 OK with message ID `alert_12456`\n\n**Next Steps:**\n1. Verify the alert appears in your Slack channel within 30 seconds\n2. Check claude-notifications-go logs for any delivery errors: `cat /var/log/claude-notifications.log`\n3. Adjust the message template if needed by editing `~/.claude/notifications/config.json`\n\n**Performance Metrics:**\n- Average delivery latency: 1.2s (tested over 50 notifications)\n- Supported platforms: macOS (x86/ARM), Linux (x86/ARM), Windows (WSL)\n- Memory footprint: <5MB per agent instance\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:14.583518Z",
+    "http_status": 200,
+    "content_hash": "f6697a2ae0ec58b19827100c1cce98208eb16255ddc573bc405ca10300474e5d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-notifications-go.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-notifications-go.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude notifications: smart alerts for teams",
+  "short_description_vi": "Cross-platform smart notifications plugin for Claude Code. Supports 6 notification types, instant delivery, and context analysis. Zero dependencies, webhooks, and easy installation. Ideal for operations teams managing Claude agents."
+}

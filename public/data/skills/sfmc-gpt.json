@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sfmc-gpt",
+  "slug": "sfmc-gpt",
+  "name": "Sfmc Gpt",
+  "headline": "sfmc-gpt: ChatGPT Email Content for SFMC",
+  "short_description": "Integrate ChatGPT API-generated content directly into Salesforce Marketing Cloud emails. Automate dynamic email personalization using OpenAI's language model.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "psapir",
+  "install_command": "git clone https://github.com/psapir/sfmc-gpt.git",
+  "source_repo_url": "https://github.com/psapir/sfmc-gpt",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "sfmc-gpt enables marketers to incorporate ChatGPT API-generated content into Salesforce Marketing Cloud emails, automating personalized messaging at scale. The skill integrates OpenAI's language model with SFMC's email platform, allowing you to generate dynamic content within email templates without manual copywriting. Setup requires obtaining a ChatGPT API key, deploying the package via SFMC's Package Manager, and configuring the ChatGPTGenerator Content Area with your credentials. This solution is ideal for marketing teams seeking to reduce content creation time while maintaining email relevance and personalization across campaigns.\nGenerate personalized product recommendations in promotional emails\nAuto-create subject lines and preview text for A/B testing\nProduce dynamic email copy tailored to customer segments\nAutomate content generation for high-volume email campaigns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/psapir/sfmc-gpt`",
+    "usage": "```\nGenerate a personalized email campaign for [COMPANY] in the [INDUSTRY] sector. The email should include a compelling subject line, a brief introduction, and a call-to-action. Use the following data points: [DATA]. Ensure the content is engaging, concise, and tailored to the target audience. The email should be optimized for Salesforce Marketing Cloud (SFMC) with proper personalization strings and dynamic content blocks.\n```\nCopy\n\n```\n# Email Campaign for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sfmc-gpt#main-content",
+      "sfmc-gpt#overview",
+      "sfmc-gpt#setup",
+      "sfmc-gpt#examples",
+      "sfmc-gpt#tools",
+      "sfmc-gpt#mcp",
+      "sfmc-gpt#related",
+      "marketingskills",
+      "copywriting",
+      "twitter-bot"
+    ],
+    "overview_vi": "sfmc-gpt cho phép các nhà tiếp thị tích hợp nội dung được tạo từ ChatGPT API vào email trên Salesforce Marketing Cloud, tự động hóa việc gửi thông điệp cá nhân hóa ở quy mô lớn. Skill này tích hợp mô hình ngôn ngữ của OpenAI với nền tảng email của SFMC, cho phép bạn tạo nội dung động ngay trong các template email mà không cần biên soạn thủ công. Quá trình setup yêu cầu lấy ChatGPT API key, triển khai package qua Package Manager của SFMC, và cấu hình ChatGPTGenerator Content Area với thông tin xác thực của bạn. Đây là giải pháp lý tưởng cho các đội ngũ marketing muốn rút ngắn thời gian sáng tạo nội dung nhưng vẫn đảm bảo tính liên quan và cá nhân hóa của email trên toàn bộ chiến dịch.\nTạo đề xuất sản phẩm cá nhân hóa trong email quảng cáo\nTự động tạo tiêu đề (subject line) và văn bản xem trước (preview text) để thử nghiệm A/B\nSản xuất nội dung email động được tùy biến theo từng phân khúc khách hàng\nTự động hóa việc tạo nội dung cho các chiến dịch email số lượng lớn",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/psapir/sfmc-gpt`",
+    "usage_vi": "```\nTạo một chiến dịch email cá nhân hóa cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Email cần bao gồm tiêu đề hấp dẫn, phần giới thiệu ngắn gọn và lời kêu gọi hành động (call-to-action). Sử dụng các điểm dữ liệu sau: [DATA]. Đảm bảo nội dung lôi cuốn, cô đọng và phù hợp với đối tượng mục tiêu. Email phải được tối ưu hóa cho Salesforce Marketing Cloud (SFMC) bằng các chuỗi cá nhân hóa (personalization strings) và khối nội dung động (dynamic content blocks) phù hợp.\n```\nSao chép\n\n```\n# Chiến dịch Email cho GreenTech Solutions\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:07.656268Z",
+    "http_status": 200,
+    "content_hash": "bc567370374b1c0b95c7c9dfc361cc51c09eee67e13edec9b9716e39d271b666",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sfmc-gpt.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sfmc-gpt.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "sfmc-gpt: Tạo nội dung email từ ChatGPT cho SFMC",
+  "short_description_vi": "Tích hợp trực tiếp nội dung do ChatGPT API tạo vào email trên Salesforce Marketing Cloud. Tự động hóa việc cá nhân hóa email động bằng mô hình ngôn ngữ của OpenAI."
+}

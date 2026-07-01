@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mc-woocommerce",
+  "slug": "mc-woocommerce",
+  "name": "popsicle",
+  "headline": "MailChimp for WooCommerce - Sync Data for Marketing",
+  "short_description": "Syncs WooCommerce data with MailChimp for marketing automation. Enables email campaigns, automations, ads, and postcards. Connects WooCommerce stores to MailChimp for targeted marketing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "mailchimp",
+  "install_command": "git clone https://github.com/mailchimp/mc-woocommerce.git",
+  "source_repo_url": "https://github.com/mailchimp/mc-woocommerce",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Mailchimp for WooCommerce is a WordPress plugin that integrates your WooCommerce store with Mailchimp's marketing platform. The plugin enables store owners to sync customer and product data between WooCommerce and Mailchimp, streamlining email marketing workflows. Users can create targeted email campaigns, set up marketing automations, and manage advertising directly within Mailchimp using their WooCommerce data. This integration is designed for e-commerce businesses looking to leverage their store data for more effective customer engagement and retention.\nSyncing WooCommerce customer data to Mailchimp for segmented email campaigns\nCreating automated email workflows triggered by WooCommerce customer actions\nManaging targeted Mailchimp ads and postcards from WooCommerce store data\nBuilding email lists from WooCommerce subscribers and customers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mailchimp/mc-woocommerce`",
+    "usage": "```\nSync my WooCommerce store [STORE_NAME] with MailChimp to create a targeted email marketing campaign. Include all active customers who made purchases in the last 30 days, segment them by [SEGMENTATION_CRITERIA], and set up an automated welcome series for new subscribers. Also, create a product retargeting ad in MailChimp for customers who abandoned their carts in the last 7 days. Use [AUDIENCE_NAME] as the MailChimp audience and [TAGS_OR_SEGMENTS] for organization.\n```\nCopy\n\n```\n### WooCommerce-to-MailChimp Sync Report\n**Store:** \"EcoGlow Candles\" (ID: wc-12345)\n**Sync Status:** Completed successfully\n**Time:** 2 minutes 15 seconds\n\n#### 1. Audience Segmentation\n- **Total Active Customers (Last 30 Days):** 428\n  - **Segment 1: High-Value Customers** (Spent >$100): 89 (20.8%)\n    - *Example:* Customer #4567 (jane.doe@email.com) spent $125 on 3 premium soy candles. Tagged as \"VIP\" and added to \"Loyalty Program\" segment.\n  - **Segment 2: Repeat Buyers** (2+ orders): 156 (36.4%)\n    - *Example:* Customer #7890 (mike.smith@email.com) purchased 4 times in 30 days. Added to \"Repeat Customers\" segment with tag \"frequent_buyer\".\n  - **Segment 3: First-Time Buyers:** 183 (42.8%)\n    - *Example:* Customer #1122 (sarah.jones@email.com) made her first purchase of a lavender candle. Added to \"New Customers\" segment with tag \"first_order\".\n\n#### 2. Automated Email Campaigns\n- **Welcome Series for New Subscribers:** Configured (3 emails)\n  - **Email 1:** \"Welcome to EcoGlow! Here’s 10% off your next order\" (Sent immediately)\n  - **Email 2:** \"Your favorite candles are back in stock!\" (Sent 3 days later)\n  - **Email 3:** \"Join our loyalty program for exclusive perks\" (Sent 7 days later)\n- **Abandoned Cart Retargeting:** \n  - **Ad Created:** \"Forgot something? Complete your order now!\"\n  - **Audience:** 34 customers who abandoned carts in the last 7 days\n  - **Ad Creative:** Dynamic product images of abandoned items (e.g., \"Vanilla Bean Candle\" and \"Eucalyptus Diffuser\")\n\n#### 3. Postcard Campaign (Optional)\n- **Postcard Trigger:** High-value customers (Segment 1) who haven’t purchased in 60+ days\n- **Message:** \"We miss you! Enjoy 15% off your next order with code WELCOMEBACK15\"\n- **Recipients:** 22 customers\n\n#### 4. Performance Tracking\n- **MailChimp Tags Applied:** \n  - `vip_customer`, `repeat_buyer`, `first_order`, `abandoned_cart_7d`\n- **Sync Log:** \n  - Products synced: 45/45 (100%)\n  - Orders synced: 678/678 (100%)\n  - Subscribers added: 124 (new signups)\n\n**Next Steps:**\n1. Review the segmented audiences in MailChimp under [AUDIENCE_NAME].\n2. Monitor the abandoned cart ad performance in MailChimp Ads Manager.\n3. Schedule the postcard campaign for next week using the provided template.\n\n*Note: Sync runs automatically every 6 hours. Adjust segmentation criteria in MailChimp if needed.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mc-woocommerce#main-content",
+      "mc-woocommerce#overview",
+      "mc-woocommerce#setup",
+      "mc-woocommerce#examples",
+      "mc-woocommerce#tools",
+      "mc-woocommerce#mcp",
+      "mc-woocommerce#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Mailchimp for WooCommerce is a WordPress plugin that integrates your WooCommerce store with Mailchimp's marketing platform. The plugin enables store owners to sync customer and product data between WooCommerce and Mailchimp, streamlining email marketing workflows. Users can create targeted email campaigns, set up marketing automations, and manage advertising directly within Mailchimp using their WooCommerce data. This integration is designed for e-commerce businesses looking to leverage their store data for more effective customer engagement and retention.\nSyncing WooCommerce customer data to Mailchimp for segmented email campaigns\nCreating automated email workflows triggered by WooCommerce customer actions\nManaging targeted Mailchimp ads and postcards from WooCommerce store data\nBuilding email lists from WooCommerce subscribers and customers",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mailchimp/mc-woocommerce`",
+    "usage_vi": "```\nSync my WooCommerce store [STORE_NAME] with MailChimp to create a targeted email marketing campaign. Include all active customers who made purchases in the last 30 days, segment them by [SEGMENTATION_CRITERIA], and set up an automated welcome series for new subscribers. Also, create a product retargeting ad in MailChimp for customers who abandoned their carts in the last 7 days. Use [AUDIENCE_NAME] as the MailChimp audience and [TAGS_OR_SEGMENTS] for organization.\n```\nCopy\n\n```\n### WooCommerce-to-MailChimp Sync Report\n**Store:** \"EcoGlow Candles\" (ID: wc-12345)\n**Sync Status:** Completed successfully\n**Time:** 2 minutes 15 seconds\n\n#### 1. Audience Segmentation\n- **Total Active Customers (Last 30 Days):** 428\n  - **Segment 1: High-Value Customers** (Spent >$100): 89 (20.8%)\n    - *Example:* Customer #4567 (jane.doe@email.com) spent $125 on 3 premium soy candles. Tagged as \"VIP\" and added to \"Loyalty Program\" segment.\n  - **Segment 2: Repeat Buyers** (2+ orders): 156 (36.4%)\n    - *Example:* Customer #7890 (mike.smith@email.com) purchased 4 times in 30 days. Added to \"Repeat Customers\" segment with tag \"frequent_buyer\".\n  - **Segment 3: First-Time Buyers:** 183 (42.8%)\n    - *Example:* Customer #1122 (sarah.jones@email.com) made her first purchase of a lavender candle. Added to \"New Customers\" segment with tag \"first_order\".\n\n#### 2. Automated Email Campaigns\n- **Welcome Series for New Subscribers:** Configured (3 emails)\n  - **Email 1:** \"Welcome to EcoGlow! Here’s 10% off your next order\" (Sent immediately)\n  - **Email 2:** \"Your favorite candles are back in stock!\" (Sent 3 days later)\n  - **Email 3:** \"Join our loyalty program for exclusive perks\" (Sent 7 days later)\n- **Abandoned Cart Retargeting:** \n  - **Ad Created:** \"Forgot something? Complete your order now!\"\n  - **Audience:** 34 customers who abandoned carts in the last 7 days\n  - **Ad Creative:** Dynamic product images of abandoned items (e.g., \"Vanilla Bean Candle\" and \"Eucalyptus Diffuser\")\n\n#### 3. Postcard Campaign (Optional)\n- **Postcard Trigger:** High-value customers (Segment 1) who haven’t purchased in 60+ days\n- **Message:** \"We miss you! Enjoy 15% off your next order with code WELCOMEBACK15\"\n- **Recipients:** 22 customers\n\n#### 4. Performance Tracking\n- **MailChimp Tags Applied:** \n  - `vip_customer`, `repeat_buyer`, `first_order`, `abandoned_cart_7d`\n- **Sync Log:** \n  - Products synced: 45/45 (100%)\n  - Orders synced: 678/678 (100%)\n  - Subscribers added: 124 (new signups)\n\n**Next Steps:**\n1. Review the segmented audiences in MailChimp under [AUDIENCE_NAME].\n2. Monitor the abandoned cart ad performance in MailChimp Ads Manager.\n3. Schedule the postcard campaign for next week using the provided template.\n\n*Note: Sync runs automatically every 6 hours. Adjust segmentation criteria in MailChimp if needed.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:01:01.331594Z",
+    "http_status": 200,
+    "content_hash": "affe2d1d082253b124a9fa878035761a4e68bd16d8bf7828a8982d306ea1ef7d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mc-woocommerce.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mc-woocommerce.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MailChimp for WooCommerce - Sync Data for Marketing",
+  "short_description_vi": "Syncs WooCommerce data with MailChimp for marketing automation. Enables email campaigns, automations, ads, and postcards. Connects WooCommerce stores to MailChimp for targeted marketing."
+}

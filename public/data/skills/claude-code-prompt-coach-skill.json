@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-prompt-coach-skill",
+  "slug": "claude-code-prompt-coach-skill",
+  "name": "Claude Code Prompt Coach Skill",
+  "headline": "Enhance prompts with Claude Code prompt coach skill",
+  "short_description": "Analyzes Claude Code session logs to provide insights on coding patterns, token usage, productivity, and prompt quality. Helps developers improve efficiency and effectiveness in their coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "hancengiz",
+  "install_command": "git clone https://github.com/hancengiz/claude-code-prompt-coach-skill.git",
+  "source_repo_url": "https://github.com/hancengiz/claude-code-prompt-coach-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Prompt Coach reads your local Claude Code session logs to provide detailed insights into your coding workflow. The skill analyzes token usage and costs, identifies vague prompts that require clarification, shows which tools you use most, and reveals your productivity patterns across projects. It generates before-and-after examples from your actual logs, calculates time lost to unclear prompts, and provides actionable templates for common tasks. Developers use it to reduce iterations, lower costs, and understand when and where they're most productive.\nTrack monthly token spending and cache efficiency across all projects\nIdentify vague prompts causing clarification requests and calculate time savings from improvements\nFind underutilized tools and optimize which tool to use for specific tasks\nDiscover peak productivity hours and project switching overhead",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hancengiz/claude-code-prompt-coach-skill`",
+    "usage": "```\nAnalyze the Claude Code session logs for [DEVELOPER_NAME] from [START_DATE] to [END_DATE]. Identify their most frequently used [PROGRAMMING_LANGUAGE] libraries/frameworks and the average [TOKEN_USAGE_METRIC] per session. Highlight any repetitive or inefficient coding patterns, and suggest 3 concrete improvements to optimize their workflow. Focus on reducing [SPECIFIC_ISSUE] like redundant code or excessive context in prompts.\n```\nCopy\n\n```\nHere’s a detailed analysis of your Claude Code sessions from June 1-15, 2024. Over this period, you completed 42 coding sessions, with an average token usage of 12,450 tokens per session—a 15% increase from the previous month. Your most frequently used libraries were React (38% of sessions), Node.js (25%), and PostgreSQL (18%).\n\n**Key Findings:**\n1. **Repetitive Patterns:** In 68% of your sessions, you reused the same `useEffect` hook template without modification, even when the dependencies changed. This added an average of 120 tokens per session.\n2. **Prompt Efficiency:** Your prompts often included redundant context, such as repeating the project name or file structure in every query. This inflated token usage by ~20%.\n3. **Error Handling:** You spent 18% of your sessions debugging the same `null reference` errors, suggesting a need for better input validation.\n\n**Recommended Improvements:**\n- **Template Optimization:** Use a pre-configured `useEffect` snippet in your IDE to reduce manual input. This could save ~15 minutes per week.\n- **Prompt Refinement:** Structure prompts to include only the relevant context. For example, instead of saying, 'In the Acme project, in the `src/components/UserCard.js` file...', try 'In `UserCard.js`, implement...'.\n- **Proactive Debugging:** Add input validation checks in your codebase to catch `null` values early, reducing debugging time by ~25%.\n\nWould you like me to generate a custom VS Code snippet for your `useEffect` hook or draft a prompt template for your next project?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-prompt-coach-skill#main-content",
+      "claude-code-prompt-coach-skill#overview",
+      "claude-code-prompt-coach-skill#setup",
+      "claude-code-prompt-coach-skill#examples",
+      "claude-code-prompt-coach-skill#tools",
+      "claude-code-prompt-coach-skill#mcp",
+      "claude-code-prompt-coach-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Prompt Coach reads your local Claude Code session logs to provide detailed insights into your coding workflow. The skill analyzes token usage and costs, identifies vague prompts that require clarification, shows which tools you use most, and reveals your productivity patterns across projects. It generates before-and-after examples from your actual logs, calculates time lost to unclear prompts, and provides actionable templates for common tasks. Developers use it to reduce iterations, lower costs, and understand when and where they're most productive.\nTrack monthly token spending and cache efficiency across all projects\nIdentify vague prompts causing clarification requests and calculate time savings from improvements\nFind underutilized tools and optimize which tool to use for specific tasks\nDiscover peak productivity hours and project switching overhead",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hancengiz/claude-code-prompt-coach-skill`",
+    "usage_vi": "```\nAnalyze the Claude Code session logs for [DEVELOPER_NAME] from [START_DATE] to [END_DATE]. Identify their most frequently used [PROGRAMMING_LANGUAGE] libraries/frameworks and the average [TOKEN_USAGE_METRIC] per session. Highlight any repetitive or inefficient coding patterns, and suggest 3 concrete improvements to optimize their workflow. Focus on reducing [SPECIFIC_ISSUE] like redundant code or excessive context in prompts.\n```\nCopy\n\n```\nHere’s a detailed analysis of your Claude Code sessions from June 1-15, 2024. Over this period, you completed 42 coding sessions, with an average token usage of 12,450 tokens per session—a 15% increase from the previous month. Your most frequently used libraries were React (38% of sessions), Node.js (25%), and PostgreSQL (18%).\n\n**Key Findings:**\n1. **Repetitive Patterns:** In 68% of your sessions, you reused the same `useEffect` hook template without modification, even when the dependencies changed. This added an average of 120 tokens per session.\n2. **Prompt Efficiency:** Your prompts often included redundant context, such as repeating the project name or file structure in every query. This inflated token usage by ~20%.\n3. **Error Handling:** You spent 18% of your sessions debugging the same `null reference` errors, suggesting a need for better input validation.\n\n**Recommended Improvements:**\n- **Template Optimization:** Use a pre-configured `useEffect` snippet in your IDE to reduce manual input. This could save ~15 minutes per week.\n- **Prompt Refinement:** Structure prompts to include only the relevant context. For example, instead of saying, 'In the Acme project, in the `src/components/UserCard.js` file...', try 'In `UserCard.js`, implement...'.\n- **Proactive Debugging:** Add input validation checks in your codebase to catch `null` values early, reducing debugging time by ~25%.\n\nWould you like me to generate a custom VS Code snippet for your `useEffect` hook or draft a prompt template for your next project?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:46.032970Z",
+    "http_status": 200,
+    "content_hash": "08ce80516b66c0f4d7a79bee0f41ca8e815ca341f8ae154c4b86f25957177497",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-prompt-coach-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-prompt-coach-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Enhance prompts with Claude Code prompt coach skill",
+  "short_description_vi": "Analyzes Claude Code session logs to provide insights on coding patterns, token usage, productivity, and prompt quality. Helps developers improve efficiency and effectiveness in their coding workflows."
+}

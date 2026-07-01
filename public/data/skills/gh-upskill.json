@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gh-upskill",
+  "slug": "gh-upskill",
+  "name": "gh-upskill",
+  "headline": "gh-upskill - Automate Skill Installation",
+  "short_description": "gh-upskill automates the installation of Claude/Agent skills from GitHub repositories. Operations teams benefit by quickly deploying pre-built skills to streamline workflows. It connects to GitHub and Claude/Agent platforms, enabling rapid integration of new capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "trieloff",
+  "install_command": "git clone https://github.com/trieloff/gh-upskill.git",
+  "source_repo_url": "https://github.com/trieloff/gh-upskill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "gh-extension"
+  ],
+  "sections": {
+    "overview": "gh-upskill automates the discovery and installation of Agent Skills from GitHub repositories, ClawHub, and Tessl registries. It scans for SKILL.md files per the agentskills.io specification and copies selected skills to your project or global skill directories. The tool works without git by downloading repositories as ZIP archives, with optional fallback to gh repo clone for authentication. Features include batch installation, private repository support, subfolder filtering, and automatic Claude Code environment detection. Operations teams and developers benefit by quickly deploying pre-built skills to streamline workflows across projects.\nInstall skills from private GitHub repositories\nBatch install multiple skills across projects\nManage and discover skills from ClawHub and Tessl registries\nDeploy skills globally for personal use across environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/trieloff/gh-upskill`",
+    "usage": "```\nInstall the skill named [SKILL_NAME] from the GitHub repository [REPO_URL]. Ensure it is compatible with the latest version of Claude/Agent. Provide a summary of the skill's capabilities and any dependencies required for installation.\n```\nCopy\n\n```\nThe skill 'gh-upskill' has been successfully installed from the GitHub repository 'https://github.com/example/gh-upskill'. This skill automates the installation of Claude/Agent skills from GitHub repositories. It is compatible with the latest version of Claude/Agent and requires Python 3.8 or higher. The skill's capabilities include seamless integration with GitHub and Claude/Agent platforms, enabling rapid deployment of pre-built skills. No additional dependencies are required for installation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gh-upskill#main-content",
+      "gh-upskill#overview",
+      "gh-upskill#setup",
+      "gh-upskill#examples",
+      "gh-upskill#tools",
+      "gh-upskill#mcp",
+      "gh-upskill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "gh-upskill tự động hóa việc tìm kiếm và cài đặt các Agent Skill từ các repository GitHub, cũng như các registry của ClawHub và Tessl. Công cụ này quét các file SKILL.md theo đặc tả của agentskills.io và sao chép các skill được chọn vào thư mục dự án hoặc thư mục skill toàn cục (global) của bạn. Công cụ hoạt động không cần git bằng cách tải repository dưới dạng file ZIP, hỗ trợ fallback về `gh repo clone` để xác thực nếu cần. Các tính năng nổi bật bao gồm cài đặt hàng loạt (batch installation), hỗ trợ repository riêng tư, lọc thư mục con và tự động phát hiện môi trường Claude Code. Đội ngũ vận hành và lập trình viên có thể nhanh chóng triển khai các skill được xây dựng sẵn để tối ưu hóa quy trình làm việc trên nhiều dự án.\nCài đặt skill từ các repository GitHub riêng tư\nCài đặt hàng loạt nhiều skill trên nhiều dự án\nQuản lý và tìm kiếm skill từ các registry ClawHub và Tessl\nTriển khai skill ở phạm vi toàn cục để sử dụng cá nhân trên nhiều môi trường",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/trieloff/gh-upskill`",
+    "usage_vi": "```\nCài đặt skill có tên [SKILL_NAME] từ repository GitHub [REPO_URL]. Đảm bảo nó tương thích với phiên bản mới nhất của Claude/Agent. Cung cấp bản tóm tắt các tính năng của skill và các dependency cần thiết để cài đặt.\n```\nSao chép\n\n```\nSkill 'gh-upskill' đã được cài đặt thành công từ repository GitHub 'https://github.com/example/gh-upskill'. Skill này tự động hóa việc cài đặt các skill Claude/Agent từ các repository GitHub. Nó tương thích với phiên bản mới nhất của Claude/Agent và yêu cầu Python 3.8 trở lên. Các tính năng của skill bao gồm tích hợp liền mạch với nền tảng GitHub và Claude/Agent, giúp triển khai nhanh chóng các skill được xây dựng sẵn. Không yêu cầu thêm dependency nào khác để cài đặt.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:02:53.769963Z",
+    "http_status": 200,
+    "content_hash": "a0b9e4d05e27cddbcf449e21cd245206598a070cf3bd0696b4a0044630b7f2a9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gh-upskill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gh-upskill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "gh-upskill - Tự động hóa cài đặt Skill",
+  "short_description_vi": "gh-upskill tự động hóa việc cài đặt các skill của Claude/Agent từ các repository GitHub. Đội ngũ vận hành (Operations teams) có thể nhanh chóng triển khai các skill được xây dựng sẵn để tối ưu hóa quy trình làm việc. Công cụ này kết nối trực tiếp với GitHub và các nền tảng Claude/Agent, giúp tích hợp nhanh chóng các tính năng mới."
+}

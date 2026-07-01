@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/customer-leads-generation-pipeline",
+  "slug": "customer-leads-generation-pipeline",
+  "name": "N8N-Automation-Suite",
+  "headline": "Automated B2B Lead Generation Pipeline",
+  "short_description": "The Customer-Leads-Generation-Pipeline automates the qualification of sales leads for B2B companies using AI, enhancing efficiency and effectiveness in lead generation. This pipeline is designed to streamline the sales process and improve conversion rates.",
+  "tier": "Silver",
+  "category": "SDRAERevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "sollyWolly",
+  "install_command": "claude install sollyWolly/Customer-Leads-Generation-Pipeline",
+  "source_repo_url": "https://github.com/sollyWolly/Customer-Leads-Generation-Pipeline",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "AI",
+    "sales pipeline",
+    "automation",
+    "B2B",
+    "lead generation"
+  ],
+  "sections": {
+    "overview": "The Customer-Leads-Generation-Pipeline automates lead qualification for B2B sales organizations by combining data enrichment, multi-dimensional scoring, and parallel LLM analysis. The pipeline retrieves organization data from Apollo API, enriches it with business information, traffic metrics from Snowflake, and technology stack data from BuiltWith. Scoring uses embedding-based semantic similarity for business information and tech stacks, while traffic data is ranked against existing customer baselines. Three LLM models—GPT-4o, Gemini 1.5 Flash, and Claude 3.5 Sonnet—independently qualify leads and recommend salesperson types, with results aggregated and uploaded to Snowflake for sales team use.\nAutomating lead qualification for B2B sales\nEnhancing sales team efficiency\nImproving lead conversion rates\nStreamlining the sales process",
+    "setup": "Terminal\nCopy\n`claude install sollyWolly/Customer-Leads-Generation-Pipeline`\n`git clone https://github.com/sollyWolly/Customer-Leads-Generation-Pipeline`",
+    "usage": "```\nGenerate a list of 10 qualified B2B sales leads for [COMPANY], a [INDUSTRY] company. Include company name, contact person, job title, email, phone number, and a brief reason why they are a good fit. Use [DATA] to ensure the leads are relevant and have a high potential for conversion.\n```\nCopy\n\n```\n# Qualified B2B Sales Leads for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "customer-leads-generation-pipeline#main-content",
+      "customer-leads-generation-pipeline#overview",
+      "customer-leads-generation-pipeline#setup",
+      "customer-leads-generation-pipeline#examples",
+      "customer-leads-generation-pipeline#tools",
+      "customer-leads-generation-pipeline#mcp",
+      "customer-leads-generation-pipeline#related",
+      "sendur",
+      "attio-mcp",
+      "n8n-automation-suite"
+    ],
+    "overview_vi": "The Customer-Leads-Generation-Pipeline automates lead qualification for B2B sales organizations by combining data enrichment, multi-dimensional scoring, and parallel LLM analysis. The pipeline retrieves organization data from Apollo API, enriches it with business information, traffic metrics from Snowflake, and technology stack data from BuiltWith. Scoring uses embedding-based semantic similarity for business information and tech stacks, while traffic data is ranked against existing customer baselines. Three LLM models—GPT-4o, Gemini 1.5 Flash, and Claude 3.5 Sonnet—independently qualify leads and recommend salesperson types, with results aggregated and uploaded to Snowflake for sales team use.\nAutomating lead qualification for B2B sales\nEnhancing sales team efficiency\nImproving lead conversion rates\nStreamlining the sales process",
+    "setup_vi": "Terminal\nCopy\n`claude install sollyWolly/Customer-Leads-Generation-Pipeline`\n`git clone https://github.com/sollyWolly/Customer-Leads-Generation-Pipeline`",
+    "usage_vi": "```\nGenerate a list of 10 qualified B2B sales leads for [COMPANY], a [INDUSTRY] company. Include company name, contact person, job title, email, phone number, and a brief reason why they are a good fit. Use [DATA] to ensure the leads are relevant and have a high potential for conversion.\n```\nCopy\n\n```\n# Qualified B2B Sales Leads for GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:12:28.592543Z",
+    "http_status": 200,
+    "content_hash": "29a54995ecf23571b158b76b068dfe7ada60442decc7246ce22b6652c10b5444",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\customer-leads-generation-pipeline.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\customer-leads-generation-pipeline.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Automated B2B Lead Generation Pipeline",
+  "short_description_vi": "The Customer-Leads-Generation-Pipeline automates the qualification of sales leads for B2B companies using AI, enhancing efficiency and effectiveness in lead generation. This pipeline is designed to streamline the sales process and improve conversion rates."
+}

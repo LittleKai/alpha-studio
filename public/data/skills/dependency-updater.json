@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dependency-updater",
+  "slug": "dependency-updater",
+  "name": "browser-use",
+  "headline": "dependency-updater: Dependency Management",
+  "short_description": "The dependency-updater skill automates the process of managing and updating project dependencies. This skill ensures that your projects are always using the latest and most secure versions of libraries, saving developers significant time and reducing the risk of vulnerabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "softaworks",
+  "install_command": "git clone https://github.com/softaworks/agent-toolkit.git",
+  "source_repo_url": "https://github.com/softaworks/agent-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The dependency-updater skill is designed to automate the management and updating of project dependencies, allowing developers to focus on building features rather than manually checking for updates. By integrating this skill into your workflow, you can ensure that your projects are always using the latest and most secure versions of libraries, which is crucial for maintaining application stability and security. It works by scanning your project's dependency files and automatically updating them based on predefined rules, making the entire process seamless. One of the key benefits of using the dependency-updater skill is the significant time savings it offers. Manually updating dependencies can be a tedious and error-prone task, especially for large projects with numerous libraries. With this skill, you can reduce the time spent on maintenance tasks, allowing your development team to allocate more resources to innovation and feature development. Additionally, by keeping dependencies up-to-date, you minimize the risk of running into security vulnerabilities that outdated libraries may introduce. This skill is ideal for developers, product managers, and AI practitioners who are looking to streamline their development processes. It is particularly beneficial for teams working on large-scale applications where managing dependencies can become complex. Practical use cases include automating updates for web applications, mobile app projects, and microservices architectures. For instance, a web development team can use this skill to ensure that their front-end libraries are always current, while a mobile app team can automate the updates of SDKs and third-party libraries. The implementation of the dependency-updater skill is straightforward, making it accessible even for teams with limited experience in automation. It fits seamlessly into AI-first workflows by enhancing productivity and efficiency, allowing teams to leverage AI automation to handle routine tasks. By incorporating this skill into your development pipeline, you can create a more agile and responsive development environment, ultimately leading to faster delivery of high-quality software.\nAutomate updates for web application dependencies to ensure compatibility and security.\nManage SDK updates in mobile app projects, reducing the risk of using deprecated libraries.\nEnsure library versions are current in microservices architectures to maintain system integrity.\nReduce manual checks for outdated libraries in large projects, saving developers time.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage": "```\nUpdate the dependencies for the [PROJECT_NAME] project. Use the [PACKAGE_MANAGER] (e.g., npm, pip, composer) to check for outdated packages. For each outdated package, suggest the latest stable version and provide a brief explanation of the changes introduced in the new version. Additionally, identify any potential compatibility issues with the current project configuration.\n```\nCopy\n\n```\nAfter analyzing the dependencies for the 'E-Commerce Platform' project using npm, the following updates are recommended:\n\n1. **react**: Update from 17.0.2 to 18.2.0\n   - Changes: New features include concurrent rendering and automatic batching.\n   - Compatibility: No known issues with the current project configuration.\n\n2. **axios**: Update from 0.21.1 to 0.27.2\n   - Changes: Improved performance and bug fixes.\n   - Compatibility: Ensure the project's TypeScript version is compatible with the new axios version.\n\n3. **lodash**: Update from 4.17.19 to 4.17.21\n   - Changes: Security patches and minor improvements.\n   - Compatibility: No known issues.\n\n4. **express**: Update from 4.17.1 to 4.18.1\n   - Changes: Security patches and minor improvements.\n   - Compatibility: No known issues.\n\nTo proceed with the updates, run the following command: `npm update`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dependency-updater#main-content",
+      "dependency-updater#overview",
+      "dependency-updater#setup",
+      "dependency-updater#examples",
+      "dependency-updater#tools",
+      "dependency-updater#mcp",
+      "dependency-updater#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The dependency-updater skill is designed to automate the management and updating of project dependencies, allowing developers to focus on building features rather than manually checking for updates. By integrating this skill into your workflow, you can ensure that your projects are always using the latest and most secure versions of libraries, which is crucial for maintaining application stability and security. It works by scanning your project's dependency files and automatically updating them based on predefined rules, making the entire process seamless. One of the key benefits of using the dependency-updater skill is the significant time savings it offers. Manually updating dependencies can be a tedious and error-prone task, especially for large projects with numerous libraries. With this skill, you can reduce the time spent on maintenance tasks, allowing your development team to allocate more resources to innovation and feature development. Additionally, by keeping dependencies up-to-date, you minimize the risk of running into security vulnerabilities that outdated libraries may introduce. This skill is ideal for developers, product managers, and AI practitioners who are looking to streamline their development processes. It is particularly beneficial for teams working on large-scale applications where managing dependencies can become complex. Practical use cases include automating updates for web applications, mobile app projects, and microservices architectures. For instance, a web development team can use this skill to ensure that their front-end libraries are always current, while a mobile app team can automate the updates of SDKs and third-party libraries. The implementation of the dependency-updater skill is straightforward, making it accessible even for teams with limited experience in automation. It fits seamlessly into AI-first workflows by enhancing productivity and efficiency, allowing teams to leverage AI automation to handle routine tasks. By incorporating this skill into your development pipeline, you can create a more agile and responsive development environment, ultimately leading to faster delivery of high-quality software.\nAutomate updates for web application dependencies to ensure compatibility and security.\nManage SDK updates in mobile app projects, reducing the risk of using deprecated libraries.\nEnsure library versions are current in microservices architectures to maintain system integrity.\nReduce manual checks for outdated libraries in large projects, saving developers time.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage_vi": "```\nUpdate the dependencies for the [PROJECT_NAME] project. Use the [PACKAGE_MANAGER] (e.g., npm, pip, composer) to check for outdated packages. For each outdated package, suggest the latest stable version and provide a brief explanation of the changes introduced in the new version. Additionally, identify any potential compatibility issues with the current project configuration.\n```\nCopy\n\n```\nAfter analyzing the dependencies for the 'E-Commerce Platform' project using npm, the following updates are recommended:\n\n1. **react**: Update from 17.0.2 to 18.2.0\n   - Changes: New features include concurrent rendering and automatic batching.\n   - Compatibility: No known issues with the current project configuration.\n\n2. **axios**: Update from 0.21.1 to 0.27.2\n   - Changes: Improved performance and bug fixes.\n   - Compatibility: Ensure the project's TypeScript version is compatible with the new axios version.\n\n3. **lodash**: Update from 4.17.19 to 4.17.21\n   - Changes: Security patches and minor improvements.\n   - Compatibility: No known issues.\n\n4. **express**: Update from 4.17.1 to 4.18.1\n   - Changes: Security patches and minor improvements.\n   - Compatibility: No known issues.\n\nTo proceed with the updates, run the following command: `npm update`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:39:53.973235Z",
+    "http_status": 200,
+    "content_hash": "c37c360582798a8fc260746c40dd4710cd1981efced800ae93de07022e4c2c23",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dependency-updater.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dependency-updater.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "dependency-updater: Dependency Management",
+  "short_description_vi": "The dependency-updater skill automates the process of managing and updating project dependencies. This skill ensures that your projects are always using the latest and most secure versions of libraries, saving developers significant time and reducing the risk of vulnerabilities."
+}

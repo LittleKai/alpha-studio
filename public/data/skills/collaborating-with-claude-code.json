@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/collaborating-with-claude-code",
+  "slug": "collaborating-with-claude-code",
+  "name": "browser-use",
+  "headline": "Collaborating with Claude Code - Code Review &",
+  "short_description": "Collaborate with Claude Code for code review, debugging, and solution comparison. Operations teams use this to integrate Claude Code's capabilities into their workflows via a JSON bridge script. Connects to Codex CLI for structured JSON results.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "ZhenHuangLab",
+  "install_command": "git clone https://github.com/ZhenHuangLab/collaborating-with-claude-code.git",
+  "source_repo_url": "https://github.com/ZhenHuangLab/collaborating-with-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The collaborating-with-claude-code skill integrates Claude Code CLI into Codex workflows through a JSON bridge script that handles code review, debugging, and solution comparison tasks. It sends work to Claude Code (default model: claude-opus-4-6) and returns structured JSON results compatible with multi-model agent systems. The skill uses progressive disclosure context engineering so Codex learns the script interface efficiently within one or two tool calls, without repeatedly searching documentation. It also handles compatibility with Anthropic-compatible proxy APIs that enforce strict message structure validation when extended thinking is enabled, by breaking long agentic loops into shorter ones. Operations teams and developers use this skill to automate code analysis tasks while maintaining clean JSON output suitable for downstream processing.\nCode review and security audit of authentication flows\nDebugging production issues with structured analysis output\nComparing multiple solution proposals for a single problem\nAutomated code quality checks in CI/CD pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZhenHuangLab/collaborating-with-claude-code`",
+    "usage": "```\nUse Claude Code to [TASK] for the following codebase: [PROJECT_PATH]. Provide a structured JSON response with: 1) Key findings, 2) Suggested fixes with line numbers, 3) Performance impact analysis, 4) Alternative solutions comparison. Format as: { 'findings': [], 'fixes': [], 'performance': { 'current': [], 'optimized': [] }, 'alternatives': [] }\n```\nCopy\n\n```\n```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"issue\": \"Memory leak in data processing pipeline detected in utils/data_loader.py (lines 45-52)\",\n      \"evidence\": \"Heap usage increases by 15% per 1000 records processed\",\n      \"impact\": \"Causes application crashes after ~50k records\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"issue\": \"Race condition in user session management (auth/middleware.py:112)\",\n      \"evidence\": \"Intermittent failed logins under high concurrency\",\n      \"impact\": \"1-2% login failures during peak hours\"\n    }\n  ],\n  \"fixes\": [\n    {\n      \"file\": \"utils/data_loader.py\",\n      \"line\": 47,\n      \"fix\": \"Replace list.append() with generator expression to reduce memory footprint\",\n      \"code\": \"# Before: data = []\\n#         for record in records:\\n#             data.append(process(record))\\n# After: data = (process(record) for record in records)\"\n    },\n    {\n      \"file\": \"auth/middleware.py\",\n      \"line\": 112,\n      \"fix\": \"Add thread-safe session locking using threading.Lock()\",\n      \"code\": \"session_lock = threading.Lock()\\nwith session_lock:\\n    validate_session(user_token)\"\n    }\n  ],\n  \"performance\": {\n    \"current\": {\n      \"memory_usage\": \"~800MB for 50k records\",\n      \"processing_time\": \"12.5s per batch\",\n      \"throughput\": \"4,000 records/hour\"\n    },\n    \"optimized\": {\n      \"memory_usage\": \"~450MB for 50k records (-44%)\",\n      \"processing_time\": \"7.2s per batch (-42%)\",\n      \"throughput\": \"7,200 records/hour (+80%)\"\n    }\n  },\n  \"alternatives\": [\n    {\n      \"solution\": \"Use multiprocessing.Pool for CPU-bound tasks\",\n      \"pros\": [\"Better CPU utilization\", \"No GIL contention\"],\n      \"cons\": [\"Higher memory usage\", \"Complex error handling\"],\n      \"when_to_use\": \"For pure computation tasks with large datasets\"\n    },\n    {\n      \"solution\": \"Implement asyncio for I/O-bound operations\",\n      \"pros\": [\"Non-blocking operations\", \"Lower memory footprint\"],\n      \"cons\": [\"Requires async/await syntax\", \"Debugging complexity\"],\n      \"when_to_use\": \"For network-bound applications with many connections\"\n    }\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "collaborating-with-claude-code#main-content",
+      "collaborating-with-claude-code#overview",
+      "collaborating-with-claude-code#setup",
+      "collaborating-with-claude-code#examples",
+      "collaborating-with-claude-code#tools",
+      "collaborating-with-claude-code#mcp",
+      "collaborating-with-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The collaborating-with-claude-code skill integrates Claude Code CLI into Codex workflows through a JSON bridge script that handles code review, debugging, and solution comparison tasks. It sends work to Claude Code (default model: claude-opus-4-6) and returns structured JSON results compatible with multi-model agent systems. The skill uses progressive disclosure context engineering so Codex learns the script interface efficiently within one or two tool calls, without repeatedly searching documentation. It also handles compatibility with Anthropic-compatible proxy APIs that enforce strict message structure validation when extended thinking is enabled, by breaking long agentic loops into shorter ones. Operations teams and developers use this skill to automate code analysis tasks while maintaining clean JSON output suitable for downstream processing.\nCode review and security audit of authentication flows\nDebugging production issues with structured analysis output\nComparing multiple solution proposals for a single problem\nAutomated code quality checks in CI/CD pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZhenHuangLab/collaborating-with-claude-code`",
+    "usage_vi": "```\nUse Claude Code to [TASK] for the following codebase: [PROJECT_PATH]. Provide a structured JSON response with: 1) Key findings, 2) Suggested fixes with line numbers, 3) Performance impact analysis, 4) Alternative solutions comparison. Format as: { 'findings': [], 'fixes': [], 'performance': { 'current': [], 'optimized': [] }, 'alternatives': [] }\n```\nCopy\n\n```\n```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"issue\": \"Memory leak in data processing pipeline detected in utils/data_loader.py (lines 45-52)\",\n      \"evidence\": \"Heap usage increases by 15% per 1000 records processed\",\n      \"impact\": \"Causes application crashes after ~50k records\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"issue\": \"Race condition in user session management (auth/middleware.py:112)\",\n      \"evidence\": \"Intermittent failed logins under high concurrency\",\n      \"impact\": \"1-2% login failures during peak hours\"\n    }\n  ],\n  \"fixes\": [\n    {\n      \"file\": \"utils/data_loader.py\",\n      \"line\": 47,\n      \"fix\": \"Replace list.append() with generator expression to reduce memory footprint\",\n      \"code\": \"# Before: data = []\\n#         for record in records:\\n#             data.append(process(record))\\n# After: data = (process(record) for record in records)\"\n    },\n    {\n      \"file\": \"auth/middleware.py\",\n      \"line\": 112,\n      \"fix\": \"Add thread-safe session locking using threading.Lock()\",\n      \"code\": \"session_lock = threading.Lock()\\nwith session_lock:\\n    validate_session(user_token)\"\n    }\n  ],\n  \"performance\": {\n    \"current\": {\n      \"memory_usage\": \"~800MB for 50k records\",\n      \"processing_time\": \"12.5s per batch\",\n      \"throughput\": \"4,000 records/hour\"\n    },\n    \"optimized\": {\n      \"memory_usage\": \"~450MB for 50k records (-44%)\",\n      \"processing_time\": \"7.2s per batch (-42%)\",\n      \"throughput\": \"7,200 records/hour (+80%)\"\n    }\n  },\n  \"alternatives\": [\n    {\n      \"solution\": \"Use multiprocessing.Pool for CPU-bound tasks\",\n      \"pros\": [\"Better CPU utilization\", \"No GIL contention\"],\n      \"cons\": [\"Higher memory usage\", \"Complex error handling\"],\n      \"when_to_use\": \"For pure computation tasks with large datasets\"\n    },\n    {\n      \"solution\": \"Implement asyncio for I/O-bound operations\",\n      \"pros\": [\"Non-blocking operations\", \"Lower memory footprint\"],\n      \"cons\": [\"Requires async/await syntax\", \"Debugging complexity\"],\n      \"when_to_use\": \"For network-bound applications with many connections\"\n    }\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:13:47.804748Z",
+    "http_status": 200,
+    "content_hash": "ddf5da10bd08a217b06cfa0dcc2a91e8400fd522d8f04a9f5f4f01ac1641ab83",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\collaborating-with-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\collaborating-with-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Collaborating with Claude Code - Code Review &",
+  "short_description_vi": "Collaborate with Claude Code for code review, debugging, and solution comparison. Operations teams use this to integrate Claude Code's capabilities into their workflows via a JSON bridge script. Connects to Codex CLI for structured JSON results."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/commodities-quote",
+  "slug": "commodities-quote",
+  "name": "trading-signals",
+  "headline": "Commodities Quote: Real-Time Prices",
+  "short_description": "This skill allows users to obtain real-time price quotes for various commodities such as precious metals, energy, and agricultural products. It is designed for users of AI agents like Cursor, Claude Desktop, and Windsurf that are configured with Octagon MCP.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "octagonai",
+  "install_command": "git clone https://github.com/octagonai/skills",
+  "source_repo_url": "https://github.com/octagonai/skills",
+  "works_with": [
+    "Windsurf",
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "finance",
+    "commodities",
+    "quote"
+  ],
+  "sections": {
+    "overview": "The Commodities Quote skill provides real-time price data for a range of commodity markets including precious metals, energy products, and agricultural commodities. Built on the Octagon MCP framework, it integrates seamlessly with AI agents like Claude Code, Cursor, and Windsurf to deliver current market pricing. Users can retrieve commodity quotes programmatically to support financial analysis, trading decisions, and market monitoring workflows. This skill is designed for analysts, traders, and financial professionals who need immediate access to commodity price information within their AI agent environment.\nGet the current price of Gold using the symbol GCUSD.\nRetrieve real-time quotes for Crude Oil represented by CLUSD.\nCheck prices for Natural Gas with the symbol NGUSD.\nAccess historical price data for commodities through Octagon MCP.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/octagonai/skills --skill commodities-quote`\n`git clone https://github.com/octagonai/skills`",
+    "usage": "```\nFetch the latest real-time price quote for [COMMODITY] (e.g., gold, Brent crude oil, wheat) using Octagon MCP. Include the current price, percentage change from the previous close, and the timestamp of the quote. Format the response as a concise market update.\n```\nCopy\n\n```\n### Commodities Quote: Gold\n\n**Current Price:** $2,345.67 per troy ounce\n**Change:** +1.23% (+$28.45)\n**Timestamp:** 2024-05-20 14:32:10 UTC\n\n#### Key Details:\n- **Previous Close:** $2,317.22\n- **Day Range:** $2,330.15 - $2,355.89\n- **Volume:** 12,450 contracts\n\n*Source: Octagon MCP (Real-Time Data)*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "commodities-quote#main-content",
+      "commodities-quote#overview",
+      "commodities-quote#setup",
+      "commodities-quote#examples",
+      "commodities-quote#related",
+      "tushare",
+      "alva",
+      "trading-signals"
+    ],
+    "overview_vi": "The Commodities Quote skill provides real-time price data for a range of commodity markets including precious metals, energy products, and agricultural commodities. Built on the Octagon MCP framework, it integrates seamlessly with AI agents like Claude Code, Cursor, and Windsurf to deliver current market pricing. Users can retrieve commodity quotes programmatically to support financial analysis, trading decisions, and market monitoring workflows. This skill is designed for analysts, traders, and financial professionals who need immediate access to commodity price information within their AI agent environment.\nGet the current price of Gold using the symbol GCUSD.\nRetrieve real-time quotes for Crude Oil represented by CLUSD.\nCheck prices for Natural Gas with the symbol NGUSD.\nAccess historical price data for commodities through Octagon MCP.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/octagonai/skills --skill commodities-quote`\n`git clone https://github.com/octagonai/skills`",
+    "usage_vi": "```\nFetch the latest real-time price quote for [COMMODITY] (e.g., gold, Brent crude oil, wheat) using Octagon MCP. Include the current price, percentage change from the previous close, and the timestamp of the quote. Format the response as a concise market update.\n```\nCopy\n\n```\n### Commodities Quote: Gold\n\n**Current Price:** $2,345.67 per troy ounce\n**Change:** +1.23% (+$28.45)\n**Timestamp:** 2024-05-20 14:32:10 UTC\n\n#### Key Details:\n- **Previous Close:** $2,317.22\n- **Day Range:** $2,330.15 - $2,355.89\n- **Volume:** 12,450 contracts\n\n*Source: Octagon MCP (Real-Time Data)*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:23:00.935693Z",
+    "http_status": 200,
+    "content_hash": "7da76b954202f67d5f1d0603394df959f8676e8585f49fee0c8ebd9b48ad6ac8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\commodities-quote.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\commodities-quote.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Commodities Quote: Real-Time Prices",
+  "short_description_vi": "This skill allows users to obtain real-time price quotes for various commodities such as precious metals, energy, and agricultural products. It is designed for users of AI agents like Cursor, Claude Desktop, and Windsurf that are configured with Octagon MCP."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llmapper-skill",
+  "slug": "llmapper-skill",
+  "name": "browser-use",
+  "headline": "LLMapper Skill: Concept Maps from Articles",
+  "short_description": "A Claude Skill that transforms articles, PDFs, URLs, or pasted text into visual concept maps using a four-stage LLM pipeline with Mermaid diagram output.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "jorgearango",
+  "install_command": "git clone https://github.com/jorgearango/llmapper-skill.git",
+  "source_repo_url": "https://github.com/jorgearango/llmapper-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "LLMapper Skill is a Claude Skill that converts articles and documents into structured visual knowledge graphs, answering what a subject is about and why it matters. It accepts file uploads (PDFs, text files), URLs, and pasted text as input sources. The skill processes content through four sequential stages: generating focusing questions for the user to choose from, summarizing key concepts and relationships, structuring data as an RDF knowledge graph, and rendering a Mermaid flowchart diagram inline as a Claude artifact. Researchers, students, and knowledge workers who need to quickly map and retain complex information from articles will find this skill especially useful.\nConvert a research paper PDF into a navigable concept map\nSummarize a long web article as a visual knowledge graph by pasting its URL\nExtract and visualize key distinctions and contrasts from dense text\nGenerate multiple conceptual perspectives on a topic and choose the most relevant",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jorgearango/llmapper-skill`",
+    "usage": "```\nCreate a concept map for [TOPIC] using the llmapper-skill. Include at least 10 key concepts and show the relationships between them. Format the output as a markdown table with columns for Concept, Description, and Related Concepts. Focus on [SPECIFIC ASPECT] of the topic.\n```\nCopy\n\n```\nHere's a concept map for 'Renewable Energy Technologies' focusing on solar power:\n\n| Concept          | Description                                                                 | Related Concepts                     |\n|-------------------|-----------------------------------------------------------------------------|---------------------------------------|\n| Photovoltaic Cells | Convert sunlight directly into electricity using semiconducting materials. | Solar Panels, Silicon, Efficiency    |\n| Solar Panels      | Arrays of photovoltaic cells designed for large-scale electricity generation. | Grid Integration, Rooftop Installations |\n| Grid Integration  | Systems that connect solar power to the electrical grid.                  | Energy Storage, Smart Grids         |\n| Energy Storage    | Technologies that store excess solar energy for later use.                 | Batteries, Flywheels, Hydrogen     |\n| Efficiency        | The percentage of sunlight converted into usable electricity.              | Thin-Film, Monocrystalline, Bifacial |\n| Thin-Film         | A type of photovoltaic cell made by depositing one or more thin layers.     | Cadmium Telluride, Amorphous Silicon |\n| Monocrystalline   | Photovoltaic cells made from a single, continuous crystal structure.        | Efficiency, Cost                     |\n| Bifacial          | Solar panels that can collect sunlight from both sides.                    | Efficiency, Installation Angles     |\n| Rooftop Installations | Solar panels installed on residential or commercial buildings.             | Net Metering, Incentives            |\n| Net Metering      | A billing mechanism that allows solar energy system owners to feed excess energy back into the grid. | Incentives, Policy                   |\n\nThis map shows the interconnected nature of solar power technologies and their supporting systems.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "llmapper-skill#main-content",
+      "llmapper-skill#overview",
+      "llmapper-skill#setup",
+      "llmapper-skill#examples",
+      "llmapper-skill#tools",
+      "llmapper-skill#mcp",
+      "llmapper-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LLMapper Skill is a Claude Skill that converts articles and documents into structured visual knowledge graphs, answering what a subject is about and why it matters. It accepts file uploads (PDFs, text files), URLs, and pasted text as input sources. The skill processes content through four sequential stages: generating focusing questions for the user to choose from, summarizing key concepts and relationships, structuring data as an RDF knowledge graph, and rendering a Mermaid flowchart diagram inline as a Claude artifact. Researchers, students, and knowledge workers who need to quickly map and retain complex information from articles will find this skill especially useful.\nConvert a research paper PDF into a navigable concept map\nSummarize a long web article as a visual knowledge graph by pasting its URL\nExtract and visualize key distinctions and contrasts from dense text\nGenerate multiple conceptual perspectives on a topic and choose the most relevant",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jorgearango/llmapper-skill`",
+    "usage_vi": "```\nCreate a concept map for [TOPIC] using the llmapper-skill. Include at least 10 key concepts and show the relationships between them. Format the output as a markdown table with columns for Concept, Description, and Related Concepts. Focus on [SPECIFIC ASPECT] of the topic.\n```\nCopy\n\n```\nHere's a concept map for 'Renewable Energy Technologies' focusing on solar power:\n\n| Concept          | Description                                                                 | Related Concepts                     |\n|-------------------|-----------------------------------------------------------------------------|---------------------------------------|\n| Photovoltaic Cells | Convert sunlight directly into electricity using semiconducting materials. | Solar Panels, Silicon, Efficiency    |\n| Solar Panels      | Arrays of photovoltaic cells designed for large-scale electricity generation. | Grid Integration, Rooftop Installations |\n| Grid Integration  | Systems that connect solar power to the electrical grid.                  | Energy Storage, Smart Grids         |\n| Energy Storage    | Technologies that store excess solar energy for later use.                 | Batteries, Flywheels, Hydrogen     |\n| Efficiency        | The percentage of sunlight converted into usable electricity.              | Thin-Film, Monocrystalline, Bifacial |\n| Thin-Film         | A type of photovoltaic cell made by depositing one or more thin layers.     | Cadmium Telluride, Amorphous Silicon |\n| Monocrystalline   | Photovoltaic cells made from a single, continuous crystal structure.        | Efficiency, Cost                     |\n| Bifacial          | Solar panels that can collect sunlight from both sides.                    | Efficiency, Installation Angles     |\n| Rooftop Installations | Solar panels installed on residential or commercial buildings.             | Net Metering, Incentives            |\n| Net Metering      | A billing mechanism that allows solar energy system owners to feed excess energy back into the grid. | Incentives, Policy                   |\n\nThis map shows the interconnected nature of solar power technologies and their supporting systems.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:51:14.147264Z",
+    "http_status": 200,
+    "content_hash": "7e1723d29acdcebbc5ebd89acbdd65ec07bec7e9a16a3dc111970ad0badcdd35",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llmapper-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llmapper-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LLMapper Skill: Concept Maps from Articles",
+  "short_description_vi": "A Claude Skill that transforms articles, PDFs, URLs, or pasted text into visual concept maps using a four-stage LLM pipeline with Mermaid diagram output."
+}

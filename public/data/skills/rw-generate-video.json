@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rw-generate-video",
+  "slug": "rw-generate-video",
+  "name": "Rw Generate Video",
+  "headline": "rw-generate-video: Video Generation API",
+  "short_description": "This skill allows users to generate videos using Python scripts that call the Runway API. It's designed for developers looking to automate video generation processes.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "runwayml",
+  "install_command": "git clone https://github.com/runwayml/skills",
+  "source_repo_url": "https://github.com/runwayml/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "video-generation",
+    "video",
+    "generate"
+  ],
+  "sections": {
+    "overview": "rw-generate-video enables developers to automate video generation using the Runway API, supporting multiple models including seedance2, gen4.5, veo3, and others. The skill handles API calls, task polling, and result downloads automatically, allowing you to generate single assets or orchestrate batch productions. Use cases include creating product videos, ad campaigns, and multishot stories with precise control over duration and aspect ratios. The skill works with Claude Code, Cursor, and other compatible agents, requiring only a Runway developer account with prepaid credits and the uv Python package runner.\nGenerate promotional videos from text descriptions\nCreate social media video content automatically\nTransform images into videos using user-defined prompts",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/runwayml/skills --skill rw-generate-video`\n`git clone https://github.com/runwayml/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "rw-generate-video#main-content",
+      "rw-generate-video#overview",
+      "rw-generate-video#setup",
+      "rw-generate-video#examples",
+      "rw-generate-video#tools",
+      "rw-generate-video#mcp",
+      "rw-generate-video#related",
+      "promo-video-skill"
+    ],
+    "overview_vi": "rw-generate-video cho phép lập trình viên tự động hóa việc tạo video thông qua Runway API, hỗ trợ nhiều mô hình bao gồm seedance2, gen4.5, veo3 và nhiều mô hình khác. Skill này tự động xử lý các lệnh gọi API, task polling và tải kết quả về, giúp bạn tạo các asset đơn lẻ hoặc điều phối sản xuất hàng loạt. Các trường hợp sử dụng bao gồm tạo video giới thiệu sản phẩm, chiến dịch quảng cáo và kể chuyện đa phân cảnh (multishot) với khả năng kiểm soát chính xác thời lượng cũng như tỷ lệ khung hình. Skill này hoạt động tương thích với Claude Code, Cursor và các agent khác, chỉ yêu cầu tài khoản nhà phát triển Runway có sẵn số dư (prepaid credits) và trình chạy gói Python uv.\n\nTạo video quảng cáo từ mô tả văn bản\nTự động tạo nội dung video cho mạng xã hội\nChuyển đổi hình ảnh thành video bằng các prompt tự định nghĩa",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/runwayml/skills --skill rw-generate-video`\n`git clone https://github.com/runwayml/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ mẫu\nKiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:10:28.422290Z",
+    "http_status": 200,
+    "content_hash": "bc371511ac6cce8b0831a7f7c7f2856fd5ceaceaacbd98a7ae28ee7404736ddd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rw-generate-video.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rw-generate-video.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "rw-generate-video: API tạo video",
+  "short_description_vi": "Skill này cho phép người dùng tạo video bằng các script Python gọi Runway API. Công cụ được thiết kế dành cho các lập trình viên muốn tự động hóa quy trình tạo video."
+}

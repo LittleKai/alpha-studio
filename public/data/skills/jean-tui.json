@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jean-tui",
+  "slug": "jean-tui",
+  "name": "browser-use",
+  "headline": "jean-tui - AI-Powered Git Worktree Management",
+  "short_description": "jean-tui is an AI-powered terminal interface for managing Git worktrees. It simplifies branch and worktree management with a keyboard-driven UI. Connects to Claude Code for AI assistance, integrates with tmux, and is written in Go.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "coollabsio",
+  "install_command": "git clone https://github.com/coollabsio/jean-tui.git",
+  "source_repo_url": "https://github.com/coollabsio/jean-tui",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "git",
+    "worktree",
+    "tmux",
+    "ai",
+    "tui"
+  ],
+  "sections": {
+    "overview": "jean is a keyboard-driven terminal UI built in Go that simplifies Git worktree management for developers working with multiple branches. It automates workflows by generating commit messages, branch names, and PR descriptions using AI models via OpenRouter. The tool integrates with Claude CLI, tmux, and GitHub to handle PR creation, merging, and browsing without leaving the terminal. Features include persistent tmux sessions per worktree, support for multiple editors (VS Code, Cursor, Neovim, Vim, Sublime, Atom, Zed), and five built-in themes. Developers benefit from single-keystroke worktree operations, smart branch renaming, and automated setup scripts that run on new worktree creation.\nManaging multiple feature branches simultaneously with keyboard shortcuts\nAuto-generating commit messages and PR descriptions using AI\nCreating and switching between Git worktrees without manual setup\nHandling GitHub PR workflows directly from the terminal",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coollabsio/jean-tui`",
+    "usage": "```\nUse jean-tui to manage Git worktrees for [PROJECT_NAME]. List all existing worktrees, identify any that are stale or unused, and suggest cleanup actions. For each active worktree, summarize the latest commits and open changes. If a worktree needs attention, use jean-tui to [ACTION: e.g., prune, checkout, or delete it]. Finally, create a new worktree for [BRANCH_NAME] in [DIRECTORY_PATH] with a descriptive comment.\n```\nCopy\n\n```\n### Jean-Tui Worktree Management Report\n**Project:** `acme-crm`\n**Date:** 2024-05-20\n\n#### Current Worktrees\n1. **main** (~/dev/acme-crm/main)\n   - Latest commit: `feat: add user authentication (a1b2c3d)` by Alice (2024-05-19)\n   - Status: Clean, no changes\n   - Active sessions: 1 (tmux pane in session `dev`)\n\n2. **feature/login-redesign** (~/dev/acme-crm/login-redesign)\n   - Latest commit: `fix: resolve OAuth token leak (e4f5g6h)` by Bob (2024-05-18)\n   - Status: 3 unstaged changes (login.html, auth.js)\n   - Active sessions: 2 (tmux pane in session `dev`, VS Code workspace)\n\n3. **bugfix/2345-checkout-failure** (~/dev/acme-crm/bugfix-2345)\n   - Latest commit: `fix: resolve checkout edge case (i7j8k9l)` by Carol (2024-05-15)\n   - Status: Merged into main, stale (no activity for 5+ days)\n   - Active sessions: 0\n\n#### Recommended Actions\n- **Prune stale worktree:** The `bugfix/2345-checkout-failure` worktree hasn’t been used in 5 days. Run `jean-tui prune` to remove it.\n- **Review changes:** The `feature/login-redesign` worktree has unstaged changes. Open it in VS Code to review or stage them.\n- **Create new worktree:** Add a worktree for `feature/payment-integration` in `~/dev/acme-crm/payments` with the comment \"Add Stripe integration for checkout flow.\"\n\n#### Next Steps\n1. Open jean-tui (`jean-tui`) and select the `bugfix/2345-checkout-failure` worktree.\n2. Press `d` to delete it, then confirm with `y`.\n3. Switch to `feature/login-redesign` (press `Enter` on it) and stage the changes with `git add .`.\n4. Create the new `feature/payment-integration` worktree by selecting the `+` option in jean-tui and entering the branch name and directory.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "jean-tui#main-content",
+      "jean-tui#overview",
+      "jean-tui#setup",
+      "jean-tui#examples",
+      "jean-tui#tools",
+      "jean-tui#mcp",
+      "jean-tui#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "jean is a keyboard-driven terminal UI built in Go that simplifies Git worktree management for developers working with multiple branches. It automates workflows by generating commit messages, branch names, and PR descriptions using AI models via OpenRouter. The tool integrates with Claude CLI, tmux, and GitHub to handle PR creation, merging, and browsing without leaving the terminal. Features include persistent tmux sessions per worktree, support for multiple editors (VS Code, Cursor, Neovim, Vim, Sublime, Atom, Zed), and five built-in themes. Developers benefit from single-keystroke worktree operations, smart branch renaming, and automated setup scripts that run on new worktree creation.\nManaging multiple feature branches simultaneously with keyboard shortcuts\nAuto-generating commit messages and PR descriptions using AI\nCreating and switching between Git worktrees without manual setup\nHandling GitHub PR workflows directly from the terminal",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coollabsio/jean-tui`",
+    "usage_vi": "```\nUse jean-tui to manage Git worktrees for [PROJECT_NAME]. List all existing worktrees, identify any that are stale or unused, and suggest cleanup actions. For each active worktree, summarize the latest commits and open changes. If a worktree needs attention, use jean-tui to [ACTION: e.g., prune, checkout, or delete it]. Finally, create a new worktree for [BRANCH_NAME] in [DIRECTORY_PATH] with a descriptive comment.\n```\nCopy\n\n```\n### Jean-Tui Worktree Management Report\n**Project:** `acme-crm`\n**Date:** 2024-05-20\n\n#### Current Worktrees\n1. **main** (~/dev/acme-crm/main)\n   - Latest commit: `feat: add user authentication (a1b2c3d)` by Alice (2024-05-19)\n   - Status: Clean, no changes\n   - Active sessions: 1 (tmux pane in session `dev`)\n\n2. **feature/login-redesign** (~/dev/acme-crm/login-redesign)\n   - Latest commit: `fix: resolve OAuth token leak (e4f5g6h)` by Bob (2024-05-18)\n   - Status: 3 unstaged changes (login.html, auth.js)\n   - Active sessions: 2 (tmux pane in session `dev`, VS Code workspace)\n\n3. **bugfix/2345-checkout-failure** (~/dev/acme-crm/bugfix-2345)\n   - Latest commit: `fix: resolve checkout edge case (i7j8k9l)` by Carol (2024-05-15)\n   - Status: Merged into main, stale (no activity for 5+ days)\n   - Active sessions: 0\n\n#### Recommended Actions\n- **Prune stale worktree:** The `bugfix/2345-checkout-failure` worktree hasn’t been used in 5 days. Run `jean-tui prune` to remove it.\n- **Review changes:** The `feature/login-redesign` worktree has unstaged changes. Open it in VS Code to review or stage them.\n- **Create new worktree:** Add a worktree for `feature/payment-integration` in `~/dev/acme-crm/payments` with the comment \"Add Stripe integration for checkout flow.\"\n\n#### Next Steps\n1. Open jean-tui (`jean-tui`) and select the `bugfix/2345-checkout-failure` worktree.\n2. Press `d` to delete it, then confirm with `y`.\n3. Switch to `feature/login-redesign` (press `Enter` on it) and stage the changes with `git add .`.\n4. Create the new `feature/payment-integration` worktree by selecting the `+` option in jean-tui and entering the branch name and directory.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:17:37.314205Z",
+    "http_status": 200,
+    "content_hash": "3b513a05323f958852cadb1a992ceacf80d13ebe82017232fdd8c29cbabe915d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jean-tui.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jean-tui.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "jean-tui - AI-Powered Git Worktree Management",
+  "short_description_vi": "jean-tui is an AI-powered terminal interface for managing Git worktrees. It simplifies branch and worktree management with a keyboard-driven UI. Connects to Claude Code for AI assistance, integrates with tmux, and is written in Go."
+}

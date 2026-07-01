@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-reflect-system",
+  "slug": "claude-reflect-system",
+  "name": "Claude Reflect System",
+  "headline": "self-improving system for claude code",
+  "short_description": "Claude Reflect System enables Claude Code to learn from corrections and avoid repeating mistakes. Operations teams benefit from continuous improvement in code generation. It connects to Claude Code workflows and integrates with Python-based systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "haddock-development",
+  "install_command": "git clone https://github.com/haddock-development/claude-reflect-system.git",
+  "source_repo_url": "https://github.com/haddock-development/claude-reflect-system",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-skills",
+    "llm",
+    "reflection",
+    "claude-code",
+    "self-learning",
+    "codex-skills",
+    "skill-system",
+    "python",
+    "continuous-improvement",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Reflect System is a self-learning skill for Claude Code that creates permanent memory from user corrections. Unlike traditional AI assistants that forget between sessions, Reflect detects HIGH/MEDIUM/LOW confidence patterns from your feedback and automatically updates Claude's behavior. The system uses safe updates with timestamped backups, YAML validation, and Git integration to ensure reliability. Perfect for development teams, AI engineers, and automation workflows who want consistent code generation without repeating the same corrections. Works out of the box with Python 3.8+ and includes interactive review flows and optional auto-reflection at session end.\nEnforce coding standards and style preferences across all Claude Code sessions\nTeach Claude project-specific tools like uv, pytest, and ruff permanently\nCreate team learning by sharing Git-tracked skill corrections\nImplement security practices and compliance checks that persist across sessions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/haddock-development/claude-reflect-system`\n1. Install the Claude Reflect System package using pip:\n   ```bash\n   pip install claude-reflect-system\n   ```\n2. Configure the system by editing the `config.json` file:\n   ```json\n   {\n     \"api_key\": \"your_api_key_here\",\n     \"learning_rate\": 0.75,\n     \"feedback_threshold\": 0.5\n   }\n   ```",
+    "usage": "```\nEnable the Claude Reflect System for my [COMPANY]'s [INDUSTRY] workflow. I want to integrate it with our [PYTHON_BASED_SYSTEM] to improve code generation accuracy. Please provide step-by-step instructions for setup and initial configuration.\n```\nCopy\n\n```\n# Claude Reflect System Integration Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-reflect-system#main-content",
+      "claude-reflect-system#overview",
+      "claude-reflect-system#setup",
+      "claude-reflect-system#examples",
+      "claude-reflect-system#tools",
+      "claude-reflect-system#mcp",
+      "claude-reflect-system#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Reflect System là một skill tự học dành cho Claude Code giúp lưu trữ bộ nhớ vĩnh viễn từ các hiệu chỉnh của người dùng. Khác với các trợ lý AI truyền thống thường bị mất thông tin giữa các session, Reflect phát hiện các pattern có độ tin cậy HIGH/MEDIUM/LOW từ phản hồi của bạn và tự động cập nhật hành vi của Claude. Hệ thống sử dụng các bản cập nhật an toàn với backup đính kèm timestamp, YAML validation và tích hợp Git để đảm bảo tính tin cậy. Đây là giải pháp hoàn hảo cho các đội ngũ phát triển, kỹ sư AI và các workflow tự động hóa muốn đảm bảo khả năng sinh code đồng nhất mà không cần lặp lại các hiệu chỉnh giống nhau. Hệ thống hoạt động ngay với Python 3.8+ và bao gồm các luồng review tương tác cùng tính năng tự động phản hồi (auto-reflection) tùy chọn khi kết thúc session.\nÁp dụng các coding standard và cấu hình style preference trên tất cả các session Claude Code\nDạy Claude các công cụ đặc thù của dự án như uv, pytest và ruff một cách vĩnh viễn\nTạo môi trường học tập chung cho cả đội ngũ bằng cách chia sẻ các hiệu chỉnh skill được track qua Git\nTriển khai các quy trình bảo mật và kiểm tra tuân thủ (compliance checks) duy trì xuyên suốt các session",
+    "setup_vi": "Không hỗ trợ lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/haddock-development/claude-reflect-system`\n1. Cài đặt package Claude Reflect System bằng pip:\n   ```bash\n   pip install claude-reflect-system\n   ```\n2. Cấu hình hệ thống bằng cách chỉnh sửa file `config.json`:\n   ```json\n   {\n     \"api_key\": \"your_api_key_here\",\n     \"learning_rate\": 0.75,\n     \"feedback_threshold\": 0.5\n   }\n   ```",
+    "usage_vi": "```\nKích hoạt Claude Reflect System cho workflow thuộc lĩnh vực [INDUSTRY] của [COMPANY]. Tôi muốn tích hợp hệ thống này với [PYTHON_BASED_SYSTEM] của chúng tôi để cải thiện độ chính xác khi sinh code. Vui lòng cung cấp hướng dẫn từng bước để setup và cấu hình ban đầu.\n```\nSao chép\n\n```\n# Hướng dẫn tích hợp Claude Reflect System"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:49:20.398705Z",
+    "http_status": 200,
+    "content_hash": "75868a12cbd1cfbb21b197d6aa7340676d28c0fbc455f3131b080a93b7ab8dc8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-reflect-system.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-reflect-system.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hệ thống tự cải tiến cho Claude Code",
+  "short_description_vi": "Claude Reflect System giúp Claude Code học hỏi từ các hiệu chỉnh và tránh lặp lại sai lầm. Các operations team sẽ được hưởng lợi từ việc liên tục cải tiến khả năng sinh code. Hệ thống này kết nối với các workflow của Claude Code và tích hợp mượt mà với các hệ thống chạy trên nền tảng Python."
+}

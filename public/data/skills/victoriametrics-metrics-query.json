@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/victoriametrics-metrics-query",
+  "slug": "victoriametrics-metrics-query",
+  "name": "VictoriaMetrics Metrics Query",
+  "headline": "VictoriaMetrics Query: Run PromQL & Discover",
+  "short_description": "This skill allows users to query the VictoriaMetrics HTTP API for various metrics-related tasks. It is designed for developers and operators who need to monitor and diagnose applications using VictoriaMetrics.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "victoriametrics",
+  "install_command": "git clone https://github.com/victoriametrics/skills",
+  "source_repo_url": "https://github.com/victoriametrics/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "victoriametrics",
+    "query",
+    "monitoring",
+    "metrics"
+  ],
+  "sections": {
+    "overview": "The VictoriaMetrics Metrics Query skill enables developers and operators to interact with VictoriaMetrics via its HTTP API for real-time metrics monitoring and diagnostics. It supports PromQL and MetricsQL query execution, metric and label discovery, alert and rule inspection, and TSDB status debugging. The skill automatically detects requests for metrics data and query rate information, making it ideal for troubleshooting application performance and understanding time-series data stored in VictoriaMetrics. Set up requires only the VM_METRICS_URL environment variable pointing to your VictoriaMetrics query endpoint.\nPerform instant/range queries against the VictoriaMetrics API\nDiscover labels and series within your metrics\nExport raw data and observe metric usage statistics",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/victoriametrics/skills --skill victoriametrics-query`\n`git clone https://github.com/victoriametrics/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "victoriametrics-metrics-query#main-content",
+      "victoriametrics-metrics-query#overview",
+      "victoriametrics-metrics-query#setup",
+      "victoriametrics-metrics-query#examples",
+      "victoriametrics-metrics-query#tools",
+      "victoriametrics-metrics-query#mcp",
+      "victoriametrics-metrics-query#related",
+      "dpm-finder",
+      "agentspace"
+    ],
+    "overview_vi": "Skill VictoriaMetrics Metrics Query cho phép các nhà phát triển và vận hành hệ thống tương tác với VictoriaMetrics qua HTTP API để giám sát và chẩn đoán metrics theo thời gian thực. Hỗ trợ thực thi truy vấn PromQL và MetricsQL, khám phá metric và label, kiểm tra alert/rule, và gỡ lỗi (debug) trạng thái TSDB. Skill tự động phát hiện các yêu cầu về dữ liệu metrics và thông tin tần suất truy vấn (query rate), rất lý tưởng để khắc phục sự cố hiệu năng ứng dụng cũng như phân tích dữ liệu time-series được lưu trữ trong VictoriaMetrics. Quá trình setup chỉ yêu cầu biến môi trường VM_METRICS_URL trỏ đến endpoint truy vấn VictoriaMetrics của bạn.\nThực hiện các truy vấn instant/range đối với VictoriaMetrics API\nKhám phá các label và series trong dữ liệu metrics\nXuất dữ liệu thô và theo dõi số liệu thống kê sử dụng metric",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/victoriametrics/skills --skill victoriametrics-query`\n`git clone https://github.com/victoriametrics/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nTham khảo GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:58:35.751376Z",
+    "http_status": 200,
+    "content_hash": "cc74e0383448f8703508d458ec409be05937eb41f2a99407c21fca4c191d0e17",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\victoriametrics-metrics-query.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\victoriametrics-metrics-query.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VictoriaMetrics Query: Chạy PromQL & Khám phá dữ liệu",
+  "short_description_vi": "Skill này cho phép người dùng truy vấn VictoriaMetrics HTTP API để thực hiện các tác vụ liên quan đến metrics. Skill được thiết kế dành cho các nhà phát triển và vận hành hệ thống (operators) cần giám sát và chẩn đoán ứng dụng sử dụng VictoriaMetrics."
+}

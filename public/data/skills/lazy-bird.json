@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lazy-bird",
+  "slug": "lazy-bird",
+  "name": "Lazy Bird",
+  "headline": "Lazy Bird - Universal Dev Automation",
+  "short_description": "Universal development automation for ANY project. Claude Code implements features, runs tests, creates PRs autonomously. 15+ framework presets or custom commands.   Issue-driven, secure, scalable. Save 20-100 hrs/month. MIT license.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "yusufkaraaslan",
+  "install_command": "git clone https://github.com/yusufkaraaslan/lazy-bird.git",
+  "source_repo_url": "https://github.com/yusufkaraaslan/lazy-bird",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "ai-assistant",
+    "multi-framework",
+    "developer-tools",
+    "ci-cd",
+    "devops",
+    "gitops",
+    "claude",
+    "python",
+    "anthropic",
+    "godot",
+    "django",
+    "game-development",
+    "rust",
+    "testing",
+    "web-development",
+    "test-automation",
+    "react",
+    "nodejs",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Lazy_Bird is a progressive automation system that lets Claude Code work on development projects autonomously while you focus on other priorities. It supports 18+ frameworks including game engines (Godot, Unity, Bevy), backend frameworks (Django, FastAPI, Express), and frontend frameworks (React, Vue, Angular). The system works by monitoring GitHub Issues labeled 'ready', implementing features, running automated tests, and creating pull requests if tests pass—saving developers 20-100 hours per month. Setup takes 5 minutes via pip, and you can manage 2-20+ projects from a single server with real-time monitoring and a web dashboard.\nAutomate feature implementation across game engine projects while maintaining code quality\nRun overnight test suites and create PRs for approved issues in Django or FastAPI backends\nManage multiple React/Vue frontend projects with autonomous testing and pull request creation\nHandle routine development tasks in Rust, Node.js, or Python projects without manual intervention",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yusufkaraaslan/lazy-bird`",
+    "usage": "```\nAct as an autonomous development agent using Claude Code. For the project at [PROJECT_PATH], implement the feature requested in [ISSUE_URL] using the [FRAMEWORK_PRESET] preset. Follow these steps: 1) Analyze the issue and project structure, 2) Create a branch named 'feat/[ISSUE_NUMBER]', 3) Implement the feature with tests, 4) Run all tests and fix failures, 5) Create a PR with a descriptive title and linked issue. Use [CUSTOM_COMMANDS] if provided. Do not ask for confirmation before proceeding.\n```\nCopy\n\n```\n```\n🚀 Starting autonomous development for issue #42 in project /workspace/my-app\n\n📝 Issue Analysis:\nTitle: Add dark mode toggle to navbar\nDescription: Implement a dark mode toggle in the navbar that persists across sessions\nFramework: Next.js 14 (TypeScript)\n\n🔍 Project Structure:\n- src/app/layout.tsx (root layout)\n- src/components/Navbar.tsx (navbar component)\n- src/lib/theme.ts (theme utilities)\n\n🛠 Implementation Plan:\n1. Create theme context provider\n2. Add toggle button to Navbar\n3. Implement localStorage persistence\n4. Add unit tests for theme switching\n5. Add E2E test for user flow\n\n✅ Branch created: feat/42-dark-mode-toggle\n\n📝 Files Modified:\n- src/lib/theme.ts (new)\n- src/context/ThemeContext.tsx (new)\n- src/components/Navbar.tsx (modified)\n- src/app/layout.tsx (modified)\n\n🧪 Test Results:\n- Unit tests: 24/24 passed ✅\n- E2E tests: 8/8 passed ✅\n- Linting: 0 errors\n- TypeScript: 0 errors\n\n📤 Pull Request Created:\nTitle: feat: add dark mode toggle to navbar (#42)\nBranch: feat/42-dark-mode-toggle\nDescription:\n- Implements dark mode toggle in navbar\n- Adds theme persistence via localStorage\n- Includes comprehensive tests\n- Resolves #42\n\n🎯 Next Steps:\n1. Review PR: https://github.com/myorg/my-app/pull/43\n2. Merge after approval\n3. Deploy to staging for QA\n\n⏱ Time Saved: ~8 hours (estimated manual implementation time)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lazy-bird#main-content",
+      "lazy-bird#overview",
+      "lazy-bird#setup",
+      "lazy-bird#examples",
+      "lazy-bird#tools",
+      "lazy-bird#mcp",
+      "lazy-bird#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Lazy_Bird là hệ thống tự động hóa tiến tiến cho phép Claude Code tự động xử lý các dự án phát triển phần mềm trong khi bạn tập trung vào các ưu tiên khác. Hệ thống hỗ trợ hơn 18 framework bao gồm các game engine (Godot, Unity, Bevy), backend framework (Django, FastAPI, Express) và frontend framework (React, Vue, Angular). Cơ chế hoạt động của hệ thống là theo dõi các GitHub Issue được gắn nhãn 'ready', tự động triển khai tính năng, chạy test tự động và tạo pull request nếu pass test—giúp lập trình viên tiết kiệm từ 20-100 giờ mỗi tháng. Quá trình setup chỉ mất 5 phút qua pip, và bạn có thể quản lý từ 2 đến hơn 20 dự án từ một máy chủ duy nhất với tính năng giám sát theo thời gian thực và dashboard web.\n\nTự động hóa việc triển khai tính năng trên các dự án game engine trong khi vẫn đảm bảo chất lượng code\nChạy các bộ test qua đêm và tạo PR cho các issue đã được phê duyệt trong backend Django hoặc FastAPI\nQuản lý nhiều dự án frontend React/Vue với tính năng tự động test và tạo pull request\nXử lý các tác vụ phát triển thường nhật trong các dự án Rust, Node.js hoặc Python mà không cần can thiệp thủ công",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yusufkaraaslan/lazy-bird`",
+    "usage_vi": "```\nĐóng vai trò là một agent phát triển phần mềm tự động sử dụng Claude Code. Đối với dự án tại [PROJECT_PATH], hãy triển khai tính năng được yêu cầu trong [ISSUE_URL] bằng cách sử dụng cấu hình [FRAMEWORK_PRESET]. Hãy thực hiện theo các bước sau: 1) Phân tích issue và cấu trúc dự án, 2) Tạo một nhánh (branch) tên là 'feat/[ISSUE_NUMBER]', 3) Triển khai tính năng đi kèm các bài test, 4) Chạy tất cả các bài test và sửa lỗi nếu có, 5) Tạo một PR với tiêu đề mô tả rõ ràng và liên kết với issue tương ứng. Sử dụng [CUSTOM_COMMANDS] nếu được cung cấp. Không yêu cầu xác nhận trước khi tiếp tục.\n```\nCopy\n\n```\n```\n🚀 Bắt đầu tự động phát triển cho issue #42 trong dự án /workspace/my-app\n\n📝 Phân tích Issue:\nTiêu đề: Thêm nút chuyển đổi chế độ tối (dark mode) vào navbar\nMô tả: Triển khai nút chuyển đổi chế độ tối trong navbar và lưu trạng thái qua các phiên làm việc\nFramework: Next.js 14 (TypeScript)\n\n🔍 Cấu trúc Dự án:\n- src/app/layout.tsx (root layout)\n- src/components/Navbar.tsx (navbar component)\n- src/lib/theme.ts (theme utilities)\n\n🛠 Kế hoạch Triển khai:\n1. Tạo theme context provider\n2. Thêm nút chuyển đổi vào Navbar\n3. Triển khai lưu trạng thái bằng localStorage\n4. Thêm các bài unit test cho việc chuyển đổi theme\n5. Thêm E2E test cho luồng trải nghiệm người dùng (user flow)\n\n✅ Đã tạo branch: feat/42-dark-mode-toggle\n\n📝 Các file đã chỉnh sửa:\n- src/lib/theme.ts (mới)\n- src/context/ThemeContext.tsx (mới)\n- src/components/Navbar.tsx (đã chỉnh sửa)\n- src/app/layout.tsx (đã chỉnh sửa)\n\n🧪 Kết quả Test:\n- Unit tests: 24/24 passed ✅\n- E2E tests: 8/8 passed ✅\n- Linting: 0 lỗi\n- TypeScript: 0 lỗi\n\n📤 Đã tạo Pull Request:\nTiêu đề: feat: add dark mode toggle to navbar (#42)\nBranch: feat/42-dark-mode-toggle\nMô tả:\n- Triển khai nút chuyển đổi dark mode trong navbar\n- Thêm tính năng lưu trạng thái theme qua localStorage\n- Bao gồm các bài test toàn diện\n- Giải quyết #42\n\n🎯 Các bước tiếp theo:\n1. Review PR: https://github.com/myorg/my-app/pull/43\n2. Merge sau khi được phê duyệt\n3. Deploy lên môi trường staging để QA\n\n⏱ Thời gian tiết kiệm được: ~8 giờ (ước tính thời gian tự triển khai thủ công)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:45.028582Z",
+    "http_status": 200,
+    "content_hash": "fada997beca030048717113dfeb4c599e659b75b31953dd1ba3306a11b6fd837",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lazy-bird.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lazy-bird.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Lazy Bird - Tự động hóa phát triển phần mềm toàn năng",
+  "short_description_vi": "Tự động hóa phát triển phần mềm toàn năng cho MỌI dự án. Claude Code tự động triển khai tính năng, chạy test và tạo PR. Hỗ trợ hơn 15 cấu hình framework có sẵn (preset) hoặc lệnh tùy chỉnh. Vận hành theo issue, bảo mật và khả năng mở rộng cao. Tiết kiệm 20-100 giờ/tháng. Giấy phép MIT."
+}

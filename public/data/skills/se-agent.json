@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/se-agent",
+  "slug": "se-agent",
+  "name": "SE-Agent",
+  "headline": "SE-Agent - Self-Evolving Code Agents",
+  "short_description": "SE-Agent is a self-evolution framework for LLM Code agents. It enables trajectory-level evolution to exchange information across reasoning paths via Revision, Recombination, and Refinement, expanding the search space and escaping local optima. On SWE-bench Verified, it achieves SOTA performance",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "JARVIS-Xs",
+  "install_command": "git clone https://github.com/JARVIS-Xs/SE-Agent.git",
+  "source_repo_url": "https://github.com/JARVIS-Xs/SE-Agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "test-time-scaling",
+    "self-evolve",
+    "swe-bench",
+    "swe-agent",
+    "mcts",
+    "code-agent",
+    "code-fix",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "SE-Agent is a self-evolution framework designed for LLM-based code agents that enables information exchange between multiple reasoning paths to solve complex software engineering tasks. The framework implements three core operations—Revision, Recombination, and Refinement—that work together to expand search space and escape local optima. Revision analyzes failed trajectories and generates architecturally different problem-solving approaches, Recombination intelligently merges strengths from multiple solution paths, and Refinement optimizes promising trajectories by eliminating redundancies. SE-Agent achieves state-of-the-art performance on SWE-bench Verified with 80% success rate, demonstrating significant gains across various open-source and closed-source LLMs. This framework is ideal for developers building autonomous agents that handle multi-step reasoning and complex software engineering tasks.\nImproving LLM code agent performance on real-world software engineering tasks\nDeveloping autonomous agents that learn from multiple failed solution attempts\nSolving SWE-bench Verified software engineering problems\nCreating agents that combine insights across different reasoning trajectories",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JARVIS-Xs/SE-Agent`",
+    "usage": "```\nAct as an SE-Agent self-evolution framework to improve the performance of an LLM Code Agent on the task: [TASK_DESCRIPTION]. Follow the SE-Agent process by: 1) Revising the current solution to address [SPECIFIC_ISSUE], 2) Recombining it with alternative approaches from [ALTERNATIVE_SOLUTIONS], and 3) Refining the result to optimize for [PERFORMANCE_METRICS]. Provide the final evolved solution and a summary of the improvements made.\n```\nCopy\n\n```\n### SE-Agent Evolution Report\n\n**Task:** Implement a Python function to calculate the Fibonacci sequence up to the nth term with O(n) time complexity and O(1) space complexity.\n\n**Initial Solution (Revision Phase):**\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    fib_sequence = [0, 1]\n    for i in range(2, n):\n        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])\n    return fib_sequence\n```\n*Issue Identified:* The function uses O(n) space due to storing the entire sequence, violating the O(1) space requirement.\n\n**Alternative Solutions (Recombination Phase):**\n1. Iterative approach with two variables to track the last two numbers.\n2. Generator-based approach to yield values on demand.\n3. Mathematical formula using Binet's formula (though limited by floating-point precision).\n\n**Evolved Solution (Refinement Phase):**\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    a, b = 0, 1\n    result = [a]\n    for _ in range(1, n):\n        a, b = b, a + b\n        result.append(a)\n    return result\n```\n*Improvements:*\n- Space complexity reduced to O(1) by tracking only the last two numbers during iteration.\n- Maintained O(n) time complexity.\n- Preserved readability while meeting all constraints.\n\n**Performance Metrics:**\n- Time: 0.00012s (10x faster than initial solution for n=1000)\n- Space: O(1) auxiliary space (vs O(n) in initial solution)\n- Correctness: Passes all edge cases (n=0, n=1, n=2) and large inputs (n=10000).\n\n**Summary of Evolution:**\nThe SE-Agent identified the space inefficiency in the initial solution, recombined it with iterative approaches, and refined the result to meet the strict space constraint while improving performance. This demonstrates the framework's ability to escape local optima in code optimization tasks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "se-agent#main-content",
+      "se-agent#overview",
+      "se-agent#setup",
+      "se-agent#examples",
+      "se-agent#tools",
+      "se-agent#mcp",
+      "se-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SE-Agent là một framework tự tiến hóa được thiết kế cho các code agent dựa trên LLM, giúp trao đổi thông tin giữa nhiều hướng lập luận để giải quyết các tác vụ kỹ thuật phần mềm phức tạp. Framework này triển khai ba thao tác cốt lõi—Revision, Recombination và Refinement—hoạt động cùng nhau để mở rộng không gian tìm kiếm và thoát khỏi các tối ưu cục bộ (local optima). Revision phân tích các trajectory thất bại và tạo ra các hướng tiếp cận giải quyết vấn đề khác biệt về mặt kiến trúc, Recombination kết hợp một cách thông minh các điểm mạnh từ nhiều hướng giải pháp, và Refinement tối ưu hóa các trajectory tiềm năng bằng cách loại bỏ các phần dư thừa. SE-Agent đạt hiệu năng SOTA trên SWE-bench Verified với tỷ lệ thành công 80%, chứng minh mức cải tiến vượt trội trên nhiều LLM nguồn mở và nguồn đóng khác nhau. Framework này rất lý tưởng cho các nhà phát triển đang xây dựng các agent tự vận hành (autonomous agent) xử lý lập luận đa bước và các tác vụ kỹ thuật phần mềm phức tạp.\nCải thiện hiệu năng của LLM code agent trên các tác vụ kỹ thuật phần mềm thực tế\nPhát triển các agent tự vận hành có khả năng học hỏi từ nhiều lượt thử giải pháp thất bại\nGiải quyết các bài toán kỹ thuật phần mềm trên SWE-bench Verified\nTạo ra các agent biết kết hợp thông tin chuyên sâu (insight) từ các trajectory lập luận khác nhau",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/JARVIS-Xs/SE-Agent`",
+    "usage_vi": "```\nĐóng vai trò là framework tự tiến hóa SE-Agent để cải thiện hiệu năng của một LLM Code Agent đối với tác vụ: [TASK_DESCRIPTION]. Thực hiện quy trình SE-Agent bằng cách: 1) Revising (Hiệu chỉnh) giải pháp hiện tại để giải quyết [SPECIFIC_ISSUE], 2) Recombining (Tái tổ hợp) nó với các phương pháp thay thế từ [ALTERNATIVE_SOLUTIONS], và 3) Refining (Tinh chỉnh) kết quả để tối ưu hóa cho [PERFORMANCE_METRICS]. Cung cấp giải pháp tiến hóa cuối cùng và bản tóm tắt các cải tiến đã thực hiện.\n```\nSao chép\n\n```\n### Báo cáo Tiến hóa SE-Agent\n\n**Tác vụ:** Triển khai một hàm Python để tính dãy Fibonacci đến số thứ n với độ phức tạp thời gian O(n) và độ phức tạp không gian O(1).\n\n**Giải pháp Ban đầu (Giai đoạn Revision):**\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    elif n == 2:\n        return [0, 1]\n    fib_sequence = [0, 1]\n    for i in range(2, n):\n        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])\n    return fib_sequence\n```\n*Lỗi được xác định:* Hàm sử dụng không gian O(n) do lưu trữ toàn bộ dãy số, vi phạm yêu cầu về không gian O(1).\n\n**Các Giải pháp Thay thế (Giai đoạn Recombination):**\n1. Phương pháp lặp (iterative) sử dụng hai biến để theo dõi hai số gần nhất.\n2. Phương pháp dựa trên generator để trả về (yield) các giá trị khi có yêu cầu.\n3. Công thức toán học sử dụng công thức Binet (tuy nhiên bị giới hạn bởi độ chính xác của số dấu phẩy động).\n\n**Giải pháp Tiến hóa (Giai đoạn Refinement):**\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return []\n    a, b = 0, 1\n    result = [a]\n    for _ in range(1, n):\n        a, b = b, a + b\n        result.append(a)\n    return result\n```\n*Cải tiến:*\n- Độ phức tạp không gian được giảm xuống O(1) bằng cách chỉ theo dõi hai số gần nhất trong quá trình lặp.\n- Giữ nguyên độ phức tạp thời gian O(n).\n- Đảm bảo tính dễ đọc trong khi vẫn đáp ứng tất cả các ràng buộc.\n\n**Chỉ số Hiệu năng:**\n- Thời gian: 0.00012s (nhanh hơn 10 lần so với giải pháp ban đầu với n=1000)\n- Không gian: Không gian bổ trợ (auxiliary space) O(1) (so với O(n) ở giải pháp ban đầu)\n- Tính chính xác: Vượt qua tất cả các trường hợp biên (n=0, n=1, n=2) và đầu vào lớn (n=10000).\n\n**Tóm tắt Quá trình Tiến hóa:**\nSE-Agent đã xác định được sự không hiệu quả về không gian trong giải pháp ban đầu, thực hiện tái tổ hợp (recombine) với các phương pháp lặp, và tinh chỉnh (refine) kết quả để đáp ứng ràng buộc nghiêm ngặt về không gian trong khi vẫn nâng cao hiệu năng. Điều này chứng minh khả năng của framework trong việc thoát khỏi các tối ưu cục bộ (local optima) trong các tác vụ tối ưu hóa mã nguồn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:11.071279Z",
+    "http_status": 200,
+    "content_hash": "8accda254493db464ff28859d4539dbb86f5e847fa76500c098c67da017aeb6b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\se-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\se-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SE-Agent - Agent code tự tiến hóa",
+  "short_description_vi": "SE-Agent là một framework tự tiến hóa dành cho các LLM Code agent. Framework này cho phép tiến hóa ở cấp độ trajectory để trao đổi thông tin giữa các hướng lập luận thông qua Revision (Hiệu chỉnh), Recombination (Tái tổ hợp) và Refinement (Tinh chỉnh), giúp mở rộng không gian tìm kiếm và thoát khỏi các tối ưu cục bộ. Trên SWE-bench Verified, SE-Agent đạt được hiệu năng SOTA."
+}

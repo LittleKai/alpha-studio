@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/managing-dependencies",
+  "slug": "managing-dependencies",
+  "name": "Managing Dependencies",
+  "headline": "Managing Dependencies - Secure Dependency",
+  "short_description": "Evaluates packages and manages dependencies securely. Benefits developers and operations teams by automating dependency checks and ensuring secure package management. Integrates with Claude Code, Codex CLI, and other Agent Skills-compatible agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "andrew",
+  "install_command": "git clone https://github.com/andrew/managing-dependencies.git",
+  "source_repo_url": "https://github.com/andrew/managing-dependencies",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "dependency-management",
+    "skill",
+    "claude-code",
+    "package-management"
+  ],
+  "sections": {
+    "overview": "managing-dependencies is a skill that automates package evaluation and dependency management with a focus on supply chain security. It detects typosquatting and dependency confusion attacks, reviews lockfile changes, and guides teams through secure dependency decisions. The skill activates automatically when you ask Claude Code or compatible agents about packages, dependencies, or security concerns. It helps developers and operations teams reduce risk by providing security audit guidance, package trustworthiness analysis, and PR dependency change reviews. Works seamlessly with Claude Code, Codex CLI, and other Agent Skills-compatible platforms.\nEvaluate new packages for security risks before adding to a project\nDetect typosquatting and dependency confusion attacks\nReview lockfile changes and version constraints in pull requests\nRun and interpret security audits on project dependencies",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/andrew/managing-dependencies`",
+    "usage": "```\nAnalyze the dependencies for the [PROJECT_NAME] repository located at [REPO_URL]. Identify any outdated or vulnerable packages. For each issue, suggest specific updates or alternatives. Also, provide a summary of the overall dependency health score on a scale of 1-10.\n```\nCopy\n\n```\nAfter analyzing the dependencies for the 'E-Commerce Platform' repository at github.com/ecom-platform/main, I've identified several issues:\n\n1. Package 'express' is outdated (4.17.1) and has a known vulnerability. Recommend updating to version 4.18.2.\n2. 'lodash' is using version 4.17.15, which is 5 minor versions behind. Suggest updating to 4.17.21.\n3. 'bcrypt' is at version 5.0.0 but should be updated to 5.1.0 for security patches.\n4. 'mongoose' is using version 5.12.3, which is 2 major versions behind. Consider updating to 7.0.3.\n\nOverall dependency health score: 5/10. The project has several critical updates needed for security and compatibility.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "managing-dependencies#main-content",
+      "managing-dependencies#overview",
+      "managing-dependencies#setup",
+      "managing-dependencies#examples",
+      "managing-dependencies#tools",
+      "managing-dependencies#mcp",
+      "managing-dependencies#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "managing-dependencies là một skill tự động hóa việc đánh giá package và quản lý dependency, tập trung vào bảo mật chuỗi cung ứng (supply chain security). Công cụ này giúp phát hiện các cuộc tấn công typosquatting và dependency confusion, review các thay đổi trong lockfile, và hướng dẫn các đội ngũ đưa ra quyết định sử dụng dependency an toàn. Skill này sẽ tự động kích hoạt khi bạn hỏi Claude Code hoặc các agent tương thích về package, dependency hoặc các vấn đề bảo mật. Nó giúp các lập trình viên và đội ngũ vận hành giảm thiểu rủi ro nhờ cung cấp hướng dẫn kiểm tra bảo mật (security audit), phân tích độ tin cậy của package và review các thay đổi dependency trong PR. Hoạt động mượt mà với Claude Code, Codex CLI và các nền tảng tương thích với Agent Skills khác.\nĐánh giá rủi ro bảo mật của các package mới trước khi đưa vào dự án\nPhát hiện các cuộc tấn công typosquatting và dependency confusion\nReview các thay đổi trong lockfile và ràng buộc phiên bản (version constraints) trong pull request\nChạy và phân tích kết quả audit bảo mật trên các dependency của dự án",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/andrew/managing-dependencies`",
+    "usage_vi": "```\nPhân tích các dependency của repository [PROJECT_NAME] tại [REPO_URL]. Xác định các package lỗi thời hoặc có lỗ hổng bảo mật. Với mỗi vấn đề, hãy đề xuất các bản cập nhật cụ thể hoặc giải pháp thay thế. Đồng thời, cung cấp điểm đánh giá tổng quan về sức khỏe của hệ thống dependency theo thang điểm từ 1-10.\n```\nSao chép\n\n```\nSau khi phân tích các dependency của repository 'E-Commerce Platform' tại github.com/ecom-platform/main, tôi đã phát hiện một số vấn đề sau:\n\n1. Package 'express' đã lỗi thời (4.17.1) và có lỗ hổng bảo mật đã biết. Khuyến nghị cập nhật lên phiên bản 4.18.2.\n2. 'lodash' đang sử dụng phiên bản 4.17.15, chậm hơn 5 phiên bản minor. Đề xuất cập nhật lên 4.17.21.\n3. 'bcrypt' đang ở phiên bản 5.0.0 nhưng nên được cập nhật lên 5.1.0 để áp dụng các bản vá bảo mật.\n4. 'mongoose' đang sử dụng phiên bản 5.12.3, chậm hơn 2 phiên bản major. Cân nhắc cập nhật lên 7.0.3.\n\nĐiểm sức khỏe dependency tổng quan: 5/10. Dự án cần thực hiện một số cập nhật quan trọng để đảm bảo bảo mật và khả năng tương thích.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:15:34.293099Z",
+    "http_status": 200,
+    "content_hash": "0c7397abd7c3296dca29a4eddea96701b170dc8d55668276937e850d032a81ee",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\managing-dependencies.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\managing-dependencies.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quản lý Dependency - Bảo mật Dependency",
+  "short_description_vi": "Đánh giá các package và quản lý dependency một cách an toàn. Hỗ trợ các developer và đội ngũ vận hành (operations) bằng cách tự động hóa quy trình kiểm tra dependency và đảm bảo quản lý package an toàn. Tích hợp mượt mà với Claude Code, Codex CLI và các agent khác tương thích với Agent Skills."
+}

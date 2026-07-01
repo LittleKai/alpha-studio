@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tactus",
+  "slug": "tactus",
+  "name": "Tactus",
+  "headline": "Tactus - Browser AI Agent Extension",
+  "short_description": "The first browser AI Agent extension to support Agent Skills, enabling AI to perform complex tasks through an expandable skill system.  Star if you like it! | 首个支持 Agent Skills 的浏览器 AI Agent 扩展，让 AI 通过可扩展技能系统执行复杂任务  如果喜欢请点个 Star！",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Castor6",
+  "install_command": "git clone https://github.com/Castor6/tactus.git",
+  "source_repo_url": "https://github.com/Castor6/tactus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Tactus is a browser extension that brings the Agent Skills specification to Chrome and Firefox, allowing AI agents like Claude to execute complex tasks through an extensible skill system. The extension supports skill import with instructions and scripts, multi-provider AI connectivity (Anthropic, Google, OpenAI-compatible APIs), and image vision capabilities. It features a ReAct paradigm tool-calling loop, HTTP MCP server integration, and smart page content extraction with Markdown conversion. All conversation history and skills are stored locally for privacy, with support for message editing, regeneration, and multiple theme modes. Users can configure tool call limits, web content character limits, and quick action buttons to optimize token usage and automation workflows.\nAutomating repetitive web tasks with encapsulated skill scripts\nBuilding custom AI agent workflows for browser-based operations\nExtracting and understanding page content with AI vision analysis\nConnecting external tools to AI agents via HTTP MCP servers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Castor6/tactus`",
+    "usage": "```\nUse the tactus browser AI Agent extension to automate [TASK] on [WEBSITE/PLATFORM]. For example: 'Use tactus to automate the process of extracting product details and pricing from a competitor’s e-commerce site and save the data to a structured CSV file.'\n```\nCopy\n\n```\nI’ve automated the extraction of product details from [CompetitorX.com](http://competitorx.com), a leading e-commerce platform for electronics. The tactus agent navigated to the site, applied a pre-configured skill to filter products by category (e.g., 'wireless headphones'), and extracted 47 product entries, including titles, prices, ratings, and availability status. Each entry was validated for accuracy—ensuring no duplicates or missing fields—and formatted into a CSV file with columns: Product Name, Price (USD), Rating (out of 5), Stock Status, and Product URL. The file was saved to `~/Downloads/competitor_products_2024-06-10.csv`. A summary report was generated, highlighting the lowest-priced item ($49.99) and the highest-rated item (4.8/5). The entire process took 2 minutes and 12 seconds, with zero manual intervention required.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tactus#main-content",
+      "tactus#overview",
+      "tactus#setup",
+      "tactus#examples",
+      "tactus#tools",
+      "tactus#mcp",
+      "tactus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Tactus is a browser extension that brings the Agent Skills specification to Chrome and Firefox, allowing AI agents like Claude to execute complex tasks through an extensible skill system. The extension supports skill import with instructions and scripts, multi-provider AI connectivity (Anthropic, Google, OpenAI-compatible APIs), and image vision capabilities. It features a ReAct paradigm tool-calling loop, HTTP MCP server integration, and smart page content extraction with Markdown conversion. All conversation history and skills are stored locally for privacy, with support for message editing, regeneration, and multiple theme modes. Users can configure tool call limits, web content character limits, and quick action buttons to optimize token usage and automation workflows.\nAutomating repetitive web tasks with encapsulated skill scripts\nBuilding custom AI agent workflows for browser-based operations\nExtracting and understanding page content with AI vision analysis\nConnecting external tools to AI agents via HTTP MCP servers",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Castor6/tactus`",
+    "usage_vi": "```\nUse the tactus browser AI Agent extension to automate [TASK] on [WEBSITE/PLATFORM]. For example: 'Use tactus to automate the process of extracting product details and pricing from a competitor’s e-commerce site and save the data to a structured CSV file.'\n```\nCopy\n\n```\nI’ve automated the extraction of product details from [CompetitorX.com](http://competitorx.com), a leading e-commerce platform for electronics. The tactus agent navigated to the site, applied a pre-configured skill to filter products by category (e.g., 'wireless headphones'), and extracted 47 product entries, including titles, prices, ratings, and availability status. Each entry was validated for accuracy—ensuring no duplicates or missing fields—and formatted into a CSV file with columns: Product Name, Price (USD), Rating (out of 5), Stock Status, and Product URL. The file was saved to `~/Downloads/competitor_products_2024-06-10.csv`. A summary report was generated, highlighting the lowest-priced item ($49.99) and the highest-rated item (4.8/5). The entire process took 2 minutes and 12 seconds, with zero manual intervention required.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:24.167377Z",
+    "http_status": 200,
+    "content_hash": "504220184b53788fe8a09d5eb196f459da541399941cf7814a8c0205a4793596",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tactus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tactus.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tactus - Browser AI Agent Extension",
+  "short_description_vi": "The first browser AI Agent extension to support Agent Skills, enabling AI to perform complex tasks through an expandable skill system.  Star if you like it! | 首个支持 Agent Skills 的浏览器 AI Agent 扩展，让 AI 通过可扩展技能系统执行复杂任务  如果喜欢请点个 Star！"
+}

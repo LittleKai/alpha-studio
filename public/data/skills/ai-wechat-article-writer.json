@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-wechat-article-writer",
+  "slug": "ai-wechat-article-writer",
+  "name": "AI WeChat Article Writer",
+  "headline": "WeChat Article Writer: AI Publishing Skill",
+  "short_description": "This skill enables users to write professional WeChat articles using AI. It simplifies the process from topic selection to drafting and publishing, ensuring high-quality content that doesn't sound automated.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "youmind-openlab",
+  "install_command": "git clone https://github.com/youmind-openlab/skills",
+  "source_repo_url": "https://github.com/youmind-openlab/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "content-creation",
+    "writer",
+    "article",
+    "wechat"
+  ],
+  "sections": {
+    "overview": "The YouMind WeChat Article skill automates the entire process of creating and publishing professional WeChat content. It handles topic mining, draft generation, and direct publishing to your WeChat platform through YouMind-hosted connectors. The skill integrates with AI agents like Claude Code and Cursor, enabling you to generate high-quality articles that maintain a natural tone rather than sounding automated. Setup requires your YouMind API key and WeChat credentials configured once in YouMind Connector Settings, after which you can write and publish articles directly from your coding environment.\nGenerate articles based on trending topics\nResearch and draft WeChat articles quickly\nPublish directly to WeChat draft box",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/youmind-openlab/skills --skill youmind-wechat-article`\n`git clone https://github.com/youmind-openlab/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "ai-wechat-article-writer#main-content",
+      "ai-wechat-article-writer#overview",
+      "ai-wechat-article-writer#setup",
+      "ai-wechat-article-writer#examples",
+      "ai-wechat-article-writer#tools",
+      "ai-wechat-article-writer#mcp",
+      "ai-wechat-article-writer#related",
+      "viral-tiktok-hooks",
+      "ugc-script-development"
+    ],
+    "overview_vi": "Skill YouMind WeChat Article tự động hóa toàn bộ quy trình tạo và xuất bản nội dung WeChat chuyên nghiệp. Công cụ này xử lý việc tìm kiếm chủ đề, tạo bản thảo và xuất bản trực tiếp lên nền tảng WeChat thông qua các connector do YouMind host. Skill này tích hợp tốt với các AI agent như Claude Code và Cursor, giúp bạn tạo ra những bài viết chất lượng cao với văn phong tự nhiên thay vì máy móc. Việc setup chỉ cần thực hiện một lần bằng cách cấu hình YouMind API key và thông tin xác thực WeChat trong mục YouMind Connector Settings, sau đó bạn có thể viết và xuất bản bài viết trực tiếp từ môi trường lập trình của mình.\nTạo bài viết dựa trên các chủ đề thịnh hành\nNghiên cứu và soạn thảo bài viết WeChat nhanh chóng\nXuất bản trực tiếp vào hộp thư nháp của WeChat",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/youmind-openlab/skills --skill youmind-wechat-article`\n`git clone https://github.com/youmind-openlab/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:55:23.021236Z",
+    "http_status": 200,
+    "content_hash": "bc94e076e37ccc0f9e4333d1aff0ec2911bcf8c5f385ee2fc56d85dab7af13e0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-wechat-article-writer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-wechat-article-writer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill viết bài WeChat: Xuất bản bằng AI",
+  "short_description_vi": "Skill này giúp người dùng viết các bài viết WeChat chuyên nghiệp bằng AI. Nó tối giản hóa quy trình từ khâu chọn chủ đề, soạn thảo cho đến xuất bản, đảm bảo nội dung chất lượng cao và tự nhiên, không bị rập khuôn."
+}

@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/orchestr8",
+  "slug": "orchestr8",
+  "name": "Orchestr8",
+  "headline": "Orchestr8 - Automates Software Engineering",
+  "short_description": "Orchestr8 transforms Claude code into a complete software engineering team. It automates development workflows, enabling operations teams to streamline code generation, review, testing, and deployment. Integrates with CI/CD pipelines and developer tools for efficient software engineering.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "seth-schultz",
+  "install_command": "git clone https://github.com/seth-schultz/orchestr8.git",
+  "source_repo_url": "https://github.com/seth-schultz/orchestr8",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "multi-agent",
+    "workflow-automation",
+    "developer-tools",
+    "ci-cd",
+    "devops",
+    "code-generation",
+    "claude",
+    "performance-optimization",
+    "async-architecture",
+    "enterprise-automation",
+    "anthropic-claude",
+    "research-driven-development",
+    "software-engineering",
+    "testing",
+    "code-review",
+    "orchestration",
+    "knowledge-base",
+    "automated-development",
+    "claude-code",
+    "security-audit"
+  ],
+  "sections": {
+    "overview": "orchestr8 transforms Claude Code into an autonomous development system by loading expertise exactly when needed instead of upfront. The plugin uses semantic matching and Model Context Protocol (MCP) to dynamically fetch relevant resources—147+ specialized AI agents, 383 resource fragments, and 25+ architectural patterns—from local, GitHub, and community sources. Rather than consuming 11,000+ tokens loading all knowledge at once, orchestr8 loads a lightweight 2KB registry and fetches only required expertise, delivering 95-98% token reduction while improving response speed and relevance. The system includes four loading modes (index, minimal, catalog, full), progressive loading for complex workflows, and smart caching with hot reload during development. Teams using orchestr8 can streamline code generation, review, testing, and CI/CD pipeline integration with composable micro-fragments optimized for real-world usage.\nReduce token consumption in AI-assisted development workflows by 90%+ through just-in-time resource loading\nAutomate code review and testing workflows with dynamically matched domain expertise (TypeScript, Python, Go, Rust, etc.)\nBuild modular CI/CD pipelines that load agent capabilities progressively based on project requirements\nStreamline knowledge management across teams by indexing local, GitHub, and community resources with semantic fuzzy matching",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/seth-schultz/orchestr8`",
+    "usage": "```\nAct as an AI engineering team orchestrator. Use the [REPOSITORY_PATH] to generate a complete software solution for [PROJECT_NAME]. Implement [SPECIFIC_FEATURES] with best practices in [PROGRAMMING_LANGUAGE]. Create unit tests, integration tests, and documentation. Set up a CI/CD pipeline using [CI_TOOL] for automated testing and deployment. Provide a deployment strategy for [TARGET_ENVIRONMENT].\n```\nCopy\n\n```\nFor the project 'E-commerce Analytics Dashboard' in the repository '/home/user/ecommerce-dashboard', I've implemented the following:\n\n**Architecture:** A React frontend with TypeScript, Node.js backend with Express, and PostgreSQL database. The system follows a microservices approach with clear separation between API gateway, user service, product service, and analytics service.\n\n**Features Implemented:**\n1. User authentication with JWT tokens and role-based access control\n2. Product catalog with search and filtering capabilities\n3. Real-time sales analytics dashboard using Chart.js\n4. Order processing workflow with Stripe integration\n5. Admin panel for inventory management\n\n**Testing:**\n- 47 unit tests covering core business logic (92% coverage)\n- 15 integration tests for API endpoints (88% coverage)\n- 8 end-to-end tests using Cypress\n- Performance tests with k6 showing 99.9% uptime under load\n\n**CI/CD Pipeline:**\n- GitHub Actions workflow triggered on PRs to main branch\n- Automated linting with ESLint and Prettier\n- Security scanning with Snyk\n- Docker image building and pushing to AWS ECR\n- Automated deployment to staging environment on successful tests\n- Manual approval required for production deployment\n\n**Documentation:**\n- Comprehensive README with setup instructions\n- API documentation using Swagger\n- Architecture decision records in docs/adr/\n- Deployment guide for AWS EKS\n\nThe system is ready for production deployment with all security checks passing and performance benchmarks meeting requirements. All services are containerized and can be deployed with a single command using Docker Compose or Kubernetes manifests.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "orchestr8#main-content",
+      "orchestr8#overview",
+      "orchestr8#setup",
+      "orchestr8#examples",
+      "orchestr8#tools",
+      "orchestr8#mcp",
+      "orchestr8#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "orchestr8 biến Claude Code thành một hệ thống phát triển tự vận hành (autonomous development system) bằng cách nạp kiến thức chuyên môn đúng lúc cần thiết thay vì nạp sẵn ngay từ đầu. Plugin này sử dụng semantic matching và Model Context Protocol (MCP) để truy xuất động các tài nguyên liên quan—bao gồm hơn 147 AI agent chuyên biệt, 383 resource fragment và hơn 25 architectural pattern—từ các nguồn cục bộ, GitHub và cộng đồng. Thay vì tiêu thụ hơn 11.000 token để nạp toàn bộ kiến thức cùng lúc, orchestr8 chỉ nạp một registry siêu nhẹ 2KB và truy xuất đúng phần kiến thức cần thiết, giúp giảm 95-98% lượng token tiêu thụ, đồng thời cải thiện tốc độ phản hồi và độ phù hợp. Hệ thống hỗ trợ bốn chế độ nạp (index, minimal, catalog, full), cơ chế nạp tiệm tiến (progressive loading) cho các workflow phức tạp, và bộ nhớ đệm thông minh (smart caching) với tính năng hot reload trong quá trình phát triển. Các đội ngũ sử dụng orchestr8 có thể tối ưu hóa quy trình tạo code, review, testing và tích hợp pipeline CI/CD nhờ các micro-fragment có thể lắp ghép linh hoạt (composable) được tối ưu hóa cho thực tế sử dụng.\n\n- Giảm hơn 90% lượng token tiêu thụ trong các development workflow có AI hỗ trợ nhờ cơ chế nạp tài nguyên just-in-time (đúng lúc cần thiết).\n- Tự động hóa các workflow code review và testing với kiến thức chuyên môn (domain expertise) được so khớp động (TypeScript, Python, Go, Rust, v.v.).\n- Xây dựng các pipeline CI/CD dạng module để nạp dần các năng lực của agent dựa trên yêu cầu thực tế của dự án.\n- Tối ưu hóa việc quản lý tri thức giữa các đội ngũ bằng cách lập chỉ mục (index) các tài nguyên cục bộ, GitHub và cộng đồng thông qua khớp mờ ngữ nghĩa (semantic fuzzy matching).",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/seth-schultz/orchestr8`",
+    "usage_vi": "```\nĐóng vai trò là một AI engineering team orchestrator (điều phối viên đội ngũ kỹ sư AI). Sử dụng [REPOSITORY_PATH] để tạo ra một giải pháp phần mềm hoàn chỉnh cho [PROJECT_NAME]. Triển khai [SPECIFIC_FEATURES] theo các best practice trong [PROGRAMMING_LANGUAGE]. Viết các bộ unit test, integration test và tài liệu hướng dẫn. Thiết lập pipeline CI/CD sử dụng [CI_TOOL] để tự động hóa việc kiểm thử và triển khai. Đưa ra chiến lược triển khai cho [TARGET_ENVIRONMENT].\n```\nCopy\n\n```\nĐối với dự án 'E-commerce Analytics Dashboard' trong kho lưu trữ '/home/user/ecommerce-dashboard', tôi đã triển khai các nội dung sau:\n\n**Kiến trúc:** Frontend bằng React với TypeScript, Backend bằng Node.js với Express, và cơ sở dữ liệu PostgreSQL. Hệ thống tuân thủ kiến trúc microservices với sự phân tách rõ ràng giữa API gateway, user service, product service, và analytics service.\n\n**Các tính năng đã triển khai:**\n1. Xác thực người dùng (user authentication) bằng JWT token và phân quyền dựa trên vai trò (RBAC)\n2. Danh mục sản phẩm (product catalog) với tính năng tìm kiếm và lọc\n3. Dashboard phân tích doanh số thời gian thực sử dụng Chart.js\n4. Quy trình xử lý đơn hàng tích hợp thanh toán Stripe\n5. Trang quản trị (admin panel) để quản lý kho hàng\n\n**Kiểm thử (Testing):**\n- 47 unit test kiểm thử các logic nghiệp vụ cốt lõi (độ bao phủ/coverage đạt 92%)\n- 15 integration test cho các API endpoint (coverage đạt 88%)\n- 8 end-to-end test sử dụng Cypress\n- Kiểm thử hiệu năng (performance test) bằng k6 cho thấy tỷ lệ uptime đạt 99.9% khi chịu tải lớn\n\n**Pipeline CI/CD:**\n- Workflow GitHub Actions được kích hoạt khi có PR vào nhánh main\n- Tự động kiểm tra định dạng code (linting) bằng ESLint và Prettier\n- Quét bảo mật với Snyk\n- Build Docker image và push lên AWS ECR\n- Tự động triển khai lên môi trường staging sau khi các bài test vượt qua thành công\n- Yêu cầu phê duyệt thủ công (manual approval) trước khi triển khai lên môi trường production\n\n**Tài liệu (Documentation):**\n- File README toàn diện kèm hướng dẫn thiết lập (setup)\n- Tài liệu API sử dụng Swagger\n- Các bản ghi quyết định kiến trúc (architecture decision records) trong thư mục docs/adr/\n- Hướng dẫn triển khai cho AWS EKS\n\nHệ thống đã sẵn sàng để triển khai lên production với tất cả các bước kiểm tra bảo mật được thông qua và các chỉ số hiệu năng đạt yêu cầu. Tất cả các dịch vụ đều được container hóa và có thể triển khai chỉ bằng một lệnh duy nhất thông qua Docker Compose hoặc các manifest Kubernetes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:18:47.970056Z",
+    "http_status": 200,
+    "content_hash": "7e279b52007d26a696a5328404253c91a9cdf267790ffefce661c0412be004c4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\orchestr8.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\orchestr8.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Orchestr8 - Tự động hóa Kỹ nghệ Phần mềm",
+  "short_description_vi": "Orchestr8 biến Claude Code thành một đội ngũ kỹ nghệ phần mềm toàn diện. Công cụ này tự động hóa các development workflow, giúp các đội ngũ vận hành (operations) tối ưu hóa quá trình tạo code, review, testing và deployment. Tích hợp linh hoạt với các pipeline CI/CD và công cụ phát triển để tối ưu hóa hiệu quả phát triển phần mềm."
+}

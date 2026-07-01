@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clavix",
+  "slug": "clavix",
+  "name": "Clavix",
+  "headline": "Clavix: idea to prompt transformation",
+  "short_description": "Clavix transforms vague ideas into production-ready prompts. It analyzes gaps, generates PRDs, and integrates with any agentskills.io compatible AI tool. Ideal for operations teams to streamline AI coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "ClavixDev",
+  "install_command": "git clone https://github.com/ClavixDev/Clavix.git",
+  "source_repo_url": "https://github.com/ClavixDev/Clavix",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Clavix is an automation tool that bridges the gap between initial ideas and production-ready prompts for AI agents. It analyzes requirements, identifies gaps, and automatically generates Product Requirements Documents (PRDs) that integrate seamlessly with any agentskills.io-compatible AI tool like Claude Code and Cursor. The platform supports 10 curated workflows available as agent skills, with both global and project-level installation scopes. It includes integrations with GitHub Copilot (via custom slash commands), Universal Adapters, and IDE extensions. Clavix is purpose-built for operations teams seeking to standardize and streamline their AI coding workflows.\nGenerate a detailed PRD by answering strategic questions about your project requirements.\nOptimize existing prompts using a 6-dimension quality assessment to improve AI responses.\nBreak down a PRD into actionable tasks for better project management and tracking.\nVerify the implementation of features against the original requirements to ensure quality.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ClavixDev/Clavix`",
+    "usage": "```\nTransform this vague idea into a production-ready prompt: '[IDEA]'. Ensure it includes specific [INPUTS] and desired [OUTPUTS]. Generate a PRD that can be directly used with [AI_TOOL] to execute the task.\n```\nCopy\n\n```\nIdea: 'Improve customer support response times'\n\nProduction-Ready Prompt:\n'Analyze the current customer support ticket data from [SUPPORT_SYSTEM]. Identify bottlenecks in response times. Generate a prioritized list of process improvements and suggest specific automation opportunities using [AI_TOOL].'\n\nPRD:\n1. Input: Customer support ticket data from [SUPPORT_SYSTEM]\n2. Analysis: Identify bottlenecks in response times\n3. Output: Prioritized list of process improvements and automation opportunities\n4. Execution: Use [AI_TOOL] to implement suggested automations\n5. Metrics: Track reduction in average response time and customer satisfaction scores\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "clavix#main-content",
+      "clavix#overview",
+      "clavix#setup",
+      "clavix#examples",
+      "clavix#tools",
+      "clavix#mcp",
+      "clavix#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Clavix là công cụ tự động hóa giúp thu hẹp khoảng cách từ ý tưởng ban đầu đến các prompt sẵn sàng cho production dành cho AI agent. Công cụ này phân tích yêu cầu, xác định các điểm thiếu sót và tự động tạo Tài liệu Yêu cầu Sản phẩm (PRD) tích hợp mượt mà với mọi công cụ AI tương thích với agentskills.io như Claude Code và Cursor. Nền tảng hỗ trợ 10 workflow được thiết kế sẵn dưới dạng các agent skill, hỗ trợ cả phạm vi cài đặt (installation scope) global và project-level. Hệ thống tích hợp sẵn với GitHub Copilot (thông qua các slash command tùy chỉnh), Universal Adapters và các extension trên IDE. Clavix được thiết kế chuyên biệt cho các operations team muốn chuẩn hóa và tối ưu hóa quy trình lập trình bằng AI.\nTự động tạo PRD chi tiết bằng cách trả lời các câu hỏi chiến lược về yêu cầu dự án.\nTối ưu hóa các prompt hiện có bằng bộ đánh giá chất lượng 6 chiều để cải thiện phản hồi từ AI.\nPhân rã PRD thành các tác vụ khả thi (actionable tasks) để quản lý và theo dõi dự án hiệu quả hơn.\nĐối chiếu việc triển khai tính năng với các yêu cầu ban đầu để đảm bảo chất lượng.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ClavixDev/Clavix`",
+    "usage_vi": "```\nChuyển đổi ý tưởng mơ hồ này thành một prompt sẵn sàng cho production: '[IDEA]'. Hãy đảm bảo prompt bao gồm các [INPUTS] cụ thể và [OUTPUTS] mong muốn. Tạo một bản PRD có thể sử dụng trực tiếp với [AI_TOOL] để thực thi tác vụ.\n```\nCopy\n\n```\nÝ tưởng: 'Cải thiện thời gian phản hồi hỗ trợ khách hàng'\n\nPrompt sẵn sàng cho Production (Production-Ready Prompt):\n'Phân tích dữ liệu ticket hỗ trợ khách hàng hiện tại từ [SUPPORT_SYSTEM]. Xác định các nút thắt cổ chai trong thời gian phản hồi. Tạo một danh sách ưu tiên các cải tiến quy trình và đề xuất các cơ hội tự động hóa cụ thể bằng cách sử dụng [AI_TOOL].'\n\nPRD:\n1. Input: Dữ liệu ticket hỗ trợ khách hàng từ [SUPPORT_SYSTEM]\n2. Phân tích: Xác định các nút thắt cổ chai trong thời gian phản hồi\n3. Output: Danh sách ưu tiên các cải tiến quy trình và cơ hội tự động hóa\n4. Thực thi (Execution): Sử dụng [AI_TOOL] để triển khai các giải pháp tự động hóa được đề xuất\n5. Chỉ số đo lường (Metrics): Theo dõi mức giảm thời gian phản hồi trung bình và điểm số hài lòng của khách hàng\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:45:17.956259Z",
+    "http_status": 200,
+    "content_hash": "0a92ca7f7947059b63ee2eb38c9e2982ce44aefe6fa73587cc4dafd89a12ce6c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clavix.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clavix.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Clavix: Chuyển đổi từ ý tưởng sang prompt",
+  "short_description_vi": "Clavix chuyển đổi các ý tưởng mơ hồ thành các prompt sẵn sàng cho production. Công cụ này phân tích các lỗ hổng (gaps), tự động tạo PRD và tích hợp mượt mà với mọi công cụ AI tương thích với agentskills.io. Đây là giải pháp lý tưởng cho các operations team để tối ưu hóa quy trình lập trình bằng AI."
+}

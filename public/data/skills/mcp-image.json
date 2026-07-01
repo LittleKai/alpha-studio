@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-image",
+  "slug": "mcp-image",
+  "name": "MCP Image Generator",
+  "headline": "MCP Image Generator - AI Image Generation",
+  "short_description": "MCP server for AI image generation and editing using Gemini 3 Pro Image Preview. Enables AI assistants to create and modify images. Integrates with Cursor, Codex, and other developer tools. Supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "shinpr",
+  "install_command": "git clone https://github.com/shinpr/mcp-image.git",
+  "source_repo_url": "https://github.com/shinpr/mcp-image",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "mcp",
+    "developer-tools",
+    "image-generation",
+    "claude-code",
+    "codex",
+    "mcp-server",
+    "gemini-api",
+    "generative-ai",
+    "gemini",
+    "ai-image"
+  ],
+  "sections": {
+    "overview": "mcp-image is an MCP server that transforms simple text descriptions into high-quality images using Google Gemini or OpenAI. It automatically enriches your prompts with photographic and artistic details—lighting, composition, atmosphere—so you don't need prompt engineering skills. The server supports image editing via natural language instructions, multiple quality tiers from fast iteration to maximum fidelity, and outputs up to 4K resolution in flexible aspect ratios. Features include character consistency for storyboards, Google Search grounding for factual accuracy, and multi-image blending for composite scenes. Works with Cursor, Claude Code, Codex, and any MCP-compatible tool.\nCreate product mockups and marketing visuals for e-commerce\nGenerate storyboard sequences with consistent character appearance\nEdit and transform existing images with natural language instructions\nProduce high-resolution images for print and professional publications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shinpr/mcp-image`",
+    "usage": "```\nUse the mcp-image server to generate or edit an image based on the following request: [DESCRIBE_IMAGE_REQUEST]. If editing, include the path to the source image: [SOURCE_IMAGE_PATH]. Specify any required adjustments like style, resolution, or modifications. For example: 'Generate a high-resolution cyberpunk cityscape in the style of Blade Runner, with neon lights and flying cars. Use mcp-image to create this image.'\n```\nCopy\n\n```\n```json\n{\n  \"image_generation_request\": {\n    \"prompt\": \"A futuristic cyberpunk cityscape at night, towering skyscrapers with glowing neon signs in Japanese and English, dense urban sprawl with flying cars and holographic billboards, rain-soaked streets reflecting the neon lights, cinematic lighting with deep shadows and vibrant colors, ultra-high resolution, 8K quality\",\n    \"style\": \"cyberpunk\",\n    \"resolution\": \"8192x4320\",\n    \"model\": \"gemini-3-pro-image-preview\",\n    \"output_format\": \"png\"\n  },\n  \"image_editing_request\": {\n    \"prompt\": \"Add a vintage 1980s filter with sepia tones, increase contrast by 20%, and overlay a subtle grid pattern in the background\",\n    \"source_image_path\": \"/users/ai/desktop/photo.jpg\",\n    \"adjustments\": {\n      \"contrast\": 20,\n      \"filter\": \"vintage-sepia\",\n      \"overlay\": \"grid-pattern\"\n    }\n  }\n}\n```\n\n**Generated Image Details:**\n- **Resolution:** 8192x4320 pixels (8K UHD)\n- **Style:** Cyberpunk with neon aesthetics\n- **Features:** Towering skyscrapers, flying cars, holographic billboards, rain-soaked streets with reflections\n- **Color Palette:** Deep blues, purples, and vibrant neon accents (pink, cyan, yellow)\n- **Lighting:** Cinematic with high contrast between shadows and bright neon lights\n\n**Editing Example:**\nFor the vintage photo edit, the AI applied a sepia filter, boosted contrast to enhance details in the shadows, and added a subtle grid overlay to give it a retro-computer aesthetic. The original photo was a portrait of a 1980s office worker, now transformed into a nostalgic, high-contrast image with a tech-inspired background pattern.\n\n**Output Location:**\n- Generated images are saved to `/users/ai/outputs/[timestamp]_cyberpunk_cityscape.png`\n- Edited images overwrite the source file unless specified otherwise.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-image#main-content",
+      "mcp-image#overview",
+      "mcp-image#setup",
+      "mcp-image#examples",
+      "mcp-image#tools",
+      "mcp-image#mcp",
+      "mcp-image#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcp-image is an MCP server that transforms simple text descriptions into high-quality images using Google Gemini or OpenAI. It automatically enriches your prompts with photographic and artistic details—lighting, composition, atmosphere—so you don't need prompt engineering skills. The server supports image editing via natural language instructions, multiple quality tiers from fast iteration to maximum fidelity, and outputs up to 4K resolution in flexible aspect ratios. Features include character consistency for storyboards, Google Search grounding for factual accuracy, and multi-image blending for composite scenes. Works with Cursor, Claude Code, Codex, and any MCP-compatible tool.\nCreate product mockups and marketing visuals for e-commerce\nGenerate storyboard sequences with consistent character appearance\nEdit and transform existing images with natural language instructions\nProduce high-resolution images for print and professional publications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shinpr/mcp-image`",
+    "usage_vi": "```\nUse the mcp-image server to generate or edit an image based on the following request: [DESCRIBE_IMAGE_REQUEST]. If editing, include the path to the source image: [SOURCE_IMAGE_PATH]. Specify any required adjustments like style, resolution, or modifications. For example: 'Generate a high-resolution cyberpunk cityscape in the style of Blade Runner, with neon lights and flying cars. Use mcp-image to create this image.'\n```\nCopy\n\n```\n```json\n{\n  \"image_generation_request\": {\n    \"prompt\": \"A futuristic cyberpunk cityscape at night, towering skyscrapers with glowing neon signs in Japanese and English, dense urban sprawl with flying cars and holographic billboards, rain-soaked streets reflecting the neon lights, cinematic lighting with deep shadows and vibrant colors, ultra-high resolution, 8K quality\",\n    \"style\": \"cyberpunk\",\n    \"resolution\": \"8192x4320\",\n    \"model\": \"gemini-3-pro-image-preview\",\n    \"output_format\": \"png\"\n  },\n  \"image_editing_request\": {\n    \"prompt\": \"Add a vintage 1980s filter with sepia tones, increase contrast by 20%, and overlay a subtle grid pattern in the background\",\n    \"source_image_path\": \"/users/ai/desktop/photo.jpg\",\n    \"adjustments\": {\n      \"contrast\": 20,\n      \"filter\": \"vintage-sepia\",\n      \"overlay\": \"grid-pattern\"\n    }\n  }\n}\n```\n\n**Generated Image Details:**\n- **Resolution:** 8192x4320 pixels (8K UHD)\n- **Style:** Cyberpunk with neon aesthetics\n- **Features:** Towering skyscrapers, flying cars, holographic billboards, rain-soaked streets with reflections\n- **Color Palette:** Deep blues, purples, and vibrant neon accents (pink, cyan, yellow)\n- **Lighting:** Cinematic with high contrast between shadows and bright neon lights\n\n**Editing Example:**\nFor the vintage photo edit, the AI applied a sepia filter, boosted contrast to enhance details in the shadows, and added a subtle grid overlay to give it a retro-computer aesthetic. The original photo was a portrait of a 1980s office worker, now transformed into a nostalgic, high-contrast image with a tech-inspired background pattern.\n\n**Output Location:**\n- Generated images are saved to `/users/ai/outputs/[timestamp]_cyberpunk_cityscape.png`\n- Edited images overwrite the source file unless specified otherwise.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:09.796370Z",
+    "http_status": 200,
+    "content_hash": "d6bcee2249e612ed0b85aff0226e05e7a13ab3b7740cef3457bedb9474d71a3b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-image.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-image.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP Image Generator - AI Image Generation",
+  "short_description_vi": "MCP server for AI image generation and editing using Gemini 3 Pro Image Preview. Enables AI assistants to create and modify images. Integrates with Cursor, Codex, and other developer tools. Supports Claude agents."
+}

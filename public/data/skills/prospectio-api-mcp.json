@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prospectio-api-mcp",
+  "slug": "prospectio-api-mcp",
+  "name": "N8N-Automation-Suite",
+  "headline": "Prospectio API MCP - Lead Generation Integration",
+  "short_description": "The Prospectio API MCP is a powerful server designed to connect with various lead generation applications. Built with FastAPI and Python, it enhances your prospecting efforts by integrating multiple tools for efficient lead management.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "prospectio-ai",
+  "install_command": "claude install prospectio-ai/prospectio-api-mcp",
+  "source_repo_url": "https://github.com/prospectio-ai/prospectio-api-mcp",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "Python",
+    "API",
+    "prospecting",
+    "lead generation"
+  ],
+  "sections": {
+    "overview": "Prospectio API MCP is a FastAPI-based Model Context Protocol server built for lead generation and prospecting workflows. It implements a sophisticated three-phase contact enrichment process: Phase 1 uses Perplexity web search to discover professional contact information including names, emails, phone numbers, and job titles; Phase 2 performs targeted LinkedIn profile URL discovery via DuckDuckGo HTML search with fallback strategies; Phase 3 gathers biographical details and professional summaries. The application follows Clean Architecture principles and integrates PostgreSQL with pgvector for persistent lead storage and management. Sales teams and AI agents can use this MCP to automate lead research, enrich prospect data with verified contact details, and streamline prospecting workflows.\nIntegrate multiple lead generation tools\nAutomate prospecting workflows\nEnhance lead data management\nStreamline sales processes",
+    "setup": "Terminal\nCopy\n`claude install prospectio-ai/prospectio-api-mcp`\n`git clone https://github.com/prospectio-ai/prospectio-api-mcp`",
+    "usage": "```\nAct as an expert in sales prospecting using the Prospectio API MCP. I need to integrate [LEAD_GENERATION_TOOL] with [CRM_SYSTEM] for [COMPANY] in the [INDUSTRY] sector. Provide a step-by-step guide to set up the API connections, including authentication methods, data mapping, and synchronization schedules. Also, suggest best practices for maintaining data integrity and handling API rate limits.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "prospectio-api-mcp#main-content",
+      "prospectio-api-mcp#overview",
+      "prospectio-api-mcp#setup",
+      "prospectio-api-mcp#examples",
+      "prospectio-api-mcp#tools",
+      "prospectio-api-mcp#mcp",
+      "prospectio-api-mcp#related",
+      "sendur",
+      "attio-mcp",
+      "n8n-automation-suite"
+    ],
+    "overview_vi": "Prospectio API MCP is a FastAPI-based Model Context Protocol server built for lead generation and prospecting workflows. It implements a sophisticated three-phase contact enrichment process: Phase 1 uses Perplexity web search to discover professional contact information including names, emails, phone numbers, and job titles; Phase 2 performs targeted LinkedIn profile URL discovery via DuckDuckGo HTML search with fallback strategies; Phase 3 gathers biographical details and professional summaries. The application follows Clean Architecture principles and integrates PostgreSQL with pgvector for persistent lead storage and management. Sales teams and AI agents can use this MCP to automate lead research, enrich prospect data with verified contact details, and streamline prospecting workflows.\nIntegrate multiple lead generation tools\nAutomate prospecting workflows\nEnhance lead data management\nStreamline sales processes",
+    "setup_vi": "Terminal\nCopy\n`claude install prospectio-ai/prospectio-api-mcp`\n`git clone https://github.com/prospectio-ai/prospectio-api-mcp`",
+    "usage_vi": "```\nAct as an expert in sales prospecting using the Prospectio API MCP. I need to integrate [LEAD_GENERATION_TOOL] with [CRM_SYSTEM] for [COMPANY] in the [INDUSTRY] sector. Provide a step-by-step guide to set up the API connections, including authentication methods, data mapping, and synchronization schedules. Also, suggest best practices for maintaining data integrity and handling API rate limits.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:48:41.518632Z",
+    "http_status": 200,
+    "content_hash": "57ef2b63e78bcc0cb3dbb994e3f85b05caeffd2b3d422dbc614abcf1a92e6fea",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prospectio-api-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prospectio-api-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Prospectio API MCP - Lead Generation Integration",
+  "short_description_vi": "The Prospectio API MCP is a powerful server designed to connect with various lead generation applications. Built with FastAPI and Python, it enhances your prospecting efforts by integrating multiple tools for efficient lead management."
+}

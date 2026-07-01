@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bc-webclient-mcp-server",
+  "slug": "bc-webclient-mcp-server",
+  "name": "browser-use",
+  "headline": "MCP server for Dynamics 365 AI interaction",
+  "short_description": "Enables AI assistants to interact with Microsoft Dynamics 365 Business Central through the native WebSocket interface. Operations teams can automate tasks, extract data, and integrate BC with other systems. Connects to Business Central WebUI and supports TypeScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "130 min",
+  "author": "SShadowS",
+  "install_command": "git clone https://github.com/SShadowS/bc-webclient-mcp-server.git",
+  "source_repo_url": "https://github.com/SShadowS/bc-webclient-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "ai-automation",
+    "webui-protocol",
+    "mcp",
+    "business-central"
+  ],
+  "sections": {
+    "overview": "business-central-mcp connects Claude and other AI assistants directly to Microsoft Dynamics 365 Business Central through its native WebSocket protocol, eliminating the need for OData endpoints or browser automation. The server supports 12 core tools including page navigation, data read/write operations, action execution, report running, and multi-company switching. Built in TypeScript with 284 unit tests and 111 integration tests, it maintains wire compatibility across BC27 and BC28. Operations teams can automate repetitive tasks, extract structured data from pages and reports, and integrate Business Central with external systems through AI-driven workflows. Authentication uses NavUserPassword credentials with OAuth on the roadmap.\nAutomate data entry and field updates across Business Central pages\nExtract customer, vendor, and inventory data for reporting and analysis\nExecute actions and workflows triggered by AI decision logic\nRun reports with dynamic parameters and capture results",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SShadowS/bc-webclient-mcp-server`",
+    "usage": "```\nUse the bc-webclient-mcp-server to [ACTION] in Microsoft Dynamics 365 Business Central for [ENTITY_TYPE]. For example: 'Retrieve all open sales orders with a total value over [AMOUNT] from the [COMPANY_NAME] instance.' or 'Update the status of invoice [INVOICE_NUMBER] to 'Paid' and log the payment date as [DATE].' Include any relevant filters like [FILTER_CONDITIONS].\n```\nCopy\n\n```\n```json\n{\n  \"result\": {\n    \"action\": \"Retrieved open sales orders with total value over $10,000\",\n    \"data\": [\n      {\n        \"orderNumber\": \"SO-2024-0045\",\n        \"customer\": \"Acme Corp\",\n        \"totalAmount\": 12500.00,\n        \"status\": \"Open\",\n        \"dueDate\": \"2024-06-15\",\n        \"salesperson\": \"John Doe\"\n      },\n      {\n        \"orderNumber\": \"SO-2024-0078\",\n        \"customer\": \"Globex Inc\",\n        \"totalAmount\": 15200.00,\n        \"status\": \"Open\",\n        \"dueDate\": \"2024-06-20\",\n        \"salesperson\": \"Jane Smith\"\n      }\n    ],\n    \"summary\": \"Found 2 matching orders out of 47 total open orders.\",\n    \"nextSteps\": [\n      \"Review the credit terms for Acme Corp and Globex Inc to assess collection risk.\",\n      \"Schedule follow-up calls with the sales team to prioritize these high-value orders.\",\n      \"Export this list to Excel for further analysis using Power BI.\"\n    ]\n  },\n  \"metadata\": {\n    \"timestamp\": \"2024-05-28T14:30:00Z\",\n    \"apiVersion\": \"v2.1\",\n    \"executionTimeMs\": 1245\n  }\n}\n```\n\nThe AI assistant successfully queried the Dynamics 365 Business Central WebSocket interface using the bc-webclient-mcp-server to fetch all open sales orders exceeding $10,000 in value. The query targeted the 'CRONUS USA, Inc.' demo company environment, which is the default sandbox for Business Central implementations. The response included two high-value orders that require immediate attention due to their proximity to the due dates and the elevated risk profile associated with large outstanding balances.\n\nThe data was structured as a JSON object with clear metadata, including the execution timestamp and API version, which ensures traceability for audit purposes. The AI also provided actionable next steps, such as credit risk assessment and sales team coordination, which align with standard order-to-cash workflows. This output demonstrates how the bc-webclient-mcp-server can bridge the gap between Business Central and downstream processes, enabling real-time automation and decision-making without manual data entry.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bc-webclient-mcp-server#main-content",
+      "bc-webclient-mcp-server#overview",
+      "bc-webclient-mcp-server#setup",
+      "bc-webclient-mcp-server#examples",
+      "bc-webclient-mcp-server#tools",
+      "bc-webclient-mcp-server#mcp",
+      "bc-webclient-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "business-central-mcp connects Claude and other AI assistants directly to Microsoft Dynamics 365 Business Central through its native WebSocket protocol, eliminating the need for OData endpoints or browser automation. The server supports 12 core tools including page navigation, data read/write operations, action execution, report running, and multi-company switching. Built in TypeScript with 284 unit tests and 111 integration tests, it maintains wire compatibility across BC27 and BC28. Operations teams can automate repetitive tasks, extract structured data from pages and reports, and integrate Business Central with external systems through AI-driven workflows. Authentication uses NavUserPassword credentials with OAuth on the roadmap.\nAutomate data entry and field updates across Business Central pages\nExtract customer, vendor, and inventory data for reporting and analysis\nExecute actions and workflows triggered by AI decision logic\nRun reports with dynamic parameters and capture results",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SShadowS/bc-webclient-mcp-server`",
+    "usage_vi": "```\nUse the bc-webclient-mcp-server to [ACTION] in Microsoft Dynamics 365 Business Central for [ENTITY_TYPE]. For example: 'Retrieve all open sales orders with a total value over [AMOUNT] from the [COMPANY_NAME] instance.' or 'Update the status of invoice [INVOICE_NUMBER] to 'Paid' and log the payment date as [DATE].' Include any relevant filters like [FILTER_CONDITIONS].\n```\nCopy\n\n```\n```json\n{\n  \"result\": {\n    \"action\": \"Retrieved open sales orders with total value over $10,000\",\n    \"data\": [\n      {\n        \"orderNumber\": \"SO-2024-0045\",\n        \"customer\": \"Acme Corp\",\n        \"totalAmount\": 12500.00,\n        \"status\": \"Open\",\n        \"dueDate\": \"2024-06-15\",\n        \"salesperson\": \"John Doe\"\n      },\n      {\n        \"orderNumber\": \"SO-2024-0078\",\n        \"customer\": \"Globex Inc\",\n        \"totalAmount\": 15200.00,\n        \"status\": \"Open\",\n        \"dueDate\": \"2024-06-20\",\n        \"salesperson\": \"Jane Smith\"\n      }\n    ],\n    \"summary\": \"Found 2 matching orders out of 47 total open orders.\",\n    \"nextSteps\": [\n      \"Review the credit terms for Acme Corp and Globex Inc to assess collection risk.\",\n      \"Schedule follow-up calls with the sales team to prioritize these high-value orders.\",\n      \"Export this list to Excel for further analysis using Power BI.\"\n    ]\n  },\n  \"metadata\": {\n    \"timestamp\": \"2024-05-28T14:30:00Z\",\n    \"apiVersion\": \"v2.1\",\n    \"executionTimeMs\": 1245\n  }\n}\n```\n\nThe AI assistant successfully queried the Dynamics 365 Business Central WebSocket interface using the bc-webclient-mcp-server to fetch all open sales orders exceeding $10,000 in value. The query targeted the 'CRONUS USA, Inc.' demo company environment, which is the default sandbox for Business Central implementations. The response included two high-value orders that require immediate attention due to their proximity to the due dates and the elevated risk profile associated with large outstanding balances.\n\nThe data was structured as a JSON object with clear metadata, including the execution timestamp and API version, which ensures traceability for audit purposes. The AI also provided actionable next steps, such as credit risk assessment and sales team coordination, which align with standard order-to-cash workflows. This output demonstrates how the bc-webclient-mcp-server can bridge the gap between Business Central and downstream processes, enabling real-time automation and decision-making without manual data entry.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:03:49.767606Z",
+    "http_status": 200,
+    "content_hash": "b2fc72b545f6260b249f2f3043327aa28652d60818a4682e08536dacb0a1d761",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bc-webclient-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bc-webclient-mcp-server.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MCP server for Dynamics 365 AI interaction",
+  "short_description_vi": "Enables AI assistants to interact with Microsoft Dynamics 365 Business Central through the native WebSocket interface. Operations teams can automate tasks, extract data, and integrate BC with other systems. Connects to Business Central WebUI and supports TypeScript."
+}

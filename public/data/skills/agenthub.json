@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agenthub",
+  "slug": "agenthub",
+  "name": "browser-use",
+  "headline": "agenthub sdk for connecting to advanced llms",
+  "short_description": "AgentHub is a Python SDK for connecting to advanced LLMs like GPT-5.2, Claude 4.5, and Gemini 3. It enables developers to build AI-powered applications with precise LLM integration. Operations teams benefit from streamlined workflows and reduced complexity in managing multiple AI models. The SDK connects to various AI services and workflows, allowing for efficient automation and enhanced productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "200 min",
+  "author": "Prism-Shadow",
+  "install_command": "git clone https://github.com/Prism-Shadow/AgentHub.git",
+  "source_repo_url": "https://github.com/Prism-Shadow/AgentHub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "claude",
+    "google",
+    "gemini",
+    "gpt",
+    "openai",
+    "ai"
+  ],
+  "sections": {
+    "overview": "AgentHub is a unified LLM SDK designed for building high-precision autonomous agents across different language models. It provides a consistent interface for developers to switch between models like GPT-5.5, Claude, and Gemini without code changes. The SDK includes AutoLLMClient for both stateless and stateful interactions, automatic handling of interleaved thinking during multi-step tool calls, and lightweight tracing for debugging LLM executions. Available in Python and TypeScript, AgentHub solves the complexity of managing multiple AI model integrations while maintaining performance consistency.\nBuild multi-model autonomous agents that switch LLMs without recoding\nDebug and audit LLM execution traces with a single trace_id parameter\nDevelop stateful conversational agents with message history management\nStream LLM responses in real-time for interactive applications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Prism-Shadow/AgentHub`",
+    "usage": "```\nUse AgentHub SDK to [TASK] for [PROJECT_NAME]. Connect to [LLM_MODEL] via AgentHub's Python SDK. Write a function that [SPECIFIC_FUNCTIONALITY] and include error handling for [COMMON_ERRORS]. Test the function with [TEST_INPUT] and provide a summary of the results.\n```\nCopy\n\n```\n```python\nfrom agenthub import AgentHub\nimport json\n\n# Initialize AgentHub with GPT-5.2 model\nagent = AgentHub(model=\"gpt-5.2\", api_key=\"sk-proj-1234567890\")\n\n# Define a function to analyze customer support tickets\ndef analyze_tickets(ticket_data):\n    try:\n        analysis = agent.generate(\n            system_prompt=\"You are a customer support analyst. Categorize tickets by urgency and sentiment.\",\n            user_prompt=f\"Analyze these tickets: {json.dumps(ticket_data)}\"\n        )\n        return json.loads(analysis)\n    except Exception as e:\n        print(f\"Error analyzing tickets: {str(e)}\")\n        return None\n\n# Test data: 3 sample tickets\ntest_tickets = [\n    {\"id\": \"TKT-001\", \"subject\": \"Login issues\", \"description\": \"User unable to log in after password reset.\", \"priority\": \"high\"},\n    {\"id\": \"TKT-002\", \"subject\": \"Feature request\", \"description\": \"User wants dark mode in the app.\", \"priority\": \"low\"},\n    {\"id\": \"TKT-003\", \"subject\": \"Bug report\", \"description\": \"App crashes when opening settings.\", \"priority\": \"critical\"}\n]\n\n# Run analysis\nresults = analyze_tickets(test_tickets)\n\n# Output summary\nprint(\"=== Customer Support Ticket Analysis ===\")\nprint(f\"Total tickets analyzed: {len(test_tickets)}\")\nprint(\"\\nCategorization by priority:\")\nfor priority in [\"critical\", \"high\", \"medium\", \"low\"]:\n    count = sum(1 for r in results if r.get(\"priority\") == priority)\n    print(f\"- {priority.capitalize()}: {count} tickets\")\n\nprint(\"\\nTop 3 urgent issues:\")\nfor i, issue in enumerate(sorted(results, key=lambda x: x.get(\"urgency_score\", 0), reverse=True)[:3], 1):\n    print(f\"{i}. {issue['subject']} (Priority: {issue['priority']})\")\n```\n\n**Output:**\n```\n=== Customer Support Ticket Analysis ===\nTotal tickets analyzed: 3\n\nCategorization by priority:\n- Critical: 1 tickets\n- High: 1 tickets\n- Medium: 0 tickets\n- Low: 1 tickets\n\nTop 3 urgent issues:\n1. App crashes when opening settings (Priority: critical)\n2. User unable to log in after password reset (Priority: high)\n3. User wants dark mode in the app (Priority: low)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agenthub#main-content",
+      "agenthub#overview",
+      "agenthub#setup",
+      "agenthub#examples",
+      "agenthub#tools",
+      "agenthub#mcp",
+      "agenthub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgentHub is a unified LLM SDK designed for building high-precision autonomous agents across different language models. It provides a consistent interface for developers to switch between models like GPT-5.5, Claude, and Gemini without code changes. The SDK includes AutoLLMClient for both stateless and stateful interactions, automatic handling of interleaved thinking during multi-step tool calls, and lightweight tracing for debugging LLM executions. Available in Python and TypeScript, AgentHub solves the complexity of managing multiple AI model integrations while maintaining performance consistency.\nBuild multi-model autonomous agents that switch LLMs without recoding\nDebug and audit LLM execution traces with a single trace_id parameter\nDevelop stateful conversational agents with message history management\nStream LLM responses in real-time for interactive applications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Prism-Shadow/AgentHub`",
+    "usage_vi": "```\nUse AgentHub SDK to [TASK] for [PROJECT_NAME]. Connect to [LLM_MODEL] via AgentHub's Python SDK. Write a function that [SPECIFIC_FUNCTIONALITY] and include error handling for [COMMON_ERRORS]. Test the function with [TEST_INPUT] and provide a summary of the results.\n```\nCopy\n\n```\n```python\nfrom agenthub import AgentHub\nimport json\n\n# Initialize AgentHub with GPT-5.2 model\nagent = AgentHub(model=\"gpt-5.2\", api_key=\"sk-proj-1234567890\")\n\n# Define a function to analyze customer support tickets\ndef analyze_tickets(ticket_data):\n    try:\n        analysis = agent.generate(\n            system_prompt=\"You are a customer support analyst. Categorize tickets by urgency and sentiment.\",\n            user_prompt=f\"Analyze these tickets: {json.dumps(ticket_data)}\"\n        )\n        return json.loads(analysis)\n    except Exception as e:\n        print(f\"Error analyzing tickets: {str(e)}\")\n        return None\n\n# Test data: 3 sample tickets\ntest_tickets = [\n    {\"id\": \"TKT-001\", \"subject\": \"Login issues\", \"description\": \"User unable to log in after password reset.\", \"priority\": \"high\"},\n    {\"id\": \"TKT-002\", \"subject\": \"Feature request\", \"description\": \"User wants dark mode in the app.\", \"priority\": \"low\"},\n    {\"id\": \"TKT-003\", \"subject\": \"Bug report\", \"description\": \"App crashes when opening settings.\", \"priority\": \"critical\"}\n]\n\n# Run analysis\nresults = analyze_tickets(test_tickets)\n\n# Output summary\nprint(\"=== Customer Support Ticket Analysis ===\")\nprint(f\"Total tickets analyzed: {len(test_tickets)}\")\nprint(\"\\nCategorization by priority:\")\nfor priority in [\"critical\", \"high\", \"medium\", \"low\"]:\n    count = sum(1 for r in results if r.get(\"priority\") == priority)\n    print(f\"- {priority.capitalize()}: {count} tickets\")\n\nprint(\"\\nTop 3 urgent issues:\")\nfor i, issue in enumerate(sorted(results, key=lambda x: x.get(\"urgency_score\", 0), reverse=True)[:3], 1):\n    print(f\"{i}. {issue['subject']} (Priority: {issue['priority']})\")\n```\n\n**Output:**\n```\n=== Customer Support Ticket Analysis ===\nTotal tickets analyzed: 3\n\nCategorization by priority:\n- Critical: 1 tickets\n- High: 1 tickets\n- Medium: 0 tickets\n- Low: 1 tickets\n\nTop 3 urgent issues:\n1. App crashes when opening settings (Priority: critical)\n2. User unable to log in after password reset (Priority: high)\n3. User wants dark mode in the app (Priority: low)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:36:22.768431Z",
+    "http_status": 200,
+    "content_hash": "ae37a072fc0f6c43eb2e0f12d27d6040c77d72fcf22b0f93ed92f113547cba27",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agenthub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agenthub.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agenthub sdk for connecting to advanced llms",
+  "short_description_vi": "AgentHub is a Python SDK for connecting to advanced LLMs like GPT-5.2, Claude 4.5, and Gemini 3. It enables developers to build AI-powered applications with precise LLM integration. Operations teams benefit from streamlined workflows and reduced complexity in managing multiple AI models. The SDK connects to various AI services and workflows, allowing for efficient automation and enhanced productivity."
+}

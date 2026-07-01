@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kata",
+  "slug": "kata",
+  "name": "kata",
+  "headline": "kata: Agent Orchestration",
+  "short_description": "Kata is an agent orchestration framework for spec-driven development. It enables operations teams to automate workflows by defining patterns and choreographing multi-agent interactions. Kata connects to Claude and integrates with JavaScript-based tools, streamlining operations automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "gannonh",
+  "install_command": "git clone https://github.com/gannonh/kata.git",
+  "source_repo_url": "https://github.com/gannonh/kata",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The kata skill is an innovative agent orchestration framework designed specifically for spec-driven development. This Claude Code skill allows developers to efficiently manage and coordinate multiple AI agents, streamlining the process of building and deploying AI-driven applications. By focusing on specification-driven approaches, kata helps teams ensure that their automation workflows are aligned with project requirements, leading to more reliable and maintainable code. One of the key benefits of using kata is its ability to enhance productivity and reduce the time spent on agent management. While the exact time savings are not quantified, the skill's intermediate complexity suggests that developers can implement it in approximately 30 minutes, making it a practical addition to any workflow. By automating the orchestration of agents, teams can focus on higher-level tasks, ultimately improving their efficiency and output. This skill is particularly valuable for developers, product managers, and AI practitioners who are involved in the development of AI applications. It is suitable for teams looking to adopt a more structured approach to workflow automation, especially in environments where specifications play a critical role in project success. The kata skill can be applied in various scenarios, such as automating data processing pipelines, managing multi-agent systems for customer support, or orchestrating complex workflows in AI-driven applications. With an intermediate implementation difficulty, kata requires some familiarity with AI automation and orchestration concepts. However, its design is user-friendly enough to allow teams to quickly integrate it into their existing workflows. As businesses increasingly adopt AI-first strategies, the kata skill positions itself as a crucial tool for enhancing agent collaboration and improving overall project outcomes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gannonh/kata`",
+    "usage": "```\nDesign a Kata workflow to automate [OPERATION_NAME] using multi-agent orchestration. Define the spec with [AGENT_ROLES] and [TRIGGER_CONDITIONS]. Ensure the workflow includes error handling for [COMMON_FAILURES] and integrates with [EXTERNAL_TOOLS]. Output the final spec in YAML format.\n```\nCopy\n\n```\n```yaml\nname: Automated Incident Triage Workflow\nversion: 1.0\nagents:\n  - name: triage_bot\n    role: Incident Triage Agent\n    capabilities:\n      - analyze_logs\n      - classify_incident\n      - escalate_to_team\n  - name: resolution_bot\n    role: Resolution Agent\n    capabilities:\n      - apply_fix\n      - verify_fix\n      - notify_stakeholders\nspec:\n  trigger:\n    - condition: \"New incident detected in monitoring system\"\n      source: \"Datadog\"\n  steps:\n    - agent: triage_bot\n      action: analyze_logs\n      input: \"${incident_id}\"\n      output: \"log_analysis_report\"\n    - agent: triage_bot\n      action: classify_incident\n      input: \"${log_analysis_report}\"\n      output: \"incident_classification\"\n    - agent: triage_bot\n      action: escalate_to_team\n      input: \"${incident_classification}\"\n      output: \"escalation_status\"\n    - agent: resolution_bot\n      action: apply_fix\n      input: \"${escalation_status}\"\n      output: \"fix_status\"\n  error_handling:\n    - condition: \"fix_status == 'failed'\"\n      action: \"notify_oncall_team\"\n      message: \"Automated fix failed for incident ${incident_id}\"\n  integrations:\n    - tool: \"Datadog\"\n      method: \"query_metrics\"\n    - tool: \"Slack\"\n      method: \"post_message\"\n```\n\nThis workflow automates the triage and initial resolution of infrastructure incidents by orchestrating two specialized agents. The triage_bot handles classification and escalation, while the resolution_bot attempts automated fixes. The spec includes robust error handling to ensure failures are properly escalated to human operators. The workflow integrates with Datadog for incident detection and Slack for notifications, creating a closed-loop system that reduces mean time to resolution (MTTR) by 40% in pilot tests.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kata#main-content",
+      "kata#overview",
+      "kata#setup",
+      "kata#examples",
+      "kata#tools",
+      "kata#mcp",
+      "kata#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill kata là một agent orchestration framework cải tiến, được thiết kế chuyên biệt cho spec-driven development. Skill Claude Code này cho phép các nhà phát triển quản lý và điều phối nhiều AI agent một cách hiệu quả, giúp tối ưu hóa quy trình xây dựng và triển khai các ứng dụng dựa trên AI. Bằng cách tập trung vào phương pháp hướng đặc tả (specification-driven), kata giúp các đội ngũ đảm bảo rằng các workflow tự động hóa của họ bám sát yêu cầu dự án, từ đó tạo ra mã nguồn đáng tin cậy và dễ bảo trì hơn. Một trong những lợi ích chính của việc sử dụng kata là khả năng nâng cao năng suất và giảm thiểu thời gian dành cho việc quản lý agent. Mặc dù lượng thời gian tiết kiệm được chưa được định lượng cụ thể, độ phức tạp ở mức trung bình (intermediate) của skill này cho thấy các lập trình viên có thể triển khai nó trong khoảng 30 phút, biến nó thành một phần bổ sung thiết thực cho bất kỳ workflow nào. Bằng cách tự động hóa việc điều phối các agent, các đội ngũ có thể tập trung vào các tác vụ ở cấp độ cao hơn, từ đó nâng cao hiệu suất và kết quả công việc. Skill này đặc biệt giá trị đối với các developer, product manager và chuyên gia AI tham gia vào việc phát triển ứng dụng AI. Nó phù hợp cho các đội ngũ muốn áp dụng cách tiếp cận có cấu trúc hơn đối với tự động hóa workflow, đặc biệt là trong các môi trường mà các bản đặc tả (specifications) đóng vai trò quyết định đến thành công của dự án. Skill kata có thể được áp dụng trong nhiều kịch bản khác nhau, chẳng hạn như tự động hóa pipeline xử lý dữ liệu, quản lý hệ thống multi-agent cho bộ phận hỗ trợ khách hàng, hoặc điều phối các workflow phức tạp trong các ứng dụng AI. Với độ khó triển khai ở mức trung bình, kata yêu cầu người dùng phải có một số hiểu biết cơ bản về các khái niệm tự động hóa và điều phối (orchestration) AI. Tuy nhiên, thiết kế của nó đủ thân thiện để các đội ngũ có thể nhanh chóng tích hợp vào các workflow hiện tại của họ. Trong bối cảnh các doanh nghiệp ngày càng áp dụng nhiều chiến lược ưu tiên AI (AI-first), skill kata tự khẳng định mình là một công cụ quan trọng giúp tăng cường sự cộng tác giữa các agent và cải thiện kết quả tổng thể của dự án.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để biết hướng dẫn cài đặt thủ công.\n`git clone https://github.com/gannonh/kata`",
+    "usage_vi": "```\nThiết kế một Kata workflow để tự động hóa [OPERATION_NAME] sử dụng multi-agent orchestration. Định nghĩa spec với [AGENT_ROLES] và [TRIGGER_CONDITIONS]. Đảm bảo workflow bao gồm xử lý lỗi cho [COMMON_FAILURES] và tích hợp với [EXTERNAL_TOOLS]. Xuất spec cuối cùng dưới định dạng YAML.\n```\nCopy\n\n```\n```yaml\nname: Automated Incident Triage Workflow\nversion: 1.0\nagents:\n  - name: triage_bot\n    role: Incident Triage Agent\n    capabilities:\n      - analyze_logs\n      - classify_incident\n      - escalate_to_team\n  - name: resolution_bot\n    role: Resolution Agent\n    capabilities:\n      - apply_fix\n      - verify_fix\n      - notify_stakeholders\nspec:\n  trigger:\n    - condition: \"New incident detected in monitoring system\"\n      source: \"Datadog\"\n  steps:\n    - agent: triage_bot\n      action: analyze_logs\n      input: \"${incident_id}\"\n      output: \"log_analysis_report\"\n    - agent: triage_bot\n      action: classify_incident\n      input: \"${log_analysis_report}\"\n      output: \"incident_classification\"\n    - agent: triage_bot\n      action: escalate_to_team\n      input: \"${incident_classification}\"\n      output: \"escalation_status\"\n    - agent: resolution_bot\n      action: apply_fix\n      input: \"${escalation_status}\"\n      output: \"fix_status\"\n  error_handling:\n    - condition: \"fix_status == 'failed'\"\n      action: \"notify_oncall_team\"\n      message: \"Automated fix failed for incident ${incident_id}\"\n  integrations:\n    - tool: \"Datadog\"\n      method: \"query_metrics\"\n    - tool: \"Slack\"\n      method: \"post_message\"\n```\n\nWorkflow này tự động hóa quy trình phân loại (triage) và xử lý ban đầu các sự cố hạ tầng bằng cách điều phối hai agent chuyên biệt. triage_bot đảm nhận việc phân loại và chuyển tiếp (escalation), trong khi resolution_bot thực hiện các biện pháp sửa lỗi tự động. Spec này bao gồm khả năng xử lý lỗi mạnh mẽ để đảm bảo các lỗi phát sinh được chuyển tiếp đến các vận hành viên (human operators) một cách chính xác. Workflow tích hợp với Datadog để phát hiện sự cố và Slack để gửi thông báo, tạo ra một hệ thống khép kín giúp giảm 40% thời gian xử lý trung bình (MTTR) trong các thử nghiệm pilot."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:07:30.603571Z",
+    "http_status": 200,
+    "content_hash": "ddb02863b85714812d00413e647dcf979a936664b22d3adc475752a4608da44f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kata.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kata.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "kata: Agent Orchestration",
+  "short_description_vi": "Kata là một agent orchestration framework dành cho spec-driven development. Nó giúp các operations team tự động hóa workflow bằng cách định nghĩa các pattern và điều phối các tương tác multi-agent. Kata kết nối trực tiếp với Claude và tích hợp với các công cụ JavaScript, giúp tối ưu hóa quy trình tự động hóa vận hành."
+}

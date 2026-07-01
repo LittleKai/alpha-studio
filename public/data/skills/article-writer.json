@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/article-writer",
+  "slug": "article-writer",
+  "name": "browser-use",
+  "headline": "article writer for wechat using ai",
+  "short_description": "AI-driven tool for creating WeChat public account articles using Claude, Cursor, Codex, and Gemini. Ideal for operations teams to automate content creation, streamline workflows, and maintain consistent publishing schedules.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "wordflowlab",
+  "install_command": "git clone https://github.com/wordflowlab/article-writer.git",
+  "source_repo_url": "https://github.com/wordflowlab/article-writer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "spec-kit",
+    "article",
+    "ai-article-writer"
+  ],
+  "sections": {
+    "overview": "Article Writer is an AI-driven content creation system designed for WeChat public accounts and self-media platforms. It integrates directly with Claude, Cursor, Gemini, and 13 other AI assistants using slash commands. The tool implements four writing modes—Coach Mode (for authentic, human-written content), Fast Mode (AI-generated drafts), Hybrid Mode (AI framework with human content), and Framework-Constrained Mode (structured documents)—allowing users to choose based on time and quality requirements. It includes automated research with document crawling, personal material library management, three-pass review mechanisms to reduce AI detection, workspace systems tailored to WeChat, video, and general content, and intelligent mode recommendations based on article type. Operations teams and content creators use it to streamline workflows, maintain publishing schedules, and produce authentic content while leveraging AI assistance.\nCreating authentic WeChat public account articles with reduced AI detection (< 30%)\nAutomated research and document crawling for technical articles and tutorials\nBatch content generation for video scripts and short-form social media\nStructured document creation (proposals, project plans, bid documents) with framework constraints",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wordflowlab/article-writer`",
+    "usage": "```\nGenerate a WeChat public account article for [TOPIC/BRAND] targeting [AUDIENCE, e.g., young professionals in tech]. The article should be [LENGTH, e.g., 800-1000 words], written in a [TONE, e.g., conversational and engaging] style. Include [SECTIONS, e.g., an introduction, 3 key points with subheadings, a call-to-action, and a closing hook]. Use [KEYWORDS, e.g., 'AI tools,' 'automation,' 'productivity'] naturally throughout. Ensure the content is original, SEO-friendly, and optimized for WeChat's formatting (e.g., short paragraphs, bullet points, and emojis). Add a [HASHTAGS, e.g., #AIAutomation #ProductivityTips] section at the end. Here’s the draft outline: [OUTLINE, if provided]\n```\nCopy\n\n```\nTitle: 《用AI写作，让你的工作效率提升10倍》\n\n**引言**\n在当今快节奏的职场中，写作是每个人都绕不开的任务——无论是日常汇报、产品文档，还是社交媒体推广。然而，传统写作耗时费力，常常拖慢我们的工作进度。想象一下，如果有一个AI助手能帮你在几分钟内生成一篇高质量的文章，让你把时间花在更有价值的地方？今天，我们就来聊聊如何用AI写作工具（如Claude、Cursor、Codex）来提升写作效率，并分享一个真实案例：一家科技公司通过自动化写作，将每月的公众号文章产量从4篇提升到12篇，阅读量增长了300%！\n\n**核心优势：AI写作如何改变你的工作流程**\n1️⃣ **速度与质量并存**\n   以往一篇800字的文章可能需要2-3小时，而使用AI工具（如Claude），只需15分钟就能生成初稿。更棒的是，AI能根据你的需求调整语气和风格，确保内容既专业又贴近目标受众。例如，我们为一家金融科技公司生成了一篇关于《区块链应用》的文章，AI在20分钟内完成了初稿，编辑只需要再花10分钟润色即可发布。\n\n2️⃣ **个性化内容，精准触达**\n   AI工具能够分析受众画像（如年龄、职业、兴趣），生成更具针对性的内容。比如，针对「互联网营销人」这个群体，我们可以让AI突出「SEO优化」、「用户增长」等关键词，确保文章在搜索引擎中排名更靠前。在实际应用中，一家电商公司通过AI生成的产品介绍文章，点击率提升了40%。\n\n3️⃣ **降低人力成本，提升运营效率**\n   对于运营团队来说，AI写作意味着可以用更少的人力完成更多的内容产出。以往需要3-4人的内容团队，现在只需1-2人就能维持每周2-3篇的发布频率。例如，某 SaaS 公司的运营团队使用AI工具后，将每月的内容成本从1.5万元降低到5000元，同时文章的转化率提升了25%。\n\n**实操指南：如何用AI写出爆款文章**\n步骤1：定义目标与受众\n   在开始写作前，明确文章的目标（如品牌推广、产品介绍、用户教育）和受众画像（如职业、年龄、痛点）。例如，如果目标是推广一款AI写作工具，受众可能是「内容创作者」或「企业运营」。\n\n步骤2：选择合适的AI工具\n   不同的AI工具适合不同的场景。Claude适合长文本创作，Cursor擅长代码与技术文档，Gemini在多语言和图文结合方面表现优异。例如，我们团队在为一家国际化公司写作时，选择了Gemini来生成中英文双语的产品说明。\n\n步骤3：提供详细的写作提示\n   AI的输出质量取决于你的输入质量。在提示词中包含以下元素：\n   - 文章主题与关键词\n   - 目标受众与语气（正式/轻松）\n   - 结构要求（如分点论述、故事开头）\n   - 参考素材或风格示例\n   例如：「请用轻松的语气，写一篇800字的文章，介绍如何用AI提升工作效率。开头用一个小故事，包含3个实用技巧，结尾附上行动建议。」\n\n步骤4：编辑与优化\n   AI生成的初稿可能存在重复、逻辑跳跃或过于生硬的问题。编辑时重点检查：\n   - 逻辑连贯性（是否有突兀的转折）\n   - 语言流畅度（是否符合中文表达习惯）\n   - 数据准确性（如引用的案例是否真实）\n   例如，我们在编辑一篇关于「远程办公」的文章时，AI生成的初稿中有一个数据引用错误，编辑通过查阅最新报告进行了修正。\n\n**结语与行动召唤**\nAI写作工具正在重塑内容创作的边界，让每个人都能成为「写作高手」。如果你还在为写作耗费大量时间，不妨尝试用AI工具来提升效率。从今天开始，选择一个适合你的AI工具，设定明确的写作目标，并坚持测试与优化。记住：最好的文章不是一蹴而就的，而是在不断迭代中成长的。\n\n#AI写作 #效率提升 #内容运营 #自动化工具\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "article-writer#main-content",
+      "article-writer#overview",
+      "article-writer#setup",
+      "article-writer#examples",
+      "article-writer#tools",
+      "article-writer#mcp",
+      "article-writer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Article Writer is an AI-driven content creation system designed for WeChat public accounts and self-media platforms. It integrates directly with Claude, Cursor, Gemini, and 13 other AI assistants using slash commands. The tool implements four writing modes—Coach Mode (for authentic, human-written content), Fast Mode (AI-generated drafts), Hybrid Mode (AI framework with human content), and Framework-Constrained Mode (structured documents)—allowing users to choose based on time and quality requirements. It includes automated research with document crawling, personal material library management, three-pass review mechanisms to reduce AI detection, workspace systems tailored to WeChat, video, and general content, and intelligent mode recommendations based on article type. Operations teams and content creators use it to streamline workflows, maintain publishing schedules, and produce authentic content while leveraging AI assistance.\nCreating authentic WeChat public account articles with reduced AI detection (< 30%)\nAutomated research and document crawling for technical articles and tutorials\nBatch content generation for video scripts and short-form social media\nStructured document creation (proposals, project plans, bid documents) with framework constraints",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wordflowlab/article-writer`",
+    "usage_vi": "```\nGenerate a WeChat public account article for [TOPIC/BRAND] targeting [AUDIENCE, e.g., young professionals in tech]. The article should be [LENGTH, e.g., 800-1000 words], written in a [TONE, e.g., conversational and engaging] style. Include [SECTIONS, e.g., an introduction, 3 key points with subheadings, a call-to-action, and a closing hook]. Use [KEYWORDS, e.g., 'AI tools,' 'automation,' 'productivity'] naturally throughout. Ensure the content is original, SEO-friendly, and optimized for WeChat's formatting (e.g., short paragraphs, bullet points, and emojis). Add a [HASHTAGS, e.g., #AIAutomation #ProductivityTips] section at the end. Here’s the draft outline: [OUTLINE, if provided]\n```\nCopy\n\n```\nTitle: 《用AI写作，让你的工作效率提升10倍》\n\n**引言**\n在当今快节奏的职场中，写作是每个人都绕不开的任务——无论是日常汇报、产品文档，还是社交媒体推广。然而，传统写作耗时费力，常常拖慢我们的工作进度。想象一下，如果有一个AI助手能帮你在几分钟内生成一篇高质量的文章，让你把时间花在更有价值的地方？今天，我们就来聊聊如何用AI写作工具（如Claude、Cursor、Codex）来提升写作效率，并分享一个真实案例：一家科技公司通过自动化写作，将每月的公众号文章产量从4篇提升到12篇，阅读量增长了300%！\n\n**核心优势：AI写作如何改变你的工作流程**\n1️⃣ **速度与质量并存**\n   以往一篇800字的文章可能需要2-3小时，而使用AI工具（如Claude），只需15分钟就能生成初稿。更棒的是，AI能根据你的需求调整语气和风格，确保内容既专业又贴近目标受众。例如，我们为一家金融科技公司生成了一篇关于《区块链应用》的文章，AI在20分钟内完成了初稿，编辑只需要再花10分钟润色即可发布。\n\n2️⃣ **个性化内容，精准触达**\n   AI工具能够分析受众画像（如年龄、职业、兴趣），生成更具针对性的内容。比如，针对「互联网营销人」这个群体，我们可以让AI突出「SEO优化」、「用户增长」等关键词，确保文章在搜索引擎中排名更靠前。在实际应用中，一家电商公司通过AI生成的产品介绍文章，点击率提升了40%。\n\n3️⃣ **降低人力成本，提升运营效率**\n   对于运营团队来说，AI写作意味着可以用更少的人力完成更多的内容产出。以往需要3-4人的内容团队，现在只需1-2人就能维持每周2-3篇的发布频率。例如，某 SaaS 公司的运营团队使用AI工具后，将每月的内容成本从1.5万元降低到5000元，同时文章的转化率提升了25%。\n\n**实操指南：如何用AI写出爆款文章**\n步骤1：定义目标与受众\n   在开始写作前，明确文章的目标（如品牌推广、产品介绍、用户教育）和受众画像（如职业、年龄、痛点）。例如，如果目标是推广一款AI写作工具，受众可能是「内容创作者」或「企业运营」。\n\n步骤2：选择合适的AI工具\n   不同的AI工具适合不同的场景。Claude适合长文本创作，Cursor擅长代码与技术文档，Gemini在多语言和图文结合方面表现优异。例如，我们团队在为一家国际化公司写作时，选择了Gemini来生成中英文双语的产品说明。\n\n步骤3：提供详细的写作提示\n   AI的输出质量取决于你的输入质量。在提示词中包含以下元素：\n   - 文章主题与关键词\n   - 目标受众与语气（正式/轻松）\n   - 结构要求（如分点论述、故事开头）\n   - 参考素材或风格示例\n   例如：「请用轻松的语气，写一篇800字的文章，介绍如何用AI提升工作效率。开头用一个小故事，包含3个实用技巧，结尾附上行动建议。」\n\n步骤4：编辑与优化\n   AI生成的初稿可能存在重复、逻辑跳跃或过于生硬的问题。编辑时重点检查：\n   - 逻辑连贯性（是否有突兀的转折）\n   - 语言流畅度（是否符合中文表达习惯）\n   - 数据准确性（如引用的案例是否真实）\n   例如，我们在编辑一篇关于「远程办公」的文章时，AI生成的初稿中有一个数据引用错误，编辑通过查阅最新报告进行了修正。\n\n**结语与行动召唤**\nAI写作工具正在重塑内容创作的边界，让每个人都能成为「写作高手」。如果你还在为写作耗费大量时间，不妨尝试用AI工具来提升效率。从今天开始，选择一个适合你的AI工具，设定明确的写作目标，并坚持测试与优化。记住：最好的文章不是一蹴而就的，而是在不断迭代中成长的。\n\n#AI写作 #效率提升 #内容运营 #自动化工具\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:47:00.794264Z",
+    "http_status": 200,
+    "content_hash": "16b47ab043cd052afb9d86871c22a137d8400943687661e0a23897f3c28e2084",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\article-writer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\article-writer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "article writer for wechat using ai",
+  "short_description_vi": "AI-driven tool for creating WeChat public account articles using Claude, Cursor, Codex, and Gemini. Ideal for operations teams to automate content creation, streamline workflows, and maintain consistent publishing schedules."
+}

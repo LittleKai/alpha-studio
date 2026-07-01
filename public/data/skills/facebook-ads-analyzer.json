@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/facebook-ads-analyzer",
+  "slug": "facebook-ads-analyzer",
+  "name": "Facebook Ads Analyzer",
+  "headline": "Facebook Ads Analyzer: AI Ad Performance Evaluation",
+  "short_description": "Facebook Ads Analyzer 是一个专业的广告数据分析系统，基于facebook_ads 的 claude code agent skill ,能够：  自动分析 Facebook Ads Manager 导出的 CSV 数据 根据不同广告目标（互动/转化/流量）智能评估广告表现 识别最佳和最差广告 生成详细的诊断报告和优化建议 提供数据驱动的投放策略方案",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "liangdabiao",
+  "install_command": "git clone https://github.com/liangdabiao/facebook-ads-analyzer.git",
+  "source_repo_url": "https://github.com/liangdabiao/facebook-ads-analyzer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Facebook Ads Analyzer automates performance evaluation of ads exported from Facebook Ads Manager. It applies weighted composite scoring algorithms tailored to your advertising goal—whether interaction, conversion, or traffic—and classifies ads as excellent, medium, or poor based on data-driven thresholds. The system diagnoses performance issues and provides specific optimization suggestions for each ad, from increasing budgets on top performers to identifying problem areas in underperforming campaigns. It generates three detailed outputs: a CSV with individual ad scores and rankings, a markdown analysis report highlighting top and bottom 10 ads with actionable insights, and a strategy proposal document with conservative, balanced, and aggressive investment approaches.\nIdentify which Facebook ads to scale by analyzing engagement, conversion, or traffic metrics\nDiagnose why specific ads underperform and get targeted recommendations for improvement\nGenerate weekly performance reports to track trends and optimize campaign budgets\nCompare ad performance across different goals to align spending with business objectives\n\nThe analysis covers GreenTech Solutions' Facebook ad campaigns from January 1, 2023, to March 31, 2023, with a primary focus on conversions. The dataset includes 15 campaigns, 48 ad sets, and 120 individual ads.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/facebook-ads-analyzer`",
+    "usage": "```\nAnalyze the following Facebook Ads data for [COMPANY] in the [INDUSTRY] sector. The data is attached as a CSV file. Provide a detailed report that includes: 1) Performance evaluation based on the primary goal of [GOAL: engagement/conversions/traffic], 2) Identification of top and bottom-performing ads, 3) Specific optimization recommendations, and 4) Data-driven suggestions for future ad placements and targeting.\n```\nCopy\n\n```\n# Facebook Ads Performance Analysis for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "facebook-ads-analyzer#main-content",
+      "facebook-ads-analyzer#overview",
+      "facebook-ads-analyzer#setup",
+      "facebook-ads-analyzer#examples",
+      "facebook-ads-analyzer#tools",
+      "facebook-ads-analyzer#mcp",
+      "facebook-ads-analyzer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Facebook Ads Analyzer tự động hóa quy trình đánh giá hiệu suất của các quảng cáo được xuất từ Facebook Ads Manager. Hệ thống áp dụng thuật toán tính điểm tổng hợp có trọng số được tối ưu hóa cho từng mục tiêu quảng cáo cụ thể—dù là tương tác (engagement), chuyển đổi (conversion) hoặc lưu lượng truy cập (traffic)—và phân loại quảng cáo thành các mức: xuất sắc, trung bình hoặc kém dựa trên các ngưỡng dữ liệu thực tế. Hệ thống cũng chẩn đoán các vấn đề về hiệu suất và đưa ra các đề xuất tối ưu hóa cụ thể cho từng quảng cáo, từ việc tăng ngân sách cho các quảng cáo hoạt động tốt nhất đến việc xác định các điểm nghẽn của các chiến dịch kém hiệu quả. Công cụ này tạo ra ba kết quả đầu ra chi tiết: một file CSV chứa điểm số và xếp hạng của từng quảng cáo, một báo cáo phân tích bằng định dạng markdown làm nổi bật top 10 quảng cáo tốt nhất và kém nhất kèm theo các insight có thể hành động ngay, và một tài liệu đề xuất chiến lược với các phương án đầu tư an toàn, cân bằng và tối ưu tăng trưởng.\n\nXác định quảng cáo Facebook nào cần tăng ngân sách (scale) bằng cách phân tích các chỉ số tương tác, chuyển đổi hoặc lưu lượng truy cập\nChẩn đoán lý do các quảng cáo cụ thể hoạt động kém và nhận các đề xuất cải thiện có mục tiêu rõ ràng\nTự động tạo báo cáo hiệu suất hàng tuần để theo dõi xu hướng và tối ưu hóa ngân sách chiến dịch\nSo sánh hiệu suất quảng cáo giữa các mục tiêu khác nhau để phân bổ chi tiêu phù hợp với mục tiêu kinh doanh\n\nPhân tích này áp dụng cho các chiến dịch quảng cáo Facebook của GreenTech Solutions từ ngày 1 tháng 1 năm 2023 đến ngày 31 tháng 3 năm 2023, tập trung chính vào chuyển đổi. Tập dữ liệu bao gồm 15 campaigns, 48 ad sets và 120 quảng cáo cá nhân.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/liangdabiao/facebook-ads-analyzer`",
+    "usage_vi": "```\nPhân tích dữ liệu Facebook Ads dưới đây của [COMPANY] trong lĩnh vực [INDUSTRY]. Dữ liệu được đính kèm dưới dạng file CSV. Hãy cung cấp một báo cáo chi tiết bao gồm: 1) Đánh giá hiệu suất dựa trên mục tiêu chính là [GOAL: engagement/conversions/traffic], 2) Xác định các quảng cáo hoạt động tốt nhất và kém nhất, 3) Đề xuất tối ưu hóa cụ thể, và 4) Các gợi ý dựa trên dữ liệu cho việc phân bổ vị trí quảng cáo và nhắm mục tiêu (targeting) trong tương lai.\n```\nSao chép\n\n```\n# Phân tích hiệu suất Facebook Ads cho GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:12:24.026299Z",
+    "http_status": 200,
+    "content_hash": "b52317930837e11dfbc46eaa3d6001d115b207a8b9e378b3d54f4b1239d82172",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\facebook-ads-analyzer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\facebook-ads-analyzer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Facebook Ads Analyzer: Đánh giá hiệu suất quảng cáo bằng AI",
+  "short_description_vi": "Facebook Ads Analyzer là một hệ thống phân tích dữ liệu quảng cáo chuyên nghiệp, hoạt động như một claude code agent skill cho facebook_ads, có khả năng:\n- Tự động phân tích dữ liệu CSV xuất từ Facebook Ads Manager\n- Đánh giá thông minh hiệu suất quảng cáo theo các mục tiêu khác nhau (tương tác/chuyển đổi/lưu lượng truy cập)\n- Nhận diện các quảng cáo hoạt động tốt nhất và kém nhất\n- Tạo báo cáo chẩn đoán chi tiết và đề xuất tối ưu hóa\n- Cung cấp các phương án chiến lược phân bổ ngân sách dựa trên dữ liệu"
+}

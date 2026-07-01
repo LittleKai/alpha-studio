@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentree",
+  "slug": "agentree",
+  "name": "browser-use",
+  "headline": "Agentree for AI Worktrees: Isolate and Manage Code",
+  "short_description": "Agentree creates and manages isolated Git worktrees for AI coding agents, letting multiple agents work on separate branches simultaneously without conflicts.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "AryaLabsHQ",
+  "install_command": "git clone https://github.com/AryaLabsHQ/agentree.git",
+  "source_repo_url": "https://github.com/AryaLabsHQ/agentree",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "worktrees",
+    "git",
+    "agents"
+  ],
+  "sections": {
+    "overview": "Agentree is a CLI tool that spins up isolated Git worktrees so AI coding agents like Claude Code and Cursor can work on separate branches at the same time without stepping on each other. Each worktree gets its own working directory, branch, and environment files—automatically copied using .gitignore-based discovery to ensure secrets and configs are available. It supports monorepos by recursively finding nested environment files, and also copies AI tool configurations such as .claude/settings.local.json and .cursorrules into each new worktree. Shell completion for Bash, Zsh, Fish, and PowerShell is built in, with dynamic completions for branch and worktree names. Developers running multiple AI agents in parallel benefit most, eliminating the context-switching and merge conflicts that come from sharing a single working directory.\nRun multiple AI coding agents in parallel on different features without branch conflicts\nAutomatically copy .env files and secrets into each new worktree using .gitignore patterns\nPropagate AI tool configs like .cursorrules and .claude/settings.local.json to every agent workspace\nManage worktrees in monorepos with recursive environment file discovery across packages",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AryaLabsHQ/agentree`",
+    "usage": "```\nCreate a new isolated Git worktree for an AI coding agent named [AGENT_NAME] working on [PROJECT_NAME]. The worktree should be named [WORKTREE_NAME] and based on the branch [BRANCH_NAME]. Ensure the worktree is properly initialized with the latest code from the branch and has all necessary dependencies installed.\n```\nCopy\n\n```\n# Git Worktree Creation Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentree#main-content",
+      "agentree#overview",
+      "agentree#setup",
+      "agentree#examples",
+      "agentree#tools",
+      "agentree#mcp",
+      "agentree#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agentree is a CLI tool that spins up isolated Git worktrees so AI coding agents like Claude Code and Cursor can work on separate branches at the same time without stepping on each other. Each worktree gets its own working directory, branch, and environment files—automatically copied using .gitignore-based discovery to ensure secrets and configs are available. It supports monorepos by recursively finding nested environment files, and also copies AI tool configurations such as .claude/settings.local.json and .cursorrules into each new worktree. Shell completion for Bash, Zsh, Fish, and PowerShell is built in, with dynamic completions for branch and worktree names. Developers running multiple AI agents in parallel benefit most, eliminating the context-switching and merge conflicts that come from sharing a single working directory.\nRun multiple AI coding agents in parallel on different features without branch conflicts\nAutomatically copy .env files and secrets into each new worktree using .gitignore patterns\nPropagate AI tool configs like .cursorrules and .claude/settings.local.json to every agent workspace\nManage worktrees in monorepos with recursive environment file discovery across packages",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AryaLabsHQ/agentree`",
+    "usage_vi": "```\nCreate a new isolated Git worktree for an AI coding agent named [AGENT_NAME] working on [PROJECT_NAME]. The worktree should be named [WORKTREE_NAME] and based on the branch [BRANCH_NAME]. Ensure the worktree is properly initialized with the latest code from the branch and has all necessary dependencies installed.\n```\nCopy\n\n```\n# Git Worktree Creation Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:45:09.758823Z",
+    "http_status": 200,
+    "content_hash": "12cdca24a1e321075ff57e9be6a60f143ebf23ab44efdc71b8a9f29f5aa455a4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentree.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentree.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Agentree for AI Worktrees: Isolate and Manage Code",
+  "short_description_vi": "Agentree creates and manages isolated Git worktrees for AI coding agents, letting multiple agents work on separate branches simultaneously without conflicts."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gentleman-dots",
+  "slug": "gentleman-dots",
+  "name": "browser-use",
+  "headline": "Gentleman.Dots - Automates Code Editing",
+  "short_description": "Gentleman.Dots is a personal configuration for LazyVim that automates code editing workflows. It benefits developers by streamlining their environment setup and integrating with Claude AI for enhanced coding assistance. The configuration connects to LazyVim and supports Claude subscriptions via the opencode-anthropic-auth plugin.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "Gentleman-Programming",
+  "install_command": "git clone https://github.com/Gentleman-Programming/Gentleman.Dots.git",
+  "source_repo_url": "https://github.com/Gentleman-Programming/Gentleman.Dots",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Gentleman.Dots is a personal dotfiles configuration built on LazyVim that automates code editing workflows for developers. It provides pre-configured settings and integrations that streamline environment setup, reducing manual configuration time. The skill connects LazyVim with Claude AI assistance through the opencode-anthropic-auth plugin, enabling enhanced coding capabilities within your editor. Developers benefit from a ready-to-use configuration that handles terminal setup, shell configuration, and multiplexer tools like tmux and Zellij. This automation skill is maintained across multiple platforms and includes configurations for Fish shell, Nushell, and various terminal emulators.\nQuickly set up a fully configured Neovim environment with AI assistance.\nAutomate the installation of preferred shells and terminal multiplexers on various platforms.\nEasily switch between different terminal emulators and configurations.\nUtilize the Vim Mastery Trainer to enhance your Vim skills through interactive lessons.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Gentleman-Programming/Gentleman.Dots`",
+    "usage": "```\nSet up Gentleman.Dots for my project in [PROGRAMMING_LANGUAGE]. Automate the following workflows: [WORKFLOW_1], [WORKFLOW_2], and [WORKFLOW_3]. Ensure it integrates with Claude AI for coding assistance. Provide the configuration steps and any necessary setup commands.\n```\nCopy\n\n```\nTo set up Gentleman.Dots for your Python project, follow these steps:\n\n1. **Install LazyVim**: Ensure you have LazyVim installed. If not, you can install it using the following command:\n   ```bash\n   git clone https://github.com/LazyVim/starter ~/.config/nvim\n   lazyvim\n   ```\n\n2. **Install Gentleman.Dots**: Clone the Gentleman.Dots repository into your LazyVim configuration directory:\n   ```bash\n   git clone https://github.com/yourusername/Gentleman.Dots ~/.config/nvim/lua/user\n   ```\n\n3. **Configure Claude AI Integration**: Install the opencode-anthropic-auth plugin to connect with Claude AI:\n   ```bash\n   :Lazy install opencode-anthropic-auth\n   ```\n   Follow the plugin's instructions to authenticate your Claude subscription.\n\n4. **Automate Workflows**: Define your workflows in the Gentleman.Dots configuration. For example, to automate code formatting and linting, add the following to your configuration:\n   ```lua\n   local opts = { desc = \"Format and lint code\" }\n   vim.keymap.set('n', '<leader>ff', function()\n     vim.cmd('Format')\n     vim.cmd('Lint')\n   end, opts)\n   ```\n\n5. **Test the Setup**: Open a Python file and test the automated workflows. Use the defined keymaps to ensure everything works as expected.\n\nBy following these steps, you will have Gentleman.Dots set up for your Python project, with automated workflows and Claude AI integration for enhanced coding assistance.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gentleman-dots#main-content",
+      "gentleman-dots#overview",
+      "gentleman-dots#setup",
+      "gentleman-dots#examples",
+      "gentleman-dots#tools",
+      "gentleman-dots#mcp",
+      "gentleman-dots#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gentleman.Dots is a personal dotfiles configuration built on LazyVim that automates code editing workflows for developers. It provides pre-configured settings and integrations that streamline environment setup, reducing manual configuration time. The skill connects LazyVim with Claude AI assistance through the opencode-anthropic-auth plugin, enabling enhanced coding capabilities within your editor. Developers benefit from a ready-to-use configuration that handles terminal setup, shell configuration, and multiplexer tools like tmux and Zellij. This automation skill is maintained across multiple platforms and includes configurations for Fish shell, Nushell, and various terminal emulators.\nQuickly set up a fully configured Neovim environment with AI assistance.\nAutomate the installation of preferred shells and terminal multiplexers on various platforms.\nEasily switch between different terminal emulators and configurations.\nUtilize the Vim Mastery Trainer to enhance your Vim skills through interactive lessons.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Gentleman-Programming/Gentleman.Dots`",
+    "usage_vi": "```\nSet up Gentleman.Dots for my project in [PROGRAMMING_LANGUAGE]. Automate the following workflows: [WORKFLOW_1], [WORKFLOW_2], and [WORKFLOW_3]. Ensure it integrates with Claude AI for coding assistance. Provide the configuration steps and any necessary setup commands.\n```\nCopy\n\n```\nTo set up Gentleman.Dots for your Python project, follow these steps:\n\n1. **Install LazyVim**: Ensure you have LazyVim installed. If not, you can install it using the following command:\n   ```bash\n   git clone https://github.com/LazyVim/starter ~/.config/nvim\n   lazyvim\n   ```\n\n2. **Install Gentleman.Dots**: Clone the Gentleman.Dots repository into your LazyVim configuration directory:\n   ```bash\n   git clone https://github.com/yourusername/Gentleman.Dots ~/.config/nvim/lua/user\n   ```\n\n3. **Configure Claude AI Integration**: Install the opencode-anthropic-auth plugin to connect with Claude AI:\n   ```bash\n   :Lazy install opencode-anthropic-auth\n   ```\n   Follow the plugin's instructions to authenticate your Claude subscription.\n\n4. **Automate Workflows**: Define your workflows in the Gentleman.Dots configuration. For example, to automate code formatting and linting, add the following to your configuration:\n   ```lua\n   local opts = { desc = \"Format and lint code\" }\n   vim.keymap.set('n', '<leader>ff', function()\n     vim.cmd('Format')\n     vim.cmd('Lint')\n   end, opts)\n   ```\n\n5. **Test the Setup**: Open a Python file and test the automated workflows. Use the defined keymaps to ensure everything works as expected.\n\nBy following these steps, you will have Gentleman.Dots set up for your Python project, with automated workflows and Claude AI integration for enhanced coding assistance.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:39:19.149375Z",
+    "http_status": 200,
+    "content_hash": "d04ceefe7734cdfbeb956e0941af18d00b9377c54213cd4353f85101a51c6910",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gentleman-dots.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gentleman-dots.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Gentleman.Dots - Automates Code Editing",
+  "short_description_vi": "Gentleman.Dots is a personal configuration for LazyVim that automates code editing workflows. It benefits developers by streamlining their environment setup and integrating with Claude AI for enhanced coding assistance. The configuration connects to LazyVim and supports Claude subscriptions via the opencode-anthropic-auth plugin."
+}

@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/playbooks",
+  "slug": "playbooks",
+  "name": "browser-use",
+  "headline": "Playbooks - AI Agent Automation",
+  "short_description": "Playbooks is a semantic programming system for AI agents. It enables operations teams to automate workflows using natural language. Connects to Claude agents for task execution and orchestration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "playbooks-ai",
+  "install_command": "git clone https://github.com/playbooks-ai/playbooks.git",
+  "source_repo_url": "https://github.com/playbooks-ai/playbooks",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "llm",
+    "ai-agents-framework",
+    "multi-agent-systems",
+    "conversational-ai",
+    "llm-framework",
+    "software-3-0",
+    "ai-automation",
+    "natural-language-programming",
+    "low-code",
+    "mcp",
+    "workflow-automation",
+    "context-engineering",
+    "agent-orchestration"
+  ],
+  "sections": {
+    "overview": "Playbooks is a semantic programming system designed for AI agents to automate operational workflows using structured natural language. It compiles markdown-based specifications into executable instructions with formal semantics, variables, control flow, and typed function calls. Rather than imperative code or visual builders, Playbooks lets you express agent behavior as English-like programs that an LLM runtime executes with determinism and flexibility. Originally developed for customer support automation, it bridges the gap between human-readable specifications and machine-executable agent logic, enabling operations teams to define complex workflows without writing traditional code.\nCustomer support agent automation with structured workflows\nNatural language specification of multi-step operational processes\nAgent behavior definition with control flow and conditional logic\nWorkflow automation for teams without software engineering expertise",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/playbooks-ai/playbooks`",
+    "usage": "```\nDesign an AI agent playbook for [TASK/PROCESS]. The playbook should include: 1) [STEP_1], 2) [STEP_2], 3) [STEP_3], and 4) [STEP_4]. Use [TOOLS] where applicable. Ensure the playbook handles [EDGE_CASES] and includes [SUCCESS_CRITERIA]. Deploy this playbook to a Claude agent for execution.\n```\nCopy\n\n```\n### AI Agent Playbook: Customer Onboarding Automation\n\n**Objective:** Automate the customer onboarding process for SaaS subscriptions, reducing manual intervention by 70% and ensuring 95% onboarding completion within 24 hours.\n\n**Playbook Steps:**\n\n1. **Trigger & Validation**\n   - *Trigger:* New customer signup via Stripe webhook (event: `customer.subscription.created`).\n   - *Validation:* Verify payment status is `active` and customer email is valid. If invalid, log error and notify Slack channel `#onboarding-errors`.\n   - *Tools:* Stripe API, Slack API, Claude agent.\n\n2. **Provisioning**\n   - *Action:* Create customer account in HubSpot CRM and assign to `onboarding` pipeline.\n   - *Action:* Generate and send personalized welcome email via SendGrid (template: `welcome_onboarding`).\n   - *Action:* Provision AWS resources (EC2 instance, RDS database) using Terraform Cloud API.\n   - *Tools:* HubSpot API, SendGrid API, Terraform Cloud.\n\n3. **Configuration & Training**\n   - *Action:* Schedule a 30-minute Zoom meeting with the customer using Calendly API (template: `onboarding_training`).\n   - *Action:* Send a pre-meeting checklist to the customer (via email) with links to product documentation and a 2-minute tutorial video.\n   - *Action:* Log the meeting details in Notion (database: `Customer Onboarding`).\n   - *Tools:* Calendly API, SendGrid API, Notion API.\n\n4. **Completion & Handoff**\n   - *Action:* Mark onboarding as `completed` in HubSpot CRM and update `onboarding_status` to `success`.\n   - *Action:* Send a post-onboarding survey to the customer (via Typeform) with a 5-star rating and feedback form.\n   - *Action:* Notify the sales team in Slack (`#onboarding-alerts`) with a summary of the onboarding session.\n   - *Tools:* HubSpot API, Typeform API, Slack API.\n\n**Edge Cases & Handlers:**\n- *Payment Failure:* Retry payment once after 2 hours. If still failed, escalate to finance team via email.\n- *Provisioning Failure:* Roll back AWS resources using Terraform Cloud and notify the engineering team via PagerDuty.\n- *Customer No-Show:* Reschedule the Zoom meeting automatically via Calendly and notify the customer via email.\n\n**Success Criteria:**\n- 95% of onboarding processes complete within 24 hours.\n- 90% customer satisfaction score (from Typeform survey).\n- Zero manual intervention required for 80% of onboarding tasks.\n\n**Deployment:**\nThis playbook is deployed to a Claude agent with the following permissions:\n- Access to Stripe, HubSpot, SendGrid, Terraform Cloud, Calendly, Notion, Typeform, Slack, and PagerDuty APIs.\n- Permissions to execute Terraform plans and log data in Notion.\n- Automated retries for transient failures (e.g., API timeouts).\n\n**Metrics Dashboard:**\nTrack onboarding completion time, failure rates, and customer satisfaction scores in a shared Google Sheet (updated hourly via Zapier).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "playbooks#main-content",
+      "playbooks#overview",
+      "playbooks#setup",
+      "playbooks#examples",
+      "playbooks#tools",
+      "playbooks#mcp",
+      "playbooks#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Playbooks is a semantic programming system designed for AI agents to automate operational workflows using structured natural language. It compiles markdown-based specifications into executable instructions with formal semantics, variables, control flow, and typed function calls. Rather than imperative code or visual builders, Playbooks lets you express agent behavior as English-like programs that an LLM runtime executes with determinism and flexibility. Originally developed for customer support automation, it bridges the gap between human-readable specifications and machine-executable agent logic, enabling operations teams to define complex workflows without writing traditional code.\nCustomer support agent automation with structured workflows\nNatural language specification of multi-step operational processes\nAgent behavior definition with control flow and conditional logic\nWorkflow automation for teams without software engineering expertise",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/playbooks-ai/playbooks`",
+    "usage_vi": "```\nDesign an AI agent playbook for [TASK/PROCESS]. The playbook should include: 1) [STEP_1], 2) [STEP_2], 3) [STEP_3], and 4) [STEP_4]. Use [TOOLS] where applicable. Ensure the playbook handles [EDGE_CASES] and includes [SUCCESS_CRITERIA]. Deploy this playbook to a Claude agent for execution.\n```\nCopy\n\n```\n### AI Agent Playbook: Customer Onboarding Automation\n\n**Objective:** Automate the customer onboarding process for SaaS subscriptions, reducing manual intervention by 70% and ensuring 95% onboarding completion within 24 hours.\n\n**Playbook Steps:**\n\n1. **Trigger & Validation**\n   - *Trigger:* New customer signup via Stripe webhook (event: `customer.subscription.created`).\n   - *Validation:* Verify payment status is `active` and customer email is valid. If invalid, log error and notify Slack channel `#onboarding-errors`.\n   - *Tools:* Stripe API, Slack API, Claude agent.\n\n2. **Provisioning**\n   - *Action:* Create customer account in HubSpot CRM and assign to `onboarding` pipeline.\n   - *Action:* Generate and send personalized welcome email via SendGrid (template: `welcome_onboarding`).\n   - *Action:* Provision AWS resources (EC2 instance, RDS database) using Terraform Cloud API.\n   - *Tools:* HubSpot API, SendGrid API, Terraform Cloud.\n\n3. **Configuration & Training**\n   - *Action:* Schedule a 30-minute Zoom meeting with the customer using Calendly API (template: `onboarding_training`).\n   - *Action:* Send a pre-meeting checklist to the customer (via email) with links to product documentation and a 2-minute tutorial video.\n   - *Action:* Log the meeting details in Notion (database: `Customer Onboarding`).\n   - *Tools:* Calendly API, SendGrid API, Notion API.\n\n4. **Completion & Handoff**\n   - *Action:* Mark onboarding as `completed` in HubSpot CRM and update `onboarding_status` to `success`.\n   - *Action:* Send a post-onboarding survey to the customer (via Typeform) with a 5-star rating and feedback form.\n   - *Action:* Notify the sales team in Slack (`#onboarding-alerts`) with a summary of the onboarding session.\n   - *Tools:* HubSpot API, Typeform API, Slack API.\n\n**Edge Cases & Handlers:**\n- *Payment Failure:* Retry payment once after 2 hours. If still failed, escalate to finance team via email.\n- *Provisioning Failure:* Roll back AWS resources using Terraform Cloud and notify the engineering team via PagerDuty.\n- *Customer No-Show:* Reschedule the Zoom meeting automatically via Calendly and notify the customer via email.\n\n**Success Criteria:**\n- 95% of onboarding processes complete within 24 hours.\n- 90% customer satisfaction score (from Typeform survey).\n- Zero manual intervention required for 80% of onboarding tasks.\n\n**Deployment:**\nThis playbook is deployed to a Claude agent with the following permissions:\n- Access to Stripe, HubSpot, SendGrid, Terraform Cloud, Calendly, Notion, Typeform, Slack, and PagerDuty APIs.\n- Permissions to execute Terraform plans and log data in Notion.\n- Automated retries for transient failures (e.g., API timeouts).\n\n**Metrics Dashboard:**\nTrack onboarding completion time, failure rates, and customer satisfaction scores in a shared Google Sheet (updated hourly via Zapier).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:42:10.960568Z",
+    "http_status": 200,
+    "content_hash": "bacc10ba31fe31d8ef62bce32cd03be5414e3577f40438cb9f2ef00dc7276e05",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\playbooks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\playbooks.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Playbooks - AI Agent Automation",
+  "short_description_vi": "Playbooks is a semantic programming system for AI agents. It enables operations teams to automate workflows using natural language. Connects to Claude agents for task execution and orchestration."
+}

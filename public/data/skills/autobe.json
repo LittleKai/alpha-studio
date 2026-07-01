@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autobe",
+  "slug": "autobe",
+  "name": "react-native-best-practices",
+  "headline": "Autobe: AI Coding Agent for TypeScript Development",
+  "short_description": "Autobe is an AI-powered coding agent designed for TypeScript backend development. It automates code generation with 100% working outputs, using advanced compiler skills for integration and efficiency.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "wrtnlabs",
+  "install_command": "claude install wrtnlabs/autobe",
+  "source_repo_url": "https://github.com/wrtnlabs/autobe",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "backend",
+    "automation",
+    "ai-coding-agent",
+    "no-coding",
+    "typescript"
+  ],
+  "sections": {
+    "overview": "Autobe is a specialized AI coding agent designed for TypeScript backend development automation. It generates code with compiler-driven validation to ensure quality and correctness, eliminating manual verification steps. The agent integrates advanced compiler skills to catch errors during generation rather than after, reducing iteration cycles. It's built for developers who need reliable, production-ready TypeScript code without extensive review cycles. Autobe works with AI code editors like Claude Code and Cursor to streamline backend development workflows.\nAutomate the creation of RESTful APIs for web applications using simple natural language prompts.\nGenerate boilerplate code for NestJS applications, reducing initial setup time significantly.\nDesign and implement database schemas with Prisma, ensuring type safety and consistency.\nCreate comprehensive documentation for APIs and databases automatically, enhancing team collaboration.",
+    "setup": "Terminal\nCopy\n`claude install wrtnlabs/autobe`\n`git clone https://github.com/wrtnlabs/autobe`",
+    "usage": "```\nGenerate a TypeScript backend service for [PROJECT_NAME] that handles [SPECIFIC_FUNCTIONALITY]. Include all necessary interfaces, classes, and methods. Ensure the code is well-documented and follows best practices for TypeScript backend development. The service should integrate seamlessly with our existing [EXISTING_SYSTEM] and support [SPECIFIC_REQUIREMENTS].\n```\nCopy\n\n```\nHere's a TypeScript backend service for an e-commerce platform that handles user authentication and order processing. The service includes interfaces for User and Order, a UserService class with methods for registration, login, and profile management, and an OrderService class with methods for creating, retrieving, and updating orders. The code is well-documented and follows best practices for TypeScript backend development. It integrates seamlessly with our existing database system and supports RESTful API endpoints for easy integration with frontend applications.\n\n```typescript\n// User Interface\ninterface User {\n  id: string;\n  email: string;\n  password: string;\n  name: string;\n  role: string;\n}\n\n// Order Interface\ninterface Order {\n  id: string;\n  userId: string;\n  items: OrderItem[];\n  total: number;\n  status: string;\n  createdAt: Date;\n}\n\n// Order Item Interface\ninterface OrderItem {\n  productId: string;\n  quantity: number;\n  price: number;\n}\n\n// User Service Class\nclass UserService {\n  private users: User[] = [];\n\n  // Register a new user\n  register(email: string, password: string, name: string): User {\n    const user: User = {\n      id: this.generateId(),\n      email,\n      password,\n      name,\n      role: 'customer',\n    };\n    this.users.push(user);\n    return user;\n  }\n\n  // Login a user\n  login(email: string, password: string): User | null {\n    const user = this.users.find(\n      (u) => u.email === email && u.password === password\n    );\n    return user || null;\n  }\n\n  // Get user profile\n  getProfile(userId: string): User | null {\n    const user = this.users.find((u) => u.id === userId);\n    return user || null;\n  }\n\n  // Update user profile\n  updateProfile(\n    userId: string,\n    email?: string,\n    name?: string\n  ): User | null {\n    const user = this.users.find((u) => u.id === userId);\n    if (!user) return null;\n    if (email) user.email = email;\n    if (name) user.name = name;\n    return user;\n  }\n\n  // Generate a unique ID\n  private generateId(): string {\n    return Math.random().toString(36).substring(2, 9);\n  }\n}\n\n// Order Service Class\nclass OrderService {\n  private orders: Order[] = [];\n\n  // Create a new order\n  createOrder(userId: string, items: OrderItem[]): Order {\n    const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);\n    const order: Order = {\n      id: this.generateId(),\n      userId,\n      items,\n      total,\n      status: 'pending',\n      createdAt: new Date(),\n    };\n    this.orders.push(order);\n    return order;\n  }\n\n  // Get orders by user ID\n  getOrdersByUser(userId: string): Order[] {\n    return this.orders.filter((order) => order.userId === userId);\n  }\n\n  // Get order by ID\n  getOrderById(orderId: string): Order | null {\n    const order = this.orders.find((o) => o.id === orderId);\n    return order || null;\n  }\n\n  // Update order status\n  updateOrderStatus(orderId: string, status: string): Order | null {\n    const order = this.orders.find((o) => o.id === orderId);\n    if (!order) return null;\n    order.status = status;\n    return order;\n  }\n\n  // Generate a unique ID\n  private generateId(): string {\n    return Math.random().toString(36).substring(2, 9);\n  }\n}\n\n// Export the services\nexport { UserService, OrderService };\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "autobe#main-content",
+      "autobe#overview",
+      "autobe#setup",
+      "autobe#examples",
+      "autobe#tools",
+      "autobe#mcp",
+      "autobe#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Autobe is a specialized AI coding agent designed for TypeScript backend development automation. It generates code with compiler-driven validation to ensure quality and correctness, eliminating manual verification steps. The agent integrates advanced compiler skills to catch errors during generation rather than after, reducing iteration cycles. It's built for developers who need reliable, production-ready TypeScript code without extensive review cycles. Autobe works with AI code editors like Claude Code and Cursor to streamline backend development workflows.\nAutomate the creation of RESTful APIs for web applications using simple natural language prompts.\nGenerate boilerplate code for NestJS applications, reducing initial setup time significantly.\nDesign and implement database schemas with Prisma, ensuring type safety and consistency.\nCreate comprehensive documentation for APIs and databases automatically, enhancing team collaboration.",
+    "setup_vi": "Terminal\nCopy\n`claude install wrtnlabs/autobe`\n`git clone https://github.com/wrtnlabs/autobe`",
+    "usage_vi": "```\nGenerate a TypeScript backend service for [PROJECT_NAME] that handles [SPECIFIC_FUNCTIONALITY]. Include all necessary interfaces, classes, and methods. Ensure the code is well-documented and follows best practices for TypeScript backend development. The service should integrate seamlessly with our existing [EXISTING_SYSTEM] and support [SPECIFIC_REQUIREMENTS].\n```\nCopy\n\n```\nHere's a TypeScript backend service for an e-commerce platform that handles user authentication and order processing. The service includes interfaces for User and Order, a UserService class with methods for registration, login, and profile management, and an OrderService class with methods for creating, retrieving, and updating orders. The code is well-documented and follows best practices for TypeScript backend development. It integrates seamlessly with our existing database system and supports RESTful API endpoints for easy integration with frontend applications.\n\n```typescript\n// User Interface\ninterface User {\n  id: string;\n  email: string;\n  password: string;\n  name: string;\n  role: string;\n}\n\n// Order Interface\ninterface Order {\n  id: string;\n  userId: string;\n  items: OrderItem[];\n  total: number;\n  status: string;\n  createdAt: Date;\n}\n\n// Order Item Interface\ninterface OrderItem {\n  productId: string;\n  quantity: number;\n  price: number;\n}\n\n// User Service Class\nclass UserService {\n  private users: User[] = [];\n\n  // Register a new user\n  register(email: string, password: string, name: string): User {\n    const user: User = {\n      id: this.generateId(),\n      email,\n      password,\n      name,\n      role: 'customer',\n    };\n    this.users.push(user);\n    return user;\n  }\n\n  // Login a user\n  login(email: string, password: string): User | null {\n    const user = this.users.find(\n      (u) => u.email === email && u.password === password\n    );\n    return user || null;\n  }\n\n  // Get user profile\n  getProfile(userId: string): User | null {\n    const user = this.users.find((u) => u.id === userId);\n    return user || null;\n  }\n\n  // Update user profile\n  updateProfile(\n    userId: string,\n    email?: string,\n    name?: string\n  ): User | null {\n    const user = this.users.find((u) => u.id === userId);\n    if (!user) return null;\n    if (email) user.email = email;\n    if (name) user.name = name;\n    return user;\n  }\n\n  // Generate a unique ID\n  private generateId(): string {\n    return Math.random().toString(36).substring(2, 9);\n  }\n}\n\n// Order Service Class\nclass OrderService {\n  private orders: Order[] = [];\n\n  // Create a new order\n  createOrder(userId: string, items: OrderItem[]): Order {\n    const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);\n    const order: Order = {\n      id: this.generateId(),\n      userId,\n      items,\n      total,\n      status: 'pending',\n      createdAt: new Date(),\n    };\n    this.orders.push(order);\n    return order;\n  }\n\n  // Get orders by user ID\n  getOrdersByUser(userId: string): Order[] {\n    return this.orders.filter((order) => order.userId === userId);\n  }\n\n  // Get order by ID\n  getOrderById(orderId: string): Order | null {\n    const order = this.orders.find((o) => o.id === orderId);\n    return order || null;\n  }\n\n  // Update order status\n  updateOrderStatus(orderId: string, status: string): Order | null {\n    const order = this.orders.find((o) => o.id === orderId);\n    if (!order) return null;\n    order.status = status;\n    return order;\n  }\n\n  // Generate a unique ID\n  private generateId(): string {\n    return Math.random().toString(36).substring(2, 9);\n  }\n}\n\n// Export the services\nexport { UserService, OrderService };\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:05:10.148974Z",
+    "http_status": 200,
+    "content_hash": "8a71a9f89aa3c0ebbb061ed6c413429323392b656c830a2e10ff54f4d1907a2d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autobe.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autobe.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Autobe: AI Coding Agent for TypeScript Development",
+  "short_description_vi": "Autobe is an AI-powered coding agent designed for TypeScript backend development. It automates code generation with 100% working outputs, using advanced compiler skills for integration and efficiency."
+}

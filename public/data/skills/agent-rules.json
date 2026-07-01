@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-rules",
+  "slug": "agent-rules",
+  "name": "browser-use",
+  "headline": "Rules for agentic coding with multiple tools",
+  "short_description": "Agent-rules provides a framework for defining rules and instructions for agentic coding tools. It enables developers to create consistent, reusable workflows for tools like Cursor, Claude CLI, and Gemini CLI. This skill is useful for teams looking to automate repetitive coding tasks and enforce best practices across their development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "lirantal",
+  "install_command": "git clone https://github.com/lirantal/agent-rules.git",
+  "source_repo_url": "https://github.com/lirantal/agent-rules",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-workflow",
+    "agentic-ai",
+    "ai-agents",
+    "copilot",
+    "md",
+    "rules",
+    "cursor-ai"
+  ],
+  "sections": {
+    "overview": "Agent-rules is a framework that scaffolds coding instructions and best practices rules into projects for AI coding assistants including Cursor, GitHub Copilot, Claude CLI, and Gemini CLI. It provides pre-built rulesets covering secure coding practices, security vulnerability detection, and testing strategies. The tool supports interactive and CLI modes to generate customized rules, MCP (Model Context Protocol) configuration, and reusable custom commands. Teams use agent-rules to enforce consistent coding standards across their development workflows and automate repetitive coding tasks with AI assistants.\nGenerate security-focused coding rules for Cursor and Claude Code projects\nConfigure MCP servers for enhanced agentic coding capabilities across GitHub Copilot and Gemini CLI\nScaffold testing strategy guidelines and best practices into AI-assisted development workflows\nCreate reusable custom commands and prompts for common development tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lirantal/agent-rules`",
+    "usage": "```\nDefine a set of agent-rules for [TOOL_NAME] to automate [SPECIFIC_TASK] in [PROJECT_NAME]. The rules should include [KEY_COMPONENTS] and enforce [BEST_PRACTICES]. Format the rules as a JSON configuration file for direct use with the tool. Example: 'Define agent-rules for Cursor to automate pull request reviews in the 'ecommerce-backend' project. The rules should include linting, security checks, and performance validation, and enforce the team's coding standards.'\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"ecommerce-backend-pr-review\",\n  \"description\": \"Automated pull request review rules for the ecommerce-backend project\",\n  \"rules\": {\n    \"linting\": {\n      \"enabled\": true,\n      \"command\": \"npm run lint\",\n      \"severity\": \"error\",\n      \"auto-fix\": true,\n      \"ignore\": [\"node_modules\", \".git\"]\n    },\n    \"security\": {\n      \"enabled\": true,\n      \"sast_tool\": \"semgrep\",\n      \"ruleset\": \"owasp-top-ten\",\n      \"fail_on\": [\"sql-injection\", \"hardcoded-secrets\"],\n      \"auto-remediate\": false\n    },\n    \"performance\": {\n      \"enabled\": true,\n      \"checks\": [\n        {\n          \"type\": \"database-query\",\n          \"threshold\": \"100ms\",\n          \"action\": \"flag\"\n        },\n        {\n          \"type\": \"api-response\",\n          \"threshold\": \"500ms\",\n          \"action\": \"warn\"\n        }\n      ]\n    },\n    \"standards\": {\n      \"enabled\": true,\n      \"requirements\": [\n        \"Use TypeScript strict mode\",\n        \"Follow repository naming conventions\",\n        \"Include unit tests for new features\",\n        \"Document public APIs with JSDoc\"\n      ],\n      \"auto-format\": true,\n      \"prettier_config\": \".prettierrc\"\n    },\n    \"communication\": {\n      \"enabled\": true,\n      \"templates\": {\n        \"review_comment\": \"PR Review by automated agent-rules:\\n- [ ] Linting passed: ✅\\n- [ ] Security scan passed: ✅\\n- [ ] Performance checks passed: ✅\\n- [ ] Standards compliance: ✅\\n\\nReview the changes and approve if everything looks good.\"\n      }\n    }\n  },\n  \"execution\": {\n    \"trigger\": \"pull_request\",\n    \"environment\": \"production\",\n    \"timeout\": 300,\n    \"retries\": 2\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-rules#main-content",
+      "agent-rules#overview",
+      "agent-rules#setup",
+      "agent-rules#examples",
+      "agent-rules#tools",
+      "agent-rules#mcp",
+      "agent-rules#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent-rules is a framework that scaffolds coding instructions and best practices rules into projects for AI coding assistants including Cursor, GitHub Copilot, Claude CLI, and Gemini CLI. It provides pre-built rulesets covering secure coding practices, security vulnerability detection, and testing strategies. The tool supports interactive and CLI modes to generate customized rules, MCP (Model Context Protocol) configuration, and reusable custom commands. Teams use agent-rules to enforce consistent coding standards across their development workflows and automate repetitive coding tasks with AI assistants.\nGenerate security-focused coding rules for Cursor and Claude Code projects\nConfigure MCP servers for enhanced agentic coding capabilities across GitHub Copilot and Gemini CLI\nScaffold testing strategy guidelines and best practices into AI-assisted development workflows\nCreate reusable custom commands and prompts for common development tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lirantal/agent-rules`",
+    "usage_vi": "```\nDefine a set of agent-rules for [TOOL_NAME] to automate [SPECIFIC_TASK] in [PROJECT_NAME]. The rules should include [KEY_COMPONENTS] and enforce [BEST_PRACTICES]. Format the rules as a JSON configuration file for direct use with the tool. Example: 'Define agent-rules for Cursor to automate pull request reviews in the 'ecommerce-backend' project. The rules should include linting, security checks, and performance validation, and enforce the team's coding standards.'\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"ecommerce-backend-pr-review\",\n  \"description\": \"Automated pull request review rules for the ecommerce-backend project\",\n  \"rules\": {\n    \"linting\": {\n      \"enabled\": true,\n      \"command\": \"npm run lint\",\n      \"severity\": \"error\",\n      \"auto-fix\": true,\n      \"ignore\": [\"node_modules\", \".git\"]\n    },\n    \"security\": {\n      \"enabled\": true,\n      \"sast_tool\": \"semgrep\",\n      \"ruleset\": \"owasp-top-ten\",\n      \"fail_on\": [\"sql-injection\", \"hardcoded-secrets\"],\n      \"auto-remediate\": false\n    },\n    \"performance\": {\n      \"enabled\": true,\n      \"checks\": [\n        {\n          \"type\": \"database-query\",\n          \"threshold\": \"100ms\",\n          \"action\": \"flag\"\n        },\n        {\n          \"type\": \"api-response\",\n          \"threshold\": \"500ms\",\n          \"action\": \"warn\"\n        }\n      ]\n    },\n    \"standards\": {\n      \"enabled\": true,\n      \"requirements\": [\n        \"Use TypeScript strict mode\",\n        \"Follow repository naming conventions\",\n        \"Include unit tests for new features\",\n        \"Document public APIs with JSDoc\"\n      ],\n      \"auto-format\": true,\n      \"prettier_config\": \".prettierrc\"\n    },\n    \"communication\": {\n      \"enabled\": true,\n      \"templates\": {\n        \"review_comment\": \"PR Review by automated agent-rules:\\n- [ ] Linting passed: ✅\\n- [ ] Security scan passed: ✅\\n- [ ] Performance checks passed: ✅\\n- [ ] Standards compliance: ✅\\n\\nReview the changes and approve if everything looks good.\"\n      }\n    }\n  },\n  \"execution\": {\n    \"trigger\": \"pull_request\",\n    \"environment\": \"production\",\n    \"timeout\": 300,\n    \"retries\": 2\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:01:18.308820Z",
+    "http_status": 200,
+    "content_hash": "81b15f3ce73f7ccd563907f0a9c942bf53707023d6e4b04a9dc6024ed8526dc5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-rules.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-rules.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Rules for agentic coding with multiple tools",
+  "short_description_vi": "Agent-rules provides a framework for defining rules and instructions for agentic coding tools. It enables developers to create consistent, reusable workflows for tools like Cursor, Claude CLI, and Gemini CLI. This skill is useful for teams looking to automate repetitive coding tasks and enforce best practices across their development workflows."
+}

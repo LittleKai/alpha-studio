@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/if-this-then-ad",
+  "slug": "if-this-then-ad",
+  "name": "If-this-then-ad",
+  "headline": "If-this-then-ad - Automate Event-Based Marketing",
+  "short_description": "Automate marketing campaigns based on real-world events like weather, holidays, or sports. Connects to Google Ads and Display & Video 360. Ideal for dynamic ad targeting and personalized promotions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "google",
+  "install_command": "git clone https://github.com/google/if-this-then-ad.git",
+  "source_repo_url": "https://github.com/google/if-this-then-ad",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "signals",
+    "api",
+    "marketing",
+    "weatherbasedmarketing",
+    "googleads",
+    "dv360"
+  ],
+  "sections": {
+    "overview": "If This Then Ad (IFTTA) automates marketing campaign management by connecting real-world event data to Google Ads and Display & Video 360. The tool lets you create rules that query any JSON API and automatically enable, pause, or modify ad campaigns based on conditions you define—such as weather, pollen levels, stock prices, or other data sources. Rather than manually managing hundreds of ad groups daily, you can set up automated workflows that respond to live events in real time. This is particularly useful for reaching the right audiences at the right time under specific circumstances, personalizing ad delivery, and eliminating manual campaign management errors.\nEnable a DV360 line item if weather conditions meet specific criteria in a target location\nPause Google Ads ad groups when inventory levels or stock prices fall below thresholds\nControl multiple ads with specific labels based on air quality, pollen, or environmental data\nAutomate ad activation during holidays or special events detected via API data",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/google/if-this-then-ad`",
+    "usage": "```\nCreate a dynamic Google Ads campaign that automatically adjusts bids and ad copy based on [EVENT TYPE, e.g., weather, holiday, sports game]. Use [TARGET LOCATION] and [PRODUCT/SERVICE] as the focus. Include negative keywords to exclude irrelevant searches during this event. Example: 'Create a campaign for outdoor gear in Miami that increases bids by 30% when the temperature drops below 60°F and promotes rain jackets during thunderstorms.'\n```\nCopy\n\n```\n### Dynamic Google Ads Campaign: 'Sunny Days Ahead' for Beach Gear in Miami\n\n**Campaign Name:** Miami_BeachGear_DynamicWeather\n**Budget:** $5,000/day (flexible based on event triggers)\n**Locations:** Miami-Dade County\n**Devices:** Mobile and desktop prioritized\n\n#### **Weather-Based Triggers & Ad Adjustments**\n1. **Sunny Days (Temp > 80°F, UV Index > 8)**\n   - **Bid Adjustment:** +40% (high demand for sunscreen, sunglasses, and beach towels)\n   - **Ad Copy:** '☀️ Miami’s Hottest Deals! Shop SPF 50+ sunscreen & beach essentials—only today!'\n   - **Landing Page:** `/summer-sale` with countdown timer\n   - **Negative Keywords:** 'rain gear', 'umbrella', 'indoor activities'\n\n2. **Rainy Days (Precipitation > 0.5 inches)**\n   - **Bid Adjustment:** +25% (targeting last-minute indoor alternatives like beach umbrellas for patio use)\n   - **Ad Copy:** '🌧️ Rain Check? Grab a stylish beach umbrella for your next sunny day!'\n   - **Landing Page:** `/indoor-beach-fun` with featured umbrellas\n   - **Negative Keywords:** 'sunscreen', 'flip flops', 'outdoor activities'\n\n3. **Hurricane Watch (National Weather Service Alert)**\n   - **Bid Adjustment:** +50% (targeting emergency supplies like flashlights, generators, and waterproof gear)\n   - **Ad Copy:** '⚠️ Hurricane Prep: Stock up on essentials before the storm hits. Free shipping!'\n   - **Landing Page:** `/hurricane-safety-kit` with bundled deals\n   - **Negative Keywords:** 'beach vacation', 'summer sale', 'outdoor gear'\n\n#### **Holiday Triggers (Memorial Day, 4th of July)**\n- **Bid Adjustment:** +35% during the week leading up to the holiday\n- **Ad Copy:** '🎆 Memorial Day Blowout! 20% off all beach gear—shop now before it’s gone!'\n- **Audience Targeting:** Previous purchasers of beach gear (RLSA)\n\n#### **Sports Event Triggers (Miami Heat Playoff Game)**\n- **Bid Adjustment:** +20% during game hours\n- **Ad Copy:** '🏀 Heat Up Your Game! Shop Heat-themed merch and gear—limited stock!'\n- **Audience Targeting:** Sports enthusiasts within 10 miles of the arena\n\n**Implementation Steps:**\n1. **Set up Google Ads scripts** to monitor weather APIs (e.g., OpenWeatherMap) and adjust bids dynamically.\n2. **Use Display & Video 360** to create weather-responsive display ads with localized imagery (e.g., sunny beach vs. rainy cityscape).\n3. **Schedule ad copy rotations** in Google Ads to align with event triggers.\n4. **Monitor performance** in Google Ads dashboard and Google Analytics 4 to refine triggers and bids.\n\n**Expected Results:**\n- **Sunny Days:** 22% increase in conversions (CPA dropped from $12.50 to $9.80).\n- **Rainy Days:** 15% increase in umbrella sales (new revenue stream).\n- **Hurricane Watch:** 30% increase in emergency supply orders (high-margin items).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "if-this-then-ad#main-content",
+      "if-this-then-ad#overview",
+      "if-this-then-ad#setup",
+      "if-this-then-ad#examples",
+      "if-this-then-ad#tools",
+      "if-this-then-ad#mcp",
+      "if-this-then-ad#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "If This Then Ad (IFTTA) tự động hóa việc quản lý chiến dịch marketing bằng cách kết nối dữ liệu sự kiện thực tế với Google Ads và Display & Video 360. Công cụ này cho phép bạn tạo các quy tắc để truy vấn bất kỳ JSON API nào và tự động bật, tạm dừng hoặc chỉnh sửa chiến dịch quảng cáo dựa trên các điều kiện do bạn thiết lập—chẳng hạn như thời tiết, nồng độ phấn hoa, giá cổ phiếu hoặc các nguồn dữ liệu khác. Thay vì quản lý thủ công hàng trăm ad group mỗi ngày, bạn có thể thiết lập các workflow tự động để phản hồi các sự kiện thực tế theo thời gian thực. Điều này đặc biệt hữu ích để tiếp cận đúng đối tượng mục tiêu vào đúng thời điểm trong các hoàn cảnh cụ thể, cá nhân hóa việc phân phối quảng cáo và loại bỏ các sai sót do quản lý chiến dịch thủ công.\n\nBật một line item DV360 nếu điều kiện thời tiết đáp ứng các tiêu chí cụ thể tại một địa điểm mục tiêu\nTạm dừng các ad group của Google Ads khi mức tồn kho hoặc giá cổ phiếu giảm xuống dưới ngưỡng thiết lập\nKiểm soát nhiều quảng cáo có nhãn (label) cụ thể dựa trên chất lượng không khí, phấn hoa hoặc dữ liệu môi trường\nTự động kích hoạt quảng cáo trong các ngày lễ hoặc sự kiện đặc biệt được phát hiện qua dữ liệu API",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/google/if-this-then-ad`",
+    "usage_vi": "```\nTạo một chiến dịch Google Ads động để tự động điều chỉnh giá thầu (bid) và nội dung quảng cáo (ad copy) dựa trên [EVENT TYPE, ví dụ: thời tiết, ngày lễ, trận đấu thể thao]. Sử dụng [TARGET LOCATION] và [PRODUCT/SERVICE] làm trọng tâm. Thêm từ khóa phủ định (negative keywords) để loại bỏ các tìm kiếm không liên quan trong suốt sự kiện này. Ví dụ: 'Tạo chiến dịch cho đồ dã ngoại ngoài trời ở Miami để tăng giá thầu thêm 30% khi nhiệt độ giảm xuống dưới 60°F và quảng cáo áo mưa khi có giông bão.'\n```\nSao chép\n\n```\n### Chiến dịch Google Ads động: 'Sunny Days Ahead' cho Đồ đi biển tại Miami\n\n**Tên chiến dịch:** Miami_BeachGear_DynamicWeather\n**Ngân sách:** 5.000 USD/ngày (linh hoạt dựa trên các trigger sự kiện)\n**Địa điểm:** Quận Miami-Dade\n**Thiết bị:** Ưu tiên thiết bị di động và máy tính để bàn\n\n#### **Trigger dựa trên thời tiết & Điều chỉnh quảng cáo**\n1. **Ngày nắng (Nhiệt độ > 80°F, Chỉ số UV > 8)**\n   - **Điều chỉnh giá thầu (Bid Adjustment):** +40% (nhu cầu cao về kem chống nắng, kính râm và khăn tắm biển)\n   - **Mẫu quảng cáo (Ad Copy):** '☀️ Ưu đãi khủng nhất tại Miami! Mua kem chống nắng SPF 50+ & đồ đi biển thiết yếu—chỉ hôm nay!'\n   - **Trang đích (Landing Page):** `/summer-sale` kèm đồng hồ đếm ngược\n   - **Từ khóa phủ định (Negative Keywords):** 'đồ đi mưa', 'ô dù', 'hoạt động trong nhà'\n\n2. **Ngày mưa (Lượng mưa > 0,5 inch)**\n   - **Điều chỉnh giá thầu:** +25% (nhắm mục tiêu đến các giải pháp thay thế trong nhà vào phút chót như dù che bãi biển để dùng ở sân hiên)\n   - **Mẫu quảng cáo:** '🌧️ Lỡ hẹn vì mưa? Sắm ngay chiếc dù đi biển thời trang cho ngày nắng tiếp theo!'\n   - **Trang đích:** `/indoor-beach-fun` hiển thị các mẫu dù nổi bật\n   - **Từ khóa phủ định:** 'kem chống nắng', 'dép tông', 'hoạt động ngoài trời'\n\n3. **Cảnh báo bão (Cảnh báo từ Cơ quan Thời tiết Quốc gia)**\n   - **Điều chỉnh giá thầu:** +50% (nhắm mục tiêu đến các nhu yếu phẩm khẩn cấp như đèn pin, máy phát điện và đồ chống nước)\n   - **Mẫu quảng cáo:** '⚠️ Chuẩn bị trước bão: Mua sẵn nhu yếu phẩm trước khi bão đổ bộ. Miễn phí vận chuyển!'\n   - **Trang đích:** `/hurricane-safety-kit` với các gói ưu đãi combo\n   - **Từ khóa phủ định:** 'kỳ nghỉ bãi biển', 'khuyến mãi mùa hè', 'đồ dã ngoại'\n\n#### **Trigger ngày lễ (Ngày Chiến sĩ Trận vong, Ngày Độc lập 4/7)**\n- **Điều chỉnh giá thầu:** +35% trong tuần trước ngày lễ\n- **Mẫu quảng cáo:** '🎆 Đại tiệc Memorial Day! Giảm 20% toàn bộ đồ đi biển—mua ngay trước khi hết hàng!'\n- **Nhắm mục tiêu đối tượng:** Những người đã từng mua đồ đi biển (RLSA)\n\n#### **Trigger sự kiện thể thao (Trận Playoff của Miami Heat)**\n- **Điều chỉnh giá thầu:** +20% trong suốt thời gian diễn ra trận đấu\n- **Mẫu quảng cáo:** '🏀 Tiếp lửa trận đấu! Sắm ngay phụ kiện và đồ lưu niệm chủ đề Heat—số lượng có hạn!'\n- **Nhắm mục tiêu đối tượng:** Những người đam mê thể thao trong vòng bán kính 10 dặm quanh đấu trường\n\n**Các bước triển khai:**\n1. **Thiết lập Google Ads script** để theo dõi các API thời tiết (ví dụ: OpenWeatherMap) và điều chỉnh giá thầu một cách động.\n2. **Sử dụng Display & Video 360** để tạo quảng cáo hiển thị phản hồi theo thời tiết với hình ảnh được bản địa hóa (ví dụ: bãi biển đầy nắng vs. cảnh thành phố mưa).\n3. **Lên lịch xoay vòng mẫu quảng cáo (ad copy rotations)** trong Google Ads để khớp với các trigger sự kiện.\n4. **Theo dõi hiệu suất** trên trang quản trị Google Ads và Google Analytics 4 để tối ưu hóa các trigger và giá thầu.\n\n**Kết quả kỳ vọng:**\n- **Ngày nắng:** Tăng 22% lượt chuyển đổi (CPA giảm từ 12,50 USD xuống 9,80 USD).\n- **Ngày mưa:** Tăng 15% doanh số bán ô dù (tạo nguồn doanh thu mới).\n- **Cảnh báo bão:** Tăng 30% số lượng đơn hàng nhu yếu phẩm khẩn cấp (các mặt hàng có biên lợi nhuận cao).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:47:16.167067Z",
+    "http_status": 200,
+    "content_hash": "e14dc4ebf65368a5b66eb9a7c630c006a20bf875c9d54cbc2db8276d143303b1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\if-this-then-ad.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\if-this-then-ad.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "If-this-then-ad - Tự động hóa tiếp thị dựa trên sự kiện",
+  "short_description_vi": "Tự động hóa các chiến dịch marketing dựa trên các sự kiện thực tế như thời tiết, ngày lễ hoặc giải đấu thể thao. Kết nối trực tiếp với Google Ads và Display & Video 360. Giải pháp lý tưởng cho việc nhắm mục tiêu quảng cáo động và cá nhân hóa chương trình khuyến mãi."
+}

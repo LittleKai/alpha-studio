@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ad-analyzer-langgraph",
+  "slug": "ad-analyzer-langgraph",
+  "name": "Ad_Analyzer_LangGraph",
+  "headline": "Analyze Facebook Ads with LangGraph",
+  "short_description": "An end-to-end LangGraph pipeline that fetches Facebook ads, downloads and processes video content, transcribes Urdu audio via Whisper, analyzes marketing techniques and visuals with GPT-4o, and produces structured marketing insights.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "FarazF19",
+  "install_command": "git clone https://github.com/FarazF19/Ad_Analyzer_LangGraph.git",
+  "source_repo_url": "https://github.com/FarazF19/Ad_Analyzer_LangGraph",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "marketing-analysis",
+    "agents",
+    "agentic-ai",
+    "gpt-4o",
+    "langgraph",
+    "marketing-automation",
+    "openai",
+    "whisper",
+    "video-processing",
+    "facebook-ads-api",
+    "aipipeline",
+    "transcription",
+    "agentic-workflow",
+    "graph-api",
+    "python"
+  ],
+  "sections": {
+    "overview": "Ad Analyzer LangGraph is an end-to-end pipeline designed for marketing teams and researchers who need to systematically analyze Facebook advertising campaigns. It automates the entire workflow: fetching ads from Meta's Graph API, downloading associated video content, extracting frames for visual analysis, transcribing Urdu audio using OpenAI's Whisper, and analyzing marketing techniques with GPT-4o. The system identifies persuasion tactics such as emotional storytelling, urgency, and risk reversal, then merges transcription and visual insights into structured JSON summaries containing hooks, tone, power phrases, and visual highlights. Results are organized in local folders with automated Mermaid workflow visualization, making it easy for marketing professionals to study ad effectiveness and creative patterns at scale.\nAnalyze competitive Facebook ad strategies and marketing techniques\nTranscribe and study Urdu-language video ads for persuasion tactics\nExtract visual and audio insights from video ad campaigns\nGenerate structured reports on ad hooks, tone, and power phrases\nThe ad campaign for [COMPANY] in the [INDUSTRY] sector has been analyzed for its marketing techniques, visuals, and overall effectiveness. The campaign includes both video and image ads, with a significant portion of the video content featuring Urdu audio.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/FarazF19/Ad_Analyzer_LangGraph`",
+    "usage": "```\nAnalyze the following Facebook ad campaign for [COMPANY] in the [INDUSTRY] sector. Fetch the ad content, transcribe any Urdu audio using Whisper, and provide a detailed analysis of the marketing techniques, visuals, and overall effectiveness. Include recommendations for improvement based on the insights.\n```\nCopy\n\n```\n# Facebook Ad Campaign Analysis for [COMPANY] in the [INDUSTRY] Sector",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ad-analyzer-langgraph#main-content",
+      "ad-analyzer-langgraph#overview",
+      "ad-analyzer-langgraph#setup",
+      "ad-analyzer-langgraph#examples",
+      "ad-analyzer-langgraph#tools",
+      "ad-analyzer-langgraph#mcp",
+      "ad-analyzer-langgraph#related",
+      "marketingskills",
+      "copywriting",
+      "index-now-submit-sitemap-urls-action"
+    ],
+    "overview_vi": "Ad Analyzer LangGraph là một pipeline end-to-end được thiết kế cho các đội ngũ marketing và nhà nghiên cứu cần phân tích hệ thống các chiến dịch quảng cáo Facebook. Hệ thống tự động hóa toàn bộ workflow: thu thập quảng cáo từ Meta's Graph API, tải xuống video đi kèm, trích xuất khung hình để phân tích hình ảnh, chuyển soạn (transcribe) âm thanh tiếng Urdu bằng OpenAI's Whisper, và phân tích các kỹ thuật marketing bằng GPT-4o. Hệ thống tự động nhận diện các chiến thuật thuyết phục như kể chuyện cảm xúc (emotional storytelling), tạo sự cấp bách (urgency) và đảo ngược rủi ro (risk reversal), sau đó tổng hợp nội dung chuyển soạn cùng insight hình ảnh thành các bản tóm tắt JSON có cấu trúc chứa hook, tone giọng, cụm từ đắt giá (power phrases) và điểm nhấn trực quan. Kết quả được sắp xếp vào các thư mục cục bộ kèm theo sơ đồ trực quan hóa workflow bằng Mermaid tự động, giúp các chuyên gia marketing dễ dàng nghiên cứu hiệu quả quảng cáo và các mẫu creative ở quy mô lớn.\nPhân tích chiến lược Facebook ad đối thủ và các kỹ thuật marketing\nChuyển soạn và nghiên cứu các quảng cáo video tiếng Urdu để tìm hiểu chiến thuật thuyết phục\nTrích xuất insight về hình ảnh và âm thanh từ các chiến dịch quảng cáo video\nTạo báo cáo có cấu trúc về hook quảng cáo, tone giọng và các cụm từ đắt giá (power phrases)\nChiến dịch quảng cáo của [COMPANY] trong lĩnh vực [INDUSTRY] đã được phân tích về kỹ thuật marketing, hình ảnh và hiệu quả tổng thể. Chiến dịch bao gồm cả quảng cáo video và hình ảnh, với phần lớn nội dung video sử dụng âm thanh tiếng Urdu.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/FarazF19/Ad_Analyzer_LangGraph`",
+    "usage_vi": "```\nPhân tích chiến dịch quảng cáo Facebook sau đây cho [COMPANY] trong lĩnh vực [INDUSTRY]. Thu thập nội dung quảng cáo, chuyển soạn (transcribe) bất kỳ âm thanh tiếng Urdu nào bằng Whisper, và cung cấp phân tích chi tiết về các kỹ thuật marketing, hình ảnh cũng như hiệu quả tổng thể. Đưa ra các đề xuất cải thiện dựa trên các insight thu được.\n```\nSao chép\n\n```\n# Phân tích chiến dịch quảng cáo Facebook cho [COMPANY] trong lĩnh vực [INDUSTRY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:11:18.638002Z",
+    "http_status": 200,
+    "content_hash": "80efc7f9bced948acd261798b0c4b0f002d412d0fb7ec1c80f5187822fb2f9d8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ad-analyzer-langgraph.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ad-analyzer-langgraph.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phân tích Facebook Ads với LangGraph",
+  "short_description_vi": "Một pipeline LangGraph end-to-end giúp thu thập Facebook ads, tải xuống và xử lý nội dung video, chuyển soạn (transcribe) âm thanh tiếng Urdu qua Whisper, phân tích hình ảnh và kỹ thuật marketing bằng GPT-4o, từ đó xuất ra các báo cáo insight marketing dưới dạng dữ liệu cấu trúc."
+}

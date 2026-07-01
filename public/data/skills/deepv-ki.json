@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deepv-ki",
+  "slug": "deepv-ki",
+  "name": "DeepV-Ki",
+  "headline": "DeepV-Ki: AI-Powered Documentation Generator",
+  "short_description": "DeepV-Ki transforms your code repository into an interactive Wiki, enhancing documentation with AI-driven features like RAG-based Q&A and automatic architecture diagrams. Perfect for developers seeking to streamline project documentation and collaboration.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "OrionStarAI",
+  "install_command": "claude install OrionStarAI/DeepV-Ki",
+  "source_repo_url": "https://github.com/OrionStarAI/DeepV-Ki",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "AI",
+    "architecture diagrams",
+    "code repository",
+    "interactive Wiki",
+    "documentation"
+  ],
+  "sections": {
+    "overview": "DeepV-Ki is an open-source wiki generator that automatically converts any code repository into an interactive, searchable knowledge base. It analyzes code structure using AI to generate detailed documentation, create Mermaid architecture diagrams, and build a RAG-based Q&A system for accurate code questions. The tool supports multiple LLM providers (OpenAI, Google Gemini, Azure, AWS Bedrock, Ollama) and works with GitHub, GitLab, Bitbucket, and Gerrit repositories, including private ones. Developers can instantly understand complex codebases, ask questions in natural language, and access a comprehensive visual representation of project architecture. Features include multi-language support (10+ languages), interactive diagram zooming, multi-turn conversations, and a DeepResearch mode for in-depth code investigation.\nGenerate interactive documentation for software projects\nCreate architecture diagrams automatically\nAnswer code-related questions using AI\nEnhance team collaboration with organized Wiki",
+    "setup": "Terminal\nCopy\n`claude install OrionStarAI/DeepV-Ki`\n`git clone https://github.com/OrionStarAI/DeepV-Ki`",
+    "usage": "```\nTransform the code repository for [PROJECT_NAME] into an interactive Wiki. Generate AI-driven documentation including RAG-based Q&A and automatic architecture diagrams. Focus on the [SPECIFIC_MODULE] to highlight key functionalities and dependencies.\n```\nCopy\n\n```\nThe interactive Wiki for the [PROJECT_NAME] repository has been successfully generated. The AI-driven documentation includes a comprehensive RAG-based Q&A system that allows developers to ask questions about the codebase and receive accurate, context-aware responses. For example, when asked about the authentication module, the system provides detailed information on the OAuth 2.0 implementation, token management, and security best practices. Additionally, automatic architecture diagrams have been created, visually representing the relationships between different modules and components. The diagrams include the user interface layer, business logic layer, and data access layer, with clear annotations explaining the interactions and dependencies. This interactive Wiki enhances collaboration and onboarding by providing a centralized, searchable, and up-to-date resource for the development team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "deepv-ki#main-content",
+      "deepv-ki#overview",
+      "deepv-ki#setup",
+      "deepv-ki#examples",
+      "deepv-ki#tools",
+      "deepv-ki#mcp",
+      "deepv-ki#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "DeepV-Ki là một công cụ tạo wiki mã nguồn mở, tự động chuyển đổi bất kỳ repository code nào thành một cơ sở tri thức tương tác và có thể tìm kiếm được. Công cụ này phân tích cấu trúc code bằng AI để tạo tài liệu chi tiết, vẽ sơ đồ kiến trúc Mermaid, và xây dựng hệ thống Q&A dựa trên RAG để trả lời chính xác các câu hỏi về code. Công cụ hỗ trợ nhiều nhà cung cấp LLM (OpenAI, Google Gemini, Azure, AWS Bedrock, Ollama) và tương thích với các repository trên GitHub, GitLab, Bitbucket, và Gerrit, bao gồm cả các repo riêng tư (private). Nhà phát triển có thể nhanh chóng hiểu được các codebase phức tạp, đặt câu hỏi bằng ngôn ngữ tự nhiên, và tiếp cận sơ đồ trực quan toàn diện về kiến trúc dự án. Các tính năng nổi bật bao gồm hỗ trợ đa ngôn ngữ (hơn 10 ngôn ngữ), thu phóng sơ đồ tương tác, hội thoại đa lượt (multi-turn), và chế độ DeepResearch để phân tích sâu codebase.\n\nTạo tài liệu tương tác cho các dự án phần mềm\nTự động vẽ sơ đồ kiến trúc\nTrả lời các câu hỏi liên quan đến code bằng AI\nTăng cường cộng tác nhóm với Wiki được tổ chức khoa học",
+    "setup_vi": "Terminal\nSao chép\n`claude install OrionStarAI/DeepV-Ki`\n`git clone https://github.com/OrionStarAI/DeepV-Ki`",
+    "usage_vi": "```\nChuyển đổi repository code của [PROJECT_NAME] thành một Wiki tương tác. Tạo tài liệu tự động bằng AI bao gồm Q&A dựa trên RAG và sơ đồ kiến trúc tự động. Tập trung vào [SPECIFIC_MODULE] để làm nổi bật các chức năng và phụ thuộc chính.\n```\nSao chép\n\n```\nWiki tương tác cho repository [PROJECT_NAME] đã được tạo thành công. Tài liệu tích hợp AI bao gồm hệ thống Q&A dựa trên RAG toàn diện, cho phép các nhà phát triển đặt câu hỏi về codebase và nhận lại câu trả lời chính xác, phù hợp với ngữ cảnh. Ví dụ, khi được hỏi về module xác thực (authentication module), hệ thống sẽ cung cấp thông tin chi tiết về cách triển khai OAuth 2.0, quản lý token và các phương pháp bảo mật tốt nhất. Ngoài ra, các sơ đồ kiến trúc tự động cũng đã được tạo ra, biểu diễn trực quan mối quan hệ giữa các module và thành phần khác nhau. Các sơ đồ này bao gồm tầng giao diện người dùng (user interface layer), tầng nghiệp vụ (business logic layer) và tầng truy cập dữ liệu (data access layer), đi kèm các chú thích rõ ràng giải thích về tương tác và phụ thuộc lẫn nhau. Wiki tương tác này giúp tăng cường khả năng cộng tác và hỗ trợ onboarding thành viên mới bằng cách cung cấp một nguồn tài nguyên tập trung, dễ dàng tìm kiếm và luôn được cập nhật cho đội ngũ phát triển.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:04:16.246777Z",
+    "http_status": 200,
+    "content_hash": "1efddff0ff23b94373b9ccf79d6109ed93289a491b397cf4ec4b7b5bf9331208",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deepv-ki.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deepv-ki.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DeepV-Ki: Trình tạo tài liệu tự động bằng AI",
+  "short_description_vi": "DeepV-Ki chuyển đổi repository code của bạn thành một trang Wiki tương tác, nâng tầm tài liệu dự án với các tính năng tích hợp AI như Q&A dựa trên RAG và tự động vẽ sơ đồ kiến trúc. Đây là giải pháp hoàn hảo cho các nhà phát triển muốn tối ưu hóa quy trình viết tài liệu và tăng cường hiệu quả cộng tác nhóm."
+}

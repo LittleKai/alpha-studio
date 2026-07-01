@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudex",
+  "slug": "claudex",
+  "name": "react-native-best-practices",
+  "headline": "Claudex: In-Browser Coding with AI Support",
+  "short_description": "Claudex offers a powerful in-browser coding environment with support for multiple AI providers, including Max, Z.AI, and OpenRouter. It features a local sandbox for code execution, enabling developers to create custom skills and use the capabilities of Claude Code UI seamlessly.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Mng-dev-ai",
+  "install_command": "claude install Mng-dev-ai/claudex",
+  "source_repo_url": "https://github.com/Mng-dev-ai/claudex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "multi-provider",
+    "sandbox",
+    "local-development",
+    "code-execution",
+    "AI-integration"
+  ],
+  "sections": {
+    "overview": "Agentrove is a self-hosted AI coding workspace that consolidates Claude, Codex, Copilot, Cursor, and OpenCode agents into one unified interface. It provides each workspace with its own Docker or host sandbox for secure code execution, combining chat, code editor, terminal, file tree, diffs, and git tools. The platform supports workspaces from empty folders, git clones, existing local directories, or GitHub repositories. It includes features like agent skill installation, GitHub-assisted repository browsing, pull request review and creation, and streaming agent sessions with cancellation and permission prompts. Agentrove ships as both a Docker web app and a native macOS desktop application.\nDeveloping custom AI skills\nRunning code in a secure sandbox\nIntegrating multiple AI providers for enhanced functionality\nCreating and testing applications in-browser",
+    "setup": "Terminal\nCopy\n`claude install Mng-dev-ai/claudex`\n`git clone https://github.com/Mng-dev-ai/claudex`",
+    "usage": "```\nI need to set up a web server using [SERVER_TYPE] on [OPERATING_SYSTEM]. Provide step-by-step instructions for installation and configuration. Include commands for [TASKS] and explain how to verify the server is running correctly. Also, suggest best practices for securing the server.\n```\nCopy\n\n```\nTo set up a web server using Apache on AlmaLinux, follow these steps:\n\n1. **Install Apache**:\n   ```bash\n   sudo dnf install httpd\n   ```\n\n2. **Start and Enable Apache**:\n   ```bash\n   sudo systemctl start httpd\n   sudo systemctl enable httpd\n   ```\n\n3. **Configure Firewall**:\n   ```bash\n   sudo firewall-cmd --permanent --add-service=http\n   sudo firewall-cmd --permanent --add-service=https\n   sudo firewall-cmd --reload\n   ```\n\n4. **Verify Installation**:\n   Open a web browser and navigate to `http://your_server_ip`. You should see the default Apache welcome page.\n\n5. **Secure the Server**:\n   - Regularly update Apache and the operating system.\n   - Use strong passwords for all user accounts.\n   - Implement HTTPS by obtaining an SSL certificate.\n   - Monitor server logs for any suspicious activity.\n\nFor systems using NGINX, the process is similar but involves installing NGINX instead of Apache and configuring it accordingly. The key steps include installing NGINX, starting and enabling the service, configuring the firewall, and verifying the installation. Securing the server involves similar best practices as mentioned above.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudex#main-content",
+      "claudex#overview",
+      "claudex#setup",
+      "claudex#examples",
+      "claudex#tools",
+      "claudex#mcp",
+      "claudex#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Agentrove is a self-hosted AI coding workspace that consolidates Claude, Codex, Copilot, Cursor, and OpenCode agents into one unified interface. It provides each workspace with its own Docker or host sandbox for secure code execution, combining chat, code editor, terminal, file tree, diffs, and git tools. The platform supports workspaces from empty folders, git clones, existing local directories, or GitHub repositories. It includes features like agent skill installation, GitHub-assisted repository browsing, pull request review and creation, and streaming agent sessions with cancellation and permission prompts. Agentrove ships as both a Docker web app and a native macOS desktop application.\nDeveloping custom AI skills\nRunning code in a secure sandbox\nIntegrating multiple AI providers for enhanced functionality\nCreating and testing applications in-browser",
+    "setup_vi": "Terminal\nCopy\n`claude install Mng-dev-ai/claudex`\n`git clone https://github.com/Mng-dev-ai/claudex`",
+    "usage_vi": "```\nI need to set up a web server using [SERVER_TYPE] on [OPERATING_SYSTEM]. Provide step-by-step instructions for installation and configuration. Include commands for [TASKS] and explain how to verify the server is running correctly. Also, suggest best practices for securing the server.\n```\nCopy\n\n```\nTo set up a web server using Apache on AlmaLinux, follow these steps:\n\n1. **Install Apache**:\n   ```bash\n   sudo dnf install httpd\n   ```\n\n2. **Start and Enable Apache**:\n   ```bash\n   sudo systemctl start httpd\n   sudo systemctl enable httpd\n   ```\n\n3. **Configure Firewall**:\n   ```bash\n   sudo firewall-cmd --permanent --add-service=http\n   sudo firewall-cmd --permanent --add-service=https\n   sudo firewall-cmd --reload\n   ```\n\n4. **Verify Installation**:\n   Open a web browser and navigate to `http://your_server_ip`. You should see the default Apache welcome page.\n\n5. **Secure the Server**:\n   - Regularly update Apache and the operating system.\n   - Use strong passwords for all user accounts.\n   - Implement HTTPS by obtaining an SSL certificate.\n   - Monitor server logs for any suspicious activity.\n\nFor systems using NGINX, the process is similar but involves installing NGINX instead of Apache and configuring it accordingly. The key steps include installing NGINX, starting and enabling the service, configuring the firewall, and verifying the installation. Securing the server involves similar best practices as mentioned above.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:58:09.719809Z",
+    "http_status": 200,
+    "content_hash": "c0a7a45ec5dbf9aaceb03c39cbbfc247843a5a09ee1fc8a0c4f155a809976af4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudex.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claudex: In-Browser Coding with AI Support",
+  "short_description_vi": "Claudex offers a powerful in-browser coding environment with support for multiple AI providers, including Max, Z.AI, and OpenRouter. It features a local sandbox for code execution, enabling developers to create custom skills and use the capabilities of Claude Code UI seamlessly."
+}

@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wegent",
+  "slug": "wegent",
+  "name": "Wegent",
+  "headline": "Wegent - AI-native operating system for agent teams",
+  "short_description": "Wegent is an open-source AI-native operating system for defining, organizing, and running intelligent agent teams. It benefits operations departments by automating workflows and integrating with tools like Claude. Wegent connects to Python and FastAPI, enabling agent management and execution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "wecode-ai",
+  "install_command": "git clone https://github.com/wecode-ai/Wegent.git",
+  "source_repo_url": "https://github.com/wecode-ai/Wegent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "notebooklm",
+    "agent",
+    "claude-code",
+    "ai",
+    "llm",
+    "chatbot",
+    "gemini",
+    "chatgpt"
+  ],
+  "sections": {
+    "overview": "Wegent is a self-hostable AI workspace that combines chat, coding, knowledge bases, automation, and local execution in one platform. It supports multiple AI models including Claude, Gemini, OpenAI, and DeepSeek, and integrates with version control systems like GitHub and GitLab for code-based tasks. Teams can build shared knowledge bases from documents and webpages, set up automated information feeds with scheduled triggers, and connect to existing tools via DingTalk, Telegram, or APIs. The platform scales from personal use to team collaboration, with deployment options for standalone trials, production multi-container setups, or development environments. Wegent solves workflow automation, knowledge management, and AI agent coordination for operations and development teams.\nBuild team knowledge bases and enable AI Q&A over internal documents\nAutomate recurring information checks and publish results as feeds\nLet AI agents work on code repositories with version control integration\nCreate shared AI assistants accessible via chat, IM bots, or APIs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wecode-ai/Wegent`",
+    "usage": "```\nCreate a Wegent agent team to automate [WORKFLOW]. The team should include agents for [TASK1], [TASK2], and [TASK3]. Specify the tools and APIs each agent needs to access. Ensure the agents can collaborate to complete the workflow efficiently.\n```\nCopy\n\n```\nTo automate the customer onboarding process, we'll create a Wegent agent team with three specialized agents:\n\n1. **Data Collection Agent**: This agent will gather customer information from the CRM system and validate the data. It will use the Salesforce API to access customer records and ensure all required fields are completed.\n\n2. **Document Generation Agent**: This agent will generate the necessary onboarding documents, such as contracts and welcome packets. It will use a document generation tool like DocuSign to create and send the documents to the customer for e-signature.\n\n3. **Communication Agent**: This agent will handle all customer communications, sending welcome emails, setting up initial meetings, and providing updates throughout the onboarding process. It will use email and calendar APIs to manage these tasks.\n\nThe agents will collaborate by passing data and status updates to each other. For example, the Data Collection Agent will pass validated customer information to the Document Generation Agent, which will then generate the documents and notify the Communication Agent to send them to the customer. The Communication Agent will also update the CRM system with the status of the onboarding process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wegent#main-content",
+      "wegent#overview",
+      "wegent#setup",
+      "wegent#examples",
+      "wegent#tools",
+      "wegent#mcp",
+      "wegent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Wegent is a self-hostable AI workspace that combines chat, coding, knowledge bases, automation, and local execution in one platform. It supports multiple AI models including Claude, Gemini, OpenAI, and DeepSeek, and integrates with version control systems like GitHub and GitLab for code-based tasks. Teams can build shared knowledge bases from documents and webpages, set up automated information feeds with scheduled triggers, and connect to existing tools via DingTalk, Telegram, or APIs. The platform scales from personal use to team collaboration, with deployment options for standalone trials, production multi-container setups, or development environments. Wegent solves workflow automation, knowledge management, and AI agent coordination for operations and development teams.\nBuild team knowledge bases and enable AI Q&A over internal documents\nAutomate recurring information checks and publish results as feeds\nLet AI agents work on code repositories with version control integration\nCreate shared AI assistants accessible via chat, IM bots, or APIs",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wecode-ai/Wegent`",
+    "usage_vi": "```\nCreate a Wegent agent team to automate [WORKFLOW]. The team should include agents for [TASK1], [TASK2], and [TASK3]. Specify the tools and APIs each agent needs to access. Ensure the agents can collaborate to complete the workflow efficiently.\n```\nCopy\n\n```\nTo automate the customer onboarding process, we'll create a Wegent agent team with three specialized agents:\n\n1. **Data Collection Agent**: This agent will gather customer information from the CRM system and validate the data. It will use the Salesforce API to access customer records and ensure all required fields are completed.\n\n2. **Document Generation Agent**: This agent will generate the necessary onboarding documents, such as contracts and welcome packets. It will use a document generation tool like DocuSign to create and send the documents to the customer for e-signature.\n\n3. **Communication Agent**: This agent will handle all customer communications, sending welcome emails, setting up initial meetings, and providing updates throughout the onboarding process. It will use email and calendar APIs to manage these tasks.\n\nThe agents will collaborate by passing data and status updates to each other. For example, the Data Collection Agent will pass validated customer information to the Document Generation Agent, which will then generate the documents and notify the Communication Agent to send them to the customer. The Communication Agent will also update the CRM system with the status of the onboarding process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:27.236980Z",
+    "http_status": 200,
+    "content_hash": "82dea8638f7e3a9f3703410f5c1356b61705602afdcaff4452faa87963cb8847",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wegent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wegent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Wegent - AI-native operating system for agent teams",
+  "short_description_vi": "Wegent is an open-source AI-native operating system for defining, organizing, and running intelligent agent teams. It benefits operations departments by automating workflows and integrating with tools like Claude. Wegent connects to Python and FastAPI, enabling agent management and execution."
+}

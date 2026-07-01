@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/roborev",
+  "slug": "roborev",
+  "name": "browser-use",
+  "headline": "Roborev - Continuous Code Review for Agents",
+  "short_description": "Roborev performs continuous, non-invasive background code review for agents, improving efficiency and quality. It supports TUI and CLI interfaces, benefiting developers and operations teams by integrating into existing workflows and tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "roborev-dev",
+  "install_command": "git clone https://github.com/roborev-dev/roborev.git",
+  "source_repo_url": "https://github.com/roborev-dev/roborev",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Roborev is an automated code review tool designed for AI agents working in environments like Claude Code and Cursor. It performs non-invasive background reviews, continuously monitoring code without interrupting existing workflows. The tool supports both Terminal User Interface (TUI) and Command Line Interface (CLI) modes, making it flexible for different operational preferences. Roborev integrates seamlessly into existing development and operations pipelines, helping teams catch quality issues early while letting agents work efficiently. It's built for developers and operations teams who need code quality assurance without manual review overhead.\nAutomated code quality monitoring for AI agent development workflows\nContinuous code review in CI/CD pipelines without blocking deployments\nBackground quality checks for Cursor and Claude Code environments\nOperations team oversight of agent-generated code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/roborev-dev/roborev`",
+    "usage": "```\nRun a roborev background code review on the [REPOSITORY_PATH] for [PROJECT_NAME]. Focus on identifying [SPECIFIC_ISSUES: e.g., security vulnerabilities, performance bottlenecks, or code smells]. Generate a prioritized report with actionable fixes, estimated effort, and impact assessment. Provide the output in [FORMAT: TUI/CLI/JSON].\n```\nCopy\n\n```\n```\nRoborev Background Code Review Report\nProject: AcmeCorp E-Commerce Platform\nRepository: /home/dev/acme-ecommerce\nReview Duration: 48 hours\n\n=== CRITICAL ISSUES (Fix Immediately) ===\n1. SQL Injection Risk in /src/api/checkout.php (Line 42)\n   - Issue: Unsanitized user input in order query\n   - Fix: Implement prepared statements\n   - Effort: 2 hours\n   - Impact: High (Security)\n\n2. Memory Leak in /src/services/cache-service.js\n   - Issue: Unclosed Redis connections\n   - Fix: Add connection cleanup in finally block\n   - Effort: 1 hour\n   - Impact: High (Performance)\n\n=== HIGH PRIORITY (Fix within 1 week) ===\n3. Race Condition in /src/workers/order-processor.js\n   - Issue: Shared state without mutex\n   - Fix: Implement locking mechanism\n   - Effort: 3 hours\n   - Impact: Medium (Data Integrity)\n\n4. Hardcoded API Keys in /config/production.json\n   - Issue: Credentials exposed in repo\n   - Fix: Use environment variables\n   - Effort: 1 hour\n   - Impact: High (Security)\n\n=== MEDIUM PRIORITY (Fix within 1 month) ===\n5. Complexity in /src/utils/validation.js\n   - Issue: Cyclomatic complexity of 15\n   - Fix: Refactor into smaller functions\n   - Effort: 4 hours\n   - Impact: Low (Maintainability)\n\n=== STATISTICS ===\nFiles Reviewed: 124\nLines of Code: 45,231\nIssues Found: 23\nCritical: 2 | High: 2 | Medium: 1 | Low: 18\n\n=== RECOMMENDATIONS ===\n1. Schedule security-focused code review for next sprint\n2. Add Roborev to CI/CD pipeline for continuous monitoring\n3. Implement automated testing for all critical paths\n\nNext Review: Automatically scheduled in 7 days\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "roborev#main-content",
+      "roborev#overview",
+      "roborev#setup",
+      "roborev#examples",
+      "roborev#tools",
+      "roborev#mcp",
+      "roborev#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Roborev is an automated code review tool designed for AI agents working in environments like Claude Code and Cursor. It performs non-invasive background reviews, continuously monitoring code without interrupting existing workflows. The tool supports both Terminal User Interface (TUI) and Command Line Interface (CLI) modes, making it flexible for different operational preferences. Roborev integrates seamlessly into existing development and operations pipelines, helping teams catch quality issues early while letting agents work efficiently. It's built for developers and operations teams who need code quality assurance without manual review overhead.\nAutomated code quality monitoring for AI agent development workflows\nContinuous code review in CI/CD pipelines without blocking deployments\nBackground quality checks for Cursor and Claude Code environments\nOperations team oversight of agent-generated code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/roborev-dev/roborev`",
+    "usage_vi": "```\nRun a roborev background code review on the [REPOSITORY_PATH] for [PROJECT_NAME]. Focus on identifying [SPECIFIC_ISSUES: e.g., security vulnerabilities, performance bottlenecks, or code smells]. Generate a prioritized report with actionable fixes, estimated effort, and impact assessment. Provide the output in [FORMAT: TUI/CLI/JSON].\n```\nCopy\n\n```\n```\nRoborev Background Code Review Report\nProject: AcmeCorp E-Commerce Platform\nRepository: /home/dev/acme-ecommerce\nReview Duration: 48 hours\n\n=== CRITICAL ISSUES (Fix Immediately) ===\n1. SQL Injection Risk in /src/api/checkout.php (Line 42)\n   - Issue: Unsanitized user input in order query\n   - Fix: Implement prepared statements\n   - Effort: 2 hours\n   - Impact: High (Security)\n\n2. Memory Leak in /src/services/cache-service.js\n   - Issue: Unclosed Redis connections\n   - Fix: Add connection cleanup in finally block\n   - Effort: 1 hour\n   - Impact: High (Performance)\n\n=== HIGH PRIORITY (Fix within 1 week) ===\n3. Race Condition in /src/workers/order-processor.js\n   - Issue: Shared state without mutex\n   - Fix: Implement locking mechanism\n   - Effort: 3 hours\n   - Impact: Medium (Data Integrity)\n\n4. Hardcoded API Keys in /config/production.json\n   - Issue: Credentials exposed in repo\n   - Fix: Use environment variables\n   - Effort: 1 hour\n   - Impact: High (Security)\n\n=== MEDIUM PRIORITY (Fix within 1 month) ===\n5. Complexity in /src/utils/validation.js\n   - Issue: Cyclomatic complexity of 15\n   - Fix: Refactor into smaller functions\n   - Effort: 4 hours\n   - Impact: Low (Maintainability)\n\n=== STATISTICS ===\nFiles Reviewed: 124\nLines of Code: 45,231\nIssues Found: 23\nCritical: 2 | High: 2 | Medium: 1 | Low: 18\n\n=== RECOMMENDATIONS ===\n1. Schedule security-focused code review for next sprint\n2. Add Roborev to CI/CD pipeline for continuous monitoring\n3. Implement automated testing for all critical paths\n\nNext Review: Automatically scheduled in 7 days\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:03:48.637485Z",
+    "http_status": 200,
+    "content_hash": "14d3a8647ada30d02638b735e16ef7cf95cfd97017b7cee8a96794fe3a9edd3f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\roborev.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\roborev.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Roborev - Continuous Code Review for Agents",
+  "short_description_vi": "Roborev performs continuous, non-invasive background code review for agents, improving efficiency and quality. It supports TUI and CLI interfaces, benefiting developers and operations teams by integrating into existing workflows and tools."
+}

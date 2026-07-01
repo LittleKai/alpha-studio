@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentnotch",
+  "slug": "agentnotch",
+  "name": "browser-use",
+  "headline": "agentnotch: Real-Time AI Assistant Visibility",
+  "short_description": "AgentNotch is a sleek macOS menu bar app that lives in your Mac's notch, providing real-time visibility into your AI coding assistants. Watch as Claude Code and OpenAI Codex think, read files, and execute tools .  all without leaving your editor.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "AppGram",
+  "install_command": "git clone https://github.com/AppGram/agentnotch.git",
+  "source_repo_url": "https://github.com/AppGram/agentnotch",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "notch",
+    "cost-optimization",
+    "claude-ai",
+    "usage-analytics",
+    "macos-app",
+    "codex"
+  ],
+  "sections": {
+    "overview": "AgentNotch is an innovative macOS menu bar application designed to provide developers real-time visibility into their AI coding assistants, including Claude Code and OpenAI Codex. By integrating seamlessly into your Mac's notch, it allows you to monitor the activities of these AI agents as they think, read files, and execute tools—all without interrupting your workflow in the editor. This capability enables a more efficient coding experience, as you can stay informed about your AI's actions and decisions at a glance. One of the key benefits of using AgentNotch is the potential for significant time savings in your development process. By keeping track of what your AI assistants are doing, you can make quicker decisions and adjustments to your code, ultimately speeding up your workflow. Although the exact time savings are currently unknown, the streamlined communication between you and your AI tools can lead to enhanced productivity and less time spent on debugging or reworking code. This is particularly valuable for developers and product managers who need to maintain a fast pace in their projects. AgentNotch is ideal for developers, product managers, and AI practitioners who are looking to enhance their coding efficiency and leverage AI automation in their workflows. Whether you're working on a complex software project or managing a team of developers, the insights provided by AgentNotch can help you make informed decisions and optimize your coding practices. The application is particularly useful for those involved in data engineering or frontend development, where real-time feedback from AI tools can significantly impact project outcomes. Implementing AgentNotch is straightforward, requiring only about 30 minutes to set up. With an intermediate level of complexity, it is accessible for users who have some familiarity with macOS applications and AI tools. As organizations increasingly adopt AI-first workflows, AgentNotch serves as a valuable asset, enhancing collaboration between human developers and AI agents. By incorporating this tool into your daily routine, you can ensure that you are maximizing the potential of AI automation in your coding tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AppGram/agentnotch`",
+    "usage": "```\nUse AgentNotch to monitor the real-time activity of [AI_ASSISTANT_NAME] while it works on [PROJECT_OR_TASK]. Focus on [SPECIFIC_METRICS] like file reads, tool executions, or error handling. Provide a summary of the agent's progress and any potential bottlenecks or insights for optimization.\n```\nCopy\n\n```\nAgentNotch's live activity feed shows that Claude Code is currently analyzing the `/src/utils/logger.js` file in your React project. Over the past 2 minutes, it has executed 4 tool calls: 1) `read_file` to inspect the logger configuration, 2) `execute_tool` to run a linter check, 3) `write_file` to update the error handling logic, and 4) `execute_tool` to verify the changes with a test suite. The agent appears to be stuck in a loop where it keeps re-reading the same file after each tool execution, suggesting it might be waiting for external feedback or stuck in a recursive validation process. The current bottleneck seems to be the test suite execution, which took 37 seconds to complete. Recommendation: Check if the test suite has any hardcoded delays or external dependencies that could be optimized.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentnotch#main-content",
+      "agentnotch#overview",
+      "agentnotch#setup",
+      "agentnotch#examples",
+      "agentnotch#tools",
+      "agentnotch#mcp",
+      "agentnotch#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgentNotch is an innovative macOS menu bar application designed to provide developers real-time visibility into their AI coding assistants, including Claude Code and OpenAI Codex. By integrating seamlessly into your Mac's notch, it allows you to monitor the activities of these AI agents as they think, read files, and execute tools—all without interrupting your workflow in the editor. This capability enables a more efficient coding experience, as you can stay informed about your AI's actions and decisions at a glance. One of the key benefits of using AgentNotch is the potential for significant time savings in your development process. By keeping track of what your AI assistants are doing, you can make quicker decisions and adjustments to your code, ultimately speeding up your workflow. Although the exact time savings are currently unknown, the streamlined communication between you and your AI tools can lead to enhanced productivity and less time spent on debugging or reworking code. This is particularly valuable for developers and product managers who need to maintain a fast pace in their projects. AgentNotch is ideal for developers, product managers, and AI practitioners who are looking to enhance their coding efficiency and leverage AI automation in their workflows. Whether you're working on a complex software project or managing a team of developers, the insights provided by AgentNotch can help you make informed decisions and optimize your coding practices. The application is particularly useful for those involved in data engineering or frontend development, where real-time feedback from AI tools can significantly impact project outcomes. Implementing AgentNotch is straightforward, requiring only about 30 minutes to set up. With an intermediate level of complexity, it is accessible for users who have some familiarity with macOS applications and AI tools. As organizations increasingly adopt AI-first workflows, AgentNotch serves as a valuable asset, enhancing collaboration between human developers and AI agents. By incorporating this tool into your daily routine, you can ensure that you are maximizing the potential of AI automation in your coding tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AppGram/agentnotch`",
+    "usage_vi": "```\nUse AgentNotch to monitor the real-time activity of [AI_ASSISTANT_NAME] while it works on [PROJECT_OR_TASK]. Focus on [SPECIFIC_METRICS] like file reads, tool executions, or error handling. Provide a summary of the agent's progress and any potential bottlenecks or insights for optimization.\n```\nCopy\n\n```\nAgentNotch's live activity feed shows that Claude Code is currently analyzing the `/src/utils/logger.js` file in your React project. Over the past 2 minutes, it has executed 4 tool calls: 1) `read_file` to inspect the logger configuration, 2) `execute_tool` to run a linter check, 3) `write_file` to update the error handling logic, and 4) `execute_tool` to verify the changes with a test suite. The agent appears to be stuck in a loop where it keeps re-reading the same file after each tool execution, suggesting it might be waiting for external feedback or stuck in a recursive validation process. The current bottleneck seems to be the test suite execution, which took 37 seconds to complete. Recommendation: Check if the test suite has any hardcoded delays or external dependencies that could be optimized.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:57:43.442842Z",
+    "http_status": 200,
+    "content_hash": "daab49b4a739a385874af193e4b5897755761f950a9dcee2a8a51d58b880f007",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentnotch.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentnotch.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agentnotch: Real-Time AI Assistant Visibility",
+  "short_description_vi": "AgentNotch is a sleek macOS menu bar app that lives in your Mac's notch, providing real-time visibility into your AI coding assistants. Watch as Claude Code and OpenAI Codex think, read files, and execute tools .  all without leaving your editor."
+}

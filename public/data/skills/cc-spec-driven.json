@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-spec-driven",
+  "slug": "cc-spec-driven",
+  "name": "browser-use",
+  "headline": "cc-spec-driven: manage requirements docs",
+  "short_description": "A Claude Code plugin for managing requirement documents, tracking changes, and outputting specs. Enables downstream tools to generate code based on high-quality specs and complete E2E testing. Benefits operations teams by ensuring consistency and traceability in software development.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "mkhrdev",
+  "install_command": "git clone https://github.com/mkhrdev/cc-spec-driven.git",
+  "source_repo_url": "https://github.com/mkhrdev/cc-spec-driven",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "commands",
+    "skills",
+    "documents",
+    "best-practices",
+    "claude-code-plugin",
+    "e2e-test",
+    "spec-driven",
+    "workflow",
+    "plugin",
+    "spec-driven-development",
+    "ai-agent"
+  ],
+  "sections": {
+    "overview": "cc-spec-driven is a Claude Code plugin that manages requirement documents, tracks changes through change records (CRs), and generates specifications for downstream code generation and testing. It implements a spec-driven, document-first workflow where confirmed documents serve as the single source of truth for development and E2E testing. The plugin automates dependency tracking, maintains consistency across feature documents, and prevents common documentation errors through engineering-level hooks. Teams use it to incrementally enrich requirements, track requirement changes with CR-ID references, and enable AI-assisted code generation and test case creation based on high-quality specs.\nInitialize and manage product requirements with automatic change tracking and CR numbering\nGenerate development and test specifications from confirmed requirement documents\nTrack feature dependencies and detect missed dependency changes during confirmation\nCreate reusable E2E test cases with version control and CR-ID naming\nThe following requirements have been documented and tracked for [PROJECT_NAME] in the [INDUSTRY] sector. Changes have been logged and are ready for downstream tools.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mkhrdev/cc-spec-driven`",
+    "usage": "```\nI need to manage requirement documents for [PROJECT_NAME] in [INDUSTRY]. Please help me track changes and output specs. Here are the key requirements: [REQUIREMENTS]. Ensure the output is compatible with downstream tools for code generation and E2E testing.\n```\nCopy\n\n```\n# Requirement Document for [PROJECT_NAME]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-spec-driven#main-content",
+      "cc-spec-driven#overview",
+      "cc-spec-driven#setup",
+      "cc-spec-driven#examples",
+      "cc-spec-driven#tools",
+      "cc-spec-driven#mcp",
+      "cc-spec-driven#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cc-spec-driven is a Claude Code plugin that manages requirement documents, tracks changes through change records (CRs), and generates specifications for downstream code generation and testing. It implements a spec-driven, document-first workflow where confirmed documents serve as the single source of truth for development and E2E testing. The plugin automates dependency tracking, maintains consistency across feature documents, and prevents common documentation errors through engineering-level hooks. Teams use it to incrementally enrich requirements, track requirement changes with CR-ID references, and enable AI-assisted code generation and test case creation based on high-quality specs.\nInitialize and manage product requirements with automatic change tracking and CR numbering\nGenerate development and test specifications from confirmed requirement documents\nTrack feature dependencies and detect missed dependency changes during confirmation\nCreate reusable E2E test cases with version control and CR-ID naming\nThe following requirements have been documented and tracked for [PROJECT_NAME] in the [INDUSTRY] sector. Changes have been logged and are ready for downstream tools.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mkhrdev/cc-spec-driven`",
+    "usage_vi": "```\nI need to manage requirement documents for [PROJECT_NAME] in [INDUSTRY]. Please help me track changes and output specs. Here are the key requirements: [REQUIREMENTS]. Ensure the output is compatible with downstream tools for code generation and E2E testing.\n```\nCopy\n\n```\n# Requirement Document for [PROJECT_NAME]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:52:00.378974Z",
+    "http_status": 200,
+    "content_hash": "5c4ab281bc2adf7823b9aa97dd67f4f1f564232ff05e8be4f16570e8e97d2fdd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-spec-driven.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-spec-driven.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "cc-spec-driven: manage requirements docs",
+  "short_description_vi": "A Claude Code plugin for managing requirement documents, tracking changes, and outputting specs. Enables downstream tools to generate code based on high-quality specs and complete E2E testing. Benefits operations teams by ensuring consistency and traceability in software development."
+}

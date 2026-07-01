@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-memory-service",
+  "slug": "mcp-memory-service",
+  "name": "browser-use",
+  "headline": "mcp-memory-service: Retain Project Context",
+  "short_description": "MCP Memory Service provides persistent context memory for AI tools like Claude, VS Code, and Cursor. It benefits developers and operations teams by maintaining project context across sessions. The service connects to ChromaDB for vector storage and supports tag-based and time-based semantic search.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "doobidoo",
+  "install_command": "git clone https://github.com/doobidoo/mcp-memory-service.git",
+  "source_repo_url": "https://github.com/doobidoo/mcp-memory-service",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "memory",
+    "sqlite-vec",
+    "tag-based",
+    "vector-storage",
+    "claude-code",
+    "knowledge",
+    "localstorage",
+    "chroma-db",
+    "chromadb",
+    "remotestorage-server",
+    "claude",
+    "model-context-protocol",
+    "mcp-server",
+    "time-based",
+    "server",
+    "mcp",
+    "semantic-search",
+    "vector-database",
+    "code"
+  ],
+  "sections": {
+    "overview": "The mcp-memory-service skill is designed to enhance the efficiency of AI interactions by automatically retaining project context across sessions. This means that developers and AI practitioners no longer need to re-explain their project details every time they engage with AI tools like Claude, VS Code, and Cursor. By integrating with over 13 AI platforms, this skill ensures that your project information is consistently accessible, saving valuable time and effort in the development process. One of the key benefits of the mcp-memory-service is its ability to facilitate seamless workflow automation. With this skill, users can quickly retrieve relevant project information using semantic search, which significantly reduces the time spent searching for context during coding sessions. Additionally, the cloud sync feature allows for team collaboration, enabling multiple users to access and share project memories easily. The interactive dashboard provides a visual representation of memory relationships, which aids in better understanding and management of project context. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to streamline their workflows and improve productivity. By integrating mcp-memory-service into their daily routines, these professionals can focus more on coding and less on repetitive explanations. The implementation is beginner-friendly, taking approximately 30 minutes to set up, making it accessible even for those with limited experience in AI automation. In an AI-first workflow, the mcp-memory-service plays a crucial role in enhancing collaboration and efficiency. By ensuring that project context is retained and easily retrievable, teams can work more cohesively and make informed decisions based on shared knowledge. Whether you are working on a complex architecture or collaborating with teammates, this skill can significantly improve your workflow automation, allowing you to maximize productivity and minimize frustration.\nAutomatically retain project context between AI sessions to avoid re-explaining architecture.\nIntegrate with multiple AI tools to ensure consistent memory across different platforms.\nUtilize semantic search to quickly retrieve relevant project information during coding sessions.\nEnable cloud sync for team collaboration, allowing multiple users to access shared project memories.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/doobidoo/mcp-memory-service`",
+    "usage": "```\nI'm working on a [PROJECT_TYPE] project in [PROJECT_NAME]. I need to recall previous discussions about [SPECIFIC_TOPIC]. Can you search my memory for relevant context from the last [TIME_PERIOD]? Use the tags [TAG1], [TAG2] to refine the search.\n```\nCopy\n\n```\nBased on your project context, I found the following relevant discussions about API integration in the 'E-Commerce Platform' project from the last 3 months:\n\n1. Discussion on OAuth 2.0 implementation (Tag: authentication, Tag: security)\n   - Date: 2023-11-15\n   - Key points: Chose PKCE flow for mobile app security, implemented token storage in secure enclave\n   - Next steps: Review token expiration handling, implement refresh token logic\n\n2. API rate limiting strategy (Tag: performance, Tag: scalability)\n   - Date: 2023-10-28\n   - Key points: Implemented token bucket algorithm, set rate limits based on user tiers\n   - Next steps: Monitor performance metrics, adjust limits as needed\n\n3. GraphQL vs REST decision (Tag: architecture, Tag: design)\n   - Date: 2023-10-10\n   - Key points: Chose GraphQL for flexible querying, implemented Apollo Server\n   - Next steps: Document query patterns, establish caching strategy\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-memory-service#main-content",
+      "mcp-memory-service#overview",
+      "mcp-memory-service#setup",
+      "mcp-memory-service#examples",
+      "mcp-memory-service#tools",
+      "mcp-memory-service#mcp",
+      "mcp-memory-service#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The mcp-memory-service skill is designed to enhance the efficiency of AI interactions by automatically retaining project context across sessions. This means that developers and AI practitioners no longer need to re-explain their project details every time they engage with AI tools like Claude, VS Code, and Cursor. By integrating with over 13 AI platforms, this skill ensures that your project information is consistently accessible, saving valuable time and effort in the development process. One of the key benefits of the mcp-memory-service is its ability to facilitate seamless workflow automation. With this skill, users can quickly retrieve relevant project information using semantic search, which significantly reduces the time spent searching for context during coding sessions. Additionally, the cloud sync feature allows for team collaboration, enabling multiple users to access and share project memories easily. The interactive dashboard provides a visual representation of memory relationships, which aids in better understanding and management of project context. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to streamline their workflows and improve productivity. By integrating mcp-memory-service into their daily routines, these professionals can focus more on coding and less on repetitive explanations. The implementation is beginner-friendly, taking approximately 30 minutes to set up, making it accessible even for those with limited experience in AI automation. In an AI-first workflow, the mcp-memory-service plays a crucial role in enhancing collaboration and efficiency. By ensuring that project context is retained and easily retrievable, teams can work more cohesively and make informed decisions based on shared knowledge. Whether you are working on a complex architecture or collaborating with teammates, this skill can significantly improve your workflow automation, allowing you to maximize productivity and minimize frustration.\nAutomatically retain project context between AI sessions to avoid re-explaining architecture.\nIntegrate with multiple AI tools to ensure consistent memory across different platforms.\nUtilize semantic search to quickly retrieve relevant project information during coding sessions.\nEnable cloud sync for team collaboration, allowing multiple users to access shared project memories.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/doobidoo/mcp-memory-service`",
+    "usage_vi": "```\nI'm working on a [PROJECT_TYPE] project in [PROJECT_NAME]. I need to recall previous discussions about [SPECIFIC_TOPIC]. Can you search my memory for relevant context from the last [TIME_PERIOD]? Use the tags [TAG1], [TAG2] to refine the search.\n```\nCopy\n\n```\nBased on your project context, I found the following relevant discussions about API integration in the 'E-Commerce Platform' project from the last 3 months:\n\n1. Discussion on OAuth 2.0 implementation (Tag: authentication, Tag: security)\n   - Date: 2023-11-15\n   - Key points: Chose PKCE flow for mobile app security, implemented token storage in secure enclave\n   - Next steps: Review token expiration handling, implement refresh token logic\n\n2. API rate limiting strategy (Tag: performance, Tag: scalability)\n   - Date: 2023-10-28\n   - Key points: Implemented token bucket algorithm, set rate limits based on user tiers\n   - Next steps: Monitor performance metrics, adjust limits as needed\n\n3. GraphQL vs REST decision (Tag: architecture, Tag: design)\n   - Date: 2023-10-10\n   - Key points: Chose GraphQL for flexible querying, implemented Apollo Server\n   - Next steps: Document query patterns, establish caching strategy\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:36.454787Z",
+    "http_status": 200,
+    "content_hash": "9f009af552bd1fd030e182083c9cad7fcbe87d697ac6a1b068636701de42a132",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-memory-service.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-memory-service.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mcp-memory-service: Retain Project Context",
+  "short_description_vi": "MCP Memory Service provides persistent context memory for AI tools like Claude, VS Code, and Cursor. It benefits developers and operations teams by maintaining project context across sessions. The service connects to ChromaDB for vector storage and supports tag-based and time-based semantic search."
+}

@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccms",
+  "slug": "ccms",
+  "name": "ccms",
+  "headline": "ccms for Claude Code machine sync",
+  "short_description": "CCMS is a bash script that syncs your entire ~/.claude/ directory across multiple machines via rsync over SSH, with automatic backups and file integrity verification.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "miwidot",
+  "install_command": "git clone https://github.com/miwidot/ccms.git",
+  "source_repo_url": "https://github.com/miwidot/ccms",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "linux",
+    "claude-code",
+    "anthropics",
+    "environment",
+    "macos",
+    "unix",
+    "claude",
+    "claude-ai",
+    "desktop",
+    "rsync"
+  ],
+  "sections": {
+    "overview": "CCMS (Claude Code Machine Sync) is a lightweight shell script that keeps your ~/.claude/ directory synchronized between multiple computers using rsync over SSH. It supports bidirectional sync — push your local configuration to a remote server or pull it down to any machine — while only transferring changed files for efficiency. Before each pull operation, CCMS automatically creates a local backup, and it generates SHA256 checksums during push to verify file integrity on pull. A dry-run mode lets you preview exactly what will change before committing, and a status command shows differences between local and remote. It's built for developers who use Claude Code across a desktop and laptop, teams sharing a common Claude configuration, or anyone wanting a reliable off-machine backup of their Claude settings.\nSync Claude Code settings and projects from a desktop to a laptop seamlessly\nRestore a complete Claude Code setup on a new or replacement machine\nShare a common Claude configuration across a development team via a shared server\nBack up Claude configurations and customizations to a remote server automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/miwidot/ccms`",
+    "usage": "```\nI need to sync code between repositories for [COMPANY] in the [INDUSTRY] sector. Here's the [DATA] I need to transfer: [CODE_SNIPPETS]. Please provide a step-by-step guide to sync these code snippets between the repositories, ensuring version control and minimizing conflicts.\n```\nCopy\n\n```\n# Code Synchronization Guide for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccms#main-content",
+      "ccms#overview",
+      "ccms#setup",
+      "ccms#examples",
+      "ccms#tools",
+      "ccms#mcp",
+      "ccms#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCMS (Claude Code Machine Sync) is a lightweight shell script that keeps your ~/.claude/ directory synchronized between multiple computers using rsync over SSH. It supports bidirectional sync — push your local configuration to a remote server or pull it down to any machine — while only transferring changed files for efficiency. Before each pull operation, CCMS automatically creates a local backup, and it generates SHA256 checksums during push to verify file integrity on pull. A dry-run mode lets you preview exactly what will change before committing, and a status command shows differences between local and remote. It's built for developers who use Claude Code across a desktop and laptop, teams sharing a common Claude configuration, or anyone wanting a reliable off-machine backup of their Claude settings.\nSync Claude Code settings and projects from a desktop to a laptop seamlessly\nRestore a complete Claude Code setup on a new or replacement machine\nShare a common Claude configuration across a development team via a shared server\nBack up Claude configurations and customizations to a remote server automatically",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/miwidot/ccms`",
+    "usage_vi": "```\nI need to sync code between repositories for [COMPANY] in the [INDUSTRY] sector. Here's the [DATA] I need to transfer: [CODE_SNIPPETS]. Please provide a step-by-step guide to sync these code snippets between the repositories, ensuring version control and minimizing conflicts.\n```\nCopy\n\n```\n# Code Synchronization Guide for [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:31.643110Z",
+    "http_status": 200,
+    "content_hash": "867222d4aa18d8bd2a3ba621c76275ccff2d37c31c8704fa80b38cf518b3569f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccms.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccms.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ccms for Claude Code machine sync",
+  "short_description_vi": "CCMS is a bash script that syncs your entire ~/.claude/ directory across multiple machines via rsync over SSH, with automatic backups and file integrity verification."
+}

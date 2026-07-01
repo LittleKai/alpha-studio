@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/fastmcp",
+  "slug": "fastmcp",
+  "name": "react-native-best-practices",
+  "headline": "FastMCP: Build MCP Servers & Clients with Python",
+  "short_description": "FastMCP is a powerful Python framework designed for building Model Context Protocol (MCP) servers and clients efficiently. With its user-friendly interface and strong features, developers can quickly create and manage MCP tools, enhancing their AI applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "jlowin",
+  "install_command": "claude install jlowin/fastmcp",
+  "source_repo_url": "https://github.com/jlowin/fastmcp",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI agents",
+    "development tools",
+    "fastmcp",
+    "Python",
+    "MCP"
+  ],
+  "sections": {
+    "overview": "FastMCP is a Python framework designed for building Model Context Protocol servers and clients with a user-friendly interface. The framework provides strong features that allow developers to quickly create and manage MCP tools without complex setup. Built and maintained by PrefectHQ, FastMCP includes a CLI, examples, and documentation to help developers integrate MCP capabilities into their AI applications. The project supports both full and slim versions, with active development and security updates. Developers can use FastMCP to expose tools and resources to AI models like Claude through the standard MCP protocol.\nBuild and deploy AI model servers using the Model Context Protocol.\nCreate client applications that seamlessly interact with MCP servers.\nIntegrate MCP into existing AI workflows to enhance model context management.\nRapidly prototype AI solutions to test new ideas and features.",
+    "setup": "Terminal\nCopy\n`claude install jlowin/fastmcp`\n`git clone https://github.com/jlowin/fastmcp`",
+    "usage": "```\nCreate a FastMCP server for a [PROJECT_NAME] that integrates with [DATABASE_TYPE] to handle [SPECIFIC_DATA_TYPE]. The server should include [NUMBER] endpoints for [SPECIFIC_FUNCTIONALITIES]. Ensure the server is optimized for [PERFORMANCE_METRIC] and includes error handling for [COMMON_ERRORS].\n```\nCopy\n\n```\nHere is a FastMCP server implementation for a project named 'SalesAnalytics' that integrates with a PostgreSQL database to handle sales data. The server includes 5 endpoints for data ingestion, data validation, data transformation, data aggregation, and data visualization. The server is optimized for low latency and includes error handling for connection timeouts, data format errors, and authentication failures.\n\n```python\nfrom fastmcp import FastMCPServer\n\nclass SalesAnalyticsServer(FastMCPServer):\n    def __init__(self, host, port):\n        super().__init__(host, port)\n        self.db_connection = None\n\n    def connect_to_db(self, db_config):\n        # Implement database connection logic here\n        pass\n\n    def ingest_data(self, data):\n        # Implement data ingestion logic here\n        pass\n\n    def validate_data(self, data):\n        # Implement data validation logic here\n        pass\n\n    def transform_data(self, data):\n        # Implement data transformation logic here\n        pass\n\n    def aggregate_data(self, data):\n        # Implement data aggregation logic here\n        pass\n\n    def visualize_data(self, data):\n        # Implement data visualization logic here\n        pass\n\nif __name__ == '__main__':\n    server = SalesAnalyticsServer('localhost', 8080)\n    server.start()\n```\n\nThis server can be used to handle sales data efficiently and provide insights through various endpoints. The server is optimized for low latency and includes comprehensive error handling to ensure robustness.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "fastmcp#main-content",
+      "fastmcp#overview",
+      "fastmcp#setup",
+      "fastmcp#examples",
+      "fastmcp#tools",
+      "fastmcp#mcp",
+      "fastmcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "FastMCP is a Python framework designed for building Model Context Protocol servers and clients with a user-friendly interface. The framework provides strong features that allow developers to quickly create and manage MCP tools without complex setup. Built and maintained by PrefectHQ, FastMCP includes a CLI, examples, and documentation to help developers integrate MCP capabilities into their AI applications. The project supports both full and slim versions, with active development and security updates. Developers can use FastMCP to expose tools and resources to AI models like Claude through the standard MCP protocol.\nBuild and deploy AI model servers using the Model Context Protocol.\nCreate client applications that seamlessly interact with MCP servers.\nIntegrate MCP into existing AI workflows to enhance model context management.\nRapidly prototype AI solutions to test new ideas and features.",
+    "setup_vi": "Terminal\nCopy\n`claude install jlowin/fastmcp`\n`git clone https://github.com/jlowin/fastmcp`",
+    "usage_vi": "```\nCreate a FastMCP server for a [PROJECT_NAME] that integrates with [DATABASE_TYPE] to handle [SPECIFIC_DATA_TYPE]. The server should include [NUMBER] endpoints for [SPECIFIC_FUNCTIONALITIES]. Ensure the server is optimized for [PERFORMANCE_METRIC] and includes error handling for [COMMON_ERRORS].\n```\nCopy\n\n```\nHere is a FastMCP server implementation for a project named 'SalesAnalytics' that integrates with a PostgreSQL database to handle sales data. The server includes 5 endpoints for data ingestion, data validation, data transformation, data aggregation, and data visualization. The server is optimized for low latency and includes error handling for connection timeouts, data format errors, and authentication failures.\n\n```python\nfrom fastmcp import FastMCPServer\n\nclass SalesAnalyticsServer(FastMCPServer):\n    def __init__(self, host, port):\n        super().__init__(host, port)\n        self.db_connection = None\n\n    def connect_to_db(self, db_config):\n        # Implement database connection logic here\n        pass\n\n    def ingest_data(self, data):\n        # Implement data ingestion logic here\n        pass\n\n    def validate_data(self, data):\n        # Implement data validation logic here\n        pass\n\n    def transform_data(self, data):\n        # Implement data transformation logic here\n        pass\n\n    def aggregate_data(self, data):\n        # Implement data aggregation logic here\n        pass\n\n    def visualize_data(self, data):\n        # Implement data visualization logic here\n        pass\n\nif __name__ == '__main__':\n    server = SalesAnalyticsServer('localhost', 8080)\n    server.start()\n```\n\nThis server can be used to handle sales data efficiently and provide insights through various endpoints. The server is optimized for low latency and includes comprehensive error handling to ensure robustness.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:02:23.124779Z",
+    "http_status": 200,
+    "content_hash": "4663eaa016864f9130222bd8346ef2b033171dac70df52b7ebeee1691acbd4e3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fastmcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fastmcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "FastMCP: Build MCP Servers & Clients with Python",
+  "short_description_vi": "FastMCP is a powerful Python framework designed for building Model Context Protocol (MCP) servers and clients efficiently. With its user-friendly interface and strong features, developers can quickly create and manage MCP tools, enhancing their AI applications."
+}

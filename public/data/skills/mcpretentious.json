@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcpretentious",
+  "slug": "mcpretentious",
+  "name": "MCPretentious",
+  "headline": "MCPretentious: Terminal Automation",
+  "short_description": "MCPretentious is a Model Context Protocol (MCP) server that automates iTerm2 terminals. It benefits operations teams by streamlining terminal management and workflow automation. It connects to Node.js environments and integrates with tmux for session management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "oetiker",
+  "install_command": "git clone https://github.com/oetiker/MCPretentious.git",
+  "source_repo_url": "https://github.com/oetiker/MCPretentious",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "node",
+    "mcp",
+    "npm-package",
+    "terminal",
+    "claude-code",
+    "tmux",
+    "mcp-servers"
+  ],
+  "sections": {
+    "overview": "MCPretentious is an advanced automation skill designed to streamline the management of iTerm2 terminals through the Model Context Protocol (MCP). This powerful server acts as a puppeteer, allowing users to control multiple terminal sessions efficiently. By leveraging this skill, developers can automate repetitive tasks, manage workflows, and enhance productivity in their coding environments. With a moderate implementation time of approximately 30 minutes, this skill is tailored for those looking to optimize their terminal usage without extensive setup time. The key benefits of MCPretentious include improved workflow automation and enhanced control over terminal sessions. While the exact time savings are not quantified, users can expect significant efficiency gains by automating routine commands and processes. This skill is particularly valuable for developers and AI practitioners who frequently interact with command-line interfaces and require a more streamlined approach to managing their terminal environments. By reducing manual input and allowing for automated responses, MCPretentious can free up valuable time for more complex tasks. Ideal users of MCPretentious include software developers, product managers, and AI practitioners who are familiar with terminal operations and seek to enhance their productivity. This skill is especially relevant for teams working in tech-focused departments where automation can lead to smoother workflows and faster project completion. With its medium GTM relevance, this skill is poised to attract users who are looking to integrate automation into their daily operations. Practical use cases for MCPretentious include automating deployment processes, managing server interactions, and executing batch commands across multiple terminal instances. For example, a developer can set up MCP to automatically run a series of tests across different environments, reducing the time spent on manual execution. The skill's intermediate complexity means that users should have a foundational understanding of terminal commands and the Model Context Protocol to implement it effectively. By incorporating MCPretentious into AI-first workflows, teams can enhance their operational efficiency and focus on innovation rather than routine tasks.\n- Streamlining build processes\n- Automating deployment workflows\n- Managing multiple terminal sessions\n```",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/oetiker/MCPretentious`",
+    "usage": "```\nCreate a Node.js script using MCPretentious to automate [COMMAND] in iTerm2. The script should connect to [NODE_ENVIRONMENT] and use tmux for session management. Include error handling and logging for [SPECIFIC_USE_CASE].\n```\nCopy\n\n```\n# MCPretentious Automation Script for iTerm2\n\n```javascript\nconst MCPretentious = require('mcp-retentious');\n\n// Initialize MCPretentious with iTerm2 and tmux\nconst mcp = new MCPretentious({\n  terminal: 'iTerm2',\n  tmux: true,\n  logLevel: 'debug'\n});\n\n// Connect to Node.js environment\nmcp.connect('production-node-env').then(() => {\n  // Execute command in a new tmux session\n  mcp.execute('npm run build', {\n    sessionName: 'build-session',\n    onOutput: (output) => {\n      console.log(`Build output: ${output}`);\n    },\n    onError: (error) => {\n      console.error(`Build error: ${error}`);\n    }\n  });\n}).catch((error) => {\n  console.error(`Connection error: ${error}`);\n});\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcpretentious#main-content",
+      "mcpretentious#overview",
+      "mcpretentious#setup",
+      "mcpretentious#examples",
+      "mcpretentious#tools",
+      "mcpretentious#mcp",
+      "mcpretentious#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCPretentious là một skill tự động hóa nâng cao được thiết kế để tối ưu hóa việc quản lý các terminal iTerm2 thông qua Model Context Protocol (MCP). Server mạnh mẽ này đóng vai trò như một công cụ điều khiển, cho phép người dùng quản lý nhiều session terminal một cách hiệu quả. Bằng cách tận dụng skill này, các developer có thể tự động hóa các tác vụ lặp đi lặp lại, quản lý workflow và nâng cao năng suất trong môi trường coding của họ. Với thời gian triển khai ở mức trung bình khoảng 30 phút, skill này được thiết kế riêng cho những ai muốn tối ưu hóa việc sử dụng terminal mà không tốn nhiều thời gian setup. Những lợi ích cốt lõi của MCPretentious bao gồm cải thiện tự động hóa workflow và tăng cường khả năng kiểm soát các session terminal. Dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, người dùng vẫn có thể kỳ vọng hiệu suất tăng lên đáng kể nhờ tự động hóa các lệnh và quy trình thông thường. Skill này đặc biệt có giá trị đối với các developer và chuyên gia AI thường xuyên làm việc với giao diện dòng lệnh (CLI) và cần một giải pháp tối ưu hơn để quản lý môi trường terminal. Bằng cách giảm thiểu thao tác nhập liệu thủ công và hỗ trợ phản hồi tự động, MCPretentious giúp giải phóng thời gian quý báu để tập trung vào các tác vụ phức tạp hơn. Đối tượng sử dụng lý tưởng của MCPretentious bao gồm các nhà phát triển phần mềm, product manager và chuyên gia AI đã quen thuộc với các thao tác terminal và muốn nâng cao năng suất làm việc. Skill này đặc biệt phù hợp cho các team công nghệ, nơi tự động hóa có thể giúp workflow mượt mà hơn và đẩy nhanh tiến độ dự án. Với độ tương thích GTM ở mức trung bình, skill này sẵn sàng thu hút những người dùng đang tìm kiếm giải pháp tích hợp tự động hóa vào công việc hàng ngày. Các trường hợp sử dụng thực tế của MCPretentious bao gồm tự động hóa quy trình deployment, quản lý tương tác server và thực thi các lệnh hàng loạt (batch command) trên nhiều instance terminal. Ví dụ, developer có thể cấu hình MCP để tự động chạy một chuỗi các test case trên nhiều môi trường khác nhau, giảm thiểu thời gian thực hiện thủ công. Độ phức tạp ở mức trung bình đòi hỏi người dùng cần có kiến thức cơ bản về các lệnh terminal và Model Context Protocol để triển khai hiệu quả. Bằng cách tích hợp MCPretentious vào các workflow AI-first, các team có thể nâng cao hiệu quả vận hành và tập trung vào đổi mới sáng tạo thay vì các tác vụ thủ công thường nhật.\n- Tối ưu hóa quy trình build\n- Tự động hóa workflow deployment\n- Quản lý nhiều session terminal",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/oetiker/MCPretentious`",
+    "usage_vi": "```\nTạo một script Node.js sử dụng MCPretentious để tự động hóa [COMMAND] trong iTerm2. Script này cần kết nối với [NODE_ENVIRONMENT] và sử dụng tmux để quản lý session. Tích hợp thêm xử lý lỗi và ghi log cho [SPECIFIC_USE_CASE].\n```\nSao chép\n\n```\n# Script tự động hóa MCPretentious cho iTerm2\n\n```javascript\nconst MCPretentious = require('mcp-retentious');\n\n// Khởi tạo MCPretentious với iTerm2 và tmux\nconst mcp = new MCPretentious({\n  terminal: 'iTerm2',\n  tmux: true,\n  logLevel: 'debug'\n});\n\n// Kết nối với môi trường Node.js\nmcp.connect('production-node-env').then(() => {\n  // Thực thi lệnh trong một session tmux mới\n  mcp.execute('npm run build', {\n    sessionName: 'build-session',\n    onOutput: (output) => {\n      console.log(`Build output: ${output}`);\n    },\n    onError: (error) => {\n      console.error(`Build error: ${error}`);\n    }\n  });\n}).catch((error) => {\n  console.error(`Connection error: ${error}`);\n});\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:31:43.278247Z",
+    "http_status": 200,
+    "content_hash": "dddbf083c2008796a605d0dfcc5d033d20dd489579db49ddb8f94bfccea709fb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcpretentious.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcpretentious.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCPretentious: Tự động hóa Terminal",
+  "short_description_vi": "MCPretentious là một server Model Context Protocol (MCP) giúp tự động hóa các terminal iTerm2. Nó mang lại lợi ích cho các đội ngũ vận hành nhờ tối ưu hóa việc quản lý terminal và tự động hóa workflow. Server này kết nối với các môi trường Node.js và tích hợp với tmux để quản lý session."
+}

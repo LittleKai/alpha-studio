@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/efka",
+  "slug": "efka",
+  "name": "EFKA",
+  "headline": "EFKA - AI Knowledge Management",
+  "short_description": "AI-powered knowledge management without vector embeddings. Built on Claude Agent SDK, it uses a file system and agent-driven approach. Slower but more reliable. Ideal for operations teams needing accurate, automated knowledge retrieval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Harryoung",
+  "install_command": "git clone https://github.com/Harryoung/efka.git",
+  "source_repo_url": "https://github.com/Harryoung/efka",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "EFKA (Embed-Free Knowledge Agent) is a file system-based knowledge management solution built on Claude's Agent SDK. Instead of relying on vector embeddings and similarity search, it uses intelligent agent reasoning to navigate your knowledge base directly, reading complete documents and sections to preserve context. This approach eliminates chunking complexity, semantic drift, and embedding quality issues. EFKA is ideal for operations teams, support departments, and enterprises that prioritize answer accuracy and transparency over raw speed, with response times typically in the 10-30 second range.\nEnterprise policy and HR documentation retrieval with conflict detection\nTechnical documentation Q&A with full context preservation\nFAQ system with automatic learning from user interactions\nMulti-channel support integration (Slack, WeChat Work, Feishu, DingTalk)",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Harryoung/efka`",
+    "usage": "```\nAct as an efka knowledge agent. Given a [QUERY] about [TOPIC], retrieve the most accurate and up-to-date information from the knowledge base stored in [FOLDER_PATH]. If the answer isn't found, respond with 'No relevant information found in the knowledge base.' Do not guess or fabricate details. Focus on operational accuracy.\n```\nCopy\n\n```\nQuery: 'What is the return policy for defective hardware ordered from Supplier X?'\n\nKnowledge Base Folder: /operations/supplier_docs/\n\nResponse:\n\n**Return Policy for Supplier X - Hardware Defects**\n\n- **Defective Items:** Must be reported within 14 days of delivery.\n- **Return Process:** Submit a ticket via the Supplier X portal with the order number and defect description. Include photos of the defect.\n- **Shipping:** Supplier X provides a prepaid return label for defective items. Customer is responsible for shipping costs for non-defective returns.\n- **Refund Timeline:** Refunds are processed within 5 business days after the defective item is received and inspected by Supplier X.\n- **Contact:** For urgent issues, call Supplier X Support at +1 (800) 555-0199 (24/7).\n\n*Source: /operations/supplier_docs/supplier_x_returns.md (Last Updated: 2024-05-15)*\n\nNo additional steps or assumptions were made. The response strictly adheres to the documented policy.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "efka#main-content",
+      "efka#overview",
+      "efka#setup",
+      "efka#examples",
+      "efka#tools",
+      "efka#mcp",
+      "efka#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "EFKA (Embed-Free Knowledge Agent) is a file system-based knowledge management solution built on Claude's Agent SDK. Instead of relying on vector embeddings and similarity search, it uses intelligent agent reasoning to navigate your knowledge base directly, reading complete documents and sections to preserve context. This approach eliminates chunking complexity, semantic drift, and embedding quality issues. EFKA is ideal for operations teams, support departments, and enterprises that prioritize answer accuracy and transparency over raw speed, with response times typically in the 10-30 second range.\nEnterprise policy and HR documentation retrieval with conflict detection\nTechnical documentation Q&A with full context preservation\nFAQ system with automatic learning from user interactions\nMulti-channel support integration (Slack, WeChat Work, Feishu, DingTalk)",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Harryoung/efka`",
+    "usage_vi": "```\nAct as an efka knowledge agent. Given a [QUERY] about [TOPIC], retrieve the most accurate and up-to-date information from the knowledge base stored in [FOLDER_PATH]. If the answer isn't found, respond with 'No relevant information found in the knowledge base.' Do not guess or fabricate details. Focus on operational accuracy.\n```\nCopy\n\n```\nQuery: 'What is the return policy for defective hardware ordered from Supplier X?'\n\nKnowledge Base Folder: /operations/supplier_docs/\n\nResponse:\n\n**Return Policy for Supplier X - Hardware Defects**\n\n- **Defective Items:** Must be reported within 14 days of delivery.\n- **Return Process:** Submit a ticket via the Supplier X portal with the order number and defect description. Include photos of the defect.\n- **Shipping:** Supplier X provides a prepaid return label for defective items. Customer is responsible for shipping costs for non-defective returns.\n- **Refund Timeline:** Refunds are processed within 5 business days after the defective item is received and inspected by Supplier X.\n- **Contact:** For urgent issues, call Supplier X Support at +1 (800) 555-0199 (24/7).\n\n*Source: /operations/supplier_docs/supplier_x_returns.md (Last Updated: 2024-05-15)*\n\nNo additional steps or assumptions were made. The response strictly adheres to the documented policy.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:12:42.957543Z",
+    "http_status": 200,
+    "content_hash": "eb274f5e880b1129648241fedeff25435f8bf8413e07ede5a04b18decb868979",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\efka.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\efka.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "EFKA - AI Knowledge Management",
+  "short_description_vi": "AI-powered knowledge management without vector embeddings. Built on Claude Agent SDK, it uses a file system and agent-driven approach. Slower but more reliable. Ideal for operations teams needing accurate, automated knowledge retrieval."
+}

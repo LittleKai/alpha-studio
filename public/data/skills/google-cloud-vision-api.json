@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/google-cloud-vision-api",
+  "slug": "google-cloud-vision-api",
+  "name": "Google-Cloud-Vision-API",
+  "headline": "Google Cloud Vision API: Image Text & Object",
+  "short_description": "Google Cloud Vision API enables developers to understand the content of an image by encapsulating powerful machine learning models in an easy to use REST API. It quickly classifies images into thousands of categories (e.g., \"sailboat\", \"lion\", \"Eiffel Tower\"), detects individual objects and faces within images, and finds and reads printed words contained within images. You can build metadata on your image catalog, moderate offensive content, or enable new marketing scenarios through image sentim",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "virtualforce",
+  "install_command": "git clone https://github.com/virtualforce/Google-Cloud-Vision-API.git",
+  "source_repo_url": "https://github.com/virtualforce/Google-Cloud-Vision-API",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Google Cloud Vision API enables developers to analyze image content through two core features: TEXT_DETECTION for optical character recognition (OCR) and LABEL_DETECTION for object identification. The API accepts images as base64-encoded strings, Google Cloud Storage files, or public URLs, returning structured JSON responses with extracted text, bounding boxes, and confidence scores. TEXT_DETECTION extracts printed words with precise coordinates, while LABEL_DETECTION identifies entities across thousands of categories including objects, locations, activities, and products. Developers benefit from a simple REST endpoint and optional OAuth 2.0 or API key authentication for production applications.\nExtract text from street signs, documents, and photographs for data entry automation\nClassify product images in e-commerce catalogs by detected objects and attributes\nIdentify landmarks, animals, and scenes for photo organization and tagging\nBuild content moderation systems by detecting objects and text in user-uploaded images",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/virtualforce/Google-Cloud-Vision-API`",
+    "usage": "```\nAnalyze the following image [IMAGE_URL] using the Google Cloud Vision API. Provide detailed information about the objects, faces, and text present. Also, classify the image into relevant categories and assess the sentiment expressed in the image. The image is related to [COMPANY]'s [INDUSTRY] marketing campaign.\n```\nCopy\n\n```\n# Image Analysis Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "google-cloud-vision-api#main-content",
+      "google-cloud-vision-api#overview",
+      "google-cloud-vision-api#setup",
+      "google-cloud-vision-api#examples",
+      "google-cloud-vision-api#tools",
+      "google-cloud-vision-api#mcp",
+      "google-cloud-vision-api#related",
+      "marketingskills",
+      "copywriting",
+      "mailchamp"
+    ],
+    "overview_vi": "Google Cloud Vision API enables developers to analyze image content through two core features: TEXT_DETECTION for optical character recognition (OCR) and LABEL_DETECTION for object identification. The API accepts images as base64-encoded strings, Google Cloud Storage files, or public URLs, returning structured JSON responses with extracted text, bounding boxes, and confidence scores. TEXT_DETECTION extracts printed words with precise coordinates, while LABEL_DETECTION identifies entities across thousands of categories including objects, locations, activities, and products. Developers benefit from a simple REST endpoint and optional OAuth 2.0 or API key authentication for production applications.\nExtract text from street signs, documents, and photographs for data entry automation\nClassify product images in e-commerce catalogs by detected objects and attributes\nIdentify landmarks, animals, and scenes for photo organization and tagging\nBuild content moderation systems by detecting objects and text in user-uploaded images",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/virtualforce/Google-Cloud-Vision-API`",
+    "usage_vi": "```\nAnalyze the following image [IMAGE_URL] using the Google Cloud Vision API. Provide detailed information about the objects, faces, and text present. Also, classify the image into relevant categories and assess the sentiment expressed in the image. The image is related to [COMPANY]'s [INDUSTRY] marketing campaign.\n```\nCopy\n\n```\n# Image Analysis Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:22.189444Z",
+    "http_status": 200,
+    "content_hash": "8a1c318dc3cd2b550ae61d33d32f4dbeb6019241a6c8d250f6d8c9dadcec9297",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\google-cloud-vision-api.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\google-cloud-vision-api.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Google Cloud Vision API: Image Text & Object",
+  "short_description_vi": "Google Cloud Vision API enables developers to understand the content of an image by encapsulating powerful machine learning models in an easy to use REST API. It quickly classifies images into thousands of categories (e.g., \"sailboat\", \"lion\", \"Eiffel Tower\"), detects individual objects and faces within images, and finds and reads printed words contained within images. You can build metadata on your image catalog, moderate offensive content, or enable new marketing scenarios through image sentim"
+}

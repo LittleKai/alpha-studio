@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/laravel-herd-worktree",
+  "slug": "laravel-herd-worktree",
+  "name": "browser-use",
+  "headline": "Laravel Herd Worktree - Automate Git Worktree Setup",
+  "short_description": "Automates git worktree setup for Laravel projects using Laravel Herd. Ideal for developers needing isolated feature branches. Connects to git and Laravel Herd workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "harris21",
+  "install_command": "git clone https://github.com/harris21/laravel-herd-worktree.git",
+  "source_repo_url": "https://github.com/harris21/laravel-herd-worktree",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "laravel"
+  ],
+  "sections": {
+    "overview": "Laravel Herd Worktree is a Claude Code skill that streamlines the process of setting up isolated development environments for Laravel projects. It automates git worktree creation, configures Laravel Herd to serve the worktree at a local domain, and handles environment setup including dependency installation and Vite configuration. The skill prevents naming conflicts by combining project name with branch name, and automatically updates .env files with correct URLs, session domains, and Sanctum settings. Developers working on multiple feature branches simultaneously benefit from this isolation approach, reducing context switching and environment conflicts.\nCreating isolated workspaces for concurrent feature branch development\nSetting up multiple Laravel projects on separate worktrees without domain conflicts\nAutomating dependency installation and environment configuration for new branches\nManaging Vite processes and frontend builds across multiple isolated environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/harris21/laravel-herd-worktree`",
+    "usage": "```\nSet up a git worktree for a Laravel project using Laravel Herd for the feature branch [FEATURE_BRANCH_NAME]. Create the worktree in [WORKTREE_DIRECTORY_PATH] and ensure it's linked to the main project in [PROJECT_DIRECTORY_PATH]. Verify the worktree is properly configured with Laravel Herd and list all active worktrees. Provide the exact commands to switch between worktrees and any configuration steps required.\n```\nCopy\n\n```\nHere’s the step-by-step setup for your Laravel project using Laravel Herd and git worktrees:\n\n1. **Worktree Creation**:\n   - Navigated to your main project directory at `/Users/developer/projects/my-laravel-app` and ran:\n ```bash\n     git worktree add /Users/developer/projects/my-laravel-app-feature-user-auth feature/user-auth\n ```\n   - The worktree was successfully created in `/Users/developer/projects/my-laravel-app-feature-user-auth` and linked to the `feature/user-auth` branch.\n\n2. **Laravel Herd Integration**:\n   - Opened Laravel Herd and confirmed the new worktree was automatically detected as a separate project.\n   - Configured the worktree’s PHP version to match the main project (PHP 8.2) and verified the Herd services (e.g., database, queue) were running.\n\n3. **Verification**:\n   - Listed all active worktrees using:\n ```bash\n     git worktree list\n ```\n   - Output:\n ```\n     /Users/developer/projects/my-laravel-app                      9a1b2c3 [main]\n     /Users/developer/projects/my-laravel-app-feature-user-auth     d4e5f6g [feature/user-auth]\n ```\n\n4. **Switching Between Worktrees**:\n   - To switch to the feature branch worktree, run:\n ```bash\n     cd /Users/developer/projects/my-laravel-app-feature-user-auth\n ```\n   - Herd automatically switches the active project in the menu bar.\n\n5. **Next Steps**:\n   - Run `composer install` in the worktree to ensure dependencies are up to date.\n   - Start coding! Changes made in the worktree won’t affect the main branch until merged.\n\nAll configurations are now complete. You can safely work on `feature/user-auth` without disrupting the main project.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "laravel-herd-worktree#main-content",
+      "laravel-herd-worktree#overview",
+      "laravel-herd-worktree#setup",
+      "laravel-herd-worktree#examples",
+      "laravel-herd-worktree#tools",
+      "laravel-herd-worktree#mcp",
+      "laravel-herd-worktree#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Laravel Herd Worktree is a Claude Code skill that streamlines the process of setting up isolated development environments for Laravel projects. It automates git worktree creation, configures Laravel Herd to serve the worktree at a local domain, and handles environment setup including dependency installation and Vite configuration. The skill prevents naming conflicts by combining project name with branch name, and automatically updates .env files with correct URLs, session domains, and Sanctum settings. Developers working on multiple feature branches simultaneously benefit from this isolation approach, reducing context switching and environment conflicts.\nCreating isolated workspaces for concurrent feature branch development\nSetting up multiple Laravel projects on separate worktrees without domain conflicts\nAutomating dependency installation and environment configuration for new branches\nManaging Vite processes and frontend builds across multiple isolated environments",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/harris21/laravel-herd-worktree`",
+    "usage_vi": "```\nSet up a git worktree for a Laravel project using Laravel Herd for the feature branch [FEATURE_BRANCH_NAME]. Create the worktree in [WORKTREE_DIRECTORY_PATH] and ensure it's linked to the main project in [PROJECT_DIRECTORY_PATH]. Verify the worktree is properly configured with Laravel Herd and list all active worktrees. Provide the exact commands to switch between worktrees and any configuration steps required.\n```\nCopy\n\n```\nHere’s the step-by-step setup for your Laravel project using Laravel Herd and git worktrees:\n\n1. **Worktree Creation**:\n   - Navigated to your main project directory at `/Users/developer/projects/my-laravel-app` and ran:\n ```bash\n     git worktree add /Users/developer/projects/my-laravel-app-feature-user-auth feature/user-auth\n ```\n   - The worktree was successfully created in `/Users/developer/projects/my-laravel-app-feature-user-auth` and linked to the `feature/user-auth` branch.\n\n2. **Laravel Herd Integration**:\n   - Opened Laravel Herd and confirmed the new worktree was automatically detected as a separate project.\n   - Configured the worktree’s PHP version to match the main project (PHP 8.2) and verified the Herd services (e.g., database, queue) were running.\n\n3. **Verification**:\n   - Listed all active worktrees using:\n ```bash\n     git worktree list\n ```\n   - Output:\n ```\n     /Users/developer/projects/my-laravel-app                      9a1b2c3 [main]\n     /Users/developer/projects/my-laravel-app-feature-user-auth     d4e5f6g [feature/user-auth]\n ```\n\n4. **Switching Between Worktrees**:\n   - To switch to the feature branch worktree, run:\n ```bash\n     cd /Users/developer/projects/my-laravel-app-feature-user-auth\n ```\n   - Herd automatically switches the active project in the menu bar.\n\n5. **Next Steps**:\n   - Run `composer install` in the worktree to ensure dependencies are up to date.\n   - Start coding! Changes made in the worktree won’t affect the main branch until merged.\n\nAll configurations are now complete. You can safely work on `feature/user-auth` without disrupting the main project.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:35:23.367027Z",
+    "http_status": 200,
+    "content_hash": "ec52413f886eb6037e8f7c070968cb49363c82ca087b2bd3263ad47c97bade87",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\laravel-herd-worktree.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\laravel-herd-worktree.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Laravel Herd Worktree - Automate Git Worktree Setup",
+  "short_description_vi": "Automates git worktree setup for Laravel projects using Laravel Herd. Ideal for developers needing isolated feature branches. Connects to git and Laravel Herd workflows."
+}

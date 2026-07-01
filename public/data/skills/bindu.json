@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bindu",
+  "slug": "bindu",
+  "name": "Bindu",
+  "headline": "Bindu: Transform AI Agents into Microservices",
+  "short_description": "Bindu enables AI agents to function as interoperable microservices. Operations teams can deploy agents that communicate, observe, and compose with other services. It supports agent-to-agent communication, orchestration, and autonomous operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "GetBindu",
+  "install_command": "git clone https://github.com/GetBindu/Bindu.git",
+  "source_repo_url": "https://github.com/GetBindu/Bindu",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "machine-learning",
+    "autonomous-agents",
+    "agent-orchestration",
+    "ai-agent",
+    "agent-communication",
+    "a2a"
+  ],
+  "sections": {
+    "overview": "Bindu is an innovative Claude Code skill designed to transform any AI agent into a living microservice that is interoperable, observable, and composable. This skill allows developers and product managers to integrate multiple AI agents into a single cohesive service, enhancing collaboration and efficiency within AI-driven applications. By automating complex interactions between autonomous agents, Bindu streamlines workflows and enables real-time communication for improved decision-making. The key benefits of using Bindu include the ability to create production-ready AI agents in minutes using a cookiecutter template, which significantly reduces the time spent on setup and configuration. While the exact time savings are currently unknown, the skill's intermediate implementation difficulty, taking approximately 30 minutes, is manageable for developers familiar with AI automation. This makes Bindu a practical choice for teams looking to optimize their AI workflows and leverage automation for better productivity. Bindu is particularly relevant for developers, product managers, and AI practitioners who are involved in creating and managing AI systems. By using Bindu, these professionals can automate payment processing between AI agents in a distributed system or register and manage AI agents in the Bindu Directory for easy discoverability. This skill is ideal for teams aiming to enhance their AI-first workflows and improve the interoperability of their AI solutions. With its focus on workflow automation, Bindu fits seamlessly into modern AI-first environments. It enables organizations to harness the power of multiple AI agents, facilitating their integration into a unified service architecture. As businesses increasingly adopt AI technologies, skills like Bindu will be crucial in driving efficiency and innovation. For those ready to take their AI automation to the next level, Bindu offers a robust solution that simplifies the complexities of managing AI agents.\nIntegrate multiple AI agents into a single cohesive service for enhanced collaboration.\nAutomate payment processing between AI agents in a distributed system.\nEnable real-time communication between autonomous agents for improved decision-making.\nCreate a production-ready AI agent in minutes using the cookiecutter template.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GetBindu/Bindu`",
+    "usage": "```\nDesign a microservice architecture for [PROJECT_NAME] using Bindu agents. Define the roles of [AGENT_1], [AGENT_2], and [AGENT_3] as interoperable services. Specify their communication protocols (e.g., REST, WebSocket, or message queues) and data formats (e.g., JSON, Protocol Buffers). Include error handling mechanisms and a fallback strategy for agent failures. Document the service discovery method (e.g., Consul, etcd, or Kubernetes DNS).\n```\nCopy\n\n```\nFor the **Smart Warehouse Automation** project, we designed a Bindu-based microservice architecture with three agents:\n\n1. **InventoryAgent**: Manages real-time stock levels and triggers reorder alerts. It exposes a REST API (`/api/v1/inventory`) for querying stock and a WebSocket endpoint (`/ws/inventory-updates`) for live updates. Uses Redis for caching and PostgreSQL for persistent storage. If the agent fails, a Kubernetes liveness probe restarts it within 30 seconds, and a fallback agent (InventoryAgent-Backup) takes over read operations.\n\n2. **OrderProcessorAgent**: Handles order fulfillment by communicating with InventoryAgent via gRPC to reserve stock and with ShippingAgent via REST to schedule deliveries. Implements a circuit breaker pattern to avoid cascading failures during peak loads. Data is stored in MongoDB for flexibility in order metadata.\n\n3. **ShippingAgent**: Coordinates with third-party logistics APIs (FedEx, UPS) and tracks delivery status. Uses a message queue (RabbitMQ) to decouple order updates from processing. If a logistics API fails, it retries with exponential backoff and logs errors to an ELK stack for monitoring.\n\n**Service Discovery**: All agents register with Consul, and client requests are routed via a service mesh (Linkerd). The architecture ensures scalability: each agent can scale independently based on load, and agents can be updated without downtime using rolling deployments. Observability is built-in with Prometheus for metrics, Grafana for dashboards, and Jaeger for tracing agent-to-agent calls.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bindu#main-content",
+      "bindu#overview",
+      "bindu#setup",
+      "bindu#examples",
+      "bindu#tools",
+      "bindu#mcp",
+      "bindu#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Bindu is an innovative Claude Code skill designed to transform any AI agent into a living microservice that is interoperable, observable, and composable. This skill allows developers and product managers to integrate multiple AI agents into a single cohesive service, enhancing collaboration and efficiency within AI-driven applications. By automating complex interactions between autonomous agents, Bindu streamlines workflows and enables real-time communication for improved decision-making. The key benefits of using Bindu include the ability to create production-ready AI agents in minutes using a cookiecutter template, which significantly reduces the time spent on setup and configuration. While the exact time savings are currently unknown, the skill's intermediate implementation difficulty, taking approximately 30 minutes, is manageable for developers familiar with AI automation. This makes Bindu a practical choice for teams looking to optimize their AI workflows and leverage automation for better productivity. Bindu is particularly relevant for developers, product managers, and AI practitioners who are involved in creating and managing AI systems. By using Bindu, these professionals can automate payment processing between AI agents in a distributed system or register and manage AI agents in the Bindu Directory for easy discoverability. This skill is ideal for teams aiming to enhance their AI-first workflows and improve the interoperability of their AI solutions. With its focus on workflow automation, Bindu fits seamlessly into modern AI-first environments. It enables organizations to harness the power of multiple AI agents, facilitating their integration into a unified service architecture. As businesses increasingly adopt AI technologies, skills like Bindu will be crucial in driving efficiency and innovation. For those ready to take their AI automation to the next level, Bindu offers a robust solution that simplifies the complexities of managing AI agents.\nIntegrate multiple AI agents into a single cohesive service for enhanced collaboration.\nAutomate payment processing between AI agents in a distributed system.\nEnable real-time communication between autonomous agents for improved decision-making.\nCreate a production-ready AI agent in minutes using the cookiecutter template.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GetBindu/Bindu`",
+    "usage_vi": "```\nDesign a microservice architecture for [PROJECT_NAME] using Bindu agents. Define the roles of [AGENT_1], [AGENT_2], and [AGENT_3] as interoperable services. Specify their communication protocols (e.g., REST, WebSocket, or message queues) and data formats (e.g., JSON, Protocol Buffers). Include error handling mechanisms and a fallback strategy for agent failures. Document the service discovery method (e.g., Consul, etcd, or Kubernetes DNS).\n```\nCopy\n\n```\nFor the **Smart Warehouse Automation** project, we designed a Bindu-based microservice architecture with three agents:\n\n1. **InventoryAgent**: Manages real-time stock levels and triggers reorder alerts. It exposes a REST API (`/api/v1/inventory`) for querying stock and a WebSocket endpoint (`/ws/inventory-updates`) for live updates. Uses Redis for caching and PostgreSQL for persistent storage. If the agent fails, a Kubernetes liveness probe restarts it within 30 seconds, and a fallback agent (InventoryAgent-Backup) takes over read operations.\n\n2. **OrderProcessorAgent**: Handles order fulfillment by communicating with InventoryAgent via gRPC to reserve stock and with ShippingAgent via REST to schedule deliveries. Implements a circuit breaker pattern to avoid cascading failures during peak loads. Data is stored in MongoDB for flexibility in order metadata.\n\n3. **ShippingAgent**: Coordinates with third-party logistics APIs (FedEx, UPS) and tracks delivery status. Uses a message queue (RabbitMQ) to decouple order updates from processing. If a logistics API fails, it retries with exponential backoff and logs errors to an ELK stack for monitoring.\n\n**Service Discovery**: All agents register with Consul, and client requests are routed via a service mesh (Linkerd). The architecture ensures scalability: each agent can scale independently based on load, and agents can be updated without downtime using rolling deployments. Observability is built-in with Prometheus for metrics, Grafana for dashboards, and Jaeger for tracing agent-to-agent calls.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:19.411480Z",
+    "http_status": 200,
+    "content_hash": "c511bebbbb8b9e8d02193f3fb96809f237103a81594d00353bfd840ab543474a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bindu.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bindu.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bindu: Transform AI Agents into Microservices",
+  "short_description_vi": "Bindu enables AI agents to function as interoperable microservices. Operations teams can deploy agents that communicate, observe, and compose with other services. It supports agent-to-agent communication, orchestration, and autonomous operations."
+}

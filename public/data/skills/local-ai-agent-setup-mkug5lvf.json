@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/local-ai-agent-setup-mkug5lvf",
+  "slug": "local-ai-agent-setup-mkug5lvf",
+  "name": "Local AI Agent Setup",
+  "headline": "Local AI Agent Setup: Run Your Own AI Agents",
+  "short_description": "This skill enables users to set up and run their own local AI agents using the local AI package. It covers deploying large language models, setting up infrastructure, and customizing agents both in no-code and Python environments.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "shyft-ai",
+  "install_command": "",
+  "source_repo_url": "",
+  "works_with": [
+    "Claude CodeCursorWindsurf"
+  ],
+  "tags": [
+    "Docker",
+    "AI Agents",
+    "Local AI",
+    "N8N",
+    "OpenAI API Compatibility"
+  ],
+  "sections": {
+    "overview": "The Local AI Agent Setup skill empowers users to establish and operate their own local AI agents utilizing the local AI package. This skill focuses on deploying large language models, configuring the necessary infrastructure, and customizing agents in both no-code and Python environments. By enabling local execution, this skill enhances privacy and security, allowing users to maintain control over their AI systems without relying on external cloud services. One of the key benefits of this skill is the ability to run large language models on personal hardware, which can lead to significant time savings in development and deployment. Users can quickly build AI agents tailored to their specific needs, integrating seamlessly with existing systems through OpenAI API compatibility. This skill is particularly valuable for developers and AI practitioners who require enhanced privacy and want to leverage the capabilities of local AI without compromising on performance. Ideal for developers, product managers, and AI practitioners, this skill is designed for those who are comfortable with intermediate-level technical tasks. It typically requires over two hours to implement, making it suitable for teams looking to enhance their AI-first workflows efficiently. Whether you are a developer wanting to create custom AI solutions or a product manager aiming to integrate AI capabilities into your products, this skill provides a practical approach to local AI deployment. Practical use cases include running local large language models for specific applications, such as chatbots or data analysis tools, while ensuring data privacy. Users can also build AI agents that interact with local databases or APIs, providing a more secure and responsive experience. As organizations increasingly adopt AI automation, this skill positions users to leverage local AI effectively, making it a crucial addition to any AI development toolkit.\nRun local large language models on personal hardware\nBuild AI agents with enhanced privacy and security\nIntegrate local AI with existing systems using OpenAI API compatibility",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.",
+    "usage": "```\nUse this structured approach to set up a local AI agent: \n1. Install prerequisites: Python, Git, Docker.\n2. Clone the local AI package repository: \n```bash\ngit clone [LOCAL_AI_PACKAGE_URL]\ncd local-ai-package\n```\n3. Configure environment variables:\n   - Open `.env.example`, copy it to `.env`. Fill out necessary credentials like encryption keys and JWT secrets using a random generator or openssl.\n   - Set up service configuration for N8N, Superbase, and more.\n4. Run the service based on your GPU configuration:\n   - Nvidia: `python start_services.py --profile gpu-nvidia`\n5. Access services via browser using specified localhost ports (e.g., N8N: `http://localhost:5678`)\n6. Customize agent in N8N: Use components like Chat Trigger and AI Agent Node.\n7. Connect to Open Web UI for chat interface.\n\n[Placeholders: PERSONAL_GPU_TYPE, LOCAL_AI_PACKAGE_URL]\n```\nCopy\n\n```\nSuccessfully running Open Web UI interface on `localhost:8080` with access to local language models. N8N workflow is set up with local AI agent responding to queries.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "local-ai-agent-setup-mkug5lvf#main-content",
+      "local-ai-agent-setup-mkug5lvf#overview",
+      "local-ai-agent-setup-mkug5lvf#setup",
+      "local-ai-agent-setup-mkug5lvf#examples",
+      "local-ai-agent-setup-mkug5lvf#tools",
+      "local-ai-agent-setup-mkug5lvf#mcp",
+      "local-ai-agent-setup-mkug5lvf#related",
+      "shyft-ai-automation-agency-mastery",
+      "ai-powered-research-workflow-builder-mkufwv6y",
+      "ai-powered-landing-page-designer-mkug5dyo"
+    ],
+    "overview_vi": "The Local AI Agent Setup skill empowers users to establish and operate their own local AI agents utilizing the local AI package. This skill focuses on deploying large language models, configuring the necessary infrastructure, and customizing agents in both no-code and Python environments. By enabling local execution, this skill enhances privacy and security, allowing users to maintain control over their AI systems without relying on external cloud services. One of the key benefits of this skill is the ability to run large language models on personal hardware, which can lead to significant time savings in development and deployment. Users can quickly build AI agents tailored to their specific needs, integrating seamlessly with existing systems through OpenAI API compatibility. This skill is particularly valuable for developers and AI practitioners who require enhanced privacy and want to leverage the capabilities of local AI without compromising on performance. Ideal for developers, product managers, and AI practitioners, this skill is designed for those who are comfortable with intermediate-level technical tasks. It typically requires over two hours to implement, making it suitable for teams looking to enhance their AI-first workflows efficiently. Whether you are a developer wanting to create custom AI solutions or a product manager aiming to integrate AI capabilities into your products, this skill provides a practical approach to local AI deployment. Practical use cases include running local large language models for specific applications, such as chatbots or data analysis tools, while ensuring data privacy. Users can also build AI agents that interact with local databases or APIs, providing a more secure and responsive experience. As organizations increasingly adopt AI automation, this skill positions users to leverage local AI effectively, making it a crucial addition to any AI development toolkit.\nRun local large language models on personal hardware\nBuild AI agents with enhanced privacy and security\nIntegrate local AI with existing systems using OpenAI API compatibility",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.",
+    "usage_vi": "```\nUse this structured approach to set up a local AI agent: \n1. Install prerequisites: Python, Git, Docker.\n2. Clone the local AI package repository: \n```bash\ngit clone [LOCAL_AI_PACKAGE_URL]\ncd local-ai-package\n```\n3. Configure environment variables:\n   - Open `.env.example`, copy it to `.env`. Fill out necessary credentials like encryption keys and JWT secrets using a random generator or openssl.\n   - Set up service configuration for N8N, Superbase, and more.\n4. Run the service based on your GPU configuration:\n   - Nvidia: `python start_services.py --profile gpu-nvidia`\n5. Access services via browser using specified localhost ports (e.g., N8N: `http://localhost:5678`)\n6. Customize agent in N8N: Use components like Chat Trigger and AI Agent Node.\n7. Connect to Open Web UI for chat interface.\n\n[Placeholders: PERSONAL_GPU_TYPE, LOCAL_AI_PACKAGE_URL]\n```\nCopy\n\n```\nSuccessfully running Open Web UI interface on `localhost:8080` with access to local language models. N8N workflow is set up with local AI agent responding to queries.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:14:49.533367Z",
+    "http_status": 200,
+    "content_hash": "0aa4b5df9c72a000b2191f7cef3be2a747350bb6ff5a01bb98997800403a4f6a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\local-ai-agent-setup-mkug5lvf.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\local-ai-agent-setup-mkug5lvf.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Local AI Agent Setup: Run Your Own AI Agents",
+  "short_description_vi": "This skill enables users to set up and run their own local AI agents using the local AI package. It covers deploying large language models, setting up infrastructure, and customizing agents both in no-code and Python environments."
+}

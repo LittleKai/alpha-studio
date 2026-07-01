@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-local-llm",
+  "slug": "awesome-local-llm",
+  "name": "Awesome Local Llm",
+  "headline": "Run LLMs locally with curated platforms",
+  "short_description": "A curated list of platforms, tools, and resources to run LLMs locally. Helps operations teams deploy and manage self-hosted AI models. Connects to inference platforms and engines for integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "rafska",
+  "install_command": "git clone https://github.com/rafska/awesome-local-llm.git",
+  "source_repo_url": "https://github.com/rafska/awesome-local-llm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "local-ai",
+    "selfhosted",
+    "awesome-list",
+    "resources",
+    "awesome",
+    "local",
+    "self-hosted",
+    "local-llm",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Awesome Local LLM is a comprehensive curated list of platforms, inference engines, tools, and resources for deploying and managing large language models on local infrastructure. The directory covers inference platforms and engines, user interfaces, specific model implementations across general purpose, coding, multimodal, image, and audio categories, plus agent frameworks and retrieval-augmented generation tools. It includes model explorers, benchmarks, leaderboards, and guidance on hardware requirements, training, fine-tuning, and security considerations. Teams building self-hosted AI systems use this resource to discover tested tools for model inference, integration, observability, and optimization without relying on cloud-based APIs.\nSet up a local LLM for developing custom AI applications without cloud dependency.\nEvaluate and compare various LLMs using benchmarks and leaderboards provided in the resources.\nAutomate the deployment of LLMs on personal hardware for testing and development purposes.\nUtilize user-friendly interfaces to streamline interactions with locally hosted AI models.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rafska/awesome-local-llm`",
+    "usage": "```\nRecommend the best platforms and tools to run [MODEL_NAME] locally for [USE_CASE]. Include setup requirements, hardware recommendations, and any dependencies. Also suggest monitoring tools to track performance and usage.\n```\nCopy\n\n```\nFor running Llama 2 locally for a customer support chatbot, I recommend the following setup:\n\n1. **Platform**: Ollama - It's user-friendly and supports Llama 2 out of the box. You can install it on a Linux server with an NVIDIA GPU.\n2. **Hardware**: A server with at least 32GB RAM and an NVIDIA RTX 3090 GPU (24GB VRAM) is recommended for optimal performance.\n3. **Dependencies**: Docker and NVIDIA Container Toolkit for containerization and GPU support.\n4. **Monitoring**: Use Prometheus and Grafana to monitor GPU usage, memory consumption, and response times. Set up alerts for any anomalies.\n\nOllama provides a simple CLI to interact with the model, and you can integrate it with your existing support systems via APIs. Make sure to regularly update the model and dependencies to ensure security and performance.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-local-llm#main-content",
+      "awesome-local-llm#overview",
+      "awesome-local-llm#setup",
+      "awesome-local-llm#examples",
+      "awesome-local-llm#tools",
+      "awesome-local-llm#mcp",
+      "awesome-local-llm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Local LLM là danh sách tổng hợp toàn diện các nền tảng, engine inference, công cụ và tài nguyên để triển khai và quản lý các mô hình ngôn ngữ lớn trên hạ tầng local. Danh mục này bao gồm các nền tảng và engine inference, giao diện người dùng, các triển khai mô hình cụ thể cho đa mục đích, coding, multimodal, hình ảnh và âm thanh, cùng với các agent framework và công cụ RAG (retrieval-augmented generation). Tài liệu cũng bao gồm các công cụ khám phá mô hình, benchmark, leaderboard, và hướng dẫn về yêu cầu phần cứng, training, fine-tuning cũng như các lưu ý về bảo mật. Các đội ngũ xây dựng hệ thống AI self-hosted sử dụng tài nguyên này để tìm kiếm các công cụ đã được kiểm thử phục vụ cho việc inference mô hình, tích hợp, observability và tối ưu hóa mà không cần phụ thuộc vào các API trên cloud.\nThiết lập LLM local để phát triển các ứng dụng AI tùy biến mà không phụ thuộc vào cloud.\nĐánh giá và so sánh các LLM khác nhau bằng cách sử dụng các benchmark và leaderboard được cung cấp trong tài nguyên.\nTự động hóa việc triển khai LLM trên phần cứng cá nhân cho mục đích test và phát triển.\nTận dụng các giao diện thân thiện với người dùng để tối ưu hóa tương tác với các mô hình AI được host local.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/rafska/awesome-local-llm`",
+    "usage_vi": "```\nĐề xuất các nền tảng và công cụ tốt nhất để chạy [MODEL_NAME] local cho [USE_CASE]. Bao gồm các yêu cầu setup, khuyến nghị phần cứng và các dependency liên quan. Ngoài ra, hãy gợi ý các công cụ giám sát để theo dõi hiệu năng và mức độ sử dụng.\n```\nSao chép\n\n```\nĐể chạy Llama 2 local cho chatbot hỗ trợ khách hàng, tôi đề xuất setup sau:\n\n1. **Nền tảng**: Ollama - Rất thân thiện với người dùng và hỗ trợ sẵn Llama 2. Bạn có thể cài đặt trên server Linux chạy GPU NVIDIA.\n2. **Phần cứng**: Khuyên dùng server có tối thiểu 32GB RAM và một GPU NVIDIA RTX 3090 (24GB VRAM) để đạt hiệu năng tối ưu.\n3. **Dependency**: Docker và NVIDIA Container Toolkit để container hóa và hỗ trợ GPU.\n4. **Giám sát**: Sử dụng Prometheus và Grafana để giám sát mức sử dụng GPU, lượng RAM tiêu thụ và thời gian phản hồi. Thiết lập cảnh báo cho các trường hợp bất thường.\n\nOllama cung cấp CLI đơn giản để tương tác với mô hình, và bạn có thể tích hợp với các hệ thống hỗ trợ hiện tại của mình thông qua API. Hãy lưu ý cập nhật mô hình và các dependency thường xuyên để đảm bảo hiệu năng và bảo mật tốt nhất.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:01:08.678047Z",
+    "http_status": 200,
+    "content_hash": "6da60668a64c6fc024f24d02cc2b4735adacabee360e80074a00f7eee2732ae6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-local-llm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-local-llm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Chạy LLM local với các nền tảng được tuyển chọn",
+  "short_description_vi": "Danh sách tổng hợp các nền tảng, công cụ và tài nguyên để chạy LLM local. Hỗ trợ đội ngũ vận hành triển khai và quản lý các mô hình AI self-hosted. Kết nối với các nền tảng và engine inference để phục vụ tích hợp."
+}

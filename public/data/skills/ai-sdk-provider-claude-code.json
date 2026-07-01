@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-sdk-provider-claude-code",
+  "slug": "ai-sdk-provider-claude-code",
+  "name": "browser-use",
+  "headline": "ai-sdk-provider-claude-code: AI Integration",
+  "short_description": "Vercel AI SDK community provider for Claude Code SDK. Enables operations teams to integrate Claude Code via SDK for Pro/Max subscriptions. Connects to Vercel AI SDK for streamlined automation workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "ben-vargas",
+  "install_command": "git clone https://github.com/ben-vargas/ai-sdk-provider-claude-code.git",
+  "source_repo_url": "https://github.com/ben-vargas/ai-sdk-provider-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai",
+    "ai-sdk",
+    "claude-code-sdk"
+  ],
+  "sections": {
+    "overview": "The ai-sdk-provider-claude-code skill is designed to facilitate the integration of the Vercel AI SDK with the Claude Code SDK, making it easier for developers to leverage AI automation within their applications. This skill enables users with Pro or Max subscriptions to utilize the capabilities of the Vercel AI SDK seamlessly, enhancing their development processes and enabling more efficient AI-driven solutions. By streamlining this integration, developers can focus on building innovative features rather than getting bogged down in complex setup processes. One of the key benefits of using this skill is the potential for significant time savings in workflow automation. While the exact time savings are currently unknown, the streamlined integration process is expected to reduce the time spent on manual coding and configuration. This allows developers to accelerate their project timelines and deliver AI-enhanced applications more quickly. Given its intermediate complexity, users can implement this skill in approximately 30 minutes, making it a practical choice for teams looking to adopt AI automation without extensive overhead. This skill is particularly beneficial for developers and product managers who are looking to harness AI capabilities within their products. By integrating the Vercel AI SDK, teams can create applications that utilize advanced AI functionalities, such as natural language processing and machine learning, enhancing user experiences and operational efficiency. For instance, a product manager could use this skill to quickly prototype an AI-driven feature that analyzes user behavior, leading to data-driven decisions and improved product offerings. The implementation of the ai-sdk-provider-claude-code skill fits seamlessly into AI-first workflows, allowing teams to adopt a more agile approach to development. As AI continues to transform industries, having the ability to integrate advanced AI capabilities efficiently is crucial. This skill not only simplifies the integration process but also empowers teams to innovate and respond to market demands swiftly. With its intermediate difficulty level, it is accessible to those with a foundational understanding of AI and automation, making it a valuable addition to any developer's toolkit.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ben-vargas/ai-sdk-provider-claude-code`",
+    "usage": "```\nUsing the Vercel AI SDK community provider for Claude Code, generate a Python script that automates [TASK]. The script should connect to [DATA_SOURCE] and process [DATA_TYPE]. Include error handling for [SPECIFIC_ERRORS] and log results to [LOG_FILE].\n```\nCopy\n\n```\nHere's a Python script generated using the Vercel AI SDK community provider for Claude Code that automates data extraction from a SQL database and processes customer records:\n\n```python\nimport os\nfrom vercel_ai_sdk import VercelAI\nfrom claudecode import ClaudeCode\n\n# Initialize connections\nvercel_ai = VercelAI(api_key=os.getenv('VERCEL_API_KEY'))\nclaudecode = ClaudeCode(api_key=os.getenv('CLAUDE_API_KEY'))\n\n# Connect to SQL database\ndef get_customer_data():\n    try:\n        query = \"SELECT * FROM customers WHERE last_purchase_date > '2023-01-01'\"\n        results = vercel_ai.sql_query(query)\n        return results\n    except Exception as e:\n        print(f\"Error fetching data: {str(e)}\")\n        return None\n\n# Process customer data\ndef process_customers(data):\n    if not data:\n        return\n    try:\n        # Use Claude Code to analyze and categorize customers\n        analysis = claudecode.analyze(\n            prompt=\"Categorize these customers based on purchase history:\",\n            data=data\n        )\n        return analysis\n    except Exception as e:\n        print(f\"Error processing data: {str(e)}\")\n\n# Main execution\nif __name__ == \"__main__\":\n    customer_data = get_customer_data()\n    if customer_data:\n        processed_data = process_customers(customer_data)\n        with open('customer_analysis.log', 'w') as f:\n            f.write(str(processed_data))\n```\n\nThis script connects to a SQL database, extracts customer records from 2023, and uses Claude Code to analyze and categorize the customers based on their purchase history. Error handling is included for database connection issues and API call failures, with results logged to a file.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-sdk-provider-claude-code#main-content",
+      "ai-sdk-provider-claude-code#overview",
+      "ai-sdk-provider-claude-code#setup",
+      "ai-sdk-provider-claude-code#examples",
+      "ai-sdk-provider-claude-code#tools",
+      "ai-sdk-provider-claude-code#mcp",
+      "ai-sdk-provider-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The ai-sdk-provider-claude-code skill is designed to facilitate the integration of the Vercel AI SDK with the Claude Code SDK, making it easier for developers to leverage AI automation within their applications. This skill enables users with Pro or Max subscriptions to utilize the capabilities of the Vercel AI SDK seamlessly, enhancing their development processes and enabling more efficient AI-driven solutions. By streamlining this integration, developers can focus on building innovative features rather than getting bogged down in complex setup processes. One of the key benefits of using this skill is the potential for significant time savings in workflow automation. While the exact time savings are currently unknown, the streamlined integration process is expected to reduce the time spent on manual coding and configuration. This allows developers to accelerate their project timelines and deliver AI-enhanced applications more quickly. Given its intermediate complexity, users can implement this skill in approximately 30 minutes, making it a practical choice for teams looking to adopt AI automation without extensive overhead. This skill is particularly beneficial for developers and product managers who are looking to harness AI capabilities within their products. By integrating the Vercel AI SDK, teams can create applications that utilize advanced AI functionalities, such as natural language processing and machine learning, enhancing user experiences and operational efficiency. For instance, a product manager could use this skill to quickly prototype an AI-driven feature that analyzes user behavior, leading to data-driven decisions and improved product offerings. The implementation of the ai-sdk-provider-claude-code skill fits seamlessly into AI-first workflows, allowing teams to adopt a more agile approach to development. As AI continues to transform industries, having the ability to integrate advanced AI capabilities efficiently is crucial. This skill not only simplifies the integration process but also empowers teams to innovate and respond to market demands swiftly. With its intermediate difficulty level, it is accessible to those with a foundational understanding of AI and automation, making it a valuable addition to any developer's toolkit.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ben-vargas/ai-sdk-provider-claude-code`",
+    "usage_vi": "```\nUsing the Vercel AI SDK community provider for Claude Code, generate a Python script that automates [TASK]. The script should connect to [DATA_SOURCE] and process [DATA_TYPE]. Include error handling for [SPECIFIC_ERRORS] and log results to [LOG_FILE].\n```\nCopy\n\n```\nHere's a Python script generated using the Vercel AI SDK community provider for Claude Code that automates data extraction from a SQL database and processes customer records:\n\n```python\nimport os\nfrom vercel_ai_sdk import VercelAI\nfrom claudecode import ClaudeCode\n\n# Initialize connections\nvercel_ai = VercelAI(api_key=os.getenv('VERCEL_API_KEY'))\nclaudecode = ClaudeCode(api_key=os.getenv('CLAUDE_API_KEY'))\n\n# Connect to SQL database\ndef get_customer_data():\n    try:\n        query = \"SELECT * FROM customers WHERE last_purchase_date > '2023-01-01'\"\n        results = vercel_ai.sql_query(query)\n        return results\n    except Exception as e:\n        print(f\"Error fetching data: {str(e)}\")\n        return None\n\n# Process customer data\ndef process_customers(data):\n    if not data:\n        return\n    try:\n        # Use Claude Code to analyze and categorize customers\n        analysis = claudecode.analyze(\n            prompt=\"Categorize these customers based on purchase history:\",\n            data=data\n        )\n        return analysis\n    except Exception as e:\n        print(f\"Error processing data: {str(e)}\")\n\n# Main execution\nif __name__ == \"__main__\":\n    customer_data = get_customer_data()\n    if customer_data:\n        processed_data = process_customers(customer_data)\n        with open('customer_analysis.log', 'w') as f:\n            f.write(str(processed_data))\n```\n\nThis script connects to a SQL database, extracts customer records from 2023, and uses Claude Code to analyze and categorize the customers based on their purchase history. Error handling is included for database connection issues and API call failures, with results logged to a file.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:41:38.854269Z",
+    "http_status": 200,
+    "content_hash": "7c9342b2b96e0af294c7ad9240df960f2bf942fd9106ee956f2897e75d06f607",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-sdk-provider-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-sdk-provider-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ai-sdk-provider-claude-code: AI Integration",
+  "short_description_vi": "Vercel AI SDK community provider for Claude Code SDK. Enables operations teams to integrate Claude Code via SDK for Pro/Max subscriptions. Connects to Vercel AI SDK for streamlined automation workflows."
+}

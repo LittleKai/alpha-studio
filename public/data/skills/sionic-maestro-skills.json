@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sionic-maestro-skills",
+  "slug": "sionic-maestro-skills",
+  "name": "browser-use",
+  "headline": "Maestro Skills - Multi-LLM Coding Automation",
+  "short_description": "Maestro Skills automates multi-LLM coding workflows for operations teams. It orchestrates multiple language models to produce accurate, harmonious output. Integrates with Python-based CLI tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "sionic-ai",
+  "install_command": "git clone https://github.com/sionic-ai/sionic-maestro-skills.git",
+  "source_repo_url": "https://github.com/sionic-ai/sionic-maestro-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Maestro Skills implements a Centralized Consult architecture that coordinates multiple language models to solve complex coding workflows. The skill runs a 5-stage process—Analyze, Hypothesize, Implement, Debug, and Improve—where Claude Code orchestrates specialist models (Codex for code generation, Gemini for context, Claude for review) and requires human approval before proceeding through each stage. It includes 40+ tools for comprehensive task handling, capability-aware model selection based on a 45% confidence threshold, and test-driven candidate selection to minimize error amplification. Operations teams and developers benefit from reduced hallucination rates, error verification, and measurable coordination principles drawn from recent research on scaling agent systems.\nDebug authentication bugs with multi-model analysis and human approval\nImplement user session management with staged workflow and testing\nReview payment processing code across multiple specialist models\nFix critical production issues with test-driven verification\n\nThe automated data pipeline for [COMPANY] has been successfully implemented using Maestro Skills. The pipeline orchestrates three language models to handle different stages of the workflow:\n\n- **Model 1**: Data Ingestion\n- **Model 2**: Data Cleaning\n- **Model 3**: Report Generation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sionic-ai/sionic-maestro-skills`",
+    "usage": "```\nCreate a Python script using Maestro Skills to automate a data pipeline for [COMPANY]. The pipeline should ingest [DATA] from [INDUSTRY] sources, clean the data, and generate a summary report. Use at least three different language models to handle different parts of the workflow.\n```\nCopy\n\n```\n# Data Pipeline Automation Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sionic-maestro-skills#main-content",
+      "sionic-maestro-skills#overview",
+      "sionic-maestro-skills#setup",
+      "sionic-maestro-skills#examples",
+      "sionic-maestro-skills#tools",
+      "sionic-maestro-skills#mcp",
+      "sionic-maestro-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Maestro Skills implements a Centralized Consult architecture that coordinates multiple language models to solve complex coding workflows. The skill runs a 5-stage process—Analyze, Hypothesize, Implement, Debug, and Improve—where Claude Code orchestrates specialist models (Codex for code generation, Gemini for context, Claude for review) and requires human approval before proceeding through each stage. It includes 40+ tools for comprehensive task handling, capability-aware model selection based on a 45% confidence threshold, and test-driven candidate selection to minimize error amplification. Operations teams and developers benefit from reduced hallucination rates, error verification, and measurable coordination principles drawn from recent research on scaling agent systems.\nDebug authentication bugs with multi-model analysis and human approval\nImplement user session management with staged workflow and testing\nReview payment processing code across multiple specialist models\nFix critical production issues with test-driven verification\n\nThe automated data pipeline for [COMPANY] has been successfully implemented using Maestro Skills. The pipeline orchestrates three language models to handle different stages of the workflow:\n\n- **Model 1**: Data Ingestion\n- **Model 2**: Data Cleaning\n- **Model 3**: Report Generation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sionic-ai/sionic-maestro-skills`",
+    "usage_vi": "```\nCreate a Python script using Maestro Skills to automate a data pipeline for [COMPANY]. The pipeline should ingest [DATA] from [INDUSTRY] sources, clean the data, and generate a summary report. Use at least three different language models to handle different parts of the workflow.\n```\nCopy\n\n```\n# Data Pipeline Automation Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:15:47.321215Z",
+    "http_status": 200,
+    "content_hash": "f626c408710bd279aa69c6f992434d5cf06234e66fa85b49b9f06b65ebbe53da",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sionic-maestro-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sionic-maestro-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Maestro Skills - Multi-LLM Coding Automation",
+  "short_description_vi": "Maestro Skills automates multi-LLM coding workflows for operations teams. It orchestrates multiple language models to produce accurate, harmonious output. Integrates with Python-based CLI tools and workflows."
+}

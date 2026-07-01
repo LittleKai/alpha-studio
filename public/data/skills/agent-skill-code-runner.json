@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skill-code-runner",
+  "slug": "agent-skill-code-runner",
+  "name": "Agent Skill Code Runner",
+  "headline": "Code Runner AI Skill for Efficient Development",
+  "short_description": "The agent-skill-code-runner helps AI agents to execute code snippets across various programming languages seamlessly. Compatible with GitHub Copilot and Claude Code, it enhances development workflows and automates coding tasks efficiently.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "formulahendry",
+  "install_command": "claude install formulahendry/agent-skill-code-runner",
+  "source_repo_url": "https://github.com/formulahendry/agent-skill-code-runner",
+  "works_with": [
+    "GitHub CopilotClaude Code"
+  ],
+  "tags": [
+    "automation",
+    "programming",
+    "code execution",
+    "development tools",
+    "AI agents"
+  ],
+  "sections": {
+    "overview": "The Code Runner Agent Skill enables AI agents to execute code snippets across 35+ programming languages including Python, JavaScript, Java, Go, Rust, C/C++, and many others. It works seamlessly with GitHub Copilot, Claude Code, and Cursor, allowing developers to test and run code directly within their agent interactions. The skill supports both interpreted and compiled languages with configurable timeout handling to prevent infinite loops. It requires appropriate language interpreters or compilers to be installed locally and works cross-platform on Windows, macOS, and Linux. This eliminates the need to switch between tools when validating code during development.\nAutomating code testing\nRunning quick code snippets for debugging\nIntegrating code execution in chatbots\nEnhancing coding tutorials with live examples",
+    "setup": "Terminal\nCopy\n`claude install formulahendry/agent-skill-code-runner`\n`git clone https://github.com/formulahendry/agent-skill-code-runner`",
+    "usage": "```\nExecute the following [CODE_SNIPPET] in [PROGRAMMING_LANGUAGE] and return the output. Handle any errors gracefully and provide a detailed explanation of the results. If the code requires specific inputs, use these values: [INPUT_VALUES]. Code snippet: ```[CODE_SNIPPET]```\n```\nCopy\n\n```\n### Code Execution Result for Python Snippet\n\n**Input Code:**\n```python\nimport pandas as pd\nimport numpy as np\n\n# Create a sample DataFrame\ndata = {\n    'product': ['Widget A', 'Widget B', 'Widget C', 'Widget D'],\n    'sales': [15000, 22000, 7500, 12000],\n    'profit_margin': [0.15, 0.22, 0.08, 0.18]\n}\ndf = pd.DataFrame(data)\n\n# Calculate total profit\nprofit = df['sales'] * df['profit_margin']\ndf['profit'] = profit.round(2)\n\n# Identify top 2 products by profit\ntop_products = df.nlargest(2, 'profit')\nprint(top_products)\n```\n\n**Execution Output:**\n```\n   product  sales  profit_margin  profit\n1  Widget B  22000           0.22  4840.0\n0  Widget A  15000           0.15  2250.0\n```\n\n**Explanation:**\nThe code snippet calculates the profit for each product by multiplying the sales revenue by the profit margin. The results show:\n- **Widget B** generates the highest profit at **$4,840** (22% margin on $22,000 sales).\n- **Widget A** follows with **$2,250** (15% margin on $15,000 sales).\n- Widgets C and D were excluded from the top 2 due to lower profitability ($600 and $2,160 respectively).\n\n**Error Handling:**\nNo errors occurred during execution. All operations completed successfully, and the DataFrame was properly formatted.\n\n**Recommendations:**\n1. Focus marketing efforts on **Widget B** to maximize profitability.\n2. Investigate why **Widget C** has a low profit margin (8%) despite being a core product—potential cost inefficiencies or pricing issues.\n3. Consider bundling **Widget A** with complementary products to increase its sales volume.\n\n**Next Steps:**\n- Save the `top_products` DataFrame to a CSV file for further analysis: `top_products.to_csv('top_profitable_products.csv', index=False)`.\n- Use this data to update the quarterly business review presentation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, Claude Code"
+    ],
+    "related_skills": [
+      "agent-skill-code-runner#main-content",
+      "agent-skill-code-runner#overview",
+      "agent-skill-code-runner#setup",
+      "agent-skill-code-runner#examples",
+      "agent-skill-code-runner#tools",
+      "agent-skill-code-runner#mcp",
+      "agent-skill-code-runner#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The Code Runner Agent Skill enables AI agents to execute code snippets across 35+ programming languages including Python, JavaScript, Java, Go, Rust, C/C++, and many others. It works seamlessly with GitHub Copilot, Claude Code, and Cursor, allowing developers to test and run code directly within their agent interactions. The skill supports both interpreted and compiled languages with configurable timeout handling to prevent infinite loops. It requires appropriate language interpreters or compilers to be installed locally and works cross-platform on Windows, macOS, and Linux. This eliminates the need to switch between tools when validating code during development.\nAutomating code testing\nRunning quick code snippets for debugging\nIntegrating code execution in chatbots\nEnhancing coding tutorials with live examples",
+    "setup_vi": "Terminal\nCopy\n`claude install formulahendry/agent-skill-code-runner`\n`git clone https://github.com/formulahendry/agent-skill-code-runner`",
+    "usage_vi": "```\nExecute the following [CODE_SNIPPET] in [PROGRAMMING_LANGUAGE] and return the output. Handle any errors gracefully and provide a detailed explanation of the results. If the code requires specific inputs, use these values: [INPUT_VALUES]. Code snippet: ```[CODE_SNIPPET]```\n```\nCopy\n\n```\n### Code Execution Result for Python Snippet\n\n**Input Code:**\n```python\nimport pandas as pd\nimport numpy as np\n\n# Create a sample DataFrame\ndata = {\n    'product': ['Widget A', 'Widget B', 'Widget C', 'Widget D'],\n    'sales': [15000, 22000, 7500, 12000],\n    'profit_margin': [0.15, 0.22, 0.08, 0.18]\n}\ndf = pd.DataFrame(data)\n\n# Calculate total profit\nprofit = df['sales'] * df['profit_margin']\ndf['profit'] = profit.round(2)\n\n# Identify top 2 products by profit\ntop_products = df.nlargest(2, 'profit')\nprint(top_products)\n```\n\n**Execution Output:**\n```\n   product  sales  profit_margin  profit\n1  Widget B  22000           0.22  4840.0\n0  Widget A  15000           0.15  2250.0\n```\n\n**Explanation:**\nThe code snippet calculates the profit for each product by multiplying the sales revenue by the profit margin. The results show:\n- **Widget B** generates the highest profit at **$4,840** (22% margin on $22,000 sales).\n- **Widget A** follows with **$2,250** (15% margin on $15,000 sales).\n- Widgets C and D were excluded from the top 2 due to lower profitability ($600 and $2,160 respectively).\n\n**Error Handling:**\nNo errors occurred during execution. All operations completed successfully, and the DataFrame was properly formatted.\n\n**Recommendations:**\n1. Focus marketing efforts on **Widget B** to maximize profitability.\n2. Investigate why **Widget C** has a low profit margin (8%) despite being a core product—potential cost inefficiencies or pricing issues.\n3. Consider bundling **Widget A** with complementary products to increase its sales volume.\n\n**Next Steps:**\n- Save the `top_products` DataFrame to a CSV file for further analysis: `top_products.to_csv('top_profitable_products.csv', index=False)`.\n- Use this data to update the quarterly business review presentation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:13.014902Z",
+    "http_status": 200,
+    "content_hash": "a7b2450443c0440578ff82445ca368ee8ce2a67fc0d31da82afcb3ec60f2c8b0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skill-code-runner.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skill-code-runner.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Code Runner AI Skill for Efficient Development",
+  "short_description_vi": "The agent-skill-code-runner helps AI agents to execute code snippets across various programming languages seamlessly. Compatible with GitHub Copilot and Claude Code, it enhances development workflows and automates coding tasks efficiently."
+}

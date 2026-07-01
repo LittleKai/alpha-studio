@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/daily-meeting-update",
+  "slug": "daily-meeting-update",
+  "name": "Daily Meeting Update",
+  "headline": "daily-meeting-update: Boost Team Productivity",
+  "short_description": "The daily-meeting-update skill automates the process of summarizing daily meetings, providing concise updates for teams. This saves time and enhances productivity by ensuring everyone stays informed without manual note-taking.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "softaworks",
+  "install_command": "git clone https://github.com/softaworks/agent-toolkit.git",
+  "source_repo_url": "https://github.com/softaworks/agent-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The daily-meeting-update skill is designed to streamline the tedious task of summarizing daily meetings. By leveraging AI automation, this skill captures key points and decisions made during meetings, delivering concise updates to team members. This not only enhances communication but also ensures that everyone is on the same page without the need for manual note-taking. One of the primary benefits of this skill is the significant time savings it offers. Teams often spend valuable hours drafting meeting notes and updates. With daily-meeting-update, this process is automated, allowing teams to focus on more strategic tasks. The skill's ability to deliver timely and accurate summaries means that team members can quickly catch up on discussions, leading to improved productivity and decision-making. This skill is particularly useful for developers, product managers, and AI practitioners who frequently participate in meetings. It is ideal for teams that require regular updates on project progress or status meetings where decisions are made. For instance, a product development team can use this skill to ensure that all members are aware of the latest features discussed during daily stand-ups. Implementing the daily-meeting-update skill is straightforward, making it accessible even for those with limited technical expertise. It fits seamlessly into AI-first workflows, enhancing collaboration and communication within teams. By integrating this skill, organizations can transform their meeting culture, ensuring that updates are not only efficient but also effective in driving project success.\nAutomating the summarization of daily stand-up meetings for software development teams.\nGenerating concise updates for project management discussions to keep stakeholders informed.\nCreating automated meeting notes for cross-functional team collaborations to enhance communication.\nProviding quick summaries of meetings in remote work environments to ensure everyone is on the same page.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage": "```\nSummarize the key points from today's [MEETING_NAME] meeting. Include the main decisions made, action items assigned to [TEAM_MEMBERS], and any deadlines mentioned. Format the summary in bullet points and keep it concise. Also, highlight any critical issues that need immediate attention.\n```\nCopy\n\n```\nHere's a concise summary of today's product development meeting:\n\n- **Main Decisions**:\n  - Approved the new feature roadmap for Q3.\n  - Decided to postpone the launch of the mobile app update to address critical bugs.\n- **Action Items**:\n  - [JANE] to coordinate with the design team to finalize the new UI mockups by EOD Friday.\n  - [JOHN] to schedule a follow-up meeting with the QA team to discuss the bug fixes.\n  - [SARAH] to draft a communication plan for the delayed mobile app update.\n- **Critical Issues**:\n  - The backend team identified a potential security vulnerability that needs immediate attention. [DAVID] to prioritize this and provide an update by tomorrow.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "daily-meeting-update#main-content",
+      "daily-meeting-update#overview",
+      "daily-meeting-update#setup",
+      "daily-meeting-update#examples",
+      "daily-meeting-update#tools",
+      "daily-meeting-update#mcp",
+      "daily-meeting-update#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill daily-meeting-update được thiết kế để đơn giản hóa công việc tóm tắt họp hàng ngày vốn tốn nhiều thời gian. Bằng cách tận dụng sức mạnh tự động hóa của AI, skill này ghi nhận các ý chính và quyết định quan trọng trong cuộc họp, rồi gửi các bản cập nhật ngắn gọn tới các thành viên trong nhóm. Điều này không chỉ tăng cường hiệu quả giao tiếp mà còn đảm bảo mọi người đều nắm bắt thông tin thống nhất mà không cần ghi chép thủ công. \n\nMột trong những lợi ích lớn nhất của skill này là khả năng tiết kiệm thời gian đáng kể. Các đội ngũ thường phải mất nhiều giờ đồng hồ để soạn thảo biên bản họp và cập nhật thông tin. Với daily-meeting-update, quy trình này được tự động hóa hoàn toàn, giúp đội ngũ tập trung vào các nhiệm vụ chiến lược hơn. Khả năng cung cấp các bản tóm tắt nhanh chóng và chính xác giúp các thành viên nhanh chóng cập nhật nội dung thảo luận, từ đó cải thiện hiệu suất và hỗ trợ ra quyết định tốt hơn. \n\nSkill này đặc biệt hữu ích cho các developer, product manager và kỹ sư AI – những người thường xuyên tham gia họp hành. Đây là giải pháp lý tưởng cho các đội ngũ cần cập nhật tiến độ dự án liên tục hoặc các buổi họp tình hình (status meeting) đưa ra nhiều quyết định. Ví dụ, một đội phát triển sản phẩm có thể dùng skill này để đảm bảo toàn bộ thành viên đều nắm được các tính năng mới nhất được thảo luận trong các buổi daily stand-up. Việc triển khai skill daily-meeting-update rất đơn giản, ngay cả những người có ít chuyên môn kỹ thuật cũng có thể dễ dàng tiếp cận. Nó tích hợp mượt mà vào các workflow ưu tiên AI (AI-first workflow), giúp tăng cường khả năng cộng tác và giao tiếp nội bộ. Bằng cách tích hợp skill này, các tổ chức có thể thay đổi văn hóa họp hành, đảm bảo việc cập nhật thông tin không chỉ nhanh chóng mà còn hiệu quả trong việc thúc đẩy thành công của dự án.\n\nTự động hóa việc tóm tắt các buổi họp daily stand-up cho các đội ngũ phát triển phần mềm.\nTạo các bản cập nhật ngắn gọn cho các buổi thảo luận quản lý dự án để cập nhật thông tin kịp thời cho các bên liên quan (stakeholders).\nTự động tạo biên bản họp cho các buổi cộng tác liên phòng ban (cross-functional) để tăng cường giao tiếp.\nCung cấp bản tóm tắt nhanh các cuộc họp trong môi trường làm việc từ xa nhằm đảm bảo mọi thành viên đều nắm bắt thông tin đồng bộ.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage_vi": "```\nTóm tắt các ý chính từ cuộc họp [MEETING_NAME] hôm nay. Bao gồm các quyết định quan trọng đã được thông qua, các hành động cần thực hiện (action items) được giao cho [TEAM_MEMBERS], và bất kỳ thời hạn (deadline) nào được đề cập. Định dạng bản tóm tắt dưới dạng danh sách đầu dòng (bullet points) và giữ cho nội dung thật ngắn gọn. Đồng thời, làm nổi bật các vấn đề nghiêm trọng cần được xử lý ngay lập tức.\n```\nSao chép\n\n```\nDưới đây là tóm tắt ngắn gọn về cuộc họp phát triển sản phẩm hôm nay:\n\n- **Các quyết định chính**:\n  - Phê duyệt roadmap tính năng mới cho Quý 3.\n  - Quyết định hoãn ra mắt bản cập nhật ứng dụng di động để xử lý các lỗi nghiêm trọng.\n- **Hành động cần thực hiện (Action Items)**:\n  - [JANE] phối hợp với đội ngũ thiết kế để hoàn thiện mockup giao diện người dùng (UI mockup) mới trước cuối ngày Thứ Sáu.\n  - [JOHN] lên lịch họp tiếp theo với đội QA để thảo luận về việc sửa lỗi.\n  - [SARAH] soạn thảo kế hoạch truyền thông cho việc hoãn cập nhật ứng dụng di động.\n- **Vấn đề nghiêm trọng**:\n  - Đội ngũ backend đã phát hiện một lỗ hổng bảo mật tiềm ẩn cần được xử lý ngay lập tức. [DAVID] ưu tiên xử lý vấn đề này và cập nhật tình hình trước ngày mai.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:29:22.659000Z",
+    "http_status": 200,
+    "content_hash": "ea15807a79e6227e7ad52e27e317e5c4088cbf71c0fe58d85a6e8aa257fbfa38",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\daily-meeting-update.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\daily-meeting-update.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "daily-meeting-update: Nâng cao hiệu suất làm việc nhóm",
+  "short_description_vi": "Skill daily-meeting-update tự động hóa quy trình tóm tắt các cuộc họp hàng ngày, cung cấp các bản cập nhật ngắn gọn cho đội ngũ. Việc này giúp tiết kiệm thời gian và nâng cao hiệu suất làm việc nhờ đảm bảo mọi người luôn nắm bắt được thông tin mà không cần ghi chép thủ công."
+}

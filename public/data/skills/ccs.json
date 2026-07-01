@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccs",
+  "slug": "ccs",
+  "name": "browser-use",
+  "headline": "ccs multi-account switcher tool",
+  "short_description": "CCS enables switching between Claude, Gemini, Copilot, and 300+ models via CLI, ProxyAPI, or OAuth. It benefits developers and operations teams by providing a visual dashboard, remote proxy support, and WebSearch fallback. The tool connects to AI models and workflows, streamlining multi-account management and reducing setup time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "kaitranntt",
+  "install_command": "git clone https://github.com/kaitranntt/ccs.git",
+  "source_repo_url": "https://github.com/kaitranntt/ccs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "gemini",
+    "cliproxyapi",
+    "multi-account",
+    "ai-gateway",
+    "cli-tool",
+    "github-copilot",
+    "developer-productivity",
+    "oauth",
+    "profile-switching",
+    "nodejs",
+    "claude",
+    "typescript",
+    "openrouter",
+    "react-dashboard",
+    "anthropic-api",
+    "websearch"
+  ],
+  "sections": {
+    "overview": "CCS is a unified interface for accessing 300+ AI models including Claude, Gemini, Copilot, and OpenRouter through CLI, ProxyAPI, or OAuth authentication. It provides developers and operations teams with a visual dashboard for managing multiple AI accounts and model selections without repetitive setup. The tool supports remote proxy deployment, reducing operational overhead when scaling AI integrations across teams. CCS streamlines workflows by allowing quick model switching while maintaining consistent API patterns, making it ideal for teams that need flexibility across different AI providers.\nRun simultaneous sessions for work and personal Claude accounts to maintain separation.\nQuickly switch between different AI models like Gemini and Copilot for diverse project needs.\nUtilize the dashboard to monitor the health and status of all connected AI profiles in real-time.\nImplement parallel workflows by executing tasks across multiple terminals with different AI providers.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kaitranntt/ccs`",
+    "usage": "```\nUse the CCS tool to switch to [MODEL_NAME] for [TASK_DESCRIPTION]. If the model isn't available, fall back to [FALLBACK_MODEL] with WebSearch enabled. Execute the task and provide the output in [FORMAT]. Example: 'Use CCS to switch to gemini-1.5-pro for analyzing the customer feedback dataset. Fall back to claude-3-7-sonnet if unavailable, with WebSearch enabled. Provide the output as a structured CSV with sentiment scores.'\n```\nCopy\n\n```\n```\nModel: gemini-1.5-pro (switched via CCS CLI)\nTask: Analyze customer feedback dataset from Q2 2024 (2,458 entries) to identify top pain points and sentiment trends.\n\nResults:\n1. **Top Pain Points** (by frequency):\n   - Shipping delays (38% of negative feedback)\n   - Product quality issues (22%)\n   - Pricing concerns (15%)\n\n2. **Sentiment Distribution**:\n   - Positive: 42% (↑ 8% from Q1)\n   - Neutral: 31%\n   - Negative: 27% (↓ 5% from Q1)\n\n3. **Key Insights**:\n   - Customers mentioning \"shipping\" in negative feedback are 3x more likely to churn.\n   - Product quality complaints correlate with lower NPS scores (-12 points).\n\nRecommendations:\n- Prioritize shipping reliability improvements (e.g., partner with 3PL for faster delivery).\n- Launch a quality assurance campaign targeting the top 5 reported defects.\n- Address pricing concerns with a targeted discount for high-value customers.\n```\n\nFallback Status: WebSearch enabled for gemini-1.5-pro. No fallback triggered.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccs#main-content",
+      "ccs#overview",
+      "ccs#setup",
+      "ccs#examples",
+      "ccs#tools",
+      "ccs#mcp",
+      "ccs#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCS is a unified interface for accessing 300+ AI models including Claude, Gemini, Copilot, and OpenRouter through CLI, ProxyAPI, or OAuth authentication. It provides developers and operations teams with a visual dashboard for managing multiple AI accounts and model selections without repetitive setup. The tool supports remote proxy deployment, reducing operational overhead when scaling AI integrations across teams. CCS streamlines workflows by allowing quick model switching while maintaining consistent API patterns, making it ideal for teams that need flexibility across different AI providers.\nRun simultaneous sessions for work and personal Claude accounts to maintain separation.\nQuickly switch between different AI models like Gemini and Copilot for diverse project needs.\nUtilize the dashboard to monitor the health and status of all connected AI profiles in real-time.\nImplement parallel workflows by executing tasks across multiple terminals with different AI providers.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kaitranntt/ccs`",
+    "usage_vi": "```\nUse the CCS tool to switch to [MODEL_NAME] for [TASK_DESCRIPTION]. If the model isn't available, fall back to [FALLBACK_MODEL] with WebSearch enabled. Execute the task and provide the output in [FORMAT]. Example: 'Use CCS to switch to gemini-1.5-pro for analyzing the customer feedback dataset. Fall back to claude-3-7-sonnet if unavailable, with WebSearch enabled. Provide the output as a structured CSV with sentiment scores.'\n```\nCopy\n\n```\n```\nModel: gemini-1.5-pro (switched via CCS CLI)\nTask: Analyze customer feedback dataset from Q2 2024 (2,458 entries) to identify top pain points and sentiment trends.\n\nResults:\n1. **Top Pain Points** (by frequency):\n   - Shipping delays (38% of negative feedback)\n   - Product quality issues (22%)\n   - Pricing concerns (15%)\n\n2. **Sentiment Distribution**:\n   - Positive: 42% (↑ 8% from Q1)\n   - Neutral: 31%\n   - Negative: 27% (↓ 5% from Q1)\n\n3. **Key Insights**:\n   - Customers mentioning \"shipping\" in negative feedback are 3x more likely to churn.\n   - Product quality complaints correlate with lower NPS scores (-12 points).\n\nRecommendations:\n- Prioritize shipping reliability improvements (e.g., partner with 3PL for faster delivery).\n- Launch a quality assurance campaign targeting the top 5 reported defects.\n- Address pricing concerns with a targeted discount for high-value customers.\n```\n\nFallback Status: WebSearch enabled for gemini-1.5-pro. No fallback triggered.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:37:07.804918Z",
+    "http_status": 200,
+    "content_hash": "ba0589fdf3070d314045d897d17e249a788ee303df88d87678e4303261a73ca5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccs.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccs multi-account switcher tool",
+  "short_description_vi": "CCS enables switching between Claude, Gemini, Copilot, and 300+ models via CLI, ProxyAPI, or OAuth. It benefits developers and operations teams by providing a visual dashboard, remote proxy support, and WebSearch fallback. The tool connects to AI models and workflows, streamlining multi-account management and reducing setup time."
+}

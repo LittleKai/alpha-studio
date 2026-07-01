@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rules",
+  "slug": "rules",
+  "name": "rules",
+  "headline": "Project CodeGuard: AI Security Framework",
+  "short_description": "Project CodeGuard is a strong AI model-agnostic security framework that integrates secure coding practices into AI workflows. It provides essential security rules, coding agent translators, and compliance validators to enhance AI security in development processes.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "project-codeguard",
+  "install_command": "claude install project-codeguard/rules",
+  "source_repo_url": "https://github.com/project-codeguard/rules",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "automation",
+    "secure-coding",
+    "cybersecurity",
+    "ai-security",
+    "coding-agents"
+  ],
+  "sections": {
+    "overview": "Project CodeGuard is a model-agnostic security framework designed to integrate secure coding practices into AI workflows. The project provides security rules, coding agent translators, and compliance validators to enhance security in AI-assisted development processes. Originally developed as a standalone tool, Project CodeGuard has been donated to and is now maintained by the Coalition for Secure AI (CoSAI). Development teams and AI agents benefit from its structured approach to embedding security requirements into their development pipelines.\nIntegrate automated security checks during AI code generation to prevent vulnerabilities.\nValidate compliance of AI-generated code against established security rules.\nTranslate security rules for compatibility with various coding agents and environments.\nEmbed secure coding practices into AI development workflows for enhanced safety.",
+    "setup": "Terminal\nCopy\n`claude install project-codeguard/rules`\n`git clone https://github.com/project-codeguard/rules`",
+    "usage": "```\nIntegrate Project CodeGuard into our AI development workflow for [PROJECT_NAME]. Ensure all code adheres to [SPECIFIC_SECURITY_RULES]. Provide a compliance validation report for the following code: [CODE_SNIPPET]. Suggest improvements to enhance security and compliance.\n```\nCopy\n\n```\nProject CodeGuard Integration Report\n\nProject Name: SecureAI_2023\nSecurity Rules Applied: OWASP Top 10, CWE Top 25, NIST SP 800-53\nCode Snippet Analyzed: User authentication module\n\nCompliance Validation Report:\n1. SQL Injection: Passed\n2. Cross-Site Scripting (XSS): Passed\n3. Insecure Direct Object References: Passed\n4. Sensitive Data Exposure: Passed\n5. Security Misconfiguration: Passed\n6. Broken Authentication: Passed\n7. Cross-Site Request Forgery (CSRF): Passed\n8. Using Components with Known Vulnerabilities: Passed\n9. Insufficient Logging & Monitoring: Passed\n10. Broken Access Control: Passed\n\nSuggested Improvements:\n1. Implement rate limiting for authentication attempts to prevent brute force attacks.\n2. Add multi-factor authentication (MFA) for enhanced security.\n3. Regularly update dependencies to mitigate vulnerabilities.\n4. Implement a Web Application Firewall (WAF) to filter malicious traffic.\n5. Conduct regular security audits and penetration testing.\n\nConclusion: The code snippet adheres to the specified security rules and is compliant with industry standards. The suggested improvements will further enhance the security posture of the application.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "rules#main-content",
+      "rules#overview",
+      "rules#setup",
+      "rules#examples",
+      "rules#tools",
+      "rules#mcp",
+      "rules#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Project CodeGuard là một framework bảo mật không phụ thuộc vào mô hình AI (model-agnostic), được thiết kế để tích hợp các thực tiễn lập trình an toàn vào AI workflow. Dự án cung cấp các quy tắc bảo mật, bộ dịch cho coding agent và bộ xác thực tuân thủ (compliance validator) nhằm nâng cao tính bảo mật trong quy trình phát triển có sự hỗ trợ của AI. Ban đầu được phát triển dưới dạng một công cụ độc lập, Project CodeGuard hiện đã được chuyển giao và duy trì bởi Liên minh vì AI An toàn (CoSAI). Các đội ngũ phát triển và AI agent sẽ được hưởng lợi từ phương pháp tiếp cận có cấu trúc này để nhúng các yêu cầu bảo mật vào pipeline phát triển của họ.\n\nTích hợp kiểm tra bảo mật tự động trong quá trình AI tạo code để ngăn ngừa các lỗ hổng.\nXác thực mức độ tuân thủ của code do AI tạo ra so với các quy tắc bảo mật đã thiết lập.\nDịch các quy tắc bảo mật để tương thích với nhiều coding agent và môi trường khác nhau.\nNhúng các thực tiễn lập trình an toàn vào AI workflow phát triển để tăng cường tính an toàn.",
+    "setup_vi": "Terminal\nSao chép\n`claude install project-codeguard/rules`\n`git clone https://github.com/project-codeguard/rules`",
+    "usage_vi": "```\nTích hợp Project CodeGuard vào AI workflow phát triển của chúng tôi cho [PROJECT_NAME]. Đảm bảo toàn bộ mã nguồn tuân thủ [SPECIFIC_SECURITY_RULES]. Cung cấp báo cáo xác thực tuân thủ cho đoạn code sau: [CODE_SNIPPET]. Gợi ý các cải tiến để tăng cường bảo mật và mức độ tuân thủ.\n```\nSao chép\n\n```\nBáo cáo tích hợp Project CodeGuard\n\nTên dự án: SecureAI_2023\nQuy tắc bảo mật được áp dụng: OWASP Top 10, CWE Top 25, NIST SP 800-53\nĐoạn code được phân tích: Module xác thực người dùng\n\nBáo cáo xác thực tuân thủ:\n1. SQL Injection: Đạt\n2. Cross-Site Scripting (XSS): Đạt\n3. Insecure Direct Object References: Đạt\n4. Sensitive Data Exposure: Đạt\n5. Security Misconfiguration: Đạt\n6. Broken Authentication: Đạt\n7. Cross-Site Request Forgery (CSRF): Đạt\n8. Using Components with Known Vulnerabilities: Đạt\n9. Insufficient Logging & Monitoring: Đạt\n10. Broken Access Control: Đạt\n\nĐề xuất cải tiến:\n1. Triển khai rate limiting cho các yêu cầu xác thực để ngăn chặn tấn công brute force.\n2. Bổ sung xác thực đa yếu tố (MFA) để tăng cường bảo mật.\n3. Cập nhật các dependency định kỳ để giảm thiểu lỗ hổng bảo mật.\n4. Triển khai Web Application Firewall (WAF) để lọc lưu lượng truy cập độc hại.\n5. Thực hiện đánh giá bảo mật và kiểm thử xâm nhập (penetration testing) thường xuyên.\n\nKết luận: Đoạn code tuân thủ các quy tắc bảo mật được chỉ định và phù hợp với tiêu chuẩn ngành. Các đề xuất cải tiến sẽ giúp nâng cao hơn nữa trạng thái bảo mật của ứng dụng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:23:11.904629Z",
+    "http_status": 200,
+    "content_hash": "09a2896b694bd5b4241884fd5f7431c6ba7871a443ca6c2bedda745988cb2a48",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rules.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rules.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Project CodeGuard: Framework bảo mật AI",
+  "short_description_vi": "Project CodeGuard là một framework bảo mật mạnh mẽ, không phụ thuộc vào mô hình AI (model-agnostic), giúp tích hợp các thực tiễn lập trình an toàn vào AI workflow. Dự án cung cấp các quy tắc bảo mật thiết yếu, bộ dịch cho coding agent và bộ xác thực tuân thủ (compliance validator) nhằm tăng cường bảo mật AI trong quy trình phát triển."
+}

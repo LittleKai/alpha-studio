@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codexbar",
+  "slug": "codexbar",
+  "name": "browser-use",
+  "headline": "CodexBar - Track AI Token Usage",
+  "short_description": "CodexBar is a macOS menu bar app that displays usage stats for OpenAI Codex and Claude Code. It helps users monitor their token limits and reset times without logging in. Ideal for developers and operations teams using these AI tools.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "steipete",
+  "install_command": "git clone https://github.com/steipete/CodexBar.git",
+  "source_repo_url": "https://github.com/steipete/CodexBar",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codex",
+    "ai",
+    "swift"
+  ],
+  "sections": {
+    "overview": "CodexBar is a macOS menu bar utility designed for developers and operations teams using OpenAI Codex and Claude Code. It provides real-time visibility into token usage, quota limits, and reset schedules directly from the menu bar, eliminating the need to log in to external dashboards. The app tracks multiple AI provider integrations including Vertex AI, offering token cost tracking alongside usage metrics. This lightweight monitoring tool streamlines workflow management for teams managing AI service credits and usage across different providers.\nMonitor your OpenAI Codex and Claude Code usage limits in real-time.\nQuickly check when your AI service quotas reset without logging into multiple dashboards.\nTrack session and weekly usage statistics for various AI providers from a single interface.\nEnable or disable specific AI providers based on your current project needs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/steipete/CodexBar`",
+    "usage": "```\nCheck my current token usage for [AI_TOOL: Codex/ Claude] in CodexBar. How many tokens do I have left until the next reset? What is the exact reset time? Provide a countdown timer in hours and minutes. Format the response as: 'Tokens remaining: [X]. Reset in: [HH:MM].'\n```\nCopy\n\n```\nTokens remaining: 1,247,892. Reset in: 14:32.\n\nYour current usage for Claude Code shows you’ve consumed 752,108 tokens out of your monthly quota of 2,000,000. The reset occurs on the 1st of each month at 00:00 UTC. Based on your recent activity, you’re averaging 15,000 tokens per day, so you’re on track to hit the limit around the 15th. If you’re planning a heavy coding sprint this week, consider batching requests or using a local model for smaller tasks to avoid hitting the ceiling early.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codexbar#main-content",
+      "codexbar#overview",
+      "codexbar#setup",
+      "codexbar#examples",
+      "codexbar#tools",
+      "codexbar#mcp",
+      "codexbar#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodexBar is a macOS menu bar utility designed for developers and operations teams using OpenAI Codex and Claude Code. It provides real-time visibility into token usage, quota limits, and reset schedules directly from the menu bar, eliminating the need to log in to external dashboards. The app tracks multiple AI provider integrations including Vertex AI, offering token cost tracking alongside usage metrics. This lightweight monitoring tool streamlines workflow management for teams managing AI service credits and usage across different providers.\nMonitor your OpenAI Codex and Claude Code usage limits in real-time.\nQuickly check when your AI service quotas reset without logging into multiple dashboards.\nTrack session and weekly usage statistics for various AI providers from a single interface.\nEnable or disable specific AI providers based on your current project needs.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/steipete/CodexBar`",
+    "usage_vi": "```\nCheck my current token usage for [AI_TOOL: Codex/ Claude] in CodexBar. How many tokens do I have left until the next reset? What is the exact reset time? Provide a countdown timer in hours and minutes. Format the response as: 'Tokens remaining: [X]. Reset in: [HH:MM].'\n```\nCopy\n\n```\nTokens remaining: 1,247,892. Reset in: 14:32.\n\nYour current usage for Claude Code shows you’ve consumed 752,108 tokens out of your monthly quota of 2,000,000. The reset occurs on the 1st of each month at 00:00 UTC. Based on your recent activity, you’re averaging 15,000 tokens per day, so you’re on track to hit the limit around the 15th. If you’re planning a heavy coding sprint this week, consider batching requests or using a local model for smaller tasks to avoid hitting the ceiling early.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:19:01.292133Z",
+    "http_status": 200,
+    "content_hash": "8437bb9737356c84f37812c1d5fa8424044886867a08cd6954607503cf842cc0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codexbar.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codexbar.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CodexBar - Track AI Token Usage",
+  "short_description_vi": "CodexBar is a macOS menu bar app that displays usage stats for OpenAI Codex and Claude Code. It helps users monitor their token limits and reset times without logging in. Ideal for developers and operations teams using these AI tools."
+}

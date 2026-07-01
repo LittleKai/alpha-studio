@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/knock-cli-skill",
+  "slug": "knock-cli-skill",
+  "name": "electron-builder",
+  "headline": "Knock CLI: Manage Notification Workflows",
+  "short_description": "The Knock CLI skill offers in-depth instructions for using the Knock CLI to manage workflows, templates, and notifications. It is designed for developers looking to streamline their notification systems and workflows.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "knocklabs",
+  "install_command": "git clone https://github.com/knocklabs/skills",
+  "source_repo_url": "https://github.com/knocklabs/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "knock",
+    "development-tools"
+  ],
+  "sections": {
+    "overview": "The Knock CLI skill provides comprehensive guidance for developers managing notification workflows, email templates, guides, and partials in Knock projects. It covers installation, authentication, directory structure, and hands-on CLI commands like pull, push, validate, and run. The skill helps developers streamline notification system setup, modify workflow templates using visual blocks or HTML, create reusable email components, and manage message types and schemas. Use this skill when initializing new Knock projects, syncing resources between environments, or organizing notification infrastructure as code.\nInstalling and authenticating with the Knock CLI\nUnderstanding the directory structure of Knock\nManaging notification resources with CLI commands\nCreating and managing workflow templates",
+    "setup": "Terminal\nCopy\n`npx skills add https://github.com/knocklabs/skills --skill knock-cli`\n`git clone https://github.com/knocklabs/skills`",
+    "usage": "```\nProvide step-by-step instructions for using the Knock CLI to [ACTION, e.g., 'deploy a notification workflow for [COMPANY] in the [INDUSTRY] sector using the provided [DATA].']. Include commands, best practices, and troubleshooting tips. Assume I have basic familiarity with the Knock API but need guidance on CLI-specific workflows.\n```\nCopy\n\n```\n### Deploying a Notification Workflow with Knock CLI\n\n**Step 1: Authenticate**\nRun the following command to log in to your Knock account:\n```bash\nknock auth login\n```\nFollow the prompts to authenticate. Ensure your terminal has access to your Knock API key.\n\n**Step 2: Initialize a Workflow**\nCreate a new workflow file named `welcome_email.json`:\n```bash\nknock workflows create --name \"Welcome Email\" --file ./welcome_email.json\n```\n\n**Step 3: Validate the Workflow**\nCheck for errors before deployment:\n```bash\nknock workflows validate --file ./welcome_email.json\n```\n\n**Step 4: Deploy the Workflow**\nPush the workflow to your Knock environment:\n```bash\nknock workflows deploy --file ./welcome_email.json --env production\n```\n\n**Step 5: Monitor Deployment**\nTrack the status of your deployment:\n```bash\nknock workflows status --id \"wf_123456\"\n```\n\n**Troubleshooting**\n- If you encounter authentication errors, regenerate your API key in the Knock dashboard.\n- For workflow validation failures, check the JSON schema against the [Knock documentation](https://docs.knock.app).\n\n**Next Steps**\n- Test the workflow using the Knock dashboard or CLI:\n  ```bash\n  knock workflows test --id \"wf_123456\" --recipient \"user_789\"\n  ```\n- Monitor notification delivery in the Knock dashboard under the \"Activity\" tab.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "knock-cli-skill#main-content",
+      "knock-cli-skill#overview",
+      "knock-cli-skill#setup",
+      "knock-cli-skill#examples",
+      "knock-cli-skill#related",
+      "lynx-devtool",
+      "goframe-v2",
+      "electron-builder"
+    ],
+    "overview_vi": "The Knock CLI skill provides comprehensive guidance for developers managing notification workflows, email templates, guides, and partials in Knock projects. It covers installation, authentication, directory structure, and hands-on CLI commands like pull, push, validate, and run. The skill helps developers streamline notification system setup, modify workflow templates using visual blocks or HTML, create reusable email components, and manage message types and schemas. Use this skill when initializing new Knock projects, syncing resources between environments, or organizing notification infrastructure as code.\nInstalling and authenticating with the Knock CLI\nUnderstanding the directory structure of Knock\nManaging notification resources with CLI commands\nCreating and managing workflow templates",
+    "setup_vi": "Terminal\nCopy\n`npx skills add https://github.com/knocklabs/skills --skill knock-cli`\n`git clone https://github.com/knocklabs/skills`",
+    "usage_vi": "```\nProvide step-by-step instructions for using the Knock CLI to [ACTION, e.g., 'deploy a notification workflow for [COMPANY] in the [INDUSTRY] sector using the provided [DATA].']. Include commands, best practices, and troubleshooting tips. Assume I have basic familiarity with the Knock API but need guidance on CLI-specific workflows.\n```\nCopy\n\n```\n### Deploying a Notification Workflow with Knock CLI\n\n**Step 1: Authenticate**\nRun the following command to log in to your Knock account:\n```bash\nknock auth login\n```\nFollow the prompts to authenticate. Ensure your terminal has access to your Knock API key.\n\n**Step 2: Initialize a Workflow**\nCreate a new workflow file named `welcome_email.json`:\n```bash\nknock workflows create --name \"Welcome Email\" --file ./welcome_email.json\n```\n\n**Step 3: Validate the Workflow**\nCheck for errors before deployment:\n```bash\nknock workflows validate --file ./welcome_email.json\n```\n\n**Step 4: Deploy the Workflow**\nPush the workflow to your Knock environment:\n```bash\nknock workflows deploy --file ./welcome_email.json --env production\n```\n\n**Step 5: Monitor Deployment**\nTrack the status of your deployment:\n```bash\nknock workflows status --id \"wf_123456\"\n```\n\n**Troubleshooting**\n- If you encounter authentication errors, regenerate your API key in the Knock dashboard.\n- For workflow validation failures, check the JSON schema against the [Knock documentation](https://docs.knock.app).\n\n**Next Steps**\n- Test the workflow using the Knock dashboard or CLI:\n  ```bash\n  knock workflows test --id \"wf_123456\" --recipient \"user_789\"\n  ```\n- Monitor notification delivery in the Knock dashboard under the \"Activity\" tab.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:43:13.826968Z",
+    "http_status": 200,
+    "content_hash": "9938ed617e14b8c498b4c87dac455edd926990f019de8119728b841c79a65580",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\knock-cli-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\knock-cli-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Knock CLI: Manage Notification Workflows",
+  "short_description_vi": "The Knock CLI skill offers in-depth instructions for using the Knock CLI to manage workflows, templates, and notifications. It is designed for developers looking to streamline their notification systems and workflows."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autotab-starter",
+  "slug": "autotab-starter",
+  "name": "slack-gif-creator",
+  "headline": "Autotab-Starter: Automate Browser Tasks with AI",
+  "short_description": "Autotab-starter enables users to create browser agents that automate real-world tasks seamlessly. Ideal for enhancing productivity and efficiency, this Python-based tool simplifies automation in various applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "Planetary-Computers",
+  "install_command": "claude install Planetary-Computers/autotab-starter",
+  "source_repo_url": "https://github.com/Planetary-Computers/autotab-starter",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "task management",
+    "AI agents",
+    "automation",
+    "Python",
+    "browser"
+  ],
+  "sections": {
+    "overview": "Autotab-starter is a Python-based framework for creating browser agents that automate real-world tasks across web applications. Built by Planetary Computers, it provides developers with tools to build automation scripts that interact with web interfaces programmatically. The framework includes support for credential management, browser mirroring capabilities, and configurable parameters through YAML configuration files. It's designed for developers who need to automate repetitive web-based workflows while maintaining control over browser interactions. The tool simplifies the creation of reliable automation without requiring manual task execution.\nAutomate data entry in web forms to save time and reduce errors.\nScrape data from websites for analysis or reporting purposes.\nSchedule and manage online tasks to enhance personal productivity.\nPerform repetitive browser actions, such as clicking buttons or filling forms.",
+    "setup": "Terminal\nCopy\n`claude install Planetary-Computers/autotab-starter`\n`git clone https://github.com/Planetary-Computers/autotab-starter`",
+    "usage": "```\nCreate a browser agent using autotab-starter to automate [SPECIFIC_TASK] in [TARGET_APPLICATION]. The agent should perform the following steps: [LIST_STEPS]. Configure it to run on a schedule or trigger based on [CONDITION]. Include error handling for [COMMON_FAILURES].\n```\nCopy\n\n```\n```python\nfrom autotab_starter import BrowserAgent\n\n# Define the automation task\nagent = BrowserAgent(\n    name=\"SaaS_License_Tracker\",\n    description=\"Automates monthly SaaS license renewal tracking in Productiv\"\n)\n\n# Configure the automation steps\nagent.add_step(\n    action=\"navigate\",\n    target=\"https://app.productiv.com/licenses\",\n    wait_for=\"table.loaded\"\n)\nagent.add_step(\n    action=\"extract\",\n    selector=\".license-table tbody tr\",\n    output=\"licenses\"\n)\nagent.add_step(\n    action=\"filter\",\n    condition=\"expiry_date <= today + 30 days\",\n    output=\"upcoming_renewals\"\n)\nagent.add_step(\n    action=\"email\",\n    recipients=[\"finance@company.com\"],\n    subject=\"Upcoming SaaS Renewals\",\n    body=\"The following licenses expire within 30 days:\\n{upcoming_renewals}\"\n)\n\n# Run the agent\nagent.run()\n\n# Expected output:\n# [\n#   {\"name\": \"Slack\", \"expiry_date\": \"2023-11-15\", \"cost\": \"$120/month\"},\n#   {\"name\": \"Notion\", \"expiry_date\": \"2023-11-20\", \"cost\": \"$8/month\"}\n# ]\n# Email sent to finance@company.com with renewal details.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "autotab-starter#main-content",
+      "autotab-starter#overview",
+      "autotab-starter#setup",
+      "autotab-starter#examples",
+      "autotab-starter#tools",
+      "autotab-starter#mcp",
+      "autotab-starter#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Autotab-starter is a Python-based framework for creating browser agents that automate real-world tasks across web applications. Built by Planetary Computers, it provides developers with tools to build automation scripts that interact with web interfaces programmatically. The framework includes support for credential management, browser mirroring capabilities, and configurable parameters through YAML configuration files. It's designed for developers who need to automate repetitive web-based workflows while maintaining control over browser interactions. The tool simplifies the creation of reliable automation without requiring manual task execution.\nAutomate data entry in web forms to save time and reduce errors.\nScrape data from websites for analysis or reporting purposes.\nSchedule and manage online tasks to enhance personal productivity.\nPerform repetitive browser actions, such as clicking buttons or filling forms.",
+    "setup_vi": "Terminal\nCopy\n`claude install Planetary-Computers/autotab-starter`\n`git clone https://github.com/Planetary-Computers/autotab-starter`",
+    "usage_vi": "```\nCreate a browser agent using autotab-starter to automate [SPECIFIC_TASK] in [TARGET_APPLICATION]. The agent should perform the following steps: [LIST_STEPS]. Configure it to run on a schedule or trigger based on [CONDITION]. Include error handling for [COMMON_FAILURES].\n```\nCopy\n\n```\n```python\nfrom autotab_starter import BrowserAgent\n\n# Define the automation task\nagent = BrowserAgent(\n    name=\"SaaS_License_Tracker\",\n    description=\"Automates monthly SaaS license renewal tracking in Productiv\"\n)\n\n# Configure the automation steps\nagent.add_step(\n    action=\"navigate\",\n    target=\"https://app.productiv.com/licenses\",\n    wait_for=\"table.loaded\"\n)\nagent.add_step(\n    action=\"extract\",\n    selector=\".license-table tbody tr\",\n    output=\"licenses\"\n)\nagent.add_step(\n    action=\"filter\",\n    condition=\"expiry_date <= today + 30 days\",\n    output=\"upcoming_renewals\"\n)\nagent.add_step(\n    action=\"email\",\n    recipients=[\"finance@company.com\"],\n    subject=\"Upcoming SaaS Renewals\",\n    body=\"The following licenses expire within 30 days:\\n{upcoming_renewals}\"\n)\n\n# Run the agent\nagent.run()\n\n# Expected output:\n# [\n#   {\"name\": \"Slack\", \"expiry_date\": \"2023-11-15\", \"cost\": \"$120/month\"},\n#   {\"name\": \"Notion\", \"expiry_date\": \"2023-11-20\", \"cost\": \"$8/month\"}\n# ]\n# Email sent to finance@company.com with renewal details.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:22:42.593349Z",
+    "http_status": 200,
+    "content_hash": "ece425755bfc1b696614f4debbf2e0ef287c10be2845609314e0f6c2684ab8c2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autotab-starter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autotab-starter.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Autotab-Starter: Automate Browser Tasks with AI",
+  "short_description_vi": "Autotab-starter enables users to create browser agents that automate real-world tasks seamlessly. Ideal for enhancing productivity and efficiency, this Python-based tool simplifies automation in various applications."
+}

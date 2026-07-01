@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hydra",
+  "slug": "hydra",
+  "name": "Hydra",
+  "headline": "Hydra - Parallel AI Coding Sessions",
+  "short_description": "Hydra is a CLI tool that manages parallel AI coding sessions using tmux and git worktree. It enables developers to work on multiple code branches simultaneously, improving productivity. Integrates with AI coding assistants like ChatGPT, Claude, and Cursor.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Someblueman",
+  "install_command": "git clone https://github.com/Someblueman/hydra.git",
+  "source_repo_url": "https://github.com/Someblueman/hydra",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "chatgpt",
+    "openai",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Hydra is a tmux and git worktree orchestrator that creates isolated parallel coding environments for each branch, one session and worktree per head. It provides fast branch switching, pre-configured layouts (default, dev, full), and optional integration with AI coding assistants like Claude, ChatGPT, and Aider. Developers can spawn multiple sessions with specific AI tools, manage them through a dashboard or interactive TUI, and broadcast commands across all sessions. The tool persists AI tool selection per-head and supports YAML configuration for custom window/pane layouts and startup commands, making it ideal for teams managing complex multi-branch workflows with AI-assisted development.\nManaging multiple feature branches simultaneously with isolated tmux sessions\nRunning parallel AI coding sessions with different AI agents per branch\nSwitching between branches and their development environments instantly\nBroadcasting commands and tests across multiple active sessions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Someblueman/hydra`",
+    "usage": "```\nUse Hydra to create a parallel coding environment for [PROJECT_NAME]. Set up [NUMBER] tmux panes, each with a separate git worktree branch for [BRANCH_1], [BRANCH_2], and [BRANCH_3]. Configure each pane to connect to [AI_ASSISTANT_NAME] (e.g., ChatGPT, Claude, or Cursor) for AI-powered code assistance. Ensure all worktrees are synced with the latest changes from [REMOTE_REPO_URL].\n```\nCopy\n\n```\n```\nHydra parallel coding session initialized for 'E-Commerce API' project.\n\nSetup Summary:\n- Created 3 tmux panes in a single window (horizontal split)\n- Worktrees created for branches:\n  1. feature/payment-gateway (pane 0)\n  2. bugfix/cart-validation (pane 1)\n  3. refactor/auth-service (pane 2)\n- Each pane connected to Claude Code for AI assistance\n- All worktrees synced with main branch (commit: a1b2c3d)\n\nCurrent Status:\nPane 0 (feature/payment-gateway):\n- Working on Stripe integration (file: src/payments/stripe.js)\n- AI suggestion: \"Consider adding webhook validation for security\"\n\nPane 1 (bugfix/cart-validation):\n- Fixing quantity overflow bug in cart service\n- AI suggestion: \"Add input sanitization for quantity field\"\n\nPane 2 (refactor/auth-service):\n- Restructuring JWT validation logic\n- AI suggestion: \"Consider using middleware for auth checks\"\n\nNext Steps:\n1. Run 'hydra sync' to pull latest changes from remote\n2. Use 'hydra commit -m \"[message]\"' to commit changes in current pane\n3. Switch between panes with Ctrl+b arrow keys\n4. Close session with 'hydra kill' when done\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hydra#main-content",
+      "hydra#overview",
+      "hydra#setup",
+      "hydra#examples",
+      "hydra#tools",
+      "hydra#mcp",
+      "hydra#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Hydra là một công cụ điều phối (orchestrator) tmux và git worktree giúp tạo các môi trường lập trình song song và cô lập cho từng branch, với mỗi head là một session và worktree riêng biệt. Nó cung cấp khả năng chuyển đổi branch nhanh chóng, các layout được cấu hình sẵn (default, dev, full) và tích hợp tùy chọn với các trợ lý lập trình AI như Claude, ChatGPT và Aider. Các nhà phát triển có thể khởi tạo nhiều session với các công cụ AI cụ thể, quản lý chúng thông qua dashboard hoặc giao diện TUI tương tác, và truyền phát (broadcast) lệnh đến tất cả các session cùng lúc. Công cụ này lưu lại lựa chọn công cụ AI cho từng head và hỗ trợ cấu hình YAML cho các layout window/pane tùy chỉnh cùng lệnh khởi động, rất lý tưởng cho các đội ngũ quản lý quy trình làm việc đa nhánh phức tạp với sự hỗ trợ của AI.\nQuản lý đồng thời nhiều feature branch với các tmux session cô lập\nChạy các phiên lập trình AI song song với các AI agent khác nhau trên mỗi branch\nChuyển đổi tức thì giữa các branch và môi trường phát triển của chúng\nTruyền phát lệnh và kiểm thử (test) trên nhiều session đang hoạt động",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Someblueman/hydra`",
+    "usage_vi": "```\nSử dụng Hydra để tạo môi trường lập trình song song cho [PROJECT_NAME]. Thiết lập [NUMBER] tmux pane, mỗi pane chứa một branch git worktree riêng biệt cho [BRANCH_1], [BRANCH_2] và [BRANCH_3]. Cấu hình để mỗi pane kết nối với [AI_ASSISTANT_NAME] (ví dụ: ChatGPT, Claude hoặc Cursor) để nhận hỗ trợ code từ AI. Đảm bảo tất cả worktree đều được đồng bộ hóa với các thay đổi mới nhất từ [REMOTE_REPO_URL].\n```\nCopy\n\n```\n```\nĐã khởi tạo phiên lập trình song song của Hydra cho dự án 'E-Commerce API'.\n\nTóm tắt thiết lập:\n- Đã tạo 3 tmux pane trong một window duy nhất (chia theo chiều ngang)\n- Các worktree đã được tạo cho các branch:\n  1. feature/payment-gateway (pane 0)\n  2. bugfix/cart-validation (pane 1)\n  3. refactor/auth-service (pane 2)\n- Mỗi pane được kết nối với Claude Code để hỗ trợ AI\n- Tất cả worktree đã được đồng bộ hóa với branch main (commit: a1b2c3d)\n\nTrạng thái hiện tại:\nPane 0 (feature/payment-gateway):\n- Đang làm việc với tích hợp Stripe (tập tin: src/payments/stripe.js)\n- Gợi ý từ AI: \"Hãy cân nhắc thêm xác thực webhook để bảo mật\"\n\nPane 1 (bugfix/cart-validation):\n- Đang sửa lỗi tràn số lượng (quantity overflow) trong dịch vụ giỏ hàng (cart service)\n- Gợi ý từ AI: \"Thêm bước làm sạch dữ liệu đầu vào (input sanitization) cho trường số lượng\"\n\nPane 2 (refactor/auth-service):\n- Đang cấu trúc lại logic xác thực JWT\n- Gợi ý từ AI: \"Hãy cân nhắc sử dụng middleware cho việc kiểm tra xác thực (auth checks)\"\n\nCác bước tiếp theo:\n1. Chạy lệnh 'hydra sync' để pull các thay đổi mới nhất từ remote\n2. Sử dụng 'hydra commit -m \"[message]\"' để commit các thay đổi trong pane hiện tại\n3. Chuyển đổi giữa các pane bằng tổ hợp phím Ctrl+b và các phím mũi tên\n4. Đóng phiên làm việc bằng lệnh 'hydra kill' khi hoàn tất\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:24:44.079145Z",
+    "http_status": 200,
+    "content_hash": "221c0fc70b8870ea3bca3d8e37fea0237d73d358aabdbf800c463dd0344fea6d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hydra.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hydra.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hydra - Các phiên lập trình AI song song",
+  "short_description_vi": "Hydra là một công cụ CLI giúp quản lý các phiên lập trình AI song song bằng cách sử dụng tmux và git worktree. Nó cho phép các nhà phát triển làm việc trên nhiều nhánh code cùng một lúc, giúp nâng cao năng suất. Tích hợp với các trợ lý lập trình AI như ChatGPT, Claude và Cursor."
+}

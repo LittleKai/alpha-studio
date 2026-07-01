@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aut-ap-2024-spring-hw1",
+  "slug": "aut-ap-2024-spring-hw1",
+  "name": "AUT_AP_2024_Spring_HW1",
+  "headline": "AUT Spring HW1: programming assignment tool",
+  "short_description": "The first assignment for AUT's Advanced Programming course (Spring 2024), It includes a bash script for directory backups and logging, and a C++ module for matrix operations in the algebra namespace. Both tasks focus on enhancing automation, system administration, and programming skills.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "courseworks",
+  "install_command": "git clone https://github.com/courseworks/AUT_AP_2024_Spring_HW1.git",
+  "source_repo_url": "https://github.com/courseworks/AUT_AP_2024_Spring_HW1",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "bash-scripting",
+    "linear-algebra",
+    "homework",
+    "cpp-programming"
+  ],
+  "sections": {
+    "overview": "This skill implements two core programming tasks: a bash script for automated directory backups with comprehensive logging, and a C++ algebra namespace with matrix operations. The backup script accepts source and destination paths with optional compression levels, creates timestamped zip files, and generates detailed logs including file counts, timestamps, and system information. The algebra namespace provides template-based matrix creation and manipulation functions supporting zeros, ones, identity, and random initialization, plus display formatting using the C++20 format library. Students and automation engineers benefit from hands-on experience in system administration scripting and linear algebra programming.\nCreating automated daily backup solutions with detailed audit logs\nImplementing matrix operations for linear algebra computations\nLearning bash shell scripting for system administration tasks\nBuilding C++20 template-based numerical computing libraries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/courseworks/AUT_AP_2024_Spring_HW1`",
+    "usage": "```\nCreate a solution for AUT's Advanced Programming Spring 2024 Homework 1. The assignment includes two parts: a bash script for directory backups and logging, and a C++ module for matrix operations in the algebra namespace. Provide the complete code for both parts, with detailed comments explaining each section. Ensure the bash script handles errors gracefully and logs all operations to a specified file. The C++ module should include functions for matrix addition, subtraction, and multiplication, all within the algebra namespace.\n```\nCopy\n\n```\n```cpp\n// C++ Matrix Operations Module\n\n#include <iostream>\n#include <vector>\n\nnamespace algebra {\n    // Matrix class definition\n    class Matrix {\n    public:\n        Matrix(int rows, int cols);\n        ~Matrix();\n        // Matrix operations\n        Matrix add(const Matrix& other) const;\n        Matrix subtract(const Matrix& other) const;\n        Matrix multiply(const Matrix& other) const;\n    private:\n        int rows;\n        int cols;\n        double** data;\n    };\n\n    // Constructor implementation\n    Matrix::Matrix(int r, int c) : rows(r), cols(c) {\n        data = new double*[rows];\n        for (int i = 0; i < rows; ++i) {\n            data[i] = new double[cols]();\n        }\n    }\n\n    // Destructor implementation\n    Matrix::~Matrix() {\n        for (int i = 0; i < rows; ++i) {\n            delete[] data[i];\n        }\n        delete[] data;\n    }\n\n    // Matrix addition implementation\n    Matrix Matrix::add(const Matrix& other) const {\n        if (rows != other.rows || cols != other.cols) {\n            throw std::invalid_argument(\"Matrix dimensions do not match\");\n        }\n        Matrix result(rows, cols);\n        for (int i = 0; i < rows; ++i) {\n            for (int j = 0; j < cols; ++j) {\n                result.data[i][j] = data[i][j] + other.data[i][j];\n            }\n        }\n        return result;\n    }\n\n    // Similar implementations for subtract and multiply\n}\n\nint main() {\n    // Example usage\n    algebra::Matrix m1(2, 2);\n    algebra::Matrix m2(2, 2);\n    algebra::Matrix m3 = m1.add(m2);\n    return 0;\n}\n```\n\n```bash\n#!/bin/bash\n\n# Directory Backup and Logging Script\n\n# Configuration\nBACKUP_DIR=\"/path/to/backup\"\nLOG_FILE=\"/var/log/backup.log\"\nSOURCE_DIRS=(\"/path/to/source1\" \"/path/to/source2\")\n\n# Logging function\nlog() {\n    echo \"[$(date +'%Y-%m-%d %H:%M:%S')] $1\" >> \"$LOG_FILE\"\n}\n\n# Backup function\nbackup() {\n    local dir=$1\n    local timestamp=$(date +%Y%m%d_%H%M%S)\n    local backup_file=\"$BACKUP_DIR/backup_${timestamp}.tar.gz\"\n\n    log \"Starting backup of $dir\"\n    if tar -czf \"$backup_file\" \"$dir\" 2>> \"$LOG_FILE\"; then\n        log \"Backup of $dir completed successfully\"\n    else\n        log \"Error: Backup of $dir failed\"\n        return 1\n    fi\n}\n\n# Main script\nlog \"Backup script started\"\n\nfor dir in \"${SOURCE_DIRS[@]}\"; do\n    if [ -d \"$dir\" ]; then\n        backup \"$dir\"\n    else\n        log \"Error: Source directory $dir does not exist\"\n    fi\ndone\n\nlog \"Backup script finished\"\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "aut-ap-2024-spring-hw1#main-content",
+      "aut-ap-2024-spring-hw1#overview",
+      "aut-ap-2024-spring-hw1#setup",
+      "aut-ap-2024-spring-hw1#examples",
+      "aut-ap-2024-spring-hw1#tools",
+      "aut-ap-2024-spring-hw1#mcp",
+      "aut-ap-2024-spring-hw1#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này triển khai hai tác vụ lập trình cốt lõi: một bash script để tự động hóa việc sao lưu thư mục với tính năng ghi log toàn diện, và một namespace algebra trong C++ cho các phép toán ma trận. Script sao lưu tiếp nhận các đường dẫn nguồn và đích cùng với tùy chọn mức độ nén, tạo các file zip kèm timestamp, và tạo các log chi tiết bao gồm số lượng file, mốc thời gian và thông tin hệ thống. Namespace algebra cung cấp các hàm khởi tạo và thao tác ma trận dạng template, hỗ trợ khởi tạo ma trận không (zeros), ma trận một (ones), ma trận đơn vị (identity) và khởi tạo ngẫu nhiên, cùng với việc định dạng hiển thị sử dụng thư viện format của C++20. Sinh viên và kỹ sư tự động hóa sẽ có cơ hội thực hành thực tế về viết script quản trị hệ thống và lập trình đại số tuyến tính.\nTạo các giải pháp tự động sao lưu hàng ngày với audit log chi tiết\nTriển khai các phép toán ma trận cho việc tính toán đại số tuyến tính\nHọc lập trình bash shell script cho các tác vụ quản trị hệ thống\nXây dựng các thư viện tính toán số học dạng template trong C++20",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/courseworks/AUT_AP_2024_Spring_HW1`",
+    "usage_vi": "```\nTạo giải pháp cho Bài tập 1 môn Lập trình Nâng cao học kỳ Xuân 2024 của AUT. Bài tập gồm hai phần: một bash script để sao lưu thư mục và ghi log, và một module C++ cho các phép toán ma trận trong namespace algebra. Cung cấp mã nguồn hoàn chỉnh cho cả hai phần, kèm theo chú thích chi tiết giải thích từng phần. Đảm bảo bash script xử lý lỗi một cách mượt mà và ghi lại tất cả các hoạt động vào một file được chỉ định. Module C++ phải bao gồm các hàm cộng, trừ và nhân ma trận, tất cả đều nằm trong namespace algebra.\n```\nCopy\n\n```cpp\n// Module phép toán ma trận C++\n\n#include <iostream>\n#include <vector>\n\nnamespace algebra {\n    // Định nghĩa lớp Matrix\n    class Matrix {\n    public:\n        Matrix(int rows, int cols);\n        ~Matrix();\n        // Các phép toán ma trận\n        Matrix add(const Matrix& other) const;\n        Matrix subtract(const Matrix& other) const;\n        Matrix multiply(const Matrix& other) const;\n    private:\n        int rows;\n        int cols;\n        double** data;\n    };\n\n    // Triển khai Constructor\n    Matrix::Matrix(int r, int c) : rows(r), cols(c) {\n        data = new double*[rows];\n        for (int i = 0; i < rows; ++i) {\n            data[i] = new double[cols]();\n        }\n    }\n\n    // Triển khai Destructor\n    Matrix::~Matrix() {\n        for (int i = 0; i < rows; ++i) {\n            delete[] data[i];\n        }\n        delete[] data;\n    }\n\n    // Triển khai phép cộng ma trận\n    Matrix Matrix::add(const Matrix& other) const {\n        if (rows != other.rows || cols != other.cols) {\n            throw std::invalid_argument(\"Matrix dimensions do not match\");\n        }\n        Matrix result(rows, cols);\n        for (int i = 0; i < rows; ++i) {\n            for (int j = 0; j < cols; ++j) {\n                result.data[i][j] = data[i][j] + other.data[i][j];\n            }\n        }\n        return result;\n    }\n\n    // Triển khai tương tự cho phép trừ và phép nhân\n}\n\nint main() {\n    // Ví dụ sử dụng\n    algebra::Matrix m1(2, 2);\n    algebra::Matrix m2(2, 2);\n    algebra::Matrix m3 = m1.add(m2);\n    return 0;\n}\n```\n\n```bash\n#!/bin/bash\n\n# Script sao lưu thư mục và ghi log\n\n# Cấu hình\nBACKUP_DIR=\"/path/to/backup\"\nLOG_FILE=\"/var/log/backup.log\"\nSOURCE_DIRS=(\"/path/to/source1\" \"/path/to/source2\")\n\n# Hàm ghi log\nlog() {\n    echo \"[$(date +'%Y-%m-%d %H:%M:%S')] $1\" >> \"$LOG_FILE\"\n}\n\n# Hàm sao lưu\nbackup() {\n    local dir=$1\n    local timestamp=$(date +%Y%m%d_%H%M%S)\n    local backup_file=\"$BACKUP_DIR/backup_${timestamp}.tar.gz\"\n\n    log \"Starting backup of $dir\"\n    if tar -czf \"$backup_file\" \"$dir\" 2>> \"$LOG_FILE\"; then\n        log \"Backup of $dir completed successfully\"\n    else\n        log \"Error: Backup of $dir failed\"\n        return 1\n    fi\n}\n\n# Script chính\nlog \"Backup script started\"\n\nfor dir in \"${SOURCE_DIRS[@]}\"; do\n    if [ -d \"$dir\" ]; then\n        backup \"$dir\"\n    else\n        log \"Error: Source directory $dir does not exist\"\n    fi\ndone\n\nlog \"Backup script finished\"\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:16:21.737660Z",
+    "http_status": 200,
+    "content_hash": "b6efe5a393151c9fdac8abf1602b64bdf0cee4bf063d8c817c3da076b7068f63",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aut-ap-2024-spring-hw1.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aut-ap-2024-spring-hw1.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AUT Spring HW1: Công cụ hỗ trợ bài tập lập trình",
+  "short_description_vi": "Bài tập đầu tiên của khóa học Lập trình Nâng cao tại AUT (Kỳ học Mùa xuân 2024). Bài tập bao gồm một bash script để sao lưu thư mục và ghi log, cùng một module C++ thực hiện các phép toán ma trận trong namespace algebra. Cả hai bài tập đều tập trung vào việc nâng cao kỹ năng tự động hóa, quản trị hệ thống và lập trình."
+}

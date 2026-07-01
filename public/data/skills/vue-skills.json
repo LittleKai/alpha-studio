@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vue-skills",
+  "slug": "vue-skills",
+  "name": "react-native-best-practices",
+  "headline": "Boost Your Vue.js Skills Today",
+  "short_description": "Vue Skills helps developers to quickly enhance their Vue.js applications with efficient coding practices. Unlock your potential with expert tips and best practices that save time and improve code quality.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/hyf0",
+  "source_repo_url": "https://github.com/sh/hyf0",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "coding skills",
+    "Vue.js",
+    "web development",
+    "programming"
+  ],
+  "sections": {
+    "overview": "Vue Skills is an AI agent that helps developers enhance their Vue.js applications through efficient coding practices and expert guidance. It provides tips and best practices designed to save development time while improving overall code quality. The skill is ideal for developers looking to optimize their Vue.js workflow and apply industry-standard approaches to their projects.\nImprove Vue.js application performance\nLearn best coding practices\nEnhance user interface design",
+    "setup": "Terminal\nCopy\n`npx skills add sh/hyf0`\n`git clone https://github.com/sh/hyf0`",
+    "usage": "```\nAnalyze the Vue.js codebase in [PROJECT_PATH] and identify 3 opportunities to improve performance using best practices. For each opportunity, provide a code snippet showing the before/after implementation and explain the performance impact. Focus on [SPECIFIC_AREA] (e.g., reactivity, component lifecycle, state management).\n```\nCopy\n\n```\nHere’s a performance analysis of the `user-dashboard` component in our Vue.js e-commerce application (v3.3.4). The component currently renders a list of 500 products using a `v-for` loop with individual `ProductCard` components, which triggers unnecessary re-renders when the parent state updates. \n\n**Opportunity 1: Reactivity Optimization**\n*Current Issue*: The `products` array is directly mutated via `push()` in the `fetchProducts` method, causing Vue’s reactivity system to re-render the entire list.\n*Fix*: Use `reactive` with a computed property and immutable updates:\n```javascript\n// Before\nconst products = ref([]);\nconst fetchProducts = async () => {\n  const response = await api.get('/products');\n  products.value.push(...response.data); // Triggers full re-render\n};\n\n// After\nimport { reactive, computed } from 'vue';\nconst products = reactive([]);\nconst filteredProducts = computed(() => products.filter(p => p.inStock));\nconst fetchProducts = async () => {\n  const response = await api.get('/products');\n  products.splice(0, products.length, ...response.data); // Minimal re-render\n};\n```\n*Impact*: Reduced re-renders by 60% in benchmarks, improving Lighthouse performance score from 78 to 92.\n\n**Opportunity 2: Component Lifecycle Optimization**\n*Current Issue*: The `ProductCard` component uses `onMounted` to fetch additional data, causing a waterfall of API calls.\n*Fix*: Use `Suspense` with lazy-loaded components:\n```vue\n<!-- Before -->\n<template>\n  <ProductCard v-for=\"product in products\" :key=\"product.id\" />\n</template>\n\n<!-- After -->\n<template>\n  <Suspense>\n    <template #default>\n      <ProductCard v-for=\"product in products\" :key=\"product.id\" />\n    </template>\n    <template #fallback>\n      <ProductSkeleton v-for=\"n in 10\" :key=\"n\" />\n    </template>\n  </Suspense>\n</template>\n```\n*Impact*: Reduced Time to Interactive (TTI) by 400ms and improved user-perceived performance.\n\n**Opportunity 3: State Management**\n*Current Issue*: The cart state is managed locally, causing synchronization delays between tabs.\n*Fix*: Migrate to Pinia with persistence:\n```javascript\n// store/cart.js\nimport { defineStore } from 'pinia';\nimport { useLocalStorage } from '@vueuse/core';\n\nexport const useCartStore = defineStore('cart', () => {\n  const cart = useLocalStorage('cart', []);\n  const addToCart = (product) => {\n    cart.value.push(product);\n  };\n  return { cart, addToCart };\n});\n```\n*Impact*: Enabled cross-tab synchronization and reduced cart-related bugs by 30%.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "vue-skills#main-content",
+      "vue-skills#overview",
+      "vue-skills#setup",
+      "vue-skills#examples",
+      "vue-skills#tools",
+      "vue-skills#mcp",
+      "vue-skills#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Vue Skills is an AI agent that helps developers enhance their Vue.js applications through efficient coding practices and expert guidance. It provides tips and best practices designed to save development time while improving overall code quality. The skill is ideal for developers looking to optimize their Vue.js workflow and apply industry-standard approaches to their projects.\nImprove Vue.js application performance\nLearn best coding practices\nEnhance user interface design",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/hyf0`\n`git clone https://github.com/sh/hyf0`",
+    "usage_vi": "```\nAnalyze the Vue.js codebase in [PROJECT_PATH] and identify 3 opportunities to improve performance using best practices. For each opportunity, provide a code snippet showing the before/after implementation and explain the performance impact. Focus on [SPECIFIC_AREA] (e.g., reactivity, component lifecycle, state management).\n```\nCopy\n\n```\nHere’s a performance analysis of the `user-dashboard` component in our Vue.js e-commerce application (v3.3.4). The component currently renders a list of 500 products using a `v-for` loop with individual `ProductCard` components, which triggers unnecessary re-renders when the parent state updates. \n\n**Opportunity 1: Reactivity Optimization**\n*Current Issue*: The `products` array is directly mutated via `push()` in the `fetchProducts` method, causing Vue’s reactivity system to re-render the entire list.\n*Fix*: Use `reactive` with a computed property and immutable updates:\n```javascript\n// Before\nconst products = ref([]);\nconst fetchProducts = async () => {\n  const response = await api.get('/products');\n  products.value.push(...response.data); // Triggers full re-render\n};\n\n// After\nimport { reactive, computed } from 'vue';\nconst products = reactive([]);\nconst filteredProducts = computed(() => products.filter(p => p.inStock));\nconst fetchProducts = async () => {\n  const response = await api.get('/products');\n  products.splice(0, products.length, ...response.data); // Minimal re-render\n};\n```\n*Impact*: Reduced re-renders by 60% in benchmarks, improving Lighthouse performance score from 78 to 92.\n\n**Opportunity 2: Component Lifecycle Optimization**\n*Current Issue*: The `ProductCard` component uses `onMounted` to fetch additional data, causing a waterfall of API calls.\n*Fix*: Use `Suspense` with lazy-loaded components:\n```vue\n<!-- Before -->\n<template>\n  <ProductCard v-for=\"product in products\" :key=\"product.id\" />\n</template>\n\n<!-- After -->\n<template>\n  <Suspense>\n    <template #default>\n      <ProductCard v-for=\"product in products\" :key=\"product.id\" />\n    </template>\n    <template #fallback>\n      <ProductSkeleton v-for=\"n in 10\" :key=\"n\" />\n    </template>\n  </Suspense>\n</template>\n```\n*Impact*: Reduced Time to Interactive (TTI) by 400ms and improved user-perceived performance.\n\n**Opportunity 3: State Management**\n*Current Issue*: The cart state is managed locally, causing synchronization delays between tabs.\n*Fix*: Migrate to Pinia with persistence:\n```javascript\n// store/cart.js\nimport { defineStore } from 'pinia';\nimport { useLocalStorage } from '@vueuse/core';\n\nexport const useCartStore = defineStore('cart', () => {\n  const cart = useLocalStorage('cart', []);\n  const addToCart = (product) => {\n    cart.value.push(product);\n  };\n  return { cart, addToCart };\n});\n```\n*Impact*: Enabled cross-tab synchronization and reduced cart-related bugs by 30%.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:05:49.858639Z",
+    "http_status": 200,
+    "content_hash": "4396fdfb503995e3808b5dc97473d5b949da3eac4ae522a1dbf95f9c15b6f33f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vue-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vue-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Boost Your Vue.js Skills Today",
+  "short_description_vi": "Vue Skills helps developers to quickly enhance their Vue.js applications with efficient coding practices. Unlock your potential with expert tips and best practices that save time and improve code quality."
+}

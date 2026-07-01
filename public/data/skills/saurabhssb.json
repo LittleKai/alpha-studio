@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/saurabhssb",
+  "slug": "saurabhssb",
+  "name": "SaurabhSSB",
+  "headline": "SaurabhSSB - Automate Data Analysis",
+  "short_description": "Automate data analysis and visualization tasks using Python, R, and statistics. Ideal for operations teams needing to streamline workflows and gain insights from data. Connects to n8n for workflow automation and supports Claude for AI-driven data processing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "200 min",
+  "author": "SaurabhSSB",
+  "install_command": "git clone https://github.com/SaurabhSSB/SaurabhSSB.git",
+  "source_repo_url": "https://github.com/SaurabhSSB/SaurabhSSB",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "n8n",
+    "workflow-automation",
+    "data-science",
+    "python",
+    "ai-automation",
+    "ai-engineer",
+    "statistics",
+    "deep-learning",
+    "personal-readme",
+    "r-language",
+    "data-analysis",
+    "portfolio",
+    "open-source",
+    "learning-journey",
+    "github-profile",
+    "developer",
+    "machine-learning",
+    "data-visualization",
+    "notebooks"
+  ],
+  "sections": {
+    "overview": "SaurabhSSB is a data science student's GitHub repository containing foundational projects in Python, R, and statistics. The profile includes active work on Python Mastery Roadmap, Data Visualization Using R, and Foundations of Statistics with R. It demonstrates practical applications of data analysis tools including Pandas and Seaborn for Python-based workflows and statistical computing in R. The repository serves as a reference for developers and analysts building skills in data science fundamentals and statistical programming.\nLearning Python fundamentals through structured roadmap\nMastering data visualization techniques with R and Python libraries\nBuilding statistical analysis skills with R\nReference materials for data science students",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SaurabhSSB/SaurabhSSB`",
+    "usage": "```\nAutomate the analysis and visualization of [DATASET] using Python/R. Focus on [KEY_METRIC] and identify [TRENDS_OR_PATTERNS]. Generate a summary report with key insights and actionable recommendations. Use [VISUALIZATION_TOOL] for charts. If automation is needed, integrate with n8n for workflow execution. Share the code snippets and outputs directly.\n```\nCopy\n\n```\n### Data Analysis & Visualization Report: Q2 2024 Sales Performance\n\n**Dataset Analyzed:** Internal CRM sales data (April-June 2024) containing 12,450 transactions across 15 regions.\n\n**Key Metric:** Monthly recurring revenue (MRR) growth and regional performance.\n\n**Trends Identified:**\n1. **MRR Growth:** Overall MRR increased by 18% QoQ, driven by a 22% surge in enterprise deals (contracts >$50K). Mid-market grew 12%, while SMB declined by 3%.\n2. **Regional Performance:** EMEA led with 25% YoY growth, followed by APAC (19%) and North America (14%). The Western US underperformed (-2% YoY) due to delayed renewals.\n3. **Product Insights:** The new \"Pro Suite\" product contributed 35% to total MRR, with a 40% adoption rate among enterprise customers.\n\n**Visualizations Generated:**\n- **Line Chart:** MRR growth over time (April-June 2024) with trendline.\n- **Bar Chart:** Regional MRR contribution (YoY comparison).\n- **Heatmap:** Product adoption rates by customer segment.\n\n**Actionable Recommendations:**\n1. **Retention Focus:** Launch a targeted campaign for SMB customers in the Western US to address churn risks. Offer a 10% discount on annual plans.\n2. **Upsell Opportunity:** Prioritize \"Pro Suite\" upsells to mid-market customers in APAC, where adoption is lower (28% vs. 40% enterprise).\n3. **Regional Strategy:** Allocate 20% of the next quarter’s marketing budget to EMEA, where growth potential is highest.\n\n**Automation Workflow (n8n):**\nA pre-built n8n workflow was triggered to:\n- Fetch updated CRM data via API.\n- Run the Python/R analysis script.\n- Generate visualizations and save to a shared Google Drive folder.\n- Email the report to the sales leadership team with a summary slide.\n\n**Code Snippets:**\n```python\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load data\ndf = pd.read_csv('q2_sales_data.csv')\n\n# Calculate MRR growth\ndf['mrr_growth'] = df.groupby('region')['mrr'].pct_change() * 100\n\n# Plot MRR growth\nplt.figure(figsize=(10, 6))\ndf.groupby('month')['mrr'].sum().plot(kind='line', marker='o')\nplt.title('Monthly MRR Growth (Q2 2024)')\nplt.ylabel('MRR ($)')\nplt.xlabel('Month')\nplt.grid()\nplt.savefig('mrr_growth.png')\n```\n```r\n# R code for regional performance analysis\nlibrary(ggplot2)\ndata <- read.csv('q2_sales_data.csv')\nregional_growth <- aggregate(mrr ~ region + quarter, data, FUN = sum)\nggplot(regional_growth, aes(x=region, y=mrr, fill=quarter)) +\n  geom_bar(stat='identity', position='dodge') +\n  labs(title='Regional MRR Growth (Q2 2024)', x='Region', y='MRR ($)')\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "saurabhssb#main-content",
+      "saurabhssb#overview",
+      "saurabhssb#setup",
+      "saurabhssb#examples",
+      "saurabhssb#tools",
+      "saurabhssb#mcp",
+      "saurabhssb#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SaurabhSSB is a data science student's GitHub repository containing foundational projects in Python, R, and statistics. The profile includes active work on Python Mastery Roadmap, Data Visualization Using R, and Foundations of Statistics with R. It demonstrates practical applications of data analysis tools including Pandas and Seaborn for Python-based workflows and statistical computing in R. The repository serves as a reference for developers and analysts building skills in data science fundamentals and statistical programming.\nLearning Python fundamentals through structured roadmap\nMastering data visualization techniques with R and Python libraries\nBuilding statistical analysis skills with R\nReference materials for data science students",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SaurabhSSB/SaurabhSSB`",
+    "usage_vi": "```\nAutomate the analysis and visualization of [DATASET] using Python/R. Focus on [KEY_METRIC] and identify [TRENDS_OR_PATTERNS]. Generate a summary report with key insights and actionable recommendations. Use [VISUALIZATION_TOOL] for charts. If automation is needed, integrate with n8n for workflow execution. Share the code snippets and outputs directly.\n```\nCopy\n\n```\n### Data Analysis & Visualization Report: Q2 2024 Sales Performance\n\n**Dataset Analyzed:** Internal CRM sales data (April-June 2024) containing 12,450 transactions across 15 regions.\n\n**Key Metric:** Monthly recurring revenue (MRR) growth and regional performance.\n\n**Trends Identified:**\n1. **MRR Growth:** Overall MRR increased by 18% QoQ, driven by a 22% surge in enterprise deals (contracts >$50K). Mid-market grew 12%, while SMB declined by 3%.\n2. **Regional Performance:** EMEA led with 25% YoY growth, followed by APAC (19%) and North America (14%). The Western US underperformed (-2% YoY) due to delayed renewals.\n3. **Product Insights:** The new \"Pro Suite\" product contributed 35% to total MRR, with a 40% adoption rate among enterprise customers.\n\n**Visualizations Generated:**\n- **Line Chart:** MRR growth over time (April-June 2024) with trendline.\n- **Bar Chart:** Regional MRR contribution (YoY comparison).\n- **Heatmap:** Product adoption rates by customer segment.\n\n**Actionable Recommendations:**\n1. **Retention Focus:** Launch a targeted campaign for SMB customers in the Western US to address churn risks. Offer a 10% discount on annual plans.\n2. **Upsell Opportunity:** Prioritize \"Pro Suite\" upsells to mid-market customers in APAC, where adoption is lower (28% vs. 40% enterprise).\n3. **Regional Strategy:** Allocate 20% of the next quarter’s marketing budget to EMEA, where growth potential is highest.\n\n**Automation Workflow (n8n):**\nA pre-built n8n workflow was triggered to:\n- Fetch updated CRM data via API.\n- Run the Python/R analysis script.\n- Generate visualizations and save to a shared Google Drive folder.\n- Email the report to the sales leadership team with a summary slide.\n\n**Code Snippets:**\n```python\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load data\ndf = pd.read_csv('q2_sales_data.csv')\n\n# Calculate MRR growth\ndf['mrr_growth'] = df.groupby('region')['mrr'].pct_change() * 100\n\n# Plot MRR growth\nplt.figure(figsize=(10, 6))\ndf.groupby('month')['mrr'].sum().plot(kind='line', marker='o')\nplt.title('Monthly MRR Growth (Q2 2024)')\nplt.ylabel('MRR ($)')\nplt.xlabel('Month')\nplt.grid()\nplt.savefig('mrr_growth.png')\n```\n```r\n# R code for regional performance analysis\nlibrary(ggplot2)\ndata <- read.csv('q2_sales_data.csv')\nregional_growth <- aggregate(mrr ~ region + quarter, data, FUN = sum)\nggplot(regional_growth, aes(x=region, y=mrr, fill=quarter)) +\n  geom_bar(stat='identity', position='dodge') +\n  labs(title='Regional MRR Growth (Q2 2024)', x='Region', y='MRR ($)')\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:38:43.345395Z",
+    "http_status": 200,
+    "content_hash": "a251faf9358877d3e58eef305a07e55c9874bef45942ac79fcb99fcaec1895a9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\saurabhssb.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\saurabhssb.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SaurabhSSB - Automate Data Analysis",
+  "short_description_vi": "Automate data analysis and visualization tasks using Python, R, and statistics. Ideal for operations teams needing to streamline workflows and gain insights from data. Connects to n8n for workflow automation and supports Claude for AI-driven data processing."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/data-analyst-agent",
+  "slug": "data-analyst-agent",
+  "name": "Automated Data Analysis Tool",
+  "headline": "Automated Data Analysis Tool - Data Analyst Agent",
+  "short_description": "The data-analyst-agent is an automated data analysis tool leveraging large models to streamline the analysis of Excel/CSV data. It generates visual recap reports and features five distinct agent operation modes for comparative learning and exploration.",
+  "tier": "Silver",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "chenningling",
+  "install_command": "claude install chenningling/data-analyst-agent",
+  "source_repo_url": "https://github.com/chenningling/data-analyst-agent",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "automation",
+    "Excel",
+    "AI tools",
+    "visualization",
+    "data analysis"
+  ],
+  "sections": {
+    "overview": "The data-analyst-agent is an LLM-based automation tool designed to streamline data analysis workflows. Upload Excel or CSV files and describe your analysis requirements; the agent automatically plans analysis tasks, generates Python code, executes it safely, and compiles results into Markdown reports with interactive visualizations. It supports five distinct agent operation modes—tool-driven (recommended), task-driven, hybrid, autonomous, and staged—each representing different architectural approaches for learning and comparison. The tool provides real-time progress updates via WebSocket, includes task management and session logging, and supports rich visualizations through ECharts, Mermaid diagrams, and matplotlib charts. Ideal for analysts who want to accelerate exploratory data analysis without writing code manually.\nAutomating data analysis tasks\nGenerating visual reports from datasets\nComparing different analysis methodologies\nStreamlining data-driven decision making",
+    "setup": "Terminal\nCopy\n`claude install chenningling/data-analyst-agent`\n`git clone https://github.com/chenningling/data-analyst-agent`",
+    "usage": "```\nAnalyze the following [DATA] file for [COMPANY] in the [INDUSTRY] sector. Generate a visual recap report and use the comparative learning mode to identify trends. Focus on [SPECIFIC_METRIC] over the last [TIME_PERIOD].\n```\nCopy\n\n```\n# Data Analysis Report for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "data-analyst-agent#main-content",
+      "data-analyst-agent#overview",
+      "data-analyst-agent#setup",
+      "data-analyst-agent#examples",
+      "data-analyst-agent#tools",
+      "data-analyst-agent#mcp",
+      "data-analyst-agent#related",
+      "data-verse-ui",
+      "ai-analyst-agent",
+      "hack-agent-server"
+    ],
+    "overview_vi": "The data-analyst-agent is an LLM-based automation tool designed to streamline data analysis workflows. Upload Excel or CSV files and describe your analysis requirements; the agent automatically plans analysis tasks, generates Python code, executes it safely, and compiles results into Markdown reports with interactive visualizations. It supports five distinct agent operation modes—tool-driven (recommended), task-driven, hybrid, autonomous, and staged—each representing different architectural approaches for learning and comparison. The tool provides real-time progress updates via WebSocket, includes task management and session logging, and supports rich visualizations through ECharts, Mermaid diagrams, and matplotlib charts. Ideal for analysts who want to accelerate exploratory data analysis without writing code manually.\nAutomating data analysis tasks\nGenerating visual reports from datasets\nComparing different analysis methodologies\nStreamlining data-driven decision making",
+    "setup_vi": "Terminal\nCopy\n`claude install chenningling/data-analyst-agent`\n`git clone https://github.com/chenningling/data-analyst-agent`",
+    "usage_vi": "```\nAnalyze the following [DATA] file for [COMPANY] in the [INDUSTRY] sector. Generate a visual recap report and use the comparative learning mode to identify trends. Focus on [SPECIFIC_METRIC] over the last [TIME_PERIOD].\n```\nCopy\n\n```\n# Data Analysis Report for GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:33:19.914881Z",
+    "http_status": 200,
+    "content_hash": "168cbcb7fe73b678a714190a3a5b0936f806aed26bed4e41a4cbe9fa05bd680e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\data-analyst-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\data-analyst-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Automated Data Analysis Tool - Data Analyst Agent",
+  "short_description_vi": "The data-analyst-agent is an automated data analysis tool leveraging large models to streamline the analysis of Excel/CSV data. It generates visual recap reports and features five distinct agent operation modes for comparative learning and exploration."
+}

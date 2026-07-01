@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/assistant-ui-thread-list",
+  "slug": "assistant-ui-thread-list",
+  "name": "Related Skills",
+  "headline": "Thread List: Multi-Thread Chat Management",
+  "short_description": "Manage multiple chat threads easily with built-in or customizable UI components. Designed for developers using AssistantCloud with a focus on thread operations like creating, renaming, and archiving.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "assistant-ui",
+  "install_command": "git clone https://github.com/assistant-ui/skills",
+  "source_repo_url": "https://github.com/assistant-ui/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "assistant",
+    "thread",
+    "list",
+    "chat-management"
+  ],
+  "sections": {
+    "overview": "The assistant-ui Thread List skill provides developers with tools to implement multi-thread management in AI chat applications. It offers both built-in and customizable UI components designed for common thread operations including creation, renaming, and archiving. The skill integrates with the assistant-ui framework and works alongside cloud persistence features for managing conversation history. Developers can use this skill to quickly add thread list functionality to their projects, reducing development time for chat interface features. The skill is part of the broader assistant-ui ecosystem, which includes primitives, runtime systems, and cloud integration options.\nSwitching between chat threads\nCreating new chat threads\nRenaming existing threads\nArchiving chat threads",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/assistant-ui/skills --skill thread-list`\n`git clone https://github.com/assistant-ui/skills`",
+    "usage": "```\nI need help managing multiple chat threads in [COMPANY]'s AssistantCloud. Can you help me create a new thread, rename an existing one to '[NEW_NAME]', and archive an old thread named '[OLD_THREAD_NAME]'? Provide the thread IDs for reference.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "assistant-ui-thread-list#main-content",
+      "assistant-ui-thread-list#overview",
+      "assistant-ui-thread-list#setup",
+      "assistant-ui-thread-list#examples",
+      "assistant-ui-thread-list#tools",
+      "assistant-ui-thread-list#mcp",
+      "assistant-ui-thread-list#related"
+    ],
+    "overview_vi": "The assistant-ui Thread List skill provides developers with tools to implement multi-thread management in AI chat applications. It offers both built-in and customizable UI components designed for common thread operations including creation, renaming, and archiving. The skill integrates with the assistant-ui framework and works alongside cloud persistence features for managing conversation history. Developers can use this skill to quickly add thread list functionality to their projects, reducing development time for chat interface features. The skill is part of the broader assistant-ui ecosystem, which includes primitives, runtime systems, and cloud integration options.\nSwitching between chat threads\nCreating new chat threads\nRenaming existing threads\nArchiving chat threads",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/assistant-ui/skills --skill thread-list`\n`git clone https://github.com/assistant-ui/skills`",
+    "usage_vi": "```\nI need help managing multiple chat threads in [COMPANY]'s AssistantCloud. Can you help me create a new thread, rename an existing one to '[NEW_NAME]', and archive an old thread named '[OLD_THREAD_NAME]'? Provide the thread IDs for reference.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:49:58.935858Z",
+    "http_status": 200,
+    "content_hash": "73c6639556cfd252381fd8e28585f86c9504e83304f96e318e9921e32afc4978",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\assistant-ui-thread-list.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\assistant-ui-thread-list.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Thread List: Multi-Thread Chat Management",
+  "short_description_vi": "Manage multiple chat threads easily with built-in or customizable UI components. Designed for developers using AssistantCloud with a focus on thread operations like creating, renaming, and archiving."
+}

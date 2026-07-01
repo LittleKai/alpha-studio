@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/modular-mcp",
+  "slug": "modular-mcp",
+  "name": "Modular MCP",
+  "headline": "Modular MCP - Manage MCP Tools Efficiently",
+  "short_description": "Modular MCP is a proxy server for managing large tool collections across multiple Model Context Protocol (MCP) servers. It groups tools and loads schemas on-demand, improving efficiency for operations teams using Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "d-kimuson",
+  "install_command": "git clone https://github.com/d-kimuson/modular-mcp.git",
+  "source_repo_url": "https://github.com/d-kimuson/modular-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "llm",
+    "mcp",
+    "codex",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Modular MCP acts as a Model Context Protocol proxy server designed to handle large tool collections across multiple upstream MCP servers without overwhelming LLM context windows. It groups tools logically and loads detailed tool schemas only when needed, enabling LLM discovery through group descriptions rather than requiring upfront tool calls. The system maintains a clean separation between tool discovery and execution phases, with the LLM interacting through just two registered tools: get-modular-tools for retrieving group-specific schemas and call-modular-tool for execution. This architecture is particularly valuable for operations teams and developers managing complex multi-server MCP setups who need context-efficient tool management.\nManaging multiple MCP servers with numerous tools without context window bloat\nOperations teams automating workflows across distributed tool collections\nOrganizing third-party MCP tools (Context7, Playwright, etc.) into logical groups\nReducing LLM overhead by loading tool schemas on-demand rather than all at once",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/d-kimuson/modular-mcp`",
+    "usage": "```\nUse the modular-mcp proxy server to interact with [TOOL_NAME] from the [SERVER_NAME] MCP server. Execute the following task: [TASK_DESCRIPTION]. Ensure you reference the correct tool schema and handle any required parameters dynamically. If the tool requires authentication or context, assume it's already configured in the MCP server.\n```\nCopy\n\n```\n```json\n{\n  \"tool_used\": \"filesystem_read\",\n  \"server\": \"local-fs-server\",\n  \"parameters\": {\n    \"path\": \"/projects/2024-q4/reports/sales_summary.md\",\n    \"max_size\": 1048576\n  },\n  \"result\": {\n    \"content\": \"# Q4 2024 Sales Report\\n\\n**Total Revenue**: $2.4M (↑15% YoY)\\n**Top Product**: Widget Pro (42% of revenue)\\n**Regional Performance**:\\n- North America: $1.1M\\n- EMEA: $850K\\n- APAC: $450K\\n\\n**Key Risks**: Supply chain delays in APAC\\n\\nGenerated: 2024-10-15\",\n    \"size\": 1245,\n    \"last_modified\": \"2024-10-14T23:59:59Z\"\n  },\n  \"execution_time_ms\": 124,\n  \"status\": \"success\"\n}\n```\n\nThe modular-mcp proxy successfully retrieved the sales summary report from the local filesystem server. The tool schema was loaded on-demand, and the file was read within acceptable limits (1MB max size). The response includes metadata like file size and modification date, which can be used for validation. The execution time was minimal, demonstrating the efficiency of the proxy server's schema management.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "modular-mcp#main-content",
+      "modular-mcp#overview",
+      "modular-mcp#setup",
+      "modular-mcp#examples",
+      "modular-mcp#tools",
+      "modular-mcp#mcp",
+      "modular-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Modular MCP đóng vai trò là một Model Context Protocol proxy server được thiết kế để xử lý các tập hợp tool lớn trên nhiều upstream MCP server mà không làm quá tải context window của LLM. Hệ thống nhóm các tool một cách hợp lý và chỉ tải (load) các tool schema chi tiết khi cần thiết, giúp LLM có thể tìm kiếm (discovery) thông qua mô tả nhóm thay vì phải gọi tool ngay từ đầu. Hệ thống duy trì sự tách biệt rõ ràng giữa giai đoạn tìm kiếm (tool discovery) và thực thi (execution), trong đó LLM chỉ tương tác qua hai tool đã đăng ký: get-modular-tools để lấy schema của từng nhóm cụ thể và call-modular-tool để thực thi. Kiến trúc này đặc biệt giá trị đối với các operations team và nhà phát triển đang quản lý các MCP setup đa server phức tạp cần tối ưu hóa context khi quản lý tool.\n\n- Quản lý nhiều MCP server với vô số tool mà không làm phình context window.\n- Hỗ trợ các operations team tự động hóa workflow trên các tập hợp tool phân tán.\n- Tổ chức các MCP tool của bên thứ ba (Context7, Playwright, v.v.) vào các nhóm logic.\n- Giảm overhead cho LLM bằng cách load tool schema theo yêu cầu (on-demand) thay vì tải toàn bộ cùng một lúc.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/d-kimuson/modular-mcp`",
+    "usage_vi": "```\nSử dụng modular-mcp proxy server để tương tác với [TOOL_NAME] từ MCP server [SERVER_NAME]. Thực hiện tác vụ sau: [TASK_DESCRIPTION]. Hãy đảm bảo bạn tham chiếu đúng tool schema và xử lý linh hoạt các tham số bắt buộc. Nếu tool yêu cầu xác thực hoặc ngữ cảnh (context), hãy giả định rằng nó đã được cấu hình sẵn trong MCP server.\n```\nCopy\n\n```\n```json\n{\n  \"tool_used\": \"filesystem_read\",\n  \"server\": \"local-fs-server\",\n  \"parameters\": {\n    \"path\": \"/projects/2024-q4/reports/sales_summary.md\",\n    \"max_size\": 1048576\n  },\n  \"result\": {\n    \"content\": \"# Q4 2024 Sales Report\\n\\n**Total Revenue**: $2.4M (↑15% YoY)\\n**Top Product**: Widget Pro (42% of revenue)\\n**Regional Performance**:\\n- North America: $1.1M\\n- EMEA: $850K\\n- APAC: $450K\\n\\n**Key Risks**: Supply chain delays in APAC\\n\\nGenerated: 2024-10-15\",\n    \"size\": 1245,\n    \"last_modified\": \"2024-10-14T23:59:59Z\"\n  },\n  \"execution_time_ms\": 124,\n  \"status\": \"success\"\n}\n```\n\nModular-mcp proxy đã truy xuất thành công báo cáo tóm tắt doanh số từ local filesystem server. Tool schema đã được load theo yêu cầu (on-demand), và tệp được đọc trong giới hạn cho phép (tối đa 1MB). Phản hồi bao gồm siêu dữ liệu (metadata) như kích thước tệp và ngày sửa đổi để hỗ trợ xác thực. Thời gian thực thi cực kỳ nhanh, chứng minh hiệu quả quản lý schema của proxy server.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:59:07.696615Z",
+    "http_status": 200,
+    "content_hash": "adc6371c2cf4d4ea0edf0d99c00db49c57c532736c5971da0d85a9fd8a912646",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\modular-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\modular-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Modular MCP - Quản lý các MCP Tool hiệu quả",
+  "short_description_vi": "Modular MCP là một proxy server giúp quản lý các tập hợp tool lớn trên nhiều Model Context Protocol (MCP) server. Nó hỗ trợ nhóm các tool và load schema theo yêu cầu (on-demand), giúp tối ưu hóa hiệu suất cho các operations team đang sử dụng Claude agent."
+}

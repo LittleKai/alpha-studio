@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/koine",
+  "slug": "koine",
+  "name": "Koine",
+  "headline": "Koine - Claude Code as a Service",
+  "short_description": "Koine is an HTTP gateway and SDKs for Claude Code CLI, enabling developers to integrate Claude Code's capabilities into their applications. It supports TypeScript and Python, making it easy to automate tasks and workflows in operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "pattern-zones-co",
+  "install_command": "git clone https://github.com/pattern-zones-co/koine.git",
+  "source_repo_url": "https://github.com/pattern-zones-co/koine",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "sdk",
+    "llm",
+    "http",
+    "sdk-typescript",
+    "sdk-python",
+    "claude-code",
+    "gateway"
+  ],
+  "sections": {
+    "overview": "Koine is an HTTP gateway that makes Claude Code CLI callable from any application via REST API. It provides TypeScript and Python SDKs with full type safety, enabling developers to integrate Claude Code's agentic capabilities—file access, command execution, and autonomous tool use—into their services without building orchestration layers. Deploy as a Docker container for network-accessible, persistent multi-turn conversations with structured output support. Ideal for backend developers, data engineers, and platform teams needing to programmatically invoke Claude Code's autonomous coding and automation capabilities.\nIntegrate Claude Code into backend services and APIs for automated code generation and task execution\nBuild agentic workflows that read files, run commands, and edit code autonomously\nAdd structured AI output to data pipelines with type-safe Zod/Pydantic schemas\nCreate multi-turn conversational agents with persistent session management",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pattern-zones-co/koine`",
+    "usage": "```\nUse the Koine HTTP gateway to automate [TASK] in [PROGRAMMING_LANGUAGE]. Write a script that [SPECIFIC_ACTION] using the Claude Code SDK. For example: 'Use Koine to automate the generation of a weekly report in Python. The script should fetch data from [DATA_SOURCE], process it with [PROCESSING_METHOD], and save the output to [OUTPUT_FILE].' Include error handling for [COMMON_ERRORS].\n```\nCopy\n\n```\n```python\n# Koine Automated Weekly Report Generator\n# Fetches sales data from PostgreSQL, processes it, and saves a summary report\n\nimport os\nfrom datetime import datetime, timedelta\nfrom koine import ClaudeClient\n\n# Initialize Koine client with API key from environment\nclient = ClaudeClient(api_key=os.getenv('KOINE_API_KEY'))\n\n# Define date range for the report\nend_date = datetime.now().date()\nstart_date = end_date - timedelta(days=7)\n\n# Fetch sales data from PostgreSQL\nsales_query = \"\"\"\nSELECT product_id, SUM(quantity) as total_quantity, SUM(revenue) as total_revenue\nFROM sales\nWHERE sale_date BETWEEN %s AND %s\nGROUP BY product_id\nORDER BY total_revenue DESC\n\"\"\"\n\ntry:\n    # Execute query and get raw data\n    sales_data = client.execute_sql(\n        db_type=\"postgresql\",\n        query=sales_query,\n        params=[start_date, end_date]\n    )\n\n    # Process data to generate insights\n    top_products = sales_data[:5]\n    total_revenue = sum(row['total_revenue'] for row in sales_data)\n    avg_order_value = total_revenue / len(sales_data) if sales_data else 0\n\n    # Generate report content\n    report_content = f\"\"\"\n    Weekly Sales Report ({start_date} to {end_date})\n    ==========================================\n    \n    Top 5 Products by Revenue:\n    {chr(10).join(f\"- Product {row['product_id']}: ${row['total_revenue']:.2f} ({row['total_quantity']} units)\" for row in top_products)}\n    \n    Summary:\n    - Total Revenue: ${total_revenue:.2f}\n    - Average Order Value: ${avg_order_value:.2f}\n    - Total Transactions: {len(sales_data)}\n    \n    Recommendations:\n    1. Focus marketing efforts on Products {', '.join(str(row['product_id']) for row in top_products[:2])}\n    2. Investigate low-performing products in the bottom 3\n    \"\"\"\n\n    # Save report to file\n    report_filename = f\"weekly_sales_report_{end_date}.md\"\n    with open(report_filename, 'w') as f:\n        f.write(report_content)\n\n    print(f\"Report generated successfully: {report_filename}\")\n    \nexcept Exception as e:\n    error_report = f\"\"\"\n    Error generating report: {str(e)}\n    \n    Troubleshooting steps:\n    1. Verify Koine API key is set in environment variables\n    2. Check PostgreSQL connection details\n    3. Validate the sales_query syntax\n    \"\"\"\n    print(error_report)\n    client.log_error(error_report)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "koine#main-content",
+      "koine#overview",
+      "koine#setup",
+      "koine#examples",
+      "koine#tools",
+      "koine#mcp",
+      "koine#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Koine là một HTTP gateway cho phép gọi Claude Code CLI từ bất kỳ ứng dụng nào thông qua REST API. Nó cung cấp các SDK TypeScript và Python với tính năng type safety đầy đủ, giúp lập trình viên tích hợp các khả năng agentic của Claude Code — như truy cập file, thực thi lệnh và tự động sử dụng công cụ — vào dịch vụ của mình mà không cần tự xây dựng các lớp điều phối (orchestration layers). Bạn có thể triển khai dưới dạng Docker container để chạy các phiên hội thoại multi-turn liên tục qua mạng, hỗ trợ output có cấu trúc. Đây là giải pháp lý tưởng cho backend developer, data engineer và các platform team cần kích hoạt các tính năng lập trình tự động và tự chủ của Claude Code thông qua mã lệnh.\n\n- Tích hợp Claude Code vào các dịch vụ backend và API để tự động hóa việc tạo code và thực thi tác vụ\n- Xây dựng các agentic workflow giúp đọc file, chạy lệnh và chỉnh sửa code một cách tự chủ\n- Thêm output AI có cấu trúc vào data pipeline bằng các schema Zod/Pydantic có tính năng type-safe\n- Tạo các conversational agent multi-turn với cơ chế quản lý session liên tục (persistent session)",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/pattern-zones-co/koine`",
+    "usage_vi": "```\nSử dụng Koine HTTP gateway để tự động hóa [TASK] bằng [PROGRAMMING_LANGUAGE]. Viết một script để thực hiện [SPECIFIC_ACTION] sử dụng Claude Code SDK. Ví dụ: 'Sử dụng Koine để tự động hóa việc tạo báo cáo hàng tuần bằng Python. Script này sẽ lấy dữ liệu từ [DATA_SOURCE], xử lý dữ liệu bằng [PROCESSING_METHOD], và lưu kết quả vào [OUTPUT_FILE].' Nhớ thêm phần xử lý lỗi cho [COMMON_ERRORS].\n```\nCopy\n\n```python\n# Bộ tạo báo cáo tuần tự động bằng Koine\n# Lấy dữ liệu bán hàng từ PostgreSQL, xử lý và lưu báo cáo tóm tắt\n\nimport os\nfrom datetime import datetime, timedelta\nfrom koine import ClaudeClient\n\n# Khởi tạo Koine client với API key từ môi trường\nclient = ClaudeClient(api_key=os.getenv('KOINE_API_KEY'))\n\n# Định nghĩa khoảng thời gian cho báo cáo\nend_date = datetime.now().date()\nstart_date = end_date - timedelta(days=7)\n\n# Lấy dữ liệu bán hàng từ PostgreSQL\nsales_query = \"\"\"\nSELECT product_id, SUM(quantity) as total_quantity, SUM(revenue) as total_revenue\nFROM sales\nWHERE sale_date BETWEEN %s AND %s\nGROUP BY product_id\nORDER BY total_revenue DESC\n\"\"\"\n\ntry:\n    # Thực thi truy vấn và lấy dữ liệu thô\n    sales_data = client.execute_sql(\n        db_type=\"postgresql\",\n        query=sales_query,\n        params=[start_date, end_date]\n    )\n\n    # Xử lý dữ liệu để tạo báo cáo chi tiết\n    top_products = sales_data[:5]\n    total_revenue = sum(row['total_revenue'] for row in sales_data)\n    avg_order_value = total_revenue / len(sales_data) if sales_data else 0\n\n    # Tạo nội dung báo cáo\n    report_content = f\"\"\"\n    Báo cáo Doanh số Tuần ({start_date} đến {end_date})\n    ==========================================\n    \n    Top 5 Sản phẩm theo Doanh thu:\n    {chr(10).join(f\"- Sản phẩm {row['product_id']}: ${row['total_revenue']:.2f} ({row['total_quantity']} đơn vị)\" for row in top_products)}\n    \n    Tóm tắt:\n    - Tổng Doanh thu: ${total_revenue:.2f}\n    - Giá trị Đơn hàng Trung bình: ${avg_order_value:.2f}\n    - Tổng Số lượng Giao dịch: {len(sales_data)}\n    \n    Khuyến nghị:\n    1. Tập trung chiến dịch marketing vào các Sản phẩm {', '.join(str(row['product_id']) for row in top_products[:2])}\n    2. Tìm hiểu nguyên nhân các sản phẩm có doanh số kém trong nhóm 3 sản phẩm cuối bảng\n    \"\"\"\n\n    # Lưu báo cáo vào file\n    report_filename = f\"weekly_sales_report_{end_date}.md\"\n    with open(report_filename, 'w') as f:\n        f.write(report_content)\n\n    print(f\"Đã tạo báo cáo thành công: {report_filename}\")\n    \nexcept Exception as e:\n    error_report = f\"\"\"\n    Lỗi khi tạo báo cáo: {str(e)}\n    \n    Hướng dẫn khắc phục sự cố:\n    1. Kiểm tra xem đã cấu hình Koine API key trong biến môi trường chưa\n    2. Kiểm tra lại thông tin kết nối PostgreSQL\n    3. Xác thực cú pháp truy vấn sales_query\n    \"\"\"\n    print(error_report)\n    client.log_error(error_report)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:40:49.031331Z",
+    "http_status": 200,
+    "content_hash": "e7f06786004ca8a03aad91a54da0fd0988c4c3a1ace145101aff25c3a3088c6a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\koine.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\koine.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Koine - Claude Code dưới dạng Dịch vụ (Claude Code as a Service)",
+  "short_description_vi": "Koine cung cấp HTTP gateway và các bộ SDK cho Claude Code CLI, giúp lập trình viên dễ dàng tích hợp các tính năng của Claude Code vào ứng dụng của mình. Hỗ trợ cả TypeScript và Python, Koine giúp đơn giản hóa việc tự động hóa các tác vụ và workflow vận hành."
+}

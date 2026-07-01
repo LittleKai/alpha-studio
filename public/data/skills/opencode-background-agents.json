@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opencode-background-agents",
+  "slug": "opencode-background-agents",
+  "name": "OpenCode Background Agents",
+  "headline": "OpenCode Background Agents - Async Delegation",
+  "short_description": "OpenCode plugin for async background delegation with context persistence. Operations teams can run research tasks while continuing other work. Integrates with Claude Code agents, supports TypeScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "kdcokenny",
+  "install_command": "git clone https://github.com/kdcokenny/opencode-background-agents.git",
+  "source_repo_url": "https://github.com/kdcokenny/opencode-background-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "async",
+    "claude-code",
+    "background-agents",
+    "opencode",
+    "ai-agents",
+    "ocx",
+    "delegation",
+    "opencode-plugin"
+  ],
+  "sections": {
+    "overview": "opencode-background-agents is an OpenCode plugin that enables asynchronous background task delegation with automatic result persistence to disk. It solves the context-window problem: when Claude's context fills up and compaction occurs, research results are typically lost. This plugin fires off research tasks as background delegations, lets you continue brainstorming or coding without blocking, and automatically saves results as markdown files. When context compacts, the AI knows exactly where to retrieve past research. Tools include delegate() to launch tasks, delegation_read() to retrieve results, and delegation_list() to scan prior work—ideal for operations teams and developers who need continuity across long sessions.\nRun extended research tasks while continuing code review or architecture discussion\nPreserve research across context compaction events within a session\nDelegate read-only exploratory work to background sub-agents\nScan and retrieve past delegations by title and summary without losing context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kdcokenny/opencode-background-agents`",
+    "usage": "```\nUse the OpenCode plugin to delegate a background research task to a Claude Code agent. Task: [RESEARCH_TASK]. Provide context: [CONTEXT_DATA]. Set priority to [PRIORITY_LEVEL] and include a deadline of [DEADLINE]. Return a summary of findings in [FORMAT] when complete.\n```\nCopy\n\n```\n```\n**Background Agent Task Completed: Competitor Analysis for Acme Corp**\n\n**Task**: Research Acme Corp's latest product launches, pricing strategies, and customer sentiment for Q3 2024.\n**Context**: Acme Corp is our primary competitor in the cloud storage space. We need this data to refine our upcoming product roadmap.\n**Priority**: High | **Deadline**: October 15, 2024 | **Agent**: claude-code-3.5\n\n**Findings Summary**:\n\n1. **Product Launches**:\n   - Acme Cloud 2.0 released on August 22, 2024, with a new \"AI Insights\" feature (priced at $49/month for Pro tier).\n   - Competitor also launched a free tier with 5GB storage, targeting SMBs.\n\n2. **Pricing Strategy**:\n   - 15% price increase across all tiers in September 2024.\n   - Introduced \"Enterprise Plus\" plan at $999/month with 10TB storage and 24/7 support.\n\n3. **Customer Sentiment (G2 Reviews)**:\n   - 4.2/5 stars (down from 4.5 in Q2).\n   - Top complaints: \"UI feels outdated\" and \"customer support slow to respond.\"\n   - Praise for \"reliability\" and \"integration with third-party apps.\"\n\n**Recommendations**:\n- Accelerate our \"Modern UI\" project to address competitor's weakness.\n- Consider a mid-tier plan between $29-$39 to compete with free tier.\n- Monitor Acme's Enterprise Plus tier for potential enterprise wins.\n\n**Next Steps**:\n- Share findings with Product Team by EOD.\n- Schedule a strategy session with Marketing to discuss pricing adjustments.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "opencode-background-agents#main-content",
+      "opencode-background-agents#overview",
+      "opencode-background-agents#setup",
+      "opencode-background-agents#examples",
+      "opencode-background-agents#tools",
+      "opencode-background-agents#mcp",
+      "opencode-background-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "opencode-background-agents is an OpenCode plugin that enables asynchronous background task delegation with automatic result persistence to disk. It solves the context-window problem: when Claude's context fills up and compaction occurs, research results are typically lost. This plugin fires off research tasks as background delegations, lets you continue brainstorming or coding without blocking, and automatically saves results as markdown files. When context compacts, the AI knows exactly where to retrieve past research. Tools include delegate() to launch tasks, delegation_read() to retrieve results, and delegation_list() to scan prior work—ideal for operations teams and developers who need continuity across long sessions.\nRun extended research tasks while continuing code review or architecture discussion\nPreserve research across context compaction events within a session\nDelegate read-only exploratory work to background sub-agents\nScan and retrieve past delegations by title and summary without losing context",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kdcokenny/opencode-background-agents`",
+    "usage_vi": "```\nUse the OpenCode plugin to delegate a background research task to a Claude Code agent. Task: [RESEARCH_TASK]. Provide context: [CONTEXT_DATA]. Set priority to [PRIORITY_LEVEL] and include a deadline of [DEADLINE]. Return a summary of findings in [FORMAT] when complete.\n```\nCopy\n\n```\n```\n**Background Agent Task Completed: Competitor Analysis for Acme Corp**\n\n**Task**: Research Acme Corp's latest product launches, pricing strategies, and customer sentiment for Q3 2024.\n**Context**: Acme Corp is our primary competitor in the cloud storage space. We need this data to refine our upcoming product roadmap.\n**Priority**: High | **Deadline**: October 15, 2024 | **Agent**: claude-code-3.5\n\n**Findings Summary**:\n\n1. **Product Launches**:\n   - Acme Cloud 2.0 released on August 22, 2024, with a new \"AI Insights\" feature (priced at $49/month for Pro tier).\n   - Competitor also launched a free tier with 5GB storage, targeting SMBs.\n\n2. **Pricing Strategy**:\n   - 15% price increase across all tiers in September 2024.\n   - Introduced \"Enterprise Plus\" plan at $999/month with 10TB storage and 24/7 support.\n\n3. **Customer Sentiment (G2 Reviews)**:\n   - 4.2/5 stars (down from 4.5 in Q2).\n   - Top complaints: \"UI feels outdated\" and \"customer support slow to respond.\"\n   - Praise for \"reliability\" and \"integration with third-party apps.\"\n\n**Recommendations**:\n- Accelerate our \"Modern UI\" project to address competitor's weakness.\n- Consider a mid-tier plan between $29-$39 to compete with free tier.\n- Monitor Acme's Enterprise Plus tier for potential enterprise wins.\n\n**Next Steps**:\n- Share findings with Product Team by EOD.\n- Schedule a strategy session with Marketing to discuss pricing adjustments.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:26.426408Z",
+    "http_status": 200,
+    "content_hash": "c28be24dec9be8bba5a418be0184e7df94c799b6f80821768e0f650e39f10e4f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opencode-background-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opencode-background-agents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OpenCode Background Agents - Async Delegation",
+  "short_description_vi": "OpenCode plugin for async background delegation with context persistence. Operations teams can run research tasks while continuing other work. Integrates with Claude Code agents, supports TypeScript."
+}

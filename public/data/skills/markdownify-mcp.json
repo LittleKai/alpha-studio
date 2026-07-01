@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/markdownify-mcp",
+  "slug": "markdownify-mcp",
+  "name": "Markdownify MCP",
+  "headline": "Markdownify-mcp: Convert Content to Markdown Easily",
+  "short_description": "Markdownify-mcp is a powerful server that converts various content formats into Markdown, enhancing documentation and content creation workflows. Built with TypeScript, it uses the Model Context Protocol for efficient processing.",
+  "tier": "Gold",
+  "category": "GrowthMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "zcaceres",
+  "install_command": "claude install zcaceres/markdownify-mcp",
+  "source_repo_url": "https://github.com/zcaceres/markdownify-mcp",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "TypeScript",
+    "markdown",
+    "MCP",
+    "AI tools",
+    "conversion"
+  ],
+  "sections": {
+    "overview": "markdownify-mcp is a Model Context Protocol server that transforms multiple content formats into Markdown, enabling efficient documentation and content creation workflows. Built with TypeScript, it leverages the markitdown library to handle format conversions and integrates with AI agents like Claude Code and Cursor through the MCP stdio transport. The skill supports file-based conversions—notably PDF to Markdown—and includes Docker deployment options for containerized environments. Developers benefit from automated format conversion that preserves content structure and formatting, streamlining documentation pipelines and content processing tasks.\nConvert technical documentation from PDF to Markdown for easier editing and sharing.\nTransform meeting notes into Markdown format for streamlined collaboration among team members.\nGenerate Markdown files from OCR outputs to digitize printed materials efficiently.\nCreate Markdown content for web articles, ensuring consistent formatting across platforms.",
+    "setup": "Terminal\nCopy\n`claude install zcaceres/markdownify-mcp`\n`git clone https://github.com/zcaceres/markdownify-mcp`",
+    "usage": "```\nConvert the following [CONTENT] from [SOURCE_FORMAT] to Markdown using the markdownify-mcp server. Ensure the output maintains the original structure and formatting. Include any necessary metadata or frontmatter based on the context provided.\n```\nCopy\n\n```\nHere is the converted Markdown content from the provided HTML:\n\n```markdown\n# Sample Blog Post\n\n**Author:** Jane Doe\n**Date:** October 10, 2023",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "markdownify-mcp#main-content",
+      "markdownify-mcp#overview",
+      "markdownify-mcp#setup",
+      "markdownify-mcp#examples",
+      "markdownify-mcp#tools",
+      "markdownify-mcp#mcp",
+      "markdownify-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "markdownify-mcp is a Model Context Protocol server that transforms multiple content formats into Markdown, enabling efficient documentation and content creation workflows. Built with TypeScript, it leverages the markitdown library to handle format conversions and integrates with AI agents like Claude Code and Cursor through the MCP stdio transport. The skill supports file-based conversions—notably PDF to Markdown—and includes Docker deployment options for containerized environments. Developers benefit from automated format conversion that preserves content structure and formatting, streamlining documentation pipelines and content processing tasks.\nConvert technical documentation from PDF to Markdown for easier editing and sharing.\nTransform meeting notes into Markdown format for streamlined collaboration among team members.\nGenerate Markdown files from OCR outputs to digitize printed materials efficiently.\nCreate Markdown content for web articles, ensuring consistent formatting across platforms.",
+    "setup_vi": "Terminal\nCopy\n`claude install zcaceres/markdownify-mcp`\n`git clone https://github.com/zcaceres/markdownify-mcp`",
+    "usage_vi": "```\nConvert the following [CONTENT] from [SOURCE_FORMAT] to Markdown using the markdownify-mcp server. Ensure the output maintains the original structure and formatting. Include any necessary metadata or frontmatter based on the context provided.\n```\nCopy\n\n```\nHere is the converted Markdown content from the provided HTML:\n\n```markdown\n# Sample Blog Post\n\n**Author:** Jane Doe\n**Date:** October 10, 2023"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:26.579866Z",
+    "http_status": 200,
+    "content_hash": "f7d1fcf38b9f42815d280dab86f8a48525a207195dd73812b89f91b2d6586fe0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\markdownify-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\markdownify-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Markdownify-mcp: Convert Content to Markdown Easily",
+  "short_description_vi": "Markdownify-mcp is a powerful server that converts various content formats into Markdown, enhancing documentation and content creation workflows. Built with TypeScript, it uses the Model Context Protocol for efficient processing."
+}

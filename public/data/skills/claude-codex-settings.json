@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-codex-settings",
+  "slug": "claude-codex-settings",
+  "name": "browser-use",
+  "headline": "Personal Claude Code and Codex setup",
+  "short_description": "Claude Code and OpenAI Codex setup with pre-configured skills, commands, and agents for daily operations. Ideal for teams using AI agents to automate workflows, manage GitHub repositories, and integrate with Slack.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "fcakyon",
+  "install_command": "git clone https://github.com/fcakyon/claude-codex-settings.git",
+  "source_repo_url": "https://github.com/fcakyon/claude-codex-settings",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "github",
+    "claude-ai",
+    "claude-code-plugin",
+    "claudecode-config",
+    "codex",
+    "claude-skills",
+    "claudecode",
+    "claude-code",
+    "plugin",
+    "cursor",
+    "gemini-cli",
+    "ai-tools",
+    "commit-message",
+    "mcp-server",
+    "slack",
+    "mcp",
+    "context7",
+    "codex-cli",
+    "pull-requests"
+  ],
+  "sections": {
+    "overview": "claude-codex-settings provides a comprehensive configuration framework for Claude Code and Cursor environments, bundling pre-configured skills, commands, and agent plugins to streamline daily development operations. The repository includes organized plugin systems across multiple directories (.agents/plugins, .claude-plugin, .cursor-plugin) and supports integration with tools like Overleaf for applying review comments. It reduces setup time by offering ready-to-use agent configurations that work across Claude and Cursor platforms. Developers can leverage these pre-built settings to establish consistent agent behaviors and extend functionality through the plugin architecture. The project is actively maintained with 279 commits and includes documentation for configuring skills and managing long-running sessions.\nAutomate the creation and review of pull requests in GitHub to streamline code collaboration.\nIntegrate Azure services for efficient cloud resource management and monitoring.\nSimplify code quality checks and enforce best practices using the code simplifier agent.\nSet up notifications for important events or updates directly on your desktop.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fcakyon/claude-codex-settings`",
+    "usage": "```\nSet up a [PURPOSE: e.g., 'GitHub automation workflow', 'Slack integration for customer support', or 'AI-driven code review system'] using Claude Code and OpenAI Codex. Include the following pre-configured settings: [LIST SPECIFIC SKILLS, COMMANDS, OR AGENTS, e.g., 'GitHub issue triage agent', 'Slack bot for deployment alerts', 'Code review agent with pre-approved rules']. Ensure the setup is optimized for [SPECIFIC USE CASE, e.g., 'high-volume repositories', 'real-time team collaboration', or 'automated testing pipelines']. Provide the exact commands or configuration files needed to deploy this system in [TARGET ENVIRONMENT, e.g., 'a local development environment', 'AWS Lambda', or 'a Kubernetes cluster'].\n```\nCopy\n\n```\nHere’s a pre-configured setup for a **GitHub automation workflow** using Claude Code and OpenAI Codex, optimized for a team managing a high-volume repository (e.g., `acme-ai-platform`). This setup includes:\n\n1. **Agents and Skills**:\n   - **GitHub Issue Triage Agent**: Automatically labels, assigns, and prioritizes new issues based on keywords (e.g., `bug`, `enhancement`, `docs`) and contributor history. Pre-configured rules:\n     - High-priority: Issues labeled `P0` or containing `critical` in the title.\n     - Assign to `@core-team` if no assignee within 2 hours.\n     - Auto-close stale issues after 30 days of inactivity.\n   - **PR Review Agent**: Scans pull requests for common anti-patterns (e.g., untested code, missing docs) and suggests fixes using OpenAI Codex. Pre-loaded with a `code-review-rules.json` file containing:\n ```json\n     {\n       \"rules\": [\n         {\"pattern\": \"TODO\", \"action\": \"comment\", \"message\": \"Please resolve TODO before merging.\"},\n         {\"pattern\": \"console.log\", \"action\": \"comment\", \"message\": \"Remove debug logs before merging.\"},\n         {\"pattern\": \"missing_tests\", \"action\": \"request_changes\", \"message\": \"Add unit tests for new functionality.\"}\n       ]\n     }\n ```\n\n2. **Commands for Deployment**:\n   - Clone the repository:\n ```bash\n     git clone https://github.com/acme-ai-platform/.github.git && cd .github\n ```\n   - Install dependencies:\n ```bash\n     pip install claude-codex==1.2.0 openai==0.28.0\n ```\n   - Deploy the agents using the provided `claude-codex-config.yaml`:\n ```yaml\n     agents:\n       - name: github-issue-triage\n         type: github_issue_agent\n         triggers:\n           - event: issues.opened\n           - event: issue_comment.created\n         actions:\n           - label_issue\n           - assign_issue\n           - comment_on_issue\n       - name: pr-review\n         type: github_pr_agent\n         triggers:\n           - event: pull_request.opened\n           - event: pull_request.synchronize\n         actions:\n           - scan_code\n           - suggest_changes\n ```\n   - Run the setup:\n ```bash\n     claude-codex --config claude-codex-config.yaml --deploy\n ```\n\n3. **Integration with Slack**:\n   - Configure a Slack bot (`@acme-ai-bot`) to receive real-time alerts for:\n     - New high-priority issues.\n     - PR review comments or requested changes.\n     - Deployment failures (via GitHub Actions).\n   - Example Slack message for a new issue:\n     > 🚨 **New Issue Alert**\n     > **Repo**: acme-ai-platform\n     > **Issue**: #1234 - \"Memory leak in inference engine\"\n     > **Priority**: High\n     > **Assigned to**: @alice (auto-assigned)\n     > [View Issue](https://github.com/acme-ai-platform/issues/1234)\n\nThis setup reduces manual triage time by **~60%** and ensures consistent code quality across the repository. The agents are designed to scale with the team’s growth and can be extended with custom rules or additional triggers.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-codex-settings#main-content",
+      "claude-codex-settings#overview",
+      "claude-codex-settings#setup",
+      "claude-codex-settings#examples",
+      "claude-codex-settings#tools",
+      "claude-codex-settings#mcp",
+      "claude-codex-settings#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-codex-settings provides a comprehensive configuration framework for Claude Code and Cursor environments, bundling pre-configured skills, commands, and agent plugins to streamline daily development operations. The repository includes organized plugin systems across multiple directories (.agents/plugins, .claude-plugin, .cursor-plugin) and supports integration with tools like Overleaf for applying review comments. It reduces setup time by offering ready-to-use agent configurations that work across Claude and Cursor platforms. Developers can leverage these pre-built settings to establish consistent agent behaviors and extend functionality through the plugin architecture. The project is actively maintained with 279 commits and includes documentation for configuring skills and managing long-running sessions.\nAutomate the creation and review of pull requests in GitHub to streamline code collaboration.\nIntegrate Azure services for efficient cloud resource management and monitoring.\nSimplify code quality checks and enforce best practices using the code simplifier agent.\nSet up notifications for important events or updates directly on your desktop.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fcakyon/claude-codex-settings`",
+    "usage_vi": "```\nSet up a [PURPOSE: e.g., 'GitHub automation workflow', 'Slack integration for customer support', or 'AI-driven code review system'] using Claude Code and OpenAI Codex. Include the following pre-configured settings: [LIST SPECIFIC SKILLS, COMMANDS, OR AGENTS, e.g., 'GitHub issue triage agent', 'Slack bot for deployment alerts', 'Code review agent with pre-approved rules']. Ensure the setup is optimized for [SPECIFIC USE CASE, e.g., 'high-volume repositories', 'real-time team collaboration', or 'automated testing pipelines']. Provide the exact commands or configuration files needed to deploy this system in [TARGET ENVIRONMENT, e.g., 'a local development environment', 'AWS Lambda', or 'a Kubernetes cluster'].\n```\nCopy\n\n```\nHere’s a pre-configured setup for a **GitHub automation workflow** using Claude Code and OpenAI Codex, optimized for a team managing a high-volume repository (e.g., `acme-ai-platform`). This setup includes:\n\n1. **Agents and Skills**:\n   - **GitHub Issue Triage Agent**: Automatically labels, assigns, and prioritizes new issues based on keywords (e.g., `bug`, `enhancement`, `docs`) and contributor history. Pre-configured rules:\n     - High-priority: Issues labeled `P0` or containing `critical` in the title.\n     - Assign to `@core-team` if no assignee within 2 hours.\n     - Auto-close stale issues after 30 days of inactivity.\n   - **PR Review Agent**: Scans pull requests for common anti-patterns (e.g., untested code, missing docs) and suggests fixes using OpenAI Codex. Pre-loaded with a `code-review-rules.json` file containing:\n ```json\n     {\n       \"rules\": [\n         {\"pattern\": \"TODO\", \"action\": \"comment\", \"message\": \"Please resolve TODO before merging.\"},\n         {\"pattern\": \"console.log\", \"action\": \"comment\", \"message\": \"Remove debug logs before merging.\"},\n         {\"pattern\": \"missing_tests\", \"action\": \"request_changes\", \"message\": \"Add unit tests for new functionality.\"}\n       ]\n     }\n ```\n\n2. **Commands for Deployment**:\n   - Clone the repository:\n ```bash\n     git clone https://github.com/acme-ai-platform/.github.git && cd .github\n ```\n   - Install dependencies:\n ```bash\n     pip install claude-codex==1.2.0 openai==0.28.0\n ```\n   - Deploy the agents using the provided `claude-codex-config.yaml`:\n ```yaml\n     agents:\n       - name: github-issue-triage\n         type: github_issue_agent\n         triggers:\n           - event: issues.opened\n           - event: issue_comment.created\n         actions:\n           - label_issue\n           - assign_issue\n           - comment_on_issue\n       - name: pr-review\n         type: github_pr_agent\n         triggers:\n           - event: pull_request.opened\n           - event: pull_request.synchronize\n         actions:\n           - scan_code\n           - suggest_changes\n ```\n   - Run the setup:\n ```bash\n     claude-codex --config claude-codex-config.yaml --deploy\n ```\n\n3. **Integration with Slack**:\n   - Configure a Slack bot (`@acme-ai-bot`) to receive real-time alerts for:\n     - New high-priority issues.\n     - PR review comments or requested changes.\n     - Deployment failures (via GitHub Actions).\n   - Example Slack message for a new issue:\n     > 🚨 **New Issue Alert**\n     > **Repo**: acme-ai-platform\n     > **Issue**: #1234 - \"Memory leak in inference engine\"\n     > **Priority**: High\n     > **Assigned to**: @alice (auto-assigned)\n     > [View Issue](https://github.com/acme-ai-platform/issues/1234)\n\nThis setup reduces manual triage time by **~60%** and ensures consistent code quality across the repository. The agents are designed to scale with the team’s growth and can be extended with custom rules or additional triggers.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:31:02.715683Z",
+    "http_status": 200,
+    "content_hash": "8b1857ea3f2abc11b933731cfe766f5d0c61c756edf8f499163f57351c7d8de0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-codex-settings.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-codex-settings.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Personal Claude Code and Codex setup",
+  "short_description_vi": "Claude Code and OpenAI Codex setup with pre-configured skills, commands, and agents for daily operations. Ideal for teams using AI agents to automate workflows, manage GitHub repositories, and integrate with Slack."
+}

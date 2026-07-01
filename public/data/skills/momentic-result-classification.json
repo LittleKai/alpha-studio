@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/momentic-result-classification",
+  "slug": "momentic-result-classification",
+  "name": "Momentic Result Classification",
+  "headline": "Momentic Result Classification: Classify Test",
+  "short_description": "Momentic Result Classification is a skill for classifying failures in Momentic test runs by analyzing results data. It's designed for testers and developers using the Momentic end-to-end testing framework.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "momentic-ai",
+  "install_command": "git clone https://github.com/momentic-ai/skills",
+  "source_repo_url": "https://github.com/momentic-ai/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "momentic",
+    "testing-skills",
+    "result",
+    "classification"
+  ],
+  "sections": {
+    "overview": "Momentic Result Classification helps developers and testers understand why their end-to-end tests fail by analyzing test results data and identifying likely failure causes. The skill automatically separates genuine bugs from test noise, improving the signal-to-noise ratio of your Momentic test suite. It works by processing Momentic test run results and categorizing failures to help teams focus on real issues. This is particularly useful for teams running large test suites across browser, Android, and iOS platforms who need to quickly triage failures. By integrating with Claude Code, it enables natural-language analysis of test results.\nAnalyze test run failures\nClassify failure categories\nReview past test runs for context\nUtilize Momentic tools for metadata",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/momentic-ai/skills --skill momentic-result-classification`\n`git clone https://github.com/momentic-ai/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "momentic-result-classification#main-content",
+      "momentic-result-classification#overview",
+      "momentic-result-classification#setup",
+      "momentic-result-classification#examples",
+      "momentic-result-classification#tools",
+      "momentic-result-classification#related"
+    ],
+    "overview_vi": "Momentic Result Classification giúp lập trình viên và kiểm thử viên hiểu rõ lý do các bài test end-to-end thất bại bằng cách phân tích dữ liệu kết quả test và xác định nguyên nhân lỗi khả thi. Skill này tự động phân tách lỗi thực tế (genuine bugs) khỏi các tín hiệu nhiễu (test noise), giúp cải thiện tỷ lệ tín hiệu trên nhiễu (signal-to-noise ratio) cho bộ test suite của Momentic. Hoạt động bằng cách xử lý kết quả các lượt chạy test Momentic và phân loại lỗi, skill này giúp các đội ngũ tập trung vào các vấn đề thực tế. Điều này đặc biệt hữu ích cho các đội ngũ vận hành các bộ test lớn trên nhiều nền tảng trình duyệt, Android và iOS cần nhanh chóng phân loại và đánh giá lỗi (triage). Nhờ tích hợp với Claude Code, skill này cho phép phân tích kết quả test bằng ngôn ngữ tự nhiên.\n\nPhân tích các lượt test thất bại\nPhân loại danh mục lỗi\nXem lại các lượt chạy test trước để lấy ngữ cảnh\nSử dụng các công cụ của Momentic để khai thác metadata",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/momentic-ai/skills --skill momentic-result-classification`\n`git clone https://github.com/momentic-ai/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ nào\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:00:26.791678Z",
+    "http_status": 200,
+    "content_hash": "6086720e669deea6e0b0badcfec00f0f51edb934586a611e9165c76ce9bf4183",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\momentic-result-classification.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\momentic-result-classification.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phân loại kết quả Momentic: Phân loại Test",
+  "short_description_vi": "Momentic Result Classification là một skill giúp phân loại các lỗi trong các lượt chạy test Momentic bằng cách phân tích dữ liệu kết quả. Skill này được thiết kế dành cho các tester và developer sử dụng framework kiểm thử end-to-end của Momentic."
+}

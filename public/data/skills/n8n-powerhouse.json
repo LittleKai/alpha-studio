@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-powerhouse",
+  "slug": "n8n-powerhouse",
+  "name": "n8n Powerhouse",
+  "headline": "n8n Powerhouse - Automate workflows with Claude",
+  "short_description": "Turn Claude into an n8n expert. Build, validate, and deploy production-ready workflows through conversation. Ideal for operations teams automating complex processes. Connects to n8n workflows and integrates with various business tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "promptadvisers",
+  "install_command": "git clone https://github.com/promptadvisers/n8n-powerhouse.git",
+  "source_repo_url": "https://github.com/promptadvisers/n8n-powerhouse",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "n8n Powerhouse equips Claude with specialized knowledge across eight skill modules covering workflow architecture, node configuration, expression syntax, and production deployment patterns. It integrates the n8n MCP (Model Context Protocol) to give Claude direct access to your n8n instance, enabling it to search nodes, create workflows, validate configurations, and debug issues in real time. Rather than providing generic guidance, Claude can analyze your stack, recommend appropriate patterns (webhook processing, idempotency, error handling), and actually build and deploy workflows end-to-end. Operations teams, automation engineers, and business users benefit from reducing manual workflow creation time and gaining access to production-ready patterns for complex integrations.\nE-commerce automation: sync Shopify orders to CRM platforms with error handling and notifications\nWebhook processing: build secure, idempotent webhook workflows with signature verification and retry logic\nTool selection guidance: determine whether to use n8n alone or combine it with Python for complex data processing\nExpression debugging: troubleshoot expression syntax errors and data access patterns in workflows\n- **Trigger**: New customer sign-up in [CRM]\n- **Actions**:\n  - Create user in [SAAS_PLATFORM]\n  - Send welcome email via [EMAIL_SERVICE]\n  - Update CRM status\n  - Log activity in [DATABASE]",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/promptadvisers/n8n-powerhouse`",
+    "usage": "```\nAct as an n8n expert and help me build a workflow for [COMPANY] in the [INDUSTRY] sector. I need to automate [PROCESS] using the following tools: [TOOLS]. Provide the n8n workflow JSON and validate it for production use. Then, give me deployment instructions.\n```\nCopy\n\n```\n# n8n Workflow for [COMPANY] Customer Onboarding Automation",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "n8n-powerhouse#main-content",
+      "n8n-powerhouse#overview",
+      "n8n-powerhouse#setup",
+      "n8n-powerhouse#examples",
+      "n8n-powerhouse#tools",
+      "n8n-powerhouse#mcp",
+      "n8n-powerhouse#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "n8n Powerhouse equips Claude with specialized knowledge across eight skill modules covering workflow architecture, node configuration, expression syntax, and production deployment patterns. It integrates the n8n MCP (Model Context Protocol) to give Claude direct access to your n8n instance, enabling it to search nodes, create workflows, validate configurations, and debug issues in real time. Rather than providing generic guidance, Claude can analyze your stack, recommend appropriate patterns (webhook processing, idempotency, error handling), and actually build and deploy workflows end-to-end. Operations teams, automation engineers, and business users benefit from reducing manual workflow creation time and gaining access to production-ready patterns for complex integrations.\nE-commerce automation: sync Shopify orders to CRM platforms with error handling and notifications\nWebhook processing: build secure, idempotent webhook workflows with signature verification and retry logic\nTool selection guidance: determine whether to use n8n alone or combine it with Python for complex data processing\nExpression debugging: troubleshoot expression syntax errors and data access patterns in workflows\n- **Trigger**: New customer sign-up in [CRM]\n- **Actions**:\n  - Create user in [SAAS_PLATFORM]\n  - Send welcome email via [EMAIL_SERVICE]\n  - Update CRM status\n  - Log activity in [DATABASE]",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/promptadvisers/n8n-powerhouse`",
+    "usage_vi": "```\nAct as an n8n expert and help me build a workflow for [COMPANY] in the [INDUSTRY] sector. I need to automate [PROCESS] using the following tools: [TOOLS]. Provide the n8n workflow JSON and validate it for production use. Then, give me deployment instructions.\n```\nCopy\n\n```\n# n8n Workflow for [COMPANY] Customer Onboarding Automation"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:31:33.440167Z",
+    "http_status": 200,
+    "content_hash": "c6b77c55e50e6069d555ba9122114cca5adebed1dfea6709ad912ec18a041662",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-powerhouse.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-powerhouse.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "n8n Powerhouse - Automate workflows with Claude",
+  "short_description_vi": "Turn Claude into an n8n expert. Build, validate, and deploy production-ready workflows through conversation. Ideal for operations teams automating complex processes. Connects to n8n workflows and integrates with various business tools."
+}

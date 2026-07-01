@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mirobody",
+  "slug": "mirobody",
+  "name": "browser-use",
+  "headline": "MiroBody - AI Data Engine for Automation",
+  "short_description": "MiroBody is an open-source AI-native data engine for personal data. It enables operations teams to automate data processing and analysis. It connects to Python workflows and supports Claude agents. Use it to streamline data handling and improve operational efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "thetahealth",
+  "install_command": "git clone https://github.com/thetahealth/mirobody.git",
+  "source_repo_url": "https://github.com/thetahealth/mirobody",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "MiroBody is an open-source data engine designed for operations teams to automate personal data processing and analysis workflows. It integrates with Python environments and supports Claude agents, enabling seamless data handling without manual intervention. The engine connects directly to AI workflows, allowing teams to streamline operational data tasks and improve efficiency through automation. Built for technical teams managing personal or health-related data, MiroBody provides structured automation capabilities for reducing manual data work.\nDevelop custom health analysis tools that integrate with personal health data from various devices.\nCreate conversational agents that provide personalized responses based on user-specific data.\nAutomate data analysis processes using Python scripts that can be easily integrated into the Mirobody framework.\nBuild finance or legal assistants that utilize personal data to offer tailored advice and insights.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thetahealth/mirobody`",
+    "usage": "```\nUse MiroBody to process and analyze the [DATASET_NAME] dataset stored in [DATA_LOCATION]. Perform the following tasks: 1) Clean the data by handling missing values, duplicates, and outliers using [METHODS]. 2) Generate summary statistics and key insights for [METRICS]. 3) Create a Python script to automate future updates to this dataset. 4) Document the findings in a structured report with recommendations for [USE_CASE].\n```\nCopy\n\n```\n### MiroBody Data Processing Report: Customer Support Tickets (Q2 2024)\n\n**Dataset Overview:**\n- Source: Zendesk export (CSV) from /data/support_tickets/q2_2024.csv\n- Records processed: 12,487 tickets\n- Timeframe: April 1 - June 30, 2024\n\n**Data Cleaning Results:**\n- Missing values resolved: 892 (7.2%) - primarily in 'assigned_agent' field\n- Duplicates detected: 247 (1.98%) - merged using ticket_id + timestamp\n- Outliers identified: 189 high-priority tickets with resolution time > 7 days (flagged for review)\n\n**Key Insights:**\n1. **Response Time Trends:** Average first response time improved from 4.2h (April) to 3.1h (June) after implementing new triage workflows.\n2. **Agent Performance:** Top 3 agents (Agent_7, Agent_12, Agent_3) handled 38% of all tickets with 94% satisfaction scores.\n3. **Issue Categories:** 42% of tickets were billing-related (highest volume), followed by 28% technical issues and 15% account management.\n\n**Automation Script Generated:**\n```python\nimport pandas as pd\nfrom mirobody import clean_data, generate_stats\n\ndef process_tickets(filepath):\n    df = pd.read_csv(filepath)\n    cleaned = clean_data(df, \n                        missing_strategy='median',\n                        duplicate_key='ticket_id',\n                        outlier_threshold=7)\n    stats = generate_stats(cleaned, \n                          metrics=['response_time', 'satisfaction_score'],\n                          group_by='agent')\n    return cleaned, stats\n```\n\n**Recommendations:**\n- Implement automated tagging for billing tickets to route to specialized team\n- Create agent performance dashboards using the generated statistics\n- Schedule monthly data quality checks using the provided script\n\n**Next Steps:**\n1. Deploy the cleaning pipeline to run nightly\n2. Set up alerts for tickets exceeding 7-day resolution time\n3. Share insights with support leadership by EOD Friday\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mirobody#main-content",
+      "mirobody#overview",
+      "mirobody#setup",
+      "mirobody#examples",
+      "mirobody#tools",
+      "mirobody#mcp",
+      "mirobody#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MiroBody is an open-source data engine designed for operations teams to automate personal data processing and analysis workflows. It integrates with Python environments and supports Claude agents, enabling seamless data handling without manual intervention. The engine connects directly to AI workflows, allowing teams to streamline operational data tasks and improve efficiency through automation. Built for technical teams managing personal or health-related data, MiroBody provides structured automation capabilities for reducing manual data work.\nDevelop custom health analysis tools that integrate with personal health data from various devices.\nCreate conversational agents that provide personalized responses based on user-specific data.\nAutomate data analysis processes using Python scripts that can be easily integrated into the Mirobody framework.\nBuild finance or legal assistants that utilize personal data to offer tailored advice and insights.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thetahealth/mirobody`",
+    "usage_vi": "```\nUse MiroBody to process and analyze the [DATASET_NAME] dataset stored in [DATA_LOCATION]. Perform the following tasks: 1) Clean the data by handling missing values, duplicates, and outliers using [METHODS]. 2) Generate summary statistics and key insights for [METRICS]. 3) Create a Python script to automate future updates to this dataset. 4) Document the findings in a structured report with recommendations for [USE_CASE].\n```\nCopy\n\n```\n### MiroBody Data Processing Report: Customer Support Tickets (Q2 2024)\n\n**Dataset Overview:**\n- Source: Zendesk export (CSV) from /data/support_tickets/q2_2024.csv\n- Records processed: 12,487 tickets\n- Timeframe: April 1 - June 30, 2024\n\n**Data Cleaning Results:**\n- Missing values resolved: 892 (7.2%) - primarily in 'assigned_agent' field\n- Duplicates detected: 247 (1.98%) - merged using ticket_id + timestamp\n- Outliers identified: 189 high-priority tickets with resolution time > 7 days (flagged for review)\n\n**Key Insights:**\n1. **Response Time Trends:** Average first response time improved from 4.2h (April) to 3.1h (June) after implementing new triage workflows.\n2. **Agent Performance:** Top 3 agents (Agent_7, Agent_12, Agent_3) handled 38% of all tickets with 94% satisfaction scores.\n3. **Issue Categories:** 42% of tickets were billing-related (highest volume), followed by 28% technical issues and 15% account management.\n\n**Automation Script Generated:**\n```python\nimport pandas as pd\nfrom mirobody import clean_data, generate_stats\n\ndef process_tickets(filepath):\n    df = pd.read_csv(filepath)\n    cleaned = clean_data(df, \n                        missing_strategy='median',\n                        duplicate_key='ticket_id',\n                        outlier_threshold=7)\n    stats = generate_stats(cleaned, \n                          metrics=['response_time', 'satisfaction_score'],\n                          group_by='agent')\n    return cleaned, stats\n```\n\n**Recommendations:**\n- Implement automated tagging for billing tickets to route to specialized team\n- Create agent performance dashboards using the generated statistics\n- Schedule monthly data quality checks using the provided script\n\n**Next Steps:**\n1. Deploy the cleaning pipeline to run nightly\n2. Set up alerts for tickets exceeding 7-day resolution time\n3. Share insights with support leadership by EOD Friday\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:03:02.905042Z",
+    "http_status": 200,
+    "content_hash": "80a87edc84226a3d32b381c7fa4ad6d9328e888481a7e328cc1aec78b0d54cff",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mirobody.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mirobody.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MiroBody - AI Data Engine for Automation",
+  "short_description_vi": "MiroBody is an open-source AI-native data engine for personal data. It enables operations teams to automate data processing and analysis. It connects to Python workflows and supports Claude agents. Use it to streamline data handling and improve operational efficiency."
+}

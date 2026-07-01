@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibecodehpc-jp",
+  "slug": "vibecodehpc-jp",
+  "name": "VibeCodeHPC-jp",
+  "headline": "VibeCodeHPC-jp: Multi-Agent HPC Auto-Tuning",
+  "short_description": "Multi-agent HPC code auto-tuning framework coordinating multiple AI CLIs via tmux to optimize parallel code across compilers and strategies without external orchestration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Katagiri-Hoshino-Lab",
+  "install_command": "git clone https://github.com/Katagiri-Hoshino-Lab/VibeCodeHPC-jp.git",
+  "source_repo_url": "https://github.com/Katagiri-Hoshino-Lab/VibeCodeHPC-jp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "auto-tuning",
+    "opencode",
+    "ssh-agent",
+    "tmux",
+    "hpc",
+    "claude-code",
+    "multiagent"
+  ],
+  "sections": {
+    "overview": "VibeCodeHPC is a multi-agent framework that automatically optimizes high-performance computing code by coordinating multiple AI coding assistants (Claude Code, Cline, Gemini CLI, and others) through tmux inter-process communication. It uses a hierarchical agent structure—Project Manager, Software Engineer, Programmer agents, and Code Delivery—to explore parallel optimization strategies across different compilers (GCC, NVIDIA, Intel) and parallelization approaches (OpenMP, CUDA, OpenACC). The framework provides pluggable strategies for HPC parallelization and GPU optimization, with evolutionary exploration across a flat directory structure. It includes built-in monitoring of agent context usage and performance timelines, eliminating the need for external orchestration frameworks while enabling parallel search across optimization variants.\nCFD simulation code optimization across multiple compiler and parallelization combinations\nAutomated exploration of OpenMP, CUDA, and OpenACC implementations for existing HPC codes\nMulti-strategy compiler tuning (GCC, Intel, NVIDIA) with centralized performance tracking\nParallel auto-tuning without orchestration infrastructure, using only tmux for agent coordination",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Katagiri-Hoshino-Lab/VibeCodeHPC-jp`",
+    "usage": "```\n以下のHPCコードを最適化してください。[COMPANY]の[INDUSTRY]セクター向けに、[DATA]の処理を高速化するために必要な変更を提案してください。並列化の可能性とメモリ使用量の削減についても考慮してください。\n```\nCopy\n\n```\n# HPCコード最適化レポート",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibecodehpc-jp#main-content",
+      "vibecodehpc-jp#overview",
+      "vibecodehpc-jp#setup",
+      "vibecodehpc-jp#examples",
+      "vibecodehpc-jp#tools",
+      "vibecodehpc-jp#mcp",
+      "vibecodehpc-jp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "VibeCodeHPC là một framework multi-agent giúp tự động tối ưu hóa mã nguồn tính toán hiệu năng cao (HPC) bằng cách điều phối nhiều trợ lý lập trình AI (Claude Code, Cline, Gemini CLI và các công cụ khác) thông qua giao tiếp liên tiến trình bằng tmux. Framework này sử dụng cấu trúc agent phân cấp—gồm các agent Project Manager, Software Engineer, Programmer và Code Delivery—để khám phá các chiến lược tối ưu hóa song song trên nhiều trình biên dịch (GCC, NVIDIA, Intel) và phương pháp song song hóa (OpenMP, CUDA, OpenACC). Framework cung cấp các chiến lược cắm rút (pluggable) cho việc song song hóa HPC và tối ưu hóa GPU, đi kèm khả năng khám phá tiến hóa trên một cấu trúc thư mục phẳng. Hệ thống tích hợp sẵn tính năng giám sát mức độ sử dụng ngữ cảnh (context) của agent và dòng thời gian hiệu năng, loại bỏ nhu cầu về các framework orchestration bên ngoài trong khi vẫn cho phép tìm kiếm song song giữa các biến thể tối ưu hóa khác nhau.\nTối ưu hóa mã nguồn mô phỏng CFD trên nhiều tổ hợp trình biên dịch và phương pháp song song hóa khác nhau\nTự động khám phá các triển khai OpenMP, CUDA và OpenACC cho mã nguồn HPC hiện có\nTinh chỉnh trình biên dịch đa chiến lược (GCC, Intel, NVIDIA) với tính năng theo dõi hiệu năng tập trung\nTự động tối ưu hóa song song không cần hạ tầng orchestration, chỉ sử dụng tmux để điều phối agent",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Katagiri-Hoshino-Lab/VibeCodeHPC-jp`",
+    "usage_vi": "```\nHãy tối ưu hóa mã nguồn HPC dưới đây. Đề xuất các thay đổi cần thiết để tăng tốc độ xử lý [DATA] cho bộ phận [INDUSTRY] của [COMPANY]. Vui lòng cân nhắc cả khả năng song song hóa và việc giảm thiểu dung lượng bộ nhớ sử dụng.\n```\nCopy\n\n```\n# Báo cáo tối ưu hóa mã nguồn HPC\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:02.309138Z",
+    "http_status": 200,
+    "content_hash": "24c84a4966a23c208bd24ce7fc06f4e540fff0d41ce2890a0b6b90967c9e675c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibecodehpc-jp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibecodehpc-jp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VibeCodeHPC-jp: Tự động tối ưu hóa HPC dạng Multi-Agent",
+  "short_description_vi": "Framework tự động tối ưu hóa mã nguồn HPC dạng multi-agent, điều phối nhiều AI CLI qua tmux để tối ưu hóa mã nguồn song song trên các trình biên dịch và chiến lược khác nhau mà không cần orchestration bên ngoài."
+}

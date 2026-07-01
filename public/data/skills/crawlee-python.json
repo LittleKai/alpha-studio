@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/crawlee-python",
+  "slug": "crawlee-python",
+  "name": "react-native-best-practices",
+  "headline": "Crawlee: Python Web Scraping & Automation Library",
+  "short_description": "Crawlee is a powerful web scraping and browser automation library for Python, enabling the creation of reliable crawlers. It supports data extraction for AI applications, including LLMs and GPTs, and offers features like proxy rotation and compatibility with BeautifulSoup and Playwright.",
+  "tier": "Gold",
+  "category": "GrowthRevOpsMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "apify",
+  "install_command": "claude install apify/crawlee-python",
+  "source_repo_url": "https://github.com/apify/crawlee-python",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "web scraping",
+    "automation",
+    "Python",
+    "data extraction",
+    "crawling"
+  ],
+  "sections": {
+    "overview": "Crawlee is a powerful Python library for web scraping and browser automation that enables developers to build reliable crawlers for data extraction. It supports multiple crawling approaches including BeautifulSoup and Playwright, making it flexible for different scraping scenarios. The library includes built-in features like proxy rotation, session management, and AI-powered browser automation through StagehandCrawler, which uses natural language commands instead of CSS selectors. Crawlee is designed specifically for AI applications, LLMs, and GPT integrations, providing structured data extraction capabilities. It also offers routing, autoscaling, and navigation hooks for advanced crawler configurations.\nExtracting product data from e-commerce sites for competitive analysis.\nAutomating the monitoring of competitor websites to track changes in pricing and offerings.\nCollecting customer reviews from various platforms to perform sentiment analysis.\nGathering large datasets for training AI models and enhancing machine learning algorithms.",
+    "setup": "Terminal\nCopy\n`claude install apify/crawlee-python`\n`git clone https://github.com/apify/crawlee-python`",
+    "usage": "```\nCreate a web crawler using Crawlee-Python to scrape [WEBSITE] for [SPECIFIC_DATA]. The crawler should use [NUMBER] proxies to avoid IP blocking. Extract data into a structured format compatible with Mode for further analysis. Include error handling for [COMMON_ISSUES] such as CAPTCHAs or JavaScript-rendered content.\n```\nCopy\n\n```\nHere's a Python script using Crawlee to scrape product data from an e-commerce website, with proxy rotation and error handling:\n\n```python\nfrom crawlee import Crawler, PlaywrightCrawler, ProxyConfiguration\nfrom bs4 import BeautifulSoup\n\n# Configure proxy rotation\nproxy_config = ProxyConfiguration(\n    proxies=['proxy1:port', 'proxy2:port', 'proxy3:port'],\n    proxyRotationInterval=10\n)\n\nclass ProductCrawler(PlaywrightCrawler):\n    async def handle_page(self, context, page):\n        html = await page.content()\n        soup = BeautifulSoup(html, 'html.parser')\n        products = []\n        for product in soup.select('.product-item'):\n            products.append({\n                'name': product.select_one('.product-name').text.strip(),\n                'price': product.select_one('.product-price').text.strip(),\n                'url': product.select_one('a')['href']\n            })\n        await self.page.create_item({\n            'url': context.request.url,\n            'products': products\n        })\n\n# Run the crawler\ncrawler = ProductCrawler(\n    request_list=[Request('https://example-ecommerce.com/products')],\n    proxy_configuration=proxy_config\n)\nawait crawler.run()\n\n# Export data for Mode\nimport pandas as pd\ncrawler_results = pd.DataFrame(crawler.items)\ncrawler_results.to_csv('ecommerce_products.csv', index=False)\n```\n\nThe script successfully scraped 500 products with names, prices, and URLs. It handled 3 CAPTCHA challenges by rotating proxies and switching user agents. The data is now ready for import into Mode for further analysis and visualization.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "crawlee-python#main-content",
+      "crawlee-python#overview",
+      "crawlee-python#setup",
+      "crawlee-python#examples",
+      "crawlee-python#tools",
+      "crawlee-python#mcp",
+      "crawlee-python#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Crawlee is a powerful Python library for web scraping and browser automation that enables developers to build reliable crawlers for data extraction. It supports multiple crawling approaches including BeautifulSoup and Playwright, making it flexible for different scraping scenarios. The library includes built-in features like proxy rotation, session management, and AI-powered browser automation through StagehandCrawler, which uses natural language commands instead of CSS selectors. Crawlee is designed specifically for AI applications, LLMs, and GPT integrations, providing structured data extraction capabilities. It also offers routing, autoscaling, and navigation hooks for advanced crawler configurations.\nExtracting product data from e-commerce sites for competitive analysis.\nAutomating the monitoring of competitor websites to track changes in pricing and offerings.\nCollecting customer reviews from various platforms to perform sentiment analysis.\nGathering large datasets for training AI models and enhancing machine learning algorithms.",
+    "setup_vi": "Terminal\nCopy\n`claude install apify/crawlee-python`\n`git clone https://github.com/apify/crawlee-python`",
+    "usage_vi": "```\nCreate a web crawler using Crawlee-Python to scrape [WEBSITE] for [SPECIFIC_DATA]. The crawler should use [NUMBER] proxies to avoid IP blocking. Extract data into a structured format compatible with Mode for further analysis. Include error handling for [COMMON_ISSUES] such as CAPTCHAs or JavaScript-rendered content.\n```\nCopy\n\n```\nHere's a Python script using Crawlee to scrape product data from an e-commerce website, with proxy rotation and error handling:\n\n```python\nfrom crawlee import Crawler, PlaywrightCrawler, ProxyConfiguration\nfrom bs4 import BeautifulSoup\n\n# Configure proxy rotation\nproxy_config = ProxyConfiguration(\n    proxies=['proxy1:port', 'proxy2:port', 'proxy3:port'],\n    proxyRotationInterval=10\n)\n\nclass ProductCrawler(PlaywrightCrawler):\n    async def handle_page(self, context, page):\n        html = await page.content()\n        soup = BeautifulSoup(html, 'html.parser')\n        products = []\n        for product in soup.select('.product-item'):\n            products.append({\n                'name': product.select_one('.product-name').text.strip(),\n                'price': product.select_one('.product-price').text.strip(),\n                'url': product.select_one('a')['href']\n            })\n        await self.page.create_item({\n            'url': context.request.url,\n            'products': products\n        })\n\n# Run the crawler\ncrawler = ProductCrawler(\n    request_list=[Request('https://example-ecommerce.com/products')],\n    proxy_configuration=proxy_config\n)\nawait crawler.run()\n\n# Export data for Mode\nimport pandas as pd\ncrawler_results = pd.DataFrame(crawler.items)\ncrawler_results.to_csv('ecommerce_products.csv', index=False)\n```\n\nThe script successfully scraped 500 products with names, prices, and URLs. It handled 3 CAPTCHA challenges by rotating proxies and switching user agents. The data is now ready for import into Mode for further analysis and visualization.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:27:15.957325Z",
+    "http_status": 200,
+    "content_hash": "802e94a824f84b71c18a3ffd9c59520fa0b8ac376268817ce9378e317d7e4fc9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\crawlee-python.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\crawlee-python.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Crawlee: Python Web Scraping & Automation Library",
+  "short_description_vi": "Crawlee is a powerful web scraping and browser automation library for Python, enabling the creation of reliable crawlers. It supports data extraction for AI applications, including LLMs and GPTs, and offers features like proxy rotation and compatibility with BeautifulSoup and Playwright."
+}

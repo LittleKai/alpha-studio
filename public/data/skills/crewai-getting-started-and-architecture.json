@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/crewai-getting-started-and-architecture",
+  "slug": "crewai-getting-started-and-architecture",
+  "name": "CrewAI Getting Started & Architecture",
+  "headline": "CrewAI Getting Started: Project Setup &",
+  "short_description": "This skill provides guidance on setting up CrewAI projects efficiently. It is for developers who want to understand the correct workflow for initiating their CrewAI projects using the CLI.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "crewaiinc",
+  "install_command": "git clone https://github.com/crewaiinc/skills",
+  "source_repo_url": "https://github.com/crewaiinc/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "crewai",
+    "getting",
+    "started",
+    "getting-started",
+    "architecture"
+  ],
+  "sections": {
+    "overview": "This skill teaches the correct workflow for initiating CrewAI projects, from choosing the right abstraction level (LLM.call() vs Agent.kickoff() vs Crew.kickoff() vs Flow) to CLI scaffolding and configuration. It covers YAML setup for agents and tasks, wiring @CrewBase crews, writing Flows with @start/@listen decorators, and variable interpolation patterns. The skill addresses common setup issues developers face when starting new CrewAI projects, helping them select appropriate abstraction levels and properly configure their project structure. It's designed for developers who want to follow best practices and understand CrewAI architecture decisions from the start.\nScaffold a new CrewAI project using the CLI.\nModify generated files for a CrewAI project.\nLearn about directory structure and configuration for CrewAI.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/crewaiinc/skills --skill getting-started`\n`git clone https://github.com/crewaiinc/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "crewai-getting-started-and-architecture#main-content",
+      "crewai-getting-started-and-architecture#overview",
+      "crewai-getting-started-and-architecture#setup",
+      "crewai-getting-started-and-architecture#examples",
+      "crewai-getting-started-and-architecture#tools",
+      "crewai-getting-started-and-architecture#mcp",
+      "crewai-getting-started-and-architecture#related"
+    ],
+    "overview_vi": "Skill này hướng dẫn workflow chuẩn để khởi tạo dự án CrewAI, từ việc lựa chọn mức độ trừu tượng (abstraction level) phù hợp (LLM.call() vs Agent.kickoff() vs Crew.kickoff() vs Flow) cho đến cấu hình và scaffolding bằng CLI. Nội dung bao gồm setup YAML cho các agent và task, liên kết các crew bằng @CrewBase, viết Flow với decorator @start/@listen, và các pattern truyền biến (variable interpolation). Skill này cũng giải quyết các vấn đề setup thường gặp khi bắt đầu dự án CrewAI mới, giúp developer lựa chọn abstraction level phù hợp và cấu hình cấu trúc dự án một cách chuẩn xác. Tài liệu được thiết kế cho các developer muốn áp dụng các best practice và hiểu rõ các quyết định kiến trúc của CrewAI ngay từ đầu.\nScaffold một dự án CrewAI mới bằng CLI.\nChỉnh sửa các file được generate cho dự án CrewAI.\nTìm hiểu về cấu trúc thư mục và cấu hình của CrewAI.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/crewaiinc/skills --skill getting-started`\n`git clone https://github.com/crewaiinc/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:51:18.005867Z",
+    "http_status": 200,
+    "content_hash": "70ecab1ca8b8758dd0d6c69fd55b85b36e6caeb9fa466e0ebdfefd0d7cc27df9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crewai-getting-started-and-architecture.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crewai-getting-started-and-architecture.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bắt đầu với CrewAI: Setup Dự án &",
+  "short_description_vi": "Skill này hướng dẫn cách setup dự án CrewAI một cách hiệu quả, dành cho các developer muốn nắm vững workflow chuẩn để khởi tạo dự án bằng CLI."
+}

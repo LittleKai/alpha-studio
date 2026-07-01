@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lean4-skills",
+  "slug": "lean4-skills",
+  "name": "browser-use",
+  "headline": "Lean 4 Skills - Automate Theorem Proving",
+  "short_description": "Lean 4 skills for Claude enable systematic development of formal proofs in Lean 4. Benefits operations teams by automating theorem proving tasks. Connects to Lean 4 environments and integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "cameronfreer",
+  "install_command": "git clone https://github.com/cameronfreer/lean4-skills.git",
+  "source_repo_url": "https://github.com/cameronfreer/lean4-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Lean 4 Skills is a workflow pack designed for AI coding agents to systematically develop and verify formal proofs in Lean 4. It provides a prove/review/golf cycle with integrated mathlib search, axiom checking, and safety validation. The skill supports both guided interactive workflows (formalize, prove, review, refactor) and autonomous end-to-end formalization (autoformalize, autoprove) with explicit stop budgets. It integrates natively with Claude Code via `/lean4:*` commands and works across Cursor, Codex, Gemini CLI, and other agents through a host-agnostic design. Operations teams and researchers benefit from automated theorem proving, proof optimization, and mathlib-informed development.\nAutonomous end-to-end formalization of mathematical statements with autoprove\nInteractive guided theorem proving with cycle-by-cycle feedback and mathlib search\nProof optimization and refactoring for clarity, performance, and brevity\nFormal verification with axiom checking and safety validation between commits",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cameronfreer/lean4-skills`",
+    "usage": "```\nDevelop a Lean 4 proof for [THEOREM_STATEMENT] using the [TARGET_LIBRARY] library. Structure the proof with [PREFERRED_STYLE] style (e.g., tactic, term, or structured). Include comments explaining each major step. Use [PROOF_METHOD] (e.g., induction, contradiction, or direct proof) where applicable. Ensure the proof compiles in Lean 4 version [VERSION_NUMBER].\n```\nCopy\n\n```\n```lean4\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Tactic\n\n-- Theorem: For all real numbers x, x² ≥ 0\n-- Proof: Using the `sq_nonneg` lemma from Mathlib\n\n/-- The square of any real number is non-negative. -/\ntheorem square_nonneg (x : ℝ) : x ^ 2 ≥ 0 := by\n  -- Apply the standard library lemma for non-negativity of squares\n  exact sq_nonneg x\n  -- Alternative implementation using ring_nf and positivity:\n  -- ring_nf\n  -- positivity\n\n-- Verification:\n-- #eval square_nonneg 3   -- Returns true\n-- #eval square_nonneg (-2.5) -- Returns true\n-- #eval square_nonneg 0     -- Returns true\n```\n\n### Explanation:\n1. **Imports**: We use `Mathlib.Data.Real.Basic` for real number definitions and `Mathlib.Tactic` for proof tactics.\n2. **Theorem Statement**: The theorem `square_nonneg` states that for any real number `x`, `x²` is greater than or equal to zero.\n3. **Proof**: The proof leverages the existing `sq_nonneg` lemma from Mathlib, which is a pre-proven theorem in the standard library. This demonstrates how Lean 4 skills can reuse existing work to avoid redundant proofs.\n4. **Verification**: The commented `#eval` lines show how to test the theorem with specific values. These would compile and run successfully in a Lean 4 environment.\n\n### Key Observations:\n- The proof is concise because it relies on Mathlib's existing infrastructure.\n- The `sq_nonneg` lemma is a fundamental result, and its use here ensures correctness and efficiency.\n- The proof structure is idiomatic Lean 4, using the `by` tactic block for clarity.\n\nThis example illustrates how Lean 4 skills can automate theorem proving by leveraging libraries and pre-existing proofs, reducing the manual effort required for formal verification.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lean4-skills#main-content",
+      "lean4-skills#overview",
+      "lean4-skills#setup",
+      "lean4-skills#examples",
+      "lean4-skills#tools",
+      "lean4-skills#mcp",
+      "lean4-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Lean 4 Skills is a workflow pack designed for AI coding agents to systematically develop and verify formal proofs in Lean 4. It provides a prove/review/golf cycle with integrated mathlib search, axiom checking, and safety validation. The skill supports both guided interactive workflows (formalize, prove, review, refactor) and autonomous end-to-end formalization (autoformalize, autoprove) with explicit stop budgets. It integrates natively with Claude Code via `/lean4:*` commands and works across Cursor, Codex, Gemini CLI, and other agents through a host-agnostic design. Operations teams and researchers benefit from automated theorem proving, proof optimization, and mathlib-informed development.\nAutonomous end-to-end formalization of mathematical statements with autoprove\nInteractive guided theorem proving with cycle-by-cycle feedback and mathlib search\nProof optimization and refactoring for clarity, performance, and brevity\nFormal verification with axiom checking and safety validation between commits",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cameronfreer/lean4-skills`",
+    "usage_vi": "```\nDevelop a Lean 4 proof for [THEOREM_STATEMENT] using the [TARGET_LIBRARY] library. Structure the proof with [PREFERRED_STYLE] style (e.g., tactic, term, or structured). Include comments explaining each major step. Use [PROOF_METHOD] (e.g., induction, contradiction, or direct proof) where applicable. Ensure the proof compiles in Lean 4 version [VERSION_NUMBER].\n```\nCopy\n\n```\n```lean4\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Tactic\n\n-- Theorem: For all real numbers x, x² ≥ 0\n-- Proof: Using the `sq_nonneg` lemma from Mathlib\n\n/-- The square of any real number is non-negative. -/\ntheorem square_nonneg (x : ℝ) : x ^ 2 ≥ 0 := by\n  -- Apply the standard library lemma for non-negativity of squares\n  exact sq_nonneg x\n  -- Alternative implementation using ring_nf and positivity:\n  -- ring_nf\n  -- positivity\n\n-- Verification:\n-- #eval square_nonneg 3   -- Returns true\n-- #eval square_nonneg (-2.5) -- Returns true\n-- #eval square_nonneg 0     -- Returns true\n```\n\n### Explanation:\n1. **Imports**: We use `Mathlib.Data.Real.Basic` for real number definitions and `Mathlib.Tactic` for proof tactics.\n2. **Theorem Statement**: The theorem `square_nonneg` states that for any real number `x`, `x²` is greater than or equal to zero.\n3. **Proof**: The proof leverages the existing `sq_nonneg` lemma from Mathlib, which is a pre-proven theorem in the standard library. This demonstrates how Lean 4 skills can reuse existing work to avoid redundant proofs.\n4. **Verification**: The commented `#eval` lines show how to test the theorem with specific values. These would compile and run successfully in a Lean 4 environment.\n\n### Key Observations:\n- The proof is concise because it relies on Mathlib's existing infrastructure.\n- The `sq_nonneg` lemma is a fundamental result, and its use here ensures correctness and efficiency.\n- The proof structure is idiomatic Lean 4, using the `by` tactic block for clarity.\n\nThis example illustrates how Lean 4 skills can automate theorem proving by leveraging libraries and pre-existing proofs, reducing the manual effort required for formal verification.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:28:54.786058Z",
+    "http_status": 200,
+    "content_hash": "a7c4b29c20f70ca1ebf8b5068a75eedd9360693e9c65af66ef08690fb0bfed74",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lean4-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lean4-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Lean 4 Skills - Automate Theorem Proving",
+  "short_description_vi": "Lean 4 skills for Claude enable systematic development of formal proofs in Lean 4. Benefits operations teams by automating theorem proving tasks. Connects to Lean 4 environments and integrates with Claude agents."
+}

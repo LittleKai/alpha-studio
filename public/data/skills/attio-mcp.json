@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/attio-mcp",
+  "slug": "attio-mcp",
+  "name": "Lead-Generation-AI-Agents-App",
+  "headline": "Attio-MCP: AI Integration for CRM Efficiency",
+  "short_description": "The attio-mcp server integrates Attio CRM with AI agents, enhancing data accessibility and automation for sales and marketing teams. This integration streamlines workflows and boosts productivity by using AI capabilities within the CRM environment.",
+  "tier": "Silver",
+  "category": "SDRAEMarketingRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "redriverwest",
+  "install_command": "claude install redriverwest/attio-mcp",
+  "source_repo_url": "https://github.com/redriverwest/attio-mcp",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "productivity",
+    "automation",
+    "AI integration",
+    "CRM",
+    "sales tools"
+  ],
+  "sections": {
+    "overview": "The Attio MCP server connects Attio CRM directly to AI agents, providing structured access to companies, contacts, tasks, and workspace members through standardized tools. It supports filtering by owner, domain, deadline, and assignee—enabling agents to search records, retrieve detailed profiles, and access activity notes without manual CRM navigation. The server offers secure Bearer token authentication and deploys via Docker with both Stdio and SSE transports. Sales and marketing teams use this integration to automate lead research, task management, and contact enrichment workflows within their AI-powered tools.\nAutomate lead data entry from Attio to AI agents\nGenerate sales insights using AI analysis of CRM data\nEnhance customer engagement through AI-driven communications",
+    "setup": "Terminal\nCopy\n`claude install redriverwest/attio-mcp`\n`git clone https://github.com/redriverwest/attio-mcp`",
+    "usage": "```\nI'm a sales manager at [COMPANY] in the [INDUSTRY] sector. I need to use the attio-mcp server to automate data retrieval from our Attio CRM. Specifically, I want to extract [DATA] for the past [TIME PERIOD] and analyze it to identify trends. Can you guide me through the process?\n```\nCopy\n\n```\n\nBased on the retrieved data, you might find the following trends:\n- **Increased Customer Engagement**: A 20% increase in customer interactions over the past 6 months, indicating improved customer satisfaction and loyalty.\n- **Regional Performance**: The North region has shown the highest sales growth, with a 15% increase in revenue compared to the same period last year.\n- **Product Performance**: The [Product Name] has been the top-selling product, accounting for 30% of total sales.\n\nThese insights can help you make data-driven decisions to optimize your sales and marketing strategies.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "attio-mcp#main-content",
+      "attio-mcp#overview",
+      "attio-mcp#setup",
+      "attio-mcp#examples",
+      "attio-mcp#tools",
+      "attio-mcp#mcp",
+      "attio-mcp#related",
+      "sendur",
+      "n8n-automation-suite",
+      "lead-generation-ai-agents-app"
+    ],
+    "overview_vi": "The Attio MCP server connects Attio CRM directly to AI agents, providing structured access to companies, contacts, tasks, and workspace members through standardized tools. It supports filtering by owner, domain, deadline, and assignee—enabling agents to search records, retrieve detailed profiles, and access activity notes without manual CRM navigation. The server offers secure Bearer token authentication and deploys via Docker with both Stdio and SSE transports. Sales and marketing teams use this integration to automate lead research, task management, and contact enrichment workflows within their AI-powered tools.\nAutomate lead data entry from Attio to AI agents\nGenerate sales insights using AI analysis of CRM data\nEnhance customer engagement through AI-driven communications",
+    "setup_vi": "Terminal\nCopy\n`claude install redriverwest/attio-mcp`\n`git clone https://github.com/redriverwest/attio-mcp`",
+    "usage_vi": "```\nI'm a sales manager at [COMPANY] in the [INDUSTRY] sector. I need to use the attio-mcp server to automate data retrieval from our Attio CRM. Specifically, I want to extract [DATA] for the past [TIME PERIOD] and analyze it to identify trends. Can you guide me through the process?\n```\nCopy\n\n```\n\nBased on the retrieved data, you might find the following trends:\n- **Increased Customer Engagement**: A 20% increase in customer interactions over the past 6 months, indicating improved customer satisfaction and loyalty.\n- **Regional Performance**: The North region has shown the highest sales growth, with a 15% increase in revenue compared to the same period last year.\n- **Product Performance**: The [Product Name] has been the top-selling product, accounting for 30% of total sales.\n\nThese insights can help you make data-driven decisions to optimize your sales and marketing strategies.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:52:41.526365Z",
+    "http_status": 200,
+    "content_hash": "89ba907d5b8db494ec944c1b3d049c7adf49c76f275671ce69f5b519efc789b3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\attio-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\attio-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Attio-MCP: AI Integration for CRM Efficiency",
+  "short_description_vi": "The attio-mcp server integrates Attio CRM with AI agents, enhancing data accessibility and automation for sales and marketing teams. This integration streamlines workflows and boosts productivity by using AI capabilities within the CRM environment."
+}

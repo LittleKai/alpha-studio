@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/groundhogg",
+  "slug": "groundhogg",
+  "name": "popsicle",
+  "headline": "groundhogg: Marketing Automation",
+  "short_description": "Groundhogg is a marketing automation plugin for WordPress. It enables marketers to create lead conversion flows. It integrates with WordPress CRM and supports JavaScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "groundhoggwp",
+  "install_command": "git clone https://github.com/groundhoggwp/groundhogg.git",
+  "source_repo_url": "https://github.com/groundhoggwp/groundhogg",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The groundhogg skill is a powerful marketing automation plugin that enables users to streamline their marketing efforts through automated workflows. This Claude Code skill is designed for intermediate users, making it an ideal choice for developers, product managers, and AI practitioners looking to enhance their marketing strategies. By integrating groundhogg into your existing systems, you can automate repetitive tasks, allowing your team to focus on more strategic initiatives. One of the key benefits of using groundhogg is its ability to significantly improve efficiency in marketing campaigns. Although specific time savings are currently unknown, the automation of tasks such as email marketing, lead generation, and customer engagement can lead to substantial time reductions over time. This skill is particularly relevant for teams looking to optimize their go-to-market strategies, as it allows for more targeted and timely interactions with potential customers. Groundhogg is best suited for marketing professionals and teams that handle large volumes of customer interactions. It can be effectively utilized by roles such as marketing managers, digital strategists, and data analysts, who are looking to leverage AI automation to enhance their marketing workflows. Practical use cases include automating follow-up emails after a lead has shown interest, segmenting audiences based on behavior, and creating personalized marketing campaigns that respond to user actions in real-time. Implementing groundhogg requires an intermediate understanding of marketing automation tools and workflows. With an estimated implementation time of just 30 minutes, users can quickly integrate this skill into their existing processes. As businesses increasingly adopt AI-first workflows, integrating groundhogg can position your marketing efforts at the forefront of innovation, ensuring that your strategies are not only effective but also scalable.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/groundhoggwp/groundhogg`",
+    "usage": "```\nCreate a lead conversion flow in Groundhogg for [BUSINESS_NAME] to nurture [LEAD_SEGMENT] (e.g., 'new subscribers' or 'abandoned cart users'). The flow should include: 1) A trigger based on [TRIGGER_EVENT, e.g., 'form submission' or 'purchase'], 2) A sequence of 3-5 emails with [TOPIC, e.g., 'educational content' or 'limited-time offers'], 3) A conditional branch for [ACTION, e.g., 'high-intent leads' or 'inactive users'], and 4) A final goal of [GOAL, e.g., 'booking a demo' or 'completing a purchase']. Use [TONE, e.g., 'friendly and conversational' or 'professional and urgent'] language. Provide the Groundhogg shortcode to embed the flow in WordPress.\n```\nCopy\n\n```\nHere’s a lead conversion flow for **EcoGlow Candles**, a small business selling eco-friendly candles. The flow targets **new subscribers** who signed up via their website’s pop-up form. The goal is to convert them into first-time buyers within 7 days.\n\n**Flow Structure:**\n1. **Trigger:** Form submission (\"Subscribe & Get 10% Off\")\n2. **Email 1 (Sent immediately):** Welcome email with a discount code (\"WELCOME10\") and a link to their top-selling candle, *Lavender Dream*. Subject: \"Your 10% Off Code is Here! 🕯️\"\n3. **Email 2 (Sent 2 days later):** Educational content about the benefits of soy candles, including a testimonial from a customer who bought *Lavender Dream*. Subject: \"Why Our Candles Are Better for You & the Planet\"\n4. **Email 3 (Sent 3 days later):** Limited-time offer (\"24-hour flash sale: Buy 2, Get 1 Free\") with urgency language. Subject: \"⏳ Your Candle Deal Expires Tonight!\"\n5. **Conditional Branch:** If the lead clicks the flash sale link, they’re tagged as \"High Intent\" and sent a follow-up email with a 1-click checkout link. If they don’t engage, they’re tagged as \"Needs Nurturing\" and added to a longer drip campaign.\n6. **Goal:** Purchase completion (tracked via Groundhogg’s WooCommerce integration).\n\n**Groundhogg Shortcode:**\n```\n[groundhogg_flow id=\"123\" /]\n```\n\n**Performance Notes:**\n- Open rates: 42% (Email 1), 31% (Email 2), 28% (Email 3)\n- Click-through rate on the flash sale: 15%\n- Conversion to purchase: 8% within 7 days\n\nThis flow increased EcoGlow’s first-time buyer conversion by 22% compared to their previous static welcome email.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "groundhogg#main-content",
+      "groundhogg#overview",
+      "groundhogg#setup",
+      "groundhogg#examples",
+      "groundhogg#tools",
+      "groundhogg#mcp",
+      "groundhogg#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "The groundhogg skill is a powerful marketing automation plugin that enables users to streamline their marketing efforts through automated workflows. This Claude Code skill is designed for intermediate users, making it an ideal choice for developers, product managers, and AI practitioners looking to enhance their marketing strategies. By integrating groundhogg into your existing systems, you can automate repetitive tasks, allowing your team to focus on more strategic initiatives. One of the key benefits of using groundhogg is its ability to significantly improve efficiency in marketing campaigns. Although specific time savings are currently unknown, the automation of tasks such as email marketing, lead generation, and customer engagement can lead to substantial time reductions over time. This skill is particularly relevant for teams looking to optimize their go-to-market strategies, as it allows for more targeted and timely interactions with potential customers. Groundhogg is best suited for marketing professionals and teams that handle large volumes of customer interactions. It can be effectively utilized by roles such as marketing managers, digital strategists, and data analysts, who are looking to leverage AI automation to enhance their marketing workflows. Practical use cases include automating follow-up emails after a lead has shown interest, segmenting audiences based on behavior, and creating personalized marketing campaigns that respond to user actions in real-time. Implementing groundhogg requires an intermediate understanding of marketing automation tools and workflows. With an estimated implementation time of just 30 minutes, users can quickly integrate this skill into their existing processes. As businesses increasingly adopt AI-first workflows, integrating groundhogg can position your marketing efforts at the forefront of innovation, ensuring that your strategies are not only effective but also scalable.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/groundhoggwp/groundhogg`",
+    "usage_vi": "```\nCreate a lead conversion flow in Groundhogg for [BUSINESS_NAME] to nurture [LEAD_SEGMENT] (e.g., 'new subscribers' or 'abandoned cart users'). The flow should include: 1) A trigger based on [TRIGGER_EVENT, e.g., 'form submission' or 'purchase'], 2) A sequence of 3-5 emails with [TOPIC, e.g., 'educational content' or 'limited-time offers'], 3) A conditional branch for [ACTION, e.g., 'high-intent leads' or 'inactive users'], and 4) A final goal of [GOAL, e.g., 'booking a demo' or 'completing a purchase']. Use [TONE, e.g., 'friendly and conversational' or 'professional and urgent'] language. Provide the Groundhogg shortcode to embed the flow in WordPress.\n```\nCopy\n\n```\nHere’s a lead conversion flow for **EcoGlow Candles**, a small business selling eco-friendly candles. The flow targets **new subscribers** who signed up via their website’s pop-up form. The goal is to convert them into first-time buyers within 7 days.\n\n**Flow Structure:**\n1. **Trigger:** Form submission (\"Subscribe & Get 10% Off\")\n2. **Email 1 (Sent immediately):** Welcome email with a discount code (\"WELCOME10\") and a link to their top-selling candle, *Lavender Dream*. Subject: \"Your 10% Off Code is Here! 🕯️\"\n3. **Email 2 (Sent 2 days later):** Educational content about the benefits of soy candles, including a testimonial from a customer who bought *Lavender Dream*. Subject: \"Why Our Candles Are Better for You & the Planet\"\n4. **Email 3 (Sent 3 days later):** Limited-time offer (\"24-hour flash sale: Buy 2, Get 1 Free\") with urgency language. Subject: \"⏳ Your Candle Deal Expires Tonight!\"\n5. **Conditional Branch:** If the lead clicks the flash sale link, they’re tagged as \"High Intent\" and sent a follow-up email with a 1-click checkout link. If they don’t engage, they’re tagged as \"Needs Nurturing\" and added to a longer drip campaign.\n6. **Goal:** Purchase completion (tracked via Groundhogg’s WooCommerce integration).\n\n**Groundhogg Shortcode:**\n```\n[groundhogg_flow id=\"123\" /]\n```\n\n**Performance Notes:**\n- Open rates: 42% (Email 1), 31% (Email 2), 28% (Email 3)\n- Click-through rate on the flash sale: 15%\n- Conversion to purchase: 8% within 7 days\n\nThis flow increased EcoGlow’s first-time buyer conversion by 22% compared to their previous static welcome email.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:39:13.973001Z",
+    "http_status": 200,
+    "content_hash": "1e187f7dc5aa079b2b14159c634e8c3b4b9822127c51b1462149e942b9bd0690",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\groundhogg.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\groundhogg.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "groundhogg: Marketing Automation",
+  "short_description_vi": "Groundhogg is a marketing automation plugin for WordPress. It enables marketers to create lead conversion flows. It integrates with WordPress CRM and supports JavaScript."
+}

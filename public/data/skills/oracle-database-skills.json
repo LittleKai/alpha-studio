@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/oracle-database-skills",
+  "slug": "oracle-database-skills",
+  "name": "videodb",
+  "headline": "Oracle Database Skills: SQL, PL/SQL & Admin",
+  "short_description": "This collection of skills aids in Oracle Database administration, SQL and PL/SQL development, performance tuning, and security. It is designed for database administrators and developers who need comprehensive guidance on various Oracle Database topics.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "oracle",
+  "install_command": "git clone https://github.com/oracle/skills",
+  "source_repo_url": "https://github.com/oracle/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "skills",
+    "database",
+    "oracle",
+    "database-management"
+  ],
+  "sections": {
+    "overview": "Oracle Database Skills provide comprehensive guidance for database administrators and developers working with Oracle databases. The skill set covers SQL and PL/SQL development, database administration, performance tuning using AWR and ASH analysis, security management including VPD and encryption, and safe agent-database operations. It includes support for SQLcl, ORDS, Liquibase, multiple language drivers (Java, Python, .NET, Node.js), and framework integrations like SQLAlchemy and Spring JPA. The skills guide users through complex tasks including query optimization, schema migrations, backup and recovery strategies, multitenant and RAC configurations, and secure database access patterns for AI agents.\nDatabase administration and management\nSQL and PL/SQL development\nPerformance tuning of Oracle databases\nSecurity management for database applications",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/oracle/skills --skill db`\n`git clone https://github.com/oracle/skills`",
+    "usage": "```\nAct as an Oracle Database expert. Help me with [TASK] in my [COMPANY]'s Oracle Database environment. The database is [VERSION] and the [SCHEMA/TABLESPACE/USER] involved is [NAME]. Provide step-by-step instructions, code snippets, and best practices. If [ERROR_MESSAGE] occurs, explain the root cause and solution. Focus on [PERFORMANCE/SECURITY/RECOVERY] aspects.\n```\nCopy\n\n```\n# Oracle Database Performance Tuning: Slow Query Analysis",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "oracle-database-skills#main-content",
+      "oracle-database-skills#overview",
+      "oracle-database-skills#setup",
+      "oracle-database-skills#examples",
+      "oracle-database-skills#tools",
+      "oracle-database-skills#mcp",
+      "oracle-database-skills#related",
+      "sqlalchemy-alembic-expert-best-practices-code-review",
+      "videodb"
+    ],
+    "overview_vi": "Oracle Database Skills provide comprehensive guidance for database administrators and developers working with Oracle databases. The skill set covers SQL and PL/SQL development, database administration, performance tuning using AWR and ASH analysis, security management including VPD and encryption, and safe agent-database operations. It includes support for SQLcl, ORDS, Liquibase, multiple language drivers (Java, Python, .NET, Node.js), and framework integrations like SQLAlchemy and Spring JPA. The skills guide users through complex tasks including query optimization, schema migrations, backup and recovery strategies, multitenant and RAC configurations, and secure database access patterns for AI agents.\nDatabase administration and management\nSQL and PL/SQL development\nPerformance tuning of Oracle databases\nSecurity management for database applications",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/oracle/skills --skill db`\n`git clone https://github.com/oracle/skills`",
+    "usage_vi": "```\nAct as an Oracle Database expert. Help me with [TASK] in my [COMPANY]'s Oracle Database environment. The database is [VERSION] and the [SCHEMA/TABLESPACE/USER] involved is [NAME]. Provide step-by-step instructions, code snippets, and best practices. If [ERROR_MESSAGE] occurs, explain the root cause and solution. Focus on [PERFORMANCE/SECURITY/RECOVERY] aspects.\n```\nCopy\n\n```\n# Oracle Database Performance Tuning: Slow Query Analysis"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:30:45.964276Z",
+    "http_status": 200,
+    "content_hash": "add6606050c01572cc4626afd7b172a85666764a81b56e79dd88b770301f69c0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oracle-database-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oracle-database-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Oracle Database Skills: SQL, PL/SQL & Admin",
+  "short_description_vi": "This collection of skills aids in Oracle Database administration, SQL and PL/SQL development, performance tuning, and security. It is designed for database administrators and developers who need comprehensive guidance on various Oracle Database topics."
+}

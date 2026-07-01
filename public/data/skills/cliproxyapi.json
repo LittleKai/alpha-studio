@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cliproxyapi",
+  "slug": "cliproxyapi",
+  "name": "CLIProxyAPI",
+  "headline": "API service for multiple AI models",
+  "short_description": "Wrap Gemini CLI, Antigravity, ChatGPT Codex, Claude Code, Qwen Code, iFlow as an OpenAI/Gemini/Claude/Codex compatible API service, allowing you to enjoy the free Gemini 2.5 Pro, GPT 5, Claude, Qwen model through API",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "router-for-me",
+  "install_command": "git clone https://github.com/router-for-me/CLIProxyAPI.git",
+  "source_repo_url": "https://github.com/router-for-me/CLIProxyAPI",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "qwen3-coder",
+    "cluade",
+    "claude-code",
+    "codex",
+    "antigravity",
+    "openai",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "CLIProxyAPI is an automation tool that converts command-line AI interfaces into standardized API services compatible with OpenAI, Gemini, Claude, and Codex protocols. It enables developers to wrap CLI-based tools like Gemini CLI, ChatGPT Codex, Claude Code, and Qwen Code as unified API endpoints. This allows teams to leverage free models and premium AI capabilities programmatically without building custom integrations for each tool. The project supports model routing and API compatibility layers, making it ideal for teams wanting consistent API access across multiple AI providers.\nEasily switch between multiple AI models for coding tasks without managing separate API keys.\nUtilize OAuth to authenticate and manage multiple accounts for seamless access to AI services.\nImplement a proxy server to streamline API requests and responses for AI coding tools.\nLeverage multimodal input support to process both text and images in your automation workflows.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/router-for-me/CLIProxyAPI`",
+    "usage": "```\nI want to use the CLIProxyAPI to integrate [MODEL_NAME] into my existing application. The application currently uses the OpenAI API format. What are the specific steps I need to follow to make this work? My application is built with [FRAMEWORK] and currently makes API calls to [CURRENT_API_ENDPOINT].\n```\nCopy\n\n```\nTo integrate the CLIProxyAPI with your existing application, follow these steps:\n\n1. **Install the CLIProxyAPI**: First, you need to install the CLIProxyAPI. You can do this by running the following command in your terminal:\n\n```bash\npip install cliproxyapi\n```\n\n2. **Configure the Proxy**: Next, you need to configure the proxy to use the model you want. For example, if you want to use Gemini 2.5 Pro, you would configure the proxy like this:\n\n```bash\ncliproxyapi configure --model gemini-2.5-pro\n```\n\n3. **Update Your Application Code**: Update your application code to point to the CLIProxyAPI instead of the current API endpoint. For example, if your application is built with Flask and currently makes API calls to `https://api.openai.com/v1/completions`, you would update the code to use the CLIProxyAPI endpoint:\n\n```python\nimport requests\n\nresponse = requests.post(\n    'http://localhost:5000/v1/completions',\n    json={\n        'model': 'gemini-2.5-pro',\n        'prompt': 'Your prompt here'\n    }\n)\n\nprint(response.json())\n```\n\n4. **Test the Integration**: Finally, test the integration to ensure that your application is correctly using the CLIProxyAPI. You can do this by running your application and checking the output.\n\nBy following these steps, you can integrate the CLIProxyAPI with your existing application and enjoy the benefits of the free Gemini 2.5 Pro, GPT 5, Claude, and Qwen models through the API.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cliproxyapi#main-content",
+      "cliproxyapi#overview",
+      "cliproxyapi#setup",
+      "cliproxyapi#examples",
+      "cliproxyapi#tools",
+      "cliproxyapi#mcp",
+      "cliproxyapi#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CLIProxyAPI is an automation tool that converts command-line AI interfaces into standardized API services compatible with OpenAI, Gemini, Claude, and Codex protocols. It enables developers to wrap CLI-based tools like Gemini CLI, ChatGPT Codex, Claude Code, and Qwen Code as unified API endpoints. This allows teams to leverage free models and premium AI capabilities programmatically without building custom integrations for each tool. The project supports model routing and API compatibility layers, making it ideal for teams wanting consistent API access across multiple AI providers.\nEasily switch between multiple AI models for coding tasks without managing separate API keys.\nUtilize OAuth to authenticate and manage multiple accounts for seamless access to AI services.\nImplement a proxy server to streamline API requests and responses for AI coding tools.\nLeverage multimodal input support to process both text and images in your automation workflows.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/router-for-me/CLIProxyAPI`",
+    "usage_vi": "```\nI want to use the CLIProxyAPI to integrate [MODEL_NAME] into my existing application. The application currently uses the OpenAI API format. What are the specific steps I need to follow to make this work? My application is built with [FRAMEWORK] and currently makes API calls to [CURRENT_API_ENDPOINT].\n```\nCopy\n\n```\nTo integrate the CLIProxyAPI with your existing application, follow these steps:\n\n1. **Install the CLIProxyAPI**: First, you need to install the CLIProxyAPI. You can do this by running the following command in your terminal:\n\n```bash\npip install cliproxyapi\n```\n\n2. **Configure the Proxy**: Next, you need to configure the proxy to use the model you want. For example, if you want to use Gemini 2.5 Pro, you would configure the proxy like this:\n\n```bash\ncliproxyapi configure --model gemini-2.5-pro\n```\n\n3. **Update Your Application Code**: Update your application code to point to the CLIProxyAPI instead of the current API endpoint. For example, if your application is built with Flask and currently makes API calls to `https://api.openai.com/v1/completions`, you would update the code to use the CLIProxyAPI endpoint:\n\n```python\nimport requests\n\nresponse = requests.post(\n    'http://localhost:5000/v1/completions',\n    json={\n        'model': 'gemini-2.5-pro',\n        'prompt': 'Your prompt here'\n    }\n)\n\nprint(response.json())\n```\n\n4. **Test the Integration**: Finally, test the integration to ensure that your application is correctly using the CLIProxyAPI. You can do this by running your application and checking the output.\n\nBy following these steps, you can integrate the CLIProxyAPI with your existing application and enjoy the benefits of the free Gemini 2.5 Pro, GPT 5, Claude, and Qwen models through the API.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:57.628525Z",
+    "http_status": 200,
+    "content_hash": "fa9966adb7a5ddab3437d812713966fe5de55ef086b75f856fdf6e802569d8ad",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cliproxyapi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cliproxyapi.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "API service for multiple AI models",
+  "short_description_vi": "Wrap Gemini CLI, Antigravity, ChatGPT Codex, Claude Code, Qwen Code, iFlow as an OpenAI/Gemini/Claude/Codex compatible API service, allowing you to enjoy the free Gemini 2.5 Pro, GPT 5, Claude, Qwen model through API"
+}

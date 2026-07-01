@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vs-code-agents",
+  "slug": "vs-code-agents",
+  "name": "browser-use",
+  "headline": "VS Code Agents - AI-Assisted Development Workflows",
+  "short_description": "Multi-agent workflow system for GitHub Copilot in VS Code. Adds structure, quality gates, and long-term memory to AI-assisted development. Connects to GitHub, VS Code, and Claude. Benefits developers and operations teams by improving code quality and workflow efficiency.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "groupzer0",
+  "install_command": "git clone https://github.com/groupzer0/vs-code-agents.git",
+  "source_repo_url": "https://github.com/groupzer0/vs-code-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Flowbaby Agent Team is a reference implementation of a multi-agent workflow system designed for GitHub Copilot in VS Code. It provides 13 specialized agents—each owning a specific part of the development lifecycle, from Roadmap and Planner through Implementer, Code Reviewer, QA, and DevOps—with clear constraints and structured document output. The system solves common problems with AI coding assistants: forgotten context between sessions, skipped quality gates, loss of architectural decisions, and lack of audit trails. By treating persistent memory as infrastructure rather than chat history, agents maintain continuity and enforce quality checkpoints across the entire workflow. Developers and operations teams benefit from improved code quality, auditability, and structured handoffs between planning, implementation, and deployment phases.\nCreate structured implementation plans with quality review gates before coding begins\nConduct security assessments and architectural reviews as mandatory workflow steps\nMaintain audit trails of decisions, constraints, and prior work across development sessions\nAutomate code review and QA verification with specialized agent workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/groupzer0/vs-code-agents`",
+    "usage": "```\nCreate a multi-agent workflow in VS Code for [PROJECT_NAME] that includes the following tasks: [TASK_LIST]. Implement quality gates to ensure [SPECIFIC_QUALITY_CRITERIA]. Connect the workflow to GitHub repository [REPO_URL] and integrate with Claude for additional AI assistance. Provide a summary of the workflow and any potential issues that may arise.\n```\nCopy\n\n```\nThe multi-agent workflow for the 'E-Commerce Platform' project has been successfully created in VS Code. The workflow includes the following tasks: code review, unit testing, integration testing, and deployment. Quality gates have been implemented to ensure code coverage of at least 80%, no critical security vulnerabilities, and adherence to the project's coding standards. The workflow is connected to the GitHub repository 'ecommerce-platform' and integrated with Claude for additional AI assistance. Potential issues that may arise include conflicts in the GitHub repository, failures in the unit or integration tests, and delays in the deployment process due to external factors.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vs-code-agents#main-content",
+      "vs-code-agents#overview",
+      "vs-code-agents#setup",
+      "vs-code-agents#examples",
+      "vs-code-agents#tools",
+      "vs-code-agents#mcp",
+      "vs-code-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Flowbaby Agent Team is a reference implementation of a multi-agent workflow system designed for GitHub Copilot in VS Code. It provides 13 specialized agents—each owning a specific part of the development lifecycle, from Roadmap and Planner through Implementer, Code Reviewer, QA, and DevOps—with clear constraints and structured document output. The system solves common problems with AI coding assistants: forgotten context between sessions, skipped quality gates, loss of architectural decisions, and lack of audit trails. By treating persistent memory as infrastructure rather than chat history, agents maintain continuity and enforce quality checkpoints across the entire workflow. Developers and operations teams benefit from improved code quality, auditability, and structured handoffs between planning, implementation, and deployment phases.\nCreate structured implementation plans with quality review gates before coding begins\nConduct security assessments and architectural reviews as mandatory workflow steps\nMaintain audit trails of decisions, constraints, and prior work across development sessions\nAutomate code review and QA verification with specialized agent workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/groupzer0/vs-code-agents`",
+    "usage_vi": "```\nCreate a multi-agent workflow in VS Code for [PROJECT_NAME] that includes the following tasks: [TASK_LIST]. Implement quality gates to ensure [SPECIFIC_QUALITY_CRITERIA]. Connect the workflow to GitHub repository [REPO_URL] and integrate with Claude for additional AI assistance. Provide a summary of the workflow and any potential issues that may arise.\n```\nCopy\n\n```\nThe multi-agent workflow for the 'E-Commerce Platform' project has been successfully created in VS Code. The workflow includes the following tasks: code review, unit testing, integration testing, and deployment. Quality gates have been implemented to ensure code coverage of at least 80%, no critical security vulnerabilities, and adherence to the project's coding standards. The workflow is connected to the GitHub repository 'ecommerce-platform' and integrated with Claude for additional AI assistance. Potential issues that may arise include conflicts in the GitHub repository, failures in the unit or integration tests, and delays in the deployment process due to external factors.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:54:02.394691Z",
+    "http_status": 200,
+    "content_hash": "80fee7ba0f74dd98c0fdc2731ce3d261732ee38e94f9717d6754442adcc57772",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vs-code-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vs-code-agents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "VS Code Agents - AI-Assisted Development Workflows",
+  "short_description_vi": "Multi-agent workflow system for GitHub Copilot in VS Code. Adds structure, quality gates, and long-term memory to AI-assisted development. Connects to GitHub, VS Code, and Claude. Benefits developers and operations teams by improving code quality and workflow efficiency."
+}

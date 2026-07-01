@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/notion-mcp-server",
+  "slug": "notion-mcp-server",
+  "name": "Notion MCP Server",
+  "headline": "Notion MCP Server - Enhance Your Notion Experience",
+  "short_description": "The Notion MCP Server is an official server designed to enhance your Notion experience, providing integration and management capabilities. Built with TypeScript, it enables developers to create powerful applications and workflows within the Notion ecosystem.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "makenotion",
+  "install_command": "claude install makenotion/notion-mcp-server",
+  "source_repo_url": "https://github.com/makenotion/notion-mcp-server",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "Notion",
+    "MCP",
+    "server",
+    "integration",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "The Notion MCP Server is an official integration built by Notion that allows AI agents like Claude Code and Cursor to interact directly with Notion workspaces. Built with TypeScript, it implements the Model Context Protocol (MCP) to provide standardized access to Notion's API capabilities. The server enables developers to create powerful applications and automated workflows that read from and write to Notion databases, pages, and content. It handles authentication securely and supports both local and HTTP transport modes, making it suitable for various deployment scenarios. Developers can use this skill to extend their AI coding assistants with Notion workspace management capabilities.\nIntegrate Notion with third-party applications for enhanced functionality.\nAutomate the management of data within Notion, reducing manual entry.\nBuild custom workflows using Notion APIs to streamline team processes.\nEnhance team collaboration by integrating Notion with communication tools.",
+    "setup": "Terminal\nCopy\n`claude install makenotion/notion-mcp-server`\n`git clone https://github.com/makenotion/notion-mcp-server`",
+    "usage": "```\nSet up a Notion MCP Server for [PROJECT_NAME] using TypeScript. The server should integrate with [SPECIFIC_NOTION_DATABASE] and enable [SPECIFIC_FUNCTIONALITY]. Include error handling for [COMMON_ISSUES] and ensure it runs on [DEPLOYMENT_ENVIRONMENT].\n```\nCopy\n\n```\nThe Notion MCP Server for 'Project Alpha' has been successfully set up. It integrates with the 'Product Roadmap' database in Notion and enables real-time updates to the project status. The server is configured to handle common issues like API rate limits and authentication errors. It is deployed on AWS and can be accessed via the provided endpoint. The server logs are monitored using CloudWatch, ensuring smooth operation and quick troubleshooting if needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "notion-mcp-server#main-content",
+      "notion-mcp-server#overview",
+      "notion-mcp-server#setup",
+      "notion-mcp-server#examples",
+      "notion-mcp-server#tools",
+      "notion-mcp-server#mcp",
+      "notion-mcp-server#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Notion MCP Server là bản tích hợp chính thức do Notion phát triển, cho phép các AI agent như Claude Code và Cursor tương tác trực tiếp với Notion workspace. Được xây dựng bằng TypeScript, server này triển khai Model Context Protocol (MCP) để cung cấp khả năng truy cập chuẩn hóa vào các tính năng API của Notion. Server này cho phép lập trình viên tạo ra các ứng dụng mạnh mẽ và các workflow tự động giúp đọc và ghi dữ liệu vào database, page và nội dung trên Notion. Nó xử lý xác thực bảo mật và hỗ trợ cả hai chế độ truyền tải cục bộ (local) và HTTP, giúp phù hợp với nhiều kịch bản deployment khác nhau. Lập trình viên có thể sử dụng skill này để mở rộng khả năng của các trợ lý lập trình AI với tính năng quản lý Notion workspace.\n- Tích hợp Notion với các ứng dụng bên thứ ba để mở rộng tính năng.\n- Tự động hóa việc quản lý dữ liệu trong Notion, giảm thiểu thao tác nhập liệu thủ công.\n- Xây dựng các workflow tùy chỉnh bằng Notion API để tối ưu hóa quy trình làm việc của nhóm.\n- Nâng cao hiệu quả cộng tác nhóm bằng cách tích hợp Notion với các công cụ giao tiếp.",
+    "setup_vi": "Terminal\nCopy\n`claude install makenotion/notion-mcp-server`\n`git clone https://github.com/makenotion/notion-mcp-server`",
+    "usage_vi": "```\nThiết lập một Notion MCP Server cho [PROJECT_NAME] sử dụng TypeScript. Server cần tích hợp với [SPECIFIC_NOTION_DATABASE] và kích hoạt [SPECIFIC_FUNCTIONALITY]. Bao gồm xử lý lỗi cho [COMMON_ISSUES] và đảm bảo hoạt động ổn định trên [DEPLOYMENT_ENVIRONMENT].\n```\nCopy\n\n```\nNotion MCP Server cho 'Project Alpha' đã được thiết lập thành công. Server tích hợp với database 'Product Roadmap' trong Notion và cho phép cập nhật trạng thái dự án theo thời gian thực. Server được cấu hình để xử lý các lỗi phổ biến như API rate limits và lỗi xác thực. Hệ thống đã được deploy trên AWS và có thể truy cập qua endpoint được cung cấp. Server log được giám sát bằng CloudWatch, đảm bảo vận hành trơn tru và hỗ trợ xử lý sự cố nhanh chóng khi cần thiết.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:36:43.193489Z",
+    "http_status": 200,
+    "content_hash": "edbf9c8fcb3f5892c20e7cd361fd0e67d15442a78619d293b6a7d04c3a9292df",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\notion-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\notion-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Notion MCP Server - Nâng tầm trải nghiệm Notion của bạn",
+  "short_description_vi": "Notion MCP Server là server chính thức được thiết kế để tối ưu hóa trải nghiệm Notion của bạn, cung cấp các khả năng tích hợp và quản lý mạnh mẽ. Được phát triển bằng TypeScript, dự án này cho phép lập trình viên xây dựng các ứng dụng và workflow hiệu quả trong hệ sinh thái Notion."
+}

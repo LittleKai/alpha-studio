@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/proofloop",
+  "slug": "proofloop",
+  "name": "proofloop",
+  "headline": "proofloop: AI Orchestrator for Efficient Automation",
+  "short_description": "Proofloop is an AI orchestrator that runs tasks until completion. Define success criteria, pause execution, and resume with verified results. Supports OpenCode, Codex, and Claude Code. Ideal for operations teams automating repetitive coding tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "exiw-ai",
+  "install_command": "git clone https://github.com/exiw-ai/proofloop.git",
+  "source_repo_url": "https://github.com/exiw-ai/proofloop",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "llm",
+    "coding-assistant",
+    "vibe-coding",
+    "opencode",
+    "ai-engineer",
+    "ai-agents",
+    "ai-coding",
+    "codex",
+    "ralph-wiggum",
+    "code-generation",
+    "devtools",
+    "claude",
+    "claude-code",
+    "autonomous-agents"
+  ],
+  "sections": {
+    "overview": "proofloop is an innovative AI orchestrator designed to automate tasks until a defined goal is achieved. Users can specify what 'done' means for their projects, allowing the AI to intelligently manage workflows. Once initiated, proofloop can go to sleep and later wake up to deliver verified results, ensuring that your automation processes are both efficient and reliable. This skill supports various coding frameworks, including OpenCode, Codex, and Claude Code, making it versatile for different development environments. The key benefits of using proofloop lie in its ability to streamline complex workflows and reduce manual oversight. By automating the orchestration of tasks, developers and product managers can save significant time, allowing them to focus on higher-level strategic initiatives. While the exact time savings are currently unknown, the potential for increased productivity is clear, especially in environments where task completion is critical. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to enhance their workflow automation capabilities. Its intermediate difficulty level makes it accessible for those with some experience in AI automation, while its medium GTM relevance indicates that it can provide substantial value across various projects. Practical use cases include automating testing processes, managing deployment pipelines, or orchestrating data processing tasks, all of which can benefit from a reliable AI agent skill like proofloop. Implementation of proofloop is straightforward, requiring approximately 30 minutes to set up. Users will need a basic understanding of the supported coding frameworks to fully leverage its capabilities. As businesses increasingly adopt AI-first workflows, integrating skills like proofloop can significantly enhance operational efficiency and drive innovation. By automating repetitive tasks, teams can redirect their efforts towards more strategic objectives, ultimately leading to better outcomes and faster project delivery.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/exiw-ai/proofloop`",
+    "usage": "```\nSet up a proofloop to automate [TASK] until [SUCCESS_CRITERIA] is met. Use [TOOL_NAME] to execute steps. Pause execution if [FAILURE_CONDITION] occurs, and resume only after verifying fixes with [VERIFICATION_METHOD]. Example: 'Set up a proofloop to automate the generation of monthly financial reports until all 12 reports are generated with zero errors. Use OpenCode to execute the Python scripts. Pause execution if any report fails validation, and resume only after verifying fixes with manual review of the error logs.'\n```\nCopy\n\n```\nProofloop initialized for task: **Automated Unit Test Generation for Project Alpha**\n\n**Success Criteria:** All 247 unit tests must pass with 100% coverage and no critical warnings.\n**Failure Condition:** Any test with a failure rate >5% or coverage <95%.\n**Verification Method:** Manual review of failed test logs and coverage reports.\n\n**Execution Log:**\n1. **Iteration 1 (OpenCode):** Generated 247 unit tests for `Project Alpha` using `pytest`. Results: 212 passed, 35 failed (14% failure rate), 88% coverage. \n   - **Action:** Proofloop paused. Detected failure condition met (failure rate >5%).\n   - **Output:** Error logs show 35 tests failing due to missing mock data for `UserService` module.\n\n2. **Iteration 2 (OpenCode):** Paused execution and triggered fix for `UserService` mock data. Updated mocks to include edge cases for `UserService.getUserById()`. Resumed proofloop.\n   - **Verification:** Manually reviewed error logs and confirmed fixes address the root cause.\n\n3. **Iteration 3 (OpenCode):** Reran tests. Results: 247 passed, 0 failed, 100% coverage. Success criteria met.\n\n**Final Output:**\n- All unit tests generated and validated.\n- Coverage report: 100% (target: 95%).\n- No critical warnings or failures.\n- Proofloop completed successfully. Ready for deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "proofloop#main-content",
+      "proofloop#overview",
+      "proofloop#setup",
+      "proofloop#examples",
+      "proofloop#tools",
+      "proofloop#mcp",
+      "proofloop#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "proofloop là một AI orchestrator đột phá được thiết kế để tự động hóa các tác vụ cho đến khi đạt được mục tiêu đã đề ra. Người dùng có thể chỉ rõ định nghĩa thế nào là 'hoàn thành' (done) cho dự án của mình, giúp AI quản lý workflow một cách thông minh. Sau khi được kích hoạt, proofloop có thể tạm ẩn (go to sleep) và sau đó hoạt động trở lại (wake up) để bàn giao các kết quả đã được xác minh, đảm bảo quy trình tự động hóa của bạn vừa hiệu quả vừa đáng tin cậy. Skill này hỗ trợ nhiều coding framework khác nhau, bao gồm OpenCode, Codex và Claude Code, mang lại sự linh hoạt cho nhiều môi trường phát triển khác nhau. Lợi ích cốt lõi của việc sử dụng proofloop nằm ở khả năng tối ưu hóa các workflow phức tạp và giảm thiểu sự giám sát thủ công. Bằng cách tự động hóa việc điều phối tác vụ, các developer và product manager có thể tiết kiệm đáng kể thời gian, giúp họ tập trung vào các sáng kiến chiến lược cấp cao hơn. Dù lượng thời gian tiết kiệm cụ thể hiện chưa được đo lường chính xác, nhưng tiềm năng tăng năng suất là rất rõ ràng, đặc biệt là trong các môi trường coi trọng việc hoàn thành tác vụ. Skill này đặc biệt phù hợp cho các developer, product manager và kỹ sư AI (AI practitioner) đang tìm kiếm giải pháp nâng cao khả năng tự động hóa workflow. Với mức độ khó trung bình (intermediate), skill này dễ tiếp cận đối với những ai đã có một số kinh nghiệm về tự động hóa bằng AI, trong khi mức độ phù hợp GTM trung bình cho thấy nó có thể mang lại giá trị lớn cho nhiều dự án khác nhau. Các trường hợp sử dụng thực tế bao gồm tự động hóa quy trình kiểm thử (testing), quản lý pipeline triển khai (deployment pipeline), hoặc điều phối các tác vụ xử lý dữ liệu—tất cả đều có thể hưởng lợi từ một AI agent skill đáng tin cậy như proofloop. Việc triển khai proofloop rất đơn giản, chỉ mất khoảng 30 phút để setup. Người dùng cần có hiểu biết cơ bản về các coding framework được hỗ trợ để khai thác tối đa khả năng của công cụ. Trong bối cảnh các doanh nghiệp ngày càng áp dụng nhiều workflow ưu tiên AI (AI-first), việc tích hợp các skill như proofloop có thể nâng cao đáng kể hiệu quả vận hành và thúc đẩy đổi mới sáng tạo. Bằng cách tự động hóa các tác vụ lặp đi lặp lại, các đội ngũ có thể chuyển hướng nguồn lực sang các mục tiêu chiến lược hơn, từ đó mang lại kết quả tốt hơn và bàn giao dự án nhanh hơn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/exiw-ai/proofloop`",
+    "usage_vi": "```\nThiết lập một proofloop để tự động hóa [TASK] cho đến khi đáp ứng [SUCCESS_CRITERIA]. Sử dụng [TOOL_NAME] để thực thi các bước. Tạm dừng thực thi nếu xảy ra [FAILURE_CONDITION], và chỉ tiếp tục sau khi xác minh các bản sửa lỗi bằng [VERIFICATION_METHOD]. Ví dụ: 'Thiết lập một proofloop để tự động hóa việc tạo báo cáo tài chính hàng tháng cho đến khi cả 12 báo cáo được tạo ra mà không có lỗi. Sử dụng OpenCode để thực thi các script Python. Tạm dừng thực thi nếu có bất kỳ báo cáo nào không qua được bước xác thực, và chỉ tiếp tục sau khi xác minh các bản sửa lỗi bằng cách kiểm tra thủ công các log lỗi.'\n```\nCopy\n\n```\nProofloop đã được khởi tạo cho tác vụ: **Tự động tạo Unit Test cho Project Alpha**\n\n**Success Criteria:** Tất cả 247 unit test phải pass với coverage đạt 100% và không có cảnh báo nghiêm trọng nào.\n**Failure Condition:** Bất kỳ test nào có tỷ lệ thất bại >5% hoặc coverage <95%.\n**Verification Method:** Kiểm tra thủ công các log test bị lỗi và báo cáo coverage.\n\n**Execution Log:**\n1. **Iteration 1 (OpenCode):** Đã tạo 247 unit test cho `Project Alpha` bằng `pytest`. Kết quả: 212 pass, 35 fail (tỷ lệ thất bại 14%), coverage đạt 88%.\n   - **Action:** Tạm dừng Proofloop. Phát hiện đã đạt điều kiện thất bại (tỷ lệ thất bại >5%).\n   - **Output:** Log lỗi cho thấy 35 test bị fail do thiếu mock data cho module `UserService`.\n\n2. **Iteration 2 (OpenCode):** Tạm dừng thực thi và kích hoạt sửa lỗi cho mock data của `UserService`. Cập nhật các mock để bao gồm các edge case cho `UserService.getUserById()`. Tiếp tục chạy proofloop.\n   - **Verification:** Đã kiểm tra thủ công log lỗi và xác nhận các bản sửa lỗi đã giải quyết được nguyên nhân gốc rễ (root cause).\n\n3. **Iteration 3 (OpenCode):** Chạy lại các test. Kết quả: 247 pass, 0 fail, coverage đạt 100%. Đã đáp ứng success criteria.\n\n**Final Output:**\n- Tất cả các unit test đã được tạo và xác thực.\n- Báo cáo coverage: 100% (mục tiêu: 95%).\n- Không có cảnh báo nghiêm trọng hoặc lỗi thất bại nào.\n- Proofloop đã hoàn thành thành công. Sẵn sàng để deploy.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:27.940298Z",
+    "http_status": 200,
+    "content_hash": "5bec3a50bb25853bd2163331d245e27c0ef66b5e6a906effb4f74988bcdfa101",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\proofloop.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\proofloop.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "proofloop: AI Orchestrator cho quy trình tự động hóa hiệu quả",
+  "short_description_vi": "Proofloop là một AI orchestrator chuyên thực thi các tác vụ cho đến khi hoàn thành. Hãy định nghĩa tiêu chí thành công (success criteria), tạm dừng thực thi và tiếp tục chạy với các kết quả đã được xác minh. Hỗ trợ OpenCode, Codex và Claude Code. Đây là công cụ lý tưởng cho các đội ngũ operations muốn tự động hóa các tác vụ lập trình lặp đi lặp lại."
+}

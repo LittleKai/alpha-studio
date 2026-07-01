@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-prompts",
+  "slug": "claude-prompts",
+  "name": "Claude Prompts",
+  "headline": "claude-prompts: Enhance Your Workflow Automation",
+  "short_description": "MCP prompt template server for Claude. Hot-reload, thinking frameworks, and quality gates. Enables operations teams to manage and deploy Claude prompts efficiently. Connects to Claude and integrates with Node.js workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "minipuft",
+  "install_command": "git clone https://github.com/minipuft/claude-prompts.git",
+  "source_repo_url": "https://github.com/minipuft/claude-prompts",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "ai-workflows",
+    "ai-automation",
+    "mcp",
+    "ai-development",
+    "typescript",
+    "nodejs",
+    "prompt-management",
+    "prompt-templates",
+    "prompt-engineering",
+    "llm-tools",
+    "model-context-protocol",
+    "claude"
+  ],
+  "sections": {
+    "overview": "The claude-prompts skill is designed to streamline the process of creating and managing prompt templates for AI agents. This automation skill features a hot-reload capability, which allows users to update prompts in real-time without needing to restart the server. Additionally, it incorporates thinking frameworks and quality gates to ensure that the prompts meet specific standards of performance and relevance. By utilizing this skill, developers and product managers can enhance their AI automation workflows, making them more efficient and effective. One of the key benefits of using claude-prompts is the significant time savings it can offer. Although the exact time savings are currently unknown, the ability to implement this skill in just 30 minutes makes it an attractive option for those looking to optimize their workflows. The intermediate complexity of this skill means that users should have a foundational understanding of AI automation and prompt engineering, making it suitable for developers and AI practitioners who are familiar with these concepts. This skill is particularly beneficial for roles focused on AI development and product management, as it allows for the rapid iteration and testing of prompts that drive AI agent behavior. For instance, a product manager working on a chatbot could use claude-prompts to quickly adjust the conversational prompts based on user feedback, ensuring a more engaging user experience. Similarly, developers can leverage this skill to create and refine prompts for various applications, from customer support to data analysis. In terms of implementation, claude-prompts requires an intermediate level of expertise, but its straightforward setup allows teams to integrate it into their existing AI-first workflows with relative ease. By adopting this skill, organizations can ensure that their AI agents are equipped with high-quality, relevant prompts that enhance their functionality and performance, ultimately leading to improved outcomes in automation and user satisfaction.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/minipuft/claude-prompts`",
+    "usage": "```\nDeploy the prompt template '[PROMPT_NAME]' to the MCP prompt server for Claude. Validate the prompt against the quality gates for [GATE_CRITERIA]. Hot-reload the template to the Node.js workflow at [WORKFLOW_PATH]. Monitor the deployment status and log any errors to [LOG_FILE_PATH].\n```\nCopy\n\n```\nSuccessfully deployed the prompt template 'customer-support-v2' to the MCP prompt server for Claude. The template passed all quality gates, including input validation, output formatting, and error handling checks. The Node.js workflow at /workflows/customer-support was hot-reloaded with the new template. Deployment status: 'Active'. No errors were logged. The template is now available for use in the Claude environment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-prompts#main-content",
+      "claude-prompts#overview",
+      "claude-prompts#setup",
+      "claude-prompts#examples",
+      "claude-prompts#tools",
+      "claude-prompts#mcp",
+      "claude-prompts#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill claude-prompts được thiết kế để đơn giản hóa quy trình tạo và quản lý các prompt template cho AI agent. Skill tự động hóa này tích hợp tính năng hot-reload, cho phép người dùng cập nhật prompt theo thời gian thực mà không cần khởi động lại server. Ngoài ra, nó còn tích hợp các thinking framework và quality gate để đảm bảo prompt đáp ứng các tiêu chuẩn cụ thể về hiệu năng và độ phù hợp. Bằng cách sử dụng skill này, lập trình viên và product manager có thể cải thiện các workflow tự động hóa AI, giúp chúng hoạt động hiệu quả và tối ưu hơn. Một trong những lợi ích lớn nhất của việc sử dụng claude-prompts là tiết kiệm thời gian đáng kể. Dù lượng thời gian tiết kiệm cụ thể chưa được xác định, việc có thể triển khai skill này chỉ trong 30 phút giúp nó trở thành một lựa chọn hấp dẫn cho những ai muốn tối ưu hóa workflow của mình. Độ khó ở mức trung bình (intermediate) của skill này yêu cầu người dùng có nền tảng cơ bản về tự động hóa AI và prompt engineering, rất phù hợp cho lập trình viên và những người thực hành AI đã quen thuộc với các khái niệm này. Skill này đặc biệt hữu ích cho các vai trò tập trung vào phát triển AI và quản lý sản phẩm (product management), cho phép nhanh chóng thử nghiệm và lặp lại (iteration) các prompt định hướng hành vi của AI agent. Ví dụ, một product manager phát triển chatbot có thể dùng claude-prompts để nhanh chóng điều chỉnh prompt hội thoại dựa trên phản hồi của người dùng, mang lại trải nghiệm hấp dẫn hơn. Tương tự, lập trình viên có thể tận dụng skill này để tạo và tinh chỉnh prompt cho nhiều ứng dụng khác nhau, từ hỗ trợ khách hàng đến phân tích dữ liệu. Về mặt triển khai, claude-prompts yêu cầu trình độ chuyên môn trung bình, nhưng setup đơn giản cho phép các đội ngũ tích hợp vào workflow AI-first hiện tại một cách dễ dàng. Bằng cách áp dụng skill này, các tổ chức có thể đảm bảo AI agent của họ được trang bị các prompt chất lượng cao, phù hợp để tối ưu hóa tính năng và hiệu năng, cuối cùng mang lại kết quả tự động hóa tốt hơn và tăng mức độ hài lòng của người dùng.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/minipuft/claude-prompts`",
+    "usage_vi": "```\nTriển khai prompt template '[PROMPT_NAME]' lên MCP prompt server cho Claude. Kiểm tra tính hợp lệ của prompt thông qua các quality gate cho [GATE_CRITERIA]. Hot-reload template vào Node.js workflow tại [WORKFLOW_PATH]. Theo dõi trạng thái triển khai và ghi log lỗi vào [LOG_FILE_PATH].\n```\nCopy\n\n```\nĐã triển khai thành công prompt template 'customer-support-v2' lên MCP prompt server cho Claude. Template đã vượt qua tất cả các quality gate, bao gồm kiểm tra dữ liệu đầu vào (input validation), định dạng đầu ra (output formatting) và xử lý lỗi. Node.js workflow tại /workflows/customer-support đã được hot-reload với template mới. Trạng thái triển khai: 'Active'. Không có lỗi nào được ghi nhận. Template hiện đã sẵn sàng để sử dụng trong môi trường Claude.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:13.948012Z",
+    "http_status": 200,
+    "content_hash": "95ef09eeb1604e863d0c3c01b944cc74391412c5871ff48755b738dc7a5ad07d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-prompts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-prompts.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-prompts: Nâng cao hiệu quả tự động hóa quy trình làm việc của bạn",
+  "short_description_vi": "MCP prompt template server dành cho Claude. Hỗ trợ hot-reload, thinking frameworks và quality gates. Giúp các đội ngũ vận hành quản lý và triển khai prompt cho Claude một cách hiệu quả. Kết nối với Claude và tích hợp vào các workflow Node.js."
+}

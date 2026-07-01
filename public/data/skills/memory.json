@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/memory",
+  "slug": "memory",
+  "name": "browser-use",
+  "headline": "Memory - AI Memory Server for LLMs",
+  "short_description": "Memory server for LLMs that can be easily integrated to any client. Benefits operations teams by enabling persistent, context-aware conversations. Connects to Claude Code hooks API and fsDB, a markdown database built for AI memory systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "RLabs-Inc",
+  "install_command": "git clone https://github.com/RLabs-Inc/memory.git",
+  "source_repo_url": "https://github.com/RLabs-Inc/memory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "memory",
+    "claude-ai",
+    "llms",
+    "ai-memory",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "Memory is a semantic memory system designed for AI CLI tools like Claude Code that enables genuine understanding across conversations. Unlike traditional RAG systems that retrieve documents by keyword matching, it curates meaningful insights through AI-driven analysis and maintains consciousness continuity. The system uses two-stage retrieval combining obligatory memories with intelligent semantic scoring, and stores data in fsDB—a markdown database optimized for AI memory systems. It automatically injects session primers with temporal context, surfaces relevant memories during conversations, and curates new memories when sessions end. Operations teams benefit from persistent, context-aware interactions where the AI remembers not just facts, but relationships, decisions, and breakthroughs from previous collaborations.\nMaintaining project context across multiple Claude Code sessions with temporal awareness\nPreserving technical decisions and architectural insights for team collaboration\nTracking unresolved issues and TODOs that surface contextually in future conversations\nBuilding relationship memory of communication styles and collaboration preferences",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RLabs-Inc/memory`",
+    "usage": "```\nInitialize a memory server for [CLIENT_NAME] using fsDB and integrate it with the Claude Code hooks API. Load the existing conversation context from [MEMORY_FILE_PATH] and ensure the memory server persists new interactions in real-time. Use the memory to maintain continuity in conversations with [USER_NAME] about [TOPIC].\n```\nCopy\n\n```\nMemory server initialized for TechCorp using fsDB with memory file located at `/memory/techcorp_conversations.md`. The Claude Code hooks API integration is active, and the system has loaded 12 prior interactions with Alex Chen about the upcoming product launch of \"Nexus AI Suite.\" The memory server is now tracking the latest conversation about the Nexus AI Suite's compliance with GDPR regulations. Key context retained:\n\n- Alex's role: Product Manager at TechCorp\n- Previous discussions: Focused on AI ethics, compliance, and feature prioritization\n- Open action items: Finalize GDPR compliance documentation by EOD Friday\n- User preferences: Prefers concise updates with bullet points for technical details\n\nThe memory server is now persisting Alex's latest input: \"We need to ensure the data anonymization module meets Article 25 requirements. Can you draft a compliance checklist for the team?\" The system will now associate this request with the existing context and provide relevant follow-ups in future interactions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "memory#main-content",
+      "memory#overview",
+      "memory#setup",
+      "memory#examples",
+      "memory#tools",
+      "memory#mcp",
+      "memory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Memory is a semantic memory system designed for AI CLI tools like Claude Code that enables genuine understanding across conversations. Unlike traditional RAG systems that retrieve documents by keyword matching, it curates meaningful insights through AI-driven analysis and maintains consciousness continuity. The system uses two-stage retrieval combining obligatory memories with intelligent semantic scoring, and stores data in fsDB—a markdown database optimized for AI memory systems. It automatically injects session primers with temporal context, surfaces relevant memories during conversations, and curates new memories when sessions end. Operations teams benefit from persistent, context-aware interactions where the AI remembers not just facts, but relationships, decisions, and breakthroughs from previous collaborations.\nMaintaining project context across multiple Claude Code sessions with temporal awareness\nPreserving technical decisions and architectural insights for team collaboration\nTracking unresolved issues and TODOs that surface contextually in future conversations\nBuilding relationship memory of communication styles and collaboration preferences",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RLabs-Inc/memory`",
+    "usage_vi": "```\nInitialize a memory server for [CLIENT_NAME] using fsDB and integrate it with the Claude Code hooks API. Load the existing conversation context from [MEMORY_FILE_PATH] and ensure the memory server persists new interactions in real-time. Use the memory to maintain continuity in conversations with [USER_NAME] about [TOPIC].\n```\nCopy\n\n```\nMemory server initialized for TechCorp using fsDB with memory file located at `/memory/techcorp_conversations.md`. The Claude Code hooks API integration is active, and the system has loaded 12 prior interactions with Alex Chen about the upcoming product launch of \"Nexus AI Suite.\" The memory server is now tracking the latest conversation about the Nexus AI Suite's compliance with GDPR regulations. Key context retained:\n\n- Alex's role: Product Manager at TechCorp\n- Previous discussions: Focused on AI ethics, compliance, and feature prioritization\n- Open action items: Finalize GDPR compliance documentation by EOD Friday\n- User preferences: Prefers concise updates with bullet points for technical details\n\nThe memory server is now persisting Alex's latest input: \"We need to ensure the data anonymization module meets Article 25 requirements. Can you draft a compliance checklist for the team?\" The system will now associate this request with the existing context and provide relevant follow-ups in future interactions.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:29.062188Z",
+    "http_status": 200,
+    "content_hash": "0939cdfdf5e59927c703cc3e1f040175e4617865d6b5a26fe2177cfa33605fe0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\memory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\memory.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Memory - AI Memory Server for LLMs",
+  "short_description_vi": "Memory server for LLMs that can be easily integrated to any client. Benefits operations teams by enabling persistent, context-aware conversations. Connects to Claude Code hooks API and fsDB, a markdown database built for AI memory systems."
+}

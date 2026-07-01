@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tiledesk-chatbot",
+  "slug": "tiledesk-chatbot",
+  "name": "Tiledesk Chatbot Engine",
+  "headline": "Tiledesk Chatbot Engine - Multichannel Chatbot",
+  "short_description": "The Tiledesk Chatbot Engine is an open-source Node.js framework for building multichannel chatbots. It enables operations teams to automate customer interactions across various platforms. The engine integrates with the Tiledesk Design Studio for bot management and supports hybrid search and retrieved-augmented-generation for enhanced conversational capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "400 min",
+  "author": "Tiledesk",
+  "install_command": "git clone https://github.com/Tiledesk/tiledesk-chatbot.git",
+  "source_repo_url": "https://github.com/Tiledesk/tiledesk-chatbot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-automation",
+    "open-source",
+    "communication",
+    "hybrid-search",
+    "conversational-interfaces",
+    "customer-engagement",
+    "chat-service",
+    "messaging-platform",
+    "retrieved-augmented-generation",
+    "workflow-automation",
+    "customer-communication",
+    "customer-service",
+    "multichannel-conversations",
+    "customer-support",
+    "customer-interaction",
+    "automation",
+    "self-hosted",
+    "ai-agents",
+    "ai-assistant",
+    "chat-applications"
+  ],
+  "sections": {
+    "overview": "The Tiledesk Chatbot Engine is an open-source Node.js framework designed for creating and managing interactive chatbots at scale. It works seamlessly with the Tiledesk Design Studio, allowing teams to design chatbot logic visually without extensive coding. The engine handles complex, high-traffic conversational flows and supports hybrid search and retrieval-augmented generation for enhanced responses. It integrates directly with Tiledesk's ecosystem, enabling seamless handoffs to human agents and other platform functionalities. Operations teams use it to automate customer interactions across multiple channels while maintaining full customization control.\nAutomating customer service interactions with fallback to human support\nBuilding multichannel chatbots for FAQ and support workflows\nCreating conversational flows with knowledge base retrieval\nDesigning chatbot logic visually without custom development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Tiledesk/tiledesk-chatbot`",
+    "usage": "```\nBuild a Tiledesk chatbot that handles [SPECIFIC_CUSTOMER_SERVICE_TASK] for [COMPANY_NAME]. Use the Tiledesk Design Studio to create a flow that [DESCRIBE_PRIMARY_FUNCTION, e.g., 'routes billing inquiries to the finance team, processes refund requests, and escalates unresolved issues to a human agent']. Include hybrid search to retrieve relevant FAQ articles from [KNOWLEDGE_BASE_SOURCE] and use RAG to generate context-aware responses. Test the bot in staging and deploy to production channels: [LIST_CHANNELS, e.g., 'WhatsApp, Facebook Messenger, and the company website'].\n```\nCopy\n\n```\nHere’s a Tiledesk chatbot flow designed for **GreenLeaf Organics**, an organic grocery delivery service, to handle customer inquiries about orders and subscriptions:\n\n**Bot Flow Overview:**\n1. **Trigger:** Customer initiates chat via WhatsApp or the company website.\n2. **Greeting:** The bot welcomes the user and asks, *'Hi! How can I help you today? You can ask about orders, subscriptions, or product details.'*\n3. **Intent Detection:** Using hybrid search, the bot queries the **GreenLeaf FAQ database** (hosted on Notion) to match the user’s query. For example, if the user asks *'Why hasn’t my order arrived yet?'*, the bot retrieves the relevant FAQ: *'Orders typically arrive within 3-5 business days. If your order is delayed, check your tracking number or contact support.'*\n4. **Action Handling:**\n   - **Order Status:** If the user provides an order number, the bot queries the **GreenLeaf CRM** (via API) and responds with the latest status (e.g., *'Your order #2024-0543 is out for delivery and will arrive today by 6 PM.'*).\n   - **Subscription Changes:** For requests like *'How do I pause my subscription?'*, the bot guides the user to the self-service portal or escalates to the support team if needed.\n   - **Product Questions:** If the user asks about ingredients or allergens, the bot pulls details from the **product catalog API** and responds with: *'Our Organic Quinoa Salad contains quinoa, cherry tomatoes, and a lemon-tahini dressing. It’s vegan and gluten-free.'*\n5. **Escalation:** If the user’s query isn’t resolved (e.g., *'I never received my refund!'*), the bot transfers the chat to a human agent with a summary of the conversation and prior interactions.\n6. **Fallback:** If no intent is detected, the bot offers to connect the user to a live agent or suggests browsing the FAQ.\n\n**Deployment & Testing:**\n- The bot was tested in Tiledesk’s staging environment with 50 simulated user interactions, achieving a 92% resolution rate without human intervention.\n- It was deployed to WhatsApp and the company website, with analytics showing a 30% reduction in support ticket volume for common queries within the first week.\n- The bot’s hybrid search uses **Tiledesk’s built-in vector database** (powered by Pinecone) to ensure responses are accurate and up-to-date.\n\n**Metrics After 2 Weeks:**\n- 1,247 chats handled autonomously (78% of total inquiries).\n- Average resolution time dropped from 12 minutes to 2.5 minutes.\n- Customer satisfaction (CSAT) scores for bot interactions improved from 78% to 91%.\n\n**Next Steps:**\n- Add a **feedback loop** to let users rate responses and improve the FAQ database.\n- Integrate with **Slack** for internal team notifications when the bot escalates chats.\n- Expand to **Facebook Messenger** and **Instagram DMs** by Q3.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tiledesk-chatbot#main-content",
+      "tiledesk-chatbot#overview",
+      "tiledesk-chatbot#setup",
+      "tiledesk-chatbot#examples",
+      "tiledesk-chatbot#tools",
+      "tiledesk-chatbot#mcp",
+      "tiledesk-chatbot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Tiledesk Chatbot Engine is an open-source Node.js framework designed for creating and managing interactive chatbots at scale. It works seamlessly with the Tiledesk Design Studio, allowing teams to design chatbot logic visually without extensive coding. The engine handles complex, high-traffic conversational flows and supports hybrid search and retrieval-augmented generation for enhanced responses. It integrates directly with Tiledesk's ecosystem, enabling seamless handoffs to human agents and other platform functionalities. Operations teams use it to automate customer interactions across multiple channels while maintaining full customization control.\nAutomating customer service interactions with fallback to human support\nBuilding multichannel chatbots for FAQ and support workflows\nCreating conversational flows with knowledge base retrieval\nDesigning chatbot logic visually without custom development",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Tiledesk/tiledesk-chatbot`",
+    "usage_vi": "```\nBuild a Tiledesk chatbot that handles [SPECIFIC_CUSTOMER_SERVICE_TASK] for [COMPANY_NAME]. Use the Tiledesk Design Studio to create a flow that [DESCRIBE_PRIMARY_FUNCTION, e.g., 'routes billing inquiries to the finance team, processes refund requests, and escalates unresolved issues to a human agent']. Include hybrid search to retrieve relevant FAQ articles from [KNOWLEDGE_BASE_SOURCE] and use RAG to generate context-aware responses. Test the bot in staging and deploy to production channels: [LIST_CHANNELS, e.g., 'WhatsApp, Facebook Messenger, and the company website'].\n```\nCopy\n\n```\nHere’s a Tiledesk chatbot flow designed for **GreenLeaf Organics**, an organic grocery delivery service, to handle customer inquiries about orders and subscriptions:\n\n**Bot Flow Overview:**\n1. **Trigger:** Customer initiates chat via WhatsApp or the company website.\n2. **Greeting:** The bot welcomes the user and asks, *'Hi! How can I help you today? You can ask about orders, subscriptions, or product details.'*\n3. **Intent Detection:** Using hybrid search, the bot queries the **GreenLeaf FAQ database** (hosted on Notion) to match the user’s query. For example, if the user asks *'Why hasn’t my order arrived yet?'*, the bot retrieves the relevant FAQ: *'Orders typically arrive within 3-5 business days. If your order is delayed, check your tracking number or contact support.'*\n4. **Action Handling:**\n   - **Order Status:** If the user provides an order number, the bot queries the **GreenLeaf CRM** (via API) and responds with the latest status (e.g., *'Your order #2024-0543 is out for delivery and will arrive today by 6 PM.'*).\n   - **Subscription Changes:** For requests like *'How do I pause my subscription?'*, the bot guides the user to the self-service portal or escalates to the support team if needed.\n   - **Product Questions:** If the user asks about ingredients or allergens, the bot pulls details from the **product catalog API** and responds with: *'Our Organic Quinoa Salad contains quinoa, cherry tomatoes, and a lemon-tahini dressing. It’s vegan and gluten-free.'*\n5. **Escalation:** If the user’s query isn’t resolved (e.g., *'I never received my refund!'*), the bot transfers the chat to a human agent with a summary of the conversation and prior interactions.\n6. **Fallback:** If no intent is detected, the bot offers to connect the user to a live agent or suggests browsing the FAQ.\n\n**Deployment & Testing:**\n- The bot was tested in Tiledesk’s staging environment with 50 simulated user interactions, achieving a 92% resolution rate without human intervention.\n- It was deployed to WhatsApp and the company website, with analytics showing a 30% reduction in support ticket volume for common queries within the first week.\n- The bot’s hybrid search uses **Tiledesk’s built-in vector database** (powered by Pinecone) to ensure responses are accurate and up-to-date.\n\n**Metrics After 2 Weeks:**\n- 1,247 chats handled autonomously (78% of total inquiries).\n- Average resolution time dropped from 12 minutes to 2.5 minutes.\n- Customer satisfaction (CSAT) scores for bot interactions improved from 78% to 91%.\n\n**Next Steps:**\n- Add a **feedback loop** to let users rate responses and improve the FAQ database.\n- Integrate with **Slack** for internal team notifications when the bot escalates chats.\n- Expand to **Facebook Messenger** and **Instagram DMs** by Q3.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:27.473527Z",
+    "http_status": 200,
+    "content_hash": "bb398cd441ada4e39ce02a805edeb5342401972b66b16f5f52376b4c64e7e43c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tiledesk-chatbot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tiledesk-chatbot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tiledesk Chatbot Engine - Multichannel Chatbot",
+  "short_description_vi": "The Tiledesk Chatbot Engine is an open-source Node.js framework for building multichannel chatbots. It enables operations teams to automate customer interactions across various platforms. The engine integrates with the Tiledesk Design Studio for bot management and supports hybrid search and retrieved-augmented-generation for enhanced conversational capabilities."
+}

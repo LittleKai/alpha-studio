@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccexp",
+  "slug": "ccexp",
+  "name": "ccexp",
+  "headline": "ccexp: terminal for Claude Code commands",
+  "short_description": "Interactive CLI tool for exploring and managing Claude Code settings and slash commands. Operations teams use it to discover, preview, and manage configuration files. Integrates with Claude Code to streamline workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "nyatinte",
+  "install_command": "git clone https://github.com/nyatinte/ccexp.git",
+  "source_repo_url": "https://github.com/nyatinte/ccexp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ccexp is a React Ink-based CLI tool that provides interactive terminal access to Claude Code configuration files including CLAUDE.md, slash commands, subagents, and settings files. It automatically discovers configuration across project and global directories, offering a split-pane interface with file preview, live search, and keyboard navigation. Teams use ccexp to streamline workflow management by easily locating, previewing, and copying Claude-related configurations without manual file browsing.\nDiscover all Claude configuration files across a workspace or specific project\nPreview and manage project-specific slash commands and subagent definitions\nAccess global Claude settings and user commands from the terminal\nCopy Claude configuration content or paths for sharing with team members",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nyatinte/ccexp`",
+    "usage": "```\nUse the `ccexp` CLI tool to explore and manage [SETTING_NAME] in your Claude Code configuration. First, run `ccexp list` to preview available settings. Then, use `ccexp show [SETTING_NAME]` to inspect its current value and documentation. If you need to modify it, run `ccexp edit [SETTING_NAME] --value [NEW_VALUE]` to apply changes. Finally, verify the update with `ccexp show [SETTING_NAME]` and test the behavior in your workflow.\n```\nCopy\n\n```\n```\n$ ccexp list\nAvailable settings in your Claude Code configuration:\n- max_concurrent_sessions: 4 (default: 2)\n- auto_save_interval: 30s (default: 60s)\n- log_level: INFO (default: WARN)\n- slash_commands:\n  - /debug: Enable debug mode for current session\n  - /clear: Clear terminal output\n  - /config: Open config file in editor\n\n$ ccexp show max_concurrent_sessions\nCurrent value: 4\nDocumentation: Maximum number of parallel sessions allowed. Higher values may improve throughput but increase memory usage.\nDefault: 2\n\n$ ccexp edit max_concurrent_sessions --value 8\nUpdated max_concurrent_sessions from 4 to 8 in ~/.claude/config.json\n\n$ ccexp show max_concurrent_sessions\nCurrent value: 8\nDocumentation: Maximum number of parallel sessions allowed. Higher values may improve throughput but increase memory usage.\nDefault: 2\n\n✅ Verification: Testing with 8 concurrent sessions...\nSession 1: Running\nSession 2: Running\nSession 3: Running\nSession 4: Running\nSession 5: Running\nSession 6: Running\nSession 7: Running\nSession 8: Running\nAll sessions completed successfully. No memory issues detected.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccexp#main-content",
+      "ccexp#overview",
+      "ccexp#setup",
+      "ccexp#examples",
+      "ccexp#tools",
+      "ccexp#mcp",
+      "ccexp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccexp là công cụ CLI phát triển trên nền tảng React Ink, cung cấp khả năng tương tác trực tiếp từ terminal đến các file cấu hình Claude Code, bao gồm CLAUDE.md, slash commands, subagents và các file thiết lập. Công cụ tự động quét và phát hiện cấu hình trong cả thư mục dự án lẫn thư mục global, mang đến giao diện split-pane trực quan hỗ trợ xem trước file, tìm kiếm tức thì (live search) và điều hướng bằng bàn phím. Các đội ngũ phát triển sử dụng ccexp để tối ưu hóa quy trình làm việc nhờ khả năng tìm kiếm, xem trước và sao chép nhanh các cấu hình liên quan đến Claude mà không cần phải duyệt file thủ công.\nPhát hiện mọi file cấu hình Claude trong workspace hoặc một dự án cụ thể\nXem trước và quản lý các slash commands và định nghĩa subagent riêng của từng dự án\nTruy cập các thiết lập Claude global và lệnh người dùng trực tiếp từ terminal\nSao chép nội dung hoặc đường dẫn cấu hình Claude để chia sẻ nhanh với các thành viên trong nhóm",
+    "setup_vi": "Hiện chưa có sẵn lệnh cài đặt nhanh. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/nyatinte/ccexp`",
+    "usage_vi": "```\nSử dụng công cụ CLI `ccexp` để khám phá và quản lý [SETTING_NAME] trong cấu hình Claude Code của bạn. Đầu tiên, chạy `ccexp list` để xem trước các thiết lập khả dụng. Sau đó, sử dụng `ccexp show [SETTING_NAME]` để kiểm tra giá trị hiện tại và tài liệu hướng dẫn của thiết lập đó. Nếu cần chỉnh sửa, hãy chạy `ccexp edit [SETTING_NAME] --value [NEW_VALUE]` để áp dụng các thay đổi. Cuối cùng, xác minh lại cập nhật bằng lệnh `ccexp show [SETTING_NAME]` và kiểm tra hoạt động của nó trong quy trình làm việc thực tế.\n```\nCopy\n\n```\n```\n$ ccexp list\nCác thiết lập khả dụng trong cấu hình Claude Code của bạn:\n- max_concurrent_sessions: 4 (mặc định: 2)\n- auto_save_interval: 30s (mặc định: 60s)\n- log_level: INFO (mặc định: WARN)\n- slash_commands:\n  - /debug: Kích hoạt chế độ debug cho session hiện tại\n  - /clear: Xóa nội dung hiển thị trên terminal\n  - /config: Mở file cấu hình trong editor\n\n$ ccexp show max_concurrent_sessions\nGiá trị hiện tại: 4\nTài liệu hướng dẫn: Số lượng session song song tối đa được phép. Giá trị cao hơn có thể cải thiện hiệu năng (throughput) nhưng sẽ làm tăng dung lượng bộ nhớ sử dụng.\nMặc định: 2\n\n$ ccexp edit max_concurrent_sessions --value 8\nĐã cập nhật max_concurrent_sessions từ 4 thành 8 trong ~/.claude/config.json\n\n$ ccexp show max_concurrent_sessions\nGiá trị hiện tại: 8\nTài liệu hướng dẫn: Số lượng session song song tối đa được phép. Giá trị cao hơn có thể cải thiện hiệu năng (throughput) nhưng sẽ làm tăng dung lượng bộ nhớ sử dụng.\nMặc định: 2\n\n✅ Xác minh: Đang kiểm tra với 8 session đồng thời...\nSession 1: Running\nSession 2: Running\nSession 3: Running\nSession 4: Running\nSession 5: Running\nSession 6: Running\nSession 7: Running\nSession 8: Running\nTất cả các session đã hoàn thành thành công. Không phát hiện sự cố bộ nhớ nào.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:12.869945Z",
+    "http_status": 200,
+    "content_hash": "51adfb4a5cb4406b805aa5ba2d3fe08dab65c4d5cb5cdc9d3b129a7029fa0ae6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccexp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccexp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ccexp: terminal cho các lệnh Claude Code",
+  "short_description_vi": "Công cụ CLI tương tác giúp khám phá và quản lý các thiết lập cũng như slash commands của Claude Code. Các đội ngũ vận hành sử dụng công cụ này để tìm kiếm, xem trước và quản lý các file cấu hình. Tích hợp trực tiếp với Claude Code để tinh giản quy trình làm việc."
+}

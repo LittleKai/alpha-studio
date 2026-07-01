@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vue-best-practices",
+  "slug": "vue-best-practices",
+  "name": "expo-tailwind-setup",
+  "headline": "vue-best-practices: Vue.js Development",
+  "short_description": "The vue-best-practices skill enhances Vue.js development by providing a curated set of best practices and coding standards. This skill helps developers write cleaner, more efficient code, ultimately saving time and reducing bugs.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "hyf0",
+  "install_command": "git clone https://github.com/hyf0/vue-skills.git",
+  "source_repo_url": "https://github.com/hyf0/vue-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The vue-best-practices skill is designed to optimize Vue.js development by offering a comprehensive collection of best practices and coding standards. This skill guides developers through the nuances of Vue.js, ensuring that they adhere to industry standards and avoid common pitfalls. By integrating this skill into your workflow, you can enhance the quality of your code and streamline the development process. One of the key benefits of using vue-best-practices is the significant time savings it offers. Developers can avoid the trial-and-error phase of figuring out the best ways to implement features in Vue.js. Instead, they can rely on proven methodologies that help them write cleaner, more maintainable code. This not only speeds up development but also reduces the likelihood of bugs, leading to a more stable application in the long run. This skill is particularly beneficial for developers, product managers, and AI practitioners who are working on Vue.js projects. It is ideal for both beginners looking to learn best practices and experienced developers aiming to refine their skills. Practical use cases include improving the performance of single-page applications, enhancing component reusability, and ensuring that Vue.js applications are scalable and maintainable. In terms of implementation, the vue-best-practices skill is user-friendly and can be integrated into existing projects with minimal effort. It fits seamlessly into AI-first workflows, allowing teams to leverage AI automation for code reviews and quality assurance. By adopting this skill, teams can enhance their productivity and focus more on delivering value to their users.\nOptimize the performance of single-page applications by following best practices.\nEnhance component reusability in Vue.js projects through standardized patterns.\nEnsure scalable and maintainable Vue.js applications with proven coding standards.\nStreamline code reviews by implementing consistent best practices across the team.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hyf0/vue-skills`",
+    "usage": "```\nReview this Vue.js component and suggest improvements based on best practices. The component is for a [FEATURE] in a [TYPE] application. Here is the code: [CODE]. Focus on [SPECIFIC_ASPECTS] like performance, readability, or maintainability.\n```\nCopy\n\n```\nAfter reviewing the provided Vue.js component for the user authentication feature in a web application, here are the suggested improvements:\n\n1. **Component Structure**: The component can be split into smaller, more manageable sub-components. For instance, the login form and the error message display can be separated into their own components. This will make the code more modular and easier to maintain.\n\n2. **Performance Optimization**: The use of `v-if` for conditional rendering is appropriate, but consider using `v-show` for elements that toggle frequently. This can improve performance by avoiding the destruction and recreation of the DOM elements.\n\n3. **Code Readability**: The component's methods can be renamed to be more descriptive. For example, `handleSubmit` could be renamed to `submitLoginForm` to better reflect its purpose. Additionally, adding comments to explain complex logic will make the code more understandable for other developers.\n\n4. **Error Handling**: The error handling can be enhanced by providing more specific error messages. Instead of a generic 'Login failed' message, include the type of error (e.g., 'Invalid credentials' or 'Network error') to help users understand what went wrong.\n\n5. **Accessibility**: Ensure that all interactive elements have appropriate ARIA attributes. For example, the submit button should have an `aria-label` that describes its function, such as 'Submit login form'.\n\n6. **Security**: Validate user input on both the client and server sides. This will help prevent potential security vulnerabilities like SQL injection or cross-site scripting (XSS) attacks.\n\nBy implementing these best practices, the component will be more efficient, readable, and maintainable, ultimately leading to a better user experience.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vue-best-practices#main-content",
+      "vue-best-practices#overview",
+      "vue-best-practices#setup",
+      "vue-best-practices#examples",
+      "vue-best-practices#tools",
+      "vue-best-practices#mcp",
+      "vue-best-practices#related",
+      "expo-dev-client",
+      "react-native-best-practices",
+      "expo-tailwind-setup"
+    ],
+    "overview_vi": "The vue-best-practices skill is designed to optimize Vue.js development by offering a comprehensive collection of best practices and coding standards. This skill guides developers through the nuances of Vue.js, ensuring that they adhere to industry standards and avoid common pitfalls. By integrating this skill into your workflow, you can enhance the quality of your code and streamline the development process. One of the key benefits of using vue-best-practices is the significant time savings it offers. Developers can avoid the trial-and-error phase of figuring out the best ways to implement features in Vue.js. Instead, they can rely on proven methodologies that help them write cleaner, more maintainable code. This not only speeds up development but also reduces the likelihood of bugs, leading to a more stable application in the long run. This skill is particularly beneficial for developers, product managers, and AI practitioners who are working on Vue.js projects. It is ideal for both beginners looking to learn best practices and experienced developers aiming to refine their skills. Practical use cases include improving the performance of single-page applications, enhancing component reusability, and ensuring that Vue.js applications are scalable and maintainable. In terms of implementation, the vue-best-practices skill is user-friendly and can be integrated into existing projects with minimal effort. It fits seamlessly into AI-first workflows, allowing teams to leverage AI automation for code reviews and quality assurance. By adopting this skill, teams can enhance their productivity and focus more on delivering value to their users.\nOptimize the performance of single-page applications by following best practices.\nEnhance component reusability in Vue.js projects through standardized patterns.\nEnsure scalable and maintainable Vue.js applications with proven coding standards.\nStreamline code reviews by implementing consistent best practices across the team.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hyf0/vue-skills`",
+    "usage_vi": "```\nReview this Vue.js component and suggest improvements based on best practices. The component is for a [FEATURE] in a [TYPE] application. Here is the code: [CODE]. Focus on [SPECIFIC_ASPECTS] like performance, readability, or maintainability.\n```\nCopy\n\n```\nAfter reviewing the provided Vue.js component for the user authentication feature in a web application, here are the suggested improvements:\n\n1. **Component Structure**: The component can be split into smaller, more manageable sub-components. For instance, the login form and the error message display can be separated into their own components. This will make the code more modular and easier to maintain.\n\n2. **Performance Optimization**: The use of `v-if` for conditional rendering is appropriate, but consider using `v-show` for elements that toggle frequently. This can improve performance by avoiding the destruction and recreation of the DOM elements.\n\n3. **Code Readability**: The component's methods can be renamed to be more descriptive. For example, `handleSubmit` could be renamed to `submitLoginForm` to better reflect its purpose. Additionally, adding comments to explain complex logic will make the code more understandable for other developers.\n\n4. **Error Handling**: The error handling can be enhanced by providing more specific error messages. Instead of a generic 'Login failed' message, include the type of error (e.g., 'Invalid credentials' or 'Network error') to help users understand what went wrong.\n\n5. **Accessibility**: Ensure that all interactive elements have appropriate ARIA attributes. For example, the submit button should have an `aria-label` that describes its function, such as 'Submit login form'.\n\n6. **Security**: Validate user input on both the client and server sides. This will help prevent potential security vulnerabilities like SQL injection or cross-site scripting (XSS) attacks.\n\nBy implementing these best practices, the component will be more efficient, readable, and maintainable, ultimately leading to a better user experience.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:04:18.046293Z",
+    "http_status": 200,
+    "content_hash": "377ef0ad94c3ec6d07a780d33db2e23cf7717ef7fed33ad6151eeea9172637ab",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vue-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vue-best-practices.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "vue-best-practices: Vue.js Development",
+  "short_description_vi": "The vue-best-practices skill enhances Vue.js development by providing a curated set of best practices and coding standards. This skill helps developers write cleaner, more efficient code, ultimately saving time and reducing bugs."
+}

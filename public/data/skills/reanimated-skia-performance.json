@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reanimated-skia-performance",
+  "slug": "reanimated-skia-performance",
+  "name": "SVG Assembly Animator",
+  "headline": "Reanimated Skia Performance: Optimize Animations",
+  "short_description": "This skill improves the performance of animations in React Native using Skia. It is suitable for developers looking to optimize their animation workflows.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "andreev-danila",
+  "install_command": "git clone https://github.com/andreev-danila/skills",
+  "source_repo_url": "https://github.com/andreev-danila/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "animation",
+    "reanimated",
+    "skia",
+    "performance"
+  ],
+  "sections": {
+    "overview": "This skill provides practical patterns for building high-performance animations in React Native using Reanimated v4 and Skia graphics. It covers shared values, CSS transitions, gesture handling, and Skia runtime effects to minimize thread crossings and reduce jank. The skill includes a performance checklist and dev-mode tuning tips to help developers iterate faster and identify bottlenecks. It's designed for React Native developers who need smooth, efficient animations without excessive JavaScript-to-UI thread communication. Setup is quick via npm, and the full skill folder with references is provided for immediate use.\nOptimize animation frame rates in mobile apps\nReduce lag in complex animation sequences\nImprove responsiveness of UI elements during animations",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/andreev-danila/skills --skill reanimated-skia-performance`\n`git clone https://github.com/andreev-danila/skills`",
+    "usage": "```\nOptimize the animation performance of my React Native app using Skia for [COMPANY]'s [INDUSTRY] project. The app currently has [DATA] animations that lag or drop frames. Suggest specific Skia optimizations, including code snippets, to reduce jank and improve render times. Focus on techniques like offscreen rendering, shader optimizations, and efficient gesture handling.\n```\nCopy\n\n```\n### Skia Animation Performance Optimization Report\n\n#### **Current Bottlenecks**\n- **Frame Drops**: 3-4 FPS loss during complex gesture interactions (e.g., pinch-to-zoom on maps).\n- **Memory Usage**: Skia layer caching consuming ~180MB RAM during animations.\n- **Shader Compilation**: Custom shaders recompiling on every render cycle.\n\n#### **Optimization Recommendations**\n\n1. **Offscreen Rendering**\n   Wrap static layers in `SkiaView` with `mode=\"static\"` to cache textures:\n   ```jsx\n   <Canvas mode=\"static\">\n     <Group layer=\"{true}\">\n       <Rect x={0} y={0} width={100} height={100} color=\"#3498db\" />\n     </Group>\n   </Canvas>\n   ```\n\n2. **Shader Optimization**\n   Pre-compile shaders using `Skia.init()`:\n   ```jsx\n   import { Skia } from '@shopify/react-native-skia';\n   Skia.init(); // Pre-warms Skia engine\n   ```\n\n3. **Gesture Handling**\n   Use `useAnimatedValue` with `SkiaValue` for smoother interactions:\n   ```jsx\n   const scale = useSharedValue(1);\n   const gesture = Gesture.Pinch().onUpdate((e) => {\n     scale.value = e.scale;\n   });\n   ```\n\n4. **Memory Management**\n   Explicitly release unused Skia resources:\n   ```jsx\n   const ref = useRef();\n   // Later, when unmounting:\n   ref.current?.dispose();\n   ```\n\n#### **Expected Results**\n- **Frame Rate**: 60 FPS sustained during animations.\n- **Memory**: Reduced to ~120MB (33% improvement).\n- **Gesture Response**: Sub-16ms latency for touch events.\n\n**Next Steps**: Apply these changes incrementally and benchmark with `react-native-performance` profiler.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "reanimated-skia-performance#main-content",
+      "reanimated-skia-performance#overview",
+      "reanimated-skia-performance#setup",
+      "reanimated-skia-performance#examples",
+      "reanimated-skia-performance#related",
+      "svg-animations",
+      "framer-motion",
+      "svg-assembly-animator"
+    ],
+    "overview_vi": "This skill provides practical patterns for building high-performance animations in React Native using Reanimated v4 and Skia graphics. It covers shared values, CSS transitions, gesture handling, and Skia runtime effects to minimize thread crossings and reduce jank. The skill includes a performance checklist and dev-mode tuning tips to help developers iterate faster and identify bottlenecks. It's designed for React Native developers who need smooth, efficient animations without excessive JavaScript-to-UI thread communication. Setup is quick via npm, and the full skill folder with references is provided for immediate use.\nOptimize animation frame rates in mobile apps\nReduce lag in complex animation sequences\nImprove responsiveness of UI elements during animations",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/andreev-danila/skills --skill reanimated-skia-performance`\n`git clone https://github.com/andreev-danila/skills`",
+    "usage_vi": "```\nOptimize the animation performance of my React Native app using Skia for [COMPANY]'s [INDUSTRY] project. The app currently has [DATA] animations that lag or drop frames. Suggest specific Skia optimizations, including code snippets, to reduce jank and improve render times. Focus on techniques like offscreen rendering, shader optimizations, and efficient gesture handling.\n```\nCopy\n\n```\n### Skia Animation Performance Optimization Report\n\n#### **Current Bottlenecks**\n- **Frame Drops**: 3-4 FPS loss during complex gesture interactions (e.g., pinch-to-zoom on maps).\n- **Memory Usage**: Skia layer caching consuming ~180MB RAM during animations.\n- **Shader Compilation**: Custom shaders recompiling on every render cycle.\n\n#### **Optimization Recommendations**\n\n1. **Offscreen Rendering**\n   Wrap static layers in `SkiaView` with `mode=\"static\"` to cache textures:\n   ```jsx\n   <Canvas mode=\"static\">\n     <Group layer=\"{true}\">\n       <Rect x={0} y={0} width={100} height={100} color=\"#3498db\" />\n     </Group>\n   </Canvas>\n   ```\n\n2. **Shader Optimization**\n   Pre-compile shaders using `Skia.init()`:\n   ```jsx\n   import { Skia } from '@shopify/react-native-skia';\n   Skia.init(); // Pre-warms Skia engine\n   ```\n\n3. **Gesture Handling**\n   Use `useAnimatedValue` with `SkiaValue` for smoother interactions:\n   ```jsx\n   const scale = useSharedValue(1);\n   const gesture = Gesture.Pinch().onUpdate((e) => {\n     scale.value = e.scale;\n   });\n   ```\n\n4. **Memory Management**\n   Explicitly release unused Skia resources:\n   ```jsx\n   const ref = useRef();\n   // Later, when unmounting:\n   ref.current?.dispose();\n   ```\n\n#### **Expected Results**\n- **Frame Rate**: 60 FPS sustained during animations.\n- **Memory**: Reduced to ~120MB (33% improvement).\n- **Gesture Response**: Sub-16ms latency for touch events.\n\n**Next Steps**: Apply these changes incrementally and benchmark with `react-native-performance` profiler.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:46:57.009735Z",
+    "http_status": 200,
+    "content_hash": "1a9392d315121a63eaed389ccfb59edea8ae6e9ddefec8908a6bb1601072804e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reanimated-skia-performance.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reanimated-skia-performance.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Reanimated Skia Performance: Optimize Animations",
+  "short_description_vi": "This skill improves the performance of animations in React Native using Skia. It is suitable for developers looking to optimize their animation workflows."
+}

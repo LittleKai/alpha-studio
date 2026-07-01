@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/myagents",
+  "slug": "myagents",
+  "name": "browser-use",
+  "headline": "MyAgents - Desktop AI Agent for Non-Developers",
+  "short_description": "MyAgents is a desktop-based AI agent for non-developers. It enables users to experience AI-powered assistance directly on their computers. It integrates with Claude and supports various tasks, enhancing productivity for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "hAcKlyc",
+  "install_command": "git clone https://github.com/hAcKlyc/MyAgents.git",
+  "source_repo_url": "https://github.com/hAcKlyc/MyAgents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "code-agent",
+    "ai-agents",
+    "manus",
+    "desktop",
+    "ai"
+  ],
+  "sections": {
+    "overview": "MyAgents is an open-source desktop application that runs AI agents directly on your computer with a Chrome-style multi-tab interface. It integrates Claude Agent SDK and supports external runtimes like Claude Code CLI and OpenAI Codex CLI, enabling parallel AI-powered workflows. The platform supports 10+ model providers including Anthropic, DeepSeek, and Moonshot, with built-in MCP tool integration for extending agent capabilities. Users can create custom agents, schedule automated tasks, and access embedded terminal and browser features. All data stays local on your machine, making it suitable for operations teams, content creators, and professionals needing on-device AI assistance without coding experience.\nAutomate repetitive workflows with scheduled AI tasks using Cron expressions or fixed intervals\nManage multiple parallel AI conversations in independent tabs with isolated Agent runtimes\nIntegrate external tools and data sources via MCP protocol for expanded agent capabilities\nRun AI-powered assistance across Telegram and DingTalk with multi-platform channel adapters",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hAcKlyc/MyAgents`",
+    "usage": "```\nUse MyAgents to automate the following task on my computer: [DESCRIBE_TASK]. Ensure the process is hands-off and runs in the background. Provide a summary of actions taken and any outputs generated. Example: 'Use MyAgents to extract all PDF invoices from [FOLDER_PATH] and save the extracted data to a CSV file in [OUTPUT_PATH].'\n```\nCopy\n\n```\nMyAgents successfully completed the task with the following results:\n\n1. **Task Executed**: Extracted data from 12 PDF invoices in the folder `C:\\Users\\FinanceTeam\\Invoices\\Q3_2024`.\n2. **Data Extracted**: Captured invoice numbers, dates, vendor names, amounts, and tax details from each file.\n3. **Output Generated**: Saved the structured data to `C:\\Users\\FinanceTeam\\Invoices\\Q3_2024_ExtractedData.csv`.\n4. **Verification**: Confirmed the CSV file contains 12 rows of data with all required fields populated.\n\n**Next Steps**: The extracted data is now ready for import into your accounting software. Would you like me to draft an email to the finance team with the file location and a brief summary of the extraction process?\n\n*Note: The entire process ran in the background without manual intervention, and MyAgents logged the actions taken for audit purposes.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "myagents#main-content",
+      "myagents#overview",
+      "myagents#setup",
+      "myagents#examples",
+      "myagents#tools",
+      "myagents#mcp",
+      "myagents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MyAgents is an open-source desktop application that runs AI agents directly on your computer with a Chrome-style multi-tab interface. It integrates Claude Agent SDK and supports external runtimes like Claude Code CLI and OpenAI Codex CLI, enabling parallel AI-powered workflows. The platform supports 10+ model providers including Anthropic, DeepSeek, and Moonshot, with built-in MCP tool integration for extending agent capabilities. Users can create custom agents, schedule automated tasks, and access embedded terminal and browser features. All data stays local on your machine, making it suitable for operations teams, content creators, and professionals needing on-device AI assistance without coding experience.\nAutomate repetitive workflows with scheduled AI tasks using Cron expressions or fixed intervals\nManage multiple parallel AI conversations in independent tabs with isolated Agent runtimes\nIntegrate external tools and data sources via MCP protocol for expanded agent capabilities\nRun AI-powered assistance across Telegram and DingTalk with multi-platform channel adapters",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hAcKlyc/MyAgents`",
+    "usage_vi": "```\nUse MyAgents to automate the following task on my computer: [DESCRIBE_TASK]. Ensure the process is hands-off and runs in the background. Provide a summary of actions taken and any outputs generated. Example: 'Use MyAgents to extract all PDF invoices from [FOLDER_PATH] and save the extracted data to a CSV file in [OUTPUT_PATH].'\n```\nCopy\n\n```\nMyAgents successfully completed the task with the following results:\n\n1. **Task Executed**: Extracted data from 12 PDF invoices in the folder `C:\\Users\\FinanceTeam\\Invoices\\Q3_2024`.\n2. **Data Extracted**: Captured invoice numbers, dates, vendor names, amounts, and tax details from each file.\n3. **Output Generated**: Saved the structured data to `C:\\Users\\FinanceTeam\\Invoices\\Q3_2024_ExtractedData.csv`.\n4. **Verification**: Confirmed the CSV file contains 12 rows of data with all required fields populated.\n\n**Next Steps**: The extracted data is now ready for import into your accounting software. Would you like me to draft an email to the finance team with the file location and a brief summary of the extraction process?\n\n*Note: The entire process ran in the background without manual intervention, and MyAgents logged the actions taken for audit purposes.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:45:42.369276Z",
+    "http_status": 200,
+    "content_hash": "718627bd02beda402dd74881c2c74bed89aa7a82f0eaccd136fe18d6fb683e82",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\myagents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\myagents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MyAgents - Desktop AI Agent for Non-Developers",
+  "short_description_vi": "MyAgents is a desktop-based AI agent for non-developers. It enables users to experience AI-powered assistance directly on their computers. It integrates with Claude and supports various tasks, enhancing productivity for operations teams."
+}

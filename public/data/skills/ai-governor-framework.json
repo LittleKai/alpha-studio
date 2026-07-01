@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-governor-framework",
+  "slug": "ai-governor-framework",
+  "name": "browser-use",
+  "headline": "AI Governor Framework for Code Discipline",
+  "short_description": "The AI Governor Framework turns AI coding assistants into disciplined engineering partners. It enforces project architecture and coding standards, benefiting developers and operations teams. Integrates with AI agents like Claude to improve code quality and consistency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "Fr-e-d",
+  "install_command": "git clone https://github.com/Fr-e-d/AI-Governor-Framework.git",
+  "source_repo_url": "https://github.com/Fr-e-d/AI-Governor-Framework",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-ai",
+    "ai-agent",
+    "claude-code",
+    "developer-tools",
+    "ai-agents-framework",
+    "development-workflow",
+    "windsurf-ai",
+    "indiehackers",
+    "ai-framework",
+    "gemini-ai",
+    "prompt-engineering",
+    "cursor-ai",
+    "ai-governance",
+    "ai",
+    "gpt",
+    "context-engineering",
+    "gemini-pro",
+    "software-architecture",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "The AI Governor Framework provides a structured system for governing AI coding assistants through in-repository rules and workflows. It teaches AI agents your project's architectural decisions, coding standards, and constraints, eliminating inconsistent or buggy code generation. The framework uses two core components: a Governance Engine with passive rules that run automatically, and an Operator's Playbook with step-by-step protocols for planning, implementation, and quality review. It integrates directly with Claude Code, Cursor, and other AI assistants via custom commands. Built on Context Engineering principles, it keeps all governance rules and architectural context versioned in your repository, ensuring consistency across your team and predictable code quality at scale.\nEnforce architectural patterns and project structure across AI-generated code\nMaintain consistent coding standards and best practices enforced by AI\nGuide AI through multi-step development workflows from planning to production review\nReduce code review cycles by having AI apply quality audits automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Fr-e-d/AI-Governor-Framework`",
+    "usage": "```\nAct as an AI Governor using the [GOVERNOR_FRAMEWORK_NAME] framework to review the following code changes for [PROJECT_NAME]. Enforce the project's coding standards defined in [STANDARDS_DOCUMENT_URL] and architectural guidelines in [ARCHITECTURE_DOC_URL]. Focus on [SPECIFIC_AREAS: e.g., security, performance, maintainability]. Flag violations with severity levels and suggest corrections. Include a summary of compliance status. Code to review: [CODE_SNIPPET_OR_FILE_PATH]\n```\nCopy\n\n```\n### AI Governor Review Report for Project: AcmePay API\n**Framework:** AcmePay Governance v2.1 | **Review Date:** 2024-05-20\n\n#### 1. Security Compliance\n**Violation (High Severity):** In `payment_processor.py` (line 42), the `process_payment()` function uses `eval()` to parse JSON input from external APIs. This creates a critical injection risk.\n**Correction:** Replace with `json.loads()` and validate schema using Pydantic models as per [SEC-003].\n**Reference:** AcmePay Security Policy §4.2\n\n#### 2. Performance Standards\n**Violation (Medium Severity):** In `user_service.py`, the `get_user()` method queries the database 3 times for a single user fetch (lines 112-118).\n**Correction:** Implement a JOIN query or use Django's `select_related()` to reduce database hits by 67%.\n**Reference:** AcmePay Performance Guidelines §3.1\n\n#### 3. Architecture Alignment\n**Compliance (Low Severity):** In `notification_service.py`, the `send_email()` method directly calls the SMTP service. This violates the microservice pattern by bypassing the Message Queue (MQ) layer.\n**Correction:** Route all notifications through RabbitMQ as per [ARCH-007].\n**Reference:** AcmePay Architecture Blueprint v1.3\n\n#### Compliance Summary\n- **Total Violations:** 3 (1 High, 1 Medium, 1 Low)\n- **Compliance Score:** 78% (Target: 95%)\n- **Next Steps:** Prioritize security fix within 24 hours. Schedule architecture review for notification service.\n\n**Governor Verdict:** Changes require modification before merge. See detailed comments above.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-governor-framework#main-content",
+      "ai-governor-framework#overview",
+      "ai-governor-framework#setup",
+      "ai-governor-framework#examples",
+      "ai-governor-framework#tools",
+      "ai-governor-framework#mcp",
+      "ai-governor-framework#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The AI Governor Framework provides a structured system for governing AI coding assistants through in-repository rules and workflows. It teaches AI agents your project's architectural decisions, coding standards, and constraints, eliminating inconsistent or buggy code generation. The framework uses two core components: a Governance Engine with passive rules that run automatically, and an Operator's Playbook with step-by-step protocols for planning, implementation, and quality review. It integrates directly with Claude Code, Cursor, and other AI assistants via custom commands. Built on Context Engineering principles, it keeps all governance rules and architectural context versioned in your repository, ensuring consistency across your team and predictable code quality at scale.\nEnforce architectural patterns and project structure across AI-generated code\nMaintain consistent coding standards and best practices enforced by AI\nGuide AI through multi-step development workflows from planning to production review\nReduce code review cycles by having AI apply quality audits automatically",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Fr-e-d/AI-Governor-Framework`",
+    "usage_vi": "```\nAct as an AI Governor using the [GOVERNOR_FRAMEWORK_NAME] framework to review the following code changes for [PROJECT_NAME]. Enforce the project's coding standards defined in [STANDARDS_DOCUMENT_URL] and architectural guidelines in [ARCHITECTURE_DOC_URL]. Focus on [SPECIFIC_AREAS: e.g., security, performance, maintainability]. Flag violations with severity levels and suggest corrections. Include a summary of compliance status. Code to review: [CODE_SNIPPET_OR_FILE_PATH]\n```\nCopy\n\n```\n### AI Governor Review Report for Project: AcmePay API\n**Framework:** AcmePay Governance v2.1 | **Review Date:** 2024-05-20\n\n#### 1. Security Compliance\n**Violation (High Severity):** In `payment_processor.py` (line 42), the `process_payment()` function uses `eval()` to parse JSON input from external APIs. This creates a critical injection risk.\n**Correction:** Replace with `json.loads()` and validate schema using Pydantic models as per [SEC-003].\n**Reference:** AcmePay Security Policy §4.2\n\n#### 2. Performance Standards\n**Violation (Medium Severity):** In `user_service.py`, the `get_user()` method queries the database 3 times for a single user fetch (lines 112-118).\n**Correction:** Implement a JOIN query or use Django's `select_related()` to reduce database hits by 67%.\n**Reference:** AcmePay Performance Guidelines §3.1\n\n#### 3. Architecture Alignment\n**Compliance (Low Severity):** In `notification_service.py`, the `send_email()` method directly calls the SMTP service. This violates the microservice pattern by bypassing the Message Queue (MQ) layer.\n**Correction:** Route all notifications through RabbitMQ as per [ARCH-007].\n**Reference:** AcmePay Architecture Blueprint v1.3\n\n#### Compliance Summary\n- **Total Violations:** 3 (1 High, 1 Medium, 1 Low)\n- **Compliance Score:** 78% (Target: 95%)\n- **Next Steps:** Prioritize security fix within 24 hours. Schedule architecture review for notification service.\n\n**Governor Verdict:** Changes require modification before merge. See detailed comments above.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:49:28.756419Z",
+    "http_status": 200,
+    "content_hash": "16d8604c497629aabf51d4261f2d310b5523cde3a3f66d36c99c11a00ef0683e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-governor-framework.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-governor-framework.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Governor Framework for Code Discipline",
+  "short_description_vi": "The AI Governor Framework turns AI coding assistants into disciplined engineering partners. It enforces project architecture and coding standards, benefiting developers and operations teams. Integrates with AI agents like Claude to improve code quality and consistency."
+}

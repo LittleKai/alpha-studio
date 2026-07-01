@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/learn-faster-kit",
+  "slug": "learn-faster-kit",
+  "name": "browser-use",
+  "headline": "Learn Faster Kit - AI Learning Coach",
+  "short_description": "AI-powered learning coach with spaced repetition using Claude Code. Creates personalized syllabi and tracks progress to help users master knowledge faster. Benefits operations teams by accelerating skill acquisition and improving productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "hluaguo",
+  "install_command": "git clone https://github.com/hluaguo/learn-faster-kit.git",
+  "source_repo_url": "https://github.com/hluaguo/learn-faster-kit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "python",
+    "study",
+    "learning",
+    "productivity",
+    "education",
+    "spaced-repetition"
+  ],
+  "sections": {
+    "overview": "Learn FASTER is an AI coaching system that integrates directly into Claude Code to accelerate technical skill acquisition through proven learning science. It generates personalized syllabi tailored to your skill level and learning goals, then guides you through four distinct learning modes: Balanced, Exam-Prep, Theory-Focused, or Practical. The system implements the FASTER framework—combining beginner's mindset, active practice, focused sessions, teach-back reinforcement, consistent practice, and spaced repetition scheduling—to boost retention 2-3x over passive learning. Progress tracking and auto-generated exercises keep you accountable, while the teach-back mechanism forces active recall by having you explain concepts in your own words. Built for developers, engineering teams, and operations professionals who need to acquire new technical skills efficiently.\nOnboarding new team members on technical stacks with accelerated skill progression\nPreparing for certifications with exam-prep focused learning mode\nDeep learning of complex concepts like error handling, algorithms, or system design\nBuilding domain expertise across multiple programming languages or frameworks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hluaguo/learn-faster-kit`",
+    "usage": "```\nI need to master [TOPIC] for my role as a [ROLE] in [INDUSTRY]. Create a personalized 30-day learning plan using spaced repetition techniques. Include: 1) Key concepts broken into daily micro-lessons (10-15 minutes each), 2) Daily review questions with increasing intervals, 3) Practical exercises for each concept, 4) Progress tracking metrics. Start with a diagnostic quiz to assess my baseline knowledge of [TOPIC]. Adjust the difficulty based on my responses. Use [LEARNING_RESOURCES] as primary materials. Begin with today's lesson immediately. Format the output as a markdown syllabus with clickable sections for each day's content.\n```\nCopy\n\n```\n### **30-Day Mastery Plan: Advanced Supply Chain Analytics for Operations Managers**\n\n**Diagnostic Quiz Results:** You scored 62% on supply chain analytics fundamentals, with strongest areas in demand forecasting (80%) and weakest in inventory optimization (45%). This plan targets your gaps with 20% more focus on inventory systems.\n\n---\n\n#### **Week 1: Foundations & Data Literacy**\n**Day 1:** Introduction to Supply Chain Metrics\n- *Core Concept:* Learn the difference between service level, fill rate, and lead time\n- *Exercise:* Calculate these metrics using the provided dataset (500 orders from Q2 2023)\n- *Review:* Spaced repetition question in 2 days\n- *Resource:* [\"Supply Chain Metrics That Matter\" by Lora Cecere, Ch. 1-2]\n\n**Day 2:** SQL Basics for Operations Data\n- *Core Concept:* Write queries to extract order fulfillment data\n- *Exercise:* Find top 5 suppliers by late delivery rate\n- *Review:* Flashcard set due in 1 day (shorter interval for new topic)\n- *Resource:* [SQLZoo Practice Set A-C]\n\n**Day 3:** Excel Power Query for Data Cleaning\n- *Core Concept:* Transform messy inventory data into standardized format\n- *Exercise:* Clean 2,000-row Excel file with inconsistent product codes\n- *Review:* Problem set due in 4 days\n\n---\n\n#### **Week 2: Advanced Analytics Techniques**\n**Day 8:** Safety Stock Calculations\n- *Core Concept:* Formula: SS = Z * σ * √(L) where Z=service level factor\n- *Exercise:* Calculate safety stock for 95% service level with given demand variability\n- *Review:* Problem set due in 7 days (longer interval for complex topic)\n\n**Day 10:** ABC Analysis Implementation\n- *Core Concept:* Classify inventory items by value (A=70%, B=20%, C=10%)\n- *Exercise:* Run ABC analysis on your company's 15,000 SKUs\n- *Progress Tracker:* Update \"Inventory Optimization\" dashboard with findings\n\n---\n\n#### **Week 4: Applied Mastery**\n**Day 25:** Capstone Project - Demand Forecasting Model\n- *Objective:* Build a 12-month forecast using exponential smoothing\n- *Deliverables:* \n  1. Jupyter notebook with cleaned data\n  2. Model accuracy report (MAPE < 15%)\n  3. Presentation to stakeholders\n- *Review:* Final knowledge check in 14 days\n\n**Progress Metrics:**\n- Concept retention: 87% (based on review responses)\n- Practical application: 3 completed exercises\n- Knowledge gaps: 2 remaining (reorder point calculations)\n\n**Next Steps:** \n1. Schedule weekly 30-minute check-ins with your AI coach\n2. Export your progress to Notion using the provided template\n3. Share your capstone project with [MENTOR_NAME] by Day 28\n\n*Tip: Use the \"/review\" command daily to reinforce learning. The system will automatically adjust intervals based on your response accuracy.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "learn-faster-kit#main-content",
+      "learn-faster-kit#overview",
+      "learn-faster-kit#setup",
+      "learn-faster-kit#examples",
+      "learn-faster-kit#tools",
+      "learn-faster-kit#mcp",
+      "learn-faster-kit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Learn FASTER is an AI coaching system that integrates directly into Claude Code to accelerate technical skill acquisition through proven learning science. It generates personalized syllabi tailored to your skill level and learning goals, then guides you through four distinct learning modes: Balanced, Exam-Prep, Theory-Focused, or Practical. The system implements the FASTER framework—combining beginner's mindset, active practice, focused sessions, teach-back reinforcement, consistent practice, and spaced repetition scheduling—to boost retention 2-3x over passive learning. Progress tracking and auto-generated exercises keep you accountable, while the teach-back mechanism forces active recall by having you explain concepts in your own words. Built for developers, engineering teams, and operations professionals who need to acquire new technical skills efficiently.\nOnboarding new team members on technical stacks with accelerated skill progression\nPreparing for certifications with exam-prep focused learning mode\nDeep learning of complex concepts like error handling, algorithms, or system design\nBuilding domain expertise across multiple programming languages or frameworks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hluaguo/learn-faster-kit`",
+    "usage_vi": "```\nI need to master [TOPIC] for my role as a [ROLE] in [INDUSTRY]. Create a personalized 30-day learning plan using spaced repetition techniques. Include: 1) Key concepts broken into daily micro-lessons (10-15 minutes each), 2) Daily review questions with increasing intervals, 3) Practical exercises for each concept, 4) Progress tracking metrics. Start with a diagnostic quiz to assess my baseline knowledge of [TOPIC]. Adjust the difficulty based on my responses. Use [LEARNING_RESOURCES] as primary materials. Begin with today's lesson immediately. Format the output as a markdown syllabus with clickable sections for each day's content.\n```\nCopy\n\n```\n### **30-Day Mastery Plan: Advanced Supply Chain Analytics for Operations Managers**\n\n**Diagnostic Quiz Results:** You scored 62% on supply chain analytics fundamentals, with strongest areas in demand forecasting (80%) and weakest in inventory optimization (45%). This plan targets your gaps with 20% more focus on inventory systems.\n\n---\n\n#### **Week 1: Foundations & Data Literacy**\n**Day 1:** Introduction to Supply Chain Metrics\n- *Core Concept:* Learn the difference between service level, fill rate, and lead time\n- *Exercise:* Calculate these metrics using the provided dataset (500 orders from Q2 2023)\n- *Review:* Spaced repetition question in 2 days\n- *Resource:* [\"Supply Chain Metrics That Matter\" by Lora Cecere, Ch. 1-2]\n\n**Day 2:** SQL Basics for Operations Data\n- *Core Concept:* Write queries to extract order fulfillment data\n- *Exercise:* Find top 5 suppliers by late delivery rate\n- *Review:* Flashcard set due in 1 day (shorter interval for new topic)\n- *Resource:* [SQLZoo Practice Set A-C]\n\n**Day 3:** Excel Power Query for Data Cleaning\n- *Core Concept:* Transform messy inventory data into standardized format\n- *Exercise:* Clean 2,000-row Excel file with inconsistent product codes\n- *Review:* Problem set due in 4 days\n\n---\n\n#### **Week 2: Advanced Analytics Techniques**\n**Day 8:** Safety Stock Calculations\n- *Core Concept:* Formula: SS = Z * σ * √(L) where Z=service level factor\n- *Exercise:* Calculate safety stock for 95% service level with given demand variability\n- *Review:* Problem set due in 7 days (longer interval for complex topic)\n\n**Day 10:** ABC Analysis Implementation\n- *Core Concept:* Classify inventory items by value (A=70%, B=20%, C=10%)\n- *Exercise:* Run ABC analysis on your company's 15,000 SKUs\n- *Progress Tracker:* Update \"Inventory Optimization\" dashboard with findings\n\n---\n\n#### **Week 4: Applied Mastery**\n**Day 25:** Capstone Project - Demand Forecasting Model\n- *Objective:* Build a 12-month forecast using exponential smoothing\n- *Deliverables:* \n  1. Jupyter notebook with cleaned data\n  2. Model accuracy report (MAPE < 15%)\n  3. Presentation to stakeholders\n- *Review:* Final knowledge check in 14 days\n\n**Progress Metrics:**\n- Concept retention: 87% (based on review responses)\n- Practical application: 3 completed exercises\n- Knowledge gaps: 2 remaining (reorder point calculations)\n\n**Next Steps:** \n1. Schedule weekly 30-minute check-ins with your AI coach\n2. Export your progress to Notion using the provided template\n3. Share your capstone project with [MENTOR_NAME] by Day 28\n\n*Tip: Use the \"/review\" command daily to reinforce learning. The system will automatically adjust intervals based on your response accuracy.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:00:49.450921Z",
+    "http_status": 200,
+    "content_hash": "f37d49d47c513865804ce53b5a7b95caf2c20ea66d6b8da7138ff4ded525d0cf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-faster-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-faster-kit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Learn Faster Kit - AI Learning Coach",
+  "short_description_vi": "AI-powered learning coach with spaced repetition using Claude Code. Creates personalized syllabi and tracks progress to help users master knowledge faster. Benefits operations teams by accelerating skill acquisition and improving productivity."
+}

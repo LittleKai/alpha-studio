@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/blurr",
+  "slug": "blurr",
+  "name": "browser-use",
+  "headline": "android-compatible app for human-like use",
+  "short_description": "Blurr automates Android device interactions for operations teams. It mimics human touch and voice inputs to perform tasks like app navigation, data entry, and voice commands. Integrates with Claude agents to automate mobile workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "Ayush0Chaudhary",
+  "install_command": "git clone https://github.com/Ayush0Chaudhary/blurr.git",
+  "source_repo_url": "https://github.com/Ayush0Chaudhary/blurr",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mobile-use",
+    "operator",
+    "automation",
+    "ai-assistant",
+    "voice-assistant",
+    "app",
+    "doubao",
+    "ai-automation",
+    "accessibility",
+    "open-doubao",
+    "browser-use",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Blurr is an automation tool that simulates human interactions on Android devices, enabling operations teams to automate mobile workflows without manual intervention. It supports touch gestures and voice command inputs to navigate apps, enter data, and perform complex tasks. The platform integrates with AI agents to execute mobile automation at scale, reducing manual effort for repetitive operations. Blurr includes memory features and task history tracking to improve automation reliability and debugging. It's designed for teams that need reliable, scalable Android device automation for business processes.\nAutomate sending welcome messages to new LinkedIn connections.\nExecute multi-step tasks across different apps using voice commands.\nNavigate through complex app interfaces without manual input.\nPerform automated data entry tasks in mobile applications.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ayush0Chaudhary/blurr`",
+    "usage": "```\nAutomate the following Android mobile workflow for [TEAM/PURPOSE]: [DESCRIBE TASK, e.g., 'logging into the company app, navigating to the inventory screen, and submitting a stock update']. Use Blurr to handle all touch and voice interactions. Ensure the automation runs smoothly on [DEVICE SPECIFICATIONS, e.g., 'Samsung Galaxy S23 with Android 14'] and includes error handling for [POTENTIAL ISSUES, e.g., 'slow network or app crashes']. Provide a step-by-step breakdown of the automation process and expected outcomes.\n```\nCopy\n\n```\nHere’s a fully automated workflow for the **Warehouse Inventory Team** to update stock levels in the company’s proprietary app, **StockMaster Pro**, on a **Samsung Galaxy Tab S9** (Android 14). The automation handles login, navigation, data entry, and confirmation—all without manual intervention.\n\n**Automation Steps:**\n1. **Launch StockMaster Pro**: Blurr initiates the app via voice command (`\"Open StockMaster Pro\"`) and waits for the splash screen to load (5-second timeout). If the app fails to open, it retries once before logging an error.\n2. **Login**: Blurr enters the pre-configured credentials (`username: warehouse_user`, `password: [REDACTED]`) using precise touch inputs. A 2-second delay follows each keystroke to mimic human typing. If the login screen times out, it triggers a retry with a 3-second delay.\n3. **Navigate to Inventory Screen**: Blurr swipes left twice to reach the \"Inventory\" tab, then taps the \"Update Stock\" button. The screen transition is validated by checking for the presence of the \"Item Search\" field.\n4. **Data Entry**: For the item **SKU-45678** (\"Wireless Headset Pro\"), Blurr enters the quantity `125` into the search field, selects the correct item from the dropdown, and updates the stock to `125`. It then taps \"Save\" and waits for the confirmation toast (`\"Stock updated successfully\"`).\n5. **Verification**: Blurr captures a screenshot of the updated stock screen and saves it to `/sdcard/automation_logs/stock_update_20240515.png`.\n\n**Error Handling:**\n- If the app crashes during login, Blurr restarts the device (via ADB command) and retries the entire workflow.\n- If the \"Update Stock\" button is not found, it logs the error and sends a Slack alert to the #warehouse-automation channel.\n\n**Expected Output:**\n- Stock level for SKU-45678 updated from `100` to `125`.\n- Confirmation screenshot saved to the designated folder.\n- Slack notification: `\"Automation completed successfully for SKU-45678 at 14:32:15 UTC.\"`\n\n**Performance Metrics:**\n- Total runtime: **42 seconds** (vs. ~2 minutes manually).\n- Success rate: **98%** (tested over 50 runs).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "blurr#main-content",
+      "blurr#overview",
+      "blurr#setup",
+      "blurr#examples",
+      "blurr#tools",
+      "blurr#mcp",
+      "blurr#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Blurr is an automation tool that simulates human interactions on Android devices, enabling operations teams to automate mobile workflows without manual intervention. It supports touch gestures and voice command inputs to navigate apps, enter data, and perform complex tasks. The platform integrates with AI agents to execute mobile automation at scale, reducing manual effort for repetitive operations. Blurr includes memory features and task history tracking to improve automation reliability and debugging. It's designed for teams that need reliable, scalable Android device automation for business processes.\nAutomate sending welcome messages to new LinkedIn connections.\nExecute multi-step tasks across different apps using voice commands.\nNavigate through complex app interfaces without manual input.\nPerform automated data entry tasks in mobile applications.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ayush0Chaudhary/blurr`",
+    "usage_vi": "```\nAutomate the following Android mobile workflow for [TEAM/PURPOSE]: [DESCRIBE TASK, e.g., 'logging into the company app, navigating to the inventory screen, and submitting a stock update']. Use Blurr to handle all touch and voice interactions. Ensure the automation runs smoothly on [DEVICE SPECIFICATIONS, e.g., 'Samsung Galaxy S23 with Android 14'] and includes error handling for [POTENTIAL ISSUES, e.g., 'slow network or app crashes']. Provide a step-by-step breakdown of the automation process and expected outcomes.\n```\nCopy\n\n```\nHere’s a fully automated workflow for the **Warehouse Inventory Team** to update stock levels in the company’s proprietary app, **StockMaster Pro**, on a **Samsung Galaxy Tab S9** (Android 14). The automation handles login, navigation, data entry, and confirmation—all without manual intervention.\n\n**Automation Steps:**\n1. **Launch StockMaster Pro**: Blurr initiates the app via voice command (`\"Open StockMaster Pro\"`) and waits for the splash screen to load (5-second timeout). If the app fails to open, it retries once before logging an error.\n2. **Login**: Blurr enters the pre-configured credentials (`username: warehouse_user`, `password: [REDACTED]`) using precise touch inputs. A 2-second delay follows each keystroke to mimic human typing. If the login screen times out, it triggers a retry with a 3-second delay.\n3. **Navigate to Inventory Screen**: Blurr swipes left twice to reach the \"Inventory\" tab, then taps the \"Update Stock\" button. The screen transition is validated by checking for the presence of the \"Item Search\" field.\n4. **Data Entry**: For the item **SKU-45678** (\"Wireless Headset Pro\"), Blurr enters the quantity `125` into the search field, selects the correct item from the dropdown, and updates the stock to `125`. It then taps \"Save\" and waits for the confirmation toast (`\"Stock updated successfully\"`).\n5. **Verification**: Blurr captures a screenshot of the updated stock screen and saves it to `/sdcard/automation_logs/stock_update_20240515.png`.\n\n**Error Handling:**\n- If the app crashes during login, Blurr restarts the device (via ADB command) and retries the entire workflow.\n- If the \"Update Stock\" button is not found, it logs the error and sends a Slack alert to the #warehouse-automation channel.\n\n**Expected Output:**\n- Stock level for SKU-45678 updated from `100` to `125`.\n- Confirmation screenshot saved to the designated folder.\n- Slack notification: `\"Automation completed successfully for SKU-45678 at 14:32:15 UTC.\"`\n\n**Performance Metrics:**\n- Total runtime: **42 seconds** (vs. ~2 minutes manually).\n- Success rate: **98%** (tested over 50 runs).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:12:58.931953Z",
+    "http_status": 200,
+    "content_hash": "0808a3087c83e14a52b026c10bacc4dea8028e481b0403cdfd1088fe25d65da3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\blurr.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\blurr.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "android-compatible app for human-like use",
+  "short_description_vi": "Blurr automates Android device interactions for operations teams. It mimics human touch and voice inputs to perform tasks like app navigation, data entry, and voice commands. Integrates with Claude agents to automate mobile workflows."
+}

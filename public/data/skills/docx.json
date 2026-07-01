@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/docx",
+  "slug": "docx",
+  "name": "docx",
+  "headline": "docx: Document Creation",
+  "short_description": "The docx skill for Claude Code automates the creation and manipulation of DOCX files, enabling users to generate documents programmatically. This skill significantly reduces manual document handling, saving time and increasing productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills.git",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The docx skill for Claude Code is designed to automate the creation and manipulation of DOCX files, allowing users to generate and modify documents programmatically. By leveraging this skill, developers can seamlessly integrate document handling into their applications, making it easier to produce reports, letters, and other text-based files without manual intervention. This automation not only enhances efficiency but also minimizes the risk of human error in document preparation. Key benefits of the docx skill include significant time savings and improved workflow efficiency. Instead of spending hours formatting and updating documents manually, users can execute commands that generate professional-quality documents in seconds. This is particularly valuable for teams that require consistent document formats or need to produce large volumes of paperwork quickly. The skill's straightforward integration into existing workflows makes it an essential tool for enhancing productivity. The docx skill is perfect for developers, product managers, and AI practitioners who frequently work with document generation and management. It is particularly useful for those in industries such as legal, finance, and education, where document accuracy and consistency are paramount. Practical use cases include generating client contracts, creating automated reports from databases, and producing personalized letters or invoices based on user input. Implementation of the docx skill is relatively straightforward, requiring basic programming knowledge to set up. As businesses increasingly adopt AI-first workflows, integrating the docx skill can streamline document-related tasks, allowing teams to focus on more strategic initiatives. By automating document creation, organizations can ensure that their processes are not only faster but also more reliable, making the docx skill a valuable addition to any AI automation toolkit.\nAutomatically generate client contracts based on predefined templates, ensuring accuracy and consistency.\nCreate personalized letters for mass mailings in seconds, enhancing communication efficiency.\nProduce automated reports from various data sources, such as databases, to keep stakeholders informed.\nUpdate and format existing documents with new data inputs, ensuring all documents are current and relevant.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nCreate a new DOCX document with the following content: [CONTENT]. Use [STYLE] formatting for the headings and body text. Include a table with [TABLE_DATA] and apply [TABLE_STYLE] to it. Save the document as [FILE_NAME].\n```\nCopy\n\n```\nI've created a new DOCX document titled 'Q3 Sales Report.docx' with the following content:\n\n**Q3 Sales Report**\n\nThis document outlines the sales performance for Q3 2023.\n\n**Top Performers**\n\n1. John Doe - $120,000\n2. Jane Smith - $95,000\n3. Alex Johnson - $88,000\n\n**Sales by Region**\n\n| Region      | Sales   |\n|-------------|---------|\n| North       | $300,000|\n| South       | $250,000|\n| East        | $200,000|\n| West        | $180,000|\n\nThe document uses 'Heading 1' for the title, 'Heading 2' for sections, and 'Normal' style for body text. The table has been formatted with the 'Medium Style 2 - Accent 1' table style.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "docx#main-content",
+      "docx#overview",
+      "docx#setup",
+      "docx#examples",
+      "docx#tools",
+      "docx#mcp",
+      "docx#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill docx cho Claude Code được thiết kế để tự động hóa việc tạo và xử lý các file DOCX, cho phép người dùng generate và chỉnh sửa tài liệu bằng code (programmatically). Nhờ tận dụng skill này, các developer có thể tích hợp mượt mà tính năng xử lý tài liệu vào ứng dụng của mình, giúp việc tạo báo cáo, thư từ và các file văn bản khác trở nên dễ dàng hơn mà không cần can thiệp thủ công. Sự tự động hóa này không chỉ nâng cao hiệu quả mà còn giảm thiểu rủi ro sai sót do con người trong quá trình soạn thảo tài liệu. Những lợi ích chính của skill docx bao gồm việc tiết kiệm đáng kể thời gian và cải thiện hiệu suất workflow. Thay vì mất hàng giờ để định dạng và cập nhật tài liệu thủ công, người dùng có thể thực thi các lệnh để tạo ra tài liệu chất lượng chuyên nghiệp chỉ trong vài giây. Điều này đặc biệt giá trị đối với các đội ngũ yêu cầu định dạng tài liệu nhất quán hoặc cần tạo ra khối lượng lớn giấy tờ nhanh chóng. Khả năng tích hợp trực tiếp của skill vào các workflow hiện tại biến nó thành một công cụ thiết yếu để nâng cao năng suất. Skill docx là lựa chọn hoàn hảo cho các developer, product manager và các chuyên gia AI thường xuyên làm việc với quy trình tạo và quản lý tài liệu. Nó đặc biệt hữu ích trong các lĩnh vực như pháp lý, tài chính và giáo dục, nơi độ chính xác và tính nhất quán của tài liệu là tối quan trọng. Các trường hợp sử dụng thực tế bao gồm tự động generate hợp đồng khách hàng, lập báo cáo tự động từ database và tạo các thư hoặc hóa đơn cá nhân hóa dựa trên input của người dùng. Việc triển khai skill docx tương đối đơn giản, chỉ đòi hỏi kiến thức lập trình cơ bản để setup. Khi các doanh nghiệp ngày càng áp dụng nhiều workflow ưu tiên AI (AI-first workflow), việc tích hợp skill docx có thể tối ưu hóa các tác vụ liên quan đến tài liệu, giúp các team tập trung vào các sáng kiến chiến lược hơn. Bằng cách tự động hóa việc tạo tài liệu, các tổ chức có thể đảm bảo quy trình của họ không chỉ nhanh hơn mà còn đáng tin cậy hơn, biến skill docx thành một mảnh ghép giá trị cho bất kỳ bộ công cụ tự động hóa AI nào.\nTự động tạo hợp đồng khách hàng dựa trên các template được xác định trước, đảm bảo tính chính xác và nhất quán.\nTạo thư cá nhân hóa để gửi hàng loạt trong vài giây, nâng cao hiệu quả giao tiếp.\nTạo báo cáo tự động từ nhiều nguồn dữ liệu khác nhau, như database, để cập nhật thông tin kịp thời cho các bên liên quan.\nCập nhật và định dạng lại các tài liệu hiện có bằng dữ liệu input mới, đảm bảo mọi tài liệu luôn được cập nhật và phù hợp.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để biết hướng dẫn cài đặt thủ công.\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nTạo một tài liệu DOCX mới với nội dung sau: [CONTENT]. Sử dụng định dạng [STYLE] cho các tiêu đề (heading) và phần thân văn bản. Thêm một bảng với [TABLE_DATA] và áp dụng [TABLE_STYLE] cho bảng đó. Lưu tài liệu với tên [FILE_NAME].\n```\nCopy\n\n```\nTối đã tạo một tài liệu DOCX mới có tiêu đề 'Q3 Sales Report.docx' với nội dung sau:\n\n**Q3 Sales Report**\n\nTài liệu này tóm tắt hiệu suất doanh số bán hàng trong Quý 3 năm 2023.\n\n**Top Performers**\n\n1. John Doe - $120,000\n2. Jane Smith - $95,000\n3. Alex Johnson - $88,000\n\n**Sales by Region**\n\n| Region      | Sales   |\n|-------------|---------|\n| North       | $300,000|\n| South       | $250,000|\n| East        | $200,000|\n| West        | $180,000|\n\nTài liệu này sử dụng kiểu 'Heading 1' cho tiêu đề chính, 'Heading 2' cho các mục con và kiểu 'Normal' cho phần thân văn bản. Bảng đã được định dạng bằng kiểu bảng 'Medium Style 2 - Accent 1'.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:56:23.757036Z",
+    "http_status": 200,
+    "content_hash": "2972ce2ae29f9248655c1f51cc6d61e0c53eb6b637987ef525fbf7d74d4dc729",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\docx.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\docx.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "docx: Tạo tài liệu",
+  "short_description_vi": "Skill docx cho Claude Code tự động hóa việc tạo và xử lý các file DOCX, cho phép người dùng generate tài liệu theo cách lập trình (programmatically). Skill này giúp giảm thiểu đáng kể các thao tác thủ công, tiết kiệm thời gian và nâng cao năng suất."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-api-rs",
+  "slug": "claude-code-api-rs",
+  "name": "Claude Code API Rs",
+  "headline": "High-performance API gateway with Rust",
+  "short_description": "Claude Code API is a Rust-based API gateway for Claude Code CLI. It enables operations teams to automate code generation, analysis, and optimization tasks. Integrates with existing workflows to streamline development processes and improve efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "ZhangHanDong",
+  "install_command": "git clone https://github.com/ZhangHanDong/claude-code-api-rs.git",
+  "source_repo_url": "https://github.com/ZhangHanDong/claude-code-api-rs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code-agent-rust-sdk",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code API is a Rust-based gateway that exposes Claude Code CLI functionality through an OpenAI-compatible REST API. Built on the cc-sdk, it provides connection pooling, conversation management, multimodal support, and streaming responses. Operations teams use it to automate code generation, analysis, and optimization within existing workflows. The API supports multiple Claude models (Opus, Sonnet, Haiku) and integrates with standard OpenAI client libraries, making it easy to add Claude capabilities to development pipelines without rewriting client code.\nAutomate code generation workflows using Claude models via familiar OpenAI API\nBuild multi-turn conversation systems with session persistence\nProcess images alongside text for code review and documentation analysis\nIntegrate Claude into existing development tools that support OpenAI API",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZhangHanDong/claude-code-api-rs`",
+    "usage": "```\nUse the Claude Code API (claude-code-api-rs) to [TASK]. Execute the following commands: [COMMANDS]. Analyze the output and provide [OUTPUT_REQUIREMENTS]. Example: 'Use the Claude Code API to analyze the performance bottlenecks in the /src/api directory of the Rust project at /home/user/projects/my-api. Execute `cargo clippy`, `cargo test --release`, and `cargo flamegraph`. Analyze the results and provide a prioritized list of optimizations with estimated impact.'\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-api-rs#main-content",
+      "claude-code-api-rs#overview",
+      "claude-code-api-rs#setup",
+      "claude-code-api-rs#examples",
+      "claude-code-api-rs#tools",
+      "claude-code-api-rs#mcp",
+      "claude-code-api-rs#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code API is a Rust-based gateway that exposes Claude Code CLI functionality through an OpenAI-compatible REST API. Built on the cc-sdk, it provides connection pooling, conversation management, multimodal support, and streaming responses. Operations teams use it to automate code generation, analysis, and optimization within existing workflows. The API supports multiple Claude models (Opus, Sonnet, Haiku) and integrates with standard OpenAI client libraries, making it easy to add Claude capabilities to development pipelines without rewriting client code.\nAutomate code generation workflows using Claude models via familiar OpenAI API\nBuild multi-turn conversation systems with session persistence\nProcess images alongside text for code review and documentation analysis\nIntegrate Claude into existing development tools that support OpenAI API",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZhangHanDong/claude-code-api-rs`",
+    "usage_vi": "```\nUse the Claude Code API (claude-code-api-rs) to [TASK]. Execute the following commands: [COMMANDS]. Analyze the output and provide [OUTPUT_REQUIREMENTS]. Example: 'Use the Claude Code API to analyze the performance bottlenecks in the /src/api directory of the Rust project at /home/user/projects/my-api. Execute `cargo clippy`, `cargo test --release`, and `cargo flamegraph`. Analyze the results and provide a prioritized list of optimizations with estimated impact.'\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:16.004014Z",
+    "http_status": 200,
+    "content_hash": "90301b9cca987972c4986f05c1056dd167909f75dfac7e187847f791dda2a409",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-api-rs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-api-rs.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "High-performance API gateway with Rust",
+  "short_description_vi": "Claude Code API is a Rust-based API gateway for Claude Code CLI. It enables operations teams to automate code generation, analysis, and optimization tasks. Integrates with existing workflows to streamline development processes and improve efficiency."
+}

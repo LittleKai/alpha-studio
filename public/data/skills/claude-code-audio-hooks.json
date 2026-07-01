@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-audio-hooks",
+  "slug": "claude-code-audio-hooks",
+  "name": "Claude Code Audio Hooks",
+  "headline": "Audio alerts with Claude Code hooks",
+  "short_description": "Claude Code Audio Hooks is an audio notification system for Claude Code that plays sound alerts when Claude finishes responding. It benefits developers and operations teams by providing auditory feedback during multitasking. The tool connects to Claude Code and integrates with CLI tools, enhancing productivity in development and operations workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "ChanMeng666",
+  "install_command": "git clone https://github.com/ChanMeng666/claude-code-audio-hooks.git",
+  "source_repo_url": "https://github.com/ChanMeng666/claude-code-audio-hooks",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "cli-tools",
+    "productivity",
+    "wsl",
+    "hooks",
+    "developer-tools",
+    "notification-system",
+    "bash",
+    "audio-notifications",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "echook is an audio notification system designed for Claude Code, Cursor IDE, and Codex CLI that automates sound alerts across 26 hook events including task completion, permission requests, and context changes. The system operates entirely through natural language commands—you tell your AI agent what to do in plain English and it handles installation, configuration, and management automatically. It monitors API quota usage with rate-limit alerts at 80% and 95%, supports two audio themes, includes webhooks and text-to-speech capabilities, and displays a context monitor status line. The tool is machine-operable end-to-end via a JSON CLI with stable error codes, making it ideal for developers and operations teams who need reliable auditory feedback while managing multiple tasks without interrupting their workflow.\nReceive audio alerts when Claude Code finishes processing responses\nGet notified of API rate-limit warnings at 80% and 95% quota usage\nMonitor permission requests and tool usage events in Codex CLI with sound alerts\nTrack file changes and working directory switches with audio notifications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ChanMeng666/claude-code-audio-hooks`",
+    "usage": "```\nSet up audio notifications for [CLAUDE_CODE_PROJECT_NAME] using claude-code-audio-hooks. Configure the system to play [SOUND_ALERT_NAME] when Claude Code finishes executing [TASK_DESCRIPTION]. Ensure the audio hook triggers only for [SPECIFIC_EVENT_CONDITIONS, e.g., 'long-running tasks exceeding 30 seconds']. Test the setup by running [TEST_COMMAND] and verify the alert plays correctly.\n```\nCopy\n\n```\nThe audio notification system has been successfully configured for your 'ecommerce-api' project. I've set up claude-code-audio-hooks to play the 'ding.mp3' sound whenever Claude Code completes a deployment task that involves pushing changes to the staging environment. The system is configured to trigger only for tasks that take longer than 25 seconds to execute, which helps filter out quick linting or formatting runs.\n\nDuring testing, I executed the command `claude deploy-staging` which triggered a 37-second deployment process. Immediately after the deployment completed, the 'ding.mp3' alert played through your system speakers. The hook also logged the event in your `.claude/audio-hooks.log` file with the timestamp, task duration (37s), and exit code (0).\n\nTo customize further, you can adjust the sound file path in `~/.claude/audio-hooks/config.json` or modify the trigger conditions in the `rules` section. The system currently supports MP3, WAV, and system beep sounds, with plans to add text-to-speech alerts in the next update.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-audio-hooks#main-content",
+      "claude-code-audio-hooks#overview",
+      "claude-code-audio-hooks#setup",
+      "claude-code-audio-hooks#examples",
+      "claude-code-audio-hooks#tools",
+      "claude-code-audio-hooks#mcp",
+      "claude-code-audio-hooks#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "echook là hệ thống thông báo âm thanh được thiết kế cho Claude Code, Cursor IDE và Codex CLI, giúp tự động hóa các cảnh báo âm thanh trên 26 sự kiện hook khác nhau, bao gồm hoàn thành tác vụ, yêu cầu cấp quyền và thay đổi context. Hệ thống vận hành hoàn toàn thông qua các câu lệnh bằng ngôn ngữ tự nhiên — bạn chỉ cần yêu cầu AI agent của mình bằng tiếng Anh thông thường và hệ thống sẽ tự động xử lý việc cài đặt, cấu hình và quản lý. Công cụ này hỗ trợ giám sát việc sử dụng quota API với các cảnh báo rate-limit ở mức 80% và 95%, hỗ trợ hai audio themes, tích hợp webhook cùng tính năng text-to-speech, và hiển thị dòng trạng thái giám sát context. Với khả năng vận hành tự động end-to-end thông qua JSON CLI cùng hệ thống mã lỗi ổn định, đây là giải pháp lý tưởng cho các developer và đội ngũ vận hành cần phản hồi âm thanh đáng tin cậy để quản lý nhiều tác vụ mà không làm gián đoạn workflow.\nNhận cảnh báo âm thanh khi Claude Code hoàn tất xử lý phản hồi\nNhận thông báo cảnh báo rate-limit API khi dung lượng sử dụng đạt mức 80% và 95% quota\nGiám sát các yêu cầu cấp quyền và sự kiện sử dụng công cụ trong Codex CLI bằng cảnh báo âm thanh\nTheo dõi các thay đổi file và chuyển đổi thư mục làm việc bằng thông báo âm thanh",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ChanMeng666/claude-code-audio-hooks`",
+    "usage_vi": "```\nSet up thông báo âm thanh cho [CLAUDE_CODE_PROJECT_NAME] bằng cách sử dụng claude-code-audio-hooks. Cấu hình hệ thống để phát [SOUND_ALERT_NAME] khi Claude Code hoàn thành thực thi [TASK_DESCRIPTION]. Đảm bảo audio hook chỉ kích hoạt đối với [SPECIFIC_EVENT_CONDITIONS, ví dụ: 'các tác vụ chạy lâu vượt quá 30 giây']. Kiểm tra setup bằng cách chạy [TEST_COMMAND] và xác nhận âm thanh cảnh báo phát chính xác.\n```\nCopy\n\n```\nHệ thống thông báo âm thanh đã được cấu hình thành công cho dự án 'ecommerce-api' của bạn. Tôi đã thiết lập claude-code-audio-hooks để phát âm thanh 'ding.mp3' mỗi khi Claude Code hoàn thành một tác vụ deploy có thực hiện push các thay đổi lên môi trường staging. Hệ thống được cấu hình để chỉ kích hoạt cho các tác vụ mất hơn 25 giây để thực thi, giúp loại bỏ các lượt chạy lint hoặc format nhanh.\n\nTrong quá trình test, tôi đã thực thi lệnh `claude deploy-staging` và kích hoạt quá trình deploy dài 37 giây. Ngay sau khi quá trình deploy hoàn tất, cảnh báo 'ding.mp3' đã phát qua loa hệ thống của bạn. Hook cũng ghi nhận sự kiện này vào file `.claude/audio-hooks.log` kèm theo timestamp, thời gian chạy tác vụ (37s) và exit code (0).\n\nĐể tùy chỉnh thêm, bạn có thể điều chỉnh đường dẫn file âm thanh trong `~/.claude/audio-hooks/config.json` hoặc sửa đổi các điều kiện kích hoạt trong phần `rules`. Hệ thống hiện hỗ trợ các định dạng âm thanh MP3, WAV và tiếng beep hệ thống, đồng thời có kế hoạch bổ sung cảnh báo text-to-speech trong bản cập nhật tiếp theo.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:08:48.850605Z",
+    "http_status": 200,
+    "content_hash": "187e415aee3b97e0fda6478d309f224c92788bfeb546c5be301986929c3eed18",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-audio-hooks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-audio-hooks.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cảnh báo âm thanh qua Claude Code hooks",
+  "short_description_vi": "Claude Code Audio Hooks là hệ thống thông báo bằng âm thanh dành cho Claude Code, tự động phát cảnh báo âm thanh khi Claude hoàn tất phản hồi. Công cụ này mang lại lợi ích lớn cho các developer và đội ngũ vận hành (operations) khi làm việc đa nhiệm nhờ cung cấp phản hồi bằng âm thanh. Giải pháp kết nối trực tiếp với Claude Code và tích hợp mượt mà với các công cụ CLI, giúp nâng cao năng suất trong quy trình phát triển và vận hành."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-plugins-plus-skills",
+  "slug": "claude-code-plugins-plus-skills",
+  "name": "react-native-best-practices",
+  "headline": "Claude Code Plugins & AI Skills - Enhance",
+  "short_description": "Claude Code plugins plus skills enable developers to integrate AI-powered automation into their workflows. The interactive Jupyter tutorials help engineers build and deploy plugins for Claude. These plugins can automate repetitive tasks, enhance code generation, and streamline development processes. Connects to Jupyter notebooks and Python-based development environments.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "jeremylongshore",
+  "install_command": "claude install jeremylongshore/claude-code-plugins-plus-skills",
+  "source_repo_url": "https://github.com/jeremylongshore/claude-code-plugins-plus-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "AI",
+    "productivity",
+    "automation",
+    "plugins",
+    "devops"
+  ],
+  "sections": {
+    "overview": "Claude Code Plugins Plus Skills is a repository that provides developers with resources to build and deploy plugins that extend Claude's functionality. The project includes plugin examples, skill definitions, and integration patterns designed for developers working with Claude Code and Cursor. It serves as a reference implementation for creating AI-powered automation tools that can streamline development workflows. The repository contains structured examples and documentation that help engineers understand plugin architecture and skill implementation for AI agent development.\nAutomate repetitive coding tasks to save time and reduce errors.\nIntegrate AI capabilities into existing development workflows for enhanced functionality.\nUtilize interactive tutorials to quickly learn and implement new skills.\nStreamline DevOps processes by automating deployment and monitoring tasks.",
+    "setup": "Terminal\nCopy\n`claude install jeremylongshore/claude-code-plugins-plus-skills`\n`git clone https://github.com/jeremylongshore/claude-code-plugins-plus-skills`",
+    "usage": "```\nI want to build a Claude Code plugin that integrates with Productiv to automate expense tracking. The plugin should connect to Productiv's API, fetch expense data for [TEAM_NAME], and generate a summary report. Provide a step-by-step guide including the necessary Python code snippets and API endpoints to use.\n```\nCopy\n\n```\nTo build a Claude Code plugin that integrates with Productiv for expense tracking, follow these steps:\n\n1. **Set Up the Development Environment**:\n   - Install the necessary libraries: `pip install requests pandas jupyter`\n   - Ensure you have access to Productiv's API credentials.\n\n2. **Create the Plugin Structure**:\n   - Create a new directory for your plugin and navigate into it.\n   - Initialize a new Jupyter notebook for development.\n\n3. **Fetch Expense Data**:\n   - Use the following Python code to fetch expense data from Productiv's API:\n ```python\n     import requests\n     import pandas as pd\n     \n     # Replace with your Productiv API credentials\n     API_KEY = 'your_api_key'\n     TEAM_ID = 'your_team_id'\n     \n     # API endpoint to fetch expense data\n     url = f'https://api.productiv.com/teams/{TEAM_ID}/expenses'\n     headers = {'Authorization': f'Bearer {API_KEY}'}\n     response = requests.get(url, headers=headers)\n     data = response.json()\n     \n     # Convert the data to a pandas DataFrame\n     df = pd.DataFrame(data['expenses'])\n ```\n\n4. **Generate the Summary Report**:\n   - Use the following code to generate a summary report:\n ```python\n     # Group expenses by category and calculate the total amount\n     summary = df.groupby('category')['amount'].sum().reset_index()\n     \n     # Save the summary to a CSV file\n     summary.to_csv('expense_summary.csv', index=False)\n     print('Expense summary report generated successfully.')\n ```\n\n5. **Deploy the Plugin**:\n   - Follow the Claude Code plugin deployment guidelines to package and deploy your plugin.\n\nThis plugin will automate the process of fetching and summarizing expense data from Productiv, making it easier for teams to track their expenses efficiently.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-plugins-plus-skills#main-content",
+      "claude-code-plugins-plus-skills#overview",
+      "claude-code-plugins-plus-skills#setup",
+      "claude-code-plugins-plus-skills#examples",
+      "claude-code-plugins-plus-skills#tools",
+      "claude-code-plugins-plus-skills#mcp",
+      "claude-code-plugins-plus-skills#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claude Code Plugins Plus Skills is a repository that provides developers with resources to build and deploy plugins that extend Claude's functionality. The project includes plugin examples, skill definitions, and integration patterns designed for developers working with Claude Code and Cursor. It serves as a reference implementation for creating AI-powered automation tools that can streamline development workflows. The repository contains structured examples and documentation that help engineers understand plugin architecture and skill implementation for AI agent development.\nAutomate repetitive coding tasks to save time and reduce errors.\nIntegrate AI capabilities into existing development workflows for enhanced functionality.\nUtilize interactive tutorials to quickly learn and implement new skills.\nStreamline DevOps processes by automating deployment and monitoring tasks.",
+    "setup_vi": "Terminal\nCopy\n`claude install jeremylongshore/claude-code-plugins-plus-skills`\n`git clone https://github.com/jeremylongshore/claude-code-plugins-plus-skills`",
+    "usage_vi": "```\nI want to build a Claude Code plugin that integrates with Productiv to automate expense tracking. The plugin should connect to Productiv's API, fetch expense data for [TEAM_NAME], and generate a summary report. Provide a step-by-step guide including the necessary Python code snippets and API endpoints to use.\n```\nCopy\n\n```\nTo build a Claude Code plugin that integrates with Productiv for expense tracking, follow these steps:\n\n1. **Set Up the Development Environment**:\n   - Install the necessary libraries: `pip install requests pandas jupyter`\n   - Ensure you have access to Productiv's API credentials.\n\n2. **Create the Plugin Structure**:\n   - Create a new directory for your plugin and navigate into it.\n   - Initialize a new Jupyter notebook for development.\n\n3. **Fetch Expense Data**:\n   - Use the following Python code to fetch expense data from Productiv's API:\n ```python\n     import requests\n     import pandas as pd\n     \n     # Replace with your Productiv API credentials\n     API_KEY = 'your_api_key'\n     TEAM_ID = 'your_team_id'\n     \n     # API endpoint to fetch expense data\n     url = f'https://api.productiv.com/teams/{TEAM_ID}/expenses'\n     headers = {'Authorization': f'Bearer {API_KEY}'}\n     response = requests.get(url, headers=headers)\n     data = response.json()\n     \n     # Convert the data to a pandas DataFrame\n     df = pd.DataFrame(data['expenses'])\n ```\n\n4. **Generate the Summary Report**:\n   - Use the following code to generate a summary report:\n ```python\n     # Group expenses by category and calculate the total amount\n     summary = df.groupby('category')['amount'].sum().reset_index()\n     \n     # Save the summary to a CSV file\n     summary.to_csv('expense_summary.csv', index=False)\n     print('Expense summary report generated successfully.')\n ```\n\n5. **Deploy the Plugin**:\n   - Follow the Claude Code plugin deployment guidelines to package and deploy your plugin.\n\nThis plugin will automate the process of fetching and summarizing expense data from Productiv, making it easier for teams to track their expenses efficiently.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:13:15.498325Z",
+    "http_status": 200,
+    "content_hash": "803c7b0fcbb844ecc4bb6565bd782c97f2f5fa2699d869b8042e07425eb0bebc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-plugins-plus-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-plugins-plus-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Plugins & AI Skills - Enhance",
+  "short_description_vi": "Claude Code plugins plus skills enable developers to integrate AI-powered automation into their workflows. The interactive Jupyter tutorials help engineers build and deploy plugins for Claude. These plugins can automate repetitive tasks, enhance code generation, and streamline development processes. Connects to Jupyter notebooks and Python-based development environments."
+}

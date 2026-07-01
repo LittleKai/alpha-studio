@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/image-to-svg",
+  "slug": "image-to-svg",
+  "name": "Image to SVG",
+  "headline": "Image to SVG: Raster to Vector Conversion",
+  "short_description": "The Image to SVG skill allows users to recreate raster images as high-quality SVGs by analyzing and reconstructing each visual element independently. It is ideal for graphic designers or developers looking to convert images to scalable vector graphics.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "shhac",
+  "install_command": "git clone https://github.com/shhac/skills",
+  "source_repo_url": "https://github.com/shhac/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "image",
+    "image-processing"
+  ],
+  "sections": {
+    "overview": "The Image to SVG skill converts raster images—photos, illustrations, and AI-generated art—into production-ready SVG files. It works by analyzing the image, decomposing it into isolated visual features, and building each feature as a standalone SVG through parallel agents. The skill then aligns, composites, and iteratively refines the output through programmatic render-compare loops. This approach is ideal for graphic designers and developers who need scalable vector versions of raster artwork without manual redrawing.\nConverting an image (photo, illustration, AI art) to SVG\nCreating vector versions of logos, mascots, icons, or artwork\nExtracting specific elements from images as scalable graphics\nProviding a reference image for SVG recreation",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/shhac/skills --skill image-to-svg`\n`git clone https://github.com/shhac/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "image-to-svg#main-content",
+      "image-to-svg#overview",
+      "image-to-svg#setup",
+      "image-to-svg#examples",
+      "image-to-svg#related",
+      "html-to-image",
+      "image-to-text",
+      "svg-icon-maker"
+    ],
+    "overview_vi": "The Image to SVG skill converts raster images—photos, illustrations, and AI-generated art—into production-ready SVG files. It works by analyzing the image, decomposing it into isolated visual features, and building each feature as a standalone SVG through parallel agents. The skill then aligns, composites, and iteratively refines the output through programmatic render-compare loops. This approach is ideal for graphic designers and developers who need scalable vector versions of raster artwork without manual redrawing.\nConverting an image (photo, illustration, AI art) to SVG\nCreating vector versions of logos, mascots, icons, or artwork\nExtracting specific elements from images as scalable graphics\nProviding a reference image for SVG recreation",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/shhac/skills --skill image-to-svg`\n`git clone https://github.com/shhac/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:02.978423Z",
+    "http_status": 200,
+    "content_hash": "82ee4d64c632f0b915693e789ef306cc6c2ae938c79e4d3600a69d90cc44bdd5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\image-to-svg.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\image-to-svg.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Image to SVG: Raster to Vector Conversion",
+  "short_description_vi": "The Image to SVG skill allows users to recreate raster images as high-quality SVGs by analyzing and reconstructing each visual element independently. It is ideal for graphic designers or developers looking to convert images to scalable vector graphics."
+}

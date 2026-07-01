@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spec",
+  "slug": "spec",
+  "name": "Spec",
+  "headline": "Boost Productivity with Spec AI Skill",
+  "short_description": "Spec is an AI agent skill designed to enhance your productivity by automating complex tasks and streamlining workflows. With its intuitive interface, users can easily generate insights and make data-driven decisions in no time.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "AI",
+    "automation",
+    "productivity",
+    "data analysis"
+  ],
+  "sections": {
+    "overview": "Spec is an AI agent skill that automates the generation of technical specifications and structured documentation. It helps development teams create consistent, standardized specification documents without manual effort. The skill integrates with Claude Code and other AI agents to streamline the documentation process. By automating specification generation, teams can focus on implementation while maintaining clarity and completeness in their technical requirements. Spec is particularly valuable for projects requiring detailed API documentation, system architecture specs, or feature specifications.\nAutomate the generation of weekly performance reports from raw data.\nExtract key insights from large datasets to inform business decisions.\nStreamline project management by automating task assignments and progress tracking.\nIntegrate data from multiple sources to create comprehensive dashboards.",
+    "setup": "Terminal\nCopy\n`npx skills add anthropics/skills`\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nCreate a detailed technical specification for a [PRODUCT] based on the following requirements: [REQUIREMENTS]. Include sections for functional specifications, technical specifications, and design considerations. Ensure the spec is comprehensive enough for a development team to begin implementation.\n```\nCopy\n\n```\nTechnical Specification for Smart Home Thermostat\n\nOverview\nThe Smart Home Thermostat is designed to provide users with an intuitive and energy-efficient way to control their home's heating and cooling systems. This specification outlines the functional and technical requirements for the development of the thermostat.\n\nFunctional Specifications\n1. User Interface\n- Touchscreen display with intuitive navigation\n- Mobile app integration for remote control\n- Voice control compatibility with popular virtual assistants\n2. Connectivity\n- Wi-Fi and Bluetooth connectivity\n- Z-Wave and Zigbee compatibility for smart home integration\n3. Sensors\n- Temperature and humidity sensors\n- Occupancy sensor for automatic adjustments\n- Ambient light sensor for display brightness\nTechnical Specifications\n1. Hardware\n- ARM Cortex-M4 processor\n- 2.4GHz Wi-Fi module\n- Bluetooth Low Energy (BLE) module\n- Z-Wave and Zigbee modules\n- Temperature and humidity sensor\n- Occupancy sensor\n- Ambient light sensor\n- 3.5-inch capacitive touchscreen display\n2. Software\n- Real-time operating system (RTOS)\n- Firmware over-the-air (FOTA) updates\n- Mobile app for iOS and Android\n- Cloud-based dashboard for remote monitoring and control\n3. Power\n- 120V/240V AC power supply\n- Battery backup for settings retention during power outages\nDesign Considerations\n1. User Experience\n- Intuitive and user-friendly interface\n- Customizable settings for user preferences\n- Energy-saving modes and schedules\n2. Security\n- End-to-end encryption for data transmission\n- Secure authentication for mobile app and voice control\n- Regular firmware updates for security patches\n3. Compatibility\n- Compatibility with popular smart home platforms\n- Integration with third-party devices and services\n- Support for multiple languages and regions\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "spec#main-content",
+      "spec#overview",
+      "spec#setup",
+      "spec#examples",
+      "spec#tools",
+      "spec#mcp",
+      "spec#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Spec là một AI agent skill giúp tự động hóa việc tạo đặc tả kỹ thuật và tài liệu có cấu trúc. Nó hỗ trợ các đội ngũ phát triển tạo ra các tài liệu đặc tả nhất quán, chuẩn hóa mà không tốn công sức thực hiện thủ công. Skill này tích hợp với Claude Code và các AI agent khác để tối ưu hóa quy trình viết tài liệu. Nhờ tự động hóa việc tạo đặc tả kỹ thuật, các đội ngũ có thể tập trung vào việc triển khai thực tế (implementation) trong khi vẫn đảm bảo tính rõ ràng và đầy đủ của các yêu cầu kỹ thuật. Spec đặc biệt giá trị đối với các dự án yêu cầu tài liệu API chi tiết, đặc tả kiến trúc hệ thống, hoặc đặc tả tính năng.\nTự động hóa việc tạo báo cáo hiệu suất hàng tuần từ dữ liệu thô.\nTrích xuất các insight quan trọng từ các tập dữ liệu lớn để hỗ trợ đưa ra quyết định kinh doanh.\nTối ưu hóa quản lý dự án bằng cách tự động hóa việc phân công nhiệm vụ và theo dõi tiến độ.\nTích hợp dữ liệu từ nhiều nguồn để tạo ra các dashboard toàn diện.",
+    "setup_vi": "Terminal\nSao chép\n`npx skills add anthropics/skills`\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nHãy tạo một đặc tả kỹ thuật chi tiết cho [PRODUCT] dựa trên các yêu cầu sau: [REQUIREMENTS]. Bao gồm các phần dành cho đặc tả chức năng (functional specifications), đặc tả kỹ thuật (technical specifications) và các lưu ý thiết kế (design considerations). Đảm bảo bản đặc tả đủ toàn diện để đội ngũ phát triển có thể bắt đầu triển khai.\n```\nSao chép\n\n```\nĐặc tả kỹ thuật cho Bộ điều nhiệt Nhà thông minh (Smart Home Thermostat)\n\nTổng quan\nSmart Home Thermostat được thiết kế để cung cấp cho người dùng một phương thức trực quan và tiết kiệm năng lượng nhằm điều khiển hệ thống sưởi và làm mát trong nhà. Bản đặc tả này phác thảo các yêu cầu kỹ thuật và chức năng cho việc phát triển bộ điều nhiệt.\n\nĐặc tả chức năng\n1. Giao diện người dùng\n- Màn hình cảm ứng với điều hướng trực quan\n- Tích hợp ứng dụng di động để điều khiển từ xa\n- Tương thích điều khiển bằng giọng nói với các trợ lý ảo phổ biến\n2. Khả năng kết nối\n- Kết nối Wi-Fi và Bluetooth\n- Tương thích Z-Wave và Zigbee để tích hợp nhà thông minh\n3. Cảm biến\n- Cảm biến nhiệt độ và độ ẩm\n- Cảm biến hiện diện (occupancy sensor) để tự động điều chỉnh\n- Cảm biến ánh sáng môi trường để điều chỉnh độ sáng màn hình\nĐặc tả kỹ thuật\n1. Phần cứng\n- Bộ vi xử lý ARM Cortex-M4\n- Module Wi-Fi 2.4GHz\n- Module Bluetooth Low Energy (BLE)\n- Module Z-Wave và Zigbee\n- Cảm biến nhiệt độ và độ ẩm\n- Cảm biến hiện diện\n- Cảm biến ánh sáng môi trường\n- Màn hình cảm ứng điện dung 3.5 inch\n2. Phần mềm\n- Hệ điều hành thời gian thực (RTOS)\n- Cập nhật firmware qua OTA (FOTA)\n- Ứng dụng di động cho iOS và Android\n- Dashboard trên nền tảng đám mây để giám sát và điều khiển từ xa\n3. Nguồn điện\n- Nguồn điện xoay chiều AC 120V/240V\n- Pin dự phòng để lưu giữ các thiết lập khi mất điện\nLưu ý thiết kế\n1. Trải nghiệm người dùng\n- Giao diện trực quan và thân thiện với người dùng\n- Cài đặt có thể tùy chỉnh theo sở thích của người dùng\n- Các chế độ và lịch trình tiết kiệm năng lượng\n2. Bảo mật\n- Mã hóa đầu cuối (end-to-end encryption) cho việc truyền tải dữ liệu\n- Xác thực bảo mật cho ứng dụng di động và điều khiển bằng giọng nói\n- Cập nhật firmware định kỳ để vá lỗi bảo mật\n3. Khả năng tương thích\n- Tương thích với các nền tảng nhà thông minh phổ biến\n- Tích hợp với các thiết bị và dịch vụ của bên thứ ba\n- Hỗ trợ đa ngôn ngữ và đa quốc gia\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:44:11.699123Z",
+    "http_status": 200,
+    "content_hash": "2a7b21b8772726e6ab9974cbce676889534d3ecd5eb593e8453f522baa158e7f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nâng cao năng suất với Spec AI Skill",
+  "short_description_vi": "Spec là một AI agent skill được thiết kế để nâng cao năng suất làm việc của bạn thông qua việc tự động hóa các tác vụ phức tạp và tối ưu hóa quy trình công việc. Với giao diện trực quan, người dùng có thể dễ dàng rút ra các insight giá trị và đưa ra quyết định dựa trên dữ liệu trong tích tắc."
+}

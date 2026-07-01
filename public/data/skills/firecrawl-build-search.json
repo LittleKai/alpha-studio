@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/firecrawl-build-search",
+  "slug": "firecrawl-build-search",
+  "name": "Firecrawl Build Search",
+  "headline": "Firecrawl Build Search: Web Discovery for AI Agents",
+  "short_description": "This skill allows applications to discover sources when starting with queries instead of URLs. It is designed for features needing current web results and helps turn search queries into a shortlist of pages for later scraping.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "firecrawl",
+  "install_command": "git clone https://github.com/firecrawl/skills",
+  "source_repo_url": "https://github.com/firecrawl/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "build",
+    "firecrawl",
+    "search"
+  ],
+  "sections": {
+    "overview": "Firecrawl Build Search is a skill that enables AI agents and applications to integrate Firecrawl's /search endpoint for discovery-first web workflows. Instead of starting with known URLs, this skill helps agents search the web and obtain a curated list of relevant pages ready for later scraping or processing. It's designed for applications that need current web results and sources without pre-existing URLs. The skill follows Agent Skills format and works with Claude Code, Cursor, and other AI coding agents, providing a streamlined path to add web discovery capabilities to production codebases.\nWhen a user asks a question and sources must be discovered first\nWhen current web results are required for a feature\nTo convert a search query into a shortlist of pages for scraping",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/firecrawl/skills --skill firecrawl-build-search`\n`git clone https://github.com/firecrawl/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "firecrawl-build-search#main-content",
+      "firecrawl-build-search#overview",
+      "firecrawl-build-search#setup",
+      "firecrawl-build-search#examples",
+      "firecrawl-build-search#tools",
+      "firecrawl-build-search#mcp",
+      "firecrawl-build-search#related"
+    ],
+    "overview_vi": "Firecrawl Build Search is a skill that enables AI agents and applications to integrate Firecrawl's /search endpoint for discovery-first web workflows. Instead of starting with known URLs, this skill helps agents search the web and obtain a curated list of relevant pages ready for later scraping or processing. It's designed for applications that need current web results and sources without pre-existing URLs. The skill follows Agent Skills format and works with Claude Code, Cursor, and other AI coding agents, providing a streamlined path to add web discovery capabilities to production codebases.\nWhen a user asks a question and sources must be discovered first\nWhen current web results are required for a feature\nTo convert a search query into a shortlist of pages for scraping",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/firecrawl/skills --skill firecrawl-build-search`\n`git clone https://github.com/firecrawl/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:17:24.081051Z",
+    "http_status": 200,
+    "content_hash": "460754aca38060c5ce754b551b519d452b737a4648350b27db42c6f1d2197e70",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\firecrawl-build-search.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\firecrawl-build-search.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Firecrawl Build Search: Web Discovery for AI Agents",
+  "short_description_vi": "This skill allows applications to discover sources when starting with queries instead of URLs. It is designed for features needing current web results and helps turn search queries into a shortlist of pages for later scraping."
+}

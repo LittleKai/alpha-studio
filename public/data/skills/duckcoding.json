@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/duckcoding",
+  "slug": "duckcoding",
+  "name": "browser-use",
+  "headline": "DuckCoding - AI Coding Tool Manager",
+  "short_description": "DuckCoding is a cross-platform desktop app that simplifies the setup and management of AI coding tools like Claude Code, CodeX, and Gemini CLI. It benefits developers and operations teams by streamlining workflows and reducing configuration time. The app connects to popular AI coding assistants, enabling faster integration into development environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "DuckCoding-dev",
+  "install_command": "git clone https://github.com/DuckCoding-dev/DuckCoding.git",
+  "source_repo_url": "https://github.com/DuckCoding-dev/DuckCoding",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "duckcoding",
+    "codex",
+    "gemini-cli",
+    "desktop-app",
+    "ai"
+  ],
+  "sections": {
+    "overview": "DuckCoding simplifies the setup and ongoing management of popular AI coding assistants by providing a single cross-platform desktop application for Claude Code, CodeX, and Gemini CLI. It automatically detects installed tools, handles installation and updates, manages multiple configuration profiles with isolated API keys, and provides a transparent proxy system with session-level configuration. The app centralizes tool management across Local, WSL, and SSH environments, includes multi-vendor API balance monitoring with customizable extractors, and stores all data locally without collecting user information. Developers and operations teams benefit from reduced configuration time, unified multi-environment control, and streamlined workflow integration.\nOne-click Claude Code proxy setup with API key management\nSwitch between multiple work and personal accounts without changing themes or shortcuts\nManage AI tool versions and updates across Local, WSL, and SSH instances from a single dashboard\nMonitor API balance and usage across multiple providers with customizable refresh intervals",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/DuckCoding-dev/DuckCoding`",
+    "usage": "```\nUse DuckCoding to set up [AI_TOOL_NAME] (e.g., Claude Code, CodeX, or Gemini CLI) for [PROJECT_NAME] in [PLATFORM/OS]. Configure the tool with [SPECIFIC_SETTINGS] and initialize a [PROJECT_TYPE] project (e.g., Python Flask, React, or Node.js). Verify the setup by running a test command like [TEST_COMMAND] and confirm the tool is ready for [DEVELOPMENT_TASK].\n```\nCopy\n\n```\nDuckCoding successfully configured **Gemini CLI** for the **E-Commerce Analytics Dashboard** project on **Windows 11**. The tool was set up with the following settings:\n- API key: `AIzaSyD1...` (masked for security)\n- Default model: `gemini-1.5-pro-latest`\n- Project root: `C:\\dev\\ecom-analytics`\n- Linter: `ESLint`\n- Formatter: `Prettier`\n\nA **React** project was initialized with TypeScript, and DuckCoding automatically installed the required dependencies (`react`, `react-dom`, `@types/react`, etc.). The setup was verified by running `gemini --check` in the terminal, which confirmed the tool was ready for development. A sample prompt was tested: `Analyze the performance bottlenecks in the `/src/components/Chart.tsx` file and suggest optimizations.` The tool returned a detailed response with code refactoring suggestions and performance metrics.\n\nNext steps: DuckCoding generated a `.duckcoding/config.json` file with the project-specific settings, which can be shared with the team via Git. The team lead can now clone the repo, run `duckcoding init`, and start coding immediately without manual setup.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "duckcoding#main-content",
+      "duckcoding#overview",
+      "duckcoding#setup",
+      "duckcoding#examples",
+      "duckcoding#tools",
+      "duckcoding#mcp",
+      "duckcoding#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DuckCoding simplifies the setup and ongoing management of popular AI coding assistants by providing a single cross-platform desktop application for Claude Code, CodeX, and Gemini CLI. It automatically detects installed tools, handles installation and updates, manages multiple configuration profiles with isolated API keys, and provides a transparent proxy system with session-level configuration. The app centralizes tool management across Local, WSL, and SSH environments, includes multi-vendor API balance monitoring with customizable extractors, and stores all data locally without collecting user information. Developers and operations teams benefit from reduced configuration time, unified multi-environment control, and streamlined workflow integration.\nOne-click Claude Code proxy setup with API key management\nSwitch between multiple work and personal accounts without changing themes or shortcuts\nManage AI tool versions and updates across Local, WSL, and SSH instances from a single dashboard\nMonitor API balance and usage across multiple providers with customizable refresh intervals",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/DuckCoding-dev/DuckCoding`",
+    "usage_vi": "```\nUse DuckCoding to set up [AI_TOOL_NAME] (e.g., Claude Code, CodeX, or Gemini CLI) for [PROJECT_NAME] in [PLATFORM/OS]. Configure the tool with [SPECIFIC_SETTINGS] and initialize a [PROJECT_TYPE] project (e.g., Python Flask, React, or Node.js). Verify the setup by running a test command like [TEST_COMMAND] and confirm the tool is ready for [DEVELOPMENT_TASK].\n```\nCopy\n\n```\nDuckCoding successfully configured **Gemini CLI** for the **E-Commerce Analytics Dashboard** project on **Windows 11**. The tool was set up with the following settings:\n- API key: `AIzaSyD1...` (masked for security)\n- Default model: `gemini-1.5-pro-latest`\n- Project root: `C:\\dev\\ecom-analytics`\n- Linter: `ESLint`\n- Formatter: `Prettier`\n\nA **React** project was initialized with TypeScript, and DuckCoding automatically installed the required dependencies (`react`, `react-dom`, `@types/react`, etc.). The setup was verified by running `gemini --check` in the terminal, which confirmed the tool was ready for development. A sample prompt was tested: `Analyze the performance bottlenecks in the `/src/components/Chart.tsx` file and suggest optimizations.` The tool returned a detailed response with code refactoring suggestions and performance metrics.\n\nNext steps: DuckCoding generated a `.duckcoding/config.json` file with the project-specific settings, which can be shared with the team via Git. The team lead can now clone the repo, run `duckcoding init`, and start coding immediately without manual setup.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:07:53.709480Z",
+    "http_status": 200,
+    "content_hash": "9948929be09cd4ec716d3bd8d12261c83d99408d6a70b0df739bb418797ceb7c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\duckcoding.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\duckcoding.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "DuckCoding - AI Coding Tool Manager",
+  "short_description_vi": "DuckCoding is a cross-platform desktop app that simplifies the setup and management of AI coding tools like Claude Code, CodeX, and Gemini CLI. It benefits developers and operations teams by streamlining workflows and reducing configuration time. The app connects to popular AI coding assistants, enabling faster integration into development environments."
+}

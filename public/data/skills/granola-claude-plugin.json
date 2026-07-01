@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/granola-claude-plugin",
+  "slug": "granola-claude-plugin",
+  "name": "Granola Archivist",
+  "headline": "Granola Archivist - Extract Meeting Notes",
+  "short_description": "Extract and archive Granola meeting notes with AI intelligence. Operations teams benefit from automated note processing, connecting to local workflows without data exposure.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "varadhjain",
+  "install_command": "git clone https://github.com/varadhjain/granola-claude-plugin.git",
+  "source_repo_url": "https://github.com/varadhjain/granola-claude-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "granola",
+    "openai",
+    "meeting-notes",
+    "gpt-5",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Granola Archivist automatically extracts and archives your Granola meeting notes, attendees, and summaries into organized markdown files stored locally on your machine. The plugin offers optional AI-powered intelligence to extract people, companies, action items, and insights from your meetings using GPT-5-nano at minimal cost (~$0.0009 per meeting). Since the plugin runs locally by default, your meeting data never leaves your machine unless you enable AI extraction—in which case data goes only to your own OpenAI account. Operations teams and knowledge workers benefit from automated meeting processing that integrates with local workflows without exposing sensitive information to third-party servers.\nExtract and organize meeting notes from the last 7 days into searchable markdown files\nAutomatically identify action items and TODOs from meeting transcripts\nExtract companies and people discussed across multiple meetings for business intelligence\nArchive meeting summaries without sending data to external servers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/varadhjain/granola-claude-plugin`",
+    "usage": "```\nExtract and archive Granola meeting notes from [MEETING_LINK_OR_FILE_PATH]. Process the notes to identify: key decisions made, action items assigned with owners and due dates, and open questions. Format the output as a structured report with sections for 'Decisions', 'Action Items', and 'Open Questions'. Save the report to [OUTPUT_FILE_PATH] in markdown format.\n```\nCopy\n\n```\n### Granola Meeting Notes - Project Alpha Kickoff\n**Date:** 2023-11-15\n**Duration:** 45 minutes\n**Attendees:** Sarah Chen (PM), Mark Rodriguez (Engineering Lead), Priya Patel (UX Designer), James Kim (QA Manager)\n\n---\n\n#### **Decisions**\n1. **Tech Stack Approval**: Approved Next.js + Tailwind for frontend, Node.js + PostgreSQL for backend. Voted 4-0.\n2. **Sprint Timeline**: Agreed to 2-week sprints with a hard deadline of December 15 for MVP release.\n3. **Budget Allocation**: $15,000 approved for third-party APIs (Stripe, Twilio) and $5,000 for testing tools (Selenium, Postman).\n\n---\n\n#### **Action Items**\n| Task | Owner | Due Date | Status |\n|------|-------|----------|--------|\n| Set up CI/CD pipeline in GitHub Actions | Mark | 2023-11-18 | Pending |\n| Design wireframes for user onboarding flow | Priya | 2023-11-20 | In Progress |\n| Draft API documentation for Stripe integration | Sarah | 2023-11-22 | Pending |\n| Create test cases for login functionality | James | 2023-11-25 | Pending |\n\n---\n\n#### **Open Questions**\n1. **Data Retention Policy**: Need clarification from Legal on how long user data can be stored. (Assigned to: Sarah, Due: 2023-11-17)\n2. **Third-Party Vendor Contracts**: Waiting on signed agreements from Stripe and Twilio. (Assigned to: Mark, Due: 2023-11-19)\n3. **Accessibility Compliance**: Unsure if the current design meets WCAG 2.1 AA standards. (Assigned to: Priya, Due: 2023-11-21)\n\n---\n\n**Archive Location:** `/meetings/project-alpha/2023-11-15_kickoff.md`\n**Processed By:** Granola AI Plugin v2.1.0\n**Timestamp:** 2023-11-15 16:42:11 UTC\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "granola-claude-plugin#main-content",
+      "granola-claude-plugin#overview",
+      "granola-claude-plugin#setup",
+      "granola-claude-plugin#examples",
+      "granola-claude-plugin#tools",
+      "granola-claude-plugin#mcp",
+      "granola-claude-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Granola Archivist tự động trích xuất và lưu trữ các ghi chú cuộc họp Granola, danh sách người tham gia và bản tóm tắt thành các file markdown được sắp xếp ngăn nắp ngay trên máy cục bộ của bạn. Plugin này cung cấp tính năng AI tùy chọn giúp trích xuất thông tin về con người, công ty, các action item và thông tin chuyên sâu từ cuộc họp bằng mô hình GPT-5-nano với chi phí tối thiểu (khoảng 0,0009 USD mỗi cuộc họp). Do plugin mặc định chạy local, dữ liệu cuộc họp của bạn sẽ không bao giờ rời khỏi máy trừ khi bạn kích hoạt tính năng trích xuất bằng AI — khi đó dữ liệu cũng chỉ được gửi đến tài khoản OpenAI của riêng bạn. Các đội ngũ vận hành và nhân sự tri thức sẽ được hưởng lợi từ quy trình xử lý cuộc họp tự động, dễ dàng tích hợp với các local workflow mà không lo lộ thông tin nhạy cảm cho các máy chủ bên thứ ba.\nTrích xuất và sắp xếp ghi chú cuộc họp trong 7 ngày qua thành các file markdown có thể tìm kiếm được\nTự động nhận diện các action item và việc cần làm (TODO) từ bản ghi cuộc họp\nTrích xuất thông tin về các công ty và nhân sự được thảo luận trong nhiều cuộc họp để phục vụ cho việc phân tích kinh doanh (business intelligence)\nLưu trữ các bản tóm tắt cuộc họp mà không cần gửi dữ liệu đến các máy chủ bên ngoài",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/varadhjain/granola-claude-plugin`",
+    "usage_vi": "```\nTrích xuất và lưu trữ ghi chú cuộc họp Granola từ [MEETING_LINK_OR_FILE_PATH]. Xử lý ghi chú để xác định: các quyết định quan trọng đã được đưa ra, các action item được giao kèm theo người thực hiện và hạn chót, cùng các câu hỏi còn bỏ ngỏ. Định dạng đầu ra dưới dạng một báo cáo có cấu trúc với các phần 'Quyết định', 'Action Item' và 'Câu hỏi còn bỏ ngỏ'. Lưu báo cáo vào [OUTPUT_FILE_PATH] dưới định dạng markdown.\n```\nCopy\n\n```\n### Ghi chú Cuộc họp Granola - Khởi động Dự án Alpha\n**Ngày:** 15-11-2023\n**Thời lượng:** 45 phút\n**Người tham gia:** Sarah Chen (PM), Mark Rodriguez (Engineering Lead), Priya Patel (UX Designer), James Kim (QA Manager)\n\n---\n\n#### **Quyết định**\n1. **Phê duyệt Tech Stack**: Phê duyệt Next.js + Tailwind cho frontend, Node.js + PostgreSQL cho backend. Biểu quyết thông qua với tỷ lệ 4-0.\n2. **Timeline Sprint**: Thống nhất chu kỳ sprint là 2 tuần với hạn chót hoàn thành bản MVP là ngày 15 tháng 12.\n3. **Phân bổ Ngân sách**: Phê duyệt 15.000 USD cho các API bên thứ ba (Stripe, Twilio) và 5.000 USD cho các công cụ kiểm thử (Selenium, Postman).\n\n---\n\n#### **Action Items**\n| Nhiệm vụ | Người thực hiện | Hạn chót | Trạng thái |\n|------|-------|----------|--------|\n| Thiết lập CI/CD pipeline trong GitHub Actions | Mark | 2023-11-18 | Đang chờ |\n| Thiết kế wireframe cho luồng onboard người dùng | Priya | 2023-11-20 | Đang thực hiện |\n| Soạn thảo tài liệu API cho tích hợp Stripe | Sarah | 2023-11-22 | Đang chờ |\n| Tạo các test case cho tính năng đăng nhập | James | 2023-11-25 | Đang chờ |\n\n---\n\n#### **Câu hỏi còn bỏ ngỏ**\n1. **Chính sách lưu trữ dữ liệu**: Cần bộ phận Pháp lý làm rõ về thời gian lưu trữ dữ liệu người dùng. (Người phụ trách: Sarah, Hạn chót: 2023-11-17)\n2. **Hợp đồng với bên thứ ba**: Chờ ký kết thỏa thuận từ Stripe và Twilio. (Người phụ trách: Mark, Hạn chót: 2023-11-19)\n3. **Độ tương thích về khả năng truy cập (Accessibility)**: Chưa chắc chắn liệu thiết kế hiện tại có đáp ứng tiêu chuẩn WCAG 2.1 AA hay không. (Người phụ trách: Priya, Hạn chót: 2023-11-21)\n\n---\n\n**Thư mục Lưu trữ:** `/meetings/project-alpha/2023-11-15_kickoff.md`\n**Được xử lý bởi:** Granola AI Plugin v2.1.0\n**Thời gian ghi nhận:** 2023-11-15 16:42:11 UTC\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:37:57.317127Z",
+    "http_status": 200,
+    "content_hash": "c72098910ca4328d0e5df628c4eeb2067816b87811b5119571de19f4c5ebf9d0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\granola-claude-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\granola-claude-plugin.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Granola Archivist - Trích xuất ghi chú cuộc họp",
+  "short_description_vi": "Trích xuất và lưu trữ ghi chú cuộc họp Granola bằng công nghệ AI thông minh. Đội ngũ vận hành có thể tối ưu hóa hiệu suất nhờ tính năng xử lý ghi chú tự động, kết nối trực tiếp với các local workflow mà không lo rò rỉ dữ liệu."
+}

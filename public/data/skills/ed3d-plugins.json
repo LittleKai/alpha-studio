@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ed3d-plugins",
+  "slug": "ed3d-plugins",
+  "name": "ed3d-plugins",
+  "headline": "ed3d-plugins - Claude Code Workflow Automation",
+  "short_description": "Ed's collection of Claude Code plugins for research, planning, and implementation workflows. Designed for developers and operations teams, these plugins streamline tasks like product design and general research. Integrates with Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "ed3dai",
+  "install_command": "git clone https://github.com/ed3dai/ed3d-plugins.git",
+  "source_repo_url": "https://github.com/ed3dai/ed3d-plugins",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-plugin",
+    "skills",
+    "claude-code-plugin-marketplace",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ed3d-plugins is a curated collection of Claude Code plugins built for developers and operations teams managing complex workflows. The core plugin, ed3d-plan-and-execute, implements a research-plan-implement loop designed to minimize hallucination during planning, maintain alignment with product requirements, and bridge design and implementation phases. The collection includes specialized agents for research across codebases and the internet, Playwright automation, security hooks that catch secrets leakage, and customizable house style standards for software development. Each plugin integrates with Claude Code and can be installed individually from the ed3d-plugins marketplace.\nConverting rough product ideas into detailed design documents and implementation plans\nAutomating research tasks across codebase and internet sources\nRunning Playwright-based browser automation workflows\nEnforcing security patterns and preventing secrets leakage during development\nA next-generation smart home hub integrating voice control, local AI processing, and cross-platform compatibility. Target launch: Q3 2024.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ed3dai/ed3d-plugins`",
+    "usage": "```\nUse the ed3d-plugins collection in Claude Code to [TASK]. For example: 'Use ed3d-plugins to generate a product design document for [PRODUCT_NAME] including user personas, feature requirements, and a technical architecture diagram.' Include [SPECIFIC_OUTPUT_FORMAT] if applicable, such as 'output as a markdown file with sections for each component'.\n```\nCopy\n\n```\n```markdown\n# Product Design Document: Smart Home Hub v2.0",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ed3d-plugins#main-content",
+      "ed3d-plugins#overview",
+      "ed3d-plugins#setup",
+      "ed3d-plugins#examples",
+      "ed3d-plugins#tools",
+      "ed3d-plugins#mcp",
+      "ed3d-plugins#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ed3d-plugins là một bộ sưu tập chọn lọc các plugin Claude Code được xây dựng cho các nhà phát triển và đội ngũ vận hành quản lý các workflow phức tạp. Plugin cốt lõi, ed3d-plan-and-execute, triển khai một vòng lặp 'nghiên cứu - lập kế hoạch - thực thi' (research-plan-implement loop) được thiết kế để giảm thiểu hiện tượng ảo tưởng (hallucination) trong quá trình lập kế hoạch, duy trì sự nhất quán với các yêu cầu sản phẩm và kết nối giai đoạn thiết kế với triển khai. Bộ sưu tập này bao gồm các agent chuyên dụng để nghiên cứu trên codebase lẫn internet, tự động hóa trình duyệt với Playwright, các hook bảo mật giúp phát hiện rò rỉ thông tin nhạy cảm (secrets leakage), và các tiêu chuẩn định dạng mã nguồn (house style) tùy chỉnh trong phát triển phần mềm. Mỗi plugin đều tích hợp trực tiếp với Claude Code và có thể cài đặt riêng lẻ từ marketplace của ed3d-plugins.\n\nChuyển đổi ý tưởng sản phẩm sơ khai thành tài liệu thiết kế chi tiết và kế hoạch triển khai thực tế\nTự động hóa tác vụ nghiên cứu trên codebase và internet\nChạy các workflow tự động hóa trình duyệt dựa trên Playwright\nÁp dụng các mô hình bảo mật và ngăn ngừa rò rỉ thông tin nhạy cảm (secrets leakage) trong quá trình phát triển\nMột hub nhà thông minh thế hệ mới tích hợp điều khiển bằng giọng nói, xử lý AI cục bộ và tương thích đa nền tảng. Mục tiêu ra mắt: Quý 3/2024.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ed3dai/ed3d-plugins`",
+    "usage_vi": "```\nSử dụng bộ sưu tập ed3d-plugins trong Claude Code để [TASK]. Ví dụ: 'Sử dụng ed3d-plugins để tạo tài liệu thiết kế sản phẩm cho [PRODUCT_NAME] bao gồm chân dung người dùng (user personas), yêu cầu tính năng và sơ đồ kiến trúc kỹ thuật.' Thêm [SPECIFIC_OUTPUT_FORMAT] nếu cần, ví dụ: 'xuất dưới dạng file markdown có các mục riêng cho từng thành phần'.\n```\nCopy\n\n```\n```markdown\n# Tài liệu thiết kế sản phẩm: Smart Home Hub v2.0"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:54:48.872857Z",
+    "http_status": 200,
+    "content_hash": "353fe1cf073e9de2b85112abdc3ef5ccd6875459bba180071aca6881fd108792",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ed3d-plugins.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ed3d-plugins.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ed3d-plugins - Tự động hóa workflow cho Claude Code",
+  "short_description_vi": "Bộ sưu tập các plugin Claude Code của Ed dành cho các workflow nghiên cứu, lập kế hoạch và triển khai. Được thiết kế cho các nhà phát triển và đội ngũ vận hành, các plugin này giúp tối ưu hóa các tác vụ như thiết kế sản phẩm và nghiên cứu tổng quan. Tích hợp trực tiếp với Claude Code."
+}

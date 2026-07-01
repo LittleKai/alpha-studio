@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mozi",
+  "slug": "mozi",
+  "name": "browser-use",
+  "headline": "mozi: Your Workflow Automation",
+  "short_description": "Mozi is a lightweight AI assistant framework for Chinese AI models and communication platforms. It connects DeepSeek, Qwen, Kimi, and other models to QQ, Feishu, DingTalk, and WeCom for automated workflows. Ideal for operations teams managing Chinese enterprise tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "King-Chau",
+  "install_command": "git clone https://github.com/King-Chau/mozi.git",
+  "source_repo_url": "https://github.com/King-Chau/mozi",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "dingding",
+    "qq",
+    "deepseek",
+    "qqbot",
+    "claude",
+    "clawdbot",
+    "minimax",
+    "moltbot",
+    "feishu"
+  ],
+  "sections": {
+    "overview": "The mozi skill is an innovative automation tool designed to support domestic large models and popular communication platforms such as Feishu, DingTalk, QQ, and WeChat Work. By leveraging the capabilities of Clawdbot and Moltbot, mozi enables users to automate repetitive tasks and streamline communication workflows. This skill is particularly beneficial for developers and product managers looking to enhance their operational efficiency through AI automation. One of the key benefits of using mozi is its ability to significantly reduce manual workload, allowing teams to focus on more strategic tasks. Although specific time savings are currently unknown, the skill's intermediate complexity and 30-minute implementation time suggest that users can quickly integrate it into their existing systems. This rapid deployment can lead to immediate improvements in productivity, especially for teams that rely heavily on the supported communication platforms. mozi is ideal for AI practitioners, developers, and product managers who are seeking to optimize their workflows. By automating interactions across multiple platforms, teams can improve collaboration and reduce the time spent on mundane tasks. For instance, a product manager could use mozi to automate status updates across different messaging apps, ensuring that all stakeholders are informed without the need for constant manual input. While the skill is categorized as intermediate in terms of implementation difficulty, it provides a robust solution for those looking to incorporate AI-first workflows into their operations. As organizations increasingly adopt AI automation, tools like mozi will play a critical role in enhancing productivity and fostering innovation. By integrating mozi into their workflows, teams can harness the power of AI to drive efficiency and streamline communication processes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/King-Chau/mozi`",
+    "usage": "```\nUse Mozi to automate a workflow where [MODEL_NAME] processes incoming messages from [COMMUNICATION_PLATFORM] (e.g., QQ, Feishu, DingTalk) and performs [TASK]. For example: 'Use Mozi to connect Qwen to WeCom, monitor the #customer-support channel for keywords like \"退款\" or \"投诉\", and automatically draft a polite response template with a 1-hour SLA for the support team.'\n```\nCopy\n\n```\nMozi successfully connected Qwen to WeCom and automated the customer support workflow for TechGadgets Inc. The system monitored the #customer-support channel in real-time and detected 12 new messages containing keywords like '退款' (refund) or '投诉' (complaint). For each message, Qwen analyzed the context and drafted a standardized response template within 30 seconds, ensuring a 1-hour SLA. The responses included: 1) Acknowledgment of the issue with a ticket number (e.g., '工单已生成：TK2024-05-18-001'), 2) A polite apology and explanation of the next steps, and 3) A link to the refund policy or escalation path. The support team received a summary report via Feishu, highlighting 3 urgent cases requiring immediate attention. The automation reduced manual triage time by 60% and improved response consistency across the team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mozi#main-content",
+      "mozi#overview",
+      "mozi#setup",
+      "mozi#examples",
+      "mozi#tools",
+      "mozi#mcp",
+      "mozi#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The mozi skill is an innovative automation tool designed to support domestic large models and popular communication platforms such as Feishu, DingTalk, QQ, and WeChat Work. By leveraging the capabilities of Clawdbot and Moltbot, mozi enables users to automate repetitive tasks and streamline communication workflows. This skill is particularly beneficial for developers and product managers looking to enhance their operational efficiency through AI automation. One of the key benefits of using mozi is its ability to significantly reduce manual workload, allowing teams to focus on more strategic tasks. Although specific time savings are currently unknown, the skill's intermediate complexity and 30-minute implementation time suggest that users can quickly integrate it into their existing systems. This rapid deployment can lead to immediate improvements in productivity, especially for teams that rely heavily on the supported communication platforms. mozi is ideal for AI practitioners, developers, and product managers who are seeking to optimize their workflows. By automating interactions across multiple platforms, teams can improve collaboration and reduce the time spent on mundane tasks. For instance, a product manager could use mozi to automate status updates across different messaging apps, ensuring that all stakeholders are informed without the need for constant manual input. While the skill is categorized as intermediate in terms of implementation difficulty, it provides a robust solution for those looking to incorporate AI-first workflows into their operations. As organizations increasingly adopt AI automation, tools like mozi will play a critical role in enhancing productivity and fostering innovation. By integrating mozi into their workflows, teams can harness the power of AI to drive efficiency and streamline communication processes.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/King-Chau/mozi`",
+    "usage_vi": "```\nUse Mozi to automate a workflow where [MODEL_NAME] processes incoming messages from [COMMUNICATION_PLATFORM] (e.g., QQ, Feishu, DingTalk) and performs [TASK]. For example: 'Use Mozi to connect Qwen to WeCom, monitor the #customer-support channel for keywords like \"退款\" or \"投诉\", and automatically draft a polite response template with a 1-hour SLA for the support team.'\n```\nCopy\n\n```\nMozi successfully connected Qwen to WeCom and automated the customer support workflow for TechGadgets Inc. The system monitored the #customer-support channel in real-time and detected 12 new messages containing keywords like '退款' (refund) or '投诉' (complaint). For each message, Qwen analyzed the context and drafted a standardized response template within 30 seconds, ensuring a 1-hour SLA. The responses included: 1) Acknowledgment of the issue with a ticket number (e.g., '工单已生成：TK2024-05-18-001'), 2) A polite apology and explanation of the next steps, and 3) A link to the refund policy or escalation path. The support team received a summary report via Feishu, highlighting 3 urgent cases requiring immediate attention. The automation reduced manual triage time by 60% and improved response consistency across the team.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:31:48.537592Z",
+    "http_status": 200,
+    "content_hash": "ac2e169a08e4d6095bcb296df22424cb49df3ec9660a54d6923a152f21665dcf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mozi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mozi.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mozi: Your Workflow Automation",
+  "short_description_vi": "Mozi is a lightweight AI assistant framework for Chinese AI models and communication platforms. It connects DeepSeek, Qwen, Kimi, and other models to QQ, Feishu, DingTalk, and WeCom for automated workflows. Ideal for operations teams managing Chinese enterprise tools."
+}

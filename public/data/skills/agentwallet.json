@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentwallet",
+  "slug": "agentwallet",
+  "name": "Related Skills",
+  "headline": "AgentWallet: Claude Code skill for Wallet Management",
+  "short_description": "AgentWallet provides server wallets specifically designed for AI agents. It supports multiple blockchains and facilitates seamless payment signing and transactions through policy control.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "frames-engineering",
+  "install_command": "git clone https://github.com/frames-engineering/skills",
+  "source_repo_url": "https://github.com/frames-engineering/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "agentwallet",
+    "wallet-management"
+  ],
+  "sections": {
+    "overview": "AgentWallet is a wallet management skill that provides server-based wallet infrastructure designed specifically for AI agents. It supports operations across multiple blockchains and enables agents to sign payments and execute transactions securely. The skill includes policy control mechanisms to manage and regulate transaction authorization, allowing agents to operate wallets within defined parameters.\nAI agents performing multi-chain transactions\nAutomated payment signing for dApps\nManaging multiple wallets with policy controls",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/frames-engineering/skills --skill agentwallet`\n`git clone https://github.com/frames-engineering/skills`",
+    "usage": "```\nI need to set up and manage a server wallet for my AI agent using AgentWallet. The wallet should support [BLOCKCHAIN_NETWORK, e.g., Ethereum, Polygon, Solana] and enforce transaction policies for [SPECIFIC_USE_CASE, e.g., micro-payments, DeFi interactions, NFT minting]. Generate a step-by-step guide to configure the wallet, including policy setup, key management, and transaction signing. Here’s the data I have: [AGENT_ID], [POLICY_RULES, e.g., daily spending limit, whitelisted addresses, time-based restrictions].\n```\nCopy\n\n```\n# AgentWallet Setup Guide for AI Agent",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "agentwallet#main-content",
+      "agentwallet#overview",
+      "agentwallet#setup",
+      "agentwallet#examples",
+      "agentwallet#related"
+    ],
+    "overview_vi": "AgentWallet is a wallet management skill that provides server-based wallet infrastructure designed specifically for AI agents. It supports operations across multiple blockchains and enables agents to sign payments and execute transactions securely. The skill includes policy control mechanisms to manage and regulate transaction authorization, allowing agents to operate wallets within defined parameters.\nAI agents performing multi-chain transactions\nAutomated payment signing for dApps\nManaging multiple wallets with policy controls",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/frames-engineering/skills --skill agentwallet`\n`git clone https://github.com/frames-engineering/skills`",
+    "usage_vi": "```\nI need to set up and manage a server wallet for my AI agent using AgentWallet. The wallet should support [BLOCKCHAIN_NETWORK, e.g., Ethereum, Polygon, Solana] and enforce transaction policies for [SPECIFIC_USE_CASE, e.g., micro-payments, DeFi interactions, NFT minting]. Generate a step-by-step guide to configure the wallet, including policy setup, key management, and transaction signing. Here’s the data I have: [AGENT_ID], [POLICY_RULES, e.g., daily spending limit, whitelisted addresses, time-based restrictions].\n```\nCopy\n\n```\n# AgentWallet Setup Guide for AI Agent"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:20:01.834013Z",
+    "http_status": 200,
+    "content_hash": "c6a6a8bd73f18a2039ab2a34e102d4aef2c87b783729f7a886002f9c5b21d403",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentwallet.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentwallet.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AgentWallet: Claude Code skill for Wallet Management",
+  "short_description_vi": "AgentWallet provides server wallets specifically designed for AI agents. It supports multiple blockchains and facilitates seamless payment signing and transactions through policy control."
+}

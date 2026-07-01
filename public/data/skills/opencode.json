@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opencode",
+  "slug": "opencode",
+  "name": "Opencode",
+  "headline": "Boost Coding Efficiency with Opencode AI",
+  "short_description": "Opencode helps users to effortlessly generate code snippets and automate repetitive tasks, enhancing productivity and creativity. Unlock your coding potential with this intuitive AI assistant, ideal for developers of all skill levels.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "AI",
+    "automation",
+    "productivity",
+    "coding"
+  ],
+  "sections": {
+    "overview": "Opencode is an AI-powered development skill that generates code snippets and automates repetitive coding tasks. Designed for developers at any experience level, it helps streamline workflow and boost productivity. The skill provides an intuitive interface to assist with common development challenges, allowing you to focus on higher-level problem-solving rather than routine coding work.\nGenerate code snippets\nAutomate repetitive tasks\nSimplify debugging processes",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nGenerate a Python function that [TASK] for [COMPANY] in the [INDUSTRY] sector. Include error handling and comments. Use [DATA] as input.\n```\nCopy\n\n```\n# Function to process sales data and generate a summary report\n# Input: CSV file containing sales data\n# Output: JSON file with summarized sales metrics\n\nimport csv\nimport json\n\ndef process_sales_data(input_file, output_file):\n    \"\"\"\n    Processes sales data from a CSV file and generates a summary report in JSON format.\n\n    Args:\n        input_file (str): Path to the input CSV file\n        output_file (str): Path to the output JSON file\n    \"\"\"\n    try:\n        with open(input_file, mode='r') as csv_file:\n            csv_reader = csv.DictReader(csv_file)\n            total_sales = 0\n            sales_by_region = {}\n            for row in csv_reader:\n                total_sales += float(row['Amount'])\n                region = row['Region']\n                sales_by_region[region] = sales_by_region.get(region, 0) + float(row['Amount'])\n            \n            # Calculate average sale\n            average_sale = total_sales / len(sales_by_region)\n            \n            # Prepare output data\n            output_data = {\n                'total_sales': total_sales,\n                'average_sale': average_sale,\n                'sales_by_region': sales_by_region\n            }\n            \n            # Write output to JSON file\n            with open(output_file, mode='w') as json_file:\n                json.dump(output_data, json_file, indent=4)\n                \n    except FileNotFoundError:\n        print(f\"Error: The file {input_file} was not found.\")\n    except Exception as e:\n        print(f\"An error occurred: {str(e)}\")\n\n# Example usage\n# process_sales_data('sales_data.csv', 'sales_summary.json')\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "opencode#main-content",
+      "opencode#overview",
+      "opencode#setup",
+      "opencode#examples",
+      "opencode#tools",
+      "opencode#mcp",
+      "opencode#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Opencode là một skill lập trình tích hợp AI giúp tạo các code snippet và tự động hóa các tác vụ viết code lặp đi lặp lại. Được thiết kế dành cho lập trình viên ở mọi cấp độ kinh nghiệm, skill này giúp tối ưu hóa quy trình làm việc và nâng cao hiệu suất. Opencode cung cấp một giao diện trực quan giúp giải quyết các thách thức phát triển phổ biến, cho phép bạn tập trung vào giải quyết các bài toán ở cấp độ cao hơn thay vì các tác vụ viết code thủ công thường nhật.\n\nTạo code snippet\nTự động hóa các tác vụ lặp đi lặp lại\nĐơn giản hóa quy trình debugging",
+    "setup_vi": "Terminal\nSao chép\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nTạo một hàm Python thực hiện [TASK] cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Đính kèm xử lý lỗi và chú thích. Sử dụng [DATA] làm dữ liệu đầu vào.\n```\nSao chép\n\n```\n# Hàm xử lý dữ liệu bán hàng và tạo báo cáo tổng hợp\n# Đầu vào: File CSV chứa dữ liệu bán hàng\n# Đầu ra: File JSON chứa các chỉ số bán hàng tổng hợp\n\nimport csv\nimport json\n\ndef process_sales_data(input_file, output_file):\n    \"\"\"\n    Xử lý dữ liệu bán hàng từ file CSV và tạo báo cáo tổng hợp dưới định dạng JSON.\n\n    Args:\n        input_file (str): Đường dẫn đến file CSV đầu vào\n        output_file (str): Đường dẫn đến file JSON đầu ra\n    \"\"\"\n    try:\n        with open(input_file, mode='r') as csv_file:\n            csv_reader = csv.DictReader(csv_file)\n            total_sales = 0\n            sales_by_region = {}\n            for row in csv_reader:\n                total_sales += float(row['Amount'])\n                region = row['Region']\n                sales_by_region[region] = sales_by_region.get(region, 0) + float(row['Amount'])\n            \n            # Tính doanh số trung bình\n            average_sale = total_sales / len(sales_by_region)\n            \n            # Chuẩn bị dữ liệu đầu ra\n            output_data = {\n                'total_sales': total_sales,\n                'average_sale': average_sale,\n                'sales_by_region': sales_by_region\n            }\n            \n            # Ghi dữ liệu đầu ra vào file JSON\n            with open(output_file, mode='w') as json_file:\n                json.dump(output_data, json_file, indent=4)\n                \n    except FileNotFoundError:\n        print(f\"Lỗi: Không tìm thấy file {input_file}.\")\n    except Exception as e:\n        print(f\"Đã xảy ra lỗi: {str(e)}\")\n\n# Ví dụ sử dụng\n# process_sales_data('sales_data.csv', 'sales_summary.json')\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:39.617174Z",
+    "http_status": 200,
+    "content_hash": "5edd8281afe519d1ebf84232a5fb1a92d1e0438f52355e5c19450188adba58cc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opencode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opencode.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tối ưu hiệu suất lập trình với Opencode AI",
+  "short_description_vi": "Opencode giúp người dùng dễ dàng tạo các code snippet và tự động hóa các tác vụ lặp đi lặp lại, từ đó nâng cao năng suất và khả năng sáng tạo. Hãy khai phá tiềm năng lập trình của bạn với trợ lý AI trực quan này, giải pháp lý tưởng cho lập trình viên ở mọi cấp độ."
+}

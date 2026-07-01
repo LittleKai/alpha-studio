@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-mlx-proxy",
+  "slug": "claude-code-mlx-proxy",
+  "name": "browser-use",
+  "headline": "claude code mlx proxy: local mlx model support",
+  "short_description": "Run Claude Code with local MLX-powered models. Operations teams benefit from on-premises AI coding assistance. Connects to local MLX models via Python server, replacing cloud-based Anthropic services.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "chand1012",
+  "install_command": "git clone https://github.com/chand1012/claude-code-mlx-proxy.git",
+  "source_repo_url": "https://github.com/chand1012/claude-code-mlx-proxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "llm",
+    "ai"
+  ],
+  "sections": {
+    "overview": "This skill enables Claude Code to use open-source models running locally on Apple Silicon Macs via MLX framework, eliminating the need to send code to Anthropic's cloud servers. The proxy server implements Claude's Messages API, supporting streaming responses, token counting, and compatibility with thousands of models from the MLX Community on Hugging Face, including Llama 3, GLM-4.5-Air, and DeepSeek. Setup involves running a local Python server and configuring Claude Code to point to it via the ANTHROPIC_BASE_URL environment variable. Development teams gain complete code privacy, offline capability, zero API costs, and full control over model parameters and generation settings.\nSecure code completion for teams handling sensitive proprietary code\nOffline AI-assisted coding on restricted networks without internet connectivity\nCost-free local model experimentation with thousands of open-source alternatives\nPrivate pair programming with Claude Code on regulated systems requiring on-premises processing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/chand1012/claude-code-mlx-proxy`",
+    "usage": "```\nUse claude-code-mlx-proxy to run [TASK] with the local MLX model. Execute the following steps: [STEP_1], [STEP_2], and [STEP_3]. Ensure the output is saved to [OUTPUT_PATH]. Verify the results match the expected behavior described in [REQUIREMENTS].\n```\nCopy\n\n```\n```python\n# claude-code-mlx-proxy execution log\nStarting MLX model server on localhost:8000...\nConnected to model: 'mlx-community/code-llama-7b-instruct-4bit'\n\nTask: Refactor legacy Python code for a financial analytics module\nSteps executed:\n1. Parsed input file: /projects/legacy/financial_analytics.py\n2. Identified 12 functions requiring modernization\n3. Generated refactored code with type hints and error handling\n4. Saved output to: /projects/refactored/financial_analytics_v2.py\n\nVerification results:\n- All 12 functions successfully refactored\n- Type hints added to 8 functions\n- Error handling implemented for 5 critical paths\n- Performance improved by 15% in benchmark tests\n- No breaking changes detected in unit tests\n\nMLX model inference time: 42.3 seconds\nOutput file size: 18.7 KB\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-mlx-proxy#main-content",
+      "claude-code-mlx-proxy#overview",
+      "claude-code-mlx-proxy#setup",
+      "claude-code-mlx-proxy#examples",
+      "claude-code-mlx-proxy#tools",
+      "claude-code-mlx-proxy#mcp",
+      "claude-code-mlx-proxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill enables Claude Code to use open-source models running locally on Apple Silicon Macs via MLX framework, eliminating the need to send code to Anthropic's cloud servers. The proxy server implements Claude's Messages API, supporting streaming responses, token counting, and compatibility with thousands of models from the MLX Community on Hugging Face, including Llama 3, GLM-4.5-Air, and DeepSeek. Setup involves running a local Python server and configuring Claude Code to point to it via the ANTHROPIC_BASE_URL environment variable. Development teams gain complete code privacy, offline capability, zero API costs, and full control over model parameters and generation settings.\nSecure code completion for teams handling sensitive proprietary code\nOffline AI-assisted coding on restricted networks without internet connectivity\nCost-free local model experimentation with thousands of open-source alternatives\nPrivate pair programming with Claude Code on regulated systems requiring on-premises processing",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/chand1012/claude-code-mlx-proxy`",
+    "usage_vi": "```\nUse claude-code-mlx-proxy to run [TASK] with the local MLX model. Execute the following steps: [STEP_1], [STEP_2], and [STEP_3]. Ensure the output is saved to [OUTPUT_PATH]. Verify the results match the expected behavior described in [REQUIREMENTS].\n```\nCopy\n\n```\n```python\n# claude-code-mlx-proxy execution log\nStarting MLX model server on localhost:8000...\nConnected to model: 'mlx-community/code-llama-7b-instruct-4bit'\n\nTask: Refactor legacy Python code for a financial analytics module\nSteps executed:\n1. Parsed input file: /projects/legacy/financial_analytics.py\n2. Identified 12 functions requiring modernization\n3. Generated refactored code with type hints and error handling\n4. Saved output to: /projects/refactored/financial_analytics_v2.py\n\nVerification results:\n- All 12 functions successfully refactored\n- Type hints added to 8 functions\n- Error handling implemented for 5 critical paths\n- Performance improved by 15% in benchmark tests\n- No breaking changes detected in unit tests\n\nMLX model inference time: 42.3 seconds\nOutput file size: 18.7 KB\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:36:39.493723Z",
+    "http_status": 200,
+    "content_hash": "eb118d4e7d578b018f6470e23d04a9b2d14dca6c6002189dfeebe78562d284b6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mlx-proxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mlx-proxy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code mlx proxy: local mlx model support",
+  "short_description_vi": "Run Claude Code with local MLX-powered models. Operations teams benefit from on-premises AI coding assistance. Connects to local MLX models via Python server, replacing cloud-based Anthropic services."
+}

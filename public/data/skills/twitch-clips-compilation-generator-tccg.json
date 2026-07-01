@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/twitch-clips-compilation-generator-tccg",
+  "slug": "twitch-clips-compilation-generator-tccg",
+  "name": "popsicle",
+  "headline": "Twitch Clips Compilation Generator - Automate Video",
+  "short_description": "A system of 3 programs that collects clips automatically from Twitch, lets you edit videos and combine clips, and puts them together into a compilation video ready to be uploaded straight to any social media platform. Full VPS support is provided, along with an accounts system so multiple users can use the bot at once.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "HA6Bots",
+  "install_command": "git clone https://github.com/HA6Bots/Twitch-Clips-Compilation-Generator-TCCG-.git",
+  "source_repo_url": "https://github.com/HA6Bots/Twitch-Clips-Compilation-Generator-TCCG-",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "twitch-bot",
+    "youtube-video",
+    "automation",
+    "downloader",
+    "video-generator",
+    "video-clip",
+    "linux",
+    "video-editor",
+    "twitch-clips",
+    "windows",
+    "twitch-api",
+    "video-files"
+  ],
+  "sections": {
+    "overview": "TCCG is a three-program system designed to streamline compilation video creation from Twitch clips. It automatically downloads top highlight clips from Twitch into a searchable database, provides a video editor interface to review and trim clips, adjust volume, and add intros, outros, intervals, and background music, then generates the final MP4 compilation ready for upload to YouTube, TikTok, Instagram, or other platforms. The system runs on VPS with an authentication layer supporting multiple concurrent users, making it suitable for content creators, gaming channels, and media production teams producing high-volume compilation content.\nGaming channels producing top plays and highlights compilations\nContent creators generating fail and funny moment compilations\nMulti-creator teams managing clip curation and video production workflows\nStreamers building compilation libraries across game categories",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/HA6Bots/Twitch-Clips-Compilation-Generator-TCCG-`",
+    "usage": "```\nGenerate a Twitch clips compilation for [TOPIC/THEME, e.g., 'epic fails', 'best plays of the week', or 'funny moments']. Use the following criteria to select clips: [CLIP_LENGTH_MIN:MAX, e.g., '1-3 minutes'], [GAME/CATEGORY, e.g., 'League of Legends' or 'Just Chatting'], and [EMOTION/TONE, e.g., 'hilarious', 'dramatic', or 'inspiring']. Prioritize clips with high viewer engagement (likes/comments) and avoid copyrighted audio. Arrange clips in a [STRUCTURE, e.g., 'chronological order', 'high-energy to low-energy', or 'story arc']. Add captions for key moments and include a [TRANSITION_STYLE, e.g., 'fade', 'zoom', or 'slide'] between clips. Export the final compilation as a [FORMAT, e.g., 'MP4 1080p', 'MP4 720p', or 'GIF'] with a [DURATION, e.g., '2-3 minutes'] and [SOCIAL_PLATFORM, e.g., 'YouTube Shorts', 'TikTok', or 'Twitter/X'] in mind. Include a [TITLE_FORMAT, e.g., 'Top 10 Funny League of Legends Fails of the Week!'] and [DESCRIPTION_TEMPLATE, e.g., 'Check out these hilarious moments from [GAME] streamers! Subscribe for more compilations.'].\n```\nCopy\n\n```\nHere’s a 2-minute 1080p MP4 compilation titled *\"Top 5 Most Dramatic League of Legends Plays of the Week!\"* for YouTube Shorts. The compilation includes five clips (1:12, 1:45, 2:03, 1:30, and 1:55 in length) selected from high-engagement streams of *League of Legends* games played on Twitch. Clips were chosen based on their dramatic comebacks, intense team fights, and viral moments, with a focus on avoiding copyrighted music. The clips are arranged in a high-energy-to-low-energy structure, starting with a 5v5 team fight that ends in a last-hit victory, followed by a clutch Pentakill, a misplayed Baron steal, a failed engage, and a hilarious misplay by a top laner. Each clip is separated by a 0.5-second zoom transition with a subtle sound effect. Captions highlight key moments, such as \"GG EZ\" in the chat or \"First Blood in 3 minutes!\" for the opening clip. The final export includes a 1080p resolution, 60 FPS, and a 16:9 aspect ratio optimized for YouTube Shorts. The description reads: \"Watch these insane League of Legends plays from this week’s streams! From epic comebacks to hilarious fails, these moments had the chat losing it. Don’t forget to like and subscribe for more compilations! #LeagueOfLegends #LoLHighlights #TwitchClips\".\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "twitch-clips-compilation-generator-tccg#main-content",
+      "twitch-clips-compilation-generator-tccg#overview",
+      "twitch-clips-compilation-generator-tccg#setup",
+      "twitch-clips-compilation-generator-tccg#examples",
+      "twitch-clips-compilation-generator-tccg#tools",
+      "twitch-clips-compilation-generator-tccg#mcp",
+      "twitch-clips-compilation-generator-tccg#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "TCCG is a three-program system designed to streamline compilation video creation from Twitch clips. It automatically downloads top highlight clips from Twitch into a searchable database, provides a video editor interface to review and trim clips, adjust volume, and add intros, outros, intervals, and background music, then generates the final MP4 compilation ready for upload to YouTube, TikTok, Instagram, or other platforms. The system runs on VPS with an authentication layer supporting multiple concurrent users, making it suitable for content creators, gaming channels, and media production teams producing high-volume compilation content.\nGaming channels producing top plays and highlights compilations\nContent creators generating fail and funny moment compilations\nMulti-creator teams managing clip curation and video production workflows\nStreamers building compilation libraries across game categories",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/HA6Bots/Twitch-Clips-Compilation-Generator-TCCG-`",
+    "usage_vi": "```\nGenerate a Twitch clips compilation for [TOPIC/THEME, e.g., 'epic fails', 'best plays of the week', or 'funny moments']. Use the following criteria to select clips: [CLIP_LENGTH_MIN:MAX, e.g., '1-3 minutes'], [GAME/CATEGORY, e.g., 'League of Legends' or 'Just Chatting'], and [EMOTION/TONE, e.g., 'hilarious', 'dramatic', or 'inspiring']. Prioritize clips with high viewer engagement (likes/comments) and avoid copyrighted audio. Arrange clips in a [STRUCTURE, e.g., 'chronological order', 'high-energy to low-energy', or 'story arc']. Add captions for key moments and include a [TRANSITION_STYLE, e.g., 'fade', 'zoom', or 'slide'] between clips. Export the final compilation as a [FORMAT, e.g., 'MP4 1080p', 'MP4 720p', or 'GIF'] with a [DURATION, e.g., '2-3 minutes'] and [SOCIAL_PLATFORM, e.g., 'YouTube Shorts', 'TikTok', or 'Twitter/X'] in mind. Include a [TITLE_FORMAT, e.g., 'Top 10 Funny League of Legends Fails of the Week!'] and [DESCRIPTION_TEMPLATE, e.g., 'Check out these hilarious moments from [GAME] streamers! Subscribe for more compilations.'].\n```\nCopy\n\n```\nHere’s a 2-minute 1080p MP4 compilation titled *\"Top 5 Most Dramatic League of Legends Plays of the Week!\"* for YouTube Shorts. The compilation includes five clips (1:12, 1:45, 2:03, 1:30, and 1:55 in length) selected from high-engagement streams of *League of Legends* games played on Twitch. Clips were chosen based on their dramatic comebacks, intense team fights, and viral moments, with a focus on avoiding copyrighted music. The clips are arranged in a high-energy-to-low-energy structure, starting with a 5v5 team fight that ends in a last-hit victory, followed by a clutch Pentakill, a misplayed Baron steal, a failed engage, and a hilarious misplay by a top laner. Each clip is separated by a 0.5-second zoom transition with a subtle sound effect. Captions highlight key moments, such as \"GG EZ\" in the chat or \"First Blood in 3 minutes!\" for the opening clip. The final export includes a 1080p resolution, 60 FPS, and a 16:9 aspect ratio optimized for YouTube Shorts. The description reads: \"Watch these insane League of Legends plays from this week’s streams! From epic comebacks to hilarious fails, these moments had the chat losing it. Don’t forget to like and subscribe for more compilations! #LeagueOfLegends #LoLHighlights #TwitchClips\".\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:55:45.000901Z",
+    "http_status": 200,
+    "content_hash": "ffa34130c7d0c894466a6701ad157dfbeaa82436bc7f4c6cd18033561339523b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\twitch-clips-compilation-generator-tccg.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\twitch-clips-compilation-generator-tccg.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Twitch Clips Compilation Generator - Automate Video",
+  "short_description_vi": "A system of 3 programs that collects clips automatically from Twitch, lets you edit videos and combine clips, and puts them together into a compilation video ready to be uploaded straight to any social media platform. Full VPS support is provided, along with an accounts system so multiple users can use the bot at once."
+}

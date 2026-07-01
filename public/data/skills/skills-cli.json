@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-cli",
+  "slug": "skills-cli",
+  "name": "Skills CLI",
+  "headline": "skills-cli: Your AI Automation",
+  "short_description": "A cross-platform CLI tool for managing Claude Code and Claude Desktop skills. Operations teams use it to deploy, update, and manage AI skills across environments. It connects to Python-based workflows and integrates with existing CI/CD pipelines.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "kcchien",
+  "install_command": "git clone https://github.com/kcchien/skills-cli.git",
+  "source_repo_url": "https://github.com/kcchien/skills-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The skills-cli is a cross-platform command-line interface designed to manage Claude Code and Claude Desktop skills effectively. This automation skill simplifies the process of skill management, allowing users to quickly deploy, update, and configure their AI capabilities directly from the terminal. By leveraging this tool, developers can enhance their workflow automation and streamline their AI agent skill management processes, making it an essential addition to any tech stack focused on AI automation. One of the key benefits of using skills-cli is the reduction in time spent on manual skill management tasks. While the exact time savings are currently unknown, the intermediate complexity of the tool suggests that users can expect to save significant time compared to traditional methods. This efficiency is particularly valuable for teams working on tight deadlines or those managing multiple AI projects simultaneously. The CLI's straightforward commands allow for rapid skill deployment, which can lead to faster iteration cycles and improved productivity. The skills-cli is particularly suited for developers, product managers, and AI practitioners who are looking to optimize their workflow automation. By integrating this tool into their daily operations, users can ensure that their Claude Code skills are consistently up-to-date and functioning optimally. Whether you are managing a single project or multiple AI agents, skills-cli provides the flexibility and control needed to enhance your AI-first workflows. Implementation of skills-cli requires an intermediate level of technical knowledge, making it accessible for those familiar with command-line interfaces. With an estimated setup time of just 30 minutes, users can quickly integrate this tool into their existing processes. As AI automation continues to evolve, tools like skills-cli will play a crucial role in enabling teams to harness the full potential of AI technologies, ultimately driving innovation and efficiency in their projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kcchien/skills-cli`",
+    "usage": "```\nUse the skills-cli tool to [ACTION] the [SKILL_NAME] skill in the [ENVIRONMENT] environment. [ADDITIONAL_OPTIONS_IF_NEEDED]. Example: 'Use the skills-cli tool to deploy the skills-cli skill in the production environment with --force flag to overwrite existing configurations.'\n```\nCopy\n\n```\n```bash\n$ skills-cli deploy skills-cli --env production --force\n\n✅ Skill 'skills-cli' successfully deployed to production environment\n📁 Skill files synced to: /opt/skills/skills-cli\n🔄 Dependencies resolved: 12/12 packages installed\n⚡ Skill metadata updated in skills registry\n📊 Deployment metrics:\n   - Total files transferred: 47\n   - Average transfer speed: 12.4 MB/s\n   - Configuration validation: PASSED\n\n🔍 Verification checks:\n   - Remote skill registry: ✅ Synced\n   - Local cache: ✅ Updated\n   - CI/CD pipeline trigger: ✅ Configured\n\n💡 Next steps:\n1. Run 'skills-cli validate' to confirm skill integrity\n2. Monitor deployment logs at /var/log/skills-cli/production.log\n3. If issues arise, use 'skills-cli rollback skills-cli --env production' within 5 minutes\n```\n\nThe deployment completed in 2 minutes and 18 seconds. The skill is now available in the production environment with all dependencies resolved. The CI/CD pipeline has automatically triggered a smoke test suite that will validate the skill's functionality within the next 2 minutes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skills-cli#main-content",
+      "skills-cli#overview",
+      "skills-cli#setup",
+      "skills-cli#examples",
+      "skills-cli#tools",
+      "skills-cli#mcp",
+      "skills-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The skills-cli is a cross-platform command-line interface designed to manage Claude Code and Claude Desktop skills effectively. This automation skill simplifies the process of skill management, allowing users to quickly deploy, update, and configure their AI capabilities directly from the terminal. By leveraging this tool, developers can enhance their workflow automation and streamline their AI agent skill management processes, making it an essential addition to any tech stack focused on AI automation. One of the key benefits of using skills-cli is the reduction in time spent on manual skill management tasks. While the exact time savings are currently unknown, the intermediate complexity of the tool suggests that users can expect to save significant time compared to traditional methods. This efficiency is particularly valuable for teams working on tight deadlines or those managing multiple AI projects simultaneously. The CLI's straightforward commands allow for rapid skill deployment, which can lead to faster iteration cycles and improved productivity. The skills-cli is particularly suited for developers, product managers, and AI practitioners who are looking to optimize their workflow automation. By integrating this tool into their daily operations, users can ensure that their Claude Code skills are consistently up-to-date and functioning optimally. Whether you are managing a single project or multiple AI agents, skills-cli provides the flexibility and control needed to enhance your AI-first workflows. Implementation of skills-cli requires an intermediate level of technical knowledge, making it accessible for those familiar with command-line interfaces. With an estimated setup time of just 30 minutes, users can quickly integrate this tool into their existing processes. As AI automation continues to evolve, tools like skills-cli will play a crucial role in enabling teams to harness the full potential of AI technologies, ultimately driving innovation and efficiency in their projects.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kcchien/skills-cli`",
+    "usage_vi": "```\nUse the skills-cli tool to [ACTION] the [SKILL_NAME] skill in the [ENVIRONMENT] environment. [ADDITIONAL_OPTIONS_IF_NEEDED]. Example: 'Use the skills-cli tool to deploy the skills-cli skill in the production environment with --force flag to overwrite existing configurations.'\n```\nCopy\n\n```\n```bash\n$ skills-cli deploy skills-cli --env production --force\n\n✅ Skill 'skills-cli' successfully deployed to production environment\n📁 Skill files synced to: /opt/skills/skills-cli\n🔄 Dependencies resolved: 12/12 packages installed\n⚡ Skill metadata updated in skills registry\n📊 Deployment metrics:\n   - Total files transferred: 47\n   - Average transfer speed: 12.4 MB/s\n   - Configuration validation: PASSED\n\n🔍 Verification checks:\n   - Remote skill registry: ✅ Synced\n   - Local cache: ✅ Updated\n   - CI/CD pipeline trigger: ✅ Configured\n\n💡 Next steps:\n1. Run 'skills-cli validate' to confirm skill integrity\n2. Monitor deployment logs at /var/log/skills-cli/production.log\n3. If issues arise, use 'skills-cli rollback skills-cli --env production' within 5 minutes\n```\n\nThe deployment completed in 2 minutes and 18 seconds. The skill is now available in the production environment with all dependencies resolved. The CI/CD pipeline has automatically triggered a smoke test suite that will validate the skill's functionality within the next 2 minutes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:31:51.687796Z",
+    "http_status": 200,
+    "content_hash": "4af3e8602bdae52c4178b0adcac598d52cabc3ad7bf08c129eaef68fc5f689fa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-cli.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "skills-cli: Your AI Automation",
+  "short_description_vi": "A cross-platform CLI tool for managing Claude Code and Claude Desktop skills. Operations teams use it to deploy, update, and manage AI skills across environments. It connects to Python-based workflows and integrates with existing CI/CD pipelines."
+}

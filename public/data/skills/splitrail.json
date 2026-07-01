@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/splitrail",
+  "slug": "splitrail",
+  "name": "Splitrail",
+  "headline": "Splitrail - Track AI Token Usage & Costs",
+  "short_description": "Fast, cross-platform, real-time token usage tracker and cost monitor for Gemini CLI / Claude Code / Codex CLI / Qwen Code / Cline / Roo Code / Kilo Code / GitHub Copilot / OpenCode / Pi Agent / Piebald.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "Piebald-AI",
+  "install_command": "git clone https://github.com/Piebald-AI/splitrail.git",
+  "source_repo_url": "https://github.com/Piebald-AI/splitrail",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "gcusage",
+    "pi-agent",
+    "qwen-code",
+    "kilo-code",
+    "ravishing",
+    "usage",
+    "analyzer",
+    "ccusage",
+    "roo-code",
+    "splitrail",
+    "blazing-fast",
+    "rust",
+    "qwen",
+    "agentic",
+    "cline",
+    "claude-code",
+    "piebald",
+    "opencode",
+    "codex",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "Splitrail is a cross-platform tool that monitors token consumption and API costs for popular AI coding agents like Claude Code, Gemini CLI, Cline, Roo Code, GitHub Copilot, and Qwen Code. Run a single command to instantly review all CLI coding agent usage across your system. Upload usage data to Splitrail Cloud for secure storage and cross-machine aggregation. The tool also functions as an MCP server, enabling AI assistants to query usage statistics programmatically through tools like get_daily_stats, get_model_usage, and get_cost_breakdown.\nMonitor API costs across multiple AI coding agents on a single machine\nTrack token consumption patterns by model and coding tool\nAggregate usage data from multiple machines via Splitrail Cloud\nQuery usage statistics programmatically through MCP server integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/splitrail`",
+    "usage": "```\nTrack and analyze my token usage and costs across [LIST_OF_TOOLS: e.g., Gemini CLI, Claude Code, GitHub Copilot] in real-time. Show me a breakdown of total tokens used, cost per tool, and trends over the past [TIME_PERIOD: e.g., 7 days, 30 days]. Flag any tools exceeding my budget or showing unusual spikes in usage. Provide actionable recommendations to optimize costs, such as reducing verbose prompts or switching to more cost-effective models.\n```\nCopy\n\n```\n### Token Usage & Cost Report (Last 7 Days)\n\n| Tool            | Total Tokens | Cost (USD) | Avg Cost/1K Tokens | % of Total Cost |\n|-----------------|--------------|------------|--------------------|-----------------|\n| **Claude Code** | 425,000      | $12.75     | $0.030             | 45%             |\n| **GitHub Copilot** | 380,000   | $7.60      | $0.020             | 27%             |\n| **Gemini CLI**  | 290,000      | $5.80      | $0.020             | 21%             |\n| **Qwen Code**   | 150,000      | $1.50      | $0.010             | 5%              |\n| **OpenCode**    | 55,000       | $0.55      | $0.010             | 2%              |\n**Total**        | **1,300,000**| **$28.20** | -                  | **100%**        |\n\n#### Key Insights:\n1. **Claude Code** is your highest-cost tool, contributing 45% of total spend despite having a mid-tier cost per 1K tokens ($0.030). This suggests high usage volume—likely due to long sessions or verbose prompts.\n2. **GitHub Copilot** and **Gemini CLI** have identical cost-per-token rates ($0.020), but Copilot’s higher token count makes it the second-largest cost driver. Consider reviewing your Copilot usage for repetitive or low-value tasks.\n3. **Qwen Code** and **OpenCode** are your most cost-effective options ($0.010/1K tokens). If you’re using them for critical tasks, consider migrating more workflows to these tools.\n\n#### Cost Optimization Recommendations:\n- **Reduce verbose prompts** in Claude Code: Your average prompt length is ~1,200 tokens, which is 3x the recommended length for most tasks. Try trimming instructions or using bullet points.\n- **Switch to Qwen/OpenCode for code reviews**: Replace 30% of your Copilot code reviews with Qwen Code, which offers identical functionality at half the cost.\n- **Set budget alerts**: Configure SplitRail to notify you when any tool exceeds $10/day or $100/month.\n\n#### Anomaly Detection:\n- **Spike Alert (Gemini CLI)**: On 2024-05-15, you used 18,000 tokens in a single session—5x your daily average. This was likely due to a large file upload or debugging session. Review the session logs to identify if this was a one-time task or a recurring inefficiency.\n\nNext Steps:\n1. Run `splitrail analyze --tool claude --period 30d` to see if this trend continues over a longer period.\n2. Export this report to CSV using `splitrail export --format csv` and share it with your team to align on tool usage policies.\n3. Schedule a 15-minute review with your team to discuss the recommendations above.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "splitrail#main-content",
+      "splitrail#overview",
+      "splitrail#setup",
+      "splitrail#examples",
+      "splitrail#tools",
+      "splitrail#mcp",
+      "splitrail#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Splitrail is a cross-platform tool that monitors token consumption and API costs for popular AI coding agents like Claude Code, Gemini CLI, Cline, Roo Code, GitHub Copilot, and Qwen Code. Run a single command to instantly review all CLI coding agent usage across your system. Upload usage data to Splitrail Cloud for secure storage and cross-machine aggregation. The tool also functions as an MCP server, enabling AI assistants to query usage statistics programmatically through tools like get_daily_stats, get_model_usage, and get_cost_breakdown.\nMonitor API costs across multiple AI coding agents on a single machine\nTrack token consumption patterns by model and coding tool\nAggregate usage data from multiple machines via Splitrail Cloud\nQuery usage statistics programmatically through MCP server integration",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/splitrail`",
+    "usage_vi": "```\nTrack and analyze my token usage and costs across [LIST_OF_TOOLS: e.g., Gemini CLI, Claude Code, GitHub Copilot] in real-time. Show me a breakdown of total tokens used, cost per tool, and trends over the past [TIME_PERIOD: e.g., 7 days, 30 days]. Flag any tools exceeding my budget or showing unusual spikes in usage. Provide actionable recommendations to optimize costs, such as reducing verbose prompts or switching to more cost-effective models.\n```\nCopy\n\n```\n### Token Usage & Cost Report (Last 7 Days)\n\n| Tool            | Total Tokens | Cost (USD) | Avg Cost/1K Tokens | % of Total Cost |\n|-----------------|--------------|------------|--------------------|-----------------|\n| **Claude Code** | 425,000      | $12.75     | $0.030             | 45%             |\n| **GitHub Copilot** | 380,000   | $7.60      | $0.020             | 27%             |\n| **Gemini CLI**  | 290,000      | $5.80      | $0.020             | 21%             |\n| **Qwen Code**   | 150,000      | $1.50      | $0.010             | 5%              |\n| **OpenCode**    | 55,000       | $0.55      | $0.010             | 2%              |\n**Total**        | **1,300,000**| **$28.20** | -                  | **100%**        |\n\n#### Key Insights:\n1. **Claude Code** is your highest-cost tool, contributing 45% of total spend despite having a mid-tier cost per 1K tokens ($0.030). This suggests high usage volume—likely due to long sessions or verbose prompts.\n2. **GitHub Copilot** and **Gemini CLI** have identical cost-per-token rates ($0.020), but Copilot’s higher token count makes it the second-largest cost driver. Consider reviewing your Copilot usage for repetitive or low-value tasks.\n3. **Qwen Code** and **OpenCode** are your most cost-effective options ($0.010/1K tokens). If you’re using them for critical tasks, consider migrating more workflows to these tools.\n\n#### Cost Optimization Recommendations:\n- **Reduce verbose prompts** in Claude Code: Your average prompt length is ~1,200 tokens, which is 3x the recommended length for most tasks. Try trimming instructions or using bullet points.\n- **Switch to Qwen/OpenCode for code reviews**: Replace 30% of your Copilot code reviews with Qwen Code, which offers identical functionality at half the cost.\n- **Set budget alerts**: Configure SplitRail to notify you when any tool exceeds $10/day or $100/month.\n\n#### Anomaly Detection:\n- **Spike Alert (Gemini CLI)**: On 2024-05-15, you used 18,000 tokens in a single session—5x your daily average. This was likely due to a large file upload or debugging session. Review the session logs to identify if this was a one-time task or a recurring inefficiency.\n\nNext Steps:\n1. Run `splitrail analyze --tool claude --period 30d` to see if this trend continues over a longer period.\n2. Export this report to CSV using `splitrail export --format csv` and share it with your team to align on tool usage policies.\n3. Schedule a 15-minute review with your team to discuss the recommendations above.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:22:48.080006Z",
+    "http_status": 200,
+    "content_hash": "9dfc4ce53faeec6b1b1028988fbcc749b1e646252e7214ab0785b9b0b7782632",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\splitrail.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\splitrail.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Splitrail - Track AI Token Usage & Costs",
+  "short_description_vi": "Fast, cross-platform, real-time token usage tracker and cost monitor for Gemini CLI / Claude Code / Codex CLI / Qwen Code / Cline / Roo Code / Kilo Code / GitHub Copilot / OpenCode / Pi Agent / Piebald."
+}

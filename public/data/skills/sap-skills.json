@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sap-skills",
+  "slug": "sap-skills",
+  "name": "browser-use",
+  "headline": "SAP Skills - Automate SAP Development",
+  "short_description": "Production-ready Claude Code skills for SAP development. Covers BTP, CAP, Fiori, ABAP, HANA, Analytics Cloud, and more. Enables developers to automate SAP tasks, integrate with cloud services, and build enterprise applications. Connects to SAP ecosystems and developer tools.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "secondsky",
+  "install_command": "git clone https://github.com/secondsky/sap-skills.git",
+  "source_repo_url": "https://github.com/secondsky/sap-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "sap-btp",
+    "sap-cap",
+    "ai-development",
+    "marketplace",
+    "claude-code",
+    "developer-tools",
+    "ai-skills",
+    "sap-fiori",
+    "plugins",
+    "sap-datasphere",
+    "claude",
+    "sap-analytics-cloud",
+    "sapui5",
+    "abap",
+    "sap",
+    "mcp",
+    "llm",
+    "sap-hana",
+    "enterprise",
+    "cloud-development"
+  ],
+  "sections": {
+    "overview": "SAP Skills provides 35 verified plugins for AI coding assistants like Claude Code, Cursor, and GitHub Copilot, spanning SAP BTP, Cloud Application Programming Model (CAP), Fiori, ABAP, HANA, Datasphere, and Analytics Cloud. Skills auto-activate based on your project context—when you ask to create a CAP service or deploy to BTP, relevant plugins load automatically without manual invocation. The collection includes tooling for dependency security, cloud identity services, job scheduling, custom widgets, machine learning, and SQLScript development. Developers can install via npx, native marketplaces, or direct repository cloning to automate SAP development tasks and integrate with enterprise cloud services.\nAutomate SAP CAP microservice creation and deployment\nBuild and deploy SAP Fiori Elements applications\nDevelop ABAP CDS views and data models\nCreate SAP Analytics Cloud planning models and custom widgets",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/secondsky/sap-skills`",
+    "usage": "```\nDevelop a [SAP_SERVICE_OR_TOOL] solution for [BUSINESS_NEED]. Include integration with [SAP_COMPONENT] and [EXTERNAL_SERVICE] if needed. Use [PROGRAMMING_LANGUAGE] where applicable. Follow SAP best practices for [SAP_DOMAIN]. Provide code snippets, configuration steps, and validation checks. Example: 'Develop a Fiori Elements app for SAP S/4HANA Cloud to display real-time inventory levels from a custom CDS view. Integrate with SAP Analytics Cloud for reporting. Use OData V4 and SAP Fiori tools. Ensure the app follows SAP Fiori design guidelines and includes error handling for API failures.'\n```\nCopy\n\n```\n### Fiori Elements App for Inventory Tracking in S/4HANA Cloud\n\n**Business Need:** A Fiori Elements app to display real-time inventory levels for warehouse managers, with drill-down to item details and integration with SAP Analytics Cloud for trend analysis.\n\n**Solution Overview:**\nDeveloped a Fiori Elements app using SAP Fiori tools (version 1.120) with the following components:\n1. **CDS View (Z_C_INVENTORY_OVERVIEW):**\n   ```sql\n   @AbapCatalog.sqlViewName: 'ZC_INV_OVER'\n   @AbapCatalog.compiler.compareFilter: true\n   @AccessControl.authorizationCheck: #CHECK\n   @EndUserText.label: 'Inventory Overview'\n   define view Z_C_INVENTORY_OVERVIEW as select from z_inventory_data {\n     key material_id as MaterialID,\n         material_desc as MaterialDescription,\n         warehouse_id as WarehouseID,\n         current_stock as CurrentStock,\n         unit_of_measure as UoM,\n         last_updated as LastUpdated\n   }\n   where last_updated ge @abap.dats_add_days( $session.system_date, -30 )\n   ```\n\n2. **OData Service (Z_INVENTORY_SRV):**\n   - Annotated with `@OData.publish: true` to auto-generate the service.\n   - Added custom annotations for Fiori Elements:\n ```json\n     {\n       \"@UI.lineItem\": [\n         {\"Value\": \"MaterialID\", \"Label\": \"Material ID\"},\n         {\"Value\": \"MaterialDescription\", \"Label\": \"Description\"},\n         {\"Value\": \"CurrentStock\", \"Label\": \"Stock\"},\n         {\"Value\": \"WarehouseID\", \"Label\": \"Warehouse\"}\n       ],\n       \"@UI.identification\": [\n         {\"Value\": \"MaterialID\", \"Label\": \"Material ID\"}\n       ]\n     }\n ```\n\n3. **Fiori App (InventoryOverview.view.xml):**\n   - List Report template with a table to display inventory data.\n   - Added a filter for warehouse and a date range selector.\n   - Implemented a custom action to export data to SAP Analytics Cloud:\n ```xml\n     <Button text=\"Export to SAC\" press=\".onExportToSAC\" />\n ```\n\n4. **SAP Analytics Cloud Integration:**\n   - Configured a live connection to the OData service in SAC.\n   - Created a story with a table and chart visualizations for inventory trends.\n   - Set up a scheduled refresh every 4 hours.\n\n5. **Validation & Testing:**\n   - Tested the app in SAP Fiori launchpad with 100+ inventory records.\n   - Verified OData service response times (avg. 1.2s for 50 records).\n   - Confirmed SAC dashboard updates within 5 minutes of data changes in S/4HANA.\n\n**Deployment Steps:**\n1. Import the CDS view and OData service into your S/4HANA Cloud system.\n2. Deploy the Fiori app using SAP Fiori tools (run `npm run deploy`).\n3. Configure the SAC live connection with the OData service URL.\n4. Assign the app to the Warehouse Manager role in SAP Fiori launchpad.\n\n**Error Handling:**\n- Added a fallback message when the OData service is unavailable.\n- Implemented a retry mechanism for SAC data refresh failures.\n\n**Next Steps:**\n- Extend the app to include low-stock alerts using SAP Event Mesh.\n- Add a barcode scanner feature for quick inventory checks using SAP Mobile Services.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sap-skills#main-content",
+      "sap-skills#overview",
+      "sap-skills#setup",
+      "sap-skills#examples",
+      "sap-skills#tools",
+      "sap-skills#mcp",
+      "sap-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SAP Skills provides 35 verified plugins for AI coding assistants like Claude Code, Cursor, and GitHub Copilot, spanning SAP BTP, Cloud Application Programming Model (CAP), Fiori, ABAP, HANA, Datasphere, and Analytics Cloud. Skills auto-activate based on your project context—when you ask to create a CAP service or deploy to BTP, relevant plugins load automatically without manual invocation. The collection includes tooling for dependency security, cloud identity services, job scheduling, custom widgets, machine learning, and SQLScript development. Developers can install via npx, native marketplaces, or direct repository cloning to automate SAP development tasks and integrate with enterprise cloud services.\nAutomate SAP CAP microservice creation and deployment\nBuild and deploy SAP Fiori Elements applications\nDevelop ABAP CDS views and data models\nCreate SAP Analytics Cloud planning models and custom widgets",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/secondsky/sap-skills`",
+    "usage_vi": "```\nDevelop a [SAP_SERVICE_OR_TOOL] solution for [BUSINESS_NEED]. Include integration with [SAP_COMPONENT] and [EXTERNAL_SERVICE] if needed. Use [PROGRAMMING_LANGUAGE] where applicable. Follow SAP best practices for [SAP_DOMAIN]. Provide code snippets, configuration steps, and validation checks. Example: 'Develop a Fiori Elements app for SAP S/4HANA Cloud to display real-time inventory levels from a custom CDS view. Integrate with SAP Analytics Cloud for reporting. Use OData V4 and SAP Fiori tools. Ensure the app follows SAP Fiori design guidelines and includes error handling for API failures.'\n```\nCopy\n\n```\n### Fiori Elements App for Inventory Tracking in S/4HANA Cloud\n\n**Business Need:** A Fiori Elements app to display real-time inventory levels for warehouse managers, with drill-down to item details and integration with SAP Analytics Cloud for trend analysis.\n\n**Solution Overview:**\nDeveloped a Fiori Elements app using SAP Fiori tools (version 1.120) with the following components:\n1. **CDS View (Z_C_INVENTORY_OVERVIEW):**\n   ```sql\n   @AbapCatalog.sqlViewName: 'ZC_INV_OVER'\n   @AbapCatalog.compiler.compareFilter: true\n   @AccessControl.authorizationCheck: #CHECK\n   @EndUserText.label: 'Inventory Overview'\n   define view Z_C_INVENTORY_OVERVIEW as select from z_inventory_data {\n     key material_id as MaterialID,\n         material_desc as MaterialDescription,\n         warehouse_id as WarehouseID,\n         current_stock as CurrentStock,\n         unit_of_measure as UoM,\n         last_updated as LastUpdated\n   }\n   where last_updated ge @abap.dats_add_days( $session.system_date, -30 )\n   ```\n\n2. **OData Service (Z_INVENTORY_SRV):**\n   - Annotated with `@OData.publish: true` to auto-generate the service.\n   - Added custom annotations for Fiori Elements:\n ```json\n     {\n       \"@UI.lineItem\": [\n         {\"Value\": \"MaterialID\", \"Label\": \"Material ID\"},\n         {\"Value\": \"MaterialDescription\", \"Label\": \"Description\"},\n         {\"Value\": \"CurrentStock\", \"Label\": \"Stock\"},\n         {\"Value\": \"WarehouseID\", \"Label\": \"Warehouse\"}\n       ],\n       \"@UI.identification\": [\n         {\"Value\": \"MaterialID\", \"Label\": \"Material ID\"}\n       ]\n     }\n ```\n\n3. **Fiori App (InventoryOverview.view.xml):**\n   - List Report template with a table to display inventory data.\n   - Added a filter for warehouse and a date range selector.\n   - Implemented a custom action to export data to SAP Analytics Cloud:\n ```xml\n     <Button text=\"Export to SAC\" press=\".onExportToSAC\" />\n ```\n\n4. **SAP Analytics Cloud Integration:**\n   - Configured a live connection to the OData service in SAC.\n   - Created a story with a table and chart visualizations for inventory trends.\n   - Set up a scheduled refresh every 4 hours.\n\n5. **Validation & Testing:**\n   - Tested the app in SAP Fiori launchpad with 100+ inventory records.\n   - Verified OData service response times (avg. 1.2s for 50 records).\n   - Confirmed SAC dashboard updates within 5 minutes of data changes in S/4HANA.\n\n**Deployment Steps:**\n1. Import the CDS view and OData service into your S/4HANA Cloud system.\n2. Deploy the Fiori app using SAP Fiori tools (run `npm run deploy`).\n3. Configure the SAC live connection with the OData service URL.\n4. Assign the app to the Warehouse Manager role in SAP Fiori launchpad.\n\n**Error Handling:**\n- Added a fallback message when the OData service is unavailable.\n- Implemented a retry mechanism for SAC data refresh failures.\n\n**Next Steps:**\n- Extend the app to include low-stock alerts using SAP Event Mesh.\n- Add a barcode scanner feature for quick inventory checks using SAP Mobile Services.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:43:55.266920Z",
+    "http_status": 200,
+    "content_hash": "c1923d87d90a3decde2cf02645b18074b2ce488dee56212385f0ad17b1abec59",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sap-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sap-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SAP Skills - Automate SAP Development",
+  "short_description_vi": "Production-ready Claude Code skills for SAP development. Covers BTP, CAP, Fiori, ABAP, HANA, Analytics Cloud, and more. Enables developers to automate SAP tasks, integrate with cloud services, and build enterprise applications. Connects to SAP ecosystems and developer tools."
+}

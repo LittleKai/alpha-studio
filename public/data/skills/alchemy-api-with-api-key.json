@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/alchemy-api-with-api-key",
+  "slug": "alchemy-api-with-api-key",
+  "name": "Alchemy API (with API Key)",
+  "headline": "Alchemy API: Blockchain Integration for App Code",
+  "short_description": "The Alchemy API skill allows users to wire Alchemy APIs into application code that runs outside the current agent session using a standard API key. It's designed for developers who need to integrate blockchain functionalities into their server, backend, or application.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "alchemyplatform",
+  "install_command": "git clone https://github.com/alchemyplatform/skills",
+  "source_repo_url": "https://github.com/alchemyplatform/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "alchemy",
+    "api-integration"
+  ],
+  "sections": {
+    "overview": "The Alchemy API skill enables developers to integrate Alchemy's blockchain infrastructure into application code that runs outside the current agent session. It uses a standard API key for authentication and covers the full Alchemy surface: EVM JSON-RPC, WebSockets, Token, NFT, Transfers, Prices, Portfolio, Simulation, Webhooks, Solana, Solana Yellowstone gRPC, Sui gRPC, Wallets, and Account Kit. This is the preferred integration path for shipping production code, server backends, or dApps that need reliable blockchain data and functionality. Setup requires creating a free API key at dashboard.alchemy.com and wiring it into your application.\nIntegrate blockchain features into a server application\nBuild dApps that require blockchain data\nCreate backend services that interact with Alchemy APIs",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/alchemyplatform/skills --skill alchemy-api`\n`git clone https://github.com/alchemyplatform/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "alchemy-api-with-api-key#main-content",
+      "alchemy-api-with-api-key#overview",
+      "alchemy-api-with-api-key#setup",
+      "alchemy-api-with-api-key#examples",
+      "alchemy-api-with-api-key#tools",
+      "alchemy-api-with-api-key#mcp",
+      "alchemy-api-with-api-key#related",
+      "newapi",
+      "loops-api-and-sdk-skill"
+    ],
+    "overview_vi": "The Alchemy API skill enables developers to integrate Alchemy's blockchain infrastructure into application code that runs outside the current agent session. It uses a standard API key for authentication and covers the full Alchemy surface: EVM JSON-RPC, WebSockets, Token, NFT, Transfers, Prices, Portfolio, Simulation, Webhooks, Solana, Solana Yellowstone gRPC, Sui gRPC, Wallets, and Account Kit. This is the preferred integration path for shipping production code, server backends, or dApps that need reliable blockchain data and functionality. Setup requires creating a free API key at dashboard.alchemy.com and wiring it into your application.\nIntegrate blockchain features into a server application\nBuild dApps that require blockchain data\nCreate backend services that interact with Alchemy APIs",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/alchemyplatform/skills --skill alchemy-api`\n`git clone https://github.com/alchemyplatform/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:12:34.594643Z",
+    "http_status": 200,
+    "content_hash": "9ab3abf8c1bf6441203932398728f187151249a38231097f8dfe53df3d434bd1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\alchemy-api-with-api-key.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\alchemy-api-with-api-key.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Alchemy API: Blockchain Integration for App Code",
+  "short_description_vi": "The Alchemy API skill allows users to wire Alchemy APIs into application code that runs outside the current agent session using a standard API key. It's designed for developers who need to integrate blockchain functionalities into their server, backend, or application."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ctf-solver",
+  "slug": "ctf-solver",
+  "name": "Reverse Engineering & Debugging",
+  "headline": "CTF Solver: Automate Challenge Solving",
+  "short_description": "The CTF Solver skill activates when a user provides a CTF challenge including a description, source code, and/or environment endpoint. It is designed for users who want to efficiently engage with Capture The Flag challenges in cybersecurity.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "hacktronai",
+  "install_command": "git clone https://github.com/hacktronai/skills",
+  "source_repo_url": "https://github.com/hacktronai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "solver",
+    "security"
+  ],
+  "sections": {
+    "overview": "The CTF Solver skill extends AI agents with specialized capabilities for solving Capture The Flag (CTF) cybersecurity challenges. It processes challenge descriptions, source code, and live environment endpoints to systematically identify vulnerabilities and craft exploits. The skill is designed for security researchers and engineers who want to leverage AI agents to accelerate CTF competition participation or vulnerability research. By automating routine analysis and exploitation steps, it helps users focus on complex problem-solving aspects of security challenges.\nCapture flags from CTF challenges\nAnalyze source code for vulnerabilities\nTest HTTP interactions using Python scripts",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/hacktronai/skills --skill ctf-solver`\n`git clone https://github.com/hacktronai/skills`",
+    "usage": "```\nI'm working on a CTF challenge in [COMPANY]'s [INDUSTRY] environment. Here's the challenge description: [CHALLENGE_DESCRIPTION]. The source code is: [SOURCE_CODE]. The environment endpoint is: [ENDPOINT]. Please solve this challenge step by step and provide the flag.\n```\nCopy\n\n```\n# CTF Challenge Solution: Web Exploitation - Login Bypass",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "ctf-solver#main-content",
+      "ctf-solver#overview",
+      "ctf-solver#setup",
+      "ctf-solver#examples",
+      "ctf-solver#tools",
+      "ctf-solver#mcp",
+      "ctf-solver#related",
+      "audit",
+      "llm-security",
+      "reverse-engineering-and-debugging"
+    ],
+    "overview_vi": "The CTF Solver skill extends AI agents with specialized capabilities for solving Capture The Flag (CTF) cybersecurity challenges. It processes challenge descriptions, source code, and live environment endpoints to systematically identify vulnerabilities and craft exploits. The skill is designed for security researchers and engineers who want to leverage AI agents to accelerate CTF competition participation or vulnerability research. By automating routine analysis and exploitation steps, it helps users focus on complex problem-solving aspects of security challenges.\nCapture flags from CTF challenges\nAnalyze source code for vulnerabilities\nTest HTTP interactions using Python scripts",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/hacktronai/skills --skill ctf-solver`\n`git clone https://github.com/hacktronai/skills`",
+    "usage_vi": "```\nI'm working on a CTF challenge in [COMPANY]'s [INDUSTRY] environment. Here's the challenge description: [CHALLENGE_DESCRIPTION]. The source code is: [SOURCE_CODE]. The environment endpoint is: [ENDPOINT]. Please solve this challenge step by step and provide the flag.\n```\nCopy\n\n```\n# CTF Challenge Solution: Web Exploitation - Login Bypass"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:49:42.841056Z",
+    "http_status": 200,
+    "content_hash": "b4a1bc64bb2872d1d898f4aaa48015173c02c3cb85690dfb897319f368586437",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ctf-solver.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ctf-solver.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CTF Solver: Automate Challenge Solving",
+  "short_description_vi": "The CTF Solver skill activates when a user provides a CTF challenge including a description, source code, and/or environment endpoint. It is designed for users who want to efficiently engage with Capture The Flag challenges in cybersecurity."
+}

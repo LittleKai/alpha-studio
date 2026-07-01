@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wooyun-legacy",
+  "slug": "wooyun-legacy",
+  "name": "browser-use",
+  "headline": "WooYun Legacy - Automated Vulnerability Analysis",
+  "short_description": "wooyun-legacy skill enables Claude to analyze and identify vulnerabilities using a database of 88,636 real-world security flaws. Security teams and developers benefit from automated vulnerability assessment, threat modeling, and secure code review. It connects to code repositories and CI/CD pipelines for proactive security checks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "tanweai",
+  "install_command": "git clone https://github.com/tanweai/wooyun-legacy.git",
+  "source_repo_url": "https://github.com/tanweai/wooyun-legacy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "WooYun Legacy is a Claude Code plugin designed to strengthen security testing output by anchoring recommendations in real documented cases from the WooYun vulnerability database (2010-2016). The plugin provides security teams and developers with actual company case references, quantified statistical data, and data-driven test prioritization based on historical vulnerability patterns. Instead of generic security advice, Claude's reports include specific prevalence metrics—such as showing that payment bypass vulnerabilities represent 1,056 documented cases with 68.7% rated as high-severity. This grounds security assessments in empirical evidence, helping teams prioritize testing efforts where real-world threats are most prevalent.\nAnalyze SQL injection vulnerabilities in your web applications.\nIdentify and mitigate command execution risks in your software.\nEducate your team on common security flaws like XSS and unauthorized access.\nPerform authorized security assessments using real-world vulnerability data.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tanweai/wooyun-legacy`",
+    "usage": "```\nAnalyze the [LANGUAGE] codebase in [REPO_PATH] for vulnerabilities using the wooyun-legacy skill. Focus on [VULNERABILITY_TYPES, e.g., SQL injection, XSS, buffer overflows] and prioritize findings based on [SEVERITY_CRITERIA, e.g., CVSS score, exploitability]. Generate a report with remediation steps for each vulnerability, including code snippets where applicable. Cross-reference findings with the CVE database to confirm if any match known exploits (CVE-[YEAR]-[ID]).\n```\nCopy\n\n```\n### Security Vulnerability Assessment Report\n**Repository Analyzed:** `acme-corp/web-app (v2.1.4)`\n**Analysis Date:** 2023-11-15\n**Total Vulnerabilities Found:** 12 (High: 3, Medium: 5, Low: 4)\n\n#### Critical Findings:\n1. **SQL Injection in `src/db/user_queries.py` (Line 42)**\n   - **Vulnerability:** Dynamic SQL query construction using user input without parameterization.\n   - **Evidence:** The `get_user_by_email()` function concatenates raw input into a SQL query:\n ```python\n     query = f\"SELECT * FROM users WHERE email = '{email}'\"\n ```\n   - **CVSS Score:** 9.8 (Critical)\n   - **Exploitability:** Confirmed via proof-of-concept (PoC) using Burp Suite. Attacker can dump the entire `users` table.\n   - **Remediation:** Use parameterized queries:\n ```python\n     query = \"SELECT * FROM users WHERE email = %s\"\n     cursor.execute(query, (email,))\n ```\n   - **Reference:** CVE-2023-45678 (Patched in v2.1.5)\n\n2. **Hardcoded API Key in `config/prod.env` (Line 7)**\n   - **Vulnerability:** Plaintext AWS access key exposed in version control.\n   - **Evidence:** Key `AKIAIOSFODNN7EXAMPLE` found in Git history (commit `a1b2c3d`).\n   - **CVSS Score:** 7.5 (High)\n   - **Risk:** Potential for cloud resource hijacking.\n   - **Remediation:** Rotate the key immediately and use AWS Secrets Manager. Add `.env` to `.gitignore`.\n\n#### Medium Findings:\n- **Cross-Site Scripting (XSS) in `templates/login.html`:** Unsanitized user input in the `welcome` message. Suggest using a templating engine like Jinja2 with auto-escaping.\n- **Insecure Deserialization in `src/utils/serializer.py`:** Use of `pickle` module for user input. Replace with JSON or a safer alternative.\n\n#### Low Findings:\n- **Missing Security Headers:** `Content-Security-Policy` and `X-Content-Type-Options` headers not set. Add them via middleware (e.g., Flask-Talisman).\n\n**Recommendations:**\n1. Prioritize fixes for the SQL injection and hardcoded key vulnerabilities. Deploy patches within 24 hours.\n2. Run a full regression test after applying remediations.\n3. Schedule a follow-up scan after deploying fixes to confirm resolution.\n\n**Next Steps:**\n- Open Jira tickets for each critical vulnerability (e.g., `WEB-456` for SQLi).\n- Update the CI/CD pipeline to include wooyun-legacy scans on every pull request.\n\n**Confidence Level:** High (95%). All findings were cross-verified against the wooyun-legacy database and manual testing where applicable.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wooyun-legacy#main-content",
+      "wooyun-legacy#overview",
+      "wooyun-legacy#setup",
+      "wooyun-legacy#examples",
+      "wooyun-legacy#tools",
+      "wooyun-legacy#mcp",
+      "wooyun-legacy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "WooYun Legacy is a Claude Code plugin designed to strengthen security testing output by anchoring recommendations in real documented cases from the WooYun vulnerability database (2010-2016). The plugin provides security teams and developers with actual company case references, quantified statistical data, and data-driven test prioritization based on historical vulnerability patterns. Instead of generic security advice, Claude's reports include specific prevalence metrics—such as showing that payment bypass vulnerabilities represent 1,056 documented cases with 68.7% rated as high-severity. This grounds security assessments in empirical evidence, helping teams prioritize testing efforts where real-world threats are most prevalent.\nAnalyze SQL injection vulnerabilities in your web applications.\nIdentify and mitigate command execution risks in your software.\nEducate your team on common security flaws like XSS and unauthorized access.\nPerform authorized security assessments using real-world vulnerability data.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tanweai/wooyun-legacy`",
+    "usage_vi": "```\nAnalyze the [LANGUAGE] codebase in [REPO_PATH] for vulnerabilities using the wooyun-legacy skill. Focus on [VULNERABILITY_TYPES, e.g., SQL injection, XSS, buffer overflows] and prioritize findings based on [SEVERITY_CRITERIA, e.g., CVSS score, exploitability]. Generate a report with remediation steps for each vulnerability, including code snippets where applicable. Cross-reference findings with the CVE database to confirm if any match known exploits (CVE-[YEAR]-[ID]).\n```\nCopy\n\n```\n### Security Vulnerability Assessment Report\n**Repository Analyzed:** `acme-corp/web-app (v2.1.4)`\n**Analysis Date:** 2023-11-15\n**Total Vulnerabilities Found:** 12 (High: 3, Medium: 5, Low: 4)\n\n#### Critical Findings:\n1. **SQL Injection in `src/db/user_queries.py` (Line 42)**\n   - **Vulnerability:** Dynamic SQL query construction using user input without parameterization.\n   - **Evidence:** The `get_user_by_email()` function concatenates raw input into a SQL query:\n ```python\n     query = f\"SELECT * FROM users WHERE email = '{email}'\"\n ```\n   - **CVSS Score:** 9.8 (Critical)\n   - **Exploitability:** Confirmed via proof-of-concept (PoC) using Burp Suite. Attacker can dump the entire `users` table.\n   - **Remediation:** Use parameterized queries:\n ```python\n     query = \"SELECT * FROM users WHERE email = %s\"\n     cursor.execute(query, (email,))\n ```\n   - **Reference:** CVE-2023-45678 (Patched in v2.1.5)\n\n2. **Hardcoded API Key in `config/prod.env` (Line 7)**\n   - **Vulnerability:** Plaintext AWS access key exposed in version control.\n   - **Evidence:** Key `AKIAIOSFODNN7EXAMPLE` found in Git history (commit `a1b2c3d`).\n   - **CVSS Score:** 7.5 (High)\n   - **Risk:** Potential for cloud resource hijacking.\n   - **Remediation:** Rotate the key immediately and use AWS Secrets Manager. Add `.env` to `.gitignore`.\n\n#### Medium Findings:\n- **Cross-Site Scripting (XSS) in `templates/login.html`:** Unsanitized user input in the `welcome` message. Suggest using a templating engine like Jinja2 with auto-escaping.\n- **Insecure Deserialization in `src/utils/serializer.py`:** Use of `pickle` module for user input. Replace with JSON or a safer alternative.\n\n#### Low Findings:\n- **Missing Security Headers:** `Content-Security-Policy` and `X-Content-Type-Options` headers not set. Add them via middleware (e.g., Flask-Talisman).\n\n**Recommendations:**\n1. Prioritize fixes for the SQL injection and hardcoded key vulnerabilities. Deploy patches within 24 hours.\n2. Run a full regression test after applying remediations.\n3. Schedule a follow-up scan after deploying fixes to confirm resolution.\n\n**Next Steps:**\n- Open Jira tickets for each critical vulnerability (e.g., `WEB-456` for SQLi).\n- Update the CI/CD pipeline to include wooyun-legacy scans on every pull request.\n\n**Confidence Level:** High (95%). All findings were cross-verified against the wooyun-legacy database and manual testing where applicable.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:11.431514Z",
+    "http_status": 200,
+    "content_hash": "1cbc1eb739aad9c3b029a863b260f2aa9b3a702d29cbe26a6ff80555527900cd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wooyun-legacy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wooyun-legacy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "WooYun Legacy - Automated Vulnerability Analysis",
+  "short_description_vi": "wooyun-legacy skill enables Claude to analyze and identify vulnerabilities using a database of 88,636 real-world security flaws. Security teams and developers benefit from automated vulnerability assessment, threat modeling, and secure code review. It connects to code repositories and CI/CD pipelines for proactive security checks."
+}

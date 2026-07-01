@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/marketing-site",
+  "slug": "marketing-site",
+  "name": "Marketing Site",
+  "headline": "Marketing Site - Automates Content Generation",
+  "short_description": "A Gatsby app that generates content for the Roadie marketing site. Benefits marketing teams by automating site updates and ensuring consistent branding. Connects to Roadie's content management system and design tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "RoadieHQ",
+  "install_command": "git clone https://github.com/RoadieHQ/marketing-site.git",
+  "source_repo_url": "https://github.com/RoadieHQ/marketing-site",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "backstage",
+    "gatsby"
+  ],
+  "sections": {
+    "overview": "The marketing-site skill is a Gatsby-based static site generator that powers Roadie.io's marketing presence, documentation hub, and blog platform. It pulls content from multiple sources including Contentful CMS for blog posts and case studies, local Markdown files for documentation and legal pages, and external APIs for OpenAPI specifications and CLI releases. The site dynamically generates pages for marketing content, docs, Backstage plugin documentation, blog posts, changelog entries, and case studies while maintaining consistent branding through Tailwind CSS styling and theme configuration. It includes built-in search via Algolia, supports multiple deployment environments with preview capabilities, and automates content indexing and build processes to keep marketing materials current and discoverable.\nPublishing and managing blog posts and case studies through Contentful CMS\nAutomatically generating Backstage plugin documentation pages\nDistributing CLI tool releases and documentation from GitHub\nMaintaining synchronized marketing site, docs, and changelog across environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RoadieHQ/marketing-site`",
+    "usage": "```\nGenerate a new marketing page for [COMPANY] in the [INDUSTRY] sector. Use the following [DATA] to create a compelling page with a headline, subheadline, key benefits, and a call-to-action. Ensure the content aligns with [COMPANY]'s brand voice and style guide. Include a section highlighting [COMPANY]'s unique value proposition and a brief customer testimonial.\n```\nCopy\n\n```\n# New Product Launch: EcoClean Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "marketing-site#main-content",
+      "marketing-site#overview",
+      "marketing-site#setup",
+      "marketing-site#examples",
+      "marketing-site#tools",
+      "marketing-site#mcp",
+      "marketing-site#related",
+      "marketingskills",
+      "copywriting",
+      "index-now-submit-sitemap-urls-action"
+    ],
+    "overview_vi": "Skill marketing-site là một công cụ tạo trang tĩnh (static site generator) dựa trên Gatsby, vận hành sự hiện diện marketing, trung tâm tài liệu (documentation hub) và nền tảng blog của Roadie.io. Skill này lấy dữ liệu từ nhiều nguồn khác nhau, bao gồm Contentful CMS cho các bài viết blog và case study, các file Markdown cục bộ cho tài liệu và trang pháp lý, cùng các API bên ngoài cho đặc tả OpenAPI và các phiên bản phát hành CLI. Trang web tự động tạo các trang động cho nội dung marketing, tài liệu hướng dẫn, tài liệu plugin Backstage, bài viết blog, nhật ký thay đổi (changelog) và case study, đồng thời đảm bảo tính nhất quán của thương hiệu thông qua định dạng Tailwind CSS và cấu hình theme. Ngoài ra, hệ thống tích hợp sẵn tính năng tìm kiếm qua Algolia, hỗ trợ nhiều môi trường triển khai (deployment environment) kèm khả năng xem trước (preview), và tự động hóa quy trình lập chỉ mục nội dung (content indexing) cũng như quá trình build để đảm bảo tài liệu marketing luôn được cập nhật và dễ dàng tìm kiếm.\n\nXuất bản và quản lý bài viết blog, case study thông qua Contentful CMS\nTự động tạo các trang tài liệu cho plugin Backstage\nPhân phối các bản phát hành công cụ CLI và tài liệu hướng dẫn từ GitHub\nĐồng bộ hóa marketing site, tài liệu hướng dẫn và changelog trên mọi môi trường",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/RoadieHQ/marketing-site`",
+    "usage_vi": "```\nTạo một trang marketing mới cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Sử dụng [DATA] sau để xây dựng một trang thu hút với tiêu đề (headline), tiêu đề phụ (subheadline), các lợi ích chính và nút kêu gọi hành động (call-to-action). Hãy đảm bảo nội dung nhất quán với định hướng giọng điệu thương hiệu (brand voice) và tài liệu hướng dẫn phong cách (style guide) của [COMPANY]. Hãy chèn thêm một phần làm nổi bật tuyên bố giá trị độc đáo (unique value proposition) của [COMPANY] cùng một đánh giá ngắn từ khách hàng (customer testimonial).\n```\nSao chép\n\n```\n# Ra mắt sản phẩm mới: Giải pháp EcoClean\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:11:38.306215Z",
+    "http_status": 200,
+    "content_hash": "351c2ca1007d6fbd4ccf4c494812acd3ec29417d04eca2fcc0ca3c34db7b5cac",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\marketing-site.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\marketing-site.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Marketing Site - Tự động hóa quy trình tạo nội dung",
+  "short_description_vi": "Ứng dụng Gatsby giúp tạo nội dung cho marketing site của Roadie. Công cụ này hỗ trợ các đội ngũ marketing bằng cách tự động hóa việc cập nhật trang web và đảm bảo tính nhất quán của bộ nhận diện thương hiệu. Kết nối trực tiếp với hệ thống quản trị nội dung (CMS) và các công cụ thiết kế của Roadie."
+}

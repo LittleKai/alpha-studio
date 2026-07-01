@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/using-git-worktrees",
+  "slug": "using-git-worktrees",
+  "name": "react-native-best-practices",
+  "headline": "using-git-worktrees: Git Management",
+  "short_description": "The using-git-worktrees skill enables developers to manage multiple working directories for a single Git repository. This skill streamlines the development process, allowing for efficient parallel feature development and testing without the overhead of multiple clones.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "obra",
+  "install_command": "git clone https://github.com/obra/superpowers.git",
+  "source_repo_url": "https://github.com/obra/superpowers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The using-git-worktrees skill provides a powerful way for developers to utilize Git worktrees, allowing them to create multiple working directories linked to a single repository. This capability is particularly beneficial for managing different features or bug fixes simultaneously without the need for multiple repository clones. By leveraging this skill, developers can switch contexts swiftly, enhancing productivity and reducing setup time. One of the primary benefits of using this skill is the significant time savings it offers. Developers can work on multiple branches in isolation, ensuring that changes do not interfere with one another. This leads to a more organized workflow, where testing and development can occur in parallel, ultimately speeding up the release cycle. The skill is designed to integrate seamlessly into existing Git workflows, making it an essential tool for any developer looking to optimize their coding practices. This skill is ideal for developers, product managers, and AI practitioners who are involved in software development and need to manage complex workflows. It is particularly useful in environments where rapid iteration is necessary, such as agile development teams. For instance, a developer can work on a new feature while simultaneously fixing bugs in another branch, all within their main repository, thus avoiding the clutter of multiple clones. Implementation of the using-git-worktrees skill is straightforward, requiring a basic understanding of Git commands. As teams adopt more AI-first workflows, this skill becomes invaluable, allowing for efficient collaboration and version control in projects that may involve AI automation and AI agent skills. By integrating this skill into their toolset, teams can enhance their workflow automation and improve overall project efficiency.\nSimultaneously develop new features while fixing bugs in separate worktrees.\nTest experimental changes in a dedicated worktree without impacting the main branch.\nCollaborate on multiple features within a single repository by creating isolated worktrees.\nManage different versions of a project tailored for various clients using distinct worktrees.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage": "```\nI'm working on a project with [NUMBER] active branches. Set up [NUMBER] worktrees for me in my Git repository. The branches are named [BRANCH_NAMES]. I want to work on [PRIMARY_BRANCH] as my main worktree and the others as secondary worktrees. Provide the commands I need to run in my terminal.\n```\nCopy\n\n```\nTo set up your worktrees, follow these steps:\n\n1. First, navigate to your main repository directory in your terminal:\n```bash\ncd /path/to/your/repository\n```\n\n2. Run the following commands to create your worktrees:\n```bash\n# Create worktree for feature/login\ngit worktree add ../login-feature feature/login\n\n# Create worktree for feature/dashboard\ngit worktree add ../dashboard-feature feature/dashboard\n\n# Create worktree for bugfix/header\ngit worktree add ../header-bugfix bugfix/header\n```\n\n3. Now you can navigate to each worktree directory and start working on your respective branches:\n```bash\ncd ../login-feature\n# Make changes and commit\n\ncd ../dashboard-feature\n# Make changes and commit\n\ncd ../header-bugfix\n# Make changes and commit\n```\n\nRemember to use `git status` in each worktree to check the status of your changes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "using-git-worktrees#main-content",
+      "using-git-worktrees#overview",
+      "using-git-worktrees#setup",
+      "using-git-worktrees#examples",
+      "using-git-worktrees#tools",
+      "using-git-worktrees#mcp",
+      "using-git-worktrees#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The using-git-worktrees skill provides a powerful way for developers to utilize Git worktrees, allowing them to create multiple working directories linked to a single repository. This capability is particularly beneficial for managing different features or bug fixes simultaneously without the need for multiple repository clones. By leveraging this skill, developers can switch contexts swiftly, enhancing productivity and reducing setup time. One of the primary benefits of using this skill is the significant time savings it offers. Developers can work on multiple branches in isolation, ensuring that changes do not interfere with one another. This leads to a more organized workflow, where testing and development can occur in parallel, ultimately speeding up the release cycle. The skill is designed to integrate seamlessly into existing Git workflows, making it an essential tool for any developer looking to optimize their coding practices. This skill is ideal for developers, product managers, and AI practitioners who are involved in software development and need to manage complex workflows. It is particularly useful in environments where rapid iteration is necessary, such as agile development teams. For instance, a developer can work on a new feature while simultaneously fixing bugs in another branch, all within their main repository, thus avoiding the clutter of multiple clones. Implementation of the using-git-worktrees skill is straightforward, requiring a basic understanding of Git commands. As teams adopt more AI-first workflows, this skill becomes invaluable, allowing for efficient collaboration and version control in projects that may involve AI automation and AI agent skills. By integrating this skill into their toolset, teams can enhance their workflow automation and improve overall project efficiency.\nSimultaneously develop new features while fixing bugs in separate worktrees.\nTest experimental changes in a dedicated worktree without impacting the main branch.\nCollaborate on multiple features within a single repository by creating isolated worktrees.\nManage different versions of a project tailored for various clients using distinct worktrees.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage_vi": "```\nI'm working on a project with [NUMBER] active branches. Set up [NUMBER] worktrees for me in my Git repository. The branches are named [BRANCH_NAMES]. I want to work on [PRIMARY_BRANCH] as my main worktree and the others as secondary worktrees. Provide the commands I need to run in my terminal.\n```\nCopy\n\n```\nTo set up your worktrees, follow these steps:\n\n1. First, navigate to your main repository directory in your terminal:\n```bash\ncd /path/to/your/repository\n```\n\n2. Run the following commands to create your worktrees:\n```bash\n# Create worktree for feature/login\ngit worktree add ../login-feature feature/login\n\n# Create worktree for feature/dashboard\ngit worktree add ../dashboard-feature feature/dashboard\n\n# Create worktree for bugfix/header\ngit worktree add ../header-bugfix bugfix/header\n```\n\n3. Now you can navigate to each worktree directory and start working on your respective branches:\n```bash\ncd ../login-feature\n# Make changes and commit\n\ncd ../dashboard-feature\n# Make changes and commit\n\ncd ../header-bugfix\n# Make changes and commit\n```\n\nRemember to use `git status` in each worktree to check the status of your changes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:24:15.907565Z",
+    "http_status": 200,
+    "content_hash": "cc398a699286f11d2840bc6d8e8e05589f60404ffb99fe0f10d81106e35944db",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\using-git-worktrees.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\using-git-worktrees.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "using-git-worktrees: Git Management",
+  "short_description_vi": "The using-git-worktrees skill enables developers to manage multiple working directories for a single Git repository. This skill streamlines the development process, allowing for efficient parallel feature development and testing without the overhead of multiple clones."
+}

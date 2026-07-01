@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/oxylabs-ai-studio-py",
+  "slug": "oxylabs-ai-studio-py",
+  "name": "langchain-salesforce",
+  "headline": "AI-Powered Web Scraping with oxylabs-ai-studio-py",
+  "short_description": "Harness the power of AI for structured data gathering from any website with oxylabs-ai-studio-py. This Python SDK enables intelligent web scraping and crawling using natural language prompts, ensuring your LLM agents are equipped with the freshest data.",
+  "tier": "Gold",
+  "category": "MarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "oxylabs",
+  "install_command": "claude install oxylabs/oxylabs-ai-studio-py",
+  "source_repo_url": "https://github.com/oxylabs/oxylabs-ai-studio-py",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "ai-tools",
+    "python-ai",
+    "data-gathering",
+    "automation",
+    "web-scraping"
+  ],
+  "sections": {
+    "overview": "oxylabs-ai-studio-py is a Python SDK that integrates AI capabilities for intelligent web scraping and data extraction. It allows developers to use natural language prompts to define scraping tasks, making it easier to gather structured data from websites without writing complex parsing logic. The SDK is designed specifically for LLM agents and AI applications that need fresh, real-time data from web sources. By combining natural language processing with web crawling, it simplifies the process of building data pipelines for machine learning models and AI agents. This tool is particularly useful for developers building Claude Code, Cursor, and other AI agent applications that require reliable web data access.\nCollect market research data from various websites to analyze trends and consumer behavior.\nPerform competitor analysis by scraping product details and pricing from competitor sites.\nGenerate leads by extracting contact information from business directories and social media platforms.\nAggregate content from multiple sources for comprehensive insights and reporting.",
+    "setup": "Terminal\nCopy\n`claude install oxylabs/oxylabs-ai-studio-py`\n`git clone https://github.com/oxylabs/oxylabs-ai-studio-py`",
+    "usage": "```\nUsing oxylabs-ai-studio-py, scrape the latest product reviews from [WEBSITE] for [PRODUCT]. Extract key details like review dates, ratings, and customer comments. Return the data in a structured JSON format with fields for 'date', 'rating', and 'comment'. Limit the results to the most recent [NUMBER] reviews.\n```\nCopy\n\n```\nHere is the structured data extracted from the latest product reviews for the 'Wireless Charging Pad' on Amazon:\n\n```json\n{\n  \"reviews\": [\n    {\n      \"date\": \"2023-10-15\",\n      \"rating\": 5,\n      \"comment\": \"This wireless charging pad is amazing! It charges my phone super fast and the design is sleek.\"\n    },\n    {\n      \"date\": \"2023-10-14\",\n      \"rating\": 4,\n      \"comment\": \"Works well, but the charging speed could be better. Overall, a good purchase.\"\n    },\n    {\n      \"date\": \"2023-10-13\",\n      \"rating\": 3,\n      \"comment\": \"The pad is a bit slippery, but it does the job. Not the best, but not the worst either.\"\n    },\n    {\n      \"date\": \"2023-10-12\",\n      \"rating\": 5,\n      \"comment\": \"Perfect for my home office. Charges my phone overnight without any issues.\"\n    },\n    {\n      \"date\": \"2023-10-11\",\n      \"rating\": 4,\n      \"comment\": \"Great product, but the price is a bit high. Still worth it for the convenience.\"\n    }\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "oxylabs-ai-studio-py#main-content",
+      "oxylabs-ai-studio-py#overview",
+      "oxylabs-ai-studio-py#setup",
+      "oxylabs-ai-studio-py#examples",
+      "oxylabs-ai-studio-py#tools",
+      "oxylabs-ai-studio-py#mcp",
+      "oxylabs-ai-studio-py#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "oxylabs-ai-studio-py is a Python SDK that integrates AI capabilities for intelligent web scraping and data extraction. It allows developers to use natural language prompts to define scraping tasks, making it easier to gather structured data from websites without writing complex parsing logic. The SDK is designed specifically for LLM agents and AI applications that need fresh, real-time data from web sources. By combining natural language processing with web crawling, it simplifies the process of building data pipelines for machine learning models and AI agents. This tool is particularly useful for developers building Claude Code, Cursor, and other AI agent applications that require reliable web data access.\nCollect market research data from various websites to analyze trends and consumer behavior.\nPerform competitor analysis by scraping product details and pricing from competitor sites.\nGenerate leads by extracting contact information from business directories and social media platforms.\nAggregate content from multiple sources for comprehensive insights and reporting.",
+    "setup_vi": "Terminal\nCopy\n`claude install oxylabs/oxylabs-ai-studio-py`\n`git clone https://github.com/oxylabs/oxylabs-ai-studio-py`",
+    "usage_vi": "```\nUsing oxylabs-ai-studio-py, scrape the latest product reviews from [WEBSITE] for [PRODUCT]. Extract key details like review dates, ratings, and customer comments. Return the data in a structured JSON format with fields for 'date', 'rating', and 'comment'. Limit the results to the most recent [NUMBER] reviews.\n```\nCopy\n\n```\nHere is the structured data extracted from the latest product reviews for the 'Wireless Charging Pad' on Amazon:\n\n```json\n{\n  \"reviews\": [\n    {\n      \"date\": \"2023-10-15\",\n      \"rating\": 5,\n      \"comment\": \"This wireless charging pad is amazing! It charges my phone super fast and the design is sleek.\"\n    },\n    {\n      \"date\": \"2023-10-14\",\n      \"rating\": 4,\n      \"comment\": \"Works well, but the charging speed could be better. Overall, a good purchase.\"\n    },\n    {\n      \"date\": \"2023-10-13\",\n      \"rating\": 3,\n      \"comment\": \"The pad is a bit slippery, but it does the job. Not the best, but not the worst either.\"\n    },\n    {\n      \"date\": \"2023-10-12\",\n      \"rating\": 5,\n      \"comment\": \"Perfect for my home office. Charges my phone overnight without any issues.\"\n    },\n    {\n      \"date\": \"2023-10-11\",\n      \"rating\": 4,\n      \"comment\": \"Great product, but the price is a bit high. Still worth it for the convenience.\"\n    }\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:06:25.845647Z",
+    "http_status": 200,
+    "content_hash": "c119a96aaf0528e4a7e1944e575b504eff132b4cad6cd553e7e82b506453cfb4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oxylabs-ai-studio-py.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oxylabs-ai-studio-py.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI-Powered Web Scraping with oxylabs-ai-studio-py",
+  "short_description_vi": "Harness the power of AI for structured data gathering from any website with oxylabs-ai-studio-py. This Python SDK enables intelligent web scraping and crawling using natural language prompts, ensuring your LLM agents are equipped with the freshest data."
+}

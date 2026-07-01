@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spec-kitty",
+  "slug": "spec-kitty",
+  "name": "browser-use",
+  "headline": "Spec-Kitty - AI-Powered Software Development",
+  "short_description": "Spec-Kitty automates software development workflows using AI agents. It enables developers to manage coding tasks through spec-driven development, Kanban dashboards, and git worktrees. Integrates with Claude, Cursor, Gemini, and Codex for efficient feature shipping.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Priivacy-ai",
+  "install_command": "git clone https://github.com/Priivacy-ai/spec-kitty.git",
+  "source_repo_url": "https://github.com/Priivacy-ai/spec-kitty",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "cursor-agent",
+    "claude-code",
+    "coding-agent-orchestration",
+    "worktree-strategy",
+    "code-workflow",
+    "windsurf",
+    "gemini-cli",
+    "ai-development-dashboard",
+    "multi-agent-support",
+    "github-copilot",
+    "kanban-workflow",
+    "ai-coding-workflow",
+    "real-time-tracking",
+    "spec-workflow-automation",
+    "development-kanban",
+    "ai-progress-tracking",
+    "structured-development",
+    "agentic-coding",
+    "spec-driven-development"
+  ],
+  "sections": {
+    "overview": "Spec-Kitty is a development automation tool designed for teams using AI agents like Claude, Cursor, Gemini, and Codex. It enables developers to manage coding tasks through spec-driven development methodologies, combining structured specifications with AI-powered code generation. The tool provides Kanban dashboards for task visualization and git worktree management for organized branch handling. By automating software development workflows, Spec-Kitty helps teams ship features more efficiently while maintaining code organization and clarity around task requirements.\nAutomate the generation of executable specifications for new features.\nTrack project progress in real-time using a live Kanban dashboard.\nOrchestrate multiple AI agents to work on different parts of a project simultaneously.\nPrevent merge conflicts through automated validation and pre-flight checks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Priivacy-ai/spec-kitty`",
+    "usage": "```\nAct as Spec-Kitty to automate the development of [FEATURE_NAME] for [PROJECT_NAME]. Create a detailed technical specification document covering [TECH_STACK] requirements, API endpoints, and database schema. Generate a Kanban board with [NUMBER_OF_TASKS] tasks in GitHub/GitLab. Set up a git worktree for [BRANCH_NAME] and provide the first commit message with the specification. Include error handling and edge cases in the spec. Use [DEVELOPMENT_METHODOLOGY] for task prioritization.\n```\nCopy\n\n```\n### Technical Specification: Real-time Chat Notifications for Acme CRM\n\n**Overview:** Implement a WebSocket-based notification system for CRM users when new messages arrive in their inbox. The system will push real-time updates to the frontend without requiring page refreshes.\n\n**Tech Stack:** Node.js (v20), Express.js, Socket.IO, PostgreSQL (v15), Redis (for pub/sub), React (frontend)\n\n**API Endpoints:**\n1. `POST /api/notifications/subscribe` - Subscribes a user to their notification channel\n2. `GET /api/notifications` - Returns paginated list of unread notifications\n3. `PUT /api/notifications/read` - Marks notifications as read\n\n**Database Schema:**\n```sql\nCREATE TABLE notifications (\n  id SERIAL PRIMARY KEY,\n  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,\n  message TEXT NOT NULL,\n  is_read BOOLEAN DEFAULT FALSE,\n  created_at TIMESTAMP DEFAULT NOW(),\n  channel VARCHAR(50) NOT NULL\n);\n```\n\n**Kanban Board (GitHub Projects):**\n- Backend Setup (High Priority)\n- WebSocket Integration (High Priority)\n- Frontend Notification UI (Medium Priority)\n- Database Migration Scripts (Low Priority)\n- Error Handling & Retry Logic (Medium Priority)\n- Load Testing (Low Priority)\n\n**Git Worktree Setup:**\n```bash\ngit worktree add -b feature/chat-notifications feature/chat-notifications\ncd feature/chat-notifications\n```\n\n**First Commit Message:**\n\"feat: initial spec for real-time chat notifications\n\n- Defines WebSocket architecture\n- Specifies API contracts\n- Includes error handling scenarios\n- Links to Figma mockups for UI\"\n\n**Edge Cases to Handle:**\n1. User disconnects mid-conversation (auto-reconnect with exponential backoff)\n2. High volume of simultaneous notifications (rate limiting per user)\n3. Database connection failures (queue notifications in Redis for later delivery)\n4. Frontend offline scenarios (sync notifications when connection restored)\n\n**Development Methodology:** Scrum with 2-week sprints, daily standups at 10 AM EST.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "spec-kitty#main-content",
+      "spec-kitty#overview",
+      "spec-kitty#setup",
+      "spec-kitty#examples",
+      "spec-kitty#tools",
+      "spec-kitty#mcp",
+      "spec-kitty#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Spec-Kitty is a development automation tool designed for teams using AI agents like Claude, Cursor, Gemini, and Codex. It enables developers to manage coding tasks through spec-driven development methodologies, combining structured specifications with AI-powered code generation. The tool provides Kanban dashboards for task visualization and git worktree management for organized branch handling. By automating software development workflows, Spec-Kitty helps teams ship features more efficiently while maintaining code organization and clarity around task requirements.\nAutomate the generation of executable specifications for new features.\nTrack project progress in real-time using a live Kanban dashboard.\nOrchestrate multiple AI agents to work on different parts of a project simultaneously.\nPrevent merge conflicts through automated validation and pre-flight checks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Priivacy-ai/spec-kitty`",
+    "usage_vi": "```\nAct as Spec-Kitty to automate the development of [FEATURE_NAME] for [PROJECT_NAME]. Create a detailed technical specification document covering [TECH_STACK] requirements, API endpoints, and database schema. Generate a Kanban board with [NUMBER_OF_TASKS] tasks in GitHub/GitLab. Set up a git worktree for [BRANCH_NAME] and provide the first commit message with the specification. Include error handling and edge cases in the spec. Use [DEVELOPMENT_METHODOLOGY] for task prioritization.\n```\nCopy\n\n```\n### Technical Specification: Real-time Chat Notifications for Acme CRM\n\n**Overview:** Implement a WebSocket-based notification system for CRM users when new messages arrive in their inbox. The system will push real-time updates to the frontend without requiring page refreshes.\n\n**Tech Stack:** Node.js (v20), Express.js, Socket.IO, PostgreSQL (v15), Redis (for pub/sub), React (frontend)\n\n**API Endpoints:**\n1. `POST /api/notifications/subscribe` - Subscribes a user to their notification channel\n2. `GET /api/notifications` - Returns paginated list of unread notifications\n3. `PUT /api/notifications/read` - Marks notifications as read\n\n**Database Schema:**\n```sql\nCREATE TABLE notifications (\n  id SERIAL PRIMARY KEY,\n  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,\n  message TEXT NOT NULL,\n  is_read BOOLEAN DEFAULT FALSE,\n  created_at TIMESTAMP DEFAULT NOW(),\n  channel VARCHAR(50) NOT NULL\n);\n```\n\n**Kanban Board (GitHub Projects):**\n- Backend Setup (High Priority)\n- WebSocket Integration (High Priority)\n- Frontend Notification UI (Medium Priority)\n- Database Migration Scripts (Low Priority)\n- Error Handling & Retry Logic (Medium Priority)\n- Load Testing (Low Priority)\n\n**Git Worktree Setup:**\n```bash\ngit worktree add -b feature/chat-notifications feature/chat-notifications\ncd feature/chat-notifications\n```\n\n**First Commit Message:**\n\"feat: initial spec for real-time chat notifications\n\n- Defines WebSocket architecture\n- Specifies API contracts\n- Includes error handling scenarios\n- Links to Figma mockups for UI\"\n\n**Edge Cases to Handle:**\n1. User disconnects mid-conversation (auto-reconnect with exponential backoff)\n2. High volume of simultaneous notifications (rate limiting per user)\n3. Database connection failures (queue notifications in Redis for later delivery)\n4. Frontend offline scenarios (sync notifications when connection restored)\n\n**Development Methodology:** Scrum with 2-week sprints, daily standups at 10 AM EST.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:03:51.515701Z",
+    "http_status": 200,
+    "content_hash": "03ad1b11ac8d7be949df4b37aac947712a64f9477e48d3913d9a1d6291598fdb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\spec-kitty.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\spec-kitty.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Spec-Kitty - AI-Powered Software Development",
+  "short_description_vi": "Spec-Kitty automates software development workflows using AI agents. It enables developers to manage coding tasks through spec-driven development, Kanban dashboards, and git worktrees. Integrates with Claude, Cursor, Gemini, and Codex for efficient feature shipping."
+}

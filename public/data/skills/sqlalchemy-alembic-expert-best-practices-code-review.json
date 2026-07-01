@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sqlalchemy-alembic-expert-best-practices-code-review",
+  "slug": "sqlalchemy-alembic-expert-best-practices-code-review",
+  "name": "videodb",
+  "headline": "SQLAlchemy Alembic Code Review",
+  "short_description": "This skill provides guidance on reviewing SQLAlchemy Alembic migrations, aimed at developers working with database migrations. It focuses on best practices to ensure migrations are efficient and maintainable.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "wispbit-ai",
+  "install_command": "git clone https://github.com/wispbit-ai/skills",
+  "source_repo_url": "https://github.com/wispbit-ai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "sqlalchemy",
+    "best",
+    "expert",
+    "alembic",
+    "database-management"
+  ],
+  "sections": {
+    "overview": "This skill delivers production-grade guidance for reviewing SQLAlchemy ORM code and Alembic database migrations. It provides opinionated, specific rules organized by impact—not abstract best practices—so your code reviews focus on what matters most. Each rule includes clear constraints, actionable examples, and patterns showing correct versus incorrect implementations. The skill helps development teams catch migration inefficiencies, maintainability issues, and common pitfalls before they reach production. Developers working with SQLAlchemy and Alembic benefit from consistent, enforceable standards that improve code quality and long-term database maintainability.\nConduct thorough code reviews for Alembic migration scripts\nIdentify common pitfalls in database migrations\nEnsure adherence to best practices in migration development",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/wispbit-ai/skills --skill sqlalchemy-alembic-expert-best-practices-code-review`\n`git clone https://github.com/wispbit-ai/skills`",
+    "usage": "```\nReview this SQLAlchemy Alembic migration script for [COMPANY]'s [INDUSTRY] application. Focus on best practices for efficiency, maintainability, and potential issues. Here's the migration script:\n\n```python\n[MIGRATION_SCRIPT]\n```\n\nProvide a detailed analysis of any problems, optimizations, or improvements needed, including:\n- Schema design issues (e.g., missing indexes, inefficient data types)\n- Migration logic flaws (e.g., unsafe operations, lack of transactions)\n- Performance concerns (e.g., long-running operations, locking issues)\n- Alembic-specific recommendations (e.g., downgrade safety, batch size for large tables)\n- Best practice violations (e.g., hardcoded values, lack of idempotency)\n```\nCopy\n\n```\n# SQLAlchemy Alembic Migration Review: `2024_05_15_add_user_email_index.py`",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "sqlalchemy-alembic-expert-best-practices-code-review#main-content",
+      "sqlalchemy-alembic-expert-best-practices-code-review#overview",
+      "sqlalchemy-alembic-expert-best-practices-code-review#setup",
+      "sqlalchemy-alembic-expert-best-practices-code-review#examples",
+      "sqlalchemy-alembic-expert-best-practices-code-review#tools",
+      "sqlalchemy-alembic-expert-best-practices-code-review#mcp",
+      "sqlalchemy-alembic-expert-best-practices-code-review#related",
+      "oracle-database-skills",
+      "videodb"
+    ],
+    "overview_vi": "This skill delivers production-grade guidance for reviewing SQLAlchemy ORM code and Alembic database migrations. It provides opinionated, specific rules organized by impact—not abstract best practices—so your code reviews focus on what matters most. Each rule includes clear constraints, actionable examples, and patterns showing correct versus incorrect implementations. The skill helps development teams catch migration inefficiencies, maintainability issues, and common pitfalls before they reach production. Developers working with SQLAlchemy and Alembic benefit from consistent, enforceable standards that improve code quality and long-term database maintainability.\nConduct thorough code reviews for Alembic migration scripts\nIdentify common pitfalls in database migrations\nEnsure adherence to best practices in migration development",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/wispbit-ai/skills --skill sqlalchemy-alembic-expert-best-practices-code-review`\n`git clone https://github.com/wispbit-ai/skills`",
+    "usage_vi": "```\nReview this SQLAlchemy Alembic migration script for [COMPANY]'s [INDUSTRY] application. Focus on best practices for efficiency, maintainability, and potential issues. Here's the migration script:\n\n```python\n[MIGRATION_SCRIPT]\n```\n\nProvide a detailed analysis of any problems, optimizations, or improvements needed, including:\n- Schema design issues (e.g., missing indexes, inefficient data types)\n- Migration logic flaws (e.g., unsafe operations, lack of transactions)\n- Performance concerns (e.g., long-running operations, locking issues)\n- Alembic-specific recommendations (e.g., downgrade safety, batch size for large tables)\n- Best practice violations (e.g., hardcoded values, lack of idempotency)\n```\nCopy\n\n```\n# SQLAlchemy Alembic Migration Review: `2024_05_15_add_user_email_index.py`"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:16.215048Z",
+    "http_status": 200,
+    "content_hash": "f5ec8c370936a7d5763ecd5fa579ba1e50f91fe47996971da0a6419e2d95bf51",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sqlalchemy-alembic-expert-best-practices-code-review.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sqlalchemy-alembic-expert-best-practices-code-review.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SQLAlchemy Alembic Code Review",
+  "short_description_vi": "This skill provides guidance on reviewing SQLAlchemy Alembic migrations, aimed at developers working with database migrations. It focuses on best practices to ensure migrations are efficient and maintainable."
+}

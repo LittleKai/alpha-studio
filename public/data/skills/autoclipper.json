@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autoclipper",
+  "slug": "autoclipper",
+  "name": "autoclipper",
+  "headline": "Auto-Clipper: Video Highlights",
+  "short_description": "AI-powered Auto-Clipper: automatically detects highlight segments from YouTube channels, Twitch/Kick live streams (via audience-retention data, chat spikes and timestamped comments), clips them with FFmpeg, generates subtitles using Whisper, and uploads them to a target YouTube channel. Includes a FastAPI + Celery backend, React + Tailwind frontend",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "VadlapatiKarthik",
+  "install_command": "git clone https://github.com/VadlapatiKarthik/autoclipper.git",
+  "source_repo_url": "https://github.com/VadlapatiKarthik/autoclipper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "celery",
+    "ai-automation",
+    "subtitling",
+    "twitch",
+    "video-clipping",
+    "ffmpeg",
+    "youtube-automation",
+    "react",
+    "google-cloud-run",
+    "fastapi",
+    "kick",
+    "openai-whisper",
+    "tailwindcss",
+    "microservices",
+    "yt-dlp",
+    "highlight-detection",
+    "docker"
+  ],
+  "sections": {
+    "overview": "The Auto-Clipper skill is an advanced AI-powered tool designed to streamline the process of creating highlight segments from various video platforms, including YouTube channels and Twitch/Kick live streams. By leveraging audience-retention data, chat spikes, and timestamped comments, this skill automatically detects the most engaging moments and clips them using FFmpeg. Additionally, it generates subtitles with Whisper and uploads the final clips to a designated YouTube channel, making it an invaluable asset for content creators and marketers looking to enhance their video offerings. One of the key benefits of the Auto-Clipper skill is its ability to save significant time for users. Instead of manually sifting through hours of footage to find the best moments, users can rely on this automation to handle the heavy lifting in just around 30 minutes of implementation. This efficiency allows developers, product managers, and AI practitioners to focus on more strategic tasks, such as content strategy and audience engagement, rather than getting bogged down in the minutiae of video editing. This skill is particularly useful for content creators, social media managers, and marketing teams who regularly produce video content and need to optimize their workflow. By automating the clipping process, these professionals can quickly generate shareable highlights that resonate with their audience, driving engagement and increasing viewership. For instance, a Twitch streamer can use Auto-Clipper to create highlight reels from their live sessions, which can then be shared across social media platforms to attract new followers. The implementation of the Auto-Clipper skill is rated as intermediate, requiring a basic understanding of FastAPI, Celery, and React with Tailwind for the frontend. This skill fits seamlessly into AI-first workflows by automating repetitive tasks, allowing teams to leverage AI automation for enhanced productivity. As organizations continue to embrace AI technologies, the Auto-Clipper skill stands out as a practical solution for anyone looking to optimize their video content creation process.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VadlapatiKarthik/autoclipper`\n- **FastAPI + Celery Backend**: Clone the Auto-Clipper repository from GitHub.\n- **Dependencies**: Install FFmpeg, Whisper, and other dependencies using the provided requirements.txt file.\n- **Configuration**: Set up environment variables for YouTube API credentials, Twitch API credentials, and other necessary configurations.\n\n- **React + Tailwind Frontend**: Navigate to the frontend directory and install dependencies using npm install.\n- **Configuration**: Update the frontend configuration to point to your backend API endpoints.\n- **Run the Frontend**: Start the development server using npm start.",
+    "usage": "```\nI need to set up an Auto-Clipper for my [COMPANY] to automatically clip highlights from our [INDUSTRY] content on YouTube and Twitch. The system should detect segments based on audience retention data, chat spikes, and timestamped comments. It should then generate subtitles using Whisper and upload the clips to our target YouTube channel. Can you guide me through the setup process?\n```\nCopy\n\n```\n# Auto-Clipper Setup Guide for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "autoclipper#main-content",
+      "autoclipper#overview",
+      "autoclipper#setup",
+      "autoclipper#examples",
+      "autoclipper#tools",
+      "autoclipper#mcp",
+      "autoclipper#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Auto-Clipper là một công cụ AI tiên tiến được thiết kế để tối ưu hóa quy trình tạo các phân đoạn highlight từ nhiều nền tảng video khác nhau, bao gồm các kênh YouTube và luồng livestream trên Twitch/Kick. Bằng cách tận dụng dữ liệu giữ chân người xem (audience-retention), lượng chat tăng đột biến và bình luận có gắn mốc thời gian, skill này sẽ tự động phát hiện những khoảnh khắc hấp dẫn nhất và tiến hành cắt clip bằng FFmpeg. Ngoài ra, công cụ còn tự động tạo phụ đề bằng Whisper và tải các clip thành phẩm lên kênh YouTube được chỉ định, trở thành một giải pháp đắc lực cho các nhà sáng tạo nội dung và nhà tiếp thị muốn nâng cao chất lượng video của mình.\n\nMột trong những lợi ích cốt lõi của skill Auto-Clipper là khả năng tiết kiệm đáng kể thời gian cho người dùng. Thay vì phải lọc thủ công hàng giờ đồng hồ video để tìm ra những khoảnh khắc đẹp nhất, người dùng có thể tin tưởng vào hệ thống tự động hóa này để xử lý phần việc nặng nhọc chỉ với khoảng 30 phút thiết lập. Sự hiệu quả này cho phép các developer, product manager và kỹ sư AI tập trung vào các tác vụ mang tính chiến lược hơn, chẳng hạn như định hướng nội dung và tương tác với khán giả, thay vì bị sa lầy vào những chi tiết vụn vặt của việc dựng video.\n\nSkill này đặc biệt hữu ích cho các nhà sáng tạo nội dung, nhà quản lý mạng xã hội và đội ngũ marketing – những người thường xuyên sản xuất video và cần tối ưu hóa quy trình làm việc của mình. Bằng cách tự động hóa quy trình cắt clip, các chuyên gia này có thể nhanh chóng tạo ra các đoạn highlight dễ chia sẻ, dễ tiếp cận với người xem, từ đó thúc đẩy tương tác và tăng lượt xem. Ví dụ, một streamer trên Twitch có thể sử dụng Auto-Clipper để tạo các video highlight từ các buổi livestream của họ, sau đó chia sẻ trên các nền tảng mạng xã hội để thu hút người theo dõi mới.\n\nMức độ triển khai của skill Auto-Clipper được đánh giá ở mức trung cấp (intermediate), yêu cầu kiến thức cơ bản về FastAPI, Celery, và React kết hợp Tailwind cho frontend. Skill này tích hợp mượt mà vào các quy trình làm việc ưu tiên AI (AI-first workflow) bằng cách tự động hóa các tác vụ lặp đi lặp lại, cho phép các đội ngũ tận dụng tự động hóa bằng AI để nâng cao năng suất. Khi các tổ chức ngày càng ứng dụng nhiều công nghệ AI, skill Auto-Clipper nổi lên như một giải pháp thực tiễn cho bất kỳ ai muốn tối ưu hóa quy trình sản xuất nội dung video của mình.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ (repository) GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/VadlapatiKarthik/autoclipper`\n- **FastAPI + Celery Backend**: Clone repository Auto-Clipper từ GitHub.\n- **Dependencies**: Cài đặt FFmpeg, Whisper và các thư viện phụ thuộc khác bằng file requirements.txt được cung cấp.\n- **Configuration**: Thiết lập các biến môi trường (environment variables) cho thông tin xác thực YouTube API, Twitch API và các cấu hình cần thiết khác.\n\n- **React + Tailwind Frontend**: Di chuyển vào thư mục frontend và cài đặt các package phụ thuộc bằng lệnh npm install.\n- **Configuration**: Cập nhật cấu hình frontend để trỏ đến các endpoint API của backend.\n- **Run the Frontend**: Khởi động development server bằng lệnh npm start.",
+    "usage_vi": "```\nTôi cần thiết lập hệ thống Auto-Clipper cho [COMPANY] để tự động cắt các đoạn highlight từ nội dung thuộc lĩnh vực [INDUSTRY] của chúng tôi trên YouTube và Twitch. Hệ thống sẽ phát hiện các phân đoạn dựa trên dữ liệu giữ chân người xem, lượng chat tăng đột biến và các bình luận có gắn mốc thời gian. Sau đó, hệ thống sẽ tạo phụ đề bằng Whisper và tải các clip này lên kênh YouTube mục tiêu của chúng tôi. Bạn có thể hướng dẫn tôi quy trình thiết lập được không?\n```\nCopy\n\n```\n# Hướng dẫn thiết lập Auto-Clipper cho [COMPANY]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:47:22.951799Z",
+    "http_status": 200,
+    "content_hash": "57487021d9a40ba8e102203c89f49926a3815236b8b445e30113f18a3b8bd83a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\autoclipper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\autoclipper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Auto-Clipper: Tạo highlight video tự động",
+  "short_description_vi": "Auto-Clipper tích hợp AI: tự động phát hiện các phân đoạn highlight từ các kênh YouTube, luồng livestream trên Twitch/Kick (dựa trên dữ liệu giữ chân người xem, lượng chat tăng đột biến và bình luận kèm mốc thời gian), cắt clip bằng FFmpeg, tạo phụ đề bằng Whisper và tải chúng lên kênh YouTube mục tiêu. Bao gồm backend FastAPI + Celery và frontend React + Tailwind."
+}

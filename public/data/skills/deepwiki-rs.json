@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deepwiki-rs",
+  "slug": "deepwiki-rs",
+  "name": "Deepwiki-rs",
+  "headline": "Deepwiki-rs - Automated Technical Documentation",
+  "short_description": "Deepwiki-rs automates technical documentation generation from code. It creates accurate, structured docs for human teams and AI agents. Integrates with Claude and other LLMs to streamline knowledge sharing in operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "sopaco",
+  "install_command": "git clone https://github.com/sopaco/deepwiki-rs.git",
+  "source_repo_url": "https://github.com/sopaco/deepwiki-rs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "openrouter",
+    "openai",
+    "wiki",
+    "deepseek",
+    "llm",
+    "deepwiki",
+    "rust",
+    "claude",
+    "mistral"
+  ],
+  "sections": {
+    "overview": "Deepwiki-rs is a Rust-based tool that automates the creation of technical documentation from your codebase. It analyzes source code and generates structured, accurate documentation suitable for both human teams and AI agents. The tool integrates with Claude and other LLMs to extract and organize knowledge from code, reducing manual documentation effort. It's designed to streamline knowledge sharing in development operations by automatically capturing technical details that would otherwise require manual writing. The generated documentation helps teams onboard faster and enables AI agents to better understand codebases.\nAutomatically generate architecture documentation from your existing codebase.\nCreate professional C4 model diagrams that illustrate the structure of your application.\nIntegrate with CI/CD pipelines to ensure documentation is updated with every code commit.\nEnhance code reviews by providing clear and concise architectural context.\nThe [SPECIFIC_MODULE] module is responsible for handling data processing and transformation within the [CODEBASE] repository. It integrates with various data sources and provides a unified interface for data manipulation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sopaco/deepwiki-rs`",
+    "usage": "```\nGenerate technical documentation for the [CODEBASE] repository. Focus on the [SPECIFIC_MODULE] module. Include architecture diagrams, API specifications, and usage examples. Ensure the documentation is structured for both human engineers and AI agents to understand. Output the documentation in Markdown format.\n```\nCopy\n\n```\n```markdown\n# [CODEBASE] - [SPECIFIC_MODULE] Documentation\n\n### Ingesting Data\n```bash\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"source\": \"database\", \"query\": \"SELECT * FROM users\"}' http://localhost:8080/api/ingest\n```\n\n### Transforming Data\n```bash\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"data\": \"raw_data\"}' http://localhost:8080/api/transform\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "deepwiki-rs#main-content",
+      "deepwiki-rs#overview",
+      "deepwiki-rs#setup",
+      "deepwiki-rs#examples",
+      "deepwiki-rs#tools",
+      "deepwiki-rs#mcp",
+      "deepwiki-rs#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Deepwiki-rs is a Rust-based tool that automates the creation of technical documentation from your codebase. It analyzes source code and generates structured, accurate documentation suitable for both human teams and AI agents. The tool integrates with Claude and other LLMs to extract and organize knowledge from code, reducing manual documentation effort. It's designed to streamline knowledge sharing in development operations by automatically capturing technical details that would otherwise require manual writing. The generated documentation helps teams onboard faster and enables AI agents to better understand codebases.\nAutomatically generate architecture documentation from your existing codebase.\nCreate professional C4 model diagrams that illustrate the structure of your application.\nIntegrate with CI/CD pipelines to ensure documentation is updated with every code commit.\nEnhance code reviews by providing clear and concise architectural context.\nThe [SPECIFIC_MODULE] module is responsible for handling data processing and transformation within the [CODEBASE] repository. It integrates with various data sources and provides a unified interface for data manipulation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sopaco/deepwiki-rs`",
+    "usage_vi": "```\nGenerate technical documentation for the [CODEBASE] repository. Focus on the [SPECIFIC_MODULE] module. Include architecture diagrams, API specifications, and usage examples. Ensure the documentation is structured for both human engineers and AI agents to understand. Output the documentation in Markdown format.\n```\nCopy\n\n```\n```markdown\n# [CODEBASE] - [SPECIFIC_MODULE] Documentation\n\n### Ingesting Data\n```bash\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"source\": \"database\", \"query\": \"SELECT * FROM users\"}' http://localhost:8080/api/ingest\n```\n\n### Transforming Data\n```bash\ncurl -X POST -H \"Content-Type: application/json\" -d '{\"data\": \"raw_data\"}' http://localhost:8080/api/transform\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:04.602395Z",
+    "http_status": 200,
+    "content_hash": "ae968a369342b820b239b630c760ebfd702b5fdf5e321bb2c519b187fb93b0cf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deepwiki-rs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deepwiki-rs.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Deepwiki-rs - Automated Technical Documentation",
+  "short_description_vi": "Deepwiki-rs automates technical documentation generation from code. It creates accurate, structured docs for human teams and AI agents. Integrates with Claude and other LLMs to streamline knowledge sharing in operations."
+}

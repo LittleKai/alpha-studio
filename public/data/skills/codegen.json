@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codegen",
+  "slug": "codegen",
+  "name": "react-native-best-practices",
+  "headline": "CodeGen: AI-Powered Code Generation Toolkit",
+  "short_description": "CodeGen is a comprehensive toolkit from Facebook AI Research for leveraging machine learning in code generation projects. It includes everything from dataset creation to model training and evaluation, along with pretrained models to accelerate development.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "facebookresearch",
+  "install_command": "claude install facebookresearch/CodeGen",
+  "source_repo_url": "https://github.com/facebookresearch/CodeGen",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "machine learning",
+    "software development",
+    "model training",
+    "AI tools",
+    "code generation"
+  ],
+  "sections": {
+    "overview": "CodeGen is an open-source toolkit from Facebook AI Research designed for machine learning-based code generation projects. It provides comprehensive infrastructure including dataset creation utilities, model training pipelines, and evaluation frameworks to streamline development workflows. The toolkit includes pretrained models that developers can leverage to accelerate their code generation implementations. CodeGen supports multiple programming languages and code representation formats, including intermediate representation (IR) for compiler-based code analysis. Researchers and engineers building code synthesis, transpilation, or code understanding systems can use CodeGen's modular components to reduce setup time and focus on model development.\nAutomate the generation of boilerplate code for new software projects to save time.\nCreate and preprocess datasets for training custom machine learning models on code.\nEvaluate the performance of machine learning models in various coding tasks, such as translation and deobfuscation.\nIntegrate AI-generated code snippets into existing applications to enhance functionality.",
+    "setup": "Terminal\nCopy\n`claude install facebookresearch/CodeGen`\n`git clone https://github.com/facebookresearch/CodeGen`",
+    "usage": "```\nGenerate a Python function that uses [MODEL_NAME] from CodeGen to implement [TASK_DESCRIPTION]. The function should handle [INPUT_TYPE] inputs and return [OUTPUT_TYPE]. Include error handling for [EDGE_CASES] and optimize for [PERFORMANCE_METRIC]. Use the following signature: ```python\ndef [FUNCTION_NAME]([PARAMETERS]) -> [RETURN_TYPE]:\n    \"\"\"\n    [BRIEF_DESCRIPTION]\n    \"\"\"\n    [IMPLEMENTATION]```\n```\nCopy\n\n```\n```python\ndef generate_sql_query_from_nl(natural_language_query: str, database_schema: dict) -> str:\n    \"\"\"\n    Converts a natural language query into a syntactically correct SQL query using CodeGen's pretrained model.\n    Handles JOINs, WHERE clauses, and basic aggregations. Optimized for execution time (<500ms).\n    \n    Args:\n        natural_language_query: User's query in English (e.g., \"Show me all customers from New York who made purchases over $100\")\n        database_schema: Dictionary containing table names and column definitions (e.g., {\"customers\": [\"id\", \"name\", \"city\"], \"orders\": [\"id\", \"customer_id\", \"amount\"]})\n    \n    Returns:\n        A valid SQL query string or raises ValueError if the query cannot be generated.\n    \n    Raises:\n        ValueError: If the natural language query is ambiguous or contains unsupported operations.\n    \"\"\"\n    import torch\n    from transformers import AutoModelForSeq2SeqLM, AutoTokenizer\n    \n    # Load pretrained CodeGen model and tokenizer\n    model_name = \"Salesforce/codegen-350M-mono\"\n    tokenizer = AutoTokenizer.from_pretrained(model_name)\n    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model.to(device)\n    \n    # Prepare input prompt with schema context\n    schema_context = \"\\n\".join([\n        f\"Table {table}: columns {', '.join(columns)}\"\n        for table, columns in database_schema.items()\n    ])\n    prompt = f\"### Database Schema:\\n{schema_context}\\n### Natural Language Query: {natural_language_query}\\n### SQL Query:\"\n    \n    # Generate SQL query\n    inputs = tokenizer(prompt, return_tensors=\"pt\").to(device)\n    outputs = model.generate(**inputs, max_length=256, num_beams=5)\n    sql_query = tokenizer.decode(outputs[0], skip_special_tokens=True).strip()\n    \n    # Validate SQL syntax (basic check)\n    if not sql_query.upper().startswith(\"SELECT\"):\n        raise ValueError(f\"Generated invalid SQL: {sql_query}\")\n    \n    return sql_query\n\n# Example usage\nschema = {\n    \"customers\": [\"id\", \"name\", \"city\", \"state\"],\n    \"orders\": [\"id\", \"customer_id\", \"amount\", \"order_date\"]\n}\nquery = generate_sql_query_from_nl(\n    \"List all customers from California who spent more than $500 in 2023\",\n    schema\n)\nprint(query)\n# Output: SELECT customers.name, customers.city FROM customers JOIN orders ON customers.id = orders.customer_id \n#         WHERE customers.state = 'CA' AND orders.amount > 500 AND YEAR(orders.order_date) = 2023\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "codegen#main-content",
+      "codegen#overview",
+      "codegen#setup",
+      "codegen#examples",
+      "codegen#tools",
+      "codegen#mcp",
+      "codegen#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "CodeGen is an open-source toolkit from Facebook AI Research designed for machine learning-based code generation projects. It provides comprehensive infrastructure including dataset creation utilities, model training pipelines, and evaluation frameworks to streamline development workflows. The toolkit includes pretrained models that developers can leverage to accelerate their code generation implementations. CodeGen supports multiple programming languages and code representation formats, including intermediate representation (IR) for compiler-based code analysis. Researchers and engineers building code synthesis, transpilation, or code understanding systems can use CodeGen's modular components to reduce setup time and focus on model development.\nAutomate the generation of boilerplate code for new software projects to save time.\nCreate and preprocess datasets for training custom machine learning models on code.\nEvaluate the performance of machine learning models in various coding tasks, such as translation and deobfuscation.\nIntegrate AI-generated code snippets into existing applications to enhance functionality.",
+    "setup_vi": "Terminal\nCopy\n`claude install facebookresearch/CodeGen`\n`git clone https://github.com/facebookresearch/CodeGen`",
+    "usage_vi": "```\nGenerate a Python function that uses [MODEL_NAME] from CodeGen to implement [TASK_DESCRIPTION]. The function should handle [INPUT_TYPE] inputs and return [OUTPUT_TYPE]. Include error handling for [EDGE_CASES] and optimize for [PERFORMANCE_METRIC]. Use the following signature: ```python\ndef [FUNCTION_NAME]([PARAMETERS]) -> [RETURN_TYPE]:\n    \"\"\"\n    [BRIEF_DESCRIPTION]\n    \"\"\"\n    [IMPLEMENTATION]```\n```\nCopy\n\n```\n```python\ndef generate_sql_query_from_nl(natural_language_query: str, database_schema: dict) -> str:\n    \"\"\"\n    Converts a natural language query into a syntactically correct SQL query using CodeGen's pretrained model.\n    Handles JOINs, WHERE clauses, and basic aggregations. Optimized for execution time (<500ms).\n    \n    Args:\n        natural_language_query: User's query in English (e.g., \"Show me all customers from New York who made purchases over $100\")\n        database_schema: Dictionary containing table names and column definitions (e.g., {\"customers\": [\"id\", \"name\", \"city\"], \"orders\": [\"id\", \"customer_id\", \"amount\"]})\n    \n    Returns:\n        A valid SQL query string or raises ValueError if the query cannot be generated.\n    \n    Raises:\n        ValueError: If the natural language query is ambiguous or contains unsupported operations.\n    \"\"\"\n    import torch\n    from transformers import AutoModelForSeq2SeqLM, AutoTokenizer\n    \n    # Load pretrained CodeGen model and tokenizer\n    model_name = \"Salesforce/codegen-350M-mono\"\n    tokenizer = AutoTokenizer.from_pretrained(model_name)\n    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model.to(device)\n    \n    # Prepare input prompt with schema context\n    schema_context = \"\\n\".join([\n        f\"Table {table}: columns {', '.join(columns)}\"\n        for table, columns in database_schema.items()\n    ])\n    prompt = f\"### Database Schema:\\n{schema_context}\\n### Natural Language Query: {natural_language_query}\\n### SQL Query:\"\n    \n    # Generate SQL query\n    inputs = tokenizer(prompt, return_tensors=\"pt\").to(device)\n    outputs = model.generate(**inputs, max_length=256, num_beams=5)\n    sql_query = tokenizer.decode(outputs[0], skip_special_tokens=True).strip()\n    \n    # Validate SQL syntax (basic check)\n    if not sql_query.upper().startswith(\"SELECT\"):\n        raise ValueError(f\"Generated invalid SQL: {sql_query}\")\n    \n    return sql_query\n\n# Example usage\nschema = {\n    \"customers\": [\"id\", \"name\", \"city\", \"state\"],\n    \"orders\": [\"id\", \"customer_id\", \"amount\", \"order_date\"]\n}\nquery = generate_sql_query_from_nl(\n    \"List all customers from California who spent more than $500 in 2023\",\n    schema\n)\nprint(query)\n# Output: SELECT customers.name, customers.city FROM customers JOIN orders ON customers.id = orders.customer_id \n#         WHERE customers.state = 'CA' AND orders.amount > 500 AND YEAR(orders.order_date) = 2023\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:35:29.094777Z",
+    "http_status": 200,
+    "content_hash": "d5f9f43a38d590ba09ea7c666bb3a15eebf8ce6f078b0bef4e604a7041badbca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codegen.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codegen.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CodeGen: AI-Powered Code Generation Toolkit",
+  "short_description_vi": "CodeGen is a comprehensive toolkit from Facebook AI Research for leveraging machine learning in code generation projects. It includes everything from dataset creation to model training and evaluation, along with pretrained models to accelerate development."
+}

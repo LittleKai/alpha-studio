@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/linkedin-ai-job-applier-ultimate",
+  "slug": "linkedin-ai-job-applier-ultimate",
+  "name": "langchain-salesforce",
+  "headline": "AI Job Application Bot for LinkedIn",
+  "short_description": "The LinkedIn-AI-Job-Applier-Ultimate is an advanced AI bot that automates job applications on LinkedIn using Playwright and LLM integration. It generates tailored resumes, anonymizes data, and provides skill statistics, making it a comprehensive tool for job seekers.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "beatwad",
+  "install_command": "claude install beatwad/LinkedIn-AI-Job-Applier-Ultimate",
+  "source_repo_url": "https://github.com/beatwad/LinkedIn-AI-Job-Applier-Ultimate",
+  "works_with": [
+    "ChatGPTClaude"
+  ],
+  "tags": [
+    "scraper",
+    "linkedin",
+    "automation",
+    "job-search",
+    "resume"
+  ],
+  "sections": {
+    "overview": "LinkedIn-AI-Job-Applier-Ultimate is an automation tool that applies to job vacancies on LinkedIn and Indeed using browser automation and LLM integration. The bot parses your resume, generates tailored resumes for each position, and intelligently answers application questions using AI models including Claude, Gemini, OpenAI, and Ollama. It includes data anonymization to protect privacy, skill statistics analysis to identify in-demand capabilities, and a local monitoring dashboard for tracking applications. The tool supports both Easy Apply and non-Easy Apply positions on LinkedIn, though Indeed support has limitations due to frequent CAPTCHAs and external redirects. Job seekers and career-focused professionals use this to scale their job search and increase application volume without manual effort.\nAutomate job applications across various roles\nGenerate customized resumes for specific job postings\nAnonymize personal data during job applications\nProvide skill statistics to enhance job search strategy",
+    "setup": "Terminal\nCopy\n`claude install beatwad/LinkedIn-AI-Job-Applier-Ultimate`\n`git clone https://github.com/beatwad/LinkedIn-AI-Job-Applier-Ultimate`",
+    "usage": "```\nAct as a LinkedIn job application automation assistant. Use the LinkedIn-AI-Job-Applier-Ultimate skill to: 1) Scan LinkedIn for [JOB_TITLE] roles in [INDUSTRY] within [LOCATION], 2) Generate a tailored resume in markdown format using [SKILLS] and [EXPERIENCE], 3) Anonymize personal data (name, email, phone), 4) Apply to [NUMBER] jobs with optimized cover letters, 5) Provide a skill match report with percentages for each application. Start by analyzing my [RESUME] and [LINKEDIN_PROFILE_URL].\n```\nCopy\n\n```\n### LinkedIn Job Application Automation Report\n\n**Job Targets Identified:** 15 roles for 'Senior Data Scientist' in 'AI/ML' within 'San Francisco Bay Area'.\n\n**Applications Submitted:** 8/15 (53% success rate).\n\n**Top 3 Applications:**\n1. **Company:** NeuroAI Labs | **Role:** Senior ML Engineer | **Match:** 92%\n   - **Tailored Resume:** Highlighted 'LLM fine-tuning' and 'PyTorch optimization' from your experience.\n   - **Cover Letter:** Customized to emphasize NeuroAI's focus on 'real-time inference systems'.\n   - **Anonymized Data:** Submitted as 'Alex R.' with a masked email (a**@proton.me).\n   - **Result:** Application in 'Under Review' stage (1 day post-submission).\n\n2. **Company:** DeepMind Health | **Role:** AI Research Scientist | **Match:** 88%\n   - **Tailored Resume:** Adjusted for 'healthcare NLP' and 'clinical data pipelines'.\n   - **Cover Letter:** Aligned with DeepMind's mission: 'AI for global health'.\n   - **Anonymized Data:** Submitted as 'Jordan K.' with a masked phone (+1-***-***-****).\n   - **Result:** Application in 'Recruiter Review' stage (3 days post-submission).\n\n3. **Company:** Scale AI | **Role:** AI Product Manager | **Match:** 85%\n   - **Tailored Resume:** Reorganized to showcase 'cross-functional leadership' and 'stakeholder management'.\n   - **Cover Letter:** Focused on Scale AI's 'data annotation platform' and your experience in 'AI product lifecycle'.\n   - **Anonymized Data:** Submitted as 'Taylor M.' with a masked LinkedIn URL.\n   - **Result:** Application in 'Initial Screening' stage (2 days post-submission).\n\n**Skill Match Statistics:**\n- **Python:** 95% match (used in 12/15 applications)\n- **TensorFlow:** 88% match (used in 10/15 applications)\n- **Natural Language Processing:** 90% match (used in 11/15 applications)\n- **Agile Methodologies:** 75% match (used in 8/15 applications)\n\n**Recommendations:**\n1. **Follow-Up:** Send LinkedIn connection requests to hiring managers at NeuroAI Labs and DeepMind Health within 48 hours.\n2. **Optimize:** Adjust your resume to include 'LLM deployment' keywords for roles at Scale AI.\n3. **Track:** Monitor applications daily for 'Under Review' status updates and adjust follow-up cadence accordingly.\n\n**Next Steps:**\n- Run a second batch of applications targeting 'AI Research Scientist' roles in 'New York City' (10 targets identified).\n- Generate a 'salary negotiation script' for interviews at companies with >85% match scores.\n\n**Anonymization Summary:**\n- All personal data (name, email, phone, LinkedIn URL) anonymized using SHA-256 hashing + random string generation.\n- LinkedIn profile visibility set to 'Open to Work' with location masked as 'Remote'.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, Claude"
+    ],
+    "related_skills": [
+      "linkedin-ai-job-applier-ultimate#main-content",
+      "linkedin-ai-job-applier-ultimate#overview",
+      "linkedin-ai-job-applier-ultimate#setup",
+      "linkedin-ai-job-applier-ultimate#examples",
+      "linkedin-ai-job-applier-ultimate#tools",
+      "linkedin-ai-job-applier-ultimate#mcp",
+      "linkedin-ai-job-applier-ultimate#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "LinkedIn-AI-Job-Applier-Ultimate is an automation tool that applies to job vacancies on LinkedIn and Indeed using browser automation and LLM integration. The bot parses your resume, generates tailored resumes for each position, and intelligently answers application questions using AI models including Claude, Gemini, OpenAI, and Ollama. It includes data anonymization to protect privacy, skill statistics analysis to identify in-demand capabilities, and a local monitoring dashboard for tracking applications. The tool supports both Easy Apply and non-Easy Apply positions on LinkedIn, though Indeed support has limitations due to frequent CAPTCHAs and external redirects. Job seekers and career-focused professionals use this to scale their job search and increase application volume without manual effort.\nAutomate job applications across various roles\nGenerate customized resumes for specific job postings\nAnonymize personal data during job applications\nProvide skill statistics to enhance job search strategy",
+    "setup_vi": "Terminal\nCopy\n`claude install beatwad/LinkedIn-AI-Job-Applier-Ultimate`\n`git clone https://github.com/beatwad/LinkedIn-AI-Job-Applier-Ultimate`",
+    "usage_vi": "```\nAct as a LinkedIn job application automation assistant. Use the LinkedIn-AI-Job-Applier-Ultimate skill to: 1) Scan LinkedIn for [JOB_TITLE] roles in [INDUSTRY] within [LOCATION], 2) Generate a tailored resume in markdown format using [SKILLS] and [EXPERIENCE], 3) Anonymize personal data (name, email, phone), 4) Apply to [NUMBER] jobs with optimized cover letters, 5) Provide a skill match report with percentages for each application. Start by analyzing my [RESUME] and [LINKEDIN_PROFILE_URL].\n```\nCopy\n\n```\n### LinkedIn Job Application Automation Report\n\n**Job Targets Identified:** 15 roles for 'Senior Data Scientist' in 'AI/ML' within 'San Francisco Bay Area'.\n\n**Applications Submitted:** 8/15 (53% success rate).\n\n**Top 3 Applications:**\n1. **Company:** NeuroAI Labs | **Role:** Senior ML Engineer | **Match:** 92%\n   - **Tailored Resume:** Highlighted 'LLM fine-tuning' and 'PyTorch optimization' from your experience.\n   - **Cover Letter:** Customized to emphasize NeuroAI's focus on 'real-time inference systems'.\n   - **Anonymized Data:** Submitted as 'Alex R.' with a masked email (a**@proton.me).\n   - **Result:** Application in 'Under Review' stage (1 day post-submission).\n\n2. **Company:** DeepMind Health | **Role:** AI Research Scientist | **Match:** 88%\n   - **Tailored Resume:** Adjusted for 'healthcare NLP' and 'clinical data pipelines'.\n   - **Cover Letter:** Aligned with DeepMind's mission: 'AI for global health'.\n   - **Anonymized Data:** Submitted as 'Jordan K.' with a masked phone (+1-***-***-****).\n   - **Result:** Application in 'Recruiter Review' stage (3 days post-submission).\n\n3. **Company:** Scale AI | **Role:** AI Product Manager | **Match:** 85%\n   - **Tailored Resume:** Reorganized to showcase 'cross-functional leadership' and 'stakeholder management'.\n   - **Cover Letter:** Focused on Scale AI's 'data annotation platform' and your experience in 'AI product lifecycle'.\n   - **Anonymized Data:** Submitted as 'Taylor M.' with a masked LinkedIn URL.\n   - **Result:** Application in 'Initial Screening' stage (2 days post-submission).\n\n**Skill Match Statistics:**\n- **Python:** 95% match (used in 12/15 applications)\n- **TensorFlow:** 88% match (used in 10/15 applications)\n- **Natural Language Processing:** 90% match (used in 11/15 applications)\n- **Agile Methodologies:** 75% match (used in 8/15 applications)\n\n**Recommendations:**\n1. **Follow-Up:** Send LinkedIn connection requests to hiring managers at NeuroAI Labs and DeepMind Health within 48 hours.\n2. **Optimize:** Adjust your resume to include 'LLM deployment' keywords for roles at Scale AI.\n3. **Track:** Monitor applications daily for 'Under Review' status updates and adjust follow-up cadence accordingly.\n\n**Next Steps:**\n- Run a second batch of applications targeting 'AI Research Scientist' roles in 'New York City' (10 targets identified).\n- Generate a 'salary negotiation script' for interviews at companies with >85% match scores.\n\n**Anonymization Summary:**\n- All personal data (name, email, phone, LinkedIn URL) anonymized using SHA-256 hashing + random string generation.\n- LinkedIn profile visibility set to 'Open to Work' with location masked as 'Remote'.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:38:28.192568Z",
+    "http_status": 200,
+    "content_hash": "e81efe3e48869e57fcd7baa9b605626a18a23f9cbdec0557f6c82bbcb41379fa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\linkedin-ai-job-applier-ultimate.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\linkedin-ai-job-applier-ultimate.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Job Application Bot for LinkedIn",
+  "short_description_vi": "The LinkedIn-AI-Job-Applier-Ultimate is an advanced AI bot that automates job applications on LinkedIn using Playwright and LLM integration. It generates tailored resumes, anonymizes data, and provides skill statistics, making it a comprehensive tool for job seekers."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/solid-skills",
+  "slug": "solid-skills",
+  "name": "browser-use",
+  "headline": "Solid Skills - AI Code Quality",
+  "short_description": "AI skill for writing senior-engineer quality code using SOLID principles, TDD, and clean architecture. Benefits operations teams by improving code quality and maintainability. Integrates with development workflows and connects to code repositories.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "ramziddin",
+  "install_command": "git clone https://github.com/ramziddin/solid-skills.git",
+  "source_repo_url": "https://github.com/ramziddin/solid-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Solid Skills is an AI agent skill that enforces professional software engineering practices on code written by Claude Code, Cursor, and similar AI tools. It applies SOLID principles, Test-Driven Development, clean code practices, and design patterns to transform junior-level code into production-ready software. The skill automatically detects and fixes code smells, enforces small functions and classes, applies value objects for domain primitives, and guides architectural decisions using clean architecture principles. It works with TypeScript, NestJS, and object-oriented codebases, helping development teams maintain high code quality and long-term maintainability without manual code reviews.\nWriting new features with TDD workflow and SOLID principles\nRefactoring existing code to improve quality and reduce technical debt\nReviewing code for design patterns, code smells, and architectural issues\nDesigning system architecture using clean architecture principles",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ramziddin/solid-skills`",
+    "usage": "```\nWrite a [PROGRAMMING_LANGUAGE] function/class that adheres to SOLID principles and follows Test-Driven Development (TDD) practices. The code should implement [FUNCTIONALITY_DESCRIPTION] while maintaining clean architecture. Include unit tests using [TEST_FRAMEWORK]. Structure the project with clear separation of concerns and dependency injection where applicable. Use [DESIGN_PATTERN] where it improves maintainability. Document the code with comments explaining the design decisions related to SOLID principles.\n```\nCopy\n\n```\n```python\n# File: src/order_processor/domain/order.py\nfrom dataclasses import dataclass\nfrom abc import ABC, abstractmethod\n\n@dataclass\nclass OrderItem:\n    product_id: str\n    quantity: int\n    unit_price: float\n\nclass OrderRepository(ABC):\n    @abstractmethod\n    def save(self, order: 'Order') -> None:\n        pass\n\nclass InMemoryOrderRepository(OrderRepository):\n    def __init__(self):\n        self.orders = []\n    \n    def save(self, order: 'Order') -> None:\n        self.orders.append(order)\n\nclass Order:\n    def __init__(self, order_id: str, customer_id: str, items: list[OrderItem]):\n        self.order_id = order_id\n        self.customer_id = customer_id\n        self.items = items\n    \n    def calculate_total(self) -> float:\n        return sum(item.quantity * item.unit_price for item in self.items)\n\n# File: src/order_processor/services/order_service.py\nfrom dependency_injector import containers, providers\nfrom order_processor.domain.order import Order, OrderRepository\n\nclass OrderService:\n    def __init__(self, repository: OrderRepository):\n        self.repository = repository\n    \n    def create_order(self, order_id: str, customer_id: str, items: list[OrderItem]) -> Order:\n        order = Order(order_id, customer_id, items)\n        self.repository.save(order)\n        return order\n\nclass Container(containers.DeclarativeContainer):\n    repository = providers.Singleton(OrderRepository, InMemoryOrderRepository)\n    order_service = providers.Factory(OrderService, repository=repository)\n```\n\n```python\n# File: tests/test_order_processor.py\nimport pytest\nfrom order_processor.domain.order import OrderItem, Order\nfrom order_processor.services.order_service import OrderService, InMemoryOrderRepository\n\ndef test_order_creation():\n    items = [OrderItem(\"prod1\", 2, 10.0), OrderItem(\"prod2\", 1, 15.0)]\n    order = Order(\"order123\", \"cust456\", items)\n    assert order.calculate_total() == 35.0\n    assert len(order.items) == 2\n\ndef test_order_service_creates_order():\n    repository = InMemoryOrderRepository()\n    service = OrderService(repository)\n    items = [OrderItem(\"prod1\", 2, 10.0)]\n    order = service.create_order(\"order123\", \"cust456\", items)\n    assert order.order_id == \"order123\"\n    assert len(repository.orders) == 1\n```\n\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "solid-skills#main-content",
+      "solid-skills#overview",
+      "solid-skills#setup",
+      "solid-skills#examples",
+      "solid-skills#tools",
+      "solid-skills#mcp",
+      "solid-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Solid Skills is an AI agent skill that enforces professional software engineering practices on code written by Claude Code, Cursor, and similar AI tools. It applies SOLID principles, Test-Driven Development, clean code practices, and design patterns to transform junior-level code into production-ready software. The skill automatically detects and fixes code smells, enforces small functions and classes, applies value objects for domain primitives, and guides architectural decisions using clean architecture principles. It works with TypeScript, NestJS, and object-oriented codebases, helping development teams maintain high code quality and long-term maintainability without manual code reviews.\nWriting new features with TDD workflow and SOLID principles\nRefactoring existing code to improve quality and reduce technical debt\nReviewing code for design patterns, code smells, and architectural issues\nDesigning system architecture using clean architecture principles",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ramziddin/solid-skills`",
+    "usage_vi": "```\nWrite a [PROGRAMMING_LANGUAGE] function/class that adheres to SOLID principles and follows Test-Driven Development (TDD) practices. The code should implement [FUNCTIONALITY_DESCRIPTION] while maintaining clean architecture. Include unit tests using [TEST_FRAMEWORK]. Structure the project with clear separation of concerns and dependency injection where applicable. Use [DESIGN_PATTERN] where it improves maintainability. Document the code with comments explaining the design decisions related to SOLID principles.\n```\nCopy\n\n```\n```python\n# File: src/order_processor/domain/order.py\nfrom dataclasses import dataclass\nfrom abc import ABC, abstractmethod\n\n@dataclass\nclass OrderItem:\n    product_id: str\n    quantity: int\n    unit_price: float\n\nclass OrderRepository(ABC):\n    @abstractmethod\n    def save(self, order: 'Order') -> None:\n        pass\n\nclass InMemoryOrderRepository(OrderRepository):\n    def __init__(self):\n        self.orders = []\n    \n    def save(self, order: 'Order') -> None:\n        self.orders.append(order)\n\nclass Order:\n    def __init__(self, order_id: str, customer_id: str, items: list[OrderItem]):\n        self.order_id = order_id\n        self.customer_id = customer_id\n        self.items = items\n    \n    def calculate_total(self) -> float:\n        return sum(item.quantity * item.unit_price for item in self.items)\n\n# File: src/order_processor/services/order_service.py\nfrom dependency_injector import containers, providers\nfrom order_processor.domain.order import Order, OrderRepository\n\nclass OrderService:\n    def __init__(self, repository: OrderRepository):\n        self.repository = repository\n    \n    def create_order(self, order_id: str, customer_id: str, items: list[OrderItem]) -> Order:\n        order = Order(order_id, customer_id, items)\n        self.repository.save(order)\n        return order\n\nclass Container(containers.DeclarativeContainer):\n    repository = providers.Singleton(OrderRepository, InMemoryOrderRepository)\n    order_service = providers.Factory(OrderService, repository=repository)\n```\n\n```python\n# File: tests/test_order_processor.py\nimport pytest\nfrom order_processor.domain.order import OrderItem, Order\nfrom order_processor.services.order_service import OrderService, InMemoryOrderRepository\n\ndef test_order_creation():\n    items = [OrderItem(\"prod1\", 2, 10.0), OrderItem(\"prod2\", 1, 15.0)]\n    order = Order(\"order123\", \"cust456\", items)\n    assert order.calculate_total() == 35.0\n    assert len(order.items) == 2\n\ndef test_order_service_creates_order():\n    repository = InMemoryOrderRepository()\n    service = OrderService(repository)\n    items = [OrderItem(\"prod1\", 2, 10.0)]\n    order = service.create_order(\"order123\", \"cust456\", items)\n    assert order.order_id == \"order123\"\n    assert len(repository.orders) == 1\n```\n\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:52:18.683421Z",
+    "http_status": 200,
+    "content_hash": "359935401b56f1feeff3d3e59c96a46d0a7150bd8264048dbaa5d56f69bbc31d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\solid-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\solid-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Solid Skills - AI Code Quality",
+  "short_description_vi": "AI skill for writing senior-engineer quality code using SOLID principles, TDD, and clean architecture. Benefits operations teams by improving code quality and maintainability. Integrates with development workflows and connects to code repositories."
+}

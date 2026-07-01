@@ -1,0 +1,52 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pig",
+  "slug": "pig",
+  "name": "Related Skills",
+  "headline": "PIG 文档搜索: 快速查询官方文档",
+  "short_description": "Search and extract core information from PIG official documentation. Helps developers and users find answers to PIG-related questions quickly.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "lltx",
+  "install_command": "git clone https://github.com/lltx/skills",
+  "source_repo_url": "https://github.com/lltx/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    ""
+  ],
+  "sections": {
+    "overview": "PIG 文档搜索技能帮助开发者和用户快速查询 PIG 官方文档中的信息。该技能支持文档搜索和核心信息提取，使用户能够有效地解决与 PIG 相关的问题。无需手动翻阅冗长文档，该技能提供精准的搜索和智能信息提取，适合需要频繁查阅 PIG 文档的开发者。通过集成到 AI 代理中，该技能可以加速问题排查和开发效率。\n用户需要查找关于PIG Cloud的配置文档\n用户询问如何解决OAuth2登录失败问题\n用户寻找关于网关路由错误的解决方案\nThe `GROUP ALL` operator in Apache PIG aggregates all tuples in a relation into a single tuple. This is useful for operations like counting total records or calculating global statistics.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/lltx/skills --skill pigdoc`\n`git clone https://github.com/lltx/skills`",
+    "usage": "```\nSearch the official Apache PIG documentation and extract the most relevant information about [TOPIC]. Focus on [SPECIFIC_ASPECT], such as syntax, examples, or best practices. Provide clear, concise answers with citations from the documentation. If the topic is broad, break it into subtopics and prioritize [COMPANY]/[INDUSTRY] use cases where applicable.\n```\nCopy\n\n```\n# PIG Documentation Search Results: GROUP ALL Operator\n\n```pig\n-- Load data\nraw_logs = LOAD 'web_logs' AS (user, url, timestamp);\n\n-- Count total records\nlog_count = FOREACH (GROUP all_data ALL) GENERATE COUNT($1);\nDUMP log_count;\n-- Output: (15000)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "pig#main-content",
+      "pig#overview",
+      "pig#setup",
+      "pig#examples",
+      "pig#related"
+    ],
+    "overview_vi": "PIG 文档搜索技能帮助开发者和用户快速查询 PIG 官方文档中的信息。该技能支持文档搜索和核心信息提取，使用户能够有效地解决与 PIG 相关的问题。无需手动翻阅冗长文档，该技能提供精准的搜索和智能信息提取，适合需要频繁查阅 PIG 文档的开发者。通过集成到 AI 代理中，该技能可以加速问题排查和开发效率。\n用户需要查找关于PIG Cloud的配置文档\n用户询问如何解决OAuth2登录失败问题\n用户寻找关于网关路由错误的解决方案\nThe `GROUP ALL` operator in Apache PIG aggregates all tuples in a relation into a single tuple. This is useful for operations like counting total records or calculating global statistics.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/lltx/skills --skill pigdoc`\n`git clone https://github.com/lltx/skills`",
+    "usage_vi": "```\nSearch the official Apache PIG documentation and extract the most relevant information about [TOPIC]. Focus on [SPECIFIC_ASPECT], such as syntax, examples, or best practices. Provide clear, concise answers with citations from the documentation. If the topic is broad, break it into subtopics and prioritize [COMPANY]/[INDUSTRY] use cases where applicable.\n```\nCopy\n\n```\n# PIG Documentation Search Results: GROUP ALL Operator\n\n```pig\n-- Load data\nraw_logs = LOAD 'web_logs' AS (user, url, timestamp);\n\n-- Count total records\nlog_count = FOREACH (GROUP all_data ALL) GENERATE COUNT($1);\nDUMP log_count;\n-- Output: (15000)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:32:52.019394Z",
+    "http_status": 200,
+    "content_hash": "083f1c8eb2926731ba7f693c04bcedabdf50992813e93da4e856e1114f185f91",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pig.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pig.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "PIG 文档搜索: 快速查询官方文档",
+  "short_description_vi": "Search and extract core information from PIG official documentation. Helps developers and users find answers to PIG-related questions quickly."
+}

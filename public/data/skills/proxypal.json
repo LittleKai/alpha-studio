@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/proxypal",
+  "slug": "proxypal",
+  "name": "proxypal",
+  "headline": "proxypal: AI Subscriptions",
+  "short_description": "ProxyPal is a desktop app that enables developers to use AI subscriptions like Claude, ChatGPT, Gemini, and GitHub Copilot with any coding tool. It wraps CLIProxyAPI with a user-friendly UI for managing connections and tracking usage, streamlining workflows for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "heyhuynhgiabuu",
+  "install_command": "git clone https://github.com/heyhuynhgiabuu/proxypal.git",
+  "source_repo_url": "https://github.com/heyhuynhgiabuu/proxypal",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "openai",
+    "qwen3-coder",
+    "codex",
+    "antigravity",
+    "gemini",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "proxypal is an innovative desktop application designed to enhance the usability of your AI subscriptions, including Claude, ChatGPT, Gemini, and GitHub Copilot. By wrapping the CLIProxyAPI in a user-friendly interface, proxypal allows developers to seamlessly connect and manage their AI tools across various coding environments. This integration not only simplifies the process of using multiple AI services but also provides a comprehensive view of connection management and usage tracking. The key benefits of proxypal lie in its ability to streamline AI automation tasks and improve workflow efficiency. While specific time savings are currently unknown, the application is designed to reduce the friction associated with switching between different AI tools, enabling developers to focus more on coding rather than managing their AI resources. With an implementation time of just 30 minutes, proxypal is accessible for intermediate users who want to leverage AI automation skills without extensive setup. This skill is particularly beneficial for developers, product managers, and AI practitioners who rely on multiple AI services to enhance their productivity. By utilizing proxypal, these professionals can create a more cohesive workflow that integrates various AI capabilities, ultimately leading to faster project completion and improved output quality. For instance, a developer working on a complex software project can use proxypal to effortlessly switch between GitHub Copilot for code suggestions and Claude for natural language processing tasks, all within the same interface. With a medium GTM relevance and a growing community, proxypal is positioned to fit seamlessly into AI-first workflows. Its intermediate complexity makes it suitable for users who are already familiar with AI tools and are looking to optimize their usage. By adopting proxypal, teams can enhance their workflow automation capabilities, making it an essential addition for anyone looking to harness the full power of AI in their development processes.\nIntegrate Claude and ChatGPT into your preferred coding environment for enhanced coding assistance.\nMonitor API usage and performance metrics to optimize your AI subscription costs.\nAutomatically configure connections to various AI models based on installed CLI agents.\nUtilize GitHub Copilot models through an OpenAI-compatible API for a broader range of coding support.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/heyhuynhgiabuu/proxypal`",
+    "usage": "```\nUse ProxyPal to route [AI_SERVICE] API calls through [CODING_TOOL] for [TASK]. Configure the proxy settings in ProxyPal with [SPECIFIC_REQUIREMENTS]. Monitor usage and adjust allocation in ProxyPal’s dashboard to optimize costs. Ensure the setup maintains [PERFORMANCE_OR_SECURITY_CRITERIA].\n```\nCopy\n\n```\nI configured ProxyPal to route GitHub Copilot API calls through VS Code for an AI-powered code review task. In ProxyPal, I set the proxy endpoint to `http://localhost:8080` and allocated 1000 tokens per hour to ensure uninterrupted access during peak hours. The dashboard showed a total of 4,200 tokens used over 5 hours, with a breakdown of 2,800 tokens for Python file analysis and 1,400 tokens for JavaScript refactoring suggestions. I noticed that the token consumption spiked during a complex refactoring task, so I adjusted the allocation to 1200 tokens per hour to prevent throttling. The setup maintained a response time under 2 seconds, even when processing a 5,000-line codebase. ProxyPal’s usage tracking helped me identify that 60% of the tokens were consumed by a single large file, prompting me to optimize the file structure for future reviews.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "proxypal#main-content",
+      "proxypal#overview",
+      "proxypal#setup",
+      "proxypal#examples",
+      "proxypal#tools",
+      "proxypal#mcp",
+      "proxypal#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "proxypal là một ứng dụng desktop cải tiến được thiết kế để nâng cao khả năng sử dụng các gói đăng ký AI của bạn, bao gồm Claude, ChatGPT, Gemini và GitHub Copilot. Bằng cách đóng gói CLIProxyAPI trong một giao diện thân thiện với người dùng, proxypal cho phép các lập trình viên kết nối và quản lý các công cụ AI của họ một cách liền mạch trên nhiều môi trường lập trình khác nhau. Sự tích hợp này không chỉ đơn giản hóa quy trình sử dụng nhiều dịch vụ AI mà còn cung cấp một cái nhìn toàn diện về quản lý kết nối và theo dõi lượng sử dụng. Lợi ích then chốt của proxypal nằm ở khả năng tối ưu hóa các tác vụ tự động hóa AI và nâng cao hiệu suất quy trình làm việc. Mặc dù lượng thời gian tiết kiệm cụ thể hiện chưa được xác định, ứng dụng được thiết kế để giảm thiểu những trở ngại khi chuyển đổi giữa các công cụ AI khác nhau, giúp lập trình viên tập trung hơn vào việc viết code thay vì quản lý tài nguyên AI của họ. Với thời gian triển khai chỉ 30 phút, proxypal rất dễ tiếp cận đối với những người dùng ở trình độ trung cấp muốn tận dụng khả năng tự động hóa AI mà không cần setup phức tạp. Skill này đặc biệt có lợi cho các lập trình viên, quản lý sản phẩm và những người thực hành AI thường xuyên dựa vào nhiều dịch vụ AI để nâng cao năng suất. Bằng cách sử dụng proxypal, các chuyên gia này có thể xây dựng một quy trình làm việc gắn kết hơn, tích hợp nhiều khả năng của AI, từ đó giúp hoàn thành dự án nhanh hơn và nâng cao chất lượng đầu ra. Ví dụ, một lập trình viên đang làm việc trong một dự án phần mềm phức tạp có thể sử dụng proxypal để dễ dàng chuyển đổi giữa GitHub Copilot để gợi ý code và Claude cho các tác vụ xử lý ngôn ngữ tự nhiên, tất cả trong cùng một giao diện. Với mức độ phù hợp GTM trung bình và một cộng đồng đang phát triển, proxypal được định vị để tích hợp liền mạch vào các quy trình làm việc ưu tiên AI (AI-first). Độ phức tạp ở mức trung bình giúp nó phù hợp với những người dùng đã quen thuộc với các công cụ AI và đang muốn tối ưu hóa việc sử dụng chúng. Bằng cách áp dụng proxypal, các đội ngũ có thể nâng cao khả năng tự động hóa quy trình làm việc, biến nó thành một sự bổ sung thiết yếu cho bất kỳ ai muốn khai thác toàn bộ sức mạnh của AI trong quy trình phát triển của mình.\nTích hợp Claude và ChatGPT vào môi trường lập trình ưa thích của bạn để được hỗ trợ viết code tốt hơn.\nGiám sát lượng sử dụng API và các chỉ số hiệu suất để tối ưu hóa chi phí đăng ký AI.\nTự động cấu hình các kết nối đến các mô hình AI khác nhau dựa trên các agent CLI đã cài đặt.\nSử dụng các mô hình GitHub Copilot thông qua một API tương thích với OpenAI để được hỗ trợ lập trình trên phạm vi rộng hơn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/heyhuynhgiabuu/proxypal`",
+    "usage_vi": "```\nSử dụng ProxyPal để định tuyến các cuộc gọi API [AI_SERVICE] qua [CODING_TOOL] cho [TASK]. Cấu hình các thiết lập proxy trong ProxyPal với [SPECIFIC_REQUIREMENTS]. Giám sát lượng sử dụng và điều chỉnh mức phân bổ trong dashboard của ProxyPal để tối ưu hóa chi phí. Đảm bảo setup duy trì [PERFORMANCE_OR_SECURITY_CRITERIA].\n```\nCopy\n\n```\nTôi đã cấu hình ProxyPal để định tuyến các cuộc gọi API GitHub Copilot qua VS Code cho tác vụ review code bằng AI. Trong ProxyPal, tôi đã thiết lập proxy endpoint thành `http://localhost:8080` và phân bổ 1000 token mỗi giờ để đảm bảo quyền truy cập không bị gián đoạn trong giờ cao điểm. Dashboard hiển thị tổng cộng 4.200 token đã được sử dụng trong 5 giờ, với phân tích chi tiết gồm 2.800 token cho việc phân tích tệp Python và 1.400 token cho các gợi ý refactor JavaScript. Tôi nhận thấy rằng lượng tiêu thụ token tăng vọt trong một tác vụ refactor phức tạp, vì vậy tôi đã điều chỉnh mức phân bổ lên 1200 token mỗi giờ để tránh bị giới hạn băng thông (throttling). Setup này duy trì thời gian phản hồi dưới 2 giây, ngay cả khi xử lý codebase 5.000 dòng. Tính năng theo dõi lượng sử dụng của ProxyPal đã giúp tôi xác định rằng 60% token bị tiêu thụ bởi một tệp lớn duy nhất, từ đó gợi ý tôi tối ưu hóa cấu trúc tệp cho các lần review sau.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:26:50.533303Z",
+    "http_status": 200,
+    "content_hash": "098c39dd27763690bc71bb5ecd1d2f1bcf5108577936350814bea5458eab2b25",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\proxypal.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\proxypal.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "proxypal: Các gói đăng ký AI",
+  "short_description_vi": "ProxyPal là một ứng dụng desktop cho phép các lập trình viên sử dụng các gói đăng ký AI như Claude, ChatGPT, Gemini và GitHub Copilot với bất kỳ công cụ lập trình nào. Ứng dụng này đóng gói CLIProxyAPI bằng một giao diện người dùng (UI) thân thiện để quản lý kết nối và theo dõi lượng sử dụng, giúp tối ưu hóa quy trình làm việc cho các đội ngũ vận hành."
+}

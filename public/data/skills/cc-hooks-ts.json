@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-hooks-ts",
+  "slug": "cc-hooks-ts",
+  "name": "Cc Hooks TS",
+  "headline": "Type-safe Claude Code hook definitions",
+  "short_description": "Define Claude Code hooks with full type safety using TypeScript. Enables operations teams to automate workflows with type-safe hooks. Integrates with Claude agents for reliable automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "sushichan044",
+  "install_command": "git clone https://github.com/sushichan044/cc-hooks-ts.git",
+  "source_repo_url": "https://github.com/sushichan044/cc-hooks-ts",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "cc-hooks-ts is a TypeScript library that lets you define type-safe hooks for Claude Code, triggering custom automation logic on events like SessionStart, PreToolUse, PostToolUse, and PermissionRequest. It provides full type safety for tool inputs and supports tool-specific hooks, conditional execution, and advanced JSON output including experimental async operations. Operations teams use it to enforce security policies, block dangerous commands, customize session behavior, and integrate MCP-defined tools with type checking. The library handles hook configuration through Claude Code settings and supports multiple JavaScript runtimes including Node.js, Bun, and Deno.\nBlock dangerous bash commands or file access before tool execution\nEnforce security policies on tool usage with type-safe validation\nCustomize session startup with welcome messages and initialization logic\nAdd type-safe hooks for custom MCP tools and external integrations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sushichan044/cc-hooks-ts`",
+    "usage": "```\nCreate a type-safe Claude Code hook in TypeScript for [AUTOMATION_TASK] that integrates with [CLAUDE_AGENT_NAME]. The hook should handle [INPUT_TYPE] and return [OUTPUT_TYPE]. Include error handling for [POTENTIAL_ERRORS]. Use the following structure: ```typescript\n// [HOOK_NAME].ts\nexport interface [INPUT_INTERFACE] { ... }\nexport interface [OUTPUT_INTERFACE] { ... }\nexport const [HOOK_NAME] = (input: [INPUT_INTERFACE]): [OUTPUT_INTERFACE] => { ... };\n```\n```\nCopy\n\n```\n```typescript\n// data-validation-hook.ts\nexport interface DataValidationInput {\n  filePath: string;\n  expectedColumns: string[];\n  delimiter?: string;\n}\n\nexport interface DataValidationOutput {\n  isValid: boolean;\n  errors: string[];\n  rowCount: number;\n}\n\nexport const validateDataFile = (input: DataValidationInput): DataValidationOutput => {\n  const errors: string[] = [];\n  let rowCount = 0;\n\n  try {\n    const fileContent = Deno.readTextFileSync(input.filePath);\n    const lines = fileContent.split('\\n').filter(line => line.trim() !== '');\n    rowCount = lines.length;\n\n    if (rowCount === 0) {\n      errors.push('File is empty');\n      return { isValid: false, errors, rowCount };\n    }\n\n    const header = lines[0].split(input.delimiter || ',');\n    const missingColumns = input.expectedColumns.filter(col => !header.includes(col));\n    if (missingColumns.length > 0) {\n      errors.push(`Missing columns: ${missingColumns.join(', ')}`);\n    }\n\n    if (errors.length === 0) {\n      return { isValid: true, errors: [], rowCount };\n    }\n    return { isValid: false, errors, rowCount };\n  } catch (error) {\n    errors.push(`Failed to read file: ${error.message}`);\n    return { isValid: false, errors, rowCount: 0 };\n  }\n};\n```\n\nThis hook validates CSV/TSV files against expected columns and returns structured validation results. It handles file reading errors, empty files, and missing columns with clear error messages. The type-safe interfaces ensure compile-time checks for input/output compatibility with Claude agents.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-hooks-ts#main-content",
+      "cc-hooks-ts#overview",
+      "cc-hooks-ts#setup",
+      "cc-hooks-ts#examples",
+      "cc-hooks-ts#tools",
+      "cc-hooks-ts#mcp",
+      "cc-hooks-ts#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cc-hooks-ts là một thư viện TypeScript cho phép bạn định nghĩa các hook đảm bảo type-safe cho Claude Code, giúp kích hoạt logic tự động hóa tùy chỉnh trên các sự kiện như SessionStart, PreToolUse, PostToolUse và PermissionRequest. Thư viện này cung cấp khả năng type-safe toàn diện cho các input của tool, đồng thời hỗ trợ các hook chuyên biệt cho từng tool, thực thi có điều kiện và xuất JSON nâng cao bao gồm cả các tác vụ async thử nghiệm. Các đội ngũ vận hành sử dụng thư viện này để thực thi chính sách bảo mật, ngăn chặn các lệnh nguy hiểm, tùy biến hành vi session và tích hợp các tool do MCP định nghĩa với tính năng kiểm tra kiểu dữ liệu (type checking). Thư viện tự động xử lý cấu hình hook thông qua phần cài đặt của Claude Code và hỗ trợ nhiều runtime JavaScript bao gồm Node.js, Bun và Deno.\nNgăn chặn các lệnh bash nguy hiểm hoặc quyền truy cập file trước khi thực thi tool\nThực thi các chính sách bảo mật khi sử dụng tool bằng tính năng xác thực type-safe\nTùy biến quá trình khởi động session với các tin nhắn chào mừng và logic khởi tạo\nThêm các hook type-safe cho các MCP tool tùy chỉnh và các tích hợp bên ngoài",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sushichan044/cc-hooks-ts`",
+    "usage_vi": "```\nTạo một Claude Code hook đảm bảo type-safe bằng TypeScript cho [AUTOMATION_TASK] tích hợp với [CLAUDE_AGENT_NAME]. Hook này cần xử lý [INPUT_TYPE] và trả về [OUTPUT_TYPE]. Hãy bao gồm cả phần xử lý lỗi cho [POTENTIAL_ERRORS]. Sử dụng cấu trúc sau: ```typescript\n// [HOOK_NAME].ts\nexport interface [INPUT_INTERFACE] { ... }\nexport interface [OUTPUT_INTERFACE] { ... }\nexport const [HOOK_NAME] = (input: [INPUT_INTERFACE]): [OUTPUT_INTERFACE] => { ... };\n```\n```\nSao chép\n\n```\n```typescript\n// data-validation-hook.ts\nexport interface DataValidationInput {\n  filePath: string;\n  expectedColumns: string[];\n  delimiter?: string;\n}\n\nexport interface DataValidationOutput {\n  isValid: boolean;\n  errors: string[];\n  rowCount: number;\n}\n\nexport const validateDataFile = (input: DataValidationInput): DataValidationOutput => {\n  const errors: string[] = [];\n  let rowCount = 0;\n\n  try {\n    const fileContent = Deno.readTextFileSync(input.filePath);\n    const lines = fileContent.split('\\n').filter(line => line.trim() !== '');\n    rowCount = lines.length;\n\n    if (rowCount === 0) {\n      errors.push('File is empty');\n      return { isValid: false, errors, rowCount };\n    }\n\n    const header = lines[0].split(input.delimiter || ',');\n    const missingColumns = input.expectedColumns.filter(col => !header.includes(col));\n    if (missingColumns.length > 0) {\n      errors.push(`Missing columns: ${missingColumns.join(', ')}`);\n    }\n\n    if (errors.length === 0) {\n      return { isValid: true, errors: [], rowCount };\n    }\n    return { isValid: false, errors, rowCount };\n  } catch (error) {\n    errors.push(`Failed to read file: ${error.message}`);\n    return { isValid: false, errors, rowCount: 0 };\n  }\n};\n```\n\nHook này giúp xác thực các file CSV/TSV dựa trên các cột mong muốn và trả về kết quả xác thực có cấu trúc. Nó xử lý các lỗi đọc file, file trống và thiếu cột với các thông báo lỗi rõ ràng. Các interface type-safe giúp đảm bảo việc kiểm tra sự tương thích đầu vào/đầu ra (input/output) với các Claude agent ngay trong quá trình biên dịch (compile-time)."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:48.944676Z",
+    "http_status": 200,
+    "content_hash": "4e6044fe82edc3561dedf27902225a83ee3ce322b2413831b3ccd2c1f087bbb7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-hooks-ts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-hooks-ts.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Định nghĩa Claude Code hook đảm bảo type-safe",
+  "short_description_vi": "Định nghĩa các Claude Code hook với tính năng type-safe toàn diện bằng TypeScript. Giúp các đội ngũ vận hành tự động hóa quy trình làm việc với các hook type-safe. Tích hợp mượt mà với các Claude agent để mang lại khả năng tự động hóa đáng tin cậy."
+}

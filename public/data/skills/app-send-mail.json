@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/app-send-mail",
+  "slug": "app-send-mail",
+  "name": "popsicle",
+  "headline": "app_send_mail: efficient php email solution",
+  "short_description": "PHPMailer PHPMailer  -  A full-featured email creation and transfer class for PHP Test status codecov.io Latest Stable Version Total Downloads License API Docs  Features Probably the world's most popular code for sending email from PHP! Used by many open-source projects: WordPress, Drupal, 1CRM, SugarCRM, Yii, Joomla! and many more Integrated SMTP support  -  send without a local mail server Send emails with multiple To, CC, BCC and Reply-to addresses Multipart/alternative emails for mail clients th",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "MateusNobreSilva",
+  "install_command": "git clone https://github.com/MateusNobreSilva/app_send_mail.git",
+  "source_repo_url": "https://github.com/MateusNobreSilva/app_send_mail",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "PHPMailer is a production-grade email library for PHP that handles the complexity of email formatting and delivery without relying on a local mail server. It supports integrated SMTP with authentication (LOGIN, PLAIN, CRAM-MD5, XOAUTH2), HTML and plain-text emails, file attachments, and multiple recipient types (To, CC, BCC, Reply-to). The library automatically validates email addresses, protects against header injection attacks, and supports DKIM and S/MIME signing. PHPMailer is compatible with PHP 5.5 and later, including PHP 8.1, and is used by major open-source projects including WordPress, Drupal, Joomla, and SugarCRM.\nSend transactional emails from web applications with SMTP\nGenerate HTML emails with attachments and multiple recipients\nImplement Gmail XOAUTH2 authentication for email sending\nReplace insecure mail() function calls with secure SMTP delivery",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MateusNobreSilva/app_send_mail`",
+    "usage": "```\nCreate a PHP script using PHPMailer to send an email to [EMAIL_LIST] on behalf of [COMPANY]. The email should include a subject line '[SUBJECT]', a HTML body '[BODY]', and a plain text alternative '[PLAIN_TEXT_BODY]. Include CC to [CC_EMAILS] and BCC to [BCC_EMAILS].\n```\nCopy\n\n```\n```php\n<?php\n// Import PHPMailer classes into the global namespace\n// These must be at the top of your script, not inside a function\nuse PHPMailer\\PHPMailer\\PHPMailer;\nuse PHPMailer\\PHPMailer\\SMTP;\nuse PHPMailer\\PHPMailer\\Exception;\n\n// Load Composer's autoloader\nrequire 'vendor/autoload.php';\n\n// Instantiation and passing `true` enables exceptions\n$mail = new PHPMailer(true);\n\ntry {\n    // Server settings\n    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output\n    $mail->isSMTP();                                            // Send using SMTP\n    $mail->Host       = 'smtp.example.com';                    // Set the SMTP server to send through\n    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication\n    $mail->Username   = 'user@example.com';                     // SMTP username\n    $mail->Password   = 'secret';                                // SMTP password\n    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged for production\n    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above\n\n    // Recipients\n    $mail->setFrom('from@example.com', 'Mailer');\n    $mail->addAddress('john@example.net', 'John Doe');     // Add a recipient\n    $mail->addAddress('ellen@example.com');               // Name is optional\n    $mail->addReplyTo('info@example.com', 'Information');\n    $mail->addCC('cc@example.com');\n    $mail->addBCC('bcc@example.com');\n\n    // Content\n    $mail->isHTML(true);                                  // Set email format to HTML\n    $mail->Subject = 'Here is the subject';\n    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';\n    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';\n\n    $mail->send();\n    echo 'Message has been sent';\n} catch (Exception $e) {\n    echo \"Message could not be sent. Mailer Error: {$mail->ErrorInfo}\";\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "app-send-mail#main-content",
+      "app-send-mail#overview",
+      "app-send-mail#setup",
+      "app-send-mail#examples",
+      "app-send-mail#tools",
+      "app-send-mail#mcp",
+      "app-send-mail#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "PHPMailer is a production-grade email library for PHP that handles the complexity of email formatting and delivery without relying on a local mail server. It supports integrated SMTP with authentication (LOGIN, PLAIN, CRAM-MD5, XOAUTH2), HTML and plain-text emails, file attachments, and multiple recipient types (To, CC, BCC, Reply-to). The library automatically validates email addresses, protects against header injection attacks, and supports DKIM and S/MIME signing. PHPMailer is compatible with PHP 5.5 and later, including PHP 8.1, and is used by major open-source projects including WordPress, Drupal, Joomla, and SugarCRM.\nSend transactional emails from web applications with SMTP\nGenerate HTML emails with attachments and multiple recipients\nImplement Gmail XOAUTH2 authentication for email sending\nReplace insecure mail() function calls with secure SMTP delivery",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MateusNobreSilva/app_send_mail`",
+    "usage_vi": "```\nCreate a PHP script using PHPMailer to send an email to [EMAIL_LIST] on behalf of [COMPANY]. The email should include a subject line '[SUBJECT]', a HTML body '[BODY]', and a plain text alternative '[PLAIN_TEXT_BODY]. Include CC to [CC_EMAILS] and BCC to [BCC_EMAILS].\n```\nCopy\n\n```\n```php\n<?php\n// Import PHPMailer classes into the global namespace\n// These must be at the top of your script, not inside a function\nuse PHPMailer\\PHPMailer\\PHPMailer;\nuse PHPMailer\\PHPMailer\\SMTP;\nuse PHPMailer\\PHPMailer\\Exception;\n\n// Load Composer's autoloader\nrequire 'vendor/autoload.php';\n\n// Instantiation and passing `true` enables exceptions\n$mail = new PHPMailer(true);\n\ntry {\n    // Server settings\n    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output\n    $mail->isSMTP();                                            // Send using SMTP\n    $mail->Host       = 'smtp.example.com';                    // Set the SMTP server to send through\n    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication\n    $mail->Username   = 'user@example.com';                     // SMTP username\n    $mail->Password   = 'secret';                                // SMTP password\n    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged for production\n    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above\n\n    // Recipients\n    $mail->setFrom('from@example.com', 'Mailer');\n    $mail->addAddress('john@example.net', 'John Doe');     // Add a recipient\n    $mail->addAddress('ellen@example.com');               // Name is optional\n    $mail->addReplyTo('info@example.com', 'Information');\n    $mail->addCC('cc@example.com');\n    $mail->addBCC('bcc@example.com');\n\n    // Content\n    $mail->isHTML(true);                                  // Set email format to HTML\n    $mail->Subject = 'Here is the subject';\n    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';\n    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';\n\n    $mail->send();\n    echo 'Message has been sent';\n} catch (Exception $e) {\n    echo \"Message could not be sent. Mailer Error: {$mail->ErrorInfo}\";\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:35:17.823596Z",
+    "http_status": 200,
+    "content_hash": "36e2af4dcf5538f03d295710bca458b25af93d56e773ba6063878f91d735edb4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\app-send-mail.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\app-send-mail.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "app_send_mail: efficient php email solution",
+  "short_description_vi": "PHPMailer PHPMailer  -  A full-featured email creation and transfer class for PHP Test status codecov.io Latest Stable Version Total Downloads License API Docs  Features Probably the world's most popular code for sending email from PHP! Used by many open-source projects: WordPress, Drupal, 1CRM, SugarCRM, Yii, Joomla! and many more Integrated SMTP support  -  send without a local mail server Send emails with multiple To, CC, BCC and Reply-to addresses Multipart/alternative emails for mail clients th"
+}

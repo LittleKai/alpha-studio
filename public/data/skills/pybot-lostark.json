@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pybot-lostark",
+  "slug": "pybot-lostark",
+  "name": "browser-use",
+  "headline": "pybot-lostark: Lost Ark Automation",
+  "short_description": "A computer-vision based python tool for player-automation in the AMMORPG game 'Lost Ark'.  Modules target automation of waypoint pathfinding and skills usage, and include a HUD.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "jordanhoare",
+  "install_command": "git clone https://github.com/jordanhoare/pybot-lostark.git",
+  "source_repo_url": "https://github.com/jordanhoare/pybot-lostark",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "pybot-lostark is a Python SDK that uses computer vision to automate gameplay in the AMMORPG Lost Ark. The tool captures window frames and applies bitmap pattern matching algorithms across different color-spaces to identify game elements and automate repetitive tasks. Currently featured modules include auto-fishing with durability monitoring and tool repair detection. The bot is designed for players seeking to automate gathering and skill-based activities, though users should be aware that pixel-based automation carries detection risks with server-side input validation.\nAutomate Lost Ark fishing with durability tracking and tool repair\nPerform repetitive gathering tasks while monitoring game state\nTest computer vision pattern matching on game interfaces\nLearn bitmap-based game automation techniques in Python",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jordanhoare/pybot-lostark`",
+    "usage": "```\nI want to automate my Lost Ark gameplay using pybot-lostark. Here's my setup: [COMPUTER_SPEC], [GAME_VERSION], [MONITOR_RESOLUTION]. I want to automate [SPECIFIC_TASK] like waypoint navigation or skill usage. Can you guide me through the process?\n```\nCopy\n\n```\n### pybot-lostark Setup Guide\n\n1. **System Requirements**:\n   - Windows 10/11\n   - Python 3.8+\n   - NVIDIA GPU for optimal performance\n   - Lost Ark installed and updated\n\n2. **Installation Steps**:\n   - Clone the repository: `git clone https://github.com/yourusername/pybot-lostark.git`\n   - Install dependencies: `pip install -r requirements.txt`\n   - Configure settings in `config.json`\n\n3. **Automation Features**:\n   - **Waypoint Navigation**: Automatically follows waypoints on the map.\n   - **Skill Usage**: Executes predefined skill sequences.\n   - **HUD Overlay**: Displays real-time information on your screen.\n\n4. **Customization**:\n   - Modify `skills.json` to change skill sequences.\n   - Adjust `waypoints.json` for custom paths.\n\n5. **Safety Measures**:\n   - Regularly check for game updates.\n   - Monitor performance to avoid detection.\n\n### Troubleshooting\n- **Issue**: Bot stops responding.\n  **Solution**: Restart the script and check logs.\n- **Issue**: Skills not executing properly.\n  **Solution**: Verify `skills.json` configuration.\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pybot-lostark#main-content",
+      "pybot-lostark#overview",
+      "pybot-lostark#setup",
+      "pybot-lostark#examples",
+      "pybot-lostark#tools",
+      "pybot-lostark#mcp",
+      "pybot-lostark#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "pybot-lostark is a Python SDK that uses computer vision to automate gameplay in the AMMORPG Lost Ark. The tool captures window frames and applies bitmap pattern matching algorithms across different color-spaces to identify game elements and automate repetitive tasks. Currently featured modules include auto-fishing with durability monitoring and tool repair detection. The bot is designed for players seeking to automate gathering and skill-based activities, though users should be aware that pixel-based automation carries detection risks with server-side input validation.\nAutomate Lost Ark fishing with durability tracking and tool repair\nPerform repetitive gathering tasks while monitoring game state\nTest computer vision pattern matching on game interfaces\nLearn bitmap-based game automation techniques in Python",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jordanhoare/pybot-lostark`",
+    "usage_vi": "```\nI want to automate my Lost Ark gameplay using pybot-lostark. Here's my setup: [COMPUTER_SPEC], [GAME_VERSION], [MONITOR_RESOLUTION]. I want to automate [SPECIFIC_TASK] like waypoint navigation or skill usage. Can you guide me through the process?\n```\nCopy\n\n```\n### pybot-lostark Setup Guide\n\n1. **System Requirements**:\n   - Windows 10/11\n   - Python 3.8+\n   - NVIDIA GPU for optimal performance\n   - Lost Ark installed and updated\n\n2. **Installation Steps**:\n   - Clone the repository: `git clone https://github.com/yourusername/pybot-lostark.git`\n   - Install dependencies: `pip install -r requirements.txt`\n   - Configure settings in `config.json`\n\n3. **Automation Features**:\n   - **Waypoint Navigation**: Automatically follows waypoints on the map.\n   - **Skill Usage**: Executes predefined skill sequences.\n   - **HUD Overlay**: Displays real-time information on your screen.\n\n4. **Customization**:\n   - Modify `skills.json` to change skill sequences.\n   - Adjust `waypoints.json` for custom paths.\n\n5. **Safety Measures**:\n   - Regularly check for game updates.\n   - Monitor performance to avoid detection.\n\n### Troubleshooting\n- **Issue**: Bot stops responding.\n  **Solution**: Restart the script and check logs.\n- **Issue**: Skills not executing properly.\n  **Solution**: Verify `skills.json` configuration.\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:30:54.948971Z",
+    "http_status": 200,
+    "content_hash": "205d3ee810166b15626381b6d89bf8c1c423aaa4ec04074044e13d0e40ff0bed",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pybot-lostark.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pybot-lostark.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "pybot-lostark: Lost Ark Automation",
+  "short_description_vi": "A computer-vision based python tool for player-automation in the AMMORPG game 'Lost Ark'.  Modules target automation of waypoint pathfinding and skills usage, and include a HUD."
+}

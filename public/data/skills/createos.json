@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/createos",
+  "slug": "createos",
+  "name": "Related Skills",
+  "headline": "CreateOS: Deploy to Production",
+  "short_description": "CreateOS provides a platform for AI agents, APIs, backends, and more to be shipped directly to production. It is designed for developers looking to streamline their deployment processes across various services.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "nodeops-app",
+  "install_command": "git clone https://github.com/nodeops-app/skills",
+  "source_repo_url": "https://github.com/nodeops-app/skills",
+  "works_with": [
+    "Windsurf",
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "createos",
+    "deployment-skills"
+  ],
+  "sections": {
+    "overview": "The CreateOS skill enables AI agents to deploy applications, APIs, and backends directly to the CreateOS cloud platform. It supports two authentication modes: MCP mode (preferred, requiring no API key) and REST/script mode (using CREATEOS_API_KEY environment variable). The skill integrates with Claude Code, Cursor, Windsurf, and 40+ other AI coding agents through the skills.sh CLI. It simplifies deployment workflows by allowing agents to ship production-ready code without manual platform configuration. Developers can install the skill via npm and use it alongside complementary migration tools like vercel-to-createos.\nDeploy AI agents using MCP without needing an API key\nUpload deployment files directly to CreateOS\nList projects hosted on CreateOS\nMigrate applications from Vercel to CreateOS\n- **Service Type**: RESTful API\n- **Company**: Acme Corp\n- **Industry**: Fintech\n- **Target Platform**: AWS ECS with Fargate",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/nodeops-app/skills --skill createos`\n`git clone https://github.com/nodeops-app/skills`",
+    "usage": "```\nGenerate a production-ready deployment configuration for a [TYPE] service for [COMPANY] in the [INDUSTRY] industry. Include infrastructure requirements, environment variables, and scaling parameters based on this data: [DATA]. Ensure the output is optimized for [SERVICE_PLATFORM] and includes best practices for security and performance.\n```\nCopy\n\n```\n# Production Deployment Configuration for Acme Corp's Payment Processing API",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "createos#main-content",
+      "createos#overview",
+      "createos#setup",
+      "createos#examples",
+      "createos#related"
+    ],
+    "overview_vi": "The CreateOS skill enables AI agents to deploy applications, APIs, and backends directly to the CreateOS cloud platform. It supports two authentication modes: MCP mode (preferred, requiring no API key) and REST/script mode (using CREATEOS_API_KEY environment variable). The skill integrates with Claude Code, Cursor, Windsurf, and 40+ other AI coding agents through the skills.sh CLI. It simplifies deployment workflows by allowing agents to ship production-ready code without manual platform configuration. Developers can install the skill via npm and use it alongside complementary migration tools like vercel-to-createos.\nDeploy AI agents using MCP without needing an API key\nUpload deployment files directly to CreateOS\nList projects hosted on CreateOS\nMigrate applications from Vercel to CreateOS\n- **Service Type**: RESTful API\n- **Company**: Acme Corp\n- **Industry**: Fintech\n- **Target Platform**: AWS ECS with Fargate",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/nodeops-app/skills --skill createos`\n`git clone https://github.com/nodeops-app/skills`",
+    "usage_vi": "```\nGenerate a production-ready deployment configuration for a [TYPE] service for [COMPANY] in the [INDUSTRY] industry. Include infrastructure requirements, environment variables, and scaling parameters based on this data: [DATA]. Ensure the output is optimized for [SERVICE_PLATFORM] and includes best practices for security and performance.\n```\nCopy\n\n```\n# Production Deployment Configuration for Acme Corp's Payment Processing API"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:45:37.694736Z",
+    "http_status": 200,
+    "content_hash": "cd32f5ada07eb2a9b8c18c7bcc412b72f9bd6373a2af213be2450b0cbb1752a4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\createos.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\createos.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CreateOS: Deploy to Production",
+  "short_description_vi": "CreateOS provides a platform for AI agents, APIs, backends, and more to be shipped directly to production. It is designed for developers looking to streamline their deployment processes across various services."
+}

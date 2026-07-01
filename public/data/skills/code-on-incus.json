@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/code-on-incus",
+  "slug": "code-on-incus",
+  "name": "Code On Incus",
+  "headline": "Run coding agents in Incus sandboxes",
+  "short_description": "Run coding agents in isolated Incus containers with session persistence, workspace isolation, and multi-slot support. Ideal for secure, sandboxed development environments. Connects to Claude for AI-assisted coding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "mensfeld",
+  "install_command": "git clone https://github.com/mensfeld/code-on-incus.git",
+  "source_repo_url": "https://github.com/mensfeld/code-on-incus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "coding-assistant",
+    "sandboxing",
+    "anthropic",
+    "security",
+    "cli",
+    "opencode",
+    "containers",
+    "developer-tools",
+    "lxc",
+    "ai-tools",
+    "sandbox",
+    "llm-tools",
+    "devtools",
+    "claude",
+    "incus",
+    "claude-code",
+    "llm-security"
+  ],
+  "sections": {
+    "overview": "code-on-incus gives each AI agent its own full system container with root access, Docker, package managers, and systemd—without exposing your host system or credentials. Agents can work like they would on a real server: install packages, run services, manage cron jobs, and use Docker. SSH keys, environment variables, and Git tokens stay on the host and are never exposed to the agent unless you explicitly mount them. The tool includes kernel-level threat detection via nftables that monitors for reverse shells, credential scanning, DNS tunneling, and data exfiltration, automatically pausing or killing containers on suspicious activity. Sessions persist across restarts, multiple slots can run in parallel with full isolation, and workspace files are preserved even when containers are deleted.\nRunning multiple AI coding agents in parallel with isolated environments and shared workspace access\nPreventing credential leakage when delegating development tasks to AI tools\nDetecting and blocking malicious behavior from AI agents in real time without manual intervention\nMaintaining persistent development environments that survive reboots while keeping host system safe",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mensfeld/code-on-incus`",
+    "usage": "```\nSet up a [LANGUAGE] coding agent in Incus to [TASK_DESCRIPTION]. Use the 'code-on-incus' skill to create a persistent container named [CONTAINER_NAME] with [REQUIRED_RESOURCES] (e.g., 2 vCPUs, 4GB RAM). Mount the workspace from [HOST_PATH] to [CONTAINER_PATH]. Initialize the environment with [DEPENDENCIES] and connect to Claude for AI-assisted coding. Provide the container's IP address and SSH command for access. After completion, clean up the container unless [PERSIST] is set to true.\n```\nCopy\n\n```\n### Incus Coding Agent Setup Report\n\n**Container Details:**\n- Name: `dev-python-20241115`\n- Status: Running (Persistent)\n- IP Address: 10.0.0.15\n- SSH Command: `ssh -p 2222 root@localhost`\n\n**Workspace Configuration:**\n- Host Path: `/home/user/projects/ai-assistant`\n- Container Path: `/workspace`\n- Permissions: Read/Write (UID 1000)\n\n**Environment Setup:**\n- Language: Python 3.11\n- Dependencies Installed:\n  - pip 23.3.1\n  - poetry 1.7.0\n  - numpy 1.26.2\n  - pandas 2.1.3\n  - langchain 0.0.350\n- VS Code Server: Running on port 8080\n\n**AI-Assisted Coding:**\nClaude has been connected to the container via the Incus bridge. The agent is ready to receive prompts like:\n```\nCreate a FastAPI endpoint in /workspace/src/api.py that:\n1. Accepts POST requests to /predict\n2. Uses the loaded model from /workspace/models/ai_model.pkl\n3. Returns predictions in JSON format\n```\n\n**Next Steps:**\n1. Access the container via SSH: `ssh -p 2222 root@localhost`\n2. Open VS Code Web UI at `http://localhost:8080`\n3. Use Claude to generate or modify code in the mounted workspace\n4. To persist changes after session end, the container will retain state unless explicitly destroyed.\n\n**Resource Usage:**\n- CPU: 1.2/2 vCPUs\n- Memory: 1.8/4GB\n- Disk: 12.4/50GB\n\n**Cleanup Command:**\n`incus delete dev-python-20241115 --force` (if not persisting)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "code-on-incus#main-content",
+      "code-on-incus#overview",
+      "code-on-incus#setup",
+      "code-on-incus#examples",
+      "code-on-incus#tools",
+      "code-on-incus#mcp",
+      "code-on-incus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "`code-on-incus` cấp cho mỗi AI agent một system container riêng biệt với đầy đủ quyền root, Docker, package manager và systemd—mà không làm lộ hệ thống host hay credentials của bạn. Các agent có thể hoạt động như trên một máy chủ thực thụ: cài đặt package, chạy service, quản lý cron job và sử dụng Docker. SSH key, biến môi trường (environment variables) và Git token được lưu trên host và không bao giờ bị lộ cho agent trừ khi bạn chủ động mount chúng. Công cụ này tích hợp tính năng phát hiện mối đe dọa ở cấp kernel qua nftables để giám sát reverse shell, quét credential, DNS tunneling và rò rỉ dữ liệu (data exfiltration), tự động tạm dừng hoặc kill container khi phát hiện hoạt động đáng ngờ. Session vẫn được duy trì sau khi khởi động lại, hỗ trợ chạy song song nhiều slot với sự cô lập hoàn toàn, và các file trong workspace vẫn được giữ lại ngay cả khi container bị xóa.\n\n- Chạy song song nhiều AI coding agent trong môi trường cô lập nhưng vẫn có thể truy cập chung workspace.\n- Ngăn chặn rò rỉ thông tin xác thực khi giao nhiệm vụ phát triển cho các công cụ AI.\n- Phát hiện và chặn đứng các hành vi độc hại từ AI agent theo thời gian thực mà không cần can thiệp thủ công.\n- Duy trì môi trường phát triển persistent, hoạt động ổn định sau mỗi lần reboot và giữ an toàn cho hệ thống host.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/mensfeld/code-on-incus`",
+    "usage_vi": "```\nThiết lập một coding agent [LANGUAGE] trong Incus để [TASK_DESCRIPTION]. Sử dụng skill 'code-on-incus' để tạo một container persistent tên là [CONTAINER_NAME] với [REQUIRED_RESOURCES] (ví dụ: 2 vCPU, 4GB RAM). Mount workspace từ [HOST_PATH] sang [CONTAINER_PATH]. Khởi tạo môi trường với [DEPENDENCIES] và kết nối với Claude để lập trình có AI hỗ trợ. Cung cấp địa chỉ IP của container và lệnh SSH để truy cập. Sau khi hoàn tất, hãy dọn dẹp container trừ khi [PERSIST] được đặt thành true.\n```\nCopy\n\n```\n### Báo cáo Thiết lập Incus Coding Agent\n\n**Thông tin chi tiết Container:**\n- Tên: `dev-python-20241115`\n- Trạng thái: Đang chạy (Persistent)\n- Địa chỉ IP: 10.0.0.15\n- Lệnh SSH: `ssh -p 2222 root@localhost`\n\n**Cấu hình Workspace:**\n- Đường dẫn Host: `/home/user/projects/ai-assistant`\n- Đường dẫn Container: `/workspace`\n- Quyền truy cập: Đọc/Ghi (Read/Write) (UID 1000)\n\n**Thiết lập Môi trường:**\n- Ngôn ngữ: Python 3.11\n- Các thư viện đã cài đặt (Dependencies Installed):\n  - pip 23.3.1\n  - poetry 1.7.0\n  - numpy 1.26.2\n  - pandas 2.1.3\n  - langchain 0.0.350\n- VS Code Server: Đang chạy trên port 8080\n\n**Lập trình có AI hỗ trợ:**\nClaude đã được kết nối với container thông qua bridge Incus. Agent đã sẵn sàng nhận các prompt như:\n```\nTạo một endpoint FastAPI trong /workspace/src/api.py thực hiện:\n1. Nhận các request POST gửi tới /predict\n2. Sử dụng model đã tải từ /workspace/models/ai_model.pkl\n3. Trả về kết quả dự đoán dưới định dạng JSON\n```\n\n**Các bước tiếp theo:**\n1. Truy cập container qua SSH: `ssh -p 2222 root@localhost`\n2. Mở VS Code Web UI tại `http://localhost:8080`\n3. Sử dụng Claude để tạo hoặc sửa đổi mã nguồn trong workspace đã mount\n4. Để duy trì các thay đổi sau khi kết thúc session, container sẽ giữ nguyên trạng thái trừ khi bị hủy một cách rõ ràng.\n\n**Tài nguyên sử dụng:**\n- CPU: 1.2/2 vCPUs\n- Memory: 1.8/4GB\n- Ổ đĩa: 12.4/50GB\n\n**Lệnh dọn dẹp:**\n`incus delete dev-python-20241115 --force` (nếu không cần duy trì)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:50:02.558940Z",
+    "http_status": 200,
+    "content_hash": "e08fcd59a2e402441c1989b91071db21a133ce8079e369c9be382bcaac7ce691",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\code-on-incus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\code-on-incus.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Chạy các coding agent trong sandbox Incus",
+  "short_description_vi": "Chạy các coding agent trong container Incus cô lập với tính năng duy trì session, cô lập workspace và hỗ trợ chạy multi-slot. Giải pháp lý tưởng cho các môi trường phát triển sandbox an toàn. Kết nối với Claude để lập trình có AI hỗ trợ."
+}

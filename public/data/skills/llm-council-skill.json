@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llm-council-skill",
+  "slug": "llm-council-skill",
+  "name": "Llm Council Skill",
+  "headline": "LLM Council: Multi-Model AI Brainstorming",
+  "short_description": "A skill to claude code that enables brainstorming with other LLMs (ChatGPT, Gemini) before presenting the implementation plan to the user",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "gcpdev",
+  "install_command": "git clone https://github.com/gcpdev/llm-council-skill.git",
+  "source_repo_url": "https://github.com/gcpdev/llm-council-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-skills",
+    "claude-code-skill",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "LLM Council Skill brings collaborative intelligence to your Claude workflow by querying ChatGPT and Gemini simultaneously for their perspectives on technical decisions. The skill analyzes responses from all three models, identifies valuable insights, and synthesizes a comprehensive implementation plan with attribution to each model's contributions. This approach helps teams avoid blind spots, explore alternatives, and make more robust architectural and design decisions by leveraging the distinct capabilities and training of multiple AI models. Simply ask Claude to \"consult the council\" followed by your question to activate multi-model brainstorming.\nArchitecting microservices systems with input from multiple AI perspectives\nDesigning database schemas and evaluating tradeoffs between approaches\nPlanning React application structure and state management strategies\nTechnical decision-making on infrastructure and system design",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gcpdev/llm-council-skill`",
+    "usage": "```\nAct as a coordinator for a brainstorming session with other LLMs (ChatGPT, Gemini) to develop an implementation plan for [PROJECT]. First, gather ideas from each LLM on the best approach to [TASK]. Then, synthesize the most promising ideas into a cohesive plan. Finally, present the final implementation plan to me, including pros and cons of each approach.\n```\nCopy\n\n```\n# Implementation Plan for [PROJECT]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "llm-council-skill#main-content",
+      "llm-council-skill#overview",
+      "llm-council-skill#setup",
+      "llm-council-skill#examples",
+      "llm-council-skill#tools",
+      "llm-council-skill#mcp",
+      "llm-council-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LLM Council Skill brings collaborative intelligence to your Claude workflow by querying ChatGPT and Gemini simultaneously for their perspectives on technical decisions. The skill analyzes responses from all three models, identifies valuable insights, and synthesizes a comprehensive implementation plan with attribution to each model's contributions. This approach helps teams avoid blind spots, explore alternatives, and make more robust architectural and design decisions by leveraging the distinct capabilities and training of multiple AI models. Simply ask Claude to \"consult the council\" followed by your question to activate multi-model brainstorming.\nArchitecting microservices systems with input from multiple AI perspectives\nDesigning database schemas and evaluating tradeoffs between approaches\nPlanning React application structure and state management strategies\nTechnical decision-making on infrastructure and system design",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gcpdev/llm-council-skill`",
+    "usage_vi": "```\nAct as a coordinator for a brainstorming session with other LLMs (ChatGPT, Gemini) to develop an implementation plan for [PROJECT]. First, gather ideas from each LLM on the best approach to [TASK]. Then, synthesize the most promising ideas into a cohesive plan. Finally, present the final implementation plan to me, including pros and cons of each approach.\n```\nCopy\n\n```\n# Implementation Plan for [PROJECT]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:30:10.735538Z",
+    "http_status": 200,
+    "content_hash": "bd1da00fe9153ef6f10145c49223093fe1a703aa7c84ce07baffa0a950664f8f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\llm-council-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\llm-council-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LLM Council: Multi-Model AI Brainstorming",
+  "short_description_vi": "A skill to claude code that enables brainstorming with other LLMs (ChatGPT, Gemini) before presenting the implementation plan to the user"
+}

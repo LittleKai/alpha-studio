@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aws-devops-projects",
+  "slug": "aws-devops-projects",
+  "name": "AWS-DevOps-Projects",
+  "headline": "AWS-DevOps-Projects: Enhance Automation Skills",
+  "short_description": "AWS-DevOps-Projects automates cloud infrastructure management for operations teams. It uses IaC tools like Terraform and CloudFormation to deploy scalable, reliable systems on AWS. Projects include CI/CD pipelines, serverless architectures, and database management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "225 min",
+  "author": "shahinam2",
+  "install_command": "git clone https://github.com/shahinam2/AWS-DevOps-Projects.git",
+  "source_repo_url": "https://github.com/shahinam2/AWS-DevOps-Projects",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ansible",
+    "lambda",
+    "ec2",
+    "terraform",
+    "yaml",
+    "s3",
+    "rds",
+    "cloudformation",
+    "aws"
+  ],
+  "sections": {
+    "overview": "The AWS-DevOps-Projects skill is designed to showcase practical applications of AWS and DevOps principles through a series of real-world projects. Each project emphasizes automation, scalability, and reliability, making it an invaluable resource for developers and product managers looking to enhance their workflow automation capabilities. By working through these projects, users can gain hands-on experience that directly translates to their work environments, improving their efficiency and effectiveness in managing cloud resources. One of the key benefits of the AWS-DevOps-Projects skill is its focus on practical implementation. With an intermediate difficulty level and a time to implement of just 30 minutes, this skill allows users to quickly integrate automation techniques into their workflows. While specific time savings are not quantified, the ability to automate repetitive tasks and streamline processes can lead to significant productivity gains over time. This skill is particularly beneficial for those involved in project management, cloud engineering, and operations, as it equips them with the tools needed to optimize their systems and processes. Targeted towards developers, product managers, and AI practitioners, this skill is ideal for anyone looking to enhance their understanding of AWS and DevOps methodologies. Whether you are a software engineer aiming to improve deployment processes or a product manager seeking to ensure reliable application performance, the AWS-DevOps-Projects skill provides valuable insights and practical applications. Use cases include setting up CI/CD pipelines, automating infrastructure provisioning, and implementing monitoring solutions, all of which are essential for maintaining robust cloud environments. The implementation of these projects requires a basic understanding of AWS services and DevOps practices, making it suitable for those with an intermediate skill level. As organizations increasingly adopt AI-first workflows, integrating skills like AWS-DevOps-Projects becomes crucial. This skill not only enhances automation capabilities but also aligns with the broader trend of utilizing AI agents to manage and optimize workflows, ensuring that teams can focus on strategic initiatives rather than mundane tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shahinam2/AWS-DevOps-Projects`",
+    "usage": "```\nGenerate a complete AWS DevOps project plan for [PROJECT_NAME] that deploys a [DESCRIBE_ARCHITECTURE] on AWS. Include Terraform/CloudFormation templates for infrastructure, a CI/CD pipeline using [CI_TOOL], and monitoring setup with [MONITORING_TOOL]. Ensure the project follows AWS Well-Architected Framework principles for [PILLAR_NAME] pillar. Provide estimated costs for the first 3 months using [AWS_PRICING_CALCULATOR_LINK].\n```\nCopy\n\n```\n### AWS DevOps Project Plan: Serverless E-commerce Backend\n\n**Project Overview:**\nThis project automates the deployment of a serverless e-commerce backend on AWS, including API Gateway, Lambda functions, DynamoDB tables, and Cognito authentication. The system is designed to handle 10,000 concurrent users with auto-scaling enabled. Infrastructure is defined using Terraform, and CI/CD is implemented via GitHub Actions. Monitoring is set up with Amazon CloudWatch and AWS X-Ray.\n\n**Infrastructure Components:**\n1. **Terraform Templates:**\n   - `main.tf`: Defines VPC, subnets, security groups, and IAM roles\n   - `api.tf`: Configures API Gateway, Lambda functions, and DynamoDB tables\n   - `monitoring.tf`: Sets up CloudWatch alarms and X-Ray tracing\n   - All templates follow AWS Well-Architected Framework for Operational Excellence pillar\n\n2. **CI/CD Pipeline (GitHub Actions):**\n   - **Stage 1 (Lint & Test):** Runs Terraform fmt, validate, and tflint\n   - **Stage 2 (Plan):** Generates Terraform plan for review\n   - **Stage 3 (Deploy):** Applies Terraform changes to dev environment\n   - **Stage 4 (Promote):** Manual approval to deploy to prod\n   - Pipeline includes security scanning with Checkov and Trivy\n\n3. **Monitoring Setup:**\n   - CloudWatch Alarms for Lambda errors (>1% error rate)\n   - DynamoDB CloudWatch Metrics for throttling and latency\n   - X-Ray traces for API Gateway and Lambda performance\n   - SNS notifications for critical alerts to #devops-alerts Slack channel\n\n**Estimated Costs (First 3 Months):**\n- **Compute:** Lambda invocations (10M/month): $16.80\n- **Database:** DynamoDB (100GB storage, 1M reads/day): $25.00\n- **API Gateway:** REST API (10M requests/month): $35.00\n- **Monitoring:** CloudWatch (10 metrics, 1M logs/month): $10.00\n- **Total Estimated Cost:** $86.80/month (varies with usage)\n\n**Next Steps:**\n1. Review Terraform templates in `/terraform/` directory\n2. Run `terraform init && terraform plan` to preview changes\n3. Deploy to dev environment using GitHub Actions workflow\n4. Perform load testing with Locust to validate scaling behavior\n5. Promote to production after security review and approval\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "aws-devops-projects#main-content",
+      "aws-devops-projects#overview",
+      "aws-devops-projects#setup",
+      "aws-devops-projects#examples",
+      "aws-devops-projects#tools",
+      "aws-devops-projects#mcp",
+      "aws-devops-projects#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The AWS-DevOps-Projects skill is designed to showcase practical applications of AWS and DevOps principles through a series of real-world projects. Each project emphasizes automation, scalability, and reliability, making it an invaluable resource for developers and product managers looking to enhance their workflow automation capabilities. By working through these projects, users can gain hands-on experience that directly translates to their work environments, improving their efficiency and effectiveness in managing cloud resources. One of the key benefits of the AWS-DevOps-Projects skill is its focus on practical implementation. With an intermediate difficulty level and a time to implement of just 30 minutes, this skill allows users to quickly integrate automation techniques into their workflows. While specific time savings are not quantified, the ability to automate repetitive tasks and streamline processes can lead to significant productivity gains over time. This skill is particularly beneficial for those involved in project management, cloud engineering, and operations, as it equips them with the tools needed to optimize their systems and processes. Targeted towards developers, product managers, and AI practitioners, this skill is ideal for anyone looking to enhance their understanding of AWS and DevOps methodologies. Whether you are a software engineer aiming to improve deployment processes or a product manager seeking to ensure reliable application performance, the AWS-DevOps-Projects skill provides valuable insights and practical applications. Use cases include setting up CI/CD pipelines, automating infrastructure provisioning, and implementing monitoring solutions, all of which are essential for maintaining robust cloud environments. The implementation of these projects requires a basic understanding of AWS services and DevOps practices, making it suitable for those with an intermediate skill level. As organizations increasingly adopt AI-first workflows, integrating skills like AWS-DevOps-Projects becomes crucial. This skill not only enhances automation capabilities but also aligns with the broader trend of utilizing AI agents to manage and optimize workflows, ensuring that teams can focus on strategic initiatives rather than mundane tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shahinam2/AWS-DevOps-Projects`",
+    "usage_vi": "```\nGenerate a complete AWS DevOps project plan for [PROJECT_NAME] that deploys a [DESCRIBE_ARCHITECTURE] on AWS. Include Terraform/CloudFormation templates for infrastructure, a CI/CD pipeline using [CI_TOOL], and monitoring setup with [MONITORING_TOOL]. Ensure the project follows AWS Well-Architected Framework principles for [PILLAR_NAME] pillar. Provide estimated costs for the first 3 months using [AWS_PRICING_CALCULATOR_LINK].\n```\nCopy\n\n```\n### AWS DevOps Project Plan: Serverless E-commerce Backend\n\n**Project Overview:**\nThis project automates the deployment of a serverless e-commerce backend on AWS, including API Gateway, Lambda functions, DynamoDB tables, and Cognito authentication. The system is designed to handle 10,000 concurrent users with auto-scaling enabled. Infrastructure is defined using Terraform, and CI/CD is implemented via GitHub Actions. Monitoring is set up with Amazon CloudWatch and AWS X-Ray.\n\n**Infrastructure Components:**\n1. **Terraform Templates:**\n   - `main.tf`: Defines VPC, subnets, security groups, and IAM roles\n   - `api.tf`: Configures API Gateway, Lambda functions, and DynamoDB tables\n   - `monitoring.tf`: Sets up CloudWatch alarms and X-Ray tracing\n   - All templates follow AWS Well-Architected Framework for Operational Excellence pillar\n\n2. **CI/CD Pipeline (GitHub Actions):**\n   - **Stage 1 (Lint & Test):** Runs Terraform fmt, validate, and tflint\n   - **Stage 2 (Plan):** Generates Terraform plan for review\n   - **Stage 3 (Deploy):** Applies Terraform changes to dev environment\n   - **Stage 4 (Promote):** Manual approval to deploy to prod\n   - Pipeline includes security scanning with Checkov and Trivy\n\n3. **Monitoring Setup:**\n   - CloudWatch Alarms for Lambda errors (>1% error rate)\n   - DynamoDB CloudWatch Metrics for throttling and latency\n   - X-Ray traces for API Gateway and Lambda performance\n   - SNS notifications for critical alerts to #devops-alerts Slack channel\n\n**Estimated Costs (First 3 Months):**\n- **Compute:** Lambda invocations (10M/month): $16.80\n- **Database:** DynamoDB (100GB storage, 1M reads/day): $25.00\n- **API Gateway:** REST API (10M requests/month): $35.00\n- **Monitoring:** CloudWatch (10 metrics, 1M logs/month): $10.00\n- **Total Estimated Cost:** $86.80/month (varies with usage)\n\n**Next Steps:**\n1. Review Terraform templates in `/terraform/` directory\n2. Run `terraform init && terraform plan` to preview changes\n3. Deploy to dev environment using GitHub Actions workflow\n4. Perform load testing with Locust to validate scaling behavior\n5. Promote to production after security review and approval\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:28.779110Z",
+    "http_status": 200,
+    "content_hash": "bb670360d4418c2053ffbfc539809a9696d6172587b2c040ca96b288d1f9edcf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aws-devops-projects.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aws-devops-projects.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AWS-DevOps-Projects: Enhance Automation Skills",
+  "short_description_vi": "AWS-DevOps-Projects automates cloud infrastructure management for operations teams. It uses IaC tools like Terraform and CloudFormation to deploy scalable, reliable systems on AWS. Projects include CI/CD pipelines, serverless architectures, and database management."
+}

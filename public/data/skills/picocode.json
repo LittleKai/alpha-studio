@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/picocode",
+  "slug": "picocode",
+  "name": "browser-use",
+  "headline": "Picocode - Automate CI Workflows",
+  "short_description": "Picocode is a Rust-based coding agent for CI workflows and small codemods. It integrates with Claude to automate code changes, reducing manual effort for developers. Connects to CI pipelines and version control systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "jondot",
+  "install_command": "git clone https://github.com/jondot/picocode.git",
+  "source_repo_url": "https://github.com/jondot/picocode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "copilot",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Picocode is a minimal, high-performance Rust coding agent designed for developers who need a lightweight assistant for code automation tasks. It integrates with multiple LLM providers including Anthropic Claude, OpenAI, Google Gemini, and DeepSeek through a single compact binary with no heavy dependencies. The tool supports interactive CLI usage, scriptable recipes for CI/CD automation, and persona-driven analysis where you can switch between expert profiles (Architect, Security, Zen Master, etc.) to change how the agent approaches code review and modification. It includes a comprehensive toolkit with filesystem operations, regex search, bash execution, and browser automation, while prioritizing safety by requiring confirmation for destructive actions by default. Developers can use picocode for security reviews, project analysis, codemod automation, and integration into existing development workflows.\nAutomated security code reviews with the security persona\nCI/CD pipeline automation using pre-defined recipes\nMulti-file codemod and refactoring tasks\nProject analysis and improvement suggestions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jondot/picocode`",
+    "usage": "```\nUse Picocode to automate a codemod for [PROJECT_NAME]. The goal is to [SPECIFIC_CHANGE_DESCRIPTION] in all files matching [FILE_PATTERN]. Apply the change only if [CONDITIONAL_LOGIC] is met. Generate a diff showing the proposed changes and explain the impact on the codebase. Include a command to run the codemod via Picocode CLI: `picocode apply --project [PROJECT_NAME] --pattern [FILE_PATTERN] --change [CHANGE_DESCRIPTION]`.\n```\nCopy\n\n```\n### Picocode Codemod Proposal: Replace `unwrap()` with `expect()` in Error Handling\n\n**Project:** `inventory-service` (Rust-based microservice)\n**Files Affected:** 12 files in `src/error.rs`, `src/handlers/*.rs`, and `src/models/*.rs`\n**Pattern:** `unwrap()` calls in `Result` or `Option` contexts where the error message is unclear\n\n**Proposed Changes:**\n```diff\n- let user = db.get_user(id).unwrap();\n+ let user = db.get_user(id).expect(\"Failed to fetch user with ID: {id}\");\n\n- let config = Config::load().unwrap();\n+ let config = Config::load().expect(\"Configuration file missing or invalid\");\n```\n\n**Impact Analysis:**\n1. **Safety:** Eliminates potential panics in production by replacing silent failures with descriptive errors.\n2. **Debugging:** Error messages now include context (e.g., user ID or config file path), reducing mean time to resolution (MTTR) for incidents.\n3. **Performance:** No measurable impact; `expect()` has identical runtime behavior to `unwrap()`.\n4. **Risk:** Low. The change is additive and does not modify logic—only error messages. Test coverage remains unchanged.\n\n**Commands to Apply:**\n```bash\n# Preview changes (dry run)\npicocode apply --project inventory-service --pattern \"src/**/*.rs\" --change \"replace_unwrap_with_expect\"\n\n# Apply changes\npicocode apply --project inventory-service --pattern \"src/**/*.rs\" --change \"replace_unwrap_with_expect\" --commit\n```\n\n**Next Steps:**\n1. Review the diff in your terminal or CI logs.\n2. Run the test suite: `cargo test` to ensure no regressions.\n3. Commit the changes if the diff is acceptable: `git commit -m \"chore: replace unwrap() with expect() for better error context\"`.\n\n**Note:** Picocode will automatically create a PR in your GitHub repository if the `--commit` flag is used. The PR will include the diff and a summary of the changes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "picocode#main-content",
+      "picocode#overview",
+      "picocode#setup",
+      "picocode#examples",
+      "picocode#tools",
+      "picocode#mcp",
+      "picocode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Picocode is a minimal, high-performance Rust coding agent designed for developers who need a lightweight assistant for code automation tasks. It integrates with multiple LLM providers including Anthropic Claude, OpenAI, Google Gemini, and DeepSeek through a single compact binary with no heavy dependencies. The tool supports interactive CLI usage, scriptable recipes for CI/CD automation, and persona-driven analysis where you can switch between expert profiles (Architect, Security, Zen Master, etc.) to change how the agent approaches code review and modification. It includes a comprehensive toolkit with filesystem operations, regex search, bash execution, and browser automation, while prioritizing safety by requiring confirmation for destructive actions by default. Developers can use picocode for security reviews, project analysis, codemod automation, and integration into existing development workflows.\nAutomated security code reviews with the security persona\nCI/CD pipeline automation using pre-defined recipes\nMulti-file codemod and refactoring tasks\nProject analysis and improvement suggestions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jondot/picocode`",
+    "usage_vi": "```\nUse Picocode to automate a codemod for [PROJECT_NAME]. The goal is to [SPECIFIC_CHANGE_DESCRIPTION] in all files matching [FILE_PATTERN]. Apply the change only if [CONDITIONAL_LOGIC] is met. Generate a diff showing the proposed changes and explain the impact on the codebase. Include a command to run the codemod via Picocode CLI: `picocode apply --project [PROJECT_NAME] --pattern [FILE_PATTERN] --change [CHANGE_DESCRIPTION]`.\n```\nCopy\n\n```\n### Picocode Codemod Proposal: Replace `unwrap()` with `expect()` in Error Handling\n\n**Project:** `inventory-service` (Rust-based microservice)\n**Files Affected:** 12 files in `src/error.rs`, `src/handlers/*.rs`, and `src/models/*.rs`\n**Pattern:** `unwrap()` calls in `Result` or `Option` contexts where the error message is unclear\n\n**Proposed Changes:**\n```diff\n- let user = db.get_user(id).unwrap();\n+ let user = db.get_user(id).expect(\"Failed to fetch user with ID: {id}\");\n\n- let config = Config::load().unwrap();\n+ let config = Config::load().expect(\"Configuration file missing or invalid\");\n```\n\n**Impact Analysis:**\n1. **Safety:** Eliminates potential panics in production by replacing silent failures with descriptive errors.\n2. **Debugging:** Error messages now include context (e.g., user ID or config file path), reducing mean time to resolution (MTTR) for incidents.\n3. **Performance:** No measurable impact; `expect()` has identical runtime behavior to `unwrap()`.\n4. **Risk:** Low. The change is additive and does not modify logic—only error messages. Test coverage remains unchanged.\n\n**Commands to Apply:**\n```bash\n# Preview changes (dry run)\npicocode apply --project inventory-service --pattern \"src/**/*.rs\" --change \"replace_unwrap_with_expect\"\n\n# Apply changes\npicocode apply --project inventory-service --pattern \"src/**/*.rs\" --change \"replace_unwrap_with_expect\" --commit\n```\n\n**Next Steps:**\n1. Review the diff in your terminal or CI logs.\n2. Run the test suite: `cargo test` to ensure no regressions.\n3. Commit the changes if the diff is acceptable: `git commit -m \"chore: replace unwrap() with expect() for better error context\"`.\n\n**Note:** Picocode will automatically create a PR in your GitHub repository if the `--commit` flag is used. The PR will include the diff and a summary of the changes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:04:07.575901Z",
+    "http_status": 200,
+    "content_hash": "e3918bd8c64bb7ec949dac8bb591016c4dc2df620ba15767ad2bb8b94aa1ebf4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\picocode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\picocode.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Picocode - Automate CI Workflows",
+  "short_description_vi": "Picocode is a Rust-based coding agent for CI workflows and small codemods. It integrates with Claude to automate code changes, reducing manual effort for developers. Connects to CI pipelines and version control systems."
+}

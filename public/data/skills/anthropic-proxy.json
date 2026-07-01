@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/anthropic-proxy",
+  "slug": "anthropic-proxy",
+  "name": "browser-use",
+  "headline": "anthropic-proxy: convert anthropic to openai format",
+  "short_description": "Proxy server that converts Anthropic API requests to OpenAI format for use with OpenRouter. Enables operations teams to use Claude Code with OpenRouter instead of the Anthropic API. Connects Anthropic's API format to OpenAI-compatible endpoints.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "maxnowack",
+  "install_command": "git clone https://github.com/maxnowack/anthropic-proxy.git",
+  "source_repo_url": "https://github.com/maxnowack/anthropic-proxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "llm",
+    "openrouter"
+  ],
+  "sections": {
+    "overview": "anthropic-proxy is a proxy server that converts Anthropic API requests into OpenAI-compatible format and routes them to OpenRouter or custom endpoints. It enables operations teams and developers to use Claude Code with OpenRouter instead of the Anthropic API directly. The proxy listens on a configurable port (default 3000) and transforms requests transparently, allowing you to maintain Anthropic's API format while connecting to OpenAI-compatible services. Configure it with environment variables for your OpenRouter API key, custom base URLs, model selection, and port settings. This is useful for teams needing gateway flexibility, custom routing, or integration with OpenAI-compatible infrastructure.\nIntegrate Claude Code into existing applications that rely on Anthropic API without significant rewrites.\nAutomate the transformation of API requests to streamline workflows between Anthropic and OpenAI services.\nUse the proxy server to test and develop applications that require OpenAI-compatible endpoints while using Anthropic's API format.\nEnable debugging and logging of API requests to troubleshoot issues in real-time during development.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/maxnowack/anthropic-proxy`",
+    "usage": "```\nSet up an Anthropic-to-OpenAI proxy for [OPENROUTER_ENDPOINT] to enable Claude Code usage. Configure the proxy to handle [API_VERSION] requests and ensure compatibility with [ANTHROPIC_MODEL_NAME]. Test the proxy with a sample prompt: '[SAMPLE_PROMPT]' and verify the response format matches OpenAI's structure. Document the proxy configuration in [CONFIG_FILE_PATH].\n```\nCopy\n\n```\n```json\n{\n  \"id\": \"cmpl-proxy-12345\",\n  \"object\": \"chat.completion\",\n  \"created\": 1712345678,\n  \"model\": \"claude-3-opus-openrouter\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've successfully configured the Anthropic-to-OpenAI proxy for OpenRouter. The proxy now accepts requests in Anthropic's format and converts them to OpenAI-compatible responses. The sample prompt 'Explain quantum computing in simple terms' was processed correctly, returning a structured response with the expected metadata. Configuration file saved to /etc/anthropic-proxy/config.json with endpoint settings for claude-3-opus-openrouter.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 25,\n    \"completion_tokens\": 89,\n    \"total_tokens\": 114\n  }\n}\n```\n\n**Proxy Configuration Summary:**\n- **Source Model:** claude-3-opus-20240229\n- **Target Endpoint:** https://openrouter.ai/api/v1\n- **Conversion Rules Applied:**\n  - Anthropic's `messages` array → OpenAI's `messages` array\n  - `system` parameter → `messages[0].content` with role 'system'\n  - `max_tokens` → `max_completion_tokens`\n- **Validation Results:**\n  - ✅ API request/response format conversion successful\n  - ✅ Token usage metrics preserved\n  - ✅ Error handling for unsupported Anthropic parameters implemented\n\n**Next Steps:**\n1. Deploy the proxy to your Kubernetes cluster using the provided Helm chart.\n2. Update your CI/CD pipeline to route Claude Code requests through this proxy.\n3. Monitor performance with Prometheus metrics exposed at `/metrics`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "anthropic-proxy#main-content",
+      "anthropic-proxy#overview",
+      "anthropic-proxy#setup",
+      "anthropic-proxy#examples",
+      "anthropic-proxy#tools",
+      "anthropic-proxy#mcp",
+      "anthropic-proxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "anthropic-proxy is a proxy server that converts Anthropic API requests into OpenAI-compatible format and routes them to OpenRouter or custom endpoints. It enables operations teams and developers to use Claude Code with OpenRouter instead of the Anthropic API directly. The proxy listens on a configurable port (default 3000) and transforms requests transparently, allowing you to maintain Anthropic's API format while connecting to OpenAI-compatible services. Configure it with environment variables for your OpenRouter API key, custom base URLs, model selection, and port settings. This is useful for teams needing gateway flexibility, custom routing, or integration with OpenAI-compatible infrastructure.\nIntegrate Claude Code into existing applications that rely on Anthropic API without significant rewrites.\nAutomate the transformation of API requests to streamline workflows between Anthropic and OpenAI services.\nUse the proxy server to test and develop applications that require OpenAI-compatible endpoints while using Anthropic's API format.\nEnable debugging and logging of API requests to troubleshoot issues in real-time during development.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/maxnowack/anthropic-proxy`",
+    "usage_vi": "```\nSet up an Anthropic-to-OpenAI proxy for [OPENROUTER_ENDPOINT] to enable Claude Code usage. Configure the proxy to handle [API_VERSION] requests and ensure compatibility with [ANTHROPIC_MODEL_NAME]. Test the proxy with a sample prompt: '[SAMPLE_PROMPT]' and verify the response format matches OpenAI's structure. Document the proxy configuration in [CONFIG_FILE_PATH].\n```\nCopy\n\n```\n```json\n{\n  \"id\": \"cmpl-proxy-12345\",\n  \"object\": \"chat.completion\",\n  \"created\": 1712345678,\n  \"model\": \"claude-3-opus-openrouter\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"I've successfully configured the Anthropic-to-OpenAI proxy for OpenRouter. The proxy now accepts requests in Anthropic's format and converts them to OpenAI-compatible responses. The sample prompt 'Explain quantum computing in simple terms' was processed correctly, returning a structured response with the expected metadata. Configuration file saved to /etc/anthropic-proxy/config.json with endpoint settings for claude-3-opus-openrouter.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 25,\n    \"completion_tokens\": 89,\n    \"total_tokens\": 114\n  }\n}\n```\n\n**Proxy Configuration Summary:**\n- **Source Model:** claude-3-opus-20240229\n- **Target Endpoint:** https://openrouter.ai/api/v1\n- **Conversion Rules Applied:**\n  - Anthropic's `messages` array → OpenAI's `messages` array\n  - `system` parameter → `messages[0].content` with role 'system'\n  - `max_tokens` → `max_completion_tokens`\n- **Validation Results:**\n  - ✅ API request/response format conversion successful\n  - ✅ Token usage metrics preserved\n  - ✅ Error handling for unsupported Anthropic parameters implemented\n\n**Next Steps:**\n1. Deploy the proxy to your Kubernetes cluster using the provided Helm chart.\n2. Update your CI/CD pipeline to route Claude Code requests through this proxy.\n3. Monitor performance with Prometheus metrics exposed at `/metrics`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:49:27.562201Z",
+    "http_status": 200,
+    "content_hash": "5989fd22cd4b8718ab1bdac45ec5e855f669823093714adc463441c0250facfb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\anthropic-proxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\anthropic-proxy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "anthropic-proxy: convert anthropic to openai format",
+  "short_description_vi": "Proxy server that converts Anthropic API requests to OpenAI format for use with OpenRouter. Enables operations teams to use Claude Code with OpenRouter instead of the Anthropic API. Connects Anthropic's API format to OpenAI-compatible endpoints."
+}

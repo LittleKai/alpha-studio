@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-rag-skills",
+  "slug": "claude-rag-skills",
+  "name": "Claude Rag Skills",
+  "headline": "rag development for claude code: audit and optimize",
+  "short_description": "Build, audit, and optimize RAG pipelines with Claude Code. Ideal for operations teams managing AI-driven knowledge retrieval systems. Connects to vector databases and LLM workflows for enhanced document processing and retrieval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "floflo777",
+  "install_command": "git clone https://github.com/floflo777/claude-rag-skills.git",
+  "source_repo_url": "https://github.com/floflo777/claude-rag-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "skills",
+    "embeddings",
+    "rag",
+    "retrieval-augmented-generation",
+    "claude-code",
+    "vector-database",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Claude RAG Skills provides four specialized tools for RAG system development: RAG Audit scans your codebase to identify chunking issues, embedding problems, retrieval anti-patterns, and production gaps; RAG Eval measures system quality using retrieval metrics like Recall@K and NDCG plus generation metrics like faithfulness and relevance; Chunking Advisor recommends optimal strategies based on document type, query patterns, and embedding models; RAG Scaffold generates production-ready boilerplate for frameworks including LangChain, LlamaIndex, and TypeScript implementations. These skills help operations teams and developers catch issues early, benchmark performance against best practices, and accelerate RAG deployment with tested configurations.\nIdentify and fix chunking anti-patterns in existing RAG implementations\nEvaluate RAG system quality with standard retrieval and generation metrics\nGet chunking strategy recommendations for different document types and embedding models\nGenerate production-ready RAG boilerplate with caching, reranking, and error handling",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/floflo777/claude-rag-skills`",
+    "usage": "```\nI need to build a RAG pipeline for [COMPANY] in the [INDUSTRY] sector. The pipeline should connect to [VECTOR_DATABASE] and process [DATA_TYPE] documents. Provide a step-by-step guide with Claude Code snippets to set up the pipeline, including data ingestion, vectorization, and retrieval components.\n```\nCopy\n\n```\n# RAG Pipeline Setup Guide for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-rag-skills#main-content",
+      "claude-rag-skills#overview",
+      "claude-rag-skills#setup",
+      "claude-rag-skills#examples",
+      "claude-rag-skills#tools",
+      "claude-rag-skills#mcp",
+      "claude-rag-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude RAG Skills cung cấp bốn công cụ chuyên dụng để phát triển hệ thống RAG: RAG Audit quét codebase của bạn nhằm phát hiện các vấn đề về chunking, lỗi embedding, các anti-pattern trong truy xuất (retrieval) và các lỗ hổng khi đưa lên production; RAG Eval đo lường chất lượng hệ thống bằng cách sử dụng các chỉ số truy xuất như Recall@K và NDCG cùng các chỉ số tạo nội dung (generation) như tính trung thực (faithfulness) và độ liên quan (relevance); Chunking Advisor gợi ý chiến lược tối ưu dựa trên loại tài liệu, query pattern và embedding model; RAG Scaffold tạo boilerplate sẵn sàng cho production cho các framework như LangChain, LlamaIndex và các triển khai TypeScript. Những skill này giúp các đội ngũ vận hành và lập trình viên phát hiện sớm vấn đề, benchmark hiệu năng theo các best practice và tăng tốc triển khai RAG bằng các cấu hình đã qua kiểm thử.\nPhát hiện và khắc phục các chunking anti-pattern trong các triển khai RAG hiện tại\nĐánh giá chất lượng hệ thống RAG bằng các chỉ số truy xuất và tạo nội dung tiêu chuẩn\nNhận đề xuất chiến lược chunking cho các loại tài liệu và embedding model khác nhau\nTạo RAG boilerplate sẵn sàng cho production tích hợp sẵn caching, reranking và xử lý lỗi",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/floflo777/claude-rag-skills`",
+    "usage_vi": "```\nTôi cần xây dựng một RAG pipeline cho [COMPANY] hoạt động trong ngành [INDUSTRY]. Pipeline này cần kết nối với [VECTOR_DATABASE] và xử lý các tài liệu dạng [DATA_TYPE]. Hãy cung cấp hướng dẫn từng bước kèm các đoạn code snippet của Claude Code để setup pipeline, bao gồm các thành phần data ingestion, vectorization và retrieval.\n```\nCopy\n\n```\n# Hướng dẫn Setup RAG Pipeline cho [COMPANY]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:38:04.877018Z",
+    "http_status": 200,
+    "content_hash": "e7aefd005642d31592beddee2c043fbeeae7e6b1590f0c60cdc08b499b9d2e27",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rag-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rag-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phát triển RAG cho Claude Code: Audit và Tối ưu hóa",
+  "short_description_vi": "Xây dựng, audit và tối ưu hóa các RAG pipeline bằng Claude Code. Giải pháp lý tưởng cho các đội ngũ vận hành đang quản lý hệ thống truy xuất kiến thức dựa trên AI. Kết nối dễ dàng với các vector database và LLM workflow để tăng cường xử lý cũng như truy xuất tài liệu."
+}

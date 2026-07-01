@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-computer-use",
+  "slug": "open-computer-use",
+  "name": "Open Computer Use",
+  "headline": "Open Computer Use - Autonomous Computer Control",
+  "short_description": "Open Computer Use enables AI agents to autonomously control computers at scale. It is an open-source platform for browser-based computer control, suitable for operations teams. It connects to Claude and other LLM agents, allowing them to perform tasks like GUI automation and CLI operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "LLmHub-dev",
+  "install_command": "git clone https://github.com/LLmHub-dev/open-computer-use.git",
+  "source_repo_url": "https://github.com/LLmHub-dev/open-computer-use",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "saas-application",
+    "full-stack",
+    "llm",
+    "claude",
+    "google-api",
+    "computer-control",
+    "agent",
+    "openai",
+    "gui-automation",
+    "computer-use-agent",
+    "claude-code",
+    "gemini-api",
+    "llm-agents",
+    "anthropic",
+    "agentic-framework",
+    "ai",
+    "gemini-ai",
+    "ai-agents",
+    "cli-tools",
+    "computer-use"
+  ],
+  "sections": {
+    "overview": "Open Computer Use is an open-source platform that gives AI agents real computer control capabilities similar to Claude Computer Use. Agents can browse the web, execute terminal commands, control the desktop via mouse and keyboard, and orchestrate multi-step workflows through a planner agent. The platform runs in OSS mode with a single API key, supports browser automation, terminal access, and desktop control, and integrates with the MCP server for use in Claude Desktop, Cursor, and Windsurf. It's designed for teams building autonomous agents that perform actual tasks rather than just discussing them.\nAutonomous web research and form filling\nQA testing and checkout flow automation\nGo-to-market outreach and prospect discovery\nSocial media posting and engagement",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/LLmHub-dev/open-computer-use`",
+    "usage": "```\nUse Open Computer Use to automate [TASK] on [TARGET_COMPUTER]. For example: 'Automate the process of downloading monthly sales reports from [WEBSITE_URL], saving them to [LOCAL_PATH], and renaming files with the current date.' Include any specific steps or tools needed, such as browser extensions or CLI commands.\n```\nCopy\n\n```\nI’ve successfully automated the monthly sales report download process on the target computer. Here’s what happened:\n\n1. **Browser Automation**: The AI agent opened Google Chrome and navigated to the sales reports portal at `https://reports.company.com/monthly`. It logged in using the stored credentials (username: `sales_team`, password: `*****`).\n\n2. **File Handling**: The agent downloaded the report for July 2024, which was a 12MB Excel file named `monthly_sales_july_2024.xlsx`. It saved the file to `C:\\Users\\Public\\Downloads\\` and then moved it to the designated folder at `D:\\Reports\\2024\\July\\`.\n\n3. **Renaming and Logging**: The file was renamed to `Sales_Report_July_2024.xlsx` to standardize the naming convention. A log entry was created in `D:\\Reports\\download_log.txt` with the timestamp `2024-08-01 14:32:10`, noting the successful download and file path.\n\n4. **CLI Verification**: The agent ran a PowerShell command to verify the file’s integrity: `Get-FileHash D:\\Reports\\2024\\July\\Sales_Report_July_2024.xlsx -Algorithm SHA256` and confirmed the hash matched the expected value.\n\nThe entire process took 2 minutes and 45 seconds, with no manual intervention required. The report is now ready for further processing or distribution.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-computer-use#main-content",
+      "open-computer-use#overview",
+      "open-computer-use#setup",
+      "open-computer-use#examples",
+      "open-computer-use#tools",
+      "open-computer-use#mcp",
+      "open-computer-use#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open Computer Use is an open-source platform that gives AI agents real computer control capabilities similar to Claude Computer Use. Agents can browse the web, execute terminal commands, control the desktop via mouse and keyboard, and orchestrate multi-step workflows through a planner agent. The platform runs in OSS mode with a single API key, supports browser automation, terminal access, and desktop control, and integrates with the MCP server for use in Claude Desktop, Cursor, and Windsurf. It's designed for teams building autonomous agents that perform actual tasks rather than just discussing them.\nAutonomous web research and form filling\nQA testing and checkout flow automation\nGo-to-market outreach and prospect discovery\nSocial media posting and engagement",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/LLmHub-dev/open-computer-use`",
+    "usage_vi": "```\nUse Open Computer Use to automate [TASK] on [TARGET_COMPUTER]. For example: 'Automate the process of downloading monthly sales reports from [WEBSITE_URL], saving them to [LOCAL_PATH], and renaming files with the current date.' Include any specific steps or tools needed, such as browser extensions or CLI commands.\n```\nCopy\n\n```\nI’ve successfully automated the monthly sales report download process on the target computer. Here’s what happened:\n\n1. **Browser Automation**: The AI agent opened Google Chrome and navigated to the sales reports portal at `https://reports.company.com/monthly`. It logged in using the stored credentials (username: `sales_team`, password: `*****`).\n\n2. **File Handling**: The agent downloaded the report for July 2024, which was a 12MB Excel file named `monthly_sales_july_2024.xlsx`. It saved the file to `C:\\Users\\Public\\Downloads\\` and then moved it to the designated folder at `D:\\Reports\\2024\\July\\`.\n\n3. **Renaming and Logging**: The file was renamed to `Sales_Report_July_2024.xlsx` to standardize the naming convention. A log entry was created in `D:\\Reports\\download_log.txt` with the timestamp `2024-08-01 14:32:10`, noting the successful download and file path.\n\n4. **CLI Verification**: The agent ran a PowerShell command to verify the file’s integrity: `Get-FileHash D:\\Reports\\2024\\July\\Sales_Report_July_2024.xlsx -Algorithm SHA256` and confirmed the hash matched the expected value.\n\nThe entire process took 2 minutes and 45 seconds, with no manual intervention required. The report is now ready for further processing or distribution.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:42.431561Z",
+    "http_status": 200,
+    "content_hash": "6b6c9b0ab3e146dea03f67edc43f92716d0a8714b41b7d5724a8390e3708241b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-computer-use.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-computer-use.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Open Computer Use - Autonomous Computer Control",
+  "short_description_vi": "Open Computer Use enables AI agents to autonomously control computers at scale. It is an open-source platform for browser-based computer control, suitable for operations teams. It connects to Claude and other LLM agents, allowing them to perform tasks like GUI automation and CLI operations."
+}

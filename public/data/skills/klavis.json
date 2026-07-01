@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/klavis",
+  "slug": "klavis",
+  "name": "Klavis AI",
+  "headline": "Klavis AI - MCP Integration Platform for AI Agents",
+  "short_description": "Klavis AI provides a strong MCP integration platform that helps AI agents to utilize tools efficiently at any scale. Designed for developers, it enhances automation and integration capabilities, making it ideal for various applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "Klavis-AI",
+  "install_command": "claude install Klavis-AI/klavis",
+  "source_repo_url": "https://github.com/Klavis-AI/klavis",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "api",
+    "open-source",
+    "ai-agents",
+    "developer-tools",
+    "integration"
+  ],
+  "sections": {
+    "overview": "Klavis is an MCP (Model Context Protocol) integration platform designed to help AI agents access and utilize tools efficiently at any scale. The project provides infrastructure for connecting AI agents like Claude Code and Cursor to external systems and services through standardized MCP servers. Developers use Klavis to build and manage MCP integrations that enhance automation capabilities across various applications. The platform includes MCP clients for different LLM providers, MCP server implementations, and comprehensive documentation for deployment and integration. It supports OAuth-based authentication patterns and offers multiple examples and templates to accelerate development.\nIntegrate AI agents with third-party APIs to automate data retrieval and processing.\nAutomate data workflows across platforms, reducing manual intervention and errors.\nEnhance chatbot capabilities in Discord for improved user engagement and support.\nBuild scalable AI solutions for enterprise applications that require robust integration.",
+    "setup": "Terminal\nCopy\n`claude install Klavis-AI/klavis`\n`git clone https://github.com/Klavis-AI/klavis`",
+    "usage": "```\nIntegrate Klavis AI with [CHATBOT_PLATFORM] to automate customer support workflows. Use the MCP integration platform to connect AI agents with tools like [TOOL_NAME] for seamless automation. Ensure the integration handles [SPECIFIC_USE_CASE] efficiently.\n```\nCopy\n\n```\nTo integrate Klavis AI with ChatBot for automating customer support, follow these steps:\n\n1. **Access Developer Token**: Log in to your ChatBot account and navigate to the developer settings to retrieve your Developer Access Token. This token is essential for authenticating API requests.\n\n2. **Set Up Klavis AI**: Configure Klavis AI to utilize the MCP integration platform. This involves setting up the necessary endpoints and ensuring that the AI agents are ready to interact with the tools you plan to integrate.\n\n3. **Integrate with ChatBot API**: Use the retrieved Developer Access Token to authenticate API requests. Include the token in the HTTP header for each request as follows: `Authorization: Bearer ${ACCESS_TOKEN}`.\n\n4. **Define Workflows**: Create specific workflows that outline how the AI agents will interact with the tools. For example, you might set up a workflow where the AI agent uses the ChatBot API to fetch customer data and then processes this data using another integrated tool.\n\n5. **Test and Deploy**: Thoroughly test the integration to ensure that all workflows are functioning as expected. Once testing is complete, deploy the integration to your production environment.\n\nBy following these steps, you can effectively integrate Klavis AI with ChatBot to automate customer support workflows, enhancing efficiency and customer satisfaction.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "klavis#main-content",
+      "klavis#overview",
+      "klavis#setup",
+      "klavis#examples",
+      "klavis#tools",
+      "klavis#mcp",
+      "klavis#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Klavis là nền tảng tích hợp MCP (Model Context Protocol) được thiết kế nhằm giúp các AI agent truy cập và sử dụng các công cụ một cách hiệu quả ở mọi quy mô. Dự án cung cấp cơ sở hạ tầng để kết nối các AI agent như Claude Code và Cursor với các hệ thống và dịch vụ bên ngoài thông qua các MCP server chuẩn hóa. Các nhà phát triển sử dụng Klavis để xây dựng và quản lý các tích hợp MCP, giúp nâng cao khả năng tự động hóa trên nhiều ứng dụng khác nhau. Nền tảng này bao gồm các MCP client cho nhiều nhà cung cấp LLM khác nhau, các bản triển khai MCP server và tài liệu hướng dẫn toàn diện cho việc triển khai và tích hợp. Nền tảng hỗ trợ các phương thức xác thực dựa trên OAuth, đồng thời cung cấp nhiều ví dụ và template để tăng tốc quá trình phát triển.\n\nTích hợp AI agent với API của bên thứ ba để tự động hóa việc truy xuất và xử lý dữ liệu.\nTự động hóa các data workflow trên các nền tảng, giảm thiểu can thiệp thủ công và sai sót.\nNâng cao năng lực của chatbot trên Discord nhằm tăng cường tương tác và hỗ trợ người dùng.\nXây dựng các giải pháp AI có khả năng mở rộng (scalable) cho các ứng dụng doanh nghiệp đòi hỏi tích hợp mạnh mẽ.",
+    "setup_vi": "Terminal\nSao chép\n`claude install Klavis-AI/klavis`\n`git clone https://github.com/Klavis-AI/klavis`",
+    "usage_vi": "```\nTích hợp Klavis AI với [CHATBOT_PLATFORM] để tự động hóa quy trình hỗ trợ khách hàng. Sử dụng nền tảng tích hợp MCP để kết nối các AI agent với các công cụ như [TOOL_NAME] nhằm tự động hóa quy trình một cách liền mạch. Hãy đảm bảo tích hợp xử lý [SPECIFIC_USE_CASE] một cách hiệu quả.\n```\nSao chép\n\n```\nĐể tích hợp Klavis AI với ChatBot nhằm tự động hóa việc hỗ trợ khách hàng, hãy thực hiện các bước sau:\n\n1. **Truy cập Developer Token**: Đăng nhập vào tài khoản ChatBot của bạn và đi tới phần cài đặt dành cho nhà phát triển (developer settings) để lấy Developer Access Token. Token này là bắt buộc để xác thực các yêu cầu API.\n\n2. **Thiết lập Klavis AI**: Cấu hình Klavis AI để sử dụng nền tảng tích hợp MCP. Bước này bao gồm việc thiết lập các endpoint cần thiết và đảm bảo các AI agent đã sẵn sàng tương tác với các công cụ bạn muốn tích hợp.\n\n3. **Tích hợp với ChatBot API**: Sử dụng Developer Access Token đã lấy để xác thực các API request. Thêm token vào HTTP header của mỗi request theo cấu trúc sau: `Authorization: Bearer ${ACCESS_TOKEN}`.\n\n4. **Định nghĩa Workflow**: Tạo các workflow cụ thể mô tả cách các AI agent tương tác với công cụ. Ví dụ: bạn có thể thiết lập một workflow trong đó AI agent sử dụng ChatBot API để lấy dữ liệu khách hàng, sau đó xử lý dữ liệu này bằng một công cụ tích hợp khác.\n\n5. **Kiểm thử và Triển khai**: Kiểm thử kỹ lưỡng phần tích hợp để đảm bảo tất cả các workflow hoạt động như mong đợi. Sau khi hoàn tất kiểm thử, tiến hành triển khai (deploy) tích hợp lên môi trường production.\n\nBằng cách thực hiện các bước này, bạn có thể tích hợp thành công Klavis AI với ChatBot để tự động hóa quy trình hỗ trợ khách hàng, giúp nâng cao hiệu suất và mức độ hài lòng của khách hàng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:05.920471Z",
+    "http_status": 200,
+    "content_hash": "e15e4c8a0e3ede9289f1fe025f97ccd358735098fdddf73a88caf811df087c9f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\klavis.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\klavis.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Klavis AI - Nền tảng tích hợp MCP cho các AI agent",
+  "short_description_vi": "Klavis AI cung cấp nền tảng tích hợp MCP mạnh mẽ giúp các AI agent khai thác công cụ hiệu quả ở mọi quy mô. Được thiết kế dành cho các nhà phát triển, nền tảng này nâng cao khả năng tự động hóa và tích hợp, là giải pháp lý tưởng cho nhiều loại ứng dụng khác nhau."
+}

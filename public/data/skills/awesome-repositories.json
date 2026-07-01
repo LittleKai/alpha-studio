@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-repositories",
+  "slug": "awesome-repositories",
+  "name": "Awesome Repositories",
+  "headline": "4k github stars personal showcase",
+  "short_description": "Automatically curates and manages a personal list of GitHub repositories you've starred. Useful for operations teams to track and organize open-source projects, dependencies, and tools. Integrates with GitHub and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "eagleusb",
+  "install_command": "git clone https://github.com/eagleusb/awesome-repositories.git",
+  "source_repo_url": "https://github.com/eagleusb/awesome-repositories",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "awesome-list",
+    "list",
+    "awesome"
+  ],
+  "sections": {
+    "overview": "awesome-repositories automatically catalogs GitHub starred repositories with detailed organization by programming language, helping developers and operations teams track and manage open-source projects and dependencies. The skill provides comprehensive language-based categorization across 100+ languages, from Go and Python to niche languages like Ballerina and Mojo. This structured approach enables teams to quickly discover relevant tools, monitor dependency ecosystems, and maintain organized reference libraries of useful open-source projects without manual curation.\nTrack and organize open-source dependencies by programming language\nMaintain a curated library of Go, Python, and TypeScript tools for development teams\nManage technology stack inventory across multiple languages\nDiscover relevant open-source projects within specific language ecosystems",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eagleusb/awesome-repositories`",
+    "usage": "```\nGenerate a curated list of GitHub repositories I starred in the past [TIME_PERIOD] that are most relevant to [TOPIC_AREA]. For each repository, include: name, description, stars, last commit date, and a brief note on why it's useful for [SPECIFIC_USE_CASE]. Focus on repositories that are actively maintained and have recent activity. Format the output as a markdown table with columns: Repository | Description | Stars | Last Commit | Use Case Note.\n```\nCopy\n\n```\n| Repository | Description | Stars | Last Commit | Use Case Note |\n|------------|-------------|-------|-------------|----------------|\n| **fastapi** | Modern, fast (high-performance) web framework for building APIs with Python 3.7+ based on standard Python type hints. | 72,450 | 2024-05-15 | Ideal for rapidly prototyping microservices in Python. Used in production at [COMPANY_NAME]. |\n| **next.js** | The React Framework for the Web. Enables server-side rendering and static site generation for React apps. | 120,300 | 2024-05-14 | Perfect for building SEO-friendly web applications with React. Our marketing team uses this for landing pages. |\n| **terraform-provider-aws** | Terraform AWS provider allows managing AWS resources using Terraform. | 3,200 | 2024-05-16 | Critical for our infrastructure-as-code (IaC) workflows. Ensures consistency across AWS environments. |\n| **react-query** | Performant and flexible React hooks for fetching, caching, and updating asynchronous data in React applications. | 35,600 | 2024-05-13 | Simplifies data management in our React frontend. Reduces boilerplate code by 40% in our analytics dashboard. |\n| **kubernetes-sigs/kustomize** | Customization of kubernetes YAML configurations. Part of the Kubernetes SIGs ecosystem. | 9,800 | 2024-05-12 | Used for environment-specific Kubernetes deployments. Streamlines our CI/CD pipeline by templating configs. |\n\n**Summary**:\n- **Total Repositories**: 5\n- **Average Stars**: 48,270\n- **Most Recent Commit**: 2024-05-16 (terraform-provider-aws)\n- **Top Use Case**: Infrastructure-as-code and web development frameworks.\n\n**Recommendations**:\n1. **fastapi** and **next.js** should be prioritized for new projects due to their high star counts and active maintenance.\n2. **terraform-provider-aws** is a must-include for any team managing AWS infrastructure.\n3. Consider contributing to **kubernetes-sigs/kustomize** to align with industry standards and improve maintainability.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-repositories#main-content",
+      "awesome-repositories#overview",
+      "awesome-repositories#setup",
+      "awesome-repositories#examples",
+      "awesome-repositories#tools",
+      "awesome-repositories#mcp",
+      "awesome-repositories#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "awesome-repositories tự động phân loại các repository GitHub đã star với cấu trúc chi tiết theo ngôn ngữ lập trình, giúp các nhà phát triển và đội ngũ vận hành dễ dàng theo dõi cũng như quản lý các dự án mã nguồn mở và dependency. Skill này cung cấp khả năng phân loại toàn diện theo hơn 100 ngôn ngữ lập trình, từ các ngôn ngữ phổ biến như Go, Python cho đến các ngôn ngữ ngách như Ballerina và Mojo. Cách tiếp cận có cấu trúc này giúp các đội ngũ nhanh chóng tìm kiếm các công cụ phù hợp, giám sát hệ sinh thái dependency và duy trì các thư viện tham chiếu ngăn nắp cho các dự án mã nguồn mở hữu ích mà không cần phân loại thủ công.\nTheo dõi và tổ chức các dependency mã nguồn mở theo ngôn ngữ lập trình\nDuy trì thư viện tuyển chọn các công cụ Go, Python và TypeScript cho các đội ngũ phát triển\nQuản lý danh mục công nghệ (technology stack) trên nhiều ngôn ngữ khác nhau\nKhám phá các dự án mã nguồn mở phù hợp trong các hệ sinh thái ngôn ngữ cụ thể",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/eagleusb/awesome-repositories`",
+    "usage_vi": "```\nTạo danh sách tuyển chọn các repository GitHub tôi đã star trong khoảng thời gian [TIME_PERIOD] có liên quan nhất đến [TOPIC_AREA]. Với mỗi repository, hãy bao gồm: tên, mô tả, số star, ngày commit cuối cùng và một ghi chú ngắn gọn về lý do tại sao nó hữu ích cho [SPECIFIC_USE_CASE]. Tập trung vào các repository được bảo trì tích cực và có hoạt động gần đây. Định dạng kết quả đầu ra dưới dạng bảng markdown với các cột: Repository | Description | Stars | Last Commit | Use Case Note.\n```\nCopy\n\n```\n| Repository | Description | Stars | Last Commit | Use Case Note |\n|------------|-------------|-------|-------------|----------------|\n| **fastapi** | Web framework hiện đại, nhanh (hiệu năng cao) để xây dựng API với Python 3.7+ dựa trên Python type hints tiêu chuẩn. | 72,450 | 2024-05-15 | Lý tưởng để nhanh chóng tạo prototype cho các microservice bằng Python. Được sử dụng trong môi trường production tại [COMPANY_NAME]. |\n| **next.js** | React Framework dành cho Web. Hỗ trợ server-side rendering và static site generation cho các ứng dụng React. | 120,300 | 2024-05-14 | Hoàn hảo để xây dựng các ứng dụng web thân thiện với SEO bằng React. Đội ngũ marketing của chúng tôi sử dụng công cụ này cho các trang landing page. |\n| **terraform-provider-aws** | AWS provider cho Terraform cho phép quản lý các tài nguyên AWS bằng Terraform. | 3,200 | 2024-05-16 | Quan trọng đối với quy trình làm việc infrastructure-as-code (IaC) của chúng tôi. Đảm bảo tính nhất quán trên các môi trường AWS. |\n| **react-query** | Các React hook hiệu năng cao và linh hoạt để fetch, cache và cập nhật dữ liệu bất đồng bộ trong các ứng dụng React. | 35,600 | 2024-05-13 | Đơn giản hóa việc quản lý dữ liệu trong frontend React của chúng tôi. Giảm 40% boilerplate code trong dashboard phân tích. |\n| **kubernetes-sigs/kustomize** | Tùy biến các cấu hình YAML của Kubernetes. Một phần của hệ sinh thái Kubernetes SIGs. | 9,800 | 2024-05-12 | Được sử dụng cho các deployment Kubernetes theo từng môi trường cụ thể. Tối ưu hóa pipeline CI/CD của chúng tôi bằng cách tạo template cho các file config. |\n\n**Tóm tắt**:\n- **Tổng số Repository**: 5\n- **Số Star trung bình**: 48.270\n- **Commit gần đây nhất**: 2024-05-16 (terraform-provider-aws)\n- **Use Case chính**: Infrastructure-as-code và các web development framework.\n\n**Khuyến nghị**:\n1. Nên ưu tiên **fastapi** và **next.js** cho các dự án mới nhờ lượng star lớn và việc bảo trì tích cực.\n2. **terraform-provider-aws** là công cụ bắt buộc phải có cho bất kỳ đội ngũ nào đang quản lý cơ sở hạ tầng AWS.\n3. Cân nhắc đóng góp cho **kubernetes-sigs/kustomize** để phù hợp với các tiêu chuẩn công nghiệp và cải thiện khả năng bảo trì.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:04.795545Z",
+    "http_status": 200,
+    "content_hash": "d3302c9f5950ba24a99192d4a3a450b57cfa81acbab4997b0f174c41038acc4d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-repositories.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-repositories.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Showcase cá nhân các repository GitHub đã star",
+  "short_description_vi": "Tự động tổng hợp và quản lý danh sách cá nhân các repository GitHub bạn đã star. Hữu ích cho các đội ngũ vận hành (operations teams) trong việc theo dõi và tổ chức các dự án mã nguồn mở, dependency và công cụ. Tích hợp trực tiếp với GitHub và các Claude agent."
+}

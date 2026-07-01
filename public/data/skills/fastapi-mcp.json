@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/fastapi-mcp",
+  "slug": "fastapi-mcp",
+  "name": "fastapi_mcp",
+  "headline": "FastAPI MCP: Secure AI Model Integration",
+  "short_description": "FastAPI MCP allows you to expose your FastAPI endpoints as Model Context Protocol tools, complete with authentication features. This integration enhances your AI applications by providing secure and efficient access to your models.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "160 min",
+  "author": "tadata-org",
+  "install_command": "claude install tadata-org/fastapi_mcp",
+  "source_repo_url": "https://github.com/tadata-org/fastapi_mcp",
+  "works_with": [
+    "ClaudeCursorWindsurf"
+  ],
+  "tags": [
+    "AI",
+    "authentication",
+    "API",
+    "MCP",
+    "FastAPI"
+  ],
+  "sections": {
+    "overview": "FastAPI MCP is a tool that bridges FastAPI web applications with Model Context Protocol, allowing you to expose your API endpoints as accessible tools for AI agents like Claude Code and Cursor. The skill converts your FastAPI routes into MCP-compliant tools that AI agents can discover and invoke directly. It supports multiple transport mechanisms including HTTP and Server-Sent Events (SSE), enabling flexible integration patterns. This integration lets developers securely connect their existing FastAPI services to AI workflows without rewriting code. The project is actively maintained with comprehensive test coverage and supports Python 3.10+.\nIntegrate AI models with FastAPI for secure and efficient access to machine learning capabilities.\nBuild scalable AI applications with built-in authentication features to protect sensitive data.\nExpose machine learning models as APIs for easy integration into existing applications and workflows.\nEnhance the security of your AI applications by implementing robust authentication mechanisms.",
+    "setup": "Terminal\nCopy\n`claude install tadata-org/fastapi_mcp`\n`git clone https://github.com/tadata-org/fastapi_mcp`",
+    "usage": "```\nIntegrate my FastAPI application located at [URL] with the Model Context Protocol (MCP) to expose endpoints as tools. Ensure the integration includes authentication using [AUTH_METHOD]. Provide the necessary code snippets and configuration steps to complete this setup.\n```\nCopy\n\n```\nTo integrate your FastAPI application with the Model Context Protocol (MCP), follow these steps:\n\n1. **Install the Required Packages**:\n   ```bash\n   pip install fastapi uvicorn model-context-protocol\n   ```\n\n2. **Update Your FastAPI Application**:\n   ```python\n   from fastapi import FastAPI\n   from model_context_protocol import MCP\n   \n   app = FastAPI()\n   mcp = MCP(app)\n   \n   @app.get(\"/tools/{tool_id}\")\n   async def get_tool(tool_id: str):\n       return {\"tool_id\": tool_id, \"status\": \"active\"}\n   \n   if __name__ == \"__main__\":\n       import uvicorn\n       uvicorn.run(app, host=\"0.0.0.0\", port=8000)\n   ```\n\n3. **Configure Authentication**:\n   ```python\n   from fastapi.security import HTTPBearer\n   \n   security = HTTPBearer()\n   \n   @app.get(\"/secure-tools/{tool_id}\")\n   async def get_secure_tool(tool_id: str, security: HTTPBearer = Depends(security)):\n       return {\"tool_id\": tool_id, \"status\": \"active\", \"authenticated\": True}\n   ```\n\n4. **Run Your Application**:\n   ```bash\n   uvicorn main:app --reload\n   ```\n\nYour FastAPI application is now integrated with MCP, and the endpoints are exposed as tools with authentication.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor, Windsurf"
+    ],
+    "related_skills": [
+      "fastapi-mcp#main-content",
+      "fastapi-mcp#overview",
+      "fastapi-mcp#setup",
+      "fastapi-mcp#examples",
+      "fastapi-mcp#tools",
+      "fastapi-mcp#mcp",
+      "fastapi-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "FastAPI MCP là công cụ kết nối ứng dụng web FastAPI với Model Context Protocol, cho phép bạn chia sẻ các API endpoint của mình dưới dạng các công cụ cho các AI agent như Claude Code và Cursor truy cập. Skill này chuyển đổi các route FastAPI của bạn thành các công cụ tuân thủ chuẩn MCP để AI agent có thể tự động phát hiện và gọi trực tiếp. Dự án hỗ trợ nhiều phương thức truyền tải (transport mechanism) bao gồm HTTP và Server-Sent Events (SSE), mang lại các mô hình tích hợp linh hoạt. Sự tích hợp này giúp lập trình viên kết nối an toàn các dịch vụ FastAPI hiện có vào các workflow AI mà không cần viết lại code. Dự án được duy trì liên tục với test coverage toàn diện và hỗ trợ Python 3.10+.\nTích hợp các AI model với FastAPI để truy cập các tính năng machine learning một cách an toàn và hiệu quả.\nXây dựng các ứng dụng AI có khả năng mở rộng với các tính năng xác thực tích hợp sẵn để bảo vệ dữ liệu nhạy cảm.\nCung cấp các model machine learning dưới dạng API để dễ dàng tích hợp vào các ứng dụng và workflow hiện có.\nNâng cao tính bảo mật cho ứng dụng AI bằng cách triển khai các cơ chế xác thực mạnh mẽ.",
+    "setup_vi": "Terminal\nSao chép\n`claude install tadata-org/fastapi_mcp`\n`git clone https://github.com/tadata-org/fastapi_mcp`",
+    "usage_vi": "```\nTích hợp ứng dụng FastAPI của tôi tại [URL] với Model Context Protocol (MCP) để cung cấp các endpoint dưới dạng công cụ. Hãy đảm bảo tích hợp này bao gồm phương thức xác thực bằng [AUTH_METHOD]. Cung cấp các đoạn code và các bước cấu hình cần thiết để hoàn tất quá trình setup này.\n```\nSao chép\n\n```\nĐể tích hợp ứng dụng FastAPI của bạn với Model Context Protocol (MCP), hãy thực hiện các bước sau:\n\n1. **Cài đặt các gói cần thiết**:\n   ```bash\n   pip install fastapi uvicorn model-context-protocol\n   ```\n\n2. **Cập nhật ứng dụng FastAPI của bạn**:\n   ```python\n   from fastapi import FastAPI\n   from model_context_protocol import MCP\n   \n   app = FastAPI()\n   mcp = MCP(app)\n   \n   @app.get(\"/tools/{tool_id}\")\n   async def get_tool(tool_id: str):\n       return {\"tool_id\": tool_id, \"status\": \"active\"}\n   \n   if __name__ == \"__main__\":\n       import uvicorn\n       uvicorn.run(app, host=\"0.0.0.0\", port=8000)\n   ```\n\n3. **Cấu hình xác thực**:\n   ```python\n   from fastapi.security import HTTPBearer\n   \n   security = HTTPBearer()\n   \n   @app.get(\"/secure-tools/{tool_id}\")\n   async def get_secure_tool(tool_id: str, security: HTTPBearer = Depends(security)):\n       return {\"tool_id\": tool_id, \"status\": \"active\", \"authenticated\": True}\n   ```\n\n4. **Chạy ứng dụng của bạn**:\n   ```bash\n   uvicorn main:app --reload\n   ```\n\nỨng dụng FastAPI của bạn hiện đã được tích hợp với MCP, và các endpoint đã được cung cấp dưới dạng các công cụ có đi kèm xác thực.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:34:54.243383Z",
+    "http_status": 200,
+    "content_hash": "b1905f68b4c582d822eab5fd536e093317a1411dfbe16df5f12f0d5af79903b1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\fastapi-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\fastapi-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "FastAPI MCP: Tích hợp mô hình AI bảo mật",
+  "short_description_vi": "FastAPI MCP cho phép bạn cung cấp các endpoint FastAPI của mình dưới dạng các công cụ Model Context Protocol, tích hợp sẵn các tính năng xác thực. Giải pháp tích hợp này nâng tầm các ứng dụng AI của bạn nhờ khả năng truy cập các model một cách an toàn và hiệu quả."
+}

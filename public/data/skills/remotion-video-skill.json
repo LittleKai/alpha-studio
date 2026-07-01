@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/remotion-video-skill",
+  "slug": "remotion-video-skill",
+  "name": "Remotion Video Skill",
+  "headline": "Remotion Video Skill - Automate Video Creation",
+  "short_description": "Create videos programmatically using React components and AI-powered text-to-speech. Ideal for operations teams to automate video production, integrating with workflows like content creation and marketing automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "wshuyi",
+  "install_command": "git clone https://github.com/wshuyi/remotion-video-skill.git",
+  "source_repo_url": "https://github.com/wshuyi/remotion-video-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Remotion Video Skill enables you to create videos programmatically using React components and the Remotion framework, with built-in AI-powered text-to-speech audio generation via MiniMax or Edge TTS. The skill uses a scene-based architecture that automatically handles timing and supports animations, subtitles, and music visualization. Operations and marketing teams can integrate it into workflows to automate video production at scale without manual video editing. Setup requires Node.js 18+, Python 3.8+, and ffmpeg; TTS can be configured with either free Edge TTS or MiniMax's paid service for voice cloning.\nGenerate tutorial videos explaining technical concepts\nCreate data visualization and animated chart videos for reporting\nProduce music visualization videos synced to audio tracks\nAutomate marketing video production for content campaigns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wshuyi/remotion-video-skill`",
+    "usage": "```\nGenerate a video using React components and AI-powered text-to-speech for [TOPIC/PURPOSE]. The video should be [DURATION] long, with a [STYLE/TONE] style. Include [SPECIFIC SECTIONS] such as an introduction, key points, and a call-to-action. Use [VOICE] for narration and [MUSIC/BACKGROUND] if applicable. Here's the script structure: [SCRIPT_STRUCTURE].\n```\nCopy\n\n```\nGenerated a 60-second explainer video for 'How to Use Our New AI Tool' in a professional, engaging style. The video includes:\n\n1. **Introduction (0:00-0:10)**: A friendly AI voice (female, US English) narrates: 'Welcome to our quick guide on using our new AI tool. In just 60 seconds, you'll learn how to get started!' with a modern, minimalist background animation.\n\n2. **Key Points (0:10-0:40)**: Three animated bullet points appear on screen with icons:\n   - 'Step 1: Sign in to your dashboard' (accompanied by a login icon animation).\n   - 'Step 2: Upload your data' (with a cloud upload animation).\n   - 'Step 3: Generate insights in seconds' (with a speedometer animation).\n   Each point is narrated with concise, clear explanations.\n\n3. **Call-to-Action (0:40-0:60)**: The AI voice concludes: 'Ready to try it? Visit [YOUR_URL] and start your free trial today!' with a bright, colorful CTA button animation and upbeat background music.\n\nThe video was rendered as an MP4 file with 1080p resolution, using the 'Samantha' AI voice from ElevenLabs for narration and a subtle tech-inspired background track. The React component structure followed a modular design for easy reuse in future videos.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "remotion-video-skill#main-content",
+      "remotion-video-skill#overview",
+      "remotion-video-skill#setup",
+      "remotion-video-skill#examples",
+      "remotion-video-skill#tools",
+      "remotion-video-skill#mcp",
+      "remotion-video-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Remotion Video Skill cho phép bạn tạo video bằng lập trình sử dụng các React component và Remotion framework, tích hợp sẵn khả năng tạo âm thanh text-to-speech bằng AI thông qua MiniMax hoặc Edge TTS. Skill này sử dụng kiến trúc dạng cảnh (scene-based architecture) giúp tự động xử lý thời gian (timing), đồng thời hỗ trợ hiệu ứng chuyển động (animations), phụ đề và trực quan hóa âm nhạc (music visualization). Các đội ngũ vận hành (operations) và marketing có thể tích hợp skill này vào các workflow để tự động hóa sản xuất video trên quy mô lớn mà không cần biên tập video thủ công. Quá trình setup yêu cầu Node.js 18+, Python 3.8+ và ffmpeg; TTS có thể được cấu hình với Edge TTS miễn phí hoặc dịch vụ trả phí của MiniMax để clone giọng nói.\nTạo video hướng dẫn giải thích các khái niệm kỹ thuật\nTạo video trực quan hóa dữ liệu và biểu đồ động để làm báo cáo\nSản xuất video trực quan hóa âm nhạc đồng bộ với các track âm thanh\nTự động hóa sản xuất video marketing cho các chiến dịch nội dung",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/wshuyi/remotion-video-skill`",
+    "usage_vi": "```\nTạo một video sử dụng các React component và text-to-speech tích hợp AI cho [CHỦ ĐỀ/MỤC ĐÍCH]. Video nên có độ dài [THỜI LƯỢNG], mang phong cách [PHONG CÁCH/TÔNG GIỌNG]. Bao gồm [CÁC PHẦN CỤ THỂ] như phần giới thiệu, các điểm chính và lời kêu gọi hành động (call-to-action). Sử dụng [GIỌNG NÓI] để thuyết minh và [NHẠC/NỀN] nếu có. Dưới đây là cấu trúc kịch bản: [CẤU TRÚC_KỊCH_BẢN].\n```\nCopy\n\n```\nĐã tạo một video giải thích dài 60 giây cho 'Cách sử dụng Công cụ AI mới của chúng tôi' với phong cách chuyên nghiệp và lôi cuốn. Video bao gồm:\n\n1. **Giới thiệu (0:00-0:10)**: Giọng đọc AI thân thiện (nữ, tiếng Anh Mỹ) thuyết minh: 'Chào mừng bạn đến với hướng dẫn nhanh về cách sử dụng công cụ AI mới của chúng tôi. Chỉ trong 60 giây, bạn sẽ biết cách bắt đầu!' đi kèm hiệu ứng hoạt họa nền tối giản và hiện đại.\n\n2. **Các điểm chính (0:10-0:40)**: Ba đầu dòng hoạt họa xuất hiện trên màn hình cùng các icon:\n   - 'Bước 1: Đăng nhập vào dashboard của bạn' (đi kèm hiệu ứng hoạt họa icon đăng nhập).\n   - 'Bước 2: Tải lên dữ liệu của bạn' (đi kèm hiệu ứng hoạt họa tải lên đám mây).\n   - 'Bước 3: Tạo thông tin chi tiết trong vài giây' (đi kèm hiệu ứng hoạt họa đồng hồ tốc độ).\n   Mỗi điểm đều được thuyết minh bằng các lời giải thích ngắn gọn, rõ ràng.\n\n3. **Kêu gọi hành động (0:40-0:60)**: Giọng đọc AI kết luận: 'Bạn đã sẵn sàng dùng thử chưa? Hãy truy cập [YOUR_URL] và bắt đầu dùng thử miễn phí ngay hôm nay!' đi kèm hiệu ứng hoạt họa nút CTA nổi bật, đầy màu sắc và nhạc nền sôi động.\n\nVideo được render dưới dạng file MP4 độ phân giải 1080p, sử dụng giọng đọc AI 'Samantha' từ ElevenLabs để thuyết minh và một đoạn nhạc nền nhẹ nhàng mang cảm hứng công nghệ. Cấu trúc React component tuân theo thiết kế mô-đun (modular design) để dễ dàng tái sử dụng trong các video tương lai.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:39:49.632596Z",
+    "http_status": 200,
+    "content_hash": "4736d2ea308955f36e3ca763171780e3733b3ecec00713c5b73803f8cc82eeae",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\remotion-video-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\remotion-video-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Remotion Video Skill - Tự động hóa sản xuất video",
+  "short_description_vi": "Tạo video bằng lập trình sử dụng các React component và tính năng text-to-speech tích hợp AI. Giải pháp lý tưởng cho các đội ngũ vận hành (operations) để tự động hóa sản xuất video, dễ dàng tích hợp vào các workflow như sáng tạo nội dung và tự động hóa marketing."
+}

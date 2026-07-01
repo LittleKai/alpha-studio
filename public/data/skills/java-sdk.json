@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/java-sdk",
+  "slug": "java-sdk",
+  "name": "Java Sdk",
+  "headline": "Java SDK for Model Context Protocol",
+  "short_description": "The Java SDK for Model Context Protocol enables integration with Model Context Protocol servers and clients. Developed in collaboration with Spring AI, it provides strong tools for building AI-driven applications in Java.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/java-sdk",
+  "source_repo_url": "https://github.com/modelcontextprotocol/java-sdk",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "SDK",
+    "Spring AI",
+    "Model Context Protocol",
+    "Java",
+    "AI integration"
+  ],
+  "sections": {
+    "overview": "The java-sdk is the official Model Context Protocol implementation for Java developers, providing tools to build AI-driven applications that integrate seamlessly with MCP servers and clients. Developed in collaboration with Spring AI, it enables Java applications to communicate with Claude Code, Cursor, and other AI tools through the standardized Model Context Protocol. The SDK supports resource management, tool invocation, prompt handling, and bidirectional message exchange. It includes features like JSON Schema validation, icon and metadata support per SEP-973, and comprehensive error handling for both recoverable tool errors and protocol-level errors. Teams building enterprise Java applications with AI capabilities benefit from strong typing, Spring Framework integration, and active maintenance from the Model Context Protocol community.\nIntegrate AI models into existing Java applications for enhanced functionality.\nBuild robust client-server applications utilizing the Model Context Protocol.\nEnhance legacy Java applications with modern AI capabilities.\nDevelop scalable enterprise-level AI solutions tailored to business requirements.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/java-sdk`\n`git clone https://github.com/modelcontextprotocol/java-sdk`",
+    "usage": "```\nUsing the Java SDK for Model Context Protocol, create a client application that connects to a Model Context Protocol server at [SERVER_URL]. The application should authenticate using [AUTHENTICATION_METHOD] and perform the following operations: [OPERATIONS]. Provide the complete Java code implementation with comments explaining each step.\n```\nCopy\n\n```\nHere's a Java client application that connects to a Model Context Protocol server and performs basic operations:\n\n```java\nimport com.thoughtspot.modelcontext.protocol.client.ModelContextClient;\nimport com.thoughtspot.modelcontext.protocol.client.auth.AuthenticationMethod;\nimport com.thoughtspot.modelcontext.protocol.client.auth.BasicAuth;\nimport com.thoughtspot.modelcontext.protocol.client.request.GetModelRequest;\nimport com.thoughtspot.modelcontext.protocol.client.response.ModelResponse;\n\npublic class ModelContextClientExample {\n    public static void main(String[] args) {\n        // Initialize the client with server URL and authentication method\n        ModelContextClient client = new ModelContextClient(\"https://model-context-server.example.com\",\n                new BasicAuth(\"username\", \"password\"));\n\n        // Create a request to get a model\n        GetModelRequest request = new GetModelRequest(\"model_id_123\");\n\n        // Send the request and get the response\n        ModelResponse response = client.getModel(request);\n\n        // Print the model details\n        System.out.println(\"Model Name: \" + response.getModelName());\n        System.out.println(\"Model Version: \" + response.getModelVersion());\n        System.out.println(\"Model Description: \" + response.getModelDescription());\n    }\n}\n```\n\nThis example demonstrates how to:\n1. Initialize the Model Context Protocol client with the server URL and authentication method.\n2. Create a request to get a specific model using its ID.\n3. Send the request and handle the response.\n4. Print the model details from the response.\n\nThe client application uses basic authentication for simplicity, but you can replace it with other authentication methods supported by the Java SDK.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "java-sdk#main-content",
+      "java-sdk#overview",
+      "java-sdk#setup",
+      "java-sdk#examples",
+      "java-sdk#tools",
+      "java-sdk#mcp",
+      "java-sdk#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The java-sdk is the official Model Context Protocol implementation for Java developers, providing tools to build AI-driven applications that integrate seamlessly with MCP servers and clients. Developed in collaboration with Spring AI, it enables Java applications to communicate with Claude Code, Cursor, and other AI tools through the standardized Model Context Protocol. The SDK supports resource management, tool invocation, prompt handling, and bidirectional message exchange. It includes features like JSON Schema validation, icon and metadata support per SEP-973, and comprehensive error handling for both recoverable tool errors and protocol-level errors. Teams building enterprise Java applications with AI capabilities benefit from strong typing, Spring Framework integration, and active maintenance from the Model Context Protocol community.\nIntegrate AI models into existing Java applications for enhanced functionality.\nBuild robust client-server applications utilizing the Model Context Protocol.\nEnhance legacy Java applications with modern AI capabilities.\nDevelop scalable enterprise-level AI solutions tailored to business requirements.",
+    "setup_vi": "Terminal\nCopy\n`claude install modelcontextprotocol/java-sdk`\n`git clone https://github.com/modelcontextprotocol/java-sdk`",
+    "usage_vi": "```\nUsing the Java SDK for Model Context Protocol, create a client application that connects to a Model Context Protocol server at [SERVER_URL]. The application should authenticate using [AUTHENTICATION_METHOD] and perform the following operations: [OPERATIONS]. Provide the complete Java code implementation with comments explaining each step.\n```\nCopy\n\n```\nHere's a Java client application that connects to a Model Context Protocol server and performs basic operations:\n\n```java\nimport com.thoughtspot.modelcontext.protocol.client.ModelContextClient;\nimport com.thoughtspot.modelcontext.protocol.client.auth.AuthenticationMethod;\nimport com.thoughtspot.modelcontext.protocol.client.auth.BasicAuth;\nimport com.thoughtspot.modelcontext.protocol.client.request.GetModelRequest;\nimport com.thoughtspot.modelcontext.protocol.client.response.ModelResponse;\n\npublic class ModelContextClientExample {\n    public static void main(String[] args) {\n        // Initialize the client with server URL and authentication method\n        ModelContextClient client = new ModelContextClient(\"https://model-context-server.example.com\",\n                new BasicAuth(\"username\", \"password\"));\n\n        // Create a request to get a model\n        GetModelRequest request = new GetModelRequest(\"model_id_123\");\n\n        // Send the request and get the response\n        ModelResponse response = client.getModel(request);\n\n        // Print the model details\n        System.out.println(\"Model Name: \" + response.getModelName());\n        System.out.println(\"Model Version: \" + response.getModelVersion());\n        System.out.println(\"Model Description: \" + response.getModelDescription());\n    }\n}\n```\n\nThis example demonstrates how to:\n1. Initialize the Model Context Protocol client with the server URL and authentication method.\n2. Create a request to get a specific model using its ID.\n3. Send the request and handle the response.\n4. Print the model details from the response.\n\nThe client application uses basic authentication for simplicity, but you can replace it with other authentication methods supported by the Java SDK.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:33:07.760333Z",
+    "http_status": 200,
+    "content_hash": "d1ab7a6c5e91d156966341409a8adbd0a7cce4f31810de634ec38b645aa14d2e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\java-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\java-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Java SDK for Model Context Protocol",
+  "short_description_vi": "The Java SDK for Model Context Protocol enables integration with Model Context Protocol servers and clients. Developed in collaboration with Spring AI, it provides strong tools for building AI-driven applications in Java."
+}

@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jenkins-cli",
+  "slug": "jenkins-cli",
+  "name": "browser-use",
+  "headline": "Jenkins CLI - Manage Jenkins from Terminal",
+  "short_description": "A GitHub CLI-style interface for Jenkins, enabling operations teams to manage jobs, runs, logs, and admin tasks directly from the terminal. Integrates with existing Jenkins pipelines and workflows, reducing reliance on the web UI for routine operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "avivsinai",
+  "install_command": "git clone https://github.com/avivsinai/jenkins-cli.git",
+  "source_repo_url": "https://github.com/avivsinai/jenkins-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "ai-agents",
+    "devtools",
+    "pipelines",
+    "agent-skills",
+    "devops",
+    "automation",
+    "jenkins",
+    "ci-cd",
+    "agents",
+    "golang",
+    "codex",
+    "ai",
+    "cli"
+  ],
+  "sections": {
+    "overview": "jk is a cross-platform CLI tool that brings GitHub CLI's familiar command structure to Jenkins automation. It enables developers and operators to inspect runs, stream logs, manage credentials, and administer Jenkins controllers without relying on the web UI. The tool supports context-aware authentication across multiple Jenkins controllers, scriptable output in JSON/YAML with jq and templating support, and discovery-first job filtering with parameter grouping. Job provisioning focuses on Bitbucket-backed Multibranch Pipeline creation, raw config.xml inspection, and Jenkinsfile path management. Key platform operations include node cordoning, credential management, queue inspection, and plugin visibility.\nTrigger and rerun Jenkins jobs directly from the terminal with human-readable or JSON output\nDiscover and filter jobs across folders using glob patterns and result-based filtering\nCreate and configure Bitbucket-backed Multibranch Pipeline jobs programmatically\nStream build logs and download filtered artifact sets during CI/CD pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/avivsinai/jenkins-cli`",
+    "usage": "```\nUse the Jenkins CLI to [COMMAND] for [JENKINS_INSTANCE_URL]. For example: 'List all active jobs with their last build status', 'Trigger a build for [JOB_NAME] with parameters [PARAM1=value1, PARAM2=value2]', 'Fetch logs for the latest run of [JOB_NAME] and extract errors', or 'Pause a job [JOB_NAME] and wait for confirmation'. Include the --depth flag if needed to control API response size.\n```\nCopy\n\n```\n```\n$ jenkins-cli --instance https://jenkins.company.com list-jobs --depth 1\n\nActive Jobs:\n1. backend-unit-tests (last build: SUCCESS #142, duration: 4m 12s)\n2. frontend-build (last build: FAILURE #89, duration: 2m 45s)\n3. security-scan (last build: SUCCESS #203, duration: 12m 3s)\n4. deploy-prod (last build: SUCCESS #45, duration: 8m 15s)\n\n$ jenkins-cli --instance https://jenkins.company.com trigger-build backend-unit-tests --params BRANCH=main,ENV=staging\n\nBuild triggered successfully!\nBuild URL: https://jenkins.company.com/job/backend-unit-tests/143/\nQueue position: 2\n\n$ jenkins-cli --instance https://jenkins.company.com get-logs backend-unit-tests 143 --tail 50\n\n[2024-05-15 14:32:18] INFO: Starting test execution\n[2024-05-15 14:32:22] INFO: Test suite 'AuthServiceTest' completed\n[2024-05-15 14:32:23] ERROR: Test 'UserControllerTest.loginTest' failed: NullPointerException\n[2024-05-15 14:32:24] INFO: Test execution completed with 1 failure\n```\n\nThe Jenkins CLI provides a streamlined way to interact with Jenkins without using the web interface. The commands above demonstrate how to list jobs with their status, trigger a parameterized build, and fetch logs with error extraction. This is particularly useful for operations teams who need to quickly diagnose issues or manage builds during incidents.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "jenkins-cli#main-content",
+      "jenkins-cli#overview",
+      "jenkins-cli#setup",
+      "jenkins-cli#examples",
+      "jenkins-cli#tools",
+      "jenkins-cli#mcp",
+      "jenkins-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "jk is a cross-platform CLI tool that brings GitHub CLI's familiar command structure to Jenkins automation. It enables developers and operators to inspect runs, stream logs, manage credentials, and administer Jenkins controllers without relying on the web UI. The tool supports context-aware authentication across multiple Jenkins controllers, scriptable output in JSON/YAML with jq and templating support, and discovery-first job filtering with parameter grouping. Job provisioning focuses on Bitbucket-backed Multibranch Pipeline creation, raw config.xml inspection, and Jenkinsfile path management. Key platform operations include node cordoning, credential management, queue inspection, and plugin visibility.\nTrigger and rerun Jenkins jobs directly from the terminal with human-readable or JSON output\nDiscover and filter jobs across folders using glob patterns and result-based filtering\nCreate and configure Bitbucket-backed Multibranch Pipeline jobs programmatically\nStream build logs and download filtered artifact sets during CI/CD pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/avivsinai/jenkins-cli`",
+    "usage_vi": "```\nUse the Jenkins CLI to [COMMAND] for [JENKINS_INSTANCE_URL]. For example: 'List all active jobs with their last build status', 'Trigger a build for [JOB_NAME] with parameters [PARAM1=value1, PARAM2=value2]', 'Fetch logs for the latest run of [JOB_NAME] and extract errors', or 'Pause a job [JOB_NAME] and wait for confirmation'. Include the --depth flag if needed to control API response size.\n```\nCopy\n\n```\n```\n$ jenkins-cli --instance https://jenkins.company.com list-jobs --depth 1\n\nActive Jobs:\n1. backend-unit-tests (last build: SUCCESS #142, duration: 4m 12s)\n2. frontend-build (last build: FAILURE #89, duration: 2m 45s)\n3. security-scan (last build: SUCCESS #203, duration: 12m 3s)\n4. deploy-prod (last build: SUCCESS #45, duration: 8m 15s)\n\n$ jenkins-cli --instance https://jenkins.company.com trigger-build backend-unit-tests --params BRANCH=main,ENV=staging\n\nBuild triggered successfully!\nBuild URL: https://jenkins.company.com/job/backend-unit-tests/143/\nQueue position: 2\n\n$ jenkins-cli --instance https://jenkins.company.com get-logs backend-unit-tests 143 --tail 50\n\n[2024-05-15 14:32:18] INFO: Starting test execution\n[2024-05-15 14:32:22] INFO: Test suite 'AuthServiceTest' completed\n[2024-05-15 14:32:23] ERROR: Test 'UserControllerTest.loginTest' failed: NullPointerException\n[2024-05-15 14:32:24] INFO: Test execution completed with 1 failure\n```\n\nThe Jenkins CLI provides a streamlined way to interact with Jenkins without using the web interface. The commands above demonstrate how to list jobs with their status, trigger a parameterized build, and fetch logs with error extraction. This is particularly useful for operations teams who need to quickly diagnose issues or manage builds during incidents.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:07:29.533799Z",
+    "http_status": 200,
+    "content_hash": "a0946c32507542c01bc3f5e39c0d5c8b968a78cd9600e40978be5fcc8ec4832c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jenkins-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jenkins-cli.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Jenkins CLI - Manage Jenkins from Terminal",
+  "short_description_vi": "A GitHub CLI-style interface for Jenkins, enabling operations teams to manage jobs, runs, logs, and admin tasks directly from the terminal. Integrates with existing Jenkins pipelines and workflows, reducing reliance on the web UI for routine operations."
+}

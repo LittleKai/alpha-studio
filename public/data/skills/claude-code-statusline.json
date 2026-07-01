@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-statusline",
+  "slug": "claude-code-statusline",
+  "name": "Claude Code Statusline",
+  "headline": "Claude Code precision statusline tool",
+  "short_description": "Claude Code Statusline enhances terminal workflows with real-time cost tracking, MCP monitoring, and prayer times. It benefits developers and operations teams by providing flexible layouts and beautiful themes for improved productivity and situational awareness.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "rz1989s",
+  "install_command": "git clone https://github.com/rz1989s/claude-code-statusline.git",
+  "source_repo_url": "https://github.com/rz1989s/claude-code-statusline",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "statusline",
+    "cost-tracking",
+    "productivity",
+    "shell-script",
+    "modular-architecture",
+    "developer-tools",
+    "ai-tools",
+    "cli-tool",
+    "caching",
+    "islamic-prayer-times",
+    "cross-platform",
+    "bash",
+    "terminal",
+    "git-integration",
+    "claude-code",
+    "toml"
+  ],
+  "sections": {
+    "overview": "Claude Code Enhanced Statusline transforms your terminal with 28 configurable components across 1-9 lines, providing real-time visibility into API costs, burn rates, cache efficiency, and token usage. The tool integrates MCP monitoring and Islamic prayer times while offering 10+ theme options for visual customization. Built for developers and operations teams who need detailed metrics without cluttering their workflow, it displays block metrics, cost projections, and atomic precision monitoring. Installation takes two minutes via a transparent installer that only modifies your home directory, with support for macOS, Linux, WSL, and multiple package managers.\nMonitor real-time API costs and burn rates while developing with Claude Code\nTrack cache efficiency and token usage across multiple lines in your terminal\nDisplay MCP connection status and prayer times alongside development metrics\nCustomize statusline layout and theme for different terminal environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rz1989s/claude-code-statusline`",
+    "usage": "```\nGenerate a custom statusline configuration for [TOOL_NAME] (e.g., Neovim, tmux, or iTerm2) using claude-code-statusline. The statusline should display: 1) Current [PROJECT_NAME] Git branch and commit status, 2) Real-time [CURRENCY] cost tracking for Claude Code API usage this session, 3) [MCP_SERVICE] MCP server connection status, 4) [LOCATION] prayer times for today (Fajr, Dhuhr, Asr, Maghrib, Isha). Use the [THEME_NAME] theme (e.g., 'solarized', 'dracula', 'gruvbox') and ensure the layout is optimized for a [WIDTH]px terminal width. Include a fallback for when prayer times are unavailable.\n```\nCopy\n\n```\n```json\n{\n  \"statusline_config\": {\n    \"tool\": \"Neovim\",\n    \"project\": \"claude-docs-2024\",\n    \"currency\": \"USD\",\n    \"mcp_service\": \"claude-code-mcp\",\n    \"location\": \"Istanbul, TR\",\n    \"theme\": \"solarized\",\n    \"width\": 120,\n    \"sections\": {\n      \"left\": [\n        {\"type\": \"git_branch\", \"format\": \" {branch}%{?\"},\n        {\"type\": \"git_status\", \"format\": \"%{modified}%{added}%{removed}\"},\n        {\"type\": \"cost_tracker\", \"format\": \" $%.2f\", \"currency\": \"USD\"}\n      ],\n      \"right\": [\n        {\"type\": \"mcp_status\", \"format\": \"󰚩 {status}\", \"service\": \"claude-code-mcp\"},\n        {\"type\": \"prayer_times\", \"format\": \" {fajr} {dhuhr} {asr} {maghrib} {isha}\", \"location\": \"Istanbul, TR\", \"fallback\": \" N/A\"},\n        {\"type\": \"theme_indicator\", \"format\": \" {theme}\"}\n      ]\n    }\n  },\n  \"theme_example\": {\n    \"solarized\": {\n      \"bg\": \"#073642\",\n      \"fg\": \"#93a1a1\",\n      \"git_branch\": \"#268bd2\",\n      \"modified\": \"#b58900\",\n      \"added\": \"#859900\",\n      \"removed\": \"#dc322f\",\n      \"cost_tracker\": \"#6c71c4\",\n      \"mcp_status\": {\"connected\": \"#859900\", \"disconnected\": \"#dc322f\"},\n      \"prayer_times\": \"#cb4b16\"\n    }\n  }\n}\n```\n\n### Example Statusline Output (Solarized Theme):\n```\n main●1   $12.47  󰚩 ✔   05:12 12:45 15:58 18:12 19:45   solarized\n```\n\n### Explanation of Components:\n- **Git Status**: Shows the current branch (`main`) with 1 modified file (`●1`).\n- **Cost Tracker**: Displays real-time spending of $12.47 for the current session (assuming 1247 API calls at $0.01 each).\n- **MCP Status**: Indicates the `claude-code-mcp` server is connected (`✔`).\n- **Prayer Times**: Lists today's prayer times for Istanbul, formatted as `Fajr Dhuhr Asr Maghrib Isha`.\n- **Theme Indicator**: Shows the active theme (`solarized`).\n\n### Fallback Behavior:\nIf prayer times are unavailable (e.g., due to API failure), the statusline would display:\n```\n N/A\n```\n\n### Customization Tips:\n1. For **tmux**, wrap this in `#{...}` syntax (e.g., `#{git_branch}#{cost_tracker}`).\n2. For **iTerm2**, use the `Powerline` font and configure the statusline via the shell prompt (e.g., `PROMPT='...${statusline}...'`).\n3. Adjust the `currency` and `mcp_service` fields to match your actual setup.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-statusline#main-content",
+      "claude-code-statusline#overview",
+      "claude-code-statusline#setup",
+      "claude-code-statusline#examples",
+      "claude-code-statusline#tools",
+      "claude-code-statusline#mcp",
+      "claude-code-statusline#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Enhanced Statusline nâng tầm terminal của bạn với 28 thành phần cấu hình linh hoạt từ 1 đến 9 dòng, giúp hiển thị trực quan theo thời gian thực chi phí API, tốc độ tiêu hao, hiệu quả cache và lượng token sử dụng. Công cụ này tích hợp tính năng giám sát MCP và giờ cầu nguyện Hồi giáo, đồng thời cung cấp hơn 10 tùy chọn theme để tùy biến giao diện. Được thiết kế cho các nhà phát triển và đội ngũ vận hành cần các số liệu chi tiết mà không làm ảnh hưởng đến workflow, công cụ hiển thị các block metrics, dự báo chi phí và khả năng giám sát với độ chính xác cực cao. Quá trình cài đặt chỉ mất hai phút thông qua một trình cài đặt minh bạch chỉ chỉnh sửa thư mục home của bạn, hỗ trợ macOS, Linux, WSL và nhiều trình quản lý gói khác nhau.\nTheo dõi chi phí API và tốc độ tiêu hao theo thời gian thực trong khi phát triển với Claude Code\nTheo dõi hiệu quả cache và lượng token sử dụng trên nhiều dòng trong terminal của bạn\nHiển thị trạng thái kết nối MCP và giờ cầu nguyện song song với các chỉ số phát triển\nTỳ chỉnh layout và theme của statusline cho các môi trường terminal khác nhau",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/rz1989s/claude-code-statusline`",
+    "usage_vi": "```\nTạo một cấu hình statusline tùy chỉnh cho [TOOL_NAME] (ví dụ: Neovim, tmux, hoặc iTerm2) bằng cách sử dụng claude-code-statusline. Statusline cần hiển thị: 1) Nhánh Git và trạng thái commit hiện tại của [PROJECT_NAME], 2) Theo dõi chi phí theo thời gian thực bằng [CURRENCY] cho việc sử dụng Claude Code API trong session này, 3) Trạng thái kết nối MCP server [MCP_SERVICE], 4) Giờ cầu nguyện hôm nay tại [LOCATION] (Fajr, Dhuhr, Asr, Maghrib, Isha). Sử dụng theme [THEME_NAME] (ví dụ: 'solarized', 'dracula', 'gruvbox') và đảm bảo layout được tối ưu hóa cho chiều rộng terminal [WIDTH]px. Thêm một phương án dự phòng (fallback) khi không có dữ liệu giờ cầu nguyện.\n```\nCopy\n\n```json\n{\n  \"statusline_config\": {\n    \"tool\": \"Neovim\",\n    \"project\": \"claude-docs-2024\",\n    \"currency\": \"USD\",\n    \"mcp_service\": \"claude-code-mcp\",\n    \"location\": \"Istanbul, TR\",\n    \"theme\": \"solarized\",\n    \"width\": 120,\n    \"sections\": {\n      \"left\": [\n        {\"type\": \"git_branch\", \"format\": \" {branch}%{?\"},\n        {\"type\": \"git_status\", \"format\": \"%{modified}%{added}%{removed}\"},\n        {\"type\": \"cost_tracker\", \"format\": \" $%.2f\", \"currency\": \"USD\"}\n      ],\n      \"right\": [\n        {\"type\": \"mcp_status\", \"format\": \"󰚩 {status}\", \"service\": \"claude-code-mcp\"},\n        {\"type\": \"prayer_times\", \"format\": \" {fajr} {dhuhr} {asr} {maghrib} {isha}\", \"location\": \"Istanbul, TR\", \"fallback\": \" N/A\"},\n        {\"type\": \"theme_indicator\", \"format\": \" {theme}\"}\n      ]\n    }\n  },\n  \"theme_example\": {\n    \"solarized\": {\n      \"bg\": \"#073642\",\n      \"fg\": \"#93a1a1\",\n      \"git_branch\": \"#268bd2\",\n      \"modified\": \"#b58900\",\n      \"added\": \"#859900\",\n      \"removed\": \"#dc322f\",\n      \"cost_tracker\": \"#6c71c4\",\n      \"mcp_status\": {\"connected\": \"#859900\", \"disconnected\": \"#dc322f\"},\n      \"prayer_times\": \"#cb4b16\"\n    }\n  }\n}\n```\n\n### Kết quả Statusline mẫu (Theme Solarized):\n```\n main●1   $12.47  󰚩 ✔   05:12 12:45 15:58 18:12 19:45   solarized\n```\n\n### Giải thích các thành phần:\n- **Git Status**: Hiển thị nhánh hiện tại (`main`) với 1 file đã chỉnh sửa (`●1`).\n- **Cost Tracker**: Hiển thị chi phí thực tế là $12.47 cho session hiện tại (giả định 1247 lượt gọi API với giá $0.01 mỗi lượt).\n- **MCP Status**: Biểu thị server `claude-code-mcp` đã kết nối (`✔`).\n- **Prayer Times**: Liệt kê giờ cầu nguyện hôm nay tại Istanbul, được định dạng dưới dạng `Fajr Dhuhr Asr Maghrib Isha`.\n- **Theme Indicator**: Hiển thị theme đang hoạt động (`solarized`).\n\n### Cơ chế dự phòng (Fallback):\nNếu không có dữ liệu giờ cầu nguyện (ví dụ: do lỗi API), statusline sẽ hiển thị:\n```\n N/A\n```\n\n### Mẹo tùy biến:\n1. Đối với **tmux**, hãy bọc phần này trong cú pháp `#{...}` (ví dụ: `#{git_branch}#{cost_tracker}`).\n2. Đối với **iTerm2**, hãy sử dụng font `Powerline` và cấu hình statusline thông qua shell prompt (ví dụ: `PROMPT='...${statusline}...'`).\n3. Điều chỉnh các trường `currency` và `mcp_service` để phù hợp với setup thực tế của bạn."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:13:17.180509Z",
+    "http_status": 200,
+    "content_hash": "0f8d7fc2eacc5b918b073f56867af9b423d7b6ba621faab7056f123c93160b15",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-statusline.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-statusline.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ statusline chính xác cho Claude Code",
+  "short_description_vi": "Claude Code Statusline cải thiện workflow trên terminal với tính năng theo dõi chi phí theo thời gian thực, giám sát MCP và hiển thị giờ cầu nguyện. Công cụ này hỗ trợ đắc lực cho các nhà phát triển và đội ngũ vận hành nhờ cung cấp các layout linh hoạt cùng nhiều theme đẹp mắt, giúp nâng cao năng suất và khả năng nắm bắt trạng thái hệ thống."
+}

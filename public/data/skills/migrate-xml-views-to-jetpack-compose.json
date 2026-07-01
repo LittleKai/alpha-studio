@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/migrate-xml-views-to-jetpack-compose",
+  "slug": "migrate-xml-views-to-jetpack-compose",
+  "name": "Migrate Xml Views To Jetpack Compose",
+  "headline": "Migrate XML Views to Jetpack Compose",
+  "short_description": "This skill helps developers transition from Android XML Views to Jetpack Compose using a structured 10-step process. It ensures a visually consistent and functionally intact migration while only handling UI migration.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "android",
+  "install_command": "git clone https://github.com/android/skills",
+  "source_repo_url": "https://github.com/android/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "android-development",
+    "compose",
+    "migrate",
+    "jetpack",
+    "views"
+  ],
+  "sections": {
+    "overview": "This skill provides a structured approach to converting Android XML-based UI layouts to Jetpack Compose. It follows a 10-step migration process designed to ensure visual consistency and preserve functionality throughout the transition. The skill focuses exclusively on UI migration, helping developers modernize their Android applications without altering business logic or non-UI components. It's grounded in Android development best practices from developer.android.com and helps LLMs assist with this specific workflow where manual migration can be error-prone.\nMigrating legacy XML layouts to Jetpack Compose\nEnsuring visual and functional integrity during migration\nSystematic conversion for developers upgrading UI",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/android/skills --skill migrate-xml-views-to-jetpack-compose`\n`git clone https://github.com/android/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "migrate-xml-views-to-jetpack-compose#main-content",
+      "migrate-xml-views-to-jetpack-compose#overview",
+      "migrate-xml-views-to-jetpack-compose#setup",
+      "migrate-xml-views-to-jetpack-compose#examples",
+      "migrate-xml-views-to-jetpack-compose#tools",
+      "migrate-xml-views-to-jetpack-compose#mcp",
+      "migrate-xml-views-to-jetpack-compose#related"
+    ],
+    "overview_vi": "Skill này cung cấp phương pháp tiếp cận có cấu trúc để chuyển đổi các layout UI dựa trên Android XML sang Jetpack Compose. Skill tuân theo quy trình migration 10 bước được thiết kế để đảm bảo tính nhất quán về giao diện và duy trì toàn vẹn chức năng trong suốt quá trình chuyển đổi. Skill này chỉ tập trung vào việc migration UI, giúp nhà phát triển hiện đại hóa ứng dụng Android mà không làm thay đổi business logic hoặc các thành phần không liên quan đến UI. Giải pháp này dựa trên các best practice phát triển Android từ developer.android.com, giúp LLM hỗ trợ hiệu quả cho workflow cụ thể này, vốn dễ xảy ra sai sót nếu thực hiện migration thủ công.\nChuyển đổi các XML layout cũ (legacy) sang Jetpack Compose\nĐảm bảo tính toàn vẹn về giao diện và chức năng trong quá trình migration\nQuy trình chuyển đổi có hệ thống dành cho các nhà phát triển đang nâng cấp UI",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/android/skills --skill migrate-xml-views-to-jetpack-compose`\n`git clone https://github.com/android/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:48.439504Z",
+    "http_status": 200,
+    "content_hash": "5ed1ff829f5a89c5f299f09b234ea36115f843b32f2acd711528eaac02eda9bb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\migrate-xml-views-to-jetpack-compose.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\migrate-xml-views-to-jetpack-compose.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Chuyển đổi XML Views sang Jetpack Compose",
+  "short_description_vi": "Skill này giúp nhà phát triển chuyển đổi từ Android XML Views sang Jetpack Compose thông qua quy trình 10 bước có cấu trúc. Quy trình này đảm bảo tính nhất quán về giao diện và giữ nguyên vẹn chức năng, trong khi chỉ tập trung xử lý phần migration UI."
+}

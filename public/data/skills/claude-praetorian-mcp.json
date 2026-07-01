@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-praetorian-mcp",
+  "slug": "claude-praetorian-mcp",
+  "name": "browser-use",
+  "headline": "claude-praetorian-mcp: Enhance Workflow Automation",
+  "short_description": "Claude-praetorian-mcp is an MCP server for aggressive context compaction and recycling in Claude Code. It benefits operations teams by optimizing context handling, reducing token usage, and improving efficiency in AI interactions. The skill connects to Claude Code workflows, enhancing context management for better performance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Vvkmnn",
+  "install_command": "git clone https://github.com/Vvkmnn/claude-praetorian-mcp.git",
+  "source_repo_url": "https://github.com/Vvkmnn/claude-praetorian-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "compaction",
+    "context",
+    "mcp-server",
+    "toon",
+    "claude",
+    "token",
+    "mcp",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "The claude-praetorian-mcp is an advanced automation skill designed for Claude Code, focusing on aggressive TOON-based context compaction and recycling. This skill streamlines the management of context data, allowing AI agents to operate more efficiently by reducing overhead and enhancing processing speed. By utilizing this skill, developers can optimize their AI workflows, ensuring that the agents have access to relevant context without unnecessary clutter. One of the key benefits of the claude-praetorian-mcp is its ability to significantly improve workflow automation. Although specific time savings are currently unknown, the intermediate implementation complexity suggests that users can expect a reasonable return on investment in terms of efficiency. Developers and AI practitioners will find this skill particularly useful as it allows for better resource management and faster response times in AI-driven applications, making it a valuable addition to any AI-first workflow. This skill is well-suited for developers and product managers who are looking to enhance their AI agents' capabilities. By implementing the claude-praetorian-mcp, teams can ensure that their AI systems are more responsive and capable of handling complex tasks with minimal latency. Practical use cases include optimizing chatbots for customer service, enhancing data processing applications, or improving the performance of AI-driven analytics tools. Each of these scenarios benefits from the skill's ability to compact and recycle context efficiently. With a moderate implementation time of approximately 30 minutes, the claude-praetorian-mcp is accessible for teams with intermediate technical expertise. While it currently has limited GitHub stars and weekly installs, its potential for enhancing AI automation workflows is significant. By incorporating this skill, organizations can take a step towards a more efficient and effective AI strategy, ensuring their agents are equipped to handle the demands of modern applications.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Vvkmnn/claude-praetorian-mcp`",
+    "usage": "```\nUse claude-praetorian-mcp to aggressively compact and recycle context in this Claude Code session for [PROJECT_NAME]. Focus on removing redundant or low-value tokens while preserving critical context like [SPECIFIC_CONTEXT_TO_KEEP]. After compaction, summarize the remaining context in a structured format for [TEAM_MEMBER_NAME] to review. Prioritize retaining error messages, recent changes, and unresolved tasks.\n```\nCopy\n\n```\n### Compacted Context Summary for Project: 'E-commerce Checkout Redesign'\n\n**Retained Critical Context:**\n1. **Error Messages:**\n   - `TypeError: Cannot read property 'price' of undefined` (Line 42, checkout.js)\n   - `404 Not Found` when fetching `/api/v2/inventory` (API call at 14:32)\n\n2. **Recent Changes:**\n   - Added `validateCoupon()` function (commit 5f7a2b)\n   - Removed redundant `calculateTax()` logic (commit 3c1d4e)\n\n3. **Unresolved Tasks:**\n   - Fix coupon validation edge case (assigned to Alex)\n   - Investigate 404 API error (assigned to Priya)\n\n**Removed Context:**\n- 120 lines of commented-out legacy code\n- 30 lines of duplicate error handling\n- 45 lines of outdated API documentation\n\n**Token Savings:** ~1,800 tokens (15% reduction)\n**Next Steps:** Share this summary with the team via Slack #checkout-dev channel.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-praetorian-mcp#main-content",
+      "claude-praetorian-mcp#overview",
+      "claude-praetorian-mcp#setup",
+      "claude-praetorian-mcp#examples",
+      "claude-praetorian-mcp#tools",
+      "claude-praetorian-mcp#mcp",
+      "claude-praetorian-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-praetorian-mcp is an advanced automation skill designed for Claude Code, focusing on aggressive TOON-based context compaction and recycling. This skill streamlines the management of context data, allowing AI agents to operate more efficiently by reducing overhead and enhancing processing speed. By utilizing this skill, developers can optimize their AI workflows, ensuring that the agents have access to relevant context without unnecessary clutter. One of the key benefits of the claude-praetorian-mcp is its ability to significantly improve workflow automation. Although specific time savings are currently unknown, the intermediate implementation complexity suggests that users can expect a reasonable return on investment in terms of efficiency. Developers and AI practitioners will find this skill particularly useful as it allows for better resource management and faster response times in AI-driven applications, making it a valuable addition to any AI-first workflow. This skill is well-suited for developers and product managers who are looking to enhance their AI agents' capabilities. By implementing the claude-praetorian-mcp, teams can ensure that their AI systems are more responsive and capable of handling complex tasks with minimal latency. Practical use cases include optimizing chatbots for customer service, enhancing data processing applications, or improving the performance of AI-driven analytics tools. Each of these scenarios benefits from the skill's ability to compact and recycle context efficiently. With a moderate implementation time of approximately 30 minutes, the claude-praetorian-mcp is accessible for teams with intermediate technical expertise. While it currently has limited GitHub stars and weekly installs, its potential for enhancing AI automation workflows is significant. By incorporating this skill, organizations can take a step towards a more efficient and effective AI strategy, ensuring their agents are equipped to handle the demands of modern applications.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Vvkmnn/claude-praetorian-mcp`",
+    "usage_vi": "```\nUse claude-praetorian-mcp to aggressively compact and recycle context in this Claude Code session for [PROJECT_NAME]. Focus on removing redundant or low-value tokens while preserving critical context like [SPECIFIC_CONTEXT_TO_KEEP]. After compaction, summarize the remaining context in a structured format for [TEAM_MEMBER_NAME] to review. Prioritize retaining error messages, recent changes, and unresolved tasks.\n```\nCopy\n\n```\n### Compacted Context Summary for Project: 'E-commerce Checkout Redesign'\n\n**Retained Critical Context:**\n1. **Error Messages:**\n   - `TypeError: Cannot read property 'price' of undefined` (Line 42, checkout.js)\n   - `404 Not Found` when fetching `/api/v2/inventory` (API call at 14:32)\n\n2. **Recent Changes:**\n   - Added `validateCoupon()` function (commit 5f7a2b)\n   - Removed redundant `calculateTax()` logic (commit 3c1d4e)\n\n3. **Unresolved Tasks:**\n   - Fix coupon validation edge case (assigned to Alex)\n   - Investigate 404 API error (assigned to Priya)\n\n**Removed Context:**\n- 120 lines of commented-out legacy code\n- 30 lines of duplicate error handling\n- 45 lines of outdated API documentation\n\n**Token Savings:** ~1,800 tokens (15% reduction)\n**Next Steps:** Share this summary with the team via Slack #checkout-dev channel.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:47.432674Z",
+    "http_status": 200,
+    "content_hash": "f8a3e79e52c0261424549a02d11d319006e657728501ddc48c223a421f087afd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-praetorian-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-praetorian-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-praetorian-mcp: Enhance Workflow Automation",
+  "short_description_vi": "Claude-praetorian-mcp is an MCP server for aggressive context compaction and recycling in Claude Code. It benefits operations teams by optimizing context handling, reducing token usage, and improving efficiency in AI interactions. The skill connects to Claude Code workflows, enhancing context management for better performance."
+}

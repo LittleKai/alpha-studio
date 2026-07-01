@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gptme",
+  "slug": "gptme",
+  "name": "gptme",
+  "headline": "gptme: Your AI Assistant in the Terminal",
+  "short_description": "gptme is a versatile AI agent that operates directly in your terminal, enabling code generation, terminal commands, web browsing, and vision capabilities. Perfect for developers seeking an integrated assistant for efficient workflows.",
+  "tier": "Gold",
+  "category": "GrowthDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "gptme",
+  "install_command": "claude install gptme/gptme",
+  "source_repo_url": "https://github.com/gptme/gptme",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "llm",
+    "chatbot",
+    "cli",
+    "ai-agents",
+    "code-generation"
+  ],
+  "sections": {
+    "overview": "gptme is a terminal-native AI agent designed for developers who need an integrated assistant within their command-line environment. It combines code generation, shell command execution, web browsing, and vision capabilities in a single interface. The agent operates directly in your terminal, eliminating context-switching between tools and enabling rapid iteration on development tasks. gptme supports multi-agent workflows through subagents, allowing complex projects to be broken into specialized tasks. Developers benefit from streamlined workflows where code suggestions, terminal operations, and information gathering happen in one place.\nAutomate code generation directly in the terminal to save time on repetitive coding tasks.\nPerform web scraping to collect and analyze data efficiently without manual intervention.\nRun local scripts with AI assistance to debug and enhance functionality quickly.\nIntegrate AI into existing development workflows to streamline processes and improve collaboration.",
+    "setup": "Terminal\nCopy\n`claude install gptme/gptme`\n`git clone https://github.com/gptme/gptme`",
+    "usage": "```\nI need to integrate gptme with Productiv for my development workflow. First, help me generate a Python script to fetch real-time financial analytics from Productiv's API. Then, create a terminal command to automate the process of updating budget forecasts based on the fetched data. Finally, use gptme's vision capabilities to analyze a screenshot of my expense report and suggest categorization improvements.\n```\nCopy\n\n```\nBased on your request, I've created a comprehensive solution for integrating gptme with Productiv. Here's the Python script to fetch real-time financial analytics:\n\n```python\nimport requests\nimport json\n\n# Productiv API credentials\nauth_token = 'your_productiv_auth_token'\napi_url = 'https://api.productiv.com/analytics'\n\n# Fetch real-time financial analytics\ndef fetch_analytics():\n    headers = {\n        'Authorization': f'Bearer {auth_token}',\n        'Content-Type': 'application/json'\n    }\n    response = requests.get(api_url, headers=headers)\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return {'error': 'Failed to fetch analytics'}\n\n# Example usage\nanalytics_data = fetch_analytics()\nprint(json.dumps(analytics_data, indent=2))\n```\n\nNext, here's a terminal command to automate budget forecast updates:\n\n```bash\n#!/bin/bash\n\n# Update budget forecasts based on fetched data\necho \"Updating budget forecasts...\"\n# Add your specific commands here to update forecasts based on analytics_data\n\n# Example: Update Q3 forecast based on current spending trends\necho \"Q3 forecast updated based on current spending trends\"\n```\n\nLastly, for the vision capabilities, upload a screenshot of your expense report, and gptme will analyze it to suggest categorization improvements. Make sure the screenshot is clear and includes all relevant details for accurate analysis.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "gptme#main-content",
+      "gptme#overview",
+      "gptme#setup",
+      "gptme#examples",
+      "gptme#tools",
+      "gptme#mcp",
+      "gptme#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "gptme is a terminal-native AI agent designed for developers who need an integrated assistant within their command-line environment. It combines code generation, shell command execution, web browsing, and vision capabilities in a single interface. The agent operates directly in your terminal, eliminating context-switching between tools and enabling rapid iteration on development tasks. gptme supports multi-agent workflows through subagents, allowing complex projects to be broken into specialized tasks. Developers benefit from streamlined workflows where code suggestions, terminal operations, and information gathering happen in one place.\nAutomate code generation directly in the terminal to save time on repetitive coding tasks.\nPerform web scraping to collect and analyze data efficiently without manual intervention.\nRun local scripts with AI assistance to debug and enhance functionality quickly.\nIntegrate AI into existing development workflows to streamline processes and improve collaboration.",
+    "setup_vi": "Terminal\nCopy\n`claude install gptme/gptme`\n`git clone https://github.com/gptme/gptme`",
+    "usage_vi": "```\nI need to integrate gptme with Productiv for my development workflow. First, help me generate a Python script to fetch real-time financial analytics from Productiv's API. Then, create a terminal command to automate the process of updating budget forecasts based on the fetched data. Finally, use gptme's vision capabilities to analyze a screenshot of my expense report and suggest categorization improvements.\n```\nCopy\n\n```\nBased on your request, I've created a comprehensive solution for integrating gptme with Productiv. Here's the Python script to fetch real-time financial analytics:\n\n```python\nimport requests\nimport json\n\n# Productiv API credentials\nauth_token = 'your_productiv_auth_token'\napi_url = 'https://api.productiv.com/analytics'\n\n# Fetch real-time financial analytics\ndef fetch_analytics():\n    headers = {\n        'Authorization': f'Bearer {auth_token}',\n        'Content-Type': 'application/json'\n    }\n    response = requests.get(api_url, headers=headers)\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return {'error': 'Failed to fetch analytics'}\n\n# Example usage\nanalytics_data = fetch_analytics()\nprint(json.dumps(analytics_data, indent=2))\n```\n\nNext, here's a terminal command to automate budget forecast updates:\n\n```bash\n#!/bin/bash\n\n# Update budget forecasts based on fetched data\necho \"Updating budget forecasts...\"\n# Add your specific commands here to update forecasts based on analytics_data\n\n# Example: Update Q3 forecast based on current spending trends\necho \"Q3 forecast updated based on current spending trends\"\n```\n\nLastly, for the vision capabilities, upload a screenshot of your expense report, and gptme will analyze it to suggest categorization improvements. Make sure the screenshot is clear and includes all relevant details for accurate analysis.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:33:32.181130Z",
+    "http_status": 200,
+    "content_hash": "1145260b885cd0290ca5a210cea4ea76dd2012cac29ed911e05168734f61f8a5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gptme.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gptme.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "gptme: Your AI Assistant in the Terminal",
+  "short_description_vi": "gptme is a versatile AI agent that operates directly in your terminal, enabling code generation, terminal commands, web browsing, and vision capabilities. Perfect for developers seeking an integrated assistant for efficient workflows."
+}

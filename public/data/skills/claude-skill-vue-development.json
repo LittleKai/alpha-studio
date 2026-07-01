@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-vue-development",
+  "slug": "claude-skill-vue-development",
+  "name": "Claude Skill VUE Development",
+  "headline": "Develop with Vue.js and TypeScript using Claude",
+  "short_description": "A Claude Code Agent Skill for Vue.js development with TypeScript, emphasizing testing-first development, functional patterns, and maintainable architecture.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "alexanderop",
+  "install_command": "git clone https://github.com/alexanderop/claude-skill-vue-development.git",
+  "source_repo_url": "https://github.com/alexanderop/claude-skill-vue-development",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill trains Claude agents to write production-quality Vue 3 code using TypeScript-first patterns, the modern Composition API (defineModel, not manual props), and user-behavior testing with Testing Library. It enforces 12 anti-patterns as red flags, includes a rationalization table that counters common excuses, and provides reference documentation for components, composables, routing, and testing. The skill achieved 100% compliance in test scenarios—a 167% improvement from baseline—by catching shortcuts like setTimeout() in tests, manual modelValue props, UI logic in composables, and generic parameter names.\nBuilding Vue 3 components with strict TypeScript typing and defineModel for v-model binding\nWriting composables with single responsibility principle and proper error exposure\nImplementing user-behavior testing with Testing Library instead of implementation-detail testing\nSetting up file-based routing with unplugin-vue-router and typed named routes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexanderop/claude-skill-vue-development`",
+    "usage": "```\nAct as a Vue.js developer with expertise in TypeScript, testing-first development, and functional patterns. Create a [COMPONENT_NAME] component for a [COMPANY] in the [INDUSTRY] sector. The component should include unit tests using Jest and Vue Test Utils, and follow functional programming principles. Provide the component code, test files, and any necessary TypeScript interfaces.\n```\nCopy\n\n```\n```typescript\n// src/components/UserProfile.vue\n<template>\n  <div class=\"user-profile\">\n    <h2>{{ user.name }}</h2>\n    <p>{{ user.email }}</p>\n    <button @click=\"updateUser\">Update Profile</button>\n  </div>\n</template>\n\n<script lang=\"ts\">\nimport { defineComponent, PropType } from 'vue'\n\ninterface User {\n  id: number\n  name: string\n  email: string\n}\n\nexport default defineComponent({\n  name: 'UserProfile',\n  props: {\n    user: {\n      type: Object as PropType<User>,\n      required: true\n    }\n  },\n  setup(props) {\n    const updateUser = () => {\n      // Functional update logic here\n      console.log('Updating user:', props.user.id)\n    }\n\n    return {\n      updateUser\n    }\n  }\n})\n</script>\n\n// src/components/__tests__/UserProfile.spec.ts\nimport { mount } from '@vue/test-utils'\nimport UserProfile from '@/components/UserProfile.vue'\n\ndescribe('UserProfile', () => {\n  it('renders user data correctly', () => {\n    const user = {\n      id: 1,\n      name: 'John Doe',\n      email: 'john@example.com'\n    }\n    const wrapper = mount(UserProfile, {\n      props: { user }\n    })\n    expect(wrapper.text()).toContain('John Doe')\n    expect(wrapper.text()).toContain('john@example.com')\n  })\n})\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-vue-development#main-content",
+      "claude-skill-vue-development#overview",
+      "claude-skill-vue-development#setup",
+      "claude-skill-vue-development#examples",
+      "claude-skill-vue-development#tools",
+      "claude-skill-vue-development#mcp",
+      "claude-skill-vue-development#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kỹ năng này huấn luyện các AI Agent viết code Vue 3 chuẩn sản xuất bằng cách áp dụng TypeScript, Composition API hiện đại (defineModel thay vì props thủ công) và kiểm thử hành vi người dùng thông qua Testing Library. Nó thiết lập 12 mẫu code xấu (anti-patterns) làm cảnh báo đỏ, cung cấp tài liệu tham khảo cho các component, composable, định tuyến (routing) và kiểm thử, giúp nâng cao chất lượng code đáng kể trong các dự án thực tế.",
+    "setup_vi": "Tải mã nguồn hướng dẫn tại GitHub:\n`git clone https://github.com/alexanderop/claude-skill-vue-development.git`",
+    "usage_vi": "Đóng vai trò lập trình viên Vue chuyên nghiệp để viết component hoàn chỉnh kèm mã kiểm thử Unit Test sử dụng Jest và Vue Test Utils."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:30.283252Z",
+    "http_status": 200,
+    "content_hash": "5ba17b506ae065abe6dac140d9ac8f5380f0917d5df97d819c9cf38998dceb0f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-vue-development.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-vue-development.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng lập trình Vue & TypeScript - Chuẩn hóa kiến trúc và kiểm thử",
+  "short_description_vi": "Kỹ năng huấn luyện AI Agent viết code Vue 3 chất lượng cao kết hợp TypeScript, áp dụng mô hình Test-Driven Development (TDD) và các mẫu thiết kế component hiện đại, dễ bảo trì."
+}

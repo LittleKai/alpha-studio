@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/code-agent",
+  "slug": "code-agent",
+  "name": "browser-use",
+  "headline": "code-agent: Automate GitHub Actions with AI",
+  "short_description": "An AI Agent that operates on GitHub Actions. By using this action, you can directly invoke Coding Agent CLI from GitHub Issues or Pull Request comments and automate code changes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "potproject",
+  "install_command": "git clone https://github.com/potproject/code-agent.git",
+  "source_repo_url": "https://github.com/potproject/code-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "ai-agents",
+    "github-actions",
+    "codex",
+    "openai"
+  ],
+  "sections": {
+    "overview": "The code-agent skill is an innovative AI automation tool that operates seamlessly within GitHub Actions. This automation skill allows developers to invoke the Coding Agent CLI directly from GitHub Issues or Pull Request comments, streamlining the process of making code changes. By integrating AI capabilities into the workflow, the code-agent enhances productivity and reduces manual effort, making it an essential tool for modern software development teams. One of the primary benefits of using the code-agent is its ability to automate repetitive coding tasks, which can significantly save time for developers. While the exact time savings are currently unknown, the efficiency gained from automating code changes is invaluable. Developers can focus on higher-level tasks, such as feature development and debugging, rather than getting bogged down in routine updates. This skill is particularly beneficial for teams looking to enhance their workflow automation and improve their overall development speed. The code-agent skill is ideal for developers, product managers, and AI practitioners who are familiar with GitHub and looking to implement AI-driven solutions in their workflows. With its intermediate complexity, it requires a basic understanding of GitHub Actions and coding practices, making it suitable for teams that are already leveraging automation in their development processes. The skill's integration into AI-first workflows allows teams to adopt a more efficient approach to software development, aligning with the growing trend of automation in the tech industry. In practical terms, the code-agent can be used in various scenarios, such as automating the merging of pull requests or triggering specific actions based on issue comments. For example, when a developer comments on a pull request to request a code change, the code-agent can automatically execute the necessary commands to implement those changes, thus reducing the back-and-forth communication typically required. Implementing this skill takes approximately 30 minutes, making it a quick addition to any development pipeline. By incorporating the code-agent into your workflow, you can leverage AI automation to enhance your team's efficiency and productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/potproject/code-agent`",
+    "usage": "```\nI want to create a GitHub Action that uses the Coding Agent CLI to automate code changes. Here's what I need: [DESCRIBE TASK]. The action should be triggered by [EVENT] (e.g., issue comment, pull request comment). Please provide the YAML configuration for the GitHub Action workflow.\n```\nCopy\n\n```\n```yaml\nname: Code Agent Automation\n\non:\n  issue_comment:\n    types: [created]\n  pull_request_review_comment:\n    types: [created]\n\njobs:\n  code-agent:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - name: Set up Coding Agent CLI\n        run: npm install -g @coding-agent/cli\n      - name: Run Coding Agent\n        run: coding-agent --task \"${{ github.event.comment.body }}\" --repo \"${{ github.repository }}\"\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "code-agent#main-content",
+      "code-agent#overview",
+      "code-agent#setup",
+      "code-agent#examples",
+      "code-agent#tools",
+      "code-agent#mcp",
+      "code-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The code-agent skill is an innovative AI automation tool that operates seamlessly within GitHub Actions. This automation skill allows developers to invoke the Coding Agent CLI directly from GitHub Issues or Pull Request comments, streamlining the process of making code changes. By integrating AI capabilities into the workflow, the code-agent enhances productivity and reduces manual effort, making it an essential tool for modern software development teams. One of the primary benefits of using the code-agent is its ability to automate repetitive coding tasks, which can significantly save time for developers. While the exact time savings are currently unknown, the efficiency gained from automating code changes is invaluable. Developers can focus on higher-level tasks, such as feature development and debugging, rather than getting bogged down in routine updates. This skill is particularly beneficial for teams looking to enhance their workflow automation and improve their overall development speed. The code-agent skill is ideal for developers, product managers, and AI practitioners who are familiar with GitHub and looking to implement AI-driven solutions in their workflows. With its intermediate complexity, it requires a basic understanding of GitHub Actions and coding practices, making it suitable for teams that are already leveraging automation in their development processes. The skill's integration into AI-first workflows allows teams to adopt a more efficient approach to software development, aligning with the growing trend of automation in the tech industry. In practical terms, the code-agent can be used in various scenarios, such as automating the merging of pull requests or triggering specific actions based on issue comments. For example, when a developer comments on a pull request to request a code change, the code-agent can automatically execute the necessary commands to implement those changes, thus reducing the back-and-forth communication typically required. Implementing this skill takes approximately 30 minutes, making it a quick addition to any development pipeline. By incorporating the code-agent into your workflow, you can leverage AI automation to enhance your team's efficiency and productivity.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/potproject/code-agent`",
+    "usage_vi": "```\nI want to create a GitHub Action that uses the Coding Agent CLI to automate code changes. Here's what I need: [DESCRIBE TASK]. The action should be triggered by [EVENT] (e.g., issue comment, pull request comment). Please provide the YAML configuration for the GitHub Action workflow.\n```\nCopy\n\n```\n```yaml\nname: Code Agent Automation\n\non:\n  issue_comment:\n    types: [created]\n  pull_request_review_comment:\n    types: [created]\n\njobs:\n  code-agent:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - name: Set up Coding Agent CLI\n        run: npm install -g @coding-agent/cli\n      - name: Run Coding Agent\n        run: coding-agent --task \"${{ github.event.comment.body }}\" --repo \"${{ github.repository }}\"\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:53:25.080214Z",
+    "http_status": 200,
+    "content_hash": "678a4c4c8eeb9e429b778a0a7bbabc31c3f056c970d6da4811e40080c5b1ad92",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "code-agent: Automate GitHub Actions with AI",
+  "short_description_vi": "An AI Agent that operates on GitHub Actions. By using this action, you can directly invoke Coding Agent CLI from GitHub Issues or Pull Request comments and automate code changes."
+}

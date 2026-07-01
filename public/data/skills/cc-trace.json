@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-trace",
+  "slug": "cc-trace",
+  "name": "browser-use",
+  "headline": "cc-trace: Debug API Requests Efficiently",
+  "short_description": "Intercept, debug, and analyze Claude Code API requests using mitmproxy. Ideal for operations teams to troubleshoot and optimize API interactions. Connects to Claude Code CLI for debugging workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "alexfazio",
+  "install_command": "git clone https://github.com/alexfazio/cc-trace.git",
+  "source_repo_url": "https://github.com/alexfazio/cc-trace",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The cc-trace skill is a powerful tool designed for developers and AI practitioners who need to intercept, debug, analyze, and review Claude Code API requests. Utilizing mitmproxy, this interactive assistant allows users to gain insights into API interactions, making it easier to identify issues and optimize workflows. By streamlining the debugging process, cc-trace enhances the development experience and promotes efficient troubleshooting. One of the key benefits of using cc-trace is its ability to save time during the debugging phase of API development. Although specific time savings are currently unknown, the skill's intermediate complexity suggests that it can significantly reduce the time spent on manual debugging tasks. By automating the interception and analysis of API requests, developers can focus on building robust applications rather than getting bogged down in troubleshooting. This skill is particularly suited for developers and product managers who are involved in API development and integration. As organizations increasingly adopt AI automation and workflow automation strategies, having tools like cc-trace becomes essential for maintaining high-quality code and efficient development processes. Practical use cases include debugging API calls during the development of AI agents or ensuring the reliability of data pipelines in data engineering projects. Implementing cc-trace is straightforward, with an estimated time of 30 minutes to set up. While the skill is categorized as intermediate in difficulty, it requires no specific department or role expertise, making it accessible to a wide range of users. By incorporating cc-trace into your AI-first workflows, you can enhance your debugging capabilities and ensure that your Claude Code applications run smoothly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexfazio/cc-trace`",
+    "usage": "```\nUse cc-trace with mitmproxy to intercept and analyze the Claude Code API requests for [PROJECT_NAME]. Focus on debugging [SPECIFIC_ISSUE] such as [EXAMPLE_ISSUE]. After capturing the requests, identify the root cause of the issue and suggest optimizations for the API interactions. Provide a summary of the findings including request/response payloads and timing details.\n```\nCopy\n\n```\nAfter setting up cc-trace with mitmproxy for the 'Acme Corp Inventory' project, we intercepted 47 API requests over a 15-minute debugging session. The primary issue was identified in the `/api/v2/update-stock` endpoint, where the `PATCH` request consistently returned a 422 Unprocessable Entity error due to a missing `location_id` field in the payload. The request body was:\n```json\n{\n  \"product_id\": \"PRD-4567\",\n  \"quantity_change\": -5,\n  \"reason\": \"damaged\"\n}\n```\nThe response from the API was:\n```json\n{\n  \"error\": \"Missing required field: location_id\",\n  \"status\": 422\n}\n```\nFurther analysis revealed that the `location_id` was being omitted because the frontend application was not passing it from the user's selected warehouse dropdown. The timing data showed that the request took an average of 1.2 seconds to fail, with no retries configured. To resolve this, we recommended:\n1. Adding client-side validation to ensure `location_id` is included before sending the request.\n2. Implementing a fallback mechanism to default to the user's primary warehouse if no location is selected.\n3. Adding retry logic for 422 errors with exponential backoff.\n\nThe optimized request payload now includes:\n```json\n{\n  \"product_id\": \"PRD-4567\",\n  \"quantity_change\": -5,\n  \"reason\": \"damaged\",\n  \"location_id\": \"WH-001\"\n}\n```\nThis change reduced the error rate from 100% to 0% in subsequent tests.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-trace#main-content",
+      "cc-trace#overview",
+      "cc-trace#setup",
+      "cc-trace#examples",
+      "cc-trace#tools",
+      "cc-trace#mcp",
+      "cc-trace#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The cc-trace skill is a powerful tool designed for developers and AI practitioners who need to intercept, debug, analyze, and review Claude Code API requests. Utilizing mitmproxy, this interactive assistant allows users to gain insights into API interactions, making it easier to identify issues and optimize workflows. By streamlining the debugging process, cc-trace enhances the development experience and promotes efficient troubleshooting. One of the key benefits of using cc-trace is its ability to save time during the debugging phase of API development. Although specific time savings are currently unknown, the skill's intermediate complexity suggests that it can significantly reduce the time spent on manual debugging tasks. By automating the interception and analysis of API requests, developers can focus on building robust applications rather than getting bogged down in troubleshooting. This skill is particularly suited for developers and product managers who are involved in API development and integration. As organizations increasingly adopt AI automation and workflow automation strategies, having tools like cc-trace becomes essential for maintaining high-quality code and efficient development processes. Practical use cases include debugging API calls during the development of AI agents or ensuring the reliability of data pipelines in data engineering projects. Implementing cc-trace is straightforward, with an estimated time of 30 minutes to set up. While the skill is categorized as intermediate in difficulty, it requires no specific department or role expertise, making it accessible to a wide range of users. By incorporating cc-trace into your AI-first workflows, you can enhance your debugging capabilities and ensure that your Claude Code applications run smoothly.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexfazio/cc-trace`",
+    "usage_vi": "```\nUse cc-trace with mitmproxy to intercept and analyze the Claude Code API requests for [PROJECT_NAME]. Focus on debugging [SPECIFIC_ISSUE] such as [EXAMPLE_ISSUE]. After capturing the requests, identify the root cause of the issue and suggest optimizations for the API interactions. Provide a summary of the findings including request/response payloads and timing details.\n```\nCopy\n\n```\nAfter setting up cc-trace with mitmproxy for the 'Acme Corp Inventory' project, we intercepted 47 API requests over a 15-minute debugging session. The primary issue was identified in the `/api/v2/update-stock` endpoint, where the `PATCH` request consistently returned a 422 Unprocessable Entity error due to a missing `location_id` field in the payload. The request body was:\n```json\n{\n  \"product_id\": \"PRD-4567\",\n  \"quantity_change\": -5,\n  \"reason\": \"damaged\"\n}\n```\nThe response from the API was:\n```json\n{\n  \"error\": \"Missing required field: location_id\",\n  \"status\": 422\n}\n```\nFurther analysis revealed that the `location_id` was being omitted because the frontend application was not passing it from the user's selected warehouse dropdown. The timing data showed that the request took an average of 1.2 seconds to fail, with no retries configured. To resolve this, we recommended:\n1. Adding client-side validation to ensure `location_id` is included before sending the request.\n2. Implementing a fallback mechanism to default to the user's primary warehouse if no location is selected.\n3. Adding retry logic for 422 errors with exponential backoff.\n\nThe optimized request payload now includes:\n```json\n{\n  \"product_id\": \"PRD-4567\",\n  \"quantity_change\": -5,\n  \"reason\": \"damaged\",\n  \"location_id\": \"WH-001\"\n}\n```\nThis change reduced the error rate from 100% to 0% in subsequent tests.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:43.838420Z",
+    "http_status": 200,
+    "content_hash": "d9ea86c2996bbde5832692fb3844a898495097e04a03a60d2f0073a5797f8976",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-trace.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-trace.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "cc-trace: Debug API Requests Efficiently",
+  "short_description_vi": "Intercept, debug, and analyze Claude Code API requests using mitmproxy. Ideal for operations teams to troubleshoot and optimize API interactions. Connects to Claude Code CLI for debugging workflows."
+}

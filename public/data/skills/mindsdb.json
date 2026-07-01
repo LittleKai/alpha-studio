@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mindsdb",
+  "slug": "mindsdb",
+  "name": "data-analyst-agent",
+  "headline": "MindsDB: Federated Query Engine for AI",
+  "short_description": "MindsDB is a powerful federated query engine that simplifies AI integration with databases. It allows users to use machine learning capabilities across various data sources, enhancing analytics and business intelligence workflows.",
+  "tier": "Gold",
+  "category": "RevOpsGrowthMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "mindsdb",
+  "install_command": "claude install mindsdb/mindsdb",
+  "source_repo_url": "https://github.com/mindsdb/mindsdb",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI",
+    "databases",
+    "analytics",
+    "business-intelligence",
+    "federated-query"
+  ],
+  "sections": {
+    "overview": "MindsDB is a federated query engine designed to simplify AI integration with databases by allowing machine learning capabilities across various data sources. It enables users to leverage SQL-based queries to access AI features without requiring specialized data science knowledge. The platform enhances analytics and business intelligence workflows by bridging the gap between databases and machine learning models. MindsDB supports multiple database connections, making it suitable for organizations working with heterogeneous data environments. Analytics teams and data engineers use MindsDB to embed predictive intelligence directly into their data pipelines.\nIntegrate AI-driven insights into business analytics for improved reporting.\nAutomate data queries across multiple databases to save time and resources.\nEnhance decision-making with predictive analytics tailored to specific business needs.\nStreamline data access for marketing campaigns to optimize targeting and engagement.",
+    "setup": "Terminal\nCopy\n`claude install mindsdb/mindsdb`\n`git clone https://github.com/mindsdb/mindsdb`",
+    "usage": "```\nUsing MindsDB, analyze the sales call data from [COMPANY] stored in [DATABASE]. Identify patterns in successful calls that led to closed deals based on [CRITERIA]. Generate a predictive model to score future calls and suggest improvements for the sales team. Export the results to [OUTPUT_FORMAT].\n```\nCopy\n\n```\nBased on the analysis of 500 sales calls from Acme Corp stored in their PostgreSQL database, MindsDB identified several key patterns in successful calls. Calls that mentioned 'pain points' and 'solution benefits' had a 30% higher close rate. The predictive model developed by MindsDB scored future calls with an accuracy of 85%. The model suggested that sales reps should spend more time discussing specific pain points and less time on product features. The results were exported to a CSV file, which included call scores, key phrases, and recommended actions for each call.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "mindsdb#main-content",
+      "mindsdb#overview",
+      "mindsdb#setup",
+      "mindsdb#examples",
+      "mindsdb#tools",
+      "mindsdb#mcp",
+      "mindsdb#related",
+      "streamline-analyst",
+      "mcp-server-chart",
+      "data-analyst-agent"
+    ],
+    "overview_vi": "MindsDB is a federated query engine designed to simplify AI integration with databases by allowing machine learning capabilities across various data sources. It enables users to leverage SQL-based queries to access AI features without requiring specialized data science knowledge. The platform enhances analytics and business intelligence workflows by bridging the gap between databases and machine learning models. MindsDB supports multiple database connections, making it suitable for organizations working with heterogeneous data environments. Analytics teams and data engineers use MindsDB to embed predictive intelligence directly into their data pipelines.\nIntegrate AI-driven insights into business analytics for improved reporting.\nAutomate data queries across multiple databases to save time and resources.\nEnhance decision-making with predictive analytics tailored to specific business needs.\nStreamline data access for marketing campaigns to optimize targeting and engagement.",
+    "setup_vi": "Terminal\nCopy\n`claude install mindsdb/mindsdb`\n`git clone https://github.com/mindsdb/mindsdb`",
+    "usage_vi": "```\nUsing MindsDB, analyze the sales call data from [COMPANY] stored in [DATABASE]. Identify patterns in successful calls that led to closed deals based on [CRITERIA]. Generate a predictive model to score future calls and suggest improvements for the sales team. Export the results to [OUTPUT_FORMAT].\n```\nCopy\n\n```\nBased on the analysis of 500 sales calls from Acme Corp stored in their PostgreSQL database, MindsDB identified several key patterns in successful calls. Calls that mentioned 'pain points' and 'solution benefits' had a 30% higher close rate. The predictive model developed by MindsDB scored future calls with an accuracy of 85%. The model suggested that sales reps should spend more time discussing specific pain points and less time on product features. The results were exported to a CSV file, which included call scores, key phrases, and recommended actions for each call.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:34:51.364806Z",
+    "http_status": 200,
+    "content_hash": "47e1512d66f81fc06efbfe294d97185fdc00e672ff6e15c1a6188feb33daf1cd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mindsdb.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mindsdb.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MindsDB: Federated Query Engine for AI",
+  "short_description_vi": "MindsDB is a powerful federated query engine that simplifies AI integration with databases. It allows users to use machine learning capabilities across various data sources, enhancing analytics and business intelligence workflows."
+}

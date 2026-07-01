@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/roo-commander",
+  "slug": "roo-commander",
+  "name": "Roo Commander",
+  "headline": "Roo Commander - Automate Code Workflows",
+  "short_description": "Roo Commander bridges Claude Code's 60+ skills to Roo Code VS Code extension. It uses a CLI tool, custom instructions, and orchestrator mode to enable intelligent automation for developers. It connects to VS Code workflows and integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "jezweb",
+  "install_command": "git clone https://github.com/jezweb/roo-commander.git",
+  "source_repo_url": "https://github.com/jezweb/roo-commander",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "aiagents",
+    "roocode"
+  ],
+  "sections": {
+    "overview": "Roo Commander bridges Claude Code's extensive skill library to the Roo Code VS Code extension, allowing developers to automate tasks directly within their editor. The tool uses a CLI interface, custom instructions, and orchestrator mode to intelligently route and delegate work across 60+ available skills. It recognizes workflow lifecycle stages—from idea exploration through project release—and provides proactive command suggestions based on context. Developers can monitor context usage with progressive warnings at 70% and 85% capacity. The skill enables seamless integration between Claude agents and VS Code workflows, reducing manual context switching and streamlining development cycles.\nAutomatically discover relevant skills before starting new features.\nManage project sessions and track progress with integrated commands.\nGenerate detailed project plans to streamline development phases.\nQuickly search and load skills directly from the command line.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jezweb/roo-commander`",
+    "usage": "```\nUse Roo Commander to automate [TASK] in VS Code for [PROJECT/PATH]. Configure the orchestrator with [CUSTOM_INSTRUCTIONS] and execute the workflow. Monitor the output in the Roo Code extension terminal and validate results against [EXPECTED_OUTCOME]. If errors occur, use the CLI tool to debug with --verbose flag.\n```\nCopy\n\n```\n```\n[Roo Commander CLI v1.2.3] Initializing orchestrator for project 'ecommerce-backend' at /workspace/ecommerce-backend\n[Custom Instructions]: Apply TypeScript migration for legacy API endpoints. Prioritize endpoints with >1000 monthly requests. Generate migration scripts in /src/migrations/legacy-v2.\n\n[Step 1/5] Scanning project structure... ✅\nFound 47 legacy endpoints in /src/routes/legacy/. High-risk endpoints identified: /api/orders/process, /api/users/legacy-auth.\n\n[Step 2/5] Generating migration scripts... ✅\nCreated /src/migrations/legacy-v2/20240515-orders-process.ts (TypeScript, 127 lines)\nCreated /src/migrations/legacy-v2/20240515-users-legacy-auth.ts (TypeScript, 89 lines)\n\n[Step 3/5] Updating VS Code workspace... ✅\nAdded migration scripts to .vscode/tasks.json. Configured watcher for /src/routes/legacy/*.ts.\n\n[Step 4/5] Executing type-check... ⚠️\nWarning: 3 type errors in /src/migrations/legacy-v2/20240515-users-legacy-auth.ts (legacy-auth module not found).\n[Debug] Running `roo-commander --debug --task validate-migration`...\n\n[Step 5/5] Validation complete ✅\nAll migration scripts pass linting. Type errors resolved by adding @ts-ignore for legacy modules. Final scripts saved to /src/migrations/legacy-v2/. Total time: 2m 47s.\n\n[Roo Code Extension] Output available in 'Automation Logs' panel. Ready for commit.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "roo-commander#main-content",
+      "roo-commander#overview",
+      "roo-commander#setup",
+      "roo-commander#examples",
+      "roo-commander#tools",
+      "roo-commander#mcp",
+      "roo-commander#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Roo Commander bridges Claude Code's extensive skill library to the Roo Code VS Code extension, allowing developers to automate tasks directly within their editor. The tool uses a CLI interface, custom instructions, and orchestrator mode to intelligently route and delegate work across 60+ available skills. It recognizes workflow lifecycle stages—from idea exploration through project release—and provides proactive command suggestions based on context. Developers can monitor context usage with progressive warnings at 70% and 85% capacity. The skill enables seamless integration between Claude agents and VS Code workflows, reducing manual context switching and streamlining development cycles.\nAutomatically discover relevant skills before starting new features.\nManage project sessions and track progress with integrated commands.\nGenerate detailed project plans to streamline development phases.\nQuickly search and load skills directly from the command line.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jezweb/roo-commander`",
+    "usage_vi": "```\nUse Roo Commander to automate [TASK] in VS Code for [PROJECT/PATH]. Configure the orchestrator with [CUSTOM_INSTRUCTIONS] and execute the workflow. Monitor the output in the Roo Code extension terminal and validate results against [EXPECTED_OUTCOME]. If errors occur, use the CLI tool to debug with --verbose flag.\n```\nCopy\n\n```\n```\n[Roo Commander CLI v1.2.3] Initializing orchestrator for project 'ecommerce-backend' at /workspace/ecommerce-backend\n[Custom Instructions]: Apply TypeScript migration for legacy API endpoints. Prioritize endpoints with >1000 monthly requests. Generate migration scripts in /src/migrations/legacy-v2.\n\n[Step 1/5] Scanning project structure... ✅\nFound 47 legacy endpoints in /src/routes/legacy/. High-risk endpoints identified: /api/orders/process, /api/users/legacy-auth.\n\n[Step 2/5] Generating migration scripts... ✅\nCreated /src/migrations/legacy-v2/20240515-orders-process.ts (TypeScript, 127 lines)\nCreated /src/migrations/legacy-v2/20240515-users-legacy-auth.ts (TypeScript, 89 lines)\n\n[Step 3/5] Updating VS Code workspace... ✅\nAdded migration scripts to .vscode/tasks.json. Configured watcher for /src/routes/legacy/*.ts.\n\n[Step 4/5] Executing type-check... ⚠️\nWarning: 3 type errors in /src/migrations/legacy-v2/20240515-users-legacy-auth.ts (legacy-auth module not found).\n[Debug] Running `roo-commander --debug --task validate-migration`...\n\n[Step 5/5] Validation complete ✅\nAll migration scripts pass linting. Type errors resolved by adding @ts-ignore for legacy modules. Final scripts saved to /src/migrations/legacy-v2/. Total time: 2m 47s.\n\n[Roo Code Extension] Output available in 'Automation Logs' panel. Ready for commit.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:31:51.289693Z",
+    "http_status": 200,
+    "content_hash": "e4e64d6a2c8bf0b64c6792b4b6d4d32c482bdc3dc3f84ba2293a6e722b4597f1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\roo-commander.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\roo-commander.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Roo Commander - Automate Code Workflows",
+  "short_description_vi": "Roo Commander bridges Claude Code's 60+ skills to Roo Code VS Code extension. It uses a CLI tool, custom instructions, and orchestrator mode to enable intelligent automation for developers. It connects to VS Code workflows and integrates with Claude agents."
+}

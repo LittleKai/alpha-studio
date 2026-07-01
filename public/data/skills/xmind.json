@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xmind",
+  "slug": "xmind",
+  "name": "XMind 思维导图处理技能",
+  "headline": "XMind Mind Map Processing Skill",
+  "short_description": "XMind skill provides full processing capabilities for XMind files (.xmind), including parsing, creating, and updating. It uses a Python tool to convert mind map content into Markdown for seamless conversation management.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "mitscherlich",
+  "install_command": "git clone https://github.com/mitscherlich/skills",
+  "source_repo_url": "https://github.com/mitscherlich/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "productivity",
+    "xmind"
+  ],
+  "sections": {
+    "overview": "The XMind skill enables Claude Code and other AI agents to work with XMind mind map files (.xmind) through parsing, creation, and updating capabilities. It automatically converts mind map content into Markdown format, making it easy to integrate visual thinking tools into AI-assisted workflows. The skill supports both XMind 8 and Zen/2020+ file formats, allowing seamless conversion between versions. This is particularly useful for teams managing complex project structures, brainstorming sessions, or knowledge organization that need AI assistance. Install via the skills CLI to add XMind processing to your AI coding environment.\nTranslate XMind diagrams to Markdown for easy editing.\nManage multiple session files for collaborative mind mapping.\nCreate and update XMind files programmatically.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/mitscherlich/skills --skill xmind`\n`git clone https://github.com/mitscherlich/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "xmind#main-content",
+      "xmind#overview",
+      "xmind#setup",
+      "xmind#examples",
+      "xmind#related",
+      "prompt-optimizer",
+      "slidespeak-presentation-skill",
+      "basecamp-workflow-command"
+    ],
+    "overview_vi": "The XMind skill enables Claude Code and other AI agents to work with XMind mind map files (.xmind) through parsing, creation, and updating capabilities. It automatically converts mind map content into Markdown format, making it easy to integrate visual thinking tools into AI-assisted workflows. The skill supports both XMind 8 and Zen/2020+ file formats, allowing seamless conversion between versions. This is particularly useful for teams managing complex project structures, brainstorming sessions, or knowledge organization that need AI assistance. Install via the skills CLI to add XMind processing to your AI coding environment.\nTranslate XMind diagrams to Markdown for easy editing.\nManage multiple session files for collaborative mind mapping.\nCreate and update XMind files programmatically.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/mitscherlich/skills --skill xmind`\n`git clone https://github.com/mitscherlich/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:12:22.927697Z",
+    "http_status": 200,
+    "content_hash": "45b86f7e7c083843ee85ccf53d4d258ae308e40c1a3f5c13f2d5fe0ce8293a36",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xmind.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xmind.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "XMind Mind Map Processing Skill",
+  "short_description_vi": "XMind skill provides full processing capabilities for XMind files (.xmind), including parsing, creating, and updating. It uses a Python tool to convert mind map content into Markdown for seamless conversation management."
+}

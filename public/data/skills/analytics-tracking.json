@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/analytics-tracking",
+  "slug": "analytics-tracking",
+  "name": "Related Skills",
+  "headline": "Analytics Tracking: Event Tracking",
+  "short_description": "Set up comprehensive analytics and event tracking for GA4, custom events, and attribution. Helps data teams monitor user behavior, track conversions, and optimize marketing campaigns. Integrates with existing analytics tools and workflows.",
+  "tier": "Bronze",
+  "category": "RevOpsMarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "coreyhaines31",
+  "install_command": "claude install coreyhaines31/marketingskills/analytics-tracking",
+  "source_repo_url": "https://github.com/coreyhaines31/marketingskills",
+  "works_with": [
+    "Claude CodeCursorWindsurf"
+  ],
+  "tags": [
+    "tracking",
+    "analytics"
+  ],
+  "sections": {
+    "overview": "The Analytics Tracking skill for Claude Code enables users to set up comprehensive analytics and event tracking effortlessly. This skill covers essential components such as Google Analytics 4 (GA4), custom events, and attribution, making it a vital tool for organizations looking to enhance their data-driven decision-making processes. By implementing this skill, teams can gain deeper insights into user behavior and optimize their marketing strategies effectively. One of the primary benefits of the Analytics Tracking skill is its ability to save time in setting up analytics frameworks. With an estimated implementation time of just 15 minutes, users can quickly establish robust tracking systems that provide valuable data for analysis. Although specific time savings are not quantified, the streamlined setup process allows teams to focus on interpreting data rather than grappling with complex configurations. This skill is particularly beneficial for roles in RevOps, Marketing, and Growth departments, where data-driven insights are crucial for success. By utilizing the Analytics Tracking skill, these professionals can effectively monitor event tracking, analyze conversion funnels, and set up attribution models that inform their strategies. For instance, a marketing team can use this skill to create dashboards that visualize user interactions, helping them identify high-performing campaigns and areas for improvement. The implementation of the Analytics Tracking skill is classified as intermediate, making it accessible to those with a foundational understanding of analytics tools. It integrates seamlessly into AI-first workflows, enhancing the capabilities of AI agents by providing them with actionable data. As organizations increasingly rely on AI automation, incorporating robust analytics tracking becomes essential for maximizing the effectiveness of their AI initiatives.\nSet up GA4 tracking for user interactions on your website.\nCreate custom events to monitor specific user actions and behaviors.\nEstablish conversion funnels to visualize user journeys and optimize for better performance.\nImplement attribution models to understand the effectiveness of different marketing channels.",
+    "setup": "Terminal\nCopy\n`claude install coreyhaines31/marketingskills/analytics-tracking`\n`git clone https://github.com/coreyhaines31/marketingskills`",
+    "usage": "```\nSet up comprehensive analytics tracking for [WEBSITE/APP] in GA4. Include the following custom events: [LIST OF EVENTS]. Ensure proper attribution is configured for [MARKETING CHANNELS]. Provide a step-by-step implementation guide and recommend any additional tools for [SPECIFIC USE CASE].\n```\nCopy\n\n```\nTo set up comprehensive analytics tracking for your e-commerce website, we'll focus on key events like product views, add-to-cart actions, and purchases. First, ensure your GA4 property is correctly linked to your website. For custom events, you'll need to implement the following tags:\n\n1. **Product View**: Triggered when a user views a product page.\n2. **Add to Cart**: Fires when a user adds an item to their cart.\n3. **Purchase**: Captures the final transaction details.\n4. **Checkout Step**: Tracks each step in the checkout process.\n\nFor attribution, configure UTM parameters for your marketing channels such as Google Ads, Facebook Ads, and email campaigns. This will help you track the source of your traffic and understand which channels are driving the most conversions. Additionally, consider integrating tools like Google Optimize for A/B testing and Hotjar for heatmaps and session recordings. These tools can provide deeper insights into user behavior and help you optimize your website for better performance.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf"
+    ],
+    "related_skills": [
+      "analytics-tracking#main-content",
+      "analytics-tracking#overview",
+      "analytics-tracking#setup",
+      "analytics-tracking#examples",
+      "analytics-tracking#tools",
+      "analytics-tracking#mcp",
+      "analytics-tracking#related"
+    ],
+    "overview_vi": "The Analytics Tracking skill for Claude Code enables users to set up comprehensive analytics and event tracking effortlessly. This skill covers essential components such as Google Analytics 4 (GA4), custom events, and attribution, making it a vital tool for organizations looking to enhance their data-driven decision-making processes. By implementing this skill, teams can gain deeper insights into user behavior and optimize their marketing strategies effectively. One of the primary benefits of the Analytics Tracking skill is its ability to save time in setting up analytics frameworks. With an estimated implementation time of just 15 minutes, users can quickly establish robust tracking systems that provide valuable data for analysis. Although specific time savings are not quantified, the streamlined setup process allows teams to focus on interpreting data rather than grappling with complex configurations. This skill is particularly beneficial for roles in RevOps, Marketing, and Growth departments, where data-driven insights are crucial for success. By utilizing the Analytics Tracking skill, these professionals can effectively monitor event tracking, analyze conversion funnels, and set up attribution models that inform their strategies. For instance, a marketing team can use this skill to create dashboards that visualize user interactions, helping them identify high-performing campaigns and areas for improvement. The implementation of the Analytics Tracking skill is classified as intermediate, making it accessible to those with a foundational understanding of analytics tools. It integrates seamlessly into AI-first workflows, enhancing the capabilities of AI agents by providing them with actionable data. As organizations increasingly rely on AI automation, incorporating robust analytics tracking becomes essential for maximizing the effectiveness of their AI initiatives.\nSet up GA4 tracking for user interactions on your website.\nCreate custom events to monitor specific user actions and behaviors.\nEstablish conversion funnels to visualize user journeys and optimize for better performance.\nImplement attribution models to understand the effectiveness of different marketing channels.",
+    "setup_vi": "Terminal\nCopy\n`claude install coreyhaines31/marketingskills/analytics-tracking`\n`git clone https://github.com/coreyhaines31/marketingskills`",
+    "usage_vi": "```\nSet up comprehensive analytics tracking for [WEBSITE/APP] in GA4. Include the following custom events: [LIST OF EVENTS]. Ensure proper attribution is configured for [MARKETING CHANNELS]. Provide a step-by-step implementation guide and recommend any additional tools for [SPECIFIC USE CASE].\n```\nCopy\n\n```\nTo set up comprehensive analytics tracking for your e-commerce website, we'll focus on key events like product views, add-to-cart actions, and purchases. First, ensure your GA4 property is correctly linked to your website. For custom events, you'll need to implement the following tags:\n\n1. **Product View**: Triggered when a user views a product page.\n2. **Add to Cart**: Fires when a user adds an item to their cart.\n3. **Purchase**: Captures the final transaction details.\n4. **Checkout Step**: Tracks each step in the checkout process.\n\nFor attribution, configure UTM parameters for your marketing channels such as Google Ads, Facebook Ads, and email campaigns. This will help you track the source of your traffic and understand which channels are driving the most conversions. Additionally, consider integrating tools like Google Optimize for A/B testing and Hotjar for heatmaps and session recordings. These tools can provide deeper insights into user behavior and help you optimize your website for better performance.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:44:00.352962Z",
+    "http_status": 200,
+    "content_hash": "56a85934e4f6a9d04ad2eb559bd207ab2a0d5ae3733acf20e761dd08c39bec10",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\analytics-tracking.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\analytics-tracking.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Analytics Tracking: Event Tracking",
+  "short_description_vi": "Set up comprehensive analytics and event tracking for GA4, custom events, and attribution. Helps data teams monitor user behavior, track conversions, and optimize marketing campaigns. Integrates with existing analytics tools and workflows."
+}

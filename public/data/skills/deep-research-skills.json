@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deep-research-skills",
+  "slug": "deep-research-skills",
+  "name": "Deep-Research-skills",
+  "headline": "Deep-Research-skills - Automated Research",
+  "short_description": "Deep-Research-skills automates structured research tasks with human oversight. Operations teams use it to gather, analyze, and synthesize data from multiple sources. It connects to Claude Code and OpenCode, enabling efficient research workflows with human-in-the-loop control.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "Weizhena",
+  "install_command": "git clone https://github.com/Weizhena/Deep-Research-skills.git",
+  "source_repo_url": "https://github.com/Weizhena/Deep-Research-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-skills",
+    "deep-research-agent",
+    "llm-agent",
+    "gpt-skills",
+    "opencode",
+    "opencode-skills",
+    "research",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Deep-Research-skills is a structured research workflow skill for Claude Code, OpenCode, and Codex that breaks complex research into two phases: outline generation and deep investigation. The skill automates data gathering, analysis, and synthesis from multiple sources via parallel web agents, while maintaining human oversight at every stage. It supports academic research, technical evaluations, market analysis, and due diligence projects. Users create a research outline, optionally refine items and fields, trigger automated deep research across all topics, and generate organized markdown reports. Installation requires copying skill files, configuring web-search agents, and installing the PyYAML dependency.\nAcademic research: paper surveys, benchmark reviews, literature analysis\nTechnical research: technology comparison, framework evaluation, tool selection\nMarket research: competitor analysis, industry trends, product comparison\nDue diligence: company research, investment analysis, risk assessment",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Weizhena/Deep-Research-skills`",
+    "usage": "```\nAct as a research assistant for [COMPANY], a [INDUSTRY] company. Use [DATA] to gather information on [TOPIC]. Provide a structured summary with key findings, trends, and actionable insights. Include at least 3 reliable sources and a brief analysis of each.\n```\nCopy\n\n```\n# Research Summary for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "deep-research-skills#main-content",
+      "deep-research-skills#overview",
+      "deep-research-skills#setup",
+      "deep-research-skills#examples",
+      "deep-research-skills#tools",
+      "deep-research-skills#mcp",
+      "deep-research-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Deep-Research-skills là một skill quy trình nghiên cứu có cấu trúc dành cho Claude Code, OpenCode và Codex, giúp chia nhỏ các nghiên cứu phức tạp thành hai giai đoạn: tạo outline và nghiên cứu chuyên sâu. Skill này tự động hóa việc thu thập, phân tích và tổng hợp dữ liệu từ nhiều nguồn thông qua các web agent song song, đồng thời duy trì sự giám sát của con người ở mọi giai đoạn. Nó hỗ trợ các dự án nghiên cứu học thuật, đánh giá kỹ thuật, phân tích thị trường và thẩm định chuyên sâu (due diligence). Người dùng tạo một outline nghiên cứu, tùy chọn tinh chỉnh các mục và trường thông tin, kích hoạt tính năng tự động nghiên cứu sâu trên tất cả các chủ đề, sau đó xuất ra báo cáo markdown được sắp xếp khoa học. Quá trình cài đặt yêu cầu sao chép các file của skill, cấu hình các web-search agent và cài đặt thư viện phụ thuộc PyYAML.\nNghiên cứu học thuật: khảo sát bài báo khoa học, đánh giá benchmark, phân tích tài liệu tham khảo\nNghiên cứu kỹ thuật: so sánh công nghệ, đánh giá framework, lựa chọn công cụ\nNghiên cứu thị trường: phân tích đối thủ cạnh tranh, xu hướng ngành, so sánh sản phẩm\nThẩm định chuyên sâu (Due diligence): nghiên cứu doanh nghiệp, phân tích đầu tư, đánh giá rủi ro",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Weizhena/Deep-Research-skills`",
+    "usage_vi": "```\nHãy đóng vai trò là một trợ lý nghiên cứu cho [COMPANY], một công ty hoạt động trong lĩnh vực [INDUSTRY]. Sử dụng [DATA] để thu thập thông tin về [TOPIC]. Cung cấp một bản tóm tắt có cấu trúc với các phát hiện chính, xu hướng và đề xuất thực tế (actionable insights). Đưa vào ít nhất 3 nguồn đáng tin cậy kèm theo phân tích ngắn gọn về từng nguồn.\n```\nSao chép\n\n```\n# Báo cáo tóm tắt nghiên cứu cho [COMPANY]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:25:04.274958Z",
+    "http_status": 200,
+    "content_hash": "bf47ac206f2fd7d1a47a681b9d2b4207e727e991d7d79cecdb8851c9bdeb014b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deep-research-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deep-research-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Deep-Research-skills - Nghiên cứu tự động",
+  "short_description_vi": "Deep-Research-skills tự động hóa các tác vụ nghiên cứu có cấu trúc với sự giám sát của con người. Các đội ngũ vận hành sử dụng công cụ này để thu thập, phân tích và tổng hợp dữ liệu từ nhiều nguồn. Nó kết nối với Claude Code và OpenCode, hỗ trợ quy trình nghiên cứu hiệu quả với cơ chế kiểm soát human-in-the-loop."
+}

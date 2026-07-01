@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skillkit",
+  "slug": "claude-skillkit",
+  "name": "browser-use",
+  "headline": "Build Claude Skills with precise research",
+  "short_description": "Claude Skill Kit enables operations teams to build comprehensive AI skills based on research. It connects to Claude AI for generating and refining skills, benefiting teams needing custom automation workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "55 min",
+  "author": "rfxlamia",
+  "install_command": "git clone https://github.com/rfxlamia/claude-skillkit.git",
+  "source_repo_url": "https://github.com/rfxlamia/claude-skillkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "anthropic",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "SkillKit is a toolkit designed for creating and validating custom skills that extend AI agent functionality across Claude Code, GitHub Copilot, OpenCode, and Codex. The toolkit includes two core skills: a meta-skill for creating new skills and subagents with dual-mode validation (fast or full workflow), and a help skill for understanding skill concepts and best practices. SkillKit includes 14 Python automation scripts for initialization, validation, token estimation, security scanning, test generation, and quality scoring. It supports progressive disclosure through auto-splitting, workflow pattern detection, and document-to-skill migration. The toolkit enforces a quality target of 9.0+/10 through 5-layer validation and multi-proposal generation, making it suitable for teams building custom automation workflows.\nCreate reusable skills to extend AI agent capabilities for team workflows\nValidate and quality-check custom skills before deployment\nConvert existing documentation into structured AI agent skills\nGenerate automated tests and security scans for skill packages",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rfxlamia/claude-skillkit`",
+    "usage": "```\nI need to create a new AI skill for [COMPANY] in the [INDUSTRY] sector. The skill should automate [SPECIFIC TASK] using [DATA SOURCE]. Provide a step-by-step guide on how to build this skill using Claude Skill Kit, including any necessary parameters and best practices.\n```\nCopy\n\n```\n# AI Skill Creation Guide for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skillkit#main-content",
+      "claude-skillkit#overview",
+      "claude-skillkit#setup",
+      "claude-skillkit#examples",
+      "claude-skillkit#tools",
+      "claude-skillkit#mcp",
+      "claude-skillkit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SkillKit is a toolkit designed for creating and validating custom skills that extend AI agent functionality across Claude Code, GitHub Copilot, OpenCode, and Codex. The toolkit includes two core skills: a meta-skill for creating new skills and subagents with dual-mode validation (fast or full workflow), and a help skill for understanding skill concepts and best practices. SkillKit includes 14 Python automation scripts for initialization, validation, token estimation, security scanning, test generation, and quality scoring. It supports progressive disclosure through auto-splitting, workflow pattern detection, and document-to-skill migration. The toolkit enforces a quality target of 9.0+/10 through 5-layer validation and multi-proposal generation, making it suitable for teams building custom automation workflows.\nCreate reusable skills to extend AI agent capabilities for team workflows\nValidate and quality-check custom skills before deployment\nConvert existing documentation into structured AI agent skills\nGenerate automated tests and security scans for skill packages",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rfxlamia/claude-skillkit`",
+    "usage_vi": "```\nI need to create a new AI skill for [COMPANY] in the [INDUSTRY] sector. The skill should automate [SPECIFIC TASK] using [DATA SOURCE]. Provide a step-by-step guide on how to build this skill using Claude Skill Kit, including any necessary parameters and best practices.\n```\nCopy\n\n```\n# AI Skill Creation Guide for [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:25:56.454522Z",
+    "http_status": 200,
+    "content_hash": "2c534ff7ea2a4dc8c5ef844d3efbc883b7f9d42fa7b6ab34808d3024baaef634",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skillkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skillkit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Build Claude Skills with precise research",
+  "short_description_vi": "Claude Skill Kit enables operations teams to build comprehensive AI skills based on research. It connects to Claude AI for generating and refining skills, benefiting teams needing custom automation workflows."
+}

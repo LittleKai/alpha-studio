@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccproxy",
+  "slug": "ccproxy",
+  "name": "ccproxy",
+  "headline": "ccproxy custom Claude Code mods",
+  "short_description": "ccproxy enables developers to build custom mods for Claude Code, allowing them to hook any request, modify responses, and route intelligently. It benefits operations teams by streamlining AI model interactions and integrating with workflows like Claude Code, OpenAI, and OpenRouter.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "starbaser",
+  "install_command": "git clone https://github.com/starbaser/ccproxy.git",
+  "source_repo_url": "https://github.com/starbaser/ccproxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "llm-proxy",
+    "claude-api",
+    "claude",
+    "ai-gateway",
+    "ai-proxy",
+    "claude-max",
+    "anthropic",
+    "llm-gateway",
+    "ai-tools",
+    "llmops",
+    "claude-ai",
+    "litellm",
+    "gemini-cli",
+    "openai",
+    "claudecode",
+    "openrouter",
+    "gemini",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "ccproxy is a proxy tool that intercepts Claude Code requests and routes them to different LLM providers based on defined rules. It works by sitting between Claude Code and the API, evaluating each request against criteria like token count, model type, or tool usage, then dynamically rewriting requests to the most suitable model. The tool uses a hook-based pipeline system where rules are evaluated in order and matched requests are labeled, then routed through LiteLLM's model alias feature to their destination provider. This allows teams to optimize costs and capabilities by keeping standard coding tasks on Claude while directing high-context requests to Gemini's 2M token window or web searches to Perplexity, all while Claude Code remains unaware of the routing happening behind the scenes.\nRoute high-context requests to Gemini's 2M token window while keeping standard tasks on Claude\nDirect web search requests to Perplexity while using Claude for other coding tasks\nOptimize LLM provider usage based on token count thresholds and request characteristics\nIntegrate multiple LLM providers with Claude Code without modifying application code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/starbaser/ccproxy`",
+    "usage": "```\nUse ccproxy to intercept and modify API requests/responses for [TARGET_SERVICE] when interacting with [AI_MODEL]. Specifically, [ACTION]: [MODIFY_REQUEST/LOG_RESPONSE/INJECT_DATA]. Include [CONDITIONS] for when this should trigger. Example: 'Use ccproxy to log all API responses from OpenAI when the request contains the string \"summarize\" and inject a timestamp into the response metadata.'\n```\nCopy\n\n```\n```json\n{\n  \"intercepted_request\": {\n    \"method\": \"POST\",\n    \"url\": \"https://api.openai.com/v1/chat/completions\",\n    \"headers\": {\n      \"Authorization\": \"Bearer sk-...\",\n      \"Content-Type\": \"application/json\"\n    },\n    \"body\": {\n      \"model\": \"gpt-4\",\n      \"messages\": [{\"role\": \"user\", \"content\": \"Summarize the Q3 financial report for Acme Corp\"}],\n      \"max_tokens\": 500\n    }\n  },\n  \"modified_response\": {\n    \"original_content\": \"Acme Corp's Q3 revenue grew 15% YoY to $2.4B, driven by strong SaaS sales...\",\n    \"modified_content\": \"[2024-05-15 14:32:17 UTC] Acme Corp's Q3 revenue grew 15% YoY to $2.4B, driven by strong SaaS sales...\",\n    \"metadata\": {\n      \"processing_time\": \"125ms\",\n      \"proxy_action\": \"timestamp_injection\",\n      \"user_id\": \"user_12345\"\n    }\n  }\n}\n```\n\n**Workflow Impact:**\nThe proxy intercepted 3 requests during this session, all containing the word 'summarize' in the prompt. The timestamp injection ensures traceability for audit purposes, while the metadata helps track latency and identify potential bottlenecks in the AI pipeline. This modification required zero changes to the original application code, demonstrating how ccproxy enables non-invasive customization of AI interactions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccproxy#main-content",
+      "ccproxy#overview",
+      "ccproxy#setup",
+      "ccproxy#examples",
+      "ccproxy#tools",
+      "ccproxy#mcp",
+      "ccproxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccproxy is a proxy tool that intercepts Claude Code requests and routes them to different LLM providers based on defined rules. It works by sitting between Claude Code and the API, evaluating each request against criteria like token count, model type, or tool usage, then dynamically rewriting requests to the most suitable model. The tool uses a hook-based pipeline system where rules are evaluated in order and matched requests are labeled, then routed through LiteLLM's model alias feature to their destination provider. This allows teams to optimize costs and capabilities by keeping standard coding tasks on Claude while directing high-context requests to Gemini's 2M token window or web searches to Perplexity, all while Claude Code remains unaware of the routing happening behind the scenes.\nRoute high-context requests to Gemini's 2M token window while keeping standard tasks on Claude\nDirect web search requests to Perplexity while using Claude for other coding tasks\nOptimize LLM provider usage based on token count thresholds and request characteristics\nIntegrate multiple LLM providers with Claude Code without modifying application code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/starbaser/ccproxy`",
+    "usage_vi": "```\nUse ccproxy to intercept and modify API requests/responses for [TARGET_SERVICE] when interacting with [AI_MODEL]. Specifically, [ACTION]: [MODIFY_REQUEST/LOG_RESPONSE/INJECT_DATA]. Include [CONDITIONS] for when this should trigger. Example: 'Use ccproxy to log all API responses from OpenAI when the request contains the string \"summarize\" and inject a timestamp into the response metadata.'\n```\nCopy\n\n```\n```json\n{\n  \"intercepted_request\": {\n    \"method\": \"POST\",\n    \"url\": \"https://api.openai.com/v1/chat/completions\",\n    \"headers\": {\n      \"Authorization\": \"Bearer sk-...\",\n      \"Content-Type\": \"application/json\"\n    },\n    \"body\": {\n      \"model\": \"gpt-4\",\n      \"messages\": [{\"role\": \"user\", \"content\": \"Summarize the Q3 financial report for Acme Corp\"}],\n      \"max_tokens\": 500\n    }\n  },\n  \"modified_response\": {\n    \"original_content\": \"Acme Corp's Q3 revenue grew 15% YoY to $2.4B, driven by strong SaaS sales...\",\n    \"modified_content\": \"[2024-05-15 14:32:17 UTC] Acme Corp's Q3 revenue grew 15% YoY to $2.4B, driven by strong SaaS sales...\",\n    \"metadata\": {\n      \"processing_time\": \"125ms\",\n      \"proxy_action\": \"timestamp_injection\",\n      \"user_id\": \"user_12345\"\n    }\n  }\n}\n```\n\n**Workflow Impact:**\nThe proxy intercepted 3 requests during this session, all containing the word 'summarize' in the prompt. The timestamp injection ensures traceability for audit purposes, while the metadata helps track latency and identify potential bottlenecks in the AI pipeline. This modification required zero changes to the original application code, demonstrating how ccproxy enables non-invasive customization of AI interactions.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:19.810395Z",
+    "http_status": 200,
+    "content_hash": "b0d86fac2a160adb41e172cee3dc28c9f94ca83fa9d680c965ba29005fd9caa1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccproxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccproxy.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ccproxy custom Claude Code mods",
+  "short_description_vi": "ccproxy enables developers to build custom mods for Claude Code, allowing them to hook any request, modify responses, and route intelligently. It benefits operations teams by streamlining AI model interactions and integrating with workflows like Claude Code, OpenAI, and OpenRouter."
+}

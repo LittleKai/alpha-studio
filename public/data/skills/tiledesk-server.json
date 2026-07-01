@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tiledesk-server",
+  "slug": "tiledesk-server",
+  "name": "Tiledesk Server",
+  "headline": "tiledesk-server: Build Advanced LLM Agents",
+  "short_description": "Tiledesk Server is the main API component of the Tiledesk platform  Tiledesk is an open-source alternative to Voiceflow, allowing you to build advanced LLM-powered agents with easy human-in-the-loop (HITL) when necessary.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Tiledesk",
+  "install_command": "git clone https://github.com/Tiledesk/tiledesk-server.git",
+  "source_repo_url": "https://github.com/Tiledesk/tiledesk-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-automation",
+    "open-source",
+    "firestore",
+    "rest",
+    "chat",
+    "nodejs",
+    "retrieved-augmented-generation",
+    "workflow-automation",
+    "customer-service",
+    "mongodb",
+    "customer-support",
+    "bot",
+    "opensource",
+    "human-in-the-loop",
+    "javascript",
+    "rest-api",
+    "firebase",
+    "ai-agents",
+    "api",
+    "ai-assistant"
+  ],
+  "sections": {
+    "overview": "Tiledesk Server serves as the core API component of the Tiledesk platform, offering an open-source alternative to Voiceflow. This skill allows developers to build advanced LLM-powered AI agents seamlessly, integrating human-in-the-loop (HITL) capabilities when necessary. By leveraging Tiledesk Server, teams can create conversational agents that enhance customer interactions and automate responses effectively. One of the key benefits of using Tiledesk Server is its ability to streamline workflow automation. Developers can implement this skill in approximately 30 minutes, making it an efficient choice for those looking to enhance their AI automation capabilities. While the exact time savings are not quantified, the reduction in manual intervention through HITL processes can lead to significant efficiency gains over time, allowing teams to focus on more strategic tasks. This skill is particularly valuable for developers, product managers, and AI practitioners who are looking to create sophisticated conversational interfaces. By utilizing Tiledesk Server, these professionals can develop solutions that cater to various use cases, such as customer support chatbots, virtual assistants, and interactive voice response systems. For example, a product manager could use this skill to quickly prototype a customer service agent that learns from user interactions, improving over time without extensive manual updates. With an intermediate implementation difficulty, Tiledesk Server requires some technical knowledge but is designed to fit seamlessly into AI-first workflows. It empowers teams to build and deploy AI agent skills that are not only functional but also adaptable to changing user needs. By incorporating Tiledesk Server into your automation strategy, you can leverage the power of AI to enhance user engagement and operational efficiency, making it a valuable addition to your toolkit.\nAutomate customer support inquiries to reduce response times and improve user satisfaction.\nIntegrate chatbots with existing applications to provide real-time assistance and information.\nDeploy multi-channel chatbots that adapt responses based on the platform used by the customer.\nUtilize human-in-the-loop capabilities to manage complex customer interactions seamlessly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Tiledesk/tiledesk-server`",
+    "usage": "```\nUse the Tiledesk Server API to [ACTION] for [PROJECT_NAME]. Specifically, [SPECIFIC_TASK] such as creating a new agent, updating a workflow, or retrieving conversation logs. Include [PARAMETERS] like agent ID, workflow ID, or time range if applicable. Ensure the response includes [OUTPUT_FORMAT] like JSON data, a confirmation message, or a summary of changes.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"agent_id\": \"agt_789xyz\",\n    \"name\": \"Customer Support Agent\",\n    \"status\": \"active\",\n    \"created_at\": \"2024-05-20T14:30:00Z\",\n    \"workflow_id\": \"wf_123abc\",\n    \"last_updated\": \"2024-05-20T15:45:00Z\"\n  },\n  \"message\": \"Agent 'Customer Support Agent' created successfully with workflow ID 'wf_123abc'.\"\n}\n```\n\n**Next Steps:**\n1. Test the agent by sending a sample query to the workflow endpoint: `POST /api/v1/workflows/wf_123abc/query` with the payload `{\"query\": \"How do I reset my password?\"}`.\n2. Monitor the conversation logs in the Tiledesk dashboard under **Analytics > Conversations** to verify the agent's responses.\n3. If the agent requires adjustments, use the `PUT /api/v1/agents/agt_789xyz` endpoint to update its configuration, such as adding new intents or modifying the LLM prompt.\n\n**Note:** Ensure your Tiledesk Server is running locally or on a cloud instance (e.g., `http://localhost:3000` or `https://your-tiledesk-server.com`). Authenticate requests using the `Authorization: Bearer YOUR_API_KEY` header.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tiledesk-server#main-content",
+      "tiledesk-server#overview",
+      "tiledesk-server#setup",
+      "tiledesk-server#examples",
+      "tiledesk-server#tools",
+      "tiledesk-server#mcp",
+      "tiledesk-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Tiledesk Server serves as the core API component of the Tiledesk platform, offering an open-source alternative to Voiceflow. This skill allows developers to build advanced LLM-powered AI agents seamlessly, integrating human-in-the-loop (HITL) capabilities when necessary. By leveraging Tiledesk Server, teams can create conversational agents that enhance customer interactions and automate responses effectively. One of the key benefits of using Tiledesk Server is its ability to streamline workflow automation. Developers can implement this skill in approximately 30 minutes, making it an efficient choice for those looking to enhance their AI automation capabilities. While the exact time savings are not quantified, the reduction in manual intervention through HITL processes can lead to significant efficiency gains over time, allowing teams to focus on more strategic tasks. This skill is particularly valuable for developers, product managers, and AI practitioners who are looking to create sophisticated conversational interfaces. By utilizing Tiledesk Server, these professionals can develop solutions that cater to various use cases, such as customer support chatbots, virtual assistants, and interactive voice response systems. For example, a product manager could use this skill to quickly prototype a customer service agent that learns from user interactions, improving over time without extensive manual updates. With an intermediate implementation difficulty, Tiledesk Server requires some technical knowledge but is designed to fit seamlessly into AI-first workflows. It empowers teams to build and deploy AI agent skills that are not only functional but also adaptable to changing user needs. By incorporating Tiledesk Server into your automation strategy, you can leverage the power of AI to enhance user engagement and operational efficiency, making it a valuable addition to your toolkit.\nAutomate customer support inquiries to reduce response times and improve user satisfaction.\nIntegrate chatbots with existing applications to provide real-time assistance and information.\nDeploy multi-channel chatbots that adapt responses based on the platform used by the customer.\nUtilize human-in-the-loop capabilities to manage complex customer interactions seamlessly.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Tiledesk/tiledesk-server`",
+    "usage_vi": "```\nUse the Tiledesk Server API to [ACTION] for [PROJECT_NAME]. Specifically, [SPECIFIC_TASK] such as creating a new agent, updating a workflow, or retrieving conversation logs. Include [PARAMETERS] like agent ID, workflow ID, or time range if applicable. Ensure the response includes [OUTPUT_FORMAT] like JSON data, a confirmation message, or a summary of changes.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"agent_id\": \"agt_789xyz\",\n    \"name\": \"Customer Support Agent\",\n    \"status\": \"active\",\n    \"created_at\": \"2024-05-20T14:30:00Z\",\n    \"workflow_id\": \"wf_123abc\",\n    \"last_updated\": \"2024-05-20T15:45:00Z\"\n  },\n  \"message\": \"Agent 'Customer Support Agent' created successfully with workflow ID 'wf_123abc'.\"\n}\n```\n\n**Next Steps:**\n1. Test the agent by sending a sample query to the workflow endpoint: `POST /api/v1/workflows/wf_123abc/query` with the payload `{\"query\": \"How do I reset my password?\"}`.\n2. Monitor the conversation logs in the Tiledesk dashboard under **Analytics > Conversations** to verify the agent's responses.\n3. If the agent requires adjustments, use the `PUT /api/v1/agents/agt_789xyz` endpoint to update its configuration, such as adding new intents or modifying the LLM prompt.\n\n**Note:** Ensure your Tiledesk Server is running locally or on a cloud instance (e.g., `http://localhost:3000` or `https://your-tiledesk-server.com`). Authenticate requests using the `Authorization: Bearer YOUR_API_KEY` header.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:57.148790Z",
+    "http_status": 200,
+    "content_hash": "9c115899265ba4df76c607aad4b63ec6f1e0e835e3aadfc99d963540bbbc2ffd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tiledesk-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tiledesk-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "tiledesk-server: Build Advanced LLM Agents",
+  "short_description_vi": "Tiledesk Server is the main API component of the Tiledesk platform  Tiledesk is an open-source alternative to Voiceflow, allowing you to build advanced LLM-powered agents with easy human-in-the-loop (HITL) when necessary."
+}

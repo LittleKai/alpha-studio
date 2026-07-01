@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/iloom-cli",
+  "slug": "iloom-cli",
+  "name": "browser-use",
+  "headline": "Iloom-cli - Manage Claude Code Context",
+  "short_description": "Manage context alignment and cognitive overhead when using Claude Code. Isolated workspaces, consistent workflow, analysis and planning artifacts visible for all and persisted in your issue tracker. Great for teams and solo devs. Check out this repo's closed issues for examples.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "iloom-ai",
+  "install_command": "git clone https://github.com/iloom-ai/iloom-cli.git",
+  "source_repo_url": "https://github.com/iloom-ai/iloom-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-ai",
+    "github",
+    "context-management",
+    "hatchbox",
+    "ai-development",
+    "cli"
+  ],
+  "sections": {
+    "overview": "iloom-cli is a CLI tool built for Claude Code that creates isolated development environments (git worktrees, database branches, unique ports) for each task while documenting the AI agent's reasoning in your issue tracker. Instead of chat logs that disappear, iloom records analysis, execution plans, assumptions, and risks as permanent issue comments, so your team can understand why code was written a certain way and pick up context when context-switching between tasks. When tasks grow larger, swarm mode decomposes work into child issues and launches parallel agents to execute them independently, each with full iloom workflow visibility. Teams and solo developers benefit from persistent decision records, reduced cognitive overhead, and the ability to multitask across several agents without losing the thread.\nTeam code review: understand AI reasoning behind large PRs before review\nContext-switching between multiple agent tasks without losing progress\nDecomposing large features into parallel subtasks with swarm mode\nOnboarding teammates by replaying issue comments showing what decisions were made\nMigrate the existing JWT-based authentication to OAuth2 with PKCE for enhanced security. Target completion: 6 weeks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iloom-ai/iloom-cli`",
+    "usage": "```\nUse iloom-cli to set up an isolated workspace for [PROJECT_NAME] with the following requirements: [REQUIREMENTS]. Generate a project plan in Markdown format, including milestones, dependencies, and a risk register. Save all artifacts to [ISSUE_TRACKER_PATH] and create a GitHub issue with the plan attached. Include a command to reopen this workspace later.\n```\nCopy\n\n```\n```markdown\n# Project Plan: Migrate Legacy Authentication System to OAuth2",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "iloom-cli#main-content",
+      "iloom-cli#overview",
+      "iloom-cli#setup",
+      "iloom-cli#examples",
+      "iloom-cli#tools",
+      "iloom-cli#mcp",
+      "iloom-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "iloom-cli is a CLI tool built for Claude Code that creates isolated development environments (git worktrees, database branches, unique ports) for each task while documenting the AI agent's reasoning in your issue tracker. Instead of chat logs that disappear, iloom records analysis, execution plans, assumptions, and risks as permanent issue comments, so your team can understand why code was written a certain way and pick up context when context-switching between tasks. When tasks grow larger, swarm mode decomposes work into child issues and launches parallel agents to execute them independently, each with full iloom workflow visibility. Teams and solo developers benefit from persistent decision records, reduced cognitive overhead, and the ability to multitask across several agents without losing the thread.\nTeam code review: understand AI reasoning behind large PRs before review\nContext-switching between multiple agent tasks without losing progress\nDecomposing large features into parallel subtasks with swarm mode\nOnboarding teammates by replaying issue comments showing what decisions were made\nMigrate the existing JWT-based authentication to OAuth2 with PKCE for enhanced security. Target completion: 6 weeks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iloom-ai/iloom-cli`",
+    "usage_vi": "```\nUse iloom-cli to set up an isolated workspace for [PROJECT_NAME] with the following requirements: [REQUIREMENTS]. Generate a project plan in Markdown format, including milestones, dependencies, and a risk register. Save all artifacts to [ISSUE_TRACKER_PATH] and create a GitHub issue with the plan attached. Include a command to reopen this workspace later.\n```\nCopy\n\n```\n```markdown\n# Project Plan: Migrate Legacy Authentication System to OAuth2"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:35:51.618767Z",
+    "http_status": 200,
+    "content_hash": "e112594de72f582788bf23b3cd346548993d0c0348324a038bb64dfa014fa507",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\iloom-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\iloom-cli.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Iloom-cli - Manage Claude Code Context",
+  "short_description_vi": "Manage context alignment and cognitive overhead when using Claude Code. Isolated workspaces, consistent workflow, analysis and planning artifacts visible for all and persisted in your issue tracker. Great for teams and solo devs. Check out this repo's closed issues for examples."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-helpers",
+  "slug": "ai-helpers",
+  "name": "Ai Helpers",
+  "headline": "AI Helpers: Enhance Your GTM Strategy",
+  "short_description": "AI Helpers provides a versatile collection of Skills, Commands, and Agents compatible with various tools like Claude Code and Cursor. This resource enhances productivity and automation in AI-driven tasks.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "opendatahub-io",
+  "install_command": "claude install opendatahub-io/ai-helpers",
+  "source_repo_url": "https://github.com/opendatahub-io/ai-helpers",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "AI",
+    "automation",
+    "productivity",
+    "Claude Code",
+    "Cursor"
+  ],
+  "sections": {
+    "overview": "AI Helpers is a community-driven collection of skills, commands, and agents designed to extend the capabilities of AI code assistants like Claude Code, Cursor, and Gemini Gems. The repository provides ready-made tools organized by category that automate repetitive development tasks and integrate specialized workflows into your coding environment. Users can install plugins from the centralized marketplace, contribute new tools following agentskills.io format, and collaborate on improvements through GitHub issues. The project supports local testing, containerized deployments with pre-installed plugins, and integrations with Google Cloud's Vertex AI for enhanced functionality.\nAutomating customer outreach\nEnhancing data analysis\nStreamlining content creation\nImproving sales forecasting",
+    "setup": "Terminal\nCopy\n`claude install opendatahub-io/ai-helpers`\n`git clone https://github.com/opendatahub-io/ai-helpers`",
+    "usage": "```\nGenerate a comprehensive SaaS cost optimization report for [COMPANY_NAME] using Productiv. Include: (1) Total annual SaaS spend with breakdown by department, (2) Top 5 most expensive subscriptions with renewal dates, (3) Identify 3 underutilized tools with <50% adoption rates, (4) Forecast potential savings of $X by consolidating redundant tools, and (5) Recommend 2 compliance actions needed before next audit. Use data from Productiv's dashboard for [TIME_PERIOD].\n```\nCopy\n\n```\n### SaaS Cost Optimization Report for TechNova Inc. (FY2024)\n\n**Total Annual SaaS Spend: $1.2M**\n- Engineering: $450K (37.5%)\n- Marketing: $320K (26.7%)\n- Sales: $280K (23.3%)\n- HR: $150K (12.5%)\n\n**Top 5 Most Expensive Subscriptions:**\n1. **Salesforce Enterprise** ($180K/year) - Renews June 2024\n2. **Jira Premium** ($120K/year) - Renews March 2025\n3. **Adobe Creative Cloud** ($96K/year) - Renews November 2024\n4. **HubSpot Marketing Hub** ($84K/year) - Renews August 2024\n5. **Slack Pro** ($72K/year) - Renews January 2025\n\n**Underutilized Tools Identified:**\n- **Notion Enterprise** (23% adoption) - 120 licenses vs. 520 employees\n- **Zoom Rooms** (42% adoption) - 45 licenses vs. 107 conference rooms\n- **Miro Business** (38% adoption) - 89 licenses vs. 234 active users\n\n**Savings Opportunities:**\nBy consolidating redundant tools (e.g., replacing Zoom Rooms with Microsoft Teams Rooms at $45K/year savings) and renegotiating Adobe's contract, we project **$185K in annual savings** (15.4% reduction).\n\n**Compliance Actions Required:**\n1. **SOX Compliance:** Audit 12 subscriptions with >$50K annual spend before March 15\n2. **GDPR Alignment:** Review 7 tools processing EU customer data for updated DPA agreements\n\n**Next Steps:**\n- Schedule vendor negotiations for Q1 2024\n- Implement license reallocation process for underutilized tools\n- Set up automated renewal alerts in Productiv for all critical subscriptions\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor"
+    ],
+    "related_skills": [
+      "ai-helpers#main-content",
+      "ai-helpers#overview",
+      "ai-helpers#setup",
+      "ai-helpers#examples",
+      "ai-helpers#tools",
+      "ai-helpers#mcp",
+      "ai-helpers#related",
+      "claude-skills",
+      "skill-seekers",
+      "intentkit"
+    ],
+    "overview_vi": "AI Helpers là một bộ sưu tập do cộng đồng phát triển gồm các skill, command và agent được thiết kế để mở rộng khả năng của các trợ lý lập trình AI như Claude Code, Cursor và Gemini Gems. Repository này cung cấp các công cụ có sẵn được phân loại theo danh mục giúp tự động hóa các tác vụ phát triển lặp đi lặp lại và tích hợp các workflow chuyên dụng vào môi trường code của bạn. Người dùng có thể cài đặt các plugin từ marketplace tập trung, đóng góp công cụ mới theo định dạng agentskills.io và cộng tác để cải tiến dự án thông qua GitHub issue. Dự án hỗ trợ test local, triển khai container hóa với các plugin được cài đặt sẵn, và tích hợp với Vertex AI của Google Cloud để tăng cường chức năng.\nTự động hóa tiếp cận khách hàng\nNâng cao hiệu quả phân tích dữ liệu\nTối ưu hóa quy trình sáng tạo nội dung\nCải thiện dự báo doanh số",
+    "setup_vi": "Terminal\nSao chép\n`claude install opendatahub-io/ai-helpers`\n`git clone https://github.com/opendatahub-io/ai-helpers`",
+    "usage_vi": "```\nTạo báo cáo tối ưu hóa chi phí SaaS toàn diện cho [COMPANY_NAME] bằng cách sử dụng Productiv. Yêu cầu bao gồm: (1) Tổng chi tiêu SaaS hàng năm chia theo bộ phận, (2) Top 5 subscription đắt nhất kèm theo ngày gia hạn, (3) Xác định 3 công cụ chưa được tối ưu hóa sử dụng với tỷ lệ adoption <50%, (4) Dự báo lượng ngân sách tiết kiệm tiềm năng là $X nhờ hợp nhất các công cụ dư thừa, và (5) Đề xuất 2 hành động đảm bảo tuân thủ (compliance) cần thực hiện trước kỳ audit tiếp theo. Sử dụng dữ liệu từ dashboard của Productiv trong [TIME_PERIOD].\n```\nSao chép\n\n```\n### Báo cáo Tối ưu hóa Chi phí SaaS cho TechNova Inc. (FY2024)\n\n**Tổng chi tiêu SaaS hàng năm: $1.2M**\n- Engineering: $450K (37,5%)\n- Marketing: $320K (26,7%)\n- Sales: $280K (23,3%)\n- HR: $150K (12,5%)\n\n**Top 5 Subscription đắt nhất:**\n1. **Salesforce Enterprise** ($180K/năm) - Gia hạn: Tháng 6, 2024\n2. **Jira Premium** ($120K/năm) - Gia hạn: Tháng 3, 2025\n3. **Adobe Creative Cloud** ($96K/năm) - Gia hạn: Tháng 11, 2024\n4. **HubSpot Marketing Hub** ($84K/năm) - Gia hạn: Tháng 8, 2024\n5. **Slack Pro** ($72K/năm) - Gia hạn: Tháng 1, 2025\n\n**Các công cụ chưa được tối ưu hóa sử dụng:**\n- **Notion Enterprise** (tỷ lệ adoption 23%) - 120 license so với 520 nhân viên\n- **Zoom Rooms** (tỷ lệ adoption 42%) - 45 license so với 107 phòng họp\n- **Miro Business** (tỷ lệ adoption 38%) - 89 license so với 234 người dùng hoạt động\n\n**Cơ hội tiết kiệm chi phí:**\nBằng cách hợp nhất các công cụ dư thừa (ví dụ: thay thế Zoom Rooms bằng Microsoft Teams Rooms để tiết kiệm $45K/năm) và đàm phán lại hợp đồng với Adobe, chúng tôi dự kiến sẽ tiết kiệm được **$185K hàng năm** (giảm 15,4%).\n\n**Hành động tuân thủ cần thực hiện:**\n1. **Tuân thủ SOX:** Audit 12 subscription có chi phí hàng năm >$50K trước ngày 15 tháng 3\n2. **Đáp ứng GDPR:** Xem xét lại 7 công cụ xử lý dữ liệu khách hàng EU để cập nhật các thỏa thuận DPA\n\n**Các bước tiếp theo:**\n- Lên lịch đàm phán với nhà cung cấp trong Q1 2024\n- Triển khai quy trình cấp phát lại license cho các công cụ ít sử dụng\n- Thiết lập cảnh báo gia hạn tự động trong Productiv cho tất cả các subscription quan trọng\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:13:52.672575Z",
+    "http_status": 200,
+    "content_hash": "623297aa45d0c8fa2fcf3f223e635e0ff448c8b7ddc128beabaaf6b0354bc263",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-helpers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-helpers.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI Helpers: Nâng cao Chiến lược GTM của bạn",
+  "short_description_vi": "AI Helpers cung cấp một bộ sưu tập đa dạng các Skill, Command và Agent tương thích với nhiều công cụ khác nhau như Claude Code và Cursor. Tài nguyên này giúp nâng cao năng suất và tự động hóa các tác vụ dựa trên AI."
+}

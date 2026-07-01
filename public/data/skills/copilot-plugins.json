@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/copilot-plugins",
+  "slug": "copilot-plugins",
+  "name": "react-native-best-practices",
+  "headline": "GitHub Copilot Plugins Collection - Enhance Your",
+  "short_description": "Explore the official GitHub Copilot plugins collection, featuring MCP servers, skills, hooks, and extensibility tools designed to enhance your coding experience. Perfect for developers looking to extend GitHub Copilot's capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "github",
+  "install_command": "claude install github/copilot-plugins",
+  "source_repo_url": "https://github.com/github/copilot-plugins",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "extensibility",
+    "plugins",
+    "Copilot",
+    "GitHub",
+    "development"
+  ],
+  "sections": {
+    "overview": "The copilot-plugins repository is the official GitHub collection for extending GitHub Copilot with reusable skills, Model Context Protocol servers, hooks, and extensibility tools. Skills provide reusable prompts and workflows for common development tasks, while MCP servers add new capabilities to Copilot. The collection also includes external plugins like Advanced Security for dependency and secret scanning, and Microsoft Skills for Fabric to integrate with Microsoft Fabric analytics tools. Developers can explore this marketplace to discover ways to customize and enhance their GitHub Copilot experience, with opportunities to contribute custom plugins through the project's open contribution process.\nIntegrate custom plugins into GitHub Copilot\nEnhance coding efficiency with tailored tools\nDevelop new skills for GitHub Copilot\nUtilize hooks for advanced functionalities",
+    "setup": "Terminal\nCopy\n`claude install github/copilot-plugins`\n`git clone https://github.com/github/copilot-plugins`",
+    "usage": "```\nExplore the official GitHub Copilot plugins collection to find [SPECIFIC_TYPE_OF_PLUGIN] that can enhance [YOUR_DEVELOPMENT_TASK]. Provide a list of the top 3 plugins with their GitHub repository links, key features, and installation instructions. Focus on plugins that integrate with [YOUR_PREFERRED_TOOL/IDE, e.g., VS Code, JetBrains].\n```\nCopy\n\n```\nHere are the top 3 GitHub Copilot plugins that can supercharge your Python development workflow in VS Code:\n\n1. **Python Docstring Generator**\n   - **Repository**: [https://github.com/username/python-docstring-generator](https://github.com/username/python-docstring-generator)\n   - **Key Features**: Automatically generates Google-style docstrings for Python functions, classes, and modules. Supports custom templates and integrates seamlessly with VS Code's IntelliSense. Compatible with Python 3.8+.\n   - **Installation**: \n ```bash\n     code --install-extension username.python-docstring-generator\n ```\n   - **Use Case**: Ideal for teams enforcing documentation standards or developers working on large codebases where manual docstring writing is time-consuming.\n\n2. **GitHub Copilot Custom Agents Template**\n   - **Repository**: [https://github.com/docs/custom-agents-template](https://github.com/docs/custom-agents-template)\n   - **Key Features**: Provides a starter template for creating custom Copilot agents tailored to your project's needs. Includes pre-configured hooks for linting, testing, and deployment workflows. Supports both JavaScript and TypeScript.\n   - **Installation**: \n ```bash\n     git clone https://github.com/docs/custom-agents-template.git\n     cd custom-agents-template\n     npm install\n ```\n   - **Use Case**: Perfect for enterprise teams looking to extend Copilot's capabilities with organization-specific workflows or internal tools.\n\n3. **Open Reusables**\n   - **Repository**: [https://github.com/docs/open-reusables](https://github.com/docs/open-reusables)\n   - **Key Features**: Enables quick access to reusable code snippets, variables, and configuration files directly from VS Code. Supports markdown-based help articles and integrates with Copilot's context-aware suggestions.\n   - **Installation**: \n ```bash\n     code --install-extension docs.open-reusables\n ```\n   - **Use Case**: Great for developers who frequently reuse boilerplate code, such as API endpoints, database models, or UI components.\n\n**Recommendation**: Start with the *Python Docstring Generator* if documentation is a bottleneck, or the *Custom Agents Template* if you need to tailor Copilot to your team's unique workflows. For teams working across multiple languages, *Open Reusables* offers a versatile solution for code reuse.\n\nWould you like me to dive deeper into any of these plugins or suggest alternatives based on a specific programming language or framework?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "copilot-plugins#main-content",
+      "copilot-plugins#overview",
+      "copilot-plugins#setup",
+      "copilot-plugins#examples",
+      "copilot-plugins#tools",
+      "copilot-plugins#mcp",
+      "copilot-plugins#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The copilot-plugins repository is the official GitHub collection for extending GitHub Copilot with reusable skills, Model Context Protocol servers, hooks, and extensibility tools. Skills provide reusable prompts and workflows for common development tasks, while MCP servers add new capabilities to Copilot. The collection also includes external plugins like Advanced Security for dependency and secret scanning, and Microsoft Skills for Fabric to integrate with Microsoft Fabric analytics tools. Developers can explore this marketplace to discover ways to customize and enhance their GitHub Copilot experience, with opportunities to contribute custom plugins through the project's open contribution process.\nIntegrate custom plugins into GitHub Copilot\nEnhance coding efficiency with tailored tools\nDevelop new skills for GitHub Copilot\nUtilize hooks for advanced functionalities",
+    "setup_vi": "Terminal\nCopy\n`claude install github/copilot-plugins`\n`git clone https://github.com/github/copilot-plugins`",
+    "usage_vi": "```\nExplore the official GitHub Copilot plugins collection to find [SPECIFIC_TYPE_OF_PLUGIN] that can enhance [YOUR_DEVELOPMENT_TASK]. Provide a list of the top 3 plugins with their GitHub repository links, key features, and installation instructions. Focus on plugins that integrate with [YOUR_PREFERRED_TOOL/IDE, e.g., VS Code, JetBrains].\n```\nCopy\n\n```\nHere are the top 3 GitHub Copilot plugins that can supercharge your Python development workflow in VS Code:\n\n1. **Python Docstring Generator**\n   - **Repository**: [https://github.com/username/python-docstring-generator](https://github.com/username/python-docstring-generator)\n   - **Key Features**: Automatically generates Google-style docstrings for Python functions, classes, and modules. Supports custom templates and integrates seamlessly with VS Code's IntelliSense. Compatible with Python 3.8+.\n   - **Installation**: \n ```bash\n     code --install-extension username.python-docstring-generator\n ```\n   - **Use Case**: Ideal for teams enforcing documentation standards or developers working on large codebases where manual docstring writing is time-consuming.\n\n2. **GitHub Copilot Custom Agents Template**\n   - **Repository**: [https://github.com/docs/custom-agents-template](https://github.com/docs/custom-agents-template)\n   - **Key Features**: Provides a starter template for creating custom Copilot agents tailored to your project's needs. Includes pre-configured hooks for linting, testing, and deployment workflows. Supports both JavaScript and TypeScript.\n   - **Installation**: \n ```bash\n     git clone https://github.com/docs/custom-agents-template.git\n     cd custom-agents-template\n     npm install\n ```\n   - **Use Case**: Perfect for enterprise teams looking to extend Copilot's capabilities with organization-specific workflows or internal tools.\n\n3. **Open Reusables**\n   - **Repository**: [https://github.com/docs/open-reusables](https://github.com/docs/open-reusables)\n   - **Key Features**: Enables quick access to reusable code snippets, variables, and configuration files directly from VS Code. Supports markdown-based help articles and integrates with Copilot's context-aware suggestions.\n   - **Installation**: \n ```bash\n     code --install-extension docs.open-reusables\n ```\n   - **Use Case**: Great for developers who frequently reuse boilerplate code, such as API endpoints, database models, or UI components.\n\n**Recommendation**: Start with the *Python Docstring Generator* if documentation is a bottleneck, or the *Custom Agents Template* if you need to tailor Copilot to your team's unique workflows. For teams working across multiple languages, *Open Reusables* offers a versatile solution for code reuse.\n\nWould you like me to dive deeper into any of these plugins or suggest alternatives based on a specific programming language or framework?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:10:40.659687Z",
+    "http_status": 200,
+    "content_hash": "512d8d64c68c7f1b351d74227f3fa17693eee955b6dae91448d549887788b7f8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\copilot-plugins.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\copilot-plugins.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GitHub Copilot Plugins Collection - Enhance Your",
+  "short_description_vi": "Explore the official GitHub Copilot plugins collection, featuring MCP servers, skills, hooks, and extensibility tools designed to enhance your coding experience. Perfect for developers looking to extend GitHub Copilot's capabilities."
+}

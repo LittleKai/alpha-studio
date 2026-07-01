@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/golang-for-devops",
+  "slug": "golang-for-devops",
+  "name": "Golang for DevOps",
+  "headline": "Golang for DevOps - Learn Automation Skills",
+  "short_description": "Learn Golang for DevOps with hands-on tasks and real-world automation examples. Ideal for DevOps engineers looking to build practical tools and level up their skills. Connects to Kubernetes and other DevOps workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "techiescamp",
+  "install_command": "git clone https://github.com/techiescamp/golang-for-devops.git",
+  "source_repo_url": "https://github.com/techiescamp/golang-for-devops",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "golang-for-devops",
+    "devops-learning",
+    "devops",
+    "go",
+    "golang",
+    "golang-kubernetes"
+  ],
+  "sections": {
+    "overview": "This skill provides a practical 8-week roadmap designed specifically for DevOps engineers learning Golang. It covers foundational Go syntax, file handling, networking, concurrency, and Kubernetes development using the client-go library. Through structured weekly modules and hands-on projects, you'll build CLI tools, REST APIs, Kubernetes operators, controllers, and system utilities. The roadmap addresses real DevOps workflows including YAML/JSON configuration parsing, RBAC management, security validation, and performance testing. By completing this roadmap, DevOps engineers gain the skills to create production-ready automation tools and extend Kubernetes functionality with custom operators.\nBuild Kubernetes operators and controllers for custom resource management\nCreate CLI tools for cloud operations and configuration validation\nDevelop job schedulers and concurrent task runners for infrastructure automation\nImplement RBAC analysis tools and security validation utilities",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/techiescamp/golang-for-devops`",
+    "usage": "```\nWrite a Go program that [ACTION] in a DevOps environment. Use the [LIBRARY/TOOL] package to interact with [SYSTEM/COMPONENT]. Include error handling for [COMMON_ERROR_CASES]. The program should output [EXPECTED_OUTPUT_FORMAT] and be optimized for [PERFORMANCE/SECURITY/OTHER_CRITERIA]. Example: 'Write a Go program that monitors disk usage on a Linux server using the github.com/shirou/gopsutil package. Handle cases where the disk is 90% full or higher. The program should output a JSON report with timestamp, disk name, and usage percentage, and run as a background service with automatic restarts.'\n```\nCopy\n\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"log\"\n\t\"os\"\n\t\"time\"\n\n\t\"github.com/shirou/gopsutil/v3/disk\"\n)\n\n// DiskUsageReport represents the structure of the JSON output\ntype DiskUsageReport struct {\n\tTimestamp   string  `json:\"timestamp\"`\n\tDiskName    string  `json:\"disk_name\"`\n\tUsagePercent float64 `json:\"usage_percent\"`\n\tStatus      string  `json:\"status\"`\n}\n\nfunc main() {\n\t// Get disk partitions\n\tpartitions, err := disk.Partitions(false)\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to get disk partitions: %v\", err)\n\t}\n\n\t// Filter for physical disks (exclude tmpfs, etc.)\n\tvar physicalDisks []string\n\tfor _, p := range partitions {\n\t\tif p.Fstype != \"tmpfs\" && p.Fstype != \"devtmpfs\" {\n\t\t\tphysicalDisks = append(physicalDisks, p.Mountpoint)\n\t\t}\n\t}\n\n\t// Check usage for each disk\n\treports := make([]DiskUsageReport, 0)\n\tfor _, mountpoint := range physicalDisks {\n\t\tusage, err := disk.Usage(mountpoint)\n\t\tif err != nil {\n\t\t\tlog.Printf(\"Failed to get usage for %s: %v\", mountpoint, err)\n\t\t\tcontinue\n\t\t}\n\n\t\tstatus := \"healthy\"\n\t\tif usage.UsedPercent >= 90 {\n\t\t\tstatus = \"critical\"\n\t\t} else if usage.UsedPercent >= 80 {\n\t\t\tstatus = \"warning\"\n\t\t}\n\n\t\treport := DiskUsageReport{\n\t\t\tTimestamp:   time.Now().Format(time.RFC3339),\n\t\t\tDiskName:    mountpoint,\n\t\t\tUsagePercent: usage.UsedPercent,\n\t\t\tStatus:      status,\n\t\t}\n\t\treports = append(reports, report)\n\n\t\t// Print to console for immediate visibility\n\t\tfmt.Printf(\"Disk %s: %.2f%% used (%s)\\n\", mountpoint, usage.UsedPercent, status)\n\t}\n\n\t// Write JSON report to file\n\tjsonData, err := json.MarshalIndent(reports, \"\", \"  \")\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to marshal JSON: %v\", err)\n\t}\n\n\terr = os.WriteFile(\"/var/log/disk_usage_report.json\", jsonData, 0644)\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to write JSON report: %v\", err)\n\t}\n\n\t// Exit with non-zero code if any disk is in critical state\n\tfor _, r := range reports {\n\t\tif r.Status == \"critical\" {\n\t\t\tos.Exit(1)\n\t\t}\n\t}\n}\n```\n\n### Example Output (JSON Report):\n```json\n[\n  {\n    \"timestamp\": \"2023-11-15T14:30:45Z\",\n    \"disk_name\": \"/\",\n    \"usage_percent\": 78.5,\n    \"status\": \"warning\"\n  },\n  {\n    \"timestamp\": \"2023-11-15T14:30:45Z\",\n    \"disk_name\": \"/var\",\n    \"usage_percent\": 92.3,\n    \"status\": \"critical\"\n  },\n  {\n    \"timestamp\": \"2023-11-15T14:30:45Z\",\n    \"disk_name\": \"/home\",\n    \"usage_percent\": 45.2,\n    \"status\": \"healthy\"\n  }\n]\n```\n\nConsole Output:\n```\nDisk /: 78.50% used (warning)\nDisk /var: 92.30% used (critical)\nDisk /home: 45.20% used (healthy)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "golang-for-devops#main-content",
+      "golang-for-devops#overview",
+      "golang-for-devops#setup",
+      "golang-for-devops#examples",
+      "golang-for-devops#tools",
+      "golang-for-devops#mcp",
+      "golang-for-devops#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill provides a practical 8-week roadmap designed specifically for DevOps engineers learning Golang. It covers foundational Go syntax, file handling, networking, concurrency, and Kubernetes development using the client-go library. Through structured weekly modules and hands-on projects, you'll build CLI tools, REST APIs, Kubernetes operators, controllers, and system utilities. The roadmap addresses real DevOps workflows including YAML/JSON configuration parsing, RBAC management, security validation, and performance testing. By completing this roadmap, DevOps engineers gain the skills to create production-ready automation tools and extend Kubernetes functionality with custom operators.\nBuild Kubernetes operators and controllers for custom resource management\nCreate CLI tools for cloud operations and configuration validation\nDevelop job schedulers and concurrent task runners for infrastructure automation\nImplement RBAC analysis tools and security validation utilities",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/techiescamp/golang-for-devops`",
+    "usage_vi": "```\nWrite a Go program that [ACTION] in a DevOps environment. Use the [LIBRARY/TOOL] package to interact with [SYSTEM/COMPONENT]. Include error handling for [COMMON_ERROR_CASES]. The program should output [EXPECTED_OUTPUT_FORMAT] and be optimized for [PERFORMANCE/SECURITY/OTHER_CRITERIA]. Example: 'Write a Go program that monitors disk usage on a Linux server using the github.com/shirou/gopsutil package. Handle cases where the disk is 90% full or higher. The program should output a JSON report with timestamp, disk name, and usage percentage, and run as a background service with automatic restarts.'\n```\nCopy\n\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"log\"\n\t\"os\"\n\t\"time\"\n\n\t\"github.com/shirou/gopsutil/v3/disk\"\n)\n\n// DiskUsageReport represents the structure of the JSON output\ntype DiskUsageReport struct {\n\tTimestamp   string  `json:\"timestamp\"`\n\tDiskName    string  `json:\"disk_name\"`\n\tUsagePercent float64 `json:\"usage_percent\"`\n\tStatus      string  `json:\"status\"`\n}\n\nfunc main() {\n\t// Get disk partitions\n\tpartitions, err := disk.Partitions(false)\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to get disk partitions: %v\", err)\n\t}\n\n\t// Filter for physical disks (exclude tmpfs, etc.)\n\tvar physicalDisks []string\n\tfor _, p := range partitions {\n\t\tif p.Fstype != \"tmpfs\" && p.Fstype != \"devtmpfs\" {\n\t\t\tphysicalDisks = append(physicalDisks, p.Mountpoint)\n\t\t}\n\t}\n\n\t// Check usage for each disk\n\treports := make([]DiskUsageReport, 0)\n\tfor _, mountpoint := range physicalDisks {\n\t\tusage, err := disk.Usage(mountpoint)\n\t\tif err != nil {\n\t\t\tlog.Printf(\"Failed to get usage for %s: %v\", mountpoint, err)\n\t\t\tcontinue\n\t\t}\n\n\t\tstatus := \"healthy\"\n\t\tif usage.UsedPercent >= 90 {\n\t\t\tstatus = \"critical\"\n\t\t} else if usage.UsedPercent >= 80 {\n\t\t\tstatus = \"warning\"\n\t\t}\n\n\t\treport := DiskUsageReport{\n\t\t\tTimestamp:   time.Now().Format(time.RFC3339),\n\t\t\tDiskName:    mountpoint,\n\t\t\tUsagePercent: usage.UsedPercent,\n\t\t\tStatus:      status,\n\t\t}\n\t\treports = append(reports, report)\n\n\t\t// Print to console for immediate visibility\n\t\tfmt.Printf(\"Disk %s: %.2f%% used (%s)\\n\", mountpoint, usage.UsedPercent, status)\n\t}\n\n\t// Write JSON report to file\n\tjsonData, err := json.MarshalIndent(reports, \"\", \"  \")\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to marshal JSON: %v\", err)\n\t}\n\n\terr = os.WriteFile(\"/var/log/disk_usage_report.json\", jsonData, 0644)\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to write JSON report: %v\", err)\n\t}\n\n\t// Exit with non-zero code if any disk is in critical state\n\tfor _, r := range reports {\n\t\tif r.Status == \"critical\" {\n\t\t\tos.Exit(1)\n\t\t}\n\t}\n}\n```\n\n### Example Output (JSON Report):\n```json\n[\n  {\n    \"timestamp\": \"2023-11-15T14:30:45Z\",\n    \"disk_name\": \"/\",\n    \"usage_percent\": 78.5,\n    \"status\": \"warning\"\n  },\n  {\n    \"timestamp\": \"2023-11-15T14:30:45Z\",\n    \"disk_name\": \"/var\",\n    \"usage_percent\": 92.3,\n    \"status\": \"critical\"\n  },\n  {\n    \"timestamp\": \"2023-11-15T14:30:45Z\",\n    \"disk_name\": \"/home\",\n    \"usage_percent\": 45.2,\n    \"status\": \"healthy\"\n  }\n]\n```\n\nConsole Output:\n```\nDisk /: 78.50% used (warning)\nDisk /var: 92.30% used (critical)\nDisk /home: 45.20% used (healthy)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:34:24.592322Z",
+    "http_status": 200,
+    "content_hash": "0ef67c81b388d8eb1260376f429628f1e7d80546f87e6d70350661f7128065b9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\golang-for-devops.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\golang-for-devops.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Golang for DevOps - Learn Automation Skills",
+  "short_description_vi": "Learn Golang for DevOps with hands-on tasks and real-world automation examples. Ideal for DevOps engineers looking to build practical tools and level up their skills. Connects to Kubernetes and other DevOps workflows."
+}

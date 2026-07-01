@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentfacts-py",
+  "slug": "agentfacts-py",
+  "name": "browser-use",
+  "headline": "agentfacts-py python sdk for ai identity",
+  "short_description": "AgentFacts is an open-source Python SDK for managing AI agent identity. It enables secure, signed identity verification for AI agents, benefiting operations teams working with Claude agents. It integrates with workflows requiring agent authentication and security.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "agentfacts",
+  "install_command": "git clone https://github.com/agentfacts/agentfacts-py.git",
+  "source_repo_url": "https://github.com/agentfacts/agentfacts-py",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "huggingface",
+    "python",
+    "sdk",
+    "crewai",
+    "agentfacts",
+    "agents",
+    "claude",
+    "langchain",
+    "identity",
+    "aiagents",
+    "security-tools",
+    "security",
+    "ai"
+  ],
+  "sections": {
+    "overview": "AgentFacts is an open-source SDK for creating tamper-evident, verifiable identity profiles for AI agents. It captures agent identity, model, tools, policy, and provenance in a signed JSON card that can be verified offline using Ed25519 signatures and did:key identifiers. The SDK auto-introspects popular agent frameworks including LangChain, LlamaIndex, CrewAI, and Hugging Face Agents to extract metadata instantly. It solves the problem of establishing trust and transparency for AI agents without requiring heavy developer lifting, benefiting operations teams that need to authenticate and audit agent deployments. AgentFacts includes structured schemas, Merkle log proofs for audit trails, and zero-trust policy checks for compliance.\nVerify AI agent identity and configuration in production deployments\nCreate tamper-evident audit trails for agent tool usage and capabilities\nAuthenticate LangChain, CrewAI, or LlamaIndex agents for secure workflows\nValidate agent policy compliance and required capabilities before execution",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/agentfacts/agentfacts-py`",
+    "usage": "```\nUse agentfacts-py to generate a signed identity verification for a Claude agent named [AGENT_NAME] operating in [WORKFLOW_CONTEXT]. Include the agent's role as [AGENT_ROLE], permissions scope as [PERMISSIONS], and expiration timestamp as [EXPIRATION_TIMESTAMP]. Verify the identity against the following metadata: [AGENT_METADATA].\n```\nCopy\n\n```\n```json\n{\n  \"agent_id\": \"claude-agent-7f3a9b2c\",\n  \"agent_name\": \"InventorySyncAgent\",\n  \"role\": \"inventory_sync\",\n  \"permissions\": [\"read:warehouse_data\", \"write:stock_updates\"],\n  \"expires_at\": \"2024-12-31T23:59:59Z\",\n  \"signed_identity\": {\n    \"signature\": \"sha256:4a7b3c2d1e9f0a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3\",\n    \"public_key\": \"-----BEGIN PUBLIC KEY-----\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEX0J5...\\n-----END PUBLIC KEY-----\",\n    \"verification_timestamp\": \"2024-06-15T14:30:00Z\",\n    \"metadata_hash\": \"sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08\"\n  },\n  \"verification_status\": \"valid\",\n  \"next_steps\": [\n    \"Register this identity in the agent registry for the 'warehouse_sync' workflow.\",\n    \"Configure the agent's access token with a 24-hour TTL for enhanced security.\",\n    \"Log the verification event in the audit trail under 'agent_authentication'.\"\n  ]\n}\n```\n\n### Verification Details:\nThe `InventorySyncAgent` has been successfully verified with the following attributes:\n- **Role**: Synchronizes real-time inventory data between the ERP system and warehouse management software.\n- **Permissions**: Read access to warehouse stock levels and write permissions for stock adjustments.\n- **Expiration**: The identity token will expire on December 31, 2024, requiring annual renewal.\n- **Security**: The signed identity uses ECDSA with SHA-256 for cryptographic verification, ensuring tamper-proof authentication.\n\n### Workflow Integration:\nThis identity can now be used to authenticate API calls to the warehouse management system (e.g., POST `/api/v1/stock-updates`). The agent's permissions align with the workflow's requirements, allowing it to perform critical inventory synchronization tasks without manual intervention. The audit trail will automatically log all actions taken by this agent, providing traceability for compliance purposes.\n\n### Next Steps for Operations Team:\n1. **Registry Update**: Add this agent to the internal agent registry under the 'automation' category.\n2. **Token Rotation**: Set up a cron job to rotate the agent's access token every 30 days.\n3. **Monitoring**: Configure alerts for any failed verification attempts or permission violations.\n4. **Documentation**: Update the agent's runbook with the verification details and renewal process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentfacts-py#main-content",
+      "agentfacts-py#overview",
+      "agentfacts-py#setup",
+      "agentfacts-py#examples",
+      "agentfacts-py#tools",
+      "agentfacts-py#mcp",
+      "agentfacts-py#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgentFacts is an open-source SDK for creating tamper-evident, verifiable identity profiles for AI agents. It captures agent identity, model, tools, policy, and provenance in a signed JSON card that can be verified offline using Ed25519 signatures and did:key identifiers. The SDK auto-introspects popular agent frameworks including LangChain, LlamaIndex, CrewAI, and Hugging Face Agents to extract metadata instantly. It solves the problem of establishing trust and transparency for AI agents without requiring heavy developer lifting, benefiting operations teams that need to authenticate and audit agent deployments. AgentFacts includes structured schemas, Merkle log proofs for audit trails, and zero-trust policy checks for compliance.\nVerify AI agent identity and configuration in production deployments\nCreate tamper-evident audit trails for agent tool usage and capabilities\nAuthenticate LangChain, CrewAI, or LlamaIndex agents for secure workflows\nValidate agent policy compliance and required capabilities before execution",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/agentfacts/agentfacts-py`",
+    "usage_vi": "```\nUse agentfacts-py to generate a signed identity verification for a Claude agent named [AGENT_NAME] operating in [WORKFLOW_CONTEXT]. Include the agent's role as [AGENT_ROLE], permissions scope as [PERMISSIONS], and expiration timestamp as [EXPIRATION_TIMESTAMP]. Verify the identity against the following metadata: [AGENT_METADATA].\n```\nCopy\n\n```\n```json\n{\n  \"agent_id\": \"claude-agent-7f3a9b2c\",\n  \"agent_name\": \"InventorySyncAgent\",\n  \"role\": \"inventory_sync\",\n  \"permissions\": [\"read:warehouse_data\", \"write:stock_updates\"],\n  \"expires_at\": \"2024-12-31T23:59:59Z\",\n  \"signed_identity\": {\n    \"signature\": \"sha256:4a7b3c2d1e9f0a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3\",\n    \"public_key\": \"-----BEGIN PUBLIC KEY-----\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEX0J5...\\n-----END PUBLIC KEY-----\",\n    \"verification_timestamp\": \"2024-06-15T14:30:00Z\",\n    \"metadata_hash\": \"sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08\"\n  },\n  \"verification_status\": \"valid\",\n  \"next_steps\": [\n    \"Register this identity in the agent registry for the 'warehouse_sync' workflow.\",\n    \"Configure the agent's access token with a 24-hour TTL for enhanced security.\",\n    \"Log the verification event in the audit trail under 'agent_authentication'.\"\n  ]\n}\n```\n\n### Verification Details:\nThe `InventorySyncAgent` has been successfully verified with the following attributes:\n- **Role**: Synchronizes real-time inventory data between the ERP system and warehouse management software.\n- **Permissions**: Read access to warehouse stock levels and write permissions for stock adjustments.\n- **Expiration**: The identity token will expire on December 31, 2024, requiring annual renewal.\n- **Security**: The signed identity uses ECDSA with SHA-256 for cryptographic verification, ensuring tamper-proof authentication.\n\n### Workflow Integration:\nThis identity can now be used to authenticate API calls to the warehouse management system (e.g., POST `/api/v1/stock-updates`). The agent's permissions align with the workflow's requirements, allowing it to perform critical inventory synchronization tasks without manual intervention. The audit trail will automatically log all actions taken by this agent, providing traceability for compliance purposes.\n\n### Next Steps for Operations Team:\n1. **Registry Update**: Add this agent to the internal agent registry under the 'automation' category.\n2. **Token Rotation**: Set up a cron job to rotate the agent's access token every 30 days.\n3. **Monitoring**: Configure alerts for any failed verification attempts or permission violations.\n4. **Documentation**: Update the agent's runbook with the verification details and renewal process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:52:26.588344Z",
+    "http_status": 200,
+    "content_hash": "94c6f6e79e2785d16c18c67ecb322a865c0d79762179f8a1f9e2238e524aa355",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentfacts-py.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentfacts-py.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agentfacts-py python sdk for ai identity",
+  "short_description_vi": "AgentFacts is an open-source Python SDK for managing AI agent identity. It enables secure, signed identity verification for AI agents, benefiting operations teams working with Claude agents. It integrates with workflows requiring agent authentication and security."
+}

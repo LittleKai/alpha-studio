@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/antigravity-workflows",
+  "slug": "antigravity-workflows",
+  "name": "Antigravity Workflows",
+  "headline": "Antigravity Workflows - Enhance AI Coding Efficiency",
+  "short_description": "Antigravity Workflows offers community-driven automation and reusable prompts for AI coding assistants, enhancing productivity for developers. Similar to Claude Skills, it streamlines coding tasks and integrates with popular tools.",
+  "tier": "Gold",
+  "category": "GrowthDeveloper",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "harikrishna8121999",
+  "install_command": "claude install harikrishna8121999/antigravity-workflows",
+  "source_repo_url": "https://github.com/harikrishna8121999/antigravity-workflows",
+  "works_with": [
+    "VS CodeGitHub Copilot"
+  ],
+  "tags": [
+    "npm-package",
+    "ai-coding",
+    "automation",
+    "workflows",
+    "vscode-extension"
+  ],
+  "sections": {
+    "overview": "Antigravity Workflows is a collection of intelligent workflows designed to teach AI coding assistants how to perform tasks across any technology stack. Unlike rigid code templates, these workflows detect your project's framework and patterns, then ask clarifying questions to produce better results tailored to your setup. The system covers development, testing, debugging, deployment, databases, and more—each workflow follows principles of stack-agnosticism, progressive disclosure, and composability. Developers can install workflows via CLI commands and trigger them directly in their AI assistant chat, streamlining common coding tasks from project scaffolding to security audits without technology lock-in.\nAutomate repetitive coding tasks\nCreate reusable prompts for AI coding assistants\nIntegrate workflows within VS Code\nEnhance developer productivity with community-driven tools",
+    "setup": "Terminal\nCopy\n`claude install harikrishna8121999/antigravity-workflows`\n`git clone https://github.com/harikrishna8121999/antigravity-workflows`",
+    "usage": "```\nUse antigravity-workflows to automate [TASK] in [PROJECT]. Follow these steps: 1) Identify reusable prompts from the antigravity-workflows community for [LANGUAGE/FRAMEWORK]. 2) Adapt the [PROMPT_NAME] template to your specific [CONTEXT]. 3) Integrate the output with [TOOL/IDE] for execution. 4) Validate results against [CRITERIA]. Example: 'Use antigravity-workflows to automate unit test generation for a Python Django API. Follow these steps: 1) Identify reusable prompts from the antigravity-workflows community for Python. 2) Adapt the 'unit-test-generator' template to your specific API endpoints. 3) Integrate the output with VS Code for execution. 4) Validate results against 90% code coverage.'\n```\nCopy\n\n```\nHere’s how antigravity-workflows can automate unit test generation for a Python Django API project:\n\n**Step 1: Identify Reusable Prompts**\nFrom the antigravity-workflows community, I selected the 'unit-test-generator' template, which is pre-configured for Python/Django projects. This template includes placeholders for API endpoints, request/response schemas, and edge cases.\n\n**Step 2: Adapt the Template**\nI customized the template for my project’s `/api/v1/users/` endpoint. The prompt was adjusted to:\n```\nGenerate unit tests for the Django API endpoint `/api/v1/users/` using pytest. Include tests for:\n- GET requests with valid/invalid user IDs\n- POST requests with valid/invalid payloads\n- PATCH requests for partial updates\n- DELETE requests with proper authorization\n- Edge cases: empty database, rate limiting, and invalid tokens\n```\n\n**Step 3: Integrate with VS Code**\nThe generated tests were automatically saved to `/tests/unit/test_users.py` in my VS Code workspace. I used the Python extension to run the tests directly from the editor, with results appearing in the test explorer:\n```\n============================= test session starts ==============================\ntest_users.py::TestUserAPI::test_get_user_valid_id PASSED\ntest_users.py::TestUserAPI::test_post_user_invalid_payload FAILED\ntest_users.py::TestUserAPI::test_patch_user_unauthorized PASSED\n```\n\n**Step 4: Validate Results**\nI reviewed the test coverage using pytest-cov, achieving 92% coverage for the `users` app. The antigravity-workflows template saved me ~4 hours of manual test writing and ensured consistency across the team’s testing approach.\n\n**Next Steps:**\n- Commit the generated tests to the repository.\n- Share the adapted prompt template with the team for reuse in other API endpoints.\n- Use Productiv to track the time saved (4 hours) and associate it with the project’s budget for tooling efficiency.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: VS Code, GitHub Copilot"
+    ],
+    "related_skills": [
+      "antigravity-workflows#main-content",
+      "antigravity-workflows#overview",
+      "antigravity-workflows#setup",
+      "antigravity-workflows#examples",
+      "antigravity-workflows#tools",
+      "antigravity-workflows#mcp",
+      "antigravity-workflows#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Antigravity Workflows is a collection of intelligent workflows designed to teach AI coding assistants how to perform tasks across any technology stack. Unlike rigid code templates, these workflows detect your project's framework and patterns, then ask clarifying questions to produce better results tailored to your setup. The system covers development, testing, debugging, deployment, databases, and more—each workflow follows principles of stack-agnosticism, progressive disclosure, and composability. Developers can install workflows via CLI commands and trigger them directly in their AI assistant chat, streamlining common coding tasks from project scaffolding to security audits without technology lock-in.\nAutomate repetitive coding tasks\nCreate reusable prompts for AI coding assistants\nIntegrate workflows within VS Code\nEnhance developer productivity with community-driven tools",
+    "setup_vi": "Terminal\nCopy\n`claude install harikrishna8121999/antigravity-workflows`\n`git clone https://github.com/harikrishna8121999/antigravity-workflows`",
+    "usage_vi": "```\nUse antigravity-workflows to automate [TASK] in [PROJECT]. Follow these steps: 1) Identify reusable prompts from the antigravity-workflows community for [LANGUAGE/FRAMEWORK]. 2) Adapt the [PROMPT_NAME] template to your specific [CONTEXT]. 3) Integrate the output with [TOOL/IDE] for execution. 4) Validate results against [CRITERIA]. Example: 'Use antigravity-workflows to automate unit test generation for a Python Django API. Follow these steps: 1) Identify reusable prompts from the antigravity-workflows community for Python. 2) Adapt the 'unit-test-generator' template to your specific API endpoints. 3) Integrate the output with VS Code for execution. 4) Validate results against 90% code coverage.'\n```\nCopy\n\n```\nHere’s how antigravity-workflows can automate unit test generation for a Python Django API project:\n\n**Step 1: Identify Reusable Prompts**\nFrom the antigravity-workflows community, I selected the 'unit-test-generator' template, which is pre-configured for Python/Django projects. This template includes placeholders for API endpoints, request/response schemas, and edge cases.\n\n**Step 2: Adapt the Template**\nI customized the template for my project’s `/api/v1/users/` endpoint. The prompt was adjusted to:\n```\nGenerate unit tests for the Django API endpoint `/api/v1/users/` using pytest. Include tests for:\n- GET requests with valid/invalid user IDs\n- POST requests with valid/invalid payloads\n- PATCH requests for partial updates\n- DELETE requests with proper authorization\n- Edge cases: empty database, rate limiting, and invalid tokens\n```\n\n**Step 3: Integrate with VS Code**\nThe generated tests were automatically saved to `/tests/unit/test_users.py` in my VS Code workspace. I used the Python extension to run the tests directly from the editor, with results appearing in the test explorer:\n```\n============================= test session starts ==============================\ntest_users.py::TestUserAPI::test_get_user_valid_id PASSED\ntest_users.py::TestUserAPI::test_post_user_invalid_payload FAILED\ntest_users.py::TestUserAPI::test_patch_user_unauthorized PASSED\n```\n\n**Step 4: Validate Results**\nI reviewed the test coverage using pytest-cov, achieving 92% coverage for the `users` app. The antigravity-workflows template saved me ~4 hours of manual test writing and ensured consistency across the team’s testing approach.\n\n**Next Steps:**\n- Commit the generated tests to the repository.\n- Share the adapted prompt template with the team for reuse in other API endpoints.\n- Use Productiv to track the time saved (4 hours) and associate it with the project’s budget for tooling efficiency.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:31:12.470147Z",
+    "http_status": 200,
+    "content_hash": "06708dba47a6239258c4e59f87e29f3889580cc99d220c76eac0ed740099518e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\antigravity-workflows.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\antigravity-workflows.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Antigravity Workflows - Enhance AI Coding Efficiency",
+  "short_description_vi": "Antigravity Workflows offers community-driven automation and reusable prompts for AI coding assistants, enhancing productivity for developers. Similar to Claude Skills, it streamlines coding tasks and integrates with popular tools."
+}

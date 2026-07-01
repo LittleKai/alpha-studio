@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sui-dev-skill",
+  "slug": "sui-dev-skill",
+  "name": "browser-use",
+  "headline": "sui-dev-skill: Sui Move Development for Claude Code",
+  "short_description": "A Claude Code skill for Sui blockchain Move smart contract development, providing code templates, reference docs, testing patterns, and deployment automation for Sui dApp builders.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "80 min",
+  "author": "Nebryx",
+  "install_command": "git clone https://github.com/Nebryx/sui-dev-skill.git",
+  "source_repo_url": "https://github.com/Nebryx/sui-dev-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The sui-dev-skill is a structured Claude Code skill that guides developers through building on the Sui blockchain using the Move programming language. It covers Move language fundamentals, the Sui object model, Programmable Transaction Blocks, and the Sui TypeScript SDK, giving developers a consolidated reference for common patterns. The skill includes ready-to-use Move module templates for ownership, dynamic fields, and events, alongside shell scripts for environment setup, deployment, and dApp bootstrapping via sui-dapp-starter. Security-focused developers can also use the included MystenLabs CTF guide to practice exploit and defense patterns in Move. Teams building Sui dApps benefit from the curated ecosystem landscape, upgrade strategies, and toolchain management guidance using suiup.\nWriting and structuring Sui Move smart contracts using provided module templates\nAutomating build, test, and deployment of Move packages with included shell scripts\nBootstrapping full-stack Sui dApps using the sui-dapp-starter integration guide\nLearning Move security patterns and exploit defense through MystenLabs CTF practice",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Nebryx/sui-dev-skill`",
+    "usage": "```\nAct as a Sui blockchain developer. Write a Sui Move code snippet to [TASK] for a [COMPANY] in the [INDUSTRY]. Use the latest Sui SDK and include error handling. Explain the code in simple terms.\n```\nCopy\n\n```\n# Sui Move Code for Token Minting\n\n```move\n// This code creates a simple token minting function for [COMPANY]\n// in the [INDUSTRY] sector\n\nmodule examples::token_minting {\n    use std::signer;\n    use sui::coin;\n    use sui::tx_context;\n    use sui::object;\n    use sui::transfer;\n\n    // Define a simple token structure\n    struct Token has key {\n        id: UID,\n        value: u64,\n    }\n\n    // Function to mint new tokens\n    public entry fun mint_token(\n        ctx: &mut TxContext,\n        recipient: address,\n        amount: u64,\n    ) {\n        let token = object::new(ctx);\n        move_to(sender(ctx), Token {\n            id: object::id(token),\n            value: amount,\n        });\n        transfer::public_transfer(token, recipient);\n    }\n}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sui-dev-skill#main-content",
+      "sui-dev-skill#overview",
+      "sui-dev-skill#setup",
+      "sui-dev-skill#examples",
+      "sui-dev-skill#tools",
+      "sui-dev-skill#mcp",
+      "sui-dev-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The sui-dev-skill is a structured Claude Code skill that guides developers through building on the Sui blockchain using the Move programming language. It covers Move language fundamentals, the Sui object model, Programmable Transaction Blocks, and the Sui TypeScript SDK, giving developers a consolidated reference for common patterns. The skill includes ready-to-use Move module templates for ownership, dynamic fields, and events, alongside shell scripts for environment setup, deployment, and dApp bootstrapping via sui-dapp-starter. Security-focused developers can also use the included MystenLabs CTF guide to practice exploit and defense patterns in Move. Teams building Sui dApps benefit from the curated ecosystem landscape, upgrade strategies, and toolchain management guidance using suiup.\nWriting and structuring Sui Move smart contracts using provided module templates\nAutomating build, test, and deployment of Move packages with included shell scripts\nBootstrapping full-stack Sui dApps using the sui-dapp-starter integration guide\nLearning Move security patterns and exploit defense through MystenLabs CTF practice",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Nebryx/sui-dev-skill`",
+    "usage_vi": "```\nAct as a Sui blockchain developer. Write a Sui Move code snippet to [TASK] for a [COMPANY] in the [INDUSTRY]. Use the latest Sui SDK and include error handling. Explain the code in simple terms.\n```\nCopy\n\n```\n# Sui Move Code for Token Minting\n\n```move\n// This code creates a simple token minting function for [COMPANY]\n// in the [INDUSTRY] sector\n\nmodule examples::token_minting {\n    use std::signer;\n    use sui::coin;\n    use sui::tx_context;\n    use sui::object;\n    use sui::transfer;\n\n    // Define a simple token structure\n    struct Token has key {\n        id: UID,\n        value: u64,\n    }\n\n    // Function to mint new tokens\n    public entry fun mint_token(\n        ctx: &mut TxContext,\n        recipient: address,\n        amount: u64,\n    ) {\n        let token = object::new(ctx);\n        move_to(sender(ctx), Token {\n            id: object::id(token),\n            value: amount,\n        });\n        transfer::public_transfer(token, recipient);\n    }\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:03:02.023372Z",
+    "http_status": 200,
+    "content_hash": "e33ff0ff48f35a5f8ce0e72d70e40cdff5ba9947149ca6ea96d50d20e7fb9c66",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sui-dev-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sui-dev-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "sui-dev-skill: Sui Move Development for Claude Code",
+  "short_description_vi": "A Claude Code skill for Sui blockchain Move smart contract development, providing code templates, reference docs, testing patterns, and deployment automation for Sui dApp builders."
+}

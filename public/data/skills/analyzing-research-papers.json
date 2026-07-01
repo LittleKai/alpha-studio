@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/analyzing-research-papers",
+  "slug": "analyzing-research-papers",
+  "name": "Competitor Alternatives",
+  "headline": "Analyzing Research Papers: Systematic Analysis",
+  "short_description": "This skill helps researchers systematically analyze research papers, extracting key insights and evaluating methodological rigor. It is designed for academics and professionals needing to contextualize findings effectively.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "seabbs",
+  "install_command": "git clone https://github.com/seabbs/skills",
+  "source_repo_url": "https://github.com/seabbs/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "research",
+    "papers",
+    "analyzing"
+  ],
+  "sections": {
+    "overview": "The Analyzing Research Papers skill provides a structured approach to evaluating academic papers, helping researchers extract and synthesize key insights while assessing methodological quality. It automates the paper review process by identifying critical findings, evaluating research design, and contextualizing results within broader literature. This skill is particularly valuable for literature reviews, grant preparation, and rapid synthesis of multiple papers. Academics, PhD students, and research professionals use it to accelerate paper evaluation and build stronger evidence bases for their own work.\nExtracting key insights from a research paper\nEvaluating the rigor of research methods\nContextualizing findings for academic studies\nSummarizing research papers from various formats",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/seabbs/skills --skill analyzing-research-papers`\n`git clone https://github.com/seabbs/skills`",
+    "usage": "```\nAct as a research analyst and systematically analyze the following research paper: [PAPER_TITLE] by [AUTHORS]. Extract the key research questions, methodology, main findings, and limitations. Then evaluate the methodological rigor and contextualize the results within the broader [FIELD/INDUSTRY]. Provide a summary of the paper's contributions and practical implications for [TARGET_AUDIENCE, e.g., clinicians, policymakers, or product developers]. The paper is attached or linked here: [LINK_OR_ATTACHMENT].\n```\nCopy\n\n```\n# Analysis of Research Paper: \"Deep Learning for Early Detection of Diabetic Retinopathy in Resource-Limited Settings\"\n\n**Authors:** Maria Chen, PhD; James Patel, MD; et al.\n**Journal:** *Nature Digital Medicine* (2023)\n\n---",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "analyzing-research-papers#main-content",
+      "analyzing-research-papers#overview",
+      "analyzing-research-papers#setup",
+      "analyzing-research-papers#examples",
+      "analyzing-research-papers#related",
+      "competitor-alternatives"
+    ],
+    "overview_vi": "The Analyzing Research Papers skill provides a structured approach to evaluating academic papers, helping researchers extract and synthesize key insights while assessing methodological quality. It automates the paper review process by identifying critical findings, evaluating research design, and contextualizing results within broader literature. This skill is particularly valuable for literature reviews, grant preparation, and rapid synthesis of multiple papers. Academics, PhD students, and research professionals use it to accelerate paper evaluation and build stronger evidence bases for their own work.\nExtracting key insights from a research paper\nEvaluating the rigor of research methods\nContextualizing findings for academic studies\nSummarizing research papers from various formats",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/seabbs/skills --skill analyzing-research-papers`\n`git clone https://github.com/seabbs/skills`",
+    "usage_vi": "```\nAct as a research analyst and systematically analyze the following research paper: [PAPER_TITLE] by [AUTHORS]. Extract the key research questions, methodology, main findings, and limitations. Then evaluate the methodological rigor and contextualize the results within the broader [FIELD/INDUSTRY]. Provide a summary of the paper's contributions and practical implications for [TARGET_AUDIENCE, e.g., clinicians, policymakers, or product developers]. The paper is attached or linked here: [LINK_OR_ATTACHMENT].\n```\nCopy\n\n```\n# Analysis of Research Paper: \"Deep Learning for Early Detection of Diabetic Retinopathy in Resource-Limited Settings\"\n\n**Authors:** Maria Chen, PhD; James Patel, MD; et al.\n**Journal:** *Nature Digital Medicine* (2023)\n\n---"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:26:03.793114Z",
+    "http_status": 200,
+    "content_hash": "ba6970e86947fc029266630c3cad34817f5aa5a6550769bd8002d14a11fe1aae",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\analyzing-research-papers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\analyzing-research-papers.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Analyzing Research Papers: Systematic Analysis",
+  "short_description_vi": "This skill helps researchers systematically analyze research papers, extracting key insights and evaluating methodological rigor. It is designed for academics and professionals needing to contextualize findings effectively."
+}

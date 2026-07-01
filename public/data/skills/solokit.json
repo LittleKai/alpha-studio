@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/solokit",
+  "slug": "solokit",
+  "name": "Solokit",
+  "headline": "Solokit - Session-Driven Development for AI Coding",
+  "short_description": "Solokit maintains perfect context across AI coding sessions with Claude Code. Developers benefit from consistent, context-aware coding assistance. It connects to Python workflows and integrates with Claude AI for enhanced productivity.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "ankushdixit",
+  "install_command": "git clone https://github.com/ankushdixit/solokit.git",
+  "source_repo_url": "https://github.com/ankushdixit/solokit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "quality-gates",
+    "productivity",
+    "ai-development",
+    "slash-commands",
+    "session-driven-development",
+    "developer-tools",
+    "workflow-automation",
+    "python",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Solokit is a complete development framework designed for solo developers using AI assistants like Claude Code to build production software. It combines minimal scaffolding templates (T3 Stack, FastAPI, Refine, Next.js) with comprehensive architecture documentation, automated quality gates, and intelligent session management to solve critical challenges: setup time waste, context loss between sessions, quality entropy, and knowledge fragmentation. The framework provides AI briefings that restore full project state, specification-first workflows, and automated enforcement of testing, linting, security, and coverage standards across four quality tiers. Solokit enables solo developers to build with the sophistication of a 10-person engineering team by automating infrastructure setup, maintaining perfect context continuity for multi-session features, and capturing learnings automatically through AI-powered knowledge categorization.\nBuilding production SaaS applications with Next.js, tRPC, and Prisma while maintaining full project context across sessions\nDeveloping ML model serving pipelines and data applications with FastAPI and Python\nCreating admin dashboards and internal tools with Refine and shadcn/ui\nEnforcing quality standards and automated testing across solo development projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ankushdixit/solokit`",
+    "usage": "```\nUse Solokit to maintain perfect context for a Python coding session in Claude Code. Start by loading the project context from [PROJECT_DIRECTORY_PATH]. Then, implement [FEATURE_OR_BUG_FIX_DESCRIPTION] while preserving all previous context. Ensure all imports, dependencies, and prior changes are accounted for. Finally, generate a summary of changes made and next steps for testing.\n```\nCopy\n\n```\n### Context Loaded from `/projects/ecommerce-backend`\n\n**Current Context Summary:**\n- Project: E-commerce backend API (FastAPI)\n- Last session: Implemented user authentication middleware\n- Active dependencies: `fastapi==0.109.0`, `sqlalchemy==2.0.23`, `pydantic==2.6.0`\n- Pending changes: None (clean working directory)\n\n### Implementation: Add Rate Limiting to `/api/orders`\n\n**Changes Made:**\n1. Added `slowapi` and `fastapi-limiter` to `requirements.txt`\n2. Created `middleware/rate_limiter.py`:\n```python\nfrom fastapi import Request\nfrom slowapi import Limiter\nfrom slowapi.util import get_remote_address\n\nlimiter = Limiter(key_func=get_remote_address)\n```\n3. Updated `main.py` to include middleware:\n```python\nfrom fastapi import FastAPI\nfrom middleware.rate_limiter import limiter\n\napp = FastAPI()\napp.state.limiter = limiter\napp.add_exception_handler(429, rate_limit_exceeded_handler)\n```\n4. Added rate limiting to `/api/orders` endpoint:\n```python\nfrom fastapi import APIRouter, Depends\nfrom slowapi import Limiter\n\nrouter = APIRouter()\n\n@router.post(\"/orders\")\n@limiter.limit(\"5/minute\")\nasync def create_order(request: Request):\n    # Existing order creation logic\n    return {\"status\": \"success\"}\n```\n\n**Testing Next Steps:**\n1. Run `pytest tests/test_rate_limiting.py` (new test file)\n2. Verify 429 responses after 5 requests\n3. Check middleware integration in Swagger UI\n4. Monitor performance impact in staging environment\n\n**Context Preserved:**\n- Authentication middleware remains intact\n- Database session handling unchanged\n- All existing endpoints functional\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "solokit#main-content",
+      "solokit#overview",
+      "solokit#setup",
+      "solokit#examples",
+      "solokit#tools",
+      "solokit#mcp",
+      "solokit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Solokit là một bộ framework phát triển hoàn chỉnh được thiết kế cho các solo developer sử dụng các trợ lý AI như Claude Code để xây dựng phần mềm production. Nó kết hợp các template scaffolding tối giản (T3 Stack, FastAPI, Refine, Next.js) với tài liệu kiến trúc toàn diện, các chốt kiểm soát chất lượng tự động (automated quality gates) và quản lý phiên (session management) thông minh để giải quyết các thách thức cốt lõi: lãng phí thời gian setup, mất context giữa các phiên làm việc, suy giảm chất lượng code (quality entropy) và phân mảnh kiến thức. Framework này cung cấp các báo cáo tóm tắt cho AI (AI briefings) giúp khôi phục hoàn toàn trạng thái dự án, các quy trình làm việc ưu tiên đặc tả (specification-first workflows), và tự động áp dụng các tiêu chuẩn test, lint, bảo mật cũng như độ phủ code (coverage) qua bốn cấp độ chất lượng. Solokit giúp các solo developer phát triển sản phẩm với độ hoàn thiện tương đương một đội ngũ kỹ sư 10 người nhờ tự động hóa việc setup hạ tầng, duy trì tính liên tục hoàn hảo của context đối với các tính năng cần thực hiện qua nhiều phiên, và tự động ghi nhận các bài học kinh nghiệm thông qua tính năng phân loại kiến thức bằng AI.\n\nXây dựng các ứng dụng SaaS production bằng Next.js, tRPC và Prisma trong khi vẫn duy trì toàn bộ context của dự án qua các phiên làm việc\nPhát triển các pipeline phục vụ mô hình ML (ML model serving pipelines) và các ứng dụng dữ liệu bằng FastAPI và Python\nTạo các dashboard quản trị và công cụ nội bộ với Refine và shadcn/ui\nÁp dụng các tiêu chuẩn chất lượng và kiểm thử tự động (automated testing) trên các dự án phát triển độc lập",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ankushdixit/solokit`",
+    "usage_vi": "```\nSử dụng Solokit để duy trì context hoàn hảo cho một phiên lập trình Python trong Claude Code. Bắt đầu bằng việc tải context của dự án từ [PROJECT_DIRECTORY_PATH]. Sau đó, triển khai [FEATURE_OR_BUG_FIX_DESCRIPTION] trong khi vẫn giữ nguyên toàn bộ context trước đó. Đảm bảo tất cả các import, dependency và các thay đổi trước đó đều được tính đến. Cuối cùng, tạo một bản tóm tắt các thay đổi đã thực hiện và các bước kiểm thử tiếp theo.\n```\nCopy\n\n```\n### Context đã tải từ `/projects/ecommerce-backend`\n\n**Tóm tắt Context hiện tại:**\n- Dự án: E-commerce backend API (FastAPI)\n- Phiên trước: Đã triển khai middleware xác thực người dùng\n- Các dependency đang hoạt động: `fastapi==0.109.0`, `sqlalchemy==2.0.23`, `pydantic==2.6.0`\n- Thay đổi chưa hoàn thành: Không có (working directory sạch)\n\n### Triển khai: Thêm Rate Limiting vào `/api/orders`\n\n**Các thay đổi đã thực hiện:**\n1. Đã thêm `slowapi` và `fastapi-limiter` vào `requirements.txt`\n2. Đã tạo `middleware/rate_limiter.py`:\n```python\nfrom fastapi import Request\nfrom slowapi import Limiter\nfrom slowapi.util import get_remote_address\n\nlimiter = Limiter(key_func=get_remote_address)\n```\n3. Đã cập nhật `main.py` để tích hợp middleware:\n```python\nfrom fastapi import FastAPI\nfrom middleware.rate_limiter import limiter\n\napp = FastAPI()\napp.state.limiter = limiter\napp.add_exception_handler(429, rate_limit_exceeded_handler)\n```\n4. Đã thêm rate limiting vào endpoint `/api/orders`:\n```python\nfrom fastapi import APIRouter, Depends\nfrom slowapi import Limiter\n\nrouter = APIRouter()\n\n@router.post(\"/orders\")\n@limiter.limit(\"5/minute\")\nasync def create_order(request: Request):\n    # Existing order creation logic\n    return {\"status\": \"success\"}\n```\n\n**Các bước kiểm thử tiếp theo:**\n1. Chạy `pytest tests/test_rate_limiting.py` (file test mới)\n2. Xác minh các phản hồi 429 sau 5 request\n3. Kiểm tra việc tích hợp middleware trong Swagger UI\n4. Giám sát ảnh hưởng hiệu năng trong môi trường staging\n\n**Context đã được bảo toàn:**\n- Middleware xác thực vẫn được giữ nguyên\n- Việc xử lý session cơ sở dữ liệu không thay đổi\n- Tất cả các endpoint hiện tại hoạt động bình thường\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:16:46.616088Z",
+    "http_status": 200,
+    "content_hash": "3c20e3e7012b267e4b9d9e201b0a9c44e1269da1a70745b945189dc8d813cf7f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\solokit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\solokit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Solokit - Phương pháp phát triển hướng phiên (Session-Driven Development) cho lập trình bằng AI",
+  "short_description_vi": "Solokit duy trì context hoàn hảo qua các phiên lập trình bằng AI với Claude Code. Lập trình viên sẽ được hỗ trợ viết code một cách nhất quán và tối ưu theo ngữ cảnh. Công cụ này kết nối với các workflow Python và tích hợp với Claude AI để nâng cao hiệu suất làm việc."
+}

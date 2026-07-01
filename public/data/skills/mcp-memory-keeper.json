@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-memory-keeper",
+  "slug": "mcp-memory-keeper",
+  "name": "browser-use",
+  "headline": "MCP Memory Keeper - AI Context Management",
+  "short_description": "MCP Memory Keeper is a server for managing persistent context in AI coding assistants. It helps developers maintain context across sessions, improving efficiency and accuracy. Integrates with Claude AI and uses SQLite for data storage.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "mkreyman",
+  "install_command": "git clone https://github.com/mkreyman/mcp-memory-keeper.git",
+  "source_repo_url": "https://github.com/mkreyman/mcp-memory-keeper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "context-management",
+    "ai-assistant",
+    "claude-ai",
+    "context-persistence",
+    "mcp",
+    "sqlite"
+  ],
+  "sections": {
+    "overview": "MCP Memory Keeper solves context loss in Claude AI coding sessions by providing a persistent memory layer that preserves your work history, architectural decisions, and progress. The server stores context in SQLite and organizes information through channels, categories, and checkpoints, allowing you to save snapshots before context limits are reached. It supports full-text search, git integration with automatic branch correlation, and change tracking to monitor what's been added or modified. Developers working on complex refactoring, multi-file changes, or long debugging sessions can restore context across sessions or share memory between parallel Claude instances. Installation is straightforward via NPX, and the system uses environment variables for storage customization and token limit configuration.\nLong coding sessions where context window fills up mid-project\nComplex refactoring requiring architectural decisions to persist\nMulti-file changes tracked across multiple Claude Code sessions\nTeam collaboration with shared memory between parallel Claude instances",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mkreyman/mcp-memory-keeper`",
+    "usage": "```\nUse the MCP Memory Keeper to [ACTION] for [PROJECT/CODEBASE]. Retrieve the context for [SPECIFIC_FILE_OR_MODULE] and summarize the key decisions made in [RECENT_SESSION]. Then, suggest improvements based on [GOAL, e.g., performance optimization, bug fixes]. Finally, store the updated context with a note: '[SUMMARY_OF_CHANGES]'.\n```\nCopy\n\n```\nFor the open-source project **FastAPI-User-Auth**, I used the MCP Memory Keeper to retrieve the context for `auth_service.py` and the recent session where we migrated from JWT to OAuth2. The stored context showed that the team decided to use `authlib` for OAuth2 integration due to its better compatibility with FastAPI’s dependency injection system. Key decisions included:\n\n1. **Token Storage**: Switched from Redis to PostgreSQL for token persistence to simplify infrastructure.\n2. **Rate Limiting**: Implemented `slowapi` for OAuth2 token requests to prevent abuse.\n3. **Error Handling**: Added custom exceptions for OAuth2-specific errors (e.g., `InvalidTokenError`).\n\nBased on these decisions, I suggested:\n- **Performance Optimization**: Replace PostgreSQL with `SQLite` for token storage in development environments to reduce latency.\n- **Security Enhancement**: Add `refresh_token` rotation to mitigate replay attacks.\n- **Testing**: Write integration tests for the OAuth2 flow using `pytest` and `httpx`.\n\nThe updated context was stored with the note: *'Optimized token storage for dev, added refresh token rotation, and outlined testing strategy.'*\n\n**Stored Context Summary**:\n```json\n{\n  \"file\": \"auth_service.py\",\n  \"last_updated\": \"2024-05-20\",\n  \"key_decisions\": [\"Migrated from JWT to OAuth2\", \"Used authlib for OAuth2\", \"Switched to PostgreSQL for token storage\"],\n  \"suggested_improvements\": [\"Use SQLite for dev token storage\", \"Add refresh token rotation\", \"Write integration tests\"],\n  \"notes\": \"Optimized token storage for dev, added refresh token rotation, and outlined testing strategy.\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-memory-keeper#main-content",
+      "mcp-memory-keeper#overview",
+      "mcp-memory-keeper#setup",
+      "mcp-memory-keeper#examples",
+      "mcp-memory-keeper#tools",
+      "mcp-memory-keeper#mcp",
+      "mcp-memory-keeper#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP Memory Keeper solves context loss in Claude AI coding sessions by providing a persistent memory layer that preserves your work history, architectural decisions, and progress. The server stores context in SQLite and organizes information through channels, categories, and checkpoints, allowing you to save snapshots before context limits are reached. It supports full-text search, git integration with automatic branch correlation, and change tracking to monitor what's been added or modified. Developers working on complex refactoring, multi-file changes, or long debugging sessions can restore context across sessions or share memory between parallel Claude instances. Installation is straightforward via NPX, and the system uses environment variables for storage customization and token limit configuration.\nLong coding sessions where context window fills up mid-project\nComplex refactoring requiring architectural decisions to persist\nMulti-file changes tracked across multiple Claude Code sessions\nTeam collaboration with shared memory between parallel Claude instances",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mkreyman/mcp-memory-keeper`",
+    "usage_vi": "```\nUse the MCP Memory Keeper to [ACTION] for [PROJECT/CODEBASE]. Retrieve the context for [SPECIFIC_FILE_OR_MODULE] and summarize the key decisions made in [RECENT_SESSION]. Then, suggest improvements based on [GOAL, e.g., performance optimization, bug fixes]. Finally, store the updated context with a note: '[SUMMARY_OF_CHANGES]'.\n```\nCopy\n\n```\nFor the open-source project **FastAPI-User-Auth**, I used the MCP Memory Keeper to retrieve the context for `auth_service.py` and the recent session where we migrated from JWT to OAuth2. The stored context showed that the team decided to use `authlib` for OAuth2 integration due to its better compatibility with FastAPI’s dependency injection system. Key decisions included:\n\n1. **Token Storage**: Switched from Redis to PostgreSQL for token persistence to simplify infrastructure.\n2. **Rate Limiting**: Implemented `slowapi` for OAuth2 token requests to prevent abuse.\n3. **Error Handling**: Added custom exceptions for OAuth2-specific errors (e.g., `InvalidTokenError`).\n\nBased on these decisions, I suggested:\n- **Performance Optimization**: Replace PostgreSQL with `SQLite` for token storage in development environments to reduce latency.\n- **Security Enhancement**: Add `refresh_token` rotation to mitigate replay attacks.\n- **Testing**: Write integration tests for the OAuth2 flow using `pytest` and `httpx`.\n\nThe updated context was stored with the note: *'Optimized token storage for dev, added refresh token rotation, and outlined testing strategy.'*\n\n**Stored Context Summary**:\n```json\n{\n  \"file\": \"auth_service.py\",\n  \"last_updated\": \"2024-05-20\",\n  \"key_decisions\": [\"Migrated from JWT to OAuth2\", \"Used authlib for OAuth2\", \"Switched to PostgreSQL for token storage\"],\n  \"suggested_improvements\": [\"Use SQLite for dev token storage\", \"Add refresh token rotation\", \"Write integration tests\"],\n  \"notes\": \"Optimized token storage for dev, added refresh token rotation, and outlined testing strategy.\"\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:44:50.662282Z",
+    "http_status": 200,
+    "content_hash": "47814c283009fb7550dafe6c8744cb9690fc52e0a96165e33b067a00970e9cd6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-memory-keeper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-memory-keeper.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MCP Memory Keeper - AI Context Management",
+  "short_description_vi": "MCP Memory Keeper is a server for managing persistent context in AI coding assistants. It helps developers maintain context across sessions, improving efficiency and accuracy. Integrates with Claude AI and uses SQLite for data storage."
+}

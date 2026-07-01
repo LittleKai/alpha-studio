@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lynxprompt",
+  "slug": "lynxprompt",
+  "name": "LynxPrompt",
+  "headline": "LynxPrompt - AI Agent Config Generator",
+  "short_description": "LynxPrompt is an AI-powered IDE and tools rule config generator. It enables operations teams to create, browse, store, and share configuration files like AGENTS.md and CLAUDE.md via a WebUI or CLI. It connects to AI agents like Claude, streamlining the setup and management of AI workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "GeiserX",
+  "install_command": "git clone https://github.com/GeiserX/LynxPrompt.git",
+  "source_repo_url": "https://github.com/GeiserX/LynxPrompt",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "aiconfigfiles",
+    "templates",
+    "vibe-coding",
+    "wizard",
+    "ai-agents",
+    "claude-code",
+    "prompts",
+    "ai-rules",
+    "lynxprompt",
+    "blueprints",
+    "vibecoding",
+    "ai"
+  ],
+  "sections": {
+    "overview": "LynxPrompt is a self-hostable platform that centralizes AI coding assistant configuration management for teams and individuals. It supports 30+ AI tools including Claude Code, Cursor, GitHub Copilot, and Windsurf, enabling users to generate, store, and share configuration files like AGENTS.md, CLAUDE.md, and .cursor/rules through a web UI or CLI. The interactive wizard auto-detects tech stacks from GitHub/GitLab URLs and supports template variables for monorepos. Teams can establish a private or federated marketplace to standardize AI behavior across projects, while the full REST API and CLI tool enable automation and CI/CD integration. Deploy with Docker Compose on your own infrastructure, or use the hosted instance at lynxprompt.com.\nStandardize AI coding assistant configurations across engineering teams\nBuild an internal marketplace of reusable AI configuration blueprints\nGenerate and export configs for multiple AI tools from a single source\nAutomate AI config deployment in CI/CD pipelines via REST API",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GeiserX/LynxPrompt`",
+    "usage": "```\nGenerate a LynxPrompt configuration file for automating [TASK] in [PROJECT_NAME]. The config should include: 1) A clear task description, 2) Required tools (e.g., Git, Python, API keys), 3) Input/output specifications, 4) Error handling rules, and 5) A sharing policy for the team. Save the output as a CLAUDE.md file and include a comment explaining how to trigger the automation via CLI. Example: 'Generate a LynxPrompt config for deploying a Python API to AWS using Terraform. Include steps for linting, testing, and rollback on failure.'\n```\nCopy\n\n```\n```markdown\n# LynxPrompt Config: AWS Python API Deployment\n**Task**: Deploy a Python FastAPI application to AWS ECS with Terraform, including CI/CD pipeline setup.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lynxprompt#main-content",
+      "lynxprompt#overview",
+      "lynxprompt#setup",
+      "lynxprompt#examples",
+      "lynxprompt#tools",
+      "lynxprompt#mcp",
+      "lynxprompt#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LynxPrompt là một nền tảng hỗ trợ self-host giúp quản lý tập trung cấu hình trợ lý lập trình AI cho các đội ngũ và cá nhân. Nền tảng này hỗ trợ hơn 30 công cụ AI bao gồm Claude Code, Cursor, GitHub Copilot và Windsurf, cho phép người dùng tạo, lưu trữ và chia sẻ các tệp cấu hình như AGENTS.md, CLAUDE.md và .cursor/rules thông qua WebUI hoặc CLI. Trình hướng dẫn tương tác (wizard) tự động nhận diện tech stack từ URL GitHub/GitLab và hỗ trợ các biến template cho monorepo. Các đội ngũ có thể thiết lập một marketplace nội bộ hoặc liên hợp để chuẩn hóa hành vi của AI trên toàn bộ dự án, đồng thời REST API đầy đủ và công cụ CLI giúp hỗ trợ tự động hóa và tích hợp CI/CD. Triển khai dễ dàng bằng Docker Compose trên hạ tầng của riêng bạn, hoặc sử dụng instance được host sẵn tại lynxprompt.com.\n\nChuẩn hóa cấu hình trợ lý lập trình AI trên toàn bộ đội ngũ kỹ thuật\nXây dựng marketplace nội bộ chứa các blueprint cấu hình AI có thể tái sử dụng\nTạo và xuất cấu hình cho nhiều công cụ AI từ một nguồn duy nhất\nTự động hóa việc triển khai cấu hình AI trong các pipeline CI/CD thông qua REST API",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/GeiserX/LynxPrompt`",
+    "usage_vi": "```\nTạo một tệp cấu hình LynxPrompt để tự động hóa [TASK] trong [PROJECT_NAME]. Cấu hình cần bao gồm: 1) Mô tả nhiệm vụ rõ ràng, 2) Các công cụ bắt buộc (ví dụ: Git, Python, API key), 3) Thông số đầu vào/đầu ra, 4) Các quy tắc xử lý lỗi, và 5) Chính sách chia sẻ cho đội ngũ. Lưu kết quả dưới dạng tệp CLAUDE.md và thêm một dòng chú thích giải thích cách kích hoạt tự động hóa qua CLI. Ví dụ: 'Tạo cấu hình LynxPrompt để triển khai một Python API lên AWS bằng Terraform. Bao gồm các bước linting, testing và rollback khi gặp lỗi.'\n```\nCopy\n\n```\n```markdown\n# Cấu hình LynxPrompt: Triển khai AWS Python API\n**Task**: Triển khai ứng dụng FastAPI bằng Python lên AWS ECS với Terraform, bao gồm cả thiết lập pipeline CI/CD."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:35:53.767279Z",
+    "http_status": 200,
+    "content_hash": "5832a0eca19eb2e5f976c6678bcb112c6f868b7c979cba28e028d7d333867fa9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lynxprompt.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lynxprompt.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LynxPrompt - Trình tạo cấu hình AI Agent",
+  "short_description_vi": "LynxPrompt là trình tạo cấu hình quy tắc cho IDE và công cụ lập trình hỗ trợ bởi AI. Nó cho phép các đội ngũ vận hành tạo, duyệt, lưu trữ và chia sẻ các tệp cấu hình như AGENTS.md và CLAUDE.md thông qua WebUI hoặc CLI. LynxPrompt kết nối trực tiếp với các AI agent như Claude, giúp tối ưu hóa quá trình setup và quản lý các AI workflow."
+}

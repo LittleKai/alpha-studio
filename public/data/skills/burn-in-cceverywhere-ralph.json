@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/burn-in-cceverywhere-ralph",
+  "slug": "burn-in-cceverywhere-ralph",
+  "name": "Burn In Cceverywhere Ralph",
+  "headline": "Claude Code enhanced suite integration",
+  "short_description": "Integrates everything-claude-code and ralph to enhance Claude Code capabilities. Benefits operations teams by automating workflows. Connects to shell-based tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "hellangleZ",
+  "install_command": "git clone https://github.com/hellangleZ/burn-in-cceverywhere-ralph.git",
+  "source_repo_url": "https://github.com/hellangleZ/burn-in-cceverywhere-ralph",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "burn-in-cceverywhere-ralph combines everything-claude-code and ralph into a comprehensive enhancement system for Claude Code. It provides 9 specialized agents (planner, architect, code-reviewer, security-reviewer, tdd-guide, build-error-resolver, e2e-runner, refactor-cleaner, doc-updater) and 13 skills covering PRD generation, TDD workflows, coding standards, and security reviews. The ralph autonomous loop breaks through context limitations by running fresh instances across multiple iterations while persisting memory through files and git history. Teams benefit from 15 quick commands, 8 rule files for governance, and automation hooks for TypeScript checking, formatting, and notifications.\nAutomating multi-iteration development tasks that exceed single session capacity\nImplementing TDD workflows with automated guidance and test generation\nConducting comprehensive code reviews and security vulnerability analysis\nRefactoring codebases with dead code detection and cleanup",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hellangleZ/burn-in-cceverywhere-ralph`",
+    "usage": "```\nUse ralph and everything-claude-code to automate the following task: [TASK_DESCRIPTION]. Ensure all steps are executed in a shell environment with error handling. Log outputs to [LOG_FILE_PATH]. If [CONDITION] is met, trigger [ACTION]. Include a summary of changes made and any errors encountered.\n```\nCopy\n\n```\n```\n=== Ralph Automation Report: Server Migration (2024-05-20) ===\n\nTask: Migrate 15 legacy servers to new Kubernetes clusters with zero downtime.\n\nSteps Executed:\n1. **Pre-flight Checks** (ralph):\n   - Verified server connectivity: 15/15 (100%)\n   - Checked disk space: 8/15 servers below 20% threshold (flagged for cleanup)\n   - Validated Kubernetes cluster health: All 3 clusters operational\n\n2. **Automated Migration** (everything-claude-code):\n   - Generated migration scripts for 12 servers (3 skipped due to low disk space)\n   - Executed rolling updates with 2-minute intervals between servers\n   - Monitored pod restarts: 0 failures in 12 migrations\n   - Logged real-time metrics to /var/log/ralph/migration_20240520.log\n\n3. **Post-migration Validation** (ralph):\n   - Confirmed service endpoints: 15/15 (100%)\n   - Checked application health: All services returned 200 OK\n   - Verified data consistency: No discrepancies detected\n\nErrors Encountered:\n- Server `legacy-db-03`: Disk space at 15% (below threshold). Skipped migration. Recommended action: Clean up old logs or expand storage.\n- Cluster `prod-east-02`: Temporary network latency spike during migration. Resolved automatically after 30 seconds.\n\nSummary:\n- Successfully migrated 12/15 servers (80%)\n- 3 servers skipped due to pre-flight issues (20%)\n- No service disruptions reported\n- Total runtime: 47 minutes\n\nRecommendations:\n1. Schedule disk cleanup for `legacy-db-03` before next migration window.\n2. Investigate network stability in `prod-east-02` cluster.\n3. Automate disk space alerts in ralph for proactive monitoring.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "burn-in-cceverywhere-ralph#main-content",
+      "burn-in-cceverywhere-ralph#overview",
+      "burn-in-cceverywhere-ralph#setup",
+      "burn-in-cceverywhere-ralph#examples",
+      "burn-in-cceverywhere-ralph#tools",
+      "burn-in-cceverywhere-ralph#mcp",
+      "burn-in-cceverywhere-ralph#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "burn-in-cceverywhere-ralph kết hợp everything-claude-code và ralph thành một hệ thống cải tiến toàn diện cho Claude Code. Hệ thống cung cấp 9 agent chuyên dụng (planner, architect, code-reviewer, security-reviewer, tdd-guide, build-error-resolver, e2e-runner, refactor-cleaner, doc-updater) và 13 skill hỗ trợ từ khởi tạo PRD, workflow TDD, chuẩn hóa coding style cho đến rà soát bảo mật. Vòng lặp tự trị (autonomous loop) của ralph giúp vượt qua giới hạn ngữ cảnh (context limit) bằng cách khởi chạy các instance mới qua nhiều vòng lặp, đồng thời duy trì memory qua file và lịch sử git. Các đội ngũ phát triển có thể tận dụng 15 lệnh nhanh (quick command), 8 file quy tắc (rule file) để quản trị hệ thống, cùng các hook tự động hóa để check TypeScript, format code và gửi thông báo.\nTự động hóa các tác vụ phát triển phần mềm gồm nhiều vòng lặp (multi-iteration) vượt quá giới hạn của một phiên làm việc (session) đơn lẻ.\nTriển khai workflow TDD đi kèm hướng dẫn tự động và tự động sinh test case.\nThực hiện đánh giá code (code review) toàn diện và phân tích lỗ hổng bảo mật.\nRefactor codebase thông qua việc phát hiện và dọn dẹp dead code.",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/hellangleZ/burn-in-cceverywhere-ralph`",
+    "usage_vi": "```\nSử dụng ralph và everything-claude-code để tự động hóa tác vụ sau: [TASK_DESCRIPTION]. Đảm bảo tất cả các bước được thực thi trong môi trường shell và có xử lý lỗi. Ghi log đầu ra vào [LOG_FILE_PATH]. Nếu đáp ứng [CONDITION], kích hoạt [ACTION]. Cung cấp bản tóm tắt các thay đổi đã thực hiện và bất kỳ lỗi nào gặp phải.\n```\nCopy\n\n```\n```\n=== Báo cáo Tự động hóa Ralph: Di chuyển Máy chủ (2024-05-20) ===\n\nTác vụ: Di chuyển 15 máy chủ cũ (legacy server) sang các cụm Kubernetes mới với zero downtime.\n\nCác bước đã thực hiện:\n1. **Kiểm tra pre-flight** (ralph):\n   - Kiểm tra kết nối máy chủ: 15/15 (100%)\n   - Kiểm tra dung lượng đĩa: 8/15 máy chủ dưới ngưỡng 20% (được đánh dấu để dọn dẹp)\n   - Xác thực trạng thái cụm Kubernetes: Cả 3 cụm đều hoạt động bình thường\n\n2. **Di chuyển Tự động** (everything-claude-code):\n   - Tạo script di chuyển cho 12 máy chủ (bỏ qua 3 máy chủ do dung lượng đĩa thấp)\n   - Thực hiện rolling update với khoảng thời gian 2 phút giữa các máy chủ\n   - Giám sát việc khởi động lại pod: 0 lỗi trong số 12 lượt di chuyển\n   - Ghi log các chỉ số thời gian thực vào /var/log/ralph/migration_20240520.log\n\n3. **Xác thực sau di chuyển** (ralph):\n   - Xác nhận các endpoint dịch vụ: 15/15 (100%)\n   - Kiểm tra trạng thái ứng dụng: Tất cả dịch vụ đều trả về mã 200 OK\n   - Xác thực tính nhất quán của dữ liệu: Không phát hiện sai lệch\n\nLỗi Gặp phải:\n- Máy chủ `legacy-db-03`: Dung lượng đĩa ở mức 15% (dưới ngưỡng). Đã bỏ qua lượt di chuyển này. Hành động khuyến nghị: Dọn dẹp các log cũ hoặc mở rộng bộ nhớ lưu trữ.\n- Cụm `prod-east-02`: Độ trễ mạng tăng đột biến tạm thời trong quá trình di chuyển. Đã tự động khắc phục sau 30 giây.\n\nTóm tắt:\n- Di chuyển thành công 12/15 máy chủ (80%)\n- Bỏ qua 3 máy chủ do các vấn đề pre-flight (20%)\n- Không có báo cáo về việc gián đoạn dịch vụ\n- Tổng thời gian chạy: 47 phút\n\nKhuyến nghị:\n1. Lên lịch dọn dẹp ổ đĩa cho `legacy-db-03` trước thời gian di chuyển (migration window) tiếp theo.\n2. Điều tra độ ổn định mạng của cụm `prod-east-02`.\n3. Tự động hóa cảnh báo dung lượng đĩa trong ralph để giám sát chủ động.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:16:49.470555Z",
+    "http_status": 200,
+    "content_hash": "6c019641be3c02f77084d3ad757c46e2427ef67d986f97446a8b860dc1f0e474",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\burn-in-cceverywhere-ralph.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\burn-in-cceverywhere-ralph.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tích hợp bộ công cụ nâng cao cho Claude Code",
+  "short_description_vi": "Tích hợp everything-claude-code và ralph để tối ưu hóa khả năng của Claude Code. Hỗ trợ các đội ngũ vận hành nhờ tự động hóa workflow. Kết nối trực tiếp với các công cụ và workflow dạng shell."
+}

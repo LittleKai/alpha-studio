@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hexstrike-ai",
+  "slug": "hexstrike-ai",
+  "name": "Hexstrike Ai",
+  "headline": "HexStrike AI: Advanced Cybersecurity Automation",
+  "short_description": "HexStrike AI MCP Agents help AI agents to autonomously execute over 150 cybersecurity tools for automated pentesting and vulnerability discovery. This platform integrates LLMs with advanced offensive security capabilities, enhancing cybersecurity research and bug bounty automation.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "0x4m4",
+  "install_command": "claude install 0x4m4/hexstrike-ai",
+  "source_repo_url": "https://github.com/0x4m4/hexstrike-ai",
+  "works_with": [
+    "ClaudeChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "vulnerability discovery",
+    "automation",
+    "AI agents",
+    "cybersecurity",
+    "pentesting"
+  ],
+  "sections": {
+    "overview": "HexStrike AI MCP Agents is an MCP-compatible platform that enables AI agents to autonomously execute over 150 cybersecurity and penetration testing tools. It integrates large language models with advanced offensive security capabilities, automating vulnerability discovery and security assessments. The platform is designed for security researchers, bug bounty hunters, and penetration testers who want to enhance their workflows through AI-driven tool orchestration. By combining LLM reasoning with established security utilities, HexStrike streamlines the process of identifying and documenting security weaknesses in applications and infrastructure.\nAutomate penetration testing processes to identify security weaknesses in applications.\nDiscover vulnerabilities in software systems using AI-driven analysis.\nStreamline bug bounty submissions by automating vulnerability reporting.\nEnhance security research efforts with integrated AI tools for deeper insights.",
+    "setup": "Terminal\nCopy\n`claude install 0x4m4/hexstrike-ai`\n`git clone https://github.com/0x4m4/hexstrike-ai`",
+    "usage": "```\nUse HexStrike AI MCP Agents to autonomously execute over 150 cybersecurity tools for automated pentesting and vulnerability discovery on [TARGET_SYSTEM]. Focus on identifying [SPECIFIC_VULNERABILITIES] such as SQL injection, cross-site scripting, or misconfigured APIs. Provide a detailed report including risk assessment, proof-of-concept exploits, and remediation steps.\n```\nCopy\n\n```\nAfter running a comprehensive automated pentest on the [TARGET_SYSTEM], HexStrike AI MCP Agents identified several critical vulnerabilities:\n\n1. **SQL Injection Vulnerability**: Found in the user authentication module. Proof-of-concept exploit successfully retrieved sensitive user data. Risk: High. Remediation: Implement parameterized queries and input validation.\n\n2. **Cross-Site Scripting (XSS)**: Discovered in the comment section of the forum. Proof-of-concept exploit demonstrated the ability to execute arbitrary JavaScript. Risk: Medium. Remediation: Sanitize user inputs and use Content Security Policy (CSP) headers.\n\n3. **Misconfigured API Endpoints**: Identified several endpoints that expose sensitive data without proper authentication. Risk: High. Remediation: Enforce API authentication and implement rate limiting.\n\nThe report includes detailed steps for each vulnerability, prioritized by risk level, and suggests specific tools and techniques for remediation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT, GitHub Copilot",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "hexstrike-ai#main-content",
+      "hexstrike-ai#overview",
+      "hexstrike-ai#setup",
+      "hexstrike-ai#examples",
+      "hexstrike-ai#tools",
+      "hexstrike-ai#mcp",
+      "hexstrike-ai#related",
+      "claude-skills",
+      "nuwax",
+      "cradle"
+    ],
+    "overview_vi": "HexStrike AI MCP Agents is an MCP-compatible platform that enables AI agents to autonomously execute over 150 cybersecurity and penetration testing tools. It integrates large language models with advanced offensive security capabilities, automating vulnerability discovery and security assessments. The platform is designed for security researchers, bug bounty hunters, and penetration testers who want to enhance their workflows through AI-driven tool orchestration. By combining LLM reasoning with established security utilities, HexStrike streamlines the process of identifying and documenting security weaknesses in applications and infrastructure.\nAutomate penetration testing processes to identify security weaknesses in applications.\nDiscover vulnerabilities in software systems using AI-driven analysis.\nStreamline bug bounty submissions by automating vulnerability reporting.\nEnhance security research efforts with integrated AI tools for deeper insights.",
+    "setup_vi": "Terminal\nCopy\n`claude install 0x4m4/hexstrike-ai`\n`git clone https://github.com/0x4m4/hexstrike-ai`",
+    "usage_vi": "```\nUse HexStrike AI MCP Agents to autonomously execute over 150 cybersecurity tools for automated pentesting and vulnerability discovery on [TARGET_SYSTEM]. Focus on identifying [SPECIFIC_VULNERABILITIES] such as SQL injection, cross-site scripting, or misconfigured APIs. Provide a detailed report including risk assessment, proof-of-concept exploits, and remediation steps.\n```\nCopy\n\n```\nAfter running a comprehensive automated pentest on the [TARGET_SYSTEM], HexStrike AI MCP Agents identified several critical vulnerabilities:\n\n1. **SQL Injection Vulnerability**: Found in the user authentication module. Proof-of-concept exploit successfully retrieved sensitive user data. Risk: High. Remediation: Implement parameterized queries and input validation.\n\n2. **Cross-Site Scripting (XSS)**: Discovered in the comment section of the forum. Proof-of-concept exploit demonstrated the ability to execute arbitrary JavaScript. Risk: Medium. Remediation: Sanitize user inputs and use Content Security Policy (CSP) headers.\n\n3. **Misconfigured API Endpoints**: Identified several endpoints that expose sensitive data without proper authentication. Risk: High. Remediation: Enforce API authentication and implement rate limiting.\n\nThe report includes detailed steps for each vulnerability, prioritized by risk level, and suggests specific tools and techniques for remediation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:14:40.343565Z",
+    "http_status": 200,
+    "content_hash": "547d10d33a9baaf5faccddb4a1e9303af02e78362bce4c2f423e3b9278ae351c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hexstrike-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hexstrike-ai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "HexStrike AI: Advanced Cybersecurity Automation",
+  "short_description_vi": "HexStrike AI MCP Agents help AI agents to autonomously execute over 150 cybersecurity tools for automated pentesting and vulnerability discovery. This platform integrates LLMs with advanced offensive security capabilities, enhancing cybersecurity research and bug bounty automation."
+}

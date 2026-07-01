@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-to-mcp",
+  "slug": "skill-to-mcp",
+  "name": "browser-use",
+  "headline": "Skill-to-MCP - Convert AI Skills to MCP Resources",
+  "short_description": "Converts AI skills from Claude Skills format to MCP server resources. Enables biomedical researchers and developers to integrate AI skills into their workflows. Connects to BioContextAI's registry and MCP servers for deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "biocontext-ai",
+  "install_command": "git clone https://github.com/biocontext-ai/skill-to-mcp.git",
+  "source_repo_url": "https://github.com/biocontext-ai/skill-to-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "skills",
+    "fastmcp",
+    "biomedical",
+    "claude",
+    "biocontext",
+    "mcp",
+    "model-context-protocol",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Skill-to-MCP automatically discovers and exposes Claude Skills as accessible MCP server resources through the Model Context Protocol. It recursively finds SKILL.md files, parses YAML frontmatter metadata, and provides three core tools: get_available_skills to list all skills, get_skill_details to retrieve full skill content, and get_skill_related_file to access supporting files. The server includes built-in security with path validation to prevent directory traversal attacks. Designed for biomedical researchers and developers, it integrates with BioContextAI's registry while remaining domain-agnostic for any skill collection.\nExpose a collection of biomedical research skills to Claude or other LLM agents\nCreate an MCP server from existing Claude Skills documentation\nManage multiple skill collections for different research teams or projects\nEnable Claude Desktop or other MCP clients to access structured skill libraries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/biocontext-ai/skill-to-mcp`",
+    "usage": "```\nConvert the following AI skill from Claude Skills format to MCP server resources: [SKILL_NAME]. Ensure compatibility with BioContextAI's registry and MCP servers. Include all necessary metadata and dependencies. [SKILL_DESCRIPTION]\n```\nCopy\n\n```\n# MCP Server Resource Conversion\n\n```json\n{\n  \"patient_data\": {\n    \"age\": 65,\n    \"gender\": \"male\",\n    \"medical_history\": [\"hypertension\", \"diabetes\"],\n    \"current_medications\": [\"lisinopril\", \"metformin\"]\n  }\n}\n```\n\n```json\n{\n  \"interactions\": [\n    {\n      \"drug1\": \"lisinopril\",\n      \"drug2\": \"metformin\",\n      \"severity\": \"low\",\n      \"description\": \"No significant interactions expected.\"\n    },\n    {\n      \"drug1\": \"lisinopril\",\n      \"drug2\": \"aspirin\",\n      \"severity\": \"moderate\",\n      \"description\": \"Monitor for signs of hyperkalemia.\"\n    }\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-to-mcp#main-content",
+      "skill-to-mcp#overview",
+      "skill-to-mcp#setup",
+      "skill-to-mcp#examples",
+      "skill-to-mcp#tools",
+      "skill-to-mcp#mcp",
+      "skill-to-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill-to-MCP automatically discovers and exposes Claude Skills as accessible MCP server resources through the Model Context Protocol. It recursively finds SKILL.md files, parses YAML frontmatter metadata, and provides three core tools: get_available_skills to list all skills, get_skill_details to retrieve full skill content, and get_skill_related_file to access supporting files. The server includes built-in security with path validation to prevent directory traversal attacks. Designed for biomedical researchers and developers, it integrates with BioContextAI's registry while remaining domain-agnostic for any skill collection.\nExpose a collection of biomedical research skills to Claude or other LLM agents\nCreate an MCP server from existing Claude Skills documentation\nManage multiple skill collections for different research teams or projects\nEnable Claude Desktop or other MCP clients to access structured skill libraries",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/biocontext-ai/skill-to-mcp`",
+    "usage_vi": "```\nConvert the following AI skill from Claude Skills format to MCP server resources: [SKILL_NAME]. Ensure compatibility with BioContextAI's registry and MCP servers. Include all necessary metadata and dependencies. [SKILL_DESCRIPTION]\n```\nCopy\n\n```\n# MCP Server Resource Conversion\n\n```json\n{\n  \"patient_data\": {\n    \"age\": 65,\n    \"gender\": \"male\",\n    \"medical_history\": [\"hypertension\", \"diabetes\"],\n    \"current_medications\": [\"lisinopril\", \"metformin\"]\n  }\n}\n```\n\n```json\n{\n  \"interactions\": [\n    {\n      \"drug1\": \"lisinopril\",\n      \"drug2\": \"metformin\",\n      \"severity\": \"low\",\n      \"description\": \"No significant interactions expected.\"\n    },\n    {\n      \"drug1\": \"lisinopril\",\n      \"drug2\": \"aspirin\",\n      \"severity\": \"moderate\",\n      \"description\": \"Monitor for signs of hyperkalemia.\"\n    }\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:02.030231Z",
+    "http_status": 200,
+    "content_hash": "807384798e2a12d9f451d2bc33de59f14c070c2ddc8d63dede9749197cd80e73",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-to-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-to-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skill-to-MCP - Convert AI Skills to MCP Resources",
+  "short_description_vi": "Converts AI skills from Claude Skills format to MCP server resources. Enables biomedical researchers and developers to integrate AI skills into their workflows. Connects to BioContextAI's registry and MCP servers for deployment."
+}

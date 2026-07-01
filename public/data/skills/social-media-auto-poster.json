@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/social-media-auto-poster",
+  "slug": "social-media-auto-poster",
+  "name": "Social-media-auto-poster",
+  "headline": "Social-media-auto-poster: Multi-Platform Posting",
+  "short_description": "IMPROVE THIS SOCIAL MEDIA AUTOMATION SCRIPT, ADD MORE FEATURES, ADD MORE SOCIAL MEDIA CHANNELS (for more info read instructions.txt)",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "hotboyfire7",
+  "install_command": "git clone https://github.com/hotboyfire7/Social-media-auto-poster.git",
+  "source_repo_url": "https://github.com/hotboyfire7/Social-media-auto-poster",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Social-media-auto-poster is a PHP-based automation tool that lets users create, schedule, and automatically publish social media campaigns across Facebook, Twitter, and YouTube. The platform includes membership management, allowing admins to restrict channels and features by user tier. It features campaign scheduling, social media account integration, and admin dashboards for user management. The skill solves the problem of manual social posting by automating multi-platform publishing workflows. Ideal for marketing teams, social media managers, and agencies managing multiple client accounts.\nSchedule Facebook posts in advance across multiple brand accounts\nAuto-publish Twitter updates on a consistent cadence\nManage YouTube posting with campaign scheduling\nRestrict social channels by user membership tier",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hotboyfire7/Social-media-auto-poster`",
+    "usage": "```\nImprove this social media automation script to add more features and support for additional channels. The script currently handles [CURRENT_CHANNELS]. I want to add support for [NEW_CHANNELS]. The script should also include these new features: [NEW_FEATURES]. Ensure the script maintains its existing functionality while adding these improvements. The script is written in [SCRIPT_LANGUAGE] and follows [CODING_STANDARDS].\n```\nCopy\n\n```\n```python\n# Improved Social Media Automation Script\n# Supports: Twitter, LinkedIn, Facebook, Instagram\n\nimport tweepy\nimport linkedin\nimport facebook\nimport instagram\n\nclass SocialMediaAutomation:\n    def __init__(self, api_keys):\n        self.twitter_api = tweepy.API(api_keys['twitter'])\n        self.linkedin_api = linkedin.API(api_keys['linkedin'])\n        self.facebook_api = facebook.API(api_keys['facebook'])\n        self.instagram_api = instagram.API(api_keys['instagram'])\n\n    def post_to_all(self, message, image_path=None):\n        self.post_to_twitter(message, image_path)\n        self.post_to_linkedin(message, image_path)\n        self.post_to_facebook(message, image_path)\n        self.post_to_instagram(message, image_path)\n\n    # Additional methods for each platform...\n\n# Example usage\nif __name__ == '__main__':\n    api_keys = {\n        'twitter': 'your_twitter_api_key',\n        'linkedin': 'your_linkedin_api_key',\n        'facebook': 'your_facebook_api_key',\n        'instagram': 'your_instagram_api_key'\n    }\n    automator = SocialMediaAutomation(api_keys)\n    automator.post_to_all('Check out our new blog post!', 'blog_image.jpg')\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "social-media-auto-poster#main-content",
+      "social-media-auto-poster#overview",
+      "social-media-auto-poster#setup",
+      "social-media-auto-poster#examples",
+      "social-media-auto-poster#tools",
+      "social-media-auto-poster#mcp",
+      "social-media-auto-poster#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "Social-media-auto-poster là công cụ tự động hóa viết bằng PHP, cho phép người dùng tạo, lên lịch và tự động đăng tải các chiến dịch truyền thông xã hội trên Facebook, Twitter và YouTube. Nền tảng này tích hợp tính năng quản lý thành viên, cho phép admin giới hạn các kênh và tính năng theo từng cấp bậc tài khoản (user tier) của người dùng. Công cụ hỗ trợ lên lịch chiến dịch, tích hợp tài khoản mạng xã hội và dashboard admin để quản lý người dùng. Skill này giải quyết bài toán đăng bài thủ công bằng cách tự động hóa quy trình xuất bản nội dung đa nền tảng. Đây là giải pháp lý tưởng cho các đội ngũ marketing, quản lý mạng xã hội và các agency quản lý nhiều tài khoản khách hàng cùng lúc.\nLên lịch trước cho các bài đăng Facebook trên nhiều tài khoản thương hiệu khác nhau\nTự động đăng các bản cập nhật trên Twitter theo tần suất đều đặn\nQuản lý việc đăng video YouTube thông qua tính năng lên lịch chiến dịch\nGiới hạn các kênh mạng xã hội theo cấp bậc tài khoản của thành viên",
+    "setup_vi": "Không hỗ trợ lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/hotboyfire7/Social-media-auto-poster`",
+    "usage_vi": "```\nHãy cải tiến script tự động hóa mạng xã hội này để bổ sung thêm tính năng và hỗ trợ thêm các kênh mới. Hiện tại script đang xử lý [CURRENT_CHANNELS]. Tôi muốn thêm hỗ trợ cho [NEW_CHANNELS]. Script cũng cần bao gồm các tính năng mới sau: [NEW_FEATURES]. Đảm bảo script vẫn duy trì các chức năng hiện có trong khi tích hợp các cải tiến này. Script được viết bằng [SCRIPT_LANGUAGE] và tuân thủ [CODING_STANDARDS].\n```\nCopy\n\n```python\n# Improved Social Media Automation Script\n# Supports: Twitter, LinkedIn, Facebook, Instagram\n\nimport tweepy\nimport linkedin\nimport facebook\nimport instagram\n\nclass SocialMediaAutomation:\n    def __init__(self, api_keys):\n        self.twitter_api = tweepy.API(api_keys['twitter'])\n        self.linkedin_api = linkedin.API(api_keys['linkedin'])\n        self.facebook_api = facebook.API(api_keys['facebook'])\n        self.instagram_api = instagram.API(api_keys['instagram'])\n\n    def post_to_all(self, message, image_path=None):\n        self.post_to_twitter(message, image_path)\n        self.post_to_linkedin(message, image_path)\n        self.post_to_facebook(message, image_path)\n        self.post_to_instagram(message, image_path)\n\n    # Additional methods for each platform...\n\n# Example usage\nif __name__ == '__main__':\n    api_keys = {\n        'twitter': 'your_twitter_api_key',\n        'linkedin': 'your_linkedin_api_key',\n        'facebook': 'your_facebook_api_key',\n        'instagram': 'your_instagram_api_key'\n    }\n    automator = SocialMediaAutomation(api_keys)\n    automator.post_to_all('Check out our new blog post!', 'blog_image.jpg')\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:51:44.857631Z",
+    "http_status": 200,
+    "content_hash": "d1f16d161c9ee4c8137d460b4185b6a527ee3b9a4f032e38954a4ff071b0e0b4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\social-media-auto-poster.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\social-media-auto-poster.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Social-media-auto-poster: Đăng bài đa nền tảng",
+  "short_description_vi": "CẢI TIẾN SCRIPT TỰ ĐỘNG HÓA MẠNG XÃ HỘI NÀY, BỔ SUNG TÍNH NĂNG VÀ THÊM CÁC KÊNH MẠNG XÃ HỘI MỚI (đọc instructions.txt để biết thêm chi tiết)"
+}

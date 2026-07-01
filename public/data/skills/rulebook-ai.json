@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rulebook-ai",
+  "slug": "rulebook-ai",
+  "name": "Rulebook AI",
+  "headline": "Rulebook AI - Standardize AI Coding Instructions",
+  "short_description": "Elevate vibe coding to vibe engineering: Get consistent Github Copilot custom instructions, Cursor, Roo Code, Cline, Windsurf, Claude Code, Gemini Cli, Codex CLI, kilo code, warp custom rules via a universal, managed template. Features vibe coding memory bank & best practices for large codebases.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "botingw",
+  "install_command": "git clone https://github.com/botingw/rulebook-ai.git",
+  "source_repo_url": "https://github.com/botingw/rulebook-ai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "roo-code",
+    "cursor",
+    "cline",
+    "claude-code",
+    "kilo-code",
+    "windsurf",
+    "vibe-coding",
+    "gemini-cli",
+    "github-cop",
+    "codex-cli",
+    "context-en",
+    "warp"
+  ],
+  "sections": {
+    "overview": "Rulebook-ai is a unified framework for managing custom instructions across multiple AI coding assistants, including Claude Code, Cursor, Cline, Windsurf, Roo Code, and others. Instead of manually configuring separate custom instructions for each tool, rulebook-ai provides a managed template system that ensures consistency across your development environment. The tool includes a vibe coding memory bank and standardized best practices designed specifically for working with large codebases. It supports both individual tool configurations and community-driven rule packs, reducing friction when setting up AI agents and helping teams maintain coherent coding standards across different assistants.\nQuickly onboard AI assistants with tailored rules for specific programming tasks.\nMaintain consistent coding standards across different AI platforms without manual adjustments.\nEasily switch between different project configurations using named profiles.\nCollaborate with team members by sharing environment packs that encapsulate best practices.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/botingw/rulebook-ai`",
+    "usage": "```\nGenerate a universal GitHub Copilot/Cursor/CLI custom instructions template for [LANGUAGE/TECH_STACK] projects. Include [TEAM_RULES] (e.g., naming conventions, error handling), [BEST_PRACTICES] (e.g., security, performance), and [MEMORY_BANK] (e.g., project architecture, past decisions). Format as a JSON config for direct import into [TOOL_NAME]. Example: 'Generate a Copilot custom instructions template for a Python/Django e-commerce backend. Include team rules for API versioning, best practices for database indexing, and memory bank notes about our payment gateway integration.'\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"Python/Django E-Commerce Backend\",\n  \"version\": \"1.2\",\n  \"instructions\": {\n    \"team_rules\": {\n      \"naming\": \"Use snake_case for variables/functions, PascalCase for classes. Prefix private methods with '_'.\",\n      \"api_versioning\": \"Always include v{major}.{minor} in URL paths (e.g., /api/v1/products/).\",\n      \"error_handling\": \"Wrap third-party API calls in try-except blocks and log errors with context.\"\n    },\n    \"best_practices\": {\n      \"security\": [\n        \"Never hardcode secrets. Use environment variables or Django's settings.py.\",\n        \"Sanitize user inputs to prevent SQL injection and XSS.\"\n      ],\n      \"performance\": [\n        \"Use Django's select_related() for foreign key queries to reduce DB hits.\",\n        \"Cache frequent queries with Redis (e.g., product listings).\"\n      ],\n      \"testing\": \"Write unit tests for all new features using pytest. Aim for 80%+ coverage.\"\n    },\n    \"memory_bank\": {\n      \"architecture\": \"Monolithic Django app with separate apps for users, products, and orders.\",\n      \"past_decisions\": {\n        \"payment_gateway\": \"Integrated Stripe for payments. Store only payment intent IDs, not full card details.\",\n        \"auth_system\": \"Used Django-allauth for auth. Customized login flow to include OTP verification.\"\n      },\n      \"known_issues\": [\n        \"Cart persistence is client-side only. Consider server-side storage for logged-in users.\",\n        \"Image uploads are slow. Plan to migrate to S3-compatible storage.\"\n      ]\n    }\n  }\n}\n```\n\n**Usage Notes:**\n- Import this JSON into your AI tool's custom instructions settings.\n- Update `memory_bank` weekly as the project evolves.\n- Share this template with your team to ensure consistency across tools (Copilot, Cursor, etc.).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "rulebook-ai#main-content",
+      "rulebook-ai#overview",
+      "rulebook-ai#setup",
+      "rulebook-ai#examples",
+      "rulebook-ai#tools",
+      "rulebook-ai#mcp",
+      "rulebook-ai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Rulebook-ai is a unified framework for managing custom instructions across multiple AI coding assistants, including Claude Code, Cursor, Cline, Windsurf, Roo Code, and others. Instead of manually configuring separate custom instructions for each tool, rulebook-ai provides a managed template system that ensures consistency across your development environment. The tool includes a vibe coding memory bank and standardized best practices designed specifically for working with large codebases. It supports both individual tool configurations and community-driven rule packs, reducing friction when setting up AI agents and helping teams maintain coherent coding standards across different assistants.\nQuickly onboard AI assistants with tailored rules for specific programming tasks.\nMaintain consistent coding standards across different AI platforms without manual adjustments.\nEasily switch between different project configurations using named profiles.\nCollaborate with team members by sharing environment packs that encapsulate best practices.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/botingw/rulebook-ai`",
+    "usage_vi": "```\nGenerate a universal GitHub Copilot/Cursor/CLI custom instructions template for [LANGUAGE/TECH_STACK] projects. Include [TEAM_RULES] (e.g., naming conventions, error handling), [BEST_PRACTICES] (e.g., security, performance), and [MEMORY_BANK] (e.g., project architecture, past decisions). Format as a JSON config for direct import into [TOOL_NAME]. Example: 'Generate a Copilot custom instructions template for a Python/Django e-commerce backend. Include team rules for API versioning, best practices for database indexing, and memory bank notes about our payment gateway integration.'\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"Python/Django E-Commerce Backend\",\n  \"version\": \"1.2\",\n  \"instructions\": {\n    \"team_rules\": {\n      \"naming\": \"Use snake_case for variables/functions, PascalCase for classes. Prefix private methods with '_'.\",\n      \"api_versioning\": \"Always include v{major}.{minor} in URL paths (e.g., /api/v1/products/).\",\n      \"error_handling\": \"Wrap third-party API calls in try-except blocks and log errors with context.\"\n    },\n    \"best_practices\": {\n      \"security\": [\n        \"Never hardcode secrets. Use environment variables or Django's settings.py.\",\n        \"Sanitize user inputs to prevent SQL injection and XSS.\"\n      ],\n      \"performance\": [\n        \"Use Django's select_related() for foreign key queries to reduce DB hits.\",\n        \"Cache frequent queries with Redis (e.g., product listings).\"\n      ],\n      \"testing\": \"Write unit tests for all new features using pytest. Aim for 80%+ coverage.\"\n    },\n    \"memory_bank\": {\n      \"architecture\": \"Monolithic Django app with separate apps for users, products, and orders.\",\n      \"past_decisions\": {\n        \"payment_gateway\": \"Integrated Stripe for payments. Store only payment intent IDs, not full card details.\",\n        \"auth_system\": \"Used Django-allauth for auth. Customized login flow to include OTP verification.\"\n      },\n      \"known_issues\": [\n        \"Cart persistence is client-side only. Consider server-side storage for logged-in users.\",\n        \"Image uploads are slow. Plan to migrate to S3-compatible storage.\"\n      ]\n    }\n  }\n}\n```\n\n**Usage Notes:**\n- Import this JSON into your AI tool's custom instructions settings.\n- Update `memory_bank` weekly as the project evolves.\n- Share this template with your team to ensure consistency across tools (Copilot, Cursor, etc.).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:27.964856Z",
+    "http_status": 200,
+    "content_hash": "3e4b8bb868688cdf59595fa4f2397266d249e1a87a5838b415b275080a8c9ec8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rulebook-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rulebook-ai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Rulebook AI - Standardize AI Coding Instructions",
+  "short_description_vi": "Elevate vibe coding to vibe engineering: Get consistent Github Copilot custom instructions, Cursor, Roo Code, Cline, Windsurf, Claude Code, Gemini Cli, Codex CLI, kilo code, warp custom rules via a universal, managed template. Features vibe coding memory bank & best practices for large codebases."
+}

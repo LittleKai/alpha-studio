@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillsync",
+  "slug": "skillsync",
+  "name": "SkillSync",
+  "headline": "SkillSync - Sync Git Skills to AI Tools",
+  "short_description": "SkillSync automates the synchronization of skills from Git repositories to local AI coding tools like Gemini CLI, Claude Code, and Codex CLI. It benefits developers and operations teams by streamlining skill management and integration. The tool connects to Git repositories and local AI coding environments, enhancing workflow efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "AlfonsSkills",
+  "install_command": "git clone https://github.com/AlfonsSkills/SkillSync.git",
+  "source_repo_url": "https://github.com/AlfonsSkills/SkillSync",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skill",
+    "skill-installer"
+  ],
+  "sections": {
+    "overview": "SkillSync automates skill synchronization from Git repositories to multiple AI coding tools including Claude Code, Gemini CLI, Codex CLI, Cursor, and 10 additional platforms. The tool supports both terminal and IDE environments, allowing developers to install skills to specific tools, project-local directories, or multiple platforms simultaneously. Users can install skills from GitHub, GitLab, or any Git platform, and manage them through simple command-line operations. This streamlines skill management for development teams and reduces manual configuration across distributed AI coding environments.\nInstall custom skills across multiple AI coding tools from a single Git repository\nManage project-local skills in IDE and terminal environments simultaneously\nSync team skill libraries to Cursor, Claude Code, and other AI coding platforms\nAutomate skill distribution across Gemini CLI, Codex CLI, and Copilot integrations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AlfonsSkills/SkillSync`",
+    "usage": "```\nSync [SKILL_NAME] from [GIT_REPO_URL] to [AI_TOOL_NAME] (e.g., Gemini CLI, Claude Code, or Codex CLI). Update local skill definitions to match the latest version in the repository. Verify synchronization by checking [VERIFICATION_COMMAND] in the target environment.\n```\nCopy\n\n```\nSuccessfully synchronized the 'DataValidator' skill from https://github.com/acme/ai-skills to Claude Code. The local skill definition was updated to version 2.1.3, which includes new validation rules for JSON schemas and improved error messaging. The synchronization process took 12 seconds. Verification command `claude skills list` confirmed the skill is now available with the latest changes. The local environment now reflects the repository state, ensuring consistency across team members. All dependencies were automatically resolved, and no conflicts were detected during the sync.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillsync#main-content",
+      "skillsync#overview",
+      "skillsync#setup",
+      "skillsync#examples",
+      "skillsync#tools",
+      "skillsync#mcp",
+      "skillsync#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SkillSync tự động hóa quy trình đồng bộ hóa skill từ các Git repository sang nhiều công cụ lập trình AI bao gồm Claude Code, Gemini CLI, Codex CLI, Cursor và 10 nền tảng khác. Công cụ này hỗ trợ cả môi trường terminal và IDE, cho phép lập trình viên cài đặt skill cho các công cụ cụ thể, thư mục project-local hoặc nhiều nền tảng cùng lúc. Người dùng có thể cài đặt skill từ GitHub, GitLab hoặc bất kỳ nền tảng Git nào, và quản lý chúng thông qua các câu lệnh command-line đơn giản. Điều này giúp tối ưu hóa việc quản lý skill cho các đội ngũ phát triển và giảm thiểu cấu hình thủ công trên các môi trường lập trình AI phân tán.\nCài đặt các custom skill trên nhiều công cụ lập trình AI từ một Git repository duy nhất\nQuản lý các skill project-local trong môi trường IDE và terminal cùng một lúc\nĐồng bộ hóa thư viện skill của đội ngũ sang Cursor, Claude Code và các nền tảng lập trình AI khác\nTự động hóa việc phân phối skill trên các bản tích hợp Gemini CLI, Codex CLI và Copilot",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/AlfonsSkills/SkillSync`",
+    "usage_vi": "```\nSync [SKILL_NAME] từ [GIT_REPO_URL] sang [AI_TOOL_NAME] (ví dụ: Gemini CLI, Claude Code, hoặc Codex CLI). Cập nhật các định nghĩa skill local để khớp với phiên bản mới nhất trong repository. Xác minh đồng bộ hóa bằng cách chạy [VERIFICATION_COMMAND] trong môi trường đích.\n```\nCopy\n\n```\nĐã đồng bộ hóa thành công skill 'DataValidator' từ https://github.com/acme/ai-skills sang Claude Code. Định nghĩa skill local đã được cập nhật lên phiên bản 2.1.3, bao gồm các quy tắc xác thực mới cho JSON schema và cải thiện thông báo lỗi. Quá trình đồng bộ hóa mất 12 giây. Lệnh xác minh `claude skills list` xác nhận skill hiện đã sẵn sàng với các thay đổi mới nhất. Môi trường local hiện đã phản ánh đúng trạng thái của repository, đảm bảo tính nhất quán giữa các thành viên trong đội ngũ. Tất cả các dependency đã được tự động xử lý và không phát hiện xung đột nào trong quá trình đồng bộ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:07.987124Z",
+    "http_status": 200,
+    "content_hash": "483243b493bfc95a53303fe74b3bb59748d773367c68515de4638496d77617c4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsync.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsync.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SkillSync - Đồng bộ hóa Skill từ Git sang các Công cụ AI",
+  "short_description_vi": "SkillSync tự động hóa việc đồng bộ hóa skill từ các Git repository sang các công cụ lập trình AI local như Gemini CLI, Claude Code và Codex CLI. Công cụ này hỗ trợ các lập trình viên và đội ngũ vận hành bằng cách đơn giản hóa quy trình quản lý và tích hợp skill. Nó kết nối trực tiếp với các Git repository và môi trường lập trình AI local, giúp nâng cao hiệu suất công việc."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cleo",
+  "slug": "cleo",
+  "name": "cleo",
+  "headline": "Cleo task management for Claude Code",
+  "short_description": "CLEO is a production-grade task management system for Claude Code agents. It provides anti-hallucination protection and is designed for AI coding agents and solo developers. It connects to shell-based workflows and integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "kryptobaseddev",
+  "install_command": "git clone https://github.com/kryptobaseddev/cleo.git",
+  "source_repo_url": "https://github.com/kryptobaseddev/cleo",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "CLEO is an agent-first task orchestration system designed for Claude Code agents and solo developers working on complex projects. It solves the coordination crisis of multi-agent workflows by providing hierarchical task management, persistent memory across sessions, and multi-provider support for Claude Code, Cursor, Gemini, and other AI coding platforms. The system includes six core components: TASKS for project management, LOOM for a 9-stage development lifecycle, BRAIN for semantic memory that doesn't decay, NEXUS for code intelligence, CANT for agent definition, and CONDUIT for agent-to-agent communication. CLEO reconnects agents to project context after interruptions and enables structured coordination where power is paired with memory and continuity.\nManaging multi-stage development tasks across interrupted work sessions\nCoordinating multiple AI agents on complex codebases with dependency tracking\nMaintaining semantic memory of patterns and learnings across coding sessions\nTracking task hierarchies, priorities, and completion lifecycle in agent workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kryptobaseddev/cleo`",
+    "usage": "```\nUse CLEO to automate the following task: [DESCRIBE_TASK]. Ensure the agent follows the CLEO workflow: (1) Verify inputs and environment, (2) Execute with anti-hallucination checks, (3) Validate outputs, and (4) Log results. Include error handling for [SPECIFIC_ERROR_CASES].\n```\nCopy\n\n```\n### CLEO Task Execution Report\n**Task**: Automate the deployment of a Python Flask API to a staging server.\n\n**Step 1: Input Validation**\n- Verified Python 3.11+ is installed (✅).\n- Confirmed Docker is running (✅).\n- Checked Git repository for uncommitted changes (✅).\n- Validated `requirements.txt` exists (✅).\n\n**Step 2: Execution with Anti-Hallucination Checks**\n- Generated Dockerfile from template (verified against official Python 3.11-slim image).\n- Built image `flask-api:staging-20241015` (size: 120MB, layers: 5).\n- Ran container `flask-api-staging` (port 5000 mapped to host port 8080).\n- Executed health check: `curl http://localhost:8080/health` → `{\"status\": \"ok\"}` (✅).\n\n**Step 3: Output Validation**\n- API endpoint `/api/users` returns expected JSON structure (✅).\n- Load test simulated 100 requests: 99 successful, 1 timeout (handled by retry logic).\n- Logs show no errors in `/var/log/flask-api-staging.log`.\n\n**Step 4: Result Logging**\n- Task completed in 4m 22s.\n- Artifacts saved to `./cleo-output/flask-api-staging-20241015/`.\n- Error handling triggered for timeout (retry succeeded).\n\n**Recommendations**:\n- Add database connection validation in future runs.\n- Monitor container CPU/memory usage during peak load.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cleo#main-content",
+      "cleo#overview",
+      "cleo#setup",
+      "cleo#examples",
+      "cleo#tools",
+      "cleo#mcp",
+      "cleo#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CLEO là hệ thống điều phối tác vụ ưu tiên agent (agent-first) được thiết kế cho các agent Claude Code và solo developer đang làm việc trên các dự án phức tạp. Hệ thống này giải quyết cuộc khủng hoảng điều phối trong các workflow đa agent bằng cách cung cấp tính năng quản lý tác vụ phân cấp, bộ nhớ persistent memory xuyên suốt các session, và hỗ trợ đa nền tảng cho Claude Code, Cursor, Gemini cùng các nền tảng AI coding khác. Hệ thống bao gồm sáu thành phần cốt lõi: TASKS để quản lý dự án, LOOM cho vòng đời phát triển 9 giai đoạn, BRAIN cho bộ nhớ ngữ nghĩa (semantic memory) không bị suy giảm theo thời gian, NEXUS cho code intelligence, CANT để định nghĩa agent, và CONDUIT cho việc giao tiếp giữa các agent. CLEO giúp kết nối lại các agent với ngữ cảnh dự án sau khi bị gián đoạn và cho phép điều phối có cấu trúc, nơi hiệu năng mạnh mẽ đi kèm với bộ nhớ và tính liên tục.\nQuản lý các tác vụ phát triển nhiều giai đoạn trong các phiên làm việc bị gián đoạn\nĐiều phối nhiều agent AI trên các codebase phức tạp với khả năng theo dõi phụ thuộc (dependency tracking)\nDuy trì bộ nhớ ngữ nghĩa về các pattern và bài học kinh nghiệm qua các phiên coding\nTheo dõi phân cấp tác vụ, độ ưu tiên và vòng đời hoàn thành trong workflow của agent",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kryptobaseddev/cleo`",
+    "usage_vi": "```\nSử dụng CLEO để tự động hóa tác vụ sau: [DESCRIBE_TASK]. Đảm bảo agent tuân thủ workflow của CLEO: (1) Xác thực đầu vào và môi trường, (2) Thực thi với các bước kiểm tra anti-hallucination, (3) Xác thực đầu ra, và (4) Ghi nhận (log) kết quả. Cấu hình xử lý lỗi cho [SPECIFIC_ERROR_CASES].\n```\nCopy\n\n```\n### Báo cáo thực thi tác vụ CLEO\n**Tác vụ**: Tự động hóa việc triển khai Python Flask API lên staging server.\n\n**Bước 1: Xác thực đầu vào (Input Validation)**\n- Xác nhận đã cài đặt Python 3.11+ (✅).\n- Xác nhận Docker đang chạy (✅).\n- Kiểm tra Git repository xem có thay đổi chưa commit hay không (✅).\n- Xác thực file `requirements.txt` tồn tại (✅).\n\n**Bước 2: Thực thi với kiểm tra Anti-Hallucination**\n- Khởi tạo Dockerfile từ template (đã xác thực với image chính thức Python 3.11-slim).\n- Build image `flask-api:staging-20241015` (kích thước: 120MB, layers: 5).\n- Chạy container `flask-api-staging` (mở map port 5000 vào port 8080 của host).\n- Thực hiện health check: `curl http://localhost:8080/health` → `{\"status\": \"ok\"}` (✅).\n\n**Bước 3: Xác thực đầu ra (Output Validation)**\n- Endpoint API `/api/users` trả về cấu trúc JSON mong đợi (✅).\n- Load test giả lập 100 request: 99 thành công, 1 timeout (đã xử lý bằng retry logic).\n- Log không hiển thị lỗi nào trong `/var/log/flask-api-staging.log`.\n\n**Bước 4: Log kết quả (Result Logging)**\n- Tác vụ hoàn thành trong 4 phút 22 giây.\n- Các artifact được lưu tại `./cleo-output/flask-api-staging-20241015/`.\n- Kích hoạt xử lý lỗi cho trường hợp timeout (retry thành công).\n\n**Khuyến nghị**:\n- Bổ sung xác thực kết nối cơ sở dữ liệu trong các lần chạy tới.\n- Giám sát mức sử dụng CPU/memory của container trong thời gian tải cao điểm.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:41.591582Z",
+    "http_status": 200,
+    "content_hash": "048a83ef7b4bd7260dfdfe42f169c8c780e279ccdfc3abb532a3b74f433c5f6e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cleo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cleo.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quản lý tác vụ Cleo cho Claude Code",
+  "short_description_vi": "CLEO là hệ thống quản lý tác vụ chuẩn production dành cho các agent Claude Code. Hệ thống cung cấp cơ chế bảo vệ anti-hallucination và được thiết kế chuyên biệt cho các agent coding AI cũng như các solo developer. CLEO kết nối trực tiếp với các workflow dạng shell và tích hợp mượt mà với các agent Claude."
+}

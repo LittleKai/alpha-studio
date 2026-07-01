@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/obsidian-gemini-helper",
+  "slug": "obsidian-gemini-helper",
+  "name": "Obsidian Gemini Helper",
+  "headline": "Obsidian Gemini Helper - AI Assistant for",
+  "short_description": "AI assistant for Obsidian that enables chat, workflow automation, and semantic search (RAG). Uses Gemini API or CLI tools to help operations teams streamline processes and retrieve information efficiently. Integrates with Obsidian for note-taking and knowledge management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "takeshy",
+  "install_command": "git clone https://github.com/takeshy/obsidian-gemini-helper.git",
+  "source_repo_url": "https://github.com/takeshy/obsidian-gemini-helper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "visualization-workflow",
+    "workflow-automation",
+    "codex",
+    "obsidian",
+    "rag",
+    "gemini",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Gemini Helper for Obsidian is a free, open-source plugin that integrates Google Gemini into your note-taking workflow. It provides streaming AI chat with vault operations, allowing you to read, create, and edit notes directly through conversation. The plugin includes a visual workflow builder with 24 node types for automating multi-step tasks, RAG (Retrieval-Augmented Generation) for intelligent semantic search across your vault, and support for MCP tools. You can attach files, use slash commands for reusable prompts, set usage tracking to monitor API costs, and limit AI folder access for privacy. Works with free or paid Gemini API keys, with advanced features like image generation available on paid plans.\nAutomate content creation and note organization through chat commands\nBuild multi-step workflows visually to handle repetitive knowledge management tasks\nSearch and retrieve information semantically across your entire vault using RAG\nGenerate infographics and formatted content from existing notes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/takeshy/obsidian-gemini-helper`",
+    "usage": "```\nUse the obsidian-gemini-helper to [TASK] in my Obsidian vault. The vault is located at [VAULT_PATH]. Focus on [SPECIFIC_AREA] and prioritize [PRIORITY_CRITERIA]. Provide actionable insights and ensure all responses are formatted as Markdown for direct use in Obsidian. Include relevant file links and backlinks where applicable.\n```\nCopy\n\n```\n### Task Completion Report: Automated Workflow for Client Onboarding\n\n**Summary:** Successfully automated the client onboarding workflow in your Obsidian vault (`~/vaults/business-ops`). The system identified 12 incomplete onboarding tasks across 5 client folders and generated a priority matrix based on due dates and client tier.\n\n**Key Findings:**\n- **High Priority (Due within 7 days):** 3 tasks (Client: GreenTech Solutions, Acme Corp, DataSystems Inc)\n- **Medium Priority (Due in 8-14 days):** 5 tasks (Client: EcoVentures, UrbanBuild, etc.)\n- **Low Priority (Due in 15+ days):** 4 tasks\n\n**Actions Taken:**\n1. **Automated Task Creation:** Generated new tasks for missing steps in the onboarding template for GreenTech Solutions and Acme Corp using the `[[Onboarding Checklist]]` template.\n2. **Priority Matrix:** Created a table in `[[Onboarding Dashboard]]` with columns: Client Name, Due Date, Task Status, Assigned Owner, and Next Action. Example row:\n   | Client          | Due Date   | Status       | Owner       | Next Action                     |\n   |-----------------|------------|--------------|-------------|---------------------------------|\n   | GreenTech       | 2024-05-20 | Incomplete   | @alice      | Schedule kickoff meeting        |\n3. **Semantic Search:** Retrieved all notes tagged `#onboarding` or `#client-engagement` and linked them to the respective client folders. For example, the note `[[Client GreenTech - Initial Contact]]` was backlinked to the `[[GreenTech Solutions]]` folder.\n4. **CLI Automation:** Executed the command `obsidian-gemini-helper --automate onboarding --client GreenTech` to generate a draft email for the kickoff meeting based on the client's last interaction note.\n\n**Files Updated:**\n- `[[Onboarding Dashboard]]` (added priority matrix)\n- `[[Client GreenTech - Onboarding Status]]` (updated with new tasks)\n- `[[Email Templates/Onboarding Kickoff]]` (draft email generated)\n\n**Next Steps:**\n- Review the priority matrix and assign owners to high-priority tasks.\n- Use the generated draft email as a starting point for the kickoff meeting with GreenTech Solutions.\n- Schedule a follow-up in 3 days to check progress on medium-priority tasks.\n\n**Note:** All changes are saved in Markdown format and ready for direct use in Obsidian. Backlinks have been added to maintain knowledge graph integrity.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "obsidian-gemini-helper#main-content",
+      "obsidian-gemini-helper#overview",
+      "obsidian-gemini-helper#setup",
+      "obsidian-gemini-helper#examples",
+      "obsidian-gemini-helper#tools",
+      "obsidian-gemini-helper#mcp",
+      "obsidian-gemini-helper#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini Helper cho Obsidian là một plugin mã nguồn mở miễn phí, giúp tích hợp Google Gemini vào quy trình ghi chú của bạn. Plugin cung cấp tính năng streaming AI chat đi kèm các thao tác trên vault, cho phép bạn đọc, tạo và chỉnh sửa ghi chú trực tiếp thông qua hội thoại. Plugin này tích hợp trình dựng workflow trực quan với 24 loại node để tự động hóa các tác vụ nhiều bước, tính năng RAG (Retrieval-Augmented Generation) hỗ trợ tìm kiếm ngữ nghĩa thông minh trên toàn bộ vault của bạn, cùng khả năng hỗ trợ các công cụ MCP. Bạn có thể đính kèm tệp, sử dụng các slash command cho các prompt có thể tái sử dụng, thiết lập theo dõi hạn mức để kiểm soát chi phí API, và giới hạn quyền truy cập thư mục của AI để bảo mật quyền riêng tư. Hoạt động với cả API key Gemini miễn phí và trả phí, với các tính năng nâng cao như tạo ảnh khả dụng trên các gói trả phí.\nTự động hóa việc sáng tạo nội dung và sắp xếp ghi chú thông qua các lệnh chat\nXây dựng trực quan các workflow nhiều bước để xử lý các tác vụ quản lý tri thức lặp đi lặp lại\nTìm kiếm và truy xuất thông tin theo ngữ nghĩa trên toàn bộ vault bằng RAG\nTạo infographic và nội dung được định dạng từ các ghi chú hiện có",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/takeshy/obsidian-gemini-helper`",
+    "usage_vi": "```\nSử dụng obsidian-gemini-helper để [TASK] trong Obsidian vault của tôi. Vault nằm tại đường dẫn [VAULT_PATH]. Tập trung vào [SPECIFIC_AREA] và ưu tiên [PRIORITY_CRITERIA]. Cung cấp các đề xuất thực tiễn có thể triển khai ngay và đảm bảo tất cả phản hồi được định dạng dưới dạng Markdown để sử dụng trực tiếp trong Obsidian. Đính kèm các liên kết tệp liên quan và backlink nếu có.\n```\nSao chép\n\n```\n### Báo cáo hoàn thành tác vụ: Tự động hóa Workflow cho Client Onboarding\n\n**Tóm tắt:** Đã tự động hóa thành công workflow onboarding khách hàng trong Obsidian vault (`~/vaults/business-ops`) của bạn. Hệ thống đã xác định 12 tác vụ onboarding chưa hoàn thành trên 5 thư mục khách hàng và tạo một ma trận ưu tiên dựa trên hạn chót (due date) và phân khúc khách hàng.\n\n**Kết quả chính:**\n- **Ưu tiên cao (Hạn chót trong vòng 7 ngày):** 3 tác vụ (Khách hàng: GreenTech Solutions, Acme Corp, DataSystems Inc)\n- **Ưu tiên trung bình (Hạn chót trong 8-14 ngày):** 5 tác vụ (Khách hàng: EcoVentures, UrbanBuild, v.v.)\n- **Ưu tiên thấp (Hạn chót sau 15+ ngày):** 4 tác vụ\n\n**Các hành động đã thực hiện:**\n1. **Tự động tạo tác vụ:** Tạo các tác vụ mới cho các bước còn thiếu trong template onboarding của GreenTech Solutions và Acme Corp bằng cách sử dụng template `[[Onboarding Checklist]]`.\n2. **Ma trận ưu tiên:** Tạo một bảng trong `[[Onboarding Dashboard]]` với các cột: Tên khách hàng (Client Name), Hạn chót (Due Date), Trạng thái tác vụ (Task Status), Người phụ trách (Assigned Owner), và Hành động tiếp theo (Next Action). Dòng ví dụ:\n   | Khách hàng      | Hạn chót   | Trạng thái   | Người phụ trách | Hành động tiếp theo             |\n   |-----------------|------------|--------------|-----------------|---------------------------------|\n   | GreenTech       | 2024-05-20 | Chưa hoàn thành | @alice      | Lên lịch họp kickoff            |\n3. **Tìm kiếm ngữ nghĩa:** Truy xuất tất cả ghi chú được gắn thẻ `#onboarding` hoặc `#client-engagement` và liên kết chúng đến các thư mục khách hàng tương ứng. Ví dụ: ghi chú `[[Client GreenTech - Initial Contact]]` đã được backlink đến thư mục `[[GreenTech Solutions]]`.\n4. **Tự động hóa CLI:** Thực thi lệnh `obsidian-gemini-helper --automate onboarding --client GreenTech` để tạo email bản nháp cho cuộc họp kickoff dựa trên ghi chú tương tác gần nhất của khách hàng.\n\n**Các tệp đã cập nhật:**\n- `[[Onboarding Dashboard]]` (đã thêm ma trận ưu tiên)\n- `[[Client GreenTech - Onboarding Status]]` (đã cập nhật các tác vụ mới)\n- `[[Email Templates/Onboarding Kickoff]]` (đã tạo email bản nháp)\n\n**Các bước tiếp theo:**\n- Xem lại ma trận ưu tiên và phân công người phụ trách cho các tác vụ ưu tiên cao.\n- Sử dụng email bản nháp đã tạo làm điểm bắt đầu cho cuộc họp kickoff với GreenTech Solutions.\n- Lên lịch theo dõi sau 3 ngày để kiểm tra tiến độ của các tác vụ ưu tiên trung bình.\n\n**Lưu ý:** Tất cả các thay đổi được lưu dưới định dạng Markdown và sẵn sàng để sử dụng trực tiếp trong Obsidian. Các backlink đã được thêm vào để duy trì tính toàn vẹn của knowledge graph.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:45:15.744524Z",
+    "http_status": 200,
+    "content_hash": "fb939f6bd7161488cf27af7c869f0b0e2dc7a3334756e98878cb332bc4c8f08e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\obsidian-gemini-helper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\obsidian-gemini-helper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Obsidian Gemini Helper - Trợ lý AI dành cho",
+  "short_description_vi": "Trợ lý AI dành cho Obsidian hỗ trợ chat, tự động hóa workflow và tìm kiếm ngữ nghĩa (RAG). Sử dụng Gemini API hoặc các công cụ CLI giúp các đội ngũ vận hành tối ưu hóa quy trình và truy xuất thông tin hiệu quả. Tích hợp trực tiếp với Obsidian để ghi chú và quản lý tri thức."
+}

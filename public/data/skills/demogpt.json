@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/demogpt",
+  "slug": "demogpt",
+  "name": "langchain-salesforce",
+  "headline": "DemoGPT: Create LLM Agents Effortlessly",
+  "short_description": "DemoGPT is a comprehensive platform for creating LLM agents, offering a suite of tools, prompts, frameworks, and models. Ideal for developers and AI enthusiasts looking to streamline the agent creation process with cutting-edge technology.",
+  "tier": "Gold",
+  "category": "GrowthRevOpsMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "melih-unsal",
+  "install_command": "claude install melih-unsal/DemoGPT",
+  "source_repo_url": "https://github.com/melih-unsal/DemoGPT",
+  "works_with": [
+    "ChatGPTClaude"
+  ],
+  "tags": [
+    "AI agents",
+    "LangChain",
+    "autonomous agents",
+    "OpenAI",
+    "LLM"
+  ],
+  "sections": {
+    "overview": "DemoGPT is a platform that enables developers to create large language model agents quickly and efficiently. It provides a suite of pre-built tools, prompts, and frameworks that reduce the complexity of agent development. The platform is designed to help both developers and AI enthusiasts streamline their agent creation process by offering reusable components and structured approaches. DemoGPT includes support for notebooks and integrations, making it suitable for experimentation and production use. The project is actively maintained and community-driven, with contributions welcomed from developers of all experience levels.\nCreate customized AI chatbots tailored to specific business needs.\nAutomate customer support interactions to improve response times and efficiency.\nDevelop intelligent virtual assistants that can assist users in various tasks.\nBuild interactive demos showcasing AI capabilities for presentations and marketing.",
+    "setup": "Terminal\nCopy\n`claude install melih-unsal/DemoGPT`\n`git clone https://github.com/melih-unsal/DemoGPT`",
+    "usage": "```\nUse DemoGPT to create an LLM agent that [TASK]. Configure the agent with [MODEL] (e.g., GPT-4o) and integrate [TOOLS] (e.g., web search, file retrieval, or MCP connectors). Set up [AGENT_BEHAVIOR] (e.g., tone, constraints, or safety filters) and deploy it as a [DEPLOYMENT_OPTION] (e.g., ChatKit widget, custom API endpoint, or voice agent). Test the agent with [TEST_SCENARIO] and optimize using [EVALUATION_METHOD] (e.g., agent evals or trace grading).\n```\nCopy\n\n```\n### Agent Creation & Deployment Report\n\n**Agent Name:** `CustomerSupportOptimizer`\n**Model:** GPT-4o (via OpenAI API)\n**Tools Integrated:** Web search, file retrieval (PDFs), and MCP connector for CRM data (Salesforce).\n**Agent Behavior:** Professional, concise, and empathetic tone with strict adherence to company policy guidelines.\n**Deployment Option:** Embedded ChatKit widget in the company’s customer portal.\n\n#### Agent Configuration\n1. **Core Setup:**\n   - **Model:** GPT-4o (temperature: 0.3 for consistency, top_p: 0.9 for creativity).\n   - **Tools:**\n     - **Web Search:** Enabled with real-time results from Google and Bing.\n     - **File Retrieval:** Indexed 150+ PDFs (FAQs, product manuals, and support policies) for context.\n     - **MCP Connector:** Fetches live customer data from Salesforce (e.g., order history, support tickets).\n   - **Safety Filters:** Hate speech, PII redaction, and policy violation warnings enabled.\n\n2. **Agent Behavior:**\n   - **Tone:** Professional, empathetic, and solution-focused.\n   - **Constraints:**\n     - No speculative answers; must cite sources for factual claims.\n     - Escalation path for complex issues (e.g., refunds, technical bugs).\n   - **Memory:** Conversation state retained for 30 minutes or until session ends.\n\n3. **Deployment:**\n   - **ChatKit Widget:** Embedded in the customer portal with custom theming (company colors, logo).\n   - **Actions:** Integrated with Zendesk for ticket creation and Slack for agent alerts.\n   - **Testing:** Simulated 50 customer queries (e.g., order status, return policy, troubleshooting).\n\n#### Performance Metrics (After 24 Hours)\n- **Response Accuracy:** 94% (validated against human agent responses).\n- **Average Resolution Time:** 42 seconds (vs. 3.5 minutes for human agents).\n- **User Satisfaction:** 4.7/5 stars (based on post-chat surveys).\n- **Escalation Rate:** 8% (down from 22% pre-deployment).\n\n#### Optimization Recommendations\n1. **Fine-Tuning:** Use OpenAI’s fine-tuning API to reduce hallucinations in technical responses.\n2. **Tool Expansion:** Add a code interpreter tool for debugging customer-reported issues.\n3. **Trace Grading:** Implement trace grading to identify weak points in agent logic (e.g., misclassified escalations).\n4. **Cost Optimization:** Enable prompt caching for repeated queries (e.g., order status checks).\n\n#### Next Steps\n- Deploy the agent in a beta environment for 2 weeks.\n- Monitor trace logs for edge cases (e.g., ambiguous queries, policy gaps).\n- Schedule a review with the support team to refine agent behavior based on real-world feedback.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, Claude"
+    ],
+    "related_skills": [
+      "demogpt#main-content",
+      "demogpt#overview",
+      "demogpt#setup",
+      "demogpt#examples",
+      "demogpt#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "DemoGPT is a platform that enables developers to create large language model agents quickly and efficiently. It provides a suite of pre-built tools, prompts, and frameworks that reduce the complexity of agent development. The platform is designed to help both developers and AI enthusiasts streamline their agent creation process by offering reusable components and structured approaches. DemoGPT includes support for notebooks and integrations, making it suitable for experimentation and production use. The project is actively maintained and community-driven, with contributions welcomed from developers of all experience levels.\nCreate customized AI chatbots tailored to specific business needs.\nAutomate customer support interactions to improve response times and efficiency.\nDevelop intelligent virtual assistants that can assist users in various tasks.\nBuild interactive demos showcasing AI capabilities for presentations and marketing.",
+    "setup_vi": "Terminal\nCopy\n`claude install melih-unsal/DemoGPT`\n`git clone https://github.com/melih-unsal/DemoGPT`",
+    "usage_vi": "```\nUse DemoGPT to create an LLM agent that [TASK]. Configure the agent with [MODEL] (e.g., GPT-4o) and integrate [TOOLS] (e.g., web search, file retrieval, or MCP connectors). Set up [AGENT_BEHAVIOR] (e.g., tone, constraints, or safety filters) and deploy it as a [DEPLOYMENT_OPTION] (e.g., ChatKit widget, custom API endpoint, or voice agent). Test the agent with [TEST_SCENARIO] and optimize using [EVALUATION_METHOD] (e.g., agent evals or trace grading).\n```\nCopy\n\n```\n### Agent Creation & Deployment Report\n\n**Agent Name:** `CustomerSupportOptimizer`\n**Model:** GPT-4o (via OpenAI API)\n**Tools Integrated:** Web search, file retrieval (PDFs), and MCP connector for CRM data (Salesforce).\n**Agent Behavior:** Professional, concise, and empathetic tone with strict adherence to company policy guidelines.\n**Deployment Option:** Embedded ChatKit widget in the company’s customer portal.\n\n#### Agent Configuration\n1. **Core Setup:**\n   - **Model:** GPT-4o (temperature: 0.3 for consistency, top_p: 0.9 for creativity).\n   - **Tools:**\n     - **Web Search:** Enabled with real-time results from Google and Bing.\n     - **File Retrieval:** Indexed 150+ PDFs (FAQs, product manuals, and support policies) for context.\n     - **MCP Connector:** Fetches live customer data from Salesforce (e.g., order history, support tickets).\n   - **Safety Filters:** Hate speech, PII redaction, and policy violation warnings enabled.\n\n2. **Agent Behavior:**\n   - **Tone:** Professional, empathetic, and solution-focused.\n   - **Constraints:**\n     - No speculative answers; must cite sources for factual claims.\n     - Escalation path for complex issues (e.g., refunds, technical bugs).\n   - **Memory:** Conversation state retained for 30 minutes or until session ends.\n\n3. **Deployment:**\n   - **ChatKit Widget:** Embedded in the customer portal with custom theming (company colors, logo).\n   - **Actions:** Integrated with Zendesk for ticket creation and Slack for agent alerts.\n   - **Testing:** Simulated 50 customer queries (e.g., order status, return policy, troubleshooting).\n\n#### Performance Metrics (After 24 Hours)\n- **Response Accuracy:** 94% (validated against human agent responses).\n- **Average Resolution Time:** 42 seconds (vs. 3.5 minutes for human agents).\n- **User Satisfaction:** 4.7/5 stars (based on post-chat surveys).\n- **Escalation Rate:** 8% (down from 22% pre-deployment).\n\n#### Optimization Recommendations\n1. **Fine-Tuning:** Use OpenAI’s fine-tuning API to reduce hallucinations in technical responses.\n2. **Tool Expansion:** Add a code interpreter tool for debugging customer-reported issues.\n3. **Trace Grading:** Implement trace grading to identify weak points in agent logic (e.g., misclassified escalations).\n4. **Cost Optimization:** Enable prompt caching for repeated queries (e.g., order status checks).\n\n#### Next Steps\n- Deploy the agent in a beta environment for 2 weeks.\n- Monitor trace logs for edge cases (e.g., ambiguous queries, policy gaps).\n- Schedule a review with the support team to refine agent behavior based on real-world feedback.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:47:39.861692Z",
+    "http_status": 200,
+    "content_hash": "8e5f54c5450748e0124219f455c02350f358c684bb1a5af931fbe2d415bc315a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\demogpt.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\demogpt.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "DemoGPT: Create LLM Agents Effortlessly",
+  "short_description_vi": "DemoGPT is a comprehensive platform for creating LLM agents, offering a suite of tools, prompts, frameworks, and models. Ideal for developers and AI enthusiasts looking to streamline the agent creation process with cutting-edge technology."
+}

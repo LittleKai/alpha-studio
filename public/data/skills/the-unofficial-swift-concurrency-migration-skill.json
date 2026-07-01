@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/the-unofficial-swift-concurrency-migration-skill",
+  "slug": "the-unofficial-swift-concurrency-migration-skill",
+  "name": "browser-use",
+  "headline": "Swift Concurrency Migration - Automate Code",
+  "short_description": "Automates migration of Swift codebases to Swift Concurrency. Benefits iOS, macOS, tvOS, watchOS, and visionOS developers by identifying and refactoring legacy code. Integrates with Xcode and CI/CD pipelines to streamline the migration process.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "kylehughes",
+  "install_command": "git clone https://github.com/kylehughes/the-unofficial-swift-concurrency-migration-skill.git",
+  "source_repo_url": "https://github.com/kylehughes/the-unofficial-swift-concurrency-migration-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-desktop",
+    "tvos",
+    "agent-skills",
+    "swift",
+    "visionos",
+    "macos",
+    "watchos",
+    "claude-plugins",
+    "claude",
+    "apple",
+    "ios",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "The Unofficial Swift Concurrency Migration Skill provides the complete content of Apple's official Swift Concurrency Migration Guide in a structured format optimized for Claude and other LLMs. It includes all documentation articles and Swift code examples needed to modernize Swift codebases using async/await and actor-based concurrency. The skill integrates with Claude Code and can be configured at the project level via `.claude/settings.json`, making migration guidance available to entire development teams. Developers working on iOS, macOS, tvOS, watchOS, and visionOS projects can use this skill to understand patterns, identify legacy code patterns, and learn refactoring strategies. The skill is automatically updated nightly to stay current with the official documentation.\nLearning async/await patterns and concurrency best practices\nIdentifying legacy callback and GCD patterns in existing code\nUnderstanding actor model and data isolation requirements\nTeam-wide migration planning with shared skill configuration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kylehughes/the-unofficial-swift-concurrency-migration-skill`",
+    "usage": "```\nMigrate the following Swift codebase to Swift Concurrency: [CODE_SNIPPET_OR_FILE_PATH]. Identify all blocking calls, GCD patterns, and completion handlers. Replace them with async/await, actors, and structured concurrency. Ensure thread safety and maintain backward compatibility where needed. Provide a diff of changes and highlight potential pitfalls. Focus on [SPECIFIC_AREAS] if mentioned.\n```\nCopy\n\n```\nHere’s a migration of a legacy Swift codebase for a `NetworkManager` class that previously used GCD for asynchronous operations. The original code relied on `DispatchQueue` and completion handlers, which have been refactored to use Swift Concurrency’s `async/await` and `Task` APIs.\n\n**Original Code (GCD-based):**\n```swift\nclass NetworkManager {\n    func fetchUserData(userId: String, completion: @escaping (Result<User, Error>) -> Void) {\n        DispatchQueue.global(qos: .userInitiated).async {\n            let url = URL(string: \"https://api.example.com/users/\\\\(userId)\")!\n            URLSession.shared.dataTask(with: url) { data, _, error in\n                if let error = error {\n                    completion(.failure(error))\n                    return\n                }\n                guard let data = data else {\n                    completion(.failure(NetworkError.invalidData))\n                    return\n                }\n                do {\n                    let user = try JSONDecoder().decode(User.self, from: data)\n                    DispatchQueue.main.async {\n                        completion(.success(user))\n                    }\n                } catch {\n                    completion(.failure(error))\n                }\n            }.resume()\n        }\n    }\n}\n```\n\n**Migrated Code (Swift Concurrency):**\n```swift\nclass NetworkManager {\n    func fetchUserData(userId: String) async throws -> User {\n        let url = URL(string: \"https://api.example.com/users/\\\\(userId)\")!\n        let (data, _) = try await URLSession.shared.data(from: url)\n        return try JSONDecoder().decode(User.self, from: data)\n    }\n}\n```\n\n**Key Changes:**\n1. Replaced `DispatchQueue.global` with Swift Concurrency’s implicit background execution via `async`.\n2. Converted the completion handler pattern to `async/await`, eliminating the need for manual `DispatchQueue.main` calls.\n3. Simplified error handling by leveraging Swift’s native `throws` mechanism.\n4. Removed the need for explicit `resume()` calls, as `URLSession.data(from:)` is already an async function.\n\n**Potential Pitfalls:**\n- If the codebase relies on `DispatchQueue.main` for UI updates, ensure the caller uses `MainActor` or dispatches UI updates explicitly.\n- Thread safety must be reviewed for shared mutable state, especially in classes marked as `final` or `nonisolated`.\n- Legacy code using `NSOperationQueue` or `Operation` may require additional refactoring to align with Swift Concurrency’s structured tasks.\n\n**Next Steps:**\n1. Replace all instances of `DispatchQueue` with `Task` or `async/await` where appropriate.\n2. Audit `Actor`-isolated properties to ensure no data races.\n3. Update unit tests to use `async` test methods (e.g., `XCTestCase.async` in Xcode 15+).\n4. Run the migrated code in a staging environment to verify performance and correctness.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "the-unofficial-swift-concurrency-migration-skill#main-content",
+      "the-unofficial-swift-concurrency-migration-skill#overview",
+      "the-unofficial-swift-concurrency-migration-skill#setup",
+      "the-unofficial-swift-concurrency-migration-skill#examples",
+      "the-unofficial-swift-concurrency-migration-skill#tools",
+      "the-unofficial-swift-concurrency-migration-skill#mcp",
+      "the-unofficial-swift-concurrency-migration-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Unofficial Swift Concurrency Migration Skill provides the complete content of Apple's official Swift Concurrency Migration Guide in a structured format optimized for Claude and other LLMs. It includes all documentation articles and Swift code examples needed to modernize Swift codebases using async/await and actor-based concurrency. The skill integrates with Claude Code and can be configured at the project level via `.claude/settings.json`, making migration guidance available to entire development teams. Developers working on iOS, macOS, tvOS, watchOS, and visionOS projects can use this skill to understand patterns, identify legacy code patterns, and learn refactoring strategies. The skill is automatically updated nightly to stay current with the official documentation.\nLearning async/await patterns and concurrency best practices\nIdentifying legacy callback and GCD patterns in existing code\nUnderstanding actor model and data isolation requirements\nTeam-wide migration planning with shared skill configuration",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kylehughes/the-unofficial-swift-concurrency-migration-skill`",
+    "usage_vi": "```\nMigrate the following Swift codebase to Swift Concurrency: [CODE_SNIPPET_OR_FILE_PATH]. Identify all blocking calls, GCD patterns, and completion handlers. Replace them with async/await, actors, and structured concurrency. Ensure thread safety and maintain backward compatibility where needed. Provide a diff of changes and highlight potential pitfalls. Focus on [SPECIFIC_AREAS] if mentioned.\n```\nCopy\n\n```\nHere’s a migration of a legacy Swift codebase for a `NetworkManager` class that previously used GCD for asynchronous operations. The original code relied on `DispatchQueue` and completion handlers, which have been refactored to use Swift Concurrency’s `async/await` and `Task` APIs.\n\n**Original Code (GCD-based):**\n```swift\nclass NetworkManager {\n    func fetchUserData(userId: String, completion: @escaping (Result<User, Error>) -> Void) {\n        DispatchQueue.global(qos: .userInitiated).async {\n            let url = URL(string: \"https://api.example.com/users/\\\\(userId)\")!\n            URLSession.shared.dataTask(with: url) { data, _, error in\n                if let error = error {\n                    completion(.failure(error))\n                    return\n                }\n                guard let data = data else {\n                    completion(.failure(NetworkError.invalidData))\n                    return\n                }\n                do {\n                    let user = try JSONDecoder().decode(User.self, from: data)\n                    DispatchQueue.main.async {\n                        completion(.success(user))\n                    }\n                } catch {\n                    completion(.failure(error))\n                }\n            }.resume()\n        }\n    }\n}\n```\n\n**Migrated Code (Swift Concurrency):**\n```swift\nclass NetworkManager {\n    func fetchUserData(userId: String) async throws -> User {\n        let url = URL(string: \"https://api.example.com/users/\\\\(userId)\")!\n        let (data, _) = try await URLSession.shared.data(from: url)\n        return try JSONDecoder().decode(User.self, from: data)\n    }\n}\n```\n\n**Key Changes:**\n1. Replaced `DispatchQueue.global` with Swift Concurrency’s implicit background execution via `async`.\n2. Converted the completion handler pattern to `async/await`, eliminating the need for manual `DispatchQueue.main` calls.\n3. Simplified error handling by leveraging Swift’s native `throws` mechanism.\n4. Removed the need for explicit `resume()` calls, as `URLSession.data(from:)` is already an async function.\n\n**Potential Pitfalls:**\n- If the codebase relies on `DispatchQueue.main` for UI updates, ensure the caller uses `MainActor` or dispatches UI updates explicitly.\n- Thread safety must be reviewed for shared mutable state, especially in classes marked as `final` or `nonisolated`.\n- Legacy code using `NSOperationQueue` or `Operation` may require additional refactoring to align with Swift Concurrency’s structured tasks.\n\n**Next Steps:**\n1. Replace all instances of `DispatchQueue` with `Task` or `async/await` where appropriate.\n2. Audit `Actor`-isolated properties to ensure no data races.\n3. Update unit tests to use `async` test methods (e.g., `XCTestCase.async` in Xcode 15+).\n4. Run the migrated code in a staging environment to verify performance and correctness.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:35:52.155262Z",
+    "http_status": 200,
+    "content_hash": "b3c0b5771835c68599b052ad999c2e0294ef2463902aba6eac1e035ce6160ece",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\the-unofficial-swift-concurrency-migration-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\the-unofficial-swift-concurrency-migration-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Swift Concurrency Migration - Automate Code",
+  "short_description_vi": "Automates migration of Swift codebases to Swift Concurrency. Benefits iOS, macOS, tvOS, watchOS, and visionOS developers by identifying and refactoring legacy code. Integrates with Xcode and CI/CD pipelines to streamline the migration process."
+}

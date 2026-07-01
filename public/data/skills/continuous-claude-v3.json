@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/continuous-claude-v3",
+  "slug": "continuous-claude-v3",
+  "name": "Continuous-Claude-v3",
+  "headline": "Continuous-Claude-v3 - Multi-Agent Development",
+  "short_description": "Continuous-Claude-v3 enables persistent, multi-agent development environments using Claude Code. It maintains state via ledgers and handoffs, preventing context pollution during MCP execution. Ideal for operations teams automating complex workflows.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "parcadei",
+  "install_command": "git clone https://github.com/parcadei/Continuous-Claude-v3.git",
+  "source_repo_url": "https://github.com/parcadei/Continuous-Claude-v3",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "agents",
+    "claude-code-skills",
+    "claude-code",
+    "claude-skills",
+    "claude-code-cli",
+    "claude-code-subagents",
+    "claude-code-mcp",
+    "claude-code-hooks"
+  ],
+  "sections": {
+    "overview": "Continuous-Claude-v3 is a framework for building persistent, learning multi-agent development environments on top of Claude Code. It solves context pollution during complex automation workflows by maintaining state through continuity ledgers and YAML-based handoffs between agents. The system includes 109 skills, 32 agents, and 30 hooks for specialized task handling, plus a memory system powered by PostgreSQL and pgvector for long-term knowledge retention. A built-in math system leveraging SymPy, Z3, Pint, and Lean4 supports advanced computational tasks. Operations and development teams use it to orchestrate multi-step workflows where agents can hand off work while preserving context and learning from previous executions.\nAutomate the debugging process by activating relevant skills and agents based on natural language prompts.\nMaintain context across multiple coding sessions to enhance productivity and reduce token usage.\nUtilize the memory system to recall past learnings and improve the quality of code suggestions.\nOrchestrate complex workflows involving multiple agents to streamline development tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/parcadei/Continuous-Claude-v3`",
+    "usage": "```\nInitialize a Continuous-Claude-v3 environment for [PROJECT_NAME] with [TEAM_MEMBERS]. Set up a persistent ledger to track state changes during [WORKFLOW_NAME]. Define handoff protocols for [TASK_1], [TASK_2], and [TASK_3]. Ensure context is preserved between agent transitions and log all decisions to the ledger. Start the environment with these parameters: [PARAMETERS].\n```\nCopy\n\n```\nContinuous-Claude-v3 environment initialized for **Project Aurora** with team members: Alex (DevOps), Priya (Backend), and Jordan (QA).\n\n**Ledger Setup:**\n- State file: `/var/log/aurora/ledger.json`\n- Retention policy: 30 days with weekly snapshots\n- Encryption: AES-256 with team-shared key\n\n**Handoff Protocols Configured:**\n1. **Task: Deploy API Gateway**\n   - Owner: Alex\n   - Prerequisites: Terraform plan approved by Priya\n   - Success criteria: Gateway returns 200 for `/health`\n   - Handoff trigger: Priya’s approval in Slack channel #aurora-deploy\n\n2. **Task: Run Integration Tests**\n   - Owner: Jordan\n   - Prerequisites: API Gateway deployed by Alex\n   - Success criteria: 99% test coverage, no critical failures\n   - Handoff trigger: Jordan’s `test-complete` tag in GitHub\n\n3. **Task: Rollback Decision**\n   - Owner: Priya (final authority)\n   - Triggers: If Jordan’s tests fail or Alex’s deployment stalls\n   - Action: Execute `rollback.sh` script with version tag from ledger\n\n**Current State:**\n```json\n{\n  \"project\": \"Aurora\",\n  \"phase\": \"deployment\",\n  \"agents\": {\n    \"alex\": { \"status\": \"ready\", \"last_action\": \"terraform init\" },\n    \"priya\": { \"status\": \"idle\", \"last_review\": \"2024-05-15T14:30:00Z\" },\n    \"jordan\": { \"status\": \"pending\", \"blocked_by\": \"alex\" }\n  },\n  \"ledger_entries\": [\n    {\"timestamp\": \"2024-05-15T14:00:00Z\", \"agent\": \"alex\", \"action\": \"terraform plan\", \"status\": \"approved\"},\n    {\"timestamp\": \"2024-05-15T14:15:00Z\", \"agent\": \"priya\", \"action\": \"review plan\", \"status\": \"approved\"}\n  ]\n}\n```\n\n**Next Steps:**\n- Alex: Run `terraform apply` and notify Priya in #aurora-deploy\n- Priya: Monitor deployment and approve Jordan’s test run\n- Jordan: Execute tests post-deployment and tag success/failure in GitHub\n\n**Context Preservation:**\nAll agents retain the ledger state (e.g., last approved plan version: `v1.2.3`). Context is scrubbed of irrelevant data (e.g., prior failed attempts in Q1) to prevent pollution.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "continuous-claude-v3#main-content",
+      "continuous-claude-v3#overview",
+      "continuous-claude-v3#setup",
+      "continuous-claude-v3#examples",
+      "continuous-claude-v3#tools",
+      "continuous-claude-v3#mcp",
+      "continuous-claude-v3#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Continuous-Claude-v3 is a framework for building persistent, learning multi-agent development environments on top of Claude Code. It solves context pollution during complex automation workflows by maintaining state through continuity ledgers and YAML-based handoffs between agents. The system includes 109 skills, 32 agents, and 30 hooks for specialized task handling, plus a memory system powered by PostgreSQL and pgvector for long-term knowledge retention. A built-in math system leveraging SymPy, Z3, Pint, and Lean4 supports advanced computational tasks. Operations and development teams use it to orchestrate multi-step workflows where agents can hand off work while preserving context and learning from previous executions.\nAutomate the debugging process by activating relevant skills and agents based on natural language prompts.\nMaintain context across multiple coding sessions to enhance productivity and reduce token usage.\nUtilize the memory system to recall past learnings and improve the quality of code suggestions.\nOrchestrate complex workflows involving multiple agents to streamline development tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/parcadei/Continuous-Claude-v3`",
+    "usage_vi": "```\nInitialize a Continuous-Claude-v3 environment for [PROJECT_NAME] with [TEAM_MEMBERS]. Set up a persistent ledger to track state changes during [WORKFLOW_NAME]. Define handoff protocols for [TASK_1], [TASK_2], and [TASK_3]. Ensure context is preserved between agent transitions and log all decisions to the ledger. Start the environment with these parameters: [PARAMETERS].\n```\nCopy\n\n```\nContinuous-Claude-v3 environment initialized for **Project Aurora** with team members: Alex (DevOps), Priya (Backend), and Jordan (QA).\n\n**Ledger Setup:**\n- State file: `/var/log/aurora/ledger.json`\n- Retention policy: 30 days with weekly snapshots\n- Encryption: AES-256 with team-shared key\n\n**Handoff Protocols Configured:**\n1. **Task: Deploy API Gateway**\n   - Owner: Alex\n   - Prerequisites: Terraform plan approved by Priya\n   - Success criteria: Gateway returns 200 for `/health`\n   - Handoff trigger: Priya’s approval in Slack channel #aurora-deploy\n\n2. **Task: Run Integration Tests**\n   - Owner: Jordan\n   - Prerequisites: API Gateway deployed by Alex\n   - Success criteria: 99% test coverage, no critical failures\n   - Handoff trigger: Jordan’s `test-complete` tag in GitHub\n\n3. **Task: Rollback Decision**\n   - Owner: Priya (final authority)\n   - Triggers: If Jordan’s tests fail or Alex’s deployment stalls\n   - Action: Execute `rollback.sh` script with version tag from ledger\n\n**Current State:**\n```json\n{\n  \"project\": \"Aurora\",\n  \"phase\": \"deployment\",\n  \"agents\": {\n    \"alex\": { \"status\": \"ready\", \"last_action\": \"terraform init\" },\n    \"priya\": { \"status\": \"idle\", \"last_review\": \"2024-05-15T14:30:00Z\" },\n    \"jordan\": { \"status\": \"pending\", \"blocked_by\": \"alex\" }\n  },\n  \"ledger_entries\": [\n    {\"timestamp\": \"2024-05-15T14:00:00Z\", \"agent\": \"alex\", \"action\": \"terraform plan\", \"status\": \"approved\"},\n    {\"timestamp\": \"2024-05-15T14:15:00Z\", \"agent\": \"priya\", \"action\": \"review plan\", \"status\": \"approved\"}\n  ]\n}\n```\n\n**Next Steps:**\n- Alex: Run `terraform apply` and notify Priya in #aurora-deploy\n- Priya: Monitor deployment and approve Jordan’s test run\n- Jordan: Execute tests post-deployment and tag success/failure in GitHub\n\n**Context Preservation:**\nAll agents retain the ledger state (e.g., last approved plan version: `v1.2.3`). Context is scrubbed of irrelevant data (e.g., prior failed attempts in Q1) to prevent pollution.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:22:18.827070Z",
+    "http_status": 200,
+    "content_hash": "33331b811ebcdcd3c19f05621d30cd0256c2e62ed57707def0201bd558b2f8a2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\continuous-claude-v3.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\continuous-claude-v3.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Continuous-Claude-v3 - Multi-Agent Development",
+  "short_description_vi": "Continuous-Claude-v3 enables persistent, multi-agent development environments using Claude Code. It maintains state via ledgers and handoffs, preventing context pollution during MCP execution. Ideal for operations teams automating complex workflows."
+}

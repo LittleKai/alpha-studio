@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/twill-cloud-coding-agent",
+  "slug": "twill-cloud-coding-agent",
+  "name": "Multi-Agent Workflows on OpenServ",
+  "headline": "Twill Cloud Coding Agent: Manage Workflows via API",
+  "short_description": "Use this skill to run Twill workflows through the public `v1` API. It allows users to create and manage coding tasks effectively, supporting real-time job logs and scheduling capabilities.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "twillai",
+  "install_command": "git clone https://github.com/twillai/skills",
+  "source_repo_url": "https://github.com/twillai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "workflow-management",
+    "twill",
+    "coding",
+    "cloud",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Twill Cloud Coding Agent provides programmatic access to Twill's public v1 API for creating and managing coding tasks at scale. It supports full task lifecycle management including creation, listing, updating, approval workflows, and cancellation. The skill enables real-time job log streaming via Server-Sent Events, allowing you to monitor task progress as it runs. You can also create, schedule, pause, and resume scheduled tasks using cron expressions with timezone support. This is ideal for teams integrating Twill into CI/CD pipelines, automating coding workflows, or building custom task management systems that leverage Claude Code, Cursor, or other AI agents.\nCreate and manage coding tasks with custom branches\nStream job logs in real time and cancel running jobs\nSchedule recurring coding tasks with timezone support\nList repositories and export Claude teleport sessions",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/twillai/skills --skill twill-cloud-coding-agent`\n`git clone https://github.com/twillai/skills`",
+    "usage": "```\nRun a Twill workflow for [COMPANY] in the [INDUSTRY] industry using the public v1 API. Execute the workflow named '[WORKFLOW_NAME]' with the following parameters: [PARAMETERS_JSON]. Return the job status, logs, and output in real-time.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "twill-cloud-coding-agent#main-content",
+      "twill-cloud-coding-agent#overview",
+      "twill-cloud-coding-agent#setup",
+      "twill-cloud-coding-agent#examples",
+      "twill-cloud-coding-agent#related",
+      "multi-agent-workflows-on-openserv"
+    ],
+    "overview_vi": "Twill Cloud Coding Agent provides programmatic access to Twill's public v1 API for creating and managing coding tasks at scale. It supports full task lifecycle management including creation, listing, updating, approval workflows, and cancellation. The skill enables real-time job log streaming via Server-Sent Events, allowing you to monitor task progress as it runs. You can also create, schedule, pause, and resume scheduled tasks using cron expressions with timezone support. This is ideal for teams integrating Twill into CI/CD pipelines, automating coding workflows, or building custom task management systems that leverage Claude Code, Cursor, or other AI agents.\nCreate and manage coding tasks with custom branches\nStream job logs in real time and cancel running jobs\nSchedule recurring coding tasks with timezone support\nList repositories and export Claude teleport sessions",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/twillai/skills --skill twill-cloud-coding-agent`\n`git clone https://github.com/twillai/skills`",
+    "usage_vi": "```\nRun a Twill workflow for [COMPANY] in the [INDUSTRY] industry using the public v1 API. Execute the workflow named '[WORKFLOW_NAME]' with the following parameters: [PARAMETERS_JSON]. Return the job status, logs, and output in real-time.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:27:47.689291Z",
+    "http_status": 200,
+    "content_hash": "64655ee7cc867838dab8c77c853246f23dda03491aca712e94bf2e392d92aa85",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\twill-cloud-coding-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\twill-cloud-coding-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Twill Cloud Coding Agent: Manage Workflows via API",
+  "short_description_vi": "Use this skill to run Twill workflows through the public `v1` API. It allows users to create and manage coding tasks effectively, supporting real-time job logs and scheduling capabilities."
+}

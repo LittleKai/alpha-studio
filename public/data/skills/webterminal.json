@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/webterminal",
+  "slug": "webterminal",
+  "name": "browser-use",
+  "headline": "Web Terminal - Remote Terminal Access with AI",
+  "short_description": "Web Terminal enables remote terminal access via browser. It integrates with Claude Code Sessions for AI-assisted coding. Supports multiple AI profiles, directory picker, and PM2 Windows Service. Ideal for operations teams managing servers and applications remotely.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "TUAN130294",
+  "install_command": "git clone https://github.com/TUAN130294/webterminal.git",
+  "source_repo_url": "https://github.com/TUAN130294/webterminal",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "pm2",
+    "terminal",
+    "nodejs",
+    "xterm",
+    "socket-io",
+    "web-terminal",
+    "windows"
+  ],
+  "sections": {
+    "overview": "Web Terminal is a browser-accessible terminal application built with xterm.js that enables remote command execution from any device on your local network. It integrates with Claude Code Sessions to resume AI-assisted coding workflows, supports multiple AI profiles (Claude, Agy, GLM, Codex), and includes a directory picker for flexible workspace management. The application runs as a Windows PM2 service for automatic startup and requires no login. Operations teams managing servers, developers needing remote terminal access, and teams leveraging AI-assisted development benefit from unified browser-based terminal access without complex authentication.\nResume Claude Code Sessions from mobile devices on LAN\nRemote server administration via browser without SSH setup\nAI-assisted terminal commands across multiple AI profiles\nAutomatic service deployment on Windows with PM2",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TUAN130294/webterminal`",
+    "usage": "```\nI need to use Web Terminal to [TASK] on my [SERVER_TYPE] server. I want to [SPECIFIC_ACTION] using [PROGRAMMING_LANGUAGE]. Can you guide me through the process and provide the necessary commands?\n```\nCopy\n\n```\n# Web Terminal Session Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "webterminal#main-content",
+      "webterminal#overview",
+      "webterminal#setup",
+      "webterminal#examples",
+      "webterminal#tools",
+      "webterminal#mcp",
+      "webterminal#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Web Terminal is a browser-accessible terminal application built with xterm.js that enables remote command execution from any device on your local network. It integrates with Claude Code Sessions to resume AI-assisted coding workflows, supports multiple AI profiles (Claude, Agy, GLM, Codex), and includes a directory picker for flexible workspace management. The application runs as a Windows PM2 service for automatic startup and requires no login. Operations teams managing servers, developers needing remote terminal access, and teams leveraging AI-assisted development benefit from unified browser-based terminal access without complex authentication.\nResume Claude Code Sessions from mobile devices on LAN\nRemote server administration via browser without SSH setup\nAI-assisted terminal commands across multiple AI profiles\nAutomatic service deployment on Windows with PM2",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TUAN130294/webterminal`",
+    "usage_vi": "```\nI need to use Web Terminal to [TASK] on my [SERVER_TYPE] server. I want to [SPECIFIC_ACTION] using [PROGRAMMING_LANGUAGE]. Can you guide me through the process and provide the necessary commands?\n```\nCopy\n\n```\n# Web Terminal Session Guide"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:26:04.971804Z",
+    "http_status": 200,
+    "content_hash": "ab85d1279634ffcd60fc57ea1306c0e8a013bb4355c723ef67999340ac5b8b05",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webterminal.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webterminal.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Web Terminal - Remote Terminal Access with AI",
+  "short_description_vi": "Web Terminal enables remote terminal access via browser. It integrates with Claude Code Sessions for AI-assisted coding. Supports multiple AI profiles, directory picker, and PM2 Windows Service. Ideal for operations teams managing servers and applications remotely."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-collection",
+  "slug": "skills-collection",
+  "name": "browser-use",
+  "headline": "Claude Code Skills Collection - Developer Tools",
+  "short_description": "A collection of Claude Code Skills for developers. Boosts productivity and content creation. Works with Claude Code v2.0 and above. Includes tools for automation and efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "wwwzhouhui",
+  "install_command": "git clone https://github.com/wwwzhouhui/skills_collection.git",
+  "source_repo_url": "https://github.com/wwwzhouhui/skills_collection",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skills Collection is a curated set of 18 Claude Code skills designed to boost developer productivity and content creation workflows. The collection includes automation tools for Excel report generation, PowerPoint creation, and GitHub trending project tracking; content generation skills for technical articles, WeChat public account articles, and README documentation; AI multimodal capabilities for image and video generation via Wan 2.7 and Seedance 2.0; data collection tools for WeChat article fetching and aggregation; and specialized utilities for Dify workflow generation and API documentation. Each skill is documented with clear examples and supports Claude Code v2.0 and above, making it suitable for developers automating office tasks, creating marketing content, managing social media, and building documentation.\nGenerate professional Excel reports with charts and styling from CSV or database sources\nCreate PowerPoint presentations with business templates and multiple color themes automatically\nFetch and process WeChat public account articles in batch with metadata extraction and Markdown conversion\nGenerate GitHub Trending project summaries and track hot repositories for team updates",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wwwzhouhui/skills_collection`",
+    "usage": "```\nUse Claude Code to automate [TASK] by writing a script that [SPECIFIC_ACTION]. The script should handle [EDGE_CASES] and output results to [OUTPUT_LOCATION]. Example: 'Use Claude Code to automate the generation of monthly sales reports by writing a Python script that fetches data from [DATABASE], calculates key metrics, and saves the report as a PDF to [REPORT_FOLDER].'\n```\nCopy\n\n```\n```python\n# Monthly Sales Report Generator\n# Automates report generation for Q3 2024 sales data\n\nimport pandas as pd\nfrom datetime import datetime\nimport matplotlib.pyplot as plt\nfrom fpdf import FPDF\n\n# Fetch sales data from PostgreSQL database\nsales_data = pd.read_sql(\n    \"\"\"\n    SELECT product_id, region, sales_rep, amount, date\n    FROM sales\n    WHERE date BETWEEN '2024-07-01' AND '2024-09-30'\n    \"\"\", \n    con=\"postgresql://user:pass@localhost:5432/sales_db\"\n)\n\n# Calculate key metrics\ntotal_sales = sales_data['amount'].sum()\navg_sale = sales_data['amount'].mean()\ntop_region = sales_data.groupby('region')['amount'].sum().idxmax()\ntop_rep = sales_data.groupby('sales_rep')['amount'].sum().idxmax()\n\n# Generate visualizations\nplt.figure(figsize=(10, 6))\nsales_data.groupby('date')['amount'].sum().plot(title='Daily Sales Q3 2024')\nplt.savefig('daily_sales_q3.png')\n\n# Create PDF report\nclass PDF(FPDF):\n    def header(self):\n        self.set_font('Arial', 'B', 12)\n        self.cell(0, 10, 'Q3 2024 Sales Report', 0, 1, 'C')\n\npdf = PDF()\npdf.add_page()\npdf.set_font('Arial', '', 12)\n\npdf.cell(0, 10, f'Generated: {datetime.now().strftime(\"%Y-%m-%d %H:%M\")}', 0, 1)\npdf.cell(0, 10, f'Total Sales: ${total_sales:,.2f}', 0, 1)\npdf.cell(0, 10, f'Average Sale: ${avg_sale:,.2f}', 0, 1)\npdf.cell(0, 10, f'Top Region: {top_region}', 0, 1)\npdf.cell(0, 10, f'Top Sales Rep: {top_rep}', 0, 1)\n\npdf.image('daily_sales_q3.png', x=10, y=60, w=190)\npdf.output('Q3_2024_Sales_Report.pdf')\n\nprint(\"Report generated successfully at Q3_2024_Sales_Report.pdf\")\n```\n\n**Output Summary:**\n- Generated Q3 2024 sales report with total sales of $1,245,872.34\n- Identified top region as 'North America' ($456,789.12) and top rep as 'Sarah Johnson' ($234,567.89)\n- Created visualizations showing daily sales trends\n- Saved PDF report to 'reports/Q3_2024_Sales_Report.pdf'\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skills-collection#main-content",
+      "skills-collection#overview",
+      "skills-collection#setup",
+      "skills-collection#examples",
+      "skills-collection#tools",
+      "skills-collection#mcp",
+      "skills-collection#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skills Collection is a curated set of 18 Claude Code skills designed to boost developer productivity and content creation workflows. The collection includes automation tools for Excel report generation, PowerPoint creation, and GitHub trending project tracking; content generation skills for technical articles, WeChat public account articles, and README documentation; AI multimodal capabilities for image and video generation via Wan 2.7 and Seedance 2.0; data collection tools for WeChat article fetching and aggregation; and specialized utilities for Dify workflow generation and API documentation. Each skill is documented with clear examples and supports Claude Code v2.0 and above, making it suitable for developers automating office tasks, creating marketing content, managing social media, and building documentation.\nGenerate professional Excel reports with charts and styling from CSV or database sources\nCreate PowerPoint presentations with business templates and multiple color themes automatically\nFetch and process WeChat public account articles in batch with metadata extraction and Markdown conversion\nGenerate GitHub Trending project summaries and track hot repositories for team updates",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wwwzhouhui/skills_collection`",
+    "usage_vi": "```\nUse Claude Code to automate [TASK] by writing a script that [SPECIFIC_ACTION]. The script should handle [EDGE_CASES] and output results to [OUTPUT_LOCATION]. Example: 'Use Claude Code to automate the generation of monthly sales reports by writing a Python script that fetches data from [DATABASE], calculates key metrics, and saves the report as a PDF to [REPORT_FOLDER].'\n```\nCopy\n\n```\n```python\n# Monthly Sales Report Generator\n# Automates report generation for Q3 2024 sales data\n\nimport pandas as pd\nfrom datetime import datetime\nimport matplotlib.pyplot as plt\nfrom fpdf import FPDF\n\n# Fetch sales data from PostgreSQL database\nsales_data = pd.read_sql(\n    \"\"\"\n    SELECT product_id, region, sales_rep, amount, date\n    FROM sales\n    WHERE date BETWEEN '2024-07-01' AND '2024-09-30'\n    \"\"\", \n    con=\"postgresql://user:pass@localhost:5432/sales_db\"\n)\n\n# Calculate key metrics\ntotal_sales = sales_data['amount'].sum()\navg_sale = sales_data['amount'].mean()\ntop_region = sales_data.groupby('region')['amount'].sum().idxmax()\ntop_rep = sales_data.groupby('sales_rep')['amount'].sum().idxmax()\n\n# Generate visualizations\nplt.figure(figsize=(10, 6))\nsales_data.groupby('date')['amount'].sum().plot(title='Daily Sales Q3 2024')\nplt.savefig('daily_sales_q3.png')\n\n# Create PDF report\nclass PDF(FPDF):\n    def header(self):\n        self.set_font('Arial', 'B', 12)\n        self.cell(0, 10, 'Q3 2024 Sales Report', 0, 1, 'C')\n\npdf = PDF()\npdf.add_page()\npdf.set_font('Arial', '', 12)\n\npdf.cell(0, 10, f'Generated: {datetime.now().strftime(\"%Y-%m-%d %H:%M\")}', 0, 1)\npdf.cell(0, 10, f'Total Sales: ${total_sales:,.2f}', 0, 1)\npdf.cell(0, 10, f'Average Sale: ${avg_sale:,.2f}', 0, 1)\npdf.cell(0, 10, f'Top Region: {top_region}', 0, 1)\npdf.cell(0, 10, f'Top Sales Rep: {top_rep}', 0, 1)\n\npdf.image('daily_sales_q3.png', x=10, y=60, w=190)\npdf.output('Q3_2024_Sales_Report.pdf')\n\nprint(\"Report generated successfully at Q3_2024_Sales_Report.pdf\")\n```\n\n**Output Summary:**\n- Generated Q3 2024 sales report with total sales of $1,245,872.34\n- Identified top region as 'North America' ($456,789.12) and top rep as 'Sarah Johnson' ($234,567.89)\n- Created visualizations showing daily sales trends\n- Saved PDF report to 'reports/Q3_2024_Sales_Report.pdf'\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:38:04.162674Z",
+    "http_status": 200,
+    "content_hash": "5532b882fc9e4e3cf65aad41fdd7ecb8b22fe92482b8b5e5b147aecb7d88f33b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills-collection.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills-collection.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Skills Collection - Developer Tools",
+  "short_description_vi": "A collection of Claude Code Skills for developers. Boosts productivity and content creation. Works with Claude Code v2.0 and above. Includes tools for automation and efficiency."
+}

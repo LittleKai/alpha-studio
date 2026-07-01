@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/testzeus-hercules",
+  "slug": "testzeus-hercules",
+  "name": "Testzeus Hercules",
+  "headline": "Hercules: Open-Source Testing Agent for Automation",
+  "short_description": "Hercules is a groundbreaking open-source testing agent that simplifies UI, API, Security, Accessibility, and Visual validations without the need for code or maintenance. Automate your testing processes effortlessly and let Hercules take care of the complexities!",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "test-zeus-ai",
+  "install_command": "claude install test-zeus-ai/testzeus-hercules",
+  "source_repo_url": "https://github.com/test-zeus-ai/testzeus-hercules",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "no-code",
+    "QA",
+    "automation",
+    "open-source",
+    "testing"
+  ],
+  "sections": {
+    "overview": "Hercules is an open-source testing agent designed to simplify complex testing workflows across multiple domains including UI, API, security, accessibility, and visual validations. The tool eliminates the need for traditional test code or ongoing maintenance, allowing teams to automate their testing processes more efficiently. Hercules integrates with AI coding assistants like Claude Code and Cursor, enabling seamless test generation and execution. It supports multiple LLM providers and models, including GPT-5 support with configurable parameters. This skill is ideal for development teams seeking to reduce testing overhead while maintaining comprehensive test coverage across their applications.\nAutomate UI testing for web applications with minimal setup.\nPerform API validations without writing any code, streamlining the testing process.\nConduct comprehensive security assessments on software applications effortlessly.\nEnsure compliance with accessibility standards in applications to enhance user experience.",
+    "setup": "Terminal\nCopy\n`claude install test-zeus-ai/testzeus-hercules`\n`git clone https://github.com/test-zeus-ai/testzeus-hercules`",
+    "usage": "```\nUsing Hercules, create a comprehensive test suite for the [WEBSITE] or [MOBILE_APP]. Include UI, API, Security, Accessibility, and Visual validations. Ensure the tests cover [SPECIFIC_FEATURES] and provide detailed reports. Automate the testing process to run [FREQUENCY].\n```\nCopy\n\n```\nHercules has successfully created a comprehensive test suite for the e-commerce website 'ShopEase'. The test suite includes the following validations:\n\n1. **UI Validations**:\n   - Verified that all product pages load correctly and display the correct product information.\n   - Ensured that the shopping cart icon updates in real-time as items are added or removed.\n   - Confirmed that the checkout process flows smoothly from the cart to the payment page.\n\n2. **API Validations**:\n   - Tested the API endpoints for product search, cart updates, and order placement.\n   - Verified that the API responses are consistent and error-free.\n   - Ensured that the API handles edge cases such as invalid inputs and network timeouts gracefully.\n\n3. **Security Validations**:\n   - Scanned for common vulnerabilities such as SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF).\n   - Verified that sensitive data such as user credentials and payment information are encrypted.\n   - Ensured that the website complies with industry security standards such as PCI DSS.\n\n4. **Accessibility Validations**:\n   - Checked that the website is navigable using keyboard-only controls.\n   - Verified that all images have appropriate alt text for screen readers.\n   - Ensured that color contrast ratios meet WCAG guidelines for readability.\n\n5. **Visual Validations**:\n   - Compared screenshots of the website across different browsers and devices to ensure visual consistency.\n   - Identified and reported any visual regressions or inconsistencies.\n\nThe test suite is set to run automatically every night at 2 AM to ensure continuous testing and immediate feedback on any issues. Detailed reports are generated and sent to the development team for review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "testzeus-hercules#main-content",
+      "testzeus-hercules#overview",
+      "testzeus-hercules#setup",
+      "testzeus-hercules#examples",
+      "testzeus-hercules#tools",
+      "testzeus-hercules#mcp",
+      "testzeus-hercules#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Hercules is an open-source testing agent designed to simplify complex testing workflows across multiple domains including UI, API, security, accessibility, and visual validations. The tool eliminates the need for traditional test code or ongoing maintenance, allowing teams to automate their testing processes more efficiently. Hercules integrates with AI coding assistants like Claude Code and Cursor, enabling seamless test generation and execution. It supports multiple LLM providers and models, including GPT-5 support with configurable parameters. This skill is ideal for development teams seeking to reduce testing overhead while maintaining comprehensive test coverage across their applications.\nAutomate UI testing for web applications with minimal setup.\nPerform API validations without writing any code, streamlining the testing process.\nConduct comprehensive security assessments on software applications effortlessly.\nEnsure compliance with accessibility standards in applications to enhance user experience.",
+    "setup_vi": "Terminal\nCopy\n`claude install test-zeus-ai/testzeus-hercules`\n`git clone https://github.com/test-zeus-ai/testzeus-hercules`",
+    "usage_vi": "```\nUsing Hercules, create a comprehensive test suite for the [WEBSITE] or [MOBILE_APP]. Include UI, API, Security, Accessibility, and Visual validations. Ensure the tests cover [SPECIFIC_FEATURES] and provide detailed reports. Automate the testing process to run [FREQUENCY].\n```\nCopy\n\n```\nHercules has successfully created a comprehensive test suite for the e-commerce website 'ShopEase'. The test suite includes the following validations:\n\n1. **UI Validations**:\n   - Verified that all product pages load correctly and display the correct product information.\n   - Ensured that the shopping cart icon updates in real-time as items are added or removed.\n   - Confirmed that the checkout process flows smoothly from the cart to the payment page.\n\n2. **API Validations**:\n   - Tested the API endpoints for product search, cart updates, and order placement.\n   - Verified that the API responses are consistent and error-free.\n   - Ensured that the API handles edge cases such as invalid inputs and network timeouts gracefully.\n\n3. **Security Validations**:\n   - Scanned for common vulnerabilities such as SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF).\n   - Verified that sensitive data such as user credentials and payment information are encrypted.\n   - Ensured that the website complies with industry security standards such as PCI DSS.\n\n4. **Accessibility Validations**:\n   - Checked that the website is navigable using keyboard-only controls.\n   - Verified that all images have appropriate alt text for screen readers.\n   - Ensured that color contrast ratios meet WCAG guidelines for readability.\n\n5. **Visual Validations**:\n   - Compared screenshots of the website across different browsers and devices to ensure visual consistency.\n   - Identified and reported any visual regressions or inconsistencies.\n\nThe test suite is set to run automatically every night at 2 AM to ensure continuous testing and immediate feedback on any issues. Detailed reports are generated and sent to the development team for review.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:45.902228Z",
+    "http_status": 200,
+    "content_hash": "87fcf3e26041c3946c8bd1d21a0e7e3eb603b49030ad0f9125df89677eef0150",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\testzeus-hercules.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\testzeus-hercules.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hercules: Open-Source Testing Agent for Automation",
+  "short_description_vi": "Hercules is a groundbreaking open-source testing agent that simplifies UI, API, Security, Accessibility, and Visual validations without the need for code or maintenance. Automate your testing processes effortlessly and let Hercules take care of the complexities!"
+}

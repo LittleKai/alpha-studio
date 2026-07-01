@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/git-mcp",
+  "slug": "git-mcp",
+  "name": "GIT MCP",
+  "headline": "GitMCP: Eliminate Code Hallucinations in GitHub",
+  "short_description": "GitMCP is an innovative, open-source remote MCP server designed to eliminate code hallucinations in GitHub projects. It enhances code accuracy and reliability, making it an essential tool for developers seeking to improve their coding practices.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "idosal",
+  "install_command": "claude install idosal/git-mcp",
+  "source_repo_url": "https://github.com/idosal/git-mcp",
+  "works_with": [
+    "GitHub CopilotClaude"
+  ],
+  "tags": [
+    "git",
+    "code-quality",
+    "mcp",
+    "open-source",
+    "ai"
+  ],
+  "sections": {
+    "overview": "git-mcp is an open-source Model Context Protocol server that integrates Git and GitHub functionality with AI agents like Claude. It provides tools for retrieving accurate repository information, code context, and Git history, helping developers ground AI-assisted coding in real project data. By connecting AI agents directly to Git repositories, git-mcp reduces code hallucinations and improves the accuracy of AI-generated suggestions. The server supports integration with multiple AI clients and development environments, making it suitable for teams building AI-assisted development workflows.\nIntegrate GitMCP into your CI/CD pipeline to automate code quality checks during builds.\nUtilize GitMCP to streamline code review processes by automatically flagging potential issues.\nDeploy GitMCP to provide real-time feedback on code changes in collaborative projects.\nUse GitMCP to enhance error detection in pull requests, reducing the likelihood of bugs in production.",
+    "setup": "Terminal\nCopy\n`claude install idosal/git-mcp`\n`git clone https://github.com/idosal/git-mcp`",
+    "usage": "```\nUse git-mcp to validate the accuracy of the [REPO_URL] repository by running a comprehensive analysis. Check for potential code hallucinations, inconsistencies, or deprecated patterns in the [SPECIFIC_FILE_OR_DIRECTORY] path. Provide a detailed report with actionable recommendations for fixes, including code snippets where applicable. Focus on [SPECIFIC_CONCERN, e.g., security vulnerabilities, performance bottlenecks, or API misuse].\n```\nCopy\n\n```\n### GitMCP Validation Report for `docs/open-reusables` Repository\n\n**Repository URL:** https://github.com/docs/open-reusables\n**Analysis Date:** November 15, 2025\n**Analyzed Path:** `src/extension.ts` (VS Code extension entry point)\n\n#### Key Findings:\n\n1. **Potential Code Hallucination Detected**\n   - **Issue:** In `src/extension.ts:42`, the `openReusableFile` function attempts to parse a markdown file (`help-article.md`) but assumes a fixed structure that doesn't exist in 3/5 sample help articles in the repository.\n   - **Evidence:** The function throws `Error: File not found` when processing `docs/onboarding-actions/README.md`, which lacks the expected `reusable-vars` section.\n   - **Recommendation:** Modify the parsing logic to gracefully handle missing sections:\n ```typescript\n     // Before:\n     const reusableVars = JSON.parse(fs.readFileSync('reusable-vars.json'));\n     \n     // After:\n     const reusableVarsPath = path.join(helpArticleDir, 'reusable-vars.json');\n     const reusableVars = fs.existsSync(reusableVarsPath) \n       ? JSON.parse(fs.readFileSync(reusableVarsPath)) \n       : {};\n ```\n\n2. **Deprecated API Usage**\n   - **Issue:** The `vscode.window.showInputBox()` call in `src/extension.ts:89` uses the deprecated `prompt` parameter, which was removed in VS Code 1.75.\n   - **Impact:** Extension will fail to load in VS Code versions >=1.75.\n   - **Fix:** Replace with:\n ```typescript\n     const reusableName = await vscode.window.showInputBox({\n       title: 'Enter reusable name',\n       placeHolder: 'e.g., user-authentication'\n     });\n ```\n\n3. **Security Concern**\n   - **Issue:** The `src/utils/fileHandler.ts` module uses `eval()` to parse user-provided templates (line 127), creating a potential code injection vector.\n   - **Risk:** Malicious users could execute arbitrary code if template input isn't sanitized.\n   - **Solution:** Replace with a safe template engine:\n ```typescript\n     import { compile } from 'handlebars';\n     const template = compile(userTemplate);\n     const output = template(context);\n ```\n\n#### Performance Recommendations:\n- **Issue:** The `loadReusables()` function in `src/extension.ts` synchronously reads all markdown files in the workspace, causing UI thread blocking.\n- **Fix:** Implement a debounced async loader:\n  ```typescript\n  async function loadReusables() {\n    const files = await vscode.workspace.findFiles('**/*.md');\n    return Promise.all(files.map(async file => {\n      const content = await vscode.workspace.fs.readFile(file);\n      return parseMarkdown(content.toString());\n    }));\n  }\n  ```\n\n#### Validation Summary:\n- **Files Analyzed:** 17 (100% of TypeScript files)\n- **Critical Issues:** 3\n- **Medium Issues:** 2\n- **Low Issues:** 4\n- **Pass Rate:** 70%\n\n**Next Steps:**\n1. Address critical issues before merging PR #42\n2. Run `git-mcp validate` post-fix to confirm resolution\n3. Add integration tests for markdown parsing edge cases\n\n---\n*Generated by git-mcp v1.2.3 | Last commit: 4a2b3c1 (Oct 31, 2025)*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, Claude"
+    ],
+    "related_skills": [
+      "git-mcp#main-content",
+      "git-mcp#overview",
+      "git-mcp#setup",
+      "git-mcp#examples",
+      "git-mcp#tools",
+      "git-mcp#mcp",
+      "git-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "git-mcp is an open-source Model Context Protocol server that integrates Git and GitHub functionality with AI agents like Claude. It provides tools for retrieving accurate repository information, code context, and Git history, helping developers ground AI-assisted coding in real project data. By connecting AI agents directly to Git repositories, git-mcp reduces code hallucinations and improves the accuracy of AI-generated suggestions. The server supports integration with multiple AI clients and development environments, making it suitable for teams building AI-assisted development workflows.\nIntegrate GitMCP into your CI/CD pipeline to automate code quality checks during builds.\nUtilize GitMCP to streamline code review processes by automatically flagging potential issues.\nDeploy GitMCP to provide real-time feedback on code changes in collaborative projects.\nUse GitMCP to enhance error detection in pull requests, reducing the likelihood of bugs in production.",
+    "setup_vi": "Terminal\nCopy\n`claude install idosal/git-mcp`\n`git clone https://github.com/idosal/git-mcp`",
+    "usage_vi": "```\nUse git-mcp to validate the accuracy of the [REPO_URL] repository by running a comprehensive analysis. Check for potential code hallucinations, inconsistencies, or deprecated patterns in the [SPECIFIC_FILE_OR_DIRECTORY] path. Provide a detailed report with actionable recommendations for fixes, including code snippets where applicable. Focus on [SPECIFIC_CONCERN, e.g., security vulnerabilities, performance bottlenecks, or API misuse].\n```\nCopy\n\n```\n### GitMCP Validation Report for `docs/open-reusables` Repository\n\n**Repository URL:** https://github.com/docs/open-reusables\n**Analysis Date:** November 15, 2025\n**Analyzed Path:** `src/extension.ts` (VS Code extension entry point)\n\n#### Key Findings:\n\n1. **Potential Code Hallucination Detected**\n   - **Issue:** In `src/extension.ts:42`, the `openReusableFile` function attempts to parse a markdown file (`help-article.md`) but assumes a fixed structure that doesn't exist in 3/5 sample help articles in the repository.\n   - **Evidence:** The function throws `Error: File not found` when processing `docs/onboarding-actions/README.md`, which lacks the expected `reusable-vars` section.\n   - **Recommendation:** Modify the parsing logic to gracefully handle missing sections:\n ```typescript\n     // Before:\n     const reusableVars = JSON.parse(fs.readFileSync('reusable-vars.json'));\n     \n     // After:\n     const reusableVarsPath = path.join(helpArticleDir, 'reusable-vars.json');\n     const reusableVars = fs.existsSync(reusableVarsPath) \n       ? JSON.parse(fs.readFileSync(reusableVarsPath)) \n       : {};\n ```\n\n2. **Deprecated API Usage**\n   - **Issue:** The `vscode.window.showInputBox()` call in `src/extension.ts:89` uses the deprecated `prompt` parameter, which was removed in VS Code 1.75.\n   - **Impact:** Extension will fail to load in VS Code versions >=1.75.\n   - **Fix:** Replace with:\n ```typescript\n     const reusableName = await vscode.window.showInputBox({\n       title: 'Enter reusable name',\n       placeHolder: 'e.g., user-authentication'\n     });\n ```\n\n3. **Security Concern**\n   - **Issue:** The `src/utils/fileHandler.ts` module uses `eval()` to parse user-provided templates (line 127), creating a potential code injection vector.\n   - **Risk:** Malicious users could execute arbitrary code if template input isn't sanitized.\n   - **Solution:** Replace with a safe template engine:\n ```typescript\n     import { compile } from 'handlebars';\n     const template = compile(userTemplate);\n     const output = template(context);\n ```\n\n#### Performance Recommendations:\n- **Issue:** The `loadReusables()` function in `src/extension.ts` synchronously reads all markdown files in the workspace, causing UI thread blocking.\n- **Fix:** Implement a debounced async loader:\n  ```typescript\n  async function loadReusables() {\n    const files = await vscode.workspace.findFiles('**/*.md');\n    return Promise.all(files.map(async file => {\n      const content = await vscode.workspace.fs.readFile(file);\n      return parseMarkdown(content.toString());\n    }));\n  }\n  ```\n\n#### Validation Summary:\n- **Files Analyzed:** 17 (100% of TypeScript files)\n- **Critical Issues:** 3\n- **Medium Issues:** 2\n- **Low Issues:** 4\n- **Pass Rate:** 70%\n\n**Next Steps:**\n1. Address critical issues before merging PR #42\n2. Run `git-mcp validate` post-fix to confirm resolution\n3. Add integration tests for markdown parsing edge cases\n\n---\n*Generated by git-mcp v1.2.3 | Last commit: 4a2b3c1 (Oct 31, 2025)*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:37:14.510293Z",
+    "http_status": 200,
+    "content_hash": "e93cbf4a76c02e85459562fdeeb672982e8f31950c26870c38cdc9ece1965a79",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\git-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\git-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GitMCP: Eliminate Code Hallucinations in GitHub",
+  "short_description_vi": "GitMCP is an innovative, open-source remote MCP server designed to eliminate code hallucinations in GitHub projects. It enhances code accuracy and reliability, making it an essential tool for developers seeking to improve their coding practices."
+}

@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ralph-orchestrator",
+  "slug": "ralph-orchestrator",
+  "name": "Ralph Orchestrator",
+  "headline": "Ralph Orchestrator - AI Agent Automation",
+  "short_description": "Ralph Orchestrator automates AI agent workflows using the Ralph Wiggum technique. It enables operations teams to manage complex agent interactions, improving efficiency in development workflows. Connects to Claude agents and integrates with development tools like kiro-cli and codex-cli.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "mikeyobrien",
+  "install_command": "git clone https://github.com/mikeyobrien/ralph-orchestrator.git",
+  "source_repo_url": "https://github.com/mikeyobrien/ralph-orchestrator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-developer-tools",
+    "kiro-cli",
+    "development-workflow",
+    "kiro",
+    "gemini-cli",
+    "codex-cli",
+    "development-tools",
+    "opencode",
+    "ai-agents",
+    "ai-agents-framework",
+    "ralph-wiggum",
+    "ralph-loop",
+    "claude-code-cli",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Ralph Orchestrator is a Rust-based automation framework that coordinates AI agent workflows using a hat-based execution model, where a single Ralph instance switches between roles (planner, builder, custom) rather than managing separate agents. It supports multiple backends including Claude, Kiro, Codex, Amp, and Gemini CLI with auto-detection, enabling seamless integration across different AI platforms. The system uses event-driven routing with pub/sub messaging and enforces backpressure through mandatory evidence of passed tests, type checks, and lints before proceeding. It operates in both interactive mode with PTY support and autonomous pipeline mode, with session recording and replay capabilities for reproducible testing and debugging. Development teams benefit from the terminal UI displaying hat status, iteration progress, and real-time event tracking.\nAutomate the planning and implementation of user authentication features in web applications.\nStreamline the development of input validation for API endpoints, ensuring robust data handling.\nFacilitate continuous integration and deployment processes by managing orchestration loops for testing and deployment tasks.\nEnhance team collaboration by using the web dashboard to monitor and manage multiple AI agent workflows.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mikeyobrien/ralph-orchestrator`",
+    "usage": "```\nUse Ralph Orchestrator to automate the [WORKFLOW_NAME] workflow for [PROJECT_NAME]. Follow the Ralph Wiggum technique to handle agent interactions, ensuring [SPECIFIC_GOAL] is achieved. Coordinate with [AGENT_ROLES] and validate outputs using [VALIDATION_CRITERIA]. Integrate with [DEVELOPMENT_TOOLS] and log results to [LOGGING_SYSTEM].\n```\nCopy\n\n```\nFor the project 'Acme CRM Migration', the Ralph Orchestrator automated the agent workflow to migrate legacy customer data to the new system. The workflow involved three agents: the Data Extractor (responsible for pulling records from the old database), the Schema Validator (ensuring data integrity against the new schema), and the API Integrator (pushing validated data to the new system). The orchestrator used the Ralph Wiggum technique to handle edge cases, such as malformed records or API timeouts, by logging them for manual review while allowing the workflow to proceed with clean data.\n\nThe Data Extractor processed 12,487 records from the legacy system, identifying 182 records with missing email fields. These were flagged for review and excluded from the automated migration. The Schema Validator confirmed that 99.8% of the remaining records matched the new schema, with only 24 records requiring minor adjustments (e.g., date format conversions). The API Integrator successfully pushed 12,281 records to the new system, achieving a 98.4% success rate. The orchestrator logged all actions to CloudWatch, including timestamps, agent interactions, and validation results. Manual review of the 182 flagged records was completed within 2 hours, with 178 records corrected and reintegrated. The entire workflow ran in 47 minutes, reducing manual effort by 70% compared to the previous process.\n\nKey insights from the orchestrator's logs:\n- The most common data issue was missing email fields (1.46% of records).\n- API rate limits were hit twice, but the orchestrator automatically retried with exponential backoff, avoiding workflow failure.\n- The Schema Validator agent detected 3 schema mismatches that were not caught in pre-migration testing, preventing potential downstream issues.\n\nThe orchestrator's output included a summary report with success metrics, a list of records requiring manual intervention, and recommendations for improving data quality in future migrations.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ralph-orchestrator#main-content",
+      "ralph-orchestrator#overview",
+      "ralph-orchestrator#setup",
+      "ralph-orchestrator#examples",
+      "ralph-orchestrator#tools",
+      "ralph-orchestrator#mcp",
+      "ralph-orchestrator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Ralph Orchestrator là một framework tự động hóa viết bằng Rust, giúp điều phối các workflow của AI agent bằng mô hình thực thi dạng đổi vai (hat-based execution model), trong đó một instance Ralph duy nhất sẽ tự động chuyển đổi giữa các vai trò (planner, builder, custom) thay vì phải quản lý nhiều agent riêng biệt. Hệ thống hỗ trợ nhiều backend bao gồm Claude, Kiro, Codex, Amp và Gemini CLI với tính năng tự động nhận diện, giúp tích hợp mượt mà trên các nền tảng AI khác nhau. Hệ thống sử dụng cơ chế định tuyến hướng sự kiện (event-driven routing) thông qua pub/sub messaging, đồng thời áp dụng cơ chế backpressure bằng cách yêu cầu bắt buộc phải cung cấp bằng chứng đã vượt qua các bài test, type check và lint trước khi tiếp tục. Công cụ hoạt động tốt ở cả chế độ tương tác hỗ trợ PTY và chế độ pipeline tự động, đi kèm tính năng ghi và phát lại phiên làm việc (session recording và replay) giúp kiểm thử và debug có khả năng tái dựng. Các đội ngũ phát triển sẽ được hỗ trợ bởi giao diện dòng lệnh (terminal UI) hiển thị trạng thái vai trò (hat status), tiến trình lặp và theo dõi sự kiện theo thời gian thực.\nTự động hóa việc lập kế hoạch và triển khai các tính năng xác thực người dùng trong các ứng dụng web.\nTối ưu hóa việc phát triển tính năng xác thực dữ liệu đầu vào (input validation) cho các API endpoint, đảm bảo xử lý dữ liệu chặt chẽ.\nHỗ trợ các quy trình tích hợp và triển khai liên tục (CI/CD) bằng cách quản lý các vòng lặp điều phối (orchestration loops) cho các tác vụ kiểm thử và triển khai.\nTăng cường sự phối hợp trong nhóm bằng cách sử dụng dashboard web để giám sát và quản lý nhiều workflow của AI agent.",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/mikeyobrien/ralph-orchestrator`",
+    "usage_vi": "```\nSử dụng Ralph Orchestrator để tự động hóa workflow [WORKFLOW_NAME] cho dự án [PROJECT_NAME]. Áp dụng kỹ thuật Ralph Wiggum để xử lý các tương tác của agent, đảm bảo đạt được [SPECIFIC_GOAL]. Phối hợp với các [AGENT_ROLES] và kiểm định kết quả đầu ra bằng [VALIDATION_CRITERIA]. Tích hợp với [DEVELOPMENT_TOOLS] và ghi log kết quả vào [LOGGING_SYSTEM].\n```\nCopy\n\n```\nĐối với dự án 'Acme CRM Migration', Ralph Orchestrator đã tự động hóa workflow của agent để di chuyển dữ liệu khách hàng cũ sang hệ thống mới. Workflow này bao gồm ba agent: Data Extractor (chịu trách nhiệm trích xuất dữ liệu từ cơ sở dữ liệu cũ), Schema Validator (đảm bảo tính toàn vẹn dữ liệu so với schema mới) và API Integrator (đẩy dữ liệu đã được xác thực vào hệ thống mới). Bộ điều phối (orchestrator) đã sử dụng kỹ thuật Ralph Wiggum để xử lý các trường hợp ngoại lệ (edge cases), chẳng hạn như các bản ghi bị lỗi định dạng hoặc lỗi hết hạn API (API timeouts), bằng cách ghi log các lỗi này để xem xét thủ công, đồng thời cho phép workflow tiếp tục chạy với dữ liệu sạch.\n\nData Extractor đã xử lý 12.487 bản ghi từ hệ thống cũ và phát hiện 182 bản ghi bị thiếu trường email. Những bản ghi này đã bị gắn cờ để xem xét và loại trừ khỏi quá trình di chuyển tự động. Schema Validator xác nhận rằng 99,8% các bản ghi còn lại khớp với schema mới, chỉ có 24 bản ghi yêu cầu điều chỉnh nhỏ (ví dụ: chuyển đổi định dạng ngày tháng). API Integrator đã đẩy thành công 12.281 bản ghi vào hệ thống mới, đạt tỷ lệ thành công 98,4%. Bộ điều phối đã ghi lại tất cả các hoạt động vào CloudWatch, bao gồm timestamp (mốc thời gian), tương tác của agent và kết quả xác thực. Việc xem xét thủ công 182 bản ghi bị gắn cờ đã hoàn thành trong vòng 2 giờ, với 178 bản ghi được sửa đổi và tích hợp lại. Toàn bộ workflow chạy trong 47 phút, giúp giảm 70% công sức thực hiện thủ công so với quy trình trước đây.\n\nCác thông tin chuyên sâu (key insights) từ log của bộ điều phối:\n- Lỗi dữ liệu phổ biến nhất là thiếu trường email (chiếm 1,46% số bản ghi).\n- Giới hạn lượt gọi API (API rate limits) bị chạm ngưỡng hai lần, nhưng bộ điều phối đã tự động thử lại với cơ chế exponential backoff, tránh làm gián đoạn workflow.\n- Agent Schema Validator đã phát hiện 3 trường hợp không khớp schema vốn không được phát hiện trong quá trình kiểm thử trước di chuyển, giúp ngăn ngừa các sự cố tiềm ẩn ở các bước tiếp theo.\n\nĐầu ra của bộ điều phối bao gồm một báo cáo tóm tắt với các chỉ số thành công, danh sách các bản ghi cần can thiệp thủ công và các đề xuất nhằm cải thiện chất lượng dữ liệu trong các đợt di chuyển tương lai.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:59:08.667463Z",
+    "http_status": 200,
+    "content_hash": "802c1e5d9b3bc6387b0c2dad48e81a2a9863290dfc3ebeaa9b01a965a884d99b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ralph-orchestrator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ralph-orchestrator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Ralph Orchestrator - Tự động hóa AI Agent",
+  "short_description_vi": "Ralph Orchestrator tự động hóa các workflow của AI agent bằng kỹ thuật Ralph Wiggum. Công cụ này cho phép các đội ngũ vận hành quản lý các tương tác phức tạp giữa các agent, giúp nâng cao hiệu suất trong quy trình phát triển. Nó hỗ trợ kết nối với các Claude agent và tích hợp linh hoạt với các công cụ phát triển như kiro-cli và codex-cli."
+}

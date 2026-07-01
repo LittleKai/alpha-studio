@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lemmy",
+  "slug": "lemmy",
+  "name": "slack-gif-creator",
+  "headline": "Lemmy: AI-Powered Workflow Automation Tool",
+  "short_description": "Lemmy is a powerful wrapper that uses large language models (LLMs) to streamline agentic workflows. It enhances productivity by automating tasks and facilitating interactions between users and AI agents.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "badlogic",
+  "install_command": "claude install badlogic/lemmy",
+  "source_repo_url": "https://github.com/badlogic/lemmy",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "agentic",
+    "AI workflows",
+    "TypeScript",
+    "LLM"
+  ],
+  "sections": {
+    "overview": "Lemmy is a powerful wrapper designed to optimize large language model interactions within agentic workflows. It automates repetitive tasks and facilitates seamless communication between users and AI agents, reducing manual overhead. The tool is built for developers who need reliable, efficient LLM integration in their applications. Lemmy supports custom logging with configurable log file naming and provides tool ID mapping for consistent API interactions. It handles complex conversation management and tool use orchestration, making it suitable for building sophisticated AI agent systems.\nAutomate customer interactions by integrating AI chatbots for 24/7 support.\nStreamline data entry tasks by using LLMs to auto-fill forms based on user input.\nEnhance team collaboration through AI by generating meeting summaries and action items.\nGenerate detailed reports based on user queries and data analysis using LLMs.",
+    "setup": "Terminal\nCopy\n`claude install badlogic/lemmy`\n`git clone https://github.com/badlogic/lemmy`",
+    "usage": "```\nSet up a Lemmy agent in Type to [TASK]. Configure the agent with the following parameters: [AGENT_GOALS], [SKILLS], and [CONSTRAINTS]. Use the 'Chief of Staff' template as a starting point for role definition. Ensure the agent has access to [RELEVANT_TOOLS] and set up automated reporting to [RECIPIENT_EMAIL] every [FREQUENCY].\n```\nCopy\n\n```\n### Agent Setup Summary\n**Agent Name:** Growth Tracker\n**Role:** Chief of Staff (Customized)\n**Primary Goal:** Monitor and report on quarterly growth metrics for Acme Corp’s SaaS product line, including MRR, churn rate, and customer acquisition cost (CAC).\n\n**Skills Assigned:**\n- **Data Analysis:** Pulls data from Salesforce, HubSpot, and Stripe APIs to calculate key metrics.\n- **Reporting:** Generates a weekly PDF report with visualizations (line graphs for MRR trends, bar charts for churn by segment).\n- **Alerting:** Flags anomalies (e.g., churn spike >10% week-over-week) and notifies the VP of Product via Slack.\n- **Integration:** Connects to Google Drive for auto-saving reports and to Notion for updating the executive dashboard.\n\n**Constraints:**\n- Only pull data from the last 30 days to avoid processing delays.\n- Exclude internal test accounts from churn calculations.\n- Limit report generation to business hours (9 AM–5 PM PST).\n\n**Tools Configured:**\n- **API Access:** Salesforce (read-only), HubSpot (read-only), Stripe (read-only).\n- **Communication:** Slack (alerts), Email (weekly reports to vp@acme.com).\n- **Storage:** Google Drive (auto-save), Notion (dashboard updates).\n\n**Automation Schedule:**\n- **Daily:** Data refresh at 8 AM PST.\n- **Weekly:** Full report generation every Monday at 9 AM PST.\n- **Real-time:** Slack alerts for critical anomalies (e.g., churn spike detected).\n\n### Agent Performance Metrics (First 2 Weeks)\n- **Data Accuracy:** 99.8% (validated against manual calculations).\n- **Report Delivery:** 100% on-time (no delays in 14 days).\n- **Alert Response:** 3 critical alerts triggered (all resolved within 2 hours).\n- **User Feedback:** VP of Product noted the agent \"saved 5 hours/week\" and improved data reliability.\n\n### Next Steps\n1. **Review Alerts:** Check the Slack channel `#growth-alerts` for any pending notifications.\n2. **Adjust Thresholds:** Fine-tune anomaly detection (e.g., reduce churn spike threshold to 8%).\n3. **Expand Scope:** Add competitor benchmarking data to the weekly report (requires API access to G2).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "lemmy#main-content",
+      "lemmy#overview",
+      "lemmy#setup",
+      "lemmy#examples",
+      "lemmy#tools",
+      "lemmy#mcp",
+      "lemmy#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Lemmy is a powerful wrapper designed to optimize large language model interactions within agentic workflows. It automates repetitive tasks and facilitates seamless communication between users and AI agents, reducing manual overhead. The tool is built for developers who need reliable, efficient LLM integration in their applications. Lemmy supports custom logging with configurable log file naming and provides tool ID mapping for consistent API interactions. It handles complex conversation management and tool use orchestration, making it suitable for building sophisticated AI agent systems.\nAutomate customer interactions by integrating AI chatbots for 24/7 support.\nStreamline data entry tasks by using LLMs to auto-fill forms based on user input.\nEnhance team collaboration through AI by generating meeting summaries and action items.\nGenerate detailed reports based on user queries and data analysis using LLMs.",
+    "setup_vi": "Terminal\nCopy\n`claude install badlogic/lemmy`\n`git clone https://github.com/badlogic/lemmy`",
+    "usage_vi": "```\nSet up a Lemmy agent in Type to [TASK]. Configure the agent with the following parameters: [AGENT_GOALS], [SKILLS], and [CONSTRAINTS]. Use the 'Chief of Staff' template as a starting point for role definition. Ensure the agent has access to [RELEVANT_TOOLS] and set up automated reporting to [RECIPIENT_EMAIL] every [FREQUENCY].\n```\nCopy\n\n```\n### Agent Setup Summary\n**Agent Name:** Growth Tracker\n**Role:** Chief of Staff (Customized)\n**Primary Goal:** Monitor and report on quarterly growth metrics for Acme Corp’s SaaS product line, including MRR, churn rate, and customer acquisition cost (CAC).\n\n**Skills Assigned:**\n- **Data Analysis:** Pulls data from Salesforce, HubSpot, and Stripe APIs to calculate key metrics.\n- **Reporting:** Generates a weekly PDF report with visualizations (line graphs for MRR trends, bar charts for churn by segment).\n- **Alerting:** Flags anomalies (e.g., churn spike >10% week-over-week) and notifies the VP of Product via Slack.\n- **Integration:** Connects to Google Drive for auto-saving reports and to Notion for updating the executive dashboard.\n\n**Constraints:**\n- Only pull data from the last 30 days to avoid processing delays.\n- Exclude internal test accounts from churn calculations.\n- Limit report generation to business hours (9 AM–5 PM PST).\n\n**Tools Configured:**\n- **API Access:** Salesforce (read-only), HubSpot (read-only), Stripe (read-only).\n- **Communication:** Slack (alerts), Email (weekly reports to vp@acme.com).\n- **Storage:** Google Drive (auto-save), Notion (dashboard updates).\n\n**Automation Schedule:**\n- **Daily:** Data refresh at 8 AM PST.\n- **Weekly:** Full report generation every Monday at 9 AM PST.\n- **Real-time:** Slack alerts for critical anomalies (e.g., churn spike detected).\n\n### Agent Performance Metrics (First 2 Weeks)\n- **Data Accuracy:** 99.8% (validated against manual calculations).\n- **Report Delivery:** 100% on-time (no delays in 14 days).\n- **Alert Response:** 3 critical alerts triggered (all resolved within 2 hours).\n- **User Feedback:** VP of Product noted the agent \"saved 5 hours/week\" and improved data reliability.\n\n### Next Steps\n1. **Review Alerts:** Check the Slack channel `#growth-alerts` for any pending notifications.\n2. **Adjust Thresholds:** Fine-tune anomaly detection (e.g., reduce churn spike threshold to 8%).\n3. **Expand Scope:** Add competitor benchmarking data to the weekly report (requires API access to G2).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:40:39.961086Z",
+    "http_status": 200,
+    "content_hash": "0b3ed4d94cd2e5fd8443125141ba0c3a493cbb9a7aa42075de25c00bec89976d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lemmy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lemmy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Lemmy: AI-Powered Workflow Automation Tool",
+  "short_description_vi": "Lemmy is a powerful wrapper that uses large language models (LLMs) to streamline agentic workflows. It enhances productivity by automating tasks and facilitating interactions between users and AI agents."
+}

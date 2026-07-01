@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/superpowers-lab",
+  "slug": "superpowers-lab",
+  "name": "browser-use",
+  "headline": "Superpowers Lab - Claude Code Automation",
+  "short_description": "Superpowers Lab provides experimental skills for Claude Code, enabling operations teams to test and implement new automation techniques. It connects to Claude Code and supports shell scripting for advanced workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "obra",
+  "install_command": "git clone https://github.com/obra/superpowers-lab.git",
+  "source_repo_url": "https://github.com/obra/superpowers-lab",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Superpowers Lab provides four experimental skills that extend Claude Code's capabilities: finding-duplicate-functions detects semantic code duplication using LLM-powered intent clustering; mcp-cli enables on-demand MCP server access without permanent configuration; using-tmux-for-interactive-commands automates interactive CLI tools like vim and git rebase through tmux sessions; and windows-vm creates headless Windows 11 environments in Docker with SSH access. These functional but evolving skills are designed for operations teams, developers, and QA engineers who need to automate complex workflows, refactor codebases, explore MCP tools, and test cross-platform behavior.\nDetect semantic code duplication across organically-grown codebases with multiple contributors\nAutomate interactive terminal workflows like vim editing, git operations, and REPL sessions\nQuery and test MCP servers on-demand before permanent integration\nSpin up Windows 11 environments for cross-platform testing without GUI overhead",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers-lab`",
+    "usage": "```\nUse Superpowers Lab to prototype and test an automation workflow for [TASK] in [ENVIRONMENT]. Write a Claude Code script that: 1) [STEP_1], 2) [STEP_2], and 3) [STEP_3]. Include error handling for [COMMON_FAILURES]. Run the script in a sandboxed environment and report the output. Suggest optimizations based on the results.\n```\nCopy\n\n```\n### Superpowers Lab Automation Prototype Report\n\n**Task:** Automate the nightly backup of customer data from an S3 bucket to a secondary storage provider.\n\n**Script Generated:**\n```python\nimport boto3\nimport subprocess\nfrom datetime import datetime\nimport logging\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n# Configuration\nSOURCE_BUCKET = \"customer-data-prod\"\nDESTINATION_BUCKET = \"backup-customer-data\"\nDATESTAMP = datetime.now().strftime(\"%Y%m%d\")\nLOG_FILE = f\"/var/log/backups/customer_data_backup_{DATESTAMP}.log\"\n\n# Error handling for common failures\nERROR_HANDLING = {\n    \"s3_connection_error\": \"Retry 3 times with exponential backoff\",\n    \"storage_provider_timeout\": \"Switch to alternative endpoint and alert on-call engineer\",\n    \"insufficient_permissions\": \"Fail fast and log detailed error for security review\"\n}\n\ntry:\n    # Step 1: List all objects in source bucket\n    s3 = boto3.client('s3')\n    objects = s3.list_objects_v2(Bucket=SOURCE_BUCKET)\n    if 'Contents' not in objects:\n        logger.warning(\"No objects found in source bucket\")\n        exit(0)\n\n    # Step 2: Generate manifest of files to backup\n    manifest = [obj['Key'] for obj in objects['Contents']]\n    with open(f\"/tmp/backup_manifest_{DATESTAMP}.txt\", \"w\") as f:\n        f.write(\"\\n\".join(manifest))\n\n    # Step 3: Sync to destination bucket using CLI for better performance\n    sync_cmd = [\n        \"aws\", \"s3\", \"sync\",\n        f\"s3://{SOURCE_BUCKET}/\",\n        f\"s3://{DESTINATION_BUCKET}/{DATESTAMP}/\",\n        \"--exclude\", \"*.tmp\",\n        \"--exclude\", \"*.log\",\n        \"--storage-class\", \"STANDARD_IA\"\n    ]\n    result = subprocess.run(sync_cmd, capture_output=True, text=True)\n\n    if result.returncode != 0:\n        raise Exception(f\"Sync failed: {result.stderr}\")\n\n    logger.info(\"Backup completed successfully\")\n    logger.info(f\"Transferred {len(manifest)} files to {DESTINATION_BUCKET}\")\n    logger.info(f\"Log saved to {LOG_FILE}\")\n\nexcept Exception as e:\n    logger.error(f\"Backup failed: {str(e)}\")\n    logger.error(f\"Error handling: {ERROR_HANDLING.get(type(e).__name__, 'Review logs for details')}\")\n    exit(1)\n```\n\n**Execution Results:**\n- **Files Processed:** 12,487 objects (4.2GB total)\n- **Transfer Speed:** 2.1MB/s (within SLA of 1MB/s minimum)\n- **Errors Encountered:** 0\n- **Optimizations Identified:**\n  1. Add parallel transfers using `s3 sync --cli-read-timeout` for large buckets\n  2. Implement incremental backup by tracking last modified dates\n  3. Add validation step to compare file counts between source and destination\n\n**Recommendation:** Deploy with incremental backup optimization in production after testing with 10% of total data volume.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "superpowers-lab#main-content",
+      "superpowers-lab#overview",
+      "superpowers-lab#setup",
+      "superpowers-lab#examples",
+      "superpowers-lab#tools",
+      "superpowers-lab#mcp",
+      "superpowers-lab#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Superpowers Lab provides four experimental skills that extend Claude Code's capabilities: finding-duplicate-functions detects semantic code duplication using LLM-powered intent clustering; mcp-cli enables on-demand MCP server access without permanent configuration; using-tmux-for-interactive-commands automates interactive CLI tools like vim and git rebase through tmux sessions; and windows-vm creates headless Windows 11 environments in Docker with SSH access. These functional but evolving skills are designed for operations teams, developers, and QA engineers who need to automate complex workflows, refactor codebases, explore MCP tools, and test cross-platform behavior.\nDetect semantic code duplication across organically-grown codebases with multiple contributors\nAutomate interactive terminal workflows like vim editing, git operations, and REPL sessions\nQuery and test MCP servers on-demand before permanent integration\nSpin up Windows 11 environments for cross-platform testing without GUI overhead",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers-lab`",
+    "usage_vi": "```\nUse Superpowers Lab to prototype and test an automation workflow for [TASK] in [ENVIRONMENT]. Write a Claude Code script that: 1) [STEP_1], 2) [STEP_2], and 3) [STEP_3]. Include error handling for [COMMON_FAILURES]. Run the script in a sandboxed environment and report the output. Suggest optimizations based on the results.\n```\nCopy\n\n```\n### Superpowers Lab Automation Prototype Report\n\n**Task:** Automate the nightly backup of customer data from an S3 bucket to a secondary storage provider.\n\n**Script Generated:**\n```python\nimport boto3\nimport subprocess\nfrom datetime import datetime\nimport logging\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n# Configuration\nSOURCE_BUCKET = \"customer-data-prod\"\nDESTINATION_BUCKET = \"backup-customer-data\"\nDATESTAMP = datetime.now().strftime(\"%Y%m%d\")\nLOG_FILE = f\"/var/log/backups/customer_data_backup_{DATESTAMP}.log\"\n\n# Error handling for common failures\nERROR_HANDLING = {\n    \"s3_connection_error\": \"Retry 3 times with exponential backoff\",\n    \"storage_provider_timeout\": \"Switch to alternative endpoint and alert on-call engineer\",\n    \"insufficient_permissions\": \"Fail fast and log detailed error for security review\"\n}\n\ntry:\n    # Step 1: List all objects in source bucket\n    s3 = boto3.client('s3')\n    objects = s3.list_objects_v2(Bucket=SOURCE_BUCKET)\n    if 'Contents' not in objects:\n        logger.warning(\"No objects found in source bucket\")\n        exit(0)\n\n    # Step 2: Generate manifest of files to backup\n    manifest = [obj['Key'] for obj in objects['Contents']]\n    with open(f\"/tmp/backup_manifest_{DATESTAMP}.txt\", \"w\") as f:\n        f.write(\"\\n\".join(manifest))\n\n    # Step 3: Sync to destination bucket using CLI for better performance\n    sync_cmd = [\n        \"aws\", \"s3\", \"sync\",\n        f\"s3://{SOURCE_BUCKET}/\",\n        f\"s3://{DESTINATION_BUCKET}/{DATESTAMP}/\",\n        \"--exclude\", \"*.tmp\",\n        \"--exclude\", \"*.log\",\n        \"--storage-class\", \"STANDARD_IA\"\n    ]\n    result = subprocess.run(sync_cmd, capture_output=True, text=True)\n\n    if result.returncode != 0:\n        raise Exception(f\"Sync failed: {result.stderr}\")\n\n    logger.info(\"Backup completed successfully\")\n    logger.info(f\"Transferred {len(manifest)} files to {DESTINATION_BUCKET}\")\n    logger.info(f\"Log saved to {LOG_FILE}\")\n\nexcept Exception as e:\n    logger.error(f\"Backup failed: {str(e)}\")\n    logger.error(f\"Error handling: {ERROR_HANDLING.get(type(e).__name__, 'Review logs for details')}\")\n    exit(1)\n```\n\n**Execution Results:**\n- **Files Processed:** 12,487 objects (4.2GB total)\n- **Transfer Speed:** 2.1MB/s (within SLA of 1MB/s minimum)\n- **Errors Encountered:** 0\n- **Optimizations Identified:**\n  1. Add parallel transfers using `s3 sync --cli-read-timeout` for large buckets\n  2. Implement incremental backup by tracking last modified dates\n  3. Add validation step to compare file counts between source and destination\n\n**Recommendation:** Deploy with incremental backup optimization in production after testing with 10% of total data volume.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:12:54.380964Z",
+    "http_status": 200,
+    "content_hash": "1ad69bab3a78a17cfdf92ad0fefd7ddb1c6cde17d31eb2ea48464685cc039422",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\superpowers-lab.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\superpowers-lab.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Superpowers Lab - Claude Code Automation",
+  "short_description_vi": "Superpowers Lab provides experimental skills for Claude Code, enabling operations teams to test and implement new automation techniques. It connects to Claude Code and supports shell scripting for advanced workflows."
+}

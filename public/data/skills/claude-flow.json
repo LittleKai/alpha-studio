@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-flow",
+  "slug": "claude-flow",
+  "name": "Claude Flow",
+  "headline": "claude-flow: AI Workflows",
+  "short_description": "🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features    enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code support via MCP protocol. Ranked #1 in agent-based frameworks.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "360 min",
+  "author": "ruvnet",
+  "install_command": "git clone https://github.com/ruvnet/claude-flow.git",
+  "source_repo_url": "https://github.com/ruvnet/claude-flow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "multi-agent",
+    "ai-assistant",
+    "agentic-workflow",
+    "autonomous-agents",
+    "agentic-engineering",
+    "agentic-ai",
+    "agents",
+    "model-context-protocol",
+    "ai-tools",
+    "anthropic-claude",
+    "swarm-intelligence",
+    "claude-code-skills",
+    "agentic-framework",
+    "agentic-rag",
+    "mcp-server",
+    "codex",
+    "swarm",
+    "huggingface",
+    "multi-agent-systems",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claude-flow is a leading agent orchestration platform designed specifically for Claude, enabling users to deploy intelligent multi-agent swarms that coordinate autonomous workflows and build sophisticated conversational AI systems. With its enterprise-grade architecture and native Claude Code support via the MCP protocol, claude-flow stands out as the top choice in agent-based frameworks. Its advanced features, including distributed swarm intelligence and RAG integration, empower teams to automate complex tasks seamlessly. One of the key benefits of using claude-flow is its ability to significantly enhance workflow automation efficiency. By implementing this skill, teams can save valuable time through the automation of various processes. For instance, code reviews can be automated by deploying specialized agents that assess code quality and suggest improvements, leading to faster turnaround times and higher quality outputs. Additionally, coordinating testing workflows across multiple agents ensures comprehensive coverage and accelerates feedback loops, which is crucial for maintaining software integrity. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their workflows and enhance productivity. It is ideal for teams involved in software development, DevOps, and AI system design. By utilizing claude-flow, organizations can implement security audits through dedicated agents that scan for vulnerabilities, facilitate documentation generation, and optimize deployment pipelines, thereby streamlining their entire development process. While the implementation of claude-flow is classified as advanced, it can typically be set up in about 30 minutes. Users should have a foundational understanding of AI automation and workflow management to maximize the skill's potential. As organizations increasingly adopt AI-first strategies, claude-flow integrates seamlessly into these workflows, allowing teams to harness the power of automation and focus on higher-value tasks.\nAutomate code reviews by deploying specialized agents that assess code quality and suggest improvements.\nCoordinate testing workflows across multiple agents to ensure comprehensive coverage and faster feedback loops.\nImplement security audits using dedicated agents that scan for vulnerabilities and compliance issues in software projects.\nFacilitate documentation generation by utilizing agents that extract information from codebases and create user-friendly guides.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ruvnet/claude-flow`",
+    "usage": "```\nCreate a claude-flow workflow to automate [PROCESS]. The workflow should include [NUMBER] agents with the following roles: [ROLES]. Each agent should have access to [RESOURCES] and follow these guidelines: [GUIDELINES]. Ensure the workflow can handle [SPECIFIC_SCENARIOS] and provide a summary report at the end.\n```\nCopy\n\n```\nWorkflow Name: Customer Support Automation\n\nAgents:\n1. Triage Agent: Classifies incoming support tickets based on urgency and topic.\n2. Research Agent: Gathers relevant information from knowledge base and previous cases.\n3. Resolution Agent: Provides solutions or escalates to human support when necessary.\n4. Follow-up Agent: Sends follow-up emails and checks customer satisfaction.\n\nWorkflow Steps:\n1. Triage Agent receives a new ticket: \"Issue with payment processing on order #12345\".\n2. Research Agent finds relevant articles and past cases about payment processing issues.\n3. Resolution Agent suggests checking the payment gateway connection and provides step-by-step troubleshooting.\n4. Follow-up Agent sends an email to the customer: \"We've identified the issue and our team is working on a fix. We'll keep you updated.\"\n\nSummary Report:\n- Total tickets processed: 5\n- Average resolution time: 2 hours 15 minutes\n- Escalations to human support: 1\n- Customer satisfaction rate: 92%\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-flow#main-content",
+      "claude-flow#overview",
+      "claude-flow#setup",
+      "claude-flow#examples",
+      "claude-flow#tools",
+      "claude-flow#mcp",
+      "claude-flow#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-flow là nền tảng điều phối agent hàng đầu được thiết kế riêng cho Claude, cho phép người dùng triển khai các multi-agent swarm thông minh để điều phối các workflow tự trị và xây dựng các hệ thống AI hội thoại phức tạp. Với kiến trúc chuẩn doanh nghiệp (enterprise-grade) và khả năng hỗ trợ native Claude Code qua giao thức MCP, claude-flow nổi bật là lựa chọn hàng đầu trong các framework dựa trên agent. Các tính năng nâng cao của nó, bao gồm trí tuệ bầy đàn phân tán và tích hợp RAG, giúp các đội ngũ tự động hóa các tác vụ phức tạp một cách liền mạch. Một trong những lợi ích chính khi sử dụng claude-flow là khả năng nâng cao đáng kể hiệu suất tự động hóa workflow. Bằng cách áp dụng skill này, các đội ngũ có thể tiết kiệm thời gian quý báu thông qua việc tự động hóa nhiều quy trình khác nhau. Ví dụ: việc code review có thể được tự động hóa bằng cách triển khai các agent chuyên dụng để đánh giá chất lượng code và đề xuất cải tiến, giúp rút ngắn thời gian hoàn thành và mang lại đầu ra chất lượng hơn. Ngoài ra, việc phối hợp các workflow kiểm thử (testing workflows) giữa nhiều agent đảm bảo độ bao phủ toàn diện và tăng tốc các vòng phản hồi (feedback loops) – điều tối quan trọng để duy trì tính toàn vẹn của phần mềm. Skill này đặc biệt hữu ích cho các lập trình viên, product manager và chuyên gia AI đang tìm cách tối ưu hóa workflow và nâng cao năng suất. Đây là giải pháp lý tưởng cho các đội ngũ phát triển phần mềm, DevOps và thiết kế hệ thống AI. Bằng cách tận dụng claude-flow, các tổ chức có thể thực hiện kiểm định bảo mật (security audits) thông qua các agent chuyên dụng để quét lỗ hổng bảo mật, hỗ trợ tự động tạo tài liệu và tối ưu hóa các pipeline triển khai, từ đó tinh giản toàn bộ quy trình phát triển. Dù việc triển khai claude-flow được xếp vào mức độ nâng cao, quá trình setup thông thường chỉ mất khoảng 30 phút. Người dùng nên có kiến thức nền tảng về tự động hóa AI và quản lý workflow để tối ưu hóa tối đa tiềm năng của skill này. Khi các tổ chức ngày càng áp dụng nhiều chiến lược ưu tiên AI (AI-first), claude-flow tích hợp liền mạch vào các workflow này, giúp các đội ngũ tận dụng sức mạnh của tự động hóa để tập trung vào các tác vụ có giá trị cao hơn.\nTự động hóa code review bằng cách triển khai các agent chuyên dụng để đánh giá chất lượng code và đề xuất cải tiến.\nPhối hợp các testing workflow giữa nhiều agent để đảm bảo độ bao phủ toàn diện và vòng phản hồi nhanh hơn.\nThực hiện kiểm định bảo mật bằng các agent chuyên dụng để quét lỗ hổng và các vấn đề tuân thủ trong các dự án phần mềm.\nHỗ trợ tạo tài liệu bằng cách sử dụng các agent để trích xuất thông tin từ codebase và tạo các tài liệu hướng dẫn thân thiện với người dùng.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ruvnet/claude-flow`",
+    "usage_vi": "```\nTạo một workflow claude-flow để tự động hóa [PROCESS]. Workflow này nên bao gồm [NUMBER] agent với các vai trò sau: [ROLES]. Mỗi agent cần có quyền truy cập vào [RESOURCES] và tuân thủ các nguyên tắc sau: [GUIDELINES]. Đảm bảo workflow có thể xử lý [SPECIFIC_SCENARIOS] và cung cấp một báo cáo tóm tắt ở cuối.\n```\nCopy\n\n```\nTên Workflow: Tự động hóa hỗ trợ khách hàng\n\nCác Agent:\n1. Triage Agent: Phân loại các ticket hỗ trợ gửi đến dựa trên mức độ khẩn cấp và chủ đề.\n2. Research Agent: Thu thập thông tin liên quan từ cơ sở tri thức (knowledge base) và các case trước đó.\n3. Resolution Agent: Cung cấp giải pháp hoặc chuyển tiếp (escalate) đến nhân viên hỗ trợ khi cần thiết.\n4. Follow-up Agent: Gửi email follow-up và kiểm tra mức độ hài lòng của khách hàng.\n\nCác bước trong Workflow:\n1. Triage Agent nhận được ticket mới: \"Gặp sự cố khi xử lý thanh toán cho đơn hàng #12345\".\n2. Research Agent tìm các bài viết liên quan và các case trước đó về sự cố xử lý thanh toán.\n3. Resolution Agent đề xuất kiểm tra kết nối cổng thanh toán và hướng dẫn khắc phục sự cố từng bước.\n4. Follow-up Agent gửi email cho khách hàng: \"Chúng tôi đã xác định được sự cố và đội ngũ đang tiến hành khắc phục. Chúng tôi sẽ tiếp tục cập nhật thông tin cho quý khách.\"\n\nBáo cáo tóm tắt:\n- Tổng số ticket đã xử lý: 5\n- Thời gian giải quyết trung bình: 2 giờ 15 phút\n- Số ca chuyển tiếp đến nhân viên hỗ trợ: 1\n- Tỷ lệ hài lòng của khách hàng: 92%\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:05.986551Z",
+    "http_status": 200,
+    "content_hash": "56bceddc7f29eccc922fff451c8e22edeea0d1cf2287bd16eaaa7b12bb9ec8cc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-flow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-flow.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-flow: Quy trình làm việc AI",
+  "short_description_vi": "🌊 Nền tảng điều phối agent hàng đầu dành cho Claude. Triển khai các multi-agent swarm thông minh, điều phối các workflow tự trị và xây dựng các hệ thống AI hội thoại. Nền tảng sở hữu kiến trúc chuẩn doanh nghiệp (enterprise-grade), trí tuệ bầy đàn phân tán (distributed swarm intelligence), tích hợp RAG và hỗ trợ Claude Code native qua giao thức MCP. Được xếp hạng #1 trong các framework dựa trên agent."
+}

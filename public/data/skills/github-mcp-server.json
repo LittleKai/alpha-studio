@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/github-mcp-server",
+  "slug": "github-mcp-server",
+  "name": "GitHub MCP Server",
+  "headline": "GitHub MCP Server - Official GitHub Integration",
+  "short_description": "The GitHub MCP Server is an official implementation designed to facilitate the management of GitHub's MCP (Multi-Channel Publishing) features. Built in Go, it offers strong functionality for developers looking to integrate with GitHub's publishing capabilities.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "github",
+  "install_command": "claude install github/github-mcp-server",
+  "source_repo_url": "https://github.com/github/github-mcp-server",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "development",
+    "Go",
+    "GitHub",
+    "MCP",
+    "server"
+  ],
+  "sections": {
+    "overview": "GitHub MCP Server is an official Model Context Protocol implementation built in Go that allows AI agents like Claude Code and Cursor to interact programmatically with GitHub. It provides tools for managing repositories, searching commits, handling issues and pull requests, and automating GitHub workflows. The server supports both local and remote configurations, making it flexible for different deployment scenarios. Developers can use this skill to enable AI agents to perform GitHub operations autonomously, from code review assistance to automated repository management. With over 860 commits and active development, it offers a stable foundation for GitHub-AI integrations.\nIntegrate MCP features into existing applications for enhanced content management.\nAutomate content publishing workflows to save time and reduce manual effort.\nEnhance collaboration on GitHub projects by streamlining multi-channel publishing.\nBuild custom tools for GitHub repositories that leverage MCP capabilities.",
+    "setup": "Terminal\nCopy\n`claude install github/github-mcp-server`\n`git clone https://github.com/github/github-mcp-server`",
+    "usage": "```\nSet up a GitHub MCP Server for [PROJECT_NAME] to manage multi-channel publishing. The server should support [NUMBER] channels and integrate with [SPECIFIC_TOOLS]. Provide a step-by-step guide for deployment and configuration, including any necessary dependencies and environment variables.\n```\nCopy\n\n```\nTo set up a GitHub MCP Server for the 'E-commerce Platform' project, follow these steps:\n\n1. **Prerequisites**: Ensure you have Go installed (version 1.16 or later) and a GitHub account with appropriate permissions.\n2. **Clone the Repository**: Clone the official GitHub MCP Server repository from GitHub.\n3. **Configuration**: Create a `.env` file in the root directory and add the following environment variables:\n   - `GITHUB_TOKEN`: Your GitHub personal access token.\n   - `CHANNELS`: The number of channels you want to support (e.g., 5).\n   - `INTEGRATION_TOOLS`: Specify the tools you want to integrate (e.g., Slack, Trello).\n4. **Build and Run**: Use the command `go build` to compile the server and `go run main.go` to start it.\n5. **Deployment**: Deploy the server on a cloud platform like AWS or Azure for scalability and reliability.\n\nThe server will now be ready to manage multi-channel publishing for your project, ensuring seamless integration with your specified tools.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "github-mcp-server#main-content",
+      "github-mcp-server#overview",
+      "github-mcp-server#setup",
+      "github-mcp-server#examples",
+      "github-mcp-server#tools",
+      "github-mcp-server#mcp",
+      "github-mcp-server#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "GitHub MCP Server là phiên bản triển khai Model Context Protocol chính thức được xây dựng bằng Go, cho phép các AI agent như Claude Code và Cursor tương tác với GitHub thông qua lập trình. Nó cung cấp các công cụ để quản lý repository, tìm kiếm commit, xử lý issue và pull request, cũng như tự động hóa quy trình làm việc trên GitHub. Server hỗ trợ cả cấu hình local và remote, mang lại sự linh hoạt cho nhiều kịch bản triển khai khác nhau. Các lập trình viên có thể sử dụng skill này để cho phép các AI agent thực hiện các tác vụ GitHub một cách tự động, từ hỗ trợ review code cho đến quản lý repository tự động. Với hơn 860 commit và tiến trình phát triển tích cực, dự án này cung cấp một nền tảng ổn định cho việc tích hợp giữa GitHub và AI.\nTích hợp các tính năng MCP vào các ứng dụng hiện có để tối ưu hóa việc quản lý nội dung.\nTự động hóa quy trình xuất bản nội dung nhằm tiết kiệm thời gian và giảm thiểu thao tác thủ công.\nTăng cường cộng tác trên các dự án GitHub bằng cách hợp lý hóa quy trình xuất bản đa kênh (multi-channel publishing).\nXây dựng các công cụ tùy chỉnh cho các repository GitHub tận dụng khả năng của MCP.",
+    "setup_vi": "Terminal\nSao chép\n`claude install github/github-mcp-server`\n`git clone https://github.com/github/github-mcp-server`",
+    "usage_vi": "```\nThiết lập GitHub MCP Server cho [PROJECT_NAME] để quản lý quy trình xuất bản đa kênh. Server cần hỗ trợ [NUMBER] kênh và tích hợp với [SPECIFIC_TOOLS]. Hãy cung cấp hướng dẫn từng bước để triển khai và cấu hình, bao gồm mọi dependency và biến môi trường cần thiết.\n```\nSao chép\n\n```\nĐể thiết lập GitHub MCP Server cho dự án 'E-commerce Platform', hãy thực hiện theo các bước sau:\n\n1. **Điều kiện tiên quyết**: Đảm bảo bạn đã cài đặt Go (phiên bản 1.16 trở lên) và có tài khoản GitHub với các quyền hạn phù hợp.\n2. **Clone Repository**: Clone repository chính thức của GitHub MCP Server từ GitHub.\n3. **Cấu hình**: Tạo một file `.env` ở thư mục gốc và thêm các biến môi trường sau:\n   - `GITHUB_TOKEN`: Personal access token của bạn trên GitHub.\n   - `CHANNELS`: Số lượng kênh bạn muốn hỗ trợ (ví dụ: 5).\n   - `INTEGRATION_TOOLS`: Chỉ định các công cụ bạn muốn tích hợp (ví dụ: Slack, Trello).\n4. **Build và Chạy**: Sử dụng lệnh `go build` để biên dịch server và `go run main.go` để khởi chạy.\n5. **Triển khai**: Triển khai server trên một nền tảng đám mây như AWS hoặc Azure để đảm bảo khả năng mở rộng và độ tin cậy.\n\nGiờ đây, server đã sẵn sàng để quản lý quy trình xuất bản đa kênh cho dự án của bạn, đảm bảo tích hợp liền mạch với các công cụ đã được chỉ định.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:14:09.771428Z",
+    "http_status": 200,
+    "content_hash": "02f767a946f9742eebbe14b7d491e5f57612aa7fa00e69b763660140a6633e0e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GitHub MCP Server - Tích hợp GitHub chính thức",
+  "short_description_vi": "GitHub MCP Server là phiên bản triển khai chính thức được thiết kế nhằm tối ưu hóa việc quản lý các tính năng MCP (Multi-Channel Publishing) của GitHub. Được phát triển bằng Go, công cụ này mang lại hiệu năng mạnh mẽ cho các lập trình viên muốn tích hợp các tính năng xuất bản của GitHub."
+}

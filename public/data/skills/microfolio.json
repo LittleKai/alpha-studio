@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/microfolio",
+  "slug": "microfolio",
+  "name": "Microfolio",
+  "headline": "Microfolio - Static Portfolio Generator",
+  "short_description": "Microfolio is a static portfolio generator for creatives. It uses SvelteKit 2 and Tailwind CSS 4 to create portfolios from Markdown files. Ideal for designers, artists, and architects who need a simple, customizable portfolio solution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "aker-dev",
+  "install_command": "git clone https://github.com/aker-dev/microfolio.git",
+  "source_repo_url": "https://github.com/aker-dev/microfolio",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "svelte",
+    "sveltejs",
+    "tailwindcss-v4",
+    "portfolio-project",
+    "tailwindcss",
+    "designer",
+    "portfolio-template",
+    "portfolio-website",
+    "sveltekit",
+    "claude-code",
+    "tailwind",
+    "svelte5",
+    "portfolio-site"
+  ],
+  "sections": {
+    "overview": "Microfolio is a file-based portfolio generator that eliminates the need for databases by organizing projects as folders and Markdown files. Built with SvelteKit 2 and Tailwind CSS 4, it offers multiple viewing modes—grid, list, and interactive map—along with smart tagging, EXIF/IPTC metadata extraction, and a responsive mobile-first design. The tool includes dark mode, image optimization with WebP thumbnail generation, shareable URLs with synced filters, and internationalization support for English and French. Ideal for creatives who need a fast, customizable, and professionally deployed portfolio without backend complexity.\nDesigner portfolios with project galleries and client filtering\nArchitect portfolios showcasing geolocated projects on interactive maps\nArtist portfolios with image metadata and lightbox galleries\nPhotography portfolios with EXIF data display and dark mode",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aker-dev/microfolio`",
+    "usage": "```\nGenerate a static portfolio website for [CREATIVE_NAME] using Microfolio. Include sections for [PROJECT_TYPES, e.g., graphic design, architecture, photography]. Use [STYLE_THEME, e.g., minimalist, dark mode, vibrant] with [COLOR_PALETTE, e.g., monochrome, pastel, high contrast]. Structure the portfolio with [SECTIONS, e.g., about, projects, contact, blog]. Export the complete codebase as a ZIP file ready for deployment to [HOSTING_PLATFORM, e.g., Vercel, Netlify, GitHub Pages].\n```\nCopy\n\n```\nHere’s a complete Microfolio portfolio for **Lena Chen**, a graphic designer specializing in branding and typography. The portfolio follows a **minimalist dark mode** theme with a **monochrome color palette**, featuring sections for **About**, **Projects**, **Contact**, and a **Blog** for case studies.\n\n**File Structure:**\n```\nmy-microfolio/\n├── src/\n│   ├── lib/\n│   │   ├── components/\n│   │   │   ├── ProjectCard.svelte\n│   │   │   ├── Nav.svelte\n│   │   │   └── Footer.svelte\n│   │   ├── content/\n│   │   │   ├── projects/\n│   │   │   │   ├── brand-identity.md\n│   │   │   │   ├── packaging-design.md\n│   │   │   │   └── web-ui.md\n│   │   │   └── about.md\n│   │   └── styles/\n│   │       └── theme.css\n│   ├── routes/\n│   │   ├── +page.svelte\n│   │   ├── projects/\n│   │   │   └── +page.svelte\n│   │   ├── about/+page.svelte\n│   │   ├── contact/+page.svelte\n│   │   └── blog/+page.svelte\n│   └── app.html\n├── static/\n│   └── favicon.ico\n├── package.json\n└── tailwind.config.js\n```\n\n**Key Features:**\n- **Projects Section:** Displays Lena’s work with high-resolution images, descriptions, and project tags (e.g., *Branding*, *Typography*, *Packaging*). Each project links to a detailed case study in the blog.\n- **About Section:** A concise bio with a professional photo and a downloadable PDF resume.\n- **Contact Section:** Includes a form for inquiries, social media links (Instagram, Behance, LinkedIn), and an email address.\n- **Blog Section:** Features 3 case studies (e.g., *Rebranding for EcoStart*, *Typography System for TechCorp*) with markdown support for easy updates.\n- **Responsive Design:** Optimized for mobile, tablet, and desktop with smooth transitions and a sticky navigation bar.\n\n**Deployment:**\n1. Run `npm install` to install dependencies.\n2. Execute `npm run dev` to preview locally.\n3. Push the code to GitHub and deploy to Vercel with zero configuration.\n\nThe ZIP file includes all assets, optimized images, and a `README.md` with setup instructions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "microfolio#main-content",
+      "microfolio#overview",
+      "microfolio#setup",
+      "microfolio#examples",
+      "microfolio#tools",
+      "microfolio#mcp",
+      "microfolio#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Microfolio là trình tạo portfolio hoạt động dựa trên tệp tin (file-based), giúp loại bỏ nhu cầu sử dụng cơ sở dữ liệu bằng cách tổ chức các dự án dưới dạng thư mục và file Markdown. Được xây dựng với SvelteKit 2 và Tailwind CSS 4, công cụ này cung cấp nhiều chế độ xem như dạng lưới (grid), danh sách (list) và bản đồ tương tác (interactive map), đi kèm với tính năng gắn thẻ thông minh (smart tagging), trích xuất siêu dữ liệu EXIF/IPTC và thiết kế responsive ưu tiên thiết bị di động (mobile-first). Công cụ tích hợp sẵn chế độ tối (dark mode), tối ưu hóa hình ảnh với khả năng tạo thumbnail WebP, chia sẻ URL đồng bộ bộ lọc, và hỗ trợ đa ngôn ngữ (tiếng Anh và tiếng Pháp). Đây là giải pháp lý tưởng cho các nhà sáng tạo cần một trang portfolio nhanh, dễ tùy biến và triển khai chuyên nghiệp mà không gặp phải sự phức tạp từ phía backend.\nPortfolio dành cho nhà thiết kế (designer) với thư viện dự án và bộ lọc khách hàng\nPortfolio dành cho kiến trúc sư với các dự án được định vị địa lý trên bản đồ tương tác\nPortfolio dành cho nghệ sĩ với siêu dữ liệu hình ảnh và thư viện lightbox\nPortfolio dành cho nhiếp ảnh gia với hiển thị dữ liệu EXIF và chế độ tối (dark mode)",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/aker-dev/microfolio`",
+    "usage_vi": "```\nGenerate a static portfolio website for [CREATIVE_NAME] using Microfolio. Include sections for [PROJECT_TYPES, e.g., graphic design, architecture, photography]. Use [STYLE_THEME, e.g., minimalist, dark mode, vibrant] with [COLOR_PALETTE, e.g., monochrome, pastel, high contrast]. Structure the portfolio with [SECTIONS, e.g., about, projects, contact, blog]. Export the complete codebase as a ZIP file ready for deployment to [HOSTING_PLATFORM, e.g., Vercel, Netlify, GitHub Pages].\n```\nSao chép\n\n```\nDưới đây là trang portfolio hoàn chỉnh bằng Microfolio của **Lena Chen**, một nhà thiết kế đồ họa chuyên về nhận diện thương hiệu và typography. Trang portfolio này sử dụng theme **tối giản với chế độ tối (minimalist dark mode)** kết hợp bảng màu **đơn sắc (monochrome)**, bao gồm các phần **Giới thiệu (About)**, **Dự án (Projects)**, **Liên hệ (Contact)**, và một trang **Blog** để chia sẻ các bài viết phân tích (case studies).\n\n**Cấu trúc thư mục:**\n```\nmy-microfolio/\n├── src/\n│   ├── lib/\n│   │   ├── components/\n│   │   │   ├── ProjectCard.svelte\n│   │   │   ├── Nav.svelte\n│   │   │   └── Footer.svelte\n│   │   ├── content/\n│   │   │   ├── projects/\n│   │   │   │   ├── brand-identity.md\n│   │   │   │   ├── packaging-design.md\n│   │   │   │   └── web-ui.md\n│   │   │   └── about.md\n│   │   └── styles/\n│   │       └── theme.css\n│   ├── routes/\n│   │   ├── +page.svelte\n│   │   ├── projects/\n│   │   │   └── +page.svelte\n│   │   ├── about/+page.svelte\n│   │   ├── contact/+page.svelte\n│   │   └── blog/+page.svelte\n│   └── app.html\n├── static/\n│   └── favicon.ico\n├── package.json\n└── tailwind.config.js\n```\n\n**Các tính năng chính:**\n- **Phần Dự án (Projects):** Hiển thị các tác phẩm của Lena với hình ảnh độ phân giải cao, mô tả và các tag dự án (ví dụ: *Branding*, *Typography*, *Packaging*). Mỗi dự án sẽ liên kết đến một bài phân tích chi tiết (case study) trong blog.\n- **Phần Giới thiệu (About):** Phần giới thiệu bản thân ngắn gọn kèm ảnh chân dung chuyên nghiệp và file PDF CV có thể tải xuống.\n- **Phần Liên hệ (Contact):** Bao gồm form gửi yêu cầu, các liên kết mạng xã hội (Instagram, Behance, LinkedIn) và địa chỉ email.\n- **Phần Blog:** Gồm 3 bài viết phân tích case study (ví dụ: *Rebranding for EcoStart*, *Typography System for TechCorp*) có hỗ trợ định dạng Markdown giúp cập nhật nội dung dễ dàng.\n- **Thiết kế Responsive:** Được tối ưu hóa cho thiết bị di động, máy tính bảng và máy tính để bàn với hiệu ứng chuyển cảnh mượt mà và thanh điều hướng cố định (sticky navigation bar).\n\n**Triển khai:**\n1. Chạy lệnh `npm install` để cài đặt các package phụ thuộc.\n2. Chạy lệnh `npm run dev` để xem trước ở local.\n3. Push code lên GitHub và triển khai lên Vercel mà không cần cấu hình phức tạp (zero configuration).\n\nFile ZIP bao gồm toàn bộ tài nguyên (assets), hình ảnh đã tối ưu hóa và một file `README.md` hướng dẫn cài đặt.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:15:54.334869Z",
+    "http_status": 200,
+    "content_hash": "4cec4b054c1ec42060aa4e1bbb69dc01a4dd80141f9a8bc6400d3435a2367f05",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\microfolio.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\microfolio.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Microfolio - Trình tạo portfolio tĩnh",
+  "short_description_vi": "Microfolio là trình tạo portfolio tĩnh dành cho những người làm sáng tạo. Công cụ này sử dụng SvelteKit 2 và Tailwind CSS 4 để tạo các trang portfolio từ các file Markdown. Đây là giải pháp lý tưởng cho các nhà thiết kế, nghệ sĩ và kiến trúc sư cần một trang portfolio đơn giản, dễ tùy biến."
+}

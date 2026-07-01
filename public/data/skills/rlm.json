@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rlm",
+  "slug": "rlm",
+  "name": "rlm",
+  "headline": "RLM - Handle Massive Contexts for Claude Code",
+  "short_description": "Recursive Language Model patterns for Claude Code enable handling massive contexts (10M+ tokens) by treating them as external variables. Ideal for operations teams managing large datasets, it integrates with Claude Code to analyze extensive files without direct tool calls.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "richardwhiteii",
+  "install_command": "git clone https://github.com/richardwhiteii/rlm.git",
+  "source_repo_url": "https://github.com/richardwhiteii/rlm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "claude-code",
+    "context-management",
+    "recursive-language-model",
+    "llm",
+    "claude"
+  ],
+  "sections": {
+    "overview": "RLM (Recursive Language Model) is an MCP server that allows Claude Code to process massive contexts—up to 10M+ tokens—by loading files as external variables rather than injecting them directly into prompts. Instead of reading large files into context, Claude uses RLM tools behind the scenes to chunk content strategically, run sub-queries on sections, and aggregate results. This approach handles extensive logs, datasets, and codebases without context overflow. You simply ask Claude to analyze a large file, and RLM manages the decomposition automatically. It's designed for operations teams, data analysts, and developers who need to work with files too large for conventional LLM processing.\nAnalyze multi-megabyte log files for error patterns without context limits\nExtract structured data from large datasets using regex and Python execution\nPerform security audits on extensive codebases by chunking and querying sections\nSummarize large documentation or prose files by breaking them into manageable pieces",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/richardwhiteii/rlm`",
+    "usage": "```\nUse rlm to analyze the [LARGE_DATASET] in [FILE_PATH] by treating it as an external variable. Identify [SPECIFIC_PATTERNS] within the dataset and summarize key insights in a structured format. Focus on [TARGET_AREAS] such as anomalies, trends, or outliers. Provide actionable recommendations based on your findings.\n```\nCopy\n\n```\nAfter processing the 12.5M-token dataset in `customer_transactions_2023.json`, the rlm identified three critical patterns:\n\n1. **Fraudulent Activity Spike**: 18% of transactions in Q3 2023 exhibited synthetic behavior, with 92% originating from a single IP range (192.168.1.x). The average transaction value in this cluster was $1,245, compared to $89 for legitimate transactions. The pattern suggests a coordinated attack leveraging stolen credit card data.\n\n2. **Seasonal Demand Shift**: Customer purchases for [PRODUCT_CATEGORY_X] surged by 340% during the holiday season (Nov-Dec 2023), with a 67% drop-off in January. This aligns with historical trends but requires inventory adjustments for 2024 to avoid stockouts.\n\n3. **High-Value Customer Attrition**: 12% of customers with >$10K annual spend reduced their activity by 40% in the last 6 months. Further analysis shows 78% of these customers interacted with competitor promotions via email campaigns.\n\n**Recommendations**:\n- Deploy real-time fraud detection for transactions >$1K from the 192.168.1.x IP range.\n- Increase [PRODUCT_CATEGORY_X] stock by 25% for Q4 2024 and pre-negotiate supplier lead times.\n- Launch a win-back campaign targeting high-value customers with personalized offers, including a 15% discount on their next purchase.\n\n*Note: The full dataset was processed in 4.2 minutes using rlm, with no direct tool calls to the file system.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "rlm#main-content",
+      "rlm#overview",
+      "rlm#setup",
+      "rlm#examples",
+      "rlm#tools",
+      "rlm#mcp",
+      "rlm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "RLM (Recursive Language Model) is an MCP server that allows Claude Code to process massive contexts—up to 10M+ tokens—by loading files as external variables rather than injecting them directly into prompts. Instead of reading large files into context, Claude uses RLM tools behind the scenes to chunk content strategically, run sub-queries on sections, and aggregate results. This approach handles extensive logs, datasets, and codebases without context overflow. You simply ask Claude to analyze a large file, and RLM manages the decomposition automatically. It's designed for operations teams, data analysts, and developers who need to work with files too large for conventional LLM processing.\nAnalyze multi-megabyte log files for error patterns without context limits\nExtract structured data from large datasets using regex and Python execution\nPerform security audits on extensive codebases by chunking and querying sections\nSummarize large documentation or prose files by breaking them into manageable pieces",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/richardwhiteii/rlm`",
+    "usage_vi": "```\nUse rlm to analyze the [LARGE_DATASET] in [FILE_PATH] by treating it as an external variable. Identify [SPECIFIC_PATTERNS] within the dataset and summarize key insights in a structured format. Focus on [TARGET_AREAS] such as anomalies, trends, or outliers. Provide actionable recommendations based on your findings.\n```\nCopy\n\n```\nAfter processing the 12.5M-token dataset in `customer_transactions_2023.json`, the rlm identified three critical patterns:\n\n1. **Fraudulent Activity Spike**: 18% of transactions in Q3 2023 exhibited synthetic behavior, with 92% originating from a single IP range (192.168.1.x). The average transaction value in this cluster was $1,245, compared to $89 for legitimate transactions. The pattern suggests a coordinated attack leveraging stolen credit card data.\n\n2. **Seasonal Demand Shift**: Customer purchases for [PRODUCT_CATEGORY_X] surged by 340% during the holiday season (Nov-Dec 2023), with a 67% drop-off in January. This aligns with historical trends but requires inventory adjustments for 2024 to avoid stockouts.\n\n3. **High-Value Customer Attrition**: 12% of customers with >$10K annual spend reduced their activity by 40% in the last 6 months. Further analysis shows 78% of these customers interacted with competitor promotions via email campaigns.\n\n**Recommendations**:\n- Deploy real-time fraud detection for transactions >$1K from the 192.168.1.x IP range.\n- Increase [PRODUCT_CATEGORY_X] stock by 25% for Q4 2024 and pre-negotiate supplier lead times.\n- Launch a win-back campaign targeting high-value customers with personalized offers, including a 15% discount on their next purchase.\n\n*Note: The full dataset was processed in 4.2 minutes using rlm, with no direct tool calls to the file system.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:37:19.637993Z",
+    "http_status": 200,
+    "content_hash": "432936f3a673ba5677c9d9250b25057720118138b07cc14355f5786623005329",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rlm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rlm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "RLM - Handle Massive Contexts for Claude Code",
+  "short_description_vi": "Recursive Language Model patterns for Claude Code enable handling massive contexts (10M+ tokens) by treating them as external variables. Ideal for operations teams managing large datasets, it integrates with Claude Code to analyze extensive files without direct tool calls."
+}

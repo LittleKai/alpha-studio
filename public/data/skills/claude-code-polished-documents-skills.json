@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-polished-documents-skills",
+  "slug": "claude-code-polished-documents-skills",
+  "name": "Claude Code Polished Documents Skills",
+  "headline": "Claude Code document skills with theme styling",
+  "short_description": "A comprehensive collection of Claude Code skills for document generation, styling, and manipulation. Includes Document Polisher with 10 premium brand themes (McKinsey, Deloitte, Stripe, Apple, Notion, etc.) plus docx, pdf, xlsx, pptx skills.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "promptadvisers",
+  "install_command": "git clone https://github.com/promptadvisers/claude-code-polished-documents-skills.git",
+  "source_repo_url": "https://github.com/promptadvisers/claude-code-polished-documents-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Transform plain documents into professionally-styled reports using 10 premium brand themes including McKinsey, Deloitte, Stripe, Apple, Notion, Figma, The Economist, KPMG, IBM, and Linear. The Document Polisher skill applies consistent brand aesthetics—typography, colors, and formatting—to your documents in seconds. Beyond styling, this collection includes dedicated skills for creating and editing Word documents (DOCX), PDFs, Excel spreadsheets (XLSX), and PowerPoint presentations (PPTX). Extract custom brand themes directly from websites using FireCrawl MCP integration. Ideal for consultants, executives, developers, and teams who need polished, on-brand documents without manual formatting.\nApply McKinsey or Deloitte styling to strategy reports and executive summaries\nConvert plain documents into Apple or Stripe branded technical documentation\nCreate Notion-styled wikis and project documentation\nGenerate and format spreadsheets with XLSX skill",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/promptadvisers/claude-code-polished-documents-skills`",
+    "usage": "```\nGenerate a polished [DOCUMENT_TYPE] document using the [BRAND_THEME] theme. The document should include: 1) A professional title page with [TITLE], 2) A structured table of contents, 3) [SECTION_TITLE] section with [CONTENT], 4) A visually styled conclusion with [FINAL_MESSAGE]. Format the document as a [DOCUMENT_TYPE] file (e.g., .docx, .pdf, .pptx, .xlsx) and apply the [BRAND_THEME] styling (e.g., McKinsey, Deloitte, Stripe, Apple, Notion). Use [TONE] tone (e.g., formal, persuasive, technical).\n```\nCopy\n\n```\n```\n**Document Generated: Quarterly Financial Review Report (Q3 2023)**\n\n**Brand Theme Applied:** McKinsey (Professional, minimalist design with blue accents)\n**Document Type:** .docx\n**Tone:** Formal and data-driven\n\n---\n\n**Title Page:**\n*Quarterly Financial Review Report*\n*Q3 2023*\n*Prepared for: Acme Corporation Board of Directors*\n*Date: October 15, 2023*\n\n---\n\n**Table of Contents:**\n1. Executive Summary .................................. 3\n2. Key Financial Metrics .............................. 4\n3. Revenue Analysis .................................. 5\n4. Cost Optimization Insights ........................ 7\n5. Strategic Recommendations ........................ 9\n6. Conclusion ........................................ 10\n\n---\n\n**Section: Revenue Analysis**\n\n**Revenue Growth:**\n- Q3 2023 Revenue: $12.4M (up 18% YoY)\n- Top-Performing Segment: Enterprise Solutions ($5.2M, +22% YoY)\n- Emerging Market Contribution: 12% of total revenue\n\n**Visualization:**\nA bar chart comparing Q3 2023 revenue by segment (Enterprise, SMB, Consumer) with McKinsey-style color palette (navy, teal, gray).\n\n**Insights:**\n- Enterprise segment shows strongest growth due to new client onboarding.\n- SMB revenue declined 5% due to seasonal slowdown in retail.\n- Consumer segment remains stable with 3% growth.\n\n---\n\n**Conclusion:**\n\"Based on the Q3 2023 financial performance, Acme Corporation is on track to exceed annual targets. The Enterprise Solutions segment’s growth outpaces projections, while cost optimization initiatives in SMB operations show early signs of stabilization. Recommend prioritizing Enterprise client acquisition and refining SMB engagement strategies for Q4.\"\n\n**Styling Applied:**\n- Font: Calibri (McKinsey standard)\n- Headers: Bold, navy blue, 14pt\n- Body text: 11pt, justified\n- Charts: McKinsey color palette (navy, teal, gray)\n- Margins: 1 inch, professional spacing\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-polished-documents-skills#main-content",
+      "claude-code-polished-documents-skills#overview",
+      "claude-code-polished-documents-skills#setup",
+      "claude-code-polished-documents-skills#examples",
+      "claude-code-polished-documents-skills#tools",
+      "claude-code-polished-documents-skills#mcp",
+      "claude-code-polished-documents-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Biến các tài liệu thô thành báo cáo được thiết kế chuyên nghiệp bằng cách sử dụng 10 theme thương hiệu cao cấp bao gồm McKinsey, Deloitte, Stripe, Apple, Notion, Figma, The Economist, KPMG, IBM và Linear. Skill Document Polisher áp dụng tính thẩm mỹ thương hiệu nhất quán — từ typography, màu sắc cho đến định dạng — cho tài liệu của bạn chỉ trong vài giây. Bên cạnh việc căn chỉnh thẩm mỹ, bộ sưu tập này còn bao gồm các skill chuyên dụng để tạo và chỉnh sửa tài liệu Word (DOCX), PDF, bảng tính Excel (XLSX) và bản thuyết trình PowerPoint (PPTX). Bạn cũng có thể trích xuất các theme thương hiệu tùy chỉnh trực tiếp từ website thông qua tích hợp FireCrawl MCP. Đây là giải pháp lý tưởng cho các nhà tư vấn, quản lý, nhà phát triển và các đội ngũ cần tạo ra những tài liệu chỉn chu, đúng nhận diện thương hiệu mà không cần tốn thời gian định dạng thủ công.\n\nÁp dụng phong cách thiết kế McKinsey hoặc Deloitte cho báo cáo chiến lược và tóm tắt dự án\nChuyển đổi tài liệu thô thành tài liệu kỹ thuật mang nhận diện thương hiệu Apple hoặc Stripe\nTạo các trang wiki và tài liệu dự án theo phong cách Notion\nTạo và định dạng bảng tính nhanh chóng với skill XLSX",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/promptadvisers/claude-code-polished-documents-skills`",
+    "usage_vi": "```\nTạo tài liệu [DOCUMENT_TYPE] chuyên nghiệp sử dụng theme [BRAND_THEME]. Tài liệu cần bao gồm: 1) Trang tiêu đề chuyên nghiệp với [TITLE], 2) Mục lục có cấu trúc rõ ràng, 3) Phần [SECTION_TITLE] chứa [CONTENT], 4) Phần kết luận được định dạng đẹp mắt với [FINAL_MESSAGE]. Định dạng tài liệu dưới dạng file [DOCUMENT_TYPE] (ví dụ: .docx, .pdf, .pptx, .xlsx) và áp dụng style của [BRAND_THEME] (ví dụ: McKinsey, Deloitte, Stripe, Apple, Notion). Sử dụng giọng văn [TONE] (ví dụ: formal, persuasive, technical).\n```\nCopy\n\n```\n```\n**Tài liệu đã tạo: Báo cáo Đánh giá Tài chính Quý (Q3 2023)**\n\n**Theme áp dụng:** McKinsey (Thiết kế chuyên nghiệp, tối giản với tone màu xanh dương làm điểm nhấn)\n**Loại tài liệu:** .docx\n**Giọng văn:** Trang trọng và dựa trên dữ liệu\n\n---\n\n**Trang tiêu đề:**\n*Quarterly Financial Review Report*\n*Q3 2023*\n*Prepared for: Acme Corporation Board of Directors*\n*Date: October 15, 2023*\n\n---\n\n**Mục lục:**\n1. Tóm tắt dự án .................................. 3\n2. Các chỉ số tài chính chính .............................. 4\n3. Phân tích doanh thu .................................. 5\n4. Đánh giá tối ưu hóa chi phí ........................ 7\n5. Khuyến nghị chiến lược ........................ 9\n6. Kết luận ........................................ 10\n\n---\n\n**Phần: Phân tích doanh thu**\n\n**Tăng trưởng doanh thu:**\n- Doanh thu Q3 2023: 12,4 triệu USD (tăng 18% so với cùng kỳ năm ngoái - YoY)\n- Phân khúc hiệu quả nhất: Enterprise Solutions (5,2 triệu USD, +22% YoY)\n- Đóng góp từ thị trường mới nổi: 12% tổng doanh thu\n\n**Trực quan hóa:**\nBiểu đồ cột so sánh doanh thu Q3 2023 theo phân khúc (Enterprise, SMB, Consumer) sử dụng bảng màu chuẩn McKinsey (xanh navy, xanh mòng két, xám).\n\n**Nhận định:**\n- Phân khúc Enterprise tăng trưởng mạnh nhất nhờ có thêm khách hàng mới.\n- Doanh thu từ nhóm SMB giảm 5% do ảnh hưởng theo mùa của ngành bán lẻ.\n- Phân khúc Consumer duy trì ổn định với mức tăng trưởng 3%.\n\n---\n\n**Kết luận:**\n\"Dựa trên kết quả tài chính Q3 2023, Acme Corporation đang đi đúng hướng để vượt mục tiêu năm. Sự tăng trưởng của phân khúc Enterprise Solutions vượt ngoài mong đợi, trong khi các sáng kiến tối ưu hóa chi phí ở nhóm SMB bắt đầu có dấu hiệu ổn định. Khuyến nghị ưu tiên thu hút khách hàng Enterprise và tối ưu chiến lược tiếp cận SMB trong Q4.\"\n\n**Định dạng được áp dụng:**\n- Font chữ: Calibri (chuẩn McKinsey)\n- Tiêu đề: In đậm, màu xanh navy, 14pt\n- Văn bản thường: 11pt, căn đều hai bên (justified)\n- Biểu đồ: Bảng màu McKinsey (xanh navy, xanh mòng két, xám)\n- Căn lề: 1 inch, khoảng cách dòng chuyên nghiệp\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:56:08.368384Z",
+    "http_status": 200,
+    "content_hash": "480fa12f8ebbbf0b3ec6a7106b415857bac33fc9b560be93e80a3ef12aaaeb66",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-polished-documents-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-polished-documents-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ skill định dạng tài liệu theo theme cho Claude Code",
+  "short_description_vi": "Bộ sưu tập toàn diện các skill Claude Code hỗ trợ tạo, định dạng và xử lý tài liệu. Bao gồm công cụ Document Polisher với 10 theme thương hiệu cao cấp (McKinsey, Deloitte, Stripe, Apple, Notion...) cùng các skill xử lý file docx, pdf, xlsx và pptx."
+}

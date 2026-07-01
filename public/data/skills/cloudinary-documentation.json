@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cloudinary-documentation",
+  "slug": "cloudinary-documentation",
+  "name": "Cloudinary Documentation",
+  "headline": "Cloudinary Documentation: AI Integration Guide",
+  "short_description": "Helps developers integrate Cloudinary into their applications with documentation and code examples from the Cloudinary documentation. This skill is beneficial for users needing guidance on image and video upload, management, and transformation.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "cloudinary-devs",
+  "install_command": "git clone https://github.com/cloudinary-devs/skills",
+  "source_repo_url": "https://github.com/cloudinary-devs/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "documentation",
+    "cloudinary"
+  ],
+  "sections": {
+    "overview": "The Cloudinary Documentation skill equips AI coding assistants with access to current Cloudinary documentation pages to answer technical questions and generate correct integration code. It selects the most relevant markdown documentation using the latest llms.txt index, enabling accurate guidance on image and video uploads, asset management, and media transformations. Developers using Claude Code, Cursor, or other AI agents benefit from real documentation references rather than hallucinated code, ensuring best practices and syntactic correctness. The skill fires automatically when you ask Cloudinary-related questions or request code integration, reducing lookup time and improving code quality.\nAnswering questions about Cloudinary SDKs and APIs\nImplementing image/video upload functionality\nLooking up specific Cloudinary API endpoints\nTroubleshooting Cloudinary integration issues",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/cloudinary-devs/skills --skill cloudinary-docs`\n`git clone https://github.com/cloudinary-devs/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "cloudinary-documentation#main-content",
+      "cloudinary-documentation#overview",
+      "cloudinary-documentation#setup",
+      "cloudinary-documentation#examples",
+      "cloudinary-documentation#related",
+      "explain-code",
+      "wds-documentation-navigator",
+      "mintlify"
+    ],
+    "overview_vi": "Skill Cloudinary Documentation cung cấp cho các AI coding assistant quyền truy cập vào tài liệu Cloudinary mới nhất để giải đáp thắc mắc kỹ thuật và tạo mã tích hợp chính xác. Skill này tự động lựa chọn các tài liệu markdown phù hợp nhất thông qua file chỉ mục llms.txt mới nhất, hỗ trợ hướng dẫn chuẩn xác về tải lên hình ảnh/video, quản lý asset và biến đổi media (transformation). Các lập trình viên sử dụng Claude Code, Cursor hoặc các AI agent khác sẽ được tham chiếu tài liệu thực tế thay vì code tự suy diễn (hallucination), đảm bảo tuân thủ các best practice và đúng cú pháp. Skill sẽ tự động kích hoạt khi bạn đặt câu hỏi liên quan đến Cloudinary hoặc yêu cầu tích hợp code, giúp tiết kiệm thời gian tra cứu và tối ưu hóa chất lượng code.\n\n- Trả lời các câu hỏi về SDK và API của Cloudinary\n- Triển khai tính năng tải lên hình ảnh/video\n- Tra cứu các endpoint API cụ thể của Cloudinary\n- Khắc phục sự cố trong quá trình tích hợp Cloudinary",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/cloudinary-devs/skills --skill cloudinary-docs`\n`git clone https://github.com/cloudinary-devs/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:38:29.513571Z",
+    "http_status": 200,
+    "content_hash": "6d35ad4fc981f105970ae272c425a3ead7c2d8cac1bfb373b9ed5fe3a136e465",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cloudinary-documentation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cloudinary-documentation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tài liệu Cloudinary: Hướng dẫn tích hợp AI",
+  "short_description_vi": "Hỗ trợ lập trình viên tích hợp Cloudinary vào ứng dụng bằng tài liệu và ví dụ code thực tế từ Cloudinary. Skill này cực kỳ hữu ích cho các nhà phát triển cần hướng dẫn về cách tải lên, quản lý và biến đổi hình ảnh cũng như video."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/contentta-nx",
+  "slug": "contentta-nx",
+  "name": "Contentta-nx",
+  "headline": "Contentta-nx - Blog Automation Platform",
+  "short_description": "Contentta-nx is an open-source blog automation platform that enables marketing teams to generate, manage, and publish content efficiently. It connects to supported AI agents for content generation and integrates with headless CMS systems for content management. Ideal for SEO-focused marketing departments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "F-O-T",
+  "install_command": "git clone https://github.com/F-O-T/contentta-nx.git",
+  "source_repo_url": "https://github.com/F-O-T/contentta-nx",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "content-generation",
+    "seo",
+    "headless-cms"
+  ],
+  "sections": {
+    "overview": "Contentta is an open-source content management system built on a scalable monorepo architecture, designed to streamline content creation for marketing teams. It features a Lexical-based editor with deeply integrated AI assistance including fill-in-the-middle completions, inline editing with Ctrl+K prompts, and a chat assistant panel. The platform provides real-time SEO scoring (0-100), readability analysis using Flesch-Kincaid metrics, and quality detection to identify filler phrases and clickbait patterns. Multi-agent orchestration powers specialized workflows: a Plan Agent handles research and SERP analysis, a Writer Agent generates content with full editor control, and an Inline Edit Agent handles quick text transformations. Teams can define writer personas with custom guidelines, manage brand consistency through centralized brand documents, and publish to multiple destinations including GitHub, WordPress, Notion, and custom APIs via webhooks.\nGenerate and optimize blog content with real-time SEO scoring and readability feedback\nConduct SERP analysis and competitor content research before creating content plans\nManage team-based content workflows with role-based access control and writer personas\nMaintain brand consistency across content with centralized brand guidelines and knowledge base",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/F-O-T/contentta-nx`",
+    "usage": "```\nI'm using Contentta-nx to automate blog content for [COMPANY], a [INDUSTRY] business. Generate 3 SEO-optimized blog post ideas about [TOPIC] with meta descriptions and target keywords. Include a content brief for each idea with key points to cover, suggested headings, and word count recommendations.\n```\nCopy\n\n```\n# Blog Post Ideas for [COMPANY] in [INDUSTRY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "contentta-nx#main-content",
+      "contentta-nx#overview",
+      "contentta-nx#setup",
+      "contentta-nx#examples",
+      "contentta-nx#tools",
+      "contentta-nx#mcp",
+      "contentta-nx#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "Contentta là hệ thống quản lý nội dung mã nguồn mở được xây dựng trên kiến trúc monorepo có khả năng mở rộng, thiết kế nhằm tối ưu hóa quy trình sáng tạo nội dung cho các đội ngũ marketing. Hệ thống sở hữu trình soạn thảo dựa trên Lexical tích hợp sâu các tính năng hỗ trợ từ AI, bao gồm tự động hoàn tất văn bản ở giữa (fill-in-the-middle completions), chỉnh sửa trực tiếp (inline editing) bằng phím tắt Ctrl+K, và bảng trợ lý chat. Nền tảng cung cấp tính năng chấm điểm SEO theo thời gian thực (0-100), phân tích độ dễ đọc bằng chỉ số Flesch-Kincaid, và phát hiện chất lượng để nhận diện các cụm từ thừa cũng như các mẫu tiêu đề giật gân (clickbait). Quy trình điều phối đa agent (multi-agent orchestration) vận hành các luồng công việc chuyên biệt: Plan Agent đảm nhận nghiên cứu và phân tích SERP, Writer Agent tạo nội dung với toàn quyền kiểm soát trình soạn thảo, và Inline Edit Agent xử lý các chuyển đổi văn bản nhanh. Các đội ngũ có thể định nghĩa chân dung người viết (writer personas) với các nguyên tắc tùy chỉnh, duy trì tính nhất quán thương hiệu thông qua các tài liệu thương hiệu tập trung, và xuất bản đến nhiều nền tảng bao gồm GitHub, WordPress, Notion và các API tùy biến thông qua webhook.\nTạo và tối ưu hóa nội dung blog với tính năng chấm điểm SEO và phản hồi độ dễ đọc theo thời gian thực\nThực hiện phân tích SERP và nghiên cứu nội dung của đối thủ cạnh tranh trước khi lập kế hoạch nội dung\nQuản lý luồng công việc nội dung của đội ngũ với tính năng phân quyền (RBAC) và chân dung người viết (writer personas)\nDuy trì tính nhất quán thương hiệu xuyên suốt nội dung nhờ bộ hướng dẫn thương hiệu và cơ sở tri thức tập trung",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/F-O-T/contentta-nx`",
+    "usage_vi": "```\nTôi đang sử dụng Contentta-nx để tự động hóa nội dung blog cho [COMPANY], một doanh nghiệp trong lĩnh vực [INDUSTRY]. Hãy tạo 3 ý tưởng bài viết blog được tối ưu hóa SEO về [TOPIC] kèm theo thẻ mô tả meta và từ khóa mục tiêu. Gửi kèm dàn ý chi tiết (content brief) cho từng ý tưởng với các ý chính cần triển khai, tiêu đề gợi ý và đề xuất số lượng từ.\n```\nCopy\n\n```\n# Ý tưởng bài viết Blog cho [COMPANY] trong lĩnh vực [INDUSTRY]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:34:25.658267Z",
+    "http_status": 200,
+    "content_hash": "a86702733a84d9bbaa00d67b877abed4da4ca9b2116baaab4b462e776c19648e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\contentta-nx.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\contentta-nx.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Contentta-nx - Nền tảng tự động hóa blog",
+  "short_description_vi": "Contentta-nx là nền tảng tự động hóa blog mã nguồn mở giúp các đội ngũ marketing tạo, quản lý và xuất bản nội dung một cách hiệu quả. Hệ thống kết nối với các AI agent được hỗ trợ để tạo nội dung và tích hợp với các hệ thống headless CMS để quản lý nội dung. Đây là giải pháp lý tưởng cho các phòng marketing tập trung vào tối ưu hóa SEO."
+}

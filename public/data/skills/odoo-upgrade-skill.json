@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/odoo-upgrade-skill",
+  "slug": "odoo-upgrade-skill",
+  "name": "Odoo Upgrade Skill",
+  "headline": "Odoo Upgrade: Automated Version Migrations 14-19",
+  "short_description": "Comprehensive Odoo ERP upgrade skill for Claude Code - Automates migrations between Odoo versions 14-19 with pattern detection and fixes",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "ahmed-lakosha",
+  "install_command": "git clone https://github.com/ahmed-lakosha/odoo-upgrade-skill.git",
+  "source_repo_url": "https://github.com/ahmed-lakosha/odoo-upgrade-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The odoo-upgrade-skill is a comprehensive migration assistant for Claude Code that automates Odoo ERP upgrades across versions 14 through 19. It handles complex transformations including XML view migrations (tree to list), Python API updates, OWL lifecycle hook changes, controller migrations, and SCSS variable restructuring. The skill includes 150+ upgrade patterns and 75+ automated fixes that detect and resolve common breaking changes across major version jumps. Developers benefit from reduced manual migration work, fewer compatibility errors, and faster time-to-production for upgraded Odoo modules.\nMigrate Odoo modules from version 14 to 16, 17, 18, or 19\nAutomatically fix XML view syntax changes (tree→list, attrs→inline)\nUpdate Python code for OWL 1.x to 2.0 lifecycle hook changes\nTransform controller types and RPC service calls for new versions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ahmed-lakosha/odoo-upgrade-skill`\n- **Backup**: Full database and file system backup completed.\n- **Staging Environment**: Created a staging environment mirroring production.",
+    "usage": "```\nI need to upgrade my Odoo ERP system from version [CURRENT_VERSION] to version [TARGET_VERSION]. The system is used by [COMPANY] in the [INDUSTRY] sector. Here are some key modules I rely on: [MODULES]. Please provide a step-by-step upgrade plan, including any potential issues and their solutions.\n```\nCopy\n\n```\n# Odoo Upgrade Plan: Version 15 to 19",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "odoo-upgrade-skill#main-content",
+      "odoo-upgrade-skill#overview",
+      "odoo-upgrade-skill#setup",
+      "odoo-upgrade-skill#examples",
+      "odoo-upgrade-skill#tools",
+      "odoo-upgrade-skill#mcp",
+      "odoo-upgrade-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "odoo-upgrade-skill là trợ lý di chuyển (migration) toàn diện dành cho Claude Code giúp tự động hóa quá trình nâng cấp Odoo ERP từ phiên bản 14 đến 19. Công cụ này xử lý các chuyển đổi phức tạp bao gồm di chuyển XML view (từ tree sang list), cập nhật Python API, thay đổi lifecycle hook của OWL, di chuyển controller và cấu trúc lại các biến SCSS. Skill này tích hợp hơn 150 pattern nâng cấp và hơn 75 bản sửa lỗi tự động giúp phát hiện cũng như giải quyết các breaking change phổ biến giữa các phiên bản lớn. Nhờ đó, lập trình viên có thể giảm thiểu công sức cấu hình thủ công, hạn chế lỗi tương thích và đẩy nhanh tiến độ đưa các module Odoo đã nâng cấp lên môi trường production.\nDi chuyển các module Odoo từ phiên bản 14 lên 16, 17, 18 hoặc 19\nTự động sửa đổi cú pháp XML view (tree→list, attrs→inline)\nCập nhật code Python theo các thay đổi lifecycle hook từ OWL 1.x lên 2.0\nChuyển đổi các kiểu controller và các cuộc gọi dịch vụ RPC cho phiên bản mới",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ahmed-lakosha/odoo-upgrade-skill`\n- **Backup**: Đã hoàn tất sao lưu toàn bộ database và file system.\n- **Staging Environment**: Đã tạo một môi trường staging mô phỏng chính xác môi trường production.",
+    "usage_vi": "```\nTôi cần nâng cấp hệ thống Odoo ERP của mình từ phiên bản [CURRENT_VERSION] lên phiên bản [TARGET_VERSION]. Hệ thống này được sử dụng bởi [COMPANY] trong lĩnh vực [INDUSTRY]. Dưới đây là một số module cốt lõi mà tôi phụ thuộc vào: [MODULES]. Vui lòng cung cấp một kế hoạch nâng cấp từng bước, bao gồm mọi sự cố tiềm ẩn và giải pháp khắc phục.\n```\nSao chép\n\n```\n# Kế hoạch nâng cấp Odoo: Phiên bản 15 lên 19"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:10:38.353278Z",
+    "http_status": 200,
+    "content_hash": "de31a3ecf3dac2a91520f741dc4a3fdf15d2735fd7093824117c4efc209b960a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\odoo-upgrade-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\odoo-upgrade-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nâng cấp Odoo: Tự động hóa chuyển đổi phiên bản từ 14 đến 19",
+  "short_description_vi": "Skill nâng cấp Odoo ERP toàn diện dành cho Claude Code - Tự động hóa quá trình di chuyển giữa các phiên bản Odoo từ 14 đến 19 nhờ khả năng nhận diện pattern và tự động sửa lỗi"
+}

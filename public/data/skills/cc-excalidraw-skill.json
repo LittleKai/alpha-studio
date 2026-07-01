@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-excalidraw-skill",
+  "slug": "cc-excalidraw-skill",
+  "name": "browser-use",
+  "headline": "Excalidraw skill for Claude Code users",
+  "short_description": "Create and edit hand-drawn style diagrams in Excalidraw JSON format. Use for flowcharts, architecture diagrams, wireframes, and visual drawings.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "rnjn",
+  "install_command": "git clone https://github.com/rnjn/cc-excalidraw-skill.git",
+  "source_repo_url": "https://github.com/rnjn/cc-excalidraw-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Excalidraw skill enables you to programmatically create and edit diagrams in Excalidraw JSON format (.excalidraw files). It supports a wide range of diagram types including flowcharts, sequence diagrams, architecture diagrams, mind maps, data flow diagrams, entity-relationship diagrams, and wireframes. The skill provides tools to create rectangles, ellipses, diamonds, text, arrows, lines, and other elements with full control over styling, colors, positioning, and connections. You can generate professional diagrams with consistent spacing, semantic color conventions, and hand-drawn aesthetics or formal technical styling.\nCreate flowcharts and process diagrams for algorithms and workflows\nDesign system architecture and microservices diagrams\nBuild wireframes and UI mockups for application design\nGenerate entity-relationship diagrams for database schemas",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rnjn/cc-excalidraw-skill`",
+    "usage": "```\nI want to create an Excalidraw diagram for [COMPANY] in the [INDUSTRY] sector. The diagram should visualize [DATA] with the following elements: [ELEMENTS]. Please generate the Excalidraw JSON code for this diagram.\n```\nCopy\n\n```\n```json\n{\n  \"type\": \"excalidraw\",\n  \"version\": 2,\n  \"source\": \"https://excalidraw.com\",\n  \"elements\": [\n    {\n      \"type\": \"rectangle\",\n      \"version\": 123,\n      \"versionNonce\": 123456789,\n      \"isDeleted\": false,\n      \"id\": \"rectangle-id\",\n      \"fillStyle\": \"hachure\",\n      \"strokeWidth\": 1,\n      \"strokeStyle\": \"solid\",\n      \"roughness\": 1,\n      \"opacity\": 100,\n      \"angle\": 0,\n      \"x\": 100,\n      \"y\": 100,\n      \"strokeColor\": \"#000000\",\n      \"backgroundColor\": \"transparent\",\n      \"width\": 200,\n      \"height\": 100,\n      \"seed\": 123456789,\n      \"groupIds\": [],\n      \"roundness\": {\n        \"type\": 3,\n        \"value\": 0.2\n      },\n      \"boundElements\": [],\n      \"updated\": 1634613077967,\n      \"link\": null,\n      \"locked\": false,\n      \"customData\": {}\n    },\n    {\n      \"type\": \"ellipse\",\n      \"version\": 123,\n      \"versionNonce\": 123456789,\n      \"isDeleted\": false,\n      \"id\": \"ellipse-id\",\n      \"fillStyle\": \"hachure\",\n      \"strokeWidth\": 1,\n      \"strokeStyle\": \"solid\",\n      \"roughness\": 1,\n      \"opacity\": 100,\n      \"angle\": 0,\n      \"x\": 300,\n      \"y\": 100,\n      \"strokeColor\": \"#000000\",\n      \"backgroundColor\": \"transparent\",\n      \"width\": 100,\n      \"height\": 100,\n      \"seed\": 123456789,\n      \"groupIds\": [],\n      \"roundness\": {\n        \"type\": 2,\n        \"value\": 0.5\n      },\n      \"boundElements\": [],\n      \"updated\": 1634613077967,\n      \"link\": null,\n      \"locked\": false,\n      \"customData\": {}\n    }\n  ],\n  \"appState\": {\n    \"gridSize\": null,\n    \"viewBackgroundColor\": \"#ffffff\"\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-excalidraw-skill#main-content",
+      "cc-excalidraw-skill#overview",
+      "cc-excalidraw-skill#setup",
+      "cc-excalidraw-skill#examples",
+      "cc-excalidraw-skill#tools",
+      "cc-excalidraw-skill#mcp",
+      "cc-excalidraw-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Excalidraw skill enables you to programmatically create and edit diagrams in Excalidraw JSON format (.excalidraw files). It supports a wide range of diagram types including flowcharts, sequence diagrams, architecture diagrams, mind maps, data flow diagrams, entity-relationship diagrams, and wireframes. The skill provides tools to create rectangles, ellipses, diamonds, text, arrows, lines, and other elements with full control over styling, colors, positioning, and connections. You can generate professional diagrams with consistent spacing, semantic color conventions, and hand-drawn aesthetics or formal technical styling.\nCreate flowcharts and process diagrams for algorithms and workflows\nDesign system architecture and microservices diagrams\nBuild wireframes and UI mockups for application design\nGenerate entity-relationship diagrams for database schemas",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rnjn/cc-excalidraw-skill`",
+    "usage_vi": "```\nI want to create an Excalidraw diagram for [COMPANY] in the [INDUSTRY] sector. The diagram should visualize [DATA] with the following elements: [ELEMENTS]. Please generate the Excalidraw JSON code for this diagram.\n```\nCopy\n\n```\n```json\n{\n  \"type\": \"excalidraw\",\n  \"version\": 2,\n  \"source\": \"https://excalidraw.com\",\n  \"elements\": [\n    {\n      \"type\": \"rectangle\",\n      \"version\": 123,\n      \"versionNonce\": 123456789,\n      \"isDeleted\": false,\n      \"id\": \"rectangle-id\",\n      \"fillStyle\": \"hachure\",\n      \"strokeWidth\": 1,\n      \"strokeStyle\": \"solid\",\n      \"roughness\": 1,\n      \"opacity\": 100,\n      \"angle\": 0,\n      \"x\": 100,\n      \"y\": 100,\n      \"strokeColor\": \"#000000\",\n      \"backgroundColor\": \"transparent\",\n      \"width\": 200,\n      \"height\": 100,\n      \"seed\": 123456789,\n      \"groupIds\": [],\n      \"roundness\": {\n        \"type\": 3,\n        \"value\": 0.2\n      },\n      \"boundElements\": [],\n      \"updated\": 1634613077967,\n      \"link\": null,\n      \"locked\": false,\n      \"customData\": {}\n    },\n    {\n      \"type\": \"ellipse\",\n      \"version\": 123,\n      \"versionNonce\": 123456789,\n      \"isDeleted\": false,\n      \"id\": \"ellipse-id\",\n      \"fillStyle\": \"hachure\",\n      \"strokeWidth\": 1,\n      \"strokeStyle\": \"solid\",\n      \"roughness\": 1,\n      \"opacity\": 100,\n      \"angle\": 0,\n      \"x\": 300,\n      \"y\": 100,\n      \"strokeColor\": \"#000000\",\n      \"backgroundColor\": \"transparent\",\n      \"width\": 100,\n      \"height\": 100,\n      \"seed\": 123456789,\n      \"groupIds\": [],\n      \"roundness\": {\n        \"type\": 2,\n        \"value\": 0.5\n      },\n      \"boundElements\": [],\n      \"updated\": 1634613077967,\n      \"link\": null,\n      \"locked\": false,\n      \"customData\": {}\n    }\n  ],\n  \"appState\": {\n    \"gridSize\": null,\n    \"viewBackgroundColor\": \"#ffffff\"\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:56:19.116079Z",
+    "http_status": 200,
+    "content_hash": "b232ee3ecf375946af0a7f59d588708cfd6e2264fd589dbfcf7483185342591f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-excalidraw-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-excalidraw-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Excalidraw skill for Claude Code users",
+  "short_description_vi": "Create and edit hand-drawn style diagrams in Excalidraw JSON format. Use for flowcharts, architecture diagrams, wireframes, and visual drawings."
+}

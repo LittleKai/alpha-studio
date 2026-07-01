@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-to-skill-converter",
+  "slug": "mcp-to-skill-converter",
+  "name": " MCP To Skill Converter",
+  "headline": "mcp to claude skill converter",
+  "short_description": "Convert MCP servers into Claude Skills, reducing context usage by 90%. Ideal for operations teams managing multiple tools. Integrates with existing MCP infrastructure, improving efficiency and reducing token consumption.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "GBSOSS",
+  "install_command": "git clone https://github.com/GBSOSS/-mcp-to-skill-converter.git",
+  "source_repo_url": "https://github.com/GBSOSS/-mcp-to-skill-converter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This converter transforms any Model Context Protocol (MCP) server into a Claude Skill using progressive disclosure, reducing token consumption by up to 90%. Instead of loading all tool definitions at startup, skills load metadata (~100 tokens) initially and full instructions only when needed (~5k tokens). Works with any standard MCP server including GitHub, Slack, filesystem, and PostgreSQL, making it ideal for teams with 10+ tools or tight context budgets. The generated skills include SKILL.md instructions, a dynamic executor, and config files—just copy to your Claude skills directory to activate.\nReduce token overhead when managing 10+ MCP tools in Claude Code or Cursor\nOptimize context usage for teams with extended toolsets and limited context windows\nConvert existing GitHub, Slack, or database MCP servers into context-efficient skills\nDeploy multiple independent tools without pre-loading all definitions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GBSOSS/-mcp-to-skill-converter`",
+    "usage": "```\nConvert the following MCP server configuration into a Claude Skill. Focus on minimizing context usage by 90% while preserving functionality. [MCP_SERVER_CONFIGURATION]. Output the skill in the standard format with clear documentation for deployment.\n```\nCopy\n\n```\n### Converted MCP Server to Claude Skill: **Jira Ticket Processor**\n\n**Skill Name:** `jira-ticket-processor`\n**Version:** 1.0.0\n**Description:** Automates Jira ticket creation and updates with minimal context overhead. Reduces token usage by 92% compared to raw MCP calls.\n\n**Key Features:**\n- Processes ticket creation requests with a single `create_ticket` command\n- Supports bulk updates via `update_tickets` with prioritized fields\n- Includes error handling for invalid Jira fields\n- Logs all operations to a local file for audit trails\n\n**Example Usage:**\n```\nUser: \"Create a high-priority bug ticket for the login API failure in project WEB-123\"\nAI: Processing... (Context used: 120 tokens)\nAI: Ticket created successfully! Key: BUG-456\n```\n\n**Implementation Notes:**\n- Pre-validates all Jira field values against project schema\n- Uses cached project metadata to avoid repeated API calls\n- Implements delta updates to minimize payload size\n- Includes 50+ predefined ticket templates for common scenarios\n\n**Deployment Requirements:**\n- Jira API token with write permissions\n- Project key mapping configuration file\n- Local cache directory for temporary files\n\n**Token Savings Breakdown:**\nOriginal MCP calls: ~1,500 tokens per operation\nOptimized Skill: ~120 tokens per operation (92% reduction)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-to-skill-converter#main-content",
+      "mcp-to-skill-converter#overview",
+      "mcp-to-skill-converter#setup",
+      "mcp-to-skill-converter#examples",
+      "mcp-to-skill-converter#tools",
+      "mcp-to-skill-converter#mcp",
+      "mcp-to-skill-converter#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This converter transforms any Model Context Protocol (MCP) server into a Claude Skill using progressive disclosure, reducing token consumption by up to 90%. Instead of loading all tool definitions at startup, skills load metadata (~100 tokens) initially and full instructions only when needed (~5k tokens). Works with any standard MCP server including GitHub, Slack, filesystem, and PostgreSQL, making it ideal for teams with 10+ tools or tight context budgets. The generated skills include SKILL.md instructions, a dynamic executor, and config files—just copy to your Claude skills directory to activate.\nReduce token overhead when managing 10+ MCP tools in Claude Code or Cursor\nOptimize context usage for teams with extended toolsets and limited context windows\nConvert existing GitHub, Slack, or database MCP servers into context-efficient skills\nDeploy multiple independent tools without pre-loading all definitions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GBSOSS/-mcp-to-skill-converter`",
+    "usage_vi": "```\nConvert the following MCP server configuration into a Claude Skill. Focus on minimizing context usage by 90% while preserving functionality. [MCP_SERVER_CONFIGURATION]. Output the skill in the standard format with clear documentation for deployment.\n```\nCopy\n\n```\n### Converted MCP Server to Claude Skill: **Jira Ticket Processor**\n\n**Skill Name:** `jira-ticket-processor`\n**Version:** 1.0.0\n**Description:** Automates Jira ticket creation and updates with minimal context overhead. Reduces token usage by 92% compared to raw MCP calls.\n\n**Key Features:**\n- Processes ticket creation requests with a single `create_ticket` command\n- Supports bulk updates via `update_tickets` with prioritized fields\n- Includes error handling for invalid Jira fields\n- Logs all operations to a local file for audit trails\n\n**Example Usage:**\n```\nUser: \"Create a high-priority bug ticket for the login API failure in project WEB-123\"\nAI: Processing... (Context used: 120 tokens)\nAI: Ticket created successfully! Key: BUG-456\n```\n\n**Implementation Notes:**\n- Pre-validates all Jira field values against project schema\n- Uses cached project metadata to avoid repeated API calls\n- Implements delta updates to minimize payload size\n- Includes 50+ predefined ticket templates for common scenarios\n\n**Deployment Requirements:**\n- Jira API token with write permissions\n- Project key mapping configuration file\n- Local cache directory for temporary files\n\n**Token Savings Breakdown:**\nOriginal MCP calls: ~1,500 tokens per operation\nOptimized Skill: ~120 tokens per operation (92% reduction)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:40.532421Z",
+    "http_status": 200,
+    "content_hash": "77e0e61604cacb45d4591fb0d33e38aa34a842d57723233fa77972b0e9886799",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-to-skill-converter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-to-skill-converter.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp to claude skill converter",
+  "short_description_vi": "Convert MCP servers into Claude Skills, reducing context usage by 90%. Ideal for operations teams managing multiple tools. Integrates with existing MCP infrastructure, improving efficiency and reducing token consumption."
+}

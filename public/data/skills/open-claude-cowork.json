@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-claude-cowork",
+  "slug": "open-claude-cowork",
+  "name": "Open Claude Cowork",
+  "headline": "Open Claude Cowork - Automate Workflows",
+  "short_description": "Open Claude Cowork automates workflows across 500+ SaaS apps. Operations teams use it to streamline repetitive tasks, integrate systems, and boost productivity. It connects to existing tools and workflows, reducing manual effort and improving efficiency.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "ComposioHQ",
+  "install_command": "git clone https://github.com/ComposioHQ/open-claude-cowork.git",
+  "source_repo_url": "https://github.com/ComposioHQ/open-claude-cowork",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "claude-cowork",
+    "aiagents",
+    "claude-code",
+    "eclectron-app",
+    "workflow-automation",
+    "opencode",
+    "anthropic-claude"
+  ],
+  "sections": {
+    "overview": "Open Claude Cowork is an automation skill that enables Claude to orchestrate workflows across 500+ SaaS applications. Built on the Composio framework, it connects to your existing tools and systems, allowing Claude to automate repetitive operational tasks without manual intervention. The skill integrates directly with Claude Code and Cursor, enabling teams to streamline business processes, synchronize data across platforms, and improve operational efficiency. Operations teams benefit from reduced manual effort and faster task completion through intelligent workflow automation.\nAutomate notifications and updates from multiple SaaS applications into a single chat interface.\nCreate workflows that trigger actions in apps like Slack or GitHub based on chat commands.\nManage and schedule reminders for tasks across different platforms using natural language processing.\nIntegrate with project management tools to receive updates and manage tasks directly from the chat.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ComposioHQ/open-claude-cowork`",
+    "usage": "```\nSet up an automation workflow in Open Claude Cowork to [AUTOMATE_TASK] between [APP1] and [APP2]. The workflow should trigger when [CONDITION] is met. Include error handling for [SPECIFIC_ERROR] and notify [TEAM_MEMBER] via [NOTIFICATION_CHANNEL] when the task is complete.\n```\nCopy\n\n```\nWorkflow Name: Sales Lead Qualification Automation\n\nDescription: This workflow automates the process of qualifying sales leads from HubSpot to Salesforce.\n\nTrigger: New lead created in HubSpot\n\nActions:\n1. Check if the lead's company size is greater than 50 employees\n2. If true, create a new opportunity in Salesforce with a qualification score of 80\n3. If false, add a tag 'Small Business' in HubSpot and move to 'Nurture' pipeline\n4. Send a Slack notification to the sales team with the lead details\n\nError Handling:\n- If the lead already exists in Salesforce, update the existing record instead of creating a new one\n- If the Salesforce connection fails, retry the action 3 times before notifying the admin team via email\n\nNotification: Send a confirmation message to the lead owner in Slack once the workflow is complete.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-claude-cowork#main-content",
+      "open-claude-cowork#overview",
+      "open-claude-cowork#setup",
+      "open-claude-cowork#examples",
+      "open-claude-cowork#tools",
+      "open-claude-cowork#mcp",
+      "open-claude-cowork#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open Claude Cowork is an automation skill that enables Claude to orchestrate workflows across 500+ SaaS applications. Built on the Composio framework, it connects to your existing tools and systems, allowing Claude to automate repetitive operational tasks without manual intervention. The skill integrates directly with Claude Code and Cursor, enabling teams to streamline business processes, synchronize data across platforms, and improve operational efficiency. Operations teams benefit from reduced manual effort and faster task completion through intelligent workflow automation.\nAutomate notifications and updates from multiple SaaS applications into a single chat interface.\nCreate workflows that trigger actions in apps like Slack or GitHub based on chat commands.\nManage and schedule reminders for tasks across different platforms using natural language processing.\nIntegrate with project management tools to receive updates and manage tasks directly from the chat.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ComposioHQ/open-claude-cowork`",
+    "usage_vi": "```\nSet up an automation workflow in Open Claude Cowork to [AUTOMATE_TASK] between [APP1] and [APP2]. The workflow should trigger when [CONDITION] is met. Include error handling for [SPECIFIC_ERROR] and notify [TEAM_MEMBER] via [NOTIFICATION_CHANNEL] when the task is complete.\n```\nCopy\n\n```\nWorkflow Name: Sales Lead Qualification Automation\n\nDescription: This workflow automates the process of qualifying sales leads from HubSpot to Salesforce.\n\nTrigger: New lead created in HubSpot\n\nActions:\n1. Check if the lead's company size is greater than 50 employees\n2. If true, create a new opportunity in Salesforce with a qualification score of 80\n3. If false, add a tag 'Small Business' in HubSpot and move to 'Nurture' pipeline\n4. Send a Slack notification to the sales team with the lead details\n\nError Handling:\n- If the lead already exists in Salesforce, update the existing record instead of creating a new one\n- If the Salesforce connection fails, retry the action 3 times before notifying the admin team via email\n\nNotification: Send a confirmation message to the lead owner in Slack once the workflow is complete.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:51.562087Z",
+    "http_status": 200,
+    "content_hash": "421f6620fc0a81c3b73d427eabbe95411827864499417360e4689667c6339fe1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-claude-cowork.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-claude-cowork.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Open Claude Cowork - Automate Workflows",
+  "short_description_vi": "Open Claude Cowork automates workflows across 500+ SaaS apps. Operations teams use it to streamline repetitive tasks, integrate systems, and boost productivity. It connects to existing tools and workflows, reducing manual effort and improving efficiency."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini-image-skill",
+  "slug": "gemini-image-skill",
+  "name": "Gemini Image Skill",
+  "headline": "Gemini Image Skill - Generate Images from Text",
+  "short_description": "Generates images from text or existing images using natural language prompts. Ideal for operations teams needing visual content creation. Integrates with Claude Code for streamlined workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "Ceeon",
+  "install_command": "git clone https://github.com/Ceeon/gemini-image-skill.git",
+  "source_repo_url": "https://github.com/Ceeon/gemini-image-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Gemini Image Skill enables Claude Code users to generate images directly from natural language prompts. The skill supports both text-to-image and image-to-image workflows, with multiple model options ranging from standard to 4K resolution. Users can specify aspect ratios including 16:9, 9:16, 4:3, and others to match their content needs. Installation requires registering for an API key and configuring the skill in Claude Code, after which users can request image generation through simple conversational commands. This tool streamlines visual content creation for teams needing on-demand graphics without leaving their development environment.\nGenerate marketing and promotional graphics from text descriptions\nCreate UI mockups and design variations with specified aspect ratios\nProduce high-resolution 4K artwork for presentations and documentation\nGenerate variations of existing images through image-to-image transformation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ceeon/gemini-image-skill`",
+    "usage": "```\nGenerate an image of a [COMPANY] office space in the [INDUSTRY] sector. The office should have [NUMBER] employees working at desks, with [DESCRIPTION] decor, and a [COLOR] color scheme. Make it look professional and modern.\n```\nCopy\n\n```\n# Office Space Visualization\n\nHere is a generated image of a tech company office space in the software development industry:\n\n![Tech Office Space](image_url)\n\n**Key Features:**\n- **Employees:** 10 employees working at desks\n- **Decor:** Modern and minimalist with plenty of natural light\n- **Color Scheme:** Blue and white color scheme\n- **Additional Details:** Open floor plan with collaborative workspaces and ergonomic chairs\n\nThis image can be used for presentations, marketing materials, or internal communications to showcase the company's work environment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gemini-image-skill#main-content",
+      "gemini-image-skill#overview",
+      "gemini-image-skill#setup",
+      "gemini-image-skill#examples",
+      "gemini-image-skill#tools",
+      "gemini-image-skill#mcp",
+      "gemini-image-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini Image Skill cho phép người dùng Claude Code tạo hình ảnh trực tiếp từ các prompt ngôn ngữ tự nhiên. Skill này hỗ trợ cả quy trình làm việc text-to-image và image-to-image, với nhiều tùy chọn mô hình từ độ phân giải tiêu chuẩn đến 4K. Người dùng có thể chỉ định tỷ lệ khung hình bao gồm 16:9, 9:16, 4:3 và các tỷ lệ khác để phù hợp với nhu cầu nội dung. Quá trình cài đặt yêu cầu đăng ký API key và cấu hình skill trong Claude Code, sau đó người dùng có thể yêu cầu tạo hình ảnh thông qua các câu lệnh trò chuyện đơn giản. Công cụ này giúp tối ưu hóa quy trình sáng tạo nội dung hình ảnh cho các đội ngũ cần thiết kế đồ họa theo yêu cầu mà không phải rời khỏi môi trường phát triển của mình.\n\nTạo đồ họa tiếp thị và quảng cáo từ mô tả văn bản\nTạo UI mockup và các biến thể thiết kế với tỷ lệ khung hình tùy chọn\nSản xuất tác phẩm nghệ thuật độ phân giải cao 4K cho bài thuyết trình và tài liệu\nTạo các biến thể của hình ảnh hiện có thông qua chuyển đổi image-to-image",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Ceeon/gemini-image-skill`",
+    "usage_vi": "```\nTạo một hình ảnh về không gian văn phòng của [COMPANY] trong lĩnh vực [INDUSTRY]. Văn phòng nên có [NUMBER] nhân viên đang làm việc tại bàn, với phong cách trang trí [DESCRIPTION], và tông màu [COLOR]. Hãy làm cho nó trông chuyên nghiệp và hiện đại.\n```\nCopy\n\n```\n# Trực quan hóa Không gian Văn phòng\n\nDưới đây là hình ảnh được tạo về không gian văn phòng của một công ty công nghệ trong ngành phát triển phần mềm:\n\n![Tech Office Space](image_url)\n\n**Các đặc điểm chính:**\n- **Nhân viên:** 10 nhân viên đang làm việc tại bàn\n- **Trang trí:** Hiện đại và tối giản với nhiều ánh sáng tự nhiên\n- **Tông màu:** Tông màu xanh dương và trắng\n- **Chi tiết bổ sung:** Thiết kế mặt bằng mở với không gian làm việc chung và ghế công thái học\n\nHình ảnh này có thể được sử dụng cho các bài thuyết trình, tài liệu tiếp thị hoặc truyền thông nội bộ để giới thiệu môi trường làm việc của công ty.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:03:18.939919Z",
+    "http_status": 200,
+    "content_hash": "ecf780f5113ccdc9546e7ff5bb23d272bf4a94c61e661d45b3d190fe7ea6d1a7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-image-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-image-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Gemini Image Skill - Tạo hình ảnh từ văn bản",
+  "short_description_vi": "Tạo hình ảnh từ văn bản hoặc hình ảnh có sẵn bằng các prompt ngôn ngữ tự nhiên. Phù hợp cho các đội ngũ vận hành cần sáng tạo nội dung hình ảnh. Tích hợp với Claude Code để tối ưu hóa quy trình làm việc."
+}

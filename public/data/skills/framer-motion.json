@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/framer-motion",
+  "slug": "framer-motion",
+  "name": "SVG Assembly Animator",
+  "headline": "Motion: Performant React Animation Guidelines",
+  "short_description": "This skill provides guidelines for creating animations using Framer Motion (now Motion) in React projects. It is ideal for developers looking to enhance their skills in motion graphics with a focus on performance and best practices.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "mindrally",
+  "install_command": "git clone https://github.com/mindrally/skills",
+  "source_repo_url": "https://github.com/mindrally/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "animation",
+    "framer",
+    "motion"
+  ],
+  "sections": {
+    "overview": "This skill provides expert guidelines for creating performant animations using Motion (the renamed Framer Motion library) in React applications. It covers core principles like importing from the correct package, hardware acceleration best practices, and performance optimization techniques. The skill includes practical patterns for gesture animations, scroll-linked animations, exit animations with AnimatePresence, and staggered list effects. It emphasizes animating only GPU-accelerated properties like transform and opacity while respecting user accessibility preferences through reduced motion detection. Developers learn how to use variants for complex animations, implement spring transitions for natural motion, and debug performance issues to achieve smooth 60fps animations.\nCreating high-performance animations in React apps\nEnhancing user experience with smooth transitions\nImplementing best practices for motion graphics design",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/mindrally/skills --skill framer-motion`\n`git clone https://github.com/mindrally/skills`",
+    "usage": "```\nGenerate a Framer Motion animation for a [COMPANY]'s [INDUSTRY] website landing page. The animation should include: a hero section fade-in, a button hover effect with scale and color change, and a staggered list animation for three key features. Use smooth easing and a duration of 1 second. Here's the data: Hero heading: 'Welcome to [COMPANY]', Button text: 'Get Started', Features: ['Lightning-fast performance', 'Seamless user experience', 'Scalable architecture'].\n```\nCopy\n\n```\n# Framer Motion Animation Code for [COMPANY]'s Landing Page\n\n```jsx\nimport { motion } from 'framer-motion';\nimport React from 'react';\n\nconst LandingPage = () => {\n  return (\n    <div className=\"min-h-screen bg-gradient-to-r from-blue-50 to-indigo-100\">\n      {/* Hero Section with Fade-In Animation */}\n      <motion.h1\n        initial={{ opacity: 0, y: 20 }}\n        animate={{ opacity: 1, y: 0 }}\n        transition={{ duration: 1, ease: 'easeOut' }}\n        className=\"text-5xl font-bold text-center pt-20 text-indigo-800\"\n      >\n        Welcome to [COMPANY]\n      </motion.h1>\n\n      {/* Animated Button */}\n      <motion.button\n        whileHover={{ scale: 1.05, backgroundColor: '#6366f1' }}\n        whileTap={{ scale: 0.95 }}\n        transition={{ duration: 0.3, ease: 'easeInOut' }}\n        className=\"mx-auto block mt-8 px-8 py-3 bg-indigo-600 text-white rounded-lg shadow-lg\"\n      >\n        Get Started\n      </motion.button>\n\n      {/* Staggered Feature List */}\n      <motion.ul\n        initial={{ opacity: 0 }}\n        animate={{ opacity: 1 }}\n        transition={{ staggerChildren: 0.2 }}\n        className=\"mt-16 max-w-2xl mx-auto space-y-4\"\n      >\n        {['Lightning-fast performance', 'Seamless user experience', 'Scalable architecture'].map((feature, index) => (\n          <motion.li\n            key={index}\n            initial={{ opacity: 0, x: -20 }}\n            animate={{ opacity: 1, x: 0 }}\n            transition={{ duration: 0.5, delay: index * 0.2 }}\n            className=\"p-4 bg-white rounded-lg shadow-sm\"\n          >\n            {feature}\n          </motion.li>\n        ))}\n      </motion.ul>\n    </div>\n  );\n};\n\nexport default LandingPage;\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "framer-motion#main-content",
+      "framer-motion#overview",
+      "framer-motion#setup",
+      "framer-motion#examples",
+      "framer-motion#tools",
+      "framer-motion#mcp",
+      "framer-motion#related",
+      "svg-animations",
+      "reanimated-skia-performance",
+      "svg-assembly-animator"
+    ],
+    "overview_vi": "This skill provides expert guidelines for creating performant animations using Motion (the renamed Framer Motion library) in React applications. It covers core principles like importing from the correct package, hardware acceleration best practices, and performance optimization techniques. The skill includes practical patterns for gesture animations, scroll-linked animations, exit animations with AnimatePresence, and staggered list effects. It emphasizes animating only GPU-accelerated properties like transform and opacity while respecting user accessibility preferences through reduced motion detection. Developers learn how to use variants for complex animations, implement spring transitions for natural motion, and debug performance issues to achieve smooth 60fps animations.\nCreating high-performance animations in React apps\nEnhancing user experience with smooth transitions\nImplementing best practices for motion graphics design",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/mindrally/skills --skill framer-motion`\n`git clone https://github.com/mindrally/skills`",
+    "usage_vi": "```\nGenerate a Framer Motion animation for a [COMPANY]'s [INDUSTRY] website landing page. The animation should include: a hero section fade-in, a button hover effect with scale and color change, and a staggered list animation for three key features. Use smooth easing and a duration of 1 second. Here's the data: Hero heading: 'Welcome to [COMPANY]', Button text: 'Get Started', Features: ['Lightning-fast performance', 'Seamless user experience', 'Scalable architecture'].\n```\nCopy\n\n```\n# Framer Motion Animation Code for [COMPANY]'s Landing Page\n\n```jsx\nimport { motion } from 'framer-motion';\nimport React from 'react';\n\nconst LandingPage = () => {\n  return (\n    <div className=\"min-h-screen bg-gradient-to-r from-blue-50 to-indigo-100\">\n      {/* Hero Section with Fade-In Animation */}\n      <motion.h1\n        initial={{ opacity: 0, y: 20 }}\n        animate={{ opacity: 1, y: 0 }}\n        transition={{ duration: 1, ease: 'easeOut' }}\n        className=\"text-5xl font-bold text-center pt-20 text-indigo-800\"\n      >\n        Welcome to [COMPANY]\n      </motion.h1>\n\n      {/* Animated Button */}\n      <motion.button\n        whileHover={{ scale: 1.05, backgroundColor: '#6366f1' }}\n        whileTap={{ scale: 0.95 }}\n        transition={{ duration: 0.3, ease: 'easeInOut' }}\n        className=\"mx-auto block mt-8 px-8 py-3 bg-indigo-600 text-white rounded-lg shadow-lg\"\n      >\n        Get Started\n      </motion.button>\n\n      {/* Staggered Feature List */}\n      <motion.ul\n        initial={{ opacity: 0 }}\n        animate={{ opacity: 1 }}\n        transition={{ staggerChildren: 0.2 }}\n        className=\"mt-16 max-w-2xl mx-auto space-y-4\"\n      >\n        {['Lightning-fast performance', 'Seamless user experience', 'Scalable architecture'].map((feature, index) => (\n          <motion.li\n            key={index}\n            initial={{ opacity: 0, x: -20 }}\n            animate={{ opacity: 1, x: 0 }}\n            transition={{ duration: 0.5, delay: index * 0.2 }}\n            className=\"p-4 bg-white rounded-lg shadow-sm\"\n          >\n            {feature}\n          </motion.li>\n        ))}\n      </motion.ul>\n    </div>\n  );\n};\n\nexport default LandingPage;\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:18:54.393436Z",
+    "http_status": 200,
+    "content_hash": "b74a3b77abf27945490eee93092c7772d31bbb65fadcbe14e62551b2be1bc82d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\framer-motion.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\framer-motion.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Motion: Performant React Animation Guidelines",
+  "short_description_vi": "This skill provides guidelines for creating animations using Framer Motion (now Motion) in React projects. It is ideal for developers looking to enhance their skills in motion graphics with a focus on performance and best practices."
+}

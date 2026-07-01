@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-hooks",
+  "slug": "claude-hooks",
+  "name": "Claude Hooks",
+  "headline": "claude hooks manager CLI for automation",
+  "short_description": "Claude Hooks Manager enables operations teams to automate workflows by managing hooks in Claude Code via CLI. It connects to Claude API and integrates with Python-based automation tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "webdevtodayjason",
+  "install_command": "git clone https://github.com/webdevtodayjason/claude-hooks.git",
+  "source_repo_url": "https://github.com/webdevtodayjason/claude-hooks",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-desktop",
+    "claude-hooks",
+    "hooks",
+    "claude-api",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Hooks Manager is a hook management system for Claude that enforces coding standards, maintains consistency, and automates workflow tasks across projects. It provides pre-commit validation, runs tests and linting checks, and integrates with Context Forge for automatic context recovery during extended development sessions. The tool works via CLI commands and supports custom hook development for multi-project environments. Operations teams use it to maintain code quality and automate repetitive tasks without manual intervention. It requires Python 3.6+ and is compatible with Claude Code v1.0.48 and later.\nRun pre-commit validation with tests and linting before code commits\nMaintain consistent coding standards across multi-project environments\nAutomatically restore project context after Claude Code compaction events\nAutomate quality gates and enforce project-specific rules",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/webdevtodayjason/claude-hooks`",
+    "usage": "```\nCreate a new hook in Claude Code for [COMPANY] that triggers a [ACTION] workflow when [CONDITION] is met. The hook should use the [API_ENDPOINT] and include the following parameters: [PARAMETERS]. Provide the CLI command to create this hook and a brief explanation of how it works.\n```\nCopy\n\n```\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-hooks#main-content",
+      "claude-hooks#overview",
+      "claude-hooks#setup",
+      "claude-hooks#examples",
+      "claude-hooks#tools",
+      "claude-hooks#mcp",
+      "claude-hooks#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Hooks Manager là hệ thống quản lý hook dành cho Claude, giúp thực thi các tiêu chuẩn viết code (coding standards), duy trì tính nhất quán và tự động hóa các tác vụ trong quy trình làm việc giữa các dự án. Công cụ cung cấp tính năng xác thực pre-commit, chạy test và linting, đồng thời tích hợp với Context Forge để tự động khôi phục ngữ cảnh (context) trong các phiên lập trình kéo dài. Hoạt động thông qua các lệnh CLI, công cụ hỗ trợ phát triển các hook tùy chỉnh cho môi trường đa dự án. Các đội ngũ vận hành có thể sử dụng công cụ này để duy trì chất lượng code và tự động hóa các tác vụ lặp đi lặp lại mà không cần can thiệp thủ công. Yêu cầu Python 3.6+ và tương thích với Claude Code v1.0.48 trở lên.\nChạy xác thực pre-commit kèm test và linting trước khi commit code\nDuy trì tiêu chuẩn coding standards nhất quán trên các môi trường đa dự án\nTự động khôi phục ngữ cảnh dự án sau các sự kiện compaction của Claude Code\nTự động hóa các chốt kiểm soát chất lượng (quality gates) và thực thi các quy tắc đặc thù của dự án",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/webdevtodayjason/claude-hooks`",
+    "usage_vi": "```\nTạo một hook mới trong Claude Code cho [COMPANY] để kích hoạt workflow [ACTION] khi đáp ứng điều kiện [CONDITION]. Hook này sẽ sử dụng [API_ENDPOINT] và bao gồm các tham số sau: [PARAMETERS]. Cung cấp lệnh CLI để tạo hook này và giải thích ngắn gọn cách thức hoạt động của nó.\n```\nSao chép\n\n```\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:12:19.789507Z",
+    "http_status": 200,
+    "content_hash": "66f310828e27bad7683aaa7c076a72498b5e5d4d3431cdb9d89b77c3eddf4ca0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-hooks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-hooks.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CLI quản lý Claude hooks hỗ trợ tự động hóa",
+  "short_description_vi": "Claude Hooks Manager cho phép các đội ngũ vận hành tự động hóa quy trình làm việc bằng cách quản lý các hook trong Claude Code qua CLI. Công cụ kết nối trực tiếp với Claude API và tích hợp với các công cụ tự động hóa viết bằng Python."
+}

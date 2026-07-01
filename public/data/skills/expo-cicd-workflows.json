@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/expo-cicd-workflows",
+  "slug": "expo-cicd-workflows",
+  "name": "Expo Cicd Workflows",
+  "headline": "expo-cicd-workflows: CI/CD Processes",
+  "short_description": "Automates CI/CD for Expo apps, reducing manual effort and errors. Connects to GitHub, GitLab, and Bitbucket for integration. Ideal for operations teams managing Expo application deployments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "expo",
+  "install_command": "git clone https://github.com/expo/skills.git",
+  "source_repo_url": "https://github.com/expo/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The expo-cicd-workflows skill is designed to enhance the continuous integration and continuous deployment (CI/CD) processes for applications built with Expo. This skill automates the workflow, allowing developers to focus more on coding and less on manual deployment tasks. By integrating seamlessly with existing Expo projects, it ensures that updates and changes are deployed efficiently and reliably. One of the key benefits of using expo-cicd-workflows is the significant time savings it offers. Developers can automate repetitive tasks such as testing, building, and deploying their applications, which not only accelerates the release cycle but also minimizes the potential for human error. This skill is particularly valuable in fast-paced development environments where speed and accuracy are crucial. This skill is ideal for developers, product managers, and AI practitioners who are looking to optimize their workflow automation. By leveraging the expo-cicd-workflows skill, teams can ensure that their applications are consistently delivered with high quality. Practical use cases include automating the deployment of new features, integrating automated testing in the CI pipeline, and managing version control seamlessly. While the implementation of this skill is straightforward for those familiar with CI/CD practices, it does require a basic understanding of Expo and GitHub actions. As part of an AI-first workflow, this skill enhances productivity by allowing teams to adopt automation strategies that align with modern development practices, ultimately leading to more efficient project management and faster time-to-market.\nAutomate the deployment of new features in Expo applications to ensure timely releases.\nIntegrate automated testing into the CI pipeline to maintain high code quality.\nManage version control and release updates seamlessly to streamline project workflows.\nStreamline the development workflow for faster iterations and improved productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/expo/skills`",
+    "usage": "```\nSet up a CI/CD pipeline for my Expo app using [GIT_PROVIDER]. The app is located at [REPO_URL] and uses the following environment variables: [ENV_VARS]. I want to deploy to [PLATFORMS] (e.g., iOS, Android, web). Include steps for automated testing and notifications.\n```\nCopy\n\n```\nHere's a complete CI/CD pipeline setup for your Expo app using GitHub Actions. This pipeline will automatically test and deploy your app to iOS, Android, and web platforms whenever changes are pushed to the main branch.\n\n1. **Setup**: Create a `.github/workflows/expo.yml` file in your repository with the following content:\n```yaml\nname: Expo CI/CD\n\non:\n  push:\n    branches: [ main ]\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - uses: actions/setup-node@v2\n        with:\n          node-version: '16'\n      - run: npm install\n      - run: npm test\n\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - uses: actions/setup-node@v2\n        with:\n          node-version: '16'\n      - run: npm install -g expo-cli\n      - run: expo login -u [YOUR_EXPO_USERNAME] -p [YOUR_EXPO_PASSWORD]\n      - run: expo build:android\n      - run: expo build:ios\n      - run: expo build:web\n      - run: expo publish\n```\n\n2. **Environment Variables**: Add your Expo username and password as secrets in your GitHub repository settings under `Settings > Secrets > Actions`.\n\n3. **Testing**: The pipeline includes a basic test step. You can customize this to run your specific test suite.\n\n4. **Notifications**: To add notifications, you can use the `actions/github-script` action to send messages to Slack, email, or other notification services.\n\nThis pipeline will now automatically run tests and deploy your app to all specified platforms whenever you push changes to the main branch.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "expo-cicd-workflows#main-content",
+      "expo-cicd-workflows#overview",
+      "expo-cicd-workflows#setup",
+      "expo-cicd-workflows#examples",
+      "expo-cicd-workflows#tools",
+      "expo-cicd-workflows#mcp",
+      "expo-cicd-workflows#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The expo-cicd-workflows skill is designed to enhance the continuous integration and continuous deployment (CI/CD) processes for applications built with Expo. This skill automates the workflow, allowing developers to focus more on coding and less on manual deployment tasks. By integrating seamlessly with existing Expo projects, it ensures that updates and changes are deployed efficiently and reliably. One of the key benefits of using expo-cicd-workflows is the significant time savings it offers. Developers can automate repetitive tasks such as testing, building, and deploying their applications, which not only accelerates the release cycle but also minimizes the potential for human error. This skill is particularly valuable in fast-paced development environments where speed and accuracy are crucial. This skill is ideal for developers, product managers, and AI practitioners who are looking to optimize their workflow automation. By leveraging the expo-cicd-workflows skill, teams can ensure that their applications are consistently delivered with high quality. Practical use cases include automating the deployment of new features, integrating automated testing in the CI pipeline, and managing version control seamlessly. While the implementation of this skill is straightforward for those familiar with CI/CD practices, it does require a basic understanding of Expo and GitHub actions. As part of an AI-first workflow, this skill enhances productivity by allowing teams to adopt automation strategies that align with modern development practices, ultimately leading to more efficient project management and faster time-to-market.\nAutomate the deployment of new features in Expo applications to ensure timely releases.\nIntegrate automated testing into the CI pipeline to maintain high code quality.\nManage version control and release updates seamlessly to streamline project workflows.\nStreamline the development workflow for faster iterations and improved productivity.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/expo/skills`",
+    "usage_vi": "```\nSet up a CI/CD pipeline for my Expo app using [GIT_PROVIDER]. The app is located at [REPO_URL] and uses the following environment variables: [ENV_VARS]. I want to deploy to [PLATFORMS] (e.g., iOS, Android, web). Include steps for automated testing and notifications.\n```\nCopy\n\n```\nHere's a complete CI/CD pipeline setup for your Expo app using GitHub Actions. This pipeline will automatically test and deploy your app to iOS, Android, and web platforms whenever changes are pushed to the main branch.\n\n1. **Setup**: Create a `.github/workflows/expo.yml` file in your repository with the following content:\n```yaml\nname: Expo CI/CD\n\non:\n  push:\n    branches: [ main ]\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - uses: actions/setup-node@v2\n        with:\n          node-version: '16'\n      - run: npm install\n      - run: npm test\n\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - uses: actions/setup-node@v2\n        with:\n          node-version: '16'\n      - run: npm install -g expo-cli\n      - run: expo login -u [YOUR_EXPO_USERNAME] -p [YOUR_EXPO_PASSWORD]\n      - run: expo build:android\n      - run: expo build:ios\n      - run: expo build:web\n      - run: expo publish\n```\n\n2. **Environment Variables**: Add your Expo username and password as secrets in your GitHub repository settings under `Settings > Secrets > Actions`.\n\n3. **Testing**: The pipeline includes a basic test step. You can customize this to run your specific test suite.\n\n4. **Notifications**: To add notifications, you can use the `actions/github-script` action to send messages to Slack, email, or other notification services.\n\nThis pipeline will now automatically run tests and deploy your app to all specified platforms whenever you push changes to the main branch.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:15:24.946432Z",
+    "http_status": 200,
+    "content_hash": "c5d725090fa879f320559dfc451170a35925230424aaedcd87cd0ff7baec6792",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\expo-cicd-workflows.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\expo-cicd-workflows.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "expo-cicd-workflows: CI/CD Processes",
+  "short_description_vi": "Automates CI/CD for Expo apps, reducing manual effort and errors. Connects to GitHub, GitLab, and Bitbucket for integration. Ideal for operations teams managing Expo application deployments."
+}

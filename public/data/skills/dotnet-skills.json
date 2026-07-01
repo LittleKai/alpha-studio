@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dotnet-skills",
+  "slug": "dotnet-skills",
+  "name": ".NET Skills",
+  "headline": ".NET Skills - Automate .NET Development",
+  "short_description": "A Claude Code plugin with 25 skills and 5 specialized agents for .NET development. It covers C#, Akka.NET, Aspire, EF Core, testing, and performance optimization. Ideal for operations teams automating .NET workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Aaronontheweb",
+  "install_command": "git clone https://github.com/Aaronontheweb/dotnet-skills.git",
+  "source_repo_url": "https://github.com/Aaronontheweb/dotnet-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "dotnet-skills is a comprehensive Claude Code plugin designed to accelerate .NET development workflows with 25 integrated skills and 5 specialized agents. It provides targeted support for C# patterns, Akka.NET actor systems, .NET Aspire orchestration, Entity Framework Core data access, unit testing frameworks, and performance optimization techniques. The plugin helps developers implement value objects with domain constraints, analyze delegate allocations and hot-path performance bottlenecks, and follow proven .NET architectural patterns. Teams automating .NET development pipelines benefit from structured guidance on constraint-enforcing types, dependency injection configuration, and binary-compatible API design.\nAutomating .NET project setup and C# code generation for development teams\nAnalyzing performance bottlenecks in .NET applications, including delegate allocations and dispatch patterns\nImplementing domain-driven design patterns with constraint-enforcing value objects\nConfiguring Entity Framework Core migrations and optimizing data access layer design",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Aaronontheweb/dotnet-skills`",
+    "usage": "```\nUse the dotnet-skills plugin to [ACTION] for [PROJECT_NAME]. Focus on [SPECIFIC_AREA] and ensure the solution follows [BEST_PRACTICES]. Include [RELEVANT_METRICS] to validate the output. Example: 'Use the dotnet-skills plugin to generate a performance optimization plan for an ASP.NET Core API project called 'OrderProcessing'. Focus on EF Core query efficiency and include benchmarks for query execution time and memory usage.'\n```\nCopy\n\n```\nHere’s a performance optimization plan for your ASP.NET Core API project, **OrderProcessing**, focusing on EF Core query efficiency:\n\n### **Current Performance Baseline**\n- **Average API response time**: 850ms (target: <500ms)\n- **EF Core query execution time**: 420ms per request (top 3 slowest queries identified)\n- **Memory usage**: 1.2GB per 1000 requests (target: <800MB)\n\n### **Optimization Recommendations**\n1. **Index Optimization**: Added composite indexes on `Order.CustomerId` and `Order.DateCreated` in the `Orders` table. This reduced query time for `/orders?customerId=123&startDate=2023-01-01` from 420ms to **120ms**.\n2. **Query Refactoring**: Replaced a LINQ query that fetched all `OrderItems` with a filtered `Include` to reduce data transfer. This cut memory usage by **35%** for high-traffic endpoints.\n3. **Caching Layer**: Implemented Redis caching for frequently accessed order summaries (e.g., `/orders/summary`). Cache hit rate improved from **40% to 85%**, reducing database load by **60%**.\n\n### **Validation Metrics**\n- **Post-optimization response time**: 380ms (avg)\n- **Memory usage**: 720MB per 1000 requests\n- **Database CPU load**: Reduced from 75% to 40% during peak hours.\n\n### **Next Steps**\n- Deploy changes to staging and monitor for 48 hours.\n- Use `dotnet-counters` to track EF Core query performance in real-time.\n- Schedule a review in 2 weeks to assess long-term impact.\n\nWould you like me to generate the actual code changes or a CI/CD pipeline snippet to automate these optimizations?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dotnet-skills#main-content",
+      "dotnet-skills#overview",
+      "dotnet-skills#setup",
+      "dotnet-skills#examples",
+      "dotnet-skills#tools",
+      "dotnet-skills#mcp",
+      "dotnet-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "dotnet-skills is a comprehensive Claude Code plugin designed to accelerate .NET development workflows with 25 integrated skills and 5 specialized agents. It provides targeted support for C# patterns, Akka.NET actor systems, .NET Aspire orchestration, Entity Framework Core data access, unit testing frameworks, and performance optimization techniques. The plugin helps developers implement value objects with domain constraints, analyze delegate allocations and hot-path performance bottlenecks, and follow proven .NET architectural patterns. Teams automating .NET development pipelines benefit from structured guidance on constraint-enforcing types, dependency injection configuration, and binary-compatible API design.\nAutomating .NET project setup and C# code generation for development teams\nAnalyzing performance bottlenecks in .NET applications, including delegate allocations and dispatch patterns\nImplementing domain-driven design patterns with constraint-enforcing value objects\nConfiguring Entity Framework Core migrations and optimizing data access layer design",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Aaronontheweb/dotnet-skills`",
+    "usage_vi": "```\nUse the dotnet-skills plugin to [ACTION] for [PROJECT_NAME]. Focus on [SPECIFIC_AREA] and ensure the solution follows [BEST_PRACTICES]. Include [RELEVANT_METRICS] to validate the output. Example: 'Use the dotnet-skills plugin to generate a performance optimization plan for an ASP.NET Core API project called 'OrderProcessing'. Focus on EF Core query efficiency and include benchmarks for query execution time and memory usage.'\n```\nCopy\n\n```\nHere’s a performance optimization plan for your ASP.NET Core API project, **OrderProcessing**, focusing on EF Core query efficiency:\n\n### **Current Performance Baseline**\n- **Average API response time**: 850ms (target: <500ms)\n- **EF Core query execution time**: 420ms per request (top 3 slowest queries identified)\n- **Memory usage**: 1.2GB per 1000 requests (target: <800MB)\n\n### **Optimization Recommendations**\n1. **Index Optimization**: Added composite indexes on `Order.CustomerId` and `Order.DateCreated` in the `Orders` table. This reduced query time for `/orders?customerId=123&startDate=2023-01-01` from 420ms to **120ms**.\n2. **Query Refactoring**: Replaced a LINQ query that fetched all `OrderItems` with a filtered `Include` to reduce data transfer. This cut memory usage by **35%** for high-traffic endpoints.\n3. **Caching Layer**: Implemented Redis caching for frequently accessed order summaries (e.g., `/orders/summary`). Cache hit rate improved from **40% to 85%**, reducing database load by **60%**.\n\n### **Validation Metrics**\n- **Post-optimization response time**: 380ms (avg)\n- **Memory usage**: 720MB per 1000 requests\n- **Database CPU load**: Reduced from 75% to 40% during peak hours.\n\n### **Next Steps**\n- Deploy changes to staging and monitor for 48 hours.\n- Use `dotnet-counters` to track EF Core query performance in real-time.\n- Schedule a review in 2 weeks to assess long-term impact.\n\nWould you like me to generate the actual code changes or a CI/CD pipeline snippet to automate these optimizations?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:35:55.600433Z",
+    "http_status": 200,
+    "content_hash": "533bc5c1f3d7b46be728ca7b899fedeeedb2a7f9a5d4198b7813102de94ee3c8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dotnet-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dotnet-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": ".NET Skills - Automate .NET Development",
+  "short_description_vi": "A Claude Code plugin with 25 skills and 5 specialized agents for .NET development. It covers C#, Akka.NET, Aspire, EF Core, testing, and performance optimization. Ideal for operations teams automating .NET workflows."
+}

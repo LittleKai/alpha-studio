@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-agent-sdk-go",
+  "slug": "claude-agent-sdk-go",
+  "name": "Claude Agent Sdk Go",
+  "headline": "unofficial Go SDK for Claude integration",
+  "short_description": "The claude-agent-sdk-go is an unofficial Go SDK for integrating Claude Code CLI into Go applications. It enables developers to build agentic AI workflows using Claude's capabilities. This SDK is useful for operations teams looking to automate tasks and integrate AI agents into their existing Go-based systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "severity1",
+  "install_command": "git clone https://github.com/severity1/claude-agent-sdk-go.git",
+  "source_repo_url": "https://github.com/severity1/claude-agent-sdk-go",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "developer-tools",
+    "sdk",
+    "ai",
+    "claude-code",
+    "sdk-go",
+    "go",
+    "golang",
+    "ai-agents",
+    "claude",
+    "agentic-ai"
+  ],
+  "sections": {
+    "overview": "The claude-agent-sdk-go is an unofficial Go SDK that enables developers to integrate Claude Code CLI into Go applications and build production-ready agentic AI workflows. It provides two powerful APIs: a Query API for one-shot operations and automation tasks, and a Client API for interactive multi-turn conversations with streaming responses. The SDK includes automatic resource management through the WithClient context manager pattern, session management for maintaining conversation state, and built-in tool integration for file operations, AWS, GitHub, and databases. Developers can leverage Claude's advanced code understanding and secure file operations while maintaining Go-idiomatic design patterns and comprehensive error handling.\nCI/CD automation and scripting tasks with Claude's code understanding\nBuilding interactive multi-turn conversational AI agents in Go applications\nIntegrating Claude's tool capabilities for database queries and AWS operations\nOperations teams automating infrastructure tasks with AI-powered agents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/severity1/claude-agent-sdk-go`",
+    "usage": "```\nUse the claude-agent-sdk-go to automate [SPECIFIC_TASK] in a Go application. Write a Go function that initializes the SDK with [CLAUDE_API_KEY] and executes the task using Claude Code CLI. Include error handling for [POTENTIAL_ERRORS]. Return the output in a structured format like JSON.\n```\nCopy\n\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"log\"\n\t\n\t\"github.com/yourusername/claude-agent-sdk-go\"\n)\n\nfunc main() {\n\t// Initialize the SDK with API key\n\tclient, err := claudeagent.NewClient(\"claude-sk-xxxxxxxxxxxxxxxx\")\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to initialize client: %v\", err)\n\t}\n\n\t// Define the task to automate\n\ttask := claudeagent.Task{\n\t\tCommand: \"analyze_logs\",\n\t\tArgs: map[string]interface{}{\n\t\t\t\"log_path\": \"/var/log/app/application.log\",\n\t\t\t\"time_range\": \"last_24_hours\",\n\t\t\t\"output_format\": \"json\",\n\t\t},\n\t}\n\n\t// Execute the task\n\tresult, err := client.ExecuteTask(task)\n\tif err != nil {\n\t\tlog.Fatalf(\"Task execution failed: %v\", err)\n\t}\n\n\t// Parse and format the output\n\tvar structuredOutput map[string]interface{}\n\tif err := json.Unmarshal([]byte(result), &structuredOutput); err != nil {\n\t\tlog.Fatalf(\"Failed to parse output: %v\", err)\n\t}\n\n\t// Print the results\n\tfmt.Println(\"Task completed successfully:\")\n\tprettyJSON, _ := json.MarshalIndent(structuredOutput, \"\", \"  \")\n\tfmt.Println(string(prettyJSON))\n}\n```\n\n**Output:**\n```json\n{\n  \"status\": \"success\",\n  \"summary\": {\n    \"total_errors\": 12,\n    \"critical_errors\": 3,\n    \"warnings\": 8,\n    \"performance_impact\": \"medium\"\n  },\n  \"top_errors\": [\n    {\n      \"timestamp\": \"2024-05-15T14:32:10Z\",\n      \"error_type\": \"database_connection_timeout\",\n      \"severity\": \"critical\",\n      \"suggested_action\": \"Check database server load and connection pool settings\"\n    },\n    {\n      \"timestamp\": \"2024-05-15T14:35:45Z\",\n      \"error_type\": \"memory_leak_detected\",\n      \"severity\": \"high\",\n      \"suggested_action\": \"Restart the application service and monitor memory usage\"\n    }\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-agent-sdk-go#main-content",
+      "claude-agent-sdk-go#overview",
+      "claude-agent-sdk-go#setup",
+      "claude-agent-sdk-go#examples",
+      "claude-agent-sdk-go#tools",
+      "claude-agent-sdk-go#mcp",
+      "claude-agent-sdk-go#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-agent-sdk-go is an unofficial Go SDK that enables developers to integrate Claude Code CLI into Go applications and build production-ready agentic AI workflows. It provides two powerful APIs: a Query API for one-shot operations and automation tasks, and a Client API for interactive multi-turn conversations with streaming responses. The SDK includes automatic resource management through the WithClient context manager pattern, session management for maintaining conversation state, and built-in tool integration for file operations, AWS, GitHub, and databases. Developers can leverage Claude's advanced code understanding and secure file operations while maintaining Go-idiomatic design patterns and comprehensive error handling.\nCI/CD automation and scripting tasks with Claude's code understanding\nBuilding interactive multi-turn conversational AI agents in Go applications\nIntegrating Claude's tool capabilities for database queries and AWS operations\nOperations teams automating infrastructure tasks with AI-powered agents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/severity1/claude-agent-sdk-go`",
+    "usage_vi": "```\nUse the claude-agent-sdk-go to automate [SPECIFIC_TASK] in a Go application. Write a Go function that initializes the SDK with [CLAUDE_API_KEY] and executes the task using Claude Code CLI. Include error handling for [POTENTIAL_ERRORS]. Return the output in a structured format like JSON.\n```\nCopy\n\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\t\"fmt\"\n\t\"log\"\n\t\n\t\"github.com/yourusername/claude-agent-sdk-go\"\n)\n\nfunc main() {\n\t// Initialize the SDK with API key\n\tclient, err := claudeagent.NewClient(\"claude-sk-xxxxxxxxxxxxxxxx\")\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to initialize client: %v\", err)\n\t}\n\n\t// Define the task to automate\n\ttask := claudeagent.Task{\n\t\tCommand: \"analyze_logs\",\n\t\tArgs: map[string]interface{}{\n\t\t\t\"log_path\": \"/var/log/app/application.log\",\n\t\t\t\"time_range\": \"last_24_hours\",\n\t\t\t\"output_format\": \"json\",\n\t\t},\n\t}\n\n\t// Execute the task\n\tresult, err := client.ExecuteTask(task)\n\tif err != nil {\n\t\tlog.Fatalf(\"Task execution failed: %v\", err)\n\t}\n\n\t// Parse and format the output\n\tvar structuredOutput map[string]interface{}\n\tif err := json.Unmarshal([]byte(result), &structuredOutput); err != nil {\n\t\tlog.Fatalf(\"Failed to parse output: %v\", err)\n\t}\n\n\t// Print the results\n\tfmt.Println(\"Task completed successfully:\")\n\tprettyJSON, _ := json.MarshalIndent(structuredOutput, \"\", \"  \")\n\tfmt.Println(string(prettyJSON))\n}\n```\n\n**Output:**\n```json\n{\n  \"status\": \"success\",\n  \"summary\": {\n    \"total_errors\": 12,\n    \"critical_errors\": 3,\n    \"warnings\": 8,\n    \"performance_impact\": \"medium\"\n  },\n  \"top_errors\": [\n    {\n      \"timestamp\": \"2024-05-15T14:32:10Z\",\n      \"error_type\": \"database_connection_timeout\",\n      \"severity\": \"critical\",\n      \"suggested_action\": \"Check database server load and connection pool settings\"\n    },\n    {\n      \"timestamp\": \"2024-05-15T14:35:45Z\",\n      \"error_type\": \"memory_leak_detected\",\n      \"severity\": \"high\",\n      \"suggested_action\": \"Restart the application service and monitor memory usage\"\n    }\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:01.089551Z",
+    "http_status": 200,
+    "content_hash": "c48fd34b81c9e7a02f358a082aee9dde7256f65a8921b6473c0e604e2f139e6c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-sdk-go.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-sdk-go.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "unofficial Go SDK for Claude integration",
+  "short_description_vi": "The claude-agent-sdk-go is an unofficial Go SDK for integrating Claude Code CLI into Go applications. It enables developers to build agentic AI workflows using Claude's capabilities. This SDK is useful for operations teams looking to automate tasks and integrate AI agents into their existing Go-based systems."
+}

@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-docs",
+  "slug": "open-docs",
+  "name": "Open-docs",
+  "headline": "Open-docs - AI CLI Documentation",
+  "short_description": "Open-docs provides deep-dive documentation, implementation secrets, and architecture internals for AI CLI tools. It benefits developers, researchers, and power users by extracting information directly from source code. The skill connects to various AI CLI tools like Claude, Codex, and Gemini, enhancing understanding and implementation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "bgauryy",
+  "install_command": "git clone https://github.com/bgauryy/open-docs.git",
+  "source_repo_url": "https://github.com/bgauryy/open-docs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "cli",
+    "claude-code",
+    "documentations",
+    "codex",
+    "documentation",
+    "gemini-cli",
+    "llm",
+    "codex-cli",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "Open-docs provides detailed technical documentation extracted directly from the source code of AI CLI tools including Claude Agent SDK, Gemini CLI, Codex CLI, OpenCode, and Pi Coding Agent. It reveals architecture internals, undocumented APIs, system prompts, and implementation patterns that official documentation doesn't cover. The skill targets developers and researchers who need to understand how these agents work, integrate with them properly, and discover hidden capabilities and edge cases. By extracting information directly from open-source repositories, open-docs bridges the gap between what tools claim to do and how they actually work under the hood.\nExplore undocumented features of AI CLI tools to enhance functionality.\nIntegrate various AI agents into a single workflow for improved productivity.\nIdentify and troubleshoot edge cases in AI tool implementations.\nUnderstand the internal architecture of AI systems for better customization.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bgauryy/open-docs`",
+    "usage": "```\nExtract and summarize the deep-dive documentation, implementation secrets, and architecture internals for the AI CLI tool '[TOOL_NAME]' (e.g., Claude CLI, Codex CLI, or Gemini CLI). Focus on [SPECIFIC_ASPECT] such as [EXAMPLE: memory management, plugin architecture, or API integration]. Include code snippets or configuration examples where relevant. Prioritize official documentation and source code references.\n```\nCopy\n\n```\n### Deep-Dive: Claude CLI Memory Management Architecture\n\n**Overview**\nThe Claude CLI (v1.8.2) employs a hybrid memory architecture combining persistent disk-based storage with in-memory caching for optimal performance. Memory is segmented into three layers:\n1. **Short-term cache** (RAM, 512MB, TTL: 30s) for active sessions\n2. **Long-term storage** (SQLite database, encrypted) for persistent context\n3. **User-defined context files** (JSON/YAML) for project-specific data\n\n**Key Implementation Details**\n- **Session Isolation**: Each CLI invocation creates a temporary memory namespace that merges with the user's long-term memory on commit.\n- **Garbage Collection**: Unreferenced memory blocks are auto-purged after 7 days unless pinned by a user annotation.\n- **Security**: All memory dumps are encrypted using AES-256-GCM with per-user keys derived from the user's master password.\n\n**Code Snippet: Memory Configuration**\n```bash\n# Enable debug mode to inspect memory usage\nclaude --debug-memory\n\n# Pin a context file to prevent garbage collection\nclaude --pin-context /path/to/project.json\n\n# View memory statistics\nclaude --memory-stats\n```\n\n**Architecture Internals**\nThe memory system is built on top of the `memory_engine` module in the CLI's source code (`/src/memory/engine.py`). Critical functions include:\n- `load_memory_context()`: Loads user-specific memory from disk\n- `merge_session_memory()`: Combines temporary and persistent memory\n- `commit_memory()`: Persists changes to the SQLite database\n\n**Performance Optimization**\nFor large projects (>100MB of context), the CLI automatically switches to a streaming memory model to avoid RAM exhaustion. Users can force this mode with:\n```bash\nclaude --stream-memory /path/to/large_project/\n```\n\n**Common Pitfalls**\n1. **Memory Leaks**: Unclosed sessions can bloat the SQLite database. Always use `claude --cleanup` after long debugging sessions.\n2. **Encryption Overhead**: Enabling encryption adds ~15% latency to memory operations. Disable with `--no-encryption` for local development.\n3. **Context Bloat**: Project-specific JSON files should be pruned regularly. Use `claude --analyze-context` to identify large files.\n\n**References**\n- Official Docs: https://docs.claude.ai/cli/memory\n- Source Code: https://github.com/claude-ai/cli/blob/main/src/memory/engine.py\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-docs#main-content",
+      "open-docs#overview",
+      "open-docs#setup",
+      "open-docs#examples",
+      "open-docs#tools",
+      "open-docs#mcp",
+      "open-docs#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open-docs provides detailed technical documentation extracted directly from the source code of AI CLI tools including Claude Agent SDK, Gemini CLI, Codex CLI, OpenCode, and Pi Coding Agent. It reveals architecture internals, undocumented APIs, system prompts, and implementation patterns that official documentation doesn't cover. The skill targets developers and researchers who need to understand how these agents work, integrate with them properly, and discover hidden capabilities and edge cases. By extracting information directly from open-source repositories, open-docs bridges the gap between what tools claim to do and how they actually work under the hood.\nExplore undocumented features of AI CLI tools to enhance functionality.\nIntegrate various AI agents into a single workflow for improved productivity.\nIdentify and troubleshoot edge cases in AI tool implementations.\nUnderstand the internal architecture of AI systems for better customization.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bgauryy/open-docs`",
+    "usage_vi": "```\nExtract and summarize the deep-dive documentation, implementation secrets, and architecture internals for the AI CLI tool '[TOOL_NAME]' (e.g., Claude CLI, Codex CLI, or Gemini CLI). Focus on [SPECIFIC_ASPECT] such as [EXAMPLE: memory management, plugin architecture, or API integration]. Include code snippets or configuration examples where relevant. Prioritize official documentation and source code references.\n```\nCopy\n\n```\n### Deep-Dive: Claude CLI Memory Management Architecture\n\n**Overview**\nThe Claude CLI (v1.8.2) employs a hybrid memory architecture combining persistent disk-based storage with in-memory caching for optimal performance. Memory is segmented into three layers:\n1. **Short-term cache** (RAM, 512MB, TTL: 30s) for active sessions\n2. **Long-term storage** (SQLite database, encrypted) for persistent context\n3. **User-defined context files** (JSON/YAML) for project-specific data\n\n**Key Implementation Details**\n- **Session Isolation**: Each CLI invocation creates a temporary memory namespace that merges with the user's long-term memory on commit.\n- **Garbage Collection**: Unreferenced memory blocks are auto-purged after 7 days unless pinned by a user annotation.\n- **Security**: All memory dumps are encrypted using AES-256-GCM with per-user keys derived from the user's master password.\n\n**Code Snippet: Memory Configuration**\n```bash\n# Enable debug mode to inspect memory usage\nclaude --debug-memory\n\n# Pin a context file to prevent garbage collection\nclaude --pin-context /path/to/project.json\n\n# View memory statistics\nclaude --memory-stats\n```\n\n**Architecture Internals**\nThe memory system is built on top of the `memory_engine` module in the CLI's source code (`/src/memory/engine.py`). Critical functions include:\n- `load_memory_context()`: Loads user-specific memory from disk\n- `merge_session_memory()`: Combines temporary and persistent memory\n- `commit_memory()`: Persists changes to the SQLite database\n\n**Performance Optimization**\nFor large projects (>100MB of context), the CLI automatically switches to a streaming memory model to avoid RAM exhaustion. Users can force this mode with:\n```bash\nclaude --stream-memory /path/to/large_project/\n```\n\n**Common Pitfalls**\n1. **Memory Leaks**: Unclosed sessions can bloat the SQLite database. Always use `claude --cleanup` after long debugging sessions.\n2. **Encryption Overhead**: Enabling encryption adds ~15% latency to memory operations. Disable with `--no-encryption` for local development.\n3. **Context Bloat**: Project-specific JSON files should be pruned regularly. Use `claude --analyze-context` to identify large files.\n\n**References**\n- Official Docs: https://docs.claude.ai/cli/memory\n- Source Code: https://github.com/claude-ai/cli/blob/main/src/memory/engine.py\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:56.279291Z",
+    "http_status": 200,
+    "content_hash": "ddd3c0a2707a34af2d1ee2a616a79c63483757b9399852b2d176253ebbfd7e7b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-docs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-docs.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Open-docs - AI CLI Documentation",
+  "short_description_vi": "Open-docs provides deep-dive documentation, implementation secrets, and architecture internals for AI CLI tools. It benefits developers, researchers, and power users by extracting information directly from source code. The skill connects to various AI CLI tools like Claude, Codex, and Gemini, enhancing understanding and implementation."
+}

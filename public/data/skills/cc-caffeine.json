@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-caffeine",
+  "slug": "cc-caffeine",
+  "name": "Cc Caffeine",
+  "headline": "Prevent sleep mode during Claude Code tasks",
+  "short_description": "cc-caffeine prevents your computer from sleeping while Claude Code executes tasks. Ideal for developers and remote workers, it enables background processing during commutes or breaks. Connects to Claude Code for uninterrupted automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "samber",
+  "install_command": "git clone https://github.com/samber/cc-caffeine.git",
+  "source_repo_url": "https://github.com/samber/cc-caffeine",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "coffee",
+    "coding",
+    "prevent",
+    "caffeine",
+    "nap",
+    "vibe-coding",
+    "agentic",
+    "plugin",
+    "claude",
+    "hook",
+    "claude-code",
+    "sleep",
+    "ai"
+  ],
+  "sections": {
+    "overview": "cc-caffeine is a Claude Code plugin that prevents your computer from entering sleep mode during active automation tasks. It uses intelligent session-based management to monitor Claude Code activity and automatically maintain system power, then releases after 15 minutes of inactivity. The tool displays a coffee icon in your system tray to indicate protection status and works seamlessly across macOS, Linux, and Windows. It solves the problem of disconnected sessions during mobile work, outdoor coding, or when stepping away from your desk. Developers, remote workers, and nomadic professionals benefit from continuous automation without manual screen-wake intervention.\nExtended coding sessions at coffee shops without manual screen wake-ups\nUninterrupted Claude Code execution during commutes or travel\nOutdoor remote work on balconies or terraces without power sleep interruptions\nMultiple simultaneous Claude Code sessions requiring persistent connectivity",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/samber/cc-caffeine`",
+    "usage": "```\nUse cc-caffeine to prevent my computer from sleeping while [TASK] runs in Claude Code. Monitor the process and automatically release the caffeine lock when the task completes or fails.\n```\nCopy\n\n```\n```\n🚀 cc-caffeine activated (PID: 4207)\n📊 System sleep prevention: ENABLED\n⏳ Task duration: 00:00:04 (elapsed)\n🔄 Monitoring process: `npm run build:production`\n\n✅ Task completed successfully in 2m 15s\n💤 Caffeine released - sleep protection disabled\n📋 Summary:\n- Original sleep timer: 30 minutes\n- Actual sleep prevention: 2m 15s\n- Battery impact: Minimal (screen off during execution)\n\n🎯 Next steps:\n1. Review build artifacts in `/dist`\n2. Deploy to staging if tests pass\n3. Manually check battery status after long sessions\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-caffeine#main-content",
+      "cc-caffeine#overview",
+      "cc-caffeine#setup",
+      "cc-caffeine#examples",
+      "cc-caffeine#tools",
+      "cc-caffeine#mcp",
+      "cc-caffeine#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cc-caffeine là một plugin của Claude Code giúp ngăn máy tính chuyển sang chế độ ngủ (sleep mode) khi đang chạy các tác vụ tự động hóa. Công cụ sử dụng cơ chế quản lý thông minh theo phiên (session-based) để giám sát hoạt động của Claude Code, tự động duy trì nguồn điện hệ thống và tự giải phóng sau 15 phút không hoạt động. cc-caffeine hiển thị biểu tượng ly cà phê trên khay hệ thống (system tray) để chỉ báo trạng thái bảo vệ và hoạt động mượt mà trên macOS, Linux cũng như Windows. Công cụ giải quyết triệt để vấn đề mất kết nối phiên làm việc khi lập trình di động, làm việc ngoài trời hoặc khi bạn tạm rời khỏi bàn làm việc. Các lập trình viên, người làm việc từ xa và digital nomad sẽ được hưởng lợi từ việc tự động hóa liên tục mà không cần can thiệp thủ công để giữ màn hình luôn thức.\n- Các buổi lập trình kéo dài tại quán cà phê mà không cần giữ màn hình thức thủ công\n- Thực thi Claude Code không gián đoạn trong khi di chuyển hoặc đi du lịch\n- Làm việc từ xa ngoài trời (ban công, sân hiên) mà không bị gián đoạn do máy tự động sleep\n- Chạy đồng thời nhiều phiên Claude Code yêu cầu kết nối liên tục",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/samber/cc-caffeine`",
+    "usage_vi": "```\nSử dụng cc-caffeine để ngăn máy tính của tôi ngủ trong khi [TASK] đang chạy trong Claude Code. Giám sát tiến trình và tự động giải phóng khóa caffeine khi tác vụ hoàn thành hoặc thất bại.\n```\nCopy\n\n```\n🚀 cc-caffeine đã kích hoạt (PID: 4207)\n📊 Ngăn máy tính ngủ: ĐÃ BẬT\n⏳ Thời gian chạy tác vụ: 00:00:04 (đã qua)\n🔄 Đang giám sát tiến trình: `npm run build:production`\n\n✅ Tác vụ hoàn thành thành công trong 2m 15s\n💤 Đã giải phóng Caffeine - tắt bảo vệ chống ngủ\n📋 Tóm tắt:\n- Bộ hẹn giờ ngủ ban đầu: 30 phút\n- Thời gian ngăn ngủ thực tế: 2m 15s\n- Ảnh hưởng pin: Tối thiểu (tắt màn hình trong quá trình thực thi)\n\n🎯 Bước tiếp theo:\n1. Kiểm tra các build artifact trong `/dist`\n2. Deploy lên staging nếu pass test\n3. Kiểm tra tình trạng pin thủ công sau các phiên làm việc dài\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:39.507903Z",
+    "http_status": 200,
+    "content_hash": "5ec749eccb4c3648ca0d196af3dcb2797a2eaac962baa94b7d5549c774dcfbf5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-caffeine.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-caffeine.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Ngăn chế độ ngủ khi thực thi tác vụ Claude Code",
+  "short_description_vi": "cc-caffeine ngăn máy tính chuyển sang chế độ ngủ (sleep) khi Claude Code đang thực thi tác vụ. Phù hợp cho lập trình viên và người làm việc từ xa, công cụ này giúp duy trì quá trình xử lý nền (background processing) trong lúc di chuyển hoặc nghỉ giải lao. Kết nối trực tiếp với Claude Code để tự động hóa không bị gián đoạn."
+}

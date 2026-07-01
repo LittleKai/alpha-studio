@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/org-mode-skills",
+  "slug": "org-mode-skills",
+  "name": "Org Mode Skills",
+  "headline": "Denotecli: Denote Knowledge Base CLI for AI Agents",
+  "short_description": "Denote-Org Skills for Claude: Extends Anthropic's Life Sciences paradigm from Biology to Life Everything. 3,000+ files validated PKM system.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "junghan0611",
+  "install_command": "git clone https://github.com/junghan0611/org-mode-skills.git",
+  "source_repo_url": "https://github.com/junghan0611/org-mode-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "life-sciences",
+    "emacs",
+    "pkm",
+    "anthropic-skills",
+    "knowledge-management",
+    "denote",
+    "claude-ai",
+    "literate-programming",
+    "org-mode"
+  ],
+  "sections": {
+    "overview": "Denotecli is a command-line interface that extends AI agent capabilities to work with Denote-formatted org-mode knowledge bases. It provides 12 core commands for searching (by title, heading, content), reading notes with outline extraction, navigating knowledge graphs through backlinks, and managing tags at scale. The tool handles 3,000+ files with optimized performance (16–270ms depending on command), supports Korean↔English keyword mapping, and outputs structured JSON for easy agent integration. Built with Go stdlib only, it requires no external dependencies and runs as a single binary, making it suitable for knowledge workers, researchers, and developers maintaining large personal knowledge management systems who want AI agents to access and analyze their notes programmatically.\nAI agents searching and retrieving specific notes from large org-mode knowledge bases\nAutomated tag management and duplicate tag detection across 2,000+ tags\nKnowledge graph traversal to discover note relationships through backlinks\nJournal timeline queries and day-based note retrieval by creation or modification date",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/junghan0611/org-mode-skills`",
+    "usage": "```\nAct as an expert in org-mode and personal knowledge management. I need help organizing my notes for [COMPANY], a [INDUSTRY] company. I have [DATA] that I want to structure using org-mode. Provide a step-by-step guide on how to set up a comprehensive PKM system using org-mode, including tips on tagging, linking, and archiving. Also, suggest some best practices for maintaining and updating the system over time.\n```\nCopy\n\n```\n# Org-Mode Personal Knowledge Management System for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "org-mode-skills#main-content",
+      "org-mode-skills#overview",
+      "org-mode-skills#setup",
+      "org-mode-skills#examples",
+      "org-mode-skills#tools",
+      "org-mode-skills#mcp",
+      "org-mode-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Denotecli is a command-line interface that extends AI agent capabilities to work with Denote-formatted org-mode knowledge bases. It provides 12 core commands for searching (by title, heading, content), reading notes with outline extraction, navigating knowledge graphs through backlinks, and managing tags at scale. The tool handles 3,000+ files with optimized performance (16–270ms depending on command), supports Korean↔English keyword mapping, and outputs structured JSON for easy agent integration. Built with Go stdlib only, it requires no external dependencies and runs as a single binary, making it suitable for knowledge workers, researchers, and developers maintaining large personal knowledge management systems who want AI agents to access and analyze their notes programmatically.\nAI agents searching and retrieving specific notes from large org-mode knowledge bases\nAutomated tag management and duplicate tag detection across 2,000+ tags\nKnowledge graph traversal to discover note relationships through backlinks\nJournal timeline queries and day-based note retrieval by creation or modification date",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/junghan0611/org-mode-skills`",
+    "usage_vi": "```\nAct as an expert in org-mode and personal knowledge management. I need help organizing my notes for [COMPANY], a [INDUSTRY] company. I have [DATA] that I want to structure using org-mode. Provide a step-by-step guide on how to set up a comprehensive PKM system using org-mode, including tips on tagging, linking, and archiving. Also, suggest some best practices for maintaining and updating the system over time.\n```\nCopy\n\n```\n# Org-Mode Personal Knowledge Management System for [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:57.048871Z",
+    "http_status": 200,
+    "content_hash": "ab38996749c3a5c3fc39587bf3c9596308685fd0ede3a1ed182b736ca5b23a35",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\org-mode-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\org-mode-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Denotecli: Denote Knowledge Base CLI for AI Agents",
+  "short_description_vi": "Denote-Org Skills for Claude: Extends Anthropic's Life Sciences paradigm from Biology to Life Everything. 3,000+ files validated PKM system."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/iron-manus-mcp",
+  "slug": "iron-manus-mcp",
+  "name": "Iron Manus MCP",
+  "headline": "Iron Manus MCP - Automate Operations Workflows",
+  "short_description": "Iron Manus MCP automates operations workflows using Claude AI. It benefits operations teams by streamlining repetitive tasks, integrating with J.A.R.V.I.S. Orchestration for task automation, and connecting to various tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "dnnyngyen",
+  "install_command": "git clone https://github.com/dnnyngyen/iron-manus-mcp.git",
+  "source_repo_url": "https://github.com/dnnyngyen/iron-manus-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "manus",
+    "mcp",
+    "vibe-coding",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Iron Manus MCP is a Model Context Protocol server that orchestrates complex workflows through an 8-phase pipeline: INIT, QUERY, ENHANCE, KNOWLEDGE, PLAN, EXECUTE, VERIFY, and DONE. It provides specialized tools including APITaskAgent for secure API discovery with SSRF protection, PythonComputationalTool for data analysis, session state management, and slide generation. The skill enables AI agents to decompose large tasks into structured subtasks, isolate agent contexts, and enforce phase-gated tool access to prevent execution errors. Operations teams and workflow automation use cases benefit from reduced manual task coordination and integrated API connectivity with built-in security controls.\nMulti-agent task orchestration and delegation workflows\nAPI discovery and data fetching with SSRF protection\nStructured workflow planning and verification phases\nSession-based state management for agent coordination",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dnnyngyen/iron-manus-mcp`",
+    "usage": "```\nUse Iron Manus MCP to automate [TASK] in our operations workflow. Integrate with J.A.R.V.I.S. Orchestration to [SPECIFIC_ACTION], such as triggering a script, updating a database, or sending notifications. Ensure the automation follows these rules: [RULE_1], [RULE_2], and [RULE_3]. Provide a step-by-step breakdown of the automation process and confirm completion.\n```\nCopy\n\n```\nHere’s the automated workflow for processing high-priority support tickets in our operations system:\n\n1. **Trigger**: Iron Manus MCP detects a new ticket with priority \"Critical\" in our Jira queue (Ticket #OP-4567).\n2. **Validation**: It verifies the ticket meets criteria: assigned to the on-call engineer, contains a valid SLA, and has a due date within 2 hours.\n3. **Escalation**: If unassigned, it pings the #on-call-engineers Slack channel with `@here High-priority ticket OP-4567 needs assignment.`\n4. **Database Update**: It logs the ticket in our internal ops dashboard (OpsDB) with a status of \"Escalated\" and timestamps the action.\n5. **Notification**: It sends an email to the assigned engineer via SendGrid with the subject: \"URGENT: Ticket OP-4567 Requires Immediate Attention\" and includes the ticket link and SLA details.\n6. **Confirmation**: Iron Manus MCP logs the entire process in the audit trail and sends a summary to the #ops-automation channel: `Automation completed for OP-4567. Escalated to [Engineer Name]. SLA: 2h.`\n\n**Verification**: The ticket was successfully escalated to Alex Rivera at 2:15 PM, and the SLA timer reset to 2 hours from that moment. The ops team confirmed receipt of the automated notifications in Slack and email. No manual intervention was required.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "iron-manus-mcp#main-content",
+      "iron-manus-mcp#overview",
+      "iron-manus-mcp#setup",
+      "iron-manus-mcp#examples",
+      "iron-manus-mcp#tools",
+      "iron-manus-mcp#mcp",
+      "iron-manus-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Iron Manus MCP là một máy chủ Model Context Protocol giúp điều phối các quy trình làm việc phức tạp thông qua một pipeline gồm 8 giai đoạn: INIT, QUERY, ENHANCE, KNOWLEDGE, PLAN, EXECUTE, VERIFY và DONE. Công cụ này cung cấp các công cụ chuyên dụng bao gồm APITaskAgent để khám phá API an toàn với tính năng bảo vệ chống SSRF, PythonComputationalTool để phân tích dữ liệu, quản lý trạng thái session và tạo slide. Skill này cho phép các AI agent chia nhỏ các tác vụ lớn thành các tác vụ con có cấu trúc, cô lập context của agent và áp dụng kiểm soát truy cập công cụ theo từng giai đoạn (phase-gated) để ngăn ngừa lỗi thực thi. Các đội ngũ vận hành và các kịch bản tự động hóa quy trình sẽ được hưởng lợi từ việc giảm thiểu điều phối tác vụ thủ công cùng khả năng kết nối API tích hợp sẵn các kiểm soát bảo mật.\n\nĐiều phối tác vụ đa agent và quy trình ủy quyền (delegation workflows)\nKhám phá API và lấy dữ liệu với tính năng bảo vệ chống SSRF\nLập kế hoạch quy trình làm việc có cấu trúc và các giai đoạn xác thực\nQuản lý trạng thái dựa trên session để điều phối các agent",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dnnyngyen/iron-manus-mcp`",
+    "usage_vi": "```\nSử dụng Iron Manus MCP để tự động hóa [TASK] trong quy trình vận hành của chúng tôi. Tích hợp với J.A.R.V.I.S. Orchestration để thực hiện [SPECIFIC_ACTION], chẳng hạn như kích hoạt script, cập nhật cơ sở dữ liệu hoặc gửi thông báo. Hãy đảm bảo quy trình tự động hóa tuân thủ các quy tắc sau: [RULE_1], [RULE_2] và [RULE_3]. Cung cấp phân tích chi tiết từng bước của quy trình tự động hóa và xác nhận hoàn tất.\n```\nCopy\n\n```\nDưới đây là quy trình tự động hóa để xử lý các ticket hỗ trợ ưu tiên cao trong hệ thống vận hành của chúng tôi:\n\n1. **Trigger**: Iron Manus MCP phát hiện một ticket mới có độ ưu tiên \"Critical\" trong hàng đợi Jira (Ticket #OP-4567).\n2. **Validation**: Hệ thống xác minh ticket đáp ứng các tiêu chí: đã được phân công cho kỹ sư trực ca (on-call), có SLA hợp lệ và thời hạn xử lý (due date) trong vòng 2 giờ.\n3. **Escalation**: Nếu chưa được phân công, hệ thống sẽ ping kênh Slack #on-call-engineers với nội dung `@here High-priority ticket OP-4567 needs assignment.`\n4. **Database Update**: Hệ thống ghi nhận ticket vào trang quản trị vận hành nội bộ (OpsDB) với trạng thái \"Escalated\" và ghi nhận mốc thời gian (timestamp).\n5. **Notification**: Hệ thống gửi email cho kỹ sư được phân công qua SendGrid với tiêu đề: \"URGENT: Ticket OP-4567 Requires Immediate Attention\" kèm theo liên kết của ticket và thông tin SLA.\n6. **Confirmation**: Iron Manus MCP ghi nhật ký toàn bộ quy trình vào audit trail và gửi bản tóm tắt đến kênh #ops-automation: `Automation completed for OP-4567. Escalated to [Engineer Name]. SLA: 2h.`\n\n**Verification**: Ticket đã được chuyển tiếp thành công cho Alex Rivera lúc 2:15 chiều, và thời gian SLA được đặt lại thành 2 giờ kể từ thời điểm đó. Đội ngũ ops đã xác nhận nhận được các thông báo tự động trên Slack và email. Không cần bất kỳ sự can thiệp thủ công nào.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:48:49.200814Z",
+    "http_status": 200,
+    "content_hash": "6822aa74f65de488e89a55647958e1ff85556e526978330a8bec3080c9fa0856",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\iron-manus-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\iron-manus-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Iron Manus MCP - Tự động hóa quy trình vận hành",
+  "short_description_vi": "Iron Manus MCP tự động hóa các quy trình vận hành bằng cách sử dụng Claude AI. Công cụ này giúp các đội ngũ vận hành tối ưu hóa các tác vụ lặp đi lặp lại, tích hợp với J.A.R.V.I.S. Orchestration để tự động hóa tác vụ, và kết nối linh hoạt với nhiều công cụ cũng như quy trình làm việc khác nhau."
+}

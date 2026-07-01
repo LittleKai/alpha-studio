@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clauneck",
+  "slug": "clauneck",
+  "name": "clauneck",
+  "headline": "clauneck: website info scraper",
+  "short_description": "Clauneck is a Ruby-based tool for extracting emails, social media accounts, and other data from websites using Google Search Results. It benefits marketing teams by automating data collection for outreach and lead generation. The tool connects to Google Search and can be integrated into existing data extraction workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "serpapi",
+  "install_command": "git clone https://github.com/serpapi/clauneck.git",
+  "source_repo_url": "https://github.com/serpapi/clauneck",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "email-marketing",
+    "email-extract-with-proxy",
+    "web-crawling",
+    "automation",
+    "open-source",
+    "data-extraction",
+    "command-line-tool",
+    "data-extractor",
+    "ruby",
+    "command-line",
+    "email-scraper",
+    "rubygem",
+    "serp",
+    "social-media-scraper",
+    "email",
+    "email-extraction",
+    "webscraping",
+    "email-extractor"
+  ],
+  "sections": {
+    "overview": "Clauneck is a Ruby gem that automates the extraction of contact information from websites by leveraging Google Search results through SerpApi's API. It scrapes email addresses and social media handles (Instagram, Facebook, Twitter, TikTok, YouTube, GitHub, Medium) from web pages and outputs results to CSV format. The tool supports advanced Google search operators and custom queries to target specific websites or URL patterns, making it ideal for lead generation and cold email marketing campaigns. Users can configure proxies for large-scale scraping and have flexibility to provide their own URL lists or use SerpApi's search capabilities.\nCold email marketing outreach list building\nLead generation for B2B prospecting campaigns\nContact information collection for specific website categories\nAutomated social media handle discovery for competitor analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/serpapi/clauneck`",
+    "usage": "```\nUse Clauneck to extract email addresses and social media profiles for [TARGET INDUSTRY] companies in [GEOGRAPHIC REGION]. Focus on [SPECIFIC COMPANY SIZE RANGE] businesses. Export the results in CSV format with columns for company name, website URL, email addresses, LinkedIn profiles, and Twitter handles.\n```\nCopy\n\n```\nHere’s the extracted data for 15 SaaS companies in the Midwest (10-200 employees) specializing in HR software:\n\n| Company Name       | Website URL               | Email Addresses                     | LinkedIn Profiles                     | Twitter Handles       |\n|--------------------|---------------------------|-------------------------------------|---------------------------------------|-----------------------|\n| GreenHire Solutions | https://greenhire.io      | sarah@greenhire.io, john@greenhire.io | linkedin.com/company/greenhire-solutions | @GreenHireHR          |\n| PayrollPro Inc      | https://payrollpro.com    | mike@payrollpro.com, lisa@payrollpro.com | linkedin.com/company/payrollpro-inc    | @PayrollProHR        |\n| WorkforceHub        | https://workforcehub.com  | jane@workforcehub.com, tom@workforcehub.com | linkedin.com/company/workforcehub      | @WorkforceHubHR      |\n| ...                | ...                       | ...                                 | ...                                   | ...                   |\n\n**Key Insights:**\n- 60% of companies listed a generic email format (e.g., info@, contact@).\n- LinkedIn profiles were found for 93% of companies, while Twitter handles were only present for 40%.\n- The most common email format was [first initial][last name]@[domain].com (e.g., sarah@greenhire.io).\n\n**Next Steps:**\n1. Clean the data by removing duplicates and invalid formats.\n2. Enrich the dataset with additional details (e.g., job titles, company revenue) using tools like Hunter.io or Apollo.io.\n3. Segment the list by company size or funding stage for targeted outreach campaigns.\n4. Use the extracted emails to launch a personalized cold email campaign via tools like Lemlist or Mailchimp.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "clauneck#main-content",
+      "clauneck#overview",
+      "clauneck#setup",
+      "clauneck#examples",
+      "clauneck#tools",
+      "clauneck#mcp",
+      "clauneck#related",
+      "marketingskills",
+      "copywriting",
+      "reddit-shortform-video-generator"
+    ],
+    "overview_vi": "Clauneck is a Ruby gem that automates the extraction of contact information from websites by leveraging Google Search results through SerpApi's API. It scrapes email addresses and social media handles (Instagram, Facebook, Twitter, TikTok, YouTube, GitHub, Medium) from web pages and outputs results to CSV format. The tool supports advanced Google search operators and custom queries to target specific websites or URL patterns, making it ideal for lead generation and cold email marketing campaigns. Users can configure proxies for large-scale scraping and have flexibility to provide their own URL lists or use SerpApi's search capabilities.\nCold email marketing outreach list building\nLead generation for B2B prospecting campaigns\nContact information collection for specific website categories\nAutomated social media handle discovery for competitor analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/serpapi/clauneck`",
+    "usage_vi": "```\nUse Clauneck to extract email addresses and social media profiles for [TARGET INDUSTRY] companies in [GEOGRAPHIC REGION]. Focus on [SPECIFIC COMPANY SIZE RANGE] businesses. Export the results in CSV format with columns for company name, website URL, email addresses, LinkedIn profiles, and Twitter handles.\n```\nCopy\n\n```\nHere’s the extracted data for 15 SaaS companies in the Midwest (10-200 employees) specializing in HR software:\n\n| Company Name       | Website URL               | Email Addresses                     | LinkedIn Profiles                     | Twitter Handles       |\n|--------------------|---------------------------|-------------------------------------|---------------------------------------|-----------------------|\n| GreenHire Solutions | https://greenhire.io      | sarah@greenhire.io, john@greenhire.io | linkedin.com/company/greenhire-solutions | @GreenHireHR          |\n| PayrollPro Inc      | https://payrollpro.com    | mike@payrollpro.com, lisa@payrollpro.com | linkedin.com/company/payrollpro-inc    | @PayrollProHR        |\n| WorkforceHub        | https://workforcehub.com  | jane@workforcehub.com, tom@workforcehub.com | linkedin.com/company/workforcehub      | @WorkforceHubHR      |\n| ...                | ...                       | ...                                 | ...                                   | ...                   |\n\n**Key Insights:**\n- 60% of companies listed a generic email format (e.g., info@, contact@).\n- LinkedIn profiles were found for 93% of companies, while Twitter handles were only present for 40%.\n- The most common email format was [first initial][last name]@[domain].com (e.g., sarah@greenhire.io).\n\n**Next Steps:**\n1. Clean the data by removing duplicates and invalid formats.\n2. Enrich the dataset with additional details (e.g., job titles, company revenue) using tools like Hunter.io or Apollo.io.\n3. Segment the list by company size or funding stage for targeted outreach campaigns.\n4. Use the extracted emails to launch a personalized cold email campaign via tools like Lemlist or Mailchimp.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:12.560900Z",
+    "http_status": 200,
+    "content_hash": "f4cf079aa80aad70da45656dcd218d4bc70c585ff8a2f92e4da609542b5a2962",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clauneck.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clauneck.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "clauneck: website info scraper",
+  "short_description_vi": "Clauneck is a Ruby-based tool for extracting emails, social media accounts, and other data from websites using Google Search Results. It benefits marketing teams by automating data collection for outreach and lead generation. The tool connects to Google Search and can be integrated into existing data extraction workflows."
+}

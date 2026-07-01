@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccsync",
+  "slug": "ccsync",
+  "name": "ccsync",
+  "headline": "ccsync: sync Claude-Code skills easily",
+  "short_description": "Sync Claude Code agents, skills, and commands between global (~/.claude) and project-local (./.claude) directories with conflict resolution and selective approval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "onsails",
+  "install_command": "git clone https://github.com/onsails/ccsync.git",
+  "source_repo_url": "https://github.com/onsails/ccsync",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "ai",
+    "claude-code",
+    "ai-agents"
+  ],
+  "sections": {
+    "overview": "ccsync synchronizes Claude Code agents, skills, and commands between your global ~/.claude directory and project-specific .claude folders, keeping configurations consistent across projects while preserving local customizations. The tool offers interactive approval workflows, dry-run previews, and configurable conflict strategies (overwrite, skip, or keep newer files). It supports filtering by type, custom .ccsync.toml configuration files, and automation flags like --yes-all for scripted workflows. Developers managing multiple Claude Code projects benefit from centralized skill libraries with project-level overrides.\nSynchronize shared Claude agent definitions across multiple projects\nPush custom skills from one project to global Claude configuration\nPreview sync changes before applying them with --dry-run\nAutomate configuration sync in CI/CD pipelines with --yes-all",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/onsails/ccsync`",
+    "usage": "```\nSync my Claude-Code agents, skills, and commands between my local ~/.claude directory and my project at [PROJECT_PATH]. Ensure both directions are synced and provide a summary of changes made.\n```\nCopy\n\n```\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccsync#main-content",
+      "ccsync#overview",
+      "ccsync#setup",
+      "ccsync#examples",
+      "ccsync#tools",
+      "ccsync#mcp",
+      "ccsync#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccsync synchronizes Claude Code agents, skills, and commands between your global ~/.claude directory and project-specific .claude folders, keeping configurations consistent across projects while preserving local customizations. The tool offers interactive approval workflows, dry-run previews, and configurable conflict strategies (overwrite, skip, or keep newer files). It supports filtering by type, custom .ccsync.toml configuration files, and automation flags like --yes-all for scripted workflows. Developers managing multiple Claude Code projects benefit from centralized skill libraries with project-level overrides.\nSynchronize shared Claude agent definitions across multiple projects\nPush custom skills from one project to global Claude configuration\nPreview sync changes before applying them with --dry-run\nAutomate configuration sync in CI/CD pipelines with --yes-all",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/onsails/ccsync`",
+    "usage_vi": "```\nSync my Claude-Code agents, skills, and commands between my local ~/.claude directory and my project at [PROJECT_PATH]. Ensure both directions are synced and provide a summary of changes made.\n```\nCopy\n\n```\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:27.221360Z",
+    "http_status": 200,
+    "content_hash": "cf12f9ee94ea4ae5f199c04fb2db3fcf023da6519ebb2ab962a03c15d006579b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccsync.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccsync.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ccsync: sync Claude-Code skills easily",
+  "short_description_vi": "Sync Claude Code agents, skills, and commands between global (~/.claude) and project-local (./.claude) directories with conflict resolution and selective approval."
+}

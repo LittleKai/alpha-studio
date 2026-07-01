@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agno",
+  "slug": "agno",
+  "name": "agno",
+  "headline": "Agno: Multi-Agent Framework with MCP",
+  "short_description": "Agno is an AI agent skill that allows users to add specific capabilities to their AI systems. It is suitable for developers looking to enhance the functionality of their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "delorenj",
+  "install_command": "git clone https://github.com/delorenj/skills",
+  "source_repo_url": "https://github.com/delorenj/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "agno",
+    "ai-agent-skills"
+  ],
+  "sections": {
+    "overview": "Agno is an AI agent framework that enables developers to build production-ready multi-agent systems with tools, memory, and structured outputs. It supports multi-agent teams with role-based delegation, complex workflows with conditional branching and loops, and integrates with Model Context Protocol (MCP) servers via stdio, SSE, or HTTP transports. The framework includes session memory storage via PostgreSQL or SQLite, knowledge base functionality for RAG and document processing, and AgentOS—a FastAPI-based runtime for deploying agents as production APIs. Developers use Agno to create autonomous agents, orchestrate agent collaboration, debug agent behavior with telemetry, and optimize performance with retries and rate limiting.\nEnhance AI capabilities for user-specific tasks\nIntegrate into custom AI workflows\nDevelop and test new AI functionalities",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/delorenj/skills --skill agno`\n`git clone https://github.com/delorenj/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "agno#main-content",
+      "agno#overview",
+      "agno#setup",
+      "agno#examples",
+      "agno#related",
+      "dagster-expert",
+      "long-running-agent-harness"
+    ],
+    "overview_vi": "Agno is an AI agent framework that enables developers to build production-ready multi-agent systems with tools, memory, and structured outputs. It supports multi-agent teams with role-based delegation, complex workflows with conditional branching and loops, and integrates with Model Context Protocol (MCP) servers via stdio, SSE, or HTTP transports. The framework includes session memory storage via PostgreSQL or SQLite, knowledge base functionality for RAG and document processing, and AgentOS—a FastAPI-based runtime for deploying agents as production APIs. Developers use Agno to create autonomous agents, orchestrate agent collaboration, debug agent behavior with telemetry, and optimize performance with retries and rate limiting.\nEnhance AI capabilities for user-specific tasks\nIntegrate into custom AI workflows\nDevelop and test new AI functionalities",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/delorenj/skills --skill agno`\n`git clone https://github.com/delorenj/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:34:01.518373Z",
+    "http_status": 200,
+    "content_hash": "479ae3c05f6116eb1b79b4ac74ea2a6caa6d7348c4d9ef203d37aeafa8139180",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agno.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agno.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Agno: Multi-Agent Framework with MCP",
+  "short_description_vi": "Agno is an AI agent skill that allows users to add specific capabilities to their AI systems. It is suitable for developers looking to enhance the functionality of their applications."
+}

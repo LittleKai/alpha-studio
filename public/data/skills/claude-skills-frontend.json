@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-frontend",
+  "slug": "claude-skills-frontend",
+  "name": "browser-use",
+  "headline": "claude-skills-frontend: Frontend Development",
+  "short_description": "Automates frontend development tasks with pre-built skills for operations teams. Integrates with MCP servers for auto-configuration. Connects to npm for package management.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "bamzc",
+  "install_command": "git clone https://github.com/bamzc/claude-skills-frontend.git",
+  "source_repo_url": "https://github.com/bamzc/claude-skills-frontend",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The claude-skills-frontend automation skill is designed to enhance frontend development processes by providing a curated set of Claude Skills tailored for developers. This skill streamlines various tasks associated with frontend development, allowing teams to automate repetitive actions and focus on more complex challenges. By leveraging AI automation, developers can significantly improve their workflow efficiency and productivity. One of the key benefits of the claude-skills-frontend skill is its ability to save time on routine tasks, although specific time savings are currently unknown. With an implementation time of just 30 minutes, teams can quickly integrate this skill into their existing workflows. This intermediate-level skill is particularly beneficial for developers and product managers who are looking to optimize their frontend development processes and reduce manual effort. This skill is ideal for developers working in web development, product managers overseeing frontend projects, and AI practitioners seeking to incorporate automation into their workflows. It can be applied in various scenarios, such as automating UI testing, generating boilerplate code, or enhancing collaboration between design and development teams. For example, a developer could use this skill to automate the generation of responsive layouts, thereby reducing the time spent on manual adjustments. Implementing the claude-skills-frontend skill requires an intermediate understanding of frontend technologies and AI automation principles. As organizations increasingly adopt AI-first workflows, this skill becomes a valuable asset in driving efficiency and innovation. By integrating this skill into their development processes, teams can better align with modern practices and enhance their overall productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bamzc/claude-skills-frontend`",
+    "usage": "```\nAutomate the frontend setup for [PROJECT_NAME] using the claude-skills-frontend skill. Initialize the project with [FRAMEWORK] (e.g., React, Vue, Svelte), configure [STYLING_TOOL] (e.g., Tailwind, Sass), and install [PACKAGE_MANAGER] dependencies. Set up [TESTING_FRAMEWORK] (e.g., Jest, Vitest) and [BUNDLER] (e.g., Vite, Webpack). Generate a .gitignore file and a basic folder structure. Provide the commands and files needed to get started.\n```\nCopy\n\n```\nHere’s a fully automated frontend setup for **Project Aurora**, a React-based dashboard using Tailwind CSS, Vite, and Vitest:\n\n**Project Structure:**\n```\naurora/\n├── src/\n│   ├── components/\n│   │   ├── Button.jsx\n│   │   └── Card.jsx\n│   ├── pages/\n│   │   ├── Home.jsx\n│   │   └── Dashboard.jsx\n│   ├── App.jsx\n│   └── main.jsx\n├── public/\n├── .gitignore\n├── package.json\n├── vite.config.js\n└── tailwind.config.js\n```\n\n**Key Files:**\n1. **package.json** includes:\n   ```json\n   {\n     \"name\": \"aurora\",\n     \"scripts\": {\n       \"dev\": \"vite\",\n       \"build\": \"vite build\",\n       \"test\": \"vitest\"\n     },\n     \"dependencies\": {\n       \"react\": \"^18.2.0\",\n       \"react-dom\": \"^18.2.0\",\n       \"tailwindcss\": \"^3.4.0\"\n     },\n     \"devDependencies\": {\n       \"vite\": \"^5.0.0\",\n       \"vitest\": \"^1.0.0\"\n     }\n   }\n   ```\n2. **vite.config.js** is pre-configured for React and Tailwind:\n   ```javascript\n   import { defineConfig } = require('vite');\n   import react from '@vitejs/plugin-react';\n   \n   export default defineConfig({\n     plugins: [react()],\n     css: {\n       postcss: {\n         plugins: [require('tailwindcss'), require('autoprefixer')]\n       }\n     }\n   });\n   ```\n3. **tailwind.config.js** sets up a minimal theme:\n   ```javascript\n   module.exports = {\n     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],\n     theme: {\n       extend: {},\n     },\n     plugins: [],\n   }\n   ```\n\n**Next Steps:**\n- Run `npm install` to install dependencies.\n- Use `npm run dev` to start the development server at `http://localhost:3000`.\n- Add your first component in `src/components/Button.jsx` and import it into `App.jsx`.\n\nThis setup saves **~2 hours** of manual configuration and ensures consistency across projects.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-frontend#main-content",
+      "claude-skills-frontend#overview",
+      "claude-skills-frontend#setup",
+      "claude-skills-frontend#examples",
+      "claude-skills-frontend#tools",
+      "claude-skills-frontend#mcp",
+      "claude-skills-frontend#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-skills-frontend automation skill is designed to enhance frontend development processes by providing a curated set of Claude Skills tailored for developers. This skill streamlines various tasks associated with frontend development, allowing teams to automate repetitive actions and focus on more complex challenges. By leveraging AI automation, developers can significantly improve their workflow efficiency and productivity. One of the key benefits of the claude-skills-frontend skill is its ability to save time on routine tasks, although specific time savings are currently unknown. With an implementation time of just 30 minutes, teams can quickly integrate this skill into their existing workflows. This intermediate-level skill is particularly beneficial for developers and product managers who are looking to optimize their frontend development processes and reduce manual effort. This skill is ideal for developers working in web development, product managers overseeing frontend projects, and AI practitioners seeking to incorporate automation into their workflows. It can be applied in various scenarios, such as automating UI testing, generating boilerplate code, or enhancing collaboration between design and development teams. For example, a developer could use this skill to automate the generation of responsive layouts, thereby reducing the time spent on manual adjustments. Implementing the claude-skills-frontend skill requires an intermediate understanding of frontend technologies and AI automation principles. As organizations increasingly adopt AI-first workflows, this skill becomes a valuable asset in driving efficiency and innovation. By integrating this skill into their development processes, teams can better align with modern practices and enhance their overall productivity.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bamzc/claude-skills-frontend`",
+    "usage_vi": "```\nAutomate the frontend setup for [PROJECT_NAME] using the claude-skills-frontend skill. Initialize the project with [FRAMEWORK] (e.g., React, Vue, Svelte), configure [STYLING_TOOL] (e.g., Tailwind, Sass), and install [PACKAGE_MANAGER] dependencies. Set up [TESTING_FRAMEWORK] (e.g., Jest, Vitest) and [BUNDLER] (e.g., Vite, Webpack). Generate a .gitignore file and a basic folder structure. Provide the commands and files needed to get started.\n```\nCopy\n\n```\nHere’s a fully automated frontend setup for **Project Aurora**, a React-based dashboard using Tailwind CSS, Vite, and Vitest:\n\n**Project Structure:**\n```\naurora/\n├── src/\n│   ├── components/\n│   │   ├── Button.jsx\n│   │   └── Card.jsx\n│   ├── pages/\n│   │   ├── Home.jsx\n│   │   └── Dashboard.jsx\n│   ├── App.jsx\n│   └── main.jsx\n├── public/\n├── .gitignore\n├── package.json\n├── vite.config.js\n└── tailwind.config.js\n```\n\n**Key Files:**\n1. **package.json** includes:\n   ```json\n   {\n     \"name\": \"aurora\",\n     \"scripts\": {\n       \"dev\": \"vite\",\n       \"build\": \"vite build\",\n       \"test\": \"vitest\"\n     },\n     \"dependencies\": {\n       \"react\": \"^18.2.0\",\n       \"react-dom\": \"^18.2.0\",\n       \"tailwindcss\": \"^3.4.0\"\n     },\n     \"devDependencies\": {\n       \"vite\": \"^5.0.0\",\n       \"vitest\": \"^1.0.0\"\n     }\n   }\n   ```\n2. **vite.config.js** is pre-configured for React and Tailwind:\n   ```javascript\n   import { defineConfig } = require('vite');\n   import react from '@vitejs/plugin-react';\n   \n   export default defineConfig({\n     plugins: [react()],\n     css: {\n       postcss: {\n         plugins: [require('tailwindcss'), require('autoprefixer')]\n       }\n     }\n   });\n   ```\n3. **tailwind.config.js** sets up a minimal theme:\n   ```javascript\n   module.exports = {\n     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],\n     theme: {\n       extend: {},\n     },\n     plugins: [],\n   }\n   ```\n\n**Next Steps:**\n- Run `npm install` to install dependencies.\n- Use `npm run dev` to start the development server at `http://localhost:3000`.\n- Add your first component in `src/components/Button.jsx` and import it into `App.jsx`.\n\nThis setup saves **~2 hours** of manual configuration and ensures consistency across projects.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:25:19.557397Z",
+    "http_status": 200,
+    "content_hash": "b321b202eb5843f64c31bbec81f8c983268c7c40c40d8ec522f8499b776c3542",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-frontend.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-frontend.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-skills-frontend: Frontend Development",
+  "short_description_vi": "Automates frontend development tasks with pre-built skills for operations teams. Integrates with MCP servers for auto-configuration. Connects to npm for package management."
+}

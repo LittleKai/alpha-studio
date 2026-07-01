@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-claude-code",
+  "slug": "awesome-claude-code",
+  "name": "browser-use",
+  "headline": "awesome-claude-code: Enhance Your Workflow",
+  "short_description": "A curated list of skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code by Anthropic. Helps developers and operations teams streamline coding workflows and automate tasks. Integrates with Claude agents to enhance productivity and efficiency.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "hesreallyhim",
+  "install_command": "git clone https://github.com/hesreallyhim/awesome-claude-code.git",
+  "source_repo_url": "https://github.com/hesreallyhim/awesome-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-workflows",
+    "claude-code",
+    "agentic-code",
+    "anthropic",
+    "anthropic-claude",
+    "agent-skills",
+    "coding-agent",
+    "llm",
+    "awesome-lists",
+    "coding-assistants",
+    "awesome",
+    "awesome-resources",
+    "claude",
+    "coding-agents",
+    "coding-assistant",
+    "agentic-coding",
+    "ai-workflow-optimization",
+    "awesome-list"
+  ],
+  "sections": {
+    "overview": "The awesome-claude-code skill is a curated collection of powerful tools designed to enhance AI automation for Claude Code by Anthropic. This skill includes various hooks, slash-commands, agent orchestrators, applications, and plugins that streamline the development process. By utilizing this skill, developers can automate complex tasks, such as restoring context from previous coding sessions using session files and git history, which can significantly enhance productivity and coding efficiency. One of the key benefits of the awesome-claude-code skill is its ability to integrate multiple cloud platforms and services into a seamless development workflow. This integration not only saves time but also reduces the complexity often associated with managing different tools and services. While the exact time savings are not quantified, the skill's intermediate complexity and ease of implementation—estimated at around 30 minutes—make it accessible for developers looking to optimize their workflows. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in workflow automation and require efficient context management. For instance, users can generate detailed reports for mountaineering routes by aggregating data from various sources, or simplify the process of prompting and managing codex sessions to enhance coding assistance. These practical use cases demonstrate the skill's versatility and relevance in AI-first workflows, allowing teams to focus on higher-value tasks. With an intermediate level of difficulty, the awesome-claude-code skill requires some familiarity with coding and automation principles. However, its practical applications in AI automation make it a valuable addition to any developer's toolkit. By implementing this skill, teams can leverage advanced context engineering techniques to improve the quality of agent outputs, ultimately leading to more efficient and effective AI-driven solutions.\nAutomate the restoration of context from previous coding sessions using session files and git history.\nIntegrate various cloud platforms and services seamlessly into your development workflow.\nGenerate detailed reports for mountaineering routes by aggregating data from multiple sources.\nSimplify the process of prompting and managing codex sessions for enhanced coding assistance.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hesreallyhim/awesome-claude-code`",
+    "usage": "```\nCreate a [TYPE] hook for Claude Code that [DESCRIPTION]. The hook should be triggered by [EVENT] and perform [ACTION]. Include error handling for [SCENARIO].\n```\nCopy\n\n```\nHere's a Python hook for Claude Code that automates the deployment of a Docker container when a new version is pushed to the main branch:\n\n```python\nimport os\nimport subprocess\nfrom anthropic import Anthropic\n\n# Initialize the Anthropic client\nclient = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))\n\ndef deploy_container(event, context):\n    try:\n        # Get the latest Docker image tag\n        tag = subprocess.check_output(['git', 'describe', '--tags']).decode('utf-8').strip()\n        \n        # Pull the latest Docker image\n        subprocess.run(['docker', 'pull', f'myrepo/myapp:{tag}'], check=True)\n        \n        # Stop and remove the old container\n        subprocess.run(['docker', 'stop', 'myapp'], check=True)\n        subprocess.run(['docker', 'rm', 'myapp'], check=True)\n        \n        # Run the new container\n        subprocess.run(['docker', 'run', '-d', '--name', 'myapp', '-p', '80:80', f'myrepo/myapp:{tag}'], check=True)\n        \n        return {'status': 'success', 'message': 'Deployment completed successfully'}\n    except subprocess.CalledProcessError as e:\n        return {'status': 'error', 'message': f'Deployment failed: {str(e)}'}\n    except Exception as e:\n        return {'status': 'error', 'message': f'An unexpected error occurred: {str(e)}'}\n```\n\nThis hook can be triggered by a webhook from your Git repository or a cron job that runs periodically. It includes error handling for cases where the Docker image cannot be pulled or the container cannot be started.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-claude-code#main-content",
+      "awesome-claude-code#overview",
+      "awesome-claude-code#setup",
+      "awesome-claude-code#examples",
+      "awesome-claude-code#tools",
+      "awesome-claude-code#mcp",
+      "awesome-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The awesome-claude-code skill is a curated collection of powerful tools designed to enhance AI automation for Claude Code by Anthropic. This skill includes various hooks, slash-commands, agent orchestrators, applications, and plugins that streamline the development process. By utilizing this skill, developers can automate complex tasks, such as restoring context from previous coding sessions using session files and git history, which can significantly enhance productivity and coding efficiency. One of the key benefits of the awesome-claude-code skill is its ability to integrate multiple cloud platforms and services into a seamless development workflow. This integration not only saves time but also reduces the complexity often associated with managing different tools and services. While the exact time savings are not quantified, the skill's intermediate complexity and ease of implementation—estimated at around 30 minutes—make it accessible for developers looking to optimize their workflows. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in workflow automation and require efficient context management. For instance, users can generate detailed reports for mountaineering routes by aggregating data from various sources, or simplify the process of prompting and managing codex sessions to enhance coding assistance. These practical use cases demonstrate the skill's versatility and relevance in AI-first workflows, allowing teams to focus on higher-value tasks. With an intermediate level of difficulty, the awesome-claude-code skill requires some familiarity with coding and automation principles. However, its practical applications in AI automation make it a valuable addition to any developer's toolkit. By implementing this skill, teams can leverage advanced context engineering techniques to improve the quality of agent outputs, ultimately leading to more efficient and effective AI-driven solutions.\nAutomate the restoration of context from previous coding sessions using session files and git history.\nIntegrate various cloud platforms and services seamlessly into your development workflow.\nGenerate detailed reports for mountaineering routes by aggregating data from multiple sources.\nSimplify the process of prompting and managing codex sessions for enhanced coding assistance.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hesreallyhim/awesome-claude-code`",
+    "usage_vi": "```\nCreate a [TYPE] hook for Claude Code that [DESCRIPTION]. The hook should be triggered by [EVENT] and perform [ACTION]. Include error handling for [SCENARIO].\n```\nCopy\n\n```\nHere's a Python hook for Claude Code that automates the deployment of a Docker container when a new version is pushed to the main branch:\n\n```python\nimport os\nimport subprocess\nfrom anthropic import Anthropic\n\n# Initialize the Anthropic client\nclient = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))\n\ndef deploy_container(event, context):\n    try:\n        # Get the latest Docker image tag\n        tag = subprocess.check_output(['git', 'describe', '--tags']).decode('utf-8').strip()\n        \n        # Pull the latest Docker image\n        subprocess.run(['docker', 'pull', f'myrepo/myapp:{tag}'], check=True)\n        \n        # Stop and remove the old container\n        subprocess.run(['docker', 'stop', 'myapp'], check=True)\n        subprocess.run(['docker', 'rm', 'myapp'], check=True)\n        \n        # Run the new container\n        subprocess.run(['docker', 'run', '-d', '--name', 'myapp', '-p', '80:80', f'myrepo/myapp:{tag}'], check=True)\n        \n        return {'status': 'success', 'message': 'Deployment completed successfully'}\n    except subprocess.CalledProcessError as e:\n        return {'status': 'error', 'message': f'Deployment failed: {str(e)}'}\n    except Exception as e:\n        return {'status': 'error', 'message': f'An unexpected error occurred: {str(e)}'}\n```\n\nThis hook can be triggered by a webhook from your Git repository or a cron job that runs periodically. It includes error handling for cases where the Docker image cannot be pulled or the container cannot be started.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:43:54.291251Z",
+    "http_status": 200,
+    "content_hash": "42819334e7ff511f153cf1a7595df3536b73a50943458d60910bae573dc24ab9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "awesome-claude-code: Enhance Your Workflow",
+  "short_description_vi": "A curated list of skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code by Anthropic. Helps developers and operations teams streamline coding workflows and automate tasks. Integrates with Claude agents to enhance productivity and efficiency."
+}

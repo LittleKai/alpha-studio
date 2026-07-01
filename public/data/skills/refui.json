@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/refui",
+  "slug": "refui",
+  "name": "rEFui",
+  "headline": "rEFui - Automate UI Development",
+  "short_description": "rEFui is a JavaScript framework for automating UI development across web, native, and embedded platforms. It enables operations teams to streamline UI projects, reducing development time and ensuring consistency. It integrates with existing workflows and tools, making it easier to maintain and update user interfaces.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "SudoMaker",
+  "install_command": "git clone https://github.com/SudoMaker/rEFui.git",
+  "source_repo_url": "https://github.com/SudoMaker/rEFui",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "rEFui is a retained-mode JavaScript framework that enables developers to build user interfaces across web, native, and embedded platforms from a single codebase. It works with any JSX-capable transpiler—including Babel, esbuild, SWC, and TypeScript—without requiring a framework-specific compiler. The framework includes built-in hot module replacement (HMR) support for streamlined development workflows, and integrates with NativeScript for native development and CheeseDOM for embedded systems. rEFui uses signals for reactive state management and supports both DOM and HTML renderers, making it suitable for teams automating UI development while maintaining consistency across multiple platforms.\nBuilding responsive web applications with JSX and reactive state management\nDeveloping cross-platform native mobile apps using NativeScript integration\nCreating UIs for embedded systems with CheeseDOM and Resonance\nAutomating UI development workflows without framework-specific tooling requirements",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SudoMaker/rEFui`",
+    "usage": "```\nUse rEFui to generate a reusable UI component for [PLATFORM: web/native/embedded] that implements [SPECIFIC FUNCTIONALITY: e.g., a dark mode toggle, a multi-step form, or a real-time data dashboard]. The component should follow [BRAND GUIDELINES: e.g., Material Design, iOS Human Interface Guidelines, or custom design tokens]. Include unit tests and documentation in the output. Prioritize accessibility (WCAG 2.1 AA) and performance (60fps).\n```\nCopy\n\n```\nHere’s a reusable dark mode toggle component for a React-based web application using rEFui, following Material Design 3 guidelines:\n\n```jsx\n// src/components/DarkModeToggle.jsx\nimport React, { useState, useEffect } from 'react';\nimport { Switch, FormControlLabel, Box } from '@mui/material';\nimport { useTheme } from '@mui/material/styles';\n\n/**\n * DarkModeToggle - A reusable dark mode toggle component with accessibility and performance optimizations.\n * Features:\n * - Syncs with system preference\n * - Persists user choice in localStorage\n * - WCAG 2.1 AA compliant (contrast ratio > 4.5:1)\n * - 60fps animation\n * - Material Design 3 compliant\n */\nexport const DarkModeToggle = ({ onChange }) => {\n  const theme = useTheme();\n  const [darkMode, setDarkMode] = useState(() => {\n    const saved = localStorage.getItem('darkMode');\n    return saved !== null ? JSON.parse(saved) : window.matchMedia('(prefers-color-scheme: dark)').matches;\n  });\n\n  useEffect(() => {\n    localStorage.setItem('darkMode', JSON.stringify(darkMode));\n    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');\n    if (onChange) onChange(darkMode);\n  }, [darkMode, onChange]);\n\n  const handleChange = (e) => {\n    setDarkMode(e.target.checked);\n  };\n\n  return (\n    <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>\n      <FormControlLabel\n        control={<Switch checked={darkMode} onChange={handleChange} />}\n        label=\"Dark Mode\"\n        aria-label=\"Toggle dark mode\"\n        sx={{\n          '& .MuiSwitch-root': { width: 56, height: 32 },\n          '& .MuiSwitch-switchBase': {\n            padding: 1,\n            '&.Mui-checked': { transform: 'translateX(24px)' },\n          },\n        }}\n      />\n    </Box>\n  );\n};\n```\n\n**Unit Tests (using Jest + React Testing Library):**\n```jsx\n// src/components/DarkModeToggle.test.jsx\ntest('renders correctly and toggles dark mode', () => {\n  render(<DarkModeToggle />);\n  const toggle = screen.getByRole('switch');\n  expect(toggle).toBeInTheDocument();\n  expect(toggle).not.toBeChecked();\n  fireEvent.click(toggle);\n  expect(toggle).toBeChecked();\n});\n\ntest('syncs with system preference on initial render', () => {\n  window.matchMedia = jest.fn().mockImplementation(query => ({\n    matches: true,\n    media: query,\n    onchange: null,\n    addListener: jest.fn(),\n    removeListener: jest.fn(),\n    addEventListener: jest.fn(),\n    removeEventListener: jest.fn(),\n  }));\n  render(<DarkModeToggle />);\n  expect(screen.getByRole('switch')).toBeChecked();\n});\n```\n\n**Documentation:**\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "refui#main-content",
+      "refui#overview",
+      "refui#setup",
+      "refui#examples",
+      "refui#tools",
+      "refui#mcp",
+      "refui#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "rEFui is a retained-mode JavaScript framework that enables developers to build user interfaces across web, native, and embedded platforms from a single codebase. It works with any JSX-capable transpiler—including Babel, esbuild, SWC, and TypeScript—without requiring a framework-specific compiler. The framework includes built-in hot module replacement (HMR) support for streamlined development workflows, and integrates with NativeScript for native development and CheeseDOM for embedded systems. rEFui uses signals for reactive state management and supports both DOM and HTML renderers, making it suitable for teams automating UI development while maintaining consistency across multiple platforms.\nBuilding responsive web applications with JSX and reactive state management\nDeveloping cross-platform native mobile apps using NativeScript integration\nCreating UIs for embedded systems with CheeseDOM and Resonance\nAutomating UI development workflows without framework-specific tooling requirements",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SudoMaker/rEFui`",
+    "usage_vi": "```\nUse rEFui to generate a reusable UI component for [PLATFORM: web/native/embedded] that implements [SPECIFIC FUNCTIONALITY: e.g., a dark mode toggle, a multi-step form, or a real-time data dashboard]. The component should follow [BRAND GUIDELINES: e.g., Material Design, iOS Human Interface Guidelines, or custom design tokens]. Include unit tests and documentation in the output. Prioritize accessibility (WCAG 2.1 AA) and performance (60fps).\n```\nCopy\n\n```\nHere’s a reusable dark mode toggle component for a React-based web application using rEFui, following Material Design 3 guidelines:\n\n```jsx\n// src/components/DarkModeToggle.jsx\nimport React, { useState, useEffect } from 'react';\nimport { Switch, FormControlLabel, Box } from '@mui/material';\nimport { useTheme } from '@mui/material/styles';\n\n/**\n * DarkModeToggle - A reusable dark mode toggle component with accessibility and performance optimizations.\n * Features:\n * - Syncs with system preference\n * - Persists user choice in localStorage\n * - WCAG 2.1 AA compliant (contrast ratio > 4.5:1)\n * - 60fps animation\n * - Material Design 3 compliant\n */\nexport const DarkModeToggle = ({ onChange }) => {\n  const theme = useTheme();\n  const [darkMode, setDarkMode] = useState(() => {\n    const saved = localStorage.getItem('darkMode');\n    return saved !== null ? JSON.parse(saved) : window.matchMedia('(prefers-color-scheme: dark)').matches;\n  });\n\n  useEffect(() => {\n    localStorage.setItem('darkMode', JSON.stringify(darkMode));\n    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');\n    if (onChange) onChange(darkMode);\n  }, [darkMode, onChange]);\n\n  const handleChange = (e) => {\n    setDarkMode(e.target.checked);\n  };\n\n  return (\n    <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>\n      <FormControlLabel\n        control={<Switch checked={darkMode} onChange={handleChange} />}\n        label=\"Dark Mode\"\n        aria-label=\"Toggle dark mode\"\n        sx={{\n          '& .MuiSwitch-root': { width: 56, height: 32 },\n          '& .MuiSwitch-switchBase': {\n            padding: 1,\n            '&.Mui-checked': { transform: 'translateX(24px)' },\n          },\n        }}\n      />\n    </Box>\n  );\n};\n```\n\n**Unit Tests (using Jest + React Testing Library):**\n```jsx\n// src/components/DarkModeToggle.test.jsx\ntest('renders correctly and toggles dark mode', () => {\n  render(<DarkModeToggle />);\n  const toggle = screen.getByRole('switch');\n  expect(toggle).toBeInTheDocument();\n  expect(toggle).not.toBeChecked();\n  fireEvent.click(toggle);\n  expect(toggle).toBeChecked();\n});\n\ntest('syncs with system preference on initial render', () => {\n  window.matchMedia = jest.fn().mockImplementation(query => ({\n    matches: true,\n    media: query,\n    onchange: null,\n    addListener: jest.fn(),\n    removeListener: jest.fn(),\n    addEventListener: jest.fn(),\n    removeEventListener: jest.fn(),\n  }));\n  render(<DarkModeToggle />);\n  expect(screen.getByRole('switch')).toBeChecked();\n});\n```\n\n**Documentation:**\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:33:52.311159Z",
+    "http_status": 200,
+    "content_hash": "f908f13408eaf5799369b46001ff9d93fc9364f792fe6c9d976575cc58c32be5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\refui.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\refui.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "rEFui - Automate UI Development",
+  "short_description_vi": "rEFui is a JavaScript framework for automating UI development across web, native, and embedded platforms. It enables operations teams to streamline UI projects, reducing development time and ensuring consistency. It integrates with existing workflows and tools, making it easier to maintain and update user interfaces."
+}

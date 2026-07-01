@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-evaluator",
+  "slug": "skill-evaluator",
+  "name": "Skill Evaluator",
+  "headline": "Skill Evaluator - Evaluates Claude Skills",
+  "short_description": "Evaluates Claude skills across security, quality, utility, and compliance. Used by operations teams to assess skill performance and compliance with organizational standards. Integrates with Python workflows and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "360 min",
+  "author": "bjulius",
+  "install_command": "git clone https://github.com/bjulius/skill-evaluator.git",
+  "source_repo_url": "https://github.com/bjulius/skill-evaluator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "skill-evaluator is a comprehensive toolkit for analyzing Claude skills across four dimensions: security (35% weight), quality (25%), utility (20%), and compliance (20%). It performs pattern-based vulnerability detection with context-aware analysis and generates detailed markdown reports with executive summaries and risk assessments. The tool runs locally via Python scripts with cross-platform support for Windows, macOS, and Linux. Operations teams use it to assess skill performance before publication and validate alignment with organizational standards. v1.2.2 is production-ready with a 96.9/100 self-evaluation score.\nPre-publication security review before deploying skills to production\nCompliance validation against organizational skill-creator guidelines\nAutomated assessment of third-party skills before internal adoption\nSecurity-focused evaluation of skills in sensitive environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bjulius/skill-evaluator`",
+    "usage": "```\nEvaluate the following Claude skill for [COMPANY] in the [INDUSTRY] sector. Assess it across security, quality, utility, and compliance. Provide a detailed report including strengths, weaknesses, and recommendations for improvement. The skill is designed to [PURPOSE]. Here is the skill prompt: [SKILL_PROMPT].\n```\nCopy\n\n```\n# Skill Evaluation Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-evaluator#main-content",
+      "skill-evaluator#overview",
+      "skill-evaluator#setup",
+      "skill-evaluator#examples",
+      "skill-evaluator#tools",
+      "skill-evaluator#mcp",
+      "skill-evaluator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "skill-evaluator is a comprehensive toolkit for analyzing Claude skills across four dimensions: security (35% weight), quality (25%), utility (20%), and compliance (20%). It performs pattern-based vulnerability detection with context-aware analysis and generates detailed markdown reports with executive summaries and risk assessments. The tool runs locally via Python scripts with cross-platform support for Windows, macOS, and Linux. Operations teams use it to assess skill performance before publication and validate alignment with organizational standards. v1.2.2 is production-ready with a 96.9/100 self-evaluation score.\nPre-publication security review before deploying skills to production\nCompliance validation against organizational skill-creator guidelines\nAutomated assessment of third-party skills before internal adoption\nSecurity-focused evaluation of skills in sensitive environments",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bjulius/skill-evaluator`",
+    "usage_vi": "```\nEvaluate the following Claude skill for [COMPANY] in the [INDUSTRY] sector. Assess it across security, quality, utility, and compliance. Provide a detailed report including strengths, weaknesses, and recommendations for improvement. The skill is designed to [PURPOSE]. Here is the skill prompt: [SKILL_PROMPT].\n```\nCopy\n\n```\n# Skill Evaluation Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:07.225696Z",
+    "http_status": 200,
+    "content_hash": "f8dea9ea32715fd97fb824732801ba7fb26159dcb99400d919ac3ec14b3812a7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-evaluator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-evaluator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill Evaluator - Evaluates Claude Skills",
+  "short_description_vi": "Evaluates Claude skills across security, quality, utility, and compliance. Used by operations teams to assess skill performance and compliance with organizational standards. Integrates with Python workflows and Claude agents."
+}

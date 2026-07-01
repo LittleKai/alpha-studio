@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aizen",
+  "slug": "aizen",
+  "name": "aizen",
+  "headline": "aizen repo management via worktree switching",
+  "short_description": "Aizen automates git worktree management for developers. It enables switching between worktrees without changing windows, improving workflow efficiency. Integrates with macOS terminal and supports Swift codebase.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "vivy-company",
+  "install_command": "git clone https://github.com/vivy-company/aizen.git",
+  "source_repo_url": "https://github.com/vivy-company/aizen",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "git",
+    "swift",
+    "agents",
+    "opencode",
+    "kimi",
+    "codex",
+    "macos",
+    "worktree",
+    "native",
+    "claude",
+    "gemini",
+    "claude-code",
+    "terminal",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Aizen is an agentic-first developer workspace for macOS that enables parallel development across projects and branches without manual setup. Each environment maintains its own terminal, files, browser, Git context, and agent sessions in one place. The platform uses flexible backend options including Git worktrees, folders, or copies, and integrates a GPU-accelerated terminal powered by libghostty with split panes and tabs. Developers can organize active projects into color-coded workspaces, manage Git operations directly from the UI, and attach custom agents or registry-based AI companions. Aizen requires macOS 13.5+ on Apple Silicon and is actively developed with near-daily updates.\nManaging multiple feature branches simultaneously without switching directories\nRunning projects in parallel with isolated terminal sessions and browser instances\nIntegrating AI agents (Claude Code, Codex) into project-specific workflows\nReviewing pull requests and diffs with syntax highlighting and PR detail views",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vivy-company/aizen`",
+    "usage": "```\nUse Aizen to automate git worktree management for [PROJECT_NAME]. Create a new worktree for [BRANCH_NAME] in [DIRECTORY_PATH] if it doesn't exist, switch to it, and verify the worktree status. Then, list all existing worktrees and their current branches. Finally, clean up any stale worktrees by pruning them.\n```\nCopy\n\n```\nI've automated the git worktree management for your Swift project 'TravelApp' using Aizen. First, I checked if a worktree for the 'feature/login-redesign' branch existed in '/Users/alex/Projects/TravelApp'. Since it didn't, I created it using the command:\n\n```bash\naizen add feature/login-redesign /Users/alex/Projects/TravelApp/worktrees/login-redesign\n```\n\nThe worktree was successfully created and I switched to it immediately. Running `git status` confirmed we're on the correct branch with 3 modified files ready for commit.\n\nNext, I listed all existing worktrees in your project:\n\n```\nWorktree Path                                Branch\n-------------------------------------------  ---------------------\n/Users/alex/Projects/TravelApp/worktrees/dev main\n/Users/alex/Projects/TravelApp/worktrees/bugfix/issue-452 bugfix/issue-452\n/Users/alex/Projects/TravelApp/worktrees/login-redesign feature/login-redesign\n```\n\nFinally, I checked for stale worktrees by running:\n\n```bash\naizen prune\n```\n\nNo stale worktrees were found. All worktrees are properly linked to active branches. Your workflow is now optimized - you can switch between these worktrees instantly without opening new terminal windows or losing context.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "aizen#main-content",
+      "aizen#overview",
+      "aizen#setup",
+      "aizen#examples",
+      "aizen#tools",
+      "aizen#mcp",
+      "aizen#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Aizen là không gian làm việc định hướng agentic-first dành cho nhà phát triển trên macOS, cho phép phát triển song song nhiều dự án và branch mà không cần setup thủ công. Mỗi môi trường duy trì terminal, file, trình duyệt, Git context và các agent session riêng tại một nơi duy nhất. Nền tảng này sử dụng các tùy chọn backend linh hoạt bao gồm Git worktree, thư mục hoặc bản sao (copy), đồng thời tích hợp terminal tăng tốc bằng GPU được cung cấp bởi libghostty với các tính năng split pane và tab. Lập trình viên có thể tổ chức các dự án đang hoạt động thành các workspace được gắn mã màu, quản lý các thao tác Git trực tiếp từ UI và đính kèm các agent tùy chỉnh hoặc các trợ lý AI dựa trên registry. Aizen yêu cầu macOS 13.5 trở lên trên Apple Silicon và đang được phát triển tích cực với các bản cập nhật gần như hàng ngày.\nQuản lý đồng thời nhiều feature branch mà không cần chuyển đổi thư mục\nChạy các dự án song song với các terminal session và instance trình duyệt riêng biệt\nTích hợp các AI agent (Claude Code, Codex) vào quy trình làm việc riêng của từng dự án\nReview các pull request và diff với tính năng syntax highlighting cùng giao diện xem chi tiết PR",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/vivy-company/aizen`",
+    "usage_vi": "```\nSử dụng Aizen để tự động hóa việc quản lý git worktree cho [PROJECT_NAME]. Tạo một worktree mới cho [BRANCH_NAME] tại [DIRECTORY_PATH] nếu nó chưa tồn tại, chuyển sang worktree đó và xác minh trạng thái của worktree. Sau đó, liệt kê tất cả các worktree hiện có cùng các branch hiện tại của chúng. Cuối cùng, dọn dẹp các worktree cũ bằng cách prune chúng.\n```\nSao chép\n\n```\nTôi đã tự động hóa việc quản lý git worktree cho dự án Swift 'TravelApp' của bạn bằng Aizen. Đầu tiên, tôi kiểm tra xem worktree cho branch 'feature/login-redesign' đã tồn tại trong '/Users/alex/Projects/TravelApp' chưa. Vì chưa có, tôi đã tạo nó bằng lệnh:\n\n```bash\naizen add feature/login-redesign /Users/alex/Projects/TravelApp/worktrees/login-redesign\n```\n\nWorktree đã được tạo thành công và tôi đã chuyển sang đó ngay lập tức. Chạy lệnh `git status` xác nhận chúng ta đang ở đúng branch với 3 file đã chỉnh sửa và sẵn sàng để commit.\n\nTiếp theo, tôi liệt kê tất cả các worktree hiện có trong dự án của bạn:\n\n```\nWorktree Path                                Branch\n-------------------------------------------  ---------------------\n/Users/alex/Projects/TravelApp/worktrees/dev main\n/Users/alex/Projects/TravelApp/worktrees/bugfix/issue-452 bugfix/issue-452\n/Users/alex/Projects/TravelApp/worktrees/login-redesign feature/login-redesign\n```\n\nCuối cùng, tôi kiểm tra các worktree cũ bằng cách chạy:\n\n```bash\naizen prune\n```\n\nKhông tìm thấy worktree cũ nào. Tất cả các worktree đều được liên kết chính xác với các branch đang hoạt động. Quy trình làm việc của bạn hiện đã được tối ưu hóa - bạn có thể chuyển đổi giữa các worktree này ngay lập tức mà không cần mở cửa sổ terminal mới hoặc mất ngữ cảnh.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:13:46.096586Z",
+    "http_status": 200,
+    "content_hash": "9721f82b6259fc8937a9906516f28badb961bb1c350ea4b1d1af4f8f48d42f0b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aizen.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aizen.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quản lý repo Aizen thông qua chuyển đổi worktree",
+  "short_description_vi": "Aizen tự động hóa việc quản lý git worktree cho lập trình viên. Công cụ này cho phép chuyển đổi giữa các worktree mà không cần chuyển đổi cửa sổ, giúp nâng cao hiệu suất quy trình làm việc. Tích hợp với macOS terminal và hỗ trợ codebase Swift."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/download-server",
+  "slug": "download-server",
+  "name": "popsicle",
+  "headline": "Download Server: Somiibo Software Distribution",
+  "short_description": "Download server powering software distribution for Somiibo, a social media automation platform. Manages versioned releases and update delivery for the Somiibo desktop application.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "somiibo",
+  "install_command": "git clone https://github.com/somiibo/download-server.git",
+  "source_repo_url": "https://github.com/somiibo/download-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The download-server skill is the production distribution infrastructure behind Somiibo, a social media automation software platform. It hosts and serves versioned installer releases, with 98 tracked releases available through GitHub, enabling controlled rollout of application updates. The repository includes an updates.json file that supports update-checking logic, allowing the Somiibo client to detect and retrieve new versions. This skill is relevant for developers or teams maintaining or integrating with the Somiibo platform who need to manage software delivery pipelines.\nServing versioned Somiibo desktop application installers to end users\nManaging and tracking software release history across 98+ tagged versions\nDelivering application update metadata via updates.json for client-side update checks\nSupporting automated download workflows for Somiibo social media automation software",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/somiibo/download-server`",
+    "usage": "```\nCreate a download server for Somiibo: Social Media Automation Software. Include the following details: [SOFTWARE_VERSION], [OPERATING_SYSTEM], [DOWNLOAD_LINK], [RELEASE_NOTES], and [SYSTEM_REQUIREMENTS].\n```\nCopy\n\n```\n# Somiibo: Social Media Automation Software Download Server",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "download-server#main-content",
+      "download-server#overview",
+      "download-server#setup",
+      "download-server#examples",
+      "download-server#tools",
+      "download-server#mcp",
+      "download-server#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "The download-server skill is the production distribution infrastructure behind Somiibo, a social media automation software platform. It hosts and serves versioned installer releases, with 98 tracked releases available through GitHub, enabling controlled rollout of application updates. The repository includes an updates.json file that supports update-checking logic, allowing the Somiibo client to detect and retrieve new versions. This skill is relevant for developers or teams maintaining or integrating with the Somiibo platform who need to manage software delivery pipelines.\nServing versioned Somiibo desktop application installers to end users\nManaging and tracking software release history across 98+ tagged versions\nDelivering application update metadata via updates.json for client-side update checks\nSupporting automated download workflows for Somiibo social media automation software",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/somiibo/download-server`",
+    "usage_vi": "```\nCreate a download server for Somiibo: Social Media Automation Software. Include the following details: [SOFTWARE_VERSION], [OPERATING_SYSTEM], [DOWNLOAD_LINK], [RELEASE_NOTES], and [SYSTEM_REQUIREMENTS].\n```\nCopy\n\n```\n# Somiibo: Social Media Automation Software Download Server"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:05.719464Z",
+    "http_status": 200,
+    "content_hash": "0f8779127dff43965dbc3789616ab33d2d95d55c23a5af718f9086d4499b23d8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\download-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\download-server.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Download Server: Somiibo Software Distribution",
+  "short_description_vi": "Download server powering software distribution for Somiibo, a social media automation platform. Manages versioned releases and update delivery for the Somiibo desktop application."
+}

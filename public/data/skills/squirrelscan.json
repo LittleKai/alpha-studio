@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/squirrelscan",
+  "slug": "squirrelscan",
+  "name": "Squirrelscan",
+  "headline": "Squirrelscan - Automated Website Audits",
+  "short_description": "Squirrelscan is a CLI tool for auditing websites, focusing on SEO, performance, and security. It is designed to integrate with Claude Code agents, enabling automated website audits. Operations teams can use it to streamline website maintenance and improve digital asset performance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "squirrelscan",
+  "install_command": "git clone https://github.com/squirrelscan/squirrelscan.git",
+  "source_repo_url": "https://github.com/squirrelscan/squirrelscan",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "cli",
+    "website",
+    "seo",
+    "audit",
+    "performance",
+    "llm"
+  ],
+  "sections": {
+    "overview": "squirrelscan is a CLI-based website audit tool designed specifically for AI coding agents, including Claude Code and Cursor. It evaluates websites against 230+ rules across 21 categories including SEO, accessibility, performance, security, and E-E-A-T signals. The tool supports incremental crawling with smart resume capabilities, generates reports in multiple formats (JSON, HTML, Markdown, LLM-optimized), and integrates directly into AI agent workflows through installable skills. Operations teams and developers use squirrelscan to automate website maintenance, identify regressions, and improve digital asset performance without manual auditing.\nAutomated SEO and performance audits integrated into Claude Code or Cursor workflows\nSecurity-focused audits detecting HTTPS issues, CSP violations, and leaked secrets patterns\nAccessibility compliance checking across ARIA, landmarks, and interactive elements\nTracking website changes and regressions across multiple crawls with change detection",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/squirrelscan/squirrelscan`",
+    "usage": "```\nRun a comprehensive audit of [WEBSITE_URL] using Squirrelscan. Generate a report covering SEO (meta tags, headings, keyword density), performance (load time, image optimization, caching), and security (SSL, mixed content, headers). Flag critical issues in red, warnings in yellow, and recommendations in green. Include actionable fixes for each category.\n```\nCopy\n\n```\n### Squirrelscan Audit Report for AcmeCorp.com\n\n**SEO Analysis:**\n- Meta Description: Missing (Critical) – Current length: 0 characters. Recommended: 150-160 characters describing AcmeCorp’s cloud storage solutions.\n- Heading Structure: H1 ‘Cloud Storage Solutions’ detected. H2s ‘Pricing Plans’ and ‘Customer Testimonials’ are well-structured. Missing H3s under ‘Pricing Plans’ for granularity.\n- Keyword Density: ‘cloud storage’ appears 3 times (2.1%), ‘secure backup’ appears 1 time (0.7%). Competitors use these terms 5-8 times. Recommend increasing to 4-6% for ‘cloud storage’.\n\n**Performance Analysis:**\n- Load Time: 4.2s (Poor). Top competitors load in 1.8s. Optimize images: 12 uncompressed images (avg. 1.8MB each). Compress to <500KB.\n- Caching: Browser caching enabled for static assets (1 week). Server-side caching (Redis) not implemented. Implement Redis for dynamic content.\n- Largest Contentful Paint: 2.8s. Reduce render-blocking JavaScript in <head>.\n\n**Security Analysis:**\n- SSL Certificate: Valid (Let’s Encrypt). Chain incomplete – missing intermediate certificates. Fix via server config.\n- Mixed Content: 3 instances of HTTP resources loaded on HTTPS page (e.g., http://cdn.acmecorp.com/logo.png). Replace with HTTPS URLs.\n- Security Headers: Missing CSP, X-Frame-Options, and HSTS. Add to .htaccess:\n  ```\n  Header set Content-Security-Policy \"default-src 'self'; img-src 'self' data: https://cdn.acmecorp.com\"\n  Header always set X-Frame-Options \"DENY\"\n  Header always set Strict-Transport-Security \"max-age=31536000; includeSubDomains\"\n  ```\n\n**Action Items:**\n1. Add meta description (Priority: High).\n2. Compress images using ImageMagick: `find . -name '*.jpg' -exec convert {} -quality 80 {}.optimized.jpg \\;`\n3. Implement Redis caching via `sudo apt install redis-server` and update PHP config.\n4. Replace HTTP resources with HTTPS URLs using `grep -rl 'http://cdn.acmecorp.com' . | xargs sed -i 's|http://cdn.acmecorp.com|https://cdn.acmecorp.com|g'`.\n5. Add security headers via Apache/Nginx config as shown above.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "squirrelscan#main-content",
+      "squirrelscan#overview",
+      "squirrelscan#setup",
+      "squirrelscan#examples",
+      "squirrelscan#tools",
+      "squirrelscan#mcp",
+      "squirrelscan#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "squirrelscan is a CLI-based website audit tool designed specifically for AI coding agents, including Claude Code and Cursor. It evaluates websites against 230+ rules across 21 categories including SEO, accessibility, performance, security, and E-E-A-T signals. The tool supports incremental crawling with smart resume capabilities, generates reports in multiple formats (JSON, HTML, Markdown, LLM-optimized), and integrates directly into AI agent workflows through installable skills. Operations teams and developers use squirrelscan to automate website maintenance, identify regressions, and improve digital asset performance without manual auditing.\nAutomated SEO and performance audits integrated into Claude Code or Cursor workflows\nSecurity-focused audits detecting HTTPS issues, CSP violations, and leaked secrets patterns\nAccessibility compliance checking across ARIA, landmarks, and interactive elements\nTracking website changes and regressions across multiple crawls with change detection",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/squirrelscan/squirrelscan`",
+    "usage_vi": "```\nRun a comprehensive audit of [WEBSITE_URL] using Squirrelscan. Generate a report covering SEO (meta tags, headings, keyword density), performance (load time, image optimization, caching), and security (SSL, mixed content, headers). Flag critical issues in red, warnings in yellow, and recommendations in green. Include actionable fixes for each category.\n```\nCopy\n\n```\n### Squirrelscan Audit Report for AcmeCorp.com\n\n**SEO Analysis:**\n- Meta Description: Missing (Critical) – Current length: 0 characters. Recommended: 150-160 characters describing AcmeCorp’s cloud storage solutions.\n- Heading Structure: H1 ‘Cloud Storage Solutions’ detected. H2s ‘Pricing Plans’ and ‘Customer Testimonials’ are well-structured. Missing H3s under ‘Pricing Plans’ for granularity.\n- Keyword Density: ‘cloud storage’ appears 3 times (2.1%), ‘secure backup’ appears 1 time (0.7%). Competitors use these terms 5-8 times. Recommend increasing to 4-6% for ‘cloud storage’.\n\n**Performance Analysis:**\n- Load Time: 4.2s (Poor). Top competitors load in 1.8s. Optimize images: 12 uncompressed images (avg. 1.8MB each). Compress to <500KB.\n- Caching: Browser caching enabled for static assets (1 week). Server-side caching (Redis) not implemented. Implement Redis for dynamic content.\n- Largest Contentful Paint: 2.8s. Reduce render-blocking JavaScript in <head>.\n\n**Security Analysis:**\n- SSL Certificate: Valid (Let’s Encrypt). Chain incomplete – missing intermediate certificates. Fix via server config.\n- Mixed Content: 3 instances of HTTP resources loaded on HTTPS page (e.g., http://cdn.acmecorp.com/logo.png). Replace with HTTPS URLs.\n- Security Headers: Missing CSP, X-Frame-Options, and HSTS. Add to .htaccess:\n  ```\n  Header set Content-Security-Policy \"default-src 'self'; img-src 'self' data: https://cdn.acmecorp.com\"\n  Header always set X-Frame-Options \"DENY\"\n  Header always set Strict-Transport-Security \"max-age=31536000; includeSubDomains\"\n  ```\n\n**Action Items:**\n1. Add meta description (Priority: High).\n2. Compress images using ImageMagick: `find . -name '*.jpg' -exec convert {} -quality 80 {}.optimized.jpg \\;`\n3. Implement Redis caching via `sudo apt install redis-server` and update PHP config.\n4. Replace HTTP resources with HTTPS URLs using `grep -rl 'http://cdn.acmecorp.com' . | xargs sed -i 's|http://cdn.acmecorp.com|https://cdn.acmecorp.com|g'`.\n5. Add security headers via Apache/Nginx config as shown above.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:39.635844Z",
+    "http_status": 200,
+    "content_hash": "db1c15e0d93b9a47d96a3548ee7d52191a17290b68f1789784eb6c2934e03f6c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\squirrelscan.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\squirrelscan.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Squirrelscan - Automated Website Audits",
+  "short_description_vi": "Squirrelscan is a CLI tool for auditing websites, focusing on SEO, performance, and security. It is designed to integrate with Claude Code agents, enabling automated website audits. Operations teams can use it to streamline website maintenance and improve digital asset performance."
+}

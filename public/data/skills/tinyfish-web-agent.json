@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tinyfish-web-agent",
+  "slug": "tinyfish-web-agent",
+  "name": "safe-action-advanced",
+  "headline": "TinyFish Web Agent: Claude Code skill for Web",
+  "short_description": "The TinyFish Web Agent is designed to make API calls while ensuring the availability of a required API key. It is useful for developers who need to interact with web services securely using their own API key.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "tinyfish-io",
+  "install_command": "git clone https://github.com/tinyfish-io/skills",
+  "source_repo_url": "https://github.com/tinyfish-io/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "web-development",
+    "tinyfish",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The TinyFish Web Agent is a web development skill designed to facilitate secure API calls by verifying that a required API key is available before making requests. It enables developers to interact with external web services while maintaining control over their authentication credentials. This agent is particularly useful for workflows that depend on API integrations and require built-in security validation. By ensuring API key availability upfront, it helps prevent failed requests and streamlines API-dependent development processes.\nVerify the availability of TINYFISH_API_KEY before API calls.\nIntegrate with services that require API authentication.\nFacilitate the creation of secure API interactions.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/tinyfish-io/skills --skill tinyfish`\n`git clone https://github.com/tinyfish-io/skills`",
+    "usage": "```\nAct as a TinyFish Web Agent. Use my API key [API_KEY] to make a secure API call to [ENDPOINT_URL]. The call should include the following parameters: [PARAMETERS]. Return the response in a structured format. If the API key is missing or invalid, prompt me to provide a valid one before proceeding.\n```\nCopy\n\n```\n# TinyFish Web Agent Response\n\n**API Call Details:**\n- Endpoint: `https://api.tinyfish.example.com/v1/data`\n- Method: `POST`\n- Parameters: `{ \"query\": \"recent_orders\", \"limit\": 10, \"sort\": \"date_desc\" }`\n\n**Response:**\n```json\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"orders\": [\n      {\n        \"id\": \"ORD-9845\",\n        \"customer\": \"GreenLeaf Organics\",\n        \"total\": 1245.67,\n        \"date\": \"2024-05-15\"\n      },\n      {\n        \"id\": \"ORD-9844\",\n        \"customer\": \"BlueSky Supplies\",\n        \"total\": 892.34,\n        \"date\": \"2024-05-14\"\n      }\n    ],\n    \"pagination\": {\n      \"total\": 42,\n      \"limit\": 10,\n      \"offset\": 0\n    }\n  },\n  \"timestamp\": \"2024-05-16T10:30:00Z\"\n}\n```\n\n**Next Steps:**\n- Would you like to process this data further (e.g., export to CSV, analyze trends)?\n- Need to make another API call with different parameters?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "tinyfish-web-agent#main-content",
+      "tinyfish-web-agent#overview",
+      "tinyfish-web-agent#setup",
+      "tinyfish-web-agent#examples",
+      "tinyfish-web-agent#related",
+      "react-stack-patterns",
+      "inertia-rails-architecture",
+      "safe-action-advanced"
+    ],
+    "overview_vi": "The TinyFish Web Agent is a web development skill designed to facilitate secure API calls by verifying that a required API key is available before making requests. It enables developers to interact with external web services while maintaining control over their authentication credentials. This agent is particularly useful for workflows that depend on API integrations and require built-in security validation. By ensuring API key availability upfront, it helps prevent failed requests and streamlines API-dependent development processes.\nVerify the availability of TINYFISH_API_KEY before API calls.\nIntegrate with services that require API authentication.\nFacilitate the creation of secure API interactions.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/tinyfish-io/skills --skill tinyfish`\n`git clone https://github.com/tinyfish-io/skills`",
+    "usage_vi": "```\nAct as a TinyFish Web Agent. Use my API key [API_KEY] to make a secure API call to [ENDPOINT_URL]. The call should include the following parameters: [PARAMETERS]. Return the response in a structured format. If the API key is missing or invalid, prompt me to provide a valid one before proceeding.\n```\nCopy\n\n```\n# TinyFish Web Agent Response\n\n**API Call Details:**\n- Endpoint: `https://api.tinyfish.example.com/v1/data`\n- Method: `POST`\n- Parameters: `{ \"query\": \"recent_orders\", \"limit\": 10, \"sort\": \"date_desc\" }`\n\n**Response:**\n```json\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"orders\": [\n      {\n        \"id\": \"ORD-9845\",\n        \"customer\": \"GreenLeaf Organics\",\n        \"total\": 1245.67,\n        \"date\": \"2024-05-15\"\n      },\n      {\n        \"id\": \"ORD-9844\",\n        \"customer\": \"BlueSky Supplies\",\n        \"total\": 892.34,\n        \"date\": \"2024-05-14\"\n      }\n    ],\n    \"pagination\": {\n      \"total\": 42,\n      \"limit\": 10,\n      \"offset\": 0\n    }\n  },\n  \"timestamp\": \"2024-05-16T10:30:00Z\"\n}\n```\n\n**Next Steps:**\n- Would you like to process this data further (e.g., export to CSV, analyze trends)?\n- Need to make another API call with different parameters?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:16:03.029389Z",
+    "http_status": 200,
+    "content_hash": "204003d86803e96fc8cb82bc639ccffcc276a63105efbd3e235831cd1a814254",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tinyfish-web-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tinyfish-web-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "TinyFish Web Agent: Claude Code skill for Web",
+  "short_description_vi": "The TinyFish Web Agent is designed to make API calls while ensuring the availability of a required API key. It is useful for developers who need to interact with web services securely using their own API key."
+}

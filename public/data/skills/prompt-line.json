@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prompt-line",
+  "slug": "prompt-line",
+  "name": "Prompt Line",
+  "headline": "Prompt Line - Improve CLI AI Coding Agent Prompts",
+  "short_description": "Prompt Line is a macOS app that enhances the prompt input experience for CLI-based AI coding agents like Claude Code, Gemini CLI, and OpenAI Codex CLI. It benefits developers by streamlining interactions with AI coding assistants, improving workflow efficiency. The app connects to terminal workflows, making it easier to manage and refine prompts for AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "nkmr-jp",
+  "install_command": "git clone https://github.com/nkmr-jp/prompt-line.git",
+  "source_repo_url": "https://github.com/nkmr-jp/prompt-line",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "gemini-cli",
+    "claude-code",
+    "codex-cli"
+  ],
+  "sections": {
+    "overview": "Prompt Line is a macOS utility designed to streamline prompt input workflows for CLI-based AI coding agents including Claude Code, Codex CLI, and Gemini CLI. The app provides a floating window accessible via Cmd+Shift+Space that enables quick text entry and instant pasting with Cmd+Enter. It supports context-aware search and autocomplete through forward slash and @ symbols, allowing developers to search agent skills, files, code symbols, and custom contexts. All prompt history is stored locally on your Mac with no internet required, and the app is extensible via YAML-based plugins for custom search and skills.\nStreamlining multi-turn conversations with AI coding assistants from any application\nEditing voice-inputted prompts before sending to CLI AI agents\nSearching and reusing previous prompts from history across different projects\nAdding context references (agent skills, files, symbols) to prompts via autocomplete",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nkmr-jp/prompt-line`",
+    "usage": "```\nUse Prompt Line to generate a refined prompt for [AI_CODING_AGENT] to [TASK]. Start by analyzing the current project structure in [PROJECT_DIRECTORY]. Then, draft a prompt that includes [SPECIFIC_REQUIREMENTS] and [CONSTRAINTS]. Finally, optimize the prompt for clarity and conciseness using Prompt Line's features. Output the final prompt in a code block for direct use in the terminal.\n```\nCopy\n\n```\nHere’s a refined prompt generated using Prompt Line for a scenario where you need to refactor a Python script in a Django project:\n\n```\nAnalyze the Django project in /Users/alex/myapp with the following requirements:\n1. Refactor the `views.py` file to use class-based views instead of function-based views.\n2. Ensure all existing tests in `/tests/` pass after refactoring.\n3. Maintain backward compatibility with the existing API endpoints.\n4. Optimize database queries to reduce N+1 issues in the `UserProfile` model.\n\nProvide the refactored code in a single file with clear comments explaining the changes. Include a summary of the refactoring process and any trade-offs considered.\n```\n\nPrompt Line helped me break down the task into specific, actionable steps and ensured the prompt was concise yet comprehensive. The final output was ready to paste directly into my terminal for use with Claude Code.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "prompt-line#main-content",
+      "prompt-line#overview",
+      "prompt-line#setup",
+      "prompt-line#examples",
+      "prompt-line#tools",
+      "prompt-line#mcp",
+      "prompt-line#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Prompt Line là một tiện ích trên macOS được thiết kế để tối ưu hóa workflow nhập prompt cho các CLI AI coding agent bao gồm Claude Code, Codex CLI và Gemini CLI. Ứng dụng cung cấp một cửa sổ nổi kích hoạt nhanh qua tổ hợp phím Cmd+Shift+Space, cho phép nhập văn bản nhanh và dán ngay lập tức bằng Cmd+Enter. Ứng dụng hỗ trợ tìm kiếm theo ngữ cảnh và autocomplete thông qua ký tự gạch chéo (/) và @, cho phép lập trình viên tìm kiếm các skill của agent, file, code symbol và các ngữ cảnh tùy chỉnh. Toàn bộ lịch sử prompt được lưu trữ cục bộ (local) trên máy Mac của bạn mà không cần kết nối internet, đồng thời ứng dụng cũng có thể mở rộng thông qua các plugin dựa trên YAML để tùy chỉnh tính năng tìm kiếm và skill.\n\nTối ưu hóa các cuộc hội thoại nhiều lượt (multi-turn) với trợ lý lập trình AI từ bất kỳ ứng dụng nào\nChỉnh sửa prompt nhập bằng giọng nói trước khi gửi đến các CLI AI agent\nTìm kiếm và tái sử dụng các prompt cũ trong lịch sử cho nhiều dự án khác nhau\nThêm tham chiếu ngữ cảnh (skill của agent, file, symbol) vào prompt thông qua autocomplete",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/nkmr-jp/prompt-line`",
+    "usage_vi": "```\nSử dụng Prompt Line để tạo một prompt đã được tinh chỉnh cho [AI_CODING_AGENT] thực hiện [TASK]. Bắt đầu bằng việc phân tích cấu trúc dự án hiện tại trong [PROJECT_DIRECTORY]. Sau đó, phác thảo một prompt bao gồm [SPECIFIC_REQUIREMENTS] và [CONSTRAINTS]. Cuối cùng, tối ưu hóa prompt để đảm bảo sự rõ ràng và ngắn gọn bằng các tính năng của Prompt Line. Xuất prompt cuối cùng trong một block code để sử dụng trực tiếp trong terminal.\n```\nSao chép\n\n```\nDưới đây là một prompt đã được tinh chỉnh bằng Prompt Line cho tình huống bạn cần refactor một script Python trong một dự án Django:\n\n```\nPhân tích dự án Django tại /Users/alex/myapp với các yêu cầu sau:\n1. Refactor file `views.py` để sử dụng class-based views thay vì function-based views.\n2. Đảm bảo tất cả các test hiện có trong `/tests/` đều pass sau khi refactor.\n3. Duy trì tính tương thích ngược với các API endpoint hiện tại.\n4. Tối ưu hóa các câu truy vấn cơ sở dữ liệu để giảm thiểu vấn đề N+1 trong model `UserProfile`.\n\nCung cấp code đã refactor trong một file duy nhất với các comment rõ ràng giải thích những thay đổi. Đính kèm một bản tóm tắt quá trình refactor và các phương án đánh đổi (trade-offs) đã cân nhắc.\n```\n\nPrompt Line đã giúp tôi chia nhỏ tác vụ thành các bước cụ thể, khả thi và đảm bảo prompt ngắn gọn nhưng vẫn đầy đủ thông tin. Kết quả cuối cùng đã sẵn sàng để dán trực tiếp vào terminal của tôi để sử dụng với Claude Code.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:03:54.714492Z",
+    "http_status": 200,
+    "content_hash": "9719d0ca3e024d08cf7dc8446d642e5f8ec0305be91160b238545da19b8e0d37",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prompt-line.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prompt-line.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Prompt Line - Tối ưu hóa prompt cho các CLI AI coding agent",
+  "short_description_vi": "Prompt Line là một ứng dụng macOS giúp nâng cao trải nghiệm nhập prompt cho các CLI AI coding agent như Claude Code, Gemini CLI và OpenAI Codex CLI. Ứng dụng này giúp lập trình viên tối ưu hóa quy trình tương tác với các trợ lý lập trình AI, nâng cao hiệu suất workflow. Ứng dụng kết nối trực tiếp với workflow trên terminal, giúp quản lý và tinh chỉnh prompt cho các AI agent dễ dàng hơn."
+}

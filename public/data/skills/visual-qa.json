@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/visual-qa",
+  "slug": "visual-qa",
+  "name": "Related Skills",
+  "headline": "Visual QA: AI Design Review Tool",
+  "short_description": "Visual QA utilizes vision models to review screenshots against design intent, identifying issues such as spacing, alignment, and accessibility. This skill is aimed at designers and developers who want to ensure their work aligns with established design standards before deployment.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "dylanfeltus",
+  "install_command": "git clone https://github.com/dylanfeltus/skills",
+  "source_repo_url": "https://github.com/dylanfeltus/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "visual",
+    "design-and-ui-ux"
+  ],
+  "sections": {
+    "overview": "Visual QA leverages vision-capable AI models to automatically review screenshots against design standards. The skill evaluates seven key categories—layout, typography, color, hierarchy, components, polish, and responsive behavior—providing structured feedback on spacing, alignment, color consistency, and accessibility gaps. It supports full reviews, quick reviews, and mockup comparisons, helping designers and developers catch issues before shipping. Integration with build workflows enables QA checks during development. The skill requires a vision-capable model like GPT-4o or Claude and the ability to capture screenshots via browser tools or user-provided images.\nUser requests to review a design or screenshot.\nAfter building a page, verify design accuracy.\nCompare implementation against mockups.\nUser asks if the design meets expectations.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/dylanfeltus/skills --skill visual-qa`\n`git clone https://github.com/dylanfeltus/skills`",
+    "usage": "```\nReview the attached screenshot of [COMPANY]'s [INDUSTRY] [PRODUCT/APP/WEBSITE] against the design system guidelines. Check for: spacing inconsistencies, alignment issues, color contrast violations, font size discrepancies, and missing accessibility features. Provide a detailed report with screenshots annotated for each issue found.\n```\nCopy\n\n```\n### Visual QA Report for Acme Corp's Mobile Banking App\n\n**Checked Against**: Acme Corp Design System v2.1 (Light Mode)\n**Screenshot**: Home Dashboard (iOS 17)\n\n#### Issues Found:\n\n**1. Spacing Inconsistencies**\n- Balance between account balance card and transaction list is off by 4px (should be 16px).\n- Padding in \"Recent Transactions\" header is 12px instead of 16px.\n\n**2. Alignment Issues**\n- Transaction amount text is misaligned by 2px in the list.\n- \"See All\" button is 8px too far to the right.\n\n**3. Accessibility Violations**\n- Contrast ratio for \"Log Out\" button text (gray #7A7A7A) is 3.1:1 (needs 4.5:1).\n- Missing focus ring on \"Pay Bills\" button (WCAG 2.1 AA failure).\n\n**4. Font Size Discrepancies**\n- Transaction date text is 14px instead of 16px.\n- Account balance amount is 20px instead of 24px.\n\n#### Suggested Fixes:\n- Adjust spacing to match design tokens.\n- Re-align all text elements to the baseline grid.\n- Update button colors to meet contrast requirements.\n- Ensure all interactive elements have visible focus states.\n\n**Screenshots**: [Annotated images attached]\n\n**Total Issues**: 8 (4 Critical, 4 Medium)\n**Confidence**: 95% (based on 100+ design system checks)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "visual-qa#main-content",
+      "visual-qa#overview",
+      "visual-qa#setup",
+      "visual-qa#examples",
+      "visual-qa#tools",
+      "visual-qa#mcp",
+      "visual-qa#related"
+    ],
+    "overview_vi": "Visual QA leverages vision-capable AI models to automatically review screenshots against design standards. The skill evaluates seven key categories—layout, typography, color, hierarchy, components, polish, and responsive behavior—providing structured feedback on spacing, alignment, color consistency, and accessibility gaps. It supports full reviews, quick reviews, and mockup comparisons, helping designers and developers catch issues before shipping. Integration with build workflows enables QA checks during development. The skill requires a vision-capable model like GPT-4o or Claude and the ability to capture screenshots via browser tools or user-provided images.\nUser requests to review a design or screenshot.\nAfter building a page, verify design accuracy.\nCompare implementation against mockups.\nUser asks if the design meets expectations.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/dylanfeltus/skills --skill visual-qa`\n`git clone https://github.com/dylanfeltus/skills`",
+    "usage_vi": "```\nReview the attached screenshot of [COMPANY]'s [INDUSTRY] [PRODUCT/APP/WEBSITE] against the design system guidelines. Check for: spacing inconsistencies, alignment issues, color contrast violations, font size discrepancies, and missing accessibility features. Provide a detailed report with screenshots annotated for each issue found.\n```\nCopy\n\n```\n### Visual QA Report for Acme Corp's Mobile Banking App\n\n**Checked Against**: Acme Corp Design System v2.1 (Light Mode)\n**Screenshot**: Home Dashboard (iOS 17)\n\n#### Issues Found:\n\n**1. Spacing Inconsistencies**\n- Balance between account balance card and transaction list is off by 4px (should be 16px).\n- Padding in \"Recent Transactions\" header is 12px instead of 16px.\n\n**2. Alignment Issues**\n- Transaction amount text is misaligned by 2px in the list.\n- \"See All\" button is 8px too far to the right.\n\n**3. Accessibility Violations**\n- Contrast ratio for \"Log Out\" button text (gray #7A7A7A) is 3.1:1 (needs 4.5:1).\n- Missing focus ring on \"Pay Bills\" button (WCAG 2.1 AA failure).\n\n**4. Font Size Discrepancies**\n- Transaction date text is 14px instead of 16px.\n- Account balance amount is 20px instead of 24px.\n\n#### Suggested Fixes:\n- Adjust spacing to match design tokens.\n- Re-align all text elements to the baseline grid.\n- Update button colors to meet contrast requirements.\n- Ensure all interactive elements have visible focus states.\n\n**Screenshots**: [Annotated images attached]\n\n**Total Issues**: 8 (4 Critical, 4 Medium)\n**Confidence**: 95% (based on 100+ design system checks)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:28:04.641574Z",
+    "http_status": 200,
+    "content_hash": "290de454c4c46618283b47e770d909a1722382b80395c8b5605cea86425af484",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\visual-qa.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\visual-qa.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Visual QA: AI Design Review Tool",
+  "short_description_vi": "Visual QA utilizes vision models to review screenshots against design intent, identifying issues such as spacing, alignment, and accessibility. This skill is aimed at designers and developers who want to ensure their work aligns with established design standards before deployment."
+}

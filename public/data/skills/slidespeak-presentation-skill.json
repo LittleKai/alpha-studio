@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/slidespeak-presentation-skill",
+  "slug": "slidespeak-presentation-skill",
+  "name": "XMind 思维导图处理技能",
+  "headline": "SlideSpeak Presentation Skill: AI PowerPoint Gen",
+  "short_description": "The SlideSpeak Presentation Skill allows users to create and edit PowerPoint presentations efficiently. It leverages the SlideSpeak API, making presentation generation straightforward and quick.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "slidespeak",
+  "install_command": "git clone https://github.com/slidespeak/skills",
+  "source_repo_url": "https://github.com/slidespeak/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "presentation",
+    "slidespeak",
+    "productivity"
+  ],
+  "sections": {
+    "overview": "SlideSpeak is an AI presentation skill that automates PowerPoint (PPTX) generation from text prompts, documents, or structured data. It enables users to create polished presentations in 30–60 seconds, edit individual slides via API, and apply branded templates with control over tone, length, and layout. The skill integrates with AI agents and agentic platforms, letting teams automate sales decks, financial reports, executive summaries, and training materials without touching slide design manually. It supports async task handling, custom templates, and multiple tone options (professional, casual, educational, sales pitch, concise).\nGenerate presentations based on a given topic.\nEdit existing PowerPoint files through API integration.\nAutomate the creation of educational slides for teaching.\nCreate custom slideshows for corporate presentations.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/slidespeak/skills --skill slidespeak`\n`git clone https://github.com/slidespeak/skills`",
+    "usage": "```\nCreate a PowerPoint presentation for [COMPANY] in the [INDUSTRY] sector. The presentation should cover [TOPIC] and include [NUMBER] slides. Use [DATA] to support key points. Ensure the design is professional and engaging.\n```\nCopy\n\n```\n# **Q3 2024 Performance Review: GreenTech Solutions**\n\n---",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "slidespeak-presentation-skill#main-content",
+      "slidespeak-presentation-skill#overview",
+      "slidespeak-presentation-skill#setup",
+      "slidespeak-presentation-skill#examples",
+      "slidespeak-presentation-skill#related",
+      "prompt-optimizer",
+      "automation-workflows",
+      "xmind"
+    ],
+    "overview_vi": "SlideSpeak is an AI presentation skill that automates PowerPoint (PPTX) generation from text prompts, documents, or structured data. It enables users to create polished presentations in 30–60 seconds, edit individual slides via API, and apply branded templates with control over tone, length, and layout. The skill integrates with AI agents and agentic platforms, letting teams automate sales decks, financial reports, executive summaries, and training materials without touching slide design manually. It supports async task handling, custom templates, and multiple tone options (professional, casual, educational, sales pitch, concise).\nGenerate presentations based on a given topic.\nEdit existing PowerPoint files through API integration.\nAutomate the creation of educational slides for teaching.\nCreate custom slideshows for corporate presentations.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/slidespeak/skills --skill slidespeak`\n`git clone https://github.com/slidespeak/skills`",
+    "usage_vi": "```\nCreate a PowerPoint presentation for [COMPANY] in the [INDUSTRY] sector. The presentation should cover [TOPIC] and include [NUMBER] slides. Use [DATA] to support key points. Ensure the design is professional and engaging.\n```\nCopy\n\n```\n# **Q3 2024 Performance Review: GreenTech Solutions**\n\n---"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:42:19.484865Z",
+    "http_status": 200,
+    "content_hash": "3f66351469c98ac6ae0fc1f7217b82e0d1c8bc1b5595c72d65cbef5a044267c3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\slidespeak-presentation-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\slidespeak-presentation-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SlideSpeak Presentation Skill: AI PowerPoint Gen",
+  "short_description_vi": "The SlideSpeak Presentation Skill allows users to create and edit PowerPoint presentations efficiently. It leverages the SlideSpeak API, making presentation generation straightforward and quick."
+}

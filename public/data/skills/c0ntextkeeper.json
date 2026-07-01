@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/c0ntextkeeper",
+  "slug": "c0ntextkeeper",
+  "name": "c0ntextKeeper",
+  "headline": "C0ntextKeeper for automated context",
+  "short_description": "Automatically preserves context for Claude Code, preventing data loss from compaction. Ideal for developers and operations teams using Claude AI. Integrates with 7 hooks, 187 semantic patterns, and 3 MCP tools. Works out of the box with zero configuration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "Capnjbrown",
+  "install_command": "git clone https://github.com/Capnjbrown/c0ntextKeeper.git",
+  "source_repo_url": "https://github.com/Capnjbrown/c0ntextKeeper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "typescript",
+    "anthropic",
+    "nodejs",
+    "vibe-coding",
+    "cli",
+    "hooks",
+    "developer-tools",
+    "ai-tools",
+    "context-engineering",
+    "context-preservation",
+    "agentic-workflow",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "c0ntextKeeper automatically captures and archives your Claude Code conversations before compaction occurs, eliminating the need to rediscover solutions across sessions. It uses 7 hooks integrated into Claude Code and 187 semantic patterns to intelligently extract problems, solutions, and architectural decisions from your work. The system provides searchable access via CLI commands and MCP tools, with automatic redaction of API keys and credentials for security. Setup requires a single command with zero configuration needed, and it operates with <10ms performance impact. Developers and operations teams can retrieve past context naturally by asking Claude questions about previous work.\nRetrieve past authentication implementations without manual searching\nAccess architectural decisions and design reasoning from previous sessions\nFind solutions to recurring errors without re-debugging from scratch\nOnboard teammates by sharing searchable context archives",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Capnjbrown/c0ntextKeeper`",
+    "usage": "```\nUse c0ntextKeeper to preserve the full context of [PROJECT_NAME] for [TASK_OR_GOAL]. Ensure all relevant files, dependencies, and recent changes are captured before proceeding with [SPECIFIC_ACTION]. Include the following critical details: [LIST_KEY_CONTEXT_ITEMS]. Verify the context is intact by summarizing the preserved state.\n```\nCopy\n\n```\n### Context Preservation Report for Project: `api-gateway-rewrite`\n\n**Preserved Context Summary:**\n- **Repository State:** 42 files modified (12 new, 8 deleted, 22 updated) in the last 7 days. Key changes include:\n  - `/src/routes/v2/auth.py` (new): Added JWT validation middleware\n  - `/config/k8s/deployment.yaml` (updated): Increased replica count to 5\n  - `/tests/integration/test_auth.py` (new): Added 15 test cases for token refresh\n- **Dependencies:** Updated `requirements.txt` with `fastapi==0.109.0` and `pydantic>=2.5.0`. Lock file shows no conflicts.\n- **Recent Commits:** 3 commits by `dev-team` focusing on auth improvements (SHA: `a1b2c3d`, `e4f5g6h`, `i7j8k9l`).\n- **Open Issues:** #42 (priority: high) - \"Handle rate limiting for auth endpoints\" (assigned to @alice-dev).\n- **Environment:** Docker image `api-gateway:2.1.0` built successfully. Kubernetes cluster `prod-cluster-1` is running v1.27.3.\n\n**Verification:**\n✅ All 42 modified files accounted for. No uncommitted changes detected. Dependencies resolved. Critical paths (`/src/auth/*`) preserved with full history.\n\n**Next Steps:**\n1. Proceed with deploying the updated auth middleware to staging.\n2. Monitor error logs for `JWTValidationError` in the next 2 hours.\n3. If issues arise, roll back to commit `a1b2c3d` using `git reset --hard a1b2c3d`.\n\n*Context preserved at: 2024-05-20T14:32:15Z*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "c0ntextkeeper#main-content",
+      "c0ntextkeeper#overview",
+      "c0ntextkeeper#setup",
+      "c0ntextkeeper#examples",
+      "c0ntextkeeper#tools",
+      "c0ntextkeeper#mcp",
+      "c0ntextkeeper#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "c0ntextKeeper tự động ghi lại và lưu trữ các cuộc hội thoại Claude Code của bạn trước khi quá trình compaction xảy ra, loại bỏ việc phải tìm lại các giải pháp giữa các session. Công cụ này sử dụng 7 hook tích hợp trong Claude Code và 187 semantic pattern để trích xuất một cách thông minh các vấn đề, giải pháp và quyết định kiến trúc từ công việc của bạn. Hệ thống hỗ trợ tìm kiếm dữ liệu thông qua các lệnh CLI và MCP tool, đồng thời tự động ẩn các API key và thông tin xác thực để bảo mật. Quá trình setup chỉ cần một câu lệnh duy nhất mà không yêu cầu cấu hình, đồng thời hoạt động mượt mà với mức ảnh hưởng hiệu năng cực thấp (<10ms). Các developer và team vận hành có thể truy xuất lại ngữ cảnh cũ một cách tự nhiên bằng cách đặt câu hỏi cho Claude về các công việc trước đó.\n\n- Tìm lại các phần triển khai xác thực (authentication) cũ mà không cần lục tìm thủ công\n- Truy cập các quyết định kiến trúc và lập luận thiết kế từ các session trước\n- Tìm giải pháp cho các lỗi lặp lại mà không cần phải debug lại từ đầu\n- Hỗ trợ onboard thành viên mới bằng cách chia sẻ các tệp lưu trữ ngữ cảnh có thể tìm kiếm được",
+    "setup_vi": "Hiện chưa có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Capnjbrown/c0ntextKeeper`",
+    "usage_vi": "```\nSử dụng c0ntextKeeper để lưu giữ toàn bộ ngữ cảnh của [PROJECT_NAME] cho [TASK_OR_GOAL]. Đảm bảo toàn bộ các file liên quan, các dependency và các thay đổi gần đây được ghi lại trước khi tiếp tục với [SPECIFIC_ACTION]. Bao gồm các thông tin quan trọng sau: [LIST_KEY_CONTEXT_ITEMS]. Xác minh ngữ cảnh còn nguyên vẹn bằng cách tóm tắt trạng thái đã lưu.\n```\nSao chép\n\n```\n### Báo cáo lưu trữ ngữ cảnh cho dự án: `api-gateway-rewrite`\n\n**Tóm tắt ngữ cảnh đã lưu:**\n- **Trạng thái Repository:** 42 file được chỉnh sửa (12 file mới, 8 file bị xóa, 22 file được cập nhật) trong 7 ngày qua. Các thay đổi chính bao gồm:\n  - `/src/routes/v2/auth.py` (mới): Thêm middleware xác thực JWT\n  - `/config/k8s/deployment.yaml` (cập nhật): Tăng số lượng replica lên 5\n  - `/tests/integration/test_auth.py` (mới): Thêm 15 test case cho việc refresh token\n- **Dependencies:** Đã cập nhật `requirements.txt` với `fastapi==0.109.0` và `pydantic>=2.5.0`. File lock không hiển thị xung đột nào.\n- **Các commit gần đây:** 3 commit bởi `dev-team` tập trung vào cải thiện phần auth (SHA: `a1b2c3d`, `e4f5g6h`, `i7j8k9l`).\n- **Issue đang mở:** #42 (độ ưu tiên: cao) - \"Xử lý rate limiting cho các endpoint auth\" (được giao cho @alice-dev).\n- **Môi trường:** Docker image `api-gateway:2.1.0` đã được build thành công. Kubernetes cluster `prod-cluster-1` đang chạy phiên bản v1.27.3.\n\n**Xác minh:**\n✅ Đã ghi nhận đầy đủ 42 file được chỉnh sửa. Không phát hiện thay đổi nào chưa được commit. Các dependency đã được giải quyết. Các đường dẫn quan trọng (`/src/auth/*`) đã được lưu giữ cùng toàn bộ lịch sử.\n\n**Các bước tiếp theo:**\n1. Tiến hành triển khai middleware auth đã cập nhật lên staging.\n2. Theo dõi log lỗi của `JWTValidationError` trong 2 giờ tới.\n3. Nếu xảy ra sự cố, thực hiện rollback về commit `a1b2c3d` bằng lệnh `git reset --hard a1b2c3d`.\n\n*Ngữ cảnh được lưu lúc: 2024-05-20T14:32:15Z*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:15:56.285476Z",
+    "http_status": 200,
+    "content_hash": "7b7553e52560463ee4265d539dc058f2f0034cf473cf9afceb5de2eceab76195",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\c0ntextkeeper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\c0ntextkeeper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "C0ntextKeeper - Tự động hóa quản lý ngữ cảnh",
+  "short_description_vi": "Tự động lưu giữ ngữ cảnh cho Claude Code, ngăn ngừa mất dữ liệu do quá trình compaction. Lý tưởng cho các developer và team vận hành sử dụng Claude AI. Tích hợp với 7 hook, 187 semantic pattern và 3 MCP tool. Hoạt động ngay lập tức mà không cần cấu hình."
+}

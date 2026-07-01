@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/addmefast-bot",
+  "slug": "addmefast-bot",
+  "name": "Addmefast Bot",
+  "headline": "AddMeFast Bot: Automate Marketing Interactions",
+  "short_description": "AddMeFast Bot automates content views and interactions to earn unlimited points. Marketing teams use it to boost social media presence. It connects to AddMeFast and integrates with Node.js workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "somiibo",
+  "install_command": "git clone https://github.com/somiibo/addmefast-bot.git",
+  "source_repo_url": "https://github.com/somiibo/addmefast-bot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "frontend",
+    "addmefast-bot",
+    "agency",
+    "marketing",
+    "marketing-automation",
+    "social-media-automation",
+    "nodejs",
+    "addmefast",
+    "saas",
+    "front-end",
+    "social-media",
+    "javascript"
+  ],
+  "sections": {
+    "overview": "The AddMeFast Bot is an innovative Claude Code skill designed for marketers looking to streamline their engagement with online content. This automation tool automatically views and interacts with various content pieces, allowing users to earn unlimited points without manual effort. By leveraging AI automation, the AddMeFast Bot enhances marketing strategies, making it easier to boost visibility and engagement across platforms. One of the key benefits of using the AddMeFast Bot is the significant time savings it offers. With an implementation time of just 30 minutes, marketers can quickly set up the bot and start reaping the rewards of automated interactions. This skill is particularly valuable for those in marketing roles who need to maximize their outreach while minimizing manual tasks. Although specific time savings are not quantified, the efficiency gained from automation can lead to more time spent on strategic planning and creative tasks. This skill is ideal for digital marketers, social media managers, and product managers who are focused on enhancing their marketing efforts through AI automation. By integrating the AddMeFast Bot into their workflows, these professionals can ensure consistent engagement with their target audience. Practical use cases include automating social media interactions to increase visibility for campaigns or using the bot to interact with user-generated content, thereby boosting brand loyalty and community engagement. While the AddMeFast Bot is classified as an intermediate skill, its implementation requires no advanced technical knowledge, making it accessible to a wide range of users. As businesses increasingly adopt AI-first workflows, the AddMeFast Bot serves as a crucial tool in the marketing arsenal, enabling teams to focus on higher-level strategies while the bot handles routine interactions. By incorporating this skill into their marketing toolkit, users can enhance their productivity and effectiveness in a competitive digital landscape.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/somiibo/addmefast-bot`",
+    "usage": "```\nCreate an AddMeFast Bot script for [COMPANY] in the [INDUSTRY] sector. The bot should automate [NUMBER] views and [NUMBER] interactions per day. Include error handling for [SPECIFIC ISSUE] and ensure it integrates with our Node.js workflow. Provide the complete code and setup instructions.\n```\nCopy\n\n```\n```javascript\n// AddMeFast Bot Script for [COMPANY]\nconst AddMeFast = require('addmefast-api');\nconst config = require('./config');\n\n// Initialize AddMeFast API\nconst addmefast = new AddMeFast(config.apiKey);\n\n// Function to automate views and interactions\nasync function automateTasks() {\n  try {\n    // Automate views\n    const views = await addmefast.automateViews(config.viewsPerDay);\n    console.log(`Successfully automated ${views} views.`);\n    \n    // Automate interactions\n    const interactions = await addmefast.automateInteractions(config.interactionsPerDay);\n    console.log(`Successfully automated ${interactions} interactions.`);\n  } catch (error) {\n    console.error('Error automating tasks:', error);\n  }\n}\n\n// Run the automation\nautomateTasks();\n```\n\n### Setup Instructions\n1. **Install Dependencies**: Run `npm install addmefast-api` to install the AddMeFast API package.\n2. **Configure API Key**: Create a `config.js` file with your AddMeFast API key and daily task limits.\n3. **Run the Script**: Execute the script using `node addmefast-bot.js`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "addmefast-bot#main-content",
+      "addmefast-bot#overview",
+      "addmefast-bot#setup",
+      "addmefast-bot#examples",
+      "addmefast-bot#tools",
+      "addmefast-bot#mcp",
+      "addmefast-bot#related",
+      "marketingskills",
+      "copywriting",
+      "hootsuite-mcp-server"
+    ],
+    "overview_vi": "AddMeFast Bot là một skill Claude Code sáng tạo được thiết kế cho các nhà tiếp thị muốn tối ưu hóa quy trình tương tác với nội dung trực tuyến. Công cụ tự động hóa này tự động xem và tương tác với nhiều loại nội dung khác nhau, giúp người dùng kiếm điểm không giới hạn mà không cần thao tác thủ công. Nhờ tận dụng tự động hóa bằng AI, AddMeFast Bot nâng cao hiệu quả chiến lược marketing, giúp dễ dàng tăng mức độ hiển thị và tương tác trên nhiều nền tảng. Một trong những lợi ích chính của việc sử dụng AddMeFast Bot là tiết kiệm đáng kể thời gian. Với thời gian triển khai chỉ khoảng 30 phút, các marketer có thể nhanh chóng setup bot và bắt đầu tận hưởng thành quả từ các tương tác tự động. Skill này đặc biệt giá trị cho các vị trí marketing cần tối đa hóa khả năng tiếp cận trong khi giảm thiểu các tác vụ thủ công. Dù lượng thời gian tiết kiệm được chưa có con số định lượng cụ thể, hiệu suất có được từ việc tự động hóa sẽ giúp bạn có thêm thời gian cho việc lập kế hoạch chiến lược và các công việc sáng tạo. Skill này lý tưởng cho các digital marketer, social media manager và product manager đang tập trung thúc đẩy các nỗ lực marketing thông qua tự động hóa bằng AI. Bằng cách tích hợp AddMeFast Bot vào workflow của mình, các chuyên gia này có thể đảm bảo sự tương tác liên tục với đối tượng mục tiêu. Các trường hợp sử dụng thực tế bao gồm tự động hóa tương tác trên mạng xã hội để tăng mức độ hiển thị cho các chiến dịch, hoặc sử dụng bot để tương tác với nội dung do người dùng tạo (user-generated content), từ đó nâng cao lòng trung thành với thương hiệu và sự gắn kết của cộng đồng. Mặc dù AddMeFast Bot được xếp loại là một skill ở mức độ trung cấp (intermediate), việc triển khai nó lại không yêu cầu kiến thức kỹ thuật nâng cao, giúp nhiều nhóm người dùng dễ dàng tiếp cận. Khi các doanh nghiệp ngày càng áp dụng nhiều workflow ưu tiên AI (AI-first), AddMeFast Bot trở thành một công cụ quan trọng trong kho vũ khí marketing, cho phép các đội ngũ tập trung vào các chiến lược cấp cao hơn trong khi bot xử lý các tương tác lặp đi lặp lại hàng ngày. Bằng cách đưa skill này vào bộ công cụ marketing của mình, người dùng có thể nâng cao năng suất và hiệu quả trong bối cảnh kỹ thuật số đầy cạnh tranh.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/somiibo/addmefast-bot`",
+    "usage_vi": "```\nTạo một script AddMeFast Bot cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Bot cần tự động hóa [NUMBER] lượt xem và [NUMBER] lượt tương tác mỗi ngày. Bao gồm xử lý lỗi cho [SPECIFIC ISSUE] và đảm bảo tích hợp với workflow Node.js của chúng tôi. Cung cấp toàn bộ mã nguồn và hướng dẫn setup.\n```\nCopy\n\n```javascript\n// Script AddMeFast Bot cho [COMPANY]\nconst AddMeFast = require('addmefast-api');\nconst config = require('./config');\n\n// Khởi tạo AddMeFast API\nconst addmefast = new AddMeFast(config.apiKey);\n\n// Hàm tự động hóa lượt xem và tương tác\nasync function automateTasks() {\n  try {\n    // Tự động hóa lượt xem\n    const views = await addmefast.automateViews(config.viewsPerDay);\n    console.log(`Successfully automated ${views} views.`);\n    \n    // Tự động hóa tương tác\n    const interactions = await addmefast.automateInteractions(config.interactionsPerDay);\n    console.log(`Successfully automated ${interactions} interactions.`);\n  } catch (error) {\n    console.error('Error automating tasks:', error);\n  }\n}\n\n// Chạy tiến trình tự động hóa\nautomateTasks();\n```\n\n### Hướng dẫn Setup\n1. **Cài đặt các dependency**: Chạy lệnh `npm install addmefast-api` để cài đặt package AddMeFast API.\n2. **Cấu hình API Key**: Tạo file `config.js` chứa API key AddMeFast và giới hạn tác vụ hàng ngày của bạn.\n3. **Chạy Script**: Thực thi script bằng lệnh `node addmefast-bot.js`."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:38:53.315514Z",
+    "http_status": 200,
+    "content_hash": "d6b88d9ed890849f8040b7018e354d17069c5bccdeca97335b13847ba2bc197b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\addmefast-bot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\addmefast-bot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AddMeFast Bot: Tự động hóa các tương tác Marketing",
+  "short_description_vi": "AddMeFast Bot giúp tự động hóa lượt xem và tương tác nội dung để kiếm điểm không giới hạn. Các đội ngũ marketing có thể sử dụng công cụ này để tăng cường sự hiện diện trên mạng xã hội. Bot kết nối với AddMeFast và tích hợp mượt mà vào workflow Node.js."
+}

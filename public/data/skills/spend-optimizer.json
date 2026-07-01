@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spend-optimizer",
+  "slug": "spend-optimizer",
+  "name": "Spend Optimizer",
+  "headline": "Spend Optimizer: Subscription Audit & Card Rewards",
+  "short_description": "Analyzes bank CSV exports to audit subscriptions and optimize credit card reward placement. Built for Claude Code, it flags missed credits, detects price increases, and tracks renewal dates.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "cathrynlavery",
+  "install_command": "git clone https://github.com/cathrynlavery/spend-optimizer.git",
+  "source_repo_url": "https://github.com/cathrynlavery/spend-optimizer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Spend Optimizer is a Claude Code skill that parses bank and credit card transaction CSV exports to surface recurring charges, identify unused subscriptions, and recommend the best card for each spending category. It includes reward structures for 30+ credit cards and flags missed statement credits—such as Disney+ or Uber—that cardholders are entitled to but haven't claimed. The skill detects price increases on existing subscriptions, tracks annual renewal dates, and monitors category spending caps like the $150K annual limits on Amex and Chase rewards programs. It also ships with cancellation URLs for 50+ services, making it straightforward to act on audit findings. Anyone looking to reduce subscription waste or get more value from premium travel and rewards cards will benefit from this skill.\nFind all recurring charges hidden in months of bank transaction exports\nIdentify which credit card to use for each merchant to maximize rewards\nFlag unclaimed statement credits for services like Disney+ or Uber\nDetect subscription price increases since the original sign-up",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cathrynlavery/spend-optimizer`",
+    "usage": "```\nAudit my [COMPANY]'s recurring subscriptions and optimize credit card rewards. Here are my [INDUSTRY] expenses: [DATA]. Identify unused or redundant subscriptions and suggest better rewards cards based on spending patterns.\n```\nCopy\n\n```\n# Subscription Audit and Rewards Optimization",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "spend-optimizer#main-content",
+      "spend-optimizer#overview",
+      "spend-optimizer#setup",
+      "spend-optimizer#examples",
+      "spend-optimizer#tools",
+      "spend-optimizer#mcp",
+      "spend-optimizer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Spend Optimizer là một skill của Claude Code giúp parse các file CSV giao dịch ngân hàng và thẻ tín dụng để tìm ra các khoản phí định kỳ, xác định các gói đăng ký không sử dụng, và gợi ý thẻ tốt nhất cho từng danh mục chi tiêu. Skill này tích hợp cấu trúc điểm thưởng của hơn 30 loại thẻ tín dụng và gắn cờ các khoản statement credit bị bỏ lỡ — ví dụ như Disney+ hoặc Uber — mà chủ thẻ có quyền được hưởng nhưng chưa khai thác. Skill cũng phát hiện việc tăng giá của các gói đăng ký hiện tại, theo dõi ngày gia hạn hàng năm và giám sát hạn mức chi tiêu theo danh mục (như hạn mức tích điểm 150.000 USD hàng năm của Amex và Chase). Ngoài ra, nó còn đi kèm URL hủy dịch vụ của hơn 50 nhà cung cấp, giúp bạn dễ dàng xử lý dựa trên kết quả kiểm toán. Bất kỳ ai muốn giảm lãng phí đăng ký dịch vụ hoặc tối ưu hóa giá trị từ các thẻ du lịch và tích điểm cao cấp đều sẽ nhận được lợi ích từ skill này.\nTìm tất cả các khoản phí định kỳ ẩn trong lịch sử giao dịch ngân hàng nhiều tháng qua\nXác định thẻ tín dụng cần dùng cho từng đơn vị chấp nhận thẻ để tối đa hóa điểm thưởng\nGắn cờ các khoản statement credit chưa nhận cho các dịch vụ như Disney+ hoặc Uber\nPhát hiện các đợt tăng giá gói đăng ký kể từ lần đăng ký ban đầu",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cathrynlavery/spend-optimizer`",
+    "usage_vi": "```\nKiểm toán các gói đăng ký định kỳ của [COMPANY] và tối ưu hóa điểm thưởng thẻ tín dụng. Đây là các khoản chi tiêu trong ngành [INDUSTRY] của tôi: [DATA]. Hãy xác định các gói đăng ký không sử dụng hoặc dư thừa và đề xuất các thẻ tích điểm tốt hơn dựa trên thói quen chi tiêu.\n```\nSao chép\n\n```\n# Kiểm toán gói đăng ký và Tối ưu hóa điểm thưởng"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:42.386553Z",
+    "http_status": 200,
+    "content_hash": "1318d21ed13d770b291e734f2c46e1cf6668c8d992bd669887542facf8b752f1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spend-optimizer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spend-optimizer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Spend Optimizer: Kiểm toán gói đăng ký & Điểm thưởng thẻ",
+  "short_description_vi": "Phân tích file CSV xuất từ ngân hàng để kiểm toán các gói đăng ký và tối ưu hóa việc chọn thẻ tích điểm. Được thiết kế cho Claude Code, công cụ này giúp phát hiện các khoản credit bị bỏ lỡ, nhận diện tăng giá dịch vụ và theo dõi ngày gia hạn."
+}

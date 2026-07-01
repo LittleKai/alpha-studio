@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nuxt-claude-devtools",
+  "slug": "nuxt-claude-devtools",
+  "name": "browser-use",
+  "headline": "Nuxt Claude DevTools - AI Integration for Nuxt",
+  "short_description": "Nuxt DevTools integration for Claude Code AI assistant. Enables developers to use Claude's AI capabilities within Nuxt DevTools for debugging, code generation, and real-time assistance. Connects to Nuxt.js projects and Claude Code AI, streamlining development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "oro-ad",
+  "install_command": "git clone https://github.com/oro-ad/nuxt-claude-devtools.git",
+  "source_repo_url": "https://github.com/oro-ad/nuxt-claude-devtools",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "devtools",
+    "nuxt",
+    "nuxt-devtools",
+    "hmr",
+    "claude",
+    "nuxt-module",
+    "business-console",
+    "typescript",
+    "vue",
+    "ai",
+    "guides"
+  ],
+  "sections": {
+    "overview": "Nuxt Claude DevTools integrates Claude Code AI into Nuxt's DevTools panel, enabling developers to access AI-powered assistance without switching applications. The module supports interactive chat with streaming responses, file and image attachments, voice input, and session management for continuous conversations. Developers can extend Claude's capabilities with markdown-based skills, custom slash commands, and subagents for specialized tasks. Context chips automatically include viewport size, browser info, and routing details, while a component picker lets you select Vue components directly from your app to add as context. An optional overlay mode provides a lightweight floating chat panel that works independently of DevTools, with support for collaborative sharing via tunnel and mobile-responsive interfaces.\nDebugging Nuxt applications with AI assistance without leaving DevTools\nGenerating Vue 3 components with context about your current routing and viewport\nCreating custom skills and slash commands to extend Claude's project-specific knowledge\nCode reviewing and architectural guidance through specialized subagents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/oro-ad/nuxt-claude-devtools`",
+    "usage": "```\nUse the nuxt-claude-devtools integration to [TASK] in my Nuxt.js project. The project is located at [PROJECT_PATH]. If debugging is needed, analyze the error messages in the console or terminal output. If generating code, ensure it follows Nuxt.js best practices and is compatible with the project's current setup. Provide step-by-step instructions or code snippets as needed. [ADDITIONAL_CONTEXT]\n```\nCopy\n\n```\nI’ve been working on a Nuxt.js e-commerce project (`/Users/dev/projects/nuxt-store`) and noticed that the product detail page isn’t loading correctly. The console shows a 404 error for the API endpoint `/api/products/[id]`. Using the nuxt-claude-devtools integration, I ran the following command in the terminal:\n\n```bash\nnpx claude-devtools --project /Users/dev/projects/nuxt-store --task debug-api-endpoint\n```\n\nThe tool identified that the dynamic route parameter `[id]` wasn’t being passed correctly to the API call in `pages/products/_id.vue`. It suggested updating the `useFetch` call to:\n\n```javascript\nconst { data: product } = await useFetch(`/api/products/${route.params.id}`, { key: route.params.id });\n```\n\nAfter applying the fix, the product detail page loaded successfully, and the API response returned the expected data. The tool also flagged a potential performance issue with unoptimized images on the page and provided a suggested fix using Nuxt Image module.\n\n**Key Insights:**\n- The API endpoint was misconfigured due to incorrect route parameter handling.\n- Performance optimization recommendations were generated automatically.\n- The fix was implemented in under 5 minutes with no manual debugging required.\n\nWould you like me to generate a PR description for this change or analyze another part of the project?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "nuxt-claude-devtools#main-content",
+      "nuxt-claude-devtools#overview",
+      "nuxt-claude-devtools#setup",
+      "nuxt-claude-devtools#examples",
+      "nuxt-claude-devtools#tools",
+      "nuxt-claude-devtools#mcp",
+      "nuxt-claude-devtools#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Nuxt Claude DevTools integrates Claude Code AI into Nuxt's DevTools panel, enabling developers to access AI-powered assistance without switching applications. The module supports interactive chat with streaming responses, file and image attachments, voice input, and session management for continuous conversations. Developers can extend Claude's capabilities with markdown-based skills, custom slash commands, and subagents for specialized tasks. Context chips automatically include viewport size, browser info, and routing details, while a component picker lets you select Vue components directly from your app to add as context. An optional overlay mode provides a lightweight floating chat panel that works independently of DevTools, with support for collaborative sharing via tunnel and mobile-responsive interfaces.\nDebugging Nuxt applications with AI assistance without leaving DevTools\nGenerating Vue 3 components with context about your current routing and viewport\nCreating custom skills and slash commands to extend Claude's project-specific knowledge\nCode reviewing and architectural guidance through specialized subagents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/oro-ad/nuxt-claude-devtools`",
+    "usage_vi": "```\nUse the nuxt-claude-devtools integration to [TASK] in my Nuxt.js project. The project is located at [PROJECT_PATH]. If debugging is needed, analyze the error messages in the console or terminal output. If generating code, ensure it follows Nuxt.js best practices and is compatible with the project's current setup. Provide step-by-step instructions or code snippets as needed. [ADDITIONAL_CONTEXT]\n```\nCopy\n\n```\nI’ve been working on a Nuxt.js e-commerce project (`/Users/dev/projects/nuxt-store`) and noticed that the product detail page isn’t loading correctly. The console shows a 404 error for the API endpoint `/api/products/[id]`. Using the nuxt-claude-devtools integration, I ran the following command in the terminal:\n\n```bash\nnpx claude-devtools --project /Users/dev/projects/nuxt-store --task debug-api-endpoint\n```\n\nThe tool identified that the dynamic route parameter `[id]` wasn’t being passed correctly to the API call in `pages/products/_id.vue`. It suggested updating the `useFetch` call to:\n\n```javascript\nconst { data: product } = await useFetch(`/api/products/${route.params.id}`, { key: route.params.id });\n```\n\nAfter applying the fix, the product detail page loaded successfully, and the API response returned the expected data. The tool also flagged a potential performance issue with unoptimized images on the page and provided a suggested fix using Nuxt Image module.\n\n**Key Insights:**\n- The API endpoint was misconfigured due to incorrect route parameter handling.\n- Performance optimization recommendations were generated automatically.\n- The fix was implemented in under 5 minutes with no manual debugging required.\n\nWould you like me to generate a PR description for this change or analyze another part of the project?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:19:36.472867Z",
+    "http_status": 200,
+    "content_hash": "e9f33f1d33503bd3ffc74307ce520670632bcf5395f9d8d9117639a68d2920d5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nuxt-claude-devtools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nuxt-claude-devtools.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Nuxt Claude DevTools - AI Integration for Nuxt",
+  "short_description_vi": "Nuxt DevTools integration for Claude Code AI assistant. Enables developers to use Claude's AI capabilities within Nuxt DevTools for debugging, code generation, and real-time assistance. Connects to Nuxt.js projects and Claude Code AI, streamlining development workflows."
+}

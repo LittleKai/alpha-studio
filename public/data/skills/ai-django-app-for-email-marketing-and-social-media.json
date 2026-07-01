@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-django-app-for-email-marketing-and-social-media",
+  "slug": "ai-django-app-for-email-marketing-and-social-media",
+  "name": "AI-Django-App-for-Email-Marketing-and-Social-Media",
+  "headline": "AI Django App for Email & Social Media Automation",
+  "short_description": "Due to company policy, only code fragments are shown, not the complete program. This automated tool generates follow-up emails and social media posts using the OpenAI API. It refines original messages, schedules follow-up content, and sends emails or posts at specified intervals, streamlining communication for businesses and individuals.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "kubad543",
+  "install_command": "git clone https://github.com/kubad543/AI-Django-App-for-Email-Marketing-and-Social-Media.git",
+  "source_repo_url": "https://github.com/kubad543/AI-Django-App-for-Email-Marketing-and-Social-Media",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "TheFollowUp is a Django-based application that automates the creation and scheduling of follow-up emails and social media posts using OpenAI's API. Users input original messages, and the app generates personalized follow-ups that are sent automatically at scheduled intervals without manual intervention. The platform supports bulk emailing, dynamic follow-up control, and multiple email integrations including Zenbox and Gmail. A Stripe integration enables premium accounts for users who need more than five follow-ups. It's designed for businesses and individuals who want to streamline repetitive communication tasks while maintaining control over their outreach timing and content.\nSales teams automating client follow-up emails on a schedule\nSocial media managers generating and scheduling multiple platform posts from one message\nSmall business owners managing bulk email campaigns to customers\nMarketing professionals maintaining consistent follow-up cadence without manual work",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kubad543/AI-Django-App-for-Email-Marketing-and-Social-Media`",
+    "usage": "```\nCreate a Django app that automates email marketing and social media posting for [COMPANY]. The app should use the OpenAI API to generate follow-up emails and social media posts based on initial content provided by [INDUSTRY] professionals. Include code fragments for the following features: 1) Content generation using OpenAI API, 2) Scheduling follow-up content, 3) Sending emails or posting to social media at specified intervals. Ensure the app is secure and follows best practices for Django development.\n```\nCopy\n\n```\n```python\n# models.py\nfrom django.db import models\nfrom django.contrib.auth.models import User\n\nclass Campaign(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    name = models.CharField(max_length=200)\n    initial_content = models.TextField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    \n    def __str__(self):\n        return self.name\n\nclass FollowUp(models.Model):\n    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)\n    content = models.TextField()\n    scheduled_time = models.DateTimeField()\n    sent = models.BooleanField(default=False)\n    \n    def __str__(self):\n        return f\"Follow-up for {self.campaign.name} at {self.scheduled_time}\"\n```\n\n```python\n# views.py\nfrom django.shortcuts import render, redirect\nfrom django.contrib.auth.decorators import login_required\nfrom .models import Campaign, FollowUp\nfrom .forms import CampaignForm\nfrom openai import OpenAI\nimport datetime\n\n@login_required\ndef create_campaign(request):\n    if request.method == 'POST':\n        form = CampaignForm(request.POST)\n        if form.is_valid():\n            campaign = form.save(commit=False)\n            campaign.user = request.user\n            campaign.save()\n            \n            # Generate follow-up content using OpenAI API\n            client = OpenAI(api_key='your-api-key')\n            response = client.chat.completions.create(\n                model=\"gpt-3.5-turbo\",\n                messages=[{\"role\": \"user\", \"content\": f\"Generate follow-up content for this email: {campaign.initial_content}\"}]\n            )\n            follow_up_content = response.choices[0].message.content\n            \n            # Schedule follow-up content\n            follow_up = FollowUp(\n                campaign=campaign,\n                content=follow_up_content,\n                scheduled_time=datetime.datetime.now() + datetime.timedelta(days=1)\n            )\n            follow_up.save()\n            \n            return redirect('campaign_detail', pk=campaign.pk)\n    else:\n        form = CampaignForm()\n    return render(request, 'campaigns/create.html', {'form': form})\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-django-app-for-email-marketing-and-social-media#main-content",
+      "ai-django-app-for-email-marketing-and-social-media#overview",
+      "ai-django-app-for-email-marketing-and-social-media#setup",
+      "ai-django-app-for-email-marketing-and-social-media#examples",
+      "ai-django-app-for-email-marketing-and-social-media#tools",
+      "ai-django-app-for-email-marketing-and-social-media#mcp",
+      "ai-django-app-for-email-marketing-and-social-media#related",
+      "marketingskills",
+      "copywriting",
+      "index-now-submit-sitemap-urls-action"
+    ],
+    "overview_vi": "TheFollowUp is a Django-based application that automates the creation and scheduling of follow-up emails and social media posts using OpenAI's API. Users input original messages, and the app generates personalized follow-ups that are sent automatically at scheduled intervals without manual intervention. The platform supports bulk emailing, dynamic follow-up control, and multiple email integrations including Zenbox and Gmail. A Stripe integration enables premium accounts for users who need more than five follow-ups. It's designed for businesses and individuals who want to streamline repetitive communication tasks while maintaining control over their outreach timing and content.\nSales teams automating client follow-up emails on a schedule\nSocial media managers generating and scheduling multiple platform posts from one message\nSmall business owners managing bulk email campaigns to customers\nMarketing professionals maintaining consistent follow-up cadence without manual work",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kubad543/AI-Django-App-for-Email-Marketing-and-Social-Media`",
+    "usage_vi": "```\nCreate a Django app that automates email marketing and social media posting for [COMPANY]. The app should use the OpenAI API to generate follow-up emails and social media posts based on initial content provided by [INDUSTRY] professionals. Include code fragments for the following features: 1) Content generation using OpenAI API, 2) Scheduling follow-up content, 3) Sending emails or posting to social media at specified intervals. Ensure the app is secure and follows best practices for Django development.\n```\nCopy\n\n```\n```python\n# models.py\nfrom django.db import models\nfrom django.contrib.auth.models import User\n\nclass Campaign(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    name = models.CharField(max_length=200)\n    initial_content = models.TextField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    \n    def __str__(self):\n        return self.name\n\nclass FollowUp(models.Model):\n    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)\n    content = models.TextField()\n    scheduled_time = models.DateTimeField()\n    sent = models.BooleanField(default=False)\n    \n    def __str__(self):\n        return f\"Follow-up for {self.campaign.name} at {self.scheduled_time}\"\n```\n\n```python\n# views.py\nfrom django.shortcuts import render, redirect\nfrom django.contrib.auth.decorators import login_required\nfrom .models import Campaign, FollowUp\nfrom .forms import CampaignForm\nfrom openai import OpenAI\nimport datetime\n\n@login_required\ndef create_campaign(request):\n    if request.method == 'POST':\n        form = CampaignForm(request.POST)\n        if form.is_valid():\n            campaign = form.save(commit=False)\n            campaign.user = request.user\n            campaign.save()\n            \n            # Generate follow-up content using OpenAI API\n            client = OpenAI(api_key='your-api-key')\n            response = client.chat.completions.create(\n                model=\"gpt-3.5-turbo\",\n                messages=[{\"role\": \"user\", \"content\": f\"Generate follow-up content for this email: {campaign.initial_content}\"}]\n            )\n            follow_up_content = response.choices[0].message.content\n            \n            # Schedule follow-up content\n            follow_up = FollowUp(\n                campaign=campaign,\n                content=follow_up_content,\n                scheduled_time=datetime.datetime.now() + datetime.timedelta(days=1)\n            )\n            follow_up.save()\n            \n            return redirect('campaign_detail', pk=campaign.pk)\n    else:\n        form = CampaignForm()\n    return render(request, 'campaigns/create.html', {'form': form})\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:36:07.376747Z",
+    "http_status": 200,
+    "content_hash": "3670b06b32c5963f842f45e8cd0907dc92a66b91aa7e1c838ec227997689b209",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-django-app-for-email-marketing-and-social-media.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-django-app-for-email-marketing-and-social-media.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI Django App for Email & Social Media Automation",
+  "short_description_vi": "Due to company policy, only code fragments are shown, not the complete program. This automated tool generates follow-up emails and social media posts using the OpenAI API. It refines original messages, schedules follow-up content, and sends emails or posts at specified intervals, streamlining communication for businesses and individuals."
+}

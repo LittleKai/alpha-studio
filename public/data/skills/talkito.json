@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/talkito",
+  "slug": "talkito",
+  "name": "TalkiTo",
+  "headline": "TalkiTo - Voice AI Interaction",
+  "short_description": "TalkiTo enables developers to interact with AI systems through speech across multiple channels like terminal, API, and phone. It functions as a command-line tool and Python library, supporting agents like Claude. Ideal for automating workflows and integrating voice commands into existing systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "robdmac",
+  "install_command": "git clone https://github.com/robdmac/talkito.git",
+  "source_repo_url": "https://github.com/robdmac/talkito",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "openai-codex",
+    "codex-cli",
+    "claude-code-communication",
+    "openai-codex-cli",
+    "bolt-new",
+    "claude-code-mcp",
+    "claude",
+    "voice-ai",
+    "claude-code",
+    "whispercpp",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "TalkiTo is a command-line tool and Python library that adds voice capabilities to AI agents including Claude Code and OpenAI Codex. It supports automatic speech recognition (ASR) and text-to-speech (TTS) across multiple providers like OpenAI, AWS Polly, Azure, Google Cloud, ElevenLabs, Deepgram, and local offline options. Developers can use TalkiTo to interact with AI assistants hands-free, integrate voice commands into existing workflows, and enable remote communication through Slack, WhatsApp, and SMS channels. The tool works as a terminal interface, web extension, and standalone Python library, making it flexible for different integration scenarios.\nVoice-controlled interaction with Claude Code for hands-free development\nAutomating terminal commands and workflows using voice input\nRemote monitoring with voice alerts via Slack, WhatsApp, or SMS\nBuilding voice-enabled AI agent integrations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/robdmac/talkito`",
+    "usage": "```\nUse TalkiTo to [ACTION] via voice commands. For example: 'Set up a voice-controlled agent in TalkiTo that [TASK] when I say [PHRASE].' Replace [ACTION], [TASK], and [PHRASE] with your specific needs. Ensure the command includes the channel (terminal/API/phone) and any required parameters.\n```\nCopy\n\n```\nI configured TalkiTo to control my local development environment via voice commands. When I say 'Hey TalkiTo, run the test suite,' the system triggers a Python script that executes pytest in the project's virtual environment. The output is streamed back to me in real-time through my terminal. For API interactions, I set up a custom endpoint that listens for the phrase 'Deploy to staging.' When detected, TalkiTo sends a POST request to my CI/CD pipeline with the latest commit hash, triggering a deployment to the staging environment. The response from the API (e.g., 'Deployment successful') is converted to speech and played through my speakers. For phone integration, I programmed TalkiTo to listen for the command 'Check my emails.' When I call the dedicated phone number, TalkiTo connects to my Gmail account, reads the subject lines of my unread emails, and allows me to dictate replies that are then sent as voice messages. The entire process is seamless, with no manual input required beyond the initial voice command.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "talkito#main-content",
+      "talkito#overview",
+      "talkito#setup",
+      "talkito#examples",
+      "talkito#tools",
+      "talkito#mcp",
+      "talkito#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TalkiTo là một command-line tool và thư viện Python giúp bổ sung khả năng tương tác bằng giọng nói cho các AI agent, bao gồm Claude Code và OpenAI Codex. Công cụ hỗ trợ nhận dạng giọng nói tự động (ASR) và chuyển văn bản thành giọng nói (TTS) thông qua nhiều nhà cung cấp như OpenAI, AWS Polly, Azure, Google Cloud, ElevenLabs, Deepgram và các tùy chọn ngoại tuyến (offline) cục bộ. Lập trình viên có thể sử dụng TalkiTo để tương tác rảnh tay với các trợ lý AI, tích hợp lệnh thoại vào các workflow hiện có và thiết lập giao tiếp từ xa qua các kênh Slack, WhatsApp và SMS. Công cụ này hoạt động như một giao diện terminal, web extension hoặc thư viện Python độc lập, mang lại sự linh hoạt cho nhiều kịch bản tích hợp khác nhau.\n\nTương tác bằng giọng nói với Claude Code để lập trình rảnh tay\nTự động hóa các lệnh terminal và workflow bằng đầu vào giọng nói\nGiám sát từ xa bằng cảnh báo giọng nói qua Slack, WhatsApp hoặc SMS\nXây dựng các tích hợp AI agent hỗ trợ giọng nói",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/robdmac/talkito`",
+    "usage_vi": "```\nSử dụng TalkiTo để [ACTION] qua lệnh thoại. Ví dụ: 'Thiết lập một agent điều khiển bằng giọng nói trong TalkiTo để thực hiện [TASK] khi tôi nói [PHRASE].' Thay thế [ACTION], [TASK] và [PHRASE] bằng nhu cầu thực tế của bạn. Đảm bảo lệnh đã bao gồm kênh truyền (terminal/API/phone) và các tham số cần thiết.\n```\nCopy\n\n```\nTôi đã cấu hình TalkiTo để điều khiển môi trường phát triển cục bộ của mình thông qua các lệnh thoại. Khi tôi nói 'Hey TalkiTo, run the test suite,' hệ thống sẽ kích hoạt một script Python để chạy pytest trong môi trường ảo (virtual environment) của dự án. Kết quả đầu ra được truyền trực tiếp (stream) theo thời gian thực về terminal của tôi. Đối với các tương tác API, tôi đã thiết lập một endpoint tùy chỉnh để lắng nghe cụm từ 'Deploy to staging.' Khi phát hiện cụm từ này, TalkiTo sẽ gửi một yêu cầu POST đến pipeline CI/CD với commit hash mới nhất, kích hoạt quá trình deploy lên môi trường staging. Phản hồi từ API (ví dụ: 'Deployment successful') sẽ được chuyển thành giọng nói và phát qua loa của tôi. Đối với tích hợp điện thoại, tôi lập trình TalkiTo lắng nghe lệnh 'Check my emails.' Khi tôi gọi vào số điện thoại chuyên dụng, TalkiTo sẽ kết nối với tài khoản Gmail của tôi, đọc tiêu đề các email chưa đọc và cho phép tôi đọc câu trả lời để gửi đi dưới dạng tin nhắn thoại. Toàn bộ quy trình diễn ra vô cùng mượt mà và không cần bất kỳ thao tác thủ công nào ngoài lệnh thoại ban đầu.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:30:02.867010Z",
+    "http_status": 200,
+    "content_hash": "5b32b8a37bf34601b6b5cda4a3af8b56636e59643a2b7efe402276481924081f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\talkito.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\talkito.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TalkiTo - Tương tác AI bằng giọng nói",
+  "short_description_vi": "TalkiTo cho phép lập trình viên tương tác với các hệ thống AI bằng giọng nói qua nhiều kênh như terminal, API và điện thoại. Công cụ này hoạt động như một command-line tool và thư viện Python, hỗ trợ các agent như Claude. Đây là giải pháp lý tưởng để tự động hóa workflow và tích hợp lệnh thoại vào các hệ thống hiện có."
+}

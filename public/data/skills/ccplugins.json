@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccplugins",
+  "slug": "ccplugins",
+  "name": "browser-use",
+  "headline": "CCPlugins Claude Code framework tool",
+  "short_description": "CCPlugins is a Python framework that automates Claude Code interactions for operations teams. It replaces repetitive prompts with CLI commands, saving time and improving efficiency. Integrates with Claude's native capabilities and CLI.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "brennercruvinel",
+  "install_command": "git clone https://github.com/brennercruvinel/CCPlugins.git",
+  "source_repo_url": "https://github.com/brennercruvinel/CCPlugins",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "commands",
+    "automated",
+    "plugins",
+    "claude-ai",
+    "collection",
+    "claude",
+    "extensions",
+    "cli"
+  ],
+  "sections": {
+    "overview": "CCPlugins is a Python framework designed to streamline Claude Code interactions for operations teams by automating repetitive prompts through CLI commands. It provides pre-built commands like /implement, /refactor, /security-scan, and /fix-todos that integrate directly with Claude's native capabilities. The framework reduces manual prompt engineering and improves workflow efficiency by enabling teams to execute complex operations with simple command invocations. CCPlugins includes extended thinking modes for sophisticated analysis and validation phases to ensure code quality. It's designed for teams seeking to replace ad-hoc Claude interactions with structured, reproducible automation.\nAutomatically clean up a project by removing unnecessary debug files and backups.\nGenerate complete features from predefined patterns to accelerate development.\nConduct multi-agent security and quality reviews to ensure code integrity.\nConvert TODO comments in the code into actionable GitHub issues for better task management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brennercruvinel/CCPlugins`",
+    "usage": "```\nUse CCPlugins to automate the following task in Claude Code: [DESCRIBE_TASK]. Execute the command 'ccp run [COMMAND_NAME]' to trigger the automation. Include any required arguments like [ARG1], [ARG2], or [OPTIONAL_FLAG]. Verify the output matches expected results and document any deviations.\n```\nCopy\n\n```\n```\nExecuting automation: 'ccp run generate_daily_report'\n\n📊 Daily Report Generated for 2024-05-15\n----------------------------------------\n- Total Tasks: 128\n- Completed: 112 (87.5%)\n- In Progress: 10 (7.8%)\n- Blocked: 6 (4.7%)\n\n🔍 Top 3 Blocked Tasks:\n1. 'Fix API timeout errors' (Blocked since 2024-05-14)\n   - Owner: dev-team@company.com\n   - Suggested: Escalate to backend team\n\n2. 'Update payment gateway integration' (Blocked since 2024-05-13)\n   - Owner: finance@company.com\n   - Suggested: Schedule sync with vendor\n\n3. 'Resolve database connection leaks' (Blocked since 2024-05-12)\n   - Owner: infra@company.com\n   - Suggested: Run memory profiling\n\n✅ Automation completed in 42 seconds.\n📌 Report saved to: /reports/daily/2024-05-15.json\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccplugins#main-content",
+      "ccplugins#overview",
+      "ccplugins#setup",
+      "ccplugins#examples",
+      "ccplugins#tools",
+      "ccplugins#mcp",
+      "ccplugins#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCPlugins is a Python framework designed to streamline Claude Code interactions for operations teams by automating repetitive prompts through CLI commands. It provides pre-built commands like /implement, /refactor, /security-scan, and /fix-todos that integrate directly with Claude's native capabilities. The framework reduces manual prompt engineering and improves workflow efficiency by enabling teams to execute complex operations with simple command invocations. CCPlugins includes extended thinking modes for sophisticated analysis and validation phases to ensure code quality. It's designed for teams seeking to replace ad-hoc Claude interactions with structured, reproducible automation.\nAutomatically clean up a project by removing unnecessary debug files and backups.\nGenerate complete features from predefined patterns to accelerate development.\nConduct multi-agent security and quality reviews to ensure code integrity.\nConvert TODO comments in the code into actionable GitHub issues for better task management.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brennercruvinel/CCPlugins`",
+    "usage_vi": "```\nUse CCPlugins to automate the following task in Claude Code: [DESCRIBE_TASK]. Execute the command 'ccp run [COMMAND_NAME]' to trigger the automation. Include any required arguments like [ARG1], [ARG2], or [OPTIONAL_FLAG]. Verify the output matches expected results and document any deviations.\n```\nCopy\n\n```\n```\nExecuting automation: 'ccp run generate_daily_report'\n\n📊 Daily Report Generated for 2024-05-15\n----------------------------------------\n- Total Tasks: 128\n- Completed: 112 (87.5%)\n- In Progress: 10 (7.8%)\n- Blocked: 6 (4.7%)\n\n🔍 Top 3 Blocked Tasks:\n1. 'Fix API timeout errors' (Blocked since 2024-05-14)\n   - Owner: dev-team@company.com\n   - Suggested: Escalate to backend team\n\n2. 'Update payment gateway integration' (Blocked since 2024-05-13)\n   - Owner: finance@company.com\n   - Suggested: Schedule sync with vendor\n\n3. 'Resolve database connection leaks' (Blocked since 2024-05-12)\n   - Owner: infra@company.com\n   - Suggested: Run memory profiling\n\n✅ Automation completed in 42 seconds.\n📌 Report saved to: /reports/daily/2024-05-15.json\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:37:31.125271Z",
+    "http_status": 200,
+    "content_hash": "85fa10a79bdef84e8caaa4bd24e2b9601a46a02eb27e9105a85a3a4055ed66f7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccplugins.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccplugins.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CCPlugins Claude Code framework tool",
+  "short_description_vi": "CCPlugins is a Python framework that automates Claude Code interactions for operations teams. It replaces repetitive prompts with CLI commands, saving time and improving efficiency. Integrates with Claude's native capabilities and CLI."
+}

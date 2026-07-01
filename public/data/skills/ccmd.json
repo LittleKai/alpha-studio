@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccmd",
+  "slug": "ccmd",
+  "name": "browser-use",
+  "headline": "ccmd package manager for Claude Code",
+  "short_description": "ccmd is a command-line package manager for Claude Code that installs, manages, and shares custom commands and plugins from Git repositories.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "gifflet",
+  "install_command": "git clone https://github.com/gifflet/ccmd.git",
+  "source_repo_url": "https://github.com/gifflet/ccmd",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "git",
+    "package-manager",
+    "command-line",
+    "golang",
+    "go",
+    "cli"
+  ],
+  "sections": {
+    "overview": "ccmd is a command-line tool that brings package manager semantics to Claude Code commands and plugins. It allows you to install, version, and share custom commands from Git repositories without cluttering your project codebase. Each command is treated as a reusable, versioned package that can be installed across multiple projects. You can create commands by defining a ccmd.yaml metadata file and index.md instructions, then share them with your team or community. ccmd supports both slash commands and Claude Code plugins, automatically detecting the type from the repository configuration.\nInstall and manage reusable Claude Code commands across multiple projects\nShare team-specific commands and automation scripts via Git repositories\nVersion control custom commands independently from project codebases\nCreate and distribute Claude Code plugins that extend IDE functionality",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gifflet/ccmd`",
+    "usage": "```\nI want to use ccmd to manage my Claude Code commands. Here are the commands I want to add, update, or remove: [COMMANDS]. Please provide the ccmd syntax to accomplish this.\n```\nCopy\n\n```\n# ccmd Command Management for Claude Code",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccmd#main-content",
+      "ccmd#overview",
+      "ccmd#setup",
+      "ccmd#examples",
+      "ccmd#tools",
+      "ccmd#mcp",
+      "ccmd#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccmd is a command-line tool that brings package manager semantics to Claude Code commands and plugins. It allows you to install, version, and share custom commands from Git repositories without cluttering your project codebase. Each command is treated as a reusable, versioned package that can be installed across multiple projects. You can create commands by defining a ccmd.yaml metadata file and index.md instructions, then share them with your team or community. ccmd supports both slash commands and Claude Code plugins, automatically detecting the type from the repository configuration.\nInstall and manage reusable Claude Code commands across multiple projects\nShare team-specific commands and automation scripts via Git repositories\nVersion control custom commands independently from project codebases\nCreate and distribute Claude Code plugins that extend IDE functionality",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gifflet/ccmd`",
+    "usage_vi": "```\nI want to use ccmd to manage my Claude Code commands. Here are the commands I want to add, update, or remove: [COMMANDS]. Please provide the ccmd syntax to accomplish this.\n```\nCopy\n\n```\n# ccmd Command Management for Claude Code"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:56:39.518387Z",
+    "http_status": 200,
+    "content_hash": "48a583654c02ab3401cc1c1aff198aa1d4baab6f1063879fb76fcd2b62597a21",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccmd.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccmd.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccmd package manager for Claude Code",
+  "short_description_vi": "ccmd is a command-line package manager for Claude Code that installs, manages, and shares custom commands and plugins from Git repositories."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-pr-autodoc-action",
+  "slug": "claude-code-pr-autodoc-action",
+  "name": "Claude Code Pr Autodoc Action",
+  "headline": "Automatically document PRs with Claude Code on",
+  "short_description": "A GitHub Action that automatically generates comprehensive documentation for merged pull requests using Claude Code, analyzing code changes and creating structured markdown files.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "textcortex",
+  "install_command": "git clone https://github.com/textcortex/claude-code-pr-autodoc-action.git",
+  "source_repo_url": "https://github.com/textcortex/claude-code-pr-autodoc-action",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "github-actions",
+    "claude-ai-bot",
+    "claude",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Code PR Documentation Action automatically generates comprehensive documentation for your merged pull requests by analyzing code changes with Claude Code. The GitHub Action integrates seamlessly with the Claude GitHub app and runs on your infrastructure, creating well-structured markdown files without manual effort. Configure thresholds for lines and files changed, customize documentation prompts, and automatically create pull requests with generated documentation. It supports smart filtering to document only PRs meeting your criteria, includes customizable commit and PR title tags, and works with Amazon Bedrock and Google Vertex AI. Ideal for development teams maintaining consistent documentation standards across projects.\nAutomatically document code changes when pull requests merge to maintain up-to-date project documentation\nGenerate technical documentation for architectural decisions and implementation details in merged PRs\nCreate pull request documentation with customizable criteria based on lines or files changed\nMaintain documentation standards across teams by filtering PRs and adding custom tags to generated docs\n- **Repository**: example-repo\n- **Pull Request**: #42 - Update user authentication flow\n- **Author**: @dev-user\n- **Merged On**: 2023-11-15",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/textcortex/claude-code-pr-autodoc-action`",
+    "usage": "```\nAnalyze the following merged pull request and generate comprehensive documentation. Include: [REPOSITORY_NAME], [PR_TITLE], [PR_DESCRIPTION], [CODE_CHANGES], [RELEVANT_ISSUES]. Format the output as markdown with clear headings and bullet points.\n```\nCopy\n\n```\n# Pull Request Documentation",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-pr-autodoc-action#main-content",
+      "claude-code-pr-autodoc-action#overview",
+      "claude-code-pr-autodoc-action#setup",
+      "claude-code-pr-autodoc-action#examples",
+      "claude-code-pr-autodoc-action#tools",
+      "claude-code-pr-autodoc-action#mcp",
+      "claude-code-pr-autodoc-action#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code PR Documentation Action tự động tạo tài liệu chi tiết cho các pull request đã merge bằng cách phân tích các thay đổi trong code với Claude Code. GitHub Action này tích hợp mượt mà với Claude GitHub app và chạy trên hạ tầng của bạn, giúp tạo ra các file markdown có cấu trúc tốt mà không cần tốn công sức thủ công. Bạn có thể cấu hình ngưỡng giới hạn cho số dòng và file thay đổi, tùy chỉnh các prompt tạo tài liệu, và tự động tạo pull request chứa tài liệu vừa được tạo. Nó hỗ trợ lọc thông minh để chỉ tạo tài liệu cho các PR đáp ứng tiêu chí của bạn, cho phép tùy biến tag của commit và tiêu đề PR, đồng thời hoạt động tốt với Amazon Bedrock và Google Vertex AI. Đây là giải pháp lý tưởng cho các đội ngũ phát triển muốn duy trì tiêu chuẩn tài liệu đồng nhất trên các dự án.\n\nTự động viết tài liệu cho các thay đổi trong code khi pull request được merge để duy trì tài liệu dự án luôn cập nhật mới nhất\nTạo tài liệu kỹ thuật cho các quyết định kiến trúc và chi tiết triển khai trong các PR đã merge\nTạo tài liệu pull request với các tiêu chí tùy chỉnh dựa trên số dòng hoặc số file thay đổi\nDuy trì các tiêu chuẩn tài liệu giữa các đội ngũ bằng cách lọc PR và thêm tag tùy chỉnh vào tài liệu được tạo\n- **Repository**: example-repo\n- **Pull Request**: #42 - Update user authentication flow\n- **Author**: @dev-user\n- **Merged On**: 15-11-2023",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/textcortex/claude-code-pr-autodoc-action`",
+    "usage_vi": "```\nPhân tích pull request đã được merge dưới đây và tạo tài liệu chi tiết. Bao gồm: [REPOSITORY_NAME], [PR_TITLE], [PR_DESCRIPTION], [CODE_CHANGES], [RELEVANT_ISSUES]. Định dạng kết quả đầu ra dưới dạng markdown với các tiêu đề và dấu đầu dòng rõ ràng.\n```\nSao chép\n\n```\n# Tài liệu Pull Request"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:51.961148Z",
+    "http_status": 200,
+    "content_hash": "ab056d9f412303923b53fe7466495537cf5f3a3178d93447059c4105107e9174",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-pr-autodoc-action.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-pr-autodoc-action.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động tạo tài liệu cho PR bằng Claude Code trên",
+  "short_description_vi": "Một GitHub Action tự động tạo tài liệu chi tiết cho các pull request đã merge bằng Claude Code, giúp phân tích các thay đổi trong code và tạo ra các file markdown có cấu trúc."
+}

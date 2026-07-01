@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/coder-config",
+  "slug": "coder-config",
+  "name": "Coder Config",
+  "headline": "coder-config: AI Tool Configuration Manager",
+  "short_description": "Manage configurations for AI coding tools like Claude Code, Gemini CLI, Codex CLI, and Antigravity. Set up MCPs, rules, permissions, memory, and workstreams. Ideal for operations teams automating AI developer workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "regression-io",
+  "install_command": "git clone https://github.com/regression-io/coder-config.git",
+  "source_repo_url": "https://github.com/regression-io/coder-config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "anthropic",
+    "cli",
+    "developer-tools",
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "ai-tools",
+    "configuration-management"
+  ],
+  "sections": {
+    "overview": "Coder Config simplifies management of AI coding tool configurations across multiple projects and repositories. It provides a unified MCP registry, hierarchical rules system, persistent memory, and workstream grouping—eliminating the need to reconfigure tools or re-explain project context with each session. The tool generates outputs compatible with Claude Code, Gemini CLI, Codex CLI, and Antigravity from a single configuration. A web UI (localhost:3333) offers visual management of MCPs, rules, memory, and workstreams, while CLI commands enable project initialization, MCP toggling, and multi-repo coordination. Ideal for operations teams, development teams managing microservices or monorepos, and organizations standardizing AI developer workflows.\nManaging MCPs and configurations across multiple microservices in a monorepo\nMaintaining consistent coding rules and conventions globally while allowing project-specific overrides\nPersisting coding preferences and corrections that Claude remembers across sessions\nGrouping related repositories into workstreams so AI knows project relationships",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/regression-io/coder-config`",
+    "usage": "```\nConfigure [TOOL_NAME] for [PROJECT_NAME] with the following specifications: [LIST_OF_CONFIGURATIONS]. Ensure the setup includes [SPECIFIC_FEATURES] like memory management, permission rules, and MCP integrations. Validate the configuration against [CHECKLIST_ITEMS] and provide a summary of changes made. Tool: [TOOL_NAME], Project: [PROJECT_NAME], Configurations: [LIST_OF_CONFIGURATIONS], Features: [SPECIFIC_FEATURES], Checklist: [CHECKLIST_ITEMS]\n```\nCopy\n\n```\n### Configuration Summary for Project 'Acme-AI-Dev' with Claude Code\n\n**Changes Applied:**\n1. **Memory Management:** Enabled persistent memory for the project with a 500MB limit and auto-prune settings for files older than 30 days. The system now retains context for the last 500 interactions to improve code generation accuracy.\n\n2. **Permission Rules:** Configured role-based access with the following permissions:\n   - **Developers:** Read/write access to `/src` and `/tests`, execute permissions for `npm run dev`.\n   - **QA Team:** Read-only access to `/src` and `/tests`, execute permissions for `npm run test`.\n   - **Admins:** Full access to all directories, including `/config` and `/scripts`.\n\n3. **MCP Integrations:** Added the following Model Context Protocol (MCP) servers:\n   - **GitHub MCP:** Configured with a PAT token for repository access. Enabled auto-pull for PRs and issue tracking.\n   - **Jira MCP:** Integrated with the team's Jira board. Configured to auto-sync tickets with the `dev` label.\n   - **Docker MCP:** Set up to manage local Docker containers for the project’s microservices.\n\n4. **Workstreams:** Defined three workstreams for the team:\n   - **Feature Development:** Automatically assigns new tickets to the `dev` branch with a pre-commit hook for linting.\n   - **Bug Fixes:** Routes critical bugs to the `hotfix` branch with a mandatory review by the QA team.\n   - **Documentation:** Syncs updates to the `/docs` directory with Confluence via the MCP.\n\n**Validation Results:**\n- All permissions tested successfully. Developers can push to `/src` but cannot modify `/config`.\n- Memory usage is stable at 420MB (within the 500MB limit).\n- MCP servers are responsive: GitHub (1.2s response), Jira (0.8s response), Docker (0.5s response).\n\n**Next Steps:**\nRun `claude code --validate-config` to ensure no conflicts exist. Monitor memory usage over the next 24 hours to confirm auto-pruning works as expected.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "coder-config#main-content",
+      "coder-config#overview",
+      "coder-config#setup",
+      "coder-config#examples",
+      "coder-config#tools",
+      "coder-config#mcp",
+      "coder-config#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Coder Config simplifies management of AI coding tool configurations across multiple projects and repositories. It provides a unified MCP registry, hierarchical rules system, persistent memory, and workstream grouping—eliminating the need to reconfigure tools or re-explain project context with each session. The tool generates outputs compatible with Claude Code, Gemini CLI, Codex CLI, and Antigravity from a single configuration. A web UI (localhost:3333) offers visual management of MCPs, rules, memory, and workstreams, while CLI commands enable project initialization, MCP toggling, and multi-repo coordination. Ideal for operations teams, development teams managing microservices or monorepos, and organizations standardizing AI developer workflows.\nManaging MCPs and configurations across multiple microservices in a monorepo\nMaintaining consistent coding rules and conventions globally while allowing project-specific overrides\nPersisting coding preferences and corrections that Claude remembers across sessions\nGrouping related repositories into workstreams so AI knows project relationships",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/regression-io/coder-config`",
+    "usage_vi": "```\nConfigure [TOOL_NAME] for [PROJECT_NAME] with the following specifications: [LIST_OF_CONFIGURATIONS]. Ensure the setup includes [SPECIFIC_FEATURES] like memory management, permission rules, and MCP integrations. Validate the configuration against [CHECKLIST_ITEMS] and provide a summary of changes made. Tool: [TOOL_NAME], Project: [PROJECT_NAME], Configurations: [LIST_OF_CONFIGURATIONS], Features: [SPECIFIC_FEATURES], Checklist: [CHECKLIST_ITEMS]\n```\nCopy\n\n```\n### Configuration Summary for Project 'Acme-AI-Dev' with Claude Code\n\n**Changes Applied:**\n1. **Memory Management:** Enabled persistent memory for the project with a 500MB limit and auto-prune settings for files older than 30 days. The system now retains context for the last 500 interactions to improve code generation accuracy.\n\n2. **Permission Rules:** Configured role-based access with the following permissions:\n   - **Developers:** Read/write access to `/src` and `/tests`, execute permissions for `npm run dev`.\n   - **QA Team:** Read-only access to `/src` and `/tests`, execute permissions for `npm run test`.\n   - **Admins:** Full access to all directories, including `/config` and `/scripts`.\n\n3. **MCP Integrations:** Added the following Model Context Protocol (MCP) servers:\n   - **GitHub MCP:** Configured with a PAT token for repository access. Enabled auto-pull for PRs and issue tracking.\n   - **Jira MCP:** Integrated with the team's Jira board. Configured to auto-sync tickets with the `dev` label.\n   - **Docker MCP:** Set up to manage local Docker containers for the project’s microservices.\n\n4. **Workstreams:** Defined three workstreams for the team:\n   - **Feature Development:** Automatically assigns new tickets to the `dev` branch with a pre-commit hook for linting.\n   - **Bug Fixes:** Routes critical bugs to the `hotfix` branch with a mandatory review by the QA team.\n   - **Documentation:** Syncs updates to the `/docs` directory with Confluence via the MCP.\n\n**Validation Results:**\n- All permissions tested successfully. Developers can push to `/src` but cannot modify `/config`.\n- Memory usage is stable at 420MB (within the 500MB limit).\n- MCP servers are responsive: GitHub (1.2s response), Jira (0.8s response), Docker (0.5s response).\n\n**Next Steps:**\nRun `claude code --validate-config` to ensure no conflicts exist. Monitor memory usage over the next 24 hours to confirm auto-pruning works as expected.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:15.790286Z",
+    "http_status": 200,
+    "content_hash": "97fa7ef0c78838630cd037eba742a21da08203676971bea195745637250724f7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\coder-config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\coder-config.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "coder-config: AI Tool Configuration Manager",
+  "short_description_vi": "Manage configurations for AI coding tools like Claude Code, Gemini CLI, Codex CLI, and Antigravity. Set up MCPs, rules, permissions, memory, and workstreams. Ideal for operations teams automating AI developer workflows."
+}

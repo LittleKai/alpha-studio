@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-zed",
+  "slug": "claude-code-zed",
+  "name": "Claude Code Zed",
+  "headline": "Zed extension for Claude Code CLI integration",
+  "short_description": "Claude Code Zed integration enables developers to use Claude Code CLI within the Zed editor. It benefits developers who prefer Zed for coding tasks. The integration connects Claude Code's AI capabilities to Zed's workflow, enhancing productivity. Note that this extension is archived and no longer maintained.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "jiahaoxiang2000",
+  "install_command": "git clone https://github.com/jiahaoxiang2000/claude-code-zed.git",
+  "source_repo_url": "https://github.com/jiahaoxiang2000/claude-code-zed",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "zed",
+    "claude-code",
+    "zed-extension"
+  ],
+  "sections": {
+    "overview": "Claude Code Zed Integration connects Claude Code CLI with the Zed editor to enable AI-assisted coding workflows. The extension allows developers to share selected text and file references from Zed to Claude Code via WebSocket communication. It supports Rust, JavaScript, TypeScript, Python, and Markdown files across macOS and Linux platforms. The extension automatically activates when opening supported file types and can be extended to additional languages. However, this project is archived and no longer actively maintained; the development team now recommends using VSCode integration for Claude Code CLI instead.\nShare selected code snippets from Zed to Claude Code CLI for analysis\nGet AI-assisted coding help while working in Zed editor\nExtend Claude Code integration to custom file types via configuration\nDevelop locally on macOS (Intel/ARM) or Linux with Zed and Claude Code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jiahaoxiang2000/claude-code-zed`",
+    "usage": "```\nUse claude-code-zed to [TASK] in the Zed editor. For example: 'refactor the authentication module in the React app to use TypeScript interfaces' or 'debug the memory leak in the Python data processing script'. Ensure the changes are applied directly to the Zed workspace.\n```\nCopy\n\n```\nHere’s the refactored authentication module using claude-code-zed in Zed:\n\n```typescript\n// src/auth/types.ts\ninterface User {\n  id: string;\n  email: string;\n  roles: string[];\n}\n\ninterface AuthState {\n  user: User | null;\n  token: string | null;\n  loading: boolean;\n}\n\n// src/auth/authService.ts\nclass AuthService {\n  private async validateToken(token: string): Promise<User> {\n    const response = await fetch('/api/validate', {\n      headers: { Authorization: `Bearer ${token}` }\n    });\n    if (!response.ok) throw new Error('Invalid token');\n    return response.json();\n  }\n\n  async login(email: string, password: string): Promise<AuthState> {\n    const response = await fetch('/api/login', {\n      method: 'POST',\n      body: JSON.stringify({ email, password })\n    });\n    const { token } = await response.json();\n    const user = await this.validateToken(token);\n    return { user, token, loading: false };\n  }\n}\n```\n\nChanges applied:\n1. Added TypeScript interfaces for `User` and `AuthState` to enforce type safety.\n2. Refactored `AuthService` to use async/await for token validation.\n3. Updated the login method to return a properly typed `AuthState`.\n\nThe Zed editor shows no errors in the TypeScript compilation, and the changes are reflected in the workspace files. To test, run `npm run dev` and verify the login flow works as expected.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-zed#main-content",
+      "claude-code-zed#overview",
+      "claude-code-zed#setup",
+      "claude-code-zed#examples",
+      "claude-code-zed#tools",
+      "claude-code-zed#mcp",
+      "claude-code-zed#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Zed Integration kết nối Claude Code CLI với trình soạn thảo Zed để hỗ trợ các workflow lập trình bằng AI. Extension này cho phép lập trình viên chia sẻ các đoạn văn bản được chọn và tham chiếu file từ Zed sang Claude Code thông qua kết nối WebSocket. Dự án hỗ trợ các file Rust, JavaScript, TypeScript, Python và Markdown trên hệ điều hành macOS và Linux. Extension sẽ tự động kích hoạt khi bạn mở các định dạng file được hỗ trợ và có thể mở rộng sang các ngôn ngữ khác thông qua cấu hình. Tuy nhiên, dự án này hiện đã bị lưu trữ (archived) và không còn được chủ động bảo trì; đội ngũ phát triển khuyến nghị chuyển sang sử dụng tích hợp VSCode cho Claude Code CLI.\n\nChia sẻ các đoạn code (code snippet) được chọn từ Zed sang Claude Code CLI để phân tích\nNhận hỗ trợ lập trình từ AI ngay trong trình soạn thảo Zed\nMở rộng tích hợp Claude Code sang các định dạng file tùy chỉnh thông qua cấu hình\nPhát triển local trên macOS (Intel/ARM) hoặc Linux với Zed và Claude Code",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jiahaoxiang2000/claude-code-zed`",
+    "usage_vi": "```\nSử dụng claude-code-zed để [TASK] trong trình soạn thảo Zed. Ví dụ: 'refactor authentication module trong ứng dụng React để sử dụng TypeScript interface' hoặc 'debug lỗi rò rỉ bộ nhớ (memory leak) trong script xử lý dữ liệu Python'. Hãy đảm bảo các thay đổi được áp dụng trực tiếp vào workspace của Zed.\n```\nCopy\n\n```\nDưới đây là authentication module đã được refactor bằng claude-code-zed trong Zed:\n\n```typescript\n// src/auth/types.ts\ninterface User {\n  id: string;\n  email: string;\n  roles: string[];\n}\n\ninterface AuthState {\n  user: User | null;\n  token: string | null;\n  loading: boolean;\n}\n\n// src/auth/authService.ts\nclass AuthService {\n  private async validateToken(token: string): Promise<User> {\n    const response = await fetch('/api/validate', {\n      headers: { Authorization: `Bearer ${token}` }\n    });\n    if (!response.ok) throw new Error('Invalid token');\n    return response.json();\n  }\n\n  async login(email: string, password: string): Promise<AuthState> {\n    const response = await fetch('/api/login', {\n      method: 'POST',\n      body: JSON.stringify({ email, password })\n    });\n    const { token } = await response.json();\n    const user = await this.validateToken(token);\n    return { user, token, loading: false };\n  }\n}\n```\n\nCác thay đổi đã áp dụng:\n1. Thêm các TypeScript interface cho `User` và `AuthState` để đảm bảo type safety.\n2. Refactor `AuthService` để sử dụng async/await cho việc validate token.\n3. Cập nhật method login để trả về một `AuthState` được định nghĩa kiểu dữ liệu chính xác.\n\nTrình soạn thảo Zed không hiển thị lỗi biên dịch TypeScript và các thay đổi đã được cập nhật vào các file trong workspace. Để kiểm tra, hãy chạy lệnh `npm run dev` và xác nhận luồng đăng nhập (login flow) hoạt động đúng như mong đợi.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:07:16.856215Z",
+    "http_status": 200,
+    "content_hash": "7cb1e79c609913cdfbbecd0ebb1a53ae1b97e3b3604d258bda1761480723b121",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-zed.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-zed.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Extension Zed dành cho việc tích hợp Claude Code CLI",
+  "short_description_vi": "Tích hợp Claude Code Zed cho phép lập trình viên sử dụng Claude Code CLI trực tiếp trong trình soạn thảo Zed. Đây là giải pháp hữu ích cho những lập trình viên ưu tiên dùng Zed khi viết code. Việc tích hợp giúp kết nối khả năng AI của Claude Code vào workflow của Zed, từ đó nâng cao năng suất làm việc. Lưu ý: extension này đã bị lưu trữ (archived) và không còn được bảo trì."
+}

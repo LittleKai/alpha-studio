@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/chatgpt-share-web",
+  "slug": "chatgpt-share-web",
+  "name": "browser-use",
+  "headline": "chatgpt-share-web: AI platform mirroring",
+  "short_description": "chatgpt-share-web enables users to access and share multiple AI models like ChatGPT, Claude, Midjourney, Sora, Grok, and Gemini through a single web interface. It benefits developers and businesses by providing a unified platform for AI interactions, supporting user management and monetization. The skill connects to various AI models and APIs, streamlining workflows for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "jurieo",
+  "install_command": "git clone https://github.com/jurieo/chatgpt-share-web.git",
+  "source_repo_url": "https://github.com/jurieo/chatgpt-share-web",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "deepseek",
+    "newapi",
+    "chatgpt",
+    "claude",
+    "sora",
+    "midjourney",
+    "codex",
+    "gemini",
+    "openai",
+    "grok"
+  ],
+  "sections": {
+    "overview": "chatgpt-share-web provides a centralized web interface for accessing and managing multiple AI models including ChatGPT, Claude, Midjourney, Grok, Sora, DeepSeek, and Gemini. The platform includes comprehensive user management features such as registration, login, user quotas, and multi-device login control. It supports token-based billing for ChatGPT, Claude, and Grok, along with a built-in marketplace, referral system with commission tracking, and withdrawal functionality. Organizations can configure custom themes, manage chat histories, set up API authentication, and enforce content policies through built-in content filtering.\nOperating a multi-model AI service platform with user billing and quotas\nMonetizing AI access through subscription tiers and token-based pricing\nManaging team AI access with role-based permissions and usage limits\nRunning a referral program with automated commission tracking and payouts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jurieo/chatgpt-share-web`",
+    "usage": "```\nGenerate a step-by-step guide for [USER_ROLE] to set up and use chatgpt-share-web to access and share multiple AI models (e.g., ChatGPT, Claude, Midjourney, Sora, Grok, Gemini) through a single web interface. Include instructions for user management and monetization setup. Replace [USER_ROLE] with 'a small business owner', 'a developer', or 'an operations manager' based on the target audience.\n```\nCopy\n\n```\n### **Step-by-Step Guide: Setting Up chatgpt-share-web for a Small Business Team**\n\n**Step 1: Sign Up and Access the Platform**\nVisit [https://chatgpt-share-web.com](https://chatgpt-share-web.com) and create an account using your business email. After verification, log in to the dashboard. The interface will greet you with a clean layout featuring tabs for **Models**, **Users**, **Monetization**, and **Analytics**. For this example, let’s assume you’re setting up the platform for a marketing agency with 5 team members.\n\n**Step 2: Add AI Models to Your Dashboard**\nNavigate to the **Models** tab and click **Add Model**. Select **ChatGPT (GPT-4)** from the dropdown, then enter your API key (found in your OpenAI account under **API Keys**). Repeat this process for **Claude 3.5 Sonnet** (using your Anthropic API key) and **Midjourney** (via Discord integration). The platform will validate each connection, and you’ll see a confirmation message: *“ChatGPT, Claude, and Midjourney successfully added!”*\n\n**Step 3: Invite Team Members and Assign Permissions**\nGo to the **Users** tab and click **Invite User**. Enter the email addresses of your 5 team members (e.g., `designer@agency.com`, `copywriter@agency.com`). For each user, set permissions:\n- **Designer**: Access to Midjourney (for image generation) and ChatGPT (for creative brainstorming).\n- **Copywriter**: Access to ChatGPT (for content drafting) and Claude (for editing).\n- **Operations Manager**: Full access to all models for oversight.\n\nAfter sending invites, the team members will receive an email with login instructions. Once they accept, they can log in and see only the models they’ve been granted access to.\n\n**Step 4: Set Up Monetization (Optional)**\nIf you plan to charge clients for AI-generated content, go to the **Monetization** tab. Enable **Pay-Per-Use** pricing and set rates:\n- **ChatGPT (GPT-4)**: $0.02 per 1,000 tokens.\n- **Midjourney**: $1.50 per image (standard quality).\n- **Claude 3.5**: $0.01 per 1,000 tokens.\n\nGenerate a unique **Client Portal Link** (e.g., `agency.chatgpt-share-web.com/client123`) and share it with clients. They can use this link to access the models and pay via Stripe or PayPal. The platform will automatically track usage and generate invoices.\n\n**Step 5: Monitor Usage and Optimize**\nCheck the **Analytics** tab to see real-time usage data. For example, you might notice that Midjourney is used 60% of the time, while ChatGPT accounts for 30%. Use this data to adjust permissions or pricing. For instance, you could add a **Sora** subscription if video generation becomes a high demand service.\n\n**Pro Tip:** Use the **Shared Sessions** feature to collaborate on prompts. For example, your copywriter and designer can work together in a single ChatGPT session to align on branding guidelines before generating content.\n\nBy following these steps, your team can seamlessly switch between AI models, manage access, and even monetize services—all from one centralized platform.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "chatgpt-share-web#main-content",
+      "chatgpt-share-web#overview",
+      "chatgpt-share-web#setup",
+      "chatgpt-share-web#examples",
+      "chatgpt-share-web#tools",
+      "chatgpt-share-web#mcp",
+      "chatgpt-share-web#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "chatgpt-share-web provides a centralized web interface for accessing and managing multiple AI models including ChatGPT, Claude, Midjourney, Grok, Sora, DeepSeek, and Gemini. The platform includes comprehensive user management features such as registration, login, user quotas, and multi-device login control. It supports token-based billing for ChatGPT, Claude, and Grok, along with a built-in marketplace, referral system with commission tracking, and withdrawal functionality. Organizations can configure custom themes, manage chat histories, set up API authentication, and enforce content policies through built-in content filtering.\nOperating a multi-model AI service platform with user billing and quotas\nMonetizing AI access through subscription tiers and token-based pricing\nManaging team AI access with role-based permissions and usage limits\nRunning a referral program with automated commission tracking and payouts",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jurieo/chatgpt-share-web`",
+    "usage_vi": "```\nGenerate a step-by-step guide for [USER_ROLE] to set up and use chatgpt-share-web to access and share multiple AI models (e.g., ChatGPT, Claude, Midjourney, Sora, Grok, Gemini) through a single web interface. Include instructions for user management and monetization setup. Replace [USER_ROLE] with 'a small business owner', 'a developer', or 'an operations manager' based on the target audience.\n```\nCopy\n\n```\n### **Step-by-Step Guide: Setting Up chatgpt-share-web for a Small Business Team**\n\n**Step 1: Sign Up and Access the Platform**\nVisit [https://chatgpt-share-web.com](https://chatgpt-share-web.com) and create an account using your business email. After verification, log in to the dashboard. The interface will greet you with a clean layout featuring tabs for **Models**, **Users**, **Monetization**, and **Analytics**. For this example, let’s assume you’re setting up the platform for a marketing agency with 5 team members.\n\n**Step 2: Add AI Models to Your Dashboard**\nNavigate to the **Models** tab and click **Add Model**. Select **ChatGPT (GPT-4)** from the dropdown, then enter your API key (found in your OpenAI account under **API Keys**). Repeat this process for **Claude 3.5 Sonnet** (using your Anthropic API key) and **Midjourney** (via Discord integration). The platform will validate each connection, and you’ll see a confirmation message: *“ChatGPT, Claude, and Midjourney successfully added!”*\n\n**Step 3: Invite Team Members and Assign Permissions**\nGo to the **Users** tab and click **Invite User**. Enter the email addresses of your 5 team members (e.g., `designer@agency.com`, `copywriter@agency.com`). For each user, set permissions:\n- **Designer**: Access to Midjourney (for image generation) and ChatGPT (for creative brainstorming).\n- **Copywriter**: Access to ChatGPT (for content drafting) and Claude (for editing).\n- **Operations Manager**: Full access to all models for oversight.\n\nAfter sending invites, the team members will receive an email with login instructions. Once they accept, they can log in and see only the models they’ve been granted access to.\n\n**Step 4: Set Up Monetization (Optional)**\nIf you plan to charge clients for AI-generated content, go to the **Monetization** tab. Enable **Pay-Per-Use** pricing and set rates:\n- **ChatGPT (GPT-4)**: $0.02 per 1,000 tokens.\n- **Midjourney**: $1.50 per image (standard quality).\n- **Claude 3.5**: $0.01 per 1,000 tokens.\n\nGenerate a unique **Client Portal Link** (e.g., `agency.chatgpt-share-web.com/client123`) and share it with clients. They can use this link to access the models and pay via Stripe or PayPal. The platform will automatically track usage and generate invoices.\n\n**Step 5: Monitor Usage and Optimize**\nCheck the **Analytics** tab to see real-time usage data. For example, you might notice that Midjourney is used 60% of the time, while ChatGPT accounts for 30%. Use this data to adjust permissions or pricing. For instance, you could add a **Sora** subscription if video generation becomes a high demand service.\n\n**Pro Tip:** Use the **Shared Sessions** feature to collaborate on prompts. For example, your copywriter and designer can work together in a single ChatGPT session to align on branding guidelines before generating content.\n\nBy following these steps, your team can seamlessly switch between AI models, manage access, and even monetize services—all from one centralized platform.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:49:23.581841Z",
+    "http_status": 200,
+    "content_hash": "6fc2a47bbdc63ad2ec2003579d0a18fe0e7658ba786d73e38e74ffe549efa21a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\chatgpt-share-web.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\chatgpt-share-web.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "chatgpt-share-web: AI platform mirroring",
+  "short_description_vi": "chatgpt-share-web enables users to access and share multiple AI models like ChatGPT, Claude, Midjourney, Sora, Grok, and Gemini through a single web interface. It benefits developers and businesses by providing a unified platform for AI interactions, supporting user management and monetization. The skill connects to various AI models and APIs, streamlining workflows for operations teams."
+}

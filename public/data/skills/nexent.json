@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nexent",
+  "slug": "nexent",
+  "name": "nexent",
+  "headline": "Nexent: Zero-Code AI Agent Generation Platform",
+  "short_description": "Nexent is a zero-code platform that simplifies the creation of AI agents without the need for complex orchestration or drag-and-drop interfaces. It helps users with strong agent control, data processing, and MCP tools, making it ideal for diverse applications.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "ModelEngine-Group",
+  "install_command": "claude install ModelEngine-Group/nexent",
+  "source_repo_url": "https://github.com/ModelEngine-Group/nexent",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "AI",
+    "data processing",
+    "agent generation",
+    "zero-code"
+  ],
+  "sections": {
+    "overview": "Nexent is an open-source framework designed for developers building AI agents with direct code control rather than visual interfaces. The platform emphasizes strong agent control, streamlined data processing, and native integration with MCP (Model Context Protocol) tools. It provides context management capabilities including token compression and metrics logging, enabling agents to handle complex workflows efficiently. Nexent includes features like conversation context management, step-level token usage tracking, and configurable context managers for optimizing agent performance. The platform is built for developers who need flexible, production-ready agent orchestration without the constraints of drag-and-drop builders.\nAutomate customer support responses to enhance user engagement and satisfaction.\nGenerate personalized marketing content to improve outreach and conversion rates.\nStreamline data analysis tasks, allowing teams to focus on insights rather than data wrangling.\nCreate interactive chatbots for websites to provide real-time assistance to visitors.",
+    "setup": "Terminal\nCopy\n`claude install ModelEngine-Group/nexent`\n`git clone https://github.com/ModelEngine-Group/nexent`",
+    "usage": "```\nCreate an AI agent using Nexent to manage customer support tickets for [COMPANY]. The agent should prioritize tickets based on [CRITERIA] and escalate urgent issues to the appropriate team. Provide a step-by-step plan for implementation and integration with existing systems like [TOOL].\n```\nCopy\n\n```\nTo create an AI agent for managing customer support tickets using Nexent, follow these steps:\n\n1. **Define the Agent's Purpose**: The agent will prioritize and escalate customer support tickets based on urgency, customer importance, and issue type. It will integrate with your existing ticketing system, such as Zendesk or Freshdesk.\n\n2. **Set Up the Agent**: Use Nexent's zero-code platform to create the agent. Define the criteria for prioritization, such as response time, customer tier, and issue severity. The agent will automatically categorize and prioritize tickets.\n\n3. **Integrate with Existing Systems**: Connect the agent to your current ticketing system. Nexent provides robust data processing tools to ensure seamless integration. The agent will pull in new tickets, analyze them, and update their status accordingly.\n\n4. **Implement Escalation Protocols**: Configure the agent to escalate urgent issues to the appropriate team. For example, if a high-priority ticket from a VIP customer is not resolved within a specified time, the agent will notify the support manager and the relevant team.\n\n5. **Test and Deploy**: Run tests to ensure the agent functions as expected. Simulate various scenarios, such as high-volume ticket influxes and complex issue resolutions. Once tested, deploy the agent and monitor its performance.\n\nBy following these steps, you can create an efficient AI agent that enhances your customer support operations, ensuring timely and effective issue resolution.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "nexent#main-content",
+      "nexent#overview",
+      "nexent#setup",
+      "nexent#examples",
+      "nexent#tools",
+      "nexent#related",
+      "claude-skills",
+      "nuwax",
+      "ai-agent-demo"
+    ],
+    "overview_vi": "Nexent là một framework mã nguồn mở dành cho các nhà phát triển muốn xây dựng AI agent thông qua việc kiểm soát trực tiếp bằng code thay vì sử dụng giao diện kéo thả trực quan. Nền tảng tập trung vào khả năng kiểm soát agent mạnh mẽ, tối ưu hóa quy trình xử lý dữ liệu và tích hợp native với các công cụ MCP (Model Context Protocol). Nexent cung cấp các tính năng quản lý context như nén token và ghi log metric, giúp agent xử lý các workflow phức tạp một cách hiệu quả. Ngoài ra, nền tảng còn hỗ trợ quản lý context hội thoại, theo dõi lượng sử dụng token ở cấp độ từng bước (step-level) và cấu hình linh hoạt các bộ quản lý context để tối ưu hiệu suất của agent. Đây là giải pháp được thiết kế riêng cho các lập trình viên cần một hệ thống orchestration agent linh hoạt, sẵn sàng cho môi trường production mà không bị gò bó bởi các công cụ dựng kéo thả.\nTự động hóa phản hồi hỗ trợ khách hàng nhằm tăng cường tương tác và sự hài lòng của người dùng.\nTạo nội dung marketing cá nhân hóa giúp tối ưu hiệu quả tiếp cận và tỷ lệ chuyển đổi.\nTối ưu hóa các tác vụ phân tích dữ liệu, giúp các đội ngũ tập trung vào việc khai thác insights thay vì xử lý dữ liệu thô (data wrangling).\nXây dựng chatbot tương tác trên website để hỗ trợ khách truy cập theo thời gian thực.",
+    "setup_vi": "Terminal\nSao chép\n`claude install ModelEngine-Group/nexent`\n`git clone https://github.com/ModelEngine-Group/nexent`",
+    "usage_vi": "```\nTạo một AI agent sử dụng Nexent để quản lý các ticket hỗ trợ khách hàng cho [COMPANY]. Agent này cần ưu tiên các ticket dựa trên [CRITERIA] và chuyển tiếp (escalate) các vấn đề khẩn cấp đến đội ngũ phù hợp. Cung cấp kế hoạch triển khai từng bước và tích hợp với các hệ thống hiện có như [TOOL].\n```\nSao chép\n\n```\nĐể tạo một AI agent quản lý ticket hỗ trợ khách hàng bằng Nexent, hãy thực hiện theo các bước sau:\n\n1. **Xác định mục tiêu của Agent**: Agent sẽ ưu tiên và escalate các ticket hỗ trợ khách hàng dựa trên độ khẩn cấp, mức độ quan trọng của khách hàng và loại sự cố. Nó sẽ tích hợp với hệ thống ticketing hiện có của bạn, chẳng hạn như Zendesk hoặc Freshdesk.\n\n2. **Thiết lập Agent (Set Up)**: Sử dụng nền tảng zero-code của Nexent để tạo agent. Định nghĩa các tiêu chí ưu tiên như thời gian phản hồi, phân hạng khách hàng và mức độ nghiêm trọng của sự cố. Agent sẽ tự động phân loại và ưu tiên các ticket.\n\n3. **Tích hợp với các hệ thống hiện có**: Kết nối agent với hệ thống ticketing hiện tại của bạn. Nexent cung cấp các công cụ xử lý dữ liệu mạnh mẽ để đảm bảo tích hợp liền mạch. Agent sẽ nạp các ticket mới, phân tích và cập nhật trạng thái tương ứng.\n\n4. **Triển khai quy trình Escalation**: Cấu hình agent để escalate các vấn đề khẩn cấp đến đội ngũ phù hợp. Ví dụ: nếu một ticket ưu tiên cao từ khách hàng VIP không được giải quyết trong khoảng thời gian quy định, agent sẽ thông báo cho quản lý hỗ trợ và đội ngũ liên quan.\n\n5. **Kiểm thử và Triển khai (Test và Deploy)**: Chạy thử nghiệm để đảm bảo agent hoạt động như mong đợi. Giả lập các tình huống khác nhau như lượng ticket tăng đột biến và các sự cố phức tạp cần giải quyết. Sau khi kiểm thử thành công, hãy deploy agent và theo dõi hiệu suất của nó.\n\nBằng cách làm theo các bước này, bạn có thể tạo ra một AI agent hiệu quả giúp tối ưu hóa hoạt động hỗ trợ khách hàng, đảm bảo các sự cố được giải quyết kịp thời và hiệu quả.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:24.056418Z",
+    "http_status": 200,
+    "content_hash": "a43a23e571e5b8426c711e0ce9b1f1f48b7dbcc0783cc8d2485def47d6295540",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\nexent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\nexent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nexent: Nền tảng khởi tạo AI Agent dạng Zero-Code",
+  "short_description_vi": "Nexent là nền tảng zero-code giúp đơn giản hóa việc khởi tạo các AI agent mà không cần đến các quy trình orchestration phức tạp hay giao diện kéo thả. Nền tảng hỗ trợ người dùng kiểm soát agent chặt chẽ, xử lý dữ liệu hiệu quả và tích hợp các công cụ MCP, là giải pháp lý tưởng cho nhiều ứng dụng đa dạng."
+}

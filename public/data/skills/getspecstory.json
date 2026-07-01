@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/getspecstory",
+  "slug": "getspecstory",
+  "name": "browser-use",
+  "headline": "GetSpecStory - Sync AI Dev Conversations",
+  "short_description": "Sync AI development conversations from IDEs or terminals to the cloud. File issues and requests. Benefits developers and operations teams by preserving and sharing knowledge.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "specstoryai",
+  "install_command": "git clone https://github.com/specstoryai/getspecstory.git",
+  "source_repo_url": "https://github.com/specstoryai/getspecstory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "copilot",
+    "cursorai",
+    "copilot-chat",
+    "chat-history",
+    "cursor-cli",
+    "cursor-ai",
+    "claude",
+    "vscode-extension",
+    "codex-cli",
+    "vscode",
+    "codex",
+    "ai"
+  ],
+  "sections": {
+    "overview": "getspecstory is a command-line tool that records AI development conversations happening in your IDE or terminal and syncs them to the cloud. It preserves the context and knowledge from your AI-assisted development work, making it easy to share insights across your team. The tool helps developers and operations teams maintain a searchable history of their AI interactions, reducing knowledge silos and improving collaboration. By automatically capturing these conversations, getspecstory enables better documentation of development decisions and technical discussions without manual effort.\nAutomatically save every AI interaction during coding sessions for future reference.\nSync local coding history to the cloud for centralized access and organization.\nGenerate summaries and insights from past AI interactions to improve future coding practices.\nShare specific solutions or code snippets with team members directly from the SpecStory interface.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/specstoryai/getspecstory`",
+    "usage": "```\nSync the current development conversation from my [IDE/TERMINAL] to the cloud. Extract the key context, code snippets, and discussion points from the session and create a detailed GitHub issue or Jira ticket titled '[SUMMARY OF ISSUE]'. Include the following details: [BRIEF DESCRIPTION OF PROBLEM], [CODE SNIPPETS OR ERROR MESSAGES], [STEPS TO REPRODUCE], and [SUGGESTED SOLUTIONS]. Tag the relevant team members: [TEAM_NAME].\n```\nCopy\n\n```\n```markdown\n**Title:** Fix Memory Leak in User Authentication Service\n\n**Description:**\nDuring a debugging session in VS Code, we identified a memory leak in the `/api/auth` endpoint that occurs when handling concurrent login requests. The issue was first noticed when the service crashed after 5,000 active users, with the following error in the logs:\n\n```\nError: Heap out of memory\n    at /app/src/auth/service.js:42:15\n    at processTicksAndRejections (node:internal:339:5)\n```\n\n**Steps to Reproduce:**\n1. Deploy the service with the latest `auth-service` image (v2.1.4).\n2. Simulate 5,000 concurrent login requests using `autocannon -c 5000 -d 60 http://localhost:3000/api/auth`.\n3. Monitor memory usage in Grafana. The service crashes within 2 minutes.\n\n**Code Snippet:**\n```javascript\n// auth/service.js:42\nconst authService = async (req, res) => {\n  const token = jwt.sign({ userId: req.user.id }, process.env.JWT_SECRET, {\n    expiresIn: '1h',\n  });\n  // Memory leak occurs here due to unclosed streams\n  const stream = fs.createReadStream('/tmp/cache');\n  stream.pipe(res);\n  // Missing stream.on('end', () => stream.close());\n};\n```\n\n**Suggested Solutions:**\n1. Close the stream after piping: `stream.on('end', () => stream.close());`\n2. Implement a connection pool for file streams.\n3. Add memory monitoring to alert on leaks.\n\n**Tags:** #backend #memory-leak #critical\n**Assignee:** @dev-team-lead\n**Priority:** P1\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "getspecstory#main-content",
+      "getspecstory#overview",
+      "getspecstory#setup",
+      "getspecstory#examples",
+      "getspecstory#tools",
+      "getspecstory#mcp",
+      "getspecstory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "getspecstory is a command-line tool that records AI development conversations happening in your IDE or terminal and syncs them to the cloud. It preserves the context and knowledge from your AI-assisted development work, making it easy to share insights across your team. The tool helps developers and operations teams maintain a searchable history of their AI interactions, reducing knowledge silos and improving collaboration. By automatically capturing these conversations, getspecstory enables better documentation of development decisions and technical discussions without manual effort.\nAutomatically save every AI interaction during coding sessions for future reference.\nSync local coding history to the cloud for centralized access and organization.\nGenerate summaries and insights from past AI interactions to improve future coding practices.\nShare specific solutions or code snippets with team members directly from the SpecStory interface.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/specstoryai/getspecstory`",
+    "usage_vi": "```\nSync the current development conversation from my [IDE/TERMINAL] to the cloud. Extract the key context, code snippets, and discussion points from the session and create a detailed GitHub issue or Jira ticket titled '[SUMMARY OF ISSUE]'. Include the following details: [BRIEF DESCRIPTION OF PROBLEM], [CODE SNIPPETS OR ERROR MESSAGES], [STEPS TO REPRODUCE], and [SUGGESTED SOLUTIONS]. Tag the relevant team members: [TEAM_NAME].\n```\nCopy\n\n```\n```markdown\n**Title:** Fix Memory Leak in User Authentication Service\n\n**Description:**\nDuring a debugging session in VS Code, we identified a memory leak in the `/api/auth` endpoint that occurs when handling concurrent login requests. The issue was first noticed when the service crashed after 5,000 active users, with the following error in the logs:\n\n```\nError: Heap out of memory\n    at /app/src/auth/service.js:42:15\n    at processTicksAndRejections (node:internal:339:5)\n```\n\n**Steps to Reproduce:**\n1. Deploy the service with the latest `auth-service` image (v2.1.4).\n2. Simulate 5,000 concurrent login requests using `autocannon -c 5000 -d 60 http://localhost:3000/api/auth`.\n3. Monitor memory usage in Grafana. The service crashes within 2 minutes.\n\n**Code Snippet:**\n```javascript\n// auth/service.js:42\nconst authService = async (req, res) => {\n  const token = jwt.sign({ userId: req.user.id }, process.env.JWT_SECRET, {\n    expiresIn: '1h',\n  });\n  // Memory leak occurs here due to unclosed streams\n  const stream = fs.createReadStream('/tmp/cache');\n  stream.pipe(res);\n  // Missing stream.on('end', () => stream.close());\n};\n```\n\n**Suggested Solutions:**\n1. Close the stream after piping: `stream.on('end', () => stream.close());`\n2. Implement a connection pool for file streams.\n3. Add memory monitoring to alert on leaks.\n\n**Tags:** #backend #memory-leak #critical\n**Assignee:** @dev-team-lead\n**Priority:** P1\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:52:46.590897Z",
+    "http_status": 200,
+    "content_hash": "1c18acc6f97f10e6c2eefaf052f414bd8adf48f60caf806c4ade207f43a94045",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\getspecstory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\getspecstory.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GetSpecStory - Sync AI Dev Conversations",
+  "short_description_vi": "Sync AI development conversations from IDEs or terminals to the cloud. File issues and requests. Benefits developers and operations teams by preserving and sharing knowledge."
+}

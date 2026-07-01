@@ -1,0 +1,52 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/artwork",
+  "slug": "artwork",
+  "name": "artwork",
+  "headline": "collaborative content from opensuse teams",
+  "short_description": "Access openSUSE's collaborative artwork repository for marketing assets. Licensed under CC-BY-SA 3.0, it enables teams to share and modify designs. Integrates with GitHub for version control and collaboration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "openSUSE",
+  "install_command": "git clone https://github.com/openSUSE/artwork.git",
+  "source_repo_url": "https://github.com/openSUSE/artwork",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The openSUSE Artwork skill provides access to a shared repository of marketing assets and design files managed by the openSUSE artwork team. All content is licensed under CC-BY-SA 3.0, allowing teams to freely use, modify, and redistribute designs while maintaining attribution. The repository integrates with GitHub and Git for full version control capabilities, enabling multiple contributors to collaborate seamlessly on design projects. Users can track changes, view modification history, manage file commits, and push updates to share work with the team. This approach is ideal for organizations that need centralized, collaborative design asset management with complete change tracking and contributor accountability.\nManaging shared marketing assets across distributed design teams\nTracking design iterations and changes with full commit history\nCollaborating on branded materials while maintaining CC-BY-SA 3.0 compliance\nVersion-controlling artwork files to prevent design conflicts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/openSUSE/artwork`",
+    "usage": "```\nSearch the openSUSE collaborative artwork repository (https://github.com/openSUSE/artwork) for [TYPE_OF_ASSET: e.g., logos, posters, social media banners] that match [THEME or STYLE: e.g., openSUSE Leap 15.5, sleek minimalist, vibrant colors]. Download the highest-resolution version and provide a direct link. If multiple options exist, prioritize those with the most recent commits or highest star count. Format the output as: Asset Name, Resolution, License, GitHub Commit Link, and Direct Download URL.\n```\nCopy\n\n```\nHere are the most relevant assets from the openSUSE artwork repository for a **social media banner** promoting **openSUSE Leap 15.5** with a **vibrant and modern** aesthetic:\n\n1. **Leap15.5-Banner-Vibrant.png**\n   - Resolution: 1920x1080px\n   - License: CC-BY-SA 3.0\n   - GitHub Commit Link: [https://github.com/openSUSE/artwork/commit/abc123xyz](https://github.com/openSUSE/artwork/commit/abc123xyz)\n   - Direct Download URL: [https://github.com/openSUSE/artwork/raw/master/banners/Leap15.5-Banner-Vibrant.png](https://github.com/openSUSE/artwork/raw/master/banners/Leap15.5-Banner-Vibrant.png)\n\n2. **Leap15.5-Social-Media-Header.png**\n   - Resolution: 1200x630px (optimized for LinkedIn/Twitter)\n   - License: CC-BY-SA 3.0\n   - GitHub Commit Link: [https://github.com/openSUSE/artwork/commit/def456uvw](https://github.com/openSUSE/artwork/commit/def456uvw)\n   - Direct Download URL: [https://github.com/openSUSE/artwork/raw/master/social-media/Leap15.5-Social-Media-Header.png](https://github.com/openSUSE/artwork/raw/master/social-media/Leap15.5-Social-Media-Header.png)\n\n**Recommendation**: Use **Leap15.5-Banner-Vibrant.png** for a high-impact Facebook/Instagram post and **Leap15.5-Social-Media-Header.png** for LinkedIn posts. Both assets are under the CC-BY-SA 3.0 license, allowing modification and commercial use with attribution. The repository’s latest commit (June 2023) ensures these designs reflect the most current branding guidelines.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "artwork#main-content",
+      "artwork#overview",
+      "artwork#setup",
+      "artwork#examples",
+      "artwork#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "The openSUSE Artwork skill provides access to a shared repository of marketing assets and design files managed by the openSUSE artwork team. All content is licensed under CC-BY-SA 3.0, allowing teams to freely use, modify, and redistribute designs while maintaining attribution. The repository integrates with GitHub and Git for full version control capabilities, enabling multiple contributors to collaborate seamlessly on design projects. Users can track changes, view modification history, manage file commits, and push updates to share work with the team. This approach is ideal for organizations that need centralized, collaborative design asset management with complete change tracking and contributor accountability.\nManaging shared marketing assets across distributed design teams\nTracking design iterations and changes with full commit history\nCollaborating on branded materials while maintaining CC-BY-SA 3.0 compliance\nVersion-controlling artwork files to prevent design conflicts",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/openSUSE/artwork`",
+    "usage_vi": "```\nSearch the openSUSE collaborative artwork repository (https://github.com/openSUSE/artwork) for [TYPE_OF_ASSET: e.g., logos, posters, social media banners] that match [THEME or STYLE: e.g., openSUSE Leap 15.5, sleek minimalist, vibrant colors]. Download the highest-resolution version and provide a direct link. If multiple options exist, prioritize those with the most recent commits or highest star count. Format the output as: Asset Name, Resolution, License, GitHub Commit Link, and Direct Download URL.\n```\nCopy\n\n```\nHere are the most relevant assets from the openSUSE artwork repository for a **social media banner** promoting **openSUSE Leap 15.5** with a **vibrant and modern** aesthetic:\n\n1. **Leap15.5-Banner-Vibrant.png**\n   - Resolution: 1920x1080px\n   - License: CC-BY-SA 3.0\n   - GitHub Commit Link: [https://github.com/openSUSE/artwork/commit/abc123xyz](https://github.com/openSUSE/artwork/commit/abc123xyz)\n   - Direct Download URL: [https://github.com/openSUSE/artwork/raw/master/banners/Leap15.5-Banner-Vibrant.png](https://github.com/openSUSE/artwork/raw/master/banners/Leap15.5-Banner-Vibrant.png)\n\n2. **Leap15.5-Social-Media-Header.png**\n   - Resolution: 1200x630px (optimized for LinkedIn/Twitter)\n   - License: CC-BY-SA 3.0\n   - GitHub Commit Link: [https://github.com/openSUSE/artwork/commit/def456uvw](https://github.com/openSUSE/artwork/commit/def456uvw)\n   - Direct Download URL: [https://github.com/openSUSE/artwork/raw/master/social-media/Leap15.5-Social-Media-Header.png](https://github.com/openSUSE/artwork/raw/master/social-media/Leap15.5-Social-Media-Header.png)\n\n**Recommendation**: Use **Leap15.5-Banner-Vibrant.png** for a high-impact Facebook/Instagram post and **Leap15.5-Social-Media-Header.png** for LinkedIn posts. Both assets are under the CC-BY-SA 3.0 license, allowing modification and commercial use with attribution. The repository’s latest commit (June 2023) ensures these designs reflect the most current branding guidelines.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:14.335652Z",
+    "http_status": 200,
+    "content_hash": "e9c9622c6829c11959b760ff67937af24c802b803768554eec209cff137233e1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\artwork.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\artwork.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "collaborative content from opensuse teams",
+  "short_description_vi": "Access openSUSE's collaborative artwork repository for marketing assets. Licensed under CC-BY-SA 3.0, it enables teams to share and modify designs. Integrates with GitHub for version control and collaboration."
+}

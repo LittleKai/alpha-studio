@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/webgpu-claude-skill",
+  "slug": "webgpu-claude-skill",
+  "name": "WebGPU Three.js Skill",
+  "headline": "WebGPU Three.js Skill - Develop WebGPU Apps",
+  "short_description": "Develop WebGPU applications with Three.js. Ideal for operations teams building high-performance 3D web apps. Integrates with existing Three.js workflows, enabling advanced rendering capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "dgreenheck",
+  "install_command": "git clone https://github.com/dgreenheck/webgpu-claude-skill.git",
+  "source_repo_url": "https://github.com/dgreenheck/webgpu-claude-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill equips Claude with comprehensive knowledge for developing WebGPU-enabled Three.js applications using TSL (Three.js Shading Language). It covers setting up Three.js with WebGPU renderer, writing shaders, creating node-based materials, building GPU compute shaders, implementing post-processing effects, and integrating custom WGSL code. Developers can leverage this skill to build high-performance 3D web applications with advanced rendering capabilities. The skill is aligned with Three.js r183+ API changes and supports both Claude Code and Cursor environments.\nBuilding high-performance 3D web applications with WebGPU rendering\nWriting GPU compute shaders and node-based materials in TSL\nImplementing post-processing effects in Three.js\nIntegrating custom WGSL code with Three.js workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dgreenheck/webgpu-claude-skill`",
+    "usage": "```\nDevelop a WebGPU-enabled 3D visualization using Three.js for [APPLICATION_PURPOSE]. Use WebGPU for [SPECIFIC_FEATURE: e.g., particle systems, real-time lighting, large-scale geometry]. Implement [INTERACTIVITY_REQUIREMENT: e.g., user-controlled camera, dynamic object manipulation] with Three.js controls. Optimize rendering for [TARGET_PLATFORM: e.g., desktop browsers, mobile devices] with a focus on [PERFORMANCE_METRIC: e.g., 60 FPS, low memory usage]. Include a minimal setup guide for deployment in [DEPLOYMENT_ENVIRONMENT: e.g., GitHub Pages, internal web server].\n```\nCopy\n\n```\n### WebGPU Particle System with Three.js\n\n**Purpose**: A real-time 3D particle simulation for a data center monitoring dashboard, visualizing server load across 10,000+ nodes.\n\n**Implementation**:\n1. **Setup**: Used Three.js r158 with WebGPU support enabled via `import * as THREE from 'three'; import { WebGPURenderer } from 'three/addons/renderers/webgpu/WebGPURenderer.js';`. Configured the renderer with `new WebGPURenderer({ antialias: true })` to ensure smooth edges on high-DPI displays.\n\n2. **Particle System**: Created a custom `GPUComputationRenderer` to handle 16,384 particles (4x oversampling for smoothness). Each particle’s position and velocity are updated in a compute shader using WebGPU’s compute pipeline, achieving 60 FPS on a mid-range GPU (NVIDIA RTX 3060).\n\n3. **Data Integration**: Fetched server load data from a REST API (`/api/servers/load`) and mapped it to particle colors (green for low load, red for high load). Used a `DataTexture` to stream updates every 500ms without blocking the main thread.\n\n4. **Interactivity**: Added orbit controls (`OrbitControls` from Three.js) for zooming/panning. Implemented a click handler to display detailed metrics for a selected node in a side panel.\n\n5. **Performance**: Achieved 58-62 FPS on Chrome/Edge with WebGPU enabled. Memory usage stabilized at ~200MB, even with 100k+ particles in the buffer.\n\n**Deployment**:\n- Built with Vite (`npm run build -- --mode production`)\n- Deployed to an internal Kubernetes cluster with a CDN for global access.\n- Fallback to WebGL renderer for users on unsupported browsers (e.g., Safari).\n\n**Code Snippet**:\n```javascript\n// Particle system initialization\nconst particleCount = 16384;\nconst particles = new THREE.BufferGeometry();\nconst positions = new Float32Array(particleCount * 3);\nconst colors = new Float32Array(particleCount * 3);\n\n// Populate with random data (simplified)\nfor (let i = 0; i < particleCount; i++) {\n  positions[i * 3] = (Math.random() - 0.5) * 1000;\n  positions[i * 3 + 1] = (Math.random() - 0.5) * 1000;\n  positions[i * 3 + 2] = (Math.random() - 0.5) * 1000;\n  colors[i * 3] = Math.random(); // Load value (0-1)\n  colors[i * 3 + 1] = 0.5; // Static color component\n  colors[i * 3 + 2] = 0.5;\n}\n\nparticles.setAttribute('position', new THREE.BufferAttribute(positions, 3));\nparticles.setAttribute('color', new THREE.BufferAttribute(colors, 3));\n\nconst particleMaterial = new THREE.PointsMaterial({\n  size: 4,\n  vertexColors: true,\n  blending: THREE.AdditiveBlending,\n  transparent: true\n});\n\nconst particleSystem = new THREE.Points(particles, particleMaterial);\nscene.add(particleSystem);\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "webgpu-claude-skill#main-content",
+      "webgpu-claude-skill#overview",
+      "webgpu-claude-skill#setup",
+      "webgpu-claude-skill#examples",
+      "webgpu-claude-skill#tools",
+      "webgpu-claude-skill#mcp",
+      "webgpu-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill equips Claude with comprehensive knowledge for developing WebGPU-enabled Three.js applications using TSL (Three.js Shading Language). It covers setting up Three.js with WebGPU renderer, writing shaders, creating node-based materials, building GPU compute shaders, implementing post-processing effects, and integrating custom WGSL code. Developers can leverage this skill to build high-performance 3D web applications with advanced rendering capabilities. The skill is aligned with Three.js r183+ API changes and supports both Claude Code and Cursor environments.\nBuilding high-performance 3D web applications with WebGPU rendering\nWriting GPU compute shaders and node-based materials in TSL\nImplementing post-processing effects in Three.js\nIntegrating custom WGSL code with Three.js workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dgreenheck/webgpu-claude-skill`",
+    "usage_vi": "```\nDevelop a WebGPU-enabled 3D visualization using Three.js for [APPLICATION_PURPOSE]. Use WebGPU for [SPECIFIC_FEATURE: e.g., particle systems, real-time lighting, large-scale geometry]. Implement [INTERACTIVITY_REQUIREMENT: e.g., user-controlled camera, dynamic object manipulation] with Three.js controls. Optimize rendering for [TARGET_PLATFORM: e.g., desktop browsers, mobile devices] with a focus on [PERFORMANCE_METRIC: e.g., 60 FPS, low memory usage]. Include a minimal setup guide for deployment in [DEPLOYMENT_ENVIRONMENT: e.g., GitHub Pages, internal web server].\n```\nCopy\n\n```\n### WebGPU Particle System with Three.js\n\n**Purpose**: A real-time 3D particle simulation for a data center monitoring dashboard, visualizing server load across 10,000+ nodes.\n\n**Implementation**:\n1. **Setup**: Used Three.js r158 with WebGPU support enabled via `import * as THREE from 'three'; import { WebGPURenderer } from 'three/addons/renderers/webgpu/WebGPURenderer.js';`. Configured the renderer with `new WebGPURenderer({ antialias: true })` to ensure smooth edges on high-DPI displays.\n\n2. **Particle System**: Created a custom `GPUComputationRenderer` to handle 16,384 particles (4x oversampling for smoothness). Each particle’s position and velocity are updated in a compute shader using WebGPU’s compute pipeline, achieving 60 FPS on a mid-range GPU (NVIDIA RTX 3060).\n\n3. **Data Integration**: Fetched server load data from a REST API (`/api/servers/load`) and mapped it to particle colors (green for low load, red for high load). Used a `DataTexture` to stream updates every 500ms without blocking the main thread.\n\n4. **Interactivity**: Added orbit controls (`OrbitControls` from Three.js) for zooming/panning. Implemented a click handler to display detailed metrics for a selected node in a side panel.\n\n5. **Performance**: Achieved 58-62 FPS on Chrome/Edge with WebGPU enabled. Memory usage stabilized at ~200MB, even with 100k+ particles in the buffer.\n\n**Deployment**:\n- Built with Vite (`npm run build -- --mode production`)\n- Deployed to an internal Kubernetes cluster with a CDN for global access.\n- Fallback to WebGL renderer for users on unsupported browsers (e.g., Safari).\n\n**Code Snippet**:\n```javascript\n// Particle system initialization\nconst particleCount = 16384;\nconst particles = new THREE.BufferGeometry();\nconst positions = new Float32Array(particleCount * 3);\nconst colors = new Float32Array(particleCount * 3);\n\n// Populate with random data (simplified)\nfor (let i = 0; i < particleCount; i++) {\n  positions[i * 3] = (Math.random() - 0.5) * 1000;\n  positions[i * 3 + 1] = (Math.random() - 0.5) * 1000;\n  positions[i * 3 + 2] = (Math.random() - 0.5) * 1000;\n  colors[i * 3] = Math.random(); // Load value (0-1)\n  colors[i * 3 + 1] = 0.5; // Static color component\n  colors[i * 3 + 2] = 0.5;\n}\n\nparticles.setAttribute('position', new THREE.BufferAttribute(positions, 3));\nparticles.setAttribute('color', new THREE.BufferAttribute(colors, 3));\n\nconst particleMaterial = new THREE.PointsMaterial({\n  size: 4,\n  vertexColors: true,\n  blending: THREE.AdditiveBlending,\n  transparent: true\n});\n\nconst particleSystem = new THREE.Points(particles, particleMaterial);\nscene.add(particleSystem);\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:27.991087Z",
+    "http_status": 200,
+    "content_hash": "6b3a574acb704ab391ba4b4ca209bc960c62f15766773995b249914125480ddd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\webgpu-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\webgpu-claude-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "WebGPU Three.js Skill - Develop WebGPU Apps",
+  "short_description_vi": "Develop WebGPU applications with Three.js. Ideal for operations teams building high-performance 3D web apps. Integrates with existing Three.js workflows, enabling advanced rendering capabilities."
+}

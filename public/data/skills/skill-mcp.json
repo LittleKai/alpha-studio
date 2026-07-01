@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-mcp",
+  "slug": "skill-mcp",
+  "name": "langchain-salesforce",
+  "headline": "Skill-MCP: LLM Skills Management Platform",
+  "short_description": "Skill-MCP is a powerful LLM-managed skills platform that allows users to create, edit, and execute skills programmatically across various MCP-compatible clients like Claude and Cursor, streamlining the development process without manual uploads.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "fkesheh",
+  "install_command": "claude install fkesheh/skill-mcp",
+  "source_repo_url": "https://github.com/fkesheh/skill-mcp",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "automation",
+    "programming",
+    "MCP",
+    "skills management",
+    "LLM"
+  ],
+  "sections": {
+    "overview": "Skill-MCP is a Model Context Protocol server that lets Claude and MCP-compatible clients like Cursor manage skills programmatically without manual uploads. It provides unified CRUD tools for creating, editing, and executing Python scripts with automatic dependency management via PEP 723 and environment variable injection. The system enables multi-skill execution in a single code block, reducing token usage by 98.7% compared to sequential tool calls. Skills are stored locally in ~/.skill-mcp/skills/, giving you full control and version control capabilities across all MCP clients.\nAutomating skill creation for AI agents\nIntegrating skills into existing workflows\nEnhancing AI capabilities without manual intervention\nRapid prototyping of AI functionalities\n- **Repository:** org/repo\n- **Pull Request:** #42\n- **Reviewer:** DevOps Team\n- **Date:** 2023-11-15",
+    "setup": "Terminal\nCopy\n`claude install fkesheh/skill-mcp`\n`git clone https://github.com/fkesheh/skill-mcp`",
+    "usage": "```\nCreate a new Skill-MCP skill in Cursor for [SKILL_NAME] that performs [SPECIFIC_TASK]. The skill should include a [BRIEF_DESCRIPTION], [INPUT_REQUIREMENTS], and [OUTPUT_FORMAT]. Use the following structure for the skill file: ```json { \"name\": \"[SKILL_NAME]\", \"description\": \"[BRIEF_DESCRIPTION]\", \"author\": \"[YOUR_NAME]\", \"version\": \"1.0.0\", \"mcpServers\": { \"[SKILL_NAME]\": { \"command\": \"[COMMAND_TO_RUN]\", \"args\": [\"--input\", \"${input}\", \"--output\", \"${output}\"] } } } ```\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"code-review-automation\",\n  \"description\": \"Automates code review tasks by analyzing pull requests for common issues, security vulnerabilities, and style violations. Generates a detailed report with actionable feedback for developers.\",\n  \"author\": \"DevOps Team\",\n  \"version\": \"1.0.0\",\n  \"mcpServers\": {\n    \"code-review-automation\": {\n      \"command\": \"python\",\n      \"args\": [\n        \"${workspaceFolder}/scripts/code_review.py\",\n        \"--pr-url\", \"${input.pr_url}\",\n        \"--repo-path\", \"${input.repo_path}\",\n        \"--output\", \"${output.review_report.md}\"\n      ]\n    }\n  }\n}\n```\n\n### Example Output:\n**Skill File Created:**\n- **Location:** `/.cursor/skills/code-review-automation.json`\n- **Status:** Successfully registered in Cursor MCP.\n\n**Execution Command:**\n```bash\ncursor skill run code-review-automation --pr-url \"https://github.com/org/repo/pull/42\" --repo-path \"/Users/dev/repo\"\n```\n\n**Generated Output (review_report.md):**\n```markdown\n# Code Review Report for PR #42",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor"
+    ],
+    "related_skills": [
+      "skill-mcp#main-content",
+      "skill-mcp#overview",
+      "skill-mcp#setup",
+      "skill-mcp#examples",
+      "skill-mcp#tools",
+      "skill-mcp#mcp",
+      "skill-mcp#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "Skill-MCP is a Model Context Protocol server that lets Claude and MCP-compatible clients like Cursor manage skills programmatically without manual uploads. It provides unified CRUD tools for creating, editing, and executing Python scripts with automatic dependency management via PEP 723 and environment variable injection. The system enables multi-skill execution in a single code block, reducing token usage by 98.7% compared to sequential tool calls. Skills are stored locally in ~/.skill-mcp/skills/, giving you full control and version control capabilities across all MCP clients.\nAutomating skill creation for AI agents\nIntegrating skills into existing workflows\nEnhancing AI capabilities without manual intervention\nRapid prototyping of AI functionalities\n- **Repository:** org/repo\n- **Pull Request:** #42\n- **Reviewer:** DevOps Team\n- **Date:** 2023-11-15",
+    "setup_vi": "Terminal\nCopy\n`claude install fkesheh/skill-mcp`\n`git clone https://github.com/fkesheh/skill-mcp`",
+    "usage_vi": "```\nCreate a new Skill-MCP skill in Cursor for [SKILL_NAME] that performs [SPECIFIC_TASK]. The skill should include a [BRIEF_DESCRIPTION], [INPUT_REQUIREMENTS], and [OUTPUT_FORMAT]. Use the following structure for the skill file: ```json { \"name\": \"[SKILL_NAME]\", \"description\": \"[BRIEF_DESCRIPTION]\", \"author\": \"[YOUR_NAME]\", \"version\": \"1.0.0\", \"mcpServers\": { \"[SKILL_NAME]\": { \"command\": \"[COMMAND_TO_RUN]\", \"args\": [\"--input\", \"${input}\", \"--output\", \"${output}\"] } } } ```\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"code-review-automation\",\n  \"description\": \"Automates code review tasks by analyzing pull requests for common issues, security vulnerabilities, and style violations. Generates a detailed report with actionable feedback for developers.\",\n  \"author\": \"DevOps Team\",\n  \"version\": \"1.0.0\",\n  \"mcpServers\": {\n    \"code-review-automation\": {\n      \"command\": \"python\",\n      \"args\": [\n        \"${workspaceFolder}/scripts/code_review.py\",\n        \"--pr-url\", \"${input.pr_url}\",\n        \"--repo-path\", \"${input.repo_path}\",\n        \"--output\", \"${output.review_report.md}\"\n      ]\n    }\n  }\n}\n```\n\n### Example Output:\n**Skill File Created:**\n- **Location:** `/.cursor/skills/code-review-automation.json`\n- **Status:** Successfully registered in Cursor MCP.\n\n**Execution Command:**\n```bash\ncursor skill run code-review-automation --pr-url \"https://github.com/org/repo/pull/42\" --repo-path \"/Users/dev/repo\"\n```\n\n**Generated Output (review_report.md):**\n```markdown\n# Code Review Report for PR #42"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:35:33.930399Z",
+    "http_status": 200,
+    "content_hash": "6d0f3c9486940bfbd81eabdc8d65e32c3873af3964791552c77e035a9632cefa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skill-MCP: LLM Skills Management Platform",
+  "short_description_vi": "Skill-MCP is a powerful LLM-managed skills platform that allows users to create, edit, and execute skills programmatically across various MCP-compatible clients like Claude and Cursor, streamlining the development process without manual uploads."
+}

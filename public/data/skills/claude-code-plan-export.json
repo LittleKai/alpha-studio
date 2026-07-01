@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-plan-export",
+  "slug": "claude-code-plan-export",
+  "name": "Claude Code Plan Export",
+  "headline": "Claude Code plan export for organized project",
+  "short_description": "Automatically saves Claude Code plans to the project root, streamlining workflows for operations teams. Integrates with Claude Code and Python-based workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "kenryu42",
+  "install_command": "git clone https://github.com/kenryu42/claude-code-plan-export.git",
+  "source_repo_url": "https://github.com/kenryu42/claude-code-plan-export",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "plan-export",
+    "plugin",
+    "claude",
+    "claude-code",
+    "plan"
+  ],
+  "sections": {
+    "overview": "Claude Code Plan Export was a plugin that automatically saved Claude Code plans to the project root when planning finished, helping teams optimize token usage by separating planning from execution. The skill worked by exporting plans to either the project root or a plans/ folder depending on plan count, enabling execution with different models without planning artifacts. This plugin is now deprecated because Claude Code natively supports the planDirectory setting and automatic context clearing on plan execution, eliminating the need for this standalone solution. Teams currently using this skill should migrate to Claude Code's built-in plan management features.\nExporting multiple plans from a single Claude Code session for team review\nOrganizing plans in a dedicated folder structure for version control\nExecuting plans with cost-optimized models after planning with Opus",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kenryu42/claude-code-plan-export`",
+    "usage": "```\nExport the current Claude Code plan for [PROJECT_NAME] to a file named 'claude_plan_[TIMESTAMP].md' in the project root. Include the full plan details, execution steps, and any dependencies. Format it as a markdown file with clear sections for objectives, tasks, and next steps. Save it to the root directory of the project located at [PROJECT_PATH].\n```\nCopy\n\n```\n```markdown\n# Claude Code Plan Export - Project: Acme E-commerce Platform\n**Generated:** 2024-05-20 14:30:00 UTC\n**Project Path:** /home/user/projects/acme-ecommerce",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-plan-export#main-content",
+      "claude-code-plan-export#overview",
+      "claude-code-plan-export#setup",
+      "claude-code-plan-export#examples",
+      "claude-code-plan-export#tools",
+      "claude-code-plan-export#mcp",
+      "claude-code-plan-export#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Plan Export từng là một plugin tự động lưu các kế hoạch Claude Code vào project root sau khi quá trình lập kế hoạch hoàn tất, hỗ trợ các team tối ưu hóa lượng token tiêu thụ nhờ tách biệt bước lập kế hoạch (planning) khỏi bước thực thi (execution). Skill này hoạt động bằng cách xuất các kế hoạch ra project root hoặc thư mục plans/ tùy thuộc vào số lượng kế hoạch, cho phép thực thi trên các model khác nhau mà không bị lẫn các planning artifacts. Plugin này hiện đã bị deprecated vì Claude Code đã hỗ trợ sẵn cài đặt planDirectory và tự động dọn dẹp context khi thực thi kế hoạch, giúp loại bỏ nhu cầu sử dụng giải pháp độc lập này. Các team đang sử dụng skill này nên chuyển sang các tính năng quản lý kế hoạch tích hợp sẵn của Claude Code.\n- Xuất nhiều kế hoạch từ một session Claude Code duy nhất để cả team review\n- Tổ chức các kế hoạch trong cấu trúc thư mục riêng biệt để phục vụ version control\n- Thực thi kế hoạch bằng các model tối ưu chi phí sau khi đã lập kế hoạch với Opus",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kenryu42/claude-code-plan-export`",
+    "usage_vi": "```\nXuất kế hoạch Claude Code hiện tại của [PROJECT_NAME] thành một file có tên 'claude_plan_[TIMESTAMP].md' trong project root. Bao gồm đầy đủ chi tiết kế hoạch, các bước thực thi và mọi dependency liên quan. Định dạng file dưới dạng markdown với các phần rõ ràng cho mục tiêu (objectives), nhiệm vụ (tasks) và các bước tiếp theo (next steps). Lưu file vào thư mục gốc của dự án tại [PROJECT_PATH].\n```\nCopy\n\n```\n```markdown\n# Claude Code Plan Export - Project: Acme E-commerce Platform\n**Generated:** 2024-05-20 14:30:00 UTC\n**Project Path:** /home/user/projects/acme-ecommerce"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:02:14.703559Z",
+    "http_status": 200,
+    "content_hash": "5bf6c33b6e4836f0028214aa2d307dc8bbd356eeddd17d06c5957afb437b6fc1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-plan-export.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-plan-export.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Xuất kế hoạch từ Claude Code giúp tổ chức dự án ngăn nắp",
+  "short_description_vi": "Tự động lưu các kế hoạch Claude Code vào project root, giúp tối ưu hóa workflow cho các đội ngũ vận hành. Tích hợp tốt với Claude Code và các workflow chạy bằng Python."
+}

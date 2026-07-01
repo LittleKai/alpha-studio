@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/weaviate-claude-skills",
+  "slug": "weaviate-claude-skills",
+  "name": "browser-use",
+  "headline": "Weaviate Claude Skills - Connect to Vector",
+  "short_description": "Connect Claude.ai to local Weaviate vector databases for managing collections, ingesting data, and querying with RAG. Ideal for operations teams using Docker to enhance document search and semantic search capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "saskinosie",
+  "install_command": "git clone https://github.com/saskinosie/weaviate-claude-skills.git",
+  "source_repo_url": "https://github.com/saskinosie/weaviate-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "docker-compose",
+    "document-search",
+    "python",
+    "llm",
+    "semantic-search",
+    "weaviate",
+    "vector-database",
+    "rag",
+    "claude-ai",
+    "claude",
+    "knowledge-base",
+    "data-ingestion",
+    "ai",
+    "embeddings",
+    "claude-skills",
+    "docker"
+  ],
+  "sections": {
+    "overview": "Weaviate Claude Skills is a comprehensive collection of five modular skills that enable Claude to connect to and manage local Weaviate vector databases running in Docker. The skills cover setup, connection management, collection schema configuration, data ingestion (single objects, batch uploads, images), and querying with semantic search, keyword search, hybrid queries, and RAG. Designed for operations teams and developers, this local-first approach eliminates network restrictions, cloud costs, and privacy concerns while enabling fast offline queries. Each skill is self-contained and progressively disclosed, allowing Claude to load only what's needed for your specific task.\nSet up and manage local Weaviate instances in Docker for development and testing\nCreate and configure collections with various vectorizers for RAG applications\nBatch ingest documents, images, and structured data into Weaviate collections\nExecute semantic and hybrid searches with filtering and retrieval-augmented generation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/saskinosie/weaviate-claude-skills`",
+    "usage": "```\nConnect Claude.ai to your local Weaviate vector database running in Docker. Create a new collection named [COLLECTION_NAME] with [NUMBER_OF_DIMENSIONS] dimensions. Ingest the documents from [DIRECTORY_PATH] into this collection. Then, perform a semantic search for the query '[SEARCH_QUERY]' using RAG to retrieve relevant results.\n```\nCopy\n\n```\nThe Weaviate Docker container is running locally on port 8080, and the Weaviave-CLAUDE-Skills plugin is installed in Claude.ai. A new collection called 'technical_manuals' is created with 768 dimensions to support semantic search. The documents from the directory '/documents/manuals' are ingested into this collection, including 12 manuals in PDF and Markdown formats such as 'Docker_Quick_Start_Guide.pdf' and 'Kubernetes_Troubleshooting.md'. \n\nThe ingestion process takes 4 minutes and 12 seconds, with a success rate of 100%. The manuals are split into chunks of 500 tokens each, and the embeddings are generated using the 'sentence-transformers' model. The embeddings are stored in the 'technical_manuals' collection, along with the metadata such as the document name, the chunk number, and the token count.\n\nA semantic search is performed for the query 'How to configure Docker networking in Kubernetes'. The RAG (Retrieval-Augmented Generation) process retrieves the top 3 relevant chunks from the 'technical_manuals' collection. The chunks include:\n\n1. 'Docker_Networking_Configuration_Guide.pdf' - Chunk 3: 'Configure the Docker networking settings in the Kubernetes cluster...'\n2. 'Kubernetes_Troubleshooting.md' - Chunk 7: 'Check the Docker networking configuration in the Kubernetes pods...'\n3. 'Advanced_Docker_Deployment.pdf' - Chunk 2: 'Set the Docker networking parameters in the Kubernetes YAML files...'\n\nThe retrieved chunks are combined into a single response using the RAG process. The response includes:\n\n'To configure Docker networking in Kubernetes, follow these steps:\n\n1. Configure the Docker networking settings in the Kubernetes cluster using the 'Docker_Networking_Configuration_Guide.pdf'.\n2. Set the Docker networking parameters in the Kubernetes YAML files as described in the 'Advanced_Docker_Deployment.pdf'.\n3. Check the Docker networking configuration in the Kubernetes pods using the troubleshooting steps in the 'Kubernetes_Troubleshooting.md'.'\n\nThe semantic search process takes 23 seconds, with a success rate of 95%. The retrieved chunks are relevant and provide actionable insights for managing the technical manuals in the local Weaviate vector database.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "weaviate-claude-skills#main-content",
+      "weaviate-claude-skills#overview",
+      "weaviate-claude-skills#setup",
+      "weaviate-claude-skills#examples",
+      "weaviate-claude-skills#tools",
+      "weaviate-claude-skills#mcp",
+      "weaviate-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Weaviate Claude Skills is a comprehensive collection of five modular skills that enable Claude to connect to and manage local Weaviate vector databases running in Docker. The skills cover setup, connection management, collection schema configuration, data ingestion (single objects, batch uploads, images), and querying with semantic search, keyword search, hybrid queries, and RAG. Designed for operations teams and developers, this local-first approach eliminates network restrictions, cloud costs, and privacy concerns while enabling fast offline queries. Each skill is self-contained and progressively disclosed, allowing Claude to load only what's needed for your specific task.\nSet up and manage local Weaviate instances in Docker for development and testing\nCreate and configure collections with various vectorizers for RAG applications\nBatch ingest documents, images, and structured data into Weaviate collections\nExecute semantic and hybrid searches with filtering and retrieval-augmented generation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/saskinosie/weaviate-claude-skills`",
+    "usage_vi": "```\nConnect Claude.ai to your local Weaviate vector database running in Docker. Create a new collection named [COLLECTION_NAME] with [NUMBER_OF_DIMENSIONS] dimensions. Ingest the documents from [DIRECTORY_PATH] into this collection. Then, perform a semantic search for the query '[SEARCH_QUERY]' using RAG to retrieve relevant results.\n```\nCopy\n\n```\nThe Weaviate Docker container is running locally on port 8080, and the Weaviave-CLAUDE-Skills plugin is installed in Claude.ai. A new collection called 'technical_manuals' is created with 768 dimensions to support semantic search. The documents from the directory '/documents/manuals' are ingested into this collection, including 12 manuals in PDF and Markdown formats such as 'Docker_Quick_Start_Guide.pdf' and 'Kubernetes_Troubleshooting.md'. \n\nThe ingestion process takes 4 minutes and 12 seconds, with a success rate of 100%. The manuals are split into chunks of 500 tokens each, and the embeddings are generated using the 'sentence-transformers' model. The embeddings are stored in the 'technical_manuals' collection, along with the metadata such as the document name, the chunk number, and the token count.\n\nA semantic search is performed for the query 'How to configure Docker networking in Kubernetes'. The RAG (Retrieval-Augmented Generation) process retrieves the top 3 relevant chunks from the 'technical_manuals' collection. The chunks include:\n\n1. 'Docker_Networking_Configuration_Guide.pdf' - Chunk 3: 'Configure the Docker networking settings in the Kubernetes cluster...'\n2. 'Kubernetes_Troubleshooting.md' - Chunk 7: 'Check the Docker networking configuration in the Kubernetes pods...'\n3. 'Advanced_Docker_Deployment.pdf' - Chunk 2: 'Set the Docker networking parameters in the Kubernetes YAML files...'\n\nThe retrieved chunks are combined into a single response using the RAG process. The response includes:\n\n'To configure Docker networking in Kubernetes, follow these steps:\n\n1. Configure the Docker networking settings in the Kubernetes cluster using the 'Docker_Networking_Configuration_Guide.pdf'.\n2. Set the Docker networking parameters in the Kubernetes YAML files as described in the 'Advanced_Docker_Deployment.pdf'.\n3. Check the Docker networking configuration in the Kubernetes pods using the troubleshooting steps in the 'Kubernetes_Troubleshooting.md'.'\n\nThe semantic search process takes 23 seconds, with a success rate of 95%. The retrieved chunks are relevant and provide actionable insights for managing the technical manuals in the local Weaviate vector database.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:02:05.241507Z",
+    "http_status": 200,
+    "content_hash": "5413a4af6a9539b87d36857a5760019eb4011d0e24ddaedfbfe074e86e424aba",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\weaviate-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\weaviate-claude-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Weaviate Claude Skills - Connect to Vector",
+  "short_description_vi": "Connect Claude.ai to local Weaviate vector databases for managing collections, ingesting data, and querying with RAG. Ideal for operations teams using Docker to enhance document search and semantic search capabilities."
+}

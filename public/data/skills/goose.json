@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/goose",
+  "slug": "goose",
+  "name": "Goose",
+  "headline": "Boost Productivity with Goose AI Assistant",
+  "short_description": "Goose is an AI assistant that automates routine tasks for engineers. It integrates with Claude Code, Cursor, Windsurf, Cline, and Codex to streamline workflows. Engineers can delegate repetitive tasks to Goose, freeing up time for complex problem-solving and innovation.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "automation",
+    "productivity",
+    "AI assistant",
+    "task management"
+  ],
+  "sections": {
+    "overview": "Goose is an AI assistant designed to automate routine engineering tasks and streamline developer workflows. It integrates with popular AI-powered development environments including Claude Code, Cursor, Windsurf, Cline, and Codex. By delegating repetitive work to Goose, engineers can focus their efforts on complex problem-solving and innovation rather than manual, routine tasks.\nScheduling appointments\nManaging emails\nGenerating reports",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nUse Goose to automate [TASK] in [PROJECT_NAME]. For example: 'Use Goose to automate the generation of API documentation from the project's OpenAPI spec in the 'user-service' repository.' Include specific instructions like 'Run tests after generation' or 'Push changes to a new branch named 'docs-automation-[DATE]'.'\n```\nCopy\n\n```\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "goose#main-content",
+      "goose#overview",
+      "goose#setup",
+      "goose#examples",
+      "goose#tools",
+      "goose#mcp",
+      "goose#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Goose là trợ lý AI được thiết kế để tự động hóa các tác vụ kỹ thuật thường nhật và tối ưu hóa quy trình làm việc của lập trình viên. Công cụ này tích hợp mượt mà với các môi trường phát triển tích hợp AI phổ biến bao gồm Claude Code, Cursor, Windsurf, Cline và Codex. Bằng cách bàn giao công việc lặp đi lặp lại cho Goose, kỹ sư có thể tập trung nguồn lực vào việc giải quyết những vấn đề phức tạp và đổi mới sáng tạo, thay vì phải xử lý các tác vụ thủ công thông thường.\nLên lịch hẹn\nQuản lý email\nTạo báo cáo",
+    "setup_vi": "Terminal\nSao chép\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nSử dụng Goose để tự động hóa [TASK] trong [PROJECT_NAME]. Ví dụ: 'Sử dụng Goose để tự động hóa việc tạo tài liệu API từ đặc tả OpenAPI của dự án trong repository 'user-service'.' Đi kèm các hướng dẫn cụ thể như 'Chạy test sau khi tạo xong' hoặc 'Push các thay đổi lên một branch mới tên là 'docs-automation-[DATE]'.'\n```\nSao chép\n\n```\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:45:31.926785Z",
+    "http_status": 200,
+    "content_hash": "7a398ab1ffab888d88781bed756b6bcc92b1591085480c67d8ffe5000f546120",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\goose.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\goose.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tăng hiệu suất làm việc với Trợ lý AI Goose",
+  "short_description_vi": "Goose là trợ lý AI giúp tự động hóa các tác vụ thường nhật cho kỹ sư lập trình. Công cụ này tích hợp với Claude Code, Cursor, Windsurf, Cline và Codex nhằm tối ưu hóa quy trình làm việc. Kỹ sư có thể bàn giao các tác vụ lặp đi lặp lại cho Goose, giải phóng thời gian để tập trung giải quyết các bài toán phức tạp và thúc đẩy sáng tạo."
+}

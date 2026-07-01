@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/doc-mindmap",
+  "slug": "doc-mindmap",
+  "name": "Doc Mindmap",
+  "headline": "Doc Mindmap: Batch Document Conversion &",
+  "short_description": "Doc Mindmap assists users in organizing and converting various document formats like PDF, PPT, Word, and Excel into Markdown while providing summaries and categorization. This skill is ideal for those looking to streamline document management and obtain quick insights on file folders.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "crazynomad",
+  "install_command": "git clone https://github.com/crazynomad/skills",
+  "source_repo_url": "https://github.com/crazynomad/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "document-management",
+    "mindmap"
+  ],
+  "sections": {
+    "overview": "Doc Mindmap is a document organization assistant that converts scattered office files into structured, searchable Markdown format. It uses local Ollama models to generate summaries and apply three-dimensional classification (by topic, usage, and client) simultaneously, with results organized via symlinks that consume no additional disk space. The skill automatically detects duplicate files by MD5, suggests AI-optimized file names, and produces a CSV index for quick reference. Ideal for teams and individuals managing large document repositories who need intelligent categorization, duplicate detection, and format conversion without uploading sensitive files to external services.\n整理大量文档、分类归档\n生成一批文档的摘要\n将PDF转成Markdown\n生成文档的思维导图",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/crazynomad/skills --skill doc-mindmap`\n`git clone https://github.com/crazynomad/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "doc-mindmap#main-content",
+      "doc-mindmap#overview",
+      "doc-mindmap#setup",
+      "doc-mindmap#examples",
+      "doc-mindmap#tools",
+      "doc-mindmap#mcp",
+      "doc-mindmap#related"
+    ],
+    "overview_vi": "Doc Mindmap là trợ lý sắp xếp tài liệu giúp chuyển đổi các tệp văn phòng phân tán thành định dạng Markdown có cấu trúc và có thể tìm kiếm được. Công cụ này sử dụng các mô hình Ollama local để tạo tóm tắt và áp dụng phân loại ba chiều (theo chủ đề, mục đích sử dụng và khách hàng) cùng lúc, với kết quả được sắp xếp thông qua các symlink giúp tiết kiệm tối đa dung lượng ổ đĩa. Skill này tự động phát hiện các tệp trùng lặp bằng MD5, gợi ý tên tệp được tối ưu hóa bằng AI và tạo chỉ mục CSV để tra cứu nhanh. Đây là giải pháp lý tưởng cho các cá nhân và đội ngũ quản lý kho tài liệu lớn, cần phân loại thông minh, phát hiện trùng lặp và chuyển đổi định dạng mà không cần tải các tài liệu nhạy cảm lên các dịch vụ bên ngoài.\n\n* Sắp xếp lượng lớn tài liệu và phân loại lưu trữ\n* Tạo tóm tắt cho hàng loạt tài liệu\n* Chuyển đổi PDF sang Markdown\n* Tạo sơ đồ tư duy (mindmap) cho tài liệu",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/crazynomad/skills --skill doc-mindmap`\n`git clone https://github.com/crazynomad/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nHãy kiểm tra kho lưu trữ GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:05:08.622410Z",
+    "http_status": 200,
+    "content_hash": "36dc02775150572733b9762d99dcb1002b45da3b531ee3ee2178da5178b2a526",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\doc-mindmap.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\doc-mindmap.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Doc Mindmap: Chuyển đổi tài liệu hàng loạt &",
+  "short_description_vi": "Doc Mindmap hỗ trợ người dùng sắp xếp và chuyển đổi nhiều định dạng tài liệu khác nhau như PDF, PPT, Word và Excel sang Markdown, đồng thời cung cấp bản tóm tắt và phân loại tài liệu. Skill này là giải pháp lý tưởng cho những ai muốn tối ưu hóa quy trình quản lý tài liệu và nhanh chóng nắm bắt thông tin tổng quan từ các thư mục tệp tin."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gpt-all-star",
+  "slug": "gpt-all-star",
+  "name": "Gpt All Star",
+  "headline": "gpt-all-star: AI Code Generation Tool",
+  "short_description": "gpt-all-star is an AI-powered tool designed for code generation in web application development. It enables collaborative efforts among autonomous AI agents, enhancing team productivity and efficiency.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "kyaukyuai",
+  "install_command": "claude install kyaukyuai/gpt-all-star",
+  "source_repo_url": "https://github.com/kyaukyuai/gpt-all-star",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "autonomous-agent",
+    "coding-assistant",
+    "codegen",
+    "developer-tools",
+    "ai"
+  ],
+  "sections": {
+    "overview": "gpt-all-star enables teams of autonomous AI agents to work together on scratch development of web applications. The tool organizes agents into teams with designated leaders who create action plans and coordinate task execution across multiple team members. It supports multiple LLM providers including OpenAI, Azure OpenAI, and Anthropic, with configurable workflow steps including specification, system design, development, and UI design. Currently focused on React and ChakraUI web applications, gpt-all-star helps developers explore the potential of multi-agent AI collaboration for accelerating application development.\nAutomating code generation for web apps\nCollaborative coding with AI agents\nRapid prototyping of software projects\nAssisting developers in writing code snippets",
+    "setup": "Terminal\nCopy\n`claude install kyaukyuai/gpt-all-star`\n`git clone https://github.com/kyaukyuai/gpt-all-star`",
+    "usage": "```\nGenerate a React component for a [FEATURE] in a web application. The component should include [SPECIFIC ELEMENTS] and follow [DESIGN GUIDELINES]. Ensure it is responsive and accessible. Provide the complete code with comments explaining key sections.\n```\nCopy\n\n```\nHere's a React component for a user profile card in a web application:\n\n```jsx\nimport React from 'react';\nimport PropTypes from 'prop-types';\n\nconst UserProfileCard = ({ user }) => {\n  return (\n    <div className=\"user-profile-card\">\n      <div className=\"profile-header\">\n        <img\n          src={user.avatar}\n          alt={`${user.name}'s avatar`}\n          className=\"profile-avatar\"\n        />\n        <h2 className=\"profile-name\">{user.name}</h2>\n      </div>\n      <div className=\"profile-details\">\n        <p className=\"profile-email\">{user.email}</p>\n        <p className=\"profile-role\">{user.role}</p>\n      </div>\n      <div className=\"profile-actions\">\n        <button className=\"btn btn-primary\">Message</button>\n        <button className=\"btn btn-secondary\">View Profile</button>\n      </div>\n    </div>\n  )\n}\n\nUserProfileCard.propTypes = {\n  user: PropTypes.shape({\n    name: PropTypes.string.isRequired,\n    avatar: PropTypes.string.isRequired,\n    email: PropTypes.string.isRequired,\n    role: PropTypes.string.isRequired,\n  }).isRequired,\n}\n\nexport default UserProfileCard\n```\n\nThis component includes:\n- A responsive layout with a profile header, details section, and action buttons\n- Accessible image alt text and semantic HTML\n- PropTypes for type checking\n- Clean, commented code for maintainability\n\nTo use this component, import it into your application and pass a user object with the required properties.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "gpt-all-star#main-content",
+      "gpt-all-star#overview",
+      "gpt-all-star#setup",
+      "gpt-all-star#examples",
+      "gpt-all-star#tools",
+      "gpt-all-star#mcp",
+      "gpt-all-star#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "gpt-all-star cho phép các nhóm agent AI tự trị cộng tác cùng nhau để phát triển các ứng dụng web từ đầu (scratch development). Công cụ này tổ chức các agent thành từng nhóm với các leader được chỉ định để lập kế hoạch hành động và điều phối việc thực thi nhiệm vụ giữa các thành viên. Nó hỗ trợ nhiều nhà cung cấp LLM bao gồm OpenAI, Azure OpenAI và Anthropic, với các bước workflow có thể cấu hình bao gồm đặc tả yêu cầu (specification), thiết kế hệ thống, phát triển (development) và thiết kế giao diện (UI design). Hiện tại, gpt-all-star tập trung vào các ứng dụng web React và ChakraUI, giúp các nhà phát triển khám phá tiềm năng cộng tác của mô hình đa agent (multi-agent) nhằm đẩy nhanh tiến độ phát triển ứng dụng.\n\nTự động hóa việc tạo code cho ứng dụng web\nCộng tác lập trình với các agent AI\nTạo nguyên mẫu nhanh (rapid prototyping) cho các dự án phần mềm\nHỗ trợ lập trình viên viết các đoạn code (code snippet)",
+    "setup_vi": "Terminal\nSao chép\n`claude install kyaukyuai/gpt-all-star`\n`git clone https://github.com/kyaukyuai/gpt-all-star`",
+    "usage_vi": "```\nTạo một component React cho [TÍNH NĂNG] trong ứng dụng web. Component này phải bao gồm [CÁC PHẦN TỬ CỤ THỂ] và tuân theo [HƯỚNG DẪN THIẾT KẾ]. Đảm bảo component có thiết kế đáp ứng (responsive) và dễ tiếp cận (accessible). Cung cấp toàn bộ mã nguồn kèm theo các chú thích giải thích các phần quan trọng.\n```\nSao chép\n\n```\nDưới đây là một component React cho thẻ thông tin người dùng (user profile card) trong ứng dụng web:\n\n```jsx\nimport React from 'react';\nimport PropTypes from 'prop-types';\n\nconst UserProfileCard = ({ user }) => {\n  return (\n    <div className=\"user-profile-card\">\n      <div className=\"profile-header\">\n        <img\n          src={user.avatar}\n          alt={`${user.name}'s avatar`}\n          className=\"profile-avatar\"\n        />\n        <h2 className=\"profile-name\">{user.name}</h2>\n      </div>\n      <div className=\"profile-details\">\n        <p className=\"profile-email\">{user.email}</p>\n        <p className=\"profile-role\">{user.role}</p>\n      </div>\n      <div className=\"profile-actions\">\n        <button className=\"btn btn-primary\">Message</button>\n        <button className=\"btn btn-secondary\">View Profile</button>\n      </div>\n    </div>\n  )\n}\n\nUserProfileCard.propTypes = {\n  user: PropTypes.shape({\n    name: PropTypes.string.isRequired,\n    avatar: PropTypes.string.isRequired,\n    email: PropTypes.string.isRequired,\n    role: PropTypes.string.isRequired,\n  }).isRequired,\n}\n\nexport default UserProfileCard\n```\n\nComponent này bao gồm:\n- Bố cục responsive với profile header, phần chi tiết và các nút hành động\n- Alt text cho hình ảnh dễ tiếp cận và cấu trúc HTML ngữ nghĩa (semantic HTML)\n- PropTypes để kiểm tra kiểu dữ liệu (type checking)\n- Code sạch, có chú thích rõ ràng để dễ bảo trì\n\nĐể sử dụng component này, hãy import nó vào ứng dụng của bạn và truyền vào một đối tượng user với các thuộc tính bắt buộc.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:14:26.619160Z",
+    "http_status": 200,
+    "content_hash": "53c8c62a8f3ed1841948a94cf3893b72e4358b024de4a3091ed4e17dadfd3eb9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gpt-all-star.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gpt-all-star.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "gpt-all-star: Công cụ tạo code bằng AI",
+  "short_description_vi": "gpt-all-star là công cụ hỗ trợ tạo code bằng AI được thiết kế cho việc phát triển ứng dụng web. Công cụ này cho phép các agent AI tự trị (autonomous AI agents) cộng tác với nhau, giúp nâng cao năng suất và hiệu suất làm việc của đội ngũ."
+}

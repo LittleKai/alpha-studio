@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wellally-health",
+  "slug": "wellally-health",
+  "name": "browser-use",
+  "headline": "WellAlly-health - AI healthcare assistant",
+  "short_description": "Ally-Health is an intelligent healthcare assistant that combines Claude AI technology with medical expertise. Through natural language interaction, it helps users record symptoms, manage medications, track medical records, and access professional multidisciplinary consultation analysis. making health management smarter and more accessible",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "huifer",
+  "install_command": "git clone https://github.com/huifer/WellAlly-health.git",
+  "source_repo_url": "https://github.com/huifer/WellAlly-health",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "health-data",
+    "health"
+  ],
+  "sections": {
+    "overview": "WellAlly-health is an intelligent healthcare assistant built on Claude AI that enables users to manage their health through natural language interaction. The platform supports symptom recording, medication management, medical record tracking, and provides multidisciplinary consultation analysis. It includes specialized functionality for fitness tracking, nutrition monitoring, and weight loss analysis with metrics like TDEE calculation, BMR formulas, body composition analysis, and metabolic profiling. The system validates health parameters such as calorie targets and weight loss rates to ensure safe health management. WellAlly-health makes healthcare more accessible by combining AI technology with medical expertise for comprehensive health monitoring.\nAutomatically record and track medication schedules and dosages.\nManage and query personal health records, including allergies and surgical history.\nFacilitate multi-disciplinary consultations by integrating insights from various medical specialists.\nDetect potential drug interactions based on current medication records.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/huifer/WellAlly-health`",
+    "usage": "```\nAct as WellAlly-health, an intelligent healthcare assistant. Help me [RECORD/MANAGE/TRACK/ANALYZE] the following health-related task: [SPECIFIC_TASK]. For example, record symptoms for [CONDITION], manage medications for [PATIENT], track medical records for [VISIT_TYPE], or analyze consultation notes for [SPECIALTY]. Include relevant medical context, potential next steps, and any warnings or alerts based on [USER_INPUT].\n```\nCopy\n\n```\nI’ve reviewed your recent consultation notes for your Type 2 Diabetes follow-up with Dr. Lee at Memorial Hospital. Here’s what stands out:\n\n**Current Status:**\n- HbA1c: 7.2% (down from 7.8% last quarter, but still above the target of <7%)\n- Blood pressure: 138/85 mmHg (improved from 145/90, but still in the pre-hypertensive range)\n- Weight: 192 lbs (stable, goal is 185 lbs)\n\n**Key Observations:**\n- Your medication adherence for Metformin is excellent (95% compliance), but you’ve missed 2 doses of Lisinopril this month.\n- Your last A1c test showed a slight improvement, but your fasting glucose averages 155 mg/dL, which is still elevated.\n- Dr. Lee noted mild peripheral edema in your right ankle, which may be related to fluid retention from Lisinopril.\n\n**Recommended Next Steps:**\n1. **Medication Adjustment:** Consider discussing with Dr. Lee whether a slight dose reduction of Lisinopril could help with the edema while maintaining blood pressure control.\n2. **Lifestyle:** Your diet tracking shows consistent carb intake, but your sodium levels are high (average 2,800 mg/day). Reducing processed foods could help with blood pressure and edema.\n3. **Monitoring:** Start tracking your blood pressure at home twice daily for the next 2 weeks and log your weight weekly. Share these logs with Dr. Lee at your next appointment.\n\n**Alerts:**\n- Your blood pressure is still elevated, which increases your risk for cardiovascular complications. Schedule a follow-up with Dr. Lee within the next 2 weeks to review your medications.\n- The edema in your ankle warrants evaluation to rule out other causes like venous insufficiency.\n\nWould you like me to draft a message to Dr. Lee summarizing these points or help you set up a reminder to track your vitals?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wellally-health#main-content",
+      "wellally-health#overview",
+      "wellally-health#setup",
+      "wellally-health#examples",
+      "wellally-health#tools",
+      "wellally-health#mcp",
+      "wellally-health#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "WellAlly-health is an intelligent healthcare assistant built on Claude AI that enables users to manage their health through natural language interaction. The platform supports symptom recording, medication management, medical record tracking, and provides multidisciplinary consultation analysis. It includes specialized functionality for fitness tracking, nutrition monitoring, and weight loss analysis with metrics like TDEE calculation, BMR formulas, body composition analysis, and metabolic profiling. The system validates health parameters such as calorie targets and weight loss rates to ensure safe health management. WellAlly-health makes healthcare more accessible by combining AI technology with medical expertise for comprehensive health monitoring.\nAutomatically record and track medication schedules and dosages.\nManage and query personal health records, including allergies and surgical history.\nFacilitate multi-disciplinary consultations by integrating insights from various medical specialists.\nDetect potential drug interactions based on current medication records.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/huifer/WellAlly-health`",
+    "usage_vi": "```\nAct as WellAlly-health, an intelligent healthcare assistant. Help me [RECORD/MANAGE/TRACK/ANALYZE] the following health-related task: [SPECIFIC_TASK]. For example, record symptoms for [CONDITION], manage medications for [PATIENT], track medical records for [VISIT_TYPE], or analyze consultation notes for [SPECIALTY]. Include relevant medical context, potential next steps, and any warnings or alerts based on [USER_INPUT].\n```\nCopy\n\n```\nI’ve reviewed your recent consultation notes for your Type 2 Diabetes follow-up with Dr. Lee at Memorial Hospital. Here’s what stands out:\n\n**Current Status:**\n- HbA1c: 7.2% (down from 7.8% last quarter, but still above the target of <7%)\n- Blood pressure: 138/85 mmHg (improved from 145/90, but still in the pre-hypertensive range)\n- Weight: 192 lbs (stable, goal is 185 lbs)\n\n**Key Observations:**\n- Your medication adherence for Metformin is excellent (95% compliance), but you’ve missed 2 doses of Lisinopril this month.\n- Your last A1c test showed a slight improvement, but your fasting glucose averages 155 mg/dL, which is still elevated.\n- Dr. Lee noted mild peripheral edema in your right ankle, which may be related to fluid retention from Lisinopril.\n\n**Recommended Next Steps:**\n1. **Medication Adjustment:** Consider discussing with Dr. Lee whether a slight dose reduction of Lisinopril could help with the edema while maintaining blood pressure control.\n2. **Lifestyle:** Your diet tracking shows consistent carb intake, but your sodium levels are high (average 2,800 mg/day). Reducing processed foods could help with blood pressure and edema.\n3. **Monitoring:** Start tracking your blood pressure at home twice daily for the next 2 weeks and log your weight weekly. Share these logs with Dr. Lee at your next appointment.\n\n**Alerts:**\n- Your blood pressure is still elevated, which increases your risk for cardiovascular complications. Schedule a follow-up with Dr. Lee within the next 2 weeks to review your medications.\n- The edema in your ankle warrants evaluation to rule out other causes like venous insufficiency.\n\nWould you like me to draft a message to Dr. Lee summarizing these points or help you set up a reminder to track your vitals?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:59:16.127417Z",
+    "http_status": 200,
+    "content_hash": "c1404820ddd4148bd6eadcb7b560af4d9682d65d5c83608daab11c25a871dd51",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wellally-health.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wellally-health.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "WellAlly-health - AI healthcare assistant",
+  "short_description_vi": "Ally-Health is an intelligent healthcare assistant that combines Claude AI technology with medical expertise. Through natural language interaction, it helps users record symptoms, manage medications, track medical records, and access professional multidisciplinary consultation analysis. making health management smarter and more accessible"
+}

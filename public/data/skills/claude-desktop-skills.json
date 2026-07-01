@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-desktop-skills",
+  "slug": "claude-desktop-skills",
+  "name": "browser-use",
+  "headline": "skills and scripts for claude desktop",
+  "short_description": "These are the skills in markdown as well as supporting python scripts that Claude Desktop uses when using the new skill feature.  These were provided to me in a .gz file from Claude desktop in an artifact and I haven't seen them published yet.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "Arborist-ai",
+  "install_command": "git clone https://github.com/Arborist-ai/Claude-Desktop-Skills.git",
+  "source_repo_url": "https://github.com/Arborist-ai/Claude-Desktop-Skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Desktop Skills provides a structured collection of instruction sets and helper scripts that enable Claude to create and edit professional documents with consistent formatting and standards. The skill covers Word documents, PDF handling including fillable forms, PowerPoint presentations, and Excel spreadsheets with detailed formatting rules. Users can customize color schemes, number formatting, fonts, and company-specific requirements by editing the markdown instruction files. Each file type includes a SKILL.md guide and supporting Python scripts like recalc.py for formula verification. This approach ensures consistent, professional output across all document types while allowing organizations to enforce their own branding and style standards.\nCreating Excel financial models with standardized color coding for inputs, formulas, and links\nGenerating professional Word documents and PDFs with company formatting standards\nBuilding PowerPoint presentations using template guidelines\nFilling and processing fillable PDF forms programmatically\n- **Scenario 1**: [DESCRIPTION]\n- **Scenario 2**: [DESCRIPTION]",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arborist-ai/Claude-Desktop-Skills`",
+    "usage": "```\nAnalyze the following Claude Desktop skill files and provide a summary of their capabilities. Focus on the [SKILL_NAME] skill, which is described in [FILE_NAME]. Highlight the key features, dependencies, and potential use cases for this skill. Also, identify any unique aspects of this skill compared to similar automation tools.\n```\nCopy\n\n```\n# Claude Desktop Skill Analysis: [SKILL_NAME]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-desktop-skills#main-content",
+      "claude-desktop-skills#overview",
+      "claude-desktop-skills#setup",
+      "claude-desktop-skills#examples",
+      "claude-desktop-skills#tools",
+      "claude-desktop-skills#mcp",
+      "claude-desktop-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Desktop Skills provides a structured collection of instruction sets and helper scripts that enable Claude to create and edit professional documents with consistent formatting and standards. The skill covers Word documents, PDF handling including fillable forms, PowerPoint presentations, and Excel spreadsheets with detailed formatting rules. Users can customize color schemes, number formatting, fonts, and company-specific requirements by editing the markdown instruction files. Each file type includes a SKILL.md guide and supporting Python scripts like recalc.py for formula verification. This approach ensures consistent, professional output across all document types while allowing organizations to enforce their own branding and style standards.\nCreating Excel financial models with standardized color coding for inputs, formulas, and links\nGenerating professional Word documents and PDFs with company formatting standards\nBuilding PowerPoint presentations using template guidelines\nFilling and processing fillable PDF forms programmatically\n- **Scenario 1**: [DESCRIPTION]\n- **Scenario 2**: [DESCRIPTION]",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arborist-ai/Claude-Desktop-Skills`",
+    "usage_vi": "```\nAnalyze the following Claude Desktop skill files and provide a summary of their capabilities. Focus on the [SKILL_NAME] skill, which is described in [FILE_NAME]. Highlight the key features, dependencies, and potential use cases for this skill. Also, identify any unique aspects of this skill compared to similar automation tools.\n```\nCopy\n\n```\n# Claude Desktop Skill Analysis: [SKILL_NAME]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:25:41.921329Z",
+    "http_status": 200,
+    "content_hash": "d8c61cf743ffc35f93713e5a5e2f6daf2f48f44c50a3ae9c0b5cd070508ddbcc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-desktop-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-desktop-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "skills and scripts for claude desktop",
+  "short_description_vi": "These are the skills in markdown as well as supporting python scripts that Claude Desktop uses when using the new skill feature.  These were provided to me in a .gz file from Claude desktop in an artifact and I haven't seen them published yet."
+}

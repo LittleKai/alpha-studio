@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bilibili-downloader",
+  "slug": "bilibili-downloader",
+  "name": "XNXX Downloader",
+  "headline": "bilibili-downloader: Claude Code skill for Video",
+  "short_description": "The bilibili-downloader allows users to download videos from Bilibili using the video URL or BV number. It's useful for anyone looking to save Bilibili content locally.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "958877748",
+  "install_command": "git clone https://github.com/958877748/skills",
+  "source_repo_url": "https://github.com/958877748/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "video-downloading",
+    "bilibili",
+    "downloader"
+  ],
+  "sections": {
+    "overview": "The bilibili-downloader skill enables users to download videos directly from Bilibili by providing either the video URL or BV number. This tool is designed for anyone who wants to save Bilibili content to their local device for offline viewing or archival purposes. The skill simplifies the download process by accepting standard Bilibili video identifiers, making it straightforward to preserve video content.\nDownload Bilibili videos for offline viewing.\nSave educational videos from Bilibili for study purposes.\nArchive favorite Bilibili content.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/958877748/skills --skill bilibili-downloader`\n`git clone https://github.com/958877748/skills`",
+    "usage": "```\nDownload the video from Bilibili using this URL: [VIDEO_URL]. Ensure the highest available quality and include subtitles if available. Save the file as '[VIDEO_TITLE].mp4' in the 'Downloads/Bilibili' folder. Use the BV number: [BV_NUMBER] for verification if needed.\n```\nCopy\n\n```\n### Bilibili Video Downloaded Successfully!\n\n**Title:** How to Build a Scalable SaaS Platform\n**BV Number:** BV123456789\n**Quality:** 1080p (Highest Available)\n**Duration:** 12:45\n**File Size:** 185 MB\n\n**File Location:**\n`Downloads/Bilibili/How_to_Build_a_Scalable_SaaS_Platform.mp4`\n\n**Subtitles:**\n- English subtitles included (auto-generated)\n- Traditional Chinese subtitles available (manual upload)\n\n**Verification:**\n✅ BV123456789 matches the provided URL.\n✅ Video integrity confirmed (no corruption).\n\nWould you like me to extract the audio or convert this to another format (e.g., MP3, MKV)?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "bilibili-downloader#main-content",
+      "bilibili-downloader#overview",
+      "bilibili-downloader#setup",
+      "bilibili-downloader#examples",
+      "bilibili-downloader#related",
+      "xhamster-downloader",
+      "xnxx-downloader"
+    ],
+    "overview_vi": "The bilibili-downloader skill enables users to download videos directly from Bilibili by providing either the video URL or BV number. This tool is designed for anyone who wants to save Bilibili content to their local device for offline viewing or archival purposes. The skill simplifies the download process by accepting standard Bilibili video identifiers, making it straightforward to preserve video content.\nDownload Bilibili videos for offline viewing.\nSave educational videos from Bilibili for study purposes.\nArchive favorite Bilibili content.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/958877748/skills --skill bilibili-downloader`\n`git clone https://github.com/958877748/skills`",
+    "usage_vi": "```\nDownload the video from Bilibili using this URL: [VIDEO_URL]. Ensure the highest available quality and include subtitles if available. Save the file as '[VIDEO_TITLE].mp4' in the 'Downloads/Bilibili' folder. Use the BV number: [BV_NUMBER] for verification if needed.\n```\nCopy\n\n```\n### Bilibili Video Downloaded Successfully!\n\n**Title:** How to Build a Scalable SaaS Platform\n**BV Number:** BV123456789\n**Quality:** 1080p (Highest Available)\n**Duration:** 12:45\n**File Size:** 185 MB\n\n**File Location:**\n`Downloads/Bilibili/How_to_Build_a_Scalable_SaaS_Platform.mp4`\n\n**Subtitles:**\n- English subtitles included (auto-generated)\n- Traditional Chinese subtitles available (manual upload)\n\n**Verification:**\n✅ BV123456789 matches the provided URL.\n✅ Video integrity confirmed (no corruption).\n\nWould you like me to extract the audio or convert this to another format (e.g., MP3, MKV)?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:58:24.850330Z",
+    "http_status": 200,
+    "content_hash": "b416a59972645a3777b1e11d5a3c58feaa20d66287e8bb3ca5d9d2a14ba068da",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bilibili-downloader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bilibili-downloader.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "bilibili-downloader: Claude Code skill for Video",
+  "short_description_vi": "The bilibili-downloader allows users to download videos from Bilibili using the video URL or BV number. It's useful for anyone looking to save Bilibili content locally."
+}

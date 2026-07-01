@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcgravity",
+  "slug": "mcgravity",
+  "name": "browser-use",
+  "headline": "mcgravity: AI Coding Tools",
+  "short_description": "McGravity is a fast TUI that orchestrates AI coding tools like Claude Code, Codex, and Gemini in a plan-execute-review loop. It breaks work into atomic tasks for easier verification and course-correction. Ideal for developers and operations teams looking to streamline coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "tigranbs",
+  "install_command": "git clone https://github.com/tigranbs/mcgravity.git",
+  "source_repo_url": "https://github.com/tigranbs/mcgravity",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "vibe-coding",
+    "claude",
+    "codex",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "mcgravity is an innovative automation skill designed to orchestrate AI coding tools such as Claude Code, Codex, and Gemini in a structured plan-execute-review loop. This fast terminal user interface (TUI) breaks down complex work into atomic tasks, allowing for easier verification and course correction. By facilitating a clear workflow, mcgravity enhances the efficiency of coding processes, making it a valuable asset for developers and product managers alike. The key benefits of mcgravity include improved task management and streamlined collaboration among AI agents. By segmenting work into manageable components, users can quickly assess progress and make necessary adjustments, ultimately saving time in the development cycle. Although the exact time savings are currently unknown, the skill's design promotes a more efficient workflow, which can lead to significant reductions in project timelines when implemented effectively. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to enhance their coding workflows. It is ideal for teams that rely heavily on AI automation and need to ensure that their coding tasks are executed with precision. With its intermediate implementation difficulty, mcgravity can be set up in just 30 minutes, making it accessible for those familiar with AI tools and coding environments. Practical use cases for mcgravity include automating repetitive coding tasks, improving code quality through iterative reviews, and facilitating collaboration between multiple AI agents. For instance, a development team could use mcgravity to coordinate a project involving multiple AI tools, allowing them to efficiently manage tasks such as code generation, testing, and debugging. As organizations increasingly adopt AI-first workflows, mcgravity stands out as a crucial skill that enhances productivity and streamlines the development process.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tigranbs/mcgravity`",
+    "usage": "```\nUse McGravity to automate the resolution of [ISSUE_DESCRIPTION] in [PROJECT_NAME]. Break the task into atomic steps, then execute them in sequence using [AI_CODING_TOOL]. After each step, verify the output against [VERIFICATION_CRITERIA]. If a step fails, pause execution and suggest a correction before proceeding. Document the entire process in a [LOG_FILE_NAME].\n```\nCopy\n\n```\n```\n=== McGravity Session Log: Fixing Auth Token Expiry in API Gateway ===\n[2024-05-15 14:30:20] Starting McGravity session for issue: 'API Gateway tokens expire after 1 hour despite 24-hour TTL setting'\n[2024-05-15 14:30:25] Task 1: Verify current token expiration logic in /src/auth/tokenService.js\n[2024-05-15 14:30:30] Executing with Claude Code: 'grep -r \"tokenExpiry\\|expiresIn\" /src/auth/'\n[2024-05-15 14:30:35] Output: Found hardcoded 3600s expiry in tokenService.js line 42\n[2024-05-15 14:30:40] Verification: ✅ Issue confirmed - hardcoded value overrides config\n[2024-05-15 14:30:45] Task 2: Replace hardcoded value with environment variable\n[2024-05-15 14:30:50] Executing with Codex: 'Replace 3600 with process.env.TOKEN_EXPIRY || 86400 in tokenService.js'\n[2024-05-15 14:30:55] Output: Code updated successfully\n[2024-05-15 14:31:00] Verification: ✅ Unit tests pass (89% coverage)\n[2024-05-15 14:31:05] Task 3: Deploy changes to staging and verify token lifetime\n[2024-05-15 14:31:10] Executing with GitHub CLI: 'gh workflow run deploy.yml --ref staging'\n[2024-05-15 14:31:20] Output: Deployment successful (commit: a1b2c3d)\n[2024-05-15 14:31:25] Verification: ✅ Tokens now persist for 24h as configured\n[2024-05-15 14:31:30] Session completed successfully. Log saved to /logs/mcgravity_auth_fix_20240515.log\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcgravity#main-content",
+      "mcgravity#overview",
+      "mcgravity#setup",
+      "mcgravity#examples",
+      "mcgravity#tools",
+      "mcgravity#mcp",
+      "mcgravity#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcgravity is an innovative automation skill designed to orchestrate AI coding tools such as Claude Code, Codex, and Gemini in a structured plan-execute-review loop. This fast terminal user interface (TUI) breaks down complex work into atomic tasks, allowing for easier verification and course correction. By facilitating a clear workflow, mcgravity enhances the efficiency of coding processes, making it a valuable asset for developers and product managers alike. The key benefits of mcgravity include improved task management and streamlined collaboration among AI agents. By segmenting work into manageable components, users can quickly assess progress and make necessary adjustments, ultimately saving time in the development cycle. Although the exact time savings are currently unknown, the skill's design promotes a more efficient workflow, which can lead to significant reductions in project timelines when implemented effectively. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to enhance their coding workflows. It is ideal for teams that rely heavily on AI automation and need to ensure that their coding tasks are executed with precision. With its intermediate implementation difficulty, mcgravity can be set up in just 30 minutes, making it accessible for those familiar with AI tools and coding environments. Practical use cases for mcgravity include automating repetitive coding tasks, improving code quality through iterative reviews, and facilitating collaboration between multiple AI agents. For instance, a development team could use mcgravity to coordinate a project involving multiple AI tools, allowing them to efficiently manage tasks such as code generation, testing, and debugging. As organizations increasingly adopt AI-first workflows, mcgravity stands out as a crucial skill that enhances productivity and streamlines the development process.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tigranbs/mcgravity`",
+    "usage_vi": "```\nUse McGravity to automate the resolution of [ISSUE_DESCRIPTION] in [PROJECT_NAME]. Break the task into atomic steps, then execute them in sequence using [AI_CODING_TOOL]. After each step, verify the output against [VERIFICATION_CRITERIA]. If a step fails, pause execution and suggest a correction before proceeding. Document the entire process in a [LOG_FILE_NAME].\n```\nCopy\n\n```\n```\n=== McGravity Session Log: Fixing Auth Token Expiry in API Gateway ===\n[2024-05-15 14:30:20] Starting McGravity session for issue: 'API Gateway tokens expire after 1 hour despite 24-hour TTL setting'\n[2024-05-15 14:30:25] Task 1: Verify current token expiration logic in /src/auth/tokenService.js\n[2024-05-15 14:30:30] Executing with Claude Code: 'grep -r \"tokenExpiry\\|expiresIn\" /src/auth/'\n[2024-05-15 14:30:35] Output: Found hardcoded 3600s expiry in tokenService.js line 42\n[2024-05-15 14:30:40] Verification: ✅ Issue confirmed - hardcoded value overrides config\n[2024-05-15 14:30:45] Task 2: Replace hardcoded value with environment variable\n[2024-05-15 14:30:50] Executing with Codex: 'Replace 3600 with process.env.TOKEN_EXPIRY || 86400 in tokenService.js'\n[2024-05-15 14:30:55] Output: Code updated successfully\n[2024-05-15 14:31:00] Verification: ✅ Unit tests pass (89% coverage)\n[2024-05-15 14:31:05] Task 3: Deploy changes to staging and verify token lifetime\n[2024-05-15 14:31:10] Executing with GitHub CLI: 'gh workflow run deploy.yml --ref staging'\n[2024-05-15 14:31:20] Output: Deployment successful (commit: a1b2c3d)\n[2024-05-15 14:31:25] Verification: ✅ Tokens now persist for 24h as configured\n[2024-05-15 14:31:30] Session completed successfully. Log saved to /logs/mcgravity_auth_fix_20240515.log\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:58:00.742285Z",
+    "http_status": 200,
+    "content_hash": "cfad90052248f857a377538ab44c6919f2d8d1e7661128171226535bd4a374af",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcgravity.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcgravity.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mcgravity: AI Coding Tools",
+  "short_description_vi": "McGravity is a fast TUI that orchestrates AI coding tools like Claude Code, Codex, and Gemini in a plan-execute-review loop. It breaks work into atomic tasks for easier verification and course-correction. Ideal for developers and operations teams looking to streamline coding workflows."
+}

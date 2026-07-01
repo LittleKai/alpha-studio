@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/smartclip-ai",
+  "slug": "smartclip-ai",
+  "name": "popsicle",
+  "headline": "SmartClip: YouTube Clip & AI Explain",
+  "short_description": "A powerful SaaS platform designed for content creators, researchers, marketing professionals, and educators. Our service allows you to move beyond simple viewing by providing the tools to precisely clip the moments you need and get instant AI-generated explanations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "Rohan11203",
+  "install_command": "git clone https://github.com/Rohan11203/SmartClip.ai.git",
+  "source_repo_url": "https://github.com/Rohan11203/SmartClip.ai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "SmartClip is a web application that enables users to paste a YouTube link, select a specific start and end time, and either download the clipped segment or receive an AI-generated explanation of its content. The platform uses yt-dlp and FFmpeg to extract and trim video segments, then sends them to Google Gemini for natural-language summaries. Clipped videos are hosted on Cloudinary for fast delivery. The React-based frontend provides client-side validation and in-browser playback, while the Node.js/Express backend with MongoDB manages clip metadata and user requests. This skill solves the problem of manually scrubbing through long videos—researchers, educators, and marketing professionals can now isolate key moments and understand them instantly without watching entire videos.\nExtract key moments from educational videos for teaching materials\nClip conference talks or webinars for social media marketing\nGenerate summaries of product demos or tutorial segments\nCreate short-form content from longer YouTube videos",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Rohan11203/SmartClip.ai`",
+    "usage": "```\nI'm a [JOB TITLE] at [COMPANY] in the [INDUSTRY] industry. I need to analyze [SPECIFIC VIDEO/AUDIO CONTENT] to extract key insights. Can you help me create a SmartClip.ai workflow to identify and clip the most important moments, then generate AI explanations for each clip?\n```\nCopy\n\n```\n# SmartClip.ai Workflow for [COMPANY] Marketing Analysis",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "smartclip-ai#main-content",
+      "smartclip-ai#overview",
+      "smartclip-ai#setup",
+      "smartclip-ai#examples",
+      "smartclip-ai#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "SmartClip is a web application that enables users to paste a YouTube link, select a specific start and end time, and either download the clipped segment or receive an AI-generated explanation of its content. The platform uses yt-dlp and FFmpeg to extract and trim video segments, then sends them to Google Gemini for natural-language summaries. Clipped videos are hosted on Cloudinary for fast delivery. The React-based frontend provides client-side validation and in-browser playback, while the Node.js/Express backend with MongoDB manages clip metadata and user requests. This skill solves the problem of manually scrubbing through long videos—researchers, educators, and marketing professionals can now isolate key moments and understand them instantly without watching entire videos.\nExtract key moments from educational videos for teaching materials\nClip conference talks or webinars for social media marketing\nGenerate summaries of product demos or tutorial segments\nCreate short-form content from longer YouTube videos",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Rohan11203/SmartClip.ai`",
+    "usage_vi": "```\nI'm a [JOB TITLE] at [COMPANY] in the [INDUSTRY] industry. I need to analyze [SPECIFIC VIDEO/AUDIO CONTENT] to extract key insights. Can you help me create a SmartClip.ai workflow to identify and clip the most important moments, then generate AI explanations for each clip?\n```\nCopy\n\n```\n# SmartClip.ai Workflow for [COMPANY] Marketing Analysis"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:44:45.867021Z",
+    "http_status": 200,
+    "content_hash": "0cdce12dec626f84d205b6487e506262ac58cbd4704dcfdc740c61545cc9f8be",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\smartclip-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\smartclip-ai.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SmartClip: YouTube Clip & AI Explain",
+  "short_description_vi": "A powerful SaaS platform designed for content creators, researchers, marketing professionals, and educators. Our service allows you to move beyond simple viewing by providing the tools to precisely clip the moments you need and get instant AI-generated explanations."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/my-claude-skills",
+  "slug": "my-claude-skills",
+  "name": "my_claude_skills",
+  "headline": "Claude Skills Collection: Research & Museum",
+  "short_description": "Collection of custom Claude skills for reasoning, bioinformatics, accounting, and museum workflows. Includes PDF extraction, document OCR, phylogenomics, and specimen management tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "brunoasm",
+  "install_command": "git clone https://github.com/brunoasm/my_claude_skills.git",
+  "source_repo_url": "https://github.com/brunoasm/my_claude_skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "B. de Medeiros' Claude Skills Collection provides modular, self-contained plugins designed for specialized workflows across research, bioinformatics, accounting, and museum curation. The collection includes tools for extracting structured data from scientific PDFs with external validation, converting scanned documents to clean Markdown, processing procurement receipts, managing lab supply orders, generating phylogenomic analyses from genome assemblies, setting up biogeographic analyses in R, and bulk uploading specimen data to museum databases. Each skill is independently installable via Claude Code CLI, VS Code, JetBrains IDEs, or Claude.ai web, making it accessible for individual researchers, bioinformaticians, lab managers, and museum curators who need to automate domain-specific tasks without custom development.\nExtract and validate structured data from scientific PDFs automatically\nConvert scanned research documents and receipts to clean, searchable Markdown\nTrack lab expenses and reconcile procurement card transactions\nAutomate phylogenomic workflow generation from genome assemblies",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brunoasm/my_claude_skills`",
+    "usage": "```\nI want to ensure Claude doesn't automatically confirm or agree with my statements. When I say something like '[STATEMENT]', don't just say 'That sounds correct' or 'I agree'. Instead, provide a thoughtful response that considers the nuances. If you're unsure, say so. If you agree, explain why. If you disagree, explain why. Let's start with this statement: '[STATEMENT]'.\n```\nCopy\n\n```\n### Response to Statement: 'The marketing campaign for [COMPANY]'s new product in the [INDUSTRY] was a complete success.'\n\nWhile the campaign did achieve some notable results, it's important to consider several factors before labeling it a complete success:\n\n- **Metrics Analysis**: The campaign saw a 30% increase in engagement, but the conversion rate to sales was only 5%, which is below the industry average of 8%.\n- **Target Audience Reach**: The campaign primarily reached existing customers rather than new potential clients, which may not contribute significantly to long-term growth.\n- **Feedback and Reviews**: Customer feedback indicates that while the campaign was visually appealing, some users found the messaging unclear and not aligned with their needs.\n\nTherefore, while the campaign had some positive outcomes, it may not be accurate to label it a complete success without further analysis and adjustments.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "my-claude-skills#main-content",
+      "my-claude-skills#overview",
+      "my-claude-skills#setup",
+      "my-claude-skills#examples",
+      "my-claude-skills#tools",
+      "my-claude-skills#mcp",
+      "my-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "B. de Medeiros' Claude Skills Collection provides modular, self-contained plugins designed for specialized workflows across research, bioinformatics, accounting, and museum curation. The collection includes tools for extracting structured data from scientific PDFs with external validation, converting scanned documents to clean Markdown, processing procurement receipts, managing lab supply orders, generating phylogenomic analyses from genome assemblies, setting up biogeographic analyses in R, and bulk uploading specimen data to museum databases. Each skill is independently installable via Claude Code CLI, VS Code, JetBrains IDEs, or Claude.ai web, making it accessible for individual researchers, bioinformaticians, lab managers, and museum curators who need to automate domain-specific tasks without custom development.\nExtract and validate structured data from scientific PDFs automatically\nConvert scanned research documents and receipts to clean, searchable Markdown\nTrack lab expenses and reconcile procurement card transactions\nAutomate phylogenomic workflow generation from genome assemblies",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brunoasm/my_claude_skills`",
+    "usage_vi": "```\nI want to ensure Claude doesn't automatically confirm or agree with my statements. When I say something like '[STATEMENT]', don't just say 'That sounds correct' or 'I agree'. Instead, provide a thoughtful response that considers the nuances. If you're unsure, say so. If you agree, explain why. If you disagree, explain why. Let's start with this statement: '[STATEMENT]'.\n```\nCopy\n\n```\n### Response to Statement: 'The marketing campaign for [COMPANY]'s new product in the [INDUSTRY] was a complete success.'\n\nWhile the campaign did achieve some notable results, it's important to consider several factors before labeling it a complete success:\n\n- **Metrics Analysis**: The campaign saw a 30% increase in engagement, but the conversion rate to sales was only 5%, which is below the industry average of 8%.\n- **Target Audience Reach**: The campaign primarily reached existing customers rather than new potential clients, which may not contribute significantly to long-term growth.\n- **Feedback and Reviews**: Customer feedback indicates that while the campaign was visually appealing, some users found the messaging unclear and not aligned with their needs.\n\nTherefore, while the campaign had some positive outcomes, it may not be accurate to label it a complete success without further analysis and adjustments.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:36:54.666124Z",
+    "http_status": 200,
+    "content_hash": "8746d59b641f8c33afb74cd977d7f24f6bde2cbdf963252ef8b644354f3d0988",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\my-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\my-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Skills Collection: Research & Museum",
+  "short_description_vi": "Collection of custom Claude skills for reasoning, bioinformatics, accounting, and museum workflows. Includes PDF extraction, document OCR, phylogenomics, and specimen management tools."
+}

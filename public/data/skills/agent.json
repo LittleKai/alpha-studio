@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent",
+  "slug": "agent",
+  "name": "Agent",
+  "headline": "agent: ai for ui automation tasks",
+  "short_description": "AI agent for UI automation that understands mobile and web interfaces. Enables natural-language test automation for QA teams. Integrates with Robot Framework for test execution and reporting.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "aidriventesting",
+  "install_command": "git clone https://github.com/aidriventesting/Agent.git",
+  "source_repo_url": "https://github.com/aidriventesting/Agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "software-testing",
+    "ai-automation",
+    "ai-agent",
+    "test-automation",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Robot Framework Agent transforms plain-English instructions into automated UI interactions and visual checks across web and mobile platforms. It integrates with Robot Framework's test execution model, allowing QA teams to write human-readable test steps like 'click on login button' and 'verify homepage is displayed' without manual tool scripting. The Agent uses vision-based UI parsing and LLM-driven element detection to locate and interact with interface components. Supported LLM providers include OpenAI, Anthropic Claude, and Google Gemini. Currently in alpha maturity, it demonstrates experimental approaches to AI-assisted test automation.\nWrite mobile app test scenarios in natural language without coding Appium logic\nConvert manual QA test steps into executable Robot Framework tests\nVerify UI states visually across responsive web and mobile designs\nAutomate repetitive form input and navigation workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aidriventesting/Agent`",
+    "usage": "```\nCreate a UI automation test for [COMPANY] in the [INDUSTRY] sector. The test should verify that users can successfully [ACTION] on the [PLATFORM] (web or mobile) using the following steps: [STEPS]. Include assertions to validate the expected outcomes. Format the test for Robot Framework integration.\n```\nCopy\n\n```\n# UI Automation Test for E-Commerce Checkout Process",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent#main-content",
+      "agent#overview",
+      "agent#setup",
+      "agent#examples",
+      "agent#tools",
+      "agent#mcp",
+      "agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Robot Framework Agent transforms plain-English instructions into automated UI interactions and visual checks across web and mobile platforms. It integrates with Robot Framework's test execution model, allowing QA teams to write human-readable test steps like 'click on login button' and 'verify homepage is displayed' without manual tool scripting. The Agent uses vision-based UI parsing and LLM-driven element detection to locate and interact with interface components. Supported LLM providers include OpenAI, Anthropic Claude, and Google Gemini. Currently in alpha maturity, it demonstrates experimental approaches to AI-assisted test automation.\nWrite mobile app test scenarios in natural language without coding Appium logic\nConvert manual QA test steps into executable Robot Framework tests\nVerify UI states visually across responsive web and mobile designs\nAutomate repetitive form input and navigation workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aidriventesting/Agent`",
+    "usage_vi": "```\nCreate a UI automation test for [COMPANY] in the [INDUSTRY] sector. The test should verify that users can successfully [ACTION] on the [PLATFORM] (web or mobile) using the following steps: [STEPS]. Include assertions to validate the expected outcomes. Format the test for Robot Framework integration.\n```\nCopy\n\n```\n# UI Automation Test for E-Commerce Checkout Process"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:39:09.013497Z",
+    "http_status": 200,
+    "content_hash": "550d776a38c3aadcb785aa0883e43580bf17680d75c5b330ae259116f6696652",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agent: ai for ui automation tasks",
+  "short_description_vi": "AI agent for UI automation that understands mobile and web interfaces. Enables natural-language test automation for QA teams. Integrates with Robot Framework for test execution and reporting."
+}

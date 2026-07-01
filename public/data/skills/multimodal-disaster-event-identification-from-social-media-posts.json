@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/multimodal-disaster-event-identification-from-social-media-posts",
+  "slug": "multimodal-disaster-event-identification-from-social-media-posts",
+  "name": "Multimodal-Disaster-Event-Identification-from-Social-Media-Posts",
+  "headline": "Disaster Event Identification from Social Media",
+  "short_description": "We have proposed a multimodal approach. Where we first took the best unimodal for textual and visual data classification by testing and automation process. Then we fusion of the two models which can successfully classify the materials that have been damaged using the image and text data. EfficientNetB3+BERT multimodal better accuracy with 94.18%",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "SalehAhmedShafin",
+  "install_command": "",
+  "source_repo_url": "https://github.com/SalehAhmedShafin/Multimodal-Disaster-Event-Identification-from-Social-Media-Posts",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "vision-language",
+    "bert",
+    "pytorch-implementation",
+    "resnet-50",
+    "efficientnetb3",
+    "transformers",
+    "bert-model",
+    "nlp",
+    "pytorch",
+    "densenet201",
+    "deep-learning",
+    "image-processing",
+    "pytorch-cnn",
+    "image-classification",
+    "xlnet"
+  ],
+  "sections": {
+    "overview": "This skill uses multimodal machine learning to classify disaster events from paired social media images and tweets. It processes visual and textual data simultaneously through separate feature extraction paths—EfficientNetB3 for image analysis and BERT for tweet processing—then fuses the results for unified classification. The model achieves 94.18% accuracy across six disaster-related categories including building damage, infrastructure damage, human casualties, and non-damage cases. It handles imbalanced datasets through preprocessing techniques including image scaling, normalization, and augmentation. Organizations responding to disasters can leverage this skill to automatically filter and categorize social media reports for rapid situational awareness.\nAutomated classification of disaster damage reports from social media during emergency response\nReal-time identification of casualty-related posts during natural disasters\nInfrastructure damage assessment from crowdsourced image-text social media data\nTraining disaster management systems on historical disaster event datasets",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SalehAhmedShafin/Multimodal-Disaster-Event-Identification-from-Social-Media-Posts`",
+    "usage": "```\nAnalyze the following social media posts to identify potential disaster events. The posts include both text and images. Use the multimodal approach (EfficientNetB3 for images and BERT for text) to classify the content and determine if it indicates a disaster event. Provide a confidence score for each classification. Posts: [POST1], [POST2], [POST3]\n```\nCopy\n\n```\n# Disaster Event Identification Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "multimodal-disaster-event-identification-from-social-media-posts#main-content",
+      "multimodal-disaster-event-identification-from-social-media-posts#overview",
+      "multimodal-disaster-event-identification-from-social-media-posts#setup",
+      "multimodal-disaster-event-identification-from-social-media-posts#examples",
+      "multimodal-disaster-event-identification-from-social-media-posts#tools",
+      "multimodal-disaster-event-identification-from-social-media-posts#mcp",
+      "multimodal-disaster-event-identification-from-social-media-posts#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này sử dụng machine learning multimodal để phân loại các sự kiện thảm họa từ hình ảnh và bài đăng tweet đi kèm trên mạng xã hội. Hệ thống xử lý dữ liệu hình ảnh và văn bản đồng thời thông qua các luồng trích xuất đặc trưng (feature extraction) riêng biệt—EfficientNetB3 để phân tích hình ảnh và BERT để xử lý tweet—sau đó kết hợp (fuse) kết quả để đưa ra phân loại thống nhất. Mô hình đạt độ chính xác 94,18% trên sáu danh mục liên quan đến thảm họa, bao gồm thiệt hại tòa nhà, thiệt hại cơ sở hạ tầng, thương vong về người và các trường hợp không có thiệt hại. Skill xử lý các tập dữ liệu mất cân bằng (imbalanced datasets) bằng các kỹ thuật tiền xử lý như scale ảnh, chuẩn hóa (normalization) và tăng cường dữ liệu (augmentation). Các tổ chức ứng phó thiên tai có thể khai thác skill này để tự động lọc và phân loại các báo cáo trên mạng xã hội nhằm nhanh chóng nắm bắt tình hình thực tế.\n\nTự động phân loại các báo cáo thiệt hại do thảm họa từ mạng xã hội trong quá trình ứng phó khẩn cấp\nNhận diện theo thời gian thực các bài đăng liên quan đến thương vong trong thiên tai\nĐánh giá thiệt hại cơ sở hạ tầng từ dữ liệu hình ảnh-văn bản cộng đồng (crowdsourced) trên mạng xã hội\nHuấn luyện các hệ thống quản lý thiên tai trên các tập dữ liệu sự kiện thảm họa lịch sử",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/SalehAhmedShafin/Multimodal-Disaster-Event-Identification-from-Social-Media-Posts`",
+    "usage_vi": "```\nPhân tích các bài đăng trên mạng xã hội sau đây để xác định các sự kiện thảm họa tiềm ẩn. Các bài đăng bao gồm cả văn bản và hình ảnh. Sử dụng phương pháp tiếp cận multimodal (EfficientNetB3 cho hình ảnh và BERT cho văn bản) để phân loại nội dung và xác định xem nội dung đó có biểu thị sự kiện thảm họa hay không. Cung cấp điểm tin cậy (confidence score) cho mỗi phân loại. Các bài đăng: [POST1], [POST2], [POST3]\n```\nSao chép\n\n```\n# Báo cáo Nhận diện Sự kiện Thảm họa"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:20:42.235505Z",
+    "http_status": 200,
+    "content_hash": "913be80a863f1329fe10b73b09a502d8f9391791f3591501722728abdac3e787",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\multimodal-disaster-event-identification-from-social-media-posts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\multimodal-disaster-event-identification-from-social-media-posts.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nhận diện Sự kiện Thảm họa từ Mạng xã hội",
+  "short_description_vi": "Chúng tôi đề xuất một phương pháp tiếp cận multimodal. Đầu tiên, chúng tôi chọn ra mô hình unimodal tốt nhất cho việc phân loại dữ liệu văn bản và hình ảnh thông qua quá trình thử nghiệm và tự động hóa. Sau đó, chúng tôi kết hợp (fusion) hai mô hình để phân loại thành công các loại thiệt hại vật chất từ dữ liệu hình ảnh và văn bản. Mô hình multimodal EfficientNetB3+BERT mang lại độ chính xác cao hơn, đạt 94,18%."
+}

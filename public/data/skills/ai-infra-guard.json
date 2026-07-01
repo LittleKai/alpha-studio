@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-infra-guard",
+  "slug": "ai-infra-guard",
+  "name": "AI-Infra-Guard",
+  "headline": "AI-Infra-Guard: Advanced AI Red Teaming Platform",
+  "short_description": "AI-Infra-Guard is a cutting-edge AI Red Teaming platform by Tencent Zhuque Lab, designed to enhance security through intelligent vulnerability scanning and agent simulations. It helps organizations to identify and mitigate potential threats effectively.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Tencent",
+  "install_command": "claude install Tencent/AI-Infra-Guard",
+  "source_repo_url": "https://github.com/Tencent/AI-Infra-Guard",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "agent-scan",
+    "security-tools",
+    "red-teaming",
+    "vulnerability-scanners",
+    "ai-infra"
+  ],
+  "sections": {
+    "overview": "AI-Infra-Guard is an open-source red teaming platform developed by Tencent that identifies vulnerabilities in AI infrastructure and agent implementations. The platform includes AIG-PromptSecurity for prompt injection testing with single-turn and multi-turn attack operators, and agent-scan for automated vulnerability detection in AI agents. It scans 64+ AI components and catalogs 1300+ known vulnerabilities in AI systems. The tool helps organizations test agent security through intelligent scanning, indirect prompt injection defense, and comprehensive vulnerability detection across the AI stack.\nConduct security assessments for AI systems to identify potential vulnerabilities.\nSimulate various attack vectors to test the defenses of AI applications.\nIdentify and prioritize vulnerabilities in AI infrastructure for remediation.\nBenchmark AI models against established security standards to ensure compliance.",
+    "setup": "Terminal\nCopy\n`claude install Tencent/AI-Infra-Guard`\n`git clone https://github.com/Tencent/AI-Infra-Guard`",
+    "usage": "```\nConduct a comprehensive security audit of our cloud infrastructure using AI-Infra-Guard. Focus on [SPECIFIC_CLOUD_PROVIDER] environments and prioritize [SECURITY_CONCERNS]. Generate a detailed report including vulnerabilities, risk levels, and recommended mitigation steps. Cross-reference findings with our current security policies stored in [DOCUMENTATION_LOCATION].\n```\nCopy\n\n```\nAfter running AI-Infra-Guard on our AWS infrastructure with a focus on data exfiltration risks, the platform identified several critical vulnerabilities:\n\n1. **S3 Bucket Permissions**: Found 12 publicly accessible S3 buckets containing sensitive customer data. Risk level: Critical. Recommendation: Implement least-privilege access controls and enable bucket policies with explicit deny rules.\n\n2. **EC2 Instance Exposure**: Detected 8 EC2 instances with open security groups allowing inbound traffic from unauthorized IP ranges. Risk level: High. Recommendation: Restrict inbound traffic to known IP addresses and implement network ACLs.\n\n3. **IAM Misconfigurations**: Identified 5 IAM roles with excessive permissions that could enable lateral movement. Risk level: High. Recommendation: Apply principle of least privilege and implement IAM access analyzer.\n\nThe audit also cross-referenced these findings with our current security policies and noted discrepancies in our S3 bucket management procedures. AI-Infra-Guard suggested updating our documentation to reflect these best practices and implementing automated compliance checks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "ai-infra-guard#main-content",
+      "ai-infra-guard#overview",
+      "ai-infra-guard#setup",
+      "ai-infra-guard#examples",
+      "ai-infra-guard#tools",
+      "ai-infra-guard#mcp",
+      "ai-infra-guard#related",
+      "claude-skills",
+      "intentkit",
+      "firecrawl"
+    ],
+    "overview_vi": "AI-Infra-Guard là nền tảng red teaming mã nguồn mở do Tencent phát triển nhằm phát hiện các lỗ hổng trong hạ tầng AI và các triển khai agent. Nền tảng này tích hợp AIG-PromptSecurity để kiểm thử prompt injection với các toán tử tấn công đơn lượt (single-turn) và đa lượt (multi-turn), cùng với agent-scan để tự động phát hiện lỗ hổng trên các AI agent. Công cụ hỗ trợ quét hơn 64 thành phần AI và phân loại hơn 1300 lỗ hổng đã biết trong các hệ thống AI. Giải pháp này giúp các tổ chức kiểm thử bảo mật agent thông qua quét thông minh, phòng chống prompt injection gián tiếp và phát hiện lỗ hổng toàn diện trên toàn bộ AI stack.\nThực hiện đánh giá bảo mật cho các hệ thống AI để phát hiện các lỗ hổng tiềm ẩn.\nMô phỏng các vectơ tấn công (attack vector) khác nhau để kiểm tra khả năng phòng thủ của ứng dụng AI.\nXác định và ưu tiên xử lý các lỗ hổng trong hạ tầng AI để khắc phục kịp thời.\nĐánh giá hiệu năng (benchmark) các mô hình AI dựa trên các tiêu chuẩn bảo mật hiện hành để đảm bảo tính tuân thủ.",
+    "setup_vi": "Terminal\nSao chép\n`claude install Tencent/AI-Infra-Guard`\n`git clone https://github.com/Tencent/AI-Infra-Guard`",
+    "usage_vi": "```\nThực hiện đánh giá bảo mật toàn diện cho hạ tầng đám mây của chúng tôi bằng AI-Infra-Guard. Tập trung vào môi trường [SPECIFIC_CLOUD_PROVIDER] và ưu tiên các [SECURITY_CONCERNS]. Tạo một báo cáo chi tiết bao gồm các lỗ hổng, mức độ rủi ro và các bước khắc phục được đề xuất. Đối chiếu các phát hiện với chính sách bảo mật hiện tại của chúng tôi được lưu trữ tại [DOCUMENTATION_LOCATION].\n```\nSao chép\n\n```\nSau khi chạy AI-Infra-Guard trên hạ tầng AWS tập trung vào các rủi ro rò rỉ dữ liệu (data exfiltration), nền tảng đã phát hiện một số lỗ hổng nghiêm trọng sau:\n\n1. **Quyền truy cập S3 Bucket (S3 Bucket Permissions)**: Phát hiện 12 S3 bucket ở chế độ truy cập công khai chứa dữ liệu nhạy cảm của khách hàng. Mức độ rủi ro: Nghiêm trọng (Critical). Khuyến nghị: Áp dụng kiểm soát truy cập đặc quyền tối thiểu (least-privilege access controls) và kích hoạt các chính sách bucket với quy tắc từ chối rõ ràng (explicit deny rules).\n\n2. **Phơi nhiễm thực thể EC2 (EC2 Instance Exposure)**: Phát hiện 8 thực thể EC2 có các security group mở, cho phép lưu lượng truy cập đầu vào từ các dải IP không xác định. Mức độ rủi ro: Cao (High). Khuyến nghị: Giới hạn lưu lượng truy cập đầu vào chỉ từ các địa chỉ IP xác định và thiết lập ACL mạng (network ACL).\n\n3. **Cấu hình sai IAM (IAM Misconfigurations)**: Phát hiện 5 vai trò IAM (IAM role) có quyền hạn quá mức, có thể tạo điều kiện cho việc di chuyển ngang (lateral movement). Mức độ rủi ro: Cao (High). Khuyến nghị: Áp dụng nguyên tắc đặc quyền tối thiểu (principle of least privilege) và triển khai IAM access analyzer.\n\nCuộc kiểm định cũng đối chiếu các phát hiện này với chính sách bảo mật hiện tại của chúng tôi và ghi nhận các điểm không nhất quán trong quy trình quản lý S3 bucket. AI-Infra-Guard đề xuất cập nhật tài liệu hướng dẫn của chúng tôi để phản ánh các thực hành tốt nhất này và triển khai các quy trình kiểm tra tuân thủ tự động.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:02:54.295159Z",
+    "http_status": 200,
+    "content_hash": "e9344e9b89c11d1d0e1593568a227e945f9f7e3e1f9b23e2bab9b1e2368e14f1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-infra-guard.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-infra-guard.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI-Infra-Guard: Nền tảng AI Red Teaming nâng cao",
+  "short_description_vi": "AI-Infra-Guard là nền tảng AI Red Teaming tiên tiến do Tencent Zhuque Lab phát triển, được thiết kế để tăng cường bảo mật thông qua quét lỗ hổng thông minh và mô phỏng agent. Công cụ này giúp các tổ chức xác định và giảm thiểu các mối đe dọa tiềm ẩn một cách hiệu quả."
+}

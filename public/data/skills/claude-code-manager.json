@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-manager",
+  "slug": "claude-code-manager",
+  "name": "browser-use",
+  "headline": "claude code manager: all-in-one code management tool",
+  "short_description": "Claude Code Manager (CCM) automates code management tasks for developers. It tracks execution, visualizes workflows, and integrates with Node.js projects. CCM connects to SQLite databases for data storage and provides CLI tools for streamlined operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "MarkShawn2020",
+  "install_command": "git clone https://github.com/MarkShawn2020/claude-code-manager.git",
+  "source_repo_url": "https://github.com/MarkShawn2020/claude-code-manager",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-code-manager",
+    "developer-tools",
+    "execution-tracking",
+    "workflow-management",
+    "cli-tool",
+    "nodejs",
+    "visualization",
+    "analytics",
+    "sqlite"
+  ],
+  "sections": {
+    "overview": "Claude Code Manager (CCM) is an automation tool designed to streamline code management tasks for developers working with Node.js projects. It provides execution tracking capabilities and workflow visualization to help developers monitor and manage their code processes efficiently. The tool integrates with SQLite databases for reliable data storage and includes CLI tools for simplified operations. CCM is particularly useful for developers who need to automate repetitive code management workflows and gain visibility into execution patterns. Note: This project has been archived and users are encouraged to migrate to LovCode, the successor project with enhanced features.\nTrack code execution and monitor workflow progress in Node.js projects\nAutomate repetitive code management tasks via CLI\nVisualize development workflows for better process understanding\nStore and query execution data using SQLite integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MarkShawn2020/claude-code-manager`",
+    "usage": "```\nUse Claude Code Manager to [TASK]. For example: 'Use Claude Code Manager to analyze the execution logs of [PROJECT_NAME] from the last 7 days. Identify the top 5 most frequent errors and suggest fixes based on the error messages and stack traces.' Include [PROJECT_NAME] and [TASK] as placeholders.\n```\nCopy\n\n```\nHere’s the analysis of the execution logs for the `ecommerce-api` project over the past week:\n\n**Top 5 Errors Identified:**\n1. **Database Connection Timeout** (342 occurrences)\n   - Root Cause: Misconfigured connection pool size in `db.js`. The pool was set to 5, but the server handles 200+ concurrent requests.\n   - Fix: Increased pool size to 20 and added retry logic with exponential backoff.\n   - Impact: Reduced timeouts by 85% in staging.\n\n2. **Invalid JWT Token** (218 occurrences)\n   - Root Cause: Token expiration time (`exp`) was set to 1 hour, but the frontend refreshes tokens every 30 minutes, causing race conditions.\n   - Fix: Extended token expiration to 2 hours and implemented silent refresh on the frontend.\n   - Impact: Eliminated 90% of 401 errors.\n\n3. **Memory Leak in Image Processing** (156 occurrences)\n   - Root Cause: Unclosed file handles in the `sharp` library during image resizing. The `fs.unlink` was missing in the cleanup function.\n   - Fix: Added `await sharp(filePath).toFile(outputPath).then(() => fs.unlink(filePath))` to ensure cleanup.\n   - Impact: Reduced memory usage by 40% in load tests.\n\n4. **Race Condition in Cart Updates** (98 occurrences)\n   - Root Cause: Concurrent requests to the `/cart` endpoint without proper locking mechanism, leading to lost updates.\n   - Fix: Implemented Redis-based distributed locks using `ioredis` with a 500ms TTL.\n   - Impact: Eliminated cart desync issues reported by users.\n\n5. **Uncaught Promise Rejection** (72 occurrences)\n   - Root Cause: Missing `catch` block in the `stripe.webhooks` handler for payment success events.\n   - Fix: Added error handling and logging for all webhook events.\n   - Impact: Improved reliability of payment processing.\n\n**Workflow Visualization:**\nThe CCM generated this Mermaid diagram of the error-prone workflows:\n```mermaid\ngraph TD\n    A[Client Request] --> B[API Endpoint]\n    B --> C{Validate Token}\n    C -->|Invalid| D[Return 401]\n    C -->|Valid| E[Process Request]\n    E --> F[Database Query]\n    F --> G[Return Response]\n    G --> H[Close Connection]\n    H --> I[Log Error if Timeout]\n```\n\n**Recommended Next Steps:**\n1. Deploy the fixes for the top 3 errors in the staging environment and monitor for 48 hours.\n2. Run load tests with 1000 concurrent users to validate the memory leak fix.\n3. Update the API documentation to reflect the new token expiration policy.\n4. Schedule a team review of the race condition fix to ensure it aligns with the product roadmap.\n\n**Database Insights:**\nThe CCM also queried the SQLite database to show the correlation between error rates and deployment times:\n- Errors spike during deployments (e.g., 200 errors at 2:15 AM during the last deployment).\n- Post-deployment, errors gradually decrease as the new code stabilizes.\n\nWould you like me to generate a pull request with these fixes or create a dashboard to monitor these metrics in real-time?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-manager#main-content",
+      "claude-code-manager#overview",
+      "claude-code-manager#setup",
+      "claude-code-manager#examples",
+      "claude-code-manager#tools",
+      "claude-code-manager#mcp",
+      "claude-code-manager#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Manager (CCM) is an automation tool designed to streamline code management tasks for developers working with Node.js projects. It provides execution tracking capabilities and workflow visualization to help developers monitor and manage their code processes efficiently. The tool integrates with SQLite databases for reliable data storage and includes CLI tools for simplified operations. CCM is particularly useful for developers who need to automate repetitive code management workflows and gain visibility into execution patterns. Note: This project has been archived and users are encouraged to migrate to LovCode, the successor project with enhanced features.\nTrack code execution and monitor workflow progress in Node.js projects\nAutomate repetitive code management tasks via CLI\nVisualize development workflows for better process understanding\nStore and query execution data using SQLite integration",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MarkShawn2020/claude-code-manager`",
+    "usage_vi": "```\nUse Claude Code Manager to [TASK]. For example: 'Use Claude Code Manager to analyze the execution logs of [PROJECT_NAME] from the last 7 days. Identify the top 5 most frequent errors and suggest fixes based on the error messages and stack traces.' Include [PROJECT_NAME] and [TASK] as placeholders.\n```\nCopy\n\n```\nHere’s the analysis of the execution logs for the `ecommerce-api` project over the past week:\n\n**Top 5 Errors Identified:**\n1. **Database Connection Timeout** (342 occurrences)\n   - Root Cause: Misconfigured connection pool size in `db.js`. The pool was set to 5, but the server handles 200+ concurrent requests.\n   - Fix: Increased pool size to 20 and added retry logic with exponential backoff.\n   - Impact: Reduced timeouts by 85% in staging.\n\n2. **Invalid JWT Token** (218 occurrences)\n   - Root Cause: Token expiration time (`exp`) was set to 1 hour, but the frontend refreshes tokens every 30 minutes, causing race conditions.\n   - Fix: Extended token expiration to 2 hours and implemented silent refresh on the frontend.\n   - Impact: Eliminated 90% of 401 errors.\n\n3. **Memory Leak in Image Processing** (156 occurrences)\n   - Root Cause: Unclosed file handles in the `sharp` library during image resizing. The `fs.unlink` was missing in the cleanup function.\n   - Fix: Added `await sharp(filePath).toFile(outputPath).then(() => fs.unlink(filePath))` to ensure cleanup.\n   - Impact: Reduced memory usage by 40% in load tests.\n\n4. **Race Condition in Cart Updates** (98 occurrences)\n   - Root Cause: Concurrent requests to the `/cart` endpoint without proper locking mechanism, leading to lost updates.\n   - Fix: Implemented Redis-based distributed locks using `ioredis` with a 500ms TTL.\n   - Impact: Eliminated cart desync issues reported by users.\n\n5. **Uncaught Promise Rejection** (72 occurrences)\n   - Root Cause: Missing `catch` block in the `stripe.webhooks` handler for payment success events.\n   - Fix: Added error handling and logging for all webhook events.\n   - Impact: Improved reliability of payment processing.\n\n**Workflow Visualization:**\nThe CCM generated this Mermaid diagram of the error-prone workflows:\n```mermaid\ngraph TD\n    A[Client Request] --> B[API Endpoint]\n    B --> C{Validate Token}\n    C -->|Invalid| D[Return 401]\n    C -->|Valid| E[Process Request]\n    E --> F[Database Query]\n    F --> G[Return Response]\n    G --> H[Close Connection]\n    H --> I[Log Error if Timeout]\n```\n\n**Recommended Next Steps:**\n1. Deploy the fixes for the top 3 errors in the staging environment and monitor for 48 hours.\n2. Run load tests with 1000 concurrent users to validate the memory leak fix.\n3. Update the API documentation to reflect the new token expiration policy.\n4. Schedule a team review of the race condition fix to ensure it aligns with the product roadmap.\n\n**Database Insights:**\nThe CCM also queried the SQLite database to show the correlation between error rates and deployment times:\n- Errors spike during deployments (e.g., 200 errors at 2:15 AM during the last deployment).\n- Post-deployment, errors gradually decrease as the new code stabilizes.\n\nWould you like me to generate a pull request with these fixes or create a dashboard to monitor these metrics in real-time?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:33:48.259203Z",
+    "http_status": 200,
+    "content_hash": "fe3822d9b9fbd109a536c0b5f4a7084431ea610659f00c2896bbe87405df8421",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-manager.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code manager: all-in-one code management tool",
+  "short_description_vi": "Claude Code Manager (CCM) automates code management tasks for developers. It tracks execution, visualizes workflows, and integrates with Node.js projects. CCM connects to SQLite databases for data storage and provides CLI tools for streamlined operations."
+}

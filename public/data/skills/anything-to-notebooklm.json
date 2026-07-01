@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/anything-to-notebooklm",
+  "slug": "anything-to-notebooklm",
+  "name": "browser-use",
+  "headline": "anything-to-notebooklm: versatile content tool",
+  "short_description": "Processes content from WeChat, web pages, YouTube, PDFs, and Markdown into podcasts, PPTs, mind maps, and quizzes for NotebookLM. Ideal for operations teams needing automated content transformation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "joeseesun",
+  "install_command": "git clone https://github.com/joeseesun/anything-to-notebooklm.git",
+  "source_repo_url": "https://github.com/joeseesun/anything-to-notebooklm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "claude",
+    "skill",
+    "mcp",
+    "notebooklm"
+  ],
+  "sections": {
+    "overview": "Anything-to-NotebookLM automates content transformation for NotebookLM, supporting multiple input sources including WeChat, web pages, YouTube, PDFs, and Markdown files. The skill generates diverse output formats: podcasts, PowerPoint presentations, mind maps, quizzes, videos, reports, infographics, data tables, and flashcards. It includes paywall bypass capabilities for 300+ paywalled sites, podcast and video transcription support, and X/Twitter thread fetching. Operations and content teams benefit from streamlined workflows that convert raw information into study-ready materials without manual processing.\nConvert WeChat articles into podcast episodes for study\nTransform YouTube videos into mind maps and quiz materials\nGenerate presentations from PDF documents automatically\nCreate flashcards from web page content",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joeseesun/anything-to-notebooklm`",
+    "usage": "```\nConvert [CONTENT_SOURCE: URL/PDF/Markdown/WeChat] into a structured NotebookLM-ready format. First, extract key insights and actionable takeaways. Then, generate: 1) A 5-10 minute podcast script with timestamps for each segment, 2) A 10-slide PPT outline with speaker notes, 3) A mind map in Markdown format, and 4) A 10-question multiple-choice quiz with explanations. Prioritize clarity and practical application. Source: [CONTENT_LINK_OR_FILE_PATH].\n```\nCopy\n\n```\n### **NotebookLM Content Package: \"AI-Powered Customer Support Automation\"**\n\n**Podcast Script (5:30 min)**\n*[0:00-0:45] Introduction:* Welcome to the future of customer support! Today, we’re diving into how AI is transforming support teams from reactive to proactive. We’ll cover three key areas: automation tools, training strategies, and measuring success.\n\n*[0:46-2:10] Key Insight 1: Automation Tools:* Tools like Zendesk’s Answer Bot and Intercom’s Fin handle 60% of Tier 1 inquiries, freeing agents for complex issues. Example: Acme Corp reduced response time by 40% using these tools.\n\n*[2:11-3:30] Key Insight 2: Training Strategies:* AI-generated training modules adapt to agent performance. At Globex Inc., new hires mastered workflows 30% faster with AI-driven simulations.\n\n*[3:31-4:50] Key Insight 3: Measuring Success:* Track metrics like first-contact resolution (FCR) and customer satisfaction (CSAT). A 10% FCR improvement correlates with a 15% boost in CSAT.\n\n*[4:51-5:30] Conclusion:* Start small—pilot one automation tool, train 5 agents, and track FCR for 30 days. The ROI is real.\n\n**PPT Outline (10 Slides)**\n1. **Title Slide:** AI in Customer Support: A Game-Changer\n2. **Agenda:** Tools, Training, Metrics\n3. **The Problem:** 70% of support tickets are repetitive\n4. **Solution:** AI Automation Tools (Zendesk, Intercom)\n5. **Case Study:** Acme Corp’s 40% faster response time\n6. **Training Strategies:** AI-driven simulations\n7. **Case Study:** Globex Inc.’s 30% faster onboarding\n8. **Measuring Success:** FCR and CSAT metrics\n9. **Action Plan:** 30-day pilot program\n10. **Q&A:** Key takeaways\n\n**Mind Map (Markdown)**\n```\nAI Customer Support\n├── Automation Tools\n│   ├── Zendesk Answer Bot\n│   ├── Intercom Fin\n│   └── ROI: 40% faster response\n├── Training Strategies\n│   ├── AI simulations\n│   └── ROI: 30% faster onboarding\n└── Success Metrics\n    ├── FCR (First-Contact Resolution)\n    └── CSAT (Customer Satisfaction)\n```\n\n**Quiz (10 Questions)**\n1. **What percentage of Tier 1 inquiries can AI tools handle?**\n   - A) 30% (B) 60% (C) 80% (D) 90%\n   **Answer:** B) 60% (Source: Zendesk 2023 Report)\n\n2. **Which company reduced response time by 40% using AI?**\n   - A) Globex Inc. (B) Acme Corp (C) TechNova (D) None\n   **Answer:** B) Acme Corp\n\n3. **What’s the primary benefit of AI-driven training?**\n   - A) Lower costs (B) Faster onboarding (C) Fewer agents (D) None\n   **Answer:** B) Faster onboarding\n\n4. **Which metric directly correlates with higher CSAT?**\n   - A) Average handle time (B) First-contact resolution (C) Agent count (D) None\n   **Answer:** B) First-contact resolution\n\n5. **What’s the recommended pilot duration?**\n   - A) 7 days (B) 14 days (C) 30 days (D) 90 days\n   **Answer:** C) 30 days\n\n... (5 more questions with explanations)\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "anything-to-notebooklm#main-content",
+      "anything-to-notebooklm#overview",
+      "anything-to-notebooklm#setup",
+      "anything-to-notebooklm#examples",
+      "anything-to-notebooklm#tools",
+      "anything-to-notebooklm#mcp",
+      "anything-to-notebooklm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Anything-to-NotebookLM automates content transformation for NotebookLM, supporting multiple input sources including WeChat, web pages, YouTube, PDFs, and Markdown files. The skill generates diverse output formats: podcasts, PowerPoint presentations, mind maps, quizzes, videos, reports, infographics, data tables, and flashcards. It includes paywall bypass capabilities for 300+ paywalled sites, podcast and video transcription support, and X/Twitter thread fetching. Operations and content teams benefit from streamlined workflows that convert raw information into study-ready materials without manual processing.\nConvert WeChat articles into podcast episodes for study\nTransform YouTube videos into mind maps and quiz materials\nGenerate presentations from PDF documents automatically\nCreate flashcards from web page content",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joeseesun/anything-to-notebooklm`",
+    "usage_vi": "```\nConvert [CONTENT_SOURCE: URL/PDF/Markdown/WeChat] into a structured NotebookLM-ready format. First, extract key insights and actionable takeaways. Then, generate: 1) A 5-10 minute podcast script with timestamps for each segment, 2) A 10-slide PPT outline with speaker notes, 3) A mind map in Markdown format, and 4) A 10-question multiple-choice quiz with explanations. Prioritize clarity and practical application. Source: [CONTENT_LINK_OR_FILE_PATH].\n```\nCopy\n\n```\n### **NotebookLM Content Package: \"AI-Powered Customer Support Automation\"**\n\n**Podcast Script (5:30 min)**\n*[0:00-0:45] Introduction:* Welcome to the future of customer support! Today, we’re diving into how AI is transforming support teams from reactive to proactive. We’ll cover three key areas: automation tools, training strategies, and measuring success.\n\n*[0:46-2:10] Key Insight 1: Automation Tools:* Tools like Zendesk’s Answer Bot and Intercom’s Fin handle 60% of Tier 1 inquiries, freeing agents for complex issues. Example: Acme Corp reduced response time by 40% using these tools.\n\n*[2:11-3:30] Key Insight 2: Training Strategies:* AI-generated training modules adapt to agent performance. At Globex Inc., new hires mastered workflows 30% faster with AI-driven simulations.\n\n*[3:31-4:50] Key Insight 3: Measuring Success:* Track metrics like first-contact resolution (FCR) and customer satisfaction (CSAT). A 10% FCR improvement correlates with a 15% boost in CSAT.\n\n*[4:51-5:30] Conclusion:* Start small—pilot one automation tool, train 5 agents, and track FCR for 30 days. The ROI is real.\n\n**PPT Outline (10 Slides)**\n1. **Title Slide:** AI in Customer Support: A Game-Changer\n2. **Agenda:** Tools, Training, Metrics\n3. **The Problem:** 70% of support tickets are repetitive\n4. **Solution:** AI Automation Tools (Zendesk, Intercom)\n5. **Case Study:** Acme Corp’s 40% faster response time\n6. **Training Strategies:** AI-driven simulations\n7. **Case Study:** Globex Inc.’s 30% faster onboarding\n8. **Measuring Success:** FCR and CSAT metrics\n9. **Action Plan:** 30-day pilot program\n10. **Q&A:** Key takeaways\n\n**Mind Map (Markdown)**\n```\nAI Customer Support\n├── Automation Tools\n│   ├── Zendesk Answer Bot\n│   ├── Intercom Fin\n│   └── ROI: 40% faster response\n├── Training Strategies\n│   ├── AI simulations\n│   └── ROI: 30% faster onboarding\n└── Success Metrics\n    ├── FCR (First-Contact Resolution)\n    └── CSAT (Customer Satisfaction)\n```\n\n**Quiz (10 Questions)**\n1. **What percentage of Tier 1 inquiries can AI tools handle?**\n   - A) 30% (B) 60% (C) 80% (D) 90%\n   **Answer:** B) 60% (Source: Zendesk 2023 Report)\n\n2. **Which company reduced response time by 40% using AI?**\n   - A) Globex Inc. (B) Acme Corp (C) TechNova (D) None\n   **Answer:** B) Acme Corp\n\n3. **What’s the primary benefit of AI-driven training?**\n   - A) Lower costs (B) Faster onboarding (C) Fewer agents (D) None\n   **Answer:** B) Faster onboarding\n\n4. **Which metric directly correlates with higher CSAT?**\n   - A) Average handle time (B) First-contact resolution (C) Agent count (D) None\n   **Answer:** B) First-contact resolution\n\n5. **What’s the recommended pilot duration?**\n   - A) 7 days (B) 14 days (C) 30 days (D) 90 days\n   **Answer:** C) 30 days\n\n... (5 more questions with explanations)\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:02.077344Z",
+    "http_status": 200,
+    "content_hash": "5b9889b58beafbb06d3a6835873de18c9a8926024bf2902c167cbeccd1f12ea5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\anything-to-notebooklm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\anything-to-notebooklm.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "anything-to-notebooklm: versatile content tool",
+  "short_description_vi": "Processes content from WeChat, web pages, YouTube, PDFs, and Markdown into podcasts, PPTs, mind maps, and quizzes for NotebookLM. Ideal for operations teams needing automated content transformation."
+}

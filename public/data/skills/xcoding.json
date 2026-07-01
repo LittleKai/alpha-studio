@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xcoding",
+  "slug": "xcoding",
+  "name": "browser-use",
+  "headline": "XCoding - AI-Powered IDE for Parallel Development",
+  "short_description": "XCoding: a lightweight AI vibe coding IDE that supports parallel multi-agent collaboration (Codex/Claude Code) and parallel multi-project development, featuring a VS Code - like editor and terminal with task-driven workflows and code change management.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "XCodingLab",
+  "install_command": "git clone https://github.com/XCodingLab/XCoding.git",
+  "source_repo_url": "https://github.com/XCodingLab/XCoding",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "workflow",
+    "ide",
+    "codex",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "XCoding is a streamlined IDE built for developers working across multiple projects simultaneously. It integrates an editor, terminal, preview, and AI assistance in a single workspace, eliminating context switching. The tool supports parallel multi-agent collaboration with Claude and similar AI systems, allowing you to ask questions and apply or roll back code changes instantly. Designed with a lightweight footprint and opinionated core, XCoding stays responsive while handling multiple tasks—project management, command execution, app previewing, and AI-assisted coding—all in one focused environment.\nManaging multiple projects in parallel with quick tab switching\nCollaborating with AI agents (Claude, Codex) to generate and refine code changes\nRunning terminal commands and previewing apps without leaving the editor\nTesting code changes and rolling back AI suggestions in one step",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/XCodingLab/XCoding`",
+    "usage": "```\nUse XCoding to [ACTION: e.g., 'refactor the authentication module of the [PROJECT_NAME] repository', 'implement a new API endpoint for [FEATURE_DESCRIPTION]', or 'debug and optimize the [MODULE_NAME] class']. Follow the parallel multi-agent collaboration workflow: split tasks into subtasks, assign agents to each subtask (e.g., one for backend logic, one for frontend integration, one for testing), and use the VS Code-like editor to review code changes in real-time. Ensure all changes are synced across the multi-project workspace and generate a summary of the changes made, including test results and performance improvements. Use [SPECIFIC_FRAMEWORKS/LANGUAGES] where applicable.\n```\nCopy\n\n```\n### XCoding Session Summary: Refactoring Authentication Module for 'SecurePay' Project\n\n**Agents Assigned:**\n- Agent A (Backend Logic): Focused on refactoring the JWT token generation and validation logic in `auth.py`. Updated the `generate_token()` function to use a more secure algorithm (HS256 → RS256) and reduced token expiration time from 24h to 1h for better security posture. Added rate-limiting to the `/login` endpoint to prevent brute-force attacks. Wrote unit tests in `tests/test_auth.py` covering edge cases for token generation and validation.\n- Agent B (Frontend Integration): Updated the React frontend (`src/components/Login.js`) to handle the new token expiration logic. Added a token refresh mechanism using the `/refresh` endpoint and improved error handling for expired tokens. Updated the UI to display a countdown timer for token expiration.\n- Agent C (Testing & Optimization): Ran load tests on the updated authentication flow using Locust. Results showed a 30% reduction in response time for token generation and validation. Identified and fixed a memory leak in the Redis cache used for token storage. Updated the `docker-compose.yml` to include Redis with persistent storage.\n\n**Code Changes Summary:**\n- **Backend:** Modified `auth.py` (lines 45-120) to use RS256 tokens and added rate-limiting. Updated `requirements.txt` to include `redis>=4.5.5` and `flask-limiter>=3.3.0`.\n- **Frontend:** Updated `Login.js` to handle token refresh and added a countdown timer component. Updated `package.json` to include `axios>=1.6.0` for better HTTP request handling.\n- **Infrastructure:** Added Redis service to `docker-compose.yml` with 1GB memory limit and persistent volume.\n\n**Test Results:**\n- Unit Tests: 100% pass rate (24/24 tests).\n- Load Tests: 1000 concurrent users, 95th percentile response time improved from 450ms to 310ms.\n- Security Scan: No critical vulnerabilities detected (SonarQube scan).\n\n**Next Steps:**\n1. Merge the changes into the `dev` branch and deploy to staging for further testing.\n2. Update the API documentation in Swagger to reflect the new token expiration logic.\n3. Schedule a team review to discuss the changes and gather feedback.\n\n**Files Modified:**\n- `backend/auth.py` (120 lines changed)\n- `frontend/src/components/Login.js` (85 lines changed)\n- `docker-compose.yml` (15 lines added)\n- `tests/test_auth.py` (40 lines added)\n\n**Performance Impact:**\n- Token generation time reduced by 40% (120ms → 72ms).\n- Memory usage per request reduced by 15% (2.1MB → 1.8MB).\n\nAll changes were reviewed and approved by the multi-agent team using the VS Code-like editor in XCoding. The terminal was used to run tests and deploy the changes to a staging environment for validation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xcoding#main-content",
+      "xcoding#overview",
+      "xcoding#setup",
+      "xcoding#examples",
+      "xcoding#tools",
+      "xcoding#mcp",
+      "xcoding#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "XCoding is a streamlined IDE built for developers working across multiple projects simultaneously. It integrates an editor, terminal, preview, and AI assistance in a single workspace, eliminating context switching. The tool supports parallel multi-agent collaboration with Claude and similar AI systems, allowing you to ask questions and apply or roll back code changes instantly. Designed with a lightweight footprint and opinionated core, XCoding stays responsive while handling multiple tasks—project management, command execution, app previewing, and AI-assisted coding—all in one focused environment.\nManaging multiple projects in parallel with quick tab switching\nCollaborating with AI agents (Claude, Codex) to generate and refine code changes\nRunning terminal commands and previewing apps without leaving the editor\nTesting code changes and rolling back AI suggestions in one step",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/XCodingLab/XCoding`",
+    "usage_vi": "```\nUse XCoding to [ACTION: e.g., 'refactor the authentication module of the [PROJECT_NAME] repository', 'implement a new API endpoint for [FEATURE_DESCRIPTION]', or 'debug and optimize the [MODULE_NAME] class']. Follow the parallel multi-agent collaboration workflow: split tasks into subtasks, assign agents to each subtask (e.g., one for backend logic, one for frontend integration, one for testing), and use the VS Code-like editor to review code changes in real-time. Ensure all changes are synced across the multi-project workspace and generate a summary of the changes made, including test results and performance improvements. Use [SPECIFIC_FRAMEWORKS/LANGUAGES] where applicable.\n```\nCopy\n\n```\n### XCoding Session Summary: Refactoring Authentication Module for 'SecurePay' Project\n\n**Agents Assigned:**\n- Agent A (Backend Logic): Focused on refactoring the JWT token generation and validation logic in `auth.py`. Updated the `generate_token()` function to use a more secure algorithm (HS256 → RS256) and reduced token expiration time from 24h to 1h for better security posture. Added rate-limiting to the `/login` endpoint to prevent brute-force attacks. Wrote unit tests in `tests/test_auth.py` covering edge cases for token generation and validation.\n- Agent B (Frontend Integration): Updated the React frontend (`src/components/Login.js`) to handle the new token expiration logic. Added a token refresh mechanism using the `/refresh` endpoint and improved error handling for expired tokens. Updated the UI to display a countdown timer for token expiration.\n- Agent C (Testing & Optimization): Ran load tests on the updated authentication flow using Locust. Results showed a 30% reduction in response time for token generation and validation. Identified and fixed a memory leak in the Redis cache used for token storage. Updated the `docker-compose.yml` to include Redis with persistent storage.\n\n**Code Changes Summary:**\n- **Backend:** Modified `auth.py` (lines 45-120) to use RS256 tokens and added rate-limiting. Updated `requirements.txt` to include `redis>=4.5.5` and `flask-limiter>=3.3.0`.\n- **Frontend:** Updated `Login.js` to handle token refresh and added a countdown timer component. Updated `package.json` to include `axios>=1.6.0` for better HTTP request handling.\n- **Infrastructure:** Added Redis service to `docker-compose.yml` with 1GB memory limit and persistent volume.\n\n**Test Results:**\n- Unit Tests: 100% pass rate (24/24 tests).\n- Load Tests: 1000 concurrent users, 95th percentile response time improved from 450ms to 310ms.\n- Security Scan: No critical vulnerabilities detected (SonarQube scan).\n\n**Next Steps:**\n1. Merge the changes into the `dev` branch and deploy to staging for further testing.\n2. Update the API documentation in Swagger to reflect the new token expiration logic.\n3. Schedule a team review to discuss the changes and gather feedback.\n\n**Files Modified:**\n- `backend/auth.py` (120 lines changed)\n- `frontend/src/components/Login.js` (85 lines changed)\n- `docker-compose.yml` (15 lines added)\n- `tests/test_auth.py` (40 lines added)\n\n**Performance Impact:**\n- Token generation time reduced by 40% (120ms → 72ms).\n- Memory usage per request reduced by 15% (2.1MB → 1.8MB).\n\nAll changes were reviewed and approved by the multi-agent team using the VS Code-like editor in XCoding. The terminal was used to run tests and deploy the changes to a staging environment for validation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:11:53.154097Z",
+    "http_status": 200,
+    "content_hash": "d8c9914cee5d19a700a9d2acc7639bd4629b7e4249d34ec43183e4fcc9c83223",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xcoding.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xcoding.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "XCoding - AI-Powered IDE for Parallel Development",
+  "short_description_vi": "XCoding: a lightweight AI vibe coding IDE that supports parallel multi-agent collaboration (Codex/Claude Code) and parallel multi-project development, featuring a VS Code - like editor and terminal with task-driven workflows and code change management."
+}

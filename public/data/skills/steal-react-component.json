@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/steal-react-component",
+  "slug": "steal-react-component",
+  "name": "Steal React Component",
+  "headline": "Steal React Component - Extract UI Components",
+  "short_description": "Extract React components from production websites using browser automation. Ideal for developers and operations teams needing to reuse or analyze existing UI components. Integrates with browser automation tools for direct component extraction.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "dennisonbertram",
+  "install_command": "git clone https://github.com/dennisonbertram/steal-react-component.git",
+  "source_repo_url": "https://github.com/dennisonbertram/steal-react-component",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "steal-react-component accesses React Fiber internals to extract individual components directly from production websites, including their props, hooks, and rendered HTML. It works by injecting ReactStealer into the page, which surfaces component data for reconstruction. The skill is part of a suite that includes design system extraction (CSS variables, typography, colors) and full-site cloning capabilities. It's ideal for developers who need to reuse components from existing sites, analyze UI implementations, or bootstrap new projects from production code. Works best with React applications, though style extraction works on any website.\nExtract specific UI components from competitor or reference websites for reuse\nAnalyze and understand React component implementations from production code\nBootstrap new projects by extracting complete design systems and components\nDocument existing component libraries by capturing props, hooks, and styling",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dennisonbertram/steal-react-component`",
+    "usage": "```\nUse browser automation to extract the React component named [COMPONENT_NAME] from the production website [WEBSITE_URL]. Capture the component's code, props, and state if visible. Save the extracted component to a file named [OUTPUT_FILE_NAME].jsx in the current directory. If the component uses external libraries, include the import statements in the output.\n```\nCopy\n\n```\n```jsx\n// Extracted from https://example.com/dashboard at 2024-06-15 14:30:00\n// Component: UserProfileCard\n// Props: { user: { id: 'u123', name: 'Alex Johnson', role: 'Developer', avatar: 'https://example.com/avatars/u123.png' }, onClick: () => console.log('Profile clicked') }\n\nimport React from 'react';\nimport { Avatar, Card, Button } from '@mui/material';\n\nconst UserProfileCard = ({ user, onClick }) => {\n  return (\n    <Card sx={{ maxWidth: 345, margin: '1rem' }} onClick={onClick}>\n      <Avatar\n        alt={user.name}\n        src={user.avatar}\n        sx={{ width: 56, height: 56, margin: '1rem auto' }}\n      />\n      <Card.Content>\n        <Typography variant=\"h5\" component=\"div\">\n          {user.name}\n        </Typography>\n        <Typography variant=\"body2\" color=\"text.secondary\">\n          {user.role}\n        </Typography>\n      </Card.Content>\n      <Card.Actions>\n        <Button size=\"small\">View Profile</Button>\n      </Card.Actions>\n    </Card>\n  );\n};\n\nexport default UserProfileCard;\n```\n\n**Extraction Notes:**\n- Component was located in the `#root > div > section > div > div:nth-child(2)` DOM path.\n- State (e.g., hover effects) was captured via CSS pseudo-classes in the extracted styles.\n- External dependencies: @mui/material v5.11.0 (detected via package.json in the page's sources).\n- No TypeScript types were extracted; manual annotation may be required.\n\n**Next Steps:**\n1. Verify the component works in your local environment by installing `@mui/material`.\n2. Replace dynamic data (e.g., `user.avatar`) with static placeholders for testing.\n3. Refactor the component to remove hardcoded styles if needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "steal-react-component#main-content",
+      "steal-react-component#overview",
+      "steal-react-component#setup",
+      "steal-react-component#examples",
+      "steal-react-component#tools",
+      "steal-react-component#mcp",
+      "steal-react-component#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "steal-react-component truy cập vào cấu trúc nội bộ (internals) của React Fiber để trích xuất trực tiếp các component riêng lẻ từ các website production, bao gồm cả props, hooks và HTML đã render của chúng. Công cụ hoạt động bằng cách chèn ReactStealer vào trang web để lấy dữ liệu component phục vụ cho việc tái cấu trúc. Skill này là một phần của bộ công cụ hỗ trợ trích xuất design system (biến CSS, typography, màu sắc) và khả năng clone toàn bộ trang web. Đây là giải pháp lý tưởng cho các lập trình viên cần tái sử dụng component từ các trang web hiện có, phân tích cách triển khai UI hoặc khởi tạo nhanh (bootstrap) dự án mới từ code production. Hoạt động hiệu quả nhất với các ứng dụng React, mặc dù tính năng trích xuất style hoạt động trên mọi website.\nTrích xuất các component UI cụ thể từ các website của đối thủ hoặc website tham chiếu để tái sử dụng\nPhân tích và tìm hiểu cách triển khai component React từ code production\nKhởi tạo nhanh (bootstrap) các dự án mới bằng cách trích xuất toàn bộ design system và component\nTài liệu hóa các thư viện component hiện có bằng cách thu thập props, hooks và styling",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dennisonbertram/steal-react-component`",
+    "usage_vi": "```\nSử dụng browser automation để trích xuất component React có tên [COMPONENT_NAME] từ website production [WEBSITE_URL]. Thu thập code, props và state của component nếu hiển thị. Lưu component đã trích xuất vào một file có tên [OUTPUT_FILE_NAME].jsx trong thư mục hiện tại. Nếu component sử dụng các thư viện bên ngoài, hãy đưa các câu lệnh import vào kết quả đầu ra.\n```\nCopy\n\n```\n```jsx\n// Được trích xuất từ https://example.com/dashboard vào lúc 2024-06-15 14:30:00\n// Component: UserProfileCard\n// Props: { user: { id: 'u123', name: 'Alex Johnson', role: 'Developer', avatar: 'https://example.com/avatars/u123.png' }, onClick: () => console.log('Profile clicked') }\n\nimport React from 'react';\nimport { Avatar, Card, Button } from '@mui/material';\n\nconst UserProfileCard = ({ user, onClick }) => {\n  return (\n    <Card sx={{ maxWidth: 345, margin: '1rem' }} onClick={onClick}>\n      <Avatar\n        alt={user.name}\n        src={user.avatar}\n        sx={{ width: 56, height: 56, margin: '1rem auto' }}\n      />\n      <Card.Content>\n        <Typography variant=\"h5\" component=\"div\">\n          {user.name}\n        </Typography>\n        <Typography variant=\"body2\" color=\"text.secondary\">\n          {user.role}\n        </Typography>\n      </Card.Content>\n      <Card.Actions>\n        <Button size=\"small\">View Profile</Button>\n      </Card.Actions>\n    </Card>\n  );\n};\n\nexport default UserProfileCard;\n```\n\n**Ghi chú trích xuất:**\n- Component nằm trong DOM path `#root > div > section > div > div:nth-child(2)`.\n- State (ví dụ: hiệu ứng hover) được ghi lại thông qua các CSS pseudo-class trong các style được trích xuất.\n- Dependency bên ngoài: @mui/material v5.11.0 (được phát hiện qua package.json trong source của trang).\n- Không trích xuất các type TypeScript; có thể cần phải khai báo thủ công.\n\n**Các bước tiếp theo:**\n1. Kiểm tra xem component có hoạt động trong môi trường local của bạn hay không bằng cách cài đặt `@mui/material`.\n2. Thay thế dữ liệu động (ví dụ: `user.avatar`) bằng các placeholder tĩnh để kiểm thử.\n3. Refactor lại component để loại bỏ các hardcoded style nếu cần thiết."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:17:17.879050Z",
+    "http_status": 200,
+    "content_hash": "9000c9d6101660fb969660b2160a82a3b821b410560383c16206c2bc4f4f622d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\steal-react-component.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\steal-react-component.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Steal React Component - Trích xuất các Component UI",
+  "short_description_vi": "Trích xuất các component React từ các website production bằng browser automation. Giải pháp lý tưởng cho lập trình viên và đội ngũ vận hành cần tái sử dụng hoặc phân tích các component UI hiện có. Tích hợp trực tiếp với các công cụ browser automation để trích xuất component."
+}

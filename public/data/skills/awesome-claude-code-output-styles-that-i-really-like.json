@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-claude-code-output-styles-that-i-really-like",
+  "slug": "awesome-claude-code-output-styles-that-i-really-like",
+  "name": "browser-use",
+  "headline": "awesome-claude-code: unique output styles collection",
+  "short_description": "Curated output styles for Claude Code to streamline coding tasks. Developers and operations teams benefit from consistent, formatted code outputs. Integrates with IDEs and CLI tools for efficient workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "hesreallyhim",
+  "install_command": "git clone https://github.com/hesreallyhim/awesome-claude-code-output-styles-that-i-really-like.git",
+  "source_repo_url": "https://github.com/hesreallyhim/awesome-claude-code-output-styles-that-i-really-like",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-code-cli",
+    "claude",
+    "claude-code-plugins",
+    "claude-code-output-styles"
+  ],
+  "sections": {
+    "overview": "Output styles are a feature in Claude Code that allows you to override the default system prompt and transform how the AI assistant responds to your requests while maintaining core capabilities like file manipulation and script execution. You can activate pre-built styles such as technical-evangelist or tabloid-journalist using the /output-style command, instantly switching Claude into a specialized mode that reshapes its communication style and expertise focus. The feature supports creating custom output styles by writing markdown files in the .claude/output-styles/ directory, enabling you to design an AI coding partner tailored to your exact requirements. Output styles persist across sessions and can be switched mid-conversation, making Claude Code adaptable to different development workflows and team preferences without sacrificing technical accuracy.\nSwitch Claude's communication style mid-session for different coding contexts\nCreate custom output styles to match team preferences and workflows\nAdapt Claude's responses for specific roles like code reviewers or documentation experts\nMaintain consistent formatted outputs across different development tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hesreallyhim/awesome-claude-code-output-styles-that-i-really-like`",
+    "usage": "```\nGenerate a [LANGUAGE] code snippet for [TASK] using [STYLE_GUIDE] conventions. Format the output as a complete, executable file with clear comments and error handling. Include [TEST_CASE] to validate functionality. Example styles: 'Google Python Style', 'Rust API Boilerplate', 'Terraform Module'.\n```\nCopy\n\n```\n```python\n# File: payment_processor.py\n# Description: Handles Stripe payment webhook processing with idempotency\n# Style Guide: Google Python Style\n# Test Case: Verify successful charge creation with mock webhook payload\n\nimport os\nimport logging\nfrom typing import Dict, Optional\nfrom stripe import Webhook\nfrom flask import Flask, request, jsonify\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nclass PaymentProcessor:\n    \"\"\"Processes Stripe webhook events with idempotency checks.\"\"\"\n\n    def __init__(self, stripe_webhook_secret: str):\n        self.webhook = Webhook(stripe_webhook_secret)\n        self.processed_events = set()\n\n    def handle_webhook(self, payload: Dict, signature: str) -> Optional[Dict]:\n        \"\"\"Validates and processes Stripe webhook events.\n\n        Args:\n            payload: Raw webhook payload from Stripe\n            signature: HMAC signature for verification\n\n        Returns:\n            Dict: Processed event data or None if invalid\n        \"\"\"\n        try:\n            event = self.webhook.construct_event(\n                payload, signature, os.getenv(\"STRIPE_WEBHOOK_SECRET\")\n            )\n            if event[\"id\"] in self.processed_events:\n                logger.info(f\"Duplicate event {event['id']} ignored\")\n                return None\n\n            self.processed_events.add(event[\"id\"])\n            logger.info(f\"Processing event {event['id']} of type {event['type']}\")\n\n            # Business logic would go here\n            processed_data = {\n                \"event_id\": event[\"id\"],\n                \"event_type\": event[\"type\"],\n                \"amount\": event.get(\"data\", {}).get(\"object\", {}).get(\"amount\")\n            }\n            return processed_data\n\n        except ValueError as e:\n            logger.error(f\"Invalid payload: {e}\")\n            return None\n        except Exception as e:\n            logger.error(f\"Webhook processing failed: {e}\")\n            raise\n\n# Test Case Execution\nif __name__ == \"__main__\":\n    processor = PaymentProcessor(\"whsec_test_secret\")\n    mock_payload = {\n        \"id\": \"evt_123\",\n        \"type\": \"payment_intent.succeeded\",\n        \"data\": {\"object\": {\"amount\": 2000, \"currency\": \"usd\"}}\n    }\n    result = processor.handle_webhook(mock_payload, \"valid_signature\")\n    assert result[\"event_type\"] == \"payment_intent.succeeded\"\n    print(\"Test passed: Webhook processed successfully\")\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-claude-code-output-styles-that-i-really-like#main-content",
+      "awesome-claude-code-output-styles-that-i-really-like#overview",
+      "awesome-claude-code-output-styles-that-i-really-like#setup",
+      "awesome-claude-code-output-styles-that-i-really-like#examples",
+      "awesome-claude-code-output-styles-that-i-really-like#tools",
+      "awesome-claude-code-output-styles-that-i-really-like#mcp",
+      "awesome-claude-code-output-styles-that-i-really-like#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Output styles are a feature in Claude Code that allows you to override the default system prompt and transform how the AI assistant responds to your requests while maintaining core capabilities like file manipulation and script execution. You can activate pre-built styles such as technical-evangelist or tabloid-journalist using the /output-style command, instantly switching Claude into a specialized mode that reshapes its communication style and expertise focus. The feature supports creating custom output styles by writing markdown files in the .claude/output-styles/ directory, enabling you to design an AI coding partner tailored to your exact requirements. Output styles persist across sessions and can be switched mid-conversation, making Claude Code adaptable to different development workflows and team preferences without sacrificing technical accuracy.\nSwitch Claude's communication style mid-session for different coding contexts\nCreate custom output styles to match team preferences and workflows\nAdapt Claude's responses for specific roles like code reviewers or documentation experts\nMaintain consistent formatted outputs across different development tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hesreallyhim/awesome-claude-code-output-styles-that-i-really-like`",
+    "usage_vi": "```\nGenerate a [LANGUAGE] code snippet for [TASK] using [STYLE_GUIDE] conventions. Format the output as a complete, executable file with clear comments and error handling. Include [TEST_CASE] to validate functionality. Example styles: 'Google Python Style', 'Rust API Boilerplate', 'Terraform Module'.\n```\nCopy\n\n```\n```python\n# File: payment_processor.py\n# Description: Handles Stripe payment webhook processing with idempotency\n# Style Guide: Google Python Style\n# Test Case: Verify successful charge creation with mock webhook payload\n\nimport os\nimport logging\nfrom typing import Dict, Optional\nfrom stripe import Webhook\nfrom flask import Flask, request, jsonify\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nclass PaymentProcessor:\n    \"\"\"Processes Stripe webhook events with idempotency checks.\"\"\"\n\n    def __init__(self, stripe_webhook_secret: str):\n        self.webhook = Webhook(stripe_webhook_secret)\n        self.processed_events = set()\n\n    def handle_webhook(self, payload: Dict, signature: str) -> Optional[Dict]:\n        \"\"\"Validates and processes Stripe webhook events.\n\n        Args:\n            payload: Raw webhook payload from Stripe\n            signature: HMAC signature for verification\n\n        Returns:\n            Dict: Processed event data or None if invalid\n        \"\"\"\n        try:\n            event = self.webhook.construct_event(\n                payload, signature, os.getenv(\"STRIPE_WEBHOOK_SECRET\")\n            )\n            if event[\"id\"] in self.processed_events:\n                logger.info(f\"Duplicate event {event['id']} ignored\")\n                return None\n\n            self.processed_events.add(event[\"id\"])\n            logger.info(f\"Processing event {event['id']} of type {event['type']}\")\n\n            # Business logic would go here\n            processed_data = {\n                \"event_id\": event[\"id\"],\n                \"event_type\": event[\"type\"],\n                \"amount\": event.get(\"data\", {}).get(\"object\", {}).get(\"amount\")\n            }\n            return processed_data\n\n        except ValueError as e:\n            logger.error(f\"Invalid payload: {e}\")\n            return None\n        except Exception as e:\n            logger.error(f\"Webhook processing failed: {e}\")\n            raise\n\n# Test Case Execution\nif __name__ == \"__main__\":\n    processor = PaymentProcessor(\"whsec_test_secret\")\n    mock_payload = {\n        \"id\": \"evt_123\",\n        \"type\": \"payment_intent.succeeded\",\n        \"data\": {\"object\": {\"amount\": 2000, \"currency\": \"usd\"}}\n    }\n    result = processor.handle_webhook(mock_payload, \"valid_signature\")\n    assert result[\"event_type\"] == \"payment_intent.succeeded\"\n    print(\"Test passed: Webhook processed successfully\")\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:10:09.438171Z",
+    "http_status": 200,
+    "content_hash": "c1e3ba64878e3a41860afdb9857c98d331adfd9f393605ec6885ee9de335b7f0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-claude-code-output-styles-that-i-really-like.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-claude-code-output-styles-that-i-really-like.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "awesome-claude-code: unique output styles collection",
+  "short_description_vi": "Curated output styles for Claude Code to streamline coding tasks. Developers and operations teams benefit from consistent, formatted code outputs. Integrates with IDEs and CLI tools for efficient workflows."
+}

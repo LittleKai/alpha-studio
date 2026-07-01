@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gh-issue-sync",
+  "slug": "gh-issue-sync",
+  "name": "gh-issue-sync",
+  "headline": "gh-issue-sync - Sync GitHub Issues Locally",
+  "short_description": "Sync GitHub issues to local Markdown files for offline editing, batch updates, and integration with coding workflows. Benefits developers and operations teams by enabling offline work and streamlining issue management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "mitsuhiko",
+  "install_command": "git clone https://github.com/mitsuhiko/gh-issue-sync.git",
+  "source_repo_url": "https://github.com/mitsuhiko/gh-issue-sync",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "gh-issue-sync is a command-line tool that mirrors GitHub issues into local Markdown files with YAML front matter, enabling offline editing and batch updates. The tool supports creating new issues locally with temporary IDs that get replaced with real issue numbers after pushing to GitHub. It uses three-way comparison to detect conflicts between local, original, and remote versions, automatically handling references and creating missing labels or milestones during sync. Developers and coding agents can pull issues, refine them locally in their preferred editor, and push changes back in a single operation. The tool integrates with popular AI agents including Claude Code, Cursor, and others through customizable skill files.\nBatch editing multiple GitHub issues offline before syncing changes\nUsing AI agents like Claude Code to iteratively refine issues locally\nCreating new issues locally with temporary IDs before publishing to GitHub\nManaging issues offline for teams without constant internet access",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mitsuhiko/gh-issue-sync`",
+    "usage": "```\nSync GitHub issues for repository [REPO_NAME] to local Markdown files in directory [LOCAL_DIR]. Include issues labeled [LABEL_FILTER] and exclude those with status [EXCLUDE_STATUS]. Generate a summary report of changes made during the sync. Use GitHub CLI (gh) for the operation.\n```\nCopy\n\n```\nSync completed for repository 'acme-web-app' in directory './issues-backup'. Processed 42 issues (23 updated, 19 new, 0 skipped). Issues excluded due to 'closed' status: 5. Labels processed: 'bug', 'enhancement', 'critical'. \n\n**Summary Report:**\n- Total issues synced: 42\n- New Markdown files created: 19\n- Existing files updated: 23\n- Issues excluded: 5 (all 'closed' status)\n- Largest issue: #124 (245 lines) - 'Login timeout on mobile devices'\n- Most commented: #89 (14 comments) - 'Dark mode implementation'\n\n**Files Modified:**\n- ./issues-backup/bug/issue-124-login-timeout.md\n- ./issues-backup/enhancement/issue-89-dark-mode.md\n- ./issues-backup/critical/issue-203-api-rate-limiting.md\n\nAll Markdown files include frontmatter with GitHub metadata (title, number, labels, assignees, created_at, updated_at) and are formatted for easy editing. The sync took 47 seconds to complete.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gh-issue-sync#main-content",
+      "gh-issue-sync#overview",
+      "gh-issue-sync#setup",
+      "gh-issue-sync#examples",
+      "gh-issue-sync#tools",
+      "gh-issue-sync#mcp",
+      "gh-issue-sync#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "gh-issue-sync là một công cụ dòng lệnh giúp sao chép (mirror) các GitHub issue thành các file Markdown cục bộ kèm YAML front matter, hỗ trợ chỉnh sửa offline và cập nhật hàng loạt. Công cụ này cho phép tạo issue mới trên máy cục bộ với ID tạm thời, sau đó sẽ được thay thế bằng số hiệu issue thực tế sau khi push lên GitHub. Nó sử dụng cơ chế so sánh ba chiều (three-way comparison) để phát hiện xung đột giữa các phiên bản cục bộ (local), gốc (original) và từ xa (remote), tự động xử lý các tham chiếu và tạo các label hoặc milestone còn thiếu trong quá trình đồng bộ. Lập trình viên và các coding agent có thể pull issue về, tinh chỉnh cục bộ trên trình soạn thảo yêu thích, rồi push các thay đổi trở lại chỉ trong một thao tác duy nhất. Công cụ này tích hợp mượt mà với các AI agent phổ biến như Claude Code, Cursor và nhiều công cụ khác thông qua các file skill tùy chỉnh.\n- Chỉnh sửa hàng loạt nhiều GitHub issue offline trước khi đồng bộ thay đổi\n- Sử dụng các AI agent như Claude Code để tối ưu hóa dần các issue ngay tại local\n- Tạo issue mới cục bộ với ID tạm thời trước khi xuất bản lên GitHub\n- Quản lý issue offline cho các đội ngũ không có kết nối internet liên tục",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/mitsuhiko/gh-issue-sync`",
+    "usage_vi": "```\nĐồng bộ các GitHub issue của repository [REPO_NAME] thành các file Markdown cục bộ trong thư mục [LOCAL_DIR]. Bao gồm các issue có nhãn [LABEL_FILTER] và loại trừ những issue có trạng thái [EXCLUDE_STATUS]. Tạo báo cáo tổng hợp các thay đổi trong quá trình đồng bộ. Sử dụng GitHub CLI (gh) để thực hiện tác vụ.\n```\nCopy\n\n```\nĐồng bộ hoàn tất cho repository 'acme-web-app' trong thư mục './issues-backup'. Đã xử lý 42 issue (23 được cập nhật, 19 mới, 0 bị bỏ qua). Các issue bị loại trừ do trạng thái 'closed': 5. Các nhãn đã xử lý: 'bug', 'enhancement', 'critical'. \n\n**Báo cáo tổng hợp:**\n- Tổng số issue đã đồng bộ: 42\n- File Markdown mới được tạo: 19\n- File hiện có được cập nhật: 23\n- Issue bị loại trừ: 5 (đều có trạng thái 'closed')\n- Issue lớn nhất: #124 (245 dòng) - 'Login timeout on mobile devices'\n- Issue được bình luận nhiều nhất: #89 (14 bình luận) - 'Dark mode implementation'\n\n**Các file đã chỉnh sửa:**\n- ./issues-backup/bug/issue-124-login-timeout.md\n- ./issues-backup/enhancement/issue-89-dark-mode.md\n- ./issues-backup/critical/issue-203-api-rate-limiting.md\n\nTất cả các file Markdown đều bao gồm frontmatter chứa metadata của GitHub (title, number, labels, assignees, created_at, updated_at) và được định dạng để dễ dàng chỉnh sửa. Quá trình đồng bộ hoàn tất trong 47 giây.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:00.833830Z",
+    "http_status": 200,
+    "content_hash": "598e32b67e739ef529d3c66400d13dd295a5c69b09bd79ed3a3e08264ae68388",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gh-issue-sync.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gh-issue-sync.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "gh-issue-sync - Đồng bộ GitHub Issue cục bộ",
+  "short_description_vi": "Đồng bộ các GitHub issue thành các file Markdown cục bộ để chỉnh sửa offline, cập nhật hàng loạt và tích hợp vào quy trình lập trình (coding workflow). Hỗ trợ đắc lực cho các lập trình viên và đội ngũ vận hành nhờ khả năng làm việc offline và tối ưu hóa việc quản lý issue."
+}

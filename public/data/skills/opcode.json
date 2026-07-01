@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opcode",
+  "slug": "opcode",
+  "name": "Opcode",
+  "headline": "Opcode - Claude Code Agent Toolkit",
+  "short_description": "Opcode is a GUI app and toolkit for Claude Code. It enables operations teams to create custom agents, manage interactive sessions, and run secure background agents. It connects to Claude Code SDK and integrates with IDEs like Cursor.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "winfunc",
+  "install_command": "git clone https://github.com/winfunc/opcode.git",
+  "source_repo_url": "https://github.com/winfunc/opcode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-sdk",
+    "llm",
+    "cursor",
+    "tauri",
+    "claude-4-sonnet",
+    "anthropic",
+    "claude-4-opus",
+    "ide",
+    "rust",
+    "anthropic-claude",
+    "claude",
+    "claude-code",
+    "llm-code",
+    "claude-4",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Opcode is a GUI application and toolkit designed for operations teams to build, deploy, and manage custom Claude agents. It provides a visual interface for agent creation and session management, allowing teams to run both interactive and background agents securely. The toolkit integrates with the Claude Code SDK and supports IDE environments like Cursor, making it accessible for technical teams managing AI automation workflows. Opcode uses .opcode.json configuration files for agent setup and supports cross-platform deployment including macOS and Linux environments. Teams can leverage Opcode to streamline AI agent orchestration without requiring extensive custom development.\nCreate and manage custom AI agents for specific coding tasks.\nTrack and analyze Claude API usage and costs in real-time.\nManage multiple interactive coding sessions with session history and insights.\nRun background agents to perform tasks without interrupting the main workflow.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/winfunc/opcode`",
+    "usage": "```\nUse Opcode to create a custom agent that [TASK]. Configure the agent with [AGENT_SETTINGS] and run it in [MODE]. Monitor the agent's output and log any errors or warnings to [LOG_DESTINATION].\n```\nCopy\n\n```\n```json\n{\n  \"agent_name\": \"inventory_sync_agent\",\n  \"status\": \"completed\",\n  \"duration\": \"4m 12s\",\n  \"tasks_executed\": 12,\n  \"success_rate\": 100,\n  \"output\": {\n    \"inventory_updates\": [\n      {\"sku\": \"IPHONE-15-PRO\", \"old_qty\": 150, \"new_qty\": 142, \"warehouse\": \"NYC\"},\n      {\"sku\": \"MACBOOK-PRO-M3\", \"old_qty\": 89, \"new_qty\": 85, \"warehouse\": \"LAX\"},\n      {\"sku\": \"IPAD-AIR-5\", \"old_qty\": 203, \"new_qty\": 200, \"warehouse\": \"CHI\"}\n    ],\n    \"errors\": [],\n    \"warnings\": [\n      {\"message\": \"Low stock alert for SKU: MACBOOK-PRO-M3 (85 units)\", \"threshold\": 100}\n    ]\n  },\n  \"logs\": \"Agent ran in background mode with auto-retry enabled. All tasks completed without manual intervention.\"\n}\n```\n\nThe inventory_sync_agent was configured with the following settings:\n- Mode: Background (secure, no GUI)\n- Retry attempts: 3\n- Rate limit: 10 requests/second\n- Input source: SQL database (inventory_db)\n- Output destination: REST API (warehouse_api)\n\nThe agent executed a full inventory sync across 3 warehouses, updating quantities for 12 SKUs. All updates were processed in under 5 minutes with no failures. A low-stock warning was automatically generated for the MacBook Pro M3 (85 units remaining vs. 100 threshold). The agent logged all actions to a file in `/var/log/opcode/inventory_sync_agent.log` for audit purposes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "opcode#main-content",
+      "opcode#overview",
+      "opcode#setup",
+      "opcode#examples",
+      "opcode#tools",
+      "opcode#mcp",
+      "opcode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Opcode là một ứng dụng GUI và bộ công cụ được thiết kế dành cho các đội ngũ vận hành để xây dựng, triển khai và quản lý các Claude agent tùy chỉnh. Ứng dụng cung cấp giao diện trực quan cho việc tạo agent và quản lý phiên, cho phép các đội ngũ chạy cả agent tương tác lẫn background agent một cách an toàn. Bộ công cụ này tích hợp với Claude Code SDK và hỗ trợ các môi trường IDE như Cursor, giúp các đội ngũ kỹ thuật dễ dàng tiếp cận để quản lý các workflow tự động hóa bằng AI. Opcode sử dụng các tệp cấu hình .opcode.json để setup agent và hỗ trợ triển khai đa nền tảng, bao gồm cả môi trường macOS và Linux. Các đội ngũ có thể tận dụng Opcode để tối ưu hóa việc điều phối (orchestration) AI agent mà không cần tốn nhiều công sức tự phát triển hệ thống.\nTạo và quản lý các AI agent tùy chỉnh cho các tác vụ coding cụ thể.\nTheo dõi và phân tích lượng sử dụng cũng như chi phí API Claude theo thời gian thực.\nQuản lý nhiều phiên coding tương tác cùng với lịch sử phiên và các phân tích chuyên sâu.\nChạy các background agent để thực hiện tác vụ mà không làm gián đoạn workflow chính.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/winfunc/opcode`",
+    "usage_vi": "```\nSử dụng Opcode để tạo một agent tùy chỉnh nhằm thực hiện [TASK]. Cấu hình agent với [AGENT_SETTINGS] và chạy ở chế độ [MODE]. Theo dõi đầu ra của agent và ghi log mọi lỗi hoặc cảnh báo vào [LOG_DESTINATION].\n```\nCopy\n\n```json\n{\n  \"agent_name\": \"inventory_sync_agent\",\n  \"status\": \"completed\",\n  \"duration\": \"4m 12s\",\n  \"tasks_executed\": 12,\n  \"success_rate\": 100,\n  \"output\": {\n    \"inventory_updates\": [\n      {\"sku\": \"IPHONE-15-PRO\", \"old_qty\": 150, \"new_qty\": 142, \"warehouse\": \"NYC\"},\n      {\"sku\": \"MACBOOK-PRO-M3\", \"old_qty\": 89, \"new_qty\": 85, \"warehouse\": \"LAX\"},\n      {\"sku\": \"IPAD-AIR-5\", \"old_qty\": 203, \"new_qty\": 200, \"warehouse\": \"CHI\"}\n    ],\n    \"errors\": [],\n    \"warnings\": [\n      {\"message\": \"Low stock alert for SKU: MACBOOK-PRO-M3 (85 units)\", \"threshold\": 100}\n    ]\n  },\n  \"logs\": \"Agent ran in background mode with auto-retry enabled. All tasks completed without manual intervention.\"\n}\n```\n\nAgent inventory_sync_agent đã được cấu hình với các thiết lập sau:\n- Mode: Background (bảo mật, không GUI)\n- Số lần thử lại (Retry attempts): 3\n- Giới hạn tần suất (Rate limit): 10 requests/giây\n- Nguồn đầu vào (Input source): Cơ sở dữ liệu SQL (inventory_db)\n- Đích đầu ra (Output destination): REST API (warehouse_api)\n\nAgent đã thực hiện đồng bộ hóa toàn bộ kho hàng trên 3 kho, cập nhật số lượng cho 12 SKU. Tất cả các cập nhật đã được xử lý trong chưa đầy 5 phút và không xảy ra lỗi nào. Cảnh báo sắp hết hàng đã tự động được tạo cho MacBook Pro M3 (còn lại 85 đơn vị so với ngưỡng 100). Agent đã ghi log mọi hoạt động vào tệp tại `/var/log/opcode/inventory_sync_agent.log` để phục vụ việc kiểm toán (audit)."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:03:29.332758Z",
+    "http_status": 200,
+    "content_hash": "9d2bbcd17161e9930dd3999c017e35a3bd8289d95a19807d6b6924e6d485b82d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opcode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opcode.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Opcode - Claude Code Agent Toolkit",
+  "short_description_vi": "Opcode là một ứng dụng GUI và bộ công cụ dành cho Claude Code. Nó cho phép các đội ngũ vận hành tạo các agent tùy chỉnh, quản lý các phiên tương tác và chạy các background agent bảo mật. Ứng dụng kết nối với Claude Code SDK và tích hợp với các IDE như Cursor."
+}

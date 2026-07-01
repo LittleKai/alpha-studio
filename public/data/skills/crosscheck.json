@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/crosscheck",
+  "slug": "crosscheck",
+  "name": "CrossCheck",
+  "headline": "CrossCheck: Multi-Model AI Verification",
+  "short_description": "Reduce AI hallucinations through multi-model consensus. A Claude Code skill that cross-verifies answers from Claude, Codex, and Gemini.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "leiMizzou",
+  "install_command": "git clone https://github.com/leiMizzou/CrossCheck.git",
+  "source_repo_url": "https://github.com/leiMizzou/CrossCheck",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "hallucination",
+    "openai",
+    "multi-model",
+    "claude",
+    "gemini",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "CrossCheck is a Claude Code skill that improves answer reliability by querying three AI models—Claude, Codex, and Gemini—simultaneously and having each critique the others' responses. The skill uses a three-round verification process: independent answers, cross-review for errors and blind spots, and final consensus synthesis. It includes smart short-circuit logic that skips verification rounds when all models agree, saving time and cost. Teams making critical decisions benefit from higher-confidence conclusions backed by multi-model validation rather than relying on a single AI source.\nVerify architectural recommendations across microservices and hybrid approaches\nCross-check compliance and regulatory guidance for finance and healthcare\nValidate technical decisions with structured consensus from multiple AI perspectives\nAudit complex reasoning by surfacing model disagreements and blind spots",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/leiMizzou/CrossCheck`",
+    "usage": "```\nI need to verify the following information: [INFORMATION]. Please use the CrossCheck skill to cross-verify this information using Claude, Codex, and Gemini. Provide a consensus report with any discrepancies.\n```\nCopy\n\n```\n# CrossCheck Consensus Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "crosscheck#main-content",
+      "crosscheck#overview",
+      "crosscheck#setup",
+      "crosscheck#examples",
+      "crosscheck#tools",
+      "crosscheck#mcp",
+      "crosscheck#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CrossCheck là một Claude Code skill giúp nâng cao độ tin cậy của câu trả lời bằng cách truy vấn đồng thời ba mô hình AI—Claude, Codex và Gemini—và để chúng phản biện chéo kết quả của nhau. Skill này sử dụng quy trình xác thực ba vòng: đưa ra câu trả lời độc lập, đánh giá chéo để phát hiện lỗi cùng điểm mù, và tổng hợp sự đồng thuận cuối cùng. Công cụ này tích hợp logic short-circuit thông minh giúp bỏ qua các vòng xác thực khi tất cả các mô hình đã thống nhất ý kiến, giúp tiết kiệm thời gian và chi phí. Các đội ngũ phát triển khi đưa ra các quyết định quan trọng sẽ có được những kết luận với độ tin cậy cao hơn nhờ cơ chế xác thực đa mô hình, thay vì chỉ phụ thuộc vào một nguồn AI duy nhất.\n\nXác thực các đề xuất kiến trúc trên toàn bộ hệ thống microservices và các hướng tiếp cận hybrid\nKiểm tra chéo tính tuân thủ và các hướng dẫn quy định trong ngành tài chính và y tế\nĐánh giá các quyết định kỹ thuật dựa trên sự đồng thuận có cấu trúc từ nhiều góc độ AI khác nhau\nKiểm toán các lập luận phức tạp bằng cách làm nổi bật những điểm bất đồng và điểm mù giữa các mô hình",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/leiMizzou/CrossCheck`",
+    "usage_vi": "```\nTôi cần xác thực thông tin sau: [THÔNG TIN]. Vui lòng sử dụng skill CrossCheck để xác thực chéo thông tin này bằng Claude, Codex và Gemini. Cung cấp báo cáo đồng thuận kèm theo các điểm khác biệt nếu có.\n```\nSao chép\n\n```\n# Báo cáo Đồng thuận CrossCheck"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:10.791854Z",
+    "http_status": 200,
+    "content_hash": "554b895689b3764d183d07b37be3717aeedb7e9c03743e095221eff001266069",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crosscheck.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crosscheck.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CrossCheck: Xác thực AI Đa Mô hình",
+  "short_description_vi": "Giảm thiểu hiện tượng ảo tưởng (hallucinations) của AI thông qua cơ chế đồng thuận đa mô hình. Đây là một Claude Code skill giúp xác thực chéo các câu trả lời từ Claude, Codex và Gemini."
+}

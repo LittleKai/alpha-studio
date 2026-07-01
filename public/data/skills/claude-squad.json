@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-squad",
+  "slug": "claude-squad",
+  "name": "Claude Squad",
+  "headline": "Manage AI agents like Claude Code and Aider",
+  "short_description": "Claude Squad enables operations teams to manage multiple AI terminal agents like Claude Code, Aider, Codex, OpenCode, and Amp. It streamlines workflows by integrating these agents into a single interface, improving efficiency in code generation, debugging, and automation tasks.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "smtg-ai",
+  "install_command": "git clone https://github.com/smtg-ai/claude-squad.git",
+  "source_repo_url": "https://github.com/smtg-ai/claude-squad",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "vibe-coding",
+    "cli",
+    "aider",
+    "codex",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Squad is a tool for operations teams that consolidates multiple AI terminal agents into a single interface. It enables management of agents like Claude Code, Aider, Codex, OpenCode, and Amp through centralized control. The skill improves workflow efficiency by eliminating the need to switch between separate agent instances when performing code generation, debugging, and automation tasks. Operations teams benefit from streamlined session management and integrated visibility across multiple AI agents working in parallel.\nSimultaneously manage multiple coding tasks using different AI agents without conflicts.\nAutomatically accept prompts in the background to speed up development workflows.\nReview and apply code changes from various agents in a single terminal window.\nCreate isolated git workspaces for each AI session to prevent code conflicts.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/smtg-ai/claude-squad`",
+    "usage": "```\nSet up a [TASK_NAME] workflow in Claude Squad using [TERMINAL_AGENT_1], [TERMINAL_AGENT_2], and [TERMINAL_AGENT_3]. Define the handoff points between agents, error handling for [COMMON_ERROR], and success criteria for [OUTPUT_DELIVERABLE]. Provide a step-by-step execution plan with estimated time per step.\n```\nCopy\n\n```\n### Claude Squad Workflow Execution Report\n\n**Workflow:** Automated Bug Fix & Test Suite Generation\n**Agents Assigned:**\n- Agent 1: Claude Code (Primary orchestrator)\n- Agent 2: Aider (Code modification specialist)\n- Agent 3: OpenCode (Test suite generator)\n\n**Execution Timeline:**\n1. **00:00-00:05** - Agent 1 (Claude Code) clones the repository from GitHub (repo: `acme-inc/ecommerce-api`) and identifies the top 3 failing tests in `test_payment_gateway.py`.\n2. **00:05-00:15** - Agent 2 (Aider) implements fixes for the failing tests: \n   - Fixed `stripe_charge()` method to handle null `customer_id` (PR #1243)\n   - Added retry logic for network timeouts in `process_refund()` (PR #1244)\n   - Resolved race condition in `update_inventory()` (PR #1245)\n3. **00:15-00:25** - Agent 3 (OpenCode) generates a new test suite (`test_integration_suite.py`) with 15 edge cases covering:\n   - Concurrent payment attempts\n   - Database transaction rollbacks\n   - API rate limiting\n4. **00:25-00:30** - Agent 1 runs the full test suite (87 tests) and confirms 100% pass rate. All agents log their actions to `claude-squad.log` with timestamps.\n\n**Outputs Generated:**\n- 3 pull requests (linked in GitHub)\n- 1 new test file (120 lines)\n- Updated documentation in `docs/api_reference.md`\n\n**Error Handling:**\n- If Agent 2 fails to apply a fix, it automatically falls back to Agent 1 to generate a manual patch.\n- If test suite generation fails, Agent 3 triggers a rerun with reduced test cases.\n\n**Success Metrics:**\n- All tests passing (100%)\n- Code coverage increased from 78% to 89%\n- Zero regressions in existing functionality\n\n**Next Steps:**\n- Merge PRs after code review\n- Schedule performance testing in staging environment\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-squad#main-content",
+      "claude-squad#overview",
+      "claude-squad#setup",
+      "claude-squad#examples",
+      "claude-squad#tools",
+      "claude-squad#mcp",
+      "claude-squad#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Squad là công cụ dành cho các đội ngũ vận hành giúp hợp nhất nhiều AI terminal agent vào một giao diện duy nhất. Công cụ này hỗ trợ quản lý tập trung các agent như Claude Code, Aider, Codex, OpenCode và Amp. Skill này nâng cao hiệu quả quy trình làm việc bằng cách loại bỏ thao tác chuyển đổi qua lại giữa các instance agent riêng biệt khi sinh code, debugging và thực hiện tác vụ tự động hóa. Các đội ngũ vận hành sẽ tối ưu hóa được việc quản lý session và có góc nhìn tích hợp, trực quan khi nhiều AI agent chạy song song.\nQuản lý đồng thời nhiều tác vụ lập trình bằng các AI agent khác nhau mà không lo xung đột.\nTự động chấp nhận các prompt dưới nền để đẩy nhanh workflow phát triển.\nReview và áp dụng các thay đổi code từ nhiều agent khác nhau trên một cửa sổ terminal duy nhất.\nTạo các git workspace độc lập cho từng AI session để tránh xung đột code.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/smtg-ai/claude-squad`",
+    "usage_vi": "```\nThiết lập workflow [TASK_NAME] trong Claude Squad bằng cách sử dụng [TERMINAL_AGENT_1], [TERMINAL_AGENT_2] và [TERMINAL_AGENT_3]. Định nghĩa các điểm handoff giữa các agent, xử lý lỗi cho [COMMON_ERROR] và tiêu chí thành công cho [OUTPUT_DELIVERABLE]. Cung cấp kế hoạch thực thi từng bước với thời gian ước tính cho mỗi bước.\n```\nSao chép\n\n```\n### Báo cáo thực thi Workflow của Claude Squad\n\n**Workflow:** Tự động sửa Bug & Tạo Bộ Test (Test Suite)\n**Agent được phân công:**\n- Agent 1: Claude Code (Orchestrator chính)\n- Agent 2: Aider (Chuyên gia chỉnh sửa code)\n- Agent 3: OpenCode (Trình tạo bộ test)\n\n**Dòng thời gian thực thi (Execution Timeline):**\n1. **00:00-00:05** - Agent 1 (Claude Code) clone repository từ GitHub (repo: `acme-inc/ecommerce-api`) và xác định 3 test bị lỗi nhiều nhất trong `test_payment_gateway.py`.\n2. **00:05-00:15** - Agent 2 (Aider) tiến hành sửa lỗi cho các test bị hỏng:\n   - Sửa phương thức `stripe_charge()` để xử lý trường hợp `customer_id` bị null (PR #1243)\n   - Thêm cơ chế retry khi timeout mạng trong `process_refund()` (PR #1244)\n   - Khắc phục lỗi race condition trong `update_inventory()` (PR #1245)\n3. **00:15-00:25** - Agent 3 (OpenCode) tạo một bộ test mới (`test_integration_suite.py`) với 15 edge case bao gồm:\n   - Các lượt thử thanh toán đồng thời (concurrent payment attempts)\n   - Rollback giao dịch cơ sở dữ liệu (database transaction rollbacks)\n   - Giới hạn lượt gọi API (API rate limiting)\n4. **00:25-00:30** - Agent 1 chạy toàn bộ bộ test (87 test) và xác nhận tỷ lệ vượt qua là 100%. Tất cả các agent đều ghi lại (log) hoạt động của mình vào file `claude-squad.log` kèm timestamp.\n\n**Kết quả đầu ra (Outputs Generated):**\n- 3 pull request (được liên kết trên GitHub)\n- 1 file test mới (120 dòng)\n- Cập nhật tài liệu hướng dẫn trong `docs/api_reference.md`\n\n**Xử lý lỗi (Error Handling):**\n- Nếu Agent 2 không áp dụng được bản sửa lỗi, hệ thống tự động fallback về Agent 1 để tạo patch thủ công.\n- Nếu quá trình tạo bộ test thất bại, Agent 3 sẽ kích hoạt chạy lại (rerun) với số lượng test case giảm bớt.\n\n**Tiêu chí thành công (Success Metrics):**\n- Vượt qua toàn bộ các bài test (100% pass rate)\n- Code coverage tăng từ 78% lên 89%\n- Không xảy ra lỗi hồi quy (zero regressions) đối với các tính năng hiện tại\n\n**Các bước tiếp theo:**\n- Merge các PR sau khi hoàn thành code review\n- Lên lịch kiểm thử hiệu năng (performance testing) trên môi trường staging\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:08.366092Z",
+    "http_status": 200,
+    "content_hash": "51178b857348e5067577be66fcdcad3884f68eaacc3586caebddd97727918ff3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-squad.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-squad.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quản lý các AI agent như Claude Code và Aider",
+  "short_description_vi": "Claude Squad cho phép các đội ngũ vận hành quản lý nhiều AI terminal agent như Claude Code, Aider, Codex, OpenCode và Amp. Công cụ này tối ưu hóa quy trình làm việc bằng cách tích hợp các agent vào một giao diện duy nhất, từ đó nâng cao hiệu quả sinh code, debugging và thực hiện các tác vụ tự động hóa."
+}

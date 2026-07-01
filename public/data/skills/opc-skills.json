@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opc-skills",
+  "slug": "opc-skills",
+  "name": "OPC Skills",
+  "headline": "OPC Skills - AI Agent Skills for Solopreneurs",
+  "short_description": "OPC Skills provides AI agent skills for one-person companies. Solopreneurs benefit from automated workflows for operations tasks. Connects to Claude agents for task automation, SEO, and geo-based services.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "ReScienceLab",
+  "install_command": "git clone https://github.com/ReScienceLab/opc-skills.git",
+  "source_repo_url": "https://github.com/ReScienceLab/opc-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "geo",
+    "seo",
+    "ai-tools",
+    "llm-tools",
+    "claude-code",
+    "opc"
+  ],
+  "sections": {
+    "overview": "OPC Skills is a collection of AI agent skills designed specifically for solopreneurs and one-person companies to automate operations workflows. The skill set integrates with Claude agents to streamline tasks including SEO optimization and geo-based service delivery. Built by ReScienceLab and actively maintained with 313+ commits, OPC Skills enables small business owners to implement intelligent automation without engineering teams. The skills are available through multiple platforms including Claude Code and Cursor, providing flexible integration options for solo entrepreneurs automating their business operations.\nAutomating repetitive operations tasks for solo business owners\nImplementing SEO workflows and optimization for small websites\nManaging geo-based service delivery and location-specific operations\nStreamlining business processes through Claude agent integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ReScienceLab/opc-skills`",
+    "usage": "```\nAct as an AI agent for my one-person company. Automate the following task: [TASK_DESCRIPTION]. Use [TOOLS_AVAILABLE] to complete it efficiently. Prioritize [PRIORITY_LEVEL] and ensure the output is ready for [NEXT_STEP].\n```\nCopy\n\n```\nHere’s the automated workflow for your one-person company’s quarterly newsletter campaign:\n\n**Task Breakdown:**\n1. **Content Sourcing:** Pulled the top 5 blog posts from your website (published in the last 3 months) using Google Search Console API. Filtered for posts with >100 views to ensure engagement potential.\n2. **SEO Optimization:** Ran each post through SurferSEO to identify missing keywords. Added 3 high-volume long-tail keywords per post (e.g., \"remote work tools for solopreneurs\" for a post on productivity).\n3. **Geo-Targeting:** Used Google Maps API to identify 100 solopreneurs in [CITY, STATE] who engaged with similar content in the last 30 days. Segmented the list into two groups: \"High Intent\" (visited pricing pages) and \"General Audience.\"\n4. **Automated Draft:** Generated a 3-email drip sequence in Mailchimp with personalized subject lines (e.g., \"[First Name], here’s your productivity toolkit\"). Scheduled the first email for [DATE] at 9 AM local time.\n5. **Follow-Up:** Set a Claude agent to monitor open rates and resend the email to non-openers after 48 hours with a revised subject line.\n\n**Output:**\n- **Newsletter Draft:** Ready for your review in Mailchimp (shared link: [LINK]).\n- **Audience List:** 127 contacts segmented into \"High Intent\" (34) and \"General Audience\" (93).\n- **Performance Metrics:** Expected open rate: 28% (industry avg for solopreneurs), click-through rate: 8%.\n\n**Next Steps:**\n- Review the draft by [DATE].\n- Approve the audience list in Mailchimp.\n- Monitor the first email’s performance in the Claude dashboard.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "opc-skills#main-content",
+      "opc-skills#overview",
+      "opc-skills#setup",
+      "opc-skills#examples",
+      "opc-skills#tools",
+      "opc-skills#mcp",
+      "opc-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OPC Skills là một tập hợp các kỹ năng AI agent được thiết kế riêng cho các solopreneur và doanh nghiệp một người để tự động hóa các workflow vận hành. Bộ kỹ năng này tích hợp với các Claude agent để đơn giản hóa các tác vụ bao gồm tối ưu hóa SEO và cung cấp dịch vụ dựa trên vị trí địa lý. Được phát triển bởi ReScienceLab và được duy trì tích cực với hơn 313 commit, OPC Skills giúp các chủ doanh nghiệp nhỏ triển khai tự động hóa thông minh mà không cần đến đội ngũ kỹ sư công nghệ. Các kỹ năng này có thể truy cập qua nhiều nền tảng bao gồm Claude Code và Cursor, mang lại các tùy chọn tích hợp linh hoạt cho các doanh nghiệp solo đang muốn tự động hóa hoạt động kinh doanh của mình.\nTự động hóa các tác vụ vận hành lặp đi lặp lại cho các chủ doanh nghiệp solo\nTriển khai các quy trình SEO và tối ưu hóa cho các website nhỏ\nQuản lý việc cung cấp dịch vụ dựa trên vị trí địa lý và các hoạt động đặc thù theo khu vực\nTối ưu hóa các quy trình kinh doanh thông qua tích hợp Claude agent",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ReScienceLab/opc-skills`",
+    "usage_vi": "```\nHãy đóng vai trò là một AI agent cho doanh nghiệp một người của tôi. Tự động hóa tác vụ sau: [TASK_DESCRIPTION]. Sử dụng [TOOLS_AVAILABLE] để hoàn thành tác vụ một cách hiệu quả. Ưu tiên [PRIORITY_LEVEL] và đảm bảo kết quả đầu ra đã sẵn sàng cho [NEXT_STEP].\n```\nSao chép\n\n```\nDưới đây là quy trình tự động hóa cho chiến dịch bản tin hàng quý của doanh nghiệp một người của bạn:\n\n**Phân tích tác vụ:**\n1. **Thu thập nội dung:** Lấy 5 bài viết blog hàng đầu từ website của bạn (được xuất bản trong 3 tháng qua) bằng Google Search Console API. Lọc các bài viết có hơn 100 lượt xem để đảm bảo tiềm năng tương tác.\n2. **Tối ưu hóa SEO:** Chạy từng bài viết qua SurferSEO để xác định các từ khóa còn thiếu. Thêm 3 từ khóa đuôi dài có lượng tìm kiếm cao cho mỗi bài viết (ví dụ: \"remote work tools for solopreneurs\" cho bài viết về năng suất).\n3. **Nhắm mục tiêu theo vị trí:** Sử dụng Google Maps API để xác định 100 solopreneur tại [CITY, STATE] đã tương tác với các nội dung tương tự trong 30 ngày qua. Phân loại danh sách thành hai nhóm: \"Ý định cao\" (đã truy cập trang bảng giá) và \"Đối tượng chung\".\n4. **Bản nháp tự động:** Tạo một chuỗi 3 email tự động (drip sequence) trong Mailchimp với tiêu đề được cá nhân hóa (ví dụ: \"[First Name], đây là bộ công cụ tăng năng suất của bạn\"). Lên lịch gửi email đầu tiên vào lúc 9 giờ sáng giờ địa phương ngày [DATE].\n5. **Theo dõi:** Thiết lập một Claude agent để theo dõi tỷ lệ mở và gửi lại email cho những người chưa mở sau 48 giờ với tiêu đề đã được chỉnh sửa.\n\n**Kết quả đầu ra:**\n- **Bản nháp Newsletter:** Đã sẵn sàng để bạn duyệt trong Mailchimp (liên kết chia sẻ: [LINK]).\n- **Danh sách đối tượng:** 127 liên hệ được phân loại thành \"Ý định cao\" (34) và \"Đối tượng chung\" (93).\n- **Chỉ số hiệu suất:** Tỷ lệ mở dự kiến: 28% (trung bình ngành đối với solopreneur), tỷ lệ click (CTR): 8%.\n\n**Các bước tiếp theo:**\n- Duyệt bản nháp trước ngày [DATE].\n- Phê duyệt danh sách đối tượng trong Mailchimp.\n- Theo dõi hiệu suất của email đầu tiên trên dashboard của Claude.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:47.291049Z",
+    "http_status": 200,
+    "content_hash": "207b24347e5e6fbe06c6a86672ada2419ebf8be76785024218c15697d1216cc1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opc-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opc-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OPC Skills - Các kỹ năng AI Agent dành cho Solopreneur",
+  "short_description_vi": "OPC Skills cung cấp các kỹ năng AI agent cho các doanh nghiệp một người. Các solopreneur sẽ được hưởng lợi từ các workflow tự động hóa cho các tác vụ vận hành. Kết nối với các Claude agent để tự động hóa tác vụ, tối ưu hóa SEO và cung cấp các dịch vụ dựa trên vị trí địa lý."
+}

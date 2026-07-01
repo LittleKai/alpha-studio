@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-bridge",
+  "slug": "claude-code-bridge",
+  "name": "claude_code_bridge",
+  "headline": "claude code bridge for real-time AI collaboration",
+  "short_description": "Claude Code Bridge enables real-time collaboration between Claude, Codex, and Gemini in a terminal environment. It allows operations teams to use multi-AI systems for coding, debugging, and automation tasks with minimal token overhead. The tool connects to CLI workflows, enabling integration with existing development and operations processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "bfly123",
+  "install_command": "git clone https://github.com/bfly123/claude_code_bridge.git",
+  "source_repo_url": "https://github.com/bfly123/claude_code_bridge",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "multi-agent-systems",
+    "ai-collaboration",
+    "cli",
+    "codex",
+    "ai-tools",
+    "python",
+    "cross-platform",
+    "terminal",
+    "gemini",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Bridge is a tool that connects Claude, Codex, and Gemini for collaborative coding and debugging within terminal environments. It integrates with CLI workflows and existing development processes, enabling operations teams to leverage multiple AI systems without excessive token consumption. The tool supports project-level and user-level configuration, allowing teams to define custom agent layouts and settings. By bridging multiple AI models in a single terminal interface, it reduces context switching and streamlines automation tasks for development and operations teams.\nCollaborate with multiple AI models to generate code snippets for different programming languages.\nUtilize persistent context to switch between AI models without losing track of ongoing tasks.\nIntegrate AI-driven suggestions directly into your terminal workflow for enhanced coding efficiency.\nAutomate testing and debugging processes by leveraging the strengths of different AI models.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bfly123/claude_code_bridge`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] script to [DESCRIBE_TASK]. Here's the current code: [CODE_SNIPPET]. I need help with [SPECIFIC_ISSUE]. Can you help me debug and improve this using Claude Code Bridge?\n```\nCopy\n\n```\nBased on your Python script for processing customer data, I've identified a few issues and improvements. First, the current implementation has a memory leak in the data processing loop. Here's the corrected version:\n\n```python\ndef process_data(data):\n    results = []\n    for item in data:\n        if item['status'] == 'active':\n            processed_item = {\n                'id': item['id'],\n                'name': item['name'].upper(),\n                'value': item['value'] * 1.1  # Applying 10% increase\n            }\n            results.append(processed_item)\n    return results\n```\n\nI've also added a 10% value increase as you requested. The script now properly handles memory allocation and includes error checking for the status field. Would you like me to explain any part of these changes in more detail?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-bridge#main-content",
+      "claude-code-bridge#overview",
+      "claude-code-bridge#setup",
+      "claude-code-bridge#examples",
+      "claude-code-bridge#tools",
+      "claude-code-bridge#mcp",
+      "claude-code-bridge#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Bridge là công cụ kết nối Claude, Codex và Gemini để cùng lập trình và debug trong môi trường terminal. Công cụ tích hợp với các workflow CLI và quy trình phát triển hiện có, giúp các đội ngũ vận hành khai thác nhiều hệ thống AI mà không tiêu tốn quá nhiều token. Nó hỗ trợ cấu hình ở cấp độ dự án (project-level) và cấp độ người dùng (user-level), cho phép các đội ngũ tự định nghĩa layout và cài đặt agent tùy chỉnh. Bằng cách kết nối nhiều mô hình AI trong một giao diện terminal duy nhất, công cụ giúp giảm thiểu việc chuyển đổi ngữ cảnh (context switching) và tối ưu hóa các tác vụ tự động hóa cho cả đội ngũ phát triển và vận hành.\n\nCộng tác với nhiều mô hình AI để tạo các đoạn code (code snippet) cho nhiều ngôn ngữ lập trình khác nhau.\nSử dụng ngữ cảnh duy trì liên tục (persistent context) để chuyển đổi giữa các mô hình AI mà không làm mất dấu vết các tác vụ đang thực hiện.\nTích hợp trực tiếp các gợi ý do AI đề xuất vào workflow terminal để nâng cao hiệu suất lập trình.\nTự động hóa quy trình kiểm thử và debug bằng cách tận dụng thế mạnh của các mô hình AI khác nhau.",
+    "setup_vi": "Hiện chưa có lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/bfly123/claude_code_bridge`",
+    "usage_vi": "```\nTôi đang viết một script bằng [PROGRAMMING_LANGUAGE] để [DESCRIBE_TASK]. Đây là đoạn code hiện tại: [CODE_SNIPPET]. Tôi cần trợ giúp về [SPECIFIC_ISSUE]. Bạn có thể giúp tôi debug và cải thiện đoạn code này bằng Claude Code Bridge không?\n```\nSao chép\n\n```\nDựa trên script Python xử lý dữ liệu khách hàng của bạn, tôi đã phát hiện một vài lỗi và điểm cần cải thiện. Đầu tiên, phiên bản hiện tại bị rò rỉ bộ nhớ (memory leak) trong vòng lặp xử lý dữ liệu. Dưới đây là phiên bản đã được sửa đổi:\n\n```python\ndef process_data(data):\n    results = []\n    for item in data:\n        if item['status'] == 'active':\n            processed_item = {\n                'id': item['id'],\n                'name': item['name'].upper(),\n                'value': item['value'] * 1.1  # Áp dụng mức tăng 10%\n            }\n            results.append(processed_item)\n    return results\n```\n\nTôi cũng đã thêm mức tăng 10% giá trị theo yêu cầu của bạn. Script hiện tại đã xử lý phân bổ bộ nhớ đúng cách và bổ sung kiểm tra lỗi cho trường status. Bạn có cần tôi giải thích chi tiết hơn về phần nào trong các thay đổi này không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:38:42.304697Z",
+    "http_status": 200,
+    "content_hash": "bbe2d2ef17534251cccb578757ccd8f7a2e869202b77c74a86cee72179ebf8e7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-bridge.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-bridge.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Bridge hỗ trợ cộng tác AI theo thời gian thực",
+  "short_description_vi": "Claude Code Bridge cho phép cộng tác theo thời gian thực giữa Claude, Codex và Gemini trong môi trường terminal. Công cụ này giúp các đội ngũ vận hành tận dụng hệ thống đa AI để lập trình, debug và tự động hóa tác vụ với lượng token tiêu hao tối thiểu. Nó kết nối trực tiếp với các workflow CLI, hỗ trợ tích hợp mượt mà vào các quy trình phát triển và vận hành hiện có."
+}

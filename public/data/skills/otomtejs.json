@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/otomtejs",
+  "slug": "otomtejs",
+  "name": "otomtejs",
+  "headline": "otomtejs: Claude Code skill for marketing",
+  "short_description": "The toolkit that automates code optimization and framework setup for your front end projects on the web.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "artsandiego",
+  "install_command": "git clone https://github.com/artsandiego/otomtejs.git",
+  "source_repo_url": "https://github.com/artsandiego/otomtejs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "boilerplate",
+    "scss",
+    "react",
+    "seo",
+    "spa",
+    "vue",
+    "webpack4",
+    "pwa",
+    "javascript"
+  ],
+  "sections": {
+    "overview": "otomtejs is a marketing toolkit designed to automate code optimization and framework setup for front-end web projects. It streamlines the initial configuration and performance tuning phases of web development by handling routine optimization tasks. The skill is owned and maintained by artsandiego, making it available for teams looking to reduce manual setup overhead in their front-end workflows.\nAutomate front-end framework initialization for new web projects\nOptimize code performance without manual refactoring\nStandardize framework setup across multiple projects\nReduce time spent on repetitive configuration tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/artsandiego/otomtejs`\n\n### Step 1: Install otomtejs\n\n```bash\nnpm install otomtejs --save-dev\n```\n\n### Step 2: Initialize otomtejs\n\n```bash\nnpx otomtejs init\n```\n\nThis will create a configuration file (`otomtejs.config.js`) in your project root.\n\n### Step 3: Configure otomtejs\n\nEdit the `otomtejs.config.js` file to include your project specifics:\n```javascript\nmodule.exports = {\n  framework: 'react',\n  optimization: {\n    minify: true,\n    bundle: true,\n    treeShaking: true,\n  },\n};\n```\n\n### Step 4: Run otomtejs\n\n```bash\nnpx otomtejs run\n```\n\nThis will optimize your code and set up the framework according to your configuration.\n\n### Step 5: Verify the Results\n\nCheck your project's build folder to ensure the optimization and framework setup are successful.\n```",
+    "usage": "```\nI'm a [JOB_TITLE] at [COMPANY] in the [INDUSTRY] industry. I need to optimize my front-end project's code and set up a framework. The project involves [DATA] and requires [SPECIFIC_FEATURES]. Can you guide me through the process using otomtejs?\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "otomtejs#main-content",
+      "otomtejs#overview",
+      "otomtejs#setup",
+      "otomtejs#examples",
+      "otomtejs#tools",
+      "otomtejs#mcp",
+      "otomtejs#related",
+      "marketingskills",
+      "copywriting",
+      "social-media-auto-poster"
+    ],
+    "overview_vi": "otomtejs là một bộ công cụ marketing được thiết kế để tự động hóa việc tối ưu hóa code và setup framework cho các dự án web front-end. Công cụ này giúp đơn giản hóa các giai đoạn cấu hình ban đầu và tinh chỉnh hiệu năng trong phát triển web bằng cách xử lý các tác vụ tối ưu hóa định kỳ. Skill này được sở hữu và duy trì bởi artsandiego, giúp các đội ngũ phát triển giảm thiểu công sức setup thủ công trong workflow front-end của mình.\nTự động hóa việc khởi tạo framework front-end cho các dự án web mới\nTối ưu hóa hiệu năng code mà không cần refactor thủ công\nChuẩn hóa việc setup framework trên nhiều dự án khác nhau\nTiết kiệm thời gian dành cho các tác vụ cấu hình lặp đi lặp lại",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/artsandiego/otomtejs`\n\n### Bước 1: Cài đặt otomtejs\n\n```bash\nnpm install otomtejs --save-dev\n```\n\n### Bước 2: Khởi tạo otomtejs\n\n```bash\nnpx otomtejs init\n```\n\nLệnh này sẽ tạo một file cấu hình (`otomtejs.config.js`) ở thư mục gốc của dự án.\n\n### Bước 3: Cấu hình otomtejs\n\nChỉnh sửa file `otomtejs.config.js` để thêm các thông số cụ thể cho dự án của bạn:\n```javascript\nmodule.exports = {\n  framework: 'react',\n  optimization: {\n    minify: true,\n    bundle: true,\n    treeShaking: true,\n  },\n};\n```\n\n### Bước 4: Chạy otomtejs\n\n```bash\nnpx otomtejs run\n```\n\nLệnh này sẽ tối ưu hóa code và setup framework theo cấu hình của bạn.\n\n### Bước 5: Xác nhận kết quả\n\nKiểm tra thư mục build của dự án để đảm bảo quá trình tối ưu hóa và setup framework đã thành công.\n```",
+    "usage_vi": "```\nTôi là một [JOB_TITLE] tại [COMPANY] hoạt động trong ngành [INDUSTRY]. Tôi cần tối ưu hóa code dự án front-end của mình và setup một framework. Dự án này xử lý [DATA] và yêu cầu các [SPECIFIC_FEATURES]. Bạn có thể hướng dẫn tôi thực hiện quy trình này bằng cách sử dụng otomtejs không?\n```\nSao chép\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:08:37.131640Z",
+    "http_status": 200,
+    "content_hash": "f6b3b7755441f386dd8ca63ba8a85ca25fa5a01e1d61eaf58176ed93376a8e96",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\otomtejs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\otomtejs.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "otomtejs: Skill Claude Code dành cho marketing",
+  "short_description_vi": "Bộ công cụ tự động hóa việc tối ưu hóa code và setup framework cho các dự án front-end trên web của bạn."
+}

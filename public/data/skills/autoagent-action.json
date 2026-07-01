@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autoagent-action",
+  "slug": "autoagent-action",
+  "name": "browser-use",
+  "headline": "Autoagent-action for GitHub integrations",
+  "short_description": "AutoAgent Action is a GitHub Action that integrates AI agents like Cursor CLI, Claude Code, and Gemini CLI into Pull Request workflows. It allows developers to run AI prompts on repositories during CI/CD pipelines, automating code reviews, suggestions, and analysis. This tool connects to GitHub repositories and AI agent CLIs, benefiting development and operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "erans",
+  "install_command": "git clone https://github.com/erans/autoagent-action.git",
+  "source_repo_url": "https://github.com/erans/autoagent-action",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "gemini",
+    "anthropic",
+    "cicd",
+    "amp",
+    "sourcegraph",
+    "cursor-ai",
+    "claude",
+    "cursor",
+    "google",
+    "ai"
+  ],
+  "sections": {
+    "overview": "AutoAgent Action is a composable GitHub Action that integrates multiple AI coding agents into Pull Request workflows. It runs predefined rules like OWASP security checks and code reviews, plus custom prompts, on repository code during CI/CD pipelines. The action automatically installs supported agents (Cursor CLI, Claude Code, Gemini CLI, Codex, Amp Code, OpenCode) and posts structured analysis results as GitHub PR comments. Teams can analyze only changed files for speed or the entire codebase for comprehensive coverage, with configurable logging for troubleshooting.\nAutomated OWASP security vulnerability scanning on pull requests\nContinuous code review and refactoring suggestions during PR workflows\nCustom team-specific code analysis rules in CI/CD pipelines\nSQL query optimization detection and performance analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/erans/autoagent-action`",
+    "usage": "```\nAnalyze the code changes in this pull request for [REPOSITORY] and suggest improvements. Focus on [SPECIFIC_ASPECT] such as performance, security, or readability. Provide actionable feedback in bullet points. Use [AI_TOOL] for the analysis.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "autoagent-action#main-content",
+      "autoagent-action#overview",
+      "autoagent-action#setup",
+      "autoagent-action#examples",
+      "autoagent-action#tools",
+      "autoagent-action#mcp",
+      "autoagent-action#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AutoAgent Action is a composable GitHub Action that integrates multiple AI coding agents into Pull Request workflows. It runs predefined rules like OWASP security checks and code reviews, plus custom prompts, on repository code during CI/CD pipelines. The action automatically installs supported agents (Cursor CLI, Claude Code, Gemini CLI, Codex, Amp Code, OpenCode) and posts structured analysis results as GitHub PR comments. Teams can analyze only changed files for speed or the entire codebase for comprehensive coverage, with configurable logging for troubleshooting.\nAutomated OWASP security vulnerability scanning on pull requests\nContinuous code review and refactoring suggestions during PR workflows\nCustom team-specific code analysis rules in CI/CD pipelines\nSQL query optimization detection and performance analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/erans/autoagent-action`",
+    "usage_vi": "```\nAnalyze the code changes in this pull request for [REPOSITORY] and suggest improvements. Focus on [SPECIFIC_ASPECT] such as performance, security, or readability. Provide actionable feedback in bullet points. Use [AI_TOOL] for the analysis.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:22:27.973242Z",
+    "http_status": 200,
+    "content_hash": "e3028f9b2c9ca4a41260a06d70aa64801b734dd8a77e7cbf023d5012b2d47ca3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autoagent-action.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autoagent-action.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Autoagent-action for GitHub integrations",
+  "short_description_vi": "AutoAgent Action is a GitHub Action that integrates AI agents like Cursor CLI, Claude Code, and Gemini CLI into Pull Request workflows. It allows developers to run AI prompts on repositories during CI/CD pipelines, automating code reviews, suggestions, and analysis. This tool connects to GitHub repositories and AI agent CLIs, benefiting development and operations teams."
+}

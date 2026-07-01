@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/few-word",
+  "slug": "few-word",
+  "name": "Few-Word",
+  "headline": "Few-Word: Efficient Output Management",
+  "short_description": "FewWord is a Claude Code plugin that optimizes token usage by offloading large outputs to the filesystem. It retrieves data when needed, reducing context size and improving efficiency. Ideal for operations teams handling large datasets or complex workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "sheeki03",
+  "install_command": "git clone https://github.com/sheeki03/Few-Word.git",
+  "source_repo_url": "https://github.com/sheeki03/Few-Word",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-plugin",
+    "claude-code-skills",
+    "claude-code-plugins",
+    "token-optimization",
+    "claude-code-hooks",
+    "ai-agents",
+    "claude-code-skill",
+    "claude-code",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "Few-Word is an innovative Claude Code plugin designed to enhance workflow automation by offloading large outputs to the filesystem. This skill allows users to manage extensive data outputs efficiently, retrieving them only when necessary. By streamlining the data handling process, Few-Word helps maintain optimal performance in applications that require significant output management, making it a valuable tool for developers and AI practitioners alike. One of the key benefits of Few-Word is its ability to reduce memory usage during application runtime. While the exact time savings are currently unknown, the potential for enhanced performance is clear, especially in scenarios where large datasets are processed. By minimizing the load on system resources, users can expect smoother operations and quicker response times, ultimately leading to improved productivity. This skill is particularly beneficial for developers, product managers, and AI practitioners who frequently work with large datasets or require efficient data management solutions. For instance, a data engineer could utilize Few-Word to handle extensive logs or analytics outputs without overwhelming system memory. Similarly, a product manager analyzing user data can offload reports to the filesystem, retrieving them as needed for presentations or decision-making processes. Implementing Few-Word is categorized as intermediate in difficulty, requiring about 30 minutes to set up. Users should have a basic understanding of Claude Code and its integration capabilities. As AI-first workflows become increasingly prevalent, Few-Word fits seamlessly into this paradigm by enabling efficient data management, allowing teams to focus on developing AI automation solutions without the bottleneck of large output handling.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sheeki03/Few-Word`",
+    "usage": "```\nUse FewWord to optimize token usage for [COMPANY]'s [INDUSTRY] data analysis. Store the following [DATA] in the filesystem and retrieve it when needed: [DATA]. Provide a summary of the key insights.\n```\nCopy\n\n```\n# Data Analysis Summary",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "few-word#main-content",
+      "few-word#overview",
+      "few-word#setup",
+      "few-word#examples",
+      "few-word#tools",
+      "few-word#mcp",
+      "few-word#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Few-Word là một plugin Claude Code cải tiến được thiết kế để tăng cường tự động hóa workflow bằng cách đẩy (offload) các output lớn xuống filesystem. Skill này cho phép người dùng quản lý các output dữ liệu lớn một cách hiệu quả và chỉ truy xuất khi cần thiết. Nhờ tối ưu hóa quy trình xử lý dữ liệu, Few-Word giúp duy trì hiệu năng tối ưu cho các ứng dụng đòi hỏi quản lý lượng output lớn, trở thành một công cụ giá trị cho cả developer lẫn các chuyên gia AI (AI practitioner).\n\nMột trong những lợi ích chính của Few-Word là khả năng giảm mức tiêu thụ bộ nhớ (RAM) khi ứng dụng runtime. Dù chưa có số liệu chính xác về lượng thời gian tiết kiệm được, nhưng tiềm năng nâng cao hiệu năng là rất rõ ràng, đặc biệt trong các kịch bản xử lý dataset lớn. Bằng cách giảm thiểu tải lên tài nguyên hệ thống, người dùng có thể kỳ vọng hệ thống vận hành mượt mà hơn và thời gian phản hồi nhanh hơn, từ đó nâng cao năng suất tổng thể.\n\nSkill này đặc biệt hữu ích cho các developer, product manager và chuyên gia AI thường xuyên làm việc với các dataset lớn hoặc cần các giải pháp quản lý dữ liệu hiệu quả. Ví dụ, một data engineer có thể sử dụng Few-Word để xử lý các log dung lượng lớn hoặc output phân tích mà không làm quá tải bộ nhớ hệ thống. Tương tự, một product manager đang phân tích dữ liệu người dùng có thể đẩy các báo cáo xuống filesystem và truy xuất lại khi cần để thuyết trình hoặc đưa ra quyết định.\n\nViệc triển khai Few-Word được đánh giá ở mức độ trung bình (intermediate), mất khoảng 30 phút để setup. Người dùng cần có kiến thức cơ bản về Claude Code và khả năng tích hợp của nó. Trong bối cảnh các workflow ưu tiên AI (AI-first) ngày càng phổ biến, Few-Word hoàn toàn tương thích với xu hướng này nhờ khả năng quản lý dữ liệu hiệu quả, giúp các đội ngũ tập trung phát triển các giải pháp tự động hóa AI mà không bị nghẽn cổ chai (bottleneck) do phải xử lý output quá lớn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sheeki03/Few-Word`",
+    "usage_vi": "```\nSử dụng FewWord để tối ưu hóa lượng token tiêu thụ cho việc phân tích dữ liệu ngành [INDUSTRY] của [COMPANY]. Hãy lưu [DATA] sau vào filesystem và truy xuất khi cần thiết: [DATA]. Cung cấp bản tóm tắt các thông tin chi tiết (insight) quan trọng.\n```\nSao chép\n\n```\n# Tóm tắt phân tích dữ liệu"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:48:00.909764Z",
+    "http_status": 200,
+    "content_hash": "b738502c50c88d493d6998ae066738651576a272272babe265e1282995c99f7e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\few-word.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\few-word.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Few-Word: Quản lý output hiệu quả",
+  "short_description_vi": "FewWord là một plugin dành cho Claude Code giúp tối ưu hóa lượng token tiêu thụ bằng cách đẩy (offload) các output lớn xuống filesystem. Plugin này sẽ truy xuất dữ liệu khi cần thiết, giúp giảm dung lượng context và nâng cao hiệu năng. Đây là giải pháp lý tưởng cho các đội ngũ vận hành (operations) thường xuyên xử lý các tập dữ liệu (dataset) lớn hoặc các workflow phức tạp."
+}

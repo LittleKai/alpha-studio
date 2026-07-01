@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skillz",
+  "slug": "claude-skillz",
+  "name": "browser-use",
+  "headline": "claude skillz for simple programming tasks",
+  "short_description": "Quickly launch Claude with custom personas and models for coding tasks. Ideal for developers and operations teams needing fast, interactive model selection.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "NTCoding",
+  "install_command": "git clone https://github.com/NTCoding/claude-skillz.git",
+  "source_repo_url": "https://github.com/NTCoding/claude-skillz",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Skillz provides an interactive launcher for Claude Code that lets you instantly select from 12 pre-built personas—including Super TDD Developer, Claude Code Optimizer, Strategic Architect, and React Developer—paired with your choice of Claude model (Opus, Sonnet, Haiku). Each persona is composed of reusable skills covering TDD workflows, code design principles, debugging strategies, and documentation. The launcher works via simple command shortcuts (e.g., `cl tdd opus`) and detects conflicts with prominent warnings. It also supports OpenCode agent generation, global marketplace installation, and custom persona creation, making it ideal for development teams that need consistent, role-based AI assistance without manual prompt engineering.\nLaunch Claude with TDD persona for test-driven development workflows\nSwitch between specialized personas (optimizer, architect, investigator) mid-session\nGenerate OpenCode agents using the same persona system prompts\nCompose custom personas by combining pre-built skills and frontmatter shortcuts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/NTCoding/claude-skillz`",
+    "usage": "```\nLaunch Claude with a [PERSONA] focused on [TASK_TYPE] using the [MODEL_NAME] model. Set the context to: '[CONTEXT_DESCRIPTION]'. Begin by asking me for my preferred [LANGUAGE/FRAMEWORK] and any specific [CONSTRAINTS] (e.g., performance, security).\n```\nCopy\n\n```\n```\nClaude is now active with the following configuration:\n- Persona: Senior Python Backend Developer\n- Model: Claude 3.5 Sonnet\n- Context: Optimizing a high-traffic REST API for a fintech startup\n\nHow can I assist you today? For example:\n- 'I need to refactor this Flask endpoint for better scalability.'\n- 'Can you suggest a caching strategy for this endpoint handling 10k RPM?'\n- 'Review this code for SQL injection vulnerabilities.'\n\nCurrent focus: Performance optimization under strict latency requirements (<50ms P99).\n```\n\n**Example Interaction:**\nUser: \"I need to refactor this Flask endpoint for better scalability.\"\n\nAI Response:\n```python\n# Refactored Flask endpoint with async support and connection pooling\nfrom flask import jsonify\nfrom flask_async import async_route\nimport asyncpg\nfrom app.db import get_pool\n\n@async_route('/api/transactions/<user_id>')\nasync def get_transactions(user_id):\n    pool = await get_pool()\n    async with pool.acquire() as conn:\n        transactions = await conn.fetch(\n            \"\"\"\n            SELECT id, amount, timestamp \n            FROM transactions \n            WHERE user_id = $1 \n            ORDER BY timestamp DESC \n            LIMIT 100\n            \"\"\", user_id\n        )\n    return jsonify([dict(tx) for tx in transactions])\n```\n\n**Key Improvements:**\n1. Async/await for non-blocking I/O\n2. Connection pooling to reduce overhead\n3. Limited result set to 100 entries\n4. Added proper error handling (omitted for brevity)\n\nWould you like me to:\n1. Add rate limiting?\n2. Implement Redis caching for frequent users?\n3. Review the SQL query for optimization opportunities?\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skillz#main-content",
+      "claude-skillz#overview",
+      "claude-skillz#setup",
+      "claude-skillz#examples",
+      "claude-skillz#tools",
+      "claude-skillz#mcp",
+      "claude-skillz#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skillz provides an interactive launcher for Claude Code that lets you instantly select from 12 pre-built personas—including Super TDD Developer, Claude Code Optimizer, Strategic Architect, and React Developer—paired with your choice of Claude model (Opus, Sonnet, Haiku). Each persona is composed of reusable skills covering TDD workflows, code design principles, debugging strategies, and documentation. The launcher works via simple command shortcuts (e.g., `cl tdd opus`) and detects conflicts with prominent warnings. It also supports OpenCode agent generation, global marketplace installation, and custom persona creation, making it ideal for development teams that need consistent, role-based AI assistance without manual prompt engineering.\nLaunch Claude with TDD persona for test-driven development workflows\nSwitch between specialized personas (optimizer, architect, investigator) mid-session\nGenerate OpenCode agents using the same persona system prompts\nCompose custom personas by combining pre-built skills and frontmatter shortcuts",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/NTCoding/claude-skillz`",
+    "usage_vi": "```\nLaunch Claude with a [PERSONA] focused on [TASK_TYPE] using the [MODEL_NAME] model. Set the context to: '[CONTEXT_DESCRIPTION]'. Begin by asking me for my preferred [LANGUAGE/FRAMEWORK] and any specific [CONSTRAINTS] (e.g., performance, security).\n```\nCopy\n\n```\n```\nClaude is now active with the following configuration:\n- Persona: Senior Python Backend Developer\n- Model: Claude 3.5 Sonnet\n- Context: Optimizing a high-traffic REST API for a fintech startup\n\nHow can I assist you today? For example:\n- 'I need to refactor this Flask endpoint for better scalability.'\n- 'Can you suggest a caching strategy for this endpoint handling 10k RPM?'\n- 'Review this code for SQL injection vulnerabilities.'\n\nCurrent focus: Performance optimization under strict latency requirements (<50ms P99).\n```\n\n**Example Interaction:**\nUser: \"I need to refactor this Flask endpoint for better scalability.\"\n\nAI Response:\n```python\n# Refactored Flask endpoint with async support and connection pooling\nfrom flask import jsonify\nfrom flask_async import async_route\nimport asyncpg\nfrom app.db import get_pool\n\n@async_route('/api/transactions/<user_id>')\nasync def get_transactions(user_id):\n    pool = await get_pool()\n    async with pool.acquire() as conn:\n        transactions = await conn.fetch(\n            \"\"\"\n            SELECT id, amount, timestamp \n            FROM transactions \n            WHERE user_id = $1 \n            ORDER BY timestamp DESC \n            LIMIT 100\n            \"\"\", user_id\n        )\n    return jsonify([dict(tx) for tx in transactions])\n```\n\n**Key Improvements:**\n1. Async/await for non-blocking I/O\n2. Connection pooling to reduce overhead\n3. Limited result set to 100 entries\n4. Added proper error handling (omitted for brevity)\n\nWould you like me to:\n1. Add rate limiting?\n2. Implement Redis caching for frequent users?\n3. Review the SQL query for optimization opportunities?\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:28:09.101838Z",
+    "http_status": 200,
+    "content_hash": "d0e16f6548dc1666e54272e751e326b31417276ca898d5afa6ceef7e32815f06",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skillz.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skillz.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude skillz for simple programming tasks",
+  "short_description_vi": "Quickly launch Claude with custom personas and models for coding tasks. Ideal for developers and operations teams needing fast, interactive model selection."
+}

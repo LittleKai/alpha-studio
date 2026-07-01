@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tdd-guard",
+  "slug": "tdd-guard",
+  "name": "TDD Guard",
+  "headline": "TDD Guard - Automated Test-Driven Development",
+  "short_description": "TDD Guard automates test-driven development enforcement for Claude Code. It benefits developers and operations teams by ensuring code quality and reducing bugs. It integrates with Git hooks and CI/CD pipelines, connecting to Claude Code workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "nizos",
+  "install_command": "git clone https://github.com/nizos/tdd-guard.git",
+  "source_repo_url": "https://github.com/nizos/tdd-guard",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "code-quality",
+    "hooks",
+    "claude-code",
+    "tdd",
+    "llm-tools",
+    "agentic-coding"
+  ],
+  "sections": {
+    "overview": "TDD Guard automates test-driven development enforcement within Claude Code workflows by integrating directly with Git hooks and CI/CD pipelines. The tool supports multiple testing frameworks including JUnit5, Minitest, and others, with specialized reporters that skip common assertion and mocking libraries to pinpoint actual test failures. It helps developers catch bugs earlier in the development cycle by ensuring tests are written and passing before code is committed. Teams benefit from consistent TDD practices across projects without manual enforcement, making it valuable for both individual developers and operations teams managing code quality standards.\nEnforce test-first development by blocking code implementation until tests are written.\nPrevent over-implementation by restricting code changes to only what is necessary for passing tests.\nIntegrate linting rules to ensure code quality during refactoring processes.\nCustomize validation rules to align with specific TDD practices and team standards.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nizos/tdd-guard`",
+    "usage": "```\nEnforce Test-Driven Development (TDD) for [PROJECT_NAME] using TDD Guard. For the feature [FEATURE_NAME], generate the minimal test case that would fail first, then provide the minimal implementation to make it pass. Ensure the test follows the Arrange-Act-Assert pattern and the implementation is just enough to satisfy the test. Use [TEST_FRAMEWORK] for testing and [LANGUAGE] for implementation. Include a Git pre-commit hook command to run the test suite after implementation.\n```\nCopy\n\n```\n### TDD Guard Report for Feature: User Authentication\n\n**Step 1: Minimal Failing Test**\n```python\n# tests/test_auth.py\ndef test_user_can_authenticate_with_valid_credentials():\n    from app.auth import authenticate\n    \n    # Arrange\n    username = \"testuser\"\n    password = \"securepassword123\"\n    \n    # Act & Assert\n    result = authenticate(username, password)\n    assert result is False, \"Should return False for invalid credentials\"\n```\n\n**Step 2: Minimal Implementation**\n```python\n# app/auth.py\ndef authenticate(username: str, password: str) -> bool:\n    return False  # Hardcoded to fail the test initially\n```\n\n**Step 3: Next Test Case**\n```python\ndef test_user_authentication_fails_with_invalid_password():\n    from app.auth import authenticate\n    \n    # Arrange\n    username = \"testuser\"\n    password = \"wrongpassword\"\n    \n    # Act & Assert\n    result = authenticate(username, password)\n    assert result is False, \"Should return False for invalid password\"\n```\n\n**Step 4: Updated Implementation**\n```python\n# app/auth.py\ndef authenticate(username: str, password: str) -> bool:\n    # Hardcoded valid credentials for demonstration\n    return username == \"testuser\" and password == \"securepassword123\"\n```\n\n**Git Pre-Commit Hook Command:**\n```bash\n#!/bin/sh\npytest tests/ --maxfail=1 --disable-warnings\n```\n\n**CI/CD Integration (GitHub Actions Example):**\n```yaml\nname: TDD Guard CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: '3.11'\n      - name: Install dependencies\n        run: pip install pytest\n      - name: Run tests\n        run: pytest tests/ --maxfail=1 --disable-warnings\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tdd-guard#main-content",
+      "tdd-guard#overview",
+      "tdd-guard#setup",
+      "tdd-guard#examples",
+      "tdd-guard#tools",
+      "tdd-guard#mcp",
+      "tdd-guard#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TDD Guard tự động hóa việc bắt buộc áp dụng quy trình phát triển hướng kiểm thử (TDD) trong workflow của Claude Code bằng cách tích hợp trực tiếp với Git hooks và CI/CD pipeline. Công cụ này hỗ trợ nhiều testing framework khác nhau bao gồm JUnit5, Minitest và các framework khác, đi kèm các bộ báo cáo chuyên dụng giúp bỏ qua các thư viện assertion và mocking phổ biến để xác định chính xác các lỗi kiểm thử thực tế. Nó giúp lập trình viên phát hiện lỗi sớm hơn trong chu kỳ phát triển bằng cách đảm bảo các test case được viết và chạy thành công trước khi commit code. Các đội ngũ phát triển sẽ được hưởng lợi từ việc duy trì các thực hành TDD nhất quán trên mọi dự án mà không cần kiểm soát thủ công, mang lại giá trị cho cả lập trình viên cá nhân lẫn đội ngũ vận hành đang quản lý các tiêu chuẩn chất lượng mã nguồn.\nBắt buộc phát triển theo hướng viết test trước bằng cách chặn triển khai code cho đến khi các test case được viết.\nNgăn chặn việc viết code thừa bằng cách giới hạn các thay đổi code ở mức tối thiểu để vượt qua bài test.\nTích hợp các quy tắc linting để đảm bảo chất lượng mã nguồn trong quá trình refactor.\nTùy chỉnh các quy tắc kiểm định để phù hợp với các thực hành TDD cụ thể và tiêu chuẩn của đội ngũ.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/nizos/tdd-guard`",
+    "usage_vi": "```\nÁp dụng quy trình Test-Driven Development (TDD) cho [PROJECT_NAME] sử dụng TDD Guard. Đối với tính năng [FEATURE_NAME], hãy tạo test case tối giản sẽ thất bại đầu tiên, sau đó cung cấp phần triển khai tối giản để test case đó vượt qua. Đảm bảo test case tuân theo mô hình Arrange-Act-Assert và phần triển khai vừa đủ để đáp ứng bài test. Sử dụng [TEST_FRAMEWORK] để viết test và [LANGUAGE] để triển khai. Đi kèm một lệnh Git pre-commit hook để chạy test suite sau khi triển khai.\n```\nCopy\n\n```\n### Báo cáo TDD Guard cho Tính năng: User Authentication\n\n**Bước 1: Test Case Thất bại Tối giản**\n```python\n# tests/test_auth.py\ndef test_user_can_authenticate_with_valid_credentials():\n    from app.auth import authenticate\n    \n    # Arrange\n    username = \"testuser\"\n    password = \"securepassword123\"\n    \n    # Act & Assert\n    result = authenticate(username, password)\n    assert result is False, \"Should return False for invalid credentials\"\n```\n\n**Bước 2: Triển khai Tối giản**\n```python\n# app/auth.py\ndef authenticate(username: str, password: str) -> bool:\n    return False  # Hardcoded để kiểm thử thất bại ban đầu\n```\n\n**Bước 3: Test Case Tiếp theo**\n```python\ndef test_user_authentication_fails_with_invalid_password():\n    from app.auth import authenticate\n    \n    # Arrange\n    username = \"testuser\"\n    password = \"wrongpassword\"\n    \n    # Act & Assert\n    result = authenticate(username, password)\n    assert result is False, \"Should return False for invalid password\"\n```\n\n**Bước 4: Cập nhật Triển khai**\n```python\n# app/auth.py\ndef authenticate(username: str, password: str) -> bool:\n    # Hardcoded thông tin đăng nhập hợp lệ để minh họa\n    return username == \"testuser\" and password == \"securepassword123\"\n```\n\n**Lệnh Git Pre-Commit Hook:**\n```bash\n#!/bin/sh\npytest tests/ --maxfail=1 --disable-warnings\n```\n\n**Tích hợp CI/CD (Ví dụ GitHub Actions):**\n```yaml\nname: TDD Guard CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: '3.11'\n      - name: Install dependencies\n        run: pip install pytest\n      - name: Run tests\n        run: pytest tests/ --maxfail=1 --disable-warnings\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:52:10.182353Z",
+    "http_status": 200,
+    "content_hash": "e6af7c6918d7609a565b1fc978b058d407edb245b170c4cc84c729191a3e30b9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tdd-guard.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tdd-guard.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TDD Guard - Tự động hóa Test-Driven Development",
+  "short_description_vi": "TDD Guard tự động hóa việc bắt buộc áp dụng quy trình phát triển hướng kiểm thử (TDD) cho Claude Code. Công cụ này mang lại lợi ích cho cả lập trình viên và đội ngũ vận hành nhờ đảm bảo chất lượng mã nguồn và giảm thiểu lỗi (bug), tích hợp mượt mà với Git hooks và CI/CD pipeline để kết nối trực tiếp vào workflow của Claude Code."
+}

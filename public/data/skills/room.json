@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/room",
+  "slug": "room",
+  "name": "browser-use",
+  "headline": "Room - Tab Management for Zellij",
+  "short_description": "A Zellij plugin for quickly searching and switching tabs. Benefits operations teams by improving workflow efficiency. Connects to Zellij for tab management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "rvcas",
+  "install_command": "git clone https://github.com/rvcas/room.git",
+  "source_repo_url": "https://github.com/rvcas/room",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "rust",
+    "zellij",
+    "zellij-plugin",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Room is a Zellij plugin that streamlines terminal workflow by allowing you to quickly search and switch between tabs without manual counting. Type to filter your tab list by name, then press Enter to switch or use number quick-jump for instant navigation. The plugin supports case-insensitive filtering and integrates with Zellij's keybinding system via a simple configuration. It solves the friction of managing many renamed tabs by replacing the traditional tab-number method with intuitive text search. Power users and operations teams benefit from reduced context-switching time when navigating complex terminal sessions.\nQuickly jump to a specific tab by typing its name when managing 10+ tabs\nReduce time spent counting tab numbers in complex Zellij sessions\nEnable Claude Code to programmatically focus panes via pipe commands\nNavigate tabs without memorizing numeric positions after renaming them",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rvcas/room`",
+    "usage": "```\nUse the Zellij [room] plugin to quickly search and switch between tabs in your current session. List all open tabs, then switch to the tab named [TAB_NAME]. If [TAB_NAME] doesn't exist, create a new tab and rename it to [TAB_NAME].\n```\nCopy\n\n```\n```\nCurrent Zellij session tabs:\n1. logs (active)\n2. editor\n3. terminal\n4. dashboard\n\nSwitching to 'dashboard' tab...\n\nSwitched to tab 'dashboard' (ID: 3).\n\nThe tab 'dashboard' is now active and ready for use.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "room#main-content",
+      "room#overview",
+      "room#setup",
+      "room#examples",
+      "room#tools",
+      "room#mcp",
+      "room#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Room is a Zellij plugin that streamlines terminal workflow by allowing you to quickly search and switch between tabs without manual counting. Type to filter your tab list by name, then press Enter to switch or use number quick-jump for instant navigation. The plugin supports case-insensitive filtering and integrates with Zellij's keybinding system via a simple configuration. It solves the friction of managing many renamed tabs by replacing the traditional tab-number method with intuitive text search. Power users and operations teams benefit from reduced context-switching time when navigating complex terminal sessions.\nQuickly jump to a specific tab by typing its name when managing 10+ tabs\nReduce time spent counting tab numbers in complex Zellij sessions\nEnable Claude Code to programmatically focus panes via pipe commands\nNavigate tabs without memorizing numeric positions after renaming them",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rvcas/room`",
+    "usage_vi": "```\nUse the Zellij [room] plugin to quickly search and switch between tabs in your current session. List all open tabs, then switch to the tab named [TAB_NAME]. If [TAB_NAME] doesn't exist, create a new tab and rename it to [TAB_NAME].\n```\nCopy\n\n```\n```\nCurrent Zellij session tabs:\n1. logs (active)\n2. editor\n3. terminal\n4. dashboard\n\nSwitching to 'dashboard' tab...\n\nSwitched to tab 'dashboard' (ID: 3).\n\nThe tab 'dashboard' is now active and ready for use.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:57:25.848629Z",
+    "http_status": 200,
+    "content_hash": "ca34f24f53cc9b95ff2ffed27a94b0e9964800e19aebe561eb4ae391e34fa2b5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\room.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\room.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Room - Tab Management for Zellij",
+  "short_description_vi": "A Zellij plugin for quickly searching and switching tabs. Benefits operations teams by improving workflow efficiency. Connects to Zellij for tab management."
+}

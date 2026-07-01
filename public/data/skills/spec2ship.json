@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spec2ship",
+  "slug": "spec2ship",
+  "name": "browser-use",
+  "headline": "Spec2Ship - Automate Software Development",
+  "short_description": "Spec2Ship automates software development by orchestrating multi-agent workflows on Claude Code. It enables teams to collaborate on specs, design, and implementation. Connects to Claude Code for AI-driven development.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "spec2ship",
+  "install_command": "git clone https://github.com/spec2ship/spec2ship.git",
+  "source_repo_url": "https://github.com/spec2ship/spec2ship",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "llm",
+    "prompt-engineering",
+    "multi-agent",
+    "roundtable",
+    "software-design",
+    "requirements-engineering",
+    "ai-workflow",
+    "claude",
+    "software-architecture",
+    "spec-driven",
+    "spec-driven-development"
+  ],
+  "sections": {
+    "overview": "Spec2Ship is a Claude Code plugin that adds structured orchestration to software development through multi-agent deliberation. Instead of prompting Claude Code directly, it runs roundtable discussions where 12 specialized agents—including product managers, architects, security champions, and QA leads—debate and refine decisions collaboratively. Participants respond blind to each other, preventing anchoring and surfacing genuine disagreements. The framework produces standards-based artifacts (arc42, ISO 25010, MADR) with full audit trails, making decisions auditable and reviewable. Choose Spec2Ship when decisions require multiple expert perspectives, adversarial review of security or scalability concerns, or auditable standards-based documentation.\nRequirements refinement through multi-perspective deliberation\nArchitecture decisions with adversarial security and feasibility review\nEdge case and threat modeling across specialized agent roles\nAuditable decision documentation for team handoff and compliance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spec2ship/spec2ship`",
+    "usage": "```\nAct as a Spec2Ship orchestrator for [PROJECT_NAME]. Use the following steps to automate development: 1) Review the spec at [SPEC_URL] and identify gaps or ambiguities. 2) Generate a high-level architecture diagram in Mermaid format. 3) Decompose the spec into [NUMBER] tasks for [TEAM_MEMBER_ROLES]. 4) For each task, write pseudocode that a junior developer could implement. 5) Generate a CI/CD pipeline configuration for [DEPLOYMENT_TARGET]. 6) Summarize the plan in a Markdown table with columns: Task, Owner, Estimated Hours, Priority, and Dependencies. Respond only with executable code and structured data—no explanations.\n```\nCopy\n\n```\n```mermaid\ngraph TD\n    A[Spec: User Authentication] --> B[Task 1: Database Schema Design]\n    A --> C[Task 2: API Endpoints]\n    A --> D[Task 3: Frontend Components]\n    B --> E[Subtask: Users Table]\n    C --> F[Subtask: POST /login]\n    D --> G[Subtask: Login Form]\n```\n\n### Task Breakdown\n| Task | Owner | Estimated Hours | Priority | Dependencies |\n|------|-------|-----------------|----------|--------------|\n| Design `users` table | @dev1 | 4 | High | None |\n| Implement `POST /login` | @dev2 | 6 | High | Schema |\n| Build Login Form | @dev3 | 8 | Medium | API |\n\n### Pseudocode\n**Task 1: Database Schema**\n```sql\nCREATE TABLE users (\n    id SERIAL PRIMARY KEY,\n    email VARCHAR(255) UNIQUE NOT NULL,\n    password_hash VARCHAR(255) NOT NULL,\n    created_at TIMESTAMP DEFAULT NOW()\n);\n```\n\n**Task 2: API Endpoint**\n```python\n@app.post(\"/login\")\ndef login(user: UserLogin):\n    user = db.query_user(user.email)\n    if not verify_password(user.password_hash, user.password):\n        raise HTTPException(status_code=401)\n    return {\"token\": generate_jwt(user.id)}\n```\n\n### CI/CD Pipeline (GitHub Actions)\n```yaml\nname: Deploy Auth Service\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: pytest tests/auth_test.py\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: docker build -t auth-service .\n      - run: docker push ghcr.io/team/auth-service:latest\n```\n\n**Risks Identified:**\n- Password hashing algorithm not specified (defaulting to bcrypt).\n- No rate limiting on `/login` (add in Sprint 2).\n\n**Next Steps:**\n1. @dev1 to review schema with @pm.\n2. @dev2 to implement API with OpenAPI validation.\n3. @dev3 to mock UI components for review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "spec2ship#main-content",
+      "spec2ship#overview",
+      "spec2ship#setup",
+      "spec2ship#examples",
+      "spec2ship#tools",
+      "spec2ship#mcp",
+      "spec2ship#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Spec2Ship is a Claude Code plugin that adds structured orchestration to software development through multi-agent deliberation. Instead of prompting Claude Code directly, it runs roundtable discussions where 12 specialized agents—including product managers, architects, security champions, and QA leads—debate and refine decisions collaboratively. Participants respond blind to each other, preventing anchoring and surfacing genuine disagreements. The framework produces standards-based artifacts (arc42, ISO 25010, MADR) with full audit trails, making decisions auditable and reviewable. Choose Spec2Ship when decisions require multiple expert perspectives, adversarial review of security or scalability concerns, or auditable standards-based documentation.\nRequirements refinement through multi-perspective deliberation\nArchitecture decisions with adversarial security and feasibility review\nEdge case and threat modeling across specialized agent roles\nAuditable decision documentation for team handoff and compliance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spec2ship/spec2ship`",
+    "usage_vi": "```\nAct as a Spec2Ship orchestrator for [PROJECT_NAME]. Use the following steps to automate development: 1) Review the spec at [SPEC_URL] and identify gaps or ambiguities. 2) Generate a high-level architecture diagram in Mermaid format. 3) Decompose the spec into [NUMBER] tasks for [TEAM_MEMBER_ROLES]. 4) For each task, write pseudocode that a junior developer could implement. 5) Generate a CI/CD pipeline configuration for [DEPLOYMENT_TARGET]. 6) Summarize the plan in a Markdown table with columns: Task, Owner, Estimated Hours, Priority, and Dependencies. Respond only with executable code and structured data—no explanations.\n```\nCopy\n\n```\n```mermaid\ngraph TD\n    A[Spec: User Authentication] --> B[Task 1: Database Schema Design]\n    A --> C[Task 2: API Endpoints]\n    A --> D[Task 3: Frontend Components]\n    B --> E[Subtask: Users Table]\n    C --> F[Subtask: POST /login]\n    D --> G[Subtask: Login Form]\n```\n\n### Task Breakdown\n| Task | Owner | Estimated Hours | Priority | Dependencies |\n|------|-------|-----------------|----------|--------------|\n| Design `users` table | @dev1 | 4 | High | None |\n| Implement `POST /login` | @dev2 | 6 | High | Schema |\n| Build Login Form | @dev3 | 8 | Medium | API |\n\n### Pseudocode\n**Task 1: Database Schema**\n```sql\nCREATE TABLE users (\n    id SERIAL PRIMARY KEY,\n    email VARCHAR(255) UNIQUE NOT NULL,\n    password_hash VARCHAR(255) NOT NULL,\n    created_at TIMESTAMP DEFAULT NOW()\n);\n```\n\n**Task 2: API Endpoint**\n```python\n@app.post(\"/login\")\ndef login(user: UserLogin):\n    user = db.query_user(user.email)\n    if not verify_password(user.password_hash, user.password):\n        raise HTTPException(status_code=401)\n    return {\"token\": generate_jwt(user.id)}\n```\n\n### CI/CD Pipeline (GitHub Actions)\n```yaml\nname: Deploy Auth Service\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: pytest tests/auth_test.py\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: docker build -t auth-service .\n      - run: docker push ghcr.io/team/auth-service:latest\n```\n\n**Risks Identified:**\n- Password hashing algorithm not specified (defaulting to bcrypt).\n- No rate limiting on `/login` (add in Sprint 2).\n\n**Next Steps:**\n1. @dev1 to review schema with @pm.\n2. @dev2 to implement API with OpenAPI validation.\n3. @dev3 to mock UI components for review.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:23:16.672168Z",
+    "http_status": 200,
+    "content_hash": "2008a200ce3432a024ce83c77546471f55a99a78e2ad1c44988362226c3e3956",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\spec2ship.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\spec2ship.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Spec2Ship - Automate Software Development",
+  "short_description_vi": "Spec2Ship automates software development by orchestrating multi-agent workflows on Claude Code. It enables teams to collaborate on specs, design, and implementation. Connects to Claude Code for AI-driven development."
+}

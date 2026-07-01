@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-shell",
+  "slug": "agent-shell",
+  "name": "Agent Shell",
+  "headline": "agent-shell for Emacs LLM interaction",
+  "short_description": "Agent Shell is an Emacs buffer that enables developers to interact with LLM agents powered by ACP. It supports Claude and connects to Emacs workflows for code generation, debugging, and automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "xenodium",
+  "install_command": "git clone https://github.com/xenodium/agent-shell.git",
+  "source_repo_url": "https://github.com/xenodium/agent-shell",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "emacs",
+    "emacs-lisp",
+    "ai",
+    "claude-code",
+    "codex",
+    "llm",
+    "claude",
+    "openai",
+    "gemini",
+    "goose"
+  ],
+  "sections": {
+    "overview": "Agent Shell provides an Emacs buffer interface that enables developers to interact directly with LLM agents powered by ACP (Anthropic Compute Platform). The skill supports Claude and integrates with Emacs to streamline code generation, debugging, and automation workflows. Developers can leverage AI agents within their existing Emacs environment to enhance productivity and automate repetitive development tasks. The integration allows seamless interaction between Emacs buffers and AI models, enabling code-aware assistance and intelligent automation. This is particularly valuable for developers who spend significant time in Emacs and want to augment their workflow with AI capabilities.\nAutomate code generation tasks by interacting with Claude Code directly from Emacs.\nUse Gemini CLI for real-time coding assistance while writing scripts.\nManage multiple LLM agents in a tabulated view for efficient workflow.\nIntegrate various AI models to enhance code review processes within Emacs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/xenodium/agent-shell`",
+    "usage": "```\nUse the Agent Shell in Emacs to [TASK]. For example: 'Debug the memory leak in the Python script at [FILE_PATH] using the Agent Shell. Run tests with pytest and suggest fixes for the issue at [LINE_NUMBER].'\n```\nCopy\n\n```\nI analyzed the memory leak in `app.py` at line 42, where the `data_processor` function was retaining references to large datasets. Using the Agent Shell, I ran `pytest --profile-memory` and confirmed the leak was growing by ~50MB per iteration. The issue stemmed from unclosed file handles in the `load_data()` function. I suggested adding a `with open()` context manager and verified the fix by running the test suite again, which now shows stable memory usage at ~120MB (down from 600MB). The Agent Shell also flagged a related inefficiency in the `batch_process()` function, recommending a generator pattern to stream data instead of loading it all at once. All changes were applied via `C-c C-c` in the shell buffer.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-shell#main-content",
+      "agent-shell#overview",
+      "agent-shell#setup",
+      "agent-shell#examples",
+      "agent-shell#tools",
+      "agent-shell#mcp",
+      "agent-shell#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent Shell provides an Emacs buffer interface that enables developers to interact directly with LLM agents powered by ACP (Anthropic Compute Platform). The skill supports Claude and integrates with Emacs to streamline code generation, debugging, and automation workflows. Developers can leverage AI agents within their existing Emacs environment to enhance productivity and automate repetitive development tasks. The integration allows seamless interaction between Emacs buffers and AI models, enabling code-aware assistance and intelligent automation. This is particularly valuable for developers who spend significant time in Emacs and want to augment their workflow with AI capabilities.\nAutomate code generation tasks by interacting with Claude Code directly from Emacs.\nUse Gemini CLI for real-time coding assistance while writing scripts.\nManage multiple LLM agents in a tabulated view for efficient workflow.\nIntegrate various AI models to enhance code review processes within Emacs.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/xenodium/agent-shell`",
+    "usage_vi": "```\nUse the Agent Shell in Emacs to [TASK]. For example: 'Debug the memory leak in the Python script at [FILE_PATH] using the Agent Shell. Run tests with pytest and suggest fixes for the issue at [LINE_NUMBER].'\n```\nCopy\n\n```\nI analyzed the memory leak in `app.py` at line 42, where the `data_processor` function was retaining references to large datasets. Using the Agent Shell, I ran `pytest --profile-memory` and confirmed the leak was growing by ~50MB per iteration. The issue stemmed from unclosed file handles in the `load_data()` function. I suggested adding a `with open()` context manager and verified the fix by running the test suite again, which now shows stable memory usage at ~120MB (down from 600MB). The Agent Shell also flagged a related inefficiency in the `batch_process()` function, recommending a generator pattern to stream data instead of loading it all at once. All changes were applied via `C-c C-c` in the shell buffer.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:30:03.906208Z",
+    "http_status": 200,
+    "content_hash": "35bc4e631293772dafdcc6765a138e3539f34dd589e78ee462c90fb05e3b7b42",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-shell.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-shell.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agent-shell for Emacs LLM interaction",
+  "short_description_vi": "Agent Shell is an Emacs buffer that enables developers to interact with LLM agents powered by ACP. It supports Claude and connects to Emacs workflows for code generation, debugging, and automation."
+}

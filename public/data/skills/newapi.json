@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/newapi",
+  "slug": "newapi",
+  "name": "Loops API and SDK Skill",
+  "headline": "newapi: Manage AI Gateway Resources",
+  "short_description": "This skill enables AI agents to interact with new APIs, useful for developers and researchers. It streamlines API integration and enhances functionality in AI applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "quantumnous",
+  "install_command": "git clone https://github.com/quantumnous/skills",
+  "source_repo_url": "https://github.com/quantumnous/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "api-integration",
+    "newapi"
+  ],
+  "sections": {
+    "overview": "The newapi skill enables AI agents to interact with new-api, an open-source AI gateway platform. It provides commands to list available models, manage user groups, monitor account balance, and handle API tokens securely. Developers can create tokens, switch token groups, and apply credentials to config files or commands without exposing sensitive keys. The skill streamlines gateway resource management within AI applications by automating token lifecycle operations and configuration management.\nIntegrating AI with external APIs\nDeveloping chatbot features using APIs\nEnhancing data retrieval for AI agents",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/quantumnous/skills --skill newapi`\n`git clone https://github.com/quantumnous/skills`",
+    "usage": "```\nAct as an API integration specialist and help integrate the [API_NAME] API into [COMPANY]'s [INDUSTRY] workflow. Provide the exact HTTP requests, authentication steps, and response parsing needed to fetch [DATA] from the API. Include error handling for common issues like rate limits or invalid parameters. Use this API documentation for reference: [API_DOCUMENTATION_LINK].\n```\nCopy\n\n```\n### API Integration Guide for [COMPANY]\n\nHere’s a step-by-step integration of the **WeatherAPI** into your logistics tracking system to fetch real-time temperature data for delivery routes:\n\n---\n\n#### 1. **Authentication Setup**\n- **API Key:** `your_api_key_here` (Replace with your actual key from WeatherAPI’s dashboard).\n- **Base URL:** `https://api.weatherapi.com/v1/current.json`\n- **Headers:** Add `key: your_api_key_here` to all requests.\n\n#### 2. **Fetching Data for Route Optimization**\n**Endpoint:** `/current.json`\n**Request:**\n```http\nGET https://api.weatherapi.com/v1/current.json?key=your_api_key_here&q=New+York&aqi=no\n```\n**Response Example:**\n```json\n{\n  \"location\": {\n    \"name\": \"New York\",\n    \"region\": \"New York\",\n    \"country\": \"United States\",\n    \"lat\": 40.71,\n    \"lon\": -74.01\n  },\n  \"current\": {\n    \"temp_c\": 12.5,\n    \"condition\": {\n      \"text\": \"Partly cloudy\",\n      \"icon\": \"//cdn.weatherapi.com/weather/64x64/day/116.png\"\n    },\n    \"wind_kph\": 15.3,\n    \"humidity\": 68\n  }\n}\n```\n\n#### 3. **Error Handling**\n- **403 Forbidden:** Check if the API key is valid or expired.\n- **429 Too Many Requests:** Implement a 1-second delay between calls.\n- **404 Not Found:** Verify the location parameter (e.g., `q=San+Francisco`).\n\n---\n**Next Steps:**\n- Cache responses for 10 minutes to reduce API calls.\n- Use the `temp_c` value to adjust delivery routes for extreme weather.\n\nLet me know if you need help parsing this data into your system!\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "newapi#main-content",
+      "newapi#overview",
+      "newapi#setup",
+      "newapi#examples",
+      "newapi#related",
+      "alchemy-api-with-api-key",
+      "loops-api-and-sdk-skill"
+    ],
+    "overview_vi": "The newapi skill enables AI agents to interact with new-api, an open-source AI gateway platform. It provides commands to list available models, manage user groups, monitor account balance, and handle API tokens securely. Developers can create tokens, switch token groups, and apply credentials to config files or commands without exposing sensitive keys. The skill streamlines gateway resource management within AI applications by automating token lifecycle operations and configuration management.\nIntegrating AI with external APIs\nDeveloping chatbot features using APIs\nEnhancing data retrieval for AI agents",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/quantumnous/skills --skill newapi`\n`git clone https://github.com/quantumnous/skills`",
+    "usage_vi": "```\nAct as an API integration specialist and help integrate the [API_NAME] API into [COMPANY]'s [INDUSTRY] workflow. Provide the exact HTTP requests, authentication steps, and response parsing needed to fetch [DATA] from the API. Include error handling for common issues like rate limits or invalid parameters. Use this API documentation for reference: [API_DOCUMENTATION_LINK].\n```\nCopy\n\n```\n### API Integration Guide for [COMPANY]\n\nHere’s a step-by-step integration of the **WeatherAPI** into your logistics tracking system to fetch real-time temperature data for delivery routes:\n\n---\n\n#### 1. **Authentication Setup**\n- **API Key:** `your_api_key_here` (Replace with your actual key from WeatherAPI’s dashboard).\n- **Base URL:** `https://api.weatherapi.com/v1/current.json`\n- **Headers:** Add `key: your_api_key_here` to all requests.\n\n#### 2. **Fetching Data for Route Optimization**\n**Endpoint:** `/current.json`\n**Request:**\n```http\nGET https://api.weatherapi.com/v1/current.json?key=your_api_key_here&q=New+York&aqi=no\n```\n**Response Example:**\n```json\n{\n  \"location\": {\n    \"name\": \"New York\",\n    \"region\": \"New York\",\n    \"country\": \"United States\",\n    \"lat\": 40.71,\n    \"lon\": -74.01\n  },\n  \"current\": {\n    \"temp_c\": 12.5,\n    \"condition\": {\n      \"text\": \"Partly cloudy\",\n      \"icon\": \"//cdn.weatherapi.com/weather/64x64/day/116.png\"\n    },\n    \"wind_kph\": 15.3,\n    \"humidity\": 68\n  }\n}\n```\n\n#### 3. **Error Handling**\n- **403 Forbidden:** Check if the API key is valid or expired.\n- **429 Too Many Requests:** Implement a 1-second delay between calls.\n- **404 Not Found:** Verify the location parameter (e.g., `q=San+Francisco`).\n\n---\n**Next Steps:**\n- Cache responses for 10 minutes to reduce API calls.\n- Use the `temp_c` value to adjust delivery routes for extreme weather.\n\nLet me know if you need help parsing this data into your system!\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:59:09.156185Z",
+    "http_status": 200,
+    "content_hash": "4b62cd227bbc5f75cf75172793e471ec754807f9e61f9e6b7d69795d2d8f6312",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\newapi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\newapi.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "newapi: Manage AI Gateway Resources",
+  "short_description_vi": "This skill enables AI agents to interact with new APIs, useful for developers and researchers. It streamlines API integration and enhances functionality in AI applications."
+}

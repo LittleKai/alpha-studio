@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kilo",
+  "slug": "kilo",
+  "name": "react-native-best-practices",
+  "headline": "Boost Productivity with Kilo AI Assistant",
+  "short_description": "Kilo is an AI assistant that automates repetitive tasks for engineers. It integrates with coding agents like Claude Code and Cursor to boost productivity. Engineers use it to speed up code reviews, debugging, and documentation. It connects to development workflows to reduce manual effort.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "Productivity",
+    "AI",
+    "Automation",
+    "Assistant"
+  ],
+  "sections": {
+    "overview": "Kilo is an AI assistant designed to automate repetitive tasks for software engineers. It integrates with coding agents like Claude Code and Cursor to streamline common development workflows. Engineers can use Kilo to accelerate code reviews, debugging, and documentation processes. By connecting to development environments, Kilo reduces manual effort and helps teams work more efficiently.\nTask automation\nData analysis\nScheduling assistance",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nAct as Kilo, an AI engineering assistant. Review the code changes in [REPOSITORY_PATH] for [PULL_REQUEST_NUMBER]. Identify at least 3 potential issues: 1) [TYPE_OF_ISSUE], 2) [TYPE_OF_ISSUE], and 3) [TYPE_OF_ISSUE]. For each issue, provide: a) the exact line number, b) a concise explanation of the problem, c) a suggested fix, and d) the impact if left unresolved. Also generate a summary of the changes in [LANGUAGE] that a non-technical stakeholder would understand. Finally, suggest 2-3 unit tests that should be added to cover the new functionality. Use the coding style of the repository.\n```\nCopy\n\n```\n### Code Review for PR #42 in `acme-corp/backend`\n\n**Summary for Stakeholders:**\nThis pull request implements a new `PaymentGateway` service that integrates with Stripe for our subscription billing system. The changes include:\n- Added a new `stripe_client.py` module to handle API interactions\n- Modified the `SubscriptionService` to use the new gateway\n- Updated the `billing_cycle.py` to support monthly/yearly billing options\n- Added comprehensive logging for all payment operations\n\n**Key Issues Identified:**\n\n1. **Line 47 - stripe_client.py**\n   - **Issue:** The `api_key` is hardcoded in the client initialization\n   - **Explanation:** This violates security best practices by exposing credentials in the codebase\n   - **Suggested Fix:** Use environment variables with `os.getenv('STRIPE_API_KEY')`\n   - **Impact:** Potential security vulnerability if code is committed to public repositories\n\n2. **Line 112 - subscription_service.py**\n   - **Issue:** Missing error handling for failed Stripe API calls\n   - **Explanation:** The code assumes all API calls succeed without retry logic\n   - **Suggested Fix:** Wrap Stripe calls in try-catch blocks with exponential backoff\n   - **Impact:** System crashes during payment processing if Stripe experiences downtime\n\n3. **Line 203 - billing_cycle.py**\n   - **Issue:** No validation for negative billing amounts\n   - **Explanation:** The code allows negative values which could lead to refunds\n   - **Suggested Fix:** Add validation: `if amount <= 0: raise ValueError('Amount must be positive')`\n   - **Impact:** Potential financial losses from incorrect billing amounts\n\n**Suggested Unit Tests:**\n1. Test `stripe_client.py` with invalid API keys to verify proper error handling\n2. Test `subscription_service.py` for retry behavior during Stripe API failures\n3. Test `billing_cycle.py` with edge cases (zero amount, very large amounts)\n\n**Additional Recommendations:**\n- Consider adding integration tests with a mock Stripe server\n- Add documentation for the new billing options in the README\n- Update the deployment checklist to include Stripe API key configuration\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "kilo#main-content",
+      "kilo#overview",
+      "kilo#setup",
+      "kilo#examples",
+      "kilo#tools",
+      "kilo#mcp",
+      "kilo#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Kilo is an AI assistant designed to automate repetitive tasks for software engineers. It integrates with coding agents like Claude Code and Cursor to streamline common development workflows. Engineers can use Kilo to accelerate code reviews, debugging, and documentation processes. By connecting to development environments, Kilo reduces manual effort and helps teams work more efficiently.\nTask automation\nData analysis\nScheduling assistance",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nAct as Kilo, an AI engineering assistant. Review the code changes in [REPOSITORY_PATH] for [PULL_REQUEST_NUMBER]. Identify at least 3 potential issues: 1) [TYPE_OF_ISSUE], 2) [TYPE_OF_ISSUE], and 3) [TYPE_OF_ISSUE]. For each issue, provide: a) the exact line number, b) a concise explanation of the problem, c) a suggested fix, and d) the impact if left unresolved. Also generate a summary of the changes in [LANGUAGE] that a non-technical stakeholder would understand. Finally, suggest 2-3 unit tests that should be added to cover the new functionality. Use the coding style of the repository.\n```\nCopy\n\n```\n### Code Review for PR #42 in `acme-corp/backend`\n\n**Summary for Stakeholders:**\nThis pull request implements a new `PaymentGateway` service that integrates with Stripe for our subscription billing system. The changes include:\n- Added a new `stripe_client.py` module to handle API interactions\n- Modified the `SubscriptionService` to use the new gateway\n- Updated the `billing_cycle.py` to support monthly/yearly billing options\n- Added comprehensive logging for all payment operations\n\n**Key Issues Identified:**\n\n1. **Line 47 - stripe_client.py**\n   - **Issue:** The `api_key` is hardcoded in the client initialization\n   - **Explanation:** This violates security best practices by exposing credentials in the codebase\n   - **Suggested Fix:** Use environment variables with `os.getenv('STRIPE_API_KEY')`\n   - **Impact:** Potential security vulnerability if code is committed to public repositories\n\n2. **Line 112 - subscription_service.py**\n   - **Issue:** Missing error handling for failed Stripe API calls\n   - **Explanation:** The code assumes all API calls succeed without retry logic\n   - **Suggested Fix:** Wrap Stripe calls in try-catch blocks with exponential backoff\n   - **Impact:** System crashes during payment processing if Stripe experiences downtime\n\n3. **Line 203 - billing_cycle.py**\n   - **Issue:** No validation for negative billing amounts\n   - **Explanation:** The code allows negative values which could lead to refunds\n   - **Suggested Fix:** Add validation: `if amount <= 0: raise ValueError('Amount must be positive')`\n   - **Impact:** Potential financial losses from incorrect billing amounts\n\n**Suggested Unit Tests:**\n1. Test `stripe_client.py` with invalid API keys to verify proper error handling\n2. Test `subscription_service.py` for retry behavior during Stripe API failures\n3. Test `billing_cycle.py` with edge cases (zero amount, very large amounts)\n\n**Additional Recommendations:**\n- Consider adding integration tests with a mock Stripe server\n- Add documentation for the new billing options in the README\n- Update the deployment checklist to include Stripe API key configuration\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:26:56.244373Z",
+    "http_status": 200,
+    "content_hash": "b6a1a65df91d251e8afe3c113449ca36794f1b78e8d92e356b7909567f4c7d60",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kilo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kilo.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Boost Productivity with Kilo AI Assistant",
+  "short_description_vi": "Kilo is an AI assistant that automates repetitive tasks for engineers. It integrates with coding agents like Claude Code and Cursor to boost productivity. Engineers use it to speed up code reviews, debugging, and documentation. It connects to development workflows to reduce manual effort."
+}

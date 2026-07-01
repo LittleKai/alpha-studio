@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-runner",
+  "slug": "claude-runner",
+  "name": "Claude Runner",
+  "headline": "Direct Claude integration with VSCode: Claude Runner",
+  "short_description": "Claude Runner is a VS Code extension that executes multi-step Claude Code workflows directly in your editor, with model selection, cost tracking, and conversation history.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "codingworkflow",
+  "install_command": "git clone https://github.com/codingworkflow/claude-runner.git",
+  "source_repo_url": "https://github.com/codingworkflow/claude-runner",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "vscode",
+    "ai",
+    "vscode-extension",
+    "claude",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Runner is a VS Code extension that enables you to create, execute, and manage complex multi-step Claude Code workflows directly within your editor. Build sophisticated pipelines by chaining multiple Claude tasks together, selecting the optimal model for each step (Opus 4, Sonnet 4, Sonnet 3.7, or Haiku 3.5), and maintaining session continuity across tasks. The extension provides detailed usage analytics and cost tracking per model, access to conversation history and session logs, and the ability to save and reuse workflows. Developers benefit from real-time AI assistance in their terminal, workspace context awareness, and comprehensive task automation without leaving VS Code.\nCreating reusable multi-step automation workflows for development tasks\nMonitoring API token consumption and costs across different Claude models\nChaining Claude Code tasks together while maintaining conversation state\nBuilding and testing complex reasoning pipelines with model selection per step",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/codingworkflow/claude-runner`",
+    "usage": "```\nI'm using the Claude Runner extension in VS Code. I need to automate a repetitive task: [DESCRIBE TASK]. Here's the workflow I want to automate: [STEP 1], [STEP 2], [STEP 3]. Can you help me create a Claude Runner script to handle this?\n```\nCopy\n\n```\n```markdown\n# Claude Runner Automation Script",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-runner#main-content",
+      "claude-runner#overview",
+      "claude-runner#setup",
+      "claude-runner#examples",
+      "claude-runner#tools",
+      "claude-runner#mcp",
+      "claude-runner#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Runner là một extension VS Code cho phép bạn tạo, thực thi và quản lý các workflow Claude Code đa bước phức tạp trực tiếp ngay trong trình soạn thảo. Xây dựng các pipeline nâng cao bằng cách liên kết nhiều tác vụ Claude lại với nhau, lựa chọn model tối ưu cho từng bước (Opus 4, Sonnet 4, Sonnet 3.7, hoặc Haiku 3.5), và duy trì tính liên tục của session giữa các tác vụ. Extension này cung cấp báo cáo phân tích chi tiết về mức độ sử dụng và theo dõi chi phí cho từng model, quyền truy cập lịch sử hội thoại cũng như session log, cùng khả năng lưu và tái sử dụng workflow. Lập trình viên sẽ được hỗ trợ bởi AI theo thời gian thực ngay trong terminal, khả năng hiểu ngữ cảnh của workspace, và tự động hóa toàn diện các tác vụ mà không cần rời khỏi VS Code.\nTạo các workflow tự động hóa đa bước có thể tái sử dụng cho các tác vụ phát triển phần mềm\nGiám sát lượng tiêu thụ token API và chi phí trên các model Claude khác nhau\nChuỗi các tác vụ Claude Code lại với nhau mà vẫn duy trì được trạng thái hội thoại\nXây dựng và thử nghiệm các pipeline suy luận phức tạp với tính năng chọn model cho từng bước",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/codingworkflow/claude-runner`",
+    "usage_vi": "```\nTôi đang sử dụng extension Claude Runner trong VS Code. Tôi cần tự động hóa một tác vụ lặp đi lặp lại: [MÔ TẢ TÁC VỤ]. Đây là workflow tôi muốn tự động hóa: [BƯỚC 1], [BƯỚC 2], [BƯỚC 3]. Bạn có thể giúp tôi tạo một script Claude Runner để xử lý việc này không?\n```\nSao chép\n\n```\n```markdown\n# Script tự động hóa Claude Runner"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:04:49.186345Z",
+    "http_status": 200,
+    "content_hash": "ef0aa01bf68dbf074b21c0ccd0944b593cacc51361ae21afa5046fa8e93d6eda",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-runner.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-runner.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tích hợp trực tiếp Claude với VS Code: Claude Runner",
+  "short_description_vi": "Claude Runner là một extension VS Code hỗ trợ thực thi các workflow Claude Code đa bước trực tiếp ngay trong trình soạn thảo, đi kèm các tính năng chọn model, theo dõi chi phí và lưu lịch sử hội thoại."
+}

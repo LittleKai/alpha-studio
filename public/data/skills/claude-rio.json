@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-rio",
+  "slug": "claude-rio",
+  "name": "Claude Rio",
+  "headline": "automate workflows with claude rio suggestions",
+  "short_description": "Claude-rio automatically activates custom workflows by matching skills, agents, and commands in Claude Code. Operations teams benefit from improved efficiency and reduced manual intervention. It connects to Claude Code and integrates with existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "alex-popov-tech",
+  "install_command": "git clone https://github.com/alex-popov-tech/claude-rio.git",
+  "source_repo_url": "https://github.com/alex-popov-tech/claude-rio",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "claude-rio solves the problem of inconsistent skill and command activation in Claude Code by adding explicit keyword-based matching. When you submit a prompt, it checks matcher files in your skills, agents, and commands, then suggests relevant tools to Claude using special JSON formatting. While Claude makes the final decision, this visibility significantly increases the probability that your skills, agents, and commands will be invoked when relevant. The system uses deterministic matchers—simple JavaScript functions that evaluate prompt keywords, file patterns, or conversation history—with zero dependencies and fast execution (~10-20ms when no matches). Operations teams benefit from reduced manual intervention and improved workflow efficiency by ensuring their custom tools are properly surfaced to Claude.\nEnsure Docker-related skills activate when users mention containers or Dockerfiles\nAuto-suggest TypeScript compilation tools based on code type detection\nSurface deployment commands when relevant project files are detected\nActivate code review agents based on conversation history and context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alex-popov-tech/claude-rio`",
+    "usage": "```\nUse claude-rio to automate [WORKFLOW_NAME] by activating the required skills, agents, and commands in Claude Code. Ensure the workflow runs with [SPECIFIC_CONFIGURATION] and triggers [DESIRED_ACTION] when conditions [CONDITIONS] are met. Monitor the output for any errors or deviations.\n```\nCopy\n\n```\nClaude-rio successfully activated the 'data-pipeline-validation' workflow at 2:15 PM UTC. The workflow matched the following components:\n\n1. **Skills**: Data quality validation (v2.3), anomaly detection (v1.1), and schema compliance (v3.0).\n2. **Agents**: Pipeline orchestrator (auto-triggered), error handler (manual override enabled), and notification dispatcher.\n3. **Commands**: \n   - `validate_schema --input /data/raw/sales_2024.csv --schema /schemas/sales_v4.json`\n   - `detect_anomalies --threshold 0.05 --output /reports/anomalies_2024-05-15.json`\n\n**Execution Log**:\n- 2:15 PM: Workflow initiated by claude-rio.\n- 2:16 PM: Schema validation passed (99.8% compliance).\n- 2:17 PM: Anomaly detection flagged 12 records (0.3% of dataset) for review.\n- 2:18 PM: Error handler routed anomalies to the QA team via Slack.\n- 2:19 PM: Notification dispatched to stakeholders: 'Pipeline validation complete. 12 anomalies detected. See /reports/anomalies_2024-05-15.json for details.'\n\n**Result**: The workflow reduced manual intervention by 85% compared to the previous manual process, which took an average of 45 minutes per run. No critical errors were logged, and the team was notified within 2 minutes of detection.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-rio#main-content",
+      "claude-rio#overview",
+      "claude-rio#setup",
+      "claude-rio#examples",
+      "claude-rio#tools",
+      "claude-rio#mcp",
+      "claude-rio#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-rio giải quyết vấn đề kích hoạt skill và command không đồng nhất trong Claude Code bằng cách bổ sung cơ chế so khớp dựa trên từ khóa rõ ràng. Khi bạn gửi prompt, hệ thống sẽ kiểm tra các file matcher trong skill, agent và command của bạn, sau đó gợi ý các công cụ liên quan cho Claude thông qua định dạng JSON đặc biệt. Mặc dù Claude vẫn là bên đưa ra quyết định cuối cùng, nhưng khả năng hiển thị trực quan này giúp tăng đáng kể tỷ lệ các skill, agent và command được gọi khi cần thiết. Hệ thống sử dụng các bộ khớp xác định (deterministic matchers) — thực chất là các hàm JavaScript đơn giản để đánh giá từ khóa trong prompt, file pattern hoặc lịch sử hội thoại — hoàn toàn không có dependency và thực thi cực nhanh (~10-20ms khi không có kết quả khớp). Các đội ngũ vận hành sẽ giảm thiểu can thiệp thủ công và nâng cao hiệu suất workflow nhờ đảm bảo các công cụ tùy chỉnh được hiển thị đầy đủ cho Claude.\nĐảm bảo các skill liên quan đến Docker được kích hoạt khi người dùng nhắc đến container hoặc Dockerfile\nTự động gợi ý các công cụ biên dịch TypeScript dựa trên việc phát hiện loại code\nHiển thị các command deploy khi phát hiện các file dự án liên quan\nKích hoạt các code review agent dựa trên lịch sử hội thoại và ngữ cảnh",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/alex-popov-tech/claude-rio`",
+    "usage_vi": "```\nSử dụng claude-rio để tự động hóa [WORKFLOW_NAME] bằng cách kích hoạt các skill, agent và command cần thiết trong Claude Code. Đảm bảo workflow chạy với [SPECIFIC_CONFIGURATION] và kích hoạt [DESIRED_ACTION] khi các điều kiện [CONDITIONS] được đáp ứng. Theo dõi đầu ra (output) để phát hiện bất kỳ lỗi hoặc sai lệch nào.\n```\nCopy\n\n```\nClaude-rio đã kích hoạt thành công workflow 'data-pipeline-validation' lúc 2:15 PM UTC. Workflow đã khớp với các thành phần sau:\n\n1. **Skills**: Data quality validation (v2.3), anomaly detection (v1.1), và schema compliance (v3.0).\n2. **Agents**: Pipeline orchestrator (tự động kích hoạt), error handler (cho phép ghi đè thủ công), và notification dispatcher.\n3. **Commands**: \n   - `validate_schema --input /data/raw/sales_2024.csv --schema /schemas/sales_v4.json`\n   - `detect_anomalies --threshold 0.05 --output /reports/anomalies_2024-05-15.json`\n\n**Execution Log**:\n- 2:15 PM: Workflow được khởi tạo bởi claude-rio.\n- 2:16 PM: Xác thực schema thành công (độ tuân thủ 99.8%).\n- 2:17 PM: Phát hiện bất thường đã gắn cờ 12 bản ghi (0.3% tập dữ liệu) để kiểm tra.\n- 2:18 PM: Error handler đã chuyển hướng các bất thường này đến đội ngũ QA qua Slack.\n- 2:19 PM: Thông báo đã được gửi đến các bên liên quan: 'Pipeline validation complete. 12 anomalies detected. See /reports/anomalies_2024-05-15.json for details.'\n\n**Result**: Workflow đã giảm 85% can thiệp thủ công so với quy trình thủ công trước đây (mất trung bình 45 phút cho mỗi lần chạy). Không ghi nhận lỗi nghiêm trọng nào và đội ngũ đã nhận được thông báo trong vòng 2 phút kể từ khi phát hiện lỗi.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:07.747247Z",
+    "http_status": 200,
+    "content_hash": "5045bd6c2ea5a6ad0e6b2a408f9b8eb4b1ce479a81872d292bea5782c41d4f9f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rio.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rio.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động hóa workflow với các gợi ý từ claude-rio",
+  "short_description_vi": "Claude-rio tự động kích hoạt các workflow tùy chỉnh bằng cách so khớp các skill, agent và command trong Claude Code. Các đội ngũ vận hành sẽ nâng cao hiệu quả làm việc và giảm thiểu các thao tác thủ công nhờ khả năng kết nối trực tiếp với Claude Code và tích hợp mượt mà vào các workflow hiện có."
+}

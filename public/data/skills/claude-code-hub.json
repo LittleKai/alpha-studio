@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-hub",
+  "slug": "claude-code-hub",
+  "name": "Claude Code Hub",
+  "headline": "modern claude code api proxy service",
+  "short_description": "Claude Code Hub is a modern Claude Code API proxy service that provides intelligent load balancing, user management, and usage statistics. It is designed for teams and enterprises that need to manage multiple AI service providers. The service can be integrated with existing workflows and tools to streamline AI service management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "zsio",
+  "install_command": "git clone https://github.com/zsio/claude-code-hub.git",
+  "source_repo_url": "https://github.com/zsio/claude-code-hub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cc-proxy",
+    "claude-code-proxy",
+    "cc",
+    "proxy",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Hub is a proxy service designed for teams and enterprises that need to manage multiple AI service providers through a single API interface. It provides intelligent load balancing based on weights, automatic failover, and session persistence across upstream services. The platform includes multi-tenant user management with fine-grained permissions, API key generation with rotation and expiration controls, and real-time monitoring with request statistics, cost tracking, and performance analytics. A modern web dashboard with Shadcn UI offers visibility into usage patterns and service health. Docker deployment with automatic database migrations ensures production-ready operation for organizations standardizing AI API access.\nCentralize API management for multiple AI service providers across teams\nDistribute requests across multiple Claude-compatible services with automatic failover\nTrack and allocate AI service costs by user or department with detailed reporting\nControl API access and usage quotas for different team members or projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zsio/claude-code-hub`",
+    "usage": "```\nUse the Claude Code Hub API to [ACTION] for [TEAM/PROJECT]. Include the following parameters: [PARAMETERS]. For example, 'Use the Claude Code Hub API to balance load across providers for the 'Q4-Analytics' project with parameters: max_retries=3, timeout=30s, and provider_priority=[anthropic, openai, mistral]'.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"request_id\": \"req_20241115_142233_8745\",\n  \"summary\": {\n    \"total_requests\": 1250,\n    \"balanced_distribution\": {\n      \"anthropic\": 420,\n      \"openai\": 415,\n      \"mistral\": 415\n    },\n    \"latency_metrics\": {\n      \"avg_response_time_ms\": 185,\n      \"p95_response_time_ms\": 320,\n      \"failed_requests\": 0\n    },\n    \"user_quotas\": {\n      \"user_123\": {\n        \"used\": 250,\n        \"remaining\": 750,\n        \"provider_usage\": {\n          \"anthropic\": 80,\n          \"openai\": 90,\n          \"mistral\": 80\n        }\n      },\n      \"user_456\": {\n        \"used\": 180,\n        \"remaining\": 820,\n        \"provider_usage\": {\n          \"anthropic\": 60,\n          \"openai\": 60,\n          \"mistral\": 60\n        }\n      }\n    }\n  },\n  \"recommendations\": [\n    \"Consider increasing the Mistral provider quota for user_123 as they frequently hit the limit.\",\n    \"Monitor the p95 latency for OpenAI requests; it's slightly higher than the target of 300ms.\",\n    \"Schedule a maintenance window for provider upgrades during the lowest usage period (02:00-04:00 UTC).\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-hub#main-content",
+      "claude-code-hub#overview",
+      "claude-code-hub#setup",
+      "claude-code-hub#examples",
+      "claude-code-hub#tools",
+      "claude-code-hub#mcp",
+      "claude-code-hub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Hub is a proxy service designed for teams and enterprises that need to manage multiple AI service providers through a single API interface. It provides intelligent load balancing based on weights, automatic failover, and session persistence across upstream services. The platform includes multi-tenant user management with fine-grained permissions, API key generation with rotation and expiration controls, and real-time monitoring with request statistics, cost tracking, and performance analytics. A modern web dashboard with Shadcn UI offers visibility into usage patterns and service health. Docker deployment with automatic database migrations ensures production-ready operation for organizations standardizing AI API access.\nCentralize API management for multiple AI service providers across teams\nDistribute requests across multiple Claude-compatible services with automatic failover\nTrack and allocate AI service costs by user or department with detailed reporting\nControl API access and usage quotas for different team members or projects",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zsio/claude-code-hub`",
+    "usage_vi": "```\nUse the Claude Code Hub API to [ACTION] for [TEAM/PROJECT]. Include the following parameters: [PARAMETERS]. For example, 'Use the Claude Code Hub API to balance load across providers for the 'Q4-Analytics' project with parameters: max_retries=3, timeout=30s, and provider_priority=[anthropic, openai, mistral]'.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"request_id\": \"req_20241115_142233_8745\",\n  \"summary\": {\n    \"total_requests\": 1250,\n    \"balanced_distribution\": {\n      \"anthropic\": 420,\n      \"openai\": 415,\n      \"mistral\": 415\n    },\n    \"latency_metrics\": {\n      \"avg_response_time_ms\": 185,\n      \"p95_response_time_ms\": 320,\n      \"failed_requests\": 0\n    },\n    \"user_quotas\": {\n      \"user_123\": {\n        \"used\": 250,\n        \"remaining\": 750,\n        \"provider_usage\": {\n          \"anthropic\": 80,\n          \"openai\": 90,\n          \"mistral\": 80\n        }\n      },\n      \"user_456\": {\n        \"used\": 180,\n        \"remaining\": 820,\n        \"provider_usage\": {\n          \"anthropic\": 60,\n          \"openai\": 60,\n          \"mistral\": 60\n        }\n      }\n    }\n  },\n  \"recommendations\": [\n    \"Consider increasing the Mistral provider quota for user_123 as they frequently hit the limit.\",\n    \"Monitor the p95 latency for OpenAI requests; it's slightly higher than the target of 300ms.\",\n    \"Schedule a maintenance window for provider upgrades during the lowest usage period (02:00-04:00 UTC).\"\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:56.659317Z",
+    "http_status": 200,
+    "content_hash": "9e04ea52de6a6d5953f5501490da1be3585df62b3566eea9879f3363e2f0c2d9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-hub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-hub.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "modern claude code api proxy service",
+  "short_description_vi": "Claude Code Hub is a modern Claude Code API proxy service that provides intelligent load balancing, user management, and usage statistics. It is designed for teams and enterprises that need to manage multiple AI service providers. The service can be integrated with existing workflows and tools to streamline AI service management."
+}

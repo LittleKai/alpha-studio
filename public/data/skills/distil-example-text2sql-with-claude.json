@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/distil-example-text2sql-with-claude",
+  "slug": "distil-example-text2sql-with-claude",
+  "name": "browser-use",
+  "headline": "distil-example-text2sql-with-claude: SQL Generation",
+  "short_description": "Convert natural language questions to SQL queries for CSV data analysis. Operations teams use this to automate data extraction without SQL expertise. Integrates with Python workflows and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "distil-labs",
+  "install_command": "git clone https://github.com/distil-labs/distil-example-text2sql-with-claude.git",
+  "source_repo_url": "https://github.com/distil-labs/distil-example-text2sql-with-claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The distil-example-text2sql-with-claude skill is an innovative automation tool designed to simplify the process of generating SQL queries from natural language inputs. By utilizing the capabilities of the Claude Code framework, this skill showcases model training and deployment using the distil Claude CLI. It serves as a practical example for developers looking to enhance their workflow automation processes, particularly in data management tasks. With an implementation time of just 30 minutes, this skill allows users to quickly integrate it into their existing systems. One of the key benefits of this skill is its ability to save time by automating the SQL query generation process. Instead of manually writing complex SQL statements, users can input natural language descriptions, and the skill translates these into accurate SQL queries. This not only streamlines the workflow but also reduces the likelihood of errors associated with manual coding. While the exact time savings are currently unknown, the efficiency gained from automation is evident, especially for teams handling large volumes of data. The distil-example-text2sql-with-claude skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in data-centric projects. It is an excellent fit for teams looking to implement AI automation in their workflows, as it directly addresses the common challenge of translating business requirements into technical specifications. For instance, a product manager could use this skill to quickly generate SQL queries needed for reporting without requiring deep technical expertise. With an intermediate level of complexity, users should have a foundational understanding of SQL and familiarity with the Claude Code environment to effectively implement this skill. It is a valuable addition to any AI-first workflow, enabling teams to leverage automation for improved productivity and accuracy in data handling tasks. By integrating this skill into their processes, organizations can enhance their operational efficiency and focus on higher-level strategic initiatives.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/distil-labs/distil-example-text2sql-with-claude`",
+    "usage": "```\nConvert this natural language question into an SQL query for analyzing [CSV_FILE_NAME] data: [QUESTION]. The CSV contains columns like [COLUMN1], [COLUMN2], and [COLUMN3]. Return the SQL query only.\n```\nCopy\n\n```\n```sql\nSELECT COUNT(*) as total_orders, SUM(amount) as total_revenue\nFROM sales_data.csv\nWHERE date BETWEEN '2023-01-01' AND '2023-12-31'\nGROUP BY customer_id\nHAVING COUNT(*) > 5\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "distil-example-text2sql-with-claude#main-content",
+      "distil-example-text2sql-with-claude#overview",
+      "distil-example-text2sql-with-claude#setup",
+      "distil-example-text2sql-with-claude#examples",
+      "distil-example-text2sql-with-claude#tools",
+      "distil-example-text2sql-with-claude#mcp",
+      "distil-example-text2sql-with-claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The distil-example-text2sql-with-claude skill is an innovative automation tool designed to simplify the process of generating SQL queries from natural language inputs. By utilizing the capabilities of the Claude Code framework, this skill showcases model training and deployment using the distil Claude CLI. It serves as a practical example for developers looking to enhance their workflow automation processes, particularly in data management tasks. With an implementation time of just 30 minutes, this skill allows users to quickly integrate it into their existing systems. One of the key benefits of this skill is its ability to save time by automating the SQL query generation process. Instead of manually writing complex SQL statements, users can input natural language descriptions, and the skill translates these into accurate SQL queries. This not only streamlines the workflow but also reduces the likelihood of errors associated with manual coding. While the exact time savings are currently unknown, the efficiency gained from automation is evident, especially for teams handling large volumes of data. The distil-example-text2sql-with-claude skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in data-centric projects. It is an excellent fit for teams looking to implement AI automation in their workflows, as it directly addresses the common challenge of translating business requirements into technical specifications. For instance, a product manager could use this skill to quickly generate SQL queries needed for reporting without requiring deep technical expertise. With an intermediate level of complexity, users should have a foundational understanding of SQL and familiarity with the Claude Code environment to effectively implement this skill. It is a valuable addition to any AI-first workflow, enabling teams to leverage automation for improved productivity and accuracy in data handling tasks. By integrating this skill into their processes, organizations can enhance their operational efficiency and focus on higher-level strategic initiatives.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/distil-labs/distil-example-text2sql-with-claude`",
+    "usage_vi": "```\nConvert this natural language question into an SQL query for analyzing [CSV_FILE_NAME] data: [QUESTION]. The CSV contains columns like [COLUMN1], [COLUMN2], and [COLUMN3]. Return the SQL query only.\n```\nCopy\n\n```\n```sql\nSELECT COUNT(*) as total_orders, SUM(amount) as total_revenue\nFROM sales_data.csv\nWHERE date BETWEEN '2023-01-01' AND '2023-12-31'\nGROUP BY customer_id\nHAVING COUNT(*) > 5\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:27:11.183548Z",
+    "http_status": 200,
+    "content_hash": "27c71b85852d903d52c67df2a8d7df25a417910554c99fee98770d98c209e508",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\distil-example-text2sql-with-claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\distil-example-text2sql-with-claude.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "distil-example-text2sql-with-claude: SQL Generation",
+  "short_description_vi": "Convert natural language questions to SQL queries for CSV data analysis. Operations teams use this to automate data extraction without SQL expertise. Integrates with Python workflows and Claude agents."
+}

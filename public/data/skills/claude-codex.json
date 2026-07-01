@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-codex",
+  "slug": "claude-codex",
+  "name": "browser-use",
+  "headline": "Multi-AI orchestration with Claude Codex",
+  "short_description": "Claude Codex automates code review and enforcement. It orchestrates multiple AI agents for sequential reviews, with Codex as the final gatekeeper. It benefits development teams by ensuring code quality and security. It integrates with GitHub and other version control systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "Z-M-Huang",
+  "install_command": "git clone https://github.com/Z-M-Huang/claude-codex.git",
+  "source_repo_url": "https://github.com/Z-M-Huang/claude-codex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "developer-tools",
+    "claude-code",
+    "code-review",
+    "multi-agent",
+    "multi-ai",
+    "plugin",
+    "security"
+  ],
+  "sections": {
+    "overview": "Claude Codex is a Claude Code plugin that automates code review through sequential multi-AI orchestration. Instead of relying on a single AI reviewer, it routes code through three independent reviewers—Claude Sonnet for obvious bugs and style issues, Claude Opus for architectural and subtle bugs, and Codex for a final independent perspective. The plugin includes specialized agents for requirements gathering, planning, implementation, and code review, each checking for OWASP Top 10 vulnerabilities, error handling, and code quality. It supports both feature development pipelines and bug-fix workflows with dual root-cause analysis, ensuring code doesn't proceed until all reviewers approve.\nEnforce professional multi-reviewer code quality standards in AI-assisted development\nCatch security vulnerabilities and architectural issues before production\nAutomate bug diagnosis with parallel root-cause analysis from two AI models\nReview generated code changes across multiple perspectives simultaneously",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Z-M-Huang/claude-codex`",
+    "usage": "```\nAct as a Claude Codex automation pipeline for [PROJECT_NAME]. Review the pull request [PR_NUMBER] in [REPO_URL] using the following steps: 1) Run static analysis with [TOOL_NAME] (e.g., SonarQube, ESLint), 2) Check for security vulnerabilities with [TOOL_NAME] (e.g., Snyk, Bandit), 3) Validate code style with [TOOL_NAME] (e.g., Prettier, Black), 4) Perform a semantic review with Codex to ensure logic correctness and consistency with [CODING_STANDARDS]. Provide a consolidated report with actionable feedback for the developer. Ignore files matching [IGNORE_PATTERN] (e.g., '*.min.js', '*.lock').\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-codex#main-content",
+      "claude-codex#overview",
+      "claude-codex#setup",
+      "claude-codex#examples",
+      "claude-codex#tools",
+      "claude-codex#mcp",
+      "claude-codex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Codex is a Claude Code plugin that automates code review through sequential multi-AI orchestration. Instead of relying on a single AI reviewer, it routes code through three independent reviewers—Claude Sonnet for obvious bugs and style issues, Claude Opus for architectural and subtle bugs, and Codex for a final independent perspective. The plugin includes specialized agents for requirements gathering, planning, implementation, and code review, each checking for OWASP Top 10 vulnerabilities, error handling, and code quality. It supports both feature development pipelines and bug-fix workflows with dual root-cause analysis, ensuring code doesn't proceed until all reviewers approve.\nEnforce professional multi-reviewer code quality standards in AI-assisted development\nCatch security vulnerabilities and architectural issues before production\nAutomate bug diagnosis with parallel root-cause analysis from two AI models\nReview generated code changes across multiple perspectives simultaneously",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Z-M-Huang/claude-codex`",
+    "usage_vi": "```\nAct as a Claude Codex automation pipeline for [PROJECT_NAME]. Review the pull request [PR_NUMBER] in [REPO_URL] using the following steps: 1) Run static analysis with [TOOL_NAME] (e.g., SonarQube, ESLint), 2) Check for security vulnerabilities with [TOOL_NAME] (e.g., Snyk, Bandit), 3) Validate code style with [TOOL_NAME] (e.g., Prettier, Black), 4) Perform a semantic review with Codex to ensure logic correctness and consistency with [CODING_STANDARDS]. Provide a consolidated report with actionable feedback for the developer. Ignore files matching [IGNORE_PATTERN] (e.g., '*.min.js', '*.lock').\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:12:44.509829Z",
+    "http_status": 200,
+    "content_hash": "60ab42b2404a8ed07b39f75cc912b140759c68eb3071f280621fa4ac5022b321",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-codex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-codex.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Multi-AI orchestration with Claude Codex",
+  "short_description_vi": "Claude Codex automates code review and enforcement. It orchestrates multiple AI agents for sequential reviews, with Codex as the final gatekeeper. It benefits development teams by ensuring code quality and security. It integrates with GitHub and other version control systems."
+}

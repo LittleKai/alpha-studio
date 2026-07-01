@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ruby-skills",
+  "slug": "ruby-skills",
+  "name": "browser-use",
+  "headline": "Ruby Skills - Claude Code plugins for Ruby",
+  "short_description": "Claude Code plugins for Ruby development. Helps navigate Ruby's ecosystem, manage versions, and access authoritative documentation. Benefits Ruby developers by streamlining workflows and improving productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "st0012",
+  "install_command": "git clone https://github.com/st0012/ruby-skills.git",
+  "source_repo_url": "https://github.com/st0012/ruby-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Ruby Skills automates Ruby environment setup for Claude Code and Codex by detecting version managers (chruby, rbenv, rvm, asdf, mise, rv, shadowenv) and activating the correct Ruby version without manual configuration. It points agents to authoritative documentation sources for Ruby 3.2–4.0 while blocking outdated references, and provides detailed comparisons between minitest and test-unit to prevent common API confusion. This skill eliminates hallucinated APIs, version mismatches, and test framework errors that slow down Ruby development workflows. Ideal for Ruby developers using AI agents who need reliable environment handling and accurate framework guidance.\nAuto-detect and activate Ruby versions across multiple version managers in multi-manager environments\nAccess version-specific documentation for Ruby 3.2–4.0 without hallucinated or outdated API references\nResolve minitest vs test-unit naming conflicts (assert_raises vs assert_raise, refute vs assert_not)\nClarify Ruby typing ecosystem differences between Sorbet (RBI) and RBS implementations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/st0012/ruby-skills`",
+    "usage": "```\nUse the Ruby Skills plugin to [TASK] for a Ruby project. For example: 'Check for outdated dependencies in [PROJECT_PATH] and suggest updates.' Or 'Generate a RSpec test template for a [CLASS_NAME] class in [PROJECT_PATH].'\n```\nCopy\n\n```\nI've analyzed your Ruby project at `/Users/developer/my_app` using the Ruby Skills plugin. Here's what I found:\n\n**Dependency Updates Available:**\n- `rails` (6.1.7.4 → 7.0.8): Major version update with security patches. Run `bundle update rails` to upgrade.\n- `rspec-rails` (5.1.2 → 6.0.3): Breaking changes in 6.x. Consider reviewing the changelog before updating.\n- `factory_bot` (6.2.0 → 6.4.4): Minor update with bug fixes.\n\n**Recommendations:**\n1. Update `rails` first, then run your test suite to catch any compatibility issues.\n2. For `rspec-rails`, test in a staging environment before applying to production.\n3. Run `bundle outdated` to see all outdated gems in your project.\n\n**Documentation Links:**\n- Rails 7.0 Upgrade Guide: https://guides.rubyonrails.org/upgrading_ruby_on_rails.html\n- RSpec 6.0 Changelog: https://github.com/rspec/rspec-rails/blob/main/Changelog.md\n\nWould you like me to generate a migration file for the Rails update or help with the RSpec test template?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ruby-skills#main-content",
+      "ruby-skills#overview",
+      "ruby-skills#setup",
+      "ruby-skills#examples",
+      "ruby-skills#tools",
+      "ruby-skills#mcp",
+      "ruby-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Ruby Skills automates Ruby environment setup for Claude Code and Codex by detecting version managers (chruby, rbenv, rvm, asdf, mise, rv, shadowenv) and activating the correct Ruby version without manual configuration. It points agents to authoritative documentation sources for Ruby 3.2–4.0 while blocking outdated references, and provides detailed comparisons between minitest and test-unit to prevent common API confusion. This skill eliminates hallucinated APIs, version mismatches, and test framework errors that slow down Ruby development workflows. Ideal for Ruby developers using AI agents who need reliable environment handling and accurate framework guidance.\nAuto-detect and activate Ruby versions across multiple version managers in multi-manager environments\nAccess version-specific documentation for Ruby 3.2–4.0 without hallucinated or outdated API references\nResolve minitest vs test-unit naming conflicts (assert_raises vs assert_raise, refute vs assert_not)\nClarify Ruby typing ecosystem differences between Sorbet (RBI) and RBS implementations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/st0012/ruby-skills`",
+    "usage_vi": "```\nUse the Ruby Skills plugin to [TASK] for a Ruby project. For example: 'Check for outdated dependencies in [PROJECT_PATH] and suggest updates.' Or 'Generate a RSpec test template for a [CLASS_NAME] class in [PROJECT_PATH].'\n```\nCopy\n\n```\nI've analyzed your Ruby project at `/Users/developer/my_app` using the Ruby Skills plugin. Here's what I found:\n\n**Dependency Updates Available:**\n- `rails` (6.1.7.4 → 7.0.8): Major version update with security patches. Run `bundle update rails` to upgrade.\n- `rspec-rails` (5.1.2 → 6.0.3): Breaking changes in 6.x. Consider reviewing the changelog before updating.\n- `factory_bot` (6.2.0 → 6.4.4): Minor update with bug fixes.\n\n**Recommendations:**\n1. Update `rails` first, then run your test suite to catch any compatibility issues.\n2. For `rspec-rails`, test in a staging environment before applying to production.\n3. Run `bundle outdated` to see all outdated gems in your project.\n\n**Documentation Links:**\n- Rails 7.0 Upgrade Guide: https://guides.rubyonrails.org/upgrading_ruby_on_rails.html\n- RSpec 6.0 Changelog: https://github.com/rspec/rspec-rails/blob/main/Changelog.md\n\nWould you like me to generate a migration file for the Rails update or help with the RSpec test template?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:46.176488Z",
+    "http_status": 200,
+    "content_hash": "019f03eb54d5663bfbb4e4110c4d86a438e546fc158145aabb7589aad6e1316e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ruby-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ruby-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Ruby Skills - Claude Code plugins for Ruby",
+  "short_description_vi": "Claude Code plugins for Ruby development. Helps navigate Ruby's ecosystem, manage versions, and access authoritative documentation. Benefits Ruby developers by streamlining workflows and improving productivity."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/real-a2a",
+  "slug": "real-a2a",
+  "name": "Real-a2a",
+  "headline": "Real-a2a - AI Agent P2P Chat",
+  "short_description": "Real-a2a enables AI coding agents to communicate directly over a peer-to-peer network. Operations teams benefit from streamlined workflows, reduced latency, and improved collaboration between AI agents. It connects to existing AI coding tools and workflows, enhancing automation in software development.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "eqtylab",
+  "install_command": "git clone https://github.com/eqtylab/real-a2a.git",
+  "source_repo_url": "https://github.com/eqtylab/real-a2a",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "codex",
+    "p2p",
+    "claude-code",
+    "opencode"
+  ],
+  "sections": {
+    "overview": "real-a2a is a peer-to-peer networking skill that enables AI coding agents to communicate directly with each other over a distributed network. Built on Iroh's modular networking stack and iroh-gossip for epidemic broadcast messaging, it eliminates the need for central servers while handling NAT traversal automatically through relay infrastructure. The skill works with Claude Code, OpenCode, and Codex, allowing teams to run multiple agent instances with unique identities on the same machine. Operations teams benefit from reduced latency, improved collaboration between agents, and the ability to launch agent swarms that automatically join shared chat rooms via ticket-based invitations. Installation is straightforward via bash script or Rust, and agents participate in messaging through simple daemon and send commands.\nLaunch multiple AI agents in a coordinated swarm for parallel code generation tasks\nEnable real-time peer-to-peer collaboration between Claude Code instances without server overhead\nBuild distributed development workflows where agents communicate directly across network boundaries\nAutomate multi-agent coordination in software development pipelines with NAT-transparent messaging",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eqtylab/real-a2a`",
+    "usage": "```\nSet up a real-a2a peer-to-peer network between [AI_AGENT_1] and [AI_AGENT_2] to collaboratively debug and optimize the [PROJECT_NAME] codebase. [AI_AGENT_1] should focus on identifying performance bottlenecks in the [MODULE_NAME] module, while [AI_AGENT_2] should handle unit test generation for the same module. Ensure both agents share their findings in real-time and resolve conflicts autonomously. Use [COMMUNICATION_PROTOCOL] for synchronization.\n```\nCopy\n\n```\n### Real-a2a Peer-to-Peer Network Debug Session Report\n**Project:** E-Commerce API (v2.1.4)\n**Module:** `payment_processor.py`\n**Agents:** `Agent-Orchestrator` (Performance) & `Agent-Tester` (Testing)\n\n**Session Start:** 2024-05-15 14:32:03 UTC\n**Session End:** 2024-05-15 14:45:12 UTC\n**Total Messages Exchanged:** 47\n**Conflicts Resolved:** 3\n\n#### Performance Analysis (Agent-Orchestrator → Agent-Tester)\n- **Identified Bottleneck:** The `process_payment()` function in `payment_processor.py` spends 68% of its time validating card details against a third-party API (average latency: 1.2s per call).\n- **Proposed Optimization:** Implemented a local caching layer for valid card patterns (reduced latency to 80ms).\n- **Shared Metrics:** Before/after benchmarks showed a 15x improvement in throughput (from 120 to 1,800 transactions/minute).\n\n#### Test Generation (Agent-Tester → Agent-Orchestrator)\n- **Generated Test Suite:** 42 unit tests covering edge cases (e.g., expired cards, network failures, malformed inputs).\n- **Detected Regression:** One test (`test_failed_payment_retry`) failed due to the caching layer’s TTL (time-to-live) setting. Agent-Orchestrator adjusted the TTL from 5 minutes to 10 minutes to resolve.\n- **Test Coverage:** Increased from 68% to 92% (added 14 new tests).\n\n#### Real-Time Collaboration Highlights\n1. **Conflict Resolution:** Agent-Tester flagged a race condition in the caching layer when Agent-Orchestrator pushed an update. Both agents autonomously rolled back the change and re-synchronized using a shared state file.\n2. **Knowledge Sharing:** Agent-Orchestrator shared a `performance_benchmark.json` file with Agent-Tester, which was used to prioritize test cases for high-latency scenarios.\n3. **Final Output:** The optimized `payment_processor.py` (v2.1.5) was committed to the main branch with all tests passing and performance metrics documented in `performance_report.md`.\n\n**Next Steps:** Schedule a follow-up session to integrate the changes into the staging environment and monitor for regressions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "real-a2a#main-content",
+      "real-a2a#overview",
+      "real-a2a#setup",
+      "real-a2a#examples",
+      "real-a2a#tools",
+      "real-a2a#mcp",
+      "real-a2a#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "real-a2a là một skill kết nối mạng ngang hàng (peer-to-peer) cho phép các AI coding agent giao tiếp trực tiếp với nhau qua mạng phân tán. Được xây dựng trên stack mạng mô-đun của Iroh và iroh-gossip để truyền phát tin nhắn theo cơ chế phát tán (epidemic broadcast), nó loại bỏ sự phụ thuộc vào máy chủ trung tâm trong khi vẫn tự động xử lý NAT traversal thông qua hạ tầng relay. Skill này tương thích với Claude Code, OpenCode và Codex, cho phép các đội ngũ chạy nhiều instance agent với định danh riêng biệt trên cùng một máy. Đội ngũ vận hành sẽ được hưởng lợi từ việc giảm độ trễ, tăng cường cộng tác giữa các agent và khả năng khởi chạy các agent swarm tự động tham gia vào phòng chat chung qua thư mời dạng ticket. Quá trình cài đặt rất đơn giản thông qua bash script hoặc Rust, và các agent có thể tham gia nhắn tin thông qua các lệnh daemon và send cơ bản.\nKhởi chạy nhiều AI agent hoạt động phối hợp trong một swarm để thực hiện song song các tác vụ tạo mã (code generation)\nHỗ trợ cộng tác ngang hàng theo thời gian thực giữa các instance Claude Code mà không tốn tài nguyên máy chủ\nXây dựng các workflow phát triển phân tán, nơi các agent giao tiếp trực tiếp xuyên biên giới mạng\nTự động hóa việc điều phối đa agent (multi-agent) trong pipeline phát triển phần mềm với cơ chế nhắn tin xuyên NAT (NAT-transparent)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/eqtylab/real-a2a`",
+    "usage_vi": "```\nThiết lập mạng ngang hàng real-a2a giữa [AI_AGENT_1] và [AI_AGENT_2] để cùng cộng tác debug và tối ưu hóa codebase của [PROJECT_NAME]. [AI_AGENT_1] sẽ tập trung vào việc xác định các điểm nghẽn hiệu năng (performance bottleneck) trong module [MODULE_NAME], trong khi [AI_AGENT_2] sẽ đảm nhận việc tạo unit test cho cùng module đó. Hãy đảm bảo cả hai agent chia sẻ kết quả tìm được theo thời gian thực và tự giải quyết các xung đột một cách độc lập. Sử dụng [COMMUNICATION_PROTOCOL] để đồng bộ hóa.\n```\nSao chép\n\n```\n### Báo cáo phiên Debug qua Mạng ngang hàng Real-a2a\n**Dự án:** E-Commerce API (v2.1.4)\n**Module:** `payment_processor.py`\n**Agent:** `Agent-Orchestrator` (Hiệu năng) & `Agent-Tester` (Kiểm thử)\n\n**Bắt đầu phiên:** 2024-05-15 14:32:03 UTC\n**Kết thúc phiên:** 2024-05-15 14:45:12 UTC\n**Tổng số tin nhắn đã trao đổi:** 47\n**Xung đột đã giải quyết:** 3\n\n#### Phân tích Hiệu năng (Agent-Orchestrator → Agent-Tester)\n- **Điểm nghẽn được xác định:** Hàm `process_payment()` trong `payment_processor.py` mất 68% thời gian để xác thực thông tin thẻ với API bên thứ ba (độ trễ trung bình: 1.2 giây mỗi cuộc gọi).\n- **Đề xuất tối ưu hóa:** Triển khai một lớp cache cục bộ (local caching layer) cho các mẫu thẻ hợp lệ (giảm độ trễ xuống còn 80 mili giây).\n- **Chỉ số chia sẻ:** Các bài kiểm tra benchmark trước/sau cho thấy thông lượng cải thiện gấp 15 lần (từ 120 lên 1.800 giao dịch/phút).\n\n#### Tạo Test (Agent-Tester → Agent-Orchestrator)\n- **Bộ test đã tạo:** 42 unit test bao quát các trường hợp biên (edge case - ví dụ: thẻ hết hạn, lỗi mạng, dữ liệu đầu vào sai định dạng).\n- **Phát hiện lỗi hồi quy (Regression):** Một test (`test_failed_payment_retry`) bị lỗi do cấu hình TTL (time-to-live) của lớp cache. Agent-Orchestrator đã điều chỉnh TTL từ 5 phút lên 10 phút để khắc phục.\n- **Độ bao phủ kiểm thử (Test Coverage):** Tăng từ 68% lên 92% (thêm 14 test mới).\n\n#### Điểm nhấn Cộng tác theo Thời gian thực\n1. **Giải quyết Xung đột:** Agent-Tester đã phát hiện một tranh chấp tài nguyên (race condition) trong lớp cache khi Agent-Orchestrator đẩy một bản cập nhật. Cả hai agent đã tự động khôi phục (roll back) thay đổi và đồng bộ lại bằng một file trạng thái chung (shared state file).\n2. **Chia sẻ Kiến thức:** Agent-Orchestrator đã chia sẻ file `performance_benchmark.json` với Agent-Tester, file này sau đó được sử dụng để ưu tiên các case kiểm thử cho các kịch bản có độ trễ cao.\n3. **Kết quả cuối cùng:** File `payment_processor.py` (v2.1.5) đã được tối ưu hóa và commit vào nhánh main với tất cả các bài test đều đạt (pass), đồng thời các chỉ số hiệu năng đã được ghi nhận trong file `performance_report.md`.\n\n**Các bước tiếp theo:** Lên lịch cho một phiên làm việc tiếp theo để tích hợp các thay đổi vào môi trường staging và giám sát lỗi hồi quy.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:05:16.446064Z",
+    "http_status": 200,
+    "content_hash": "f682760813e0c3e099c3eafa4d16894e5da53f230185c852a71bdeb48b9c29ef",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\real-a2a.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\real-a2a.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Real-a2a - Chat P2P giữa các AI Agent",
+  "short_description_vi": "Real-a2a cho phép các AI coding agent giao tiếp trực tiếp với nhau qua mạng ngang hàng (peer-to-peer). Đội ngũ vận hành (operations teams) sẽ được hưởng lợi từ các workflow tinh gọn, giảm độ trễ và tăng cường khả năng cộng tác giữa các AI agent. Công cụ này kết nối trực tiếp với các workflow và công cụ lập trình AI hiện có, giúp nâng cao tính tự động hóa trong phát triển phần mềm."
+}

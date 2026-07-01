@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vtcode",
+  "slug": "vtcode",
+  "name": "VT Code",
+  "headline": "VT Code - Terminal Coding Agent",
+  "short_description": "VT Code is a semantic coding agent that operates within the terminal. It enables developers and operations teams to write, debug, and maintain code more efficiently. The agent integrates with existing terminal workflows and supports multiple programming languages. It connects to version control systems and build tools for streamlined development processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "vinhnx",
+  "install_command": "git clone https://github.com/vinhnx/vtcode.git",
+  "source_repo_url": "https://github.com/vinhnx/vtcode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cli",
+    "crossterm",
+    "ratatui",
+    "terminal",
+    "cargo",
+    "agentclientprotocol",
+    "rust",
+    "tui",
+    "modelcontextprotocol"
+  ],
+  "sections": {
+    "overview": "VT Code is a Rust-based semantic coding agent that operates natively in the terminal, providing developers and operations teams with an interactive environment for writing, debugging, and maintaining code. The agent supports 21+ LLM providers including Anthropic, OpenAI, Gemini, Ollama, and LM Studio, with a default Xiaomi MiMo V2.5 Pro model offering 1M-token context. It integrates with version control systems and build tools through a rich tooling ecosystem that includes safe file operations, ripgrep search, code intelligence, and project indexing. VT Code emphasizes security with restricted shell sandboxing, tool guardrails, subprocess isolation, and comprehensive audit logging. The platform is extensible through Agent Skills, MCP protocol support, Zed ACP integration, and lifecycle hooks, enabling developers to create custom workflows and subagents for long-running autonomous tasks.\nAutomate code generation for common programming tasks using natural language prompts.\nIntegrate with various AI providers to enhance coding capabilities and provide intelligent suggestions.\nUtilize built-in code analysis tools to refactor and optimize existing codebases.\nDelegate specific tasks to subagents for focused code reviews or debugging processes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vinhnx/vtcode`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project in my terminal. Here's the code I'm struggling with: [CODE_SNIPPET]. I'm trying to achieve [SPECIFIC_GOAL]. Can you help me debug and optimize this code? Also, can you suggest any best practices for this specific use case?\n```\nCopy\n\n```\nBased on the Python code snippet you've shared for your data processing script, I've identified a few areas for improvement. First, the current implementation has a time complexity of O(n^2) due to the nested loops. We can optimize this to O(n) by using a dictionary for lookups. Here's the optimized code:\n\n```python\n# Original code\nfor item in data:\n    for target in targets:\n        if item['id'] == target['id']:\n            # process data\n\n# Optimized code\ntarget_dict = {target['id']: target for target in targets}\nfor item in data:\n    if item['id'] in target_dict:\n        # process data using target_dict[item['id']]\n```\n\nAdditionally, I recommend adding input validation at the beginning of your function to ensure the data and targets are in the expected format. This will make your code more robust and easier to debug. For this specific use case of processing large datasets, consider implementing parallel processing using Python's multiprocessing module to further improve performance.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vtcode#main-content",
+      "vtcode#overview",
+      "vtcode#setup",
+      "vtcode#examples",
+      "vtcode#tools",
+      "vtcode#mcp",
+      "vtcode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "VT Code is a Rust-based semantic coding agent that operates natively in the terminal, providing developers and operations teams with an interactive environment for writing, debugging, and maintaining code. The agent supports 21+ LLM providers including Anthropic, OpenAI, Gemini, Ollama, and LM Studio, with a default Xiaomi MiMo V2.5 Pro model offering 1M-token context. It integrates with version control systems and build tools through a rich tooling ecosystem that includes safe file operations, ripgrep search, code intelligence, and project indexing. VT Code emphasizes security with restricted shell sandboxing, tool guardrails, subprocess isolation, and comprehensive audit logging. The platform is extensible through Agent Skills, MCP protocol support, Zed ACP integration, and lifecycle hooks, enabling developers to create custom workflows and subagents for long-running autonomous tasks.\nAutomate code generation for common programming tasks using natural language prompts.\nIntegrate with various AI providers to enhance coding capabilities and provide intelligent suggestions.\nUtilize built-in code analysis tools to refactor and optimize existing codebases.\nDelegate specific tasks to subagents for focused code reviews or debugging processes.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vinhnx/vtcode`",
+    "usage_vi": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project in my terminal. Here's the code I'm struggling with: [CODE_SNIPPET]. I'm trying to achieve [SPECIFIC_GOAL]. Can you help me debug and optimize this code? Also, can you suggest any best practices for this specific use case?\n```\nCopy\n\n```\nBased on the Python code snippet you've shared for your data processing script, I've identified a few areas for improvement. First, the current implementation has a time complexity of O(n^2) due to the nested loops. We can optimize this to O(n) by using a dictionary for lookups. Here's the optimized code:\n\n```python\n# Original code\nfor item in data:\n    for target in targets:\n        if item['id'] == target['id']:\n            # process data\n\n# Optimized code\ntarget_dict = {target['id']: target for target in targets}\nfor item in data:\n    if item['id'] in target_dict:\n        # process data using target_dict[item['id']]\n```\n\nAdditionally, I recommend adding input validation at the beginning of your function to ensure the data and targets are in the expected format. This will make your code more robust and easier to debug. For this specific use case of processing large datasets, consider implementing parallel processing using Python's multiprocessing module to further improve performance.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:56.065656Z",
+    "http_status": 200,
+    "content_hash": "9a9850a4d1977d19ebfa64d6d91338409dfce568e83d23114de7a9ee4c86dce0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vtcode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vtcode.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VT Code - Terminal Coding Agent",
+  "short_description_vi": "VT Code is a semantic coding agent that operates within the terminal. It enables developers and operations teams to write, debug, and maintain code more efficiently. The agent integrates with existing terminal workflows and supports multiple programming languages. It connects to version control systems and build tools for streamlined development processes."
+}

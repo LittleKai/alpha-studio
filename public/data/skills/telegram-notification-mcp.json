@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/telegram-notification-mcp",
+  "slug": "telegram-notification-mcp",
+  "name": "Telegram Notification MCP",
+  "headline": "Telegram Notification MCP - Send Alerts on Task",
+  "short_description": "Telegram Notification MCP server sends alerts to Telegram when Claude Code tasks complete. Operations teams use it to monitor workflows. Connects to Cloudflare Agents SDK for integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "kstonekuan",
+  "install_command": "git clone https://github.com/kstonekuan/telegram-notification-mcp.git",
+  "source_repo_url": "https://github.com/kstonekuan/telegram-notification-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "typescript",
+    "cloudflare-agents",
+    "telegram",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Telegram Notification MCP is a serverless integration that enables Claude Code to send notifications to Telegram when tasks complete, encounter errors, or reach important milestones. Built with TypeScript and the Cloudflare Agents SDK, it deploys on Cloudflare Workers with global distribution and secure credential management. The skill provides a send_telegram_message tool supporting Markdown and HTML formatting, with optional silent notifications and flexible chat ID routing. Operations teams and developers benefit from real-time task status updates without manual polling, improving visibility into automated workflows and enabling faster response to failures or required user interventions.\nReceive notifications when deployments complete successfully or fail\nGet alerted when test suites finish with pass/fail counts\nMonitor long-running data processing jobs for completion or errors\nReceive notifications when Claude Code requires user input to continue",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kstonekuan/telegram-notification-mcp`",
+    "usage": "```\nSet up a Telegram notification for when [TASK_NAME] completes in Claude Code. Use the telegram-notification-mcp server to send the alert to [TELEGRAM_CHAT_ID] with the message: '[CUSTOM_MESSAGE]'. Include the execution time and any errors in the notification.\n```\nCopy\n\n```\n```\n🚀 **Task Completed: Database Backup**\n\n✅ **Status:** Success\n📊 **Execution Time:** 2 minutes 45 seconds\n🔗 **Log Output:** Backup completed for `prod-db-2024-05-15.sql` (1.2GB)\n📱 **Chat ID:** -1001234567890\n\nNo errors detected. All files verified and uploaded to S3.\n```\n\n---\n\n**Technical Details:**\n- **Task Name:** `db-backup-prod`\n- **Trigger:** Manual execution via Claude Code\n- **Duration:** 165 seconds\n- **Output Path:** `/backups/prod-db-2024-05-15.sql`\n- **Verification:** SHA256 checksum `a1b2c3d4...` matches expected value.\n\n**Next Steps:**\n1. Monitor S3 bucket for `prod-db-2024-05-15.sql` to confirm upload.\n2. Check CloudWatch logs for any post-backup validation warnings.\n3. Schedule next backup for 02:00 UTC tomorrow.\n\n---\n\n*Sent via telegram-notification-mcp (v1.2.0) | Cloudflare Agents SDK v2.1.0*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "telegram-notification-mcp#main-content",
+      "telegram-notification-mcp#overview",
+      "telegram-notification-mcp#setup",
+      "telegram-notification-mcp#examples",
+      "telegram-notification-mcp#tools",
+      "telegram-notification-mcp#mcp",
+      "telegram-notification-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Telegram Notification MCP là một tích hợp serverless giúp Claude Code gửi thông báo đến Telegram khi các tác vụ hoàn thành, gặp lỗi hoặc đạt đến các mốc quan trọng. Được xây dựng bằng TypeScript và Cloudflare Agents SDK, tích hợp này deploy trên Cloudflare Workers với khả năng phân phối toàn cầu và quản lý thông tin xác thực bảo mật. Skill này cung cấp công cụ send_telegram_message hỗ trợ định dạng Markdown và HTML, cùng tùy chọn thông báo im lặng và routing chat ID linh hoạt. Các đội ngũ vận hành và lập trình viên có thể cập nhật trạng thái tác vụ theo thời gian thực mà không cần polling thủ công, giúp nâng cao khả năng kiểm soát các workflow tự động và phản hồi nhanh hơn khi xảy ra lỗi hoặc khi cần người dùng can thiệp.\nNhận thông báo khi quá trình deploy thành công hoặc thất bại\nNhận cảnh báo khi các test suite hoàn thành kèm số lượng pass/fail\nGiám sát các job xử lý dữ liệu chạy lâu để phát hiện khi hoàn thành hoặc gặp lỗi\nNhận thông báo khi Claude Code yêu cầu người dùng phản hồi để tiếp tục",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kstonekuan/telegram-notification-mcp`",
+    "usage_vi": "```\nThiết lập thông báo Telegram khi [TASK_NAME] hoàn thành trong Claude Code. Sử dụng server telegram-notification-mcp để gửi cảnh báo đến [TELEGRAM_CHAT_ID] với tin nhắn: '[CUSTOM_MESSAGE]'. Đính kèm thời gian thực thi và lỗi (nếu có) vào thông báo.\n```\nCopy\n\n```\n🚀 **Tác vụ hoàn thành: Database Backup**\n\n✅ **Trạng thái:** Thành công\n📊 **Thời gian thực thi:** 2 phút 45 giây\n🔗 **Log Output:** Đã hoàn thành backup cho `prod-db-2024-05-15.sql` (1.2GB)\n📱 **Chat ID:** -1001234567890\n\nKhông phát hiện lỗi. Tất cả các tệp đã được xác minh và tải lên S3.\n```\n\n---\n\n**Chi tiết kỹ thuật:**\n- **Tên tác vụ:** `db-backup-prod`\n- **Trình kích hoạt (Trigger):** Thực thi thủ công qua Claude Code\n- **Thời gian chạy:** 165 giây\n- **Đường dẫn đầu ra:** `/backups/prod-db-2024-05-15.sql`\n- **Xác minh:** Checksum SHA256 `a1b2c3d4...` khớp với giá trị mong đợi.\n\n**Các bước tiếp theo:**\n1. Giám sát S3 bucket để xác nhận tệp `prod-db-2024-05-15.sql` đã tải lên.\n2. Kiểm tra CloudWatch log để xem có cảnh báo kiểm tra sau backup nào không.\n3. Lên lịch backup tiếp theo vào 02:00 UTC ngày mai.\n\n---\n\n*Được gửi qua telegram-notification-mcp (v1.2.0) | Cloudflare Agents SDK v2.1.0*"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:19:22.961835Z",
+    "http_status": 200,
+    "content_hash": "190f4741a94dd4ebddcb69d5cb5d48d1284f54c58f599848e7f7dfce402ae217",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\telegram-notification-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\telegram-notification-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Telegram Notification MCP - Gửi cảnh báo khi thực hiện tác vụ",
+  "short_description_vi": "Server MCP Telegram Notification gửi cảnh báo đến Telegram khi các tác vụ Claude Code hoàn thành. Các đội ngũ vận hành sử dụng công cụ này để giám sát workflow. Kết nối với Cloudflare Agents SDK để tích hợp."
+}

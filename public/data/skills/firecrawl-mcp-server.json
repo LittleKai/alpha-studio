@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/firecrawl-mcp-server",
+  "slug": "firecrawl-mcp-server",
+  "name": "Firecrawl MCP Server",
+  "headline": "Firecrawl MCP Server - Powerful Web Scraping Tool",
+  "short_description": "The Firecrawl MCP Server enhances web scraping and search capabilities for various LLM clients, including Cursor and Claude. It helps users to efficiently collect and extract data from the web, making it an essential tool for developers and data analysts.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "firecrawl",
+  "install_command": "claude install firecrawl/firecrawl-mcp-server",
+  "source_repo_url": "https://github.com/firecrawl/firecrawl-mcp-server",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "data-collection",
+    "javascript-rendering",
+    "web-scraping",
+    "llm-tools",
+    "search-api"
+  ],
+  "sections": {
+    "overview": "The Firecrawl MCP Server connects Firecrawl's web scraping and search tools directly to Claude, Cursor, and other LLM clients through the Model Context Protocol. It provides MCP tools for crawling websites, extracting structured data, and performing web searches, enabling AI agents to gather and process real-time web information. The server includes monitoring capabilities and tools for managing crawl jobs, making it valuable for developers building data-driven AI applications. Setup requires configuring your Firecrawl API credentials and running the MCP server alongside your LLM client to access web intelligence capabilities.\nAutomating data extraction from multiple websites to save time and reduce manual effort.\nEnhancing search functionalities in applications by integrating real-time web data.\nBatch processing web content for comprehensive analysis and reporting.\nIntegrating web scraping seamlessly into LLM workflows for improved data handling.",
+    "setup": "Terminal\nCopy\n`claude install firecrawl/firecrawl-mcp-server`\n`git clone https://github.com/firecrawl/firecrawl-mcp-server`",
+    "usage": "```\nSet up a Firecrawl MCP Server to scrape data from [WEBSITE_URL] for [SPECIFIC_DATA_TYPE]. Configure the server to handle [NUMBER_OF_REQUESTS] concurrent requests and store the extracted data in [STORAGE_FORMAT]. Ensure the server complies with [LEGAL_REGULATIONS] to avoid legal issues.\n```\nCopy\n\n```\nThe Firecrawl MCP Server has been successfully configured to scrape product data from [WEBSITE_URL]. The server is set to handle 50 concurrent requests, ensuring efficient data extraction. The extracted data, including product names, prices, and descriptions, is stored in a structured JSON format. The server is also configured to comply with GDPR regulations, ensuring that no personal data is collected. The data is now ready for further analysis and integration into your existing systems.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor"
+    ],
+    "related_skills": [
+      "firecrawl-mcp-server#main-content",
+      "firecrawl-mcp-server#overview",
+      "firecrawl-mcp-server#setup",
+      "firecrawl-mcp-server#examples",
+      "firecrawl-mcp-server#tools",
+      "firecrawl-mcp-server#mcp",
+      "firecrawl-mcp-server#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Firecrawl MCP Server kết nối trực tiếp các công cụ cào web và tìm kiếm của Firecrawl với Claude, Cursor và các LLM client khác thông qua Model Context Protocol (MCP). Server này cung cấp các công cụ MCP để crawl website, trích xuất dữ liệu có cấu trúc và thực hiện tìm kiếm web, cho phép các AI agent thu thập cũng như xử lý thông tin web theo thời gian thực (real-time). Server tích hợp các tính năng giám sát và công cụ quản lý các crawl job, mang lại giá trị lớn cho các lập trình viên đang xây dựng ứng dụng AI dựa trên dữ liệu. Quá trình setup yêu cầu cấu hình API credential của Firecrawl và chạy MCP server song song với LLM client của bạn để truy cập các tính năng khai thác thông tin web.\nTự động hóa việc trích xuất dữ liệu từ nhiều trang web nhằm tiết kiệm thời gian và giảm thiểu công sức thủ công.\nTăng cường chức năng tìm kiếm trong ứng dụng bằng cách tích hợp dữ liệu web theo thời gian thực.\nXử lý hàng loạt (batch processing) nội dung web để phân tích và báo cáo toàn diện.\nTích hợp mượt mà tính năng cào web vào workflow của LLM để cải thiện khả năng xử lý dữ liệu.",
+    "setup_vi": "Terminal\nSao chép\n`claude install firecrawl/firecrawl-mcp-server`\n`git clone https://github.com/firecrawl/firecrawl-mcp-server`",
+    "usage_vi": "```\nThiết lập một Firecrawl MCP Server để cào dữ liệu từ [WEBSITE_URL] cho [SPECIFIC_DATA_TYPE]. Cấu hình server để xử lý [NUMBER_OF_REQUESTS] yêu cầu đồng thời (concurrent requests) và lưu trữ dữ liệu đã trích xuất dưới định dạng [STORAGE_FORMAT]. Đảm bảo server tuân thủ [LEGAL_REGULATIONS] để tránh các vấn đề pháp lý.\n```\nSao chép\n\n```\nFirecrawl MCP Server đã được cấu hình thành công để cào dữ liệu sản phẩm từ [WEBSITE_URL]. Server được thiết lập để xử lý 50 yêu cầu đồng thời, đảm bảo trích xuất dữ liệu hiệu quả. Dữ liệu được trích xuất, bao gồm tên sản phẩm, giá và mô tả, được lưu trữ dưới định dạng JSON có cấu trúc. Server cũng được cấu hình để tuân thủ các quy định GDPR, đảm bảo không thu thập thông tin cá nhân. Dữ liệu hiện đã sẵn sàng để phân tích thêm và tích hợp vào các hệ thống hiện tại của bạn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:17:25.778007Z",
+    "http_status": 200,
+    "content_hash": "f460dbe5d3de248f3300309c9818fd99f7f87f2d45b21d420ae372d617e608f2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\firecrawl-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\firecrawl-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Firecrawl MCP Server - Công cụ Web Scraping mạnh mẽ",
+  "short_description_vi": "Firecrawl MCP Server giúp nâng cao khả năng cào dữ liệu web và tìm kiếm cho nhiều LLM client khác nhau, bao gồm cả Cursor và Claude. Công cụ này hỗ trợ người dùng thu thập và trích xuất dữ liệu từ web một cách hiệu quả, là giải pháp thiết yếu dành cho các lập trình viên và nhà phân tích dữ liệu."
+}

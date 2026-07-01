@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-ralph",
+  "slug": "awesome-ralph",
+  "name": "browser-use",
+  "headline": "ralph ai coding loops for automation",
+  "short_description": "Awesome Ralph is a curated list of resources about Ralph, an AI coding technique that automates code generation by running AI agents in loops until specifications are met. It benefits developers and operations teams by streamlining repetitive coding tasks. The technique connects to Claude AI agents and integrates into existing development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "55 min",
+  "author": "snwfdhmp",
+  "install_command": "git clone https://github.com/snwfdhmp/awesome-ralph.git",
+  "source_repo_url": "https://github.com/snwfdhmp/awesome-ralph",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "vibe-coding",
+    "claude",
+    "ralph-loop",
+    "ralph-wiggum",
+    "ralph",
+    "ai-coding"
+  ],
+  "sections": {
+    "overview": "Awesome Ralph is a curated collection of resources about Ralph, an AI coding technique created by Geoffrey Huntley that automates code generation by running AI agents in loops until project specifications are fulfilled. The technique operates on a simple principle: repeatedly feed code context and prompts to an AI agent, allowing progress to persist in files and git history rather than context windows. Ralph emphasizes using backpressure mechanisms like tests, lints, and type checks to validate each iteration. The directory includes official resources, implementations for Claude Code and standalone tools, tutorials, articles, and community discussions. It benefits developers and operations teams seeking to streamline repetitive coding tasks through autonomous, deterministic AI workflows.\nAutomate the generation of code based on project specifications using iterative AI loops.\nImplement a continuous integration pipeline that validates code quality through automated tests and checks.\nCreate a structured workflow for managing project requirements and tracking progress in real-time.\nUtilize AI to transform feature requests into actionable tasks and specifications for development.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/snwfdhmp/awesome-ralph`",
+    "usage": "```\nUse Awesome Ralph to automate the generation of [SPECIFIC_CODE_MODULE] for [PROJECT_NAME]. Follow this process: 1) Define the acceptance criteria as [CRITERIA]. 2) Generate initial code with [INITIAL_PROMPT]. 3) Run iterative validation loops until all tests pass. 4) Return the final optimized code with inline comments explaining key decisions. Focus on [PERFORMANCE_METRIC] optimization.\n```\nCopy\n\n```\nFor the **Awesome Ralph** technique, I've automated the generation of a **payment processing module** for **FintechCorp's mobile app** (v2.4.1). The process followed these steps:\n\n1. **Initial Prompt**: \"Generate a secure payment processing module in Python using Stripe SDK that handles credit card transactions with PCI DSS compliance.\"\n\n2. **Iterative Loops**: The AI agent ran 7 validation loops:\n- Loop 1: Generated base class with basic transaction handling\n- Loop 2: Added error handling for network failures\n- Loop 3: Implemented retry logic for failed transactions\n- Loop 4: Added logging for compliance auditing\n- Loop 5: Optimized memory usage for mobile devices\n- Loop 6: Fixed race condition in concurrent transactions\n- Loop 7: Passed all unit tests and security scans\n\n3. **Final Output**: A production-ready module (`payment_processor.py`) with:\n- 98% test coverage\n- 0 critical security vulnerabilities (SonarQube scan)\n- 40% faster transaction processing than v1.2\n- 150 lines of well-commented code\n\nKey optimizations included:\n- Async/await for non-blocking I/O\n- Caching of frequently used payment methods\n- Automatic retry with exponential backoff\n- Comprehensive error categorization\n\nThe module is now ready for integration with FintechCorp's existing mobile architecture and has been submitted for code review in GitHub PR #428.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-ralph#main-content",
+      "awesome-ralph#overview",
+      "awesome-ralph#setup",
+      "awesome-ralph#examples",
+      "awesome-ralph#tools",
+      "awesome-ralph#mcp",
+      "awesome-ralph#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Ralph is a curated collection of resources about Ralph, an AI coding technique created by Geoffrey Huntley that automates code generation by running AI agents in loops until project specifications are fulfilled. The technique operates on a simple principle: repeatedly feed code context and prompts to an AI agent, allowing progress to persist in files and git history rather than context windows. Ralph emphasizes using backpressure mechanisms like tests, lints, and type checks to validate each iteration. The directory includes official resources, implementations for Claude Code and standalone tools, tutorials, articles, and community discussions. It benefits developers and operations teams seeking to streamline repetitive coding tasks through autonomous, deterministic AI workflows.\nAutomate the generation of code based on project specifications using iterative AI loops.\nImplement a continuous integration pipeline that validates code quality through automated tests and checks.\nCreate a structured workflow for managing project requirements and tracking progress in real-time.\nUtilize AI to transform feature requests into actionable tasks and specifications for development.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/snwfdhmp/awesome-ralph`",
+    "usage_vi": "```\nUse Awesome Ralph to automate the generation of [SPECIFIC_CODE_MODULE] for [PROJECT_NAME]. Follow this process: 1) Define the acceptance criteria as [CRITERIA]. 2) Generate initial code with [INITIAL_PROMPT]. 3) Run iterative validation loops until all tests pass. 4) Return the final optimized code with inline comments explaining key decisions. Focus on [PERFORMANCE_METRIC] optimization.\n```\nCopy\n\n```\nFor the **Awesome Ralph** technique, I've automated the generation of a **payment processing module** for **FintechCorp's mobile app** (v2.4.1). The process followed these steps:\n\n1. **Initial Prompt**: \"Generate a secure payment processing module in Python using Stripe SDK that handles credit card transactions with PCI DSS compliance.\"\n\n2. **Iterative Loops**: The AI agent ran 7 validation loops:\n- Loop 1: Generated base class with basic transaction handling\n- Loop 2: Added error handling for network failures\n- Loop 3: Implemented retry logic for failed transactions\n- Loop 4: Added logging for compliance auditing\n- Loop 5: Optimized memory usage for mobile devices\n- Loop 6: Fixed race condition in concurrent transactions\n- Loop 7: Passed all unit tests and security scans\n\n3. **Final Output**: A production-ready module (`payment_processor.py`) with:\n- 98% test coverage\n- 0 critical security vulnerabilities (SonarQube scan)\n- 40% faster transaction processing than v1.2\n- 150 lines of well-commented code\n\nKey optimizations included:\n- Async/await for non-blocking I/O\n- Caching of frequently used payment methods\n- Automatic retry with exponential backoff\n- Comprehensive error categorization\n\nThe module is now ready for integration with FintechCorp's existing mobile architecture and has been submitted for code review in GitHub PR #428.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:25:47.313520Z",
+    "http_status": 200,
+    "content_hash": "eac640db807e8e95fd7696807bc9b36f425057df93db76931aaaa1b67b272a13",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-ralph.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-ralph.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ralph ai coding loops for automation",
+  "short_description_vi": "Awesome Ralph is a curated list of resources about Ralph, an AI coding technique that automates code generation by running AI agents in loops until specifications are met. It benefits developers and operations teams by streamlining repetitive coding tasks. The technique connects to Claude AI agents and integrates into existing development workflows."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/whatsapp-mcp",
+  "slug": "whatsapp-mcp",
+  "name": "AI_Email_Crafter",
+  "headline": "WhatsApp MCP Server for Integration",
+  "short_description": "WhatsApp MCP is a powerful server designed for integrating WhatsApp's messaging capabilities with your applications. Built in Go, it provides access to the WhatsApp API, enabling efficient communication and automation for businesses.",
+  "tier": "Gold",
+  "category": "MarketingGrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "lharries",
+  "install_command": "claude install lharries/whatsapp-mcp",
+  "source_repo_url": "https://github.com/lharries/whatsapp-mcp",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "WhatsApp",
+    "Go",
+    "API",
+    "MCP"
+  ],
+  "sections": {
+    "overview": "WhatsApp MCP is a Model Context Protocol server that connects your personal WhatsApp account directly to AI agents like Claude and Cursor via the WhatsApp web multidevice API. It lets you search and read messages (text, images, videos, documents, and audio), manage contacts, and send messages to individuals or groups—all while keeping your data stored locally in a SQLite database. Messages are only sent to your LLM when you explicitly access them through tools you control. The server runs on Go and integrates with the whatsmeow library for secure local-first operation. It's ideal for teams automating customer support, message monitoring, or bulk communications without third-party intermediaries.\nAutomate customer support responses via WhatsApp to improve response times and customer satisfaction.\nIntegrate marketing campaigns with WhatsApp messaging to reach customers directly and increase engagement.\nEnhance sales outreach by sending personalized messages to potential clients through WhatsApp.\nSend real-time notifications to customers about order updates, promotions, or important announcements.",
+    "setup": "Terminal\nCopy\n`claude install lharries/whatsapp-mcp`\n`git clone https://github.com/lharries/whatsapp-mcp`",
+    "usage": "```\nUse the WhatsApp MCP server to send a personalized WhatsApp message to [PROSPECT_NAME] at [PHONE_NUMBER] with the following content: '[MESSAGE_CONTENT]'. Include a call-to-action that encourages them to [DESIRED_ACTION]. Ensure the message is concise, professional, and aligned with our sales engagement strategy. If the prospect has responded previously, reference their last interaction with: '[PERSONALIZED_REFERENCE]' to maintain context.\n```\nCopy\n\n```\n```\n📱 WhatsApp Message Sent Successfully\n\nTo: Maria Gonzalez (maria.gonzalez@techcorp.com)\nPhone: +1 (555) 123-4567\nTime: 2024-05-20 09:15 AM PST\n\nMessage:\nHi Maria,\n\nI noticed your team is evaluating AI-powered sales tools—our recent case study with TechCorp’s sales team showed a 34% increase in pipeline velocity after implementing Outreach + WhatsApp integration. Would you be open to a 15-minute demo next Tuesday at 2 PM to explore how we can replicate this for you?\n\nLooking forward to your thoughts!\n\nBest,\nAlex Carter\nSales Development Representative\nAcme AI Solutions\n\nReference: Your team’s focus on AI-driven sales acceleration (per your LinkedIn post, April 12).\n\n📊 Delivery Status: Delivered\n🔄 Read Receipt: Yes (Seen at 09:16 AM)\n📌 Action Required: Schedule demo via Calendly link: [https://calendly.com/acme-ai/outreach-demo](https://calendly.com/acme-ai/outreach-demo)\n```\n\n**Context:**\nMaria Gonzalez is a Sales Director at TechCorp, a mid-sized SaaS company with 200+ employees. Her team has been actively researching AI tools to optimize their sales workflows. The message was sent as part of Acme AI Solutions’ outreach campaign targeting prospects in the sales tech space. The WhatsApp MCP server automatically logged the interaction in Outreach’s CRM, updating Maria’s profile with the sent message and read receipt for follow-up tracking.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "whatsapp-mcp#main-content",
+      "whatsapp-mcp#overview",
+      "whatsapp-mcp#setup",
+      "whatsapp-mcp#examples",
+      "whatsapp-mcp#tools",
+      "whatsapp-mcp#mcp",
+      "whatsapp-mcp#related",
+      "nekro-agent",
+      "ai-email-crafter"
+    ],
+    "overview_vi": "WhatsApp MCP is a Model Context Protocol server that connects your personal WhatsApp account directly to AI agents like Claude and Cursor via the WhatsApp web multidevice API. It lets you search and read messages (text, images, videos, documents, and audio), manage contacts, and send messages to individuals or groups—all while keeping your data stored locally in a SQLite database. Messages are only sent to your LLM when you explicitly access them through tools you control. The server runs on Go and integrates with the whatsmeow library for secure local-first operation. It's ideal for teams automating customer support, message monitoring, or bulk communications without third-party intermediaries.\nAutomate customer support responses via WhatsApp to improve response times and customer satisfaction.\nIntegrate marketing campaigns with WhatsApp messaging to reach customers directly and increase engagement.\nEnhance sales outreach by sending personalized messages to potential clients through WhatsApp.\nSend real-time notifications to customers about order updates, promotions, or important announcements.",
+    "setup_vi": "Terminal\nCopy\n`claude install lharries/whatsapp-mcp`\n`git clone https://github.com/lharries/whatsapp-mcp`",
+    "usage_vi": "```\nUse the WhatsApp MCP server to send a personalized WhatsApp message to [PROSPECT_NAME] at [PHONE_NUMBER] with the following content: '[MESSAGE_CONTENT]'. Include a call-to-action that encourages them to [DESIRED_ACTION]. Ensure the message is concise, professional, and aligned with our sales engagement strategy. If the prospect has responded previously, reference their last interaction with: '[PERSONALIZED_REFERENCE]' to maintain context.\n```\nCopy\n\n```\n```\n📱 WhatsApp Message Sent Successfully\n\nTo: Maria Gonzalez (maria.gonzalez@techcorp.com)\nPhone: +1 (555) 123-4567\nTime: 2024-05-20 09:15 AM PST\n\nMessage:\nHi Maria,\n\nI noticed your team is evaluating AI-powered sales tools—our recent case study with TechCorp’s sales team showed a 34% increase in pipeline velocity after implementing Outreach + WhatsApp integration. Would you be open to a 15-minute demo next Tuesday at 2 PM to explore how we can replicate this for you?\n\nLooking forward to your thoughts!\n\nBest,\nAlex Carter\nSales Development Representative\nAcme AI Solutions\n\nReference: Your team’s focus on AI-driven sales acceleration (per your LinkedIn post, April 12).\n\n📊 Delivery Status: Delivered\n🔄 Read Receipt: Yes (Seen at 09:16 AM)\n📌 Action Required: Schedule demo via Calendly link: [https://calendly.com/acme-ai/outreach-demo](https://calendly.com/acme-ai/outreach-demo)\n```\n\n**Context:**\nMaria Gonzalez is a Sales Director at TechCorp, a mid-sized SaaS company with 200+ employees. Her team has been actively researching AI tools to optimize their sales workflows. The message was sent as part of Acme AI Solutions’ outreach campaign targeting prospects in the sales tech space. The WhatsApp MCP server automatically logged the interaction in Outreach’s CRM, updating Maria’s profile with the sent message and read receipt for follow-up tracking.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:36:30.357292Z",
+    "http_status": 200,
+    "content_hash": "013ba208335093be294ce2b1f1a115b4f33ae50d02de1084b4e76aede1e5c029",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\whatsapp-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\whatsapp-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "WhatsApp MCP Server for Integration",
+  "short_description_vi": "WhatsApp MCP is a powerful server designed for integrating WhatsApp's messaging capabilities with your applications. Built in Go, it provides access to the WhatsApp API, enabling efficient communication and automation for businesses."
+}

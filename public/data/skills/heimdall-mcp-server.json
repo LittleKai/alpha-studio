@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/heimdall-mcp-server",
+  "slug": "heimdall-mcp-server",
+  "name": "Heimdall MCP Server",
+  "headline": "Heimdall MCP Server - AI Coding Memory",
+  "short_description": "Heimdall MCP Server provides long-term memory for AI coding assistants. It benefits developers and operations teams by maintaining context across sessions. It connects to Claude-based agents and integrates with existing development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "lcbcFoo",
+  "install_command": "git clone https://github.com/lcbcFoo/heimdall-mcp-server.git",
+  "source_repo_url": "https://github.com/lcbcFoo/heimdall-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "llm",
+    "memory",
+    "cognitive",
+    "claude",
+    "assistant-chat-bots",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Heimdall MCP Server solves the problem of AI coding assistants starting each session with no memory of your codebase or previous conversations. It maintains a persistent, project-specific knowledge base by indexing your documentation, git history, and development insights, then makes this context available through the Model Context Protocol. The system uses Qdrant vector search and SQLite metadata storage to efficiently retrieve relevant memories when your LLM queries the system. Developers and operations teams benefit from an AI assistant that understands architectural patterns, past solutions, and project-specific context across multiple sessions.\nMaintaining context across multiple coding sessions without losing project history\nIndexing git commit history to understand codebase evolution and architectural decisions\nAutomatically loading and monitoring documentation for instant LLM access\nPreventing context leakage between projects with isolated memory spaces",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lcbcFoo/heimdall-mcp-server`",
+    "usage": "```\nUse the heimdall-mcp-server to [ACTION: retrieve/store/update] the following context for my coding assistant: [CONTEXT: e.g., 'the project's dependencies, recent debugging steps, or API endpoints used']. Ensure this context persists across sessions and is accessible for future interactions. If storing new context, include a brief label like [LABEL: e.g., 'project_dependencies_2024'] for easy retrieval.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"action\": \"retrieved\",\n  \"context\": {\n    \"label\": \"project_dependencies_2024\",\n    \"content\": {\n      \"dependencies\": {\n        \"react\": \"^18.2.0\",\n        \"express\": \"^4.18.2\",\n        \"lodash\": \"^4.17.21\",\n        \"axios\": \"^1.6.2\"\n      },\n      \"devDependencies\": {\n        \"jest\": \"^29.7.0\",\n        \"webpack\": \"^5.89.0\",\n        \"eslint\": \"^8.56.0\"\n      },\n      \"last_updated\": \"2024-05-15\",\n      \"notes\": \"Added axios for API calls; removed deprecated 'request' library\"\n    }\n  },\n  \"usage_tip\": \"This context is now available for all future sessions. To update, use the same label with new content.\"\n}\n```\n\nThe heimdall-mcp-server successfully retrieved the stored context for the project's dependencies. The data shows React 18.2.0 as the frontend framework, Express 4.18.2 for the backend, and Axios 1.6.2 for HTTP requests—replacing the older 'request' library. Jest and Webpack are configured for testing and bundling, respectively, while ESLint enforces code quality. The last update was on May 15, 2024, with a note about the axios migration. This context will persist even if the session restarts, allowing the AI assistant to reference these dependencies in future debugging or feature development tasks without reproviding the information.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "heimdall-mcp-server#main-content",
+      "heimdall-mcp-server#overview",
+      "heimdall-mcp-server#setup",
+      "heimdall-mcp-server#examples",
+      "heimdall-mcp-server#tools",
+      "heimdall-mcp-server#mcp",
+      "heimdall-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Heimdall MCP Server giải quyết vấn đề các trợ lý lập trình AI luôn bắt đầu mỗi phiên làm việc mới mà không có ký ức gì về codebase hay các cuộc hội thoại trước đó của bạn. Nó duy trì một cơ sở tri thức lâu dài, đặc thù cho từng dự án bằng cách lập chỉ mục (index) tài liệu, lịch sử git và các thông tin chuyên sâu về quá trình phát triển (development insights), sau đó cung cấp ngữ cảnh này thông qua Model Context Protocol. Hệ thống sử dụng tìm kiếm vector Qdrant và lưu trữ metadata bằng SQLite để truy xuất các ký ức liên quan một cách hiệu quả khi LLM gửi truy vấn đến hệ thống. Các developer và đội ngũ vận hành sẽ được hỗ trợ bởi một trợ lý AI hiểu rõ các mô hình kiến trúc (architectural patterns), các giải pháp trước đó và ngữ cảnh riêng của dự án qua nhiều phiên làm việc khác nhau.\n\n- Duy trì ngữ cảnh qua nhiều phiên lập trình mà không làm mất lịch sử dự án\n- Lập chỉ mục (index) lịch sử git commit để hiểu rõ tiến trình phát triển codebase và các quyết định kiến trúc\n- Tự động tải và theo dõi tài liệu để LLM có thể truy cập tức thì\n- Ngăn chặn rò rỉ ngữ cảnh giữa các dự án bằng các không gian bộ nhớ cô lập",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/lcbcFoo/heimdall-mcp-server`",
+    "usage_vi": "```\nUse the heimdall-mcp-server to [ACTION: retrieve/store/update] the following context for my coding assistant: [CONTEXT: e.g., 'the project's dependencies, recent debugging steps, or API endpoints used']. Ensure this context persists across sessions and is accessible for future interactions. If storing new context, include a brief label like [LABEL: e.g., 'project_dependencies_2024'] for easy retrieval.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"action\": \"retrieved\",\n  \"context\": {\n    \"label\": \"project_dependencies_2024\",\n    \"content\": {\n      \"dependencies\": {\n        \"react\": \"^18.2.0\",\n        \"express\": \"^4.18.2\",\n        \"lodash\": \"^4.17.21\",\n        \"axios\": \"^1.6.2\"\n      },\n      \"devDependencies\": {\n        \"jest\": \"^29.7.0\",\n        \"webpack\": \"^5.89.0\",\n        \"eslint\": \"^8.56.0\"\n      },\n      \"last_updated\": \"2024-05-15\",\n      \"notes\": \"Đã thêm axios cho các lệnh gọi API; đã gỡ bỏ thư viện 'request' không còn được hỗ trợ (deprecated)\"\n    }\n  },\n  \"usage_tip\": \"Ngữ cảnh này hiện đã sẵn sàng cho tất cả các phiên làm việc trong tương lai. Để cập nhật, hãy sử dụng cùng một nhãn (label) với nội dung mới.\"\n}\n```\n\nheimdall-mcp-server đã truy xuất thành công ngữ cảnh được lưu trữ cho các dependency của dự án. Dữ liệu cho thấy React 18.2.0 là frontend framework, Express 4.18.2 cho backend và Axios 1.6.2 cho các yêu cầu HTTP — thay thế cho thư viện 'request' cũ hơn. Jest và Webpack lần lượt được cấu hình cho việc testing và đóng gói (bundling), trong khi ESLint đảm bảo chất lượng code. Lần cập nhật cuối cùng là vào ngày 15 tháng 5 năm 2024, với lưu ý về việc chuyển đổi sang axios. Ngữ cảnh này sẽ được duy trì ngay cả khi session khởi động lại, cho phép trợ lý AI tham chiếu đến các dependency này trong các tác vụ debug hoặc phát triển tính năng trong tương lai mà không cần phải cung cấp lại thông tin.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:12:48.517440Z",
+    "http_status": 200,
+    "content_hash": "59194ef9c99b0a525736d29ae8e23dd70e9242fc47352abce0ce3b6a5c84c603",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\heimdall-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\heimdall-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Heimdall MCP Server - Bộ nhớ lập trình AI",
+  "short_description_vi": "Heimdall MCP Server cung cấp bộ nhớ dài hạn cho các trợ lý lập trình AI. Công cụ này mang lại lợi ích cho các developer và đội ngũ vận hành bằng cách duy trì ngữ cảnh (context) qua các phiên làm việc (session). Nó kết nối với các agent dựa trên Claude và tích hợp mượt mà vào quy trình phát triển hiện có."
+}

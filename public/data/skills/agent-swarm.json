@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-swarm",
+  "slug": "agent-swarm",
+  "name": "Agent Swarm",
+  "headline": "agent swarm framework for ai coding agents",
+  "short_description": "Agent Swarm is a framework for orchestrating AI coding agents. It enables teams to automate complex coding tasks, improve code quality, and accelerate development cycles. Integrates with Claude and other AI agents to streamline workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "desplega-ai",
+  "install_command": "git clone https://github.com/desplega-ai/agent-swarm.git",
+  "source_repo_url": "https://github.com/desplega-ai/agent-swarm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "swarm",
+    "claude-code",
+    "ai-agents"
+  ],
+  "sections": {
+    "overview": "Agent Swarm is a framework that deploys teams of AI agents working in concert to handle complex workflows. A lead agent receives tasks from multiple sources including Slack, GitHub, GitLab, Linear, Jira, and email, then breaks them down and delegates execution to worker agents running in isolated Docker environments. Workers complete tasks, document learnings, and write insights back to a shared memory system, enabling the entire swarm to improve over time. The framework supports use cases across engineering, marketing, product, support, and operations—from feature development and code quality monitoring to customer support automation and content generation. Agent Swarm enables companies to build AI-native operations where distributed agents compound knowledge and capability with each completed task.\nFeature development: convert Slack requests to pull requests via Linear and GitHub integration\nCode health monitoring: integrate alerting tools to detect and propose fixes automatically\nContent generation: produce blog posts, social media updates, and website content at scale\nCustomer support: agents oversee accounts, prepare reports, and handle proactive outreach",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/desplega-ai/agent-swarm`",
+    "usage": "```\nOrchestrate an Agent Swarm to [TASK DESCRIPTION] for [PROJECT/REPOSITORY]. Use the following agents in parallel where applicable: (1) A code reviewer agent to analyze [SPECIFIC_FILES_OR_MODULES] for [REVIEW_CRITERIA: e.g., security, performance, or style violations], (2) A test generator agent to create unit tests for [FUNCTIONS_OR_CLASSES], and (3) A documentation agent to update [DOCUMENTATION_FILES] with [SPECIFIC_DETAILS]. Prioritize [PRIORITY_TASKS] and flag [BLOCKERS_OR_DEPENDENCIES]. Provide a summary of actions taken, issues found, and next steps in a structured report.\n```\nCopy\n\n```\n### Agent Swarm Orchestration Report: Refactor Payment Service Module\n\n**Agents Deployed:**\n1. **Code Reviewer Agent** (Analyzing `payment_service.py` and `stripe_integration.py`)\n   - **Findings:** Detected 3 critical issues: (a) Hardcoded API keys in `stripe_integration.py` (Security Risk: CVSS 7.5), (b) Missing input validation for `amount` parameter in `process_payment()` (Potential for integer overflow), (c) No retry logic for failed API calls in `retry_transaction()`.\n   - **Recommendations:** Move keys to environment variables, add `Decimal` validation for amounts, and implement exponential backoff for retries.\n\n2. **Test Generator Agent** (Creating tests for `payment_service.py`)\n   - **Generated Tests:** 12 new unit tests covering edge cases for `process_payment()`, `refund_payment()`, and `validate_card()`. Tests include mocking Stripe API responses and verifying error handling for invalid inputs.\n   - **Coverage Impact:** Increased test coverage from 68% to 89% for the payment module.\n\n3. **Documentation Agent** (Updating `README.md` and `API_DOCS.md`)\n   - **Changes:** Added a new section on `Security Best Practices` with instructions for setting up environment variables. Updated API documentation for `process_payment()` to include `amount` validation rules and error codes.\n\n**Blockers:** None. All agents completed tasks without errors.\n\n**Next Steps:**\n- Apply fixes for security and validation issues (ETA: 2 hours).\n- Run full test suite to ensure no regressions (ETA: 30 minutes).\n- Merge changes after code review approval.\n\n**Time Saved:** Estimated 8 hours of manual effort by automating reviews, tests, and docs updates.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-swarm#main-content",
+      "agent-swarm#overview",
+      "agent-swarm#setup",
+      "agent-swarm#examples",
+      "agent-swarm#tools",
+      "agent-swarm#mcp",
+      "agent-swarm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent Swarm là framework triển khai các nhóm AI agent phối hợp hoạt động để xử lý các quy trình công việc (workflows) phức tạp. Một lead agent sẽ tiếp nhận tác vụ từ nhiều nguồn khác nhau bao gồm Slack, GitHub, GitLab, Linear, Jira và email, sau đó chia nhỏ tác vụ và phân quyền thực thi cho các worker agent chạy trong môi trường Docker cô lập. Các worker agent hoàn thành nhiệm vụ, ghi lại kinh nghiệm rút ra và lưu lại thông tin chuyên sâu (insights) vào một hệ thống bộ nhớ dùng chung (shared memory system), giúp toàn bộ hệ thống (swarm) cải thiện hiệu suất theo thời gian. Framework này hỗ trợ nhiều kịch bản sử dụng trong các bộ phận kỹ thuật (engineering), marketing, sản phẩm (product), hỗ trợ (support) và vận hành (operations) — từ phát triển tính năng, giám sát chất lượng code cho đến tự động hóa chăm sóc khách hàng và tạo nội dung. Agent Swarm cho phép các doanh nghiệp xây dựng quy trình vận hành AI-native, nơi các agent phân tán tích lũy kiến thức và năng lực sau mỗi tác vụ hoàn thành.\n\nPhát triển tính năng: chuyển đổi các yêu cầu từ Slack thành pull request thông qua tích hợp với Linear và GitHub\nGiám sát sức khỏe code: tích hợp các công cụ cảnh báo để tự động phát hiện và đề xuất sửa lỗi\nTạo nội dung: sản xuất hàng loạt bài viết blog, cập nhật mạng xã hội và nội dung website\nHỗ trợ khách hàng: các agent giám sát tài khoản, chuẩn bị báo cáo và chủ động tiếp cận khách hàng",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/desplega-ai/agent-swarm`",
+    "usage_vi": "```\nĐiều phối một Agent Swarm để [MÔ TẢ TÁC VỤ] cho [DỰ ÁN/KHO LƯU TRỮ]. Sử dụng song song các agent sau đây nếu phù hợp: (1) Một code reviewer agent để phân tích [FILE_HOẶC_MODULE_CỤ_THỂ] nhằm tìm kiếm [TIÊU_CHÍ_REVIEW: ví dụ: vi phạm bảo mật, hiệu năng hoặc phong cách code], (2) Một test generator agent để tạo các unit test cho [HÀM_HOẶC_CLASS], và (3) Một documentation agent để cập nhật [FILE_TÀI_LIỆU] với [CHI_TIẾT_CỤ_THỂ]. Ưu tiên [TÁC_VỤ_ƯU_TIÊN] và gắn cờ [RÀO_CẢN_HOẶC_PHỤ_THUỘC]. Cung cấp bản tóm tắt các hành động đã thực hiện, các lỗi phát hiện được và các bước tiếp theo trong một báo cáo có cấu trúc.\n```\nCopy\n\n```\n### Báo cáo điều phối Agent Swarm: Refactor Module Dịch vụ Thanh toán\n\n**Các Agent đã triển khai:**\n1. **Code Reviewer Agent** (Đang phân tích `payment_service.py` và `stripe_integration.py`)\n   - **Kết quả:** Phát hiện 3 vấn đề nghiêm trọng: (a) Hardcode khóa API trong `stripe_integration.py` (Rủi ro bảo mật: CVSS 7.5), (b) Thiếu xác thực đầu vào (input validation) cho tham số `amount` trong `process_payment()` (Nguy cơ tràn số nguyên - integer overflow), (c) Chưa có logic thử lại (retry logic) cho các lệnh gọi API thất bại trong `retry_transaction()`.\n   - **Khuyến nghị:** Di chuyển các khóa bảo mật vào biến môi trường (environment variables), thêm xác thực kiểu dữ liệu `Decimal` cho số tiền, và triển khai cơ chế exponential backoff để thử lại.\n\n2. **Test Generator Agent** (Đang tạo test cho `payment_service.py`)\n   - **Các test đã tạo:** 12 unit test mới bao phủ các trường hợp biên (edge cases) cho `process_payment()`, `refund_payment()`, và `validate_card()`. Các kiểm thử bao gồm việc mock phản hồi từ Stripe API và xác minh cách xử lý lỗi khi đầu vào không hợp lệ.\n   - **Mức độ bao phủ (Coverage):** Tăng test coverage từ 68% lên 89% cho module thanh toán.\n\n3. **Documentation Agent** (Đang cập nhật `README.md` và `API_DOCS.md`)\n   - **Thay đổi:** Thêm mục mới về \"Security Best Practices\" cùng hướng dẫn thiết lập biến môi trường. Cập nhật tài liệu API cho `process_payment()` để bổ sung các quy tắc xác thực `amount` và các mã lỗi.\n\n**Rào cản (Blockers):** Không có. Tất cả các agent đã hoàn thành nhiệm vụ mà không gặp lỗi.\n\n**Các bước tiếp theo:**\n- Áp dụng các bản sửa lỗi cho vấn đề bảo mật và xác thực (ETA: 2 giờ).\n- Chạy toàn bộ bộ test suite để đảm bảo không xảy ra lỗi hồi quy (regression) (ETA: 30 phút).\n- Merge các thay đổi sau khi code review được phê duyệt.\n\n**Thời gian tiết kiệm được:** Ước tính khoảng 8 giờ làm việc thủ công nhờ tự động hóa việc review, viết test và cập nhật tài liệu.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:26:53.177559Z",
+    "http_status": 200,
+    "content_hash": "c451d148fd1524f2ad9b5343707e787126064f29b1f735e14e428889de1c600c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-swarm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-swarm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Framework Agent Swarm dành cho các AI coding agent",
+  "short_description_vi": "Agent Swarm là framework điều phối các AI coding agent. Công cụ này giúp các đội ngũ tự động hóa các tác vụ lập trình phức tạp, nâng cao chất lượng code và đẩy nhanh chu kỳ phát triển sản phẩm. Hỗ trợ tích hợp với Claude cùng các AI agent khác để tối ưu hóa quy trình làm việc."
+}

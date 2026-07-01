@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-llm-skills",
+  "slug": "awesome-llm-skills",
+  "name": "browser-use",
+  "headline": "Customize AI agent workflows with LLM skills",
+  "short_description": "A curated list of LLM and AI Agent Skills for customising workflows. Works with Claude Code, Codex, Gemini CLI, and custom AI Agents. Helps operations teams automate tasks and integrate AI capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "Prat011",
+  "install_command": "git clone https://github.com/Prat011/awesome-llm-skills.git",
+  "source_repo_url": "https://github.com/Prat011/awesome-llm-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "openai",
+    "anthropic",
+    "claude-skills-creator",
+    "qwen-coder",
+    "skills",
+    "opencode",
+    "awesome-lists",
+    "llms",
+    "qwen",
+    "llama",
+    "codex-cli",
+    "codex",
+    "gemini-cli",
+    "gemini",
+    "claude-skills",
+    "awesome-list"
+  ],
+  "sections": {
+    "overview": "awesome-llm-skills is a curated directory of reusable skills designed to extend AI agent capabilities across popular platforms including Claude Code, Cursor, Gemini CLI, and custom AI agents. The collection includes specialized skills for content creation, document processing, design, automation, and data extraction tasks. It enables operations and development teams to rapidly integrate AI-powered functionality into their workflows without building from scratch. Each skill is organized by function, making it easy to discover and implement capabilities like changelog generation, competitive analysis, and algorithmic design. The repository serves as a centralized resource for teams looking to enhance productivity through pre-built, composable AI agent extensions.\nAutomate the generation of structured documentation from chat conversations.\nCreate customized workflows for document processing tasks like editing and analyzing PDFs.\nIntegrate AI agents with various platforms to streamline project management and task tracking.\nEnhance web application testing by utilizing predefined skills for automated validation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Prat011/awesome-llm-skills`",
+    "usage": "```\nAutomate the process of extracting [DATA_TYPE] from [SOURCE] and transforming it into a [OUTPUT_FORMAT] report. Use [TOOL_NAME] to process the raw data, apply [TRANSFORMATION_RULES], and generate a summary with [KEY_METRICS]. Validate the output against [VALIDATION_CRITERIA] to ensure accuracy. Deliver the final report to [DESTINATION].\n```\nCopy\n\n```\n### Automated Data Extraction & Report Generation\n\n**Source:** CRM database (Salesforce API)\n**Data Type:** Customer support tickets from Q2 2024\n**Output Format:** Structured CSV with priority scoring\n**Tool Used:** Claude Code with Python (pandas, requests)\n**Transformation Rules:**\n- Filter tickets by status='Open' and created_date >= '2024-04-01'\n- Assign priority scores (1-5) based on subject keywords ('urgent', 'bug', 'payment')\n- Calculate average resolution time per agent\n- Aggregate by product line and region\n\n**Validation Criteria:**\n- Cross-check ticket counts against Salesforce UI (manual verification)\n- Ensure no duplicate entries in the dataset\n- Confirm priority scores align with predefined keyword mappings\n\n**Generated Report:**\n```csv\nagent_id,product_line,region,open_tickets,priority_score,avg_resolution_hours\nAGT-101,Mobile App,North America,45,3.2,12.5\nAGT-203,Web Platform,EMEA,32,2.8,8.3\nAGT-456,API Services,APAC,18,4.1,22.1\n```\n\n**Key Insights:**\n- Mobile App team has the highest ticket volume but lowest average resolution time\n- API Services team handles the most critical tickets (avg priority 4.1)\n- EMEA region shows the fastest resolution times (8.3 hours)\n\n**Delivered To:** Shared Google Drive folder with operations team (auto-synced via Zapier)\n\n**Next Steps:**\n1. Schedule a follow-up meeting to discuss priority score thresholds\n2. Investigate why API Services tickets take 2.5x longer to resolve\n3. Update the keyword mapping for priority scoring based on this data\n\n*Note: This report was generated automatically on 2024-06-15 at 09:15 UTC.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-llm-skills#main-content",
+      "awesome-llm-skills#overview",
+      "awesome-llm-skills#setup",
+      "awesome-llm-skills#examples",
+      "awesome-llm-skills#tools",
+      "awesome-llm-skills#mcp",
+      "awesome-llm-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "awesome-llm-skills is a curated directory of reusable skills designed to extend AI agent capabilities across popular platforms including Claude Code, Cursor, Gemini CLI, and custom AI agents. The collection includes specialized skills for content creation, document processing, design, automation, and data extraction tasks. It enables operations and development teams to rapidly integrate AI-powered functionality into their workflows without building from scratch. Each skill is organized by function, making it easy to discover and implement capabilities like changelog generation, competitive analysis, and algorithmic design. The repository serves as a centralized resource for teams looking to enhance productivity through pre-built, composable AI agent extensions.\nAutomate the generation of structured documentation from chat conversations.\nCreate customized workflows for document processing tasks like editing and analyzing PDFs.\nIntegrate AI agents with various platforms to streamline project management and task tracking.\nEnhance web application testing by utilizing predefined skills for automated validation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Prat011/awesome-llm-skills`",
+    "usage_vi": "```\nAutomate the process of extracting [DATA_TYPE] from [SOURCE] and transforming it into a [OUTPUT_FORMAT] report. Use [TOOL_NAME] to process the raw data, apply [TRANSFORMATION_RULES], and generate a summary with [KEY_METRICS]. Validate the output against [VALIDATION_CRITERIA] to ensure accuracy. Deliver the final report to [DESTINATION].\n```\nCopy\n\n```\n### Automated Data Extraction & Report Generation\n\n**Source:** CRM database (Salesforce API)\n**Data Type:** Customer support tickets from Q2 2024\n**Output Format:** Structured CSV with priority scoring\n**Tool Used:** Claude Code with Python (pandas, requests)\n**Transformation Rules:**\n- Filter tickets by status='Open' and created_date >= '2024-04-01'\n- Assign priority scores (1-5) based on subject keywords ('urgent', 'bug', 'payment')\n- Calculate average resolution time per agent\n- Aggregate by product line and region\n\n**Validation Criteria:**\n- Cross-check ticket counts against Salesforce UI (manual verification)\n- Ensure no duplicate entries in the dataset\n- Confirm priority scores align with predefined keyword mappings\n\n**Generated Report:**\n```csv\nagent_id,product_line,region,open_tickets,priority_score,avg_resolution_hours\nAGT-101,Mobile App,North America,45,3.2,12.5\nAGT-203,Web Platform,EMEA,32,2.8,8.3\nAGT-456,API Services,APAC,18,4.1,22.1\n```\n\n**Key Insights:**\n- Mobile App team has the highest ticket volume but lowest average resolution time\n- API Services team handles the most critical tickets (avg priority 4.1)\n- EMEA region shows the fastest resolution times (8.3 hours)\n\n**Delivered To:** Shared Google Drive folder with operations team (auto-synced via Zapier)\n\n**Next Steps:**\n1. Schedule a follow-up meeting to discuss priority score thresholds\n2. Investigate why API Services tickets take 2.5x longer to resolve\n3. Update the keyword mapping for priority scoring based on this data\n\n*Note: This report was generated automatically on 2024-06-15 at 09:15 UTC.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:22:58.140028Z",
+    "http_status": 200,
+    "content_hash": "7bf5bcc0a59159a3bba5c368dfe785696ce0a12543cf716f73406256aaa721e1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-llm-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-llm-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Customize AI agent workflows with LLM skills",
+  "short_description_vi": "A curated list of LLM and AI Agent Skills for customising workflows. Works with Claude Code, Codex, Gemini CLI, and custom AI Agents. Helps operations teams automate tasks and integrate AI capabilities."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/auto-mindmapping",
+  "slug": "auto-mindmapping",
+  "name": "slack-gif-creator",
+  "headline": "Auto Mindmapping: Revolutionize Your Creativity",
+  "short_description": "Transform your brainstorming sessions with auto-mindmapping, an innovative tool that combines mermaid and GPT-3.5-turbo/GPT-4 for dynamic mind maps. Enhance creativity and productivity effortlessly with this cutting-edge solution!",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "florian-kalisch",
+  "install_command": "claude install florian-kalisch/auto-mindmapping",
+  "source_repo_url": "https://github.com/florian-kalisch/auto-mindmapping",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "mind mapping",
+    "automation",
+    "gpt-3",
+    "gpt-4",
+    "creativity"
+  ],
+  "sections": {
+    "overview": "Auto-mindmapping automates the creation of visual mind maps by combining OpenAI's GPT models with Mermaid diagram syntax. The tool supports three core use cases: brainstorming to explore ideas, text summarization to distill key information, and cause-effect visualization to map relationships and consequences. Users input prompts or text, configure model parameters like temperature and max tokens, and receive Mermaid-formatted mind maps that can be edited, copied, or saved as images. It works both online via web interface and offline with Node.js, requiring only an OpenAI API key to function.\nCreating visual mind maps for project planning\nSummarizing complex texts into digestible formats\nEnhancing brainstorming sessions with AI-generated ideas\nVisualizing workflows and processes",
+    "setup": "Terminal\nCopy\n`claude install florian-kalisch/auto-mindmapping`\n`git clone https://github.com/florian-kalisch/auto-mindmapping`",
+    "usage": "```\nGenerate a dynamic mind map for [TOPIC] using Mermaid syntax. Include the following elements: [MAIN_NODE], [SUB_NODES] (3-5), [DETAILED_SUB_NODES] (2-3 per sub-node), and [CONNECTIONS] between nodes. Format the output as a Mermaid code block. Example: 'Generate a mind map for \"Launching a New Product\" with nodes for Market Research, Product Development, Marketing Strategy, and Sales Plan.'\n```\nCopy\n\n```\n```mermaid\ngraph TD\n    A[Launching a New Product] --> B[Market Research]\n    A --> C[Product Development]\n    A --> D[Marketing Strategy]\n    A --> E[Sales Plan]\n    \n    B --> B1[Identify Target Audience]\n    B --> B2[Analyze Competitors]\n    B --> B3[Conduct Surveys]\n    \n    C --> C1[Prototype Design]\n    C --> C2[Beta Testing]\n    C --> C3[Finalize Features]\n    \n    D --> D1[Social Media Campaign]\n    D --> D2[Influencer Partnerships]\n    D --> D3[Email Marketing]\n    \n    E --> E1[Pricing Strategy]\n    E --> E2[Distribution Channels]\n    E --> E3[Sales Team Training]\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "auto-mindmapping#main-content",
+      "auto-mindmapping#overview",
+      "auto-mindmapping#setup",
+      "auto-mindmapping#examples",
+      "auto-mindmapping#tools",
+      "auto-mindmapping#mcp",
+      "auto-mindmapping#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Auto-mindmapping automates the creation of visual mind maps by combining OpenAI's GPT models with Mermaid diagram syntax. The tool supports three core use cases: brainstorming to explore ideas, text summarization to distill key information, and cause-effect visualization to map relationships and consequences. Users input prompts or text, configure model parameters like temperature and max tokens, and receive Mermaid-formatted mind maps that can be edited, copied, or saved as images. It works both online via web interface and offline with Node.js, requiring only an OpenAI API key to function.\nCreating visual mind maps for project planning\nSummarizing complex texts into digestible formats\nEnhancing brainstorming sessions with AI-generated ideas\nVisualizing workflows and processes",
+    "setup_vi": "Terminal\nCopy\n`claude install florian-kalisch/auto-mindmapping`\n`git clone https://github.com/florian-kalisch/auto-mindmapping`",
+    "usage_vi": "```\nGenerate a dynamic mind map for [TOPIC] using Mermaid syntax. Include the following elements: [MAIN_NODE], [SUB_NODES] (3-5), [DETAILED_SUB_NODES] (2-3 per sub-node), and [CONNECTIONS] between nodes. Format the output as a Mermaid code block. Example: 'Generate a mind map for \"Launching a New Product\" with nodes for Market Research, Product Development, Marketing Strategy, and Sales Plan.'\n```\nCopy\n\n```\n```mermaid\ngraph TD\n    A[Launching a New Product] --> B[Market Research]\n    A --> C[Product Development]\n    A --> D[Marketing Strategy]\n    A --> E[Sales Plan]\n    \n    B --> B1[Identify Target Audience]\n    B --> B2[Analyze Competitors]\n    B --> B3[Conduct Surveys]\n    \n    C --> C1[Prototype Design]\n    C --> C2[Beta Testing]\n    C --> C3[Finalize Features]\n    \n    D --> D1[Social Media Campaign]\n    D --> D2[Influencer Partnerships]\n    D --> D3[Email Marketing]\n    \n    E --> E1[Pricing Strategy]\n    E --> E2[Distribution Channels]\n    E --> E3[Sales Team Training]\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:28:10.086563Z",
+    "http_status": 200,
+    "content_hash": "df0cec4fffec198520a94d16416fea39c8c63b4152078409bd36a1072a9da43f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\auto-mindmapping.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\auto-mindmapping.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Auto Mindmapping: Revolutionize Your Creativity",
+  "short_description_vi": "Transform your brainstorming sessions with auto-mindmapping, an innovative tool that combines mermaid and GPT-3.5-turbo/GPT-4 for dynamic mind maps. Enhance creativity and productivity effortlessly with this cutting-edge solution!"
+}

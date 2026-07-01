@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-zen-mcp-skill-work",
+  "slug": "claude-code-zen-mcp-skill-work",
+  "name": "browser-use",
+  "headline": "Insight into Claude Code Zen MCP skill work",
+  "short_description": "Claude-Code-Zen-mcp-Skill-Work is a pre-built rule system and skill package for AI programming agents. It enables developers to quickly implement standardized workflows for AI-driven automation tasks. Operations teams benefit from reduced setup time and consistent execution across various automation projects.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "VCnoC",
+  "install_command": "git clone https://github.com/VCnoC/Claude-Code-Zen-mcp-Skill-Work.git",
+  "source_repo_url": "https://github.com/VCnoC/Claude-Code-Zen-mcp-Skill-Work",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude-Code-Zen-mcp-Skill-Work is a pre-built rule system designed for AI programming agents that implements structured four-stage workflows (P1-P4) for development tasks. The system features intelligent routing via main-router for task delegation, automated planning through plan-down skill that generates structured plan.md files, and comprehensive five-dimensional code review through codex-code-reviewer examining quality, security, performance, architecture, and documentation. It automates document generation including PROJECTWIKI.md and CHANGELOG.md maintenance, and supports both interactive mode with human checkpoints and fully automated mode for complete development cycles from planning through testing. Development teams benefit from reduced setup time, consistent execution patterns, and built-in quality gates that ensure code meets standardized benchmarks.\nAutomating multi-stage development workflows from analysis through execution and error handling\nGenerating structured development plans and task decomposition automatically with plan-down\nConducting comprehensive code reviews across five dimensions with automatic quality scoring and fixes\nMaintaining synchronized documentation including project wikis and changelogs during development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VCnoC/Claude-Code-Zen-mcp-Skill-Work`",
+    "usage": "```\nImplement a standardized AI-driven automation workflow for [PROJECT_NAME] using the Claude-Code-Zen-mcp-Skill-Work framework. Follow the pre-built rule system to: 1) Set up [AUTOMATION_TASK], 2) Define [INPUT_SOURCES] and [OUTPUT_DESTINATIONS], 3) Apply [VALIDATION_RULES], and 4) Generate [REPORTING_METRICS]. Use the MCP (Model Context Protocol) to ensure seamless integration with [TARGET_SYSTEM].\n```\nCopy\n\n```\nHere’s the implementation for automating a weekly data pipeline for Acme Corp’s sales analytics:\n\n**1. Setup & Configuration**\n- Created a `claude-code-zen-mcp-workflow.yaml` file with the following structure:\n  ```yaml\n  project: acme_sales_automation\n  automation_task: weekly_sales_report\n  input_sources:\n    - type: csv\n      path: /data/raw/sales_transactions.csv\n    - type: API\n      endpoint: https://api.acme.com/sales/leads\n  output_destinations:\n    - type: database\n      table: weekly_sales_summary\n    - type: email\n      recipients: [\"analytics@acme.com\", \"sales@acme.com\"]\n  validation_rules:\n    - check_null_values: true\n    - validate_schema: sales_schema_v2.json\n    - data_freshness: last_7_days\n  reporting_metrics:\n    - total_revenue\n    - top_10_deals\n    - conversion_rate\n  ```\n\n**2. Execution**\n- Ran the workflow using the MCP CLI:\n  ```bash\n  claude-code-zen-mcp run --config claude-code-zen-mcp-workflow.yaml\n  ```\n  Output:\n  ```\n  [2024-05-10 14:22:33] INFO: Starting workflow 'acme_sales_automation'\n  [2024-05-10 14:22:35] INFO: Loaded 12,487 records from sales_transactions.csv\n  [2024-05-10 14:22:37] INFO: Fetched 456 leads from API\n  [2024-05-10 14:22:40] INFO: Validated data against schema (0 errors)\n  [2024-05-10 14:22:42] INFO: Generated weekly sales summary\n  [2024-05-10 14:22:45] INFO: Exported to database and sent to 2 recipients\n  [2024-05-10 14:22:45] SUCCESS: Workflow completed in 12.3s\n  ```\n\n**3. Validation & Reporting**\n- Generated a validation report:\n  ```\n  Validation Summary:\n  - Null values: 0 (100% compliance)\n  - Schema compliance: 100%\n  - Data freshness: 100% (last 7 days)\n  \n  Key Metrics:\n  - Total Revenue: $2,456,789\n  - Top 10 Deals: 8 closed, 2 pending\n  - Conversion Rate: 15.2% (up 2.1% from last week)\n  ```\n\nThe workflow now runs automatically every Monday at 8 AM, reducing manual effort by 80% and ensuring consistent data quality for Acme’s sales team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-zen-mcp-skill-work#main-content",
+      "claude-code-zen-mcp-skill-work#overview",
+      "claude-code-zen-mcp-skill-work#setup",
+      "claude-code-zen-mcp-skill-work#examples",
+      "claude-code-zen-mcp-skill-work#tools",
+      "claude-code-zen-mcp-skill-work#mcp",
+      "claude-code-zen-mcp-skill-work#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Code-Zen-mcp-Skill-Work is a pre-built rule system designed for AI programming agents that implements structured four-stage workflows (P1-P4) for development tasks. The system features intelligent routing via main-router for task delegation, automated planning through plan-down skill that generates structured plan.md files, and comprehensive five-dimensional code review through codex-code-reviewer examining quality, security, performance, architecture, and documentation. It automates document generation including PROJECTWIKI.md and CHANGELOG.md maintenance, and supports both interactive mode with human checkpoints and fully automated mode for complete development cycles from planning through testing. Development teams benefit from reduced setup time, consistent execution patterns, and built-in quality gates that ensure code meets standardized benchmarks.\nAutomating multi-stage development workflows from analysis through execution and error handling\nGenerating structured development plans and task decomposition automatically with plan-down\nConducting comprehensive code reviews across five dimensions with automatic quality scoring and fixes\nMaintaining synchronized documentation including project wikis and changelogs during development",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VCnoC/Claude-Code-Zen-mcp-Skill-Work`",
+    "usage_vi": "```\nImplement a standardized AI-driven automation workflow for [PROJECT_NAME] using the Claude-Code-Zen-mcp-Skill-Work framework. Follow the pre-built rule system to: 1) Set up [AUTOMATION_TASK], 2) Define [INPUT_SOURCES] and [OUTPUT_DESTINATIONS], 3) Apply [VALIDATION_RULES], and 4) Generate [REPORTING_METRICS]. Use the MCP (Model Context Protocol) to ensure seamless integration with [TARGET_SYSTEM].\n```\nCopy\n\n```\nHere’s the implementation for automating a weekly data pipeline for Acme Corp’s sales analytics:\n\n**1. Setup & Configuration**\n- Created a `claude-code-zen-mcp-workflow.yaml` file with the following structure:\n  ```yaml\n  project: acme_sales_automation\n  automation_task: weekly_sales_report\n  input_sources:\n    - type: csv\n      path: /data/raw/sales_transactions.csv\n    - type: API\n      endpoint: https://api.acme.com/sales/leads\n  output_destinations:\n    - type: database\n      table: weekly_sales_summary\n    - type: email\n      recipients: [\"analytics@acme.com\", \"sales@acme.com\"]\n  validation_rules:\n    - check_null_values: true\n    - validate_schema: sales_schema_v2.json\n    - data_freshness: last_7_days\n  reporting_metrics:\n    - total_revenue\n    - top_10_deals\n    - conversion_rate\n  ```\n\n**2. Execution**\n- Ran the workflow using the MCP CLI:\n  ```bash\n  claude-code-zen-mcp run --config claude-code-zen-mcp-workflow.yaml\n  ```\n  Output:\n  ```\n  [2024-05-10 14:22:33] INFO: Starting workflow 'acme_sales_automation'\n  [2024-05-10 14:22:35] INFO: Loaded 12,487 records from sales_transactions.csv\n  [2024-05-10 14:22:37] INFO: Fetched 456 leads from API\n  [2024-05-10 14:22:40] INFO: Validated data against schema (0 errors)\n  [2024-05-10 14:22:42] INFO: Generated weekly sales summary\n  [2024-05-10 14:22:45] INFO: Exported to database and sent to 2 recipients\n  [2024-05-10 14:22:45] SUCCESS: Workflow completed in 12.3s\n  ```\n\n**3. Validation & Reporting**\n- Generated a validation report:\n  ```\n  Validation Summary:\n  - Null values: 0 (100% compliance)\n  - Schema compliance: 100%\n  - Data freshness: 100% (last 7 days)\n  \n  Key Metrics:\n  - Total Revenue: $2,456,789\n  - Top 10 Deals: 8 closed, 2 pending\n  - Conversion Rate: 15.2% (up 2.1% from last week)\n  ```\n\nThe workflow now runs automatically every Monday at 8 AM, reducing manual effort by 80% and ensuring consistent data quality for Acme’s sales team.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:44:57.274714Z",
+    "http_status": 200,
+    "content_hash": "ce6148acefe3afbe96a7cad72a360423a05950ab747d2d8fce6c759ad7cebbbf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-zen-mcp-skill-work.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-zen-mcp-skill-work.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Insight into Claude Code Zen MCP skill work",
+  "short_description_vi": "Claude-Code-Zen-mcp-Skill-Work is a pre-built rule system and skill package for AI programming agents. It enables developers to quickly implement standardized workflows for AI-driven automation tasks. Operations teams benefit from reduced setup time and consistent execution across various automation projects."
+}

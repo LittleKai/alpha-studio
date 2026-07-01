@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-labs-claude-skills",
+  "slug": "ai-labs-claude-skills",
+  "name": "browser-use",
+  "headline": "Ai-labs claude skills Management Bridge",
+  "short_description": "This skill enables users to integrate Claude skills into their projects, streamlining workflows and enhancing productivity. Operations teams benefit from automated skill integration, reducing manual setup time. It connects to Python-based workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "8 min",
+  "author": "ailabs-393",
+  "install_command": "git clone https://github.com/ailabs-393/ai-labs-claude-skills.git",
+  "source_repo_url": "https://github.com/ailabs-393/ai-labs-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The ai-labs-claude-skills enables seamless integration of Claude skills into automation projects, streamlining workflow setup and execution. Designed for operations teams, this skill reduces manual integration time by automating skill deployment across Python-based environments. It provides direct connectivity to Claude agents, allowing developers to leverage pre-built skills within their existing automation infrastructure.\nAutomate Claude skill deployment in Python-based CI/CD pipelines\nReduce operational overhead by programmatically integrating multiple Claude skills into agent workflows\nEnable rapid prototyping of Claude agent applications without manual configuration\nStreamline skill management across distributed automation environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ailabs-393/ai-labs-claude-skills`",
+    "usage": "```\nIntegrate the [SKILL_NAME] into my [PROJECT_TYPE] project to automate [SPECIFIC_TASK]. Ensure the integration follows best practices for [FRAMEWORK/LANGUAGE, e.g., Python, FastAPI]. Provide the necessary code snippets, configuration steps, and troubleshooting tips for deployment. Test the integration with [TEST_CASE] and validate the output.\n```\nCopy\n\n```\nHere’s how to integrate the `ai-labs-claude-skills` skill into a Python-based FastAPI project to automate skill discovery and deployment. Below is a step-by-step guide with code snippets and validation steps.\n\n### Step 1: Install Dependencies\nFirst, install the required packages using pip:\n```bash\npip install claude-skills fastapi uvicorn python-dotenv\n```\n\n### Step 2: Configure the Project\nCreate a `.env` file in your project root to store sensitive configurations:\n```env\nCLAUDE_SKILLS_API_KEY=your_api_key_here\nCLAUDE_SKILLS_ENDPOINT=https://api.claude.ai/v1/skills\nPROJECT_NAME=my_fastapi_project\n```\n\n### Step 3: Implement the Skill Integration\nAdd the following code to your `main.py` file to fetch and register skills dynamically:\n```python\nfrom fastapi import FastAPI\nfrom claude_skills import SkillManager\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()\n\napp = FastAPI()\nskill_manager = SkillManager(\n    api_key=os.getenv(\"CLAUDE_SKILLS_API_KEY\"),\n    endpoint=os.getenv(\"CLAUDE_SKILLS_ENDPOINT\")\n)\n\n@app.on_event(\"startup\")\nasync def register_skills():\n    skills = await skill_manager.fetch_skills(\n        project_name=os.getenv(\"PROJECT_NAME\"),\n        criteria=[\"automation\", \"productivity\"]\n    )\n    for skill in skills:\n        skill_manager.register(skill)\n        print(f\"Registered skill: {skill['name']}\")\n\n@app.get(\"/skills\")\nasync def list_skills():\n    return skill_manager.list_registered_skills()\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)\n```\n\n### Step 4: Validate the Integration\nRun the FastAPI server and test the `/skills` endpoint:\n```bash\nuvicorn main:app --reload\n```\n\nAccess `http://localhost:8000/skills` in your browser or use `curl`:\n```bash\ncurl http://localhost:8000/skills\n```\n\n**Expected Output:**\n```json\n{\n  \"skills\": [\n    {\n      \"name\": \"ai-labs-claude-skills\",\n      \"category\": \"automation\",\n      \"description\": \"This skill enables users to integrate Claude skills into their projects, streamlining workflows and enhancing productivity.\"\n    }\n  ]\n}\n```\n\n### Step 5: Troubleshooting\nIf the integration fails:\n1. **Check API Key**: Ensure the `CLAUDE_SKILLS_API_KEY` in `.env` is valid.\n2. **Verify Endpoint**: Confirm the `CLAUDE_SKILLS_ENDPOINT` is correct (e.g., `https://api.claude.ai/v1/skills`).\n3. **Inspect Logs**: Run the server with `--log-level debug` to see detailed logs:\n   ```bash\n   uvicorn main:app --reload --log-level debug\n   ```\n\nFor Python-based workflows, this integration reduces manual setup time by 70% and ensures skills are automatically registered and updated.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-labs-claude-skills#main-content",
+      "ai-labs-claude-skills#overview",
+      "ai-labs-claude-skills#setup",
+      "ai-labs-claude-skills#examples",
+      "ai-labs-claude-skills#tools",
+      "ai-labs-claude-skills#mcp",
+      "ai-labs-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The ai-labs-claude-skills enables seamless integration of Claude skills into automation projects, streamlining workflow setup and execution. Designed for operations teams, this skill reduces manual integration time by automating skill deployment across Python-based environments. It provides direct connectivity to Claude agents, allowing developers to leverage pre-built skills within their existing automation infrastructure.\nAutomate Claude skill deployment in Python-based CI/CD pipelines\nReduce operational overhead by programmatically integrating multiple Claude skills into agent workflows\nEnable rapid prototyping of Claude agent applications without manual configuration\nStreamline skill management across distributed automation environments",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ailabs-393/ai-labs-claude-skills`",
+    "usage_vi": "```\nIntegrate the [SKILL_NAME] into my [PROJECT_TYPE] project to automate [SPECIFIC_TASK]. Ensure the integration follows best practices for [FRAMEWORK/LANGUAGE, e.g., Python, FastAPI]. Provide the necessary code snippets, configuration steps, and troubleshooting tips for deployment. Test the integration with [TEST_CASE] and validate the output.\n```\nCopy\n\n```\nHere’s how to integrate the `ai-labs-claude-skills` skill into a Python-based FastAPI project to automate skill discovery and deployment. Below is a step-by-step guide with code snippets and validation steps.\n\n### Step 1: Install Dependencies\nFirst, install the required packages using pip:\n```bash\npip install claude-skills fastapi uvicorn python-dotenv\n```\n\n### Step 2: Configure the Project\nCreate a `.env` file in your project root to store sensitive configurations:\n```env\nCLAUDE_SKILLS_API_KEY=your_api_key_here\nCLAUDE_SKILLS_ENDPOINT=https://api.claude.ai/v1/skills\nPROJECT_NAME=my_fastapi_project\n```\n\n### Step 3: Implement the Skill Integration\nAdd the following code to your `main.py` file to fetch and register skills dynamically:\n```python\nfrom fastapi import FastAPI\nfrom claude_skills import SkillManager\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()\n\napp = FastAPI()\nskill_manager = SkillManager(\n    api_key=os.getenv(\"CLAUDE_SKILLS_API_KEY\"),\n    endpoint=os.getenv(\"CLAUDE_SKILLS_ENDPOINT\")\n)\n\n@app.on_event(\"startup\")\nasync def register_skills():\n    skills = await skill_manager.fetch_skills(\n        project_name=os.getenv(\"PROJECT_NAME\"),\n        criteria=[\"automation\", \"productivity\"]\n    )\n    for skill in skills:\n        skill_manager.register(skill)\n        print(f\"Registered skill: {skill['name']}\")\n\n@app.get(\"/skills\")\nasync def list_skills():\n    return skill_manager.list_registered_skills()\n\nif __name__ == \"__main__\":\n    import uvicorn\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)\n```\n\n### Step 4: Validate the Integration\nRun the FastAPI server and test the `/skills` endpoint:\n```bash\nuvicorn main:app --reload\n```\n\nAccess `http://localhost:8000/skills` in your browser or use `curl`:\n```bash\ncurl http://localhost:8000/skills\n```\n\n**Expected Output:**\n```json\n{\n  \"skills\": [\n    {\n      \"name\": \"ai-labs-claude-skills\",\n      \"category\": \"automation\",\n      \"description\": \"This skill enables users to integrate Claude skills into their projects, streamlining workflows and enhancing productivity.\"\n    }\n  ]\n}\n```\n\n### Step 5: Troubleshooting\nIf the integration fails:\n1. **Check API Key**: Ensure the `CLAUDE_SKILLS_API_KEY` in `.env` is valid.\n2. **Verify Endpoint**: Confirm the `CLAUDE_SKILLS_ENDPOINT` is correct (e.g., `https://api.claude.ai/v1/skills`).\n3. **Inspect Logs**: Run the server with `--log-level debug` to see detailed logs:\n   ```bash\n   uvicorn main:app --reload --log-level debug\n   ```\n\nFor Python-based workflows, this integration reduces manual setup time by 70% and ensures skills are automatically registered and updated.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:07.828642Z",
+    "http_status": 200,
+    "content_hash": "2d67b8d81bd705ff948b93f3822aefa34f1e76543d9de2b3c17e79e9ad15b860",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-labs-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-labs-claude-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Ai-labs claude skills Management Bridge",
+  "short_description_vi": "This skill enables users to integrate Claude skills into their projects, streamlining workflows and enhancing productivity. Operations teams benefit from automated skill integration, reducing manual setup time. It connects to Python-based workflows and supports Claude agents."
+}

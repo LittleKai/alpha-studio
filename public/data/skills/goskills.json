@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/goskills",
+  "slug": "goskills",
+  "name": "GoSkills",
+  "headline": "GoSkills - Claude Skills Management",
+  "short_description": "GoSkills is a command-line tool for parsing, managing, and executing Claude Skill packages. It supports OpenAI and other LLMs, enabling operations teams to automate workflows. Connects to Claude agents for enhanced automation capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "smallnest",
+  "install_command": "git clone https://github.com/smallnest/goskills.git",
+  "source_repo_url": "https://github.com/smallnest/goskills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "GoSkills is a command-line tool designed to parse, manage, and execute Claude Skill packages according to official Claude specifications. It integrates with OpenAI and other LLM-compatible APIs to automate workflow execution, allowing users to list, search, inspect, and run skills from local directories. The tool includes built-in support for shell commands, Python execution, file operations, web fetching, and search capabilities. GoSkills provides both a CLI for skill management and a web interface with real-time chat, session replay, and artifact rendering. Operations teams and developers benefit from streamlined skill execution, LLM-powered skill selection, and comprehensive testing capabilities.\nDiscovering and executing Claude skills from local directories for automation workflows\nIntegrating LLM-powered skill selection into operations processes\nRunning Python, shell, and file operation tasks through the CLI\nBuilding and testing Claude Skill packages with comprehensive test coverage",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/smallnest/goskills`",
+    "usage": "```\nUse GoSkills to [ACTION] for [PURPOSE]. For example: 'Use GoSkills to install the latest version of the [SKILL_NAME] package from the Claude Skill Registry. Verify the installation by listing all installed skills and their versions.' Include any specific flags or parameters needed, like --version or --force.\n```\nCopy\n\n```\n```bash\n$ goskills install --package skill-automated-reports --version 1.2.3\nInstalling skill-automated-reports v1.2.3...\n✅ Successfully installed skill-automated-reports v1.2.3\n\n$ goskills list --verbose\nInstalled Skills:\n1. skill-automated-reports v1.2.3 (last updated: 2024-05-15)\n   - Description: Automates weekly report generation from Salesforce and HubSpot data.\n   - Dependencies: skill-data-connector v0.9.1, skill-email-notifier v0.5.0\n   - Status: Active\n\n2. skill-data-connector v0.9.1\n   - Description: Connects to PostgreSQL, MySQL, and BigQuery for data extraction.\n   - Status: Active\n\n3. skill-email-notifier v0.5.0\n   - Description: Sends formatted reports via SMTP or Slack.\n   - Status: Active\n```\n\nThe tool also provides a summary of the installation process, including any warnings or conflicts detected. For instance, if a dependency is missing, it would suggest installing it first:\n```\n⚠️ Missing dependency detected: skill-data-connector v0.9.1\nRun 'goskills install --package skill-data-connector --version 0.9.1' to resolve.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "goskills#main-content",
+      "goskills#overview",
+      "goskills#setup",
+      "goskills#examples",
+      "goskills#tools",
+      "goskills#mcp",
+      "goskills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GoSkills is a command-line tool designed to parse, manage, and execute Claude Skill packages according to official Claude specifications. It integrates with OpenAI and other LLM-compatible APIs to automate workflow execution, allowing users to list, search, inspect, and run skills from local directories. The tool includes built-in support for shell commands, Python execution, file operations, web fetching, and search capabilities. GoSkills provides both a CLI for skill management and a web interface with real-time chat, session replay, and artifact rendering. Operations teams and developers benefit from streamlined skill execution, LLM-powered skill selection, and comprehensive testing capabilities.\nDiscovering and executing Claude skills from local directories for automation workflows\nIntegrating LLM-powered skill selection into operations processes\nRunning Python, shell, and file operation tasks through the CLI\nBuilding and testing Claude Skill packages with comprehensive test coverage",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/smallnest/goskills`",
+    "usage_vi": "```\nUse GoSkills to [ACTION] for [PURPOSE]. For example: 'Use GoSkills to install the latest version of the [SKILL_NAME] package from the Claude Skill Registry. Verify the installation by listing all installed skills and their versions.' Include any specific flags or parameters needed, like --version or --force.\n```\nCopy\n\n```\n```bash\n$ goskills install --package skill-automated-reports --version 1.2.3\nInstalling skill-automated-reports v1.2.3...\n✅ Successfully installed skill-automated-reports v1.2.3\n\n$ goskills list --verbose\nInstalled Skills:\n1. skill-automated-reports v1.2.3 (last updated: 2024-05-15)\n   - Description: Automates weekly report generation from Salesforce and HubSpot data.\n   - Dependencies: skill-data-connector v0.9.1, skill-email-notifier v0.5.0\n   - Status: Active\n\n2. skill-data-connector v0.9.1\n   - Description: Connects to PostgreSQL, MySQL, and BigQuery for data extraction.\n   - Status: Active\n\n3. skill-email-notifier v0.5.0\n   - Description: Sends formatted reports via SMTP or Slack.\n   - Status: Active\n```\n\nThe tool also provides a summary of the installation process, including any warnings or conflicts detected. For instance, if a dependency is missing, it would suggest installing it first:\n```\n⚠️ Missing dependency detected: skill-data-connector v0.9.1\nRun 'goskills install --package skill-data-connector --version 0.9.1' to resolve.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:12.131227Z",
+    "http_status": 200,
+    "content_hash": "ef3639676b7c5efc87853be60d6cbb35c5093e730daac410612a7f8782fcf401",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\goskills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\goskills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GoSkills - Claude Skills Management",
+  "short_description_vi": "GoSkills is a command-line tool for parsing, managing, and executing Claude Skill packages. It supports OpenAI and other LLMs, enabling operations teams to automate workflows. Connects to Claude agents for enhanced automation capabilities."
+}

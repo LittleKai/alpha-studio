@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/1panel",
+  "slug": "1panel",
+  "name": "react-native-best-practices",
+  "headline": "1Panel: Intuitive Web Management for Linux Servers",
+  "short_description": "1Panel is a powerful web interface and MCP Server designed for management of websites, files, containers, databases, and LLMs on Linux servers. Its intuitive design simplifies complex server tasks, making it ideal for developers and system administrators.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "1Panel-dev",
+  "install_command": "claude install 1Panel-dev/1Panel",
+  "source_repo_url": "https://github.com/1Panel-dev/1Panel",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "Linux",
+    "MCP Server",
+    "web management",
+    "containers",
+    "databases"
+  ],
+  "sections": {
+    "overview": "1Panel provides a centralized web interface and MCP Server for comprehensive Linux server management, enabling users to oversee websites, files, containers, databases, and language models from a single dashboard. The platform is designed with an intuitive interface that reduces complexity, making it accessible to both experienced developers and system administrators. 1Panel integrates with AI agents like Claude Code and Cursor, allowing developers to automate server operations through natural language commands. The tool handles the full spectrum of server administration tasks—from file management and containerization to database administration—eliminating the need for command-line expertise. This makes it ideal for teams seeking to streamline DevOps workflows and accelerate deployment cycles.\nManage multiple websites from a single, intuitive interface for streamlined operations.\nDeploy and manage Docker containers with ease, reducing setup time and complexity.\nOversee and optimize database operations on Linux servers for improved performance.\nIntegrate large language models (LLMs) to enhance web functionalities and user experiences.",
+    "setup": "Terminal\nCopy\n`claude install 1Panel-dev/1Panel`\n`git clone https://github.com/1Panel-dev/1Panel`",
+    "usage": "```\nI need to set up a Docker container for a new project using 1Panel. The container should run a Python application with [SPECIFIC_REQUIREMENTS]. Can you guide me through the steps to create and configure this container using 1Panel's interface? Include any necessary Docker commands or configurations.\n```\nCopy\n\n```\nTo set up a Docker container for your Python application using 1Panel, follow these steps:\n\n1. **Access 1Panel Dashboard**: Log in to your 1Panel interface. Navigate to the 'Containers' section.\n2. **Create a New Container**: Click on 'Add Container' and select 'Docker' as the container type.\n3. **Configure Container Settings**: In the configuration page, specify the following:\n   - **Name**: my-python-app\n   - **Image**: python:3.9-slim\n   - **Port Mapping**: Map port 8000 of the container to port 8000 on the host.\n   - **Volume Mounts**: Mount a volume to persist your application data. For example, mount `/app/data` on the host to `/data` in the container.\n4. **Environment Variables**: Add any necessary environment variables. For example, you might need to set `ENV_VAR=value`.\n5. **Start the Container**: Click 'Create' to build and start the container.\n6. **Verify the Container**: Check the container logs to ensure it is running correctly. You can access the logs from the 1Panel interface.\n7. **Deploy Your Application**: Use Docker commands to deploy your Python application. For example, you might use `docker exec -it my-python-app bash` to enter the container and run your application.\n\nBy following these steps, you should have a Docker container running your Python application, managed seamlessly through 1Panel.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "1panel#main-content",
+      "1panel#overview",
+      "1panel#setup",
+      "1panel#examples",
+      "1panel#tools",
+      "1panel#mcp",
+      "1panel#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "1Panel provides a centralized web interface and MCP Server for comprehensive Linux server management, enabling users to oversee websites, files, containers, databases, and language models from a single dashboard. The platform is designed with an intuitive interface that reduces complexity, making it accessible to both experienced developers and system administrators. 1Panel integrates with AI agents like Claude Code and Cursor, allowing developers to automate server operations through natural language commands. The tool handles the full spectrum of server administration tasks—from file management and containerization to database administration—eliminating the need for command-line expertise. This makes it ideal for teams seeking to streamline DevOps workflows and accelerate deployment cycles.\nManage multiple websites from a single, intuitive interface for streamlined operations.\nDeploy and manage Docker containers with ease, reducing setup time and complexity.\nOversee and optimize database operations on Linux servers for improved performance.\nIntegrate large language models (LLMs) to enhance web functionalities and user experiences.",
+    "setup_vi": "Terminal\nCopy\n`claude install 1Panel-dev/1Panel`\n`git clone https://github.com/1Panel-dev/1Panel`",
+    "usage_vi": "```\nI need to set up a Docker container for a new project using 1Panel. The container should run a Python application with [SPECIFIC_REQUIREMENTS]. Can you guide me through the steps to create and configure this container using 1Panel's interface? Include any necessary Docker commands or configurations.\n```\nCopy\n\n```\nTo set up a Docker container for your Python application using 1Panel, follow these steps:\n\n1. **Access 1Panel Dashboard**: Log in to your 1Panel interface. Navigate to the 'Containers' section.\n2. **Create a New Container**: Click on 'Add Container' and select 'Docker' as the container type.\n3. **Configure Container Settings**: In the configuration page, specify the following:\n   - **Name**: my-python-app\n   - **Image**: python:3.9-slim\n   - **Port Mapping**: Map port 8000 of the container to port 8000 on the host.\n   - **Volume Mounts**: Mount a volume to persist your application data. For example, mount `/app/data` on the host to `/data` in the container.\n4. **Environment Variables**: Add any necessary environment variables. For example, you might need to set `ENV_VAR=value`.\n5. **Start the Container**: Click 'Create' to build and start the container.\n6. **Verify the Container**: Check the container logs to ensure it is running correctly. You can access the logs from the 1Panel interface.\n7. **Deploy Your Application**: Use Docker commands to deploy your Python application. For example, you might use `docker exec -it my-python-app bash` to enter the container and run your application.\n\nBy following these steps, you should have a Docker container running your Python application, managed seamlessly through 1Panel.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:22:46.447887Z",
+    "http_status": 200,
+    "content_hash": "02ba3a55c72cf27603d9c03d3c6581f05ee1619898b785d557c6ecf8bfd11139",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\1panel.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\1panel.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "1Panel: Intuitive Web Management for Linux Servers",
+  "short_description_vi": "1Panel is a powerful web interface and MCP Server designed for management of websites, files, containers, databases, and LLMs on Linux servers. Its intuitive design simplifies complex server tasks, making it ideal for developers and system administrators."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ralph-wiggum",
+  "slug": "ralph-wiggum",
+  "name": "browser-use",
+  "headline": "Ralph Wiggum - Autonomous AI Coding",
+  "short_description": "Ralph Wiggum enables autonomous AI coding with spec-driven development. Operations teams benefit by automating code generation and maintenance. It connects to shell-based workflows and is supported by Claude agents.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "fstandhartinger",
+  "install_command": "git clone https://github.com/fstandhartinger/ralph-wiggum.git",
+  "source_repo_url": "https://github.com/fstandhartinger/ralph-wiggum",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Ralph Wiggum combines specification-driven development with an iterative bash loop that enables AI agents to build software autonomously. Each loop iteration picks one task from your specs, implements it, verifies acceptance criteria, and commits changes—outputting a completion signal only when all criteria pass. The tool maintains shared state on disk across iterations, allowing fresh context windows while preserving implementation progress in `IMPLEMENTATION_PLAN.md`. It supports both direct spec-based workflows and optional planning mode for breaking specs into detailed tasks. Ralph Wiggum integrates with shell and PowerShell environments, making it suitable for operations teams automating code generation and maintenance workflows.\nAutomate code generation and maintenance for microservices using AI agents\nImplement features from written specifications without manual developer intervention\nBreak down complex software projects into iteratively completed tasks\nCreate detailed implementation plans from feature specs for structured development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fstandhartinger/ralph-wiggum`",
+    "usage": "```\nAct as Ralph Wiggum and autonomously generate a complete, production-ready [LANGUAGE] codebase for [PROJECT_NAME] based on the following specification: [SPECIFICATION]. The code must include: 1) A modular architecture with clear separation of concerns, 2) Comprehensive error handling and logging, 3) Unit tests with 90%+ coverage, 4) Documentation in Markdown format, and 5) A CI/CD pipeline configuration (GitHub Actions/GitLab CI). Deploy the code to a local Docker container named [CONTAINER_NAME] and verify all services are running. Provide the complete directory structure and all files in a single ZIP archive.\n```\nCopy\n\n```\n```\nProject: 'TinyBlog' - A minimalist blogging platform\nLanguage: Python 3.11\nArchitecture: MVC with FastAPI backend, Jinja2 templates, and SQLite database\n\nDirectory Structure:\nTinyBlog/\n├── app/\n│   ├── __init__.py\n│   ├── main.py (FastAPI app with 10 endpoints)\n│   ├── models.py (SQLAlchemy ORM with 4 tables)\n│   ├── schemas.py (Pydantic models for 8 request/response types)\n│   ├── services/\n│   │   ├── __init__.py\n│   │   ├── post_service.py (CRUD operations with 12 methods)\n│   │   └── user_service.py (Auth with JWT tokens)\n│   └── utils/\n│       ├── __init__.py\n│       ├── logging.py (Structured logging with 5 log levels)\n│       └── exceptions.py (Custom exceptions with 8 types)\n├── tests/\n│   ├── __init__.py\n│   ├── test_models.py (15 test cases, 95% coverage)\n│   ├── test_routes.py (22 endpoint tests, 98% coverage)\n│   └── conftest.py (Fixtures for 3 test scenarios)\n├── templates/\n│   ├── base.html (Layout with Bootstrap 5)\n│   ├── index.html (Homepage with 3 dynamic sections)\n│   └── post.html (Single post view with comments)\n├── static/\n│   ├── css/\n│   │   └── style.css (240 lines, mobile-first)\n│   └── js/\n│       └── main.js (Vanilla JS with 8 functions)\n├── Dockerfile (Multi-stage build, 120MB final image)\n├── docker-compose.yml (PostgreSQL + Redis + App services)\n├── requirements.txt (Production + Development dependencies)\n├── .github/workflows/\n│   └── ci-cd.yml (Tests, linting, build, deploy to Render)\n├── README.md (Installation, usage, API docs)\n└── .env.example (Environment variables template)\n\nVerification:\n✅ All 37 unit tests pass (98.2% coverage)\n✅ FastAPI app starts on http://localhost:8000\n✅ PostgreSQL connected at port 5432\n✅ Redis cache running at port 6379\n✅ Docker container 'tinyblog-app' running (port 8000:8000)\n✅ Health check endpoint /health returns {\"status\": \"ok\"}\n\nNext Steps:\n1. Run 'docker exec -it tinyblog-app bash' to access the container\n2. Use 'alembic' for database migrations\n3. Configure SMTP in .env for email notifications\n4. Deploy to Render using the GitHub Actions workflow\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ralph-wiggum#main-content",
+      "ralph-wiggum#overview",
+      "ralph-wiggum#setup",
+      "ralph-wiggum#examples",
+      "ralph-wiggum#tools",
+      "ralph-wiggum#mcp",
+      "ralph-wiggum#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Ralph Wiggum combines specification-driven development with an iterative bash loop that enables AI agents to build software autonomously. Each loop iteration picks one task from your specs, implements it, verifies acceptance criteria, and commits changes—outputting a completion signal only when all criteria pass. The tool maintains shared state on disk across iterations, allowing fresh context windows while preserving implementation progress in `IMPLEMENTATION_PLAN.md`. It supports both direct spec-based workflows and optional planning mode for breaking specs into detailed tasks. Ralph Wiggum integrates with shell and PowerShell environments, making it suitable for operations teams automating code generation and maintenance workflows.\nAutomate code generation and maintenance for microservices using AI agents\nImplement features from written specifications without manual developer intervention\nBreak down complex software projects into iteratively completed tasks\nCreate detailed implementation plans from feature specs for structured development",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fstandhartinger/ralph-wiggum`",
+    "usage_vi": "```\nAct as Ralph Wiggum and autonomously generate a complete, production-ready [LANGUAGE] codebase for [PROJECT_NAME] based on the following specification: [SPECIFICATION]. The code must include: 1) A modular architecture with clear separation of concerns, 2) Comprehensive error handling and logging, 3) Unit tests with 90%+ coverage, 4) Documentation in Markdown format, and 5) A CI/CD pipeline configuration (GitHub Actions/GitLab CI). Deploy the code to a local Docker container named [CONTAINER_NAME] and verify all services are running. Provide the complete directory structure and all files in a single ZIP archive.\n```\nCopy\n\n```\n```\nProject: 'TinyBlog' - A minimalist blogging platform\nLanguage: Python 3.11\nArchitecture: MVC with FastAPI backend, Jinja2 templates, and SQLite database\n\nDirectory Structure:\nTinyBlog/\n├── app/\n│   ├── __init__.py\n│   ├── main.py (FastAPI app with 10 endpoints)\n│   ├── models.py (SQLAlchemy ORM with 4 tables)\n│   ├── schemas.py (Pydantic models for 8 request/response types)\n│   ├── services/\n│   │   ├── __init__.py\n│   │   ├── post_service.py (CRUD operations with 12 methods)\n│   │   └── user_service.py (Auth with JWT tokens)\n│   └── utils/\n│       ├── __init__.py\n│       ├── logging.py (Structured logging with 5 log levels)\n│       └── exceptions.py (Custom exceptions with 8 types)\n├── tests/\n│   ├── __init__.py\n│   ├── test_models.py (15 test cases, 95% coverage)\n│   ├── test_routes.py (22 endpoint tests, 98% coverage)\n│   └── conftest.py (Fixtures for 3 test scenarios)\n├── templates/\n│   ├── base.html (Layout with Bootstrap 5)\n│   ├── index.html (Homepage with 3 dynamic sections)\n│   └── post.html (Single post view with comments)\n├── static/\n│   ├── css/\n│   │   └── style.css (240 lines, mobile-first)\n│   └── js/\n│       └── main.js (Vanilla JS with 8 functions)\n├── Dockerfile (Multi-stage build, 120MB final image)\n├── docker-compose.yml (PostgreSQL + Redis + App services)\n├── requirements.txt (Production + Development dependencies)\n├── .github/workflows/\n│   └── ci-cd.yml (Tests, linting, build, deploy to Render)\n├── README.md (Installation, usage, API docs)\n└── .env.example (Environment variables template)\n\nVerification:\n✅ All 37 unit tests pass (98.2% coverage)\n✅ FastAPI app starts on http://localhost:8000\n✅ PostgreSQL connected at port 5432\n✅ Redis cache running at port 6379\n✅ Docker container 'tinyblog-app' running (port 8000:8000)\n✅ Health check endpoint /health returns {\"status\": \"ok\"}\n\nNext Steps:\n1. Run 'docker exec -it tinyblog-app bash' to access the container\n2. Use 'alembic' for database migrations\n3. Configure SMTP in .env for email notifications\n4. Deploy to Render using the GitHub Actions workflow\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:40:25.765756Z",
+    "http_status": 200,
+    "content_hash": "7f1d58213bc23f69c889a5ae7171b579f27ba5564f7e8013ff5297c5c4b3aa4f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ralph-wiggum.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ralph-wiggum.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Ralph Wiggum - Autonomous AI Coding",
+  "short_description_vi": "Ralph Wiggum enables autonomous AI coding with spec-driven development. Operations teams benefit by automating code generation and maintenance. It connects to shell-based workflows and is supported by Claude agents."
+}

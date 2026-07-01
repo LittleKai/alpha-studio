@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openpackage",
+  "slug": "openpackage",
+  "name": "browser-use",
+  "headline": "OpenPackage - AI Agent Skill Management",
+  "short_description": "OpenPackage is an open-source alternative to Claude Code Plugins. It enables developers to create, manage, and deploy AI agents with custom skills. Operations teams benefit from streamlined workflows and improved automation. It connects to CLI tools and integrates with existing development environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "enulus",
+  "install_command": "git clone https://github.com/enulus/OpenPackage.git",
+  "source_repo_url": "https://github.com/enulus/OpenPackage",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "openpackage",
+    "commands",
+    "skills",
+    "coding",
+    "package-manager",
+    "plugins",
+    "opkg",
+    "rules",
+    "agents",
+    "ai",
+    "cli"
+  ],
+  "sections": {
+    "overview": "OpenPackage is a lightweight CLI package manager that provides unified installation, management, and packaging of coding agent configuration files. It handles rules, commands, agents, skills, and MCPs with cross-platform compatibility and dependency tracking. The tool enables developers to install and uninstall resources from local paths, GitHub repositories, and remote registries using simple commands. Operations teams benefit from streamlined config management across multiple codebases and platforms. OpenPackage replaces manual file organization with automated, modular config deployment.\nInstall and sync agents, skills, and plugins across Claude, Cursor, and other AI coding platforms\nManage and distribute custom rules and commands to development teams\nReuse configuration files and MCPs across multiple projects and codebases\nTrack dependencies and versions of installed agent configurations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/enulus/OpenPackage`",
+    "usage": "```\nAct as an OpenPackage agent to [TASK]. Use the following configuration: \n- Skills: [LIST_OF_SKILLS]\n- Environment: [ENVIRONMENT_NAME]\n- CLI Tools: [TOOLS_IF_ANY]\n- Constraints: [ANY_CONSTRAINTS]\n\nStart by validating the configuration, then execute the task step-by-step. Report progress in real-time and provide a summary of actions taken, outputs generated, and next steps. If errors occur, diagnose and suggest fixes.\n```\nCopy\n\n```\n### OpenPackage Agent Report\n**Task**: Deploy a CI/CD pipeline agent to automate testing for a Python project.\n\n**Configuration Validation**:\n- Skills: `python-test-runner`, `git-clone`, `docker-build`\n- Environment: `dev-container`\n- CLI Tools: `docker`, `git`, `pytest`\n- Constraints: Max 3 concurrent jobs, timeout after 10 minutes\n\n**Execution Steps**:\n1. **Environment Setup**: Detected `dev-container` with Python 3.11 and Docker installed. No conflicts found.\n2. **Repository Cloning**: Cloned `https://github.com/example/repo` into `/workspace/repo`. Branch: `main`. SHA: `a1b2c3d4`.\n3. **Dependency Installation**: Installed `pytest`, `pytest-cov`, and `requests` via pip. Logs show 12 packages installed.\n4. **Test Execution**: Ran `pytest --cov=src` in `/workspace/repo`. Results:\n   - Total tests: 42\n   - Passed: 40 (95.2%)\n   - Failed: 2 (4.8%)\n   - Coverage: 87%\n5. **Artifact Generation**: Built Docker image `example/repo:latest` with size 1.2GB. Push skipped due to `--no-push` flag.\n\n**Errors Encountered**:\n- Test `test_api_integration` failed due to missing API key. Suggested fix: Add `API_KEY` to environment variables or mock the API.\n\n**Summary**:\n- Tasks completed: 4/5 (80%)\n- Outputs generated: Test report (`/workspace/repo/test-results.xml`), Docker image (`example/repo:latest`)\n- Next steps: Fix failing tests, push Docker image to registry, or trigger downstream jobs.\n\n**Recommendations**:\n- Add `API_KEY` to secrets management for future runs.\n- Increase timeout to 15 minutes for larger projects.\n- Log test results to a persistent storage (e.g., S3) for historical analysis.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "openpackage#main-content",
+      "openpackage#overview",
+      "openpackage#setup",
+      "openpackage#examples",
+      "openpackage#tools",
+      "openpackage#mcp",
+      "openpackage#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OpenPackage is a lightweight CLI package manager that provides unified installation, management, and packaging of coding agent configuration files. It handles rules, commands, agents, skills, and MCPs with cross-platform compatibility and dependency tracking. The tool enables developers to install and uninstall resources from local paths, GitHub repositories, and remote registries using simple commands. Operations teams benefit from streamlined config management across multiple codebases and platforms. OpenPackage replaces manual file organization with automated, modular config deployment.\nInstall and sync agents, skills, and plugins across Claude, Cursor, and other AI coding platforms\nManage and distribute custom rules and commands to development teams\nReuse configuration files and MCPs across multiple projects and codebases\nTrack dependencies and versions of installed agent configurations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/enulus/OpenPackage`",
+    "usage_vi": "```\nAct as an OpenPackage agent to [TASK]. Use the following configuration: \n- Skills: [LIST_OF_SKILLS]\n- Environment: [ENVIRONMENT_NAME]\n- CLI Tools: [TOOLS_IF_ANY]\n- Constraints: [ANY_CONSTRAINTS]\n\nStart by validating the configuration, then execute the task step-by-step. Report progress in real-time and provide a summary of actions taken, outputs generated, and next steps. If errors occur, diagnose and suggest fixes.\n```\nCopy\n\n```\n### OpenPackage Agent Report\n**Task**: Deploy a CI/CD pipeline agent to automate testing for a Python project.\n\n**Configuration Validation**:\n- Skills: `python-test-runner`, `git-clone`, `docker-build`\n- Environment: `dev-container`\n- CLI Tools: `docker`, `git`, `pytest`\n- Constraints: Max 3 concurrent jobs, timeout after 10 minutes\n\n**Execution Steps**:\n1. **Environment Setup**: Detected `dev-container` with Python 3.11 and Docker installed. No conflicts found.\n2. **Repository Cloning**: Cloned `https://github.com/example/repo` into `/workspace/repo`. Branch: `main`. SHA: `a1b2c3d4`.\n3. **Dependency Installation**: Installed `pytest`, `pytest-cov`, and `requests` via pip. Logs show 12 packages installed.\n4. **Test Execution**: Ran `pytest --cov=src` in `/workspace/repo`. Results:\n   - Total tests: 42\n   - Passed: 40 (95.2%)\n   - Failed: 2 (4.8%)\n   - Coverage: 87%\n5. **Artifact Generation**: Built Docker image `example/repo:latest` with size 1.2GB. Push skipped due to `--no-push` flag.\n\n**Errors Encountered**:\n- Test `test_api_integration` failed due to missing API key. Suggested fix: Add `API_KEY` to environment variables or mock the API.\n\n**Summary**:\n- Tasks completed: 4/5 (80%)\n- Outputs generated: Test report (`/workspace/repo/test-results.xml`), Docker image (`example/repo:latest`)\n- Next steps: Fix failing tests, push Docker image to registry, or trigger downstream jobs.\n\n**Recommendations**:\n- Add `API_KEY` to secrets management for future runs.\n- Increase timeout to 15 minutes for larger projects.\n- Log test results to a persistent storage (e.g., S3) for historical analysis.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:00:17.323538Z",
+    "http_status": 200,
+    "content_hash": "482eae0970ae804c3cec52bd5b43a62f0e94a8a5ef52e389abdcd507a1bfda29",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openpackage.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openpackage.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "OpenPackage - AI Agent Skill Management",
+  "short_description_vi": "OpenPackage is an open-source alternative to Claude Code Plugins. It enables developers to create, manage, and deploy AI agents with custom skills. Operations teams benefit from streamlined workflows and improved automation. It connects to CLI tools and integrates with existing development environments."
+}

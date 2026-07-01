@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cost-guardian",
+  "slug": "cost-guardian",
+  "name": "Cost Guardian",
+  "headline": "Cost Guardian - Real-time Budget Enforcement",
+  "short_description": "Cost Guardian is a real-time budget enforcement and cost tracking tool for Claude Code. It helps operations teams monitor and optimize spending, ensuring adherence to budget constraints. It integrates with Claude Code's CLI and provides actionable insights for cost management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "Belkins",
+  "install_command": "git clone https://github.com/Belkins/cost-guardian.git",
+  "source_repo_url": "https://github.com/Belkins/cost-guardian",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cost-tracking",
+    "anthropic",
+    "budget",
+    "cli",
+    "ai-tools",
+    "plugin",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Cost Guardian is a native Claude Code plugin that monitors your Claude API spending in real-time, enforcing budget limits at session, daily, monthly, or project scopes. Unlike external cost tracking tools, it warns you before expensive operations happen and offers three enforcement modes—warn, confirm, or block—to match your team's cost policies. The plugin automatically tracks costs per operation and file, estimates expenses before execution via pre-operation hooks, and generates AI-powered optimization suggestions based on usage patterns. Operations teams and individual developers use Cost Guardian to prevent budget overruns, identify redundant API calls, and discover model optimization opportunities that typically yield 30-50% savings on Claude costs.\nMonitor per-session and daily API spending limits during Claude Code development\nPrevent budget overruns with pre-operation cost warnings before expensive file reads or edits\nIdentify redundant API calls and model optimization opportunities via automated analysis\nEnforce team cost policies with configurable enforcement modes (warn/confirm/block)",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Belkins/cost-guardian`",
+    "usage": "```\nAct as Cost Guardian for my Claude Code project. Monitor real-time spending for [PROJECT_NAME] and enforce the budget cap of $[BUDGET_CAP] per month. Flag any cost spikes exceeding $[THRESHOLD_PERCENT]% of the monthly budget. Provide a breakdown of top cost drivers and suggest 3 optimization actions to reduce spending. Current monthly spend: $[CURRENT_SPEND].\n```\nCopy\n\n```\nCost Guardian Report for Project Phoenix (Budget: $5,000/month | Current Spend: $3,200 | Threshold: 80%)\n\n**ALERT: Spending exceeds 64% of monthly budget**\n\nTop Cost Drivers:\n1. Cloud Compute (AWS EC2): $1,850 (57.8% of spend) - *Spike detected: +42% vs last week*\n   - Primary contributor: ml.g5.2xlarge instances for model training (3 instances running 24/7)\n   - Recommendation: Schedule training during off-peak hours or switch to spot instances\n\n2. API Calls (OpenAI): $980 (30.6% of spend) - *Stable usage pattern*\n   - 12,400 API calls this month (avg $0.079/call)\n   - Recommendation: Implement caching layer for frequent queries\n\n3. Storage (S3): $370 (11.6% of spend) - *Gradual increase*\n   - 450GB stored (growth: +15GB/week)\n   - Recommendation: Archive old model versions to Glacier\n\n**Optimization Actions (Potential Savings: $850/month):**\n1. Resize EC2 instances: Switch ml.g5.2xlarge to ml.g5.xlarge during non-peak hours (-$420)\n2. Implement API caching: Reduce calls by 30% (-$294)\n3. Archive old models: Move 200GB to Glacier (-$136)\n\n**Next Steps:**\n- [ ] Implement instance resizing by EOD today\n- [ ] Add caching middleware to API layer\n- [ ] Set up automated archiving script for S3\n\n*Report generated at 2024-05-15 14:32 UTC | Next check in 4 hours*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cost-guardian#main-content",
+      "cost-guardian#overview",
+      "cost-guardian#setup",
+      "cost-guardian#examples",
+      "cost-guardian#tools",
+      "cost-guardian#mcp",
+      "cost-guardian#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Cost Guardian là một plugin native của Claude Code giúp giám sát chi tiêu API Claude theo thời gian thực, đồng thời áp đặt các giới hạn ngân sách theo phạm vi phiên làm việc (session), ngày, tháng hoặc dự án. Khác với các công cụ theo dõi chi phí bên ngoài, plugin này sẽ cảnh báo bạn trước khi các thao tác tốn kém xảy ra và cung cấp ba chế độ kiểm soát—warn (cảnh báo), confirm (xác nhận) hoặc block (chặn)—để phù hợp với chính sách chi phí của đội ngũ. Plugin tự động theo dõi chi phí trên từng thao tác và tệp tin, ước tính chi phí trước khi thực thi thông qua các pre-operation hook, đồng thời tạo các đề xuất tối ưu hóa bằng AI dựa trên thói quen sử dụng. Các đội ngũ vận hành và lập trình viên cá nhân sử dụng Cost Guardian để ngăn ngừa vượt ngân sách, xác định các API call dư thừa và tìm kiếm các cơ hội tối ưu hóa mô hình, thường giúp tiết kiệm từ 30-50% chi phí sử dụng Claude.\nGiám sát giới hạn chi tiêu API theo từng phiên và hàng ngày trong quá trình phát triển với Claude Code\nNgăn ngừa vượt ngân sách nhờ cảnh báo chi phí trước khi thực hiện các thao tác đọc hoặc chỉnh sửa tệp tin tốn kém\nXác định các API call dư thừa và cơ hội tối ưu hóa mô hình thông qua phân tích tự động\nÁp đặt chính sách chi phí của đội ngũ với các chế độ kiểm soát có thể cấu hình (warn/confirm/block)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Belkins/cost-guardian`",
+    "usage_vi": "```\nĐóng vai trò là Cost Guardian cho dự án Claude Code của tôi. Giám sát chi tiêu theo thời gian thực cho [PROJECT_NAME] và áp đặt hạn mức ngân sách $[BUDGET_CAP] mỗi tháng. Đánh dấu bất kỳ trường hợp chi phí tăng đột biến nào vượt quá $[THRESHOLD_PERCENT]% ngân sách tháng. Cung cấp bảng phân tích các nguồn phát sinh chi phí chính và đề xuất 3 hành động tối ưu hóa để giảm chi tiêu. Chi tiêu tháng hiện tại: $[CURRENT_SPEND].\n```\nCopy\n\n```\nBáo cáo Cost Guardian cho Dự án Phoenix (Ngân sách: $5,000/tháng | Chi tiêu Hiện tại: $3,200 | Ngưỡng: 80%)\n\n**CẢNH BÁO: Chi tiêu vượt quá 64% ngân sách tháng**\n\nCác nguồn phát sinh chi phí chính:\n1. Điện toán đám mây (AWS EC2): $1,850 (57.8% chi tiêu) - *Phát hiện tăng đột biến: +42% so với tuần trước*\n   - Tác nhân chính: các instance ml.g5.2xlarge để huấn luyện mô hình (3 instance chạy 24/7)\n   - Khuyến nghị: Lên lịch huấn luyện vào khung giờ thấp điểm hoặc chuyển sang sử dụng spot instance\n\n2. Lượt gọi API (OpenAI): $980 (30.6% chi tiêu) - *Mẫu hình sử dụng ổn định*\n   - 12,400 lượt gọi API trong tháng này (trung bình $0.079/lượt gọi)\n   - Khuyến nghị: Triển khai lớp cache (caching layer) cho các truy vấn thường xuyên\n\n3. Lưu trữ (S3): $370 (11.6% chi tiêu) - *Tăng dần đều*\n   - Đang lưu trữ 450GB (tăng trưởng: +15GB/tuần)\n   - Khuyến nghị: Lưu trữ (archive) các phiên bản mô hình cũ sang Glacier\n\n**Hành động tối ưu hóa (Tiết kiệm tiềm năng: $850/tháng):**\n1. Thay đổi kích thước (resize) EC2 instance: Chuyển đổi từ ml.g5.2xlarge sang ml.g5.xlarge trong khung giờ thấp điểm (-$420)\n2. Triển khai API caching: Giảm 30% số lượt gọi (-$294)\n3. Lưu trữ các mô hình cũ: Chuyển 200GB sang Glacier (-$136)\n\n**Các bước tiếp theo:**\n- [ ] Triển khai thay đổi kích thước instance trước cuối ngày hôm nay (EOD)\n- [ ] Thêm middleware caching vào tầng API\n- [ ] Thiết lập script tự động lưu trữ cho S3\n\n*Báo cáo được tạo lúc 2024-05-15 14:32 UTC | Lần kiểm tra tiếp theo sau 4 giờ nữa*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:25.081901Z",
+    "http_status": 200,
+    "content_hash": "6802ba06b932b27ffcd851fde30990654a4b3a41861a956919c76022f1b96e7c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cost-guardian.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cost-guardian.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cost Guardian - Kiểm soát ngân sách theo thời gian thực",
+  "short_description_vi": "Cost Guardian là công cụ theo dõi chi phí và kiểm soát ngân sách theo thời gian thực dành cho Claude Code. Công cụ này giúp các đội ngũ vận hành giám sát và tối ưu hóa chi tiêu, đảm bảo tuân thủ các giới hạn ngân sách. Ngoài ra, Cost Guardian tích hợp mượt mà với CLI của Claude Code và cung cấp các thông tin chi tiết hữu ích để quản lý chi phí hiệu quả."
+}

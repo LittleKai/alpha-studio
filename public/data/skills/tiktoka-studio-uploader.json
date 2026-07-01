@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tiktoka-studio-uploader",
+  "slug": "tiktoka-studio-uploader",
+  "name": "TikTok Studio Uploader",
+  "headline": "TikTok Studio Uploader - Automate Video Uploads",
+  "short_description": "Schedule and Publish contents erverywhere.Bulk auto video upload and Scheduling & Publishing Effortless for You & Your Entire Team. batch headless upload  all major social networks using this ultimate social media scheduler. Fret less, save time, and generate more leads!",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "wanghaisheng",
+  "install_command": "git clone https://github.com/wanghaisheng/tiktoka-studio-uploader.git",
+  "source_repo_url": "https://github.com/wanghaisheng/tiktoka-studio-uploader",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "content",
+    "tiktok",
+    "video",
+    "youtube",
+    "python"
+  ],
+  "sections": {
+    "overview": "This skill automates YouTube video uploads using a headless Selenium-based approach, eliminating the need for paid Google Workspace accounts and API rate limit restrictions. It supports multiple YouTube channels through cookie-based authentication, proxy detection, and flexible scheduling policies that let you publish immediately, keep videos private, or distribute uploads across days based on daily limits. Set up a Firefox profile, export YouTube cookies, configure your publish policy, and batch upload videos programmatically. Ideal for content creators, marketing teams, and automation workflows managing multiple channels or high-volume uploads.\nAutomate the bulk upload of videos to YouTube and TikTok, saving hours of manual work.\nSchedule video releases at specific times to maximize audience engagement.\nManage multiple social media accounts from a single interface, reducing the complexity of content distribution.\nUtilize proxy support to maintain account security while uploading content.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wanghaisheng/tiktoka-studio-uploader`",
+    "usage": "```\nSchedule and publish the following TikTok content for [BRAND_NAME] across all major social networks: [VIDEO_FILE_PATHS] or [VIDEO_URLS]. Optimize posting times for maximum engagement based on [TARGET_AUDIENCE] and [PLATFORM_SPECIFIC_RECOMMENDATIONS]. Include captions with [KEYWORDS] and hashtags like #[BRAND_HASHTAG]. Set the publishing schedule to [PUBLISH_DATES/TIMES]. Notify team members via [SLACK/DISCORD/EMAIL] with the upload status and performance metrics to track in [ANALYTICS_TOOL].\n```\nCopy\n\n```\nSuccessfully scheduled and published the following TikTok content for 'EcoGlow Skincare' across TikTok, Instagram Reels, and YouTube Shorts:\n\n**Video 1: \"5-Minute Glow-Up Routine\"**\n- TikTok: Published on 2023-11-15 at 7:00 PM EST (12.4K views, 892 likes, 112 shares)\n- Instagram Reels: Published on 2023-11-15 at 8:30 PM EST (8.7K views, 612 likes, 78 shares)\n- YouTube Shorts: Published on 2023-11-16 at 6:00 AM EST (15.2K views, 1.1K likes, 214 shares)\n\n**Video 2: \"DIY Natural Face Masks\"**\n- TikTok: Scheduled for 2023-11-18 at 5:00 PM EST\n- Instagram Reels: Scheduled for 2023-11-19 at 12:00 PM EST\n- YouTube Shorts: Scheduled for 2023-11-20 at 3:00 PM EST\n\n**Team Notification:**\nA Slack message was sent to @marketing-team with the upload status and performance metrics. The team is tracking engagement in Google Analytics under the 'Social Media Campaigns' dashboard.\n\n**Optimization Notes:**\n- Posting times were adjusted based on peak engagement hours for the target audience (women aged 25-34).\n- Captions included keywords like 'skincare routine,' 'natural beauty,' and 'glow-up,' with hashtags #EcoGlow #SkincareTips #NaturalBeauty.\n- All videos were auto-converted to fit platform-specific dimensions (9:16 for TikTok/Reels, 9:16 for YouTube Shorts).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tiktoka-studio-uploader#main-content",
+      "tiktoka-studio-uploader#overview",
+      "tiktoka-studio-uploader#setup",
+      "tiktoka-studio-uploader#examples",
+      "tiktoka-studio-uploader#tools",
+      "tiktoka-studio-uploader#mcp",
+      "tiktoka-studio-uploader#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "Skill này tự động hóa việc upload video YouTube bằng phương pháp headless dựa trên Selenium, loại bỏ nhu cầu sử dụng tài khoản Google Workspace trả phí và các giới hạn rate limit của API. Nó hỗ trợ nhiều kênh YouTube thông qua xác thực dựa trên cookie, phát hiện proxy và các chính sách lập lịch linh hoạt cho phép bạn đăng ngay lập tức, để video ở chế độ riêng tư hoặc phân bổ lượt upload theo ngày dựa trên giới hạn hàng ngày. Thiết lập một Firefox profile, export cookie YouTube, cấu hình publish policy của bạn và batch upload video programmatically. Lý tưởng cho các nhà sáng tạo nội dung, đội ngũ marketing và các automation workflow quản lý nhiều kênh hoặc lượng upload lớn.\nTự động hóa việc upload video hàng loạt lên YouTube và TikTok, tiết kiệm hàng giờ làm việc thủ công.\nLên lịch phát hành video vào các khung giờ cụ thể để tối đa hóa tương tác của khán giả.\nQuản lý nhiều tài khoản mạng xã hội từ một giao diện duy nhất, giảm bớt sự phức tạp khi phân phối nội dung.\nTận dụng hỗ trợ proxy để duy trì bảo mật tài khoản trong quá trình upload nội dung.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/wanghaisheng/tiktoka-studio-uploader`",
+    "usage_vi": "```\nLên lịch và đăng tải nội dung TikTok sau cho [BRAND_NAME] trên tất cả các mạng xã hội lớn: [VIDEO_FILE_PATHS] hoặc [VIDEO_URLS]. Tối ưu hóa thời gian đăng bài để đạt tương tác tối đa dựa trên [TARGET_AUDIENCE] và [PLATFORM_SPECIFIC_RECOMMENDATIONS]. Đính kèm caption chứa [KEYWORDS] và hashtag như #[BRAND_HASHTAG]. Đặt lịch đăng tải thành [PUBLISH_DATES/TIMES]. Thông báo cho các thành viên trong đội ngũ qua [SLACK/DISCORD/EMAIL] kèm trạng thái upload và các chỉ số hiệu suất cần theo dõi trong [ANALYTICS_TOOL].\n```\nCopy\n\n```\nĐã lên lịch và đăng tải thành công nội dung TikTok sau cho 'EcoGlow Skincare' trên TikTok, Instagram Reels và YouTube Shorts:\n\n**Video 1: \"5-Minute Glow-Up Routine\"**\n- TikTok: Đã đăng ngày 2023-11-15 lúc 7:00 PM EST (12.4K lượt xem, 892 lượt thích, 112 lượt chia sẻ)\n- Instagram Reels: Đã đăng ngày 2023-11-15 lúc 8:30 PM EST (8.7K lượt xem, 612 lượt thích, 78 lượt chia sẻ)\n- YouTube Shorts: Đã đăng ngày 2023-11-16 lúc 6:00 AM EST (15.2K lượt xem, 1.1K lượt thích, 214 lượt chia sẻ)\n\n**Video 2: \"DIY Natural Face Masks\"**\n- TikTok: Đã lên lịch vào 2023-11-18 lúc 5:00 PM EST\n- Instagram Reels: Đã lên lịch vào 2023-11-19 lúc 12:00 PM EST\n- YouTube Shorts: Đã lên lịch vào 2023-11-20 lúc 3:00 PM EST\n\n**Thông báo đội ngũ:**\nMột tin nhắn Slack đã được gửi tới @marketing-team kèm theo trạng thái upload và các chỉ số hiệu suất. Đội ngũ đang theo dõi lượt tương tác trong Google Analytics trên dashboard 'Social Media Campaigns'.\n\n**Ghi chú tối ưu hóa:**\n- Thời gian đăng bài đã được điều chỉnh dựa trên các khung giờ tương tác cao điểm của đối tượng mục tiêu (nữ giới từ 25-34 tuổi).\n- Caption bao gồm các từ khóa như 'skincare routine', 'natural beauty' và 'glow-up', cùng các hashtag #EcoGlow #SkincareTips #NaturalBeauty.\n- Tất cả video đã được tự động chuyển đổi định dạng để phù hợp với kích thước đặc thù của từng nền tảng (9:16 cho TikTok/Reels, 9:16 cho YouTube Shorts).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:03:57.514911Z",
+    "http_status": 200,
+    "content_hash": "df5992834172970dab9b71a4641d85efccc5f091480e6f4aaee7bb98088cafb2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tiktoka-studio-uploader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tiktoka-studio-uploader.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TikTok Studio Uploader - Tự động hóa upload video",
+  "short_description_vi": "Lên lịch và đăng tải nội dung ở mọi nơi. Tự động upload video hàng loạt và lên lịch đăng tải dễ dàng cho bạn & toàn bộ đội ngũ. Batch headless upload lên tất cả các mạng xã hội lớn bằng công cụ lập lịch tối ưu này. Bớt lo âu, tiết kiệm thời gian và thu hút nhiều lead hơn!"
+}

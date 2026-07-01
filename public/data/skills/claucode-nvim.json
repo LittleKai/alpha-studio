@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claucode-nvim",
+  "slug": "claucode-nvim",
+  "name": "claucode.nvim",
+  "headline": "claucode.nvim: Neovim Integration",
+  "short_description": "claucode.nvim is a Neovim plugin that integrates Claude Code CLI into your editor. It enables developers to use Claude's AI capabilities directly within Neovim, streamlining coding tasks and improving productivity. The plugin connects to Claude's AI for code generation, debugging, and optimization, enhancing workflows for developers.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "avifenesh",
+  "install_command": "git clone https://github.com/avifenesh/claucode.nvim.git",
+  "source_repo_url": "https://github.com/avifenesh/claucode.nvim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "neovim",
+    "mcp",
+    "nvim-plugin",
+    "cli",
+    "code",
+    "ai",
+    "lua",
+    "diy",
+    "neovim-plugin",
+    "vim",
+    "claude",
+    "terminal",
+    "claude-code",
+    "nvim",
+    "usefull",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "The claucode.nvim skill serves as a powerful bridge between Neovim and the Claude Code CLI, enabling developers to leverage AI capabilities directly within their coding environment. This integration simplifies the workflow by allowing users to access Claude's AI functionalities without leaving their preferred text editor. By streamlining the coding process, developers can enhance their productivity and focus on writing high-quality code. One of the key benefits of using claucode.nvim is its ability to save time during the development process. Although the exact time savings are currently unknown, the seamless integration is designed to reduce the friction of switching between tools, allowing developers to implement AI-driven features more efficiently. This skill is particularly valuable for intermediate-level developers who are comfortable with Neovim and looking to enhance their coding efficiency through AI automation. Developers, product managers, and AI practitioners will find claucode.nvim especially useful as it fits well into AI-first workflows. For example, a developer working on a data engineering project can utilize the skill to quickly generate data processing scripts with AI assistance, improving both speed and accuracy. Similarly, product managers can leverage the integration to prototype features rapidly, enabling faster iterations and feedback cycles. Implementation of claucode.nvim is straightforward, requiring approximately 30 minutes to set up. The skill is categorized as intermediate in difficulty, making it suitable for those with some experience in Neovim and coding practices. By incorporating this skill into their workflow, users can significantly enhance their coding capabilities and embrace the potential of AI automation in their development processes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/avifenesh/claucode.nvim`",
+    "usage": "```\nUse claucode.nvim to [TASK] in [FILE_PATH] within Neovim. For example: 'Refactor the Python class in src/utils/helpers.py to use dataclasses and add type hints.' or 'Debug the memory leak in the Go service in cmd/server/main.go by analyzing the goroutines dump.' Include any relevant context like error messages, performance issues, or specific requirements.\n```\nCopy\n\n```\n```lua\n-- File: src/utils/helpers.py\nfrom dataclasses import dataclass\nfrom typing import Optional\n\n@dataclass\nclass UserProfile:\n    username: str\n    email: str\n    is_active: bool = True\n    last_login: Optional[str] = None\n\n    def get_display_name(self) -> str:\n        return self.username.capitalize()\n\n    def deactivate(self) -> None:\n        self.is_active = False\n```\n\n**Optimizations Applied:**\n1. Replaced traditional class with `@dataclass` decorator to auto-generate `__init__`, `__repr__`, and `__eq__` methods\n2. Added type hints for all attributes and methods\n3. Set default value for `is_active` to `True` to reduce boilerplate\n4. Used `Optional[str]` for `last_login` to explicitly handle None cases\n5. Added `get_display_name()` method to encapsulate username formatting logic\n\n**Next Steps:**\n- Run `pytest tests/test_helpers.py` to verify existing tests pass\n- Update any code that instantiates `UserProfile` to use keyword arguments for clarity\n- Consider adding `@property` decorators for computed fields like `display_name` if needed\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claucode-nvim#main-content",
+      "claucode-nvim#overview",
+      "claucode-nvim#setup",
+      "claucode-nvim#examples",
+      "claucode-nvim#tools",
+      "claucode-nvim#mcp",
+      "claucode-nvim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill claucode.nvim đóng vai trò như một cầu nối mạnh mẽ giữa Neovim và Claude Code CLI, cho phép các lập trình viên tận dụng sức mạnh của AI ngay trong môi trường code của mình. Sự tích hợp này đơn giản hóa workflow bằng cách cho phép người dùng truy cập các tính năng AI của Claude mà không cần rời khỏi editor yêu thích. Nhờ tối ưu hóa quá trình lập trình, các developer có thể nâng cao năng suất và tập trung vào việc viết code chất lượng cao. Một trong những lợi ích cốt lõi khi sử dụng claucode.nvim là khả năng tiết kiệm thời gian trong suốt quá trình phát triển. Dù chưa có số liệu chính xác về lượng thời gian tiết kiệm được, sự tích hợp mượt mà này được thiết kế nhằm giảm thiểu bất tiện khi phải chuyển đổi qua lại giữa các công cụ, giúp developer triển khai các tính năng dựa trên AI hiệu quả hơn. Skill này đặc biệt giá trị đối với các lập trình viên trình độ trung cấp (intermediate) đã quen thuộc với Neovim và đang tìm cách nâng cao hiệu suất viết code thông qua tự động hóa bằng AI. Các nhà phát triển, product manager và chuyên gia AI sẽ thấy claucode.nvim cực kỳ hữu ích nhờ khả năng tương thích tốt với các workflow ưu tiên AI (AI-first workflow). Ví dụ, một developer đang làm việc trong một dự án kỹ thuật dữ liệu (data engineering) có thể sử dụng skill này để nhanh chóng tạo ra các script xử lý dữ liệu với sự hỗ trợ của AI, từ đó cải thiện cả tốc độ lẫn độ chính xác. Tương tự, các product manager có thể tận dụng sự tích hợp này để nhanh chóng tạo prototype cho các tính năng, rút ngắn chu kỳ thử nghiệm và nhận phản hồi. Việc triển khai claucode.nvim khá đơn giản, chỉ mất khoảng 30 phút để setup. Skill này có độ khó ở mức trung bình (intermediate), phù hợp với những ai đã có kinh nghiệm sử dụng Neovim và các kỹ năng lập trình cơ bản. Bằng cách tích hợp skill này vào workflow, người dùng có thể nâng cao đáng kể năng lực lập trình và đón đầu tiềm năng tự động hóa của AI trong quá trình phát triển phần mềm.",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/avifenesh/claucode.nvim`",
+    "usage_vi": "```\nSử dụng claucode.nvim để [TASK] trong [FILE_PATH] ngay bên trong Neovim. Ví dụ: 'Refactor class Python trong src/utils/helpers.py để sử dụng dataclass và thêm type hint.' hoặc 'Debug lỗi rò rỉ bộ nhớ (memory leak) trong dịch vụ Go tại cmd/server/main.go bằng cách phân tích bản dump goroutines.' Hãy cung cấp thêm các ngữ cảnh liên quan như thông báo lỗi, vấn đề hiệu năng hoặc các yêu cầu cụ thể.\n```\nCopy\n\n```\n```lua\n-- File: src/utils/helpers.py\nfrom dataclasses import dataclass\nfrom typing import Optional\n\n@dataclass\nclass UserProfile:\n    username: str\n    email: str\n    is_active: bool = True\n    last_login: Optional[str] = None\n\n    def get_display_name(self) -> str:\n        return self.username.capitalize()\n\n    def deactivate(self) -> None:\n        self.is_active = False\n```\n\n**Các tối ưu hóa đã thực hiện:**\n1. Thay thế class truyền thống bằng decorator `@dataclass` để tự động tạo các phương thức `__init__`, `__repr__` và `__eq__`\n2. Thêm type hint cho tất cả thuộc tính và phương thức\n3. Đặt giá trị mặc định cho `is_active` thành `True` để giảm thiểu code boilerplate\n4. Sử dụng `Optional[str]` cho `last_login` để xử lý tường minh các trường hợp mang giá trị None\n5. Thêm phương thức `get_display_name()` để đóng gói logic định dạng username\n\n**Các bước tiếp theo:**\n- Chạy `pytest tests/test_helpers.py` để xác nhận các test case hiện tại đều pass\n- Cập nhật các đoạn code khởi tạo `UserProfile` để sử dụng keyword argument giúp code rõ ràng hơn\n- Cân nhắc thêm decorator `@property` cho các trường được tính toán (computed fields) như `display_name` nếu cần thiết\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:06.557212Z",
+    "http_status": 200,
+    "content_hash": "76e69037a005d1976f566da3be00cb37027496f9fb65bb2b4c4bc8d5b7b3839e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claucode-nvim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claucode-nvim.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claucode.nvim: Tích hợp Neovim",
+  "short_description_vi": "claucode.nvim là một plugin Neovim giúp tích hợp Claude Code CLI trực tiếp vào editor của bạn. Plugin này cho phép lập trình viên khai thác khả năng AI của Claude ngay trong Neovim, từ đó đơn giản hóa các tác vụ lập trình và nâng cao năng suất. Nhờ khả năng kết nối với AI của Claude để tạo code, debug và tối ưu hóa, plugin giúp cải thiện đáng kể workflow của các nhà phát triển."
+}

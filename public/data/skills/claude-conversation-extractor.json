@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-conversation-extractor",
+  "slug": "claude-conversation-extractor",
+  "name": "Claude Conversation Extractor",
+  "headline": "Claude Conversation Extractor: Log Management",
+  "short_description": "Extracts clean conversation logs from Claude Code's internal storage. Operations teams use it to backup and search chat history. Connects to CLI workflows and saves data in markdown format.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "ZeroSumQuant",
+  "install_command": "git clone https://github.com/ZeroSumQuant/claude-conversation-extractor.git",
+  "source_repo_url": "https://github.com/ZeroSumQuant/claude-conversation-extractor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "markdown",
+    "cli",
+    "conversation-export",
+    "claude-code",
+    "claude"
+  ],
+  "sections": {
+    "overview": "Claude Conversation Extractor is the only tool that exports Claude Code conversations stored in ~/.claude/projects as JSONL files. It provides two interfaces—an interactive UI with real-time search (claude-start) and a command-line interface (claude-extract)—to extract, search, and backup your chat history in Markdown, JSON, or HTML formats. The tool runs on Windows, macOS, and Linux with zero external dependencies, automatically locating your Claude Code logs and converting them to readable archives. Use it to search through past conversations, backup sessions before deletion, or export detailed transcripts including tool use and MCP responses for documentation or knowledge sharing.\nBackup all Claude Code conversations before they're accidentally deleted\nSearch through past Claude chat history to find solutions and code snippets\nExport conversations to Markdown for team documentation and knowledge sharing\nConvert Claude JSONL logs to JSON or HTML for programmatic processing and analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZeroSumQuant/claude-conversation-extractor`",
+    "usage": "```\nExtract conversation logs from Claude Code's internal storage for the date range [START_DATE] to [END_DATE]. Save the output in markdown format to [FILE_PATH]. Include metadata such as conversation ID, timestamp, and user inputs. Ensure the output is clean and ready for backup or analysis.\n```\nCopy\n\n```\n```markdown\n# Conversation Logs",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-conversation-extractor#main-content",
+      "claude-conversation-extractor#overview",
+      "claude-conversation-extractor#setup",
+      "claude-conversation-extractor#examples",
+      "claude-conversation-extractor#tools",
+      "claude-conversation-extractor#mcp",
+      "claude-conversation-extractor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Conversation Extractor is the only tool that exports Claude Code conversations stored in ~/.claude/projects as JSONL files. It provides two interfaces—an interactive UI with real-time search (claude-start) and a command-line interface (claude-extract)—to extract, search, and backup your chat history in Markdown, JSON, or HTML formats. The tool runs on Windows, macOS, and Linux with zero external dependencies, automatically locating your Claude Code logs and converting them to readable archives. Use it to search through past conversations, backup sessions before deletion, or export detailed transcripts including tool use and MCP responses for documentation or knowledge sharing.\nBackup all Claude Code conversations before they're accidentally deleted\nSearch through past Claude chat history to find solutions and code snippets\nExport conversations to Markdown for team documentation and knowledge sharing\nConvert Claude JSONL logs to JSON or HTML for programmatic processing and analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZeroSumQuant/claude-conversation-extractor`",
+    "usage_vi": "```\nExtract conversation logs from Claude Code's internal storage for the date range [START_DATE] to [END_DATE]. Save the output in markdown format to [FILE_PATH]. Include metadata such as conversation ID, timestamp, and user inputs. Ensure the output is clean and ready for backup or analysis.\n```\nCopy\n\n```\n```markdown\n# Conversation Logs"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:57.580939Z",
+    "http_status": 200,
+    "content_hash": "d9c070394c895b344e3b25fb33972a7c0fcdd1aea8f4dcf293e986c8f7c63743",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-conversation-extractor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-conversation-extractor.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Conversation Extractor: Log Management",
+  "short_description_vi": "Extracts clean conversation logs from Claude Code's internal storage. Operations teams use it to backup and search chat history. Connects to CLI workflows and saves data in markdown format."
+}

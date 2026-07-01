@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/terraform-skill",
+  "slug": "terraform-skill",
+  "name": "Terraform Skill",
+  "headline": "Terraform Skill - Automate Infrastructure-as-Code",
+  "short_description": "The Terraform Skill for Claude enables testing, module management, CI/CD integration, and production patterns for Terraform and OpenTofu. It benefits operations teams by automating infrastructure-as-code workflows, ensuring best practices, and streamlining deployments. The skill connects to Terraform and OpenTofu tools, enhancing CI/CD pipelines and production environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "antonbabenko",
+  "install_command": "git clone https://github.com/antonbabenko/terraform-skill.git",
+  "source_repo_url": "https://github.com/antonbabenko/terraform-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "opentofu",
+    "modules",
+    "devops",
+    "testing",
+    "terraform",
+    "infrastructure-as-code",
+    "claude-skills",
+    "claude-code",
+    "best-practices"
+  ],
+  "sections": {
+    "overview": "The Terraform Skill enables Claude to work with Terraform and OpenTofu infrastructure-as-code workflows, supporting testing, module management, and CI/CD pipeline integration. It helps operations teams automate deployment processes while ensuring best practices are followed throughout infrastructure provisioning. The skill connects Claude to Terraform and OpenTofu tools, streamlining how infrastructure changes are planned, tested, and deployed in production environments. By automating infrastructure-as-code workflows, it reduces manual configuration errors and accelerates deployment cycles for teams managing cloud infrastructure.\nGenerate a Terraform module with integrated testing for AWS resources.\nCreate a CI/CD workflow using GitHub Actions for Terraform deployments.\nReview existing Terraform configurations to ensure compliance with best practices.\nImplement security scanning in your Terraform pipeline using Trivy and Checkov.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/antonbabenko/terraform-skill`",
+    "usage": "```\nAct as a Terraform/OpenTofu expert and help me with [TASK]. Use the following context: [CONTEXT]. Provide a step-by-step plan with commands, code snippets, and best practices. If testing is needed, suggest test cases or validation steps. For CI/CD integration, outline the pipeline stages and required configurations. For module management, recommend structure and versioning strategies.\n```\nCopy\n\n```\n### Terraform Module Validation & CI/CD Integration Plan\n\n**Context**: We need to validate a new `aws-network` module for our production VPC before merging it into the main branch. The module includes subnets, route tables, and security groups. Our CI/CD pipeline uses GitHub Actions and requires OpenTofu 1.7+.\n\n**Step 1: Local Validation**\n1. Initialize the module in a test directory:\n   ```bash\n   mkdir -p /tmp/terraform-test && cd /tmp/terraform-test\n   tofu init -upgrade\n   ```\n2. Validate the module syntax:\n   ```bash\n   tofu validate -json\n   ```\n3. Run a plan with strict mode enabled to catch potential issues:\n   ```bash\n   tofu plan -out=tfplan -var-file=test.tfvars -var 'environment=staging' -strict\n   ```\n\n**Step 2: Unit Testing with Terratest**\nCreate a Go test file (`network_test.go`) to validate subnet CIDR ranges and route table associations:\n```go\npackage test\n\nimport (\n\t\"testing\"\n\t\"github.com/gruntwork-io/terratest/modules/terraform\"\n)\n\nfunc TestNetworkModule(t *testing.T) {\n\tt.Parallel()\n\t\n\topts := &terraform.Options{\n\t\tTerraformDir: \"../modules/aws-network\",\n\t\tVars: map[string]interface{}{\n\t\t\t\"environment\": \"test\",\n\t\t},\n\t}\n\t\n\tdefer terraform.Destroy(t, opts)\n\tterraform.InitAndApply(t, opts)\n\t\n\t// Validate subnet CIDRs\n\tsubnetCidrs := terraform.OutputList(t, opts, \"subnet_cidrs\")\n\tassert.Equal(t, []string{\"10.0.1.0/24\", \"10.0.2.0/24\"}, subnetCidrs)\n}\n```\nRun tests with:\n```bash\ngo test -v -timeout 30m\n```\n\n**Step 3: CI/CD Pipeline Integration**\nAdd this GitHub Actions workflow (`.github/workflows/terraform.yml`):\n```yaml\nname: Terraform CI/CD\n\non:\n  pull_request:\n    paths:\n      - 'modules/aws-network/**'\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: opentofu/setup-opentofu@v1\n        with:\n          tofu_version: \"1.7.0\"\n      - name: Validate\n        run: |\n          cd modules/aws-network\n          tofu init -upgrade\n          tofu validate\n          tofu plan -out=tfplan -var-file=test.tfvars -strict\n      - name: Test\n        run: |\n          cd modules/aws-network\n          go test -v -timeout 30m\n  deploy:\n    needs: test\n    if: github.ref == 'refs/heads/main'\n    steps:\n      - uses: actions/checkout@v4\n      - uses: opentofu/setup-opentofu@v1\n      - name: Apply\n        run: |\n          cd modules/aws-network\n          tofu apply -auto-approve -var-file=prod.tfvars\n        env:\n          TF_VAR_aws_region: \"us-west-2\"\n```\n\n**Step 4: Production Deployment Checklist**\n1. **Pre-deployment**:\n   - Verify `terraform.tfstate` backup exists\n   - Check drift detection with `tofu plan -detailed-exitcode`\n   - Review change summary from the plan output\n2. **Post-deployment**:\n   - Run smoke tests against the new resources\n   - Update documentation in `README.md`\n   - Tag the release in Git with semantic versioning\n\n**Best Practices Applied**:\n- Used OpenTofu instead of Terraform for future-proofing\n- Implemented strict mode validation to catch potential issues early\n- Separated test and production variables\n- Added parallel testing for faster feedback\n- Included state backup and drift detection in the workflow\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "terraform-skill#main-content",
+      "terraform-skill#overview",
+      "terraform-skill#setup",
+      "terraform-skill#examples",
+      "terraform-skill#tools",
+      "terraform-skill#mcp",
+      "terraform-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Terraform Skill enables Claude to work with Terraform and OpenTofu infrastructure-as-code workflows, supporting testing, module management, and CI/CD pipeline integration. It helps operations teams automate deployment processes while ensuring best practices are followed throughout infrastructure provisioning. The skill connects Claude to Terraform and OpenTofu tools, streamlining how infrastructure changes are planned, tested, and deployed in production environments. By automating infrastructure-as-code workflows, it reduces manual configuration errors and accelerates deployment cycles for teams managing cloud infrastructure.\nGenerate a Terraform module with integrated testing for AWS resources.\nCreate a CI/CD workflow using GitHub Actions for Terraform deployments.\nReview existing Terraform configurations to ensure compliance with best practices.\nImplement security scanning in your Terraform pipeline using Trivy and Checkov.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/antonbabenko/terraform-skill`",
+    "usage_vi": "```\nAct as a Terraform/OpenTofu expert and help me with [TASK]. Use the following context: [CONTEXT]. Provide a step-by-step plan with commands, code snippets, and best practices. If testing is needed, suggest test cases or validation steps. For CI/CD integration, outline the pipeline stages and required configurations. For module management, recommend structure and versioning strategies.\n```\nCopy\n\n```\n### Terraform Module Validation & CI/CD Integration Plan\n\n**Context**: We need to validate a new `aws-network` module for our production VPC before merging it into the main branch. The module includes subnets, route tables, and security groups. Our CI/CD pipeline uses GitHub Actions and requires OpenTofu 1.7+.\n\n**Step 1: Local Validation**\n1. Initialize the module in a test directory:\n   ```bash\n   mkdir -p /tmp/terraform-test && cd /tmp/terraform-test\n   tofu init -upgrade\n   ```\n2. Validate the module syntax:\n   ```bash\n   tofu validate -json\n   ```\n3. Run a plan with strict mode enabled to catch potential issues:\n   ```bash\n   tofu plan -out=tfplan -var-file=test.tfvars -var 'environment=staging' -strict\n   ```\n\n**Step 2: Unit Testing with Terratest**\nCreate a Go test file (`network_test.go`) to validate subnet CIDR ranges and route table associations:\n```go\npackage test\n\nimport (\n\t\"testing\"\n\t\"github.com/gruntwork-io/terratest/modules/terraform\"\n)\n\nfunc TestNetworkModule(t *testing.T) {\n\tt.Parallel()\n\t\n\topts := &terraform.Options{\n\t\tTerraformDir: \"../modules/aws-network\",\n\t\tVars: map[string]interface{}{\n\t\t\t\"environment\": \"test\",\n\t\t},\n\t}\n\t\n\tdefer terraform.Destroy(t, opts)\n\tterraform.InitAndApply(t, opts)\n\t\n\t// Validate subnet CIDRs\n\tsubnetCidrs := terraform.OutputList(t, opts, \"subnet_cidrs\")\n\tassert.Equal(t, []string{\"10.0.1.0/24\", \"10.0.2.0/24\"}, subnetCidrs)\n}\n```\nRun tests with:\n```bash\ngo test -v -timeout 30m\n```\n\n**Step 3: CI/CD Pipeline Integration**\nAdd this GitHub Actions workflow (`.github/workflows/terraform.yml`):\n```yaml\nname: Terraform CI/CD\n\non:\n  pull_request:\n    paths:\n      - 'modules/aws-network/**'\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: opentofu/setup-opentofu@v1\n        with:\n          tofu_version: \"1.7.0\"\n      - name: Validate\n        run: |\n          cd modules/aws-network\n          tofu init -upgrade\n          tofu validate\n          tofu plan -out=tfplan -var-file=test.tfvars -strict\n      - name: Test\n        run: |\n          cd modules/aws-network\n          go test -v -timeout 30m\n  deploy:\n    needs: test\n    if: github.ref == 'refs/heads/main'\n    steps:\n      - uses: actions/checkout@v4\n      - uses: opentofu/setup-opentofu@v1\n      - name: Apply\n        run: |\n          cd modules/aws-network\n          tofu apply -auto-approve -var-file=prod.tfvars\n        env:\n          TF_VAR_aws_region: \"us-west-2\"\n```\n\n**Step 4: Production Deployment Checklist**\n1. **Pre-deployment**:\n   - Verify `terraform.tfstate` backup exists\n   - Check drift detection with `tofu plan -detailed-exitcode`\n   - Review change summary from the plan output\n2. **Post-deployment**:\n   - Run smoke tests against the new resources\n   - Update documentation in `README.md`\n   - Tag the release in Git with semantic versioning\n\n**Best Practices Applied**:\n- Used OpenTofu instead of Terraform for future-proofing\n- Implemented strict mode validation to catch potential issues early\n- Separated test and production variables\n- Added parallel testing for faster feedback\n- Included state backup and drift detection in the workflow\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:44:08.366392Z",
+    "http_status": 200,
+    "content_hash": "a1c3b16fed3194fabfb6d92275fd26e4d6f91fbc5bfd932e55ea9eeded5ac853",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\terraform-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\terraform-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Terraform Skill - Automate Infrastructure-as-Code",
+  "short_description_vi": "The Terraform Skill for Claude enables testing, module management, CI/CD integration, and production patterns for Terraform and OpenTofu. It benefits operations teams by automating infrastructure-as-code workflows, ensuring best practices, and streamlining deployments. The skill connects to Terraform and OpenTofu tools, enhancing CI/CD pipelines and production environments."
+}

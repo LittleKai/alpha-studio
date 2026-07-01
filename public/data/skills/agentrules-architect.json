@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentrules-architect",
+  "slug": "agentrules-architect",
+  "name": "browser-use",
+  "headline": "Agentrules-Architect: AGENTS.md Generator for Codex",
+  "short_description": "AgentRules Architect generates AGENTS.md files for coding agents like Codex, Claude Code, and Cursor IDE. It helps developers and operations teams standardize agent configurations and workflows. The tool connects to AI coding agents to streamline setup and maintenance of agent rules.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "trevor-nichols",
+  "install_command": "git clone https://github.com/trevor-nichols/agentrules-architect.git",
+  "source_repo_url": "https://github.com/trevor-nichols/agentrules-architect",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "agents"
+  ],
+  "sections": {
+    "overview": "AgentRules Architect is a repository analysis tool that generates durable agent rules artifacts like AGENTS.md for AI coding assistants. It executes a six-phase pipeline—discovery, planning, deep analysis, synthesis, consolidation, and final generation—coordinating specialized model-backed architects across Anthropic, OpenAI, Google, DeepSeek, xAI, and local runtimes like Claude Code and Codex app-server. The tool provides a Rich/Typer CLI with persistent TOML configuration, model presets per phase, optional Tavily web search integration, and configurable output formats including snapshots and scaffold templates. Developers and operations teams use it to standardize agent configurations, maintain consistent agent rules across providers, and streamline setup for longer agent-led work with ExecPlan tooling.\nGenerate standardized AGENTS.md files for new projects across multiple AI agent providers\nAnalyze codebases and automatically document agent capabilities and workflows\nMaintain consistent agent rules and configurations across Anthropic, OpenAI, and Google models\nSet up and configure Claude Code and Cursor IDE agent rules from repository analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/trevor-nichols/agentrules-architect`",
+    "usage": "```\nGenerate an AGENTS.md file for [PROJECT_NAME] using [AGENT_PLATFORM] that includes: 1) Project-specific rules for [LANGUAGE/TECH_STACK], 2) Security and compliance guidelines for [COMPANY_POLICY], 3) Workflow automation steps for [DEPLOYMENT_PIPELINE], and 4) Error handling procedures for [COMMON_ISSUES]. Format the output as a markdown file with clear sections and code blocks for configuration snippets.\n```\nCopy\n\n```\n```markdown\n# AGENTS.md - Project: Acme E-Commerce Platform\n**Agent Platform:** Cursor IDE\n**Last Updated:** 2024-05-15",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentrules-architect#main-content",
+      "agentrules-architect#overview",
+      "agentrules-architect#setup",
+      "agentrules-architect#examples",
+      "agentrules-architect#tools",
+      "agentrules-architect#mcp",
+      "agentrules-architect#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgentRules Architect is a repository analysis tool that generates durable agent rules artifacts like AGENTS.md for AI coding assistants. It executes a six-phase pipeline—discovery, planning, deep analysis, synthesis, consolidation, and final generation—coordinating specialized model-backed architects across Anthropic, OpenAI, Google, DeepSeek, xAI, and local runtimes like Claude Code and Codex app-server. The tool provides a Rich/Typer CLI with persistent TOML configuration, model presets per phase, optional Tavily web search integration, and configurable output formats including snapshots and scaffold templates. Developers and operations teams use it to standardize agent configurations, maintain consistent agent rules across providers, and streamline setup for longer agent-led work with ExecPlan tooling.\nGenerate standardized AGENTS.md files for new projects across multiple AI agent providers\nAnalyze codebases and automatically document agent capabilities and workflows\nMaintain consistent agent rules and configurations across Anthropic, OpenAI, and Google models\nSet up and configure Claude Code and Cursor IDE agent rules from repository analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/trevor-nichols/agentrules-architect`",
+    "usage_vi": "```\nGenerate an AGENTS.md file for [PROJECT_NAME] using [AGENT_PLATFORM] that includes: 1) Project-specific rules for [LANGUAGE/TECH_STACK], 2) Security and compliance guidelines for [COMPANY_POLICY], 3) Workflow automation steps for [DEPLOYMENT_PIPELINE], and 4) Error handling procedures for [COMMON_ISSUES]. Format the output as a markdown file with clear sections and code blocks for configuration snippets.\n```\nCopy\n\n```\n```markdown\n# AGENTS.md - Project: Acme E-Commerce Platform\n**Agent Platform:** Cursor IDE\n**Last Updated:** 2024-05-15"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:44.243950Z",
+    "http_status": 200,
+    "content_hash": "2e64ee357d0ff30d6a279202384d7ab4bf769bd0114fac664518e1d5d097299c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentrules-architect.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentrules-architect.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Agentrules-Architect: AGENTS.md Generator for Codex",
+  "short_description_vi": "AgentRules Architect generates AGENTS.md files for coding agents like Codex, Claude Code, and Cursor IDE. It helps developers and operations teams standardize agent configurations and workflows. The tool connects to AI coding agents to streamline setup and maintenance of agent rules."
+}

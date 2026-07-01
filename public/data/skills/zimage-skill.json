@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zimage-skill",
+  "slug": "zimage-skill",
+  "name": "Z-Image Skill",
+  "headline": "Z-Image Skill - AI Image Generation for Claude Code",
+  "short_description": "Z-Image Skill enables AI-generated images from natural language prompts in Claude Code. Operations teams use it to create visuals for reports, presentations, and marketing materials. It connects to Claude's code execution environment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "yizhiyanhua-ai",
+  "install_command": "git clone https://github.com/yizhiyanhua-ai/zimage-skill.git",
+  "source_repo_url": "https://github.com/yizhiyanhua-ai/zimage-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Z-Image Skill is a Claude Code plugin that transforms natural language descriptions into AI-generated images using the Tongyi-MAI/Z-Image-Turbo model via ModelScope. Users simply describe what they want—a cyberpunk city, golden cat, or custom avatar—and Claude automatically generates and saves the image. The skill supports detailed style specifications including oil painting, anime, minimalist, and photography styles, making it useful for creating avatars, article illustrations, social media content, design inspiration, and marketing visuals. Setup requires a free ModelScope API key and takes minutes to configure through Claude's natural language interface.\nCreate custom avatars and character designs for profiles and branding\nGenerate illustrations and graphics for articles, blogs, and reports\nProduce social media content and marketing visuals with specific styles\nDesign app splash screens, backgrounds, and UI inspiration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yizhiyanhua-ai/zimage-skill`",
+    "usage": "```\nGenerate a high-quality [STYLE] image in [RESOLUTION] resolution using the zimage-skill in Claude Code. The image should depict [SUBJECT] with [KEY DETAILS]. Ensure the composition follows [COMPOSITION RULES] and the lighting matches [LIGHTING CONDITIONS]. Save the output as [FILENAME].[EXTENSION] in the current directory.\n```\nCopy\n\n```\n```python\nfrom zimage import generate_image\n\nprompt = \"Generate a photorealistic image in 4K resolution depicting a modern office workspace with a team of professionals collaborating around a glass conference table. Include natural daylight streaming through large windows, a whiteboard with diagrams, and subtle bokeh effects in the background. The composition should follow the rule of thirds with warm, neutral lighting. Save as 'office_collaboration_4k.png'.\"\n\nimage_path = generate_image(prompt)\nprint(f\"Image generated and saved to: {image_path}\")\n```\n\nOutput:\nImage generated and saved to: /tmp/office_collaboration_4k.png\n\nThe generated image shows a sleek, contemporary office with a group of 5 professionals (3 men, 2 women) in business casual attire gathered around a transparent conference table. Sunlight filters through floor-to-ceiling windows, casting soft shadows and creating a warm, inviting atmosphere. The whiteboard displays complex flowcharts in blue marker, while the background features out-of-focus greenery and modern furniture. The color palette consists of neutral tones with pops of corporate blue, and the overall composition follows professional photography standards with balanced negative space.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zimage-skill#main-content",
+      "zimage-skill#overview",
+      "zimage-skill#setup",
+      "zimage-skill#examples",
+      "zimage-skill#tools",
+      "zimage-skill#mcp",
+      "zimage-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Z-Image Skill là một plugin của Claude Code giúp chuyển đổi các mô tả bằng ngôn ngữ tự nhiên thành hình ảnh do AI tạo ra, sử dụng mô hình Tongyi-MAI/Z-Image-Turbo thông qua ModelScope. Người dùng chỉ cần mô tả những gì họ muốn—như một thành phố cyberpunk, chú mèo vàng hay avatar tùy chỉnh—và Claude sẽ tự động tạo và lưu hình ảnh đó. Skill này hỗ trợ các tùy chọn phong cách chi tiết bao gồm tranh sơn dầu, anime, tối giản và nhiếp ảnh, rất hữu ích cho việc tạo avatar, ảnh minh họa bài viết, nội dung mạng xã hội, khơi nguồn cảm hứng thiết kế và hình ảnh marketing. Quá trình setup yêu cầu một API key ModelScope miễn phí và chỉ mất vài phút cấu hình thông qua giao diện ngôn ngữ tự nhiên của Claude.\nTạo avatar tùy chỉnh và thiết kế nhân vật cho hồ sơ cá nhân và nhận diện thương hiệu\nTạo ảnh minh họa và đồ họa cho bài viết, blog và báo cáo\nSản xuất nội dung mạng xã hội và hình ảnh marketing với các phong cách cụ thể\nThiết kế màn hình chào (splash screen), hình nền ứng dụng và tìm cảm hứng thiết kế UI",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yizhiyanhua-ai/zimage-skill`",
+    "usage_vi": "```\nTạo một hình ảnh [STYLE] chất lượng cao ở độ phân giải [RESOLUTION] bằng cách sử dụng zimage-skill trong Claude Code. Hình ảnh cần mô tả [SUBJECT] với [KEY DETAILS]. Đảm bảo bố cục tuân thủ [COMPOSITION RULES] và ánh sáng phù hợp với [LIGHTING CONDITIONS]. Lưu kết quả đầu ra dưới dạng [FILENAME].[EXTENSION] trong thư mục hiện tại.\n```\nCopy\n\n```\n```python\nfrom zimage import generate_image\n\nprompt = \"Generate a photorealistic image in 4K resolution depicting a modern office workspace with a team of professionals collaborating around a glass conference table. Include natural daylight streaming through large windows, a whiteboard with diagrams, and subtle bokeh effects in the background. The composition should follow the rule of thirds with warm, neutral lighting. Save as 'office_collaboration_4k.png'.\"\n\nimage_path = generate_image(prompt)\nprint(f\"Image generated and saved to: {image_path}\")\n```\n\nOutput:\nImage generated and saved to: /tmp/office_collaboration_4k.png\n\nHình ảnh được tạo ra hiển thị một văn phòng hiện đại, tinh tế với một nhóm gồm 5 chuyên gia (3 nam, 2 nữ) trong trang phục công sở lịch sự (business casual) đang quây quần quanh một bàn họp bằng kính suốt. Ánh nắng lọc qua cửa sổ kính sát trần, đổ bóng nhẹ và tạo ra bầu không khí ấm áp, dễ chịu. Bảng trắng hiển thị các lưu đồ phức tạp bằng bút viết bảng màu xanh lam, trong khi phần nền có cây xanh và đồ nội thất hiện đại được làm mờ (out-of-focus). Bảng màu bao gồm các tông màu trung tính điểm xuyết màu xanh dương doanh nghiệp, và bố cục tổng thể tuân theo các tiêu chuẩn nhiếp ảnh chuyên nghiệp với khoảng trống (negative space) cân đối.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:37:01.355172Z",
+    "http_status": 200,
+    "content_hash": "34c4d35a3b2368fedf5c5cb7d96ce90a8d9ca586cc1cee7eaab3f66e1498732d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zimage-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zimage-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Z-Image Skill - Tạo hình ảnh bằng AI cho Claude Code",
+  "short_description_vi": "Z-Image Skill cho phép tạo hình ảnh bằng AI từ các prompt ngôn ngữ tự nhiên trong Claude Code. Các đội ngũ vận hành có thể sử dụng skill này để tạo hình ảnh minh họa cho báo cáo, bài thuyết trình và tài liệu marketing. Skill này kết nối trực tiếp với môi trường thực thi mã của Claude."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/last30days-skill",
+  "slug": "last30days-skill",
+  "name": "Last30days Skill",
+  "headline": "last30days-skill: Research with AI",
+  "short_description": "Researches Reddit and X for trending topics in the last 30 days, generates ready-to-use prompts for Claude. Benefits content creators, marketers, and researchers by providing up-to-date, community-driven insights. Integrates with Claude Code for prompt generation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "mvanhorn",
+  "install_command": "git clone https://github.com/mvanhorn/last30days-skill.git",
+  "source_repo_url": "https://github.com/mvanhorn/last30days-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "twitter",
+    "reddit",
+    "claude",
+    "claude-code",
+    "ai-prompts"
+  ],
+  "sections": {
+    "overview": "The last30days-skill is a powerful Claude Code skill designed to streamline the research process by aggregating discussions from Reddit and other platforms over the last 30 days. This skill automatically generates copy-paste-ready prompts based on current trends and community sentiments, making it an invaluable tool for anyone looking to stay ahead in their field. By utilizing this skill, users can quickly gather insights and ideas without sifting through countless threads, enhancing their overall productivity. One of the key benefits of the last30days-skill is its ability to save time. While the exact time savings are not quantified, the efficiency gained from automated research can significantly reduce the hours spent on manual data collection and analysis. This skill is particularly beneficial for developers, product managers, and AI practitioners who need to stay updated on the latest trends, user feedback, and best practices in their respective domains. With just 30 minutes of implementation time, users can integrate this skill into their workflows and start generating valuable insights almost immediately. Practical use cases for the last30days-skill are numerous and varied. For instance, legal professionals can use it to research trending prompting techniques for ChatGPT, enhancing their ability to handle complex legal questions. Musicians and marketers can discover the latest viral trends and community sentiments surrounding new music releases, allowing them to tailor their strategies accordingly. Additionally, product teams can generate effective prompts for creating iOS app mockups based on recent discussions, ensuring their designs resonate with current user preferences. The skill also aids in exploring product feedback for the latest tech gadgets, such as the M4 MacBook, providing insights that can drive product development. With an intermediate level of complexity, the last30days-skill requires users to have a basic understanding of AI automation and workflow integration. It is designed to fit seamlessly into AI-first workflows, allowing teams to leverage community-driven insights to inform their decisions and strategies. By incorporating this skill, organizations can enhance their research capabilities, making informed decisions that align with current market trends.\nResearch trending prompting techniques for ChatGPT to improve legal question handling.\nDiscover the latest viral trends and community sentiments about new music releases.\nGenerate effective prompts for creating iOS app mockups based on recent discussions.\nIdentify best practices for using Remotion with Claude Code from community insights.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mvanhorn/last30days-skill`",
+    "usage": "```\nResearch trending topics on Reddit and X from the last 30 days related to [TOPIC]. Focus on discussions with high engagement (e.g., upvotes, replies, shares) and emerging themes. Provide a list of 5-7 key insights with supporting data (e.g., post titles, engagement metrics, timestamps). Then, generate 3 ready-to-use prompts for Claude that leverage these trends for [PURPOSE], such as content creation, marketing strategy, or research. Example topics: 'AI in healthcare,' 'remote work tools,' or 'sustainable fashion brands.'\n```\nCopy\n\n```\nAfter analyzing Reddit and X over the past 30 days, the following trends emerged in the **AI in healthcare** space:\n\n1. **AI Diagnostics Adoption**: A surge in discussions about AI tools like IBM Watson Health and Zebra Medical Vision, with a 40% increase in Reddit posts mentioning \"AI radiology\" (e.g., r/medicine thread on 'AI outperforming radiologists in lung cancer detection' with 1.2k upvotes).\n2. **Ethical Concerns**: Growing skepticism about AI bias in healthcare algorithms, highlighted by a viral X thread (#AIinHealthcare) with 5k+ replies, including debates on FDA regulation of AI diagnostics.\n3. **Patient Engagement**: Viral posts on r/HealthTech about AI chatbots (e.g., Ada Health) improving patient triage, with a 30% uptick in engagement on posts tagged #PatientExperience.\n4. **Regulatory Updates**: Multiple Reddit threads discussing the EU AI Act’s impact on healthcare AI, with users sharing drafts of compliance guidelines.\n5. **Cost Savings**: A LinkedIn post by a healthcare CIO noted 25% cost reductions in diagnostic imaging after implementing AI tools, sparking a 200+ comment discussion.\n\n**Ready-to-use Claude prompts:**\n1. *Content Creation*: \"Write a LinkedIn post for a healthcare tech company announcing a new AI diagnostic tool. Highlight the 40% accuracy improvement in lung cancer detection and address ethical concerns by citing the FDA’s role in regulation. Use a tone that balances innovation with transparency.\"\n2. *Marketing Strategy*: \"Generate a 30-day content calendar for a healthcare AI startup targeting hospital CIOs. Include 3 blog topics (e.g., 'How AI Reduces Diagnostic Costs'), 2 X threads (e.g., 'Ethical AI in Healthcare: Myths vs. Facts'), and 1 Reddit AMA idea focused on regulatory compliance.\"\n3. *Research Deep Dive*: \"Analyze the sentiment trends in Reddit discussions about AI in healthcare over the last 30 days. Identify the top 3 positive and negative themes, and suggest 2 follow-up questions for a survey targeting healthcare professionals.\"\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "last30days-skill#main-content",
+      "last30days-skill#overview",
+      "last30days-skill#setup",
+      "last30days-skill#examples",
+      "last30days-skill#tools",
+      "last30days-skill#mcp",
+      "last30days-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "last30days-skill giúp tối ưu hóa quy trình nghiên cứu thị trường bằng cách tổng hợp các thảo luận có tương tác cao trên Reddit và X trong 30 ngày gần nhất. Dựa trên dữ liệu cào được, công cụ tự động biên soạn các câu lệnh (prompts) ăn liền cho Claude, giúp người sáng tạo nội dung, nhà tiếp thị và nghiên cứu nắm bắt nhanh tâm lý cộng đồng mà không cần lướt mạng xã hội hàng giờ liền. Rất phù hợp để theo dõi phản hồi sản phẩm công nghệ mới, tìm kiếm ý tưởng viết lách và các kỹ thuật lập trình AI thịnh hành.",
+    "setup_vi": "Xem chi tiết hướng dẫn cài đặt thủ công trên GitHub:\n`git clone https://github.com/mvanhorn/last30days-skill`",
+    "usage_vi": "Nghiên cứu các chủ đề nóng hổi trong lĩnh vực cụ thể (ví dụ: AI trong y tế) trên Reddit/X và tạo ra các prompt viết bài PR hoặc nội dung tiếp thị dựa trên xu hướng đó."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:26.900405Z",
+    "http_status": 200,
+    "content_hash": "5b91f5ce190d7fe02521bc9d1167d4c0debac0accdc88003dc0791b55ab987c8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\last30days-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\last30days-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng Nghiên cứu Xu hướng 30 ngày qua - Phân tích Reddit & X bằng AI",
+  "short_description_vi": "Quét và phân tích các chủ đề xu hướng nóng hổi trên Reddit và mạng xã hội X trong vòng 30 ngày qua, tự động sinh các prompt chất lượng cao cho Claude giúp người sáng tạo nội dung dẫn đầu xu thế thị trường."
+}

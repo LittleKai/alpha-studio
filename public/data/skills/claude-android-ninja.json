@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-android-ninja",
+  "slug": "claude-android-ninja",
+  "name": "Claude Android Ninja",
+  "headline": "Claude android development automation",
+  "short_description": "Agent Skill for Android development with Kotlin and Jetpack Compose, covering modular architecture, Navigation3, Gradle conventions, dependency management, and testing best practices.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Drjacky",
+  "install_command": "git clone https://github.com/Drjacky/claude-android-ninja.git",
+  "source_repo_url": "https://github.com/Drjacky/claude-android-ninja",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "kotlin",
+    "modularization",
+    "compose",
+    "navigation3",
+    "jetpack-compose",
+    "android",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claude-android-ninja is an Agent Skill package that provides structured instructions, templates, and references for building production-quality Android apps with Kotlin and Jetpack Compose. It covers modular architecture patterns, domain/data/UI layering, Navigation3 guidance, Material 3 theming, accessibility support, internationalization, background media playback, testing practices, and Play Store CI/CD workflows. The skill includes comprehensive references for Gradle conventions, performance benchmarking, security implementation (biometrics, certificate pinning, Play Integrity), and migrations from legacy Android patterns. Developers using Claude Code, Cursor, and similar AI agents benefit from consistent guidance on adaptive UI for phones, tablets, and foldables, alongside debugging techniques and code quality checks.\nBuilding modular Android apps with feature-first architecture and strict dependency management\nImplementing Jetpack Compose UI with Material 3 theming and adaptive layouts for multiple screen sizes\nSetting up Navigation3 with deep linking, saved state, and large-screen navigation patterns\nHardening background media playback with Media3 and Android 37+ compliance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Drjacky/claude-android-ninja`\n\nFor Navigation3, use the following setup:\n\n```kotlin\n// In your NavigationGraph.kt\nval navController = rememberNavController()\nNavHost(navController = navController, startDestination = \"home\") {\n    composable(\"home\") { HomeScreen() }\n    composable(\"profile\") { ProfileScreen() }\n}\n```",
+    "usage": "```\nAct as an Android development expert specializing in Kotlin and Jetpack Compose. I'm working on a [PROJECT_NAME] for [COMPANY] in the [INDUSTRY] sector. I need help with [SPECIFIC_TASK], such as implementing modular architecture, setting up Navigation3, or optimizing Gradle conventions. Provide code snippets, best practices, and testing strategies. Use [DATA] if needed.\n```\nCopy\n\n```\n# Android Development Assistance for [PROJECT_NAME]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-android-ninja#main-content",
+      "claude-android-ninja#overview",
+      "claude-android-ninja#setup",
+      "claude-android-ninja#examples",
+      "claude-android-ninja#tools",
+      "claude-android-ninja#mcp",
+      "claude-android-ninja#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-android-ninja là một gói Agent Skill cung cấp các hướng dẫn cấu trúc, template và tài liệu tham khảo để xây dựng các ứng dụng Android chất lượng production bằng Kotlin và Jetpack Compose. Gói này bao gồm các mô hình kiến trúc modular, phân lớp domain/data/UI, hướng dẫn Navigation3, Material 3 theming, hỗ trợ accessibility, đa ngôn ngữ (internationalization), phát media dưới nền (background media playback), các phương pháp testing và quy trình Play Store CI/CD. Skill này cũng cung cấp tài liệu tham khảo toàn diện về Gradle convention, đo kiểm hiệu năng (performance benchmarking), bảo mật (biometrics, certificate pinning, Play Integrity) và chuyển đổi từ các mô hình Android cũ (legacy). Các lập trình viên sử dụng Claude Code, Cursor và các AI agent tương tự sẽ được hỗ trợ nhất quán về adaptive UI cho điện thoại, máy tính bảng và thiết bị gập, cùng với các kỹ thuật debug và kiểm tra chất lượng code.\n\nXây dựng ứng dụng Android modular với kiến trúc feature-first và quản lý dependency chặt chẽ.\nTriển khai Jetpack Compose UI với Material 3 theming và adaptive layout cho nhiều kích thước màn hình.\nCấu hình Navigation3 hỗ trợ deep linking, saved state và các mô hình điều hướng trên màn hình lớn.\nTối ưu hóa tính năng phát media dưới nền với Media3 và đảm bảo tuân thủ Android 37+.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Drjacky/claude-android-ninja`\n\nĐối với Navigation3, hãy sử dụng setup sau:\n\n```kotlin\n// Trong file NavigationGraph.kt của bạn\nval navController = rememberNavController()\nNavHost(navController = navController, startDestination = \"home\") {\n    composable(\"home\") { HomeScreen() }\n    composable(\"profile\") { ProfileScreen() }\n}\n```",
+    "usage_vi": "```\nHãy đóng vai một chuyên gia phát triển Android chuyên về Kotlin và Jetpack Compose. Tôi đang phát triển dự án [PROJECT_NAME] cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tôi cần hỗ trợ về [SPECIFIC_TASK], chẳng hạn như triển khai kiến trúc modular, thiết lập Navigation3 hoặc tối ưu hóa các Gradle convention. Hãy cung cấp các đoạn code mẫu, best practice và chiến lược testing. Sử dụng [DATA] nếu cần thiết.\n```\nSao chép\n\n```\n# Hỗ trợ phát triển Android cho [PROJECT_NAME]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:40.978540Z",
+    "http_status": 200,
+    "content_hash": "816c6664cb77777eae6b19efd6d9c085a3e23d1de3a020235765ff292ff27dd7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-android-ninja.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-android-ninja.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động hóa phát triển Android với Claude",
+  "short_description_vi": "Agent Skill hỗ trợ phát triển Android bằng Kotlin và Jetpack Compose, bao gồm kiến trúc modular, Navigation3, Gradle convention, quản lý dependency và các best practice về testing."
+}

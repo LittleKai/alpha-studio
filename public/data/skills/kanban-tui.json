@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kanban-tui",
+  "slug": "kanban-tui",
+  "name": "browser-use",
+  "headline": "Kanban-TUI - Task Manager for Agents",
+  "short_description": "Kanban-TUI is a Python-based task manager with a terminal user interface (TUI) for agents. It enables operations teams to manage tasks efficiently, integrating with Jira for workflow management. The tool connects to Python-based workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "Zaloog",
+  "install_command": "git clone https://github.com/Zaloog/kanban-tui.git",
+  "source_repo_url": "https://github.com/Zaloog/kanban-tui",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "python",
+    "kanban",
+    "terminal",
+    "jira",
+    "tui",
+    "textual",
+    "claude-skills",
+    "task-manager"
+  ],
+  "sections": {
+    "overview": "Kanban-TUI is a Python-powered terminal task manager built on Textual that supports multiple backends including SQLite, Jira, and Claude. It enables operations teams and individual developers to organize work through customizable kanban columns, manage task dependencies, and track progress with visual audit trails and monthly/weekly/daily analytics. The tool integrates with AI agents through its CLI interface and MCP server, allowing agents to create, edit, and move tasks programmatically. Features include multi-board support, task categorization, drag-and-drop reordering, circular dependency prevention, and XDG BaseDirs convention compliance for configuration storage.\nOperations teams managing tasks with Jira integration via SJL queries\nAI agents creating and tracking subtasks during workflow execution\nDevelopers organizing personal project work across multiple kanban boards\nTracking task dependencies to prevent blocked work from advancing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Zaloog/kanban-tui`",
+    "usage": "```\nUse the Kanban-TUI tool to manage and track the progress of [PROJECT_NAME] tasks. Create a new board for [TEAM_NAME] with columns: 'Backlog', 'In Progress', 'Review', 'Done'. Add the following tasks: [LIST_TASKS]. Update the status of tasks as they move through the workflow. Use the search function to find tasks assigned to [ASSIGNEE_NAME].\n```\nCopy\n\n```\n```\nKanban-TUI v1.2.0 - [PROJECT_NAME] Board\n┌───────────────────────────────────────────────────────────────────────────────┐\n│ Backlog (3)                          │ In Progress (2)                     │\n├──────────────────────────────────────┼──────────────────────────────────────┤\n│ 1. [HIGH] Implement user authentication│ 4. [MEDIUM] Fix login timeout bug    │\n│ 2. [LOW] Design API documentation    │ 5. [HIGH] Resolve database deadlock  │\n│ 3. [MEDIUM] Add rate limiting         │                                      │\n├──────────────────────────────────────┼──────────────────────────────────────┤\n│ Review (1)                           │ Done (4)                            │\n├──────────────────────────────────────┼──────────────────────────────────────┤\n│ 6. [MEDIUM] Code review for PR #42    │ 7. [LOW] Update README.md             │\n│                                      │ 8. [MEDIUM] Merge feature branch     │\n│                                      │ 9. [HIGH] Deploy v2.1.0              │\n│                                      │ 10. [LOW] Close stale issues          │\n└──────────────────────────────────────┴──────────────────────────────────────┘\n\nSearch Results for 'john.doe':\n- Task 4: Fix login timeout bug (In Progress, Assigned to: john.doe)\n- Task 5: Resolve database deadlock (In Progress, Assigned to: jane.smith)\n\n[Status: 10 tasks total | 4 done (40%) | Last updated: 2024-05-20 14:32:15]\n```\n\nThe Kanban-TUI tool has successfully created a visual representation of the [PROJECT_NAME] workflow. The board shows 10 tasks distributed across four columns, with clear priorities marked by [HIGH]/[MEDIUM]/[LOW] labels. The search function quickly identified tasks assigned to john.doe, highlighting their current status in the 'In Progress' column. The tool also provides a progress percentage (40% complete) and timestamp for last updates, which helps teams track velocity and identify bottlenecks. The interface is keyboard-navigable, allowing agents to update task statuses directly from the terminal without switching tools.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kanban-tui#main-content",
+      "kanban-tui#overview",
+      "kanban-tui#setup",
+      "kanban-tui#examples",
+      "kanban-tui#tools",
+      "kanban-tui#mcp",
+      "kanban-tui#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kanban-TUI is a Python-powered terminal task manager built on Textual that supports multiple backends including SQLite, Jira, and Claude. It enables operations teams and individual developers to organize work through customizable kanban columns, manage task dependencies, and track progress with visual audit trails and monthly/weekly/daily analytics. The tool integrates with AI agents through its CLI interface and MCP server, allowing agents to create, edit, and move tasks programmatically. Features include multi-board support, task categorization, drag-and-drop reordering, circular dependency prevention, and XDG BaseDirs convention compliance for configuration storage.\nOperations teams managing tasks with Jira integration via SJL queries\nAI agents creating and tracking subtasks during workflow execution\nDevelopers organizing personal project work across multiple kanban boards\nTracking task dependencies to prevent blocked work from advancing",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Zaloog/kanban-tui`",
+    "usage_vi": "```\nUse the Kanban-TUI tool to manage and track the progress of [PROJECT_NAME] tasks. Create a new board for [TEAM_NAME] with columns: 'Backlog', 'In Progress', 'Review', 'Done'. Add the following tasks: [LIST_TASKS]. Update the status of tasks as they move through the workflow. Use the search function to find tasks assigned to [ASSIGNEE_NAME].\n```\nCopy\n\n```\n```\nKanban-TUI v1.2.0 - [PROJECT_NAME] Board\n┌───────────────────────────────────────────────────────────────────────────────┐\n│ Backlog (3)                          │ In Progress (2)                     │\n├──────────────────────────────────────┼──────────────────────────────────────┤\n│ 1. [HIGH] Implement user authentication│ 4. [MEDIUM] Fix login timeout bug    │\n│ 2. [LOW] Design API documentation    │ 5. [HIGH] Resolve database deadlock  │\n│ 3. [MEDIUM] Add rate limiting         │                                      │\n├──────────────────────────────────────┼──────────────────────────────────────┤\n│ Review (1)                           │ Done (4)                            │\n├──────────────────────────────────────┼──────────────────────────────────────┤\n│ 6. [MEDIUM] Code review for PR #42    │ 7. [LOW] Update README.md             │\n│                                      │ 8. [MEDIUM] Merge feature branch     │\n│                                      │ 9. [HIGH] Deploy v2.1.0              │\n│                                      │ 10. [LOW] Close stale issues          │\n└──────────────────────────────────────┴──────────────────────────────────────┘\n\nSearch Results for 'john.doe':\n- Task 4: Fix login timeout bug (In Progress, Assigned to: john.doe)\n- Task 5: Resolve database deadlock (In Progress, Assigned to: jane.smith)\n\n[Status: 10 tasks total | 4 done (40%) | Last updated: 2024-05-20 14:32:15]\n```\n\nThe Kanban-TUI tool has successfully created a visual representation of the [PROJECT_NAME] workflow. The board shows 10 tasks distributed across four columns, with clear priorities marked by [HIGH]/[MEDIUM]/[LOW] labels. The search function quickly identified tasks assigned to john.doe, highlighting their current status in the 'In Progress' column. The tool also provides a progress percentage (40% complete) and timestamp for last updates, which helps teams track velocity and identify bottlenecks. The interface is keyboard-navigable, allowing agents to update task statuses directly from the terminal without switching tools.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:27:46.168587Z",
+    "http_status": 200,
+    "content_hash": "c7be25655a8e7a83804c935ecbae675b62c529bb5e0d468f1b47d1731f4727fe",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kanban-tui.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kanban-tui.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Kanban-TUI - Task Manager for Agents",
+  "short_description_vi": "Kanban-TUI is a Python-based task manager with a terminal user interface (TUI) for agents. It enables operations teams to manage tasks efficiently, integrating with Jira for workflow management. The tool connects to Python-based workflows and supports Claude agents."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vra-code-examples",
+  "slug": "vra-code-examples",
+  "name": "Vra Code Examples",
+  "headline": "vra-code-examples: Enhance Marketing Automation",
+  "short_description": "Code Examples from the vRealize Automation Technical Marketing Team",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "VMwareCMBUTMM",
+  "install_command": "git clone https://github.com/VMwareCMBUTMM/vra-code-examples.git",
+  "source_repo_url": "https://github.com/VMwareCMBUTMM/vra-code-examples",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The vra-code-examples skill provides a curated set of code examples specifically designed by the vRealize Automation Technical Marketing Team. This skill focuses on enhancing marketing automation through practical coding solutions, allowing developers and product managers to implement effective automation strategies quickly. By utilizing these examples, users can streamline their marketing workflows and improve operational efficiency. One of the key benefits of this skill is its ability to save time in the implementation of automation tasks. Although specific time savings are not quantified, the intermediate complexity of the skill suggests that users can expect to achieve significant efficiencies when integrating these code examples into their existing systems. This skill is particularly valuable for those looking to enhance their AI automation capabilities within marketing departments, where rapid deployment and adaptability are crucial. This skill is ideal for developers, product managers, and AI practitioners who are focused on marketing automation. By leveraging the vra-code-examples skill, users can gain insights into best practices and innovative solutions that can be directly applied to their projects. For instance, a marketing team could use these code examples to automate reporting processes or to integrate various marketing tools seamlessly, thereby reducing manual effort and increasing productivity. With an intermediate difficulty level, the implementation of this skill requires a foundational understanding of coding and automation principles. Users can expect to spend approximately 30 minutes to implement these examples effectively. As organizations increasingly adopt AI-first workflows, integrating such automation skills into their operations becomes essential for maintaining a competitive edge in the market. The vra-code-examples skill not only enhances workflow automation but also aligns perfectly with the evolving landscape of AI-driven marketing solutions.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VMwareCMBUTMM/vra-code-examples`",
+    "usage": "```\nGenerate 3 code examples for [COMPANY] in the [INDUSTRY] sector. Focus on [DATA] integration. Include comments explaining each step. Use Python and JavaScript.\n```\nCopy\n\n```\n# Code Examples for TechCorp in the FinTech Industry\n\n```python\n# This script connects to TechCorp's API and processes transaction data\nimport requests\nimport json\n\n# API endpoint and headers\nurl = \"https://api.techcorp.com/v1/transactions\"\nheaders = {\n    \"Authorization\": \"Bearer YOUR_ACCESS_TOKEN\",\n    \"Content-Type\": \"application/json\"\n}\n\n# Fetch transaction data\nresponse = requests.get(url, headers=headers)\ntransactions = response.json()\n\n# Process and analyze data\nfor transaction in transactions:\n    if transaction['amount'] > 1000:\n        print(f\"High-value transaction: {transaction['id']}\")\n```\n\n```javascript\n// This script integrates transaction data into TechCorp's dashboard\nfetch('https://api.techcorp.com/v1/transactions', {\n    method: 'GET',\n    headers: {\n        'Authorization': 'Bearer YOUR_ACCESS_TOKEN'\n    }\n})\n.then(response => response.json())\n.then(data => {\n    // Process and display data on dashboard\n    const highValueTransactions = data.filter(t => t.amount > 1000);\n    console.log('High-value transactions:', highValueTransactions);\n    // Render data on dashboard\n    renderDashboard(highValueTransactions);\n})\n.catch(error => console.error('Error:', error));\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vra-code-examples#main-content",
+      "vra-code-examples#overview",
+      "vra-code-examples#setup",
+      "vra-code-examples#examples",
+      "vra-code-examples#tools",
+      "vra-code-examples#mcp",
+      "vra-code-examples#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "Skill vra-code-examples cung cấp một tập hợp các ví dụ code được chọn lọc kỹ lưỡng, do chính đội ngũ Technical Marketing của vRealize Automation thiết kế. Skill này tập trung vào việc nâng cao hiệu quả marketing automation thông qua các giải pháp lập trình thực tế, giúp các lập trình viên và product manager nhanh chóng triển khai các chiến lược tự động hóa hiệu quả. Bằng cách sử dụng các ví dụ này, người dùng có thể tối ưu hóa quy trình làm việc marketing và nâng cao hiệu suất vận hành. Một trong những lợi ích chính của skill này là khả năng tiết kiệm thời gian khi triển khai các tác vụ tự động hóa. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được xác định rõ ràng, mức độ phức tạp trung bình (intermediate) của skill này cho thấy người dùng có thể đạt được hiệu quả đáng kể khi tích hợp các ví dụ code này vào hệ thống hiện tại của họ. Skill này đặc biệt giá trị cho những ai đang muốn nâng cao năng lực tự động hóa bằng AI trong các bộ phận marketing, nơi mà việc triển khai nhanh chóng và khả năng thích ứng là yếu tố cốt lõi. Đây là skill lý tưởng cho các lập trình viên, product manager và chuyên gia AI đang tập trung vào marketing automation. Bằng cách tận dụng skill vra-code-examples, người dùng có thể tiếp cận các phương pháp hay nhất (best practices) và các giải pháp sáng tạo để áp dụng trực tiếp vào dự án của mình. Ví dụ, một đội ngũ marketing có thể sử dụng các ví dụ code này để tự động hóa quy trình báo cáo hoặc tích hợp liền mạch các công cụ marketing khác nhau, từ đó giảm thiểu công sức thủ công và tăng năng suất. Với độ khó ở mức trung bình, việc triển khai skill này yêu cầu kiến thức nền tảng về lập trình và các nguyên lý tự động hóa. Người dùng có thể mất khoảng 30 phút để triển khai các ví dụ này một cách hiệu quả. Trong bối cảnh các tổ chức đang ngày càng áp dụng quy trình làm việc ưu tiên AI (AI-first), việc tích hợp các skill tự động hóa như vậy vào hoạt động vận hành là điều cần thiết để duy trì lợi thế cạnh tranh trên thị trường. Skill vra-code-examples không chỉ nâng cao khả năng tự động hóa quy trình làm việc mà còn hoàn toàn phù hợp với xu hướng phát triển của các giải pháp marketing dựa trên AI hiện nay.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/VMwareCMBUTMM/vra-code-examples`",
+    "usage_vi": "```\nTạo 3 ví dụ code cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tập trung vào tích hợp [DATA]. Bao gồm các chú thích giải thích từng bước. Sử dụng Python và JavaScript.\n```\nCopy\n\n```\n# Các ví dụ code cho TechCorp trong ngành FinTech\n\n```python\n# Script này kết nối với API của TechCorp và xử lý dữ liệu giao dịch\nimport requests\nimport json\n\n# API endpoint và headers\nurl = \"https://api.techcorp.com/v1/transactions\"\nheaders = {\n    \"Authorization\": \"Bearer YOUR_ACCESS_TOKEN\",\n    \"Content-Type\": \"application/json\"\n}\n\n# Lấy dữ liệu giao dịch\nresponse = requests.get(url, headers=headers)\ntransactions = response.json()\n\n# Xử lý và phân tích dữ liệu\nfor transaction in transactions:\n    if transaction['amount'] > 1000:\n        print(f\"Giao dịch giá trị cao: {transaction['id']}\")\n```\n\n```javascript\n// Script này tích hợp dữ liệu giao dịch vào dashboard của TechCorp\nfetch('https://api.techcorp.com/v1/transactions', {\n    method: 'GET',\n    headers: {\n        'Authorization': 'Bearer YOUR_ACCESS_TOKEN'\n    }\n})\n.then(response => response.json())\n.then(data => {\n    // Xử lý và hiển thị dữ liệu trên dashboard\n    const highValueTransactions = data.filter(t => t.amount > 1000);\n    console.log('Các giao dịch giá trị cao:', highValueTransactions);\n    // Render dữ liệu lên dashboard\n    renderDashboard(highValueTransactions);\n})\n.catch(error => console.error('Lỗi:', error));\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:43:52.961382Z",
+    "http_status": 200,
+    "content_hash": "614375882a30956ad4f2b4a7b9ec1d29ae079220814eb2ad9a9699272ef29e42",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vra-code-examples.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vra-code-examples.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "vra-code-examples: Nâng cao hiệu quả Tự động hóa Marketing",
+  "short_description_vi": "Các ví dụ code từ đội ngũ Technical Marketing của vRealize Automation"
+}

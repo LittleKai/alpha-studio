@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/commit-work",
+  "slug": "commit-work",
+  "name": "Commit Work",
+  "headline": "commit-work: Code Committing",
+  "short_description": "The commit-work skill automates code change commits, reducing manual steps for developers. It integrates with version control systems like Git, enhancing productivity and minimizing errors in the development workflow.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "softaworks",
+  "install_command": "git clone https://github.com/softaworks/agent-toolkit.git",
+  "source_repo_url": "https://github.com/softaworks/agent-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The commit-work skill is designed to automate the code committing process, allowing developers to focus on writing quality code rather than getting bogged down by repetitive tasks. By integrating seamlessly with version control systems, this skill enables users to commit changes with minimal input, ensuring that the workflow remains uninterrupted. The automation not only simplifies the process but also reduces the likelihood of human error, leading to more reliable code management. One of the key benefits of using the commit-work skill is the significant time savings it offers. Developers can execute commits with just a few commands, eliminating the need for manual entry and verification. This efficiency not only speeds up the development cycle but also enhances collaboration among team members, as changes can be committed and shared more rapidly. The skill is particularly beneficial for teams working on large projects where frequent commits are necessary to maintain progress. This skill is ideal for developers, product managers, and AI practitioners who seek to optimize their workflows. By automating the commit process, users can allocate more time to critical tasks such as code reviews, testing, and feature development. Practical use cases include automating commits after successful builds, integrating with CI/CD pipelines, and ensuring that code is consistently updated in collaborative environments. Implementation of the commit-work skill is straightforward, making it accessible even for those with limited experience in automation. Its integration into AI-first workflows enhances productivity by allowing AI agents to manage version control tasks autonomously. This skill represents a significant advancement in workflow automation, aligning with the growing trend of using AI to enhance software development processes.\nAutomate code commits after successful builds\nIntegrate with CI/CD pipelines for seamless deployment\nEnsure consistent updates in collaborative coding environments\nReduce manual errors in version control processes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage": "```\nCommit the following changes to the [REPOSITORY] repository: [DESCRIPTION OF CHANGES]. Ensure the commit message follows the [PROJECT'S COMMIT CONVENTION] and includes all relevant files. Push the changes to the [BRANCH NAME] branch.\n```\nCopy\n\n```\nSuccessfully committed changes to the 'feature/login-page' branch in the 'ecommerce-website' repository. The commit message was 'feat(login): add OAuth2 authentication options' and included the following files: src/auth/login.js, src/auth/styles.css, and src/auth/login.test.js. The changes were pushed to the remote repository on GitHub. The commit hash is a1b2c3d4e5f6.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "commit-work#main-content",
+      "commit-work#overview",
+      "commit-work#setup",
+      "commit-work#examples",
+      "commit-work#tools",
+      "commit-work#mcp",
+      "commit-work#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The commit-work skill is designed to automate the code committing process, allowing developers to focus on writing quality code rather than getting bogged down by repetitive tasks. By integrating seamlessly with version control systems, this skill enables users to commit changes with minimal input, ensuring that the workflow remains uninterrupted. The automation not only simplifies the process but also reduces the likelihood of human error, leading to more reliable code management. One of the key benefits of using the commit-work skill is the significant time savings it offers. Developers can execute commits with just a few commands, eliminating the need for manual entry and verification. This efficiency not only speeds up the development cycle but also enhances collaboration among team members, as changes can be committed and shared more rapidly. The skill is particularly beneficial for teams working on large projects where frequent commits are necessary to maintain progress. This skill is ideal for developers, product managers, and AI practitioners who seek to optimize their workflows. By automating the commit process, users can allocate more time to critical tasks such as code reviews, testing, and feature development. Practical use cases include automating commits after successful builds, integrating with CI/CD pipelines, and ensuring that code is consistently updated in collaborative environments. Implementation of the commit-work skill is straightforward, making it accessible even for those with limited experience in automation. Its integration into AI-first workflows enhances productivity by allowing AI agents to manage version control tasks autonomously. This skill represents a significant advancement in workflow automation, aligning with the growing trend of using AI to enhance software development processes.\nAutomate code commits after successful builds\nIntegrate with CI/CD pipelines for seamless deployment\nEnsure consistent updates in collaborative coding environments\nReduce manual errors in version control processes",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage_vi": "```\nCommit the following changes to the [REPOSITORY] repository: [DESCRIPTION OF CHANGES]. Ensure the commit message follows the [PROJECT'S COMMIT CONVENTION] and includes all relevant files. Push the changes to the [BRANCH NAME] branch.\n```\nCopy\n\n```\nSuccessfully committed changes to the 'feature/login-page' branch in the 'ecommerce-website' repository. The commit message was 'feat(login): add OAuth2 authentication options' and included the following files: src/auth/login.js, src/auth/styles.css, and src/auth/login.test.js. The changes were pushed to the remote repository on GitHub. The commit hash is a1b2c3d4e5f6.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:48.636921Z",
+    "http_status": 200,
+    "content_hash": "2da59d6dacf47d0953c33d777a05ba9a515594c710436662b42420ccc4bb3877",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\commit-work.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\commit-work.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "commit-work: Code Committing",
+  "short_description_vi": "The commit-work skill automates code change commits, reducing manual steps for developers. It integrates with version control systems like Git, enhancing productivity and minimizing errors in the development workflow."
+}

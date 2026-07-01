@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/videodb",
+  "slug": "videodb",
+  "name": "sqlalchemy-alembic-expert-best-practices-code-review",
+  "headline": "VideoDB: Server-Side Video Processing for AI Agents",
+  "short_description": "The videodb skill is designed to help users manage and query video databases efficiently. It is suitable for developers looking to enhance video-related applications with database capabilities.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "video-db",
+  "install_command": "git clone https://github.com/video-db/skills",
+  "source_repo_url": "https://github.com/video-db/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "videodb",
+    "database-management"
+  ],
+  "sections": {
+    "overview": "VideoDB skill provides AI agents with a unified interface for end-to-end video workflows without requiring ffmpeg setup on the client. Capture desktop screens, microphone audio, and system audio in real time, or ingest videos from YouTube, URLs, RTSP streams, and local files. The skill enables visual understanding, speech transcription, and semantic search across video content to find exact moments and generate playable clips. Create timestamped transcripts, auto-generate subtitles with styling options, edit timelines with text and image overlays, and export results as HLS streams. Ideal for developers building video-centric applications, monitoring systems, content creation tools, and real-time perception workflows.\nManaging video metadata\nSearching through video contents\nIntegrating video database functionalities into applications\nFound **47 videos** matching your criteria in the GreenLeaf Media database (Industry: Environmental Documentaries).",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/video-db/skills --skill videodb`\n`git clone https://github.com/video-db/skills`",
+    "usage": "```\nAct as a VideoDB expert. Help me [QUERY_VIDEO_DATABASE] for [COMPANY]'s video content in the [INDUSTRY] sector. Focus on [SPECIFIC_ATTRIBUTE: e.g., duration, format, tags, metadata]. Use [DATA] to refine results. Provide actionable insights or a structured report.\n```\nCopy\n\n```\n# Video Database Query Results for GreenLeaf Media",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "videodb#main-content",
+      "videodb#overview",
+      "videodb#setup",
+      "videodb#examples",
+      "videodb#related",
+      "oracle-database-skills",
+      "sqlalchemy-alembic-expert-best-practices-code-review"
+    ],
+    "overview_vi": "VideoDB skill provides AI agents with a unified interface for end-to-end video workflows without requiring ffmpeg setup on the client. Capture desktop screens, microphone audio, and system audio in real time, or ingest videos from YouTube, URLs, RTSP streams, and local files. The skill enables visual understanding, speech transcription, and semantic search across video content to find exact moments and generate playable clips. Create timestamped transcripts, auto-generate subtitles with styling options, edit timelines with text and image overlays, and export results as HLS streams. Ideal for developers building video-centric applications, monitoring systems, content creation tools, and real-time perception workflows.\nManaging video metadata\nSearching through video contents\nIntegrating video database functionalities into applications\nFound **47 videos** matching your criteria in the GreenLeaf Media database (Industry: Environmental Documentaries).",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/video-db/skills --skill videodb`\n`git clone https://github.com/video-db/skills`",
+    "usage_vi": "```\nAct as a VideoDB expert. Help me [QUERY_VIDEO_DATABASE] for [COMPANY]'s video content in the [INDUSTRY] sector. Focus on [SPECIFIC_ATTRIBUTE: e.g., duration, format, tags, metadata]. Use [DATA] to refine results. Provide actionable insights or a structured report.\n```\nCopy\n\n```\n# Video Database Query Results for GreenLeaf Media"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:54:43.698805Z",
+    "http_status": 200,
+    "content_hash": "4641eb31f7f7f801120341fa06c2ac9473aa4f5a386b211b1efcce7fbd01ae4a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\videodb.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\videodb.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "VideoDB: Server-Side Video Processing for AI Agents",
+  "short_description_vi": "The videodb skill is designed to help users manage and query video databases efficiently. It is suitable for developers looking to enhance video-related applications with database capabilities."
+}

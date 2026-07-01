@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tech-article-illustration-master",
+  "slug": "tech-article-illustration-master",
+  "name": "Tech-Article-Illustration-Master",
+  "headline": "Tech-Article-Illustration-Master - AI Illustration",
+  "short_description": "Tech-Article-Illustration-Master generates professional, non-cliché AI illustrations for technical articles. Media professionals benefit from 25 verified visual styles. It connects to Claude and integrates into content workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "ZD-AI-Lab",
+  "install_command": "git clone https://github.com/ZD-AI-Lab/Tech-Article-Illustration-Master.git",
+  "source_repo_url": "https://github.com/ZD-AI-Lab/Tech-Article-Illustration-Master",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Tech-Article-Illustration-Master solves the problem of generic, clichéd AI-generated images for technical content. It provides 25 curated visual styles—each grounded in real art movements and design traditions (Swiss International Style, patent illustrations, stippled journalism, cyanotype, plotter art)—and matches them to your article's emotional tone through an emotion-to-style system. The skill analyzes your content, recommends an appropriate visual style, and generates a bilingual prompt with transparent structure showing style declaration, core imagery, texture, mood, and negative constraints. It integrates directly into Claude workflows and supports seamless image generation via Gemini 3.0 when configured with MCP tools, or outputs prompts for any external image generator. Built for tech media editors, technical bloggers, content operators, and anyone seeking design-driven illustration over mass-produced aesthetics.\nGenerate professional title illustrations for deep-dive technical articles\nCreate visually distinctive illustrations for technical blog posts and newsletters\nProduce on-brand article graphics for tech media publications and editorial platforms\nDevelop cohesive visual styles for technology content across social media and websites",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZD-AI-Lab/Tech-Article-Illustration-Master`",
+    "usage": "```\nGenerate a professional illustration for a tech article about [TOPIC] in [INDUSTRY]. Use one of the 25 verified styles: [STYLE]. Ensure the image is non-cliché and suitable for a [COMPANY] audience. Provide the prompt for AI image generation and a brief description of the visual concept.\n```\nCopy\n\n```\n# Illustration Concept for 'Quantum Computing in Healthcare'\n\n**Style:** 'Minimalist Blueprints'\n\n**AI Image Generation Prompt:** 'A minimalist blueprint-style illustration showing quantum computing components integrated into a medical facility. Use a clean, technical aesthetic with precise line work and a muted blue color palette. Avoid clichéd elements like glowing brains or futuristic cityscapes.'\n\n**Description:** This illustration depicts a quantum computing system as a series of interconnected modules within a medical facility. The design emphasizes the technical aspects of quantum computing, such as qubits and quantum gates, while maintaining a clean and professional aesthetic suitable for a healthcare industry audience.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tech-article-illustration-master#main-content",
+      "tech-article-illustration-master#overview",
+      "tech-article-illustration-master#setup",
+      "tech-article-illustration-master#examples",
+      "tech-article-illustration-master#tools",
+      "tech-article-illustration-master#mcp",
+      "tech-article-illustration-master#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Tech-Article-Illustration-Master giải quyết triệt để vấn đề ảnh AI rập khuôn, nhàm chán trong các nội dung kỹ thuật. Công cụ cung cấp 25 phong cách trực quan được tinh tuyển — mỗi phong cách đều dựa trên các trào lưu nghệ thuật và trường phái thiết kế thực tế (Phong cách Quốc tế Thụy Sĩ, bản vẽ sáng chế, báo chí chấm điểm - stippled journalism, in xanh - cyanotype, nghệ thuật vẽ máy - plotter art) — đồng thời điều chỉnh chúng phù hợp với sắc thái cảm xúc của bài viết thông qua hệ thống chuyển đổi cảm xúc sang phong cách (emotion-to-style). Agent này sẽ phân tích nội dung của bạn, đề xuất phong cách trực quan phù hợp và tạo prompt song ngữ với cấu trúc rõ ràng bao gồm: khai báo phong cách, hình ảnh cốt lõi, kết cấu (texture), tâm trạng (mood) và các ràng buộc phủ định (negative constraints). Công cụ tích hợp trực tiếp vào workflow của Claude và hỗ trợ tạo ảnh mượt mà qua Gemini 3.0 khi được cấu hình với các MCP tool, hoặc xuất prompt để sử dụng trên bất kỳ trình tạo ảnh bên ngoài nào. Được thiết kế dành riêng cho biên tập viên truyền thông công nghệ, blogger kỹ thuật, người vận hành nội dung và bất kỳ ai đang tìm kiếm những hình ảnh minh họa đậm chất thiết kế thay vì các sản phẩm thẩm mỹ đại trà.\nTạo ảnh minh họa tiêu đề chuyên nghiệp cho các bài viết kỹ thuật chuyên sâu\nThiết kế hình ảnh minh họa độc đáo cho bài viết blog công nghệ và newsletter\nSản xuất đồ họa bài viết chuẩn nhận diện thương hiệu cho các ấn phẩm truyền thông công nghệ và nền tảng biên tập\nXây dựng phong cách hình ảnh đồng nhất cho nội dung công nghệ trên mạng xã hội và website",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ZD-AI-Lab/Tech-Article-Illustration-Master`",
+    "usage_vi": "```\nTạo một hình minh họa chuyên nghiệp cho bài viết công nghệ về [TOPIC] trong lĩnh vực [INDUSTRY]. Sử dụng một trong 25 phong cách đã được kiểm chứng: [STYLE]. Đảm bảo hình ảnh không bị rập khuôn và phù hợp với đối tượng độc giả của [COMPANY]. Cung cấp prompt để tạo ảnh bằng AI và mô tả ngắn gọn về ý tưởng hình ảnh.\n```\nSao chép\n\n```\n# Ý tưởng minh họa cho 'Điện toán lượng tử trong Y tế'\n\n**Phong cách (Style):** 'Minimalist Blueprints'\n\n**AI Image Generation Prompt:** 'A minimalist blueprint-style illustration showing quantum computing components integrated into a medical facility. Use a clean, technical aesthetic with precise line work and a muted blue color palette. Avoid clichéd elements like glowing brains or futuristic cityscapes.'\n\n**Mô tả:** Hình minh họa này mô tả một hệ thống điện toán lượng tử dưới dạng các mô-đun liên kết với nhau trong một cơ sở y tế. Thiết kế nhấn mạnh vào các khía cạnh kỹ thuật của điện toán lượng tử như qubit và cổng lượng tử, đồng thời duy trì tính thẩm mỹ tối giản và chuyên nghiệp phù hợp với nhóm độc giả trong ngành y tế.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:15:13.803129Z",
+    "http_status": 200,
+    "content_hash": "ee2302e758904eaa378fd7678682f2c79d8fcef88fd56c6d53e3063c1f70c1a5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tech-article-illustration-master.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tech-article-illustration-master.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tech-Article-Illustration-Master - Thiết kế minh họa bằng AI",
+  "short_description_vi": "Tech-Article-Illustration-Master tạo các hình ảnh minh họa bằng AI chuyên nghiệp, độc đáo và không đi vào lối mòn cho các bài viết kỹ thuật. Các nhà làm truyền thông có thể khai thác 25 phong cách hình ảnh đã được kiểm chứng. Công cụ này kết nối trực tiếp với Claude và tích hợp mượt mà vào quy trình sản xuất nội dung."
+}

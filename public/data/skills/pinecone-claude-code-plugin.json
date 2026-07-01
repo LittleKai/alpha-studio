@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pinecone-claude-code-plugin",
+  "slug": "pinecone-claude-code-plugin",
+  "name": "browser-use",
+  "headline": "Pinecone Claude Code Plugin - Vector Database",
+  "short_description": "The Pinecone Claude Code Plugin integrates Pinecone's vector database into Claude Code for semantic search, index management, and RAG workflows. Operations teams can enhance data retrieval and analysis, connecting Claude Code with Pinecone's vector database for improved information processing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "pinecone-io",
+  "install_command": "git clone https://github.com/pinecone-io/pinecone-claude-code-plugin.git",
+  "source_repo_url": "https://github.com/pinecone-io/pinecone-claude-code-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "mcp",
+    "vector-database",
+    "hybrid-search",
+    "retrieval-augmented-generation",
+    "claude-code-plugin",
+    "pinecone",
+    "anthropic-claude",
+    "claude-code-plugin-marketplace",
+    "semantic-search"
+  ],
+  "sections": {
+    "overview": "The Pinecone Claude Code Plugin connects Pinecone's vector database directly to Claude Code, enabling semantic search, index management, and retrieval-augmented generation (RAG) workflows. It provides slash commands for quick access to common operations, natural language query support, and a fully managed Pinecone Assistant for document Q&A with citations. The plugin includes the full Pinecone MCP Server, allowing you to create indexes, list resources, search records, upsert data, and apply reranking—all without leaving your IDE. Teams building document retrieval systems, knowledge bases, or information-heavy applications can streamline data indexing and querying. Installation requires setting a Pinecone API key and, for Assistant features, the uv Python package manager.\nBuild document Q&A systems with semantic search and citations\nCreate vector indexes and manage index lifecycles from Claude Code\nImplement RAG workflows for knowledge base retrieval\nQuery vector data using natural language instead of manual embeddings",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pinecone-io/pinecone-claude-code-plugin`",
+    "usage": "```\nUse the Pinecone Claude Code Plugin to [OPERATION] in the Pinecone index '[INDEX_NAME]'. [ADDITIONAL_CONTEXT] Ensure the operation aligns with [BEST_PRACTICES].\n```\nCopy\n\n```\n```python\n# Querying Pinecone index 'product-docs' for semantic search of 'AI-powered automation tools'\nfrom pinecone import Pinecone\n\npc = Pinecone(api_key=\"your-api-key\")\nindex = pc.Index(\"product-docs\")\n\nresponse = index.query(\n    vector=[0.12, 0.45, 0.78, 0.34],  # Embedding for 'AI-powered automation tools'\n    top_k=5,\n    include_metadata=True\n)\n\nfor match in response['matches']:\n    print(f\"Score: {match['score']:.2f}, ID: {match['id']}\")\n    print(f\"Metadata: {match['metadata']}\")\n    print(\"---\")\n```\n\n**Results:**\n- **Top match**: Score 0.94, ID `doc-ai-automation-123` (Metadata: `{'title': 'AI Automation in DevOps', 'category': 'technical-docs'}`)\n- **Second match**: Score 0.87, ID `doc-ai-automation-456` (Metadata: `{'title': 'Automating Customer Support with AI', 'category': 'business-docs'}`)\n- **Third match**: Score 0.82, ID `doc-ai-automation-789` (Metadata: `{'title': 'AI-Powered Data Pipelines', 'category': 'technical-docs'}`)\n\n**Recommendation**: The top 3 results are highly relevant for building an AI-powered automation workflow. The metadata suggests these documents cover both technical implementation and business use cases. For further refinement, consider filtering by `category` in the query to narrow down to technical documentation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pinecone-claude-code-plugin#main-content",
+      "pinecone-claude-code-plugin#overview",
+      "pinecone-claude-code-plugin#setup",
+      "pinecone-claude-code-plugin#examples",
+      "pinecone-claude-code-plugin#tools",
+      "pinecone-claude-code-plugin#mcp",
+      "pinecone-claude-code-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Pinecone Claude Code Plugin connects Pinecone's vector database directly to Claude Code, enabling semantic search, index management, and retrieval-augmented generation (RAG) workflows. It provides slash commands for quick access to common operations, natural language query support, and a fully managed Pinecone Assistant for document Q&A with citations. The plugin includes the full Pinecone MCP Server, allowing you to create indexes, list resources, search records, upsert data, and apply reranking—all without leaving your IDE. Teams building document retrieval systems, knowledge bases, or information-heavy applications can streamline data indexing and querying. Installation requires setting a Pinecone API key and, for Assistant features, the uv Python package manager.\nBuild document Q&A systems with semantic search and citations\nCreate vector indexes and manage index lifecycles from Claude Code\nImplement RAG workflows for knowledge base retrieval\nQuery vector data using natural language instead of manual embeddings",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pinecone-io/pinecone-claude-code-plugin`",
+    "usage_vi": "```\nUse the Pinecone Claude Code Plugin to [OPERATION] in the Pinecone index '[INDEX_NAME]'. [ADDITIONAL_CONTEXT] Ensure the operation aligns with [BEST_PRACTICES].\n```\nCopy\n\n```\n```python\n# Querying Pinecone index 'product-docs' for semantic search of 'AI-powered automation tools'\nfrom pinecone import Pinecone\n\npc = Pinecone(api_key=\"your-api-key\")\nindex = pc.Index(\"product-docs\")\n\nresponse = index.query(\n    vector=[0.12, 0.45, 0.78, 0.34],  # Embedding for 'AI-powered automation tools'\n    top_k=5,\n    include_metadata=True\n)\n\nfor match in response['matches']:\n    print(f\"Score: {match['score']:.2f}, ID: {match['id']}\")\n    print(f\"Metadata: {match['metadata']}\")\n    print(\"---\")\n```\n\n**Results:**\n- **Top match**: Score 0.94, ID `doc-ai-automation-123` (Metadata: `{'title': 'AI Automation in DevOps', 'category': 'technical-docs'}`)\n- **Second match**: Score 0.87, ID `doc-ai-automation-456` (Metadata: `{'title': 'Automating Customer Support with AI', 'category': 'business-docs'}`)\n- **Third match**: Score 0.82, ID `doc-ai-automation-789` (Metadata: `{'title': 'AI-Powered Data Pipelines', 'category': 'technical-docs'}`)\n\n**Recommendation**: The top 3 results are highly relevant for building an AI-powered automation workflow. The metadata suggests these documents cover both technical implementation and business use cases. For further refinement, consider filtering by `category` in the query to narrow down to technical documentation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:06:01.590818Z",
+    "http_status": 200,
+    "content_hash": "fcce65927b9ee78c28a9bde822c42cdf48467ef3a64f58359bffefe4822b2471",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pinecone-claude-code-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pinecone-claude-code-plugin.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Pinecone Claude Code Plugin - Vector Database",
+  "short_description_vi": "The Pinecone Claude Code Plugin integrates Pinecone's vector database into Claude Code for semantic search, index management, and RAG workflows. Operations teams can enhance data retrieval and analysis, connecting Claude Code with Pinecone's vector database for improved information processing."
+}

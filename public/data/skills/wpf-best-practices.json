@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wpf-best-practices",
+  "slug": "wpf-best-practices",
+  "name": "WPF Best Practices",
+  "headline": "WPF Best Practices: C# Desktop App Development",
+  "short_description": "This skill provides best practices for developing WPF desktop applications using C# and .NET. It is intended for developers looking to apply MVVM architecture and maintain high-quality code.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "jcurbelo",
+  "install_command": "git clone https://github.com/jcurbelo/skills",
+  "source_repo_url": "https://github.com/jcurbelo/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "practices",
+    "best",
+    "development"
+  ],
+  "sections": {
+    "overview": "This skill provides comprehensive guidance for developing WPF desktop applications using C# and .NET. It covers modern C# code style including file-scoped namespaces, nullable reference types, and naming conventions aligned with industry standards. The skill teaches MVVM architecture implementation through ViewModelBase and RelayCommand patterns, along with proper project structure for WPF applications and shared libraries. Developers working on Windows desktop applications, system tray apps, XAML UI, and dependency injection setups benefit from practical patterns for async operations, property binding, and command handling. The skill emphasizes code maintainability, type safety, and Windows-specific best practices for professional-grade desktop application development.\nImplementing MVVM architecture in WPF applications\nApplying dependency injection for better modularity\nUtilizing async/await patterns in WPF for responsive UI\nIntegrating Windows desktop features into applications",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/jcurbelo/skills --skill wpf-best-practices`\n`git clone https://github.com/jcurbelo/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "wpf-best-practices#main-content",
+      "wpf-best-practices#overview",
+      "wpf-best-practices#setup",
+      "wpf-best-practices#examples",
+      "wpf-best-practices#related",
+      "upgrade-react-navigation",
+      "liveblocks-best-practices",
+      "gadget-best-practices"
+    ],
+    "overview_vi": "Skill này cung cấp hướng dẫn toàn diện để phát triển ứng dụng desktop WPF bằng C# và .NET. Nội dung bao gồm coding style C# hiện đại như file-scoped namespace, nullable reference type và các quy ước đặt tên (naming convention) chuẩn hóa theo ngành. Skill này hướng dẫn cách triển khai kiến trúc MVVM thông qua các pattern ViewModelBase và RelayCommand, cùng cấu trúc dự án chuẩn cho ứng dụng WPF và các thư viện dùng chung (shared libraries). Các lập trình viên đang làm việc với ứng dụng Windows desktop, ứng dụng khay hệ thống (system tray), XAML UI và setup dependency injection sẽ học hỏi được các pattern thực tế cho các tác vụ bất đồng bộ (async), property binding và xử lý command. Skill này nhấn mạnh vào khả năng bảo trì code, an toàn kiểu (type safety) và các best practices dành riêng cho Windows để phát triển ứng dụng desktop chuyên nghiệp.\n- Triển khai kiến trúc MVVM trong ứng dụng WPF\n- Áp dụng dependency injection để tăng tính mô-đun hóa\n- Sử dụng các pattern async/await trong WPF để tối ưu phản hồi UI\n- Tích hợp các tính năng Windows desktop vào ứng dụng",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/jcurbelo/skills --skill wpf-best-practices`\n`git clone https://github.com/jcurbelo/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nKiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:53.700092Z",
+    "http_status": 200,
+    "content_hash": "f3b4f0f711ff3263c9ab7d0b3517054f2b88628b967d71f7bef5b16b8febaabc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wpf-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wpf-best-practices.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "WPF Best Practices: Phát triển ứng dụng desktop bằng C#",
+  "short_description_vi": "Skill này cung cấp các best practices để phát triển ứng dụng desktop WPF sử dụng C# và .NET, dành cho các lập trình viên muốn áp dụng kiến trúc MVVM và duy trì chất lượng code cao."
+}

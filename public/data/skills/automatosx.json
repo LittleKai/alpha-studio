@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/automatosx",
+  "slug": "automatosx",
+  "name": "AutomatosX",
+  "headline": "AutomatosX AI agent orchestration software",
+  "short_description": "AutomatosX orchestrates AI agents, workflows, and memory for operations teams. It enables automation of complex tasks by coordinating multiple AI agents, connecting to developer tools like Claude, and managing workflows. Ideal for streamlining operations and enhancing productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "defai-digital",
+  "install_command": "git clone https://github.com/defai-digital/AutomatosX.git",
+  "source_repo_url": "https://github.com/defai-digital/AutomatosX",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "glm",
+    "grok",
+    "ai-automation",
+    "multi-agent",
+    "agentic-framework",
+    "gemini-cli",
+    "open-source",
+    "codex-cli",
+    "openai",
+    "opencode",
+    "ai-runtime",
+    "developer-tools",
+    "workflow-orchestration",
+    "aicoding",
+    "claude-code",
+    "qwen"
+  ],
+  "sections": {
+    "overview": "AutomatosX enhances AI coding assistants like Claude, Gemini, and Codex with 80+ specialized tools through Model Context Protocol (MCP). It provides 28 pre-built agents covering fullstack development, security, DevOps, and ML engineering, enabling developers to automate complex tasks and coordinate multiple AI perspectives. The platform includes code review with security and performance focus, persistent memory across sessions, governance gates for AI-generated code, and execution tracing for full audit trails. Teams benefit from multi-model discussions, workflow engines with retry logic and guard policies, and SQLite-backed state management. Installation requires three commands, after which all tools integrate seamlessly into your AI CLI environment.\nGet multi-model AI consensus on architectural decisions (REST vs GraphQL, caching strategies)\nAutomated code review with security and performance focus areas\nDelegate complex tasks to specialized agents (security, DevOps, fullstack)\nEnforce governance policies on AI-generated code changes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/defai-digital/AutomatosX`",
+    "usage": "```\nAct as an AutomatosX orchestrator to automate the following task: [TASK_DESCRIPTION]. Coordinate the necessary AI agents, tools, and workflows to complete this task efficiently. Ensure all steps are logged and dependencies are managed. Report the final output in a structured format. Use the following tools if needed: [TOOLS_LIST].\n```\nCopy\n\n```\n### AutomatosX Orchestration Report\n**Task:** Automate the generation of a weekly performance dashboard for the marketing team by aggregating data from Google Analytics, HubSpot, and Salesforce, then generating a visual report in Google Data Studio.\n\n**Coordinated Agents & Tools:**\n1. **Data Aggregator Agent:** Pulled metrics from Google Analytics (sessions, bounce rate), HubSpot (lead conversions), and Salesforce (pipeline value).\n2. **Data Cleaner Agent:** Standardized date formats and removed duplicate entries.\n3. **Report Generator Agent:** Created a Google Data Studio dashboard with pre-configured templates and auto-refreshing data sources.\n4. **Notifier Agent:** Sent a Slack message to #marketing-alerts with a link to the dashboard and key metrics summary.\n\n**Dependencies Managed:**\n- API rate limits were monitored to avoid throttling.\n- Data freshness was validated (all sources updated within the last 24 hours).\n- Permissions were auto-granted for shared access to the dashboard.\n\n**Final Output:**\n- **Dashboard Link:** https://datastudio.google.com/reporting/12345abcde\n- **Key Metrics:**\n  - Total Sessions: 12,450 (+8% WoW)\n  - Lead Conversions: 245 (+12% WoW)\n  - Pipeline Value: $1.2M (+5% WoW)\n- **Next Steps:** Schedule a review meeting to discuss trends in the #marketing-team channel.\n\n**Logs:**\n- Data aggregation completed in 4.2 minutes.\n- Dashboard generation triggered at 9:15 AM UTC.\n- No errors detected.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "automatosx#main-content",
+      "automatosx#overview",
+      "automatosx#setup",
+      "automatosx#examples",
+      "automatosx#tools",
+      "automatosx#mcp",
+      "automatosx#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AutomatosX nâng cao sức mạnh cho các trợ lý lập trình AI như Claude, Gemini và Codex bằng hơn 80 công cụ chuyên dụng thông qua Model Context Protocol (MCP). Nó cung cấp 28 agent tích hợp sẵn (pre-built) hỗ trợ phát triển fullstack, bảo mật, DevOps và kỹ thuật ML, giúp lập trình viên tự động hóa các tác vụ phức tạp và phối hợp nhiều góc nhìn AI khác nhau. Nền tảng này bao gồm tính năng review code tập trung vào bảo mật và hiệu năng, bộ nhớ duy trì (persistent memory) qua các session, các cổng kiểm soát (governance gates) cho code do AI tạo ra, và truy vết thực thi (execution tracing) để kiểm toán đầy đủ. Các đội ngũ phát triển sẽ được hưởng lợi từ các cuộc thảo luận đa mô hình, các workflow engine tích hợp retry logic và guard policy, cùng cơ chế quản lý trạng thái được lưu trữ bằng SQLite. Quá trình cài đặt chỉ cần ba câu lệnh, sau đó tất cả các công cụ sẽ tích hợp mượt mà vào môi trường AI CLI của bạn.\nĐạt được sự đồng thuận từ nhiều mô hình AI đối với các quyết định kiến trúc (REST vs GraphQL, chiến lược caching)\nReview code tự động với trọng tâm vào bảo mật và hiệu năng\nỦy thác các tác vụ phức tạp cho các agent chuyên dụng (bảo mật, DevOps, fullstack)\nÁp dụng các chính sách kiểm soát đối với những thay đổi mã nguồn do AI tạo ra",
+    "setup_vi": "Không có sẵn lệnh cài đặt nhanh. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/defai-digital/AutomatosX`",
+    "usage_vi": "```\nĐóng vai trò là bộ điều phối (orchestrator) AutomatosX để tự động hóa tác vụ sau: [TASK_DESCRIPTION]. Hãy điều phối các AI agent, công cụ và workflow cần thiết để hoàn thành tác vụ này một cách hiệu quả. Đảm bảo ghi log đầy đủ các bước và quản lý các dependency. Báo cáo kết quả cuối cùng theo định dạng có cấu trúc. Sử dụng các công cụ sau nếu cần: [TOOLS_LIST].\n```\nCopy\n\n```\n### Báo cáo điều phối AutomatosX\n**Tác vụ:** Tự động hóa việc tạo dashboard hiệu suất hàng tuần cho đội ngũ marketing bằng cách tổng hợp dữ liệu từ Google Analytics, HubSpot và Salesforce, sau đó tạo một báo cáo trực quan trong Google Data Studio.\n\n**Các Agent & Công cụ được điều phối:**\n1. **Data Aggregator Agent:** Lấy các chỉ số từ Google Analytics (session, bounce rate), HubSpot (lead conversion) và Salesforce (pipeline value).\n2. **Data Cleaner Agent:** Chuẩn hóa định dạng ngày tháng và loại bỏ các dữ liệu trùng lặp.\n3. **Report Generator Agent:** Tạo dashboard Google Data Studio với các template cấu hình sẵn và nguồn dữ liệu tự động làm mới.\n4. **Notifier Agent:** Gửi tin nhắn Slack đến kênh #marketing-alerts kèm theo liên kết đến dashboard và bản tóm tắt các chỉ số chính.\n\n**Các Dependency được quản lý:**\n- Theo dõi rate limit của API để tránh bị giới hạn lưu lượng (throttling).\n- Xác thực độ mới của dữ liệu (tất cả các nguồn đều được cập nhật trong vòng 24 giờ qua).\n- Tự động cấp quyền chia sẻ quyền truy cập dashboard.\n\n**Kết quả cuối cùng:**\n- **Liên kết Dashboard:** https://datastudio.google.com/reporting/12345abcde\n- **Chỉ số chính:**\n  - Tổng số Session: 12,450 (+8% WoW)\n  - Lượng Lead Conversion: 245 (+12% WoW)\n  - Giá trị Pipeline: $1.2M (+5% WoW)\n- **Bước tiếp theo:** Lên lịch họp review để thảo luận về các xu hướng trong kênh #marketing-team.\n\n**Logs:**\n- Hoàn thành tổng hợp dữ liệu trong 4.2 phút.\n- Kích hoạt tạo dashboard lúc 9:15 AM UTC.\n- Không phát hiện lỗi.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:27.819083Z",
+    "http_status": 200,
+    "content_hash": "1368dfb8ab0dad636933f5b0282e55c3a08060e7b9c738ff5dada48d9766265b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\automatosx.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\automatosx.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phần mềm điều phối AI agent AutomatosX",
+  "short_description_vi": "AutomatosX điều phối các AI agent, workflow và bộ nhớ cho các đội ngũ vận hành (operations). Công cụ này cho phép tự động hóa các tác vụ phức tạp bằng cách phối hợp nhiều AI agent, kết nối với các công cụ phát triển như Claude và quản lý workflow. Đây là giải pháp lý tưởng để tối ưu hóa quy trình vận hành và nâng cao hiệu suất làm việc."
+}

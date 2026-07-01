@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kindly-web-search-mcp-server",
+  "slug": "kindly-web-search-mcp-server",
+  "name": "browser-use",
+  "headline": "Kindly Web Search MCP Server - Web Search for AI",
+  "short_description": "Kindly Web Search MCP Server enables AI coding tools to perform web searches and retrieve content. It supports Serper, Tavily, and SearXNG. Use it to debug errors, research solutions, and automate content retrieval for developers and operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Shelpuk-AI-Technology-Consulting",
+  "install_command": "git clone https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server.git",
+  "source_repo_url": "https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "claude-code",
+    "ai-agents",
+    "gemini",
+    "mcp-server",
+    "searxng",
+    "serper",
+    "github-copilot",
+    "web-search",
+    "tavily-mcp",
+    "searxng-mcp",
+    "codex",
+    "ai",
+    "tavily"
+  ],
+  "sections": {
+    "overview": "Kindly Web Search MCP Server provides AI coding tools with web search and robust content retrieval across multiple sources including Serper, Tavily, and SearXNG. Unlike generic search servers that return only snippets and URLs, Kindly delivers complete conversation context—questions, answers, comments, and metadata—in a single call, eliminating the need for secondary scraping requests. It integrates directly with StackExchange, GitHub Issues, arXiv, and Wikipedia APIs, parsing webpages in real-time using a headless browser to extract LLM-optimized content. Built for developers and operations teams who need comprehensive solution context when debugging errors or researching technical problems with their AI assistants.\nDebug cryptic error messages by retrieving full StackOverflow threads with answers and comments\nResearch API and package documentation updates via real-time webpage extraction\nRetrieve complete GitHub Issues and Discussions with structured metadata for problem-solving\nAccess arXiv papers and technical content for AI-assisted code generation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server`",
+    "usage": "```\nUse the Kindly Web Search MCP Server to find solutions for the following error: [ERROR_MESSAGE]. Search Serper with the query '[ERROR_MESSAGE] + solution' and retrieve the top 3 most relevant results. Summarize the findings and suggest the most likely fix based on the results.\n```\nCopy\n\n```\nI encountered the following error while deploying a Node.js application to AWS Lambda:\n\n```\nError: ENOENT: no such file or directory, open '/var/task/node_modules/some-package/package.json'\n```\n\nAfter using the Kindly Web Search MCP Server with Serper, I retrieved these results:\n\n1. **Stack Overflow Thread (2024)**: A user reported the same error when deploying to Lambda with a custom layer. The top answer suggested running `npm install --production` locally before zipping the deployment package to ensure all dependencies are included. The solution was validated by 47 upvotes and marked as accepted.\n\n2. **AWS Documentation**: The Lambda deployment package documentation explicitly states that all dependencies must be included in the deployment package. It recommends using `npm install --production` to avoid including devDependencies and to ensure the package.json is present in the root of the deployment archive.\n\n3. **GitHub Issue (2023)**: A developer documented a similar issue when using Lambda Layers. The fix involved ensuring the node_modules directory was correctly included in the deployment package and that the layer was properly configured in the Lambda function's deployment settings.\n\n**Recommended Fix**: \nBased on the results, the most likely cause is that the node_modules directory was not properly included in the deployment package. The fix involves:\n1. Running `npm install --production` locally to generate a complete node_modules directory.\n2. Zipping the entire directory (including node_modules) and deploying to Lambda.\n3. Verifying the Lambda function's handler path is correct in the deployment package.\n\nThis should resolve the ENOENT error by ensuring all required files are present in the deployment package.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kindly-web-search-mcp-server#main-content",
+      "kindly-web-search-mcp-server#overview",
+      "kindly-web-search-mcp-server#setup",
+      "kindly-web-search-mcp-server#examples",
+      "kindly-web-search-mcp-server#tools",
+      "kindly-web-search-mcp-server#mcp",
+      "kindly-web-search-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kindly Web Search MCP Server provides AI coding tools with web search and robust content retrieval across multiple sources including Serper, Tavily, and SearXNG. Unlike generic search servers that return only snippets and URLs, Kindly delivers complete conversation context—questions, answers, comments, and metadata—in a single call, eliminating the need for secondary scraping requests. It integrates directly with StackExchange, GitHub Issues, arXiv, and Wikipedia APIs, parsing webpages in real-time using a headless browser to extract LLM-optimized content. Built for developers and operations teams who need comprehensive solution context when debugging errors or researching technical problems with their AI assistants.\nDebug cryptic error messages by retrieving full StackOverflow threads with answers and comments\nResearch API and package documentation updates via real-time webpage extraction\nRetrieve complete GitHub Issues and Discussions with structured metadata for problem-solving\nAccess arXiv papers and technical content for AI-assisted code generation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Shelpuk-AI-Technology-Consulting/kindly-web-search-mcp-server`",
+    "usage_vi": "```\nUse the Kindly Web Search MCP Server to find solutions for the following error: [ERROR_MESSAGE]. Search Serper with the query '[ERROR_MESSAGE] + solution' and retrieve the top 3 most relevant results. Summarize the findings and suggest the most likely fix based on the results.\n```\nCopy\n\n```\nI encountered the following error while deploying a Node.js application to AWS Lambda:\n\n```\nError: ENOENT: no such file or directory, open '/var/task/node_modules/some-package/package.json'\n```\n\nAfter using the Kindly Web Search MCP Server with Serper, I retrieved these results:\n\n1. **Stack Overflow Thread (2024)**: A user reported the same error when deploying to Lambda with a custom layer. The top answer suggested running `npm install --production` locally before zipping the deployment package to ensure all dependencies are included. The solution was validated by 47 upvotes and marked as accepted.\n\n2. **AWS Documentation**: The Lambda deployment package documentation explicitly states that all dependencies must be included in the deployment package. It recommends using `npm install --production` to avoid including devDependencies and to ensure the package.json is present in the root of the deployment archive.\n\n3. **GitHub Issue (2023)**: A developer documented a similar issue when using Lambda Layers. The fix involved ensuring the node_modules directory was correctly included in the deployment package and that the layer was properly configured in the Lambda function's deployment settings.\n\n**Recommended Fix**: \nBased on the results, the most likely cause is that the node_modules directory was not properly included in the deployment package. The fix involves:\n1. Running `npm install --production` locally to generate a complete node_modules directory.\n2. Zipping the entire directory (including node_modules) and deploying to Lambda.\n3. Verifying the Lambda function's handler path is correct in the deployment package.\n\nThis should resolve the ENOENT error by ensuring all required files are present in the deployment package.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:29:24.508400Z",
+    "http_status": 200,
+    "content_hash": "6113e8f895162461c40a7b7eef62002b1f8a81c998a6a6a61c47911955c03e89",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kindly-web-search-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kindly-web-search-mcp-server.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Kindly Web Search MCP Server - Web Search for AI",
+  "short_description_vi": "Kindly Web Search MCP Server enables AI coding tools to perform web searches and retrieve content. It supports Serper, Tavily, and SearXNG. Use it to debug errors, research solutions, and automate content retrieval for developers and operations teams."
+}

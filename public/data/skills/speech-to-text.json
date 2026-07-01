@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/speech-to-text",
+  "slug": "speech-to-text",
+  "name": "Speech-to-Text",
+  "headline": "Speech-to-Text: Indian Language Transcription",
+  "short_description": "This skill allows users to convert spoken language into text across 23 languages, providing various output modes like transcribe, translate, and more. It's designed for developers needing speech recognition capabilities in their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "sarvamai",
+  "install_command": "git clone https://github.com/sarvamai/skills",
+  "source_repo_url": "https://github.com/sarvamai/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "text",
+    "speech",
+    "ai-agents"
+  ],
+  "sections": {
+    "overview": "This skill transcribes audio to text using Sarvam AI's Saaras v3 model, supporting 23 Indian languages with auto language detection. It offers five output modes: transcribe, translate, verbatim, transliteration, and code-mixed text. Developers can choose between REST API (up to 30 seconds), WebSocket streaming (up to 8 hours), or Batch API with speaker diarization for longer audio files. The skill is ideal for building voice-enabled applications, meeting transcription systems, and voice interfaces that require accurate speech recognition across Indian languages.\nTranscribing meetings or lectures into text\nTranslating spoken content for multilingual audiences\nCreating subtitles or captions for videos\nBuilding voice-enabled applications for accessibility",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/sarvamai/skills --skill speech-to-text.`\n`git clone https://github.com/sarvamai/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "speech-to-text#main-content",
+      "speech-to-text#overview",
+      "speech-to-text#setup",
+      "speech-to-text#examples",
+      "speech-to-text#tools",
+      "speech-to-text#mcp",
+      "speech-to-text#related"
+    ],
+    "overview_vi": "Skill này thực hiện phiên âm âm thanh thành văn bản sử dụng mô hình Saaras v3 của Sarvam AI, hỗ trợ 23 ngôn ngữ Ấn Độ với tính năng tự động phát hiện ngôn ngữ. Skill cung cấp 5 chế độ đầu ra: transcribe, translate, verbatim, transliteration và code-mixed text. Nhà phát triển có thể lựa chọn giữa REST API (tối đa 30 giây), WebSocket streaming (tối đa 8 giờ) hoặc Batch API tích hợp speaker diarization cho các tệp âm thanh dài hơn. Đây là giải pháp lý tưởng để xây dựng các ứng dụng kích hoạt bằng giọng nói, hệ sinh thái phiên âm cuộc họp và giao diện điều khiển bằng giọng nói yêu cầu nhận dạng chính xác các ngôn ngữ Ấn Độ.\n- Phiên âm cuộc họp hoặc bài giảng thành văn bản\n- Dịch thuật nội dung nói cho đối tượng người dùng đa ngôn ngữ\n- Tạo phụ đề hoặc chú thích cho video\n- Xây dựng các ứng dụng hỗ trợ giọng nói nhằm tăng cường khả năng tiếp cận (accessibility)",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/sarvamai/skills --skill speech-to-text.`\n`git clone https://github.com/sarvamai/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nVui lòng kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:35.532145Z",
+    "http_status": 200,
+    "content_hash": "90b26d88ba6a8b2b9ca84f5db096fe958d7e024138ba438b68dbed65efa3652f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\speech-to-text.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\speech-to-text.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Speech-to-Text: Phiên âm Ngôn ngữ Ấn Độ",
+  "short_description_vi": "Skill này cho phép người dùng chuyển đổi giọng nói thành văn bản hỗ trợ 23 ngôn ngữ, cung cấp nhiều chế độ đầu ra khác nhau như transcribe, translate và nhiều chế độ khác. Đây là công cụ được thiết kế cho các nhà phát triển cần tích hợp khả năng nhận dạng giọng nói vào ứng dụng của mình."
+}

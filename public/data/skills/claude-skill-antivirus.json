@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-antivirus",
+  "slug": "claude-skill-antivirus",
+  "name": "Claude Skill Antivirus",
+  "headline": "Antivirus skills automated with Claude Code",
+  "short_description": "Claude Skill Antivirus is an AI automation tool that scans and secures third-party skills for Claude. It detects malicious patterns, data exfiltration, and dangerous operations before installation. Benefits operations teams by ensuring safe skill integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "claude-world",
+  "install_command": "git clone https://github.com/claude-world/claude-skill-antivirus.git",
+  "source_repo_url": "https://github.com/claude-world/claude-skill-antivirus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Skill Antivirus is a security scanner designed to protect Claude Code installations from malicious third-party skills. It uses 9 specialized scanning engines to detect dangerous commands, data exfiltration attempts, prompt injection attacks, unsafe permissions, and other security risks. The tool operates in two modes: scan-only for review, or install with integrated security checks. It supports both project-level and user-level skill installation, with multilingual support for English and Traditional Chinese. Operations teams and developers can confidently integrate skills by identifying and assessing potential threats before deployment.\nPre-installation security screening of third-party Claude Code skills\nDetecting data exfiltration and credential theft patterns in skill code\nIdentifying prompt injection and malicious command execution risks\nBatch scanning SkillsMP skill repositories for vulnerability assessment",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/claude-world/claude-skill-antivirus`",
+    "usage": "```\nScan the third-party skill '[SKILL_NAME]' for potential security risks using the following criteria: 1) Malicious code patterns (e.g., unauthorized file access, network calls to suspicious domains), 2) Data exfiltration risks (e.g., unexpected data transmission to external servers), 3) Dangerous operations (e.g., system command execution, privilege escalation). Provide a detailed report including identified risks, severity levels, and recommended mitigation steps. Focus on [SPECIFIC_CONCERN] if provided.\n```\nCopy\n\n```\n### Security Scan Report: 'Claude-File-Uploader' Skill\n\n**Scan Date:** 2024-05-15\n**Skill Version:** 1.2.3\n**Risk Level:** HIGH\n\n#### **Critical Findings:**\n1. **Unauthorized File System Access**\n   - **Issue:** The skill includes a function `readFile()` that bypasses Claude's default sandbox restrictions, allowing access to `/etc/passwd` and user home directories.\n   - **Evidence:** Code snippet found in `utils/fileHandler.js`:\n ```javascript\n     const fs = require('fs');\n     app.get('/readFile', (req, res) => {\n       const filePath = req.query.path; // No validation\n       res.send(fs.readFileSync(filePath, 'utf8'));\n     });\n ```\n   - **Risk:** Malicious actors could exploit this to exfiltrate sensitive system files.\n   - **Severity:** CRITICAL (CVSS: 9.8)\n\n2. **Hidden Network Call**\n   - **Issue:** The skill makes an undocumented POST request to `https://api.malicious-domain.com/upload` whenever a file is uploaded, even when the user hasn't authorized it.\n   - **Evidence:** Traffic captured in `network.log`:\n ```json\n     {\n       \"endpoint\": \"/upload\",\n       \"method\": \"POST\",\n       \"body\": {\"file\": \"...\", \"userId\": \"12345\"},\n       \"destination\": \"malicious-domain.com\"\n     }\n ```\n   - **Risk:** User files are being sent to an unknown third party without consent.\n   - **Severity:** HIGH (CVSS: 8.2)\n\n3. **Privilege Escalation**\n   - **Issue:** The skill requests `sudo` privileges during installation to modify system-wide configurations.\n   - **Evidence:** `package.json` includes:\n ```json\n     \"scripts\": {\n       \"postinstall\": \"sudo cp ./bin/cli /usr/local/bin/\"\n     }\n ```\n   - **Risk:** Compromised skill could gain full system control.\n   - **Severity:** CRITICAL (CVSS: 10.0)\n\n#### **Recommendations:**\n- **Immediate:** Block installation of this skill. Remove any already-installed instances.\n- **Code Fixes:** \n  - Replace `fs` with Claude's sandboxed file API.\n  - Remove the hidden network call and add explicit user consent for all external requests.\n  - Remove `sudo` requirements; use user-level installation paths.\n- **Monitoring:** Add this skill to your blocklist and scan all third-party skills with this tool before deployment.\n\n**Conclusion:** This skill poses a severe security risk and should not be used in production environments.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-antivirus#main-content",
+      "claude-skill-antivirus#overview",
+      "claude-skill-antivirus#setup",
+      "claude-skill-antivirus#examples",
+      "claude-skill-antivirus#tools",
+      "claude-skill-antivirus#mcp",
+      "claude-skill-antivirus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skill Antivirus is a security scanner designed to protect Claude Code installations from malicious third-party skills. It uses 9 specialized scanning engines to detect dangerous commands, data exfiltration attempts, prompt injection attacks, unsafe permissions, and other security risks. The tool operates in two modes: scan-only for review, or install with integrated security checks. It supports both project-level and user-level skill installation, with multilingual support for English and Traditional Chinese. Operations teams and developers can confidently integrate skills by identifying and assessing potential threats before deployment.\nPre-installation security screening of third-party Claude Code skills\nDetecting data exfiltration and credential theft patterns in skill code\nIdentifying prompt injection and malicious command execution risks\nBatch scanning SkillsMP skill repositories for vulnerability assessment",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/claude-world/claude-skill-antivirus`",
+    "usage_vi": "```\nScan the third-party skill '[SKILL_NAME]' for potential security risks using the following criteria: 1) Malicious code patterns (e.g., unauthorized file access, network calls to suspicious domains), 2) Data exfiltration risks (e.g., unexpected data transmission to external servers), 3) Dangerous operations (e.g., system command execution, privilege escalation). Provide a detailed report including identified risks, severity levels, and recommended mitigation steps. Focus on [SPECIFIC_CONCERN] if provided.\n```\nCopy\n\n```\n### Security Scan Report: 'Claude-File-Uploader' Skill\n\n**Scan Date:** 2024-05-15\n**Skill Version:** 1.2.3\n**Risk Level:** HIGH\n\n#### **Critical Findings:**\n1. **Unauthorized File System Access**\n   - **Issue:** The skill includes a function `readFile()` that bypasses Claude's default sandbox restrictions, allowing access to `/etc/passwd` and user home directories.\n   - **Evidence:** Code snippet found in `utils/fileHandler.js`:\n ```javascript\n     const fs = require('fs');\n     app.get('/readFile', (req, res) => {\n       const filePath = req.query.path; // No validation\n       res.send(fs.readFileSync(filePath, 'utf8'));\n     });\n ```\n   - **Risk:** Malicious actors could exploit this to exfiltrate sensitive system files.\n   - **Severity:** CRITICAL (CVSS: 9.8)\n\n2. **Hidden Network Call**\n   - **Issue:** The skill makes an undocumented POST request to `https://api.malicious-domain.com/upload` whenever a file is uploaded, even when the user hasn't authorized it.\n   - **Evidence:** Traffic captured in `network.log`:\n ```json\n     {\n       \"endpoint\": \"/upload\",\n       \"method\": \"POST\",\n       \"body\": {\"file\": \"...\", \"userId\": \"12345\"},\n       \"destination\": \"malicious-domain.com\"\n     }\n ```\n   - **Risk:** User files are being sent to an unknown third party without consent.\n   - **Severity:** HIGH (CVSS: 8.2)\n\n3. **Privilege Escalation**\n   - **Issue:** The skill requests `sudo` privileges during installation to modify system-wide configurations.\n   - **Evidence:** `package.json` includes:\n ```json\n     \"scripts\": {\n       \"postinstall\": \"sudo cp ./bin/cli /usr/local/bin/\"\n     }\n ```\n   - **Risk:** Compromised skill could gain full system control.\n   - **Severity:** CRITICAL (CVSS: 10.0)\n\n#### **Recommendations:**\n- **Immediate:** Block installation of this skill. Remove any already-installed instances.\n- **Code Fixes:** \n  - Replace `fs` with Claude's sandboxed file API.\n  - Remove the hidden network call and add explicit user consent for all external requests.\n  - Remove `sudo` requirements; use user-level installation paths.\n- **Monitoring:** Add this skill to your blocklist and scan all third-party skills with this tool before deployment.\n\n**Conclusion:** This skill poses a severe security risk and should not be used in production environments.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:07.762456Z",
+    "http_status": 200,
+    "content_hash": "add810d2b5c88dd5277d013176cafe3a1e06cbf3cb46298ae81b17bb1b586211",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-antivirus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-antivirus.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Antivirus skills automated with Claude Code",
+  "short_description_vi": "Claude Skill Antivirus is an AI automation tool that scans and secures third-party skills for Claude. It detects malicious patterns, data exfiltration, and dangerous operations before installation. Benefits operations teams by ensuring safe skill integration."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pdca-code-generation-process",
+  "slug": "pdca-code-generation-process",
+  "name": "browser-use",
+  "headline": "PDCA Code Generation Process - AI-Assisted",
+  "short_description": "AI-assisted code generation using Plan-Do-Check-Act methodology with strict TDD discipline. Benefits developers by ensuring disciplined, iterative code development. Connects to Claude for AI assistance and integrates with existing development workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "kenjudy",
+  "install_command": "git clone https://github.com/kenjudy/pdca-code-generation-process.git",
+  "source_repo_url": "https://github.com/kenjudy/pdca-code-generation-process",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The pdca-code-generation-process skill enforces structured, iterative code development through Plan-Do-Check-Act phases combined with Test-Driven Development discipline. It implements explicit human-AI role separation with mandatory STOP gates, ensuring humans remain actively engaged and accountable throughout the coding workflow. The skill includes a built-in learning loop that sharpens itself after each cycle by proposing specific improvements to its own reference files. This approach directly addresses research findings showing that unsupervised AI code generation leads to quality degradation, duplicated code, and slower delivery. Engineers and developers can install this as a Claude skill for consistent workflow integration across all coding sessions, or use it with beads for cross-session task continuity on multi-day features.\nImplementing features with strict test-driven development discipline\nComplex multi-day coding projects requiring cross-session continuity\nTeam standardization of AI-assisted development practices\nMaintaining code quality and reducing technical debt in AI-supported workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kenjudy/pdca-code-generation-process`",
+    "usage": "```\nGenerate a Python function to [SOLVE_PROBLEM] using Test-Driven Development (TDD) with the following steps: 1) Write a failing test for [REQUIREMENT] using unittest or pytest. 2) Implement the minimal code to pass the test. 3) Refactor to improve code quality while keeping tests passing. 4) Add edge case tests for [EDGE_CASES]. Use the Plan-Do-Check-Act (PDCA) cycle to document iterations in comments. Include type hints and docstrings. Example structure: ```python # Plan: [DESCRIBE_PLAN] # Do: [IMPLEMENTATION] # Check: [TEST_RESULTS] # Act: [REFACTORING] ```\n```\nCopy\n\n```\n```python\nimport unittest\nfrom typing import List\n\n# Plan: Implement a function to filter even numbers from a list while handling edge cases like empty lists and non-integer values.\n# Do: Initial implementation with basic test coverage\ndef filter_even_numbers(numbers: List[int]) -> List[int]:\n    \"\"\"Filters even numbers from a list.\n    \n    Args:\n        numbers: List of integers to filter\n        \n    Returns:\n        List containing only even numbers\n    \"\"\"\n    return [n for n in numbers if n % 2 == 0]\n\n# Check: Run initial tests\nclass TestFilterEvenNumbers(unittest.TestCase):\n    def test_basic_case(self):\n        self.assertEqual(filter_even_numbers([1, 2, 3, 4]), [2, 4])\n    \n    def test_empty_list(self):\n        self.assertEqual(filter_even_numbers([]), [])\n    \n    def test_no_evens(self):\n        self.assertEqual(filter_even_numbers([1, 3, 5]), [])\n    \n    def test_non_integer_input(self):\n        with self.assertRaises(TypeError):\n            filter_even_numbers([1, 'a', 3])\n\nif __name__ == '__main__':\n    unittest.main()\n\n# Act: Refactor to handle edge cases better and add type checking\nfrom typing import Union, List\n\ndef filter_even_numbers(numbers: List[Union[int, float]]) -> List[int]:\n    \"\"\"Filters even numbers from a list with improved type handling.\n    \n    Args:\n        numbers: List of numbers to filter\n        \n    Returns:\n        List containing only even integers\n    \n    Raises:\n        TypeError: If input contains non-numeric values\n    \"\"\"\n    if not all(isinstance(n, (int, float)) for n in numbers):\n        raise TypeError(\"All elements must be numeric\")\n    return [int(n) for n in numbers if n % 2 == 0]\n\n# Plan-Do-Check-Act Cycle Summary:\n# Plan: Implement robust even number filtering with type safety\n# Do: Added type checking and conversion to integers\n# Check: All tests pass including edge cases\n# Act: Improved error handling and documentation\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pdca-code-generation-process#main-content",
+      "pdca-code-generation-process#overview",
+      "pdca-code-generation-process#setup",
+      "pdca-code-generation-process#examples",
+      "pdca-code-generation-process#tools",
+      "pdca-code-generation-process#mcp",
+      "pdca-code-generation-process#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The pdca-code-generation-process skill enforces structured, iterative code development through Plan-Do-Check-Act phases combined with Test-Driven Development discipline. It implements explicit human-AI role separation with mandatory STOP gates, ensuring humans remain actively engaged and accountable throughout the coding workflow. The skill includes a built-in learning loop that sharpens itself after each cycle by proposing specific improvements to its own reference files. This approach directly addresses research findings showing that unsupervised AI code generation leads to quality degradation, duplicated code, and slower delivery. Engineers and developers can install this as a Claude skill for consistent workflow integration across all coding sessions, or use it with beads for cross-session task continuity on multi-day features.\nImplementing features with strict test-driven development discipline\nComplex multi-day coding projects requiring cross-session continuity\nTeam standardization of AI-assisted development practices\nMaintaining code quality and reducing technical debt in AI-supported workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kenjudy/pdca-code-generation-process`",
+    "usage_vi": "```\nGenerate a Python function to [SOLVE_PROBLEM] using Test-Driven Development (TDD) with the following steps: 1) Write a failing test for [REQUIREMENT] using unittest or pytest. 2) Implement the minimal code to pass the test. 3) Refactor to improve code quality while keeping tests passing. 4) Add edge case tests for [EDGE_CASES]. Use the Plan-Do-Check-Act (PDCA) cycle to document iterations in comments. Include type hints and docstrings. Example structure: ```python # Plan: [DESCRIBE_PLAN] # Do: [IMPLEMENTATION] # Check: [TEST_RESULTS] # Act: [REFACTORING] ```\n```\nCopy\n\n```\n```python\nimport unittest\nfrom typing import List\n\n# Plan: Implement a function to filter even numbers from a list while handling edge cases like empty lists and non-integer values.\n# Do: Initial implementation with basic test coverage\ndef filter_even_numbers(numbers: List[int]) -> List[int]:\n    \"\"\"Filters even numbers from a list.\n    \n    Args:\n        numbers: List of integers to filter\n        \n    Returns:\n        List containing only even numbers\n    \"\"\"\n    return [n for n in numbers if n % 2 == 0]\n\n# Check: Run initial tests\nclass TestFilterEvenNumbers(unittest.TestCase):\n    def test_basic_case(self):\n        self.assertEqual(filter_even_numbers([1, 2, 3, 4]), [2, 4])\n    \n    def test_empty_list(self):\n        self.assertEqual(filter_even_numbers([]), [])\n    \n    def test_no_evens(self):\n        self.assertEqual(filter_even_numbers([1, 3, 5]), [])\n    \n    def test_non_integer_input(self):\n        with self.assertRaises(TypeError):\n            filter_even_numbers([1, 'a', 3])\n\nif __name__ == '__main__':\n    unittest.main()\n\n# Act: Refactor to handle edge cases better and add type checking\nfrom typing import Union, List\n\ndef filter_even_numbers(numbers: List[Union[int, float]]) -> List[int]:\n    \"\"\"Filters even numbers from a list with improved type handling.\n    \n    Args:\n        numbers: List of numbers to filter\n        \n    Returns:\n        List containing only even integers\n    \n    Raises:\n        TypeError: If input contains non-numeric values\n    \"\"\"\n    if not all(isinstance(n, (int, float)) for n in numbers):\n        raise TypeError(\"All elements must be numeric\")\n    return [int(n) for n in numbers if n % 2 == 0]\n\n# Plan-Do-Check-Act Cycle Summary:\n# Plan: Implement robust even number filtering with type safety\n# Do: Added type checking and conversion to integers\n# Check: All tests pass including edge cases\n# Act: Improved error handling and documentation\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:13:27.682592Z",
+    "http_status": 200,
+    "content_hash": "e14a802e042e0380616f8a11c6da27050facb61241a5f9f57a28db0ae854d3d4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pdca-code-generation-process.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pdca-code-generation-process.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "PDCA Code Generation Process - AI-Assisted",
+  "short_description_vi": "AI-assisted code generation using Plan-Do-Check-Act methodology with strict TDD discipline. Benefits developers by ensuring disciplined, iterative code development. Connects to Claude for AI assistance and integrates with existing development workflows."
+}

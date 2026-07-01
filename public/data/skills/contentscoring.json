@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/contentscoring",
+  "slug": "contentscoring",
+  "name": "popsicle",
+  "headline": "contentscoring: Marketing Content Scoring Model",
+  "short_description": "A Python-based content scoring model for marketing teams that analyzes performance of videos, blogs, and non-gated content to surface what works and what doesn't.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "rh-marketingops",
+  "install_command": "git clone https://github.com/rh-marketingops/contentscoring.git",
+  "source_repo_url": "https://github.com/rh-marketingops/contentscoring",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "scoring",
+    "content",
+    "marketing",
+    "dataanalysis",
+    "scoring-models"
+  ],
+  "sections": {
+    "overview": "The contentscoring skill provides business logic for calculating and maintaining marketing content scores. Built by Red Hat's marketing operations team, it was designed to analyze the performance of videos, blogs, and non-gated content assets. The model surfaces insights about which content performs well or poorly, helping marketing teams prioritize creation and assessment efforts. It is intentionally designed as an analytical guide rather than a prescriptive tool, summarizing performance signals and prompting deeper investigation into the reasoning behind a specific piece's results. Marketing operations analysts and content strategists benefit most from this skill.\nScore blog post performance to identify high- and low-performing content\nEvaluate video content effectiveness using consistent scoring logic\nAssess non-gated content assets to guide future content creation priorities\nMaintain a running content performance score across a marketing content library",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rh-marketingops/contentscoring`",
+    "usage": "```\nCreate a content scoring system for [COMPANY] in the [INDUSTRY] sector. The score should evaluate content based on engagement metrics (e.g., time on page, bounce rate, shares), SEO performance (e.g., keyword rankings, backlinks), and conversion rates (e.g., click-through, lead generation). Provide a weighted scoring model and suggest improvements for low-scoring content.\n```\nCopy\n\n```\n# Content Scoring System for [COMPANY] in [INDUSTRY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "contentscoring#main-content",
+      "contentscoring#overview",
+      "contentscoring#setup",
+      "contentscoring#examples",
+      "contentscoring#tools",
+      "contentscoring#mcp",
+      "contentscoring#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "The contentscoring skill provides business logic for calculating and maintaining marketing content scores. Built by Red Hat's marketing operations team, it was designed to analyze the performance of videos, blogs, and non-gated content assets. The model surfaces insights about which content performs well or poorly, helping marketing teams prioritize creation and assessment efforts. It is intentionally designed as an analytical guide rather than a prescriptive tool, summarizing performance signals and prompting deeper investigation into the reasoning behind a specific piece's results. Marketing operations analysts and content strategists benefit most from this skill.\nScore blog post performance to identify high- and low-performing content\nEvaluate video content effectiveness using consistent scoring logic\nAssess non-gated content assets to guide future content creation priorities\nMaintain a running content performance score across a marketing content library",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rh-marketingops/contentscoring`",
+    "usage_vi": "```\nCreate a content scoring system for [COMPANY] in the [INDUSTRY] sector. The score should evaluate content based on engagement metrics (e.g., time on page, bounce rate, shares), SEO performance (e.g., keyword rankings, backlinks), and conversion rates (e.g., click-through, lead generation). Provide a weighted scoring model and suggest improvements for low-scoring content.\n```\nCopy\n\n```\n# Content Scoring System for [COMPANY] in [INDUSTRY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:36:17.872962Z",
+    "http_status": 200,
+    "content_hash": "5dc87d2dcdc88e3e77743f0a3956366bd836bf2d54a3da1a17bb38a725599498",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\contentscoring.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\contentscoring.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "contentscoring: Marketing Content Scoring Model",
+  "short_description_vi": "A Python-based content scoring model for marketing teams that analyzes performance of videos, blogs, and non-gated content to surface what works and what doesn't."
+}

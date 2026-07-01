@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/figma-pilot",
+  "slug": "figma-pilot",
+  "name": "browser-use",
+  "headline": "Figma Pilot - Automate Figma with AI Agents",
+  "short_description": "Figma Pilot is an MCP that enables AI agents to control Figma through code execution. It benefits operations teams by automating design tasks, integrating with Claude agents, and connecting to Figma's API for efficient workflow management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "youware-labs",
+  "install_command": "git clone https://github.com/youware-labs/figma-pilot.git",
+  "source_repo_url": "https://github.com/youware-labs/figma-pilot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "copilot",
+    "figma",
+    "mcp",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Figma Pilot is an MCP server that enables AI agents to control Figma by writing and executing JavaScript code against the Figma API. Instead of exposing dozens of individual tools, it provides three core tools—figma_status, figma_execute, and figma_get_api_docs—allowing agents to perform batch operations, filter data, and handle complex workflows efficiently. The skill works with MCP-compatible clients like Claude Code, Cursor, and Claude Desktop, connecting through a Figma plugin that bridges communication via HTTP. This approach reduces token overhead by 90%+ compared to traditional tool-based interfaces, making it ideal for teams automating design tasks, managing design systems, and integrating Figma workflows into larger AI-driven processes.\nBatch modify design elements across multiple frames or pages\nGenerate landing pages and design system components from prompts\nCreate design tokens and apply them across projects\nPerform automated accessibility checks and fixes on designs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/youware-labs/figma-pilot`",
+    "usage": "```\nI want to automate a design task in Figma using Figma Pilot. Here's what I need: [TASK]. I want to [ACTION] with [SPECIFIC DETAILS]. Can you generate the code to execute this task in Figma?\n```\nCopy\n\n```\n```javascript\n// Figma Pilot Automation Script\n// Task: Create a new frame and add text elements\n// Action: Generate a social media post template\n\n// Create a new frame\nconst frame = figma.createFrame();\nframe.x = 0;\nframe.y = 0;\nframe.resize(300, 600);\n\n// Add text elements\nconst title = figma.createText();\ntitle.x = 20;\ntitle.y = 20;\ntitle.characters = 'Social Media Post';\ntitle.fontSize = 24;\n\ntitle.textAlignHorizontal = 'LEFT';\n\ntitle.textAlignVertical = 'TOP';\n\n// Add a subtitle\nconst subtitle = figma.createText();\nsubtitle.x = 20;\nsubtitle.y = 60;\nsubtitle.characters = 'Share your thoughts and ideas';\nsubtitle.fontSize = 16;\n\nsubtitle.textAlignHorizontal = 'LEFT';\n\ntitle.textAlignVertical = 'TOP';\n\n// Add a call-to-action button\nconst button = figma.createRectangle();\nbutton.x = 20;\nbutton.y = 100;\nbutton.resize(260, 50);\n\nbutton.fills = [{type: 'SOLID', color: {r: 0.18, g: 0.65, b: 0.96}}];\n\nconst buttonText = figma.createText();\nbuttonText.x = 20;\nbuttonText.y = 110;\nbuttonText.characters = 'Click Here';\nbuttonText.fontSize = 16;\n\nbuttonText.textAlignHorizontal = 'CENTER';\n\ntitle.textAlignVertical = 'TOP';\n\n// Output the result\nfigma.closePlugin();\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "figma-pilot#main-content",
+      "figma-pilot#overview",
+      "figma-pilot#setup",
+      "figma-pilot#examples",
+      "figma-pilot#tools",
+      "figma-pilot#mcp",
+      "figma-pilot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Figma Pilot is an MCP server that enables AI agents to control Figma by writing and executing JavaScript code against the Figma API. Instead of exposing dozens of individual tools, it provides three core tools—figma_status, figma_execute, and figma_get_api_docs—allowing agents to perform batch operations, filter data, and handle complex workflows efficiently. The skill works with MCP-compatible clients like Claude Code, Cursor, and Claude Desktop, connecting through a Figma plugin that bridges communication via HTTP. This approach reduces token overhead by 90%+ compared to traditional tool-based interfaces, making it ideal for teams automating design tasks, managing design systems, and integrating Figma workflows into larger AI-driven processes.\nBatch modify design elements across multiple frames or pages\nGenerate landing pages and design system components from prompts\nCreate design tokens and apply them across projects\nPerform automated accessibility checks and fixes on designs",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/youware-labs/figma-pilot`",
+    "usage_vi": "```\nI want to automate a design task in Figma using Figma Pilot. Here's what I need: [TASK]. I want to [ACTION] with [SPECIFIC DETAILS]. Can you generate the code to execute this task in Figma?\n```\nCopy\n\n```\n```javascript\n// Figma Pilot Automation Script\n// Task: Create a new frame and add text elements\n// Action: Generate a social media post template\n\n// Create a new frame\nconst frame = figma.createFrame();\nframe.x = 0;\nframe.y = 0;\nframe.resize(300, 600);\n\n// Add text elements\nconst title = figma.createText();\ntitle.x = 20;\ntitle.y = 20;\ntitle.characters = 'Social Media Post';\ntitle.fontSize = 24;\n\ntitle.textAlignHorizontal = 'LEFT';\n\ntitle.textAlignVertical = 'TOP';\n\n// Add a subtitle\nconst subtitle = figma.createText();\nsubtitle.x = 20;\nsubtitle.y = 60;\nsubtitle.characters = 'Share your thoughts and ideas';\nsubtitle.fontSize = 16;\n\nsubtitle.textAlignHorizontal = 'LEFT';\n\ntitle.textAlignVertical = 'TOP';\n\n// Add a call-to-action button\nconst button = figma.createRectangle();\nbutton.x = 20;\nbutton.y = 100;\nbutton.resize(260, 50);\n\nbutton.fills = [{type: 'SOLID', color: {r: 0.18, g: 0.65, b: 0.96}}];\n\nconst buttonText = figma.createText();\nbuttonText.x = 20;\nbuttonText.y = 110;\nbuttonText.characters = 'Click Here';\nbuttonText.fontSize = 16;\n\nbuttonText.textAlignHorizontal = 'CENTER';\n\ntitle.textAlignVertical = 'TOP';\n\n// Output the result\nfigma.closePlugin();\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:33.512803Z",
+    "http_status": 200,
+    "content_hash": "35145cc6e7f617a24e6b7c2c61c0dad655affe1e481d41f5e946a4a564b2b6c7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\figma-pilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\figma-pilot.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Figma Pilot - Automate Figma with AI Agents",
+  "short_description_vi": "Figma Pilot is an MCP that enables AI agents to control Figma through code execution. It benefits operations teams by automating design tasks, integrating with Claude agents, and connecting to Figma's API for efficient workflow management."
+}

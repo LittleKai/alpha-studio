@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/botpress-adk",
+  "slug": "botpress-adk",
+  "name": "Botpress ADK",
+  "headline": "Botpress ADK: TypeScript Framework for AI Agents",
+  "short_description": "The Botpress ADK is a convention-based TypeScript framework that helps in building features involving tables, actions, tools, workflows, and more. It allows developers to create rich conversational agents by mapping file structures directly to bot behavior.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "botpress",
+  "install_command": "git clone https://github.com/botpress/skills",
+  "source_repo_url": "https://github.com/botpress/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "development-kit",
+    "botpress"
+  ],
+  "sections": {
+    "overview": "The Botpress ADK is a convention-based TypeScript development kit for building feature-rich conversational AI agents. It uses a direct file-to-behavior mapping approach where your project structure automatically defines bot actions, tools, workflows, and data handling. The framework covers core concepts like Actions (strongly-typed functions), Tools (AI-callable operations), Workflows (long-running processes), and data primitives including Tables, Files, and Knowledge Bases. Developers can implement AI operations using Zai, manage integrations, set up event-driven triggers, and leverage CLI tools for development and debugging. It's designed for teams building production conversational agents who need type safety, structured data management, and scalable bot architecture.\nCreating workflows for bot interactions\nImplementing knowledge bases for RAG\nSetting up event-driven automation with triggers\nManaging AI-callable tools",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/botpress/skills --skill adk`\n`git clone https://github.com/botpress/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "botpress-adk#main-content",
+      "botpress-adk#overview",
+      "botpress-adk#setup",
+      "botpress-adk#examples",
+      "botpress-adk#tools",
+      "botpress-adk#mcp",
+      "botpress-adk#related"
+    ],
+    "overview_vi": "Botpress ADK là bộ công cụ phát triển (development kit) bằng TypeScript hoạt động dựa trên quy ước, được thiết kế để xây dựng các conversational AI agent giàu tính năng. Bộ công cụ này áp dụng phương pháp ánh xạ trực tiếp từ file vào hành vi (file-to-behavior), trong đó cấu trúc dự án của bạn sẽ tự động định nghĩa các action, tool, workflow và cách xử lý dữ liệu của bot. Framework này bao gồm các khái niệm cốt lõi như Action (hàm định nghĩa kiểu dữ liệu nghiêm ngặt), Tool (các hoạt động mà AI có thể gọi), Workflow (các tiến trình chạy lâu dài) và các kiểu dữ liệu nguyên bản bao gồm Table, File và Knowledge Base. Lập trình viên có thể triển khai các hoạt động AI bằng cách sử dụng Zai, quản lý tích hợp, thiết lập các trigger hướng sự kiện (event-driven) và tận dụng các công cụ CLI để phát triển cũng như debug. Đây là giải pháp được thiết kế cho các đội ngũ phát triển các conversational agent thực tế (production) cần đảm bảo tính năng type safety, quản lý dữ liệu có cấu trúc và kiến trúc bot có khả năng mở rộng.\nTạo các workflow cho tương tác của bot\nTriển khai các knowledge base cho RAG\nThiết lập tự động hóa hướng sự kiện bằng trigger\nQuản lý các tool mà AI có thể gọi",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/botpress/skills --skill adk`\n`git clone https://github.com/botpress/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:53:39.921564Z",
+    "http_status": 200,
+    "content_hash": "8a617793a0e8ebedf4ed5281629de415c5e57c0513d10946d0ed2fdf46638692",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\botpress-adk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\botpress-adk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Botpress ADK: Framework TypeScript dành cho các AI Agent",
+  "short_description_vi": "Botpress ADK là một framework TypeScript hoạt động dựa trên quy ước (convention-based), giúp dễ dàng xây dựng các tính năng liên quan đến table, action, tool, workflow và nhiều thành phần khác. Framework này cho phép lập trình viên tạo ra các conversational agent phong phú bằng cách ánh xạ trực tiếp cấu trúc file vào hành vi của bot."
+}

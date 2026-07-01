@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/healthsim-workspace",
+  "slug": "healthsim-workspace",
+  "name": "HealthSim Workspace",
+  "headline": "HealthSim Workspace - Synthetic Healthcare Data",
+  "short_description": "HealthSim Workspace generates synthetic healthcare data through natural language conversation. It replaces Python libraries with AI skills, creating realistic patient records and care journeys for testing and training. It benefits operations teams by streamlining data generation for clinical, claims, and pharmacy workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "mark64oswald",
+  "install_command": "git clone https://github.com/mark64oswald/healthsim-workspace.git",
+  "source_repo_url": "https://github.com/mark64oswald/healthsim-workspace",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "HealthSim Workspace generates clinically coherent synthetic healthcare data for testing, training, and development across multiple healthcare domains. The platform includes six integrated products—PatientSim for clinical/EMR data, MemberSim for claims and payer data, RxMemberSim for pharmacy data, TrialSim for clinical trial data, PopulationSim for demographics, and NetworkSim for provider networks. Users generate data through natural language conversation in local development mode (Claude Code with DuckDB) or managed cloud deployment. The specification-driven framework enables profile-driven and template-based generation, producing output in standards including FHIR R4, HL7v2, C-CDA, X12, NCPDP, CDISC SDTM/ADaM, and CSV formats.\nGenerate realistic patient records with clinical encounters, labs, and medications for EMR testing\nCreate synthetic claims data (professional, facility, pharmacy) for payer system validation\nBuild cohort-specific populations (diabetes, heart failure, oncology) with realistic care journeys\nGenerate clinical trial datasets with adverse events and efficacy endpoints in SDTM format",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mark64oswald/healthsim-workspace`",
+    "usage": "```\nGenerate synthetic healthcare data for [COMPANY] in the [INDUSTRY] sector. Create 10 patient records with realistic care journeys, including diagnoses, treatments, and outcomes. Ensure the data includes [DATA] such as lab results, medication lists, and provider notes. Format the output as a structured JSON file.\n```\nCopy\n\n```\n```markdown\n# Synthetic Healthcare Data for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "healthsim-workspace#main-content",
+      "healthsim-workspace#overview",
+      "healthsim-workspace#setup",
+      "healthsim-workspace#examples",
+      "healthsim-workspace#tools",
+      "healthsim-workspace#mcp",
+      "healthsim-workspace#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "HealthSim Workspace tạo ra dữ liệu y tế nhân tạo có tính nhất quán về mặt lâm sàng phục vụ cho việc kiểm thử, đào tạo và phát triển trên nhiều lĩnh vực y tế khác nhau. Nền tảng này tích hợp sẵn sáu sản phẩm—PatientSim cho dữ liệu lâm sàng/EMR, MemberSim cho dữ liệu yêu cầu thanh toán (claims) và đơn vị chi trả (payer), RxMemberSim cho dữ liệu dược phẩm, TrialSim cho dữ liệu thử nghiệm lâm sàng, PopulationSim cho nhân khẩu học, và NetworkSim cho mạng lưới nhà cung cấp dịch vụ y tế. Người dùng có thể tạo dữ liệu thông qua hội thoại bằng ngôn ngữ tự nhiên ở chế độ phát triển local (Claude Code với DuckDB) hoặc triển khai cloud được quản lý (managed cloud). Framework dựa trên đặc tả (specification-driven) cho phép tạo dữ liệu theo profile và template, xuất ra các định dạng chuẩn bao gồm FHIR R4, HL7v2, C-CDA, X12, NCPDP, CDISC SDTM/ADaM, và CSV.\n\nTạo hồ sơ bệnh nhân thực tế với các lượt khám lâm sàng, kết quả xét nghiệm và đơn thuốc phục vụ kiểm thử EMR\nTạo dữ liệu yêu cầu thanh toán nhân tạo (chuyên khoa, cơ sở y tế, dược phẩm) để xác thực hệ thống của bên chi trả\nXây dựng nhóm dân số theo đoàn hệ cụ thể (tiểu đường, suy tim, ung thư) với hành trình chăm sóc thực tế\nTạo bộ dữ liệu thử nghiệm lâm sàng với các biến cố bất lợi và tiêu chí đánh giá hiệu quả theo định dạng SDTM",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/mark64oswald/healthsim-workspace`",
+    "usage_vi": "```\nTạo dữ liệu y tế nhân tạo cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tạo 10 hồ sơ bệnh nhân với hành trình chăm sóc thực tế, bao gồm chẩn đoán, điều trị và kết quả. Đảm bảo dữ liệu bao gồm [DATA] như kết quả xét nghiệm, danh sách thuốc và ghi chú của bác sĩ. Định dạng đầu ra dưới dạng file JSON có cấu trúc.\n```\nCopy\n\n```\n```markdown\n# Dữ liệu Y tế Nhân tạo cho [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:46:56.543398Z",
+    "http_status": 200,
+    "content_hash": "87d61ef9e105d0226e50c81f5390d631876bbb164f74f761e64e2c11f847bb46",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\healthsim-workspace.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\healthsim-workspace.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "HealthSim Workspace - Dữ liệu Y tế Nhân tạo",
+  "short_description_vi": "HealthSim Workspace tạo dữ liệu y tế nhân tạo thông qua hội thoại bằng ngôn ngữ tự nhiên. Công cụ này thay thế các thư viện Python bằng các AI skill, giúp tạo ra các hồ sơ bệnh án và hành trình chăm sóc sức khỏe thực tế phục vụ cho việc kiểm thử và đào tạo. Giải pháp này hỗ trợ tối ưu cho các đội ngũ vận hành bằng cách đơn giản hóa quy trình tạo dữ liệu cho các luồng công việc lâm sàng, yêu cầu thanh toán bảo hiểm (claims) và dược phẩm."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prisma-database-setup",
+  "slug": "prisma-database-setup",
+  "name": "Related Skills",
+  "headline": "Prisma Database Setup: Configure ORM for Any",
+  "short_description": "This skill provides comprehensive guides for configuring Prisma ORM with multiple database providers including PostgreSQL, MySQL, and SQLite. It's suitable for developers looking to initialize a new Prisma project, switch database providers, or troubleshoot connection issues.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "prisma",
+  "install_command": "git clone https://github.com/prisma/skills",
+  "source_repo_url": "https://github.com/prisma/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "database",
+    "database-setup",
+    "prisma",
+    "setup"
+  ],
+  "sections": {
+    "overview": "This skill provides step-by-step configuration guides for Prisma ORM across seven supported database providers: PostgreSQL, MySQL, SQLite, MongoDB, SQL Server, CockroachDB, and Prisma Postgres. It covers datasource setup, driver adapter installation, Prisma Client generation, and environment variable configuration for each provider. The skill helps developers initialize new projects, migrate between databases, troubleshoot connection issues, and set up database-specific features. It includes required system prerequisites (Node.js 20.19.0+, TypeScript 5.4.0+), provider-specific schema configurations, and adapter selection guidance to ensure proper database connectivity and performance.\nInitializing a new Prisma project\nSwitching database providers\nConfiguring connection strings and environment variables\nTroubleshooting database connection issues",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/prisma/skills --skill prisma-database-setup`\n`git clone https://github.com/prisma/skills`",
+    "usage": "```\nGenerate a step-by-step guide for setting up Prisma ORM with [DATABASE_PROVIDER] for a [COMPANY] project in the [INDUSTRY] industry. Include commands for initializing Prisma, configuring the schema.prisma file, and testing the database connection. Assume we're starting from scratch. Use [DATABASE_URL] as the connection string placeholder.\n```\nCopy\n\n```\n### Prisma ORM Setup Guide for PostgreSQL\n\n**1. Initialize Prisma in Your Project**\nRun the following command in your terminal to install Prisma and its CLI:\n```bash\nnpm install prisma @prisma/client --save-dev\n```\n\n**2. Initialize Prisma Schema**\nGenerate the Prisma schema file:\n```bash\nnpx prisma init\n```\n\n**3. Configure `schema.prisma`**\nEdit the generated `prisma/schema.prisma` file to include your PostgreSQL connection and schema:\n```prisma\n// schema.prisma\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  name  String\n  email String  @unique\n}\n```\n\n**4. Set Up `.env` File**\nCreate a `.env` file in your project root and add your PostgreSQL connection string:\n```env\nDATABASE_URL=\"postgresql://postgres:password@localhost:5432/mydb?schema=public\"\n```\n\n**5. Apply the Database Migration**\nRun the migration to sync your schema with the database:\n```bash\nnpx prisma migrate dev --name init\n```\n\n**6. Test the Connection**\nVerify the setup by creating a simple test script in `index.js`:\n```javascript\nconst { PrismaClient } = require('@prisma/client');\nconst prisma = new PrismaClient();\n\nasync function main() {\n  const users = await prisma.user.findMany();\n  console.log(users);\n}\nmain()\n  .catch(e => {\n    throw e;\n  })\n  .finally(async () => {\n    await prisma.$disconnect();\n  });\n```\nRun it with:\n```bash\nnode index.js\n```\n\n**Troubleshooting Tips:**\n- Ensure your database server is running and accessible.\n- Verify the `DATABASE_URL` in `.env` is correct.\n- Check Prisma logs for errors during migration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "prisma-database-setup#main-content",
+      "prisma-database-setup#overview",
+      "prisma-database-setup#setup",
+      "prisma-database-setup#examples",
+      "prisma-database-setup#tools",
+      "prisma-database-setup#mcp",
+      "prisma-database-setup#related"
+    ],
+    "overview_vi": "This skill provides step-by-step configuration guides for Prisma ORM across seven supported database providers: PostgreSQL, MySQL, SQLite, MongoDB, SQL Server, CockroachDB, and Prisma Postgres. It covers datasource setup, driver adapter installation, Prisma Client generation, and environment variable configuration for each provider. The skill helps developers initialize new projects, migrate between databases, troubleshoot connection issues, and set up database-specific features. It includes required system prerequisites (Node.js 20.19.0+, TypeScript 5.4.0+), provider-specific schema configurations, and adapter selection guidance to ensure proper database connectivity and performance.\nInitializing a new Prisma project\nSwitching database providers\nConfiguring connection strings and environment variables\nTroubleshooting database connection issues",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/prisma/skills --skill prisma-database-setup`\n`git clone https://github.com/prisma/skills`",
+    "usage_vi": "```\nGenerate a step-by-step guide for setting up Prisma ORM with [DATABASE_PROVIDER] for a [COMPANY] project in the [INDUSTRY] industry. Include commands for initializing Prisma, configuring the schema.prisma file, and testing the database connection. Assume we're starting from scratch. Use [DATABASE_URL] as the connection string placeholder.\n```\nCopy\n\n```\n### Prisma ORM Setup Guide for PostgreSQL\n\n**1. Initialize Prisma in Your Project**\nRun the following command in your terminal to install Prisma and its CLI:\n```bash\nnpm install prisma @prisma/client --save-dev\n```\n\n**2. Initialize Prisma Schema**\nGenerate the Prisma schema file:\n```bash\nnpx prisma init\n```\n\n**3. Configure `schema.prisma`**\nEdit the generated `prisma/schema.prisma` file to include your PostgreSQL connection and schema:\n```prisma\n// schema.prisma\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  name  String\n  email String  @unique\n}\n```\n\n**4. Set Up `.env` File**\nCreate a `.env` file in your project root and add your PostgreSQL connection string:\n```env\nDATABASE_URL=\"postgresql://postgres:password@localhost:5432/mydb?schema=public\"\n```\n\n**5. Apply the Database Migration**\nRun the migration to sync your schema with the database:\n```bash\nnpx prisma migrate dev --name init\n```\n\n**6. Test the Connection**\nVerify the setup by creating a simple test script in `index.js`:\n```javascript\nconst { PrismaClient } = require('@prisma/client');\nconst prisma = new PrismaClient();\n\nasync function main() {\n  const users = await prisma.user.findMany();\n  console.log(users);\n}\nmain()\n  .catch(e => {\n    throw e;\n  })\n  .finally(async () => {\n    await prisma.$disconnect();\n  });\n```\nRun it with:\n```bash\nnode index.js\n```\n\n**Troubleshooting Tips:**\n- Ensure your database server is running and accessible.\n- Verify the `DATABASE_URL` in `.env` is correct.\n- Check Prisma logs for errors during migration.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:58:58.383325Z",
+    "http_status": 200,
+    "content_hash": "f8f7527816ad2376ee16df2eb79320cfe78cba2ffd36884f27902731df471ddf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prisma-database-setup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prisma-database-setup.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Prisma Database Setup: Configure ORM for Any",
+  "short_description_vi": "This skill provides comprehensive guides for configuring Prisma ORM with multiple database providers including PostgreSQL, MySQL, and SQLite. It's suitable for developers looking to initialize a new Prisma project, switch database providers, or troubleshoot connection issues."
+}

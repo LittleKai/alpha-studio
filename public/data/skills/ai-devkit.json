@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-devkit",
+  "slug": "ai-devkit",
+  "name": "Ai Devkit",
+  "headline": "ai-devkit CLI toolkit for AI development",
+  "short_description": "AI DevKit is a CLI toolkit for AI-assisted software development. It provides structured phase templates and environment setup for Cursor and Claude Code. It benefits developers and engineering teams by standardizing AI interactions with codebases, managing context, and executing development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "codeaholicguy",
+  "install_command": "git clone https://github.com/codeaholicguy/ai-devkit.git",
+  "source_repo_url": "https://github.com/codeaholicguy/ai-devkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "engineering-experience",
+    "cursor",
+    "engineering",
+    "prd",
+    "development",
+    "ai",
+    "claude-code",
+    "engineering-enablement",
+    "ai-assisted-development"
+  ],
+  "sections": {
+    "overview": "AI DevKit is a command-line toolkit designed to standardize how developers interact with AI coding assistants like Cursor and Claude Code. It provides structured phase templates and environment setup capabilities that help manage codebase context and execute development workflows consistently. The toolkit includes plugins for multiple AI platforms (.claude-plugin, .cursor-plugin, .codex-plugin) and features an agent system with session management for interactive development tasks. It solves the problem of inconsistent AI interactions across projects by offering templated workflows that engineering teams can adopt and customize. Developers benefit from reduced setup time, better context management, and reproducible development phases.\nAutomate the setup of development environments for AI-assisted projects.\nGenerate structured documentation for project requirements and design phases.\nManage project state and transition through development phases seamlessly.\nIntegrate persistent memory for AI agents to retain architectural decisions.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/codeaholicguy/ai-devkit`",
+    "usage": "```\nUse the AI DevKit CLI toolkit to scaffold a new [PROJECT_TYPE] project in [PROJECT_NAME]. Follow the standard phase template for [LANGUAGE_FRAMEWORK]. Include unit tests, CI/CD configuration, and documentation scaffolding. Set up the environment for [IDE_TOOL] integration and provide a README.md with next steps for the development team.\n```\nCopy\n\n```\n```\n✅ Project scaffolded successfully for 'ecommerce-backend' (Node.js/Express)\n\n📁 Directory structure created:\n├── src/\n│   ├── controllers/\n│   ├── models/\n│   ├── routes/\n│   ├── services/\n│   └── utils/\n├── tests/\n│   ├── integration/\n│   └── unit/\n├── .github/workflows/\n│   └── ci.yml\n├── docs/\n│   ├── architecture.md\n│   └── api-spec.yaml\n├── package.json\n├── README.md\n└── .env.example\n\n🔧 Environment configured:\n- Node.js v20.12.2 detected\n- Cursor IDE integration files added\n- Pre-commit hooks (linting + tests) installed\n- VSCode recommended extensions listed in .vscode/\n\n📝 Next steps for the team:\n1. Run `npm install` to install dependencies\n2. Configure database connection in .env\n3. Implement Product model in src/models/product.js\n4. Add API endpoints in src/routes/products.js\n5. Run `npm run test:unit` to verify scaffolding\n\n💡 Pro tip: Use `ai-devkit phase:next` to progress through development phases systematically.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-devkit#main-content",
+      "ai-devkit#overview",
+      "ai-devkit#setup",
+      "ai-devkit#examples",
+      "ai-devkit#tools",
+      "ai-devkit#mcp",
+      "ai-devkit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI DevKit is a command-line toolkit designed to standardize how developers interact with AI coding assistants like Cursor and Claude Code. It provides structured phase templates and environment setup capabilities that help manage codebase context and execute development workflows consistently. The toolkit includes plugins for multiple AI platforms (.claude-plugin, .cursor-plugin, .codex-plugin) and features an agent system with session management for interactive development tasks. It solves the problem of inconsistent AI interactions across projects by offering templated workflows that engineering teams can adopt and customize. Developers benefit from reduced setup time, better context management, and reproducible development phases.\nAutomate the setup of development environments for AI-assisted projects.\nGenerate structured documentation for project requirements and design phases.\nManage project state and transition through development phases seamlessly.\nIntegrate persistent memory for AI agents to retain architectural decisions.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/codeaholicguy/ai-devkit`",
+    "usage_vi": "```\nUse the AI DevKit CLI toolkit to scaffold a new [PROJECT_TYPE] project in [PROJECT_NAME]. Follow the standard phase template for [LANGUAGE_FRAMEWORK]. Include unit tests, CI/CD configuration, and documentation scaffolding. Set up the environment for [IDE_TOOL] integration and provide a README.md with next steps for the development team.\n```\nCopy\n\n```\n```\n✅ Project scaffolded successfully for 'ecommerce-backend' (Node.js/Express)\n\n📁 Directory structure created:\n├── src/\n│   ├── controllers/\n│   ├── models/\n│   ├── routes/\n│   ├── services/\n│   └── utils/\n├── tests/\n│   ├── integration/\n│   └── unit/\n├── .github/workflows/\n│   └── ci.yml\n├── docs/\n│   ├── architecture.md\n│   └── api-spec.yaml\n├── package.json\n├── README.md\n└── .env.example\n\n🔧 Environment configured:\n- Node.js v20.12.2 detected\n- Cursor IDE integration files added\n- Pre-commit hooks (linting + tests) installed\n- VSCode recommended extensions listed in .vscode/\n\n📝 Next steps for the team:\n1. Run `npm install` to install dependencies\n2. Configure database connection in .env\n3. Implement Product model in src/models/product.js\n4. Add API endpoints in src/routes/products.js\n5. Run `npm run test:unit` to verify scaffolding\n\n💡 Pro tip: Use `ai-devkit phase:next` to progress through development phases systematically.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:17:37.674638Z",
+    "http_status": 200,
+    "content_hash": "5064a6aac7009056a6290532d5298ada7d11f5f2aa0c08a4adf75e7ea24f2bff",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-devkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-devkit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ai-devkit CLI toolkit for AI development",
+  "short_description_vi": "AI DevKit is a CLI toolkit for AI-assisted software development. It provides structured phase templates and environment setup for Cursor and Claude Code. It benefits developers and engineering teams by standardizing AI interactions with codebases, managing context, and executing development workflows."
+}

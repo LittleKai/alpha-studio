@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/drupal-ddev-setup-claude-skill",
+  "slug": "drupal-ddev-setup-claude-skill",
+  "name": "Drupal-DDEV-Setup-Claude-Skill",
+  "headline": "Drupal DDEV Setup: Automate Project Creation",
+  "short_description": "Automate Drupal project setup and team onboarding with Claude Code. Handles new projects, existing project configuration, environment syncing, and local development with DDEV integration.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "jamieaa64",
+  "install_command": "git clone https://github.com/jamieaa64/Drupal-DDEV-Setup-Claude-Skill.git",
+  "source_repo_url": "https://github.com/jamieaa64/Drupal-DDEV-Setup-Claude-Skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill streamlines the entire Drupal development lifecycle, from creating new projects in 30 seconds to onboarding team members in 2 minutes. It handles scenario detection automatically—whether you're starting fresh with Drupal 11 Core or Drupal CMS, or setting up an existing project for local development. The skill manages DDEV configuration, Composer dependencies, Git initialization, and Drush commands, working in both Claude Code CLI (with full automation) and Web environments. It solves common pain points like inconsistent team workflows, environment synchronization after code pulls, and broken local setups by providing one-command solutions. Development teams benefit from standardized project structures, faster onboarding, and reliable environment resets.\nCreate a new Drupal project with production-ready configuration in 30 seconds\nOnboard new developers to an existing Drupal project in 2 minutes\nSync local development environment after pulling team changes\nReset a broken Drupal environment to a clean state",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jamieaa64/Drupal-DDEV-Setup-Claude-Skill`\n1. **Create a new project directory**:\n   ```bash\n   mkdir my_drupal_project\n   cd my_drupal_project\n   ```\n2. **Initialize DDEV**:\n   ```bash\n   ddev config --project-type=drupal9\n   ```\n3. **Start DDEV**:\n   ```bash\n   ddev start\n   ```\n4. **Install Drupal**:\n   ```bash\n   ddev exec drush site:install --db-url=mysql://db:db@dbhost/db --account-name=admin --account-pass=admin\n   ```",
+    "usage": "```\nI need to set up a new Drupal project using DDEV. Here are the details: [PROJECT_NAME], [Drupal_VERSION], [DDEV_VERSION]. Please guide me through the setup process, including any prerequisites, installation steps, and configuration tips. Also, provide a checklist to ensure everything is working correctly.\n```\nCopy\n\n```\n# Drupal-DDEV Setup Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "drupal-ddev-setup-claude-skill#main-content",
+      "drupal-ddev-setup-claude-skill#overview",
+      "drupal-ddev-setup-claude-skill#setup",
+      "drupal-ddev-setup-claude-skill#examples",
+      "drupal-ddev-setup-claude-skill#tools",
+      "drupal-ddev-setup-claude-skill#mcp",
+      "drupal-ddev-setup-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này tối ưu hóa toàn bộ vòng đời phát triển Drupal, từ việc tạo dự án mới trong 30 giây đến onboard thành viên mới trong 2 phút. Nó tự động phát hiện kịch bản – cho dù bạn bắt đầu mới với Drupal 11 Core hoặc Drupal CMS, hay setup một dự án hiện có để phát triển local. Skill này quản lý cấu hình DDEV, các dependency Composer, khởi tạo Git và các lệnh Drush, hoạt động trên cả Claude Code CLI (tự động hóa hoàn toàn) và môi trường Web. Nó giải quyết các vấn đề phổ biến như quy trình làm việc không đồng nhất trong đội ngũ, đồng bộ môi trường sau khi pull code và lỗi setup local bằng cách cung cấp các giải pháp chỉ với một câu lệnh. Các đội ngũ phát triển sẽ được hưởng lợi từ cấu trúc dự án chuẩn hóa, onboard nhanh hơn và reset môi trường bị lỗi về trạng thái sạch một cách đáng tin cậy.\nTạo dự án Drupal mới với cấu hình sẵn sàng cho production trong 30 giây\nOnboard lập trình viên mới vào dự án Drupal hiện có trong 2 phút\nĐồng bộ môi trường phát triển local sau khi pull các thay đổi của team\nReset môi trường Drupal bị lỗi về trạng thái sạch (clean state)",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jamieaa64/Drupal-DDEV-Setup-Claude-Skill`\n1. **Tạo thư mục dự án mới**:\n   ```bash\n   mkdir my_drupal_project\n   cd my_drupal_project\n   ```\n2. **Khởi tạo DDEV**:\n   ```bash\n   ddev config --project-type=drupal9\n   ```\n3. **Khởi động DDEV**:\n   ```bash\n   ddev start\n   ```\n4. **Cài đặt Drupal**:\n   ```bash\n   ddev exec drush site:install --db-url=mysql://db:db@dbhost/db --account-name=admin --account-pass=admin\n   ```",
+    "usage_vi": "```\nTôi cần setup một dự án Drupal mới sử dụng DDEV. Dưới đây là thông tin chi tiết: [PROJECT_NAME], [Drupal_VERSION], [DDEV_VERSION]. Vui lòng hướng dẫn tôi qua quy trình setup, bao gồm các điều kiện tiên quyết, các bước cài đặt và mẹo cấu hình. Ngoài ra, hãy cung cấp một checklist để đảm bảo mọi thứ hoạt động chính xác.\n```\nCopy\n\n```\n# Hướng dẫn Setup Drupal-DDEV"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:42:00.164566Z",
+    "http_status": 200,
+    "content_hash": "f1019b5479949120adb6e5e08c32ea548441557b9711b005192b8f09944ab207",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\drupal-ddev-setup-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\drupal-ddev-setup-claude-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Drupal DDEV Setup: Tự động hóa khởi tạo dự án",
+  "short_description_vi": "Tự động hóa setup dự án Drupal và onboard đội ngũ với Claude Code. Hỗ trợ xử lý dự án mới, cấu hình dự án hiện có, đồng bộ môi trường và phát triển local tích hợp DDEV."
+}

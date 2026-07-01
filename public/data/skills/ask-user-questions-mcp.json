@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ask-user-questions-mcp",
+  "slug": "ask-user-questions-mcp",
+  "name": "Ask User Questions MCP",
+  "headline": "ask-user-questions-mcp: Streamlined User",
+  "short_description": "Better 'AskUserQuestion' - A lightweight MCP server/OpenCode plugin + CLI tool that allows your LLMs to ask questions to you in a clean, separate space with great terminal UX. with: queueing/rejection support.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "55 min",
+  "author": "paulp-o",
+  "install_command": "git clone https://github.com/paulp-o/ask-user-questions-mcp.git",
+  "source_repo_url": "https://github.com/paulp-o/ask-user-questions-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "mcp",
+    "opencode",
+    "ask-user-question",
+    "codex",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The ask-user-questions-mcp skill is a powerful automation tool designed to enhance the interaction between your large language models (LLMs) and users. This lightweight MCP server/OpenCode plugin, along with a command-line interface (CLI) tool, allows LLMs to pose questions in a dedicated space, improving user engagement and experience. With features like queueing and rejection support, this skill ensures a seamless and organized way to manage user queries, making it easier to gather necessary information without overwhelming the user. One of the key benefits of using ask-user-questions-mcp is its ability to streamline the process of user interaction, ultimately saving time for developers and product managers. By providing a clean and efficient terminal user experience, this skill allows teams to focus on building and refining their AI automation workflows rather than getting bogged down in user management. Although the exact time savings are not quantified, the reduction in user query mismanagement and improved clarity can lead to significant efficiency gains in project timelines. This skill is particularly valuable for developers, product managers, and AI practitioners who are looking to integrate AI automation into their workflows. It is suitable for teams that need to gather user feedback or data in a structured manner, making it a great fit for departments focused on product development, user experience, and research. For instance, a product team could use this skill to gather insights during beta testing phases, allowing them to refine features based on direct user input. With an intermediate implementation difficulty and a time commitment of approximately 30 minutes, the ask-user-questions-mcp skill is accessible for teams looking to enhance their AI-first workflows. It requires basic familiarity with CLI tools and an understanding of integrating plugins into existing systems. By adopting this skill, teams can elevate their AI capabilities, ensuring that user interactions are not only efficient but also contribute to the overall success of their AI-driven projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/paulp-o/ask-user-questions-mcp`",
+    "usage": "```\nUse the AskUserQuestion MCP tool to ask me a clarifying question about [TOPIC]. The question should be concise but specific enough to resolve ambiguity. Present the question in a clean, separate terminal window or pane with a clear prompt (e.g., 'Question: [QUESTION]') and wait for my response before proceeding.\n```\nCopy\n\n```\nThe AI initiates the AskUserQuestion MCP tool, which opens a new terminal pane labeled \"Clarification Required\" with the following prompt:\n\n---\nQuestion: For the client report on Acme Corp, should we include the Q3 2023 revenue figures from the legacy system (pre-merger) or only post-merger data?\n\n[Options:]\n1. Include all Q3 2023 data\n2. Exclude pre-merger data\n3. Ask for clarification on the merger date\n\n---\n\nThe tool waits for your input in the separate pane. Once you respond (e.g., \"Include all Q3 2023 data\"), the AI acknowledges receipt and continues processing the report with the clarified instruction.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ask-user-questions-mcp#main-content",
+      "ask-user-questions-mcp#overview",
+      "ask-user-questions-mcp#setup",
+      "ask-user-questions-mcp#examples",
+      "ask-user-questions-mcp#tools",
+      "ask-user-questions-mcp#mcp",
+      "ask-user-questions-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill ask-user-questions-mcp là một công cụ tự động hóa mạnh mẽ được thiết kế để nâng cao khả năng tương tác giữa các mô hình ngôn ngữ lớn (LLM) và người dùng. MCP server/OpenCode plugin gọn nhẹ này, cùng với công cụ giao diện dòng lệnh (CLI), cho phép các LLM đưa ra câu hỏi trong một không gian riêng biệt, giúp cải thiện mức độ tương tác và trải nghiệm người dùng. Với các tính năng như hỗ trợ hàng đợi (queueing) và từ chối (rejection), skill này đảm bảo quy trình quản lý các câu hỏi của người dùng diễn ra liền mạch và có tổ chức, giúp thu thập thông tin cần thiết một cách dễ dàng mà không làm người dùng bị quá tải.\n\nMột trong những lợi ích chính của việc sử dụng ask-user-questions-mcp là khả năng tối giản hóa quy trình tương tác với người dùng, từ đó tiết kiệm thời gian cho các nhà phát triển (developer) và quản lý sản phẩm (product manager). Bằng cách cung cấp một trải nghiệm người dùng (UX) trên terminal trực quan và hiệu quả, skill này cho phép các đội ngũ tập trung vào việc xây dựng và tinh chỉnh các quy trình tự động hóa AI (AI automation workflow) thay vì bị sa lầy vào việc quản lý người dùng. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, việc giảm thiểu sai sót trong quản lý truy vấn của người dùng và cải thiện độ rõ ràng có thể mang lại hiệu quả đáng kể cho tiến độ dự án.\n\nSkill này đặc biệt giá trị đối với các developer, product manager và chuyên gia AI đang muốn tích hợp tự động hóa AI vào quy trình làm việc của họ. Nó phù hợp cho các đội ngũ cần thu thập phản hồi hoặc dữ liệu của người dùng một cách có cấu trúc, rất thích hợp cho các bộ phận tập trung vào phát triển sản phẩm, trải nghiệm người dùng và nghiên cứu. Ví dụ: một đội ngũ phát triển sản phẩm có thể sử dụng skill này để thu thập thông tin chi tiết trong giai đoạn thử nghiệm beta, cho phép họ tinh chỉnh các tính năng dựa trên phản hồi trực tiếp của người dùng. Với độ khó triển khai ở mức trung bình và thời gian thực hiện khoảng 30 phút, skill ask-user-questions-mcp là giải pháp dễ tiếp cận cho các đội ngũ muốn nâng cấp quy trình làm việc định hướng AI (AI-first workflow). Công cụ này yêu cầu sự quen thuộc cơ bản với các công cụ CLI và hiểu biết về cách tích hợp plugin vào các hệ thống hiện có. Bằng cách áp dụng skill này, các đội ngũ có thể nâng cao năng lực AI của mình, đảm bảo rằng các tương tác với người dùng không chỉ hiệu quả mà còn đóng góp vào thành công chung của các dự án định hướng AI.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/paulp-o/ask-user-questions-mcp`",
+    "usage_vi": "```\nSử dụng công cụ AskUserQuestion MCP để hỏi tôi một câu hỏi làm rõ về [CHỦ ĐỀ]. Câu hỏi cần ngắn gọn nhưng đủ cụ thể để giải quyết sự mơ hồ. Hãy hiển thị câu hỏi trong một cửa sổ hoặc khung terminal riêng biệt, trực quan với một prompt rõ ràng (ví dụ: 'Câu hỏi: [CÂU HỎI]') và đợi phản hồi của tôi trước khi tiếp tục.\n```\nCopy\n\n```\nAI sẽ khởi chạy công cụ AskUserQuestion MCP để mở một khung terminal mới có nhãn \"Clarification Required\" (Yêu cầu làm rõ) với prompt sau:\n\n---\nCâu hỏi: Đối với báo cáo khách hàng về Acme Corp, chúng ta nên đưa vào số liệu doanh thu Quý 3 năm 2023 từ hệ thống cũ (trước khi sáp nhập) hay chỉ dữ liệu sau khi sáp nhập?\n\n[Tùy chọn:]\n1. Bao gồm tất cả dữ liệu Quý 3 năm 2023\n2. Loại trừ dữ liệu trước khi sáp nhập\n3. Yêu cầu làm rõ về ngày sáp nhập\n\n---\n\nCông cụ sẽ đợi phản hồi của bạn ở khung riêng biệt này. Sau khi bạn trả lời (ví dụ: \"Bao gồm tất cả dữ liệu Quý 3 năm 2023\"), AI sẽ xác nhận đã nhận phản hồi và tiếp tục xử lý báo cáo theo hướng dẫn đã được làm rõ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:08:48.988095Z",
+    "http_status": 200,
+    "content_hash": "4bee71c1b45f19a47c35119e379021f25193c360266e0344605cb821d46b7664",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ask-user-questions-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ask-user-questions-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ask-user-questions-mcp: Tương tác người dùng tinh gọn",
+  "short_description_vi": "Bản nâng cấp của 'AskUserQuestion' - Một MCP server/OpenCode plugin gọn nhẹ kết hợp công cụ CLI, cho phép LLM đặt câu hỏi cho bạn trong một không gian riêng biệt, trực quan với UX terminal tuyệt vời. Hỗ trợ cơ chế hàng đợi (queueing) và từ chối (rejection)."
+}

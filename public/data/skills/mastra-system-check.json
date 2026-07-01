@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mastra-system-check",
+  "slug": "mastra-system-check",
+  "name": "Mastra System Check",
+  "headline": "Mastra System Check: Validate AI Agent Projects",
+  "short_description": "Claude Code skill that validates Mastra AI agent projects with 66 checks across configuration, agents, workflows, memory, tools, prompts, and security.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "goldk3y",
+  "install_command": "git clone https://github.com/goldk3y/mastra-system-check.git",
+  "source_repo_url": "https://github.com/goldk3y/mastra-system-check",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Mastra System Check is a Claude Code skill that performs comprehensive validation of Mastra AI agent projects. It runs 66 checks organized across 10 categories—configuration, agents, workflows, context, prompts, memory, tools, observability, security, and performance—identifying issues at critical, high, medium, and low priority levels. The skill catches common problems like missing storage providers, incorrect model formats, uninitialized API keys, and workflows without .commit() calls that would fail at runtime. It provides specific file locations, clear explanations of each issue, corrected code examples, and links to relevant documentation. Teams preparing projects for production can ask Claude to validate their setup and receive a detailed report organized by severity.\nValidate Mastra agent configurations before deployment to catch breaking issues early\nReview workflow setup to ensure all steps are properly committed and error handling is configured\nCheck security configuration for authentication, CORS, PII handling, and prompt injection protection\nAudit memory and context data flow for type safety and proper propagation across components\n- **Project Name**: SmartRetail Assistant\n- **Industry**: Retail\n- **Key Objectives**: Improve customer service, streamline inventory management, and enhance sales analytics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/goldk3y/mastra-system-check`",
+    "usage": "```\nValidate my Mastra AI agent project with the 66-point system check. Here's the project details: [PROJECT_NAME], [INDUSTRY], [KEY_OBJECTIVES]. Please provide a detailed report with any issues found and recommendations for improvement.\n```\nCopy\n\n```\n# Mastra AI Agent Project Validation Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mastra-system-check#main-content",
+      "mastra-system-check#overview",
+      "mastra-system-check#setup",
+      "mastra-system-check#examples",
+      "mastra-system-check#tools",
+      "mastra-system-check#mcp",
+      "mastra-system-check#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Mastra System Check là một skill Claude Code thực hiện xác thực toàn diện các dự án Mastra AI agent. Công cụ này chạy 66 hạng mục kiểm tra được phân thành 10 danh mục—cấu hình, agent, workflow, context, prompt, memory, tool, observability, bảo mật và hiệu năng—giúp phát hiện các vấn đề ở các mức độ ưu tiên: nghiêm trọng (critical), cao (high), trung bình (medium) và thấp (low). Skill này giúp phát hiện các lỗi phổ biến như thiếu storage provider, sai định dạng model, API key chưa được khởi tạo, và các workflow thiếu lời gọi hàm `.commit()` vốn sẽ gây lỗi khi runtime. Nó cung cấp vị trí file cụ thể, giải thích rõ ràng về từng lỗi, ví dụ code đã sửa và liên kết đến tài liệu liên quan. Các đội ngũ đang chuẩn bị đưa dự án lên production có thể yêu cầu Claude xác thực setup của họ để nhận báo cáo chi tiết được phân loại theo mức độ nghiêm trọng.\nXác thực cấu hình Mastra agent trước khi deploy để sớm phát hiện các lỗi gây gián đoạn (breaking issues)\nXem lại cấu hình workflow để đảm bảo mọi bước đều được commit đúng cách và tính năng xử lý lỗi đã được thiết lập\nKiểm tra cấu hình bảo mật về xác thực (authentication), CORS, xử lý thông tin cá nhân (PII) và chống prompt injection\nKiểm tra luồng dữ liệu memory và context để đảm bảo an toàn kiểu dữ liệu (type safety) và khả năng truyền dẫn chuẩn xác giữa các component\n- **Tên dự án**: SmartRetail Assistant\n- **Ngành**: Bán lẻ\n- **Mục tiêu chính**: Cải thiện dịch vụ khách hàng, tối ưu hóa quản lý kho hàng và nâng cao hiệu quả phân tích doanh số",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/goldk3y/mastra-system-check`",
+    "usage_vi": "```\nHãy xác thực dự án Mastra AI agent của tôi bằng quy trình kiểm tra hệ thống 66 điểm. Dưới đây là thông tin chi tiết về dự án: [PROJECT_NAME], [INDUSTRY], [KEY_OBJECTIVES]. Vui lòng cung cấp báo cáo chi tiết về các lỗi được tìm thấy và đề xuất cải thiện.\n```\nSao chép\n\n```\n# Báo cáo xác thực dự án Mastra AI Agent"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:16:21.024190Z",
+    "http_status": 200,
+    "content_hash": "ca7a6d5c7c8568020582f9771a3bbc38dadbd1992e7a8c75969ec72a4522fd27",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mastra-system-check.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mastra-system-check.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Mastra System Check: Xác thực dự án AI Agent",
+  "short_description_vi": "Skill Claude Code giúp xác thực các dự án Mastra AI agent với 66 hạng mục kiểm tra bao gồm cấu hình, agent, workflow, memory, tool, prompt và bảo mật."
+}

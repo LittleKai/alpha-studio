@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/template-skill",
+  "slug": "template-skill",
+  "name": "browser-use",
+  "headline": "template-skill: Workflow Automation",
+  "short_description": "The template-skill by anthropics streamlines the creation of automated workflows in Claude Code. It allows users to quickly generate templates for various tasks, enhancing productivity and reducing development time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills.git",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The template-skill is designed to facilitate the rapid creation of automated workflows within Claude Code. By providing pre-defined templates, this skill enables users to quickly set up complex automation processes without extensive coding knowledge. This functionality is particularly beneficial for developers and product managers who need to implement AI automation efficiently. Key benefits of the template-skill include significant time savings and increased productivity. Users can leverage the pre-built templates to jumpstart their projects, reducing the time spent on repetitive tasks. This skill allows teams to focus on higher-level problem-solving rather than getting bogged down in the minutiae of workflow setup, making it an invaluable asset in fast-paced development environments. The template-skill is ideal for developers, product managers, and AI practitioners looking to enhance their workflow automation capabilities. It is particularly useful for those who may not have extensive experience with AI but want to integrate automation into their projects seamlessly. With its user-friendly interface, the skill democratizes access to powerful AI tools, enabling a broader range of users to benefit from automation. Practical use cases for the template-skill include automating data entry processes, generating reports from databases, and setting up notification systems for project updates. For example, a product manager can use this skill to create a workflow that automatically compiles user feedback into a report, saving hours of manual work. Implementation is straightforward, making it accessible even for those with limited technical skills. By incorporating the template-skill into AI-first workflows, organizations can enhance their operational efficiency and drive innovation.\nAutomate data entry processes in web applications to save time and reduce errors.\nGenerate automated reports from user feedback to quickly analyze and act on insights.\nSet up notification systems for project updates to keep team members informed in real-time.\nCreate templates for recurring tasks in project management to ensure consistency and efficiency.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nCreate a template for [TASK] in Claude Code. The template should include [SPECIFIC ELEMENTS] and follow [STANDARD PROTOCOLS]. Ensure it is optimized for [USE CASE].\n```\nCopy\n\n```\nHere is a template for automating customer onboarding in Claude Code:\n\n```python\n# Customer Onboarding Automation Template\n# Use Case: Streamline new customer setup\n# Standard Protocols: GDPR Compliance, Data Encryption\n\nimport anthropic\n\n# Initialize the Anthropic client\nclient = anthropic.Client(api_key='your_api_key_here')\n\n# Function to create a new customer record\ndef create_customer_record(customer_data):\n    # Validate customer data\n    if not validate_customer_data(customer_data):\n        raise ValueError(\"Invalid customer data\")\n    \n    # Encrypt sensitive data\n    encrypted_data = encrypt_data(customer_data['sensitive_info'])\n    \n    # Store customer data in the database\n    customer_id = database.insert_customer(\n        name=customer_data['name'],\n        email=customer_data['email'],\n        encrypted_data=encrypted_data\n    )\n    \n    return customer_id\n\n# Function to send welcome email\ndef send_welcome_email(customer_id):\n    customer_data = database.get_customer(customer_id)\n    email_content = generate_welcome_email(customer_data)\n    send_email(customer_data['email'], \"Welcome to Our Service\", email_content)\n\n# Main workflow\ndef onboarding_workflow(customer_data):\n    customer_id = create_customer_record(customer_data)\n    send_welcome_email(customer_id)\n    return customer_id\n\n# Example usage\ncustomer_data = {\n    'name': 'John Doe',\n    'email': 'john.doe@example.com',\n    'sensitive_info': 'SSN12345678'\n}\n\nonboarding_workflow(customer_data)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "template-skill#main-content",
+      "template-skill#overview",
+      "template-skill#setup",
+      "template-skill#examples",
+      "template-skill#tools",
+      "template-skill#mcp",
+      "template-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The template-skill is designed to facilitate the rapid creation of automated workflows within Claude Code. By providing pre-defined templates, this skill enables users to quickly set up complex automation processes without extensive coding knowledge. This functionality is particularly beneficial for developers and product managers who need to implement AI automation efficiently. Key benefits of the template-skill include significant time savings and increased productivity. Users can leverage the pre-built templates to jumpstart their projects, reducing the time spent on repetitive tasks. This skill allows teams to focus on higher-level problem-solving rather than getting bogged down in the minutiae of workflow setup, making it an invaluable asset in fast-paced development environments. The template-skill is ideal for developers, product managers, and AI practitioners looking to enhance their workflow automation capabilities. It is particularly useful for those who may not have extensive experience with AI but want to integrate automation into their projects seamlessly. With its user-friendly interface, the skill democratizes access to powerful AI tools, enabling a broader range of users to benefit from automation. Practical use cases for the template-skill include automating data entry processes, generating reports from databases, and setting up notification systems for project updates. For example, a product manager can use this skill to create a workflow that automatically compiles user feedback into a report, saving hours of manual work. Implementation is straightforward, making it accessible even for those with limited technical skills. By incorporating the template-skill into AI-first workflows, organizations can enhance their operational efficiency and drive innovation.\nAutomate data entry processes in web applications to save time and reduce errors.\nGenerate automated reports from user feedback to quickly analyze and act on insights.\nSet up notification systems for project updates to keep team members informed in real-time.\nCreate templates for recurring tasks in project management to ensure consistency and efficiency.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nCreate a template for [TASK] in Claude Code. The template should include [SPECIFIC ELEMENTS] and follow [STANDARD PROTOCOLS]. Ensure it is optimized for [USE CASE].\n```\nCopy\n\n```\nHere is a template for automating customer onboarding in Claude Code:\n\n```python\n# Customer Onboarding Automation Template\n# Use Case: Streamline new customer setup\n# Standard Protocols: GDPR Compliance, Data Encryption\n\nimport anthropic\n\n# Initialize the Anthropic client\nclient = anthropic.Client(api_key='your_api_key_here')\n\n# Function to create a new customer record\ndef create_customer_record(customer_data):\n    # Validate customer data\n    if not validate_customer_data(customer_data):\n        raise ValueError(\"Invalid customer data\")\n    \n    # Encrypt sensitive data\n    encrypted_data = encrypt_data(customer_data['sensitive_info'])\n    \n    # Store customer data in the database\n    customer_id = database.insert_customer(\n        name=customer_data['name'],\n        email=customer_data['email'],\n        encrypted_data=encrypted_data\n    )\n    \n    return customer_id\n\n# Function to send welcome email\ndef send_welcome_email(customer_id):\n    customer_data = database.get_customer(customer_id)\n    email_content = generate_welcome_email(customer_data)\n    send_email(customer_data['email'], \"Welcome to Our Service\", email_content)\n\n# Main workflow\ndef onboarding_workflow(customer_data):\n    customer_id = create_customer_record(customer_data)\n    send_welcome_email(customer_id)\n    return customer_id\n\n# Example usage\ncustomer_data = {\n    'name': 'John Doe',\n    'email': 'john.doe@example.com',\n    'sensitive_info': 'SSN12345678'\n}\n\nonboarding_workflow(customer_data)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:14:39.905364Z",
+    "http_status": 200,
+    "content_hash": "f5d37c7cacf8acb13e2088141eeadf03f2dafa18bb1999c20c73f8a47e6c3580",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\template-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\template-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "template-skill: Workflow Automation",
+  "short_description_vi": "The template-skill by anthropics streamlines the creation of automated workflows in Claude Code. It allows users to quickly generate templates for various tasks, enhancing productivity and reducing development time."
+}

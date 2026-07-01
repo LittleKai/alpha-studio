@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/explain-code",
+  "slug": "explain-code",
+  "name": "Cloudinary Documentation",
+  "headline": "Explain Code: Clear Code Explanations",
+  "short_description": "Explain Code presents the user-scoped code in a concise format, favoring plain English and brief code snippets. It is designed for developers who need quick explanations of code without exhaustive details.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "sidkh",
+  "install_command": "git clone https://github.com/sidkh/skills",
+  "source_repo_url": "https://github.com/sidkh/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "code",
+    "explain",
+    "documentation"
+  ],
+  "sections": {
+    "overview": "Explain Code transforms any code snippet into a readable, structured explanation formatted like a scannable blog post. It breaks down functionality into focused sections with plain-English prose and minimal code sketches, helping developers quickly grasp what code does without dense technical jargon. The skill matches your exact code scope and uses a consistent format—a title, TLDR summary, and topic-specific sections—making it ideal for code reviews, onboarding, or understanding unfamiliar logic. It simplifies code behavior when helpful while staying faithful to intent, and refuses to invent explanations beyond what the code actually does.\nQuickly understand code functionality\nPrepare concise documentation for code reviews\nSummarize code snippets for educational purposes",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/sidkh/skills --skill explain-code`\n`git clone https://github.com/sidkh/skills`",
+    "usage": "```\nExplain the following code snippet in simple terms. Focus on its purpose, key components, and how it works. Avoid deep technical jargon unless necessary. Here's the code: ```[CODE]```\n```\nCopy\n\n```\n**Code Explanation: User Authentication Check**\n\nThis snippet checks if a user is logged in before allowing access to a dashboard. Here's how it works:\n\n### Purpose\nPrevents unauthorized users from accessing protected pages in a web app.\n\n### Key Components\n- **`isLoggedIn`**: A boolean variable that tracks login status (true = logged in).\n- **`checkAuth()`**: A function that verifies the user's session token.\n- **`redirectToLogin()`**: Redirects users to the login page if they're not authenticated.\n\n### How It Works\n1. The code first checks `isLoggedIn`.\n2. If `false`, it calls `checkAuth()` to validate the session.\n3. If the session is invalid, it triggers `redirectToLogin()`.\n\n### Example Flow\n- **Logged-in User**: Proceeds to `/dashboard`.\n- **Guest User**: Redirected to `/login?redirect=/dashboard`.\n\n```javascript\nfunction checkAccess() {\n  if (!isLoggedIn) {\n    checkAuth();\n  }\n  if (!isLoggedIn) redirectToLogin();\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "explain-code#main-content",
+      "explain-code#overview",
+      "explain-code#setup",
+      "explain-code#examples",
+      "explain-code#related",
+      "readme-generator",
+      "wds-documentation-navigator",
+      "cloudinary-documentation"
+    ],
+    "overview_vi": "Explain Code transforms any code snippet into a readable, structured explanation formatted like a scannable blog post. It breaks down functionality into focused sections with plain-English prose and minimal code sketches, helping developers quickly grasp what code does without dense technical jargon. The skill matches your exact code scope and uses a consistent format—a title, TLDR summary, and topic-specific sections—making it ideal for code reviews, onboarding, or understanding unfamiliar logic. It simplifies code behavior when helpful while staying faithful to intent, and refuses to invent explanations beyond what the code actually does.\nQuickly understand code functionality\nPrepare concise documentation for code reviews\nSummarize code snippets for educational purposes",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/sidkh/skills --skill explain-code`\n`git clone https://github.com/sidkh/skills`",
+    "usage_vi": "```\nExplain the following code snippet in simple terms. Focus on its purpose, key components, and how it works. Avoid deep technical jargon unless necessary. Here's the code: ```[CODE]```\n```\nCopy\n\n```\n**Code Explanation: User Authentication Check**\n\nThis snippet checks if a user is logged in before allowing access to a dashboard. Here's how it works:\n\n### Purpose\nPrevents unauthorized users from accessing protected pages in a web app.\n\n### Key Components\n- **`isLoggedIn`**: A boolean variable that tracks login status (true = logged in).\n- **`checkAuth()`**: A function that verifies the user's session token.\n- **`redirectToLogin()`**: Redirects users to the login page if they're not authenticated.\n\n### How It Works\n1. The code first checks `isLoggedIn`.\n2. If `false`, it calls `checkAuth()` to validate the session.\n3. If the session is invalid, it triggers `redirectToLogin()`.\n\n### Example Flow\n- **Logged-in User**: Proceeds to `/dashboard`.\n- **Guest User**: Redirected to `/login?redirect=/dashboard`.\n\n```javascript\nfunction checkAccess() {\n  if (!isLoggedIn) {\n    checkAuth();\n  }\n  if (!isLoggedIn) redirectToLogin();\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:46:26.296844Z",
+    "http_status": 200,
+    "content_hash": "5fe51e61f09ae2c9ff7f4f8acdd3bf6e3f0670894257609780540d474de683aa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\explain-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\explain-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Explain Code: Clear Code Explanations",
+  "short_description_vi": "Explain Code presents the user-scoped code in a concise format, favoring plain English and brief code snippets. It is designed for developers who need quick explanations of code without exhaustive details."
+}

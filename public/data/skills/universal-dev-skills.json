@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/universal-dev-skills",
+  "slug": "universal-dev-skills",
+  "name": "Universal Dev Standards",
+  "headline": "Universal Dev Standards - Enforce Coding Standards",
+  "short_description": "Universal dev standards for code reviews, git workflows, and productivity. Engineers and teams use it to enforce best practices, improve code quality, and streamline workflows. Integrates with git, CI/CD pipelines, and IDEs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "35 min",
+  "author": "AsiaOstrich",
+  "install_command": "git clone https://github.com/AsiaOstrich/universal-dev-skills.git",
+  "source_repo_url": "https://github.com/AsiaOstrich/universal-dev-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-skills",
+    "developer-experience",
+    "productivity",
+    "software-engineering",
+    "git-workflow",
+    "ai-coding-assistant",
+    "prompt-engineering",
+    "best-practices",
+    "code-review",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Universal Dev Skills has been consolidated into the universal-dev-standards repository. The original 8 skills—including code review, commit standards, testing guides, and git workflows—are now maintained in a unified package with 6 additional skills. Install the npm package universal-dev-standards and run npx uds init to set up Claude Code skills for enforcing development best practices, improving code quality, and streamlining team workflows. Existing users should migrate by removing old skill installations and installing the new unified CLI tool.\nMigrate from archived skills to universal-dev-standards\nSet up automated code review checklists via Claude Code\nEnforce Conventional Commits and semantic versioning standards\nConfigure git workflow and branching strategies",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AsiaOstrich/universal-dev-skills`",
+    "usage": "```\nAct as a senior software engineer performing a code review for [PROJECT_NAME]. Review the following changes in [BRANCH_NAME]: [CODE_CHANGES]. Check for: 1) adherence to [PROGRAMMING_LANGUAGE] best practices, 2) potential bugs or edge cases, 3) performance implications, 4) security vulnerabilities, 5) test coverage gaps. Provide feedback in GitHub/GitLab review format with clear line-by-line comments and a summary section. Include suggestions for improvements and next steps for the author.\n```\nCopy\n\n```\n{\"review\":{\"summary\":\"Overall, the changes in `feature/user-authentication` improve the authentication flow but introduce several critical issues that need addressing before merging. The implementation of JWT refresh tokens is a good step, but the lack of input validation and missing test cases for edge scenarios significantly increases risk. The PR also includes some minor style inconsistencies that should be cleaned up. I recommend addressing the critical issues first, then we can discuss the rest in a follow-up review.\",\"line_comments\":[{\"line\":42,\"comment\":\"⚠️ SECURITY: The `generateToken` function doesn't validate the `userId` input. An attacker could pass a malformed ID to crash the service or inject malicious data. Add validation: `if (!isValidUUID(userId)) throw new Error('Invalid user ID')`.\",\"severity\":\"critical\"},{\"line\":67,\"comment\":\"🔍 PERFORMANCE: The `refreshToken` endpoint queries the database twice in sequence. This could cause latency spikes under load. Consider batching these queries or using a single optimized query.\",\"severity\":\"major\"},{\"line\":89,\"comment\":\"🧪 TESTING: No test cases for expired refresh tokens. Add a test in `auth.test.js` to verify the system handles expired tokens gracefully by returning a 401 response.\",\"severity\":\"minor\"},{\"line\":112,\"comment\":\"📝 STYLE: Inconsistent spacing around operators. Follow the project's style guide (e.g., `token = generateToken(userId)` instead of `token=generateToken(userId)`).\",\"severity\":\"trivial\"}],\"suggestions\":[\"Implement input validation for all user-provided data in the auth flow.\",\"Add unit tests for edge cases (e.g., invalid tokens, malformed payloads).\",\"Optimize the refresh token query to reduce database round trips.\",\"Run a security scan with `npm audit` and address any new vulnerabilities.\",\"Fix style inconsistencies using `eslint --fix` before merging.\"],\"next_steps\":[\"Address critical and major issues in a new commit.\",\"Rebase the branch to resolve conflicts with `main`.\",\"Update the PR description with details of the changes made.\",\"Request a re-review once the critical issues are resolved.\"]}}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "universal-dev-skills#main-content",
+      "universal-dev-skills#overview",
+      "universal-dev-skills#setup",
+      "universal-dev-skills#examples",
+      "universal-dev-skills#tools",
+      "universal-dev-skills#mcp",
+      "universal-dev-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Universal Dev Skills đã được hợp nhất vào repository universal-dev-standards. 8 skill ban đầu—bao gồm code review, tiêu chuẩn commit, tài liệu hướng dẫn kiểm thử và git workflow—hiện được duy trì trong một package thống nhất cùng với 6 skill bổ sung khác. Hãy cài đặt npm package universal-dev-standards và chạy lệnh npx uds init để thiết lập các skill của Claude Code nhằm áp dụng các best practice trong phát triển phần mềm, nâng cao chất lượng code và tối ưu hóa workflow của đội ngũ. Người dùng hiện tại nên thực hiện migrate bằng cách gỡ bỏ các cài đặt skill cũ và cài đặt công cụ CLI thống nhất mới.\n\nMigrate từ các skill đã cũ (archived) sang universal-dev-standards\nThiết lập checklist tự động cho code review thông qua Claude Code\nÁp dụng tiêu chuẩn Conventional Commits và semantic versioning\nCấu hình git workflow và chiến lược phân nhánh (branching strategy)",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/AsiaOstrich/universal-dev-skills`",
+    "usage_vi": "```\nĐóng vai trò là một senior software engineer thực hiện code review cho dự án [PROJECT_NAME]. Review các thay đổi sau trong nhánh [BRANCH_NAME]: [CODE_CHANGES]. Kiểm tra các yếu tố: 1) việc tuân thủ các best practice của ngôn ngữ [PROGRAMMING_LANGUAGE], 2) các bug tiềm ẩn hoặc case đặc biệt (edge case), 3) ảnh hưởng đến hiệu năng (performance), 4) các lỗ hổng bảo mật, 5) độ bao phủ kiểm thử (test coverage) bị thiếu. Cung cấp phản hồi dưới định dạng review của GitHub/GitLab với các nhận xét rõ ràng theo từng dòng và một phần tổng hợp (summary). Đi kèm các đề xuất cải tiến và các bước tiếp theo dành cho tác giả.\n```\nCopy\n\n```\n{\n  \"review\": {\n    \"summary\": \"Nhìn chung, các thay đổi trong nhánh `feature/user-authentication` cải thiện luồng xác thực nhưng cũng phát sinh một số lỗi nghiêm trọng (critical) cần xử lý trước khi merge. Việc triển khai JWT refresh token là một bước đi tốt, nhưng việc thiếu validate dữ liệu đầu vào và thiếu test case cho các trường hợp biên (edge case) làm tăng đáng kể rủi ro. PR này cũng bao gồm một vài chỗ không đồng nhất về code style cần được dọn dẹp. Tôi khuyên bạn nên giải quyết các lỗi nghiêm trọng trước, sau đó chúng ta có thể thảo luận các phần còn lại trong các lượt review tiếp theo.\",\n    \"line_comments\": [\n      {\n        \"line\": 42,\n        \"comment\": \"⚠️ SECURITY: Hàm `generateToken` chưa validate dữ liệu đầu vào `userId`. Kẻ tấn công có thể truyền vào một ID không hợp lệ để làm sập dịch vụ hoặc chèn dữ liệu độc hại. Hãy thêm validate: `if (!isValidUUID(userId)) throw new Error('Invalid user ID')`.\",\n        \"severity\": \"critical\"\n      },\n      {\n        \"line\": 67,\n        \"comment\": \"🔍 PERFORMANCE: Endpoint `refreshToken` thực hiện truy vấn database hai lần liên tiếp. Điều này có thể gây ra hiện tượng tăng đột biến độ trễ (latency spike) khi chịu tải cao. Hãy cân nhắc gộp các truy vấn này lại hoặc sử dụng một câu truy vấn tối ưu duy nhất.\",\n        \"severity\": \"major\"\n      },\n      {\n        \"line\": 89,\n        \"comment\": \"🧪 TESTING: Chưa có test case cho trường hợp refresh token hết hạn. Hãy thêm một test trong `auth.test.js` để xác minh hệ thống xử lý token hết hạn một cách trơn tru bằng cách trả về phản hồi 401.\",\n        \"severity\": \"minor\"\n      },\n      {\n        \"line\": 112,\n        \"comment\": \"📝 STYLE: Khoảng cách xung quanh các toán tử chưa nhất quán. Hãy tuân thủ style guide của dự án (ví dụ: `token = generateToken(userId)` thay vì `token=generateToken(userId)`).\",\n        \"severity\": \"trivial\"\n      }\n    ],\n    \"suggestions\": [\n      \"Thực hiện validate dữ liệu đầu vào đối với tất cả dữ liệu do người dùng cung cấp trong luồng xác thực.\",\n      \"Thêm unit test cho các edge case (ví dụ: token không hợp lệ, payload sai cấu trúc).\",\n      \"Tối ưu hóa truy vấn refresh token để giảm số lượng kết nối khứ hồi (round trip) tới database.\",\n      \"Chạy quét bảo mật bằng `npm audit` và xử lý các lỗ hổng mới phát hiện.\",\n      \"Sửa các lỗi không nhất quán về code style bằng `eslint --fix` trước khi merge.\"\n    ],\n    \"next_steps\": [\n      \"Giải quyết các lỗi nghiêm trọng (critical) và lỗi lớn (major) trong một commit mới.\",\n      \"Rebase nhánh để giải quyết xung đột với `main`.\",\n      \"Cập nhật mô tả PR kèm thông tin chi tiết về các thay đổi đã thực hiện.\",\n      \"Yêu cầu re-review sau khi các lỗi nghiêm trọng được xử lý.\"\n    ]\n  }\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:55:47.310060Z",
+    "http_status": 200,
+    "content_hash": "ca043783a0518c0ecb0314ec0de22ae8832acb0f35e20fb236e6dfda25d9ee8a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\universal-dev-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\universal-dev-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Universal Dev Standards - Áp dụng Tiêu chuẩn Coding",
+  "short_description_vi": "Các tiêu chuẩn phát triển chung dành cho code review, git workflow và hiệu suất làm việc. Các kỹ sư và đội ngũ phát triển sử dụng công cụ này để áp dụng các best practice, nâng cao chất lượng code và tối ưu hóa workflow. Tích hợp tốt với git, CI/CD pipeline và các IDE."
+}

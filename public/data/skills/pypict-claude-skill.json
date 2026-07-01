@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pypict-claude-skill",
+  "slug": "pypict-claude-skill",
+  "name": "pypict-claude-skill",
+  "headline": "pypict-claude-skill - Test Case Generation",
+  "short_description": "The pypict-claude-skill generates test cases using N-wise test cases via the pypict library. It benefits QA teams by reducing test case volume while maintaining high coverage. It integrates with Claude and is used for software testing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "65 min",
+  "author": "omkamal",
+  "install_command": "git clone https://github.com/omkamal/pypict-claude-skill.git",
+  "source_repo_url": "https://github.com/omkamal/pypict-claude-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "PICT Test Designer is a Claude skill that automates test case generation using Pairwise Independent Combinatorial Testing (PICT), a Microsoft-developed methodology. It analyzes system requirements, identifies parameters and their values, and generates minimal test suites that cover all pairwise combinations while dramatically reducing test case volume. For example, a system with 8 parameters requiring 25,920 exhaustive test cases can be tested with just 30 PICT-generated cases—a 99.88% reduction. The skill applies constraint-based rules to eliminate invalid combinations and automatically determines expected outputs, making it ideal for QA teams testing software functions, APIs, web forms, configurations, and complex systems where comprehensive coverage is critical but test execution resources are limited.\nTest case design for login systems with multiple authentication parameters\nAPI testing with constraint-based validation across parameter combinations\nWeb form testing across browsers, operating systems, and user roles\nConfiguration testing for systems with multiple interdependent settings",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/omkamal/pypict-claude-skill`",
+    "usage": "```\nGenerate 10 test cases using N-wise testing for a login system with the following parameters: [USERNAME], [PASSWORD], [CAPTCHA], [LOGIN_BUTTON]. Use the pypict library to ensure optimal coverage while minimizing the number of test cases. Provide the test cases in a structured format.\n```\nCopy\n\n```\n# Test Cases for Login System",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pypict-claude-skill#main-content",
+      "pypict-claude-skill#overview",
+      "pypict-claude-skill#setup",
+      "pypict-claude-skill#examples",
+      "pypict-claude-skill#tools",
+      "pypict-claude-skill#mcp",
+      "pypict-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "PICT Test Designer là một Claude skill giúp tự động hóa việc tạo test case bằng phương pháp Pairwise Independent Combinatorial Testing (PICT) do Microsoft phát triển. Nó phân tích các yêu cầu hệ thống, xác định các tham số cùng giá trị tương ứng, và tạo ra các bộ test suite tối giản giúp bao phủ toàn bộ các tổ hợp pairwise, đồng thời giảm đáng kể số lượng test case. Ví dụ, một hệ thống có 8 tham số yêu cầu tới 25.920 test case nếu thử nghiệm toàn bộ (exhaustive testing) thì nay có thể được kiểm thử chỉ với 30 case do PICT tạo ra — giảm đến 99,88%. Skill này áp dụng các quy tắc ràng buộc (constraint-based rules) để loại bỏ các tổ hợp không hợp lệ và tự động xác định kết quả mong đợi (expected outputs). Điều này giúp nó trở nên lý tưởng cho các đội ngũ QA khi kiểm thử các chức năng phần mềm, API, web form, cấu hình và các hệ thống phức tạp - nơi mà độ bao phủ toàn diện là cực kỳ quan trọng nhưng tài nguyên thực thi kiểm thử lại có hạn.\n\nThiết kế test case cho hệ thống đăng nhập có nhiều tham số xác thực\nKiểm thử API với xác thực dựa trên ràng buộc giữa các tổ hợp tham số\nKiểm thử web form trên nhiều trình duyệt, hệ điều hành và vai trò người dùng\nKiểm thử cấu hình cho các hệ thống có nhiều thiết lập phụ thuộc lẫn nhau",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/omkamal/pypict-claude-skill`",
+    "usage_vi": "```\nTạo 10 test case bằng phương pháp N-wise testing cho một hệ thống đăng nhập với các tham số sau: [USERNAME], [PASSWORD], [CAPTCHA], [LOGIN_BUTTON]. Sử dụng thư viện pypict để đảm bảo độ bao phủ tối ưu trong khi giảm thiểu tối đa số lượng test case. Cung cấp các test case dưới dạng định dạng có cấu trúc.\n```\nSao chép\n\n```\n# Test Cases cho Hệ thống Đăng nhập"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:57:06.580032Z",
+    "http_status": 200,
+    "content_hash": "914c26c1cd4d2865f32c3a5352e4874ff4405d1791d4491ca99e4f09dbeac1ca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\pypict-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\pypict-claude-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "pypict-claude-skill - Tạo Test Case",
+  "short_description_vi": "pypict-claude-skill hỗ trợ tạo các test case bằng phương pháp N-wise testing thông qua thư viện pypict. Công cụ này giúp ích cho các đội ngũ QA nhờ giảm thiểu số lượng test case trong khi vẫn duy trì độ bao phủ (coverage) cao. Skill này tích hợp với Claude và được sử dụng cho các quy trình kiểm thử phần mềm."
+}

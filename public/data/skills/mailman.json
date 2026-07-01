@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mailman",
+  "slug": "mailman",
+  "name": "mailman",
+  "headline": "Mailman: Email Marketing Automation",
+  "short_description": "Personalized, LLM-based email marketing automation with user segmentation and A/B testing analytics",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "avrtt",
+  "install_command": "git clone https://github.com/avrtt/mailman.git",
+  "source_repo_url": "https://github.com/avrtt/mailman",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ab-testing",
+    "llms",
+    "email-sender",
+    "huggingface-transformers",
+    "marketing-automation",
+    "k-means-clustering",
+    "natural-language-processing",
+    "segmentation",
+    "email-marketing",
+    "dbscan-clustering",
+    "smtp"
+  ],
+  "sections": {
+    "overview": "The Mailman skill is a powerful tool designed for personalized email marketing automation, leveraging large language models (LLMs) to enhance user engagement through targeted campaigns. This skill allows users to segment their audience effectively and utilize A/B testing analytics to optimize email performance. By automating these processes, Mailman reduces the manual effort required in crafting and sending tailored emails, making it an essential asset for marketing teams looking to improve their outreach strategies. One of the key benefits of using the Mailman skill is the significant time savings it offers. While the exact time savings are currently unknown, the ability to automate user segmentation and A/B testing can drastically reduce the time spent on these tasks, allowing marketers to focus on strategy and creative content development. This skill not only enhances efficiency but also increases the likelihood of higher engagement rates, ultimately leading to improved conversion rates and ROI. Mailman is particularly beneficial for marketing professionals, product managers, and AI practitioners who are looking to leverage AI automation in their email marketing efforts. Its intermediate implementation difficulty means that users should have a basic understanding of email marketing principles and some familiarity with AI tools. Once set up, Mailman can seamlessly integrate into existing workflows, enhancing the overall marketing strategy by providing data-driven insights and automation capabilities. Practical use cases for Mailman include creating targeted campaigns for different customer segments based on behavior or demographics, as well as testing various email formats or content to see which resonates best with the audience. For example, a retail company could use Mailman to send personalized promotions to loyal customers while testing different subject lines for new subscribers. With an estimated implementation time of just 30 minutes, Mailman fits perfectly into an AI-first workflow, allowing teams to quickly adopt this skill and start reaping the benefits of AI-driven email marketing.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/avrtt/mailman`",
+    "usage": "```\nAct as a mailman for [COMPANY], a [INDUSTRY] business. Create a personalized email campaign targeting [CUSTOMER_SEGMENT] using [DATA] from our CRM. Include A/B testing options for [ELEMENTS_TO_TEST] and provide analytics on open rates, click-through rates, and conversions.\n```\nCopy\n\n```\n# Email Campaign for GreenThumb Nursery",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mailman#main-content",
+      "mailman#overview",
+      "mailman#setup",
+      "mailman#examples",
+      "mailman#tools",
+      "mailman#mcp",
+      "mailman#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "Skill Mailman là một công cụ mạnh mẽ được thiết kế để tự động hóa email marketing cá nhân hóa, tận dụng các mô hình ngôn ngữ lớn (LLM) để nâng cao mức độ tương tác của người dùng thông qua các chiến dịch mục tiêu. Skill này cho phép người dùng phân khúc đối tượng hiệu quả và sử dụng các phân tích thử nghiệm A/B để tối ưu hóa hiệu suất email. Bằng cách tự động hóa các quy trình này, Mailman giảm thiểu công sức thủ công trong việc soạn thảo và gửi email tùy chỉnh, trở thành một giải pháp thiết thực cho các đội ngũ marketing muốn cải thiện chiến lược tiếp cận của mình. Một trong những lợi ích chính khi sử dụng skill Mailman là khả năng tiết kiệm thời gian đáng kể. Mặc dù chưa có số liệu chính xác về lượng thời gian tiết kiệm được, khả năng tự động hóa phân khúc người dùng và thử nghiệm A/B có thể giảm đáng kể thời gian dành cho các tác vụ này, giúp các nhà tiếp thị tập trung vào chiến lược và phát triển nội dung sáng tạo. Skill này không chỉ nâng cao hiệu suất mà còn tăng khả năng đạt tỷ lệ tương tác cao hơn, từ đó cải thiện tỷ lệ chuyển đổi và ROI. Mailman đặc biệt hữu ích cho các chuyên gia marketing, product manager và kỹ sư AI đang muốn ứng dụng tự động hóa AI vào các chiến dịch email marketing. Với độ khó triển khai ở mức trung bình (intermediate), người dùng nên có hiểu biết cơ bản về các nguyên tắc email marketing và quen thuộc ở mức nhất định với các công cụ AI. Sau khi setup, Mailman có thể tích hợp liền mạch vào các workflow hiện có, nâng cao chiến lược marketing tổng thể bằng cách cung cấp các thông tin chi tiết dựa trên dữ liệu và khả năng tự động hóa. Các case thực tế của Mailman bao gồm tạo chiến dịch mục tiêu cho các phân khúc khách hàng khác nhau dựa trên hành vi hoặc nhân khẩu học, cũng như thử nghiệm các định dạng hoặc nội dung email khác nhau để xem lựa chọn nào thu hút khán giả nhất. Ví dụ: một công ty bán lẻ có thể sử dụng Mailman để gửi các chương trình khuyến mãi cá nhân hóa đến khách hàng thân thiết, đồng thời thử nghiệm các dòng tiêu đề (subject line) khác nhau cho người đăng ký mới. Với thời gian triển khai ước tính chỉ khoảng 30 phút, Mailman hoàn toàn phù hợp với workflow ưu tiên AI (AI-first workflow), giúp các đội ngũ nhanh chóng áp dụng skill này và bắt đầu khai thác lợi ích từ email marketing dựa trên AI.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/avrtt/mailman`",
+    "usage_vi": "```\nĐóng vai trò là mailman cho [COMPANY], một doanh nghiệp trong lĩnh vực [INDUSTRY]. Tạo một chiến dịch email cá nhân hóa nhắm mục tiêu đến [CUSTOMER_SEGMENT] bằng cách sử dụng [DATA] từ CRM của chúng tôi. Bao gồm các tùy chọn thử nghiệm A/B cho [ELEMENTS_TO_TEST] và cung cấp phân tích về tỷ lệ mở (open rate), tỷ lệ nhấp (click-through rate) và tỷ lệ chuyển đổi.\n```\nCopy\n\n```\n# Chiến dịch Email cho GreenThumb Nursery\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:02:14.099276Z",
+    "http_status": 200,
+    "content_hash": "602d7fa1bec8d8bf967e375caa2d6c5f5ce210386db04669e7a84cdde78a83ae",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mailman.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mailman.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Mailman: Tự động hóa Email Marketing",
+  "short_description_vi": "Tự động hóa email marketing cá nhân hóa dựa trên LLM, tích hợp phân khúc đối tượng và phân tích thử nghiệm A/B"
+}

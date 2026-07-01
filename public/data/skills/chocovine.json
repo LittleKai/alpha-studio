@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/chocovine",
+  "slug": "chocovine",
+  "name": "ChocoVine",
+  "headline": "ChocoVine: structured vibes coding",
+  "short_description": "ChocoVine enforces a Research → Test → Code loop for Claude Code, reducing hallucinations. It benefits engineering teams by ensuring AI-generated code is reliable. It integrates with Python workflows and connects to Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "35 min",
+  "author": "vneseyoungster",
+  "install_command": "git clone https://github.com/vneseyoungster/ChocoVine.git",
+  "source_repo_url": "https://github.com/vneseyoungster/ChocoVine",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ChocoVine is a workflow wrapper for Claude Code that implements a strict Research → Plan → Build → Review loop to prevent hallucinations and unreliable code generation. It forces AI to write failing tests first, scan your entire codebase through sub-agents, and obtain your approval before implementing any changes. The tool scales to mid-to-large codebases by optimizing context usage, and includes commands for systematic research, architecture planning, test-driven implementation, and code review. Engineering teams benefit from reproducible AI-assisted development where you maintain architectural control and code quality is verified at each phase.\nBuilding features with Google OAuth or complex authentication flows\nAdding components to mid-to-large React or Next.js applications\nImplementing features from Figma designs with automatic token and CSS extraction\nRefactoring legacy code with systematic dead code cleanup and renaming",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vneseyoungster/ChocoVine`",
+    "usage": "```\nI'm working on a Python project for [COMPANY] in the [INDUSTRY] sector. I need to implement a [FEATURE] using ChocoVine to ensure reliable code. Here's the [DATA] I have: [INSERT DATA]. Please follow the Research → Test → Code loop and provide the final code.\n```\nCopy\n\n```\n# Research Phase\n\nBased on the provided data, I've identified the following key requirements for the inventory management system:\n\n- Real-time stock level tracking\n- Low stock alerts\n- Integration with existing POS system\n\n# Test Phase\n\nI've created the following test cases to validate the implementation:\n\n1. Test stock level updates\n2. Test low stock alert triggers\n3. Test POS system integration\n\n# Code Phase\n\nHere's the final implementation that passes all tests:\n```python\nclass InventoryManager:\n    def __init__(self, pos_system):\n        self.stock = {}\n        self.pos_system = pos_system\n        self.low_stock_threshold = 10\n\n    def update_stock(self, item_id, quantity):\n        self.stock[item_id] = quantity\n        if quantity <= self.low_stock_threshold:\n            self._send_low_stock_alert(item_id)\n\n    def _send_low_stock_alert(self, item_id):\n        # Implementation of low stock alert\n        pass\n\n    def sync_with_pos(self):\n        # Implementation of POS system sync\n        pass\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "chocovine#main-content",
+      "chocovine#overview",
+      "chocovine#setup",
+      "chocovine#examples",
+      "chocovine#tools",
+      "chocovine#mcp",
+      "chocovine#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ChocoVine là một workflow wrapper dành cho Claude Code, triển khai quy trình vòng lặp nghiêm ngặt Research → Plan → Build → Review nhằm ngăn chặn tình trạng hallucination và tạo code không đáng tin cậy. Công cụ này buộc AI phải viết các failing tests trước, quét toàn bộ codebase thông qua các sub-agent, và phải có sự phê duyệt của bạn trước khi thực hiện bất kỳ thay đổi nào. ChocoVine có thể scale cho các codebase từ vừa đến lớn nhờ tối ưu hóa việc sử dụng context, đồng thời cung cấp các lệnh hỗ trợ nghiên cứu hệ thống, lập kế hoạch kiến trúc, triển khai theo hướng test-driven và code review. Các đội ngũ kỹ thuật sẽ được hưởng lợi từ quy trình phát triển tích hợp AI có khả năng tái lập (reproducible), giúp bạn duy trì quyền kiểm soát kiến trúc và chất lượng code được kiểm định ở từng giai đoạn.\n\nXây dựng các tính năng với Google OAuth hoặc các authentication flow phức tạp\nThêm component vào các ứng dụng React hoặc Next.js từ vừa đến lớn\nTriển khai tính năng từ thiết kế Figma với khả năng tự động trích xuất token và CSS\nRefactor legacy code bằng cách dọn dẹp dead code và đổi tên một cách hệ thống",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/vneseyoungster/ChocoVine`",
+    "usage_vi": "```\nTôi đang làm việc trong một dự án Python cho [COMPANY] thuộc lĩnh vực [INDUSTRY]. Tôi cần triển khai [FEATURE] bằng cách sử dụng ChocoVine để đảm bảo code hoạt động đáng tin cậy. Đây là [DATA] tôi có: [INSERT DATA]. Vui lòng tuân theo vòng lặp Research → Test → Code và cung cấp đoạn code hoàn chỉnh.\n```\nCopy\n\n```\n# Research Phase\n\nDựa trên dữ liệu được cung cấp, tôi đã xác định các yêu cầu chính sau cho hệ thống quản lý kho hàng:\n\n- Theo dõi mức tồn kho theo thời gian thực (Real-time stock level tracking)\n- Cảnh báo khi sắp hết hàng (Low stock alerts)\n- Tích hợp với hệ thống POS hiện tại (Integration with existing POS system)\n\n# Test Phase\n\nTôi đã tạo các test case sau để xác thực phần triển khai:\n\n1. Test việc cập nhật mức tồn kho\n2. Test kích hoạt cảnh báo khi sắp hết hàng\n3. Test tích hợp hệ thống POS\n\n# Code Phase\n\nDưới đây là phần triển khai hoàn chỉnh đã pass tất cả các test:\n```python\nclass InventoryManager:\n    def __init__(self, pos_system):\n        self.stock = {}\n        self.pos_system = pos_system\n        self.low_stock_threshold = 10\n\n    def update_stock(self, item_id, quantity):\n        self.stock[item_id] = quantity\n        if quantity <= self.low_stock_threshold:\n            self._send_low_stock_alert(item_id)\n\n    def _send_low_stock_alert(self, item_id):\n        # Triển khai gửi cảnh báo khi sắp hết hàng\n        pass\n\n    def sync_with_pos(self):\n        # Triển khai đồng bộ với hệ thống POS\n        pass\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:00.901881Z",
+    "http_status": 200,
+    "content_hash": "33d2262315638f71a0f39e9d588c32821c2501fe7d9b63c4bf07afd5e3a8c823",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chocovine.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chocovine.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ChocoVine: Lập trình 'vibes' có cấu trúc",
+  "short_description_vi": "ChocoVine áp dụng quy trình vòng lặp Research → Test → Code bắt buộc cho Claude Code, giúp giảm thiểu tình trạng hallucination. Công cụ này mang lại lợi ích lớn cho các đội ngũ kỹ thuật nhờ đảm bảo code do AI tạo ra luôn đáng tin cậy. Nó tích hợp mượt mà với các workflow Python và kết nối trực tiếp với Claude Code."
+}

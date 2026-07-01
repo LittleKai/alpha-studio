@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wechat-article-publisher-skill",
+  "slug": "wechat-article-publisher-skill",
+  "name": "WeChat Article Publisher",
+  "headline": "WeChat Article Publisher - Automate WeChat",
+  "short_description": "Publish Markdown or HTML articles to WeChat Official Account drafts. Operations teams benefit from automated publishing workflows. Connects to WeChat API for reliable content distribution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "iamzifei",
+  "install_command": "git clone https://github.com/iamzifei/wechat-article-publisher-skill.git",
+  "source_repo_url": "https://github.com/iamzifei/wechat-article-publisher-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-skill",
+    "ai",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "WeChat Article Publisher Skill automates the process of converting and publishing Markdown or HTML files directly to WeChat Official Account drafts. Using WeChat's API, it eliminates the painful manual workflow of copying, reformatting, and uploading images one-by-one. The skill preserves HTML formatting and auto-converts Markdown syntax (headers, bold, links, blockquotes, lists, code blocks, and images) to WeChat-compatible format. It automatically uploads embedded images to WeChat servers and saves content as drafts for manual review before publication. Operations teams and content creators benefit from 30x faster publishing cycles, reducing per-article time from 20-30 minutes to under one minute.\nPublish daily newsletters from Markdown drafts to WeChat Official Account\nConvert exported HTML articles to WeChat drafts with automatic image upload\nCreate image-focused posts using newspic (小绿书) format for visual content\nManage multiple WeChat accounts and select target account during publishing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iamzifei/wechat-article-publisher-skill`",
+    "usage": "```\nPublish the following Markdown article to my WeChat Official Account drafts using the WeChat API. The article title is '[TITLE]' and the content is:\n\n[CONTENT]\n\nEnsure the article is formatted correctly for WeChat, including proper line breaks and images if referenced. Do not publish it live—only save it as a draft. Include a brief summary or introduction in the first paragraph if the content lacks one.\n```\nCopy\n\n```\nSuccessfully saved your article as a draft in your WeChat Official Account backend under the title \"Mastering AI-Driven Content Strategies for 2024\". The draft includes:\n\n**Title:** Mastering AI-Driven Content Strategies for 2024\n**Content Preview:**\n\nIn today’s fast-paced digital landscape, AI-driven content strategies are no longer optional—they’re essential for staying competitive. This guide breaks down the top 5 AI tools that can transform your content creation process, from ideation to distribution.\n\n**Key Highlights:**\n- **Tool 1: Jasper AI** – Generate high-quality blog posts in minutes with minimal input. Ideal for teams looking to scale content production without sacrificing quality.\n- **Tool 2: Surfer SEO** – Optimize your content for search engines in real-time. This tool analyzes top-ranking pages and suggests improvements to boost your rankings.\n- **Tool 3: Canva Magic Write** – Create visually stunning social media posts and graphics with AI-powered design suggestions.\n- **Tool 4: Copy.ai** – Craft compelling ad copy and email campaigns that convert. Perfect for marketers who need to A/B test messaging quickly.\n- **Tool 5: Notion AI** – Streamline your content planning and collaboration with AI-powered note-taking and project management.\n\n**Next Steps:** Review the draft in your WeChat backend and schedule it for publication or make any final edits before going live.\n\n**Note:** The article has been saved as a draft and is ready for your review. You can access it in the \"Drafts\" section of your WeChat Official Account platform.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wechat-article-publisher-skill#main-content",
+      "wechat-article-publisher-skill#overview",
+      "wechat-article-publisher-skill#setup",
+      "wechat-article-publisher-skill#examples",
+      "wechat-article-publisher-skill#tools",
+      "wechat-article-publisher-skill#mcp",
+      "wechat-article-publisher-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "WeChat Article Publisher Skill automates the process of converting and publishing Markdown or HTML files directly to WeChat Official Account drafts. Using WeChat's API, it eliminates the painful manual workflow of copying, reformatting, and uploading images one-by-one. The skill preserves HTML formatting and auto-converts Markdown syntax (headers, bold, links, blockquotes, lists, code blocks, and images) to WeChat-compatible format. It automatically uploads embedded images to WeChat servers and saves content as drafts for manual review before publication. Operations teams and content creators benefit from 30x faster publishing cycles, reducing per-article time from 20-30 minutes to under one minute.\nPublish daily newsletters from Markdown drafts to WeChat Official Account\nConvert exported HTML articles to WeChat drafts with automatic image upload\nCreate image-focused posts using newspic (小绿书) format for visual content\nManage multiple WeChat accounts and select target account during publishing",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iamzifei/wechat-article-publisher-skill`",
+    "usage_vi": "```\nPublish the following Markdown article to my WeChat Official Account drafts using the WeChat API. The article title is '[TITLE]' and the content is:\n\n[CONTENT]\n\nEnsure the article is formatted correctly for WeChat, including proper line breaks and images if referenced. Do not publish it live—only save it as a draft. Include a brief summary or introduction in the first paragraph if the content lacks one.\n```\nCopy\n\n```\nSuccessfully saved your article as a draft in your WeChat Official Account backend under the title \"Mastering AI-Driven Content Strategies for 2024\". The draft includes:\n\n**Title:** Mastering AI-Driven Content Strategies for 2024\n**Content Preview:**\n\nIn today’s fast-paced digital landscape, AI-driven content strategies are no longer optional—they’re essential for staying competitive. This guide breaks down the top 5 AI tools that can transform your content creation process, from ideation to distribution.\n\n**Key Highlights:**\n- **Tool 1: Jasper AI** – Generate high-quality blog posts in minutes with minimal input. Ideal for teams looking to scale content production without sacrificing quality.\n- **Tool 2: Surfer SEO** – Optimize your content for search engines in real-time. This tool analyzes top-ranking pages and suggests improvements to boost your rankings.\n- **Tool 3: Canva Magic Write** – Create visually stunning social media posts and graphics with AI-powered design suggestions.\n- **Tool 4: Copy.ai** – Craft compelling ad copy and email campaigns that convert. Perfect for marketers who need to A/B test messaging quickly.\n- **Tool 5: Notion AI** – Streamline your content planning and collaboration with AI-powered note-taking and project management.\n\n**Next Steps:** Review the draft in your WeChat backend and schedule it for publication or make any final edits before going live.\n\n**Note:** The article has been saved as a draft and is ready for your review. You can access it in the \"Drafts\" section of your WeChat Official Account platform.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:19.614212Z",
+    "http_status": 200,
+    "content_hash": "1a06e73e8794b030af2e8c2ae1060330818bff0d19b2dca6fdc526e83ef4ca42",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wechat-article-publisher-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\wechat-article-publisher-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "WeChat Article Publisher - Automate WeChat",
+  "short_description_vi": "Publish Markdown or HTML articles to WeChat Official Account drafts. Operations teams benefit from automated publishing workflows. Connects to WeChat API for reliable content distribution."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mastra-framework-guide",
+  "slug": "mastra-framework-guide",
+  "name": "Related Skills",
+  "headline": "Mastra Framework Guide: Build AI Agents",
+  "short_description": "This skill provides guidance on building agents and workflows using Mastra APIs. It emphasizes the importance of verifying documentation to avoid using outdated information.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "mastra-ai",
+  "install_command": "git clone https://github.com/mastra-ai/skills",
+  "source_repo_url": "https://github.com/mastra-ai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "mastra",
+    "guide",
+    "framework",
+    "development-framework"
+  ],
+  "sections": {
+    "overview": "The Mastra Framework Guide skill provides official documentation and development guidance for building AI-powered applications using Mastra, a modern TypeScript framework for agent development. It offers progressive disclosure across multiple reference files covering project setup, embedded API documentation lookup from node_modules, remote documentation fetching, troubleshooting for common errors, and version migration workflows. Developers can install the skill via NPM or leverage the `.well-known` skills discovery standard for automatic integration. This skill helps teams quickly understand Mastra's core concepts and routes queries to the appropriate documentation resources based on development needs.\nBuild AI agents with Mastra framework.\nSet up workflows for automation and efficiency.\nVerify API usage against current documentation.\nTroubleshoot common installation issues.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/mastra-ai/skills --skill mastra`\n`git clone https://github.com/mastra-ai/skills`",
+    "usage": "```\nProvide a step-by-step guide for building an AI agent using Mastra Framework for [COMPANY]'s [INDUSTRY] workflows. Focus on best practices for API integration, agent design, and workflow automation. Verify the latest Mastra documentation before proceeding and highlight any deprecated features to avoid. Include code snippets or configuration examples where applicable.\n```\nCopy\n\n```\n### Building an AI Agent for Customer Support with Mastra Framework\n\n#### **Step 1: Setup and Authentication**\nFirst, ensure you have the latest Mastra SDK installed:\n```bash\npip install mastra-sdk --upgrade\n```\nNext, authenticate using your API key:\n```python\nfrom mastra import MastraClient\nclient = MastraClient(api_key=\"your_api_key_here\")\n```\n*Verify the [Mastra Authentication Docs](https://docs.mastra.ai/auth) for the latest token expiration policies.*\n\n#### **Step 2: Define the Agent Workflow**\nDesign a workflow for handling customer support queries. Use the `Workflow` class to structure the agent:\n```python\nfrom mastra.workflows import Workflow\n\nsupport_workflow = Workflow(\n    name=\"Customer Support Agent\",\n    description=\"Handles customer queries and routes to appropriate teams.\",\n    steps=[\n        {\"name\": \"intake\", \"type\": \"input\", \"handler\": \"text_input\"},\n        {\"name\": \"classify\", \"type\": \"llm\", \"model\": \"gpt-4\", \"prompt\": \"Classify the query as billing, technical, or general.\"},\n        {\"name\": \"route\", \"type\": \"conditional\", \"conditions\": {\"billing\": \"billing_team\", \"technical\": \"tech_team\"}}\n    ]\n)\n```\n\n#### **Step 3: Integrate External Tools**\nAdd tools like a CRM lookup or email sender. Example:\n```python\nfrom mastra.tools import HttpTool\n\ncrm_lookup = HttpTool(\n    name=\"CRM Lookup\",\n    url=\"https://api.[COMPANY].com/crm\",\n    method=\"GET\",\n    auth=\"bearer_token\"\n)\n\nsupport_workflow.add_tool(crm_lookup)\n```\n\n#### **Step 4: Deploy and Monitor**\nDeploy the agent using Mastra’s CLI:\n```bash\nmastra deploy --workflow support_workflow.yaml\n```\nMonitor performance via the Mastra Dashboard and adjust workflows based on feedback.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "mastra-framework-guide#main-content",
+      "mastra-framework-guide#overview",
+      "mastra-framework-guide#setup",
+      "mastra-framework-guide#examples",
+      "mastra-framework-guide#tools",
+      "mastra-framework-guide#mcp",
+      "mastra-framework-guide#related"
+    ],
+    "overview_vi": "The Mastra Framework Guide skill provides official documentation and development guidance for building AI-powered applications using Mastra, a modern TypeScript framework for agent development. It offers progressive disclosure across multiple reference files covering project setup, embedded API documentation lookup from node_modules, remote documentation fetching, troubleshooting for common errors, and version migration workflows. Developers can install the skill via NPM or leverage the `.well-known` skills discovery standard for automatic integration. This skill helps teams quickly understand Mastra's core concepts and routes queries to the appropriate documentation resources based on development needs.\nBuild AI agents with Mastra framework.\nSet up workflows for automation and efficiency.\nVerify API usage against current documentation.\nTroubleshoot common installation issues.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/mastra-ai/skills --skill mastra`\n`git clone https://github.com/mastra-ai/skills`",
+    "usage_vi": "```\nProvide a step-by-step guide for building an AI agent using Mastra Framework for [COMPANY]'s [INDUSTRY] workflows. Focus on best practices for API integration, agent design, and workflow automation. Verify the latest Mastra documentation before proceeding and highlight any deprecated features to avoid. Include code snippets or configuration examples where applicable.\n```\nCopy\n\n```\n### Building an AI Agent for Customer Support with Mastra Framework\n\n#### **Step 1: Setup and Authentication**\nFirst, ensure you have the latest Mastra SDK installed:\n```bash\npip install mastra-sdk --upgrade\n```\nNext, authenticate using your API key:\n```python\nfrom mastra import MastraClient\nclient = MastraClient(api_key=\"your_api_key_here\")\n```\n*Verify the [Mastra Authentication Docs](https://docs.mastra.ai/auth) for the latest token expiration policies.*\n\n#### **Step 2: Define the Agent Workflow**\nDesign a workflow for handling customer support queries. Use the `Workflow` class to structure the agent:\n```python\nfrom mastra.workflows import Workflow\n\nsupport_workflow = Workflow(\n    name=\"Customer Support Agent\",\n    description=\"Handles customer queries and routes to appropriate teams.\",\n    steps=[\n        {\"name\": \"intake\", \"type\": \"input\", \"handler\": \"text_input\"},\n        {\"name\": \"classify\", \"type\": \"llm\", \"model\": \"gpt-4\", \"prompt\": \"Classify the query as billing, technical, or general.\"},\n        {\"name\": \"route\", \"type\": \"conditional\", \"conditions\": {\"billing\": \"billing_team\", \"technical\": \"tech_team\"}}\n    ]\n)\n```\n\n#### **Step 3: Integrate External Tools**\nAdd tools like a CRM lookup or email sender. Example:\n```python\nfrom mastra.tools import HttpTool\n\ncrm_lookup = HttpTool(\n    name=\"CRM Lookup\",\n    url=\"https://api.[COMPANY].com/crm\",\n    method=\"GET\",\n    auth=\"bearer_token\"\n)\n\nsupport_workflow.add_tool(crm_lookup)\n```\n\n#### **Step 4: Deploy and Monitor**\nDeploy the agent using Mastra’s CLI:\n```bash\nmastra deploy --workflow support_workflow.yaml\n```\nMonitor performance via the Mastra Dashboard and adjust workflows based on feedback.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:22:12.595962Z",
+    "http_status": 200,
+    "content_hash": "4dd3b0347031637d8dd751298c404f154b3a8ba1b8ebc59ffa35bd5805a6e6fb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mastra-framework-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mastra-framework-guide.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mastra Framework Guide: Build AI Agents",
+  "short_description_vi": "This skill provides guidance on building agents and workflows using Mastra APIs. It emphasizes the importance of verifying documentation to avoid using outdated information."
+}

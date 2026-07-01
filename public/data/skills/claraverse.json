@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claraverse",
+  "slug": "claraverse",
+  "name": "ClaraVerse",
+  "headline": "ClaraVerse: Local AI Workspace for Automation",
+  "short_description": "ClaraVerse is a privacy-first AI workspace that offers a Local LLM chat powered by LLama.cpp. It supports various tools, agent building, and automation without requiring backend or API keys, making it ideal for integration into your existing stack.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "claraverse-space",
+  "install_command": "claude install claraverse-space/ClaraVerse",
+  "source_repo_url": "https://github.com/claraverse-space/ClaraVerse",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "opensource",
+    "LLM",
+    "local AI",
+    "privacy-first"
+  ],
+  "sections": {
+    "overview": "ClaraVerse is a full-stack AI workspace designed for teams and individuals who prioritize data privacy and local control. It features a local LLM chat interface powered by Llama.cpp alongside a visual workflow builder for creating AI agents and automations. The platform includes over 100 tool integrations, an MCP bridge for extended functionality, and automatic detection of local AI providers like Ollama and LM Studio. With no backend dependency or API key requirements, ClaraVerse can be deployed on-premises or integrated directly into existing infrastructure. It combines a React/TypeScript frontend with a Go backend to deliver a complete self-hosted AI workspace solution.\nAutomate data entry processes by integrating ClaraVerse with existing databases.\nBuild custom AI agents that respond to customer inquiries in real-time.\nCreate visual content using Stable Diffusion directly within the workspace.\nIntegrate ClaraVerse with project management tools to streamline team collaboration.",
+    "setup": "Terminal\nCopy\n`claude install claraverse-space/ClaraVerse`\n`git clone https://github.com/claraverse-space/ClaraVerse`",
+    "usage": "```\nUsing ClaraVerse, analyze the [MONTHLY/QUARTERLY] financial data from Productiv for [COMPANY]. Identify trends in [SPECIFIC METRIC, e.g., customer acquisition cost, churn rate, or revenue growth]. Provide a summary of key insights and suggest three actionable recommendations to optimize [SPECIFIC METRIC].\n```\nCopy\n\n```\nAfter analyzing the quarterly financial data from Productiv for TechSolutions Inc., several key trends emerged. First, the customer acquisition cost (CAC) has increased by 15% over the last quarter, primarily due to higher marketing spend. Second, the churn rate has stabilized at 5%, which is within the acceptable range. Third, revenue growth has slowed to 8% quarter-over-quarter, down from 12% in the previous quarter. To address these trends, I recommend the following actions: 1) Conduct a thorough review of the marketing spend to identify areas for cost optimization. 2) Implement a customer retention program to further reduce the churn rate. 3) Explore new revenue streams or partnerships to boost growth. By taking these steps, TechSolutions Inc. can improve its financial performance and achieve sustainable growth.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "claraverse#main-content",
+      "claraverse#overview",
+      "claraverse#setup",
+      "claraverse#examples",
+      "claraverse#tools",
+      "claraverse#mcp",
+      "claraverse#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "ClaraVerse là không gian làm việc AI full-stack được thiết kế cho các đội ngũ và cá nhân đề cao quyền riêng tư dữ liệu và khả năng kiểm soát local. Nền tảng sở hữu giao diện chat local LLM vận hành bởi Llama.cpp, đi kèm trình dựng workflow trực quan để tạo các AI agent và tự động hóa. Hệ thống tích hợp sẵn hơn 100 công cụ, hỗ trợ MCP bridge để mở rộng tính năng, và tự động phát hiện các local AI provider như Ollama và LM Studio. Nhờ không phụ thuộc vào backend hay yêu cầu API key, ClaraVerse có thể được triển khai on-premises hoặc tích hợp trực tiếp vào hạ tầng hiện có. Giải pháp kết hợp frontend React/TypeScript và backend Go để mang lại một không gian làm việc AI self-hosted hoàn chỉnh.\nTự động hóa quy trình nhập liệu bằng cách tích hợp ClaraVerse với các cơ sở dữ liệu hiện có.\nXây dựng các AI agent tùy chỉnh để phản hồi truy vấn của khách hàng theo thời gian thực.\nTạo nội dung hình ảnh bằng Stable Diffusion trực tiếp ngay trong không gian làm việc.\nTích hợp ClaraVerse với các công cụ quản lý dự án để tối ưu hóa quy trình cộng tác nhóm.",
+    "setup_vi": "Terminal\nSao chép\n`claude install claraverse-space/ClaraVerse`\n`git clone https://github.com/claraverse-space/ClaraVerse`",
+    "usage_vi": "```\nSử dụng ClaraVerse, hãy phân tích dữ liệu tài chính [HÀNG THÁNG/HÀNG QUÝ] từ Productiv cho [CÔNG TY]. Xác định các xu hướng trong [CHỈ SỐ CỤ THỂ, ví dụ: chi phí chuyển đổi khách hàng, tỷ lệ rời bỏ, hoặc tăng trưởng doanh thu]. Cung cấp bản tóm tắt các thông tin chuyên sâu chính và đề xuất ba khuyến nghị có thể thực hiện ngay để tối ưu hóa [CHỈ SỐ CỤ THỂ].\n```\nSao chép\n\n```\nSau khi phân tích dữ liệu tài chính hàng quý từ Productiv cho TechSolutions Inc., một số xu hướng chính đã xuất hiện. Đầu tiên, chi phí chuyển đổi khách hàng (CAC) đã tăng 15% trong quý trước, chủ yếu do chi tiêu tiếp thị cao hơn. Thứ hai, tỷ lệ rời bỏ khách hàng (churn rate) đã ổn định ở mức 5%, nằm trong phạm vi chấp nhận được. Thứ ba, tăng trưởng doanh thu đã chậm lại ở mức 8% so với quý trước, giảm từ mức 12% của quý trước đó. Để giải quyết các xu hướng này, tôi đề xuất các hành động sau: 1) Tiến hành đánh giá kỹ lưỡng chi tiêu tiếp thị để xác định các khu vực cần tối ưu hóa chi phí. 2) Triển khai chương trình giữ chân khách hàng để giảm thêm tỷ lệ rời bỏ. 3) Khám phá các nguồn doanh thu hoặc quan hệ đối tác mới để thúc đẩy tăng trưởng. Bằng cách thực hiện các bước này, TechSolutions Inc. có thể cải thiện hiệu suất tài chính và đạt được mức tăng trưởng bền vững.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:04:27.937759Z",
+    "http_status": 200,
+    "content_hash": "a096f728362200a73c9b7490e14c600febb3548a287c5599e8e1869e01e6f291",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claraverse.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claraverse.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ClaraVerse: Không gian làm việc AI local cho tự động hóa",
+  "short_description_vi": "ClaraVerse là không gian làm việc AI ưu tiên quyền riêng tư (privacy-first), cung cấp tính năng chat Local LLM vận hành bởi Llama.cpp. Hệ thống hỗ trợ đa dạng công cụ, xây dựng agent và tự động hóa mà không cần backend hay API key, cực kỳ lý tưởng để tích hợp vào stack hiện tại của bạn."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/linkedin-personal-branding",
+  "slug": "linkedin-personal-branding",
+  "name": "Related Skills",
+  "headline": "LinkedIn Personal Branding: Profile Audit &",
+  "short_description": "The LinkedIn Personal Branding skill is designed to help individuals improve their LinkedIn profiles to better reflect their professional brand. It's useful for job seekers and professionals looking to make a strong impression online.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "schwepps",
+  "install_command": "git clone https://github.com/schwepps/skills",
+  "source_repo_url": "https://github.com/schwepps/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "personal",
+    "personal-branding",
+    "linkedin",
+    "branding"
+  ],
+  "sections": {
+    "overview": "The LinkedIn Personal Branding skill provides comprehensive profile analysis, optimization recommendations, and visibility improvement guidance. It uses Claude for Chrome to examine all key profile elements—including photos, banners, headlines, About sections, experience, skills, recommendations, featured content, and engagement metrics—directly from your browser. The skill delivers industry-specific insights by classifying your profile type (employee, consultant, freelancer, entrepreneur, or job seeker) and target audience, then applies relevant benchmarks to score each element. This helps professionals improve their discoverability, engagement rates, and Social Selling Index scores, whether they're seeking new roles, attracting clients, or building thought leadership.\nOptimize LinkedIn profiles for job applications\nIncrease visibility to recruiters\nEnhance networking opportunities",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/schwepps/skills --skill linkedin-personal-branding`\n`git clone https://github.com/schwepps/skills`",
+    "usage": "```\nHelp me improve my LinkedIn personal branding. Analyze my current profile and suggest changes to my headline, summary, and experience sections to better reflect my professional brand as a [POSITION] in [INDUSTRY]. Focus on making my profile more engaging and aligned with my career goals. Here’s my current profile: [PASTE_PROFILE_TEXT].\n```\nCopy\n\n```\n**LinkedIn Personal Branding Analysis & Recommendations**\n\n**Current Profile Overview:**\n- *Headline:* \"Digital Marketing Specialist | SEO & Content Strategy\"\n- *Summary:* 3 paragraphs focusing on past roles and generic skills\n- *Experience:* Lists duties without quantifiable achievements\n\n**Key Areas for Improvement:**\n\n**1. Headline Optimization**\n*Current:* \"Digital Marketing Specialist | SEO & Content Strategy\"\n*Suggested:* \"Digital Marketing Strategist | Driving 30%+ Organic Growth & Lead Gen | SEO & PPC Expert | Helping [INDUSTRY] Brands Scale\"\n*Why:* Adds specificity, quantifiable impact, and target audience clarity.\n\n**2. Summary Enhancement**\n*Current:* Focuses on past roles without a clear narrative.\n*Suggested:* \n\"Results-driven Digital Marketing Strategist with 8+ years of experience scaling organic growth and lead generation for [INDUSTRY] brands. At [COMPANY], I led a team that increased organic traffic by 40% in 6 months through data-driven SEO strategies. Passionate about mentoring emerging marketers and speaking at industry events like [EVENT_NAME].\"\n*Why:* Creates a compelling story, highlights achievements, and adds personality.\n\n**3. Experience Section Refinement**\n*Current:* Lists duties like \"Managed social media campaigns.\"\n*Suggested:* \n\"- Increased LinkedIn engagement by 60% and generated 150+ qualified leads per quarter through targeted content and ad campaigns.\n- Spearheaded SEO overhaul for [COMPANY]’s blog, boosting organic traffic from 5K to 20K monthly visitors.\"\n*Why:* Focuses on impact, not just responsibilities.\n\n**Next Steps:**\n1. Update your headline with the suggested version.\n2. Rewrite your summary using the new structure.\n3. Revise 2-3 experience entries to include quantifiable results.\n4. Add a call-to-action in your summary (e.g., \"Let’s connect if you’re interested in scaling digital growth!\").\n\nWould you like me to draft a full revised profile for you?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "linkedin-personal-branding#main-content",
+      "linkedin-personal-branding#overview",
+      "linkedin-personal-branding#setup",
+      "linkedin-personal-branding#examples",
+      "linkedin-personal-branding#tools",
+      "linkedin-personal-branding#mcp",
+      "linkedin-personal-branding#related"
+    ],
+    "overview_vi": "The LinkedIn Personal Branding skill provides comprehensive profile analysis, optimization recommendations, and visibility improvement guidance. It uses Claude for Chrome to examine all key profile elements—including photos, banners, headlines, About sections, experience, skills, recommendations, featured content, and engagement metrics—directly from your browser. The skill delivers industry-specific insights by classifying your profile type (employee, consultant, freelancer, entrepreneur, or job seeker) and target audience, then applies relevant benchmarks to score each element. This helps professionals improve their discoverability, engagement rates, and Social Selling Index scores, whether they're seeking new roles, attracting clients, or building thought leadership.\nOptimize LinkedIn profiles for job applications\nIncrease visibility to recruiters\nEnhance networking opportunities",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/schwepps/skills --skill linkedin-personal-branding`\n`git clone https://github.com/schwepps/skills`",
+    "usage_vi": "```\nHelp me improve my LinkedIn personal branding. Analyze my current profile and suggest changes to my headline, summary, and experience sections to better reflect my professional brand as a [POSITION] in [INDUSTRY]. Focus on making my profile more engaging and aligned with my career goals. Here’s my current profile: [PASTE_PROFILE_TEXT].\n```\nCopy\n\n```\n**LinkedIn Personal Branding Analysis & Recommendations**\n\n**Current Profile Overview:**\n- *Headline:* \"Digital Marketing Specialist | SEO & Content Strategy\"\n- *Summary:* 3 paragraphs focusing on past roles and generic skills\n- *Experience:* Lists duties without quantifiable achievements\n\n**Key Areas for Improvement:**\n\n**1. Headline Optimization**\n*Current:* \"Digital Marketing Specialist | SEO & Content Strategy\"\n*Suggested:* \"Digital Marketing Strategist | Driving 30%+ Organic Growth & Lead Gen | SEO & PPC Expert | Helping [INDUSTRY] Brands Scale\"\n*Why:* Adds specificity, quantifiable impact, and target audience clarity.\n\n**2. Summary Enhancement**\n*Current:* Focuses on past roles without a clear narrative.\n*Suggested:* \n\"Results-driven Digital Marketing Strategist with 8+ years of experience scaling organic growth and lead generation for [INDUSTRY] brands. At [COMPANY], I led a team that increased organic traffic by 40% in 6 months through data-driven SEO strategies. Passionate about mentoring emerging marketers and speaking at industry events like [EVENT_NAME].\"\n*Why:* Creates a compelling story, highlights achievements, and adds personality.\n\n**3. Experience Section Refinement**\n*Current:* Lists duties like \"Managed social media campaigns.\"\n*Suggested:* \n\"- Increased LinkedIn engagement by 60% and generated 150+ qualified leads per quarter through targeted content and ad campaigns.\n- Spearheaded SEO overhaul for [COMPANY]’s blog, boosting organic traffic from 5K to 20K monthly visitors.\"\n*Why:* Focuses on impact, not just responsibilities.\n\n**Next Steps:**\n1. Update your headline with the suggested version.\n2. Rewrite your summary using the new structure.\n3. Revise 2-3 experience entries to include quantifiable results.\n4. Add a call-to-action in your summary (e.g., \"Let’s connect if you’re interested in scaling digital growth!\").\n\nWould you like me to draft a full revised profile for you?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:36:37.985880Z",
+    "http_status": 200,
+    "content_hash": "9fe9a506ffc69501d2424e859178a9943d66a29764d6043e6f3c608905365013",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\linkedin-personal-branding.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\linkedin-personal-branding.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LinkedIn Personal Branding: Profile Audit &",
+  "short_description_vi": "The LinkedIn Personal Branding skill is designed to help individuals improve their LinkedIn profiles to better reflect their professional brand. It's useful for job seekers and professionals looking to make a strong impression online."
+}

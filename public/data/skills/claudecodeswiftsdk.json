@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudecodeswiftsdk",
+  "slug": "claudecodeswiftsdk",
+  "name": "ClaudeCodeSwiftSDK",
+  "headline": "Claude Code Swift SDK",
+  "short_description": "ClaudeCodeSwiftSDK is a Swift SDK for Claude Code, enabling developers to integrate Claude's code generation and assistance capabilities into their applications. It provides a type-safe, async/await API for programmatic access, benefiting operations teams automating code-related tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "AruneshSingh",
+  "install_command": "git clone https://github.com/AruneshSingh/ClaudeCodeSwiftSDK.git",
+  "source_repo_url": "https://github.com/AruneshSingh/ClaudeCodeSwiftSDK",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "sdk-swift",
+    "agents",
+    "sdk",
+    "claude-code",
+    "swift"
+  ],
+  "sections": {
+    "overview": "ClaudeCodeSwiftSDK is a Swift SDK that enables programmatic access to Claude's code generation and assistance capabilities through a type-safe, async/await API. It supports bidirectional real-time conversations with full tool integration (Read, Write, Bash), dynamic settings updates during active sessions, and MCP server support. The SDK requires Swift 6.0+, macOS 13.0+, and the Claude Code CLI. It features zero external dependencies, granular permission controls, comprehensive debug logging, and strict concurrency compatibility. Ideal for operations teams, developers, and teams automating code-related tasks or building intelligent coding assistants.\nAutomated code generation and refactoring in Swift applications\nBuilding interactive multi-turn coding assistants with real-time feedback\nIntegrating Claude's tool system (Read, Write, Bash) into development workflows\nDynamically updating AI behavior mid-conversation while preserving context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AruneshSingh/ClaudeCodeSwiftSDK`",
+    "usage": "```\nGenerate a Swift function using the ClaudeCodeSwiftSDK to automate code reviews for [COMPANY] in the [INDUSTRY] sector. The function should analyze [DATA] and provide feedback on code quality, security, and performance. Include error handling and logging.\n```\nCopy\n\n```\n# Code Review Automation Function\n\n```swift\nimport ClaudeCodeSwiftSDK\n\nclass CodeReviewAutomation {\n    private let client: ClaudeCodeClient\n\n    init(apiKey: String) {\n        self.client = ClaudeCodeClient(apiKey: apiKey)\n    }\n\n    func reviewCode(base64EncodedCode: String, fileType: String) async throws -> CodeReviewResult {\n        let request = CodeReviewRequest(\n            code: base64EncodedCode,\n            fileType: fileType,\n            context: \"Automated code review for [COMPANY]\"\n        )\n\n        do {\n            let response = try await client.reviewCode(request: request)\n            return response.result\n        } catch {\n            print(\"Error during code review: \\(error)\")\n            throw error\n        }\n    }\n}\n\nstruct CodeReviewResult: Codable {\n    let qualityScore: Double\n    let securityIssues: [SecurityIssue]\n    let performanceSuggestions: [String]\n    let comments: [String]\n}\n\nstruct SecurityIssue: Codable {\n    let description: String\n    let severity: String\n    let lineNumber: Int?\n}\n```\n\n\n```swift\nlet reviewer = CodeReviewAutomation(apiKey: \"your-api-key\")\nlet code = \"base64EncodedSwiftCode\"\n\nTask {\n    do {\n        let result = try await reviewer.reviewCode(\n            base64EncodedCode: code,\n            fileType: \"swift\"\n        )\n        print(\"Code Quality Score: \\(result.qualityScore)\")\n        print(\"Security Issues: \\(result.securityIssues.count)\")\n        print(\"Performance Suggestions: \\(result.performanceSuggestions.count)\")\n    } catch {\n        print(\"Failed to review code: \\(error)\")\n    }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudecodeswiftsdk#main-content",
+      "claudecodeswiftsdk#overview",
+      "claudecodeswiftsdk#setup",
+      "claudecodeswiftsdk#examples",
+      "claudecodeswiftsdk#tools",
+      "claudecodeswiftsdk#mcp",
+      "claudecodeswiftsdk#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ClaudeCodeSwiftSDK is a Swift SDK that enables programmatic access to Claude's code generation and assistance capabilities through a type-safe, async/await API. It supports bidirectional real-time conversations with full tool integration (Read, Write, Bash), dynamic settings updates during active sessions, and MCP server support. The SDK requires Swift 6.0+, macOS 13.0+, and the Claude Code CLI. It features zero external dependencies, granular permission controls, comprehensive debug logging, and strict concurrency compatibility. Ideal for operations teams, developers, and teams automating code-related tasks or building intelligent coding assistants.\nAutomated code generation and refactoring in Swift applications\nBuilding interactive multi-turn coding assistants with real-time feedback\nIntegrating Claude's tool system (Read, Write, Bash) into development workflows\nDynamically updating AI behavior mid-conversation while preserving context",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AruneshSingh/ClaudeCodeSwiftSDK`",
+    "usage_vi": "```\nGenerate a Swift function using the ClaudeCodeSwiftSDK to automate code reviews for [COMPANY] in the [INDUSTRY] sector. The function should analyze [DATA] and provide feedback on code quality, security, and performance. Include error handling and logging.\n```\nCopy\n\n```\n# Code Review Automation Function\n\n```swift\nimport ClaudeCodeSwiftSDK\n\nclass CodeReviewAutomation {\n    private let client: ClaudeCodeClient\n\n    init(apiKey: String) {\n        self.client = ClaudeCodeClient(apiKey: apiKey)\n    }\n\n    func reviewCode(base64EncodedCode: String, fileType: String) async throws -> CodeReviewResult {\n        let request = CodeReviewRequest(\n            code: base64EncodedCode,\n            fileType: fileType,\n            context: \"Automated code review for [COMPANY]\"\n        )\n\n        do {\n            let response = try await client.reviewCode(request: request)\n            return response.result\n        } catch {\n            print(\"Error during code review: \\(error)\")\n            throw error\n        }\n    }\n}\n\nstruct CodeReviewResult: Codable {\n    let qualityScore: Double\n    let securityIssues: [SecurityIssue]\n    let performanceSuggestions: [String]\n    let comments: [String]\n}\n\nstruct SecurityIssue: Codable {\n    let description: String\n    let severity: String\n    let lineNumber: Int?\n}\n```\n\n\n```swift\nlet reviewer = CodeReviewAutomation(apiKey: \"your-api-key\")\nlet code = \"base64EncodedSwiftCode\"\n\nTask {\n    do {\n        let result = try await reviewer.reviewCode(\n            base64EncodedCode: code,\n            fileType: \"swift\"\n        )\n        print(\"Code Quality Score: \\(result.qualityScore)\")\n        print(\"Security Issues: \\(result.securityIssues.count)\")\n        print(\"Performance Suggestions: \\(result.performanceSuggestions.count)\")\n    } catch {\n        print(\"Failed to review code: \\(error)\")\n    }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:17.851175Z",
+    "http_status": 200,
+    "content_hash": "6227c3b2d032e309df30c365202f8f8b8cece6644cb75434e54512857a3e5f89",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudecodeswiftsdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudecodeswiftsdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Swift SDK",
+  "short_description_vi": "ClaudeCodeSwiftSDK is a Swift SDK for Claude Code, enabling developers to integrate Claude's code generation and assistance capabilities into their applications. It provides a type-safe, async/await API for programmatic access, benefiting operations teams automating code-related tasks."
+}

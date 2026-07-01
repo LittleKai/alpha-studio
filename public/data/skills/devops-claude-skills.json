@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/devops-claude-skills",
+  "slug": "devops-claude-skills",
+  "name": "DevOps Claude Skills",
+  "headline": "DevOps Claude Skills - Automate Terraform Workflows",
+  "short_description": "DevOps Claude Skills automates infrastructure as code workflows with Terraform and Terragrunt. Operations teams use it to create, validate, and troubleshoot configurations. Integrates with Claude Code for AI-assisted DevOps tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "ahmedasmar",
+  "install_command": "git clone https://github.com/ahmedasmar/devops-claude-skills.git",
+  "source_repo_url": "https://github.com/ahmedasmar/devops-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "DevOps Claude Skills is a community repository providing six specialized skills for infrastructure automation and operational excellence. It covers Infrastructure as Code with Terraform and Terragrunt for managing configurations and state, Kubernetes troubleshooting for diagnosing pod failures and cluster issues, AWS cost optimization for identifying waste and rightsizing resources, CI/CD pipeline design and optimization across GitHub Actions and GitLab CI, GitOps workflows with ArgoCD and Flux for multi-cluster deployments, and monitoring and observability implementation using Prometheus, Grafana, and OpenTelemetry. Operations teams and DevOps engineers use these skills to automate infrastructure workflows, troubleshoot production incidents, optimize cloud spending, and design resilient deployment systems.\nCreate and validate Terraform modules and manage infrastructure state\nDiagnose Kubernetes pod failures and cluster health issues\nFind unused AWS resources and analyze Reserved Instance opportunities\nDesign and optimize CI/CD pipelines across GitHub Actions and GitLab CI",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ahmedasmar/devops-claude-skills`",
+    "usage": "```\nI'm working on a Terraform configuration for [INFRASTRUCTURE_PROJECT]. Please help me [TASK: create/validate/troubleshoot] the configuration. Here's the relevant code: [CODE_SNIPPET]. What should I do next to [SPECIFIC_GOAL]?\n```\nCopy\n\n```\nBased on the Terraform configuration you've shared for your AWS VPC setup, I've identified a few areas to improve. First, your variable definitions could be more consistent. Here's how to standardize them:\n\n```hcl\nvariable \"vpc_cidr\" {\n  description = \"The CIDR block for the VPC\"\n  type        = string\n  default     = \"10.0.0.0/16\"\n}\n\nvariable \"subnet_cidrs\" {\n  description = \"The CIDR blocks for the subnets\"\n  type        = list(string)\n  default     = [\"10.0.1.0/24\", \"10.0.2.0/24\", \"10.0.3.0/24\"]\n}\n```\n\nNext, I noticed you're not using any remote state configuration. For better collaboration, consider adding this to your backend configuration:\n\n```hcl\nterraform {\n  backend \"s3\" {\n    bucket         = \"my-terraform-state\"\n    key            = \"path/to/my/key\"\n    region         = \"us-west-2\"\n    dynamodb_table = \"my-lock-table\"\n  }\n}\n```\n\nFinally, your security group rules could be more specific. Instead of allowing all traffic from certain subnets, consider restricting to specific ports and protocols. Would you like me to suggest some improvements to your security group configuration?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "devops-claude-skills#main-content",
+      "devops-claude-skills#overview",
+      "devops-claude-skills#setup",
+      "devops-claude-skills#examples",
+      "devops-claude-skills#tools",
+      "devops-claude-skills#mcp",
+      "devops-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DevOps Claude Skills là một repository cộng đồng cung cấp sáu skill chuyên sâu dành cho việc tự động hóa hạ tầng và tối ưu hóa vận hành. Dự án này bao gồm Hạ tầng dưới dạng mã (Infrastructure as Code) với Terraform và Terragrunt để quản lý cấu hình và state, khắc phục sự cố Kubernetes để chẩn đoán lỗi pod và các vấn đề của cluster, tối ưu hóa chi phí AWS để phát hiện tài nguyên lãng phí và điều chỉnh kích thước tài nguyên (rightsizing) phù hợp, thiết kế và tối ưu hóa pipeline CI/CD trên GitHub Actions và GitLab CI, các workflow GitOps với ArgoCD và Flux để triển khai multi-cluster, và triển khai hệ thống giám sát & khả năng quan sát (monitoring & observability) sử dụng Prometheus, Grafana và OpenTelemetry. Các đội ngũ vận hành và kỹ sư DevOps sử dụng các skill này để tự động hóa các workflow hạ tầng, khắc phục sự cố trên môi trường production, tối ưu hóa chi phí cloud và thiết kế các hệ thống triển khai bền bỉ (resilient).\nKhởi tạo, xác thực các module Terraform và quản lý state của hạ tầng\nChẩn đoán lỗi pod Kubernetes và các vấn đề về sức khỏe của cluster\nTìm kiếm tài nguyên AWS không sử dụng và phân tích cơ hội tối ưu với Reserved Instance\nThiết kế và tối ưu hóa các pipeline CI/CD trên GitHub Actions và GitLab CI",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ahmedasmar/devops-claude-skills`",
+    "usage_vi": "```\nTôi đang làm việc với cấu hình Terraform cho [INFRASTRUCTURE_PROJECT]. Vui lòng hỗ trợ tôi [TASK: khởi tạo/xác thực/khắc phục sự cố] cấu hình này. Đây là đoạn code liên quan: [CODE_SNIPPET]. Tôi nên làm gì tiếp theo để đạt được [SPECIFIC_GOAL]?\n```\nCopy\n\n```\nDựa trên cấu hình Terraform mà bạn đã chia sẻ cho việc thiết lập AWS VPC, tôi nhận thấy một vài điểm cần cải thiện. Đầu tiên, các định nghĩa biến (variable) của bạn có thể nhất quán hơn. Dưới đây là cách chuẩn hóa chúng:\n\n```hcl\nvariable \"vpc_cidr\" {\n  description = \"The CIDR block for the VPC\"\n  type        = string\n  default     = \"10.0.0.0/16\"\n}\n\nvariable \"subnet_cidrs\" {\n  description = \"The CIDR blocks for the subnets\"\n  type        = list(string)\n  default     = [\"10.0.1.0/24\", \"10.0.2.0/24\", \"10.0.3.0/24\"]\n}\n```\n\nTiếp theo, tôi nhận thấy bạn chưa sử dụng cấu hình remote state nào. Để cộng tác tốt hơn, hãy cân nhắc thêm cấu hình này vào backend của bạn:\n\n```hcl\nterraform {\n  backend \"s3\" {\n    bucket         = \"my-terraform-state\"\n    key            = \"path/to/my/key\"\n    region         = \"us-west-2\"\n    dynamodb_table = \"my-lock-table\"\n  }\n}\n```\n\nCuối cùng, các quy tắc security group của bạn nên cụ thể hơn. Thay vì cho phép mọi lưu lượng từ một số subnet nhất định, hãy cân nhắc giới hạn trong các port và protocol cụ thể. Bạn có muốn tôi gợi ý một số cải tiến cho cấu hình security group của mình không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:16:05.585581Z",
+    "http_status": 200,
+    "content_hash": "a4535389bf647193cf639d2fc11fcf508b654817e3a96c53071fc869cf338830",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\devops-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\devops-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DevOps Claude Skills - Tự động hóa workflow Terraform",
+  "short_description_vi": "DevOps Claude Skills tự động hóa các workflow hạ tầng dưới dạng mã (Infrastructure as Code) với Terraform và Terragrunt. Các đội ngũ vận hành sử dụng công cụ này để khởi tạo, xác thực và khắc phục sự cố cấu hình. Tích hợp với Claude Code cho các tác vụ DevOps được hỗ trợ bởi AI."
+}

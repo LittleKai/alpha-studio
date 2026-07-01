@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lingui-best-practices",
+  "slug": "lingui-best-practices",
+  "name": "i18n Best Practices",
+  "headline": "Lingui Best Practices: I18n Setup & Configuration",
+  "short_description": "Lingui is an internationalization framework for JavaScript. This skill provides best practices for using i18n in React and vanilla JavaScript applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "lingui",
+  "install_command": "git clone https://github.com/lingui/skills",
+  "source_repo_url": "https://github.com/lingui/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "practices",
+    "internationalization",
+    "best",
+    "lingui"
+  ],
+  "sections": {
+    "overview": "Lingui Best Practices provides a structured approach to adding i18n to React and vanilla JavaScript applications. The skill covers the complete Lingui workflow: wrapping apps with I18nProvider, marking messages with macros (Trans, useLingui, Plural), extracting messages via CLI, translating catalogs, and compiling locales. It includes patterns for handling JSX content, string attributes, lazy translations, pluralization with exact number matching, and locale-aware date/number formatting using the Intl API. Developers learn when to use Trans for JSX, useLingui for non-JSX strings, and msg for module-level constants, plus configuration setup and ESLint plugin integration to prevent common mistakes.\nImplementing internationalization in React apps\nMarking messages for translation\nExtracting and compiling translation catalogs",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/lingui/skills --skill lingui-best-practices`\n`git clone https://github.com/lingui/skills`",
+    "usage": "```\nProvide best practices for implementing internationalization (i18n) using Lingui in a [PROJECT_TYPE] application (React or vanilla JavaScript). Focus on [SPECIFIC_AREA: e.g., dynamic messages, pluralization, context, or performance optimization]. Include code snippets where relevant.\n```\nCopy\n\n```\n# Lingui Best Practices for React Applications",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "lingui-best-practices#main-content",
+      "lingui-best-practices#overview",
+      "lingui-best-practices#setup",
+      "lingui-best-practices#examples",
+      "lingui-best-practices#related",
+      "i18n-frontend-implementer",
+      "i18n-best-practices"
+    ],
+    "overview_vi": "Lingui Best Practices provides a structured approach to adding i18n to React and vanilla JavaScript applications. The skill covers the complete Lingui workflow: wrapping apps with I18nProvider, marking messages with macros (Trans, useLingui, Plural), extracting messages via CLI, translating catalogs, and compiling locales. It includes patterns for handling JSX content, string attributes, lazy translations, pluralization with exact number matching, and locale-aware date/number formatting using the Intl API. Developers learn when to use Trans for JSX, useLingui for non-JSX strings, and msg for module-level constants, plus configuration setup and ESLint plugin integration to prevent common mistakes.\nImplementing internationalization in React apps\nMarking messages for translation\nExtracting and compiling translation catalogs",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/lingui/skills --skill lingui-best-practices`\n`git clone https://github.com/lingui/skills`",
+    "usage_vi": "```\nProvide best practices for implementing internationalization (i18n) using Lingui in a [PROJECT_TYPE] application (React or vanilla JavaScript). Focus on [SPECIFIC_AREA: e.g., dynamic messages, pluralization, context, or performance optimization]. Include code snippets where relevant.\n```\nCopy\n\n```\n# Lingui Best Practices for React Applications"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:29:10.406325Z",
+    "http_status": 200,
+    "content_hash": "bf6f1a3622b4a21cb162b5e53c3b2ece5a600ad7b0c1d1f3e10bd3ba12a1b78f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lingui-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lingui-best-practices.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Lingui Best Practices: I18n Setup & Configuration",
+  "short_description_vi": "Lingui is an internationalization framework for JavaScript. This skill provides best practices for using i18n in React and vanilla JavaScript applications."
+}

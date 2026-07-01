@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dodo-payments-webhook-integration",
+  "slug": "dodo-payments-webhook-integration",
+  "name": "Related Skills",
+  "headline": "Webhook Integration: Real-Time Payment Events",
+  "short_description": "Webhooks provide real-time notifications when payment events occur, helping automate workflows and keep systems synchronized. This skill is designed for developers integrating Dodo Payments services.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "dodopayments",
+  "install_command": "git clone https://github.com/dodopayments/skills",
+  "source_repo_url": "https://github.com/dodopayments/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "webhook",
+    "payments",
+    "payment-integration",
+    "dodo",
+    "integration"
+  ],
+  "sections": {
+    "overview": "The Dodo Payments Webhook Integration skill enables developers to set up and handle webhooks that trigger on payment events in real time. Webhooks automatically notify your application when payments occur, subscriptions change, or other billing events happen, eliminating the need for constant polling. This skill helps keep your systems synchronized and automate downstream workflows without manual intervention. It's part of the official Dodo Payments skill suite and works with AI agents like Claude Code and Cursor to streamline payment integration.\nAutomate workflows upon payment events\nUpdate databases in real-time\nSend notifications for payment confirmations\nSynchronize systems with real-time data",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/dodopayments/skills --skill webhook-integration`\n`git clone https://github.com/dodopayments/skills`",
+    "usage": "```\nGenerate a Dodo Payments webhook integration for [COMPANY] in [INDUSTRY]. The webhook should handle events like payment_success, payment_failed, and refund_processed. Include the endpoint URL, required headers, and a sample payload structure. Ensure the response includes a 200 status code and a JSON body with { \"status\": \"success\", \"event\": \"[EVENT_NAME]\" }.\n```\nCopy\n\n```\n# Dodo Payments Webhook Integration Setup",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "dodo-payments-webhook-integration#main-content",
+      "dodo-payments-webhook-integration#overview",
+      "dodo-payments-webhook-integration#setup",
+      "dodo-payments-webhook-integration#examples",
+      "dodo-payments-webhook-integration#tools",
+      "dodo-payments-webhook-integration#mcp",
+      "dodo-payments-webhook-integration#related"
+    ],
+    "overview_vi": "The Dodo Payments Webhook Integration skill enables developers to set up and handle webhooks that trigger on payment events in real time. Webhooks automatically notify your application when payments occur, subscriptions change, or other billing events happen, eliminating the need for constant polling. This skill helps keep your systems synchronized and automate downstream workflows without manual intervention. It's part of the official Dodo Payments skill suite and works with AI agents like Claude Code and Cursor to streamline payment integration.\nAutomate workflows upon payment events\nUpdate databases in real-time\nSend notifications for payment confirmations\nSynchronize systems with real-time data",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/dodopayments/skills --skill webhook-integration`\n`git clone https://github.com/dodopayments/skills`",
+    "usage_vi": "```\nGenerate a Dodo Payments webhook integration for [COMPANY] in [INDUSTRY]. The webhook should handle events like payment_success, payment_failed, and refund_processed. Include the endpoint URL, required headers, and a sample payload structure. Ensure the response includes a 200 status code and a JSON body with { \"status\": \"success\", \"event\": \"[EVENT_NAME]\" }.\n```\nCopy\n\n```\n# Dodo Payments Webhook Integration Setup"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:44:10.557230Z",
+    "http_status": 200,
+    "content_hash": "dbba5468220a0a8a119bbd26158075c2cfc3edafb1bc11f87a17ff0d89a055af",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dodo-payments-webhook-integration.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dodo-payments-webhook-integration.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Webhook Integration: Real-Time Payment Events",
+  "short_description_vi": "Webhooks provide real-time notifications when payment events occur, helping automate workflows and keep systems synchronized. This skill is designed for developers integrating Dodo Payments services."
+}

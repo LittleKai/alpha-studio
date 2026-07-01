@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-porter",
+  "slug": "skill-porter",
+  "name": "browser-use",
+  "headline": "skill-porter: Convert Claude Code Skills",
+  "short_description": "Skill Porter converts Claude Code skills to Gemini CLI extensions and vice versa. Developers benefit by writing once and deploying to both platforms. It connects to Claude Code and Gemini CLI workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "jduncan-rva",
+  "install_command": "git clone https://github.com/jduncan-rva/skill-porter.git",
+  "source_repo_url": "https://github.com/jduncan-rva/skill-porter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The skill-porter is a universal automation tool designed to seamlessly convert Claude Code skills into Gemini CLI extensions and vice versa. This functionality allows developers and AI practitioners to enhance their workflows by integrating different coding environments, facilitating a smoother transition between platforms. By utilizing this skill, users can leverage the power of both Claude Code and Gemini CLI, maximizing their productivity and efficiency in automation tasks. One of the key benefits of the skill-porter is its ability to save time during the development process. While the exact time savings are currently unknown, the tool's streamlined conversion process significantly reduces the manual effort required to adapt skills across different systems. This is particularly advantageous for teams looking to implement AI automation in their projects, as it minimizes the friction associated with switching between different coding frameworks. This skill is particularly suited for developers, product managers, and AI practitioners who are involved in workflow automation. By integrating skill-porter into their toolkit, these professionals can enhance their existing capabilities and improve their project outcomes. For instance, a developer working on a data engineering project can quickly adapt existing Claude Code skills for use in a Gemini CLI environment, thereby accelerating the development cycle and reducing time to market. Implementing the skill-porter is classified as an intermediate task, taking approximately 30 minutes to set up. Users should have a basic understanding of both Claude Code and Gemini CLI to fully leverage the tool's capabilities. As organizations increasingly adopt AI-first workflows, the skill-porter plays a crucial role in bridging the gap between different automation platforms, ensuring that teams can work more efficiently and effectively in their AI initiatives.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jduncan-rva/skill-porter`",
+    "usage": "```\nConvert the following [CLAUDE_CODE_SKILL] into a [GEMINI_CLI_EXTENSION]. Ensure the skill's functionality remains identical, including dependencies, commands, and input/output behavior. Preserve the original [SKILL_NAME] and [DESCRIPTION]. Output the converted extension in a ready-to-use format for the Gemini CLI, including the required manifest.json and any necessary configuration files. [CLAUDE_CODE_SKILL]: ```[SKILL_CODE]```\n```\nCopy\n\n```\n```json\n{\n  \"manifest.json\": {\n    \"name\": \"document-summarizer\",\n    \"description\": \"Summarizes uploaded documents into concise bullet points\",\n    \"version\": \"1.0.0\",\n    \"commands\": [\n      {\n        \"name\": \"summarize\",\n        \"description\": \"Summarize a document\",\n        \"parameters\": [\n          {\n            \"name\": \"file\",\n            \"type\": \"string\",\n            \"description\": \"Path to the document file\"\n          },\n          {\n            \"name\": \"length\",\n            \"type\": \"string\",\n            \"enum\": [\"short\", \"medium\", \"long\"],\n            \"default\": \"medium\"\n          }\n        ]\n      }\n    ]\n  },\n  \"index.js\": \"const fs = require('fs');\nconst { summarizeText } = require('./summarizer');\n\nmodule.exports = {\n  commands: [\n    {\n      name: 'summarize',\n      description: 'Summarize a document',\n      run: async ({ file, length }) => {\n        const content = fs.readFileSync(file, 'utf8');\n        const summary = summarizeText(content, length);\n        console.log(summary);\n      }\n    }\n  ]\n};\n\n// Example output:\n// Document: /reports/2023-q4.pdf\n// Length: medium\n// Summary:\n// - Revenue grew 15% YoY to $2.3M\n// - Customer acquisition cost decreased by 8%\n// - Top market: North America (45% of revenue)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-porter#main-content",
+      "skill-porter#overview",
+      "skill-porter#setup",
+      "skill-porter#examples",
+      "skill-porter#tools",
+      "skill-porter#mcp",
+      "skill-porter#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The skill-porter is a universal automation tool designed to seamlessly convert Claude Code skills into Gemini CLI extensions and vice versa. This functionality allows developers and AI practitioners to enhance their workflows by integrating different coding environments, facilitating a smoother transition between platforms. By utilizing this skill, users can leverage the power of both Claude Code and Gemini CLI, maximizing their productivity and efficiency in automation tasks. One of the key benefits of the skill-porter is its ability to save time during the development process. While the exact time savings are currently unknown, the tool's streamlined conversion process significantly reduces the manual effort required to adapt skills across different systems. This is particularly advantageous for teams looking to implement AI automation in their projects, as it minimizes the friction associated with switching between different coding frameworks. This skill is particularly suited for developers, product managers, and AI practitioners who are involved in workflow automation. By integrating skill-porter into their toolkit, these professionals can enhance their existing capabilities and improve their project outcomes. For instance, a developer working on a data engineering project can quickly adapt existing Claude Code skills for use in a Gemini CLI environment, thereby accelerating the development cycle and reducing time to market. Implementing the skill-porter is classified as an intermediate task, taking approximately 30 minutes to set up. Users should have a basic understanding of both Claude Code and Gemini CLI to fully leverage the tool's capabilities. As organizations increasingly adopt AI-first workflows, the skill-porter plays a crucial role in bridging the gap between different automation platforms, ensuring that teams can work more efficiently and effectively in their AI initiatives.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jduncan-rva/skill-porter`",
+    "usage_vi": "```\nConvert the following [CLAUDE_CODE_SKILL] into a [GEMINI_CLI_EXTENSION]. Ensure the skill's functionality remains identical, including dependencies, commands, and input/output behavior. Preserve the original [SKILL_NAME] and [DESCRIPTION]. Output the converted extension in a ready-to-use format for the Gemini CLI, including the required manifest.json and any necessary configuration files. [CLAUDE_CODE_SKILL]: ```[SKILL_CODE]```\n```\nCopy\n\n```\n```json\n{\n  \"manifest.json\": {\n    \"name\": \"document-summarizer\",\n    \"description\": \"Summarizes uploaded documents into concise bullet points\",\n    \"version\": \"1.0.0\",\n    \"commands\": [\n      {\n        \"name\": \"summarize\",\n        \"description\": \"Summarize a document\",\n        \"parameters\": [\n          {\n            \"name\": \"file\",\n            \"type\": \"string\",\n            \"description\": \"Path to the document file\"\n          },\n          {\n            \"name\": \"length\",\n            \"type\": \"string\",\n            \"enum\": [\"short\", \"medium\", \"long\"],\n            \"default\": \"medium\"\n          }\n        ]\n      }\n    ]\n  },\n  \"index.js\": \"const fs = require('fs');\nconst { summarizeText } = require('./summarizer');\n\nmodule.exports = {\n  commands: [\n    {\n      name: 'summarize',\n      description: 'Summarize a document',\n      run: async ({ file, length }) => {\n        const content = fs.readFileSync(file, 'utf8');\n        const summary = summarizeText(content, length);\n        console.log(summary);\n      }\n    }\n  ]\n};\n\n// Example output:\n// Document: /reports/2023-q4.pdf\n// Length: medium\n// Summary:\n// - Revenue grew 15% YoY to $2.3M\n// - Customer acquisition cost decreased by 8%\n// - Top market: North America (45% of revenue)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:27:48.021206Z",
+    "http_status": 200,
+    "content_hash": "0995faf1fad9f093cf3aabd63d3979d782af32a2c66125a2f5f355a878a49bf4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-porter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-porter.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "skill-porter: Convert Claude Code Skills",
+  "short_description_vi": "Skill Porter converts Claude Code skills to Gemini CLI extensions and vice versa. Developers benefit by writing once and deploying to both platforms. It connects to Claude Code and Gemini CLI workflows."
+}

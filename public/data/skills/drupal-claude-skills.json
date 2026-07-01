@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/drupal-claude-skills",
+  "slug": "drupal-claude-skills",
+  "name": "browser-use",
+  "headline": "Drupal Claude Skills - Automate Drupal Content",
+  "short_description": "Automate Drupal content management with AI. Operations teams use this skill to streamline workflows, manage content, and integrate with Drupal 9, 10, and 11. Connects to Claude for intelligent automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "grasmash",
+  "install_command": "git clone https://github.com/grasmash/drupal-claude-skills.git",
+  "source_repo_url": "https://github.com/grasmash/drupal-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Drupal Claude Skills provides a comprehensive suite of reusable skills and agents designed for Drupal developers using Claude Code. The package includes battle-tested patterns for configuration management, contrib module updates, security hardening, local development with DDEV, OAuth2 integration, Search API indexing, and Canvas page builder workflows. It covers Drupal 9, 10, and 11 compatibility, with specialized agents for quality gates, code review, testing, and site building. Install via Claude Code prompt, shell script, or Skills CLI to add capabilities for configuration drift resolution, safe import/export workflows, security best practices from OWASP Top 10, and test-driven development with PHPUnit.\nManage Drupal configuration safely across environments with import/export and config split workflows\nUpdate contrib modules and resolve Drupal 11 compatibility issues with Composer\nSet up and troubleshoot local development environments using DDEV with Xdebug and Mutagen\nImplement OAuth2 authentication with simple_oauth module and scope/role matching",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/grasmash/drupal-claude-skills`",
+    "usage": "```\nI need to automate content management in my [Drupal Version] site. Here are the tasks I want to streamline: [List of Tasks]. Can you generate the necessary code snippets or workflows to integrate with Claude for automation?\n```\nCopy\n\n```\n# Drupal Automation Workflow for Content Management",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "drupal-claude-skills#main-content",
+      "drupal-claude-skills#overview",
+      "drupal-claude-skills#setup",
+      "drupal-claude-skills#examples",
+      "drupal-claude-skills#tools",
+      "drupal-claude-skills#mcp",
+      "drupal-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Drupal Claude Skills provides a comprehensive suite of reusable skills and agents designed for Drupal developers using Claude Code. The package includes battle-tested patterns for configuration management, contrib module updates, security hardening, local development with DDEV, OAuth2 integration, Search API indexing, and Canvas page builder workflows. It covers Drupal 9, 10, and 11 compatibility, with specialized agents for quality gates, code review, testing, and site building. Install via Claude Code prompt, shell script, or Skills CLI to add capabilities for configuration drift resolution, safe import/export workflows, security best practices from OWASP Top 10, and test-driven development with PHPUnit.\nManage Drupal configuration safely across environments with import/export and config split workflows\nUpdate contrib modules and resolve Drupal 11 compatibility issues with Composer\nSet up and troubleshoot local development environments using DDEV with Xdebug and Mutagen\nImplement OAuth2 authentication with simple_oauth module and scope/role matching",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/grasmash/drupal-claude-skills`",
+    "usage_vi": "```\nI need to automate content management in my [Drupal Version] site. Here are the tasks I want to streamline: [List of Tasks]. Can you generate the necessary code snippets or workflows to integrate with Claude for automation?\n```\nCopy\n\n```\n# Drupal Automation Workflow for Content Management"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:12:48.303245Z",
+    "http_status": 200,
+    "content_hash": "3e6319f4c9155314def6a574ee994bb53488ee16be9ede092e0c9bfe9dd60b93",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\drupal-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\drupal-claude-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Drupal Claude Skills - Automate Drupal Content",
+  "short_description_vi": "Automate Drupal content management with AI. Operations teams use this skill to streamline workflows, manage content, and integrate with Drupal 9, 10, and 11. Connects to Claude for intelligent automation."
+}

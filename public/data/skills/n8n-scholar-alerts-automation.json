@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-scholar-alerts-automation",
+  "slug": "n8n-scholar-alerts-automation",
+  "name": "N8n Scholar Alerts Automation",
+  "headline": "n8n Scholar Alerts Automation: AI Paper Classifier",
+  "short_description": "An n8n workflow that automatically fetches, classifies, and saves Google Scholar alert emails using AI, helping researchers cut through inbox overload.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "WSE-research",
+  "install_command": "git clone https://github.com/WSE-research/n8n-scholar-alerts-automation.git",
+  "source_repo_url": "https://github.com/WSE-research/n8n-scholar-alerts-automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "ai-automation",
+    "n8n",
+    "research-automation",
+    "n8n-workflow"
+  ],
+  "sections": {
+    "overview": "This n8n automation workflow solves the common researcher problem of accumulating hundreds of unread Google Scholar alert emails by automatically processing them in batches. It connects to Gmail to fetch unread Scholar alert emails, extracts paper titles, snippets, and URLs, then uses OpenAI to classify each paper as relevant or non-relevant. Papers marked relevant are saved directly to a Google Sheet with their title and URL, and all processed emails are marked as read. Researchers who need to track literature for literature reviews, related work chapters, or ongoing research monitoring will benefit most from this workflow.\nClearing a backlog of hundreds of unread Google Scholar alert emails in bulk\nAutomatically building a curated reading list of relevant papers in Google Sheets\nFiltering out non-relevant papers before a literature review or related work update\nScheduling regular processing of new Scholar alerts to stay current with research topics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WSE-research/n8n-scholar-alerts-automation`",
+    "usage": "```\nCreate an n8n workflow that automates the process of receiving Google Scholar Alerts emails, parsing the content, and organizing the information into a structured format. The workflow should include nodes for receiving emails, extracting relevant data, and storing the information in a database or spreadsheet. Use [COMPANY] as the name of the company, [INDUSTRY] as the industry of focus, and [DATA] as the type of data to be extracted.\n```\nCopy\n\n```\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "n8n-scholar-alerts-automation#main-content",
+      "n8n-scholar-alerts-automation#overview",
+      "n8n-scholar-alerts-automation#setup",
+      "n8n-scholar-alerts-automation#examples",
+      "n8n-scholar-alerts-automation#tools",
+      "n8n-scholar-alerts-automation#mcp",
+      "n8n-scholar-alerts-automation#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "N8n automation workflow này giải quyết vấn đề thường gặp của các nhà nghiên cứu là tích tụ hàng trăm email thông báo Google Scholar chưa đọc bằng cách tự động xử lý chúng theo lô (batch). Workflow kết nối với Gmail để lấy các email thông báo Scholar chưa đọc, trích xuất tiêu đề bài viết, đoạn trích (snippet) và URL, sau đó sử dụng OpenAI để phân loại xem từng bài viết có liên quan hay không. Các bài viết được đánh dấu là có liên quan sẽ được lưu trực tiếp vào Google Sheets kèm theo tiêu đề và URL, đồng thời tất cả các email đã xử lý sẽ được đánh dấu là đã đọc. Những nhà nghiên cứu cần theo dõi tài liệu để viết tổng quan tài liệu (literature review), chương nghiên cứu liên quan (related work) hoặc cập nhật tiến trình nghiên cứu liên tục sẽ nhận được nhiều lợi ích nhất từ workflow này.\nGiải quyết hàng loạt hàng trăm email thông báo Google Scholar chưa đọc còn tồn đọng\nTự động xây dựng danh sách bài đọc chọn lọc gồm các bài báo liên quan trên Google Sheets\nLọc bỏ các bài báo không liên quan trước khi cập nhật tổng quan tài liệu hoặc nghiên cứu liên quan\nLên lịch xử lý định kỳ các thông báo Scholar mới để luôn cập nhật các chủ đề nghiên cứu mới nhất",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/WSE-research/n8n-scholar-alerts-automation`",
+    "usage_vi": "```\nTạo một n8n workflow tự động hóa quy trình nhận email Google Scholar Alerts, phân tích cú pháp nội dung và sắp xếp thông tin theo định dạng có cấu trúc. Workflow này nên bao gồm các node để nhận email, trích xuất dữ liệu liên quan và lưu trữ thông tin trong cơ sở dữ liệu hoặc bảng tính. Sử dụng [COMPANY] làm tên công ty, [INDUSTRY] làm ngành trọng tâm và [DATA] làm loại dữ liệu cần trích xuất.\n```\nCopy\n\n```\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:58:04.969309Z",
+    "http_status": 200,
+    "content_hash": "d5224bc8c11ac93685dd026bb00c577ac7a417f792d7182dc056715d4397732f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-scholar-alerts-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-scholar-alerts-automation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động hóa Google Scholar Alerts bằng n8n: Bộ phân loại bài nghiên cứu bằng AI",
+  "short_description_vi": "N8n workflow giúp tự động thu thập, phân loại và lưu email thông báo Google Scholar bằng AI, giải phóng các nhà nghiên cứu khỏi tình trạng quá tải hộp thư đến."
+}

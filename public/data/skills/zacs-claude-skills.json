@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zacs-claude-skills",
+  "slug": "zacs-claude-skills",
+  "name": "Zac's Claude Code Skills",
+  "headline": "Zac's Claude Code Skills - Automate Development",
+  "short_description": "Zac's Claude Code Skills is a collection of 12 skills for development workflows, testing, quality assurance, and database management. It helps developers automate repetitive tasks, improve code quality, and streamline operations. The skills integrate with Claude and can be installed via a plugin command or tested locally.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "enbyaugust",
+  "install_command": "git clone https://github.com/enbyaugust/zacs-claude-skills.git",
+  "source_repo_url": "https://github.com/enbyaugust/zacs-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Zac's Claude Code Skills is a suite of 12 specialized skills that automate common development tasks within Claude Code. The collection covers development workflows (boot-local, db-env-switch, frontend-design), testing (test-and-commit, build-update-tests, E2E testing), quality assurance (parallel code review and plan validation agents), and database management (migration pipelines with approval gates). Skills like check-your-work orchestrate 6 parallel QA agents for bugs, security, and performance, while migration-test-and-push provides safe database promotion from local through staging to production. Installation is straightforward via plugin command or local testing, making it accessible for teams wanting to reduce manual review and testing overhead.\nAutomate unit and E2E test runs with automatic fixes and documentation sync\nValidate database migrations safely across local, staging, and production environments\nRun parallel code quality reviews checking patterns, security, and architecture\nKill and restart all local development services with a single command",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/enbyaugust/zacs-claude-skills`",
+    "usage": "```\nI want to use [SPECIFIC_SKILL] from Zac's Claude Code Skills. Here's my [CODE/TEST_CASE/QUERY]: [INSERT_CODE_OR_DATA]. Please help me [ACTION: test, debug, optimize, etc.].\n```\nCopy\n\n```\n# Code Optimization Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zacs-claude-skills#main-content",
+      "zacs-claude-skills#overview",
+      "zacs-claude-skills#setup",
+      "zacs-claude-skills#examples",
+      "zacs-claude-skills#tools",
+      "zacs-claude-skills#mcp",
+      "zacs-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Zac's Claude Code Skills là bộ gồm 12 skill chuyên biệt giúp tự động hóa các tác vụ phát triển phổ biến trong Claude Code. Bộ sưu tập này bao gồm các workflow phát triển (boot-local, db-env-switch, frontend-design), kiểm thử (test-and-commit, build-update-tests, kiểm thử E2E), đảm bảo chất lượng (các agent review code song song và validate kế hoạch), và quản lý cơ sở dữ liệu (migration pipeline với các bước phê duyệt - approval gate). Các skill như check-your-work giúp điều phối 6 QA agent song song để quét bug, bảo mật và hiệu năng, trong khi migration-test-and-push hỗ trợ chuyển đổi database an toàn từ local qua staging lên production. Quá trình cài đặt rất đơn giản thông qua lệnh plugin hoặc test cục bộ (local testing), phù hợp cho các đội ngũ muốn giảm bớt gánh nặng review và test thủ công.\nTự động chạy unit test và E2E test với tính năng tự động fix lỗi và đồng bộ tài liệu\nValidate database migration an toàn trên các môi trường local, staging và production\nChạy song song các lượt review chất lượng code để kiểm tra pattern, bảo mật và kiến trúc\nTắt và khởi động lại toàn bộ dịch vụ phát triển local chỉ với một lệnh duy nhất",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/enbyaugust/zacs-claude-skills`",
+    "usage_vi": "```\nTôi muốn sử dụng [SPECIFIC_SKILL] từ Zac's Claude Code Skills. Đây là [CODE/TEST_CASE/QUERY] của tôi: [INSERT_CODE_OR_DATA]. Vui lòng hỗ trợ tôi [ACTION: test, debug, optimize, v.v.].\n```\nSao chép\n\n```\n# Báo cáo tối ưu hóa code"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:09:39.146338Z",
+    "http_status": 200,
+    "content_hash": "9f94538cb96b43711ce462c5f87b52d57d4b1dacf8a57745056ee6e6daa4f28d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zacs-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zacs-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Zac's Claude Code Skills - Tự động hóa quy trình phát triển",
+  "short_description_vi": "Zac's Claude Code Skills là bộ sưu tập gồm 12 skill hỗ trợ workflow phát triển, kiểm thử, đảm bảo chất lượng và quản lý cơ sở dữ liệu. Bộ công cụ giúp lập trình viên tự động hóa các tác vụ lặp đi lặp lại, cải thiện chất lượng code và tối ưu hóa quy trình vận hành. Các skill này tích hợp trực tiếp với Claude và có thể cài đặt thông qua lệnh plugin hoặc test trên máy cục bộ."
+}

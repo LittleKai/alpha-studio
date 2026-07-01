@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccflare",
+  "slug": "ccflare",
+  "name": "browser-use",
+  "headline": "ccflare cc proxy automation tool",
+  "short_description": "ccflare is a proxy for the Claude API that provides intelligent load balancing across multiple accounts. It tracks every request, response, and rate limit, ensuring you never hit rate limits. Ideal for operations teams managing high-volume API interactions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "snipeship",
+  "install_command": "git clone https://github.com/snipeship/ccflare.git",
+  "source_repo_url": "https://github.com/snipeship/ccflare",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-api",
+    "claude",
+    "anthropic-claude",
+    "anthropic-api"
+  ],
+  "sections": {
+    "overview": "ccflare acts as a proxy layer between your applications and the Claude API, distributing requests across multiple accounts using intelligent load balancing strategies. It maintains real-time tracking of every request, response, and rate limit status across all connected accounts, ensuring you never exceed API quotas. The tool supports multi-tier Claude account management (Pro, Max 5x, Max 20x) and offers multiple balancing strategies including weighted round-robin, session-based, and tier-aware distribution. It includes a real-time dashboard for monitoring account usage, managing account tiers, and reviewing request history. Operations teams managing high-volume API interactions benefit from reduced manual rate limit management and automatic failover across accounts.\nAutomatically distribute API requests across multiple Claude accounts to avoid rate limits.\nMonitor and analyze API usage in real-time to optimize costs and performance.\nLog and debug API requests and responses for easier troubleshooting.\nMaintain conversation context in applications using session-based load balancing.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/snipeship/ccflare`",
+    "usage": "```\nUse ccflare to send [NUMBER] API requests to [ENDPOINT] with [PAYLOAD]. Distribute the load evenly across [NUMBER] Claude API accounts to avoid rate limits. Track all responses and log any errors or rate limit hits in a structured format. Return a summary of successful requests, failed requests, and rate limit warnings.\n```\nCopy\n\n```\n```\n=== ccflare Load Balancing Report ===\n\n**Request Summary:**\n- Total Requests Sent: 500\n- Successful Responses: 498 (99.6%)\n- Failed Requests: 2 (0.4%)\n- Rate Limit Warnings: 0\n\n**Account Distribution:**\n- Account 1 (claude-acc-001): 167 requests\n- Account 2 (claude-acc-002): 166 requests\n- Account 3 (claude-acc-003): 167 requests\n\n**Failed Requests:**\n1. Request ID: req-042\n   - Account: claude-acc-002\n   - Error: 'Invalid API key'\n   - Timestamp: 2024-05-20T14:32:11Z\n   - Retry Suggested: Yes (API key rotation recommended)\n\n2. Request ID: req-187\n   - Account: claude-acc-003\n   - Error: 'Timeout after 30s'\n   - Timestamp: 2024-05-20T14:35:44Z\n   - Retry Suggested: Yes (Network latency issue)\n\n**Rate Limit Tracking:**\n- No rate limit warnings detected across all accounts.\n- All accounts maintained healthy usage (avg. 85% of quota).\n\n**Recommendations:**\n- Rotate the API key for Account 2 (claude-acc-002) to prevent future invalid key errors.\n- Monitor network conditions for Account 3 (claude-acc-003) during peak hours.\n- Consider adding Account 4 (claude-acc-004) for higher throughput if needed.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccflare#main-content",
+      "ccflare#overview",
+      "ccflare#setup",
+      "ccflare#examples",
+      "ccflare#tools",
+      "ccflare#mcp",
+      "ccflare#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccflare acts as a proxy layer between your applications and the Claude API, distributing requests across multiple accounts using intelligent load balancing strategies. It maintains real-time tracking of every request, response, and rate limit status across all connected accounts, ensuring you never exceed API quotas. The tool supports multi-tier Claude account management (Pro, Max 5x, Max 20x) and offers multiple balancing strategies including weighted round-robin, session-based, and tier-aware distribution. It includes a real-time dashboard for monitoring account usage, managing account tiers, and reviewing request history. Operations teams managing high-volume API interactions benefit from reduced manual rate limit management and automatic failover across accounts.\nAutomatically distribute API requests across multiple Claude accounts to avoid rate limits.\nMonitor and analyze API usage in real-time to optimize costs and performance.\nLog and debug API requests and responses for easier troubleshooting.\nMaintain conversation context in applications using session-based load balancing.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/snipeship/ccflare`",
+    "usage_vi": "```\nUse ccflare to send [NUMBER] API requests to [ENDPOINT] with [PAYLOAD]. Distribute the load evenly across [NUMBER] Claude API accounts to avoid rate limits. Track all responses and log any errors or rate limit hits in a structured format. Return a summary of successful requests, failed requests, and rate limit warnings.\n```\nCopy\n\n```\n```\n=== ccflare Load Balancing Report ===\n\n**Request Summary:**\n- Total Requests Sent: 500\n- Successful Responses: 498 (99.6%)\n- Failed Requests: 2 (0.4%)\n- Rate Limit Warnings: 0\n\n**Account Distribution:**\n- Account 1 (claude-acc-001): 167 requests\n- Account 2 (claude-acc-002): 166 requests\n- Account 3 (claude-acc-003): 167 requests\n\n**Failed Requests:**\n1. Request ID: req-042\n   - Account: claude-acc-002\n   - Error: 'Invalid API key'\n   - Timestamp: 2024-05-20T14:32:11Z\n   - Retry Suggested: Yes (API key rotation recommended)\n\n2. Request ID: req-187\n   - Account: claude-acc-003\n   - Error: 'Timeout after 30s'\n   - Timestamp: 2024-05-20T14:35:44Z\n   - Retry Suggested: Yes (Network latency issue)\n\n**Rate Limit Tracking:**\n- No rate limit warnings detected across all accounts.\n- All accounts maintained healthy usage (avg. 85% of quota).\n\n**Recommendations:**\n- Rotate the API key for Account 2 (claude-acc-002) to prevent future invalid key errors.\n- Monitor network conditions for Account 3 (claude-acc-003) during peak hours.\n- Consider adding Account 4 (claude-acc-004) for higher throughput if needed.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:40:56.877275Z",
+    "http_status": 200,
+    "content_hash": "e0e488f1a8b395586870d9fb8e3c096f8c1798573cc3ce2fe38046f1756ec71c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccflare.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccflare.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccflare cc proxy automation tool",
+  "short_description_vi": "ccflare is a proxy for the Claude API that provides intelligent load balancing across multiple accounts. It tracks every request, response, and rate limit, ensuring you never hit rate limits. Ideal for operations teams managing high-volume API interactions."
+}

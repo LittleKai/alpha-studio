@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/render-claude-context",
+  "slug": "render-claude-context",
+  "name": "Render Claude Context",
+  "headline": "render-claude-context: Context Generation",
+  "short_description": "We build custom AI skills and automations for B2B companies.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "czottmann",
+  "install_command": "git clone https://github.com/czottmann/render-claude-context.git",
+  "source_repo_url": "https://github.com/czottmann/render-claude-context",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "charmbracelet",
+    "interoperability",
+    "gemini-ai",
+    "gemini-cli",
+    "opencode-ai",
+    "opencode",
+    "crush",
+    "claude",
+    "gemini",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "The render-claude-context skill is designed to automate the collection of CLAUDE.md files from a project's directory hierarchy, extending up to the ~/.claude/ directory. By embedding the relevant @-imports and commands from these files, it generates processed context files that can be utilized with other AI agents. This automation simplifies the process of context preparation, allowing users to focus on more critical tasks without the manual overhead of file management. One of the key benefits of using the render-claude-context skill is the significant reduction in time spent on context file generation. Although specific time savings are currently unknown, the skill's intermediate implementation time of just 30 minutes suggests that users can quickly integrate it into their workflows. By automating the tedious task of gathering and processing context data, developers and AI practitioners can streamline their operations, leading to increased productivity and efficiency. This skill is particularly beneficial for developers, product managers, and AI practitioners who work with AI agents and require a structured context for their operations. It is ideal for teams looking to enhance their workflow automation capabilities, especially in environments where multiple CLAUDE.md files are in use. For instance, a development team could use this skill to ensure that all relevant context is readily available for their AI agents, thereby improving the agents' performance in executing tasks. With an intermediate level of complexity, the render-claude-context skill requires some familiarity with directory structures and file management. However, its ease of implementation makes it accessible to a wide range of users. By incorporating this skill into an AI-first workflow, teams can ensure that their AI agents have the necessary context to operate effectively, ultimately leading to better outcomes and more efficient project execution.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/czottmann/render-claude-context`",
+    "usage": "```\nRender the context for a project in the [PROJECT_DIRECTORY] using the render-claude-context tool. Include all CLAUDE.md files from the project directory up to the `~/.claude/` directory. Ensure all `@`-imports and commands are embedded and processed.\n```\nCopy\n\n```\n# Context Rendering Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "render-claude-context#main-content",
+      "render-claude-context#overview",
+      "render-claude-context#setup",
+      "render-claude-context#examples",
+      "render-claude-context#tools",
+      "render-claude-context#mcp",
+      "render-claude-context#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill render-claude-context được thiết kế để tự động hóa việc thu thập các tệp CLAUDE.md từ cấu trúc thư mục của dự án, mở rộng lên đến thư mục ~/.claude/. Bằng cách nhúng các lệnh và @-import liên quan từ các tệp này, skill này tạo ra các tệp context đã qua xử lý để sử dụng với các AI agent khác. Quy trình tự động hóa này đơn giản hóa việc chuẩn bị context, giúp người dùng tập trung vào các tác vụ quan trọng hơn mà không cần tốn công quản lý tệp thủ công. Một trong những lợi ích chính của việc sử dụng skill render-claude-context là tiết kiệm đáng kể thời gian tạo tệp context. Mặc dù chưa có số liệu cụ thể về lượng thời gian tiết kiệm được, nhưng thời gian triển khai ở mức trung bình (chỉ khoảng 30 phút) cho thấy người dùng có thể nhanh chóng tích hợp skill này vào quy trình làm việc của mình. Nhờ tự động hóa tác vụ thu thập và xử lý dữ liệu context vốn tẻ nhạt, các nhà phát triển và kỹ sư AI có thể tối ưu hóa quy trình vận hành, từ đó nâng cao năng suất và hiệu quả công việc. Skill này đặc biệt hữu ích cho các nhà phát triển, product manager và kỹ sư AI làm việc với các AI agent và cần một cấu trúc context rõ ràng cho các hoạt động của họ. Đây là giải pháp lý tưởng cho các đội ngũ muốn nâng cao khả năng tự động hóa quy trình làm việc, đặc biệt là trong các môi trường sử dụng nhiều tệp CLAUDE.md. Ví dụ, một đội ngũ phát triển có thể sử dụng skill này để đảm bảo mọi context liên quan luôn sẵn sàng cho các AI agent, từ đó cải thiện hiệu suất thực thi tác vụ của agent. Với mức độ phức tạp trung bình, skill render-claude-context yêu cầu người dùng có hiểu biết nhất định về cấu trúc thư mục và quản lý tệp tin. Tuy nhiên, nhờ việc triển khai dễ dàng, skill này vẫn tiếp cận được với nhiều đối tượng người dùng. Bằng cách tích hợp skill này vào quy trình làm việc ưu tiên AI (AI-first workflow), các đội ngũ có thể đảm bảo rằng các AI agent của họ có đủ context cần thiết để hoạt động hiệu quả, mang lại kết quả tốt hơn và triển khai dự án hiệu quả hơn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/czottmann/render-claude-context`",
+    "usage_vi": "```\nTạo context cho dự án trong [PROJECT_DIRECTORY] bằng công cụ render-claude-context. Bao gồm tất cả các tệp CLAUDE.md từ thư mục dự án cho đến thư mục `~/.claude/`. Đảm bảo tất cả các lệnh và `@`-import đều được nhúng và xử lý.\n```\nSao chép\n\n```\n# Báo cáo Tạo Context"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:33:06.992553Z",
+    "http_status": 200,
+    "content_hash": "b114c2bd7abfc8a80c567732f887cd6b5b341e30b597ffac039abe5137a3f304",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\render-claude-context.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\render-claude-context.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "render-claude-context: Tạo Context",
+  "short_description_vi": "Chúng tôi xây dựng các AI skill và giải pháp tự động hóa tùy chỉnh cho các doanh nghiệp B2B."
+}

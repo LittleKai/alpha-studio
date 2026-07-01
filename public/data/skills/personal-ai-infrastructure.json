@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/personal-ai-infrastructure",
+  "slug": "personal-ai-infrastructure",
+  "name": "browser-use",
+  "headline": "Personal AI Infrastructure - Human Augmentation",
+  "short_description": "Agentic AI infrastructure that enhances human capabilities. Operations teams use it to automate workflows, improve productivity, and integrate with existing tools. Connects to TypeScript-based systems and supports Claude agents.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "danielmiessler",
+  "install_command": "git clone https://github.com/danielmiessler/Personal_AI_Infrastructure.git",
+  "source_repo_url": "https://github.com/danielmiessler/Personal_AI_Infrastructure",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "humans",
+    "ai",
+    "productivity",
+    "augmentation"
+  ],
+  "sections": {
+    "overview": "Personal AI Infrastructure is a structured framework for building and managing AI agent capabilities across teams and systems. It provides modular skill packs and workflow organization that enable operations teams to automate processes and improve productivity. The infrastructure supports integration with existing tools and systems, allowing teams to extend AI capabilities into their current workflows. Built around reusable skill components and installation verification processes, it helps teams standardize how AI agents are deployed and maintained across projects.\nAutomate invoicing and scheduling for small businesses using AI-driven workflows.\nEnhance team communication and project tracking with personalized AI assistance.\nHelp artists find local events and galleries to showcase their work through automated searches.\nOptimize personal finance management by creating tailored budgeting and expense tracking systems.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/danielmiessler/Personal_AI_Infrastructure`",
+    "usage": "```\nDesign a personal AI infrastructure system for [USER_NAME] that integrates with their existing [TOOLS/APPS] (e.g., Notion, Slack, GitHub, VS Code) to automate [SPECIFIC_TASKS]. The system should include: 1) A TypeScript-based agent framework for task execution, 2) A knowledge base syncing mechanism for [CONTEXTUAL_DATA], 3) Automated workflows for [REPEATABLE_PROCESSES], and 4) Real-time monitoring for [PERFORMANCE_METRICS]. Provide a step-by-step implementation plan with code snippets for [FRAMEWORK] (e.g., LangGraph, CrewAI, or custom).\n```\nCopy\n\n```\nFor **Alex Carter**, a DevOps engineer at TechStart Inc., we designed a personal AI infrastructure to automate their daily workflows. The system integrates with their existing tools: **Slack** (for notifications), **GitHub** (for code reviews), **Notion** (for documentation), and **VS Code** (for IDE interactions). Key components include:\n\n1. **TypeScript Agent Framework**: Built using LangGraph, the agent handles tasks like:\n   - Auto-generating PR descriptions from Jira tickets linked to GitHub PRs.\n   - Syncing deployment logs from Kubernetes to Notion’s engineering database.\n   - Sending Slack alerts when CI/CD pipelines fail.\n\n2. **Knowledge Base Sync**: The agent pulls data from Alex’s **Confluence** and **Slack threads** into a vectorized knowledge base (using Pinecone) for quick retrieval. For example, when Alex asks, *“What was the resolution for the outage on 2024-05-12?”*, the agent retrieves the incident report from Confluence and summarizes the steps taken.\n\n3. **Automated Workflows**:\n   - **Daily Standup Generator**: Every morning at 9 AM, the agent compiles Alex’s GitHub activity, Slack messages, and Jira tickets into a structured standup update posted to Slack’s #standup channel.\n   - **Code Review Assistant**: When Alex reviews a PR, the agent suggests improvements based on past reviews stored in Notion (e.g., “This PR lacks unit tests—see the 2024 Q1 review guidelines in Notion”).\n\n4. **Real-Time Monitoring**: The agent tracks Alex’s productivity metrics (e.g., PRs merged, tickets resolved) and sends weekly reports to their manager via Slack. It also flags anomalies, like an unusual spike in PR reviews on weekends.\n\n**Implementation Plan**:\n- **Week 1**: Set up the LangGraph agent with Slack and GitHub integrations using OAuth tokens. Deploy a basic knowledge base sync for Confluence.\n- **Week 2**: Add Notion integration for documentation sync and auto-generate the first standup update.\n- **Week 3**: Implement the code review assistant and deploy monitoring for PR metrics.\n- **Week 4**: Fine-tune the agent’s responses using Alex’s feedback and expand the knowledge base to include Slack threads.\n\n**Code Snippet (LangGraph Integration)**:\n```typescript\nconst agent = new LangGraphAgent({\n  tools: [slackTool, githubTool, notionTool],\n  knowledgeBase: new PineconeKB({ indexName: 'alex-knowledge-base' }),\n  workflows: [\n    new DailyStandupWorkflow(),\n    new CodeReviewWorkflow()\n  ]\n});\n```\n\nThis infrastructure reduced Alex’s manual reporting time by **60%** and improved code review consistency by **30%** within the first month.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "personal-ai-infrastructure#main-content",
+      "personal-ai-infrastructure#overview",
+      "personal-ai-infrastructure#setup",
+      "personal-ai-infrastructure#examples",
+      "personal-ai-infrastructure#tools",
+      "personal-ai-infrastructure#mcp",
+      "personal-ai-infrastructure#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Personal AI Infrastructure is a structured framework for building and managing AI agent capabilities across teams and systems. It provides modular skill packs and workflow organization that enable operations teams to automate processes and improve productivity. The infrastructure supports integration with existing tools and systems, allowing teams to extend AI capabilities into their current workflows. Built around reusable skill components and installation verification processes, it helps teams standardize how AI agents are deployed and maintained across projects.\nAutomate invoicing and scheduling for small businesses using AI-driven workflows.\nEnhance team communication and project tracking with personalized AI assistance.\nHelp artists find local events and galleries to showcase their work through automated searches.\nOptimize personal finance management by creating tailored budgeting and expense tracking systems.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/danielmiessler/Personal_AI_Infrastructure`",
+    "usage_vi": "```\nDesign a personal AI infrastructure system for [USER_NAME] that integrates with their existing [TOOLS/APPS] (e.g., Notion, Slack, GitHub, VS Code) to automate [SPECIFIC_TASKS]. The system should include: 1) A TypeScript-based agent framework for task execution, 2) A knowledge base syncing mechanism for [CONTEXTUAL_DATA], 3) Automated workflows for [REPEATABLE_PROCESSES], and 4) Real-time monitoring for [PERFORMANCE_METRICS]. Provide a step-by-step implementation plan with code snippets for [FRAMEWORK] (e.g., LangGraph, CrewAI, or custom).\n```\nCopy\n\n```\nFor **Alex Carter**, a DevOps engineer at TechStart Inc., we designed a personal AI infrastructure to automate their daily workflows. The system integrates with their existing tools: **Slack** (for notifications), **GitHub** (for code reviews), **Notion** (for documentation), and **VS Code** (for IDE interactions). Key components include:\n\n1. **TypeScript Agent Framework**: Built using LangGraph, the agent handles tasks like:\n   - Auto-generating PR descriptions from Jira tickets linked to GitHub PRs.\n   - Syncing deployment logs from Kubernetes to Notion’s engineering database.\n   - Sending Slack alerts when CI/CD pipelines fail.\n\n2. **Knowledge Base Sync**: The agent pulls data from Alex’s **Confluence** and **Slack threads** into a vectorized knowledge base (using Pinecone) for quick retrieval. For example, when Alex asks, *“What was the resolution for the outage on 2024-05-12?”*, the agent retrieves the incident report from Confluence and summarizes the steps taken.\n\n3. **Automated Workflows**:\n   - **Daily Standup Generator**: Every morning at 9 AM, the agent compiles Alex’s GitHub activity, Slack messages, and Jira tickets into a structured standup update posted to Slack’s #standup channel.\n   - **Code Review Assistant**: When Alex reviews a PR, the agent suggests improvements based on past reviews stored in Notion (e.g., “This PR lacks unit tests—see the 2024 Q1 review guidelines in Notion”).\n\n4. **Real-Time Monitoring**: The agent tracks Alex’s productivity metrics (e.g., PRs merged, tickets resolved) and sends weekly reports to their manager via Slack. It also flags anomalies, like an unusual spike in PR reviews on weekends.\n\n**Implementation Plan**:\n- **Week 1**: Set up the LangGraph agent with Slack and GitHub integrations using OAuth tokens. Deploy a basic knowledge base sync for Confluence.\n- **Week 2**: Add Notion integration for documentation sync and auto-generate the first standup update.\n- **Week 3**: Implement the code review assistant and deploy monitoring for PR metrics.\n- **Week 4**: Fine-tune the agent’s responses using Alex’s feedback and expand the knowledge base to include Slack threads.\n\n**Code Snippet (LangGraph Integration)**:\n```typescript\nconst agent = new LangGraphAgent({\n  tools: [slackTool, githubTool, notionTool],\n  knowledgeBase: new PineconeKB({ indexName: 'alex-knowledge-base' }),\n  workflows: [\n    new DailyStandupWorkflow(),\n    new CodeReviewWorkflow()\n  ]\n});\n```\n\nThis infrastructure reduced Alex’s manual reporting time by **60%** and improved code review consistency by **30%** within the first month.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:36:54.546417Z",
+    "http_status": 200,
+    "content_hash": "83f366cc692f53c1d1fc4ba71f1f14a67379e9a280315c88a797815c3b304cd2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\personal-ai-infrastructure.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\personal-ai-infrastructure.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Personal AI Infrastructure - Human Augmentation",
+  "short_description_vi": "Agentic AI infrastructure that enhances human capabilities. Operations teams use it to automate workflows, improve productivity, and integrate with existing tools. Connects to TypeScript-based systems and supports Claude agents."
+}

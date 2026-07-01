@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-patent-creator",
+  "slug": "claude-patent-creator",
+  "name": "browser-use",
+  "headline": "claude patent creator: patenting",
+  "short_description": "USPTO patent creation system with MCP server + Claude Code plugin. Hybrid RAG search over   MPEP/USC/CFR, BigQuery access to 76M+ patents, automated 35 USC 112 compliance checks, prior   art search, diagram generation. GPU-accelerated with skills and autonomous agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "RobThePCGuy",
+  "install_command": "git clone https://github.com/RobThePCGuy/Claude-Patent-Creator.git",
+  "source_repo_url": "https://github.com/RobThePCGuy/Claude-Patent-Creator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "patent-search",
+    "bigquery",
+    "rag",
+    "claude-code-plugin",
+    "faiss",
+    "uspto",
+    "patent-drafting",
+    "mpep",
+    "patent"
+  ],
+  "sections": {
+    "overview": "Claude Patent Creator is an MCP server and Claude Code plugin that automates patent application drafting and analysis. It provides hybrid search across MPEP, 35 USC, and 37 CFR regulations with instant citations, searches Google's BigQuery patent database for prior art by keywords or CPC codes, and runs automated compliance checks against USPTO 35 USC 112(b) and EPO Art. 84 EPC standards. The system generates patent-style diagrams, reviews full applications for specification adequacy and formalities, and includes a guided workflow to produce filing-ready documents. Built with GPU acceleration and Python 3.9+, it runs as a standalone tool or integrates directly into Claude Code for interactive patent development.\nSearch patent regulations (MPEP, 35 USC, 37 CFR) with citations in under one second\nConduct prior art searches across 100M+ patents by keywords, CPC codes, or full-text queries\nValidate patent claims for USPTO and EPO compliance automatically\nGenerate patent-style block diagrams and system architecture visualizations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RobThePCGuy/Claude-Patent-Creator`",
+    "usage": "```\nGenerate a provisional patent application draft for [INVENTION_NAME] using USPTO-compliant formatting. Include: (1) a detailed description of the invention with [TECHNICAL_SPECIFICATIONS], (2) at least 3 independent claims under 35 USC 112(b) for [INDEPENDENT_CLAIM_TYPES], (3) 5-7 dependent claims, (4) an abstract of 150 words or less, and (5) a brief summary of the drawings. Prioritize MPEP §2173-2174 for claim clarity. Cross-reference with relevant [USPC_CLASS] or [CPC_CLASS] sections. Flag any potential 35 USC 101 issues.\n```\nCopy\n\n```\nPROVISIONAL PATENT APPLICATION\n\n**Title:** Self-Adjusting Solar Panel Mounting System with AI-Optimized Tracking\n\n**Field of the Invention:** This invention relates to solar energy systems, specifically to a mounting apparatus for photovoltaic panels that automatically adjusts orientation based on real-time weather data and energy optimization algorithms.\n\n**Background:** Current solar panel systems rely on fixed mounts or manual tracking mechanisms, which fail to maximize energy capture during variable weather conditions. Prior art (US 10,892,345 B2) describes basic tracking systems but lacks AI integration for predictive adjustments.\n\n**Summary of Invention:** The system comprises: (1) a dual-axis motorized mount with load sensors, (2) an onboard AI processor running a lightweight neural network (trained on 2.3M weather patterns), (3) a wireless interface to NOAA weather feeds, and (4) a fail-safe mechanism that defaults to fixed position during extreme wind conditions (>60 mph). Key technical specifications include: ±0.1° angular precision, 99.8% uptime in field tests (n=1,247), and 18.7% average energy yield improvement over fixed mounts.\n\n**Detailed Description:** The mount assembly includes a corrosion-resistant aluminum frame with integrated strain gauges (accuracy: ±0.5N) that detect panel stress. The AI processor (NVIDIA Jetson Orin NX) runs a quantized LSTM model (1.2M parameters) trained on 5 years of solar irradiance data from [LOCATION]. Claims recite: (1) A system comprising a motorized mount and AI processor configured to adjust panel orientation based on predicted weather patterns, (2) The system of claim 1 wherein the processor uses a neural network trained on historical weather data to generate adjustment commands, (3) A method for operating the system including receiving weather predictions and transmitting motor control signals.\n\n**Claims:**\n1. A solar panel mounting system comprising:\n   a motorized dual-axis mount;\n   an AI processor operatively connected to said mount;\n   wherein said processor is configured to:\n   (a) receive real-time weather data;\n   (b) predict optimal panel orientation using a trained neural network; and\n   (c) transmit adjustment commands to said mount.\n\n2. The system of claim 1, wherein said neural network is trained on historical weather patterns from at least 3 geographic regions.\n\n3. The system of claim 1, further comprising load sensors that detect wind pressure and override said adjustment commands when wind pressure exceeds a threshold.\n\n**Abstract:** A solar panel mounting system with AI-driven tracking that automatically adjusts panel orientation based on predicted weather patterns, comprising a motorized mount, load sensors, and an onboard neural network processor. The system improves energy yield by 15-22% compared to fixed mounts while maintaining structural integrity during high-wind conditions.\n\n**Drawings:** Figure 1 shows the mount assembly with labeled components (101: base plate, 102: azimuth motor, 103: elevation motor). Figure 2 illustrates the AI processor workflow. Figure 3 depicts the fail-safe mechanism in high-wind mode.\n\n**Compliance Notes:** No 35 USC 101 issues detected. Claims comply with MPEP §2173 (definiteness). Prior art search excluded US 10,892,345 B2 as non-analogous (lacks AI integration).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-patent-creator#main-content",
+      "claude-patent-creator#overview",
+      "claude-patent-creator#setup",
+      "claude-patent-creator#examples",
+      "claude-patent-creator#tools",
+      "claude-patent-creator#mcp",
+      "claude-patent-creator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Patent Creator is an MCP server and Claude Code plugin that automates patent application drafting and analysis. It provides hybrid search across MPEP, 35 USC, and 37 CFR regulations with instant citations, searches Google's BigQuery patent database for prior art by keywords or CPC codes, and runs automated compliance checks against USPTO 35 USC 112(b) and EPO Art. 84 EPC standards. The system generates patent-style diagrams, reviews full applications for specification adequacy and formalities, and includes a guided workflow to produce filing-ready documents. Built with GPU acceleration and Python 3.9+, it runs as a standalone tool or integrates directly into Claude Code for interactive patent development.\nSearch patent regulations (MPEP, 35 USC, 37 CFR) with citations in under one second\nConduct prior art searches across 100M+ patents by keywords, CPC codes, or full-text queries\nValidate patent claims for USPTO and EPO compliance automatically\nGenerate patent-style block diagrams and system architecture visualizations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RobThePCGuy/Claude-Patent-Creator`",
+    "usage_vi": "```\nGenerate a provisional patent application draft for [INVENTION_NAME] using USPTO-compliant formatting. Include: (1) a detailed description of the invention with [TECHNICAL_SPECIFICATIONS], (2) at least 3 independent claims under 35 USC 112(b) for [INDEPENDENT_CLAIM_TYPES], (3) 5-7 dependent claims, (4) an abstract of 150 words or less, and (5) a brief summary of the drawings. Prioritize MPEP §2173-2174 for claim clarity. Cross-reference with relevant [USPC_CLASS] or [CPC_CLASS] sections. Flag any potential 35 USC 101 issues.\n```\nCopy\n\n```\nPROVISIONAL PATENT APPLICATION\n\n**Title:** Self-Adjusting Solar Panel Mounting System with AI-Optimized Tracking\n\n**Field of the Invention:** This invention relates to solar energy systems, specifically to a mounting apparatus for photovoltaic panels that automatically adjusts orientation based on real-time weather data and energy optimization algorithms.\n\n**Background:** Current solar panel systems rely on fixed mounts or manual tracking mechanisms, which fail to maximize energy capture during variable weather conditions. Prior art (US 10,892,345 B2) describes basic tracking systems but lacks AI integration for predictive adjustments.\n\n**Summary of Invention:** The system comprises: (1) a dual-axis motorized mount with load sensors, (2) an onboard AI processor running a lightweight neural network (trained on 2.3M weather patterns), (3) a wireless interface to NOAA weather feeds, and (4) a fail-safe mechanism that defaults to fixed position during extreme wind conditions (>60 mph). Key technical specifications include: ±0.1° angular precision, 99.8% uptime in field tests (n=1,247), and 18.7% average energy yield improvement over fixed mounts.\n\n**Detailed Description:** The mount assembly includes a corrosion-resistant aluminum frame with integrated strain gauges (accuracy: ±0.5N) that detect panel stress. The AI processor (NVIDIA Jetson Orin NX) runs a quantized LSTM model (1.2M parameters) trained on 5 years of solar irradiance data from [LOCATION]. Claims recite: (1) A system comprising a motorized mount and AI processor configured to adjust panel orientation based on predicted weather patterns, (2) The system of claim 1 wherein the processor uses a neural network trained on historical weather data to generate adjustment commands, (3) A method for operating the system including receiving weather predictions and transmitting motor control signals.\n\n**Claims:**\n1. A solar panel mounting system comprising:\n   a motorized dual-axis mount;\n   an AI processor operatively connected to said mount;\n   wherein said processor is configured to:\n   (a) receive real-time weather data;\n   (b) predict optimal panel orientation using a trained neural network; and\n   (c) transmit adjustment commands to said mount.\n\n2. The system of claim 1, wherein said neural network is trained on historical weather patterns from at least 3 geographic regions.\n\n3. The system of claim 1, further comprising load sensors that detect wind pressure and override said adjustment commands when wind pressure exceeds a threshold.\n\n**Abstract:** A solar panel mounting system with AI-driven tracking that automatically adjusts panel orientation based on predicted weather patterns, comprising a motorized mount, load sensors, and an onboard neural network processor. The system improves energy yield by 15-22% compared to fixed mounts while maintaining structural integrity during high-wind conditions.\n\n**Drawings:** Figure 1 shows the mount assembly with labeled components (101: base plate, 102: azimuth motor, 103: elevation motor). Figure 2 illustrates the AI processor workflow. Figure 3 depicts the fail-safe mechanism in high-wind mode.\n\n**Compliance Notes:** No 35 USC 101 issues detected. Claims comply with MPEP §2173 (definiteness). Prior art search excluded US 10,892,345 B2 as non-analogous (lacks AI integration).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:36:45.639071Z",
+    "http_status": 200,
+    "content_hash": "a1816a74ae27579c1613c42ed641150e1ecf64eefea6492b945f9e8a039263cd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-patent-creator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-patent-creator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude patent creator: patenting",
+  "short_description_vi": "USPTO patent creation system with MCP server + Claude Code plugin. Hybrid RAG search over   MPEP/USC/CFR, BigQuery access to 76M+ patents, automated 35 USC 112 compliance checks, prior   art search, diagram generation. GPU-accelerated with skills and autonomous agents."
+}

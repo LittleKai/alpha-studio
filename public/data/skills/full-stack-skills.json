@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/full-stack-skills",
+  "slug": "full-stack-skills",
+  "name": "browser-use",
+  "headline": "Full Stack Skills - AI Development Skills",
+  "short_description": "Full Stack Skills is a free marketplace for full-stack development skills. It offers a collection of practical AI skills for various platforms. Developers can automate tasks, enhance productivity, and streamline workflows. The skills integrate with tools like Claude, Cursor, and Qoder.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "partme-ai",
+  "install_command": "git clone https://github.com/partme-ai/full-stack-skills.git",
+  "source_repo_url": "https://github.com/partme-ai/full-stack-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "agent-skills",
+    "codebuddy",
+    "cursor",
+    "qoder"
+  ],
+  "sections": {
+    "overview": "Full Stack Skills is a comprehensive directory and navigation hub for AI coding agents, featuring 454+ professionally-maintained skills organized into 42 independently-installable packages. The collection spans frontend frameworks (Vue, React, Angular, Svelte), backend systems (Spring, Node.js, Python, Go, Java), cross-platform development (Tauri, Flutter, Electron), and DevOps tooling. Rather than loading all skills at once—which would exceed token limits—developers use `npx skills add` to install only the packages they need, keeping context usage minimal while maintaining deep domain expertise. Each skill package includes professional knowledge, workflows, and reference materials that AI agents can load on-demand for specific development domains.\nInstall Vue.js or React skills to enhance AI coding for frontend projects\nAdd Spring Boot or Node.js packages for backend development assistance\nLoad Tauri skills for cross-platform desktop and mobile app development\nUse DDD and design pattern skills for architecture guidance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/partme-ai/full-stack-skills`",
+    "usage": "```\nGenerate a full-stack development skill for [PLATFORM] that automates [SPECIFIC_TASK]. Include code snippets for [LANGUAGE] and instructions for integrating with [TOOL]. Ensure the skill handles [EDGE_CASE] and provides clear error messages for debugging.\n```\nCopy\n\n```\nHere’s a full-stack skill for automating the setup of a Next.js + Tailwind CSS project with a Prisma ORM integration, designed for Cursor IDE. This skill generates a `package.json`, `tailwind.config.js`, `schema.prisma`, and a basic `app/layout.tsx` with responsive styling. It also includes a pre-configured `.env` file for database connections.\n\n**Generated Files:**\n1. `package.json`:\n```json\n{\n  \"name\": \"nextjs-tailwind-prisma\",\n  \"version\": \"1.0.0\",\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"db:generate\": \"prisma generate\",\n    \"db:migrate\": \"prisma migrate dev\"\n  },\n  \"dependencies\": {\n    \"next\": \"^14.1\",\n    \"react\": \"^18.2\",\n    \"react-dom\": \"^18.2\",\n    \"@prisma/client\": \"^5.7\",\n    \"prisma\": \"^5.7\"\n  },\n  \"devDependencies\": {\n    \"tailwindcss\": \"^3.3\",\n    \"postcss\": \"^8.4\",\n    \"autoprefixer\": \"^10.4\"\n  }\n}\n```\n\n2. `tailwind.config.js`:\n```javascript\nmodule.exports = {\n  content: [\n    \"./app/**/*.{js,ts,jsx,tsx,mdx}\",\n    \"./components/**/*.{js,ts,jsx,tsx,mdx}\",\n  ],\n  theme: {\n    extend: {\n      colors: {\n        primary: \"#3b82f6\",\n        secondary: \"#10b981\",\n      },\n    },\n  },\n  plugins: [],\n};\n```\n\n3. `schema.prisma`:\n```prisma\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  name  String\n  email String  @unique\n  posts Post[]\n}\n\nmodel Post {\n  id     Int    @id @default(autoincrement())\n  title  String\n  body   String\n  author User   @relation(fields: [authorId], references: [id])\n  authorId Int\n}\n```\n\n**Integration Steps:**\n1. Run `npm install` to install dependencies.\n2. Configure your `.env` file with your PostgreSQL connection string.\n3. Run `npx prisma generate` to generate the Prisma client.\n4. Run `npx prisma migrate dev` to apply migrations.\n5. Start the development server with `npm run dev`.\n\n**Error Handling:**\n- If the database connection fails, the skill will log the error and suggest checking the `.env` file.\n- If a migration fails, it will provide the exact SQL error for debugging.\n\nThis skill saves developers 30+ minutes of manual setup time and ensures consistency across projects.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "full-stack-skills#main-content",
+      "full-stack-skills#overview",
+      "full-stack-skills#setup",
+      "full-stack-skills#examples",
+      "full-stack-skills#tools",
+      "full-stack-skills#mcp",
+      "full-stack-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Full Stack Skills is a comprehensive directory and navigation hub for AI coding agents, featuring 454+ professionally-maintained skills organized into 42 independently-installable packages. The collection spans frontend frameworks (Vue, React, Angular, Svelte), backend systems (Spring, Node.js, Python, Go, Java), cross-platform development (Tauri, Flutter, Electron), and DevOps tooling. Rather than loading all skills at once—which would exceed token limits—developers use `npx skills add` to install only the packages they need, keeping context usage minimal while maintaining deep domain expertise. Each skill package includes professional knowledge, workflows, and reference materials that AI agents can load on-demand for specific development domains.\nInstall Vue.js or React skills to enhance AI coding for frontend projects\nAdd Spring Boot or Node.js packages for backend development assistance\nLoad Tauri skills for cross-platform desktop and mobile app development\nUse DDD and design pattern skills for architecture guidance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/partme-ai/full-stack-skills`",
+    "usage_vi": "```\nGenerate a full-stack development skill for [PLATFORM] that automates [SPECIFIC_TASK]. Include code snippets for [LANGUAGE] and instructions for integrating with [TOOL]. Ensure the skill handles [EDGE_CASE] and provides clear error messages for debugging.\n```\nCopy\n\n```\nHere’s a full-stack skill for automating the setup of a Next.js + Tailwind CSS project with a Prisma ORM integration, designed for Cursor IDE. This skill generates a `package.json`, `tailwind.config.js`, `schema.prisma`, and a basic `app/layout.tsx` with responsive styling. It also includes a pre-configured `.env` file for database connections.\n\n**Generated Files:**\n1. `package.json`:\n```json\n{\n  \"name\": \"nextjs-tailwind-prisma\",\n  \"version\": \"1.0.0\",\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"db:generate\": \"prisma generate\",\n    \"db:migrate\": \"prisma migrate dev\"\n  },\n  \"dependencies\": {\n    \"next\": \"^14.1\",\n    \"react\": \"^18.2\",\n    \"react-dom\": \"^18.2\",\n    \"@prisma/client\": \"^5.7\",\n    \"prisma\": \"^5.7\"\n  },\n  \"devDependencies\": {\n    \"tailwindcss\": \"^3.3\",\n    \"postcss\": \"^8.4\",\n    \"autoprefixer\": \"^10.4\"\n  }\n}\n```\n\n2. `tailwind.config.js`:\n```javascript\nmodule.exports = {\n  content: [\n    \"./app/**/*.{js,ts,jsx,tsx,mdx}\",\n    \"./components/**/*.{js,ts,jsx,tsx,mdx}\",\n  ],\n  theme: {\n    extend: {\n      colors: {\n        primary: \"#3b82f6\",\n        secondary: \"#10b981\",\n      },\n    },\n  },\n  plugins: [],\n};\n```\n\n3. `schema.prisma`:\n```prisma\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  name  String\n  email String  @unique\n  posts Post[]\n}\n\nmodel Post {\n  id     Int    @id @default(autoincrement())\n  title  String\n  body   String\n  author User   @relation(fields: [authorId], references: [id])\n  authorId Int\n}\n```\n\n**Integration Steps:**\n1. Run `npm install` to install dependencies.\n2. Configure your `.env` file with your PostgreSQL connection string.\n3. Run `npx prisma generate` to generate the Prisma client.\n4. Run `npx prisma migrate dev` to apply migrations.\n5. Start the development server with `npm run dev`.\n\n**Error Handling:**\n- If the database connection fails, the skill will log the error and suggest checking the `.env` file.\n- If a migration fails, it will provide the exact SQL error for debugging.\n\nThis skill saves developers 30+ minutes of manual setup time and ensures consistency across projects.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:58:09.273174Z",
+    "http_status": 200,
+    "content_hash": "79e3d655e76b617c3facd134602977e8db59437a5b4f5d87b9341371155a3fce",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\full-stack-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\full-stack-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Full Stack Skills - AI Development Skills",
+  "short_description_vi": "Full Stack Skills is a free marketplace for full-stack development skills. It offers a collection of practical AI skills for various platforms. Developers can automate tasks, enhance productivity, and streamline workflows. The skills integrate with tools like Claude, Cursor, and Qoder."
+}

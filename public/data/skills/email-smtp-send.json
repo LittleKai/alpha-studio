@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/email-smtp-send",
+  "slug": "email-smtp-send",
+  "name": "Related Skills",
+  "headline": "Email SMTP Send: Send Emails with Attachments",
+  "short_description": "This skill enables you to send emails through SMTP using environment-configured credentials. It is designed for developers looking to automate email sending and manage email attachments seamlessly.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "tiangong-ai",
+  "install_command": "git clone https://github.com/tiangong-ai/skills",
+  "source_repo_url": "https://github.com/tiangong-ai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "smtp",
+    "email",
+    "send"
+  ],
+  "sections": {
+    "overview": "Email SMTP Send enables reliable outbound email delivery with environment-configured SMTP credentials and optional local file attachments. The skill validates your SMTP configuration before sending, constructs MIME payloads with attached files, and optionally appends sent messages to your IMAP Sent mailbox for cross-client visibility. It returns machine-readable JSON status reports including message IDs, attachment metadata, and sync results. Developers use this skill to automate transactional emails, send reports with attachments, and ensure sent messages appear consistently across email clients. Configuration supports CC/BCC recipients, custom content types (plain or HTML), and message threading headers like In-Reply-To and References.\nSend bulk emails automatically via scripts\nIntegrate email notifications for applications\nAttach files to outgoing emails in MIME format",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/tiangong-ai/skills --skill email-smtp-send`\n`git clone https://github.com/tiangong-ai/skills`",
+    "usage": "```\nSend an email via SMTP using the configured credentials for [COMPANY]. The email should be addressed to [RECIPIENT_EMAIL], with a subject line '[SUBJECT_LINE]'. Include the following message body: [MESSAGE_BODY]. If there are attachments, specify their file paths: [ATTACHMENT_PATHS]. Use the SMTP server configured for [COMPANY]'s [ENVIRONMENT] environment (e.g., development, staging, production).\n```\nCopy\n\n```\n```\nEmail sent successfully!\n\n**Details:**\n- **To:** john.doe@example.com\n- **From:** noreply@[COMPANY].com\n- **Subject:** Project Update: Q3 Deliverables\n- **Attachments:**\n  - /reports/q3_summary.pdf\n  - /images/logo.png\n\n**Message Body:**\nHi John,\n\nAttached are the Q3 project deliverables and the updated company logo for your review. Please let me know if you need any changes.\n\nBest regards,\n[Your Name]\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "email-smtp-send#main-content",
+      "email-smtp-send#overview",
+      "email-smtp-send#setup",
+      "email-smtp-send#examples",
+      "email-smtp-send#tools",
+      "email-smtp-send#mcp",
+      "email-smtp-send#related"
+    ],
+    "overview_vi": "Email SMTP Send enables reliable outbound email delivery with environment-configured SMTP credentials and optional local file attachments. The skill validates your SMTP configuration before sending, constructs MIME payloads with attached files, and optionally appends sent messages to your IMAP Sent mailbox for cross-client visibility. It returns machine-readable JSON status reports including message IDs, attachment metadata, and sync results. Developers use this skill to automate transactional emails, send reports with attachments, and ensure sent messages appear consistently across email clients. Configuration supports CC/BCC recipients, custom content types (plain or HTML), and message threading headers like In-Reply-To and References.\nSend bulk emails automatically via scripts\nIntegrate email notifications for applications\nAttach files to outgoing emails in MIME format",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/tiangong-ai/skills --skill email-smtp-send`\n`git clone https://github.com/tiangong-ai/skills`",
+    "usage_vi": "```\nSend an email via SMTP using the configured credentials for [COMPANY]. The email should be addressed to [RECIPIENT_EMAIL], with a subject line '[SUBJECT_LINE]'. Include the following message body: [MESSAGE_BODY]. If there are attachments, specify their file paths: [ATTACHMENT_PATHS]. Use the SMTP server configured for [COMPANY]'s [ENVIRONMENT] environment (e.g., development, staging, production).\n```\nCopy\n\n```\n```\nEmail sent successfully!\n\n**Details:**\n- **To:** john.doe@example.com\n- **From:** noreply@[COMPANY].com\n- **Subject:** Project Update: Q3 Deliverables\n- **Attachments:**\n  - /reports/q3_summary.pdf\n  - /images/logo.png\n\n**Message Body:**\nHi John,\n\nAttached are the Q3 project deliverables and the updated company logo for your review. Please let me know if you need any changes.\n\nBest regards,\n[Your Name]\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:22:11.104902Z",
+    "http_status": 200,
+    "content_hash": "a1bdeaf81d2eb2d513f0ee7767f51a5aabf1b877fb7feb8d74b5cc1b297e3861",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\email-smtp-send.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\email-smtp-send.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Email SMTP Send: Send Emails with Attachments",
+  "short_description_vi": "This skill enables you to send emails through SMTP using environment-configured credentials. It is designed for developers looking to automate email sending and manage email attachments seamlessly."
+}

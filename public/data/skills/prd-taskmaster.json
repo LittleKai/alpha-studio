@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prd-taskmaster",
+  "slug": "prd-taskmaster",
+  "name": "PRD-Taskmaster",
+  "headline": "PRD-Taskmaster - AI-Generated Product Requirements",
+  "short_description": "AI-powered PRD generation for Claude Code with taskmaster integration. Automates product requirements documentation for development teams. Connects to Claude Code and Taskmaster workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "anombyte93",
+  "install_command": "git clone https://github.com/anombyte93/prd-taskmaster.git",
+  "source_repo_url": "https://github.com/anombyte93/prd-taskmaster",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "product-management",
+    "prd",
+    "ai-development",
+    "taskmaster",
+    "product-requirements",
+    "claude-skills",
+    "requirements-engineering",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "prd-taskmaster automates product requirements documentation by conducting discovery interviews, generating graded PRDs, and compiling them into dependency-ordered task graphs. The engine enforces deterministic completion through evidence-gated execution and a structural `SHIP_CHECK_OK` token that proves tasks are genuinely done, not just claimed. It works with Claude, Codex, and Gemini across separate quota pools, and optionally integrates with TaskMaster backends while remaining backend-neutral via persistent `tasks.json` files. Teams use it to eliminate placeholder specs, reduce manual task coordination, and achieve cost-efficient execution by routing work to the cheapest capable model.\nConvert product goals into graded, placeholder-free PRDs for development teams\nGenerate and execute dependency-ordered task graphs with complexity scoring\nVerify task completion with deterministic evidence gates instead of claims\nRoute AI work across Claude, Codex, and Gemini to optimize token costs\nAdds a dark mode toggle in user settings to improve accessibility and reduce eye strain in low-light conditions. Targets 80% of users who prefer dark mode based on 2023 user survey.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anombyte93/prd-taskmaster`",
+    "usage": "```\nGenerate a PRD for [FEATURE_NAME] using the following context: [SHORT_DESCRIPTION], [USER_STORIES], [ACCEPTANCE_CRITERIA], and [TECHNICAL_CONSTRAINTS]. Use the PRD Taskmaster template with sections for: 1) Overview, 2) Goals & Success Metrics, 3) User Stories, 4) Technical Specifications, 5) Open Questions, and 6) Dependencies. Include a GitHub issue template snippet for Taskmaster. Format as a markdown file ready for Claude Code.\n```\nCopy\n\n```\n```markdown\n# PRD: Dark Mode Toggle for Mobile App",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "prd-taskmaster#main-content",
+      "prd-taskmaster#overview",
+      "prd-taskmaster#setup",
+      "prd-taskmaster#examples",
+      "prd-taskmaster#tools",
+      "prd-taskmaster#mcp",
+      "prd-taskmaster#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "prd-taskmaster tự động hóa quy trình viết tài liệu yêu cầu sản phẩm bằng cách thực hiện các buổi phỏng vấn tìm hiểu (discovery interviews), tạo các bản PRD được chấm điểm phân loại, và tổng hợp chúng thành các biểu đồ tác vụ (task graphs) được sắp xếp theo thứ tự phụ thuộc. Engine này bắt buộc hoàn thành công việc một cách xác định (deterministic) thông qua việc thực thi có kiểm chứng bằng bằng chứng (evidence-gated execution) và một token cấu trúc `SHIP_CHECK_OK` để chứng minh các tác vụ thực sự hoàn thành chứ không chỉ là khai báo suông. Công cụ hoạt động với Claude, Codex và Gemini trên các pool hạn mức (quota pools) riêng biệt, đồng thời hỗ trợ tích hợp tùy chọn với các backend TaskMaster trong khi vẫn duy trì tính độc lập với backend nhờ các file `tasks.json` lưu trữ liên tục (persistent). Các đội ngũ phát triển sử dụng công cụ này để loại bỏ các đặc tả kỹ thuật mang tính giữ chỗ (placeholder specs), giảm thiểu việc điều phối tác vụ thủ công, và tối ưu hóa chi phí thực thi bằng cách định tuyến công việc đến mô hình có chi phí thấp nhất mà vẫn đáp ứng được yêu cầu.\nChuyển đổi mục tiêu sản phẩm thành các bản PRD chất lượng, không chứa thông tin giữ chỗ cho các đội ngũ phát triển\nTạo và thực thi các biểu đồ tác vụ được sắp xếp theo thứ tự phụ thuộc kèm theo điểm đánh giá độ phức tạp\nXác thực việc hoàn thành tác vụ bằng các cổng kiểm chứng thực tế thay vì chỉ dựa vào khai báo\nĐịnh tuyến công việc AI qua Claude, Codex và Gemini để tối ưu hóa chi phí token\nThêm nút chuyển đổi chế độ tối (dark mode) trong phần cài đặt người dùng để tăng khả năng tiếp cận và giảm mỏi mắt trong điều kiện thiếu sáng. Hướng tới mục tiêu phục vụ 80% người dùng ưu tiên chế độ tối dựa trên khảo sát người dùng năm 2023.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/anombyte93/prd-taskmaster`",
+    "usage_vi": "```\nTạo một bản PRD cho [FEATURE_NAME] bằng cách sử dụng ngữ cảnh sau: [SHORT_DESCRIPTION], [USER_STORIES], [ACCEPTANCE_CRITERIA] và [TECHNICAL_CONSTRAINTS]. Sử dụng template PRD Taskmaster với các phần bao gồm: 1) Overview, 2) Goals & Success Metrics, 3) User Stories, 4) Technical Specifications, 5) Open Questions, và 6) Dependencies. Đính kèm một đoạn mẫu GitHub issue template cho Taskmaster. Định dạng dưới dạng file markdown sẵn sàng cho Claude Code.\n```\nCopy\n\n```\n```markdown\n# PRD: Nút chuyển đổi Chế độ tối cho Ứng dụng Di động"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:24:42.305725Z",
+    "http_status": 200,
+    "content_hash": "980c7cfff42d75d2a135eacc4a87d126a9005c32e7697fc9c376af2edd806a4c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prd-taskmaster.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prd-taskmaster.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "PRD-Taskmaster - Tự động tạo tài liệu yêu cầu sản phẩm (PRD) bằng AI",
+  "short_description_vi": "Tự động tạo PRD bằng AI cho Claude Code tích hợp với taskmaster. Tự động hóa tài liệu yêu cầu sản phẩm cho các đội ngũ phát triển. Kết nối trực tiếp với quy trình làm việc của Claude Code và Taskmaster."
+}

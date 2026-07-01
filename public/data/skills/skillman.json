@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillman",
+  "slug": "skillman",
+  "name": "Skillman",
+  "headline": "Skillman - Manage Claude Skills",
+  "short_description": "Skillman is a CLI tool for managing Claude skills. It allows operations teams to install, update, and remove skills directly from the command line. This streamlines workflows for developers and operations teams working with Claude's AI capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "chrisvoncsefalvay",
+  "install_command": "git clone https://github.com/chrisvoncsefalvay/skillman.git",
+  "source_repo_url": "https://github.com/chrisvoncsefalvay/skillman",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-skills",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Skillman is a command-line tool that simplifies Claude skill management by automating installation, versioning, and synchronization from GitHub repositories. It supports multiple installation scopes (user and project level), skill verification, and manifest-based tracking through skills.toml files. The tool handles nested skill repositories, version pinning, and dependency synchronization while providing built-in security warnings before installation. Operations teams and developers use skillman to streamline Claude skill workflows, manage skill updates across projects, and maintain consistent skill configurations. Installation is straightforward via pip, uv, or pipx, with features for listing, updating, removing, and cleaning installed skills.\nInstall and manage Claude skills from GitHub repositories in development projects\nUpdate multiple skills across user and project scopes with version control\nSynchronize skill manifests between team members and environments\nVerify skill integrity and security before installation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/chrisvoncsefalvay/skillman`",
+    "usage": "```\nI want to use Skillman to manage my Claude skills. Here's what I need to do: [TASK]. Please provide the exact Skillman commands I should use, including any necessary flags or parameters. My current skills are: [LIST OF SKILLS]. I'm working in [ENVIRONMENT] and want to [GOAL].\n```\nCopy\n\n```\n```bash\n# Install a new skill\nskillman install --name 'Data Analyzer' --version '1.2.0'\n\n# Update all skills to their latest versions\nskillman update --all\n\n# Remove an outdated skill\nskillman remove --name 'Old Skill' --force\n\n# List all installed skills with details\nskillman list --verbose\n```\n\n**Skill Management Summary**\n- Installed: Data Analyzer v1.2.0\n- Updated: 3 skills to latest versions\n- Removed: Old Skill\n- Total skills: 8\n\n**Recommendations**\n- Consider installing the 'Code Reviewer' skill for your development workflow\n- Schedule regular updates to keep all skills current\n- Review deprecated skills and remove them to maintain optimal performance\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillman#main-content",
+      "skillman#overview",
+      "skillman#setup",
+      "skillman#examples",
+      "skillman#tools",
+      "skillman#mcp",
+      "skillman#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skillman is a command-line tool that simplifies Claude skill management by automating installation, versioning, and synchronization from GitHub repositories. It supports multiple installation scopes (user and project level), skill verification, and manifest-based tracking through skills.toml files. The tool handles nested skill repositories, version pinning, and dependency synchronization while providing built-in security warnings before installation. Operations teams and developers use skillman to streamline Claude skill workflows, manage skill updates across projects, and maintain consistent skill configurations. Installation is straightforward via pip, uv, or pipx, with features for listing, updating, removing, and cleaning installed skills.\nInstall and manage Claude skills from GitHub repositories in development projects\nUpdate multiple skills across user and project scopes with version control\nSynchronize skill manifests between team members and environments\nVerify skill integrity and security before installation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/chrisvoncsefalvay/skillman`",
+    "usage_vi": "```\nI want to use Skillman to manage my Claude skills. Here's what I need to do: [TASK]. Please provide the exact Skillman commands I should use, including any necessary flags or parameters. My current skills are: [LIST OF SKILLS]. I'm working in [ENVIRONMENT] and want to [GOAL].\n```\nCopy\n\n```\n```bash\n# Install a new skill\nskillman install --name 'Data Analyzer' --version '1.2.0'\n\n# Update all skills to their latest versions\nskillman update --all\n\n# Remove an outdated skill\nskillman remove --name 'Old Skill' --force\n\n# List all installed skills with details\nskillman list --verbose\n```\n\n**Skill Management Summary**\n- Installed: Data Analyzer v1.2.0\n- Updated: 3 skills to latest versions\n- Removed: Old Skill\n- Total skills: 8\n\n**Recommendations**\n- Consider installing the 'Code Reviewer' skill for your development workflow\n- Schedule regular updates to keep all skills current\n- Review deprecated skills and remove them to maintain optimal performance\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:21.564483Z",
+    "http_status": 200,
+    "content_hash": "1f4068036ba5c1c4274289b6ae472816673596178499b57df7f75131c9351ea9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillman.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillman.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skillman - Manage Claude Skills",
+  "short_description_vi": "Skillman is a CLI tool for managing Claude skills. It allows operations teams to install, update, and remove skills directly from the command line. This streamlines workflows for developers and operations teams working with Claude's AI capabilities."
+}

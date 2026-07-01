@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opencode-workflow",
+  "slug": "opencode-workflow",
+  "name": "browser-use",
+  "headline": "OpenCode Workflow - AI automation for software",
+  "short_description": "OpenCode Workflow is an AI automation skill that provides a universal setup with specialized agents, skills, commands, and plugins for any software project. It benefits operations teams by streamlining workflows and connecting to various tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "CloudAI-X",
+  "install_command": "git clone https://github.com/CloudAI-X/opencode-workflow.git",
+  "source_repo_url": "https://github.com/CloudAI-X/opencode-workflow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "OpenCode Workflow is a universal AI automation framework that coordinates 7 specialized agents, 12 commands, and 7 domain-specific skills to streamline software development tasks. The system uses an orchestrator pattern to delegate work in parallel—code reviews, security audits, test planning, and debugging run simultaneously rather than sequentially. It includes security scanning plugins, auto-formatting, and verification guardrails that protect workflows without blocking productivity. Teams install it into their project's `.opencode/` directory and invoke specialists via @mentions or quick commands like /review, /commit, and /security-audit. Operations teams benefit from reduced manual coordination, while development teams gain faster feedback cycles and systematic quality checks across multiple perspectives.\nGenerate conventional commit messages with /commit command\nRun multi-perspective code reviews in parallel across 6 specialist agents\nConduct OWASP vulnerability checks via @security-auditor\nPlan comprehensive test coverage with @test-architect",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CloudAI-X/opencode-workflow`",
+    "usage": "```\nSet up a complete OpenCode Workflow for [PROJECT_NAME] in [PROGRAMMING_LANGUAGE]. Include: 1) A project structure with [FOLDER_STRUCTURE], 2) Essential skills like [SKILLS_LIST], 3) Commands for [COMMANDS_LIST], and 4) Plugins for [PLUGINS_LIST]. Ensure all components are configured for [DEVELOPMENT_ENVIRONMENT].\n```\nCopy\n\n```\n### OpenCode Workflow Setup for 'E-Commerce API' (Python)\n\n**Project Structure:**\n```\necommerce-api/\n├── src/\n│   ├── models/\n│   ├── routes/\n│   ├── services/\n│   └── utils/\n├── tests/\n├── config/\n├── docs/\n└── .opencode/\n    ├── skills/\n    ├── commands/\n    └── plugins/\n```\n\n**Essential Skills:**\n- **Code Review Agent:** Auto-review PRs for Python best practices, security vulnerabilities, and performance bottlenecks.\n- **Documentation Generator:** Creates API docs from docstrings and OpenAPI specs.\n- **Test Automation:** Runs unit/integration tests on commit and generates coverage reports.\n- **Dependency Manager:** Tracks and updates dependencies with security patches.\n\n**Commands:**\n- `opencode:init` → Initializes the workflow with pre-configured agents.\n- `opencode:test` → Runs all tests and generates a JUnit report.\n- `opencode:deploy --env=staging` → Deploys to staging with rollback support.\n- `opencode:review --pr=123` → Reviews PR #123 and posts feedback in GitHub.\n\n**Plugins:**\n- **GitHub Integration:** Syncs workflows with GitHub Actions and PRs.\n- **Docker Support:** Auto-generates Dockerfiles and docker-compose.yml.\n- **AWS CLI:** Deploys to AWS ECS with IAM role validation.\n- **Slack Notifier:** Posts deployment status and alerts to a team channel.\n\n**Configuration:**\n```yaml\n# .opencode/config.yaml\nproject:\n  name: ecommerce-api\n  language: python\n  version: 3.11\nenvironments:\n  staging:\n    docker_image: ecommerce-api-staging:latest\n    aws_ecr: 123456789012.dkr.ecr.us-west-2.amazonaws.com\n    slack_channel: #dev-team-alerts\n```\n\n**Next Steps:**\n1. Run `opencode:init` to generate the workflow files.\n2. Commit the `.opencode/` directory to your repo.\n3. Push a feature branch and open a PR to trigger the Code Review Agent.\n4. Use `opencode:deploy --env=staging` to test the deployment pipeline.\n\nAll components are pre-configured for Python 3.11, Docker, AWS ECS, and GitHub. The workflow includes automated testing, security scanning, and deployment validation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "opencode-workflow#main-content",
+      "opencode-workflow#overview",
+      "opencode-workflow#setup",
+      "opencode-workflow#examples",
+      "opencode-workflow#tools",
+      "opencode-workflow#mcp",
+      "opencode-workflow#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OpenCode Workflow is a universal AI automation framework that coordinates 7 specialized agents, 12 commands, and 7 domain-specific skills to streamline software development tasks. The system uses an orchestrator pattern to delegate work in parallel—code reviews, security audits, test planning, and debugging run simultaneously rather than sequentially. It includes security scanning plugins, auto-formatting, and verification guardrails that protect workflows without blocking productivity. Teams install it into their project's `.opencode/` directory and invoke specialists via @mentions or quick commands like /review, /commit, and /security-audit. Operations teams benefit from reduced manual coordination, while development teams gain faster feedback cycles and systematic quality checks across multiple perspectives.\nGenerate conventional commit messages with /commit command\nRun multi-perspective code reviews in parallel across 6 specialist agents\nConduct OWASP vulnerability checks via @security-auditor\nPlan comprehensive test coverage with @test-architect",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CloudAI-X/opencode-workflow`",
+    "usage_vi": "```\nSet up a complete OpenCode Workflow for [PROJECT_NAME] in [PROGRAMMING_LANGUAGE]. Include: 1) A project structure with [FOLDER_STRUCTURE], 2) Essential skills like [SKILLS_LIST], 3) Commands for [COMMANDS_LIST], and 4) Plugins for [PLUGINS_LIST]. Ensure all components are configured for [DEVELOPMENT_ENVIRONMENT].\n```\nCopy\n\n```\n### OpenCode Workflow Setup for 'E-Commerce API' (Python)\n\n**Project Structure:**\n```\necommerce-api/\n├── src/\n│   ├── models/\n│   ├── routes/\n│   ├── services/\n│   └── utils/\n├── tests/\n├── config/\n├── docs/\n└── .opencode/\n    ├── skills/\n    ├── commands/\n    └── plugins/\n```\n\n**Essential Skills:**\n- **Code Review Agent:** Auto-review PRs for Python best practices, security vulnerabilities, and performance bottlenecks.\n- **Documentation Generator:** Creates API docs from docstrings and OpenAPI specs.\n- **Test Automation:** Runs unit/integration tests on commit and generates coverage reports.\n- **Dependency Manager:** Tracks and updates dependencies with security patches.\n\n**Commands:**\n- `opencode:init` → Initializes the workflow with pre-configured agents.\n- `opencode:test` → Runs all tests and generates a JUnit report.\n- `opencode:deploy --env=staging` → Deploys to staging with rollback support.\n- `opencode:review --pr=123` → Reviews PR #123 and posts feedback in GitHub.\n\n**Plugins:**\n- **GitHub Integration:** Syncs workflows with GitHub Actions and PRs.\n- **Docker Support:** Auto-generates Dockerfiles and docker-compose.yml.\n- **AWS CLI:** Deploys to AWS ECS with IAM role validation.\n- **Slack Notifier:** Posts deployment status and alerts to a team channel.\n\n**Configuration:**\n```yaml\n# .opencode/config.yaml\nproject:\n  name: ecommerce-api\n  language: python\n  version: 3.11\nenvironments:\n  staging:\n    docker_image: ecommerce-api-staging:latest\n    aws_ecr: 123456789012.dkr.ecr.us-west-2.amazonaws.com\n    slack_channel: #dev-team-alerts\n```\n\n**Next Steps:**\n1. Run `opencode:init` to generate the workflow files.\n2. Commit the `.opencode/` directory to your repo.\n3. Push a feature branch and open a PR to trigger the Code Review Agent.\n4. Use `opencode:deploy --env=staging` to test the deployment pipeline.\n\nAll components are pre-configured for Python 3.11, Docker, AWS ECS, and GitHub. The workflow includes automated testing, security scanning, and deployment validation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:28:03.966449Z",
+    "http_status": 200,
+    "content_hash": "805bb70a41a7fb2104312bfdd84a5e74a90ccb095538dd86e353088a9cfd9a8b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\opencode-workflow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\opencode-workflow.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "OpenCode Workflow - AI automation for software",
+  "short_description_vi": "OpenCode Workflow is an AI automation skill that provides a universal setup with specialized agents, skills, commands, and plugins for any software project. It benefits operations teams by streamlining workflows and connecting to various tools and workflows."
+}

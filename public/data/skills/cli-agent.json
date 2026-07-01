@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cli-agent",
+  "slug": "cli-agent",
+  "name": "CLI Agent",
+  "headline": "HTTP gateway for Claude CLI access",
+  "short_description": "A minimal Go HTTP gateway service that bridges HTTP requests to Claude CLI. Enables any HTTP-compatible application to use Claude CLI's headless mode capabilities. Ideal for integrating AI into web, mobile, or IoT applications.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "myysophia",
+  "install_command": "git clone https://github.com/myysophia/cli-agent.git",
+  "source_repo_url": "https://github.com/myysophia/cli-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "codex",
+    "claude-code",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "CLI Gateway is a minimal Go HTTP service that converts HTTP requests into calls to various AI command-line interfaces, including Claude, Cursor, Codex, Gemini, and Qwen. It provides a unified HTTP interface with streaming support via Server-Sent Events, allowing web applications, mobile apps, IoT devices, and backend systems to leverage headless CLI capabilities without direct CLI access. The gateway handles conversation history conversion, system prompts, MCP tool integrations (WebFetch, Playwright), and session management. It includes Admin UI for configuration and MCP management, Release Notes tracking for all supported CLIs, and is deployable via Docker or direct binary execution.\nIntegrate AI into web and mobile applications via HTTP API\nAdd AI capabilities to IoT devices and edge computing systems\nCreate custom nodes for low-code platforms (Dify, n8n, Zapier)\nAutomate CI/CD pipelines and scheduled tasks with AI analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/myysophia/cli-agent`",
+    "usage": "```\nAct as a CLI Agent for [COMPANY] in the [INDUSTRY] sector. I will send you HTTP requests with [DATA] to process. Respond with the appropriate HTTP status code and JSON-formatted response body. Begin now.\n```\nCopy\n\n```\n```http\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"analysis\": \"Based on the provided sales data, Q3 shows a 15% increase in revenue compared to Q2.\",\n    \"recommendations\": [\n      \"Consider expanding marketing efforts in Region 4\",\n      \"Investigate the sudden drop in Product B sales\",\n      \"Prepare for potential supply chain disruptions in Q4\"\n    ],\n    \"confidence\": 0.87\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cli-agent#main-content",
+      "cli-agent#overview",
+      "cli-agent#setup",
+      "cli-agent#examples",
+      "cli-agent#tools",
+      "cli-agent#mcp",
+      "cli-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CLI Gateway là một dịch vụ HTTP tối giản bằng Go, giúp chuyển đổi các HTTP request thành các lệnh gọi đến nhiều giao diện dòng lệnh (CLI) AI khác nhau, bao gồm Claude, Cursor, Codex, Gemini và Qwen. Nó cung cấp một giao diện HTTP hợp nhất hỗ trợ truyền dữ liệu dạng luồng (streaming) qua Server-Sent Events, cho phép các ứng dụng web, mobile app, thiết bị IoT và hệ thống backend tận dụng các khả năng của headless CLI mà không cần truy cập trực tiếp. Gateway này tự động xử lý việc chuyển đổi lịch sử trò chuyện, system prompt, tích hợp công cụ MCP (WebFetch, Playwright) và quản lý session. Hệ thống tích hợp sẵn Admin UI để cấu hình và quản lý MCP, theo dõi Release Notes của tất cả các CLI được hỗ trợ, đồng thời có thể triển khai dễ dàng qua Docker hoặc chạy trực tiếp file binary.\nTích hợp AI vào các ứng dụng web và di động thông qua HTTP API\nBổ sung năng lực AI cho các thiết bị IoT và hệ thống edge computing\nTạo các custom node cho các nền tảng low-code (Dify, n8n, Zapier)\nTự động hóa các pipeline CI/CD và tác vụ định kỳ bằng phân tích AI",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/myysophia/cli-agent`",
+    "usage_vi": "```\nHãy đóng vai trò là một CLI Agent cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tôi sẽ gửi cho bạn các HTTP request chứa [DATA] để xử lý. Hãy phản hồi bằng HTTP status code phù hợp và response body định dạng JSON. Bắt đầu ngay bây giờ.\n```\nSao chép\n\n```\n```http\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{\n  \"status\": \"success\",\n  \"data\": {\n    \"analysis\": \"Dựa trên dữ liệu doanh số được cung cấp, doanh thu Quý 3 tăng 15% so với Quý 2.\",\n    \"recommendations\": [\n      \"Cân nhắc mở rộng hoạt động marketing tại Khu vực 4\",\n      \"Tìm hiểu nguyên nhân doanh số Sản phẩm B sụt giảm đột biến\",\n      \"Chuẩn bị cho các nguy cơ gián đoạn chuỗi cung ứng trong Quý 4\"\n    ],\n    \"confidence\": 0.87\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:15:20.175234Z",
+    "http_status": 200,
+    "content_hash": "f4d96cf65e51a7e42fa6dfcc6171aa62d39d98288626a9a7ccf78c55200444c0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cli-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cli-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "HTTP gateway hỗ trợ truy cập Claude CLI",
+  "short_description_vi": "Một dịch vụ HTTP gateway tối giản viết bằng Go đóng vai trò cầu nối chuyển tiếp các HTTP request đến Claude CLI. Cho phép bất kỳ ứng dụng nào tương thích với HTTP sử dụng các tính năng trong chế độ headless của Claude CLI. Giải pháp lý tưởng để tích hợp AI vào các ứng dụng web, di động (mobile) hoặc IoT."
+}

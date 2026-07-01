@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-use",
+  "slug": "mcp-use",
+  "name": "react-native-best-practices",
+  "headline": "mcp-use: Custom Agent Interaction with MCP Servers",
+  "short_description": "mcp-use simplifies interactions with MCP servers through customizable agents, enabling integration and communication. Ideal for developers looking to use AI capabilities in their applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "mcp-use",
+  "install_command": "claude install mcp-use/mcp-use",
+  "source_repo_url": "https://github.com/mcp-use/mcp-use",
+  "works_with": [
+    "ChatGPTClaude"
+  ],
+  "tags": [
+    "custom agents",
+    "AI agents",
+    "MCP",
+    "TypeScript",
+    "integration"
+  ],
+  "sections": {
+    "overview": "mcp-use provides a framework for developers to interact with Model Context Protocol (MCP) servers through configurable agents. The tool enables seamless integration and communication between applications and MCP servers, allowing developers to leverage AI capabilities without building server communication from scratch. It supports multiple LLM providers including Claude, OpenRouter, and OpenAI-compatible services, making it adaptable to various development environments. The project includes an inspector for testing and configuration, along with CLI deployment tools for production use. Developers building AI-powered applications benefit from the simplified MCP server integration and agent customization capabilities.\nBuilding custom AI agents to automate specific tasks within your application.\nIntegrating AI functionalities into existing software solutions for enhanced user experiences.\nStreamlining server interactions to improve overall productivity and efficiency.\nCreating intelligent chatbots that can communicate with users via MCP servers.",
+    "setup": "Terminal\nCopy\n`claude install mcp-use/mcp-use`\n`git clone https://github.com/mcp-use/mcp-use`",
+    "usage": "```\nCreate a custom agent for interacting with an MCP server to [SPECIFIC_TASK]. The agent should be configured to [ACTION] and [ACTION]. Ensure it can handle [DATA_TYPE] and integrate with [EXTERNAL_SYSTEM]. Provide the necessary code snippets and configuration details.\n```\nCopy\n\n```\nTo create a custom agent for interacting with an MCP server to manage user authentication, the agent should be configured to validate user credentials and generate session tokens. It should handle JSON data and integrate with the existing user database. Below is the code snippet and configuration details:\n\n```python\nimport mcp\n\n# Configuration details\nconfig = {\n    'server_url': 'https://api.mcp.example.com',\n    'api_key': 'your_api_key_here',\n    'database_connection': 'mongodb://localhost:27017/userdb'\n}\n\n# Create the agent\nagent = mcp.Agent(config)\n\n# Define the validation function\ndef validate_user(username, password):\n    # Validate credentials against the database\n    user = agent.db.find_one({'username': username})\n    if user and user['password'] == password:\n        return True\n    return False\n\n# Define the token generation function\ndef generate_token(username):\n    # Generate a session token\n    token = agent.generate_token(username)\n    return token\n\n# Example usage\nusername = 'john_doe'\npassword = 'secure_password'\nif validate_user(username, password):\n    token = generate_token(username)\n    print(f'Session token for {username}: {token}')\nelse:\n    print('Invalid credentials')\n```\n\nThis code snippet demonstrates how to create a custom agent for managing user authentication with an MCP server. The agent is configured to validate user credentials and generate session tokens, handling JSON data and integrating with the existing user database.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, Claude"
+    ],
+    "related_skills": [
+      "mcp-use#main-content",
+      "mcp-use#overview",
+      "mcp-use#setup",
+      "mcp-use#examples",
+      "mcp-use#tools",
+      "mcp-use#mcp",
+      "mcp-use#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcp-use provides a framework for developers to interact with Model Context Protocol (MCP) servers through configurable agents. The tool enables seamless integration and communication between applications and MCP servers, allowing developers to leverage AI capabilities without building server communication from scratch. It supports multiple LLM providers including Claude, OpenRouter, and OpenAI-compatible services, making it adaptable to various development environments. The project includes an inspector for testing and configuration, along with CLI deployment tools for production use. Developers building AI-powered applications benefit from the simplified MCP server integration and agent customization capabilities.\nBuilding custom AI agents to automate specific tasks within your application.\nIntegrating AI functionalities into existing software solutions for enhanced user experiences.\nStreamlining server interactions to improve overall productivity and efficiency.\nCreating intelligent chatbots that can communicate with users via MCP servers.",
+    "setup_vi": "Terminal\nCopy\n`claude install mcp-use/mcp-use`\n`git clone https://github.com/mcp-use/mcp-use`",
+    "usage_vi": "```\nCreate a custom agent for interacting with an MCP server to [SPECIFIC_TASK]. The agent should be configured to [ACTION] and [ACTION]. Ensure it can handle [DATA_TYPE] and integrate with [EXTERNAL_SYSTEM]. Provide the necessary code snippets and configuration details.\n```\nCopy\n\n```\nTo create a custom agent for interacting with an MCP server to manage user authentication, the agent should be configured to validate user credentials and generate session tokens. It should handle JSON data and integrate with the existing user database. Below is the code snippet and configuration details:\n\n```python\nimport mcp\n\n# Configuration details\nconfig = {\n    'server_url': 'https://api.mcp.example.com',\n    'api_key': 'your_api_key_here',\n    'database_connection': 'mongodb://localhost:27017/userdb'\n}\n\n# Create the agent\nagent = mcp.Agent(config)\n\n# Define the validation function\ndef validate_user(username, password):\n    # Validate credentials against the database\n    user = agent.db.find_one({'username': username})\n    if user and user['password'] == password:\n        return True\n    return False\n\n# Define the token generation function\ndef generate_token(username):\n    # Generate a session token\n    token = agent.generate_token(username)\n    return token\n\n# Example usage\nusername = 'john_doe'\npassword = 'secure_password'\nif validate_user(username, password):\n    token = generate_token(username)\n    print(f'Session token for {username}: {token}')\nelse:\n    print('Invalid credentials')\n```\n\nThis code snippet demonstrates how to create a custom agent for managing user authentication with an MCP server. The agent is configured to validate user credentials and generate session tokens, handling JSON data and integrating with the existing user database.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:14:24.952209Z",
+    "http_status": 200,
+    "content_hash": "fb8f154e95505f4501bcc9ccfd6f09c78f6b4a4d074c3cc37ee4bef49ffdf154",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-use.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-use.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mcp-use: Custom Agent Interaction with MCP Servers",
+  "short_description_vi": "mcp-use simplifies interactions with MCP servers through customizable agents, enabling integration and communication. Ideal for developers looking to use AI capabilities in their applications."
+}

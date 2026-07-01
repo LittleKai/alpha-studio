@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-server-browserbase",
+  "slug": "mcp-server-browserbase",
+  "name": "MCP Server Browserbase",
+  "headline": "mcp-server-browserbase: Control Browsers with AI",
+  "short_description": "The mcp-server-browserbase skill helps LLMs to control web browsers using Browserbase and Stagehand. Ideal for automating web interactions, this skill enhances productivity and streamlines workflows in various applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "browserbase",
+  "install_command": "claude install browserbase/mcp-server-browserbase",
+  "source_repo_url": "https://github.com/browserbase/mcp-server-browserbase",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "browser control",
+    "AI integration",
+    "web scraping",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "mcp-server-browserbase is an MCP server that integrates Browserbase and Stagehand to give language models the ability to control and interact with web browsers programmatically. It enables LLMs to automate web tasks, navigate websites, and perform complex browser interactions without manual intervention. The skill is designed for developers and AI systems that need to automate web workflows, extract data from websites, or perform repetitive browser-based tasks at scale. By connecting Claude, Cursor, and other AI agents to real browser instances, it bridges the gap between AI reasoning and web interaction. This tool is ideal for automation engineers, data extraction pipelines, and applications requiring intelligent web navigation.\nAutomate the extraction of product prices and descriptions from e-commerce sites for competitive analysis.\nConduct automated testing of web applications to ensure functionality and user experience.\nCreate intelligent bots that assist customers by navigating through web interfaces and providing real-time support.\nImplement automated reporting by capturing screenshots of web pages and extracting relevant data for analysis.",
+    "setup": "Terminal\nCopy\n`claude install browserbase/mcp-server-browserbase`\n`git clone https://github.com/browserbase/mcp-server-browserbase`",
+    "usage": "```\nUsing the mcp-server-browserbase skill, navigate to [WEBSITE_URL] and perform the following tasks: [TASK_LIST]. Extract and summarize the key information from the results. For example, 'Navigate to https://example.com/products and extract the prices and features of the top 5 products. Summarize the findings in a table format.'\n```\nCopy\n\n```\nBased on your request, I navigated to https://example.com/products and extracted the following information:\n\n1. **Product A**: $99.99 - Wireless Bluetooth Headphones with noise cancellation and 30-hour battery life.\n2. **Product B**: $149.99 - Smartphone with 6.5-inch display, 128GB storage, and dual cameras.\n3. **Product C**: $249.99 - Laptop with 11th Gen Intel Core i5, 8GB RAM, and 256GB SSD.\n4. **Product D**: $79.99 - Smartwatch with heart rate monitor, GPS, and water resistance.\n5. **Product E**: $49.99 - Wireless Earbuds with touch controls and 20-hour battery life.\n\nThe extracted data has been summarized in a table format for easy comparison.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "mcp-server-browserbase#main-content",
+      "mcp-server-browserbase#overview",
+      "mcp-server-browserbase#setup",
+      "mcp-server-browserbase#examples",
+      "mcp-server-browserbase#tools",
+      "mcp-server-browserbase#mcp",
+      "mcp-server-browserbase#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "mcp-server-browserbase is an MCP server that integrates Browserbase and Stagehand to give language models the ability to control and interact with web browsers programmatically. It enables LLMs to automate web tasks, navigate websites, and perform complex browser interactions without manual intervention. The skill is designed for developers and AI systems that need to automate web workflows, extract data from websites, or perform repetitive browser-based tasks at scale. By connecting Claude, Cursor, and other AI agents to real browser instances, it bridges the gap between AI reasoning and web interaction. This tool is ideal for automation engineers, data extraction pipelines, and applications requiring intelligent web navigation.\nAutomate the extraction of product prices and descriptions from e-commerce sites for competitive analysis.\nConduct automated testing of web applications to ensure functionality and user experience.\nCreate intelligent bots that assist customers by navigating through web interfaces and providing real-time support.\nImplement automated reporting by capturing screenshots of web pages and extracting relevant data for analysis.",
+    "setup_vi": "Terminal\nCopy\n`claude install browserbase/mcp-server-browserbase`\n`git clone https://github.com/browserbase/mcp-server-browserbase`",
+    "usage_vi": "```\nUsing the mcp-server-browserbase skill, navigate to [WEBSITE_URL] and perform the following tasks: [TASK_LIST]. Extract and summarize the key information from the results. For example, 'Navigate to https://example.com/products and extract the prices and features of the top 5 products. Summarize the findings in a table format.'\n```\nCopy\n\n```\nBased on your request, I navigated to https://example.com/products and extracted the following information:\n\n1. **Product A**: $99.99 - Wireless Bluetooth Headphones with noise cancellation and 30-hour battery life.\n2. **Product B**: $149.99 - Smartphone with 6.5-inch display, 128GB storage, and dual cameras.\n3. **Product C**: $249.99 - Laptop with 11th Gen Intel Core i5, 8GB RAM, and 256GB SSD.\n4. **Product D**: $79.99 - Smartwatch with heart rate monitor, GPS, and water resistance.\n5. **Product E**: $49.99 - Wireless Earbuds with touch controls and 20-hour battery life.\n\nThe extracted data has been summarized in a table format for easy comparison.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:37:51.491237Z",
+    "http_status": 200,
+    "content_hash": "dc3ecb84f5460e88db20b7aac466ac8ac6a82aeec927af85007537bb574750f4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-browserbase.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-browserbase.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp-server-browserbase: Control Browsers with AI",
+  "short_description_vi": "The mcp-server-browserbase skill helps LLMs to control web browsers using Browserbase and Stagehand. Ideal for automating web interactions, this skill enhances productivity and streamlines workflows in various applications."
+}

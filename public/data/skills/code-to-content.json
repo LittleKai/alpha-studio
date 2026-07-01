@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/code-to-content",
+  "slug": "code-to-content",
+  "name": "browser-use",
+  "headline": "Transform code into content with Claude",
+  "short_description": "Claude Code skill that transforms codebases into developer content. 5-phase gated workflow, 3 specialized agents, 13 slash commands. Generate blog posts, tutorials, Twitter threads, LinkedIn posts, READMEs, newsletters, video scripts, and conference talks. all grounded in actual code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "arome3",
+  "install_command": "git clone https://github.com/arome3/code-to-content.git",
+  "source_repo_url": "https://github.com/arome3/code-to-content",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "dev-rel",
+    "claude-plugins",
+    "technical-writing",
+    "content-generation",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "Code to Content is a Claude Code skill that analyzes your actual source code and transforms it into polished developer content. Using a mandatory 6-phase workflow with verification gates, it generates blog posts, tutorials, README files, social media threads, video scripts, and conference talk proposals—all grounded in your specific codebase rather than generic templates. The skill's differentiation engine extracts the 'why' behind your architectural decisions and trade-offs, ensuring content that passes the swap-the-name test so competitors can't republicense it. Quick Mode commands let you skip phases for rapid content generation when needed, while Claude-native processing requires zero external dependencies.\nGenerate blog posts explaining your architectural decisions and technical trade-offs\nCreate Twitter threads and LinkedIn posts about your project based on actual code\nWrite tutorials and README files with examples tied to your implementation\nDraft conference talk proposals and video scripts from your codebase",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/arome3/code-to-content`",
+    "usage": "```\nTransform the following [CODEBASE] into a [CONTENT_TYPE] about [TOPIC]. Ensure the content is engaging, accurate, and grounded in the code. Use the 5-phase workflow to structure the output effectively. [CODEBASE] = [PASTE CODE HERE]\n```\nCopy\n\n```\n# Transforming Code into Engaging Content: A Case Study",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "code-to-content#main-content",
+      "code-to-content#overview",
+      "code-to-content#setup",
+      "code-to-content#examples",
+      "code-to-content#tools",
+      "code-to-content#mcp",
+      "code-to-content#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Code to Content is a Claude Code skill that analyzes your actual source code and transforms it into polished developer content. Using a mandatory 6-phase workflow with verification gates, it generates blog posts, tutorials, README files, social media threads, video scripts, and conference talk proposals—all grounded in your specific codebase rather than generic templates. The skill's differentiation engine extracts the 'why' behind your architectural decisions and trade-offs, ensuring content that passes the swap-the-name test so competitors can't republicense it. Quick Mode commands let you skip phases for rapid content generation when needed, while Claude-native processing requires zero external dependencies.\nGenerate blog posts explaining your architectural decisions and technical trade-offs\nCreate Twitter threads and LinkedIn posts about your project based on actual code\nWrite tutorials and README files with examples tied to your implementation\nDraft conference talk proposals and video scripts from your codebase",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/arome3/code-to-content`",
+    "usage_vi": "```\nTransform the following [CODEBASE] into a [CONTENT_TYPE] about [TOPIC]. Ensure the content is engaging, accurate, and grounded in the code. Use the 5-phase workflow to structure the output effectively. [CODEBASE] = [PASTE CODE HERE]\n```\nCopy\n\n```\n# Transforming Code into Engaging Content: A Case Study"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:12:38.614787Z",
+    "http_status": 200,
+    "content_hash": "cfec70d8b0e197c188f9cc9331fa148b58c39eca8a1a45412a8d81cd52771060",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-to-content.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-to-content.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Transform code into content with Claude",
+  "short_description_vi": "Claude Code skill that transforms codebases into developer content. 5-phase gated workflow, 3 specialized agents, 13 slash commands. Generate blog posts, tutorials, Twitter threads, LinkedIn posts, READMEs, newsletters, video scripts, and conference talks. all grounded in actual code."
+}

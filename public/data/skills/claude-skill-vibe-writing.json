@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-vibe-writing",
+  "slug": "claude-skill-vibe-writing",
+  "name": "browser-use",
+  "headline": "claude skill for vibe-writing automation",
+  "short_description": "A vibe-writing workflow skill for AI coding assistants, restructured from an open-source writing workflow into an installable skill package. Suited for users who want guided, structured writing assistance inside Claude or compatible tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "eerenyuan",
+  "install_command": "git clone https://github.com/eerenyuan/claude_skill_vibe-writing.git",
+  "source_repo_url": "https://github.com/eerenyuan/claude_skill_vibe-writing",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "claude_skill_vibe-writing packages the vibe-writing-workflow project as a reusable skill for AI assistants like Claude. It is distributed as a zip file that can be sent directly in a chat or installed via Settings > Capabilities > Skills. The skill brings a structured, workflow-driven approach to writing tasks within supported AI tools. It is intended for users who want repeatable, process-oriented writing assistance without manually configuring prompts each session.\nInstalling a reusable writing workflow into Claude via the Skills settings\nSending the skill zip directly in a chat to activate vibe-writing capabilities\nApplying a structured writing process to drafting tasks inside an AI assistant\nReusing a community-sourced writing workflow without manual prompt setup",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eerenyuan/claude_skill_vibe-writing`",
+    "usage": "```\nHelp me automate my vibe-writing workflow. I want to create a system where I can input [TOPIC], [MOOD], and [AUDIENCE], and you generate [NUMBER] of unique writing prompts. The prompts should be tailored to [WRITING_STYLE] and include a brief description of the vibe I'm aiming for. Can you set up this workflow for me?\n```\nCopy\n\n```\n# Vibe-Writing Workflow Output\n\n\n**Mood:** Eerie, Suspenseful\n**Audience:** Young Adults\n**Writing Style:** Gothic Fiction\n\n1. **Prompt:** *The lighthouse keeper's journal reveals cryptic entries about the night the light went out. Describe the final entry in vivid detail.*\n   - *Vibe:* Claustrophobic, foreboding, atmospheric\n\n2. **Prompt:** *A storm rages as the protagonist discovers a hidden room in the lighthouse, filled with artifacts from a long-lost shipwreck.*\n   - *Vibe:* Mysterious, tense, immersive\n\n3. **Prompt:** *The lighthouse's beam flickers, revealing ghostly figures dancing on the cliffs. What happens when the protagonist steps outside to investigate?*\n   - *Vibe:* Supernatural, chilling, evocative\n\n4. **Prompt:** *A local legend tells of a curse tied to the lighthouse. The protagonist must unravel the truth before the next full moon.*\n   - *Vibe:* Enigmatic, haunting, suspenseful\n\n5. **Prompt:** *The lighthouse's light suddenly changes color, signaling a danger only the protagonist can see. What do they do?*\n   - *Vibe:* Unsettling, urgent, atmospheric",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-vibe-writing#main-content",
+      "claude-skill-vibe-writing#overview",
+      "claude-skill-vibe-writing#setup",
+      "claude-skill-vibe-writing#examples",
+      "claude-skill-vibe-writing#tools",
+      "claude-skill-vibe-writing#mcp",
+      "claude-skill-vibe-writing#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude_skill_vibe-writing packages the vibe-writing-workflow project as a reusable skill for AI assistants like Claude. It is distributed as a zip file that can be sent directly in a chat or installed via Settings > Capabilities > Skills. The skill brings a structured, workflow-driven approach to writing tasks within supported AI tools. It is intended for users who want repeatable, process-oriented writing assistance without manually configuring prompts each session.\nInstalling a reusable writing workflow into Claude via the Skills settings\nSending the skill zip directly in a chat to activate vibe-writing capabilities\nApplying a structured writing process to drafting tasks inside an AI assistant\nReusing a community-sourced writing workflow without manual prompt setup",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eerenyuan/claude_skill_vibe-writing`",
+    "usage_vi": "```\nHelp me automate my vibe-writing workflow. I want to create a system where I can input [TOPIC], [MOOD], and [AUDIENCE], and you generate [NUMBER] of unique writing prompts. The prompts should be tailored to [WRITING_STYLE] and include a brief description of the vibe I'm aiming for. Can you set up this workflow for me?\n```\nCopy\n\n```\n# Vibe-Writing Workflow Output\n\n\n**Mood:** Eerie, Suspenseful\n**Audience:** Young Adults\n**Writing Style:** Gothic Fiction\n\n1. **Prompt:** *The lighthouse keeper's journal reveals cryptic entries about the night the light went out. Describe the final entry in vivid detail.*\n   - *Vibe:* Claustrophobic, foreboding, atmospheric\n\n2. **Prompt:** *A storm rages as the protagonist discovers a hidden room in the lighthouse, filled with artifacts from a long-lost shipwreck.*\n   - *Vibe:* Mysterious, tense, immersive\n\n3. **Prompt:** *The lighthouse's beam flickers, revealing ghostly figures dancing on the cliffs. What happens when the protagonist steps outside to investigate?*\n   - *Vibe:* Supernatural, chilling, evocative\n\n4. **Prompt:** *A local legend tells of a curse tied to the lighthouse. The protagonist must unravel the truth before the next full moon.*\n   - *Vibe:* Enigmatic, haunting, suspenseful\n\n5. **Prompt:** *The lighthouse's light suddenly changes color, signaling a danger only the protagonist can see. What do they do?*\n   - *Vibe:* Unsettling, urgent, atmospheric"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:26:32.133617Z",
+    "http_status": 200,
+    "content_hash": "8033b75c86cff9fc40e5247e6ea0842cc9931c35eee34a09ac97164d7ada6c1e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-vibe-writing.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-vibe-writing.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude skill for vibe-writing automation",
+  "short_description_vi": "A vibe-writing workflow skill for AI coding assistants, restructured from an open-source writing workflow into an installable skill package. Suited for users who want guided, structured writing assistance inside Claude or compatible tools."
+}

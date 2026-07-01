@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/qodo-cover",
+  "slug": "qodo-cover",
+  "name": "Qodo Cover",
+  "headline": "Qodo-Cover: AI Test Generation & Code Coverage Tool",
+  "short_description": "Qodo-Cover is an AI-driven tool designed to automate test generation and enhance code coverage, streamlining the testing process for developers. With its advanced capabilities, it helps ensure software quality and reliability efficiently.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "qodo-ai",
+  "install_command": "claude install qodo-ai/qodo-cover",
+  "source_repo_url": "https://github.com/qodo-ai/qodo-cover",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "software-testing",
+    "AI-tools",
+    "code-coverage",
+    "test-automation"
+  ],
+  "sections": {
+    "overview": "Qodo-Cover is an AI-driven tool that automates test generation to improve code coverage across your projects. It analyzes your codebase and generates tests intelligently, reducing the manual effort required in the testing process. The tool integrates with your development workflow and supports record-and-replay functionality for efficient test management. By automating test creation, Qodo-Cover helps teams maintain higher code coverage standards and improve overall software reliability without slowing down development cycles.\nAutomate the creation of unit tests for newly developed features to save time and reduce errors.\nEnhance code coverage metrics in legacy projects by identifying and testing previously untested code paths.\nIntegrate Qodo-Cover with CI/CD pipelines to ensure continuous testing and immediate feedback on code changes.\nQuickly identify areas of code that lack sufficient test coverage, allowing for targeted improvements.",
+    "setup": "Terminal\nCopy\n`claude install qodo-ai/qodo-cover`\n`git clone https://github.com/qodo-ai/qodo-cover`",
+    "usage": "```\nGenerate automated test cases for [PROGRAMMING_LANGUAGE] code in [FILE_PATH] to improve test coverage. Focus on edge cases, boundary conditions, and common failure scenarios. Include both unit tests and integration tests. Provide the test code in a format compatible with [TEST_FRAMEWORK].\n```\nCopy\n\n```\nFor a Python Flask application (`app.py`) handling user authentication, Qodo-Cover generated the following test suite using pytest:\n\n```python\nimport pytest\nfrom app import app, db\nfrom models import User\n\n@pytest.fixture\ndef client():\n    app.config['TESTING'] = True\n    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'\n    with app.test_client() as client:\n        with app.app_context():\n            db.create_all()\n            yield client\n            db.drop_all()\n\ndef test_user_registration_success(client):\n    response = client.post('/register', json={\n        'username': 'testuser',\n        'email': 'test@example.com',\n        'password': 'securepassword123'\n    })\n    assert response.status_code == 201\n    assert User.query.filter_by(username='testuser').first() is not None\n\ndef test_user_registration_duplicate_email(client):\n    # Pre-populate a user\n    user = User(username='existing', email='test@example.com', password='oldpass')\n    db.session.add(user)\n    db.session.commit()\n    \n    response = client.post('/register', json={\n        'username': 'newuser',\n        'email': 'test@example.com',\n        'password': 'newpass123'\n    })\n    assert response.status_code == 400\n    assert b'Email already registered' in response.data\n\ndef test_authentication_invalid_credentials(client):\n    response = client.post('/login', json={\n        'username': 'wronguser',\n        'password': 'wrongpass'\n    })\n    assert response.status_code == 401\n    assert b'Invalid credentials' in response.data\n\ndef test_authentication_empty_fields(client):\n    response = client.post('/login', json={\n        'username': '',\n        'password': ''\n    })\n    assert response.status_code == 400\n    assert b'Username and password are required' in response.data\n```\n\nThe generated tests achieved 92% code coverage for the authentication module, identifying previously untested paths in password validation and session management. The tests also revealed a bug in the email uniqueness check that was fixed before deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "qodo-cover#main-content",
+      "qodo-cover#overview",
+      "qodo-cover#setup",
+      "qodo-cover#examples",
+      "qodo-cover#tools",
+      "qodo-cover#mcp",
+      "qodo-cover#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Qodo-Cover is an AI-driven tool that automates test generation to improve code coverage across your projects. It analyzes your codebase and generates tests intelligently, reducing the manual effort required in the testing process. The tool integrates with your development workflow and supports record-and-replay functionality for efficient test management. By automating test creation, Qodo-Cover helps teams maintain higher code coverage standards and improve overall software reliability without slowing down development cycles.\nAutomate the creation of unit tests for newly developed features to save time and reduce errors.\nEnhance code coverage metrics in legacy projects by identifying and testing previously untested code paths.\nIntegrate Qodo-Cover with CI/CD pipelines to ensure continuous testing and immediate feedback on code changes.\nQuickly identify areas of code that lack sufficient test coverage, allowing for targeted improvements.",
+    "setup_vi": "Terminal\nCopy\n`claude install qodo-ai/qodo-cover`\n`git clone https://github.com/qodo-ai/qodo-cover`",
+    "usage_vi": "```\nGenerate automated test cases for [PROGRAMMING_LANGUAGE] code in [FILE_PATH] to improve test coverage. Focus on edge cases, boundary conditions, and common failure scenarios. Include both unit tests and integration tests. Provide the test code in a format compatible with [TEST_FRAMEWORK].\n```\nCopy\n\n```\nFor a Python Flask application (`app.py`) handling user authentication, Qodo-Cover generated the following test suite using pytest:\n\n```python\nimport pytest\nfrom app import app, db\nfrom models import User\n\n@pytest.fixture\ndef client():\n    app.config['TESTING'] = True\n    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'\n    with app.test_client() as client:\n        with app.app_context():\n            db.create_all()\n            yield client\n            db.drop_all()\n\ndef test_user_registration_success(client):\n    response = client.post('/register', json={\n        'username': 'testuser',\n        'email': 'test@example.com',\n        'password': 'securepassword123'\n    })\n    assert response.status_code == 201\n    assert User.query.filter_by(username='testuser').first() is not None\n\ndef test_user_registration_duplicate_email(client):\n    # Pre-populate a user\n    user = User(username='existing', email='test@example.com', password='oldpass')\n    db.session.add(user)\n    db.session.commit()\n    \n    response = client.post('/register', json={\n        'username': 'newuser',\n        'email': 'test@example.com',\n        'password': 'newpass123'\n    })\n    assert response.status_code == 400\n    assert b'Email already registered' in response.data\n\ndef test_authentication_invalid_credentials(client):\n    response = client.post('/login', json={\n        'username': 'wronguser',\n        'password': 'wrongpass'\n    })\n    assert response.status_code == 401\n    assert b'Invalid credentials' in response.data\n\ndef test_authentication_empty_fields(client):\n    response = client.post('/login', json={\n        'username': '',\n        'password': ''\n    })\n    assert response.status_code == 400\n    assert b'Username and password are required' in response.data\n```\n\nThe generated tests achieved 92% code coverage for the authentication module, identifying previously untested paths in password validation and session management. The tests also revealed a bug in the email uniqueness check that was fixed before deployment.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:15:58.324625Z",
+    "http_status": 200,
+    "content_hash": "5ef5674c502d774816250349959ee18a0227628ad9814113de43408ce0ce4a1f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\qodo-cover.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\qodo-cover.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Qodo-Cover: AI Test Generation & Code Coverage Tool",
+  "short_description_vi": "Qodo-Cover is an AI-driven tool designed to automate test generation and enhance code coverage, streamlining the testing process for developers. With its advanced capabilities, it helps ensure software quality and reliability efficiently."
+}

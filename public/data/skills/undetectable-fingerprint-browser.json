@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/undetectable-fingerprint-browser",
+  "slug": "undetectable-fingerprint-browser",
+  "name": "Undetectable Fingerprint Browser",
+  "headline": "Undetectable Fingerprint Browser - Spoof browser",
+  "short_description": "Free open-source Multilogin/Incogniton/Kameleo alternative for fingerprint spoofing (Canvas/WebGL/User-Agent). Perfect for Selenium/Playwright/Puppeteer automation, web scraping, social media bots, ads verification, and multi-accounting based on chromium. Avoid bans, bypass anti-bot systems, and prevent tracking with customizable stealth browsing",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "itbrowser-net",
+  "install_command": "git clone https://github.com/itbrowser-net/undetectable-fingerprint-browser.git",
+  "source_repo_url": "https://github.com/itbrowser-net/undetectable-fingerprint-browser",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anti-bot-detection",
+    "private-browser",
+    "selenium",
+    "stealth-browsing",
+    "playwright",
+    "anti-detect-browser",
+    "multilogin-free",
+    "fingerprinting",
+    "anti-detect-browser-free",
+    "adspower-free",
+    "puppeteer"
+  ],
+  "sections": {
+    "overview": "Undetectable Fingerprint Browser is a modular, programmable anti-detection browser designed to counter advanced fingerprinting and detection systems. It provides comprehensive spoofing across Canvas, WebGL, AudioContext, fonts, timezone, hardware specs, and mobile indicators with a consistency engine that ensures all spoofed fields align logically. The browser integrates WebRTC leak prevention, proxy injection, GPS emulation, and JavaScript injection with CSP bypass, while remaining fully compatible with Puppeteer, Playwright, and DevTools Protocol. Ideal for security research, SEO verification, multi-account management, and testing fingerprint-based defenses.\nBypass bot detection and captchas during web scraping tasks.\nSimulate access from various device profiles for SEO and ad verification.\nManage multiple accounts without being linked through fingerprinting.\nConduct data extraction research while avoiding detection traps.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/itbrowser-net/undetectable-fingerprint-browser`",
+    "usage": "```\nGenerate a stealth browsing configuration for [BROWSER_AUTOMATION_TOOL] (Selenium/Playwright/Puppeteer) to bypass anti-bot systems while scraping [TARGET_WEBSITE]. Include realistic fingerprints for [DEVICE_TYPE] (desktop/mobile) with customizable User-Agent, Canvas/WebGL spoofing, and time zone/locale settings. Output the configuration as a ready-to-use script or JSON file.\n```\nCopy\n\n```\n```json\n{\n  \"browser_config\": {\n    \"tool\": \"Playwright\",\n    \"device_type\": \"desktop\",\n    \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\n    \"canvas_fingerprint\": {\n      \"noise\": 0.1,\n      \"randomize\": true,\n      \"vendor\": \"Google Inc.\",\n      \"renderer\": \"ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 Direct3D11 vs_5_0 ps_5_0)\"\n    },\n    \"webgl_fingerprint\": {\n      \"unmasked_vendor\": \"NVIDIA Corporation\",\n      \"unmasked_renderer\": \"NVIDIA GeForce RTX 3080/PCIe/SSE2\",\n      \"webgl_params\": {\n        \"alpha\": false,\n        \"antialias\": true,\n        \"depth\": false\n      }\n    },\n    \"timezone\": \"America/New_York\",\n    \"locale\": \"en-US\",\n    \"screen_resolution\": \"1920x1080\",\n    \"audio_context\": {\n      \"noise_level\": 0.05,\n      \"enabled\": true\n    },\n    \"plugins\": [\"Chrome PDF Plugin\", \"Chrome PDF Viewer\", \"Native Client\"],\n    \"headers\": {\n      \"accept-language\": \"en-US,en;q=0.9\",\n      \"sec-ch-ua\": \"\\\"Not_A Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"120\\\"\",\n      \"sec-ch-ua-mobile\": \"?0\"\n    }\n  },\n  \"stealth_steps\": [\n    \"Launch browser with Playwright using the configuration above.\",\n    \"Set viewport to 1920x1080 to match screen resolution.\",\n    \"Override navigator properties (userAgent, platform, hardwareConcurrency) via page.evaluate().\",\n    \"Randomize mouse movements and click timings to mimic human behavior.\",\n    \"Rotate IP via proxy rotation every 10 requests to avoid IP-based detection.\"\n  ]\n}\n```\n\n**Implementation Example (Playwright):**\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch({\n    headless: false,\n    args: [\n      '--disable-blink-features=AutomationControlled',\n      '--disable-infobars',\n      '--disable-plugins-discovery'\n    ]\n  });\n\n  const context = await browser.newContext({\n    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',\n    viewport: { width: 1920, height: 1080 },\n    timezoneId: 'America/New_York',\n    locale: 'en-US',\n    geolocation: { longitude: -74.006, latitude: 40.7128 },\n    permissions: ['geolocation'],\n    ignoreHTTPSErrors: true,\n    extraHTTPHeaders: {\n      'Accept-Language': 'en-US,en;q=0.9',\n      'Sec-Ch-Ua': '\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\"'\n    }\n  });\n\n  const page = await context.newPage();\n  await page.goto('https://target-website.com');\n  \n  // Override navigator properties\n  await page.evaluate(() => {\n    Object.defineProperty(navigator, 'webdriver', { get: () => false });\n    Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });\n    Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });\n  });\n\n  // Randomize mouse movements\n  await page.mouse.move(100, 100);\n  await page.waitForTimeout(1000 + Math.random() * 2000);\n  await page.mouse.click(150, 150);\n\n  await browser.close();\n})();\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "undetectable-fingerprint-browser#main-content",
+      "undetectable-fingerprint-browser#overview",
+      "undetectable-fingerprint-browser#setup",
+      "undetectable-fingerprint-browser#examples",
+      "undetectable-fingerprint-browser#tools",
+      "undetectable-fingerprint-browser#mcp",
+      "undetectable-fingerprint-browser#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "Undetectable Fingerprint Browser is a modular, programmable anti-detection browser designed to counter advanced fingerprinting and detection systems. It provides comprehensive spoofing across Canvas, WebGL, AudioContext, fonts, timezone, hardware specs, and mobile indicators with a consistency engine that ensures all spoofed fields align logically. The browser integrates WebRTC leak prevention, proxy injection, GPS emulation, and JavaScript injection with CSP bypass, while remaining fully compatible with Puppeteer, Playwright, and DevTools Protocol. Ideal for security research, SEO verification, multi-account management, and testing fingerprint-based defenses.\nBypass bot detection and captchas during web scraping tasks.\nSimulate access from various device profiles for SEO and ad verification.\nManage multiple accounts without being linked through fingerprinting.\nConduct data extraction research while avoiding detection traps.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/itbrowser-net/undetectable-fingerprint-browser`",
+    "usage_vi": "```\nGenerate a stealth browsing configuration for [BROWSER_AUTOMATION_TOOL] (Selenium/Playwright/Puppeteer) to bypass anti-bot systems while scraping [TARGET_WEBSITE]. Include realistic fingerprints for [DEVICE_TYPE] (desktop/mobile) with customizable User-Agent, Canvas/WebGL spoofing, and time zone/locale settings. Output the configuration as a ready-to-use script or JSON file.\n```\nCopy\n\n```\n```json\n{\n  \"browser_config\": {\n    \"tool\": \"Playwright\",\n    \"device_type\": \"desktop\",\n    \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\n    \"canvas_fingerprint\": {\n      \"noise\": 0.1,\n      \"randomize\": true,\n      \"vendor\": \"Google Inc.\",\n      \"renderer\": \"ANGLE (NVIDIA, NVIDIA GeForce RTX 3080 Direct3D11 vs_5_0 ps_5_0)\"\n    },\n    \"webgl_fingerprint\": {\n      \"unmasked_vendor\": \"NVIDIA Corporation\",\n      \"unmasked_renderer\": \"NVIDIA GeForce RTX 3080/PCIe/SSE2\",\n      \"webgl_params\": {\n        \"alpha\": false,\n        \"antialias\": true,\n        \"depth\": false\n      }\n    },\n    \"timezone\": \"America/New_York\",\n    \"locale\": \"en-US\",\n    \"screen_resolution\": \"1920x1080\",\n    \"audio_context\": {\n      \"noise_level\": 0.05,\n      \"enabled\": true\n    },\n    \"plugins\": [\"Chrome PDF Plugin\", \"Chrome PDF Viewer\", \"Native Client\"],\n    \"headers\": {\n      \"accept-language\": \"en-US,en;q=0.9\",\n      \"sec-ch-ua\": \"\\\"Not_A Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"120\\\"\",\n      \"sec-ch-ua-mobile\": \"?0\"\n    }\n  },\n  \"stealth_steps\": [\n    \"Launch browser with Playwright using the configuration above.\",\n    \"Set viewport to 1920x1080 to match screen resolution.\",\n    \"Override navigator properties (userAgent, platform, hardwareConcurrency) via page.evaluate().\",\n    \"Randomize mouse movements and click timings to mimic human behavior.\",\n    \"Rotate IP via proxy rotation every 10 requests to avoid IP-based detection.\"\n  ]\n}\n```\n\n**Implementation Example (Playwright):**\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch({\n    headless: false,\n    args: [\n      '--disable-blink-features=AutomationControlled',\n      '--disable-infobars',\n      '--disable-plugins-discovery'\n    ]\n  });\n\n  const context = await browser.newContext({\n    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',\n    viewport: { width: 1920, height: 1080 },\n    timezoneId: 'America/New_York',\n    locale: 'en-US',\n    geolocation: { longitude: -74.006, latitude: 40.7128 },\n    permissions: ['geolocation'],\n    ignoreHTTPSErrors: true,\n    extraHTTPHeaders: {\n      'Accept-Language': 'en-US,en;q=0.9',\n      'Sec-Ch-Ua': '\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\"'\n    }\n  });\n\n  const page = await context.newPage();\n  await page.goto('https://target-website.com');\n  \n  // Override navigator properties\n  await page.evaluate(() => {\n    Object.defineProperty(navigator, 'webdriver', { get: () => false });\n    Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });\n    Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });\n  });\n\n  // Randomize mouse movements\n  await page.mouse.move(100, 100);\n  await page.waitForTimeout(1000 + Math.random() * 2000);\n  await page.mouse.click(150, 150);\n\n  await browser.close();\n})();\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:58.783609Z",
+    "http_status": 200,
+    "content_hash": "ecea0658445ded7733e0255fb29abfbc22c460f88dca500f3d53f7cd011b64ec",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\undetectable-fingerprint-browser.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\undetectable-fingerprint-browser.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Undetectable Fingerprint Browser - Spoof browser",
+  "short_description_vi": "Free open-source Multilogin/Incogniton/Kameleo alternative for fingerprint spoofing (Canvas/WebGL/User-Agent). Perfect for Selenium/Playwright/Puppeteer automation, web scraping, social media bots, ads verification, and multi-accounting based on chromium. Avoid bans, bypass anti-bot systems, and prevent tracking with customizable stealth browsing"
+}

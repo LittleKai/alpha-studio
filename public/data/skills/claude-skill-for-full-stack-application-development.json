@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-for-full-stack-application-development",
+  "slug": "claude-skill-for-full-stack-application-development",
+  "name": "Claude-Skill-for-Full-Stack-Application-Development",
+  "headline": "full-stack app generation via claude skill",
+  "short_description": "Generates full-stack application templates with FastAPI backend and React frontend, including OpenAI ChatGPT integration. Benefits developers by accelerating project setup and reducing boilerplate code.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "umairalipathan1980",
+  "install_command": "git clone https://github.com/umairalipathan1980/Claude-Skill-for-Full-Stack-Application-Development",
+  "source_repo_url": "https://github.com/umairalipathan1980/Claude-Skill-for-Full-Stack-Application-Development",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill generates complete full-stack application templates combining FastAPI backend with React (Vite) frontend and OpenAI ChatGPT integration. The template includes RESTful API endpoints, CORS configuration, real-time chat interface, error handling, and auto-generated API documentation via Swagger UI. It eliminates repetitive boilerplate setup, allowing developers to focus on application-specific logic rather than infrastructure. The skill provides both backend (Python 3.8+, Uvicorn) and frontend (React 19, Vite) configurations with environment-based setup for OpenAI API keys. This is ideal for teams building AI-powered web applications quickly without manual template construction.\nBootstrap AI chatbot applications with pre-built frontend-backend integration\nCreate rapid prototypes of full-stack applications using FastAPI and React\nSet up production-ready templates for OpenAI-powered web applications\nReduce development time by generating complete project structures with example endpoints",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/umairalipathan1980/Claude-Skill-for-Full-Stack-Application-Development`",
+    "usage": "```\nGenerate a full-stack application template with FastAPI backend and React frontend, including OpenAI ChatGPT integration. Include the following features: [FEATURES_LIST]. Use [TECH_STACK] for styling and state management. Provide a Dockerfile for containerization and a README with setup instructions. Ensure the code is production-ready with basic error handling and logging.\n```\nCopy\n\n```\nHere’s a production-ready full-stack template for a **Task Management App** with FastAPI backend and React frontend, integrated with OpenAI’s ChatGPT for smart task suggestions. The backend includes RESTful endpoints for CRUD operations on tasks, user authentication via JWT, and a `/suggest-tasks` endpoint that queries OpenAI’s API to generate task recommendations based on user input. The React frontend uses TypeScript, Material-UI for styling, and React Query for state management. Key features include:\n\n**Backend (FastAPI):**\n- `/tasks` (GET/POST/PUT/DELETE) for task management\n- `/auth/login` and `/auth/register` for JWT-based authentication\n- `/suggest-tasks` endpoint that sends a prompt to OpenAI’s API (e.g., \"Generate 3 task suggestions for a user working on a project deadline\")\n- Dockerized with a PostgreSQL database and Redis for caching\n- Logging with structlog and error handling for API failures\n\n**Frontend (React):**\n- Responsive UI with Material-UI components (DataGrid for tasks, Dialog for task creation)\n- React Query for data fetching and caching\n- OpenAI integration via a custom hook (`useOpenAI`) that calls the backend’s `/suggest-tasks` endpoint\n- Dark/light mode toggle and JWT-based authentication flow\n\n**Setup Instructions:**\n1. Clone the repo and run `docker-compose up --build` to spin up the backend, frontend, and database.\n2. Access the frontend at `http://localhost:3000` and the backend Swagger docs at `http://localhost:8000/docs`.\n3. Register a user, log in, and start adding tasks. The AI will suggest tasks based on your input.\n\n**Sample Output:**\nWhen a user adds a task titled \"Prepare project proposal,\" the AI suggests:\n- \"Draft the executive summary\"\n- \"Create a timeline for deliverables\"\n- \"Design the slide deck outline\"\n\nThis template reduces setup time from hours to minutes and includes all boilerplate code for authentication, database interactions, and AI integration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-for-full-stack-application-development#main-content",
+      "claude-skill-for-full-stack-application-development#overview",
+      "claude-skill-for-full-stack-application-development#setup",
+      "claude-skill-for-full-stack-application-development#examples",
+      "claude-skill-for-full-stack-application-development#tools",
+      "claude-skill-for-full-stack-application-development#mcp",
+      "claude-skill-for-full-stack-application-development#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill generates complete full-stack application templates combining FastAPI backend with React (Vite) frontend and OpenAI ChatGPT integration. The template includes RESTful API endpoints, CORS configuration, real-time chat interface, error handling, and auto-generated API documentation via Swagger UI. It eliminates repetitive boilerplate setup, allowing developers to focus on application-specific logic rather than infrastructure. The skill provides both backend (Python 3.8+, Uvicorn) and frontend (React 19, Vite) configurations with environment-based setup for OpenAI API keys. This is ideal for teams building AI-powered web applications quickly without manual template construction.\nBootstrap AI chatbot applications with pre-built frontend-backend integration\nCreate rapid prototypes of full-stack applications using FastAPI and React\nSet up production-ready templates for OpenAI-powered web applications\nReduce development time by generating complete project structures with example endpoints",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/umairalipathan1980/Claude-Skill-for-Full-Stack-Application-Development`",
+    "usage_vi": "```\nGenerate a full-stack application template with FastAPI backend and React frontend, including OpenAI ChatGPT integration. Include the following features: [FEATURES_LIST]. Use [TECH_STACK] for styling and state management. Provide a Dockerfile for containerization and a README with setup instructions. Ensure the code is production-ready with basic error handling and logging.\n```\nCopy\n\n```\nHere’s a production-ready full-stack template for a **Task Management App** with FastAPI backend and React frontend, integrated with OpenAI’s ChatGPT for smart task suggestions. The backend includes RESTful endpoints for CRUD operations on tasks, user authentication via JWT, and a `/suggest-tasks` endpoint that queries OpenAI’s API to generate task recommendations based on user input. The React frontend uses TypeScript, Material-UI for styling, and React Query for state management. Key features include:\n\n**Backend (FastAPI):**\n- `/tasks` (GET/POST/PUT/DELETE) for task management\n- `/auth/login` and `/auth/register` for JWT-based authentication\n- `/suggest-tasks` endpoint that sends a prompt to OpenAI’s API (e.g., \"Generate 3 task suggestions for a user working on a project deadline\")\n- Dockerized with a PostgreSQL database and Redis for caching\n- Logging with structlog and error handling for API failures\n\n**Frontend (React):**\n- Responsive UI with Material-UI components (DataGrid for tasks, Dialog for task creation)\n- React Query for data fetching and caching\n- OpenAI integration via a custom hook (`useOpenAI`) that calls the backend’s `/suggest-tasks` endpoint\n- Dark/light mode toggle and JWT-based authentication flow\n\n**Setup Instructions:**\n1. Clone the repo and run `docker-compose up --build` to spin up the backend, frontend, and database.\n2. Access the frontend at `http://localhost:3000` and the backend Swagger docs at `http://localhost:8000/docs`.\n3. Register a user, log in, and start adding tasks. The AI will suggest tasks based on your input.\n\n**Sample Output:**\nWhen a user adds a task titled \"Prepare project proposal,\" the AI suggests:\n- \"Draft the executive summary\"\n- \"Create a timeline for deliverables\"\n- \"Design the slide deck outline\"\n\nThis template reduces setup time from hours to minutes and includes all boilerplate code for authentication, database interactions, and AI integration.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:34:20.476131Z",
+    "http_status": 200,
+    "content_hash": "b111b1aded351af1af827077d5e2659876e31723d20f8c1d36baca44cb2bb46a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-for-full-stack-application-development.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-for-full-stack-application-development.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "full-stack app generation via claude skill",
+  "short_description_vi": "Generates full-stack application templates with FastAPI backend and React frontend, including OpenAI ChatGPT integration. Benefits developers by accelerating project setup and reducing boilerplate code."
+}

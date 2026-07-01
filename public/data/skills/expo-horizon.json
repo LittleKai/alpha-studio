@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/expo-horizon",
+  "slug": "expo-horizon",
+  "name": "Expo Horizon",
+  "headline": "Expo Horizon: Meta Quest Support for Expo Apps",
+  "short_description": "This skill assists developers in adding Meta Quest support to Expo apps by utilizing the expo-horizon packages. It provides guidance on critical decision-making processes and common pitfalls when transitioning to Meta Quest.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "software-mansion-labs",
+  "install_command": "git clone https://github.com/software-mansion-labs/expo-horizon",
+  "source_repo_url": "https://github.com/software-mansion-labs/expo-horizon",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "expo",
+    "horizon",
+    "development"
+  ],
+  "sections": {
+    "overview": "Expo Horizon is a fork of Expo packages that extends support for Meta Quest and Meta horizon devices. It provides three core packages: expo-horizon-core for building applications, expo-horizon-location for location services, and expo-horizon-notifications for push notifications. Developers can start by installing expo-horizon-core and its config plugin, then add location and notification packages as needed. The project includes an example app and is maintained by Software Mansion, core React Native contributors.\nAdd Meta Quest support to existing Expo apps.\nNavigate critical rules and gotchas in migration.\nWebfetch up-to-date installation steps and options.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/software-mansion-labs/skills --skill expo-horizon`\n`git clone https://github.com/software-mansion-labs/expo-horizon`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "expo-horizon#main-content",
+      "expo-horizon#overview",
+      "expo-horizon#setup",
+      "expo-horizon#examples",
+      "expo-horizon#tools",
+      "expo-horizon#mcp",
+      "expo-horizon#related",
+      "gadget-best-practices",
+      "notion-cli",
+      "instantdb"
+    ],
+    "overview_vi": "Expo Horizon là một bản fork từ các package của Expo nhằm mở rộng khả năng hỗ trợ cho các thiết bị Meta Quest và Meta Horizon. Dự án cung cấp ba package cốt lõi: expo-horizon-core để xây dựng ứng dụng, expo-horizon-location cho các dịch vụ định vị (location services), và expo-horizon-notifications cho thông báo đẩy (push notifications). Các nhà phát triển có thể bắt đầu bằng việc cài đặt expo-horizon-core cùng config plugin đi kèm, sau đó tích hợp thêm các package location và notification khi cần thiết. Dự án đi kèm một ứng dụng ví dụ (example app) và được duy trì bởi Software Mansion – những thành viên đóng góp cốt lõi (core contributors) của React Native.\nTích hợp hỗ trợ Meta Quest vào các ứng dụng Expo hiện có.\nNắm rõ các quy tắc quan trọng và lưu ý (gotchas) khi migration.\nWebfetch các bước và tùy chọn cài đặt mới nhất.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/software-mansion-labs/skills --skill expo-horizon`\n`git clone https://github.com/software-mansion-labs/expo-horizon`",
+    "usage_vi": "📝\n### Không có ví dụ nào khả dụng\nTham khảo GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:41:32.677208Z",
+    "http_status": 200,
+    "content_hash": "4c956ce999b4d64a3c5b04da8d843de9382462f1235adee9a9bedee26d993ba2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\expo-horizon.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\expo-horizon.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Expo Horizon: Hỗ trợ Meta Quest cho các ứng dụng Expo",
+  "short_description_vi": "Skill này hỗ trợ các nhà phát triển tích hợp Meta Quest vào ứng dụng Expo thông qua các package expo-horizon. Skill cung cấp hướng dẫn về các quyết định quan trọng và những lỗi thường gặp khi chuyển đổi sang Meta Quest."
+}

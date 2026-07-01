@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-settings",
+  "slug": "claude-code-settings",
+  "name": "Claude Code settings",
+  "headline": "Claude Code settings - vibe coding customization",
+  "short_description": "Claude Code settings, commands, and agents for streamlining development workflows. Benefits developers by automating feature development, spec-driven workflows, and code generation. Integrates with Claude agents to enhance productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "feiskyer",
+  "install_command": "git clone https://github.com/feiskyer/claude-code-settings.git",
+  "source_repo_url": "https://github.com/feiskyer/claude-code-settings",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "litellm",
+    "agents",
+    "agentic-ai",
+    "kiro",
+    "vibe-coding",
+    "codex",
+    "spec-driven-development",
+    "copilot",
+    "claude-skills",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "claude-code-settings provides configuration, commands, and agent definitions for Claude Code to automate software development tasks. The repository includes settings files, agent configurations, guidances, hooks, plugins, and scripts organized to support streamlined development workflows. It enables developers to implement spec-driven workflows and code generation through Claude agents, reducing manual development effort. The project is actively maintained with support for multiple Claude Code plugins and autonomous skill integration. Developers use it to configure Claude Code environments and extend capabilities through customizable agents and plugins.\nAutomate the creation of new commands for Claude Code to enhance functionality.\nExecute long-running tasks across multiple sessions using the autonomous skill.\nGenerate and edit images using the nanobanana skill for project visuals.\nExtract subtitles from YouTube videos for content analysis and documentation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/feiskyer/claude-code-settings`",
+    "usage": "```\nGenerate a Claude Code settings file for a [PROJECT_TYPE] project with the following requirements: [LIST_KEY_REQUIREMENTS]. Include best practices for [SPECIFIC_LANGUAGE] development, testing frameworks, and CI/CD integration. Format the output as a valid `.claude/settings.json` file with comments explaining each configuration. Ensure the settings optimize for [PERFORMANCE_METRIC] and [SECURITY_CONCERN].\n```\nCopy\n\n```\n```json\n{\n  \"claude_version\": \"1.0.0\",\n  \"project_type\": \"Python FastAPI Microservice\",\n  \"language\": \"Python 3.11\",\n  \"requirements\": [\n    \"Automated testing with pytest\",\n    \"Type checking with mypy\",\n    \"Docker containerization\",\n    \"GitHub Actions CI/CD pipeline\",\n    \"OpenAPI/Swagger documentation\"\n  ],\n  \"settings\": {\n    \"python\": {\n      \"interpreter\": \"python3.11\",\n      \"linter\": \"ruff\",\n      \"formatter\": \"black\",\n      \"type_checker\": \"mypy\",\n      \"test_runner\": \"pytest\",\n      \"test_coverage\": true,\n      \"max_line_length\": 88,\n      \"ignore_errors\": [\"E501\"]\n    },\n    \"docker\": {\n      \"build_context\": \".\",\n      \"dockerfile\": \"Dockerfile\",\n      \"image_name\": \"my-fastapi-service\",\n      \"tag\": \"latest\",\n      \"build_args\": {\n        \"PYTHON_VERSION\": \"3.11-slim\"\n      }\n    },\n    \"ci_cd\": {\n      \"github_actions\": {\n        \"workflow_file\": \".github/workflows/ci.yml\",\n        \"steps\": [\n          \"Checkout code\",\n          \"Set up Python 3.11\",\n          \"Install dependencies\",\n          \"Run linter (ruff)\",\n          \"Run type checker (mypy)\",\n          \"Run tests with pytest\",\n          \"Generate coverage report\",\n          \"Build Docker image\",\n          \"Push to container registry\"\n        ]\n      }\n    },\n    \"documentation\": {\n      \"openapi_spec\": \"openapi.json\",\n      \"swagger_ui\": true,\n      \"api_version\": \"1.0.0\"\n    },\n    \"performance\": {\n      \"optimize_imports\": true,\n      \"enable_jit\": false,\n      \"memory_limit_mb\": 512,\n      \"cpu_limit\": 2\n    },\n    \"security\": {\n      \"sast_tools\": [\"bandit\", \"safety\"],\n      \"dependency_scanning\": true,\n      \"secret_detection\": true,\n      \"docker_scan\": true,\n      \"allowed_licenses\": [\"MIT\", \"Apache-2.0\", \"BSD\"]\n    }\n  },\n  \"comments\": {\n    \"python\": \"// Python-specific settings optimized for FastAPI development\",\n    \"docker\": \"// Docker configuration for containerized deployment\",\n    \"ci_cd\": \"// CI/CD pipeline definition for GitHub Actions\",\n    \"performance\": \"// Performance tuning for development and production\",\n    \"security\": \"// Security best practices for Python and Docker\"\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-settings#main-content",
+      "claude-code-settings#overview",
+      "claude-code-settings#setup",
+      "claude-code-settings#examples",
+      "claude-code-settings#tools",
+      "claude-code-settings#mcp",
+      "claude-code-settings#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-code-settings cung cấp cấu hình, lệnh và định nghĩa agent cho Claude Code để tự động hóa các tác vụ phát triển phần mềm. Repository này bao gồm các tệp cài đặt, cấu hình agent, hướng dẫn (guidance), hook, plugin và script được tổ chức hợp lý nhằm hỗ trợ tối ưu hóa quy trình phát triển. Nó cho phép nhà phát triển triển khai các quy trình làm việc dựa trên đặc tả (spec-driven workflow) và tạo mã nguồn thông qua các Claude agent, giúp giảm thiểu công sức code tay. Dự án được bảo trì tích cực và hỗ trợ nhiều plugin Claude Code cũng như tích hợp autonomous skill. Nhà phát triển sử dụng dự án này để cấu hình môi trường Claude Code và mở rộng khả năng thông qua các agent và plugin có thể tùy chỉnh.\nTự động hóa việc tạo lệnh mới cho Claude Code để nâng cao chức năng.\nThực sinh các tác vụ chạy lâu (long-running) trên nhiều session sử dụng autonomous skill.\nTạo và chỉnh sửa hình ảnh bằng nanobanana skill cho các hình ảnh trực quan của dự án.\nTrích xuất phụ đề từ video YouTube để phân tích nội dung và làm tài liệu.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/feiskyer/claude-code-settings`",
+    "usage_vi": "```\nTạo tệp cấu hình Claude Code cho dự án [PROJECT_TYPE] với các yêu cầu sau: [LIST_KEY_REQUIREMENTS]. Bao gồm các best practice cho việc phát triển bằng ngôn ngữ [SPECIFIC_LANGUAGE], test framework và tích hợp CI/CD. Định dạng đầu ra dưới dạng tệp `.claude/settings.json` hợp lệ kèm theo chú thích giải thích cho từng cấu hình. Đảm bảo các thiết lập được tối ưu hóa cho [PERFORMANCE_METRIC] và [SECURITY_CONCERN].\n```\nCopy\n\n```json\n{\n  \"claude_version\": \"1.0.0\",\n  \"project_type\": \"Python FastAPI Microservice\",\n  \"language\": \"Python 3.11\",\n  \"requirements\": [\n    \"Kiểm thử tự động với pytest\",\n    \"Kiểm tra kiểu dữ liệu với mypy\",\n    \"Container hóa với Docker\",\n    \"Pipeline CI/CD bằng GitHub Actions\",\n    \"Tài liệu OpenAPI/Swagger\"\n  ],\n  \"settings\": {\n    \"python\": {\n      \"interpreter\": \"python3.11\",\n      \"linter\": \"ruff\",\n      \"formatter\": \"black\",\n      \"type_checker\": \"mypy\",\n      \"test_runner\": \"pytest\",\n      \"test_coverage\": true,\n      \"max_line_length\": 88,\n      \"ignore_errors\": [\"E501\"]\n    },\n    \"docker\": {\n      \"build_context\": \".\",\n      \"dockerfile\": \"Dockerfile\",\n      \"image_name\": \"my-fastapi-service\",\n      \"tag\": \"latest\",\n      \"build_args\": {\n        \"PYTHON_VERSION\": \"3.11-slim\"\n      }\n    },\n    \"ci_cd\": {\n      \"github_actions\": {\n        \"workflow_file\": \".github/workflows/ci.yml\",\n        \"steps\": [\n          \"Checkout code\",\n          \"Cài đặt Python 3.11\",\n          \"Cài đặt các dependency\",\n          \"Chạy linter (ruff)\",\n          \"Chạy type checker (mypy)\",\n          \"Chạy test với pytest\",\n          \"Tạo báo cáo coverage\",\n          \"Build Docker image\",\n          \"Push lên container registry\"\n        ]\n      }\n    },\n    \"documentation\": {\n      \"openapi_spec\": \"openapi.json\",\n      \"swagger_ui\": true,\n      \"api_version\": \"1.0.0\"\n    },\n    \"performance\": {\n      \"optimize_imports\": true,\n      \"enable_jit\": false,\n      \"memory_limit_mb\": 512,\n      \"cpu_limit\": 2\n    },\n    \"security\": {\n      \"sast_tools\": [\"bandit\", \"safety\"],\n      \"dependency_scanning\": true,\n      \"secret_detection\": true,\n      \"docker_scan\": true,\n      \"allowed_licenses\": [\"MIT\", \"Apache-2.0\", \"BSD\"]\n    }\n  },\n  \"comments\": {\n    \"python\": \"// Các thiết lập dành riêng cho Python được tối ưu hóa cho phát triển FastAPI\",\n    \"docker\": \"// Cấu hình Docker để triển khai dưới dạng container\",\n    \"ci_cd\": \"// Định nghĩa pipeline CI/CD cho GitHub Actions\",\n    \"performance\": \"// Tinh chỉnh hiệu năng cho môi trường phát triển và production\",\n    \"security\": \"// Các best practice về bảo mật cho Python và Docker\"\n  }\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:56:44.075393Z",
+    "http_status": 200,
+    "content_hash": "89d78cea4b1be83096b27852d976b2fea54956d189b8cb9f2922fdab44c0e7a8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-settings.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-settings.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Thiết lập Claude Code - tùy biến vibe coding",
+  "short_description_vi": "Các thiết lập, lệnh và agent của Claude Code giúp tối ưu hóa quy trình phát triển phần mềm. Hỗ trợ nhà phát triển bằng cách tự động hóa quá trình phát triển tính năng, quy trình làm việc dựa trên đặc tả (spec-driven workflow) và tự động tạo mã nguồn. Tích hợp với các Claude agent để nâng cao năng suất."
+}

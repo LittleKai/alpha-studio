@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jar-analyzer",
+  "slug": "jar-analyzer",
+  "name": "Jar Analyzer",
+  "headline": "Jar Analyzer: JAR Analysis",
+  "short_description": "Jar Analyzer - 一个 JAR 包 GUI 分析工具，方法调用关系搜索，方法调用链 DFS 算法分析，模拟 JVM 的污点分析验证 DFS 结果，字符串搜索，Java Web 组件入口分析，CFG 程序分析，JVM 栈帧分析，自定义表达式搜索，紧跟 AI 技术发展，支持 MCP 调用，支持 n8n 工作流，文档：https://docs.qq.com/doc/DV3pKbG9GS0pJS0tk",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "jar-analyzer",
+  "install_command": "git clone https://github.com/jar-analyzer/jar-analyzer.git",
+  "source_repo_url": "https://github.com/jar-analyzer/jar-analyzer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "java-bytecode",
+    "java-gui",
+    "java-security",
+    "static-analysis",
+    "web-vulnerability",
+    "jar",
+    "java-asm",
+    "java-vulnerability",
+    "vulnerability",
+    "program-analysis",
+    "java-debugger",
+    "bytecode",
+    "java-decompiler"
+  ],
+  "sections": {
+    "overview": "The Jar Analyzer is a powerful GUI tool designed for analyzing JAR files, providing developers with the ability to search for method call relationships and analyze them using DFS algorithms. This skill enables users to simulate JVM taint analysis, perform string searches, and analyze Java Web component entry points. With support for MCP calls and integration into n8n workflows, Jar Analyzer enhances workflow automation and improves the efficiency of JAR file management. One of the key benefits of using Jar Analyzer is the significant time savings it offers. Developers can quickly identify where a specific method is defined across multiple JAR files, allowing for faster debugging and vulnerability detection. For instance, it can analyze method calls to pinpoint potential security risks, such as the misuse of Runtime.exec, and visualize control flow graphs for deeper insights into method execution paths. By integrating JAR analysis into existing CI/CD workflows, teams can automate security checks, thus streamlining their development processes. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in software security and quality assurance. By leveraging Jar Analyzer, these professionals can ensure that their applications are not only functional but also secure from potential vulnerabilities. The intermediate complexity of the skill makes it accessible to those with a foundational understanding of Java and JAR file structures, while its implementation time of just 30 minutes means that teams can quickly adopt it into their workflows. In an AI-first environment, the Jar Analyzer fits seamlessly into automated workflows, enabling teams to maintain high standards of code quality and security. As AI technology continues to evolve, skills like Jar Analyzer are essential for keeping pace with the demands of modern software development. With its practical applications and robust features, it stands out as a valuable tool for any organization looking to enhance their JAR file analysis capabilities.\nQuickly identify where a specific method is defined across multiple JAR files.\nAnalyze method calls to detect potential vulnerabilities like the use of Runtime.exec.\nPerform string searches to locate sensitive information leaks within JAR files.\nVisualize control flow graphs for deeper insights into method execution paths.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jar-analyzer/jar-analyzer`",
+    "usage": "```\nAnalyze the JAR file [JAR_FILE_PATH] using Jar Analyzer to: 1) Map all method call relationships with a depth-first search (DFS) algorithm, 2) Simulate JVM taint analysis to validate call chains, 3) Identify Java Web component entry points (Servlets, JSP, Spring MVC, etc.), 4) Generate a control flow graph (CFG) for critical methods, and 5) Search for strings matching [SEARCH_PATTERN]. Output findings in a structured report with call graphs, taint propagation paths, and entry point summaries. Use MCP integration if available.\n```\nCopy\n\n```\nJar Analyzer v2.4.1 Analysis Report for 'payment-service-1.0.0.jar'\n\n=== Method Call Graph (DFS Depth: 5) ===\nCorePaymentService.processPayment()\n├── PaymentValidator.validate() [taint source: user input]\n│   └── DatabaseConnector.query() [taint sink: SQL]\n├── TransactionLogger.log() [taint source: payment data]\n│   └── LogManager.write() [taint sink: file system]\n└── FraudDetection.check()\n    └── RiskEngine.evaluate() [taint source: transaction metadata]\n\n=== JVM Taint Analysis Validation ===\nConfirmed taint propagation from PaymentValidator.validate() to DatabaseConnector.query() via 3 intermediate calls. No sanitization found at any step. High risk of SQL injection.\n\n=== Java Web Entry Points ===\n1. Servlet: PaymentServlet.doPost() (url-pattern: /api/payments)\n2. Spring Controller: PaymentController.process() (mapping: POST /payments)\n3. JSP: payment-confirmation.jsp (forwarded from PaymentServlet)\n\n=== Control Flow Graph (CFG) ===\nMethod: CorePaymentService.processPayment()\nNodes: 12 (including 2 conditional branches)\nEdges: 15\nCritical Path: validate() → log() → save() → notify()\n\n=== String Search Results ===\nFound 42 occurrences of 'password' in:\n- config/security.properties (3)\n- PaymentService.java (2)\n- test/PaymentServiceTest.java (37)\n\n=== Security Recommendations ===\n1. Add input validation in PaymentValidator.validate()\n2. Implement parameterized queries in DatabaseConnector\n3. Mask sensitive data in TransactionLogger\n4. Review Spring Security configuration for /api/payments endpoint\n\nAnalysis completed in 42.3 seconds using 1.2GB RAM.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "jar-analyzer#main-content",
+      "jar-analyzer#overview",
+      "jar-analyzer#setup",
+      "jar-analyzer#examples",
+      "jar-analyzer#tools",
+      "jar-analyzer#mcp",
+      "jar-analyzer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Jar Analyzer là một công cụ GUI mạnh mẽ được thiết kế để phân tích các file JAR, cung cấp cho lập trình viên khả năng tìm kiếm các mối quan hệ gọi phương thức và phân tích chúng bằng thuật toán DFS. Skill này cho phép người dùng mô phỏng phân tích vết (taint analysis) JVM, tìm kiếm chuỗi và phân tích các entry point của thành phần Java Web. Nhờ hỗ trợ các cuộc gọi MCP và tích hợp vào workflow n8n, Jar Analyzer giúp tăng cường tự động hóa quy trình làm việc và nâng cao hiệu quả quản lý file JAR. Một trong những lợi ích chính của việc sử dụng Jar Analyzer là tiết kiệm đáng kể thời gian. Lập trình viên có thể nhanh chóng xác định vị trí định nghĩa của một phương thức cụ thể trên nhiều file JAR khác nhau, giúp gỡ lỗi và phát hiện lỗ hổng nhanh hơn. Ví dụ, công cụ này có thể phân tích các lượt gọi phương thức để xác định chính xác các rủi ro bảo mật tiềm ẩn, chẳng hạn như việc lạm dụng Runtime.exec, và trực quan hóa biểu đồ luồng kiểm soát (CFG) để hiểu sâu hơn về đường dẫn thực thi phương thức. Bằng cách tích hợp phân tích JAR vào các quy trình CI/CD hiện có, các đội ngũ có thể tự động hóa việc kiểm tra bảo mật, từ đó tinh gọn quy trình phát triển của mình. Skill này đặc biệt hữu ích cho các nhà phát triển, quản lý sản phẩm và chuyên gia AI tham gia vào lĩnh vực bảo mật phần mềm và đảm bảo chất lượng. Bằng cách tận dụng Jar Analyzer, các chuyên gia này có thể đảm bảo ứng dụng của họ không chỉ hoạt động tốt mà còn an toàn trước các lỗ hổng tiềm ẩn. Độ phức tạp ở mức trung bình của skill này giúp những người có kiến thức nền tảng về Java và cấu trúc file JAR dễ dàng tiếp cận, trong khi thời gian triển khai chỉ mất 30 phút giúp các đội ngũ nhanh chóng áp dụng vào workflow của mình. Trong môi trường ưu tiên AI (AI-first), Jar Analyzer kết hợp liền mạch vào các workflow tự động, cho phép các đội ngũ duy trì các tiêu chuẩn cao về chất lượng và bảo mật code. Khi công nghệ AI tiếp tục phát triển, các skill như Jar Analyzer là rất cần thiết để bắt kịp với các yêu cầu của phát triển phần mềm hiện đại. Với các ứng dụng thực tế và tính năng mạnh mẽ, đây là một công cụ giá trị cho bất kỳ tổ chức nào muốn nâng cao năng lực phân tích file JAR.\nNhanh chóng xác định nơi định nghĩa một phương thức cụ thể trên nhiều file JAR.\nPhân tích các lượt gọi phương thức để phát hiện các lỗ hổng tiềm ẩn như việc sử dụng Runtime.exec.\nThực hiện tìm kiếm chuỗi để định vị các rò rỉ thông tin nhạy cảm trong file JAR.\nTrực quan hóa biểu đồ luồng kiểm soát (CFG) để hiểu sâu hơn về đường dẫn thực thi phương thức.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jar-analyzer/jar-analyzer`",
+    "usage_vi": "```\nPhân tích file JAR [JAR_FILE_PATH] bằng Jar Analyzer để: 1) Bản đồ hóa toàn bộ các mối quan hệ gọi phương thức bằng thuật toán tìm kiếm theo chiều sâu (DFS), 2) Mô phỏng phân tích vết (taint analysis) JVM để xác thực các chuỗi gọi, 3) Xác định các entry point của thành phần Java Web (Servlet, JSP, Spring MVC, v.v.), 4) Tạo biểu đồ luồng kiểm soát (CFG) cho các phương thức quan trọng, và 5) Tìm kiếm các chuỗi khớp với [SEARCH_PATTERN]. Xuất kết quả phát hiện được dưới dạng báo cáo có cấu trúc gồm biểu đồ gọi (call graph), đường dẫn truyền vết (taint propagation path) và tóm tắt entry point. Sử dụng tích hợp MCP nếu có.\n```\n\n```\nBáo cáo phân tích Jar Analyzer v2.4.1 cho 'payment-service-1.0.0.jar'\n\n=== Biểu đồ gọi phương thức (Độ sâu DFS: 5) ===\nCorePaymentService.processPayment()\n├── PaymentValidator.validate() [taint source: user input]\n│   └── DatabaseConnector.query() [taint sink: SQL]\n├── TransactionLogger.log() [taint source: payment data]\n│   └── LogManager.write() [taint sink: file system]\n└── FraudDetection.check()\n    └── RiskEngine.evaluate() [taint source: transaction metadata]\n\n=== Xác thực phân tích vết (Taint Analysis) JVM ===\nĐã xác nhận sự truyền vết (taint propagation) từ PaymentValidator.validate() đến DatabaseConnector.query() qua 3 lượt gọi trung gian. Không tìm thấy bước chuẩn hóa dữ liệu (sanitization) nào. Nguy cơ tấn công SQL injection cao.\n\n=== Entry Point Java Web ===\n1. Servlet: PaymentServlet.doPost() (url-pattern: /api/payments)\n2. Spring Controller: PaymentController.process() (mapping: POST /payments)\n3. JSP: payment-confirmation.jsp (forwarded từ PaymentServlet)\n\n=== Biểu đồ luồng kiểm soát (CFG) ===\nPhương thức: CorePaymentService.processPayment()\nNode: 12 (bao gồm 2 nhánh điều kiện)\nCạnh (Edge): 15\nĐường dẫn tới hạn (Critical Path): validate() → log() → save() → notify()\n\n=== Kết quả tìm kiếm chuỗi ===\nTìm thấy 42 lần xuất hiện của 'password' trong:\n- config/security.properties (3)\n- PaymentService.java (2)\n- test/PaymentServiceTest.java (37)\n\n=== Khuyến nghị bảo mật ===\n1. Thêm kiểm tra dữ liệu đầu vào (input validation) trong PaymentValidator.validate()\n2. Triển khai truy vấn tham số hóa (parameterized query) trong DatabaseConnector\n3. Che giấu dữ liệu nhạy cảm (mask data) trong TransactionLogger\n4. Xem lại cấu hình Spring Security cho endpoint /api/payments\n\nQuá trình phân tích hoàn tất trong 42.3 giây, sử dụng 1.2GB RAM.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:08:12.034170Z",
+    "http_status": 200,
+    "content_hash": "d3558d4c9c9b26db9c72e0d24f6adc75680cdeafd4fcaec15025de33446f4c3e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\jar-analyzer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\jar-analyzer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Jar Analyzer: Phân tích JAR",
+  "short_description_vi": "Jar Analyzer - Công cụ GUI phân tích file JAR, tìm kiếm quan hệ gọi phương thức, phân tích chuỗi gọi phương thức bằng thuật toán DFS, mô phỏng phân tích vết (taint analysis) JVM để xác thực kết quả DFS, tìm kiếm chuỗi, phân tích entry point của thành phần Java Web, phân tích CFG, phân tích stack frame JVM, tìm kiếm biểu thức tùy chỉnh, hỗ trợ gọi MCP, tích hợp workflow n8n. Tài liệu: https://docs.qq.com/doc/DV3pKbG9GS0pJS0tk"
+}

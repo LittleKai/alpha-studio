@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/super-claude-kit",
+  "slug": "super-claude-kit",
+  "name": "browser-use",
+  "headline": "super-claude-kit: Enhance Claude Code with Memory",
+  "short_description": "Transform Claude Code from stateless to stateful with persistent context memory. Cross-session persistence, token-efficient storage, and zero dependencies. Ideal for developers building AI assistants and workflows that require long-term context.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "arpitnath",
+  "install_command": "git clone https://github.com/arpitnath/super-claude-kit.git",
+  "source_repo_url": "https://github.com/arpitnath/super-claude-kit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "ai-assistant",
+    "claude-ai",
+    "claude-plugins",
+    "claude",
+    "llm-tools",
+    "anthropic-claude",
+    "hooks"
+  ],
+  "sections": {
+    "overview": "The super-claude-kit is an innovative Claude Code skill designed to transition your AI from a stateless to a stateful architecture. By implementing a persistent context memory system, this skill allows for cross-session persistence and token-efficient storage, ensuring that your AI agent can remember previous interactions and maintain context over time. This enhancement is crucial for applications that require continuity in user interactions, making it a powerful tool for developers and product managers focused on creating more intuitive AI experiences. One of the key benefits of the super-claude-kit is its ability to save time and enhance productivity in AI automation workflows. While specific time savings are currently unknown, the implementation of this skill can significantly reduce the need for repetitive context-setting in user interactions, allowing AI agents to respond more accurately and efficiently. This not only streamlines the development process but also improves user satisfaction by providing a more seamless experience. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to enhance their AI agents with advanced memory capabilities. Whether you're working on customer support bots, personal assistants, or any application that benefits from stateful interactions, the super-claude-kit can elevate your project. For instance, in a customer support scenario, an AI agent equipped with this skill can remember past issues and resolutions, leading to quicker and more relevant responses. The implementation of the super-claude-kit is classified as intermediate in difficulty, requiring about 30 minutes to integrate into existing workflows. It has no dependencies, making it easy to adopt within various AI-first environments. As businesses increasingly rely on AI automation to improve efficiency, incorporating this skill into your AI agent's capabilities can significantly enhance its effectiveness, ensuring that it remains relevant and responsive to user needs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/arpitnath/super-claude-kit`",
+    "usage": "```\nConvert the following stateless Claude Code snippet into a stateful version using super-claude-kit. Preserve all existing functionality while adding persistent context memory for [FEATURE_NAME]. Store the state in [STORAGE_METHOD] and ensure the state persists across sessions. Optimize for token efficiency. Here's the original code: [CLAUDE_CODE_SNIPPET]\n```\nCopy\n\n```\n```python\n# Stateful version of the original stateless code using super-claude-kit\nfrom super_claude_kit import StateManager\n\n# Initialize state manager with persistent storage\nstate = StateManager(\n    storage_key=\"project_tracker_v2\",\n    storage_method=\"token_efficient_json\",\n    default_state={\n        \"tasks\": {},\n        \"last_updated\": None,\n        \"user_preferences\": {\"theme\": \"dark\", \"notifications\": True}\n    }\n)\n\n# Example stateful function\ndef add_task(task_name, due_date=None):\n    \"\"\"Add a new task with persistent storage\"\"\"\n    current_state = state.load()\n    task_id = f\"task_{len(current_state['tasks']) + 1}\"\n    \n    current_state['tasks'][task_id] = {\n        \"name\": task_name,\n        \"due_date\": due_date,\n        \"status\": \"pending\",\n        \"created_at\": \"2024-05-15T14:30:00Z\"\n    }\n    current_state['last_updated'] = \"2024-05-15T14:30:00Z\"\n    \n    state.save(current_state)\n    return task_id\n\n# Example usage\ntask1 = add_task(\"Implement user authentication\", \"2024-05-20\")\ntask2 = add_task(\"Design database schema\")\n\n# Load state in a new session\nloaded_state = state.load()\nprint(f\"Loaded {len(loaded_state['tasks'])} tasks from persistent storage\")\n```\n\n**Key Improvements:**\n1. **Persistent Context:** All tasks and preferences are automatically saved and reloaded across sessions\n2. **Token Efficiency:** Uses compact JSON storage optimized for Claude's context window\n3. **Zero Dependencies:** No external libraries required beyond super-claude-kit\n4. **Cross-Session Memory:** The state persists even after closing and reopening the session\n5. **Automatic Versioning:** Each state update includes a timestamp for conflict resolution\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "super-claude-kit#main-content",
+      "super-claude-kit#overview",
+      "super-claude-kit#setup",
+      "super-claude-kit#examples",
+      "super-claude-kit#tools",
+      "super-claude-kit#mcp",
+      "super-claude-kit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The super-claude-kit is an innovative Claude Code skill designed to transition your AI from a stateless to a stateful architecture. By implementing a persistent context memory system, this skill allows for cross-session persistence and token-efficient storage, ensuring that your AI agent can remember previous interactions and maintain context over time. This enhancement is crucial for applications that require continuity in user interactions, making it a powerful tool for developers and product managers focused on creating more intuitive AI experiences. One of the key benefits of the super-claude-kit is its ability to save time and enhance productivity in AI automation workflows. While specific time savings are currently unknown, the implementation of this skill can significantly reduce the need for repetitive context-setting in user interactions, allowing AI agents to respond more accurately and efficiently. This not only streamlines the development process but also improves user satisfaction by providing a more seamless experience. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to enhance their AI agents with advanced memory capabilities. Whether you're working on customer support bots, personal assistants, or any application that benefits from stateful interactions, the super-claude-kit can elevate your project. For instance, in a customer support scenario, an AI agent equipped with this skill can remember past issues and resolutions, leading to quicker and more relevant responses. The implementation of the super-claude-kit is classified as intermediate in difficulty, requiring about 30 minutes to integrate into existing workflows. It has no dependencies, making it easy to adopt within various AI-first environments. As businesses increasingly rely on AI automation to improve efficiency, incorporating this skill into your AI agent's capabilities can significantly enhance its effectiveness, ensuring that it remains relevant and responsive to user needs.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/arpitnath/super-claude-kit`",
+    "usage_vi": "```\nConvert the following stateless Claude Code snippet into a stateful version using super-claude-kit. Preserve all existing functionality while adding persistent context memory for [FEATURE_NAME]. Store the state in [STORAGE_METHOD] and ensure the state persists across sessions. Optimize for token efficiency. Here's the original code: [CLAUDE_CODE_SNIPPET]\n```\nCopy\n\n```\n```python\n# Stateful version of the original stateless code using super-claude-kit\nfrom super_claude_kit import StateManager\n\n# Initialize state manager with persistent storage\nstate = StateManager(\n    storage_key=\"project_tracker_v2\",\n    storage_method=\"token_efficient_json\",\n    default_state={\n        \"tasks\": {},\n        \"last_updated\": None,\n        \"user_preferences\": {\"theme\": \"dark\", \"notifications\": True}\n    }\n)\n\n# Example stateful function\ndef add_task(task_name, due_date=None):\n    \"\"\"Add a new task with persistent storage\"\"\"\n    current_state = state.load()\n    task_id = f\"task_{len(current_state['tasks']) + 1}\"\n    \n    current_state['tasks'][task_id] = {\n        \"name\": task_name,\n        \"due_date\": due_date,\n        \"status\": \"pending\",\n        \"created_at\": \"2024-05-15T14:30:00Z\"\n    }\n    current_state['last_updated'] = \"2024-05-15T14:30:00Z\"\n    \n    state.save(current_state)\n    return task_id\n\n# Example usage\ntask1 = add_task(\"Implement user authentication\", \"2024-05-20\")\ntask2 = add_task(\"Design database schema\")\n\n# Load state in a new session\nloaded_state = state.load()\nprint(f\"Loaded {len(loaded_state['tasks'])} tasks from persistent storage\")\n```\n\n**Key Improvements:**\n1. **Persistent Context:** All tasks and preferences are automatically saved and reloaded across sessions\n2. **Token Efficiency:** Uses compact JSON storage optimized for Claude's context window\n3. **Zero Dependencies:** No external libraries required beyond super-claude-kit\n4. **Cross-Session Memory:** The state persists even after closing and reopening the session\n5. **Automatic Versioning:** Each state update includes a timestamp for conflict resolution\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:18:43.628572Z",
+    "http_status": 200,
+    "content_hash": "41d6fea5329027c802e864b1a0c455b183b894796365817f9aedb70494ff6538",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\super-claude-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\super-claude-kit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "super-claude-kit: Enhance Claude Code with Memory",
+  "short_description_vi": "Transform Claude Code from stateless to stateful with persistent context memory. Cross-session persistence, token-efficient storage, and zero dependencies. Ideal for developers building AI assistants and workflows that require long-term context."
+}

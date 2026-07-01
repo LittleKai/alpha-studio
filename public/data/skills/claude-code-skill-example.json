@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-skill-example",
+  "slug": "claude-code-skill-example",
+  "name": "Claude Code skill example",
+  "headline": "Claude Code skill example - sample skills",
+  "short_description": "Automates software development workflows by creating worktrees from plan mode, implementing code, generating pull requests, and cleaning up worktrees. Benefits operations teams by streamlining development processes and integrating with Git workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "shikajiro",
+  "install_command": "git clone https://github.com/shikajiro/claude-code-skill-example.git",
+  "source_repo_url": "https://github.com/shikajiro/claude-code-skill-example",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code Skill Example automates software development workflows by integrating with Git worktrees and pull request management. The skill creates isolated worktrees when plan mode completes, allowing safe implementation of code changes before merging. After implementation finishes, it automatically generates pull requests and removes worktrees, streamlining the development cycle. This skill helps operations and development teams reduce manual Git workflow steps and maintain consistent branching practices across projects.\nAutomated worktree creation at the start of implementation phase\nStreamlined pull request generation after code implementation\nAutomatic cleanup of worktrees following PR creation\nConsistent Git workflow management across multiple projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shikajiro/claude-code-skill-example`",
+    "usage": "```\nCreate a new worktree from plan mode for [PROJECT_NAME] in [REPOSITORY]. Implement the following features: [FEATURE_LIST]. Generate a pull request with the title '[TITLE]' and description '[DESCRIPTION]'. Clean up the worktree after completion. Use the following Git workflow: [WORKFLOW].\n```\nCopy\n\n```\n# Worktree Creation and Implementation",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-skill-example#main-content",
+      "claude-code-skill-example#overview",
+      "claude-code-skill-example#setup",
+      "claude-code-skill-example#examples",
+      "claude-code-skill-example#tools",
+      "claude-code-skill-example#mcp",
+      "claude-code-skill-example#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Skill Example automates software development workflows by integrating with Git worktrees and pull request management. The skill creates isolated worktrees when plan mode completes, allowing safe implementation of code changes before merging. After implementation finishes, it automatically generates pull requests and removes worktrees, streamlining the development cycle. This skill helps operations and development teams reduce manual Git workflow steps and maintain consistent branching practices across projects.\nAutomated worktree creation at the start of implementation phase\nStreamlined pull request generation after code implementation\nAutomatic cleanup of worktrees following PR creation\nConsistent Git workflow management across multiple projects",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shikajiro/claude-code-skill-example`",
+    "usage_vi": "```\nCreate a new worktree from plan mode for [PROJECT_NAME] in [REPOSITORY]. Implement the following features: [FEATURE_LIST]. Generate a pull request with the title '[TITLE]' and description '[DESCRIPTION]'. Clean up the worktree after completion. Use the following Git workflow: [WORKFLOW].\n```\nCopy\n\n```\n# Worktree Creation and Implementation"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:36:33.168030Z",
+    "http_status": 200,
+    "content_hash": "13e74c88b4ba62b5e9c6aa3e7f239ed6fcb3e721b3142c70d8ee1fb814b86ccc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-skill-example.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-skill-example.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code skill example - sample skills",
+  "short_description_vi": "Automates software development workflows by creating worktrees from plan mode, implementing code, generating pull requests, and cleaning up worktrees. Benefits operations teams by streamlining development processes and integrating with Git workflows."
+}

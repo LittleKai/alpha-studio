@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/firecrawl",
+  "slug": "firecrawl",
+  "name": "firecrawl",
+  "headline": "Firecrawl: Web Data API for AI Integration",
+  "short_description": "Firecrawl is an advanced web data API that transforms entire websites into LLM-ready markdown or structured data, enabling data extraction for AI applications. Ideal for developers and businesses looking to harness web data efficiently.",
+  "tier": "Gold",
+  "category": "GrowthMarketingRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "firecrawl",
+  "install_command": "claude install firecrawl/firecrawl",
+  "source_repo_url": "https://github.com/firecrawl/firecrawl",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "llm",
+    "markdown",
+    "ai-crawler",
+    "web-scraping",
+    "data-extraction"
+  ],
+  "sections": {
+    "overview": "Firecrawl is a web data API designed to transform entire websites into formats optimized for large language models, including markdown and structured data outputs. The service enables developers and AI teams to efficiently extract and process web data for integration with AI applications. It handles the complexity of web scraping and data transformation, converting raw web content into clean, LLM-ready formats that can be directly consumed by AI agents and language models. Firecrawl solves the common problem of making web data accessible to AI systems without manual formatting or complex preprocessing. This is particularly valuable for applications that need to ingest web content at scale while maintaining data quality and consistency.\nExtracting product data from e-commerce sites for inventory management and analysis.\nConverting blog content into structured markdown for easier content management and publication.\nAggregating competitor information from various sources to inform strategic business decisions.\nCollecting user reviews from multiple platforms to enhance product feedback analysis.",
+    "setup": "Terminal\nCopy\n`claude install firecrawl/firecrawl`\n`git clone https://github.com/firecrawl/firecrawl`",
+    "usage": "```\nUse Firecrawl to extract data from [WEBSITE_URL]. Transform the content into structured data in [FORMAT: markdown/json]. Focus on extracting [SPECIFIC_DATA: product listings, blog posts, contact information]. Ensure the output is clean, well-organized, and ready for use in an AI application.\n```\nCopy\n\n```\nHere is the structured data extracted from the example website using Firecrawl:\n\n```json\n{\n  \"products\": [\n    {\n      \"name\": \"AI-Powered Web Scraper\",\n      \"description\": \"Transform any website into structured data with ease.\",\n      \"price\": \"$99.99\",\n      \"category\": \"Web Tools\"\n    },\n    {\n      \"name\": \"Data Extraction API\",\n      \"description\": \"Access web data programmatically with our robust API.\",\n      \"price\": \"$199.99\",\n      \"category\": \"API Services\"\n    }\n  ],\n  \"blog_posts\": [\n    {\n      \"title\": \"The Future of Web Data Extraction\",\n      \"author\": \"Jane Doe\",\n      \"date\": \"2023-10-15\",\n      \"content\": \"Web data extraction is evolving rapidly with the advent of AI...\",\n      \"url\": \"https://example.com/blog/future-of-web-data-extraction\"\n    }\n  ],\n  \"contact_information\": {\n    \"email\": \"support@example.com\",\n    \"phone\": \"+1 (123) 456-7890\",\n    \"address\": \"123 Tech Street, Silicon Valley, CA\"\n  }\n}\n```\n\nThe data is now ready for use in AI applications, enabling seamless integration and analysis.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "firecrawl#main-content",
+      "firecrawl#overview",
+      "firecrawl#setup",
+      "firecrawl#examples",
+      "firecrawl#tools",
+      "firecrawl#mcp",
+      "firecrawl#related",
+      "claude-skills",
+      "nuwax",
+      "cradle"
+    ],
+    "overview_vi": "Firecrawl là một web data API được thiết kế để chuyển đổi toàn bộ trang web sang các định dạng được tối ưu hóa cho các mô hình ngôn ngữ lớn (LLM), bao gồm dữ liệu đầu ra dạng markdown và dữ liệu có cấu trúc. Dịch vụ này giúp các nhà phát triển và đội ngũ AI trích xuất cũng như xử lý dữ liệu web một cách hiệu quả để tích hợp với các ứng dụng AI. Firecrawl tự động xử lý các tác vụ phức tạp liên quan đến web scraping và chuyển đổi dữ liệu, biến nội dung web thô thành các định dạng sạch, sẵn sàng cho LLM để các AI agent và mô hình ngôn ngữ có thể trực tiếp sử dụng. Firecrawl giải quyết bài toán phổ biến là làm thế nào để hệ thống AI có thể tiếp cận dữ liệu web mà không cần định dạng thủ công hay tiền xử lý phức tạp. Điều này đặc biệt có giá trị đối với các ứng dụng cần nạp nội dung web ở quy mô lớn nhưng vẫn duy trì được chất lượng và tính nhất quán của dữ liệu.\nTrích xuất dữ liệu sản phẩm từ các trang thương mại điện tử phục vụ cho việc quản lý và phân tích kho hàng.\nChuyển đổi nội dung blog thành định dạng markdown có cấu trúc để quản lý và xuất bản nội dung dễ dàng hơn.\nTổng hợp thông tin đối thủ cạnh tranh từ nhiều nguồn khác nhau để hỗ trợ các quyết định kinh doanh chiến lược.\nThu thập đánh giá của người dùng từ nhiều nền tảng để nâng cao hiệu quả phân tích phản hồi về sản phẩm.",
+    "setup_vi": "Terminal\nSao chép\n`claude install firecrawl/firecrawl`\n`git clone https://github.com/firecrawl/firecrawl`",
+    "usage_vi": "```\nSử dụng Firecrawl để trích xuất dữ liệu từ [WEBSITE_URL]. Chuyển đổi nội dung thành dữ liệu có cấu trúc theo định dạng [FORMAT: markdown/json]. Tập trung vào việc trích xuất [SPECIFIC_DATA: danh sách sản phẩm, bài viết blog, thông tin liên hệ]. Đảm bảo dữ liệu đầu ra sạch, được sắp xếp hợp lý và sẵn sàng sử dụng trong ứng dụng AI.\n```\nCopy\n\n```\nDưới đây là dữ liệu có cấu trúc được trích xuất từ trang web mẫu bằng Firecrawl:\n\n```json\n{\n  \"products\": [\n    {\n      \"name\": \"AI-Powered Web Scraper\",\n      \"description\": \"Transform any website into structured data with ease.\",\n      \"price\": \"$99.99\",\n      \"category\": \"Web Tools\"\n    },\n    {\n      \"name\": \"Data Extraction API\",\n      \"description\": \"Access web data programmatically with our robust API.\",\n      \"price\": \"$199.99\",\n      \"category\": \"API Services\"\n    }\n  ],\n  \"blog_posts\": [\n    {\n      \"title\": \"The Future of Web Data Extraction\",\n      \"author\": \"Jane Doe\",\n      \"date\": \"2023-10-15\",\n      \"content\": \"Web data extraction is evolving rapidly with the advent of AI...\",\n      \"url\": \"https://example.com/blog/future-of-web-data-extraction\"\n    }\n  ],\n  \"contact_information\": {\n    \"email\": \"support@example.com\",\n    \"phone\": \"+1 (123) 456-7890\",\n    \"address\": \"123 Tech Street, Silicon Valley, CA\"\n  }\n}\n```\n\nDữ liệu hiện đã sẵn sàng để sử dụng trong các ứng dụng AI, giúp việc tích hợp và phân tích trở nên liền mạch.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:42:20.426964Z",
+    "http_status": 200,
+    "content_hash": "d4b729d6521d8a5dfba9eb439a1f7d25c4df6bbfa513aa7f461a869f34950b2b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\firecrawl.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\firecrawl.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Firecrawl: Web Data API dành cho tích hợp AI",
+  "short_description_vi": "Firecrawl là một web data API nâng cao giúp chuyển đổi toàn bộ trang web thành định dạng markdown hoặc dữ liệu có cấu trúc sẵn sàng cho LLM, hỗ trợ trích xuất dữ liệu cho các ứng dụng AI. Đây là giải pháp lý tưởng cho các nhà phát triển và doanh nghiệp muốn khai thác dữ liệu web một cách hiệu quả."
+}

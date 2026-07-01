@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcpo",
+  "slug": "mcpo",
+  "name": "react-native-best-practices",
+  "headline": "mcpo - MCP to OpenAPI Proxy Server",
+  "short_description": "mcpo is a secure and efficient MCP-to-OpenAPI proxy server designed to streamline API interactions. Built with Python, it enhances the integration between MCP and OpenAPI, making it easier for developers to manage and utilize APIs effectively.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "open-webui",
+  "install_command": "claude install open-webui/mcpo",
+  "source_repo_url": "https://github.com/open-webui/mcpo",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "python",
+    "api-integration",
+    "proxy",
+    "mcp",
+    "openapi"
+  ],
+  "sections": {
+    "overview": "mcpo is a proxy that converts MCP (Model Context Protocol) server commands into OpenAPI-compatible HTTP endpoints, making MCP tools accessible to any application or LLM agent expecting standard REST APIs. Built with Python, it eliminates the need for custom protocol handling and glue code by automatically exposing MCP functionality through a standard OpenAPI interface. The tool solves compatibility issues inherent to MCP's raw stdio communication—which lacks built-in security, standard documentation, and authentication features. Developers can expose any MCP tool without modification, instantly gaining features like HTTP accessibility, proper error handling, and OpenAPI documentation. This is particularly valuable for teams integrating MCP tools with LLM agents, web applications, and services that require standard REST interfaces.\nIntegrate MCP services with OpenAPI specifications for easier API consumption.\nCreate a secure API proxy for data exchange between different applications.\nSimplify API management for developers by auto-generating interactive documentation.\nEnhance API security and performance using trusted web standards.",
+    "setup": "Terminal\nCopy\n`claude install open-webui/mcpo`\n`git clone https://github.com/open-webui/mcpo`",
+    "usage": "```\nSet up an mcpo proxy server to convert MCP API responses to OpenAPI format for [SPECIFIC_APPLICATION]. Configure the server to handle [NUMBER] concurrent requests and ensure it supports [AUTHENTICATION_METHOD]. Provide a sample configuration file and explain how to deploy it in a Docker container.\n```\nCopy\n\n```\nTo set up an mcpo proxy server for your e-commerce platform, you'll need to follow these steps:\n\n1. **Installation**: Clone the mcpo repository from GitHub and install the required dependencies using pip:\n   ```bash\n   git clone https://github.com/yourusername/mcpo.git\n   cd mcpo\n   pip install -r requirements.txt\n   ```\n\n2. **Configuration**: Create a configuration file named `config.yaml` with the following content:\n   ```yaml\n   server:\n     host: 0.0.0.0\n     port: 8000\n     workers: 4\n   mcp:\n     url: https://api.mcp.example.com\n     auth:\n       type: basic\n       username: your_username\n       password: your_password\n   openapi:\n     output_dir: ./openapi_schemas\n   ```\n\n3. **Docker Deployment**: Create a Dockerfile to containerize the mcpo server:\n   ```dockerfile\n   FROM python:3.9\n   WORKDIR /app\n   COPY . .\n   RUN pip install -r requirements.txt\n   CMD [\"python\", \"mcpo_server.py\"]\n   ```\n\n4. **Running the Server**: Build and run the Docker container:\n   ```bash\n   docker build -t mcpo-server .\n   docker run -p 8000:8000 mcpo-server\n   ```\n\n5. **Testing**: Use a tool like Postman to send a request to your mcpo server and verify that the response is in OpenAPI format.\n\nBy following these steps, you can efficiently set up an mcpo proxy server to streamline API interactions for your e-commerce platform.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "mcpo#main-content",
+      "mcpo#overview",
+      "mcpo#setup",
+      "mcpo#examples",
+      "mcpo#tools",
+      "mcpo#mcp",
+      "mcpo#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcpo is a proxy that converts MCP (Model Context Protocol) server commands into OpenAPI-compatible HTTP endpoints, making MCP tools accessible to any application or LLM agent expecting standard REST APIs. Built with Python, it eliminates the need for custom protocol handling and glue code by automatically exposing MCP functionality through a standard OpenAPI interface. The tool solves compatibility issues inherent to MCP's raw stdio communication—which lacks built-in security, standard documentation, and authentication features. Developers can expose any MCP tool without modification, instantly gaining features like HTTP accessibility, proper error handling, and OpenAPI documentation. This is particularly valuable for teams integrating MCP tools with LLM agents, web applications, and services that require standard REST interfaces.\nIntegrate MCP services with OpenAPI specifications for easier API consumption.\nCreate a secure API proxy for data exchange between different applications.\nSimplify API management for developers by auto-generating interactive documentation.\nEnhance API security and performance using trusted web standards.",
+    "setup_vi": "Terminal\nCopy\n`claude install open-webui/mcpo`\n`git clone https://github.com/open-webui/mcpo`",
+    "usage_vi": "```\nSet up an mcpo proxy server to convert MCP API responses to OpenAPI format for [SPECIFIC_APPLICATION]. Configure the server to handle [NUMBER] concurrent requests and ensure it supports [AUTHENTICATION_METHOD]. Provide a sample configuration file and explain how to deploy it in a Docker container.\n```\nCopy\n\n```\nTo set up an mcpo proxy server for your e-commerce platform, you'll need to follow these steps:\n\n1. **Installation**: Clone the mcpo repository from GitHub and install the required dependencies using pip:\n   ```bash\n   git clone https://github.com/yourusername/mcpo.git\n   cd mcpo\n   pip install -r requirements.txt\n   ```\n\n2. **Configuration**: Create a configuration file named `config.yaml` with the following content:\n   ```yaml\n   server:\n     host: 0.0.0.0\n     port: 8000\n     workers: 4\n   mcp:\n     url: https://api.mcp.example.com\n     auth:\n       type: basic\n       username: your_username\n       password: your_password\n   openapi:\n     output_dir: ./openapi_schemas\n   ```\n\n3. **Docker Deployment**: Create a Dockerfile to containerize the mcpo server:\n   ```dockerfile\n   FROM python:3.9\n   WORKDIR /app\n   COPY . .\n   RUN pip install -r requirements.txt\n   CMD [\"python\", \"mcpo_server.py\"]\n   ```\n\n4. **Running the Server**: Build and run the Docker container:\n   ```bash\n   docker build -t mcpo-server .\n   docker run -p 8000:8000 mcpo-server\n   ```\n\n5. **Testing**: Use a tool like Postman to send a request to your mcpo server and verify that the response is in OpenAPI format.\n\nBy following these steps, you can efficiently set up an mcpo proxy server to streamline API interactions for your e-commerce platform.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:23:50.161045Z",
+    "http_status": 200,
+    "content_hash": "3cfe049c120c12e75b20859bca6868c7d7060fb23e0144359f08f33fecbe2cac",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcpo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcpo.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mcpo - MCP to OpenAPI Proxy Server",
+  "short_description_vi": "mcpo is a secure and efficient MCP-to-OpenAPI proxy server designed to streamline API interactions. Built with Python, it enhances the integration between MCP and OpenAPI, making it easier for developers to manage and utilize APIs effectively."
+}

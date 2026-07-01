@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/firefox-devtools-mcp",
+  "slug": "firefox-devtools-mcp",
+  "name": "browser-use",
+  "headline": "Firefox DevTools MCP - Browser Automation",
+  "short_description": "Model Context Protocol server for Firefox DevTools. Enables AI assistants to inspect and control Firefox browser through the Remote Debugging Protocol. Useful for operations teams automating browser tasks, testing, and debugging. Integrates with Claude AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "freema",
+  "install_command": "git clone https://github.com/freema/firefox-devtools-mcp.git",
+  "source_repo_url": "https://github.com/freema/firefox-devtools-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "mcp",
+    "firefox"
+  ],
+  "sections": {
+    "overview": "Firefox DevTools MCP is a Model Context Protocol server that lets AI assistants automate and control Firefox browsers using WebDriver BiDi through Selenium WebDriver. It runs locally on your machine—requiring Node.js 20.19.0+ and Firefox 100+—and integrates with Claude Code, Claude Desktop, Cursor, Cline, and other MCP clients. The server provides tools to navigate pages, take snapshots, interact with elements by ID, capture network requests, inspect console messages, and execute JavaScript in page context. It supports advanced features like Firefox for Android automation, connection to existing Firefox sessions with preserved cookies and logins, and privileged context access for managing Firefox preferences and extensions. Security is built in: the README emphasizes using a dedicated Firefox profile, being cautious about visited sites to avoid prompt injection, and avoiding unnecessary privilege flags. Operations teams, QA engineers, and developers benefit from automating browser tasks, testing workflows, and debugging without manual intervention.\nAutomate browser testing workflows and verify page behavior across different viewports\nCapture network requests and console output for debugging web applications\nInteract with web pages programmatically—click elements, fill forms, navigate URLs\nAutomate Firefox on Android devices for mobile testing via ADB",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/freema/firefox-devtools-mcp`",
+    "usage": "```\nUse the Firefox DevTools MCP server to [TASK] in Firefox. For example: 'Open a new tab in Firefox, navigate to [URL], and inspect the DOM element with selector [CSS_SELECTOR].' Or: 'Debug the network request for [API_ENDPOINT] in the current tab and report the response headers.'\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"actions\": [\n    {\n      \"action\": \"new_tab\",\n      \"timestamp\": \"2024-05-15T14:30:22Z\",\n      \"result\": \"Tab opened successfully (Tab ID: 3)\"\n    },\n    {\n      \"action\": \"navigate\",\n      \"url\": \"https://example.com/api/users\",\n      \"timestamp\": \"2024-05-15T14:30:25Z\",\n      \"result\": \"Navigation completed. Status: 200 OK\"\n    },\n    {\n      \"action\": \"inspect_network_request\",\n      \"filter\": \"url=https://example.com/api/users\",\n      \"timestamp\": \"2024-05-15T14:30:28Z\",\n      \"result\": {\n        \"request_id\": \"12345.67\",\n        \"method\": \"GET\",\n        \"status\": 200,\n        \"response_time_ms\": 142,\n        \"headers\": {\n          \"content-type\": \"application/json\",\n          \"cache-control\": \"no-cache\"\n        },\n        \"response_body\": {\n          \"users\": [\n            {\"id\": 1, \"name\": \"Alice\", \"role\": \"admin\"},\n            {\"id\": 2, \"name\": \"Bob\", \"role\": \"user\"}\n          ]\n        }\n      }\n    }\n  ],\n  \"summary\": \"Successfully debugged the network request for https://example.com/api/users. Identified 2 users in the response. No errors detected.\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "firefox-devtools-mcp#main-content",
+      "firefox-devtools-mcp#overview",
+      "firefox-devtools-mcp#setup",
+      "firefox-devtools-mcp#examples",
+      "firefox-devtools-mcp#tools",
+      "firefox-devtools-mcp#mcp",
+      "firefox-devtools-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Firefox DevTools MCP is a Model Context Protocol server that lets AI assistants automate and control Firefox browsers using WebDriver BiDi through Selenium WebDriver. It runs locally on your machine—requiring Node.js 20.19.0+ and Firefox 100+—and integrates with Claude Code, Claude Desktop, Cursor, Cline, and other MCP clients. The server provides tools to navigate pages, take snapshots, interact with elements by ID, capture network requests, inspect console messages, and execute JavaScript in page context. It supports advanced features like Firefox for Android automation, connection to existing Firefox sessions with preserved cookies and logins, and privileged context access for managing Firefox preferences and extensions. Security is built in: the README emphasizes using a dedicated Firefox profile, being cautious about visited sites to avoid prompt injection, and avoiding unnecessary privilege flags. Operations teams, QA engineers, and developers benefit from automating browser tasks, testing workflows, and debugging without manual intervention.\nAutomate browser testing workflows and verify page behavior across different viewports\nCapture network requests and console output for debugging web applications\nInteract with web pages programmatically—click elements, fill forms, navigate URLs\nAutomate Firefox on Android devices for mobile testing via ADB",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/freema/firefox-devtools-mcp`",
+    "usage_vi": "```\nUse the Firefox DevTools MCP server to [TASK] in Firefox. For example: 'Open a new tab in Firefox, navigate to [URL], and inspect the DOM element with selector [CSS_SELECTOR].' Or: 'Debug the network request for [API_ENDPOINT] in the current tab and report the response headers.'\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"actions\": [\n    {\n      \"action\": \"new_tab\",\n      \"timestamp\": \"2024-05-15T14:30:22Z\",\n      \"result\": \"Tab opened successfully (Tab ID: 3)\"\n    },\n    {\n      \"action\": \"navigate\",\n      \"url\": \"https://example.com/api/users\",\n      \"timestamp\": \"2024-05-15T14:30:25Z\",\n      \"result\": \"Navigation completed. Status: 200 OK\"\n    },\n    {\n      \"action\": \"inspect_network_request\",\n      \"filter\": \"url=https://example.com/api/users\",\n      \"timestamp\": \"2024-05-15T14:30:28Z\",\n      \"result\": {\n        \"request_id\": \"12345.67\",\n        \"method\": \"GET\",\n        \"status\": 200,\n        \"response_time_ms\": 142,\n        \"headers\": {\n          \"content-type\": \"application/json\",\n          \"cache-control\": \"no-cache\"\n        },\n        \"response_body\": {\n          \"users\": [\n            {\"id\": 1, \"name\": \"Alice\", \"role\": \"admin\"},\n            {\"id\": 2, \"name\": \"Bob\", \"role\": \"user\"}\n          ]\n        }\n      }\n    }\n  ],\n  \"summary\": \"Successfully debugged the network request for https://example.com/api/users. Identified 2 users in the response. No errors detected.\"\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:13:30.536157Z",
+    "http_status": 200,
+    "content_hash": "25b3b296b02f4704308e0d986a3b2d914e7262fadabd3a64473724f3d538be0c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\firefox-devtools-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\firefox-devtools-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Firefox DevTools MCP - Browser Automation",
+  "short_description_vi": "Model Context Protocol server for Firefox DevTools. Enables AI assistants to inspect and control Firefox browser through the Remote Debugging Protocol. Useful for operations teams automating browser tasks, testing, and debugging. Integrates with Claude AI agents."
+}

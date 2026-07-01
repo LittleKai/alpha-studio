@@ -1,0 +1,52 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/youtube-vape-classification",
+  "slug": "youtube-vape-classification",
+  "name": "Youtube Vape Classification",
+  "headline": "YouTube Vape Classification: E-Cig Content Analysis",
+  "short_description": "Using machine learning to identify the content of e-cigarette videos, featured e-cigarette products, video uploaders, and marketing and sales of e-cigarette products.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "sschott20",
+  "install_command": "git clone https://github.com/sschott20/youtube-vape-classification.git",
+  "source_repo_url": "https://github.com/sschott20/youtube-vape-classification",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill uses supervised machine learning to automatically analyze e-cigarette videos on YouTube, classifying video themes (product reviews, instructions, vape tricks), featured products, channel types (enthusiasts, retailers, brands), and sales strategies including discounts and external purchase links. The system was trained on 3,830 English-language videos and achieves up to 0.87 F1 score accuracy. It processes video metadata to predict four distinct models, enabling researchers and regulators to understand how e-cigarette products are promoted to youth audiences on social media. This tool supports public health research by quantifying marketing tactics, engagement metrics, and product promotion patterns across YouTube's vaping content.\nAnalyze e-cigarette marketing strategies and sales tactics on YouTube\nIdentify which video themes drive highest engagement in vaping content\nClassify channel types uploading e-cigarette content (enthusiasts vs. retailers)\nDetect discount and sales promotion patterns in vape product videos\n- **Title**: \"Vape Clouds: The Ultimate Guide to [COMPANY] Mods\"\n- **Uploader**: VapeEnthusiast123\n- **Views**: 45,000\n- **Upload Date**: March 15, 2023",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sschott20/youtube-vape-classification`",
+    "usage": "```\nAnalyze the following YouTube video [VIDEO_URL] to identify e-cigarette products, uploaders, and marketing strategies. Focus on [COMPANY] and [INDUSTRY] trends. Provide a detailed breakdown of the content, including product features, branding, and audience engagement tactics.\n```\nCopy\n\n```\n# YouTube Vape Video Analysis",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "youtube-vape-classification#main-content",
+      "youtube-vape-classification#overview",
+      "youtube-vape-classification#setup",
+      "youtube-vape-classification#examples",
+      "youtube-vape-classification#related",
+      "marketingskills",
+      "copywriting",
+      "mailchamp"
+    ],
+    "overview_vi": "This skill uses supervised machine learning to automatically analyze e-cigarette videos on YouTube, classifying video themes (product reviews, instructions, vape tricks), featured products, channel types (enthusiasts, retailers, brands), and sales strategies including discounts and external purchase links. The system was trained on 3,830 English-language videos and achieves up to 0.87 F1 score accuracy. It processes video metadata to predict four distinct models, enabling researchers and regulators to understand how e-cigarette products are promoted to youth audiences on social media. This tool supports public health research by quantifying marketing tactics, engagement metrics, and product promotion patterns across YouTube's vaping content.\nAnalyze e-cigarette marketing strategies and sales tactics on YouTube\nIdentify which video themes drive highest engagement in vaping content\nClassify channel types uploading e-cigarette content (enthusiasts vs. retailers)\nDetect discount and sales promotion patterns in vape product videos\n- **Title**: \"Vape Clouds: The Ultimate Guide to [COMPANY] Mods\"\n- **Uploader**: VapeEnthusiast123\n- **Views**: 45,000\n- **Upload Date**: March 15, 2023",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sschott20/youtube-vape-classification`",
+    "usage_vi": "```\nAnalyze the following YouTube video [VIDEO_URL] to identify e-cigarette products, uploaders, and marketing strategies. Focus on [COMPANY] and [INDUSTRY] trends. Provide a detailed breakdown of the content, including product features, branding, and audience engagement tactics.\n```\nCopy\n\n```\n# YouTube Vape Video Analysis"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:28.173294Z",
+    "http_status": 200,
+    "content_hash": "17311e6e9d908fb78accd31de0f2a1f98128bfb6b59c07237a20dfee3d844f28",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\youtube-vape-classification.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\youtube-vape-classification.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "YouTube Vape Classification: E-Cig Content Analysis",
+  "short_description_vi": "Using machine learning to identify the content of e-cigarette videos, featured e-cigarette products, video uploaders, and marketing and sales of e-cigarette products."
+}

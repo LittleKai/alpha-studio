@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-rules",
+  "slug": "claude-code-rules",
+  "name": "browser-use",
+  "headline": "claude-code-rules: Enhance Your AI Workflow",
+  "short_description": "Claude Code Rules provides practical techniques to enhance AI-assisted development workflows. Operations teams benefit from improved code generation, debugging, and documentation. It connects to Claude Code plugins and integrates with existing development tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "NikiforovAll",
+  "install_command": "git clone https://github.com/NikiforovAll/claude-code-rules.git",
+  "source_repo_url": "https://github.com/NikiforovAll/claude-code-rules",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "handbook",
+    "claude-code-marketplace",
+    "claude-code-plugin",
+    "claude",
+    "claude-code-plugins",
+    "plugin",
+    "claude-code-plugins-marketplace"
+  ],
+  "sections": {
+    "overview": "The claude-code-rules skill is designed to enhance your AI-assisted development workflow by providing practical techniques that streamline your processes. This intermediate-level skill focuses on automating repetitive tasks and optimizing your coding practices within the Claude Code environment. By leveraging this skill, developers can significantly improve their productivity and efficiency, allowing them to focus on more complex aspects of their projects. One of the key benefits of implementing claude-code-rules is the potential for substantial time savings in your development cycle. Although the exact time savings are currently unknown, users can expect to reduce the time spent on mundane tasks, enabling them to allocate more time to innovation and problem-solving. This skill is particularly beneficial for developers and product managers who are looking to integrate AI automation into their workflows, as it provides a structured approach to enhancing productivity. This skill is ideal for developers, product managers, and AI practitioners who are seeking to improve their workflow automation capabilities. By employing claude-code-rules, teams can achieve a more efficient development process, which is crucial in today’s fast-paced tech landscape. Practical use cases include automating code reviews, generating documentation, and managing version control, all of which contribute to a more seamless development experience. With a moderate implementation difficulty and an estimated setup time of just 30 minutes, claude-code-rules is accessible for those familiar with AI automation. It integrates seamlessly into AI-first workflows, allowing users to harness the power of AI agents effectively. This skill not only enhances individual productivity but also contributes to the overall efficiency of development teams, making it a valuable addition to any AI automation toolkit.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/NikiforovAll/claude-code-rules`",
+    "usage": "```\nGenerate a set of claude-code-rules for [LANGUAGE] projects that enforce [STYLE_GUIDE] and [SECURITY_STANDARDS]. Include rules for [CODE_QUALITY], [PERFORMANCE_OPTIMIZATION], and [TESTING_REQUIREMENTS]. Format the output as a .claude-code-rules.json file with clear descriptions and example violations for each rule.\n```\nCopy\n\n```\n```json\n{\n  \"claude_code_rules\": {\n    \"language\": \"Python\",\n    \"style_guide\": \"PEP 8\",\n    \"security_standards\": \"OWASP Top 10\",\n    \"rules\": [\n      {\n        \"id\": \"PY001\",\n        \"name\": \"Function Naming Convention\",\n        \"description\": \"Function names should be lowercase with words separated by underscores as necessary to improve readability.\",\n        \"example_violation\": \"def CalculateTotalPrice(items):\",\n        \"example_correction\": \"def calculate_total_price(items):\",\n        \"severity\": \"warning\"\n      },\n      {\n        \"id\": \"PY002\",\n        \"name\": \"SQL Injection Prevention\",\n        \"description\": \"Avoid string concatenation for SQL queries. Use parameterized queries or prepared statements.\",\n        \"example_violation\": \"cursor.execute(f\"SELECT * FROM users WHERE id = {user_id}\")\",\n        \"example_correction\": \"cursor.execute(\"SELECT * FROM users WHERE id = %s\", (user_id,))\",\n        \"severity\": \"error\"\n      },\n      {\n        \"id\": \"PY003\",\n        \"name\": \"Cyclomatic Complexity\",\n        \"description\": \"Functions should not exceed a cyclomatic complexity of 10. Break down complex functions into smaller ones.\",\n        \"example_violation\": \"A function with 12 if-else branches and nested loops.\",\n        \"example_correction\": \"Refactor into smaller functions with clear responsibilities.\",\n        \"severity\": \"warning\"\n      },\n      {\n        \"id\": \"PY004\",\n        \"name\": \"Unit Test Coverage\",\n        \"description\": \"All public functions must have corresponding unit tests. Aim for at least 80% coverage.\",\n        \"example_violation\": \"A function calculate_discount() with no unit tests.\",\n        \"example_correction\": \"Add tests in tests/test_discounts.py covering edge cases like zero discount and maximum discount.\",\n        \"severity\": \"error\"\n      },\n      {\n        \"id\": \"PY005\",\n        \"name\": \"Memory Leak Prevention\",\n        \"description\": \"Ensure file handles, database connections, and network sockets are properly closed using context managers or try-finally blocks.\",\n        \"example_violation\": \"with open('data.txt', 'r') as file: data = file.read()\",\n        \"example_correction\": \"No correction needed, but ensure similar patterns are used for all resource-heavy operations.\",\n        \"severity\": \"error\"\n      }\n    ]\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-rules#main-content",
+      "claude-code-rules#overview",
+      "claude-code-rules#setup",
+      "claude-code-rules#examples",
+      "claude-code-rules#tools",
+      "claude-code-rules#mcp",
+      "claude-code-rules#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-code-rules skill is designed to enhance your AI-assisted development workflow by providing practical techniques that streamline your processes. This intermediate-level skill focuses on automating repetitive tasks and optimizing your coding practices within the Claude Code environment. By leveraging this skill, developers can significantly improve their productivity and efficiency, allowing them to focus on more complex aspects of their projects. One of the key benefits of implementing claude-code-rules is the potential for substantial time savings in your development cycle. Although the exact time savings are currently unknown, users can expect to reduce the time spent on mundane tasks, enabling them to allocate more time to innovation and problem-solving. This skill is particularly beneficial for developers and product managers who are looking to integrate AI automation into their workflows, as it provides a structured approach to enhancing productivity. This skill is ideal for developers, product managers, and AI practitioners who are seeking to improve their workflow automation capabilities. By employing claude-code-rules, teams can achieve a more efficient development process, which is crucial in today’s fast-paced tech landscape. Practical use cases include automating code reviews, generating documentation, and managing version control, all of which contribute to a more seamless development experience. With a moderate implementation difficulty and an estimated setup time of just 30 minutes, claude-code-rules is accessible for those familiar with AI automation. It integrates seamlessly into AI-first workflows, allowing users to harness the power of AI agents effectively. This skill not only enhances individual productivity but also contributes to the overall efficiency of development teams, making it a valuable addition to any AI automation toolkit.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/NikiforovAll/claude-code-rules`",
+    "usage_vi": "```\nGenerate a set of claude-code-rules for [LANGUAGE] projects that enforce [STYLE_GUIDE] and [SECURITY_STANDARDS]. Include rules for [CODE_QUALITY], [PERFORMANCE_OPTIMIZATION], and [TESTING_REQUIREMENTS]. Format the output as a .claude-code-rules.json file with clear descriptions and example violations for each rule.\n```\nCopy\n\n```\n```json\n{\n  \"claude_code_rules\": {\n    \"language\": \"Python\",\n    \"style_guide\": \"PEP 8\",\n    \"security_standards\": \"OWASP Top 10\",\n    \"rules\": [\n      {\n        \"id\": \"PY001\",\n        \"name\": \"Function Naming Convention\",\n        \"description\": \"Function names should be lowercase with words separated by underscores as necessary to improve readability.\",\n        \"example_violation\": \"def CalculateTotalPrice(items):\",\n        \"example_correction\": \"def calculate_total_price(items):\",\n        \"severity\": \"warning\"\n      },\n      {\n        \"id\": \"PY002\",\n        \"name\": \"SQL Injection Prevention\",\n        \"description\": \"Avoid string concatenation for SQL queries. Use parameterized queries or prepared statements.\",\n        \"example_violation\": \"cursor.execute(f\"SELECT * FROM users WHERE id = {user_id}\")\",\n        \"example_correction\": \"cursor.execute(\"SELECT * FROM users WHERE id = %s\", (user_id,))\",\n        \"severity\": \"error\"\n      },\n      {\n        \"id\": \"PY003\",\n        \"name\": \"Cyclomatic Complexity\",\n        \"description\": \"Functions should not exceed a cyclomatic complexity of 10. Break down complex functions into smaller ones.\",\n        \"example_violation\": \"A function with 12 if-else branches and nested loops.\",\n        \"example_correction\": \"Refactor into smaller functions with clear responsibilities.\",\n        \"severity\": \"warning\"\n      },\n      {\n        \"id\": \"PY004\",\n        \"name\": \"Unit Test Coverage\",\n        \"description\": \"All public functions must have corresponding unit tests. Aim for at least 80% coverage.\",\n        \"example_violation\": \"A function calculate_discount() with no unit tests.\",\n        \"example_correction\": \"Add tests in tests/test_discounts.py covering edge cases like zero discount and maximum discount.\",\n        \"severity\": \"error\"\n      },\n      {\n        \"id\": \"PY005\",\n        \"name\": \"Memory Leak Prevention\",\n        \"description\": \"Ensure file handles, database connections, and network sockets are properly closed using context managers or try-finally blocks.\",\n        \"example_violation\": \"with open('data.txt', 'r') as file: data = file.read()\",\n        \"example_correction\": \"No correction needed, but ensure similar patterns are used for all resource-heavy operations.\",\n        \"severity\": \"error\"\n      }\n    ]\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:59:31.799777Z",
+    "http_status": 200,
+    "content_hash": "fa24cc2e24c9a71e4e30b32ece9b20f7b5bebc06bd3907255572108595dda27a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-rules.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-rules.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-code-rules: Enhance Your AI Workflow",
+  "short_description_vi": "Claude Code Rules provides practical techniques to enhance AI-assisted development workflows. Operations teams benefit from improved code generation, debugging, and documentation. It connects to Claude Code plugins and integrates with existing development tools."
+}

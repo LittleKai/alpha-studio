@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/laravel-altitude",
+  "slug": "laravel-altitude",
+  "name": "Laravel Altitude",
+  "headline": "Laravel Altitude - Automate TALL Stack Tasks",
+  "short_description": "Laravel Altitude enables developers to create Claude Code agents for the TALL stack, powered by Laravel Boost. It automates tasks within Laravel applications, benefiting operations teams by streamlining workflows and integrating with existing PHP-based systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "mischasigtermans",
+  "install_command": "git clone https://github.com/mischasigtermans/laravel-altitude.git",
+  "source_repo_url": "https://github.com/mischasigtermans/laravel-altitude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "laravel-boost",
+    "claude-code",
+    "claude-agents",
+    "tall-stack",
+    "laravel",
+    "claude",
+    "claude-commands"
+  ],
+  "sections": {
+    "overview": "Altitude is a Laravel package that syncs Claude Code agents and workflow commands tailored for TALL stack development (Tailwind, Alpine, Livewire, Laravel). It provides specialized agents for architecture decisions, database schema design, security audits, and optional support for Filament, Flux UI, and Pest. Agents automatically reference Laravel Boost's version-specific documentation via MCP, eliminating stale code examples. The package includes workflow commands like /ship, /test, /debug, and /review to streamline common development tasks. Setup is automatic on composer update, keeping agents synchronized with your installed packages.\nDesign multi-file features and architecture decisions with the @architect agent\nCreate database schemas and Eloquent models with the @database agent\nBuild Livewire components and Alpine.js interactivity with specialized agents\nRun workflow commands like /ship, /test, and /debug to automate development tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mischasigtermans/laravel-altitude`",
+    "usage": "```\nGenerate a Laravel Altitude agent to automate [SPECIFIC_TASK] in a Laravel application using the TALL stack. The agent should integrate with [EXISTING_TOOLS_OR_SERVICES] and follow these constraints: [LIST_CONSTRAINTS]. Use Laravel Boost for performance optimization and ensure the agent logs all actions to [LOGGING_CHANNEL]. Provide the agent code in a Laravel service provider format.\n```\nCopy\n\n```\n```php\n<?php\n\nnamespace App\\Providers;\n\nuse Illuminate\\Support\\ServiceProvider;\nuse Laravel\\Boost\\Boost;\nuse App\\Services\\AltitudeAgent;\n\nclass AltitudeAgentServiceProvider extends ServiceProvider\n{\n    public function register()\n    {\n        Boost::agent('tall-stack-automation', function ($agent) {\n            $agent->description('Automates database cleanup and cache warming for high-traffic Laravel applications');\n            \n            $agent->task('cleanup-old-logs', function () {\n                $deleted = \n                    \n                Log::channel('daily')->getFiles()\n                    ->filter(fn ($file) => $file->getMTime() < now()->subDays(30)->timestamp)\n                    ->each(fn ($file) => Storage::disk('local')->delete($file->getPathname()));\n                \n                $this->log(\"Deleted {$deleted->count()} old log files\");\n                return \"Cleaned up {$deleted->count()} log files\";\n            })\n            ->schedule('0 3 * * *') // Daily at 3 AM\n            ->onSuccess(fn ($result) => Notification::sendToTeam(\"Log cleanup completed: {$result}\"));\n            \n            $agent->task('warm-cache-for-popular-routes', function () {\n                $popularRoutes = Cache::remember('popular-routes', 3600, function () {\n                    return DB::table('page_views')\n                        ->select('route', DB::raw('COUNT(*) as views'))\n                        ->groupBy('route')\n                        ->orderByDesc('views')\n                        ->limit(10)\n                        ->pluck('route');\n                });\n                \n                foreach ($popularRoutes as $route) {\n                    Cache::forget(\"route:{$route}:html\");\n                    Cache::remember(\"route:{$route}:html\", 86400, fn () => View::make($route)->render());\n                }\n                \n                return \"Warmed cache for \" . $popularRoutes->count() . \" routes\";\n            })\n            ->schedule('*/15 * * * *') // Every 15 minutes\n            ->onFailure(fn () => Log::error('Cache warming failed'));\n            \n            $agent->onStartup(function () {\n                $this->log('Altitude agent initialized for TALL stack automation');\n            });\n        });\n    }\n}\n```\n\n### Key Features Implemented:\n1. **Scheduled Tasks**: Two agents configured with cron expressions for regular execution\n2. **Logging Integration**: All actions logged to Laravel's default logging channel\n3. **Performance Optimization**: Uses Laravel Boost for agent execution\n4. **Error Handling**: Failure callbacks for critical tasks\n5. **TALL Stack Compatibility**: Uses Livewire patterns (via Laravel Boost) and Alpine.js compatible outputs\n\nThe agent automatically:\n- Deletes log files older than 30 days daily at 3 AM\n- Warms cache for the 10 most visited routes every 15 minutes\n- Sends notifications on success/failure\n\nTo activate, run:\n```bash\nphp artisan boost:install tall-stack-automation\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "laravel-altitude#main-content",
+      "laravel-altitude#overview",
+      "laravel-altitude#setup",
+      "laravel-altitude#examples",
+      "laravel-altitude#tools",
+      "laravel-altitude#mcp",
+      "laravel-altitude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Altitude is a Laravel package that syncs Claude Code agents and workflow commands tailored for TALL stack development (Tailwind, Alpine, Livewire, Laravel). It provides specialized agents for architecture decisions, database schema design, security audits, and optional support for Filament, Flux UI, and Pest. Agents automatically reference Laravel Boost's version-specific documentation via MCP, eliminating stale code examples. The package includes workflow commands like /ship, /test, /debug, and /review to streamline common development tasks. Setup is automatic on composer update, keeping agents synchronized with your installed packages.\nDesign multi-file features and architecture decisions with the @architect agent\nCreate database schemas and Eloquent models with the @database agent\nBuild Livewire components and Alpine.js interactivity with specialized agents\nRun workflow commands like /ship, /test, and /debug to automate development tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mischasigtermans/laravel-altitude`",
+    "usage_vi": "```\nGenerate a Laravel Altitude agent to automate [SPECIFIC_TASK] in a Laravel application using the TALL stack. The agent should integrate with [EXISTING_TOOLS_OR_SERVICES] and follow these constraints: [LIST_CONSTRAINTS]. Use Laravel Boost for performance optimization and ensure the agent logs all actions to [LOGGING_CHANNEL]. Provide the agent code in a Laravel service provider format.\n```\nCopy\n\n```\n```php\n<?php\n\nnamespace App\\Providers;\n\nuse Illuminate\\Support\\ServiceProvider;\nuse Laravel\\Boost\\Boost;\nuse App\\Services\\AltitudeAgent;\n\nclass AltitudeAgentServiceProvider extends ServiceProvider\n{\n    public function register()\n    {\n        Boost::agent('tall-stack-automation', function ($agent) {\n            $agent->description('Automates database cleanup and cache warming for high-traffic Laravel applications');\n            \n            $agent->task('cleanup-old-logs', function () {\n                $deleted = \n                    \n                Log::channel('daily')->getFiles()\n                    ->filter(fn ($file) => $file->getMTime() < now()->subDays(30)->timestamp)\n                    ->each(fn ($file) => Storage::disk('local')->delete($file->getPathname()));\n                \n                $this->log(\"Deleted {$deleted->count()} old log files\");\n                return \"Cleaned up {$deleted->count()} log files\";\n            })\n            ->schedule('0 3 * * *') // Daily at 3 AM\n            ->onSuccess(fn ($result) => Notification::sendToTeam(\"Log cleanup completed: {$result}\"));\n            \n            $agent->task('warm-cache-for-popular-routes', function () {\n                $popularRoutes = Cache::remember('popular-routes', 3600, function () {\n                    return DB::table('page_views')\n                        ->select('route', DB::raw('COUNT(*) as views'))\n                        ->groupBy('route')\n                        ->orderByDesc('views')\n                        ->limit(10)\n                        ->pluck('route');\n                });\n                \n                foreach ($popularRoutes as $route) {\n                    Cache::forget(\"route:{$route}:html\");\n                    Cache::remember(\"route:{$route}:html\", 86400, fn () => View::make($route)->render());\n                }\n                \n                return \"Warmed cache for \" . $popularRoutes->count() . \" routes\";\n            })\n            ->schedule('*/15 * * * *') // Every 15 minutes\n            ->onFailure(fn () => Log::error('Cache warming failed'));\n            \n            $agent->onStartup(function () {\n                $this->log('Altitude agent initialized for TALL stack automation');\n            });\n        });\n    }\n}\n```\n\n### Key Features Implemented:\n1. **Scheduled Tasks**: Two agents configured with cron expressions for regular execution\n2. **Logging Integration**: All actions logged to Laravel's default logging channel\n3. **Performance Optimization**: Uses Laravel Boost for agent execution\n4. **Error Handling**: Failure callbacks for critical tasks\n5. **TALL Stack Compatibility**: Uses Livewire patterns (via Laravel Boost) and Alpine.js compatible outputs\n\nThe agent automatically:\n- Deletes log files older than 30 days daily at 3 AM\n- Warms cache for the 10 most visited routes every 15 minutes\n- Sends notifications on success/failure\n\nTo activate, run:\n```bash\nphp artisan boost:install tall-stack-automation\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:08.946612Z",
+    "http_status": 200,
+    "content_hash": "58b156b6e476ff6e7cd46ae99dde1cc3bf68db4c44f41905b2be8b06ed8b9eb4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\laravel-altitude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\laravel-altitude.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Laravel Altitude - Automate TALL Stack Tasks",
+  "short_description_vi": "Laravel Altitude enables developers to create Claude Code agents for the TALL stack, powered by Laravel Boost. It automates tasks within Laravel applications, benefiting operations teams by streamlining workflows and integrating with existing PHP-based systems."
+}

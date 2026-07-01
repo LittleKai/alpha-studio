@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/neurodivergent-visual-org",
+  "slug": "neurodivergent-visual-org",
+  "name": "browser-use",
+  "headline": "Neurodivergent Visual Organization - Visual Tools",
+  "short_description": "Visual organization tools for neurodivergent thinking. Claude Code skill with compassionate task breakdowns, decision trees, and focus support. Benefits operations teams with ADHD or executive dysfunction. Integrates with Mermaid diagrams and supports adaptive cognitive modes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "JackReis",
+  "install_command": "git clone https://github.com/JackReis/neurodivergent-visual-org.git",
+  "source_repo_url": "https://github.com/JackReis/neurodivergent-visual-org",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "productivity",
+    "superpowers",
+    "neurodivergent",
+    "accessibility",
+    "visual-organization",
+    "executive-dysfunction",
+    "adhd"
+  ],
+  "sections": {
+    "overview": "Neurodivergent Visual Organization is a Claude Code skill that generates accessible visual diagrams tailored to different cognitive styles. It uses adaptive mode detection to automatically choose between neurodivergent-optimized layouts (with compassionate language, realistic time buffers, and micro-steps) and neurotypical professional templates. The skill creates flowcharts, timelines, decision trees, and project maps using Mermaid diagrams, addressing common challenges like decision paralysis, task overwhelm, and time blindness. It includes colorblind-safe and monochrome accessibility modes for inclusive design, WCAG compliance, and personalization via configuration. Teams and individuals can use the same tool with different modes, making it valuable during stress, burnout, or when supporting mixed neurodiversity in operations.\nBreaking down overwhelming tasks into manageable 10-15 minute chunks\nCreating decision trees to resolve decision paralysis\nVisualizing project timelines with realistic ADHD-aware time estimates\nBuilding habit-tracking diagrams and accountability structures",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JackReis/neurodivergent-visual-org`",
+    "usage": "```\nI need help organizing [TASK/PROJECT] for a neurodivergent teammate with ADHD/executive dysfunction. Break this down into: 1) A visual task map using Mermaid syntax, 2) A decision tree for ambiguous steps, 3) A focus-friendly checklist with time estimates. Prioritize clarity over complexity. Task: [DESCRIBE TASK IN 1-2 SENTENCES].\n```\nCopy\n\n```\nFor a neurodivergent teammate tasked with 'Plan the company offsite retreat', here's the adaptive organization system:\n\n**Visual Task Map (Mermaid Syntax):**\n```mermaid\ngraph TD\n    A[Offsite Retreat] --> B[Venue Booking]\n    A --> C[Activity Planning]\n    A --> D[Catering Arrangements]\n    B --> B1[Research 5 venues]\n    B --> B2[Compare costs & dates]\n    B --> B3[Book venue]\n    C --> C1[Brainstorm 10 activity ideas]\n    C --> C2[Select 3-5 activities]\n    C --> C3[Create schedule]\n    D --> D1[Research caterers]\n    D --> D2[Get quotes for 3 options]\n    D --> D3[Confirm menu & dietary needs]\n```\n\n**Decision Tree for Ambiguous Steps:**\n- *Venue Booking*: If venue costs exceed budget, trigger 'Negotiate package' branch (contact sales, ask for discounts, consider off-peak dates). If no venues available, trigger 'Alternative locations' branch (check nearby towns, virtual options).\n- *Activity Planning*: If team preferences conflict, trigger 'Voting system' branch (use Slack poll, rank activities by interest). If budget is tight, trigger 'Free/low-cost activities' branch (hiking, board games, potluck).\n\n**Focus-Friendly Checklist with Time Estimates:**\n1. Research 5 venues (20 min) - *Use filters: capacity 20-30, within 30 miles*\n2. Compare costs & dates (15 min) - *Create spreadsheet with columns: Venue, Cost, Availability*\n3. Brainstorm 10 activity ideas (30 min) - *Use mind map: outdoor, indoor, team-building*\n4. Research 3 caterers (25 min) - *Ask for dietary accommodation options*\n5. Select top 3 activities (10 min) - *Use ⭐ to mark favorites*\n\n**Compassionate Notes:**\n- Break tasks into 15-30 min chunks to avoid overwhelm.\n- Use color-coding for visual thinkers (e.g., green = easy, red = requires decision).\n- Include 'buffer time' between tasks for transitions.\n- If stuck, refer to the decision tree before asking for help.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "neurodivergent-visual-org#main-content",
+      "neurodivergent-visual-org#overview",
+      "neurodivergent-visual-org#setup",
+      "neurodivergent-visual-org#examples",
+      "neurodivergent-visual-org#tools",
+      "neurodivergent-visual-org#mcp",
+      "neurodivergent-visual-org#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Neurodivergent Visual Organization is a Claude Code skill that generates accessible visual diagrams tailored to different cognitive styles. It uses adaptive mode detection to automatically choose between neurodivergent-optimized layouts (with compassionate language, realistic time buffers, and micro-steps) and neurotypical professional templates. The skill creates flowcharts, timelines, decision trees, and project maps using Mermaid diagrams, addressing common challenges like decision paralysis, task overwhelm, and time blindness. It includes colorblind-safe and monochrome accessibility modes for inclusive design, WCAG compliance, and personalization via configuration. Teams and individuals can use the same tool with different modes, making it valuable during stress, burnout, or when supporting mixed neurodiversity in operations.\nBreaking down overwhelming tasks into manageable 10-15 minute chunks\nCreating decision trees to resolve decision paralysis\nVisualizing project timelines with realistic ADHD-aware time estimates\nBuilding habit-tracking diagrams and accountability structures",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JackReis/neurodivergent-visual-org`",
+    "usage_vi": "```\nI need help organizing [TASK/PROJECT] for a neurodivergent teammate with ADHD/executive dysfunction. Break this down into: 1) A visual task map using Mermaid syntax, 2) A decision tree for ambiguous steps, 3) A focus-friendly checklist with time estimates. Prioritize clarity over complexity. Task: [DESCRIBE TASK IN 1-2 SENTENCES].\n```\nCopy\n\n```\nFor a neurodivergent teammate tasked with 'Plan the company offsite retreat', here's the adaptive organization system:\n\n**Visual Task Map (Mermaid Syntax):**\n```mermaid\ngraph TD\n    A[Offsite Retreat] --> B[Venue Booking]\n    A --> C[Activity Planning]\n    A --> D[Catering Arrangements]\n    B --> B1[Research 5 venues]\n    B --> B2[Compare costs & dates]\n    B --> B3[Book venue]\n    C --> C1[Brainstorm 10 activity ideas]\n    C --> C2[Select 3-5 activities]\n    C --> C3[Create schedule]\n    D --> D1[Research caterers]\n    D --> D2[Get quotes for 3 options]\n    D --> D3[Confirm menu & dietary needs]\n```\n\n**Decision Tree for Ambiguous Steps:**\n- *Venue Booking*: If venue costs exceed budget, trigger 'Negotiate package' branch (contact sales, ask for discounts, consider off-peak dates). If no venues available, trigger 'Alternative locations' branch (check nearby towns, virtual options).\n- *Activity Planning*: If team preferences conflict, trigger 'Voting system' branch (use Slack poll, rank activities by interest). If budget is tight, trigger 'Free/low-cost activities' branch (hiking, board games, potluck).\n\n**Focus-Friendly Checklist with Time Estimates:**\n1. Research 5 venues (20 min) - *Use filters: capacity 20-30, within 30 miles*\n2. Compare costs & dates (15 min) - *Create spreadsheet with columns: Venue, Cost, Availability*\n3. Brainstorm 10 activity ideas (30 min) - *Use mind map: outdoor, indoor, team-building*\n4. Research 3 caterers (25 min) - *Ask for dietary accommodation options*\n5. Select top 3 activities (10 min) - *Use ⭐ to mark favorites*\n\n**Compassionate Notes:**\n- Break tasks into 15-30 min chunks to avoid overwhelm.\n- Use color-coding for visual thinkers (e.g., green = easy, red = requires decision).\n- Include 'buffer time' between tasks for transitions.\n- If stuck, refer to the decision tree before asking for help.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:18.707795Z",
+    "http_status": 200,
+    "content_hash": "2e93aceafda3626ab8508df384db0cd61e1cb08ed5e5ca821431a056aec84a3e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\neurodivergent-visual-org.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\neurodivergent-visual-org.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Neurodivergent Visual Organization - Visual Tools",
+  "short_description_vi": "Visual organization tools for neurodivergent thinking. Claude Code skill with compassionate task breakdowns, decision trees, and focus support. Benefits operations teams with ADHD or executive dysfunction. Integrates with Mermaid diagrams and supports adaptive cognitive modes."
+}

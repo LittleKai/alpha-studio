@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentfs-claude",
+  "slug": "agentfs-claude",
+  "name": "browser-use",
+  "headline": "agentfs-claude for integrated code execution",
+  "short_description": "Run Claude Code or Codex within a virtualized file system using AgentFS, orchestrated by LlamaIndex Workflows. Ideal for operations teams automating code generation and file system tasks. Integrates with TypeScript-based workflows for automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "run-llama",
+  "install_command": "git clone https://github.com/run-llama/agentfs-claude.git",
+  "source_repo_url": "https://github.com/run-llama/agentfs-claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codex",
+    "coding-agents",
+    "filesystem"
+  ],
+  "sections": {
+    "overview": "AgentFS-Claude integrates Claude Code or Codex with a fully-virtualized file system orchestrated by LlamaIndex Workflows. The skill exposes filesystem operations through an MCP server, allowing agents to read, write, edit, and list files within AgentFS rather than the real file system. It supports parsing unstructured files like PDFs and Word documents through LlamaCloud integration, with all text-based files indexed in a LibSQL database. This creates a sandboxed environment where coding agents can safely perform file operations, ideal for operations teams automating code generation, documentation tasks, and file system workflows.\nAutomated code generation and refactoring with file system isolation\nProcessing and analyzing PDFs and Word documents through an agent interface\nBuilding sandboxed workflows that combine file operations with web search and task management\nOperations automation that requires reading and modifying multiple files safely",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/run-llama/agentfs-claude`",
+    "usage": "```\nUse AgentFS with LlamaIndex Workflows to automate [TASK] in a virtualized file system. Write TypeScript code to generate [OUTPUT_TYPE] for [SCOPE]. Execute the workflow using Claude Code or Codex via agentfs-claude. Example: 'Use AgentFS to automate the generation of a TypeScript API client for a REST service with endpoints defined in [OPENAPI_SPEC_URL]. Generate the client in [OUTPUT_DIR] with TypeScript types, error handling, and Axios integration.'\n```\nCopy\n\n```\n```typescript\n// Generated API Client for 'PetStore' Service\n// File: /output/petstore-client.ts\nimport axios, { AxiosInstance } from 'axios';\n\nexport interface Pet {\n  id: number;\n  name: string;\n  tag?: string;\n}\n\nexport interface ApiResponse {\n  code: number;\n  type: string;\n  message: string;\n}\n\nexport class PetStoreClient {\n  private client: AxiosInstance;\n\n  constructor(baseURL: string = 'https://petstore.example.com/v1') {\n    this.client = axios.create({\n      baseURL,\n      timeout: 5000,\n      headers: { 'Content-Type': 'application/json' }\n    });\n  }\n\n  async getPetById(petId: number): Promise<Pet> {\n    try {\n      const response = await this.client.get<Pet>(`/pet/${petId}`);\n      return response.data;\n    } catch (error) {\n      throw new Error(`Failed to fetch pet: ${error instanceof Error ? error.message : 'Unknown error'}`);\n    }\n  }\n\n  async addPet(pet: Omit<Pet, 'id'>): Promise<ApiResponse> {\n    try {\n      const response = await this.client.post<ApiResponse>('/pet', pet);\n      return response.data;\n    } catch (error) {\n      throw new Error(`Failed to add pet: ${error instanceof Error ? error.message : 'Unknown error'}`);\n    }\n  }\n}\n\nexport default PetStoreClient;\n```\n\n// Generated Test Suite for PetStoreClient\n// File: /output/petstore-client.test.ts\nimport { PetStoreClient } from './petstore-client';\n\ndescribe('PetStoreClient', () => {\n  let client: PetStoreClient;\n\n  beforeEach(() => {\n    client = new PetStoreClient('http://localhost:3000');\n  });\n\n  it('should fetch a pet by ID', async () => {\n    const mockPet = { id: 1, name: 'Fluffy', tag: 'cat' };\n    jest.spyOn(client['client'], 'get').mockResolvedValue({ data: mockPet });\n\n    const pet = await client.getPetById(1);\n    expect(pet).toEqual(mockPet);\n  });\n\n  it('should handle errors when fetching a pet', async () => {\n    jest.spyOn(client['client'], 'get').mockRejectedValue(new Error('Not found'));\n\n    await expect(client.getPetById(999)).rejects.toThrow('Failed to fetch pet: Not found');\n  });\n});\n\n// Workflow Summary\n// - Generated TypeScript API client with 3 methods (getPetById, addPet, updatePet)\n// - Included TypeScript interfaces for Pet and ApiResponse\n// - Generated Jest test suite with 4 test cases\n// - Output saved to /output/petstore-client.ts and /output/petstore-client.test.ts\n// - Total lines of code: 128\n// - Execution time: 1.2s\n// - Status: SUCCESS\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentfs-claude#main-content",
+      "agentfs-claude#overview",
+      "agentfs-claude#setup",
+      "agentfs-claude#examples",
+      "agentfs-claude#tools",
+      "agentfs-claude#mcp",
+      "agentfs-claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgentFS-Claude integrates Claude Code or Codex with a fully-virtualized file system orchestrated by LlamaIndex Workflows. The skill exposes filesystem operations through an MCP server, allowing agents to read, write, edit, and list files within AgentFS rather than the real file system. It supports parsing unstructured files like PDFs and Word documents through LlamaCloud integration, with all text-based files indexed in a LibSQL database. This creates a sandboxed environment where coding agents can safely perform file operations, ideal for operations teams automating code generation, documentation tasks, and file system workflows.\nAutomated code generation and refactoring with file system isolation\nProcessing and analyzing PDFs and Word documents through an agent interface\nBuilding sandboxed workflows that combine file operations with web search and task management\nOperations automation that requires reading and modifying multiple files safely",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/run-llama/agentfs-claude`",
+    "usage_vi": "```\nUse AgentFS with LlamaIndex Workflows to automate [TASK] in a virtualized file system. Write TypeScript code to generate [OUTPUT_TYPE] for [SCOPE]. Execute the workflow using Claude Code or Codex via agentfs-claude. Example: 'Use AgentFS to automate the generation of a TypeScript API client for a REST service with endpoints defined in [OPENAPI_SPEC_URL]. Generate the client in [OUTPUT_DIR] with TypeScript types, error handling, and Axios integration.'\n```\nCopy\n\n```\n```typescript\n// Generated API Client for 'PetStore' Service\n// File: /output/petstore-client.ts\nimport axios, { AxiosInstance } from 'axios';\n\nexport interface Pet {\n  id: number;\n  name: string;\n  tag?: string;\n}\n\nexport interface ApiResponse {\n  code: number;\n  type: string;\n  message: string;\n}\n\nexport class PetStoreClient {\n  private client: AxiosInstance;\n\n  constructor(baseURL: string = 'https://petstore.example.com/v1') {\n    this.client = axios.create({\n      baseURL,\n      timeout: 5000,\n      headers: { 'Content-Type': 'application/json' }\n    });\n  }\n\n  async getPetById(petId: number): Promise<Pet> {\n    try {\n      const response = await this.client.get<Pet>(`/pet/${petId}`);\n      return response.data;\n    } catch (error) {\n      throw new Error(`Failed to fetch pet: ${error instanceof Error ? error.message : 'Unknown error'}`);\n    }\n  }\n\n  async addPet(pet: Omit<Pet, 'id'>): Promise<ApiResponse> {\n    try {\n      const response = await this.client.post<ApiResponse>('/pet', pet);\n      return response.data;\n    } catch (error) {\n      throw new Error(`Failed to add pet: ${error instanceof Error ? error.message : 'Unknown error'}`);\n    }\n  }\n}\n\nexport default PetStoreClient;\n```\n\n// Generated Test Suite for PetStoreClient\n// File: /output/petstore-client.test.ts\nimport { PetStoreClient } from './petstore-client';\n\ndescribe('PetStoreClient', () => {\n  let client: PetStoreClient;\n\n  beforeEach(() => {\n    client = new PetStoreClient('http://localhost:3000');\n  });\n\n  it('should fetch a pet by ID', async () => {\n    const mockPet = { id: 1, name: 'Fluffy', tag: 'cat' };\n    jest.spyOn(client['client'], 'get').mockResolvedValue({ data: mockPet });\n\n    const pet = await client.getPetById(1);\n    expect(pet).toEqual(mockPet);\n  });\n\n  it('should handle errors when fetching a pet', async () => {\n    jest.spyOn(client['client'], 'get').mockRejectedValue(new Error('Not found'));\n\n    await expect(client.getPetById(999)).rejects.toThrow('Failed to fetch pet: Not found');\n  });\n});\n\n// Workflow Summary\n// - Generated TypeScript API client with 3 methods (getPetById, addPet, updatePet)\n// - Included TypeScript interfaces for Pet and ApiResponse\n// - Generated Jest test suite with 4 test cases\n// - Output saved to /output/petstore-client.ts and /output/petstore-client.test.ts\n// - Total lines of code: 128\n// - Execution time: 1.2s\n// - Status: SUCCESS\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:36:00.304315Z",
+    "http_status": 200,
+    "content_hash": "ac9e4415a2ca553ff005870a9cb9e809b8e2b0d4b80940ac546e958926d28bed",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentfs-claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentfs-claude.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agentfs-claude for integrated code execution",
+  "short_description_vi": "Run Claude Code or Codex within a virtualized file system using AgentFS, orchestrated by LlamaIndex Workflows. Ideal for operations teams automating code generation and file system tasks. Integrates with TypeScript-based workflows for automation."
+}

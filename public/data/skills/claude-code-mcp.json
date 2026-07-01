@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-mcp",
+  "slug": "claude-code-mcp",
+  "name": "browser-use",
+  "headline": "claude-code-mcp: Command Connections",
+  "short_description": "claude-code-mcp is an MCP server that connects with the locally installed Claude Code command. It enables operations teams to automate code explanations and reviews. The server provides tools like explain_code and revise_code, integrating with existing workflows to streamline code analysis and maintenance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "KunihiroS",
+  "install_command": "git clone https://github.com/KunihiroS/claude-code-mcp.git",
+  "source_repo_url": "https://github.com/KunihiroS/claude-code-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "mcp",
+    "mcp-server",
+    "claude",
+    "anthropic-claude",
+    "model-context-protocol"
+  ],
+  "sections": {
+    "overview": "The claude-code-mcp skill is designed to facilitate seamless connections between the MCP Server and local Claude Code commands. This automation skill enables users to streamline their workflows by allowing direct interaction with local commands, enhancing the overall efficiency of AI-driven tasks. By implementing this skill, developers can automate repetitive command executions, thus saving time and reducing the potential for manual errors. One of the primary benefits of using the claude-code-mcp skill is its ability to simplify complex workflows. While the exact time savings are not quantified, the intermediate implementation time of approximately 30 minutes suggests that users can quickly integrate this skill into their existing systems. This skill is particularly valuable for developers and product managers who are looking to enhance their AI automation strategies and improve their operational efficiency. The target audience for this skill includes developers, product managers, and AI practitioners who are engaged in workflow automation. By utilizing the claude-code-mcp skill, these professionals can create more robust AI agent skills that interact fluidly with local commands, thereby optimizing their processes. For instance, a developer could use this skill to automate the deployment of applications, allowing for faster release cycles and improved productivity. With an intermediate complexity level, the implementation of the claude-code-mcp skill requires a basic understanding of command-line interfaces and local server configurations. This skill fits seamlessly into an AI-first workflow by enabling automation that is critical for modern software development and operational tasks. As organizations increasingly adopt AI-driven solutions, incorporating skills like claude-code-mcp will be essential for maintaining a competitive edge.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/KunihiroS/claude-code-mcp`",
+    "usage": "```\nUse claude-code-mcp to analyze and document the following codebase: [REPOSITORY_PATH]. Generate a detailed explanation of the [SPECIFIC_FILE_OR_MODULE] including its purpose, key functions, and dependencies. Then, identify 3 potential bugs or inefficiencies and suggest fixes. Finally, provide a summary of the changes needed to improve maintainability.\n```\nCopy\n\n```\n### Code Analysis Report: Payment Service Module\n**Repository Path:** `/opt/app/backend/src/services/payment_service.py`\n\n#### Overview\nThe `payment_service.py` module handles Stripe payment processing for our e-commerce platform. It includes 4 main functions:\n- `process_payment()`: Validates and processes customer payments via Stripe API\n- `refund_payment()`: Handles refund requests with automatic retry logic\n- `get_payment_status()`: Retrieves transaction status from Stripe\n- `webhook_handler()`: Processes Stripe webhook events\n\n**Dependencies:** Stripe SDK (v7.12.0), Django (v4.2), Redis (v6.2) for caching failed transactions.\n\n#### Key Findings\n1. **Bug in `refund_payment()`**: The retry mechanism uses a fixed 5-second delay between attempts, which may fail during Stripe's rate limiting. A backoff strategy is needed.\n\n2. **Inefficiency in `process_payment()`**: The function queries the database twice for the same transaction when validating customer eligibility. This could be optimized with a single query.\n\n3. **Missing Error Handling**: The `webhook_handler()` function lacks proper error handling for malformed Stripe events, which could crash the service during high traffic.\n\n#### Recommended Fixes\n1. Implement exponential backoff in `refund_payment()` using Python's `tenacity` library\n2. Combine database queries in `process_payment()` to reduce latency\n3. Add validation and error handling to `webhook_handler()` with proper logging\n\n#### Maintainability Improvements\n- Add docstrings to all functions following Google style\n- Implement unit tests for edge cases (failed payments, network timeouts)\n- Add type hints for better IDE support\n- Create a `CHANGELOG.md` entry for these fixes\n\n**Total Lines of Code:** 247 | **Cyclomatic Complexity:** 12 | **Technical Debt:** Medium\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-mcp#main-content",
+      "claude-code-mcp#overview",
+      "claude-code-mcp#setup",
+      "claude-code-mcp#examples",
+      "claude-code-mcp#tools",
+      "claude-code-mcp#mcp",
+      "claude-code-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-code-mcp skill is designed to facilitate seamless connections between the MCP Server and local Claude Code commands. This automation skill enables users to streamline their workflows by allowing direct interaction with local commands, enhancing the overall efficiency of AI-driven tasks. By implementing this skill, developers can automate repetitive command executions, thus saving time and reducing the potential for manual errors. One of the primary benefits of using the claude-code-mcp skill is its ability to simplify complex workflows. While the exact time savings are not quantified, the intermediate implementation time of approximately 30 minutes suggests that users can quickly integrate this skill into their existing systems. This skill is particularly valuable for developers and product managers who are looking to enhance their AI automation strategies and improve their operational efficiency. The target audience for this skill includes developers, product managers, and AI practitioners who are engaged in workflow automation. By utilizing the claude-code-mcp skill, these professionals can create more robust AI agent skills that interact fluidly with local commands, thereby optimizing their processes. For instance, a developer could use this skill to automate the deployment of applications, allowing for faster release cycles and improved productivity. With an intermediate complexity level, the implementation of the claude-code-mcp skill requires a basic understanding of command-line interfaces and local server configurations. This skill fits seamlessly into an AI-first workflow by enabling automation that is critical for modern software development and operational tasks. As organizations increasingly adopt AI-driven solutions, incorporating skills like claude-code-mcp will be essential for maintaining a competitive edge.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/KunihiroS/claude-code-mcp`",
+    "usage_vi": "```\nUse claude-code-mcp to analyze and document the following codebase: [REPOSITORY_PATH]. Generate a detailed explanation of the [SPECIFIC_FILE_OR_MODULE] including its purpose, key functions, and dependencies. Then, identify 3 potential bugs or inefficiencies and suggest fixes. Finally, provide a summary of the changes needed to improve maintainability.\n```\nCopy\n\n```\n### Code Analysis Report: Payment Service Module\n**Repository Path:** `/opt/app/backend/src/services/payment_service.py`\n\n#### Overview\nThe `payment_service.py` module handles Stripe payment processing for our e-commerce platform. It includes 4 main functions:\n- `process_payment()`: Validates and processes customer payments via Stripe API\n- `refund_payment()`: Handles refund requests with automatic retry logic\n- `get_payment_status()`: Retrieves transaction status from Stripe\n- `webhook_handler()`: Processes Stripe webhook events\n\n**Dependencies:** Stripe SDK (v7.12.0), Django (v4.2), Redis (v6.2) for caching failed transactions.\n\n#### Key Findings\n1. **Bug in `refund_payment()`**: The retry mechanism uses a fixed 5-second delay between attempts, which may fail during Stripe's rate limiting. A backoff strategy is needed.\n\n2. **Inefficiency in `process_payment()`**: The function queries the database twice for the same transaction when validating customer eligibility. This could be optimized with a single query.\n\n3. **Missing Error Handling**: The `webhook_handler()` function lacks proper error handling for malformed Stripe events, which could crash the service during high traffic.\n\n#### Recommended Fixes\n1. Implement exponential backoff in `refund_payment()` using Python's `tenacity` library\n2. Combine database queries in `process_payment()` to reduce latency\n3. Add validation and error handling to `webhook_handler()` with proper logging\n\n#### Maintainability Improvements\n- Add docstrings to all functions following Google style\n- Implement unit tests for edge cases (failed payments, network timeouts)\n- Add type hints for better IDE support\n- Create a `CHANGELOG.md` entry for these fixes\n\n**Total Lines of Code:** 247 | **Cyclomatic Complexity:** 12 | **Technical Debt:** Medium\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:55:14.666054Z",
+    "http_status": 200,
+    "content_hash": "f74f7a11e1138a64e9ce4c1ed6457bed37f0e894a2029837e7bcbb6bc9c2e67a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-code-mcp: Command Connections",
+  "short_description_vi": "claude-code-mcp is an MCP server that connects with the locally installed Claude Code command. It enables operations teams to automate code explanations and reviews. The server provides tools like explain_code and revise_code, integrating with existing workflows to streamline code analysis and maintenance."
+}

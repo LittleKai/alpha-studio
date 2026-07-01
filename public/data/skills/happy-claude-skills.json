@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/happy-claude-skills",
+  "slug": "happy-claude-skills",
+  "name": "Happy Claude Skills",
+  "headline": "Happy Claude Skills - Automate Word Document",
+  "short_description": "Happy Claude Skills is a collection of practical plugins for Claude Code. The docx-format-replicator skill extracts formatting from existing Word documents and generates new documents with the same format. It benefits operations teams by automating document creation and ensuring consistency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "iamzhihuix",
+  "install_command": "git clone https://github.com/iamzhihuix/happy-claude-skills.git",
+  "source_repo_url": "https://github.com/iamzhihuix/happy-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Happy Claude Skills provides the docx-format-replicator plugin, which extracts formatting from existing Word documents and generates new documents that match the same format. This skill automates document creation workflows by eliminating the need to manually recreate formatting across multiple files. It works with Claude Code, Cursor, and over 40 other AI agents through the universal Skills CLI installation system. Operations teams, document managers, and content creators benefit from batch document generation with guaranteed consistency and reduced manual formatting work.\nCorporate document template replication\nBatch generation of consistently formatted documents\nTechnical specification document series\nStandardized documentation like development task sheets",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iamzhihuix/happy-claude-skills`",
+    "usage": "```\nUse the docx-format-replicator skill to extract formatting from [SOURCE_DOCX_PATH] and generate a new document with identical styles at [OUTPUT_DOCX_PATH]. Ensure the new document maintains all headers, fonts, spacing, and table formatting from the source. If the source contains macros or complex elements, preserve them as-is.\n```\nCopy\n\n```\n```\nDocument Format Replication Report\nGenerated: 2024-05-20\nSource: Quarterly_Report_Template.docx\nOutput: Q2_2024_Report_Automated.docx\n\nFormat Analysis:\n- Headers: Calibri Light, 14pt, Bold, RGB(0,51,102) for H1; Arial, 12pt, Bold for H2\n- Body Text: Times New Roman, 11pt, Justified, 1.15 line spacing\n- Tables: Grid style with 1pt borders, alternating row colors (RGB(242,242,242) and white)\n- Lists: Bullet style (Wingdings 2, 7pt indent)\n- Footer: Arial, 9pt, Centered, Page number in Calibri Bold\n\nValidation Results:\n✓ All 5 heading styles replicated\n✓ 12 table styles preserved (including merged cells)\n✓ 3 custom bullet lists converted successfully\n✓ Footer formatting matches source exactly\n\nUsage Notes:\nThe replicated document is ready for content insertion. All formatting locks are removed for editing. Complex elements like embedded Excel charts retained as images. Macros disabled by default (enable in Word settings if needed).\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "happy-claude-skills#main-content",
+      "happy-claude-skills#overview",
+      "happy-claude-skills#setup",
+      "happy-claude-skills#examples",
+      "happy-claude-skills#tools",
+      "happy-claude-skills#mcp",
+      "happy-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Happy Claude Skills cung cấp plugin docx-format-replicator, cho phép trích xuất định dạng từ tài liệu Word có sẵn và tạo tài liệu mới có định dạng đồng nhất. Skill này giúp tự động hóa quy trình làm việc với tài liệu bằng cách loại bỏ thao tác tái thiết lập định dạng thủ công trên nhiều tệp tin khác nhau. Plugin hoạt động mượt mà với Claude Code, Cursor và hơn 40 AI agent khác thông qua hệ thống cài đặt universal Skills CLI. Các đội ngũ vận hành, người quản lý tài liệu và nhà sáng tạo nội dung sẽ tiết kiệm được nhiều thời gian nhờ khả năng tạo tài liệu hàng loạt với độ nhất quán cao và giảm thiểu công sức định dạng thủ công.\n\nNhân bản template tài liệu doanh nghiệp\nTạo hàng loạt tài liệu với định dạng nhất quán\nChuỗi tài liệu đặc tả kỹ thuật (Technical specification)\nChuẩn hóa tài liệu như development task sheet (phiếu giao việc phát triển)",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/iamzhihuix/happy-claude-skills`",
+    "usage_vi": "```\nUse the docx-format-replicator skill to extract formatting from [SOURCE_DOCX_PATH] and generate a new document with identical styles at [OUTPUT_DOCX_PATH]. Ensure the new document maintains all headers, fonts, spacing, and table formatting from the source. If the source contains macros or complex elements, preserve them as-is.\n```\nCopy\n\n```\nBáo cáo sao chép định dạng tài liệu\nNgày tạo: 2024-05-20\nNguồn: Quarterly_Report_Template.docx\nĐầu ra: Q2_2024_Report_Automated.docx\n\nPhân tích định dạng:\n- Header: Calibri Light, 14pt, Bold, RGB(0,51,102) cho H1; Arial, 12pt, Bold cho H2\n- Văn bản chính (Body Text): Times New Roman, 11pt, Justified (Căn đều), khoảng cách dòng 1.15\n- Bảng: Dạng lưới (Grid style) với viền 1pt, xen kẽ màu dòng (RGB(242,242,242) và trắng)\n- Danh sách: Dạng bullet (Wingdings 2, thụt lề 7pt)\n- Footer: Arial, 9pt, Căn giữa, Số trang in đậm font Calibri Bold\n\nKết quả kiểm định (Validation Results):\n✓ Đã sao chép toàn bộ 5 kiểu heading\n✓ Giữ nguyên 12 kiểu bảng (bao gồm cả các ô được gộp - merged cells)\n✓ Chuyển đổi thành công 3 danh sách bullet tùy chỉnh\n✓ Định dạng footer khớp hoàn toàn với tài liệu nguồn\n\nLưu ý khi sử dụng:\nTài liệu sao chép đã sẵn sàng để nhập nội dung. Mọi khóa định dạng đã được gỡ bỏ để thuận tiện cho việc chỉnh sửa. Các thành phần phức tạp như biểu đồ Excel nhúng được giữ lại dưới dạng hình ảnh. Macro bị vô hiệu hóa theo mặc định (vui lòng kích hoạt trong cài đặt Word nếu cần thiết).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:03:24.884233Z",
+    "http_status": 200,
+    "content_hash": "b7bb5bfb2072837643d07e01295cd54abcbb4fbd0e4af6fb7665d0751dcb4971",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\happy-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\happy-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Happy Claude Skills - Tự động hóa tài liệu Word",
+  "short_description_vi": "Happy Claude Skills là bộ sưu tập các plugin thực tế dành cho Claude Code. Trong đó, skill docx-format-replicator giúp trích xuất định dạng từ tài liệu Word hiện có và tạo ra các tài liệu mới với định dạng tương tự. Công cụ này hỗ trợ đắc lực cho các đội ngũ vận hành nhờ tự động hóa quy trình tạo tài liệu và đảm bảo tính nhất quán."
+}

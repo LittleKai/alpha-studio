@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/leadcms-core",
+  "slug": "leadcms-core",
+  "name": "leadcms.core",
+  "headline": "LeadCMS: AI-Powered CMS & CRM for SaaS Teams",
+  "short_description": "LeadCMS is an AI-driven CMS and CRM solution for SaaS teams. It enables rapid landing page creation, content management, and lead generation. It connects to marketing automation tools and CRM systems to streamline workflows and improve conversion rates.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "LeadCMS",
+  "install_command": "claude install LeadCMS/leadcms.core",
+  "source_repo_url": "https://github.com/LeadCMS/leadcms.core",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "lead generation",
+    "CRM",
+    "CMS",
+    "SaaS"
+  ],
+  "sections": {
+    "overview": "OnlineSales is a lightweight, extendable headless CMS written in .NET 7 designed to manage content for software product websites and automate critical business processes. It enables free trial activation, license generation, automated license sales, and customer journey tracking—streamlining the entire customer acquisition workflow. The platform uses a plugin architecture to separate generic core functionalities from specific business requirements, allowing teams to extend capabilities without modifying the core system. It integrates with PostgreSQL and Elasticsearch for robust data management and supports development workflows through Docker containers, automated testing, and secure secrets management. Teams building SaaS products benefit from its ability to reduce manual processes while maintaining clean separation between content management and business logic.\nCreating optimized landing pages for campaigns\nManaging content across multiple channels\nAutomating lead capture and follow-up processes\nAnalyzing content performance metrics",
+    "setup": "Terminal\nCopy\n`claude install LeadCMS/leadcms.core`\n`git clone https://github.com/LeadCMS/leadcms.core`",
+    "usage": "```\nGenerate a high-converting landing page for [PRODUCT/SERVICE] targeting [TARGET_AUDIENCE] using LeadCMS. Include the following sections: [SECTIONS_LIST]. Use persuasive copy that highlights [KEY_BENEFITS]. Ensure the page is optimized for [CONVERSION_GOAL] and includes a clear CTA. Reference Rive animations for [ANIMATION_PURPOSE] where applicable. Use [TONE] (e.g., professional, playful, technical).\n```\nCopy\n\n```\nHere’s a high-converting landing page for **FlowSync**, a SaaS tool that helps remote teams manage projects with real-time collaboration. The page is designed for **project managers and team leads** and focuses on **increasing trial signups** by 20% in Q3.\n\n---\n\n**Hero Section:**\n\"Stop Wasting Time on Status Updates—Sync Your Team in Real Time\"\n*FlowSync eliminates the chaos of scattered spreadsheets and endless meetings.*\n[Get Started Free] [Watch Demo]\n\n**Animated Background (Rive):** A sleek, looping animation of interconnected nodes representing team collaboration, with subtle color shifts to emphasize productivity.\n\n**Problem Statement:**\n\"87% of remote teams struggle with misaligned priorities and outdated tools.\" (Source: Remote Work Report 2023)\n\n**Solution:**\nFlowSync’s **AI-powered dashboard** consolidates tasks, deadlines, and feedback in one place. Teams using FlowSync report **30% faster project completion** and **50% fewer meetings**.\n\n**Key Features:**\n- **Real-Time Sync:** Updates are live for all team members, no more \"syncing delays.\"\n- **AI Prioritization:** Automatically ranks tasks by urgency and team capacity.\n- **Integrated Chat:** Reduce email clutter with built-in team communication.\n- **Custom Workflows:** Tailor the tool to your team’s unique processes.\n\n**Social Proof:**\n\"FlowSync cut our project delivery time by 40%. The AI suggestions are a game-changer.\" — **Sarah Chen, Tech Lead at InnovateX**\n\n**CTA Section:**\n\"Ready to Sync Your Team?\"\n[Start Free Trial] [Book a Demo]\n\n**Footer:**\nFAQs | Pricing | Integrations | Contact Us\n© 2024 FlowSync. All rights reserved.\n\n---\n\n**Rive Animation Notes:**\n- The hero animation transitions into a **task completion animation** when users scroll, reinforcing the \"faster projects\" message.\n- A **micro-interaction** highlights the \"AI Prioritization\" feature when hovered over.\n\n**Conversion Optimization:**\n- A/B tested headline variants increased signups by 12%.\n- The CTA button color was changed from blue to green based on heatmap data, improving clicks by 8%.\n- Added a **countdown timer** for the free trial to create urgency.\n\n**Lead Capture:**\n- Embedded a **lead magnet** offering a free \"Remote Team Playbook\" in exchange for email signups.\n- Integrated with HubSpot for seamless CRM sync.\n\nThis page is now live on FlowSync’s website and is driving a **15% uplift in trial signups** compared to static pages.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "leadcms-core#main-content",
+      "leadcms-core#overview",
+      "leadcms-core#setup",
+      "leadcms-core#examples",
+      "leadcms-core#tools",
+      "leadcms-core#mcp",
+      "leadcms-core#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "OnlineSales là một headless CMS gọn nhẹ, có khả năng mở rộng tốt, được phát triển trên nền tảng .NET 7 và thiết kế để quản lý nội dung cho các trang web sản phẩm phần mềm, đồng thời tự động hóa các quy trình kinh doanh quan trọng. Hệ thống cho phép kích hoạt dùng thử miễn phí, tạo license, tự động hóa bán license và theo dõi hành trình khách hàng—giúp tối ưu hóa toàn bộ quy trình thu hút khách hàng (customer acquisition workflow). Nền tảng sử dụng kiến trúc plugin để tách biệt các tính năng cốt lõi (core) dùng chung khỏi các yêu cầu nghiệp vụ cụ thể, cho phép các đội ngũ mở rộng tính năng mà không cần chỉnh sửa hệ thống core. Nó tích hợp với PostgreSQL và Elasticsearch để quản lý dữ liệu mạnh mẽ, đồng thời hỗ trợ các workflow phát triển thông qua Docker container, kiểm thử tự động (automated testing) và quản lý secrets an toàn. Các đội ngũ phát triển sản phẩm SaaS sẽ được hưởng lợi từ khả năng giảm thiểu các quy trình thủ công trong khi vẫn duy trì sự phân tách rõ ràng giữa quản lý nội dung và logic nghiệp vụ.\nTạo landing page tối ưu cho các chiến dịch\nQuản lý nội dung trên nhiều kênh\nTự động hóa quy trình thu thập lead và theo dõi (follow-up)\nPhân tích các chỉ số hiệu suất nội dung",
+    "setup_vi": "Terminal\nSao chép\n`claude install LeadCMS/leadcms.core`\n`git clone https://github.com/LeadCMS/leadcms.core`",
+    "usage_vi": "```\nTạo một landing page tỷ lệ chuyển đổi cao cho [PRODUCT/SERVICE] nhắm đến đối tượng [TARGET_AUDIENCE] bằng cách sử dụng LeadCMS. Bao gồm các phần sau: [SECTIONS_LIST]. Sử dụng nội dung thuyết phục làm nổi bật [KEY_BENEFITS]. Đảm bảo trang được tối ưu hóa cho [CONVERSION_GOAL] và đi kèm một CTA rõ ràng. Tham chiếu các animation Rive cho [ANIMATION_PURPOSE] ở những vị trí phù hợp. Sử dụng [TONE] (ví dụ: chuyên nghiệp, vui nhộn, kỹ thuật).\n```\nSao chép\n\n```\nDưới đây là một landing page có tỷ lệ chuyển đổi cao dành cho **FlowSync**, một công cụ SaaS giúp các đội ngũ làm việc từ xa quản lý dự án nhờ tính năng cộng tác thời gian thực. Trang này được thiết kế cho **quản lý dự án (project manager) và trưởng nhóm (team lead)**, tập trung vào mục tiêu **tăng lượt đăng ký dùng thử** thêm 20% trong Quý 3.\n\n---\n\n**Hero Section:**\n\"Ngừng lãng phí thời gian cập nhật trạng thái — Đồng bộ hóa đội ngũ của bạn theo thời gian thực\"\n*FlowSync loại bỏ sự hỗn loạn của các bảng tính rải rác và các cuộc họp kéo dài vô tận.*\n[Bắt đầu miễn phí] [Xem Demo]\n\n**Animated Background (Rive):** Một animation mượt mà, lặp lại (loop) về các node liên kết đại diện cho sự cộng tác nhóm, với các thay đổi màu sắc tinh tế để nhấn mạnh hiệu suất làm việc.\n\n**Problem Statement:**\n\"87% các đội ngũ làm việc từ xa gặp khó khăn với các ưu tiên bị lệch hướng và công cụ lỗi thời.\" (Nguồn: Báo cáo làm việc từ xa 2023)\n\n**Solution:**\n**Dashboard tích hợp AI** của FlowSync hợp nhất các tác vụ, thời hạn và phản hồi tại một nơi duy nhất. Các đội ngũ sử dụng FlowSync cho biết **hoàn thành dự án nhanh hơn 30%** và **giảm 50% số cuộc họp**.\n\n**Key Features:**\n- **Real-Time Sync:** Cập nhật trực tiếp cho tất cả thành viên, không còn tình trạng trễ đồng bộ.\n- **AI Prioritization:** Tự động xếp hạng các tác vụ theo mức độ khẩn cấp và năng lực của đội ngũ.\n- **Integrated Chat:** Giảm tải email nhờ tính năng giao tiếp nhóm tích hợp sẵn.\n- **Custom Workflows:** Điều chỉnh công cụ theo các quy trình đặc thù của đội ngũ bạn.\n\n**Social Proof:**\n\"FlowSync rút ngắn 40% thời gian bàn giao dự án của chúng tôi. Các gợi ý từ AI thực sự là một bước ngoặt.\" — **Sarah Chen, Tech Lead tại InnovateX**\n\n**CTA Section:**\n\"Sẵn sàng đồng bộ hóa đội ngũ của bạn?\"\n[Bắt đầu dùng thử miễn phí] [Đặt lịch Demo]\n\n**Footer:**\nFAQs | Bảng giá | Tích hợp | Liên hệ với chúng tôi\n© 2024 FlowSync. Bảo lưu mọi quyền.\n\n---\n\n**Lưu ý về Rive Animation:**\n- Animation của hero section chuyển đổi thành **animation hoàn thành tác vụ (task completion)** khi người dùng cuộn trang, nhằm củng cố thông điệp \"hoàn thành dự án nhanh hơn\".\n- Một **micro-interaction** làm nổi bật tính năng \"AI Prioritization\" khi di chuột (hover) qua.\n\n**Tối ưu hóa chuyển đổi (Conversion Optimization):**\n- Các biến thể tiêu đề được A/B tested đã giúp tăng 12% lượt đăng ký.\n- Màu nút CTA được đổi từ xanh lam sang xanh lá cây dựa trên dữ liệu heatmap, giúp cải thiện lượt click thêm 8%.\n- Thêm **đồng hồ đếm ngược** cho bản dùng thử miễn phí để tạo cảm giác cấp bách.\n\n**Lead Capture:**\n- Nhúng một **lead magnet** tặng tài liệu \"Remote Team Playbook\" để đổi lấy thông tin đăng ký email.\n- Tích hợp với HubSpot để đồng bộ dữ liệu CRM liền mạch.\n\nTrang này hiện đã hoạt động trên website của FlowSync và đang mang lại **tỷ lệ đăng ký dùng thử tăng 15%** so với các trang tĩnh.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:58:11.577574Z",
+    "http_status": 200,
+    "content_hash": "03f8cf0881ccdf740d2fdd46ae2256bc8abcd46381cfad938e04db882c56ae4d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\leadcms-core.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\leadcms-core.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LeadCMS: CMS & CRM tích hợp AI dành cho các đội ngũ SaaS",
+  "short_description_vi": "LeadCMS là giải pháp CMS và CRM ứng dụng AI dành cho các đội ngũ SaaS. Công cụ này cho phép thiết lập nhanh landing page, quản lý nội dung và tạo lead. Ngoài ra, LeadCMS còn kết nối với các công cụ marketing automation và hệ thống CRM giúp tối ưu hóa quy trình làm việc (workflow) và nâng cao tỷ lệ chuyển đổi."
+}

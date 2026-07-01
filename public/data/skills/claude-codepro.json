@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-codepro",
+  "slug": "claude-codepro",
+  "name": "Claude Codepro",
+  "headline": "claude-codepro: Production-Grade Development",
+  "short_description": "Claude CodePro is a production-grade development environment for Claude Code. It automates quality checks, optimizes context, and enforces testing. Developers can ship code with confidence. It integrates with TypeScript and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "maxritter",
+  "install_command": "git clone https://github.com/maxritter/claude-codepro.git",
+  "source_repo_url": "https://github.com/maxritter/claude-codepro",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-assistant",
+    "spec-driven-development",
+    "ai-engineering",
+    "claude",
+    "claude-context",
+    "mcp",
+    "anthropic",
+    "ai-tools",
+    "anthropic-claude",
+    "claude-mem",
+    "claude-skills",
+    "claude-ai",
+    "software-engineering",
+    "ai-agents",
+    "ai-coding",
+    "claudecode",
+    "ai-coding-tools",
+    "model-context-protocol",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The claude-codepro skill provides a production-grade development environment specifically designed for Claude Code. It ensures quality automation, context optimization, and enforced testing, allowing developers to ship their projects with confidence. By streamlining the development process, this skill enhances productivity and reduces the risk of errors, making it an essential tool for anyone working with AI automation and workflow automation. One of the key benefits of using claude-codepro is its ability to save time during the development cycle. With a focus on quality and context, developers can implement this skill in approximately 30 minutes, enabling them to quickly set up a robust environment that promotes efficient coding practices. Although the exact time savings are not quantified, the automation features significantly reduce manual testing and debugging efforts, allowing teams to focus on building innovative solutions. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their workflow automation processes. By integrating claude-codepro into their projects, teams can ensure that their development environments are optimized for performance and reliability. This is especially crucial for those working on complex AI agent skills or data engineering tasks, where quality and precision are paramount. Implementing claude-codepro requires an intermediate understanding of development environments and automation principles. As organizations transition to AI-first workflows, this skill becomes a vital component in ensuring that development processes are not only efficient but also aligned with the latest technological advancements. Whether you are building AI agents or enhancing existing applications, claude-codepro provides the foundation for a successful development journey.\nAutomate the creation of detailed implementation plans for new features using Spec-Driven Development.\nEnforce Test-Driven Development (TDD) by ensuring tests are written before code modifications.\nSync custom rules and skills with the codebase to maintain consistency and quality across projects.\nUtilize persistent memory to carry relevant context across multiple development sessions.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/maxritter/claude-codepro`",
+    "usage": "```\nUse Claude CodePro to [TASK] in this [PROJECT_DIRECTORY]. Ensure all [TESTS] pass and [QUALITY_CHECKS] are enforced. Optimize context for [SPECIFIC_FILE_OR_MODULE]. If errors occur, suggest fixes and rerun tests. Log all actions in [LOG_FILE_PATH].\n```\nCopy\n\n```\nStarting Claude CodePro session for the `auth-service` project in `/workspace/auth-service`.\n\n1. **Dependency Check**: Verified all TypeScript dependencies are up-to-date. No critical vulnerabilities found in `package.json`.\n\n2. **Static Analysis**: Ran ESLint and Prettier with strict rules. Fixed 3 formatting issues in `src/utils/jwt.ts` and 1 unused import in `src/middleware/auth.ts`.\n\n3. **Testing Suite**: Executed Jest test suite with coverage threshold of 90%. Results:\n   - Total tests: 142 (✅ 140 passed, ❌ 2 failed)\n   - Coverage: 92.1% (⬆️ 2.3% from last run)\n   - Failed tests:\n     - `src/tests/integration/auth.test.ts` (Line 45): Mocked `jwt.verify` returning invalid token. **Fixed by updating mock to return valid payload.**\n     - `src/tests/unit/rateLimiter.test.ts` (Line 120): Race condition in async test. **Fixed by adding `await` to `setTimeout` call.**\n\n4. **Context Optimization**: Analyzed `src/services/userService.ts` (1,248 lines). Split into 3 focused modules:\n   - `userService.ts` (core logic, 412 lines)\n   - `userValidation.ts` (input validation, 289 lines)\n   - `userRepository.ts` (DB operations, 547 lines)\n\n5. **TypeScript Compilation**: Successfully compiled with `--noEmitOnError` flag. No type errors detected.\n\n6. **Agent Integration**: Spawned a Claude agent to review changes. Agent approved with 4 suggestions:\n   - Add JSDoc comments to new `userValidation.ts` module.\n   - Increase test coverage for `userRepository.ts` to 95%.\n   - Document rate limiter configuration in `README.md`.\n   - Add pre-commit hook for linting.\n\n**Summary**: All quality gates passed. Ready for deployment. Changes logged to `/workspace/auth-service/.claude-codepro/logs/2024-05-15_14-30-22.json`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-codepro#main-content",
+      "claude-codepro#overview",
+      "claude-codepro#setup",
+      "claude-codepro#examples",
+      "claude-codepro#tools",
+      "claude-codepro#mcp",
+      "claude-codepro#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-codepro skill provides a production-grade development environment specifically designed for Claude Code. It ensures quality automation, context optimization, and enforced testing, allowing developers to ship their projects with confidence. By streamlining the development process, this skill enhances productivity and reduces the risk of errors, making it an essential tool for anyone working with AI automation and workflow automation. One of the key benefits of using claude-codepro is its ability to save time during the development cycle. With a focus on quality and context, developers can implement this skill in approximately 30 minutes, enabling them to quickly set up a robust environment that promotes efficient coding practices. Although the exact time savings are not quantified, the automation features significantly reduce manual testing and debugging efforts, allowing teams to focus on building innovative solutions. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their workflow automation processes. By integrating claude-codepro into their projects, teams can ensure that their development environments are optimized for performance and reliability. This is especially crucial for those working on complex AI agent skills or data engineering tasks, where quality and precision are paramount. Implementing claude-codepro requires an intermediate understanding of development environments and automation principles. As organizations transition to AI-first workflows, this skill becomes a vital component in ensuring that development processes are not only efficient but also aligned with the latest technological advancements. Whether you are building AI agents or enhancing existing applications, claude-codepro provides the foundation for a successful development journey.\nAutomate the creation of detailed implementation plans for new features using Spec-Driven Development.\nEnforce Test-Driven Development (TDD) by ensuring tests are written before code modifications.\nSync custom rules and skills with the codebase to maintain consistency and quality across projects.\nUtilize persistent memory to carry relevant context across multiple development sessions.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/maxritter/claude-codepro`",
+    "usage_vi": "```\nUse Claude CodePro to [TASK] in this [PROJECT_DIRECTORY]. Ensure all [TESTS] pass and [QUALITY_CHECKS] are enforced. Optimize context for [SPECIFIC_FILE_OR_MODULE]. If errors occur, suggest fixes and rerun tests. Log all actions in [LOG_FILE_PATH].\n```\nCopy\n\n```\nStarting Claude CodePro session for the `auth-service` project in `/workspace/auth-service`.\n\n1. **Dependency Check**: Verified all TypeScript dependencies are up-to-date. No critical vulnerabilities found in `package.json`.\n\n2. **Static Analysis**: Ran ESLint and Prettier with strict rules. Fixed 3 formatting issues in `src/utils/jwt.ts` and 1 unused import in `src/middleware/auth.ts`.\n\n3. **Testing Suite**: Executed Jest test suite with coverage threshold of 90%. Results:\n   - Total tests: 142 (✅ 140 passed, ❌ 2 failed)\n   - Coverage: 92.1% (⬆️ 2.3% from last run)\n   - Failed tests:\n     - `src/tests/integration/auth.test.ts` (Line 45): Mocked `jwt.verify` returning invalid token. **Fixed by updating mock to return valid payload.**\n     - `src/tests/unit/rateLimiter.test.ts` (Line 120): Race condition in async test. **Fixed by adding `await` to `setTimeout` call.**\n\n4. **Context Optimization**: Analyzed `src/services/userService.ts` (1,248 lines). Split into 3 focused modules:\n   - `userService.ts` (core logic, 412 lines)\n   - `userValidation.ts` (input validation, 289 lines)\n   - `userRepository.ts` (DB operations, 547 lines)\n\n5. **TypeScript Compilation**: Successfully compiled with `--noEmitOnError` flag. No type errors detected.\n\n6. **Agent Integration**: Spawned a Claude agent to review changes. Agent approved with 4 suggestions:\n   - Add JSDoc comments to new `userValidation.ts` module.\n   - Increase test coverage for `userRepository.ts` to 95%.\n   - Document rate limiter configuration in `README.md`.\n   - Add pre-commit hook for linting.\n\n**Summary**: All quality gates passed. Ready for deployment. Changes logged to `/workspace/auth-service/.claude-codepro/logs/2024-05-15_14-30-22.json`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:40:40.918621Z",
+    "http_status": 200,
+    "content_hash": "7d9ee1a9cbfbedf924a4cae09b160492ed96d8b20788d6a90b702e6006fd5d08",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-codepro.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-codepro.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-codepro: Production-Grade Development",
+  "short_description_vi": "Claude CodePro is a production-grade development environment for Claude Code. It automates quality checks, optimizes context, and enforces testing. Developers can ship code with confidence. It integrates with TypeScript and supports Claude agents."
+}

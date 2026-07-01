@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clauder",
+  "slug": "clauder",
+  "name": "clauder",
+  "headline": "clauder for secure Claude Code automation",
+  "short_description": "Clauder is a safer and enhanced toolkit for Claude Code, enabling developers to automate coding tasks, improve workflow efficiency, and reduce errors. It benefits software engineers and operations teams by integrating with IDEs and developer tools, streamlining code generation, debugging, and testing processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "blueraai",
+  "install_command": "git clone https://github.com/blueraai/clauder.git",
+  "source_repo_url": "https://github.com/blueraai/clauder",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "dev-tools",
+    "agentic-engineering",
+    "coding",
+    "anthropic",
+    "toolkit",
+    "ai-coding-tools",
+    "ide",
+    "ai-coding-assistant",
+    "ai-coding",
+    "claude-code",
+    "anthropic-claude",
+    "claude-code-toolkit",
+    "developer-tools",
+    "agentic-workflow",
+    "claude",
+    "agentic-coding",
+    "ai-coding-agent"
+  ],
+  "sections": {
+    "overview": "Clauder is a comprehensive Claude Code configuration that combines advanced automation toolsets with multi-layered security mechanisms. It provides secret detection, file protection, human-in-the-loop approval for sensitive operations, and real-time logging via SQLite and a web-based tracer app. The toolkit includes workflow automation features like automatic git checkpoints, custom commands for code review and sub-agent creation, and access to 65+ on-demand MCP servers across 8 specialized domains. Clauder auto-updates while preserving custom configurations, and includes 67 specialized agents for frontend, backend, data science, AI development, infrastructure, game development, and desktop development. It assumes human co-supervision and is designed to be easily configurable and extensible to any project.\nAutomating code generation and testing with safety guardrails\nReal-time monitoring and auditing of AI-assisted development tasks\nManaging multi-domain projects with specialized agent recruitment\nProtecting sensitive code and environment variables during automation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/blueraai/clauder`",
+    "usage": "```\nUse Clauder to automate the following coding task: [TASK_DESCRIPTION]. Follow these steps: 1) Analyze the existing codebase for [RELEVANT_FILES_OR_MODULES], 2) Generate a [CODE_SNIPPET_OR_SCRIPT] that solves [SPECIFIC_PROBLEM], 3) Implement error handling for [EDGE_CASES_OR_FAILURE_SCENARIOS], 4) Generate unit tests for the new code using [TESTING_FRAMEWORK], and 5) Provide a summary of changes in a pull request-ready format. Ensure the code follows [CODING_STANDARDS_OR_GUIDELINES].\n```\nCopy\n\n```\n### Automated Task: Refactor Legacy Authentication Module\n\n**Step 1: Analysis**\nClauder analyzed the `auth/` directory and identified 3 legacy files (`auth_legacy.py`, `user_session.py`, `token_manager.py`) with deprecated dependencies and inconsistent error handling. The tool flagged 12 potential security vulnerabilities (e.g., hardcoded secrets, SQL injection risks) and recommended a modular refactor.\n\n**Step 2: Code Generation**\nauth_refactored.py:\n```python\nfrom dataclasses import dataclass\nfrom typing import Optional\nimport secrets\nimport bcrypt\n\n@dataclass\nclass AuthConfig:\n    jwt_secret: str = secrets.token_hex(32)\n    token_expiry: int = 3600  # 1 hour\n\nclass UserSession:\n    def __init__(self, user_id: str, config: AuthConfig):\n        self.user_id = user_id\n        self.token = self._generate_token(config)\n        self.expiry = config.token_expiry\n\n    def _generate_token(self, config: AuthConfig) -> str:\n        # Uses bcrypt for secure password hashing\n        return bcrypt.hashpw(secrets.token_bytes(16), bcrypt.gensalt()).decode('utf-8')\n```\n\n**Step 3: Error Handling**\nClauder implemented the following safeguards:\n- Input validation for `user_id` (rejects empty strings)\n- Rate limiting for token generation (max 5 attempts/minute)\n- Graceful degradation for JWT signing failures (falls back to session cookies)\n- Logging for all authentication failures (stored in `auth_errors.log`)\n\n**Step 4: Unit Tests**\nClauder generated pytest scripts:\n```python\ndef test_user_session_generation():\n    config = AuthConfig()\n    session = UserSession(\"user123\", config)\n    assert len(session.token) > 0\n    assert session.expiry == 3600\n\ndef test_invalid_user_id():\n    config = AuthConfig()\n    try:\n        UserSession(\"\", config)\n        assert False, \"Should have raised ValueError\"\n    except ValueError as e:\n        assert \"Invalid user ID\" in str(e)\n```\n\n**Step 5: PR Summary**\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "clauder#main-content",
+      "clauder#overview",
+      "clauder#setup",
+      "clauder#examples",
+      "clauder#tools",
+      "clauder#mcp",
+      "clauder#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Clauder là một cấu hình Claude Code toàn diện kết hợp giữa bộ công cụ tự động hóa nâng cao và các cơ chế bảo mật đa lớp. Công cụ này cung cấp tính năng phát hiện secret, bảo vệ file, phê duyệt có sự tham gia của con người (human-in-the-loop) cho các thao tác nhạy cảm, và ghi log thời gian thực qua SQLite cùng một ứng dụng tracer chạy trên web. Bộ công cụ bao gồm các tính năng tự động hóa quy trình làm việc như tự động tạo git checkpoint, các lệnh tùy chỉnh để code review và khởi tạo sub-agent, cùng quyền truy cập vào hơn 65 MCP server theo yêu cầu trên 8 lĩnh vực chuyên sâu. Clauder hỗ trợ tự động cập nhật trong khi vẫn giữ nguyên cấu hình tùy chỉnh, và đi kèm 67 agent chuyên dụng cho frontend, backend, khoa học dữ liệu, phát triển AI, hạ tầng, phát triển game và desktop. Công cụ hoạt động dưới sự đồng giám sát từ con người, được thiết kế để dễ dàng cấu hình và mở rộng cho mọi dự án.\nTự động hóa việc tạo code và kiểm thử với các rào chắn bảo vệ (safety guardrails) an toàn\nTheo dõi và kiểm toán (audit) thời gian thực các tác vụ phát triển được hỗ trợ bởi AI\nQuản lý các dự án đa lĩnh vực bằng cách điều phối các agent chuyên dụng\nBảo vệ mã nguồn nhạy cảm và các biến môi trường trong quá trình tự động hóa",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/blueraai/clauder`",
+    "usage_vi": "```\nSử dụng Clauder để tự động hóa tác vụ lập trình sau: [TASK_DESCRIPTION]. Thực hiện theo các bước sau: 1) Phân tích cơ sở mã nguồn hiện tại để tìm [RELEVANT_FILES_OR_MODULES], 2) Tạo [CODE_SNIPPET_OR_SCRIPT] để giải quyết [SPECIFIC_PROBLEM], 3) Triển khai xử lý lỗi cho [EDGE_CASES_OR_FAILURE_SCENARIOS], 4) Tạo các unit test cho đoạn code mới bằng [TESTING_FRAMEWORK], và 5) Cung cấp bản tóm tắt các thay đổi theo định dạng sẵn sàng cho pull request. Đảm bảo code tuân thủ [CODING_STANDARDS_OR_GUIDELINES].\n```\nSao chép\n\n```\n### Tác vụ tự động: Refactor module xác thực cũ\n\n**Bước 1: Phân tích**\nClauder đã phân tích thư mục `auth/` và phát hiện 3 file cũ (`auth_legacy.py`, `user_session.py`, `token_manager.py`) chứa các dependency đã lỗi thời và xử lý lỗi không nhất quán. Công cụ đã cảnh báo 12 lỗ hổng bảo mật tiềm ẩn (ví dụ: hardcoded secret, nguy cơ SQL injection) và đề xuất refactor theo hướng mô-đun hóa.\n\n**Bước 2: Tạo code**\nauth_refactored.py:\n```python\nfrom dataclasses import dataclass\nfrom typing import Optional\nimport secrets\nimport bcrypt\n\n@dataclass\nclass AuthConfig:\n    jwt_secret: str = secrets.token_hex(32)\n    token_expiry: int = 3600  # 1 hour\n\nclass UserSession:\n    def __init__(self, user_id: str, config: AuthConfig):\n        self.user_id = user_id\n        self.token = self._generate_token(config)\n        self.expiry = config.token_expiry\n\n    def _generate_token(self, config: AuthConfig) -> str:\n        # Sử dụng bcrypt để hash mật khẩu an toàn\n        return bcrypt.hashpw(secrets.token_bytes(16), bcrypt.gensalt()).decode('utf-8')\n```\n\n**Bước 3: Xử lý lỗi**\nClauder đã triển khai các biện pháp bảo vệ sau:\n- Validate dữ liệu đầu vào cho `user_id` (từ chối chuỗi rỗng)\n- Giới hạn tần suất (rate limiting) cho việc tạo token (tối đa 5 lần/phút)\n- Tự phục hồi lỗi (graceful degradation) khi ký JWT thất bại (chuyển sang dùng session cookie)\n- Ghi log cho tất cả các lỗi xác thực (lưu trong `auth_errors.log`)\n\n**Bước 4: Unit Test**\nClauder đã tạo các script pytest:\n```python\ndef test_user_session_generation():\n    config = AuthConfig()\n    session = UserSession(\"user123\", config)\n    assert len(session.token) > 0\n    assert session.expiry == 3600\n\ndef test_invalid_user_id():\n    config = AuthConfig()\n    try:\n        UserSession(\"\", config)\n        assert False, \"Should have raised ValueError\"\n    except ValueError as e:\n        assert \"Invalid user ID\" in str(e)\n```\n\n**Bước 5: Tóm tắt PR**\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:59:29.814975Z",
+    "http_status": 200,
+    "content_hash": "e355e4f4580e325d67439276b92233a892c3bf9c3ad13589b8835803619c7b7a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clauder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clauder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "clauder - tự động hóa Claude Code an toàn",
+  "short_description_vi": "Clauder là một bộ công cụ an toàn và nâng cao dành cho Claude Code, giúp lập trình viên tự động hóa các tác vụ code, tối ưu hóa hiệu suất quy trình làm việc và giảm thiểu sai sót. Bộ công cụ này mang lại lợi ích cho các kỹ sư phần mềm và đội ngũ vận hành nhờ khả năng tích hợp với các IDE và công cụ phát triển, giúp tinh giản các quy trình tạo code, debug và kiểm thử."
+}

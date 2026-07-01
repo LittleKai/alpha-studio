@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-codex",
+  "slug": "claude-skill-codex",
+  "name": "browser-use",
+  "headline": "Claude to OpenAI Codex integration skill",
+  "short_description": "Claude Code integrates with OpenAI Codex CLI for advanced code analysis, refactoring, and automated editing. Benefits developers and operations teams by automating code improvements and reducing manual effort. Connects to OpenAI Codex CLI for code manipulation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "35 min",
+  "author": "sypsyp97",
+  "install_command": "git clone https://github.com/sypsyp97/claude-skill-codex.git",
+  "source_repo_url": "https://github.com/sypsyp97/claude-skill-codex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Codex skill for Claude Code integrates OpenAI's Codex CLI to enable advanced code analysis, refactoring, security audits, and architecture analysis. When you mention Codex-related tasks, the skill automatically activates and executes appropriate commands with optimized model and reasoning settings. It handles session resume, error recovery, and multi-step workflows, then summarizes results and suggests next steps. The skill supports multiple sandbox modes for read-only analysis or workspace modifications, making it suitable for developers performing code reviews, security assessments, and automated transformations.\nSecurity audits and vulnerability analysis on codebases\nCode refactoring and modernization to async/await patterns\nArchitecture analysis and design pattern review\nAutomated code review and quality assessment",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sypsyp97/claude-skill-codex`",
+    "usage": "```\nUse claude-skill-codex to analyze and refactor the following codebase: [CODEBASE_PATH]. Focus on [SPECIFIC_ISSUES: e.g., performance bottlenecks, security vulnerabilities, or code style violations]. Provide a detailed report with: 1) Identified issues ranked by severity, 2) Suggested fixes with code snippets, 3) Estimated time savings for each fix, and 4) A prioritized action plan. Run the refactoring using OpenAI Codex CLI with the command: `codex refactor [CODEBASE_PATH] --focus [SPECIFIC_ISSUES]` and include the output in your response.\n```\nCopy\n\n```\n### Code Analysis & Refactoring Report\n**Project:** `ecommerce-backend` (Node.js/Express)\n**Scope:** Performance optimization for `/api/products` endpoint\n\n#### 1. Identified Issues (Ranked by Severity)\n- **Critical (P0):** N+1 query problem in `ProductController.getProducts()`. The current implementation makes 100+ database calls for a single request when fetching products with reviews. Estimated impact: 85% slower response time under load.\n- **High (P1):** Unused middleware `authMiddleware` in `routes.js` adds 15ms overhead per request. No authentication is actually enforced.\n- **Medium (P2):** Inconsistent error handling in `errorHandler.js`—some routes return 500, others return 404 for the same error type.\n\n#### 2. Suggested Fixes with Code Snippets\n**P0 Fix (N+1 Query):**\n```javascript\n// Before: Separate calls for products and reviews\nconst products = await Product.find();\nconst reviews = await Review.find({ productId: { $in: products.map(p => p._id) } });\n\n// After: Single optimized query with population\nconst products = await Product.find().populate({\n  path: 'reviews',\n  options: { sort: { createdAt: -1 }, limit: 5 }\n});\n```\n**P1 Fix (Unused Middleware):**\n```diff\n- app.use('/api/products', authMiddleware, productRoutes);\n+ app.use('/api/products', productRoutes);\n```\n**P2 Fix (Error Handling):**\n```javascript\n// Standardized error response\nconst handleError = (err, req, res, next) => {\n  console.error(err);\n  res.status(400).json({\n    error: 'Validation failed',\n    details: err.message\n  });\n};\n```\n\n#### 3. Estimated Time Savings\n- P0 Fix: Reduces response time from 1.2s to 180ms (85% improvement). Manual fix would take 4-6 hours; Codex completes in 2 minutes.\n- P1 Fix: Saves 15ms per request. Manual fix: 30 minutes; Codex: 30 seconds.\n- P2 Fix: Reduces debugging time by 2 hours/month. Manual fix: 1 hour; Codex: 1 minute.\n\n#### 4. Prioritized Action Plan\n1. **Immediate (Today):** Deploy P0 fix using Codex CLI:\n   ```bash\n   codex refactor ./src/controllers/ProductController.js --focus \"N+1 query\"\n   ```\n2. **This Week:** Address P1 and P2 fixes. Test with `npm run test:performance` and monitor `/api/products` latency in New Relic.\n3. **Next Sprint:** Run full Codex analysis on entire codebase with:\n   ```bash\n   codex analyze ./ --output report.json\n   ```\n\n#### Codex CLI Output (P0 Fix Applied)\n```\nRefactoring 1 file...\n✅ Optimized ProductController.getProducts() to use population (saved 1.02s per request)\n✨ Applied 1 change in 1 file\n```\n\n**Next Steps:** Commit changes, run integration tests, and deploy to staging for validation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-codex#main-content",
+      "claude-skill-codex#overview",
+      "claude-skill-codex#setup",
+      "claude-skill-codex#examples",
+      "claude-skill-codex#tools",
+      "claude-skill-codex#mcp",
+      "claude-skill-codex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Codex skill for Claude Code integrates OpenAI's Codex CLI to enable advanced code analysis, refactoring, security audits, and architecture analysis. When you mention Codex-related tasks, the skill automatically activates and executes appropriate commands with optimized model and reasoning settings. It handles session resume, error recovery, and multi-step workflows, then summarizes results and suggests next steps. The skill supports multiple sandbox modes for read-only analysis or workspace modifications, making it suitable for developers performing code reviews, security assessments, and automated transformations.\nSecurity audits and vulnerability analysis on codebases\nCode refactoring and modernization to async/await patterns\nArchitecture analysis and design pattern review\nAutomated code review and quality assessment",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sypsyp97/claude-skill-codex`",
+    "usage_vi": "```\nUse claude-skill-codex to analyze and refactor the following codebase: [CODEBASE_PATH]. Focus on [SPECIFIC_ISSUES: e.g., performance bottlenecks, security vulnerabilities, or code style violations]. Provide a detailed report with: 1) Identified issues ranked by severity, 2) Suggested fixes with code snippets, 3) Estimated time savings for each fix, and 4) A prioritized action plan. Run the refactoring using OpenAI Codex CLI with the command: `codex refactor [CODEBASE_PATH] --focus [SPECIFIC_ISSUES]` and include the output in your response.\n```\nCopy\n\n```\n### Code Analysis & Refactoring Report\n**Project:** `ecommerce-backend` (Node.js/Express)\n**Scope:** Performance optimization for `/api/products` endpoint\n\n#### 1. Identified Issues (Ranked by Severity)\n- **Critical (P0):** N+1 query problem in `ProductController.getProducts()`. The current implementation makes 100+ database calls for a single request when fetching products with reviews. Estimated impact: 85% slower response time under load.\n- **High (P1):** Unused middleware `authMiddleware` in `routes.js` adds 15ms overhead per request. No authentication is actually enforced.\n- **Medium (P2):** Inconsistent error handling in `errorHandler.js`—some routes return 500, others return 404 for the same error type.\n\n#### 2. Suggested Fixes with Code Snippets\n**P0 Fix (N+1 Query):**\n```javascript\n// Before: Separate calls for products and reviews\nconst products = await Product.find();\nconst reviews = await Review.find({ productId: { $in: products.map(p => p._id) } });\n\n// After: Single optimized query with population\nconst products = await Product.find().populate({\n  path: 'reviews',\n  options: { sort: { createdAt: -1 }, limit: 5 }\n});\n```\n**P1 Fix (Unused Middleware):**\n```diff\n- app.use('/api/products', authMiddleware, productRoutes);\n+ app.use('/api/products', productRoutes);\n```\n**P2 Fix (Error Handling):**\n```javascript\n// Standardized error response\nconst handleError = (err, req, res, next) => {\n  console.error(err);\n  res.status(400).json({\n    error: 'Validation failed',\n    details: err.message\n  });\n};\n```\n\n#### 3. Estimated Time Savings\n- P0 Fix: Reduces response time from 1.2s to 180ms (85% improvement). Manual fix would take 4-6 hours; Codex completes in 2 minutes.\n- P1 Fix: Saves 15ms per request. Manual fix: 30 minutes; Codex: 30 seconds.\n- P2 Fix: Reduces debugging time by 2 hours/month. Manual fix: 1 hour; Codex: 1 minute.\n\n#### 4. Prioritized Action Plan\n1. **Immediate (Today):** Deploy P0 fix using Codex CLI:\n   ```bash\n   codex refactor ./src/controllers/ProductController.js --focus \"N+1 query\"\n   ```\n2. **This Week:** Address P1 and P2 fixes. Test with `npm run test:performance` and monitor `/api/products` latency in New Relic.\n3. **Next Sprint:** Run full Codex analysis on entire codebase with:\n   ```bash\n   codex analyze ./ --output report.json\n   ```\n\n#### Codex CLI Output (P0 Fix Applied)\n```\nRefactoring 1 file...\n✅ Optimized ProductController.getProducts() to use population (saved 1.02s per request)\n✨ Applied 1 change in 1 file\n```\n\n**Next Steps:** Commit changes, run integration tests, and deploy to staging for validation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:38:02.824632Z",
+    "http_status": 200,
+    "content_hash": "da8ebe930b460e9e3172f59d17e0e8f22782b7127ce80e6dac73e508e89cd23f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-codex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-codex.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude to OpenAI Codex integration skill",
+  "short_description_vi": "Claude Code integrates with OpenAI Codex CLI for advanced code analysis, refactoring, and automated editing. Benefits developers and operations teams by automating code improvements and reducing manual effort. Connects to OpenAI Codex CLI for code manipulation."
+}

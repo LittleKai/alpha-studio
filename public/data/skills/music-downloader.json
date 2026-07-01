@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/music-downloader",
+  "slug": "music-downloader",
+  "name": "Related Skills",
+  "headline": "music-downloader: Claude Code skill for Audio",
+  "short_description": "This skill enables downloading high-quality audio from various platforms using yt-dlp and spotdl. It's designed for users who want to extract audio from a variety of media sources, including YouTube and Spotify.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "nymbo",
+  "install_command": "git clone https://github.com/nymbo/skills",
+  "source_repo_url": "https://github.com/nymbo/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "downloader",
+    "music",
+    "audio-downloading"
+  ],
+  "sections": {
+    "overview": "The music-downloader skill enables downloading high-quality audio from multiple platforms including YouTube and Spotify. It leverages yt-dlp and spotdl technologies to extract audio from various media sources. This skill is designed for users who need to save audio content locally from diverse streaming and video platforms.\nDownload individual songs from YouTube or Spotify.\nExtract audio from entire playlists or albums.\nPerform batch downloads while preserving metadata and album art.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/nymbo/skills --skill music-downloader`\n`git clone https://github.com/nymbo/skills`",
+    "usage": "```\nDownload the highest quality audio available from [PLATFORM: YouTube, Spotify, SoundCloud, etc.] for the song '[SONG_NAME]' by [ARTIST_NAME]. Save it as '[FILE_NAME]' in the folder '[FOLDER_PATH]' using yt-dlp or spotdl. Ensure the audio is in MP3 format with a bitrate of at least 320kbps.\n```\nCopy\n\n```\n### Download Complete\n\nSuccessfully downloaded the following track:\n\n- **Title**: \"Neon Moonlight\"\n- **Artist**: Eclipse Collective\n- **Platform**: Spotify\n- **Quality**: MP3, 320kbps\n- **File Location**: `/Users/alex/Music/Downloads/Eclipse_Collective_Neon_Moonlight.mp3`\n\nThe file has been saved to your specified directory and is ready for offline listening. If you need additional tracks or formats, let me know!\n\n**Note**: Ensure you have the necessary tools installed (yt-dlp/spotdl) and comply with copyright laws when downloading content.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "music-downloader#main-content",
+      "music-downloader#overview",
+      "music-downloader#setup",
+      "music-downloader#examples",
+      "music-downloader#tools",
+      "music-downloader#mcp",
+      "music-downloader#related"
+    ],
+    "overview_vi": "The music-downloader skill enables downloading high-quality audio from multiple platforms including YouTube and Spotify. It leverages yt-dlp and spotdl technologies to extract audio from various media sources. This skill is designed for users who need to save audio content locally from diverse streaming and video platforms.\nDownload individual songs from YouTube or Spotify.\nExtract audio from entire playlists or albums.\nPerform batch downloads while preserving metadata and album art.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/nymbo/skills --skill music-downloader`\n`git clone https://github.com/nymbo/skills`",
+    "usage_vi": "```\nDownload the highest quality audio available from [PLATFORM: YouTube, Spotify, SoundCloud, etc.] for the song '[SONG_NAME]' by [ARTIST_NAME]. Save it as '[FILE_NAME]' in the folder '[FOLDER_PATH]' using yt-dlp or spotdl. Ensure the audio is in MP3 format with a bitrate of at least 320kbps.\n```\nCopy\n\n```\n### Download Complete\n\nSuccessfully downloaded the following track:\n\n- **Title**: \"Neon Moonlight\"\n- **Artist**: Eclipse Collective\n- **Platform**: Spotify\n- **Quality**: MP3, 320kbps\n- **File Location**: `/Users/alex/Music/Downloads/Eclipse_Collective_Neon_Moonlight.mp3`\n\nThe file has been saved to your specified directory and is ready for offline listening. If you need additional tracks or formats, let me know!\n\n**Note**: Ensure you have the necessary tools installed (yt-dlp/spotdl) and comply with copyright laws when downloading content.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:14:59.789557Z",
+    "http_status": 200,
+    "content_hash": "075014edfc78c0df2cb7ed24c8afee20183a147feb6550c9ef12261534ce4839",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\music-downloader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\music-downloader.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "music-downloader: Claude Code skill for Audio",
+  "short_description_vi": "This skill enables downloading high-quality audio from various platforms using yt-dlp and spotdl. It's designed for users who want to extract audio from a variety of media sources, including YouTube and Spotify."
+}

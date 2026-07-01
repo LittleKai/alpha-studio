@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/website-hot-hub",
+  "slug": "website-hot-hub",
+  "name": "Website Hot Hub",
+  "headline": "Website Hot Hub - Tracks Trending Topics",
+  "short_description": "Tracks trending topics from 36Kr, Bilibili, GitHub, Douyin, Juejin, WeChat Reading, and Kuaishou since 2023-10-25. Fetches data hourly, archives daily, and stores older data in Releases. Useful for monitoring platform trends, content strategy, and competitive analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "cxyfreedom",
+  "install_command": "git clone https://github.com/cxyfreedom/website-hot-hub.git",
+  "source_repo_url": "https://github.com/cxyfreedom/website-hot-hub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "website-hot-hub monitors trending topics across 36Kr, Bilibili, GitHub, Douyin, Juejin, WeChat Reading, and Kuaishou, collecting data hourly since October 25, 2023. The tool automatically archives data daily and stores historical records in GitHub Releases for long-term reference. It's designed for content strategists, competitive analysts, and researchers who need to understand what's trending across major Chinese social and tech platforms. Use this skill to identify emerging topics, track platform-specific viral content, benchmark competitor activity, and inform content strategy decisions based on real-time trend data.\nMonitor trending topics for content strategy and editorial planning\nTrack competitive activity and viral content patterns across platforms\nAnalyze platform-specific trends for market research and consumer insights\nIdentify emerging topics early for time-sensitive content opportunities",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cxyfreedom/website-hot-hub`",
+    "usage": "```\nAnalyze the trending topics from [PLATFORM] on [DATE] related to [TOPIC]. Compare these trends with the previous week's data. Identify 3 key insights about the shifts in interest and suggest content ideas based on these trends.\n```\nCopy\n\n```\nBased on the trending topics from Bilibili on November 15, 2023, related to AI tools, we observe the following:\n\n1. **Increased Interest in AI Art Tools**: The topic 'AI Art Tools' saw a 45% increase in mentions compared to the previous week. This surge is likely due to the recent launch of new AI art generators and the growing popularity of AI-generated art in the creative community.\n\n2. **Rise of AI in Education**: Discussions around 'AI Tutors' and 'AI Learning Platforms' have risen by 30%. This trend aligns with the back-to-school season and the increasing adoption of AI tools in educational settings.\n\n3. **Growing Concerns About AI Ethics**: There has been a notable increase in discussions about 'AI Ethics' and 'AI Regulation', up by 25%. This reflects the ongoing debates and regulatory developments in the AI industry.\n\n**Content Ideas**:\n- A tutorial on the top 5 AI art tools available in 2023.\n- An interview with an AI tutor to explore the future of AI in education.\n- A panel discussion on the ethical implications of AI and the latest regulatory developments.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "website-hot-hub#main-content",
+      "website-hot-hub#overview",
+      "website-hot-hub#setup",
+      "website-hot-hub#examples",
+      "website-hot-hub#tools",
+      "website-hot-hub#mcp",
+      "website-hot-hub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "website-hot-hub giám sát các chủ đề xu hướng trên 36Kr, Bilibili, GitHub, Douyin, Juejin, WeChat Reading và Kuaishou, thu thập dữ liệu hàng giờ kể từ ngày 25 tháng 10 năm 2023. Công cụ này tự động archive dữ liệu hàng ngày và lưu trữ lịch sử trong GitHub Releases để tham chiếu lâu dài. Thiết kế dành cho các nhà chiến lược nội dung, nhà phân tích cạnh tranh và nhà nghiên cứu cần hiểu rõ xu hướng trên các nền tảng công nghệ và mạng xã hội lớn của Trung Quốc. Hãy sử dụng skill này để xác định các chủ đề mới nổi, theo dõi nội dung viral trên từng nền tảng, đánh giá hoạt động của đối thủ cạnh tranh và đưa ra quyết định chiến lược nội dung dựa trên dữ liệu xu hướng theo thời gian thực.\nTheo dõi các chủ đề xu hướng để lập kế hoạch biên tập và chiến lược nội dung\nTheo dõi hoạt động cạnh tranh và mô hình nội dung viral trên các nền tảng\nPhân tích xu hướng theo từng nền tảng để nghiên cứu thị trường và hiểu hành vi người tiêu dùng\nPhát hiện sớm các chủ đề mới nổi để tận dụng cơ hội nội dung có tính thời điểm",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cxyfreedom/website-hot-hub`",
+    "usage_vi": "```\nPhân tích các chủ đề xu hướng từ [PLATFORM] vào ngày [DATE] liên quan đến [TOPIC]. So sánh các xu hướng này với dữ liệu của tuần trước. Chỉ ra 3 insight chính về sự thay đổi mức độ quan tâm và đề xuất các ý tưởng nội dung dựa trên những xu hướng này.\n```\nCopy\n\n```\nDựa trên các chủ đề xu hướng từ Bilibili ngày 15 tháng 11 năm 2023 liên quan đến các công cụ AI, chúng tôi ghi nhận những điểm sau:\n\n1. **Sự quan tâm tăng mạnh đối với AI Art Tools**: Chủ đề 'AI Art Tools' có lượt đề cập tăng 45% so với tuần trước. Sự bùng nổ này có thể do các công cụ tạo ảnh nghệ thuật bằng AI mới được ra mắt gần đây và mức độ phổ biến ngày càng tăng của nghệ thuật tạo bởi AI trong cộng đồng sáng tạo.\n\n2. **Sự trỗi dậy của AI trong Giáo dục**: Các cuộc thảo luận xoay quanh 'AI Tutors' và 'AI Learning Platforms' đã tăng 30%. Xu hướng này phù hợp với mùa tựu trường và việc áp dụng ngày càng nhiều các công cụ AI trong môi trường giáo dục.\n\n3. **Mối lo ngại ngày càng tăng về AI Ethics**: Có sự gia tăng đáng kể trong các cuộc thảo luận về 'AI Ethics' và 'AI Regulation', tăng 25%. Điều này phản ánh các cuộc tranh luận đang diễn ra và các bước phát triển về mặt pháp lý trong ngành công nghiệp AI.\n\n**Ý tưởng nội dung**:\n- Hướng dẫn về top 5 công cụ AI art tốt nhất năm 2023.\n- Phỏng vấn một gia sư AI để khám phá tương lai của AI trong giáo dục.\n- Một buổi thảo luận bàn tròn về các tác động đạo đức của AI và những phát triển quy định mới nhất.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:09:13.536503Z",
+    "http_status": 200,
+    "content_hash": "ec668e8fc5809c0997368ddb665b4d2585ca609c6120e664c79f1f7071460d2a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\website-hot-hub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\website-hot-hub.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Website Hot Hub - Theo dõi các chủ đề xu hướng",
+  "short_description_vi": "Theo dõi các chủ đề xu hướng từ 36Kr, Bilibili, GitHub, Douyin, Juejin, WeChat Reading và Kuaishou từ ngày 25/10/2023. Tự động lấy dữ liệu hàng giờ, archive hàng ngày và lưu trữ dữ liệu cũ trong phần Releases. Hữu ích cho việc theo dõi xu hướng nền tảng, lên chiến lược nội dung và phân tích cạnh tranh."
+}

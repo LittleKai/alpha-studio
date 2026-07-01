@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcpdoc",
+  "slug": "mcpdoc",
+  "name": "browser-use",
+  "headline": "mcpdoc: Enhance Development with llms-txt",
+  "short_description": "Expose llms-txt to IDEs for development. Enables developers to integrate LLM documentation directly into their IDEs, streamlining the development process. Connects to IDEs like Cursor and Windsurf, and apps like Claude Code/Desktop.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "langchain-ai",
+  "install_command": "git clone https://github.com/langchain-ai/mcpdoc.git",
+  "source_repo_url": "https://github.com/langchain-ai/mcpdoc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agents",
+    "llms",
+    "ide",
+    "cursor",
+    "llms-txt"
+  ],
+  "sections": {
+    "overview": "The mcpdoc skill is designed to expose llms-txt documentation to integrated development environments (IDEs), facilitating a more efficient coding experience. By integrating llms-txt resources directly into IDEs like Cursor, Windsurf, and Claude Desktop, developers can access vital documentation seamlessly, enhancing their coding assistance and overall productivity. This skill is particularly beneficial for those working in environments where rapid access to accurate documentation is crucial for maintaining workflow efficiency. One of the key benefits of using mcpdoc is the potential for significant time savings during the development process. While specific time savings are currently unknown, the ability to retrieve and audit documentation from multiple llms.txt files means developers can spend less time searching for information and more time focusing on coding. Additionally, setting up a local MCP server allows for testing and validation of llms.txt files before deployment, ensuring that developers can catch issues early in the workflow. This skill is ideal for developers and product managers who are looking to streamline their workflow automation processes. By incorporating mcpdoc into their toolset, teams can ensure that they are working with the most relevant and up-to-date documentation, which is essential for maintaining a competitive edge in AI development. The integration of domain access controls also adds a layer of security, ensuring that documentation is retrieved only from trusted sources, which is critical in sensitive development environments. With an intermediate implementation difficulty and a setup time of approximately 30 minutes, mcpdoc is accessible for teams ready to enhance their AI-first workflows. The skill's integration capabilities allow for a dynamic connection to llms-txt resources, making it a valuable addition to any developer's toolkit. As AI automation continues to evolve, skills like mcpdoc will play a pivotal role in shaping efficient and effective development practices.\nIntegrate llms-txt documentation into Cursor IDE for enhanced coding assistance.\nRetrieve and audit documentation from multiple llms.txt files for better context during development.\nSet up a local MCP server to test and validate llms.txt files before deployment.\nConnect various IDEs like Windsurf and Claude Desktop to access llms-txt resources dynamically.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/langchain-ai/mcpdoc`",
+    "usage": "```\nIntegrate [LLMS_TXT_FILE_PATH] into [IDE_NAME] using the mcpdoc skill. Verify the documentation is accessible in the IDE's context panel. If errors occur, check the MCP server logs for [SPECIFIC_ERROR]. Once integrated, test the documentation by querying [SPECIFIC_FUNCTION_OR_CLASS] and confirm the response appears in the IDE.\n```\nCopy\n\n```\nSuccessfully integrated the `llms-txt` documentation for the `DataProcessor` class into Cursor IDE using mcpdoc. The context panel now displays real-time documentation for `DataProcessor.clean_data()` with parameters (`input_path: str`, `output_path: str`, `batch_size: int = 1000`), return type (`DataFrame`), and a concise description of its purpose: 'Cleans and normalizes raw input data for downstream ML pipelines.'\n\nWhen hovering over `clean_data` in the IDE, the panel shows:\n```python\ndef clean_data(input_path: str, output_path: str, batch_size: int = 1000) -> DataFrame:\n    \"\"\"\n    Cleans and normalizes raw input data for downstream ML pipelines.\n    \n    Args:\n        input_path: Path to raw CSV/JSON data.\n        output_path: Path to save cleaned data.\n        batch_size: Number of rows processed per batch (default: 1000).\n    \n    Returns:\n        DataFrame: Cleaned data ready for feature engineering.\n    \"\"\"\n    ...\n```\n\nThe documentation also includes a usage example:\n```python\nfrom data_processor import DataProcessor\n\nprocessor = DataProcessor()\ncleaned_df = processor.clean_data(\n    input_path=\"data/raw/transactions.csv\",\n    output_path=\"data/cleaned/transactions.parquet\",\n    batch_size=5000\n)\n```\n\nNo errors were logged in the MCP server during integration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcpdoc#main-content",
+      "mcpdoc#overview",
+      "mcpdoc#setup",
+      "mcpdoc#examples",
+      "mcpdoc#tools",
+      "mcpdoc#mcp",
+      "mcpdoc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The mcpdoc skill is designed to expose llms-txt documentation to integrated development environments (IDEs), facilitating a more efficient coding experience. By integrating llms-txt resources directly into IDEs like Cursor, Windsurf, and Claude Desktop, developers can access vital documentation seamlessly, enhancing their coding assistance and overall productivity. This skill is particularly beneficial for those working in environments where rapid access to accurate documentation is crucial for maintaining workflow efficiency. One of the key benefits of using mcpdoc is the potential for significant time savings during the development process. While specific time savings are currently unknown, the ability to retrieve and audit documentation from multiple llms.txt files means developers can spend less time searching for information and more time focusing on coding. Additionally, setting up a local MCP server allows for testing and validation of llms.txt files before deployment, ensuring that developers can catch issues early in the workflow. This skill is ideal for developers and product managers who are looking to streamline their workflow automation processes. By incorporating mcpdoc into their toolset, teams can ensure that they are working with the most relevant and up-to-date documentation, which is essential for maintaining a competitive edge in AI development. The integration of domain access controls also adds a layer of security, ensuring that documentation is retrieved only from trusted sources, which is critical in sensitive development environments. With an intermediate implementation difficulty and a setup time of approximately 30 minutes, mcpdoc is accessible for teams ready to enhance their AI-first workflows. The skill's integration capabilities allow for a dynamic connection to llms-txt resources, making it a valuable addition to any developer's toolkit. As AI automation continues to evolve, skills like mcpdoc will play a pivotal role in shaping efficient and effective development practices.\nIntegrate llms-txt documentation into Cursor IDE for enhanced coding assistance.\nRetrieve and audit documentation from multiple llms.txt files for better context during development.\nSet up a local MCP server to test and validate llms.txt files before deployment.\nConnect various IDEs like Windsurf and Claude Desktop to access llms-txt resources dynamically.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/langchain-ai/mcpdoc`",
+    "usage_vi": "```\nIntegrate [LLMS_TXT_FILE_PATH] into [IDE_NAME] using the mcpdoc skill. Verify the documentation is accessible in the IDE's context panel. If errors occur, check the MCP server logs for [SPECIFIC_ERROR]. Once integrated, test the documentation by querying [SPECIFIC_FUNCTION_OR_CLASS] and confirm the response appears in the IDE.\n```\nCopy\n\n```\nSuccessfully integrated the `llms-txt` documentation for the `DataProcessor` class into Cursor IDE using mcpdoc. The context panel now displays real-time documentation for `DataProcessor.clean_data()` with parameters (`input_path: str`, `output_path: str`, `batch_size: int = 1000`), return type (`DataFrame`), and a concise description of its purpose: 'Cleans and normalizes raw input data for downstream ML pipelines.'\n\nWhen hovering over `clean_data` in the IDE, the panel shows:\n```python\ndef clean_data(input_path: str, output_path: str, batch_size: int = 1000) -> DataFrame:\n    \"\"\"\n    Cleans and normalizes raw input data for downstream ML pipelines.\n    \n    Args:\n        input_path: Path to raw CSV/JSON data.\n        output_path: Path to save cleaned data.\n        batch_size: Number of rows processed per batch (default: 1000).\n    \n    Returns:\n        DataFrame: Cleaned data ready for feature engineering.\n    \"\"\"\n    ...\n```\n\nThe documentation also includes a usage example:\n```python\nfrom data_processor import DataProcessor\n\nprocessor = DataProcessor()\ncleaned_df = processor.clean_data(\n    input_path=\"data/raw/transactions.csv\",\n    output_path=\"data/cleaned/transactions.parquet\",\n    batch_size=5000\n)\n```\n\nNo errors were logged in the MCP server during integration.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:31:26.723948Z",
+    "http_status": 200,
+    "content_hash": "9ec79767c966e9eaec7dab62c3e180f7430f1409b560c14678d5a5f489915087",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcpdoc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcpdoc.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mcpdoc: Enhance Development with llms-txt",
+  "short_description_vi": "Expose llms-txt to IDEs for development. Enables developers to integrate LLM documentation directly into their IDEs, streamlining the development process. Connects to IDEs like Cursor and Windsurf, and apps like Claude Code/Desktop."
+}

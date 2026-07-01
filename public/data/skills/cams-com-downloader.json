@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cams-com-downloader",
+  "slug": "cams-com-downloader",
+  "name": "TikTok Video Downloader",
+  "headline": "Cams.com Downloader: Claude Code skill for Browser",
+  "short_description": "Cams.com Downloader is a browser extension for downloading live streams and recorded videos from Cams.com. It's designed for viewers looking to save content for offline viewing without complicated procedures.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "serpdownloaders",
+  "install_command": "git clone https://github.com/serpdownloaders/camscom-downloader",
+  "source_repo_url": "https://github.com/serpdownloaders/camscom-downloader",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "downloader",
+    "cams",
+    "browser-extension"
+  ],
+  "sections": {
+    "overview": "Cams.com Downloader is a browser extension that enables users to download live streams and recorded videos directly from Cams.com. The tool streamlines the process of saving content for offline viewing, eliminating the need for complex workarounds or external software. Designed with simplicity in mind, it allows viewers to preserve their preferred content without navigating complicated procedures.\nRecord live shows while streaming\nDownload recorded videos from performer pages\nSelect stream quality options\nSave videos as MP4 for offline playback",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill camscom-downloader`\n`git clone https://github.com/serpdownloaders/camscom-downloader`",
+    "usage": "```\nGenerate a prompt for downloading a [VIDEO_TYPE] from Cams.com using the Cams.com Downloader browser extension. Include the [VIDEO_URL] and specify the [QUALITY] (e.g., 720p, 1080p). Ensure the output is optimized for the Cams.com Downloader extension.\n```\nCopy\n\n```\n### Downloading Video from Cams.com\n\n**Video Type:** Recorded Performance\n**Video URL:** https://www.cams.com/video/123456789\n**Quality:** 1080p\n\nHere’s the step-by-step process to download your video using the Cams.com Downloader extension:\n\n1. **Install the Extension:** Ensure the Cams.com Downloader extension is installed in your browser. You can find it in the Chrome Web Store or Firefox Add-ons.\n\n2. **Open the Video:** Navigate to the video URL in your browser. The extension will automatically detect the video.\n\n3. **Select Quality:** The extension will prompt you to choose the download quality. Select **1080p** from the dropdown menu.\n\n4. **Download:** Click the **Download** button in the extension’s interface. The video will start downloading to your default downloads folder.\n\n5. **Verify the File:** Once downloaded, check the file to ensure it plays correctly. The video will be saved in MP4 format.\n\nLet me know if you need further assistance!\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "cams-com-downloader#main-content",
+      "cams-com-downloader#overview",
+      "cams-com-downloader#setup",
+      "cams-com-downloader#examples",
+      "cams-com-downloader#related",
+      "pinterest-downloader",
+      "fansly-live-downloader",
+      "tiktok-video-downloader"
+    ],
+    "overview_vi": "Cams.com Downloader is a browser extension that enables users to download live streams and recorded videos directly from Cams.com. The tool streamlines the process of saving content for offline viewing, eliminating the need for complex workarounds or external software. Designed with simplicity in mind, it allows viewers to preserve their preferred content without navigating complicated procedures.\nRecord live shows while streaming\nDownload recorded videos from performer pages\nSelect stream quality options\nSave videos as MP4 for offline playback",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill camscom-downloader`\n`git clone https://github.com/serpdownloaders/camscom-downloader`",
+    "usage_vi": "```\nGenerate a prompt for downloading a [VIDEO_TYPE] from Cams.com using the Cams.com Downloader browser extension. Include the [VIDEO_URL] and specify the [QUALITY] (e.g., 720p, 1080p). Ensure the output is optimized for the Cams.com Downloader extension.\n```\nCopy\n\n```\n### Downloading Video from Cams.com\n\n**Video Type:** Recorded Performance\n**Video URL:** https://www.cams.com/video/123456789\n**Quality:** 1080p\n\nHere’s the step-by-step process to download your video using the Cams.com Downloader extension:\n\n1. **Install the Extension:** Ensure the Cams.com Downloader extension is installed in your browser. You can find it in the Chrome Web Store or Firefox Add-ons.\n\n2. **Open the Video:** Navigate to the video URL in your browser. The extension will automatically detect the video.\n\n3. **Select Quality:** The extension will prompt you to choose the download quality. Select **1080p** from the dropdown menu.\n\n4. **Download:** Click the **Download** button in the extension’s interface. The video will start downloading to your default downloads folder.\n\n5. **Verify the File:** Once downloaded, check the file to ensure it plays correctly. The video will be saved in MP4 format.\n\nLet me know if you need further assistance!\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:41:02.405446Z",
+    "http_status": 200,
+    "content_hash": "2a4cd1c59a08528da6d9aa1a6232679c64364d89de25b15c54a9d7e6e1bc4542",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cams-com-downloader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cams-com-downloader.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Cams.com Downloader: Claude Code skill for Browser",
+  "short_description_vi": "Cams.com Downloader is a browser extension for downloading live streams and recorded videos from Cams.com. It's designed for viewers looking to save content for offline viewing without complicated procedures."
+}

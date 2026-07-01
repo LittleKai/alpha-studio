@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-matcher",
+  "slug": "skill-matcher",
+  "name": "browser-use",
+  "headline": "Skill Matcher - Intelligent Skill Recommendation",
+  "short_description": "Skill Matcher intelligently recommends and auto-activates Claude Code skills for operations teams. It connects to Claude agents, streamlining workflows by automatically applying the right skills for specific tasks, reducing manual intervention and improving efficiency.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "alexgrebeshok-coder",
+  "install_command": "git clone https://github.com/alexgrebeshok-coder/skill-matcher.git",
+  "source_repo_url": "https://github.com/alexgrebeshok-coder/skill-matcher",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skill Matcher is an intelligent skill recommendation system for Claude Code that analyzes user requests and automatically suggests the most relevant skills from your installed library. It works by understanding task types from initial messages, searching local catalogs and external sources like GitHub and MCP Registry when needed, and intelligently activating skills without manual intervention. The system filters out trivial tasks to avoid unnecessary recommendations, provides clear explanations for why skills are suggested, and can propose creating custom skills when no existing match is found. This reduces manual skill selection overhead and helps operations teams execute tasks more efficiently by applying the right tools automatically.\nAutomatically activate document processing skills (PDF, DOCX, PPTX, XLSX) when users request document creation or editing\nRecommend development skills like mcp-builder or web-artifacts-builder for coding and testing tasks\nSuggest design skills for UI generation, algorithmic art, or theme creation requests\nPropose communication skills for internal announcements, brand guidelines, or media creation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexgrebeshok-coder/skill-matcher`",
+    "usage": "```\nI'm working on a task for [COMPANY] in the [INDUSTRY] sector. The task involves [DESCRIBE TASK]. Based on this information, what Claude Code skills should I use? Also, can you auto-activate the most relevant skills for this task?\n```\nCopy\n\n```\n# Recommended Skills for Your Task\n\nBased on your description of the task for GreenTech Solutions in the renewable energy sector, involving data analysis of solar panel efficiency metrics, I recommend the following Claude Code skills:\n\n1. **Data Analysis Skill**: For processing and interpreting the solar panel efficiency metrics\n2. **Visualization Skill**: For creating clear and informative charts and graphs\n3. **Report Generation Skill**: For compiling the analysis into a professional report\n\nI've auto-activated these skills for your use. You can now start working on your task with these skills enabled.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-matcher#main-content",
+      "skill-matcher#overview",
+      "skill-matcher#setup",
+      "skill-matcher#examples",
+      "skill-matcher#tools",
+      "skill-matcher#mcp",
+      "skill-matcher#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Matcher is an intelligent skill recommendation system for Claude Code that analyzes user requests and automatically suggests the most relevant skills from your installed library. It works by understanding task types from initial messages, searching local catalogs and external sources like GitHub and MCP Registry when needed, and intelligently activating skills without manual intervention. The system filters out trivial tasks to avoid unnecessary recommendations, provides clear explanations for why skills are suggested, and can propose creating custom skills when no existing match is found. This reduces manual skill selection overhead and helps operations teams execute tasks more efficiently by applying the right tools automatically.\nAutomatically activate document processing skills (PDF, DOCX, PPTX, XLSX) when users request document creation or editing\nRecommend development skills like mcp-builder or web-artifacts-builder for coding and testing tasks\nSuggest design skills for UI generation, algorithmic art, or theme creation requests\nPropose communication skills for internal announcements, brand guidelines, or media creation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexgrebeshok-coder/skill-matcher`",
+    "usage_vi": "```\nI'm working on a task for [COMPANY] in the [INDUSTRY] sector. The task involves [DESCRIBE TASK]. Based on this information, what Claude Code skills should I use? Also, can you auto-activate the most relevant skills for this task?\n```\nCopy\n\n```\n# Recommended Skills for Your Task\n\nBased on your description of the task for GreenTech Solutions in the renewable energy sector, involving data analysis of solar panel efficiency metrics, I recommend the following Claude Code skills:\n\n1. **Data Analysis Skill**: For processing and interpreting the solar panel efficiency metrics\n2. **Visualization Skill**: For creating clear and informative charts and graphs\n3. **Report Generation Skill**: For compiling the analysis into a professional report\n\nI've auto-activated these skills for your use. You can now start working on your task with these skills enabled.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:30:46.408439Z",
+    "http_status": 200,
+    "content_hash": "df35ed56e8d2d3d74d7593f0de5db358a74981aadb02589002552a2d2c9bf180",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-matcher.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-matcher.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skill Matcher - Intelligent Skill Recommendation",
+  "short_description_vi": "Skill Matcher intelligently recommends and auto-activates Claude Code skills for operations teams. It connects to Claude agents, streamlining workflows by automatically applying the right skills for specific tasks, reducing manual intervention and improving efficiency."
+}

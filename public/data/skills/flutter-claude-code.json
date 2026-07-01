@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/flutter-claude-code",
+  "slug": "flutter-claude-code",
+  "name": "Flutter-claude-code",
+  "headline": "Flutter-claude-code - Automate Flutter Development",
+  "short_description": "Flutter-claude-code automates Flutter software development lifecycle tasks. Operations teams use it to streamline development, testing, and deployment. It integrates with Flutter documentation and connects to CI/CD pipelines.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "cleydson",
+  "install_command": "git clone https://github.com/cleydson/flutter-claude-code.git",
+  "source_repo_url": "https://github.com/cleydson/flutter-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Flutter-claude-code is a collection of 19 specialized agents designed to automate the complete Flutter development lifecycle. It covers UI design analysis and implementation, platform-specific iOS and Android integration, backend connectivity via REST, Firebase, AWS, and GraphQL, plus testing, performance optimization, and App Store/Play Store deployment. The skill uses Claude Code agents to orchestrate workflows across design, architecture, backend, and quality assurance stages. Development teams use it to reduce manual coding tasks, enforce architectural patterns, and streamline the path from Figma designs to production deployment. A patterns skill provides quick reference for widget, testing, performance, security, and animation best practices.\nConvert Figma designs to production-ready Flutter UI code\nAutomate iOS and Android platform integration and feature implementation\nSet up and manage state management architecture (Provider, Riverpod, BLoC, Redux, GetX)\nConfigure backend integrations with Firebase, AWS, REST APIs, or GraphQL",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cleydson/flutter-claude-code`",
+    "usage": "```\nI'm a Flutter developer working at [COMPANY], a [INDUSTRY] company. I need to automate [SPECIFIC TASK] in our Flutter app development process. Can you help me with this using flutter-claude-code? Here's some relevant [DATA] about our current setup: [DESCRIBE SETUP].\n```\nCopy\n\n```\n# Flutter CI/CD Pipeline Automation Recommendations\n\nBased on your requirements, here are some ways flutter-claude-code can streamline your Flutter development process:\n\n\nTo implement automated widget testing, you could use the following approach:\n\n1. Use the `flutter_test_generator` agent to create test cases\n2. Integrate with your CI pipeline using the `ci_integration` agent\n3. Set up automated test execution with the `test_automation` agent\n\nWould you like me to elaborate on any of these aspects?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "flutter-claude-code#main-content",
+      "flutter-claude-code#overview",
+      "flutter-claude-code#setup",
+      "flutter-claude-code#examples",
+      "flutter-claude-code#tools",
+      "flutter-claude-code#mcp",
+      "flutter-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Flutter-claude-code là một tập hợp gồm 19 agent chuyên dụng được thiết kế để tự động hóa toàn bộ vòng đời phát triển Flutter. Công cụ này hỗ trợ phân tích và hiện thực hóa thiết kế UI, tích hợp nền tảng đặc thù cho iOS và Android, kết nối backend qua REST, Firebase, AWS và GraphQL, cùng với kiểm thử, tối ưu hóa hiệu năng và triển khai lên App Store/Play Store. Skill này sử dụng các Claude Code agent để điều phối workflow giữa các giai đoạn thiết kế, kiến trúc, backend và đảm bảo chất lượng (QA). Các đội ngũ phát triển sử dụng công cụ để giảm thiểu tác vụ code thủ công, áp dụng các mô hình kiến trúc (architectural patterns) chuẩn và tinh giản lộ trình từ thiết kế Figma đến triển khai production. Một skill về patterns cung cấp tài liệu tham khảo nhanh cho các best practice về widget, kiểm thử, hiệu năng, bảo mật và animation.\nChuyển đổi thiết kế Figma thành code Flutter UI sẵn sàng cho môi trường production\nTự động hóa tích hợp nền tảng iOS và Android cũng như hiện thực hóa tính năng\nThiết lập và quản lý kiến trúc quản lý trạng thái (state management) như Provider, Riverpod, BLoC, Redux, GetX\nCấu hình tích hợp backend với Firebase, AWS, REST API hoặc GraphQL",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cleydson/flutter-claude-code`",
+    "usage_vi": "```\nTôi là một nhà phát triển Flutter đang làm việc tại [COMPANY], một công ty trong lĩnh vực [INDUSTRY]. Tôi cần tự động hóa [SPECIFIC TASK] trong quy trình phát triển ứng dụng Flutter của chúng tôi. Bạn có thể giúp tôi thực hiện việc này bằng cách sử dụng flutter-claude-code không? Dưới đây là một số [DATA] liên quan về setup hiện tại của chúng tôi: [DESCRIBE SETUP].\n```\nCopy\n\n```\n# Khuyến nghị tự động hóa pipeline CI/CD Flutter\n\nDựa trên yêu cầu của bạn, dưới đây là một số cách flutter-claude-code có thể tối ưu hóa quy trình phát triển Flutter của bạn:\n\n\nĐể triển khai kiểm thử widget tự động, bạn có thể sử dụng phương pháp sau:\n\n1. Sử dụng agent `flutter_test_generator` để tạo các test case\n2. Tích hợp với pipeline CI của bạn bằng agent `ci_integration`\n3. Thiết lập thực thi kiểm thử tự động với agent `test_automation`\n\nBạn có muốn tôi giải thích chi tiết hơn về bất kỳ khía cạnh nào trong số này không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:48.366334Z",
+    "http_status": 200,
+    "content_hash": "f835ec818bd7a3e3b45d2605eea8dd76743831a7b6567c1220ddc2f8c2ac42b6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\flutter-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\flutter-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Flutter-claude-code - Tự động hóa phát triển Flutter",
+  "short_description_vi": "Flutter-claude-code tự động hóa các tác vụ trong vòng đời phát triển phần mềm Flutter. Các đội ngũ vận hành sử dụng công cụ này để tối ưu hóa quy trình phát triển, kiểm thử và triển khai. Nó tích hợp với tài liệu Flutter và kết nối trực tiếp với các pipeline CI/CD."
+}

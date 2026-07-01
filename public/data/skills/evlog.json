@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/evlog",
+  "slug": "evlog",
+  "name": "evlog",
+  "headline": "evlog - Structured Logging for Debugging",
+  "short_description": "evlog provides structured logging for debugging and error handling. It benefits developers and operations teams by organizing wide events and reducing chaos. It integrates with Node.js applications and connects to observability tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "HugoRCD",
+  "install_command": "git clone https://github.com/HugoRCD/evlog.git",
+  "source_repo_url": "https://github.com/HugoRCD/evlog",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "nitro",
+    "logging",
+    "observability",
+    "typescript",
+    "error-handling",
+    "debugging",
+    "wide-events",
+    "nuxt"
+  ],
+  "sections": {
+    "overview": "evlog is a structured logging library designed for Node.js applications that organizes events systematically to reduce operational chaos. It enables developers and operations teams to track application behavior with clarity, supporting explicit log level configuration through methods like log.setLevel(). The library integrates with observability tools, allowing teams to connect their logging data to monitoring and analysis platforms. evlog helps teams debug issues faster by providing organized event tracking that scales from development to production environments.\nDebugging application errors with structured event logs\nMonitoring Node.js application behavior across environments\nIntegrating application logs with observability platforms\nReducing operational complexity in production systems",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/HugoRCD/evlog`",
+    "usage": "```\nGenerate a structured evlog log entry for the following scenario in a Node.js application: [SCENARIO]. Include severity level, timestamp, context, and actionable next steps. Format as JSON with fields: timestamp, level, message, context, and next_steps. Example scenario: 'User login failed after 3 attempts with invalid credentials.'\n```\nCopy\n\n```\n```json\n{\n  \"timestamp\": \"2024-05-15T14:32:18.743Z\",\n  \"level\": \"ERROR\",\n  \"message\": \"User authentication failed after 3 consecutive invalid attempts\",\n  \"context\": {\n    \"user_id\": \"usr_789012\",\n    \"ip_address\": \"203.0.113.45\",\n    \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\",\n    \"failed_attempts\": 3,\n    \"last_attempt_time\": \"2024-05-15T14:32:18.743Z\"\n  },\n  \"next_steps\": [\n    \"Trigger account lockout for user_id: usr_789012 for 15 minutes\",\n    \"Log this event to the security team's Slack channel #security-alerts\",\n    \"Notify the user via email about the failed login attempts with a password reset link\",\n    \"Review IP address 203.0.113.45 for suspicious activity in the threat intelligence database\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "evlog#main-content",
+      "evlog#overview",
+      "evlog#setup",
+      "evlog#examples",
+      "evlog#tools",
+      "evlog#mcp",
+      "evlog#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "evlog is a structured logging library designed for Node.js applications that organizes events systematically to reduce operational chaos. It enables developers and operations teams to track application behavior with clarity, supporting explicit log level configuration through methods like log.setLevel(). The library integrates with observability tools, allowing teams to connect their logging data to monitoring and analysis platforms. evlog helps teams debug issues faster by providing organized event tracking that scales from development to production environments.\nDebugging application errors with structured event logs\nMonitoring Node.js application behavior across environments\nIntegrating application logs with observability platforms\nReducing operational complexity in production systems",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/HugoRCD/evlog`",
+    "usage_vi": "```\nGenerate a structured evlog log entry for the following scenario in a Node.js application: [SCENARIO]. Include severity level, timestamp, context, and actionable next steps. Format as JSON with fields: timestamp, level, message, context, and next_steps. Example scenario: 'User login failed after 3 attempts with invalid credentials.'\n```\nCopy\n\n```\n```json\n{\n  \"timestamp\": \"2024-05-15T14:32:18.743Z\",\n  \"level\": \"ERROR\",\n  \"message\": \"User authentication failed after 3 consecutive invalid attempts\",\n  \"context\": {\n    \"user_id\": \"usr_789012\",\n    \"ip_address\": \"203.0.113.45\",\n    \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\",\n    \"failed_attempts\": 3,\n    \"last_attempt_time\": \"2024-05-15T14:32:18.743Z\"\n  },\n  \"next_steps\": [\n    \"Trigger account lockout for user_id: usr_789012 for 15 minutes\",\n    \"Log this event to the security team's Slack channel #security-alerts\",\n    \"Notify the user via email about the failed login attempts with a password reset link\",\n    \"Review IP address 203.0.113.45 for suspicious activity in the threat intelligence database\"\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:10.940167Z",
+    "http_status": 200,
+    "content_hash": "2e1e8cbe6764901317fd4575cd5339a87b1e2dc302b25a1bf21094f141fba64d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\evlog.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\evlog.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "evlog - Structured Logging for Debugging",
+  "short_description_vi": "evlog provides structured logging for debugging and error handling. It benefits developers and operations teams by organizing wide events and reducing chaos. It integrates with Node.js applications and connects to observability tools."
+}

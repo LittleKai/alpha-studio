@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-statusline",
+  "slug": "claude-statusline",
+  "name": "Claude Statusline",
+  "headline": "Real-time Claude Code status line with multi-AI",
+  "short_description": "Intelligent Claude Code status line with multi-provider AI support, real-time token counting, and universal model compatibility. Supports Claude (Sonnet 4: 1M, 3.5: 200K), OpenAI (GPT-4.1: 1M, 4o: 128K), Gemini (1.5 Pro: 2M, 2.x: 1M), and xAI Grok (3: 1M, 4: 256K) with verified 2025 context limits.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "dwillitzer",
+  "install_command": "git clone https://github.com/dwillitzer/claude-statusline.git",
+  "source_repo_url": "https://github.com/dwillitzer/claude-statusline",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "grok",
+    "context-window",
+    "token-counting",
+    "openai",
+    "ai-tools",
+    "status-line",
+    "claude",
+    "gemini",
+    "claude-code",
+    "multi-provider"
+  ],
+  "sections": {
+    "overview": "Claude-statusline is a real-time context usage monitor designed for Claude Code CLI that tracks token consumption across multiple AI providers including Claude, OpenAI, Google Gemini, and xAI Grok. It provides intelligent token counting by integrating directly with Claude Code's internal token data and includes fallback tiktoken-based estimation. The tool automatically detects model types and sets appropriate context limits, displaying information in verbose, compact, or custom formats with provider-aware color coding. Developers using Claude Code can monitor their session context in real-time, preview recent messages, and track remaining tokens without external dependencies.\nMonitor token usage and remaining context during extended Claude Code sessions\nTrack context consumption across different AI models with provider-specific formatting\nDisplay customized status information in Claude Code's statusline with emojis and templates\nAutomatically detect and adapt to different AI provider models with appropriate context limits",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dwillitzer/claude-statusline`",
+    "usage": "```\nCreate a status line for my AI tool that includes real-time token counting and model compatibility. The tool is [TOOL_NAME], used in the [INDUSTRY] industry. It supports the following models: [MODEL_1], [MODEL_2], [MODEL_3], and [MODEL_4]. Include the context limits for each model as of 2025.\n```\nCopy\n\n```\n# AI Tool Status Line\n\n**Tool Name:** DataInsight Pro\n**Industry:** Healthcare",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-statusline#main-content",
+      "claude-statusline#overview",
+      "claude-statusline#setup",
+      "claude-statusline#examples",
+      "claude-statusline#tools",
+      "claude-statusline#mcp",
+      "claude-statusline#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-statusline là công cụ giám sát lượng sử dụng context thời gian thực được thiết kế cho Claude Code CLI, giúp theo dõi lượng tiêu thụ token trên nhiều provider AI bao gồm Claude, OpenAI, Google Gemini và xAI Grok. Công cụ này cung cấp khả năng đếm token thông minh bằng cách tích hợp trực tiếp với dữ liệu token nội bộ của Claude Code, đi kèm phương thức ước lượng fallback dựa trên tiktoken. Công cụ tự động phát hiện loại mô hình và thiết lập các context limit phù hợp, hiển thị thông tin dưới các định dạng verbose, compact hoặc tùy chỉnh với màu sắc tương ứng theo từng provider. Các nhà phát triển sử dụng Claude Code có thể giám sát session context theo thời gian thực, xem trước các tin nhắn gần đây và theo dõi lượng token còn lại mà không cần dependency bên ngoài.\nGiám sát lượng sử dụng token và context còn lại trong các session Claude Code kéo dài\nTheo dõi lượng tiêu thụ context trên các mô hình AI khác nhau với định dạng riêng cho từng provider\nHiển thị thông tin trạng thái tùy chỉnh trên statusline của Claude Code bằng emoji và template\nTự động phát hiện và thích ứng với các mô hình của các provider AI khác nhau với context limit phù hợp",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dwillitzer/claude-statusline`",
+    "usage_vi": "```\nTạo một status line cho công cụ AI của tôi bao gồm tính năng đếm token thời gian thực và khả năng tương thích mô hình. Công cụ đó là [TOOL_NAME], được sử dụng trong ngành [INDUSTRY]. Nó hỗ trợ các mô hình sau: [MODEL_1], [MODEL_2], [MODEL_3] và [MODEL_4]. Hãy bao gồm cả context limit của từng mô hình tính đến năm 2025.\n```\nSao chép\n\n```\n# AI Tool Status Line\n\n**Tool Name:** DataInsight Pro\n**Industry:** Healthcare\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:57:24.500461Z",
+    "http_status": 200,
+    "content_hash": "115a7f3c534f0e6e450f8d21121eb84c3dea5515abfc9d1657e0da07001e1d4d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-statusline.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-statusline.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Statusline Claude Code thời gian thực hỗ trợ đa AI",
+  "short_description_vi": "Statusline thông minh cho Claude Code hỗ trợ nhiều provider AI, đếm token thời gian thực và tương thích rộng rãi với các mô hình. Hỗ trợ Claude (Sonnet 4: 1M, 3.5: 200K), OpenAI (GPT-4.1: 1M, 4o: 128K), Gemini (1.5 Pro: 2M, 2.x: 1M) và xAI Grok (3: 1M, 4: 256K) với context limit đã được xác thực cho năm 2025."
+}

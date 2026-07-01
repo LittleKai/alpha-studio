@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gh-aw",
+  "slug": "gh-aw",
+  "name": "GitHub Agentic Workflows",
+  "headline": "GitHub Agentic Workflows - Automate CI/CD Tasks",
+  "short_description": "Write agentic workflows in natural language markdown and run them in GitHub Actions. Benefits developers and operations teams by automating tasks in CI/CD pipelines. Connects to GitHub Actions and supported AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "githubnext",
+  "install_command": "git clone https://github.com/githubnext/gh-aw.git",
+  "source_repo_url": "https://github.com/githubnext/gh-aw",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cai",
+    "gh-extension",
+    "ci",
+    "claude-code",
+    "codex",
+    "copilot",
+    "github-actions",
+    "actions"
+  ],
+  "sections": {
+    "overview": "gh-aw enables teams to define agentic workflows using natural language markdown syntax, then execute them directly within GitHub Actions pipelines. The tool bridges AI agents and CI/CD automation by allowing developers and operations teams to write complex workflows without traditional configuration overhead. It supports cross-repository operations including branch fetching and checkout management, making it suitable for multi-repo automation scenarios. By combining markdown-based workflow definitions with AI agent execution, gh-aw simplifies task automation in continuous integration and deployment environments.\nAutomating multi-repository CI/CD tasks with natural language definitions\nCross-repository branch operations and fetch management in pipelines\nAI-driven workflow orchestration within GitHub Actions\nReducing configuration complexity in DevOps automation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/githubnext/gh-aw`",
+    "usage": "```\nWrite an agentic GitHub Actions workflow in natural language markdown to [TASK]. The workflow should run on [EVENT_TRIGGER] (e.g., push to main, pull request, schedule) and include steps for [STEP_1], [STEP_2], and [STEP_3]. Use GitHub Actions syntax and ensure it integrates with [TOOL_OR_SERVICE] (e.g., Docker, AWS CLI, Slack). Include error handling and logging where relevant.\n```\nCopy\n\n```\n```yaml\n# GitHub Actions Workflow: Automated Security Scan and Slack Notification\n# Trigger: Push to main branch or pull request to 'dev' branch\n# Purpose: Run Trivy security scan, upload results to S3, and notify team on Slack\n\nname: Security Scan and Notify\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [dev]\n\njobs:\n  security-scan:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v4\n\n      - name: Run Trivy vulnerability scanner\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          scan-ref: '.'\n          format: 'sarif'\n          output: 'trivy-results.sarif'\n\n      - name: Upload Trivy results to S3\n        uses: jakejarvis/s3-sync-action@master\n        with:\n          args: --acl public-read --follow-symlinks --delete\n        env:\n          AWS_S3_BUCKET: ${{ secrets.SECURITY_BUCKET }}\n          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n          AWS_REGION: 'us-east-1'\n          SOURCE_DIR: 'trivy-results.sarif'\n          DEST_DIR: 'reports/${{ github.sha }}'\n\n      - name: Send Slack notification\n        if: always()\n        uses: rtCamp/action-slack-notify@v2\n        env:\n          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}\n          SLACK_COLOR: ${{ job.status == 'success' && 'good' || 'danger' }}\n          SLACK_TITLE: \"Security Scan Results\"\n          SLACK_MESSAGE: \"Scan completed with status: ${{ job.status }}. Results uploaded to S3: https://${{ secrets.SECURITY_BUCKET }}.s3.amazonaws.com/reports/${{ github.sha }}/trivy-results.sarif\"\n```\n\nThis workflow automates a security scan of the codebase using Trivy, uploads the results to an S3 bucket for long-term storage, and notifies the team via Slack. The workflow triggers on pushes to `main` or pull requests to `dev`, ensuring security checks are part of the development lifecycle. Error handling is included via the `if: always()` condition for the Slack notification, ensuring the team is always informed of the scan status, even if the scan fails.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gh-aw#main-content",
+      "gh-aw#overview",
+      "gh-aw#setup",
+      "gh-aw#examples",
+      "gh-aw#tools",
+      "gh-aw#mcp",
+      "gh-aw#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "gh-aw enables teams to define agentic workflows using natural language markdown syntax, then execute them directly within GitHub Actions pipelines. The tool bridges AI agents and CI/CD automation by allowing developers and operations teams to write complex workflows without traditional configuration overhead. It supports cross-repository operations including branch fetching and checkout management, making it suitable for multi-repo automation scenarios. By combining markdown-based workflow definitions with AI agent execution, gh-aw simplifies task automation in continuous integration and deployment environments.\nAutomating multi-repository CI/CD tasks with natural language definitions\nCross-repository branch operations and fetch management in pipelines\nAI-driven workflow orchestration within GitHub Actions\nReducing configuration complexity in DevOps automation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/githubnext/gh-aw`",
+    "usage_vi": "```\nWrite an agentic GitHub Actions workflow in natural language markdown to [TASK]. The workflow should run on [EVENT_TRIGGER] (e.g., push to main, pull request, schedule) and include steps for [STEP_1], [STEP_2], and [STEP_3]. Use GitHub Actions syntax and ensure it integrates with [TOOL_OR_SERVICE] (e.g., Docker, AWS CLI, Slack). Include error handling and logging where relevant.\n```\nCopy\n\n```\n```yaml\n# GitHub Actions Workflow: Automated Security Scan and Slack Notification\n# Trigger: Push to main branch or pull request to 'dev' branch\n# Purpose: Run Trivy security scan, upload results to S3, and notify team on Slack\n\nname: Security Scan and Notify\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [dev]\n\njobs:\n  security-scan:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v4\n\n      - name: Run Trivy vulnerability scanner\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          scan-ref: '.'\n          format: 'sarif'\n          output: 'trivy-results.sarif'\n\n      - name: Upload Trivy results to S3\n        uses: jakejarvis/s3-sync-action@master\n        with:\n          args: --acl public-read --follow-symlinks --delete\n        env:\n          AWS_S3_BUCKET: ${{ secrets.SECURITY_BUCKET }}\n          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n          AWS_REGION: 'us-east-1'\n          SOURCE_DIR: 'trivy-results.sarif'\n          DEST_DIR: 'reports/${{ github.sha }}'\n\n      - name: Send Slack notification\n        if: always()\n        uses: rtCamp/action-slack-notify@v2\n        env:\n          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}\n          SLACK_COLOR: ${{ job.status == 'success' && 'good' || 'danger' }}\n          SLACK_TITLE: \"Security Scan Results\"\n          SLACK_MESSAGE: \"Scan completed with status: ${{ job.status }}. Results uploaded to S3: https://${{ secrets.SECURITY_BUCKET }}.s3.amazonaws.com/reports/${{ github.sha }}/trivy-results.sarif\"\n```\n\nThis workflow automates a security scan of the codebase using Trivy, uploads the results to an S3 bucket for long-term storage, and notifies the team via Slack. The workflow triggers on pushes to `main` or pull requests to `dev`, ensuring security checks are part of the development lifecycle. Error handling is included via the `if: always()` condition for the Slack notification, ensuring the team is always informed of the scan status, even if the scan fails.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:30.766733Z",
+    "http_status": 200,
+    "content_hash": "cda329b2f349d30e5122f29f193fa802ba65613c06642307cd5dea4dd785580c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gh-aw.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gh-aw.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GitHub Agentic Workflows - Automate CI/CD Tasks",
+  "short_description_vi": "Write agentic workflows in natural language markdown and run them in GitHub Actions. Benefits developers and operations teams by automating tasks in CI/CD pipelines. Connects to GitHub Actions and supported AI agents."
+}

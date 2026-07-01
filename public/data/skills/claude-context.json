@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-context",
+  "slug": "claude-context",
+  "name": "browser-use",
+  "headline": "claude-context: Enhance Code Search Efficiency",
+  "short_description": "Claude-context enables coding agents to search and reference an entire codebase for context. Developers and operations teams benefit from accurate code generation and maintenance. It connects to Claude Code and integrates with development workflows.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "zilliztech",
+  "install_command": "git clone https://github.com/zilliztech/claude-context.git",
+  "source_repo_url": "https://github.com/zilliztech/claude-context",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "rag",
+    "voyage-ai",
+    "typescript",
+    "claude-code",
+    "embedding",
+    "cursor",
+    "gemini-cli",
+    "openai",
+    "code-search",
+    "vscode-extension",
+    "mcp",
+    "code-generation",
+    "semantic-search",
+    "agentic-rag",
+    "vector-database",
+    "nodejs",
+    "merkle-tree",
+    "vibe-coding",
+    "ai-coding",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The claude-context skill is designed to optimize code search capabilities for Claude Code, transforming your entire codebase into a contextual resource for AI agents. By leveraging this automation skill, developers can quickly retrieve relevant code snippets from extensive codebases, significantly enhancing the efficiency of their coding workflows. This skill integrates seamlessly with AI coding assistants, providing contextual suggestions that align with the specific needs of the project at hand. One of the key benefits of using claude-context is its ability to reduce costs associated with loading entire directories by utilizing a vector database. This not only streamlines the process but also enhances the semantic understanding of code, making it easier to navigate complex codebases. For teams working in multi-agent coding environments, this skill provides a unified context, allowing multiple AI agents to collaborate effectively and access the same relevant information. Developers, product managers, and AI practitioners will find this skill particularly useful. It is ideal for those involved in software development, especially when working with large codebases or when integrating AI solutions into their workflows. The skill's practical applications include quickly retrieving snippets during development, improving the integration of AI assistants, and supporting collaborative coding efforts among multiple agents. While the implementation of claude-context is categorized as intermediate and typically takes around 30 minutes, the time savings it offers can be substantial. By enhancing code search capabilities and streamlining workflows, this skill fits perfectly into AI-first development environments, enabling teams to focus on innovation rather than manual code retrieval. For those looking to enhance their coding efficiency and leverage AI automation effectively, claude-context is a valuable addition to their toolkit.\nQuickly retrieve relevant code snippets from a large codebase during development.\nIntegrate with AI coding assistants to provide contextual code suggestions.\nReduce costs associated with loading entire directories by using a vector database.\nEnhance code search capabilities for better semantic understanding of code.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zilliztech/claude-context`",
+    "usage": "```\nUsing claude-context, analyze the entire codebase of [PROJECT_NAME] to understand the implementation of [FEATURE_OR_MODULE]. Identify all files and dependencies involved, then explain how [FEATURE_OR_MODULE] interacts with [RELATED_COMPONENT]. Provide a summary of the architecture and suggest potential improvements based on [BEST_PRACTICES_OR_STANDARDS].\n```\nCopy\n\n```\nFor the open-source project 'E-Commerce Platform,' I analyzed the codebase to understand the implementation of the 'Payment Gateway Integration' feature. The analysis revealed that the feature spans 12 files across 3 directories: `src/payments/`, `src/utils/`, and `src/api/v1/`. Key files include `payment_processor.py` (handles Stripe and PayPal integrations), `payment_validator.py` (validates transaction data), and `order_service.py` (updates order status post-payment). The `PaymentService` class in `payment_processor.py` interacts with the `OrderService` via a REST API endpoint (`POST /api/v1/orders/{id}/process_payment`), which triggers a webhook to update the database. The architecture follows a layered approach with clear separation of concerns, but the team could improve error handling by implementing a retry mechanism for failed webhook calls. Additionally, the payment processor currently hardcodes API keys, which should be moved to environment variables for security. The feature relies on 5 third-party libraries, including `stripe-python` and `requests`, all pinned to specific versions in `requirements.txt`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-context#main-content",
+      "claude-context#overview",
+      "claude-context#setup",
+      "claude-context#examples",
+      "claude-context#tools",
+      "claude-context#mcp",
+      "claude-context#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-context skill is designed to optimize code search capabilities for Claude Code, transforming your entire codebase into a contextual resource for AI agents. By leveraging this automation skill, developers can quickly retrieve relevant code snippets from extensive codebases, significantly enhancing the efficiency of their coding workflows. This skill integrates seamlessly with AI coding assistants, providing contextual suggestions that align with the specific needs of the project at hand. One of the key benefits of using claude-context is its ability to reduce costs associated with loading entire directories by utilizing a vector database. This not only streamlines the process but also enhances the semantic understanding of code, making it easier to navigate complex codebases. For teams working in multi-agent coding environments, this skill provides a unified context, allowing multiple AI agents to collaborate effectively and access the same relevant information. Developers, product managers, and AI practitioners will find this skill particularly useful. It is ideal for those involved in software development, especially when working with large codebases or when integrating AI solutions into their workflows. The skill's practical applications include quickly retrieving snippets during development, improving the integration of AI assistants, and supporting collaborative coding efforts among multiple agents. While the implementation of claude-context is categorized as intermediate and typically takes around 30 minutes, the time savings it offers can be substantial. By enhancing code search capabilities and streamlining workflows, this skill fits perfectly into AI-first development environments, enabling teams to focus on innovation rather than manual code retrieval. For those looking to enhance their coding efficiency and leverage AI automation effectively, claude-context is a valuable addition to their toolkit.\nQuickly retrieve relevant code snippets from a large codebase during development.\nIntegrate with AI coding assistants to provide contextual code suggestions.\nReduce costs associated with loading entire directories by using a vector database.\nEnhance code search capabilities for better semantic understanding of code.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zilliztech/claude-context`",
+    "usage_vi": "```\nUsing claude-context, analyze the entire codebase of [PROJECT_NAME] to understand the implementation of [FEATURE_OR_MODULE]. Identify all files and dependencies involved, then explain how [FEATURE_OR_MODULE] interacts with [RELATED_COMPONENT]. Provide a summary of the architecture and suggest potential improvements based on [BEST_PRACTICES_OR_STANDARDS].\n```\nCopy\n\n```\nFor the open-source project 'E-Commerce Platform,' I analyzed the codebase to understand the implementation of the 'Payment Gateway Integration' feature. The analysis revealed that the feature spans 12 files across 3 directories: `src/payments/`, `src/utils/`, and `src/api/v1/`. Key files include `payment_processor.py` (handles Stripe and PayPal integrations), `payment_validator.py` (validates transaction data), and `order_service.py` (updates order status post-payment). The `PaymentService` class in `payment_processor.py` interacts with the `OrderService` via a REST API endpoint (`POST /api/v1/orders/{id}/process_payment`), which triggers a webhook to update the database. The architecture follows a layered approach with clear separation of concerns, but the team could improve error handling by implementing a retry mechanism for failed webhook calls. Additionally, the payment processor currently hardcodes API keys, which should be moved to environment variables for security. The feature relies on 5 third-party libraries, including `stripe-python` and `requests`, all pinned to specific versions in `requirements.txt`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:05:26.003477Z",
+    "http_status": 200,
+    "content_hash": "279889528689f5660015469ef128cb6cc2815ee7af165a813a912b1a76d89df2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-context.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-context.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-context: Enhance Code Search Efficiency",
+  "short_description_vi": "Claude-context enables coding agents to search and reference an entire codebase for context. Developers and operations teams benefit from accurate code generation and maintenance. It connects to Claude Code and integrates with development workflows."
+}

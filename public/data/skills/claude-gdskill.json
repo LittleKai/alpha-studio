@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-gdskill",
+  "slug": "claude-gdskill",
+  "name": "Claude-GDSkill",
+  "headline": "Claude-GDSkill: Game Development",
+  "short_description": "We build custom AI skills and automations for B2B companies.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Kothulhu94",
+  "install_command": "git clone https://github.com/Kothulhu94/Claude-GDSkill.git",
+  "source_repo_url": "https://github.com/Kothulhu94/Claude-GDSkill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Claude-GDSkill is a specialized automation skill designed for developers using Godot 4.5. This skill provides a robust class repository that simplifies the integration of AI capabilities within game development projects. By leveraging Claude Code, developers can automate repetitive tasks, streamline workflows, and enhance the overall efficiency of their game development process. Although the time savings are currently unknown, the skill's implementation is straightforward, taking approximately 30 minutes, making it an attractive option for those looking to optimize their development cycles. Key benefits of the Claude-GDSkill include its intermediate complexity, which allows developers to engage with AI automation without being overwhelmed. This skill is particularly beneficial for game developers who want to integrate AI functionalities seamlessly into their projects. By automating various aspects of game logic and behavior, developers can focus more on creative tasks, ultimately leading to faster project completion and improved game quality. The skill's medium GTM relevance indicates that it is well-positioned to meet the needs of developers seeking to enhance their workflows with AI. This skill is ideal for developers and product managers in the gaming industry who are looking to adopt AI automation in their projects. By utilizing Claude-GDSkill, teams can improve their productivity and streamline their development processes. For example, a game developer could use this skill to automate NPC behavior, allowing for more dynamic interactions without the need for extensive manual coding. This not only saves time but also enhances the gaming experience for users. With an intermediate difficulty level, the Claude-GDSkill requires a basic understanding of Godot and AI principles. It is suitable for those who are already familiar with game development but want to incorporate AI automation into their workflows. As AI-first workflows become increasingly important in the gaming industry, adopting skills like Claude-GDSkill can provide a competitive edge, allowing developers to create more engaging and intelligent game experiences.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Kothulhu94/Claude-GDSkill`",
+    "usage": "```\nCreate a Godot 4.5 script using the Claude class to [TASK]. The script should be designed for a [GAME_GENRE] game and handle [SPECIFIC_FUNCTIONALITY]. Include comments explaining the code and ensure it follows Godot's best practices.\n```\nCopy\n\n```\n```gdscript\n# Claude Godot 4.5 Script for a 2D Platformer\n# Handles player movement and collision detection\n\nextends CharacterBody2D\n\n# Export variables for easy tweaking in the editor\nexport var speed = 300.0\nvar gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")\n\nfunc _physics_process(delta):\n    # Add gravity\n    if not is_on_floor():\n        velocity.y += gravity * delta\n\n    # Handle jump\n    if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():\n        velocity.y = -speed * 0.7\n\n    # Get the input direction and handle the movement/deceleration\n    var direction = Input.get_axis(\"ui_left\", \"ui_right\")\n    if direction:\n        velocity.x = direction * speed\n    else:\n        velocity.x = move_toward(velocity.x, 0, speed)\n\n    move_and_slide()\n\n# Handle collision with hazards\nfunc _on_Hazard_body_entered(body):\n    if body.is_in_group(\"player\"):\n        get_tree().reload_current_scene()\n\n# Handle collision with collectibles\nfunc _on_Collectible_body_entered(body):\n    if body.is_in_group(\"player\"):\n        queue_free()\n        get_parent().emit_signal(\"collectible_collected\")\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-gdskill#main-content",
+      "claude-gdskill#overview",
+      "claude-gdskill#setup",
+      "claude-gdskill#examples",
+      "claude-gdskill#tools",
+      "claude-gdskill#mcp",
+      "claude-gdskill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-GDSkill là một skill tự động hóa chuyên dụng được thiết kế cho các lập trình viên sử dụng Godot 4.5. Skill này cung cấp một kho lưu trữ class mạnh mẽ giúp đơn giản hóa việc tích hợp các khả năng AI vào các dự án phát triển game. Bằng cách tận dụng Claude Code, các nhà phát triển có thể tự động hóa các tác vụ lặp đi lặp lại, tối ưu hóa quy trình làm việc và nâng cao hiệu suất tổng thể của quá trình phát triển game. Mặc dù lượng thời gian tiết kiệm được hiện chưa thể đong đếm, việc triển khai skill này rất đơn giản và chỉ mất khoảng 30 phút, biến đây thành một lựa chọn hấp dẫn cho những ai đang muốn tối ưu hóa chu kỳ phát triển của mình. Lợi ích chính của Claude-GDSkill nằm ở độ phức tạp ở mức trung bình (intermediate), giúp các lập trình viên tiếp cận với tự động hóa AI mà không bị quá tải. Skill này đặc biệt hữu ích cho các nhà phát triển game muốn tích hợp liền mạch các tính năng AI vào dự án của họ. Nhờ tự động hóa các khía cạnh khác nhau của logic và hành vi trong game, nhà phát triển có thể tập trung nhiều hơn vào các công việc sáng tạo, từ đó đẩy nhanh tiến độ hoàn thành dự án và nâng cao chất lượng game. Mức độ phù hợp GTM (Go-To-Market) trung bình của skill cho thấy nó đáp ứng tốt nhu cầu của các nhà phát triển đang muốn cải thiện quy trình làm việc bằng AI. Skill này là lựa chọn lý tưởng cho các lập trình viên và product manager trong ngành công nghiệp game đang tìm cách ứng dụng tự động hóa AI vào dự án. Bằng cách sử dụng Claude-GDSkill, các đội ngũ có thể nâng cao năng suất và tinh gọn quy trình phát triển. Ví dụ, một nhà phát triển game có thể dùng skill này để tự động hóa hành vi của NPC, tạo ra các tương tác sống động hơn mà không cần viết quá nhiều code thủ công. Điều này không chỉ tiết kiệm thời gian mà còn nâng cao trải nghiệm chơi game cho người dùng. Với mức độ khó trung bình, Claude-GDSkill yêu cầu kiến thức cơ bản về Godot và các nguyên lý AI. Nó phù hợp với những ai đã quen thuộc với việc phát triển game nhưng muốn đưa tự động hóa AI vào quy trình làm việc của mình. Trong bối cảnh các quy trình làm việc ưu tiên AI (AI-first workflow) ngày càng trở nên quan trọng trong ngành game, việc áp dụng các skill như Claude-GDSkill sẽ mang lại lợi thế cạnh tranh, cho phép các nhà phát triển tạo ra những trải nghiệm game thông minh và hấp dẫn hơn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Kothulhu94/Claude-GDSkill`",
+    "usage_vi": "```\nTạo một script Godot 4.5 sử dụng class Claude để thực hiện [TASK]. Script này cần được thiết kế cho game thể loại [GAME_GENRE] và xử lý [SPECIFIC_FUNCTIONALITY]. Hãy đính kèm các comment giải thích mã nguồn và đảm bảo tuân thủ các best practice của Godot.\n```\nSao chép\n\n```\n```gdscript\n# Script Godot 4.5 của Claude cho game Platformer 2D\n# Xử lý di chuyển của người chơi và phát hiện va chạm\n\nextends CharacterBody2D\n\n# Export các biến để dễ dàng tinh chỉnh trong editor\nexport var speed = 300.0\nvar gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")\n\nfunc _physics_process(delta):\n    # Thêm trọng lực\n    if not is_on_floor():\n        velocity.y += gravity * delta\n\n    # Xử lý nhảy\n    if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():\n        velocity.y = -speed * 0.7\n\n    # Lấy hướng đầu vào và xử lý di chuyển/giảm tốc\n    var direction = Input.get_axis(\"ui_left\", \"ui_right\")\n    if direction:\n        velocity.x = direction * speed\n    else:\n        velocity.x = move_toward(velocity.x, 0, speed)\n\n    move_and_slide()\n\n# Xử lý va chạm với chướng ngại vật (hazard)\nfunc _on_Hazard_body_entered(body):\n    if body.is_in_group(\"player\"):\n        get_tree().reload_current_scene()\n\n# Xử lý va chạm với vật phẩm thu thập (collectible)\nfunc _on_Collectible_body_entered(body):\n    if body.is_in_group(\"player\"):\n        queue_free()\n        get_parent().emit_signal(\"collectible_collected\")\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:57:01.817906Z",
+    "http_status": 200,
+    "content_hash": "61927b7aefabb6089e8837b6933d3937b08dcdec5b87858f7fcaa85abed3240e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-gdskill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-gdskill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude-GDSkill: Phát triển Game",
+  "short_description_vi": "Chúng tôi xây dựng các AI skill và giải pháp tự động hóa tùy chỉnh cho các doanh nghiệp B2B."
+}

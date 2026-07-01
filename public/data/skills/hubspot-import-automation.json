@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hubspot-import-automation",
+  "slug": "hubspot-import-automation",
+  "name": "Hubspot Import Automation",
+  "headline": "HubSpot Import Automation: Automate CRM Data",
+  "short_description": "Node.js scripts for automating data imports to HubSpot CRM. Built and used internally by the Hutson, Inc. marketing team.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "hutsoninc",
+  "install_command": "git clone https://github.com/hutsoninc/hubspot-import-automation.git",
+  "source_repo_url": "https://github.com/hutsoninc/hubspot-import-automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "hubspot",
+    "hutson",
+    "internal-tool"
+  ],
+  "sections": {
+    "overview": "hubspot-import-automation is a Node.js toolset built by Hutson, Inc. to automate the process of importing data into HubSpot. Developed as an internal tool for the Hutson marketing team, it reduces the manual effort required to push data into HubSpot's CRM. The project uses a fork of the node-hubspot client library and includes error logging to support reliable, repeatable import runs. It is licensed under MIT and available for teams with similar HubSpot data import needs.\nAutomate recurring data imports into HubSpot CRM\nReduce manual data entry work for marketing operations teams\nRun scheduled or on-demand imports via a command-line script\nLog import errors for auditing and troubleshooting data issues",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hutsoninc/hubspot-import-automation`",
+    "usage": "```\nGenerate a Python script to automate importing customer data from a CSV file into HubSpot. The CSV contains [COLUMNS] and the HubSpot properties are [PROPERTIES]. The script should handle [ERROR_HANDLING] and log results to [LOG_FILE].\n```\nCopy\n\n```\n```python\nimport csv\nimport hubspot\nfrom hubspot import HubSpot\nimport logging\n\n# Configure logging\nlogging.basicConfig(filename='hubspot_import.log', level=logging.INFO)\n\n# Initialize HubSpot client\nclient = HubSpot(api_key='your-api-key-here')\n\n# Define CSV file path\ncsv_file = 'customer_data.csv'\n\n# Define HubSpot property mappings\nproperty_mappings = {\n    'first_name': 'firstname',\n    'last_name': 'lastname',\n    'email': 'email',\n    'company': 'company',\n    'phone': 'phone'\n}\n\n# Read CSV and import data\nwith open(csv_file, mode='r') as file:\n    csv_reader = csv.DictReader(file)\n    for row in csv_reader:\n        contact_data = {property_mappings[key]: value for key, value in row.items() if key in property_mappings}\n        try:\n            client.crm.contacts.create(contact_data)\n            logging.info(f'Successfully imported contact: {contact_data['email']}')\n        except Exception as e:\n            logging.error(f'Error importing contact {contact_data.get('email', 'unknown')}: {str(e)}')\n\nprint('Import process completed. Check hubspot_import.log for details.')\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hubspot-import-automation#main-content",
+      "hubspot-import-automation#overview",
+      "hubspot-import-automation#setup",
+      "hubspot-import-automation#examples",
+      "hubspot-import-automation#tools",
+      "hubspot-import-automation#mcp",
+      "hubspot-import-automation#related",
+      "marketingskills",
+      "copywriting",
+      "automated-mockups"
+    ],
+    "overview_vi": "hubspot-import-automation is a Node.js toolset built by Hutson, Inc. to automate the process of importing data into HubSpot. Developed as an internal tool for the Hutson marketing team, it reduces the manual effort required to push data into HubSpot's CRM. The project uses a fork of the node-hubspot client library and includes error logging to support reliable, repeatable import runs. It is licensed under MIT and available for teams with similar HubSpot data import needs.\nAutomate recurring data imports into HubSpot CRM\nReduce manual data entry work for marketing operations teams\nRun scheduled or on-demand imports via a command-line script\nLog import errors for auditing and troubleshooting data issues",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hutsoninc/hubspot-import-automation`",
+    "usage_vi": "```\nGenerate a Python script to automate importing customer data from a CSV file into HubSpot. The CSV contains [COLUMNS] and the HubSpot properties are [PROPERTIES]. The script should handle [ERROR_HANDLING] and log results to [LOG_FILE].\n```\nCopy\n\n```\n```python\nimport csv\nimport hubspot\nfrom hubspot import HubSpot\nimport logging\n\n# Configure logging\nlogging.basicConfig(filename='hubspot_import.log', level=logging.INFO)\n\n# Initialize HubSpot client\nclient = HubSpot(api_key='your-api-key-here')\n\n# Define CSV file path\ncsv_file = 'customer_data.csv'\n\n# Define HubSpot property mappings\nproperty_mappings = {\n    'first_name': 'firstname',\n    'last_name': 'lastname',\n    'email': 'email',\n    'company': 'company',\n    'phone': 'phone'\n}\n\n# Read CSV and import data\nwith open(csv_file, mode='r') as file:\n    csv_reader = csv.DictReader(file)\n    for row in csv_reader:\n        contact_data = {property_mappings[key]: value for key, value in row.items() if key in property_mappings}\n        try:\n            client.crm.contacts.create(contact_data)\n            logging.info(f'Successfully imported contact: {contact_data['email']}')\n        except Exception as e:\n            logging.error(f'Error importing contact {contact_data.get('email', 'unknown')}: {str(e)}')\n\nprint('Import process completed. Check hubspot_import.log for details.')\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:30.567415Z",
+    "http_status": 200,
+    "content_hash": "29d9c8c2985e3d70fa0bfc94493dc29ff1aa75f1130b213d390946780de6549b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hubspot-import-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hubspot-import-automation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "HubSpot Import Automation: Automate CRM Data",
+  "short_description_vi": "Node.js scripts for automating data imports to HubSpot CRM. Built and used internally by the Hutson, Inc. marketing team."
+}

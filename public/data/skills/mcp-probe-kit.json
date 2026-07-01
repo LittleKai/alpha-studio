@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-probe-kit",
+  "slug": "mcp-probe-kit",
+  "name": "react-native-best-practices",
+  "headline": "MCP Probe Kit - Enhance Development Efficiency",
+  "short_description": "The MCP Probe Kit is a powerful Model Context Protocol server offering 40 practical tools that enhance code quality, development efficiency, and project management while streamlining the skills documentation process.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "mybolide",
+  "install_command": "claude install mybolide/mcp-probe-kit",
+  "source_repo_url": "https://github.com/mybolide/mcp-probe-kit",
+  "works_with": [
+    "CursorVS Code"
+  ],
+  "tags": [
+    "ai-tools",
+    "development-tools",
+    "code-quality",
+    "project-management",
+    "MCP"
+  ],
+  "sections": {
+    "overview": "mcp-probe-kit is a Model Context Protocol server designed to help AI agents understand your project's intent through structured context. It provides 27 tools spanning workflow orchestration, code analysis, git operations, project management, UI/UX utilities, and memory systems—covering the entire development lifecycle from requirements through release. The toolkit enforces quality constraints as a single source of truth, integrates code graph analysis via GitNexus, and includes an 8-step root-cause analysis framework for bug workflows. Developers using Claude, Cursor, Cline, Continue, or other MCP clients can leverage these tools to streamline development efficiency, automate code review and testing, manage project specifications, and maintain consistent quality standards across their codebase.\nImproving code quality through automated checks\nEnhancing development efficiency with integrated tools\nStreamlining project management workflows\nGenerating comprehensive skills documentation",
+    "setup": "Terminal\nCopy\n`claude install mybolide/mcp-probe-kit`\n`git clone https://github.com/mybolide/mcp-probe-kit`",
+    "usage": "```\nUse the MCP Probe Kit to analyze the [PROJECT_NAME] codebase and generate a detailed report covering: 1) Code quality metrics (cyclomatic complexity, duplication, maintainability index) for [LANGUAGE], 2) Security vulnerabilities in [FILE_PATHS_OR_MODULES], 3) Performance bottlenecks in [SPECIFIC_FUNCTIONS_OR_ENDPOINTS], and 4) Documentation gaps for [PUBLIC_APIS_OR_MODULES]. Prioritize findings by impact and suggest remediation steps with code examples where applicable.\n```\nCopy\n\n```\n### MCP Probe Kit Analysis Report: Acme Corp E-Commerce Platform\n\n**Project Overview:** Analyzed 47,218 lines of Python/Django code across 1,242 files (85% test coverage). Primary focus on `/src/api/` (REST endpoints) and `/src/utils/` (shared libraries).\n\n#### 1. Code Quality Metrics\n- **Cyclomatic Complexity:** 1,842 total (target: < 10 per function). Critical offenders:\n  - `src/api/views/order_processing.py::process_payment()` (complexity: 47) - Refactor into 4 smaller functions\n  - `src/utils/email_templates.py::generate_receipt()` (complexity: 32) - Replace nested conditionals with strategy pattern\n- **Duplication:** 12.4% (target: < 5%). Highest in `/src/api/serializers/` (38% duplication in User-related serializers)\n- **Maintainability Index:** 68.2/100 (borderline). 214 files scored < 50 (critical threshold)\n\n#### 2. Security Vulnerabilities (CVSS Score ≥ 6.0)\n- **SQL Injection:** Detected in `src/api/views/product_search.py` (line 89) - Uses raw SQL with user input. **Fix:** Migrate to Django ORM\n- **Hardcoded Secrets:** 3 instances of API keys in `/src/config/prod.py` (exposed in Git history)\n- **CSRF Protection Missing:** 17 endpoints lack `@csrf_exempt` or proper token validation\n- **Recommendation:** Implement Django's `django-csp` and rotate all exposed credentials via AWS Secrets Manager\n\n#### 3. Performance Bottlenecks\n- **Database Queries:** `/api/v2/orders/` averages 2.4s response time due to N+1 queries in `OrderSerializer`\n  - **Fix:** Implement `prefetch_related('order_items__product')`\n- **Memory Leaks:** `src/workers/export_service.py` consumes 2.1GB RAM during large CSV exports\n  - **Fix:** Use `pandas.read_csv(chunksize=10000)` instead of loading entire file\n- **API Rate Limiting:** `/api/v1/search/` hit 95% of 100 requests/minute quota during peak traffic\n\n#### 4. Documentation Gaps\n- **Missing:** Swagger/OpenAPI specs for 42 endpoints (68% coverage target)\n- **Outdated:** `/docs/api/authentication.md` references deprecated OAuth2 flow\n- **Recommendation:** Generate specs automatically using `drf-yasg` and add versioning to docs\n\n#### Priority Action Plan\n1. **Week 1:** Address SQL injection and hardcoded secrets (P0)\n2. **Week 2:** Refactor high-complexity functions (P1)\n3. **Week 3:** Implement query optimization and rate limiting (P2)\n4. **Ongoing:** Add automated security scanning to CI/CD pipeline\n\n**Tools Used:** MCP Probe Kit v2.1.3, Bandit (security), Django Debug Toolbar (performance)\n\n**Next Steps:** Review with team leads by EOD Friday. Full report available at `/reports/mcp-probe-2024-05-15.html`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Cursor, VS Code"
+    ],
+    "related_skills": [
+      "mcp-probe-kit#main-content",
+      "mcp-probe-kit#overview",
+      "mcp-probe-kit#setup",
+      "mcp-probe-kit#examples",
+      "mcp-probe-kit#tools",
+      "mcp-probe-kit#mcp",
+      "mcp-probe-kit#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcp-probe-kit is a Model Context Protocol server designed to help AI agents understand your project's intent through structured context. It provides 27 tools spanning workflow orchestration, code analysis, git operations, project management, UI/UX utilities, and memory systems—covering the entire development lifecycle from requirements through release. The toolkit enforces quality constraints as a single source of truth, integrates code graph analysis via GitNexus, and includes an 8-step root-cause analysis framework for bug workflows. Developers using Claude, Cursor, Cline, Continue, or other MCP clients can leverage these tools to streamline development efficiency, automate code review and testing, manage project specifications, and maintain consistent quality standards across their codebase.\nImproving code quality through automated checks\nEnhancing development efficiency with integrated tools\nStreamlining project management workflows\nGenerating comprehensive skills documentation",
+    "setup_vi": "Terminal\nCopy\n`claude install mybolide/mcp-probe-kit`\n`git clone https://github.com/mybolide/mcp-probe-kit`",
+    "usage_vi": "```\nUse the MCP Probe Kit to analyze the [PROJECT_NAME] codebase and generate a detailed report covering: 1) Code quality metrics (cyclomatic complexity, duplication, maintainability index) for [LANGUAGE], 2) Security vulnerabilities in [FILE_PATHS_OR_MODULES], 3) Performance bottlenecks in [SPECIFIC_FUNCTIONS_OR_ENDPOINTS], and 4) Documentation gaps for [PUBLIC_APIS_OR_MODULES]. Prioritize findings by impact and suggest remediation steps with code examples where applicable.\n```\nCopy\n\n```\n### MCP Probe Kit Analysis Report: Acme Corp E-Commerce Platform\n\n**Project Overview:** Analyzed 47,218 lines of Python/Django code across 1,242 files (85% test coverage). Primary focus on `/src/api/` (REST endpoints) and `/src/utils/` (shared libraries).\n\n#### 1. Code Quality Metrics\n- **Cyclomatic Complexity:** 1,842 total (target: < 10 per function). Critical offenders:\n  - `src/api/views/order_processing.py::process_payment()` (complexity: 47) - Refactor into 4 smaller functions\n  - `src/utils/email_templates.py::generate_receipt()` (complexity: 32) - Replace nested conditionals with strategy pattern\n- **Duplication:** 12.4% (target: < 5%). Highest in `/src/api/serializers/` (38% duplication in User-related serializers)\n- **Maintainability Index:** 68.2/100 (borderline). 214 files scored < 50 (critical threshold)\n\n#### 2. Security Vulnerabilities (CVSS Score ≥ 6.0)\n- **SQL Injection:** Detected in `src/api/views/product_search.py` (line 89) - Uses raw SQL with user input. **Fix:** Migrate to Django ORM\n- **Hardcoded Secrets:** 3 instances of API keys in `/src/config/prod.py` (exposed in Git history)\n- **CSRF Protection Missing:** 17 endpoints lack `@csrf_exempt` or proper token validation\n- **Recommendation:** Implement Django's `django-csp` and rotate all exposed credentials via AWS Secrets Manager\n\n#### 3. Performance Bottlenecks\n- **Database Queries:** `/api/v2/orders/` averages 2.4s response time due to N+1 queries in `OrderSerializer`\n  - **Fix:** Implement `prefetch_related('order_items__product')`\n- **Memory Leaks:** `src/workers/export_service.py` consumes 2.1GB RAM during large CSV exports\n  - **Fix:** Use `pandas.read_csv(chunksize=10000)` instead of loading entire file\n- **API Rate Limiting:** `/api/v1/search/` hit 95% of 100 requests/minute quota during peak traffic\n\n#### 4. Documentation Gaps\n- **Missing:** Swagger/OpenAPI specs for 42 endpoints (68% coverage target)\n- **Outdated:** `/docs/api/authentication.md` references deprecated OAuth2 flow\n- **Recommendation:** Generate specs automatically using `drf-yasg` and add versioning to docs\n\n#### Priority Action Plan\n1. **Week 1:** Address SQL injection and hardcoded secrets (P0)\n2. **Week 2:** Refactor high-complexity functions (P1)\n3. **Week 3:** Implement query optimization and rate limiting (P2)\n4. **Ongoing:** Add automated security scanning to CI/CD pipeline\n\n**Tools Used:** MCP Probe Kit v2.1.3, Bandit (security), Django Debug Toolbar (performance)\n\n**Next Steps:** Review with team leads by EOD Friday. Full report available at `/reports/mcp-probe-2024-05-15.html`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:50:28.984871Z",
+    "http_status": 200,
+    "content_hash": "260d53fca18add1fa379b3497ca3ad8dce7f35c83b9cd5cb9c1df9d7c7808f5c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-probe-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-probe-kit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MCP Probe Kit - Enhance Development Efficiency",
+  "short_description_vi": "The MCP Probe Kit is a powerful Model Context Protocol server offering 40 practical tools that enhance code quality, development efficiency, and project management while streamlining the skills documentation process."
+}

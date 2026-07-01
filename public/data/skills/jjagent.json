@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jjagent",
+  "slug": "jjagent",
+  "name": "browser-use",
+  "headline": "jjagent - Track Claude Code Sessions as JJ-VCS",
+  "short_description": "jjagent is a claude code plugin that tracks session changes as jj-vcs commits. It isolates edits from other sessions, improving code management for developers using Claude and Jujutsu.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "schpet",
+  "install_command": "git clone https://github.com/schpet/jjagent.git",
+  "source_repo_url": "https://github.com/schpet/jjagent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "jujutsu",
+    "jj"
+  ],
+  "sections": {
+    "overview": "jjagent is a Claude Code plugin that uses hooks to associate each Claude session's changes with a single, evolving Jujutsu commit. Unlike multiple scattered commits or git worktree approaches, jjagent keeps you and Claude working on the same working copy while maintaining clear attribution of who made what changes. A session ID stored in commit messages allows you to resume sessions, manage multiple concurrent Claude sessions with automatic locking, and prevent conflicts between your edits and Claude's changes. The tool works automatically once installed as a plugin, with optional status line integration to display your current session's commit information.\nIsolating Claude Code edits from your own changes in a shared repository\nRunning multiple concurrent Claude sessions while keeping work synchronized\nResuming previous Claude coding sessions by tracking them in commit messages\nPreventing merge conflicts between your edits and Claude's file modifications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/schpet/jjagent`",
+    "usage": "```\nSet up jjagent for [PROJECT_PATH] to automatically track changes in [SESSION_NAME] as jj-vcs commits. Ensure edits are isolated from other sessions and review the commit history to verify tracking accuracy.\n```\nCopy\n\n```\nI’ve configured jjagent for your project at `/home/user/my-react-app` under the session name `feature/dashboard-redesign`. The plugin detected 12 file changes across `src/components/Dashboard.tsx`, `src/utils/api.ts`, and `public/index.html`. These were automatically committed as a new jj-vcs change with the message: \"Claude session [feature/dashboard-redesign]: Updated dashboard components and API utility functions.\"\n\nThe commit hash is `q5z9v2m` and can be viewed with `jj log -r q5z9v2m`. To verify isolation, I checked the parent commit (`r12p4x7`) and confirmed no unrelated session edits were included. You can now continue editing in this session, and jjagent will track new changes as separate commits.\n\nTo review all session-specific commits, run:\n```bash\njj log -r 'desc(\"Claude session\")'\n```\n\nTip: If you switch to another session (e.g., `bugfix/auth-issue`), jjagent will create a new commit chain for that session, keeping edits neatly separated.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "jjagent#main-content",
+      "jjagent#overview",
+      "jjagent#setup",
+      "jjagent#examples",
+      "jjagent#tools",
+      "jjagent#mcp",
+      "jjagent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "jjagent is a Claude Code plugin that uses hooks to associate each Claude session's changes with a single, evolving Jujutsu commit. Unlike multiple scattered commits or git worktree approaches, jjagent keeps you and Claude working on the same working copy while maintaining clear attribution of who made what changes. A session ID stored in commit messages allows you to resume sessions, manage multiple concurrent Claude sessions with automatic locking, and prevent conflicts between your edits and Claude's changes. The tool works automatically once installed as a plugin, with optional status line integration to display your current session's commit information.\nIsolating Claude Code edits from your own changes in a shared repository\nRunning multiple concurrent Claude sessions while keeping work synchronized\nResuming previous Claude coding sessions by tracking them in commit messages\nPreventing merge conflicts between your edits and Claude's file modifications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/schpet/jjagent`",
+    "usage_vi": "```\nSet up jjagent for [PROJECT_PATH] to automatically track changes in [SESSION_NAME] as jj-vcs commits. Ensure edits are isolated from other sessions and review the commit history to verify tracking accuracy.\n```\nCopy\n\n```\nI’ve configured jjagent for your project at `/home/user/my-react-app` under the session name `feature/dashboard-redesign`. The plugin detected 12 file changes across `src/components/Dashboard.tsx`, `src/utils/api.ts`, and `public/index.html`. These were automatically committed as a new jj-vcs change with the message: \"Claude session [feature/dashboard-redesign]: Updated dashboard components and API utility functions.\"\n\nThe commit hash is `q5z9v2m` and can be viewed with `jj log -r q5z9v2m`. To verify isolation, I checked the parent commit (`r12p4x7`) and confirmed no unrelated session edits were included. You can now continue editing in this session, and jjagent will track new changes as separate commits.\n\nTo review all session-specific commits, run:\n```bash\njj log -r 'desc(\"Claude session\")'\n```\n\nTip: If you switch to another session (e.g., `bugfix/auth-issue`), jjagent will create a new commit chain for that session, keeping edits neatly separated.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:51.464835Z",
+    "http_status": 200,
+    "content_hash": "7a02d4d93b6460349d7ed081c185f205f5b4e2eaec5ce630879fdb865db6649d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jjagent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jjagent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "jjagent - Track Claude Code Sessions as JJ-VCS",
+  "short_description_vi": "jjagent is a claude code plugin that tracks session changes as jj-vcs commits. It isolates edits from other sessions, improving code management for developers using Claude and Jujutsu."
+}

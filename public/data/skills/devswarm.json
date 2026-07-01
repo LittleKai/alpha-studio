@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/devswarm",
+  "slug": "devswarm",
+  "name": "DevSwarm",
+  "headline": "DevSwarm - Parallel Coding with AI Assistants",
+  "short_description": "DevSwarm is an AI Development Environment (ADE) for parallel coding with multiple AI assistants. It allows developers to use different LLMs like Claude Code, Codex, Gemini, Amazon Q, or local agents side by side. Each assistant works on its own Git branch, providing clean diffs and enabling efficient code review and collaboration. Ideal for teams needing to move fast while maintaining code quality.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "devswarm-ai",
+  "install_command": "git clone https://github.com/devswarm-ai/devswarm.git",
+  "source_repo_url": "https://github.com/devswarm-ai/devswarm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "branch-isolation",
+    "desktop-app",
+    "ai-coding",
+    "developer-tools",
+    "parallel-coding",
+    "claude-code",
+    "multi-agent-coding",
+    "codex",
+    "code-review",
+    "hive-coding",
+    "ai-development-environment",
+    "local-llm",
+    "amazon-q",
+    "augmented-development-environment"
+  ],
+  "sections": {
+    "overview": "DevSwarm is an AI Development Environment that coordinates multiple AI assistants working in parallel on separate Git branches. Each assistant focuses on specific tasks—refactors, tests, documentation—while maintaining clean diffs and enabling fast code review. Developers keep their existing editor and CLI tools while gaining team visibility and repeatable workflows. It supports Claude Code, Codex, Gemini, Amazon Q, and local LLMs side by side. DevSwarm is built for coder-in-the-loop workflows where developers maintain control and velocity while safely experimenting with parallel AI-assisted development.\nRunning multiple AI assistants on isolated branches for parallel refactoring and feature development\nComparing different LLM outputs and approaches through clean branch diffs\nCoordinating AI-assisted test writing, documentation, and code review across team members\nSandboxed experimentation with different coding agents without disrupting main branch",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/devswarm-ai/devswarm`",
+    "usage": "```\nI'm using DevSwarm to build a [PROJECT] for [COMPANY] in the [INDUSTRY] sector. I need to generate [FEATURE] using [TECHNOLOGY]. Please create a Git branch and provide a clean diff for this task. I will also use [OTHER_LLM] to review the code. Here is the [DATA] to work with: [INSERT_DATA].\n```\nCopy\n\n```\n# Branch: feature/user-authentication",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "devswarm#main-content",
+      "devswarm#overview",
+      "devswarm#setup",
+      "devswarm#examples",
+      "devswarm#tools",
+      "devswarm#mcp",
+      "devswarm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DevSwarm is an AI Development Environment that coordinates multiple AI assistants working in parallel on separate Git branches. Each assistant focuses on specific tasks—refactors, tests, documentation—while maintaining clean diffs and enabling fast code review. Developers keep their existing editor and CLI tools while gaining team visibility and repeatable workflows. It supports Claude Code, Codex, Gemini, Amazon Q, and local LLMs side by side. DevSwarm is built for coder-in-the-loop workflows where developers maintain control and velocity while safely experimenting with parallel AI-assisted development.\nRunning multiple AI assistants on isolated branches for parallel refactoring and feature development\nComparing different LLM outputs and approaches through clean branch diffs\nCoordinating AI-assisted test writing, documentation, and code review across team members\nSandboxed experimentation with different coding agents without disrupting main branch",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/devswarm-ai/devswarm`",
+    "usage_vi": "```\nI'm using DevSwarm to build a [PROJECT] for [COMPANY] in the [INDUSTRY] sector. I need to generate [FEATURE] using [TECHNOLOGY]. Please create a Git branch and provide a clean diff for this task. I will also use [OTHER_LLM] to review the code. Here is the [DATA] to work with: [INSERT_DATA].\n```\nCopy\n\n```\n# Branch: feature/user-authentication"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:14:13.936709Z",
+    "http_status": 200,
+    "content_hash": "bedf58fb0b4f935010a4a44230fce2ee6fe8c819547d190bfec20271b4ca7360",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\devswarm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\devswarm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DevSwarm - Parallel Coding with AI Assistants",
+  "short_description_vi": "DevSwarm is an AI Development Environment (ADE) for parallel coding with multiple AI assistants. It allows developers to use different LLMs like Claude Code, Codex, Gemini, Amazon Q, or local agents side by side. Each assistant works on its own Git branch, providing clean diffs and enabling efficient code review and collaboration. Ideal for teams needing to move fast while maintaining code quality."
+}

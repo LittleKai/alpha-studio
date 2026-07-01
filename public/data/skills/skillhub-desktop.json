@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillhub-desktop",
+  "slug": "skillhub-desktop",
+  "name": "browser-use",
+  "headline": "SkillHub Desktop - Manage AI Coding Skills",
+  "short_description": "SkillHub Desktop is a desktop application for managing AI coding skills across multiple tools. It allows users to browse, install, and sync skills between Claude Code, Cursor, OpenCode, and more. Ideal for operations teams looking to streamline skill management and integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "skillhub-club",
+  "install_command": "git clone https://github.com/skillhub-club/skillhub-desktop.git",
+  "source_repo_url": "https://github.com/skillhub-club/skillhub-desktop",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "SkillHub Desktop is a cross-platform application that centralizes AI coding skill management for developers and operations teams. It enables users to discover skills from the SkillHub catalog, install them with one click across multiple AI coding tools, and sync skills between different environments. The application supports Claude Code, Cursor, OpenCode, Windsurf, Cline, Roo Code, Aide, Augment, and TRAE IDE. Users can also create custom skills with AI-powered generation and organize them into collections. Built on React and Tauri with support for English and Chinese, it streamlines workflow for teams managing AI tools across their development stack.\nInstalling the same skill across multiple AI coding tools simultaneously\nOrganizing and managing skill collections for development teams\nSyncing custom skills between Claude Code, Cursor, and other supported tools\nDiscovering and browsing AI coding skills from the SkillHub catalog",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/skillhub-club/skillhub-desktop`",
+    "usage": "```\nUse SkillHub Desktop to [ACTION] for [TOOL]. [SPECIFIC_TASK]. Example: 'Use SkillHub Desktop to sync the latest 'code-review' skill from the SkillHub registry to Cursor. Ensure the skill is configured to run on file save events for Python files.'\n```\nCopy\n\n```\nHere’s how SkillHub Desktop streamlined our workflow this week:\n\n1. **Skill Discovery & Installation**: I used SkillHub Desktop to browse the registry and found the `auto-format` skill, which automatically formats Python, JavaScript, and Go files using Prettier and Black. The skill was tagged as compatible with both Cursor and VS Code. I clicked 'Install' and selected Cursor as the target tool. SkillHub Desktop automatically downloaded the skill package (version 1.2.3) and installed it in Cursor’s skill directory.\n\n2. **Configuration & Sync**: After installation, SkillHub Desktop prompted me to configure the skill’s trigger settings. I set it to run on file save for Python files only. The skill’s configuration file (auto-format.json) was automatically synced to Cursor’s local settings. I then used SkillHub Desktop to sync this configuration to my team’s shared workspace, ensuring everyone uses the same formatting rules.\n\n3. **Testing & Validation**: I tested the skill by saving a Python file with inconsistent formatting. Cursor automatically triggered the `auto-format` skill, and the file was reformatted to match PEP 8 standards. I verified the changes in Git and confirmed the skill worked as expected. SkillHub Desktop’s activity log showed the skill was executed successfully, with no errors.\n\n4. **Team Collaboration**: I shared the `auto-format` skill with my team via SkillHub Desktop’s shared workspace feature. Each team member received a notification to install the skill, and their configurations were automatically synced. This eliminated manual setup and ensured consistency across the team’s coding environments.\n\n5. **Updates & Maintenance**: SkillHub Desktop notified me of a new version of the `auto-format` skill (v1.3.0) with support for TypeScript files. I updated the skill in SkillHub Desktop, and the changes were automatically synced to Cursor. The team was notified of the update, and everyone’s skills were kept up to date without manual intervention.\n\nResult: Our team saved an average of 15 minutes per day by automating code formatting, reducing merge conflicts, and ensuring consistent code style across projects.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillhub-desktop#main-content",
+      "skillhub-desktop#overview",
+      "skillhub-desktop#setup",
+      "skillhub-desktop#examples",
+      "skillhub-desktop#tools",
+      "skillhub-desktop#mcp",
+      "skillhub-desktop#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SkillHub Desktop is a cross-platform application that centralizes AI coding skill management for developers and operations teams. It enables users to discover skills from the SkillHub catalog, install them with one click across multiple AI coding tools, and sync skills between different environments. The application supports Claude Code, Cursor, OpenCode, Windsurf, Cline, Roo Code, Aide, Augment, and TRAE IDE. Users can also create custom skills with AI-powered generation and organize them into collections. Built on React and Tauri with support for English and Chinese, it streamlines workflow for teams managing AI tools across their development stack.\nInstalling the same skill across multiple AI coding tools simultaneously\nOrganizing and managing skill collections for development teams\nSyncing custom skills between Claude Code, Cursor, and other supported tools\nDiscovering and browsing AI coding skills from the SkillHub catalog",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/skillhub-club/skillhub-desktop`",
+    "usage_vi": "```\nUse SkillHub Desktop to [ACTION] for [TOOL]. [SPECIFIC_TASK]. Example: 'Use SkillHub Desktop to sync the latest 'code-review' skill from the SkillHub registry to Cursor. Ensure the skill is configured to run on file save events for Python files.'\n```\nCopy\n\n```\nHere’s how SkillHub Desktop streamlined our workflow this week:\n\n1. **Skill Discovery & Installation**: I used SkillHub Desktop to browse the registry and found the `auto-format` skill, which automatically formats Python, JavaScript, and Go files using Prettier and Black. The skill was tagged as compatible with both Cursor and VS Code. I clicked 'Install' and selected Cursor as the target tool. SkillHub Desktop automatically downloaded the skill package (version 1.2.3) and installed it in Cursor’s skill directory.\n\n2. **Configuration & Sync**: After installation, SkillHub Desktop prompted me to configure the skill’s trigger settings. I set it to run on file save for Python files only. The skill’s configuration file (auto-format.json) was automatically synced to Cursor’s local settings. I then used SkillHub Desktop to sync this configuration to my team’s shared workspace, ensuring everyone uses the same formatting rules.\n\n3. **Testing & Validation**: I tested the skill by saving a Python file with inconsistent formatting. Cursor automatically triggered the `auto-format` skill, and the file was reformatted to match PEP 8 standards. I verified the changes in Git and confirmed the skill worked as expected. SkillHub Desktop’s activity log showed the skill was executed successfully, with no errors.\n\n4. **Team Collaboration**: I shared the `auto-format` skill with my team via SkillHub Desktop’s shared workspace feature. Each team member received a notification to install the skill, and their configurations were automatically synced. This eliminated manual setup and ensured consistency across the team’s coding environments.\n\n5. **Updates & Maintenance**: SkillHub Desktop notified me of a new version of the `auto-format` skill (v1.3.0) with support for TypeScript files. I updated the skill in SkillHub Desktop, and the changes were automatically synced to Cursor. The team was notified of the update, and everyone’s skills were kept up to date without manual intervention.\n\nResult: Our team saved an average of 15 minutes per day by automating code formatting, reducing merge conflicts, and ensuring consistent code style across projects.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:51:43.176051Z",
+    "http_status": 200,
+    "content_hash": "06a0e1a46926900aa29fea1ce0b60be8466e2d7e3ca6a00f6f7746b1a7e5b0db",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillhub-desktop.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillhub-desktop.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SkillHub Desktop - Manage AI Coding Skills",
+  "short_description_vi": "SkillHub Desktop is a desktop application for managing AI coding skills across multiple tools. It allows users to browse, install, and sync skills between Claude Code, Cursor, OpenCode, and more. Ideal for operations teams looking to streamline skill management and integration."
+}

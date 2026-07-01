@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/browserwing",
+  "slug": "browserwing",
+  "name": "browserwing",
+  "headline": "BrowserWing: Efficient Browser Automation for AI",
+  "short_description": "BrowserWing transforms browser actions into MCP commands or Claude Skills, enabling AI agents to automate browser tasks efficiently. This tool enhances productivity by streamlining interactions and reducing reliance on traditional LLMs.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "browserwing",
+  "install_command": "claude install browserwing/browserwing",
+  "source_repo_url": "https://github.com/browserwing/browserwing",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "automation",
+    "browser automation",
+    "MCP commands",
+    "AI productivity",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "BrowserWing is a tool that transforms browser interactions into machine-readable commands compatible with MCP (Model Context Protocol) and Claude Skills. It captures user actions in the browser and converts them into executable scripts that AI agents like Claude can understand and replicate. This approach reduces the computational overhead of traditional LLMs by delegating browser automation to specialized agent skills. The tool supports both local and remote browser instances, with built-in scripts for common workflows. BrowserWing streamlines browser automation for developers and AI engineers who need reliable, efficient task execution.\nAutomate data scraping from multiple web pages to compile reports.\nIntegrate AI commands to perform complex searches and extract relevant information quickly.\nStreamline online research by automating navigation and data collection tasks.\nFacilitate quick interactions with web applications for testing or monitoring purposes.",
+    "setup": "Terminal\nCopy\n`claude install browserwing/browserwing`\n`git clone https://github.com/browserwing/browserwing`",
+    "usage": "```\nI need to automate the following browser tasks using BrowserWing: [DESCRIBE TASKS]. Convert these actions into MCP commands or Claude Skills. Ensure the commands are efficient and reduce reliance on traditional LLMs. Provide a step-by-step guide for implementation.\n```\nCopy\n\n```\nTo automate the following browser tasks using BrowserWing, we can convert them into efficient MCP commands or Claude Skills. Here's a step-by-step guide:\n\n1. **Task: Data Extraction from Websites**\n   - **MCP Command:** `extract_data(url: [URL], selector: [CSS_SELECTOR], output_format: [JSON/CSV])`\n   - **Claude Skill:** `DataExtractor(url: [URL], selector: [CSS_SELECTOR], output_format: [JSON/CSV])`\n\n2. **Task: Form Filling**\n   - **MCP Command:** `fill_form(url: [URL], form_data: {field1: value1, field2: value2})`\n   - **Claude Skill:** `FormFiller(url: [URL], form_data: {field1: value1, field2: value2})`\n\n3. **Task: Automated Email Sending**\n   - **MCP Command:** `send_email(to: [EMAIL], subject: [SUBJECT], body: [BODY])`\n   - **Claude Skill:** `EmailSender(to: [EMAIL], subject: [SUBJECT], body: [BODY])`\n\nThese commands and skills will streamline your workflow, reducing the need for manual browser actions and enhancing productivity.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "browserwing#main-content",
+      "browserwing#overview",
+      "browserwing#setup",
+      "browserwing#examples",
+      "browserwing#tools",
+      "browserwing#mcp",
+      "browserwing#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "BrowserWing là công cụ chuyển đổi các tương tác trên trình duyệt thành các lệnh máy có thể đọc được (machine-readable) tương thích với MCP (Model Context Protocol) và Claude Skills. Nó ghi lại các hành động của người dùng trên trình duyệt và chuyển đổi chúng thành các script khả thi mà các AI agent như Claude có thể hiểu và tái tạo. Phương pháp này giúp giảm thiểu chi phí tính toán (computational overhead) của các LLM truyền thống bằng cách ủy thác việc tự động hóa trình duyệt cho các agent skill chuyên biệt. Công cụ hỗ trợ cả các instance trình duyệt local và remote, tích hợp sẵn các script cho các workflow phổ biến. BrowserWing giúp tinh giản quy trình tự động hóa trình duyệt cho các nhà phát triển và kỹ sư AI cần thực thi tác vụ một cách đáng tin cậy và hiệu quả.\nTự động hóa việc data scraping từ nhiều trang web để lập báo cáo.\nTích hợp các lệnh AI để thực hiện các tìm kiếm phức tạp và trích xuất thông tin liên quan một cách nhanh chóng.\nTinh giản việc nghiên cứu trực tuyến bằng cách tự động hóa các tác vụ điều hướng và thu thập dữ liệu.\nHỗ trợ tương tác nhanh với các ứng dụng web phục vụ cho mục đích kiểm thử hoặc giám sát.",
+    "setup_vi": "Terminal\nSao chép\n`claude install browserwing/browserwing`\n`git clone https://github.com/browserwing/browserwing`",
+    "usage_vi": "```\nTôi cần tự động hóa các tác vụ trình duyệt sau bằng cách sử dụng BrowserWing: [MÔ TẢ CÁC TÁC VỤ]. Chuyển đổi các hành động này thành các lệnh MCP hoặc Claude Skills. Đảm bảo các lệnh này hoạt động hiệu quả và giảm sự phụ thuộc vào các LLM truyền thống. Cung cấp hướng dẫn từng bước để triển khai.\n```\nSao chép\n\n```\nĐể tự động hóa các tác vụ trình duyệt sau bằng cách sử dụng BrowserWing, chúng ta có thể chuyển đổi chúng thành các lệnh MCP hoặc Claude Skills hiệu quả. Dưới đây là hướng dẫn từng bước:\n\n1. **Tác vụ: Trích xuất dữ liệu từ trang web**\n   - **Lệnh MCP:** `extract_data(url: [URL], selector: [CSS_SELECTOR], output_format: [JSON/CSV])`\n   - **Claude Skill:** `DataExtractor(url: [URL], selector: [CSS_SELECTOR], output_format: [JSON/CSV])`\n\n2. **Tác vụ: Điền biểu mẫu**\n   - **Lệnh MCP:** `fill_form(url: [URL], form_data: {field1: value1, field2: value2})`\n   - **Claude Skill:** `FormFiller(url: [URL], form_data: {field1: value1, field2: value2})`\n\n3. **Tác vụ: Gửi Email tự động**\n   - **Lệnh MCP:** `send_email(to: [EMAIL], subject: [SUBJECT], body: [BODY])`\n   - **Claude Skill:** `EmailSender(to: [EMAIL], subject: [SUBJECT], body: [BODY])`\n\nCác lệnh và skill này sẽ giúp tinh giản workflow của bạn, giảm thiểu các hành động thủ công trên trình duyệt và nâng cao năng suất.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:37:13.370736Z",
+    "http_status": 200,
+    "content_hash": "a27a381e4cfe80b61f06645d872f9bbd7613b496e942922c94bf783f724b855d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browserwing.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browserwing.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "BrowserWing: Tự động hóa trình duyệt hiệu quả cho AI",
+  "short_description_vi": "BrowserWing chuyển đổi các hành động trên trình duyệt thành các lệnh MCP hoặc Claude Skills, cho phép các AI agent tự động hóa các tác vụ trình duyệt một cách hiệu quả. Công cụ này nâng cao năng suất bằng cách tinh giản các tương tác và giảm sự phụ thuộc vào các LLM truyền thống."
+}

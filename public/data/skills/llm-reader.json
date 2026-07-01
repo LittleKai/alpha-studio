@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llm-reader",
+  "slug": "llm-reader",
+  "name": "langchain-salesforce",
+  "headline": "llm-reader: Webpage to LLM Input Simplified",
+  "short_description": "llm-reader transforms webpages into LLM-friendly text, streamlining data extraction for AI applications. Ideal for RAG and web scraping, it simplifies the process of extracting images and links, enhancing your AI capabilities.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "m92vyas",
+  "install_command": "claude install m92vyas/llm-reader",
+  "source_repo_url": "https://github.com/m92vyas/llm-reader",
+  "works_with": [
+    "ChatGPTClaude"
+  ],
+  "tags": [
+    "web scraping",
+    "RAG",
+    "AI tools",
+    "data extraction",
+    "LLM"
+  ],
+  "sections": {
+    "overview": "llm-reader transforms raw HTML webpages into optimized text format for large language models, improving extraction accuracy for AI agents and scraping workflows. The library preprocesses webpage content to preserve critical elements like links, images, and table data that are essential for e-commerce scraping, RAG pipelines, and automated data extraction. It uses Playwright for concurrent web scraping and provides async support for high-performance applications. As an open-source alternative to commercial services like Firecrawl and Jina Reader, it gives AI developers full control over webpage preprocessing without external API dependencies.\nExtracting text from product pages for analysis\nGathering data from competitor websites\nAutomating content generation from web sources\nScraping images for training AI models",
+    "setup": "Terminal\nCopy\n`claude install m92vyas/llm-reader`\n`git clone https://github.com/m92vyas/llm-reader`",
+    "usage": "```\nUse llm-reader to extract the main content from the webpage [URL]. Identify and list all images and links found on the page. Format the output as structured text suitable for LLM processing. Focus on extracting [SPECIFIC_CONTENT_TYPE] such as product features, pricing details, or customer testimonials.\n```\nCopy\n\n```\nAfter processing the webpage [URL] with llm-reader, the extracted content is as follows:\n\nMain Content:\nThoughtSpot has acquired Mode, a collaborative analytics platform, for $200 million. This acquisition aims to redefine the next generation of business intelligence (BI) by combining ThoughtSpot's search-driven analytics with Mode's interactive dashboards and SQL-based data exploration. The integration will enhance collaborative analytics, enabling teams to explore, analyze, and share insights more effectively.\n\nImages:\n1. ThoughtSpot and Mode logos side by side\n2. Interactive dashboard screenshot\n3. Team collaboration illustration\n\nLinks:\n1. [Learn More about the acquisition](https://www.thoughtspot.com/press-releases/thoughtspot-completes-200m-acquisition-of-mode-analytics)\n2. [Try Mode for free](https://www.thoughtspot.com/mode-free-trial)\n3. [Contact Sales](https://www.thoughtspot.com/contact-sales)\n\nThe extracted content is now structured and ready for further LLM processing, such as summarization, sentiment analysis, or integration into a RAG pipeline.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, Claude"
+    ],
+    "related_skills": [
+      "llm-reader#main-content",
+      "llm-reader#overview",
+      "llm-reader#setup",
+      "llm-reader#examples",
+      "llm-reader#tools",
+      "llm-reader#mcp",
+      "llm-reader#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "llm-reader transforms raw HTML webpages into optimized text format for large language models, improving extraction accuracy for AI agents and scraping workflows. The library preprocesses webpage content to preserve critical elements like links, images, and table data that are essential for e-commerce scraping, RAG pipelines, and automated data extraction. It uses Playwright for concurrent web scraping and provides async support for high-performance applications. As an open-source alternative to commercial services like Firecrawl and Jina Reader, it gives AI developers full control over webpage preprocessing without external API dependencies.\nExtracting text from product pages for analysis\nGathering data from competitor websites\nAutomating content generation from web sources\nScraping images for training AI models",
+    "setup_vi": "Terminal\nCopy\n`claude install m92vyas/llm-reader`\n`git clone https://github.com/m92vyas/llm-reader`",
+    "usage_vi": "```\nUse llm-reader to extract the main content from the webpage [URL]. Identify and list all images and links found on the page. Format the output as structured text suitable for LLM processing. Focus on extracting [SPECIFIC_CONTENT_TYPE] such as product features, pricing details, or customer testimonials.\n```\nCopy\n\n```\nAfter processing the webpage [URL] with llm-reader, the extracted content is as follows:\n\nMain Content:\nThoughtSpot has acquired Mode, a collaborative analytics platform, for $200 million. This acquisition aims to redefine the next generation of business intelligence (BI) by combining ThoughtSpot's search-driven analytics with Mode's interactive dashboards and SQL-based data exploration. The integration will enhance collaborative analytics, enabling teams to explore, analyze, and share insights more effectively.\n\nImages:\n1. ThoughtSpot and Mode logos side by side\n2. Interactive dashboard screenshot\n3. Team collaboration illustration\n\nLinks:\n1. [Learn More about the acquisition](https://www.thoughtspot.com/press-releases/thoughtspot-completes-200m-acquisition-of-mode-analytics)\n2. [Try Mode for free](https://www.thoughtspot.com/mode-free-trial)\n3. [Contact Sales](https://www.thoughtspot.com/contact-sales)\n\nThe extracted content is now structured and ready for further LLM processing, such as summarization, sentiment analysis, or integration into a RAG pipeline.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:04:38.335275Z",
+    "http_status": 200,
+    "content_hash": "94f77a23a70a7a68fe810c7ef75f07c017a3f240db1170d58822835dc58910a3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llm-reader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llm-reader.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "llm-reader: Webpage to LLM Input Simplified",
+  "short_description_vi": "llm-reader transforms webpages into LLM-friendly text, streamlining data extraction for AI applications. Ideal for RAG and web scraping, it simplifies the process of extracting images and links, enhancing your AI capabilities."
+}

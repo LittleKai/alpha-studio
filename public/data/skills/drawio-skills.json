@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/drawio-skills",
+  "slug": "drawio-skills",
+  "name": "Draw.io Skill",
+  "headline": "Draw.io Skill - Automate Diagram Creation",
+  "short_description": "Draw.io skill for Claude, Gemini & Codex. Automates diagram creation, editing, and management. Operations teams use it to streamline workflow documentation, system architecture design, and process mapping. Integrates with draw.io for visual collaboration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "bahayonghang",
+  "install_command": "git clone https://github.com/bahayonghang/drawio-skills.git",
+  "source_repo_url": "https://github.com/bahayonghang/drawio-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Draw.io Skill is a YAML-first authoring system for creating and managing draw.io diagrams locally without requiring browser sessions. It supports engineering diagrams, network topologies, system architecture, and publication-ready figures with built-in themes, validation, and optional draw.io Desktop export to PNG, PDF, and SVG. The skill includes three core operations—create, edit, and replicate—plus semantic network topology support with device types and metadata labeling. An optional academic overlay adds publication-specific policy for venues, captions, formulas, and figure taxonomy. Teams can import existing diagrams, normalize them into YAML bundles with sidecars, and keep artifacts in sync across local development.\nGenerate engineering and system architecture diagrams from natural language prompts\nCreate network topology diagrams with semantic device types and interface metadata\nConvert and normalize existing .drawio files into YAML-first offline bundles\nBuild publication-ready academic figures with venue-specific policy and export validation\nA comprehensive system architecture diagram for GreenTech Solutions, a renewable energy company specializing in solar and wind energy solutions.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bahayonghang/drawio-skills`",
+    "usage": "```\nCreate a detailed system architecture diagram for [COMPANY] in the [INDUSTRY] sector. Include the following components: [DATA]. Use draw.io formatting and ensure the diagram is visually appealing and easy to understand. Save the diagram as '[COMPANY]_architecture' and provide the draw.io file link.\n```\nCopy\n\n```\n# System Architecture Diagram for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "drawio-skills#main-content",
+      "drawio-skills#overview",
+      "drawio-skills#setup",
+      "drawio-skills#examples",
+      "drawio-skills#tools",
+      "drawio-skills#mcp",
+      "drawio-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Draw.io Skill là một hệ thống soạn thảo ưu tiên YAML (YAML-first) để tạo và quản lý các sơ đồ draw.io cục bộ (locally) mà không cần đến các phiên trình duyệt (browser sessions). Công cụ này hỗ trợ vẽ sơ đồ kỹ thuật, topology mạng, kiến trúc hệ thống và các hình vẽ sẵn sàng để xuất bản với các theme tích hợp sẵn, tính năng kiểm định (validation) và tùy chọn xuất sang định dạng PNG, PDF và SVG thông qua draw.io Desktop. Skill này bao gồm ba thao tác cốt lõi—tạo, chỉnh sửa và sao chép—cùng với việc hỗ trợ topology mạng ngữ nghĩa (semantic network topology) với các loại thiết bị và gán nhãn metadata. Một lớp phủ học thuật (academic overlay) tùy chọn sẽ bổ sung thêm các chính sách xuất bản chuyên biệt cho các hội nghị/tạp chí, chú thích, công thức và phân loại hình ảnh. Các đội ngũ phát triển có thể nhập các sơ đồ hiện có, chuẩn hóa chúng thành các gói offline ưu tiên YAML kèm file sidecar, và đồng bộ hóa các artifact trong suốt quá trình phát triển cục bộ.\nTạo sơ đồ kỹ thuật và kiến trúc hệ thống từ các prompt ngôn ngữ tự nhiên\nTạo sơ đồ topology mạng với các loại thiết bị ngữ nghĩa và metadata của interface\nChuyển đổi và chuẩn hóa các tệp .drawio hiện có thành các gói offline ưu tiên YAML\nXây dựng các hình vẽ học thuật sẵn sàng để xuất bản với các chính sách riêng biệt và kiểm định xuất file\nMột sơ đồ kiến trúc hệ thống toàn diện cho GreenTech Solutions, một công ty năng lượng tái tạo chuyên về các giải pháp năng lượng mặt trời và năng lượng gió.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/bahayonghang/drawio-skills`",
+    "usage_vi": "```\nTạo sơ đồ kiến trúc hệ thống chi tiết cho [COMPANY] trong lĩnh vực [INDUSTRY]. Bao gồm các thành phần sau: [DATA]. Sử dụng định dạng draw.io, đảm bảo sơ đồ trực quan và dễ hiểu. Lưu sơ đồ dưới tên '[COMPANY]_architecture' và cung cấp liên kết tệp draw.io.\n```\nSao chép\n\n```\n# Sơ đồ kiến trúc hệ thống cho GreenTech Solutions\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:34:55.954407Z",
+    "http_status": 200,
+    "content_hash": "861a487822cdc1b6465d5bbdbe65d3bd44db775149f8f5034b3a1b669f107577",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\drawio-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\drawio-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Draw.io Skill - Tự động hóa tạo sơ đồ",
+  "short_description_vi": "Draw.io skill dành cho Claude, Gemini & Codex. Tự động hóa việc tạo, chỉnh sửa và quản lý sơ đồ. Các đội ngũ vận hành sử dụng công cụ này để tinh giản việc tài liệu hóa quy trình làm việc, thiết kế kiến trúc hệ thống và vẽ bản đồ quy trình. Tích hợp trực tiếp với draw.io để cộng tác trực quan."
+}

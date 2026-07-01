@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reddit-autopilot",
+  "slug": "reddit-autopilot",
+  "name": "Reddit Autopilot",
+  "headline": "Reddit Autopilot: Automate Reddit Posts",
+  "short_description": "A smart service for making routine posts to target subreddits with pre-configured content. A great companion for your online marketing campaign in the Reddit platform.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "tywin1104",
+  "install_command": "git clone https://github.com/tywin1104/reddit-autopilot.git",
+  "source_repo_url": "https://github.com/tywin1104/reddit-autopilot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "reddit-api",
+    "reddit",
+    "reddit-bot"
+  ],
+  "sections": {
+    "overview": "Reddit Autopilot is an open-source service that automates posting to multiple subreddits using JSON task configuration. It handles Reddit API rate-limiting smoothly, prevents subreddit spam through configurable reposting delays, and supports crosspost and direct link post modes. The tool includes optional auto-reply functionality with Markdown formatting and post flair support for subreddits with mandatory flair requirements. Users configure tasks in CouchDB, and the app processes them continuously without daily post limits, making it suitable for ongoing Reddit marketing campaigns.\nAutomated posting of product links across relevant subreddits\nScheduling routine community engagement with auto-reply comments\nManaging multi-subreddit content distribution for marketing campaigns\nPosting to subreddits with mandatory flair requirements automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tywin1104/reddit-autopilot`",
+    "usage": "```\nAct as a Reddit marketing assistant. Create 3 engaging posts for [SUBREDDIT] about [TOPIC]. Include relevant hashtags and a call-to-action. Follow Reddit's guidelines and avoid spammy language. Use a conversational tone and keep each post under 500 characters.\n```\nCopy\n\n```\n# **Why [TOPIC] is Changing the Game in [INDUSTRY]**\n\nHey r/[SUBREDDIT],\n\nEver wondered how [TOPIC] is revolutionizing [INDUSTRY]? Here are 3 key ways:\n\n- **Innovation**: [TOPIC] introduces cutting-edge solutions that boost efficiency by 30%.\n- **Accessibility**: It's designed for users of all levels, from beginners to experts.\n- **Community**: Join thousands of professionals who are already benefiting.\n\nCheck out [LINK] to learn more and share your thoughts below!\n\n# **Your Turn!**\n\nWhat's your experience with [TOPIC]? Drop your insights in the comments!\n\n# **Pro Tip**\n\nDid you know [TOPIC] can also help with [RELATED_TOPIC]? Try it out and let us know how it goes!\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "reddit-autopilot#main-content",
+      "reddit-autopilot#overview",
+      "reddit-autopilot#setup",
+      "reddit-autopilot#examples",
+      "reddit-autopilot#tools",
+      "reddit-autopilot#mcp",
+      "reddit-autopilot#related",
+      "marketingskills",
+      "copywriting",
+      "agentic-articles"
+    ],
+    "overview_vi": "Reddit Autopilot là một dịch vụ nguồn mở giúp tự động hóa việc đăng bài lên nhiều subreddit bằng cấu hình tác vụ dạng JSON. Công cụ này xử lý rate-limiting của Reddit API một cách mượt mà, tránh spam subreddit nhờ cơ chế cấu hình độ trễ giữa các lần đăng lại (reposting delay), đồng thời hỗ trợ các chế độ đăng crosspost và liên kết trực tiếp (direct link). Công cụ cũng tích hợp tính năng tự động phản hồi (auto-reply) tùy chọn với định dạng Markdown và hỗ trợ post flair cho các subreddit bắt buộc phải có flair. Người dùng chỉ cần cấu hình tác vụ trong CouchDB, ứng dụng sẽ xử lý liên tục mà không bị giới hạn số lượng bài đăng hàng ngày, rất phù hợp cho các chiến dịch marketing dài hạn trên Reddit.\nTự động đăng liên kết sản phẩm trên các subreddit liên quan\nLên lịch tương tác cộng đồng định kỳ với tính năng tự động phản hồi bình luận\nQuản lý việc phân phối nội dung trên nhiều subreddit cho các chiến dịch marketing\nTự động đăng bài vào các subreddit yêu cầu bắt buộc có flair",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/tywin1104/reddit-autopilot`",
+    "usage_vi": "```\nĐóng vai trò là một trợ lý marketing trên Reddit. Hãy tạo 3 bài đăng hấp dẫn cho [SUBREDDIT] về [TOPIC]. Đi kèm các hashtag liên quan và lời kêu gọi hành động. Tuân thủ hướng dẫn của Reddit và tránh ngôn từ mang tính spam. Sử dụng giọng văn tự nhiên như đang trò chuyện và giữ mỗi bài viết dưới 500 ký tự.\n```\nSao chép\n\n```\n# **Tại sao [TOPIC] đang thay đổi cuộc chơi trong [INDUSTRY]**\n\nChào r/[SUBREDDIT],\n\nBạn đã bao giờ tự hỏi [TOPIC] đang cách mạng hóa [INDUSTRY] như thế nào chưa? Dưới đây là 3 điểm mấu chốt:\n\n- **Đổi mới**: [TOPIC] mang đến các giải pháp tiên tiến giúp tăng hiệu suất lên 30%.\n- **Dễ tiếp cận**: Được thiết kế dành cho mọi đối tượng người dùng, từ người mới bắt đầu đến chuyên gia.\n- **Cộng đồng**: Tham gia cùng hàng ngàn chuyên gia đang nhận được những giá trị từ giải pháp này.\n\nTruy cập [LINK] để tìm hiểu thêm và chia sẻ ý kiến của bạn bên dưới nhé!\n\n# **Đến lượt bạn!**\n\nTrải nghiệm của bạn với [TOPIC] thế nào? Hãy để lại ý kiến trong phần bình luận!\n\n# **Mẹo chuyên nghiệp**\n\nBạn có biết [TOPIC] cũng có thể hỗ trợ giải quyết [RELATED_TOPIC] không? Hãy thử ngay và cho chúng tôi biết kết quả nhé!\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:42.033264Z",
+    "http_status": 200,
+    "content_hash": "cdc23cc6f9ea9b0713112b0d3a4c32097ac2d3c0601047009995859ca9d87b8c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reddit-autopilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reddit-autopilot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Reddit Autopilot: Tự động hóa đăng bài trên Reddit",
+  "short_description_vi": "Dịch vụ thông minh giúp tự động đăng bài định kỳ lên các subreddit mục tiêu với nội dung được cấu hình sẵn. Người bạn đồng hành tuyệt vời cho chiến dịch marketing của bạn trên nền tảng Reddit."
+}

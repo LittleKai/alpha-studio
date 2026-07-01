@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clinical-trial-inspector",
+  "slug": "clinical-trial-inspector",
+  "name": "Clinical Trial Inspector",
+  "headline": "Clinical Trial Inspector - AI for Clinical Research",
+  "short_description": "The Clinical Trial Inspector is a cutting-edge AI tool that helps researchers and clinicians to derive actionable insights from clinical trial data. Utilizing advanced techniques like Semantic Search and Visual Analytics, it enhances data exploration and decision-making.",
+  "tier": "Silver",
+  "category": "ResearchGrowth",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "geoffkip",
+  "install_command": "claude install geoffkip/Clinical-Trial-Inspector",
+  "source_repo_url": "https://github.com/geoffkip/Clinical-Trial-Inspector",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "semantic search",
+    "healthcare",
+    "AI insights",
+    "clinical trials",
+    "data analysis"
+  ],
+  "sections": {
+    "overview": "Clinical Trial Inspector is an AI agent that helps researchers, clinicians, and analysts explore clinical trial data through semantic search, retrieval-augmented generation, and interactive visualizations. It combines hybrid search (semantic + keyword matching) with multi-filter analytics to discover relevant trials and identify trends across 60,000+ studies. The tool automatically generates inline charts, knowledge graphs, and geospatial maps to reveal connections between studies, sponsors, and medical conditions. Built on LangChain, LlamaIndex, and Google Gemini, it handles complex queries like trial comparisons and translates eligibility criteria into SQL for patient cohort identification.\nExtracting insights from clinical trial data\nVisualizing trial results for presentations\nConducting semantic searches for specific trial criteria\nGenerating reports on clinical trial trends",
+    "setup": "Terminal\nCopy\n`claude install geoffkip/Clinical-Trial-Inspector`\n`git clone https://github.com/geoffkip/Clinical-Trial-Inspector`",
+    "usage": "```\nAnalyze the clinical trial data for [DRUG_NAME] targeting [DISEASE]. Identify key trends in patient response, adverse events, and efficacy metrics. Highlight any outliers or anomalies that warrant further investigation. Suggest potential adjustments to the trial protocol based on these findings.\n```\nCopy\n\n```\nAfter analyzing the clinical trial data for 'Nexarib' targeting 'Metastatic Breast Cancer', several key trends emerged. The primary efficacy endpoint, Progression-Free Survival (PFS), showed a median of 10.5 months in the treatment arm versus 7.8 months in the control arm. However, a notable outlier was observed in Cohort B, where 15% of patients experienced a severe immune-related adverse event (irAE) not seen in other cohorts. This could be linked to the concurrent use of corticosteroids, as 80% of these patients were on a medium to high dose. Additionally, the response rate in patients with PD-L1 expression ≥50% was significantly higher (45%) compared to those with lower expression (22%). Based on these findings, I recommend implementing a more rigorous monitoring protocol for irAEs in Cohort B and considering a stratified analysis based on PD-L1 expression levels in future reports.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "clinical-trial-inspector#main-content",
+      "clinical-trial-inspector#overview",
+      "clinical-trial-inspector#setup",
+      "clinical-trial-inspector#examples",
+      "clinical-trial-inspector#tools",
+      "clinical-trial-inspector#mcp",
+      "clinical-trial-inspector#related",
+      "deep-research-web-ui",
+      "automated-ai-web-researcher-ollama",
+      "dark-web-scraping-guide"
+    ],
+    "overview_vi": "Clinical Trial Inspector is an AI agent that helps researchers, clinicians, and analysts explore clinical trial data through semantic search, retrieval-augmented generation, and interactive visualizations. It combines hybrid search (semantic + keyword matching) with multi-filter analytics to discover relevant trials and identify trends across 60,000+ studies. The tool automatically generates inline charts, knowledge graphs, and geospatial maps to reveal connections between studies, sponsors, and medical conditions. Built on LangChain, LlamaIndex, and Google Gemini, it handles complex queries like trial comparisons and translates eligibility criteria into SQL for patient cohort identification.\nExtracting insights from clinical trial data\nVisualizing trial results for presentations\nConducting semantic searches for specific trial criteria\nGenerating reports on clinical trial trends",
+    "setup_vi": "Terminal\nCopy\n`claude install geoffkip/Clinical-Trial-Inspector`\n`git clone https://github.com/geoffkip/Clinical-Trial-Inspector`",
+    "usage_vi": "```\nAnalyze the clinical trial data for [DRUG_NAME] targeting [DISEASE]. Identify key trends in patient response, adverse events, and efficacy metrics. Highlight any outliers or anomalies that warrant further investigation. Suggest potential adjustments to the trial protocol based on these findings.\n```\nCopy\n\n```\nAfter analyzing the clinical trial data for 'Nexarib' targeting 'Metastatic Breast Cancer', several key trends emerged. The primary efficacy endpoint, Progression-Free Survival (PFS), showed a median of 10.5 months in the treatment arm versus 7.8 months in the control arm. However, a notable outlier was observed in Cohort B, where 15% of patients experienced a severe immune-related adverse event (irAE) not seen in other cohorts. This could be linked to the concurrent use of corticosteroids, as 80% of these patients were on a medium to high dose. Additionally, the response rate in patients with PD-L1 expression ≥50% was significantly higher (45%) compared to those with lower expression (22%). Based on these findings, I recommend implementing a more rigorous monitoring protocol for irAEs in Cohort B and considering a stratified analysis based on PD-L1 expression levels in future reports.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:22.737639Z",
+    "http_status": 200,
+    "content_hash": "168aaaa10e5be049c38dfd18a1ffc234b55f490e5ceba5a9725cf0d0469d2fda",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clinical-trial-inspector.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\clinical-trial-inspector.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Clinical Trial Inspector - AI for Clinical Research",
+  "short_description_vi": "The Clinical Trial Inspector is a cutting-edge AI tool that helps researchers and clinicians to derive actionable insights from clinical trial data. Utilizing advanced techniques like Semantic Search and Visual Analytics, it enhances data exploration and decision-making."
+}

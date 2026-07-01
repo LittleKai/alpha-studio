@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-supply",
+  "slug": "skills-supply",
+  "name": "browser-use",
+  "headline": "skills-supply: AI Agent Management",
+  "short_description": "Manage AI agent skills across Claude Code, Amp, Codex, OpenCode, Factory, and others using agents.toml. Operations teams can define skills once and deploy across multiple agents, streamlining workflows and reducing redundancy.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "803",
+  "install_command": "git clone https://github.com/803/skills-supply.git",
+  "source_repo_url": "https://github.com/803/skills-supply",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The skills-supply automation skill is designed to streamline the management of AI agent skills across various platforms, including Claude Code, Codex, and OpenCode. By utilizing the agents.toml configuration file, users can efficiently organize and deploy their AI agent capabilities, ensuring that their workflows are both effective and adaptable. This skill is particularly beneficial for those looking to enhance their AI automation processes without the need for extensive coding knowledge. One of the key benefits of the skills-supply skill is its potential to save time in managing AI agents. Although the exact time savings are currently unknown, the intermediate complexity of this skill means that users can expect to implement it within approximately 30 minutes. This quick setup allows developers and product managers to focus on more strategic tasks rather than getting bogged down in the intricacies of agent management. By simplifying the process, this skill facilitates smoother workflow automation, enabling teams to leverage AI effectively. This skill is particularly suited for developers, product managers, and AI practitioners who are involved in AI automation projects. Its medium GTM relevance indicates that while it may not be essential for every team, those who adopt it will likely see improvements in their operational efficiency. Practical use cases include managing multiple AI agents for different projects or ensuring that the right skills are deployed for specific tasks, which can significantly enhance productivity. With an intermediate level of difficulty, the skills-supply skill requires users to have a basic understanding of AI agent configurations. However, its implementation is straightforward, making it accessible for those familiar with AI workflows. By integrating this skill into their AI-first strategies, teams can ensure that their automation processes are not only effective but also scalable, paving the way for future innovations in AI automation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/803/skills-supply`",
+    "usage": "```\nCreate a new skill named [SKILL_NAME] in the agents.toml file for deployment across [AGENT_PLATFORMS]. The skill should [DESCRIBE_SKILL_FUNCTIONALITY]. Include the necessary parameters: [PARAMETERS]. Ensure the skill is compatible with [SPECIFIC_REQUIREMENTS].\n```\nCopy\n\n```\n```toml\n[skills.[SKILL_NAME]]\nplatforms = [\"Claude Code\", \"Amp\", \"Codex\", \"OpenCode\", \"Factory\"]\nfunctionality = \"Automate data extraction from [DATA_SOURCE] and format it into [OUTPUT_FORMAT]\"\nparameters = {\n    \"data_source\": \"[DATA_SOURCE]\",\n    \"output_format\": \"[OUTPUT_FORMAT]\",\n    \"frequency\": \"[FREQUENCY]\"\n}\nrequirements = {\n    \"api_key\": \"[API_KEY]\",\n    \"authentication\": \"[AUTHENTICATION_METHOD]\"\n}\n```\n\nThe skill [SKILL_NAME] has been successfully created and is ready for deployment across the specified platforms. It will automate the extraction of data from [DATA_SOURCE] and format it into [OUTPUT_FORMAT] at the specified frequency. The necessary API key and authentication method have been included to ensure seamless integration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skills-supply#main-content",
+      "skills-supply#overview",
+      "skills-supply#setup",
+      "skills-supply#examples",
+      "skills-supply#tools",
+      "skills-supply#mcp",
+      "skills-supply#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The skills-supply automation skill is designed to streamline the management of AI agent skills across various platforms, including Claude Code, Codex, and OpenCode. By utilizing the agents.toml configuration file, users can efficiently organize and deploy their AI agent capabilities, ensuring that their workflows are both effective and adaptable. This skill is particularly beneficial for those looking to enhance their AI automation processes without the need for extensive coding knowledge. One of the key benefits of the skills-supply skill is its potential to save time in managing AI agents. Although the exact time savings are currently unknown, the intermediate complexity of this skill means that users can expect to implement it within approximately 30 minutes. This quick setup allows developers and product managers to focus on more strategic tasks rather than getting bogged down in the intricacies of agent management. By simplifying the process, this skill facilitates smoother workflow automation, enabling teams to leverage AI effectively. This skill is particularly suited for developers, product managers, and AI practitioners who are involved in AI automation projects. Its medium GTM relevance indicates that while it may not be essential for every team, those who adopt it will likely see improvements in their operational efficiency. Practical use cases include managing multiple AI agents for different projects or ensuring that the right skills are deployed for specific tasks, which can significantly enhance productivity. With an intermediate level of difficulty, the skills-supply skill requires users to have a basic understanding of AI agent configurations. However, its implementation is straightforward, making it accessible for those familiar with AI workflows. By integrating this skill into their AI-first strategies, teams can ensure that their automation processes are not only effective but also scalable, paving the way for future innovations in AI automation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/803/skills-supply`",
+    "usage_vi": "```\nCreate a new skill named [SKILL_NAME] in the agents.toml file for deployment across [AGENT_PLATFORMS]. The skill should [DESCRIBE_SKILL_FUNCTIONALITY]. Include the necessary parameters: [PARAMETERS]. Ensure the skill is compatible with [SPECIFIC_REQUIREMENTS].\n```\nCopy\n\n```\n```toml\n[skills.[SKILL_NAME]]\nplatforms = [\"Claude Code\", \"Amp\", \"Codex\", \"OpenCode\", \"Factory\"]\nfunctionality = \"Automate data extraction from [DATA_SOURCE] and format it into [OUTPUT_FORMAT]\"\nparameters = {\n    \"data_source\": \"[DATA_SOURCE]\",\n    \"output_format\": \"[OUTPUT_FORMAT]\",\n    \"frequency\": \"[FREQUENCY]\"\n}\nrequirements = {\n    \"api_key\": \"[API_KEY]\",\n    \"authentication\": \"[AUTHENTICATION_METHOD]\"\n}\n```\n\nThe skill [SKILL_NAME] has been successfully created and is ready for deployment across the specified platforms. It will automate the extraction of data from [DATA_SOURCE] and format it into [OUTPUT_FORMAT] at the specified frequency. The necessary API key and authentication method have been included to ensure seamless integration.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:04:36.140767Z",
+    "http_status": 200,
+    "content_hash": "230cca7a88b1f811fb3c230466d542d286cdb8283d8d790059a94f10bb0b0c72",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills-supply.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills-supply.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "skills-supply: AI Agent Management",
+  "short_description_vi": "Manage AI agent skills across Claude Code, Amp, Codex, OpenCode, Factory, and others using agents.toml. Operations teams can define skills once and deploy across multiple agents, streamlining workflows and reducing redundancy."
+}

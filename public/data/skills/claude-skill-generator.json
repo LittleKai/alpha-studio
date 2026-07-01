@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-generator",
+  "slug": "claude-skill-generator",
+  "name": "Claude Skill Generator",
+  "headline": "AI skill generator for Claude automation tasks",
+  "short_description": "Automatically generate Claude Code skills from API documentation URLs. Operations teams benefit by reducing manual setup time for API integrations. Connects to Claude Code and any API documentation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "firecrawl",
+  "install_command": "git clone https://github.com/firecrawl/claude-skill-generator.git",
+  "source_repo_url": "https://github.com/firecrawl/claude-skill-generator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Skill Generator automates the creation of Claude Code skills directly from API documentation URLs. The tool uses Firecrawl to parse documentation and generate ready-to-use skill files that teach Claude how to interact with specific APIs. Users simply paste a documentation URL, click Generate Skill, and download the resulting skill as a ZIP file for immediate use in Claude Code. This streamlines API integration workflows and eliminates manual skill configuration, making it ideal for operations teams managing multiple API integrations.\nQuickly generate skills for Stripe, Slack, or other documented APIs\nReduce manual documentation review time for API integrations\nCreate reusable Claude Code skills from third-party API docs\nAutomate skill generation across multiple APIs for development teams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/firecrawl/claude-skill-generator`",
+    "usage": "```\nGenerate a Claude Code skill from the API documentation at [API_DOCUMENTATION_URL]. Include all available endpoints, request/response formats, and authentication methods. Ensure the skill follows Claude Code best practices and includes error handling for common API issues.\n```\nCopy\n\n```\n# Claude Code Skill: GitHub API Integration\n\n```python\n# List all repositories\nrepos = github_api.list_repos()\n\n# Create a new issue\nissue = github_api.create_issue(\n    owner='claude-ai',\n    repo='claude-code',\n    title='Bug in API integration',\n    body='Description of the bug...'\n)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-generator#main-content",
+      "claude-skill-generator#overview",
+      "claude-skill-generator#setup",
+      "claude-skill-generator#examples",
+      "claude-skill-generator#tools",
+      "claude-skill-generator#mcp",
+      "claude-skill-generator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skill Generator tự động hóa quy trình tạo Claude Code skill trực tiếp từ URL tài liệu API. Công cụ này sử dụng Firecrawl để parse tài liệu và tạo ra các file skill sẵn sàng sử dụng, giúp Claude hiểu cách tương tác với các API cụ thể. Người dùng chỉ cần dán URL tài liệu API, nhấn 'Generate Skill' và tải skill kết quả về dưới dạng file ZIP để sử dụng ngay trong Claude Code. Giải pháp này giúp tối ưu hóa workflow tích hợp API và loại bỏ bước cấu hình skill thủ công, rất phù hợp cho các đội ngũ vận hành đang quản lý nhiều tích hợp API.\n\nNhanh chóng tạo skill cho Stripe, Slack hoặc bất kỳ API nào có tài liệu hướng dẫn\nRút ngắn thời gian nghiên cứu tài liệu thủ công khi tích hợp API\nTạo các Claude Code skill có thể tái sử dụng từ tài liệu API của bên thứ ba\nTự động hóa quy trình tạo skill trên nhiều API cho các đội ngũ phát triển",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/firecrawl/claude-skill-generator`",
+    "usage_vi": "```\nTạo một Claude Code skill từ tài liệu API tại [API_DOCUMENTATION_URL]. Bao gồm tất cả các endpoint khả dụng, định dạng request/response và phương thức xác thực. Đảm bảo skill tuân thủ các best practice của Claude Code và có sẵn phần xử lý lỗi cho các sự cố API thường gặp.\n```\nCopy\n\n```\n# Claude Code Skill: Tích hợp GitHub API\n\n```python\n# Liệt kê tất cả repository\nrepos = github_api.list_repos()\n\n# Tạo một issue mới\nissue = github_api.create_issue(\n    owner='claude-ai',\n    repo='claude-code',\n    title='Bug in API integration',\n    body='Description of the bug...'\n)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:52:11.212819Z",
+    "http_status": 200,
+    "content_hash": "eab9f7e292cb33c93cf66bee1af4ce61abdeeb762a25eb7bca75913e75524766",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-generator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình tạo AI skill cho các tác vụ tự động hóa Claude",
+  "short_description_vi": "Tự động tạo Claude Code skill từ URL tài liệu API. Giúp các đội ngũ vận hành giảm thiểu thời gian setup thủ công để tích hợp API. Kết nối trực tiếp với Claude Code và bất kỳ tài liệu API nào."
+}

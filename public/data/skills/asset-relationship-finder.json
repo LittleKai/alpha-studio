@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/asset-relationship-finder",
+  "slug": "asset-relationship-finder",
+  "name": "asset_relationship_finder",
+  "headline": "sfmc asset relationship finder app",
+  "short_description": "SFMC Asset Relationship Finder: A Go app to easily find relationships between Data Extensions, Automations, Emails, and CloudPages in Salesforce Marketing Cloud.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "selimsevim",
+  "install_command": "git clone https://github.com/selimsevim/asset_relationship_finder.git",
+  "source_repo_url": "https://github.com/selimsevim/asset_relationship_finder",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "marketing-cloud",
+    "sfmc",
+    "golang",
+    "go",
+    "salesforce-marketing-cloud-api",
+    "data-extension",
+    "salesforce-marketing-cloud"
+  ],
+  "sections": {
+    "overview": "SFMC Asset Relationship Finder is a Go-based application that helps Salesforce Marketing Cloud administrators and marketers understand dependencies across their marketing assets. It uses concurrent API calls to quickly identify relationships between Data Extensions, Automations, Emails, and Cloud Pages, eliminating manual tracking of asset usage. The tool filters assets by name or key and presents detailed relationship maps in a clear dashboard format, showing which automations use specific data extensions or which emails reference cloud pages. Built for Heroku deployment with OAuth-based SFMC integration, it connects directly to your marketing cloud instance via REST and SOAP APIs. This saves time for users managing complex SFMC environments where tracking asset dependencies across multiple systems would otherwise require manual investigation.\nAudit which automations depend on a specific data extension before modifying it\nDiscover all emails that reference a particular cloud page to plan content updates\nMap complete asset dependency chains to reduce unintended downstream impacts\nIdentify unused assets by reviewing relationship maps across your SFMC instance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/selimsevim/asset_relationship_finder`",
+    "usage": "```\nI need to find all relationships between [DATA_EXTENSION_NAME] and other assets in Salesforce Marketing Cloud. Specifically, I want to know which automations, emails, and cloud pages are connected to this data extension. Can you provide a detailed breakdown?\n```\nCopy\n\n```\n# Asset Relationships for 'Customer_Profile_DE'",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "asset-relationship-finder#main-content",
+      "asset-relationship-finder#overview",
+      "asset-relationship-finder#setup",
+      "asset-relationship-finder#examples",
+      "asset-relationship-finder#tools",
+      "asset-relationship-finder#mcp",
+      "asset-relationship-finder#related",
+      "marketingskills",
+      "copywriting",
+      "customer-segmentation-with-rfm-analysis"
+    ],
+    "overview_vi": "SFMC Asset Relationship Finder is a Go-based application that helps Salesforce Marketing Cloud administrators and marketers understand dependencies across their marketing assets. It uses concurrent API calls to quickly identify relationships between Data Extensions, Automations, Emails, and Cloud Pages, eliminating manual tracking of asset usage. The tool filters assets by name or key and presents detailed relationship maps in a clear dashboard format, showing which automations use specific data extensions or which emails reference cloud pages. Built for Heroku deployment with OAuth-based SFMC integration, it connects directly to your marketing cloud instance via REST and SOAP APIs. This saves time for users managing complex SFMC environments where tracking asset dependencies across multiple systems would otherwise require manual investigation.\nAudit which automations depend on a specific data extension before modifying it\nDiscover all emails that reference a particular cloud page to plan content updates\nMap complete asset dependency chains to reduce unintended downstream impacts\nIdentify unused assets by reviewing relationship maps across your SFMC instance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/selimsevim/asset_relationship_finder`",
+    "usage_vi": "```\nI need to find all relationships between [DATA_EXTENSION_NAME] and other assets in Salesforce Marketing Cloud. Specifically, I want to know which automations, emails, and cloud pages are connected to this data extension. Can you provide a detailed breakdown?\n```\nCopy\n\n```\n# Asset Relationships for 'Customer_Profile_DE'"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:44:52.803403Z",
+    "http_status": 200,
+    "content_hash": "56f92d0664f636be8a7b01a01bc75db0827c17801394417175fe7229f956182d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\asset-relationship-finder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\asset-relationship-finder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "sfmc asset relationship finder app",
+  "short_description_vi": "SFMC Asset Relationship Finder: A Go app to easily find relationships between Data Extensions, Automations, Emails, and CloudPages in Salesforce Marketing Cloud."
+}

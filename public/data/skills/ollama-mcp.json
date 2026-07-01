@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ollama-mcp",
+  "slug": "ollama-mcp",
+  "name": "Ollama MCP Server",
+  "headline": "Ollama MCP Server - Local LLM Access",
+  "short_description": "Ollama MCP Server enables local LLM access for AI assistants. Operations teams benefit from integrating local models with AI agents. Connects to Claude, Cursor, and other AI tools for secure, private AI operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "rawveg",
+  "install_command": "git clone https://github.com/rawveg/ollama-mcp.git",
+  "source_repo_url": "https://github.com/rawveg/ollama-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "llm",
+    "cursor",
+    "ollama",
+    "ollama-api",
+    "mcp",
+    "open-source",
+    "windsurf",
+    "cline",
+    "mcp-tools",
+    "windsurf-ai",
+    "claude",
+    "ollama-client",
+    "ollama-cloud",
+    "claude-code",
+    "mcp-servers"
+  ],
+  "sections": {
+    "overview": "Ollama MCP Server connects your local language models to Claude Desktop, Cursor, Cline, and other MCP-compatible AI assistants through the Model Context Protocol. It exposes 14 tools covering model management, text generation, chat interactions with tool/function support, embeddings, and web operations. The server supports both local Ollama instances and Ollama Cloud, enabling hybrid deployment where you run local models privately while accessing cloud-only features like web search and content fetching. With zero dependencies, TypeScript type safety, 96% test coverage, and automatic tool discovery, it provides a secure, performant bridge between your AI agents and Ollama models without leaving your infrastructure.\nRun private AI workflows with local models integrated into Claude and Cursor\nBuild AI agent systems that generate text, chat, and create embeddings using Ollama\nEnable web search and content fetching for AI assistants while keeping model inference local\nManage and deploy custom models to AI agents through Ollama library integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rawveg/ollama-mcp`",
+    "usage": "```\nUse the ollama-mcp server to [TASK] with a local LLM. Example: 'Summarize the contents of [FILE_PATH] using the ollama-mcp server with the mistral model. Provide a 3-bullet-point summary and highlight any action items.'\n```\nCopy\n\n```\n### Summary of /workspace/docs/quarterly_report.md (Mistral Model via Ollama MCP)\n\n**Key Findings:**\n- Revenue grew 12% YoY to $14.2M, driven by strong enterprise adoption in the EMEA region (up 18% vs. Q3).\n- Customer churn improved to 3.2% (down from 4.1% last quarter), with enterprise accounts showing the highest retention.\n- Product usage data reveals a 22% increase in daily active users for the AI assistant feature, indicating high engagement.\n\n**Action Items:**\n- Schedule a follow-up with the EMEA sales team to discuss enterprise adoption strategies for Q1.\n- Review churn reduction initiatives with the customer success team, focusing on enterprise accounts.\n- Prepare a demo for the product team highlighting the AI assistant feature’s growth and user feedback.\n\n*Model used: mistral (via ollama-mcp server)*\n*File processed: /workspace/docs/quarterly_report.md*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ollama-mcp#main-content",
+      "ollama-mcp#overview",
+      "ollama-mcp#setup",
+      "ollama-mcp#examples",
+      "ollama-mcp#tools",
+      "ollama-mcp#mcp",
+      "ollama-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Ollama MCP Server kết nối các mô hình ngôn ngữ cục bộ của bạn với Claude Desktop, Cursor, Cline và các trợ lý AI tương thích với MCP khác thông qua Model Context Protocol. Dự án cung cấp 14 công cụ bao gồm quản lý mô hình, tạo văn bản, tương tác chat hỗ trợ tool/function call, embeddings và các tác vụ web. Server hỗ trợ cả instance Ollama cục bộ lẫn Ollama Cloud, cho phép triển khai hybrid (lai) để bạn chạy các mô hình cục bộ một cách riêng tư trong khi vẫn tiếp cận được các tính năng chỉ có trên cloud như tìm kiếm web và thu thập nội dung (content fetching). Với thiết kế không phụ thuộc thư viện ngoài (zero dependencies), TypeScript type safety, độ bao phủ kiểm thử (test coverage) đạt 96% cùng khả năng tự động phát hiện công cụ, dự án mang lại một cầu nối bảo mật, hiệu năng cao giữa các AI agent và các mô hình Ollama ngay trên hạ tầng của bạn.\nChạy các quy trình AI riêng tư với các mô hình cục bộ tích hợp trực tiếp vào Claude và Cursor\nXây dựng hệ thống AI agent tự động tạo văn bản, chat và tạo embeddings bằng Ollama\nCho phép trợ lý AI tìm kiếm web và lấy dữ liệu web trong khi vẫn giữ quá trình suy luận mô hình (inference) ở local\nQuản lý và triển khai các mô hình tùy chỉnh (custom models) cho các AI agent thông qua việc tích hợp thư viện Ollama",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/rawveg/ollama-mcp`",
+    "usage_vi": "```\nSử dụng server ollama-mcp để thực hiện [TÁC VỤ] với một LLM cục bộ. Ví dụ: 'Tóm tắt nội dung của [ĐƯỜNG DẪN FILE] bằng cách sử dụng server ollama-mcp với mô hình mistral. Cung cấp bản tóm tắt gồm 3 đầu dòng và làm nổi bật các đầu việc cần làm.'\n```\nCopy\n\n```\n### Tóm tắt file /workspace/docs/quarterly_report.md (Mô hình Mistral qua Ollama MCP)\n\n**Phát hiện chính:**\n- Doanh thu tăng 12% so với cùng kỳ năm ngoái (YoY) lên 14,2 triệu USD, được thúc đẩy bởi sự đón nhận mạnh mẽ từ phân khúc doanh nghiệp lớn ở khu vực EMEA (tăng 18% so với Q3).\n- Tỷ lệ khách hàng rời bỏ (churn rate) giảm xuống còn 3,2% (so với 4,1% trong quý trước), với nhóm khách hàng doanh nghiệp cho thấy tỷ lệ giữ chân cao nhất.\n- Dữ liệu sử dụng sản phẩm cho thấy số lượng người dùng hoạt động hàng ngày (daily active users) của tính năng trợ lý AI tăng 22%, cho thấy mức độ tương tác cao.\n\n**Đầu việc cần làm (Action Items):**\n- Lên lịch họp tiếp theo với đội ngũ bán hàng khu vực EMEA để thảo luận về chiến lược tiếp cận khách hàng doanh nghiệp trong Q1.\n- Đánh giá các sáng kiến giảm tỷ lệ rời bỏ với đội ngũ Customer Success, tập trung vào các tài khoản doanh nghiệp.\n- Chuẩn bị một bản demo cho đội ngũ sản phẩm nhằm làm nổi bật sự tăng trưởng và phản hồi của người dùng về tính năng trợ lý AI.\n\n*Mô hình sử dụng: mistral (qua server ollama-mcp)*\n*File được xử lý: /workspace/docs/quarterly_report.md*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:11:22.963861Z",
+    "http_status": 200,
+    "content_hash": "570aab74b2f3b29d2c4a7c83aac02d627fc0a98f6d22677ec700b2e9d8945825",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ollama-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ollama-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Ollama MCP Server - Truy cập LLM cục bộ",
+  "short_description_vi": "Ollama MCP Server cho phép các trợ lý AI truy cập vào LLM cục bộ (local LLM). Các đội ngũ vận hành sẽ được hưởng lợi khi tích hợp các mô hình cục bộ với các AI agent. Kết nối mượt mà với Claude, Cursor và các công cụ AI khác để thực hiện các tác vụ AI bảo mật và riêng tư."
+}

@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tts",
+  "slug": "tts",
+  "name": "edge-tts",
+  "headline": "TTS: Text-to-Speech with Voice Cloning",
+  "short_description": "The tts skill converts any text into speech audio using two backends (Kokoro local and Noiz cloud). It supports features like voice cloning and timeline-accurate audio synthesis for dubbing and video narration.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "noizai",
+  "install_command": "git clone https://github.com/noizai/skills",
+  "source_repo_url": "https://github.com/noizai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "text-to-speech"
+  ],
+  "sections": {
+    "overview": "The tts skill converts text into natural-sounding speech audio using two backends: Kokoro for local, privacy-first processing, and Noiz for cloud-based generation with advanced features. It supports precise duration control and timeline-aligned rendering, making it ideal for video dubbing, narration, and content creation workflows. The skill includes voice cloning capabilities powered by reference audio, allowing you to generate speech in specific voices. Setup requires either a local Kokoro installation or a Noiz API key for cloud processing, with the option to control emotion and speaking style through the characteristic-voice skill integration.\nConvert text, files, or URLs to audio with voice cloning.\nAlign speech to SRT subtitles for video narration.\nControl voice selection, language, and emotion in segments.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/noizai/skills --skill tts`\n`git clone https://github.com/noizai/skills`",
+    "usage": "```\nConvert the following text to speech using the tts skill: '[TEXT_TO_CONVERT]'. Use the [BACKEND] backend ([Kokoro_LOCAL/Noiz_CLOUD]). If voice cloning is needed, specify the cloned voice with '[VOICE_NAME]' or 'default'. For timeline-accurate synthesis, include the timing markers in the format '[SYNC:TIMESTAMP]' where TIMESTAMP is in seconds.\n```\nCopy\n\n```\n### Audio Output\n\nHere’s the synthesized speech for your text:\n\n```\n[SYNC:0.0] Welcome to the [COMPANY] annual report for [YEAR].\n[SYNC:2.5] Today, we'll review our progress in the [INDUSTRY] sector.\n[SYNC:5.0] Key highlights include a 12% increase in revenue and a 15% reduction in operational costs.\n```\n\n**Backend Used:** Noiz Cloud\n**Voice:** Default (Female, Neutral Tone)\n**Duration:** 8.2 seconds\n\n*Download the audio file here: [LINK_TO_AUDIO_FILE]*\n\nWould you like to adjust the voice, backend, or timing markers for further refinement?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "tts#main-content",
+      "tts#overview",
+      "tts#setup",
+      "tts#examples",
+      "tts#related",
+      "edge-tts"
+    ],
+    "overview_vi": "The tts skill converts text into natural-sounding speech audio using two backends: Kokoro for local, privacy-first processing, and Noiz for cloud-based generation with advanced features. It supports precise duration control and timeline-aligned rendering, making it ideal for video dubbing, narration, and content creation workflows. The skill includes voice cloning capabilities powered by reference audio, allowing you to generate speech in specific voices. Setup requires either a local Kokoro installation or a Noiz API key for cloud processing, with the option to control emotion and speaking style through the characteristic-voice skill integration.\nConvert text, files, or URLs to audio with voice cloning.\nAlign speech to SRT subtitles for video narration.\nControl voice selection, language, and emotion in segments.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/noizai/skills --skill tts`\n`git clone https://github.com/noizai/skills`",
+    "usage_vi": "```\nConvert the following text to speech using the tts skill: '[TEXT_TO_CONVERT]'. Use the [BACKEND] backend ([Kokoro_LOCAL/Noiz_CLOUD]). If voice cloning is needed, specify the cloned voice with '[VOICE_NAME]' or 'default'. For timeline-accurate synthesis, include the timing markers in the format '[SYNC:TIMESTAMP]' where TIMESTAMP is in seconds.\n```\nCopy\n\n```\n### Audio Output\n\nHere’s the synthesized speech for your text:\n\n```\n[SYNC:0.0] Welcome to the [COMPANY] annual report for [YEAR].\n[SYNC:2.5] Today, we'll review our progress in the [INDUSTRY] sector.\n[SYNC:5.0] Key highlights include a 12% increase in revenue and a 15% reduction in operational costs.\n```\n\n**Backend Used:** Noiz Cloud\n**Voice:** Default (Female, Neutral Tone)\n**Duration:** 8.2 seconds\n\n*Download the audio file here: [LINK_TO_AUDIO_FILE]*\n\nWould you like to adjust the voice, backend, or timing markers for further refinement?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:18:47.981150Z",
+    "http_status": 200,
+    "content_hash": "7fc7693effee6450540725de0788c45d373b24e53139dd00800d41c9a32949ca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tts.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "TTS: Text-to-Speech with Voice Cloning",
+  "short_description_vi": "The tts skill converts any text into speech audio using two backends (Kokoro local and Noiz cloud). It supports features like voice cloning and timeline-accurate audio synthesis for dubbing and video narration."
+}

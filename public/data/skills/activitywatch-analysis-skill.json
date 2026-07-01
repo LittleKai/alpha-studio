@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/activitywatch-analysis-skill",
+  "slug": "activitywatch-analysis-skill",
+  "name": "Activitywatch Analysis Skill",
+  "headline": "Weekly Productivity Insights with ActivityWatch",
+  "short_description": "Analyzes ActivityWatch data to calculate focus scores, detect repetitive app switching, and generate actionable insights. Benefits operations teams by identifying productivity patterns and areas for improvement. Integrates with ActivityWatch and Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "BayramAnnakov",
+  "install_command": "git clone https://github.com/BayramAnnakov/activitywatch-analysis-skill.git",
+  "source_repo_url": "https://github.com/BayramAnnakov/activitywatch-analysis-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "ActivityWatch Analysis Skill quantifies your productivity and focus by analyzing app usage patterns collected by ActivityWatch. It calculates dual scores—productivity (what you worked on) and focus (attention quality)—and detects 'death loops' of repetitive app switching that fragment attention. The skill includes 80+ preconfigured apps for developers, recognizes AI coding workflows, analyzes browser activity at the site level, and supports custom category weighting via JSON config. All processing runs locally on your machine with no external data sharing.\nIdentify repetitive app-switching patterns causing attention fragmentation\nTrack and compare focus scores across days or weeks to spot productivity trends\nSeparate productive work (IDE, terminals) from distraction (social media, entertainment)\nCategorize Telegram chats as work-related or personal to refine productivity scoring",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/activitywatch-analysis-skill`",
+    "usage": "```\nAnalyze my ActivityWatch data from [DATE RANGE] and provide a detailed report. Calculate my focus score, identify any repetitive app switching patterns, and suggest actionable improvements. My primary work involves [TASK TYPES] in the [INDUSTRY] sector.\n```\nCopy\n\n```\n# ActivityWatch Analysis Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "activitywatch-analysis-skill#main-content",
+      "activitywatch-analysis-skill#overview",
+      "activitywatch-analysis-skill#setup",
+      "activitywatch-analysis-skill#examples",
+      "activitywatch-analysis-skill#tools",
+      "activitywatch-analysis-skill#mcp",
+      "activitywatch-analysis-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ActivityWatch Analysis Skill định lượng năng suất và mức độ tập trung của bạn bằng cách phân tích thói quen sử dụng ứng dụng được ghi lại bởi ActivityWatch. Skill này tính toán hai loại điểm số—hiệu suất (những gì bạn đã làm) và độ tập trung (chất lượng của sự chú ý)—đồng thời phát hiện các 'death loop' (vòng lặp chuyển đổi ứng dụng liên tục gây phân tán tư tưởng). Skill đi kèm cấu hình sẵn cho hơn 80 ứng dụng của nhà phát triển, nhận diện được workflow lập trình bằng AI, phân tích hoạt động trình duyệt ở cấp độ trang web (site-level) và hỗ trợ tùy chỉnh trọng số danh mục qua file JSON config. Mọi quá trình xử lý đều chạy local trên máy của bạn và không chia sẻ dữ liệu ra bên ngoài.\nNhận diện các kiểu chuyển đổi ứng dụng lặp đi lặp lại gây phân mảnh sự tập trung\nTheo dõi và so sánh điểm tập trung theo ngày hoặc tuần để phát hiện xu hướng năng suất\nPhân biệt giữa công việc thực tế (IDE, terminal) và các tác nhân gây xao nhãng (mạng xã hội, giải trí)\nPhân loại các đoạn chat Telegram thành công việc hoặc cá nhân để tối ưu hóa việc tính điểm năng suất",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/BayramAnnakov/activitywatch-analysis-skill`",
+    "usage_vi": "```\nHãy phân tích dữ liệu ActivityWatch của tôi từ [KHOẢNG THỜI GIAN] và cung cấp báo cáo chi tiết. Tính toán điểm tập trung của tôi, xác định các kiểu chuyển đổi ứng dụng lặp đi lặp lại và đề xuất các giải pháp cải thiện cụ thể. Công việc chính của tôi liên quan đến [LOẠI CÔNG VIỆC] trong lĩnh vực [NGÀNH NGHỀ].\n```\nCopy\n\n```\n# Báo cáo phân tích ActivityWatch\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:19:07.575463Z",
+    "http_status": 200,
+    "content_hash": "713fd7dc63d1a3053b70aa0dbda42e801e28d96a04e95251716dc85d2e1676cd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\activitywatch-analysis-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\activitywatch-analysis-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phân tích hiệu suất làm việc hàng tuần với ActivityWatch",
+  "short_description_vi": "Phân tích dữ liệu ActivityWatch để tính toán điểm tập trung, phát hiện tần suất chuyển đổi ứng dụng liên tục và đưa ra các đề xuất cải thiện thực tiễn. Hỗ trợ các operations team nhận diện xu hướng năng suất và các điểm cần tối ưu. Tích hợp tốt với ActivityWatch và Claude Code."
+}

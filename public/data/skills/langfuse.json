@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/langfuse",
+  "slug": "langfuse",
+  "name": "Related Skills",
+  "headline": "Langfuse: Trace & Prompt Management",
+  "short_description": "Langfuse skill helps you effectively use Langfuse across diverse workflows such as application instrumentation, prompt migration, and debugging traces. It's ideal for developers seeking to access and modify Langfuse data and documentation programmatically.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "langfuse",
+  "install_command": "git clone https://github.com/langfuse/skills",
+  "source_repo_url": "https://github.com/langfuse/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "data-access-and-integration",
+    "langfuse"
+  ],
+  "sections": {
+    "overview": "The Langfuse skill teaches AI coding assistants like Claude Code and Cursor how to work with Langfuse, the open-source LLM engineering platform. It provides programmatic access to query and manage traces, prompts, datasets, and scores through the Langfuse API, and includes documentation lookup capabilities. The skill automates common workflows including setting up tracing, migrating prompts to Langfuse prompt management, auditing existing instrumentation, and querying data via API. Developers can use it to implement LLM application tracing, manage prompt experiments, and integrate Langfuse into CI/CD pipelines with experiment gates. Installation requires a Langfuse account and API keys, available through Cursor plugins, the skills CLI, or manual setup.\nQuery and modify Langfuse data (traces, prompts, datasets) programmatically.\nAccess current Langfuse documentation through structured index and search APIs.\nFollow use-case-specific guidelines for effective Langfuse implementation.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/langfuse/skills --skill langfuse`\n`git clone https://github.com/langfuse/skills`",
+    "usage": "```\nAct as a Langfuse expert and help me [TASK] using Langfuse's API or SDK. Specifically, I need to [SPECIFIC_ACTION] related to [PROJECT_NAME] or [DATASET]. Provide code snippets if applicable. [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "langfuse#main-content",
+      "langfuse#overview",
+      "langfuse#setup",
+      "langfuse#examples",
+      "langfuse#tools",
+      "langfuse#mcp",
+      "langfuse#related"
+    ],
+    "overview_vi": "The Langfuse skill teaches AI coding assistants like Claude Code and Cursor how to work with Langfuse, the open-source LLM engineering platform. It provides programmatic access to query and manage traces, prompts, datasets, and scores through the Langfuse API, and includes documentation lookup capabilities. The skill automates common workflows including setting up tracing, migrating prompts to Langfuse prompt management, auditing existing instrumentation, and querying data via API. Developers can use it to implement LLM application tracing, manage prompt experiments, and integrate Langfuse into CI/CD pipelines with experiment gates. Installation requires a Langfuse account and API keys, available through Cursor plugins, the skills CLI, or manual setup.\nQuery and modify Langfuse data (traces, prompts, datasets) programmatically.\nAccess current Langfuse documentation through structured index and search APIs.\nFollow use-case-specific guidelines for effective Langfuse implementation.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/langfuse/skills --skill langfuse`\n`git clone https://github.com/langfuse/skills`",
+    "usage_vi": "```\nAct as a Langfuse expert and help me [TASK] using Langfuse's API or SDK. Specifically, I need to [SPECIFIC_ACTION] related to [PROJECT_NAME] or [DATASET]. Provide code snippets if applicable. [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:33:29.978703Z",
+    "http_status": 200,
+    "content_hash": "2896a6e52fad6d6bc6096b716b849f5715f7392b626983b7a5605a5217871a13",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langfuse.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langfuse.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Langfuse: Trace & Prompt Management",
+  "short_description_vi": "Langfuse skill helps you effectively use Langfuse across diverse workflows such as application instrumentation, prompt migration, and debugging traces. It's ideal for developers seeking to access and modify Langfuse data and documentation programmatically."
+}

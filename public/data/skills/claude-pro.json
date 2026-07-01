@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-pro",
+  "slug": "claude-pro",
+  "name": "Claude-Pro",
+  "headline": "claude pro: tutorial for subscription in 2026",
+  "short_description": "Claude-Pro automates workflows using Claude AI models. Operations teams benefit from streamlined processes, reduced manual tasks, and improved efficiency. It connects to various business tools and workflows, enhancing productivity and accuracy.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "imarvinle",
+  "install_command": "git clone https://github.com/imarvinle/Claude-Pro.git",
+  "source_repo_url": "https://github.com/imarvinle/Claude-Pro",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-4-connet",
+    "claude-3-7-sonnet",
+    "claude-ai",
+    "claude-4-sonnet",
+    "claude-api",
+    "claude-4-5-sonnet",
+    "claude",
+    "claude-3-opus",
+    "claude-code",
+    "claude-3-5-sonnet"
+  ],
+  "sections": {
+    "overview": "Claude-Pro is a comprehensive guide for registering Claude accounts and upgrading to Claude Pro membership. It covers three main approaches: upgrading existing Claude accounts to Pro through third-party services like upclaude, purchasing pre-activated Claude Pro accounts, and accessing Claude through shared/mirrored services. The guide includes step-by-step instructions for account registration using Gmail, international phone verification, and addresses common questions about Claude Pro pricing, usage limits, payment methods, and best practices for maintaining account stability. It specifically addresses challenges for users outside supported regions.\nRegistering a new Claude account with international phone verification\nUpgrading an existing Claude account to Pro membership\nPurchasing a pre-activated Claude Pro account\nUnderstanding Claude Pro pricing, features, and usage limits",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/imarvinle/Claude-Pro`",
+    "usage": "```\nAutomate the following workflow using Claude-Pro: [WORKFLOW_DESCRIPTION]. Include steps for [TOOL1], [TOOL2], and [TOOL3]. Ensure outputs are formatted as [OUTPUT_FORMAT]. Handle errors by [ERROR_HANDLING_METHOD].\n```\nCopy\n\n```\n### Automated Workflow Execution Report\n\n**Workflow:** Customer Onboarding Process\n**Tools Used:** Salesforce, Slack, DocuSign\n**Output Format:** JSON with status, timestamps, and action items\n\n**Step 1: Lead Qualification (Salesforce)**\n- Trigger: New lead assigned to 'Onboarding Queue'\n- Action: Check lead score > 80 → Proceed to Step 2\n- Output: {\"status\": \"qualified\", \"lead_id\": \"SF-12345\", \"timestamp\": \"2024-05-15T09:30:00Z\"}\n\n**Step 2: Contract Generation (DocuSign)**\n- Trigger: Step 1 output\n- Action: Generate e-signature package using template 'Premium_Plan_2024'\n- Output: {\"envelope_id\": \"DS-67890\", \"signers\": [\"client@example.com\"], \"expiry\": \"2024-05-22T18:00:00Z\"}\n\n**Step 3: Team Notification (Slack)**\n- Trigger: Step 2 output (envelope sent)\n- Action: Post message to #onboarding-alerts: 'Contract DS-67890 sent to client@example.com. Awaiting signature.'\n- Output: {\"channel\": \"#onboarding-alerts\", \"message_id\": \"SL-11223\", \"timestamp\": \"2024-05-15T09:32:00Z\"}\n\n**Step 4: Error Handling**\n- If DocuSign envelope fails: Retry once, then notify #ops-errors via Slack with error details.\n\n**Summary:**\n- Total steps completed: 3/3\n- Time elapsed: 2 minutes\n- Next action: Monitor DocuSign for signature (check every 2 hours).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-pro#main-content",
+      "claude-pro#overview",
+      "claude-pro#setup",
+      "claude-pro#examples",
+      "claude-pro#tools",
+      "claude-pro#mcp",
+      "claude-pro#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Pro is a comprehensive guide for registering Claude accounts and upgrading to Claude Pro membership. It covers three main approaches: upgrading existing Claude accounts to Pro through third-party services like upclaude, purchasing pre-activated Claude Pro accounts, and accessing Claude through shared/mirrored services. The guide includes step-by-step instructions for account registration using Gmail, international phone verification, and addresses common questions about Claude Pro pricing, usage limits, payment methods, and best practices for maintaining account stability. It specifically addresses challenges for users outside supported regions.\nRegistering a new Claude account with international phone verification\nUpgrading an existing Claude account to Pro membership\nPurchasing a pre-activated Claude Pro account\nUnderstanding Claude Pro pricing, features, and usage limits",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/imarvinle/Claude-Pro`",
+    "usage_vi": "```\nAutomate the following workflow using Claude-Pro: [WORKFLOW_DESCRIPTION]. Include steps for [TOOL1], [TOOL2], and [TOOL3]. Ensure outputs are formatted as [OUTPUT_FORMAT]. Handle errors by [ERROR_HANDLING_METHOD].\n```\nCopy\n\n```\n### Automated Workflow Execution Report\n\n**Workflow:** Customer Onboarding Process\n**Tools Used:** Salesforce, Slack, DocuSign\n**Output Format:** JSON with status, timestamps, and action items\n\n**Step 1: Lead Qualification (Salesforce)**\n- Trigger: New lead assigned to 'Onboarding Queue'\n- Action: Check lead score > 80 → Proceed to Step 2\n- Output: {\"status\": \"qualified\", \"lead_id\": \"SF-12345\", \"timestamp\": \"2024-05-15T09:30:00Z\"}\n\n**Step 2: Contract Generation (DocuSign)**\n- Trigger: Step 1 output\n- Action: Generate e-signature package using template 'Premium_Plan_2024'\n- Output: {\"envelope_id\": \"DS-67890\", \"signers\": [\"client@example.com\"], \"expiry\": \"2024-05-22T18:00:00Z\"}\n\n**Step 3: Team Notification (Slack)**\n- Trigger: Step 2 output (envelope sent)\n- Action: Post message to #onboarding-alerts: 'Contract DS-67890 sent to client@example.com. Awaiting signature.'\n- Output: {\"channel\": \"#onboarding-alerts\", \"message_id\": \"SL-11223\", \"timestamp\": \"2024-05-15T09:32:00Z\"}\n\n**Step 4: Error Handling**\n- If DocuSign envelope fails: Retry once, then notify #ops-errors via Slack with error details.\n\n**Summary:**\n- Total steps completed: 3/3\n- Time elapsed: 2 minutes\n- Next action: Monitor DocuSign for signature (check every 2 hours).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:00.536852Z",
+    "http_status": 200,
+    "content_hash": "506bbf297592d168ed4c7d37958e404dbc9fbd0aa55d23b37e2647f634cbcbcc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-pro.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-pro.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude pro: tutorial for subscription in 2026",
+  "short_description_vi": "Claude-Pro automates workflows using Claude AI models. Operations teams benefit from streamlined processes, reduced manual tasks, and improved efficiency. It connects to various business tools and workflows, enhancing productivity and accuracy."
+}

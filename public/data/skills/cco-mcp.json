@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cco-mcp",
+  "slug": "cco-mcp",
+  "name": "browser-use",
+  "headline": "cco-mcp audit and approval system",
+  "short_description": "Real-time audit and approval system for Claude Code tool calls. Operations teams gain visibility and control over AI agent actions. Integrates with Claude Code to monitor and approve tool calls via a web dashboard.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "toolprint",
+  "install_command": "git clone https://github.com/toolprint/cco-mcp.git",
+  "source_repo_url": "https://github.com/toolprint/cco-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "llm",
+    "mcp-server",
+    "agents",
+    "approvals",
+    "permissions",
+    "background-agent",
+    "mcp",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "CCO-MCP provides a security layer between Claude Code and your system, enabling real-time monitoring and control of AI tool calls. It acts as a firewall for AI actions, allowing you to review sensitive operations before execution while auto-approving safe ones based on configurable rules. The system features a live web dashboard for instant visibility, detailed audit logs, and smart approval rules that match specific tools, agents, and patterns. Operations teams can scale background Claude Code instances without manual intervention by setting up rules for routine operations. Installation is straightforward via Docker Compose with integration into Claude Code's MCP server configuration.\nAuto-approve safe file read operations while requiring manual approval for bash commands\nMonitor and control multiple background Claude Code agents from a centralized dashboard\nScale non-interactive Claude Code instances with rule-based auto-approval for routine operations\nAudit all AI tool calls with full context including agent identity and approval status",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/toolprint/cco-mcp`",
+    "usage": "```\nAct as a real-time audit and approval system for Claude Code tool calls. Monitor all tool calls made by AI agents in [COMPANY] within the [INDUSTRY] sector. Provide a dashboard view of pending approvals, approved actions, and rejected actions. Allow operations teams to review and approve or reject tool calls in real-time. Include details such as [DATA] for each tool call.\n```\nCopy\n\n```\n# Real-Time Audit and Approval Dashboard",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cco-mcp#main-content",
+      "cco-mcp#overview",
+      "cco-mcp#setup",
+      "cco-mcp#examples",
+      "cco-mcp#tools",
+      "cco-mcp#mcp",
+      "cco-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCO-MCP provides a security layer between Claude Code and your system, enabling real-time monitoring and control of AI tool calls. It acts as a firewall for AI actions, allowing you to review sensitive operations before execution while auto-approving safe ones based on configurable rules. The system features a live web dashboard for instant visibility, detailed audit logs, and smart approval rules that match specific tools, agents, and patterns. Operations teams can scale background Claude Code instances without manual intervention by setting up rules for routine operations. Installation is straightforward via Docker Compose with integration into Claude Code's MCP server configuration.\nAuto-approve safe file read operations while requiring manual approval for bash commands\nMonitor and control multiple background Claude Code agents from a centralized dashboard\nScale non-interactive Claude Code instances with rule-based auto-approval for routine operations\nAudit all AI tool calls with full context including agent identity and approval status",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/toolprint/cco-mcp`",
+    "usage_vi": "```\nAct as a real-time audit and approval system for Claude Code tool calls. Monitor all tool calls made by AI agents in [COMPANY] within the [INDUSTRY] sector. Provide a dashboard view of pending approvals, approved actions, and rejected actions. Allow operations teams to review and approve or reject tool calls in real-time. Include details such as [DATA] for each tool call.\n```\nCopy\n\n```\n# Real-Time Audit and Approval Dashboard"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:35:03.615790Z",
+    "http_status": 200,
+    "content_hash": "4b1eb9edc3afb90aee17ce6a611909113a4956a5e263b16c53bc9fd7e0ed815b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cco-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cco-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "cco-mcp audit and approval system",
+  "short_description_vi": "Real-time audit and approval system for Claude Code tool calls. Operations teams gain visibility and control over AI agent actions. Integrates with Claude Code to monitor and approve tool calls via a web dashboard."
+}

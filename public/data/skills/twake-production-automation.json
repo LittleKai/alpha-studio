@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/twake-production-automation",
+  "slug": "twake-production-automation",
+  "name": "popsicle",
+  "headline": "Twake Production Automation: AI Video Generation",
+  "short_description": "Automates content publishing across Instagram, TikTok, X, and Facebook, powered by Twake Production for faster, social media management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Epein5",
+  "install_command": "git clone https://github.com/Epein5/Twake_Production_automation.git",
+  "source_repo_url": "https://github.com/Epein5/Twake_Production_automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Twake Production Automation is a Python-based pipeline that generates daily skit videos featuring three Nepali-speaking characters discussing tech interview topics. It fetches topics from Supabase, generates scripts via Grok-3 LLM, synthesizes voice audio using ElevenLabs, composes videos with MoviePy, and automatically uploads results to Google Drive while logging metadata to Google Sheets. The system runs on a FastAPI server with automated daily scheduling via APScheduler. It handles video upscaling to 720p, background music mixing, clip synchronization, and token caching for Google OAuth2, making it suitable for teams automating multilingual educational content production at scale.\nAutomate daily educational skit video production for tech interview preparation content\nGenerate multilingual AI-narrated videos with character-based dialogue workflows\nSchedule and orchestrate video publishing pipelines with cloud storage integration\nManage recurring video content creation with LLM-generated scripts and voice synthesis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Epein5/Twake_Production_automation`",
+    "usage": "```\nI need to automate my social media content publishing across Instagram, TikTok, X, and Facebook using Twake Production. Here are the details: [COMPANY] is in the [INDUSTRY] industry. The content is based on [DATA] and should be scheduled for [DATE]. Can you generate a plan and the necessary posts?\n```\nCopy\n\n```\n# Social Media Content Publishing Plan\n\n- **Instagram Post**: 'Introducing our new eco-friendly water bottles! 🌱 Made from 100% recycled materials, they are durable and stylish. #EcoFriendly #SustainableLiving'\n- **TikTok Video**: Behind-the-scenes look at our manufacturing process. See how we ensure quality and sustainability in every bottle. #BehindTheScenes #EcoFriendly'\n- **X Tweet**: 'Did you know? Our new water bottles are made from 100% recycled materials. Join the movement towards a greener planet! #SustainableLiving #EcoFriendly'\n- **Facebook Post**: 'Meet Sarah, one of our happy customers! She loves her new eco-friendly water bottle and shares her experience. Read her story here. #CustomerTestimonials #EcoFriendly'",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "twake-production-automation#main-content",
+      "twake-production-automation#overview",
+      "twake-production-automation#setup",
+      "twake-production-automation#examples",
+      "twake-production-automation#tools",
+      "twake-production-automation#mcp",
+      "twake-production-automation#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Twake Production Automation is a Python-based pipeline that generates daily skit videos featuring three Nepali-speaking characters discussing tech interview topics. It fetches topics from Supabase, generates scripts via Grok-3 LLM, synthesizes voice audio using ElevenLabs, composes videos with MoviePy, and automatically uploads results to Google Drive while logging metadata to Google Sheets. The system runs on a FastAPI server with automated daily scheduling via APScheduler. It handles video upscaling to 720p, background music mixing, clip synchronization, and token caching for Google OAuth2, making it suitable for teams automating multilingual educational content production at scale.\nAutomate daily educational skit video production for tech interview preparation content\nGenerate multilingual AI-narrated videos with character-based dialogue workflows\nSchedule and orchestrate video publishing pipelines with cloud storage integration\nManage recurring video content creation with LLM-generated scripts and voice synthesis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Epein5/Twake_Production_automation`",
+    "usage_vi": "```\nI need to automate my social media content publishing across Instagram, TikTok, X, and Facebook using Twake Production. Here are the details: [COMPANY] is in the [INDUSTRY] industry. The content is based on [DATA] and should be scheduled for [DATE]. Can you generate a plan and the necessary posts?\n```\nCopy\n\n```\n# Social Media Content Publishing Plan\n\n- **Instagram Post**: 'Introducing our new eco-friendly water bottles! 🌱 Made from 100% recycled materials, they are durable and stylish. #EcoFriendly #SustainableLiving'\n- **TikTok Video**: Behind-the-scenes look at our manufacturing process. See how we ensure quality and sustainability in every bottle. #BehindTheScenes #EcoFriendly'\n- **X Tweet**: 'Did you know? Our new water bottles are made from 100% recycled materials. Join the movement towards a greener planet! #SustainableLiving #EcoFriendly'\n- **Facebook Post**: 'Meet Sarah, one of our happy customers! She loves her new eco-friendly water bottle and shares her experience. Read her story here. #CustomerTestimonials #EcoFriendly'"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:20:10.624820Z",
+    "http_status": 200,
+    "content_hash": "8314f0f5f20ff87b4a9c51031b766d30a0c534f1c3133558abbb21b6c8b64093",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\twake-production-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\twake-production-automation.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Twake Production Automation: AI Video Generation",
+  "short_description_vi": "Automates content publishing across Instagram, TikTok, X, and Facebook, powered by Twake Production for faster, social media management."
+}

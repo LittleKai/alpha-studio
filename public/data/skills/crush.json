@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/crush",
+  "slug": "crush",
+  "name": "browser-use",
+  "headline": "Crush - Agentic AI Coding Automation",
+  "short_description": "Crush is an agentic AI coding tool that automates repetitive tasks for operations teams. It connects to workflows like CI/CD pipelines and integrates with tools such as GitHub. Crush enables faster development cycles and reduces manual coding efforts.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "charmbracelet",
+  "install_command": "git clone https://github.com/charmbracelet/crush.git",
+  "source_repo_url": "https://github.com/charmbracelet/crush",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llms",
+    "agentic-ai",
+    "ai",
+    "ravishing"
+  ],
+  "sections": {
+    "overview": "Crush is an agentic AI coding tool designed to automate repetitive tasks for operations teams. The tool integrates with workflows and supports user-invocable skills through a structured skill system. Built with extensibility in mind, Crush enables teams to reduce manual effort by automating common operational tasks. The platform provides shell execution capabilities and context-aware tooling for automation workflows. Teams can leverage Crush to streamline their operational processes through customizable skills and integrated automation pipelines.\nIntegrate multiple LLMs to assist in code generation and debugging across different programming languages.\nMaintain context while switching between projects, allowing for efficient multitasking in software development.\nUtilize LSPs for enhanced code context and suggestions, streamlining the coding process.\nAutomate repetitive coding tasks by leveraging API integrations with popular LLM providers.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/charmbracelet/crush`",
+    "usage": "```\nAutomate the following repetitive task in our CI/CD pipeline using Crush: [DESCRIBE TASK]. The task currently involves [LIST STEPS]. We want to integrate this with our [TOOLS] workflow. Provide the necessary code snippets and configuration steps to implement this automation.\n```\nCopy\n\n```\nTo automate the repetitive task of updating environment variables across multiple services in our CI/CD pipeline, Crush can be configured as follows:\n\n1. **Initial Setup**: First, ensure Crush is connected to your GitHub repository and has the necessary permissions to modify environment variables. This involves setting up a Crush agent with the appropriate access tokens.\n\n2. **Task Definition**: Define the task in Crush's workflow editor. The task should include the following steps:\n   - Fetch the current environment variables from the `.env` file in the root directory.\n   - Update the variables based on the new configuration provided in the `config/env_vars.json` file.\n   - Commit and push the changes back to the repository.\n\n3. **Code Snippets**: Here are the necessary code snippets to implement this automation:\n   ```python\n   # Fetch current environment variables\n   import os\n   from dotenv import load_dotenv\n   \n   load_dotenv()\n   current_vars = os.environ\n   \n   # Update variables based on new configuration\n   import json\n   \n   with open('config/env_vars.json', 'r') as f:\n       new_vars = json.load(f)\n   \n   for key, value in new_vars.items():\n       os.environ[key] = value\n   \n   # Commit and push changes\n   import subprocess\n   \n   subprocess.run(['git', 'add', '.env'])\n   subprocess.run(['git', 'commit', '-m', 'Update environment variables'])\n   subprocess.run(['git', 'push'])\n   ```\n\n4. **Configuration Steps**: After adding the code snippets, configure the Crush agent to run this task on a schedule or trigger it manually when needed. This can be done through the Crush dashboard by setting up a new workflow and specifying the trigger conditions.\n\nBy following these steps, you can automate the task of updating environment variables, reducing manual coding efforts and speeding up the development cycle.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "crush#main-content",
+      "crush#overview",
+      "crush#setup",
+      "crush#examples",
+      "crush#tools",
+      "crush#mcp",
+      "crush#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Crush is an agentic AI coding tool designed to automate repetitive tasks for operations teams. The tool integrates with workflows and supports user-invocable skills through a structured skill system. Built with extensibility in mind, Crush enables teams to reduce manual effort by automating common operational tasks. The platform provides shell execution capabilities and context-aware tooling for automation workflows. Teams can leverage Crush to streamline their operational processes through customizable skills and integrated automation pipelines.\nIntegrate multiple LLMs to assist in code generation and debugging across different programming languages.\nMaintain context while switching between projects, allowing for efficient multitasking in software development.\nUtilize LSPs for enhanced code context and suggestions, streamlining the coding process.\nAutomate repetitive coding tasks by leveraging API integrations with popular LLM providers.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/charmbracelet/crush`",
+    "usage_vi": "```\nAutomate the following repetitive task in our CI/CD pipeline using Crush: [DESCRIBE TASK]. The task currently involves [LIST STEPS]. We want to integrate this with our [TOOLS] workflow. Provide the necessary code snippets and configuration steps to implement this automation.\n```\nCopy\n\n```\nTo automate the repetitive task of updating environment variables across multiple services in our CI/CD pipeline, Crush can be configured as follows:\n\n1. **Initial Setup**: First, ensure Crush is connected to your GitHub repository and has the necessary permissions to modify environment variables. This involves setting up a Crush agent with the appropriate access tokens.\n\n2. **Task Definition**: Define the task in Crush's workflow editor. The task should include the following steps:\n   - Fetch the current environment variables from the `.env` file in the root directory.\n   - Update the variables based on the new configuration provided in the `config/env_vars.json` file.\n   - Commit and push the changes back to the repository.\n\n3. **Code Snippets**: Here are the necessary code snippets to implement this automation:\n   ```python\n   # Fetch current environment variables\n   import os\n   from dotenv import load_dotenv\n   \n   load_dotenv()\n   current_vars = os.environ\n   \n   # Update variables based on new configuration\n   import json\n   \n   with open('config/env_vars.json', 'r') as f:\n       new_vars = json.load(f)\n   \n   for key, value in new_vars.items():\n       os.environ[key] = value\n   \n   # Commit and push changes\n   import subprocess\n   \n   subprocess.run(['git', 'add', '.env'])\n   subprocess.run(['git', 'commit', '-m', 'Update environment variables'])\n   subprocess.run(['git', 'push'])\n   ```\n\n4. **Configuration Steps**: After adding the code snippets, configure the Crush agent to run this task on a schedule or trigger it manually when needed. This can be done through the Crush dashboard by setting up a new workflow and specifying the trigger conditions.\n\nBy following these steps, you can automate the task of updating environment variables, reducing manual coding efforts and speeding up the development cycle.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:33:45.358668Z",
+    "http_status": 200,
+    "content_hash": "98622c4d483641ffddf0c9930f0a3afcd747d1aeb66ef8c33f489d32c3a81a38",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\crush.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\crush.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Crush - Agentic AI Coding Automation",
+  "short_description_vi": "Crush is an agentic AI coding tool that automates repetitive tasks for operations teams. It connects to workflows like CI/CD pipelines and integrates with tools such as GitHub. Crush enables faster development cycles and reduces manual coding efforts."
+}

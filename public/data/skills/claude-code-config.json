@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-config",
+  "slug": "claude-code-config",
+  "name": "react-native-best-practices",
+  "headline": "Claude Code Configuration for Developers",
+  "short_description": "Claude Code Configuration is a comprehensive toolkit for developers, featuring customizable rules, hooks, agents, and commands to enhance productivity. Perfect for those looking to optimize their coding environment with AI-driven solutions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "jarrodwatts",
+  "install_command": "claude install jarrodwatts/claude-code-config",
+  "source_repo_url": "https://github.com/jarrodwatts/claude-code-config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "Developer Tools",
+    "AI",
+    "Claude",
+    "Configuration",
+    "Automation"
+  ],
+  "sections": {
+    "overview": "Claude Code Configuration is a toolkit for developers using Claude Code that enables standardization of coding practices through path-scoped rules, custom hooks, and reusable agents. It includes components for enforcing TypeScript conventions, managing code comments, automating todo tracking, and running custom commands like interviews. The configuration system supports multiple agents for specialized tasks such as codebase searching, documentation writing, and media interpretation. Developers can define global instructions and skill reminders to maintain consistency across projects. This approach reduces manual configuration overhead and ensures team-wide adherence to coding standards.\nCustomize AI agent behavior for specific coding tasks to improve efficiency.\nIntegrate hooks that automate workflows, reducing manual intervention.\nManage and maintain configuration files for various development environments seamlessly.\nCreate and store reusable code snippets to speed up coding processes.",
+    "setup": "Terminal\nCopy\n`claude install jarrodwatts/claude-code-config`\n`git clone https://github.com/jarrodwatts/claude-code-config`",
+    "usage": "```\nConfigure a Claude Code project for [PROJECT_NAME] with the following requirements: [LIST_REQUIREMENTS]. Apply these rules: [RULES]. Set up any necessary hooks for [HOOK_PURPOSE]. Ensure the configuration aligns with [BEST_PRACTICES]. Include a sample agent for [AGENT_TASK].\n```\nCopy\n\n```\nHere’s a complete `claude-config.json` for a Python-based API project with FastAPI, including linting, testing, and deployment hooks:\n\n```json\n{\n  \"project_name\": \"FastAPI Weather Service\",\n  \"version\": \"1.0.0\",\n  \"rules\": {\n    \"linting\": {\n      \"enabled\": true,\n      \"tool\": \"ruff\",\n      \"config\": {\n        \"line-length\": 120,\n        \"select\": [\"E\", \"W\", \"F\", \"I\"]\n      }\n    },\n    \"testing\": {\n      \"enabled\": true,\n      \"framework\": \"pytest\",\n      \"coverage_threshold\": 90\n    },\n    \"security\": {\n      \"enabled\": true,\n      \"tool\": \"bandit\",\n      \"exclude\": [\"tests/\"]\n    }\n  },\n  \"hooks\": {\n    \"pre-commit\": [\n      {\n        \"name\": \"run-linter\",\n        \"command\": \"ruff check .\",\n        \"on_failure\": \"exit\"\n      },\n      {\n        \"name\": \"run-tests\",\n        \"command\": \"pytest tests/ --cov=src --cov-fail-under=90\",\n        \"on_failure\": \"warn\"\n      }\n    ],\n    \"post-commit\": [\n      {\n        \"name\": \"notify-team\",\n        \"command\": \"echo 'Changes committed successfully' && curl -X POST https://hooks.slack.com/services/... -d '{\"text\":\"New commit in FastAPI Weather Service\"}'\"\n      }\n    ]\n  },\n  \"agents\": {\n    \"docstring-generator\": {\n      \"enabled\": true,\n      \"prompt\": \"Generate Google-style docstrings for the following Python function:\\n```python\\n[FUNCTION_CODE]\\n```\",\n      \"output_path\": \"docs/api_reference.md\"\n    }\n  }\n}\n```\n\n**Key Features Applied:**\n1. **Linting:** Enforced PEP 8 compliance with Ruff, including line length and import sorting.\n2. **Testing:** Integrated pytest with coverage reporting, failing builds if coverage drops below 90%.\n3. **Security:** Added Bandit to scan for common vulnerabilities in the codebase.\n4. **Hooks:** Pre-commit hooks run linters and tests automatically, while post-commit hooks notify the team via Slack.\n5. **Agents:** A dedicated agent generates docstrings for functions and appends them to the API reference markdown file.\n\nThis configuration ensures the project adheres to modern Python development standards while automating repetitive tasks. The hooks reduce manual errors, and the agents offload documentation work, allowing the team to focus on feature development.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-config#main-content",
+      "claude-code-config#overview",
+      "claude-code-config#setup",
+      "claude-code-config#examples",
+      "claude-code-config#tools",
+      "claude-code-config#mcp",
+      "claude-code-config#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claude Code Configuration is a toolkit for developers using Claude Code that enables standardization of coding practices through path-scoped rules, custom hooks, and reusable agents. It includes components for enforcing TypeScript conventions, managing code comments, automating todo tracking, and running custom commands like interviews. The configuration system supports multiple agents for specialized tasks such as codebase searching, documentation writing, and media interpretation. Developers can define global instructions and skill reminders to maintain consistency across projects. This approach reduces manual configuration overhead and ensures team-wide adherence to coding standards.\nCustomize AI agent behavior for specific coding tasks to improve efficiency.\nIntegrate hooks that automate workflows, reducing manual intervention.\nManage and maintain configuration files for various development environments seamlessly.\nCreate and store reusable code snippets to speed up coding processes.",
+    "setup_vi": "Terminal\nCopy\n`claude install jarrodwatts/claude-code-config`\n`git clone https://github.com/jarrodwatts/claude-code-config`",
+    "usage_vi": "```\nConfigure a Claude Code project for [PROJECT_NAME] with the following requirements: [LIST_REQUIREMENTS]. Apply these rules: [RULES]. Set up any necessary hooks for [HOOK_PURPOSE]. Ensure the configuration aligns with [BEST_PRACTICES]. Include a sample agent for [AGENT_TASK].\n```\nCopy\n\n```\nHere’s a complete `claude-config.json` for a Python-based API project with FastAPI, including linting, testing, and deployment hooks:\n\n```json\n{\n  \"project_name\": \"FastAPI Weather Service\",\n  \"version\": \"1.0.0\",\n  \"rules\": {\n    \"linting\": {\n      \"enabled\": true,\n      \"tool\": \"ruff\",\n      \"config\": {\n        \"line-length\": 120,\n        \"select\": [\"E\", \"W\", \"F\", \"I\"]\n      }\n    },\n    \"testing\": {\n      \"enabled\": true,\n      \"framework\": \"pytest\",\n      \"coverage_threshold\": 90\n    },\n    \"security\": {\n      \"enabled\": true,\n      \"tool\": \"bandit\",\n      \"exclude\": [\"tests/\"]\n    }\n  },\n  \"hooks\": {\n    \"pre-commit\": [\n      {\n        \"name\": \"run-linter\",\n        \"command\": \"ruff check .\",\n        \"on_failure\": \"exit\"\n      },\n      {\n        \"name\": \"run-tests\",\n        \"command\": \"pytest tests/ --cov=src --cov-fail-under=90\",\n        \"on_failure\": \"warn\"\n      }\n    ],\n    \"post-commit\": [\n      {\n        \"name\": \"notify-team\",\n        \"command\": \"echo 'Changes committed successfully' && curl -X POST https://hooks.slack.com/services/... -d '{\"text\":\"New commit in FastAPI Weather Service\"}'\"\n      }\n    ]\n  },\n  \"agents\": {\n    \"docstring-generator\": {\n      \"enabled\": true,\n      \"prompt\": \"Generate Google-style docstrings for the following Python function:\\n```python\\n[FUNCTION_CODE]\\n```\",\n      \"output_path\": \"docs/api_reference.md\"\n    }\n  }\n}\n```\n\n**Key Features Applied:**\n1. **Linting:** Enforced PEP 8 compliance with Ruff, including line length and import sorting.\n2. **Testing:** Integrated pytest with coverage reporting, failing builds if coverage drops below 90%.\n3. **Security:** Added Bandit to scan for common vulnerabilities in the codebase.\n4. **Hooks:** Pre-commit hooks run linters and tests automatically, while post-commit hooks notify the team via Slack.\n5. **Agents:** A dedicated agent generates docstrings for functions and appends them to the API reference markdown file.\n\nThis configuration ensures the project adheres to modern Python development standards while automating repetitive tasks. The hooks reduce manual errors, and the agents offload documentation work, allowing the team to focus on feature development.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:02:48.074511Z",
+    "http_status": 200,
+    "content_hash": "8c47932f88cd7c1493e00bc4348a95814dd391f54946d2cc0be790c72ac1335f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-config.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Configuration for Developers",
+  "short_description_vi": "Claude Code Configuration is a comprehensive toolkit for developers, featuring customizable rules, hooks, agents, and commands to enhance productivity. Perfect for those looking to optimize their coding environment with AI-driven solutions."
+}

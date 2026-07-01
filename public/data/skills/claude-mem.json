@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-mem",
+  "slug": "claude-mem",
+  "name": "Claude Mem",
+  "headline": "claude-mem plugin for session recall",
+  "short_description": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "thedotmack",
+  "install_command": "git clone https://github.com/thedotmack/claude-mem.git",
+  "source_repo_url": "https://github.com/thedotmack/claude-mem",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "supermemory",
+    "claude-agent-sdk",
+    "claude",
+    "claude-code-plugin",
+    "anthropic",
+    "rag",
+    "claude-skills",
+    "chromadb",
+    "openmemory",
+    "sqlite",
+    "memory-engine",
+    "artificial-intelligence",
+    "long-term-memory",
+    "ai-agents",
+    "ai-memory",
+    "embeddings",
+    "claude-agents",
+    "mem0",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "claude-mem is a Claude Code plugin designed to automatically record everything Claude accomplishes during your coding sessions. The plugin uses AI-powered compression via Claude's agent-sdk to condense session data efficiently. It then intelligently injects relevant context back into future coding sessions, eliminating the need to manually re-explain project details, decisions, or progress. This automation reduces context setup time and helps Claude maintain continuity across multiple development sessions. The skill is ideal for developers working on long-term projects who want Claude to retain institutional knowledge about their codebase and workflows.\nAutomatically save and recall coding decisions made in previous sessions to streamline project development.\nUtilize the skill-based search feature to quickly find relevant code snippets or project history without manual searching.\nInject context from past coding sessions into new projects, reducing setup time and improving workflow efficiency.\nControl privacy by tagging sensitive information to exclude it from memory storage, ensuring compliance with data protection standards.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thedotmack/claude-mem`",
+    "usage": "```\nActivate claude-mem and begin a coding session. I'm working on a [PROGRAMMING_LANGUAGE] project called [PROJECT_NAME]. The main goal is to [PROJECT_GOAL]. I want to capture all relevant context, including code snippets, errors, and decisions made during this session. Later, I'll need this context injected into future sessions to maintain continuity.\n```\nCopy\n\n```\nClaude-Mem activated. Starting new coding session for Python project 'Inventory Management System'. Goal: Implement barcode scanning functionality using OpenCV. Session context captured: Installed required libraries (opencv-python, numpy), wrote initial barcode detection script, encountered error 'AttributeError: module 'cv2' has no attribute 'barcode''. Resolved by updating OpenCV version. Next steps: Implement database integration for scanned items. Context will be available in future sessions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-mem#main-content",
+      "claude-mem#overview",
+      "claude-mem#setup",
+      "claude-mem#examples",
+      "claude-mem#tools",
+      "claude-mem#mcp",
+      "claude-mem#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-mem is a Claude Code plugin designed to automatically record everything Claude accomplishes during your coding sessions. The plugin uses AI-powered compression via Claude's agent-sdk to condense session data efficiently. It then intelligently injects relevant context back into future coding sessions, eliminating the need to manually re-explain project details, decisions, or progress. This automation reduces context setup time and helps Claude maintain continuity across multiple development sessions. The skill is ideal for developers working on long-term projects who want Claude to retain institutional knowledge about their codebase and workflows.\nAutomatically save and recall coding decisions made in previous sessions to streamline project development.\nUtilize the skill-based search feature to quickly find relevant code snippets or project history without manual searching.\nInject context from past coding sessions into new projects, reducing setup time and improving workflow efficiency.\nControl privacy by tagging sensitive information to exclude it from memory storage, ensuring compliance with data protection standards.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thedotmack/claude-mem`",
+    "usage_vi": "```\nActivate claude-mem and begin a coding session. I'm working on a [PROGRAMMING_LANGUAGE] project called [PROJECT_NAME]. The main goal is to [PROJECT_GOAL]. I want to capture all relevant context, including code snippets, errors, and decisions made during this session. Later, I'll need this context injected into future sessions to maintain continuity.\n```\nCopy\n\n```\nClaude-Mem activated. Starting new coding session for Python project 'Inventory Management System'. Goal: Implement barcode scanning functionality using OpenCV. Session context captured: Installed required libraries (opencv-python, numpy), wrote initial barcode detection script, encountered error 'AttributeError: module 'cv2' has no attribute 'barcode''. Resolved by updating OpenCV version. Next steps: Implement database integration for scanned items. Context will be available in future sessions.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:40.844827Z",
+    "http_status": 200,
+    "content_hash": "76d72e0afdd37f140a7801b9d06f0280cfcb92aa9f219b77aa589c43af90b554",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-mem.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-mem.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-mem plugin for session recall",
+  "short_description_vi": "A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions."
+}

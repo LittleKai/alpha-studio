@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/axton-obsidian-visual-skills",
+  "slug": "axton-obsidian-visual-skills",
+  "name": "Axton Obsidian Visual Skills Pack",
+  "headline": "Axton Obsidian Visual Skills Pack - Diagram",
+  "short_description": "The Axton Obsidian Visual Skills Pack enables users to effortlessly create visual diagrams such as Canvas, Excalidraw, and Mermaid from text inputs using Claude Code. This tool enhances productivity by streamlining visual content generation directly within the Obsidian environment.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "axtonliu",
+  "install_command": "claude install axtonliu/axton-obsidian-visual-skills",
+  "source_repo_url": "https://github.com/axtonliu/axton-obsidian-visual-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "AI",
+    "Obsidian",
+    "productivity",
+    "visualization",
+    "diagrams"
+  ],
+  "sections": {
+    "overview": "The Axton Obsidian Visual Skills Pack provides three specialized tools for converting text descriptions into visual diagrams within Obsidian: Excalidraw for hand-drawn style diagrams, Mermaid for hierarchical flowcharts, and Canvas for colorful card-based layouts. Each skill follows detailed design rules covering color palettes, font sizing, spacing, and layout constraints to ensure professional output. Users input text descriptions and Claude generates properly formatted diagram code that renders immediately in Obsidian. This skill pack eliminates manual diagram creation, reducing the time needed to visualize concepts, workflows, and relationships in your knowledge base.\nGenerate flowcharts for project planning to visualize task sequences.\nCreate mind maps for brainstorming sessions to organize ideas effectively.\nVisualize data relationships with Mermaid diagrams for clear documentation.\nProduce quick sketches for design concepts using Excalidraw.",
+    "setup": "Terminal\nCopy\n`claude install axtonliu/axton-obsidian-visual-skills`\n`git clone https://github.com/axtonliu/axton-obsidian-visual-skills`",
+    "usage": "```\nCreate a [DIAGRAM_TYPE] diagram in [TOOL_NAME] format based on the following description: [DESCRIPTION]. Ensure the diagram includes all key elements and relationships. Use appropriate styling and layout to make it visually clear. For example, if the diagram type is a flowchart, include clear start and end points, decision nodes, and directional arrows.\n```\nCopy\n\n```\nHere's a Mermaid.js flowchart created based on the description of a customer onboarding process:\n\n```mermaid\nflowchart TD\n    A[Start] --> B{New Lead}\n    B -->|Qualified| C[Schedule Demo]\n    B -->|Not Qualified| D[End]\n    C --> E[Demo Completed]\n    E --> F{Interested?}\n    F -->|Yes| G[Send Proposal]\n    F -->|No| D\n    G --> H[Proposal Accepted]\n    G -->|Proposal Rejected| D\n    H --> I[Onboarding Started]\n    I --> J[End]\n```\n\nThis flowchart clearly outlines the customer onboarding process with distinct stages and decision points. The use of directional arrows and clear labeling ensures the process is easy to follow. The diagram can be directly used in Obsidian with the Mermaid plugin enabled.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "axton-obsidian-visual-skills#main-content",
+      "axton-obsidian-visual-skills#overview",
+      "axton-obsidian-visual-skills#setup",
+      "axton-obsidian-visual-skills#examples",
+      "axton-obsidian-visual-skills#tools",
+      "axton-obsidian-visual-skills#mcp",
+      "axton-obsidian-visual-skills#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Axton Obsidian Visual Skills Pack cung cấp ba công cụ chuyên dụng để chuyển đổi mô tả văn bản thành sơ đồ trực quan trong Obsidian: Excalidraw cho sơ đồ kiểu vẽ tay, Mermaid cho lưu đồ phân cấp và Canvas cho bố cục dạng thẻ nhiều màu sắc. Mỗi kỹ năng tuân thủ các quy tắc thiết kế chi tiết bao gồm bảng màu, kích thước phông chữ, khoảng cách và các ràng buộc bố cục để đảm bảo kết quả đầu ra chuyên nghiệp. Người dùng chỉ cần nhập mô tả văn bản và Claude sẽ tạo mã sơ đồ được định dạng chuẩn xác để hiển thị ngay lập tức trong Obsidian. Bộ kỹ năng này giúp loại bỏ việc tạo sơ đồ thủ công, giảm thời gian cần thiết để trực quan hóa các khái niệm, quy trình làm việc và mối quan hệ trong cơ sở tri thức (knowledge base) của bạn.\nTạo lưu đồ để lập kế hoạch dự án nhằm trực quan hóa chuỗi nhiệm vụ.\nTạo sơ đồ tư duy cho các buổi brainstorming để sắp xếp ý tưởng hiệu quả.\nTrực quan hóa các mối quan hệ dữ liệu bằng sơ đồ Mermaid để tài liệu hóa rõ ràng.\nTạo các bản phác thảo nhanh cho ý tưởng thiết kế bằng cách sử dụng Excalidraw.",
+    "setup_vi": "Terminal\nSao chép\n`claude install axtonliu/axton-obsidian-visual-skills`\n`git clone https://github.com/axtonliu/axton-obsidian-visual-skills`",
+    "usage_vi": "```\nTạo một sơ đồ [DIAGRAM_TYPE] dưới định dạng [TOOL_NAME] dựa trên mô tả sau: [DESCRIPTION]. Đảm bảo sơ đồ bao gồm tất cả các thành phần và mối quan hệ chính. Sử dụng kiểu dáng và bố cục phù hợp để trực quan hóa rõ ràng. Ví dụ: nếu loại sơ đồ là lưu đồ (flowchart), hãy bao gồm các điểm bắt đầu và kết thúc rõ ràng, các nút quyết định và các mũi tên chỉ hướng.\n```\nSao chép\n\n```\nDưới đây là lưu đồ Mermaid.js được tạo dựa trên mô tả về quy trình tiếp nhận khách hàng mới (customer onboarding):\n\n```mermaid\nflowchart TD\n    A[Start] --> B{New Lead}\n    B -->|Qualified| C[Schedule Demo]\n    B -->|Not Qualified| D[End]\n    C --> E[Demo Completed]\n    E --> F{Interested?}\n    F -->|Yes| G[Send Proposal]\n    F -->|No| D\n    G --> H[Proposal Accepted]\n    G -->|Proposal Rejected| D\n    H --> I[Onboarding Started]\n    I --> J[End]\n```\n\nLưu đồ này phác thảo rõ ràng quy trình tiếp nhận khách hàng mới với các giai đoạn và điểm quyết định riêng biệt. Việc sử dụng các mũi tên chỉ hướng và gán nhãn rõ ràng giúp quy trình dễ dàng được theo dõi. Sơ đồ này có thể được sử dụng trực tiếp trong Obsidian khi plugin Mermaid được kích hoạt.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:11:00.557347Z",
+    "http_status": 200,
+    "content_hash": "b27fec9336c4f43d5425bec1891e11c1f1fcc6cb0019f3c7ef5b0b29a2e0bbb1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\axton-obsidian-visual-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\axton-obsidian-visual-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Axton Obsidian Visual Skills Pack - Sơ đồ",
+  "short_description_vi": "Axton Obsidian Visual Skills Pack giúp người dùng dễ dàng tạo các sơ đồ trực quan như Canvas, Excalidraw và Mermaid từ văn bản đầu vào bằng cách sử dụng Claude Code. Công cụ này nâng cao năng suất bằng cách tinh giản quy trình tạo nội dung trực quan trực tiếp trong môi trường Obsidian."
+}

@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/iclr2025-papers-with-code",
+  "slug": "iclr2025-papers-with-code",
+  "name": "ICLR2025-Papers-with-Code",
+  "headline": "ICLR2025-Papers-with-Code - Automate Research",
+  "short_description": "Access and automate research from ICLR 2021-2025 papers and open-source projects. Ideal for operations teams to stay updated on LLM advancements in NLP. Integrates with Claude for automated research extraction and analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "yinizhilian",
+  "install_command": "git clone https://github.com/yinizhilian/ICLR2025-Papers-with-Code.git",
+  "source_repo_url": "https://github.com/yinizhilian/ICLR2025-Papers-with-Code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "iclr2021",
+    "gpt",
+    "python",
+    "nlp-keywords-extraction",
+    "transformer",
+    "llm-agent",
+    "llm-training",
+    "nlp-machine-learning",
+    "iclr2023",
+    "gemmini",
+    "llama3",
+    "iclr2022",
+    "paperwithcode",
+    "llm-framework",
+    "iclr2024",
+    "llms",
+    "machine-learning",
+    "llm-reasoning",
+    "deep-learning-paper"
+  ],
+  "sections": {
+    "overview": "This skill provides organized access to ICLR conference papers and corresponding open-source implementations spanning 2021 through 2025, with a focus on large language models and natural language processing research. The repository aggregates spotlight papers, accepted works, and code repositories in a single searchable collection, making it easier for researchers and operations teams to stay current with academic breakthroughs. Use it to track knowledge editing techniques, agent architectures, vision-language models, and emerging NLP methodologies. The skill integrates with Claude for automated extraction and analysis of research findings, enabling teams to quickly synthesize trends across multiple years of conference proceedings.\nAutomate the retrieval of the latest ICLR papers and their corresponding code implementations for research purposes.\nFacilitate the integration of state-of-the-art NLP techniques into existing projects by leveraging ICLR resources.\nStreamline the process of comparing different models and methodologies presented in ICLR papers.\nEnhance educational resources by providing students with access to the latest research and practical code examples.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yinizhilian/ICLR2025-Papers-with-Code`",
+    "usage": "```\nGenerate a concise research summary of the latest ICLR 2025 papers focused on [TOPIC, e.g., 'efficient fine-tuning of LLMs']. Include key contributions, implementation details, and open-source code links. Prioritize papers with available repositories. Format as: 1) Paper Title (Authors), 2) Key Idea (1-2 sentences), 3) Code/Repo (if available), 4) Why It Matters (1 sentence).\n```\nCopy\n\n```\n### ICLR 2025 Research Summary: Efficient Fine-Tuning of LLMs\n\n1) **LoRA-FT: Low-Rank Adaptation for Parameter-Efficient Fine-Tuning** (Smith et al.)\n   - Introduces a low-rank decomposition method to reduce fine-tuning memory usage by 80% compared to full fine-tuning, while maintaining 95% of original model performance.\n   - Implemented in PyTorch; code available at: [github.com/smith/lora-ft](https://github.com/smith/lora-ft)\n   - Enables fine-tuning of 70B parameter models on a single A100 GPU, democratizing access to large-scale LLM adaptation.\n\n2) **FlashAttention-2: Faster and More Memory-Efficient Attention for LLMs** (Dao et al.)\n   - Optimizes attention computation by reducing memory reads/writes by 3x and improving throughput by 25% on modern GPUs.\n   - Code integrated into Hugging Face Transformers; repo: [github.com/huggingface/transformers](https://github.com/huggingface/transformers)\n   - Critical for scaling inference and training of LLMs without hardware upgrades.\n\n3) **QLoRA: Quantized Low-Rank Adaptation for 4-bit LLMs** (Dettmers et al.)\n   - Combines 4-bit quantization with LoRA to enable fine-tuning of 65B parameter models on a single RTX 3090 (12GB VRAM).\n   - Code: [github.com/artidoro/qlora](https://github.com/artidoro/qlora)\n   - Reduces hardware barriers for researchers and practitioners working with state-of-the-art LLMs.\n\n**Why This Matters**: These papers collectively lower the barrier to entry for fine-tuning and deploying LLMs, making advanced NLP accessible to teams with limited compute resources.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "iclr2025-papers-with-code#main-content",
+      "iclr2025-papers-with-code#overview",
+      "iclr2025-papers-with-code#setup",
+      "iclr2025-papers-with-code#examples",
+      "iclr2025-papers-with-code#tools",
+      "iclr2025-papers-with-code#mcp",
+      "iclr2025-papers-with-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này cung cấp khả năng truy cập có hệ thống vào các bài báo khoa học tại hội nghị ICLR cùng các triển khai nguồn mở tương ứng từ năm 2021 đến 2025, tập trung vào nghiên cứu mô hình ngôn ngữ lớn (LLM) và xử lý ngôn ngữ tự nhiên (NLP). Kho lưu trữ này tổng hợp các bài báo nổi bật (spotlight papers), các công trình được chấp nhận (accepted works) và các kho chứa mã nguồn (code repositories) vào một bộ sưu tập duy nhất có thể tìm kiếm được, giúp các nhà nghiên cứu và operations teams dễ dàng cập nhật những đột phá học thuật mới nhất. Bạn có thể sử dụng công cụ này để theo dõi các kỹ thuật hiệu chỉnh tri thức (knowledge editing), kiến trúc agent, mô hình ngôn ngữ - thị giác (vision-language models) và các phương pháp NLP mới nổi. Skill tích hợp với Claude để tự động trích xuất và phân tích các phát hiện nghiên cứu, giúp các đội ngũ nhanh chóng tổng hợp các xu hướng qua nhiều năm diễn ra hội nghị.\n\nTự động hóa việc truy xuất các bài báo ICLR mới nhất và mã nguồn triển khai tương ứng phục vụ mục đích nghiên cứu.\nTạo điều kiện tích hợp các kỹ thuật NLP tiên tiến vào các dự án hiện có bằng cách tận dụng tài nguyên từ ICLR.\nTối ưu hóa quy trình so sánh các mô hình và phương pháp luận khác nhau được trình bày trong các bài báo ICLR.\nNâng cao chất lượng tài nguyên giáo dục bằng cách cung cấp cho sinh viên quyền truy cập vào các nghiên cứu mới nhất và các ví dụ mã nguồn thực tế.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yinizhilian/ICLR2025-Papers-with-Code`",
+    "usage_vi": "```\nTạo một bản tóm tắt nghiên cứu ngắn gọn về các bài báo ICLR 2025 mới nhất tập trung vào [CHỦ ĐỀ, ví dụ: 'efficient fine-tuning of LLMs']. Bao gồm các đóng góp chính, chi tiết triển khai và liên kết mã nguồn mở. Ưu tiên các bài báo có sẵn kho lưu trữ mã nguồn. Định dạng theo: 1) Tên bài báo (Tác giả), 2) Ý tưởng chủ đạo (1-2 câu), 3) Code/Kho lưu trữ (nếu có), 4) Ý nghĩa thực tiễn (1 câu).\n```\nCopy\n\n```\n### Tóm tắt nghiên cứu ICLR 2025: Efficient Fine-Tuning of LLMs\n\n1) **LoRA-FT: Low-Rank Adaptation for Parameter-Efficient Fine-Tuning** (Smith và cộng sự)\n   - Giới thiệu phương pháp phân rã hạng thấp (low-rank decomposition) giúp giảm 80% dung lượng bộ nhớ khi fine-tuning so với fine-tuning toàn phần, trong khi vẫn duy trì 95% hiệu suất của mô hình gốc.\n   - Được triển khai bằng PyTorch; mã nguồn có sẵn tại: [github.com/smith/lora-ft](https://github.com/smith/lora-ft)\n   - Cho phép fine-tuning các mô hình 70B tham số trên một GPU A100 duy nhất, giúp việc tinh chỉnh LLM quy mô lớn trở nên dễ tiếp cận hơn.\n\n2) **FlashAttention-2: Faster and More Memory-Efficient Attention for LLMs** (Dao và cộng sự)\n   - Tối ưu hóa việc tính toán attention bằng cách giảm 3 lần số lần đọc/ghi bộ nhớ và cải thiện 25% throughput trên các GPU hiện đại.\n   - Mã nguồn đã được tích hợp vào Hugging Face Transformers; repo: [github.com/huggingface/transformers](https://github.com/huggingface/transformers)\n   - Đóng vai trò quan trọng trong việc mở rộng quy mô inference và huấn luyện LLM mà không cần nâng cấp phần cứng.\n\n3) **QLoRA: Quantized Low-Rank Adaptation for 4-bit LLMs** (Dettmers và cộng sự)\n   - Kết hợp kỹ thuật lượng tử hóa 4-bit với LoRA để cho phép fine-tuning mô hình 65B tham số trên một GPU RTX 3090 duy nhất (12GB VRAM).\n   - Code: [github.com/artidoro/qlora](https://github.com/artidoro/qlora)\n   - Giảm rào cản phần cứng cho các nhà nghiên cứu và kỹ sư làm việc với các LLM tiên tiến nhất hiện nay.\n\n**Ý nghĩa thực tiễn**: Các bài báo này cùng nhau hạ thấp rào cản gia nhập đối với việc fine-tuning và triển khai LLM, giúp các đội ngũ có tài nguyên tính toán hạn chế tiếp cận được công nghệ NLP tiên tiến.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:07:25.855513Z",
+    "http_status": 200,
+    "content_hash": "99c10d44ffd509725d6049b2e9a1a2d5b3d99ab4d70322e23d47c036770771d4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\iclr2025-papers-with-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\iclr2025-papers-with-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ICLR2025-Papers-with-Code - Tự động hóa nghiên cứu",
+  "short_description_vi": "Truy cập và tự động hóa việc nghiên cứu từ các bài báo khoa học và dự án nguồn mở tại ICLR giai đoạn 2021-2025. Giải pháp lý tưởng giúp các đội ngũ vận hành (operations teams) cập nhật những tiến bộ mới nhất của LLM trong lĩnh vực NLP. Tích hợp trực tiếp với Claude để tự động trích xuất và phân tích kết quả nghiên cứu."
+}

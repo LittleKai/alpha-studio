@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/context7",
+  "slug": "context7",
+  "name": "react-native-best-practices",
+  "headline": "Context7 MCP Server - AI Code Documentation",
+  "short_description": "Context7 MCP Server provides comprehensive and up-to-date code documentation tailored for LLMs and AI code editors, enhancing developer productivity and collaboration. Ideal for teams looking to streamline their coding processes with advanced AI tools.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "upstash",
+  "install_command": "claude install upstash/context7",
+  "source_repo_url": "https://github.com/upstash/context7",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "AI coding",
+    "documentation",
+    "MCP",
+    "TypeScript",
+    "LLM"
+  ],
+  "sections": {
+    "overview": "Context7 is an MCP server that generates comprehensive code documentation specifically tailored for language models and AI code editors. It integrates with Claude Code and Cursor to provide developers with current, LLM-friendly documentation that enhances code understanding and collaboration. The skill enables seamless documentation lookup through commands like /context7:docs and supports both local and remote MCP server configurations. Teams can use Context7 to maintain documentation that's automatically optimized for AI agents, reducing context switching and improving developer productivity when working with AI-assisted coding tools.\nGenerate context-aware code snippets for LLMs to improve coding efficiency.\nIntegrate AI documentation tools into existing development workflows for seamless access to information.\nProvide real-time documentation updates for developers during coding sessions.\nEnhance code review processes by utilizing AI to identify potential issues and suggest improvements.",
+    "setup": "Terminal\nCopy\n`claude install upstash/context7`\n`git clone https://github.com/upstash/context7`",
+    "usage": "```\nGenerate comprehensive and up-to-date code documentation for the following codebase: [CODEBASE]. Ensure the documentation is tailored for LLMs and AI code editors. Focus on [SPECIFIC_FEATURES] and include examples of how to use them effectively. Highlight any potential pitfalls or common mistakes developers might encounter.\n```\nCopy\n\n```\nHere is the comprehensive code documentation for the 'E-Commerce Platform' codebase, tailored for LLMs and AI code editors:\n\n### Overview\nThe E-Commerce Platform is a robust system designed to handle online transactions, inventory management, and customer interactions. It is built using Python, Django, and React, with a PostgreSQL database for data storage.\n\n### Key Features\n1. **User Authentication**: The platform supports secure user authentication using JWT (JSON Web Tokens). The authentication module is located in the `auth` directory.\n2. **Product Management**: The product management system allows administrators to add, update, and delete products. The product models and views are located in the `products` directory.\n3. **Order Processing**: The order processing system handles the creation, updating, and fulfillment of orders. The order models and views are located in the `orders` directory.\n4. **Payment Integration**: The platform integrates with Stripe for payment processing. The payment integration code is located in the `payments` directory.\n\n### Examples\nTo authenticate a user, you can use the following code snippet:\n```python\nimport requests\n\nurl = 'https://api.ecommerceplatform.com/auth/login'\ndata = {'username': 'user123', 'password': 'password123'}\nresponse = requests.post(url, data=data)\n\nif response.status_code == 200:\n    token = response.json()['token']\n    print('Authentication successful. Token:', token)\nelse:\n    print('Authentication failed. Error:', response.json()['error'])\n```\n\nTo add a new product, you can use the following code snippet:\n```python\nimport requests\n\nurl = 'https://api.ecommerceplatform.com/products'\ndata = {'name': 'New Product', 'description': 'This is a new product', 'price': 19.99}\nheaders = {'Authorization': 'Bearer ' + token}\nresponse = requests.post(url, data=data, headers=headers)\n\nif response.status_code == 201:\n    print('Product added successfully. Product ID:', response.json()['id'])\nelse:\n    print('Failed to add product. Error:', response.json()['error'])\n```\n\n### Potential Pitfalls\n1. **Authentication Errors**: Ensure that the JWT token is correctly generated and stored securely. Common mistakes include using an expired token or not including the token in the request headers.\n2. **Product Management**: When updating a product, ensure that the product ID is correct. Common mistakes include updating the wrong product or not including all required fields.\n3. **Order Processing**: When processing an order, ensure that the order status is correctly updated. Common mistakes include not updating the order status or updating it to the wrong status.\n4. **Payment Integration**: When integrating with Stripe, ensure that the API keys are correctly configured. Common mistakes include using the wrong API keys or not handling payment errors correctly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "context7#main-content",
+      "context7#overview",
+      "context7#setup",
+      "context7#examples",
+      "context7#tools",
+      "context7#mcp",
+      "context7#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Context7 is an MCP server that generates comprehensive code documentation specifically tailored for language models and AI code editors. It integrates with Claude Code and Cursor to provide developers with current, LLM-friendly documentation that enhances code understanding and collaboration. The skill enables seamless documentation lookup through commands like /context7:docs and supports both local and remote MCP server configurations. Teams can use Context7 to maintain documentation that's automatically optimized for AI agents, reducing context switching and improving developer productivity when working with AI-assisted coding tools.\nGenerate context-aware code snippets for LLMs to improve coding efficiency.\nIntegrate AI documentation tools into existing development workflows for seamless access to information.\nProvide real-time documentation updates for developers during coding sessions.\nEnhance code review processes by utilizing AI to identify potential issues and suggest improvements.",
+    "setup_vi": "Terminal\nCopy\n`claude install upstash/context7`\n`git clone https://github.com/upstash/context7`",
+    "usage_vi": "```\nGenerate comprehensive and up-to-date code documentation for the following codebase: [CODEBASE]. Ensure the documentation is tailored for LLMs and AI code editors. Focus on [SPECIFIC_FEATURES] and include examples of how to use them effectively. Highlight any potential pitfalls or common mistakes developers might encounter.\n```\nCopy\n\n```\nHere is the comprehensive code documentation for the 'E-Commerce Platform' codebase, tailored for LLMs and AI code editors:\n\n### Overview\nThe E-Commerce Platform is a robust system designed to handle online transactions, inventory management, and customer interactions. It is built using Python, Django, and React, with a PostgreSQL database for data storage.\n\n### Key Features\n1. **User Authentication**: The platform supports secure user authentication using JWT (JSON Web Tokens). The authentication module is located in the `auth` directory.\n2. **Product Management**: The product management system allows administrators to add, update, and delete products. The product models and views are located in the `products` directory.\n3. **Order Processing**: The order processing system handles the creation, updating, and fulfillment of orders. The order models and views are located in the `orders` directory.\n4. **Payment Integration**: The platform integrates with Stripe for payment processing. The payment integration code is located in the `payments` directory.\n\n### Examples\nTo authenticate a user, you can use the following code snippet:\n```python\nimport requests\n\nurl = 'https://api.ecommerceplatform.com/auth/login'\ndata = {'username': 'user123', 'password': 'password123'}\nresponse = requests.post(url, data=data)\n\nif response.status_code == 200:\n    token = response.json()['token']\n    print('Authentication successful. Token:', token)\nelse:\n    print('Authentication failed. Error:', response.json()['error'])\n```\n\nTo add a new product, you can use the following code snippet:\n```python\nimport requests\n\nurl = 'https://api.ecommerceplatform.com/products'\ndata = {'name': 'New Product', 'description': 'This is a new product', 'price': 19.99}\nheaders = {'Authorization': 'Bearer ' + token}\nresponse = requests.post(url, data=data, headers=headers)\n\nif response.status_code == 201:\n    print('Product added successfully. Product ID:', response.json()['id'])\nelse:\n    print('Failed to add product. Error:', response.json()['error'])\n```\n\n### Potential Pitfalls\n1. **Authentication Errors**: Ensure that the JWT token is correctly generated and stored securely. Common mistakes include using an expired token or not including the token in the request headers.\n2. **Product Management**: When updating a product, ensure that the product ID is correct. Common mistakes include updating the wrong product or not including all required fields.\n3. **Order Processing**: When processing an order, ensure that the order status is correctly updated. Common mistakes include not updating the order status or updating it to the wrong status.\n4. **Payment Integration**: When integrating with Stripe, ensure that the API keys are correctly configured. Common mistakes include using the wrong API keys or not handling payment errors correctly.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:15:57.460747Z",
+    "http_status": 200,
+    "content_hash": "741c790c9f896fd5d5a102d31dc46f84c23d5398cddf57d93ff507496c067e01",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\context7.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\context7.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Context7 MCP Server - AI Code Documentation",
+  "short_description_vi": "Context7 MCP Server provides comprehensive and up-to-date code documentation tailored for LLMs and AI code editors, enhancing developer productivity and collaboration. Ideal for teams looking to streamline their coding processes with advanced AI tools."
+}

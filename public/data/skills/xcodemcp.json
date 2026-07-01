@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xcodemcp",
+  "slug": "xcodemcp",
+  "name": "browser-use",
+  "headline": "XcodeMCP - Automate Xcode Builds",
+  "short_description": "XcodeMCP is an MCP server for Xcode that wraps its AppleScript interface and uses XCLogParser to return clear build results. It benefits operations teams by automating Xcode build processes, providing structured output for CI/CD pipelines, and integrating with agentic AI tools like Claude.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "lapfelix",
+  "install_command": "git clone https://github.com/lapfelix/XcodeMCP.git",
+  "source_repo_url": "https://github.com/lapfelix/XcodeMCP",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-ai",
+    "applescript",
+    "xcode",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "XcodeMCP is a Model Context Protocol server that gives AI agents like Claude direct control over Xcode through JavaScript for Automation (JXA). It automates building, running, testing, and debugging Xcode projects while parsing build logs with XCLogParser to provide precise error locations and structured output. Operations teams and CI/CD pipelines benefit from comprehensive environment validation and graceful degradation when optional dependencies are missing. XcodeMCP runs as both an MCP server for integration with Claude Code, VS Code, and other clients, and as a standalone CLI tool with full feature parity. It also supports sidekick mode to complement Apple's official Xcode MCP server, focusing on project management and XCResult analysis.\nAutomate Xcode builds in CI/CD pipelines with structured output\nParse build logs with precise error locations for debugging\nEnable AI agents to run tests and debug projects directly from Xcode\nManage Xcode projects and schemes through agentic workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lapfelix/XcodeMCP`",
+    "usage": "```\nUse XcodeMCP to [ACTION] for [PROJECT_NAME]. For example: 'Use XcodeMCP to run a clean build for MyApp in Xcode and return the build results in JSON format.' Include [OPTIONS] if needed, like 'with the iOS Simulator (iPhone 15)' or 'for the Debug scheme'.\n```\nCopy\n\n```\n```json\n{\n  \"project\": \"MyApp\",\n  \"action\": \"clean build\",\n  \"status\": \"success\",\n  \"duration_seconds\": 42.3,\n  \"warnings\": 2,\n  \"errors\": 0,\n  \"build_output\": {\n    \"targets\": [\n      {\n        \"name\": \"MyApp\",\n        \"status\": \"built\",\n        \"warnings\": [\n          {\n            \"file\": \"ViewController.swift\",\n            \"line\": 42,\n            \"message\": \"Variable 'userData' was never used\",\n            \"severity\": \"warning\"\n          }\n        ]\n      }\n    ],\n    \"logs\": [\n      {\n        \"timestamp\": \"2024-05-20T14:30:12Z\",\n        \"type\": \"info\",\n        \"message\": \"Compiling MyApp...\"\n      },\n      {\n        \"timestamp\": \"2024-05-20T14:30:45Z\",\n        \"type\": \"success\",\n        \"message\": \"Build succeeded\"\n      }\n    ]\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xcodemcp#main-content",
+      "xcodemcp#overview",
+      "xcodemcp#setup",
+      "xcodemcp#examples",
+      "xcodemcp#tools",
+      "xcodemcp#mcp",
+      "xcodemcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "XcodeMCP is a Model Context Protocol server that gives AI agents like Claude direct control over Xcode through JavaScript for Automation (JXA). It automates building, running, testing, and debugging Xcode projects while parsing build logs with XCLogParser to provide precise error locations and structured output. Operations teams and CI/CD pipelines benefit from comprehensive environment validation and graceful degradation when optional dependencies are missing. XcodeMCP runs as both an MCP server for integration with Claude Code, VS Code, and other clients, and as a standalone CLI tool with full feature parity. It also supports sidekick mode to complement Apple's official Xcode MCP server, focusing on project management and XCResult analysis.\nAutomate Xcode builds in CI/CD pipelines with structured output\nParse build logs with precise error locations for debugging\nEnable AI agents to run tests and debug projects directly from Xcode\nManage Xcode projects and schemes through agentic workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lapfelix/XcodeMCP`",
+    "usage_vi": "```\nUse XcodeMCP to [ACTION] for [PROJECT_NAME]. For example: 'Use XcodeMCP to run a clean build for MyApp in Xcode and return the build results in JSON format.' Include [OPTIONS] if needed, like 'with the iOS Simulator (iPhone 15)' or 'for the Debug scheme'.\n```\nCopy\n\n```\n```json\n{\n  \"project\": \"MyApp\",\n  \"action\": \"clean build\",\n  \"status\": \"success\",\n  \"duration_seconds\": 42.3,\n  \"warnings\": 2,\n  \"errors\": 0,\n  \"build_output\": {\n    \"targets\": [\n      {\n        \"name\": \"MyApp\",\n        \"status\": \"built\",\n        \"warnings\": [\n          {\n            \"file\": \"ViewController.swift\",\n            \"line\": 42,\n            \"message\": \"Variable 'userData' was never used\",\n            \"severity\": \"warning\"\n          }\n        ]\n      }\n    ],\n    \"logs\": [\n      {\n        \"timestamp\": \"2024-05-20T14:30:12Z\",\n        \"type\": \"info\",\n        \"message\": \"Compiling MyApp...\"\n      },\n      {\n        \"timestamp\": \"2024-05-20T14:30:45Z\",\n        \"type\": \"success\",\n        \"message\": \"Build succeeded\"\n      }\n    ]\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:27:40.962430Z",
+    "http_status": 200,
+    "content_hash": "f5281ca9589c315f5e41ba7ed87eb875d624716f33b39cd1e4083c73a415c985",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xcodemcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xcodemcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "XcodeMCP - Automate Xcode Builds",
+  "short_description_vi": "XcodeMCP is an MCP server for Xcode that wraps its AppleScript interface and uses XCLogParser to return clear build results. It benefits operations teams by automating Xcode build processes, providing structured output for CI/CD pipelines, and integrating with agentic AI tools like Claude."
+}

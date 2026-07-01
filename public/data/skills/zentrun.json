@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zentrun",
+  "slug": "zentrun",
+  "name": "Zentrun",
+  "headline": "Zentrun - Natural Language Automation",
+  "short_description": "Zentrun transforms natural language into executable workflows. Operations teams automate tasks by describing them in plain English. Connects to Slack, APIs, and other tools without complex setup.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "andrewsky-labs",
+  "install_command": "git clone https://github.com/andrewsky-labs/zentrun.git",
+  "source_repo_url": "https://github.com/andrewsky-labs/zentrun",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "productivity",
+    "agents",
+    "business-automation",
+    "ai-automation",
+    "mcp-client",
+    "n8n-alternative",
+    "workflow",
+    "gpt",
+    "vibe-coding",
+    "ai-agents",
+    "palantir-alternative",
+    "openai",
+    "ollama",
+    "make-alternative",
+    "zapier-alternative"
+  ],
+  "sections": {
+    "overview": "Zentrun transforms plain English descriptions into fully functional automation workflows that run locally on your machine. Unlike traditional automation platforms that require configuration, API keys, and workflow builders, Zentrun uses AI code generation to handle data collection, analysis, scheduling, and reporting from a single prompt. It leverages your existing browser sessions to access logged-in services, integrates local databases (SQLite/DuckDB) for analytics, and supports ML model training with scikit-learn and TensorFlow. Teams use it for daily reports, competitive monitoring, customer intelligence, content operations, and business intelligence pipelines—all executable immediately without manual setup.\nCollect daily sales data, compare to targets, and send executive summaries to Slack\nMonitor competitor websites for pricing changes and analyze competitive impact\nAnalyze customer support tickets, classify by urgency, and predict escalation needs\nTrack trending topics, generate content ideas, schedule posts, and measure engagement",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/andrewsky-labs/zentrun`",
+    "usage": "```\nCreate a workflow that [ACTION] [DATA] from [SOURCE] to [DESTINATION]. The workflow should run [FREQUENCY] and notify [PERSON] via Slack when complete. Use the [TOOL] API for the data transfer.\n```\nCopy\n\n```\n# Workflow: Daily Sales Report to Slack",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zentrun#main-content",
+      "zentrun#overview",
+      "zentrun#setup",
+      "zentrun#examples",
+      "zentrun#tools",
+      "zentrun#mcp",
+      "zentrun#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Zentrun transforms plain English descriptions into fully functional automation workflows that run locally on your machine. Unlike traditional automation platforms that require configuration, API keys, and workflow builders, Zentrun uses AI code generation to handle data collection, analysis, scheduling, and reporting from a single prompt. It leverages your existing browser sessions to access logged-in services, integrates local databases (SQLite/DuckDB) for analytics, and supports ML model training with scikit-learn and TensorFlow. Teams use it for daily reports, competitive monitoring, customer intelligence, content operations, and business intelligence pipelines—all executable immediately without manual setup.\nCollect daily sales data, compare to targets, and send executive summaries to Slack\nMonitor competitor websites for pricing changes and analyze competitive impact\nAnalyze customer support tickets, classify by urgency, and predict escalation needs\nTrack trending topics, generate content ideas, schedule posts, and measure engagement",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/andrewsky-labs/zentrun`",
+    "usage_vi": "```\nCreate a workflow that [ACTION] [DATA] from [SOURCE] to [DESTINATION]. The workflow should run [FREQUENCY] and notify [PERSON] via Slack when complete. Use the [TOOL] API for the data transfer.\n```\nCopy\n\n```\n# Workflow: Daily Sales Report to Slack"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:54.654736Z",
+    "http_status": 200,
+    "content_hash": "da6451974a52cb9447e0369fde128107ea1d6db73a49895d48f514767dd5d389",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zentrun.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zentrun.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Zentrun - Natural Language Automation",
+  "short_description_vi": "Zentrun transforms natural language into executable workflows. Operations teams automate tasks by describing them in plain English. Connects to Slack, APIs, and other tools without complex setup."
+}

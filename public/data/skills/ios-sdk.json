@@ -1,0 +1,52 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ios-sdk",
+  "slug": "ios-sdk",
+  "name": "iOS-SDK",
+  "headline": "Pushmote iOS SDK: iBeacon Marketing for iOS Apps",
+  "short_description": "Pushmote iOS SDK integrates iBeacon-based cloud marketing and content management into iOS apps, enabling proximity-triggered campaigns and user analytics.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Pushmote",
+  "install_command": "git clone https://github.com/Pushmote/iOS-SDK.git",
+  "source_repo_url": "https://github.com/Pushmote/iOS-SDK",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Pushmote iOS SDK (v2.1.1) is an Objective-C framework that connects iOS applications to Pushmote's cloud platform for iBeacon-driven marketing and content delivery. It enables developers to trigger sticky or non-sticky content based on beacon proximity, giving marketers control over location-aware campaigns from a central cloud dashboard. The SDK supports user property tagging via setUserProperties, allowing segmentation and personalization of beacon-triggered content. Built-in analytics and a simulate action feature help teams test and measure campaign performance. Retail, hospitality, and event teams building proximity marketing into iOS apps are the primary beneficiaries.\nDeliver proximity-triggered promotional content to shoppers near iBeacons in retail stores\nSegment and personalize beacon campaigns using custom user properties\nServe sticky or non-sticky in-app content based on a visitor's location within a venue\nTest beacon-triggered actions in development using the simulate action feature",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Pushmote/iOS-SDK`\n\nAdd the following to your Podfile:\n```ruby\npod '[COMPANY]BeaconSDK', '~> 2.1.0'\n```\n\nRun `pod install` to install the SDK.",
+    "usage": "```\nAct as an expert in iOS-SDK development for iBeacon-based marketing platforms. Provide a step-by-step guide for integrating the [COMPANY] iOS-SDK into an existing iOS app to enable beacon-based content delivery. Include code snippets and best practices for handling beacon regions and proximity detection.\n```\nCopy\n\n```\n# iOS-SDK Integration Guide for [COMPANY] iBeacon Platform",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ios-sdk#main-content",
+      "ios-sdk#overview",
+      "ios-sdk#setup",
+      "ios-sdk#examples",
+      "ios-sdk#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "Pushmote iOS SDK (v2.1.1) là một framework Objective-C kết nối các ứng dụng iOS với nền tảng đám mây của Pushmote để triển khai marketing và phân phối nội dung dựa trên iBeacon. SDK này cho phép nhà phát triển kích hoạt hiển thị nội dung dạng sticky (ghim) hoặc non-sticky dựa trên khoảng cách tới beacon, giúp các nhà làm marketing dễ dàng kiểm soát các chiến dịch định vị mục tiêu theo vị trí từ một dashboard đám mây tập trung. SDK hỗ trợ gắn thẻ thuộc tính người dùng thông qua hàm `setUserProperties`, cho phép phân khúc và cá nhân hóa nội dung kích hoạt bởi beacon. Các tính năng tích hợp sẵn như phân tích dữ liệu (analytics) và giả lập hành động (simulate action) giúp các đội ngũ phát triển dễ dàng thử nghiệm cũng như đo lường hiệu quả chiến dịch. Các đội ngũ phát triển ứng dụng trong lĩnh vực bán lẻ, nhà hàng - khách sạn và tổ chức sự kiện muốn tích hợp marketing theo khoảng cách (proximity marketing) vào ứng dụng iOS là những đối tượng hưởng lợi chính.\nPhân phối nội dung khuyến mãi kích hoạt theo khoảng cách đến khách mua hàng ở gần iBeacons trong các cửa hàng bán lẻ\nPhân khúc và cá nhân hóa các chiến dịch beacon bằng cách sử dụng các thuộc tính người dùng tùy chỉnh (custom user properties)\nHiển thị nội dung in-app dạng sticky hoặc non-sticky dựa trên vị trí của khách truy cập trong một địa điểm cụ thể\nThử nghiệm các hành động kích hoạt bởi beacon trong môi trường phát triển bằng tính năng giả lập hành động (simulate action)",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Pushmote/iOS-SDK`\n\nThêm dòng sau vào Podfile của bạn:\n```ruby\npod '[COMPANY]BeaconSDK', '~> 2.1.0'\n```\n\nChạy lệnh `pod install` để cài đặt SDK.",
+    "usage_vi": "```\nĐóng vai trò là một chuyên gia phát triển iOS-SDK cho các nền tảng marketing dựa trên iBeacon. Cung cấp hướng dẫn từng bước để tích hợp [COMPANY] iOS-SDK vào một ứng dụng iOS hiện có nhằm kích hoạt tính năng phân phối nội dung dựa trên beacon. Bao gồm các đoạn mã (code snippet) và các thực hành tốt nhất (best practices) để xử lý vùng phủ sóng beacon (beacon regions) và phát hiện khoảng cách (proximity detection).\n```\nCopy\n\n```\n# Hướng dẫn tích hợp iOS-SDK cho Nền tảng iBeacon [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:08:21.237043Z",
+    "http_status": 200,
+    "content_hash": "ee8e9e6a2a7616069665bcdcbd48592486c1cf72b83287e5e8918f50615fdb0d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ios-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ios-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Pushmote iOS SDK: Giải pháp iBeacon Marketing cho ứng dụng iOS",
+  "short_description_vi": "Pushmote iOS SDK tích hợp các tính năng quản lý nội dung và marketing đám mây dựa trên iBeacon vào ứng dụng iOS, hỗ trợ triển khai các chiến dịch kích hoạt theo khoảng cách (proximity-triggered) và phân tích hành vi người dùng."
+}

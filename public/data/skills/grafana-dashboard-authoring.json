@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/grafana-dashboard-authoring",
+  "slug": "grafana-dashboard-authoring",
+  "name": "Grafana Dashboard Authoring",
+  "headline": "Grafana Dashboard Authoring: Programmatic Dashboard",
+  "short_description": "This skill allows users to create JSON-based dashboards in Grafana using its API. It is intended for developers and data analysts who need to generate and manage dashboards programmatically.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "grafana",
+  "install_command": "git clone https://github.com/grafana/skills",
+  "source_repo_url": "https://github.com/grafana/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "grafana",
+    "dashboarding",
+    "dashboard",
+    "authoring"
+  ],
+  "sections": {
+    "overview": "The Grafana Dashboard Authoring skill enables developers and data analysts to create, configure, and organize Grafana dashboards through code. It covers core dashboard components including panels, variables, transformations, and thresholds, allowing you to automate dashboard generation and standardize dashboard design patterns across teams. This skill integrates with Grafana's API to support infrastructure-as-code workflows for observability platforms. Use it to dynamically generate dashboards from data models, implement dashboard templates, or maintain consistent visualization standards across multiple environments without manual UI work.\nGenerate dashboards dynamically based on data\nAutomate dashboard updates via scripts\nIntegrate dashboard creation in CI/CD pipelines",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/grafana/skills --skill dashboarding`\n`git clone https://github.com/grafana/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "grafana-dashboard-authoring#main-content",
+      "grafana-dashboard-authoring#overview",
+      "grafana-dashboard-authoring#setup",
+      "grafana-dashboard-authoring#examples",
+      "grafana-dashboard-authoring#tools",
+      "grafana-dashboard-authoring#mcp",
+      "grafana-dashboard-authoring#related"
+    ],
+    "overview_vi": "The Grafana Dashboard Authoring skill enables developers and data analysts to create, configure, and organize Grafana dashboards through code. It covers core dashboard components including panels, variables, transformations, and thresholds, allowing you to automate dashboard generation and standardize dashboard design patterns across teams. This skill integrates with Grafana's API to support infrastructure-as-code workflows for observability platforms. Use it to dynamically generate dashboards from data models, implement dashboard templates, or maintain consistent visualization standards across multiple environments without manual UI work.\nGenerate dashboards dynamically based on data\nAutomate dashboard updates via scripts\nIntegrate dashboard creation in CI/CD pipelines",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/grafana/skills --skill dashboarding`\n`git clone https://github.com/grafana/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:43.291070Z",
+    "http_status": 200,
+    "content_hash": "d9faa5be26a71f4829275a7e9dcbe9532d6aec7d574a8078b54952c5acc029f1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\grafana-dashboard-authoring.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\grafana-dashboard-authoring.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Grafana Dashboard Authoring: Programmatic Dashboard",
+  "short_description_vi": "This skill allows users to create JSON-based dashboards in Grafana using its API. It is intended for developers and data analysts who need to generate and manage dashboards programmatically."
+}

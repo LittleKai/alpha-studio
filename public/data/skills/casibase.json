@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/casibase",
+  "slug": "casibase",
+  "name": "langchain-salesforce",
+  "headline": "Casibase: Open-Source AI Cloud OS for Enterprises",
+  "short_description": "Casibase is an open-source AI Cloud OS that serves as an enterprise-level knowledge base and management platform for AI agents. It supports multiple models and provides strong user management features, making it ideal for organizations looking to streamline AI interactions.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "casibase",
+  "install_command": "claude install casibase/casibase",
+  "source_repo_url": "https://github.com/casibase/casibase",
+  "works_with": [
+    "ChatGPTClaudeLlamaHuggingFace"
+  ],
+  "tags": [
+    "multi-agent",
+    "knowledge-base",
+    "chatbot",
+    "AI management",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "OpenAgent is an open-source AI Cloud OS designed as an enterprise-level knowledge base and management platform for AI agents. The platform supports multiple AI models and provides robust user management features for organizations deploying AI agent solutions. It includes components for authentication, authorization, chat functionality, and workflow management (BPMN). OpenAgent enables teams to streamline AI interactions through centralized knowledge management and control over agent behavior and access. The platform is actively maintained with regular updates and contributions from its development community.\nCentralize AI knowledge for teams to enhance collaboration and information sharing.\nManage agent-to-agent interactions to improve the efficiency of AI workflows.\nImplement Single-Sign-On for seamless access to AI tools across the organization.\nCreate chatbots for customer support that can handle inquiries and provide assistance.",
+    "setup": "Terminal\nCopy\n`claude install casibase/casibase`\n`git clone https://github.com/casibase/casibase`",
+    "usage": "```\nSet up a Casibase knowledge base for [ORGANIZATION] to manage AI agents. Configure user roles and permissions for [TEAM_SIZE] team members. Integrate with [DATA_SOURCE] to enable real-time data access. Create a dashboard to monitor agent performance and usage metrics.\n```\nCopy\n\n```\nCasibase has been successfully configured for TechInnovate Solutions. The knowledge base now includes three user roles: Admin, Data Analyst, and Viewer, with appropriate permissions set for each. The system is integrated with Snowflake, allowing AI agents to access real-time sales and customer data. A comprehensive dashboard has been created to track agent performance, including response times, accuracy rates, and user satisfaction scores. The dashboard also provides insights into data usage patterns and system health metrics.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, Claude, Llama, HuggingFace"
+    ],
+    "related_skills": [
+      "casibase#main-content",
+      "casibase#overview",
+      "casibase#setup",
+      "casibase#examples",
+      "casibase#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "OpenAgent is an open-source AI Cloud OS designed as an enterprise-level knowledge base and management platform for AI agents. The platform supports multiple AI models and provides robust user management features for organizations deploying AI agent solutions. It includes components for authentication, authorization, chat functionality, and workflow management (BPMN). OpenAgent enables teams to streamline AI interactions through centralized knowledge management and control over agent behavior and access. The platform is actively maintained with regular updates and contributions from its development community.\nCentralize AI knowledge for teams to enhance collaboration and information sharing.\nManage agent-to-agent interactions to improve the efficiency of AI workflows.\nImplement Single-Sign-On for seamless access to AI tools across the organization.\nCreate chatbots for customer support that can handle inquiries and provide assistance.",
+    "setup_vi": "Terminal\nCopy\n`claude install casibase/casibase`\n`git clone https://github.com/casibase/casibase`",
+    "usage_vi": "```\nSet up a Casibase knowledge base for [ORGANIZATION] to manage AI agents. Configure user roles and permissions for [TEAM_SIZE] team members. Integrate with [DATA_SOURCE] to enable real-time data access. Create a dashboard to monitor agent performance and usage metrics.\n```\nCopy\n\n```\nCasibase has been successfully configured for TechInnovate Solutions. The knowledge base now includes three user roles: Admin, Data Analyst, and Viewer, with appropriate permissions set for each. The system is integrated with Snowflake, allowing AI agents to access real-time sales and customer data. A comprehensive dashboard has been created to track agent performance, including response times, accuracy rates, and user satisfaction scores. The dashboard also provides insights into data usage patterns and system health metrics.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:21:21.057791Z",
+    "http_status": 200,
+    "content_hash": "ac1fcf51c54703b84bb3aec4b9bd44327d4b7e74daeddb8bb59b562708b69cf6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\casibase.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\casibase.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Casibase: Open-Source AI Cloud OS for Enterprises",
+  "short_description_vi": "Casibase is an open-source AI Cloud OS that serves as an enterprise-level knowledge base and management platform for AI agents. It supports multiple models and provides strong user management features, making it ideal for organizations looking to streamline AI interactions."
+}

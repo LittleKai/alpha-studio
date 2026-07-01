@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-rest-api",
+  "slug": "mcp-rest-api",
+  "name": "MCP Rest API",
+  "headline": "mcp-rest-api: Efficient REST API Testing",
+  "short_description": "A TypeScript-based MCP server for testing REST APIs through Cline. Enables developers to test and interact with any REST API endpoints directly from their development environment. Ideal for operations teams automating API testing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "dkmaker",
+  "install_command": "git clone https://github.com/dkmaker/mcp-rest-api.git",
+  "source_repo_url": "https://github.com/dkmaker/mcp-rest-api",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "anthropic",
+    "mcp-servers",
+    "cline",
+    "claude-code",
+    "mcp-server",
+    "claude-code-mcp"
+  ],
+  "sections": {
+    "overview": "The mcp-rest-api is an advanced automation skill designed specifically for developers and AI practitioners looking to streamline their workflow when testing REST APIs. Built with TypeScript, this tool allows users to interact with and test any REST API endpoints directly from their development environment, making it an essential addition to any API testing toolkit. By utilizing Cline, developers can easily send requests and receive responses, facilitating a more efficient testing process. One of the key benefits of the mcp-rest-api is its ability to save time during the API testing phase. Although specific time savings are currently unknown, the streamlined interaction with REST APIs can significantly reduce the manual effort required to test and validate API endpoints. This is particularly advantageous for teams that need to ensure the reliability and performance of their APIs without getting bogged down in repetitive tasks. This skill is ideal for intermediate developers, product managers, and AI practitioners who are involved in API development and testing. Whether you are working in a software development department or as part of a product team, the mcp-rest-api can enhance your workflow by providing a straightforward way to validate API functionality. Practical use cases include testing new API features before deployment, conducting regression tests on existing APIs, and integrating API testing into continuous integration/continuous deployment (CI/CD) pipelines. Implementing the mcp-rest-api is straightforward, requiring approximately 30 minutes to set up. While the complexity is rated as intermediate, developers familiar with TypeScript and RESTful services will find it easy to integrate into their existing workflows. As organizations increasingly adopt AI-first strategies, tools like the mcp-rest-api become essential for ensuring that API interactions are efficient and reliable, ultimately contributing to the success of automation initiatives.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dkmaker/mcp-rest-api`",
+    "usage": "```\nUse the mcp-rest-api MCP server to test the [API_ENDPOINT] endpoint with the following parameters: [HTTP_METHOD], [REQUEST_BODY_OR_QUERY_PARAMS], and [HEADERS]. Validate the response status code against [EXPECTED_STATUS_CODE]. If the response contains [EXPECTED_RESPONSE_BODY_KEYS], extract and display them. Log any errors or mismatches for debugging.\n```\nCopy\n\n```\nTesting the `POST /api/v1/users` endpoint with the following payload:\n{\n  \"name\": \"Alex Carter\",\n  \"email\": \"alex.carter@example.com\",\n  \"role\": \"developer\"\n}\nHeaders: { \"Authorization\": \"Bearer token123\", \"Content-Type\": \"application/json\" }\n\nResponse Status: 201 Created (Expected: 201)\nResponse Body:\n{\n  \"id\": \"usr_7890\",\n  \"createdAt\": \"2024-05-20T14:30:00Z\",\n  \"name\": \"Alex Carter\",\n  \"email\": \"alex.carter@example.com\",\n  \"role\": \"developer\"\n}\n\nValidation Results:\n✅ Status code matches expected (201).\n✅ Response contains expected keys: id, createdAt, name, email, role.\n✅ Email format is valid.\n\nNo errors detected. The endpoint is functioning as expected.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-rest-api#main-content",
+      "mcp-rest-api#overview",
+      "mcp-rest-api#setup",
+      "mcp-rest-api#examples",
+      "mcp-rest-api#tools",
+      "mcp-rest-api#mcp",
+      "mcp-rest-api#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The mcp-rest-api is an advanced automation skill designed specifically for developers and AI practitioners looking to streamline their workflow when testing REST APIs. Built with TypeScript, this tool allows users to interact with and test any REST API endpoints directly from their development environment, making it an essential addition to any API testing toolkit. By utilizing Cline, developers can easily send requests and receive responses, facilitating a more efficient testing process. One of the key benefits of the mcp-rest-api is its ability to save time during the API testing phase. Although specific time savings are currently unknown, the streamlined interaction with REST APIs can significantly reduce the manual effort required to test and validate API endpoints. This is particularly advantageous for teams that need to ensure the reliability and performance of their APIs without getting bogged down in repetitive tasks. This skill is ideal for intermediate developers, product managers, and AI practitioners who are involved in API development and testing. Whether you are working in a software development department or as part of a product team, the mcp-rest-api can enhance your workflow by providing a straightforward way to validate API functionality. Practical use cases include testing new API features before deployment, conducting regression tests on existing APIs, and integrating API testing into continuous integration/continuous deployment (CI/CD) pipelines. Implementing the mcp-rest-api is straightforward, requiring approximately 30 minutes to set up. While the complexity is rated as intermediate, developers familiar with TypeScript and RESTful services will find it easy to integrate into their existing workflows. As organizations increasingly adopt AI-first strategies, tools like the mcp-rest-api become essential for ensuring that API interactions are efficient and reliable, ultimately contributing to the success of automation initiatives.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dkmaker/mcp-rest-api`",
+    "usage_vi": "```\nUse the mcp-rest-api MCP server to test the [API_ENDPOINT] endpoint with the following parameters: [HTTP_METHOD], [REQUEST_BODY_OR_QUERY_PARAMS], and [HEADERS]. Validate the response status code against [EXPECTED_STATUS_CODE]. If the response contains [EXPECTED_RESPONSE_BODY_KEYS], extract and display them. Log any errors or mismatches for debugging.\n```\nCopy\n\n```\nTesting the `POST /api/v1/users` endpoint with the following payload:\n{\n  \"name\": \"Alex Carter\",\n  \"email\": \"alex.carter@example.com\",\n  \"role\": \"developer\"\n}\nHeaders: { \"Authorization\": \"Bearer token123\", \"Content-Type\": \"application/json\" }\n\nResponse Status: 201 Created (Expected: 201)\nResponse Body:\n{\n  \"id\": \"usr_7890\",\n  \"createdAt\": \"2024-05-20T14:30:00Z\",\n  \"name\": \"Alex Carter\",\n  \"email\": \"alex.carter@example.com\",\n  \"role\": \"developer\"\n}\n\nValidation Results:\n✅ Status code matches expected (201).\n✅ Response contains expected keys: id, createdAt, name, email, role.\n✅ Email format is valid.\n\nNo errors detected. The endpoint is functioning as expected.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:26:39.892806Z",
+    "http_status": 200,
+    "content_hash": "06898b4f40b9572bba4f5124e8a1a0d51e12ec1192c86725744349bb474eb40d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-rest-api.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-rest-api.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp-rest-api: Efficient REST API Testing",
+  "short_description_vi": "A TypeScript-based MCP server for testing REST APIs through Cline. Enables developers to test and interact with any REST API endpoints directly from their development environment. Ideal for operations teams automating API testing workflows."
+}

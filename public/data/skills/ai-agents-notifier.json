@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-agents-notifier",
+  "slug": "ai-agents-notifier",
+  "name": "Ai Agents Notifier",
+  "headline": "notifications for ai coding agent events",
+  "short_description": "Send system notifications when your AI Coding Agents (CLI-based) requests permissions or completes tasks. Benefits developers by reducing context switching and improving workflow efficiency. Integrates with CLI-based AI coding agents like Claude Code and Copilot CLI.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "hta218",
+  "install_command": "git clone https://github.com/hta218/ai-agents-notifier.git",
+  "source_repo_url": "https://github.com/hta218/ai-agents-notifier",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "terminal-notification",
+    "terminal-notifier",
+    "copilot-cli",
+    "awesome-claude-code",
+    "notifications",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "AI Agents Notifier is a cross-platform notification system that integrates with terminal-based AI coding agents to deliver desktop alerts for session events, task completions, and permission requests. It supports Claude Code CLI and GitHub Copilot CLI with native hook integration, reducing context switching by notifying developers without leaving their terminal. The tool works on macOS (via terminal-notifier), Linux (via notify-send), and Windows (via PowerShell Toast notifications). Developers benefit from improved workflow efficiency by receiving real-time alerts when their AI agents request permissions or finish work. Setup involves downloading a notifier script and configuring settings per agent.\nGet notified when Claude Code CLI sessions start and complete\nReceive alerts for GitHub Copilot CLI permission requests before tool execution\nTrack long-running AI agent tasks without constant terminal monitoring\nCapture error notifications from AI coding agents across projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hta218/ai-agents-notifier`",
+    "usage": "```\nMonitor the output of [AI_CODING_AGENT_NAME] (e.g., Claude Code, Copilot CLI) in real-time for requests like 'permission to write', 'file modification', or 'task completion'. When detected, send a system notification to [NOTIFICATION_CHANNEL] (e.g., Slack, Discord, email, desktop) with the details. Format the notification as: '[TASK_TYPE] - [FILE_PATH] - [ACTION_REQUIRED]' for permission requests or '[TASK_COMPLETED] - [SUMMARY]' for completions. Use [NOTIFICATION_TOOL] (e.g., `notify-send`, Slack webhook, email API) to deliver the alert.\n```\nCopy\n\n```\n```\n🚨 **Permission Request Detected**\nAgent: Copilot CLI\nFile: /project/src/utils/api.js\nAction: Write (modify function)\nContext: Adding error handling for API timeout\n\n📌 **Action Required**: Review changes before approval.\n\n---\n\n✅ **Task Completed**\nAgent: Claude Code\nSummary: Refactored authentication middleware in /backend/auth.js\nFiles Modified: 3\nLines Changed: 42\nTime Taken: 2m 15s\n\n📊 **Impact**: Reduced redundant auth checks by 30%.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-agents-notifier#main-content",
+      "ai-agents-notifier#overview",
+      "ai-agents-notifier#setup",
+      "ai-agents-notifier#examples",
+      "ai-agents-notifier#tools",
+      "ai-agents-notifier#mcp",
+      "ai-agents-notifier#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI Agents Notifier là hệ thống thông báo đa nền tảng, tích hợp với các AI coding agent chạy trên terminal để gửi cảnh báo desktop cho các sự kiện session, hoàn thành tác vụ và yêu cầu cấp quyền. Công cụ hỗ trợ Claude Code CLI và GitHub Copilot CLI với khả năng tích hợp hook native, giúp giảm context switching bằng cách thông báo cho nhà phát triển mà không cần rời khỏi terminal. Công cụ này hoạt động tốt trên macOS (qua terminal-notifier), Linux (qua notify-send) và Windows (qua PowerShell Toast notification). Nhà phát triển sẽ tối ưu hóa hiệu suất làm việc nhờ nhận cảnh báo theo thời gian thực (real-time) khi AI agent yêu cầu cấp quyền hoặc hoàn thành công việc. Quá trình setup bao gồm tải về một notifier script và cấu hình thiết lập cho từng agent.\nNhận thông báo khi các session Claude Code CLI bắt đầu và hoàn thành\nNhận cảnh báo cho các yêu cầu cấp quyền từ GitHub Copilot CLI trước khi công cụ thực thi\nTheo dõi các tác vụ AI agent chạy lâu mà không cần liên tục giám sát terminal\nBắt các thông báo lỗi từ AI coding agent trên nhiều dự án khác nhau",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/hta218/ai-agents-notifier`",
+    "usage_vi": "```\nMonitor the output of [AI_CODING_AGENT_NAME] (ví dụ: Claude Code, Copilot CLI) theo thời gian thực để phát hiện các yêu cầu như 'yêu cầu ghi' (permission to write), 'chỉnh sửa file' (file modification) hoặc 'hoàn thành tác vụ' (task completion). Khi phát hiện, gửi một thông báo hệ thống đến [NOTIFICATION_CHANNEL] (ví dụ: Slack, Discord, email, desktop) kèm thông tin chi tiết. Định dạng thông báo dưới dạng: '[TASK_TYPE] - [FILE_PATH] - [ACTION_REQUIRED]' cho yêu cầu cấp quyền hoặc '[TASK_COMPLETED] - [SUMMARY]' cho tác vụ đã hoàn thành. Sử dụng [NOTIFICATION_TOOL] (ví dụ: `notify-send`, Slack webhook, email API) để gửi cảnh báo.\n```\nCopy\n\n```\n```\n🚨 **Phát hiện Yêu cầu Cấp quyền**\nAgent: Copilot CLI\nFile: /project/src/utils/api.js\nAction: Write (chỉnh sửa function)\nContext: Thêm xử lý lỗi cho API timeout\n\n📌 **Hành động yêu cầu**: Review các thay đổi trước khi phê duyệt.\n\n---\n\n✅ **Tác vụ đã hoàn thành**\nAgent: Claude Code\nSummary: Refactor middleware xác thực trong /backend/auth.js\nFiles Modified: 3\nLines Changed: 42\nTime Taken: 2m 15s\n\n📊 **Impact**: Giảm 30% số lần kiểm tra xác thực dư thừa.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:47:20.967544Z",
+    "http_status": 200,
+    "content_hash": "d260a97f094a5162c35f178a290185988c8d36c6e5fa3ac6bd0eff282f6a3da5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-agents-notifier.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-agents-notifier.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Thông báo sự kiện cho AI coding agent",
+  "short_description_vi": "Gửi thông báo hệ thống khi các AI Coding Agent (dạng CLI) yêu cầu cấp quyền hoặc hoàn thành tác vụ. Giúp nhà phát triển giảm thiểu việc chuyển đổi ngữ cảnh (context switching) và tối ưu hóa hiệu suất quy trình làm việc. Tích hợp tốt với các CLI-based AI coding agent như Claude Code và Copilot CLI."
+}

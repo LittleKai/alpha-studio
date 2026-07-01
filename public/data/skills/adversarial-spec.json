@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/adversarial-spec",
+  "slug": "adversarial-spec",
+  "name": "Adversarial Spec",
+  "headline": "Iterative Product Spec Refinement Plugin",
+  "short_description": "Adversarial-spec is a Claude Code plugin that uses multiple LLMs to debate and refine product specifications. It helps product and engineering teams identify gaps, challenge assumptions, and improve spec quality. The plugin integrates with Claude Code and connects to product management workflows, enhancing collaboration and reducing errors in specifications.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "zscole",
+  "install_command": "git clone https://github.com/zscole/adversarial-spec.git",
+  "source_repo_url": "https://github.com/zscole/adversarial-spec",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-plugin",
+    "llm",
+    "orchestration",
+    "anthropic",
+    "claude-skills",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Adversarial-spec is a Claude Code plugin that iteratively improves product specifications by orchestrating parallel debates between multiple LLMs and Claude. The plugin drafts initial specs, sends them to external models (GPT, Gemini, Grok, Mistral, and others) for critique, incorporates Claude's independent analysis, and revises until all models agree. This multi-perspective approach surfaces gaps, edge cases, and assumptions that a single model would miss. Teams use it to strengthen PRDs, tech specs, and product requirements before implementation.\nAutomate the generation of product requirement documents (PRDs) by refining initial drafts through model debates.\nEnhance technical specifications by identifying and addressing potential gaps and assumptions through multi-LLM critiques.\nFacilitate collaborative product development by synthesizing feedback from various LLMs into a final document.\nStreamline the review process by allowing users to request changes and run additional critique cycles until consensus is reached.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zscole/adversarial-spec`",
+    "usage": "```\nUsing adversarial-spec, debate and refine the following product specification: [SPECIFICATION]. Generate three alternative perspectives from different stakeholders (e.g., engineering, marketing, customer support) and highlight potential gaps or risks. Suggest improvements to the specification based on the debate.\n```\nCopy\n\n```\nAfter analyzing the product specification for a new AI-powered customer support tool, the adversarial-spec plugin generated the following insights:\n\n1. Engineering Perspective: The specification lacks detailed requirements for handling high-volume data processing. Suggest adding a section on scalability and data throughput.\n2. Marketing Perspective: The target user personas are not clearly defined. Suggest including a section on user demographics and pain points.\n3. Customer Support Perspective: The specification does not address integration with existing support systems. Suggest adding a section on compatibility and integration requirements.\n\nBased on the debate, the specification should be updated to include these additional sections to ensure a comprehensive and robust product development process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "adversarial-spec#main-content",
+      "adversarial-spec#overview",
+      "adversarial-spec#setup",
+      "adversarial-spec#examples",
+      "adversarial-spec#tools",
+      "adversarial-spec#mcp",
+      "adversarial-spec#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Adversarial-spec là một plugin Claude Code giúp cải thiện đặc tả sản phẩm theo chu kỳ lặp bằng cách tổ chức các phiên tranh luận song song giữa nhiều LLM và Claude. Plugin này sẽ phác thảo bản đặc tả ban đầu, gửi tới các mô hình bên ngoài (như GPT, Gemini, Grok, Mistral...) để đánh giá và phản biện, kết hợp với phân tích độc lập từ Claude, rồi tiến hành sửa đổi cho đến khi tất cả các mô hình đạt được sự đồng thuận. Cách tiếp cận đa chiều này giúp làm nổi bật các lỗ hổng, trường hợp biên (edge cases) và các giả định mà một mô hình đơn lẻ dễ bỏ sót. Các đội ngũ phát triển thường sử dụng công cụ này để củng cố tài liệu PRD, tech spec và các yêu cầu sản phẩm trước khi bắt tay vào triển khai.\n\n- Tự động hóa quy trình tạo tài liệu yêu cầu sản phẩm (PRD) bằng cách tinh chỉnh các bản nháp ban đầu thông qua các phiên tranh luận giữa các mô hình.\n- Nâng cao chất lượng tài liệu đặc tả kỹ thuật (tech spec) bằng cách xác định và giải quyết các lỗ hổng cũng như giả định tiềm ẩn thông qua sự phản biện từ nhiều LLM.\n- Thúc đẩy phát triển sản phẩm cộng tác bằng cách tổng hợp phản hồi từ nhiều LLM khác nhau thành một tài liệu thống nhất cuối cùng.\n- Tối ưu hóa quy trình kiểm duyệt bằng cách cho phép người dùng yêu cầu thay đổi và chạy thêm các chu kỳ phản biện cho đến khi đạt được sự đồng thuận.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ (repository) GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/zscole/adversarial-spec`",
+    "usage_vi": "```\nSử dụng adversarial-spec để tranh luận và tinh chỉnh tài liệu đặc tả sản phẩm sau: [SPECIFICATION]. Hãy tạo ra ba góc nhìn khác nhau từ các bên liên quan (ví dụ: kỹ thuật/engineering, marketing, hỗ trợ khách hàng/customer support) và chỉ ra các lỗ hổng hoặc rủi ro tiềm ẩn. Đề xuất các cải tiến cho bản đặc tả dựa trên kết quả tranh luận.\n```\nCopy\n\n```\nSau khi phân tích đặc tả sản phẩm cho một công cụ hỗ trợ khách hàng mới ứng dụng AI, plugin adversarial-spec đã tạo ra các thông tin chi tiết sau:\n\n1. Góc nhìn từ Kỹ thuật (Engineering): Bản đặc tả thiếu các yêu cầu chi tiết về việc xử lý lượng dữ liệu lớn. Khuyến nghị bổ sung một phần về khả năng mở rộng (scalability) và lưu lượng dữ liệu (data throughput).\n2. Góc nhìn từ Marketing: Đối tượng người dùng mục tiêu (user personas) chưa được xác định rõ ràng. Khuyến nghị bổ sung một phần về nhân khẩu học người dùng và các điểm đau (pain points).\n3. Góc nhìn từ Hỗ trợ khách hàng (Customer Support): Bản đặc tả chưa đề cập đến việc tích hợp với các hệ thống hỗ trợ hiện có. Khuyến nghị bổ sung một phần về yêu cầu tương thích và tích hợp.\n\nDựa trên kết quả tranh luận, bản đặc tả nên được cập nhật để bổ sung các phần này nhằm đảm bảo quy trình phát triển sản phẩm toàn diện và chặt chẽ hơn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:18:22.213455Z",
+    "http_status": 200,
+    "content_hash": "f40b734bb7c4cc02eb2ac1a5e4a58f496011d91e431a0b4764b0f793d13febba",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\adversarial-spec.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\adversarial-spec.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Plugin tinh chỉnh đặc tả sản phẩm bằng phương pháp lặp",
+  "short_description_vi": "Adversarial-spec là một plugin Claude Code sử dụng nhiều LLM để tranh luận và tinh chỉnh tài liệu đặc tả sản phẩm. Công cụ này giúp đội ngũ product và engineering phát hiện các lỗ hổng, phản biện các giả định và nâng cao chất lượng bản đặc tả. Plugin tích hợp trực tiếp với Claude Code và kết nối với các quy trình quản lý sản phẩm (product management workflow), từ đó tăng cường khả năng cộng tác và giảm thiểu sai sót trong tài liệu đặc tả."
+}

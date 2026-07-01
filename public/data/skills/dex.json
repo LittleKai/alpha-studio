@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dex",
+  "slug": "dex",
+  "name": "dex",
+  "headline": "dex: Task Tracking for Agents",
+  "short_description": "dex enables AI agents to track and manage complex, multi-session tasks with persistent memory. Operations teams benefit from structured task management, capturing full context including descriptions, background, requirements, and approach. It integrates with Claude agents to streamline workflows and improve task completion rates.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "dcramer",
+  "install_command": "git clone https://github.com/dcramer/dex.git",
+  "source_repo_url": "https://github.com/dcramer/dex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "claude-code",
+    "opencode",
+    "task-manager"
+  ],
+  "sections": {
+    "overview": "The dex skill is an innovative automation tool designed specifically for task tracking within AI agents. By integrating dex into your workflow, you can streamline the management of tasks, ensuring that your AI agents operate more efficiently and effectively. This skill allows users to monitor and track the progress of various tasks assigned to AI agents, making it easier to manage workloads and enhance productivity. One of the key benefits of using dex is its ability to save time by automating the tracking process. While the exact time savings are currently unknown, the reduction in manual oversight and the ability to quickly assess task statuses can significantly enhance operational efficiency. Developers, product managers, and AI practitioners will find dex particularly useful, as it provides a structured approach to managing tasks within AI-driven workflows, ultimately leading to better project outcomes. Practical use cases for dex include managing software development tasks, tracking progress on AI model training, or overseeing multiple AI agents working on different projects. For instance, a product manager could utilize dex to monitor the status of feature development across various AI agents, ensuring that deadlines are met and resources are allocated effectively. The intermediate implementation difficulty means that users should have some familiarity with automation tools and AI workflows, but the skill can be set up in approximately 30 minutes, making it accessible for teams looking to enhance their operational capabilities. Incorporating dex into your AI-first workflow not only improves task management but also aligns with the growing trend of AI automation in various industries. As organizations increasingly rely on AI agents to handle complex tasks, having a robust tracking system like dex will be essential for maximizing the potential of these technologies. By utilizing this skill, teams can ensure that their AI agents are not only effective but also aligned with overall business objectives.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dcramer/dex`",
+    "usage": "```\nUse dex to track and manage the multi-step task: '[TASK_DESCRIPTION]'. Include the following details: background context '[BACKGROUND]', specific requirements '[REQUIREMENTS]', and preferred approach '[APPROACH]'. Ensure the task is broken into actionable steps with persistent memory across sessions. Update progress in dex after each step is completed.\n```\nCopy\n\n```\n```json\n{\n  \"task_id\": \"dex-2024-0872\",\n  \"title\": \"Migrate legacy CRM data to new platform\",\n  \"status\": \"in_progress\",\n  \"steps\": [\n    {\n      \"step_id\": \"1\",\n      \"description\": \"Extract data from legacy CRM (Salesforce) using DataLoader API\",\n      \"status\": \"completed\",\n      \"output\": \"Extracted 12,487 contact records and 8,231 opportunity records. Validated 98% data integrity.\",\n      \"timestamp\": \"2024-05-15T14:30:00Z\",\n      \"notes\": \"Used Salesforce DataLoader with custom field mapping. No errors reported.\"\n    },\n    {\n      \"step_id\": \"2\",\n      \"description\": \"Transform data to match new CRM schema (HubSpot) using Python scripts\",\n      \"status\": \"in_progress\",\n      \"output\": \"Script running. 6,245/12,487 records transformed (50% complete).\",\n      \"timestamp\": \"2024-05-15T15:45:00Z\",\n      \n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dex#main-content",
+      "dex#overview",
+      "dex#setup",
+      "dex#examples",
+      "dex#tools",
+      "dex#mcp",
+      "dex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The dex skill is an innovative automation tool designed specifically for task tracking within AI agents. By integrating dex into your workflow, you can streamline the management of tasks, ensuring that your AI agents operate more efficiently and effectively. This skill allows users to monitor and track the progress of various tasks assigned to AI agents, making it easier to manage workloads and enhance productivity. One of the key benefits of using dex is its ability to save time by automating the tracking process. While the exact time savings are currently unknown, the reduction in manual oversight and the ability to quickly assess task statuses can significantly enhance operational efficiency. Developers, product managers, and AI practitioners will find dex particularly useful, as it provides a structured approach to managing tasks within AI-driven workflows, ultimately leading to better project outcomes. Practical use cases for dex include managing software development tasks, tracking progress on AI model training, or overseeing multiple AI agents working on different projects. For instance, a product manager could utilize dex to monitor the status of feature development across various AI agents, ensuring that deadlines are met and resources are allocated effectively. The intermediate implementation difficulty means that users should have some familiarity with automation tools and AI workflows, but the skill can be set up in approximately 30 minutes, making it accessible for teams looking to enhance their operational capabilities. Incorporating dex into your AI-first workflow not only improves task management but also aligns with the growing trend of AI automation in various industries. As organizations increasingly rely on AI agents to handle complex tasks, having a robust tracking system like dex will be essential for maximizing the potential of these technologies. By utilizing this skill, teams can ensure that their AI agents are not only effective but also aligned with overall business objectives.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dcramer/dex`",
+    "usage_vi": "```\nUse dex to track and manage the multi-step task: '[TASK_DESCRIPTION]'. Include the following details: background context '[BACKGROUND]', specific requirements '[REQUIREMENTS]', and preferred approach '[APPROACH]'. Ensure the task is broken into actionable steps with persistent memory across sessions. Update progress in dex after each step is completed.\n```\nCopy\n\n```\n```json\n{\n  \"task_id\": \"dex-2024-0872\",\n  \"title\": \"Migrate legacy CRM data to new platform\",\n  \"status\": \"in_progress\",\n  \"steps\": [\n    {\n      \"step_id\": \"1\",\n      \"description\": \"Extract data from legacy CRM (Salesforce) using DataLoader API\",\n      \"status\": \"completed\",\n      \"output\": \"Extracted 12,487 contact records and 8,231 opportunity records. Validated 98% data integrity.\",\n      \"timestamp\": \"2024-05-15T14:30:00Z\",\n      \"notes\": \"Used Salesforce DataLoader with custom field mapping. No errors reported.\"\n    },\n    {\n      \"step_id\": \"2\",\n      \"description\": \"Transform data to match new CRM schema (HubSpot) using Python scripts\",\n      \"status\": \"in_progress\",\n      \"output\": \"Script running. 6,245/12,487 records transformed (50% complete).\",\n      \"timestamp\": \"2024-05-15T15:45:00Z\",\n      \n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:29:39.829630Z",
+    "http_status": 200,
+    "content_hash": "708ecd85d1475d17b4dac056887357a534252691ba8657180db29a6933c973e6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dex.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "dex: Task Tracking for Agents",
+  "short_description_vi": "dex enables AI agents to track and manage complex, multi-session tasks with persistent memory. Operations teams benefit from structured task management, capturing full context including descriptions, background, requirements, and approach. It integrates with Claude agents to streamline workflows and improve task completion rates."
+}

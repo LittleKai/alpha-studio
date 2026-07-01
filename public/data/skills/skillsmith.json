@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillsmith",
+  "slug": "skillsmith",
+  "name": "Skillsmith",
+  "headline": "Skillsmith - Claude Code Skill Discovery",
+  "short_description": "Skillsmith is a discovery, recommendation, and learning system for Claude Code skills. It helps users find, install, and learn to use skills for their projects. It connects to Claude Code and integrates with TypeScript-based workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "smith-horn",
+  "install_command": "git clone https://github.com/smith-horn/skillsmith.git",
+  "source_repo_url": "https://github.com/smith-horn/skillsmith",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skillsmith is an agent skill discovery, recommendation, and management system designed for MCP-compatible AI tools like Claude Code, Cursor, and Windsurf. It enables you to search skills from GitHub using semantic search or keyword matching, get personalized skill recommendations based on context, and install validated skills with a single command to your local environment. The system operates local-first by design, caching the entire skill registry in SQLite at ~/.skillsmith/skills.db with optional ONNX-based semantic search that runs on CPU without API calls. Skillsmith provides quality scores, four trust tiers from Official to Community, and side-by-side skill comparison to help you find and safely integrate the right skills for your projects.\nSearch and discover new agent skills for Claude Code or Cursor projects\nGet contextual skill recommendations based on your current workflow\nInstall and manage skills locally with validation and trust tier filtering\nCompare multiple skills side-by-side to choose the best fit",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/smith-horn/skillsmith`",
+    "usage": "```\nAct as Skillsmith. I'm working on a project for [COMPANY] in the [INDUSTRY] sector. I need to find and learn about skills that can help with [SPECIFIC TASK]. Recommend 3-5 relevant skills, explain what they do, and provide a quick tutorial on how to use them in my TypeScript-based workflow.\n```\nCopy\n\n```\n# Skillsmith Recommendations for [COMPANY] in [INDUSTRY] Sector",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillsmith#main-content",
+      "skillsmith#overview",
+      "skillsmith#setup",
+      "skillsmith#examples",
+      "skillsmith#tools",
+      "skillsmith#mcp",
+      "skillsmith#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skillsmith is an agent skill discovery, recommendation, and management system designed for MCP-compatible AI tools like Claude Code, Cursor, and Windsurf. It enables you to search skills from GitHub using semantic search or keyword matching, get personalized skill recommendations based on context, and install validated skills with a single command to your local environment. The system operates local-first by design, caching the entire skill registry in SQLite at ~/.skillsmith/skills.db with optional ONNX-based semantic search that runs on CPU without API calls. Skillsmith provides quality scores, four trust tiers from Official to Community, and side-by-side skill comparison to help you find and safely integrate the right skills for your projects.\nSearch and discover new agent skills for Claude Code or Cursor projects\nGet contextual skill recommendations based on your current workflow\nInstall and manage skills locally with validation and trust tier filtering\nCompare multiple skills side-by-side to choose the best fit",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/smith-horn/skillsmith`",
+    "usage_vi": "```\nAct as Skillsmith. I'm working on a project for [COMPANY] in the [INDUSTRY] sector. I need to find and learn about skills that can help with [SPECIFIC TASK]. Recommend 3-5 relevant skills, explain what they do, and provide a quick tutorial on how to use them in my TypeScript-based workflow.\n```\nCopy\n\n```\n# Skillsmith Recommendations for [COMPANY] in [INDUSTRY] Sector"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:07.804630Z",
+    "http_status": 200,
+    "content_hash": "9ce278d6ca776eb5d44719fbdc020b29e4826f597592c94bac26f5532882fa88",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsmith.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsmith.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skillsmith - Claude Code Skill Discovery",
+  "short_description_vi": "Skillsmith is a discovery, recommendation, and learning system for Claude Code skills. It helps users find, install, and learn to use skills for their projects. It connects to Claude Code and integrates with TypeScript-based workflows."
+}

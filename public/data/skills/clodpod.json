@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clodpod",
+  "slug": "clodpod",
+  "name": "browser-use",
+  "headline": "clodpod for AI agents in OSX VM",
+  "short_description": "Run AI agents in an isolated macOS virtual machine. Ideal for operations teams needing secure, sandboxed environments for AI agent execution. Connects to Claude Code for agent workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "webcoyote",
+  "install_command": "git clone https://github.com/webcoyote/clodpod.git",
+  "source_repo_url": "https://github.com/webcoyote/clodpod",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "sandbox",
+    "macos"
+  ],
+  "sections": {
+    "overview": "ClodPod builds and manages macOS virtual machine sandboxes configured to run AI agents including Claude Code, Cursor Agent, OpenAI Codex, and Google Gemini. It enables mapping multiple project directories into VMs so AI agents can work on code while remaining isolated from your host computer. The tool includes Xcode and common development tools, supports headless execution for CI/CD workflows, and uses fast APFS copy-on-write caching for quick rebuilds. Operations and development teams benefit from passwordless sudo configuration, named VM instances for different projects or branches, and configurable memory budgets for parallel VM execution. Port forwarding allows VM agents to reach host resources like databases and local LLMs.\nSafely run Claude Code with relaxed permissions without risking host system damage\nExecute multiple AI agent sessions simultaneously in isolated environments for different projects\nIntegrate AI agents into CI/CD pipelines using headless mode without graphics overhead\nManage separate development environments for different branches or worktrees with named VM instances",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/webcoyote/clodpod`",
+    "usage": "```\nSet up and run an AI agent in a macOS virtual machine using Clodpod to execute [AGENT_TASK] in an isolated environment. Monitor the agent's progress and retrieve the results from the sandboxed VM. Ensure the agent has access to [REQUIRED_RESOURCES] and log any errors or outputs to [LOG_FILE_PATH].\n```\nCopy\n\n```\n### Clodpod macOS VM Agent Execution Report\n\n**Agent Task:** Automated data scraping from [EXAMPLE_SITE.COM] to extract product pricing for competitive analysis.\n\n**VM Configuration:**\n- OS: macOS Ventura (13.4)\n- CPU: 4 cores @ 2.5GHz\n- RAM: 8GB\n- Storage: 50GB SSD\n- Network: Isolated (no external access except to [EXAMPLE_SITE.COM])\n\n**Agent Execution Log:**\n```\n2024-05-15 09:15:22 - Agent initialized in Clodpod VM\n2024-05-15 09:15:25 - Navigated to https://www.example-site.com/products\n2024-05-15 09:15:30 - Detected CAPTCHA; paused execution for human review\n2024-05-15 09:16:45 - CAPTCHA resolved; resumed scraping\n2024-05-15 09:22:10 - Extracted 1,247 product entries\n2024-05-15 09:22:15 - Saved data to /Users/agent/output/products_2024-05-15.json\n2024-05-15 09:22:20 - Agent completed successfully\n```\n\n**Output Summary:**\n- Total products scraped: 1,247\n- Price range: $19.99 - $299.99\n- Missing data fields: 3 (product images)\n- Errors encountered: 0\n\n**Next Steps:**\n1. Review the output file at `/Users/agent/output/products_2024-05-15.json` for accuracy.\n2. Feed the data into your competitive analysis dashboard.\n3. Schedule the agent to run daily at 8 AM UTC.\n\n**Security Notes:**\n- All network traffic was confined to the VM.\n- No sensitive data was exposed to the host machine.\n- The agent was terminated after completion to free resources.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "clodpod#main-content",
+      "clodpod#overview",
+      "clodpod#setup",
+      "clodpod#examples",
+      "clodpod#tools",
+      "clodpod#mcp",
+      "clodpod#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ClodPod builds and manages macOS virtual machine sandboxes configured to run AI agents including Claude Code, Cursor Agent, OpenAI Codex, and Google Gemini. It enables mapping multiple project directories into VMs so AI agents can work on code while remaining isolated from your host computer. The tool includes Xcode and common development tools, supports headless execution for CI/CD workflows, and uses fast APFS copy-on-write caching for quick rebuilds. Operations and development teams benefit from passwordless sudo configuration, named VM instances for different projects or branches, and configurable memory budgets for parallel VM execution. Port forwarding allows VM agents to reach host resources like databases and local LLMs.\nSafely run Claude Code with relaxed permissions without risking host system damage\nExecute multiple AI agent sessions simultaneously in isolated environments for different projects\nIntegrate AI agents into CI/CD pipelines using headless mode without graphics overhead\nManage separate development environments for different branches or worktrees with named VM instances",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/webcoyote/clodpod`",
+    "usage_vi": "```\nSet up and run an AI agent in a macOS virtual machine using Clodpod to execute [AGENT_TASK] in an isolated environment. Monitor the agent's progress and retrieve the results from the sandboxed VM. Ensure the agent has access to [REQUIRED_RESOURCES] and log any errors or outputs to [LOG_FILE_PATH].\n```\nCopy\n\n```\n### Clodpod macOS VM Agent Execution Report\n\n**Agent Task:** Automated data scraping from [EXAMPLE_SITE.COM] to extract product pricing for competitive analysis.\n\n**VM Configuration:**\n- OS: macOS Ventura (13.4)\n- CPU: 4 cores @ 2.5GHz\n- RAM: 8GB\n- Storage: 50GB SSD\n- Network: Isolated (no external access except to [EXAMPLE_SITE.COM])\n\n**Agent Execution Log:**\n```\n2024-05-15 09:15:22 - Agent initialized in Clodpod VM\n2024-05-15 09:15:25 - Navigated to https://www.example-site.com/products\n2024-05-15 09:15:30 - Detected CAPTCHA; paused execution for human review\n2024-05-15 09:16:45 - CAPTCHA resolved; resumed scraping\n2024-05-15 09:22:10 - Extracted 1,247 product entries\n2024-05-15 09:22:15 - Saved data to /Users/agent/output/products_2024-05-15.json\n2024-05-15 09:22:20 - Agent completed successfully\n```\n\n**Output Summary:**\n- Total products scraped: 1,247\n- Price range: $19.99 - $299.99\n- Missing data fields: 3 (product images)\n- Errors encountered: 0\n\n**Next Steps:**\n1. Review the output file at `/Users/agent/output/products_2024-05-15.json` for accuracy.\n2. Feed the data into your competitive analysis dashboard.\n3. Schedule the agent to run daily at 8 AM UTC.\n\n**Security Notes:**\n- All network traffic was confined to the VM.\n- No sensitive data was exposed to the host machine.\n- The agent was terminated after completion to free resources.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:43:25.124089Z",
+    "http_status": 200,
+    "content_hash": "319524a2578d5b53298a77cf2ed2009b33931d231492007dbd9fc04daa4f4525",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\clodpod.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\clodpod.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "clodpod for AI agents in OSX VM",
+  "short_description_vi": "Run AI agents in an isolated macOS virtual machine. Ideal for operations teams needing secure, sandboxed environments for AI agent execution. Connects to Claude Code for agent workflows."
+}

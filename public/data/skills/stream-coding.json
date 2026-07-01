@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/stream-coding",
+  "slug": "stream-coding",
+  "name": "react-native-best-practices",
+  "headline": "Stream Coding: Accelerate AI Development",
+  "short_description": "Stream Coding is a revolutionary methodology that enhances AI-accelerated development, enabling developers to boost their coding velocity by 10-20x. It provides essential resources like the official SKILL.md and a comprehensive Manifesto for effective implementation.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "frmoretto",
+  "install_command": "claude install frmoretto/stream-coding",
+  "source_repo_url": "https://github.com/frmoretto/stream-coding",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "software-engineering",
+    "ai-accelerated",
+    "methodology",
+    "technical-debt",
+    "velocity"
+  ],
+  "sections": {
+    "overview": "Stream Coding addresses the Velocity Mirage—the gap between faster AI-assisted typing and actual project completion. It's a 5-phase methodology that prioritizes strategic thinking and AI-ready specifications before code generation, ensuring AI produces deterministic, bug-free output. The approach splits work into strategic thinking (40%), comprehensive documentation (40%), adversarial specification review (5%), execution (10%), and quality assurance (5%). Verified in production: 7 backend modules with 46 intelligence endpoints built in 4.5 hours with zero bugs. Best suited for technical founders, solo developers, and small teams (1-5 people) building backend and business logic systems who commit to documentation-first practices.\nAccelerate software development cycles\nReduce technical debt in projects\nImplement specification-driven development practices\nEnhance collaboration among developers",
+    "setup": "Terminal\nCopy\n`claude install frmoretto/stream-coding`\n`git clone https://github.com/frmoretto/stream-coding`",
+    "usage": "```\nAct as a Stream Coding expert. Using the [SKILL.md] and the Stream Coding Manifesto as your guide, analyze the following codebase: [CODEBASE_DESCRIPTION_OR_LINK]. Identify bottlenecks in development velocity and suggest 3-5 high-impact Stream Coding optimizations. For each optimization, provide: 1) A specific implementation strategy, 2) Expected velocity gains, and 3) Risks to mitigate. Reference the Manifesto principles directly in your recommendations.\n```\nCopy\n\n```\nI analyzed the open-source e-commerce platform 'ShopFlow' (GitHub: shopflow/ecommerce), a React + Node.js monolith with 150k lines of code. Using Stream Coding principles, I identified three critical bottlenecks:\n\n1. **Parallelized State Management**: The current Redux store architecture serializes all state updates, creating a 400ms delay per user action. Implementing the Manifesto's 'Stream State' pattern (SKILL.md §4.2) with Redux Toolkit's createSlice would parallelize state mutations. Expected gain: 3.2x faster state updates (from 400ms to 125ms). Risk: Race conditions in cart operations. Mitigation: Add optimistic UI updates with conflict detection.\n\n2. **Automated Design-Code Sync**: The team manually recreates Rive animations in React components, causing 2-week delays per animation. Adopting the Manifesto's 'Live Design' principle (SKILL.md §3.1) by integrating Rive's real-time API would auto-generate React hooks from animations. Expected gain: 5x faster UI implementation (from 14 days to 2.8 days). Risk: Animation performance degradation on mobile. Mitigation: Use Rive's runtime optimization flags and test on low-end devices.\n\n3. **AI-Powered Code Reviews**: The current manual PR review process takes 3.5 days per feature. Implementing the Manifesto's 'AI Co-Pilot' principle (SKILL.md §5.3) with GitHub Copilot + custom Stream Coding rules would auto-generate 70% of boilerplate and flag anti-patterns. Expected gain: 4x faster reviews (from 84 hours to 21 hours). Risk: False positives in custom rule enforcement. Mitigation: Start with a 10-rule pilot set and expand based on precision metrics.\n\n**Velocity Impact**: Combining these optimizations could reduce ShopFlow's feature delivery time from 6 weeks to 1.5 weeks—a 4x improvement. The Manifesto emphasizes incremental adoption (SKILL.md §2.4), so I recommend piloting the Rive integration first due to its immediate ROI on UI work.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor"
+    ],
+    "related_skills": [
+      "stream-coding#main-content",
+      "stream-coding#overview",
+      "stream-coding#setup",
+      "stream-coding#examples",
+      "stream-coding#tools",
+      "stream-coding#mcp",
+      "stream-coding#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Stream Coding addresses the Velocity Mirage—the gap between faster AI-assisted typing and actual project completion. It's a 5-phase methodology that prioritizes strategic thinking and AI-ready specifications before code generation, ensuring AI produces deterministic, bug-free output. The approach splits work into strategic thinking (40%), comprehensive documentation (40%), adversarial specification review (5%), execution (10%), and quality assurance (5%). Verified in production: 7 backend modules with 46 intelligence endpoints built in 4.5 hours with zero bugs. Best suited for technical founders, solo developers, and small teams (1-5 people) building backend and business logic systems who commit to documentation-first practices.\nAccelerate software development cycles\nReduce technical debt in projects\nImplement specification-driven development practices\nEnhance collaboration among developers",
+    "setup_vi": "Terminal\nCopy\n`claude install frmoretto/stream-coding`\n`git clone https://github.com/frmoretto/stream-coding`",
+    "usage_vi": "```\nAct as a Stream Coding expert. Using the [SKILL.md] and the Stream Coding Manifesto as your guide, analyze the following codebase: [CODEBASE_DESCRIPTION_OR_LINK]. Identify bottlenecks in development velocity and suggest 3-5 high-impact Stream Coding optimizations. For each optimization, provide: 1) A specific implementation strategy, 2) Expected velocity gains, and 3) Risks to mitigate. Reference the Manifesto principles directly in your recommendations.\n```\nCopy\n\n```\nI analyzed the open-source e-commerce platform 'ShopFlow' (GitHub: shopflow/ecommerce), a React + Node.js monolith with 150k lines of code. Using Stream Coding principles, I identified three critical bottlenecks:\n\n1. **Parallelized State Management**: The current Redux store architecture serializes all state updates, creating a 400ms delay per user action. Implementing the Manifesto's 'Stream State' pattern (SKILL.md §4.2) with Redux Toolkit's createSlice would parallelize state mutations. Expected gain: 3.2x faster state updates (from 400ms to 125ms). Risk: Race conditions in cart operations. Mitigation: Add optimistic UI updates with conflict detection.\n\n2. **Automated Design-Code Sync**: The team manually recreates Rive animations in React components, causing 2-week delays per animation. Adopting the Manifesto's 'Live Design' principle (SKILL.md §3.1) by integrating Rive's real-time API would auto-generate React hooks from animations. Expected gain: 5x faster UI implementation (from 14 days to 2.8 days). Risk: Animation performance degradation on mobile. Mitigation: Use Rive's runtime optimization flags and test on low-end devices.\n\n3. **AI-Powered Code Reviews**: The current manual PR review process takes 3.5 days per feature. Implementing the Manifesto's 'AI Co-Pilot' principle (SKILL.md §5.3) with GitHub Copilot + custom Stream Coding rules would auto-generate 70% of boilerplate and flag anti-patterns. Expected gain: 4x faster reviews (from 84 hours to 21 hours). Risk: False positives in custom rule enforcement. Mitigation: Start with a 10-rule pilot set and expand based on precision metrics.\n\n**Velocity Impact**: Combining these optimizations could reduce ShopFlow's feature delivery time from 6 weeks to 1.5 weeks—a 4x improvement. The Manifesto emphasizes incremental adoption (SKILL.md §2.4), so I recommend piloting the Rive integration first due to its immediate ROI on UI work.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:40:09.463514Z",
+    "http_status": 200,
+    "content_hash": "527ee75a20ef1933d57716ec606b0e88de4215e0f46307c86b05c17136532033",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\stream-coding.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\stream-coding.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Stream Coding: Accelerate AI Development",
+  "short_description_vi": "Stream Coding is a revolutionary methodology that enhances AI-accelerated development, enabling developers to boost their coding velocity by 10-20x. It provides essential resources like the official SKILL.md and a comprehensive Manifesto for effective implementation."
+}

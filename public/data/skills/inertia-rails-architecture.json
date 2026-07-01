@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/inertia-rails-architecture",
+  "slug": "inertia-rails-architecture",
+  "name": "elysiajs",
+  "headline": "Inertia Rails Architecture: Fix Anti-Patterns",
+  "short_description": "Inertia Rails Architecture is a server-driven solution for building pages, forms, navigation, or data refresh in Rails applications using Inertia.js and React. It is designed for developers who want to manage routing, data, and authentication on the server side.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "inertia-rails",
+  "install_command": "git clone https://github.com/inertia-rails/skills",
+  "source_repo_url": "https://github.com/inertia-rails/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "web-development",
+    "rails",
+    "architecture",
+    "inertia"
+  ],
+  "sections": {
+    "overview": "Inertia Rails Architecture is a Claude Code plugin designed to guide developers building server-driven Rails applications with Inertia.js. It detects and corrects outdated or incorrect patterns in the Inertia Rails stack, including proper redirect handling for external URLs, form component usage, TypeScript configuration, and controller patterns. The plugin supports React, Vue 3, and Svelte frontends with integrated shadcn component adapters. It helps teams maintain consistent architecture across controllers, forms, pages, and testing while leveraging server-side routing, data management, and authentication.\nBuilding forms with server-driven architecture\nManaging data refresh without client-side routing\nIntegrating React components in Rails apps using Inertia.js",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/inertia-rails/skills --skill inertia-rails-architecture`\n`git clone https://github.com/inertia-rails/skills`",
+    "usage": "```\nDesign a [COMPANY] [INDUSTRY] web application using Inertia Rails Architecture. Create a server-driven page with React components, including: \n1) A form to [SPECIFIC ACTION, e.g., 'submit user feedback'] with validation \n2) Navigation links to key sections \n3) A data refresh mechanism for [DATA TYPE, e.g., 'customer orders'] \n4) Authentication checks for [ROLE, e.g., 'admin users']. Use Rails controllers to handle routing and data fetching, and React for the UI. Provide code snippets for both backend and frontend.\n```\nCopy\n\n```\n# Inertia Rails Architecture: Feedback Dashboard",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "inertia-rails-architecture#main-content",
+      "inertia-rails-architecture#overview",
+      "inertia-rails-architecture#setup",
+      "inertia-rails-architecture#examples",
+      "inertia-rails-architecture#tools",
+      "inertia-rails-architecture#mcp",
+      "inertia-rails-architecture#related",
+      "react-stack-patterns",
+      "safe-action-advanced",
+      "elysiajs"
+    ],
+    "overview_vi": "Inertia Rails Architecture is a Claude Code plugin designed to guide developers building server-driven Rails applications with Inertia.js. It detects and corrects outdated or incorrect patterns in the Inertia Rails stack, including proper redirect handling for external URLs, form component usage, TypeScript configuration, and controller patterns. The plugin supports React, Vue 3, and Svelte frontends with integrated shadcn component adapters. It helps teams maintain consistent architecture across controllers, forms, pages, and testing while leveraging server-side routing, data management, and authentication.\nBuilding forms with server-driven architecture\nManaging data refresh without client-side routing\nIntegrating React components in Rails apps using Inertia.js",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/inertia-rails/skills --skill inertia-rails-architecture`\n`git clone https://github.com/inertia-rails/skills`",
+    "usage_vi": "```\nDesign a [COMPANY] [INDUSTRY] web application using Inertia Rails Architecture. Create a server-driven page with React components, including: \n1) A form to [SPECIFIC ACTION, e.g., 'submit user feedback'] with validation \n2) Navigation links to key sections \n3) A data refresh mechanism for [DATA TYPE, e.g., 'customer orders'] \n4) Authentication checks for [ROLE, e.g., 'admin users']. Use Rails controllers to handle routing and data fetching, and React for the UI. Provide code snippets for both backend and frontend.\n```\nCopy\n\n```\n# Inertia Rails Architecture: Feedback Dashboard"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:41:45.487320Z",
+    "http_status": 200,
+    "content_hash": "2372b3555739d3ffcc20430ec6b0d6e6d1cd1ce17f87ed196ffb413ee3120d02",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\inertia-rails-architecture.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\inertia-rails-architecture.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Inertia Rails Architecture: Fix Anti-Patterns",
+  "short_description_vi": "Inertia Rails Architecture is a server-driven solution for building pages, forms, navigation, or data refresh in Rails applications using Inertia.js and React. It is designed for developers who want to manage routing, data, and authentication on the server side."
+}

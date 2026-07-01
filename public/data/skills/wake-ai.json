@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wake-ai",
+  "slug": "wake-ai",
+  "name": "browser-use",
+  "headline": "Wake AI - Structured Workflow Orchestration",
+  "short_description": "Wake AI is an orchestration framework for structured multi-step workflows with validation. It wraps terminal-based AI agents like Claude Code to build reliable smart contract security analysis and other workflows. It benefits operations teams by making agentic execution more predictable and reliable.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "wakehacker",
+  "install_command": "git clone https://github.com/wakehacker/wake-ai.git",
+  "source_repo_url": "https://github.com/wakehacker/wake-ai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "ai-agents",
+    "ai-audits"
+  ],
+  "sections": {
+    "overview": "Wake AI orchestrates complex AI workflows by breaking tasks into discrete steps with validation between each, ensuring predictable and reproducible results. It wraps terminal-based AI agents like Claude Code to handle smart contract security audits, vulnerability detection, and other structured processes. Each workflow step has clear inputs, outputs, and success criteria, with validation ensuring quality before proceeding to the next stage. The framework uses isolated working directories for context sharing between agents and steps, eliminating state-passing complexity. Operations teams and security auditors benefit from cost-controlled, transparent execution with automatic retries and structured JSON outputs for integration with other tools.\nSmart contract security audits with multi-step analysis\nReentrancy vulnerability detection in Solidity code\nStructured code analysis workflows with validation checkpoints\nMulti-agent collaboration on complex vulnerability detection\nThe provided Solidity smart contract is part of a DeFi lending platform. The contract manages user deposits, withdrawals, and interest calculations. Below is a detailed security analysis.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wakehacker/wake-ai`",
+    "usage": "```\nAnalyze the following smart contract code for security vulnerabilities using Wake AI. The contract is written in Solidity and is part of a decentralized finance (DeFi) platform. Here is the code: [SMART_CONTRACT_CODE]. Please provide a detailed analysis, including potential risks and recommendations for mitigation.\n```\nCopy\n\n```\n# Smart Contract Security Analysis",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wake-ai#main-content",
+      "wake-ai#overview",
+      "wake-ai#setup",
+      "wake-ai#examples",
+      "wake-ai#tools",
+      "wake-ai#mcp",
+      "wake-ai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Wake AI orchestrates complex AI workflows by breaking tasks into discrete steps with validation between each, ensuring predictable and reproducible results. It wraps terminal-based AI agents like Claude Code to handle smart contract security audits, vulnerability detection, and other structured processes. Each workflow step has clear inputs, outputs, and success criteria, with validation ensuring quality before proceeding to the next stage. The framework uses isolated working directories for context sharing between agents and steps, eliminating state-passing complexity. Operations teams and security auditors benefit from cost-controlled, transparent execution with automatic retries and structured JSON outputs for integration with other tools.\nSmart contract security audits with multi-step analysis\nReentrancy vulnerability detection in Solidity code\nStructured code analysis workflows with validation checkpoints\nMulti-agent collaboration on complex vulnerability detection\nThe provided Solidity smart contract is part of a DeFi lending platform. The contract manages user deposits, withdrawals, and interest calculations. Below is a detailed security analysis.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wakehacker/wake-ai`",
+    "usage_vi": "```\nAnalyze the following smart contract code for security vulnerabilities using Wake AI. The contract is written in Solidity and is part of a decentralized finance (DeFi) platform. Here is the code: [SMART_CONTRACT_CODE]. Please provide a detailed analysis, including potential risks and recommendations for mitigation.\n```\nCopy\n\n```\n# Smart Contract Security Analysis"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:17:53.795786Z",
+    "http_status": 200,
+    "content_hash": "293d3d22e230dc6aed6532110d559e9700e36638c207ceccd7ec84ac755ca6b0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wake-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wake-ai.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Wake AI - Structured Workflow Orchestration",
+  "short_description_vi": "Wake AI is an orchestration framework for structured multi-step workflows with validation. It wraps terminal-based AI agents like Claude Code to build reliable smart contract security analysis and other workflows. It benefits operations teams by making agentic execution more predictable and reliable."
+}

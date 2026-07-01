@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reverse-api-engineer",
+  "slug": "reverse-api-engineer",
+  "name": "Reverse API Engineer",
+  "headline": "Reverse API Engineer - Automate API Integration",
+  "short_description": "Automatically reverse engineers APIs by capturing traffic, generating documentation, and creating API clients. Ideal for operations teams to streamline API integration and maintenance. Connects to Python workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "kalil0321",
+  "install_command": "git clone https://github.com/kalil0321/reverse-api-engineer.git",
+  "source_repo_url": "https://github.com/kalil0321/reverse-api-engineer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "api",
+    "scraping",
+    "ai-agents",
+    "playwright",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Reverse-api-engineer automates the process of understanding and documenting undocumented or legacy APIs by capturing HTTP traffic and generating API documentation and Python client code. The tool supports both manual traffic capture and agent-driven workflows, integrating with Claude and Cursor SDK environments. It reduces the manual effort required for API integration projects by extracting endpoint information, request/response patterns, and parameter requirements directly from observed traffic. Operations teams use it to accelerate API onboarding, streamline maintenance tasks, and create reusable client libraries without manual reverse engineering.\nAutomatically generate Python API clients from web traffic for rapid development.\nCapture and document API endpoints from complex web applications without manual effort.\nUtilize AI agents to autonomously navigate and interact with web pages for data extraction.\nExport collected data in structured formats like JSON and CSV for easy integration.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kalil0321/reverse-api-engineer`",
+    "usage": "```\nReverse engineer the [API_NAME] API by analyzing its traffic or documentation. Generate a complete API client in [LANGUAGE] with authentication handling, endpoint definitions, and error classes. Include a usage example for [ENDPOINT_1] and [ENDPOINT_2]. Output should be in a format suitable for direct integration into a [PROJECT_NAME] project.\n```\nCopy\n\n```\n```python\n# Auto-generated API client for 'AcmeCorp Inventory Service' v2.1\n# Generated on 2024-05-15 by AI Reverse API Engineer\n# Usage: pip install requests\n\nimport requests\nfrom typing import Optional, Dict, List\n\nclass AcmeCorpInventoryClient:\n    def __init__(self, api_key: str, base_url: str = \"https://api.acmecorp.com/v2\"):\n        self.api_key = api_key\n        self.base_url = base_url\n        self.session = requests.Session()\n        self.session.headers.update({\n            \"Authorization\": f\"Bearer {api_key}\",\n            \"Content-Type\": \"application/json\",\n            \"X-Client-Version\": \"2.1.0\"\n        })\n\n    def get_product(self, product_id: str) -> Dict:\n        \"\"\"Retrieve product details by ID\"\"\"\n        response = self.session.get(f\"{self.base_url}/products/{product_id}\")\n        response.raise_for_status()\n        return response.json()\n\n    def update_stock(self, product_id: str, quantity: int, location: str) -> bool:\n        \"\"\"Update inventory stock for a product\"\"\"\n        payload = {\n            \"product_id\": product_id,\n            \"quantity\": quantity,\n            \"location\": location,\n            \"timestamp\": \"2024-05-15T14:30:00Z\"\n        }\n        response = self.session.post(\n            f\"{self.base_url}/inventory/update\",\n            json=payload\n        )\n        response.raise_for_status()\n        return response.json().get(\"success\", False)\n\n    def list_low_stock_products(self, threshold: int = 5) -> List[Dict]:\n        \"\"\"Get all products with stock below threshold\"\"\"\n        response = self.session.get(\n            f\"{self.base_url}/inventory/low-stock\",\n            params={\"threshold\": threshold}\n        )\n        response.raise_for_status()\n        return response.json().get(\"products\", [])\n\n# Example Usage\nif __name__ == \"__main__\":\n    client = AcmeCorpInventoryClient(api_key=\"prod_abc123xyz456\")\n    \n    # Get product details\n    product = client.get_product(\"PRD-45678\")\n    print(f\"Product: {product['name']}, Current Stock: {product['stock']}\")\n    \n    # Update stock\n    success = client.update_stock(\"PRD-45678\", 10, \"WAREHOUSE-A\")\n    print(f\"Stock update {'succeeded' if success else 'failed'}\")\n    \n    # List low stock items\n    low_stock = client.list_low_stock_products(threshold=3)\n    print(f\"Found {len(low_stock)} products below threshold:\")\n    for item in low_stock:\n        print(f\"- {item['name']}: {item['stock']} units\")\n```\n\n**Generated Documentation Snippet:**\n- **Base URL:** `https://api.acmecorp.com/v2`\n- **Authentication:** Bearer token in Authorization header\n- **Rate Limits:** 100 requests/minute per API key\n- **Common Errors:** \n  - 401: Invalid API key\n  - 404: Resource not found\n  - 429: Rate limit exceeded\n\n**Validation:**\n- Tested against 15 API endpoints\n- Verified authentication flow\n- Confirmed all endpoints return expected response formats\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "reverse-api-engineer#main-content",
+      "reverse-api-engineer#overview",
+      "reverse-api-engineer#setup",
+      "reverse-api-engineer#examples",
+      "reverse-api-engineer#tools",
+      "reverse-api-engineer#mcp",
+      "reverse-api-engineer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Reverse-api-engineer tự động hóa quy trình tìm hiểu và tài liệu hóa các API cũ hoặc không có tài liệu (undocumented/legacy APIs) bằng cách bắt HTTP traffic, từ đó tự động tạo tài liệu API và mã nguồn Python client. Công cụ này hỗ trợ cả việc bắt traffic thủ công lẫn các workflow do agent dẫn dắt (agent-driven workflows), tích hợp mượt mà với môi trường SDK của Claude và Cursor. Nó giúp giảm thiểu công sức thao tác thủ công trong các dự án tích hợp API bằng cách trích xuất thông tin endpoint, cấu trúc request/response và các tham số yêu cầu trực tiếp từ traffic ghi nhận được. Các đội ngũ vận hành sử dụng công cụ này để đẩy nhanh tốc độ tích hợp (API onboarding), tinh giản các tác vụ bảo trì và tạo ra các thư viện client có thể tái sử dụng mà không cần dịch ngược thủ công.\n\nTự động tạo Python API client từ web traffic để tăng tốc độ phát triển.\nBắt và tài liệu hóa các API endpoint từ các ứng dụng web phức tạp mà không tốn công sức thủ công.\nTận dụng các AI agent để tự động điều hướng và tương tác với các trang web nhằm trích xuất dữ liệu.\nXuất dữ liệu thu thập được dưới các định dạng có cấu trúc như JSON và CSV để dễ dàng tích hợp.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kalil0321/reverse-api-engineer`",
+    "usage_vi": "```\nDịch ngược API [API_NAME] bằng cách phân tích traffic hoặc tài liệu của nó. Tạo một API client hoàn chỉnh bằng [LANGUAGE] đi kèm xử lý xác thực (authentication), định nghĩa endpoint và các class lỗi (error classes). Bao gồm ví dụ sử dụng cho [ENDPOINT_1] và [ENDPOINT_2]. Kết quả đầu ra phải ở định dạng phù hợp để tích hợp trực tiếp vào dự án [PROJECT_NAME].\n```\nCopy\n\n```\n```python\n# API client được tạo tự động cho 'AcmeCorp Inventory Service' v2.1\n# Được tạo vào ngày 15-05-2024 bởi AI Reverse API Engineer\n# Cách dùng: pip install requests\n\nimport requests\nfrom typing import Optional, Dict, List\n\nclass AcmeCorpInventoryClient:\n    def __init__(self, api_key: str, base_url: str = \"https://api.acmecorp.com/v2\"):\n        self.api_key = api_key\n        self.base_url = base_url\n        self.session = requests.Session()\n        self.session.headers.update({\n            \"Authorization\": f\"Bearer {api_key}\",\n            \"Content-Type\": \"application/json\",\n            \"X-Client-Version\": \"2.1.0\"\n        })\n\n    def get_product(self, product_id: str) -> Dict:\n        \"\"\"Lấy thông tin chi tiết sản phẩm theo ID\"\"\"\n        response = self.session.get(f\"{self.base_url}/products/{product_id}\")\n        response.raise_for_status()\n        return response.json()\n\n    def update_stock(self, product_id: str, quantity: int, location: str) -> bool:\n        \"\"\"Cập nhật số lượng tồn kho của sản phẩm\"\"\"\n        payload = {\n            \"product_id\": product_id,\n            \"quantity\": quantity,\n            \"location\": location,\n            \"timestamp\": \"2024-05-15T14:30:00Z\"\n        }\n        response = self.session.post(\n            f\"{self.base_url}/inventory/update\",\n            json=payload\n        )\n        response.raise_for_status()\n        return response.json().get(\"success\", False)\n\n    def list_low_stock_products(self, threshold: int = 5) -> List[Dict]:\n        \"\"\"Lấy tất cả sản phẩm có lượng tồn kho dưới ngưỡng tối thiểu\"\"\"\n        response = self.session.get(\n            f\"{self.base_url}/inventory/low-stock\",\n            params={\"threshold\": threshold}\n        )\n        response.raise_for_status()\n        return response.json().get(\"products\", [])\n\n# Ví dụ sử dụng\nif __name__ == \"__main__\":\n    client = AcmeCorpInventoryClient(api_key=\"prod_abc123xyz456\")\n    \n    # Lấy chi tiết sản phẩm\n    product = client.get_product(\"PRD-45678\")\n    print(f\"Product: {product['name']}, Current Stock: {product['stock']}\")\n    \n    # Cập nhật tồn kho\n    success = client.update_stock(\"PRD-45678\", 10, \"WAREHOUSE-A\")\n    print(f\"Stock update {'succeeded' if success else 'failed'}\")\n    \n    # Liệt kê các mặt hàng sắp hết hàng\n    low_stock = client.list_low_stock_products(threshold=3)\n    print(f\"Found {len(low_stock)} products below threshold:\")\n    for item in low_stock:\n        print(f\"- {item['name']}: {item['stock']} units\")\n```\n\n**Đoạn tài liệu được tạo tự động:**\n- **Base URL:** `https://api.acmecorp.com/v2`\n- **Xác thực (Authentication):** Bearer token trong Authorization header\n- **Giới hạn lượt gọi (Rate Limits):** 100 requests/phút cho mỗi API key\n- **Các lỗi thường gặp (Common Errors):** \n  - 401: API key không hợp lệ\n  - 404: Không tìm thấy tài nguyên\n  - 429: Vượt quá giới hạn lượt gọi (Rate limit exceeded)\n\n**Xác thực và kiểm thử (Validation):**\n- Đã thử nghiệm thành công với 15 API endpoint\n- Đã xác minh luồng đăng nhập/xác thực (authentication flow)\n- Xác nhận tất cả các endpoint đều trả về đúng định dạng response mong muốn\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:36.218423Z",
+    "http_status": 200,
+    "content_hash": "bf609182916d89c492b1cf8e5c47b66292c09c133995a42219d4c7f66755dce5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reverse-api-engineer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reverse-api-engineer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Reverse API Engineer - Tự động hóa tích hợp API",
+  "short_description_vi": "Tự động dịch ngược API bằng cách bắt traffic, tạo tài liệu và khởi tạo các API client. Đây là giải pháp lý tưởng giúp các đội ngũ vận hành tinh giản quy trình tích hợp và bảo trì API. Hỗ trợ kết nối trực tiếp với các workflow Python và các Claude agent."
+}

@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-llm-powered-agent",
+  "slug": "awesome-llm-powered-agent",
+  "name": "browser-use",
+  "headline": "awesome-llm-powered-agent: Enhance AI Automation",
+  "short_description": "LLM-powered agents automate complex workflows. Operations teams use them to handle customer queries, process documents, and manage tasks. They integrate with chat platforms and business tools.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "hyp1231",
+  "install_command": "git clone https://github.com/hyp1231/awesome-llm-powered-agent.git",
+  "source_repo_url": "https://github.com/hyp1231/awesome-llm-powered-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "foundation-model",
+    "llm",
+    "large-language-model",
+    "embodied-ai",
+    "llm-powered-agents",
+    "generative-ai",
+    "generative-models",
+    "gpt-4",
+    "chatgpt",
+    "generative-agents",
+    "llms",
+    "generative-model",
+    "large-language-models",
+    "foundation-models",
+    "embodied-agent",
+    "awesome-list"
+  ],
+  "sections": {
+    "overview": "The awesome-llm-powered-agent skill is designed to leverage the capabilities of large language models (LLMs) to create intelligent agents that can engage in human-like conversations and perform complex tasks autonomously. This skill allows users to automate the generation of chatbots, develop agents that can plan and execute user-defined goals, and simulate intricate human interactions for various applications. With a focus on enhancing workflow automation, this skill integrates seamlessly into existing processes, improving decision-making and reasoning capabilities. One of the key benefits of using the awesome-llm-powered-agent is the potential for significant time savings in the development and deployment of AI agents. By utilizing pre-existing frameworks and resources, developers can implement this skill in approximately 30 minutes, making it a practical choice for those looking to enhance their AI automation capabilities without extensive overhead. Although the exact time savings are not quantified, the efficiency gained through automation and streamlined workflows is evident. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to innovate within their organizations. It serves as a valuable tool for those in tech-focused departments aiming to create multi-agent systems that collaborate on complex problems or integrate LLMs into their existing workflows. The versatility of this skill makes it suitable for various use cases, including training simulations, customer service enhancements, and autonomous task management. With an intermediate complexity level, the awesome-llm-powered-agent requires a foundational understanding of AI and automation principles. Users can explore the extensive documentation available on GitHub to guide them through the implementation process. As organizations increasingly adopt AI-first strategies, this skill plays a crucial role in enabling teams to harness the power of AI, driving efficiency and innovation across different sectors.\nAutomate the generation of intelligent chatbots that can engage in human-like conversations.\nDevelop agents that can autonomously plan and execute tasks based on user-defined goals.\nSimulate complex human interactions for training or testing purposes in various applications.\nCreate multi-agent systems that collaborate to solve intricate problems or perform tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hyp1231/awesome-llm-powered-agent`",
+    "usage": "```\nAct as an LLM-powered automation agent to handle [TASK_TYPE] for [COMPANY_NAME]. Follow this workflow: [WORKFLOW_STEPS]. Use the following tools: [TOOLS_LIST]. Respond with structured output in JSON format. Start by confirming the task scope and available data sources.\n```\nCopy\n\n```\n```json\n{\n  \"task_summary\": \"Processing 150 customer refund requests for Acme Corp's Q2 2024 returns\",\n  \"status\": \"in_progress\",\n  \"processed_count\": 42,\n  \"pending_actions\": [\n    {\n      \"request_id\": \"REF-2024-0512\",\n      \"customer_email\": \"j.smith@email.com\",\n      \"refund_amount\": 125.50,\n      \"status\": \"pending_manager_approval\",\n      \"next_step\": \"Send approval request to finance@acmecorp.com\"\n    },\n    {\n      \"request_id\": \"REF-2024-0513\",\n      \"customer_email\": \"m.chen@email.com\",\n      \"refund_amount\": 89.99,\n      \"status\": \"awaiting_digital_signature\",\n      \"next_step\": \"Send DocuSign link for refund authorization\"\n    }\n  ],\n  \"automation_log\": [\n    {\n      \"timestamp\": \"2024-05-15T14:32:18Z\",\n      \"action\": \"Extracted refund data from Zendesk API\",\n      \"records_processed\": 150\n    },\n    {\n      \"timestamp\": \"2024-05-15T14:35:42Z\",\n      \"action\": \"Flagged 12 requests requiring manager approval\",\n      \"criteria\": \"Refunds > $100 or customer VIP status\"\n    }\n  ],\n  \"recommendations\": [\n    \"Consider implementing bulk approval for refunds < $50 to reduce processing time by 60%\",\n    \"Set up automated email notifications for customers when refunds are approved\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-llm-powered-agent#main-content",
+      "awesome-llm-powered-agent#overview",
+      "awesome-llm-powered-agent#setup",
+      "awesome-llm-powered-agent#examples",
+      "awesome-llm-powered-agent#tools",
+      "awesome-llm-powered-agent#mcp",
+      "awesome-llm-powered-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The awesome-llm-powered-agent skill is designed to leverage the capabilities of large language models (LLMs) to create intelligent agents that can engage in human-like conversations and perform complex tasks autonomously. This skill allows users to automate the generation of chatbots, develop agents that can plan and execute user-defined goals, and simulate intricate human interactions for various applications. With a focus on enhancing workflow automation, this skill integrates seamlessly into existing processes, improving decision-making and reasoning capabilities. One of the key benefits of using the awesome-llm-powered-agent is the potential for significant time savings in the development and deployment of AI agents. By utilizing pre-existing frameworks and resources, developers can implement this skill in approximately 30 minutes, making it a practical choice for those looking to enhance their AI automation capabilities without extensive overhead. Although the exact time savings are not quantified, the efficiency gained through automation and streamlined workflows is evident. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to innovate within their organizations. It serves as a valuable tool for those in tech-focused departments aiming to create multi-agent systems that collaborate on complex problems or integrate LLMs into their existing workflows. The versatility of this skill makes it suitable for various use cases, including training simulations, customer service enhancements, and autonomous task management. With an intermediate complexity level, the awesome-llm-powered-agent requires a foundational understanding of AI and automation principles. Users can explore the extensive documentation available on GitHub to guide them through the implementation process. As organizations increasingly adopt AI-first strategies, this skill plays a crucial role in enabling teams to harness the power of AI, driving efficiency and innovation across different sectors.\nAutomate the generation of intelligent chatbots that can engage in human-like conversations.\nDevelop agents that can autonomously plan and execute tasks based on user-defined goals.\nSimulate complex human interactions for training or testing purposes in various applications.\nCreate multi-agent systems that collaborate to solve intricate problems or perform tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hyp1231/awesome-llm-powered-agent`",
+    "usage_vi": "```\nAct as an LLM-powered automation agent to handle [TASK_TYPE] for [COMPANY_NAME]. Follow this workflow: [WORKFLOW_STEPS]. Use the following tools: [TOOLS_LIST]. Respond with structured output in JSON format. Start by confirming the task scope and available data sources.\n```\nCopy\n\n```\n```json\n{\n  \"task_summary\": \"Processing 150 customer refund requests for Acme Corp's Q2 2024 returns\",\n  \"status\": \"in_progress\",\n  \"processed_count\": 42,\n  \"pending_actions\": [\n    {\n      \"request_id\": \"REF-2024-0512\",\n      \"customer_email\": \"j.smith@email.com\",\n      \"refund_amount\": 125.50,\n      \"status\": \"pending_manager_approval\",\n      \"next_step\": \"Send approval request to finance@acmecorp.com\"\n    },\n    {\n      \"request_id\": \"REF-2024-0513\",\n      \"customer_email\": \"m.chen@email.com\",\n      \"refund_amount\": 89.99,\n      \"status\": \"awaiting_digital_signature\",\n      \"next_step\": \"Send DocuSign link for refund authorization\"\n    }\n  ],\n  \"automation_log\": [\n    {\n      \"timestamp\": \"2024-05-15T14:32:18Z\",\n      \"action\": \"Extracted refund data from Zendesk API\",\n      \"records_processed\": 150\n    },\n    {\n      \"timestamp\": \"2024-05-15T14:35:42Z\",\n      \"action\": \"Flagged 12 requests requiring manager approval\",\n      \"criteria\": \"Refunds > $100 or customer VIP status\"\n    }\n  ],\n  \"recommendations\": [\n    \"Consider implementing bulk approval for refunds < $50 to reduce processing time by 60%\",\n    \"Set up automated email notifications for customers when refunds are approved\"\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:56:50.839742Z",
+    "http_status": 200,
+    "content_hash": "ba28d305f9ddd3fdf42b8bb6c320ceaa01d23694a4e88ca52a1bf0e0493b4d26",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-llm-powered-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-llm-powered-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "awesome-llm-powered-agent: Enhance AI Automation",
+  "short_description_vi": "LLM-powered agents automate complex workflows. Operations teams use them to handle customer queries, process documents, and manage tasks. They integrate with chat platforms and business tools."
+}

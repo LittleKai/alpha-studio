@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/packmind",
+  "slug": "packmind",
+  "name": "browser-use",
+  "headline": "Packmind: Your Engineering Playbook",
+  "short_description": "Packmind captures engineering playbooks and converts them into AI context, guardrails, and governance. It benefits engineering teams by ensuring consistent coding practices across AI agents. It integrates with AI coding assistants like Claude and Cursor, streamlining workflows and maintaining governance.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "420 min",
+  "author": "PackmindHub",
+  "install_command": "git clone https://github.com/PackmindHub/packmind.git",
+  "source_repo_url": "https://github.com/PackmindHub/packmind",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "copilot",
+    "ai-coding-assistant",
+    "contextops",
+    "ai-code-governance",
+    "ai-guardrails",
+    "cursor",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "Packmind is an innovative Claude Code skill designed to enhance your engineering workflows by capturing your playbook and transforming it into AI-driven context, guardrails, and governance. This skill allows teams to document and automate their best practices, ensuring that critical knowledge is easily accessible and consistently applied across projects. By integrating Packmind into your workflow, you can effectively streamline processes and improve team collaboration. The key benefits of using Packmind include the ability to standardize engineering practices, reduce onboarding time for new team members, and minimize the risk of errors in project execution. While the exact time savings are currently unknown, the skill's focus on automation and governance can lead to significant efficiency improvements over time. With an implementation time of just 30 minutes, teams can quickly adopt this skill and start reaping the rewards of enhanced productivity. Packmind is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their workflows and ensure that their engineering practices are aligned with organizational goals. By utilizing this skill, teams can create a more cohesive environment where knowledge sharing and adherence to best practices are prioritized. For example, a development team could use Packmind to document their coding standards and deployment processes, making it easier for new members to get up to speed and for existing members to maintain consistency. With an intermediate level of complexity, Packmind is accessible to teams with some experience in AI automation. It fits seamlessly into AI-first workflows by providing the necessary context and governance to ensure that AI agents and automation tools operate effectively. By leveraging Packmind, organizations can not only enhance their engineering capabilities but also foster a culture of continuous improvement and innovation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PackmindHub/packmind`",
+    "usage": "```\nConvert the following engineering playbook into AI-specific guardrails and governance rules for [TEAM_NAME]’s workflows. Focus on [SPECIFIC_AREA, e.g., security, performance, or code review]. Ensure the rules are actionable for AI coding assistants like Claude or Cursor. Playbook details: [PASTE_PLAYBOOK_TEXT].\n```\nCopy\n\n```\n### AI Guardrails for Secure API Development (Team: Fintech Core)\n\n**1. Authentication & Authorization**\n- **Rule**: All API endpoints must enforce JWT validation with a minimum 1-hour expiration. Reject requests with invalid or expired tokens with HTTP 401.\n- **AI Context**: Use `jwt.decode(token, SECRET_KEY, algorithms=['HS256'])` in Python. If token is invalid, return `{'error': 'Unauthorized'}` with status 401.\n- **Guardrail**: If the AI generates code without JWT validation, flag it as a critical security risk.\n\n**2. Input Validation**\n- **Rule**: Validate all user inputs against a strict schema. Reject malformed data with HTTP 400 and a descriptive error message.\n- **AI Context**: Use Pydantic models (e.g., `UserInput.model_validate(input_data)`). If validation fails, return `{'error': 'Invalid input: [specific_field]'}`.\n- **Guardrail**: If the AI skips validation, suggest adding schema checks and log the oversight.\n\n**3. Rate Limiting**\n- **Rule**: Implement Redis-based rate limiting (100 requests/minute per IP). Return HTTP 429 with a `Retry-After` header if exceeded.\n- **AI Context**: Use `redis-py` to track request counts. Example:\n  ```python\n  if redis_client.get(f'rate_limit:{ip}') > 100:\n      return {'error': 'Too many requests'}, 429, {'Retry-After': '60'}\n  ```\n- **Guardrail**: If the AI omits rate limiting, highlight it as a performance risk.\n\n**4. Logging & Monitoring**\n- **Rule**: Log all API requests with timestamps, user IDs, and response codes. Alert on 5xx errors within 5 minutes.\n- **AI Context**: Use structured logging (e.g., `structlog`). Example:\n  ```python\n  logger.info('API request', user_id=user.id, status=response.status_code)\n  ```\n- **Guardrail**: If the AI skips logging, flag it as a compliance risk.\n\n**Governance Checklist for AI Agents**\n- [ ] All generated code includes JWT validation.\n- [ ] Input validation is implemented using Pydantic.\n- [ ] Rate limiting is enforced with Redis.\n- [ ] Logging is structured and alerting is configured.\n\n**Next Steps for AI Agents**\n1. Review the generated code against these guardrails.\n2. If a rule is violated, suggest fixes and log the issue in the team’s governance dashboard.\n3. For complex scenarios, escalate to the security team for review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "packmind#main-content",
+      "packmind#overview",
+      "packmind#setup",
+      "packmind#examples",
+      "packmind#tools",
+      "packmind#mcp",
+      "packmind#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Packmind is an innovative Claude Code skill designed to enhance your engineering workflows by capturing your playbook and transforming it into AI-driven context, guardrails, and governance. This skill allows teams to document and automate their best practices, ensuring that critical knowledge is easily accessible and consistently applied across projects. By integrating Packmind into your workflow, you can effectively streamline processes and improve team collaboration. The key benefits of using Packmind include the ability to standardize engineering practices, reduce onboarding time for new team members, and minimize the risk of errors in project execution. While the exact time savings are currently unknown, the skill's focus on automation and governance can lead to significant efficiency improvements over time. With an implementation time of just 30 minutes, teams can quickly adopt this skill and start reaping the rewards of enhanced productivity. Packmind is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their workflows and ensure that their engineering practices are aligned with organizational goals. By utilizing this skill, teams can create a more cohesive environment where knowledge sharing and adherence to best practices are prioritized. For example, a development team could use Packmind to document their coding standards and deployment processes, making it easier for new members to get up to speed and for existing members to maintain consistency. With an intermediate level of complexity, Packmind is accessible to teams with some experience in AI automation. It fits seamlessly into AI-first workflows by providing the necessary context and governance to ensure that AI agents and automation tools operate effectively. By leveraging Packmind, organizations can not only enhance their engineering capabilities but also foster a culture of continuous improvement and innovation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PackmindHub/packmind`",
+    "usage_vi": "```\nConvert the following engineering playbook into AI-specific guardrails and governance rules for [TEAM_NAME]’s workflows. Focus on [SPECIFIC_AREA, e.g., security, performance, or code review]. Ensure the rules are actionable for AI coding assistants like Claude or Cursor. Playbook details: [PASTE_PLAYBOOK_TEXT].\n```\nCopy\n\n```\n### AI Guardrails for Secure API Development (Team: Fintech Core)\n\n**1. Authentication & Authorization**\n- **Rule**: All API endpoints must enforce JWT validation with a minimum 1-hour expiration. Reject requests with invalid or expired tokens with HTTP 401.\n- **AI Context**: Use `jwt.decode(token, SECRET_KEY, algorithms=['HS256'])` in Python. If token is invalid, return `{'error': 'Unauthorized'}` with status 401.\n- **Guardrail**: If the AI generates code without JWT validation, flag it as a critical security risk.\n\n**2. Input Validation**\n- **Rule**: Validate all user inputs against a strict schema. Reject malformed data with HTTP 400 and a descriptive error message.\n- **AI Context**: Use Pydantic models (e.g., `UserInput.model_validate(input_data)`). If validation fails, return `{'error': 'Invalid input: [specific_field]'}`.\n- **Guardrail**: If the AI skips validation, suggest adding schema checks and log the oversight.\n\n**3. Rate Limiting**\n- **Rule**: Implement Redis-based rate limiting (100 requests/minute per IP). Return HTTP 429 with a `Retry-After` header if exceeded.\n- **AI Context**: Use `redis-py` to track request counts. Example:\n  ```python\n  if redis_client.get(f'rate_limit:{ip}') > 100:\n      return {'error': 'Too many requests'}, 429, {'Retry-After': '60'}\n  ```\n- **Guardrail**: If the AI omits rate limiting, highlight it as a performance risk.\n\n**4. Logging & Monitoring**\n- **Rule**: Log all API requests with timestamps, user IDs, and response codes. Alert on 5xx errors within 5 minutes.\n- **AI Context**: Use structured logging (e.g., `structlog`). Example:\n  ```python\n  logger.info('API request', user_id=user.id, status=response.status_code)\n  ```\n- **Guardrail**: If the AI skips logging, flag it as a compliance risk.\n\n**Governance Checklist for AI Agents**\n- [ ] All generated code includes JWT validation.\n- [ ] Input validation is implemented using Pydantic.\n- [ ] Rate limiting is enforced with Redis.\n- [ ] Logging is structured and alerting is configured.\n\n**Next Steps for AI Agents**\n1. Review the generated code against these guardrails.\n2. If a rule is violated, suggest fixes and log the issue in the team’s governance dashboard.\n3. For complex scenarios, escalate to the security team for review.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:38:20.562228Z",
+    "http_status": 200,
+    "content_hash": "64ddf99ed1a0e3641c6ca4b62773bd236fc61fdfcfebef7f1cdb903c06eafe1b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\packmind.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\packmind.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Packmind: Your Engineering Playbook",
+  "short_description_vi": "Packmind captures engineering playbooks and converts them into AI context, guardrails, and governance. It benefits engineering teams by ensuring consistent coding practices across AI agents. It integrates with AI coding assistants like Claude and Cursor, streamlining workflows and maintaining governance."
+}

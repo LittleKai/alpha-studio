@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/audit",
+  "slug": "audit",
+  "name": "audit",
+  "headline": "Audit: Validate Records for Data Integrity",
+  "short_description": "The audit skill checks records by interacting with an endpoint at zkorman.com. It returns true or false based on the acceptability of the records and is designed for users needing to ensure data integrity.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "zackkorman",
+  "install_command": "git clone https://github.com/zackkorman/skills",
+  "source_repo_url": "https://github.com/zackkorman/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "audit",
+    "security"
+  ],
+  "sections": {
+    "overview": "The audit skill performs automated record validation by interacting with a dedicated endpoint to assess data acceptability. It returns a boolean result indicating whether records meet integrity standards, making it essential for teams that need to ensure data quality and compliance. This skill integrates seamlessly into workflows where data verification is critical, helping catch issues before they propagate through systems. Use it when you need consistent, automated validation without manual review overhead.\nAutomate audits of records to verify data integrity.\nIntegrate with CI/CD pipelines for automated security checks.\nConduct routine audits to maintain compliance.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/zackkorman/skills --skill audit`\n`git clone https://github.com/zackkorman/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "audit#main-content",
+      "audit#overview",
+      "audit#setup",
+      "audit#examples",
+      "audit#tools",
+      "audit#mcp",
+      "audit#related",
+      "llm-security",
+      "variant-analysis",
+      "ctf-solver"
+    ],
+    "overview_vi": "The audit skill performs automated record validation by interacting with a dedicated endpoint to assess data acceptability. It returns a boolean result indicating whether records meet integrity standards, making it essential for teams that need to ensure data quality and compliance. This skill integrates seamlessly into workflows where data verification is critical, helping catch issues before they propagate through systems. Use it when you need consistent, automated validation without manual review overhead.\nAutomate audits of records to verify data integrity.\nIntegrate with CI/CD pipelines for automated security checks.\nConduct routine audits to maintain compliance.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/zackkorman/skills --skill audit`\n`git clone https://github.com/zackkorman/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:31:19.322877Z",
+    "http_status": 200,
+    "content_hash": "9b58e3d7ad4f7960e429446c6be96aa7548cd7cc803d2ff34665533f63c09f1f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\audit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\audit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Audit: Validate Records for Data Integrity",
+  "short_description_vi": "The audit skill checks records by interacting with an endpoint at zkorman.com. It returns true or false based on the acceptability of the records and is designed for users needing to ensure data integrity."
+}

@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentic-config",
+  "slug": "agentic-config",
+  "name": "Agentic Config",
+  "headline": "agentic-config for workflow management",
+  "short_description": "Agentic-config is a project-agnostic, composable configuration system for AI-assisted development workflows. It serves as a single source of truth for agentic tools like Claude Code, Antigravity, Codex CLI, and Gemini CLI. Benefits developers by streamlining configuration management and improving workflow consistency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "WaterplanAI",
+  "install_command": "git clone https://github.com/WaterplanAI/agentic-config.git",
+  "source_repo_url": "https://github.com/WaterplanAI/agentic-config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "agentic",
+    "config",
+    "ai",
+    "claude-code",
+    "codex",
+    "workflow",
+    "antigravity",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "agentic-config is a centralized, project-agnostic configuration system designed for AI-assisted development workflows. It provides 42 composable skills organized across seven plugins: workflow orchestration, git automation, QA testing, utilities, meta-prompting, security guardrails, and audit logging. The system works natively with Claude Code plugins and pi packages, allowing skills to invoke other skills for compounding automation. Teams benefit from reproducible, tagged releases pinned in version control, while developers get streamlined configuration management without project-specific modifications.\nOrchestrate multi-agent spec workflows with pimux-backed task delegation\nAutomate git operations, PR creation, and release management across repositories\nRun E2E testing and browser automation in QA pipelines\nEnforce security guardrails for credentials, write scope, and supply chain risks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WaterplanAI/agentic-config`",
+    "usage": "```\nGenerate an agentic-config configuration file for [PROJECT_NAME] that integrates [TOOLS] (e.g., Claude Code, Antigravity, Codex CLI). Include settings for [LANGUAGE], [ENVIRONMENT], and [ACTIONS] (e.g., testing, linting, deployment). Structure the config to support modular workflows and ensure consistency across [TEAM_SIZE] developers. Use YAML format.\n```\nCopy\n\n```\n```yaml\n# agentic-config.yml for Project Phoenix\nproject:\n  name: phoenix-api\n  version: 1.2.0\n  language: Python 3.11\n  environment: production\n\ntools:\n  claude_code:\n    max_tokens: 4096\n    temperature: 0.7\n    tools: [\"file_operations\", \"shell\", \"web_search\"]\n    sandbox: true\n\n  antigravity:\n    workflows:\n      - name: \"test-suite\"\n        steps:\n          - command: \"pytest tests/ --cov=src --cov-report=xml\"\n            output: \"coverage.xml\"\n          - command: \"flake8 src/ tests/\"\n            output: \"linting-report.txt\"\n      - name: \"deployment\"\n        steps:\n          - command: \"docker build -t phoenix-api:${{GIT_COMMIT_SHA}} .\"\n            output: \"docker-build.log\"\n          - command: \"kubectl apply -f k8s/deployment.yaml\"\n            output: \"k8s-deploy.log\"\n\n  codex_cli:\n    default_model: \"codex-4\"\n    hooks:\n      pre-commit:\n        - command: \"poetry run black src/ tests/\"\n          output: \"black-format.log\"\n        - command: \"poetry run isort src/ tests/\"\n          output: \"isort-format.log\"\n\nteam:\n  size: 8\n  roles:\n    backend: [\"alice\", \"bob\"]\n    frontend: [\"charlie\", \"diana\"]\n    devops: [\"eve\"]\n  shared_workflows:\n    - \"test-suite\"\n    - \"linting\"\n\nvalidation:\n  required_fields: [\"project.name\", \"tools.claude_code\", \"team.size\"]\n  schema: \"https://raw.githubusercontent.com/agentic-tools/agentic-config/main/schema.json\"\n```\n\n### Key Features Demonstrated:\n1. **Modular Workflows**: The `test-suite` and `deployment` workflows can be reused across the team, ensuring consistency in testing and deployment processes.\n2. **Tool Integration**: Configures Claude Code for interactive development, Antigravity for automated workflows, and Codex CLI for pre-commit hooks.\n3. **Team Collaboration**: Defines roles and shared workflows, making it easy for 8 developers to collaborate without conflicting configurations.\n4. **Validation**: Includes a schema reference to ensure the configuration adheres to the latest standards.\n\nThis configuration ensures that every developer on the Phoenix team uses the same tools, commands, and workflows, reducing setup time and minimizing errors during development and deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentic-config#main-content",
+      "agentic-config#overview",
+      "agentic-config#setup",
+      "agentic-config#examples",
+      "agentic-config#tools",
+      "agentic-config#mcp",
+      "agentic-config#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "agentic-config is a centralized, project-agnostic configuration system designed for AI-assisted development workflows. It provides 42 composable skills organized across seven plugins: workflow orchestration, git automation, QA testing, utilities, meta-prompting, security guardrails, and audit logging. The system works natively with Claude Code plugins and pi packages, allowing skills to invoke other skills for compounding automation. Teams benefit from reproducible, tagged releases pinned in version control, while developers get streamlined configuration management without project-specific modifications.\nOrchestrate multi-agent spec workflows with pimux-backed task delegation\nAutomate git operations, PR creation, and release management across repositories\nRun E2E testing and browser automation in QA pipelines\nEnforce security guardrails for credentials, write scope, and supply chain risks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WaterplanAI/agentic-config`",
+    "usage_vi": "```\nGenerate an agentic-config configuration file for [PROJECT_NAME] that integrates [TOOLS] (e.g., Claude Code, Antigravity, Codex CLI). Include settings for [LANGUAGE], [ENVIRONMENT], and [ACTIONS] (e.g., testing, linting, deployment). Structure the config to support modular workflows and ensure consistency across [TEAM_SIZE] developers. Use YAML format.\n```\nCopy\n\n```\n```yaml\n# agentic-config.yml for Project Phoenix\nproject:\n  name: phoenix-api\n  version: 1.2.0\n  language: Python 3.11\n  environment: production\n\ntools:\n  claude_code:\n    max_tokens: 4096\n    temperature: 0.7\n    tools: [\"file_operations\", \"shell\", \"web_search\"]\n    sandbox: true\n\n  antigravity:\n    workflows:\n      - name: \"test-suite\"\n        steps:\n          - command: \"pytest tests/ --cov=src --cov-report=xml\"\n            output: \"coverage.xml\"\n          - command: \"flake8 src/ tests/\"\n            output: \"linting-report.txt\"\n      - name: \"deployment\"\n        steps:\n          - command: \"docker build -t phoenix-api:${{GIT_COMMIT_SHA}} .\"\n            output: \"docker-build.log\"\n          - command: \"kubectl apply -f k8s/deployment.yaml\"\n            output: \"k8s-deploy.log\"\n\n  codex_cli:\n    default_model: \"codex-4\"\n    hooks:\n      pre-commit:\n        - command: \"poetry run black src/ tests/\"\n          output: \"black-format.log\"\n        - command: \"poetry run isort src/ tests/\"\n          output: \"isort-format.log\"\n\nteam:\n  size: 8\n  roles:\n    backend: [\"alice\", \"bob\"]\n    frontend: [\"charlie\", \"diana\"]\n    devops: [\"eve\"]\n  shared_workflows:\n    - \"test-suite\"\n    - \"linting\"\n\nvalidation:\n  required_fields: [\"project.name\", \"tools.claude_code\", \"team.size\"]\n  schema: \"https://raw.githubusercontent.com/agentic-tools/agentic-config/main/schema.json\"\n```\n\n### Key Features Demonstrated:\n1. **Modular Workflows**: The `test-suite` and `deployment` workflows can be reused across the team, ensuring consistency in testing and deployment processes.\n2. **Tool Integration**: Configures Claude Code for interactive development, Antigravity for automated workflows, and Codex CLI for pre-commit hooks.\n3. **Team Collaboration**: Defines roles and shared workflows, making it easy for 8 developers to collaborate without conflicting configurations.\n4. **Validation**: Includes a schema reference to ensure the configuration adheres to the latest standards.\n\nThis configuration ensures that every developer on the Phoenix team uses the same tools, commands, and workflows, reducing setup time and minimizing errors during development and deployment.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:49.140549Z",
+    "http_status": 200,
+    "content_hash": "3de0f4db54388e6087aaf79b787391cd7146c9e4724a4974f6cd2d583bc9dd73",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentic-config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentic-config.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agentic-config for workflow management",
+  "short_description_vi": "Agentic-config is a project-agnostic, composable configuration system for AI-assisted development workflows. It serves as a single source of truth for agentic tools like Claude Code, Antigravity, Codex CLI, and Gemini CLI. Benefits developers by streamlining configuration management and improving workflow consistency."
+}

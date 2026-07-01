@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-of-empires",
+  "slug": "agent-of-empires",
+  "name": "Agent Of Empires",
+  "headline": "Coding agent terminal management with tmux",
+  "short_description": "Agent of Empires automates coding tasks via terminal sessions. It connects Claude Code, OpenCode, and Mistral Vibe to CLI tools like Codex and Gemini. Operations teams use it to manage git worktrees and tmux sessions, streamlining development workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "njbrake",
+  "install_command": "git clone https://github.com/njbrake/agent-of-empires.git",
+  "source_repo_url": "https://github.com/njbrake/agent-of-empires",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-coding",
+    "cli",
+    "mistral-vibe",
+    "claude-code",
+    "vibe",
+    "codex",
+    "terminal",
+    "vibe-coding",
+    "opencode",
+    "gemini-cli",
+    "llm",
+    "rust",
+    "claude",
+    "tmux",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "Agent of Empires is an automation skill that enables AI agents to execute coding tasks through managed terminal sessions and CLI tool integration. It provides a web dashboard for monitoring and controlling sessions, with support for git worktree and tmux session management. The skill integrates with multiple AI agent platforms and includes features like session grouping by project directory, terminal auto-reconnect, and inline diff viewing. Development teams and operations staff use it to streamline multi-agent workflows without manual terminal management. The tool includes a Rust backend with web UI and supports persistent authentication for reliable remote access.\nManage multiple AI coding sessions simultaneously using tmux.\nEasily switch between different coding environments with the TUI dashboard.\nIsolate project environments by sandboxing agents in Docker containers.\nOrganize coding sessions into hierarchical groups for better project management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/njbrake/agent-of-empires`",
+    "usage": "```\nAutomate the setup of a new feature branch for [PROJECT_NAME] using Agent of Empires. Create a git worktree in [WORKTREE_PATH] pointing to [SOURCE_BRANCH], then launch a tmux session named '[SESSION_NAME]' with panes for [EDITOR], [TEST_RUNNER], and [DEBUGGER]. Execute the command to switch to the new branch and verify the environment. Provide the exact commands and expected output.\n```\nCopy\n\n```\n### Agent of Empires Automation Report\n\n**Task:** Automate setup of `feature/payment-integration` for `acme-ecommerce`\n\n**Commands Executed:**\n```bash\n# Create worktree\ngit worktree add -b feature/payment-integration /tmp/acme-ecommerce-feature-payment-integration main\n\n# Launch tmux session\ntmux new-session -d -s payment_dev\n\n# Split panes and execute commands\ntmux send-keys -t payment_dev:0.0 'cd /tmp/acme-ecommerce-feature-payment-integration' C-m\n\ntmux send-keys -t payment_dev:0.1 'npm run dev' C-m\n\ntmux send-keys -t payment_dev:0.2 'npm run test:watch' C-m\n\n# Switch to new branch\ntmux send-keys -t payment_dev:0.0 'git checkout feature/payment-integration' C-m\n```\n\n**Environment Verification:**\n```\n$ git branch\n  feature/payment-integration\n* main\n\n$ npm run dev\n  [PAYMENT_SERVICE] Listening on port 3001\n  [DB] Connected to staging cluster\n\n$ npm run test:watch\n  Test Suites: 12 passed, 2 skipped\n  Coverage: 87%\n```\n\n**Next Steps:**\n1. Open VS Code in the worktree directory\n2. Push initial commit: `git push -u origin feature/payment-integration`\n3. Create PR with template from .github/PULL_REQUEST_TEMPLATE.md\n\nAll systems operational. Ready for development.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-of-empires#main-content",
+      "agent-of-empires#overview",
+      "agent-of-empires#setup",
+      "agent-of-empires#examples",
+      "agent-of-empires#tools",
+      "agent-of-empires#mcp",
+      "agent-of-empires#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent of Empires is an automation skill that enables AI agents to execute coding tasks through managed terminal sessions and CLI tool integration. It provides a web dashboard for monitoring and controlling sessions, with support for git worktree and tmux session management. The skill integrates with multiple AI agent platforms and includes features like session grouping by project directory, terminal auto-reconnect, and inline diff viewing. Development teams and operations staff use it to streamline multi-agent workflows without manual terminal management. The tool includes a Rust backend with web UI and supports persistent authentication for reliable remote access.\nManage multiple AI coding sessions simultaneously using tmux.\nEasily switch between different coding environments with the TUI dashboard.\nIsolate project environments by sandboxing agents in Docker containers.\nOrganize coding sessions into hierarchical groups for better project management.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/njbrake/agent-of-empires`",
+    "usage_vi": "```\nAutomate the setup of a new feature branch for [PROJECT_NAME] using Agent of Empires. Create a git worktree in [WORKTREE_PATH] pointing to [SOURCE_BRANCH], then launch a tmux session named '[SESSION_NAME]' with panes for [EDITOR], [TEST_RUNNER], and [DEBUGGER]. Execute the command to switch to the new branch and verify the environment. Provide the exact commands and expected output.\n```\nCopy\n\n```\n### Agent of Empires Automation Report\n\n**Task:** Automate setup of `feature/payment-integration` for `acme-ecommerce`\n\n**Commands Executed:**\n```bash\n# Create worktree\ngit worktree add -b feature/payment-integration /tmp/acme-ecommerce-feature-payment-integration main\n\n# Launch tmux session\ntmux new-session -d -s payment_dev\n\n# Split panes and execute commands\ntmux send-keys -t payment_dev:0.0 'cd /tmp/acme-ecommerce-feature-payment-integration' C-m\n\ntmux send-keys -t payment_dev:0.1 'npm run dev' C-m\n\ntmux send-keys -t payment_dev:0.2 'npm run test:watch' C-m\n\n# Switch to new branch\ntmux send-keys -t payment_dev:0.0 'git checkout feature/payment-integration' C-m\n```\n\n**Environment Verification:**\n```\n$ git branch\n  feature/payment-integration\n* main\n\n$ npm run dev\n  [PAYMENT_SERVICE] Listening on port 3001\n  [DB] Connected to staging cluster\n\n$ npm run test:watch\n  Test Suites: 12 passed, 2 skipped\n  Coverage: 87%\n```\n\n**Next Steps:**\n1. Open VS Code in the worktree directory\n2. Push initial commit: `git push -u origin feature/payment-integration`\n3. Create PR with template from .github/PULL_REQUEST_TEMPLATE.md\n\nAll systems operational. Ready for development.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:02.448735Z",
+    "http_status": 200,
+    "content_hash": "29260bf2a993fa94f3290d193d068ec1770d080e711a873eef95c185ef57a031",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-of-empires.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-of-empires.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Coding agent terminal management with tmux",
+  "short_description_vi": "Agent of Empires automates coding tasks via terminal sessions. It connects Claude Code, OpenCode, and Mistral Vibe to CLI tools like Codex and Gemini. Operations teams use it to manage git worktrees and tmux sessions, streamlining development workflows."
+}

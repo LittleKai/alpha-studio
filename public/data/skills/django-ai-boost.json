@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/django-ai-boost",
+  "slug": "django-ai-boost",
+  "name": "browser-use",
+  "headline": "Django AI Boost - AI Assistance for Django",
+  "short_description": "Django AI Boost is an MCP server for Django applications that exposes project information to AI tools. It enables developers to use AI assistance for Django projects, similar to Laravel Boost. The server connects to Django workflows and integrates with AI agents like Claude.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "vintasoftware",
+  "install_command": "git clone https://github.com/vintasoftware/django-ai-boost.git",
+  "source_repo_url": "https://github.com/vintasoftware/django-ai-boost",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "django",
+    "mcp-server",
+    "opencode-ai"
+  ],
+  "sections": {
+    "overview": "Django AI Boost is a Model Context Protocol server that bridges Django applications and AI assistants like Claude. It exposes project information including models, URLs, database schema, migrations, Django settings, and application logs through read-only MCP tools. Developers can connect the server to AI tools via stdio or SSE transport with optional bearer token authentication for production deployments. The server supports integration with Cursor, Claude Desktop, VS Code extensions (Claude Code, Cline), Zed Editor, and other MCP-compatible clients, enabling AI-assisted development workflows for Django projects.\nGenerate Django models and migrations with AI assistance\nUnderstand project structure and relationships with AI code exploration\nDebug Django applications by accessing logs and configuration through AI\nRefactor Django codebases with AI understanding of URLs and views",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vintasoftware/django-ai-boost`",
+    "usage": "```\nUse django-ai-boost to analyze the Django project [PROJECT_NAME] and identify performance bottlenecks in the [MODEL_NAME] model's query patterns. Focus on N+1 query issues and suggest optimizations like select_related, prefetch_related, or raw SQL where applicable. Provide the exact lines of code that need modification with before/after examples.\n```\nCopy\n\n```\nAnalysis of the Django project 'EcommercePlatform' revealed critical performance bottlenecks in the Product model's query patterns. The current implementation executes 1,247 individual queries when rendering the product listing page, causing a 4.8-second load time. The primary issue is in the ProductCardView where the related Category and Inventory models are fetched in separate queries for each product.\n\n**Problematic Code (views.py):**\n```python\nproducts = Product.objects.all()\nfor product in products:\n    category = product.category  # 1247 queries\n    stock = product.inventory.stock  # 1247 queries\n```\n\n**Optimized Solution:**\n```python\nproducts = Product.objects.select_related('category').prefetch_related('inventory').all()\nfor product in products:\n    category = product.category  # Single query\n    stock = product.inventory.first().stock  # Single query\n```\n\nAdditional recommendations:\n1. Add database indexes to frequently queried fields (price, category_id)\n2. Implement caching for product listings using Redis (TTL: 5 minutes)\n3. Consider denormalizing frequently accessed fields like 'current_price' to avoid joins\n\nThe optimized version reduced query count from 1,247 to 3 and improved page load time to 850ms. The changes require modifications to views.py and models.py as shown above.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "django-ai-boost#main-content",
+      "django-ai-boost#overview",
+      "django-ai-boost#setup",
+      "django-ai-boost#examples",
+      "django-ai-boost#tools",
+      "django-ai-boost#mcp",
+      "django-ai-boost#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Django AI Boost is a Model Context Protocol server that bridges Django applications and AI assistants like Claude. It exposes project information including models, URLs, database schema, migrations, Django settings, and application logs through read-only MCP tools. Developers can connect the server to AI tools via stdio or SSE transport with optional bearer token authentication for production deployments. The server supports integration with Cursor, Claude Desktop, VS Code extensions (Claude Code, Cline), Zed Editor, and other MCP-compatible clients, enabling AI-assisted development workflows for Django projects.\nGenerate Django models and migrations with AI assistance\nUnderstand project structure and relationships with AI code exploration\nDebug Django applications by accessing logs and configuration through AI\nRefactor Django codebases with AI understanding of URLs and views",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vintasoftware/django-ai-boost`",
+    "usage_vi": "```\nUse django-ai-boost to analyze the Django project [PROJECT_NAME] and identify performance bottlenecks in the [MODEL_NAME] model's query patterns. Focus on N+1 query issues and suggest optimizations like select_related, prefetch_related, or raw SQL where applicable. Provide the exact lines of code that need modification with before/after examples.\n```\nCopy\n\n```\nAnalysis of the Django project 'EcommercePlatform' revealed critical performance bottlenecks in the Product model's query patterns. The current implementation executes 1,247 individual queries when rendering the product listing page, causing a 4.8-second load time. The primary issue is in the ProductCardView where the related Category and Inventory models are fetched in separate queries for each product.\n\n**Problematic Code (views.py):**\n```python\nproducts = Product.objects.all()\nfor product in products:\n    category = product.category  # 1247 queries\n    stock = product.inventory.stock  # 1247 queries\n```\n\n**Optimized Solution:**\n```python\nproducts = Product.objects.select_related('category').prefetch_related('inventory').all()\nfor product in products:\n    category = product.category  # Single query\n    stock = product.inventory.first().stock  # Single query\n```\n\nAdditional recommendations:\n1. Add database indexes to frequently queried fields (price, category_id)\n2. Implement caching for product listings using Redis (TTL: 5 minutes)\n3. Consider denormalizing frequently accessed fields like 'current_price' to avoid joins\n\nThe optimized version reduced query count from 1,247 to 3 and improved page load time to 850ms. The changes require modifications to views.py and models.py as shown above.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:51:31.215935Z",
+    "http_status": 200,
+    "content_hash": "cdb69e9edd55f2d5c793945e3a2ddde1a92efd29d26cdd123b0224dee1669771",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\django-ai-boost.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\django-ai-boost.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Django AI Boost - AI Assistance for Django",
+  "short_description_vi": "Django AI Boost is an MCP server for Django applications that exposes project information to AI tools. It enables developers to use AI assistance for Django projects, similar to Laravel Boost. The server connects to Django workflows and integrates with AI agents like Claude."
+}

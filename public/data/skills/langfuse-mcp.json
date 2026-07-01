@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/langfuse-mcp",
+  "slug": "langfuse-mcp",
+  "name": "browser-use",
+  "headline": "Langfuse MCP Server - AI Agent Debugging",
+  "short_description": "Langfuse MCP server enables AI agents to query Langfuse trace data for enhanced debugging and observability. Operations teams benefit from improved AI agent performance monitoring and troubleshooting. Integrates with Langfuse for trace data analysis and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "avivsinai",
+  "install_command": "git clone https://github.com/avivsinai/langfuse-mcp.git",
+  "source_repo_url": "https://github.com/avivsinai/langfuse-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "ai-agents",
+    "langfuse",
+    "llm",
+    "agent-skills",
+    "mcp-server",
+    "tracing",
+    "genai",
+    "observability",
+    "mcp",
+    "codex"
+  ],
+  "sections": {
+    "overview": "Langfuse MCP is a Model Context Protocol server that connects Claude, Cursor, and other AI agents directly to Langfuse observability data. It provides 48 tools for inspecting traces, finding exceptions, analyzing sessions, managing prompts, and working with datasets without leaving your agent workflow. Operations teams use it to answer production questions: what failed, why was it slow, which prompt version ran, and what happened in a user's session. The server runs locally via stdio or HTTP and includes an agent skill with ready-made debugging playbooks. It focuses on compact trace inspection and token efficiency compared to broader hosted alternatives.\nDebug failing agent runs by querying Langfuse traces and inspecting observations\nFind and triage exceptions, slow generations, and high-latency spans in production\nAnalyze user sessions and journeys to understand agent behavior\nManage prompt versions and datasets during agent development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/avivsinai/langfuse-mcp`",
+    "usage": "```\nQuery the Langfuse trace data for [AGENT_NAME]'s recent runs to identify performance bottlenecks or errors. Focus on traces from the last [TIME_PERIOD] where [SPECIFIC_METRIC] fell below [THRESHOLD]. For each problematic trace, extract the input/output pairs, latency metrics, and any error messages. Suggest 2-3 actionable fixes based on the patterns observed.\n```\nCopy\n\n```\nHere’s a summary of the trace analysis for the 'CustomerSupportAgent' over the last 7 days where latency exceeded 5 seconds:\n\n**Top 3 Slowest Traces:**\n1. Trace ID: `tr_987654321` (Latency: 12.4s)\n   - Input: User query about 'refund policy for order #12345'\n   - Output: Incorrect response (recommended 'store credit' instead of 'full refund')\n   - Error: Missing context from order database\n   - Root Cause: Database query timeout (3.2s) due to unoptimized query\n\n2. Trace ID: `tr_555666777` (Latency: 8.1s)\n   - Input: User complaint about 'late delivery'\n   - Output: Generic apology without tracking info\n   - Error: No integration with shipping API\n   - Root Cause: Fallback to slow manual lookup\n\n3. Trace ID: `tr_111222333` (Latency: 6.7s)\n   - Input: User asking about 'product compatibility'\n   - Output: Incomplete answer (missing 3/5 compatibility rules)\n   - Error: Fragmented tool calls\n   - Root Cause: Agent split complex query into sequential steps\n\n**Recommended Fixes:**\n1. Optimize the order database query by adding an index on `order_id` (estimated 60% latency reduction).\n2. Integrate the shipping API directly into the agent’s toolset to avoid manual lookups.\n3. Implement a caching layer for frequently asked questions (e.g., refund policy) to reduce redundant computations.\n\n**Performance Impact:** Applying these fixes could reduce average latency from 7.2s to 2.1s (71% improvement) based on similar optimizations in other agents.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "langfuse-mcp#main-content",
+      "langfuse-mcp#overview",
+      "langfuse-mcp#setup",
+      "langfuse-mcp#examples",
+      "langfuse-mcp#tools",
+      "langfuse-mcp#mcp",
+      "langfuse-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Langfuse MCP is a Model Context Protocol server that connects Claude, Cursor, and other AI agents directly to Langfuse observability data. It provides 48 tools for inspecting traces, finding exceptions, analyzing sessions, managing prompts, and working with datasets without leaving your agent workflow. Operations teams use it to answer production questions: what failed, why was it slow, which prompt version ran, and what happened in a user's session. The server runs locally via stdio or HTTP and includes an agent skill with ready-made debugging playbooks. It focuses on compact trace inspection and token efficiency compared to broader hosted alternatives.\nDebug failing agent runs by querying Langfuse traces and inspecting observations\nFind and triage exceptions, slow generations, and high-latency spans in production\nAnalyze user sessions and journeys to understand agent behavior\nManage prompt versions and datasets during agent development",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/avivsinai/langfuse-mcp`",
+    "usage_vi": "```\nQuery the Langfuse trace data for [AGENT_NAME]'s recent runs to identify performance bottlenecks or errors. Focus on traces from the last [TIME_PERIOD] where [SPECIFIC_METRIC] fell below [THRESHOLD]. For each problematic trace, extract the input/output pairs, latency metrics, and any error messages. Suggest 2-3 actionable fixes based on the patterns observed.\n```\nCopy\n\n```\nHere’s a summary of the trace analysis for the 'CustomerSupportAgent' over the last 7 days where latency exceeded 5 seconds:\n\n**Top 3 Slowest Traces:**\n1. Trace ID: `tr_987654321` (Latency: 12.4s)\n   - Input: User query about 'refund policy for order #12345'\n   - Output: Incorrect response (recommended 'store credit' instead of 'full refund')\n   - Error: Missing context from order database\n   - Root Cause: Database query timeout (3.2s) due to unoptimized query\n\n2. Trace ID: `tr_555666777` (Latency: 8.1s)\n   - Input: User complaint about 'late delivery'\n   - Output: Generic apology without tracking info\n   - Error: No integration with shipping API\n   - Root Cause: Fallback to slow manual lookup\n\n3. Trace ID: `tr_111222333` (Latency: 6.7s)\n   - Input: User asking about 'product compatibility'\n   - Output: Incomplete answer (missing 3/5 compatibility rules)\n   - Error: Fragmented tool calls\n   - Root Cause: Agent split complex query into sequential steps\n\n**Recommended Fixes:**\n1. Optimize the order database query by adding an index on `order_id` (estimated 60% latency reduction).\n2. Integrate the shipping API directly into the agent’s toolset to avoid manual lookups.\n3. Implement a caching layer for frequently asked questions (e.g., refund policy) to reduce redundant computations.\n\n**Performance Impact:** Applying these fixes could reduce average latency from 7.2s to 2.1s (71% improvement) based on similar optimizations in other agents.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:46:11.226072Z",
+    "http_status": 200,
+    "content_hash": "5763f103227b4d00a045cdc4a8dd65f3600aa4f7ddf680dfab0f1da91d79f1e8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langfuse-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langfuse-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Langfuse MCP Server - AI Agent Debugging",
+  "short_description_vi": "Langfuse MCP server enables AI agents to query Langfuse trace data for enhanced debugging and observability. Operations teams benefit from improved AI agent performance monitoring and troubleshooting. Integrates with Langfuse for trace data analysis and supports Claude agents."
+}

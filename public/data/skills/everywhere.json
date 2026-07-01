@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/everywhere",
+  "slug": "everywhere",
+  "name": "Everywhere",
+  "headline": "Everywhere: Your Context-Aware AI Assistant",
+  "short_description": "Everywhere is a context-aware AI assistant designed for your desktop, integrating multiple LLMs and MCP tools for interaction. It enhances productivity by intelligently responding to user needs, making it an essential tool for professionals.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "DearVa",
+  "install_command": "claude install DearVa/Everywhere",
+  "source_repo_url": "https://github.com/DearVa/Everywhere",
+  "works_with": [
+    "ClaudeChatGPTOpenAI"
+  ],
+  "tags": [
+    "automation",
+    "LLM",
+    "context-aware",
+    "AI assistant",
+    "desktop integration"
+  ],
+  "sections": {
+    "overview": "Everywhere is a desktop-based AI assistant that brings intelligent, context-aware interaction directly to your workspace. It integrates multiple large language models and MCP tools, enabling seamless access to AI capabilities across your desktop environment. The application is designed to enhance professional productivity by understanding user needs and providing relevant assistance. Built with support for multiple platforms including Windows, macOS, and Linux, Everywhere offers a unified interface for leveraging various AI models and tools without switching between applications.\nAutomate the generation of project reports based on existing data.\nEnhance team collaboration by integrating with communication tools to summarize discussions.\nProvide instant access to documentation and resources during development.\nStreamline workflows by automating task assignments based on team availability.",
+    "setup": "Terminal\nCopy\n`claude install DearVa/Everywhere`\n`git clone https://github.com/DearVa/Everywhere`",
+    "usage": "```\nI'm using Everywhere to help me with my finance tasks. I need to analyze the Q3 financial data from Productiv and identify trends in our SaaS spending. Can you help me break down the data by department and suggest cost-saving measures based on the insights? I also need to forecast the budget for Q4 based on these trends. Please provide a step-by-step plan to achieve this.\n```\nCopy\n\n```\nBased on the Q3 financial data from Productiv, here's a detailed analysis and action plan:\n\n1. **Departmental Breakdown**:\n   - **Marketing**: Spent $150,000 on SaaS tools, with a 20% increase from Q2. The main contributors are HubSpot ($60,000) and Google Ads ($50,000).\n   - **Sales**: Spent $120,000, with Salesforce being the primary expense at $80,000. There's a 15% increase from Q2.\n   - **IT**: Spent $90,000, with AWS and Microsoft 365 being the top expenses. The spending is relatively stable compared to Q2.\n\n2. **Trends and Insights**:\n   - There's a noticeable increase in marketing and sales SaaS spending, which aligns with the company's growth strategy.\n   - IT spending is stable, indicating efficient resource utilization.\n\n3. **Cost-Saving Measures**:\n   - **Marketing**: Negotiate better rates with HubSpot and Google Ads. Consider consolidating tools to reduce redundancy.\n   - **Sales**: Review Salesforce usage and identify underutilized features. Train the team to maximize the tool's potential.\n   - **IT**: Regularly review and optimize cloud usage to prevent unnecessary expenses.\n\n4. **Q4 Budget Forecast**: Based on the current trends and growth plans, here's a preliminary budget forecast:\n   - **Marketing**: $165,000 (10% increase from Q3)\n   - **Sales**: $135,000 (12.5% increase from Q3)\n   - **IT**: $95,000 (5% increase from Q3)\n\nTo achieve this, follow these steps:\n1. Export the Q3 financial data from Productiv.\n2. Use Everywhere to analyze the data and identify trends.\n3. Based on the insights, suggest cost-saving measures.\n4. Forecast the Q4 budget based on the current trends and growth plans.\n5. Present the findings to the finance team for review and approval.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT, OpenAI"
+    ],
+    "related_skills": [
+      "everywhere#main-content",
+      "everywhere#overview",
+      "everywhere#setup",
+      "everywhere#examples",
+      "everywhere#tools",
+      "everywhere#mcp",
+      "everywhere#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Everywhere là trợ lý AI hoạt động trên desktop, mang đến khả năng tương tác thông minh và thấu hiểu ngữ cảnh trực tiếp vào không gian làm việc của bạn. Ứng dụng tích hợp nhiều mô hình ngôn ngữ lớn (LLM) và công cụ MCP, giúp bạn tiếp cận các tính năng AI một cách liền mạch ngay trên môi trường desktop. Được thiết kế để tối ưu hóa hiệu suất làm việc chuyên nghiệp, Everywhere hiểu rõ nhu cầu của người dùng để đưa ra hỗ trợ phù hợp nhất. Nhờ hỗ trợ đa nền tảng bao gồm Windows, macOS và Linux, Everywhere cung cấp một giao diện thống nhất để khai thác các mô hình và công cụ AI khác nhau mà không cần chuyển đổi qua lại giữa các ứng dụng.\n\nTự động hóa việc tạo báo cáo dự án dựa trên dữ liệu hiện có.\nTăng cường cộng tác nhóm bằng cách tích hợp với các công cụ giao tiếp để tóm tắt các cuộc thảo luận.\nCung cấp quyền truy cập tức thì vào tài liệu và tài nguyên trong quá trình phát triển.\nTối ưu hóa quy trình làm việc bằng cách tự động giao việc dựa trên thời gian rảnh của các thành viên trong nhóm.",
+    "setup_vi": "Terminal\nSao chép\n`claude install DearVa/Everywhere`\n`git clone https://github.com/DearVa/Everywhere`",
+    "usage_vi": "```\nTôi đang sử dụng Everywhere để hỗ trợ các công việc tài chính. Tôi cần phân tích dữ liệu tài chính Quý 3 từ Productiv và xác định các xu hướng chi tiêu cho SaaS của chúng tôi. Bạn có thể giúp tôi phân tích chi tiết dữ liệu theo từng phòng ban và đề xuất các biện pháp tiết kiệm chi phí dựa trên các thông tin chuyên sâu này không? Tôi cũng cần dự báo ngân sách cho Quý 4 dựa trên các xu hướng đó. Vui lòng cung cấp một kế hoạch chi tiết từng bước để thực hiện việc này.\n```\nSao chép\n\n```\nDựa trên dữ liệu tài chính Quý 3 từ Productiv, dưới đây là phân tích chi tiết và kế hoạch hành động:\n\n1. **Phân tích theo phòng ban**:\n   - **Marketing**: Đã chi 150.000 USD cho các công cụ SaaS, tăng 20% so với Quý 2. Các khoản chi chính là HubSpot (60.000 USD) và Google Ads (50.000 USD).\n   - **Sales**: Đã chi 120.000 USD, trong đó Salesforce là khoản chi chính với 80.000 USD. Tăng 15% so với Quý 2.\n   - **IT**: Đã chi 90.000 USD, trong đó AWS và Microsoft 365 là các khoản chi hàng đầu. Mức chi tiêu tương đối ổn định so với Quý 2.\n\n2. **Xu hướng và Đánh giá**:\n   - Chi tiêu SaaS của bộ phận Marketing và Sales tăng rõ rệt, phù hợp với chiến lược tăng trưởng của công ty.\n   - Chi tiêu của bộ phận IT ổn định, cho thấy việc sử dụng tài nguyên hiệu quả.\n\n3. **Biện pháp tiết kiệm chi phí**:\n   - **Marketing**: Thương lượng mức giá tốt hơn với HubSpot và Google Ads. Cân nhắc hợp nhất các công cụ để giảm thiểu sự dư thừa.\n   - **Sales**: Xem xét việc sử dụng Salesforce và xác định các tính năng chưa được khai thác hết. Đào tạo đội ngũ để tối ưu hóa tiềm năng của công cụ.\n   - **IT**: Thường xuyên kiểm tra và tối ưu hóa việc sử dụng cloud để tránh các chi phí không cần thiết.\n\n4. **Dự báo ngân sách Quý 4**: Dựa trên xu hướng hiện tại và kế hoạch tăng trưởng, dưới đây là dự báo ngân sách sơ bộ:\n   - **Marketing**: 165.000 USD (tăng 10% so với Quý 3)\n   - **Sales**: 135.000 USD (tăng 12,5% so với Quý 3)\n   - **IT**: 95.000 USD (tăng 5% so với Quý 3)\n\nĐể thực hiện điều này, hãy làm theo các bước sau:\n1. Xuất dữ liệu tài chính Quý 3 từ Productiv.\n2. Sử dụng Everywhere để phân tích dữ liệu và xác định xu hướng.\n3. Đề xuất các biện pháp tiết kiệm chi phí dựa trên các đánh giá có được.\n4. Dự báo ngân sách Quý 4 dựa trên xu hướng hiện tại và kế hoạch tăng trưởng.\n5. Trình bày kết quả cho đội ngũ tài chính để xem xét và phê duyệt.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:18:45.006237Z",
+    "http_status": 200,
+    "content_hash": "5c8117910017bcba0b3f24197bcca7a5411dfa1fd4b868d921785a02898b91eb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\everywhere.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\everywhere.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Everywhere: Trợ lý AI thấu hiểu ngữ cảnh của bạn",
+  "short_description_vi": "Everywhere là trợ lý AI thấu hiểu ngữ cảnh được thiết kế riêng cho desktop, tích hợp nhiều LLM và công cụ MCP để tương tác. Ứng dụng giúp nâng cao năng suất nhờ khả năng phản hồi thông minh theo nhu cầu người dùng, là công cụ không thể thiếu cho các chuyên gia."
+}

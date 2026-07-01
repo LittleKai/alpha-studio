@@ -1,0 +1,52 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tfsdemogenerator",
+  "slug": "tfsdemogenerator",
+  "name": "TFSDemoGenerator",
+  "headline": "TFSDemoGenerator: Automated TFS Project Creation",
+  "short_description": "A utility to help create projects on Visual Studio Team Foundation Server  with pre-populated sample content that includes source code, work items, iterations, service endpoints, build and release definitions based on a template you choose.  The purpose of this system is to simplify working with the hands-on-labs, demos and other education material provided by the Microsoft Visual Studio Marketing team.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "microsoft",
+  "install_command": "git clone https://github.com/microsoft/TFSDemoGenerator.git",
+  "source_repo_url": "https://github.com/microsoft/TFSDemoGenerator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "TFSDemoGenerator is a utility designed to automate the creation of Team Projects in Team Foundation Server 2017 and later versions. It populates new projects with sample content including source code, work items, iterations, service endpoints, build definitions, and release definitions based on selected templates. The tool simplifies setup for hands-on labs, demos, and educational material by eliminating manual configuration. It runs on Windows Server 2012 and later or Windows 10, and requires IIS configuration for deployment. Teams using TFS for demonstrations and training can significantly reduce project setup time.\nQuickly set up demo environments for TFS product presentations\nCreate standardized lab environments for developer training and hands-on workshops\nGenerate sample projects with pre-configured build and release pipelines\nAutomate repetitive project setup for educational content delivery\n- **Company**: GreenTech Solutions\n- **Industry**: Renewable Energy\n- **Template Used**: Web Application Template",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/microsoft/TFSDemoGenerator`",
+    "usage": "```\nGenerate a TFS demo project for [COMPANY] in the [INDUSTRY] sector. The project should include [DATA] as the sample content, with source code, work items, iterations, service endpoints, build and release definitions. Use the '[TEMPLATE_NAME]' template for this project.\n```\nCopy\n\n```\n# TFS Demo Project for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tfsdemogenerator#main-content",
+      "tfsdemogenerator#overview",
+      "tfsdemogenerator#setup",
+      "tfsdemogenerator#examples",
+      "tfsdemogenerator#related",
+      "marketingskills",
+      "copywriting",
+      "twitter-bot"
+    ],
+    "overview_vi": "TFSDemoGenerator là một tiện ích được thiết kế để tự động hóa việc tạo các Team Project trong Team Foundation Server 2017 và các phiên bản mới hơn. Công cụ này tự động điền nội dung mẫu vào các dự án mới, bao gồm mã nguồn, work item, iteration, service endpoint, định nghĩa build và định nghĩa release dựa trên các template được chọn. Công cụ giúp đơn giản hóa quá trình setup cho các bài thực hành lab, demo và tài liệu đào tạo bằng cách loại bỏ việc cấu hình thủ công. Công cụ chạy trên Windows Server 2012 trở lên hoặc Windows 10, và yêu cầu cấu hình IIS để triển khai. Các đội ngũ sử dụng TFS để demo và đào tạo có thể giảm đáng kể thời gian setup dự án.\nNhanh chóng thiết lập môi trường demo cho các buổi thuyết trình sản phẩm TFS\nTạo môi trường lab tiêu chuẩn cho việc đào tạo lập trình viên và các buổi workshop thực hành\nTạo các dự án mẫu với các pipeline build và release được cấu hình sẵn\nTự động hóa việc thiết lập dự án lặp đi lặp lại để phục vụ việc truyền tải nội dung đào tạo\n- **Công ty**: GreenTech Solutions\n- **Lĩnh vực**: Năng lượng tái tạo\n- **Template sử dụng**: Web Application Template",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/microsoft/TFSDemoGenerator`",
+    "usage_vi": "```\nTạo một dự án demo TFS cho [COMPANY] trong lĩnh vực [INDUSTRY]. Dự án phải bao gồm [DATA] làm nội dung mẫu, cùng với mã nguồn, work item, iteration, service endpoint, định nghĩa build và release. Sử dụng template '[TEMPLATE_NAME]' cho dự án này.\n```\nCopy\n\n```\n# Dự án Demo TFS cho GreenTech Solutions\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:38:10.690203Z",
+    "http_status": 200,
+    "content_hash": "43460235cfbd74a81a206a2a0004792070f05589b2a7c951b3989d5d2c3e7ff2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tfsdemogenerator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tfsdemogenerator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TFSDemoGenerator: Tự động hóa tạo dự án TFS",
+  "short_description_vi": "Một tiện ích giúp tạo các dự án trên Visual Studio Team Foundation Server với nội dung mẫu được điền sẵn bao gồm mã nguồn, work item, iteration, service endpoint, định nghĩa build và release dựa trên template bạn chọn. Mục tiêu của hệ thống này là đơn giản hóa việc thực hành lab, chạy thử demo và sử dụng các tài liệu đào tạo khác do đội ngũ Marketing của Microsoft Visual Studio cung cấp."
+}

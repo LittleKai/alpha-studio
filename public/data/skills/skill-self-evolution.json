@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-self-evolution",
+  "slug": "skill-self-evolution",
+  "name": "browser-use",
+  "headline": "Self-Evolution - Optimizes AI Skills",
+  "short_description": "Self-Evolution is a meta-level skill that monitors, analyzes, and optimizes other skills. It benefits operations teams by improving skill performance through quality assessment, feedback learning, pattern discovery, weight optimization, framework evolution, and knowledge transfer. It connects to all other skills and workflows, enhancing their efficiency and effectiveness.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "420 min",
+  "author": "Arxchibobo",
+  "install_command": "git clone https://github.com/Arxchibobo/skill-self-evolution.git",
+  "source_repo_url": "https://github.com/Arxchibobo/skill-self-evolution",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "skill-self-evolution is a background meta-skill for Claude Code and OpenClaw that automatically collects execution data, learns from user feedback, and tunes the weights and configurations of other skills. It closes the improvement loop by scoring skill outputs across efficiency, tool diversity, error rate, completeness, and token efficiency, then discovers usage patterns and runs A/B tests to evolve skill rules. The skill runs locally with no external data uploads, anonymizes sensitive information, and stores all data on-device. Operations teams benefit from automated quality assessment, pattern discovery, weight optimization, and knowledge transfer across domains—all without manual intervention.\nAutomatically improve skill performance by analyzing execution data and user feedback\nDiscover high-confidence usage patterns and apply them across similar domains\nRun A/B tests on skill configurations and apply statistically significant improvements\nTune element and tool weights daily using time-decay optimization",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arxchibobo/skill-self-evolution`",
+    "usage": "```\nAnalyze the performance of my [SKILL NAME] skill over the past [TIME PERIOD] using [METRICS]. Identify patterns in its outputs and suggest optimizations to improve its accuracy and efficiency. Provide a step-by-step plan for implementing these improvements.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-self-evolution#main-content",
+      "skill-self-evolution#overview",
+      "skill-self-evolution#setup",
+      "skill-self-evolution#examples",
+      "skill-self-evolution#tools",
+      "skill-self-evolution#mcp",
+      "skill-self-evolution#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "skill-self-evolution is a background meta-skill for Claude Code and OpenClaw that automatically collects execution data, learns from user feedback, and tunes the weights and configurations of other skills. It closes the improvement loop by scoring skill outputs across efficiency, tool diversity, error rate, completeness, and token efficiency, then discovers usage patterns and runs A/B tests to evolve skill rules. The skill runs locally with no external data uploads, anonymizes sensitive information, and stores all data on-device. Operations teams benefit from automated quality assessment, pattern discovery, weight optimization, and knowledge transfer across domains—all without manual intervention.\nAutomatically improve skill performance by analyzing execution data and user feedback\nDiscover high-confidence usage patterns and apply them across similar domains\nRun A/B tests on skill configurations and apply statistically significant improvements\nTune element and tool weights daily using time-decay optimization",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arxchibobo/skill-self-evolution`",
+    "usage_vi": "```\nAnalyze the performance of my [SKILL NAME] skill over the past [TIME PERIOD] using [METRICS]. Identify patterns in its outputs and suggest optimizations to improve its accuracy and efficiency. Provide a step-by-step plan for implementing these improvements.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:47:02.758056Z",
+    "http_status": 200,
+    "content_hash": "e1223f007465bdaefcaf65a7782528897bbab35cc52e9393e2182c8321328164",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-self-evolution.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-self-evolution.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Self-Evolution - Optimizes AI Skills",
+  "short_description_vi": "Self-Evolution is a meta-level skill that monitors, analyzes, and optimizes other skills. It benefits operations teams by improving skill performance through quality assessment, feedback learning, pattern discovery, weight optimization, framework evolution, and knowledge transfer. It connects to all other skills and workflows, enhancing their efficiency and effectiveness."
+}

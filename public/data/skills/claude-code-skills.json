@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-skills",
+  "slug": "claude-code-skills",
+  "name": "browser-use",
+  "headline": "Claude Code skills - production-ready automation",
+  "short_description": "Greate Claude Code skills collection. Production-ready skills that cover the full delivery workflow .  from research and discovery to epic planning, task breakdown, implementation, testing, code review, and quality gates.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "levnikolaevich",
+  "install_command": "git clone https://github.com/levnikolaevich/claude-code-skills.git",
+  "source_repo_url": "https://github.com/levnikolaevich/claude-code-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agile-workflows",
+    "claude-code",
+    "developer-tools",
+    "kanban-board",
+    "linear-integration",
+    "claude-ai",
+    "risk-based-testing",
+    "claude-code-plugin",
+    "architecture-decision-records",
+    "project-management",
+    "tasks-manager",
+    "claude-code-skills",
+    "workflow-automation"
+  ],
+  "sections": {
+    "overview": "Claude Code Skills is a collection of 137 production-ready skills organized into 7 plugins that automate the full software delivery workflow. Each plugin is self-contained and works independently, covering scope decomposition, documentation generation, codebase auditing, project bootstrap, performance optimization, community engagement, and environment setup. The skills guide teams through every stage: from initial research and epic planning to task breakdown, implementation, testing, code review, and quality gates. Built-in MCP servers provide hash-verified editing, code intelligence, and research graph navigation. Teams can install only the plugins they need and run skills standalone or integrate them into a complete Agile pipeline with artifact-driven orchestration and Loop Health monitoring.\nAutomate scope decomposition from requirements to executable stories and tasks\nGenerate comprehensive project documentation with auto-detection for backend, frontend, and DevOps stacks\nRun complete codebase audits covering security, build, code quality, tests, and performance\nBootstrap new projects or transform existing ones to production-ready Clean Architecture",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/levnikolaevich/claude-code-skills`",
+    "usage": "```\nAct as a senior software engineer using Claude Code to deliver a production-ready feature. Follow this workflow: [1] Research the codebase and identify relevant files for [FEATURE_NAME]. [2] Break down [FEATURE_NAME] into 5-7 implementation tasks with clear acceptance criteria. [3] Implement the feature in [PROGRAMMING_LANGUAGE] with unit tests, following [CODE_STYLE_GUIDE]. [4] Generate a pull request description with [REVIEW_CHECKLIST]. [5] Create a test plan for QA with [ENVIRONMENT_REQUIREMENTS]. Start with: 'Research the codebase for implementing [FEATURE_NAME] in [PROJECT_NAME].'\n```\nCopy\n\n```\n### Research & Discovery\nI analyzed the codebase in `project-name` (v2.3.1) and identified these key files for implementing dark mode: `src/theme.js`, `src/components/Button.jsx`, `src/styles/globals.css`. The project uses React 18, Tailwind CSS for styling, and Jest for testing. No existing dark mode implementation exists, but the theme system supports dynamic color changes.\n\n### Task Breakdown\n1. **Update Theme System** - Modify `src/theme.js` to include dark mode palette (primary, secondary, background colors)\n2. **Create Theme Toggle Component** - Build a reusable `ThemeToggle.jsx` with localStorage persistence\n3. **Update Global Styles** - Add dark mode variants in `globals.css` using Tailwind's dark: prefix\n4. **Unit Tests** - Write Jest tests for theme switching and localStorage integration\n5. **Integration Tests** - Verify dark mode works across all components in Storybook\n6. **Documentation** - Update README with dark mode usage examples\n7. **PR Review** - Prepare checklist for code review focusing on accessibility (WCAG contrast ratios)\n\n### Implementation\nI've implemented the dark mode feature in a new branch `feature/dark-mode`. The theme system now supports:\n- Light/Dark toggle with smooth transitions (200ms)\n- Persistent user preference in localStorage\n- WCAG-compliant color palettes (4.5:1 contrast ratio for text)\n- Automatic detection of system preference on first visit\n\nUnit tests cover 95% of the new functionality, with integration tests verifying all components render correctly in both modes. The implementation follows the project's existing patterns and uses the same testing framework (Jest + React Testing Library).\n\n### Pull Request Description\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-skills#main-content",
+      "claude-code-skills#overview",
+      "claude-code-skills#setup",
+      "claude-code-skills#examples",
+      "claude-code-skills#tools",
+      "claude-code-skills#mcp",
+      "claude-code-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Skills is a collection of 137 production-ready skills organized into 7 plugins that automate the full software delivery workflow. Each plugin is self-contained and works independently, covering scope decomposition, documentation generation, codebase auditing, project bootstrap, performance optimization, community engagement, and environment setup. The skills guide teams through every stage: from initial research and epic planning to task breakdown, implementation, testing, code review, and quality gates. Built-in MCP servers provide hash-verified editing, code intelligence, and research graph navigation. Teams can install only the plugins they need and run skills standalone or integrate them into a complete Agile pipeline with artifact-driven orchestration and Loop Health monitoring.\nAutomate scope decomposition from requirements to executable stories and tasks\nGenerate comprehensive project documentation with auto-detection for backend, frontend, and DevOps stacks\nRun complete codebase audits covering security, build, code quality, tests, and performance\nBootstrap new projects or transform existing ones to production-ready Clean Architecture",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/levnikolaevich/claude-code-skills`",
+    "usage_vi": "```\nAct as a senior software engineer using Claude Code to deliver a production-ready feature. Follow this workflow: [1] Research the codebase and identify relevant files for [FEATURE_NAME]. [2] Break down [FEATURE_NAME] into 5-7 implementation tasks with clear acceptance criteria. [3] Implement the feature in [PROGRAMMING_LANGUAGE] with unit tests, following [CODE_STYLE_GUIDE]. [4] Generate a pull request description with [REVIEW_CHECKLIST]. [5] Create a test plan for QA with [ENVIRONMENT_REQUIREMENTS]. Start with: 'Research the codebase for implementing [FEATURE_NAME] in [PROJECT_NAME].'\n```\nCopy\n\n```\n### Research & Discovery\nI analyzed the codebase in `project-name` (v2.3.1) and identified these key files for implementing dark mode: `src/theme.js`, `src/components/Button.jsx`, `src/styles/globals.css`. The project uses React 18, Tailwind CSS for styling, and Jest for testing. No existing dark mode implementation exists, but the theme system supports dynamic color changes.\n\n### Task Breakdown\n1. **Update Theme System** - Modify `src/theme.js` to include dark mode palette (primary, secondary, background colors)\n2. **Create Theme Toggle Component** - Build a reusable `ThemeToggle.jsx` with localStorage persistence\n3. **Update Global Styles** - Add dark mode variants in `globals.css` using Tailwind's dark: prefix\n4. **Unit Tests** - Write Jest tests for theme switching and localStorage integration\n5. **Integration Tests** - Verify dark mode works across all components in Storybook\n6. **Documentation** - Update README with dark mode usage examples\n7. **PR Review** - Prepare checklist for code review focusing on accessibility (WCAG contrast ratios)\n\n### Implementation\nI've implemented the dark mode feature in a new branch `feature/dark-mode`. The theme system now supports:\n- Light/Dark toggle with smooth transitions (200ms)\n- Persistent user preference in localStorage\n- WCAG-compliant color palettes (4.5:1 contrast ratio for text)\n- Automatic detection of system preference on first visit\n\nUnit tests cover 95% of the new functionality, with integration tests verifying all components render correctly in both modes. The implementation follows the project's existing patterns and uses the same testing framework (Jest + React Testing Library).\n\n### Pull Request Description\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:23.610105Z",
+    "http_status": 200,
+    "content_hash": "37591d5c30537914283e9e4d57158214e5b51909bc60a485a1f6ccbd1b69823c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code skills - production-ready automation",
+  "short_description_vi": "Greate Claude Code skills collection. Production-ready skills that cover the full delivery workflow .  from research and discovery to epic planning, task breakdown, implementation, testing, code review, and quality gates."
+}

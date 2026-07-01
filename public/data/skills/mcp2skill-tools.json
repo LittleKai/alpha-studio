@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp2skill-tools",
+  "slug": "mcp2skill-tools",
+  "name": "mcp2skill-tools",
+  "headline": "mcp2skill-tools - Automate MCP Server Integration",
+  "short_description": "mcp2skill-tools automates the conversion of MCP servers into Claude Code Skills. Operations teams use it to integrate MCP servers with Claude Code, enabling AI-driven automation. The suite includes a REST API gateway for MCP servers, facilitating integration with Claude Code agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "ulasbilgen",
+  "install_command": "git clone https://github.com/ulasbilgen/mcp2skill-tools.git",
+  "source_repo_url": "https://github.com/ulasbilgen/mcp2skill-tools",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "mcp2skill-tools is a monorepo that integrates MCP (Model Context Protocol) servers with Claude Code through three production-ready packages. mcp2rest runs MCP servers as persistent processes and exposes their tools via REST API on port 28888. mcp2scripts generates JavaScript wrappers from MCP tools, enabling Claude Code to auto-discover and use skills. mcp2skill-commands provides interactive Claude Code slash commands for workflow automation. Operations teams use this suite to streamline AI-driven automation by bridging MCP servers and Claude Code agents without manual integration work.\nExpose MCP server tools via REST API for HTTP-based integrations\nAuto-generate JavaScript skills from MCP tools for Claude Code\nMaintain persistent state across sequential MCP operations\nInteractive skill creation and management in Claude Code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ulasbilgen/mcp2skill-tools`",
+    "usage": "```\nConvert the following MCP server configuration into a Claude Code Skill. The MCP server is named [SERVER_NAME] and is responsible for [PRIMARY_FUNCTION]. The server uses [PROTOCOL] for communication. Generate the necessary code and configuration files to integrate this server with Claude Code.\n```\nCopy\n\n```\nBased on your request, I've generated the necessary files to convert the 'InventoryManagement' MCP server into a Claude Code Skill. The server, which handles warehouse inventory tracking using HTTP for communication, has been successfully integrated. Here are the generated files:\n\n1. **skill.yaml**: This file defines the skill's metadata, including its name, description, and the necessary permissions.\n2. **main.py**: The main Python script that contains the logic for interacting with the InventoryManagement server. It includes functions for retrieving inventory levels, updating stock, and generating reports.\n3. **requirements.txt**: This file lists the Python packages required for the skill to function properly, such as 'requests' for making HTTP requests to the MCP server.\n4. **config.json**: This file contains the configuration settings for the skill, including the server's base URL and any necessary authentication credentials.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp2skill-tools#main-content",
+      "mcp2skill-tools#overview",
+      "mcp2skill-tools#setup",
+      "mcp2skill-tools#examples",
+      "mcp2skill-tools#tools",
+      "mcp2skill-tools#mcp",
+      "mcp2skill-tools#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcp2skill-tools is a monorepo that integrates MCP (Model Context Protocol) servers with Claude Code through three production-ready packages. mcp2rest runs MCP servers as persistent processes and exposes their tools via REST API on port 28888. mcp2scripts generates JavaScript wrappers from MCP tools, enabling Claude Code to auto-discover and use skills. mcp2skill-commands provides interactive Claude Code slash commands for workflow automation. Operations teams use this suite to streamline AI-driven automation by bridging MCP servers and Claude Code agents without manual integration work.\nExpose MCP server tools via REST API for HTTP-based integrations\nAuto-generate JavaScript skills from MCP tools for Claude Code\nMaintain persistent state across sequential MCP operations\nInteractive skill creation and management in Claude Code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ulasbilgen/mcp2skill-tools`",
+    "usage_vi": "```\nConvert the following MCP server configuration into a Claude Code Skill. The MCP server is named [SERVER_NAME] and is responsible for [PRIMARY_FUNCTION]. The server uses [PROTOCOL] for communication. Generate the necessary code and configuration files to integrate this server with Claude Code.\n```\nCopy\n\n```\nBased on your request, I've generated the necessary files to convert the 'InventoryManagement' MCP server into a Claude Code Skill. The server, which handles warehouse inventory tracking using HTTP for communication, has been successfully integrated. Here are the generated files:\n\n1. **skill.yaml**: This file defines the skill's metadata, including its name, description, and the necessary permissions.\n2. **main.py**: The main Python script that contains the logic for interacting with the InventoryManagement server. It includes functions for retrieving inventory levels, updating stock, and generating reports.\n3. **requirements.txt**: This file lists the Python packages required for the skill to function properly, such as 'requests' for making HTTP requests to the MCP server.\n4. **config.json**: This file contains the configuration settings for the skill, including the server's base URL and any necessary authentication credentials.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:18.524346Z",
+    "http_status": 200,
+    "content_hash": "8bc81540348f71cf7c50132f95d95684936607733948fb80777c4d1beefda1e3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp2skill-tools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp2skill-tools.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp2skill-tools - Automate MCP Server Integration",
+  "short_description_vi": "mcp2skill-tools automates the conversion of MCP servers into Claude Code Skills. Operations teams use it to integrate MCP servers with Claude Code, enabling AI-driven automation. The suite includes a REST API gateway for MCP servers, facilitating integration with Claude Code agents."
+}

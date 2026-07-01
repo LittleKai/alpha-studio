@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/speckit-skill",
+  "slug": "speckit-skill",
+  "name": "Speckit Skill",
+  "headline": "Speckit: Spec-Driven Dev Skill for AI Agents",
+  "short_description": "Speckit enforces a spec-first development workflow for AI coding agents like Claude Code and Codex, generating four structured artifacts—spec, decisions, plan, and tasks—before any code is written.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "kargarisaac",
+  "install_command": "git clone https://github.com/kargarisaac/speckit-skill.git",
+  "source_repo_url": "https://github.com/kargarisaac/speckit-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Speckit is a skill for AI coding agents (Claude Code, Codex, opencode, and others) that enforces a specification-first workflow before implementation begins. For each feature, it generates four structured artifacts: spec.md, decisions.md, plan.md, and tasks.md, all organized under a numbered feature folder in a specs/ directory. The decisions.md file captures architectural decision records (ADRs) to document the reasoning behind technical choices. Commands let you create all artifacts at once with 'speckit new', or update individual artifacts independently, with implementation only beginning after planning is complete. This approach is designed to reduce ambiguity, capture context, and help developers and AI agents build higher-quality software with a clear, auditable paper trail.\nScaffolding a complete spec, ADR, plan, and task list for a new feature before writing any code\nCapturing architectural decisions and their rationale in a structured decisions.md file\nBreaking down a feature into ordered, trackable tasks that an AI agent implements sequentially\nMaintaining a specs/ directory of versioned feature documentation across a project\nThis implementation provides a secure user authentication system using Python and Django. The system includes user registration, login, logout, and password reset functionalities.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kargarisaac/speckit-skill`",
+    "usage": "```\nAct as a developer using [PROGRAMMING_LANGUAGE] to implement a feature based on the following specification: [SPECIFICATION]. Generate clean, well-commented code that follows best practices. Include unit tests and ensure the code is production-ready. If there are any ambiguities or missing details in the specification, ask clarifying questions before proceeding.\n```\nCopy\n\n```\n# Feature Implementation: User Authentication System",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "speckit-skill#main-content",
+      "speckit-skill#overview",
+      "speckit-skill#setup",
+      "speckit-skill#examples",
+      "speckit-skill#tools",
+      "speckit-skill#mcp",
+      "speckit-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Speckit là một skill dành cho các AI coding agent (Claude Code, Codex, opencode và các agent khác) giúp áp dụng quy trình làm việc ưu tiên đặc tả (specification-first workflow) trước khi bắt đầu triển khai code. Với mỗi tính năng, nó sẽ tạo ra bốn artifact có cấu trúc: spec.md, decisions.md, plan.md, và tasks.md, tất cả được sắp xếp trong một thư mục tính năng được đánh số nằm dưới thư mục specs/. File decisions.md lưu trữ các ghi chép quyết định kiến trúc (ADR) để tài liệu hóa các lập luận đằng sau các lựa chọn kỹ thuật. Các lệnh cho phép bạn tạo tất cả các artifact cùng một lúc bằng lệnh 'speckit new', hoặc cập nhật độc lập từng artifact, và việc triển khai chỉ thực sự bắt đầu sau khi quá trình lập kế hoạch hoàn tất. Cách tiếp cận này được thiết kế để giảm thiểu sự mơ hồ, ghi nhận ngữ cảnh và giúp các nhà phát triển cũng như AI agent xây dựng phần mềm chất lượng cao hơn với một quy trình lưu vết rõ ràng, dễ kiểm chứng.\n\nKhởi tạo cấu trúc (scaffolding) hoàn chỉnh cho spec, ADR, plan, và danh sách task cho một tính năng mới trước khi viết code\nGhi lại các quyết định kiến trúc và cơ sở lý luận của chúng trong file decisions.md có cấu trúc\nPhân rã một tính năng thành các task có thứ tự, có thể theo dõi được để AI agent triển khai tuần tự\nDuy trì một thư mục specs/ chứa tài liệu tính năng được quản lý phiên bản trong toàn bộ dự án\n\nBản triển khai này cung cấp một hệ thống xác thực người dùng bảo mật sử dụng Python và Django. Hệ thống bao gồm các chức năng đăng ký, đăng nhập, đăng xuất và khôi phục mật khẩu.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kargarisaac/speckit-skill`",
+    "usage_vi": "```\nHãy đóng vai trò là một nhà phát triển sử dụng [PROGRAMMING_LANGUAGE] để triển khai một tính năng dựa trên đặc tả sau: [SPECIFICATION]. Tạo mã nguồn sạch, được chú thích rõ ràng và tuân thủ các best practice. Hãy viết thêm các unit test và đảm bảo mã nguồn đã sẵn sàng cho môi trường production. Nếu có bất kỳ điểm mơ hồ hoặc thiếu chi tiết nào trong đặc tả, hãy đặt câu hỏi để làm rõ trước khi tiếp tục.\n```\nSao chép\n\n```\n# Triển khai tính năng: Hệ thống xác thực người dùng"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:47:55.295867Z",
+    "http_status": 200,
+    "content_hash": "bbd509788ce73c596632454074d87f301279234cfea1ea6cb2f74f1eff0ce196",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\speckit-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\speckit-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Speckit: Spec-Driven Dev Skill dành cho các AI Agent",
+  "short_description_vi": "Speckit áp dụng quy trình phát triển ưu tiên đặc tả (spec-first) cho các AI coding agent như Claude Code và Codex, tự động tạo ra bốn artifact có cấu trúc—spec, decisions, plan, và tasks—trước khi viết bất kỳ dòng code nào."
+}

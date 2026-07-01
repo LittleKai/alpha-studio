@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rivetkit",
+  "slug": "rivetkit",
+  "name": "improve-claude-md",
+  "headline": "RivetKit: In-Memory Actor Runtime for AI Agents",
+  "short_description": "RivetKit provides persistent, in-memory actor processes for AI agents and multiplayer applications. Suitable for developers needing durable execution and real-time communication capabilities without the overhead of traditional databases.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "rivet-dev",
+  "install_command": "git clone https://github.com/rivet-dev/skills",
+  "source_repo_url": "https://github.com/rivet-dev/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "rivetkit",
+    "ai-agent-skill"
+  ],
+  "sections": {
+    "overview": "RivetKit is a backend framework and Rivet Actor runtime for building high-performance, long-lived in-memory processes. It's designed for AI agents, real-time collaboration, workflow orchestration, and geo-distributed data scenarios where HTTP endpoints, databases, or message queues fall short. Developers use RivetKit to build, debug, and deploy actor-based systems with durable execution and real-time communication capabilities. The framework includes built-in debugging tools via inspector HTTP APIs, support for serverless and runner modes, and deployment guidance for production environments. It's suited for teams building stateful AI agents and multiplayer applications requiring low-latency, persistent state management.\nBuild AI agents with persistent state management\nCreate multiplayer applications without relying on traditional databases\nAutomate complex workflows with durable execution patterns",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/rivet-dev/skills --skill rivetkit`\n`git clone https://github.com/rivet-dev/skills`",
+    "usage": "```\nDesign a multi-agent system for [COMPANY] in the [INDUSTRY] sector using RivetKit. The system should include [NUMBER] persistent actors with these roles: [ROLE_1], [ROLE_2], and [ROLE_3]. Each actor should maintain state for [TIMEFRAME] and communicate via [COMMUNICATION_METHOD]. Include error handling for [POTENTIAL_FAILURE_SCENARIO].\n```\nCopy\n\n```\n### Multi-Agent System Design for GreenTech Solutions\n\n**System Overview:**\nA persistent actor system for real-time energy grid optimization with 3 actors:\n- **GridMonitor**: Tracks power consumption and forecasts demand spikes\n- **ResourceAllocator**: Dynamically adjusts renewable energy distribution\n- **AlertHandler**: Triggers emergency protocols during outages\n\n**Actor Specifications:**\n\n**1. GridMonitor (Actor ID: gm-001)**\n- Persistence: 7-day rolling state cache\n- State: {current_load: 1245.8 MW, forecast: [1320, 1410, 1530], last_updated: \"2024-05-15T14:30:00Z\"}\n- Communication: WebSocket push to ResourceAllocator every 30s\n\n**2. ResourceAllocator (Actor ID: ra-002)**\n- Persistence: 24-hour state retention\n- State: {solar_active: 68%, wind_active: 42%, battery_level: 74%}\n- Communication: REST API calls to GridMonitor and AlertHandler\n\n**3. AlertHandler (Actor ID: ah-003)**\n- Persistence: Event-driven state updates\n- State: {active_alerts: [], resolved_alerts: [\"outage-2024-05-15-001\"]}\n- Communication: SMS/Email notifications for critical events\n\n**Error Handling:**\n- Network failures: 3-retry exponential backoff\n- State corruption: Automatic snapshot recovery from last 30 minutes\n- Actor crashes: Supervisor restarts within 5s with previous state\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "rivetkit#main-content",
+      "rivetkit#overview",
+      "rivetkit#setup",
+      "rivetkit#examples",
+      "rivetkit#related",
+      "zenmux-usage",
+      "vibeindex",
+      "improve-claude-md"
+    ],
+    "overview_vi": "RivetKit is a backend framework and Rivet Actor runtime for building high-performance, long-lived in-memory processes. It's designed for AI agents, real-time collaboration, workflow orchestration, and geo-distributed data scenarios where HTTP endpoints, databases, or message queues fall short. Developers use RivetKit to build, debug, and deploy actor-based systems with durable execution and real-time communication capabilities. The framework includes built-in debugging tools via inspector HTTP APIs, support for serverless and runner modes, and deployment guidance for production environments. It's suited for teams building stateful AI agents and multiplayer applications requiring low-latency, persistent state management.\nBuild AI agents with persistent state management\nCreate multiplayer applications without relying on traditional databases\nAutomate complex workflows with durable execution patterns",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/rivet-dev/skills --skill rivetkit`\n`git clone https://github.com/rivet-dev/skills`",
+    "usage_vi": "```\nDesign a multi-agent system for [COMPANY] in the [INDUSTRY] sector using RivetKit. The system should include [NUMBER] persistent actors with these roles: [ROLE_1], [ROLE_2], and [ROLE_3]. Each actor should maintain state for [TIMEFRAME] and communicate via [COMMUNICATION_METHOD]. Include error handling for [POTENTIAL_FAILURE_SCENARIO].\n```\nCopy\n\n```\n### Multi-Agent System Design for GreenTech Solutions\n\n**System Overview:**\nA persistent actor system for real-time energy grid optimization with 3 actors:\n- **GridMonitor**: Tracks power consumption and forecasts demand spikes\n- **ResourceAllocator**: Dynamically adjusts renewable energy distribution\n- **AlertHandler**: Triggers emergency protocols during outages\n\n**Actor Specifications:**\n\n**1. GridMonitor (Actor ID: gm-001)**\n- Persistence: 7-day rolling state cache\n- State: {current_load: 1245.8 MW, forecast: [1320, 1410, 1530], last_updated: \"2024-05-15T14:30:00Z\"}\n- Communication: WebSocket push to ResourceAllocator every 30s\n\n**2. ResourceAllocator (Actor ID: ra-002)**\n- Persistence: 24-hour state retention\n- State: {solar_active: 68%, wind_active: 42%, battery_level: 74%}\n- Communication: REST API calls to GridMonitor and AlertHandler\n\n**3. AlertHandler (Actor ID: ah-003)**\n- Persistence: Event-driven state updates\n- State: {active_alerts: [], resolved_alerts: [\"outage-2024-05-15-001\"]}\n- Communication: SMS/Email notifications for critical events\n\n**Error Handling:**\n- Network failures: 3-retry exponential backoff\n- State corruption: Automatic snapshot recovery from last 30 minutes\n- Actor crashes: Supervisor restarts within 5s with previous state\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:12:43.566624Z",
+    "http_status": 200,
+    "content_hash": "ec97e3d732ef3dda749acbaedc2449662c3d2a0a39ca6eceb814d1f07ec40401",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rivetkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rivetkit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "RivetKit: In-Memory Actor Runtime for AI Agents",
+  "short_description_vi": "RivetKit provides persistent, in-memory actor processes for AI agents and multiplayer applications. Suitable for developers needing durable execution and real-time communication capabilities without the overhead of traditional databases."
+}

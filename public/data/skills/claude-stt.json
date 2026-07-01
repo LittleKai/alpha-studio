@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-stt",
+  "slug": "claude-stt",
+  "name": "Claude Stt",
+  "headline": "Speech-to-text for Claude Code: live dictation",
+  "short_description": "Claude STT enables hands-free text input via speech for Claude Code. Operations teams benefit from faster documentation and note-taking. Works with local processing for privacy. Integrates with Claude Code workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "jarrodwatts",
+  "install_command": "git clone https://github.com/jarrodwatts/claude-stt.git",
+  "source_repo_url": "https://github.com/jarrodwatts/claude-stt",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "dictation",
+    "speech-to-text",
+    "claude-code",
+    "stt",
+    "accessibility",
+    "voice",
+    "claude-code-plugin",
+    "moonshine"
+  ],
+  "sections": {
+    "overview": "Claude STT adds hands-free voice input to Claude Code, allowing you to hold a hotkey, speak naturally, and have your words transcribed directly into the input field. All audio processing happens locally on your device using the Moonshine STT model, with no data sent to external services. The plugin supports cross-platform use (macOS, Linux, Windows), delivers transcription in ~400ms, and offers configurable hotkeys and STT engines. Operations teams and developers benefit from faster note-taking and documentation without interrupting workflow, while maintaining complete privacy through on-device processing.\nHands-free documentation and note-taking in Claude Code\nVoice-driven coding assistance without typing\nPrivacy-first transcription for sensitive workflows\nAccessibility support for voice-based input",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jarrodwatts/claude-stt`",
+    "usage": "```\nEnable hands-free documentation for [TASK_NAME] using Claude STT. Speak your notes aloud while performing [TASK_NAME], and have the transcription automatically inserted into [TARGET_FILE] in the format: '--- [TIMESTAMP] --- [SPOKEN_NOTES]'. Ensure the transcription is timestamped and formatted for easy reference later.\n```\nCopy\n\n```\n--- 2024-05-15 14:32:18 --- Debugged the API timeout issue in the user service. The problem was in the retry logic in `services/user.js` line 47. Added a 3-second delay between retries and increased the max retry count from 3 to 5. Tested with Postman and confirmed the endpoint now responds within 2 seconds under load. Need to update the documentation in `docs/api.md` to reflect this change.\n\n--- 2024-05-15 14:35:02 --- Fixed the memory leak in the batch processing job. The issue was in `jobs/batch_processor.js` where the event listener wasn't being removed after each batch. Added `batchEmitter.off('complete', cleanup)` in the cleanup function. Verified with `node --inspect` that memory usage stabilizes after processing 10,000 records. Ready to deploy to staging.\n\n--- 2024-05-15 14:38:45 --- Updated the database schema for the new analytics tables. Ran `npx prisma migrate dev --name add_analytics_tables` and verified the migration in `prisma/schema.prisma`. The tables are now in sync with the application code. Waiting on DBA approval before merging to main.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-stt#main-content",
+      "claude-stt#overview",
+      "claude-stt#setup",
+      "claude-stt#examples",
+      "claude-stt#tools",
+      "claude-stt#mcp",
+      "claude-stt#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude STT adds hands-free voice input to Claude Code, allowing you to hold a hotkey, speak naturally, and have your words transcribed directly into the input field. All audio processing happens locally on your device using the Moonshine STT model, with no data sent to external services. The plugin supports cross-platform use (macOS, Linux, Windows), delivers transcription in ~400ms, and offers configurable hotkeys and STT engines. Operations teams and developers benefit from faster note-taking and documentation without interrupting workflow, while maintaining complete privacy through on-device processing.\nHands-free documentation and note-taking in Claude Code\nVoice-driven coding assistance without typing\nPrivacy-first transcription for sensitive workflows\nAccessibility support for voice-based input",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jarrodwatts/claude-stt`",
+    "usage_vi": "```\nEnable hands-free documentation for [TASK_NAME] using Claude STT. Speak your notes aloud while performing [TASK_NAME], and have the transcription automatically inserted into [TARGET_FILE] in the format: '--- [TIMESTAMP] --- [SPOKEN_NOTES]'. Ensure the transcription is timestamped and formatted for easy reference later.\n```\nCopy\n\n```\n--- 2024-05-15 14:32:18 --- Debugged the API timeout issue in the user service. The problem was in the retry logic in `services/user.js` line 47. Added a 3-second delay between retries and increased the max retry count from 3 to 5. Tested with Postman and confirmed the endpoint now responds within 2 seconds under load. Need to update the documentation in `docs/api.md` to reflect this change.\n\n--- 2024-05-15 14:35:02 --- Fixed the memory leak in the batch processing job. The issue was in `jobs/batch_processor.js` where the event listener wasn't being removed after each batch. Added `batchEmitter.off('complete', cleanup)` in the cleanup function. Verified with `node --inspect` that memory usage stabilizes after processing 10,000 records. Ready to deploy to staging.\n\n--- 2024-05-15 14:38:45 --- Updated the database schema for the new analytics tables. Ran `npx prisma migrate dev --name add_analytics_tables` and verified the migration in `prisma/schema.prisma`. The tables are now in sync with the application code. Waiting on DBA approval before merging to main.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:37:35.496068Z",
+    "http_status": 200,
+    "content_hash": "2c0ff96729eee55498a7dc545ceadfd622b6c4363d1437b3608bbc78801e7714",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-stt.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-stt.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Speech-to-text for Claude Code: live dictation",
+  "short_description_vi": "Claude STT enables hands-free text input via speech for Claude Code. Operations teams benefit from faster documentation and note-taking. Works with local processing for privacy. Integrates with Claude Code workflows."
+}

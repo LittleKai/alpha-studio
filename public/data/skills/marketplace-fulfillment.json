@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/marketplace-fulfillment",
+  "slug": "marketplace-fulfillment",
+  "name": "Marketplace Fulfillment",
+  "headline": "Marketplace Fulfillment: VTEX Order API Integration",
+  "short_description": "This skill facilitates integration with VTEX's fulfillment system for external sellers, enabling order placement, tracking, and invoicing through marketplace APIs. It is designed for developers working with VTEX platforms to manage order processing effectively.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "vtex",
+  "install_command": "git clone https://github.com/vtex/skills",
+  "source_repo_url": "https://github.com/vtex/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "fulfillment",
+    "marketplace",
+    "fulfillment-and-oms"
+  ],
+  "sections": {
+    "overview": "The Marketplace Fulfillment skill enables developers to integrate with VTEX's fulfillment system for external sellers. It provides API-based order placement, tracking, and invoicing capabilities designed specifically for marketplace operations. This skill encodes VTEX-specific fulfillment patterns and constraints that aren't in standard LLM training data, helping developers avoid costly production mistakes. It's built from official VTEX documentation and covers the real requirements of order processing on the VTEX platform.\nSimulating checkout processes for orders.\nPlacing orders and creating reservations within the fulfillment system.\nDispatching orders after approval and sending invoice notifications.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/vtex/skills --skill marketplace-fulfillment`\n`git clone https://github.com/vtex/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "marketplace-fulfillment#main-content",
+      "marketplace-fulfillment#overview",
+      "marketplace-fulfillment#setup",
+      "marketplace-fulfillment#examples",
+      "marketplace-fulfillment#tools",
+      "marketplace-fulfillment#mcp",
+      "marketplace-fulfillment#related"
+    ],
+    "overview_vi": "The Marketplace Fulfillment skill enables developers to integrate with VTEX's fulfillment system for external sellers. It provides API-based order placement, tracking, and invoicing capabilities designed specifically for marketplace operations. This skill encodes VTEX-specific fulfillment patterns and constraints that aren't in standard LLM training data, helping developers avoid costly production mistakes. It's built from official VTEX documentation and covers the real requirements of order processing on the VTEX platform.\nSimulating checkout processes for orders.\nPlacing orders and creating reservations within the fulfillment system.\nDispatching orders after approval and sending invoice notifications.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/vtex/skills --skill marketplace-fulfillment`\n`git clone https://github.com/vtex/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:29.315764Z",
+    "http_status": 200,
+    "content_hash": "00e3089be8c65b68ecd30785d10d6e4bf0da548f8f377a64bcd5b0b9a72c5eed",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\marketplace-fulfillment.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\marketplace-fulfillment.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Marketplace Fulfillment: VTEX Order API Integration",
+  "short_description_vi": "This skill facilitates integration with VTEX's fulfillment system for external sellers, enabling order placement, tracking, and invoicing through marketplace APIs. It is designed for developers working with VTEX platforms to manage order processing effectively."
+}

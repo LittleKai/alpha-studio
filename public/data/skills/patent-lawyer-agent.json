@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/patent-lawyer-agent",
+  "slug": "patent-lawyer-agent",
+  "name": "Patent Lawyer Agent",
+  "headline": "Patent Lawyer Agent: IP & Patent Analysis",
+  "short_description": "The Patent Lawyer Agent provides guidance on intellectual property, patent analysis, and drafting for inventions. It's designed for inventors and organizations seeking patent-related assistance.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "michaelboeding",
+  "install_command": "git clone https://github.com/michaelboeding/skills",
+  "source_repo_url": "https://github.com/michaelboeding/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "patent",
+    "lawyer",
+    "legal",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The Patent Lawyer Agent is a specialized agent skill that orchestrates multiple sub-agents to assist with intellectual property matters, patent analysis, and invention documentation. It combines focused tools to help inventors and organizations navigate patent workflows more efficiently. The agent integrates with Claude Code and other AI assistants to provide structured support for patent-related tasks. This higher-level agent skill draws on base skills to deliver comprehensive patent assistance in a coordinated workflow.\nGenerate prior art reports\nAssess patentability of inventions\nDraft patent claims\nFormulate IP strategies",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/michaelboeding/skills --skill patent-lawyer-agent`\n`git clone https://github.com/michaelboeding/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "patent-lawyer-agent#main-content",
+      "patent-lawyer-agent#overview",
+      "patent-lawyer-agent#setup",
+      "patent-lawyer-agent#examples",
+      "patent-lawyer-agent#tools",
+      "patent-lawyer-agent#mcp",
+      "patent-lawyer-agent#related",
+      "intellectual-property-analysis"
+    ],
+    "overview_vi": "Patent Lawyer Agent là một agent skill chuyên biệt giúp điều phối nhiều sub-agent để hỗ trợ các vấn đề về sở hữu trí tuệ, phân tích bằng sáng chế và tài liệu hóa phát minh. Agent này kết hợp các công cụ chuyên sâu giúp các nhà sáng chế và tổ chức vận hành quy trình bằng sáng chế hiệu quả hơn. Nó tích hợp với Claude Code và các trợ lý AI khác để cung cấp khả năng hỗ trợ có cấu trúc cho các tác vụ liên quan đến bằng sáng chế. Agent skill cấp cao này khai thác các skill cơ bản để mang lại sự hỗ trợ toàn diện về bằng sáng chế trong một workflow được điều phối nhịp nhàng.\n\nTạo báo cáo tình trạng kỹ thuật (prior art)\nĐánh giá khả năng bảo hộ của phát minh\nSoạn thảo yêu cầu bảo hộ (patent claims)\nXây dựng chiến lược sở hữu trí tuệ (IP)",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/michaelboeding/skills --skill patent-lawyer-agent`\n`git clone https://github.com/michaelboeding/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nTham khảo repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:33:05.236951Z",
+    "http_status": 200,
+    "content_hash": "78a65db71f36de280f90e62535d679f7a69fac9d9627113e7a846f37f29c2bcc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\patent-lawyer-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\patent-lawyer-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Patent Lawyer Agent: Phân tích Sở hữu Trí tuệ & Bằng sáng chế",
+  "short_description_vi": "Patent Lawyer Agent hỗ trợ tư vấn về sở hữu trí tuệ, phân tích bằng sáng chế và soạn thảo tài liệu phát minh. Agent này được thiết kế dành cho các nhà sáng chế và tổ chức cần hỗ trợ về các vấn đề liên quan đến bằng sáng chế."
+}

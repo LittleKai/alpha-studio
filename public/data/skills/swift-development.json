@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/swift-development",
+  "slug": "swift-development",
+  "name": "browser-use",
+  "headline": "Swift Development - Automate iOS/macOS App Coding",
+  "short_description": "Swift Development Skill enables iOS and macOS app development using Claude Code. Operations teams benefit from automated code generation, debugging, and optimization. It connects to Xcode and SwiftUI workflows, accelerating app development and reducing manual coding efforts.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "hmohamed01",
+  "install_command": "git clone https://github.com/hmohamed01/swift-development.git",
+  "source_repo_url": "https://github.com/hmohamed01/swift-development",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "swiftui",
+    "skill",
+    "swift"
+  ],
+  "sections": {
+    "overview": "The Swift Development Skill provides a comprehensive toolkit for building iOS and macOS applications with Claude Code. It includes quick-reference patterns for SwiftUI, navigation, Swift 6 concurrency, and testing frameworks, along with reference documentation covering Swift Package Manager, xcodebuild commands, simulator control, code signing, and CI/CD setup. The skill includes helper scripts for package creation, test execution with coverage, code formatting and linting, and simulator management. It connects Claude directly to Xcode workflows and development practices, enabling faster code generation, debugging support, and deployment guidance.\nGenerate SwiftUI views and Observable patterns for iOS 17+ applications\nAutomate Swift package creation with configuration and naming validation\nRun and manage simulator instances for testing and debugging\nExecute tests with parallel execution and coverage reporting",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hmohamed01/swift-development`",
+    "usage": "```\nGenerate a SwiftUI view for a [COMPANY] app in the [INDUSTRY] sector. The view should display [DATA] in a scrollable list with a search bar. Include error handling and state management using Combine. Provide the code and explain key components.\n```\nCopy\n\n```\n# SwiftUI View for [COMPANY] App\n\nHere's a complete SwiftUI view for displaying [DATA] in a scrollable list with search functionality:\n\n```swift\nimport SwiftUI\nimport Combine\n\nstruct DataView: View {\n    @State private var searchText = \"\"\n    @State private var dataItems: [DataItem] = []\n    @State private var isLoading = false\n    @State private var errorMessage: String?\n\n    private var filteredItems: [DataItem] {\n        if searchText.isEmpty {\n            return dataItems\n        } else {\n            return dataItems.filter { $0.name.localizedCaseInsensitiveContains(searchText) }\n        }\n    }\n\n    var body: some View {\n        NavigationView {\n            VStack {\n                if isLoading {\n                    ProgressView()\n                } else if let errorMessage = errorMessage {\n                    Text(errorMessage)\n                        .foregroundColor(.red)\n                } else {\n                    List(filteredItems) { item in\n                        VStack(alignment: .leading) {\n                            Text(item.name)\n                                .font(.headline)\n                            Text(item.description)\n                                .font(.subhead)\n                        }\n                    }\n                }\n            }\n            .navigationTitle(\"[DATA] List\")\n            .searchable(text: $searchText)\n            .onAppear {\n                loadData()\n            }\n        }\n    }\n\n    private func loadData() {\n        isLoading = true\n        errorMessage = nil\n\n        // Simulate network request\n        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {\n            // In a real app, you would make an actual network request here\n            // For this example, we'll use mock data\n            dataItems = [\n                DataItem(name: \"Item 1\", description: \"Description for item 1\"),\n                DataItem(name: \"Item 2\", description: \"Description for item 2\"),\n                DataItem(name: \"Item 3\", description: \"Description for item 3\"),\n                DataItem(name: \"Item 4\", description: \"Description for item 4\"),\n                DataItem(name: \"Item 5\", description: \"Description for item 5\")\n            ]\n            isLoading = false\n        }\n    }\n}\n\nstruct DataItem: Identifiable {\n    let id = UUID()\n    let name: String\n    let description: String\n}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "swift-development#main-content",
+      "swift-development#overview",
+      "swift-development#setup",
+      "swift-development#examples",
+      "swift-development#tools",
+      "swift-development#mcp",
+      "swift-development#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Swift Development Skill provides a comprehensive toolkit for building iOS and macOS applications with Claude Code. It includes quick-reference patterns for SwiftUI, navigation, Swift 6 concurrency, and testing frameworks, along with reference documentation covering Swift Package Manager, xcodebuild commands, simulator control, code signing, and CI/CD setup. The skill includes helper scripts for package creation, test execution with coverage, code formatting and linting, and simulator management. It connects Claude directly to Xcode workflows and development practices, enabling faster code generation, debugging support, and deployment guidance.\nGenerate SwiftUI views and Observable patterns for iOS 17+ applications\nAutomate Swift package creation with configuration and naming validation\nRun and manage simulator instances for testing and debugging\nExecute tests with parallel execution and coverage reporting",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hmohamed01/swift-development`",
+    "usage_vi": "```\nGenerate a SwiftUI view for a [COMPANY] app in the [INDUSTRY] sector. The view should display [DATA] in a scrollable list with a search bar. Include error handling and state management using Combine. Provide the code and explain key components.\n```\nCopy\n\n```\n# SwiftUI View for [COMPANY] App\n\nHere's a complete SwiftUI view for displaying [DATA] in a scrollable list with search functionality:\n\n```swift\nimport SwiftUI\nimport Combine\n\nstruct DataView: View {\n    @State private var searchText = \"\"\n    @State private var dataItems: [DataItem] = []\n    @State private var isLoading = false\n    @State private var errorMessage: String?\n\n    private var filteredItems: [DataItem] {\n        if searchText.isEmpty {\n            return dataItems\n        } else {\n            return dataItems.filter { $0.name.localizedCaseInsensitiveContains(searchText) }\n        }\n    }\n\n    var body: some View {\n        NavigationView {\n            VStack {\n                if isLoading {\n                    ProgressView()\n                } else if let errorMessage = errorMessage {\n                    Text(errorMessage)\n                        .foregroundColor(.red)\n                } else {\n                    List(filteredItems) { item in\n                        VStack(alignment: .leading) {\n                            Text(item.name)\n                                .font(.headline)\n                            Text(item.description)\n                                .font(.subhead)\n                        }\n                    }\n                }\n            }\n            .navigationTitle(\"[DATA] List\")\n            .searchable(text: $searchText)\n            .onAppear {\n                loadData()\n            }\n        }\n    }\n\n    private func loadData() {\n        isLoading = true\n        errorMessage = nil\n\n        // Simulate network request\n        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {\n            // In a real app, you would make an actual network request here\n            // For this example, we'll use mock data\n            dataItems = [\n                DataItem(name: \"Item 1\", description: \"Description for item 1\"),\n                DataItem(name: \"Item 2\", description: \"Description for item 2\"),\n                DataItem(name: \"Item 3\", description: \"Description for item 3\"),\n                DataItem(name: \"Item 4\", description: \"Description for item 4\"),\n                DataItem(name: \"Item 5\", description: \"Description for item 5\")\n            ]\n            isLoading = false\n        }\n    }\n}\n\nstruct DataItem: Identifiable {\n    let id = UUID()\n    let name: String\n    let description: String\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:54:10.082005Z",
+    "http_status": 200,
+    "content_hash": "4e6549ece4c0002a738328c433cd424bf7cc58e712e8290e9a09155908b53c4f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\swift-development.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\swift-development.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Swift Development - Automate iOS/macOS App Coding",
+  "short_description_vi": "Swift Development Skill enables iOS and macOS app development using Claude Code. Operations teams benefit from automated code generation, debugging, and optimization. It connects to Xcode and SwiftUI workflows, accelerating app development and reducing manual coding efforts."
+}

@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcpbr",
+  "slug": "mcpbr",
+  "name": "mcpbr",
+  "headline": "MCP Server Benchmarking with mcpbr",
+  "short_description": "Evaluate MCP servers using Model Context Protocol Benchmark Runner. Operations teams benchmark server performance against real GitHub issues. Connects to MCP servers and GitHub, providing quantifiable metrics for optimization.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "greynewell",
+  "install_command": "git clone https://github.com/greynewell/mcpbr.git",
+  "source_repo_url": "https://github.com/greynewell/mcpbr",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-plugin",
+    "claude-code-skills",
+    "mcp-server",
+    "cybergym",
+    "anthropic",
+    "swe-bench",
+    "cli",
+    "ai-tools",
+    "llm-agents",
+    "benchmarks",
+    "benchmarking",
+    "evaluations",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "mcpbr (Model Context Protocol Benchmark Runner) evaluates whether your MCP server actually improves agent performance on software engineering tasks. It runs controlled experiments comparing tool-assisted agents against baseline performance using real GitHub issues from SWE-bench, eliminating guesswork with reproducible, quantifiable results. The tool supports 30+ benchmarks across software engineering, code generation, math, and knowledge domains, with Docker-isolated task environments and pinned dependencies ensuring reliable comparisons. Operations teams and MCP developers use mcpbr to validate whether tools help or hurt agent resolution rates, token usage, and cost per task before production deployment.\nValidate whether a code analysis MCP server improves agent performance on real GitHub issues\nCompare baseline agent behavior against tool-augmented agent behavior across 500+ SWE-bench tasks\nMeasure efficiency tradeoffs: resolution rate vs. token usage vs. cost per task\nIdentify which repositories benefit from specific MCP tools before deployment",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/greynewell/mcpbr`",
+    "usage": "```\nRun the MCPBR (Model Context Protocol Benchmark Runner) against the [MCP_SERVER_NAME] server using the [GITHUB_REPO_ISSUE_URL] issue as a benchmark. Focus on the following metrics: response latency, context window utilization, and error rate. Generate a report comparing the results to the baseline performance of [BASELINE_SERVER_NAME]. Include specific recommendations for optimizing the server configuration based on the findings.\n```\nCopy\n\n```\n### MCPBR Benchmark Report: MCP Server Performance Evaluation\n\n**Benchmark Run ID:** 20240515-143022\n**MCP Server Evaluated:** `github-repo-analyzer` (v1.2.3)\n**Benchmark Issue:** https://github.com/owner/repo/issues/42\n**Baseline Server:** `local-github-bridge` (v1.0.1)\n**Evaluation Period:** 2024-05-15 14:30:00 - 14:45:00 UTC\n\n#### Performance Metrics Comparison\n| Metric                     | github-repo-analyzer | local-github-bridge | Delta  | Target  |\n|----------------------------|----------------------|---------------------|--------|---------|\n| Avg. Response Latency      | 187ms                | 245ms               | -24%   | <200ms  |\n| Context Window Utilization | 89%                  | 67%                 | +33%   | >85%    |\n| Error Rate                 | 0.8%                 | 2.1%                | -62%   | <1%     |\n| Token Throughput           | 1,240 tokens/sec     | 980 tokens/sec      | +27%   | >1,000  |\n\n#### Key Findings\n1. **Response Latency:** The `github-repo-analyzer` server demonstrated a 24% faster response time compared to the baseline, primarily due to optimized caching of frequently accessed repository metadata. The average latency of 187ms meets the target of <200ms, with 95% of requests resolving in under 250ms.\n\n2. **Context Window Utilization:** The server achieved 89% context window utilization, significantly outperforming the baseline (67%). This indicates more efficient handling of large GitHub issues with minimal truncation. The high utilization suggests the server is leveraging the full 128K token context window effectively.\n\n3. **Error Rate:** The error rate of 0.8% is a 62% improvement over the baseline (2.1%). The most common errors were related to rate-limiting during peak GitHub API calls, which were mitigated by implementing exponential backoff in the latest version.\n\n#### Optimization Recommendations\n- **Caching Strategy:** Implement a Redis-based cache for repository metadata to further reduce latency. Current caching is in-memory only and resets on server restart.\n- **Rate Limiting:** Add a configurable rate limiter to prevent GitHub API throttling during high-traffic periods. The current implementation lacks this safeguard.\n- **Context Truncation:** While context utilization is high, consider adding a dynamic truncation policy for extremely large issues (>50K tokens) to prevent memory bloat.\n- **Monitoring:** Deploy Prometheus metrics exporter to track these metrics in real-time. The current benchmarking is manual and lacks historical trend analysis.\n\n#### Next Steps\n1. Deploy the recommended caching improvements and re-run the benchmark to validate the 10-15% latency reduction.\n2. Monitor the error rate over the next 7 days to ensure the rate-limiting changes resolve the remaining issues.\n3. Schedule a quarterly benchmarking review to track performance against evolving GitHub issue structures and MCP server updates.\n\n**Benchmark Artifacts:**\n- Raw metrics: `/tmp/mcpbr/github-repo-analyzer-20240515-143022.json`\n- Performance graphs: `/tmp/mcpbr/github-repo-analyzer-20240515-143022.png`\n- Configuration diff: `/tmp/mcpbr/config-changes.patch`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcpbr#main-content",
+      "mcpbr#overview",
+      "mcpbr#setup",
+      "mcpbr#examples",
+      "mcpbr#tools",
+      "mcpbr#mcp",
+      "mcpbr#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcpbr (Model Context Protocol Benchmark Runner) đánh giá liệu MCP server của bạn có thực sự cải thiện hiệu năng của agent đối với các tác vụ kỹ thuật phần mềm hay không. Công cụ này chạy các thử nghiệm có kiểm soát so sánh các agent được hỗ trợ công cụ (tool-assisted agents) với hiệu năng baseline sử dụng các GitHub issue thực tế từ SWE-bench, giúp loại bỏ các phỏng đoán bằng các kết quả định lượng và có khả năng tái lập. Công cụ này hỗ trợ hơn 30 bài benchmark trên nhiều lĩnh vực như kỹ thuật phần mềm, code generation, toán học và kiến thức, với môi trường tác vụ được cô lập bằng Docker và các pinned dependencies giúp đảm bảo tính tin cậy của các kết quả so sánh. Các operations teams và lập trình viên MCP sử dụng mcpbr để xác định xem công cụ đó cải thiện hay làm giảm tỷ lệ giải quyết (resolution rate), lượng token sử dụng (token usage) và chi phí trên mỗi tác vụ của agent trước khi triển khai production.\nĐánh giá xem MCP server phân tích code có thực sự cải thiện hiệu năng của agent trên các GitHub issue thực tế hay không\nSo sánh hành vi của baseline agent với agent được tích hợp công cụ trên hơn 500 tác vụ SWE-bench\nĐo lường sự đánh đổi về hiệu năng: tỷ lệ giải quyết vs. lượng token sử dụng vs. chi phí trên mỗi tác vụ\nXác định repository nào sẽ hưởng lợi từ các công cụ MCP cụ thể trước khi triển khai",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để biết hướng dẫn cài đặt thủ công.\n`git clone https://github.com/greynewell/mcpbr`",
+    "usage_vi": "```\nChạy MCPBR (Model Context Protocol Benchmark Runner) trên server [MCP_SERVER_NAME] sử dụng issue [GITHUB_REPO_ISSUE_URL] làm benchmark. Tập trung vào các chỉ số: response latency, context window utilization và error rate. Tạo báo cáo so sánh kết quả với hiệu năng baseline của [BASELINE_SERVER_NAME]. Đưa ra các khuyến nghị cụ thể để tối ưu hóa cấu hình server dựa trên kết quả tìm được.\n```\nCopy\n\n```\n### Báo cáo Benchmark MCPBR: Đánh giá hiệu năng MCP Server\n\n**Benchmark Run ID:** 20240515-143022\n**MCP Server được đánh giá:** `github-repo-analyzer` (v1.2.3)\n**Benchmark Issue:** https://github.com/owner/repo/issues/42\n**Baseline Server:** `local-github-bridge` (v1.0.1)\n**Thời gian đánh giá:** 2024-05-15 14:30:00 - 14:45:00 UTC\n\n#### So sánh các chỉ số hiệu năng\n| Metric                     | github-repo-analyzer | local-github-bridge | Delta  | Target  |\n|----------------------------|----------------------|---------------------|--------|---------|\n| Avg. Response Latency      | 187ms                | 245ms               | -24%   | <200ms  |\n| Context Window Utilization | 89%                  | 67%                 | +33%   | >85%    |\n| Error Rate                 | 0.8%                 | 2.1%                | -62%   | <1%     |\n| Token Throughput           | 1,240 tokens/sec     | 980 tokens/sec      | +27%   | >1,000  |\n\n#### Các phát hiện chính\n1. **Response Latency:** Server `github-repo-analyzer` cho thấy thời gian phản hồi nhanh hơn 24% so với baseline, chủ yếu là nhờ tối ưu hóa cơ chế caching cho metadata của repository thường xuyên được truy cập. Độ trễ trung bình 187ms đạt mục tiêu <200ms, với 95% số request được giải quyết dưới 250ms.\n\n2. **Context Window Utilization:** Server đạt hiệu suất sử dụng context window 89%, vượt trội đáng kể so với baseline (67%). Điều này cho thấy việc xử lý các GitHub issue lớn hiệu quả hơn với tỷ lệ truncation tối thiểu. Hiệu suất sử dụng cao chứng tỏ server đang tận dụng tốt toàn bộ context window 128K token.\n\n3. **Error Rate:** Tỷ lệ lỗi 0.8% là mức cải thiện 62% so với baseline (2.1%). Các lỗi phổ biến nhất liên quan đến rate-limiting trong thời gian cao điểm gọi API của GitHub, lỗi này đã được giảm thiểu bằng cách triển khai exponential backoff trong phiên bản mới nhất.\n\n#### Khuyến nghị tối ưu hóa\n- **Caching Strategy:** Triển khai Redis-based cache cho metadata của repository để giảm thêm độ trễ. Cơ chế caching hiện tại chỉ lưu in-memory và sẽ bị reset khi khởi động lại server.\n- **Rate Limiting:** Thêm bộ giới hạn tần suất (rate limiter) có thể cấu hình để ngăn chặn tình trạng GitHub API throttling trong các giai đoạn lưu lượng truy cập cao. Bản triển khai hiện tại đang thiếu cơ chế bảo vệ này.\n- **Context Truncation:** Mặc dù hiệu suất sử dụng context cao, hãy cân nhắc thêm chính sách truncation động (dynamic truncation policy) cho các issue cực lớn (>50K tokens) để tránh tình trạng memory bloat.\n- **Monitoring:** Triển khai Prometheus metrics exporter để theo dõi các chỉ số này theo thời gian thực. Việc benchmarking hiện tại đang được thực hiện thủ công và thiếu phân tích xu hướng lịch sử.\n\n#### Các bước tiếp theo\n1. Triển khai các cải tiến về caching đã được đề xuất và chạy lại benchmark để xác minh mức giảm độ trễ 10-15%.\n2. Giám sát tỷ lệ lỗi trong 7 ngày tới để đảm bảo các thay đổi về rate-limiting giải quyết được các vấn đề còn lại.\n3. Lên lịch đánh giá benchmark hàng quý để theo dõi hiệu năng trước những thay đổi về cấu trúc GitHub issue và các bản cập nhật MCP server.\n\n**Benchmark Artifacts:**\n- Raw metrics: `/tmp/mcpbr/github-repo-analyzer-20240515-143022.json`\n- Performance graphs: `/tmp/mcpbr/github-repo-analyzer-20240515-143022.png`\n- Configuration diff: `/tmp/mcpbr/config-changes.patch`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:02:32.173877Z",
+    "http_status": 200,
+    "content_hash": "c092d87aa9a77889cd78a4f0a2b2dc6622110034a091ef6dda044d6e8d7bdfc7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcpbr.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcpbr.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Benchmarking MCP Server với mcpbr",
+  "short_description_vi": "Đánh giá các MCP server bằng cách sử dụng Model Context Protocol Benchmark Runner. Đội ngũ vận hành (operations teams) có thể benchmark hiệu năng của server dựa trên các GitHub issue thực tế. Công cụ kết nối với các MCP server và GitHub, cung cấp các số liệu định lượng phục vụ cho việc tối ưu hóa."
+}

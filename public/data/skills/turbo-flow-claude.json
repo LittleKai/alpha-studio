@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/turbo-flow-claude",
+  "slug": "turbo-flow-claude",
+  "name": "Turbo-Flow Claude",
+  "headline": "Turbo-Flow Claude - Multi-Agent Workflow Automation",
+  "short_description": "Advanced Agentic Development Environment Supporting Devpods, Rackspace Spot Instances, Github Codespaces, Google Cloud Shell, and more!  Features 600+ AI agents, Claude Flow, SPARC methodology, and automatic context loading! Deploy intelligent multi-agent swarms, coordinate autonomous workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "420 min",
+  "author": "marcuspat",
+  "install_command": "git clone https://github.com/marcuspat/turbo-flow-claude.git",
+  "source_repo_url": "https://github.com/marcuspat/turbo-flow-claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agentic-rag",
+    "swarm",
+    "mcp-server",
+    "multi-agent-systems",
+    "hugging-face",
+    "swarm-intelligence",
+    "anthropic-claude",
+    "claude-code",
+    "agentic-workflow",
+    "jules",
+    "model-context-protocol",
+    "autonomous-agents",
+    "agentic-framework",
+    "agentic-engineering",
+    "codex",
+    "npx",
+    "ai-assistant",
+    "ai-tools",
+    "multi-agent",
+    "agentic-ai"
+  ],
+  "sections": {
+    "overview": "Turbo Flow v4.0 is a complete agentic development environment built for Claude that consolidates orchestration, codebase intelligence, and agent management into a single workflow. It uses Ruflo v3.5 as its core orchestration layer, providing 215+ MCP tools and 60+ pre-configured agents. The platform introduces Beads for cross-session project memory via git-native JSONL, GitNexus for codebase knowledge graphs with blast-radius detection, and native Git Worktrees for per-agent isolation with automatic PG Vector schema namespacing. It supports deployment across DevPods, GitHub Codespaces, and Rackspace Spot Instances, making it suitable for teams building multi-agent systems and autonomous workflows that require persistent memory and isolated execution contexts.\nBuilding and orchestrating multi-agent Claude teams with isolated execution contexts\nMaintaining cross-session project memory and agent state across development workflows\nAnalyzing codebase impact and dependencies with GitNexus knowledge graphs\nDeploying agent-driven automation on cloud infrastructure (DevPods, Codespaces, Rackspace)",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/marcuspat/turbo-flow-claude`",
+    "usage": "```\nDeploy a multi-agent swarm in [DEVELOPMENT_ENVIRONMENT] to automate [TASK_DESCRIPTION]. Use the turbo-flow-claude framework with [NUMBER_OF_AGENTS] specialized agents (e.g., code-reviewer, test-automator, deployment-coordinator). Configure the agents to follow the SPARC methodology: [SPECIFIC_STEPS]. Ensure all agents load context from [REPOSITORY_OR_DOCS] and use [PREFERRED_TOOLS_OR_SERVICES]. Monitor progress via [MONITORING_TOOL] and provide a final report with [REQUIRED_OUTPUTS].\n```\nCopy\n\n```\n### Turbo-Flow-Claude Multi-Agent Swarm Deployment Report\n**Environment**: Google Cloud Shell (GCP)\n**Task**: End-to-end deployment of a Python web app with CI/CD pipeline\n**Agents Deployed**: 5 (Code-Reviewer, Test-Automator, Security-Scanner, Deployment-Coordinator, Documentation-Generator)\n\n**Agent Configuration**:\n- **Code-Reviewer**: Loaded context from `repo/main` and analyzed 47 files for PEP8 compliance. Flagged 3 critical issues (SQL injection risk in `db_utils.py`, missing type hints in `api/handlers.py`).\n- **Test-Automator**: Executed 127 unit tests in parallel across 3 Spot Instances (Rackspace). 98% pass rate (2 failures in `test_integration.py` due to race conditions). Auto-generated a JUnit report.\n- **Security-Scanner**: Scanned dependencies using `snyk` and identified 7 vulnerabilities (4 high-severity in `requests` and `flask` libraries). Generated a remediation plan with patched versions.\n- **Deployment-Coordinator**: Orchestrated a blue-green deployment to `rackspace-devpod-01` using Terraform. Monitored via `Prometheus`; rollback triggered for 2 failed health checks (503 errors in `/health` endpoint).\n- **Documentation-Generator**: Updated `README.md` with deployment steps, API endpoints, and troubleshooting guide. Generated Swagger docs for `/api/v1` endpoints.\n\n**SPARC Methodology Execution**:\n1. **Setup**: Agents initialized with shared context (GitHub repo, Terraform modules, Dockerfiles).\n2. **Planning**: Code-Reviewer and Security-Scanner agents drafted a 3-phase plan (code review → testing → deployment).\n3. **Action**: Agents executed tasks in parallel with dependencies (e.g., tests blocked until code review passed).\n4. **Review**: Deployment-Coordinator validated rollback and reran tests. Documentation-Generator finalized outputs.\n5. **Completion**: All agents logged results to `turbo-flow-claude` dashboard. Final report generated with 92% task completion (8% blocked by unresolved race conditions).\n\n**Next Steps**:\n- Fix race conditions in `test_integration.py` (assigned to Code-Reviewer agent).\n- Re-run deployment pipeline after patching dependencies (Security-Scanner agent).\n- Merge PR #47 with fixes and redeploy.\n\n**Metrics**:\n- Total runtime: 18 minutes (vs. 2.5 hours manual effort).\n- Cost: $0.42 (Spot Instances) + $0.15 (GCP Cloud Shell).\n- Agent collaboration: 12 inter-agent messages, 4 context reloads.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "turbo-flow-claude#main-content",
+      "turbo-flow-claude#overview",
+      "turbo-flow-claude#setup",
+      "turbo-flow-claude#examples",
+      "turbo-flow-claude#tools",
+      "turbo-flow-claude#mcp",
+      "turbo-flow-claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Turbo Flow v4.0 is a complete agentic development environment built for Claude that consolidates orchestration, codebase intelligence, and agent management into a single workflow. It uses Ruflo v3.5 as its core orchestration layer, providing 215+ MCP tools and 60+ pre-configured agents. The platform introduces Beads for cross-session project memory via git-native JSONL, GitNexus for codebase knowledge graphs with blast-radius detection, and native Git Worktrees for per-agent isolation with automatic PG Vector schema namespacing. It supports deployment across DevPods, GitHub Codespaces, and Rackspace Spot Instances, making it suitable for teams building multi-agent systems and autonomous workflows that require persistent memory and isolated execution contexts.\nBuilding and orchestrating multi-agent Claude teams with isolated execution contexts\nMaintaining cross-session project memory and agent state across development workflows\nAnalyzing codebase impact and dependencies with GitNexus knowledge graphs\nDeploying agent-driven automation on cloud infrastructure (DevPods, Codespaces, Rackspace)",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/marcuspat/turbo-flow-claude`",
+    "usage_vi": "```\nDeploy a multi-agent swarm in [DEVELOPMENT_ENVIRONMENT] to automate [TASK_DESCRIPTION]. Use the turbo-flow-claude framework with [NUMBER_OF_AGENTS] specialized agents (e.g., code-reviewer, test-automator, deployment-coordinator). Configure the agents to follow the SPARC methodology: [SPECIFIC_STEPS]. Ensure all agents load context from [REPOSITORY_OR_DOCS] and use [PREFERRED_TOOLS_OR_SERVICES]. Monitor progress via [MONITORING_TOOL] and provide a final report with [REQUIRED_OUTPUTS].\n```\nCopy\n\n```\n### Turbo-Flow-Claude Multi-Agent Swarm Deployment Report\n**Environment**: Google Cloud Shell (GCP)\n**Task**: End-to-end deployment of a Python web app with CI/CD pipeline\n**Agents Deployed**: 5 (Code-Reviewer, Test-Automator, Security-Scanner, Deployment-Coordinator, Documentation-Generator)\n\n**Agent Configuration**:\n- **Code-Reviewer**: Loaded context from `repo/main` and analyzed 47 files for PEP8 compliance. Flagged 3 critical issues (SQL injection risk in `db_utils.py`, missing type hints in `api/handlers.py`).\n- **Test-Automator**: Executed 127 unit tests in parallel across 3 Spot Instances (Rackspace). 98% pass rate (2 failures in `test_integration.py` due to race conditions). Auto-generated a JUnit report.\n- **Security-Scanner**: Scanned dependencies using `snyk` and identified 7 vulnerabilities (4 high-severity in `requests` and `flask` libraries). Generated a remediation plan with patched versions.\n- **Deployment-Coordinator**: Orchestrated a blue-green deployment to `rackspace-devpod-01` using Terraform. Monitored via `Prometheus`; rollback triggered for 2 failed health checks (503 errors in `/health` endpoint).\n- **Documentation-Generator**: Updated `README.md` with deployment steps, API endpoints, and troubleshooting guide. Generated Swagger docs for `/api/v1` endpoints.\n\n**SPARC Methodology Execution**:\n1. **Setup**: Agents initialized with shared context (GitHub repo, Terraform modules, Dockerfiles).\n2. **Planning**: Code-Reviewer and Security-Scanner agents drafted a 3-phase plan (code review → testing → deployment).\n3. **Action**: Agents executed tasks in parallel with dependencies (e.g., tests blocked until code review passed).\n4. **Review**: Deployment-Coordinator validated rollback and reran tests. Documentation-Generator finalized outputs.\n5. **Completion**: All agents logged results to `turbo-flow-claude` dashboard. Final report generated with 92% task completion (8% blocked by unresolved race conditions).\n\n**Next Steps**:\n- Fix race conditions in `test_integration.py` (assigned to Code-Reviewer agent).\n- Re-run deployment pipeline after patching dependencies (Security-Scanner agent).\n- Merge PR #47 with fixes and redeploy.\n\n**Metrics**:\n- Total runtime: 18 minutes (vs. 2.5 hours manual effort).\n- Cost: $0.42 (Spot Instances) + $0.15 (GCP Cloud Shell).\n- Agent collaboration: 12 inter-agent messages, 4 context reloads.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:02.043731Z",
+    "http_status": 200,
+    "content_hash": "d0d99e7010526c26ad52634969d4e3e858cc8c50d07b5b020aaf94157207c9fd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\turbo-flow-claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\turbo-flow-claude.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Turbo-Flow Claude - Multi-Agent Workflow Automation",
+  "short_description_vi": "Advanced Agentic Development Environment Supporting Devpods, Rackspace Spot Instances, Github Codespaces, Google Cloud Shell, and more!  Features 600+ AI agents, Claude Flow, SPARC methodology, and automatic context loading! Deploy intelligent multi-agent swarms, coordinate autonomous workflows."
+}

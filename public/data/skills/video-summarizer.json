@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/video-summarizer",
+  "slug": "video-summarizer",
+  "name": "Video Summarizer",
+  "headline": "Video Summarizer: Download & Summarize 1800+",
+  "short_description": "Download videos from YouTube, Bilibili, Twitter/X and 1800+ platforms. Outputs MP4, MP3, subtitles, transcript and AI summary - Claude Code skill",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "liang121",
+  "install_command": "git clone https://github.com/liang121/video-summarizer.git",
+  "source_repo_url": "https://github.com/liang121/video-summarizer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Video Summarizer is a Claude Code skill that downloads videos from over 1800 platforms—including YouTube, Bilibili, Twitter/X, TikTok, Instagram, Twitch, and Vimeo—and automatically extracts key information. The skill uses faster-whisper for parallel transcription (4-5x faster than standard processing) and generates structured AI-powered summaries with timestamps and key points. It outputs complete resource packages including video (MP4), audio (MP3), subtitles (VTT), plain-text transcripts, and markdown summaries. Dependencies like yt-dlp and ffmpeg are auto-installed, making it accessible for users who need to quickly digest video content without manual setup.\nTranscribe and summarize YouTube videos for research or note-taking\nExtract audio and subtitles from Bilibili content\nConvert Twitter/X video threads to text transcripts\nBatch process multiple videos to generate markdown summaries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liang121/video-summarizer`",
+    "usage": "```\nDownload the video titled '[VIDEO_TITLE]' from [PLATFORM] and generate a summary. Extract the transcript, subtitles, and save the audio as an MP3 file. Provide a concise AI summary of the key points in bullet form.\n```\nCopy\n\n```\n# Video Summary: 'The Future of Renewable Energy'",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "video-summarizer#main-content",
+      "video-summarizer#overview",
+      "video-summarizer#setup",
+      "video-summarizer#examples",
+      "video-summarizer#tools",
+      "video-summarizer#mcp",
+      "video-summarizer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Video Summarizer is a Claude Code skill that downloads videos from over 1800 platforms—including YouTube, Bilibili, Twitter/X, TikTok, Instagram, Twitch, and Vimeo—and automatically extracts key information. The skill uses faster-whisper for parallel transcription (4-5x faster than standard processing) and generates structured AI-powered summaries with timestamps and key points. It outputs complete resource packages including video (MP4), audio (MP3), subtitles (VTT), plain-text transcripts, and markdown summaries. Dependencies like yt-dlp and ffmpeg are auto-installed, making it accessible for users who need to quickly digest video content without manual setup.\nTranscribe and summarize YouTube videos for research or note-taking\nExtract audio and subtitles from Bilibili content\nConvert Twitter/X video threads to text transcripts\nBatch process multiple videos to generate markdown summaries",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liang121/video-summarizer`",
+    "usage_vi": "```\nDownload the video titled '[VIDEO_TITLE]' from [PLATFORM] and generate a summary. Extract the transcript, subtitles, and save the audio as an MP3 file. Provide a concise AI summary of the key points in bullet form.\n```\nCopy\n\n```\n# Video Summary: 'The Future of Renewable Energy'"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:24.751014Z",
+    "http_status": 200,
+    "content_hash": "2f628bf7c69874575ba731390683306ad3dafb03b54e6e3c9c1b2d7e3a49c8ec",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\video-summarizer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\video-summarizer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Video Summarizer: Download & Summarize 1800+",
+  "short_description_vi": "Download videos from YouTube, Bilibili, Twitter/X and 1800+ platforms. Outputs MP4, MP3, subtitles, transcript and AI summary - Claude Code skill"
+}

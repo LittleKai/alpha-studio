@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-fecfile",
+  "slug": "agent-fecfile",
+  "name": "Agent Fecfile",
+  "headline": "AI agent skill for FEC analysis with Claude",
+  "short_description": "Analyze Federal Election Commission (FEC) campaign finance filings with Claude Code or Codex. Operations teams use this to extract, parse, and filter data from FEC filings, reducing manual effort and improving accuracy. Integrates with Claude agents for direct analysis within sessions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "hodgesmr",
+  "install_command": "git clone https://github.com/hodgesmr/agent-fecfile.git",
+  "source_repo_url": "https://github.com/hodgesmr/agent-fecfile",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "agent-fecfile is a Claude Code plugin that enables AI agents to fetch, parse, and analyze Federal Election Commission (FEC) campaign finance filings directly within agent sessions. The skill supports major form types (F1, F2, F3, F99) and includes detailed field mappings for contributions, disbursements, and schedules, helping agents accurately interpret campaign finance data. Parsing and filtering happen outside the model context, allowing agents to programmatically reduce large filings before analysis, which saves tokens and enables efficient queries against filings of any size. Operations teams and compliance analysts use this to extract structured data from FEC filings without manual effort. The plugin works in Claude Desktop's Code tab or via Claude Code CLI, with optional FEC API integration for searching committees and filings by name.\nExtract and analyze contribution and disbursement data from FEC filings by filing ID\nSearch for committees and their filings using the FEC API\nGenerate summary tables of contributions and expenditures filtered by state, date, or amount\nIdentify largest itemized expenses and donors within campaign finance filings",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hodgesmr/agent-fecfile`",
+    "usage": "```\nAnalyze the following FEC filing data for [POLITICAL_CANDIDATE] in the [ELECTION_YEAR] election cycle. Extract the top 5 contributors, total contributions, and any notable transactions over $100,000. Provide the results in a structured format.\n```\nCopy\n\n```\n# FEC Filing Analysis for [Senator Jane Doe] - 2024 Election Cycle",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-fecfile#main-content",
+      "agent-fecfile#overview",
+      "agent-fecfile#setup",
+      "agent-fecfile#examples",
+      "agent-fecfile#tools",
+      "agent-fecfile#mcp",
+      "agent-fecfile#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "agent-fecfile là một plugin Claude Code cho phép các AI agent fetch, parse và phân tích các báo cáo tài chính chiến dịch của Ủy ban Bầu cử Liên bang (FEC) trực tiếp trong session của agent. Skill này hỗ trợ các loại biểu mẫu chính (F1, F2, F3, F99) và cung cấp mapping chi tiết các trường thông tin cho các khoản đóng góp, giải ngân và phụ lục (schedule), giúp agent diễn giải chính xác dữ liệu tài chính chiến dịch. Quá trình parse và lọc diễn ra bên ngoài context của model, cho phép agent lập trình để giảm bớt dung lượng các hồ sơ lớn trước khi phân tích, giúp tiết kiệm token và thực hiện các truy vấn hiệu quả trên các hồ sơ với mọi kích thước. Các đội ngũ vận hành và chuyên viên tuân thủ sử dụng công cụ này để trích xuất dữ liệu có cấu trúc từ hồ sơ FEC mà không cần thao tác thủ công. Plugin này hoạt động trong tab Code của Claude Desktop hoặc qua Claude Code CLI, hỗ trợ tích hợp thêm FEC API tùy chọn để tìm kiếm các ủy ban và hồ sơ theo tên.\nTrích xuất và phân tích dữ liệu đóng góp cũng như giải ngân từ hồ sơ FEC theo filing ID\nTìm kiếm các ủy ban và hồ sơ của họ bằng FEC API\nTạo bảng tổng hợp các khoản đóng góp và chi tiêu được lọc theo bang, ngày hoặc số tiền\nXác định các khoản chi tiêu và nhà tài trợ lớn nhất trong hồ sơ tài chính chiến dịch",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/hodgesmr/agent-fecfile`",
+    "usage_vi": "```\nPhân tích dữ liệu hồ sơ FEC sau đây cho [POLITICAL_CANDIDATE] trong chu kỳ bầu cử [ELECTION_YEAR]. Trích xuất 5 nhà tài trợ hàng đầu, tổng số tiền đóng góp và bất kỳ giao dịch đáng chú ý nào trên $100,000. Cung cấp kết quả ở định dạng có cấu trúc.\n```\nCopy\n\n```\n# Phân tích hồ sơ FEC cho [Senator Jane Doe] - Chu kỳ bầu cử 2024\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:13:02.660315Z",
+    "http_status": 200,
+    "content_hash": "44ff13c249a9522c3b845371e1e2126fbec58f3b19223db3138b697a115d8d16",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-fecfile.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-fecfile.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill AI agent phân tích dữ liệu FEC bằng Claude",
+  "short_description_vi": "Phân tích các hồ sơ tài chính chiến dịch của Ủy ban Bầu cử Liên bang (FEC) bằng Claude Code hoặc Codex. Các đội ngũ vận hành sử dụng công cụ này để trích xuất, parse và lọc dữ liệu từ hồ sơ FEC, giúp giảm thiểu công sức thủ công và nâng cao độ chính xác. Tích hợp trực tiếp với các Claude agent để phân tích ngay trong session."
+}

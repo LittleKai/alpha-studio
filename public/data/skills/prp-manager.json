@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prp-manager",
+  "slug": "prp-manager",
+  "name": "PRP Manager",
+  "headline": "PRP Manager - AI Agent Skill for Product",
+  "short_description": "The prp-manager skill enables the creation and execution of Product Requirements Prompts (PRPs) through Context Engineering principles. It integrates with various AI agents like Claude Code and Cursor, enhancing development workflows.",
+  "tier": "Silver",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "willywg",
+  "install_command": "claude install willywg/prp-manager",
+  "source_repo_url": "https://github.com/willywg/prp-manager",
+  "works_with": [
+    "ClaudeCursorWindsurf"
+  ],
+  "tags": [
+    "ai-coding",
+    "developer-tools",
+    "context-engineering",
+    "prp",
+    "agent-skills"
+  ],
+  "sections": {
+    "overview": "PRP Manager is an agent skill that creates comprehensive Product Requirements Prompts designed specifically for AI coding assistants like Claude Code and Cursor. It analyzes your project stack, codebase patterns, and conventions to generate customized implementation blueprints that include product requirements, code examples, and step-by-step runbooks. The skill automates three workflows: initializing project-specific PRP templates, generating feature-specific PRPs with full context, and executing PRPs with validation loops. By applying Context Engineering principles, it addresses implementation failures caused by incomplete context rather than model limitations, enabling one-pass feature completion.\nGenerating product requirement documents\nAutomating prompt creation for AI agents\nEnhancing collaboration in product development\nStreamlining feedback loops with stakeholders",
+    "setup": "Terminal\nCopy\n`claude install willywg/prp-manager`\n`git clone https://github.com/willywg/prp-manager`",
+    "usage": "```\nCreate a Product Requirements Prompt (PRP) for [PRODUCT_NAME] in the [INDUSTRY] sector. The PRP should include: 1) Core product features, 2) Target user personas, 3) Key performance indicators, and 4) Technical constraints. Use Context Engineering principles to structure the prompt for optimal AI agent execution.\n```\nCopy\n\n```\n# Product Requirements Prompt (PRP) for EcoClean Laundry App",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor, Windsurf"
+    ],
+    "related_skills": [
+      "prp-manager#main-content",
+      "prp-manager#overview",
+      "prp-manager#setup",
+      "prp-manager#examples",
+      "prp-manager#tools",
+      "prp-manager#mcp",
+      "prp-manager#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "PRP Manager is an agent skill that creates comprehensive Product Requirements Prompts designed specifically for AI coding assistants like Claude Code and Cursor. It analyzes your project stack, codebase patterns, and conventions to generate customized implementation blueprints that include product requirements, code examples, and step-by-step runbooks. The skill automates three workflows: initializing project-specific PRP templates, generating feature-specific PRPs with full context, and executing PRPs with validation loops. By applying Context Engineering principles, it addresses implementation failures caused by incomplete context rather than model limitations, enabling one-pass feature completion.\nGenerating product requirement documents\nAutomating prompt creation for AI agents\nEnhancing collaboration in product development\nStreamlining feedback loops with stakeholders",
+    "setup_vi": "Terminal\nCopy\n`claude install willywg/prp-manager`\n`git clone https://github.com/willywg/prp-manager`",
+    "usage_vi": "```\nCreate a Product Requirements Prompt (PRP) for [PRODUCT_NAME] in the [INDUSTRY] sector. The PRP should include: 1) Core product features, 2) Target user personas, 3) Key performance indicators, and 4) Technical constraints. Use Context Engineering principles to structure the prompt for optimal AI agent execution.\n```\nCopy\n\n```\n# Product Requirements Prompt (PRP) for EcoClean Laundry App"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:47.798350Z",
+    "http_status": 200,
+    "content_hash": "a6fdcf5bebf42eb1f008de4f52ef953d9f4afa7a633f4ba1b1e7c04a01491af1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prp-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prp-manager.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "PRP Manager - AI Agent Skill for Product",
+  "short_description_vi": "The prp-manager skill enables the creation and execution of Product Requirements Prompts (PRPs) through Context Engineering principles. It integrates with various AI agents like Claude Code and Cursor, enhancing development workflows."
+}

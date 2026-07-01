@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/goodable",
+  "slug": "goodable",
+  "name": "Goodable",
+  "headline": "Goodable - Desktop AI Workspace for AI Apps",
+  "short_description": "Goodable is a local-first Desktop AI Workspace (Desktop Agent Runtime) powered by Claude Agent SDK, combining OS/file control, browser automation, and coding into composable Skills (tool + app modes) to build, run, and publish real AI apps.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "ImGoodBai",
+  "install_command": "git clone https://github.com/ImGoodBai/goodable.git",
+  "source_repo_url": "https://github.com/ImGoodBai/goodable",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "cowork",
+    "claudecode",
+    "codeagent",
+    "claudecowork",
+    "claudeagentsdk",
+    "clawdbot",
+    "lovable",
+    "base44",
+    "desktop-ai",
+    "desktop",
+    "vibecoding"
+  ],
+  "sections": {
+    "overview": "Goodable is a desktop AI workspace built on Claude Agent SDK that combines three core capabilities: desktop automation (file handling, screen control, office software operation), browser automation (web scraping, content publishing, social media workflow), and AI application development (one-command app generation with cloud deployment). It features an innovative Skills dual-mode system where applications can run both as AI-triggered tools in chat and as independent graphical interfaces sharing the same data environment. The platform includes pre-built applications for content creation, video downloading, and Coze workflow conversion, making it suitable for solopreneurs, content creators, and those wanting rapid AI app deployment without environment setup.\nBatch processing local files (invoices, contracts, PDFs) with automated extraction and organization\nAutomating social media workflows (WeChat article publishing, TikTok video transcription, cross-platform posting)\nConverting Coze workflows or Feishu documents into deployable web applications with one click\nDesktop task automation (folder organization, screenshot capture, software control)",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ImGoodBai/goodable`",
+    "usage": "```\nUse Goodable to automate [TASK] by creating a composable Skill in the Goodable Desktop AI Workspace. Define the [INPUT_SOURCE] (e.g., local files, browser, database) and [OUTPUT_DESTINATION] (e.g., file, cloud service, UI). Include error handling for [EDGE_CASES] like timeouts or missing data. Test the Skill locally before publishing to the Goodable App Store.\n```\nCopy\n\n```\nI created a Goodable Skill called 'InvoiceProcessor' that automates invoice data extraction from PDFs in a local folder (/Users/me/Invoices) and syncs validated data to QuickBooks Online. The Skill uses a Python-based tool to parse PDFs with PyPDF2, validates fields against a schema (InvoiceNumber, Amount, DueDate), and handles edge cases like corrupted files or missing fields by logging errors to /Users/me/Invoices/errors.log. The output is formatted as JSON and sent to QuickBooks via their API using OAuth2 credentials stored in the Goodable Vault. The Skill runs in 'batch' mode every 30 minutes via a cron trigger in Goodable's Desktop Agent Runtime. I tested it with 5 sample invoices, and it successfully processed 4 while logging 1 error (corrupted file). The Skill is now published to the Goodable App Store with a README explaining setup steps and a sample .goodableconfig file for users to customize paths and credentials.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "goodable#main-content",
+      "goodable#overview",
+      "goodable#setup",
+      "goodable#examples",
+      "goodable#tools",
+      "goodable#mcp",
+      "goodable#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Goodable là một desktop AI workspace được xây dựng trên Claude Agent SDK, kết hợp ba khả năng cốt lõi: tự động hóa desktop (xử lý file, kiểm soát màn hình, vận hành phần mềm văn phòng), tự động hóa trình duyệt (web scraping, xuất bản nội dung, quy trình làm việc trên mạng xã hội) và phát triển ứng dụng AI (tạo ứng dụng bằng một câu lệnh với khả năng triển khai lên đám mây). Nền tảng này sở hữu hệ thống chế độ kép (dual-mode) cho các Skill cực kỳ sáng tạo, nơi ứng dụng có thể chạy vừa như các tool kích hoạt bằng AI trong khung chat, vừa như các giao diện đồ họa độc lập chia sẻ chung một môi trường dữ liệu. Nền tảng tích hợp sẵn các ứng dụng cho việc sáng tạo nội dung, tải video và chuyển đổi workflow từ Coze, rất phù hợp cho solopreneur, nhà sáng tạo nội dung và những ai muốn triển khai nhanh ứng dụng AI mà không cần setup môi trường phức tạp.\n- Xử lý hàng loạt (batch processing) các file cục bộ (hóa đơn, hợp đồng, PDF) với khả năng trích xuất và sắp xếp tự động\n- Tự động hóa quy trình mạng xã hội (đăng bài viết WeChat, chuyển soạn video TikTok thành văn bản, đăng bài đa nền tảng)\n- Chuyển đổi các workflow từ Coze hoặc tài liệu Feishu thành ứng dụng web có thể triển khai chỉ với một cú nhấp chuột\n- Tự động hóa tác vụ desktop (sắp xếp thư mục, chụp ảnh màn hình, kiểm soát phần mềm)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ImGoodBai/goodable`",
+    "usage_vi": "```\nSử dụng Goodable để tự động hóa [TASK] bằng cách tạo một Skill có thể lắp ghép trong Goodable Desktop AI Workspace. Xác định [INPUT_SOURCE] (ví dụ: các file cục bộ, trình duyệt, cơ sở dữ liệu) và [OUTPUT_DESTINATION] (ví dụ: file, dịch vụ đám mây, giao diện người dùng). Hãy thiết lập xử lý lỗi cho các [EDGE_CASES] như hết thời gian chờ (timeout) hoặc thiếu dữ liệu. Kiểm tra Skill trên môi trường local trước khi phát hành lên Goodable App Store.\n```\nSao chép\n\n```\nTôi đã tạo một Goodable Skill có tên là 'InvoiceProcessor' để tự động hóa việc trích xuất dữ liệu hóa đơn từ các file PDF trong thư mục cục bộ (/Users/me/Invoices) và đồng bộ hóa dữ liệu đã được xác thực sang QuickBooks Online. Skill này sử dụng một công cụ viết bằng Python để parse các file PDF bằng PyPDF2, xác thực các trường dữ liệu theo một schema định sẵn (InvoiceNumber, Amount, DueDate), và xử lý các edge case như file bị lỗi hoặc thiếu trường thông tin bằng cách ghi log lỗi vào /Users/me/Invoices/errors.log. Dữ liệu đầu ra được định dạng dưới dạng JSON và gửi tới QuickBooks thông qua API của họ bằng thông tin xác thực OAuth2 được lưu trữ trong Goodable Vault. Skill chạy ở chế độ 'batch' cứ sau mỗi 30 phút thông qua một cron trigger trong Desktop Agent Runtime của Goodable. Tôi đã thử nghiệm với 5 hóa đơn mẫu, hệ thống xử lý thành công 4 hóa đơn và ghi nhận 1 lỗi (file bị hỏng). Skill này hiện đã được phát hành lên Goodable App Store kèm theo file README hướng dẫn các bước setup và một file .goodableconfig mẫu để người dùng tùy chỉnh đường dẫn và thông tin xác thực.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:49.024029Z",
+    "http_status": 200,
+    "content_hash": "f8260d42ae083151b118d6b583e075c9e2460db53101f7eab342569d58e1b9aa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\goodable.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\goodable.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Goodable - Desktop AI Workspace cho các ứng dụng AI",
+  "short_description_vi": "Goodable là Desktop AI Workspace (Desktop Agent Runtime) hoạt động theo mô hình local-first, vận hành trên nền tảng Claude Agent SDK. Công cụ này kết hợp khả năng kiểm soát OS/file, tự động hóa trình duyệt (browser automation) và lập trình thành các Skill có thể lắp ghép linh hoạt (hỗ trợ cả chế độ tool và app) để xây dựng, chạy và phát hành các ứng dụng AI thực tế."
+}

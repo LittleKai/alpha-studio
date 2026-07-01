@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/shareai-skills",
+  "slug": "shareai-skills",
+  "name": "browser-use",
+  "headline": "ShareAI Skills - Extend AI Agent Capabilities",
+  "short_description": "ShareAI Skills are knowledge packages that extend AI agent capabilities. They enable agents to build other agents and custom software systems. Works with Kode CLI, Claude Code, Cursor, and any agent supporting the Agent Skills Spec.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "shareAI-lab",
+  "install_command": "git clone https://github.com/shareAI-lab/shareAI-skills.git",
+  "source_repo_url": "https://github.com/shareAI-lab/shareAI-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "shareAI Skills are modular knowledge packages designed to extend AI agent capabilities by providing domain expertise on-demand. They follow the Agent Skills Spec and work with Kode CLI, Claude Code, Cursor, and other compatible agents. Each skill is a structured collection of expert knowledge—not code—that enables agents to understand domain-specific patterns, mindsets, and procedures. The repository includes ready-to-use skills like skill-judge for evaluating skill quality, media-writer for content adaptation, agent-builder for designing AI agents, and vibe-coding for minimal-spec development. Skills are grounded in the principle that effective knowledge packages should contain expert-only information that complements what models already know.\nExtend Claude Code and Cursor with domain-specific expertise for specialized tasks\nBuild and evaluate custom AI agents using the agent-builder and skill-judge skills\nAdapt content across multiple platforms (WeChat, Reddit, Medium, LinkedIn, Twitter) with media-writer\nCreate vibe-driven development workflows with minimal specifications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/shareAI-skills`",
+    "usage": "```\nCreate a new ShareAI skill called '[SKILL_NAME]' that enables agents to [PRIMARY_FUNCTION] using [TECHNOLOGY_STACK]. The skill should include: 1) A [COMPONENT_TYPE] for [SPECIFIC_TASK], 2) Integration with [API/PLATFORM], and 3) Error handling for [COMMON_FAILURE_MODES]. Format the output as a valid ShareAI skill manifest with clear inputs/outputs and usage examples.\n```\nCopy\n\n```\n```json\n{\n  \"skill_name\": \"python-code-generator\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Generates production-ready Python functions from natural language specifications with type hints and docstrings\",\n  \"author\": \"ShareAI Team\",\n  \"license\": \"MIT\",\n  \"inputs\": {\n    \"prompt\": \"string (required): Detailed description of the function to generate\",\n    \"language\": \"string (optional): Target language (defaults to Python)\",\n    \"test_cases\": \"boolean (optional): Whether to include unit tests (default: true)\"\n  },\n  \"outputs\": {\n    \"generated_code\": \"string: The complete Python function with type hints\",\n    \"test_suite\": \"string: Pytest-compatible test cases\",\n    \"error_log\": \"string: Any generation errors or warnings\"\n  },\n  \"examples\": [\n    {\n      \"input\": {\n        \"prompt\": \"Create a function that validates email addresses using regex\",\n        \"language\": \"Python\",\n        \"test_cases\": true\n      },\n      \"output\": {\n        \"generated_code\": \"import re\\nfrom typing import Optional\\n\\ndef validate_email(email: str) -> Optional[str]:\\n    '''\\n    Validates an email address using regex pattern matching.\\n    \\n    Args:\\n        email: The email address to validate\\n    \\n    Returns:\\n        None if valid, otherwise the error message\\n    '''\\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\\n    if not re.match(pattern, email):\\n        return f'Invalid email format: {email}'\\n    return None\",\n        \"test_suite\": \"import pytest\\nfrom email_validator import validate_email\\n\\n@pytest.mark.parametrize('input,expected', [\\n    ('test@example.com', None),\\n    ('invalid.email', 'Invalid email format: invalid.email'),\\n    ('another.test@sub.domain.com', None)\\n])\\ndef test_validate_email(input, expected):\\n    assert validate_email(input) == expected\",\n        \"error_log\": null\n      }\n    }\n  ],\n  \"dependencies\": {\n    \"python\": \">=3.8\",\n    \"packages\": [\"regex\", \"typing-extensions\"]\n  },\n  \"execution\": {\n    \"command\": \"python -m shareai.skills.python_code_generator --prompt '{prompt}' --language '{language}' --test-cases {test_cases}\",\n    \"timeout\": 30\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "shareai-skills#main-content",
+      "shareai-skills#overview",
+      "shareai-skills#setup",
+      "shareai-skills#examples",
+      "shareai-skills#tools",
+      "shareai-skills#mcp",
+      "shareai-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "shareAI Skills are modular knowledge packages designed to extend AI agent capabilities by providing domain expertise on-demand. They follow the Agent Skills Spec and work with Kode CLI, Claude Code, Cursor, and other compatible agents. Each skill is a structured collection of expert knowledge—not code—that enables agents to understand domain-specific patterns, mindsets, and procedures. The repository includes ready-to-use skills like skill-judge for evaluating skill quality, media-writer for content adaptation, agent-builder for designing AI agents, and vibe-coding for minimal-spec development. Skills are grounded in the principle that effective knowledge packages should contain expert-only information that complements what models already know.\nExtend Claude Code and Cursor with domain-specific expertise for specialized tasks\nBuild and evaluate custom AI agents using the agent-builder and skill-judge skills\nAdapt content across multiple platforms (WeChat, Reddit, Medium, LinkedIn, Twitter) with media-writer\nCreate vibe-driven development workflows with minimal specifications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/shareAI-skills`",
+    "usage_vi": "```\nCreate a new ShareAI skill called '[SKILL_NAME]' that enables agents to [PRIMARY_FUNCTION] using [TECHNOLOGY_STACK]. The skill should include: 1) A [COMPONENT_TYPE] for [SPECIFIC_TASK], 2) Integration with [API/PLATFORM], and 3) Error handling for [COMMON_FAILURE_MODES]. Format the output as a valid ShareAI skill manifest with clear inputs/outputs and usage examples.\n```\nCopy\n\n```\n```json\n{\n  \"skill_name\": \"python-code-generator\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Generates production-ready Python functions from natural language specifications with type hints and docstrings\",\n  \"author\": \"ShareAI Team\",\n  \"license\": \"MIT\",\n  \"inputs\": {\n    \"prompt\": \"string (required): Detailed description of the function to generate\",\n    \"language\": \"string (optional): Target language (defaults to Python)\",\n    \"test_cases\": \"boolean (optional): Whether to include unit tests (default: true)\"\n  },\n  \"outputs\": {\n    \"generated_code\": \"string: The complete Python function with type hints\",\n    \"test_suite\": \"string: Pytest-compatible test cases\",\n    \"error_log\": \"string: Any generation errors or warnings\"\n  },\n  \"examples\": [\n    {\n      \"input\": {\n        \"prompt\": \"Create a function that validates email addresses using regex\",\n        \"language\": \"Python\",\n        \"test_cases\": true\n      },\n      \"output\": {\n        \"generated_code\": \"import re\\nfrom typing import Optional\\n\\ndef validate_email(email: str) -> Optional[str]:\\n    '''\\n    Validates an email address using regex pattern matching.\\n    \\n    Args:\\n        email: The email address to validate\\n    \\n    Returns:\\n        None if valid, otherwise the error message\\n    '''\\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\\n    if not re.match(pattern, email):\\n        return f'Invalid email format: {email}'\\n    return None\",\n        \"test_suite\": \"import pytest\\nfrom email_validator import validate_email\\n\\n@pytest.mark.parametrize('input,expected', [\\n    ('test@example.com', None),\\n    ('invalid.email', 'Invalid email format: invalid.email'),\\n    ('another.test@sub.domain.com', None)\\n])\\ndef test_validate_email(input, expected):\\n    assert validate_email(input) == expected\",\n        \"error_log\": null\n      }\n    }\n  ],\n  \"dependencies\": {\n    \"python\": \">=3.8\",\n    \"packages\": [\"regex\", \"typing-extensions\"]\n  },\n  \"execution\": {\n    \"command\": \"python -m shareai.skills.python_code_generator --prompt '{prompt}' --language '{language}' --test-cases {test_cases}\",\n    \"timeout\": 30\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:05.224204Z",
+    "http_status": 200,
+    "content_hash": "0e57891aa2b056b333136af78e9c5a66d566a2f51f08d2e5f728c7379e8a3ff1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\shareai-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\shareai-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ShareAI Skills - Extend AI Agent Capabilities",
+  "short_description_vi": "ShareAI Skills are knowledge packages that extend AI agent capabilities. They enable agents to build other agents and custom software systems. Works with Kode CLI, Claude Code, Cursor, and any agent supporting the Agent Skills Spec."
+}

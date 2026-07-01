@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/doc-coauthoring",
+  "slug": "doc-coauthoring",
+  "name": "Doc Coauthoring",
+  "headline": "doc-coauthoring: Document Collaboration",
+  "short_description": "The doc-coauthoring skill enables collaborative document editing and co-authoring using Claude Code. This automation skill enhances productivity by allowing multiple users to work on documents in real-time, significantly reducing the time spent on revisions and updates.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills.git",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The doc-coauthoring skill is designed to facilitate real-time collaborative document editing, making it easier for teams to work together on projects. By leveraging Claude Code's capabilities, this skill allows multiple users to edit documents simultaneously, ensuring that all changes are tracked and integrated seamlessly. This skill is particularly beneficial for teams that require constant updates and revisions, as it simplifies the process of document management and enhances overall efficiency. One of the key benefits of the doc-coauthoring skill is the significant time savings it offers. Instead of relying on traditional methods of document sharing and editing, which often involve lengthy email threads and version control issues, users can collaborate in real-time. This not only speeds up the editing process but also reduces the likelihood of errors and miscommunication. Teams can focus on their core tasks without getting bogged down by administrative overhead, leading to faster project completion. This skill is ideal for developers, product managers, and AI practitioners who frequently collaborate on documentation, project plans, or technical specifications. For instance, a product development team can use doc-coauthoring to draft and refine product requirements, ensuring that all stakeholders have input and that the document evolves in real-time. Additionally, academic researchers can benefit from this skill by co-authoring papers, allowing for efficient collaboration across institutions. Implementation of the doc-coauthoring skill is straightforward, making it accessible even for those with limited technical expertise. It fits seamlessly into AI-first workflows, where automation and collaboration are paramount. By integrating this skill into your existing tools, you can enhance productivity and foster a more collaborative environment, ultimately driving better results for your projects.\nCollaboratively edit project documentation in real-time, ensuring all team members are aligned.\nCo-author research papers among academic teams, allowing for simultaneous input and feedback.\nDraft and refine product requirements with contributions from stakeholders, streamlining the approval process.\nCreate marketing content collaboratively across teams, enabling diverse perspectives to shape messaging.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nI'm working on a document about [TOPIC] with [COLLABORATOR NAME]. We need to [PURPOSE]. Please help us co-author this document by [SPECIFIC TASKS]. Here's the current draft: [DRAFT TEXT]. Please suggest edits, additions, or improvements while keeping the tone [TONE].\n```\nCopy\n\n```\nBased on your draft about 'The Future of Renewable Energy' with John Doe, here are my suggestions for co-authoring: \n\n1. **Introduction**: I've added a compelling statistic about global renewable energy adoption rates to strengthen the opening. \n\n2. **Solar Energy Section**: I expanded the discussion on perovskite solar cells, as this is a rapidly advancing field. I've also included a comparison table between traditional silicon cells and perovskite cells. \n\n3. **Policy Recommendations**: I've added a subsection on international cooperation, as this is a critical aspect of accelerating renewable energy adoption. \n\n4. **Conclusion**: I've suggested a call-to-action encouraging readers to advocate for renewable energy policies in their local communities. \n\nI've maintained the professional yet approachable tone you requested. Here's the revised draft with tracked changes: [REVISED DRAFT TEXT].\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "doc-coauthoring#main-content",
+      "doc-coauthoring#overview",
+      "doc-coauthoring#setup",
+      "doc-coauthoring#examples",
+      "doc-coauthoring#tools",
+      "doc-coauthoring#mcp",
+      "doc-coauthoring#related",
+      "brainstorming",
+      "slack-gif-creator",
+      "writing-skills"
+    ],
+    "overview_vi": "The doc-coauthoring skill is designed to facilitate real-time collaborative document editing, making it easier for teams to work together on projects. By leveraging Claude Code's capabilities, this skill allows multiple users to edit documents simultaneously, ensuring that all changes are tracked and integrated seamlessly. This skill is particularly beneficial for teams that require constant updates and revisions, as it simplifies the process of document management and enhances overall efficiency. One of the key benefits of the doc-coauthoring skill is the significant time savings it offers. Instead of relying on traditional methods of document sharing and editing, which often involve lengthy email threads and version control issues, users can collaborate in real-time. This not only speeds up the editing process but also reduces the likelihood of errors and miscommunication. Teams can focus on their core tasks without getting bogged down by administrative overhead, leading to faster project completion. This skill is ideal for developers, product managers, and AI practitioners who frequently collaborate on documentation, project plans, or technical specifications. For instance, a product development team can use doc-coauthoring to draft and refine product requirements, ensuring that all stakeholders have input and that the document evolves in real-time. Additionally, academic researchers can benefit from this skill by co-authoring papers, allowing for efficient collaboration across institutions. Implementation of the doc-coauthoring skill is straightforward, making it accessible even for those with limited technical expertise. It fits seamlessly into AI-first workflows, where automation and collaboration are paramount. By integrating this skill into your existing tools, you can enhance productivity and foster a more collaborative environment, ultimately driving better results for your projects.\nCollaboratively edit project documentation in real-time, ensuring all team members are aligned.\nCo-author research papers among academic teams, allowing for simultaneous input and feedback.\nDraft and refine product requirements with contributions from stakeholders, streamlining the approval process.\nCreate marketing content collaboratively across teams, enabling diverse perspectives to shape messaging.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nI'm working on a document about [TOPIC] with [COLLABORATOR NAME]. We need to [PURPOSE]. Please help us co-author this document by [SPECIFIC TASKS]. Here's the current draft: [DRAFT TEXT]. Please suggest edits, additions, or improvements while keeping the tone [TONE].\n```\nCopy\n\n```\nBased on your draft about 'The Future of Renewable Energy' with John Doe, here are my suggestions for co-authoring: \n\n1. **Introduction**: I've added a compelling statistic about global renewable energy adoption rates to strengthen the opening. \n\n2. **Solar Energy Section**: I expanded the discussion on perovskite solar cells, as this is a rapidly advancing field. I've also included a comparison table between traditional silicon cells and perovskite cells. \n\n3. **Policy Recommendations**: I've added a subsection on international cooperation, as this is a critical aspect of accelerating renewable energy adoption. \n\n4. **Conclusion**: I've suggested a call-to-action encouraging readers to advocate for renewable energy policies in their local communities. \n\nI've maintained the professional yet approachable tone you requested. Here's the revised draft with tracked changes: [REVISED DRAFT TEXT].\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:17.514603Z",
+    "http_status": 200,
+    "content_hash": "a31f003f972829097c6a7a6c4bad7476c6c574bdbd7377b5ea936af9375553bd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\doc-coauthoring.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\doc-coauthoring.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "doc-coauthoring: Document Collaboration",
+  "short_description_vi": "The doc-coauthoring skill enables collaborative document editing and co-authoring using Claude Code. This automation skill enhances productivity by allowing multiple users to work on documents in real-time, significantly reducing the time spent on revisions and updates."
+}

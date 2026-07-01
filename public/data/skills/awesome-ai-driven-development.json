@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-ai-driven-development",
+  "slug": "awesome-ai-driven-development",
+  "name": "awesome-AI-driven-development",
+  "headline": "AI-driven development resources",
+  "short_description": "AI-driven development tools for automating code generation, testing, and maintenance. Benefits developers and operations teams by speeding up development cycles and reducing manual work. Integrates with GitHub, GitLab, and other version control systems.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "eltociear",
+  "install_command": "git clone https://github.com/eltociear/awesome-AI-driven-development.git",
+  "source_repo_url": "https://github.com/eltociear/awesome-AI-driven-development",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "llm",
+    "aiagent",
+    "ai-development",
+    "vibe-coding",
+    "generative-ai",
+    "awesome-list",
+    "ai-driven",
+    "developer-tools",
+    "awesome",
+    "spec-driven-development",
+    "code-generation",
+    "vibecoding",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Awesome AI-Driven Development is a comprehensive curated collection of 568+ tools, frameworks, and resources designed for developers working with AI-powered development workflows. The directory covers AI code editors and IDEs (Cursor, Bolt.new, Void), terminal and CLI agents (Claude Code, Aider, Plandex), IDE extensions, multi-agent orchestration, code generation, testing and security, MCP servers, code review collaboration, and domain-specific tools. It serves as a centralized reference for discovering and evaluating AI development solutions that automate routine tasks, accelerate coding cycles, and integrate with version control systems like GitHub and GitLab. Developers and operations teams use this resource to identify the right tools for their AI-driven workflows.\nDiscover AI code editors and IDEs for automated code generation\nFind terminal-based AI agents for CLI-driven development workflows\nResearch code review and collaboration tools powered by AI\nEvaluate testing and security automation frameworks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eltociear/awesome-AI-driven-development`",
+    "usage": "```\nAct as an AI-driven development assistant. For the repository [REPOSITORY_NAME] at [GIT_PLATFORM_URL], perform the following tasks: 1) Generate a pull request with a code fix for [ISSUE_DESCRIPTION] using the most efficient approach, 2) Write unit tests for the modified code covering edge cases, and 3) Suggest performance optimizations for the affected components. Include comments explaining your changes and ensure the code follows [CODING_STYLE_GUIDE].\n```\nCopy\n\n```\nHere’s a pull request for the `payment-service` repository (https://github.com/acme/payment-service) addressing a critical bug where the `processPayment` function fails to validate the `transactionId` format, causing payment failures for 12% of users.\n\n**Changes Made:**\n1. **Code Fix:** Updated the `processPayment` function in `src/payment/handler.js` to validate `transactionId` against a regex pattern (`/^[A-Z0-9]{10}$/`). Added a new error class `InvalidTransactionIdError` for consistent error handling. The fix reduces payment failures by 98% in testing.\n\n2. **Unit Tests:** Added 15 new test cases in `tests/payment.test.js` covering:\n   - Valid transaction IDs (e.g., `AB12345678`)\n   - Invalid formats (e.g., `ab12345678`, `AB1234567`, `AB123456789`)\n   - Edge cases like empty strings or non-string inputs\n   - Integration with the `paymentGateway` mock to ensure the error propagates correctly.\n\n3. **Performance Optimization:** Suggested caching the regex pattern in `src/payment/validator.js` to avoid recompilation on every call. Benchmarked the change: reduced validation time from 1.2ms to 0.3ms per transaction (75% improvement).\n\n**Next Steps:**\n- Review the PR and approve if the changes meet requirements.\n- Merge after CI passes (all 47 existing tests + 15 new tests pass).\n- Deploy to staging for further validation.\n\n**Files Modified:**\n- `src/payment/handler.js` (12 lines added)\n- `src/payment/validator.js` (3 lines modified)\n- `tests/payment.test.js` (15 test cases added)\n\n**Metrics:**\n- Code coverage: 94% (up from 88%)\n- Performance improvement: 75% faster validation\n- Bug fix success rate: 98% reduction in payment failures\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-ai-driven-development#main-content",
+      "awesome-ai-driven-development#overview",
+      "awesome-ai-driven-development#setup",
+      "awesome-ai-driven-development#examples",
+      "awesome-ai-driven-development#tools",
+      "awesome-ai-driven-development#mcp",
+      "awesome-ai-driven-development#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome AI-Driven Development là danh mục tổng hợp tuyển chọn hơn 568 công cụ, framework và tài nguyên dành cho các nhà phát triển đang xây dựng quy trình làm việc (workflow) tích hợp AI. Danh mục này bao gồm các trình soạn thảo code AI và IDE (Cursor, Bolt.new, Void), các agent chạy trên terminal và CLI (Claude Code, Aider, Plandex), extension cho IDE, điều phối multi-agent, sinh code, kiểm thử và bảo mật, MCP server, cộng tác review code và các công cụ chuyên biệt theo domain. Đây là nguồn tham khảo tập trung để tìm kiếm và đánh giá các giải pháp lập trình tích hợp AI giúp tự động hóa tác vụ lặp đi lặp lại, tăng tốc chu kỳ viết code và tích hợp mượt mà với các hệ thống quản lý phiên bản như GitHub và GitLab. Các đội ngũ phát triển và vận hành có thể khai thác tài nguyên này để lựa chọn công cụ phù hợp nhất cho workflow định hướng AI của mình.\nKhám phá các trình soạn thảo code AI và IDE để tự động sinh code\nTìm kiếm các AI agent trên terminal cho quy trình phát triển qua CLI\nTìm hiểu các công cụ cộng tác và review code bằng AI\nĐánh giá các framework tự động hóa kiểm thử và bảo mật",
+    "setup_vi": "Không có lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/eltociear/awesome-AI-driven-development`",
+    "usage_vi": "```\nĐóng vai trò là một trợ lý phát triển phần mềm hỗ trợ bởi AI. Đối với repository [REPOSITORY_NAME] tại [GIT_PLATFORM_URL], hãy thực hiện các nhiệm vụ sau: 1) Tạo một pull request sửa lỗi cho [ISSUE_DESCRIPTION] bằng phương pháp hiệu quả nhất, 2) Viết unit test cho phần code đã sửa đổi để bao quát các edge case (trường hợp biên), và 3) Đề xuất tối ưu hóa hiệu năng cho các component bị ảnh hưởng. Thêm các comment giải thích những thay đổi của bạn và đảm bảo code tuân thủ [CODING_STYLE_GUIDE].\n```\nCopy\n\n```\nDưới đây là pull request dành cho repository `payment-service` (https://github.com/acme/payment-service) để khắc phục lỗi nghiêm trọng khi hàm `processPayment` không xác thực định dạng của `transactionId`, gây lỗi thanh toán cho 12% người dùng.\n\n**Các thay đổi đã thực hiện:**\n1. **Sửa lỗi Code:** Cập nhật hàm `processPayment` trong `src/payment/handler.js` để xác thực `transactionId` bằng một mẫu regex (`/^[A-Z0-9]{10}$/`). Bổ sung class lỗi mới `InvalidTransactionIdError` để đồng nhất cách xử lý lỗi. Bản sửa lỗi này giúp giảm 98% số lỗi thanh toán trong môi trường thử nghiệm.\n\n2. **Unit Test:** Thêm 15 test case mới trong `tests/payment.test.js` bao gồm:\n   - Các transaction ID hợp lệ (ví dụ: `AB12345678`)\n   - Các định dạng không hợp lệ (ví dụ: `ab12345678`, `AB1234567`, `AB123456789`)\n   - Các edge case như chuỗi rỗng hoặc dữ liệu đầu vào không phải dạng chuỗi\n   - Tích hợp với mock `paymentGateway` để đảm bảo lỗi được truyền đi (propagate) chính xác.\n\n3. **Tối ưu hóa Hiệu năng:** Đề xuất cache mẫu regex trong `src/payment/validator.js` để tránh việc biên dịch lại (recompilation) ở mỗi lần gọi hàm. Kết quả đo benchmark sau thay đổi: giảm thời gian xác thực từ 1.2ms xuống 0.3ms cho mỗi giao dịch (cải thiện 75%).\n\n**Các bước tiếp theo:**\n- Review PR này và phê duyệt nếu các thay đổi đáp ứng yêu cầu.\n- Merge sau khi CI pass (tất cả 47 test hiện tại + 15 test mới đều pass).\n- Deploy lên môi trường staging để tiếp tục xác thực.\n\n**Các file đã chỉnh sửa:**\n- `src/payment/handler.js` (thêm 12 dòng)\n- `src/payment/validator.js` (sửa 3 dòng)\n- `tests/payment.test.js` (thêm 15 test case)\n\n**Chỉ số đo lường (Metrics):**\n- Code coverage: 94% (tăng từ 88%)\n- Cải thiện hiệu năng: tốc độ xác thực nhanh hơn 75%\n- Tỷ lệ sửa lỗi thành công: giảm 98% số ca lỗi thanh toán\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:43:21.423111Z",
+    "http_status": 200,
+    "content_hash": "c15c92b4a63a6b082cbcbd459fe2cd855c9344cba2186d627c0b6f7e25782966",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-ai-driven-development.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-ai-driven-development.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tài nguyên phát triển phần mềm hỗ trợ bởi AI",
+  "short_description_vi": "Các công cụ phát triển hỗ trợ bởi AI giúp tự động hóa quá trình sinh code, kiểm thử và bảo trì. Giải pháp này mang lại lợi ích cho cả đội ngũ phát triển (developer) và vận hành (operations) nhờ tối ưu hóa chu kỳ phát triển và giảm thiểu tác vụ thủ công. Hỗ trợ tích hợp với GitHub, GitLab và các hệ thống quản lý phiên bản khác."
+}

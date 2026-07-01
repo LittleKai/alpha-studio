@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/task-orchestrator",
+  "slug": "task-orchestrator",
+  "name": "browser-use",
+  "headline": "Task Orchestrator - AI Memory for Coding Assistants",
+  "short_description": "Persistent AI memory for coding assistants - MCP server providing context persistence across sessions for Claude, Cursor, Windsurf.  MCP Tools for task tracking, workflow automation, and AI memory. Eliminates context loss between sessions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "jpicklyk",
+  "install_command": "git clone https://github.com/jpicklyk/task-orchestrator.git",
+  "source_repo_url": "https://github.com/jpicklyk/task-orchestrator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "n8n",
+    "ai-development",
+    "task-management",
+    "claude-code",
+    "developer-tools",
+    "windsurf",
+    "claude",
+    "ai-memory",
+    "cursor",
+    "model-context-protocol",
+    "ai-tools",
+    "mcp-server",
+    "ai-coding-assistant",
+    "kotlin",
+    "mcp",
+    "claude-desktop",
+    "context-persistence",
+    "workflow-automation",
+    "persistent-memory",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "Task Orchestrator is an MCP server that provides persistent workflow enforcement for AI agents across sessions. Unlike prompt-based frameworks that rely on LLM compliance, it blocks tool calls that violate workflow rules at the server level—preventing implementation without required specifications, enforcing dependency ordering, and tracking which agent made each change. It uses SQLite-backed work item graphs with YAML-configured schemas and traits, enabling multi-agent orchestration with auditable accountability. Perfect for teams running Claude Code, Cursor, or Windsurf agents that need structural guarantees about task completion order, documentation quality, and actor attribution across sessions.\nMulti-agent orchestration requiring dependency ordering and compliance verification\nComplex workflows needing actor attribution and audit trails across sessions\nPreventing sub-agents from advancing tasks until upstream dependencies complete\nEnforcing required documentation (specs, design notes) before implementation starts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jpicklyk/task-orchestrator`",
+    "usage": "```\nAct as a persistent task orchestrator for [PROJECT_NAME]. Use the MCP server to track all active tasks, their statuses, and dependencies. For each task, provide: 1) A clear description, 2) Current status (Not Started/In Progress/Blocked/Completed), 3) Priority (High/Medium/Low), 4) Estimated effort (in hours), and 5) Next action required. Reference previous session context where available. Current date: [DATE].\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "task-orchestrator#main-content",
+      "task-orchestrator#overview",
+      "task-orchestrator#setup",
+      "task-orchestrator#examples",
+      "task-orchestrator#tools",
+      "task-orchestrator#mcp",
+      "task-orchestrator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Task Orchestrator is an MCP server that provides persistent workflow enforcement for AI agents across sessions. Unlike prompt-based frameworks that rely on LLM compliance, it blocks tool calls that violate workflow rules at the server level—preventing implementation without required specifications, enforcing dependency ordering, and tracking which agent made each change. It uses SQLite-backed work item graphs with YAML-configured schemas and traits, enabling multi-agent orchestration with auditable accountability. Perfect for teams running Claude Code, Cursor, or Windsurf agents that need structural guarantees about task completion order, documentation quality, and actor attribution across sessions.\nMulti-agent orchestration requiring dependency ordering and compliance verification\nComplex workflows needing actor attribution and audit trails across sessions\nPreventing sub-agents from advancing tasks until upstream dependencies complete\nEnforcing required documentation (specs, design notes) before implementation starts",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jpicklyk/task-orchestrator`",
+    "usage_vi": "```\nAct as a persistent task orchestrator for [PROJECT_NAME]. Use the MCP server to track all active tasks, their statuses, and dependencies. For each task, provide: 1) A clear description, 2) Current status (Not Started/In Progress/Blocked/Completed), 3) Priority (High/Medium/Low), 4) Estimated effort (in hours), and 5) Next action required. Reference previous session context where available. Current date: [DATE].\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:32:04.914058Z",
+    "http_status": 200,
+    "content_hash": "6073a91a26d1ecae6bc30000588a1301eeae3fbeae2d013f8b0a1f714cc209d3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\task-orchestrator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\task-orchestrator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Task Orchestrator - AI Memory for Coding Assistants",
+  "short_description_vi": "Persistent AI memory for coding assistants - MCP server providing context persistence across sessions for Claude, Cursor, Windsurf.  MCP Tools for task tracking, workflow automation, and AI memory. Eliminates context loss between sessions."
+}

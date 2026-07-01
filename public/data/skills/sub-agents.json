@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sub-agents",
+  "slug": "sub-agents",
+  "name": "browser-use",
+  "headline": "Sub-Agents: AI Automation",
+  "short_description": "Claude Code Sub Agent Manager enables operations teams to add and manage AI sub-agents with custom hooks and slash commands. It streamlines workflow automation, benefiting developers and operations teams by integrating with Claude Code for enhanced productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "webdevtodayjason",
+  "install_command": "git clone https://github.com/webdevtodayjason/sub-agents.git",
+  "source_repo_url": "https://github.com/webdevtodayjason/sub-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "a-agent",
+    "context-forge",
+    "claude-ai",
+    "agents",
+    "claude",
+    "sub-agents",
+    "anthropic-claude",
+    "semfreak"
+  ],
+  "sections": {
+    "overview": "The Claude Code Sub Agent Manager is an essential automation skill designed to simplify the management of AI agents within your workflows. This skill allows users to add Claude Code Sub Agents seamlessly, utilizing hooks and custom slash commands to enhance functionality. With a focus on intermediate users, this skill provides a structured approach to integrating sub-agents into your existing AI frameworks, making it easier to manage complex tasks and interactions. One of the key benefits of utilizing the Sub Agent Manager is the potential for significant time savings in the setup and management of AI agents. While the exact time savings are not quantified, the streamlined process of adding and configuring sub-agents can lead to reduced overhead and increased efficiency in your automation workflows. This skill empowers developers, product managers, and AI practitioners to focus on higher-level tasks by automating repetitive actions and enhancing the overall productivity of their teams. This skill is particularly beneficial for developers and product managers who are looking to optimize their AI automation processes. By leveraging the capabilities of the Sub Agent Manager, users can create tailored workflows that suit their specific needs, whether it be in data processing, customer support, or any other domain that requires intelligent automation. For instance, a product manager could implement this skill to manage multiple customer service agents, allowing for a more responsive and efficient support system. Implementing the Sub Agent Manager is straightforward, requiring approximately 30 minutes for setup. Given its intermediate complexity, users should possess a foundational understanding of AI automation and workflow management. This skill aligns perfectly with AI-first workflows by enabling the integration of multiple AI agents, thereby enhancing the overall capability of your automation strategy. By adopting this skill, organizations can ensure that they are leveraging the full potential of AI technologies in their operations.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/webdevtodayjason/sub-agents`",
+    "usage": "```\nUse the Claude Code Sub Agent Manager to create a [SUB-AGENT_NAME] sub-agent with the following specifications: [PURPOSE_OR_FUNCTION]. Configure it to trigger on the slash command '/[COMMAND_NAME]' and add [CUSTOM_HOOKS] for pre/post-execution logic. Test the sub-agent by running '/[COMMAND_NAME] [TEST_INPUT]' and verify its output against [EXPECTED_BEHAVIOR].\n```\nCopy\n\n```\n### Sub-Agent Creation & Testing Report\n\n**Sub-Agent Specifications:**\n- **Name:** `/data-validator`\n- **Purpose:** Validates JSON schemas against a given dataset before ingestion into the analytics pipeline.\n- **Slash Command:** `/validate`\n- **Custom Hooks:**\n  - **Pre-execution:** Checks if the input file exists and is readable.\n  - **Post-execution:** Logs validation results to a shared Slack channel and triggers a CI/CD pipeline if the schema is valid.\n\n**Execution Log:**\n1. **Input Provided:** `/validate --file sales_data_2024.json --schema orders_schema.json`\n2. **Pre-execution Check:** File `sales_data_2024.json` exists and is readable. Schema `orders_schema.json` is valid.\n3. **Validation Result:** \n   - **Total Records:** 1,247\n   - **Valid Records:** 1,247 (100%)\n   - **Invalid Records:** 0\n   - **Warnings:** None\n4. **Post-execution Actions:**\n   - Logged results to `#analytics-pipeline` Slack channel.\n   - Triggered CI/CD pipeline `analytics-pipeline-v2` for deployment.\n\n**Output:**\n```json\n{\n  \"status\": \"success\",\n  \"valid_records\": 1247,\n  \"invalid_records\": 0,\n  \"warnings\": [],\n  \"next_steps\": [\"Deploy to staging environment\", \"Notify data team of completion\"]\n}\n```\n\n**Verification:** The sub-agent executed as expected, with all hooks functioning correctly and no errors reported.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sub-agents#main-content",
+      "sub-agents#overview",
+      "sub-agents#setup",
+      "sub-agents#examples",
+      "sub-agents#tools",
+      "sub-agents#mcp",
+      "sub-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Claude Code Sub Agent Manager is an essential automation skill designed to simplify the management of AI agents within your workflows. This skill allows users to add Claude Code Sub Agents seamlessly, utilizing hooks and custom slash commands to enhance functionality. With a focus on intermediate users, this skill provides a structured approach to integrating sub-agents into your existing AI frameworks, making it easier to manage complex tasks and interactions. One of the key benefits of utilizing the Sub Agent Manager is the potential for significant time savings in the setup and management of AI agents. While the exact time savings are not quantified, the streamlined process of adding and configuring sub-agents can lead to reduced overhead and increased efficiency in your automation workflows. This skill empowers developers, product managers, and AI practitioners to focus on higher-level tasks by automating repetitive actions and enhancing the overall productivity of their teams. This skill is particularly beneficial for developers and product managers who are looking to optimize their AI automation processes. By leveraging the capabilities of the Sub Agent Manager, users can create tailored workflows that suit their specific needs, whether it be in data processing, customer support, or any other domain that requires intelligent automation. For instance, a product manager could implement this skill to manage multiple customer service agents, allowing for a more responsive and efficient support system. Implementing the Sub Agent Manager is straightforward, requiring approximately 30 minutes for setup. Given its intermediate complexity, users should possess a foundational understanding of AI automation and workflow management. This skill aligns perfectly with AI-first workflows by enabling the integration of multiple AI agents, thereby enhancing the overall capability of your automation strategy. By adopting this skill, organizations can ensure that they are leveraging the full potential of AI technologies in their operations.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/webdevtodayjason/sub-agents`",
+    "usage_vi": "```\nUse the Claude Code Sub Agent Manager to create a [SUB-AGENT_NAME] sub-agent with the following specifications: [PURPOSE_OR_FUNCTION]. Configure it to trigger on the slash command '/[COMMAND_NAME]' and add [CUSTOM_HOOKS] for pre/post-execution logic. Test the sub-agent by running '/[COMMAND_NAME] [TEST_INPUT]' and verify its output against [EXPECTED_BEHAVIOR].\n```\nCopy\n\n```\n### Sub-Agent Creation & Testing Report\n\n**Sub-Agent Specifications:**\n- **Name:** `/data-validator`\n- **Purpose:** Validates JSON schemas against a given dataset before ingestion into the analytics pipeline.\n- **Slash Command:** `/validate`\n- **Custom Hooks:**\n  - **Pre-execution:** Checks if the input file exists and is readable.\n  - **Post-execution:** Logs validation results to a shared Slack channel and triggers a CI/CD pipeline if the schema is valid.\n\n**Execution Log:**\n1. **Input Provided:** `/validate --file sales_data_2024.json --schema orders_schema.json`\n2. **Pre-execution Check:** File `sales_data_2024.json` exists and is readable. Schema `orders_schema.json` is valid.\n3. **Validation Result:** \n   - **Total Records:** 1,247\n   - **Valid Records:** 1,247 (100%)\n   - **Invalid Records:** 0\n   - **Warnings:** None\n4. **Post-execution Actions:**\n   - Logged results to `#analytics-pipeline` Slack channel.\n   - Triggered CI/CD pipeline `analytics-pipeline-v2` for deployment.\n\n**Output:**\n```json\n{\n  \"status\": \"success\",\n  \"valid_records\": 1247,\n  \"invalid_records\": 0,\n  \"warnings\": [],\n  \"next_steps\": [\"Deploy to staging environment\", \"Notify data team of completion\"]\n}\n```\n\n**Verification:** The sub-agent executed as expected, with all hooks functioning correctly and no errors reported.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:48:23.610524Z",
+    "http_status": 200,
+    "content_hash": "e99a81bf29376b30fc736ff3b5b64935d2194376c6ceb33d53484b3720b0c5e0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sub-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sub-agents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Sub-Agents: AI Automation",
+  "short_description_vi": "Claude Code Sub Agent Manager enables operations teams to add and manage AI sub-agents with custom hooks and slash commands. It streamlines workflow automation, benefiting developers and operations teams by integrating with Claude Code for enhanced productivity."
+}

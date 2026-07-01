@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/windsurf",
+  "slug": "windsurf",
+  "name": "Windsurf",
+  "headline": "Windsurf: Your AI Windsurfing Coach",
+  "short_description": "Windsurf is your ultimate AI assistant for enhancing windsurfing skills and enjoying a experience on the water. Get personalized tips, techniques, and real-time weather updates to elevate your performance and safety.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "outdoor sports",
+    "AI coach",
+    "windsurfing",
+    "water sports"
+  ],
+  "sections": {
+    "overview": "Windsurf is an AI assistant designed to help windsurfers improve their performance on the water. It provides personalized tips and techniques tailored to enhance your windsurfing skills. The skill also delivers real-time weather updates to support safer and more informed decisions while windsurfing. Whether you're a beginner refining basics or an experienced rider seeking optimization, Windsurf offers guidance across technique and conditions.\nFind the best windsurfing locations\nReceive personalized coaching tips\nStay updated on weather conditions",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nI'm a windsurfer looking to improve my skills. Provide a personalized training plan for [LEVEL: beginner/intermediate/advanced] focusing on [TECHNIQUE: e.g., jibing, planing, wave riding]. Include specific drills, safety tips, and recommended gear adjustments. Also, fetch the latest weather conditions for [LOCATION] and suggest the best times to hit the water this week based on wind speed, direction, and swell data.\n```\nCopy\n\n```\n### Windsurfing Training Plan for Intermediate Surfer (Planing & Jibing Focus)\n\n**Current Skill Level:** You’ve mastered the basics of windsurfing—standing up, steering, and basic tacking—but want to refine your planing technique and jibing to build confidence in stronger winds. Your goal is to consistently plane across the water and execute smooth jibes without losing speed.\n\n**Training Plan (4-Week Focus):**\n\n**Week 1: Planing Fundamentals**\n- **Drill 1: The \"Sail Pump\"** – In light winds (12-15 knots), practice pumping the sail 2-3 times to build speed before fully committing to a run. Focus on keeping your hips forward and using your legs to generate power. Aim for 5 successful runs per session.\n- **Drill 2: Footstraps Practice** – In 10-12 knots, practice clipping into the footstraps while maintaining balance. Start with just one foot, then progress to both. Use a harness line set to 10% of your body weight for support.\n- **Gear Adjustments:** Move your mast foot 1-2 cm forward to help with early planing. Ensure your fin is 30-34cm for your board size (e.g., 110L board = 32cm fin).\n\n**Week 2: Jibing Technique**\n- **Drill 1: Dry Land Practice** – Mimic the jibe motion on land: pivot your back foot while keeping your front foot planted, then switch your hands on the boom. Repeat 10 times per side.\n- **Drill 2: Slow-Speed Jibes** – In 12-15 knots, practice jibes at half-speed. Focus on keeping your weight centered over the board and using your hips to initiate the turn. Aim for 3 successful jibes per session.\n- **Safety Tip:** Always check your fin screw and mast track before heading out. A loose fin can cause instability during jibes.\n\n**Week 3: Combining Planing & Jibes**\n- **Drill 1: Planing Runs with Jibe Exit** – In 15-18 knots, practice building speed, then jibing at the end of your run. Focus on maintaining edge control during the turn. Use a 4.5m sail for this session.\n- **Drill 2: Upwind/Downwind Transitions** – Practice sailing upwind, then jibing to sail downwind without stopping. This builds muscle memory for real-world conditions.\n\n**Week 4: Advanced Drills**\n- **Drill 1: Carve Jibes** – In 18-22 knots, practice carve jibes by shifting your weight aggressively into the turn. Use a smaller sail (4.0m) to increase control.\n- **Drill 2: Wave Simulation** – In flat water, practice quick jibes by pumping the sail to mimic wave-induced turns. This improves reaction time.\n\n**Weather & Location Update for Maui, HI (This Week):**\n- **Monday:** 15 knots NE wind, 2ft swell, best time: 10 AM - 2 PM. Light chop but consistent.\n- **Tuesday:** 18 knots ESE wind, 3ft swell, best time: 9 AM - 1 PM. Great for planing practice.\n- **Wednesday:** 12 knots variable, 1ft swell, avoid if possible—light winds make jibing difficult.\n- **Thursday:** 20 knots E wind, 4ft swell, best time: 8 AM - 12 PM. Advanced conditions—perfect for carve jibes.\n- **Friday:** 16 knots NE wind, 2.5ft swell, best time: 11 AM - 3 PM. Ideal for intermediate sailors.\n\n**Gear Checklist:**\n- Board: 110L freeride board (e.g., Starboard Kodex)\n- Sail: 4.5m and 4.0m (for stronger winds)\n- Fin: 32cm freeride fin\n- Harness: Seat harness with 10% line length\n- Leash: 7ft coiled leash\n\n**Safety Reminders:**\n- Always wear a life jacket and impact vest in offshore winds.\n- Check for local hazards like rocks or shallow areas before launching.\n- If you’re struggling with a technique, take a lesson with a local coach—Maui has excellent instructors at Hookipa Beach.\n\n**Next Steps:**\n- Film your sessions to review your form.\n- Join the Maui Windsurfing Facebook group to share progress and get local tips.\n- Book a session with a coach for personalized feedback after Week 2.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "windsurf#main-content",
+      "windsurf#overview",
+      "windsurf#setup",
+      "windsurf#examples",
+      "windsurf#tools",
+      "windsurf#mcp",
+      "windsurf#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Windsurf is an AI assistant designed to help windsurfers improve their performance on the water. It provides personalized tips and techniques tailored to enhance your windsurfing skills. The skill also delivers real-time weather updates to support safer and more informed decisions while windsurfing. Whether you're a beginner refining basics or an experienced rider seeking optimization, Windsurf offers guidance across technique and conditions.\nFind the best windsurfing locations\nReceive personalized coaching tips\nStay updated on weather conditions",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nI'm a windsurfer looking to improve my skills. Provide a personalized training plan for [LEVEL: beginner/intermediate/advanced] focusing on [TECHNIQUE: e.g., jibing, planing, wave riding]. Include specific drills, safety tips, and recommended gear adjustments. Also, fetch the latest weather conditions for [LOCATION] and suggest the best times to hit the water this week based on wind speed, direction, and swell data.\n```\nCopy\n\n```\n### Windsurfing Training Plan for Intermediate Surfer (Planing & Jibing Focus)\n\n**Current Skill Level:** You’ve mastered the basics of windsurfing—standing up, steering, and basic tacking—but want to refine your planing technique and jibing to build confidence in stronger winds. Your goal is to consistently plane across the water and execute smooth jibes without losing speed.\n\n**Training Plan (4-Week Focus):**\n\n**Week 1: Planing Fundamentals**\n- **Drill 1: The \"Sail Pump\"** – In light winds (12-15 knots), practice pumping the sail 2-3 times to build speed before fully committing to a run. Focus on keeping your hips forward and using your legs to generate power. Aim for 5 successful runs per session.\n- **Drill 2: Footstraps Practice** – In 10-12 knots, practice clipping into the footstraps while maintaining balance. Start with just one foot, then progress to both. Use a harness line set to 10% of your body weight for support.\n- **Gear Adjustments:** Move your mast foot 1-2 cm forward to help with early planing. Ensure your fin is 30-34cm for your board size (e.g., 110L board = 32cm fin).\n\n**Week 2: Jibing Technique**\n- **Drill 1: Dry Land Practice** – Mimic the jibe motion on land: pivot your back foot while keeping your front foot planted, then switch your hands on the boom. Repeat 10 times per side.\n- **Drill 2: Slow-Speed Jibes** – In 12-15 knots, practice jibes at half-speed. Focus on keeping your weight centered over the board and using your hips to initiate the turn. Aim for 3 successful jibes per session.\n- **Safety Tip:** Always check your fin screw and mast track before heading out. A loose fin can cause instability during jibes.\n\n**Week 3: Combining Planing & Jibes**\n- **Drill 1: Planing Runs with Jibe Exit** – In 15-18 knots, practice building speed, then jibing at the end of your run. Focus on maintaining edge control during the turn. Use a 4.5m sail for this session.\n- **Drill 2: Upwind/Downwind Transitions** – Practice sailing upwind, then jibing to sail downwind without stopping. This builds muscle memory for real-world conditions.\n\n**Week 4: Advanced Drills**\n- **Drill 1: Carve Jibes** – In 18-22 knots, practice carve jibes by shifting your weight aggressively into the turn. Use a smaller sail (4.0m) to increase control.\n- **Drill 2: Wave Simulation** – In flat water, practice quick jibes by pumping the sail to mimic wave-induced turns. This improves reaction time.\n\n**Weather & Location Update for Maui, HI (This Week):**\n- **Monday:** 15 knots NE wind, 2ft swell, best time: 10 AM - 2 PM. Light chop but consistent.\n- **Tuesday:** 18 knots ESE wind, 3ft swell, best time: 9 AM - 1 PM. Great for planing practice.\n- **Wednesday:** 12 knots variable, 1ft swell, avoid if possible—light winds make jibing difficult.\n- **Thursday:** 20 knots E wind, 4ft swell, best time: 8 AM - 12 PM. Advanced conditions—perfect for carve jibes.\n- **Friday:** 16 knots NE wind, 2.5ft swell, best time: 11 AM - 3 PM. Ideal for intermediate sailors.\n\n**Gear Checklist:**\n- Board: 110L freeride board (e.g., Starboard Kodex)\n- Sail: 4.5m and 4.0m (for stronger winds)\n- Fin: 32cm freeride fin\n- Harness: Seat harness with 10% line length\n- Leash: 7ft coiled leash\n\n**Safety Reminders:**\n- Always wear a life jacket and impact vest in offshore winds.\n- Check for local hazards like rocks or shallow areas before launching.\n- If you’re struggling with a technique, take a lesson with a local coach—Maui has excellent instructors at Hookipa Beach.\n\n**Next Steps:**\n- Film your sessions to review your form.\n- Join the Maui Windsurfing Facebook group to share progress and get local tips.\n- Book a session with a coach for personalized feedback after Week 2.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:40:46.047944Z",
+    "http_status": 200,
+    "content_hash": "cdb99f547759ecf92f1345fdf696f864d46de1131a98d4a62d12a7d2791cb76e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\windsurf.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\windsurf.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Windsurf: Your AI Windsurfing Coach",
+  "short_description_vi": "Windsurf is your ultimate AI assistant for enhancing windsurfing skills and enjoying a experience on the water. Get personalized tips, techniques, and real-time weather updates to elevate your performance and safety."
+}

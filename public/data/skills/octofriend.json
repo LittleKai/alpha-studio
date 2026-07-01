@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/octofriend",
+  "slug": "octofriend",
+  "name": "Octofriend",
+  "headline": "Octofriend - Coding Assistant for Developers",
+  "short_description": "Octofriend is an open-source coding assistant that helps developers write and debug code faster. It integrates with TypeScript and supports Claude agents. Ideal for operations teams looking to automate coding tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "synthetic-lab",
+  "install_command": "git clone https://github.com/synthetic-lab/octofriend.git",
+  "source_repo_url": "https://github.com/synthetic-lab/octofriend",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Octofriend is an open-source coding assistant designed to help developers write and debug code more efficiently. It integrates with TypeScript and supports Claude agents, making it suitable for operations teams looking to automate coding tasks. The project is actively maintained with a Generic LLM IR architecture that enables flexible tool integration. Built for developers who want to accelerate their coding workflow, Octofriend provides structured support for agent-based code assistance.\nQuickly switch between different LLM models to find the best solution for coding challenges.\nUtilize built-in Docker support to run code in isolated environments without complex setup.\nLeverage custom-trained ML models to automatically fix code errors and improve code quality.\nIntegrate with MCP servers to access rich data and streamline development processes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/synthetic-lab/octofriend`",
+    "usage": "```\nHelp me write a TypeScript function to [TASK] using the following requirements: [REQUIREMENTS]. Provide the code and explain how it works. Also, suggest any potential edge cases I should test for.\n```\nCopy\n\n```\nBased on your request, here's a TypeScript function that calculates the total price of items in a shopping cart, including tax and discounts:\n\n```typescript\nfunction calculateTotalPrice(items: CartItem[], taxRate: number, discountCode?: string): number {\n  let subtotal = 0;\n  let discount = 0;\n  \n  // Calculate subtotal\n  for (const item of items) {\n    subtotal += item.price * item.quantity;\n  }\n  \n  // Apply discount if applicable\n  if (discountCode) {\n    if (discountCode === 'SAVE10') {\n      discount = subtotal * 0.1;\n    } else if (discountCode === 'SAVE20') {\n      discount = subtotal * 0.2;\n    }\n  }\n  \n  // Calculate total with tax and discount\n  const total = (subtotal - discount) * (1 + taxRate);\n  \n  return total;\n}\n```\n\nThis function takes an array of CartItem objects, a tax rate, and an optional discount code. It first calculates the subtotal by multiplying the price of each item by its quantity. Then, it applies a discount if a valid discount code is provided. Finally, it calculates the total by applying the tax rate to the discounted subtotal.\n\nPotential edge cases to test for:\n1. Empty cart\n2. Invalid discount code\n3. Negative quantities or prices\n4. High tax rates (e.g., 100% or more)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "octofriend#main-content",
+      "octofriend#overview",
+      "octofriend#setup",
+      "octofriend#examples",
+      "octofriend#tools",
+      "octofriend#mcp",
+      "octofriend#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Octofriend là trợ lý lập trình mã nguồn mở được thiết kế để giúp các developer viết và debug code hiệu quả hơn. Công cụ này tích hợp với TypeScript và hỗ trợ các Claude agent, rất phù hợp cho các đội ngũ operations muốn tự động hóa các tác vụ lập trình. Dự án được duy trì tích cực với kiến trúc Generic LLM IR cho phép tích hợp công cụ một cách linh hoạt. Được thiết kế cho các developer muốn tăng tốc workflow lập trình của mình, Octofriend cung cấp sự hỗ trợ có cấu trúc cho việc trợ giúp viết code dựa trên agent.\nNhanh chóng chuyển đổi giữa các mô hình LLM khác nhau để tìm ra giải pháp tốt nhất cho các thử thách lập trình.\nTận dụng hỗ trợ Docker tích hợp sẵn để chạy code trong môi trường cô lập mà không cần setup phức tạp.\nKhai thác các mô hình ML được train tùy chỉnh để tự động sửa lỗi code và nâng cao chất lượng code.\nTích hợp với các server MCP để truy cập nguồn dữ liệu phong phú và tối ưu hóa quy trình phát triển.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/synthetic-lab/octofriend`",
+    "usage_vi": "```\nHãy giúp tôi viết một hàm TypeScript để [TASK] dựa trên các yêu cầu sau: [REQUIREMENTS]. Cung cấp đoạn code và giải thích cách hoạt động của nó. Ngoài ra, hãy gợi ý một số edge case tiềm ẩn mà tôi nên test.\n```\nSao chép\n\n```\nDựa trên yêu cầu của bạn, dưới đây là hàm TypeScript tính tổng giá trị các mặt hàng trong giỏ hàng, bao gồm cả thuế và chiết khấu:\n\n```typescript\nfunction calculateTotalPrice(items: CartItem[], taxRate: number, discountCode?: string): number {\n  let subtotal = 0;\n  let discount = 0;\n  \n  // Calculate subtotal\n  for (const item of items) {\n    subtotal += item.price * item.quantity;\n  }\n  \n  // Apply discount if applicable\n  if (discountCode) {\n    if (discountCode === 'SAVE10') {\n      discount = subtotal * 0.1;\n    } else if (discountCode === 'SAVE20') {\n      discount = subtotal * 0.2;\n    }\n  }\n  \n  // Calculate total with tax and discount\n  const total = (subtotal - discount) * (1 + taxRate);\n  \n  return total;\n}\n```\n\nHàm này nhận đầu vào là một mảng các đối tượng CartItem, thuế suất (tax rate), và một mã giảm giá tùy chọn. Đầu tiên, hàm tính tổng tiền tạm tính (subtotal) bằng cách nhân giá của từng mặt hàng với số lượng của nó. Sau đó, hàm áp dụng chiết khấu nếu mã giảm giá hợp lệ được cung cấp. Cuối cùng, hàm tính tổng tiền bằng cách áp dụng thuế suất lên tổng tạm tính đã trừ chiết khấu.\n\nCác edge case tiềm ẩn cần test:\n1. Giỏ hàng trống\n2. Mã giảm giá không hợp lệ\n3. Số lượng hoặc giá trị bị âm\n4. Thuế suất cao (ví dụ: 100% trở lên)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:53:33.817031Z",
+    "http_status": 200,
+    "content_hash": "68e02a1901e962d94f8dcf07925cac9551b0b6da5e41972bbd0f4c8b8baea7ca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octofriend.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octofriend.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Octofriend - Trợ lý lập trình dành cho developer",
+  "short_description_vi": "Octofriend là trợ lý lập trình mã nguồn mở giúp các developer viết và debug code nhanh hơn. Công cụ này tích hợp với TypeScript và hỗ trợ các Claude agent. Đây là giải pháp lý tưởng cho các đội ngũ operations muốn tự động hóa các tác vụ lập trình."
+}

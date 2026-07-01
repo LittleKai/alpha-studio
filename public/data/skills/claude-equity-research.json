@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-equity-research",
+  "slug": "claude-equity-research",
+  "name": "browser-use",
+  "headline": "equity research via claude for educational use",
+  "short_description": "Claude Code Plugin for institutional-grade equity research.   Install with /plugin marketplace add. Generates professional   buy/sell recommendations with comprehensive fundamental   analysis, technical indicators, and risk assessment. Educational    use only - not financial advice.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "quant-sentiment-ai",
+  "install_command": "git clone https://github.com/quant-sentiment-ai/claude-equity-research.git",
+  "source_repo_url": "https://github.com/quant-sentiment-ai/claude-equity-research",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "financial-analyst",
+    "stock-analysis",
+    "equity-research",
+    "financial-analysis-ai",
+    "claude-code-plugin",
+    "ai-powered",
+    "investment-research",
+    "financial-analysis",
+    "financial-analysis-tools",
+    "stock-analyst",
+    "trading-analysis",
+    "finance"
+  ],
+  "sections": {
+    "overview": "Claude Equity Research is a Claude Code plugin that delivers professional equity research reports matching Wall Street standards. It generates comprehensive institutional-grade analysis including fundamental valuation, technical context, catalyst identification, and risk-adjusted recommendations with specific price targets and position sizing guidance. The plugin integrates real-time market data, earnings reports, and analyst coverage to provide options flow analysis, insider trading activity monitoring, and sector positioning insights. Built for educational use, it leverages Claude AI to automate the equity research workflow that institutional investors rely on, with features like bull/base/bear scenario weighting, ESG assessment, and Goldman Sachs-style formatting.\nGenerate comprehensive buy/sell/hold recommendations with 12-month price targets\nAnalyze fundamental metrics including revenue growth, margins, and peer comparisons\nMonitor options flow and insider trading activity for unusual market signals\nCompare valuation scenarios (bull/base/bear) with probability weighting",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/quant-sentiment-ai/claude-equity-research`",
+    "usage": "```\nGenerate a professional equity research report for [TICKER_SYMBOL] as of [REPORT_DATE]. Include: 1) Fundamental analysis covering revenue growth, profit margins, and valuation metrics for the last 3 fiscal years, 2) Technical analysis with key support/resistance levels and moving averages, 3) Risk assessment highlighting top 3 risks and their potential impact, 4) Investment recommendation with a 12-month price target and rationale. Use data from [DATA_SOURCE] and format the report with clear headers and bullet points for readability.\n```\nCopy\n\n```\n{\"company\":\"TechNova Inc. (TICKR: TNVA)\",\"report_date\":\"June 15, 2024\",\"fundamental_analysis\":{\"revenue_growth\":{\"2021\":\"12.5%\",\"2022\":\"18.3%\",\"2023\":\"22.1%\",\"3-year_CAGR\":\"17.6%\"},\"profit_margins\":{\"gross_margin_2023\":\"45.2%\",\"operating_margin_2023\":\"22.8%\",\"net_margin_2023\":\"15.7%\",\"trend\":\"Improving margins driven by economies of scale in cloud services\"},\"valuation_metrics\":{\"pe_ratio\":\"24.5x\",\"peg_ratio\":\"1.8x\",\"ev_ebitda\":\"12.1x\",\"comparable_pe\":\"28.2x\",\"valuation_assessment\":\"Slightly undervalued relative to peers but premium justified by growth prospects\"}},\"technical_analysis\":{\"price_action\":\"Currently trading at $142.50, up 3.2% today on volume 1.8x 30-day average\",\"key_levels\":{\"support\":\"$135.00 (50-day MA)\",\"resistance\":\"$150.00 (all-time high)\",\"stop_loss\":\"$130.00\"},\"moving_averages\":{\"50_day\":\"$138.75 (bullish)\",\"200_day\":\"$125.40 (bullish)\",\"golden_cross\":\"Confirmed on May 3, 2024\"}},\"risk_assessment\":{\"top_risks\":[{\"risk\":\"Regulatory scrutiny on data privacy practices\",\"impact\":\"High - potential fines up to $200M\",\"mitigation\":\"Proactive compliance investments and legal team expansion\"},{\"risk\":\"Cloud infrastructure outage disrupting core services\",\"impact\":\"Medium - estimated revenue loss of $50M/quarter\",\"mitigation\":\"Multi-cloud redundancy and improved disaster recovery protocols\"},{\"risk\":\"Competition from emerging AI startups\",\"impact\":\"Medium - potential market share erosion of 5-8%\",\"mitigation\":\"Accelerated R&D investment and strategic acquisitions\"}],\"overall_risk_profile\":\"Moderate - well-diversified revenue streams but exposed to tech-specific risks\"},\"investment_recommendation\":{\"rating\":\"BUY\",\"price_target\":\"$175.00 (12-month horizon)\",\"upside_potential\":\"23% from current levels\",\"timeframe\":\"12 months\",\"rationale\":\"TechNova demonstrates strong fundamental growth with improving profitability metrics. The technical setup is constructive with a confirmed golden cross and price above key moving averages. While regulatory and competitive risks exist, they appear manageable given the company's scale and financial resources. Valuation remains reasonable relative to growth prospects.\",\"alternative_scenarios\":{\"bull_case\":\"$200.00 (33% upside) if cloud adoption accelerates further\",\"bear_case\":\"$120.00 (16% downside) if regulatory fines exceed expectations\"}}}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-equity-research#main-content",
+      "claude-equity-research#overview",
+      "claude-equity-research#setup",
+      "claude-equity-research#examples",
+      "claude-equity-research#tools",
+      "claude-equity-research#mcp",
+      "claude-equity-research#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Equity Research is a Claude Code plugin that delivers professional equity research reports matching Wall Street standards. It generates comprehensive institutional-grade analysis including fundamental valuation, technical context, catalyst identification, and risk-adjusted recommendations with specific price targets and position sizing guidance. The plugin integrates real-time market data, earnings reports, and analyst coverage to provide options flow analysis, insider trading activity monitoring, and sector positioning insights. Built for educational use, it leverages Claude AI to automate the equity research workflow that institutional investors rely on, with features like bull/base/bear scenario weighting, ESG assessment, and Goldman Sachs-style formatting.\nGenerate comprehensive buy/sell/hold recommendations with 12-month price targets\nAnalyze fundamental metrics including revenue growth, margins, and peer comparisons\nMonitor options flow and insider trading activity for unusual market signals\nCompare valuation scenarios (bull/base/bear) with probability weighting",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/quant-sentiment-ai/claude-equity-research`",
+    "usage_vi": "```\nGenerate a professional equity research report for [TICKER_SYMBOL] as of [REPORT_DATE]. Include: 1) Fundamental analysis covering revenue growth, profit margins, and valuation metrics for the last 3 fiscal years, 2) Technical analysis with key support/resistance levels and moving averages, 3) Risk assessment highlighting top 3 risks and their potential impact, 4) Investment recommendation with a 12-month price target and rationale. Use data from [DATA_SOURCE] and format the report with clear headers and bullet points for readability.\n```\nCopy\n\n```\n{\"company\":\"TechNova Inc. (TICKR: TNVA)\",\"report_date\":\"June 15, 2024\",\"fundamental_analysis\":{\"revenue_growth\":{\"2021\":\"12.5%\",\"2022\":\"18.3%\",\"2023\":\"22.1%\",\"3-year_CAGR\":\"17.6%\"},\"profit_margins\":{\"gross_margin_2023\":\"45.2%\",\"operating_margin_2023\":\"22.8%\",\"net_margin_2023\":\"15.7%\",\"trend\":\"Improving margins driven by economies of scale in cloud services\"},\"valuation_metrics\":{\"pe_ratio\":\"24.5x\",\"peg_ratio\":\"1.8x\",\"ev_ebitda\":\"12.1x\",\"comparable_pe\":\"28.2x\",\"valuation_assessment\":\"Slightly undervalued relative to peers but premium justified by growth prospects\"}},\"technical_analysis\":{\"price_action\":\"Currently trading at $142.50, up 3.2% today on volume 1.8x 30-day average\",\"key_levels\":{\"support\":\"$135.00 (50-day MA)\",\"resistance\":\"$150.00 (all-time high)\",\"stop_loss\":\"$130.00\"},\"moving_averages\":{\"50_day\":\"$138.75 (bullish)\",\"200_day\":\"$125.40 (bullish)\",\"golden_cross\":\"Confirmed on May 3, 2024\"}},\"risk_assessment\":{\"top_risks\":[{\"risk\":\"Regulatory scrutiny on data privacy practices\",\"impact\":\"High - potential fines up to $200M\",\"mitigation\":\"Proactive compliance investments and legal team expansion\"},{\"risk\":\"Cloud infrastructure outage disrupting core services\",\"impact\":\"Medium - estimated revenue loss of $50M/quarter\",\"mitigation\":\"Multi-cloud redundancy and improved disaster recovery protocols\"},{\"risk\":\"Competition from emerging AI startups\",\"impact\":\"Medium - potential market share erosion of 5-8%\",\"mitigation\":\"Accelerated R&D investment and strategic acquisitions\"}],\"overall_risk_profile\":\"Moderate - well-diversified revenue streams but exposed to tech-specific risks\"},\"investment_recommendation\":{\"rating\":\"BUY\",\"price_target\":\"$175.00 (12-month horizon)\",\"upside_potential\":\"23% from current levels\",\"timeframe\":\"12 months\",\"rationale\":\"TechNova demonstrates strong fundamental growth with improving profitability metrics. The technical setup is constructive with a confirmed golden cross and price above key moving averages. While regulatory and competitive risks exist, they appear manageable given the company's scale and financial resources. Valuation remains reasonable relative to growth prospects.\",\"alternative_scenarios\":{\"bull_case\":\"$200.00 (33% upside) if cloud adoption accelerates further\",\"bear_case\":\"$120.00 (16% downside) if regulatory fines exceed expectations\"}}}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:12:29.223921Z",
+    "http_status": 200,
+    "content_hash": "6f9bc9f05c04995eb658c6290394ddaae68286011a955d02cae5f721d4a5bef6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-equity-research.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-equity-research.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "equity research via claude for educational use",
+  "short_description_vi": "Claude Code Plugin for institutional-grade equity research.   Install with /plugin marketplace add. Generates professional   buy/sell recommendations with comprehensive fundamental   analysis, technical indicators, and risk assessment. Educational    use only - not financial advice."
+}

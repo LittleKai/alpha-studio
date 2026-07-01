@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skilllauncher",
+  "slug": "skilllauncher",
+  "name": "browser-use",
+  "headline": "SkillLauncher - Quickly Execute Claude Code Skills",
+  "short_description": "SkillLauncher is a lightweight macOS application that enables users to quickly search and execute Claude Code Skills with real-time streaming output. It benefits operations teams by streamlining workflows and improving productivity. The tool connects to Claude Code Skills and integrates into macOS workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "Ceeon",
+  "install_command": "git clone https://github.com/Ceeon/SkillLauncher.git",
+  "source_repo_url": "https://github.com/Ceeon/SkillLauncher",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "SkillLauncher is a native macOS application that integrates with Claude Code to streamline skill execution. Press Option+Space from anywhere to search and run your configured Skills with real-time character-by-character streaming output. The tool automatically discovers skills from ~/.claude/skills/ and displays frequently used ones first for efficient workflow integration. Built with Swift and SwiftUI, it requires minimal system resources while providing essential features like smart search filtering, keyboard navigation, and autocomplete. Operations teams and power users benefit from reduced context switching and faster access to Claude Code capabilities.\nQuickly execute image processing skills from any application\nRun data transformation and analysis skills without switching contexts\nAccess frequently-used automation scripts via global hotkey\nStream long-running task outputs in real-time from the menu bar",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ceeon/SkillLauncher`",
+    "usage": "```\nAct as SkillLauncher. I'm an operations team member using macOS. I need to [TASK] for [COMPANY] in the [INDUSTRY] sector. Use [DATA] to complete this task. Provide a step-by-step guide with clear instructions.\n```\nCopy\n\n```\n# SkillLauncher Execution Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skilllauncher#main-content",
+      "skilllauncher#overview",
+      "skilllauncher#setup",
+      "skilllauncher#examples",
+      "skilllauncher#tools",
+      "skilllauncher#mcp",
+      "skilllauncher#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SkillLauncher is a native macOS application that integrates with Claude Code to streamline skill execution. Press Option+Space from anywhere to search and run your configured Skills with real-time character-by-character streaming output. The tool automatically discovers skills from ~/.claude/skills/ and displays frequently used ones first for efficient workflow integration. Built with Swift and SwiftUI, it requires minimal system resources while providing essential features like smart search filtering, keyboard navigation, and autocomplete. Operations teams and power users benefit from reduced context switching and faster access to Claude Code capabilities.\nQuickly execute image processing skills from any application\nRun data transformation and analysis skills without switching contexts\nAccess frequently-used automation scripts via global hotkey\nStream long-running task outputs in real-time from the menu bar",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ceeon/SkillLauncher`",
+    "usage_vi": "```\nAct as SkillLauncher. I'm an operations team member using macOS. I need to [TASK] for [COMPANY] in the [INDUSTRY] sector. Use [DATA] to complete this task. Provide a step-by-step guide with clear instructions.\n```\nCopy\n\n```\n# SkillLauncher Execution Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:43:24.652122Z",
+    "http_status": 200,
+    "content_hash": "bd12a4fdc8f013ef88a4a8b9e101598e135e7d38ced7ee11874987f53b432190",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skilllauncher.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skilllauncher.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SkillLauncher - Quickly Execute Claude Code Skills",
+  "short_description_vi": "SkillLauncher is a lightweight macOS application that enables users to quickly search and execute Claude Code Skills with real-time streaming output. It benefits operations teams by streamlining workflows and improving productivity. The tool connects to Claude Code Skills and integrates into macOS workflows."
+}

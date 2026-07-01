@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/telegram-assistant-skill",
+  "slug": "telegram-assistant-skill",
+  "name": "Telegram Assistant Skill",
+  "headline": "Telegram Assistant Skill - Automate Telegram",
+  "short_description": "Automate Telegram workflows with Claude Code. Create digests, post to channels, and match style. Ideal for operations teams managing multiple Telegram channels.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "BayramAnnakov",
+  "install_command": "git clone https://github.com/BayramAnnakov/telegram-assistant-skill.git",
+  "source_repo_url": "https://github.com/BayramAnnakov/telegram-assistant-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Telegram Assistant Skill automates three core workflows for Telegram management within Claude Code. It summarizes unread messages across all chats with priority classification, analyzes channel posts to extract your authentic writing style, and drafts new posts that match that voice—all saved as drafts for review before sending. The skill follows a draft-first safety policy, never posting directly to Telegram, ensuring you maintain control over all outgoing messages. Operations teams managing multiple Telegram channels can use this skill to streamline content creation, stay informed on important messages, and maintain consistent communication across channels.\nGet a morning digest of unread Telegram messages with priority classification\nAnalyze writing style from your channel posts to extract style patterns\nDraft channel posts that match your authentic voice and style\nManage multiple Telegram channels without leaving Claude Code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/telegram-assistant-skill`",
+    "usage": "```\nAct as a Telegram Assistant. Create a weekly digest of unread messages from [TELEGRAM_CHANNEL] for [COMPANY] in the [INDUSTRY] sector. Include key discussions, decisions, and action items. Format the digest to match the style of previous posts in the channel. Use the following data: [DATA].\n```\nCopy\n\n```\n# Weekly Digest for [TELEGRAM_CHANNEL]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "telegram-assistant-skill#main-content",
+      "telegram-assistant-skill#overview",
+      "telegram-assistant-skill#setup",
+      "telegram-assistant-skill#examples",
+      "telegram-assistant-skill#tools",
+      "telegram-assistant-skill#mcp",
+      "telegram-assistant-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Trợ lý Telegram tự động hóa ba workflow cốt lõi để quản lý Telegram ngay trong Claude Code. Skill này giúp tóm tắt các tin nhắn chưa đọc trên tất cả các cuộc trò chuyện kèm theo phân loại mức độ ưu tiên, phân tích các bài đăng trên channel để trích xuất phong cách viết đặc trưng của bạn, và soạn thảo các bài đăng mới phù hợp với văn phong đó — tất cả đều được lưu dưới dạng bản nháp để duyệt lại trước khi gửi. Skill tuân thủ chính sách an toàn ưu tiên bản nháp (draft-first), không bao giờ đăng trực tiếp lên Telegram, đảm bảo bạn luôn kiểm soát mọi nội dung gửi đi. Các đội ngũ vận hành quản lý nhiều channel Telegram có thể sử dụng skill này để tối ưu hóa quy trình sáng tạo nội dung, cập nhật nhanh các tin nhắn quan trọng và duy trì giao tiếp nhất quán trên các kênh.\n\nNhận digest buổi sáng từ các tin nhắn Telegram chưa đọc kèm phân loại mức độ ưu tiên\nPhân tích phong cách viết từ các bài đăng cũ trên channel để trích xuất đặc trưng văn phong\nSoạn thảo bài đăng mới phù hợp với giọng điệu và phong cách thực tế của bạn\nQuản lý nhiều channel Telegram trực tiếp từ Claude Code",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/BayramAnnakov/telegram-assistant-skill`",
+    "usage_vi": "```\nHãy đóng vai trò là một Trợ lý Telegram. Tạo một weekly digest từ các tin nhắn chưa đọc trong [TELEGRAM_CHANNEL] cho [COMPANY] thuộc lĩnh vực [INDUSTRY]. Nội dung bao gồm các cuộc thảo luận chính, quyết định và các action item. Định dạng digest này theo đúng phong cách của các bài đăng trước đó trên channel. Sử dụng dữ liệu sau: [DATA].\n```\nSao chép\n\n```\n# Weekly Digest cho [TELEGRAM_CHANNEL]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:01:17.743184Z",
+    "http_status": 200,
+    "content_hash": "a32e5e511c506137f2c376dc3e640c1ac55ea49489ac6ba1d359c1f3e188755d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\telegram-assistant-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\telegram-assistant-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill Trợ lý Telegram - Tự động hóa Telegram",
+  "short_description_vi": "Tự động hóa các workflow Telegram với Claude Code. Tạo digest, đăng bài lên channel và viết bài theo đúng phong cách thương hiệu. Giải pháp lý tưởng cho các đội ngũ vận hành quản lý nhiều channel Telegram."
+}

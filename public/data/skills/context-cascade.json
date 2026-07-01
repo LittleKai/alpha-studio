@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/context-cascade",
+  "slug": "context-cascade",
+  "name": "Context Cascade",
+  "headline": "Context Cascade - Nested Plugin Architecture",
+  "short_description": "Context Cascade - Nested Plugin Architecture for Claude Code Official Claude Code Plugin | Version 3.1.0 | Last updated: 2026-01-09 (see docs/COMPONENT-COUNTS.json for source counts)  Context-saving nested architecture: Playbooks -> Skills -> Agents -> Commands. Load only what you need, saving 90%+ context space.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "DNYoussef",
+  "install_command": "git clone https://github.com/DNYoussef/context-cascade.git",
+  "source_repo_url": "https://github.com/DNYoussef/context-cascade",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Context Cascade is an official Claude Code plugin that implements a hierarchical architecture—Playbooks → Skills → Agents → Commands—to dramatically reduce token consumption. Instead of loading all 176 skills and 260 agents upfront (consuming 100k+ tokens), the system loads only what's needed, starting with 30 playbooks (~2k tokens) and expanding on demand. An intelligent intent-analyzer and orchestration-router automatically select the right skills based on your request, routing to specialized stacks for delivery, operations, research, security, or domain-specific work. Built on Claude Flow for enterprise-grade agent orchestration with memory, hooks, and swarm intelligence, Context Cascade maintains full capability while reducing context overhead—ideal for developers building complex multi-agent workflows in Claude Code or Cursor.\nReducing context token usage in long-running AI agent workflows\nAutomating feature development with parallel agent teams (researcher, coder, reviewer, tester, documenter)\nDeploying production-ready applications through orchestrated security and performance gates\nConducting structured multi-phase research with automated quality validation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/DNYoussef/context-cascade`",
+    "usage": "```\nDesign a nested Context Cascade architecture for [PROJECT_NAME] using the following hierarchy: Playbook: [PLAYBOOK_NAME] -> Skill: [SKILL_NAME] -> Agent: [AGENT_NAME] -> Commands: [COMMAND_LIST]. Load only the required components and document the context savings achieved. Output a JSON file with the structure and a summary of memory optimization metrics.\n```\nCopy\n\n```\n```json\n{\n  \"playbook\": {\n    \"name\": \"Automated Customer Onboarding Playbook\",\n    \"description\": \"Handles new customer onboarding with minimal manual intervention\",\n    \"skills\": [\n      {\n        \"name\": \"Data Validation Skill\",\n        \"description\": \"Validates customer data against CRM and billing systems\",\n        \"agents\": [\n          {\n            \"name\": \"Email Verification Agent\",\n            \"commands\": [\n              \"check_email_format\",\n              \"verify_domain_existence\",\n              \"send_verification_link\"\n            ],\n            \"context_saved\": \"85% by excluding legacy validation rules\"\n          }\n        ],\n        \"context_saved\": \"72% reduction in skill-level context\"\n      }\n    ],\n    \"total_context_saved\": \"94% compared to monolithic approach\"\n  },\n  \"memory_optimization\": {\n    \"before\": \"12.4MB total context\",\n    \"after\": \"0.7MB total context\",\n    \"savings\": \"94.35% reduction in memory usage\"\n  }\n}\n```\n\nThe Context Cascade architecture for the Automated Customer Onboarding Playbook demonstrates significant memory optimization by implementing a nested plugin structure. The playbook contains a single skill focused on data validation, which in turn utilizes an email verification agent with three specific commands. By loading only the required components at each level of the hierarchy, the system achieves a 94.35% reduction in memory usage compared to a traditional monolithic approach. The email verification agent, for instance, excludes legacy validation rules that aren't relevant to the current onboarding workflow, further reducing its context footprint by 85%. This hierarchical approach ensures that each component operates with minimal context while maintaining full functionality, allowing the system to handle complex workflows without overwhelming the available memory resources.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "context-cascade#main-content",
+      "context-cascade#overview",
+      "context-cascade#setup",
+      "context-cascade#examples",
+      "context-cascade#tools",
+      "context-cascade#mcp",
+      "context-cascade#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Context Cascade is an official Claude Code plugin that implements a hierarchical architecture—Playbooks → Skills → Agents → Commands—to dramatically reduce token consumption. Instead of loading all 176 skills and 260 agents upfront (consuming 100k+ tokens), the system loads only what's needed, starting with 30 playbooks (~2k tokens) and expanding on demand. An intelligent intent-analyzer and orchestration-router automatically select the right skills based on your request, routing to specialized stacks for delivery, operations, research, security, or domain-specific work. Built on Claude Flow for enterprise-grade agent orchestration with memory, hooks, and swarm intelligence, Context Cascade maintains full capability while reducing context overhead—ideal for developers building complex multi-agent workflows in Claude Code or Cursor.\nReducing context token usage in long-running AI agent workflows\nAutomating feature development with parallel agent teams (researcher, coder, reviewer, tester, documenter)\nDeploying production-ready applications through orchestrated security and performance gates\nConducting structured multi-phase research with automated quality validation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/DNYoussef/context-cascade`",
+    "usage_vi": "```\nDesign a nested Context Cascade architecture for [PROJECT_NAME] using the following hierarchy: Playbook: [PLAYBOOK_NAME] -> Skill: [SKILL_NAME] -> Agent: [AGENT_NAME] -> Commands: [COMMAND_LIST]. Load only the required components and document the context savings achieved. Output a JSON file with the structure and a summary of memory optimization metrics.\n```\nCopy\n\n```\n```json\n{\n  \"playbook\": {\n    \"name\": \"Automated Customer Onboarding Playbook\",\n    \"description\": \"Handles new customer onboarding with minimal manual intervention\",\n    \"skills\": [\n      {\n        \"name\": \"Data Validation Skill\",\n        \"description\": \"Validates customer data against CRM and billing systems\",\n        \"agents\": [\n          {\n            \"name\": \"Email Verification Agent\",\n            \"commands\": [\n              \"check_email_format\",\n              \"verify_domain_existence\",\n              \"send_verification_link\"\n            ],\n            \"context_saved\": \"85% by excluding legacy validation rules\"\n          }\n        ],\n        \"context_saved\": \"72% reduction in skill-level context\"\n      }\n    ],\n    \"total_context_saved\": \"94% compared to monolithic approach\"\n  },\n  \"memory_optimization\": {\n    \"before\": \"12.4MB total context\",\n    \"after\": \"0.7MB total context\",\n    \"savings\": \"94.35% reduction in memory usage\"\n  }\n}\n```\n\nThe Context Cascade architecture for the Automated Customer Onboarding Playbook demonstrates significant memory optimization by implementing a nested plugin structure. The playbook contains a single skill focused on data validation, which in turn utilizes an email verification agent with three specific commands. By loading only the required components at each level of the hierarchy, the system achieves a 94.35% reduction in memory usage compared to a traditional monolithic approach. The email verification agent, for instance, excludes legacy validation rules that aren't relevant to the current onboarding workflow, further reducing its context footprint by 85%. This hierarchical approach ensures that each component operates with minimal context while maintaining full functionality, allowing the system to handle complex workflows without overwhelming the available memory resources.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:17:51.626275Z",
+    "http_status": 200,
+    "content_hash": "622833b28bf7fe8a6c69976792369a162672effcde582945d2769cb5c1bb5c45",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\context-cascade.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\context-cascade.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Context Cascade - Nested Plugin Architecture",
+  "short_description_vi": "Context Cascade - Nested Plugin Architecture for Claude Code Official Claude Code Plugin | Version 3.1.0 | Last updated: 2026-01-09 (see docs/COMPONENT-COUNTS.json for source counts)  Context-saving nested architecture: Playbooks -> Skills -> Agents -> Commands. Load only what you need, saving 90%+ context space."
+}

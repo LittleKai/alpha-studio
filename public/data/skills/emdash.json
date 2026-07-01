@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/emdash",
+  "slug": "emdash",
+  "name": "emdash",
+  "headline": "Emdash: Feature Development",
+  "short_description": "Emdash is an open-source agentic development environment that enables running multiple coding agents in parallel. It benefits developers and operations teams by automating coding tasks, integrating with providers like Claude, and connecting to workflows such as Git, Jira, and Linear. Emdash supports containerization with Docker and Git worktrees, allowing for efficient parallel execution of agents.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "generalaction",
+  "install_command": "git clone https://github.com/generalaction/emdash.git",
+  "source_repo_url": "https://github.com/generalaction/emdash",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "jira",
+    "linear",
+    "llm",
+    "opensource",
+    "docker",
+    "orchestration",
+    "parallelexecution",
+    "parallel-agents",
+    "containerization",
+    "cli",
+    "openai",
+    "gitworktrees",
+    "codingagents",
+    "terminal",
+    "claude-code",
+    "coding-agents",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Emdash is an innovative Open-Source Agentic Development Environment designed to empower developers by allowing them to run multiple coding agents in parallel. This skill integrates seamlessly with various providers, making it versatile for different coding environments. With an intermediate implementation difficulty, users can set up Emdash in approximately 30 minutes, allowing teams to quickly leverage its capabilities for enhanced productivity. The key benefits of Emdash include the ability to automate the development of multiple features simultaneously, which significantly accelerates project timelines. By utilizing different coding agents, teams can manage dependencies and environment setups in isolated worktrees, streamlining the entire development process. Although specific time savings are not quantified, the efficiency gained from parallel execution and automated task assignments to coding agents can lead to substantial reductions in overall development time. Emdash is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their workflow automation. It supports various use cases such as integrating with project management tools for automatic task assignments and reviewing code changes side-by-side with integrated diff tools for improved collaboration. Additionally, it enhances the testing process by enabling parallel test runs across multiple coding agents, which is crucial for maintaining high-quality code in fast-paced development environments. With its intermediate complexity, Emdash fits well into AI-first workflows, allowing teams to harness automation effectively. As organizations increasingly adopt AI automation, skills like Emdash become essential for maximizing productivity and ensuring that development processes are both efficient and scalable. By adopting this skill, teams can focus on innovation and problem-solving, rather than getting bogged down by manual coding tasks.\nAutomate the development of multiple features simultaneously using different coding agents.\nIntegrate with project management tools to automatically assign tasks to coding agents.\nReview code changes side-by-side with integrated diff tools for better collaboration.\nManage dependencies and environment setups for various coding agents in isolated worktrees.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/generalaction/emdash`",
+    "usage": "```\nCreate a workflow in Emdash to automate the following coding task: [DESCRIBE TASK]. Use [NUMBER] parallel agents to handle different parts of the task. Each agent should be configured to use [SPECIFIC TOOLS/LANGUAGES]. Ensure the workflow integrates with [SPECIFIC INTEGRATIONS] like Git, Jira, or Linear. Provide a step-by-step plan for setting up this workflow in Emdash.\n```\nCopy\n\n```\nTo automate the task of updating API documentation for a microservices project, we can create a workflow in Emdash with the following setup:\n\n1. **Agent 1: Documentation Reviewer**\n   - Tool: Claude\n   - Task: Review existing API documentation for inconsistencies and outdated information.\n   - Output: A markdown file with suggested changes.\n\n2. **Agent 2: Code Analyzer**\n   - Tool: Python Script\n   - Task: Analyze the codebase to extract API endpoints, parameters, and response formats.\n   - Output: A JSON file with API specifications.\n\n3. **Agent 3: Documentation Updater**\n   - Tool: Git and Markdown Processor\n   - Task: Update the API documentation based on the suggestions from Agent 1 and the specifications from Agent 2.\n   - Output: Updated markdown files committed to the Git repository.\n\n4. **Agent 4: Jira Ticket Creator**\n   - Tool: Jira API\n   - Task: Create Jira tickets for any unresolved issues or additional tasks identified during the documentation update.\n   - Output: Jira tickets created and linked to the relevant Git commits.\n\n**Workflow Setup in Emdash:**\n- Create a new workflow in Emdash and add the four agents as parallel tasks.\n- Configure each agent with the specified tools and tasks.\n- Set up integrations with Git, Jira, and Claude.\n- Run the workflow and monitor the progress in the Emdash dashboard.\n\nThis workflow ensures that the API documentation is consistently updated, and any issues are tracked in Jira for further action.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "emdash#main-content",
+      "emdash#overview",
+      "emdash#setup",
+      "emdash#examples",
+      "emdash#tools",
+      "emdash#mcp",
+      "emdash#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Emdash là một Môi trường Phát triển Agentic Mã nguồn mở sáng tạo được thiết kế để hỗ trợ các nhà phát triển bằng cách cho phép chạy song song nhiều coding agent. Skill này tích hợp mượt mà với nhiều provider khác nhau, giúp nó trở nên linh hoạt cho các môi trường lập trình khác nhau. Với độ khó triển khai ở mức trung bình, người dùng có thể setup Emdash trong khoảng 30 phút, giúp các đội ngũ nhanh chóng tận dụng các khả năng của nó để nâng cao năng suất. Lợi ích chính của Emdash bao gồm khả năng tự động hóa việc phát triển nhiều tính năng cùng một lúc, giúp đẩy nhanh đáng kể tiến độ dự án. Bằng cách sử dụng các coding agent khác nhau, các đội ngũ có thể quản lý các dependency và cấu hình môi trường trong các worktree độc lập, giúp tối ưu hóa toàn bộ quy trình phát triển. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, nhưng hiệu quả đạt được từ việc thực thi song song và tự động giao việc cho các coding agent có thể giúp giảm đáng kể tổng thời gian phát triển. Emdash đặc biệt hữu ích cho các lập trình viên, product manager và chuyên gia AI đang muốn tối ưu hóa việc tự động hóa workflow của họ. Công cụ này hỗ trợ nhiều trường hợp sử dụng khác nhau như tích hợp với các công cụ quản lý dự án để tự động giao việc và xem xét các thay đổi code trực quan song song với các công cụ diff tích hợp để cộng tác tốt hơn. Ngoài ra, nó cải thiện quy trình kiểm thử bằng cách cho phép chạy thử nghiệm song song trên nhiều coding agent, điều này cực kỳ quan trọng để duy trì chất lượng code cao trong các môi trường phát triển nhanh. Với độ phức tạp ở mức trung bình, Emdash rất phù hợp với các AI-first workflow, cho phép các đội ngũ khai thác tự động hóa một cách hiệu quả. Khi các tổ chức ngày càng áp dụng tự động hóa bằng AI, các skill như Emdash trở nên thiết yếu để tối đa hóa năng suất và đảm bảo các quy trình phát triển vừa hiệu quả vừa có khả năng mở rộng. Bằng cách áp dụng skill này, các đội ngũ có thể tập trung vào đổi mới sáng tạo và giải quyết vấn đề, thay vì bị sa lầy vào các tác vụ lập trình thủ công.\nTự động hóa việc phát triển nhiều tính năng cùng lúc bằng cách sử dụng các coding agent khác nhau.\nTích hợp với các công cụ quản lý dự án để tự động giao nhiệm vụ cho các coding agent.\nXem xét các thay đổi code song song với các công cụ diff tích hợp để cộng tác tốt hơn.\nQuản lý các dependency và cấu hình môi trường cho các coding agent khác nhau trong các worktree độc lập.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/generalaction/emdash`",
+    "usage_vi": "```\nTạo một workflow trong Emdash để tự động hóa tác vụ lập trình sau: [DESCRIBE TASK]. Sử dụng [NUMBER] agent song song để xử lý các phần khác nhau của tác vụ. Mỗi agent nên được cấu hình để sử dụng [SPECIFIC TOOLS/LANGUAGES]. Đảm bảo workflow tích hợp với [SPECIFIC INTEGRATIONS] như Git, Jira hoặc Linear. Cung cấp kế hoạch từng bước để setup workflow này trong Emdash.\n```\nCopy\n\n```\nĐể tự động hóa tác vụ cập nhật tài liệu API cho một dự án microservices, chúng ta có thể tạo một workflow trong Emdash với cấu hình như sau:\n\n1. **Agent 1: Documentation Reviewer**\n   - Công cụ: Claude\n   - Tác vụ: Đánh giá tài liệu API hiện tại để tìm các điểm không nhất quán và thông tin lỗi thời.\n   - Đầu ra: Một file markdown chứa các đề xuất thay đổi.\n\n2. **Agent 2: Code Analyzer**\n   - Công cụ: Python Script\n   - Tác vụ: Phân tích cơ sở mã nguồn (codebase) để trích xuất các API endpoint, tham số và định dạng phản hồi (response format).\n   - Đầu ra: Một file JSON chứa các đặc tả kỹ thuật của API.\n\n3. **Agent 3: Documentation Updater**\n   - Công cụ: Git và Markdown Processor\n   - Tác vụ: Cập nhật tài liệu API dựa trên các đề xuất từ Agent 1 và đặc tả kỹ thuật từ Agent 2.\n   - Đầu ra: Các file markdown đã cập nhật được commit vào Git repository.\n\n4. **Agent 4: Jira Ticket Creator**\n   - Công cụ: Jira API\n   - Tác vụ: Tạo các ticket Jira cho bất kỳ vấn đề chưa được giải quyết hoặc tác vụ bổ sung nào được phát hiện trong quá trình cập nhật tài liệu.\n   - Đầu ra: Các ticket Jira được tạo và liên kết với các commit Git liên quan.\n\n**Setup Workflow trong Emdash:**\n- Tạo một workflow mới trong Emdash và thêm bốn agent làm các tác vụ song song.\n- Cấu hình mỗi agent với các công cụ và tác vụ được chỉ định.\n- Thiết lập tích hợp với Git, Jira và Claude.\n- Chạy workflow và theo dõi tiến độ trên dashboard của Emdash.\n\nWorkflow này đảm bảo tài liệu API luôn được cập nhật liên tục và mọi vấn đề phát sinh đều được theo dõi trên Jira để xử lý tiếp.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:00:25.995741Z",
+    "http_status": 200,
+    "content_hash": "bdcf0683330359a6b385a5616f38e74b7a8df9f41cc0da1cfa5096869dfae48f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\emdash.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\emdash.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Emdash: Phát triển Tính năng",
+  "short_description_vi": "Emdash là một môi trường phát triển agentic mã nguồn mở cho phép chạy song song nhiều coding agent. Công cụ này mang lại lợi ích cho các nhà phát triển và đội ngũ vận hành nhờ khả năng tự động hóa các tác vụ lập trình, tích hợp với các provider như Claude và kết nối với các workflow như Git, Jira và Linear. Emdash hỗ trợ đóng gói container với Docker và Git worktrees, cho phép thực thi song song các agent một cách hiệu quả."
+}

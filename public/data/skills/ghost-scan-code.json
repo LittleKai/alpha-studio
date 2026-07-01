@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ghost-scan-code",
+  "slug": "ghost-scan-code",
+  "name": "Ghost Scan Code",
+  "headline": "ghost-scan-code: AI Code Security Analysis",
+  "short_description": "This skill identifies OWASP vulnerabilities across backend, frontend, mobile, and library code. It's designed for developers and security professionals needing automated security analysis.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "ghostsecurity",
+  "install_command": "git clone https://github.com/ghostsecurity/skills",
+  "source_repo_url": "https://github.com/ghostsecurity/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "scan",
+    "security",
+    "ghost",
+    "code"
+  ],
+  "sections": {
+    "overview": "ghost-scan-code is a static application security testing (SAST) skill that uses AI to identify code vulnerabilities and security issues across backend, frontend, mobile, and library code. It integrates with Claude Code to provide automated security analysis without requiring manual code review. The skill works alongside other Ghost Security skills like ghost-scan-deps and ghost-scan-secrets to deliver comprehensive application security coverage. Developers and security teams use ghost-scan-code to catch security flaws early in the development process and reduce the risk of vulnerabilities reaching production.\nScan a repository for SQL injection vulnerabilities.\nIdentify cross-site scripting (XSS) issues in web applications.\nDetect unsafe deserialization vulnerabilities in mobile code.\nPerform a full scan of a project for comprehensive security analysis.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/ghostsecurity/skills --skill ghost-scan-code`\n`git clone https://github.com/ghostsecurity/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "ghost-scan-code#main-content",
+      "ghost-scan-code#overview",
+      "ghost-scan-code#setup",
+      "ghost-scan-code#examples",
+      "ghost-scan-code#tools",
+      "ghost-scan-code#mcp",
+      "ghost-scan-code#related",
+      "llm-security",
+      "variant-analysis",
+      "audit"
+    ],
+    "overview_vi": "ghost-scan-code là một skill kiểm thử bảo mật ứng dụng tĩnh (SAST) sử dụng AI để phát hiện các lỗ hổng và vấn đề bảo mật trong code backend, frontend, mobile và thư viện. Skill này tích hợp với Claude Code để phân tích bảo mật tự động mà không cần review code thủ công. Công cụ hoạt động cùng với các skill khác của Ghost Security như ghost-scan-deps và ghost-scan-secrets để mang lại giải pháp bảo mật ứng dụng toàn diện. Lập trình viên và đội ngũ bảo mật có thể dùng ghost-scan-code để phát hiện sớm các lỗi bảo mật ngay trong quá trình phát triển và giảm thiểu rủi ro lọt lỗ hổng lên môi trường production.\nQuét repository để tìm lỗ hổng SQL injection.\nPhát hiện các lỗi cross-site scripting (XSS) trong ứng dụng web.\nPhát hiện các lỗ hổng unsafe deserialization trong code mobile.\nQuét toàn bộ dự án để phân tích bảo mật toàn diện.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/ghostsecurity/skills --skill ghost-scan-code`\n`git clone https://github.com/ghostsecurity/skills`",
+    "usage_vi": "📝\n### Không có sẵn ví dụ\nKiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:53:13.326382Z",
+    "http_status": 200,
+    "content_hash": "24da6be1955b57605fd46cdc09999125a4076701f96869b2044d1c1ea5625d25",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ghost-scan-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ghost-scan-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ghost-scan-code: Phân tích bảo mật mã nguồn bằng AI",
+  "short_description_vi": "Skill này giúp phát hiện các lỗ hổng OWASP trong code backend, frontend, mobile và thư viện. Công cụ được thiết kế dành cho lập trình viên và chuyên gia bảo mật cần phân tích bảo mật tự động."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/project-memory",
+  "slug": "project-memory",
+  "name": "browser-use",
+  "headline": "Project Memory - Tracks Project State",
+  "short_description": "Project Memory is a Claude skill for tracking project state. It benefits operations teams by automating project state tracking, reducing manual effort, and improving project visibility. It connects to project management tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "SpillwaveSolutions",
+  "install_command": "git clone https://github.com/SpillwaveSolutions/project-memory.git",
+  "source_repo_url": "https://github.com/SpillwaveSolutions/project-memory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-skill",
+    "agentic-skill"
+  ],
+  "sections": {
+    "overview": "Project Memory creates a memory infrastructure in your project with four organized files: bugs.md for tracking issues and solutions, decisions.md for architectural decision records, key_facts.md for configuration and credentials, and issues.md for work logs. The skill configures CLAUDE.md and AGENTS.md to make Claude Code and other AI tools memory-aware, enabling them to check existing solutions before proposing changes and document new decisions consistently. This reduces manual effort in tracking project state and improves visibility across coding sessions by maintaining institutional knowledge in standard engineering documentation format.\nPrevent duplicate bug fixes by maintaining a searchable bug log with known solutions\nDocument architectural decisions and rationale for future reference and onboarding\nTrack project configuration, credentials, ports, and URLs in a centralized location\nMaintain work history and completed tickets linked to project context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SpillwaveSolutions/project-memory`",
+    "usage": "```\nAct as Project Memory for [PROJECT_NAME]. Track the current state of this project, including milestones, deadlines, and dependencies. Provide a summary of the project's progress, any upcoming tasks, and potential risks. Use the following data: [PROJECT_DATA].\n```\nCopy\n\n```\n# Project Memory Summary: [PROJECT_NAME]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "project-memory#main-content",
+      "project-memory#overview",
+      "project-memory#setup",
+      "project-memory#examples",
+      "project-memory#tools",
+      "project-memory#mcp",
+      "project-memory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Project Memory creates a memory infrastructure in your project with four organized files: bugs.md for tracking issues and solutions, decisions.md for architectural decision records, key_facts.md for configuration and credentials, and issues.md for work logs. The skill configures CLAUDE.md and AGENTS.md to make Claude Code and other AI tools memory-aware, enabling them to check existing solutions before proposing changes and document new decisions consistently. This reduces manual effort in tracking project state and improves visibility across coding sessions by maintaining institutional knowledge in standard engineering documentation format.\nPrevent duplicate bug fixes by maintaining a searchable bug log with known solutions\nDocument architectural decisions and rationale for future reference and onboarding\nTrack project configuration, credentials, ports, and URLs in a centralized location\nMaintain work history and completed tickets linked to project context",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SpillwaveSolutions/project-memory`",
+    "usage_vi": "```\nAct as Project Memory for [PROJECT_NAME]. Track the current state of this project, including milestones, deadlines, and dependencies. Provide a summary of the project's progress, any upcoming tasks, and potential risks. Use the following data: [PROJECT_DATA].\n```\nCopy\n\n```\n# Project Memory Summary: [PROJECT_NAME]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:28:24.579079Z",
+    "http_status": 200,
+    "content_hash": "ea5b8051d9e55873dbc1548cf306c066d582cd63b5366f566a6dc140ad753ec8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\project-memory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\project-memory.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Project Memory - Tracks Project State",
+  "short_description_vi": "Project Memory is a Claude skill for tracking project state. It benefits operations teams by automating project state tracking, reducing manual effort, and improving project visibility. It connects to project management tools and workflows."
+}

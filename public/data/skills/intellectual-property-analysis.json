@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/intellectual-property-analysis",
+  "slug": "intellectual-property-analysis",
+  "name": "Patent Lawyer Agent",
+  "headline": "IP Analysis: Patent, Trademark & Copyright",
+  "short_description": "This skill provides analysis of intellectual property protections including patents, trademarks, copyrights, and trade secrets. It's designed for legal practitioners, business owners, and creative professionals seeking to safeguard their innovations and creations.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "asgard-ai-platform",
+  "install_command": "git clone https://github.com/asgard-ai-platform/skills",
+  "source_repo_url": "https://github.com/asgard-ai-platform/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "analysis",
+    "legal",
+    "property",
+    "intellectual"
+  ],
+  "sections": {
+    "overview": "The Intellectual Property Analysis skill helps organizations protect their innovations and creations by assessing four core IP mechanisms: patents for inventions, trademarks for brand identifiers, copyrights for creative works, and trade secrets for confidential business information. It guides users through IP audits to inventory assets, classify them by protection type, identify gaps in current protection, and prioritize registration or contractual safeguards. The skill applies a framework matching each asset to the correct protection mechanism—avoiding common mistakes like trademarking a brand name with copyright or attempting to patent software source code. It's built for startup founders, legal practitioners, and business owners in Taiwan and beyond who need to make informed decisions about which IP assets to register, which to protect as trade secrets, and how to detect and mitigate infringement risks.\nDetermine the appropriate IP protection for a specific creation.\nAnalyze existing IP assets to ensure they are adequately protected.\nAdvise clients on the implications of using the wrong type of IP protection.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/asgard-ai-platform/skills --skill law-ip`\n`git clone https://github.com/asgard-ai-platform/skills`",
+    "usage": "```\nAnalyze the intellectual property portfolio for [COMPANY], focusing on patents, trademarks, copyrights, and trade secrets. Include: 1) Key protections currently in place, 2) Gaps or risks in coverage, 3) Recommendations for strengthening IP strategy, and 4) Comparative analysis against [INDUSTRY] benchmarks. Use [DATA] as reference if available.\n```\nCopy\n\n```\n### Intellectual Property Analysis for GreenTech Innovations\n\n#### **Current Portfolio Overview**\n- **Patents**: 12 active filings (USPTO/EP), covering solar panel efficiency improvements and battery storage systems. No pending litigation identified.\n- **Trademarks**: Registered \"EcoCharge\" for EV charging stations (US #6,789,012), but \"GreenGrid\" for smart grids is pending since 2023.\n- **Copyrights**: 5 software licenses (MIT Open Source) for proprietary algorithms; no DMCA takedowns recorded.\n- **Trade Secrets**: 3 confidential processes (e.g., proprietary electrolyte mix for batteries) with NDAs in place for 47 employees.\n\n#### **Key Risks & Gaps**\n- **Patent**: Overlap with [INDUSTRY] leader SolarNova’s patent #US9,876,543 (risk of infringement in 2025).\n- **Trademark**: \"GreenGrid\" may conflict with existing mark in EU (OHIM #008765432).\n- **Trade Secret**: No formal audit since 2021; potential exposure for ex-employees in competitor firms.\n\n#### **Recommendations**\n1. **Patent**: File continuation applications to extend protection for battery storage tech before 2026.\n2. **Trademark**: Conduct EU trademark search; consider rebranding if conflicts persist.\n3. **Trade Secret**: Implement quarterly audits and restrict access to electrolyte mix formula to 5 core R&D staff.\n\n#### **Industry Benchmarks**\n- [INDUSTRY] average: 8 patents/year (GreenTech: 4). 60% of firms conduct annual IP audits (GreenTech: 30%).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "intellectual-property-analysis#main-content",
+      "intellectual-property-analysis#overview",
+      "intellectual-property-analysis#setup",
+      "intellectual-property-analysis#examples",
+      "intellectual-property-analysis#tools",
+      "intellectual-property-analysis#mcp",
+      "intellectual-property-analysis#related",
+      "patent-lawyer-agent"
+    ],
+    "overview_vi": "The Intellectual Property Analysis skill helps organizations protect their innovations and creations by assessing four core IP mechanisms: patents for inventions, trademarks for brand identifiers, copyrights for creative works, and trade secrets for confidential business information. It guides users through IP audits to inventory assets, classify them by protection type, identify gaps in current protection, and prioritize registration or contractual safeguards. The skill applies a framework matching each asset to the correct protection mechanism—avoiding common mistakes like trademarking a brand name with copyright or attempting to patent software source code. It's built for startup founders, legal practitioners, and business owners in Taiwan and beyond who need to make informed decisions about which IP assets to register, which to protect as trade secrets, and how to detect and mitigate infringement risks.\nDetermine the appropriate IP protection for a specific creation.\nAnalyze existing IP assets to ensure they are adequately protected.\nAdvise clients on the implications of using the wrong type of IP protection.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/asgard-ai-platform/skills --skill law-ip`\n`git clone https://github.com/asgard-ai-platform/skills`",
+    "usage_vi": "```\nAnalyze the intellectual property portfolio for [COMPANY], focusing on patents, trademarks, copyrights, and trade secrets. Include: 1) Key protections currently in place, 2) Gaps or risks in coverage, 3) Recommendations for strengthening IP strategy, and 4) Comparative analysis against [INDUSTRY] benchmarks. Use [DATA] as reference if available.\n```\nCopy\n\n```\n### Intellectual Property Analysis for GreenTech Innovations\n\n#### **Current Portfolio Overview**\n- **Patents**: 12 active filings (USPTO/EP), covering solar panel efficiency improvements and battery storage systems. No pending litigation identified.\n- **Trademarks**: Registered \"EcoCharge\" for EV charging stations (US #6,789,012), but \"GreenGrid\" for smart grids is pending since 2023.\n- **Copyrights**: 5 software licenses (MIT Open Source) for proprietary algorithms; no DMCA takedowns recorded.\n- **Trade Secrets**: 3 confidential processes (e.g., proprietary electrolyte mix for batteries) with NDAs in place for 47 employees.\n\n#### **Key Risks & Gaps**\n- **Patent**: Overlap with [INDUSTRY] leader SolarNova’s patent #US9,876,543 (risk of infringement in 2025).\n- **Trademark**: \"GreenGrid\" may conflict with existing mark in EU (OHIM #008765432).\n- **Trade Secret**: No formal audit since 2021; potential exposure for ex-employees in competitor firms.\n\n#### **Recommendations**\n1. **Patent**: File continuation applications to extend protection for battery storage tech before 2026.\n2. **Trademark**: Conduct EU trademark search; consider rebranding if conflicts persist.\n3. **Trade Secret**: Implement quarterly audits and restrict access to electrolyte mix formula to 5 core R&D staff.\n\n#### **Industry Benchmarks**\n- [INDUSTRY] average: 8 patents/year (GreenTech: 4). 60% of firms conduct annual IP audits (GreenTech: 30%).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:32:56.977468Z",
+    "http_status": 200,
+    "content_hash": "714341e43fa5541e32110a9c2e801a987fd25edf4a70ec9d17fb0443f57912da",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\intellectual-property-analysis.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\intellectual-property-analysis.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "IP Analysis: Patent, Trademark & Copyright",
+  "short_description_vi": "This skill provides analysis of intellectual property protections including patents, trademarks, copyrights, and trade secrets. It's designed for legal practitioners, business owners, and creative professionals seeking to safeguard their innovations and creations."
+}

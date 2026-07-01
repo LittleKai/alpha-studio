@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xcodeproj-cli",
+  "slug": "xcodeproj-cli",
+  "name": "browser-use",
+  "headline": "xcodeproj-cli: Xcode Projects",
+  "short_description": "xcodeproj-cli is a command-line tool for manipulating Xcode project files using Swift. It enables developers to create, modify, and manage Xcode projects programmatically, streamlining workflows for iOS development teams. This tool integrates with coding agents like Claude Code and Gemini C, enhancing automation in software development processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "ainame",
+  "install_command": "git clone https://github.com/ainame/xcodeproj-cli.git",
+  "source_repo_url": "https://github.com/ainame/xcodeproj-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "swift",
+    "xcode",
+    "coding-agen",
+    "xcodeproj",
+    "ios",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "The xcodeproj-cli is an automation skill designed to assist developers in manipulating Xcode projects efficiently. This command-line interface (CLI) tool allows users to perform various operations on Xcode project files, streamlining the workflow for iOS and macOS application development. With its intermediate complexity, developers can leverage this skill to automate repetitive tasks, enhance project management, and improve overall productivity. One of the key benefits of using xcodeproj-cli is the significant time savings it offers. While the exact time savings are currently unknown, the ability to automate project manipulation tasks can lead to faster build times and reduced manual errors. For instance, developers can quickly add or remove targets, modify build settings, or update project configurations without needing to navigate the Xcode GUI, which can be time-consuming. This skill is particularly beneficial for software developers and product managers involved in iOS and macOS development. By integrating xcodeproj-cli into their workflows, teams can enhance collaboration and streamline project updates. The tool is especially useful in environments where multiple developers work on the same project, as it minimizes the risk of conflicts and ensures consistency across project configurations. Implementing xcodeproj-cli is straightforward, with an estimated time of 30 minutes to set up and start using. It is designed for intermediate users, meaning a basic understanding of command-line tools and Xcode is necessary. As organizations increasingly adopt AI-first workflows, integrating tools like xcodeproj-cli can significantly enhance the efficiency of development processes, making it an essential skill for modern development teams.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ainame/xcodeproj-cli`",
+    "usage": "```\nUse xcodeproj-cli to [TASK] in an Xcode project located at [PROJECT_PATH]. For example: 'Use xcodeproj-cli to add a new target named \"Analytics\" to the project at ./MyApp.xcodeproj with the following specifications: [SPECIFICATIONS].'\n```\nCopy\n\n```\nI’ve successfully executed the following commands to add a new target named \"Analytics\" to the ./MyApp.xcodeproj project:\n\n```bash\nxcodeproj add-target --name \"Analytics\" --type \"framework\" --language \"swift\" --path \"./MyApp.xcodeproj\"\nxcodeproj add-source-files --target \"Analytics\" --files \"./Sources/Analytics/*.swift\" --path \"./MyApp.xcodeproj\"\nxcodeproj set-target-dependency --target \"Analytics\" --dependency \"MyApp\" --path \"./MyApp.xcodeproj\"\nxcodeproj set-build-setting --target \"Analytics\" --setting \"SWIFT_VERSION\" --value \"5.0\" --path \"./MyApp.xcodeproj\"\n```\n\nThe new target has been configured with Swift 5.0, and all specified source files have been added. The Analytics framework is now set as a dependency for the main \"MyApp\" target. You can verify the changes by opening the project in Xcode or running `xcodeproj list-targets --path ./MyApp.xcodeproj`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xcodeproj-cli#main-content",
+      "xcodeproj-cli#overview",
+      "xcodeproj-cli#setup",
+      "xcodeproj-cli#examples",
+      "xcodeproj-cli#tools",
+      "xcodeproj-cli#mcp",
+      "xcodeproj-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The xcodeproj-cli is an automation skill designed to assist developers in manipulating Xcode projects efficiently. This command-line interface (CLI) tool allows users to perform various operations on Xcode project files, streamlining the workflow for iOS and macOS application development. With its intermediate complexity, developers can leverage this skill to automate repetitive tasks, enhance project management, and improve overall productivity. One of the key benefits of using xcodeproj-cli is the significant time savings it offers. While the exact time savings are currently unknown, the ability to automate project manipulation tasks can lead to faster build times and reduced manual errors. For instance, developers can quickly add or remove targets, modify build settings, or update project configurations without needing to navigate the Xcode GUI, which can be time-consuming. This skill is particularly beneficial for software developers and product managers involved in iOS and macOS development. By integrating xcodeproj-cli into their workflows, teams can enhance collaboration and streamline project updates. The tool is especially useful in environments where multiple developers work on the same project, as it minimizes the risk of conflicts and ensures consistency across project configurations. Implementing xcodeproj-cli is straightforward, with an estimated time of 30 minutes to set up and start using. It is designed for intermediate users, meaning a basic understanding of command-line tools and Xcode is necessary. As organizations increasingly adopt AI-first workflows, integrating tools like xcodeproj-cli can significantly enhance the efficiency of development processes, making it an essential skill for modern development teams.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ainame/xcodeproj-cli`",
+    "usage_vi": "```\nUse xcodeproj-cli to [TASK] in an Xcode project located at [PROJECT_PATH]. For example: 'Use xcodeproj-cli to add a new target named \"Analytics\" to the project at ./MyApp.xcodeproj with the following specifications: [SPECIFICATIONS].'\n```\nCopy\n\n```\nI’ve successfully executed the following commands to add a new target named \"Analytics\" to the ./MyApp.xcodeproj project:\n\n```bash\nxcodeproj add-target --name \"Analytics\" --type \"framework\" --language \"swift\" --path \"./MyApp.xcodeproj\"\nxcodeproj add-source-files --target \"Analytics\" --files \"./Sources/Analytics/*.swift\" --path \"./MyApp.xcodeproj\"\nxcodeproj set-target-dependency --target \"Analytics\" --dependency \"MyApp\" --path \"./MyApp.xcodeproj\"\nxcodeproj set-build-setting --target \"Analytics\" --setting \"SWIFT_VERSION\" --value \"5.0\" --path \"./MyApp.xcodeproj\"\n```\n\nThe new target has been configured with Swift 5.0, and all specified source files have been added. The Analytics framework is now set as a dependency for the main \"MyApp\" target. You can verify the changes by opening the project in Xcode or running `xcodeproj list-targets --path ./MyApp.xcodeproj`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:02:18.128016Z",
+    "http_status": 200,
+    "content_hash": "914798e8a35710878c55022f5786bcb5935d5af2d417b195b042795258e6d94c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xcodeproj-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xcodeproj-cli.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "xcodeproj-cli: Xcode Projects",
+  "short_description_vi": "xcodeproj-cli is a command-line tool for manipulating Xcode project files using Swift. It enables developers to create, modify, and manage Xcode projects programmatically, streamlining workflows for iOS development teams. This tool integrates with coding agents like Claude Code and Gemini C, enhancing automation in software development processes."
+}

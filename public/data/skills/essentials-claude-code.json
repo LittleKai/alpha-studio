@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/essentials-claude-code",
+  "slug": "essentials-claude-code",
+  "name": "Essentials for Claude Code",
+  "headline": "Essentials for Claude Code - Automate Tasks",
+  "short_description": "Loops and swarms on Claude Code's Task System. Both enforce exit criteria. swarm is faster with parallel queue execution.   Plans define what \"done\" means. Optional: Beads for persistent memory, Ralph TUI for dashboard.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "GantisStorm",
+  "install_command": "git clone https://github.com/GantisStorm/essentials-claude-code.git",
+  "source_repo_url": "https://github.com/GantisStorm/essentials-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-coding",
+    "cli",
+    "developer-tools",
+    "automation",
+    "claude-code",
+    "llm",
+    "claude-code-plugin"
+  ],
+  "sections": {
+    "overview": "Essentials for Claude Code provides three execution modes—loop (sequential), swarm (parallel subagents), and team (full Agent Teams instances)—all powered by Claude Code's native Task System. It solves the problem of AI agents claiming tasks are \"done\" when tests still fail, by enforcing exit criteria and looping until tests pass. Plans define what done means, with optional Beads integration for persistent memory across sessions and Ralph TUI for visual task progress dashboards. Dependencies flow automatically from plan files to task blockedBy lists, ensuring tasks execute in the correct order.\nFixing bugs that require multiple test-fix iterations until all tests pass\nBuilding features with multi-phase dependency chains using plan files\nParallel refactoring across multiple API handlers with swarm mode\nSpawning multiple Claude Code instances to collaborate on complex tasks via Agent Teams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GantisStorm/essentials-claude-code`",
+    "usage": "```\nUse Claude Code's Task System to automate [TASK_NAME] with a [PLAN_NAME] loop that enforces exit criteria: [EXIT_CRITERIA]. Execute tasks in [PARALLEL/SERIAL] mode using [swarm/loop]. Include [BEADS_NAME] for persistent memory if needed. Monitor progress with [Ralph TUI DASHBOARD] if available. Start with: 'Run [PLAN_NAME]'.\n```\nCopy\n\n```\n### Task Automation Report: Database Backup Validation\n\n**Plan Executed:** `db_backup_validation`\n**Mode:** Parallel swarm (4 workers)\n**Exit Criteria:** All backups verified with checksums matching source files\n**Start Time:** 2024-05-15 08:47:23 UTC\n**End Time:** 2024-05-15 08:52:11 UTC (4m48s total)\n\n#### Task Breakdown:\n1. **Backup Validation (swarm worker 1)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-00.sql`\n   - Checksum: `a1b2c3d4e5f6` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-00.sql`\n   - Status: ✅ PASS\n\n2. **Backup Validation (swarm worker 2)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-15.sql`\n   - Checksum: `f6e5d4c3b2a1` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-15.sql`\n   - Status: ✅ PASS\n\n3. **Backup Validation (swarm worker 3)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-30.sql`\n   - Checksum: `789abc123def` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-30.sql`\n   - Status: ✅ PASS\n\n4. **Backup Validation (swarm worker 4)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-45.sql`\n   - Checksum: `def123abc789` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-45.sql`\n   - Status: ✅ PASS\n\n#### Persistent Memory (Beads):\n- **Last Validated Backup:** `2024-05-15_08-45.sql`\n- **Failed Backups:** None\n- **Total Validations:** 4\n\n#### Ralph TUI Dashboard Summary:\n```\n[DB Backup Validation] | 4/4 ✅ | Duration: 4m48s | Last Run: 08:52 UTC\n```\n\n**Conclusion:** All backups validated successfully. Exit criteria met. No action required.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "essentials-claude-code#main-content",
+      "essentials-claude-code#overview",
+      "essentials-claude-code#setup",
+      "essentials-claude-code#examples",
+      "essentials-claude-code#tools",
+      "essentials-claude-code#mcp",
+      "essentials-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Essentials for Claude Code provides three execution modes—loop (sequential), swarm (parallel subagents), and team (full Agent Teams instances)—all powered by Claude Code's native Task System. It solves the problem of AI agents claiming tasks are \"done\" when tests still fail, by enforcing exit criteria and looping until tests pass. Plans define what done means, with optional Beads integration for persistent memory across sessions and Ralph TUI for visual task progress dashboards. Dependencies flow automatically from plan files to task blockedBy lists, ensuring tasks execute in the correct order.\nFixing bugs that require multiple test-fix iterations until all tests pass\nBuilding features with multi-phase dependency chains using plan files\nParallel refactoring across multiple API handlers with swarm mode\nSpawning multiple Claude Code instances to collaborate on complex tasks via Agent Teams",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/GantisStorm/essentials-claude-code`",
+    "usage_vi": "```\nUse Claude Code's Task System to automate [TASK_NAME] with a [PLAN_NAME] loop that enforces exit criteria: [EXIT_CRITERIA]. Execute tasks in [PARALLEL/SERIAL] mode using [swarm/loop]. Include [BEADS_NAME] for persistent memory if needed. Monitor progress with [Ralph TUI DASHBOARD] if available. Start with: 'Run [PLAN_NAME]'.\n```\nCopy\n\n```\n### Task Automation Report: Database Backup Validation\n\n**Plan Executed:** `db_backup_validation`\n**Mode:** Parallel swarm (4 workers)\n**Exit Criteria:** All backups verified with checksums matching source files\n**Start Time:** 2024-05-15 08:47:23 UTC\n**End Time:** 2024-05-15 08:52:11 UTC (4m48s total)\n\n#### Task Breakdown:\n1. **Backup Validation (swarm worker 1)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-00.sql`\n   - Checksum: `a1b2c3d4e5f6` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-00.sql`\n   - Status: ✅ PASS\n\n2. **Backup Validation (swarm worker 2)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-15.sql`\n   - Checksum: `f6e5d4c3b2a1` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-15.sql`\n   - Status: ✅ PASS\n\n3. **Backup Validation (swarm worker 3)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-30.sql`\n   - Checksum: `789abc123def` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-30.sql`\n   - Status: ✅ PASS\n\n4. **Backup Validation (swarm worker 4)**\n   - Source: `/mnt/production/db_backups/2024-05-15_08-45.sql`\n   - Checksum: `def123abc789` (verified)\n   - Storage: `/backup/validation/2024-05-15_08-45.sql`\n   - Status: ✅ PASS\n\n#### Persistent Memory (Beads):\n- **Last Validated Backup:** `2024-05-15_08-45.sql`\n- **Failed Backups:** None\n- **Total Validations:** 4\n\n#### Ralph TUI Dashboard Summary:\n```\n[DB Backup Validation] | 4/4 ✅ | Duration: 4m48s | Last Run: 08:52 UTC\n```\n\n**Conclusion:** All backups validated successfully. Exit criteria met. No action required.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:01.690049Z",
+    "http_status": 200,
+    "content_hash": "521f98011b4fe7ae5d169761cb3762a472c192cb5381a21a1a26b96be431480f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\essentials-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\essentials-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Essentials for Claude Code - Automate Tasks",
+  "short_description_vi": "Loops and swarms on Claude Code's Task System. Both enforce exit criteria. swarm is faster with parallel queue execution.   Plans define what \"done\" means. Optional: Beads for persistent memory, Ralph TUI for dashboard."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llm-security",
+  "slug": "llm-security",
+  "name": "Reverse Engineering & Debugging",
+  "headline": "LLM Security: OWASP Top 10 Guidelines",
+  "short_description": "This skill provides security rules for building secure large language model (LLM) applications based on the OWASP Top 10 for LLM Applications 2025. It is designed for developers and security professionals who want to ensure their LLM applications are secure.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "semgrep",
+  "install_command": "git clone https://github.com/semgrep/skills",
+  "source_repo_url": "https://github.com/semgrep/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "security"
+  ],
+  "sections": {
+    "overview": "The llm-security skill provides developers with actionable security guidelines for building and securing large language model applications. It covers the OWASP Top 10 for LLM Applications 2025, addressing critical vulnerabilities including prompt injection, sensitive information disclosure, supply chain risks, data poisoning, and improper output handling. The skill is ideal when implementing RAG systems, securing AI/ML pipelines, or reviewing code that interacts with language models. It helps teams identify and mitigate high-impact risks like excessive agency, system prompt leakage, vector embedding weaknesses, and unbounded consumption attacks.\nAutomatically check for security risks in LLM applications.\nGuide users in identifying security rules relevant to their LLM project.\nProvide examples of secure code patterns and known vulnerabilities.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/semgrep/skills --skill llm-security`\n`git clone https://github.com/semgrep/skills`",
+    "usage": "```\nGenerate a secure-by-design implementation plan for an LLM application handling [SENSITIVE_DATA_TYPE] in the [INDUSTRY] sector. Follow the OWASP Top 10 for LLM Applications 2025 guidelines, focusing on [SPECIFIC_RISK_AREA]. Include threat modeling, mitigation strategies, and code snippets if applicable.\n```\nCopy\n\n```\n# Secure LLM Implementation Plan for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "llm-security#main-content",
+      "llm-security#overview",
+      "llm-security#setup",
+      "llm-security#examples",
+      "llm-security#tools",
+      "llm-security#mcp",
+      "llm-security#related",
+      "audit",
+      "ctf-solver",
+      "reverse-engineering-and-debugging"
+    ],
+    "overview_vi": "The llm-security skill provides developers with actionable security guidelines for building and securing large language model applications. It covers the OWASP Top 10 for LLM Applications 2025, addressing critical vulnerabilities including prompt injection, sensitive information disclosure, supply chain risks, data poisoning, and improper output handling. The skill is ideal when implementing RAG systems, securing AI/ML pipelines, or reviewing code that interacts with language models. It helps teams identify and mitigate high-impact risks like excessive agency, system prompt leakage, vector embedding weaknesses, and unbounded consumption attacks.\nAutomatically check for security risks in LLM applications.\nGuide users in identifying security rules relevant to their LLM project.\nProvide examples of secure code patterns and known vulnerabilities.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/semgrep/skills --skill llm-security`\n`git clone https://github.com/semgrep/skills`",
+    "usage_vi": "```\nGenerate a secure-by-design implementation plan for an LLM application handling [SENSITIVE_DATA_TYPE] in the [INDUSTRY] sector. Follow the OWASP Top 10 for LLM Applications 2025 guidelines, focusing on [SPECIFIC_RISK_AREA]. Include threat modeling, mitigation strategies, and code snippets if applicable.\n```\nCopy\n\n```\n# Secure LLM Implementation Plan for [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:43:09.310701Z",
+    "http_status": 200,
+    "content_hash": "0f71a5486e19dc2ae9b4b9ae44d754180f8e399c5c41b3b9695957f9b364c63c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llm-security.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llm-security.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LLM Security: OWASP Top 10 Guidelines",
+  "short_description_vi": "This skill provides security rules for building secure large language model (LLM) applications based on the OWASP Top 10 for LLM Applications 2025. It is designed for developers and security professionals who want to ensure their LLM applications are secure."
+}

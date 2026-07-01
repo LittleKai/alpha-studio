@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aci",
+  "slug": "aci",
+  "name": "ACI.dev",
+  "headline": "ACI.dev - Open Source Tool-Calling Platform",
+  "short_description": "ACI.dev is an open-source tool-calling platform that integrates over 600 tools into any IDE or custom AI agent, enabling function calling and automation. It powers VibeOps, enhancing developer productivity and tool interoperability.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "aipotheosis-labs",
+  "install_command": "claude install aipotheosis-labs/aci",
+  "source_repo_url": "https://github.com/aipotheosis-labs/aci",
+  "works_with": [
+    "ChatGPTVS CodeGitHub Copilot"
+  ],
+  "tags": [
+    "open-source",
+    "function-calling",
+    "ai-agents",
+    "developer-tools",
+    "integration"
+  ],
+  "sections": {
+    "overview": "ACI is an open-source tool-calling platform designed to integrate over 600 tools directly into IDEs and custom AI agents. It enables function calling and automation capabilities, reducing manual tool switching and streamlining developer workflows. ACI powers VibeOps and enhances tool interoperability across development environments. The platform is built to work seamlessly with AI agents like Claude Code and Cursor, allowing developers to access a broad toolkit without leaving their workspace. By centralizing tool access through a unified interface, ACI improves productivity and reduces friction in multi-tool development pipelines.\nIntegrate multiple APIs into a single workflow for streamlined operations.\nAutomate repetitive tasks in development environments to save time.\nEnhance IDE capabilities with AI-driven tools for improved productivity.\nStreamline tool usage for development teams, reducing friction in collaboration.",
+    "setup": "Terminal\nCopy\n`claude install aipotheosis-labs/aci`\n`git clone https://github.com/aipotheosis-labs/aci`",
+    "usage": "```\nIntegrate Productiv's finance tools into my development environment using ACI.dev. I want to automate the process of generating monthly expense reports for [PROJECT_NAME]. The report should include [SPECIFIC_METRICS] and be formatted as a [REPORT_FORMAT]. Ensure the integration supports real-time data updates and budget forecasting.\n```\nCopy\n\n```\nThe ACI.dev integration with Productiv has been successfully configured for your project. Here's how it works:\n\n1. **Automated Expense Reports**: Every month, the system will generate a detailed expense report for [PROJECT_NAME]. The report includes key metrics such as total expenses, category breakdowns, and variance from budget. It is formatted as a PDF and saved in the [REPORT_FORMAT] directory.\n\n2. **Real-Time Data Updates**: The integration pulls real-time data from Productiv, ensuring that your reports are always up-to-date. You can access the latest data at any time by running the 'fetch_productiv_data' command in your IDE.\n\n3. **Budget Forecasting**: The system also includes budget forecasting tools. You can generate forecasts by running the 'forecast_budget' command, which will provide a projection based on current spending trends. This helps you stay on track with your financial goals.\n\nTo get started, simply run the 'generate_expense_report' command in your IDE. The system will handle the rest, providing you with a comprehensive and accurate report every month.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, VS Code, GitHub Copilot"
+    ],
+    "related_skills": [
+      "aci#main-content",
+      "aci#overview",
+      "aci#setup",
+      "aci#examples",
+      "aci#tools",
+      "aci#mcp",
+      "aci#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "ACI là nền tảng tool-calling mã nguồn mở được thiết kế để tích hợp trực tiếp hơn 600 công cụ vào các IDE và AI agent tùy chỉnh. Nền tảng này mang lại khả năng function calling và tự động hóa, giảm thiểu việc chuyển đổi công cụ thủ công và tối ưu hóa quy trình làm việc của lập trình viên. ACI vận hành VibeOps và tăng cường khả năng tương tác giữa các công cụ trên các môi trường phát triển. Nền tảng được xây dựng để hoạt động mượt mà với các AI agent như Claude Code và Cursor, cho phép lập trình viên tiếp cận bộ công cụ phong phú ngay trong không gian làm việc của mình. Bằng cách tập trung hóa việc truy cập công cụ thông qua một giao diện thống nhất, ACI giúp nâng cao năng suất và giảm thiểu trở ngại trong các pipeline phát triển sử dụng nhiều công cụ.\nTích hợp nhiều API vào một quy trình làm việc duy nhất để tối ưu hóa vận hành.\nTự động hóa các tác vụ lặp đi lặp lại trong môi trường phát triển để tiết kiệm thời gian.\nNâng cao khả năng của IDE bằng các công cụ tích hợp AI nhằm tăng hiệu suất làm việc.\nTối ưu hóa việc sử dụng công cụ cho các đội ngũ phát triển, giảm thiểu trở ngại khi cộng tác.",
+    "setup_vi": "Terminal\nSao chép\n`claude install aipotheosis-labs/aci`\n`git clone https://github.com/aipotheosis-labs/aci`",
+    "usage_vi": "```\nTích hợp các công cụ tài chính của Productiv vào môi trường phát triển của tôi bằng ACI.dev. Tôi muốn tự động hóa quy trình tạo báo cáo chi phí hàng tháng cho [PROJECT_NAME]. Báo cáo cần bao gồm [SPECIFIC_METRICS] và được định dạng dưới dạng [REPORT_FORMAT]. Đảm bảo tích hợp này hỗ trợ cập nhật dữ liệu theo thời gian thực và dự báo ngân sách.\n```\nSao chép\n\n```\nTích hợp ACI.dev với Productiv đã được cấu hình thành công cho dự án của bạn. Dưới đây là cách thức hoạt động:\n\n1. **Tự động hóa báo cáo chi phí**: Hàng tháng, hệ thống sẽ tự động tạo báo cáo chi phí chi tiết cho [PROJECT_NAME]. Báo cáo bao gồm các chỉ số chính như tổng chi phí, phân tích theo danh mục và mức độ chênh lệch so với ngân sách. Báo cáo được định dạng dưới dạng PDF và được lưu trữ trong thư mục [REPORT_FORMAT].\n\n2. **Cập nhật dữ liệu thời gian thực**: Bản tích hợp này sẽ lấy dữ liệu thời gian thực từ Productiv, đảm bảo các báo cáo của bạn luôn được cập nhật mới nhất. Bạn có thể truy cập dữ liệu mới nhất bất kỳ lúc nào bằng cách chạy lệnh 'fetch_productiv_data' trong IDE của mình.\n\n3. **Dự báo ngân sách**: Hệ thống cũng bao gồm các công cụ dự báo ngân sách. Bạn có thể tạo dự báo bằng cách chạy lệnh 'forecast_budget', lệnh này sẽ đưa ra dự phóng dựa trên xu hướng chi tiêu hiện tại. Điều này giúp bạn kiểm soát tốt các mục tiêu tài chính của mình.\n\nĐể bắt đầu, chỉ cần chạy lệnh 'generate_expense_report' trong IDE của bạn. Hệ thống sẽ xử lý phần còn lại, cung cấp cho bạn một báo cáo toàn diện và chính xác hàng tháng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:11.108586Z",
+    "http_status": 200,
+    "content_hash": "7569f79a2642464af1d97aeab86f68593f9630c983a43fd536b3a41aa4949f74",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aci.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aci.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ACI.dev - Nền tảng Tool-Calling mã nguồn mở",
+  "short_description_vi": "ACI.dev là nền tảng tool-calling mã nguồn mở giúp tích hợp hơn 600 công cụ vào bất kỳ IDE hoặc AI agent tùy chỉnh nào, hỗ trợ function calling và tự động hóa. Nền tảng này vận hành VibeOps, giúp nâng cao năng suất của lập trình viên và khả năng tương tác giữa các công cụ."
+}

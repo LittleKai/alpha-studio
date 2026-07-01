@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/raycast-script-creator",
+  "slug": "raycast-script-creator",
+  "name": "Raycast Script Creator",
+  "headline": "Raycast Script Creator - Create Raycast Scripts",
+  "short_description": "Creates valid Raycast script-commands with proper metadata formatting and structure. Benefits operations teams by enabling quick access to custom workflows. Integrates with Raycast launcher and supports JavaScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "drpedapati",
+  "install_command": "git clone https://github.com/drpedapati/raycast-script-creator.git",
+  "source_repo_url": "https://github.com/drpedapati/raycast-script-creator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Raycast Script Creator is a Claude Code skill that automates the generation of valid Raycast script-commands for macOS. It provides comprehensive templates, metadata reference documentation, and a decision tree to help you create scripts in six programming languages: Bash, Python, JavaScript, Ruby, Swift, and AppleScript. The skill ensures all generated scripts have proper metadata formatting, correct output mode selection, and follow best practices. Operations teams and power users benefit by quickly creating custom workflows and system commands without manual formatting errors.\nCreate a script-command to open your Downloads folder in Raycast\nBuild a command that launches your project in Cursor or other IDEs\nGenerate a script to display system information like CPU usage\nAdd a Raycast shortcut to clear trash or perform cleanup tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/drpedapati/raycast-script-creator`",
+    "usage": "```\nCreate a Raycast script command for [COMPANY] in the [INDUSTRY] sector. The script should [DESCRIBE ACTION], using [DATA] as input. Include proper metadata formatting and structure. Make it executable in JavaScript.\n```\nCopy\n\n```\n```javascript\n// Raycast Script Command for [COMPANY] in the [INDUSTRY] sector\n// Description: [DESCRIBE ACTION]\n// Author: [YOUR NAME]\n// Version: 1.0\n// Created: [DATE]\n\nimport { getPreferenceValues } from '@raycast/api'\n\n// Define preferences\nconst preferences = getPreferenceValues()\n\n// Main function\nexport default function Command() {\n  // Your code here\n  console.log('Running script for [COMPANY] in the [INDUSTRY] sector')\n  console.log('Using data: [DATA]')\n  // Add your custom logic here\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "raycast-script-creator#main-content",
+      "raycast-script-creator#overview",
+      "raycast-script-creator#setup",
+      "raycast-script-creator#examples",
+      "raycast-script-creator#tools",
+      "raycast-script-creator#mcp",
+      "raycast-script-creator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Raycast Script Creator là một skill của Claude Code giúp tự động hóa việc tạo các Raycast script-command hợp lệ trên macOS. Công cụ này cung cấp các template toàn diện, tài liệu tham khảo metadata và cây quyết định (decision tree) giúp bạn dễ dàng viết script bằng 6 ngôn ngữ lập trình: Bash, Python, JavaScript, Ruby, Swift và AppleScript. Skill này đảm bảo mọi script được tạo ra đều có định dạng metadata chuẩn xác, chọn đúng chế độ output và tuân thủ các best practice. Các operations team và power user sẽ dễ dàng tối ưu hóa công việc nhờ khả năng tạo nhanh các workflow tùy chỉnh và lệnh hệ thống mà không lo gặp lỗi định dạng thủ công.\nTạo một script-command để mở thư mục Downloads trong Raycast\nXây dựng lệnh để khởi chạy dự án của bạn trong Cursor hoặc các IDE khác\nTạo script để hiển thị thông tin hệ thống như mức sử dụng CPU\nThêm phím tắt Raycast để dọn sạch thùng rác hoặc thực hiện các tác vụ dọn dẹp hệ thống",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/drpedapati/raycast-script-creator`",
+    "usage_vi": "```\nTạo một Raycast script-command cho [COMPANY] trong lĩnh vực [INDUSTRY]. Script này cần thực hiện [DESCRIBE ACTION], sử dụng [DATA] làm đầu vào. Đảm bảo định dạng và cấu trúc metadata chuẩn xác. Viết mã thực thi bằng JavaScript.\n```\nCopy\n\n```javascript\n// Raycast Script Command cho [COMPANY] trong lĩnh vực [INDUSTRY]\n// Mô tả: [DESCRIBE ACTION]\n// Tác giả: [YOUR NAME]\n// Phiên bản: 1.0\n// Ngày tạo: [DATE]\n\nimport { getPreferenceValues } from '@raycast/api'\n\n// Định nghĩa cấu hình (preferences)\nconst preferences = getPreferenceValues()\n\n// Hàm chính\nexport default function Command() {\n  // Viết code của bạn tại đây\n  console.log('Đang chạy script cho [COMPANY] trong lĩnh vực [INDUSTRY]')\n  console.log('Sử dụng dữ liệu: [DATA]')\n  // Thêm logic tùy chỉnh của bạn tại đây\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:41:15.961788Z",
+    "http_status": 200,
+    "content_hash": "bd6241e9be36eb75816dc5c86943f0b3abe92a793701bfd4e4736b179ea8353a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\raycast-script-creator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\raycast-script-creator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Raycast Script Creator - Tạo script cho Raycast",
+  "short_description_vi": "Hỗ trợ tạo các Raycast script-command hợp lệ với cấu trúc và định dạng metadata chuẩn xác. Giúp các operations team tối ưu hóa hiệu suất nhờ khả năng truy cập nhanh vào các workflow tùy chỉnh. Tích hợp mượt mà với Raycast launcher và hỗ trợ JavaScript."
+}

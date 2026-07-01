@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/long-running-agent-harness",
+  "slug": "long-running-agent-harness",
+  "name": "agno",
+  "headline": "Long-running Agent Harness: Multi-Context Workflow",
+  "short_description": "The Long-running agent harness allows AI agents to efficiently work across multiple context windows with a structured approach. It's designed for developers and teams looking to manage incremental tasks and track progress across sessions effectively.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "michael-f-bryan",
+  "install_command": "git clone https://github.com/michael-f-bryan/skills",
+  "source_repo_url": "https://github.com/michael-f-bryan/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "ai-agent-skills",
+    "long",
+    "harness",
+    "running",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The Long-running agent harness is a skill designed for AI agents working across multiple context windows with structured task management. It enables developers to handle incremental tasks efficiently while tracking progress across multiple sessions. This harness provides a framework for managing extended workflows where context limitations require breaking work into manageable segments. Teams can install the skill using the skills CLI and optionally symlink it to their global agents folder for local development.\nPlan and manage AI agent tasks incrementally.\nEnsure each session has clear objectives and documentation.\nFacilitate human check-ins at defined milestones.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/michael-f-bryan/skills --skill long-running-agent-harness`\n`git clone https://github.com/michael-f-bryan/skills`",
+    "usage": "```\nAct as a long-running agent harness for [TASK]. Break this into logical sub-tasks, execute them incrementally, and provide progress updates after each step. Maintain context across sessions and summarize findings in a structured report. Current state: [CURRENT_STATE]. Next action: [NEXT_ACTION].\n```\nCopy\n\n```\n# Long-Running Agent Harness Report",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "long-running-agent-harness#main-content",
+      "long-running-agent-harness#overview",
+      "long-running-agent-harness#setup",
+      "long-running-agent-harness#examples",
+      "long-running-agent-harness#related",
+      "dagster-expert",
+      "agno"
+    ],
+    "overview_vi": "The Long-running agent harness is a skill designed for AI agents working across multiple context windows with structured task management. It enables developers to handle incremental tasks efficiently while tracking progress across multiple sessions. This harness provides a framework for managing extended workflows where context limitations require breaking work into manageable segments. Teams can install the skill using the skills CLI and optionally symlink it to their global agents folder for local development.\nPlan and manage AI agent tasks incrementally.\nEnsure each session has clear objectives and documentation.\nFacilitate human check-ins at defined milestones.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/michael-f-bryan/skills --skill long-running-agent-harness`\n`git clone https://github.com/michael-f-bryan/skills`",
+    "usage_vi": "```\nAct as a long-running agent harness for [TASK]. Break this into logical sub-tasks, execute them incrementally, and provide progress updates after each step. Maintain context across sessions and summarize findings in a structured report. Current state: [CURRENT_STATE]. Next action: [NEXT_ACTION].\n```\nCopy\n\n```\n# Long-Running Agent Harness Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:43:54.819758Z",
+    "http_status": 200,
+    "content_hash": "432d7aa1f42434736e5dd9fee68de293da000d3c681e415d25b6eadd75c81433",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\long-running-agent-harness.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\long-running-agent-harness.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Long-running Agent Harness: Multi-Context Workflow",
+  "short_description_vi": "The Long-running agent harness allows AI agents to efficiently work across multiple context windows with a structured approach. It's designed for developers and teams looking to manage incremental tasks and track progress across sessions effectively."
+}

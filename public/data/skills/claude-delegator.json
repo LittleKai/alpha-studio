@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-delegator",
+  "slug": "claude-delegator",
+  "name": "browser-use",
+  "headline": "task delegation in claude with codex gpt 5.2",
+  "short_description": "Delegate tasks to Codex GPT 5.2 directly from within Claude Code. Operations teams use this to automate architecture, security, and code review tasks. Integrates with Claude Code and Codex GPT 5.2.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "jarrodwatts",
+  "install_command": "git clone https://github.com/jarrodwatts/claude-delegator.git",
+  "source_repo_url": "https://github.com/jarrodwatts/claude-delegator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "plugin",
+    "claude",
+    "mcp",
+    "codex",
+    "gpt"
+  ],
+  "sections": {
+    "overview": "Claude Delegator enables you to delegate tasks from Claude Code to other AI models, including support for Gemini via a zero-dependency MCP bridge. The skill integrates seamlessly with Claude Code and uses JSON-RPC communication for reliable task delegation. It supports multiple AI backends, allowing you to route specific tasks like code review, architecture assessment, and security analysis to the most appropriate model. Operations and development teams can automate repetitive review and validation tasks by delegating work across different AI agents, reducing manual review cycles and improving consistency.\nDelegate system architecture questions to the Architect expert for optimal design solutions.\nRequest a security analysis of your authentication flow to identify vulnerabilities.\nGet a code review from the Code Reviewer expert to improve code quality before merging.\nValidate your migration plan with the Plan Reviewer to ensure a smooth transition.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jarrodwatts/claude-delegator`",
+    "usage": "```\nI need to delegate the following task to Codex GPT 5.2: [DESCRIBE TASK]. Here are the specific requirements: [LIST REQUIREMENTS]. Please generate the code or architecture diagram and return it in [FORMAT].\n```\nCopy\n\n```\nTask: Design a secure microservice architecture for a new e-commerce platform.\n\nCodex GPT 5.2 Output:\n\nHere's a secure microservice architecture for your e-commerce platform:\n\n1. **API Gateway**: Implemented with Kong, handling request routing and rate limiting.\n2. **Authentication Service**: Using Auth0 for JWT token management.\n3. **Product Service**: Node.js with Express, connected to MongoDB Atlas.\n4. **Order Service**: Python with FastAPI, connected to PostgreSQL.\n5. **Payment Service**: Java with Spring Boot, integrated with Stripe API.\n6. **Redis Cache**: For session management and frequent queries.\n\nEach service is containerized with Docker and deployed on AWS ECS with Fargate. Security measures include:\n- TLS 1.3 encryption for all services\n- Regular security patching via AWS Systems Manager\n- IAM roles with least privilege access\n- AWS WAF for API Gateway protection\n\nWould you like me to generate the Terraform scripts for this architecture?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-delegator#main-content",
+      "claude-delegator#overview",
+      "claude-delegator#setup",
+      "claude-delegator#examples",
+      "claude-delegator#tools",
+      "claude-delegator#mcp",
+      "claude-delegator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Delegator enables you to delegate tasks from Claude Code to other AI models, including support for Gemini via a zero-dependency MCP bridge. The skill integrates seamlessly with Claude Code and uses JSON-RPC communication for reliable task delegation. It supports multiple AI backends, allowing you to route specific tasks like code review, architecture assessment, and security analysis to the most appropriate model. Operations and development teams can automate repetitive review and validation tasks by delegating work across different AI agents, reducing manual review cycles and improving consistency.\nDelegate system architecture questions to the Architect expert for optimal design solutions.\nRequest a security analysis of your authentication flow to identify vulnerabilities.\nGet a code review from the Code Reviewer expert to improve code quality before merging.\nValidate your migration plan with the Plan Reviewer to ensure a smooth transition.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jarrodwatts/claude-delegator`",
+    "usage_vi": "```\nI need to delegate the following task to Codex GPT 5.2: [DESCRIBE TASK]. Here are the specific requirements: [LIST REQUIREMENTS]. Please generate the code or architecture diagram and return it in [FORMAT].\n```\nCopy\n\n```\nTask: Design a secure microservice architecture for a new e-commerce platform.\n\nCodex GPT 5.2 Output:\n\nHere's a secure microservice architecture for your e-commerce platform:\n\n1. **API Gateway**: Implemented with Kong, handling request routing and rate limiting.\n2. **Authentication Service**: Using Auth0 for JWT token management.\n3. **Product Service**: Node.js with Express, connected to MongoDB Atlas.\n4. **Order Service**: Python with FastAPI, connected to PostgreSQL.\n5. **Payment Service**: Java with Spring Boot, integrated with Stripe API.\n6. **Redis Cache**: For session management and frequent queries.\n\nEach service is containerized with Docker and deployed on AWS ECS with Fargate. Security measures include:\n- TLS 1.3 encryption for all services\n- Regular security patching via AWS Systems Manager\n- IAM roles with least privilege access\n- AWS WAF for API Gateway protection\n\nWould you like me to generate the Terraform scripts for this architecture?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:35:03.697547Z",
+    "http_status": 200,
+    "content_hash": "e3ca7e9cc28fda6dc90e46d6dc84c66d28690184990a11b3006c0c4d9497f8c3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-delegator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-delegator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "task delegation in claude with codex gpt 5.2",
+  "short_description_vi": "Delegate tasks to Codex GPT 5.2 directly from within Claude Code. Operations teams use this to automate architecture, security, and code review tasks. Integrates with Claude Code and Codex GPT 5.2."
+}

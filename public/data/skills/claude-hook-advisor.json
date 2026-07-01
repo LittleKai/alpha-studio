@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-hook-advisor",
+  "slug": "claude-hook-advisor",
+  "name": "Claude Hook Advisor",
+  "headline": "claude hook advisor for smart coding suggestions",
+  "short_description": "Claude Hook Advisor is a Rust CLI tool that integrates with Claude Code to provide intelligent command suggestions, semantic directory aliasing, command history tracking, and security pattern detection. It helps operations teams automate and optimize command execution, reducing errors and improving efficiency. The tool connects to Claude Code and enhances workflows by suggesting alternatives based on keyword matching.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "sirmews",
+  "install_command": "git clone https://github.com/sirmews/claude-hook-advisor.git",
+  "source_repo_url": "https://github.com/sirmews/claude-hook-advisor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-hooks",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Hook Advisor is a Rust-based CLI tool designed for operations teams using Claude Code. It operates through three integrated hooks that intelligently map commands to preferred alternatives (npm to bun, curl to wget), enable natural language directory references instead of full paths, automatically track all executed commands in a SQLite database with session linking, and detect 27 built-in security patterns across multiple programming languages to warn against dangerous code patterns like eval injection and unsafe blocks. The tool runs with minimal overhead (~1-5ms per hook execution) and requires only a TOML configuration file to map commands and directories, making it ideal for teams seeking to reduce command execution errors, improve workflow efficiency, and enforce security best practices.\nMap npm/yarn commands to bun automatically for faster package installation\nTrack all Claude-executed commands with success/failure status for audit trails\nDetect security risks like eval injection and unsafe code before execution\nCreate semantic directory aliases so Claude understands 'docs' as full paths",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sirmews/claude-hook-advisor`",
+    "usage": "```\nUse the claude-hook-advisor tool to analyze the current project directory [PROJECT_PATH] and suggest optimized command alternatives for [COMMAND_TO_RUN]. Include semantic directory aliases, historical command patterns, and security checks for [SPECIFIC_CONCERN]. Prioritize suggestions that reduce execution time by at least 20% and flag any commands that may violate security policies.\n```\nCopy\n\n```\nAfter analyzing the project directory `/opt/finance-app` and the command `cargo build --release`, the claude-hook-advisor provided the following optimized suggestions:\n\n1. **Semantic Alias Replacement**:\n   - Original: `cargo build --release`\n   - Optimized: `cargo b -r` (using the `b` alias for `build` and `-r` for `--release`)\n   - Savings: 45% reduction in keystrokes (18 → 10 characters)\n\n2. **Historical Optimization**:\n   - Detected previous runs of `cargo build --release` with `clippy` checks enabled.\n   - Suggested: `cargo b -r && cargo clippy` (combined into a single workflow)\n   - Savings: 30% reduction in context switching\n\n3. **Security Check**:\n   - Flagged the `--release` flag as potentially bypassing debug assertions in production builds.\n   - Recommended: Add `RUSTFLAGS=\"-D warnings\" cargo b -r` to enforce strict warnings.\n\n4. **Directory-Specific Optimization**:\n   - Detected the project uses a monorepo structure with a `services/` subdirectory.\n   - Suggested: `cd services/finance-core && cargo b -r` to scope the build to the relevant module.\n\nThe advisor also logged this command in the historical database with the tag `production-build` for future reference. The optimized workflow reduces execution time by 35% and ensures compliance with the team's security policies.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-hook-advisor#main-content",
+      "claude-hook-advisor#overview",
+      "claude-hook-advisor#setup",
+      "claude-hook-advisor#examples",
+      "claude-hook-advisor#tools",
+      "claude-hook-advisor#mcp",
+      "claude-hook-advisor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Hook Advisor là một CLI tool viết bằng Rust được thiết kế riêng cho các operations team đang sử dụng Claude Code. Công cụ hoạt động thông qua ba hook tích hợp giúp ánh xạ các câu lệnh một cách thông minh sang các phương án thay thế tối ưu hơn (như npm sang bun, curl sang wget), cho phép tham chiếu thư mục bằng ngôn ngữ tự nhiên thay vì đường dẫn đầy đủ, tự động theo dõi tất cả các lệnh đã thực thi trong cơ sở dữ liệu SQLite có liên kết session, và phát hiện 27 pattern bảo mật tích hợp sẵn trên nhiều ngôn ngữ lập trình để cảnh báo về các đoạn code nguy hiểm như eval injection và unsafe block. Công cụ hoạt động với độ trễ tối thiểu (~1-5ms cho mỗi lần thực thi hook) và chỉ yêu cầu một file cấu hình TOML để ánh xạ các lệnh và thư mục, giúp nó trở thành giải pháp lý tưởng cho các đội ngũ muốn giảm thiểu lỗi thực thi lệnh, nâng cao hiệu suất workflow và áp dụng các tiêu chuẩn bảo mật tốt nhất.\n\n- Tự động ánh xạ lệnh npm/yarn sang bun để cài đặt package nhanh hơn\n- Theo dõi tất cả các lệnh do Claude thực thi cùng trạng thái thành công/thất bại phục vụ cho audit trail\n- Phát hiện các rủi ro bảo mật như eval injection và unsafe code trước khi thực thi\n- Tạo các semantic directory alias để Claude hiểu các cụm từ như 'docs' là đường dẫn đầy đủ",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sirmews/claude-hook-advisor`",
+    "usage_vi": "```\nSử dụng công cụ claude-hook-advisor để phân tích thư mục dự án hiện tại [PROJECT_PATH] và gợi ý các lệnh thay thế tối ưu cho [COMMAND_TO_RUN]. Hãy bao gồm cả các semantic directory alias, lịch sử các pattern câu lệnh và các bước kiểm tra bảo mật cho [SPECIFIC_CONCERN]. Ưu tiên các gợi ý giúp giảm ít nhất 20% thời gian thực thi và gắn cờ bất kỳ lệnh nào có thể vi phạm chính sách bảo mật.\n```\nCopy\n\n```\nSau khi phân tích thư mục dự án `/opt/finance-app` và lệnh `cargo build --release`, claude-hook-advisor đã đưa ra các gợi ý tối ưu sau:\n\n1. **Thay thế bằng Semantic Alias**:\n   - Gốc: `cargo build --release`\n   - Tối ưu hóa: `cargo b -r` (sử dụng alias `b` cho `build` và `-r` cho `--release`)\n   - Tiết kiệm: Giảm 45% số lượng phím gõ (18 → 10 ký tự)\n\n2. **Tối ưu hóa theo lịch sử**:\n   - Phát hiện các lượt chạy `cargo build --release` trước đó có kích hoạt kiểm tra `clippy`.\n   - Gợi ý: `cargo b -r && cargo clippy` (kết hợp thành một workflow duy nhất)\n   - Tiết kiệm: Giảm 30% context switching\n\n3. **Kiểm tra bảo mật**:\n   - Gắn cờ flag `--release` vì có khả năng bỏ qua các debug assertion trong các bản build production.\n   - Khuyến nghị: Thêm `RUSTFLAGS=\"-D warnings\" cargo b -r` để bắt buộc áp dụng các cảnh báo nghiêm ngặt.\n\n4. **Tối ưu hóa theo thư mục cụ thể**:\n   - Phát hiện dự án sử dụng cấu trúc monorepo với thư mục con `services/`.\n   - Gợi ý: `cd services/finance-core && cargo b -r` để giới hạn phạm vi build trong module liên quan.\n\nAdvisor cũng đã ghi nhật ký lệnh này vào cơ sở dữ liệu lịch sử với tag `production-build` để tham chiếu sau này. Workflow được tối ưu hóa giúp giảm 35% thời gian thực thi và đảm bảo tuân thủ các chính sách bảo mật của đội ngũ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:54:59.883814Z",
+    "http_status": 200,
+    "content_hash": "6dfadbfe273472801d86bb6e988f453f40750acd61c2887a6db4fb8b95b48ea9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-hook-advisor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-hook-advisor.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Hook Advisor: Trợ lý gợi ý code thông minh qua hook",
+  "short_description_vi": "Claude Hook Advisor là một CLI tool bằng Rust tích hợp với Claude Code để cung cấp các gợi ý lệnh thông minh, semantic directory aliasing, theo dõi lịch sử dòng lệnh và phát hiện các pattern bảo mật. Công cụ giúp các operations team tự động hóa và tối ưu hóa việc thực thi câu lệnh, giảm thiểu sai sót và nâng cao hiệu suất. Nhờ kết nối với Claude Code, công cụ cải thiện workflow thông qua việc gợi ý các phương án thay thế dựa trên khớp từ khóa (keyword matching)."
+}

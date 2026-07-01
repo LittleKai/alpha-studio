@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/exa-mcp-server",
+  "slug": "exa-mcp-server",
+  "name": "Exa MCP Server",
+  "headline": "Exa MCP Server - Web Search & Crawling Tool",
+  "short_description": "Exa MCP Server is a powerful tool for web search and crawling, designed to enhance code discovery and retrieval. Built with TypeScript, it uses the Model Context Protocol (MCP) to streamline web searches, making it ideal for developers and researchers alike.",
+  "tier": "Gold",
+  "category": "GrowthResearch",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "exa-labs",
+  "install_command": "claude install exa-labs/exa-mcp-server",
+  "source_repo_url": "https://github.com/exa-labs/exa-mcp-server",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "TypeScript",
+    "web-crawling",
+    "MCP",
+    "search-engine",
+    "code-discovery"
+  ],
+  "sections": {
+    "overview": "Exa MCP Server is a TypeScript-based tool that brings web search and crawling functionality to AI agents through the Model Context Protocol. It enables developers and researchers to enhance code discovery and information retrieval directly within Claude Code, Cursor, and compatible MCP clients. Built on Exa's search infrastructure, the server streamlines web searches and content extraction for AI-driven development workflows. The skill is actively maintained with OAuth support and comprehensive testing infrastructure, making it reliable for production use. Developers can integrate web search capabilities into their AI agent systems without managing separate search implementations.\nAutomate code search across multiple repositories to quickly find relevant examples.\nEnhance web scraping capabilities for efficient data collection from various sources.\nIntegrate with development tools to improve code accessibility and streamline workflows.\nFacilitate research by indexing and retrieving web content effectively.",
+    "setup": "Terminal\nCopy\n`claude install exa-labs/exa-mcp-server`\n`git clone https://github.com/exa-labs/exa-mcp-server`",
+    "usage": "```\nUse the Exa MCP Server to search for code examples related to [PROGRAMMING_LANGUAGE] that implement [SPECIFIC_FUNCTIONALITY]. Focus on repositories with a star rating above [MINIMUM_STARS]. Provide a summary of the top 3 results, including the repository name, author, and a brief description of the implementation.\n```\nCopy\n\n```\nBased on your request, here are the top 3 code examples for implementing real-time data streaming in Python:\n\n1. **Repository**: real-time-data-streaming\n   **Author**: data_streamer\n   **Description**: This project demonstrates how to use Python's asyncio library to handle real-time data streams. It includes a comprehensive example of a WebSocket server that processes and broadcasts data to multiple clients. The repository has 4.5 stars and is well-documented with clear examples.\n\n2. **Repository**: live-data-processing\n   **Author**: live_data_pro\n   **Description**: This repository focuses on processing live data streams using Python. It provides a detailed implementation of a Kafka consumer and producer, along with examples of how to handle data transformations and storage. The project has 4.2 stars and includes unit tests for all major components.\n\n3. **Repository**: streaming-analytics\n   **Author**: analytics_pro\n   **Description**: This project offers a complete solution for real-time analytics using Python. It includes examples of how to integrate with various data sources, perform real-time analytics, and visualize the results. The repository has 4.7 stars and is actively maintained with regular updates.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "exa-mcp-server#main-content",
+      "exa-mcp-server#overview",
+      "exa-mcp-server#setup",
+      "exa-mcp-server#examples",
+      "exa-mcp-server#tools",
+      "exa-mcp-server#mcp",
+      "exa-mcp-server#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Exa MCP Server is a TypeScript-based tool that brings web search and crawling functionality to AI agents through the Model Context Protocol. It enables developers and researchers to enhance code discovery and information retrieval directly within Claude Code, Cursor, and compatible MCP clients. Built on Exa's search infrastructure, the server streamlines web searches and content extraction for AI-driven development workflows. The skill is actively maintained with OAuth support and comprehensive testing infrastructure, making it reliable for production use. Developers can integrate web search capabilities into their AI agent systems without managing separate search implementations.\nAutomate code search across multiple repositories to quickly find relevant examples.\nEnhance web scraping capabilities for efficient data collection from various sources.\nIntegrate with development tools to improve code accessibility and streamline workflows.\nFacilitate research by indexing and retrieving web content effectively.",
+    "setup_vi": "Terminal\nCopy\n`claude install exa-labs/exa-mcp-server`\n`git clone https://github.com/exa-labs/exa-mcp-server`",
+    "usage_vi": "```\nUse the Exa MCP Server to search for code examples related to [PROGRAMMING_LANGUAGE] that implement [SPECIFIC_FUNCTIONALITY]. Focus on repositories with a star rating above [MINIMUM_STARS]. Provide a summary of the top 3 results, including the repository name, author, and a brief description of the implementation.\n```\nCopy\n\n```\nBased on your request, here are the top 3 code examples for implementing real-time data streaming in Python:\n\n1. **Repository**: real-time-data-streaming\n   **Author**: data_streamer\n   **Description**: This project demonstrates how to use Python's asyncio library to handle real-time data streams. It includes a comprehensive example of a WebSocket server that processes and broadcasts data to multiple clients. The repository has 4.5 stars and is well-documented with clear examples.\n\n2. **Repository**: live-data-processing\n   **Author**: live_data_pro\n   **Description**: This repository focuses on processing live data streams using Python. It provides a detailed implementation of a Kafka consumer and producer, along with examples of how to handle data transformations and storage. The project has 4.2 stars and includes unit tests for all major components.\n\n3. **Repository**: streaming-analytics\n   **Author**: analytics_pro\n   **Description**: This project offers a complete solution for real-time analytics using Python. It includes examples of how to integrate with various data sources, perform real-time analytics, and visualize the results. The repository has 4.7 stars and is actively maintained with regular updates.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:14:14.768264Z",
+    "http_status": 200,
+    "content_hash": "3f7c34146bdfee53880aa3ee487b31641860f138093a397d5f1f88409cdaaed7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\exa-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\exa-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Exa MCP Server - Web Search & Crawling Tool",
+  "short_description_vi": "Exa MCP Server is a powerful tool for web search and crawling, designed to enhance code discovery and retrieval. Built with TypeScript, it uses the Model Context Protocol (MCP) to streamline web searches, making it ideal for developers and researchers alike."
+}

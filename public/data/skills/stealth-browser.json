@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/stealth-browser",
+  "slug": "stealth-browser",
+  "name": "Stealth Browser",
+  "headline": "stealth-browser: Invisible Chrome Automation",
+  "short_description": "The stealth-browser skill allows users to automate Chrome in a way that makes automation undetectable by websites. It utilizes the Chrome DevTools Protocol and is specifically designed for macOS, using AppleScript to hide the browser while it operates.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "changeflowhq",
+  "install_command": "git clone https://github.com/changeflowhq/skills",
+  "source_repo_url": "https://github.com/changeflowhq/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "automation",
+    "stealth",
+    "browser"
+  ],
+  "sections": {
+    "overview": "stealth-browser launches your real Chrome installation completely hidden and controls it via Chrome DevTools Protocol, making automation undetectable to websites. It automatically falls back to stealth mode when standard web fetches are blocked by bot protection, Cloudflare, or 403 errors, learning which domains require invisible automation for future requests. The skill ships with uBlock Origin Lite and cookie banner dismissal built in, and uses a three-layer learning system via PreToolUse and PostToolUse hooks to intelligently route requests. It's designed for macOS and solves the core problem of web scraping against sites with anti-bot detection, giving you a real browser instance with genuine extensions that sites cannot identify as automated.\nAutomating website testing without detection\nScraping data from sites that block bots\nInteracting with web applications while remaining invisible to the browser's UI",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/changeflowhq/skills --skill stealth-browser`\n`git clone https://github.com/changeflowhq/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "stealth-browser#main-content",
+      "stealth-browser#overview",
+      "stealth-browser#setup",
+      "stealth-browser#examples",
+      "stealth-browser#tools",
+      "stealth-browser#mcp",
+      "stealth-browser#related",
+      "perplexity-comet-competitor-analysis-agent-mkug5ub8",
+      "crm-automation",
+      "live-competitor-analysis-with-perplexity-comet-mkufgv3n"
+    ],
+    "overview_vi": "stealth-browser launches your real Chrome installation completely hidden and controls it via Chrome DevTools Protocol, making automation undetectable to websites. It automatically falls back to stealth mode when standard web fetches are blocked by bot protection, Cloudflare, or 403 errors, learning which domains require invisible automation for future requests. The skill ships with uBlock Origin Lite and cookie banner dismissal built in, and uses a three-layer learning system via PreToolUse and PostToolUse hooks to intelligently route requests. It's designed for macOS and solves the core problem of web scraping against sites with anti-bot detection, giving you a real browser instance with genuine extensions that sites cannot identify as automated.\nAutomating website testing without detection\nScraping data from sites that block bots\nInteracting with web applications while remaining invisible to the browser's UI",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/changeflowhq/skills --skill stealth-browser`\n`git clone https://github.com/changeflowhq/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:18:54.641240Z",
+    "http_status": 200,
+    "content_hash": "b789ebd8407320151c2619dc1a59c8b61524cd4edd8dc1fdfc97660d552ee32c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stealth-browser.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stealth-browser.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "stealth-browser: Invisible Chrome Automation",
+  "short_description_vi": "The stealth-browser skill allows users to automate Chrome in a way that makes automation undetectable by websites. It utilizes the Chrome DevTools Protocol and is specifically designed for macOS, using AppleScript to hide the browser while it operates."
+}

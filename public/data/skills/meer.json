@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/meer",
+  "slug": "meer",
+  "name": "Meer",
+  "headline": "Meer - AI CLI for Code Automation",
+  "short_description": "open-source, local-first AI CLI for developers. It connects to your local Ollama models or remote providers like OpenAI, Anthropic, Gemini, and Hugging Face, letting you chat with your code, review changes, and craft commits .  all from the terminal.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "meer-ai",
+  "install_command": "git clone https://github.com/meer-ai/meer.git",
+  "source_repo_url": "https://github.com/meer-ai/meer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "development",
+    "gemini-cli",
+    "cli",
+    "ai",
+    "developer-tools",
+    "codex",
+    "claude-code",
+    "developer"
+  ],
+  "sections": {
+    "overview": "MeerAI is an open-source AI CLI that brings intelligent code assistance directly to your terminal without browser tabs or SaaS lock-in. It supports local Ollama models and remote providers including OpenAI, Anthropic, Gemini, and Hugging Face, letting you chat with your codebase, review changes, and generate conventional commits. The tool offers two agent workflows—classic streaming and structured tool-driven—with 60+ built-in tools for file operations, git management, semantic search, testing, and security scans. MeerAI stores conversations and long-term memory locally by default, integrates with Model Context Protocol servers, and provides a rich terminal UI with approval overlays, timelines, and diff previews. Developers can configure multiple provider profiles, override settings per command, and extend functionality with custom slash commands.\nInteractive code review and refactoring via terminal chat\nGenerate conventional commit messages from staged changes\nRepo-aware Q&A and documentation with memory persistence\nSemantic code search and project scaffolding",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/meer-ai/meer`",
+    "usage": "```\nUse `meer` to [ACTION] in the [PROJECT_DIRECTORY]. For example: 'Generate a commit message for the staged changes in my React app using conventional commits.' or 'Review the diff of my Python script and suggest optimizations for readability and performance.' or 'Explain the changes in this Git diff and suggest a concise commit message.'\n```\nCopy\n\n```\nI reviewed the staged changes in your React app (`src/components/Button.jsx` and `src/utils/api.js`) and generated the following commit message:\n\n```\nfeat(button): enhance accessibility with ARIA labels and keyboard navigation\n\n- Add `aria-label` and `aria-describedby` to Button component\n- Implement keyboard navigation (Enter/Space to trigger, Tab to focus)\n- Refactor `api.js` to use async/await for better readability\n```\n\nThe changes improve accessibility compliance and modernize the API utility. The commit follows conventional commits format for better changelog generation. Would you like me to suggest any additional optimizations or test cases for these changes?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "meer#main-content",
+      "meer#overview",
+      "meer#setup",
+      "meer#examples",
+      "meer#tools",
+      "meer#mcp",
+      "meer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MeerAI là một AI CLI mã nguồn mở mang lại khả năng hỗ trợ code thông minh trực tiếp vào terminal của bạn mà không cần mở tab trình duyệt hay bị ràng buộc vào dịch vụ SaaS (SaaS lock-in). Công cụ hỗ trợ các mô hình Ollama cục bộ và các nhà cung cấp từ xa bao gồm OpenAI, Anthropic, Gemini và Hugging Face, cho phép bạn chat với codebase, review các thay đổi và tạo conventional commits. Công cụ cung cấp hai quy trình làm việc (agent workflow)—streaming cổ điển và điều hướng bằng công cụ có cấu trúc (structured tool-driven)—với hơn 60 công cụ tích hợp sẵn cho các thao tác tệp, quản lý git, tìm kiếm ngữ nghĩa, kiểm thử và quét bảo mật. Theo mặc định, MeerAI lưu trữ các cuộc hội thoại và bộ nhớ dài hạn cục bộ, tích hợp với các máy chủ Model Context Protocol, và cung cấp một giao diện terminal (TUI) phong phú với các lớp phủ phê duyệt (approval overlay), dòng thời gian (timeline) và xem trước diff. Lập trình viên có thể cấu hình nhiều profile nhà cung cấp, ghi đè cài đặt cho từng lệnh và mở rộng tính năng bằng các lệnh slash tùy chỉnh.\nReview và refactor code tương tác thông qua chat trong terminal\nTạo thông điệp commit chuẩn (conventional commits) từ các thay đổi đã stage\nHỏi đáp hiểu ngữ cảnh repo và tài liệu hóa với bộ nhớ lưu trữ lâu dài\nTìm kiếm code theo ngữ nghĩa và tạo khung dự án (project scaffolding)",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/meer-ai/meer`",
+    "usage_vi": "```\nSử dụng `meer` để [HÀNH ĐỘNG] trong [THƯ_MỤC_DỰ_ÁN]. Ví dụ: 'Tạo commit message cho các thay đổi đã stage trong ứng dụng React của tôi bằng conventional commits.' hoặc 'Review diff của script Python này và đề xuất tối ưu hóa giúp dễ đọc và nâng cao hiệu năng.' hoặc 'Giải thích các thay đổi trong file Git diff này và đề xuất một commit message ngắn gọn.'\n```\nSao chép\n\n```\nTôi đã review các thay đổi đã stage trong ứng dụng React của bạn (`src/components/Button.jsx` và `src/utils/api.js`) và tạo ra commit message sau:\n\n```\nfeat(button): enhance accessibility with ARIA labels and keyboard navigation\n\n- Add `aria-label` and `aria-describedby` to Button component\n- Implement keyboard navigation (Enter/Space to trigger, Tab to focus)\n- Refactor `api.js` to use async/await for better readability\n```\n\nCác thay đổi này giúp cải thiện khả năng truy cập (accessibility) và hiện đại hóa tiện ích API. Commit này tuân theo định dạng conventional commits để hỗ trợ tạo changelog tốt hơn. Bạn có muốn tôi đề xuất thêm bất kỳ tối ưu hóa hoặc test case nào cho các thay đổi này không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:17:40.866691Z",
+    "http_status": 200,
+    "content_hash": "5a6a0f6d1ec0585e628385c3788574d5192785af47ee163df5b8c23a5f26282d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\meer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\meer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Meer - AI CLI tự động hóa code",
+  "short_description_vi": "Công cụ AI CLI mã nguồn mở, ưu tiên chạy local (local-first) dành cho lập trình viên. Công cụ này kết nối với các mô hình Ollama cục bộ hoặc các nhà cung cấp từ xa như OpenAI, Anthropic, Gemini và Hugging Face, giúp bạn chat với code, review các thay đổi và soạn thảo commit... tất cả đều thực hiện ngay trên terminal."
+}

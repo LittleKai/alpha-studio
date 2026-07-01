@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-vm",
+  "slug": "claude-code-vm",
+  "name": "Claude Code Vm",
+  "headline": "claude code remote vm deployment",
+  "short_description": "Automated deployment system for Claude Code development environments on Debian VMs, supporting four progressive tiers from baseline Git/Node.js to full Kubernetes setups with 7 MCP servers.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "intelligentcode-ai",
+  "install_command": "git clone https://github.com/intelligentcode-ai/claude-code-vm.git",
+  "source_repo_url": "https://github.com/intelligentcode-ai/claude-code-vm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp",
+    "mcp-servers",
+    "claude-code",
+    "mcp-server",
+    "claude",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Code VM automates the deployment of Claude Code development environments on Debian virtual machines through a four-tier architecture. Starting with baseline Git, Node.js 22 LTS, and Claude Code CLI, the system scales progressively to include MCP servers, Docker, Docker Compose, and Kubernetes tools. It features 500+ curated security rules designed specifically for Claude Code operations, multi-provider Git credential management, and support for 7 MCP servers—4 requiring no API keys and 3 conditional on API keys. The system uses Ansible-based deployment with Make commands, supports external configuration management, and enables localhost testing without SSH. Teams benefit from context-aware Claude configuration files that automatically adapt to their deployment tier, reducing manual setup and configuration drift.\nSetting up isolated Claude Code development environments on remote Debian VMs with Git and Node.js\nDeploying Docker-based development workflows with MCP servers for AI-assisted coding\nBuilding Kubernetes clusters with Claude Code integration for scalable development infrastructure\nManaging multi-host deployments with automated configuration and credential management",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/intelligentcode-ai/claude-code-vm`\n- Docker\n- Git\n- VS Code Server\n- Python 3.9",
+    "usage": "```\nDeploy Claude Code and the following tools to a VM for remote development: [TOOLS]. The VM should be configured with [OS] and have [RESOURCES] allocated. Ensure secure access via [ACCESS_METHOD].\n```\nCopy\n\n```\n# VM Deployment Plan for Remote Development",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-vm#main-content",
+      "claude-code-vm#overview",
+      "claude-code-vm#setup",
+      "claude-code-vm#examples",
+      "claude-code-vm#tools",
+      "claude-code-vm#mcp",
+      "claude-code-vm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code VM automates the deployment of Claude Code development environments on Debian virtual machines through a four-tier architecture. Starting with baseline Git, Node.js 22 LTS, and Claude Code CLI, the system scales progressively to include MCP servers, Docker, Docker Compose, and Kubernetes tools. It features 500+ curated security rules designed specifically for Claude Code operations, multi-provider Git credential management, and support for 7 MCP servers—4 requiring no API keys and 3 conditional on API keys. The system uses Ansible-based deployment with Make commands, supports external configuration management, and enables localhost testing without SSH. Teams benefit from context-aware Claude configuration files that automatically adapt to their deployment tier, reducing manual setup and configuration drift.\nSetting up isolated Claude Code development environments on remote Debian VMs with Git and Node.js\nDeploying Docker-based development workflows with MCP servers for AI-assisted coding\nBuilding Kubernetes clusters with Claude Code integration for scalable development infrastructure\nManaging multi-host deployments with automated configuration and credential management",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/intelligentcode-ai/claude-code-vm`\n- Docker\n- Git\n- VS Code Server\n- Python 3.9",
+    "usage_vi": "```\nDeploy Claude Code and the following tools to a VM for remote development: [TOOLS]. The VM should be configured with [OS] and have [RESOURCES] allocated. Ensure secure access via [ACCESS_METHOD].\n```\nCopy\n\n```\n# VM Deployment Plan for Remote Development"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:20.970534Z",
+    "http_status": 200,
+    "content_hash": "0b81ec9929e30913e72f30df351855db6869a43c85742e787b61823a2bd7b0b9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-vm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-vm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude code remote vm deployment",
+  "short_description_vi": "Automated deployment system for Claude Code development environments on Debian VMs, supporting four progressive tiers from baseline Git/Node.js to full Kubernetes setups with 7 MCP servers."
+}

@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kubectl-mcp-server",
+  "slug": "kubectl-mcp-server",
+  "name": "browser-use",
+  "headline": "kubectl-mcp-server - Kubernetes Control via Natural",
+  "short_description": "kubectl-mcp-server is a Model Context Protocol server for Kubernetes. It enables operations teams to control Kubernetes infrastructure through natural language conversations. Install via npm or pip. Integrates with Claude LLM.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "rohitg00",
+  "install_command": "git clone https://github.com/rohitg00/kubectl-mcp-server.git",
+  "source_repo_url": "https://github.com/rohitg00/kubectl-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "npm",
+    "deployment",
+    "mcp-server",
+    "genai",
+    "pypi",
+    "llms",
+    "kubernetes-tools",
+    "mcp",
+    "ai",
+    "kubernetes",
+    "devops",
+    "kubernetes-cluster"
+  ],
+  "sections": {
+    "overview": "kubectl-mcp-server bridges AI agents and Kubernetes infrastructure by implementing the Model Context Protocol, allowing operations teams to manage clusters through natural language conversations with Claude and compatible LLM clients. The server exposes Kubernetes operations as tools accessible to AI models, enabling tasks like pod management, deployment control, and cluster monitoring without direct kubectl command-line usage. Installation is available via npm for Node.js environments or pip for Python environments, making integration straightforward for existing DevOps workflows. The tool includes Helm chart support for Kubernetes-native deployment and comes with comprehensive documentation and evaluation suites to validate agent performance.\nQuickly diagnose why a pod is crashing and receive actionable recommendations.\nDeploy a new application with best practices using simple natural language commands.\nIdentify and optimize resource usage across all pods to reduce costs.\nAudit security settings and permissions across Kubernetes namespaces effortlessly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rohitg00/kubectl-mcp-server`",
+    "usage": "```\nUse the kubectl-mcp-server to [DESCRIBE YOUR GOAL, e.g., 'list all pods in the production namespace', 'scale the deployment frontend-app to 5 replicas', or 'troubleshoot why the backend-service is failing']. Ensure you specify any required parameters like namespace, deployment name, or resource limits.\n```\nCopy\n\n```\n```\n**Action:** Scaling the `frontend-app` deployment to 5 replicas in the `production` namespace.\n\n**Response from kubectl-mcp-server:**\n```\n✅ Successfully scaled `frontend-app` deployment in namespace `production`:\n- Old replicas: 3\n- New replicas: 5\n- Status: Available (5/5)\n\n**Verification:**\n```sh\nkubectl get deployment frontend-app -n production\nNAME           READY   UP-TO-DATE   AVAILABLE   REPLICAS   AGE\nfrontend-app   5/5     5            5           5          7d\n```\n\n**Next Steps:**\n1. Monitor pod logs for any errors:\n   ```sh\n   kubectl logs -l app=frontend-app -n production --tail=50\n   ```\n2. Check resource usage to ensure capacity:\n   ```sh\n   kubectl top pods -n production -l app=frontend-app\n   ```\n\n**Note:** If you encounter errors, try:\n- Verifying the deployment name: `kubectl get deployments -n production`\n- Checking cluster access: `kubectl auth can-i scale deployments -n production`\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kubectl-mcp-server#main-content",
+      "kubectl-mcp-server#overview",
+      "kubectl-mcp-server#setup",
+      "kubectl-mcp-server#examples",
+      "kubectl-mcp-server#tools",
+      "kubectl-mcp-server#mcp",
+      "kubectl-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "kubectl-mcp-server bridges AI agents and Kubernetes infrastructure by implementing the Model Context Protocol, allowing operations teams to manage clusters through natural language conversations with Claude and compatible LLM clients. The server exposes Kubernetes operations as tools accessible to AI models, enabling tasks like pod management, deployment control, and cluster monitoring without direct kubectl command-line usage. Installation is available via npm for Node.js environments or pip for Python environments, making integration straightforward for existing DevOps workflows. The tool includes Helm chart support for Kubernetes-native deployment and comes with comprehensive documentation and evaluation suites to validate agent performance.\nQuickly diagnose why a pod is crashing and receive actionable recommendations.\nDeploy a new application with best practices using simple natural language commands.\nIdentify and optimize resource usage across all pods to reduce costs.\nAudit security settings and permissions across Kubernetes namespaces effortlessly.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rohitg00/kubectl-mcp-server`",
+    "usage_vi": "```\nUse the kubectl-mcp-server to [DESCRIBE YOUR GOAL, e.g., 'list all pods in the production namespace', 'scale the deployment frontend-app to 5 replicas', or 'troubleshoot why the backend-service is failing']. Ensure you specify any required parameters like namespace, deployment name, or resource limits.\n```\nCopy\n\n```\n```\n**Action:** Scaling the `frontend-app` deployment to 5 replicas in the `production` namespace.\n\n**Response from kubectl-mcp-server:**\n```\n✅ Successfully scaled `frontend-app` deployment in namespace `production`:\n- Old replicas: 3\n- New replicas: 5\n- Status: Available (5/5)\n\n**Verification:**\n```sh\nkubectl get deployment frontend-app -n production\nNAME           READY   UP-TO-DATE   AVAILABLE   REPLICAS   AGE\nfrontend-app   5/5     5            5           5          7d\n```\n\n**Next Steps:**\n1. Monitor pod logs for any errors:\n   ```sh\n   kubectl logs -l app=frontend-app -n production --tail=50\n   ```\n2. Check resource usage to ensure capacity:\n   ```sh\n   kubectl top pods -n production -l app=frontend-app\n   ```\n\n**Note:** If you encounter errors, try:\n- Verifying the deployment name: `kubectl get deployments -n production`\n- Checking cluster access: `kubectl auth can-i scale deployments -n production`\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:32.349556Z",
+    "http_status": 200,
+    "content_hash": "6bd9ef30e5eb145cd852b0d4c50cbebfe6a63f994c6c42bc3acc60dcfb116ddb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kubectl-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kubectl-mcp-server.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "kubectl-mcp-server - Kubernetes Control via Natural",
+  "short_description_vi": "kubectl-mcp-server is a Model Context Protocol server for Kubernetes. It enables operations teams to control Kubernetes infrastructure through natural language conversations. Install via npm or pip. Integrates with Claude LLM."
+}

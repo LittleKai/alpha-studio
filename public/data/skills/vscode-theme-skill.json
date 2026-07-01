@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vscode-theme-skill",
+  "slug": "vscode-theme-skill",
+  "name": "browser-use",
+  "headline": "vscode-theme-skill: Generate Custom Color Themes",
+  "short_description": "A Claude Code Skill for generating VSCode Color Themes",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "jugyo",
+  "install_command": "git clone https://github.com/jugyo/vscode-theme-skill.git",
+  "source_repo_url": "https://github.com/jugyo/vscode-theme-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The vscode-theme-skill is a Claude Code automation skill designed to streamline the process of generating custom color themes for Visual Studio Code (VSCode). This skill allows users to create personalized themes that enhance their coding environment, making it visually appealing and tailored to individual preferences. With an intermediate difficulty level, this skill can be implemented in approximately 30 minutes, providing users with a quick way to elevate their development experience. One of the key benefits of the vscode-theme-skill is its ability to save time by automating the tedious aspects of theme creation. Instead of manually adjusting color settings, developers can leverage this skill to generate a cohesive color palette that aligns with their project requirements or personal style. While the exact time savings are unknown, the efficiency gained from automating this process is invaluable for developers looking to optimize their workflow. This skill is particularly beneficial for developers, product managers, and UI/UX designers who are involved in creating or customizing applications. By using the vscode-theme-skill, these professionals can enhance their productivity and focus on more critical aspects of their projects. For instance, a frontend developer can quickly generate a theme that matches the branding of a client’s application, ensuring consistency across the project without getting bogged down in manual adjustments. Implementing the vscode-theme-skill requires an intermediate understanding of VSCode and its theming capabilities. As part of an AI-first workflow, this skill integrates seamlessly into the development process, allowing users to harness AI automation for repetitive tasks. By incorporating this skill, teams can improve their overall efficiency and creativity, ultimately leading to better project outcomes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jugyo/vscode-theme-skill`",
+    "usage": "```\nCreate a VSCode color theme named [THEME_NAME] with a [MOOD] aesthetic. The theme should have a [PRIMARY_COLOR] primary color and [SECONDARY_COLOR] secondary color. Include comments explaining the color choices and their intended effect on developer productivity and comfort. Output the theme in JSON format.\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"Twilight Serenity\",\n  \"type\": \"dark\",\n  \"colors\": {\n    \"editor.background\": \"#1a1a2e\",\n    \"editor.foreground\": \"#e6e6e6\",\n    \"editorCursor.foreground\": \"#bb86fc\",\n    \"editor.lineHighlightBackground\": \"#2a2a3f\",\n    \"editor.selectionBackground\": \"#3a3a5a\",\n    \"activityBar.background\": \"#1a1a2e\",\n    \"sideBar.background\": \"#161625\",\n    \"tab.activeBackground\": \"#2a2a3f\",\n    \"statusBar.background\": \"#1a1a2e\"\n  },\n  \"tokenColors\": [\n    {\n      \"scope\": [\"comment\"],\n      \"settings\": {\n        \"foreground\": \"#6b7386\",\n        \"fontStyle\": \"italic\"\n      }\n    },\n    {\n      \"scope\": [\"string\"],\n      \"settings\": {\n        \"foreground\": \"#bb86fc\"\n      }\n    }\n  ]\n}\n```\n\n**Color Choices Explanation**:\n- **Primary Color (#bb86fc)**: A soft purple that is easy on the eyes and provides good contrast against the dark background. This color is used for strings and important UI elements to draw attention without causing strain.\n- **Secondary Color (#e6e6e6)**: A light gray for the main text color, ensuring readability while maintaining a soft, calming aesthetic.\n- **Background (#1a1a2e)**: A deep blue-black background that reduces eye strain and creates a serene atmosphere, perfect for late-night coding sessions.\n\n**Intended Effect**: This theme is designed to reduce eye strain and improve focus by using a dark, calming color palette. The soft purple accents help to highlight important elements without being overly distracting, making it ideal for developers who work long hours or in low-light environments.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vscode-theme-skill#main-content",
+      "vscode-theme-skill#overview",
+      "vscode-theme-skill#setup",
+      "vscode-theme-skill#examples",
+      "vscode-theme-skill#tools",
+      "vscode-theme-skill#mcp",
+      "vscode-theme-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The vscode-theme-skill is a Claude Code automation skill designed to streamline the process of generating custom color themes for Visual Studio Code (VSCode). This skill allows users to create personalized themes that enhance their coding environment, making it visually appealing and tailored to individual preferences. With an intermediate difficulty level, this skill can be implemented in approximately 30 minutes, providing users with a quick way to elevate their development experience. One of the key benefits of the vscode-theme-skill is its ability to save time by automating the tedious aspects of theme creation. Instead of manually adjusting color settings, developers can leverage this skill to generate a cohesive color palette that aligns with their project requirements or personal style. While the exact time savings are unknown, the efficiency gained from automating this process is invaluable for developers looking to optimize their workflow. This skill is particularly beneficial for developers, product managers, and UI/UX designers who are involved in creating or customizing applications. By using the vscode-theme-skill, these professionals can enhance their productivity and focus on more critical aspects of their projects. For instance, a frontend developer can quickly generate a theme that matches the branding of a client’s application, ensuring consistency across the project without getting bogged down in manual adjustments. Implementing the vscode-theme-skill requires an intermediate understanding of VSCode and its theming capabilities. As part of an AI-first workflow, this skill integrates seamlessly into the development process, allowing users to harness AI automation for repetitive tasks. By incorporating this skill, teams can improve their overall efficiency and creativity, ultimately leading to better project outcomes.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jugyo/vscode-theme-skill`",
+    "usage_vi": "```\nCreate a VSCode color theme named [THEME_NAME] with a [MOOD] aesthetic. The theme should have a [PRIMARY_COLOR] primary color and [SECONDARY_COLOR] secondary color. Include comments explaining the color choices and their intended effect on developer productivity and comfort. Output the theme in JSON format.\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"Twilight Serenity\",\n  \"type\": \"dark\",\n  \"colors\": {\n    \"editor.background\": \"#1a1a2e\",\n    \"editor.foreground\": \"#e6e6e6\",\n    \"editorCursor.foreground\": \"#bb86fc\",\n    \"editor.lineHighlightBackground\": \"#2a2a3f\",\n    \"editor.selectionBackground\": \"#3a3a5a\",\n    \"activityBar.background\": \"#1a1a2e\",\n    \"sideBar.background\": \"#161625\",\n    \"tab.activeBackground\": \"#2a2a3f\",\n    \"statusBar.background\": \"#1a1a2e\"\n  },\n  \"tokenColors\": [\n    {\n      \"scope\": [\"comment\"],\n      \"settings\": {\n        \"foreground\": \"#6b7386\",\n        \"fontStyle\": \"italic\"\n      }\n    },\n    {\n      \"scope\": [\"string\"],\n      \"settings\": {\n        \"foreground\": \"#bb86fc\"\n      }\n    }\n  ]\n}\n```\n\n**Color Choices Explanation**:\n- **Primary Color (#bb86fc)**: A soft purple that is easy on the eyes and provides good contrast against the dark background. This color is used for strings and important UI elements to draw attention without causing strain.\n- **Secondary Color (#e6e6e6)**: A light gray for the main text color, ensuring readability while maintaining a soft, calming aesthetic.\n- **Background (#1a1a2e)**: A deep blue-black background that reduces eye strain and creates a serene atmosphere, perfect for late-night coding sessions.\n\n**Intended Effect**: This theme is designed to reduce eye strain and improve focus by using a dark, calming color palette. The soft purple accents help to highlight important elements without being overly distracting, making it ideal for developers who work long hours or in low-light environments.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:17:34.629738Z",
+    "http_status": 200,
+    "content_hash": "e766b4baa8f9132f126b2e0ccb6fa71fa2547c8bce0c58adc827ebf5b46d5eb9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vscode-theme-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vscode-theme-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "vscode-theme-skill: Generate Custom Color Themes",
+  "short_description_vi": "A Claude Code Skill for generating VSCode Color Themes"
+}

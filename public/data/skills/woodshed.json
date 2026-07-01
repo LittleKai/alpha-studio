@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/woodshed",
+  "slug": "woodshed",
+  "name": "Woodshed",
+  "headline": "Woodshed - Claude Skills Automation",
+  "short_description": "Create, run, rate, and iterate on Claude Skills. Designed for operations teams to streamline workflow automation. Connects to Claude agents for rapid development and testing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "gaearon",
+  "install_command": "git clone https://github.com/gaearon/woodshed.git",
+  "source_repo_url": "https://github.com/gaearon/woodshed",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "Woodshed is a tool for creating and iterating on Claude Skills through automated testing and evaluation. It runs Skills against fixtures, captures results, and enables rapid refinement cycles by comparing variants and analyzing performance. The tool supports multiple skill variants, fixture-based testing, and batch runs to identify what works best. Built for teams that need to systematically develop and improve Claude-based workflow automation agents. Setup involves creating a workspace, defining skills and test fixtures, then running the evaluation matrix to collect results for analysis.\nTesting multiple skill variants against consistent test cases\nAutomating Claude agent evaluation and iteration workflows\nComparing baseline vs. experimental skill implementations\nCollecting structured results for skill performance analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gaearon/woodshed`",
+    "usage": "```\nDevelop a new Claude Skill called [SKILL_NAME] focused on [DOMAIN: e.g., customer support, sales automation]. Use the following structure for the skill: '## Overview\\n[1-2 sentences describing the skill].\\n## Actions\\n[3-5 bullet points listing specific actions users can take].\\n## Rating Criteria\\n[3-5 criteria the AI will use to rate the skill's effectiveness].' Include [PLACEHOLDERS] for the skill's name, domain, and any customization needed. Test the skill by running it in [TOOL: e.g., Claude Console, VS Code with Claude extension].\n```\nCopy\n\n```\nA new Claude Skill named 'Customer Support Automation' was created and tested. The skill includes an overview ('Automates routine customer support tasks like ticket routing and FAQ generation'), actions ('Run automated ticket routing for [DEPARTMENT], Generate FAQ snippets for [TOPIC], Rate the skill's effectiveness using [CRITERIA]'), and rating criteria ('Response time improvement, Ticket deflection rate, User satisfaction score').\n\nThe skill was tested by running it in Claude Console. During the test, 500 customer support tickets were automatically routed, and a 15% improvement in response time was observed. The skill's effectiveness was rated using the following criteria: response time improvement (15%), ticket deflection rate (20%), user satisfaction score (4.2/5). Based on these ratings, the skill was iterated on to include additional actions like 'Generate FAQ snippets for [TOPIC]' and 'Rate the skill's effectiveness using [CRITERIA]'.\n\nThe final output of the skill included a summary of the test results, the skill's actions, and the skill's rating criteria. The summary stated: 'The Customer Support Automation skill successfully automated routine tasks, resulting in a 15% improvement in response time. Additional actions were included to further enhance the skill's effectiveness.'\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "woodshed#main-content",
+      "woodshed#overview",
+      "woodshed#setup",
+      "woodshed#examples",
+      "woodshed#tools",
+      "woodshed#mcp",
+      "woodshed#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Woodshed là công cụ hỗ trợ tạo và cải tiến Claude Skills thông qua quy trình kiểm thử và đánh giá tự động. Công cụ này chạy các Skill dựa trên các fixture, ghi lại kết quả và rút ngắn chu kỳ tinh chỉnh bằng cách so sánh các biến thể và phân tích hiệu năng. Woodshed hỗ trợ nhiều biến thể skill, kiểm thử dựa trên fixture và chạy hàng loạt (batch runs) để tìm ra phương án tối ưu nhất. Được phát triển cho các đội ngũ cần xây dựng và cải tiến các workflow automation agent dựa trên Claude một cách hệ thống. Quy trình setup bao gồm việc tạo workspace, định nghĩa skill và test fixture, sau đó chạy ma trận đánh giá (evaluation matrix) để thu thập kết quả phân tích.\nKiểm thử nhiều biến thể skill trên các test case đồng nhất\nTự động hóa quy trình đánh giá và cải tiến Claude agent\nSo sánh bản triển khai thực nghiệm (experimental) với bản cơ sở (baseline) của skill\nThu thập kết quả có cấu trúc để phân tích hiệu năng của skill",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/gaearon/woodshed`",
+    "usage_vi": "```\nXây dựng một Claude Skill mới tên là [SKILL_NAME] tập trung vào lĩnh vực [DOMAIN: ví dụ: hỗ trợ khách hàng, tự động hóa bán hàng]. Sử dụng cấu trúc sau cho skill: '## Overview\\n[1-2 câu mô tả skill].\\n## Actions\\n[3-5 gạch đầu dòng liệt kê các hành động cụ thể người dùng có thể thực hiện].\\n## Rating Criteria\\n[3-5 tiêu chí mà AI sẽ sử dụng để đánh giá hiệu quả của skill].' Bao gồm các [PLACEHOLDERS] cho tên skill, domain và bất kỳ tùy chỉnh nào cần thiết. Kiểm thử skill bằng cách chạy trong [TOOL: ví dụ: Claude Console, VS Code với extension Claude].\n```\nCopy\n\n```\nMột Claude Skill mới có tên 'Tự động hóa Hỗ trợ Khách hàng' (Customer Support Automation) đã được khởi tạo và kiểm thử. Skill này bao gồm phần tổng quan ('Tự động hóa các tác vụ hỗ trợ khách hàng thường nhật như phân luồng ticket và tạo FAQ'), các hành động ('Chạy phân luồng ticket tự động cho [DEPARTMENT], Tạo các đoạn FAQ cho [TOPIC], Đánh giá hiệu quả của skill bằng [CRITERIA]') và tiêu chí đánh giá ('Cải thiện thời gian phản hồi, Tỷ lệ giảm tải ticket, Điểm số hài lòng của người dùng').\n\nSkill này đã được kiểm thử bằng cách chạy trong Claude Console. Trong quá trình thử nghiệm, 500 ticket hỗ trợ khách hàng đã được phân luồng tự động, giúp cải thiện 15% thời gian phản hồi. Hiệu quả của skill được đánh giá dựa trên các tiêu chí sau: cải thiện thời gian phản hồi (15%), tỷ lệ giảm tải ticket (20%), điểm hài lòng của người dùng (4.2/5). Dựa trên các đánh giá này, skill đã được cải tiến để bổ sung thêm các hành động như 'Tạo các đoạn FAQ cho [TOPIC]' và 'Đánh giá hiệu quả của skill bằng [CRITERIA]'.\n\nKết quả đầu ra cuối cùng của skill bao gồm bản tóm tắt kết quả kiểm thử, các hành động của skill và tiêu chí đánh giá skill. Bản tóm tắt nêu rõ: 'Skill Tự động hóa Hỗ trợ Khách hàng đã tự động hóa thành công các tác vụ thường nhật, giúp cải thiện 15% thời gian phản hồi. Các hành động bổ sung đã được tích hợp để nâng cao hơn nữa hiệu quả của skill.'\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:18.039337Z",
+    "http_status": 200,
+    "content_hash": "33d1141a30debac8dd6d6bf1c4a96028c7588b1f38e2705f0577467755d54c0f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\woodshed.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\woodshed.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Woodshed - Tự động hóa Claude Skills",
+  "short_description_vi": "Khởi tạo, vận hành, đánh giá và cải tiến liên tục Claude Skills. Được thiết kế cho các đội ngũ vận hành nhằm tối ưu hóa quy trình tự động hóa workflow. Kết nối trực tiếp với các Claude agent để đẩy nhanh tốc độ phát triển và thử nghiệm."
+}

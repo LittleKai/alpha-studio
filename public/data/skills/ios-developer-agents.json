@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ios-developer-agents",
+  "slug": "ios-developer-agents",
+  "name": "browser-use",
+  "headline": "iOS Developer Agents - Automate iOS App Validation",
+  "short_description": "AI agents validate, audit, and improve iOS apps. Developers use these agents to automate code reviews, identify bugs, and optimize performance. Integrates with Xcode and GitHub workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "gygantskiyMatilyock",
+  "install_command": "git clone https://github.com/gygantskiyMatilyock/ios-developer-agents.git",
+  "source_repo_url": "https://github.com/gygantskiyMatilyock/ios-developer-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "vibe-coding",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "iOS Developer Agents automate validation of your iOS apps against Apple's Review Guidelines, OWASP Mobile Top 10 2024 security standards, and accessibility compliance (WCAG 2.2, VoiceOver, Dynamic Type). The skill includes three specialized agents: App Store Validator catches rejections before submission, Security Auditor identifies vulnerabilities and best practice violations, and Accessibility Validator ensures compliance with Apple HIG and modern accessibility standards. Designed for iOS developers and teams, it integrates seamlessly with Claude Code, Cursor, and Claude.ai Projects—no external dependencies required. Set up takes minutes by copying configuration files to your project, enabling automated code review workflows in your development environment.\nPre-validate iOS apps against Apple Review Guidelines to reduce App Store rejections\nAudit Swift code and configurations for OWASP Mobile Top 10 security vulnerabilities\nCheck accessibility compliance with WCAG 2.2, VoiceOver, and Dynamic Type support\nIntegrate automated app validation into team PR workflows and development processes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gygantskiyMatilyock/ios-developer-agents`",
+    "usage": "```\nAct as an iOS development agent. Review the Swift codebase for [PROJECT_NAME] in [REPOSITORY_URL] or [FILE_PATH]. Focus on: [1] Identifying potential memory leaks or retain cycles, [2] Checking for thread-safety issues in [SPECIFIC_MODULE], [3] Suggesting optimizations for [PERFORMANCE_BOTTLENECK], and [4] Ensuring compliance with [CODING_STANDARD]. Provide a prioritized list of issues with suggested fixes and code snippets. Include a summary of the most critical risks to address first.\n```\nCopy\n\n```\n### iOS Code Review Report for *WeatherApp* (v2.4.1)\n\n**Critical Issues (Fix Immediately)**\n1. **Memory Leak in `LocationManager`**\n   - *Issue*: The `CLLocationManager` delegate is not being deallocated due to a strong reference cycle in the `WeatherViewController`.\n   - *Evidence*: Instruments shows a 12MB memory growth after 5 location updates.\n   - *Fix*:\n ```swift\n     class WeatherViewController: UIViewController {\n         private weak var locationManager: CLLocationManager! // Changed to weak\n     }\n ```\n   - *Impact*: Could cause crashes on older devices after prolonged use.\n\n2. **Thread-Safety Violation in `DataCache`**\n   - *Issue*: The `cachedWeatherData` dictionary is accessed from multiple threads without synchronization.\n   - *Evidence*: Crash logs show `EXC_BAD_ACCESS` in `viewDidLoad()`.\n   - *Fix*:\n ```swift\n     private let cacheQueue = DispatchQueue(label: \"com.weatherapp.cache\", attributes: .concurrent)\n     func save(data: WeatherData) {\n         cacheQueue.async(flags: .barrier) { [weak self] in\n             self?.cachedWeatherData[data.id] = data\n         }\n     }\n ```\n\n**Performance Optimizations**\n1. **Image Loading Bottleneck**\n   - *Issue*: `UIImage(named:)` is called synchronously in `tableView(_:cellForRowAt:)`, causing UI stutter.\n   - *Fix*: Use `DispatchQueue.global().async` with a placeholder image.\n   - *Result*: Measured improvement: 40% faster scroll performance.\n\n2. **Unnecessary Core Data Saves**\n   - *Issue*: The app saves context after every minor UI update (e.g., `viewWillDisappear`).\n   - *Fix*: Batch saves every 5 seconds using `NSManagedObjectContext.perform` with a debounce.\n\n**Compliance Notes**\n- ✅ Follows Swift API Design Guidelines (no force-unwrapping in production code).\n- ⚠️ Violation: `UserDefaults` used for sensitive data (should use `Keychain`).\n- 🔧 Suggestion: Add `swiftlint` to CI pipeline to enforce style rules.\n\n**Top 3 Risks to Address**\n1. Memory leak in `LocationManager` (high crash risk).\n2. Thread-safety issues in `DataCache` (data corruption possible).\n3. Sensitive data stored in `UserDefaults` (security risk).\n\n**Next Steps**\n- Prioritize memory leak fixes for the next hotfix release.\n- Add unit tests for `DataCache` thread safety.\n- Schedule a security review for data storage practices.\n\n---\n*Generated by iOS Development Agent | Xcode 15.2 | Swift 5.9*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ios-developer-agents#main-content",
+      "ios-developer-agents#overview",
+      "ios-developer-agents#setup",
+      "ios-developer-agents#examples",
+      "ios-developer-agents#tools",
+      "ios-developer-agents#mcp",
+      "ios-developer-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "iOS Developer Agents automate validation of your iOS apps against Apple's Review Guidelines, OWASP Mobile Top 10 2024 security standards, and accessibility compliance (WCAG 2.2, VoiceOver, Dynamic Type). The skill includes three specialized agents: App Store Validator catches rejections before submission, Security Auditor identifies vulnerabilities and best practice violations, and Accessibility Validator ensures compliance with Apple HIG and modern accessibility standards. Designed for iOS developers and teams, it integrates seamlessly with Claude Code, Cursor, and Claude.ai Projects—no external dependencies required. Set up takes minutes by copying configuration files to your project, enabling automated code review workflows in your development environment.\nPre-validate iOS apps against Apple Review Guidelines to reduce App Store rejections\nAudit Swift code and configurations for OWASP Mobile Top 10 security vulnerabilities\nCheck accessibility compliance with WCAG 2.2, VoiceOver, and Dynamic Type support\nIntegrate automated app validation into team PR workflows and development processes",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gygantskiyMatilyock/ios-developer-agents`",
+    "usage_vi": "```\nAct as an iOS development agent. Review the Swift codebase for [PROJECT_NAME] in [REPOSITORY_URL] or [FILE_PATH]. Focus on: [1] Identifying potential memory leaks or retain cycles, [2] Checking for thread-safety issues in [SPECIFIC_MODULE], [3] Suggesting optimizations for [PERFORMANCE_BOTTLENECK], and [4] Ensuring compliance with [CODING_STANDARD]. Provide a prioritized list of issues with suggested fixes and code snippets. Include a summary of the most critical risks to address first.\n```\nCopy\n\n```\n### iOS Code Review Report for *WeatherApp* (v2.4.1)\n\n**Critical Issues (Fix Immediately)**\n1. **Memory Leak in `LocationManager`**\n   - *Issue*: The `CLLocationManager` delegate is not being deallocated due to a strong reference cycle in the `WeatherViewController`.\n   - *Evidence*: Instruments shows a 12MB memory growth after 5 location updates.\n   - *Fix*:\n ```swift\n     class WeatherViewController: UIViewController {\n         private weak var locationManager: CLLocationManager! // Changed to weak\n     }\n ```\n   - *Impact*: Could cause crashes on older devices after prolonged use.\n\n2. **Thread-Safety Violation in `DataCache`**\n   - *Issue*: The `cachedWeatherData` dictionary is accessed from multiple threads without synchronization.\n   - *Evidence*: Crash logs show `EXC_BAD_ACCESS` in `viewDidLoad()`.\n   - *Fix*:\n ```swift\n     private let cacheQueue = DispatchQueue(label: \"com.weatherapp.cache\", attributes: .concurrent)\n     func save(data: WeatherData) {\n         cacheQueue.async(flags: .barrier) { [weak self] in\n             self?.cachedWeatherData[data.id] = data\n         }\n     }\n ```\n\n**Performance Optimizations**\n1. **Image Loading Bottleneck**\n   - *Issue*: `UIImage(named:)` is called synchronously in `tableView(_:cellForRowAt:)`, causing UI stutter.\n   - *Fix*: Use `DispatchQueue.global().async` with a placeholder image.\n   - *Result*: Measured improvement: 40% faster scroll performance.\n\n2. **Unnecessary Core Data Saves**\n   - *Issue*: The app saves context after every minor UI update (e.g., `viewWillDisappear`).\n   - *Fix*: Batch saves every 5 seconds using `NSManagedObjectContext.perform` with a debounce.\n\n**Compliance Notes**\n- ✅ Follows Swift API Design Guidelines (no force-unwrapping in production code).\n- ⚠️ Violation: `UserDefaults` used for sensitive data (should use `Keychain`).\n- 🔧 Suggestion: Add `swiftlint` to CI pipeline to enforce style rules.\n\n**Top 3 Risks to Address**\n1. Memory leak in `LocationManager` (high crash risk).\n2. Thread-safety issues in `DataCache` (data corruption possible).\n3. Sensitive data stored in `UserDefaults` (security risk).\n\n**Next Steps**\n- Prioritize memory leak fixes for the next hotfix release.\n- Add unit tests for `DataCache` thread safety.\n- Schedule a security review for data storage practices.\n\n---\n*Generated by iOS Development Agent | Xcode 15.2 | Swift 5.9*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:41:17.828496Z",
+    "http_status": 200,
+    "content_hash": "c8fe9d9135f4f08ab723e06013e39eb838fa1ac9c41d60977a5bd8c2e6ab2f50",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ios-developer-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ios-developer-agents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "iOS Developer Agents - Automate iOS App Validation",
+  "short_description_vi": "AI agents validate, audit, and improve iOS apps. Developers use these agents to automate code reviews, identify bugs, and optimize performance. Integrates with Xcode and GitHub workflows."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/typescript-sdk",
+  "slug": "typescript-sdk",
+  "name": "Typescript Sdk",
+  "headline": "TypeScript SDK for Model Context Protocol",
+  "short_description": "The TypeScript SDK for Model Context Protocol enables integration for developers building applications with Model Context Protocol servers and clients. It simplifies the development process, ensuring efficient communication and data handling.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/typescript-sdk",
+  "source_repo_url": "https://github.com/modelcontextprotocol/typescript-sdk",
+  "works_with": [
+    "VS CodeGitHub Copilot"
+  ],
+  "tags": [
+    "TypeScript",
+    "SDK",
+    "Model Context Protocol",
+    "development tools",
+    "API"
+  ],
+  "sections": {
+    "overview": "The TypeScript SDK provides official tooling for developers integrating Model Context Protocol (MCP) into their applications. It includes packages, examples, and utilities for building both MCP servers and clients with standardized request/response handling. The SDK supports custom method handling through request schema definition and includes transport abstractions for different communication patterns. Developers can leverage type-checked examples and comprehensive documentation to accelerate MCP implementation. The project maintains backward compatibility across versions and is actively maintained with regular updates.\nBuild applications that utilize Model Context Protocol for efficient data handling.\nIntegrate TypeScript with backend services to streamline communication.\nCreate robust client-server communication protocols for real-time data exchange.\nDevelop data-driven applications that require seamless integration with external services.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/typescript-sdk`\n`git clone https://github.com/modelcontextprotocol/typescript-sdk`",
+    "usage": "```\nGenerate a TypeScript SDK integration guide for a [PROTOCOL] application. Include code snippets for setting up the client and server, handling authentication, and managing data streams. Focus on [SPECIFIC USE CASE] such as real-time data processing or secure communication.\n```\nCopy\n\n```\nTo integrate the TypeScript SDK for Model Context Protocol into your application, follow these steps:\n\n1. **Installation**: Begin by installing the SDK using npm or yarn:\n```bash\nnpm install @model-context/protocol-sdk\nyarn add @model-context/protocol-sdk\n```\n\n2. **Client Setup**: Initialize the client with your API key and server URL:\n```typescript\nimport { ModelContextClient } from '@model-context/protocol-sdk';\n\nconst client = new ModelContextClient({\n  apiKey: 'your-api-key',\n  serverUrl: 'https://your-server-url.com'\n});\n```\n\n3. **Authentication**: Handle authentication by setting up the necessary headers:\n```typescript\nconst authHeaders = {\n  'Authorization': `Bearer ${yourAuthToken}`\n};\n```\n\n4. **Data Handling**: Manage data streams by subscribing to events:\n```typescript\nclient.subscribeToEvents('dataStream', (data) => {\n  console.log('Received data:', data);\n});\n```\n\n5. **Error Handling**: Implement error handling to manage potential issues:\n```typescript\nclient.onError((error) => {\n  console.error('An error occurred:', error);\n});\n```\n\nBy following these steps, you can seamlessly integrate the TypeScript SDK into your application, ensuring efficient communication and data handling.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: VS Code, GitHub Copilot"
+    ],
+    "related_skills": [
+      "typescript-sdk#main-content",
+      "typescript-sdk#overview",
+      "typescript-sdk#setup",
+      "typescript-sdk#examples",
+      "typescript-sdk#tools",
+      "typescript-sdk#mcp",
+      "typescript-sdk#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The TypeScript SDK provides official tooling for developers integrating Model Context Protocol (MCP) into their applications. It includes packages, examples, and utilities for building both MCP servers and clients with standardized request/response handling. The SDK supports custom method handling through request schema definition and includes transport abstractions for different communication patterns. Developers can leverage type-checked examples and comprehensive documentation to accelerate MCP implementation. The project maintains backward compatibility across versions and is actively maintained with regular updates.\nBuild applications that utilize Model Context Protocol for efficient data handling.\nIntegrate TypeScript with backend services to streamline communication.\nCreate robust client-server communication protocols for real-time data exchange.\nDevelop data-driven applications that require seamless integration with external services.",
+    "setup_vi": "Terminal\nCopy\n`claude install modelcontextprotocol/typescript-sdk`\n`git clone https://github.com/modelcontextprotocol/typescript-sdk`",
+    "usage_vi": "```\nGenerate a TypeScript SDK integration guide for a [PROTOCOL] application. Include code snippets for setting up the client and server, handling authentication, and managing data streams. Focus on [SPECIFIC USE CASE] such as real-time data processing or secure communication.\n```\nCopy\n\n```\nTo integrate the TypeScript SDK for Model Context Protocol into your application, follow these steps:\n\n1. **Installation**: Begin by installing the SDK using npm or yarn:\n```bash\nnpm install @model-context/protocol-sdk\nyarn add @model-context/protocol-sdk\n```\n\n2. **Client Setup**: Initialize the client with your API key and server URL:\n```typescript\nimport { ModelContextClient } from '@model-context/protocol-sdk';\n\nconst client = new ModelContextClient({\n  apiKey: 'your-api-key',\n  serverUrl: 'https://your-server-url.com'\n});\n```\n\n3. **Authentication**: Handle authentication by setting up the necessary headers:\n```typescript\nconst authHeaders = {\n  'Authorization': `Bearer ${yourAuthToken}`\n};\n```\n\n4. **Data Handling**: Manage data streams by subscribing to events:\n```typescript\nclient.subscribeToEvents('dataStream', (data) => {\n  console.log('Received data:', data);\n});\n```\n\n5. **Error Handling**: Implement error handling to manage potential issues:\n```typescript\nclient.onError((error) => {\n  console.error('An error occurred:', error);\n});\n```\n\nBy following these steps, you can seamlessly integrate the TypeScript SDK into your application, ensuring efficient communication and data handling.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:50.233384Z",
+    "http_status": 200,
+    "content_hash": "c4a0cb68b6904f1ac016a7091b3fcc0715b6cb79f0c5379a8b46e1ba9b8ff9db",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\typescript-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\typescript-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TypeScript SDK for Model Context Protocol",
+  "short_description_vi": "The TypeScript SDK for Model Context Protocol enables integration for developers building applications with Model Context Protocol servers and clients. It simplifies the development process, ensuring efficient communication and data handling."
+}

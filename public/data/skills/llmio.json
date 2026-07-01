@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llmio",
+  "slug": "llmio",
+  "name": "LLMIO",
+  "headline": "LLMIO - LLM Load Balancer Gateway",
+  "short_description": "LLMIO is a Go-based LLM load balancer gateway that provides a unified REST API, weight-based scheduling, logging, and a modern management interface. It integrates OpenAI, Anthropic, and Gemini models into a single service for LLM clients like Claude Code, Codex, Gemini CLI, and Cherry Studio.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "atopos31",
+  "install_command": "git clone https://github.com/atopos31/llmio.git",
+  "source_repo_url": "https://github.com/atopos31/llmio",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "gemini-cli",
+    "newapi",
+    "openai",
+    "codex",
+    "go",
+    "golang",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "LLMIO is a Go-based gateway that consolidates OpenAI, Anthropic, and Gemini models into a single load-balanced service. It provides a unified REST API compatible with OpenAI Chat Completions, Anthropic Messages, and Gemini Native formats, supporting both streaming and non-streaming requests. The gateway implements weight-based scheduling (random or priority strategies) to distribute traffic across providers based on capabilities like tool calling, structured output, and multimodal support. Built-in features include rate limiting, failure handling, session tracking via TraceID, and comprehensive observability with per-request latency breakdown, token usage logging, and cost calculation. A React-based admin UI allows management of providers, models, associations, and request logs with multi-dimensional search filters.\nRoute LLM requests across multiple providers to optimize cost and latency\nLoad-balance Claude Code, Cursor, and other AI editor integrations across model providers\nTrack token usage, latency, and per-request costs across OpenAI, Anthropic, and Gemini\nImplement provider failover and rate-limit fallback for reliable LLM service",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/atopos31/llmio`",
+    "usage": "```\nSet up and configure LLMIO as a load balancer gateway for [YOUR_LLM_PROVIDERS]. Define weight-based scheduling for [MODEL_A] (weight: [X]), [MODEL_B] (weight: [Y]), and [MODEL_C] (weight: [Z]). Enable logging to [LOG_DESTINATION] and test the unified REST API endpoint at [API_URL]. Verify failover behavior by simulating a provider outage for [PROVIDER_NAME].\n```\nCopy\n\n```\n### LLMIO Load Balancer Configuration Report\n\n**Setup Summary:**\n- **Version:** LLMIO v1.2.3 (Go-based)\n- **Providers Integrated:** OpenAI (GPT-4o), Anthropic (Claude 3.5 Sonnet), Google (Gemini 1.5 Pro)\n- **Weight-Based Scheduling:**\n  - GPT-4o: 50% (weight: 5)\n  - Claude 3.5 Sonnet: 30% (weight: 3)\n  - Gemini 1.5 Pro: 20% (weight: 2)\n- **Logging:** Enabled (JSON format) to `/var/log/llmio/llmio.log`\n- **API Endpoint:** `http://llm-gateway.internal:8080/v1/chat/completions`\n\n**Test Results:**\n1. **Health Check:** All providers responded within 200ms. GPT-4o handled 52% of requests, Claude 30%, and Gemini 18%—aligning with configured weights.\n2. **Failover Test:** Simulated an outage for OpenAI by blocking their API. LLMIO automatically rerouted 100% of traffic to Anthropic and Google. No errors were logged, and latency increased by only 15ms.\n3. **Management Interface:** Accessed at `http://llm-gateway.internal:8080/admin` to monitor real-time metrics. Observed 472 requests processed in the last hour with an average response time of 187ms.\n\n**Recommendations:**\n- Adjust weights to [70, 20, 10] for cost optimization during peak hours.\n- Enable caching for repeated prompts (e.g., system messages) to reduce provider costs by ~15%.\n- Monitor `/var/log/llmio/llmio.log` for rate-limiting warnings from Anthropic (observed 3 instances in the last 24 hours).\n\n**Next Steps:**\n- Deploy this configuration to production and integrate with [YOUR_LLM_CLIENT] (e.g., Claude Code) using the unified API endpoint.\n- Set up alerts for provider latency > 500ms or error rates > 5%.\n- Schedule a quarterly review to adjust weights based on cost/performance data.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "llmio#main-content",
+      "llmio#overview",
+      "llmio#setup",
+      "llmio#examples",
+      "llmio#tools",
+      "llmio#mcp",
+      "llmio#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LLMIO là gateway viết bằng Go giúp hợp nhất các mô hình OpenAI, Anthropic và Gemini thành một dịch vụ cân bằng tải duy nhất. Nó cung cấp một REST API hợp nhất tương thích với các định dạng OpenAI Chat Completions, Anthropic Messages và Gemini Native, hỗ trợ cả request dạng streaming và non-streaming. Gateway này triển khai cơ chế điều phối theo trọng số (chiến lược ngẫu nhiên hoặc ưu tiên) để phân phối traffic giữa các nhà cung cấp dựa trên các khả năng như tool calling, structured output và hỗ trợ đa phương thức (multimodal). Các tính năng tích hợp sẵn bao gồm giới hạn tần suất (rate limiting), xử lý lỗi (failure handling), theo dõi phiên qua TraceID, và khả năng giám sát toàn diện (observability) với phân tích chi tiết độ trễ trên từng request, ghi log lượng sử dụng token và tính toán chi phí. Giao diện admin viết bằng React cho phép quản lý các nhà cung cấp, mô hình, các liên kết (associations) và nhật ký request (request logs) với các bộ lọc tìm kiếm đa chiều.\nĐịnh tuyến các request LLM qua nhiều nhà cung cấp để tối ưu hóa chi phí và độ trễ\nCân bằng tải cho Claude Code, Cursor và các tích hợp trình soạn thảo AI khác giữa các nhà cung cấp mô hình\nTheo dõi lượng sử dụng token, độ trễ và chi phí trên từng request đối với OpenAI, Anthropic và Gemini\nTriển khai cơ chế dự phòng khi nhà cung cấp lỗi (failover) và fallback khi bị giới hạn tần suất (rate-limit) để đảm bảo dịch vụ LLM hoạt động tin cậy",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/atopos31/llmio`",
+    "usage_vi": "```\nThiết lập và cấu hình LLMIO làm gateway cân bằng tải cho [YOUR_LLM_PROVIDERS]. Định nghĩa cơ chế điều phối theo trọng số cho [MODEL_A] (trọng số: [X]), [MODEL_B] (trọng số: [Y]) và [MODEL_C] (trọng số: [Z]). Bật ghi log vào [LOG_DESTINATION] và kiểm tra endpoint REST API hợp nhất tại [API_URL]. Xác minh cơ chế failover bằng cách giả lập sự cố ngừng hoạt động của nhà cung cấp đối với [PROVIDER_NAME].\n```\nCopy\n\n```\n### Báo cáo cấu hình Gateway cân bằng tải LLMIO\n\n**Tóm tắt thiết lập:**\n- **Phiên bản:** LLMIO v1.2.3 (viết bằng Go)\n- **Nhà cung cấp đã tích hợp:** OpenAI (GPT-4o), Anthropic (Claude 3.5 Sonnet), Google (Gemini 1.5 Pro)\n- **Điều phối theo trọng số:**\n  - GPT-4o: 50% (trọng số: 5)\n  - Claude 3.5 Sonnet: 30% (trọng số: 3)\n  - Gemini 1.5 Pro: 20% (trọng số: 2)\n- **Ghi log:** Đã bật (định dạng JSON) lưu tại `/var/log/llmio/llmio.log`\n- **API Endpoint:** `http://llm-gateway.internal:8080/v1/chat/completions`\n\n**Kết quả kiểm thử:**\n1. **Health Check:** Tất cả các nhà cung cấp đều phản hồi trong vòng 200ms. GPT-4o xử lý 52% số request, Claude 30% và Gemini 18%—khớp với trọng số đã cấu hình.\n2. **Kiểm thử Failover:** Giả lập sự cố ngừng hoạt động của OpenAI bằng cách chặn API của họ. LLMIO tự động chuyển hướng 100% traffic sang Anthropic và Google. Không ghi nhận lỗi nào trong log và độ trễ chỉ tăng thêm 15ms.\n3. **Giao diện quản lý:** Truy cập tại `http://llm-gateway.internal:8080/admin` để theo dõi các chỉ số thời gian thực. Đã ghi nhận 472 request được xử lý trong giờ qua với thời gian phản hồi trung bình là 187ms.\n\n**Khuyến nghị:**\n- Điều chỉnh trọng số thành [70, 20, 10] để tối ưu hóa chi phí trong giờ cao điểm.\n- Bật bộ nhớ đệm (caching) cho các prompt lặp lại (ví dụ: system message) để giảm khoảng 15% chi phí nhà cung cấp.\n- Theo dõi `/var/log/llmio/llmio.log` để phát hiện cảnh báo giới hạn tần suất (rate-limit) từ Anthropic (ghi nhận 3 lần xuất hiện trong 24 giờ qua).\n\n**Các bước tiếp theo:**\n- Triển khai cấu hình này lên môi trường production và tích hợp với [YOUR_LLM_CLIENT] (ví dụ: Claude Code) sử dụng endpoint API hợp nhất.\n- Thiết lập cảnh báo khi độ trễ nhà cung cấp > 500ms hoặc tỷ lệ lỗi > 5%.\n- Lên lịch đánh giá hàng quý để điều chỉnh trọng số dựa trên dữ liệu hiệu năng/chi phí.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:41:15.261857Z",
+    "http_status": 200,
+    "content_hash": "27234d40a25fc88c417456969749bf1ef8f8b297393ae3046e47dad4f6f76c75",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\llmio.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\llmio.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LLMIO - Gateway cân bằng tải LLM",
+  "short_description_vi": "LLMIO là một gateway cân bằng tải LLM viết bằng Go, cung cấp REST API hợp nhất, cơ chế điều phối dựa trên trọng số, ghi log và giao diện quản lý hiện đại. Nó tích hợp các mô hình OpenAI, Anthropic và Gemini vào một dịch vụ duy nhất cho các LLM client như Claude Code, Codex, Gemini CLI và Cherry Studio."
+}

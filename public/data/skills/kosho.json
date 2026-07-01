@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kosho",
+  "slug": "kosho",
+  "name": "Kosho",
+  "headline": "Kosho - Automate Git Worktree Management",
+  "short_description": "Kosho is a CLI tool that automates git worktree management, enabling developers to work on multiple branches concurrently. It simplifies complex workflows by creating and managing worktrees in dedicated directories, reducing context switching and improving productivity. Ideal for teams using Git for version control.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "carlsverre",
+  "install_command": "git clone https://github.com/carlsverre/kosho.git",
+  "source_repo_url": "https://github.com/carlsverre/kosho",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "git",
+    "claude",
+    "claude-code",
+    "worktree",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Kosho is a CLI tool that creates and manages git worktrees in dedicated `.kosho/` directories, enabling concurrent work on multiple branches without context switching or repository duplication. It's particularly well-suited for running multiple AI coding agents like Claude Code in separate workspaces, each with independent working state. The tool provides commands to create worktrees, list their status, and prune completed work environments. Kosho supports hooks for custom setup logic and shell completion across bash, zsh, fish, and PowerShell. Teams using Git for version control benefit from reduced context switching, workspace isolation, and more efficient resource usage compared to cloning repositories.\nRunning multiple AI agents on different features simultaneously\nManaging parallel bug fixes and feature branches in separate worktrees\nSetting up isolated development environments for experimentation\nCoordinating team workflows with easy visibility into concurrent branch work",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/carlsverre/kosho`",
+    "usage": "```\nUse kosho to automate git worktree management for the [PROJECT_NAME] repository. Create a new worktree for the [BRANCH_NAME] branch in the [DIRECTORY_PATH] directory. Ensure the worktree is clean and up-to-date with the latest changes. List all existing worktrees and their statuses.\n```\nCopy\n\n```\n```bash\n$ kosho worktree add -b feature/login-flow ../worktrees/login-flow\nCreated worktree '../worktrees/login-flow' for branch 'feature/login-flow' at commit 'a1b2c3d'.\n\n$ kosho worktree list\nWorktree Path                Branch         Commit      Status\n--------------------------------------------------------------\n./.git/worktrees/main        main           a1b2c3d     clean\n../worktrees/login-flow     feature/login-flow a1b2c3d     clean\n../worktrees/bugfix/header   bugfix/header  d4e5f6a     dirty\n```\n\n**Explanation:**\nThe command `kosho worktree add -b feature/login-flow ../worktrees/login-flow` created a new worktree in `../worktrees/login-flow` for the `feature/login-flow` branch, checked out at the latest commit (`a1b2c3d`). The `kosho worktree list` command then displayed all active worktrees, showing their paths, associated branches, commit hashes, and statuses. The `bugfix/header` worktree is marked as 'dirty' because it has uncommitted changes. This setup allows you to work on the login flow feature alongside the main branch without switching contexts, reducing the cognitive load of juggling multiple branches in the same directory.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kosho#main-content",
+      "kosho#overview",
+      "kosho#setup",
+      "kosho#examples",
+      "kosho#tools",
+      "kosho#mcp",
+      "kosho#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kosho là một công cụ CLI chuyên tạo và quản lý các git worktree trong các thư mục `.kosho/` riêng biệt, cho phép làm việc đồng thời trên nhiều nhánh mà không cần context switching hay nhân bản repository. Công cụ này đặc biệt phù hợp để chạy nhiều AI coding agent như Claude Code trong các workspace riêng biệt, mỗi nơi có một trạng thái làm việc độc lập. Kosho cung cấp các lệnh để tạo worktree, liệt kê trạng thái của chúng và dọn dẹp (prune) các môi trường làm việc đã hoàn thành. Ngoài ra, Kosho còn hỗ trợ các hook để tùy biến logic setup và shell completion cho bash, zsh, fish và PowerShell. Các đội ngũ sử dụng Git để quản lý mã nguồn sẽ được hưởng lợi từ việc giảm thiểu context switching, cô lập workspace và tối ưu hóa tài nguyên hiệu quả hơn so với việc clone repository.\nChạy đồng thời nhiều AI agent trên các tính năng khác nhau\nQuản lý song song các bản sửa lỗi (bug fix) và các nhánh tính năng trong các worktree riêng biệt\nThiết lập các môi trường phát triển cô lập để thử nghiệm\nPhối hợp quy trình làm việc của nhóm và dễ dàng theo dõi các nhánh đang được xử lý đồng thời",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/carlsverre/kosho`",
+    "usage_vi": "```\nSử dụng kosho để tự động hóa việc quản lý git worktree cho repository [PROJECT_NAME]. Tạo một worktree mới cho nhánh [BRANCH_NAME] trong thư mục [DIRECTORY_PATH]. Đảm bảo worktree sạch và được cập nhật các thay đổi mới nhất. Liệt kê tất cả các worktree hiện có và trạng thái của chúng.\n```\nCopy\n\n```\n```bash\n$ kosho worktree add -b feature/login-flow ../worktrees/login-flow\nCreated worktree '../worktrees/login-flow' for branch 'feature/login-flow' at commit 'a1b2c3d'.\n\n$ kosho worktree list\nWorktree Path                Branch         Commit      Status\n--------------------------------------------------------------\n./.git/worktrees/main        main           a1b2c3d     clean\n../worktrees/login-flow     feature/login-flow a1b2c3d     clean\n../worktrees/bugfix/header   bugfix/header  d4e5f6a     dirty\n```\n\n**Giải thích:**\nLệnh `kosho worktree add -b feature/login-flow ../worktrees/login-flow` đã tạo một worktree mới tại `../worktrees/login-flow` cho nhánh `feature/login-flow`, được checkout tại commit mới nhất (`a1b2c3d`). Sau đó, lệnh `kosho worktree list` hiển thị tất cả các worktree đang hoạt động, bao gồm đường dẫn, nhánh liên kết, hash commit và trạng thái của chúng. Worktree `bugfix/header` được đánh dấu là 'dirty' vì có các thay đổi chưa được commit. Thiết lập này cho phép bạn làm việc trên tính năng login flow song song với nhánh main mà không cần chuyển đổi ngữ cảnh, giúp giảm thiểu sự phân tâm khi phải quản lý nhiều nhánh trong cùng một thư mục."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:47:15.199397Z",
+    "http_status": 200,
+    "content_hash": "ef1a0a70303d91c7467f6fdea403750b005868b4d32971573842a01eacc0bb0f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kosho.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kosho.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kosho - Tự động hóa quản lý Git Worktree",
+  "short_description_vi": "Kosho là một công cụ CLI giúp tự động hóa việc quản lý git worktree, cho phép lập trình viên làm việc trên nhiều nhánh cùng một lúc. Công cụ này đơn giản hóa các quy trình phức tạp bằng cách tạo và quản lý các worktree trong các thư mục riêng biệt, giúp giảm thiểu context switching và nâng cao năng suất. Đây là giải pháp lý tưởng cho các đội ngũ sử dụng Git để quản lý phiên bản."
+}

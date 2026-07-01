@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tora",
+  "slug": "tora",
+  "name": "langchain-salesforce",
+  "headline": "ToRA: Advanced Tool-integrated Reasoning Agents",
+  "short_description": "ToRA is a cutting-edge series of Tool-integrated Reasoning LLM Agents that excel in solving complex mathematical reasoning problems through tool interaction. Designed for advanced reasoning tasks, ToRA uses the latest in AI technology to enhance problem-solving capabilities.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "microsoft",
+  "install_command": "claude install microsoft/ToRA",
+  "source_repo_url": "https://github.com/microsoft/ToRA",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "language-model",
+    "autonomous-agents",
+    "mathematical-reasoning",
+    "llm",
+    "tool-learning"
+  ],
+  "sections": {
+    "overview": "ToRA is a reasoning agent framework designed to tackle complex mathematical problems through tool integration. Rather than relying solely on language model reasoning, ToRA enables agents to interact with external tools such as Python interpreters for numerical computation, symbolic solving, and answer verification. The framework was introduced in the ICLR 2024 paper \"ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving\" and demonstrates significant performance improvements on mathematical reasoning benchmarks like GSM8K and MATH. ToRA is particularly useful for applications requiring accurate mathematical solutions where computation and logical verification are essential components of the reasoning process.\nAutomating the solution of advanced mathematical problems in research projects.\nIntegrating ToRA into educational platforms to provide AI-driven assistance for students learning mathematics.\nUtilizing ToRA to enhance STEM education by providing real-time problem-solving support.\nEmploying ToRA for complex calculations that require the integration of multiple computational tools.",
+    "setup": "Terminal\nCopy\n`claude install microsoft/ToRA`\n`git clone https://github.com/microsoft/ToRA`",
+    "usage": "```\nUse the ToRA agent to solve the following complex mathematical reasoning problem: [PROBLEM_STATEMENT]. Break down the solution into logical steps, verify intermediate results using Mode's data insights platform, and provide a final answer with clear justification. Include any relevant SQL queries or dashboard insights used during the process.\n```\nCopy\n\n```\n### Complex Mathematical Reasoning Problem Solved with ToRA Agent\n\n**Problem Statement:**\nA SaaS company's revenue growth follows a compound annual growth rate (CAGR) of 22% over the past 5 years. In Year 1, their revenue was $1.2M. What is their projected revenue in Year 8 if the growth rate accelerates to 25% CAGR starting in Year 6? Additionally, calculate the total revenue generated across all 8 years.\n\n---\n\n### Step 1: Calculate Revenue for Years 1-5\nUsing the initial CAGR of 22%:\n- Year 1: $1.2M\n- Year 2: $1.2M * (1 + 0.22) = $1.464M\n- Year 3: $1.464M * (1 + 0.22) = $1.786M\n- Year 4: $1.786M * (1 + 0.22) = $2.179M\n- Year 5: $2.179M * (1 + 0.22) = $2.658M\n\n**Verification via Mode:**\nI queried the company's revenue data in Mode using the following SQL:\n```sql\nSELECT \n    year,\n    revenue,\n    LAG(revenue, 1) OVER (ORDER BY year) AS prev_year_revenue,\n    (revenue / LAG(revenue, 1) OVER (ORDER BY year) - 1) * 100 AS growth_rate\nFROM revenue_data\nWHERE company_id = 'saas_001' AND year BETWEEN 2019 AND 2023;\n```\nThe results confirmed the 22% CAGR for Years 1-5, with actual growth rates of 22.0%, 22.0%, 22.0%, and 22.0% respectively.\n\n---\n\n### Step 2: Project Revenue for Years 6-8 with 25% CAGR\n- Year 6: $2.658M * (1 + 0.25) = $3.323M\n- Year 7: $3.323M * (1 + 0.25) = $4.154M\n- Year 8: $4.154M * (1 + 0.25) = $5.192M\n\n**Dashboard Insight:**\nI cross-referenced this projection with Mode's revenue forecast dashboard, which uses historical data and industry benchmarks. The dashboard showed a 92% confidence interval for the Year 8 projection, ranging from $4.8M to $5.6M, validating our calculation.\n\n---\n\n### Step 3: Calculate Total Revenue Over 8 Years\nSumming the revenues for all years:\n$1.2M + $1.464M + $1.786M + $2.179M + $2.658M + $3.323M + $4.154M + $5.192M = **$21.956M**\n\n---\n\n### Final Answer:\n- **Projected Revenue in Year 8:** $5.192M (rounded to $5.19M)\n- **Total Revenue Over 8 Years:** $21.96M\n\n**Key Insight:** The acceleration in CAGR from 22% to 25% in Year 6 results in a 94% increase in Year 8 revenue compared to if the growth rate had remained constant at 22%. This highlights the significant impact of compounding growth over time.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "tora#main-content",
+      "tora#overview",
+      "tora#setup",
+      "tora#examples",
+      "tora#tools",
+      "tora#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "ToRA is a reasoning agent framework designed to tackle complex mathematical problems through tool integration. Rather than relying solely on language model reasoning, ToRA enables agents to interact with external tools such as Python interpreters for numerical computation, symbolic solving, and answer verification. The framework was introduced in the ICLR 2024 paper \"ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving\" and demonstrates significant performance improvements on mathematical reasoning benchmarks like GSM8K and MATH. ToRA is particularly useful for applications requiring accurate mathematical solutions where computation and logical verification are essential components of the reasoning process.\nAutomating the solution of advanced mathematical problems in research projects.\nIntegrating ToRA into educational platforms to provide AI-driven assistance for students learning mathematics.\nUtilizing ToRA to enhance STEM education by providing real-time problem-solving support.\nEmploying ToRA for complex calculations that require the integration of multiple computational tools.",
+    "setup_vi": "Terminal\nCopy\n`claude install microsoft/ToRA`\n`git clone https://github.com/microsoft/ToRA`",
+    "usage_vi": "```\nUse the ToRA agent to solve the following complex mathematical reasoning problem: [PROBLEM_STATEMENT]. Break down the solution into logical steps, verify intermediate results using Mode's data insights platform, and provide a final answer with clear justification. Include any relevant SQL queries or dashboard insights used during the process.\n```\nCopy\n\n```\n### Complex Mathematical Reasoning Problem Solved with ToRA Agent\n\n**Problem Statement:**\nA SaaS company's revenue growth follows a compound annual growth rate (CAGR) of 22% over the past 5 years. In Year 1, their revenue was $1.2M. What is their projected revenue in Year 8 if the growth rate accelerates to 25% CAGR starting in Year 6? Additionally, calculate the total revenue generated across all 8 years.\n\n---\n\n### Step 1: Calculate Revenue for Years 1-5\nUsing the initial CAGR of 22%:\n- Year 1: $1.2M\n- Year 2: $1.2M * (1 + 0.22) = $1.464M\n- Year 3: $1.464M * (1 + 0.22) = $1.786M\n- Year 4: $1.786M * (1 + 0.22) = $2.179M\n- Year 5: $2.179M * (1 + 0.22) = $2.658M\n\n**Verification via Mode:**\nI queried the company's revenue data in Mode using the following SQL:\n```sql\nSELECT \n    year,\n    revenue,\n    LAG(revenue, 1) OVER (ORDER BY year) AS prev_year_revenue,\n    (revenue / LAG(revenue, 1) OVER (ORDER BY year) - 1) * 100 AS growth_rate\nFROM revenue_data\nWHERE company_id = 'saas_001' AND year BETWEEN 2019 AND 2023;\n```\nThe results confirmed the 22% CAGR for Years 1-5, with actual growth rates of 22.0%, 22.0%, 22.0%, and 22.0% respectively.\n\n---\n\n### Step 2: Project Revenue for Years 6-8 with 25% CAGR\n- Year 6: $2.658M * (1 + 0.25) = $3.323M\n- Year 7: $3.323M * (1 + 0.25) = $4.154M\n- Year 8: $4.154M * (1 + 0.25) = $5.192M\n\n**Dashboard Insight:**\nI cross-referenced this projection with Mode's revenue forecast dashboard, which uses historical data and industry benchmarks. The dashboard showed a 92% confidence interval for the Year 8 projection, ranging from $4.8M to $5.6M, validating our calculation.\n\n---\n\n### Step 3: Calculate Total Revenue Over 8 Years\nSumming the revenues for all years:\n$1.2M + $1.464M + $1.786M + $2.179M + $2.658M + $3.323M + $4.154M + $5.192M = **$21.956M**\n\n---\n\n### Final Answer:\n- **Projected Revenue in Year 8:** $5.192M (rounded to $5.19M)\n- **Total Revenue Over 8 Years:** $21.96M\n\n**Key Insight:** The acceleration in CAGR from 22% to 25% in Year 6 results in a 94% increase in Year 8 revenue compared to if the growth rate had remained constant at 22%. This highlights the significant impact of compounding growth over time.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:38.574144Z",
+    "http_status": 200,
+    "content_hash": "b64eed468430f580bddd5a287497642f181b43809918332d806bd92da0c13a4c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tora.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tora.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ToRA: Advanced Tool-integrated Reasoning Agents",
+  "short_description_vi": "ToRA is a cutting-edge series of Tool-integrated Reasoning LLM Agents that excel in solving complex mathematical reasoning problems through tool interaction. Designed for advanced reasoning tasks, ToRA uses the latest in AI technology to enhance problem-solving capabilities."
+}

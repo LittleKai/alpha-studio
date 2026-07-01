@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/upgrade-react-native",
+  "slug": "upgrade-react-native",
+  "name": "expo-horizon",
+  "headline": "upgrade-react-native: Automate RN Upgrades",
+  "short_description": "This skill automates version upgrades for React Native projects by fetching and applying diffs, managing dependencies, and resolving conflicts. It is useful for developers maintaining React Native applications.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "react-native-community",
+  "install_command": "git clone https://github.com/react-native-community/skills",
+  "source_repo_url": "https://github.com/react-native-community/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "react",
+    "upgrade",
+    "native",
+    "development"
+  ],
+  "sections": {
+    "overview": "This skill automates the process of upgrading React Native projects to newer versions by fetching unified diffs from the React Native Upgrade Helper and intelligently applying changes across native (iOS/Android) and JavaScript files. It detects your current version, validates the target version, parses the diff while mapping template paths to your actual project structure, and categorizes changes as direct applies, conflicts, or new files. The skill guides you through a step-by-step upgrade procedure, identifies third-party native library compatibility requirements, and presents a post-upgrade checklist. It's designed for developers and teams managing React Native Community CLI projects who need reliable, conflict-aware version upgrades.\nUpgrade a React Native project to a target version\nFetch and apply diffs from the React Native Upgrade Helper\nResolve conflicts in native project customizations",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/react-native-community/skills --skill upgrade-react-native`\n`git clone https://github.com/react-native-community/skills`",
+    "usage": "```\nAct as an expert React Native developer and help me upgrade my [PROJECT_NAME] app from React Native [CURRENT_VERSION] to [TARGET_VERSION]. Analyze the [CHANGELOG_URL] and [UPGRADE_GUIDE_URL] for this version, then provide a step-by-step plan to safely upgrade the app. Identify potential breaking changes, dependency conflicts, and migration steps. Finally, generate the exact commands I need to run and any code modifications required. Current dependencies: [DEPENDENCIES_LIST].\n```\nCopy\n\n```\n# React Native Upgrade Plan for MediTrack v2.3.1 → v3.1.0",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "upgrade-react-native#main-content",
+      "upgrade-react-native#overview",
+      "upgrade-react-native#setup",
+      "upgrade-react-native#examples",
+      "upgrade-react-native#tools",
+      "upgrade-react-native#mcp",
+      "upgrade-react-native#related",
+      "harper-best-practices",
+      "macos-menubar-tuist-app",
+      "expo-horizon"
+    ],
+    "overview_vi": "This skill automates the process of upgrading React Native projects to newer versions by fetching unified diffs from the React Native Upgrade Helper and intelligently applying changes across native (iOS/Android) and JavaScript files. It detects your current version, validates the target version, parses the diff while mapping template paths to your actual project structure, and categorizes changes as direct applies, conflicts, or new files. The skill guides you through a step-by-step upgrade procedure, identifies third-party native library compatibility requirements, and presents a post-upgrade checklist. It's designed for developers and teams managing React Native Community CLI projects who need reliable, conflict-aware version upgrades.\nUpgrade a React Native project to a target version\nFetch and apply diffs from the React Native Upgrade Helper\nResolve conflicts in native project customizations",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/react-native-community/skills --skill upgrade-react-native`\n`git clone https://github.com/react-native-community/skills`",
+    "usage_vi": "```\nAct as an expert React Native developer and help me upgrade my [PROJECT_NAME] app from React Native [CURRENT_VERSION] to [TARGET_VERSION]. Analyze the [CHANGELOG_URL] and [UPGRADE_GUIDE_URL] for this version, then provide a step-by-step plan to safely upgrade the app. Identify potential breaking changes, dependency conflicts, and migration steps. Finally, generate the exact commands I need to run and any code modifications required. Current dependencies: [DEPENDENCIES_LIST].\n```\nCopy\n\n```\n# React Native Upgrade Plan for MediTrack v2.3.1 → v3.1.0"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:28:39.297379Z",
+    "http_status": 200,
+    "content_hash": "30f90628e40f9fdd51db54814137d27b577934e17a87d2eb9386ce07ce349172",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\upgrade-react-native.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\upgrade-react-native.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "upgrade-react-native: Automate RN Upgrades",
+  "short_description_vi": "This skill automates version upgrades for React Native projects by fetching and applying diffs, managing dependencies, and resolving conflicts. It is useful for developers maintaining React Native applications."
+}

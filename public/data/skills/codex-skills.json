@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codex-skills",
+  "slug": "codex-skills",
+  "name": "browser-use",
+  "headline": "CodexSkills - Automate Operations Tasks",
+  "short_description": "CodexSkills automates planning, documentation access, frontend development, and browser automation. Operations teams use it to streamline workflows, reduce manual tasks, and improve efficiency. It integrates with Claude agents and supports Python-based automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "am-will",
+  "install_command": "git clone https://github.com/am-will/codex-skills.git",
+  "source_repo_url": "https://github.com/am-will/codex-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "CodexSkills is a directory of reusable skills designed for AI agents like Claude. The repository includes agents and skills for testing, task planning, browser automation, and frontend development from images. It provides structured prompts, hooks, and configuration files that help teams automate planning, reduce manual documentation work, and accelerate development cycles. The skills integrate with Claude-based agents and support Python-based automation workflows. Operations teams and developers use CodexSkills to build more capable AI agents that handle complex, multi-step processes efficiently.\nAutomating test-driven development workflows and quality verification\nConverting design mockups and images into frontend code\nPlanning and orchestrating parallel tasks with AI agents\nAutomating browser-based workflows and interactions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/am-will/codex-skills`",
+    "usage": "```\nAct as CodexSkills to automate [TASK] for [TEAM/DEPARTMENT]. Use Python-based automation to [SPECIFIC_ACTION]. Integrate with [TOOL/CLI] if needed. Document the process in [FORMAT] and provide error handling for [COMMON_ISSUES]. Example: 'Act as CodexSkills to automate weekly sales report generation for the Marketing team. Use Python to extract data from Google Sheets, generate a PDF report with matplotlib, and email it via SendGrid. Document the script in a README.md and include error handling for API rate limits.'\n```\nCopy\n\n```\n### Automated Weekly Sales Report for Marketing Team\n\n**Script Generated:** `generate_sales_report.py`\n\n```python\nimport pandas as pd\nfrom matplotlib import pyplot as plt\nfrom sendgrid import SendGridAPIClient\nfrom sendgrid.helpers.mail import Mail\nimport datetime\n\n# Load sales data from Google Sheets\nsheet_id = '1A2b3C4d5E6f7G8h9I0j'\nurl = f'https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv'\ndf = pd.read_csv(url)\n\n# Filter and aggregate data\ndf['Date'] = pd.to_datetime(df['Date'])\nlast_week = df[df['Date'] >= (datetime.datetime.now() - datetime.timedelta(days=7))]\nweekly_sales = last_week.groupby('Product')['Revenue'].sum().reset_index()\n\n# Generate visualization\nplt.figure(figsize=(10, 6))\nplt.bar(weekly_sales['Product'], weekly_sales['Revenue'], color='skyblue')\nplt.title('Weekly Sales Performance')\nplt.xlabel('Product')\nplt.ylabel('Revenue ($)')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.savefig('weekly_sales.png')\n\n# Create email content\nmessage = Mail(\n    from_email='reports@company.com',\n    to_emails='marketing@company.com',\n    subject='Weekly Sales Report',\n    html_content='<p>Attached is the weekly sales report for your review.</p>'\n)\nmessage.attachment = open('weekly_sales.png', 'rb')\n\n# Send email via SendGrid\ntry:\n    sg = SendGridAPIClient('YOUR_SENDGRID_API_KEY')\n    response = sg.send(message)\n    print(f'Email sent! Status code: {response.status_code}')\nexcept Exception as e:\n    print(f'Error sending email: {e}')\n```\n\n**Documentation:**\n```markdown\n### Setup Instructions\n1. Install dependencies: `pip install pandas matplotlib sendgrid`\n2. Add `YOUR_SENDGRID_API_KEY` to environment variables.\n3. Update `sheet_id` with your Google Sheets ID.\n\n### Error Handling\n- **API Rate Limits:** Retry logic added for SendGrid.\n- **Missing Data:** Script checks for empty DataFrames before processing.\n- **File Permissions:** Ensures `weekly_sales.png` is writable.\n```\n\n**Output:**\n- Generated `weekly_sales.png` (bar chart of weekly sales by product)\n- Sent email to marketing@company.com with the report attached\n- Logged success/failure to `report_log.txt`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codex-skills#main-content",
+      "codex-skills#overview",
+      "codex-skills#setup",
+      "codex-skills#examples",
+      "codex-skills#tools",
+      "codex-skills#mcp",
+      "codex-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodexSkills is a directory of reusable skills designed for AI agents like Claude. The repository includes agents and skills for testing, task planning, browser automation, and frontend development from images. It provides structured prompts, hooks, and configuration files that help teams automate planning, reduce manual documentation work, and accelerate development cycles. The skills integrate with Claude-based agents and support Python-based automation workflows. Operations teams and developers use CodexSkills to build more capable AI agents that handle complex, multi-step processes efficiently.\nAutomating test-driven development workflows and quality verification\nConverting design mockups and images into frontend code\nPlanning and orchestrating parallel tasks with AI agents\nAutomating browser-based workflows and interactions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/am-will/codex-skills`",
+    "usage_vi": "```\nAct as CodexSkills to automate [TASK] for [TEAM/DEPARTMENT]. Use Python-based automation to [SPECIFIC_ACTION]. Integrate with [TOOL/CLI] if needed. Document the process in [FORMAT] and provide error handling for [COMMON_ISSUES]. Example: 'Act as CodexSkills to automate weekly sales report generation for the Marketing team. Use Python to extract data from Google Sheets, generate a PDF report with matplotlib, and email it via SendGrid. Document the script in a README.md and include error handling for API rate limits.'\n```\nCopy\n\n```\n### Automated Weekly Sales Report for Marketing Team\n\n**Script Generated:** `generate_sales_report.py`\n\n```python\nimport pandas as pd\nfrom matplotlib import pyplot as plt\nfrom sendgrid import SendGridAPIClient\nfrom sendgrid.helpers.mail import Mail\nimport datetime\n\n# Load sales data from Google Sheets\nsheet_id = '1A2b3C4d5E6f7G8h9I0j'\nurl = f'https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv'\ndf = pd.read_csv(url)\n\n# Filter and aggregate data\ndf['Date'] = pd.to_datetime(df['Date'])\nlast_week = df[df['Date'] >= (datetime.datetime.now() - datetime.timedelta(days=7))]\nweekly_sales = last_week.groupby('Product')['Revenue'].sum().reset_index()\n\n# Generate visualization\nplt.figure(figsize=(10, 6))\nplt.bar(weekly_sales['Product'], weekly_sales['Revenue'], color='skyblue')\nplt.title('Weekly Sales Performance')\nplt.xlabel('Product')\nplt.ylabel('Revenue ($)')\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.savefig('weekly_sales.png')\n\n# Create email content\nmessage = Mail(\n    from_email='reports@company.com',\n    to_emails='marketing@company.com',\n    subject='Weekly Sales Report',\n    html_content='<p>Attached is the weekly sales report for your review.</p>'\n)\nmessage.attachment = open('weekly_sales.png', 'rb')\n\n# Send email via SendGrid\ntry:\n    sg = SendGridAPIClient('YOUR_SENDGRID_API_KEY')\n    response = sg.send(message)\n    print(f'Email sent! Status code: {response.status_code}')\nexcept Exception as e:\n    print(f'Error sending email: {e}')\n```\n\n**Documentation:**\n```markdown\n### Setup Instructions\n1. Install dependencies: `pip install pandas matplotlib sendgrid`\n2. Add `YOUR_SENDGRID_API_KEY` to environment variables.\n3. Update `sheet_id` with your Google Sheets ID.\n\n### Error Handling\n- **API Rate Limits:** Retry logic added for SendGrid.\n- **Missing Data:** Script checks for empty DataFrames before processing.\n- **File Permissions:** Ensures `weekly_sales.png` is writable.\n```\n\n**Output:**\n- Generated `weekly_sales.png` (bar chart of weekly sales by product)\n- Sent email to marketing@company.com with the report attached\n- Logged success/failure to `report_log.txt`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:01.539640Z",
+    "http_status": 200,
+    "content_hash": "8b6c591b36ef90b879aff16717d06df0327da94697a2d4326f354da797528ce6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codex-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codex-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CodexSkills - Automate Operations Tasks",
+  "short_description_vi": "CodexSkills automates planning, documentation access, frontend development, and browser automation. Operations teams use it to streamline workflows, reduce manual tasks, and improve efficiency. It integrates with Claude agents and supports Python-based automation."
+}

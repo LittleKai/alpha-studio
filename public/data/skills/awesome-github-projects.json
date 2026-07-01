@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-github-projects",
+  "slug": "awesome-github-projects",
+  "name": "Awesome Github Projects",
+  "headline": "Curated GitHub projects collection",
+  "short_description": "Curated list of GitHub projects I starred over the years. Helps developers discover high-quality projects, streamline research, and identify trends. Integrates with GitHub and supports Python-based workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "viktorbezdek",
+  "install_command": "git clone https://github.com/viktorbezdek/awesome-github-projects.git",
+  "source_repo_url": "https://github.com/viktorbezdek/awesome-github-projects",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "awesome-github-projects is a Python automation tool that transforms a collection of starred GitHub repositories into an organized, categorized awesome list. It automatically categorizes projects by use case, adds activity indicators (🔥 for projects updated in 30 days, ⚡ for 90 days), and separates inactive or archived projects into collapsible sections. The tool processes repository metadata including star counts, programming languages, and descriptions to surface high-quality projects. Developers use it to streamline research, discover trending open-source projects, and maintain a searchable reference of curated repositories.\nQuickly discover popular libraries and tools in various programming languages for your next project.\nEasily access a collection of starred repositories to find inspiration for new features or implementations.\nStreamline your research process by having a centralized list of high-quality GitHub projects at your fingertips.\nUtilize the curated list to identify trending projects in the developer community for potential collaboration.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/viktorbezdek/awesome-github-projects`",
+    "usage": "```\nGenerate a curated list of GitHub projects I starred in the past [TIME_PERIOD] that are relevant to [TOPIC]. Include the project name, description, GitHub URL, and a brief note on why it's valuable. Focus on projects that align with [SPECIFIC_NEEDS] like performance optimization or scalability.\n```\nCopy\n\n```\nHere’s a curated list of GitHub projects I starred in the past year that are relevant to Python-based data processing:\n\n1. **Project Name**: FastDataPipeline\n   **Description**: A high-performance data pipeline framework for real-time analytics.\n   **GitHub URL**: https://github.com/example/fastdatapipeline\n   **Why It's Valuable**: This project offers optimized data processing capabilities, making it ideal for large-scale data workflows. It integrates seamlessly with Python and supports distributed computing.\n\n2. **Project Name**: DataCleaner\n   **Description**: A tool for automated data cleaning and preprocessing.\n   **GitHub URL**: https://github.com/example/datacleaner\n   **Why It's Valuable**: DataCleaner simplifies the data cleaning process, reducing manual effort and improving data quality. It’s particularly useful for projects requiring high data accuracy.\n\n3. **Project Name**: PyOptimizer\n   **Description**: A Python library for optimizing machine learning models.\n   **GitHub URL**: https://github.com/example/pyoptimizer\n   **Why It's Valuable**: PyOptimizer provides advanced optimization techniques, helping developers achieve better model performance with minimal code changes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-github-projects#main-content",
+      "awesome-github-projects#overview",
+      "awesome-github-projects#setup",
+      "awesome-github-projects#examples",
+      "awesome-github-projects#tools",
+      "awesome-github-projects#mcp",
+      "awesome-github-projects#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "awesome-github-projects là một công cụ tự động hóa bằng Python giúp chuyển đổi bộ sưu tập các repository GitHub đã star thành một danh sách \"awesome list\" được sắp xếp và phân loại khoa học. Công cụ này tự động phân loại các dự án theo mục đích sử dụng, thêm các chỉ số hoạt động (🔥 cho các dự án được cập nhật trong vòng 30 ngày, ⚡ cho 90 ngày) và chuyển các dự án không còn hoạt động hoặc đã bị lưu trữ (archived) vào các mục có thể thu gọn. Công cụ xử lý siêu dữ liệu (metadata) của repository bao gồm số lượng star, ngôn ngữ lập trình và mô tả để làm nổi bật các dự án chất lượng cao. Các nhà phát triển có thể sử dụng công cụ này để tối ưu hóa quy trình nghiên cứu, khám phá các dự án mã nguồn mở đang thịnh hành và duy trì một danh sách tham khảo có thể tìm kiếm được từ các repository đã chọn lọc.\nNhanh chóng khám phá các thư viện và công cụ phổ biến bằng nhiều ngôn ngữ lập trình khác nhau cho dự án tiếp theo của bạn.\nDễ dàng truy cập bộ sưu tập các repository đã star để tìm kiếm ý tưởng cho các tính năng hoặc cách triển khai mới.\nTối ưu hóa quy trình nghiên cứu của bạn với một danh sách tập trung các dự án GitHub chất lượng cao luôn sẵn có.\nTận dụng danh sách chọn lọc để xác định các dự án đang thịnh hành trong cộng đồng nhà phát triển nhằm tìm kiếm cơ hội hợp tác tiềm năng.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/viktorbezdek/awesome-github-projects`",
+    "usage_vi": "```\nTạo danh sách chọn lọc các dự án GitHub tôi đã star trong khoảng [TIME_PERIOD] gần đây liên quan đến [TOPIC]. Bao gồm tên dự án, mô tả, URL GitHub và một ghi chú ngắn gọn về lý do dự án này hữu ích. Tập trung vào các dự án phù hợp với [SPECIFIC_NEEDS] như tối ưu hóa hiệu năng hoặc khả năng mở rộng.\n```\nSao chép\n\n```\nDưới đây là danh sách chọn lọc các dự án GitHub tôi đã star trong năm qua liên quan đến xử lý dữ liệu bằng Python:\n\n1. **Tên dự án**: FastDataPipeline\n   **Mô tả**: Một framework pipeline dữ liệu hiệu năng cao dành cho phân tích thời gian thực.\n   **URL GitHub**: https://github.com/example/fastdatapipeline\n   **Lý do hữu ích**: Dự án này cung cấp khả năng xử lý dữ liệu được tối ưu hóa, lý tưởng cho các workflow dữ liệu quy mô lớn. Nó tích hợp liền mạch với Python và hỗ trợ tính toán phân tán.\n\n2. **Tên dự án**: DataCleaner\n   **Mô tả**: Một công cụ tự động làm sạch và tiền xử lý dữ liệu.\n   **URL GitHub**: https://github.com/example/datacleaner\n   **Lý do hữu ích**: DataCleaner đơn giản hóa quy trình làm sạch dữ liệu, giảm thiểu công sức thủ công và cải thiện chất lượng dữ liệu. Công cụ này đặc biệt hữu ích cho các dự án yêu cầu độ chính xác dữ liệu cao.\n\n3. **Tên dự án**: PyOptimizer\n   **Mô tả**: Thư viện Python để tối ưu hóa các mô hình machine learning.\n   **URL GitHub**: https://github.com/example/pyoptimizer\n   **Lý do hữu ích**: PyOptimizer cung cấp các kỹ thuật tối ưu hóa nâng cao, giúp nhà phát triển đạt được hiệu năng mô hình tốt hơn với số lượng thay đổi mã nguồn tối thiểu.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:22:09.049612Z",
+    "http_status": 200,
+    "content_hash": "e1c425701f886211aa2b06f8cfda61ddddb63ba9d3300f5cbef414f38c50d3a6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-github-projects.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-github-projects.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ sưu tập các dự án GitHub chọn lọc",
+  "short_description_vi": "Danh sách chọn lọc các dự án GitHub tôi đã star qua nhiều năm. Giúp nhà phát triển dễ dàng khám phá các dự án chất lượng cao, tối ưu hóa quy trình nghiên cứu và nắm bắt các xu hướng công nghệ. Hỗ trợ tích hợp với GitHub và các workflow dựa trên Python."
+}

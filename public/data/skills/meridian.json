@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/meridian",
+  "slug": "meridian",
+  "name": "meridian",
+  "headline": "Meridian: Effortless AI Automation Setup",
+  "short_description": "Zero-config Claude Code setup with enforced task scaffolding, structured memory, persistent context after compaction, plug-in code standards, optional TDD mode, and zero behavior changes for developers.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "markmdev",
+  "install_command": "git clone https://github.com/markmdev/meridian.git",
+  "source_repo_url": "https://github.com/markmdev/meridian",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "productivity",
+    "software-engineering",
+    "typescript",
+    "anthropic",
+    "open-source",
+    "nodejs",
+    "zero-config",
+    "workflow-automation",
+    "ai-agents",
+    "developer-tools",
+    "developer-workflow",
+    "tdd",
+    "nextjs",
+    "claude",
+    "claude-code",
+    "task-runner"
+  ],
+  "sections": {
+    "overview": "Meridian is an innovative Claude Code skill designed to streamline the setup process for AI automation. With its zero-configuration approach, users can quickly implement enforced task scaffolding and structured memory, ensuring persistent context even after compaction. This skill also adheres to plug-in code standards and offers an optional Test-Driven Development (TDD) mode, providing a robust framework for developers. By eliminating the need for extensive setup, Meridian allows teams to focus on building and deploying automation solutions effectively. One of the key benefits of using Meridian is the significant reduction in setup time. With an estimated implementation time of just 30 minutes, developers can integrate this skill into their workflows without the usual complexities associated with AI automation. While specific time savings are currently unknown, the streamlined process is expected to enhance productivity and efficiency, allowing teams to allocate resources to other critical tasks. This makes it particularly valuable for product managers and AI practitioners looking to optimize their development cycles. Meridian is particularly suited for developers and teams working in environments that prioritize AI-first workflows. Its intermediate difficulty level means that users should have a foundational understanding of AI automation principles, making it an ideal choice for those with some experience. The skill's medium GTM relevance indicates that it is well-positioned to meet the needs of organizations seeking to enhance their automation capabilities without compromising on quality or performance. Practical use cases for Meridian include automating repetitive tasks in software development, managing data pipelines, or enhancing user interactions through AI agents. For example, a development team can utilize Meridian to automate the testing of new features, ensuring that code changes do not introduce errors while maintaining a structured approach to memory management. With its focus on zero behavior changes for developers, Meridian seamlessly integrates into existing workflows, making it a valuable addition to any AI automation toolkit.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/markmdev/meridian`\n1. Install dependencies:\n   ```bash\n   pip install -r requirements.txt\n   ```\n2. Run tests (TDD mode):\n   ```bash\n   pytest --cov=src --cov-report=term-missing\n   ```\n3. Start the app:\n   ```bash\n   uvicorn main:app --reload\n   ```",
+    "usage": "```\nSet up a zero-config Claude Code environment for [PROJECT_NAME] with enforced task scaffolding, structured memory, persistent context after compaction, and plug-in code standards. Enable TDD mode for [OPTIONAL: 'unit tests' or 'integration tests']. Ensure no behavior changes for developers. Initialize the project with [LANGUAGE] and [FRAMEWORK] if specified. Generate a README.md with setup instructions and a .claude.json configuration file. Validate the setup by running [COMMAND] to confirm all components are functional.\n```\nCopy\n\n```\n```markdown\n# Project Setup Report: `meridian-demo-app`\n\n- **New Task**: `claude task new \"Add user authentication\"`\n  Generates: `.claude/tasks/2024-05-20_add_user_auth.md`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "meridian#main-content",
+      "meridian#overview",
+      "meridian#setup",
+      "meridian#examples",
+      "meridian#tools",
+      "meridian#mcp",
+      "meridian#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Meridian là một skill Claude Code sáng tạo được thiết kế để đơn giản hóa quá trình setup tự động hóa AI. Với phương pháp zero-config (không cần cấu hình), người dùng có thể nhanh chóng triển khai task scaffolding bắt buộc và bộ nhớ có cấu trúc, đảm bảo duy trì context ngay cả sau khi nén (compaction). Skill này cũng tuân thủ các tiêu chuẩn code dạng plug-in và cung cấp chế độ Phát triển hướng kiểm thử (TDD) tùy chọn, mang lại một framework mạnh mẽ cho lập trình viên. Bằng cách loại bỏ nhu cầu thiết lập phức tạp, Meridian giúp các đội ngũ tập trung vào việc xây dựng và triển khai các giải pháp tự động hóa một cách hiệu quả. Một trong những lợi ích chính của việc sử dụng Meridian là giảm đáng kể thời gian setup. Với thời gian triển khai ước tính chỉ khoảng 30 phút, lập trình viên có thể tích hợp skill này vào workflow của mình mà không gặp phải những sự phức tạp thường thấy khi tự động hóa AI. Dù lượng thời gian tiết kiệm cụ thể chưa được xác định, quy trình tinh gọn này được kỳ vọng sẽ nâng cao năng suất và hiệu quả, giúp các đội ngũ phân bổ nguồn lực cho các tác vụ quan trọng khác. Điều này giúp nó trở nên đặc biệt giá trị đối với các product manager và chuyên gia AI đang muốn tối ưu hóa chu kỳ phát triển của mình. Meridian đặc biệt phù hợp với các lập trình viên và đội ngũ làm việc trong môi trường ưu tiên quy trình làm việc AI-first. Độ khó ở mức trung bình (intermediate) đồng nghĩa với việc người dùng cần có hiểu biết cơ bản về các nguyên lý tự động hóa AI, giúp nó trở thành lựa chọn lý tưởng cho những ai đã có một số kinh nghiệm. Mức độ phù hợp thị trường (GTM relevance) trung bình cho thấy skill này đáp ứng tốt nhu cầu của các tổ chức muốn nâng cao năng lực tự động hóa mà không làm ảnh hưởng đến chất lượng hay hiệu năng. Các trường hợp sử dụng thực tế của Meridian bao gồm tự động hóa các tác vụ lặp đi lặp lại trong phát triển phần mềm, quản lý data pipeline hoặc cải thiện tương tác của người dùng thông qua các AI agent. Ví dụ, một đội ngũ phát triển có thể sử dụng Meridian để tự động hóa việc test các tính năng mới, đảm bảo các thay đổi trong code không gây ra lỗi trong khi vẫn duy trì phương pháp quản lý bộ nhớ có cấu trúc. Tập trung vào việc không làm thay đổi hành vi của lập trình viên, Meridian tích hợp mượt mà vào các workflow hiện tại, trở thành một sự bổ sung giá trị cho bất kỳ bộ công cụ tự động hóa AI nào.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để biết hướng dẫn cài đặt thủ công.\n`git clone https://github.com/markmdev/meridian`\n1. Cài đặt các thư viện phụ thuộc (dependencies):\n   ```bash\n   pip install -r requirements.txt\n   ```\n2. Chạy test (chế độ TDD):\n   ```bash\n   pytest --cov=src --cov-report=term-missing\n   ```\n3. Khởi động ứng dụng:\n   ```bash\n   uvicorn main:app --reload\n   ```",
+    "usage_vi": "```\nThiết lập môi trường Claude Code zero-config cho [PROJECT_NAME] với task scaffolding bắt buộc, bộ nhớ có cấu trúc, duy trì context sau khi nén và các tiêu chuẩn code dạng plug-in. Kích hoạt chế độ TDD cho [TÙY CHỌN: 'unit tests' hoặc 'integration tests']. Đảm bảo không làm thay đổi hành vi của lập trình viên. Khởi tạo dự án với [LANGUAGE] và [FRAMEWORK] nếu được chỉ định. Tạo file README.md kèm hướng dẫn setup và file cấu hình .claude.json. Xác thực thiết lập bằng cách chạy lệnh [COMMAND] để đảm bảo tất cả các thành phần hoạt động bình thường.\n```\nCopy\n\n```\n```markdown\n# Báo cáo Thiết lập Dự án: `meridian-demo-app`\n\n- **Tác vụ mới**: `claude task new \"Add user authentication\"`\n  Tạo ra: `.claude/tasks/2024-05-20_add_user_auth.md`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:13:29.273763Z",
+    "http_status": 200,
+    "content_hash": "68bded77eec665f736a211a487513d9f64d02e77fff52e1abb9c20d8abaf9db6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\meridian.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\meridian.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Meridian: Thiết lập tự động hóa AI dễ dàng",
+  "short_description_vi": "Setup Claude Code zero-config với task scaffolding bắt buộc, bộ nhớ có cấu trúc, duy trì context sau khi nén, tiêu chuẩn code dạng plug-in, chế độ TDD tùy chọn và không làm thay đổi hành vi của lập trình viên."
+}

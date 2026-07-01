@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cloudflare-platform-skill",
+  "slug": "cloudflare-platform-skill",
+  "name": "Cloudflare Platform Skill",
+  "headline": "Cloudflare Platform Skill: Build on Cloudflare",
+  "short_description": "This skill provides a comprehensive integration with the Cloudflare platform, utilizing decision trees to help users identify the right Cloudflare products for their needs. It's designed for developers working with Cloudflare's services across computing, storage, AI, networking, and security.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "cloudflare",
+  "install_command": "git clone https://github.com/cloudflare/skills",
+  "source_repo_url": "https://github.com/cloudflare/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "platform",
+    "cloudflare",
+    "cloudflare-integration"
+  ],
+  "sections": {
+    "overview": "The Cloudflare Platform Skill provides AI agents with comprehensive guidance across the entire Cloudflare Developer Platform, including Workers, Pages, storage solutions (KV, D1, R2), AI services (Workers AI, Vectorize, Agents SDK), networking tools (Tunnel, Spectrum), and security features (WAF, DDoS protection). The skill auto-loads contextually based on your request, delivering accurate, up-to-date information to help you choose and implement the right Cloudflare products. It supports infrastructure-as-code tools like Terraform and Pulumi, enabling developers to build, deploy, and manage applications across computing, storage, AI, networking, and security domains.\nRoute tasks to the right Cloudflare product based on requirements.\nFetch real-time Cloudflare documentation and API references.\nUse decision trees for optimal service selection in Cloudflare's ecosystem.\nGet updated pricing and limits for Cloudflare products.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/cloudflare/skills --skill cloudflare`\n`git clone https://github.com/cloudflare/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "cloudflare-platform-skill#main-content",
+      "cloudflare-platform-skill#overview",
+      "cloudflare-platform-skill#setup",
+      "cloudflare-platform-skill#examples",
+      "cloudflare-platform-skill#tools",
+      "cloudflare-platform-skill#mcp",
+      "cloudflare-platform-skill#related"
+    ],
+    "overview_vi": "Cloudflare Platform Skill cung cấp cho các AI agent hướng dẫn toàn diện trên toàn bộ Cloudflare Developer Platform, bao gồm Workers, Pages, các giải pháp lưu trữ (KV, D1, R2), dịch vụ AI (Workers AI, Vectorize, Agents SDK), công cụ mạng (Tunnel, Spectrum) và các tính năng bảo mật (WAF, chống DDoS). Skill tự động tải theo ngữ cảnh dựa trên yêu cầu của bạn, cung cấp thông tin chính xác và cập nhật để giúp bạn lựa chọn và triển khai đúng sản phẩm Cloudflare. Nó hỗ trợ các công cụ infrastructure-as-code như Terraform và Pulumi, cho phép nhà phát triển xây dựng, triển khai và quản lý ứng dụng trên các lĩnh vực điện toán, lưu trữ, AI, mạng và bảo mật.\nĐịnh tuyến tác vụ đến đúng sản phẩm Cloudflare dựa trên yêu cầu.\nLấy tài liệu hướng dẫn và tài liệu tham khảo API của Cloudflare theo thời gian thực.\nSử dụng cây quyết định để lựa chọn dịch vụ tối ưu trong hệ sinh thái của Cloudflare.\nCập nhật giá cả và giới hạn (limits) mới nhất của các sản phẩm Cloudflare.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/cloudflare/skills --skill cloudflare`\n`git clone https://github.com/cloudflare/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nKiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:06:22.107755Z",
+    "http_status": 200,
+    "content_hash": "1e1bb483d5ce339f4ca7d1abd445fec3b91e257da79880768725e46bd360ed6c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cloudflare-platform-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cloudflare-platform-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cloudflare Platform Skill: Xây dựng trên Cloudflare",
+  "short_description_vi": "Skill này mang lại khả năng tích hợp toàn diện với nền tảng Cloudflare, sử dụng các cây quyết định để giúp người dùng xác định đúng sản phẩm Cloudflare phù hợp với nhu cầu. Công cụ được thiết kế cho các nhà phát triển làm việc với các dịch vụ của Cloudflare về điện toán, lưu trữ, AI, mạng và bảo mật."
+}

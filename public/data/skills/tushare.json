@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tushare",
+  "slug": "tushare",
+  "name": "tushare",
+  "headline": "Tushare: Chinese Market Data Research",
+  "short_description": "Tushare provides a comprehensive financial data API with over 400 endpoints covering various assets including stocks and macroeconomic indicators. It's designed for users needing access to detailed market data and analytics.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "waditu-tushare",
+  "install_command": "git clone https://github.com/waditu-tushare/skills",
+  "source_repo_url": "https://github.com/waditu-tushare/skills",
+  "works_with": [
+    "Claude Code",
+    "Windsurf",
+    "Cursor"
+  ],
+  "tags": [
+    "tushare",
+    "finance"
+  ],
+  "sections": {
+    "overview": "Tushare is a financial data research skill that translates conversational Chinese requests into structured queries across 400+ market data endpoints. It handles stock trends, company financials, valuation metrics, fund flows, sector rotation, announcements, and macroeconomic data for A-shares, indices, ETFs, and funds. The skill interprets time ranges, market context, and comparison requests from natural language, then retrieves, cleans, and synthesizes results into clear summaries rather than raw tables. It's built for researchers, traders, and analysts who need quick access to Chinese market data without learning API syntax. Requires Python 3.7+, the tushare package, and a free Tushare token from tushare.pro.\nAnalyze recent trends of a particular stock or index\nResearch company fundamentals and financial trends\nPerform comparative analysis of multiple assets\nMonitor capital flows and macroeconomic data",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/waditu-tushare/skills --skill tushare`\n`git clone https://github.com/waditu-tushare/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "tushare#main-content",
+      "tushare#overview",
+      "tushare#setup",
+      "tushare#examples",
+      "tushare#related",
+      "alva",
+      "trading-signals",
+      "commodities-quote"
+    ],
+    "overview_vi": "Tushare là một skill nghiên cứu dữ liệu tài chính giúp chuyển đổi các yêu cầu bằng tiếng Trung giao tiếp thành các truy vấn có cấu trúc trên hơn 400 endpoint dữ liệu thị trường. Skill này xử lý xu hướng cổ phiếu, tài chính doanh nghiệp, chỉ số định giá, dòng tiền, sự luân chuyển ngành, thông báo và dữ liệu kinh tế vĩ mô cho cổ phiếu hạng A (A-shares), chỉ số, ETF và quỹ đầu tư. Công cụ có khả năng tự giải nghĩa khoảng thời gian, ngữ cảnh thị trường và các yêu cầu so sánh từ ngôn ngữ tự nhiên, sau đó truy xuất, làm sạch và tổng hợp kết quả thành các bản tóm tắt rõ ràng thay vì trả về bảng dữ liệu thô. Skill được thiết kế dành riêng cho các nhà nghiên cứu, nhà giao dịch và nhà phân tích cần truy cập nhanh vào dữ liệu thị trường Trung Quốc mà không cần tìm hiểu cú pháp API. Yêu cầu Python 3.7+, package tushare và token Tushare miễn phí từ tushare.pro.\nPhân tích xu hướng gần đây của một cổ phiếu hoặc chỉ số cụ thể\nNghiên cứu các yếu tố cơ bản và xu hướng tài chính của doanh nghiệp\nThực hiện phân tích so sánh nhiều tài sản khác nhau\nTheo dõi dòng tiền và dữ liệu kinh tế vĩ mô",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/waditu-tushare/skills --skill tushare`\n`git clone https://github.com/waditu-tushare/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:31.478051Z",
+    "http_status": 200,
+    "content_hash": "d8b6fa61d2276941d56c7dbe3cfdbd3f956d3aa733126cc1cec83bd11a2d0a42",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tushare.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tushare.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tushare: Nghiên cứu Dữ liệu Thị trường Trung Quốc",
+  "short_description_vi": "Tushare cung cấp API dữ liệu tài chính toàn diện với hơn 400 endpoint, hỗ trợ nhiều loại tài sản bao gồm cổ phiếu và các chỉ số kinh tế vĩ mô. Công cụ này được thiết kế dành cho người dùng cần truy cập dữ liệu thị trường và phân tích chi tiết."
+}

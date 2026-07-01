@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-dx-cli-scale",
+  "slug": "agent-dx-cli-scale",
+  "name": "base44-cli",
+  "headline": "Agent DX CLI Scale: Evaluate CLI Agent Design",
+  "short_description": "This skill enables users to scale commands efficiently within the agent CLI environment. It's aimed at developers looking to enhance their command line productivity.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "jpoehnelt",
+  "install_command": "git clone https://github.com/jpoehnelt/skills",
+  "source_repo_url": "https://github.com/jpoehnelt/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "cli-tools",
+    "scale",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The Agent DX CLI Scale is a structured evaluation framework for assessing how well command-line interfaces are designed for AI agent interaction. It scores CLIs across six critical dimensions: machine-readable output, raw payload input support, schema introspection, context window discipline, input hardening, and safety rails. Rather than optimizing for human discoverability, this scale prioritizes predictability and defense-in-depth—the capabilities agents need to operate reliably. Developers use it to audit existing CLIs or guide new CLI design toward agent compatibility, identifying gaps in structured output formats, validation logic, and dry-run capabilities that prevent agents from working effectively.\nEnhanced command execution efficiency\nBatch processing commands\nScalable CLI automation\nIntegration with other CLI tools",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/jpoehnelt/skills --skill agent-dx-cli-scale`\n`git clone https://github.com/jpoehnelt/skills`",
+    "usage": "```\nScale the following command in the agent CLI environment to process [NUMBER] items efficiently: `[COMMAND]`. Ensure it handles [ERROR_HANDLING] and outputs results in [FORMAT]. Optimize for performance in [COMPANY]'s [INDUSTRY]-specific workflows.\n```\nCopy\n\n```\n**Scaled Command Execution Report**\n\n**Command:**\n`agent-dx-cli-scale --input data.json --output results.csv --process 1000 --batch-size 50 --retry 3 --format csv`\n\n**Execution Summary:**\n- **Total Items Processed:** 1,000\n- **Batches Executed:** 20 (50 items per batch)\n- **Success Rate:** 98% (2 failed batches auto-retried)\n- **Time Elapsed:** 4.2 minutes\n- **Output File:** `results.csv` (18.7 MB, 1,000 records)\n\n**Failed Batches:**\n- Batch #15 (Items 701-750): Retried once, succeeded on second attempt.\n- Batch #7 (Items 301-350): Skipped due to corrupt input data (logged to `errors.log`).\n\n**Performance Metrics:**\n- Average batch processing time: 12.8 seconds\n- Peak memory usage: 1.2 GB\n- CPU utilization: 78% (8-core)\n\n**Recommendations:**\n- Increase `--batch-size` to 75 for faster processing (if memory allows).\n- Add `--validate` flag to pre-check input data and reduce retries.\n\n*Command completed successfully. View full logs in `/logs/agent-dx-cli-scale-20240515.log`.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "agent-dx-cli-scale#main-content",
+      "agent-dx-cli-scale#overview",
+      "agent-dx-cli-scale#setup",
+      "agent-dx-cli-scale#examples",
+      "agent-dx-cli-scale#tools",
+      "agent-dx-cli-scale#mcp",
+      "agent-dx-cli-scale#related",
+      "hf-cli",
+      "base44-cli"
+    ],
+    "overview_vi": "The Agent DX CLI Scale is a structured evaluation framework for assessing how well command-line interfaces are designed for AI agent interaction. It scores CLIs across six critical dimensions: machine-readable output, raw payload input support, schema introspection, context window discipline, input hardening, and safety rails. Rather than optimizing for human discoverability, this scale prioritizes predictability and defense-in-depth—the capabilities agents need to operate reliably. Developers use it to audit existing CLIs or guide new CLI design toward agent compatibility, identifying gaps in structured output formats, validation logic, and dry-run capabilities that prevent agents from working effectively.\nEnhanced command execution efficiency\nBatch processing commands\nScalable CLI automation\nIntegration with other CLI tools",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/jpoehnelt/skills --skill agent-dx-cli-scale`\n`git clone https://github.com/jpoehnelt/skills`",
+    "usage_vi": "```\nScale the following command in the agent CLI environment to process [NUMBER] items efficiently: `[COMMAND]`. Ensure it handles [ERROR_HANDLING] and outputs results in [FORMAT]. Optimize for performance in [COMPANY]'s [INDUSTRY]-specific workflows.\n```\nCopy\n\n```\n**Scaled Command Execution Report**\n\n**Command:**\n`agent-dx-cli-scale --input data.json --output results.csv --process 1000 --batch-size 50 --retry 3 --format csv`\n\n**Execution Summary:**\n- **Total Items Processed:** 1,000\n- **Batches Executed:** 20 (50 items per batch)\n- **Success Rate:** 98% (2 failed batches auto-retried)\n- **Time Elapsed:** 4.2 minutes\n- **Output File:** `results.csv` (18.7 MB, 1,000 records)\n\n**Failed Batches:**\n- Batch #15 (Items 701-750): Retried once, succeeded on second attempt.\n- Batch #7 (Items 301-350): Skipped due to corrupt input data (logged to `errors.log`).\n\n**Performance Metrics:**\n- Average batch processing time: 12.8 seconds\n- Peak memory usage: 1.2 GB\n- CPU utilization: 78% (8-core)\n\n**Recommendations:**\n- Increase `--batch-size` to 75 for faster processing (if memory allows).\n- Add `--validate` flag to pre-check input data and reduce retries.\n\n*Command completed successfully. View full logs in `/logs/agent-dx-cli-scale-20240515.log`.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:33:13.199106Z",
+    "http_status": 200,
+    "content_hash": "1c7bed117044706fcafb804569a6868cb0c45876ead157e59d8e42b13baa9b6f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-dx-cli-scale.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-dx-cli-scale.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Agent DX CLI Scale: Evaluate CLI Agent Design",
+  "short_description_vi": "This skill enables users to scale commands efficiently within the agent CLI environment. It's aimed at developers looking to enhance their command line productivity."
+}

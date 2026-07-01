@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lima-devbox",
+  "slug": "lima-devbox",
+  "name": "Lima Devbox",
+  "headline": "Lima Devbox - Automate AI Agent Sandboxing",
+  "short_description": "Lima Devbox is a Claude Code skill that automates the setup of Lima VMs as isolated development environments on macOS. It enables safe execution of AI coding agents in a sandboxed VM, preventing system damage or data exposure. Ideal for operations teams running AI agents in YOLO mode.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "recodelabs",
+  "install_command": "git clone https://github.com/recodelabs/lima-devbox.git",
+  "source_repo_url": "https://github.com/recodelabs/lima-devbox",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Lima-devbox is a Claude Code skill that automates the creation and configuration of Lima virtual machines on macOS, providing isolated sandboxed environments for AI coding agents like Claude Code, Gemini CLI, and Codex CLI. It uses Lima (Linux on Mac) to create lightweight Linux VMs with automatic file sharing and port forwarding, ensuring that only explicitly shared directories are accessible to the VM. The skill includes a guided wizard that walks you through VM configuration, mount setup, git configuration, language installation via mise, GitHub CLI setup, and AI agent configuration. Operations teams running AI agents in autonomous mode benefit from this approach by preventing unintended system modifications or data exposure while maintaining near-native performance on Apple Silicon and Intel Macs. After setup, you can run commands directly in the VM using limactl or SSH, with built-in support for container tools like nerdctl.\nRunning Claude Code with full autonomy in a sandboxed VM without risking host system damage\nSafely testing and executing AI coding agents (Gemini CLI, Codex CLI, OpenCode) with controlled filesystem access\nSetting up isolated development environments with pre-configured language runtimes (Node.js, Go, Rust, Python)\nTeams needing to run multiple AI agents simultaneously with separate, contained workspaces",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/recodelabs/lima-devbox`\n1. **Install Lima**: Run `brew install lima` in your terminal.\n2. **Create VM**: Execute `lima _create_ [COMPANY]-devbox --cpus 4 --memory 8 --disk 50`\n3. **Install Software**: SSH into the VM and run the following commands:\n   ```bash\n   curl -sSL https://install.python-poetry.org | python3 -\n   brew install node@16\n   brew install --cask docker\n   ```\n4. **Verify Setup**: Check the installed versions and configurations.",
+    "usage": "```\nSet up a Lima VM for [COMPANY] as an isolated development environment on macOS. The VM should be configured with [SOFTWARE_STACK] and [CONFIGURATION]. Ensure it's ready for running AI coding agents in YOLO mode. Provide step-by-step instructions and any necessary commands.\n```\nCopy\n\n```\n# Lima VM Setup for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lima-devbox#main-content",
+      "lima-devbox#overview",
+      "lima-devbox#setup",
+      "lima-devbox#examples",
+      "lima-devbox#tools",
+      "lima-devbox#mcp",
+      "lima-devbox#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Lima-devbox là một skill Claude Code giúp tự động hóa việc tạo và cấu hình các máy ảo Lima trên macOS, cung cấp môi trường sandbox cô lập cho các AI coding agent như Claude Code, Gemini CLI và Codex CLI. Nó sử dụng Lima (Linux trên Mac) để tạo các Linux VM dung lượng nhẹ với tính năng tự động chia sẻ file và port forwarding, đảm bảo chỉ những thư mục được chia sẻ rõ ràng mới có thể truy cập được từ VM. Skill này tích hợp một trình hướng dẫn (wizard) từng bước giúp bạn cấu hình VM, setup mount, cấu hình git, cài đặt ngôn ngữ lập trình qua mise, setup GitHub CLI và cấu hình AI agent. Các đội ngũ vận hành chạy AI agent ở chế độ tự trị (autonomous mode) sẽ được hưởng lợi từ giải pháp này nhờ ngăn chặn được các thay đổi hệ thống ngoài ý muốn hoặc rò rỉ dữ liệu, trong khi vẫn duy trì hiệu năng gần như tương đương máy thật (near-native performance) trên cả chip Apple Silicon và Intel Mac. Sau khi setup, bạn có thể chạy lệnh trực tiếp trong VM bằng limactl hoặc SSH, với sự hỗ trợ tích hợp sẵn cho các công cụ container như nerdctl.\nChạy Claude Code ở chế độ tự trị hoàn toàn trong một sandbox VM mà không lo ảnh hưởng đến hệ thống host\nThử nghiệm và thực thi an toàn các AI coding agent (Gemini CLI, Codex CLI, OpenCode) với quyền truy cập file system được kiểm soát\nThiết lập các môi trường phát triển cô lập với các language runtime được cấu hình sẵn (Node.js, Go, Rust, Python)\nPhù hợp cho các đội ngũ cần chạy nhiều AI agent cùng lúc trong các workspace riêng biệt và độc lập",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/recodelabs/lima-devbox`\n1. **Cài đặt Lima**: Chạy lệnh `brew install lima` trong terminal của bạn.\n2. **Tạo VM**: Thực thi lệnh `lima _create_ [COMPANY]-devbox --cpus 4 --memory 8 --disk 50`\n3. **Cài đặt phần mềm**: SSH vào VM và chạy các lệnh sau:\n   ```bash\n   curl -sSL https://install.python-poetry.org | python3 -\n   brew install node@16\n   brew install --cask docker\n   ```\n4. **Xác minh cài đặt**: Kiểm tra các phiên bản và cấu hình đã cài đặt.",
+    "usage_vi": "```\nThiết lập một Lima VM cho [COMPANY] làm môi trường phát triển cô lập trên macOS. VM này cần được cấu hình với [SOFTWARE_STACK] và [CONFIGURATION]. Đảm bảo hệ thống đã sẵn sàng để chạy các AI coding agent ở chế độ YOLO (YOLO mode). Cung cấp hướng dẫn từng bước và các lệnh cần thiết.\n```\nSao chép\n\n```\n# Thiết lập Lima VM cho [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:03.796738Z",
+    "http_status": 200,
+    "content_hash": "ab678eab0231ac5c080990ca85191109ebb77c33ad583de9b1bec6ebb6dac41b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lima-devbox.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lima-devbox.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Lima Devbox - Tự động hóa Sandboxing cho AI Agent",
+  "short_description_vi": "Lima Devbox là một skill Claude Code giúp tự động hóa việc setup các Lima VM làm môi trường phát triển cô lập trên macOS. Công cụ này cho phép chạy an toàn các AI coding agent trong một sandbox VM, tránh gây hư hại hệ thống host hoặc rò rỉ dữ liệu. Đây là giải pháp lý tưởng cho các đội ngũ vận hành khi chạy AI agent ở chế độ YOLO (YOLO mode)."
+}

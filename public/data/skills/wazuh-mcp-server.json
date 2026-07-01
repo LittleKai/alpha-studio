@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/wazuh-mcp-server",
+  "slug": "wazuh-mcp-server",
+  "name": "browser-use",
+  "headline": "Wazuh-MCP-Server - AI Security Operations",
+  "short_description": "AI-powered security operations with Wazuh SIEM + Claude Desktop. Natural language threat detection, automated incident response & compliance. Real-time monitoring, ML anomaly detection. Transform your SOC with conversational security analysis. Production-ready MCP server.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "gensecaihq",
+  "install_command": "git clone https://github.com/gensecaihq/Wazuh-MCP-Server.git",
+  "source_repo_url": "https://github.com/gensecaihq/Wazuh-MCP-Server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "hacktoberfest-accepted",
+    "model-context-protocol-servers",
+    "python",
+    "mcp-server",
+    "wazuh-integration",
+    "genai",
+    "hacktoberfest2025",
+    "hacktoberfest",
+    "claude-ai",
+    "mcpserver",
+    "wazuh",
+    "claude",
+    "mcp",
+    "dxt",
+    "claudedxt",
+    "model-context-protocol",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Wazuh-MCP-Server bridges your SIEM and AI assistants, enabling security teams to query alerts, hunt threats, and trigger active responses through conversational interfaces. The server provides 48 validated security tools covering alert analysis, agent monitoring, vulnerability scanning, threat assessment, and automated incident response actions like IP blocking and host isolation. It works with Claude Desktop, local LLMs via Ollama, Open WebUI, and any MCP-compliant client, with full support for air-gapped deployments that keep SIEM data on-premises. Security is built-in: RBAC enforcement, audit logging of all destructive actions, credential redaction, input validation, rate limiting, and container hardening prevent unauthorized access and data leakage. Compatible with Wazuh 4.8.0–4.14.4, it transforms SOC workflows from dashboard-juggling and manual API queries into real-time conversational security analysis with compliance checking and risk assessment.\nQuery critical alerts and threat patterns across Wazuh deployment via natural language\nAutomate incident response: block malicious IPs, isolate compromised hosts, kill processes\nHunt vulnerabilities and check CVE severity across agents without leaving chat\nRun compliance checks and generate security reports from conversational requests",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gensecaihq/Wazuh-MCP-Server`",
+    "usage": "```\nUse the Wazuh-MCP-Server to analyze security alerts from [Wazuh_SERVER_IP] for the last [TIME_RANGE]. Focus on [THREAT_TYPE] events, such as brute-force attempts or suspicious process executions. For each alert, provide: 1) a severity assessment, 2) potential impact on [ASSET_OR_SYSTEM], and 3) recommended mitigation steps. Prioritize alerts that match [COMPLIANCE_FRAMEWORK] (e.g., NIST, ISO 27001).\n```\nCopy\n\n```\nAnalyzing Wazuh alerts from server 192.168.1.100 over the last 24 hours for brute-force SSH attempts targeting the database cluster. Detected 47 failed login attempts from IP 203.0.113.45, with 12 occurring in the last hour. Severity assessment: **High** due to repeated failed attempts and proximity to sensitive assets.\n\nPotential impact: Unauthorized access could lead to data exfiltration or lateral movement within the cluster. The attacker may attempt to exploit weak credentials or known vulnerabilities in SSH services.\n\nRecommended mitigation steps:\n1. **Immediate**: Block IP 203.0.113.45 at the firewall level using Wazuh's active-response module. Execute the command: `wazuh-control -q -f /var/ossec/etc/rules/active-response/host-deny.conf '203.0.113.45'`.\n2. **Short-term**: Enforce SSH key-based authentication for all database cluster nodes and disable password authentication. Update `/etc/ssh/sshd_config` to include `PasswordAuthentication no` and restart the SSH service.\n3. **Compliance**: Document the incident in the SOC log for ISO 27001 compliance (Control A.12.6.1). Update the incident response playbook to include this scenario.\n4. **Long-term**: Deploy Wazuh's MITRE ATT&CK integration to map this attack to T1110 (Brute Force) and set up automated alerts for similar patterns.\n\nAdditional context: The database cluster (192.168.1.50-52) is running PostgreSQL 14 with default configurations. No other alerts of this nature were detected in the last 7 days.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "wazuh-mcp-server#main-content",
+      "wazuh-mcp-server#overview",
+      "wazuh-mcp-server#setup",
+      "wazuh-mcp-server#examples",
+      "wazuh-mcp-server#tools",
+      "wazuh-mcp-server#mcp",
+      "wazuh-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Wazuh-MCP-Server bridges your SIEM and AI assistants, enabling security teams to query alerts, hunt threats, and trigger active responses through conversational interfaces. The server provides 48 validated security tools covering alert analysis, agent monitoring, vulnerability scanning, threat assessment, and automated incident response actions like IP blocking and host isolation. It works with Claude Desktop, local LLMs via Ollama, Open WebUI, and any MCP-compliant client, with full support for air-gapped deployments that keep SIEM data on-premises. Security is built-in: RBAC enforcement, audit logging of all destructive actions, credential redaction, input validation, rate limiting, and container hardening prevent unauthorized access and data leakage. Compatible with Wazuh 4.8.0–4.14.4, it transforms SOC workflows from dashboard-juggling and manual API queries into real-time conversational security analysis with compliance checking and risk assessment.\nQuery critical alerts and threat patterns across Wazuh deployment via natural language\nAutomate incident response: block malicious IPs, isolate compromised hosts, kill processes\nHunt vulnerabilities and check CVE severity across agents without leaving chat\nRun compliance checks and generate security reports from conversational requests",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gensecaihq/Wazuh-MCP-Server`",
+    "usage_vi": "```\nUse the Wazuh-MCP-Server to analyze security alerts from [Wazuh_SERVER_IP] for the last [TIME_RANGE]. Focus on [THREAT_TYPE] events, such as brute-force attempts or suspicious process executions. For each alert, provide: 1) a severity assessment, 2) potential impact on [ASSET_OR_SYSTEM], and 3) recommended mitigation steps. Prioritize alerts that match [COMPLIANCE_FRAMEWORK] (e.g., NIST, ISO 27001).\n```\nCopy\n\n```\nAnalyzing Wazuh alerts from server 192.168.1.100 over the last 24 hours for brute-force SSH attempts targeting the database cluster. Detected 47 failed login attempts from IP 203.0.113.45, with 12 occurring in the last hour. Severity assessment: **High** due to repeated failed attempts and proximity to sensitive assets.\n\nPotential impact: Unauthorized access could lead to data exfiltration or lateral movement within the cluster. The attacker may attempt to exploit weak credentials or known vulnerabilities in SSH services.\n\nRecommended mitigation steps:\n1. **Immediate**: Block IP 203.0.113.45 at the firewall level using Wazuh's active-response module. Execute the command: `wazuh-control -q -f /var/ossec/etc/rules/active-response/host-deny.conf '203.0.113.45'`.\n2. **Short-term**: Enforce SSH key-based authentication for all database cluster nodes and disable password authentication. Update `/etc/ssh/sshd_config` to include `PasswordAuthentication no` and restart the SSH service.\n3. **Compliance**: Document the incident in the SOC log for ISO 27001 compliance (Control A.12.6.1). Update the incident response playbook to include this scenario.\n4. **Long-term**: Deploy Wazuh's MITRE ATT&CK integration to map this attack to T1110 (Brute Force) and set up automated alerts for similar patterns.\n\nAdditional context: The database cluster (192.168.1.50-52) is running PostgreSQL 14 with default configurations. No other alerts of this nature were detected in the last 7 days.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:10:24.135900Z",
+    "http_status": 200,
+    "content_hash": "16b48b9f994fabb54b07bebbf71f3cdd58e09cbb23498f3bb3dc5f16e546e4fd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wazuh-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\wazuh-mcp-server.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Wazuh-MCP-Server - AI Security Operations",
+  "short_description_vi": "AI-powered security operations with Wazuh SIEM + Claude Desktop. Natural language threat detection, automated incident response & compliance. Real-time monitoring, ML anomaly detection. Transform your SOC with conversational security analysis. Production-ready MCP server."
+}

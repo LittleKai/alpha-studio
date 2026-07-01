@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openconstructionestimate-ddc-cwicr",
+  "slug": "openconstructionestimate-ddc-cwicr",
+  "name": "OpenConstructionEstimate-DDC-CWICR",
+  "headline": "OpenConstructionEstimate-DDC-CWICR - AI",
+  "short_description": "Open multilingual construction cost database for AI agents. 55K+ work items, 27K+ resources, 9 languages. Semantic search via Qdrant vector DB. Enables cost estimation from descriptions, photos, and CAD (BIM). Connects to n8n pipelines for automated workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "datadrivenconstruction",
+  "install_command": "git clone https://github.com/datadrivenconstruction/OpenConstructionEstimate-DDC-CWICR.git",
+  "source_repo_url": "https://github.com/datadrivenconstruction/OpenConstructionEstimate-DDC-CWICR",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "n8n",
+    "cad",
+    "dwg",
+    "ifc",
+    "agentic-workflow",
+    "kilocode",
+    "cost-estimation",
+    "antigravity",
+    "bim",
+    "vector-database",
+    "workflow",
+    "ai-agents",
+    "qdrant",
+    "construction",
+    "opencode",
+    "revit",
+    "estimation",
+    "claude-code",
+    "pipeline"
+  ],
+  "sections": {
+    "overview": "OpenConstructionEstimate-DDC-CWICR is a comprehensive, open-source construction cost database designed for AI agents and automation platforms. It contains 55,719 work items, 27,672 resources, and localized pricing across 30 countries in 23 languages, enabling rapid cost estimation from multiple input types. The database uses OpenAI embeddings and Qdrant vector search for semantic matching, allowing agents to instantly identify relevant construction tasks and rates from natural language descriptions, site photographs, PDF takeoffs, and CAD/BIM model exports. Integration with n8n pipelines enables end-to-end automated workflows that transform scope descriptions into detailed cost estimates with 4D/5D breakdowns. Organizations can deploy text-based estimators, photo analysis bots, and CAD quantification pipelines without building cost databases from scratch.\nGenerate cost estimates from site photos and field reports via Telegram bots\nExtract scope and pricing from scanned bills of quantities and PDFs\nAutomated 4D/5D cost estimation from Revit, IFC, and DWG BIM models\nMulti-language cost lookup across 30 regional construction markets",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/datadrivenconstruction/OpenConstructionEstimate-DDC-CWICR`",
+    "usage": "```\nGenerate a detailed construction cost estimate for [PROJECT_DESCRIPTION]. Use the OpenConstructionEstimate-DDC-CWICR database to identify relevant work items, resources, and unit costs. Include material quantities, labor hours, and total costs in [CURRENCY]. For any ambiguous items, suggest alternatives with justification. Format the output as a structured cost breakdown with sections for [CATEGORY_1], [CATEGORY_2], etc. Reference [LANGUAGE] sources where applicable.\n```\nCopy\n\n```\n### Construction Cost Estimate: Mid-Rise Office Building in Berlin, Germany\n**Project Scope:** 12-story office building with 2 underground parking levels, total GFA 18,000 m². Construction duration: 18 months. Site conditions: Urban brownfield with existing foundation remnants. Target completion: Q3 2026.\n\n**Cost Breakdown (EUR, excluding VAT):**\n\n**1. Site Preparation & Foundations**\n- Demolition of existing structures: 125,000 EUR\n  - Includes hazardous material removal (asbestos survey required per German TRGS 519)\n  - Excavation: 85 m³ @ 14.20 EUR/m³ (DDC CWICR 01-310-0010)\n- New foundation system (combined raft + piles): 485,000 EUR\n  - 240 piles (30m depth, 600mm diameter) @ 2,020 EUR/pile (DDC CWICR 02-210-0030)\n  - Reinforced concrete raft: 1,250 m³ @ 385 EUR/m³ (DDC CWICR 03-310-0020)\n- Temporary shoring & dewatering: 97,000 EUR\n  - Includes groundwater control system (DDC CWICR 01-320-0015)\n\n**2. Structural Frame**\n- Reinforced concrete core walls & columns: 1,850,000 EUR\n  - C30/37 concrete: 2,100 m³ @ 155 EUR/m³ (DDC CWICR 03-310-0020)\n  - Rebar B500B: 325 tons @ 1,280 EUR/ton (DDC CWICR 04-410-0010)\n- Steel composite beams (floor structure): 720,000 EUR\n  - S355 steel: 185 tons @ 3,900 EUR/ton (DDC CWICR 04-420-0025)\n\n**3. Building Envelope**\n- Curtain wall system (double-glazed, aluminum): 1,420,000 EUR\n  - 3,200 m² @ 445 EUR/m² (DDC CWICR 05-510-0030)\n- Roofing (green roof system): 385,000 EUR\n  - Includes waterproofing, drainage, and vegetation layers (DDC CWICR 05-520-0045)\n\n**4. Mechanical & Electrical Systems**\n- HVAC (VAV system with heat recovery): 1,150,000 EUR\n  - Includes chillers, AHUs, and ductwork (DDC CWICR 08-810-0020)\n- Electrical installation: 890,000 EUR\n  - Includes main distribution, lighting, and power systems (DDC CWICR 08-820-0015)\n\n**5. Finishes**\n- Drywall partitions (Type A): 215,000 EUR\n  - 12,500 m² @ 17.20 EUR/m² (DDC CWICR 09-910-0010)\n- Raised access flooring: 180,000 EUR\n  - 15,000 m² @ 12.00 EUR/m² (DDC CWICR 09-920-0025)\n\n**Total Estimated Cost (Excluding Professional Fees & Contingency):** 7,527,000 EUR\n\n**Key Assumptions:**\n1. Prices reflect Q2 2024 German market rates (DDC CWICR index adjusted for Berlin region)\n2. Labor rates include social security contributions (25% on top of base wage)\n3. Material costs account for 5% bulk purchase discount\n4. All quantities verified against BIM model (Revit 2024) with clash detection applied\n\n**Risk Factors:**\n- Potential 8-12% increase in steel prices due to geopolitical tensions (monitor DDC CWICR 04-420-0025 monthly)\n- German labor shortages may extend timelines by 2-3 weeks per critical path activity\n- Soil contamination testing may reveal additional remediation costs (budget 45,000 EUR contingency)\n\n**Recommendations:**\n1. Initiate procurement for long-lead items (steel beams, curtain wall) within 4 weeks\n2. Engage local subcontractors for concrete works to reduce labor costs by 7-10%\n3. Schedule BIM coordination meetings bi-weekly to resolve constructability issues early\n\n*Sources: DDC CWICR 2024 Edition (German), European Construction Costs 2024 Report, Berlin Chamber of Commerce cost indices.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "openconstructionestimate-ddc-cwicr#main-content",
+      "openconstructionestimate-ddc-cwicr#overview",
+      "openconstructionestimate-ddc-cwicr#setup",
+      "openconstructionestimate-ddc-cwicr#examples",
+      "openconstructionestimate-ddc-cwicr#tools",
+      "openconstructionestimate-ddc-cwicr#mcp",
+      "openconstructionestimate-ddc-cwicr#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OpenConstructionEstimate-DDC-CWICR là cơ sở dữ liệu chi phí xây dựng mã nguồn mở toàn diện được thiết kế cho các AI agent và nền tảng tự động hóa. Cơ sở dữ liệu này chứa 55.719 hạng mục công việc, 27.672 tài nguyên và đơn giá bản địa hóa tại 30 quốc gia bằng 23 ngôn ngữ, giúp ước tính chi phí nhanh chóng từ nhiều loại đầu vào khác nhau. Cơ sở dữ liệu sử dụng OpenAI embedding và tìm kiếm vector Qdrant để so khớp ngữ nghĩa, cho phép các agent xác định ngay lập tức các tác vụ và đơn giá xây dựng phù hợp từ mô tả bằng ngôn ngữ tự nhiên, ảnh chụp công trường, bản bóc tách khối lượng PDF (PDF takeoff) và tệp xuất từ mô hình CAD/BIM. Việc tích hợp với các pipeline n8n giúp triển khai các workflow tự động hóa đầu-cuối (end-to-end), chuyển đổi mô tả phạm vi công việc thành bảng ước tính chi phí chi tiết với phân rã 4D/5D. Các tổ chức có thể triển khai hệ thống ước tính chi phí bằng văn bản, bot phân tích hình ảnh và pipeline định lượng CAD mà không cần xây dựng cơ sở dữ liệu chi phí từ đầu.\n\nTạo ước tính chi phí từ ảnh chụp công trường và báo cáo hiện trường qua Telegram bot\nTrích xuất phạm vi công việc và đơn giá từ bảng tiên lượng (BoQ) dạng quét và file PDF\nTự động ước tính chi phí 4D/5D từ các mô hình BIM Revit, IFC và DWG\nTra cứu chi phí đa ngôn ngữ trên 30 thị trường xây dựng khu vực",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/datadrivenconstruction/OpenConstructionEstimate-DDC-CWICR`",
+    "usage_vi": "```\nHãy tạo một bảng ước tính chi phí xây dựng chi tiết cho [PROJECT_DESCRIPTION]. Sử dụng cơ sở dữ liệu OpenConstructionEstimate-DDC-CWICR để xác định các hạng mục công việc, tài nguyên và đơn giá phù hợp. Bao gồm khối lượng vật liệu, số giờ công lao động và tổng chi phí bằng [CURRENCY]. Đối với các hạng mục chưa rõ ràng, hãy đề xuất các phương án thay thế kèm theo lý do giải thích. Định dạng đầu ra dưới dạng bảng phân rã chi phí có cấu trúc với các phần dành cho [CATEGORY_1], [CATEGORY_2], v.v. Tham chiếu các nguồn bằng [LANGUAGE] nếu có.\n```\nCopy\n\n```\n### Ước tính chi phí xây dựng: Tòa nhà văn phòng trung tầng tại Berlin, Đức\n**Phạm vi dự án:** Tòa nhà văn phòng 12 tầng với 2 tầng hầm đỗ xe, tổng diện tích sàn (GFA) 18.000 m². Thời gian thi công: 18 tháng. Điều kiện mặt bằng: Khu đất đô thị đã qua sử dụng (brownfield) với tàn tích móng cũ. Mục tiêu hoàn thành: Quý 3 năm 2026.\n\n**Bảng phân rã chi phí (EUR, chưa bao gồm VAT):**\n\n**1. Chuẩn bị mặt bằng & Móng**\n- Phá dỡ kết cấu hiện hữu: 125.000 EUR\n  - Bao gồm xử lý chất thải nguy hại (yêu cầu khảo sát amiăng theo tiêu chuẩn TRGS 519 của Đức)\n  - Đào đất: 85 m³ @ 14,20 EUR/m³ (DDC CWICR 01-310-0010)\n- Hệ móng mới (móng bè kết hợp cọc): 485.000 EUR\n  - 240 cọc (chiều sâu 30m, đường kính 600mm) @ 2.020 EUR/cọc (DDC CWICR 02-210-0030)\n  - Móng bè bê tông cốt thép: 1.250 m³ @ 385 EUR/m³ (DDC CWICR 03-310-0020)\n- Hệ giằng chống tạm thời & hạ mực nước ngầm: 97.000 EUR\n  - Bao gồm hệ thống kiểm soát nước ngầm (DDC CWICR 01-320-0015)\n\n**2. Kết cấu khung chịu lực**\n- Vách lõi & cột bê tông cốt thép: 1.850.000 EUR\n  - Bê tông C30/37: 2.100 m³ @ 155 EUR/m³ (DDC CWICR 03-310-0020)\n  - Thép cốt bê tông B500B: 325 tấn @ 1.280 EUR/tấn (DDC CWICR 04-410-0010)\n- Dầm thép liên hợp (kết cấu sàn): 720.000 EUR\n  - Thép S355: 185 tấn @ 3.900 EUR/tấn (DDC CWICR 04-420-0025)\n\n**3. Kết cấu bao che tòa nhà**\n- Hệ vách kính mặt dựng (kính hộp hai lớp, khung nhôm): 1.420.000 EUR\n  - 3.200 m² @ 445 EUR/m² (DDC CWICR 05-510-0030)\n- Mái (hệ thống mái xanh): 385.000 EUR\n  - Bao gồm các lớp chống thấm, thoát nước và thảm thực vật (DDC CWICR 05-520-0045)\n\n**4. Hệ thống Cơ điện (M&E)**\n- HVAC (Hệ thống VAV tích hợp thu hồi nhiệt): 1.150.000 EUR\n  - Bao gồm máy làm lạnh (chiller), AHU và hệ thống đường ống gió (DDC CWICR 08-810-0020)\n- Hệ thống điện: 890.000 EUR\n  - Bao gồm hệ thống phân phối chính, chiếu sáng và cấp nguồn (DDC CWICR 08-820-0015)\n\n**5. Hoàn thiện**\n- Vách ngăn thạch cao (Loại A): 215.000 EUR\n  - 12.500 m² @ 17,20 EUR/m² (DDC CWICR 09-910-0010)\n- Sàn nâng kỹ thuật: 180.000 EUR\n  - 15.000 m² @ 12,00 EUR/m² (DDC CWICR 09-920-0025)\n\n**Tổng chi phí ước tính (Không bao gồm chi phí tư vấn & chi phí dự phòng):** 7.527.000 EUR\n\n**Các giả định chính:**\n1. Đơn giá phản ánh mức giá thị trường Đức Quý 2 năm 2024 (chỉ số DDC CWICR được điều chỉnh cho khu vực Berlin)\n2. Đơn giá nhân công đã bao gồm bảo hiểm xã hội (thêm 25% trên lương cơ bản)\n3. Chi phí vật liệu đã tính chiết khấu 5% khi mua số lượng lớn\n4. Tất cả khối lượng đã được đối chiếu với mô hình BIM (Revit 2024) và áp dụng kiểm tra xung đột\n\n**Các yếu tố rủi ro:**\n- Giá thép có thể tăng 8-12% do căng thẳng địa chính trị (theo dõi DDC CWICR 04-420-0025 hàng tháng)\n- Tình trạng thiếu hụt nhân công tại Đức có thể kéo dài tiến độ thêm 2-3 tuần cho mỗi hoạt động trên đường găng\n- Việc kiểm tra ô nhiễm đất có thể phát sinh thêm chi phí xử lý (dự phòng ngân sách 45.000 EUR)\n\n**Khuyến nghị:**\n1. Triển khai mua sắm các thiết bị/vật tư có thời gian giao hàng lâu (dầm thép, vách kính mặt dựng) trong vòng 4 tuần\n2. Hợp tác với nhà thầu phụ địa phương cho công tác bê tông để giảm 7-10% chi phí nhân công\n3. Lên lịch họp điều phối BIM định kỳ hai tuần một lần để sớm giải quyết các vấn đề về khả năng thi công\n\n*Nguồn: DDC CWICR Phiên bản 2024 (tiếng Đức), Báo cáo chi phí xây dựng châu Âu năm 2024, chỉ số giá của Phòng Thương mại Berlin.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:55.978709Z",
+    "http_status": 200,
+    "content_hash": "510684719e83619407ab9fb5a066d17cd0f2658e310f38aa572b57cc27e61930",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openconstructionestimate-ddc-cwicr.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openconstructionestimate-ddc-cwicr.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OpenConstructionEstimate-DDC-CWICR - AI",
+  "short_description_vi": "Cơ sở dữ liệu chi phí xây dựng đa ngôn ngữ mở dành cho các AI agent. Hơn 55K hạng mục công việc, 27K+ tài nguyên, 9 ngôn ngữ. Tìm kiếm ngữ nghĩa qua Qdrant vector DB. Hỗ trợ ước tính chi phí từ mô tả, hình ảnh và CAD (BIM). Kết nối với các pipeline n8n để tự động hóa workflow."
+}

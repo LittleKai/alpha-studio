@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vertical-slice-architecture",
+  "slug": "vertical-slice-architecture",
+  "name": "Vertical Slice Architecture",
+  "headline": "Vertical Slice Architecture: Feature-Based Code",
+  "short_description": "This skill helps developers implement the Vertical Slice Architecture pattern, enabling better organization of features into distinct modules. It is particularly useful for developers looking to improve code maintainability and scalability in their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "mryll",
+  "install_command": "git clone https://github.com/mryll/skills",
+  "source_repo_url": "https://github.com/mryll/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "slice",
+    "architecture",
+    "vertical"
+  ],
+  "sections": {
+    "overview": "Vertical Slice Architecture organizes code around features and use-cases rather than technical layers like controllers, services, and repositories. This skill guides your AI agent to structure applications so each feature is a self-contained vertical slice with all its dependencies grouped together. It works with any programming language and app type—web APIs, CLIs, event-driven systems—making it easier to locate, modify, and test individual features. Teams using this pattern experience faster feature development and reduced coupling between domain logic.\nImplement a new feature using the vertical slice methodology.\nOrganize existing code into vertical slices for better maintainability.\nConduct tests specifically on the entry points of each feature.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/mryll/skills --skill vertical-slice-architecture`\n`git clone https://github.com/mryll/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "vertical-slice-architecture#main-content",
+      "vertical-slice-architecture#overview",
+      "vertical-slice-architecture#setup",
+      "vertical-slice-architecture#examples",
+      "vertical-slice-architecture#tools",
+      "vertical-slice-architecture#related"
+    ],
+    "overview_vi": "Vertical Slice Architecture tổ chức code xoay quanh các tính năng và use-case thay vì chia theo các layer kỹ thuật như controller, service và repository. Skill này hướng dẫn AI agent của bạn cấu trúc ứng dụng sao cho mỗi tính năng là một lát cắt dọc (vertical slice) độc lập với đầy đủ các dependency được gom nhóm lại với nhau. Phương pháp này hoạt động với mọi ngôn ngữ lập trình và loại ứng dụng—từ web API, CLI cho đến các hệ thống event-driven—giúp dễ dàng định vị, chỉnh sửa và kiểm thử từng tính năng riêng biệt. Các team áp dụng pattern này sẽ phát triển tính năng nhanh hơn và giảm thiểu sự liên kết chéo (coupling) giữa các domain logic.\nTriển khai tính năng mới bằng phương pháp vertical slice.\nTổ chức lại code hiện tại thành các vertical slice để nâng cao khả năng bảo trì.\nThực hiện test tập trung vào các entry point của từng tính năng.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/mryll/skills --skill vertical-slice-architecture`\n`git clone https://github.com/mryll/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nVui lòng kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:55.822452Z",
+    "http_status": 200,
+    "content_hash": "e5f75471c28b0abf511c90722c0d8fbfee62dd587c15b8af6034185a121e04e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vertical-slice-architecture.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vertical-slice-architecture.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kiến trúc Vertical Slice: Tổ chức Code theo Tính năng",
+  "short_description_vi": "Skill này giúp lập trình viên triển khai pattern Vertical Slice Architecture, hỗ trợ tổ chức các tính năng thành các module riêng biệt tốt hơn. Skill này đặc biệt hữu ích cho những nhà phát triển đang muốn cải thiện khả năng bảo trì và mở rộng ứng dụng."
+}

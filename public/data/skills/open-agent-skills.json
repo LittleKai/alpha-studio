@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-agent-skills",
+  "slug": "open-agent-skills",
+  "name": "browser-use",
+  "headline": "Open Agent Skills - Automate Tasks with AI",
+  "short_description": "We are dedicated to building a set of open agent skills that deliver superior performance, higher determinism, and greater consistency on targeted tasks, while operating at a lower cost and with reduced context usage.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "MassLab-SII",
+  "install_command": "git clone https://github.com/MassLab-SII/open-agent-skills.git",
+  "source_repo_url": "https://github.com/MassLab-SII/open-agent-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Open Agent Skills is a lightweight, open-source framework that equips AI agents with modular, reusable domain-specific expertise. Compatible with the Agent Skills standard, it works with any LLM provider—not just Claude or Codex. Skills teach agents how to use external tools and MCP services effectively, achieving up to 20x context reduction in extreme cases while improving task accuracy by approximately 18 percentage points across benchmarks. The framework integrates seamlessly with Model Context Protocol (MCP) to provide both tool access and procedural knowledge for complex multi-step tasks.\nAutomating GitHub workflows and repository management tasks\nFilesystem operations with reduced token consumption\nWeb automation and browser-based task completion\nMulti-step agent tasks requiring organized tool access",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MassLab-SII/open-agent-skills`",
+    "usage": "```\nAct as an [OPEN_AGENT_SKILL] specialized in [TARGET_TASK]. Follow these strict guidelines: 1) Use only the provided [CONTEXT_WINDOW] to ensure consistency. 2) Prioritize deterministic outputs—avoid creative variations unless explicitly requested. 3) Optimize for [PERFORMANCE_METRIC] (e.g., speed, accuracy, cost). 4) Return structured output in [OUTPUT_FORMAT]. Execute the following task: [TASK_DESCRIPTION].\n```\nCopy\n\n```\n```json\n{\n  \"task\": \"Process 500 customer support tickets for sentiment analysis and categorization\",\n  \"context_window\": \"1000 tokens (ticket text + metadata)\",\n  \"performance_metric\": \"95% accuracy with <2s processing per ticket\",\n  \"output\": {\n    \"sentiment_analysis\": {\n      \"positive\": 120,\n      \"neutral\": 280,\n      \"negative\": 100\n    },\n    \"categories\": {\n      \"billing\": 150,\n      \"technical_support\": 180,\n      \"product_feedback\": 70,\n      \"general_inquiry\": 100\n    },\n    \"escalation_flags\": [\n      {\"ticket_id\": \"TKT-452\", \"reason\": \"Negative sentiment + billing category\"},\n      {\"ticket_id\": \"TKT-189\", \"reason\": \"Technical issue with no resolution in metadata\"}\n    ]\n  },\n  \"determinism_score\": 0.98,\n  \"context_usage\": \"987/1000 tokens used\"\n}\n```\n\n**Key Observations:**\n- Negative sentiment tickets (100) are 20% higher than the previous week, indicating a potential issue with billing or product performance.\n- The 'technical_support' category (180 tickets) suggests a need for improved self-service documentation.\n- Two tickets flagged for escalation require immediate human review due to high negative sentiment combined with unresolved issues.\n\n**Recommendations:**\n1. Trigger a follow-up email campaign for customers with negative sentiment tickets to address concerns proactively.\n2. Update the knowledge base with solutions for the top 3 technical support issues identified in this batch.\n3. Allocate additional resources to the billing team during peak hours (10 AM - 2 PM) to reduce ticket volume.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-agent-skills#main-content",
+      "open-agent-skills#overview",
+      "open-agent-skills#setup",
+      "open-agent-skills#examples",
+      "open-agent-skills#tools",
+      "open-agent-skills#mcp",
+      "open-agent-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open Agent Skills is a lightweight, open-source framework that equips AI agents with modular, reusable domain-specific expertise. Compatible with the Agent Skills standard, it works with any LLM provider—not just Claude or Codex. Skills teach agents how to use external tools and MCP services effectively, achieving up to 20x context reduction in extreme cases while improving task accuracy by approximately 18 percentage points across benchmarks. The framework integrates seamlessly with Model Context Protocol (MCP) to provide both tool access and procedural knowledge for complex multi-step tasks.\nAutomating GitHub workflows and repository management tasks\nFilesystem operations with reduced token consumption\nWeb automation and browser-based task completion\nMulti-step agent tasks requiring organized tool access",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MassLab-SII/open-agent-skills`",
+    "usage_vi": "```\nAct as an [OPEN_AGENT_SKILL] specialized in [TARGET_TASK]. Follow these strict guidelines: 1) Use only the provided [CONTEXT_WINDOW] to ensure consistency. 2) Prioritize deterministic outputs—avoid creative variations unless explicitly requested. 3) Optimize for [PERFORMANCE_METRIC] (e.g., speed, accuracy, cost). 4) Return structured output in [OUTPUT_FORMAT]. Execute the following task: [TASK_DESCRIPTION].\n```\nCopy\n\n```\n```json\n{\n  \"task\": \"Process 500 customer support tickets for sentiment analysis and categorization\",\n  \"context_window\": \"1000 tokens (ticket text + metadata)\",\n  \"performance_metric\": \"95% accuracy with <2s processing per ticket\",\n  \"output\": {\n    \"sentiment_analysis\": {\n      \"positive\": 120,\n      \"neutral\": 280,\n      \"negative\": 100\n    },\n    \"categories\": {\n      \"billing\": 150,\n      \"technical_support\": 180,\n      \"product_feedback\": 70,\n      \"general_inquiry\": 100\n    },\n    \"escalation_flags\": [\n      {\"ticket_id\": \"TKT-452\", \"reason\": \"Negative sentiment + billing category\"},\n      {\"ticket_id\": \"TKT-189\", \"reason\": \"Technical issue with no resolution in metadata\"}\n    ]\n  },\n  \"determinism_score\": 0.98,\n  \"context_usage\": \"987/1000 tokens used\"\n}\n```\n\n**Key Observations:**\n- Negative sentiment tickets (100) are 20% higher than the previous week, indicating a potential issue with billing or product performance.\n- The 'technical_support' category (180 tickets) suggests a need for improved self-service documentation.\n- Two tickets flagged for escalation require immediate human review due to high negative sentiment combined with unresolved issues.\n\n**Recommendations:**\n1. Trigger a follow-up email campaign for customers with negative sentiment tickets to address concerns proactively.\n2. Update the knowledge base with solutions for the top 3 technical support issues identified in this batch.\n3. Allocate additional resources to the billing team during peak hours (10 AM - 2 PM) to reduce ticket volume.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:36:38.580912Z",
+    "http_status": 200,
+    "content_hash": "3d34348a90afb38bec8891aaf35112bc70cd3e450db319ed8a799e0e0124c7e3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\open-agent-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\open-agent-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Open Agent Skills - Automate Tasks with AI",
+  "short_description_vi": "We are dedicated to building a set of open agent skills that deliver superior performance, higher determinism, and greater consistency on targeted tasks, while operating at a lower cost and with reduced context usage."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/clean-architecture-framework",
+  "slug": "clean-architecture-framework",
+  "name": "Related Skills",
+  "headline": "Clean Architecture Framework: Claude Code skill for",
+  "short_description": "The Clean Architecture Framework provides guidelines to structure software architectures, ensuring that business rules are independent of frameworks and databases. It is ideal for software architects and developers who aim for maintainable and testable code.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "wondelai",
+  "install_command": "git clone https://github.com/wondelai/skills",
+  "source_repo_url": "https://github.com/wondelai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "clean",
+    "software-engineering",
+    "framework",
+    "architecture"
+  ],
+  "sections": {
+    "overview": "The Clean Architecture Framework guides you to structure software so source code dependencies point inward—from frameworks and databases toward use cases and entities. It organizes architecture as concentric circles where business rules remain independent of implementation details like web frameworks, databases, and delivery mechanisms. By enforcing the Dependency Rule, where inner circles never know about outer circles, you achieve testable, resilient systems that let you swap databases or frameworks without touching core business logic. This skill covers the four-layer model (Entities, Use Cases, Interface Adapters, Frameworks), component principles, dependency inversion, and architectural scoring. Use it when designing system boundaries, reviewing module organization, decoupling business logic from infrastructure, or debating where business rules belong.\nDesigning system architecture\nReviewing module boundaries\nAdvising on dependency management",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/wondelai/skills --skill clean-architecture`\n`git clone https://github.com/wondelai/skills`",
+    "usage": "```\nAct as a Clean Architecture expert. Analyze the following [CODEBASE] from [COMPANY] in the [INDUSTRY] sector. Identify violations of Clean Architecture principles, suggest refactoring strategies, and provide a prioritized list of improvements. Focus on dependency inversion, separation of concerns, and testability. [CODEBASE]: [PASTE_CODE]\n```\nCopy\n\n```\n# Clean Architecture Assessment for Acme Corp's E-Commerce Platform",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "clean-architecture-framework#main-content",
+      "clean-architecture-framework#overview",
+      "clean-architecture-framework#setup",
+      "clean-architecture-framework#examples",
+      "clean-architecture-framework#tools",
+      "clean-architecture-framework#mcp",
+      "clean-architecture-framework#related"
+    ],
+    "overview_vi": "The Clean Architecture Framework guides you to structure software so source code dependencies point inward—from frameworks and databases toward use cases and entities. It organizes architecture as concentric circles where business rules remain independent of implementation details like web frameworks, databases, and delivery mechanisms. By enforcing the Dependency Rule, where inner circles never know about outer circles, you achieve testable, resilient systems that let you swap databases or frameworks without touching core business logic. This skill covers the four-layer model (Entities, Use Cases, Interface Adapters, Frameworks), component principles, dependency inversion, and architectural scoring. Use it when designing system boundaries, reviewing module organization, decoupling business logic from infrastructure, or debating where business rules belong.\nDesigning system architecture\nReviewing module boundaries\nAdvising on dependency management",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/wondelai/skills --skill clean-architecture`\n`git clone https://github.com/wondelai/skills`",
+    "usage_vi": "```\nAct as a Clean Architecture expert. Analyze the following [CODEBASE] from [COMPANY] in the [INDUSTRY] sector. Identify violations of Clean Architecture principles, suggest refactoring strategies, and provide a prioritized list of improvements. Focus on dependency inversion, separation of concerns, and testability. [CODEBASE]: [PASTE_CODE]\n```\nCopy\n\n```\n# Clean Architecture Assessment for Acme Corp's E-Commerce Platform"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:15:13.416907Z",
+    "http_status": 200,
+    "content_hash": "c5d1db314c7ffb3e53d71fb2563a3bcfe740709d2483d494868b12d9e43eb996",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\clean-architecture-framework.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\clean-architecture-framework.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Clean Architecture Framework: Claude Code skill for",
+  "short_description_vi": "The Clean Architecture Framework provides guidelines to structure software architectures, ensuring that business rules are independent of frameworks and databases. It is ideal for software architects and developers who aim for maintainable and testable code."
+}

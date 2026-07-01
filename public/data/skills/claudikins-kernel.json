@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudikins-kernel",
+  "slug": "claudikins-kernel",
+  "name": "Claudikins Kernel",
+  "headline": "claudikins-kernel for SRE in Claude Code",
+  "short_description": "Claudikins Kernel automates code execution and verification for operations teams using Claude Code. It applies SRE principles to outline, execute, verify, and ship code changes. Integrates with Claude Code plugins and subagents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "elb-pr",
+  "install_command": "git clone https://github.com/elb-pr/claudikins-kernel.git",
+  "source_repo_url": "https://github.com/elb-pr/claudikins-kernel",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claudecode-config",
+    "claude-code",
+    "claudecode-hooks",
+    "claudecode",
+    "claude-code-plugin",
+    "claude",
+    "claudecode-subagents"
+  ],
+  "sections": {
+    "overview": "Claudikins Kernel applies Site Reliability Engineering principles to AI-assisted code changes, preventing common pitfalls like scope creep and unverified deployments. It implements a strict 4-stage pipeline—outline, execute, verify, and ship—where each stage is gated and cannot be skipped. A team of specialized agents (taxonomy-extremist, babyclaude, spec-reviewer, code-reviewer, catastrophiser, cynic, conflict-resolver, and git-perfectionist) each enforce specific quality checks. The system ensures code is actually tested and working before deployment, with the catastrophiser agent running live verification, the cynic removing unnecessary complexity, and git-perfectionist enforcing documentation completeness. Operations teams and SREs use this skill to automate code execution while maintaining human approval gates and preventing AI hallucinations from reaching production.\nAutomating bug fixes with mandatory verification gates before deployment\nFeature implementation with compliance and code quality checks at each stage\nInfrastructure changes with live testing and documentation enforcement\nMulti-task code execution with isolated agent context per task",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/elb-pr/claudikins-kernel`",
+    "usage": "```\nUse Claudikins Kernel to automate the verification and deployment of [CODE_CHANGE] for [SERVICE_NAME]. Follow SRE best practices: outline the change, execute tests, verify results, and generate a deployment plan. Include error handling strategies and rollback steps. Use [CLAUDE_CODE_PLUGINS] if needed.\n```\nCopy\n\n```\n### Claudikins Kernel Report: Deployment of v2.1.0 of `payment-gateway`\n\n**1. Change Outline**\n- **Change ID**: PG-2024-042\n- **Description**: Implement async payment processing to reduce timeout errors\n- **Files Modified**: `src/payment_handler.py`, `config/async_settings.yaml`\n- **Risk Level**: Medium (new async pattern, no prior production use)\n\n**2. Execution & Verification**\n- **Test Suite**: Ran `pytest tests/payment_tests.py -v`\n  - **Results**: 87/92 tests passed (5 new async-specific tests added)\n  - **Failures**: 3 timeout-related tests in legacy sync mode (expected)\n  - **Coverage**: 94% line coverage (up from 88%)\n- **Static Analysis**: `bandit -r src/payment_handler.py` → 0 critical issues\n- **Performance Benchmark**: 150ms avg latency (target: <200ms) ✅\n\n**3. Deployment Plan**\n- **Staged Rollout**: \n  1. Canary: 5% traffic to new service (24h monitoring)\n  2. Blue-Green: Full switch after 0 critical errors\n  3. Rollback Triggers: >1% error rate OR >500ms latency\n- **Monitoring**: \n  - New metrics: `async_payment_duration`, `queue_depth`\n  - Alerts: PagerDuty integration for `payment_errors > 0.1%`\n\n**4. Error Handling & Rollback**\n- **Known Issues**: Async mode may delay refunds by 1-2s (acceptable per PO)\n- **Rollback Script**: `./rollback_payment_service.sh v2.0.0` (verified in staging)\n- **Post-Deployment Checks**: \n  - Verify `payment_success_rate` >= 99.8% (current: 99.9%)\n  - Confirm no increase in `customer_support_tickets`\n\n**Recommendation**: PROCEED with canary deployment. All pre-deployment criteria met. Next step: Notify #ops-team via Slack and schedule deployment for 2024-04-25 02:00 UTC.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudikins-kernel#main-content",
+      "claudikins-kernel#overview",
+      "claudikins-kernel#setup",
+      "claudikins-kernel#examples",
+      "claudikins-kernel#tools",
+      "claudikins-kernel#mcp",
+      "claudikins-kernel#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claudikins Kernel applies Site Reliability Engineering principles to AI-assisted code changes, preventing common pitfalls like scope creep and unverified deployments. It implements a strict 4-stage pipeline—outline, execute, verify, and ship—where each stage is gated and cannot be skipped. A team of specialized agents (taxonomy-extremist, babyclaude, spec-reviewer, code-reviewer, catastrophiser, cynic, conflict-resolver, and git-perfectionist) each enforce specific quality checks. The system ensures code is actually tested and working before deployment, with the catastrophiser agent running live verification, the cynic removing unnecessary complexity, and git-perfectionist enforcing documentation completeness. Operations teams and SREs use this skill to automate code execution while maintaining human approval gates and preventing AI hallucinations from reaching production.\nAutomating bug fixes with mandatory verification gates before deployment\nFeature implementation with compliance and code quality checks at each stage\nInfrastructure changes with live testing and documentation enforcement\nMulti-task code execution with isolated agent context per task",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/elb-pr/claudikins-kernel`",
+    "usage_vi": "```\nUse Claudikins Kernel to automate the verification and deployment of [CODE_CHANGE] for [SERVICE_NAME]. Follow SRE best practices: outline the change, execute tests, verify results, and generate a deployment plan. Include error handling strategies and rollback steps. Use [CLAUDE_CODE_PLUGINS] if needed.\n```\nCopy\n\n```\n### Claudikins Kernel Report: Deployment of v2.1.0 of `payment-gateway`\n\n**1. Change Outline**\n- **Change ID**: PG-2024-042\n- **Description**: Implement async payment processing to reduce timeout errors\n- **Files Modified**: `src/payment_handler.py`, `config/async_settings.yaml`\n- **Risk Level**: Medium (new async pattern, no prior production use)\n\n**2. Execution & Verification**\n- **Test Suite**: Ran `pytest tests/payment_tests.py -v`\n  - **Results**: 87/92 tests passed (5 new async-specific tests added)\n  - **Failures**: 3 timeout-related tests in legacy sync mode (expected)\n  - **Coverage**: 94% line coverage (up from 88%)\n- **Static Analysis**: `bandit -r src/payment_handler.py` → 0 critical issues\n- **Performance Benchmark**: 150ms avg latency (target: <200ms) ✅\n\n**3. Deployment Plan**\n- **Staged Rollout**: \n  1. Canary: 5% traffic to new service (24h monitoring)\n  2. Blue-Green: Full switch after 0 critical errors\n  3. Rollback Triggers: >1% error rate OR >500ms latency\n- **Monitoring**: \n  - New metrics: `async_payment_duration`, `queue_depth`\n  - Alerts: PagerDuty integration for `payment_errors > 0.1%`\n\n**4. Error Handling & Rollback**\n- **Known Issues**: Async mode may delay refunds by 1-2s (acceptable per PO)\n- **Rollback Script**: `./rollback_payment_service.sh v2.0.0` (verified in staging)\n- **Post-Deployment Checks**: \n  - Verify `payment_success_rate` >= 99.8% (current: 99.9%)\n  - Confirm no increase in `customer_support_tickets`\n\n**Recommendation**: PROCEED with canary deployment. All pre-deployment criteria met. Next step: Notify #ops-team via Slack and schedule deployment for 2024-04-25 02:00 UTC.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:26:54.945738Z",
+    "http_status": 200,
+    "content_hash": "3d08992f0615c0f77919b915a1c1b15cf2ab41fd317b31e679c74cb142862300",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudikins-kernel.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudikins-kernel.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claudikins-kernel for SRE in Claude Code",
+  "short_description_vi": "Claudikins Kernel automates code execution and verification for operations teams using Claude Code. It applies SRE principles to outline, execute, verify, and ship code changes. Integrates with Claude Code plugins and subagents."
+}

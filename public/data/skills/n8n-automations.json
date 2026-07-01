@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-automations",
+  "slug": "n8n-automations",
+  "name": "popsicle",
+  "headline": "n8n-automations - LinkedIn Job Scraping & Research",
+  "short_description": "Automates LinkedIn job posting discovery, decision-maker identification, and psychographic profiling for sales and marketing teams. Integrates with GPT and Apollo for enrichment, generating cold outreach hooks. Ideal for lead generation and sales prospecting.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sirlifehacker",
+  "install_command": "git clone https://github.com/sirlifehacker/n8n-automations.git",
+  "source_repo_url": "https://github.com/sirlifehacker/n8n-automations",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This n8n workflow automates the entire lead discovery pipeline for sales and marketing teams. It scrapes recent LinkedIn job postings using Apify, stores job data in Notion, and uses Apollo to identify key decision-makers like HR and operations leads at target companies. The workflow enriches these prospects with OpenAI-powered psychographic profiles that predict communication preferences and suggest personalized cold email hooks. All insights are automatically saved to Notion or Google Sheets, enabling teams to execute faster, data-driven outreach campaigns without manual research.\nSales prospecting: Automatically discover new hiring companies and decision-makers for targeted outreach\nLead generation: Identify HR and operations decision-makers at companies posting jobs in your niche\nCold email campaigns: Generate personalized psychographic profiles and communication hooks for each prospect\nRecruitment: Find hiring decision-makers at target companies for B2B sales pitches",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sirlifehacker/n8n-automations`",
+    "usage": "```\nSet up an n8n workflow to automate LinkedIn job posting discovery for [INDUSTRY/ROLE]. Use Apollo to enrich the company data with decision-maker titles and psychographic insights. Generate a personalized cold outreach hook for each prospect based on their job posting and LinkedIn profile. Output the final list of prospects with their contact details and hooks in a CSV format.\n```\nCopy\n\n```\nHere’s the automated output from the n8n workflow for a SaaS company targeting mid-market HR tech sales leaders:\n\n**Prospect List (CSV Format):**\n\n| Company Name       | Decision-Maker Name | Title                     | LinkedIn Profile URL                     | Job Posting URL                     | Psychographic Insight                     | Cold Outreach Hook                                                                                     |\n|--------------------|---------------------|---------------------------|------------------------------------------|-------------------------------------|-------------------------------------------|---------------------------------------------------------------------------------------------------------|\n| GreenHire Solutions | Sarah Chen          | VP of Talent Acquisition   | linkedin.com/in/sarahchenhr              | linkedin.com/jobs/view/123456789    | Focused on AI-driven hiring efficiency   | \"Hi Sarah, I noticed GreenHire is hiring for an AI-driven talent acquisition role—our platform helped [Similar Company] reduce hiring time by 40%. Would you be open to a quick chat?\" |\n| PeopleFirst HR      | James Rodriguez     | Director of Recruiting     | linkedin.com/in/jamesrodriguezhr         | linkedin.com/jobs/view/987654321    | Emphasizes employer branding             | \"Hi James, your recent post about employer branding caught my eye—our tool has helped companies like [Similar Company] improve candidate engagement by 35%. Can we discuss?\" |\n| TalentBridge Inc.  | Priya Kapoor        | Head of People Operations  | linkedin.com/in/priyakaopoorhr           | linkedin.com/jobs/view/555666777    | Values data-driven HR decisions          | \"Hi Priya, I saw your opening for a data-driven HR role—our analytics platform has helped [Similar Company] cut turnover by 22%. Let’s connect!\" |\n\n**Workflow Summary:**\n1. **Job Posting Discovery:** Scraped LinkedIn for HR tech roles in companies with 200-1000 employees.\n2. **Decision-Maker Identification:** Used Apollo to identify the hiring manager for each role (e.g., VP of Talent Acquisition or Director of Recruiting).\n3. **Psychographic Profiling:** Enriched profiles with insights like AI-driven hiring focus, employer branding priorities, or data-driven HR decisions.\n4. **Outreach Hook Generation:** Generated personalized hooks based on the job posting and psychographic data.\n5. **Output:** Exported the final list to CSV for direct use in outreach tools like HubSpot or Lemlist.\n\n**Next Steps:** Copy the CSV into your CRM, add the generated hooks to your email templates, and schedule the outreach sequence. The workflow runs daily to capture new postings automatically.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "n8n-automations#main-content",
+      "n8n-automations#overview",
+      "n8n-automations#setup",
+      "n8n-automations#examples",
+      "n8n-automations#tools",
+      "n8n-automations#mcp",
+      "n8n-automations#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "This n8n workflow automates the entire lead discovery pipeline for sales and marketing teams. It scrapes recent LinkedIn job postings using Apify, stores job data in Notion, and uses Apollo to identify key decision-makers like HR and operations leads at target companies. The workflow enriches these prospects with OpenAI-powered psychographic profiles that predict communication preferences and suggest personalized cold email hooks. All insights are automatically saved to Notion or Google Sheets, enabling teams to execute faster, data-driven outreach campaigns without manual research.\nSales prospecting: Automatically discover new hiring companies and decision-makers for targeted outreach\nLead generation: Identify HR and operations decision-makers at companies posting jobs in your niche\nCold email campaigns: Generate personalized psychographic profiles and communication hooks for each prospect\nRecruitment: Find hiring decision-makers at target companies for B2B sales pitches",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sirlifehacker/n8n-automations`",
+    "usage_vi": "```\nSet up an n8n workflow to automate LinkedIn job posting discovery for [INDUSTRY/ROLE]. Use Apollo to enrich the company data with decision-maker titles and psychographic insights. Generate a personalized cold outreach hook for each prospect based on their job posting and LinkedIn profile. Output the final list of prospects with their contact details and hooks in a CSV format.\n```\nCopy\n\n```\nHere’s the automated output from the n8n workflow for a SaaS company targeting mid-market HR tech sales leaders:\n\n**Prospect List (CSV Format):**\n\n| Company Name       | Decision-Maker Name | Title                     | LinkedIn Profile URL                     | Job Posting URL                     | Psychographic Insight                     | Cold Outreach Hook                                                                                     |\n|--------------------|---------------------|---------------------------|------------------------------------------|-------------------------------------|-------------------------------------------|---------------------------------------------------------------------------------------------------------|\n| GreenHire Solutions | Sarah Chen          | VP of Talent Acquisition   | linkedin.com/in/sarahchenhr              | linkedin.com/jobs/view/123456789    | Focused on AI-driven hiring efficiency   | \"Hi Sarah, I noticed GreenHire is hiring for an AI-driven talent acquisition role—our platform helped [Similar Company] reduce hiring time by 40%. Would you be open to a quick chat?\" |\n| PeopleFirst HR      | James Rodriguez     | Director of Recruiting     | linkedin.com/in/jamesrodriguezhr         | linkedin.com/jobs/view/987654321    | Emphasizes employer branding             | \"Hi James, your recent post about employer branding caught my eye—our tool has helped companies like [Similar Company] improve candidate engagement by 35%. Can we discuss?\" |\n| TalentBridge Inc.  | Priya Kapoor        | Head of People Operations  | linkedin.com/in/priyakaopoorhr           | linkedin.com/jobs/view/555666777    | Values data-driven HR decisions          | \"Hi Priya, I saw your opening for a data-driven HR role—our analytics platform has helped [Similar Company] cut turnover by 22%. Let’s connect!\" |\n\n**Workflow Summary:**\n1. **Job Posting Discovery:** Scraped LinkedIn for HR tech roles in companies with 200-1000 employees.\n2. **Decision-Maker Identification:** Used Apollo to identify the hiring manager for each role (e.g., VP of Talent Acquisition or Director of Recruiting).\n3. **Psychographic Profiling:** Enriched profiles with insights like AI-driven hiring focus, employer branding priorities, or data-driven HR decisions.\n4. **Outreach Hook Generation:** Generated personalized hooks based on the job posting and psychographic data.\n5. **Output:** Exported the final list to CSV for direct use in outreach tools like HubSpot or Lemlist.\n\n**Next Steps:** Copy the CSV into your CRM, add the generated hooks to your email templates, and schedule the outreach sequence. The workflow runs daily to capture new postings automatically.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:52:29.913301Z",
+    "http_status": 200,
+    "content_hash": "62f77085ca064575fe711d1e1e0cd5c0489f9b9e405df55e13df29cec4f1d6b4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\n8n-automations.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\n8n-automations.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "n8n-automations - LinkedIn Job Scraping & Research",
+  "short_description_vi": "Automates LinkedIn job posting discovery, decision-maker identification, and psychographic profiling for sales and marketing teams. Integrates with GPT and Apollo for enrichment, generating cold outreach hooks. Ideal for lead generation and sales prospecting."
+}

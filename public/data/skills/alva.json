@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/alva",
+  "slug": "alva",
+  "name": "tushare",
+  "headline": "Alva: Financial Data for AI Agents",
+  "short_description": "Alva is an agentic finance platform providing access to diverse financial data sources. It connects any AI agent or IDE to various financial metrics and analytics.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "alva-ai",
+  "install_command": "git clone https://github.com/alva-ai/skills",
+  "source_repo_url": "https://github.com/alva-ai/skills",
+  "works_with": [
+    "Windsurf",
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "alva",
+    "finance"
+  ],
+  "sections": {
+    "overview": "Alva is an agentic finance platform that integrates with Claude, Cursor, and other AI agents to provide unified access to 250+ financial skills spanning crypto, equities, ETFs, macro, on-chain, and social data. The platform enables AI agents to research market theses with live financial context, build and remix interactive Playbooks, set market alerts, backtest trading strategies using the Altra engine, and connect trading accounts. It runs JavaScript workflows on Alva Cloud with no local infrastructure required, storing time-series data through persistent pipelines that can be scheduled as cronjobs. Teams and researchers use Alva to turn their analysis into hosted web apps, discovering insights across technical indicators (RSI, MACD, Bollinger Bands, and 50+ more), fundamental metrics, analyst targets, insider trades, and real-time social feeds.\nAccess crypto market data\nAnalyze equities and ETFs\nTrack macroeconomic indicators\nEvaluate company fundamentals and price targets",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/alva-ai/skills --skill alva`\n`git clone https://github.com/alva-ai/skills`",
+    "usage": "```\nAct as Alva, a finance data agent. Retrieve and analyze [FINANCIAL_METRIC] for [COMPANY] from [DATA_SOURCE] (e.g., SEC filings, Bloomberg, Yahoo Finance). Include key trends, ratios, or anomalies. Format as a concise report with bullet points and visualizations if possible. Use [COMPANY] = [Ticker Symbol], [FINANCIAL_METRIC] = [e.g., revenue growth, P/E ratio], and [DATA_SOURCE] = [e.g., 10-K, Q2 earnings report].\n```\nCopy\n\n```\n# Alva Finance Report: TSLA Q2 2024 Financial Metrics\n\n**Company:** Tesla, Inc. (TSLA)\n**Report Period:** Q2 2024 (April 1 - June 30)\n**Data Source:** 10-Q Filing (SEC)",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "alva#main-content",
+      "alva#overview",
+      "alva#setup",
+      "alva#examples",
+      "alva#related",
+      "trading-signals",
+      "commodities-quote",
+      "tushare"
+    ],
+    "overview_vi": "Alva is an agentic finance platform that integrates with Claude, Cursor, and other AI agents to provide unified access to 250+ financial skills spanning crypto, equities, ETFs, macro, on-chain, and social data. The platform enables AI agents to research market theses with live financial context, build and remix interactive Playbooks, set market alerts, backtest trading strategies using the Altra engine, and connect trading accounts. It runs JavaScript workflows on Alva Cloud with no local infrastructure required, storing time-series data through persistent pipelines that can be scheduled as cronjobs. Teams and researchers use Alva to turn their analysis into hosted web apps, discovering insights across technical indicators (RSI, MACD, Bollinger Bands, and 50+ more), fundamental metrics, analyst targets, insider trades, and real-time social feeds.\nAccess crypto market data\nAnalyze equities and ETFs\nTrack macroeconomic indicators\nEvaluate company fundamentals and price targets",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/alva-ai/skills --skill alva`\n`git clone https://github.com/alva-ai/skills`",
+    "usage_vi": "```\nAct as Alva, a finance data agent. Retrieve and analyze [FINANCIAL_METRIC] for [COMPANY] from [DATA_SOURCE] (e.g., SEC filings, Bloomberg, Yahoo Finance). Include key trends, ratios, or anomalies. Format as a concise report with bullet points and visualizations if possible. Use [COMPANY] = [Ticker Symbol], [FINANCIAL_METRIC] = [e.g., revenue growth, P/E ratio], and [DATA_SOURCE] = [e.g., 10-K, Q2 earnings report].\n```\nCopy\n\n```\n# Alva Finance Report: TSLA Q2 2024 Financial Metrics\n\n**Company:** Tesla, Inc. (TSLA)\n**Report Period:** Q2 2024 (April 1 - June 30)\n**Data Source:** 10-Q Filing (SEC)"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:27:19.436691Z",
+    "http_status": 200,
+    "content_hash": "1df3d986e96a91a4e0eca269e6ac61e291f5bc90a8af4732280decc64039225f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\alva.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\alva.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Alva: Financial Data for AI Agents",
+  "short_description_vi": "Alva is an agentic finance platform providing access to diverse financial data sources. It connects any AI agent or IDE to various financial metrics and analytics."
+}

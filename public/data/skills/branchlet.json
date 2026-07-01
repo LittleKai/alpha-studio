@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/branchlet",
+  "slug": "branchlet",
+  "name": "browser-use",
+  "headline": "branchlet for Git worktree management",
+  "short_description": "Branchlet is a CLI tool for creating and managing Git worktrees. It simplifies worktree operations for developers, allowing them to switch between branches and manage multiple worktrees efficiently. It integrates with Git and is supported by Claude.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "raghavpillai",
+  "install_command": "git clone https://github.com/raghavpillai/branchlet.git",
+  "source_repo_url": "https://github.com/raghavpillai/branchlet",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "git",
+    "codegen",
+    "worktrees",
+    "cursor",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "Branchlet is a Node.js CLI tool that simplifies Git worktree creation and management through an interactive menu interface. It supports both interactive and non-interactive modes, allowing developers to quickly create worktrees with custom branch names, list existing worktrees, and delete them with optional branch cleanup. The tool includes project-specific and global configuration support, automatic file copying to new worktrees using glob patterns, and post-creation command execution. Developers benefit from reduced setup time when working with multiple branches simultaneously, with features like configurable worktree paths, automatic dependency installation, and terminal/editor integration.\nCreate isolated worktrees for parallel feature development without branch checkout conflicts\nAutomate environment setup by copying configuration files and running post-create commands\nManage multiple worktrees with custom naming conventions using template variables\nStreamline branch cleanup by automatically deleting git branches when removing worktrees",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/raghavpillai/branchlet`",
+    "usage": "```\nUse the Branchlet CLI tool to [ACTION] for [REPOSITORY_PATH]. [SPECIFIC_DETAILS]. For example: 'Use Branchlet to create a new worktree from the feature/login branch for the /home/user/projects/myapp repository. Name the worktree \"login-dev\" and set the default branch as main.'\n```\nCopy\n\n```\n```bash\n$ branchlet create --from feature/login --name login-dev --repo /home/user/projects/myapp --default main\n\n✅ Created worktree 'login-dev' from 'feature/login' at /home/user/projects/myapp/login-dev\n📂 Initialized empty Git repository in /home/user/projects/myapp/login-dev/.git/\n🔄 Switched to branch 'main' (tracking 'origin/main')\n\n📝 Next steps:\n1. Navigate to the worktree: cd /home/user/projects/myapp/login-dev\n2. Start development on the 'login-dev' worktree\n3. Push changes to 'feature/login' when ready\n\n💡 Tip: Use 'branchlet list' to view all worktrees and 'branchlet switch login-dev' to return to this worktree later.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "branchlet#main-content",
+      "branchlet#overview",
+      "branchlet#setup",
+      "branchlet#examples",
+      "branchlet#tools",
+      "branchlet#mcp",
+      "branchlet#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Branchlet is a Node.js CLI tool that simplifies Git worktree creation and management through an interactive menu interface. It supports both interactive and non-interactive modes, allowing developers to quickly create worktrees with custom branch names, list existing worktrees, and delete them with optional branch cleanup. The tool includes project-specific and global configuration support, automatic file copying to new worktrees using glob patterns, and post-creation command execution. Developers benefit from reduced setup time when working with multiple branches simultaneously, with features like configurable worktree paths, automatic dependency installation, and terminal/editor integration.\nCreate isolated worktrees for parallel feature development without branch checkout conflicts\nAutomate environment setup by copying configuration files and running post-create commands\nManage multiple worktrees with custom naming conventions using template variables\nStreamline branch cleanup by automatically deleting git branches when removing worktrees",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/raghavpillai/branchlet`",
+    "usage_vi": "```\nUse the Branchlet CLI tool to [ACTION] for [REPOSITORY_PATH]. [SPECIFIC_DETAILS]. For example: 'Use Branchlet to create a new worktree from the feature/login branch for the /home/user/projects/myapp repository. Name the worktree \"login-dev\" and set the default branch as main.'\n```\nCopy\n\n```\n```bash\n$ branchlet create --from feature/login --name login-dev --repo /home/user/projects/myapp --default main\n\n✅ Created worktree 'login-dev' from 'feature/login' at /home/user/projects/myapp/login-dev\n📂 Initialized empty Git repository in /home/user/projects/myapp/login-dev/.git/\n🔄 Switched to branch 'main' (tracking 'origin/main')\n\n📝 Next steps:\n1. Navigate to the worktree: cd /home/user/projects/myapp/login-dev\n2. Start development on the 'login-dev' worktree\n3. Push changes to 'feature/login' when ready\n\n💡 Tip: Use 'branchlet list' to view all worktrees and 'branchlet switch login-dev' to return to this worktree later.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:35:37.307879Z",
+    "http_status": 200,
+    "content_hash": "2cfb19a19d1fce545117ec9435c4307b20ca94b975157a5157faa5cc44592af8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\branchlet.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\branchlet.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "branchlet for Git worktree management",
+  "short_description_vi": "Branchlet is a CLI tool for creating and managing Git worktrees. It simplifies worktree operations for developers, allowing them to switch between branches and manage multiple worktrees efficiently. It integrates with Git and is supported by Claude."
+}

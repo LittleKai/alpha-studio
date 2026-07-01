@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/test-driven-development",
+  "slug": "test-driven-development",
+  "name": "react-native-best-practices",
+  "headline": "test-driven-development: Boost Code Quality",
+  "short_description": "The test-driven-development Claude Code skill streamlines the software development process by emphasizing writing tests before code implementation. This approach enhances code quality and reduces debugging time, ultimately leading to faster project delivery.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "obra",
+  "install_command": "git clone https://github.com/obra/superpowers.git",
+  "source_repo_url": "https://github.com/obra/superpowers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The test-driven-development skill for Claude Code is designed to integrate test-driven practices into your software development workflow. By writing tests before the actual code, developers can ensure that the code meets its requirements from the outset. This proactive approach not only improves code quality but also facilitates easier maintenance and scalability of applications. One of the key benefits of using this skill is the significant time savings it offers. By identifying issues early in the development process, teams can avoid the costly and time-consuming debugging phases that often occur when tests are written after the code. This leads to a more efficient workflow, allowing developers to focus on delivering features rather than fixing bugs. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to implement robust testing frameworks in their projects. It is suitable for teams of all sizes, from startups to large enterprises, and can be integrated into existing workflows with minimal disruption. For example, a development team working on a new feature can use this skill to create unit tests that validate functionality before the code is even written, ensuring that the final product meets user expectations. Implementation of the test-driven-development skill is straightforward, making it accessible for teams with varying levels of expertise. It fits seamlessly into AI-first workflows by promoting a culture of quality assurance and continuous integration, which are essential in today's fast-paced development environments. By adopting this skill, teams can enhance their productivity and deliver high-quality software solutions more efficiently.\nCreate unit tests for new features before coding to ensure functionality from the start.\nIntegrate testing frameworks into continuous integration pipelines for automated testing.\nEnsure code quality in collaborative development environments by establishing testing standards.\nReduce debugging time for complex applications by identifying issues early through tests.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project that [DESCRIBE_PROJECT]. I need to implement a function called [FUNCTION_NAME] that [DESCRIBE_FUNCTIONALITY]. Help me write a test for this function using [TEST_FRAMEWORK] before I write the actual code. The test should cover [SPECIFIC_TEST_CASES].\n```\nCopy\n\n```\nBased on your request, here's a test for a Python function that calculates the factorial of a number using the pytest framework:\n\n```python\nimport pytest\nfrom math_functions import factorial\n\ndef test_factorial_positive_integers():\n    assert factorial(1) == 1\n    assert factorial(5) == 120\n    assert factorial(10) == 3628800\n\ndef test_factorial_zero():\n    assert factorial(0) == 1\n\ndef test_factorial_negative_integers():\n    with pytest.raises(ValueError):\n        factorial(-1)\n\ndef test_factorial_non_integers():\n    with pytest.raises(TypeError):\n        factorial(5.5)\n```\n\nThis test suite covers positive integers, zero, negative integers, and non-integer inputs. It uses pytest's assertion and exception testing features. Once you're satisfied with these tests, you can implement the factorial function to make them pass.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "test-driven-development#main-content",
+      "test-driven-development#overview",
+      "test-driven-development#setup",
+      "test-driven-development#examples",
+      "test-driven-development#tools",
+      "test-driven-development#mcp",
+      "test-driven-development#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The test-driven-development skill for Claude Code is designed to integrate test-driven practices into your software development workflow. By writing tests before the actual code, developers can ensure that the code meets its requirements from the outset. This proactive approach not only improves code quality but also facilitates easier maintenance and scalability of applications. One of the key benefits of using this skill is the significant time savings it offers. By identifying issues early in the development process, teams can avoid the costly and time-consuming debugging phases that often occur when tests are written after the code. This leads to a more efficient workflow, allowing developers to focus on delivering features rather than fixing bugs. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to implement robust testing frameworks in their projects. It is suitable for teams of all sizes, from startups to large enterprises, and can be integrated into existing workflows with minimal disruption. For example, a development team working on a new feature can use this skill to create unit tests that validate functionality before the code is even written, ensuring that the final product meets user expectations. Implementation of the test-driven-development skill is straightforward, making it accessible for teams with varying levels of expertise. It fits seamlessly into AI-first workflows by promoting a culture of quality assurance and continuous integration, which are essential in today's fast-paced development environments. By adopting this skill, teams can enhance their productivity and deliver high-quality software solutions more efficiently.\nCreate unit tests for new features before coding to ensure functionality from the start.\nIntegrate testing frameworks into continuous integration pipelines for automated testing.\nEnsure code quality in collaborative development environments by establishing testing standards.\nReduce debugging time for complex applications by identifying issues early through tests.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage_vi": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project that [DESCRIBE_PROJECT]. I need to implement a function called [FUNCTION_NAME] that [DESCRIBE_FUNCTIONALITY]. Help me write a test for this function using [TEST_FRAMEWORK] before I write the actual code. The test should cover [SPECIFIC_TEST_CASES].\n```\nCopy\n\n```\nBased on your request, here's a test for a Python function that calculates the factorial of a number using the pytest framework:\n\n```python\nimport pytest\nfrom math_functions import factorial\n\ndef test_factorial_positive_integers():\n    assert factorial(1) == 1\n    assert factorial(5) == 120\n    assert factorial(10) == 3628800\n\ndef test_factorial_zero():\n    assert factorial(0) == 1\n\ndef test_factorial_negative_integers():\n    with pytest.raises(ValueError):\n        factorial(-1)\n\ndef test_factorial_non_integers():\n    with pytest.raises(TypeError):\n        factorial(5.5)\n```\n\nThis test suite covers positive integers, zero, negative integers, and non-integer inputs. It uses pytest's assertion and exception testing features. Once you're satisfied with these tests, you can implement the factorial function to make them pass.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:50:57.675688Z",
+    "http_status": 200,
+    "content_hash": "761ced86be571412029d65562be07aef25c85419736afbb910b65ccef06b7ad0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\test-driven-development.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\test-driven-development.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "test-driven-development: Boost Code Quality",
+  "short_description_vi": "The test-driven-development Claude Code skill streamlines the software development process by emphasizing writing tests before code implementation. This approach enhances code quality and reduces debugging time, ultimately leading to faster project delivery."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudekit-skills",
+  "slug": "claudekit-skills",
+  "name": "slack-gif-creator",
+  "headline": "ClaudeKit Skills - Enhance Your AI Capabilities",
+  "short_description": "ClaudeKit.cc offers a suite of powerful AI skills designed to enhance productivity and streamline workflows. With a focus on automation and efficiency, these skills are perfect for teams looking to use AI in their go-to-market strategies.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "mrgoonie",
+  "install_command": "claude install mrgoonie/claudekit-skills",
+  "source_repo_url": "https://github.com/mrgoonie/claudekit-skills",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "AI skills",
+    "ClaudeKit",
+    "automation",
+    "Python",
+    "workflow"
+  ],
+  "sections": {
+    "overview": "ClaudeKit Skills is a comprehensive suite of AI-powered skills designed to extend Claude's capabilities across multiple domains. The repository organizes skills into plugins including platform-tools, web-dev-tools, and ai-ml-tools, covering areas such as web testing, payment integration, MCP management, and context engineering. These skills enable developers and teams to automate repetitive tasks and streamline workflows without manual implementation. Each skill is structured as a reusable component that integrates directly with Claude, allowing seamless incorporation into existing development environments and go-to-market processes.\nAutomate lead generation tasks to save time and increase efficiency.\nEnhance customer engagement through personalized AI interactions.\nStreamline marketing campaigns by automating content distribution and analysis.\nImprove sales forecasting accuracy with data-driven insights.",
+    "setup": "Terminal\nCopy\n`claude install mrgoonie/claudekit-skills`\n`git clone https://github.com/mrgoonie/claudekit-skills`",
+    "usage": "```\nGenerate a financial health report for [COMPANY_NAME] using Productiv's real-time analytics. Include key metrics like MRR growth, CAC payback period, and burn rate. Compare these against industry benchmarks for [INDUSTRY]. Flag any anomalies in expense tracking and provide actionable recommendations to optimize [SPECIFIC_AREA, e.g., 'customer acquisition costs' or 'R&D spend']. Format the output as a concise executive summary with bullet points for clarity.\n```\nCopy\n\n```\n### Financial Health Report: GreenTech Solutions (Q2 2024)\n\n**Executive Summary**\nGreenTech Solutions, a SaaS company specializing in carbon accounting software, shows strong financial health but faces rising customer acquisition costs. Below is a breakdown of key metrics compared to industry benchmarks for B2B SaaS companies with $10M–$50M ARR.\n\n**Key Metrics**\n- **MRR Growth**: $1.2M (Q1) → $1.5M (Q2), **+25% QoQ** (Industry avg: **18%**).\n- **CAC Payback Period**: 14 months (vs. industry avg: **11 months**).\n- **Burn Rate**: $350K/month (cash runway: **18 months**).\n- **Gross Margin**: 78% (stable; industry avg: **75%**).\n- **R&D Spend**: 32% of revenue (above industry avg of **25%**).\n\n**Anomalies & Flags**\n1. **Customer Acquisition Costs (CAC)**: Increased by 22% QoQ due to higher ad spend in LinkedIn campaigns. Productiv’s expense tracking shows $85K in unallocated marketing costs under \"Other\" in the general ledger.\n2. **Churn Rate**: 8.2% (industry avg: **6.5%**), driven by mid-market customers. No clear pattern in churn reasons (Productiv’s expense data shows no correlation with support ticket spikes).\n3. **R&D Efficiency**: Engineering headcount grew 15% YoY, but feature velocity (measured in Productiv’s sprint analytics) declined by 12%.\n\n**Actionable Recommendations**\n- **Optimize CAC**: Shift 30% of LinkedIn ad spend to SEO/content marketing (historically lower CAC in GreenTech’s data). Allocate the $85K \"Other\" marketing budget to a dedicated campaign for churned customers (targeted win-back offers).\n- **Address Churn**: Investigate mid-market customer onboarding gaps. Use Productiv’s customer health scores to identify at-risk accounts and trigger proactive outreach (e.g., dedicated CSM assignments).\n- **R&D Focus**: Audit engineering sprints to identify bottlenecks. Consider pairing senior engineers with junior team members to improve velocity without increasing headcount.\n\n**Next Steps**\n- Sync with the finance team to reclassify the $85K \"Other\" marketing spend for better tracking.\n- Schedule a workshop with the customer success team to refine churn mitigation strategies.\n- Review Productiv’s budget forecasting tool to model the impact of reduced ad spend on Q3 revenue.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "claudekit-skills#main-content",
+      "claudekit-skills#overview",
+      "claudekit-skills#setup",
+      "claudekit-skills#examples",
+      "claudekit-skills#tools",
+      "claudekit-skills#mcp",
+      "claudekit-skills#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "ClaudeKit Skills is a comprehensive suite of AI-powered skills designed to extend Claude's capabilities across multiple domains. The repository organizes skills into plugins including platform-tools, web-dev-tools, and ai-ml-tools, covering areas such as web testing, payment integration, MCP management, and context engineering. These skills enable developers and teams to automate repetitive tasks and streamline workflows without manual implementation. Each skill is structured as a reusable component that integrates directly with Claude, allowing seamless incorporation into existing development environments and go-to-market processes.\nAutomate lead generation tasks to save time and increase efficiency.\nEnhance customer engagement through personalized AI interactions.\nStreamline marketing campaigns by automating content distribution and analysis.\nImprove sales forecasting accuracy with data-driven insights.",
+    "setup_vi": "Terminal\nCopy\n`claude install mrgoonie/claudekit-skills`\n`git clone https://github.com/mrgoonie/claudekit-skills`",
+    "usage_vi": "```\nGenerate a financial health report for [COMPANY_NAME] using Productiv's real-time analytics. Include key metrics like MRR growth, CAC payback period, and burn rate. Compare these against industry benchmarks for [INDUSTRY]. Flag any anomalies in expense tracking and provide actionable recommendations to optimize [SPECIFIC_AREA, e.g., 'customer acquisition costs' or 'R&D spend']. Format the output as a concise executive summary with bullet points for clarity.\n```\nCopy\n\n```\n### Financial Health Report: GreenTech Solutions (Q2 2024)\n\n**Executive Summary**\nGreenTech Solutions, a SaaS company specializing in carbon accounting software, shows strong financial health but faces rising customer acquisition costs. Below is a breakdown of key metrics compared to industry benchmarks for B2B SaaS companies with $10M–$50M ARR.\n\n**Key Metrics**\n- **MRR Growth**: $1.2M (Q1) → $1.5M (Q2), **+25% QoQ** (Industry avg: **18%**).\n- **CAC Payback Period**: 14 months (vs. industry avg: **11 months**).\n- **Burn Rate**: $350K/month (cash runway: **18 months**).\n- **Gross Margin**: 78% (stable; industry avg: **75%**).\n- **R&D Spend**: 32% of revenue (above industry avg of **25%**).\n\n**Anomalies & Flags**\n1. **Customer Acquisition Costs (CAC)**: Increased by 22% QoQ due to higher ad spend in LinkedIn campaigns. Productiv’s expense tracking shows $85K in unallocated marketing costs under \"Other\" in the general ledger.\n2. **Churn Rate**: 8.2% (industry avg: **6.5%**), driven by mid-market customers. No clear pattern in churn reasons (Productiv’s expense data shows no correlation with support ticket spikes).\n3. **R&D Efficiency**: Engineering headcount grew 15% YoY, but feature velocity (measured in Productiv’s sprint analytics) declined by 12%.\n\n**Actionable Recommendations**\n- **Optimize CAC**: Shift 30% of LinkedIn ad spend to SEO/content marketing (historically lower CAC in GreenTech’s data). Allocate the $85K \"Other\" marketing budget to a dedicated campaign for churned customers (targeted win-back offers).\n- **Address Churn**: Investigate mid-market customer onboarding gaps. Use Productiv’s customer health scores to identify at-risk accounts and trigger proactive outreach (e.g., dedicated CSM assignments).\n- **R&D Focus**: Audit engineering sprints to identify bottlenecks. Consider pairing senior engineers with junior team members to improve velocity without increasing headcount.\n\n**Next Steps**\n- Sync with the finance team to reclassify the $85K \"Other\" marketing spend for better tracking.\n- Schedule a workshop with the customer success team to refine churn mitigation strategies.\n- Review Productiv’s budget forecasting tool to model the impact of reduced ad spend on Q3 revenue.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:31:12.582343Z",
+    "http_status": 200,
+    "content_hash": "69785d5f32d91b25f741fad5a89440aa20afd066d0940f85ee8d1c9110d3dd35",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudekit-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudekit-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ClaudeKit Skills - Enhance Your AI Capabilities",
+  "short_description_vi": "ClaudeKit.cc offers a suite of powerful AI skills designed to enhance productivity and streamline workflows. With a focus on automation and efficiency, these skills are perfect for teams looking to use AI in their go-to-market strategies."
+}

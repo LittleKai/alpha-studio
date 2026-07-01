@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/audit-website",
+  "slug": "audit-website",
+  "name": "Audit Website",
+  "headline": "Website Audit Skill by Squirrelscan",
+  "short_description": "The Audit Website skill by squirrelscan helps businesses to perform comprehensive website audits, enabling teams to identify critical issues that affect performance and user experience. By leveraging this skill, sales, marketing, and RevOps teams can enhance their online presence, boost conversion rates, and ultimately drive revenue growth.",
+  "tier": "Gold",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "squirrelscan",
+  "install_command": "claude install squirrelscan/skills/audit-website",
+  "source_repo_url": "https://github.com/squirrelscan/skills",
+  "works_with": [
+    "Claude CodeCursorWindsurfCline"
+  ],
+  "tags": [
+    "compliance",
+    "SEO",
+    "performance analysis",
+    "website audit",
+    "user experience"
+  ],
+  "sections": {
+    "overview": "Unlock the full potential of your online presence with the Audit Website skill from squirrelscan. This powerful tool allows sales, marketing, and RevOps teams to conduct thorough website audits, ensuring your site is optimized for performance, SEO, and user experience. By identifying key areas for improvement, you can effectively enhance conversion rates and drive more revenue. The Audit Website skill not only saves valuable time but also equips your teams with actionable insights to stay ahead of the competition. With an easy-to-use interface and comprehensive analysis capabilities, you can ensure that your website meets industry standards and delivers an exceptional user experience. Elevate your digital strategy and watch your business thrive with the Audit Website skill.\nIdentify SEO optimization opportunities\nAnalyze website performance metrics\nImprove user experience through site audits\nEnsure compliance with industry standards",
+    "setup": "Terminal\nCopy\n`claude install squirrelscan/skills/audit-website`\n`git clone https://github.com/squirrelscan/skills`",
+    "usage": "```\nAudit the website [WEBSITE_URL] for critical issues affecting performance, SEO, and user experience using SquirrelScan. Focus on [SPECIFIC_AREAS: e.g., page speed, broken links, mobile responsiveness, accessibility, or security vulnerabilities]. Provide a prioritized list of issues with severity levels (Critical/High/Medium/Low) and actionable recommendations for each. Include a summary of the website's overall health score and compare it to industry benchmarks.\n```\nCopy\n\n```\n### Website Audit Report for AcmeCorp.com\n\n**Overall Health Score: 68/100** (Industry Benchmark: 75/100)\n\n#### Critical Issues (Immediate Action Required)\n1. **Page Speed**\n   - Homepage load time: 6.2s (Google recommends <3s)\n   - Largest Contentful Paint (LCP): 4.1s (Poor)\n   - Recommendation: Compress images, enable lazy loading, and leverage browser caching. Expected improvement: 2.5s load time.\n\n2. **Broken Links**\n   - 12 broken internal links detected (e.g., `/blog/old-post` returns 404)\n   - 8 broken external links (e.g., `https://deprecated-api.example.com`)\n   - Recommendation: Use Screaming Frog or Ahrefs to bulk-check and update links. Expected fix: 100% link integrity.\n\n3. **Mobile Usability**\n   - 40% of pages fail Google's Mobile-Friendly Test\n   - Touch elements too close together on 15 pages\n   - Recommendation: Redesign navigation and buttons for touchscreen users. Expected improvement: 90% mobile usability score.\n\n#### High Priority Issues (Address Within 2 Weeks)\n1. **SEO Gaps**\n   - 23 pages missing meta descriptions\n   - 404 pages not redirected (e.g., `/about-us-old`)\n   - Recommendation: Implement Yoast SEO plugin (WordPress) or manual fixes. Expected improvement: 15% organic traffic increase.\n\n2. **Accessibility**\n   - 8 pages lack alt text for images\n   - Contrast ratio fails WCAG standards on 12 pages\n   - Recommendation: Use WAVE or axe DevTools for automated checks. Expected improvement: Full WCAG 2.1 AA compliance.\n\n#### Medium/Low Priority Issues (Address Within 1 Month)\n1. **Security Vulnerabilities**\n   - Outdated jQuery library (v1.12.4, CVE-2020-11022)\n   - Mixed content warnings on 3 pages\n   - Recommendation: Update libraries via npm or CDN. Expected improvement: 0 critical vulnerabilities.\n\n2. **Structured Data**\n   - Missing schema markup for 18 product pages\n   - Recommendation: Implement JSON-LD for products and reviews. Expected improvement: 10% rich snippet visibility.\n\n**Summary:**\nAcmeCorp.com has significant room for improvement in speed, mobile usability, and SEO. Prioritizing the critical issues above could reduce bounce rates by 25% and increase organic traffic by 20% within 3 months. The marketing team should align these fixes with their Q3 roadmap, while the dev team should allocate 2 sprints for implementation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline"
+    ],
+    "related_skills": [
+      "audit-website#main-content",
+      "audit-website#overview",
+      "audit-website#setup",
+      "audit-website#examples",
+      "audit-website#tools",
+      "audit-website#mcp",
+      "audit-website#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Unlock the full potential of your online presence with the Audit Website skill from squirrelscan. This powerful tool allows sales, marketing, and RevOps teams to conduct thorough website audits, ensuring your site is optimized for performance, SEO, and user experience. By identifying key areas for improvement, you can effectively enhance conversion rates and drive more revenue. The Audit Website skill not only saves valuable time but also equips your teams with actionable insights to stay ahead of the competition. With an easy-to-use interface and comprehensive analysis capabilities, you can ensure that your website meets industry standards and delivers an exceptional user experience. Elevate your digital strategy and watch your business thrive with the Audit Website skill.\nIdentify SEO optimization opportunities\nAnalyze website performance metrics\nImprove user experience through site audits\nEnsure compliance with industry standards",
+    "setup_vi": "Terminal\nCopy\n`claude install squirrelscan/skills/audit-website`\n`git clone https://github.com/squirrelscan/skills`",
+    "usage_vi": "```\nAudit the website [WEBSITE_URL] for critical issues affecting performance, SEO, and user experience using SquirrelScan. Focus on [SPECIFIC_AREAS: e.g., page speed, broken links, mobile responsiveness, accessibility, or security vulnerabilities]. Provide a prioritized list of issues with severity levels (Critical/High/Medium/Low) and actionable recommendations for each. Include a summary of the website's overall health score and compare it to industry benchmarks.\n```\nCopy\n\n```\n### Website Audit Report for AcmeCorp.com\n\n**Overall Health Score: 68/100** (Industry Benchmark: 75/100)\n\n#### Critical Issues (Immediate Action Required)\n1. **Page Speed**\n   - Homepage load time: 6.2s (Google recommends <3s)\n   - Largest Contentful Paint (LCP): 4.1s (Poor)\n   - Recommendation: Compress images, enable lazy loading, and leverage browser caching. Expected improvement: 2.5s load time.\n\n2. **Broken Links**\n   - 12 broken internal links detected (e.g., `/blog/old-post` returns 404)\n   - 8 broken external links (e.g., `https://deprecated-api.example.com`)\n   - Recommendation: Use Screaming Frog or Ahrefs to bulk-check and update links. Expected fix: 100% link integrity.\n\n3. **Mobile Usability**\n   - 40% of pages fail Google's Mobile-Friendly Test\n   - Touch elements too close together on 15 pages\n   - Recommendation: Redesign navigation and buttons for touchscreen users. Expected improvement: 90% mobile usability score.\n\n#### High Priority Issues (Address Within 2 Weeks)\n1. **SEO Gaps**\n   - 23 pages missing meta descriptions\n   - 404 pages not redirected (e.g., `/about-us-old`)\n   - Recommendation: Implement Yoast SEO plugin (WordPress) or manual fixes. Expected improvement: 15% organic traffic increase.\n\n2. **Accessibility**\n   - 8 pages lack alt text for images\n   - Contrast ratio fails WCAG standards on 12 pages\n   - Recommendation: Use WAVE or axe DevTools for automated checks. Expected improvement: Full WCAG 2.1 AA compliance.\n\n#### Medium/Low Priority Issues (Address Within 1 Month)\n1. **Security Vulnerabilities**\n   - Outdated jQuery library (v1.12.4, CVE-2020-11022)\n   - Mixed content warnings on 3 pages\n   - Recommendation: Update libraries via npm or CDN. Expected improvement: 0 critical vulnerabilities.\n\n2. **Structured Data**\n   - Missing schema markup for 18 product pages\n   - Recommendation: Implement JSON-LD for products and reviews. Expected improvement: 10% rich snippet visibility.\n\n**Summary:**\nAcmeCorp.com has significant room for improvement in speed, mobile usability, and SEO. Prioritizing the critical issues above could reduce bounce rates by 25% and increase organic traffic by 20% within 3 months. The marketing team should align these fixes with their Q3 roadmap, while the dev team should allocate 2 sprints for implementation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:13.078772Z",
+    "http_status": 200,
+    "content_hash": "102f115f436cb11aa819bdaade224a6a192147c2db923de1fd52457e6a19a4c8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\audit-website.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\audit-website.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Website Audit Skill by Squirrelscan",
+  "short_description_vi": "The Audit Website skill by squirrelscan helps businesses to perform comprehensive website audits, enabling teams to identify critical issues that affect performance and user experience. By leveraging this skill, sales, marketing, and RevOps teams can enhance their online presence, boost conversion rates, and ultimately drive revenue growth."
+}

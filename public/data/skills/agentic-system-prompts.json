@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentic-system-prompts",
+  "slug": "agentic-system-prompts",
+  "name": "Agentic System Prompts",
+  "headline": "agentic-system-prompts for AI coding",
+  "short_description": "A curated collection of system prompts and tool definitions from production AI coding agents. Benefits operations teams by providing pre-built prompts for AI agents, reducing setup time and improving consistency. Connects to Claude agents and integrates with Jinja templating for customization.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "tallesborges",
+  "install_command": "git clone https://github.com/tallesborges/agentic-system-prompts.git",
+  "source_repo_url": "https://github.com/tallesborges/agentic-system-prompts",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "system-prompts",
+    "prompt-engineering",
+    "claude-code",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "The agentic-system-prompts library documents system prompts, tool definitions, and design patterns from production AI coding agents including Claude Code, Gemini CLI, Cline, Aider, Roo Code, Zed, and Codex CLI. Each agent directory includes complete prompt templates, detailed tool API specifications, and source attribution to help developers understand how professional agentic systems structure instructions and capabilities. This collection provides research value for prompt engineering patterns, tool design approaches, safety measures, and user experience workflows across different agent implementations. Operations and development teams can use these documented prompts as reference material or starting points for building consistent, reliable AI agent configurations.\nReference prompt engineering patterns from production AI agents\nCompare tool capabilities and designs across different agentic platforms\nUnderstand safety measures and defensive programming in AI agent systems\nAccelerate development by studying established agent workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tallesborges/agentic-system-prompts`",
+    "usage": "```\nYou are an AI coding agent with access to [TOOLS]. Follow the system prompt below to complete the task:\n\n[SYSTEM_PROMPT]\n\nTask: [TASK_DESCRIPTION]. Use the provided tools to achieve the goal. Document your steps and reasoning in a [FORMAT].\n\nConstraints: [CONSTRAINTS_IF_ANY].\n\nContext: [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```\n### AI Agent Execution Log\n**Agent ID:** dev-agent-01\n**Task:** Refactor the legacy authentication module in the `auth-service` repository to use dependency injection.\n**System Prompt Used:** `refactor-service-component`\n\n**Step 1: Analyze Current Code**\n- Scanned `auth-service/src/main/java/com/example/auth/` (24 files, 1,200 LOC).\n- Identified 8 classes with hardcoded dependencies (e.g., `UserRepository`, `TokenService`).\n- Detected circular dependencies in `AuthController` → `UserService` → `TokenService` → `AuthController`.\n\n**Step 2: Generate Refactor Plan**\n- Created dependency graph using `dependency-graph-tool`.\n- Proposed 3 refactor phases:\n  1. Extract interfaces for `UserRepository` and `TokenService`.\n  2. Implement constructor injection in `AuthService`.\n  3. Resolve circular dependencies via setter injection.\n\n**Step 3: Execute Refactor**\n- Modified `UserRepositoryImpl.java` to implement `UserRepository` interface.\n- Updated `AuthService.java` to accept `UserRepository` and `TokenService` via constructor.\n- Resolved circular dependency by introducing `@Lazy` annotation on `TokenService`.\n\n**Step 4: Validate Changes**\n- Ran `mvn clean test` (100% pass rate, 0 regressions).\n- Verified dependency injection with `spring-boot-actuator` metrics.\n- Logged changes in `CHANGELOG.md` with Jira ticket reference: `AUTH-456`.\n\n**Output:**\n- Refactored code pushed to `feature/auth-refactor` branch.\n- Pull request description auto-generated with tool output.\n- Slack notification sent to #dev-team channel with link to PR.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentic-system-prompts#main-content",
+      "agentic-system-prompts#overview",
+      "agentic-system-prompts#setup",
+      "agentic-system-prompts#examples",
+      "agentic-system-prompts#tools",
+      "agentic-system-prompts#mcp",
+      "agentic-system-prompts#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The agentic-system-prompts library documents system prompts, tool definitions, and design patterns from production AI coding agents including Claude Code, Gemini CLI, Cline, Aider, Roo Code, Zed, and Codex CLI. Each agent directory includes complete prompt templates, detailed tool API specifications, and source attribution to help developers understand how professional agentic systems structure instructions and capabilities. This collection provides research value for prompt engineering patterns, tool design approaches, safety measures, and user experience workflows across different agent implementations. Operations and development teams can use these documented prompts as reference material or starting points for building consistent, reliable AI agent configurations.\nReference prompt engineering patterns from production AI agents\nCompare tool capabilities and designs across different agentic platforms\nUnderstand safety measures and defensive programming in AI agent systems\nAccelerate development by studying established agent workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tallesborges/agentic-system-prompts`",
+    "usage_vi": "```\nYou are an AI coding agent with access to [TOOLS]. Follow the system prompt below to complete the task:\n\n[SYSTEM_PROMPT]\n\nTask: [TASK_DESCRIPTION]. Use the provided tools to achieve the goal. Document your steps and reasoning in a [FORMAT].\n\nConstraints: [CONSTRAINTS_IF_ANY].\n\nContext: [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```\n### AI Agent Execution Log\n**Agent ID:** dev-agent-01\n**Task:** Refactor the legacy authentication module in the `auth-service` repository to use dependency injection.\n**System Prompt Used:** `refactor-service-component`\n\n**Step 1: Analyze Current Code**\n- Scanned `auth-service/src/main/java/com/example/auth/` (24 files, 1,200 LOC).\n- Identified 8 classes with hardcoded dependencies (e.g., `UserRepository`, `TokenService`).\n- Detected circular dependencies in `AuthController` → `UserService` → `TokenService` → `AuthController`.\n\n**Step 2: Generate Refactor Plan**\n- Created dependency graph using `dependency-graph-tool`.\n- Proposed 3 refactor phases:\n  1. Extract interfaces for `UserRepository` and `TokenService`.\n  2. Implement constructor injection in `AuthService`.\n  3. Resolve circular dependencies via setter injection.\n\n**Step 3: Execute Refactor**\n- Modified `UserRepositoryImpl.java` to implement `UserRepository` interface.\n- Updated `AuthService.java` to accept `UserRepository` and `TokenService` via constructor.\n- Resolved circular dependency by introducing `@Lazy` annotation on `TokenService`.\n\n**Step 4: Validate Changes**\n- Ran `mvn clean test` (100% pass rate, 0 regressions).\n- Verified dependency injection with `spring-boot-actuator` metrics.\n- Logged changes in `CHANGELOG.md` with Jira ticket reference: `AUTH-456`.\n\n**Output:**\n- Refactored code pushed to `feature/auth-refactor` branch.\n- Pull request description auto-generated with tool output.\n- Slack notification sent to #dev-team channel with link to PR.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:37:33.016791Z",
+    "http_status": 200,
+    "content_hash": "9e4995807b6157cbee5a1c699857a173b39cc132a80ffe1ea029a1bdf835b8a7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentic-system-prompts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentic-system-prompts.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agentic-system-prompts for AI coding",
+  "short_description_vi": "A curated collection of system prompts and tool definitions from production AI coding agents. Benefits operations teams by providing pre-built prompts for AI agents, reducing setup time and improving consistency. Connects to Claude agents and integrates with Jinja templating for customization."
+}

@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/adnify",
+  "slug": "adnify",
+  "name": "Adnify",
+  "headline": "Adnify - Custom AI Agent Editor",
+  "short_description": "Adnify is a lightweight, highly customizable AI agent editor for operations teams. It enables full customization of AI agent workflows, including logic orchestration, tool approvals, and smart interactions. It integrates with XTerminal for WebGL acceleration and custom shortcuts, supports Markdown multi-mode editing, theme customization, and Git integration. This tool is ideal for developers who want to streamline AI development and integrate it into their existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "adnaan-worker",
+  "install_command": "git clone https://github.com/adnaan-worker/adnify.git",
+  "source_repo_url": "https://github.com/adnaan-worker/adnify",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "api",
+    "kiro",
+    "anthropic",
+    "gemini",
+    "openai",
+    "opencode",
+    "windsurf",
+    "ai-agent",
+    "ai-ide",
+    "free",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Adnify is a next-generation code editor that combines a Cyberpunk glassmorphism design with a deeply integrated AI Agent runtime. It offers three core working modes: Chat Mode for direct conversation, Agent Mode for autonomous file system and terminal operations, and Plan Mode for multi-turn task orchestration with step-by-step execution planning. The editor includes 24+ built-in native core tools for file system management, terminal execution, and code operations, enabling developers to automate workflows from code generation to deployment. Built with React 18, TypeScript 5.0, and Electron 39.0, Adnify replicates and surpasses traditional IDE experiences while providing full customization of AI agent workflows.\nAutomating code generation and file operations through AI Agent orchestration\nManaging complex multi-step development tasks with Plan Mode decomposition\nAccelerating workflows with 24+ built-in tools for file system and terminal operations\nCustomizing AI agent logic flows with interactive requirement gathering",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adnaan-worker/adnify`",
+    "usage": "```\nUse Adnify to design a custom AI agent workflow for [TASK/USE_CASE]. Define the logic orchestration, including [INPUTS], [PROCESSING_STEPS], and [OUTPUTS]. Specify any required tool approvals or validation rules. Integrate [XTERMINAL_FEATURES] (e.g., WebGL acceleration, custom shortcuts) and ensure the agent supports [MARKDOWN_MODE] for multi-mode editing. Include Git integration for version control. Provide the final workflow as a JSON configuration file.\n```\nCopy\n\n```\n```json\n{\n  \"agent_name\": \"Customer Support Autopilot\",\n  \"description\": \"Automates tier-1 customer support for an e-commerce platform, handling inquiries, escalating complex cases, and logging resolutions in Salesforce.\",\n  \"workflow\": {\n    \"inputs\": [\n      {\"type\": \"email\", \"source\": \"customer_tickets\", \"format\": \"plaintext\"},\n      {\"type\": \"order_id\", \"source\": \"shopify_api\", \"required\": true}\n    ],\n    \"processing_steps\": [\n      {\n        \"step\": 1,\n        \"action\": \"parse_email\",\n        \"tools\": [\"nlp_parser\", \"sentiment_analysis\"],\n        \"validation\": {\"required_fields\": [\"order_id\", \"issue_type\"]}\n      },\n      {\n        \"step\": 2,\n        \"action\": \"retrieve_order_data\",\n        \"tools\": [\"shopify_api\", \"xterminal_webgl\"],\n        \"approval\": {\"required\": true, \"approver\": \"support_supervisor\"}\n      },\n      {\n        \"step\": 3,\n        \"action\": \"generate_response\",\n        \"format\": \"markdown\",\n        \"templates\": [\"refund_request.md\", \"shipping_delay.md\"],\n        \"validation\": {\"spell_check\": true, \"tone\": \"professional\"}\n      },\n      {\n        \"step\": 4,\n        \"action\": \"escalate_complex_cases\",\n        \"conditions\": [\"issue_type == 'refund' && order_value > 500\"],\n        \"tools\": [\"jira_api\", \"slack_notification\"],\n        \"auto_assign\": \"support_lead\"\n      }\n    ],\n    \"outputs\": [\n      {\"type\": \"email\", \"destination\": \"customer\"},\n      {\"type\": \"log\", \"destination\": \"salesforce\", \"format\": \"json\"},\n      {\"type\": \"notification\", \"destination\": \"slack\", \"channel\": \"#support-log\"}\n    ],\n    \"git_integration\": {\n      \"enabled\": true,\n      \"repo\": \"github.com/acme/support-autopilot\",\n      \"branch\": \"main\",\n      \"auto_commit\": true\n    }\n  }\n}\n```\n\n**Key Features Enabled:**\n- **XTerminal Integration:** WebGL acceleration for rendering order status visualizations in responses.\n- **Markdown Multi-Mode:** Responses are generated in Markdown for templated emails and formatted logs.\n- **Tool Approvals:** Critical actions (e.g., refunds over $500) require supervisor approval via Slack.\n- **Git Sync:** All workflow updates are version-controlled and deployed automatically to the main branch.\n\n**Expected Outcome:**\nThe agent processes 80% of incoming tickets automatically, reduces response time by 65%, and ensures 100% compliance with escalation rules. Complex cases are flagged and assigned to the support lead within 2 minutes of detection.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "adnify#main-content",
+      "adnify#overview",
+      "adnify#setup",
+      "adnify#examples",
+      "adnify#tools",
+      "adnify#mcp",
+      "adnify#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Adnify là trình biên tập mã nguồn thế hệ mới kết hợp thiết kế kính mờ phong cách Cyberpunk (glassmorphism) với môi trường thực thi (runtime) AI Agent được tích hợp sâu. Công cụ cung cấp ba chế độ làm việc cốt lõi: Chat Mode để trò chuyện trực tiếp, Agent Mode để tự động thao tác trên hệ thống tệp và terminal, và Plan Mode để điều phối tác vụ nhiều lượt với kế hoạch thực thi từng bước. Trình biên tập tích hợp sẵn hơn 24 công cụ cốt lõi cho việc quản lý hệ thống tệp, thực thi terminal và thao tác mã nguồn, giúp nhà phát triển tự động hóa quy trình từ tạo mã đến triển khai. Được xây dựng trên React 18, TypeScript 5.0 và Electron 39.0, Adnify tái hiện và vượt trội hơn trải nghiệm IDE truyền thống, đồng thời cho phép tùy biến toàn diện quy trình làm việc của AI agent.\nTự động hóa quá trình tạo mã và thao tác tệp thông qua điều phối AI Agent\nQuản lý các tác vụ phát triển phức tạp gồm nhiều bước bằng cách phân rã tác vụ trong Plan Mode\nTăng tốc quy trình làm việc với hơn 24 công cụ tích hợp sẵn cho các thao tác trên hệ thống tệp và terminal\nTùy chỉnh luồng logic của AI agent thông qua việc thu thập yêu cầu tương tác",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/adnaan-worker/adnify`",
+    "usage_vi": "```\nSử dụng Adnify để thiết kế một quy trình làm việc AI agent tùy chỉnh cho [TASK/USE_CASE]. Xác định phần điều phối logic, bao gồm [INPUTS], [PROCESSING_STEPS] và [OUTPUTS]. Chỉ định các quy tắc phê duyệt công cụ hoặc quy tắc xác thực bắt buộc. Tích hợp [XTERMINAL_FEATURES] (ví dụ: tăng tốc WebGL, phím tắt tùy chỉnh) và đảm bảo agent hỗ trợ [MARKDOWN_MODE] để biên tập đa chế độ. Tích hợp Git để quản lý phiên bản. Cung cấp quy trình làm việc cuối cùng dưới dạng tệp cấu hình JSON.\n```\nCopy\n\n```json\n{\n  \"agent_name\": \"Hệ thống Tự động Hỗ trợ Khách hàng\",\n  \"description\": \"Tự động hóa hỗ trợ khách hàng cấp độ 1 cho nền tảng thương mại điện tử, xử lý các yêu cầu, chuyển tiếp các trường hợp phức tạp và ghi nhận kết quả giải quyết vào Salesforce.\",\n  \"workflow\": {\n    \"inputs\": [\n      {\"type\": \"email\", \"source\": \"customer_tickets\", \"format\": \"plaintext\"},\n      {\"type\": \"order_id\", \"source\": \"shopify_api\", \"required\": true}\n    ],\n    \"processing_steps\": [\n      {\n        \"step\": 1,\n        \"action\": \"parse_email\",\n        \"tools\": [\"nlp_parser\", \"sentiment_analysis\"],\n        \"validation\": {\"required_fields\": [\"order_id\", \"issue_type\"]}\n      },\n      {\n        \"step\": 2,\n        \"action\": \"retrieve_order_data\",\n        \"tools\": [\"shopify_api\", \"xterminal_webgl\"],\n        \"approval\": {\"required\": true, \"approver\": \"support_supervisor\"}\n      },\n      {\n        \"step\": 3,\n        \"action\": \"generate_response\",\n        \"format\": \"markdown\",\n        \"templates\": [\"refund_request.md\", \"shipping_delay.md\"],\n        \"validation\": {\"spell_check\": true, \"tone\": \"professional\"}\n      },\n      {\n        \"step\": 4,\n        \"action\": \"escalate_complex_cases\",\n        \"conditions\": [\"issue_type == 'refund' && order_value > 500\"],\n        \"tools\": [\"jira_api\", \"slack_notification\"],\n        \"auto_assign\": \"support_lead\"\n      }\n    ],\n    \"outputs\": [\n      {\"type\": \"email\", \"destination\": \"customer\"},\n      {\"type\": \"log\", \"destination\": \"salesforce\", \"format\": \"json\"},\n      {\"type\": \"notification\", \"destination\": \"slack\", \"channel\": \"#support-log\"}\n    ],\n    \"git_integration\": {\n      \"enabled\": true,\n      \"repo\": \"github.com/acme/support-autopilot\",\n      \"branch\": \"main\",\n      \"auto_commit\": true\n    }\n  }\n}\n```\n\n**Các tính năng chính được kích hoạt:**\n- **Tích hợp XTerminal:** Tăng tốc WebGL để hiển thị trực quan hóa trạng thái đơn hàng trong phản hồi.\n- **Markdown Multi-Mode:** Các phản hồi được tạo bằng định dạng Markdown cho các email theo mẫu và nhật ký (log) được định dạng.\n- **Phê duyệt công cụ:** Các hành động quan trọng (ví dụ: hoàn tiền trên $500) yêu cầu sự phê duyệt của giám sát viên qua Slack.\n- **Đồng bộ Git:** Mọi cập nhật quy trình làm việc đều được quản lý phiên bản và triển khai tự động lên nhánh main.\n\n**Kết quả kỳ vọng:**\nAgent tự động xử lý 80% số ticket gửi đến, giảm 65% thời gian phản hồi và đảm bảo tuân thủ 100% các quy tắc chuyển tiếp. Các trường hợp phức tạp sẽ được gắn cờ và phân công cho trưởng nhóm hỗ trợ trong vòng 2 phút kể từ khi phát hiện."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:49:39.552899Z",
+    "http_status": 200,
+    "content_hash": "d7340b0955ecd35e9225de158f833c3724a6b6402ad956dea5db28c4164c6e16",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\adnify.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\adnify.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Adnify - Trình biên tập AI Agent tùy chỉnh",
+  "short_description_vi": "Adnify là trình biên tập AI agent gọn nhẹ, khả năng tùy biến cao dành cho các đội ngũ vận hành. Công cụ này cho phép tùy biến toàn diện quy trình làm việc (workflows) của AI agent, bao gồm điều phối logic, phê duyệt công cụ (tool approvals) và tương tác thông minh. Adnify tích hợp với XTerminal để tăng tốc WebGL và tùy chỉnh phím tắt, hỗ trợ biên tập đa chế độ Markdown, tùy biến giao diện (theme) và tích hợp Git. Đây là công cụ lý tưởng cho các nhà phát triển muốn tối ưu hóa quy trình phát triển AI và tích hợp nó vào quy trình làm việc hiện có."
+}

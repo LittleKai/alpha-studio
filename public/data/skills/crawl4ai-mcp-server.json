@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/crawl4ai-mcp-server",
+  "slug": "crawl4ai-mcp-server",
+  "name": "Crawl4AI MCP Server",
+  "headline": "Crawl4AI MCP Server - Web Scraping for AI Agents",
+  "short_description": "🕷 A lightweight Model Context Protocol (MCP) server that exposes Crawl4AI web scraping and crawling capabilities as tools for AI agents.  Similar to Firecrawl's API but self-hosted and free. Perfect for integrating web scraping into your AI workflows with OpenAI Agents SDK, Cursor, Claude Code, and other MCP-compatible tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "sadiuysal",
+  "install_command": "git clone https://github.com/sadiuysal/crawl4ai-mcp-server.git",
+  "source_repo_url": "https://github.com/sadiuysal/crawl4ai-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "openai-agents",
+    "openai-agents-sdk",
+    "mcp",
+    "web-crawling",
+    "ai-agents",
+    "web-scraping",
+    "crawl4ai",
+    "firecrawl-alternative",
+    "model-context-protocol",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Crawl4AI MCP Server is a lightweight Model Context Protocol server that exposes four web scraping and crawling tools—scrape, crawl, crawl_site, and crawl_sitemap—for AI agents. It provides single-page markdown extraction, multi-page breadth-first crawling with depth control, and adaptive crawling that stops when sufficient content is gathered. The server blocks internal networks and private IPs for safety, runs via stdio with Playwright and Crawl4AI's optimized extraction engine, and integrates directly with Claude Code, Cursor, and OpenAI Agents SDK. Deploy via Docker with pre-built images or manually with Python, making it a free, self-hosted alternative to commercial web scraping APIs.\nExtract markdown content from single webpages for AI processing\nCrawl multi-page documentation sites with depth and page limits\nComprehensive site crawling with automatic persistence to disk\nScrape URLs from sitemaps with configurable entry limits",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sadiuysal/crawl4ai-mcp-server`\n\nTo set up the crawl4ai-mcp-server, follow these steps:\n\n1. **Install Dependencies**: Ensure you have Python 3.8 or later installed. You can install the required dependencies using pip:\n   ```bash\n   pip install crawl4ai-mcp-server\n   ```\n\n2. **Configure the Server**: Create a configuration file named `config.json` with the following content:\n   ```json\n   {\n     \"port\": 8000,\n     \"allowed_domains\": [\"example.com\"],\n     \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\"\n   }\n   ```\n\n3. **Run the Server**: Start the server by running the following command:\n   ```bash\n   python -m crawl4ai_mcp_server --config config.json\n   ```\n\n4. **Integrate with AI Agents**: Use the OpenAI Agents SDK or other MCP-compatible tools to integrate the crawl4ai-mcp-server into your AI workflows. Here is an example of how to use it with the OpenAI Agents SDK:\n   ```python\n   from openai import OpenAI\n   from openai.tools import Tools\n   \n   client = OpenAI()\n   tools = Tools()\n   \n   # Add the crawl4ai-mcp-server as a tool\n   tools.add_tool(\n       name=\"crawl4ai-mcp-server\",\n       description=\"A lightweight MCP server for web scraping and crawling.\",\n       url=\"http://localhost:8000\"\n   )\n   \n   # Use the tool in your AI agent\n   response = client.chat.completions.create(\n       model=\"gpt-4\",\n       messages=[{\"role\": \"user\", \"content\": \"Scrape data from example.com.\"}],\n       tools=[tools]\n   )\n   ```\n\n5. **Monitor and Maintain**: Regularly monitor the server logs and maintain the server to ensure it runs smoothly.\n```",
+    "usage": "```\nI want to use the crawl4ai-mcp-server to scrape data from [WEBSITE_URL] for [COMPANY] in the [INDUSTRY] sector. The data I need includes [DATA_POINTS] from the website. Please provide me with the necessary steps and code to set up and use the crawl4ai-mcp-server for this task.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "crawl4ai-mcp-server#main-content",
+      "crawl4ai-mcp-server#overview",
+      "crawl4ai-mcp-server#setup",
+      "crawl4ai-mcp-server#examples",
+      "crawl4ai-mcp-server#tools",
+      "crawl4ai-mcp-server#mcp",
+      "crawl4ai-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Crawl4AI MCP Server là một server Model Context Protocol gọn nhẹ, cung cấp 4 công cụ cào và trích xuất dữ liệu web—scrape, crawl, crawl_site và crawl_sitemap—cho các AI agent. Nó hỗ trợ trích xuất markdown từ một trang đơn lẻ, crawl nhiều trang theo thuật toán tìm kiếm theo chiều rộng (breadth-first) có kiểm soát độ sâu, và crawl thích ứng tự động dừng khi đã thu thập đủ nội dung. Để đảm bảo an toàn, server chặn các mạng nội bộ và IP riêng tư, chạy qua stdio với Playwright và công cụ trích xuất tối ưu của Crawl4AI, đồng thời tích hợp trực tiếp với Claude Code, Cursor và OpenAI Agents SDK. Bạn có thể triển khai qua Docker với các image build sẵn hoặc cài đặt thủ công bằng Python, biến đây thành giải pháp thay thế tự vận hành (self-hosted) miễn phí cho các API web scraping thương mại.\nTrích xuất nội dung markdown từ các trang web đơn lẻ để xử lý bằng AI\nCrawl các trang tài liệu (documentation) nhiều trang với giới hạn độ sâu và số lượng trang\nCrawl toàn bộ trang web một cách toàn diện với tính năng tự động lưu (persistence) vào đĩa\nCào các URL từ sitemap với giới hạn số lượng mục cấu hình được",
+    "setup_vi": "Không có lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sadiuysal/crawl4ai-mcp-server`\n\nĐể setup crawl4ai-mcp-server, hãy thực hiện các bước sau:\n\n1. **Cài đặt thư viện phụ thuộc (Dependencies)**: Đảm bảo bạn đã cài đặt Python 3.8 trở lên. Bạn có thể cài đặt các dependency cần thiết bằng pip:\n   ```bash\n   pip install crawl4ai-mcp-server\n   ```\n\n2. **Cấu hình Server**: Tạo một file cấu hình tên là `config.json` với nội dung như sau:\n   ```json\n   {\n     \"port\": 8000,\n     \"allowed_domains\": [\"example.com\"],\n     \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\"\n   }\n   ```\n\n3. **Chạy Server**: Khởi động server bằng cách chạy lệnh sau:\n   ```bash\n   python -m crawl4ai_mcp_server --config config.json\n   ```\n\n4. **Tích hợp với AI Agent**: Sử dụng OpenAI Agents SDK hoặc các công cụ tương thích MCP khác để tích hợp crawl4ai-mcp-server vào quy trình làm việc (workflow) AI của bạn. Dưới đây là ví dụ về cách sử dụng với OpenAI Agents SDK:\n   ```python\n   from openai import OpenAI\n   from openai.tools import Tools\n   \n   client = OpenAI()\n   tools = Tools()\n   \n   # Thêm crawl4ai-mcp-server làm tool\n   tools.add_tool(\n       name=\"crawl4ai-mcp-server\",\n       description=\"A lightweight MCP server for web scraping and crawling.\",\n       url=\"http://localhost:8000\"\n   )\n   \n   # Sử dụng tool trong AI agent của bạn\n   response = client.chat.completions.create(\n       model=\"gpt-4\",\n       messages=[{\"role\": \"user\", \"content\": \"Scrape data from example.com.\"}],\n       tools=[tools]\n   )\n   ```\n\n5. **Giám sát và Bảo trì**: Thường xuyên kiểm tra log của server và bảo trì hệ thống để đảm bảo server hoạt động ổn định.",
+    "usage_vi": "```\nTôi muốn sử dụng crawl4ai-mcp-server để cào dữ liệu từ [WEBSITE_URL] cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Dữ liệu tôi cần bao gồm [DATA_POINTS] từ trang web này. Vui lòng cung cấp cho tôi các bước và mã nguồn cần thiết để setup và sử dụng crawl4ai-mcp-server cho tác vụ này.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:20:05.033689Z",
+    "http_status": 200,
+    "content_hash": "8b592a05911a606e98a944c3c4d38ad60b2225c53133e0d2b01be9b61440cddc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crawl4ai-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crawl4ai-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Crawl4AI MCP Server - Web Scraping cho AI Agent",
+  "short_description_vi": "🕷 Một server Model Context Protocol (MCP) gọn nhẹ cung cấp các tính năng cào và trích xuất dữ liệu web (web scraping & crawling) của Crawl4AI dưới dạng công cụ (tool) cho các AI agent. Tương tự như API của Firecrawl nhưng tự vận hành (self-hosted) và miễn phí. Hoàn hảo để tích hợp web scraping vào quy trình làm việc (workflow) AI của bạn bằng OpenAI Agents SDK, Cursor, Claude Code và các công cụ tương thích MCP khác."
+}

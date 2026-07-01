@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tiktok-video-downloader",
+  "slug": "tiktok-video-downloader",
+  "name": "Cam4 Downloader",
+  "headline": "TikTok Video Downloader: Download MP4s",
+  "short_description": "TikTok Video Downloader is a browser extension for users who want a smoother way to save TikTok videos for offline viewing. It detects supported video sources from active pages and exports MP4 files without the need for manual workarounds.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "serpdownloaders",
+  "install_command": "git clone https://github.com/serpdownloaders/tiktok-video-downloader",
+  "source_repo_url": "https://github.com/serpdownloaders/tiktok-video-downloader",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "downloader",
+    "video",
+    "tiktok",
+    "browser-extension"
+  ],
+  "sections": {
+    "overview": "TikTok Video Downloader is a browser extension that lets you save supported TikTok videos as MP4 files directly from your browser—no third-party sites, no watermarks, no screen recordings. It works on feed pages, user profiles, hashtag pages, music pages, and single video pages, detecting video sources automatically and handling TikTok's CDN authentication for reliable downloads. The extension adds download overlays to every video while you browse, and you can toggle them on or off from the popup. Built for creators, archivists, and casual users who want a cleaner offline workflow instead of relying on low-quality captures or watermarked download services.\nDownload TikTok videos from watch pages\nSave videos from user profiles\nExport videos for offline editing\nAvoid manual source tracing for downloads",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill tiktok-video-downloader`\n`git clone https://github.com/serpdownloaders/tiktok-video-downloader`",
+    "usage": "```\nExtract and download the highest quality MP4 video from [TIKTOK_VIDEO_URL]. Provide a direct download link and filename in the format 'TikTok_[VIDEO_ID].mp4'. Only return the download link and filename—no additional text.\n```\nCopy\n\n```\n# Download Ready\n\n**Video ID:** 7382914567890123456\n**Filename:** TikTok_7382914567890123456.mp4\n\n📥 [Download MP4](https://cdn.tiktok.com/v1/tiktok_7382914567890123456.mp4)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "tiktok-video-downloader#main-content",
+      "tiktok-video-downloader#overview",
+      "tiktok-video-downloader#setup",
+      "tiktok-video-downloader#examples",
+      "tiktok-video-downloader#related",
+      "pinterest-downloader",
+      "fansly-live-downloader",
+      "cam4-downloader"
+    ],
+    "overview_vi": "TikTok Video Downloader is a browser extension that lets you save supported TikTok videos as MP4 files directly from your browser—no third-party sites, no watermarks, no screen recordings. It works on feed pages, user profiles, hashtag pages, music pages, and single video pages, detecting video sources automatically and handling TikTok's CDN authentication for reliable downloads. The extension adds download overlays to every video while you browse, and you can toggle them on or off from the popup. Built for creators, archivists, and casual users who want a cleaner offline workflow instead of relying on low-quality captures or watermarked download services.\nDownload TikTok videos from watch pages\nSave videos from user profiles\nExport videos for offline editing\nAvoid manual source tracing for downloads",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill tiktok-video-downloader`\n`git clone https://github.com/serpdownloaders/tiktok-video-downloader`",
+    "usage_vi": "```\nExtract and download the highest quality MP4 video from [TIKTOK_VIDEO_URL]. Provide a direct download link and filename in the format 'TikTok_[VIDEO_ID].mp4'. Only return the download link and filename—no additional text.\n```\nCopy\n\n```\n# Download Ready\n\n**Video ID:** 7382914567890123456\n**Filename:** TikTok_7382914567890123456.mp4\n\n📥 [Download MP4](https://cdn.tiktok.com/v1/tiktok_7382914567890123456.mp4)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:18:40.458117Z",
+    "http_status": 200,
+    "content_hash": "cf28389cdfb6373e417999711cb27991a88fb63a591ed8fa67ffaa21cce2921b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tiktok-video-downloader.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tiktok-video-downloader.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "TikTok Video Downloader: Download MP4s",
+  "short_description_vi": "TikTok Video Downloader is a browser extension for users who want a smoother way to save TikTok videos for offline viewing. It detects supported video sources from active pages and exports MP4 files without the need for manual workarounds."
+}

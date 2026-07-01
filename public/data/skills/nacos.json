@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nacos",
+  "slug": "nacos",
+  "name": "react-native-best-practices",
+  "headline": "Nacos: Dynamic Service Discovery & Management",
+  "short_description": "Nacos is a dynamic service discovery and configuration management platform designed for AI cloud-native applications. It simplifies microservices management and enhances application performance through efficient service registry and configuration capabilities.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "alibaba",
+  "install_command": "claude install alibaba/nacos",
+  "source_repo_url": "https://github.com/alibaba/nacos",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "service discovery",
+    "cloud-native",
+    "Java",
+    "configuration management",
+    "microservices"
+  ],
+  "sections": {
+    "overview": "Nacos is an open-source platform developed by Alibaba that handles service discovery and dynamic configuration management for microservices-based applications. It maintains a service registry where applications can register and discover other services in real-time, enabling automatic service location without hardcoded addresses. The platform also manages application configurations centrally, allowing teams to update settings across distributed systems without redeployment. Nacos supports both Java and multi-language ecosystems, making it suitable for heterogeneous service architectures. It's designed for cloud-native deployments where services scale dynamically and require efficient coordination.\nAutomate service discovery in microservices architectures to enhance communication between services.\nManage dynamic configurations for cloud applications, allowing for rapid updates without downtime.\nIntegrate with Kubernetes to orchestrate services efficiently and maintain high availability.\nImplement DNS-based service registration to simplify service access and improve network management.",
+    "setup": "Terminal\nCopy\n`claude install alibaba/nacos`\n`git clone https://github.com/alibaba/nacos`",
+    "usage": "```\nSet up a Nacos service discovery for a microservices architecture in [CLOUD_ENVIRONMENT]. Register [NUMBER] services with the following configurations: [CONFIGURATIONS]. Ensure high availability and fault tolerance. Provide a step-by-step guide for integrating these services with DistributeAI.\n```\nCopy\n\n```\nTo set up a Nacos service discovery for a microservices architecture in AWS, follow these steps:\n\n1. **Install Nacos**: Download the Nacos server from the official repository and start it using the provided startup script.\n2. **Configure Nacos**: Edit the `application.properties` file to set up the Nacos server with the desired configurations, such as port numbers and cluster settings.\n3. **Register Services**: Use the Nacos console to register your microservices. For example, register three services: `UserService`, `OrderService`, and `PaymentService`. Each service should have a unique service name and a list of instances with their IP addresses and ports.\n4. **Integrate with DistributeAI**: Use the DistributeAI SDK to connect your microservices to the DistributeAI network. This involves setting up the necessary authentication and configuration files to ensure seamless integration.\n5. **Test the Setup**: Verify the setup by sending requests to the services and checking the Nacos console for service health and availability.\n\nBy following these steps, you can ensure a robust and scalable microservices architecture with efficient service discovery and configuration management.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "nacos#main-content",
+      "nacos#overview",
+      "nacos#setup",
+      "nacos#examples",
+      "nacos#tools",
+      "nacos#mcp",
+      "nacos#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Nacos is an open-source platform developed by Alibaba that handles service discovery and dynamic configuration management for microservices-based applications. It maintains a service registry where applications can register and discover other services in real-time, enabling automatic service location without hardcoded addresses. The platform also manages application configurations centrally, allowing teams to update settings across distributed systems without redeployment. Nacos supports both Java and multi-language ecosystems, making it suitable for heterogeneous service architectures. It's designed for cloud-native deployments where services scale dynamically and require efficient coordination.\nAutomate service discovery in microservices architectures to enhance communication between services.\nManage dynamic configurations for cloud applications, allowing for rapid updates without downtime.\nIntegrate with Kubernetes to orchestrate services efficiently and maintain high availability.\nImplement DNS-based service registration to simplify service access and improve network management.",
+    "setup_vi": "Terminal\nCopy\n`claude install alibaba/nacos`\n`git clone https://github.com/alibaba/nacos`",
+    "usage_vi": "```\nSet up a Nacos service discovery for a microservices architecture in [CLOUD_ENVIRONMENT]. Register [NUMBER] services with the following configurations: [CONFIGURATIONS]. Ensure high availability and fault tolerance. Provide a step-by-step guide for integrating these services with DistributeAI.\n```\nCopy\n\n```\nTo set up a Nacos service discovery for a microservices architecture in AWS, follow these steps:\n\n1. **Install Nacos**: Download the Nacos server from the official repository and start it using the provided startup script.\n2. **Configure Nacos**: Edit the `application.properties` file to set up the Nacos server with the desired configurations, such as port numbers and cluster settings.\n3. **Register Services**: Use the Nacos console to register your microservices. For example, register three services: `UserService`, `OrderService`, and `PaymentService`. Each service should have a unique service name and a list of instances with their IP addresses and ports.\n4. **Integrate with DistributeAI**: Use the DistributeAI SDK to connect your microservices to the DistributeAI network. This involves setting up the necessary authentication and configuration files to ensure seamless integration.\n5. **Test the Setup**: Verify the setup by sending requests to the services and checking the Nacos console for service health and availability.\n\nBy following these steps, you can ensure a robust and scalable microservices architecture with efficient service discovery and configuration management.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:49:10.511167Z",
+    "http_status": 200,
+    "content_hash": "68facf375119d5447c4d262837496fd316f940e71487d1d411c4b01103e4b29c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nacos.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nacos.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Nacos: Dynamic Service Discovery & Management",
+  "short_description_vi": "Nacos is a dynamic service discovery and configuration management platform designed for AI cloud-native applications. It simplifies microservices management and enhances application performance through efficient service registry and configuration capabilities."
+}

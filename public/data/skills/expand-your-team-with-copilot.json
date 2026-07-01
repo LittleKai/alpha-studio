@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/expand-your-team-with-copilot",
+  "slug": "expand-your-team-with-copilot",
+  "name": "Expand Your Team with Copilot",
+  "headline": "Expand Your Team with Copilot - Automate GitHub",
+  "short_description": "Copilot coding agent resolves GitHub issues directly. Developers of all levels can assign tasks, accelerating code workflow without setting up a coding environment. Integrates with GitHub and Claude.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "skills",
+  "install_command": "git clone https://github.com/skills/expand-your-team-with-copilot.git",
+  "source_repo_url": "https://github.com/skills/expand-your-team-with-copilot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "skills-exercise",
+    "skills-course",
+    "copilot"
+  ],
+  "sections": {
+    "overview": "Expand your team with Copilot cloud agent, which tackles GitHub issues directly without requiring a local development environment. Enable Copilot access to your repository, assign issues, and let the agent work on code changes while you review and provide feedback. This skill teaches you how to collaborate with an AI agent on multiple tasks in parallel, customize the agent's workspace, and delegate coding work efficiently. Ideal for teams where non-developers or busy developers need to make changes without coding directly, and for developers of all experience levels looking to accelerate their workflow.\nEnable non-developers on your team to contribute code changes via Copilot without local setup\nAssign multiple GitHub issues to Copilot agent and track progress in parallel\nAccelerate code workflow by delegating routine issue resolution to an AI agent\nCollaboratively review and refine Copilot's code changes through feedback loops",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/skills/expand-your-team-with-copilot`",
+    "usage": "```\nUse Copilot coding agent to resolve GitHub issue #[ISSUE_NUMBER] in the [REPO_NAME] repository. Focus on implementing [SPECIFIC_FEATURE] as described in the issue. Provide a step-by-step breakdown of the changes needed, including code snippets for [LANGUAGE]. Test the solution locally by running [COMMAND] and verify it resolves the issue. Submit the changes as a pull request with the title 'Fixes #[ISSUE_NUMBER]: [BRIEF_DESCRIPTION]' and include a summary of the changes made.\n```\nCopy\n\n```\nHere’s the resolution for GitHub issue #42 in the `ecommerce-backend` repository, which requested adding a discount validation feature for cart totals.\n\n**Problem Analysis:**\nThe issue described a bug where discounts weren’t being validated when the cart total exceeded $1000, causing incorrect order processing. The `DiscountService` class lacked a method to enforce the $1000 threshold.\n\n**Solution Implemented:**\n1. Added a new method `validateDiscountThreshold()` to `DiscountService.java`:\n```java\npublic boolean validateDiscountThreshold(BigDecimal cartTotal, BigDecimal discount) {\n    if (cartTotal.compareTo(new BigDecimal(\"1000.00\")) > 0 && discount.compareTo(new BigDecimal(\"0.10\")) > 0) {\n        throw new IllegalArgumentException(\"Discount cannot exceed 10% for carts over $1000\");\n    }\n    return true;\n}\n```\n2. Integrated this into the `CartController` to check discounts before processing:\n```java\nif (!discountService.validateDiscountThreshold(cart.getTotal(), cart.getDiscount())) {\n    return ResponseEntity.badRequest().body(\"Invalid discount for cart total\");\n}\n```\n3. Added unit tests in `DiscountServiceTest.java` to verify the validation logic for edge cases (e.g., $1000.01 cart with 10.1% discount).\n\n**Testing:**\n- Ran `mvn test` locally; all tests passed, including new validation tests.\n- Manually tested with Postman: A cart total of $1001 with a 10.1% discount now correctly returns a 400 error.\n\n**Pull Request Summary:**\nThis PR adds discount validation for high-value carts, ensuring compliance with the business rule that discounts cannot exceed 10% for carts over $1000. The changes are minimal and focused, with no impact on existing functionality.\n\n**Next Steps:**\n- Review the PR and merge if approved.\n- Deploy to staging for further validation.\n- Monitor error logs for any unexpected issues post-deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "expand-your-team-with-copilot#main-content",
+      "expand-your-team-with-copilot#overview",
+      "expand-your-team-with-copilot#setup",
+      "expand-your-team-with-copilot#examples",
+      "expand-your-team-with-copilot#tools",
+      "expand-your-team-with-copilot#mcp",
+      "expand-your-team-with-copilot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Expand your team with Copilot cloud agent, which tackles GitHub issues directly without requiring a local development environment. Enable Copilot access to your repository, assign issues, and let the agent work on code changes while you review and provide feedback. This skill teaches you how to collaborate with an AI agent on multiple tasks in parallel, customize the agent's workspace, and delegate coding work efficiently. Ideal for teams where non-developers or busy developers need to make changes without coding directly, and for developers of all experience levels looking to accelerate their workflow.\nEnable non-developers on your team to contribute code changes via Copilot without local setup\nAssign multiple GitHub issues to Copilot agent and track progress in parallel\nAccelerate code workflow by delegating routine issue resolution to an AI agent\nCollaboratively review and refine Copilot's code changes through feedback loops",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/skills/expand-your-team-with-copilot`",
+    "usage_vi": "```\nUse Copilot coding agent to resolve GitHub issue #[ISSUE_NUMBER] in the [REPO_NAME] repository. Focus on implementing [SPECIFIC_FEATURE] as described in the issue. Provide a step-by-step breakdown of the changes needed, including code snippets for [LANGUAGE]. Test the solution locally by running [COMMAND] and verify it resolves the issue. Submit the changes as a pull request with the title 'Fixes #[ISSUE_NUMBER]: [BRIEF_DESCRIPTION]' and include a summary of the changes made.\n```\nCopy\n\n```\nHere’s the resolution for GitHub issue #42 in the `ecommerce-backend` repository, which requested adding a discount validation feature for cart totals.\n\n**Problem Analysis:**\nThe issue described a bug where discounts weren’t being validated when the cart total exceeded $1000, causing incorrect order processing. The `DiscountService` class lacked a method to enforce the $1000 threshold.\n\n**Solution Implemented:**\n1. Added a new method `validateDiscountThreshold()` to `DiscountService.java`:\n```java\npublic boolean validateDiscountThreshold(BigDecimal cartTotal, BigDecimal discount) {\n    if (cartTotal.compareTo(new BigDecimal(\"1000.00\")) > 0 && discount.compareTo(new BigDecimal(\"0.10\")) > 0) {\n        throw new IllegalArgumentException(\"Discount cannot exceed 10% for carts over $1000\");\n    }\n    return true;\n}\n```\n2. Integrated this into the `CartController` to check discounts before processing:\n```java\nif (!discountService.validateDiscountThreshold(cart.getTotal(), cart.getDiscount())) {\n    return ResponseEntity.badRequest().body(\"Invalid discount for cart total\");\n}\n```\n3. Added unit tests in `DiscountServiceTest.java` to verify the validation logic for edge cases (e.g., $1000.01 cart with 10.1% discount).\n\n**Testing:**\n- Ran `mvn test` locally; all tests passed, including new validation tests.\n- Manually tested with Postman: A cart total of $1001 with a 10.1% discount now correctly returns a 400 error.\n\n**Pull Request Summary:**\nThis PR adds discount validation for high-value carts, ensuring compliance with the business rule that discounts cannot exceed 10% for carts over $1000. The changes are minimal and focused, with no impact on existing functionality.\n\n**Next Steps:**\n- Review the PR and merge if approved.\n- Deploy to staging for further validation.\n- Monitor error logs for any unexpected issues post-deployment.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:33:30.515607Z",
+    "http_status": 200,
+    "content_hash": "f7e8028afa940d7d514d463e2cd399071e78c1555b7ab7e402decf0d5e965bf1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\expand-your-team-with-copilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\expand-your-team-with-copilot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Expand Your Team with Copilot - Automate GitHub",
+  "short_description_vi": "Copilot coding agent resolves GitHub issues directly. Developers of all levels can assign tasks, accelerating code workflow without setting up a coding environment. Integrates with GitHub and Claude."
+}

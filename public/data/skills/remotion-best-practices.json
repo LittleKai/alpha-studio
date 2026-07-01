@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/remotion-best-practices",
+  "slug": "remotion-best-practices",
+  "name": "Remotion Best Practices",
+  "headline": "Remotion Best Practices for Video Production",
+  "short_description": "Remotion Best Practices provides essential guidelines for optimizing video production workflows. By implementing these best practices, teams can enhance collaboration, save time, and improve video quality, allowing for more impactful marketing and sales presentations.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "remotion-dev",
+  "install_command": "claude install remotion-dev/skills/remotion-best-practices",
+  "source_repo_url": "https://github.com/remotion-dev/skills",
+  "works_with": [
+    "Claude CodeCursorWindsurfCline"
+  ],
+  "tags": [
+    "remote collaboration",
+    "training resources",
+    "sales enablement",
+    "video production",
+    "marketing tools"
+  ],
+  "sections": {
+    "overview": "Unlock the full potential of your video production with Remotion Best Practices. Designed specifically for Sales, Marketing, and RevOps teams, this skill offers actionable insights to streamline your video creation process. By following these best practices, you can significantly reduce production time, improve team collaboration, and create high-quality content that resonates with your audience. In today's fast-paced business environment, effective communication is key to driving sales and marketing success. Remotion Best Practices equips your team with the tools and strategies needed to create compelling videos that capture attention and deliver results. Whether you're producing promotional content or internal training videos, leveraging these best practices will ensure your projects are not only efficient but also impactful.\nStreamline the creation of engaging video content for targeted marketing campaigns.\nFacilitate seamless collaboration among remote teams working on video projects.\nReduce the overall production time for impactful sales presentations.\nEnhance the quality and effectiveness of internal training materials through optimized workflows.",
+    "setup": "Terminal\nCopy\n`claude install remotion-dev/skills/remotion-best-practices`\n`git clone https://github.com/remotion-dev/skills`",
+    "usage": "```\nGenerate a Remotion video script for [PRODUCT_NAME] that includes: 1) A 15-second hook highlighting the product's core value, 2) A 30-second feature demonstration with on-screen annotations, 3) A 20-second testimonial from a satisfied customer, and 4) A 10-second call-to-action with pricing and purchase link. Use [BRAND_TONE] tone (professional, energetic, or friendly). Structure the script in Remotion's JSON format with timing and visual cues. Include [PLACEHOLDERS] for customization.\n```\nCopy\n\n```\n```json\n{\n  \"title\": \"Motion Bearings: Smooth Operations for Your Machinery\",\n  \"duration\": 75,\n  \"frames\": [\n    {\n      \"time\": 0,\n      \"duration\": 15,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/hero.mp4\",\n      \"overlay\": {\n        \"text\": \"Bearings that keep your machinery running 24/7\",\n        \"style\": {\"color\": \"#ffffff\", \"fontSize\": 48, \"fontWeight\": \"bold\"}\n      }\n    },\n    {\n      \"time\": 15,\n      \"duration\": 30,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/bearing-demo.mp4\",\n      \"annotations\": [\n        {\n          \"time\": 20,\n          \"text\": \"Self-lubricating\",\n          \"position\": \"top-left\",\n          \"style\": {\"color\": \"#00ff00\"}\n        },\n        {\n          \"time\": 35,\n          \"text\": \"High load capacity\",\n          \"position\": \"bottom-right\",\n          \"style\": {\"color\": \"#00ff00\"}\n        }\n      ]\n    },\n    {\n      \"time\": 45,\n      \"duration\": 20,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/testimonial.mp4\",\n      \"overlay\": {\n        \"text\": \"Reduced downtime by 40% in our factory\",\n        \"style\": {\"color\": \"#ffffff\", \"fontSize\": 36}\n      }\n    },\n    {\n      \"time\": 65,\n      \"duration\": 10,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/cta.mp4\",\n      \"overlay\": {\n        \"text\": \"Starting at $12.99 | Order now: motion.com/bearings\",\n        \"style\": {\"color\": \"#ffffff\", \"fontSize\": 32}\n      }\n    }\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline"
+    ],
+    "related_skills": [
+      "remotion-best-practices#main-content",
+      "remotion-best-practices#overview",
+      "remotion-best-practices#setup",
+      "remotion-best-practices#examples",
+      "remotion-best-practices#tools",
+      "remotion-best-practices#mcp",
+      "remotion-best-practices#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Unlock the full potential of your video production with Remotion Best Practices. Designed specifically for Sales, Marketing, and RevOps teams, this skill offers actionable insights to streamline your video creation process. By following these best practices, you can significantly reduce production time, improve team collaboration, and create high-quality content that resonates with your audience. In today's fast-paced business environment, effective communication is key to driving sales and marketing success. Remotion Best Practices equips your team with the tools and strategies needed to create compelling videos that capture attention and deliver results. Whether you're producing promotional content or internal training videos, leveraging these best practices will ensure your projects are not only efficient but also impactful.\nStreamline the creation of engaging video content for targeted marketing campaigns.\nFacilitate seamless collaboration among remote teams working on video projects.\nReduce the overall production time for impactful sales presentations.\nEnhance the quality and effectiveness of internal training materials through optimized workflows.",
+    "setup_vi": "Terminal\nCopy\n`claude install remotion-dev/skills/remotion-best-practices`\n`git clone https://github.com/remotion-dev/skills`",
+    "usage_vi": "```\nGenerate a Remotion video script for [PRODUCT_NAME] that includes: 1) A 15-second hook highlighting the product's core value, 2) A 30-second feature demonstration with on-screen annotations, 3) A 20-second testimonial from a satisfied customer, and 4) A 10-second call-to-action with pricing and purchase link. Use [BRAND_TONE] tone (professional, energetic, or friendly). Structure the script in Remotion's JSON format with timing and visual cues. Include [PLACEHOLDERS] for customization.\n```\nCopy\n\n```\n```json\n{\n  \"title\": \"Motion Bearings: Smooth Operations for Your Machinery\",\n  \"duration\": 75,\n  \"frames\": [\n    {\n      \"time\": 0,\n      \"duration\": 15,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/hero.mp4\",\n      \"overlay\": {\n        \"text\": \"Bearings that keep your machinery running 24/7\",\n        \"style\": {\"color\": \"#ffffff\", \"fontSize\": 48, \"fontWeight\": \"bold\"}\n      }\n    },\n    {\n      \"time\": 15,\n      \"duration\": 30,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/bearing-demo.mp4\",\n      \"annotations\": [\n        {\n          \"time\": 20,\n          \"text\": \"Self-lubricating\",\n          \"position\": \"top-left\",\n          \"style\": {\"color\": \"#00ff00\"}\n        },\n        {\n          \"time\": 35,\n          \"text\": \"High load capacity\",\n          \"position\": \"bottom-right\",\n          \"style\": {\"color\": \"#00ff00\"}\n        }\n      ]\n    },\n    {\n      \"time\": 45,\n      \"duration\": 20,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/testimonial.mp4\",\n      \"overlay\": {\n        \"text\": \"Reduced downtime by 40% in our factory\",\n        \"style\": {\"color\": \"#ffffff\", \"fontSize\": 36}\n      }\n    },\n    {\n      \"time\": 65,\n      \"duration\": 10,\n      \"element\": \"video\",\n      \"src\": \"https://motion.com/cta.mp4\",\n      \"overlay\": {\n        \"text\": \"Starting at $12.99 | Order now: motion.com/bearings\",\n        \"style\": {\"color\": \"#ffffff\", \"fontSize\": 32}\n      }\n    }\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:36:55.626222Z",
+    "http_status": 200,
+    "content_hash": "4caf4444c4871887ea619f07db8bab658f7a16a40ba5edb504116523fee897ac",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\remotion-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\remotion-best-practices.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Remotion Best Practices for Video Production",
+  "short_description_vi": "Remotion Best Practices provides essential guidelines for optimizing video production workflows. By implementing these best practices, teams can enhance collaboration, save time, and improve video quality, allowing for more impactful marketing and sales presentations."
+}

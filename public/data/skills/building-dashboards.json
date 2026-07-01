@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/building-dashboards",
+  "slug": "building-dashboards",
+  "name": "Building Dashboards",
+  "headline": "Building Dashboards: Create Axiom Dashboards",
+  "short_description": "The Building Dashboards skill helps users design and implement clear, actionable dashboards. It's aimed at data analysts and engineers who need to derive insights from various data sources.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "axiomhq",
+  "install_command": "git clone https://github.com/axiomhq/skills",
+  "source_repo_url": "https://github.com/axiomhq/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "data-visualization",
+    "building",
+    "dashboards"
+  ],
+  "sections": {
+    "overview": "The Building Dashboards skill enables users to create and configure Axiom dashboards programmatically, supporting multiple creation methods including intent-based design, dashboard templates, Splunk migrations, and metrics/MPL chart payloads. It integrates with the query-metrics skill to streamline dashboard construction from data queries and metric definitions. This skill is designed for data analysts and engineers who need to transform raw data into actionable visualizations within Axiom's platform. It automates dashboard setup and reduces manual configuration overhead when migrating from other observability tools or building new monitoring solutions.\nCreate dashboards that answer specific business questions\nDrill down into data for in-depth analysis\nValidate schema with live data",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/axiomhq/skills --skill building-dashboards`\n`git clone https://github.com/axiomhq/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "building-dashboards#main-content",
+      "building-dashboards#overview",
+      "building-dashboards#setup",
+      "building-dashboards#examples",
+      "building-dashboards#tools",
+      "building-dashboards#mcp",
+      "building-dashboards#related",
+      "recharts"
+    ],
+    "overview_vi": "Skill Xây dựng Dashboard cho phép người dùng tạo và cấu hình các Axiom dashboard bằng lập trình, hỗ trợ nhiều phương thức khởi tạo bao gồm thiết kế theo ý định (intent-based design), dashboard template, chuyển đổi từ Splunk, và payload biểu đồ metrics/MPL. Công cụ này tích hợp với skill query-metrics để tối ưu hóa quá trình xây dựng dashboard từ các câu truy vấn dữ liệu và định nghĩa metric. Skill này được thiết kế dành riêng cho các chuyên viên phân tích dữ liệu và kỹ sư cần chuyển đổi dữ liệu thô thành các hình ảnh trực quan hóa hữu ích trên nền tảng của Axiom. Nó giúp tự động hóa việc setup dashboard và giảm thiểu công sức cấu hình thủ công khi chuyển đổi từ các công cụ observability khác hoặc khi xây dựng các giải pháp giám sát mới.\nTạo các dashboard giúp giải đáp các câu hỏi kinh doanh cụ thể\nĐi sâu vào chi tiết dữ liệu (drill down) để phân tích chuyên sâu\nXác thực schema bằng dữ liệu live (live data)",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/axiomhq/skills --skill building-dashboards`\n`git clone https://github.com/axiomhq/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:25.009951Z",
+    "http_status": 200,
+    "content_hash": "7324968fe78a03c9bc051ec0a3da62bebdbcd0ef5f76411f04ca2bc55ed49ee2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\building-dashboards.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\building-dashboards.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Xây dựng Dashboard: Tạo Axiom Dashboard",
+  "short_description_vi": "Skill Xây dựng Dashboard giúp người dùng thiết kế và triển khai các dashboard trực quan, hỗ trợ đưa ra quyết định hiệu quả. Skill này hướng tới các chuyên viên phân tích dữ liệu và kỹ sư cần khai thác thông tin chi tiết từ nhiều nguồn dữ liệu khác nhau."
+}

@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-ultimate-guide",
+  "slug": "claude-code-ultimate-guide",
+  "name": "Claude Code Ultimate Guide",
+  "headline": "claude code guide for learners",
+  "short_description": "Claude Code Ultimate Guide is a comprehensive resource for mastering Anthropic's Claude Code. It includes a 13,000-line guide, 83 templates, 227 quiz questions, 18 security hooks, and 14 resource evaluations. It benefits developers and operations teams by providing a structured learning path from beginner to power user. The guide integrates with Claude Code and can be used for training, security assessments, and best practice implementation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "FlorianBruniaux",
+  "install_command": "git clone https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git",
+  "source_repo_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "ai-assistant",
+    "coding-assistant",
+    "developer-tools",
+    "claude",
+    "claude-code-guide",
+    "anthropic",
+    "prompt-engineering",
+    "agentic-coding",
+    "claude-code-tutorial",
+    "cursor-alternative",
+    "ai-coding",
+    "cli-tool",
+    "tutorial",
+    "best-practices",
+    "mcp-servers",
+    "vibe-coding",
+    "ai-pair-programming",
+    "ai-security",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Ultimate Guide is a comprehensive educational resource built for developers and operations teams learning Anthropic's Claude Code. The guide provides a structured progression from beginner to power user, featuring 13,000+ lines of detailed documentation, 83 ready-to-use templates, and 227 quiz questions for assessment. It includes 18 security hooks and 14 resource evaluations to support security assessments and best practice implementation. The material integrates directly with Claude Code environments and supports team training, enabling consistent skill development across organizations.\nTraining developers on Claude Code capabilities and best practices\nSecurity assessments and hardening implementation\nTeam onboarding and skill progression tracking\nReference documentation for Claude Code workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/FlorianBruniaux/claude-code-ultimate-guide`",
+    "usage": "```\nUse the Claude Code Ultimate Guide to [ACTION] for [TARGET]. Follow the guide's [TEMPLATE_NAME] template and apply [SPECIFIC_CRITERIA]. Ensure you reference the guide's security hooks and resource evaluations where relevant. Example: 'Use the Claude Code Ultimate Guide to audit the security of our AWS infrastructure deployment scripts. Follow the 'Security Assessment Template' and apply the CIS Benchmark for AWS. Ensure you reference the guide's security hooks and resource evaluations for IAM and S3 configurations.'\n```\nCopy\n\n```\n### Security Assessment of AWS Infrastructure Deployment Scripts\n\n**Objective:** Audit the security posture of our AWS infrastructure deployment scripts using the Claude Code Ultimate Guide's Security Assessment Template and CIS Benchmarks for AWS.\n\n**Scope:** The assessment covers IAM policies, S3 bucket configurations, and VPC settings in our deployment scripts located in `/infrastructure/terraform/modules/`.\n\n**Findings:**\n\n1. **IAM Policies:**\n   - **Issue:** The `deploy-role` policy grants `s3:PutObject` without specifying a resource ARN, violating the principle of least privilege (CIS 1.12).\n   - **Recommendation:** Restrict the policy to specific S3 buckets using ARNs. Example:\n ```json\n     {\n       \"Effect\": \"Allow\",\n       \"Action\": \"s3:PutObject\",\n       \"Resource\": \"arn:aws:s3:::my-deployment-bucket/*\"\n     }\n ```\n   - **Resource Evaluation:** The guide's IAM resource evaluation flagged this as a high-risk configuration.\n\n2. **S3 Bucket Configurations:**\n   - **Issue:** The `logs-bucket` has public access blocked but lacks encryption at rest (CIS 3.1).\n   - **Recommendation:** Enable default encryption using AWS KMS. Example Terraform:\n ```hcl\n     resource \"aws_s3_bucket_server_side_encryption_configuration\" \"logs_bucket\" {\n       bucket = aws_s3_bucket.logs_bucket.id\n       rule {\n         apply_server_side_encryption_by_default {\n           kms_master_key_id = aws_kms_key.logs_key.arn\n           sse_algorithm     = \"aws:kms\"\n         }\n       }\n     }\n ```\n   - **Resource Evaluation:** The guide's S3 resource evaluation identified encryption as a critical best practice.\n\n3. **VPC Settings:**\n   - **Issue:** The default VPC has flow logs disabled (CIS 4.1).\n   - **Recommendation:** Enable VPC Flow Logs to capture network traffic for security monitoring. Example:\n ```hcl\n     resource \"aws_flow_log\" \"vpc_flow_logs\" {\n       vpc_id          = aws_vpc.main.id\n       traffic_type    = \"ALL\"\n       log_destination = aws_clog.log_group.arn\n       iam_role_arn    = aws_iam_role.vpc_flow_logs.arn\n     }\n ```\n   - **Security Hook:** The guide's VPC security hook recommends enabling flow logs for all production VPCs.\n\n**Next Steps:**\n- Update the `deploy-role` IAM policy to restrict S3 access to specific buckets.\n- Enable default encryption for the `logs-bucket` using AWS KMS.\n- Deploy VPC Flow Logs for the default VPC and all future VPCs.\n\n**Resources Referenced:**\n- Claude Code Ultimate Guide: Security Assessment Template (Section 5.2)\n- CIS AWS Benchmarks: IAM (1.12), S3 (3.1), VPC (4.1)\n- Resource Evaluations: IAM Policies, S3 Buckets, VPC Settings\n\n**Validation:** All recommendations have been tested in a staging environment and are ready for production deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-ultimate-guide#main-content",
+      "claude-code-ultimate-guide#overview",
+      "claude-code-ultimate-guide#setup",
+      "claude-code-ultimate-guide#examples",
+      "claude-code-ultimate-guide#tools",
+      "claude-code-ultimate-guide#mcp",
+      "claude-code-ultimate-guide#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Ultimate Guide là bộ tài nguyên giáo dục toàn diện được thiết kế dành cho lập trình viên (developer) và đội ngũ vận hành (operations team) đang tìm hiểu về Claude Code của Anthropic. Hướng dẫn này cung cấp lộ trình phát triển rõ ràng từ người mới bắt đầu đến mức độ power user, bao gồm hơn 13.000 dòng tài liệu chi tiết, 83 template có sẵn và 227 câu hỏi quiz để tự đánh giá. Tài liệu cũng đi kèm 18 security hook và 14 đánh giá tài nguyên (resource evaluation) nhằm hỗ trợ kiểm định bảo mật và triển khai các best practice. Nội dung tích hợp trực tiếp với môi trường Claude Code và hỗ trợ đào tạo nội bộ, giúp phát triển kỹ năng đồng bộ trong tổ chức.\nĐào tạo lập trình viên về các tính năng của Claude Code và các best practice\nĐánh giá bảo mật và triển khai các giải pháp bảo mật nâng cao (hardening)\nOnboarding thành viên mới và theo dõi lộ trình phát triển kỹ năng\nTài liệu tham khảo cho các workflow trong Claude Code",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/FlorianBruniaux/claude-code-ultimate-guide`",
+    "usage_vi": "```\nSử dụng Claude Code Ultimate Guide để [HÀNH ĐỘNG] cho [MỤC TIÊU]. Thực hiện theo template [TÊN_TEMPLATE] của hướng dẫn và áp dụng [TIÊU_CHÍ_CỤ_THỂ]. Đảm bảo bạn có tham chiếu đến các security hook và đánh giá tài nguyên (resource evaluation) của hướng dẫn khi cần thiết. Ví dụ: 'Sử dụng Claude Code Ultimate Guide để kiểm tra bảo mật các script triển khai hạ tầng AWS của chúng tôi. Làm theo 'Security Assessment Template' và áp dụng CIS Benchmark cho AWS. Đảm bảo tham chiếu đến các security hook và đánh giá tài nguyên của hướng dẫn đối với cấu hình IAM và S3.'\n```\nCopy\n\n```\n### Đánh giá Bảo mật các Script Triển khai Hạ tầng AWS\n\n**Mục tiêu:** Kiểm tra trạng thái bảo mật của các script triển khai hạ tầng AWS bằng cách sử dụng Security Assessment Template của Claude Code Ultimate Guide và các tiêu chuẩn CIS Benchmark dành cho AWS.\n\n**Phạm vi:** Đánh giá bao gồm các IAM policy, cấu hình S3 bucket và cài đặt VPC trong các script triển khai tại thư mục `/infrastructure/terraform/modules/`.\n\n**Các phát hiện (Findings):**\n\n1. **IAM Policy:**\n   - **Vấn đề:** Policy `deploy-role` cấp quyền `s3:PutObject` mà không chỉ định ARN của tài nguyên cụ thể, vi phạm nguyên tắc đặc quyền tối thiểu (least privilege - CIS 1.12).\n   - **Khuyến nghị:** Giới hạn policy cho các S3 bucket cụ thể bằng cách sử dụng các ARN. Ví dụ:\n ```json\n     {\n       \"Effect\": \"Allow\",\n       \"Action\": \"s3:PutObject\",\n       \"Resource\": \"arn:aws:s3:::my-deployment-bucket/*\"\n     }\n ```\n   - **Đánh giá tài nguyên (Resource Evaluation):** Phần đánh giá tài nguyên IAM trong tài liệu hướng dẫn đã gắn cờ cấu hình này ở mức rủi ro cao.\n\n2. **Cấu hình S3 Bucket:**\n   - **Vấn đề:** `logs-bucket` đã chặn truy cập công khai (public access) nhưng chưa được mã hóa dữ liệu tĩnh (encryption at rest - CIS 3.1).\n   - **Khuyến nghị:** Kích hoạt mã hóa mặc định bằng AWS KMS. Ví dụ Terraform:\n ```hcl\n     resource \"aws_s3_bucket_server_side_encryption_configuration\" \"logs_bucket\" {\n       bucket = aws_s3_bucket.logs_bucket.id\n       rule {\n         apply_server_side_encryption_by_default {\n           kms_master_key_id = aws_kms_key.logs_key.arn\n           sse_algorithm     = \"aws:kms\"\n         }\n       }\n     }\n ```\n   - **Đánh giá tài nguyên (Resource Evaluation):** Phần đánh giá tài nguyên S3 trong tài liệu hướng dẫn xác định việc mã hóa là một best practice cực kỳ quan trọng.\n\n3. **Cài đặt VPC:**\n   - **Vấn đề:** VPC mặc định đang bị tắt tính năng flow log (CIS 4.1).\n   - **Khuyến nghị:** Bật VPC Flow Logs để ghi lại lưu lượng mạng phục vụ việc giám sát bảo mật. Ví dụ:\n ```hcl\n     resource \"aws_flow_log\" \"vpc_flow_logs\" {\n       vpc_id          = aws_vpc.main.id\n       traffic_type    = \"ALL\"\n       log_destination = aws_clog.log_group.arn\n       iam_role_arn    = aws_iam_role.vpc_flow_logs.arn\n     }\n ```\n   - **Security Hook:** Security hook về VPC trong tài liệu hướng dẫn khuyến nghị nên bật flow log cho toàn bộ VPC trên môi trường production.\n\n**Các bước tiếp theo:**\n- Cập nhật IAM policy `deploy-role` để giới hạn quyền truy cập S3 vào các bucket cụ thể.\n- Bật mã hóa mặc định cho `logs-bucket` bằng AWS KMS.\n- Triển khai VPC Flow Logs cho VPC mặc định và tất cả các VPC trong tương lai.\n\n**Tài nguyên tham chiếu:**\n- Claude Code Ultimate Guide: Security Assessment Template (Mục 5.2)\n- CIS AWS Benchmark: IAM (1.12), S3 (3.1), VPC (4.1)\n- Đánh giá tài nguyên (Resource Evaluations): IAM Policy, S3 Bucket, Cấu hình VPC\n\n**Xác thực (Validation):** Tất cả khuyến nghị đã được kiểm thử trên môi trường staging và sẵn sàng để triển khai lên production.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:14:59.567206Z",
+    "http_status": 200,
+    "content_hash": "dd04ba9c30a2004a49ca90b444a49e0908e8f38989e8eedf890691b52600df1e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-ultimate-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-ultimate-guide.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hướng dẫn Claude Code cho người học",
+  "short_description_vi": "Claude Code Ultimate Guide là bộ tài nguyên toàn diện để làm chủ Claude Code của Anthropic. Tài liệu bao gồm 13.000 dòng hướng dẫn chi tiết, 83 template, 227 câu hỏi quiz, 18 security hook và 14 đánh giá tài nguyên (resource evaluation). Bộ tài liệu mang lại lợi ích thiết thực cho các nhà phát triển (developer) và đội ngũ vận hành (operations team) nhờ cung cấp lộ trình học tập bài bản từ người mới bắt đầu đến chuyên gia (power user). Hướng dẫn này tích hợp trực tiếp với Claude Code, hỗ trợ đắc lực cho việc đào tạo, đánh giá bảo mật và triển khai các best practice."
+}

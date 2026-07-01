@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-up",
+  "slug": "skill-up",
+  "name": "Skill Up",
+  "headline": "skill-up: Track Claude Code Skill Usage Stats",
+  "short_description": "A Claude Code plugin that automatically tracks and visualizes usage statistics for Claude Code Skills on a per-month basis, stored as JSON.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "BumgeunSong",
+  "install_command": "git clone https://github.com/BumgeunSong/skill-up.git",
+  "source_repo_url": "https://github.com/BumgeunSong/skill-up",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "skill-up is a Claude Code plugin designed to track and visualize usage statistics for Claude Code Skills. It hooks into Claude Code's pre-tool and post-tool events to automatically record when each skill is used, storing monthly statistics in JSON format. This gives developers and teams a clear picture of which skills are being used most frequently over time. The plugin includes a skill list view and a skill detail view for exploring usage data. It is built for anyone who wants visibility into their Claude Code skill activity without manual logging.\nMonitor which Claude Code Skills are used most often across a project\nReview monthly skill usage trends to inform workflow decisions\nIdentify underused or overused skills within a development team\nAudit skill activity automatically without manual tracking",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BumgeunSong/skill-up`",
+    "usage": "```\nAnalyze my usage statistics for the 'skill-up' plugin over the past 30 days. Provide a visual representation of the data, including the number of skills used, time spent per skill, and frequency of usage. Highlight any trends or patterns you observe. Focus on [COMPANY] industry-specific metrics if available.\n```\nCopy\n\n```\n\n### Overview\n- **Total Skills Used**: 15\n- **Total Time Spent**: 12 hours 30 minutes\n- **Average Time per Skill**: 48 minutes\n\n### Daily Usage Trends\n\n```\nDay 1: 2 skills, 1 hour 30 minutes\nDay 2: 3 skills, 2 hours 15 minutes\nDay 3: 1 skill, 30 minutes\nDay 4: 4 skills, 3 hours\nDay 5: 2 skills, 1 hour 15 minutes\nDay 6: 3 skills, 2 hours 30 minutes\n\n```\n\n### Top 3 Most Used Skills\n1. **Data Analysis**: 4 times, 2 hours 30 minutes\n2. **Content Generation**: 3 times, 2 hours 15 minutes\n3. **Code Optimization**: 2 times, 1 hour 45 minutes\n\n### Observations\n- **Peak Usage Days**: Days 2 and 4 showed the highest usage, likely due to project deadlines.\n- **Skill Diversity**: A variety of skills were used, indicating a broad application of the plugin.\n- **Time Efficiency**: Skills related to data analysis and content generation were used more frequently, suggesting a high demand in these areas.\n\n### Recommendations\n- **Focus Areas**: Consider investing more time in skills related to data analysis and content generation to enhance productivity.\n- **Consistency**: Aim for a more consistent daily usage pattern to maintain a steady learning curve.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-up#main-content",
+      "skill-up#overview",
+      "skill-up#setup",
+      "skill-up#examples",
+      "skill-up#tools",
+      "skill-up#mcp",
+      "skill-up#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "skill-up là một plugin của Claude Code được thiết kế để theo dõi và trực quan hóa số liệu thống kê sử dụng của các Claude Code Skill. Plugin này hook vào các sự kiện pre-tool và post-tool của Claude Code để tự động ghi lại thời điểm mỗi skill được sử dụng, đồng thời lưu trữ số liệu thống kê hàng tháng dưới định dạng JSON. Điều này giúp các lập trình viên và đội ngũ có được bức tranh rõ ràng về những skill nào đang được sử dụng thường xuyên nhất theo thời gian. Plugin tích hợp sẵn chế độ xem danh sách skill (skill list view) và chế độ xem chi tiết skill (skill detail view) để thuận tiện cho việc khám phá dữ liệu sử dụng. Đây là công cụ lý tưởng cho những ai muốn theo dõi sát sao hoạt động của các Claude Code Skill mà không cần ghi log thủ công.\n\nTheo dõi các Claude Code Skill được sử dụng thường xuyên nhất trong dự án\nXem xét xu hướng sử dụng skill hàng tháng để đưa ra quyết định cải tiến quy trình làm việc (workflow)\nNhận biết các skill ít được sử dụng hoặc bị lạm dụng trong đội ngũ phát triển\nTự động kiểm tra (audit) hoạt động của skill mà không cần theo dõi thủ công",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/BumgeunSong/skill-up`",
+    "usage_vi": "```\nPhân tích số liệu thống kê sử dụng của tôi đối với plugin 'skill-up' trong 30 ngày qua. Cung cấp một bản trực quan hóa dữ liệu, bao gồm số lượng skill đã sử dụng, thời gian dành cho mỗi skill và tần suất sử dụng. Làm nổi bật bất kỳ xu hướng hoặc mô hình nào bạn quan sát được. Tập trung vào các chỉ số đặc thù của ngành [COMPANY] nếu có.\n```\nCopy\n\n```\n\n### Tổng quan\n- **Tổng số skill đã sử dụng**: 15\n- **Tổng thời gian sử dụng**: 12 giờ 30 phút\n- **Thời gian trung bình cho mỗi skill**: 48 phút\n\n### Xu hướng sử dụng hàng ngày\n\n```\nNgày 1: 2 skill, 1 giờ 30 phút\nNgày 2: 3 skill, 2 giờ 15 phút\nNgày 3: 1 skill, 30 phút\nNgày 4: 4 skill, 3 giờ\nNgày 5: 2 skill, 1 giờ 15 phút\nNgày 6: 3 skill, 2 giờ 30 phút\n\n```\n\n### Top 3 skill được sử dụng nhiều nhất\n1. **Phân tích dữ liệu (Data Analysis)**: 4 lần, 2 giờ 30 phút\n2. **Tạo nội dung (Content Generation)**: 3 lần, 2 giờ 15 phút\n3. **Tối ưu hóa code (Code Optimization)**: 2 lần, 1 giờ 45 phút\n\n### Quan sát & Nhận xét\n- **Những ngày sử dụng cao điểm**: Ngày 2 và Ngày 4 cho thấy lượng sử dụng cao nhất, có thể do thời hạn hoàn thành dự án (deadline).\n- **Sự đa dạng của skill**: Nhiều loại skill khác nhau đã được sử dụng, cho thấy plugin được ứng dụng rộng rãi.\n- **Hiệu quả thời gian**: Các skill liên quan đến phân tích dữ liệu và tạo nội dung được sử dụng thường xuyên hơn, cho thấy nhu cầu lớn trong các lĩnh vực này.\n\n### Khuyến nghị\n- **Lĩnh vực cần tập trung**: Cân nhắc đầu tư nhiều thời gian hơn vào các skill liên quan đến phân tích dữ liệu và tạo nội dung để nâng cao năng suất.\n- **Tính nhất quán**: Hướng tới một mô hình sử dụng hàng ngày nhất quán hơn để duy trì tiến trình học hỏi ổn định.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:43:44.472218Z",
+    "http_status": 200,
+    "content_hash": "1270b58ddcef2190bb052007f73a67d653e9e05163f48243cd8a3dada5ee56b4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-up.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-up.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "skill-up: Theo dõi số liệu thống kê sử dụng Claude Code Skill",
+  "short_description_vi": "Một plugin Claude Code giúp tự động theo dõi và trực quan hóa số liệu thống kê sử dụng Claude Code Skill theo từng tháng dưới dạng JSON."
+}

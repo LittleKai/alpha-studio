@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/geo-ai-agent",
+  "slug": "geo-ai-agent",
+  "name": "Geo Ai Agent",
+  "headline": "geo-ai-agent: Optimize Your Website Content",
+  "short_description": "AI tool audits and optimizes website content for geo-specific SEO. Benefits marketing teams by analyzing H1s and URLs, generating actionable recommendations with CrewAI. Connects to Bright Data for web scraping and SERP API for search data.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "brightdata",
+  "install_command": "git clone https://github.com/brightdata/geo-ai-agent.git",
+  "source_repo_url": "https://github.com/brightdata/geo-ai-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "crewai",
+    "brightdata",
+    "marketing",
+    "geo",
+    "seo",
+    "web-scraping",
+    "serp-api",
+    "python",
+    "ai"
+  ],
+  "sections": {
+    "overview": "The geo-ai-agent is an advanced AI-powered tool designed to audit and optimize website content specifically for marketing professionals. By crawling URLs and analyzing H1 tags, this Claude Code skill generates actionable GEO recommendations through CrewAI. This automation skill streamlines the content optimization process, allowing users to enhance their website's SEO performance efficiently. One of the key benefits of the geo-ai-agent is its ability to save time by automating the content auditing process. Instead of manually reviewing each webpage, marketers can implement this skill in just 30 minutes, enabling them to focus on strategic initiatives rather than tedious tasks. Although the exact time savings are not quantified, the automation of content analysis is expected to significantly reduce the hours spent on manual audits. This skill is ideal for marketers, product managers, and AI practitioners who are looking to improve their website’s visibility and performance in search engines. By leveraging the geo-ai-agent, users can ensure that their content aligns with SEO best practices, ultimately driving more traffic and engagement. Practical use cases include optimizing landing pages for specific geographic regions, enhancing local SEO strategies, and improving overall content quality based on data-driven insights. With an intermediate implementation difficulty, the geo-ai-agent requires users to have a basic understanding of website content structure and SEO principles. This skill seamlessly fits into AI-first workflows, empowering teams to leverage AI automation for workflow automation in their marketing strategies. By integrating the geo-ai-agent, organizations can enhance their digital presence and achieve measurable results in their marketing efforts.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brightdata/geo-ai-agent`",
+    "usage": "```\nAct as a Geo-AI Agent. Audit the website [WEBSITE_URL] for geo-specific SEO opportunities targeting [TARGET_REGIONS]. Focus on optimizing H1s, URLs, and local keyword density for [LANGUAGE]. Use Bright Data to scrape the site and SERP API to analyze local search trends. Provide a prioritized list of 5-10 actionable recommendations with expected impact on local rankings. Include before/after examples for each fix.\n```\nCopy\n\n```\n### Geo-Specific SEO Audit for 'ParisBoutique.com' (French Market)\n\n**Current Performance Metrics:**\n- Local rankings for 'robes de soirée Paris' dropped from position 8 to 14 in the last 3 months\n- 68% of French traffic comes from organic search, but conversion rates are 22% below industry average\n- 37% of product pages lack localized H1 tags (e.g., 'Robes de soirée' vs 'Robes de soirée Paris - Livraison en 24h')\n\n**Top 3 Recommendations:**\n\n1. **H1 Tag Optimization**\n   - *Issue:* 23 product pages use generic H1s like 'Robes de soirée'\n   - *Fix:* Update to 'Robes de soirée Paris - Livraison gratuite | ParisBoutique'\n   - *Expected Impact:* +12% increase in CTR for local searches (based on similar clients)\n   - *Implementation:* Replace H1s in Shopify CMS using bulk editor (CSV import)\n\n2. **URL Structure Standardization**\n   - *Issue:* Inconsistent URLs like '/fr/robes-soiree' and '/fr/robes-soiree-paris'\n   - *Fix:* Standardize to '/fr/robes-soiree-paris/[product-id]'\n   - *Expected Impact:* +8% improvement in crawl efficiency (Googlebot)\n   - *Implementation:* Use 301 redirects via .htaccess for 15 URLs\n\n3. **Local Keyword Density**\n   - *Issue:* 'Paris' appears in only 42% of meta descriptions\n   - *Fix:* Add 'Paris' to all meta descriptions and first 100 words of content\n   - *Expected Impact:* +6 positions for 'robes de soirée Paris' (current: 14)\n   - *Implementation:* Update via Yoast SEO plugin bulk edit\n\n**Implementation Timeline:**\n- Week 1: H1 and URL fixes (2 hours)\n- Week 2: Meta descriptions and content updates (3 hours)\n- Week 3: Monitor rankings via SERP API (1 hour)\n\n**Tools Used:** Bright Data (scraping), SERP API (rank tracking), Shopify bulk editor (implementation).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "geo-ai-agent#main-content",
+      "geo-ai-agent#overview",
+      "geo-ai-agent#setup",
+      "geo-ai-agent#examples",
+      "geo-ai-agent#tools",
+      "geo-ai-agent#mcp",
+      "geo-ai-agent#related",
+      "marketingskills",
+      "copywriting",
+      "digital-marketing-resources"
+    ],
+    "overview_vi": "geo-ai-agent là một công cụ tích hợp AI tiên tiến được thiết kế để audit và tối ưu hóa nội dung website, đặc biệt hữu ích cho các chuyên gia marketing. Bằng cách crawl các URL và phân tích thẻ H1, skill Claude Code này sẽ tạo ra các đề xuất tối ưu hóa theo khu vực địa lý (GEO) thông qua CrewAI. Skill tự động hóa này giúp tinh giản quy trình tối ưu hóa nội dung, hỗ trợ người dùng nâng cao hiệu suất SEO của website một cách hiệu quả. Một trong những lợi ích cốt lõi của geo-ai-agent là khả năng tiết kiệm thời gian bằng cách tự động hóa quy trình audit nội dung. Thay vì phải kiểm tra thủ công từng trang web, các marketer có thể thiết lập skill này chỉ trong 30 phút, giúp họ tập trung vào các sáng kiến chiến lược thay vì các tác vụ lặp đi lặp lại nhàm chán. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, việc tự động hóa quá trình phân tích nội dung được kỳ vọng sẽ giảm đáng kể số giờ dành cho việc audit thủ công. Skill này là giải pháp lý tưởng cho các marketer, product manager và kỹ sư AI đang tìm kiếm giải pháp cải thiện khả năng hiển thị và hiệu suất của website trên các công cụ tìm kiếm. Bằng cách tận dụng geo-ai-agent, người dùng có thể đảm bảo nội dung của họ tuân thủ các thực hành SEO tốt nhất (SEO best practices), từ đó thúc đẩy lưu lượng truy cập và mức độ tương tác cao hơn. Các trường hợp sử dụng thực tế bao gồm tối ưu hóa landing page cho các khu vực địa lý cụ thể, tăng cường chiến lược SEO địa phương (local SEO) và cải thiện chất lượng nội dung tổng thể dựa trên thông tin chuyên sâu từ dữ liệu (data-driven insights). Với độ khó triển khai ở mức trung bình, geo-ai-agent yêu cầu người dùng có hiểu biết cơ bản về cấu trúc nội dung website và các nguyên lý SEO. Skill này tích hợp mượt mà vào quy trình làm việc ưu tiên AI (AI-first workflows), cho phép các đội ngũ tận dụng tự động hóa AI để tối ưu hóa quy trình trong chiến lược marketing của mình. Bằng cách tích hợp geo-ai-agent, các tổ chức có thể nâng cao sự hiện diện kỹ thuật số và đạt được những kết quả đo lường được trong hoạt động marketing.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/brightdata/geo-ai-agent`",
+    "usage_vi": "```\nAct as a Geo-AI Agent. Audit the website [WEBSITE_URL] for geo-specific SEO opportunities targeting [TARGET_REGIONS]. Focus on optimizing H1s, URLs, and local keyword density for [LANGUAGE]. Use Bright Data to scrape the site and SERP API to analyze local search trends. Provide a prioritized list of 5-10 actionable recommendations with expected impact on local rankings. Include before/after examples for each fix.\n```\nCopy\n\n```\n### Đánh giá SEO theo khu vực địa lý cho 'ParisBoutique.com' (Thị trường Pháp)\n\n**Chỉ số hiệu suất hiện tại:**\n- Thứ hạng tìm kiếm địa phương cho 'robes de soirée Paris' giảm từ vị trí thứ 8 xuống 14 trong 3 tháng qua\n- 68% lượng truy cập tại Pháp đến từ tìm kiếm tự nhiên (organic search), nhưng tỷ lệ chuyển đổi thấp hơn 22% so với mức trung bình của ngành\n- 37% trang sản phẩm thiếu thẻ H1 được bản địa hóa (ví dụ: 'Robes de soirée' so với 'Robes de soirée Paris - Livraison en 24h')\n\n**Top 3 Đề xuất hàng đầu:**\n\n1. **Tối ưu hóa thẻ H1**\n   - *Vấn đề:* 23 trang sản phẩm sử dụng thẻ H1 chung chung như 'Robes de soirée'\n   - *Cách khắc phục:* Cập nhật thành 'Robes de soirée Paris - Livraison gratuite | ParisBoutique'\n   - *Tác động dự kiến:* Tăng +12% tỷ lệ nhấp (CTR) cho các tìm kiếm địa phương (dựa trên dữ liệu từ các khách hàng tương tự)\n   - *Triển khai:* Thay thế các thẻ H1 trong Shopify CMS bằng trình chỉnh sửa hàng loạt (bulk editor) qua file CSV nhập vào\n\n2. **Chuẩn hóa cấu trúc URL**\n   - *Vấn đề:* Cấu trúc URL không nhất quán, ví dụ như '/fr/robes-soiree' và '/fr/robes-soiree-paris'\n   - *Cách khắc phục:* Chuẩn hóa thành '/fr/robes-soiree-paris/[product-id]'\n   - *Tác động dự kiến:* Cải thiện hiệu suất crawl của Googlebot thêm +8%\n   - *Triển khai:* Sử dụng chuyển hướng 301 (301 redirect) thông qua file .htaccess cho 15 URL\n\n3. **Mật độ từ khóa địa phương**\n   - *Vấn đề:* Từ khóa 'Paris' chỉ xuất hiện trong 42% thẻ mô tả (meta description)\n   - *Cách khắc phục:* Thêm từ khóa 'Paris' vào tất cả thẻ mô tả và 100 từ đầu tiên của nội dung\n   - *Tác động dự kiến:* Tăng +6 thứ hạng cho từ khóa 'robes de soirée Paris' (hiện tại: 14)\n   - *Triển khai:* Cập nhật hàng loạt qua plugin Yoast SEO\n\n**Lộ trình triển khai:**\n- Tuần 1: Khắc phục thẻ H1 và URL (2 giờ)\n- Tuần 2: Cập nhật thẻ mô tả và nội dung (3 giờ)\n- Tuần 3: Theo dõi thứ hạng qua SERP API (1 giờ)\n\n**Công cụ sử dụng:** Bright Data (cào dữ liệu), SERP API (theo dõi thứ hạng), Shopify bulk editor (triển khai thực tế).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:39.718558Z",
+    "http_status": 200,
+    "content_hash": "478d6153c13aec80af357496e1fef3b485c430518ac09ebd1e755116847a96b6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\geo-ai-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\geo-ai-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "geo-ai-agent: Tối ưu hóa nội dung website",
+  "short_description_vi": "Công cụ AI giúp audit và tối ưu hóa nội dung website phục vụ SEO theo khu vực địa lý (geo-specific SEO). Công cụ hỗ trợ đắc lực cho các đội ngũ marketing bằng cách phân tích thẻ H1 và URL, đồng thời tạo ra các đề xuất thực tế thông qua CrewAI. Tích hợp kết nối với Bright Data để cào dữ liệu web (web scraping) và SERP API để thu thập dữ liệu tìm kiếm."
+}

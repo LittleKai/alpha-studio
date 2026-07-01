@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-starter-kit",
+  "slug": "claude-starter-kit",
+  "name": "Claude Starter Kit",
+  "headline": "Start coding with Claude: starter kit essentials",
+  "short_description": "Claude Starter Kit is a template repository for Claude Code development. It includes configurations, skills, and agents to streamline operations automation. Ideal for teams using Claude AI to automate workflows, it connects to various programming languages like Python, JavaScript, and Go.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "serpro69",
+  "install_command": "git clone https://github.com/serpro69/claude-starter-kit.git",
+  "source_repo_url": "https://github.com/serpro69/claude-starter-kit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "kotlin",
+    "starter-kit",
+    "starter-template",
+    "typescript",
+    "vibe-coding",
+    "js",
+    "serena-mcp",
+    "starter-project",
+    "go",
+    "task-master-ai",
+    "python",
+    "template-repository",
+    "claude",
+    "claude-config",
+    "claude-skills",
+    "claude-code",
+    "java",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "claude-toolbox is a comprehensive toolkit designed for AI-powered development workflows in Claude Code and Codex. It includes 11 workflow skills that guide you through a complete development pipeline—from design and code review to testing and documentation—with multi-language support for Go, Java, JavaScript/TypeScript, Kotlin, Kubernetes, and Python. The toolkit provides battle-tested configurations, persistent knowledge bases via Capy, and independent code review capabilities using sub-agents and external models. Teams using Claude for automation benefit from sensible permission baselines, MCP server wiring, and sync infrastructure that keeps configurations up to date across projects.\nStreamline design-to-implementation workflows with structured Claude Code skills\nConduct multi-model code reviews using sub-agents and external AI models\nMaintain persistent knowledge bases across Claude sessions for project conventions\nAccelerate multi-language development with language-specific skill instructions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/serpro69/claude-starter-kit`",
+    "usage": "```\nGenerate a new Claude Starter Kit project structure for automating [TASK_DOMAIN] workflows. Include: 1) A [PROGRAMMING_LANGUAGE] agent template with pre-configured skills for [SPECIFIC_TASK], 2) A CI/CD pipeline configuration for [DEPLOYMENT_TARGET], 3) Documentation templates for [DOCUMENTATION_TYPE]. Use the latest Claude Starter Kit conventions and ensure compatibility with [TOOL_OR_SERVICE].\n```\nCopy\n\n```\nHere's a generated Claude Starter Kit project structure for automating data pipeline workflows:\n\n```\nclaude-starter-kit-data-pipelines/\n├── agents/\n│   ├── python/\n│   │   ├── data_ingestion_agent.py\n│   │   │   ├── Skills: file_download, api_integration, data_validation\n│   │   │   ├── Config: supports_parallel_processing=True\n│   │   ├── data_processing_agent.py\n│   │   │   ├── Skills: pandas_operations, data_cleaning, transformation\n│   │   │   ├── Config: memory_limit=4GB\n│   ├── javascript/\n│   │   ├── api_gateway_agent.js\n│   │   │   ├── Skills: express_server, rate_limiting, auth_middleware\n├── ci-cd/\n│   ├── github-actions/\n│   │   ├── data-pipeline.yml\n│   │   │   ├── Triggers: on push to main, on schedule (daily 2AM)\n│   │   │   ├── Jobs: test, deploy-to-staging, deploy-to-prod\n├── docs/\n│   ├── pipeline_architecture.md\n│   │   ├── Includes: data flow diagrams, error handling strategies\n│   ├── agent_api_reference.md\n│   │   ├── Generated from code comments using claude-code-docgen\n```\n\nKey configurations:\n- Python agents use Poetry for dependency management\n- JavaScript agents use npm workspaces for monorepo support\n- CI/CD includes automated testing for all skills\n- Documentation is auto-generated from agent skill definitions\n\nThe structure follows Claude Starter Kit v2.1 conventions with support for:\n- AWS Lambda deployments\n- Docker containerization\n- Slack integration for pipeline notifications\n- Prometheus metrics for monitoring\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-starter-kit#main-content",
+      "claude-starter-kit#overview",
+      "claude-starter-kit#setup",
+      "claude-starter-kit#examples",
+      "claude-starter-kit#tools",
+      "claude-starter-kit#mcp",
+      "claude-starter-kit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-toolbox là một bộ công cụ toàn diện được thiết kế cho các workflow phát triển ứng dụng bằng AI trong Claude Code và Codex. Bộ công cụ này bao gồm 11 workflow skill giúp dẫn dắt bạn qua một pipeline phát triển hoàn chỉnh—từ thiết kế, code review đến kiểm thử và viết tài liệu—hỗ trợ đa ngôn ngữ bao gồm Go, Java, JavaScript/TypeScript, Kotlin, Kubernetes và Python. Bộ công cụ cung cấp các cấu hình đã được kiểm chứng thực tế (battle-tested), các knowledge base lưu trữ lâu dài thông qua Capy, và khả năng code review độc lập bằng cách sử dụng các sub-agent và mô hình bên ngoài. Các đội ngũ sử dụng Claude để tự động hóa sẽ được hưởng lợi từ các thiết lập phân quyền cơ bản hợp lý (sensible permission baselines), kết nối MCP server và hạ tầng đồng bộ giúp cập nhật cấu hình liên tục trên các dự án.\nTinh giản workflow từ thiết kế đến triển khai với các Claude Code skill có cấu trúc\nThực hiện code review đa mô hình bằng sub-agent và các mô hình AI bên ngoài\nDuy trì các knowledge base lâu dài qua các phiên làm việc của Claude đối với các quy ước dự án\nTăng tốc phát triển đa ngôn ngữ với các hướng dẫn skill riêng cho từng ngôn ngữ",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/serpro69/claude-starter-kit`",
+    "usage_vi": "```\nTạo một cấu trúc dự án Claude Starter Kit mới để tự động hóa các workflow của [TASK_DOMAIN]. Bao gồm: 1) Một agent template bằng [PROGRAMMING_LANGUAGE] với các skill được cấu hình sẵn cho [SPECIFIC_TASK], 2) Cấu hình CI/CD pipeline cho [DEPLOYMENT_TARGET], 3) Các template tài liệu cho [DOCUMENTATION_TYPE]. Sử dụng các quy ước mới nhất của Claude Starter Kit và đảm bảo tính tương thích với [TOOL_OR_SERVICE].\n```\nCopy\n\n```\nDưới đây là cấu trúc dự án Claude Starter Kit được tạo ra để tự động hóa các workflow của data pipeline:\n\nclaude-starter-kit-data-pipelines/\n├── agents/\n│   ├── python/\n│   │   ├── data_ingestion_agent.py\n│   │   │   ├── Skills: file_download, api_integration, data_validation\n│   │   │   ├── Config: supports_parallel_processing=True\n│   │   ├── data_processing_agent.py\n│   │   │   ├── Skills: pandas_operations, data_cleaning, transformation\n│   │   │   ├── Config: memory_limit=4GB\n│   ├── javascript/\n│   │   ├── api_gateway_agent.js\n│   │   │   ├── Skills: express_server, rate_limiting, auth_middleware\n├── ci-cd/\n│   ├── github-actions/\n│   │   ├── data-pipeline.yml\n│   │   │   ├── Triggers: khi push vào main, theo lịch trình (2 giờ sáng hàng ngày)\n│   │   │   ├── Jobs: test, deploy-to-staging, deploy-to-prod\n├── docs/\n│   ├── pipeline_architecture.md\n│   │   ├── Bao gồm: sơ đồ luồng dữ liệu (data flow), chiến lược xử lý lỗi\n│   ├── agent_api_reference.md\n│   │   ├── Được tạo tự động từ comment trong code bằng claude-code-docgen\n```\n\nCấu hình chính:\n- Các Python agent sử dụng Poetry để quản lý dependency\n- Các JavaScript agent sử dụng npm workspace để hỗ trợ monorepo\n- CI/CD bao gồm kiểm thử tự động (automated testing) cho tất cả các skill\n- Tài liệu được tạo tự động từ các định nghĩa skill của agent\n\nCấu trúc này tuân thủ các quy ước của Claude Starter Kit v2.1, hỗ trợ:\n- Triển khai AWS Lambda\n- Đóng gói Docker (Docker containerization)\n- Tích hợp Slack để nhận thông báo pipeline\n- Prometheus metrics để giám sát (monitoring)"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:11:37.107233Z",
+    "http_status": 200,
+    "content_hash": "bf559b5a0f74eba6048ee81ee9f27f0f37c099da0c1e0e4c5138d248e5bcc190",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-starter-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-starter-kit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bắt đầu lập trình với Claude: Các thành phần starter kit thiết yếu",
+  "short_description_vi": "Claude Starter Kit là một template repository dành cho việc phát triển Claude Code. Bộ công cụ này bao gồm các cấu hình, skill và agent giúp tinh giản quy trình tự động hóa vận hành. Đây là giải pháp lý tưởng cho các đội ngũ sử dụng Claude AI để tự động hóa workflow, hỗ trợ kết nối với nhiều ngôn ngữ lập trình như Python, JavaScript và Go."
+}

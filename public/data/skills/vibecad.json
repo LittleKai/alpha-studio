@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibecad",
+  "slug": "vibecad",
+  "name": "VibeCAD",
+  "headline": "VibeCAD - Automate CAD Tasks",
+  "short_description": "VibeCAD is a library of Claude Code skills that enable coding agents to interact with various CAD tools. It benefits operations teams by automating design tasks, integrating with existing workflows, and connecting to tools like AutoCAD, SolidWorks, and Fusion 360.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "rawwerks",
+  "install_command": "git clone https://github.com/rawwerks/VibeCAD.git",
+  "source_repo_url": "https://github.com/rawwerks/VibeCAD",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "VibeCAD provides Claude Code agents with skills to create parametric 3D models, render visualizations, and optimize designs using Build123D—a Python CAD library with algebra-style syntax. It includes tools for model comparison using IoU and Dice metrics, GLB rendering for visual verification, and glTF optimization with compression and mesh simplification. The library integrates threaded fasteners, pipes, flanges, bearings, and gear generation (spur, helical, bevel, planetary, cycloid) through bd_warehouse and gggears. Agents can export designs to GLB, STL, and STEP formats, enabling automated design workflows without manual CAD software interaction.\nGenerate parametric 3D models and parts programmatically\nRender and visually verify CAD designs as PNG images\nCompare ML-generated 3D models against reference designs\nOptimize and compress 3D models for web delivery",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rawwerks/VibeCAD`",
+    "usage": "```\nUsing VibeCAD, create a parametric model of a [SHAPE] with the following dimensions: [DIMENSIONS]. Ensure the model is compatible with [CAD_SOFTWARE] and can be easily modified by adjusting the parameters. Save the model as [FILE_NAME] in the specified format.\n```\nCopy\n\n```\n# Parametric Model Creation",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibecad#main-content",
+      "vibecad#overview",
+      "vibecad#setup",
+      "vibecad#examples",
+      "vibecad#tools",
+      "vibecad#mcp",
+      "vibecad#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "VibeCAD cung cấp cho các Claude Code agent các skill để tạo mô hình 3D tham số, render hình ảnh trực quan và tối ưu hóa thiết kế bằng cách sử dụng Build123D — một thư viện CAD viết bằng Python với cú pháp dạng đại số. Thư viện này bao gồm các công cụ so sánh mô hình dựa trên các chỉ số IoU và Dice, render GLB để kiểm tra trực quan, và tối ưu hóa glTF bằng cách nén cũng như đơn giản hóa lưới (mesh simplification). Nó cũng hỗ trợ tích hợp các chi tiết liên kết ren, đường ống, mặt bích, vòng bi và tự động tạo bánh răng (răng thẳng, răng nghiêng, răng côn, bánh răng hành tinh, cycloid) thông qua bd_warehouse và gggears. Các agent có thể xuất thiết kế sang các định dạng GLB, STL và STEP, giúp tự động hóa quy trình thiết kế mà không cần tương tác thủ công với phần mềm CAD.\n\nTạo mô hình và chi tiết 3D tham số bằng lập trình\nRender và kiểm tra trực quan các thiết kế CAD dưới dạng hình ảnh PNG\nSo sánh các mô hình 3D do ML tạo ra với thiết kế tham chiếu\nTối ưu hóa và nén các mô hình 3D để hiển thị tốt trên web",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/rawwerks/VibeCAD`",
+    "usage_vi": "```\nSử dụng VibeCAD, hãy tạo một mô hình tham số của [SHAPE] với các kích thước sau: [DIMENSIONS]. Đảm bảo mô hình tương thích với [CAD_SOFTWARE] và có thể dễ dàng chỉnh sửa bằng cách điều chỉnh các tham số. Lưu mô hình dưới tên [FILE_NAME] theo định dạng được chỉ định.\n```\nCopy\n\n```\n# Tạo mô hình tham số\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:12:44.334644Z",
+    "http_status": 200,
+    "content_hash": "aaa35d9833e377d41cb79d18c44b3acc046cca844630b7323ce9e0dad21fdd75",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibecad.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibecad.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VibeCAD - Tự động hóa các tác vụ CAD",
+  "short_description_vi": "VibeCAD là một thư viện gồm các skill dành cho Claude Code, cho phép các coding agent tương tác với nhiều công cụ CAD khác nhau. Thư viện này hỗ trợ đắc lực cho các đội ngũ vận hành nhờ khả năng tự động hóa tác vụ thiết kế, tích hợp vào quy trình làm việc sẵn có và kết nối với các công cụ như AutoCAD, SolidWorks và Fusion 360."
+}

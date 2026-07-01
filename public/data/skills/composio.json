@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/composio",
+  "slug": "composio",
+  "name": "composio",
+  "headline": "Composio Skills: AI Agent Building Guides",
+  "short_description": "Composio provides CLI commands and SDK for automating tasks across numerous external applications. It is designed for developers who want to integrate services like Gmail, Slack, and GitHub into their AI agents or applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "composiohq",
+  "install_command": "git clone https://github.com/composiohq/skills",
+  "source_repo_url": "https://github.com/composiohq/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "automation",
+    "composio"
+  ],
+  "sections": {
+    "overview": "Composio skills offer comprehensive guides and best practices for building production-ready AI agents. The skill repository covers Tool Router patterns for session management, user isolation, and framework integration with Claude, LangChain, and CrewAI. It includes authentication flows, connection management, and advanced trigger features for real-time event handling and webhook verification. Developers get access to 14+ documented rules with TypeScript and Python examples, enabling secure integration of external services like Gmail, Slack, and GitHub into AI agents. The skills are organized as markdown references that AI assistants can easily consume for building reliable, scalable agent implementations.\nAccess external apps quickly via CLI commands.\nAutomate tasks like sending emails or posting messages.\nBuild AI agents that integrate with services like Slack and GitHub.\nCreate multi-user applications with per-user authentication.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/composiohq/skills --skill composio`\n`git clone https://github.com/composiohq/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "composio#main-content",
+      "composio#overview",
+      "composio#setup",
+      "composio#examples",
+      "composio#related",
+      "crm-automation",
+      "stealth-browser",
+      "competitor-analysis-report-generator-mkufjtmh"
+    ],
+    "overview_vi": "Composio skills cung cấp các hướng dẫn toàn diện và thực tiễn tốt nhất để xây dựng các AI agent sẵn sàng cho production. Repository của skill này bao gồm các pattern Tool Router phục vụ cho việc quản lý session, cô lập người dùng (user isolation) và tích hợp framework với Claude, LangChain và CrewAI. Tài liệu bao gồm các luồng xác thực, quản lý kết nối và các tính năng trigger nâng cao để xử lý sự kiện thời gian thực và xác thực webhook. Nhà phát triển có thể tiếp cận hơn 14 quy tắc đã được tài liệu hóa cùng các ví dụ bằng TypeScript và Python, giúp tích hợp an toàn các dịch vụ bên ngoài như Gmail, Slack và GitHub vào AI agent. Các skill được tổ chức dưới dạng tài liệu tham khảo markdown để trợ lý AI có thể dễ dàng đọc hiểu và khai thác nhằm xây dựng các bản triển khai agent đáng tin cậy, dễ mở rộng.\nTruy cập nhanh các ứng dụng bên ngoài thông qua lệnh CLI.\nTự động hóa các tác vụ như gửi email hoặc đăng tin nhắn.\nXây dựng các AI agent tích hợp với các dịch vụ như Slack và GitHub.\nTạo các ứng dụng đa người dùng với cơ chế xác thực cho từng người dùng.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/composiohq/skills --skill composio`\n`git clone https://github.com/composiohq/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nVui lòng kiểm tra repository GitHub hoặc tài liệu để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:11:32.436002Z",
+    "http_status": 200,
+    "content_hash": "f976dc191531e0ac36736ce9e9ec58bd31bdfdaa6b596bb5e35d6f58763cf884",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\composio.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\composio.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Composio Skills: Hướng dẫn xây dựng AI Agent",
+  "short_description_vi": "Composio cung cấp các lệnh CLI và SDK để tự động hóa tác vụ trên nhiều ứng dụng bên ngoài. Công cụ này được thiết kế dành cho các nhà phát triển muốn tích hợp các dịch vụ như Gmail, Slack và GitHub vào AI agent hoặc ứng dụng của mình."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/session-handoff",
+  "slug": "session-handoff",
+  "name": "browser-use",
+  "headline": "session-handoff: User Transfers",
+  "short_description": "The session-handoff skill streamlines the transfer of user sessions between AI agents, ensuring continuity in interactions. This enhances user experience and saves time by reducing interruptions during multi-agent workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "softaworks",
+  "install_command": "git clone https://github.com/softaworks/agent-toolkit.git",
+  "source_repo_url": "https://github.com/softaworks/agent-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The session-handoff skill is designed to facilitate seamless transitions of user sessions between AI agents, ensuring that users do not experience interruptions during their interactions. This skill allows one AI agent to pass control to another without losing context, which is crucial in maintaining a fluid user experience in complex workflows. By effectively managing user sessions, the skill enhances the overall efficiency of AI-driven applications. One of the key benefits of the session-handoff skill is the significant time savings it offers. By eliminating the need for users to repeat their queries or provide context again when switching agents, organizations can improve user satisfaction and reduce frustration. This is particularly valuable in scenarios where multiple agents are involved, such as customer support or multi-faceted service applications, where continuity is key to user engagement. Developers, product managers, and AI practitioners will find this skill particularly useful in applications that require collaboration between various AI agents. For instance, in a customer support scenario, one agent may handle initial inquiries while another specializes in technical issues. The session-handoff skill ensures that users can transition smoothly between these agents, maintaining the context of their conversation. Implementation of the session-handoff skill is straightforward, making it accessible even for those with moderate experience in AI automation. It fits seamlessly into AI-first workflows by enhancing the capabilities of existing AI agents, allowing organizations to build more sophisticated and user-friendly applications. This skill is ideal for any business looking to optimize their customer interaction processes and improve operational efficiency.\nTransfer customer support sessions between agents to provide specialized assistance without user interruption.\nFacilitate technical support handoffs for complex issues, ensuring users receive expert help promptly.\nRoute sales inquiries to specialized agents based on the nature of the request, improving conversion rates.\nEnable multi-agent collaboration in service applications, allowing for a more comprehensive approach to user needs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage": "```\nI need to hand off my current session to another AI agent. The current context is: [SESSION_CONTEXT]. The new agent's specialization is: [AGENT_SPECIALIZATION]. Please ensure a smooth transition and maintain continuity in the conversation.\n```\nCopy\n\n```\nCurrent Agent: I've been helping you analyze your sales data for Q3. You mentioned you're particularly interested in the regional performance breakdown. I'll hand you off to our analytics specialist, Agent X, who can provide deeper insights. Agent X: Thank you for the context. I see you're looking at regional performance. Let's dive into the data. The Northeast region shows a 15% increase in sales, while the Midwest has a 5% decline. Would you like to explore strategies to boost the Midwest performance?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "session-handoff#main-content",
+      "session-handoff#overview",
+      "session-handoff#setup",
+      "session-handoff#examples",
+      "session-handoff#tools",
+      "session-handoff#mcp",
+      "session-handoff#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The session-handoff skill is designed to facilitate seamless transitions of user sessions between AI agents, ensuring that users do not experience interruptions during their interactions. This skill allows one AI agent to pass control to another without losing context, which is crucial in maintaining a fluid user experience in complex workflows. By effectively managing user sessions, the skill enhances the overall efficiency of AI-driven applications. One of the key benefits of the session-handoff skill is the significant time savings it offers. By eliminating the need for users to repeat their queries or provide context again when switching agents, organizations can improve user satisfaction and reduce frustration. This is particularly valuable in scenarios where multiple agents are involved, such as customer support or multi-faceted service applications, where continuity is key to user engagement. Developers, product managers, and AI practitioners will find this skill particularly useful in applications that require collaboration between various AI agents. For instance, in a customer support scenario, one agent may handle initial inquiries while another specializes in technical issues. The session-handoff skill ensures that users can transition smoothly between these agents, maintaining the context of their conversation. Implementation of the session-handoff skill is straightforward, making it accessible even for those with moderate experience in AI automation. It fits seamlessly into AI-first workflows by enhancing the capabilities of existing AI agents, allowing organizations to build more sophisticated and user-friendly applications. This skill is ideal for any business looking to optimize their customer interaction processes and improve operational efficiency.\nTransfer customer support sessions between agents to provide specialized assistance without user interruption.\nFacilitate technical support handoffs for complex issues, ensuring users receive expert help promptly.\nRoute sales inquiries to specialized agents based on the nature of the request, improving conversion rates.\nEnable multi-agent collaboration in service applications, allowing for a more comprehensive approach to user needs.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage_vi": "```\nI need to hand off my current session to another AI agent. The current context is: [SESSION_CONTEXT]. The new agent's specialization is: [AGENT_SPECIALIZATION]. Please ensure a smooth transition and maintain continuity in the conversation.\n```\nCopy\n\n```\nCurrent Agent: I've been helping you analyze your sales data for Q3. You mentioned you're particularly interested in the regional performance breakdown. I'll hand you off to our analytics specialist, Agent X, who can provide deeper insights. Agent X: Thank you for the context. I see you're looking at regional performance. Let's dive into the data. The Northeast region shows a 15% increase in sales, while the Midwest has a 5% decline. Would you like to explore strategies to boost the Midwest performance?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:38:56.910926Z",
+    "http_status": 200,
+    "content_hash": "e12718db9f33402a46d2291a64371e7f9fea2a78dba82150f002ad1050cd5418",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\session-handoff.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\session-handoff.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "session-handoff: User Transfers",
+  "short_description_vi": "The session-handoff skill streamlines the transfer of user sessions between AI agents, ensuring continuity in interactions. This enhances user experience and saves time by reducing interruptions during multi-agent workflows."
+}

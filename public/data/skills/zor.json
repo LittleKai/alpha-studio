@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zor",
+  "slug": "zor",
+  "name": "zor",
+  "headline": "Zor - AI Pair Programmer for Coding Assistance",
+  "short_description": "Zor is an open-source, terminal-based AI pair programmer that assists developers with coding tasks. It benefits software engineers and operations teams by providing real-time code suggestions, debugging help, and automation support. Zor integrates with Python workflows and connects to Claude agents for enhanced functionality.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "admincodes7",
+  "install_command": "git clone https://github.com/admincodes7/zor.git",
+  "source_repo_url": "https://github.com/admincodes7/zor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "zor",
+    "code-assistant",
+    "claude-code",
+    "terminal-based"
+  ],
+  "sections": {
+    "overview": "Zor is an open-source command-line tool that brings AI-powered code assistance directly to your terminal, functioning as an alternative to Claude Code. It uses the Gemini API to analyze your entire codebase and help you understand, modify, and improve code through natural language instructions. Key capabilities include interactive code conversations, file editing, automated test generation, code refactoring across multiple files, and Git integration for committing changes. Developers and operations teams benefit from real-time code suggestions, debugging assistance, and project scaffolding, with full codebase context for informed recommendations.\nAsk questions about how specific code functions work\nGenerate unit tests automatically for existing code files\nRefactor code across multiple files using natural language instructions\nEdit individual files with natural language descriptions of desired changes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/admincodes7/zor`",
+    "usage": "```\nUse Zor to [ACTION] in a Python project. [SPECIFIC_TASK]. Example: 'Use Zor to refactor a Python function that calculates user engagement metrics. The function is currently 80 lines long and uses nested loops. Suggest improvements for readability and performance.'\n```\nCopy\n\n```\nHere’s how Zor can help refactor a Python function for calculating user engagement metrics. The original function (80 lines) processes a dataset of 50,000 user sessions with nested loops, which is inefficient and hard to debug. Zor’s output includes:\n\n1. **Performance Optimization**: Suggests replacing nested loops with vectorized operations using NumPy, reducing runtime from 45 seconds to 2.3 seconds for the dataset.\n2. **Readability Improvements**: Breaks the function into smaller, modular components (e.g., `calculate_daily_engagement`, `aggregate_metrics`) and adds type hints for better maintainability.\n3. **Error Handling**: Introduces validation checks for input data (e.g., ensuring session timestamps are in chronological order) and logs warnings for edge cases.\n4. **Testing Guidance**: Provides a pytest script to verify the refactored function against the original output, ensuring no regression in results.\n\nZor also highlights potential pitfalls, such as memory usage when processing large datasets, and recommends using generators or chunking for scalability. The final output is a 25-line function with 90% fewer lines of code, improved clarity, and a 20x speedup. Example refactored code:\n```python\ndef calculate_daily_engagement(sessions: list[Session]) -> dict[str, float]:\n    \"\"\"Calculate daily engagement metrics using vectorized operations.\"\"\"\n    df = pd.DataFrame([s.__dict__ for s in sessions])\n    daily_metrics = df.groupby('date').agg({\n        'clicks': 'sum',\n        'time_spent': 'mean'\n    }).to_dict('index')\n    return daily_metrics\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zor#main-content",
+      "zor#overview",
+      "zor#setup",
+      "zor#examples",
+      "zor#tools",
+      "zor#mcp",
+      "zor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Zor là một command-line tool mã nguồn mở mang khả năng hỗ trợ lập trình bằng AI trực tiếp đến terminal của bạn, hoạt động như một giải pháp thay thế cho Claude Code. Công cụ sử dụng Gemini API để phân tích toàn bộ codebase, giúp bạn hiểu, sửa đổi và tối ưu hóa code thông qua các câu lệnh bằng ngôn ngữ tự nhiên. Các tính năng cốt lõi bao gồm tương tác trao đổi về code, chỉnh sửa file, tự động tạo test, refactor code trên nhiều file và tích hợp Git để commit các thay đổi. Lập trình viên và đội ngũ vận hành (operations) sẽ được hỗ trợ tối đa nhờ các gợi ý code theo thời gian thực, hỗ trợ debug và khởi tạo khung dự án (project scaffolding) dựa trên ngữ cảnh toàn diện của codebase.\nĐặt câu hỏi về cách hoạt động của các hàm code cụ thể\nTự động tạo unit test cho các file code hiện có\nRefactor code trên nhiều file bằng các câu lệnh ngôn ngữ tự nhiên\nChỉnh sửa từng file riêng lẻ bằng cách mô tả các thay đổi mong muốn bằng ngôn ngữ tự nhiên",
+    "setup_vi": "Hiện không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/admincodes7/zor`",
+    "usage_vi": "```\nSử dụng Zor để [ACTION] trong một dự án Python. [SPECIFIC_TASK]. Ví dụ: 'Sử dụng Zor để refactor một hàm Python tính toán các chỉ số tương tác của người dùng. Hàm này hiện dài 80 dòng và sử dụng các vòng lặp lồng nhau. Hãy đề xuất các cải tiến để tăng tính dễ đọc và hiệu suất.'\n```\nCopy\n\n```\nDưới đây là cách Zor có thể hỗ trợ refactor hàm Python tính toán các chỉ số tương tác của người dùng. Hàm gốc (80 dòng) xử lý tập dữ liệu gồm 50.000 phiên truy cập của người dùng bằng các vòng lặp lồng nhau, gây kém hiệu quả và khó debug. Kết quả đầu ra của Zor bao gồm:\n\n1. **Tối ưu hóa hiệu suất (Performance Optimization)**: Đề xuất thay thế các vòng lặp lồng nhau bằng các phép toán vector hóa (vectorized operations) bằng cách sử dụng NumPy, giúp giảm thời gian chạy từ 45 giây xuống còn 2,3 giây cho tập dữ liệu.\n2. **Cải thiện tính dễ đọc (Readability Improvements)**: Chia nhỏ hàm thành các component dạng module, ngắn gọn hơn (ví dụ: `calculate_daily_engagement`, `aggregate_metrics`) và bổ sung type hint để dễ bảo trì hơn.\n3. **Xử lý lỗi (Error Handling)**: Tích hợp các bước kiểm tra dữ liệu đầu vào (validation checks) (ví dụ: đảm bảo timestamp của session được sắp xếp theo thứ tự thời gian) và log các cảnh báo cho các trường hợp biên (edge cases).\n4. **Hướng dẫn viết test (Testing Guidance)**: Cung cấp một script pytest để kiểm tra hàm đã được refactor so với kết quả đầu ra ban đầu, đảm bảo không xảy ra lỗi hồi quy (regression).\n\nZor cũng chỉ ra các rủi ro tiềm ẩn, chẳng hạn như mức sử dụng bộ nhớ khi xử lý các tập dữ liệu lớn, và khuyến nghị sử dụng generator hoặc chia nhỏ dữ liệu (chunking) để tăng khả năng mở rộng (scalability). Kết quả cuối cùng là một hàm chỉ dài 25 dòng (giảm 90% số dòng code), rõ ràng hơn và chạy nhanh hơn gấp 20 lần. Ví dụ về đoạn code sau khi refactor:\n```python\ndef calculate_daily_engagement(sessions: list[Session]) -> dict[str, float]:\n    \"\"\"Calculate daily engagement metrics using vectorized operations.\"\"\"\n    df = pd.DataFrame([s.__dict__ for s in sessions])\n    daily_metrics = df.groupby('date').agg({\n        'clicks': 'sum',\n        'time_spent': 'mean'\n    }).to_dict('index')\n    return daily_metrics\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:10:01.247805Z",
+    "http_status": 200,
+    "content_hash": "5a33714f716cb02e55a31c27fca6f4420e93b9996d735441483c31d67b24d7aa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zor.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Zor - AI Pair Programmer hỗ trợ lập trình",
+  "short_description_vi": "Zor là một AI pair programmer mã nguồn mở hoạt động trên terminal, giúp hỗ trợ lập trình viên thực hiện các tác vụ coding. Công cụ này mang lại lợi ích cho các kỹ sư phần mềm (software engineers) và đội ngũ vận hành (operations) bằng cách cung cấp các gợi ý code theo thời gian thực, hỗ trợ debug và tự động hóa. Zor tích hợp tốt với các workflow Python và kết nối với các Claude agent để nâng cao hiệu suất hoạt động."
+}

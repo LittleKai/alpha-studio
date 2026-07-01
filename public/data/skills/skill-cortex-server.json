@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-cortex-server",
+  "slug": "skill-cortex-server",
+  "name": "browser-use",
+  "headline": "Skill-Cortex-Server - Enable IDEs to Access Claude",
+  "short_description": "Skill-Cortex-Server is a third-party MCP server that enables all IDEs to access Claude Code Skills capabilities. It benefits developers and operations teams by integrating AI-powered coding assistance into their existing workflows. The server automatically scans and indexes SKILL.md files, making it easier to discover and utilize available skills.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "Sim-xia",
+  "install_command": "git clone https://github.com/Sim-xia/skill-cortex-server.git",
+  "source_repo_url": "https://github.com/Sim-xia/skill-cortex-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skill-Cortex Server is a third-party MCP (Model Context Protocol) server that brings Claude Code Skills capabilities to any IDE by automatically scanning and indexing SKILL.md files from multiple sources. It provides hierarchical skill tree navigation, full-text search across indexed skills, and context-aware skill retrieval with token compression to reduce context window usage. Developers and operations teams benefit from integrated AI-powered coding assistance within their existing workflows. The server supports flexible configuration with custom skill roots and cache paths, built-in tag validation and management, and detailed skill information retrieval with section-based extraction (summary, instructions, examples, or full content).\nIntegrate AI-powered coding assistance into existing IDE workflows without vendor lock-in\nCentrally discover and manage Claude Code Skills across distributed development teams\nSearch and retrieve skill documentation with optimized token usage for LLM context windows\nAutomatically index and navigate skills hierarchically by category and tags",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Sim-xia/skill-cortex-server`\n\n### Server Configuration\n- **Server Name**: Skill-Cortex-Server\n- **Version**: 1.2.3\n- **Status**: Online\n- **Last Updated**: 2023-10-15\n\n### Integrated IDEs\n- Visual Studio Code\n- IntelliJ IDEA\n- PyCharm\n- Eclipse\n\n### Indexed Skills\n- **Total Skills**: 42\n- **Last Indexed**: 2023-10-15 14:30 UTC\n- **Categories**:\n  - Code Generation\n  - Code Review\n  - Debugging\n  - Documentation\n\n### Access Instructions\n1. Open your preferred IDE.\n2. Navigate to the Extensions or Plugins marketplace.\n3. Search for 'Skill-Cortex-Server'.\n4. Install and configure the extension with your server details.\n5. Start using AI-powered coding assistance.\n\n### Troubleshooting\n- **Issue**: Server not responding.\n  - **Solution**: Check server logs and ensure the server is running.\n- **Issue**: Skills not indexing.\n  - **Solution**: Verify SKILL.md files are in the correct directory and properly formatted.\n```",
+    "usage": "```\nSet up a Skill-Cortex-Server for [COMPANY] in the [INDUSTRY] sector. The server should integrate with our existing IDEs and automatically scan and index all SKILL.md files. Ensure it supports the latest Claude Code Skills capabilities and provides seamless access to AI-powered coding assistance for our development and operations teams.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-cortex-server#main-content",
+      "skill-cortex-server#overview",
+      "skill-cortex-server#setup",
+      "skill-cortex-server#examples",
+      "skill-cortex-server#tools",
+      "skill-cortex-server#mcp",
+      "skill-cortex-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill-Cortex Server is a third-party MCP (Model Context Protocol) server that brings Claude Code Skills capabilities to any IDE by automatically scanning and indexing SKILL.md files from multiple sources. It provides hierarchical skill tree navigation, full-text search across indexed skills, and context-aware skill retrieval with token compression to reduce context window usage. Developers and operations teams benefit from integrated AI-powered coding assistance within their existing workflows. The server supports flexible configuration with custom skill roots and cache paths, built-in tag validation and management, and detailed skill information retrieval with section-based extraction (summary, instructions, examples, or full content).\nIntegrate AI-powered coding assistance into existing IDE workflows without vendor lock-in\nCentrally discover and manage Claude Code Skills across distributed development teams\nSearch and retrieve skill documentation with optimized token usage for LLM context windows\nAutomatically index and navigate skills hierarchically by category and tags",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Sim-xia/skill-cortex-server`\n\n### Server Configuration\n- **Server Name**: Skill-Cortex-Server\n- **Version**: 1.2.3\n- **Status**: Online\n- **Last Updated**: 2023-10-15\n\n### Integrated IDEs\n- Visual Studio Code\n- IntelliJ IDEA\n- PyCharm\n- Eclipse\n\n### Indexed Skills\n- **Total Skills**: 42\n- **Last Indexed**: 2023-10-15 14:30 UTC\n- **Categories**:\n  - Code Generation\n  - Code Review\n  - Debugging\n  - Documentation\n\n### Access Instructions\n1. Open your preferred IDE.\n2. Navigate to the Extensions or Plugins marketplace.\n3. Search for 'Skill-Cortex-Server'.\n4. Install and configure the extension with your server details.\n5. Start using AI-powered coding assistance.\n\n### Troubleshooting\n- **Issue**: Server not responding.\n  - **Solution**: Check server logs and ensure the server is running.\n- **Issue**: Skills not indexing.\n  - **Solution**: Verify SKILL.md files are in the correct directory and properly formatted.\n```",
+    "usage_vi": "```\nSet up a Skill-Cortex-Server for [COMPANY] in the [INDUSTRY] sector. The server should integrate with our existing IDEs and automatically scan and index all SKILL.md files. Ensure it supports the latest Claude Code Skills capabilities and provides seamless access to AI-powered coding assistance for our development and operations teams.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:14:29.039769Z",
+    "http_status": 200,
+    "content_hash": "b7c3c66c5b328af64e60bac4950c55b5908898f497463cfcb831718a62c397e4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-cortex-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-cortex-server.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skill-Cortex-Server - Enable IDEs to Access Claude",
+  "short_description_vi": "Skill-Cortex-Server is a third-party MCP server that enables all IDEs to access Claude Code Skills capabilities. It benefits developers and operations teams by integrating AI-powered coding assistance into their existing workflows. The server automatically scans and indexes SKILL.md files, making it easier to discover and utilize available skills."
+}

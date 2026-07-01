@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-android-skill",
+  "slug": "claude-android-skill",
+  "name": "browser-use",
+  "headline": "claude-android-skill for Android app automation",
+  "short_description": "Claude Code skill for building Android apps with Google's architecture guidance. Enables operations teams to automate app development, following best practices from the NowInAndroid reference app.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "dpconde",
+  "install_command": "git clone https://github.com/dpconde/claude-android-skill.git",
+  "source_repo_url": "https://github.com/dpconde/claude-android-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "now-in-android",
+    "android",
+    "mcp",
+    "claude-skill"
+  ],
+  "sections": {
+    "overview": "This skill equips Claude with comprehensive knowledge of modern Android development patterns, including Clean Architecture with UI, Domain, and Data layers, Jetpack Compose best practices, multi-module project structure, offline-first architecture with Room, dependency injection with Hilt, and comprehensive testing strategies. It automatically activates when you request Android-related tasks, enabling Claude to generate feature modules, build Compose screens with MVVM pattern, set up repositories with offline-first architecture, configure navigation, and establish multi-module Gradle setups. The skill includes a Python script to automatically generate complete feature modules with API and implementation layers, proper Gradle build files, and Hilt dependency injection setup. Developers and operations teams benefit from faster Android app development while maintaining consistency with Google's official architecture guidelines and industry best practices.\nCreate new Android feature modules with API and implementation layers\nBuild Compose screens following MVVM pattern with state hoisting\nSet up repositories with offline-first architecture and Room\nConfigure multi-module Gradle projects with convention plugins",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dpconde/claude-android-skill`",
+    "usage": "```\nBuild a new feature for my Android app following Google's recommended architecture (NowInAndroid reference). The feature is [FEATURE_NAME] and should include: 1) A UI layer with Jetpack Compose, 2) A domain layer with use cases, 3) A data layer with repository pattern, and 4) Proper dependency injection setup. Use Kotlin coroutines for async operations. Generate all necessary files in the correct directory structure under [PROJECT_PATH]. Include unit tests for the use cases and repository. Generate a sample screen preview for the UI component. Document any new dependencies in the build.gradle files.\n```\nCopy\n\n```\nI've built the `TrendingNewsFeature` following Google's architecture guidelines. Here's what was generated in your project at `/android/app/src/main/java/com/example/myapp/trendingnews`:\n\n**Directory Structure:**\n- `TrendingNewsScreen.kt` (UI layer with Jetpack Compose)\n- `TrendingNewsViewModel.kt` (ViewModel with state management)\n- `TrendingNewsRepository.kt` (Data layer interface)\n- `OfflineFirstTrendingNewsRepository.kt` (Concrete implementation)\n- `GetTrendingNewsUseCase.kt` (Domain layer)\n- `TrendingNewsModule.kt` (Dependency injection)\n\n**Key Components:**\nThe `TrendingNewsScreen` displays a lazy column of news articles with pull-to-refresh functionality. The ViewModel maintains a `TrendingNewsUiState` with loading, success, and error states. The repository implements caching with Room database and network calls using Retrofit.\n\n**Dependencies Added:**\n```gradle\n// build.gradle (Module)\nimplementation \"androidx.compose.material3:material3:1.2.0\"\nimplementation \"androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2\"\nimplementation \"androidx.room:room-runtime:2.6.0\"\nkapt \"androidx.room:room-compiler:2.6.0\"\nimplementation \"com.squareup.retrofit2:retrofit:2.9.0\"\nimplementation \"com.squareup.okhttp3:logging-interceptor:4.12.0\"\n```\n\n**Preview:**\n```kotlin\n@Preview(showBackground = true)\n@Composable\nfun TrendingNewsScreenPreview() {\n    MyAppTheme {\n        TrendingNewsScreen(\n            uiState = TrendingNewsUiState.Success(\n                articles = listOf(\n                    NewsArticle(\"1\", \"Breaking News\", \"Headline\", \"Summary\", \"https://example.com/image.jpg\"),\n                    NewsArticle(\"2\", \"Tech Update\", \"Headline 2\", \"Summary 2\", \"https://example.com/image2.jpg\")\n                )\n            ),\n            onRefresh = {},\n            onArticleClick = {}\n        )\n    }\n}\n```\n\n**Tests Generated:**\n- `GetTrendingNewsUseCaseTest.kt` (verifies business logic)\n- `OfflineFirstTrendingNewsRepositoryTest.kt` (verifies data layer)\n\nThe feature follows NowInAndroid patterns with proper separation of concerns and uses Hilt for dependency injection. Would you like me to explain any part in more detail or make adjustments to the implementation?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-android-skill#main-content",
+      "claude-android-skill#overview",
+      "claude-android-skill#setup",
+      "claude-android-skill#examples",
+      "claude-android-skill#tools",
+      "claude-android-skill#mcp",
+      "claude-android-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill equips Claude with comprehensive knowledge of modern Android development patterns, including Clean Architecture with UI, Domain, and Data layers, Jetpack Compose best practices, multi-module project structure, offline-first architecture with Room, dependency injection with Hilt, and comprehensive testing strategies. It automatically activates when you request Android-related tasks, enabling Claude to generate feature modules, build Compose screens with MVVM pattern, set up repositories with offline-first architecture, configure navigation, and establish multi-module Gradle setups. The skill includes a Python script to automatically generate complete feature modules with API and implementation layers, proper Gradle build files, and Hilt dependency injection setup. Developers and operations teams benefit from faster Android app development while maintaining consistency with Google's official architecture guidelines and industry best practices.\nCreate new Android feature modules with API and implementation layers\nBuild Compose screens following MVVM pattern with state hoisting\nSet up repositories with offline-first architecture and Room\nConfigure multi-module Gradle projects with convention plugins",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dpconde/claude-android-skill`",
+    "usage_vi": "```\nBuild a new feature for my Android app following Google's recommended architecture (NowInAndroid reference). The feature is [FEATURE_NAME] and should include: 1) A UI layer with Jetpack Compose, 2) A domain layer with use cases, 3) A data layer with repository pattern, and 4) Proper dependency injection setup. Use Kotlin coroutines for async operations. Generate all necessary files in the correct directory structure under [PROJECT_PATH]. Include unit tests for the use cases and repository. Generate a sample screen preview for the UI component. Document any new dependencies in the build.gradle files.\n```\nCopy\n\n```\nI've built the `TrendingNewsFeature` following Google's architecture guidelines. Here's what was generated in your project at `/android/app/src/main/java/com/example/myapp/trendingnews`:\n\n**Directory Structure:**\n- `TrendingNewsScreen.kt` (UI layer with Jetpack Compose)\n- `TrendingNewsViewModel.kt` (ViewModel with state management)\n- `TrendingNewsRepository.kt` (Data layer interface)\n- `OfflineFirstTrendingNewsRepository.kt` (Concrete implementation)\n- `GetTrendingNewsUseCase.kt` (Domain layer)\n- `TrendingNewsModule.kt` (Dependency injection)\n\n**Key Components:**\nThe `TrendingNewsScreen` displays a lazy column of news articles with pull-to-refresh functionality. The ViewModel maintains a `TrendingNewsUiState` with loading, success, and error states. The repository implements caching with Room database and network calls using Retrofit.\n\n**Dependencies Added:**\n```gradle\n// build.gradle (Module)\nimplementation \"androidx.compose.material3:material3:1.2.0\"\nimplementation \"androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2\"\nimplementation \"androidx.room:room-runtime:2.6.0\"\nkapt \"androidx.room:room-compiler:2.6.0\"\nimplementation \"com.squareup.retrofit2:retrofit:2.9.0\"\nimplementation \"com.squareup.okhttp3:logging-interceptor:4.12.0\"\n```\n\n**Preview:**\n```kotlin\n@Preview(showBackground = true)\n@Composable\nfun TrendingNewsScreenPreview() {\n    MyAppTheme {\n        TrendingNewsScreen(\n            uiState = TrendingNewsUiState.Success(\n                articles = listOf(\n                    NewsArticle(\"1\", \"Breaking News\", \"Headline\", \"Summary\", \"https://example.com/image.jpg\"),\n                    NewsArticle(\"2\", \"Tech Update\", \"Headline 2\", \"Summary 2\", \"https://example.com/image2.jpg\")\n                )\n            ),\n            onRefresh = {},\n            onArticleClick = {}\n        )\n    }\n}\n```\n\n**Tests Generated:**\n- `GetTrendingNewsUseCaseTest.kt` (verifies business logic)\n- `OfflineFirstTrendingNewsRepositoryTest.kt` (verifies data layer)\n\nThe feature follows NowInAndroid patterns with proper separation of concerns and uses Hilt for dependency injection. Would you like me to explain any part in more detail or make adjustments to the implementation?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:03:58.953714Z",
+    "http_status": 200,
+    "content_hash": "7e69cda9df8c07e6c8ff3359d7d6650ad835a164cfda5b15bf77f9d7257e9987",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-android-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-android-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-android-skill for Android app automation",
+  "short_description_vi": "Claude Code skill for building Android apps with Google's architecture guidance. Enables operations teams to automate app development, following best practices from the NowInAndroid reference app."
+}

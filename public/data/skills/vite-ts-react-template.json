@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vite-ts-react-template",
+  "slug": "vite-ts-react-template",
+  "name": "Vite TS React Template",
+  "headline": "vite-ts-react-template: SPA Development",
+  "short_description": "This project provides a basic dev setup intended for Single Page Application (SPA) development. It contains key tools, settings for DX, and an demo app presenting good practices and used tooling in action.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "bartstc",
+  "install_command": "git clone https://github.com/bartstc/vite-ts-react-template.git",
+  "source_repo_url": "https://github.com/bartstc/vite-ts-react-template",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "react",
+    "xstate",
+    "copilot",
+    "github-actions",
+    "spa-template",
+    "msw",
+    "typescript",
+    "storybook",
+    "pnpm",
+    "playwright",
+    "claude-code",
+    "zustand",
+    "vite",
+    "i18next",
+    "react-query",
+    "template",
+    "vitest",
+    "react-router-v7",
+    "chakra-ui",
+    "reactjs"
+  ],
+  "sections": {
+    "overview": "The vite-ts-react-template is an automation skill designed to streamline the development process for Single Page Applications (SPAs). This project offers a basic development setup that includes essential tools and configurations aimed at enhancing the developer experience (DX). The included demo application showcases best practices and the effective use of tooling, making it a valuable resource for developers looking to implement a robust SPA framework efficiently. One of the key benefits of using the vite-ts-react-template is the significant reduction in setup time, allowing developers to focus on building features rather than configuring environments. While the exact time savings are not quantified, the intermediate complexity and 30-minute implementation time suggest that this skill can greatly accelerate the initial stages of project development. By adopting this template, teams can ensure they are following modern development practices while maintaining a clean and organized codebase. This skill is particularly beneficial for developers and product managers involved in frontend development, as it provides a solid foundation for building SPAs. It is also relevant for AI practitioners looking to integrate AI automation into their web applications. The template can be utilized in various scenarios, such as creating dashboards, e-commerce platforms, or any application that requires a dynamic user interface. By leveraging this skill, teams can enhance their workflow automation and ensure a smoother development process. With an intermediate implementation difficulty, the vite-ts-react-template is suitable for developers who have some experience with React and TypeScript. It fits seamlessly into AI-first workflows by allowing teams to quickly prototype and build applications that can incorporate AI functionalities. By utilizing this automation skill, developers can create high-quality SPAs faster and more efficiently, ultimately leading to better product outcomes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bartstc/vite-ts-react-template`",
+    "usage": "```\nGenerate a new project using the vite-ts-react-template for [PROJECT_NAME]. Configure it with [PACKAGE_MANAGER] (e.g., npm, yarn, pnpm) and set up [FEATURES] (e.g., routing, state management, testing). Include a basic component structure with [PAGE_COMPONENTS] (e.g., Home, About, Contact) and ensure the template's demo app is replaced with a minimal starter template.\n```\nCopy\n\n```\n```bash\n# Terminal output after running the command\n✔ Project name: my-spa-app\n✔ Package manager: pnpm\n✔ Template: vite-ts-react\n✔ Add features: React Router, Zustand, Vitest\n✔ Initialize git repository? Yes\n\nScaffolding project in ./my-spa-app...\n✔ Installing dependencies...\n✔ Project structure created:\n   my-spa-app/\n   ├── public/\n   ├── src/\n   │   ├── components/\n   │   │   ├── Layout.tsx\n   │   │   ├── Navbar.tsx\n   │   │   └── Footer.tsx\n   │   ├── pages/\n   │   │   ├── Home.tsx\n   │   │   ├── About.tsx\n   │   │   └── Contact.tsx\n   │   ├── stores/\n   │   │   └── useCounterStore.ts\n   │   ├── App.tsx\n   │   └── main.tsx\n   ├── tests/\n   ├── package.json\n   └── vite.config.ts\n\n✅ Success! Project ready at ./my-spa-app\n\nNext steps:\n1. cd my-spa-app\n2. pnpm dev\n3. Open http://localhost:5173 in your browser\n```\n\nThe generated project includes:\n- TypeScript and React 18 with Vite for fast HMR\n- Pre-configured ESLint, Prettier, and Husky for code quality\n- React Router v6 for client-side routing\n- Zustand for lightweight state management\n- Vitest for unit testing with React Testing Library\n- Absolute imports via @/ alias\n- Basic responsive layout with Tailwind CSS\n- Demo components demonstrating best practices\n\nThe project is ready for immediate development with no additional setup required.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vite-ts-react-template#main-content",
+      "vite-ts-react-template#overview",
+      "vite-ts-react-template#setup",
+      "vite-ts-react-template#examples",
+      "vite-ts-react-template#tools",
+      "vite-ts-react-template#mcp",
+      "vite-ts-react-template#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The vite-ts-react-template is an automation skill designed to streamline the development process for Single Page Applications (SPAs). This project offers a basic development setup that includes essential tools and configurations aimed at enhancing the developer experience (DX). The included demo application showcases best practices and the effective use of tooling, making it a valuable resource for developers looking to implement a robust SPA framework efficiently. One of the key benefits of using the vite-ts-react-template is the significant reduction in setup time, allowing developers to focus on building features rather than configuring environments. While the exact time savings are not quantified, the intermediate complexity and 30-minute implementation time suggest that this skill can greatly accelerate the initial stages of project development. By adopting this template, teams can ensure they are following modern development practices while maintaining a clean and organized codebase. This skill is particularly beneficial for developers and product managers involved in frontend development, as it provides a solid foundation for building SPAs. It is also relevant for AI practitioners looking to integrate AI automation into their web applications. The template can be utilized in various scenarios, such as creating dashboards, e-commerce platforms, or any application that requires a dynamic user interface. By leveraging this skill, teams can enhance their workflow automation and ensure a smoother development process. With an intermediate implementation difficulty, the vite-ts-react-template is suitable for developers who have some experience with React and TypeScript. It fits seamlessly into AI-first workflows by allowing teams to quickly prototype and build applications that can incorporate AI functionalities. By utilizing this automation skill, developers can create high-quality SPAs faster and more efficiently, ultimately leading to better product outcomes.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bartstc/vite-ts-react-template`",
+    "usage_vi": "```\nGenerate a new project using the vite-ts-react-template for [PROJECT_NAME]. Configure it with [PACKAGE_MANAGER] (e.g., npm, yarn, pnpm) and set up [FEATURES] (e.g., routing, state management, testing). Include a basic component structure with [PAGE_COMPONENTS] (e.g., Home, About, Contact) and ensure the template's demo app is replaced with a minimal starter template.\n```\nCopy\n\n```\n```bash\n# Terminal output after running the command\n✔ Project name: my-spa-app\n✔ Package manager: pnpm\n✔ Template: vite-ts-react\n✔ Add features: React Router, Zustand, Vitest\n✔ Initialize git repository? Yes\n\nScaffolding project in ./my-spa-app...\n✔ Installing dependencies...\n✔ Project structure created:\n   my-spa-app/\n   ├── public/\n   ├── src/\n   │   ├── components/\n   │   │   ├── Layout.tsx\n   │   │   ├── Navbar.tsx\n   │   │   └── Footer.tsx\n   │   ├── pages/\n   │   │   ├── Home.tsx\n   │   │   ├── About.tsx\n   │   │   └── Contact.tsx\n   │   ├── stores/\n   │   │   └── useCounterStore.ts\n   │   ├── App.tsx\n   │   └── main.tsx\n   ├── tests/\n   ├── package.json\n   └── vite.config.ts\n\n✅ Success! Project ready at ./my-spa-app\n\nNext steps:\n1. cd my-spa-app\n2. pnpm dev\n3. Open http://localhost:5173 in your browser\n```\n\nThe generated project includes:\n- TypeScript and React 18 with Vite for fast HMR\n- Pre-configured ESLint, Prettier, and Husky for code quality\n- React Router v6 for client-side routing\n- Zustand for lightweight state management\n- Vitest for unit testing with React Testing Library\n- Absolute imports via @/ alias\n- Basic responsive layout with Tailwind CSS\n- Demo components demonstrating best practices\n\nThe project is ready for immediate development with no additional setup required.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:32.263906Z",
+    "http_status": 200,
+    "content_hash": "47f5924175bc34ec8208979da116a719b3d91518373804e457acb6471450ab78",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vite-ts-react-template.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vite-ts-react-template.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "vite-ts-react-template: SPA Development",
+  "short_description_vi": "This project provides a basic dev setup intended for Single Page Application (SPA) development. It contains key tools, settings for DX, and an demo app presenting good practices and used tooling in action."
+}

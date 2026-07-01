@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ajbm-skills",
+  "slug": "ajbm-skills",
+  "name": "browser-use",
+  "headline": "ajbm-skills: Versatile AI Automation",
+  "short_description": "A collection of generally useful Claude Code skills that work across all Anthropic surfaces. These skills are not workflow-specific but are universal productivity boosters for anyone using Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "ajbmachon",
+  "install_command": "git clone https://github.com/ajbmachon/ajbm-skills.git",
+  "source_repo_url": "https://github.com/ajbmachon/ajbm-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The ajbm-skills automation skill is designed to enhance productivity across various Anthropic surfaces by providing a collection of Claude Code skills that are broadly applicable. This skill is not limited to specific workflows, making it an ideal tool for developers, product managers, and AI practitioners who seek to streamline their processes. With an implementation time of just 30 minutes, users can quickly integrate this skill into their existing systems and start leveraging its capabilities. One of the key benefits of the ajbm-skills is its versatility. By offering a set of skills that can be utilized across different tasks and projects, users can save time and reduce the complexity of managing multiple specialized tools. Although the exact time savings are not quantified, the ability to access a broad range of functionalities from a single skill can significantly enhance workflow efficiency. This is particularly beneficial for teams looking to adopt an AI-first approach, as it allows for smoother integration of AI automation into their daily operations. The ajbm-skills is particularly suited for roles that require adaptability and efficiency, such as developers and product managers. These professionals often juggle multiple projects and need a reliable skill that can support various tasks without being tied to a specific workflow. For instance, a developer might use this skill to automate repetitive coding tasks, while a product manager could leverage it to streamline project management activities. The medium GTM relevance also indicates that this skill can be effectively marketed to a wide range of users seeking automation solutions. In terms of implementation, the ajbm-skills is categorized as intermediate in difficulty, making it accessible for those with some technical expertise. Users should be familiar with Claude Code and have a foundational understanding of AI automation principles. By incorporating this skill into their workflows, teams can not only improve their operational efficiency but also position themselves at the forefront of AI-driven innovation. Overall, ajbm-skills represents a valuable addition to any AI automation toolkit, facilitating enhanced productivity and streamlined processes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ajbmachon/ajbm-skills`",
+    "usage": "```\nHelp me automate [TASK] using Claude Code. I need this to work across all Anthropic surfaces. Provide a step-by-step guide with code snippets where applicable. Ensure the solution is adaptable to different workflows.\n```\nCopy\n\n```\nTo automate the task of summarizing daily emails, you can use the following Claude Code skill:\n\n1. **Set Up the Skill**: Create a new Claude Code project and name it 'Email Summarizer'.\n2. **Define the Input**: Specify the input as a list of email subjects and bodies.\n3. **Write the Code**: Use the following Python code snippet to summarize the emails:\n```python\ndef summarize_emails(emails):\n    summaries = []\n    for email in emails:\n        summary = f\"Subject: {email['subject']}\\nSummary: {email['body'][:100]}...\"\n        summaries.append(summary)\n    return summaries\n```\n4. **Test the Skill**: Input a list of emails and run the code to generate summaries.\n5. **Deploy the Skill**: Save the skill and make it available across all Anthropic surfaces.\n\nThis skill can be adapted to summarize other types of text, such as meeting notes or documents.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ajbm-skills#main-content",
+      "ajbm-skills#overview",
+      "ajbm-skills#setup",
+      "ajbm-skills#examples",
+      "ajbm-skills#tools",
+      "ajbm-skills#mcp",
+      "ajbm-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The ajbm-skills automation skill is designed to enhance productivity across various Anthropic surfaces by providing a collection of Claude Code skills that are broadly applicable. This skill is not limited to specific workflows, making it an ideal tool for developers, product managers, and AI practitioners who seek to streamline their processes. With an implementation time of just 30 minutes, users can quickly integrate this skill into their existing systems and start leveraging its capabilities. One of the key benefits of the ajbm-skills is its versatility. By offering a set of skills that can be utilized across different tasks and projects, users can save time and reduce the complexity of managing multiple specialized tools. Although the exact time savings are not quantified, the ability to access a broad range of functionalities from a single skill can significantly enhance workflow efficiency. This is particularly beneficial for teams looking to adopt an AI-first approach, as it allows for smoother integration of AI automation into their daily operations. The ajbm-skills is particularly suited for roles that require adaptability and efficiency, such as developers and product managers. These professionals often juggle multiple projects and need a reliable skill that can support various tasks without being tied to a specific workflow. For instance, a developer might use this skill to automate repetitive coding tasks, while a product manager could leverage it to streamline project management activities. The medium GTM relevance also indicates that this skill can be effectively marketed to a wide range of users seeking automation solutions. In terms of implementation, the ajbm-skills is categorized as intermediate in difficulty, making it accessible for those with some technical expertise. Users should be familiar with Claude Code and have a foundational understanding of AI automation principles. By incorporating this skill into their workflows, teams can not only improve their operational efficiency but also position themselves at the forefront of AI-driven innovation. Overall, ajbm-skills represents a valuable addition to any AI automation toolkit, facilitating enhanced productivity and streamlined processes.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ajbmachon/ajbm-skills`",
+    "usage_vi": "```\nHelp me automate [TASK] using Claude Code. I need this to work across all Anthropic surfaces. Provide a step-by-step guide with code snippets where applicable. Ensure the solution is adaptable to different workflows.\n```\nCopy\n\n```\nTo automate the task of summarizing daily emails, you can use the following Claude Code skill:\n\n1. **Set Up the Skill**: Create a new Claude Code project and name it 'Email Summarizer'.\n2. **Define the Input**: Specify the input as a list of email subjects and bodies.\n3. **Write the Code**: Use the following Python code snippet to summarize the emails:\n```python\ndef summarize_emails(emails):\n    summaries = []\n    for email in emails:\n        summary = f\"Subject: {email['subject']}\\nSummary: {email['body'][:100]}...\"\n        summaries.append(summary)\n    return summaries\n```\n4. **Test the Skill**: Input a list of emails and run the code to generate summaries.\n5. **Deploy the Skill**: Save the skill and make it available across all Anthropic surfaces.\n\nThis skill can be adapted to summarize other types of text, such as meeting notes or documents.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:50:45.454649Z",
+    "http_status": 200,
+    "content_hash": "4a95aadd310b6ba13cf6aca410193de48838d61ed5bd14afa3bcbc1085b5c453",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ajbm-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ajbm-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ajbm-skills: Versatile AI Automation",
+  "short_description_vi": "A collection of generally useful Claude Code skills that work across all Anthropic surfaces. These skills are not workflow-specific but are universal productivity boosters for anyone using Claude Code."
+}

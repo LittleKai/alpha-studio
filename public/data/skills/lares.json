@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lares",
+  "slug": "lares",
+  "name": "popsicle",
+  "headline": "Lares - Automated Marketing Analytics",
+  "short_description": "Lares is an R-based AI skill for marketing analytics and machine learning. It automates data exploration, predictive modeling, and marketing mix modeling. Connects to H2O and Robyn for scalable machine learning. Ideal for marketing teams needing automated insights and predictive analytics.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "laresbernardo",
+  "install_command": "git clone https://github.com/laresbernardo/lares.git",
+  "source_repo_url": "https://github.com/laresbernardo/lares",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "predictive-modeling",
+    "automl",
+    "automation",
+    "descriptive-statistics",
+    "machine-learning",
+    "data-science",
+    "r-package",
+    "marketing",
+    "robyn",
+    "mmm",
+    "puzzle",
+    "api",
+    "visualization",
+    "rstats",
+    "r",
+    "h2o",
+    "rlanguage",
+    "analytics"
+  ],
+  "sections": {
+    "overview": "lares is an R package designed to automate everyday analytics and machine learning workflows. It streamlines model training and evaluation through friendly AutoML pipelines, while offering comprehensive data cleaning, exploratory data analysis, and visualization capabilities. The package includes specialized support for marketing mix modeling (MMM) through Robyn integration, API connections to Meta's Marketing API, and tools for time series analysis. Teams can leverage functions like h2o_automl() for automated model selection, corr_cross() for relationship discovery, and robyn_* functions for marketing analytics. lares accelerates projects by providing production-ready functions for data preparation, model evaluation, secure credential management, and comprehensive reporting.\nAutomated machine learning model training and evaluation with H2O AutoML\nMarketing mix modeling (MMM) with Robyn integration and candidate selection\nExploratory data analysis with instant visualization and correlation discovery\nData cleaning and feature engineering for predictive modeling",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/laresbernardo/lares`",
+    "usage": "```\nUse Lares to analyze [MARKETING_DATASET] and generate insights. Perform exploratory data analysis to identify key trends, then build a predictive model to forecast [MARKETING_METRIC] (e.g., sales, conversion rates). Compare the model's performance against a baseline and suggest optimal budget allocation across [MARKETING_CHANNELS] based on the results. Include visualizations of feature importance and model predictions.\n```\nCopy\n\n```\n### Lares Marketing Analytics Report\n\n**Dataset Overview:** The analysis used a 12-month dataset from a mid-sized e-commerce retailer, including 500K+ transactions, 15 marketing channels (paid search, social, email, etc.), and 20+ customer attributes (demographics, past behavior). Key metrics tracked: daily spend, impressions, clicks, conversions, and revenue.\n\n**Exploratory Data Analysis:**\nThe initial exploration revealed several critical insights:\n- **Channel Performance:** Paid search (Google Ads) drove 42% of total conversions but only 35% of the budget, indicating high efficiency. Social media (Meta/Instagram) had the lowest ROI (ROAS of 1.8 vs. industry average of 2.5).\n- **Seasonality:** Revenue spiked by 35% during Q4 holiday campaigns, with email marketing contributing 28% of total holiday sales.\n- **Customer Segments:** High-value customers (LTV > $500) responded best to personalized email campaigns (CTR 8.2%) and retargeting ads (CTR 6.5%).\n\n**Predictive Modeling:**\nA Gradient Boosting Machine (XGBoost) model was trained to predict daily revenue based on marketing spend across channels. The model achieved an R² of 0.87 and a MAE of $1,200 (vs. baseline MAE of $3,800). Feature importance analysis showed:\n- **Top Drivers:** Paid search spend (32%), email campaign frequency (22%), and retargeting ad impressions (18%).\n- **Underperformers:** Display ads and influencer partnerships had negligible impact on revenue.\n\n**Budget Optimization:**\nUsing Robyn (an MMM tool integrated with Lares), we simulated reallocating the $500K monthly budget based on the model’s predictions:\n- **Recommended Allocation:**\n  - Paid Search: +15% ($180K → $207K)\n  - Email Marketing: +10% ($90K → $99K)\n  - Social Media: -20% ($80K → $64K)\n  - Display Ads: -50% ($50K → $25K)\n- **Projected Impact:** Expected revenue increase of 18% ($1.2M → $1.42M/month) with a 12% reduction in CAC.\n\n**Visualizations:**\n1. **Channel ROI Heatmap:** Highlighted Paid Search and Email as top performers.\n2. **Feature Importance Bar Chart:** Showed spend and frequency as dominant predictors.\n3. **Budget Allocation Sankey Diagram:** Illustrated the shift from underperforming to high-impact channels.\n\n**Next Steps:**\n- Implement the recommended budget reallocation in Google Ads and the email platform.\n- Monitor model performance weekly and retrain monthly to account for seasonality.\n- Test a 10% increase in retargeting ad spend to validate its impact on high-LTV customers.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lares#main-content",
+      "lares#overview",
+      "lares#setup",
+      "lares#examples",
+      "lares#tools",
+      "lares#mcp",
+      "lares#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "lares is an R package designed to automate everyday analytics and machine learning workflows. It streamlines model training and evaluation through friendly AutoML pipelines, while offering comprehensive data cleaning, exploratory data analysis, and visualization capabilities. The package includes specialized support for marketing mix modeling (MMM) through Robyn integration, API connections to Meta's Marketing API, and tools for time series analysis. Teams can leverage functions like h2o_automl() for automated model selection, corr_cross() for relationship discovery, and robyn_* functions for marketing analytics. lares accelerates projects by providing production-ready functions for data preparation, model evaluation, secure credential management, and comprehensive reporting.\nAutomated machine learning model training and evaluation with H2O AutoML\nMarketing mix modeling (MMM) with Robyn integration and candidate selection\nExploratory data analysis with instant visualization and correlation discovery\nData cleaning and feature engineering for predictive modeling",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/laresbernardo/lares`",
+    "usage_vi": "```\nUse Lares to analyze [MARKETING_DATASET] and generate insights. Perform exploratory data analysis to identify key trends, then build a predictive model to forecast [MARKETING_METRIC] (e.g., sales, conversion rates). Compare the model's performance against a baseline and suggest optimal budget allocation across [MARKETING_CHANNELS] based on the results. Include visualizations of feature importance and model predictions.\n```\nCopy\n\n```\n### Lares Marketing Analytics Report\n\n**Dataset Overview:** The analysis used a 12-month dataset from a mid-sized e-commerce retailer, including 500K+ transactions, 15 marketing channels (paid search, social, email, etc.), and 20+ customer attributes (demographics, past behavior). Key metrics tracked: daily spend, impressions, clicks, conversions, and revenue.\n\n**Exploratory Data Analysis:**\nThe initial exploration revealed several critical insights:\n- **Channel Performance:** Paid search (Google Ads) drove 42% of total conversions but only 35% of the budget, indicating high efficiency. Social media (Meta/Instagram) had the lowest ROI (ROAS of 1.8 vs. industry average of 2.5).\n- **Seasonality:** Revenue spiked by 35% during Q4 holiday campaigns, with email marketing contributing 28% of total holiday sales.\n- **Customer Segments:** High-value customers (LTV > $500) responded best to personalized email campaigns (CTR 8.2%) and retargeting ads (CTR 6.5%).\n\n**Predictive Modeling:**\nA Gradient Boosting Machine (XGBoost) model was trained to predict daily revenue based on marketing spend across channels. The model achieved an R² of 0.87 and a MAE of $1,200 (vs. baseline MAE of $3,800). Feature importance analysis showed:\n- **Top Drivers:** Paid search spend (32%), email campaign frequency (22%), and retargeting ad impressions (18%).\n- **Underperformers:** Display ads and influencer partnerships had negligible impact on revenue.\n\n**Budget Optimization:**\nUsing Robyn (an MMM tool integrated with Lares), we simulated reallocating the $500K monthly budget based on the model’s predictions:\n- **Recommended Allocation:**\n  - Paid Search: +15% ($180K → $207K)\n  - Email Marketing: +10% ($90K → $99K)\n  - Social Media: -20% ($80K → $64K)\n  - Display Ads: -50% ($50K → $25K)\n- **Projected Impact:** Expected revenue increase of 18% ($1.2M → $1.42M/month) with a 12% reduction in CAC.\n\n**Visualizations:**\n1. **Channel ROI Heatmap:** Highlighted Paid Search and Email as top performers.\n2. **Feature Importance Bar Chart:** Showed spend and frequency as dominant predictors.\n3. **Budget Allocation Sankey Diagram:** Illustrated the shift from underperforming to high-impact channels.\n\n**Next Steps:**\n- Implement the recommended budget reallocation in Google Ads and the email platform.\n- Monitor model performance weekly and retrain monthly to account for seasonality.\n- Test a 10% increase in retargeting ad spend to validate its impact on high-LTV customers.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:33:56.150617Z",
+    "http_status": 200,
+    "content_hash": "bc525260e46253050e4c43089cbb7bd28a000ed6ec389c59b64110f2920f21be",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lares.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lares.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Lares - Automated Marketing Analytics",
+  "short_description_vi": "Lares is an R-based AI skill for marketing analytics and machine learning. It automates data exploration, predictive modeling, and marketing mix modeling. Connects to H2O and Robyn for scalable machine learning. Ideal for marketing teams needing automated insights and predictive analytics."
+}

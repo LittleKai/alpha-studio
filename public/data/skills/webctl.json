@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/webctl",
+  "slug": "webctl",
+  "name": "browser-use",
+  "headline": "Webctl - Browser Automation via CLI",
+  "short_description": "Webctl enables browser automation via CLI for AI agents and humans. Operations teams use it to automate web tasks, reducing manual effort. It integrates with supported AI agents like Claude, streamlining workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "cosinusalpha",
+  "install_command": "git clone https://github.com/cosinusalpha/webctl.git",
+  "source_repo_url": "https://github.com/cosinusalpha/webctl",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Webctl is a command-line browser automation tool designed for AI agents and operations teams. Unlike MCP-based alternatives, webctl gives you control over what enters your agent's context—filter snapshots, pipe output through Unix tools, and cache results to reduce token costs. It supports Claude, Cursor, Gemini, Copilot, and other AI agents through both native skills and prompt integration. Webctl uses landmark-aware filtering, structured data extraction, and smart network detection to complete web tasks efficiently. Benchmarks show webctl achieves higher quality scores than comparable tools while reducing token usage and operational costs.\nAutomate the process of filling out web forms and submitting them.\nCapture interactive snapshots of web pages for testing or documentation purposes.\nNavigate complex web applications and extract specific data elements based on ARIA roles.\nIntegrate web browsing capabilities into AI agents for enhanced task automation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cosinusalpha/webctl`",
+    "usage": "```\nUse webctl to automate the following web task: [TASK_DESCRIPTION]. Execute the steps in [BROWSER_MODE] mode with [DELAY_MS] milliseconds between actions. Save the output to [OUTPUT_FILE_PATH]. Example: 'Use webctl to log in to the admin dashboard at https://admin.example.com, navigate to the Users section, and export the user list as a CSV to /tmp/users.csv in headless mode with 500ms delays between actions.'\n```\nCopy\n\n```\n```\n✅ Task completed successfully in 12.4 seconds.\n\nOutput saved to /tmp/users.csv:\n```\nUser ID,Name,Email,Status\n1001,Alex Johnson,alex.j@company.com,Active\n1002,Maria Garcia,maria.g@company.com,Inactive\n1003,Chen Wei,chen.w@company.com,Active\n1004,Sophia Patel,sophia.p@company.com,Pending\n\n📊 Summary:\n- Pages visited: 3 (login, users list, export)\n- Actions performed: 12 (clicks, form fills, downloads)\n- Errors encountered: 0\n- Total time: 12.4s\n\n🔍 Verification:\n- CSV file exists: ✅\n- Data integrity: ✅ (4 users, 4 columns)\n- Export button clicked: ✅\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "webctl#main-content",
+      "webctl#overview",
+      "webctl#setup",
+      "webctl#examples",
+      "webctl#tools",
+      "webctl#mcp",
+      "webctl#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Webctl is a command-line browser automation tool designed for AI agents and operations teams. Unlike MCP-based alternatives, webctl gives you control over what enters your agent's context—filter snapshots, pipe output through Unix tools, and cache results to reduce token costs. It supports Claude, Cursor, Gemini, Copilot, and other AI agents through both native skills and prompt integration. Webctl uses landmark-aware filtering, structured data extraction, and smart network detection to complete web tasks efficiently. Benchmarks show webctl achieves higher quality scores than comparable tools while reducing token usage and operational costs.\nAutomate the process of filling out web forms and submitting them.\nCapture interactive snapshots of web pages for testing or documentation purposes.\nNavigate complex web applications and extract specific data elements based on ARIA roles.\nIntegrate web browsing capabilities into AI agents for enhanced task automation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cosinusalpha/webctl`",
+    "usage_vi": "```\nUse webctl to automate the following web task: [TASK_DESCRIPTION]. Execute the steps in [BROWSER_MODE] mode with [DELAY_MS] milliseconds between actions. Save the output to [OUTPUT_FILE_PATH]. Example: 'Use webctl to log in to the admin dashboard at https://admin.example.com, navigate to the Users section, and export the user list as a CSV to /tmp/users.csv in headless mode with 500ms delays between actions.'\n```\nCopy\n\n```\n```\n✅ Task completed successfully in 12.4 seconds.\n\nOutput saved to /tmp/users.csv:\n```\nUser ID,Name,Email,Status\n1001,Alex Johnson,alex.j@company.com,Active\n1002,Maria Garcia,maria.g@company.com,Inactive\n1003,Chen Wei,chen.w@company.com,Active\n1004,Sophia Patel,sophia.p@company.com,Pending\n\n📊 Summary:\n- Pages visited: 3 (login, users list, export)\n- Actions performed: 12 (clicks, form fills, downloads)\n- Errors encountered: 0\n- Total time: 12.4s\n\n🔍 Verification:\n- CSV file exists: ✅\n- Data integrity: ✅ (4 users, 4 columns)\n- Export button clicked: ✅\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:14:54.979092Z",
+    "http_status": 200,
+    "content_hash": "6375336eb742621600d9fabd99f3e69bae8b72433871ce53b251cd2e4e499835",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webctl.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webctl.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Webctl - Browser Automation via CLI",
+  "short_description_vi": "Webctl enables browser automation via CLI for AI agents and humans. Operations teams use it to automate web tasks, reducing manual effort. It integrates with supported AI agents like Claude, streamlining workflows."
+}

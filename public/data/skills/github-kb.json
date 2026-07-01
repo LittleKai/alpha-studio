@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/github-kb",
+  "slug": "github-kb",
+  "name": "Github Kb",
+  "headline": "GitHub KB: Local AI Repository Knowledge Base",
+  "short_description": "Manages a local knowledge base of AI GitHub repositories integrated with Claude Code, enabling Claude to research projects and recommend AI tools, product designs, and technology stacks based on your ideas.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "goodniuniu",
+  "install_command": "git clone https://github.com/goodniuniu/github-kb.git",
+  "source_repo_url": "https://github.com/goodniuniu/github-kb",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "GitHub KB is a knowledge base management system that combines gh CLI with Claude Code to help you build custom AI tools and products. It lets you clone and organize AI-related GitHub repositories locally, then ask Claude to analyze them and provide technology recommendations based on your project ideas. Claude researches your curated repositories to suggest implementation approaches, tech stack combinations, and product designs. The system organizes repositories by category—AI assistants, coding agents, LLM frameworks, and deployment tools—making it easy to match your needs with relevant existing projects. This is useful for technical selection, learning project architectures, rapid prototyping, and designing optimal solutions by combining strengths from multiple open-source projects.\nTechnology selection: Get Claude to recommend the best repository combination for a specific AI feature\nArchitecture learning: Have Claude deeply analyze and compare multiple AI project implementations\nProduct prototyping: Quickly build custom AI tools using patterns from curated repositories\nSolution design: Combine insights from multiple projects to design optimal technical approaches",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/goodniuniu/github-kb`\n\n1. Clone the repository:\n   ```bash\n   git clone https://github.com/[USERNAME]/[PROJECT_NAME].git\n   ```\n2. Install dependencies:\n   ```bash\n   npm install\n   ```\n3. Configure environment variables in `.env` file.",
+    "usage": "```\nCreate a knowledge base for my GitHub project [PROJECT_NAME] in [PROGRAMMING_LANGUAGE]. Include sections for setup instructions, key features, and troubleshooting tips. Format the output as markdown and include code snippets where relevant.\n```\nCopy\n\n```\n# GitHub Knowledge Base for [PROJECT_NAME]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "github-kb#main-content",
+      "github-kb#overview",
+      "github-kb#setup",
+      "github-kb#examples",
+      "github-kb#tools",
+      "github-kb#mcp",
+      "github-kb#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GitHub KB is a knowledge base management system that combines gh CLI with Claude Code to help you build custom AI tools and products. It lets you clone and organize AI-related GitHub repositories locally, then ask Claude to analyze them and provide technology recommendations based on your project ideas. Claude researches your curated repositories to suggest implementation approaches, tech stack combinations, and product designs. The system organizes repositories by category—AI assistants, coding agents, LLM frameworks, and deployment tools—making it easy to match your needs with relevant existing projects. This is useful for technical selection, learning project architectures, rapid prototyping, and designing optimal solutions by combining strengths from multiple open-source projects.\nTechnology selection: Get Claude to recommend the best repository combination for a specific AI feature\nArchitecture learning: Have Claude deeply analyze and compare multiple AI project implementations\nProduct prototyping: Quickly build custom AI tools using patterns from curated repositories\nSolution design: Combine insights from multiple projects to design optimal technical approaches",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/goodniuniu/github-kb`\n\n1. Clone the repository:\n   ```bash\n   git clone https://github.com/[USERNAME]/[PROJECT_NAME].git\n   ```\n2. Install dependencies:\n   ```bash\n   npm install\n   ```\n3. Configure environment variables in `.env` file.",
+    "usage_vi": "```\nCreate a knowledge base for my GitHub project [PROJECT_NAME] in [PROGRAMMING_LANGUAGE]. Include sections for setup instructions, key features, and troubleshooting tips. Format the output as markdown and include code snippets where relevant.\n```\nCopy\n\n```\n# GitHub Knowledge Base for [PROJECT_NAME]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:48.220346Z",
+    "http_status": 200,
+    "content_hash": "ebcb71d730ae8e2b0659b878854dbe8e0b79670e3aad9a697c0bc3e116229b66",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-kb.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-kb.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GitHub KB: Local AI Repository Knowledge Base",
+  "short_description_vi": "Manages a local knowledge base of AI GitHub repositories integrated with Claude Code, enabling Claude to research projects and recommend AI tools, product designs, and technology stacks based on your ideas."
+}

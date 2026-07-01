@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opencontext",
+  "slug": "opencontext",
+  "name": "OpenContext",
+  "headline": "OpenContext - AI Agent Context Management",
+  "short_description": "A personal context store for AI agents and assistants. reuse your existing coding agent CLI (Codex/Claude/OpenCode) with built‑in Skills/tools and a desktop GUI to capture, search, and reuse project knowledge across agents and repos.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "0xranx",
+  "install_command": "git clone https://github.com/0xranx/OpenContext.git",
+  "source_repo_url": "https://github.com/0xranx/OpenContext",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "desktop-app",
+    "mcp",
+    "cli",
+    "agent",
+    "developer-tools",
+    "tauri",
+    "claude-code",
+    "ai",
+    "codex",
+    "context-management",
+    "opencode",
+    "ai-agents",
+    "knowledge-base",
+    "context"
+  ],
+  "sections": {
+    "overview": "OpenContext is a lightweight personal context and knowledge store designed for AI assistants and coding tools like Cursor, Claude Code, and Codex. It solves the problem of lost context across development sessions by providing a global library where agents can load project history, decisions, and background before acting. The system reuses your existing coding agent CLI while adding a desktop GUI, MCP server integration, built-in skills, and slash commands that let agents read, search, create, and iterate on stored knowledge. Users can manage contexts via CLI, desktop app, or web UI, eliminating repeated explanations and enabling smarter agent-assisted development.\nAutomatically load project context before starting a coding session with an AI agent.\nCreate and manage a global library of project knowledge accessible across different repositories.\nSearch for relevant documentation quickly to assist in coding tasks.\nPersist learned information from AI interactions to improve future responses.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/0xranx/OpenContext`",
+    "usage": "```\nUse OpenContext to [ACTION] for [PROJECT/REPO]. Start by [INITIAL_STEP] and reference past work where relevant. For example: 'Use OpenContext to review the error handling patterns in the [PROJECT_NAME] repo. Start by searching for 'try-catch' blocks in the last 6 months of commits and summarize common anti-patterns.'\n```\nCopy\n\n```\n### OpenContext Analysis: Error Handling Patterns in 'payment-gateway' Repo\n\n**Scope**: Reviewed 47 commits from the last 6 months (Jan 2024 - Jun 2024) across 12 files in the `payment-gateway` repo. Focused on `try-catch` blocks, `Promise` handling, and error logging.\n\n**Key Findings**:\n1. **Inconsistent Error Logging**: 68% of error handlers use `console.error()` without structured logging (e.g., no correlation IDs or stack traces). Only 3 files in `src/services/` use `winston` or `pino`.\n2. **Overly Broad Catch Blocks**: 42% of `try-catch` blocks catch `Error` instead of specific exceptions (e.g., `PaymentProcessingError`). This masks critical failures like network timeouts.\n3. **Missing Retry Logic**: 5 files lack retry mechanisms for transient errors (e.g., database timeouts). Only `src/integrations/stripe.js` implements exponential backoff.\n4. **Uncaught Promise Rejections**: 18% of async functions lack `.catch()` handlers, risking silent failures in production.\n\n**Recommended Actions**:\n- **Immediate**: Add structured logging to `src/utils/errorHandler.js` (template provided in `docs/error-handling.md`).\n- **Short-term**: Refactor 8 files to catch specific exceptions (e.g., `StripeError`, `DatabaseTimeoutError`).\n- **Long-term**: Implement retry logic in `src/services/paymentService.js` using the `p-retry` library (see `examples/retry-patterns.js`).\n\n**References**:\n- Past PR #124 (Mar 2024) introduced `winston` but was only partially adopted.\n- Issue #201 tracks silent failures in the `/checkout` endpoint.\n\n**Next Steps**: OpenContext has tagged all affected files with `error-handling` for easy tracking. Would you like me to generate a PR draft with these changes?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "opencontext#main-content",
+      "opencontext#overview",
+      "opencontext#setup",
+      "opencontext#examples",
+      "opencontext#tools",
+      "opencontext#mcp",
+      "opencontext#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OpenContext is a lightweight personal context and knowledge store designed for AI assistants and coding tools like Cursor, Claude Code, and Codex. It solves the problem of lost context across development sessions by providing a global library where agents can load project history, decisions, and background before acting. The system reuses your existing coding agent CLI while adding a desktop GUI, MCP server integration, built-in skills, and slash commands that let agents read, search, create, and iterate on stored knowledge. Users can manage contexts via CLI, desktop app, or web UI, eliminating repeated explanations and enabling smarter agent-assisted development.\nAutomatically load project context before starting a coding session with an AI agent.\nCreate and manage a global library of project knowledge accessible across different repositories.\nSearch for relevant documentation quickly to assist in coding tasks.\nPersist learned information from AI interactions to improve future responses.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/0xranx/OpenContext`",
+    "usage_vi": "```\nUse OpenContext to [ACTION] for [PROJECT/REPO]. Start by [INITIAL_STEP] and reference past work where relevant. For example: 'Use OpenContext to review the error handling patterns in the [PROJECT_NAME] repo. Start by searching for 'try-catch' blocks in the last 6 months of commits and summarize common anti-patterns.'\n```\nCopy\n\n```\n### OpenContext Analysis: Error Handling Patterns in 'payment-gateway' Repo\n\n**Scope**: Reviewed 47 commits from the last 6 months (Jan 2024 - Jun 2024) across 12 files in the `payment-gateway` repo. Focused on `try-catch` blocks, `Promise` handling, and error logging.\n\n**Key Findings**:\n1. **Inconsistent Error Logging**: 68% of error handlers use `console.error()` without structured logging (e.g., no correlation IDs or stack traces). Only 3 files in `src/services/` use `winston` or `pino`.\n2. **Overly Broad Catch Blocks**: 42% of `try-catch` blocks catch `Error` instead of specific exceptions (e.g., `PaymentProcessingError`). This masks critical failures like network timeouts.\n3. **Missing Retry Logic**: 5 files lack retry mechanisms for transient errors (e.g., database timeouts). Only `src/integrations/stripe.js` implements exponential backoff.\n4. **Uncaught Promise Rejections**: 18% of async functions lack `.catch()` handlers, risking silent failures in production.\n\n**Recommended Actions**:\n- **Immediate**: Add structured logging to `src/utils/errorHandler.js` (template provided in `docs/error-handling.md`).\n- **Short-term**: Refactor 8 files to catch specific exceptions (e.g., `StripeError`, `DatabaseTimeoutError`).\n- **Long-term**: Implement retry logic in `src/services/paymentService.js` using the `p-retry` library (see `examples/retry-patterns.js`).\n\n**References**:\n- Past PR #124 (Mar 2024) introduced `winston` but was only partially adopted.\n- Issue #201 tracks silent failures in the `/checkout` endpoint.\n\n**Next Steps**: OpenContext has tagged all affected files with `error-handling` for easy tracking. Would you like me to generate a PR draft with these changes?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:05.024753Z",
+    "http_status": 200,
+    "content_hash": "e9deb938836d772d765f21b6659a15a0e23bd554f15cfb7b11af0510a4b06465",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opencontext.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opencontext.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OpenContext - AI Agent Context Management",
+  "short_description_vi": "A personal context store for AI agents and assistants. reuse your existing coding agent CLI (Codex/Claude/OpenCode) with built‑in Skills/tools and a desktop GUI to capture, search, and reuse project knowledge across agents and repos."
+}

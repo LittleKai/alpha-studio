@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-cookbook",
+  "slug": "claude-code-cookbook",
+  "name": "Claude Code Cookbook",
+  "headline": "claude code settings cookbook collection",
+  "short_description": "Claude Code Cookbook provides pre-configured commands, roles, and automation scripts to enhance Claude Code's functionality. Operations teams can streamline workflows by integrating these settings into their existing systems, improving efficiency and reducing manual effort.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "wasabeef",
+  "install_command": "git clone https://github.com/wasabeef/claude-code-cookbook.git",
+  "source_repo_url": "https://github.com/wasabeef/claude-code-cookbook",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Cookbook is a collection of pre-configured commands, roles, and automation scripts designed to extend Claude Code's capabilities. It includes customizable roles for different development specialties, automation scripts for common tasks, and command configurations that integrate seamlessly into existing workflows. The cookbook helps developers reduce manual effort by providing ready-to-use templates and settings that can be adapted to specific project needs. It supports multiple programming languages and includes assets like audio notifications and visual feedback components. Developers can fork or integrate these configurations directly into their Claude Code environment to accelerate development cycles.\nAutomate pull request creation and management with custom slash commands.\nSwitch to expert roles for specialized assistance in security, architecture, and performance.\nUtilize automated scripts to trigger actions based on specific development events.\nEnhance code quality through dedicated commands for refactoring and analyzing dependencies.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wasabeef/claude-code-cookbook`",
+    "usage": "```\nUse the Claude Code Cookbook to [ACTION] for [SYSTEM/TARGET]. Follow the [SPECIFIC_COOKBOOK_ENTRY] guidelines. Example: 'Use the Claude Code Cookbook to automate the deployment of a Python Flask app to AWS Elastic Beanstalk following the 'deploy-python-app' entry. Ensure the script includes environment variable validation and rollback capabilities.'\n```\nCopy\n\n```\nHere’s the automated deployment script generated using the 'deploy-python-app' entry from the Claude Code Cookbook for a Flask application targeting AWS Elastic Beanstalk:\n\n```python\n# deploy_flask_app.py\nimport os\nimport subprocess\nfrom pathlib import Path\n\ndef validate_environment():\n    \"\"\"Ensure required environment variables are set.\"\"\"\n    required_vars = ['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_REGION', 'EB_APP_NAME']\n    missing_vars = [var for var in required_vars if var not in os.environ]\n    if missing_vars:\n        raise ValueError(f\"Missing environment variables: {', '.join(missing_vars)}\")\n\ndef deploy_to_elastic_beanstalk():\n    \"\"\"Deploy the Flask app to AWS Elastic Beanstalk with rollback support.\"\"\"\n    # Initialize EB CLI if not already done\n    if not Path('.elasticbeanstalk').exists():\n        subprocess.run(['eb', 'init', '-p', 'python-3.9', os.getenv('EB_APP_NAME'), '--region', os.getenv('AWS_REGION')], check=True)\n    \n    # Create deployment package\n    subprocess.run(['pip', 'install', '-r', 'requirements.txt', '-t', 'vendor/'], check=True)\n    subprocess.run(['zip', '-r', 'deploy.zip', '.', '-x', '*.git*', '*.env*'], check=True)\n    \n    # Deploy to EB\n    try:\n        subprocess.run(['eb', 'deploy', '--label', 'flask-app-deploy-v1'], check=True)\n        print(\"Deployment successful! URL:\", subprocess.run(['eb', 'status', '--json'], capture_output=True, text=True).stdout)\n    except subprocess.CalledProcessError as e:\n        print(f\"Deployment failed. Rolling back...\")\n        subprocess.run(['eb', 'deploy', '--label', 'flask-app-rollback-v1'], check=True)\n        raise\n\nif __name__ == \"__main__\":\n    validate_environment()\n    deploy_to_elastic_beanstalk()\n```\n\n**Key Features Implemented:**\n1. **Environment Validation**: Checks for AWS credentials and app name before proceeding.\n2. **Rollback Capability**: Automatically deploys a fallback version if the primary deployment fails.\n3. **Modular Design**: Separates validation, deployment, and rollback logic for maintainability.\n4. **EB CLI Integration**: Uses AWS Elastic Beanstalk CLI for seamless deployments.\n\nThis script reduces manual effort by 70% compared to traditional deployment methods, as it handles environment setup, package creation, and rollback automatically. The cookbook entry ensures consistency across deployments and reduces human error in configuration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-cookbook#main-content",
+      "claude-code-cookbook#overview",
+      "claude-code-cookbook#setup",
+      "claude-code-cookbook#examples",
+      "claude-code-cookbook#tools",
+      "claude-code-cookbook#mcp",
+      "claude-code-cookbook#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Cookbook là một bộ sưu tập các lệnh, roles và script tự động hóa được cấu hình sẵn nhằm mở rộng khả năng của Claude Code. Nó bao gồm các roles có thể tùy chỉnh cho các chuyên môn phát triển khác nhau, các script tự động hóa cho các tác vụ phổ biến và các cấu hình lệnh tích hợp mượt mà vào quy trình làm việc hiện có. Cookbook này giúp các nhà phát triển giảm bớt thao tác thủ công bằng cách cung cấp các mẫu và cấu hình có sẵn để dễ dàng tùy chỉnh theo nhu cầu riêng của từng dự án. Nó hỗ trợ nhiều ngôn ngữ lập trình và bao gồm các tài nguyên như thông báo âm thanh và các thành phần phản hồi trực quan. Các nhà phát triển có thể fork hoặc tích hợp trực tiếp các cấu hình này vào môi trường Claude Code của họ để đẩy nhanh chu kỳ phát triển.\nTự động hóa việc tạo và quản lý pull request bằng các slash command tùy chỉnh.\nChuyển sang các roles chuyên gia để được hỗ trợ chuyên sâu về bảo mật, kiến trúc và hiệu năng.\nSử dụng các script tự động để kích hoạt hành động dựa trên các sự kiện phát triển cụ thể.\nNâng cao chất lượng mã nguồn thông qua các lệnh chuyên dụng để refactor và phân tích dependency.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/wasabeef/claude-code-cookbook`",
+    "usage_vi": "```\nUse the Claude Code Cookbook to [ACTION] for [SYSTEM/TARGET]. Follow the [SPECIFIC_COOKBOOK_ENTRY] guidelines. Example: 'Use the Claude Code Cookbook to automate the deployment of a Python Flask app to AWS Elastic Beanstalk following the 'deploy-python-app' entry. Ensure the script includes environment variable validation and rollback capabilities.'\n```\nCopy\n\n```\nHere’s the automated deployment script generated using the 'deploy-python-app' entry from the Claude Code Cookbook for a Flask application targeting AWS Elastic Beanstalk:\n\n```python\n# deploy_flask_app.py\nimport os\nimport subprocess\nfrom pathlib import Path\n\ndef validate_environment():\n    \"\"\"Đảm bảo các biến môi trường bắt buộc đã được thiết lập.\"\"\"\n    required_vars = ['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_REGION', 'EB_APP_NAME']\n    missing_vars = [var for var in required_vars if var not in os.environ]\n    if missing_vars:\n        raise ValueError(f\"Missing environment variables: {', '.join(missing_vars)}\")\n\ndef deploy_to_elastic_beanstalk():\n    \"\"\"Triển khai ứng dụng Flask lên AWS Elastic Beanstalk có hỗ trợ rollback.\"\"\"\n    # Khởi tạo EB CLI nếu chưa thực hiện\n    if not Path('.elasticbeanstalk').exists():\n        subprocess.run(['eb', 'init', '-p', 'python-3.9', os.getenv('EB_APP_NAME'), '--region', os.getenv('AWS_REGION')], check=True)\n    \n    # Tạo gói triển khai\n    subprocess.run(['pip', 'install', '-r', 'requirements.txt', '-t', 'vendor/'], check=True)\n    subprocess.run(['zip', '-r', 'deploy.zip', '.', '-x', '*.git*', '*.env*'], check=True)\n    \n    # Triển khai lên EB\n    try:\n        subprocess.run(['eb', 'deploy', '--label', 'flask-app-deploy-v1'], check=True)\n        print(\"Triển khai thành công! URL:\", subprocess.run(['eb', 'status', '--json'], capture_output=True, text=True).stdout)\n    except subprocess.CalledProcessError as e:\n        print(f\"Triển khai thất bại. Đang rollback...\")\n        subprocess.run(['eb', 'deploy', '--label', 'flask-app-rollback-v1'], check=True)\n        raise\n\nif __name__ == \"__main__\":\n    validate_environment()\n    deploy_to_elastic_beanstalk()\n```\n\n**Các tính năng chính được triển khai:**\n1. **Xác thực môi trường (Environment Validation)**: Kiểm tra thông tin xác thực AWS và tên ứng dụng trước khi tiếp tục.\n2. **Khả năng Rollback**: Tự động triển khai phiên bản dự phòng (fallback) nếu quá trình triển khai chính gặp lỗi.\n3. **Thiết kế dạng Module (Modular Design)**: Tách biệt logic xác thực, triển khai và rollback để dễ bảo trì.\n4. **Tích hợp EB CLI**: Sử dụng AWS Elastic Beanstalk CLI để triển khai mượt mà.\n\nScript này giúp giảm 70% thao tác thủ công so với các phương pháp triển khai truyền thống nhờ tự động hóa việc thiết lập môi trường, tạo gói và rollback. Cấu hình cookbook này đảm bảo tính đồng nhất giữa các lần triển khai và giảm thiểu sai sót của con người trong quá trình cấu hình.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:55:44.131740Z",
+    "http_status": 200,
+    "content_hash": "b78954f11ffe0b0a3c8dcb7bcddeecb046fc9c33d3e246a63f9511b6dcd90142",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-cookbook.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-cookbook.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ sưu tập cookbook cấu hình Claude Code",
+  "short_description_vi": "Claude Code Cookbook cung cấp các lệnh, roles và script tự động hóa được cấu hình sẵn để tối ưu hóa tính năng của Claude Code. Các đội ngũ Operations có thể tinh gọn quy trình làm việc bằng cách tích hợp các cấu hình này vào hệ thống hiện tại, giúp nâng cao hiệu quả và giảm thiểu thao tác thủ công."
+}

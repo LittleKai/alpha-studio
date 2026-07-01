@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/recall",
+  "slug": "recall",
+  "name": "ReCall",
+  "headline": "ReCall: Advanced AI Agent for Tool Reasoning",
+  "short_description": "ReCall enhances LLMs by integrating reinforcement learning for effective reasoning with search and tool calls. This innovative approach helps AI agents to use external tools, improving their functionality and decision-making capabilities.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Agent-RL",
+  "install_command": "claude install Agent-RL/ReCall",
+  "source_repo_url": "https://github.com/Agent-RL/ReCall",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "agent",
+    "llm",
+    "function-calling",
+    "reinforcement-learning",
+    "tool-use"
+  ],
+  "sections": {
+    "overview": "ReCall is a reinforcement learning framework that teaches large language models to reason more effectively by learning when and how to call external tools. It uses <tool_call> tags to control rollouts and train agents to make better decisions about tool usage. The framework is designed as a drop-in replacement for reasoning systems, enabling AI agents to improve their functionality through learned tool-calling behavior. ReCall works with LLMs like Claude and integrates with agent platforms including Claude Code and Cursor, helping developers build more capable AI agents that can autonomously decide which tools to invoke.\nEnhancing AI responses by integrating real-time data from external APIs.\nAutomating interactions with various tools to streamline workflows and improve efficiency.\nImproving search accuracy in AI queries by utilizing advanced reasoning with tool calls.\nFacilitating complex decision-making processes through the integration of multiple tool outputs.",
+    "setup": "Terminal\nCopy\n`claude install Agent-RL/ReCall`\n`git clone https://github.com/Agent-RL/ReCall`",
+    "usage": "```\nUse the ReCall skill to analyze the following [AUTOMATION_WORKFLOW] and identify opportunities to optimize tool calls, reduce redundant actions, and improve decision-making. Suggest specific refinements to the workflow that leverage reinforcement learning for better reasoning. Workflow: [PASTE_WORKFLOW_HERE]. Focus on: 1) Tool selection efficiency, 2) Conditional logic improvements, 3) Error handling optimizations, and 4) Performance benchmarks to track success.\n```\nCopy\n\n```\n### ReCall Analysis: Optimizing the Automa Lead Generation Workflow\n\n**Current Workflow Overview:**\nThe provided Automa workflow automates lead generation by:\n1. Scraping LinkedIn Sales Navigator for leads matching [TARGET_INDUSTRY] and [JOB_TITLE]\n2. Validating email addresses via Hunter.io API\n3. Enriching contact data with Clearbit\n4. Adding valid leads to HubSpot CRM\n5. Sending a personalized LinkedIn connection request via PhantomBuster\n\n**Key Optimization Opportunities Identified:**\n\n1. **Tool Selection Efficiency:**\n   - The current workflow uses 4 separate tools (LinkedIn scraper, Hunter.io, Clearbit, PhantomBuster) with sequential API calls. ReCall suggests consolidating steps 2 and 3 by using Clearbit's enrichment API first, which can validate emails *and* enrich data in a single call. This reduces latency by 40% and API costs by 25%.\n   - For step 5, PhantomBuster's connection requests have a 15% failure rate due to LinkedIn's rate limits. ReCall recommends implementing a 30-second delay between requests and randomizing connection message templates to avoid detection.\n\n2. **Conditional Logic Improvements:**\n   - The workflow lacks dynamic decision points. ReCall proposes adding:\n     - A \"high-value lead\" threshold (e.g., leads with >500 connections or recent job changes) that triggers a priority outreach sequence via email *and* LinkedIn.\n     - A \"low-confidence lead\" filter for contacts with unverified emails or incomplete Clearbit data, which should be routed to a manual review queue.\n   - Example rule: `IF (Clearbit.email_verified = true AND Clearbit.seniority = \"Director+\") THEN trigger_priority_outreach()`.\n\n3. **Error Handling Optimizations:**\n   - The workflow currently fails silently when Hunter.io API rate limits are hit. ReCall suggests implementing an exponential backoff retry mechanism with a maximum of 3 attempts, falling back to Clearbit's email verification if Hunter.io fails.\n   - For PhantomBuster, ReCall recommends logging failed connection attempts and automatically retrying after 24 hours with a different message template.\n\n4. **Performance Benchmarks:**\n   - **Current Metrics:** 120 leads processed/hour, 22% email open rate, 8% reply rate.\n   - **ReCall-Optimized Metrics:**\n     - Target: 200 leads/hour (via tool consolidation)\n     - Target: 30% email open rate (via personalized subject lines generated from Clearbit data)\n     - Target: 15% reply rate (via priority outreach for high-value leads)\n   - ReCall suggests tracking these metrics in a dashboard (e.g., Google Data Studio) and adjusting thresholds dynamically based on performance.\n\n**Implementation Steps:**\n1. Update the workflow to use Clearbit's bulk enrichment API for steps 2-3.\n2. Add conditional logic for high-value leads using Clearbit's `seniority` and `company_size` fields.\n3. Implement the retry mechanism for Hunter.io and PhantomBuster failures.\n4. Deploy the optimized workflow and monitor the new benchmarks for 7 days.\n\n**Expected Impact:**\n- 35% faster lead processing\n- 40% higher reply rates for high-value leads\n- 20% reduction in API costs\n- 95% reduction in PhantomBuster failures\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot",
+      "Advanced skill - requires experience with AI agents"
+    ],
+    "related_skills": [
+      "recall#main-content",
+      "recall#overview",
+      "recall#setup",
+      "recall#examples",
+      "recall#tools",
+      "recall#mcp",
+      "recall#related",
+      "claude-skills",
+      "firecrawl",
+      "glooit"
+    ],
+    "overview_vi": "ReCall is a reinforcement learning framework that teaches large language models to reason more effectively by learning when and how to call external tools. It uses <tool_call> tags to control rollouts and train agents to make better decisions about tool usage. The framework is designed as a drop-in replacement for reasoning systems, enabling AI agents to improve their functionality through learned tool-calling behavior. ReCall works with LLMs like Claude and integrates with agent platforms including Claude Code and Cursor, helping developers build more capable AI agents that can autonomously decide which tools to invoke.\nEnhancing AI responses by integrating real-time data from external APIs.\nAutomating interactions with various tools to streamline workflows and improve efficiency.\nImproving search accuracy in AI queries by utilizing advanced reasoning with tool calls.\nFacilitating complex decision-making processes through the integration of multiple tool outputs.",
+    "setup_vi": "Terminal\nCopy\n`claude install Agent-RL/ReCall`\n`git clone https://github.com/Agent-RL/ReCall`",
+    "usage_vi": "```\nUse the ReCall skill to analyze the following [AUTOMATION_WORKFLOW] and identify opportunities to optimize tool calls, reduce redundant actions, and improve decision-making. Suggest specific refinements to the workflow that leverage reinforcement learning for better reasoning. Workflow: [PASTE_WORKFLOW_HERE]. Focus on: 1) Tool selection efficiency, 2) Conditional logic improvements, 3) Error handling optimizations, and 4) Performance benchmarks to track success.\n```\nCopy\n\n```\n### ReCall Analysis: Optimizing the Automa Lead Generation Workflow\n\n**Current Workflow Overview:**\nThe provided Automa workflow automates lead generation by:\n1. Scraping LinkedIn Sales Navigator for leads matching [TARGET_INDUSTRY] and [JOB_TITLE]\n2. Validating email addresses via Hunter.io API\n3. Enriching contact data with Clearbit\n4. Adding valid leads to HubSpot CRM\n5. Sending a personalized LinkedIn connection request via PhantomBuster\n\n**Key Optimization Opportunities Identified:**\n\n1. **Tool Selection Efficiency:**\n   - The current workflow uses 4 separate tools (LinkedIn scraper, Hunter.io, Clearbit, PhantomBuster) with sequential API calls. ReCall suggests consolidating steps 2 and 3 by using Clearbit's enrichment API first, which can validate emails *and* enrich data in a single call. This reduces latency by 40% and API costs by 25%.\n   - For step 5, PhantomBuster's connection requests have a 15% failure rate due to LinkedIn's rate limits. ReCall recommends implementing a 30-second delay between requests and randomizing connection message templates to avoid detection.\n\n2. **Conditional Logic Improvements:**\n   - The workflow lacks dynamic decision points. ReCall proposes adding:\n     - A \"high-value lead\" threshold (e.g., leads with >500 connections or recent job changes) that triggers a priority outreach sequence via email *and* LinkedIn.\n     - A \"low-confidence lead\" filter for contacts with unverified emails or incomplete Clearbit data, which should be routed to a manual review queue.\n   - Example rule: `IF (Clearbit.email_verified = true AND Clearbit.seniority = \"Director+\") THEN trigger_priority_outreach()`.\n\n3. **Error Handling Optimizations:**\n   - The workflow currently fails silently when Hunter.io API rate limits are hit. ReCall suggests implementing an exponential backoff retry mechanism with a maximum of 3 attempts, falling back to Clearbit's email verification if Hunter.io fails.\n   - For PhantomBuster, ReCall recommends logging failed connection attempts and automatically retrying after 24 hours with a different message template.\n\n4. **Performance Benchmarks:**\n   - **Current Metrics:** 120 leads processed/hour, 22% email open rate, 8% reply rate.\n   - **ReCall-Optimized Metrics:**\n     - Target: 200 leads/hour (via tool consolidation)\n     - Target: 30% email open rate (via personalized subject lines generated from Clearbit data)\n     - Target: 15% reply rate (via priority outreach for high-value leads)\n   - ReCall suggests tracking these metrics in a dashboard (e.g., Google Data Studio) and adjusting thresholds dynamically based on performance.\n\n**Implementation Steps:**\n1. Update the workflow to use Clearbit's bulk enrichment API for steps 2-3.\n2. Add conditional logic for high-value leads using Clearbit's `seniority` and `company_size` fields.\n3. Implement the retry mechanism for Hunter.io and PhantomBuster failures.\n4. Deploy the optimized workflow and monitor the new benchmarks for 7 days.\n\n**Expected Impact:**\n- 35% faster lead processing\n- 40% higher reply rates for high-value leads\n- 20% reduction in API costs\n- 95% reduction in PhantomBuster failures\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:35:10.426391Z",
+    "http_status": 200,
+    "content_hash": "1ae25ad6152cc019e32b00cfacba8cc3397a02b243794fa72f8f5b655ffc96bc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\recall.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\recall.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ReCall: Advanced AI Agent for Tool Reasoning",
+  "short_description_vi": "ReCall enhances LLMs by integrating reinforcement learning for effective reasoning with search and tool calls. This innovative approach helps AI agents to use external tools, improving their functionality and decision-making capabilities."
+}

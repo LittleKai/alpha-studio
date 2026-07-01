@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/colossus",
+  "slug": "colossus",
+  "name": "popsicle",
+  "headline": "Colossus - Self-Hosted Email Marketing",
+  "short_description": "Colossus is a self-hosted email marketing solution built with Django and Python. It automates email campaigns, manages mailing lists, and integrates with existing marketing workflows. Ideal for marketing teams seeking control over their email infrastructure.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "vitorfs",
+  "install_command": "git clone https://github.com/vitorfs/colossus.git",
+  "source_repo_url": "https://github.com/vitorfs/colossus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "python",
+    "email-automation",
+    "python3",
+    "mailing-list",
+    "automation",
+    "django",
+    "email-marketing",
+    "mailing"
+  ],
+  "sections": {
+    "overview": "Colossus is a self-hosted email marketing solution that gives teams complete control over their email infrastructure. Built with Django and Python, it enables users to create and manage multiple mailing lists, design reusable email templates, and schedule campaigns with precise send times. The platform tracks email opens and clicks, provides geolocation-based reports, and integrates seamlessly with any SMTP service including Mailgun, SendGrid, and Mandrill. Features include list importing from CSV, customizable sign-up pages with double opt-in, and the ability to modify link URLs after sending. Teams seeking privacy, data ownership, and infrastructure control over third-party email platforms benefit most from Colossus.\nAutomate the process of importing email lists from CSV files or other providers.\nSchedule email campaigns to be sent at specific dates and times.\nTrack and analyze email open rates and click-through rates for better engagement insights.\nCreate customized sign-up pages for new subscribers to enhance user experience.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vitorfs/colossus`",
+    "usage": "```\nSet up and configure a self-hosted email marketing campaign using Colossus for [BUSINESS_NAME]. The campaign should target [TARGET_AUDIENCE] with the goal of [CAMPAIGN_GOAL]. Include a welcome series for new subscribers, a promotional email for [PRODUCT/SERVICE], and a follow-up sequence based on engagement. Use [BRAND_TONE] for all communications and ensure compliance with [REGULATORY_REQUIREMENTS, e.g., GDPR, CAN-SPAM]. Provide the campaign structure, email templates, and automation rules in Colossus-compatible format.\n```\nCopy\n\n```\nHere’s a complete Colossus-compatible email marketing campaign for **GreenEarth Organics**, a sustainable home goods retailer targeting eco-conscious millennials with the goal of driving first-time purchases of their new bamboo toothbrush line.\n\n**Campaign Structure:**\n1. **Welcome Series (3 emails):**\n   - **Email 1 (Day 0):** Subject: *Welcome to GreenEarth—Your Journey Starts Here!*\n     *Content:* Thank subscribers for joining, introduce the brand’s mission, and offer a 10% discount on their first order. Include a CTA to shop the bamboo toothbrush collection.\n     *Automation Trigger:* Sent immediately upon subscription.\n   - **Email 2 (Day 3):** Subject: *Meet Your New Bamboo Toothbrush!*\n     *Content:* Highlight the benefits of bamboo toothbrushes (biodegradable, plastic-free) with a short video demo. Include a comparison table vs. plastic toothbrushes and a CTA to purchase.\n   - **Email 3 (Day 7):** Subject: *Limited-Time Bonus: Free Bamboo Toothbrush Holder!*\n     *Content:* Announce a free bamboo toothbrush holder for orders over $25. Include a countdown timer for urgency and a CTA to shop now.\n\n2. **Promotional Email (Day 10):**\n   - **Subject:** *Your Sustainable Smile Starts Here—20% Off Bamboo Toothbrushes!*\n     *Content:* Feature the bamboo toothbrush bundle (5-pack) with a 20% discount. Include customer testimonials, sustainability stats, and a prominent CTA button.\n\n3. **Follow-Up Sequence (Engagement-Based):**\n   - **If opened but not purchased:** Send Email 4 (Day 14): Subject: *Did You Forget Something?* with a reminder of the discount and a personalized recommendation (e.g., \"You might also love our bamboo floss!\").\n   - **If purchased:** Send Email 5 (Day 17): Subject: *Thank You + Your Impact!* highlighting the environmental benefit of their purchase (e.g., \"You’ve saved 5 plastic toothbrushes from landfills!\") and inviting them to join the brand’s sustainability community.\n\n**Automation Rules in Colossus:**\n- **Segmentation:** Tag subscribers as \"New Subscribers\" (Day 0), \"Engaged\" (opened any email), or \"Purchased\" (completed a purchase).\n- **Unsubscribes:** Automatically remove unsubscribed users from all future campaigns.\n- **Compliance:** Include an unsubscribe link in every email and honor opt-out requests within 24 hours.\n- **Metrics Tracking:** Monitor open rates, click-through rates, and conversion rates for each email in Colossus’s analytics dashboard.\n\n**Brand Tone:** Warm, informative, and slightly playful (e.g., \"Brush guilt-free with our bamboo toothbrushes!\").\n\n**Deliverables:**\n- JSON-formatted campaign structure for Colossus import.\n- HTML email templates with inline CSS for compatibility.\n- Step-by-step instructions for setting up the automation in Colossus.\n\nThis campaign is designed to nurture leads, drive conversions, and build long-term customer loyalty while ensuring full control over data and compliance.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "colossus#main-content",
+      "colossus#overview",
+      "colossus#setup",
+      "colossus#examples",
+      "colossus#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Colossus is a self-hosted email marketing solution that gives teams complete control over their email infrastructure. Built with Django and Python, it enables users to create and manage multiple mailing lists, design reusable email templates, and schedule campaigns with precise send times. The platform tracks email opens and clicks, provides geolocation-based reports, and integrates seamlessly with any SMTP service including Mailgun, SendGrid, and Mandrill. Features include list importing from CSV, customizable sign-up pages with double opt-in, and the ability to modify link URLs after sending. Teams seeking privacy, data ownership, and infrastructure control over third-party email platforms benefit most from Colossus.\nAutomate the process of importing email lists from CSV files or other providers.\nSchedule email campaigns to be sent at specific dates and times.\nTrack and analyze email open rates and click-through rates for better engagement insights.\nCreate customized sign-up pages for new subscribers to enhance user experience.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vitorfs/colossus`",
+    "usage_vi": "```\nSet up and configure a self-hosted email marketing campaign using Colossus for [BUSINESS_NAME]. The campaign should target [TARGET_AUDIENCE] with the goal of [CAMPAIGN_GOAL]. Include a welcome series for new subscribers, a promotional email for [PRODUCT/SERVICE], and a follow-up sequence based on engagement. Use [BRAND_TONE] for all communications and ensure compliance with [REGULATORY_REQUIREMENTS, e.g., GDPR, CAN-SPAM]. Provide the campaign structure, email templates, and automation rules in Colossus-compatible format.\n```\nCopy\n\n```\nHere’s a complete Colossus-compatible email marketing campaign for **GreenEarth Organics**, a sustainable home goods retailer targeting eco-conscious millennials with the goal of driving first-time purchases of their new bamboo toothbrush line.\n\n**Campaign Structure:**\n1. **Welcome Series (3 emails):**\n   - **Email 1 (Day 0):** Subject: *Welcome to GreenEarth—Your Journey Starts Here!*\n     *Content:* Thank subscribers for joining, introduce the brand’s mission, and offer a 10% discount on their first order. Include a CTA to shop the bamboo toothbrush collection.\n     *Automation Trigger:* Sent immediately upon subscription.\n   - **Email 2 (Day 3):** Subject: *Meet Your New Bamboo Toothbrush!*\n     *Content:* Highlight the benefits of bamboo toothbrushes (biodegradable, plastic-free) with a short video demo. Include a comparison table vs. plastic toothbrushes and a CTA to purchase.\n   - **Email 3 (Day 7):** Subject: *Limited-Time Bonus: Free Bamboo Toothbrush Holder!*\n     *Content:* Announce a free bamboo toothbrush holder for orders over $25. Include a countdown timer for urgency and a CTA to shop now.\n\n2. **Promotional Email (Day 10):**\n   - **Subject:** *Your Sustainable Smile Starts Here—20% Off Bamboo Toothbrushes!*\n     *Content:* Feature the bamboo toothbrush bundle (5-pack) with a 20% discount. Include customer testimonials, sustainability stats, and a prominent CTA button.\n\n3. **Follow-Up Sequence (Engagement-Based):**\n   - **If opened but not purchased:** Send Email 4 (Day 14): Subject: *Did You Forget Something?* with a reminder of the discount and a personalized recommendation (e.g., \"You might also love our bamboo floss!\").\n   - **If purchased:** Send Email 5 (Day 17): Subject: *Thank You + Your Impact!* highlighting the environmental benefit of their purchase (e.g., \"You’ve saved 5 plastic toothbrushes from landfills!\") and inviting them to join the brand’s sustainability community.\n\n**Automation Rules in Colossus:**\n- **Segmentation:** Tag subscribers as \"New Subscribers\" (Day 0), \"Engaged\" (opened any email), or \"Purchased\" (completed a purchase).\n- **Unsubscribes:** Automatically remove unsubscribed users from all future campaigns.\n- **Compliance:** Include an unsubscribe link in every email and honor opt-out requests within 24 hours.\n- **Metrics Tracking:** Monitor open rates, click-through rates, and conversion rates for each email in Colossus’s analytics dashboard.\n\n**Brand Tone:** Warm, informative, and slightly playful (e.g., \"Brush guilt-free with our bamboo toothbrushes!\").\n\n**Deliverables:**\n- JSON-formatted campaign structure for Colossus import.\n- HTML email templates with inline CSS for compatibility.\n- Step-by-step instructions for setting up the automation in Colossus.\n\nThis campaign is designed to nurture leads, drive conversions, and build long-term customer loyalty while ensuring full control over data and compliance.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:12:41.824056Z",
+    "http_status": 200,
+    "content_hash": "5486c2b3f20cb9106bc4569521b7bc1990782f481ba4d9ee5e49c958286cae18",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\colossus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\colossus.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Colossus - Self-Hosted Email Marketing",
+  "short_description_vi": "Colossus is a self-hosted email marketing solution built with Django and Python. It automates email campaigns, manages mailing lists, and integrates with existing marketing workflows. Ideal for marketing teams seeking control over their email infrastructure."
+}

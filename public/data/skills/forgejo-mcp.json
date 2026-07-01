@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/forgejo-mcp",
+  "slug": "forgejo-mcp",
+  "name": "Forgejo MCP",
+  "headline": "Forgejo MCP - AI Repository Management",
+  "short_description": "Forgejo MCP server enables AI assistants to manage Gitea/Forgejo repositories. Operations teams can automate repository tasks, streamline workflows, and integrate with AI tools like Claude, Gemini, and Copilot. Connects to Gitea/Forgejo instances and AI assistants for enhanced code repository management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "raohwork",
+  "install_command": "git clone https://github.com/raohwork/forgejo-mcp.git",
+  "source_repo_url": "https://github.com/raohwork/forgejo-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-desktop",
+    "mcp-server",
+    "gemini-cli",
+    "gitea",
+    "forgejo",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Forgejo MCP is a Model Context Protocol server that enables AI assistants like Claude, Gemini, and Copilot to manage Gitea and Forgejo repositories. It automates issue management, label categorization, milestone tracking, wiki organization, and pull request review assistance through natural language commands. Teams can use it to streamline repository workflows by having AI analyze project progress, prioritize tasks based on issue content, manage releases, and organize documentation. The server runs in stdio mode for local integration or HTTP mode for remote access, supporting both single-user and multi-user deployments with flexible authentication options.\nAutomatically categorize and tag issues based on content analysis\nTrack project progress and identify workflow bottlenecks with AI insights\nPrioritize tasks by analyzing issue descriptions and dependencies\nOrganize wiki documentation and release notes automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/raohwork/forgejo-mcp`",
+    "usage": "```\nConnect to the Forgejo MCP server for [COMPANY] in the [INDUSTRY] sector. Automate the following repository tasks: [TASKS]. Ensure compatibility with [AI_TOOLS] and provide a summary of the operations performed.\n```\nCopy\n\n```\n# Forgejo MCP Server Operations Summary",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "forgejo-mcp#main-content",
+      "forgejo-mcp#overview",
+      "forgejo-mcp#setup",
+      "forgejo-mcp#examples",
+      "forgejo-mcp#tools",
+      "forgejo-mcp#mcp",
+      "forgejo-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Forgejo MCP là một Model Context Protocol server cho phép các trợ lý AI như Claude, Gemini và Copilot quản lý các repository Gitea và Forgejo. Công cụ này giúp tự động hóa việc quản lý issue, phân loại label, theo dõi milestone, tổ chức wiki và hỗ trợ review pull request thông qua các câu lệnh bằng ngôn ngữ tự nhiên. Các đội ngũ có thể tối ưu hóa quy trình làm việc trên repository bằng cách để AI phân tích tiến độ dự án, ưu tiên công việc dựa trên nội dung issue, quản lý release và sắp xếp tài liệu. Server hoạt động ở chế độ stdio để tích hợp local hoặc chế độ HTTP để truy cập từ xa, hỗ trợ cả triển khai đơn người dùng (single-user) và đa người dùng (multi-user) với các tùy chọn xác thực linh hoạt.\n\nTự động phân loại và gắn tag các issue dựa trên phân tích nội dung\nTheo dõi tiến độ dự án và phát hiện các điểm nghẽn trong quy trình làm việc nhờ AI insights\nƯu tiên các tác vụ bằng cách phân tích mô tả và sự phụ thuộc (dependencies) của issue\nTự động sắp xếp tài liệu wiki và release notes",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/raohwork/forgejo-mcp`",
+    "usage_vi": "```\nKết nối với Forgejo MCP server cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tự động hóa các tác vụ repository sau: [TASKS]. Đảm bảo tính tương thích với [AI_TOOLS] và cung cấp bản tóm tắt các thao tác đã thực hiện.\n```\nSao chép\n\n```\n# Bản tóm tắt hoạt động của Forgejo MCP Server\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:18.859295Z",
+    "http_status": 200,
+    "content_hash": "95870d17f6b4e87d67962b5c29bd4876094bc8448b1a98653d007b2afe97e93e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\forgejo-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\forgejo-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Forgejo MCP - Quản lý Repository bằng AI",
+  "short_description_vi": "Forgejo MCP server cho phép các trợ lý AI quản lý các repository Gitea/Forgejo. Các đội ngũ vận hành có thể tự động hóa các tác vụ repository, tối ưu hóa quy trình làm việc và tích hợp với các công cụ AI như Claude, Gemini và Copilot. Kết nối trực tiếp với các instance Gitea/Forgejo và trợ lý AI để nâng cao hiệu quả quản lý repository."
+}

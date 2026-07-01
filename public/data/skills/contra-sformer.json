@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/contra-sformer",
+  "slug": "contra-sformer",
+  "name": "Contra-Sformer",
+  "headline": "Contra-Sformer: Surgical Skill Assessment",
+  "short_description": "Code for 'Keep Your Eye on the Best: Contrastive Regression Transformer for Skill Assessment in Robotic Surgery', published in IEEE Robotics and Automation Letters (RA-L), February, 2023.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "anastadimi",
+  "install_command": "git clone https://github.com/anastadimi/Contra-Sformer.git",
+  "source_repo_url": "https://github.com/anastadimi/Contra-Sformer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "video-understanding",
+    "skills-assessment",
+    "contrastive-learning",
+    "transformers",
+    "deep-learning",
+    "robotic-surgery"
+  ],
+  "sections": {
+    "overview": "Contra-Sformer is a video-based framework for automated skill assessment in robotic surgery, comparing test videos against reference videos representing optimal surgical execution. It combines ResNet-18 spatial feature extraction with temporal convolutional networks and an action-aware transformer to generate contrastive features that capture performance differences. The system achieves Spearman correlation scores of 0.65-0.89 on the JIGSAWS dataset across knot tying, needle passing, and suturing tasks. It identifies suboptimal execution and errors without explicit error annotations, enabling targeted feedback for surgical trainees during real-time assessment.\nAutomated evaluation of surgical resident performance during training\nReal-time feedback generation for robotic surgery trainees\nObjective skill assessment across multiple surgical tasks\nError detection and localization in robot-assisted procedures",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anastadimi/Contra-Sformer`",
+    "usage": "```\nI need help implementing the Contra-Sformer model from the IEEE RA-L paper 'Keep Your Eye on the Best: Contrastive Regression Transformer for Skill Assessment in Robotic Surgery'. I'm working with [DATA] from [COMPANY]'s [INDUSTRY] robotic surgery platform. Can you provide a step-by-step guide to implement this model for skill assessment?\n```\nCopy\n\n```\n# Contra-Sformer Implementation Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "contra-sformer#main-content",
+      "contra-sformer#overview",
+      "contra-sformer#setup",
+      "contra-sformer#examples",
+      "contra-sformer#tools",
+      "contra-sformer#mcp",
+      "contra-sformer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Contra-Sformer là một framework dựa trên video để tự động đánh giá kỹ năng trong phẫu thuật robot, hoạt động bằng cách so sánh video thử nghiệm với các video tham chiếu mô tả quá trình thực hiện phẫu thuật tối ưu. Framework này kết hợp việc trích xuất đặc trưng không gian bằng ResNet-18 với mạng tích chập thời gian (temporal convolutional networks) và một action-aware transformer để tạo ra các đặc trưng tương phản (contrastive features) giúp ghi lại sự khác biệt về hiệu năng. Hệ thống đạt hệ số tương quan Spearman từ 0.65 đến 0.89 trên bộ dữ liệu JIGSAWS đối với các tác vụ thắt nút (knot tying), luồn kim (needle passing) và khâu vết thương (suturing). Hệ thống có thể phát hiện các thao tác chưa tối ưu và lỗi mà không cần gán nhãn lỗi rõ ràng, từ đó cung cấp phản hồi chuẩn xác cho học viên phẫu thuật trong quá trình đánh giá thời gian thực.\nĐánh giá tự động kết quả thực hành của bác sĩ nội trú phẫu thuật trong quá trình đào tạo\nTạo phản hồi theo thời gian thực cho học viên phẫu thuật robot\nĐánh giá kỹ năng khách quan trên nhiều tác vụ phẫu thuật khác nhau\nPhát hiện và định vị lỗi trong các quy trình phẫu thuật có robot hỗ trợ",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/anastadimi/Contra-Sformer`",
+    "usage_vi": "```\nTôi cần hỗ trợ triển khai mô hình Contra-Sformer từ bài báo IEEE RA-L 'Keep Your Eye on the Best: Contrastive Regression Transformer for Skill Assessment in Robotic Surgery'. Tôi đang làm việc với [DATA] từ nền tảng phẫu thuật robot trong ngành [INDUSTRY] của [COMPANY]. Bạn có thể cung cấp hướng dẫn từng bước để triển khai mô hình này phục vụ cho việc đánh giá kỹ năng không?\n```\nCopy\n\n```\n# Hướng dẫn triển khai Contra-Sformer\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:07:08.167700Z",
+    "http_status": 200,
+    "content_hash": "aeb7801e66c560dffb1155dac1816c2cbd7e2516982eba7f9ce06bbb618c20c2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\contra-sformer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\contra-sformer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Contra-Sformer: Đánh giá Kỹ năng Phẫu thuật",
+  "short_description_vi": "Mã nguồn của 'Keep Your Eye on the Best: Contrastive Regression Transformer for Skill Assessment in Robotic Surgery', công bố trên tạp chí IEEE Robotics and Automation Letters (RA-L), tháng 2 năm 2023."
+}

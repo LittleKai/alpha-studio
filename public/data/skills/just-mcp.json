@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/just-mcp",
+  "slug": "just-mcp",
+  "name": "just-mcp",
+  "headline": "just-mcp - Automate justfile tasks with AI",
+  "short_description": "just-mcp enables operations teams to share justfile tasks with AI Coding Agents, automating repetitive coding tasks. Benefits developers and operations teams by integrating with justfile workflows and supported AI agents like Claude.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "toolprint",
+  "install_command": "git clone https://github.com/toolprint/just-mcp.git",
+  "source_repo_url": "https://github.com/toolprint/just-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "llm",
+    "agents",
+    "mcp",
+    "gemini-cli",
+    "just",
+    "justfile",
+    "vibe-coding",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "just-mcp bridges justfiles and AI coding agents by transforming your project's automation tasks into MCP-accessible tools. The server uses AST-based parsing to discover justfile recipes, extract parameters and documentation, and expose them dynamically to Claude, Cursor, Cline, and other supported agents. Teams can monitor single or multiple projects with hot reloading, allowing AI assistants to understand and execute common development workflows without manual integration. Security features include input validation, timeouts, and directory whitelisting. Optional vector search provides semantic, natural-language task discovery across projects.\nEnable Claude to automatically run build, test, and deploy tasks from your justfile\nAllow AI agents to discover and execute project-specific automation workflows\nShare development workflow documentation with coding assistants through task parameters and comments\nMonitor multiple projects and expose tasks to AI agents with custom namespace labels\n- **Description**: Automate daily database backups using just-mcp\n- **Frequency**: Daily at 2 AM\n- **Backup Location**: /backups/database",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/toolprint/just-mcp`",
+    "usage": "```\nI want to use just-mcp to automate a repetitive coding task. Here's my justfile task: [JUSTFILE_TASK]. The task involves [DESCRIBE_TASK]. Please generate the necessary code to complete this task using just-mcp and explain how it integrates with my workflow.\n```\nCopy\n\n```\n# Automating Database Backup with just-mcp",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "just-mcp#main-content",
+      "just-mcp#overview",
+      "just-mcp#setup",
+      "just-mcp#examples",
+      "just-mcp#tools",
+      "just-mcp#mcp",
+      "just-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "just-mcp đóng vai trò cầu nối giữa các justfile và AI coding agent bằng cách chuyển đổi các tác vụ tự động hóa trong dự án của bạn thành các công cụ hỗ trợ MCP. Server sử dụng cơ chế AST-based parsing để phát hiện các recipe trong justfile, trích xuất tham số cũng như tài liệu hướng dẫn, rồi cung cấp chúng một cách linh hoạt cho Claude, Cursor, Cline và các agent được hỗ trợ khác. Các đội ngũ có thể giám sát một hoặc nhiều dự án cùng lúc với tính năng hot reloading, giúp các trợ lý AI hiểu và thực thi các workflow phát triển phổ biến mà không cần tích hợp thủ công. Các tính năng bảo mật bao gồm input validation, timeout và whitelist thư mục. Tính năng tìm kiếm vector (tùy chọn) giúp tìm kiếm tác vụ theo ngữ nghĩa và ngôn ngữ tự nhiên trên nhiều dự án khác nhau.\nCho phép Claude tự động chạy các tác vụ build, test và deploy từ justfile của bạn\nCho phép các AI agent tự động phát hiện và thực thi các workflow tự động hóa đặc thù của dự án\nChia sẻ tài liệu workflow phát triển với các trợ lý lập trình thông qua các tham số tác vụ và comment\nGiám sát nhiều dự án và cung cấp tác vụ cho các AI agent với các nhãn namespace tùy chỉnh\n- **Mô tả**: Tự động hóa việc sao lưu cơ sở dữ liệu hàng ngày bằng just-mcp\n- **Tần suất**: Hàng ngày vào lúc 2 giờ sáng\n- **Vị trí sao lưu**: /backups/database",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/toolprint/just-mcp`",
+    "usage_vi": "```\nTôi muốn sử dụng just-mcp để tự động hóa một tác vụ lập trình lặp đi lặp lại. Đây là tác vụ trong justfile của tôi: [JUSTFILE_TASK]. Tác vụ này bao gồm [DESCRIBE_TASK]. Vui lòng tạo mã nguồn cần thiết để hoàn thành tác vụ này bằng cách sử dụng just-mcp và giải thích cách nó tích hợp vào workflow của tôi.\n```\nSao chép\n\n```\n# Tự động hóa sao lưu cơ sở dữ liệu với just-mcp"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:55:40.164446Z",
+    "http_status": 200,
+    "content_hash": "cec2b651c65b94844c3e21bfd7977e5d15b75a12a960076a17387d2d59ed1bf3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\just-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\just-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "just-mcp - Tự động hóa các tác vụ justfile bằng AI",
+  "short_description_vi": "just-mcp cho phép các đội ngũ vận hành chia sẻ các tác vụ justfile với các AI Coding Agent, giúp tự động hóa những tác vụ lập trình lặp đi lặp lại. Công cụ này mang lại lợi ích cho cả lập trình viên và đội ngũ vận hành nhờ khả năng tích hợp trực tiếp vào workflow của justfile cũng như các AI agent được hỗ trợ như Claude."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/improve-claude-md",
+  "slug": "improve-claude-md",
+  "name": "vibeindex",
+  "headline": "improve-claude-md: Enhance CLAUDE.md",
+  "short_description": "This skill improves CLAUDE.md files by wrapping important content in XML tags to ensure relevance. It is designed for users who want to optimize their Claude Code interactions.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "humanlayer",
+  "install_command": "git clone https://github.com/humanlayer/skills",
+  "source_repo_url": "https://github.com/humanlayer/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "improve",
+    "claude",
+    "ai-agent-skill"
+  ],
+  "sections": {
+    "overview": "improve-claude-md is a Claude Code skill that automatically rewrites your CLAUDE.md files using `<important if>` blocks to strengthen instruction adherence. The skill helps ensure critical directives and context are properly formatted and recognized by Claude, improving the effectiveness of your AI agent interactions. By structuring important content in dedicated XML tags, the skill makes instructions more discoverable and adherence more consistent. This is particularly useful for teams managing complex project guidelines or sensitive operational constraints that Claude needs to reliably follow.\nEnhance task-specific CLAUDE.md files\nOptimize context relevance for AI agents\nImprove clarity in AI task descriptions",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/humanlayer/skills --skill improve-claude-md`\n`git clone https://github.com/humanlayer/skills`",
+    "usage": "```\nImprove the following CLAUDE.md file by wrapping critical sections in XML tags for better relevance in AI interactions. Focus on [TASK/GOAL] and ensure the structure is clear. Here is the content: [CONTENT_TO_IMPROVE]\n```\nCopy\n\n```\n```markdown\n# CLAUDE.md - Project Guidelines",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "improve-claude-md#main-content",
+      "improve-claude-md#overview",
+      "improve-claude-md#setup",
+      "improve-claude-md#examples",
+      "improve-claude-md#tools",
+      "improve-claude-md#mcp",
+      "improve-claude-md#related",
+      "rivetkit",
+      "zenmux-usage",
+      "vibeindex"
+    ],
+    "overview_vi": "improve-claude-md is a Claude Code skill that automatically rewrites your CLAUDE.md files using `<important if>` blocks to strengthen instruction adherence. The skill helps ensure critical directives and context are properly formatted and recognized by Claude, improving the effectiveness of your AI agent interactions. By structuring important content in dedicated XML tags, the skill makes instructions more discoverable and adherence more consistent. This is particularly useful for teams managing complex project guidelines or sensitive operational constraints that Claude needs to reliably follow.\nEnhance task-specific CLAUDE.md files\nOptimize context relevance for AI agents\nImprove clarity in AI task descriptions",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/humanlayer/skills --skill improve-claude-md`\n`git clone https://github.com/humanlayer/skills`",
+    "usage_vi": "```\nImprove the following CLAUDE.md file by wrapping critical sections in XML tags for better relevance in AI interactions. Focus on [TASK/GOAL] and ensure the structure is clear. Here is the content: [CONTENT_TO_IMPROVE]\n```\nCopy\n\n```\n```markdown\n# CLAUDE.md - Project Guidelines"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:18:42.671742Z",
+    "http_status": 200,
+    "content_hash": "6e2722ddfc703de65f0fa2a800d63e1237c9db96b22e451ac42f21ba7f3854a4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\improve-claude-md.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\improve-claude-md.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "improve-claude-md: Enhance CLAUDE.md",
+  "short_description_vi": "This skill improves CLAUDE.md files by wrapping important content in XML tags to ensure relevance. It is designed for users who want to optimize their Claude Code interactions."
+}

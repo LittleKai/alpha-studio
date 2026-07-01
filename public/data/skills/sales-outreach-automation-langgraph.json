@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sales-outreach-automation-langgraph",
+  "slug": "sales-outreach-automation-langgraph",
+  "name": "Sales Outreach Automation Langgraph",
+  "headline": "Sales Outreach Automation with Langgraph",
+  "short_description": "Streamline your sales process with the sales-outreach-automation-langgraph. This AI-powered tool automates lead research, qualification, and personalized outreach, integrating with CRMs like HubSpot and Airtable for efficient lead management.",
+  "tier": "Gold",
+  "category": "SDRAERevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "kaymen99",
+  "install_command": "claude install kaymen99/sales-outreach-automation-langgraph",
+  "source_repo_url": "https://github.com/kaymen99/sales-outreach-automation-langgraph",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "ai-automation",
+    "sales-automation",
+    "langgraph",
+    "lead-generation",
+    "crm-connections"
+  ],
+  "sections": {
+    "overview": "This skill automates the entire sales outreach pipeline by combining lead research, qualification, and personalized engagement. It gathers insights from LinkedIn profiles, company websites, social media activity, and recent news to build comprehensive lead profiles and identify pain points. The system then qualifies leads against customizable criteria such as digital presence, social media activity, industry fit, and company scale. For qualified leads, it generates customized outreach reports, personalized emails with embedded case studies, and interview preparation scripts with SPIN questions. All materials are saved locally and to Google Docs while automatically updating your CRM with lead status and report links.\nAutomate lead qualification processes\nGenerate personalized outreach messages\nIntegrate with HubSpot for streamlined CRM updates\nConduct lead research using AI",
+    "setup": "Terminal\nCopy\n`claude install kaymen99/sales-outreach-automation-langgraph`\n`git clone https://github.com/kaymen99/sales-outreach-automation-langgraph`",
+    "usage": "```\nAutomate sales outreach for [PRODUCT/SERVICE] targeting [TARGET_AUDIENCE] using the sales-outreach-automation-langgraph skill. Start by qualifying leads from [CRM_NAME] (e.g., HubSpot or Airtable) with criteria: [QUALIFICATION_CRITERIA]. Then, generate a personalized outreach sequence of [NUMBER] emails or LinkedIn messages tailored to each lead's [PAIN_POINT] and [ROLE]. Ensure the sequence includes [INTERVAL] days between messages and ends with a clear [CALL_TO_ACTION]. Finally, log all interactions back to [CRM_NAME] with status updates.\n```\nCopy\n\n```\nFor a SaaS company selling project management software to mid-sized marketing agencies, the sales-outreach-automation-langgraph skill executed the following workflow:\n\n**Lead Qualification:**\nThe system pulled 127 leads from HubSpot’s CRM, filtering for agencies with 10-50 employees and annual revenue between $1M-$10M. It identified 42 high-potential leads based on engagement with similar tools (e.g., Asana, Trello) and job titles like \"Operations Director\" or \"Agency Owner.\"\n\n**Personalized Outreach Sequence:**\nThe AI generated a 3-email sequence for each lead, with the first email addressing the agency’s pain point of \"client project delays due to poor task delegation.\" Example first email:\n\n*Subject:* How [AGENCY_NAME] can cut project delays by 30%\n\n*Body:*\nHi [FIRST_NAME],\n\nI noticed your team uses [TOOL_NAME] for project management—I’ve worked with similar agencies and found that 68% of them struggle with task delegation causing delays. Our tool, [PRODUCT_NAME], helps teams like yours reduce delays by 30% with automated task assignments and real-time collaboration.\n\nWould you be open to a quick 15-minute call next week to explore how we’ve helped agencies like yours?\n\nBest,\n[AI_GENERATED_SIGNATURE]\n\n**Follow-Up & CRM Logging:**\nThe second email, sent 3 days later, referenced the first email’s subject line and included a case study link. The third email, sent 5 days after the second, offered a limited-time discount. All interactions were logged in HubSpot with status updates (e.g., \"Email 1 Sent,\" \"Email 2 Opened,\" \"Call Scheduled\").\n\n**Results:**\n- 22% open rate for the first email (above industry average of 18% for cold outreach).\n- 8% response rate, with 3 meetings booked.\n- 6 leads marked as \"Qualified\" and moved to the sales pipeline.\n\nAll data was synced back to HubSpot, updating lead scores and creating follow-up tasks for the sales team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "sales-outreach-automation-langgraph#main-content",
+      "sales-outreach-automation-langgraph#overview",
+      "sales-outreach-automation-langgraph#setup",
+      "sales-outreach-automation-langgraph#examples",
+      "sales-outreach-automation-langgraph#tools",
+      "sales-outreach-automation-langgraph#mcp",
+      "sales-outreach-automation-langgraph#related",
+      "leads-db",
+      "proposal-system-generates",
+      "prospectio-api-mcp"
+    ],
+    "overview_vi": "Skill này tự động hóa toàn bộ pipeline tiếp cận khách hàng (sales outreach) bằng cách kết hợp nghiên cứu lead, đánh giá chất lượng (qualification) và tương tác cá nhân hóa. Hệ thống thu thập thông tin từ hồ sơ LinkedIn, website công ty, hoạt động trên mạng xã hội và tin tức gần đây để xây dựng hồ sơ lead chi tiết và xác định các điểm đau (pain points) của họ. Sau đó, hệ thống sẽ lọc và đánh giá lead dựa trên các tiêu chí có thể tùy chỉnh như sự hiện diện số (digital presence), hoạt động mạng xã hội, độ phù hợp của ngành nghề và quy mô công ty. Đối với các lead đạt yêu cầu (qualified leads), hệ thống sẽ tạo các báo cáo tiếp cận tùy chỉnh, email cá nhân hóa đính kèm case study và kịch bản chuẩn bị phỏng vấn với các câu hỏi SPIN. Mọi tài liệu đều được lưu cục bộ và lên Google Docs, đồng thời tự động cập nhật trạng thái lead và link báo cáo lên CRM của bạn.\n\nTự động hóa quy trình đánh giá chất lượng lead (lead qualification)\nTạo thông điệp tiếp cận khách hàng cá nhân hóa\nTích hợp với HubSpot để cập nhật CRM nhanh chóng\nNghiên cứu thông tin lead bằng AI",
+    "setup_vi": "Terminal\nSao chép\n`claude install kaymen99/sales-outreach-automation-langgraph`\n`git clone https://github.com/kaymen99/sales-outreach-automation-langgraph`",
+    "usage_vi": "```\nTự động hóa quy trình sales outreach cho [PRODUCT/SERVICE] hướng tới đối tượng [TARGET_AUDIENCE] bằng cách sử dụng skill sales-outreach-automation-langgraph. Bắt đầu bằng cách lọc và đánh giá lead từ [CRM_NAME] (ví dụ: HubSpot hoặc Airtable) với các tiêu chí: [QUALIFICATION_CRITERIA]. Sau đó, tạo một chuỗi tiếp cận cá nhân hóa gồm [NUMBER] email hoặc tin nhắn LinkedIn được thiết kế riêng cho [PAIN_POINT] và [ROLE] của từng lead. Đảm bảo chuỗi gửi tin nhắn có khoảng cách [INTERVAL] ngày giữa các tin nhắn và kết thúc bằng một [CALL_TO_ACTION] rõ ràng. Cuối cùng, ghi nhận lại toàn bộ tương tác vào [CRM_NAME] cùng các cập nhật trạng thái.\n```\nSao chép\n\n```\nĐối với một công ty SaaS bán phần mềm quản lý dự án cho các agency marketing quy mô vừa, skill sales-outreach-automation-langgraph đã thực hiện workflow sau:\n\n**Đánh giá chất lượng Lead (Lead Qualification):**\nHệ thống đã lấy 127 lead từ CRM của HubSpot, lọc ra các agency có từ 10-50 nhân sự và doanh thu hàng năm từ 1 triệu - 10 triệu USD. Hệ thống đã xác định được 42 lead có tiềm năng cao dựa trên mức độ tương tác của họ với các công cụ tương tự (ví dụ: Asana, Trello) và chức danh công việc như \"Operations Director\" (Giám đốc Vận hành) hoặc \"Agency Owner\" (Chủ Agency).\n\n**Chuỗi tiếp cận cá nhân hóa (Personalized Outreach Sequence):**\nAI đã tạo chuỗi 3 email cho mỗi lead, trong đó email đầu tiên giải quyết điểm đau của agency về việc \"dự án của khách hàng bị trễ do phân chia công việc kém hiệu quả.\" Ví dụ email đầu tiên:\n\n*Tiêu đề:* Cách [AGENCY_NAME] có thể giảm 30% thời gian trễ hạn dự án\n\n*Nội dung:*\nXin chào [FIRST_NAME],\n\nTôi nhận thấy đội ngũ của bạn đang sử dụng [TOOL_NAME] để quản lý dự án — tôi đã từng làm việc với các agency tương tự và nhận thấy rằng 68% trong số họ gặp khó khăn trong việc phân chia công việc dẫn đến trễ hạn. Công cụ của chúng tôi, [PRODUCT_NAME], giúp các đội ngũ như bạn giảm thiểu 30% thời gian trễ hạn nhờ tính năng tự động giao việc và cộng tác theo thời gian thực.\n\nBạn có sẵn sàng cho một cuộc gọi nhanh 15 phút vào tuần tới để tìm hiểu cách chúng tôi đã giúp các agency tương tự như bạn không?\n\nTrân trọng,\n[AI_GENERATED_SIGNATURE]\n\n**Theo dõi & Ghi nhận vào CRM (Follow-Up & CRM Logging):**\nEmail thứ hai, được gửi sau đó 3 ngày, tham chiếu đến tiêu đề của email đầu tiên và đính kèm link case study. Email thứ ba, được gửi sau email thứ hai 5 ngày, cung cấp chương trình giảm giá có thời hạn. Mọi tương tác đều được ghi nhận vào HubSpot với các cập nhật trạng thái (ví dụ: \"Đã gửi Email 1\", \"Đã mở Email 2\", \"Đã lên lịch cuộc gọi\").\n\n**Kết quả:**\n- Tỷ lệ mở (open rate) đạt 22% cho email đầu tiên (cao hơn mức trung bình của ngành là 18% đối với cold outreach).\n- Tỷ lệ phản hồi (response rate) đạt 8%, với 3 cuộc hẹn được đặt trước.\n- 6 lead được đánh dấu là \"Qualified\" (Đạt yêu cầu) và được chuyển sang sales pipeline (phễu bán hàng).\n\nMọi dữ liệu đều được đồng bộ ngược lại HubSpot, cập nhật điểm số của lead (lead score) và tạo các task cần theo dõi tiếp theo cho đội ngũ sales.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:09:39.677446Z",
+    "http_status": 200,
+    "content_hash": "1bd641a24e9b51c1e07dc05eafdbc737bac80bf62dc964d5ce56fe5801f775f2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sales-outreach-automation-langgraph.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sales-outreach-automation-langgraph.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động hóa Sales Outreach bằng Langgraph",
+  "short_description_vi": "Tối ưu hóa quy trình bán hàng của bạn với sales-outreach-automation-langgraph. Công cụ hỗ trợ bởi AI này giúp tự động hóa việc tìm kiếm thông tin, đánh giá chất lượng (qualification) và cá nhân hóa quy trình tiếp cận khách hàng (outreach), đồng thời tích hợp với các CRM như HubSpot và Airtable để quản lý lead hiệu quả."
+}

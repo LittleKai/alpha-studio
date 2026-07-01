@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/typescript-e2e-testing",
+  "slug": "typescript-e2e-testing",
+  "name": "Related Skills",
+  "headline": "TypeScript E2E Testing: Docker-Based Testing",
+  "short_description": "This skill provides comprehensive end-to-end (E2E) testing for TypeScript and NestJS applications using real Docker infrastructure. It is suited for developers looking to implement robust testing practices with guided workflows and real service interactions.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "bmad-labs",
+  "install_command": "git clone https://github.com/bmad-labs/skills",
+  "source_repo_url": "https://github.com/bmad-labs/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "typescript",
+    "testing"
+  ],
+  "sections": {
+    "overview": "The typescript-e2e-testing skill provides comprehensive end-to-end testing capabilities for TypeScript and NestJS applications by leveraging real Docker infrastructure. It enables developers to test against actual service dependencies including Kafka, PostgreSQL, MongoDB, and Redis, moving beyond mocked interactions to validate real system behavior. This approach catches integration issues that unit tests miss by running tests in environments that closely mirror production. The skill is designed for teams implementing robust testing practices who need guided workflows and confidence that their services work correctly together.\nSet up E2E testing infrastructure for new or existing projects.\nCreate E2E test cases following the Given-When-Then (GWT) pattern.\nReview and ensure the quality of existing E2E tests.\nRun E2E tests with proper verification against real services.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/bmad-labs/skills --skill typescript-e2e-testing`\n`git clone https://github.com/bmad-labs/skills`\n```bash\ndocker-compose -f docker-compose.test.yml up -d postgres redis rabbitmq\nyarn test:e2e:setup\n```",
+    "usage": "```\nWrite a comprehensive end-to-end (E2E) test suite for a [COMPANY]'s [INDUSTRY] application built with TypeScript and NestJS. Use Docker to spin up the required services (e.g., PostgreSQL, Redis, RabbitMQ) and execute real API calls against the running application. Include tests for: 1) API endpoints, 2) database interactions, 3) message brokers, 4) authentication flows, and 5) error handling. Ensure tests are isolated, deterministic, and include setup/teardown logic. [DATA] should be mocked where necessary but prioritize real service interactions. Provide a test report in JUnit format for CI/CD integration.\n```\nCopy\n\n```\n# E2E Test Suite for Acme Corp's Payment Processing API",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "typescript-e2e-testing#main-content",
+      "typescript-e2e-testing#overview",
+      "typescript-e2e-testing#setup",
+      "typescript-e2e-testing#examples",
+      "typescript-e2e-testing#related"
+    ],
+    "overview_vi": "The typescript-e2e-testing skill provides comprehensive end-to-end testing capabilities for TypeScript and NestJS applications by leveraging real Docker infrastructure. It enables developers to test against actual service dependencies including Kafka, PostgreSQL, MongoDB, and Redis, moving beyond mocked interactions to validate real system behavior. This approach catches integration issues that unit tests miss by running tests in environments that closely mirror production. The skill is designed for teams implementing robust testing practices who need guided workflows and confidence that their services work correctly together.\nSet up E2E testing infrastructure for new or existing projects.\nCreate E2E test cases following the Given-When-Then (GWT) pattern.\nReview and ensure the quality of existing E2E tests.\nRun E2E tests with proper verification against real services.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/bmad-labs/skills --skill typescript-e2e-testing`\n`git clone https://github.com/bmad-labs/skills`\n```bash\ndocker-compose -f docker-compose.test.yml up -d postgres redis rabbitmq\nyarn test:e2e:setup\n```",
+    "usage_vi": "```\nWrite a comprehensive end-to-end (E2E) test suite for a [COMPANY]'s [INDUSTRY] application built with TypeScript and NestJS. Use Docker to spin up the required services (e.g., PostgreSQL, Redis, RabbitMQ) and execute real API calls against the running application. Include tests for: 1) API endpoints, 2) database interactions, 3) message brokers, 4) authentication flows, and 5) error handling. Ensure tests are isolated, deterministic, and include setup/teardown logic. [DATA] should be mocked where necessary but prioritize real service interactions. Provide a test report in JUnit format for CI/CD integration.\n```\nCopy\n\n```\n# E2E Test Suite for Acme Corp's Payment Processing API"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:47:32.831847Z",
+    "http_status": 200,
+    "content_hash": "83b44775661dda9d1d891d934abd6e96ee022490f214fe0cb63ff39bf9c190dc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\typescript-e2e-testing.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\typescript-e2e-testing.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "TypeScript E2E Testing: Docker-Based Testing",
+  "short_description_vi": "This skill provides comprehensive end-to-end (E2E) testing for TypeScript and NestJS applications using real Docker infrastructure. It is suited for developers looking to implement robust testing practices with guided workflows and real service interactions."
+}

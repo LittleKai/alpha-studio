@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/social-media-content-automation",
+  "slug": "social-media-content-automation",
+  "name": "Social-Media-Content-Automation",
+  "headline": "Subreddit Media Downloader: Bulk Download Content",
+  "short_description": "Download images, videos, and GIFs from public subreddits without Reddit API authentication or rate limits using PushShift.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "abby3010",
+  "install_command": "git clone https://github.com/abby3010/Social-Media-Content-Automation.git",
+  "source_repo_url": "https://github.com/abby3010/Social-Media-Content-Automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill automates bulk media collection from public subreddits by leveraging the PushShift API, eliminating the need for Reddit API authentication, rate limits, or client credentials. It downloads directly linked images, videos, and GIFs with optional date-based filtering, supporting unlimited post retrieval compared to Reddit's 1000-post ceiling. Users configure a subreddit name, destination folder, and optional timeframe in a config file, then run the script to begin automated downloading. Content creators, researchers, and data collectors benefit from fast, unrestricted access to subreddit media without tedious API setup.\nBulk download image galleries from niche subreddits for research or archival\nCollect video content from specific subreddits for analysis or curation\nAutomate media scraping from subreddits within a specific date range\nDownload GIFs and images for content aggregation without Reddit account setup",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/abby3010/Social-Media-Content-Automation`",
+    "usage": "```\nGenerate 7 days of social media posts for [COMPANY] in the [INDUSTRY] industry. Use the following data points: [DATA]. Include hashtags, emojis, and a mix of promotional, educational, and engaging content. Format as a table with columns for Day, Platform, Post Content, and Post Time.\n```\nCopy\n\n```\n### Social Media Content Plan for GreenTech Solutions (Sustainable Energy Industry)\n\n| Day  | Platform | Post Content                                                                                     | Post Time |\n|------|----------|-------------------------------------------------------------------------------------------------|-----------|\n| Mon  | Instagram | 🌱 Did you know? Solar panels can reduce your carbon footprint by up to 80%! 🌞 #SolarPower #GreenLiving [Image: Solar panel installation] | 9:00 AM   |\n| Tue  | LinkedIn  | Exciting news! Our latest wind turbine project is now operational. 💨 Read more: [Link] #RenewableEnergy #Innovation | 12:00 PM  |\n| Wed  | Twitter   | Trivia Wednesday! How much energy does a single wind turbine generate annually? A) 500 kWh B) 5,000 kWh C) 50,000 kWh 🌪️ #EnergyTrivia | 3:00 PM   |\n| Thu  | Facebook  | Meet our team! Today we're highlighting Sarah, our lead engineer. 👩‍💻 #TeamSpotlight #WomenInSTEM [Image: Sarah at work] | 10:00 AM  |\n| Fri  | Instagram | Weekend DIY: 5 ways to make your home more energy-efficient! 🏡 [Link to blog post] #DIY #EnergyEfficiency | 11:00 AM  |\n| Sat  | Twitter   | Happy Saturday! 🌞 Here's a throwback to our first solar panel installation 5 years ago. #ThrowbackThursday #GreenTech | 1:00 PM   |\n| Sun  | Facebook  | Sunday reflection: Small changes make a big difference. 🌍 What's one eco-friendly habit you're practicing? #SustainableLiving #EcoFriendly | 9:00 AM   |\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "social-media-content-automation#main-content",
+      "social-media-content-automation#overview",
+      "social-media-content-automation#setup",
+      "social-media-content-automation#examples",
+      "social-media-content-automation#tools",
+      "social-media-content-automation#mcp",
+      "social-media-content-automation#related",
+      "marketingskills",
+      "copywriting",
+      "ai-tools-for-you"
+    ],
+    "overview_vi": "Skill này tự động hóa việc thu thập hàng loạt tệp đa phương tiện từ các subreddit công khai bằng cách tận dụng PushShift API, loại bỏ yêu cầu xác thực Reddit API, rate limits hoặc client credentials. Công cụ hỗ trợ tải trực tiếp các liên kết hình ảnh, video và GIF với bộ lọc tùy chọn theo ngày, hỗ trợ lấy số lượng bài viết không giới hạn thay vì bị giới hạn ở mức 1000 bài như của Reddit. Người dùng chỉ cần cấu hình tên subreddit, thư mục đích và khoảng thời gian tùy chọn trong file config, sau đó chạy script để bắt đầu tải tự động. Các nhà sáng tạo nội dung, nhà nghiên cứu và người thu thập dữ liệu có thể truy cập nhanh chóng, không giới hạn vào kho dữ liệu media của subreddit mà không cần các bước setup API phức tạp.\n- Tải hàng loạt bộ sưu tập hình ảnh từ các subreddit chuyên biệt để phục vụ nghiên cứu hoặc lưu trữ\n- Thu thập nội dung video từ các subreddit cụ thể để phân tích hoặc tổng hợp\n- Tự động cào dữ liệu media từ các subreddit trong một khoảng thời gian nhất định\n- Tải ảnh GIF và hình ảnh để tổng hợp nội dung mà không cần thiết lập tài khoản Reddit",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/abby3010/Social-Media-Content-Automation`",
+    "usage_vi": "```\nTạo bài viết trên mạng xã hội trong 7 ngày cho [COMPANY] thuộc lĩnh vực [INDUSTRY]. Sử dụng các điểm dữ liệu sau: [DATA]. Bao gồm các hashtag, emoji và sự kết hợp giữa nội dung quảng bá, giáo dục và tương tác. Định dạng dưới dạng bảng gồm các cột: Ngày, Nền tảng, Nội dung bài viết và Thời gian đăng.\n```\nCopy\n\n```\n### Kế hoạch nội dung mạng xã hội cho GreenTech Solutions (Ngành Năng lượng Bền vững)\n\n| Ngày  | Nền tảng | Nội dung bài viết                                                                                     | Thời gian đăng |\n|------|----------|-------------------------------------------------------------------------------------------------|-----------|\n| Thứ Hai  | Instagram | 🌱 Bạn có biết? Các tấm pin mặt trời có thể giảm tới 80% dấu chân carbon của bạn! 🌞 #SolarPower #GreenLiving [Ảnh: Lắp đặt pin mặt trời] | 9:00 AM   |\n| Thứ Ba  | LinkedIn  | Tin vui! Dự án tuabin gió mới nhất của chúng tôi hiện đã đi vào hoạt động. 💨 Đọc thêm tại: [Link] #RenewableEnergy #Innovation | 12:00 PM  |\n| Thứ Tư   | Twitter   | Câu đố thứ Tư! Một tuabin gió đơn lẻ tạo ra bao nhiêu năng lượng hàng năm? A) 500 kWh B) 5.000 kWh C) 50.000 kWh 🌪️ #EnergyTrivia | 3:00 PM   |\n| Thứ Năm  | Facebook  | Gặp gỡ đội ngũ của chúng tôi! Hôm nay chúng ta cùng vinh danh Sarah, kỹ sư trưởng của chúng tôi. 👩‍💻 #TeamSpotlight #WomenInSTEM [Ảnh: Sarah đang làm việc] | 10:00 AM  |\n| Thứ Sáu  | Instagram | DIY cuối tuần: 5 cách giúp ngôi nhà của bạn tiết kiệm năng lượng hơn! 🏡 [Link bài viết blog] #DIY #EnergyEfficiency | 11:00 AM  |\n| Thứ Bảy   | Twitter   | Chúc thứ Bảy vui vẻ! 🌞 Nhìn lại hình ảnh lắp đặt tấm pin mặt trời đầu tiên của chúng tôi cách đây 5 năm. #ThrowbackThursday #GreenTech | 1:00 PM   |\n| Chủ Nhật  | Facebook  | Góc suy ngẫm ngày Chủ Nhật: Những thay đổi nhỏ sẽ tạo nên khác biệt lớn. 🌍 Thói quen thân thiện với môi trường mà bạn đang thực hiện là gì? #SustainableLiving #EcoFriendly | 9:00 AM   |\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:36.883595Z",
+    "http_status": 200,
+    "content_hash": "592e3ba681eabdfc360850dc0bf21a11a07ad5c113b9052558d11c212f8060e3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\social-media-content-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\social-media-content-automation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Subreddit Media Downloader: Tải xuống nội dung hàng loạt",
+  "short_description_vi": "Tải xuống hình ảnh, video và ảnh GIF từ các subreddit công khai bằng PushShift mà không cần xác thực Reddit API hay gặp giới hạn rate limits."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/html-to-image",
+  "slug": "html-to-image",
+  "name": "SVG Icon Maker",
+  "headline": "html-to-image: Convert HTML to PNG & PDF",
+  "short_description": "The html-to-image skill allows users to transform HTML content into image files. It is designed for developers who need to create images from web content programmatically.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "html2png",
+  "install_command": "git clone https://github.com/html2png/skills",
+  "source_repo_url": "https://github.com/html2png/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "image-processing",
+    "html",
+    "image"
+  ],
+  "sections": {
+    "overview": "The html-to-image skill converts HTML and CSS directly into PNG, WebP, or PDF images via the html2png.dev API. It's designed for developers who need pixel-perfect image generation with sharp text rendering and exact geometric alignment—tasks where raster generation falls short. The skill supports Tailwind CSS, Google Fonts, icon libraries like Lucide and Font Awesome, and any web-based design resources, making it ideal for creating social media cards, certificates, diagrams, UI mockups, and code screenshots. You control dimensions, scale factor, format, and rendering delay, with optional transparent backgrounds and light/dark color schemes. JavaScript executes during conversion, enabling dynamic content generation.\nGenerate marketing images from HTML content.\nCreate image snapshots of web pages.\nConvert report layouts into downloadable images.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/html2png/skills --skill html-to-image`\n`git clone https://github.com/html2png/skills`",
+    "usage": "```\nGenerate an image from this HTML content: [HTML_CONTENT]. Save it as a PNG file with dimensions 1200x800 pixels. Ensure the image is high-resolution and suitable for web use. If the HTML includes external resources (CSS, images), load them before rendering.\n```\nCopy\n\n```\nHere’s your generated image from the provided HTML content:\n\n![Generated Image](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAGQCAYAAAByUDbXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFYSURBVHic7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4MtE8AAe7YJVkAAAAASUVORK5CYII=)\n\n**Details:**\n- **Format:** PNG\n- **Dimensions:** 1200x800 pixels\n- **Resolution:** High (300 DPI)\n- **File Size:** ~240 KB\n\nThe image has been optimized for web use and includes all external resources (CSS, images) loaded dynamically. If you need adjustments (e.g., different dimensions, format), let me know!\n\n*Generated using HTML-to-Image conversion (html-to-image skill).*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "html-to-image#main-content",
+      "html-to-image#overview",
+      "html-to-image#setup",
+      "html-to-image#examples",
+      "html-to-image#related",
+      "image-to-text",
+      "image-to-svg",
+      "svg-icon-maker"
+    ],
+    "overview_vi": "The html-to-image skill converts HTML and CSS directly into PNG, WebP, or PDF images via the html2png.dev API. It's designed for developers who need pixel-perfect image generation with sharp text rendering and exact geometric alignment—tasks where raster generation falls short. The skill supports Tailwind CSS, Google Fonts, icon libraries like Lucide and Font Awesome, and any web-based design resources, making it ideal for creating social media cards, certificates, diagrams, UI mockups, and code screenshots. You control dimensions, scale factor, format, and rendering delay, with optional transparent backgrounds and light/dark color schemes. JavaScript executes during conversion, enabling dynamic content generation.\nGenerate marketing images from HTML content.\nCreate image snapshots of web pages.\nConvert report layouts into downloadable images.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/html2png/skills --skill html-to-image`\n`git clone https://github.com/html2png/skills`",
+    "usage_vi": "```\nGenerate an image from this HTML content: [HTML_CONTENT]. Save it as a PNG file with dimensions 1200x800 pixels. Ensure the image is high-resolution and suitable for web use. If the HTML includes external resources (CSS, images), load them before rendering.\n```\nCopy\n\n```\nHere’s your generated image from the provided HTML content:\n\n![Generated Image](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAGQCAYAAAByUDbXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFYSURBVHic7cEBAQAAAIIg/69uSEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4MtE8AAe7YJVkAAAAASUVORK5CYII=)\n\n**Details:**\n- **Format:** PNG\n- **Dimensions:** 1200x800 pixels\n- **Resolution:** High (300 DPI)\n- **File Size:** ~240 KB\n\nThe image has been optimized for web use and includes all external resources (CSS, images) loaded dynamically. If you need adjustments (e.g., different dimensions, format), let me know!\n\n*Generated using HTML-to-Image conversion (html-to-image skill).*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:40:46.422988Z",
+    "http_status": 200,
+    "content_hash": "8d36ddc3adc4b5f2cb6de16e7d8fe4351df47ba69cca06f1e83381afd7255e63",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\html-to-image.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\html-to-image.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "html-to-image: Convert HTML to PNG & PDF",
+  "short_description_vi": "The html-to-image skill allows users to transform HTML content into image files. It is designed for developers who need to create images from web content programmatically."
+}

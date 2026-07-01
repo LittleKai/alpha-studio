@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/doc-comments-ai",
+  "slug": "doc-comments-ai",
+  "name": "react-native-best-practices",
+  "headline": "Automate Code Documentation with doc-comments-ai",
+  "short_description": "doc-comments-ai is an LLM-powered tool designed to automate code documentation generation, enhancing clarity and consistency in codebases. It supports various documentation formats, making it versatile for developers across multiple programming languages.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "fynnfluegge",
+  "install_command": "claude install fynnfluegge/doc-comments-ai",
+  "source_repo_url": "https://github.com/fynnfluegge/doc-comments-ai",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI",
+    "documentation",
+    "programming",
+    "code-generation",
+    "LLM"
+  ],
+  "sections": {
+    "overview": "doc-comments-ai generates documentation comment blocks for methods in your code using OpenAI, Azure OpenAI, or 100% local LLMs without data leaks. It supports 11 programming languages including Python, JavaScript, Java, Rust, Go, and C++, integrating Tree-sitter for accurate code parsing. The tool generates both method-level documentation (Javadoc, JSDoc, Docstring, Rustdoc) and inline comments within method bodies. It runs via simple CLI commands with options for guided confirmation, different model selections, and local hardware-accelerated inference, letting developers focus on writing code while LLMs handle documentation.\nGenerate docstrings for Python functions\nCreate Javadoc for Java projects\nAutomate documentation for Rust codebases\nEnhance existing documentation with AI suggestions",
+    "setup": "Terminal\nCopy\n`claude install fynnfluegge/doc-comments-ai`\n`git clone https://github.com/fynnfluegge/doc-comments-ai`",
+    "usage": "```\nGenerate comprehensive and well-formatted documentation comments for the following [CODE_SNIPPET] in [LANGUAGE]. Ensure the comments follow [STYLE_GUIDE] conventions and include: purpose, parameters, return values, exceptions, and example usage. Format the output as a valid docstring for the target language. Example: 'Generate Python docstrings for the following function using Google style.'\n```\nCopy\n\n```\n```python\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    \"\"\"\n    Calculate the final price after applying a discount rate to the original price.\n\n    Args:\n        price (float): The original price of the item before discount. Must be a positive number.\n        discount_rate (float): The discount rate to apply (e.g., 0.20 for 20%). Must be between 0 and 1.\n\n    Returns:\n        float: The final price after applying the discount. Returns 0 if inputs are invalid.\n\n    Raises:\n        ValueError: If `price` is negative or `discount_rate` is outside the range [0, 1].\n\n    Examples:\n        >>> calculate_discount(100.0, 0.20)\n        80.0\n        >>> calculate_discount(50.0, 0.50)\n        25.0\n        >>> calculate_discount(-10.0, 0.10)\n        Traceback (most recent call last):\n            ...\n        ValueError: Price cannot be negative.\n    \"\"\"\n    if price < 0:\n        raise ValueError(\"Price cannot be negative.\")\n    if not (0 <= discount_rate <= 1):\n        raise ValueError(\"Discount rate must be between 0 and 1.\")\n    return price * (1 - discount_rate)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "doc-comments-ai#main-content",
+      "doc-comments-ai#overview",
+      "doc-comments-ai#setup",
+      "doc-comments-ai#examples",
+      "doc-comments-ai#tools",
+      "doc-comments-ai#mcp",
+      "doc-comments-ai#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "doc-comments-ai generates documentation comment blocks for methods in your code using OpenAI, Azure OpenAI, or 100% local LLMs without data leaks. It supports 11 programming languages including Python, JavaScript, Java, Rust, Go, and C++, integrating Tree-sitter for accurate code parsing. The tool generates both method-level documentation (Javadoc, JSDoc, Docstring, Rustdoc) and inline comments within method bodies. It runs via simple CLI commands with options for guided confirmation, different model selections, and local hardware-accelerated inference, letting developers focus on writing code while LLMs handle documentation.\nGenerate docstrings for Python functions\nCreate Javadoc for Java projects\nAutomate documentation for Rust codebases\nEnhance existing documentation with AI suggestions",
+    "setup_vi": "Terminal\nCopy\n`claude install fynnfluegge/doc-comments-ai`\n`git clone https://github.com/fynnfluegge/doc-comments-ai`",
+    "usage_vi": "```\nGenerate comprehensive and well-formatted documentation comments for the following [CODE_SNIPPET] in [LANGUAGE]. Ensure the comments follow [STYLE_GUIDE] conventions and include: purpose, parameters, return values, exceptions, and example usage. Format the output as a valid docstring for the target language. Example: 'Generate Python docstrings for the following function using Google style.'\n```\nCopy\n\n```\n```python\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    \"\"\"\n    Calculate the final price after applying a discount rate to the original price.\n\n    Args:\n        price (float): The original price of the item before discount. Must be a positive number.\n        discount_rate (float): The discount rate to apply (e.g., 0.20 for 20%). Must be between 0 and 1.\n\n    Returns:\n        float: The final price after applying the discount. Returns 0 if inputs are invalid.\n\n    Raises:\n        ValueError: If `price` is negative or `discount_rate` is outside the range [0, 1].\n\n    Examples:\n        >>> calculate_discount(100.0, 0.20)\n        80.0\n        >>> calculate_discount(50.0, 0.50)\n        25.0\n        >>> calculate_discount(-10.0, 0.10)\n        Traceback (most recent call last):\n            ...\n        ValueError: Price cannot be negative.\n    \"\"\"\n    if price < 0:\n        raise ValueError(\"Price cannot be negative.\")\n    if not (0 <= discount_rate <= 1):\n        raise ValueError(\"Discount rate must be between 0 and 1.\")\n    return price * (1 - discount_rate)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:39:56.747491Z",
+    "http_status": 200,
+    "content_hash": "58629e95961cd0a9a566b922b89f17a0352206a65c8bf8edeeee5dce9e8a3c23",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\doc-comments-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\doc-comments-ai.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Automate Code Documentation with doc-comments-ai",
+  "short_description_vi": "doc-comments-ai is an LLM-powered tool designed to automate code documentation generation, enhancing clarity and consistency in codebases. It supports various documentation formats, making it versatile for developers across multiple programming languages."
+}

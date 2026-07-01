@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/registry",
+  "slug": "registry",
+  "name": "registry",
+  "headline": "Community-Driven MCP Registry Service",
+  "short_description": "The registry is a community-driven service designed for Model Context Protocol (MCP) servers, facilitating easy access and management of server models. It enhances collaboration and standardization within the MCP ecosystem, making it a vital resource for developers and organizations.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/registry",
+  "source_repo_url": "https://github.com/modelcontextprotocol/registry",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "server management",
+    "Go",
+    "community-driven",
+    "MCP",
+    "registry"
+  ],
+  "sections": {
+    "overview": "The registry is a community-driven service that serves as a central directory for Model Context Protocol (MCP) servers. It facilitates easy discovery and management of server models, enhancing collaboration within the MCP ecosystem. The registry promotes standardization by providing a unified resource where developers and organizations can access vetted MCP servers. This centralized approach reduces fragmentation and helps teams integrate the right tools for their AI agent implementations. Whether you're building with Claude Code, Cursor, or other AI systems, the registry streamlines finding and implementing compatible MCP servers.\nManage and update MCP server models efficiently.\nFacilitate community contributions to enhance model diversity.\nStandardize access to models for improved team collaboration.\nProvide a centralized repository for easy model discovery.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/registry`\n`git clone https://github.com/modelcontextprotocol/registry`",
+    "usage": "```\nFind the top 5 MCP servers registered in the registry that specialize in [SPECIFIC_DOMAIN]. For each server, provide the server name, the organization that manages it, and a brief description of its capabilities. Additionally, list any notable features or unique aspects of each server that make it stand out in the [SPECIFIC_DOMAIN] domain.\n```\nCopy\n\n```\nHere are the top 5 MCP servers registered in the registry that specialize in healthcare analytics:\n\n1. **HealthInsight Server**\n   - **Managed by**: HealthTech Innovations\n   - **Description**: A specialized server for healthcare data analytics, offering advanced predictive modeling and real-time patient monitoring.\n   - **Notable Features**: HIPAA-compliant data handling, integration with electronic health records (EHR), and AI-driven diagnostic support.\n\n2. **MedData Hub**\n   - **Managed by**: MedData Solutions\n   - **Description**: Focuses on medical research and clinical trial data management.\n   - **Notable Features**: Collaborative research tools, data visualization for clinical trials, and compliance with FDA regulations.\n\n3. **CareNet Server**\n   - **Managed by**: CareNet Technologies\n   - **Description**: Designed for hospital management and patient care coordination.\n   - **Notable Features**: Real-time patient flow analytics, bed management systems, and integration with hospital information systems (HIS).\n\n4. **BioStat Server**\n   - **Managed by**: BioStat Analytics\n   - **Description**: Specializes in biostatistics and epidemiological studies.\n   - **Notable Features**: Advanced statistical modeling, epidemiological trend analysis, and support for global health initiatives.\n\n5. **HealthMetrics Server**\n   - **Managed by**: HealthMetrics Inc.\n   - **Description**: Provides comprehensive healthcare performance metrics and quality improvement analytics.\n   - **Notable Features**: Benchmarking against industry standards, performance dashboards, and predictive analytics for healthcare outcomes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "registry#main-content",
+      "registry#overview",
+      "registry#setup",
+      "registry#examples",
+      "registry#tools",
+      "registry#mcp",
+      "registry#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Registry này là một dịch vụ hướng cộng đồng đóng vai trò như một thư mục trung tâm cho các server Model Context Protocol (MCP). Nó giúp dễ dàng tìm kiếm và quản lý các server model, từ đó nâng cao hiệu quả cộng tác trong hệ sinh thái MCP. Registry thúc đẩy sự chuẩn hóa bằng cách cung cấp một nguồn tài nguyên thống nhất, nơi các nhà phát triển và tổ chức có thể truy cập các server MCP đã được kiểm duyệt. Hướng tiếp cận tập trung này giúp giảm thiểu sự phân mảnh và hỗ trợ các đội ngũ tích hợp đúng công cụ cho các bản triển khai AI agent của họ. Dù bạn đang xây dựng ứng dụng với Claude Code, Cursor hay các hệ thống AI khác, registry này sẽ giúp đơn giản hóa quy trình tìm kiếm và tích hợp các server MCP tương thích.\nQuản lý và cập nhật các server model MCP một cách hiệu quả.\nTạo điều kiện cho cộng đồng đóng góp nhằm làm phong phú thêm sự đa dạng của model.\nChuẩn hóa quyền truy cập model để cải thiện khả năng cộng tác nhóm.\nCung cấp một repository tập trung giúp dễ dàng tìm kiếm model.",
+    "setup_vi": "Terminal\nSao chép\n`claude install modelcontextprotocol/registry`\n`git clone https://github.com/modelcontextprotocol/registry`",
+    "usage_vi": "```\nTìm 5 server MCP hàng đầu được đăng ký trong registry chuyên về [SPECIFIC_DOMAIN]. Với mỗi server, hãy cung cấp tên server, tổ chức quản lý và mô tả ngắn gọn về các tính năng của nó. Ngoài ra, hãy liệt kê mọi tính năng nổi bật hoặc khía cạnh độc đáo giúp mỗi server nổi bật trong lĩnh vực [SPECIFIC_DOMAIN].\n```\nSao chép\n\n```\nDưới đây là 5 server MCP hàng đầu được đăng ký trong registry chuyên về phân tích chăm sóc sức khỏe (healthcare analytics):\n\n1. **HealthInsight Server**\n   - **Được quản lý bởi**: HealthTech Innovations\n   - **Mô tả**: Server chuyên dụng cho phân tích dữ liệu chăm sóc sức khỏe, cung cấp mô hình dự đoán nâng cao và giám sát bệnh nhân theo thời gian thực.\n   - **Tính năng nổi bật**: Xử lý dữ liệu tuân thủ HIPAA, tích hợp với hồ sơ bệnh án điện tử (EHR) và hỗ trợ chẩn đoán bằng AI.\n\n2. **MedData Hub**\n   - **Được quản lý bởi**: MedData Solutions\n   - **Mô tả**: Tập trung vào nghiên cứu y học và quản lý dữ liệu thử nghiệm lâm sàng.\n   - **Tính năng nổi bật**: Các công cụ nghiên cứu cộng tác, trực quan hóa dữ liệu thử nghiệm lâm sàng và tuân thủ các quy định của FDA.\n\n3. **CareNet Server**\n   - **Được quản lý bởi**: CareNet Technologies\n   - **Mô tả**: Được thiết kế để quản lý bệnh viện và điều phối chăm sóc bệnh nhân.\n   - **Tính năng nổi bật**: Phân tích luồng bệnh nhân theo thời gian thực, hệ thống quản lý giường bệnh và tích hợp với hệ thống thông tin bệnh viện (HIS).\n\n4. **BioStat Server**\n   - **Được quản lý bởi**: BioStat Analytics\n   - **Mô tả**: Chuyên về thống kê sinh học và các nghiên cứu dịch tễ học.\n   - **Tính năng nổi bật**: Mô hình hóa thống kê nâng cao, phân tích xu hướng dịch tễ học và hỗ trợ các sáng kiến y tế toàn cầu.\n\n5. **HealthMetrics Server**\n   - **Được quản lý bởi**: HealthMetrics Inc.\n   - **Mô tả**: Cung cấp các chỉ số hiệu suất chăm sóc sức khỏe toàn diện và phân tích cải thiện chất lượng.\n   - **Tính năng nổi bật**: Đối sánh với các tiêu chuẩn ngành, bảng điều khiển hiệu suất và phân tích dự đoán kết quả chăm sóc sức khỏe.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:15.836265Z",
+    "http_status": 200,
+    "content_hash": "8a4caa1b36e121cacc8c4b79db02550003fac26c66cd10262592b980ff746a5e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\registry.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\registry.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Dịch vụ Registry MCP hướng cộng đồng",
+  "short_description_vi": "Registry này là một dịch vụ hướng cộng đồng được thiết kế cho các server Model Context Protocol (MCP), giúp dễ dàng truy cập và quản lý các server model. Nó tăng cường khả năng cộng tác và chuẩn hóa trong hệ sinh thái MCP, trở thành một tài nguyên quan trọng cho các nhà phát triển và tổ chức."
+}

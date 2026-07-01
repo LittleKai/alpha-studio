@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/unity-mcp",
+  "slug": "unity-mcp",
+  "name": "react-native-best-practices",
+  "headline": "Unity MCP: AI Integration for Game Development",
+  "short_description": "Unity MCP enables interaction between AI assistants and the Unity Editor, helping developers to manage assets, control scenes, and automate tasks efficiently. This integration enhances productivity in game development workflows.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "CoplayDev",
+  "install_command": "claude install CoplayDev/unity-mcp",
+  "source_repo_url": "https://github.com/CoplayDev/unity-mcp",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "llm",
+    "game-development",
+    "automation",
+    "unity",
+    "ai-integration"
+  ],
+  "sections": {
+    "overview": "Unity MCP bridges AI assistants like Claude and Cursor with the Unity Editor through the Model Context Protocol (MCP), allowing developers to programmatically interact with their game projects. The skill enables automation of asset management, scene manipulation, and common development workflows without manual editor interaction. Built by CoplayDev, it integrates directly into the Unity Editor workflow, letting developers leverage AI for repetitive tasks and code generation. Game developers, technical artists, and automation-focused teams can use this to streamline their production pipelines and reduce manual editor work. The integration supports both Editor and Runtime assembly domains, ensuring compatibility across different Unity development scenarios.\nAutomate the organization and retrieval of game assets in Unity.\nControl and manipulate game scenes dynamically using AI commands.\nReceive AI-assisted suggestions for script edits and optimizations.\nStreamline repetitive game development tasks to save time and reduce errors.",
+    "setup": "Terminal\nCopy\n`claude install CoplayDev/unity-mcp`\n`git clone https://github.com/CoplayDev/unity-mcp`",
+    "usage": "```\nUsing Unity MCP, [ASSISTANT_NAME] will [ACTION] in the Unity Editor. For example, '[ASSISTANT_NAME] will import [ASSET_TYPE] assets from [SOURCE] and organize them into folders based on [CRITERIA]. Then, [ASSISTANT_NAME] will generate a report of all missing dependencies and suggest fixes.'\n```\nCopy\n\n```\nUnity MCP has successfully imported 15 3D model assets from the 'Medieval Castle' pack into your project. The assets have been organized into folders based on their type (e.g., 'Props', 'Buildings', 'Characters') and location within the castle scene. A report has been generated highlighting 3 missing texture files and 2 scripts with deprecated functions. For the missing textures, I recommend checking the original asset pack for replacements or using the Unity Asset Store to find similar alternatives. For the deprecated scripts, I suggest updating them to use the new API functions or finding community-created alternatives that support the latest Unity version.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor"
+    ],
+    "related_skills": [
+      "unity-mcp#main-content",
+      "unity-mcp#overview",
+      "unity-mcp#setup",
+      "unity-mcp#examples",
+      "unity-mcp#tools",
+      "unity-mcp#mcp",
+      "unity-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Unity MCP bridges AI assistants like Claude and Cursor with the Unity Editor through the Model Context Protocol (MCP), allowing developers to programmatically interact with their game projects. The skill enables automation of asset management, scene manipulation, and common development workflows without manual editor interaction. Built by CoplayDev, it integrates directly into the Unity Editor workflow, letting developers leverage AI for repetitive tasks and code generation. Game developers, technical artists, and automation-focused teams can use this to streamline their production pipelines and reduce manual editor work. The integration supports both Editor and Runtime assembly domains, ensuring compatibility across different Unity development scenarios.\nAutomate the organization and retrieval of game assets in Unity.\nControl and manipulate game scenes dynamically using AI commands.\nReceive AI-assisted suggestions for script edits and optimizations.\nStreamline repetitive game development tasks to save time and reduce errors.",
+    "setup_vi": "Terminal\nCopy\n`claude install CoplayDev/unity-mcp`\n`git clone https://github.com/CoplayDev/unity-mcp`",
+    "usage_vi": "```\nUsing Unity MCP, [ASSISTANT_NAME] will [ACTION] in the Unity Editor. For example, '[ASSISTANT_NAME] will import [ASSET_TYPE] assets from [SOURCE] and organize them into folders based on [CRITERIA]. Then, [ASSISTANT_NAME] will generate a report of all missing dependencies and suggest fixes.'\n```\nCopy\n\n```\nUnity MCP has successfully imported 15 3D model assets from the 'Medieval Castle' pack into your project. The assets have been organized into folders based on their type (e.g., 'Props', 'Buildings', 'Characters') and location within the castle scene. A report has been generated highlighting 3 missing texture files and 2 scripts with deprecated functions. For the missing textures, I recommend checking the original asset pack for replacements or using the Unity Asset Store to find similar alternatives. For the deprecated scripts, I suggest updating them to use the new API functions or finding community-created alternatives that support the latest Unity version.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:07:57.930797Z",
+    "http_status": 200,
+    "content_hash": "8a31dc553fd5196349818d7488e43a7a8dc96fd7821f6b98da121f9de604695c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\unity-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\unity-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Unity MCP: AI Integration for Game Development",
+  "short_description_vi": "Unity MCP enables interaction between AI assistants and the Unity Editor, helping developers to manage assets, control scenes, and automate tasks efficiently. This integration enhances productivity in game development workflows."
+}

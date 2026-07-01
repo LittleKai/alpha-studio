@@ -1,0 +1,52 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/adcontent",
+  "slug": "adcontent",
+  "name": "adContent",
+  "headline": "Marketing Science Data and Replication",
+  "short_description": "Access experimental data and replication codes from a Marketing Science study examining how advertising content influences consumer behavior in a controlled bookstore setting.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "ilyamorozov",
+  "install_command": "git clone https://github.com/ilyamorozov/adContent.git",
+  "source_repo_url": "https://github.com/ilyamorozov/adContent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill provides the complete replication package from the 2024 Marketing Science paper \"Where Does Advertising Content Lead You? We Created a Bookstore to Find Out\" by Morozov and Tuchman. It includes Stata and R code to reproduce all tables and figures, plus raw experimental data from Qualtrics surveys, Google Analytics logs, WooCommerce purchases, and Amazon book redemption records. Researchers can run the batch file to replicate results or work with cleaned datasets at the consumer or event level. The package supports independent verification of findings and enables secondary research using the published experimental dataset.\nReplicate tables and figures from the advertising content marketing science paper\nConduct secondary analyses on consumer behavior and advertising effects\nAnalyze book purchase patterns from experimental bookstore data\nStudy how product rankings and pricing influence consumer search behavior",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ilyamorozov/adContent`",
+    "usage": "```\nGenerate a 1000-character ad for [COMPANY] in the [INDUSTRY] industry. Use data-driven insights from Morozov and Tuchman (2024) to optimize engagement. Include a call-to-action and target [DEMOGRAPHIC] audience.\n```\nCopy\n\n```\n# Ad Content for GreenTech Solutions\n\n**Headline:** Revolutionize Your Home with Solar Power\n\n**Body:** Did you know that 78% of homeowners in [DEMOGRAPHIC] are looking for sustainable energy solutions? GreenTech Solutions offers cutting-edge solar panels that can reduce your energy bills by up to 50%. Our panels are designed with the latest technology to maximize efficiency and durability. Join thousands of satisfied customers who have already made the switch to clean energy.\n\n**Call-to-Action:** Visit our website today to get a free quote and start your journey towards a greener future!\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "adcontent#main-content",
+      "adcontent#overview",
+      "adcontent#setup",
+      "adcontent#examples",
+      "adcontent#related",
+      "marketingskills",
+      "copywriting",
+      "tako"
+    ],
+    "overview_vi": "This skill provides the complete replication package from the 2024 Marketing Science paper \"Where Does Advertising Content Lead You? We Created a Bookstore to Find Out\" by Morozov and Tuchman. It includes Stata and R code to reproduce all tables and figures, plus raw experimental data from Qualtrics surveys, Google Analytics logs, WooCommerce purchases, and Amazon book redemption records. Researchers can run the batch file to replicate results or work with cleaned datasets at the consumer or event level. The package supports independent verification of findings and enables secondary research using the published experimental dataset.\nReplicate tables and figures from the advertising content marketing science paper\nConduct secondary analyses on consumer behavior and advertising effects\nAnalyze book purchase patterns from experimental bookstore data\nStudy how product rankings and pricing influence consumer search behavior",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ilyamorozov/adContent`",
+    "usage_vi": "```\nGenerate a 1000-character ad for [COMPANY] in the [INDUSTRY] industry. Use data-driven insights from Morozov and Tuchman (2024) to optimize engagement. Include a call-to-action and target [DEMOGRAPHIC] audience.\n```\nCopy\n\n```\n# Ad Content for GreenTech Solutions\n\n**Headline:** Revolutionize Your Home with Solar Power\n\n**Body:** Did you know that 78% of homeowners in [DEMOGRAPHIC] are looking for sustainable energy solutions? GreenTech Solutions offers cutting-edge solar panels that can reduce your energy bills by up to 50%. Our panels are designed with the latest technology to maximize efficiency and durability. Join thousands of satisfied customers who have already made the switch to clean energy.\n\n**Call-to-Action:** Visit our website today to get a free quote and start your journey towards a greener future!\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:34:35.695285Z",
+    "http_status": 200,
+    "content_hash": "de67cbb96422c6b073afbe0ee5c7518d15cdea8cfbe3a8468647927a35f2d401",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\adcontent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\adcontent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Marketing Science Data and Replication",
+  "short_description_vi": "Access experimental data and replication codes from a Marketing Science study examining how advertising content influences consumer behavior in a controlled bookstore setting."
+}

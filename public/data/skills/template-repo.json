@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/template-repo",
+  "slug": "template-repo",
+  "name": "Agent Orchestration & Security Template",
+  "headline": "Agent Orchestration & Security Template - AI Agent",
+  "short_description": "Template for agent orchestration and security. Enables agent2agent workflows, mechanistic interpretability, and integration via DLL injection and CLI wrappers. Benefits operations teams managing AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "AndrewAltimit",
+  "install_command": "git clone https://github.com/AndrewAltimit/template-repo.git",
+  "source_repo_url": "https://github.com/AndrewAltimit/template-repo",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "text2speech",
+    "codex-cli",
+    "agent-orchestration",
+    "ai-governance",
+    "sleeper-agents",
+    "mcp",
+    "ai-policy",
+    "text2video",
+    "docker",
+    "github-actions",
+    "gemini-cli",
+    "text2image",
+    "agent-security",
+    "ai-agents",
+    "agent-framework",
+    "ai-safety",
+    "dll-injection",
+    "mechanistic-interpretability",
+    "model-context-protocol",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "This template demonstrates how to run a council of AI agents across a shared codebase with board-driven task delegation, automated PR review, and security hardening. It integrates 20 MCP servers for code quality, content creation, 3D graphics, video editing, and speech synthesis. The architecture includes trust boundary enforcement via wrapper guards and iteration limits, a 15-stage hardened CI/CD pipeline with multi-arch Docker builds, and sleeper agent detection via residual stream analysis. Designed for experienced developers managing autonomous agents in production environments, it provides containerized tooling, GitHub Projects v2 work queues, and integration patterns for legacy software via runtime injection and shared memory IPC.\nOrchestrating multi-agent development teams with GitHub automation\nBuilding hardened CI/CD pipelines for AI-authored code with security scanning\nDetecting deceptive agent behavior through mechanistic interpretability research\nIntegrating AI agents into legacy systems via DLL injection and CLI wrappers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AndrewAltimit/template-repo`",
+    "usage": "```\nDesign a secure agent orchestration workflow for [AGENT_TYPE] using template-repo. Include steps for: 1) Setting up agent2agent communication via [PROTOCOL], 2) Implementing mechanistic interpretability checks for [AGENT_BEHAVIOR], 3) Integrating security policies via DLL injection for [SECURITY_MODULE], and 4) Exposing CLI wrappers for [OPERATIONS_TASK]. Provide a diagram of the workflow architecture.\n```\nCopy\n\n```\n### Secure Agent Orchestration Workflow for Customer Support Agent\n\n**Workflow Architecture:**\n```\n[Customer Query] → [CLI Wrapper: 'process_query'] → [Agent A: Intent Recognition]\n    ↓\n[Agent B: Security Validator (DLL Injection: 'auth_check.dll')]\n    ↓\n[Agent C: Knowledge Retrieval (Mechanistic Interpretability: 'retrieval_analysis.json')]\n    ↓\n[Agent D: Response Generation] → [CLI Wrapper: 'format_response'] → [Customer]\n```\n\n**Detailed Steps:**\n1. **Agent2Agent Communication:** Configured using gRPC (port 50051) with TLS encryption. Agent A (intent recognition) sends structured JSON to Agent B (security validator) via bidirectional streaming.\n\n2. **Mechanistic Interpretability:** Agent C logs retrieval patterns to `retrieval_analysis.json`. A weekly report highlights that 12% of queries trigger the 'high_risk' flag due to ambiguous intent, prompting a retraining cycle for Agent A.\n\n3. **Security Integration:** The `auth_check.dll` module is injected into Agent B’s process space. It validates user permissions against Active Directory and blocks 8% of queries from unregistered devices (e.g., query from 'device-123' rejected with error code 403).\n\n4. **CLI Wrappers:** The `process_query` CLI accepts `--priority high` flags and routes to Agent A’s queue. The `format_response` CLI enforces output sanitization (e.g., removes profanity via regex) and logs response time metrics.\n\n**Security Policies Enforced:**\n- All inter-agent traffic encrypted (AES-256).\n- DLL injection restricted to whitelisted modules (e.g., `auth_check.dll`, `rate_limiter.dll`).\n- CLI wrappers log all inputs/outputs to `/var/log/agent_orchestrator/audit.log`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "template-repo#main-content",
+      "template-repo#overview",
+      "template-repo#setup",
+      "template-repo#examples",
+      "template-repo#tools",
+      "template-repo#mcp",
+      "template-repo#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Template này trình bày cách vận hành một hội đồng các AI agent trên một codebase chung với cơ chế ủy thác nhiệm vụ dựa trên bảng công việc (board-driven), tự động review PR và tăng cường bảo mật. Template tích hợp 20 MCP server phục vụ cho chất lượng code, sáng tạo nội dung, đồ họa 3D, biên tập video và tổng hợp tiếng nói. Kiến trúc bao gồm việc thực thi ranh giới tin cậy (trust boundary) thông qua các wrapper guard và giới hạn số lần lặp (iteration limits), một pipeline CI/CD 15 giai đoạn được bảo mật hóa (hardened) với các bản build Docker đa kiến trúc (multi-arch), và phát hiện sleeper agent thông qua phân tích residual stream. Được thiết kế dành cho các lập trình viên giàu kinh nghiệm quản lý các agent tự trị trong môi trường production, template cung cấp các công cụ container hóa, hàng đợi công việc GitHub Projects v2, và các mô hình tích hợp cho phần mềm cũ (legacy software) thông qua runtime injection và shared memory IPC.\nĐiều phối các đội ngũ phát triển multi-agent bằng tự động hóa GitHub\nXây dựng các pipeline CI/CD bảo mật cho mã nguồn do AI tạo ra bằng cách quét bảo mật\nPhát hiện hành vi gian lận của agent thông qua nghiên cứu mechanistic interpretability\nTích hợp AI agent vào các hệ thống legacy thông qua DLL injection và CLI wrappers",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/AndrewAltimit/template-repo`",
+    "usage_vi": "```\nThiết kế một workflow điều phối agent bảo mật cho [AGENT_TYPE] bằng cách sử dụng template-repo. Bao gồm các bước: 1) Thiết lập giao tiếp agent2agent qua [PROTOCOL], 2) Triển khai các bước kiểm tra mechanistic interpretability cho [AGENT_BEHAVIOR], 3) Tích hợp các chính sách bảo mật qua DLL injection cho [SECURITY_MODULE], và 4) Cung cấp CLI wrappers cho [OPERATIONS_TASK]. Cung cấp sơ đồ kiến trúc workflow.\n```\nCopy\n\n```\n### Workflow điều phối agent bảo mật cho Customer Support Agent\n\n**Kiến trúc Workflow:**\n```\n[Yêu cầu từ khách hàng] → [CLI Wrapper: 'process_query'] → [Agent A: Nhận diện ý định]\n    ↓\n[Agent B: Xác thực bảo mật (DLL Injection: 'auth_check.dll')]\n    ↓\n[Agent C: Truy xuất tri thức (Mechanistic Interpretability: 'retrieval_analysis.json')]\n    ↓\n[Agent D: Tạo phản hồi] → [CLI Wrapper: 'format_response'] → [Khách hàng]\n```\n\n**Các bước chi tiết:**\n1. **Giao tiếp Agent2Agent:** Được cấu hình bằng gRPC (port 50051) với mã hóa TLS. Agent A (nhận diện ý định) gửi JSON cấu trúc đến Agent B (trình xác thực bảo mật) thông qua truyền trực tuyến hai chiều (bidirectional streaming).\n\n2. **Mechanistic Interpretability:** Agent C ghi log các mẫu truy xuất (retrieval patterns) vào `retrieval_analysis.json`. Báo cáo hàng tuần chỉ ra rằng 12% truy vấn kích hoạt cờ 'high_risk' do ý định mơ hồ, dẫn đến việc kích hoạt chu kỳ huấn luyện lại (retraining cycle) cho Agent A.\n\n3. **Tích hợp bảo mật:** Module `auth_check.dll` được inject vào không gian tiến trình (process space) của Agent B. Module này xác thực quyền của người dùng với Active Directory và chặn 8% truy vấn từ các thiết bị không đăng ký (ví dụ: truy vấn từ 'device-123' bị từ chối với mã lỗi 403).\n\n4. **CLI Wrappers:** CLI `process_query` chấp nhận cờ `--priority high` và định tuyến đến hàng đợi của Agent A. CLI `format_response` thực thi việc làm sạch đầu ra (output sanitization - ví dụ: loại bỏ từ tục tĩu bằng regex) và ghi log các chỉ số thời gian phản hồi (response time metrics).\n\n**Các chính sách bảo mật được áp dụng:**\n- Tất cả lưu lượng giữa các agent được mã hóa (AES-256).\n- DLL injection bị giới hạn trong các module thuộc whitelist (ví dụ: `auth_check.dll`, `rate_limiter.dll`).\n- CLI wrappers ghi log tất cả đầu vào/đầu ra vào `/var/log/agent_orchestrator/audit.log`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:00:43.015136Z",
+    "http_status": 200,
+    "content_hash": "0156e69cae3829db80b87d1edb0bd06235bd75601902e3fcba67438b1eeba868",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\template-repo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\template-repo.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Template điều phối & bảo mật Agent - AI Agent",
+  "short_description_vi": "Template dành cho việc điều phối và bảo mật agent. Hỗ trợ các workflow agent2agent, mechanistic interpretability, và tích hợp thông qua DLL injection cùng CLI wrappers. Mang lại lợi ích cho các đội ngũ operations đang quản lý AI agent."
+}

@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mixapi",
+  "slug": "mixapi",
+  "name": "MIXAPI",
+  "headline": "MIXAPI - AI Model Interface Management",
+  "short_description": "大模型API网关-全新AI大模型接口管理与API聚合分发系统 ,   支持将多种大模型转换成统一的OpenAI兼容接口,Claude接口,Gemini接口，可供个人或者企业内部大模型API 统一管理和渠道分发使用(key管理与二次分发)，支持国际国内所有主流大模型，gemini,claude,qwen3,kimi-k2,豆包等，提供单可执行文件， docker镜像，一键部署，开箱即用，完全开源，自主可控！本项目基于New-API和One-API，整合了NewAPI,OneAPI所有功能及众多第三方插件为一身，功能超强！",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "aiprodcoder",
+  "install_command": "git clone https://github.com/aiprodcoder/MIXAPI.git",
+  "source_repo_url": "https://github.com/aiprodcoder/MIXAPI",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "kimi-k2",
+    "newapi",
+    "routerapi",
+    "openapi",
+    "qwen3",
+    "gemini",
+    "claude-code",
+    "oneapi"
+  ],
+  "sections": {
+    "overview": "MIXAPI is a next-generation AI model gateway designed to aggregate and manage API calls from multiple large language models including Claude, Gemini, Qwen3, Kimi-K2, and others. It converts all supported model APIs into standardized OpenAI-compatible, Claude, and Gemini formats, enabling unified access through a single interface. The system provides centralized key management, channel distribution, and token-based billing with support for package plans, usage quotas, and per-model restrictions. Organizations can deploy MIXAPI via executable file, Docker container, or source code to manage internal LLM infrastructure with caching, retry logic, and detailed usage analytics. It solves the complexity of managing multiple model APIs by providing a single gateway with enterprise features like token groups, model limits, frequency controls, and comprehensive audit logging.\nCentralize multiple LLM API keys and manage access through a single gateway\nConvert diverse model APIs to OpenAI-compatible format for application compatibility\nImplement token-based billing and usage quotas across teams or customers\nDistribute and load-balance requests across multiple model providers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aiprodcoder/MIXAPI`",
+    "usage": "```\nUse MIXAPI to [ACTION] for [TARGET]. Convert [SOURCE_MODEL] to [TARGET_INTERFACE] (OpenAI/ Claude/ Gemini). Manage [API_KEYS] for [USER/TEAM]. Deploy via [METHOD: single executable/ Docker/ cloud]. Example: 'Use MIXAPI to automate customer support responses for my e-commerce platform. Convert my local Qwen3 model to an OpenAI-compatible API. Manage API keys for my 5-person customer service team. Deploy MIXAPI using Docker on AWS EC2.'\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mixapi#main-content",
+      "mixapi#overview",
+      "mixapi#setup",
+      "mixapi#examples",
+      "mixapi#tools",
+      "mixapi#mcp",
+      "mixapi#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MIXAPI là gateway AI model thế hệ mới được thiết kế để tổng hợp và quản lý các lượt gọi API từ nhiều mô hình ngôn ngữ lớn (LLM) bao gồm Claude, Gemini, Qwen3, Kimi-K2 và các model khác. Hệ thống chuyển đổi tất cả API của các model được hỗ trợ thành các định dạng chuẩn tương thích với OpenAI, Claude và Gemini, giúp truy cập thống nhất qua một interface duy nhất. Hệ thống cung cấp khả năng quản lý key tập trung, phân phối kênh và tính phí dựa trên token (token-based billing) với sự hỗ trợ cho các gói dịch vụ (package plans), hạn mức sử dụng (usage quotas) và giới hạn riêng cho từng model. Các tổ chức có thể triển khai MIXAPI thông qua file thực thi (executable file), Docker container hoặc mã nguồn để quản lý hạ tầng LLM nội bộ với các tính năng như caching, cơ chế thử lại (retry logic) và phân tích sử dụng chi tiết. Giải pháp này giải quyết sự phức tạp khi quản lý nhiều API model bằng cách cung cấp một gateway duy nhất tích hợp các tính năng doanh nghiệp như nhóm token (token groups), giới hạn model (model limits), kiểm soát tần suất (frequency controls) và ghi nhật ký kiểm toán (audit logging) toàn diện.\n\nTập trung nhiều API key LLM và quản lý quyền truy cập qua một gateway duy nhất\nChuyển đổi các API model khác nhau sang định dạng tương thích với OpenAI để đảm bảo tính tương thích của ứng dụng\nTriển khai tính phí dựa trên token và hạn mức sử dụng giữa các nhóm hoặc khách hàng\nPhân phối và cân bằng tải (load-balance) các request qua nhiều nhà cung cấp model",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/aiprodcoder/MIXAPI`",
+    "usage_vi": "```\nSử dụng MIXAPI để [ACTION] cho [TARGET]. Chuyển đổi [SOURCE_MODEL] sang [TARGET_INTERFACE] (OpenAI/ Claude/ Gemini). Quản lý [API_KEYS] cho [USER/TEAM]. Triển khai qua [METHOD: single executable/ Docker/ cloud]. Ví dụ: 'Sử dụng MIXAPI để tự động hóa phản hồi hỗ trợ khách hàng cho nền tảng thương mại điện tử của tôi. Chuyển đổi model Qwen3 chạy cục bộ của tôi thành API tương thích với OpenAI. Quản lý API key cho đội ngũ chăm sóc khách hàng gồm 5 người. Triển khai MIXAPI bằng Docker trên AWS EC2.'\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:10:48.555233Z",
+    "http_status": 200,
+    "content_hash": "9d608401d557f64f6828c3c589eb1a30422eac13cafd344b94aee1dbce4f1dec",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mixapi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mixapi.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MIXAPI - Quản lý Interface Model AI",
+  "short_description_vi": "Gateway API cho LLM - Hệ thống quản lý interface AI model và tổng hợp/phân phối API thế hệ mới. Hỗ trợ chuyển đổi nhiều loại model lớn thành các interface chuẩn tương thích với OpenAI, Claude, Gemini, phù hợp cho cá nhân hoặc doanh nghiệp quản lý tập trung và phân phối kênh API (quản lý key và phân phối thứ cấp). Hỗ trợ tất cả các model phổ biến trong nước và quốc tế như Gemini, Claude, Qwen3, Kimi-K2, Doubao... Cung cấp file thực thi đơn lẻ (single executable), Docker image, triển khai một chạm (one-click deployment), dùng được ngay (out-of-the-box), mã nguồn mở hoàn toàn và tự chủ kiểm soát! Dự án được phát triển dựa trên New-API và One-API, tích hợp toàn bộ tính năng của NewAPI, OneAPI cùng nhiều plugin bên thứ ba trong một hệ thống cực kỳ mạnh mẽ!"
+}

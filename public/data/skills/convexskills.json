@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/convexskills",
+  "slug": "convexskills",
+  "name": "react-native-best-practices",
+  "headline": "Convexskills: AI Skills for App Development",
+  "short_description": "Convexskills provides a comprehensive suite of AI agent skills and templates designed for building production-ready applications with Convex. It includes essential patterns for queries, mutations, cron jobs, webhooks, and migrations, streamlining the development process.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "420 min",
+  "author": "waynesutton",
+  "install_command": "claude install waynesutton/convexskills",
+  "source_repo_url": "https://github.com/waynesutton/convexskills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "skills",
+    "Convex",
+    "AI",
+    "backend",
+    "database"
+  ],
+  "sections": {
+    "overview": "Convexskills is an unofficial collection of structured AI skills designed to help AI assistants implement Convex best practices. It covers queries, mutations, cron jobs, webhooks, migrations, file storage, schema validation, security audits, and component authoring. The skills generate code that passes @convex-dev/eslint-plugin by default, preventing mistakes at generation time. Installation via npm CLI, npx, or manual setup supports multiple agent frameworks including Claude Code, Cursor, Codex, and OpenCode. It includes slash commands for routing tasks to the appropriate skill.\nBuilding production-ready apps with Convex\nImplementing cron jobs for automated tasks\nCreating webhooks for real-time data updates\nManaging database migrations efficiently",
+    "setup": "Terminal\nCopy\n`claude install waynesutton/convexskills`\n`git clone https://github.com/waynesutton/convexskills`",
+    "usage": "```\nCreate a Convex agent skill for [SPECIFIC USE CASE] using the Convexskills framework. The skill should include [QUERY/MUTATION/CRON JOB/WEBHOOK/MIGRATION] patterns. Provide the complete code implementation and explain how it integrates with the Convex backend.\n```\nCopy\n\n```\nHere's a Convex agent skill for a sales forecasting application using the Hook tool. This skill includes a cron job pattern that runs daily to analyze customer interactions and update sales forecasts.\n\n```javascript\n// salesForecastingAgent.ts\nimport { cronJob } from 'convexskills'\n\nconst salesForecastingAgent = cronJob({\n  name: 'updateSalesForecasts',\n  interval: 'daily',\n  handler: async (ctx) => {\n    const customers = await ctx.db.query('customers').collect()\n    const interactions = await ctx.db.query('interactions').collect()\n    \n    for (const customer of customers) {\n      const recentInteractions = interactions.filter(\n        (interaction) => interaction.customerId === customer.id\n      )\n      \n      // Use Hook tool to analyze interactions and update forecast\n      const forecast = await Hook.analyzeInteractions(recentInteractions)\n      \n      await ctx.db.patch(customer.id, {\n        salesForecast: forecast,\n        lastUpdated: new Date()\n      })\n    }\n  },\n})\n\nexport default salesForecastingAgent\n```\n\nThis skill integrates with the Convex backend by:\n1. Querying the customers and interactions tables\n2. Using the Hook tool to analyze interactions\n3. Updating the sales forecast for each customer\n4. Recording the last update timestamp\n\nThe cron job runs daily to ensure forecasts are up-to-date.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "convexskills#main-content",
+      "convexskills#overview",
+      "convexskills#setup",
+      "convexskills#examples",
+      "convexskills#tools",
+      "convexskills#mcp",
+      "convexskills#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Convexskills is an unofficial collection of structured AI skills designed to help AI assistants implement Convex best practices. It covers queries, mutations, cron jobs, webhooks, migrations, file storage, schema validation, security audits, and component authoring. The skills generate code that passes @convex-dev/eslint-plugin by default, preventing mistakes at generation time. Installation via npm CLI, npx, or manual setup supports multiple agent frameworks including Claude Code, Cursor, Codex, and OpenCode. It includes slash commands for routing tasks to the appropriate skill.\nBuilding production-ready apps with Convex\nImplementing cron jobs for automated tasks\nCreating webhooks for real-time data updates\nManaging database migrations efficiently",
+    "setup_vi": "Terminal\nCopy\n`claude install waynesutton/convexskills`\n`git clone https://github.com/waynesutton/convexskills`",
+    "usage_vi": "```\nCreate a Convex agent skill for [SPECIFIC USE CASE] using the Convexskills framework. The skill should include [QUERY/MUTATION/CRON JOB/WEBHOOK/MIGRATION] patterns. Provide the complete code implementation and explain how it integrates with the Convex backend.\n```\nCopy\n\n```\nHere's a Convex agent skill for a sales forecasting application using the Hook tool. This skill includes a cron job pattern that runs daily to analyze customer interactions and update sales forecasts.\n\n```javascript\n// salesForecastingAgent.ts\nimport { cronJob } from 'convexskills'\n\nconst salesForecastingAgent = cronJob({\n  name: 'updateSalesForecasts',\n  interval: 'daily',\n  handler: async (ctx) => {\n    const customers = await ctx.db.query('customers').collect()\n    const interactions = await ctx.db.query('interactions').collect()\n    \n    for (const customer of customers) {\n      const recentInteractions = interactions.filter(\n        (interaction) => interaction.customerId === customer.id\n      )\n      \n      // Use Hook tool to analyze interactions and update forecast\n      const forecast = await Hook.analyzeInteractions(recentInteractions)\n      \n      await ctx.db.patch(customer.id, {\n        salesForecast: forecast,\n        lastUpdated: new Date()\n      })\n    }\n  },\n})\n\nexport default salesForecastingAgent\n```\n\nThis skill integrates with the Convex backend by:\n1. Querying the customers and interactions tables\n2. Using the Hook tool to analyze interactions\n3. Updating the sales forecast for each customer\n4. Recording the last update timestamp\n\nThe cron job runs daily to ensure forecasts are up-to-date.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:10:26.782377Z",
+    "http_status": 200,
+    "content_hash": "fd0025060db30420b4059bd8407c17f89d026f902bd9095c2b8a3bd1ccabc961",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\convexskills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\convexskills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Convexskills: AI Skills for App Development",
+  "short_description_vi": "Convexskills provides a comprehensive suite of AI agent skills and templates designed for building production-ready applications with Convex. It includes essential patterns for queries, mutations, cron jobs, webhooks, and migrations, streamlining the development process."
+}

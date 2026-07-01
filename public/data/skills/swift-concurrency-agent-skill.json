@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/swift-concurrency-agent-skill",
+  "slug": "swift-concurrency-agent-skill",
+  "name": "Swift-Concurrency-Agent-Skill",
+  "headline": "Swift Concurrency Guidance for Developers",
+  "short_description": "Enhance your coding capabilities with expert guidance on Swift Concurrency. This skill focuses on safe concurrency practices, performance optimization, and migration strategies for Swift 6, making it essential for developers looking to improve their Swift applications.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "AvdLee",
+  "install_command": "claude install AvdLee/Swift-Concurrency-Agent-Skill",
+  "source_repo_url": "https://github.com/AvdLee/Swift-Concurrency-Agent-Skill",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "concurrency",
+    "swift",
+    "performance",
+    "async-await",
+    "swift-actor"
+  ],
+  "sections": {
+    "overview": "The Swift-Concurrency-Agent-Skill provides expert guidance on implementing safe and efficient concurrency in Swift applications. It covers best practices for concurrent programming, performance optimization techniques, and strategies for migrating to Swift 6's concurrency model. The skill addresses key concepts including task management, sendability, and threading isolation to help developers write robust concurrent code. It includes references, glossary terms, and actionable guidance grounded in real-world concurrency patterns. This resource is valuable for iOS, macOS, and server-side Swift developers working with modern concurrency frameworks.\nImplement safe concurrency practices in Swift applications to prevent data races and isolation errors.\nOptimize performance for existing Swift codebases by analyzing and refining concurrency patterns.\nMigrate legacy projects to Swift 6, incorporating new concurrency features like async/await and actors.\nUtilize async/await for cleaner, more maintainable code while managing asynchronous tasks effectively.",
+    "setup": "Terminal\nCopy\n`claude install AvdLee/Swift-Concurrency-Agent-Skill`\n`git clone https://github.com/AvdLee/Swift-Concurrency-Agent-Skill`",
+    "usage": "```\nI'm working on a Swift application and need to implement concurrency safely. Here's my current code: [CODE_SNIPPET]. Can you review it and suggest improvements for thread safety and performance optimization? Also, I'm planning to migrate to Swift 6. Are there any concurrency-related changes I should be aware of? My app's main use case is [DESCRIBE_USE_CASE].\n```\nCopy\n\n```\nBased on the code snippet you provided, here are my recommendations for improving concurrency in your Swift application:\n\n1. **Thread Safety**: Your current implementation uses `DispatchQueue` for background tasks, which is good. However, consider using Swift's structured concurrency features like `Task` and `async/await` for better readability and safety. For example, replace:\n```swift\nDispatchQueue.global().async {\n    // Background task\n    DispatchQueue.main.async {\n        // Update UI\n    }\n}\n```\nwith:\n```swift\nTask {\n    let result = await performBackgroundTask()\n    await MainActor.run {\n        // Update UI\n    }\n}\n```\n\n2. **Performance Optimization**: You're using a serial queue for network requests, which is correct. However, consider using `async let` to perform multiple network requests concurrently where possible. For instance, if you're fetching data from multiple endpoints, you can use:\n```swift\nasync let data1 = fetchData(from: endpoint1)\nasync let data2 = fetchData(from: endpoint2)\nlet (result1, result2) = await (data1, data2)\n```\n\n3. **Swift 6 Migration**: Swift 6 introduces new concurrency features and improvements. One notable change is the introduction of `Actor` isolation for better thread safety. Review your code for any shared mutable state and consider using actors to protect it. Also, be aware of the new `@MainActor` attribute, which ensures that a function or property is accessed only on the main thread.\n\n4. **Error Handling**: Your current error handling could be improved. Consider using `Result` types or `throws` with `do-try-catch` blocks for better error propagation in asynchronous contexts.\n\n5. **Testing**: Ensure you're testing your concurrent code thoroughly. Swift's `XCTest` framework provides tools for testing concurrent code, such as `XCTWaiter` and `XCTestExpectation`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "swift-concurrency-agent-skill#main-content",
+      "swift-concurrency-agent-skill#overview",
+      "swift-concurrency-agent-skill#setup",
+      "swift-concurrency-agent-skill#examples",
+      "swift-concurrency-agent-skill#tools",
+      "swift-concurrency-agent-skill#mcp",
+      "swift-concurrency-agent-skill#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Swift-Concurrency-Agent-Skill cung cấp hướng dẫn chuyên sâu về cách triển khai concurrency an toàn và hiệu quả trong các ứng dụng Swift. Tài liệu này bao gồm các best practices cho lập trình concurrent, các kỹ thuật tối ưu hóa hiệu năng và chiến lược migration sang mô hình concurrency của Swift 6. Skill này tập trung giải quyết các khái niệm cốt lõi bao gồm quản lý task, tính sendability và threading isolation nhằm giúp lập trình viên viết code concurrent mạnh mẽ. Tài nguyên này bao gồm các tài liệu tham khảo, thuật ngữ tra cứu và hướng dẫn thực tế dựa trên các pattern concurrency thực tế, rất có giá trị cho các lập trình viên iOS, macOS và server-side Swift đang làm việc với các framework concurrency hiện đại.\nTriển khai các thực hành concurrency an toàn trong ứng dụng Swift để ngăn chặn data races và lỗi isolation.\nTối ưu hóa hiệu năng cho các codebase Swift hiện tại bằng cách phân tích và tinh chỉnh các pattern concurrency.\nMigrate các dự án legacy lên Swift 6, áp dụng các tính năng concurrency mới như async/await và actors.\nSử dụng async/await để viết code gọn gàng, dễ bảo trì hơn, đồng thời quản lý hiệu quả các task bất đồng bộ.",
+    "setup_vi": "Terminal\nSao chép\n`claude install AvdLee/Swift-Concurrency-Agent-Skill`\n`git clone https://github.com/AvdLee/Swift-Concurrency-Agent-Skill`",
+    "usage_vi": "```\nTôi đang làm việc trên một ứng dụng Swift và cần triển khai concurrency một cách an toàn. Đây là đoạn code hiện tại của tôi: [CODE_SNIPPET]. Bạn có thể review nó và đề xuất các cải tiến về thread safety và tối ưu hóa hiệu năng không? Ngoài ra, tôi dự định migrate lên Swift 6. Có thay đổi nào liên quan đến concurrency mà tôi cần lưu ý không? Use case chính của ứng dụng là [DESCRIBE_USE_CASE].\n```\nSao chép\n\n```\nDựa trên đoạn code bạn cung cấp, dưới đây là các khuyến nghị của tôi để cải thiện concurrency trong ứng dụng Swift của bạn:\n\n1. **Thread Safety**: Cách triển khai hiện tại của bạn sử dụng `DispatchQueue` cho các background task, điều này rất tốt. Tuy nhiên, hãy cân nhắc sử dụng các tính năng structured concurrency của Swift như `Task` và `async/await` để cải thiện khả năng đọc và độ an toàn. Ví dụ, thay thế:\n```swift\nDispatchQueue.global().async {\n    // Background task\n    DispatchQueue.main.async {\n        // Update UI\n    }\n}\n```\nbằng:\n```swift\nTask {\n    let result = await performBackgroundTask()\n    await MainActor.run {\n        // Update UI\n    }\n}\n```\n\n2. **Tối ưu hóa hiệu năng (Performance Optimization)**: Bạn đang sử dụng một serial queue cho các network request, điều này là chính xác. Tuy nhiên, hãy cân nhắc sử dụng `async let` để thực hiện đồng thời nhiều network request nếu có thể. Ví dụ, nếu bạn đang fetch dữ liệu từ nhiều endpoint, bạn có thể sử dụng:\n```swift\nasync let data1 = fetchData(from: endpoint1)\nasync let data2 = fetchData(from: endpoint2)\nlet (result1, result2) = await (data1, data2)\n```\n\n3. **Swift 6 Migration**: Swift 6 giới thiệu các tính năng và cải tiến mới về concurrency. Một thay đổi đáng chú ý là việc giới thiệu `Actor` isolation để đảm bảo thread safety tốt hơn. Hãy review lại code của bạn để tìm các shared mutable state và cân nhắc sử dụng actor để bảo vệ chúng. Ngoài ra, hãy lưu ý thuộc tính `@MainActor` mới, giúp đảm bảo một function hoặc property chỉ được truy cập trên main thread.\n\n4. **Xử lý lỗi (Error Handling)**: Cách xử lý lỗi hiện tại của bạn có thể được cải thiện. Cân nhắc sử dụng kiểu `Result` hoặc `throws` kết hợp với block `do-try-catch` để propagate lỗi tốt hơn trong các ngữ cảnh bất đồng bộ (asynchronous contexts).\n\n5. **Kiểm thử (Testing)**: Hãy đảm bảo bạn kiểm thử kỹ lưỡng code concurrent của mình. Framework `XCTest` của Swift cung cấp các công cụ để test code concurrent, chẳng hạn như `XCTWaiter` và `XCTestExpectation`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:04:20.210895Z",
+    "http_status": 200,
+    "content_hash": "4fbbbd80d49fe0ac955e2e8fd56afd019aa1ab68a50a3a6521001e5de9a235f8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\swift-concurrency-agent-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\swift-concurrency-agent-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hướng dẫn Swift Concurrency cho Lập trình viên",
+  "short_description_vi": "Nâng cao năng lực lập trình của bạn với hướng dẫn chuyên sâu về Swift Concurrency. Skill này tập trung vào các thực hành concurrency an toàn, tối ưu hóa hiệu năng và chiến lược migration lên Swift 6, là công cụ thiết yếu cho các lập trình viên muốn cải thiện ứng dụng Swift của mình."
+}

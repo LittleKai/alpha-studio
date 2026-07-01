@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ios-simulator-skill",
+  "slug": "ios-simulator-skill",
+  "name": "browser-use",
+  "headline": "iOS Simulator Skill - Automate iOS App Testing",
+  "short_description": "The iOS Simulator Skill for ClaudeCode enables AI agents to build, run, and test iOS apps without consuming token or context budget. It benefits developers and operations teams by automating app testing and building processes. The skill connects to Xcode and integrates with ClaudeCode for app development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "conorluddy",
+  "install_command": "git clone https://github.com/conorluddy/ios-simulator-skill.git",
+  "source_repo_url": "https://github.com/conorluddy/ios-simulator-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "claude-ai",
+    "claudeskills",
+    "tooling",
+    "claude-skills",
+    "claudecode",
+    "claude-code",
+    "python",
+    "mcp-tools",
+    "simulator",
+    "xcode",
+    "dx",
+    "iossimulator",
+    "claude",
+    "testing",
+    "skills",
+    "agentic-ai",
+    "mcp",
+    "ios",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The iOS Simulator Skill integrates Xcode with ClaudeCode to automate iOS app development workflows. It allows AI agents to build, run, and test iOS applications directly from your development environment. The skill reduces token consumption by offloading app testing and building processes, freeing up context budget for other tasks. It includes Core Data and SwiftData model inspection capabilities with zero external dependencies. Developers and operations teams benefit from automated testing and app building processes integrated seamlessly into ClaudeCode's agent framework.\nAutomate the login flow of your iOS app to ensure seamless user experience.\nConduct accessibility audits to verify compliance with WCAG standards.\nCapture and compare visual states of your app for regression testing.\nManage device lifecycles in CI/CD pipelines by creating and deleting simulators as needed.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/conorluddy/ios-simulator-skill`",
+    "usage": "```\nUse the iOS Simulator Skill to [BUILD/RUN/TEST] the iOS app in the simulator for [APP_NAME]. Ensure the simulator is set to [DEVICE_TYPE, e.g., iPhone 15 Pro] running [IOS_VERSION, e.g., iOS 17.2]. For testing, focus on [SPECIFIC_TEST_CASE, e.g., login flow stability] and report any crashes or performance issues. If building, include [BUILD_CONFIGURATION, e.g., Release] with [SCHEME_NAME] and verify the build completes without errors.\n```\nCopy\n\n```\nThe iOS Simulator Skill successfully built the 'WeatherApp' project in Release configuration with the 'WeatherApp' scheme for iPhone 15 Pro (iOS 17.2). The build completed in 2 minutes 15 seconds with no errors or warnings. The app was installed on the simulator and launched automatically. During testing of the login flow, the AI agent observed the following:\n\n1. **Login Success Rate**: 98% (2 failures out of 100 attempts). The failures occurred when the email field was left empty, which is expected behavior.\n2. **Performance Metrics**: Average frame rate during login was 58 FPS, with occasional drops to 45 FPS during network calls. No memory leaks were detected during the 5-minute stability test.\n3. **Crash Reports**: No crashes were recorded during the test session. However, the agent noted a minor UI lag when transitioning between the login screen and the main dashboard, which may require optimization.\n\nThe agent generated a summary report with timestamps and screenshots of the test sessions. The build artifacts were saved to `/Users/dev/WeatherApp/build/WeatherApp.app` for further distribution or App Store submission.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ios-simulator-skill#main-content",
+      "ios-simulator-skill#overview",
+      "ios-simulator-skill#setup",
+      "ios-simulator-skill#examples",
+      "ios-simulator-skill#tools",
+      "ios-simulator-skill#mcp",
+      "ios-simulator-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The iOS Simulator Skill integrates Xcode with ClaudeCode to automate iOS app development workflows. It allows AI agents to build, run, and test iOS applications directly from your development environment. The skill reduces token consumption by offloading app testing and building processes, freeing up context budget for other tasks. It includes Core Data and SwiftData model inspection capabilities with zero external dependencies. Developers and operations teams benefit from automated testing and app building processes integrated seamlessly into ClaudeCode's agent framework.\nAutomate the login flow of your iOS app to ensure seamless user experience.\nConduct accessibility audits to verify compliance with WCAG standards.\nCapture and compare visual states of your app for regression testing.\nManage device lifecycles in CI/CD pipelines by creating and deleting simulators as needed.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/conorluddy/ios-simulator-skill`",
+    "usage_vi": "```\nUse the iOS Simulator Skill to [BUILD/RUN/TEST] the iOS app in the simulator for [APP_NAME]. Ensure the simulator is set to [DEVICE_TYPE, e.g., iPhone 15 Pro] running [IOS_VERSION, e.g., iOS 17.2]. For testing, focus on [SPECIFIC_TEST_CASE, e.g., login flow stability] and report any crashes or performance issues. If building, include [BUILD_CONFIGURATION, e.g., Release] with [SCHEME_NAME] and verify the build completes without errors.\n```\nCopy\n\n```\nThe iOS Simulator Skill successfully built the 'WeatherApp' project in Release configuration with the 'WeatherApp' scheme for iPhone 15 Pro (iOS 17.2). The build completed in 2 minutes 15 seconds with no errors or warnings. The app was installed on the simulator and launched automatically. During testing of the login flow, the AI agent observed the following:\n\n1. **Login Success Rate**: 98% (2 failures out of 100 attempts). The failures occurred when the email field was left empty, which is expected behavior.\n2. **Performance Metrics**: Average frame rate during login was 58 FPS, with occasional drops to 45 FPS during network calls. No memory leaks were detected during the 5-minute stability test.\n3. **Crash Reports**: No crashes were recorded during the test session. However, the agent noted a minor UI lag when transitioning between the login screen and the main dashboard, which may require optimization.\n\nThe agent generated a summary report with timestamps and screenshots of the test sessions. The build artifacts were saved to `/Users/dev/WeatherApp/build/WeatherApp.app` for further distribution or App Store submission.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:28:37.046797Z",
+    "http_status": 200,
+    "content_hash": "d0b52b3d110306c25689652cf5feded453cba05af1cc117263591ead463f50b8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ios-simulator-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ios-simulator-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "iOS Simulator Skill - Automate iOS App Testing",
+  "short_description_vi": "The iOS Simulator Skill for ClaudeCode enables AI agents to build, run, and test iOS apps without consuming token or context budget. It benefits developers and operations teams by automating app testing and building processes. The skill connects to Xcode and integrates with ClaudeCode for app development workflows."
+}

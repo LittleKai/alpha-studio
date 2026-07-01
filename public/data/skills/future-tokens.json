@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/future-tokens",
+  "slug": "future-tokens",
+  "name": "Future Tokens",
+  "headline": "Future Tokens - Composable AI Reasoning Skills",
+  "short_description": "Composable reasoning skills for Claude to antithesize, excavate, metaphorize, and synthesize. Operations teams use these to build AI-assisted thinking workflows. Connects to Claude Skills for reusable cognitive operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "jordanrubin",
+  "install_command": "git clone https://github.com/jordanrubin/FUTURE_TOKENS.git",
+  "source_repo_url": "https://github.com/jordanrubin/FUTURE_TOKENS",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "llm",
+    "skills",
+    "anthropic",
+    "cognitive-tools",
+    "thinking",
+    "ai-tools",
+    "prompt-engineering",
+    "reasoning",
+    "ai-reasoning",
+    "claude",
+    "claude-skills",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Future Tokens are named, composable instruments that target specific blind spots in AI output—gaps that coherence optimization typically suppresses during token-level generation. Each operation targets a distinct blind spot type: opposition gaps (antithesize), hidden assumptions (excavate), missing dimensions (dimensionalize), conspicuous absences (negspace), rhetorical fulcrums (rhetoricize), cross-example patterns (inductify), structural echoes (metaphorize), actionable handles (handlize), and position integration (synthesize). Operations teams use these skills to build AI-assisted thinking workflows that surface information the generation process systematically omits. Compatible with Claude Skills, Cursor, and Codex workflows, the skillset installs as reusable cognitive operations available as /commands.\nSurfacing hidden assumptions and unstated premises in analysis\nIdentifying missing dimensions or perspectives in problem-solving\nBuilding structured opposition and counterargument exploration\nCreating actionable handles from abstract reasoning",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jordanrubin/FUTURE_TOKENS`",
+    "usage": "```\nAct as a [ROLE: e.g., 'product manager', 'strategy consultant', 'research analyst'] and use the FUTURE_TOKENS framework to [OBJECTIVE: e.g., 'antithesize the implications of AI-driven automation on [INDUSTRY]', 'excavate the hidden assumptions behind [CONCEPT]', 'metaphorize the future of [TOPIC] in 3 distinct ways', 'synthesize the key tensions in [DEBATE]']. Structure your response as: 1) Antithesis: Contradict the dominant narrative with [X] counterarguments. 2) Excavation: Unearth [Y] overlooked factors. 3) Metaphor: Frame the issue as [Z] metaphor. 4) Synthesis: Propose [A] actionable next steps. Prioritize depth over breadth.\n```\nCopy\n\n```\nActing as a **senior product manager at a SaaS startup**, I used FUTURE_TOKENS to analyze the implications of AI-driven automation on **customer support workflows** in 2025. Here’s the structured output:\n\n1) **Antithesis**: While most assume AI will *replace* human agents, the dominant narrative ignores that **60% of support tickets require emotional intelligence**—something AI lacks. Counterarguments: AI excels at triaging 80% of Tier 1 queries, but Tier 2+ tickets (e.g., billing disputes) see a **22% escalation rate** when handled by AI alone (source: Zendesk 2024).\n\n2) **Excavation**: Three overlooked factors emerged:\n   - **Cultural resistance**: 43% of agents surveyed feared AI would make their roles obsolete, leading to **lower morale** and higher turnover (Gartner, 2024).\n   - **Regulatory blind spots**: GDPR and CCPA compliance for AI-generated responses remain **unclear**, creating legal risks for companies.\n   - **Hidden costs**: Training AI models on proprietary data requires **$50K–$200K/year** in compute and fine-tuning, often underestimated in ROI projections.\n\n3) **Metaphor**: The future of support is like a **hybrid orchestra**—AI handles the sheet music (routine queries), while humans improvise the crescendos (complex issues). Without both, the symphony falls flat.\n\n4) **Synthesis**: Actionable next steps:\n   - **Pilot a \"co-pilot\" model**: Deploy AI for Tier 1 triage but **require human sign-off** for escalations, measuring impact on resolution time and agent satisfaction.\n   - **Invest in upskilling**: Allocate 15% of the AI budget to **training agents** on AI collaboration tools (e.g., prompt engineering for edge cases).\n   - **Lobby for regulatory clarity**: Partner with industry groups to push for **AI-specific compliance frameworks** in customer support.\n\n*Key insight*: The future isn’t AI *or* humans—it’s about **designing the handoffs** between them.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "future-tokens#main-content",
+      "future-tokens#overview",
+      "future-tokens#setup",
+      "future-tokens#examples",
+      "future-tokens#tools",
+      "future-tokens#mcp",
+      "future-tokens#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Future Tokens là các công cụ được định danh, có khả năng lắp ghép nhằm giải quyết các điểm mù cụ thể trong kết quả đầu ra của AI—những khoảng trống thường bị triệt tiêu bởi quá trình tối ưu hóa tính mạch lạc trong quá trình tạo token. Mỗi thao tác sẽ nhắm vào một loại điểm mù riêng biệt: khoảng trống phản biện (antithesize), các giả định ẩn (excavate), các khía cạnh còn thiếu (dimensionalize), sự vắng mặt dễ thấy (negspace), các điểm tựa tu từ (rhetoricize), các mô hình liên ví dụ (inductify), các phản hồi cấu trúc (metaphorize), các điểm bám khả thi (handlize), và tích hợp lập trường (synthesize). Các đội ngũ vận hành sử dụng những kỹ năng này để xây dựng các quy trình tư duy có sự hỗ trợ của AI nhằm làm nổi bật các thông tin bị bỏ qua một cách hệ thống trong quá trình tạo nội dung. Tương thích với Claude Skills, Cursor và các quy trình làm việc của Codex, bộ kỹ năng này được cài đặt dưới dạng các hoạt động nhận thức có thể tái sử dụng, khả dụng thông qua các lệnh /commands.\nLàm nổi bật các giả định ẩn và các tiền đề không được tuyên bố trong phân tích\nXác định các khía cạnh hoặc góc nhìn còn thiếu trong việc giải quyết vấn đề\nXây dựng sự phản biện có cấu trúc và khám phá các luận điểm phản bác\nTạo ra các điểm bám có thể hành động từ tư duy trừu tượng",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jordanrubin/FUTURE_TOKENS`",
+    "usage_vi": "```\nĐóng vai trò là một [ROLE: ví dụ: 'product manager', 'strategy consultant', 'research analyst'] và sử dụng khung làm việc FUTURE_TOKENS để [OBJECTIVE: ví dụ: 'antithesize tác động của tự động hóa do AI dẫn dắt đối với [INDUSTRY]', 'excavate các giả định ẩn đằng sau [CONCEPT]', 'metaphorize tương lai của [TOPIC] theo 3 cách khác nhau', 'synthesize những mâu thuẫn chính trong [DEBATE]']. Cấu trúc phản hồi của bạn dưới dạng: 1) Antithesis (Phản biện): Đối lập với quan điểm phổ biến bằng [X] luận điểm phản bác. 2) Excavation (Khai phá): Khai quật [Y] yếu tố bị bỏ qua. 3) Metaphor (Ẩn dụ): Định hình vấn đề dưới dạng phép ẩn dụ [Z]. 4) Synthesis (Tổng hợp): Đề xuất [A] bước hành động tiếp theo. Ưu tiên chiều sâu hơn chiều rộng.\n```\nCopy\n\n```\nĐóng vai trò là một **senior product manager tại một SaaS startup**, tôi đã sử dụng FUTURE_TOKENS để phân tích tác động của tự động hóa do AI dẫn dắt đối với **quy trình hỗ trợ khách hàng (customer support workflows)** vào năm 2025. Dưới đây là kết quả đầu ra có cấu trúc:\n\n1) **Antithesis**: Mặc dù hầu hết mọi người cho rằng AI sẽ *thay thế* các human agents, quan điểm phổ biến này bỏ qua việc **60% yêu cầu hỗ trợ (support tickets) đòi hỏi trí tuệ cảm xúc**—điều mà AI còn thiếu. Các luận điểm phản bác: AI rất giỏi trong việc phân loại 80% các câu hỏi Tier 1, nhưng các ticket từ Tier 2 trở lên (ví dụ: tranh chấp hóa đơn) có **tỷ lệ chuyển tiếp lên tới 22%** khi chỉ do một mình AI xử lý (nguồn: Zendesk 2024).\n\n2) **Excavation**: Ba yếu tố bị bỏ qua đã được chỉ ra:\n   - **Sự phản kháng về mặt văn hóa**: 43% số agent được khảo sát lo sợ AI sẽ khiến vai trò của họ trở nên lỗi thời, dẫn đến **tinh thần làm việc giảm sút** và tỷ lệ nghỉ việc cao hơn (Gartner, 2024).\n   - **Điểm mù về pháp lý**: Việc tuân thủ GDPR và CCPA đối với các phản hồi do AI tạo ra vẫn **chưa rõ ràng**, tạo ra rủi ro pháp lý cho các công ty.\n   - **Chi phí ẩn**: Việc huấn luyện các mô hình AI trên dữ liệu độc quyền yêu cầu từ **$50K–$200K/năm** cho tài nguyên tính toán và fine-tuning, mức phí thường bị đánh giá thấp trong các dự báo ROI.\n\n3) **Metaphor**: Tương lai của dịch vụ hỗ trợ giống như một **dàn nhạc hybrid**—AI đảm nhận phần nhạc phổ (các câu hỏi thông thường), trong khi con người ứng biến các phần cao trào (các vấn đề phức tạp). Thiếu một trong hai, bản giao hưởng sẽ thất bại.\n\n4) **Synthesis**: Các bước hành động tiếp theo:\n   - **Thử nghiệm mô hình \"co-pilot\"**: Triển khai AI để phân loại Tier 1 nhưng **yêu cầu con người phê duyệt** đối với các trường hợp chuyển tiếp (escalations), từ đó đo lường tác động lên thời gian giải quyết và mức độ hài lòng của agent.\n   - **Đầu tư vào nâng cao kỹ năng (upskilling)**: Phân bổ 15% ngân sách AI để **đào tạo các agent** về các công cụ cộng tác AI (ví dụ: prompt engineering cho các trường hợp đặc biệt/edge cases).\n   - **Vận động hành lang để làm rõ các quy định**: Hợp tác với các nhóm trong ngành để thúc đẩy các **khung tuân thủ dành riêng cho AI** trong dịch vụ hỗ trợ khách hàng.\n\n*Thông tin chuyên sâu chính*: Tương lai không phải là AI *hay* con người—mà là việc **thiết kế các điểm bàn giao (handoffs)** giữa cả hai.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:49.806636Z",
+    "http_status": 200,
+    "content_hash": "1530e936ea929ab2847befe982930c33be74f7254015289ff98d4013f2d7ca83",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\future-tokens.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\future-tokens.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Future Tokens - Các kỹ năng tư duy AI có khả năng lắp ghép linh hoạt",
+  "short_description_vi": "Các kỹ năng tư duy có khả năng lắp ghép dành cho Claude để phản biện (antithesize), khai phá (excavate), ẩn dụ hóa (metaphorize) và tổng hợp (synthesize). Các đội ngũ vận hành sử dụng chúng để xây dựng các quy trình tư duy có sự hỗ trợ của AI. Kết nối với Claude Skills để thực hiện các hoạt động nhận thức có thể tái sử dụng."
+}

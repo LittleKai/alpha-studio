@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/datagen",
+  "slug": "datagen",
+  "name": "browser-use",
+  "headline": "DATAGEN - AI Research Assistant for Data Analysis",
+  "short_description": "DATAGEN automates hypothesis generation, data analysis, and report writing. Operations teams use it to accelerate research and decision-making. It connects to Python workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "starpig1129",
+  "install_command": "git clone https://github.com/starpig1129/DATAGEN.git",
+  "source_repo_url": "https://github.com/starpig1129/DATAGEN",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "langgraph",
+    "python",
+    "artificial-intelligence",
+    "data-analysis",
+    "large-language-model",
+    "llm",
+    "multiagent-systems",
+    "data-science",
+    "large-language-models",
+    "data-analytics",
+    "langchain",
+    "code-generation",
+    "ai",
+    "ai-data-analysis",
+    "agent"
+  ],
+  "sections": {
+    "overview": "DATAGEN is an AI agent system designed to automate hypothesis generation, data analysis, and report writing workflows. Built to integrate with Python environments and Claude-based agents, it enables operations teams to process data faster and make informed decisions without manual analysis overhead. The skill supports structured multi-agent workflows that handle research tasks, data processing, and documentation generation. Teams can deploy DATAGEN to eliminate repetitive analytical work and focus resources on strategic decision-making. The system is configured via environment variables and supports LangChain tracing for monitoring agent behavior.\nAutomate the generation of research hypotheses based on existing datasets.\nPerform complex data analysis using machine learning techniques without manual coding.\nGenerate dynamic visualizations and reports from data files with a single command.\nConduct literature searches and integrate findings into research reports automatically.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/starpig1129/DATAGEN`",
+    "usage": "```\nGenerate 10 actionable hypotheses to explain [OBSERVED_METRIC_DECLINE] in [PRODUCT/SECTION/GEOGRAPHY] during [TIME_PERIOD]. For each hypothesis, include: (1) a clear statement, (2) the data source needed to validate it, and (3) a proposed analysis method. Format as a priority-ranked markdown table with columns: Rank | Hypothesis | Data Source | Analysis Method | Expected Insight. Prioritize hypotheses that can be tested with existing data within 2 weeks.\n```\nCopy\n\n```\nHere are 10 prioritized hypotheses to explain the 18% drop in 'Daily Active Users' for the Mobile App's 'Shopping Cart' feature between June 1-15, 2024, along with validation approaches:\n\n| Rank | Hypothesis | Data Source | Analysis Method | Expected Insight |\n|------|------------|-------------|-----------------|------------------|\n| 1 | Checkout flow redesign (June 3) introduced a 3-step mandatory account creation that increased drop-off by 22% | App Analytics (Firebase), A/B Test Data | Compare funnel conversion rates between pre/post-redesign users | Identify specific steps causing friction |\n| 2 | iOS 17.5 update (released June 5) broke the 'Save for Later' functionality, causing 15% of users to abandon carts | Crash Reports (Sentry), App Store Reviews | Correlate iOS version adoption with cart abandonment spikes | Pinpoint platform-specific issues |\n| 3 | Competitor launched a 10% cashback promotion on June 8, diverting 8% of our users | Competitor Price Tracking Data, App Session Data | Analyze user traffic sources and session duration changes | Quantify competitive impact |\n| 4 | Email campaign 'Summer Sale' sent on June 10 had a misleading subject line ('50% Off Everything'), leading to 12% higher bounce rates | Email Marketing Platform (Mailchimp), App Traffic Data | Compare email open/click rates with app engagement metrics | Assess campaign misalignment |\n| 5 | Payment processor (Stripe) experienced outages on June 11-12, causing 7% of transactions to fail | Payment Gateway Logs, Error Tracking (Datadog) | Analyze transaction failure rates by time and payment method | Identify infrastructure vulnerabilities |\n| 6 | New 'Guest Checkout' feature (released May 28) had a bug preventing order completion for 5% of users | Feature Flag Data, Support Tickets | Cross-reference support tickets with feature usage logs | Detect silent failures in new features |\n| 7 | Summer heatwave reduced outdoor shopping activity, correlating with a 6% drop in mobile app usage | Weather Data API, App Session Data | Run regression analysis between temperature and DAU | Link external factors to usage patterns |\n| 8 | 'Limited Time Offer' banner (added June 7) was placed below the fold, reducing visibility by 9% | UI Heatmap Data (Hotjar), Conversion Funnel Data | Compare banner interaction rates with pre-banner period | Optimize UI placement |\n| 9 | Affiliate program commission rates were cut by 30% on June 1, reducing partner-driven traffic by 4% | Affiliate Tracking Platform, Referral Data | Analyze traffic sources and conversion rates by affiliate | Evaluate program ROI changes |\n| 10 | Server-side caching issue on June 13 caused 11% slower page loads in the cart section | Performance Monitoring (New Relic), App Logs | Compare load times between cached/uncached requests | Identify backend performance bottlenecks |\n\n**Next Steps:**\n1. Prioritize hypotheses 1, 2, and 5 for immediate investigation (highest impact, fastest validation).\n2. Schedule a meeting with the mobile team to review the checkout flow redesign (Hypothesis 1).\n3. Set up a dashboard in Looker to monitor these metrics in real-time for early detection of similar issues.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "datagen#main-content",
+      "datagen#overview",
+      "datagen#setup",
+      "datagen#examples",
+      "datagen#tools",
+      "datagen#mcp",
+      "datagen#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DATAGEN is an AI agent system designed to automate hypothesis generation, data analysis, and report writing workflows. Built to integrate with Python environments and Claude-based agents, it enables operations teams to process data faster and make informed decisions without manual analysis overhead. The skill supports structured multi-agent workflows that handle research tasks, data processing, and documentation generation. Teams can deploy DATAGEN to eliminate repetitive analytical work and focus resources on strategic decision-making. The system is configured via environment variables and supports LangChain tracing for monitoring agent behavior.\nAutomate the generation of research hypotheses based on existing datasets.\nPerform complex data analysis using machine learning techniques without manual coding.\nGenerate dynamic visualizations and reports from data files with a single command.\nConduct literature searches and integrate findings into research reports automatically.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/starpig1129/DATAGEN`",
+    "usage_vi": "```\nGenerate 10 actionable hypotheses to explain [OBSERVED_METRIC_DECLINE] in [PRODUCT/SECTION/GEOGRAPHY] during [TIME_PERIOD]. For each hypothesis, include: (1) a clear statement, (2) the data source needed to validate it, and (3) a proposed analysis method. Format as a priority-ranked markdown table with columns: Rank | Hypothesis | Data Source | Analysis Method | Expected Insight. Prioritize hypotheses that can be tested with existing data within 2 weeks.\n```\nCopy\n\n```\nHere are 10 prioritized hypotheses to explain the 18% drop in 'Daily Active Users' for the Mobile App's 'Shopping Cart' feature between June 1-15, 2024, along with validation approaches:\n\n| Rank | Hypothesis | Data Source | Analysis Method | Expected Insight |\n|------|------------|-------------|-----------------|------------------|\n| 1 | Checkout flow redesign (June 3) introduced a 3-step mandatory account creation that increased drop-off by 22% | App Analytics (Firebase), A/B Test Data | Compare funnel conversion rates between pre/post-redesign users | Identify specific steps causing friction |\n| 2 | iOS 17.5 update (released June 5) broke the 'Save for Later' functionality, causing 15% of users to abandon carts | Crash Reports (Sentry), App Store Reviews | Correlate iOS version adoption with cart abandonment spikes | Pinpoint platform-specific issues |\n| 3 | Competitor launched a 10% cashback promotion on June 8, diverting 8% of our users | Competitor Price Tracking Data, App Session Data | Analyze user traffic sources and session duration changes | Quantify competitive impact |\n| 4 | Email campaign 'Summer Sale' sent on June 10 had a misleading subject line ('50% Off Everything'), leading to 12% higher bounce rates | Email Marketing Platform (Mailchimp), App Traffic Data | Compare email open/click rates with app engagement metrics | Assess campaign misalignment |\n| 5 | Payment processor (Stripe) experienced outages on June 11-12, causing 7% of transactions to fail | Payment Gateway Logs, Error Tracking (Datadog) | Analyze transaction failure rates by time and payment method | Identify infrastructure vulnerabilities |\n| 6 | New 'Guest Checkout' feature (released May 28) had a bug preventing order completion for 5% of users | Feature Flag Data, Support Tickets | Cross-reference support tickets with feature usage logs | Detect silent failures in new features |\n| 7 | Summer heatwave reduced outdoor shopping activity, correlating with a 6% drop in mobile app usage | Weather Data API, App Session Data | Run regression analysis between temperature and DAU | Link external factors to usage patterns |\n| 8 | 'Limited Time Offer' banner (added June 7) was placed below the fold, reducing visibility by 9% | UI Heatmap Data (Hotjar), Conversion Funnel Data | Compare banner interaction rates with pre-banner period | Optimize UI placement |\n| 9 | Affiliate program commission rates were cut by 30% on June 1, reducing partner-driven traffic by 4% | Affiliate Tracking Platform, Referral Data | Analyze traffic sources and conversion rates by affiliate | Evaluate program ROI changes |\n| 10 | Server-side caching issue on June 13 caused 11% slower page loads in the cart section | Performance Monitoring (New Relic), App Logs | Compare load times between cached/uncached requests | Identify backend performance bottlenecks |\n\n**Next Steps:**\n1. Prioritize hypotheses 1, 2, and 5 for immediate investigation (highest impact, fastest validation).\n2. Schedule a meeting with the mobile team to review the checkout flow redesign (Hypothesis 1).\n3. Set up a dashboard in Looker to monitor these metrics in real-time for early detection of similar issues.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:09:23.792743Z",
+    "http_status": 200,
+    "content_hash": "6ad276449383041b9edbe847b525c5d52a97bb63b17ea78ef9db51a6a58c0066",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\datagen.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\datagen.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "DATAGEN - AI Research Assistant for Data Analysis",
+  "short_description_vi": "DATAGEN automates hypothesis generation, data analysis, and report writing. Operations teams use it to accelerate research and decision-making. It connects to Python workflows and supports Claude agents."
+}

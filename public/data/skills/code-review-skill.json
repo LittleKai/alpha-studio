@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/code-review-skill",
+  "slug": "code-review-skill",
+  "name": "browser-use",
+  "headline": "Claude Code review skill for developers",
+  "short_description": "Automates code reviews for React 19, Vue 3, Rust, TypeScript, TanStack Query v5, and more. Engineers and operations teams benefit from faster, consistent reviews. Integrates with GitHub, GitLab, and Bitbucket for streamlined workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "awesome-skills",
+  "install_command": "git clone https://github.com/awesome-skills/code-review-skill.git",
+  "source_repo_url": "https://github.com/awesome-skills/code-review-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Code Review Skill is a production-ready skill for Claude Code that transforms code review into a structured, four-phase process covering 20+ languages and frameworks with over 16,000 lines of curated guidelines. It provides severity-labeled findings (blocking, important, nit, suggestion, learning, praise) with security-first checklists and language-specific best practices for React 19, Vue 3, TypeScript, Rust, FastAPI, Django, and more. The skill uses progressive disclosure to load language guides only when needed, minimizing context window usage while maintaining expert-level analysis. Engineers and operations teams benefit from consistent, collaborative feedback that separates what automation tools should catch from what requires human judgment.\nAutomating code reviews for React, Vue, Angular, and other frontend frameworks\nReviewing backend code in Python, Go, Java, Rust, PHP, and Node.js\nConducting security-focused reviews with language-specific vulnerability checklists\nPerforming architecture and performance reviews across projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/awesome-skills/code-review-skill`",
+    "usage": "```\nPerform a comprehensive code review for a [TECHNOLOGY_STACK] repository hosted on [GIT_PLATFORM] (e.g., GitHub, GitLab, Bitbucket). Focus on [FOCUS_AREAS] such as code quality, security vulnerabilities, performance optimizations, and adherence to [STYLE_GUIDE]. Review the latest pull request titled '[PR_TITLE]' by [PR_AUTHOR]. Provide actionable feedback with code snippets where applicable. Prioritize critical issues and suggest fixes. Include a summary of the review with a confidence score (0-100%) for each category reviewed.\n```\nCopy\n\n```\n### Code Review Summary for PR #124: \"Implement User Authentication\" (Author: Alex Chen)\n\n**Repository**: `company/web-app` (GitHub)\n**Technology Stack**: React 19, TypeScript, TanStack Query v5\n**Focus Areas**: Security, Performance, Type Safety\n\n#### Critical Issues (Must Fix)\n1. **Security: Missing Input Sanitization**\n   - **Location**: `src/auth/services/authService.ts`, Line 42\n   - **Issue**: The `login` function directly passes user input to the API without sanitization, risking XSS attacks.\n   - **Evidence**: \n ```typescript\n     const response = await fetch('/api/login', {\n       method: 'POST',\n       body: JSON.stringify({ email: userInput.email, password: userInput.password }),\n     });\n ```\n   - **Fix**: Use a library like `validator.js` to sanitize inputs:\n ```typescript\n     import validator from 'validator';\n     const sanitizedEmail = validator.escape(userInput.email);\n ```\n\n2. **Performance: Unnecessary Re-renders**\n   - **Location**: `src/auth/components/LoginForm.tsx`, Line 18\n   - **Issue**: The `useEffect` hook triggers a re-render on every keystroke in the email field, causing lag.\n   - **Evidence**: \n ```typescript\n     useEffect(() => {\n       validateEmail(email); // Triggers re-render\n     }, [email]);\n ```\n   - **Fix**: Debounce the validation:\n ```typescript\n     const debouncedValidate = useDebouncedCallback(validateEmail, 300);\n ```\n\n#### Warnings (Should Fix)\n1. **Type Safety: Implicit `any` in TanStack Query**\n   - **Location**: `src/auth/hooks/useAuth.ts`, Line 22\n   - **Issue**: The query key `['user', userId]` lacks type safety. If `userId` changes, the query may not invalidate correctly.\n   - **Fix**: Define a type for query keys:\n ```typescript\n     type QueryKey = ['user', string];\n     const { data } = useQuery<QueryKey>({ ... });\n ```\n\n#### Praise\n- **Clean Architecture**: The separation of concerns between `services`, `hooks`, and `components` is excellent.\n- **TanStack Query Usage**: Properly structured queries with optimistic updates for login state.\n\n**Confidence Scores**:\n- Security: 95% (1 critical issue found)\n- Performance: 85% (minor re-render issue)\n- Type Safety: 70% (implicit `any` in one place)\n\n**Next Steps**:\n1. Address critical security issue immediately.\n2. Optimize re-renders before merging.\n3. Consider adding ESLint rules to enforce type safety.\n\n**Reviewed by**: AI Code Reviewer\n**Date**: 2023-11-15\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "code-review-skill#main-content",
+      "code-review-skill#overview",
+      "code-review-skill#setup",
+      "code-review-skill#examples",
+      "code-review-skill#tools",
+      "code-review-skill#mcp",
+      "code-review-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Code Review Skill is a production-ready skill for Claude Code that transforms code review into a structured, four-phase process covering 20+ languages and frameworks with over 16,000 lines of curated guidelines. It provides severity-labeled findings (blocking, important, nit, suggestion, learning, praise) with security-first checklists and language-specific best practices for React 19, Vue 3, TypeScript, Rust, FastAPI, Django, and more. The skill uses progressive disclosure to load language guides only when needed, minimizing context window usage while maintaining expert-level analysis. Engineers and operations teams benefit from consistent, collaborative feedback that separates what automation tools should catch from what requires human judgment.\nAutomating code reviews for React, Vue, Angular, and other frontend frameworks\nReviewing backend code in Python, Go, Java, Rust, PHP, and Node.js\nConducting security-focused reviews with language-specific vulnerability checklists\nPerforming architecture and performance reviews across projects",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/awesome-skills/code-review-skill`",
+    "usage_vi": "```\nPerform a comprehensive code review for a [TECHNOLOGY_STACK] repository hosted on [GIT_PLATFORM] (e.g., GitHub, GitLab, Bitbucket). Focus on [FOCUS_AREAS] such as code quality, security vulnerabilities, performance optimizations, and adherence to [STYLE_GUIDE]. Review the latest pull request titled '[PR_TITLE]' by [PR_AUTHOR]. Provide actionable feedback with code snippets where applicable. Prioritize critical issues and suggest fixes. Include a summary of the review with a confidence score (0-100%) for each category reviewed.\n```\nCopy\n\n```\n### Code Review Summary for PR #124: \"Implement User Authentication\" (Author: Alex Chen)\n\n**Repository**: `company/web-app` (GitHub)\n**Technology Stack**: React 19, TypeScript, TanStack Query v5\n**Focus Areas**: Security, Performance, Type Safety\n\n#### Critical Issues (Must Fix)\n1. **Security: Missing Input Sanitization**\n   - **Location**: `src/auth/services/authService.ts`, Line 42\n   - **Issue**: The `login` function directly passes user input to the API without sanitization, risking XSS attacks.\n   - **Evidence**: \n ```typescript\n     const response = await fetch('/api/login', {\n       method: 'POST',\n       body: JSON.stringify({ email: userInput.email, password: userInput.password }),\n     });\n ```\n   - **Fix**: Use a library like `validator.js` to sanitize inputs:\n ```typescript\n     import validator from 'validator';\n     const sanitizedEmail = validator.escape(userInput.email);\n ```\n\n2. **Performance: Unnecessary Re-renders**\n   - **Location**: `src/auth/components/LoginForm.tsx`, Line 18\n   - **Issue**: The `useEffect` hook triggers a re-render on every keystroke in the email field, causing lag.\n   - **Evidence**: \n ```typescript\n     useEffect(() => {\n       validateEmail(email); // Triggers re-render\n     }, [email]);\n ```\n   - **Fix**: Debounce the validation:\n ```typescript\n     const debouncedValidate = useDebouncedCallback(validateEmail, 300);\n ```\n\n#### Warnings (Should Fix)\n1. **Type Safety: Implicit `any` in TanStack Query**\n   - **Location**: `src/auth/hooks/useAuth.ts`, Line 22\n   - **Issue**: The query key `['user', userId]` lacks type safety. If `userId` changes, the query may not invalidate correctly.\n   - **Fix**: Define a type for query keys:\n ```typescript\n     type QueryKey = ['user', string];\n     const { data } = useQuery<QueryKey>({ ... });\n ```\n\n#### Praise\n- **Clean Architecture**: The separation of concerns between `services`, `hooks`, and `components` is excellent.\n- **TanStack Query Usage**: Properly structured queries with optimistic updates for login state.\n\n**Confidence Scores**:\n- Security: 95% (1 critical issue found)\n- Performance: 85% (minor re-render issue)\n- Type Safety: 70% (implicit `any` in one place)\n\n**Next Steps**:\n1. Address critical security issue immediately.\n2. Optimize re-renders before merging.\n3. Consider adding ESLint rules to enforce type safety.\n\n**Reviewed by**: AI Code Reviewer\n**Date**: 2023-11-15\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:06:58.542733Z",
+    "http_status": 200,
+    "content_hash": "0bd9c349cfa31a966a582d97ce7578d2166f75e82bd3dfa4bc7fc906415062ef",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-review-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-review-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code review skill for developers",
+  "short_description_vi": "Automates code reviews for React 19, Vue 3, Rust, TypeScript, TanStack Query v5, and more. Engineers and operations teams benefit from faster, consistent reviews. Integrates with GitHub, GitLab, and Bitbucket for streamlined workflows."
+}

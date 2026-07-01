@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prompting-image-models-on-replicate",
+  "slug": "prompting-image-models-on-replicate",
+  "name": "Related Skills",
+  "headline": "Image Model Prompting Techniques: Replicate",
+  "short_description": "This skill provides techniques for prompting image models using the Replicate API. It is designed for developers and users looking to enhance how they generate images using AI models.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "replicate",
+  "install_command": "git clone https://github.com/replicate/skills",
+  "source_repo_url": "https://github.com/replicate/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "models",
+    "prompting",
+    "image",
+    "ai-image-processing",
+    "replicate"
+  ],
+  "sections": {
+    "overview": "This skill teaches prompting techniques specifically designed for image generation and editing models on the Replicate platform. It helps developers and creators craft effective prompts to improve image quality, control outputs, and unlock model capabilities. By learning Replicate's best practices for image prompting, users can generate higher-quality visuals, iterate faster, and build more sophisticated AI-powered applications. The skill complements Replicate's broader toolkit for finding, comparing, and running image models at scale.\nChoosing the right image model from the Replicate API\nWriting effective natural language prompts for better model outputs\nComparing features and pricing of different image models",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/replicate/skills --skill prompt-images`\n`git clone https://github.com/replicate/skills`",
+    "usage": "```\nGenerate an image using the Replicate API with the following prompt: '[PROMPT]' and model '[MODEL_NAME]'. Use the following parameters: --width [WIDTH] --height [HEIGHT] --num_outputs [NUM_OUTPUTS] --seed [SEED]. Return the image URL and a brief description of the visual style and elements.\n```\nCopy\n\n```\nHere’s your generated image from the Replicate API:\n\n**Image URL:** `https://replicate.delivery/pbxt/abc123/output.png`\n\n**Visual Description:**\nA futuristic cyberpunk cityscape at dusk, with neon-lit skyscrapers reflecting off rain-slicked streets. Holographic billboards display Japanese characters, and flying cars zip between buildings. The color palette is dominated by deep blues, purples, and vibrant pinks, with a cinematic, high-contrast lighting style reminiscent of Blade Runner 2049.\n\n**Model Used:** `stability-ai/stable-diffusion:latest`\n**Parameters:**\n- Dimensions: 1024x768\n- Outputs: 1\n- Seed: 42\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "prompting-image-models-on-replicate#main-content",
+      "prompting-image-models-on-replicate#overview",
+      "prompting-image-models-on-replicate#setup",
+      "prompting-image-models-on-replicate#examples",
+      "prompting-image-models-on-replicate#tools",
+      "prompting-image-models-on-replicate#mcp",
+      "prompting-image-models-on-replicate#related"
+    ],
+    "overview_vi": "This skill teaches prompting techniques specifically designed for image generation and editing models on the Replicate platform. It helps developers and creators craft effective prompts to improve image quality, control outputs, and unlock model capabilities. By learning Replicate's best practices for image prompting, users can generate higher-quality visuals, iterate faster, and build more sophisticated AI-powered applications. The skill complements Replicate's broader toolkit for finding, comparing, and running image models at scale.\nChoosing the right image model from the Replicate API\nWriting effective natural language prompts for better model outputs\nComparing features and pricing of different image models",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/replicate/skills --skill prompt-images`\n`git clone https://github.com/replicate/skills`",
+    "usage_vi": "```\nGenerate an image using the Replicate API with the following prompt: '[PROMPT]' and model '[MODEL_NAME]'. Use the following parameters: --width [WIDTH] --height [HEIGHT] --num_outputs [NUM_OUTPUTS] --seed [SEED]. Return the image URL and a brief description of the visual style and elements.\n```\nCopy\n\n```\nHere’s your generated image from the Replicate API:\n\n**Image URL:** `https://replicate.delivery/pbxt/abc123/output.png`\n\n**Visual Description:**\nA futuristic cyberpunk cityscape at dusk, with neon-lit skyscrapers reflecting off rain-slicked streets. Holographic billboards display Japanese characters, and flying cars zip between buildings. The color palette is dominated by deep blues, purples, and vibrant pinks, with a cinematic, high-contrast lighting style reminiscent of Blade Runner 2049.\n\n**Model Used:** `stability-ai/stable-diffusion:latest`\n**Parameters:**\n- Dimensions: 1024x768\n- Outputs: 1\n- Seed: 42\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:30:38.910974Z",
+    "http_status": 200,
+    "content_hash": "883fd8af9b6154540fde97efbf174f591f69336be203799fc5b28ceded801d8e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prompting-image-models-on-replicate.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prompting-image-models-on-replicate.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Image Model Prompting Techniques: Replicate",
+  "short_description_vi": "This skill provides techniques for prompting image models using the Replicate API. It is designed for developers and users looking to enhance how they generate images using AI models."
+}

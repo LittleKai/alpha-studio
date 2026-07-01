@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sheets-cli",
+  "slug": "sheets-cli",
+  "name": "browser-use",
+  "headline": "sheets-cli - Google Sheets Automation",
+  "short_description": "Composable Google Sheets CLI for humans and agents. Read, write, update cells by key. Integrates with Claude Code and OpenAI Codex. Ideal for operations teams automating spreadsheet tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "gmickel",
+  "install_command": "git clone https://github.com/gmickel/sheets-cli.git",
+  "source_repo_url": "https://github.com/gmickel/sheets-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agent-skills",
+    "automation",
+    "bun",
+    "spreadsheet",
+    "typescript",
+    "google-sheets",
+    "openai-codex",
+    "cli"
+  ],
+  "sections": {
+    "overview": "sheets-cli is a fast, deterministic command-line interface for Google Sheets that enables programmatic spreadsheet automation. It provides structured JSON output for reading tables, appending rows, updating cells by key column or row index, and executing batch operations—all without fragile row indices. The tool integrates directly with Claude Code, OpenAI Codex, and VS Code, automatically discovering when you mention spreadsheet tasks. Built on Bun and TypeScript, it's designed for operations teams, data engineers, and AI agents automating routine spreadsheet workflows at scale.\nAppend new rows to tracking sheets via CLI from scripts or agents\nUpdate specific cells by key column instead of fragile row numbers\nRead Google Sheets as structured JSON for downstream processing\nExecute batch spreadsheet operations in a single command",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gmickel/sheets-cli`",
+    "usage": "```\nI want to use sheets-cli to automate data entry for [COMPANY] in the [INDUSTRY] sector. I have a Google Sheet with the following structure: [DATA]. Please provide the commands to update specific cells based on this data.\n```\nCopy\n\n```\n```markdown\n# Google Sheets Automation Commands",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sheets-cli#main-content",
+      "sheets-cli#overview",
+      "sheets-cli#setup",
+      "sheets-cli#examples",
+      "sheets-cli#tools",
+      "sheets-cli#mcp",
+      "sheets-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "sheets-cli is a fast, deterministic command-line interface for Google Sheets that enables programmatic spreadsheet automation. It provides structured JSON output for reading tables, appending rows, updating cells by key column or row index, and executing batch operations—all without fragile row indices. The tool integrates directly with Claude Code, OpenAI Codex, and VS Code, automatically discovering when you mention spreadsheet tasks. Built on Bun and TypeScript, it's designed for operations teams, data engineers, and AI agents automating routine spreadsheet workflows at scale.\nAppend new rows to tracking sheets via CLI from scripts or agents\nUpdate specific cells by key column instead of fragile row numbers\nRead Google Sheets as structured JSON for downstream processing\nExecute batch spreadsheet operations in a single command",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gmickel/sheets-cli`",
+    "usage_vi": "```\nI want to use sheets-cli to automate data entry for [COMPANY] in the [INDUSTRY] sector. I have a Google Sheet with the following structure: [DATA]. Please provide the commands to update specific cells based on this data.\n```\nCopy\n\n```\n```markdown\n# Google Sheets Automation Commands"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:07:01.773391Z",
+    "http_status": 200,
+    "content_hash": "b6d0bc548308971ab97d68b28f3da3c68ad7d09cdcd8523320682ba4bb8ea309",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sheets-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sheets-cli.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "sheets-cli - Google Sheets Automation",
+  "short_description_vi": "Composable Google Sheets CLI for humans and agents. Read, write, update cells by key. Integrates with Claude Code and OpenAI Codex. Ideal for operations teams automating spreadsheet tasks."
+}

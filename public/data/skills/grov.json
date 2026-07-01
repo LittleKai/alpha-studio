@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/grov",
+  "slug": "grov",
+  "name": "Grov",
+  "headline": "Grov - Shared AI Memory for Developers",
+  "short_description": "Grov automatically captures the context from your private AI sessions and syncs it to a shared team memory. It auto injects relevant memories across developers and future sessions to save tokens and time spent on tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "TonyStef",
+  "install_command": "git clone https://github.com/TonyStef/Grov.git",
+  "source_repo_url": "https://github.com/TonyStef/Grov",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "memory",
+    "software-engineering",
+    "typescript",
+    "anthropic",
+    "cli",
+    "ai-infrastructure",
+    "ai-coding-tools",
+    "developer-tools",
+    "claude",
+    "claude-code",
+    "ai-memory",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Grov captures the reasoning and decisions your team's AI agents discover and syncs them to a shared team dashboard. When one developer's Claude figures something out—like how your authentication system works—every other developer's Claude automatically knows it without re-exploring. The tool injects relevant team memories into new sessions, eliminating redundant investigation and token spend. It's designed for engineering teams using Claude Code, Cursor, or other Claude-powered tools who want their AI agents to learn collectively rather than in isolated silos.\nAvoid duplicate AI exploration of codebase architecture across team members\nSpeed up onboarding by injecting new developers with verified team knowledge\nReduce token costs by skipping re-investigation of already-solved problems\nPreserve institutional knowledge from AI sessions that would normally disappear",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TonyStef/Grov`",
+    "usage": "```\nUse Grov to capture the context from this session: [SESSION_TRANSCRIPT]. Then, summarize the key decisions, code snippets, and unresolved questions into a shared team memory entry. Format the output as a concise bullet-point list with tags like #backend, #bug, #priority-high. Share this with the team by pasting it into our Grov channel: [TEAM_CHANNEL_NAME].\n```\nCopy\n\n```\n```markdown\n# Shared Team Memory Entry (Grov Sync)\n**Session Context:** Debugging API timeout issues in the `payment-service` (PR #42).\n\n**Key Decisions:**\n- Confirmed the issue is in the `timeoutMiddleware` (line 45-50).\n- Decided to increase timeout from 5s to 10s as a temporary fix (#priority-medium).\n- Scheduled follow-up with @devops-team to optimize database queries.\n\n**Code Snippets:**\n```javascript\n// Temporary fix in payment-service/src/middleware/timeout.js\nconst timeoutMiddleware = (req, res, next) => {\n  req.setTimeout(10000, () => { // Increased from 5000\n    res.status(504).json({ error: 'Request timeout' });\n  });\n  next();\n};\n```\n\n**Unresolved Questions:**\n- Why are some queries taking 8s+? (Tag: #backend, #investigate)\n- Should we implement circuit breakers? (Tag: #architecture)\n\n**Next Steps:**\n- @alice to create a ticket for query optimization.\n- @bob to draft a proposal for circuit breakers.\n```\n\n**Grov Tags:** #payment-service #timeout #debugging #priority-medium\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "grov#main-content",
+      "grov#overview",
+      "grov#setup",
+      "grov#examples",
+      "grov#tools",
+      "grov#mcp",
+      "grov#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Grov ghi lại các lập luận và quyết định mà các AI agent của team bạn khám phá ra, sau đó đồng bộ hóa chúng lên một dashboard dùng chung của team. Khi Claude của một developer tìm ra giải pháp cho một vấn đề—ví dụ như cách hệ thống xác thực (authentication) hoạt động—Claude của tất cả các developer khác sẽ tự động biết được điều đó mà không cần phải tìm hiểu lại. Công cụ này tự động inject các thông tin bộ nhớ liên quan của team vào các session mới, loại bỏ việc tìm hiểu trùng lặp và lãng phí token. Grov được thiết kế cho các đội ngũ kỹ thuật sử dụng Claude Code, Cursor hoặc các công cụ chạy bằng Claude muốn các AI agent của mình học hỏi cùng nhau thay vì hoạt động riêng lẻ trong các môi trường cô lập.\nTránh việc các thành viên trong team bắt AI tìm hiểu trùng lặp về cấu trúc codebase\nĐẩy nhanh quá trình onboarding bằng cách inject kiến thức đã được xác thực của team cho các developer mới\nGiảm chi phí token bằng cách bỏ qua việc tìm hiểu lại các vấn đề đã được giải quyết\nLưu giữ tri thức nội bộ từ các session AI vốn thường sẽ biến mất",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/TonyStef/Grov`",
+    "usage_vi": "```\nSử dụng Grov để ghi lại ngữ cảnh từ session này: [SESSION_TRANSCRIPT]. Sau đó, tóm tắt các quyết định quan trọng, đoạn code mẫu và các câu hỏi chưa được giải quyết thành một mục bộ nhớ dùng chung cho team. Định dạng kết quả đầu ra dưới dạng danh sách gạch đầu dòng ngắn gọn kèm theo các tag như #backend, #bug, #priority-high. Chia sẻ thông tin này với team bằng cách dán vào channel Grov của chúng tôi: [TEAM_CHANNEL_NAME].\n```\nCopy\n\n```\n```markdown\n# Mục Bộ nhớ Dùng chung cho Team (Đồng bộ Grov)\n**Ngữ cảnh Session:** Debug lỗi timeout API trong `payment-service` (PR #42).\n\n**Quyết định quan trọng:**\n- Xác nhận lỗi nằm ở `timeoutMiddleware` (dòng 45-50).\n- Quyết định tăng timeout từ 5s lên 10s như một giải pháp tạm thời (#priority-medium).\n- Lên lịch làm việc tiếp theo với @devops-team để tối ưu hóa các câu truy vấn database.\n\n**Đoạn Code Mẫu:**\n```javascript\n// Sửa lỗi tạm thời trong payment-service/src/middleware/timeout.js\nconst timeoutMiddleware = (req, res, next) => {\n  req.setTimeout(10000, () => { // Tăng từ 5000\n    res.status(504).json({ error: 'Request timeout' });\n  });\n  next();\n};\n```\n\n**Câu hỏi chưa giải quyết:**\n- Tại sao một số truy vấn mất hơn 8s? (Tag: #backend, #investigate)\n- Chúng ta có nên triển khai circuit breaker không? (Tag: #architecture)\n\n**Các bước tiếp theo:**\n- @alice tạo ticket để tối ưu hóa truy vấn.\n- @bob dự thảo đề xuất áp dụng circuit breaker.\n```\n\n**Grov Tags:** #payment-service #timeout #debugging #priority-medium\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:43:58.995304Z",
+    "http_status": 200,
+    "content_hash": "a47a0dc6fa297af625f3cdc53cf089a4faf396b44aa7198fbafa320762fa319f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\grov.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\grov.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Grov - Bộ nhớ AI dùng chung dành cho Developer",
+  "short_description_vi": "Grov tự động ghi lại ngữ cảnh từ các session AI cá nhân của bạn và đồng bộ hóa vào bộ nhớ dùng chung của team. Công cụ này tự động inject các bộ nhớ liên quan vào phiên làm việc của các developer khác và các session tương lai nhằm tiết kiệm token cũng như thời gian xử lý task."
+}

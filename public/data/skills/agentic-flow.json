@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentic-flow",
+  "slug": "agentic-flow",
+  "name": "browser-use",
+  "headline": "agentic-flow AI model switching tool",
+  "short_description": "Easily switch between alternative low-cost AI models in Claude Code/Agent SDK. For those comfortable using Claude agents and commands, it lets you take what you've created and deploy fully hosted agents for real business purposes. Use Claude Code to get the agent working, then deploy it in your favorite cloud.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "ruvnet",
+  "install_command": "git clone https://github.com/ruvnet/agentic-flow.git",
+  "source_repo_url": "https://github.com/ruvnet/agentic-flow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-agent-sdk",
+    "agents",
+    "claude",
+    "openrouter",
+    "gemini",
+    "swarm-intelligence"
+  ],
+  "sections": {
+    "overview": "Agentic-flow is a framework for developers building AI agents with Claude Code and the Agent SDK. It enables flexible model switching and provides infrastructure for deploying agents to production environments across cloud platforms. The project includes optimized embeddings with ONNX support, vector operations, and CLI tooling for agent management. Teams can prototype agents locally using Claude, then seamlessly transition to fully hosted deployments for real business applications. The framework supports multiple embedding models and includes performance optimization features like LRU caching and SIMD-friendly vector operations.\nDeploy self-learning AI agents to automate code review processes and improve code quality.\nUtilize multi-agent coordination to optimize project planning and resource allocation in software development.\nImplement real-time adaptive learning agents for dynamic customer support solutions.\nCreate intelligent testing agents that learn from past failures to generate comprehensive test cases.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ruvnet/agentic-flow`",
+    "usage": "```\nSwitch from [CURRENT_MODEL] to [TARGET_MODEL] in my Claude Code/Agent workflow for [TASK_DESCRIPTION]. Ensure the agent's logic remains intact while optimizing for cost and performance. Use the following command structure: `cd /path/to/project && claude agents switch --from [CURRENT_MODEL] --to [TARGET_MODEL] --task \"[TASK_DESCRIPTION]\"`. After switching, validate the agent's output with a test run on [TEST_DATA_FILE].\n```\nCopy\n\n```\nI’ve successfully switched your agent from **Claude 3.5 Sonnet** to **Claude 3 Haiku** for the **customer support ticket triage workflow** while preserving the original logic. The agent now processes tickets with a 40% reduction in cost per request while maintaining 95% accuracy on the test dataset (`tickets_test_set.json`). Here’s the validation breakdown:\n\n- **Processing Speed**: Reduced from 1.2s to 0.8s per ticket (33% faster).\n- **Cost Savings**: $0.002 per ticket (vs. $0.0035 with Sonnet).\n- **Accuracy**: 95% match against human-labeled tickets (vs. 96% with Sonnet).\n- **Edge Cases**: Handled 12% more ambiguous queries (e.g., \"The service is slow\" vs. \"I’m angry\") by falling back to a rule-based fallback.\n\nThe agent is now deployed in your AWS Lambda function (`support-triage-haiku`) and is ready for production traffic. Monitor the CloudWatch logs for the next 2 hours to confirm stability.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentic-flow#main-content",
+      "agentic-flow#overview",
+      "agentic-flow#setup",
+      "agentic-flow#examples",
+      "agentic-flow#tools",
+      "agentic-flow#mcp",
+      "agentic-flow#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agentic-flow is a framework for developers building AI agents with Claude Code and the Agent SDK. It enables flexible model switching and provides infrastructure for deploying agents to production environments across cloud platforms. The project includes optimized embeddings with ONNX support, vector operations, and CLI tooling for agent management. Teams can prototype agents locally using Claude, then seamlessly transition to fully hosted deployments for real business applications. The framework supports multiple embedding models and includes performance optimization features like LRU caching and SIMD-friendly vector operations.\nDeploy self-learning AI agents to automate code review processes and improve code quality.\nUtilize multi-agent coordination to optimize project planning and resource allocation in software development.\nImplement real-time adaptive learning agents for dynamic customer support solutions.\nCreate intelligent testing agents that learn from past failures to generate comprehensive test cases.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ruvnet/agentic-flow`",
+    "usage_vi": "```\nSwitch from [CURRENT_MODEL] to [TARGET_MODEL] in my Claude Code/Agent workflow for [TASK_DESCRIPTION]. Ensure the agent's logic remains intact while optimizing for cost and performance. Use the following command structure: `cd /path/to/project && claude agents switch --from [CURRENT_MODEL] --to [TARGET_MODEL] --task \"[TASK_DESCRIPTION]\"`. After switching, validate the agent's output with a test run on [TEST_DATA_FILE].\n```\nCopy\n\n```\nI’ve successfully switched your agent from **Claude 3.5 Sonnet** to **Claude 3 Haiku** for the **customer support ticket triage workflow** while preserving the original logic. The agent now processes tickets with a 40% reduction in cost per request while maintaining 95% accuracy on the test dataset (`tickets_test_set.json`). Here’s the validation breakdown:\n\n- **Processing Speed**: Reduced from 1.2s to 0.8s per ticket (33% faster).\n- **Cost Savings**: $0.002 per ticket (vs. $0.0035 with Sonnet).\n- **Accuracy**: 95% match against human-labeled tickets (vs. 96% with Sonnet).\n- **Edge Cases**: Handled 12% more ambiguous queries (e.g., \"The service is slow\" vs. \"I’m angry\") by falling back to a rule-based fallback.\n\nThe agent is now deployed in your AWS Lambda function (`support-triage-haiku`) and is ready for production traffic. Monitor the CloudWatch logs for the next 2 hours to confirm stability.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:23:17.895244Z",
+    "http_status": 200,
+    "content_hash": "c5027b3a5a085a456cd90b54f28c93eb9ad2fc8d97529bc34ab72d1289a53e51",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentic-flow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentic-flow.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agentic-flow AI model switching tool",
+  "short_description_vi": "Easily switch between alternative low-cost AI models in Claude Code/Agent SDK. For those comfortable using Claude agents and commands, it lets you take what you've created and deploy fully hosted agents for real business purposes. Use Claude Code to get the agent working, then deploy it in your favorite cloud."
+}

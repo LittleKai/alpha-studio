@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codecompanion-nvim",
+  "slug": "codecompanion-nvim",
+  "name": "browser-use",
+  "headline": "AI coding in Vim style with Codecompanion",
+  "short_description": "CodeCompanion.nvim is a Neovim plugin that integrates AI coding assistants into your workflow. It supports multiple AI models and enables developers to generate, edit, and debug code directly within Vim. The plugin is designed for operations teams who need to streamline their coding processes and improve productivity.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "olimorris",
+  "install_command": "git clone https://github.com/olimorris/codecompanion.nvim.git",
+  "source_repo_url": "https://github.com/olimorris/codecompanion.nvim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "gemini",
+    "anthropic",
+    "copilot",
+    "llm",
+    "ollama",
+    "openai",
+    "deepseek",
+    "copilot-chat",
+    "vibe-coding",
+    "neovim",
+    "plugin",
+    "agent-client-protocol",
+    "acp",
+    "nvim",
+    "google-gemini"
+  ],
+  "sections": {
+    "overview": "CodeCompanion.nvim is a Neovim plugin that brings AI-powered coding capabilities directly into your editor workflow. It supports multiple AI models and enables developers to generate, edit, and debug code without leaving Vim. The plugin streamlines common coding tasks through direct editor integration, allowing you to leverage AI assistance for code generation and problem-solving. Designed for developers working in Neovim, it reduces context-switching by keeping your AI assistant within your primary development environment.\nAutomate code refactoring tasks to improve code quality and maintainability.\nUtilize inline assistance for real-time code suggestions while writing.\nIntegrate various LLMs to enhance coding efficiency and reduce errors.\nManage multiple chat buffers for different coding contexts simultaneously.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/olimorris/codecompanion.nvim`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] script to [DESCRIBE_TASK]. Here's what I have so far: [PASTE_CODE]. Can you help me [SPECIFIC_REQUEST]? I want to make sure it's [SPECIFIC_GOAL].\n```\nCopy\n\n```\nBased on your Python script for processing sales data, here's how I'd improve it:\n\n```python\n# Original code\nfor row in data:\n    if row['status'] == 'completed':\n        total += row['amount']\n\n# Improved version with error handling and type hints\nfrom typing import List, Dict\n\ndef calculate_total(sales_data: List[Dict[str, str]]) -> float:\n    \"\"\"\n    Calculate the total amount from completed sales.\n\n    Args:\n        sales_data: List of dictionaries containing sales data\n\n    Returns:\n        Total amount of completed sales\n    \"\"\"\n    total = 0.0\n    for row in sales_data:\n        try:\n            if row.get('status') == 'completed':\n                total += float(row.get('amount', 0))\n        except (ValueError, TypeError) as e:\n            print(f\"Error processing row {row}: {str(e)}\")\n    return total\n\n# Usage example\nsales_data = [\n    {'status': 'completed', 'amount': '100.50'},\n    {'status': 'pending', 'amount': '75.25'},\n    {'status': 'completed', 'amount': '200.00'},\n    {'status': 'completed', 'amount': 'invalid'},\n    {'status': 'completed'}\n]\n\nprint(calculate_total(sales_data))  # Output: 300.50 (skips invalid entries)\n```\n\nI've added type hints for better code documentation, included error handling for invalid data, and made the function reusable. The docstring explains the function's purpose and parameters. The example at the bottom shows how to use it with sample data.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codecompanion-nvim#main-content",
+      "codecompanion-nvim#overview",
+      "codecompanion-nvim#setup",
+      "codecompanion-nvim#examples",
+      "codecompanion-nvim#tools",
+      "codecompanion-nvim#mcp",
+      "codecompanion-nvim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodeCompanion.nvim is a Neovim plugin that brings AI-powered coding capabilities directly into your editor workflow. It supports multiple AI models and enables developers to generate, edit, and debug code without leaving Vim. The plugin streamlines common coding tasks through direct editor integration, allowing you to leverage AI assistance for code generation and problem-solving. Designed for developers working in Neovim, it reduces context-switching by keeping your AI assistant within your primary development environment.\nAutomate code refactoring tasks to improve code quality and maintainability.\nUtilize inline assistance for real-time code suggestions while writing.\nIntegrate various LLMs to enhance coding efficiency and reduce errors.\nManage multiple chat buffers for different coding contexts simultaneously.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/olimorris/codecompanion.nvim`",
+    "usage_vi": "```\nI'm working on a [PROGRAMMING_LANGUAGE] script to [DESCRIBE_TASK]. Here's what I have so far: [PASTE_CODE]. Can you help me [SPECIFIC_REQUEST]? I want to make sure it's [SPECIFIC_GOAL].\n```\nCopy\n\n```\nBased on your Python script for processing sales data, here's how I'd improve it:\n\n```python\n# Original code\nfor row in data:\n    if row['status'] == 'completed':\n        total += row['amount']\n\n# Improved version with error handling and type hints\nfrom typing import List, Dict\n\ndef calculate_total(sales_data: List[Dict[str, str]]) -> float:\n    \"\"\"\n    Calculate the total amount from completed sales.\n\n    Args:\n        sales_data: List of dictionaries containing sales data\n\n    Returns:\n        Total amount of completed sales\n    \"\"\"\n    total = 0.0\n    for row in sales_data:\n        try:\n            if row.get('status') == 'completed':\n                total += float(row.get('amount', 0))\n        except (ValueError, TypeError) as e:\n            print(f\"Error processing row {row}: {str(e)}\")\n    return total\n\n# Usage example\nsales_data = [\n    {'status': 'completed', 'amount': '100.50'},\n    {'status': 'pending', 'amount': '75.25'},\n    {'status': 'completed', 'amount': '200.00'},\n    {'status': 'completed', 'amount': 'invalid'},\n    {'status': 'completed'}\n]\n\nprint(calculate_total(sales_data))  # Output: 300.50 (skips invalid entries)\n```\n\nI've added type hints for better code documentation, included error handling for invalid data, and made the function reusable. The docstring explains the function's purpose and parameters. The example at the bottom shows how to use it with sample data.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:03:02.511849Z",
+    "http_status": 200,
+    "content_hash": "2e6cb6273e5c8d194f44af77bb0eec0e5ea34d60d0f4c7daae1b773c96b053f8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codecompanion-nvim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codecompanion-nvim.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI coding in Vim style with Codecompanion",
+  "short_description_vi": "CodeCompanion.nvim is a Neovim plugin that integrates AI coding assistants into your workflow. It supports multiple AI models and enables developers to generate, edit, and debug code directly within Vim. The plugin is designed for operations teams who need to streamline their coding processes and improve productivity."
+}

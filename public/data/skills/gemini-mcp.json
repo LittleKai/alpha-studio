@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini-mcp",
+  "slug": "gemini-mcp",
+  "name": "browser-use",
+  "headline": "Gemini-MCP - Connects Claude Code with Gemini",
+  "short_description": "Gemini-MCP enables Claude Code to interact with Google's Gemini models. Operations teams can automate workflows by connecting these AI systems. It integrates with TypeScript-based tools and supports CLI for easy management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "RLabs-Inc",
+  "install_command": "git clone https://github.com/RLabs-Inc/gemini-mcp.git",
+  "source_repo_url": "https://github.com/RLabs-Inc/gemini-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "mcp",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "Gemini-MCP is an MCP server that bridges Google's Gemini 3 models with Claude Code, enabling seamless collaboration between AI systems. It provides 20+ tools including deep research with web search, image generation up to 4K, video creation, document and code analysis, real-time web search with citations, and Python code execution. The skill supports token counting for cost estimation, context caching for efficient queries, multi-turn image editing, YouTube analysis, and structured JSON outputs with schema validation. Teams can install it globally as a CLI or integrate it directly into Claude Code to automate research workflows, generate content, analyze data, and solve complex problems through coordinated AI reasoning.\nAutomate multi-step research workflows with web search and citations\nGenerate and iteratively edit images and videos for content creation\nAnalyze documents, PDFs, code, and web pages for insights and quality issues\nExecute Python data analysis and visualization tasks with Gemini",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RLabs-Inc/gemini-mcp`",
+    "usage": "```\nUse the gemini-mcp tool to [TASK]. Execute the following steps: 1) Connect to the Gemini model via gemini-mcp, 2) Provide the required inputs or context, 3) Process the output to [SPECIFIC_ACTION]. Example: 'Use gemini-mcp to analyze the latest server logs in /var/log/app.log. Identify any critical errors, their frequency, and suggest remediation steps. Format the output as a markdown report with sections for errors, root causes, and action items.'\n```\nCopy\n\n```\n```markdown\n# Server Log Analysis Report\n**Generated:** 2024-05-20 14:30:00 UTC\n**Source:** /var/log/app.log\n**Analysis Scope:** Last 24 hours",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gemini-mcp#main-content",
+      "gemini-mcp#overview",
+      "gemini-mcp#setup",
+      "gemini-mcp#examples",
+      "gemini-mcp#tools",
+      "gemini-mcp#mcp",
+      "gemini-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini-MCP is an MCP server that bridges Google's Gemini 3 models with Claude Code, enabling seamless collaboration between AI systems. It provides 20+ tools including deep research with web search, image generation up to 4K, video creation, document and code analysis, real-time web search with citations, and Python code execution. The skill supports token counting for cost estimation, context caching for efficient queries, multi-turn image editing, YouTube analysis, and structured JSON outputs with schema validation. Teams can install it globally as a CLI or integrate it directly into Claude Code to automate research workflows, generate content, analyze data, and solve complex problems through coordinated AI reasoning.\nAutomate multi-step research workflows with web search and citations\nGenerate and iteratively edit images and videos for content creation\nAnalyze documents, PDFs, code, and web pages for insights and quality issues\nExecute Python data analysis and visualization tasks with Gemini",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RLabs-Inc/gemini-mcp`",
+    "usage_vi": "```\nUse the gemini-mcp tool to [TASK]. Execute the following steps: 1) Connect to the Gemini model via gemini-mcp, 2) Provide the required inputs or context, 3) Process the output to [SPECIFIC_ACTION]. Example: 'Use gemini-mcp to analyze the latest server logs in /var/log/app.log. Identify any critical errors, their frequency, and suggest remediation steps. Format the output as a markdown report with sections for errors, root causes, and action items.'\n```\nCopy\n\n```\n```markdown\n# Server Log Analysis Report\n**Generated:** 2024-05-20 14:30:00 UTC\n**Source:** /var/log/app.log\n**Analysis Scope:** Last 24 hours"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:26:16.457127Z",
+    "http_status": 200,
+    "content_hash": "e5829be1873b92453ee1785bdc42a36210647089a4add52cba7ba0cbaf10ca6b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Gemini-MCP - Connects Claude Code with Gemini",
+  "short_description_vi": "Gemini-MCP enables Claude Code to interact with Google's Gemini models. Operations teams can automate workflows by connecting these AI systems. It integrates with TypeScript-based tools and supports CLI for easy management."
+}

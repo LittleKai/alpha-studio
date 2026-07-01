@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codegraph-rust",
+  "slug": "codegraph-rust",
+  "name": "browser-use",
+  "headline": "codegraph-rust: Rust Code Graph with Fast Parsing",
+  "short_description": "CodeGraph transforms codebases into a semantically searchable knowledge graph, enabling AI agents to reason about code. It benefits developers and operations teams by improving code search and analysis. The tool connects to semantic search engines and AI coding agents, enhancing codebase understanding and agentic code analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Jakedismo",
+  "install_command": "git clone https://github.com/Jakedismo/codegraph-rust.git",
+  "source_repo_url": "https://github.com/Jakedismo/codegraph-rust",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "graphrag",
+    "ai-agents",
+    "rust",
+    "rag",
+    "search-engines",
+    "code-search",
+    "agents",
+    "context-engine",
+    "vibe-coding",
+    "cursor",
+    "coding-agent",
+    "codex",
+    "gemini-cli",
+    "ai-coding",
+    "semantic-search"
+  ],
+  "sections": {
+    "overview": "CodeGraph converts your entire codebase into a semantic knowledge graph that AI agents can reason about, not just search. It combines AST parsing, Language Server Protocol resolution, and dataflow analysis to build a real graph of code relationships—functions, dependencies, module structure, and architecture signals. The tool provides four consolidated agentic tools: agentic_context for semantic search and questions, agentic_impact for dependency and call-chain analysis, agentic_architecture for system structure, and agentic_quality for complexity and coupling assessment. Built-in support for Rust, TypeScript/JavaScript, Python, Go, Java, and C/C++ with configurable indexing tiers (fast, balanced, full) lets you balance speed and richness. Developers and operations teams use CodeGraph to enable AI agents to understand codebases deeply, improving code search, change impact analysis, and architectural decision-making.\nEnable AI agents to understand codebase architecture and dependencies for smarter code generation\nAnalyze change impact by mapping dependency chains and call flows before refactoring\nSearch code semantically with relationships intact, not just pattern matching\nIdentify complexity hotspots and coupling metrics for refactoring prioritization",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Jakedismo/codegraph-rust`",
+    "usage": "```\nUse CodeGraph-Rust to analyze the [PROJECT_NAME] codebase. Generate a semantically searchable knowledge graph of the code structure, focusing on [SPECIFIC_AREA: e.g., error handling, API endpoints, or data models]. Identify all functions, classes, and their relationships, then highlight [KEY_METRIC: e.g., cyclomatic complexity, dependency chains, or unused code]. Provide a summary of findings in a structured format suitable for integration with [TOOL_NAME: e.g., GitHub Copilot, LangGraph, or a custom AI agent].\n```\nCopy\n\n```\nAfter analyzing the `inventory-service` Rust project (version 2.4.1), CodeGraph-Rust generated a knowledge graph with 1,247 nodes and 2,893 edges. The graph revealed a critical dependency chain in the `order_processing` module where the `validate_order` function (cyclomatic complexity: 12) calls `check_inventory` (complexity: 8), which in turn depends on `fetch_product_details` (complexity: 5). This chain was flagged as a potential bottleneck during high-load scenarios. Additionally, the tool identified 47 unused imports across 12 files and 3 circular dependencies in the `data_models` crate. The semantic search index now enables precise queries like 'Find all functions that modify OrderStatus without proper validation'—returning 8 matches in under 200ms. The output includes a DOT file for visualization in Graphviz and a JSON report for the AI agent, formatted as:\n\n```json\n{\n  \"summary\": {\n    \"total_nodes\": 1247,\n    \"total_edges\": 2893,\n    \"high_complexity_functions\": [\n      {\"name\": \"validate_order\", \"complexity\": 12, \"file\": \"src/order_processing.rs\"}\n    ],\n    \"unused_imports\": 47,\n    \"circular_dependencies\": 3\n  },\n  \"recommendations\": [\n    \"Refactor validate_order to reduce complexity below 10\",\n    \"Audit circular dependencies in data_models crate\",\n    \"Remove unused imports in src/lib.rs\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codegraph-rust#main-content",
+      "codegraph-rust#overview",
+      "codegraph-rust#setup",
+      "codegraph-rust#examples",
+      "codegraph-rust#tools",
+      "codegraph-rust#mcp",
+      "codegraph-rust#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodeGraph converts your entire codebase into a semantic knowledge graph that AI agents can reason about, not just search. It combines AST parsing, Language Server Protocol resolution, and dataflow analysis to build a real graph of code relationships—functions, dependencies, module structure, and architecture signals. The tool provides four consolidated agentic tools: agentic_context for semantic search and questions, agentic_impact for dependency and call-chain analysis, agentic_architecture for system structure, and agentic_quality for complexity and coupling assessment. Built-in support for Rust, TypeScript/JavaScript, Python, Go, Java, and C/C++ with configurable indexing tiers (fast, balanced, full) lets you balance speed and richness. Developers and operations teams use CodeGraph to enable AI agents to understand codebases deeply, improving code search, change impact analysis, and architectural decision-making.\nEnable AI agents to understand codebase architecture and dependencies for smarter code generation\nAnalyze change impact by mapping dependency chains and call flows before refactoring\nSearch code semantically with relationships intact, not just pattern matching\nIdentify complexity hotspots and coupling metrics for refactoring prioritization",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Jakedismo/codegraph-rust`",
+    "usage_vi": "```\nUse CodeGraph-Rust to analyze the [PROJECT_NAME] codebase. Generate a semantically searchable knowledge graph of the code structure, focusing on [SPECIFIC_AREA: e.g., error handling, API endpoints, or data models]. Identify all functions, classes, and their relationships, then highlight [KEY_METRIC: e.g., cyclomatic complexity, dependency chains, or unused code]. Provide a summary of findings in a structured format suitable for integration with [TOOL_NAME: e.g., GitHub Copilot, LangGraph, or a custom AI agent].\n```\nCopy\n\n```\nAfter analyzing the `inventory-service` Rust project (version 2.4.1), CodeGraph-Rust generated a knowledge graph with 1,247 nodes and 2,893 edges. The graph revealed a critical dependency chain in the `order_processing` module where the `validate_order` function (cyclomatic complexity: 12) calls `check_inventory` (complexity: 8), which in turn depends on `fetch_product_details` (complexity: 5). This chain was flagged as a potential bottleneck during high-load scenarios. Additionally, the tool identified 47 unused imports across 12 files and 3 circular dependencies in the `data_models` crate. The semantic search index now enables precise queries like 'Find all functions that modify OrderStatus without proper validation'—returning 8 matches in under 200ms. The output includes a DOT file for visualization in Graphviz and a JSON report for the AI agent, formatted as:\n\n```json\n{\n  \"summary\": {\n    \"total_nodes\": 1247,\n    \"total_edges\": 2893,\n    \"high_complexity_functions\": [\n      {\"name\": \"validate_order\", \"complexity\": 12, \"file\": \"src/order_processing.rs\"}\n    ],\n    \"unused_imports\": 47,\n    \"circular_dependencies\": 3\n  },\n  \"recommendations\": [\n    \"Refactor validate_order to reduce complexity below 10\",\n    \"Audit circular dependencies in data_models crate\",\n    \"Remove unused imports in src/lib.rs\"\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:16.457636Z",
+    "http_status": 200,
+    "content_hash": "1a647c288f8dc036560610d803d71582f3ca125bede945655081f00bab2d15af",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codegraph-rust.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codegraph-rust.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "codegraph-rust: Rust Code Graph with Fast Parsing",
+  "short_description_vi": "CodeGraph transforms codebases into a semantically searchable knowledge graph, enabling AI agents to reason about code. It benefits developers and operations teams by improving code search and analysis. The tool connects to semantic search engines and AI coding agents, enhancing codebase understanding and agentic code analysis."
+}

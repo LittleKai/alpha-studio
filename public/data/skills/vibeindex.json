@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibeindex",
+  "slug": "vibeindex",
+  "name": "improve-claude-md",
+  "headline": "vibeindex: Project Analysis & Ecosystem Discovery",
+  "short_description": "The vibeindex skill detects the user's language from the conversation context and responds accordingly. It allows users to analyze projects, search for resources, and explore trending topics in the Claude Code ecosystem.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "vibeindex",
+  "install_command": "git clone https://github.com/vibeindex/skills",
+  "source_repo_url": "https://github.com/vibeindex/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "vibeindex",
+    "ai-agent-skill"
+  ],
+  "sections": {
+    "overview": "The vibeindex skill is part of the Vibe Index skills collection for Claude Code, offering project analysis and personalized recommendations. Use the /vibeindex command to get insights tailored to your work, or explore trending GitHub resources with /rising. The skill integrates with Claude Code to help developers discover relevant tools, compare resources side-by-side with /versus, and stay updated on newly added resources in the ecosystem. Additional commands include /ecosystem for dashboard views and /new for recently added tools.\nAnalyze a project with powered insights.\nSearch for specific resources using keywords.\nView trending resources based on stars.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/vibeindex/skills --skill vibeindex`\n`git clone https://github.com/vibeindex/skills`",
+    "usage": "```\nAnalyze the following [PROJECT/RESOURCE/TREND] in the Claude Code ecosystem and provide a vibeindex summary of the most relevant language, tone, and context. Focus on [SPECIFIC GOAL: e.g., 'technical depth', 'community sentiment', or 'implementation potential']. Project/Resource: [DETAILS].\n```\nCopy\n\n```\n# VibeIndex Summary: Claude Code Ecosystem Analysis\n\n**Language/Tone:** 🌍 Multilingual (primary: English, secondary: Python/JS, tertiary: Rust/Go). Conversational but technical, with a collaborative and innovative vibe. Community leans toward \"build in public\" ethos—high enthusiasm for open-source contributions and rapid experimentation.\n\n**Trending Topics:**\n- 🔥 **Agentic Workflows**: Heavy focus on autonomous AI agents (e.g., \"Claude Code as a teammate\").\n- 🛠️ **Tooling Integration**: VS Code extensions, CLI tools, and SDKs for seamless dev workflows.\n- 🌱 **Beginner-Friendly Guides**: Surge in \"Getting Started with Claude Code\" tutorials (e.g., GitHub repos with 500+ stars).\n\n**Implementation Potential:**\n- **High** for Python/JS devs building CLI tools or automation scripts.\n- **Medium** for Rust/Go users targeting performance-critical agentic systems.\n- **Low** for non-technical users (steep learning curve).\n\n**Community Sentiment:**\n> \"Claude Code feels like having a senior dev in your terminal—just faster.\"\n> — [@dev_enthusiast], 2024-05-12\n\n**Actionable Insight:** Prioritize Python/JS projects with clear documentation and GitHub templates to align with trending vibes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "vibeindex#main-content",
+      "vibeindex#overview",
+      "vibeindex#setup",
+      "vibeindex#examples",
+      "vibeindex#related",
+      "rivetkit",
+      "zenmux-usage",
+      "improve-claude-md"
+    ],
+    "overview_vi": "The vibeindex skill is part of the Vibe Index skills collection for Claude Code, offering project analysis and personalized recommendations. Use the /vibeindex command to get insights tailored to your work, or explore trending GitHub resources with /rising. The skill integrates with Claude Code to help developers discover relevant tools, compare resources side-by-side with /versus, and stay updated on newly added resources in the ecosystem. Additional commands include /ecosystem for dashboard views and /new for recently added tools.\nAnalyze a project with powered insights.\nSearch for specific resources using keywords.\nView trending resources based on stars.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/vibeindex/skills --skill vibeindex`\n`git clone https://github.com/vibeindex/skills`",
+    "usage_vi": "```\nAnalyze the following [PROJECT/RESOURCE/TREND] in the Claude Code ecosystem and provide a vibeindex summary of the most relevant language, tone, and context. Focus on [SPECIFIC GOAL: e.g., 'technical depth', 'community sentiment', or 'implementation potential']. Project/Resource: [DETAILS].\n```\nCopy\n\n```\n# VibeIndex Summary: Claude Code Ecosystem Analysis\n\n**Language/Tone:** 🌍 Multilingual (primary: English, secondary: Python/JS, tertiary: Rust/Go). Conversational but technical, with a collaborative and innovative vibe. Community leans toward \"build in public\" ethos—high enthusiasm for open-source contributions and rapid experimentation.\n\n**Trending Topics:**\n- 🔥 **Agentic Workflows**: Heavy focus on autonomous AI agents (e.g., \"Claude Code as a teammate\").\n- 🛠️ **Tooling Integration**: VS Code extensions, CLI tools, and SDKs for seamless dev workflows.\n- 🌱 **Beginner-Friendly Guides**: Surge in \"Getting Started with Claude Code\" tutorials (e.g., GitHub repos with 500+ stars).\n\n**Implementation Potential:**\n- **High** for Python/JS devs building CLI tools or automation scripts.\n- **Medium** for Rust/Go users targeting performance-critical agentic systems.\n- **Low** for non-technical users (steep learning curve).\n\n**Community Sentiment:**\n> \"Claude Code feels like having a senior dev in your terminal—just faster.\"\n> — [@dev_enthusiast], 2024-05-12\n\n**Actionable Insight:** Prioritize Python/JS projects with clear documentation and GitHub templates to align with trending vibes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:22:27.967686Z",
+    "http_status": 200,
+    "content_hash": "0cf444c484e174dcc87604c470f62cca2de3764b5879a09083b39faa783423cf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vibeindex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vibeindex.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "vibeindex: Project Analysis & Ecosystem Discovery",
+  "short_description_vi": "The vibeindex skill detects the user's language from the conversation context and responds accordingly. It allows users to analyze projects, search for resources, and explore trending topics in the Claude Code ecosystem."
+}

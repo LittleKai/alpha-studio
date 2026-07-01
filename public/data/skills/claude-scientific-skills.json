@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-scientific-skills",
+  "slug": "claude-scientific-skills",
+  "name": "Claude Scientific Skills",
+  "headline": "Claude Scientific Skills for Advanced Research",
+  "short_description": "Claude Scientific Skills offers a comprehensive suite of tools for scientific analysis, including bioinformatics, drug discovery, and computational biology. Ideal for researchers and scientists looking to use AI for data-driven insights.",
+  "tier": "Gold",
+  "category": "GrowthResearch",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "K-Dense-AI",
+  "install_command": "claude install K-Dense-AI/claude-scientific-skills",
+  "source_repo_url": "https://github.com/K-Dense-AI/claude-scientific-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "scientific-computing",
+    "bioinformatics",
+    "drug-discovery",
+    "computational-biology",
+    "data-analysis"
+  ],
+  "sections": {
+    "overview": "Claude Scientific Skills is a comprehensive toolkit designed for researchers and scientists who need to integrate AI into their workflows. The skill suite includes tools for bioinformatics analysis, drug discovery applications, and computational biology tasks. Built for use with Claude Code and similar AI agents, it enables data-driven scientific insights by automating complex analytical tasks. The collection is actively maintained and supports multiple scientific domains, making it suitable for academic research, pharmaceutical development, and biological data analysis projects.\nAnalyzing genomic data to identify genetic markers associated with diseases.\nOptimizing the drug discovery process by predicting molecular interactions.\nVisualizing complex scientific data to uncover trends and patterns.\nConducting metabolomics studies to analyze metabolic profiles in biological samples.",
+    "setup": "Terminal\nCopy\n`claude install K-Dense-AI/claude-scientific-skills`\n`git clone https://github.com/K-Dense-AI/claude-scientific-skills`",
+    "usage": "```\nAnalyze the following bioinformatics data for [GENE/DRUG] using [SPECIFIC ANALYSIS TECHNIQUE]. Identify key trends and provide insights relevant to [RESEARCH GOAL]. Suggest potential next steps for further investigation.\n```\nCopy\n\n```\nAfter analyzing the bioinformatics data for the gene BRCA1 using comparative genomics, several key trends emerged. The data showed a significant mutation rate in the exon 11 region, which is known to be critical for DNA repair mechanisms. Additionally, there was a notable correlation between these mutations and increased cancer susceptibility in the studied population. Further investigation into the epigenetic modifications in this region could provide deeper insights into the regulatory mechanisms at play. Additionally, exploring the interaction of BRCA1 with other tumor suppressor genes might reveal novel therapeutic targets. These findings suggest that targeted therapies focusing on the exon 11 region could be a promising avenue for future drug development.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-scientific-skills#main-content",
+      "claude-scientific-skills#overview",
+      "claude-scientific-skills#setup",
+      "claude-scientific-skills#examples",
+      "claude-scientific-skills#tools",
+      "claude-scientific-skills#mcp",
+      "claude-scientific-skills#related",
+      "agentic-ai-pipeline",
+      "other-sources",
+      "dark-web-scraping-guide"
+    ],
+    "overview_vi": "Claude Scientific Skills là bộ công cụ toàn diện được thiết kế dành cho các nhà nghiên cứu và nhà khoa học có nhu cầu tích hợp AI vào quy trình làm việc (workflow) của mình. Bộ công cụ này bao gồm các tính năng hỗ trợ phân tích tin sinh học, ứng dụng phát triển thuốc và các tác vụ sinh học tính toán. Được tối ưu hóa để hoạt động với Claude Code và các AI agent tương tự, bộ công cụ giúp khai thác các thông tin chuyên sâu từ dữ liệu khoa học nhờ tự động hóa các tác vụ phân tích phức tạp. Dự án này được cập nhật thường xuyên và hỗ trợ nhiều lĩnh vực khoa học khác nhau, phù hợp cho nghiên cứu học thuật, phát triển dược phẩm cũng như các dự án phân tích dữ liệu sinh học.\nPhân tích dữ liệu bộ gen để xác định các chỉ dấu di truyền liên quan đến bệnh lý.\nTối ưu hóa quy trình phát triển thuốc bằng cách dự đoán các tương tác phân tử.\nTrực quan hóa dữ liệu khoa học phức tạp để phát hiện các xu hướng và quy luật.\nThực hiện các nghiên cứu metabolomics (hóa sinh chuyển hóa) để phân tích hồ sơ chuyển hóa trong các mẫu sinh học.",
+    "setup_vi": "Terminal\nSao chép\n`claude install K-Dense-AI/claude-scientific-skills`\n`git clone https://github.com/K-Dense-AI/claude-scientific-skills`",
+    "usage_vi": "```\nHãy phân tích dữ liệu tin sinh học sau đây đối với [GEN/THUỐC] bằng cách sử dụng [PHƯƠNG PHÁP PHÂN TÍCH CỤ THỂ]. Xác định các xu hướng chính và cung cấp các phân tích chuyên sâu liên quan đến [MỤC TIÊU NGHIÊN CỨU]. Đề xuất các bước tiếp theo để tiếp tục nghiên cứu.\n```\nSao chép\n\n```\nSau khi phân tích dữ liệu tin sinh học đối với gen BRCA1 bằng phương pháp di truyền học so sánh (comparative genomics), một số xu hướng chính đã được chỉ ra. Dữ liệu cho thấy tỷ lệ đột biến cao đáng kể ở vùng exon 11, vùng được biết đến là đóng vai trò quan trọng trong cơ chế sửa chữa DNA. Ngoài ra, có một mối tương quan rõ rệt giữa các đột biến này với sự gia tăng nguy cơ mắc ung thư trong nhóm quần thể được nghiên cứu. Việc nghiên cứu sâu hơn về các biến đổi biểu sinh (epigenetic modifications) tại vùng này có thể mang lại những góc nhìn chi tiết hơn về các cơ chế điều hòa biểu hiện gen. Bên cạnh đó, việc tìm hiểu sự tương tác giữa BRCA1 với các gen ức chế khối u khác có thể giúp phát hiện các mục tiêu điều trị mới. Những phát hiện này gợi ý rằng các liệu pháp nhắm trúng đích tập trung vào vùng exon 11 sẽ là một hướng đi đầy triển vọng cho việc phát triển thuốc trong tương lai.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:37:38.449494Z",
+    "http_status": 200,
+    "content_hash": "c91c675e82f90d4aef106b2fea48f04c5fe86382f482f008bb88149dbcf259c4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-scientific-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-scientific-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Scientific Skills cho Nghiên cứu Nâng cao",
+  "short_description_vi": "Claude Scientific Skills cung cấp bộ công cụ toàn diện cho phân tích khoa học, bao gồm tin sinh học, phát triển thuốc và sinh học tính toán. Đây là giải pháp lý tưởng cho các nhà nghiên cứu và nhà khoa học muốn ứng dụng AI để khai thác các thông tin chuyên sâu từ dữ liệu."
+}

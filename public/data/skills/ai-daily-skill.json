@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-daily-skill",
+  "slug": "ai-daily-skill",
+  "name": "Ai Daily Skill",
+  "headline": "ai-daily-skill: 新闻日报 Claude Code 技能",
+  "short_description": "Automatically fetches, analyzes, and categorizes AI industry news daily. Benefits operations teams by providing structured, up-to-date insights. Integrates with Claude Code and smol.ai for news aggregation and analysis.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "geekjourneyx",
+  "install_command": "git clone https://github.com/geekjourneyx/ai-daily-skill.git",
+  "source_repo_url": "https://github.com/geekjourneyx/ai-daily-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-skills",
+    "ai-news",
+    "ai"
+  ],
+  "sections": {
+    "overview": "AI Daily Skill automates the collection and analysis of AI industry news by fetching updates from smol.ai and using Claude's built-in AI capabilities to generate intelligently summarized and categorized Markdown documents. The skill supports relative date queries (yesterday, day before) and absolute dates, allowing users to retrieve news on demand without manual searching. Beyond text summaries, it can generate responsive HTML webpages with multiple design themes—Apple, Deep Sea Blue, and Autumn Warmth—plus social media share cards and Xiaohongshu-style cover images. Operations teams and AI professionals benefit from structured, up-to-date insights delivered automatically, while content creators can repurpose generated materials for distribution across platforms.\nOperations teams monitoring AI industry developments for strategic planning\nContent creators generating daily news roundups for newsletters or social media\nProduct teams staying informed on competitor launches and model releases\nResearchers tracking emerging AI capabilities and industry trends",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/geekjourneyx/ai-daily-skill`",
+    "usage": "```\nFetch and analyze today's top AI industry news. For each article, extract: 1) headline and source, 2) key AI-related innovations or trends mentioned, 3) potential business impact (low/moderate/high), and 4) a 1-sentence summary. Format results as a structured report with sections for [TRENDS], [HIGH-IMPACT NEWS], and [ACTIONABLE INSIGHTS]. Use [DATE] as a placeholder for today's date.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-daily-skill#main-content",
+      "ai-daily-skill#overview",
+      "ai-daily-skill#setup",
+      "ai-daily-skill#examples",
+      "ai-daily-skill#tools",
+      "ai-daily-skill#mcp",
+      "ai-daily-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI Daily Skill tự động hóa việc thu thập và phân tích tin tức ngành AI bằng cách lấy cập nhật từ smol.ai và tận dụng khả năng AI tích hợp của Claude để tạo ra các tài liệu Markdown được tóm tắt và phân loại một cách thông minh. Skill này hỗ trợ truy vấn theo cả ngày tương đối (hôm qua, ngày hôm trước) và ngày tuyệt đối, giúp người dùng tra cứu tin tức theo nhu cầu mà không cần tìm kiếm thủ công. Không chỉ dừng lại ở tóm tắt văn bản, công cụ còn có thể tạo các trang web HTML responsive với nhiều chủ đề thiết kế khác nhau—Apple, Deep Sea Blue và Autumn Warmth—cùng các thẻ chia sẻ mạng xã hội và ảnh bìa theo phong cách Xiaohongshu. Các đội ngũ vận hành và chuyên gia AI sẽ được hưởng lợi từ những thông tin chuyên sâu được cấu trúc rõ ràng và cập nhật tự động, trong khi các nhà sáng tạo nội dung có thể dễ dàng biên tập lại tài liệu để phân phối trên nhiều nền tảng khác nhau.\n\n- Các đội ngũ vận hành cần theo dõi diễn biến ngành AI để lập kế hoạch chiến lược\n- Các nhà sáng tạo nội dung cần sản xuất bản tin tổng hợp hàng ngày cho newsletter hoặc mạng xã hội\n- Các đội ngũ sản phẩm cần cập nhật thông tin về các đợt ra mắt sản phẩm của đối thủ và các phiên bản model mới\n- Các nhà nghiên cứu cần theo dõi các khả năng AI mới và xu hướng ngành",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/geekjourneyx/ai-daily-skill`",
+    "usage_vi": "```\nThu thập và phân tích các tin tức nổi bật nhất trong ngày về ngành công nghiệp AI. Với mỗi bài viết, hãy trích xuất: 1) tiêu đề và nguồn, 2) các cải tiến hoặc xu hướng công nghệ chính liên quan đến AI được đề cập, 3) tác động kinh doanh tiềm năng (thấp/trung bình/cao), và 4) tóm tắt ngắn gọn trong 1 câu. Định dạng kết quả dưới dạng một báo cáo có cấu trúc với các phần [TRENDS], [HIGH-IMPACT NEWS] và [ACTIONABLE INSIGHTS]. Sử dụng [DATE] làm placeholder cho ngày hôm nay.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:09.144104Z",
+    "http_status": 200,
+    "content_hash": "e3a78604c6c6dec7958997a49d85c289336a411e782ac2022b0341ab7a16f5b7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-daily-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-daily-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ai-daily-skill: Kỹ năng Claude Code cho Bản tin AI Hàng ngày",
+  "short_description_vi": "Tự động thu thập, phân tích và phân loại tin tức ngành AI hàng ngày. Hỗ trợ đắc lực cho các đội ngũ vận hành bằng cách cung cấp các thông tin chuyên sâu được cấu trúc rõ ràng và cập nhật liên tục. Tích hợp trực tiếp với Claude Code và smol.ai để tổng hợp và phân tích tin tức."
+}

@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/metabase-mcp",
+  "slug": "metabase-mcp",
+  "name": "browser-use",
+  "headline": "Metabase MCP - Connect AI to Analytics",
+  "short_description": "Metabase MCP server provides integration with the Metabase API, enabling LLM with MCP capabilites to directly interact with your analytics data, this server acts as a bridge between your analytics platform and conversational AI.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "hluaguo",
+  "install_command": "git clone https://github.com/hluaguo/metabase-mcp.git",
+  "source_repo_url": "https://github.com/hluaguo/metabase-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "python",
+    "data-analysis",
+    "llm",
+    "model-context-protocol",
+    "fastmcp",
+    "claude",
+    "database",
+    "mcp",
+    "analytics",
+    "business-intelligence",
+    "metabase"
+  ],
+  "sections": {
+    "overview": "Metabase MCP Server is a Model Context Protocol integration that bridges AI assistants (Claude, Cursor, and other MCP clients) with your Metabase business intelligence platform. It enables you to query databases, execute SQL and MongoDB queries, manage dashboards, and explore data through natural language without leaving your AI assistant. The server supports secure API key authentication, handles complex database operations like table discovery and field inspection, and provides context-aware logging for reliable production use. Teams can automate analytics workflows, generate reports, and answer data questions conversationally by leveraging their existing Metabase instance.\nExecute SQL queries and retrieve analytics data through Claude or Cursor without switching applications\nAutomate business intelligence workflows by creating and managing Metabase cards programmatically\nExplore database schemas and table structures using natural language questions\nRun MongoDB aggregation pipelines directly from AI assistants for document database analytics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hluaguo/metabase-mcp`",
+    "usage": "```\nUse the Metabase MCP server to query [METABASE_DASHBOARD_ID] for [SPECIFIC_METRICS] between [START_DATE] and [END_DATE]. Format the results as a markdown table with columns for [COLUMN_NAMES]. Include a brief analysis of trends or outliers in the data.\n```\nCopy\n\n```\n### Sales Performance Analysis (Q2 2024)\n\n| Region       | Total Sales | Avg. Deal Size | Conversion Rate | Top Product Category |\n|--------------|-------------|----------------|-----------------|----------------------|\n| North America| $2.4M       | $12,500        | 22%             | Enterprise SaaS      |\n| EMEA         | $1.8M       | $9,800         | 18%             | Mid-Market Solutions |\n| APAC         | $1.2M       | $7,200         | 15%             | SMB Tools            |\n\n**Key Insights:**\n1. **North America** leads in both total sales ($2.4M) and average deal size ($12,500), likely due to strong enterprise adoption. The conversion rate of 22% is also the highest, suggesting effective sales strategies in this region.\n2. **EMEA** shows a balanced performance with $1.8M in sales but a lower average deal size ($9,800) and conversion rate (18%). This may indicate a need for targeted upselling strategies or localized marketing campaigns.\n3. **APAC** lags in all metrics, with the lowest total sales ($1.2M), average deal size ($7,200), and conversion rate (15%). Further investigation into regional preferences or competitive pressures is recommended.\n\n**Recommendations:**\n- Prioritize North America for high-value deals and allocate additional resources to EMEA to improve conversion rates.\n- Explore why APAC underperforms and consider piloting localized sales tactics or product adaptations.\n- Investigate the top product categories in each region to identify cross-selling opportunities.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "metabase-mcp#main-content",
+      "metabase-mcp#overview",
+      "metabase-mcp#setup",
+      "metabase-mcp#examples",
+      "metabase-mcp#tools",
+      "metabase-mcp#mcp",
+      "metabase-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Metabase MCP Server is a Model Context Protocol integration that bridges AI assistants (Claude, Cursor, and other MCP clients) with your Metabase business intelligence platform. It enables you to query databases, execute SQL and MongoDB queries, manage dashboards, and explore data through natural language without leaving your AI assistant. The server supports secure API key authentication, handles complex database operations like table discovery and field inspection, and provides context-aware logging for reliable production use. Teams can automate analytics workflows, generate reports, and answer data questions conversationally by leveraging their existing Metabase instance.\nExecute SQL queries and retrieve analytics data through Claude or Cursor without switching applications\nAutomate business intelligence workflows by creating and managing Metabase cards programmatically\nExplore database schemas and table structures using natural language questions\nRun MongoDB aggregation pipelines directly from AI assistants for document database analytics",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hluaguo/metabase-mcp`",
+    "usage_vi": "```\nUse the Metabase MCP server to query [METABASE_DASHBOARD_ID] for [SPECIFIC_METRICS] between [START_DATE] and [END_DATE]. Format the results as a markdown table with columns for [COLUMN_NAMES]. Include a brief analysis of trends or outliers in the data.\n```\nCopy\n\n```\n### Sales Performance Analysis (Q2 2024)\n\n| Region       | Total Sales | Avg. Deal Size | Conversion Rate | Top Product Category |\n|--------------|-------------|----------------|-----------------|----------------------|\n| North America| $2.4M       | $12,500        | 22%             | Enterprise SaaS      |\n| EMEA         | $1.8M       | $9,800         | 18%             | Mid-Market Solutions |\n| APAC         | $1.2M       | $7,200         | 15%             | SMB Tools            |\n\n**Key Insights:**\n1. **North America** leads in both total sales ($2.4M) and average deal size ($12,500), likely due to strong enterprise adoption. The conversion rate of 22% is also the highest, suggesting effective sales strategies in this region.\n2. **EMEA** shows a balanced performance with $1.8M in sales but a lower average deal size ($9,800) and conversion rate (18%). This may indicate a need for targeted upselling strategies or localized marketing campaigns.\n3. **APAC** lags in all metrics, with the lowest total sales ($1.2M), average deal size ($7,200), and conversion rate (15%). Further investigation into regional preferences or competitive pressures is recommended.\n\n**Recommendations:**\n- Prioritize North America for high-value deals and allocate additional resources to EMEA to improve conversion rates.\n- Explore why APAC underperforms and consider piloting localized sales tactics or product adaptations.\n- Investigate the top product categories in each region to identify cross-selling opportunities.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:56.529241Z",
+    "http_status": 200,
+    "content_hash": "f74eca6a6988753526bf05491141295fbe64652c205dffb08c6bb2c5cefeb1f8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\metabase-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\metabase-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Metabase MCP - Connect AI to Analytics",
+  "short_description_vi": "Metabase MCP server provides integration with the Metabase API, enabling LLM with MCP capabilites to directly interact with your analytics data, this server acts as a bridge between your analytics platform and conversational AI."
+}

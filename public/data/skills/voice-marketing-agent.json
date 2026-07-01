@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/voice-marketing-agent",
+  "slug": "voice-marketing-agent",
+  "name": "Voice-Marketing-Agent",
+  "headline": "Voice-Marketing-Agent: AI Voice Solutions for",
+  "short_description": "Voice-Marketing-Agent is an open-source platform designed for creating and deploying real-time AI voice agents, specifically tailored for call automation in marketing. It enables businesses to enhance customer interactions with low-latency voice solutions.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "OpenVoiceX",
+  "install_command": "claude install OpenVoiceX/Voice-Marketing-Agent",
+  "source_repo_url": "https://github.com/OpenVoiceX/Voice-Marketing-Agent",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "AI voice agents",
+    "open-source",
+    "call automation",
+    "real-time",
+    "marketing technology"
+  ],
+  "sections": {
+    "overview": "Voice-Marketing-Agent is an open-source framework for creating AI voice agents that handle real-world phone calls using cloud-powered APIs including Google Gemini, Groq, and ElevenLabs. The platform delivers low-latency voice conversations by combining fast inference speeds with studio-quality text-to-speech synthesis. It eliminates infrastructure complexity through Docker containerization and provides a React dashboard for agent management. Businesses use it for call automation, customer outreach, and marketing interactions without managing local models or GPU infrastructure. The system integrates with Twilio for phone connectivity and PostgreSQL for data storage.\nAutomating customer service calls\nConducting market research via voice surveys\nEnhancing lead qualification processes\nDelivering personalized marketing messages",
+    "setup": "Terminal\nCopy\n`claude install OpenVoiceX/Voice-Marketing-Agent`\n`git clone https://github.com/OpenVoiceX/Voice-Marketing-Agent`",
+    "usage": "```\nDeploy a Voice-Marketing-Agent to handle [CUSTOMER_SEGMENT] inbound calls for [BUSINESS_NAME]. The agent should: 1) Greet callers with a personalized message referencing their recent [PRODUCT_CATEGORY] purchase or inquiry, 2) Route high-intent leads to the sales team via real-time transcription, 3) Offer instant discounts or promotions for [SPECIFIC_OFFER] to qualified prospects, and 4) Log all interactions in [CRM_SYSTEM] with call summaries and next steps. Use a warm, professional tone with [BRAND_VOICE_GUIDELINES].\n```\nCopy\n\n```\nFor a mid-sized e-commerce brand, 'EcoThread Collective,' the Voice-Marketing-Agent was deployed to handle inbound calls from their 'Eco-Friendly Activewear' customer segment. During a 48-hour pilot, the agent processed 127 calls with the following outcomes:\n\n- **Personalization:** The agent greeted 78 returning customers by name and referenced their previous purchase of 'Organic Cotton Leggings' (SKU: ECO-2023-045). Example greeting: 'Hi Sarah! Thanks for calling EcoThread Collective. We noticed you loved your Organic Cotton Leggings—how’s your new workout routine going?'\n\n- **Lead Qualification:** 42 calls were identified as high-intent based on keywords like 'discount,' 'bulk order,' or 'new collection.' These were immediately routed to the sales team with real-time transcriptions. The agent flagged 15 calls where customers asked about the 'Summer Sustainability Bundle' (SKU: SUM-2024-078), noting: 'Customer is highly engaged with summer collection—priority follow-up recommended.'\n\n- **Promotion Execution:** For 31 callers, the agent offered a 15% discount on their next purchase if they opted into the email newsletter. 18 customers accepted the offer, and the agent generated unique promo codes (e.g., 'ECO15-SARAH') which were logged in HubSpot alongside the call summary: 'Caller accepted discount, added to newsletter segment, follow-up email scheduled for [DATE].'\n\n- **Data Integration:** All call interactions were logged in HubSpot with tags like 'High Intent,' 'Promo Accepted,' or 'Sales Routed.' The agent also flagged 23 calls where customers asked about 'sustainability certifications'—these were tagged for the marketing team to address in future content. One customer, Mark from Portland, left a voicemail asking about 'B Corp certification process.' The agent transcribed this and created a task for the content team: 'Update FAQ page with B Corp certification details by [DATE].'\n\nPost-pilot, EcoThread Collective saw a 22% increase in conversion rates for inbound calls and a 35% reduction in response time for high-intent leads.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "voice-marketing-agent#main-content",
+      "voice-marketing-agent#overview",
+      "voice-marketing-agent#setup",
+      "voice-marketing-agent#examples",
+      "voice-marketing-agent#tools",
+      "voice-marketing-agent#mcp",
+      "voice-marketing-agent#related",
+      "marketingskills",
+      "copywriting",
+      "pinterest-bot",
+      "whitepaper"
+    ],
+    "overview_vi": "Voice-Marketing-Agent là một framework mã nguồn mở hỗ trợ xây dựng các AI voice agent để xử lý các cuộc gọi điện thoại thực tế thông qua các API đám mây như Google Gemini, Groq và ElevenLabs. Nền tảng này mang lại trải nghiệm hội thoại thoại với độ trễ thấp nhờ kết hợp tốc độ suy luận (inference) cực nhanh cùng công nghệ tổng hợp văn bản thành giọng nói (text-to-speech) chất lượng phòng thu. Ngoài ra, framework giúp loại bỏ các phức tạp về hạ tầng bằng giải pháp container hóa với Docker và cung cấp một React dashboard trực quan để quản lý agent. Doanh nghiệp có thể ứng dụng nền tảng này cho việc tự động hóa cuộc gọi, tiếp cận khách hàng và tương tác marketing mà không cần tự vận hành các model local hay hạ tầng GPU riêng. Hệ thống tích hợp sẵn với Twilio để kết nối viễn thông và PostgreSQL để lưu trữ dữ liệu.\nTự động hóa cuộc gọi dịch vụ khách hàng\nKhảo sát thị trường qua cuộc gọi thoại\nNâng cao quy trình phân loại lead (lead qualification)\nGửi các thông điệp marketing cá nhân hóa",
+    "setup_vi": "Terminal\nSao chép\n`claude install OpenVoiceX/Voice-Marketing-Agent`\n`git clone https://github.com/OpenVoiceX/Voice-Marketing-Agent`",
+    "usage_vi": "```\nTriển khai một Voice-Marketing-Agent để xử lý các cuộc gọi inbound từ phân khúc khách hàng [CUSTOMER_SEGMENT] cho doanh nghiệp [BUSINESS_NAME]. Agent cần phải: 1) Chào hỏi người gọi bằng tin nhắn cá nhân hóa đề cập đến việc mua hàng hoặc yêu cầu thông tin gần đây của họ về [PRODUCT_CATEGORY], 2) Chuyển hướng các lead có ý định mua hàng cao (high-intent lead) đến đội ngũ sales thông qua bản chép lời (transcription) theo thời gian thực, 3) Đưa ra các chương trình giảm giá hoặc khuyến mãi tức thì cho [SPECIFIC_OFFER] đối với khách hàng tiềm năng đủ điều kiện, và 4) Lưu lại toàn bộ lịch sử tương tác vào hệ thống [CRM_SYSTEM] kèm theo bản tóm tắt cuộc gọi và các bước xử lý tiếp theo. Sử dụng giọng điệu ấm áp, chuyên nghiệp tuân theo [BRAND_VOICE_GUIDELINES].\n```\nSao chép\n\n```\nĐối với thương hiệu thương mại điện tử quy mô vừa 'EcoThread Collective', Voice-Marketing-Agent đã được triển khai để xử lý các cuộc gọi inbound từ phân khúc khách hàng mua 'Eco-Friendly Activewear' (Đồ thể thao thân thiện với môi trường). Trong đợt thử nghiệm kéo dài 48 giờ, agent đã xử lý 127 cuộc gọi với kết quả như sau:\n\n- **Cá nhân hóa:** Agent đã chào hỏi 78 khách hàng cũ bằng tên riêng và nhắc lại đơn hàng trước đó của họ là 'Organic Cotton Leggings' (SKU: ECO-2023-045). Ví dụ câu chào: 'Xin chào Sarah! Cảm ơn bạn đã gọi đến EcoThread Collective. Chúng tôi thấy bạn rất thích chiếc quần legging cotton hữu cơ đã mua — việc tập luyện của bạn dạo này thế nào rồi?'\n\n- **Phân loại Lead (Lead Qualification):** 42 cuộc gọi được xác định là có ý định mua hàng cao dựa trên các từ khóa như 'giảm giá', 'đặt hàng số lượng lớn' hoặc 'bộ sưu tập mới'. Các cuộc gọi này ngay lập tức được chuyển hướng tới đội sales kèm theo transcription theo thời gian thực. Agent cũng gắn cờ 15 cuộc gọi mà khách hàng hỏi về gói sản phẩm mùa hè 'Summer Sustainability Bundle' (SKU: SUM-2024-078), với ghi chú: 'Khách hàng rất quan tâm đến bộ sưu tập mùa hè — khuyến nghị ưu tiên theo dõi (follow-up).'\n\n- **Triển khai khuyến mãi (Promotion Execution):** Đối với 31 người gọi, agent đã tặng mã giảm giá 15% cho đơn hàng tiếp theo nếu họ đăng ký nhận bản tin email. 18 khách hàng đã đồng ý và agent đã tạo các mã promo duy nhất (ví dụ: 'ECO15-SARAH'), đồng thời đồng bộ vào HubSpot cùng với tóm tắt cuộc gọi: 'Người gọi đã nhận mã giảm giá, đã thêm vào phân khúc đăng ký nhận bản tin, lên lịch gửi email follow-up vào ngày [DATE].'\n\n- **Tích hợp dữ liệu (Data Integration):** Mọi tương tác cuộc gọi đều được lưu lại trong HubSpot với các tag như 'High Intent', 'Promo Accepted' hoặc 'Sales Routed'. Agent cũng gắn tag cho 23 cuộc gọi hỏi về 'chứng nhận phát triển bền vững' (sustainability certifications) để đội ngũ marketing giải đáp trong các nội dung truyền thông tiếp theo. Một khách hàng tên Mark đến từ Portland đã để lại thư thoại hỏi về 'quy trình đạt chứng nhận B Corp'. Agent đã chuyển đổi thư thoại này thành văn bản và tạo một task cho đội ngũ nội dung: 'Cập nhật trang FAQ với thông tin chi tiết về chứng nhận B Corp trước ngày [DATE].'\n\nSau chương trình thử nghiệm, EcoThread Collective ghi nhận tỷ lệ chuyển đổi cho các cuộc gọi inbound tăng 22% và thời gian phản hồi cho các lead chất lượng cao giảm 35%.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:33:48.470498Z",
+    "http_status": 200,
+    "content_hash": "50dc51714fe7ae408e6bfbe7577bc9eeb9e9c5f99bef2fd5ec4f88f3a4d4c991",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\voice-marketing-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\voice-marketing-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Voice-Marketing-Agent: Giải pháp thoại AI cho",
+  "short_description_vi": "Voice-Marketing-Agent là nền tảng mã nguồn mở chuyên dùng để phát triển và triển khai các AI voice agent theo thời gian thực, được thiết kế tối ưu cho việc tự động hóa cuộc gọi trong marketing. Nền tảng này giúp doanh nghiệp nâng cao trải nghiệm tương tác với khách hàng thông qua các giải pháp thoại với độ trễ thấp (low-latency)."
+}

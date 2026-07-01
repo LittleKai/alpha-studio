@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/image-to-text",
+  "slug": "image-to-text",
+  "name": "SVG Icon Maker",
+  "headline": "Image to Text: OCR Text Extraction",
+  "short_description": "This skill utilizes Tesseract.js to extract all readable text from images, providing full text content along with word-level bounding boxes and confidence scores. It's designed for users needing to convert visual text from images into editable text formats.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "pascalorg",
+  "install_command": "git clone https://github.com/pascalorg/skills",
+  "source_repo_url": "https://github.com/pascalorg/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "image-processing",
+    "text",
+    "image"
+  ],
+  "sections": {
+    "overview": "Image to Text is an OCR skill powered by Tesseract.js that extracts all readable text from images and returns structured data including full text content, word-level bounding boxes, and confidence scores. It works by segmenting images into lines and words, making it ideal for reading screenshots, extracting UI copy from design mockups, and obtaining precise text positioning information. The skill supports multiple languages and provides confidence metrics to help assess extraction accuracy. Common use cases include converting design mockups to editable text without manual retyping, extracting UI labels and button text, and analyzing text layout and positioning in images.\nReading text content from screenshots or design mockups\nExtracting UI copy including labels and buttons\nGetting text positions and bounding boxes from design images",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/pascalorg/skills --skill image-to-text`\n`git clone https://github.com/pascalorg/skills`",
+    "usage": "```\nExtract all readable text from the image at [IMAGE_URL_OR_PATH], including word-level bounding boxes and confidence scores for each word. Return the full text content in a structured format, and highlight any text with low confidence scores (below 80%) for review.\n```\nCopy\n\n```\n```\nExtracted Text from Invoice_2023.png\n-------------------------------------\n\n**Full Text:**\n\nInvoice #: INV-2023-0542\nDate: 2023-10-15\nCustomer: GreenLeaf Organic Farms\n\n| Item               | Quantity | Unit Price | Total    |\n|--------------------|----------|------------|----------|\n| Organic Apples     | 10       | $2.50      | $25.00   |\n| Free-Range Eggs    | 2        | $4.00      | $8.00    |\n| Whole Wheat Bread  | 3        | $3.25      | $9.75    |\n\nSubtotal: $42.75\nTax (8%): $3.42\nTotal Due: $46.17\n\n**Word-Level Bounding Boxes & Confidence:**\n- \"Invoice\" (92%) [x1: 50, y1: 30, x2: 120, y2: 50]\n- \"#:\" (88%) [x1: 125, y1: 30, x2: 140, y2: 50]\n- \"INV-2023-0542\" (76%) [x1: 145, y1: 30, x2: 280, y2: 50] ← **Low confidence**\n- \"Date:\" (95%) [x1: 50, y1: 70, x2: 90, y2: 90]\n- \"2023-10-15\" (99%) [x1: 100, y1: 70, x2: 200, y2: 90]\n\n**Notes:**\n- The invoice number \"INV-2023-0542\" has a low confidence score. Verify the text in the image.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "image-to-text#main-content",
+      "image-to-text#overview",
+      "image-to-text#setup",
+      "image-to-text#examples",
+      "image-to-text#related",
+      "image-to-svg",
+      "html-to-image",
+      "svg-icon-maker"
+    ],
+    "overview_vi": "Image to Text is an OCR skill powered by Tesseract.js that extracts all readable text from images and returns structured data including full text content, word-level bounding boxes, and confidence scores. It works by segmenting images into lines and words, making it ideal for reading screenshots, extracting UI copy from design mockups, and obtaining precise text positioning information. The skill supports multiple languages and provides confidence metrics to help assess extraction accuracy. Common use cases include converting design mockups to editable text without manual retyping, extracting UI labels and button text, and analyzing text layout and positioning in images.\nReading text content from screenshots or design mockups\nExtracting UI copy including labels and buttons\nGetting text positions and bounding boxes from design images",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/pascalorg/skills --skill image-to-text`\n`git clone https://github.com/pascalorg/skills`",
+    "usage_vi": "```\nExtract all readable text from the image at [IMAGE_URL_OR_PATH], including word-level bounding boxes and confidence scores for each word. Return the full text content in a structured format, and highlight any text with low confidence scores (below 80%) for review.\n```\nCopy\n\n```\n```\nExtracted Text from Invoice_2023.png\n-------------------------------------\n\n**Full Text:**\n\nInvoice #: INV-2023-0542\nDate: 2023-10-15\nCustomer: GreenLeaf Organic Farms\n\n| Item               | Quantity | Unit Price | Total    |\n|--------------------|----------|------------|----------|\n| Organic Apples     | 10       | $2.50      | $25.00   |\n| Free-Range Eggs    | 2        | $4.00      | $8.00    |\n| Whole Wheat Bread  | 3        | $3.25      | $9.75    |\n\nSubtotal: $42.75\nTax (8%): $3.42\nTotal Due: $46.17\n\n**Word-Level Bounding Boxes & Confidence:**\n- \"Invoice\" (92%) [x1: 50, y1: 30, x2: 120, y2: 50]\n- \"#:\" (88%) [x1: 125, y1: 30, x2: 140, y2: 50]\n- \"INV-2023-0542\" (76%) [x1: 145, y1: 30, x2: 280, y2: 50] ← **Low confidence**\n- \"Date:\" (95%) [x1: 50, y1: 70, x2: 90, y2: 90]\n- \"2023-10-15\" (99%) [x1: 100, y1: 70, x2: 200, y2: 90]\n\n**Notes:**\n- The invoice number \"INV-2023-0542\" has a low confidence score. Verify the text in the image.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:38:26.735794Z",
+    "http_status": 200,
+    "content_hash": "bc6cd0218bb648c5df194e591536d052af0cb75526492433e6f6dafeb9e455bd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\image-to-text.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\image-to-text.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Image to Text: OCR Text Extraction",
+  "short_description_vi": "This skill utilizes Tesseract.js to extract all readable text from images, providing full text content along with word-level bounding boxes and confidence scores. It's designed for users needing to convert visual text from images into editable text formats."
+}

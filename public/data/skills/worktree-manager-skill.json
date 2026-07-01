@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/worktree-manager-skill",
+  "slug": "worktree-manager-skill",
+  "name": "browser-use",
+  "headline": "Worktree Manager - Parallel Development",
+  "short_description": "Manages parallel development environments using git worktrees. Ideal for operations teams to streamline workflows. Connects to git repositories and integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "Wirasm",
+  "install_command": "git clone https://github.com/Wirasm/worktree-manager-skill.git",
+  "source_repo_url": "https://github.com/Wirasm/worktree-manager-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Worktree Manager is a Claude Code skill that automates the creation and management of git worktrees, enabling parallel development across multiple branches simultaneously. It eliminates manual setup by automatically creating isolated worktree directories, copying environment files, installing dependencies, and allocating unique ports to prevent conflicts. Each worktree maintains its own state and running servers, allowing developers to work on different features without stashing changes or losing context. The skill includes global worktree tracking and cleanup capabilities, making it valuable for operations teams and developers juggling multiple concurrent tasks.\nWork on feature branches while handling urgent bug fixes without stashing changes\nRun multiple dev servers on different branches without port conflicts\nMaintain separate Claude Code agents for different features in parallel\nQuickly clean up completed worktrees and release allocated resources",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Wirasm/worktree-manager-skill`",
+    "usage": "```\nSet up a git worktree-based development environment for [PROJECT_NAME] to handle [FEATURE_BRANCH] and [BUG_FIX_BRANCH] simultaneously. Initialize the worktree in [WORKTREE_PATH] linked to the main repository at [REPO_PATH]. Ensure the worktree is clean and up-to-date with the latest changes from [REMOTE_BRANCH]. Provide the commands to switch between worktrees and list all active worktrees for reference.\n```\nCopy\n\n```\nHere’s a step-by-step setup for managing parallel development environments for the `ecommerce-platform` project using git worktrees. We’ll create two worktrees: one for the `feature/checkout-redesign` branch and another for the `bugfix/payment-gateway` branch. Both will be initialized in the `~/dev/ecommerce-platform/worktrees/` directory, linked to the main repository at `~/dev/ecommerce-platform/main-repo/`.\n\n1. **Initialize the main repository and fetch the latest changes:**\n```bash\ncd ~/dev/ecommerce-platform/main-repo\ngit fetch origin\ngit checkout main\ngit pull origin main\n```\n\n2. **Create the first worktree for the feature branch (`feature/checkout-redesign`):**\n```bash\ngit worktree add ~/dev/ecommerce-platform/worktrees/checkout-redesign origin/feature/checkout-redesign\n```\n\n3. **Create the second worktree for the bugfix branch (`bugfix/payment-gateway`):**\n```bash\ngit worktree add ~/dev/ecommerce-platform/worktrees/payment-gateway origin/bugfix/payment-gateway\n```\n\n4. **Verify the worktrees are active and clean:**\n```bash\ngit worktree list\n```\n\n   Output:\n   ```\n   /home/user/dev/ecommerce-platform/main-repo  9a3b2c1 [main]\n   /home/user/dev/ecommerce-platform/worktrees/checkout-redesign  4d5e6f2 [feature/checkout-redesign]\n   /home/user/dev/ecommerce-platform/worktrees/payment-gateway  7g8h9i0 [bugfix/payment-gateway]\n   ```\n\n5. **Switch between worktrees:**\n   - To work on the feature branch:\n ```bash\n     cd ~/dev/ecommerce-platform/worktrees/checkout-redesign\n ```\n   - To work on the bugfix branch:\n ```bash\n     cd ~/dev/ecommerce-platform/worktrees/payment-gateway\n ```\n\n6. **Clean up (if needed):**\n   To remove a worktree (e.g., `payment-gateway`):\n   ```bash\ngit worktree remove ~/dev/ecommerce-platform/worktrees/payment-gateway\n```\n\nThis setup ensures that you can work on multiple branches in isolated environments without cluttering your main repository or dealing with merge conflicts prematurely. Each worktree operates independently, allowing you to focus on specific tasks without interference.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "worktree-manager-skill#main-content",
+      "worktree-manager-skill#overview",
+      "worktree-manager-skill#setup",
+      "worktree-manager-skill#examples",
+      "worktree-manager-skill#tools",
+      "worktree-manager-skill#mcp",
+      "worktree-manager-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Worktree Manager is a Claude Code skill that automates the creation and management of git worktrees, enabling parallel development across multiple branches simultaneously. It eliminates manual setup by automatically creating isolated worktree directories, copying environment files, installing dependencies, and allocating unique ports to prevent conflicts. Each worktree maintains its own state and running servers, allowing developers to work on different features without stashing changes or losing context. The skill includes global worktree tracking and cleanup capabilities, making it valuable for operations teams and developers juggling multiple concurrent tasks.\nWork on feature branches while handling urgent bug fixes without stashing changes\nRun multiple dev servers on different branches without port conflicts\nMaintain separate Claude Code agents for different features in parallel\nQuickly clean up completed worktrees and release allocated resources",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Wirasm/worktree-manager-skill`",
+    "usage_vi": "```\nSet up a git worktree-based development environment for [PROJECT_NAME] to handle [FEATURE_BRANCH] and [BUG_FIX_BRANCH] simultaneously. Initialize the worktree in [WORKTREE_PATH] linked to the main repository at [REPO_PATH]. Ensure the worktree is clean and up-to-date with the latest changes from [REMOTE_BRANCH]. Provide the commands to switch between worktrees and list all active worktrees for reference.\n```\nCopy\n\n```\nHere’s a step-by-step setup for managing parallel development environments for the `ecommerce-platform` project using git worktrees. We’ll create two worktrees: one for the `feature/checkout-redesign` branch and another for the `bugfix/payment-gateway` branch. Both will be initialized in the `~/dev/ecommerce-platform/worktrees/` directory, linked to the main repository at `~/dev/ecommerce-platform/main-repo/`.\n\n1. **Initialize the main repository and fetch the latest changes:**\n```bash\ncd ~/dev/ecommerce-platform/main-repo\ngit fetch origin\ngit checkout main\ngit pull origin main\n```\n\n2. **Create the first worktree for the feature branch (`feature/checkout-redesign`):**\n```bash\ngit worktree add ~/dev/ecommerce-platform/worktrees/checkout-redesign origin/feature/checkout-redesign\n```\n\n3. **Create the second worktree for the bugfix branch (`bugfix/payment-gateway`):**\n```bash\ngit worktree add ~/dev/ecommerce-platform/worktrees/payment-gateway origin/bugfix/payment-gateway\n```\n\n4. **Verify the worktrees are active and clean:**\n```bash\ngit worktree list\n```\n\n   Output:\n   ```\n   /home/user/dev/ecommerce-platform/main-repo  9a3b2c1 [main]\n   /home/user/dev/ecommerce-platform/worktrees/checkout-redesign  4d5e6f2 [feature/checkout-redesign]\n   /home/user/dev/ecommerce-platform/worktrees/payment-gateway  7g8h9i0 [bugfix/payment-gateway]\n   ```\n\n5. **Switch between worktrees:**\n   - To work on the feature branch:\n ```bash\n     cd ~/dev/ecommerce-platform/worktrees/checkout-redesign\n ```\n   - To work on the bugfix branch:\n ```bash\n     cd ~/dev/ecommerce-platform/worktrees/payment-gateway\n ```\n\n6. **Clean up (if needed):**\n   To remove a worktree (e.g., `payment-gateway`):\n   ```bash\ngit worktree remove ~/dev/ecommerce-platform/worktrees/payment-gateway\n```\n\nThis setup ensures that you can work on multiple branches in isolated environments without cluttering your main repository or dealing with merge conflicts prematurely. Each worktree operates independently, allowing you to focus on specific tasks without interference.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:48:13.827341Z",
+    "http_status": 200,
+    "content_hash": "c20289c990197857927e76b28b3c4fb866f8045e6c0b209a295449b2d83aa5b3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\worktree-manager-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\worktree-manager-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Worktree Manager - Parallel Development",
+  "short_description_vi": "Manages parallel development environments using git worktrees. Ideal for operations teams to streamline workflows. Connects to git repositories and integrates with Claude agents."
+}

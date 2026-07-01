@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reddit-scrapper",
+  "slug": "reddit-scrapper",
+  "name": "Reddit Scraper",
+  "headline": "Reddit Scraper - Extract Marketing Insights",
+  "short_description": "Scrape Reddit for marketing pain points using GPT. Helps marketing teams identify trends and insights. Integrates with Cronlytic for growth strategies. Built with Python and GPT-4 API.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "Mohamedsaleh14",
+  "install_command": "git clone https://github.com/Mohamedsaleh14/Reddit_Scrapper.git",
+  "source_repo_url": "https://github.com/Mohamedsaleh14/Reddit_Scrapper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "gpt-4",
+    "reddit-api",
+    "gpt-4-api",
+    "scrapping",
+    "cronjob-scheduler",
+    "automation",
+    "marketing",
+    "scraper",
+    "ai",
+    "gpt",
+    "gpt-4o",
+    "gpt-api",
+    "reddit",
+    "gpt-4o-mini",
+    "gpt4",
+    "python-scraper",
+    "cron"
+  ],
+  "sections": {
+    "overview": "Reddit Scraper is a Python application that automatically discovers marketing pain points and product opportunities discussed on Reddit. It scrapes relevant subreddits, uses GPT-4 or Anthropic models to analyze posts, and scores them across multiple dimensions including relevance, emotional intensity, implementability, and technical depth. Results are stored in a SQLite database and explored through an interactive Streamlit dashboard with filtering, sorting, and detailed post analysis. The tool automatically explores new subreddits to discover emerging trends and maintains cost controls through configurable API budgets. Marketing teams, product managers, and founders can use it to identify validated customer problems and validate product ideas directly from community discussions.\nIdentify pain points discussed across multiple subreddits to validate product ideas\nDiscover emerging trends and market opportunities in target communities\nGenerate qualified marketing leads by analyzing discussions in relevant subreddits\nAnalyze competitor gaps and customer frustrations with existing solutions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Mohamedsaleh14/Reddit_Scrapper`",
+    "usage": "```\nScrape Reddit for [TOPIC] marketing pain points in the past [TIMEFRAME] (e.g., 6 months). Focus on subreddits like r/marketing, r/Entrepreneur, r/smallbusiness, and r/startups. Extract key themes, recurring complaints, and specific language used by users. Organize insights by [CATEGORY, e.g., 'content marketing', 'SEO', 'paid ads']. Use GPT to summarize trends and identify 3-5 actionable takeaways for our marketing strategy. Output should include: 1) Top 5 pain points with frequency, 2) Example Reddit posts illustrating each pain point, 3) Suggested improvements or solutions based on the trends.\n```\nCopy\n\n```\n### Reddit Marketing Pain Points Analysis (June 2023 - December 2023)\n\n**Top 5 Pain Points by Frequency:**\n1. **SEO Challenges** (42 mentions)\n   - Users struggle with algorithm updates and declining organic traffic despite consistent content publishing.\n   - Example Post: \"My blog traffic dropped 40% after the last Google update. Tried everything—updated old posts, improved E-A-T, but nothing works. What am I missing?\"\n   - Suggested Improvement: Focus on user intent and semantic SEO. Prioritize high-quality backlinks from authoritative sites in your niche.\n\n2. **Content Saturation** (38 mentions)\n   - Marketers feel drowned out by competitors flooding the market with low-effort content.\n   - Example Post: \"How do you stand out when every niche is oversaturated with generic '10 tips' articles? My engagement is plummeting.\"\n   - Suggested Improvement: Invest in unique formats like interactive content, original research, or multimedia (e.g., video tutorials).\n\n3. **Lead Generation** (35 mentions)\n   - Difficulty converting website visitors into leads, especially with rising ad costs.\n   - Example Post: \"Our CTR dropped to 1.2% on LinkedIn ads. We’re targeting the right audience, but the leads just aren’t converting. Any tips?\"\n   - Suggested Improvement: A/B test landing pages, refine targeting with lookalike audiences, and experiment with gated content (e.g., templates or tools).\n\n4. **Social Media Algorithm Changes** (31 mentions)\n   - Organic reach on platforms like Instagram and Facebook is near zero, forcing reliance on paid ads.\n   - Example Post: \"Instagram’s algorithm is killing my organic reach. I post 3x a week, but my engagement is a ghost town. Should I pivot to TikTok?\"\n   - Suggested Improvement: Diversify platforms (e.g., TikTok, Pinterest) and focus on community-building (e.g., Facebook Groups, Discord).\n\n5. **Email Marketing Decline** (28 mentions)\n   - Open rates are dropping, and subscribers are unresponsive despite segmentation efforts.\n   - Example Post: \"My email open rates fell from 25% to 12% in 3 months. I’ve tried personalization and better subject lines—what else can I do?\"\n   - Suggested Improvement: Revamp email sequences with storytelling, interactive elements (e.g., polls), and re-engagement campaigns for inactive subscribers.\n\n**Actionable Takeaways:**\n- **SEO:** Audit your content for E-A-T signals and prioritize long-form, pillar content.\n- **Content:** Shift from quantity to quality; experiment with formats like webinars or podcasts.\n- **Lead Gen:** Optimize landing pages with clear CTAs and social proof (e.g., testimonials).\n- **Social Media:** Reduce reliance on organic reach; allocate budget to micro-influencers or niche communities.\n- **Email:** Test dynamic content (e.g., personalized recommendations) and segment inactive users for re-engagement.\n\n*Data sourced from 12 subreddits, 87 threads, and 432 comments analyzed via Python + GPT-4 API.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "reddit-scrapper#main-content",
+      "reddit-scrapper#overview",
+      "reddit-scrapper#setup",
+      "reddit-scrapper#examples",
+      "reddit-scrapper#tools",
+      "reddit-scrapper#mcp",
+      "reddit-scrapper#related",
+      "marketingskills",
+      "copywriting",
+      "voice-marketing-agent"
+    ],
+    "overview_vi": "Reddit Scraper is a Python application that automatically discovers marketing pain points and product opportunities discussed on Reddit. It scrapes relevant subreddits, uses GPT-4 or Anthropic models to analyze posts, and scores them across multiple dimensions including relevance, emotional intensity, implementability, and technical depth. Results are stored in a SQLite database and explored through an interactive Streamlit dashboard with filtering, sorting, and detailed post analysis. The tool automatically explores new subreddits to discover emerging trends and maintains cost controls through configurable API budgets. Marketing teams, product managers, and founders can use it to identify validated customer problems and validate product ideas directly from community discussions.\nIdentify pain points discussed across multiple subreddits to validate product ideas\nDiscover emerging trends and market opportunities in target communities\nGenerate qualified marketing leads by analyzing discussions in relevant subreddits\nAnalyze competitor gaps and customer frustrations with existing solutions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Mohamedsaleh14/Reddit_Scrapper`",
+    "usage_vi": "```\nScrape Reddit for [TOPIC] marketing pain points in the past [TIMEFRAME] (e.g., 6 months). Focus on subreddits like r/marketing, r/Entrepreneur, r/smallbusiness, and r/startups. Extract key themes, recurring complaints, and specific language used by users. Organize insights by [CATEGORY, e.g., 'content marketing', 'SEO', 'paid ads']. Use GPT to summarize trends and identify 3-5 actionable takeaways for our marketing strategy. Output should include: 1) Top 5 pain points with frequency, 2) Example Reddit posts illustrating each pain point, 3) Suggested improvements or solutions based on the trends.\n```\nCopy\n\n```\n### Reddit Marketing Pain Points Analysis (June 2023 - December 2023)\n\n**Top 5 Pain Points by Frequency:**\n1. **SEO Challenges** (42 mentions)\n   - Users struggle with algorithm updates and declining organic traffic despite consistent content publishing.\n   - Example Post: \"My blog traffic dropped 40% after the last Google update. Tried everything—updated old posts, improved E-A-T, but nothing works. What am I missing?\"\n   - Suggested Improvement: Focus on user intent and semantic SEO. Prioritize high-quality backlinks from authoritative sites in your niche.\n\n2. **Content Saturation** (38 mentions)\n   - Marketers feel drowned out by competitors flooding the market with low-effort content.\n   - Example Post: \"How do you stand out when every niche is oversaturated with generic '10 tips' articles? My engagement is plummeting.\"\n   - Suggested Improvement: Invest in unique formats like interactive content, original research, or multimedia (e.g., video tutorials).\n\n3. **Lead Generation** (35 mentions)\n   - Difficulty converting website visitors into leads, especially with rising ad costs.\n   - Example Post: \"Our CTR dropped to 1.2% on LinkedIn ads. We’re targeting the right audience, but the leads just aren’t converting. Any tips?\"\n   - Suggested Improvement: A/B test landing pages, refine targeting with lookalike audiences, and experiment with gated content (e.g., templates or tools).\n\n4. **Social Media Algorithm Changes** (31 mentions)\n   - Organic reach on platforms like Instagram and Facebook is near zero, forcing reliance on paid ads.\n   - Example Post: \"Instagram’s algorithm is killing my organic reach. I post 3x a week, but my engagement is a ghost town. Should I pivot to TikTok?\"\n   - Suggested Improvement: Diversify platforms (e.g., TikTok, Pinterest) and focus on community-building (e.g., Facebook Groups, Discord).\n\n5. **Email Marketing Decline** (28 mentions)\n   - Open rates are dropping, and subscribers are unresponsive despite segmentation efforts.\n   - Example Post: \"My email open rates fell from 25% to 12% in 3 months. I’ve tried personalization and better subject lines—what else can I do?\"\n   - Suggested Improvement: Revamp email sequences with storytelling, interactive elements (e.g., polls), and re-engagement campaigns for inactive subscribers.\n\n**Actionable Takeaways:**\n- **SEO:** Audit your content for E-A-T signals and prioritize long-form, pillar content.\n- **Content:** Shift from quantity to quality; experiment with formats like webinars or podcasts.\n- **Lead Gen:** Optimize landing pages with clear CTAs and social proof (e.g., testimonials).\n- **Social Media:** Reduce reliance on organic reach; allocate budget to micro-influencers or niche communities.\n- **Email:** Test dynamic content (e.g., personalized recommendations) and segment inactive users for re-engagement.\n\n*Data sourced from 12 subreddits, 87 threads, and 432 comments analyzed via Python + GPT-4 API.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:17:41.299552Z",
+    "http_status": 200,
+    "content_hash": "e04bf1745381e01599e304197832792d732aeca1e3f979017788895562ca6014",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reddit-scrapper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reddit-scrapper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Reddit Scraper - Extract Marketing Insights",
+  "short_description_vi": "Scrape Reddit for marketing pain points using GPT. Helps marketing teams identify trends and insights. Integrates with Cronlytic for growth strategies. Built with Python and GPT-4 API."
+}

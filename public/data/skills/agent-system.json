@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-system",
+  "slug": "agent-system",
+  "name": "Agent System",
+  "headline": "agent system for engineers' productivity",
+  "short_description": "Deevs' Agent System enables engineers to create multi-session workflow chains with terminal control and expert agents. It benefits operations teams by automating complex tasks and integrating with Claude Code. The system connects to GitHub for plugin management and supports shell-based workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "DeevsDeevs",
+  "install_command": "git clone https://github.com/DeevsDeevs/agent-system.git",
+  "source_repo_url": "https://github.com/DeevsDeevs/agent-system",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "opencode",
+    "ai-agents"
+  ],
+  "sections": {
+    "overview": "Deevs' Agent System is a plugin marketplace for Claude Code that combines workflow chains, terminal control, and specialized expert agents. It allows engineers to maintain context across multiple sessions using the chain-system, invoke developer personas like architects and DevOps specialists for code review and debugging, and deploy hypothesis-driven research agents for financial analysis or systematic bug hunting. The system loads repo-scoped skills from .agents/skills directories and includes Codex multi-agent configurations for orchestrated workflows. Install globally or per-repository with flexible scripting options, supporting selective skill installation for Codex, Claude Code, or both platforms.\nResume complex multi-session projects without losing technical context\nPerform specialized code review using language-specific expert agents\nSystematically hunt and validate bugs with adversarial testing\nOrchestrate hypothesis-driven research workflows for financial analysis\nThis workflow automates the backup process for a cloud-based database system, ensuring data integrity and reducing manual intervention.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/DeevsDeevs/agent-system`",
+    "usage": "```\nCreate a multi-session workflow chain for [COMPANY] in the [INDUSTRY] sector. The workflow should automate [TASK] using terminal control and expert agents. Include steps for integrating with GitHub for plugin management and support shell-based workflows. Provide a detailed step-by-step guide.\n```\nCopy\n\n```\n# Multi-Session Workflow Chain for Automating Data Backup",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-system#main-content",
+      "agent-system#overview",
+      "agent-system#setup",
+      "agent-system#examples",
+      "agent-system#tools",
+      "agent-system#mcp",
+      "agent-system#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Deevs' Agent System là một plugin marketplace dành cho Claude Code, kết hợp giữa các chuỗi workflow, terminal control và các expert agent chuyên biệt. Hệ thống cho phép kỹ sư duy trì ngữ cảnh (context) qua nhiều session nhờ vào hệ thống chuỗi (chain-system), triệu gọi các vai trò lập trình như architect và chuyên gia DevOps để review code và debug, đồng thời triển khai các agent nghiên cứu theo định hướng giả thuyết (hypothesis-driven) cho phân tích tài chính hoặc săn tìm bug một cách hệ thống. Hệ thống tự động tải các skill có phạm vi repository (repo-scoped) từ thư mục .agents/skills và tích hợp các cấu hình multi-agent của Codex cho các workflow được điều phối (orchestrated workflows). Bạn có thể cài đặt toàn cục (globally) hoặc theo từng repository với các tùy chọn script linh hoạt, hỗ trợ cài đặt skill chọn lọc cho Codex, Claude Code hoặc cả hai nền tảng.\nKhôi phục các dự án multi-session phức tạp mà không làm mất ngữ cảnh kỹ thuật\nThực hiện review code chuyên sâu bằng các expert agent đặc thù cho từng ngôn ngữ\nSăn tìm và xác thực bug một cách hệ thống bằng adversarial testing\nĐiều phối các workflow nghiên cứu theo định hướng giả thuyết phục vụ phân tích tài chính\nWorkflow này tự động hóa quy trình sao lưu cho hệ thống cơ sở dữ liệu trên cloud, đảm bảo tính toàn vẹn của dữ liệu và giảm thiểu sự can thiệp thủ công.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/DeevsDeevs/agent-system`",
+    "usage_vi": "```\nTạo một chuỗi workflow multi-session cho [COMPANY] trong lĩnh vực [INDUSTRY]. Workflow cần tự động hóa [TASK] bằng cách sử dụng terminal control và các expert agent. Bao gồm các bước tích hợp với GitHub để quản lý plugin và hỗ trợ các workflow dựa trên shell. Cung cấp hướng dẫn chi tiết từng bước.\n```\nSao chép\n\n```\n# Chuỗi workflow multi-session để tự động hóa sao lưu dữ liệu\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:31:26.744884Z",
+    "http_status": 200,
+    "content_hash": "1dd36882f94b01eaa7e131c05b7760651d803c1cebcb10ddf1370fdfec971a61",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-system.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-system.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hệ thống agent nâng cao năng suất cho kỹ sư",
+  "short_description_vi": "Deevs' Agent System cho phép các kỹ sư tạo các chuỗi workflow multi-session tích hợp terminal control và các expert agent. Hệ thống hỗ trợ đắc lực cho các đội ngũ vận hành (operations) bằng cách tự động hóa các tác vụ phức tạp và tích hợp với Claude Code. Hệ thống cũng kết nối với GitHub để quản lý plugin và hỗ trợ các workflow dựa trên shell."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills",
+  "slug": "claude-skills",
+  "name": "ai-agent-demo",
+  "headline": "Claude Skills for AI Automation & Content Generation",
+  "short_description": "Claude skills provide a strong framework for automating tasks and generating content efficiently. Designed for production use, these skills enable integration into various workflows, enhancing productivity and creativity.",
+  "tier": "Silver",
+  "category": "GrowthMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "lqshow",
+  "install_command": "claude install lqshow/claude-skills",
+  "source_repo_url": "https://github.com/lqshow/claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "productivity",
+    "AI automation",
+    "Claude",
+    "Python",
+    "content generation"
+  ],
+  "sections": {
+    "overview": "Claude Skills is a collection of production-ready AI skills designed for automation and creative content generation. It includes two primary skills: a food diorama generator that creates 3D food scenes for Chinese cities, and a tech manga explainer that converts complex technical concepts into interactive manga-style explanations. These skills integrate directly with Claude through the skill installation system, enabling developers and content creators to automate visual storytelling and technical documentation workflows. Setup requires cloning the repository, installing skills to the Claude skills directory, and configuring API credentials.\nAutomating customer interactions\nGenerating marketing content\nCreating data-driven reports\nEnhancing user engagement",
+    "setup": "Terminal\nCopy\n`claude install lqshow/claude-skills`\n`git clone https://github.com/lqshow/claude-skills`",
+    "usage": "```\nGenerate a comprehensive audit report for [COMPANY_NAME]'s SaaS subscriptions using Productiv. Include: 1) Total annual spend across all subscriptions, 2) List of top 10 highest-cost tools with annual cost and user count, 3) Identify 3-5 unused or underutilized licenses with specific recommendations for reduction, 4) Forecast renewal costs for the next 12 months, 5) Compliance status for all subscriptions including data privacy certifications. Format the report with clear sections, actionable recommendations, and a summary table of findings.\n```\nCopy\n\n```\n### Productiv SaaS Audit Report for Acme Corp (FY2024)\n\n**Executive Summary:**\nAcme Corp currently spends $427,850 annually on 112 SaaS subscriptions across 14 departments. The audit revealed 18% ($77,013) in potential savings through license optimization and contract renegotiation, with 23 unused licenses accounting for $42,300 in annual waste.\n\n**Financial Overview:**\n- Total Annual Spend: $427,850\n- Average Cost per Tool: $3,820\n- Number of Tools: 112\n- Departments: 14 (Engineering, Sales, Marketing, HR, Finance, etc.)\n\n**Top 10 Highest-Cost Tools:**\n| Tool Name | Annual Cost | Users | Department | Renewal Date |\n|-----------|-------------|-------|------------|--------------|\n| Salesforce Enterprise | $98,400 | 125 | Sales | March 2025 |\n| Microsoft 365 E5 | $72,000 | 210 | All | July 2025 |\n| Slack Pro | $68,400 | 180 | Engineering | April 2025 |\n| Zoom Enterprise | $48,000 | 150 | All | June 2025 |\n| Adobe Creative Cloud | $36,000 | 45 | Marketing | August 2025 |\n| GitHub Enterprise | $30,000 | 80 | Engineering | September 2025 |\n| Notion Enterprise | $24,000 | 120 | Product | October 2025 |\n| Asana Premium | $18,000 | 95 | Operations | November 2025 |\n| Datadog Pro | $15,600 | 30 | Engineering | December 2025 |\n| Jira Software Premium | $12,450 | 75 | Engineering | January 2026 |\n\n**License Optimization Opportunities:**\n1. **Microsoft 365 E5 (HR Dept):** 23 unused licenses detected. Recommend downgrading to E3 ($42/user vs $57/user) saving $11,500 annually.\n2. **Zoom Enterprise (Sales Dept):** 15 unused licenses. Consider switching to Zoom Business ($20/user) saving $3,600 annually.\n3. **Adobe Creative Cloud (Marketing):** 8 unused licenses. Explore Adobe Teams for $33/user saving $2,400 annually.\n4. **Notion Enterprise (Product Team):** 12 unused licenses. Transition to Notion Business ($12/user) saving $1,800 annually.\n\n**Renewal Forecast (Next 12 Months):**\n- Q1 2025: $124,500 (29% of annual spend)\n- Q2 2025: $118,200 (28% of annual spend)\n- Q3 2025: $98,750 (23% of annual spend)\n- Q4 2025: $86,400 (20% of annual spend)\n\n**Compliance Status:**\n- GDPR Compliant: 87 tools (78%)\n- SOC 2 Type II Certified: 65 tools (58%)\n- HIPAA Compliant: 12 tools (11%)\n- Missing Certifications: 15 tools require immediate review\n\n**Recommendations:**\n1. Schedule contract renegotiation meetings for Salesforce and Microsoft 365 before Q1 2025 renewals\n2. Implement quarterly license audits using Productiv's automation features\n3. Create a centralized SaaS procurement process to prevent shadow IT\n4. Establish a software rationalization committee with representatives from each department\n5. Set up automated alerts for upcoming renewals 90 days in advance\n\n**Next Steps:**\n- [ ] Schedule optimization meetings with department heads (Week 1)\n- [ ] Initiate contract renegotiations (Week 2-4)\n- [ ] Implement license cleanup (Week 3-6)\n- [ ] Set up Productiv automation rules (Week 4-8)\n- [ ] Present final report to CFO (Week 10)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills#main-content",
+      "claude-skills#overview",
+      "claude-skills#setup",
+      "claude-skills#examples",
+      "claude-skills#tools",
+      "claude-skills#mcp",
+      "claude-skills#related",
+      "firecrawl",
+      "langchain-salesforce",
+      "ai-agent-demo"
+    ],
+    "overview_vi": "Claude Skills is a collection of production-ready AI skills designed for automation and creative content generation. It includes two primary skills: a food diorama generator that creates 3D food scenes for Chinese cities, and a tech manga explainer that converts complex technical concepts into interactive manga-style explanations. These skills integrate directly with Claude through the skill installation system, enabling developers and content creators to automate visual storytelling and technical documentation workflows. Setup requires cloning the repository, installing skills to the Claude skills directory, and configuring API credentials.\nAutomating customer interactions\nGenerating marketing content\nCreating data-driven reports\nEnhancing user engagement",
+    "setup_vi": "Terminal\nCopy\n`claude install lqshow/claude-skills`\n`git clone https://github.com/lqshow/claude-skills`",
+    "usage_vi": "```\nGenerate a comprehensive audit report for [COMPANY_NAME]'s SaaS subscriptions using Productiv. Include: 1) Total annual spend across all subscriptions, 2) List of top 10 highest-cost tools with annual cost and user count, 3) Identify 3-5 unused or underutilized licenses with specific recommendations for reduction, 4) Forecast renewal costs for the next 12 months, 5) Compliance status for all subscriptions including data privacy certifications. Format the report with clear sections, actionable recommendations, and a summary table of findings.\n```\nCopy\n\n```\n### Productiv SaaS Audit Report for Acme Corp (FY2024)\n\n**Executive Summary:**\nAcme Corp currently spends $427,850 annually on 112 SaaS subscriptions across 14 departments. The audit revealed 18% ($77,013) in potential savings through license optimization and contract renegotiation, with 23 unused licenses accounting for $42,300 in annual waste.\n\n**Financial Overview:**\n- Total Annual Spend: $427,850\n- Average Cost per Tool: $3,820\n- Number of Tools: 112\n- Departments: 14 (Engineering, Sales, Marketing, HR, Finance, etc.)\n\n**Top 10 Highest-Cost Tools:**\n| Tool Name | Annual Cost | Users | Department | Renewal Date |\n|-----------|-------------|-------|------------|--------------|\n| Salesforce Enterprise | $98,400 | 125 | Sales | March 2025 |\n| Microsoft 365 E5 | $72,000 | 210 | All | July 2025 |\n| Slack Pro | $68,400 | 180 | Engineering | April 2025 |\n| Zoom Enterprise | $48,000 | 150 | All | June 2025 |\n| Adobe Creative Cloud | $36,000 | 45 | Marketing | August 2025 |\n| GitHub Enterprise | $30,000 | 80 | Engineering | September 2025 |\n| Notion Enterprise | $24,000 | 120 | Product | October 2025 |\n| Asana Premium | $18,000 | 95 | Operations | November 2025 |\n| Datadog Pro | $15,600 | 30 | Engineering | December 2025 |\n| Jira Software Premium | $12,450 | 75 | Engineering | January 2026 |\n\n**License Optimization Opportunities:**\n1. **Microsoft 365 E5 (HR Dept):** 23 unused licenses detected. Recommend downgrading to E3 ($42/user vs $57/user) saving $11,500 annually.\n2. **Zoom Enterprise (Sales Dept):** 15 unused licenses. Consider switching to Zoom Business ($20/user) saving $3,600 annually.\n3. **Adobe Creative Cloud (Marketing):** 8 unused licenses. Explore Adobe Teams for $33/user saving $2,400 annually.\n4. **Notion Enterprise (Product Team):** 12 unused licenses. Transition to Notion Business ($12/user) saving $1,800 annually.\n\n**Renewal Forecast (Next 12 Months):**\n- Q1 2025: $124,500 (29% of annual spend)\n- Q2 2025: $118,200 (28% of annual spend)\n- Q3 2025: $98,750 (23% of annual spend)\n- Q4 2025: $86,400 (20% of annual spend)\n\n**Compliance Status:**\n- GDPR Compliant: 87 tools (78%)\n- SOC 2 Type II Certified: 65 tools (58%)\n- HIPAA Compliant: 12 tools (11%)\n- Missing Certifications: 15 tools require immediate review\n\n**Recommendations:**\n1. Schedule contract renegotiation meetings for Salesforce and Microsoft 365 before Q1 2025 renewals\n2. Implement quarterly license audits using Productiv's automation features\n3. Create a centralized SaaS procurement process to prevent shadow IT\n4. Establish a software rationalization committee with representatives from each department\n5. Set up automated alerts for upcoming renewals 90 days in advance\n\n**Next Steps:**\n- [ ] Schedule optimization meetings with department heads (Week 1)\n- [ ] Initiate contract renegotiations (Week 2-4)\n- [ ] Implement license cleanup (Week 3-6)\n- [ ] Set up Productiv automation rules (Week 4-8)\n- [ ] Present final report to CFO (Week 10)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:12:24.118952Z",
+    "http_status": 200,
+    "content_hash": "3b46c1ff11f9733a70125e3fe208cf40cb312f8ce84c43b612844d0ab430281d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Skills for AI Automation & Content Generation",
+  "short_description_vi": "Claude skills provide a strong framework for automating tasks and generating content efficiently. Designed for production use, these skills enable integration into various workflows, enhancing productivity and creativity."
+}

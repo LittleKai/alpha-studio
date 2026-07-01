@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tongsim",
+  "slug": "tongsim",
+  "name": "TongSIM",
+  "headline": "TongSIM - Embodied Agent Training",
+  "short_description": "TongSIM is a high-fidelity platform for training and testing embodied agents using Unreal Engine and Python SDK. It benefits operations teams by enabling realistic simulations for agent development. It connects to workflows involving agent training, testing, and deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "bigai-ai",
+  "install_command": "git clone https://github.com/bigai-ai/tongsim.git",
+  "source_repo_url": "https://github.com/bigai-ai/tongsim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "TongSIM is a high-fidelity simulation platform built on Unreal Engine for developing and evaluating embodied AI agents. It provides 100+ multi-room indoor environments and an open-ended outdoor town, with thousands of interactive 3D objects across 500+ categories. The platform includes comprehensive benchmarks for agent capabilities—perception, cognition, decision-making, learning, execution, and social collaboration—and offers a Python SDK for easy integration via gRPC. Developers can train agents on tasks ranging from single-agent navigation to multi-agent social simulation and human-AI collaboration. TongSIM supports parallel training for scalability and provides rich annotations, physics-consistent simulation, and multimodal perception capabilities.\nTraining embodied agents for navigation and interaction tasks in photorealistic indoor/outdoor environments\nBenchmarking multi-agent coordination and human-AI collaboration scenarios\nDeveloping and evaluating agent perception and decision-making capabilities\nAccelerating embodied AI research with parallel simulation and scalable training",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bigai-ai/tongsim`",
+    "usage": "```\nUse TongSIM to simulate and test an embodied agent performing [TASK] in [ENVIRONMENT] with [OBJECTS]. Configure the simulation with [PARAMETERS] and run for [DURATION]. Provide a detailed performance report including success rate, failure modes, and optimization recommendations for [USE_CASE].\n```\nCopy\n\n```\nSimulation Report: Autonomous Forklift in Warehouse Environment\n\n**Setup:**\n- Task: Navigate to designated pallet, lift 500kg load, and transport to shipping bay.\n- Environment: 100x80m warehouse with 3D obstacles (racks, pillars) and dynamic elements (moving workers).\n- Parameters: Sensor noise=±2%, motor delay=150ms, obstacle avoidance enabled.\n- Duration: 10 simulation runs (5 minutes each).\n\n**Performance Metrics:**\n- Success Rate: 78% (7/10 runs completed without collisions or load drops).\n- Average Completion Time: 4m22s (target: <4m).\n- Failure Modes:\n  1. Collision with stationary racks (3/10 runs) due to sensor blind spots in tight aisles.\n  2. Load instability when turning corners (2/10 runs) from uneven floor surfaces.\n  3. Worker interaction delays (1/10 run) when human path prediction failed.\n\n**Optimization Recommendations:**\n1. **Sensor Upgrade:** Add side LiDAR with 180° field of view to eliminate blind spots in racking areas.\n2. **Control Tuning:** Adjust PID parameters for forklift tilt compensation (+15% gain) to stabilize loads during turns.\n3. **Behavioral AI:** Implement reinforcement learning for human path prediction using TongSIM's Python SDK to train on 50+ worker movement patterns.\n4. **Environment:** Mark floor irregularities with QR codes for agent calibration (simulated via Unreal Engine's runtime texture modification).\n\n**Next Steps:**\n- Re-run simulation with recommended changes to validate improvements.\n- Export optimized agent weights for deployment to physical forklift prototype.\n- Generate 3D visualization of failure cases for engineering review in Unreal Engine.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tongsim#main-content",
+      "tongsim#overview",
+      "tongsim#setup",
+      "tongsim#examples",
+      "tongsim#tools",
+      "tongsim#mcp",
+      "tongsim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TongSIM is a high-fidelity simulation platform built on Unreal Engine for developing and evaluating embodied AI agents. It provides 100+ multi-room indoor environments and an open-ended outdoor town, with thousands of interactive 3D objects across 500+ categories. The platform includes comprehensive benchmarks for agent capabilities—perception, cognition, decision-making, learning, execution, and social collaboration—and offers a Python SDK for easy integration via gRPC. Developers can train agents on tasks ranging from single-agent navigation to multi-agent social simulation and human-AI collaboration. TongSIM supports parallel training for scalability and provides rich annotations, physics-consistent simulation, and multimodal perception capabilities.\nTraining embodied agents for navigation and interaction tasks in photorealistic indoor/outdoor environments\nBenchmarking multi-agent coordination and human-AI collaboration scenarios\nDeveloping and evaluating agent perception and decision-making capabilities\nAccelerating embodied AI research with parallel simulation and scalable training",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bigai-ai/tongsim`",
+    "usage_vi": "```\nUse TongSIM to simulate and test an embodied agent performing [TASK] in [ENVIRONMENT] with [OBJECTS]. Configure the simulation with [PARAMETERS] and run for [DURATION]. Provide a detailed performance report including success rate, failure modes, and optimization recommendations for [USE_CASE].\n```\nCopy\n\n```\nSimulation Report: Autonomous Forklift in Warehouse Environment\n\n**Setup:**\n- Task: Navigate to designated pallet, lift 500kg load, and transport to shipping bay.\n- Environment: 100x80m warehouse with 3D obstacles (racks, pillars) and dynamic elements (moving workers).\n- Parameters: Sensor noise=±2%, motor delay=150ms, obstacle avoidance enabled.\n- Duration: 10 simulation runs (5 minutes each).\n\n**Performance Metrics:**\n- Success Rate: 78% (7/10 runs completed without collisions or load drops).\n- Average Completion Time: 4m22s (target: <4m).\n- Failure Modes:\n  1. Collision with stationary racks (3/10 runs) due to sensor blind spots in tight aisles.\n  2. Load instability when turning corners (2/10 runs) from uneven floor surfaces.\n  3. Worker interaction delays (1/10 run) when human path prediction failed.\n\n**Optimization Recommendations:**\n1. **Sensor Upgrade:** Add side LiDAR with 180° field of view to eliminate blind spots in racking areas.\n2. **Control Tuning:** Adjust PID parameters for forklift tilt compensation (+15% gain) to stabilize loads during turns.\n3. **Behavioral AI:** Implement reinforcement learning for human path prediction using TongSIM's Python SDK to train on 50+ worker movement patterns.\n4. **Environment:** Mark floor irregularities with QR codes for agent calibration (simulated via Unreal Engine's runtime texture modification).\n\n**Next Steps:**\n- Re-run simulation with recommended changes to validate improvements.\n- Export optimized agent weights for deployment to physical forklift prototype.\n- Generate 3D visualization of failure cases for engineering review in Unreal Engine.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:36:39.212556Z",
+    "http_status": 200,
+    "content_hash": "8d8f88d2a338161b12dcbb8747be8b5b5d864214bdb495e2ef120ba46b52260b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tongsim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tongsim.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TongSIM - Embodied Agent Training",
+  "short_description_vi": "TongSIM is a high-fidelity platform for training and testing embodied agents using Unreal Engine and Python SDK. It benefits operations teams by enabling realistic simulations for agent development. It connects to workflows involving agent training, testing, and deployment."
+}

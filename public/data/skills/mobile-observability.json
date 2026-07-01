@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mobile-observability",
+  "slug": "mobile-observability",
+  "name": "browser-use",
+  "headline": "Mobile Observability - Mobile App Monitoring",
+  "short_description": "Mobile observability plugin for Claude Code. Enables crash reporting, performance monitoring, and instrumentation for iOS, Android, and React Native apps. Helps operations teams debug production issues and optimize app performance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "nexus-labs-automation",
+  "install_command": "git clone https://github.com/nexus-labs-automation/mobile-observability.git",
+  "source_repo_url": "https://github.com/nexus-labs-automation/mobile-observability",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "observability",
+    "crash-reporting",
+    "mobile",
+    "ios",
+    "android",
+    "performance-monitoring",
+    "react-native"
+  ],
+  "sections": {
+    "overview": "Mobile Observability teaches Claude how to instrument iOS, Android, React Native, and Flutter apps correctly by capturing both user intent and system state. It helps teams avoid common instrumentation mistakes—too little data, too much noise, and missing context—while establishing best practices for crash reporting, performance monitoring, and session replay. The plugin includes automated code review for anti-patterns like PII leaks and high cardinality, vendor-agnostic guidance for tools like Sentry and Datadog, and structured plans for instrumenting critical user flows. Operations teams use it to set up observability from the start, debug production issues faster with complete context, and choose the right monitoring vendors for their platform.\nGenerate instrumentation plans for payment flows and critical user journeys\nAudit existing mobile codebases for observability gaps and anti-patterns\nSet up crash reporting with proper symbolication (dSYM upload) and context\nConfigure session replay and network tracing to diagnose production issues",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nexus-labs-automation/mobile-observability`",
+    "usage": "```\nAnalyze the crash reports and performance metrics for [APP_NAME] ([PLATFORM]) from the last [TIME_PERIOD]. Identify the top 3 most frequent crashes by [CRASH_TYPE] and their root causes. For each crash, suggest specific code fixes or configuration changes to resolve the issue. Include performance bottlenecks affecting [METRIC] like frame rate or API response time. Provide a prioritized action plan for the engineering team with estimated effort and impact.\n```\nCopy\n\n```\nFor the mobile app 'ShopEase' (React Native, iOS/Android) over the past 2 weeks, the analysis revealed critical issues impacting user retention. The top crash affecting 12.4% of sessions is 'NullPointerException in CartScreen.js' caused by race conditions during state updates. This occurs when users rapidly tap 'Add to Cart' buttons, triggering concurrent state mutations. The second most frequent crash (8.7% of sessions) is 'Memory Leak in ImageLoader' due to unclosed file handles in the image caching system, particularly on Android devices with Android 12+.\n\nPerformance analysis showed a 34% drop in frame rate during checkout flows, correlating with spikes in 'API Timeout' errors (avg 2.8s vs 800ms baseline). The main bottleneck was identified in the payment gateway integration where 4 parallel network calls were made without proper cancellation handling. Memory usage spiked to 1.2GB during image-heavy product listings, with 68% of devices exceeding the recommended 1GB threshold.\n\nRecommended fixes include: 1) Implementing debounce logic in CartScreen.js (15 min effort, high impact), 2) Adding proper resource cleanup in ImageLoader (20 min effort, medium impact), 3) Optimizing payment API calls with request batching (45 min effort, high impact), and 4) Implementing adaptive image loading based on device memory (60 min effort, high impact). The engineering team should prioritize these fixes based on the crash frequency and performance degradation metrics.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mobile-observability#main-content",
+      "mobile-observability#overview",
+      "mobile-observability#setup",
+      "mobile-observability#examples",
+      "mobile-observability#tools",
+      "mobile-observability#mcp",
+      "mobile-observability#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Mobile Observability teaches Claude how to instrument iOS, Android, React Native, and Flutter apps correctly by capturing both user intent and system state. It helps teams avoid common instrumentation mistakes—too little data, too much noise, and missing context—while establishing best practices for crash reporting, performance monitoring, and session replay. The plugin includes automated code review for anti-patterns like PII leaks and high cardinality, vendor-agnostic guidance for tools like Sentry and Datadog, and structured plans for instrumenting critical user flows. Operations teams use it to set up observability from the start, debug production issues faster with complete context, and choose the right monitoring vendors for their platform.\nGenerate instrumentation plans for payment flows and critical user journeys\nAudit existing mobile codebases for observability gaps and anti-patterns\nSet up crash reporting with proper symbolication (dSYM upload) and context\nConfigure session replay and network tracing to diagnose production issues",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nexus-labs-automation/mobile-observability`",
+    "usage_vi": "```\nAnalyze the crash reports and performance metrics for [APP_NAME] ([PLATFORM]) from the last [TIME_PERIOD]. Identify the top 3 most frequent crashes by [CRASH_TYPE] and their root causes. For each crash, suggest specific code fixes or configuration changes to resolve the issue. Include performance bottlenecks affecting [METRIC] like frame rate or API response time. Provide a prioritized action plan for the engineering team with estimated effort and impact.\n```\nCopy\n\n```\nFor the mobile app 'ShopEase' (React Native, iOS/Android) over the past 2 weeks, the analysis revealed critical issues impacting user retention. The top crash affecting 12.4% of sessions is 'NullPointerException in CartScreen.js' caused by race conditions during state updates. This occurs when users rapidly tap 'Add to Cart' buttons, triggering concurrent state mutations. The second most frequent crash (8.7% of sessions) is 'Memory Leak in ImageLoader' due to unclosed file handles in the image caching system, particularly on Android devices with Android 12+.\n\nPerformance analysis showed a 34% drop in frame rate during checkout flows, correlating with spikes in 'API Timeout' errors (avg 2.8s vs 800ms baseline). The main bottleneck was identified in the payment gateway integration where 4 parallel network calls were made without proper cancellation handling. Memory usage spiked to 1.2GB during image-heavy product listings, with 68% of devices exceeding the recommended 1GB threshold.\n\nRecommended fixes include: 1) Implementing debounce logic in CartScreen.js (15 min effort, high impact), 2) Adding proper resource cleanup in ImageLoader (20 min effort, medium impact), 3) Optimizing payment API calls with request batching (45 min effort, high impact), and 4) Implementing adaptive image loading based on device memory (60 min effort, high impact). The engineering team should prioritize these fixes based on the crash frequency and performance degradation metrics.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:07:53.033314Z",
+    "http_status": 200,
+    "content_hash": "ae7806306c32c26a224a4e10a30b247f9a37b7c652429f42ec0606dd127037e2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mobile-observability.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mobile-observability.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mobile Observability - Mobile App Monitoring",
+  "short_description_vi": "Mobile observability plugin for Claude Code. Enables crash reporting, performance monitoring, and instrumentation for iOS, Android, and React Native apps. Helps operations teams debug production issues and optimize app performance."
+}

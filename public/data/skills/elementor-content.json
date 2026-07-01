@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/elementor-content",
+  "slug": "elementor-content",
+  "name": "Elementor Content",
+  "headline": "Elementor Content: Manage Page Builder JSON",
+  "short_description": "This skill allows users to read, create, modify, and restructure Elementor page builder content by handling the underlying JSON data. It is intended for developers and designers working with Elementor in WordPress.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "beeltec",
+  "install_command": "git clone https://github.com/beeltec/skills",
+  "source_repo_url": "https://github.com/beeltec/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "content",
+    "elementor",
+    "web-development"
+  ],
+  "sections": {
+    "overview": "The Elementor Content skill enables AI agents to programmatically interact with Elementor page builder data in WordPress. It works by handling the underlying JSON structure of Elementor pages, allowing agents to read, create, modify, and delete content without using the visual editor. This skill supports both exported JSON templates and direct WordPress database manipulation through WP-CLI, making it valuable for developers and designers who need to automate Elementor workflows, batch-update pages, or integrate page building into custom pipelines.\nCreating or editing Elementor page/template content\nModifying widget settings (text, images, styles, links)\nRestructuring page layouts (moving sections, adding containers)\nBulk-updating content across multiple Elementor pages",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/beeltec/skills --skill elementor-content`\n`git clone https://github.com/beeltec/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "elementor-content#main-content",
+      "elementor-content#overview",
+      "elementor-content#setup",
+      "elementor-content#examples",
+      "elementor-content#tools",
+      "elementor-content#mcp",
+      "elementor-content#related",
+      "weapp-tailwindcss",
+      "inertia-rails-architecture",
+      "safe-action-advanced"
+    ],
+    "overview_vi": "Skill Elementor Content cho phép các AI agent tương tác lập trình với dữ liệu Elementor page builder trong WordPress. Skill hoạt động bằng cách xử lý cấu trúc JSON bên dưới của các trang Elementor, cho phép agent đọc, tạo, chỉnh sửa và xóa nội dung mà không cần dùng đến trình soạn thảo trực quan. Công cụ này hỗ trợ cả template JSON được xuất bản và thao tác trực tiếp trên database WordPress thông qua WP-CLI, rất hữu ích cho các developer và designer cần tự động hóa workflow của Elementor, cập nhật hàng loạt trang hoặc tích hợp quy trình dựng trang vào pipeline tùy biến.\n\n- Tạo hoặc chỉnh sửa nội dung trang/template Elementor\n- Chỉnh sửa cấu hình widget (văn bản, hình ảnh, style, link)\n- Tái cấu trúc bố cục trang (di chuyển section, thêm container)\n- Cập nhật hàng loạt nội dung trên nhiều trang Elementor",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/beeltec/skills --skill elementor-content`\n`git clone https://github.com/beeltec/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ demo\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:58:16.860484Z",
+    "http_status": 200,
+    "content_hash": "5142dc87635eb9b1e0f390cd63116e96d7d2cea76a7cfcdd13fa31013156aad2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\elementor-content.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\elementor-content.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Elementor Content: Quản lý JSON của Page Builder",
+  "short_description_vi": "Skill này cho phép người dùng đọc, tạo, chỉnh sửa và tái cấu trúc nội dung Elementor page builder bằng cách xử lý dữ liệu JSON bên dưới. Công cụ này được thiết kế dành cho các developer và designer làm việc với Elementor trong WordPress."
+}

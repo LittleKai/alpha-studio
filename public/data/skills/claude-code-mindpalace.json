@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-mindpalace",
+  "slug": "claude-code-mindpalace",
+  "name": "Claude-Code-MindPalace",
+  "headline": "claude code mindpalace: automate git history",
+  "short_description": "Never write commit messages again. Auto-checkpoint every change, auto-squash into professional git history. For Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "vanzan01",
+  "install_command": "git clone https://github.com/vanzan01/Claude-Code-MindPalace.git",
+  "source_repo_url": "https://github.com/vanzan01/Claude-Code-MindPalace",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "git-hooks",
+    "git-automation",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code MindPalace automates git history management by creating descriptive checkpoint commits after every file modification and intelligently squashing them into professional conventional commits when tasks finish. The skill eliminates manual commit message writing by generating meaningful, formatted commits based on actual code changes. It works universally across Node.js, Rust, Python, and other project types, with optional code formatting integration. Users benefit from a clean, persistent git history that serves as AI context while ensuring no work is ever lost. Setup requires adding Claude Code hooks to a settings.json file, after which the system operates completely automatically.\nMaintain professional git history automatically during Claude Code development sessions\nPrevent lost work with automatic checkpoints for every file modification\nGenerate conventional commit messages without manual writing\nCreate clean, squashed commits from multiple checkpoint commits at task completion",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vanzan01/Claude-Code-MindPalace`",
+    "usage": "```\nAct as a Git commit assistant. For the following code changes, generate a concise, professional commit message. Then, suggest a strategy to auto-squash these changes into a clean git history. Use the following context: [CODE_CHANGES], [PROJECT_NAME], [TEAM_CONVENTIONS].\n```\nCopy\n\n```\n# Git Commit Assistant",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-mindpalace#main-content",
+      "claude-code-mindpalace#overview",
+      "claude-code-mindpalace#setup",
+      "claude-code-mindpalace#examples",
+      "claude-code-mindpalace#tools",
+      "claude-code-mindpalace#mcp",
+      "claude-code-mindpalace#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code MindPalace tự động hóa việc quản lý git history bằng cách tạo các checkpoint commit mô tả chi tiết sau mỗi lần chỉnh sửa file, và tự động squash chúng một cách thông minh thành các conventional commit chuyên nghiệp khi hoàn thành task. Skill này loại bỏ việc viết commit message thủ công bằng cách tự động tạo các commit rõ ràng, đúng định dạng dựa trên những thay đổi thực tế của code. Công cụ hoạt động tốt trên mọi loại dự án như Node.js, Rust, Python, và các ngôn ngữ khác, hỗ trợ tích hợp tùy chọn với công cụ format code. Người dùng sẽ có một git history sạch đẹp, nhất quán để làm context cho AI, đồng thời đảm bảo không bao giờ bị mất code. Việc setup chỉ yêu cầu thêm các hook của Claude Code vào file settings.json, sau đó hệ thống sẽ vận hành hoàn toàn tự động.\nTự động duy trì git history chuyên nghiệp trong các phiên lập trình với Claude Code\nTránh mất code nhờ cơ chế tự động checkpoint sau mỗi lần chỉnh sửa file\nTự động tạo conventional commit message mà không cần viết thủ công\nTạo các commit gọn gàng đã được squash từ nhiều checkpoint commit khi hoàn thành task",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/vanzan01/Claude-Code-MindPalace`",
+    "usage_vi": "```\nHãy đóng vai trò là một trợ lý Git commit. Đối với các thay đổi code sau, hãy tạo một commit message ngắn gọn, chuyên nghiệp. Sau đó, gợi ý chiến lược tự động squash các thay đổi này thành một git history sạch đẹp. Sử dụng context sau: [CODE_CHANGES], [PROJECT_NAME], [TEAM_CONVENTIONS].\n```\nSao chép\n\n```\n# Trợ lý Git Commit"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:48:50.536519Z",
+    "http_status": 200,
+    "content_hash": "0883fe918020b2e189ef1c79109455b5326172b20d93002addad1f5cdd77a453",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-mindpalace.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-mindpalace.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude code mindpalace: tự động hóa git history",
+  "short_description_vi": "Không bao giờ phải tự viết commit message nữa. Tự động checkpoint sau mỗi thay đổi, tự động squash thành git history chuyên nghiệp. Dành cho Claude Code."
+}

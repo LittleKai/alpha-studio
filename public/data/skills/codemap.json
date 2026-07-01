@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codemap",
+  "slug": "codemap",
+  "name": "codemap",
+  "headline": "codemap: Project Brain for AI with LLMs Context",
+  "short_description": "codemap provides instant architectural context to LLMs, reducing token usage. Developers and operations teams benefit from faster, more accurate AI responses. It integrates with CLI tools and project management workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "JordanCoin",
+  "install_command": "git clone https://github.com/JordanCoin/codemap.git",
+  "source_repo_url": "https://github.com/JordanCoin/codemap",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "cursor",
+    "context",
+    "codex-cli",
+    "cli",
+    "openai",
+    "developer-tools",
+    "codex",
+    "claude",
+    "claude-code",
+    "project-management"
+  ],
+  "sections": {
+    "overview": "codemap creates a lightweight project map that gives LLMs instant architectural context without burning tokens on full codebase input. It supports 18 languages for dependency analysis and integrates directly with Claude Code via hooks and daemon mode. Developers and operations teams use codemap to speed up AI-assisted development by providing structured project understanding—visualizing dependency flow, tracking file changes, and enabling cross-agent handoffs. The tool works with local repos and remote GitHub/GitLab projects, offering multiple output modes including tree views, dependency graphs, and skyline visualizations to match different workflow needs.\nQuickly visualize the structure of a project to understand its architecture.\nAnalyze dependencies in your code to identify potential issues or optimize performance.\nTrack changes in your codebase with diff mode to ensure code quality.\nGenerate a skyline view of your project to present to stakeholders or team members.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JordanCoin/codemap`",
+    "usage": "```\nGenerate a codemap for the [PROJECT_NAME] repository. Focus on the [SPECIFIC_MODULE] module. Highlight key dependencies, data flows, and architectural patterns. Include recommendations for optimizing the [SPECIFIC_MODULE] module based on the codemap analysis.\n```\nCopy\n\n```\nBased on the codemap analysis of the 'E-Commerce Platform' repository, focusing on the 'Payment Processing' module, here are the key insights:\n\n1. **Architecture Overview**: The module follows a layered architecture with clear separation between API, business logic, and data access layers. The module heavily relies on external payment gateways (Stripe, PayPal) and internal services like 'Order Management' and 'Inventory'.\n\n2. **Key Dependencies**: The module has direct dependencies on 'Order Management' (synchronous) and 'Inventory' (asynchronous) services. It also integrates with third-party payment gateways via REST APIs.\n\n3. **Data Flows**: Payment requests flow from the API layer to the business logic layer, which orchestrates the payment process. Successful payments update the 'Order Management' service, while failures trigger refunds and notifications.\n\n4. **Recommendations**: To optimize the 'Payment Processing' module, consider the following:\n   - Implement a circuit breaker pattern for third-party payment gateway calls to handle failures gracefully.\n   - Introduce caching for frequently accessed payment methods and customer payment details to reduce latency.\n   - Consider event-driven architecture for asynchronous updates to 'Inventory' to improve scalability.\n\n5. **Token Usage**: This codemap analysis used approximately 30% fewer tokens than a traditional code analysis, thanks to the structured architectural context provided by codemap.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codemap#main-content",
+      "codemap#overview",
+      "codemap#setup",
+      "codemap#examples",
+      "codemap#tools",
+      "codemap#mcp",
+      "codemap#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "codemap tạo ra một bản đồ dự án dung lượng nhẹ, cung cấp cho LLM context kiến trúc tức thì mà không làm tiêu tốn token cho toàn bộ codebase đầu vào. Công cụ hỗ trợ phân tích dependency cho 18 ngôn ngữ và tích hợp trực tiếp với Claude Code thông qua các hook và daemon mode. Các lập trình viên và đội ngũ vận hành sử dụng codemap để tăng tốc quá trình phát triển được hỗ trợ bởi AI bằng cách cung cấp hiểu biết cấu trúc dự án—trực quan hóa luồng dependency, theo dõi thay đổi file và cho phép chuyển tiếp (handoff) giữa các agent. Công cụ này hoạt động với cả local repo và các dự án GitHub/GitLab từ xa, cung cấp nhiều chế độ output bao gồm tree view, dependency graph và skyline visualization để phù hợp với các nhu cầu workflow khác nhau.\nTrực quan hóa nhanh chóng cấu trúc dự án để hiểu rõ kiến trúc của nó.\nPhân tích các dependency trong code của bạn để xác định các vấn đề tiềm ẩn hoặc tối ưu hóa hiệu năng.\nTheo dõi các thay đổi trong codebase với diff mode để đảm bảo chất lượng code.\nTạo skyline view của dự án để trình bày với các bên liên quan hoặc thành viên trong nhóm.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/JordanCoin/codemap`",
+    "usage_vi": "```\nTạo codemap cho repository [PROJECT_NAME]. Tập trung vào module [SPECIFIC_MODULE]. Làm nổi bật các dependency chính, luồng dữ liệu (data flow) và pattern kiến trúc. Đưa ra các đề xuất để tối ưu hóa module [SPECIFIC_MODULE] dựa trên phân tích codemap.\n```\nCopy\n\n```\nDựa trên phân tích codemap của repository 'E-Commerce Platform', tập trung vào module 'Payment Processing', dưới đây là các thông tin chi tiết chính:\n\n1. **Tổng quan kiến trúc (Architecture Overview)**: Module này tuân theo kiến trúc phân tầng (layered architecture) với sự phân tách rõ ràng giữa các tầng API, business logic và data access. Module phụ thuộc nhiều vào các cổng thanh toán bên thứ ba (Stripe, PayPal) và các service nội bộ như 'Order Management' và 'Inventory'.\n\n2. **Các Dependency chính (Key Dependencies)**: Module có các dependency trực tiếp với service 'Order Management' (đồng bộ) và 'Inventory' (bất đồng bộ). Nó cũng tích hợp với các cổng thanh toán bên thứ ba qua REST API.\n\n3. **Luồng dữ liệu (Data Flows)**: Các yêu cầu thanh toán đi từ tầng API đến tầng business logic, nơi điều phối quy trình thanh toán. Thanh toán thành công sẽ cập nhật service 'Order Management', trong khi thất bại sẽ kích hoạt hoàn tiền (refund) và gửi thông báo.\n\n4. **Đề xuất (Recommendations)**: Để tối ưu hóa module 'Payment Processing', hãy cân nhắc các giải pháp sau:\n   - Triển khai circuit breaker pattern cho các cuộc gọi đến cổng thanh toán bên thứ ba để xử lý lỗi một cách mượt mà.\n   - Áp dụng caching cho các phương thức thanh toán và thông tin thanh toán của khách hàng thường xuyên truy cập để giảm độ trễ (latency).\n   - Cân nhắc kiến trúc hướng sự kiện (event-driven architecture) cho các bản cập nhật bất đồng bộ đến 'Inventory' để cải thiện khả năng mở rộng (scalability).\n\n5. **Lượng Token tiêu thụ (Token Usage)**: Phân tích codemap này sử dụng ít hơn khoảng 30% token so với phân tích code truyền thống, nhờ vào context kiến trúc có cấu trúc do codemap cung cấp.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:52:18.438036Z",
+    "http_status": 200,
+    "content_hash": "494ba312556e219575054693afbdebb78efd720be65df2c1ad7c2e5588b62729",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codemap.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codemap.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "codemap: Bộ não dự án dành cho AI với LLMs Context",
+  "short_description_vi": "codemap cung cấp context kiến trúc tức thì cho các LLM, giúp giảm lượng token tiêu thụ. Các lập trình viên và đội ngũ vận hành sẽ được hưởng lợi từ các phản hồi AI nhanh và chính xác hơn. Công cụ này tích hợp trực tiếp với các CLI tool và workflow quản lý dự án."
+}

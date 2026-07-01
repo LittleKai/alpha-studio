@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/antigravity-claude-proxy",
+  "slug": "antigravity-claude-proxy",
+  "name": "browser-use",
+  "headline": "antigravity-claude-proxy: expose antigravity models",
+  "short_description": "Proxy that exposes Antigravity provided claude / gemini models, so we can use them in Claude Code. Operations teams can automate workflows by integrating Claude AI models into their existing systems. Connects to Claude Code for enhanced automation capabilities.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "badrisnarayanan",
+  "install_command": "git clone https://github.com/badrisnarayanan/antigravity-claude-proxy.git",
+  "source_repo_url": "https://github.com/badrisnarayanan/antigravity-claude-proxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-ai",
+    "claude",
+    "proxy",
+    "gemini-cli",
+    "gemini",
+    "antigravity"
+  ],
+  "sections": {
+    "overview": "antigravity-claude-proxy is a proxy server that exposes Claude and Gemini models provided by Antigravity, making them accessible within Claude Code and other AI agent environments. It enables operations teams to integrate advanced AI capabilities directly into their existing workflows and systems without rebuilding infrastructure. The proxy supports background process management via CLI, allowing developers to run the server as a detached process with status monitoring. By bridging Antigravity's model offerings with Claude Code, it streamlines automation for teams seeking to leverage multiple AI models in production environments. The tool is actively maintained with recent updates including OpenCode integration support.\nIntegrate Claude models into your existing applications for enhanced natural language processing capabilities.\nAutomate data analysis tasks by leveraging Gemini models to generate insights from large datasets.\nCreate chatbots that utilize Claude's advanced conversational abilities for improved user interactions.\nStreamline content generation workflows by using the proxy to access various AI models for writing assistance.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/badrisnarayanan/antigravity-claude-proxy`",
+    "usage": "```\nUse the antigravity-claude-proxy to execute [TASK] in Claude Code. Ensure the proxy is authenticated with your Antigravity API key. Provide a step-by-step breakdown of the automation process, including any required inputs, outputs, and error handling steps. Example: 'Use antigravity-claude-proxy to automate the generation of a weekly compliance report for [PROJECT_NAME]. The report should include [SECTIONS] and be saved as [FILE_FORMAT].'\n```\nCopy\n\n```\n### Automation Report: Weekly Compliance Review for Project Orion\n\n**Generated:** 2024-05-20\n**Proxy Status:** Connected to Antigravity API (Key: ******789)\n**Claude Code Version:** 1.5.3\n\n#### **Step 1: Data Collection & Validation**\n- Fetched raw compliance logs from Jira (Project Orion, Sprint 12) via Antigravity API.\n- Validated 47 entries against internal policy templates. **3 entries flagged for review** (IDs: OR-142, OR-189, OR-215).\n- Cross-referenced with GitHub PRs for code review compliance. **All PRs (n=23) met standards.**\n\n#### **Step 2: Report Generation**\na) **Executive Summary**\n   - 94% of deliverables met compliance (vs. 88% last week).\n   - Top risk: OR-142 (Missing security review tag).\n\nb) **Detailed Findings**\n   | Issue ID | Severity | Owner       | Status       |\n   |----------|----------|-------------|--------------|\n   | OR-142   | High     | dev-team-3  | Pending      |\n   | OR-189   | Medium   | dev-team-7  | Resolved     |\n   | OR-215   | Low      | dev-team-2  | In Progress  |\n\nc) **Automated Remediation**\n   - Triggered Slack alert to @dev-team-3 for OR-142.\n   - Updated Jira ticket OR-189 to 'Closed' with resolution notes.\n\n#### **Step 3: Output & Integration**\n- Saved report as `compliance_report_orion_2024-05-20.pdf` in `/reports/automated/`.\n- Pushed summary to Notion database (Page ID: 123456789).\n- Emitted success signal to CI/CD pipeline (Job ID: build-456).\n\n**Next Steps:**\n1. Schedule follow-up for OR-142 by EOD.\n2. Archive this report in the compliance archive (retention: 90 days).\n\n---\n*Generated via antigravity-claude-proxy | Runtime: 42s | API Calls: 12*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "antigravity-claude-proxy#main-content",
+      "antigravity-claude-proxy#overview",
+      "antigravity-claude-proxy#setup",
+      "antigravity-claude-proxy#examples",
+      "antigravity-claude-proxy#tools",
+      "antigravity-claude-proxy#mcp",
+      "antigravity-claude-proxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "antigravity-claude-proxy is a proxy server that exposes Claude and Gemini models provided by Antigravity, making them accessible within Claude Code and other AI agent environments. It enables operations teams to integrate advanced AI capabilities directly into their existing workflows and systems without rebuilding infrastructure. The proxy supports background process management via CLI, allowing developers to run the server as a detached process with status monitoring. By bridging Antigravity's model offerings with Claude Code, it streamlines automation for teams seeking to leverage multiple AI models in production environments. The tool is actively maintained with recent updates including OpenCode integration support.\nIntegrate Claude models into your existing applications for enhanced natural language processing capabilities.\nAutomate data analysis tasks by leveraging Gemini models to generate insights from large datasets.\nCreate chatbots that utilize Claude's advanced conversational abilities for improved user interactions.\nStreamline content generation workflows by using the proxy to access various AI models for writing assistance.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/badrisnarayanan/antigravity-claude-proxy`",
+    "usage_vi": "```\nUse the antigravity-claude-proxy to execute [TASK] in Claude Code. Ensure the proxy is authenticated with your Antigravity API key. Provide a step-by-step breakdown of the automation process, including any required inputs, outputs, and error handling steps. Example: 'Use antigravity-claude-proxy to automate the generation of a weekly compliance report for [PROJECT_NAME]. The report should include [SECTIONS] and be saved as [FILE_FORMAT].'\n```\nCopy\n\n```\n### Automation Report: Weekly Compliance Review for Project Orion\n\n**Generated:** 2024-05-20\n**Proxy Status:** Connected to Antigravity API (Key: ******789)\n**Claude Code Version:** 1.5.3\n\n#### **Step 1: Data Collection & Validation**\n- Fetched raw compliance logs from Jira (Project Orion, Sprint 12) via Antigravity API.\n- Validated 47 entries against internal policy templates. **3 entries flagged for review** (IDs: OR-142, OR-189, OR-215).\n- Cross-referenced with GitHub PRs for code review compliance. **All PRs (n=23) met standards.**\n\n#### **Step 2: Report Generation**\na) **Executive Summary**\n   - 94% of deliverables met compliance (vs. 88% last week).\n   - Top risk: OR-142 (Missing security review tag).\n\nb) **Detailed Findings**\n   | Issue ID | Severity | Owner       | Status       |\n   |----------|----------|-------------|--------------|\n   | OR-142   | High     | dev-team-3  | Pending      |\n   | OR-189   | Medium   | dev-team-7  | Resolved     |\n   | OR-215   | Low      | dev-team-2  | In Progress  |\n\nc) **Automated Remediation**\n   - Triggered Slack alert to @dev-team-3 for OR-142.\n   - Updated Jira ticket OR-189 to 'Closed' with resolution notes.\n\n#### **Step 3: Output & Integration**\n- Saved report as `compliance_report_orion_2024-05-20.pdf` in `/reports/automated/`.\n- Pushed summary to Notion database (Page ID: 123456789).\n- Emitted success signal to CI/CD pipeline (Job ID: build-456).\n\n**Next Steps:**\n1. Schedule follow-up for OR-142 by EOD.\n2. Archive this report in the compliance archive (retention: 90 days).\n\n---\n*Generated via antigravity-claude-proxy | Runtime: 42s | API Calls: 12*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:09:36.466893Z",
+    "http_status": 200,
+    "content_hash": "671a4c6eee02cbc55f3fcf1a62f62611319cc8c9ffa51412247a08d359a13889",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\antigravity-claude-proxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\antigravity-claude-proxy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "antigravity-claude-proxy: expose antigravity models",
+  "short_description_vi": "Proxy that exposes Antigravity provided claude / gemini models, so we can use them in Claude Code. Operations teams can automate workflows by integrating Claude AI models into their existing systems. Connects to Claude Code for enhanced automation capabilities."
+}

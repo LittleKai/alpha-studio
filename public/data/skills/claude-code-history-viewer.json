@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-history-viewer",
+  "slug": "claude-code-history-viewer",
+  "name": "Claude Code History Viewer",
+  "headline": "claude code conversation history viewer",
+  "short_description": "Browse and analyze Claude Code conversation history with this desktop app. Ideal for developers and operations teams to review past interactions, extract insights, and improve workflows. Connects to locally stored conversation data.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "jhlee0409",
+  "install_command": "git clone https://github.com/jhlee0409/claude-code-history-viewer.git",
+  "source_repo_url": "https://github.com/jhlee0409/claude-code-history-viewer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "tauri",
+    "conversation-history",
+    "react",
+    "developer-tools",
+    "rust",
+    "claude",
+    "claude-code",
+    "desktop-app"
+  ],
+  "sections": {
+    "overview": "Claude Code History Viewer is a desktop application that lets you browse, search, and analyze conversations from your locally stored Claude Code projects. The tool scans your Claude configuration directories and displays your project history in an organized interface, supporting custom Claude configuration paths for flexible workspace management. It enables developers and operations teams to review past interactions, track project progress, and extract insights from their Claude Code sessions. The application works entirely with local data stored in your Claude configuration directories, giving you full control over your conversation history. Use it to improve workflows, document decisions, and maintain a searchable archive of your coding sessions.\nQuickly browse through past Claude Code conversations by project or session.\nAnalyze token usage and API costs to optimize future interactions.\nSearch for specific messages across all conversation histories.\nRestore previous versions of conversations using the recent edits feature.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jhlee0409/claude-code-history-viewer`",
+    "usage": "```\nReview my Claude Code conversation history from [DATE RANGE] and extract all code snippets related to [PROGRAMMING LANGUAGE]. For each snippet, provide: 1) The original context of the conversation, 2) The specific code provided by Claude, 3) Any modifications or improvements I made to the code, and 4) The final outcome or integration status. Format the output as a table with columns for each of these elements.\n```\nCopy\n\n```\nHere's a summary of your Python-related code conversations from January 1st to January 31st:\n\n| Conversation Context | Claude's Code | Your Modifications | Outcome/Status |\n|---------------------|---------------|-------------------|------------------|\n| Building a data processing pipeline | ```python\ndef process_data(data):\n    cleaned_data = [x for x in data if x is not None]\n    return cleaned_data\n``` | Added error handling and logging: ```python\ndef process_data(data):\n    try:\n        cleaned_data = [x for x in data if x is not None]\n        logger.info(f'Processed {len(cleaned_data)} items')\n        return cleaned_data\n    except Exception as e:\n        logger.error(f'Error processing data: {str(e)}')\n``` | Integrated into main pipeline. Running successfully in production. |\n| Debugging API connection issues | ```python\nimport requests\n\nresponse = requests.get(api_url)\nif response.status_code == 200:\n    data = response.json()\n``` | Added timeout and retry logic: ```python\nimport requests\nfrom requests.adapters import HTTPAdapter\nfrom requests.packages.urllib3.util.retry import Retry\n\nsession = requests.Session()\nretry = Retry(total=3, backoff_factor=1, status_forcelist=[500, 502, 503, 504])\nadapter = HTTPAdapter(max_retries=retry)\nsession.mount('http://', adapter)\n\nresponse = session.get(api_url, timeout=10)\nif response.status_code == 200:\n    data = response.json()\n``` | Implemented in staging environment. Testing in progress. |\n| Creating a new database schema | ```sql\nCREATE TABLE users (\n    id SERIAL PRIMARY KEY,\n    username VARCHAR(50) UNIQUE NOT NULL,\n    email VARCHAR(100) UNIQUE NOT NULL\n);\n``` | Added additional fields and constraints: ```sql\nCREATE TABLE users (\n    id SERIAL PRIMARY KEY,\n    username VARCHAR(50) UNIQUE NOT NULL,\n    email VARCHAR(100) UNIQUE NOT NULL,\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n    last_login TIMESTAMP,\n    is_active BOOLEAN DEFAULT TRUE\n);\n``` | Reviewed with team. Scheduled for deployment next sprint. |\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-history-viewer#main-content",
+      "claude-code-history-viewer#overview",
+      "claude-code-history-viewer#setup",
+      "claude-code-history-viewer#examples",
+      "claude-code-history-viewer#tools",
+      "claude-code-history-viewer#mcp",
+      "claude-code-history-viewer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code History Viewer là ứng dụng desktop cho phép bạn duyệt, tìm kiếm và phân tích các cuộc trò chuyện từ các dự án Claude Code được lưu trữ cục bộ. Công cụ này quét các thư mục cấu hình Claude và hiển thị lịch sử dự án của bạn trong một giao diện trực quan, khoa học, đồng thời hỗ trợ các đường dẫn cấu hình Claude tùy chỉnh để quản lý workspace linh hoạt. Ứng dụng giúp các lập trình viên và đội ngũ vận hành (operations) dễ dàng xem lại các tương tác cũ, theo dõi tiến độ dự án và rút ra thông tin hữu ích từ các phiên làm việc với Claude Code. Ứng dụng hoạt động hoàn toàn với dữ liệu cục bộ được lưu trong các thư mục cấu hình Claude của bạn, giúp bạn toàn quyền kiểm soát lịch sử trò chuyện của mình. Hãy sử dụng công cụ này để tối ưu hóa quy trình làm việc, lưu lại các quyết định quan trọng và duy trì một kho lưu trữ có thể tìm kiếm được cho các phiên lập trình của bạn.\nNhanh chóng duyệt qua lịch sử trò chuyện Claude Code cũ theo dự án hoặc phiên làm việc.\nPhân tích lượng token tiêu thụ và chi phí API để tối ưu hóa các tương tác trong tương lai.\nTìm kiếm các tin nhắn cụ thể trên toàn bộ lịch sử trò chuyện.\nKhôi phục các phiên bản trước của cuộc trò chuyện bằng tính năng chỉnh sửa gần đây.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jhlee0409/claude-code-history-viewer`",
+    "usage_vi": "```\nHãy xem lại lịch sử trò chuyện Claude Code của tôi từ [DATE RANGE] và trích xuất tất cả các đoạn mã liên quan đến [PROGRAMMING LANGUAGE]. Với mỗi đoạn mã, hãy cung cấp: 1) Ngữ cảnh ban đầu của cuộc trò chuyện, 2) Đoạn mã cụ thể do Claude cung cấp, 3) Bất kỳ sửa đổi hoặc cải tiến nào tôi đã thực hiện trên đoạn mã đó, và 4) Kết quả cuối cùng hoặc trạng thái tích hợp. Định dạng đầu ra dưới dạng bảng với các cột tương ứng cho từng thành phần này.\n```\nCopy\n\n```\nDưới đây là tóm tắt các cuộc trò chuyện về mã nguồn liên quan đến Python của bạn từ ngày 1 tháng 1 đến ngày 31 tháng 1:\n\n| Ngữ cảnh cuộc trò chuyện | Mã nguồn của Claude | Sửa đổi của bạn | Kết quả/Trạng thái |\n|---------------------|---------------|-------------------|------------------|\n| Xây dựng một pipeline xử lý dữ liệu | ```python\ndef process_data(data):\n    cleaned_data = [x for x in data if x is not None]\n    return cleaned_data\n``` | Đã thêm xử lý lỗi và logging: ```python\ndef process_data(data):\n    try:\n        cleaned_data = [x for x in data if x is not None]\n        logger.info(f'Processed {len(cleaned_data)} items')\n        return cleaned_data\n    except Exception as e:\n        logger.error(f'Error processing data: {str(e)}')\n``` | Đã tích hợp vào pipeline chính. Đang chạy thành công trên production. |\n| Sửa lỗi kết nối API | ```python\nimport requests\n\nresponse = requests.get(api_url)\nif response.status_code == 200:\n    data = response.json()\n``` | Đã thêm logic timeout và retry: ```python\nimport requests\nfrom requests.adapters import HTTPAdapter\nfrom requests.packages.urllib3.util.retry import Retry\n\nsession = requests.Session()\nretry = Retry(total=3, backoff_factor=1, status_forcelist=[500, 502, 503, 504])\nadapter = HTTPAdapter(max_retries=retry)\nsession.mount('http://', adapter)\n\nresponse = session.get(api_url, timeout=10)\nif response.status_code == 200:\n    data = response.json()\n``` | Đã triển khai trên môi trường staging. Đang trong quá trình thử nghiệm. |\n| Tạo schema cơ sở dữ liệu mới | ```sql\nCREATE TABLE users (\n    id SERIAL PRIMARY KEY,\n    username VARCHAR(50) UNIQUE NOT NULL,\n    email VARCHAR(100) UNIQUE NOT NULL\n);\n``` | Đã thêm các trường và ràng buộc bổ sung: ```sql\nCREATE TABLE users (\n    id SERIAL PRIMARY KEY,\n    username VARCHAR(50) UNIQUE NOT NULL,\n    email VARCHAR(100) UNIQUE NOT NULL,\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n    last_login TIMESTAMP,\n    is_active BOOLEAN DEFAULT TRUE\n);\n``` | Đã review với team. Lên lịch triển khai trong sprint tới. |\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:17.207769Z",
+    "http_status": 200,
+    "content_hash": "3d6712a059a7ec9bd47c4da52df740799369770f34917f23cd712b13badf6288",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-history-viewer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-history-viewer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình xem lịch sử trò chuyện Claude Code",
+  "short_description_vi": "Ứng dụng desktop giúp duyệt và phân tích lịch sử trò chuyện Claude Code. Công cụ lý tưởng cho các lập trình viên và đội ngũ vận hành (operations) để xem lại các tương tác cũ, rút ra thông tin hữu ích và tối ưu hóa quy trình làm việc. Kết nối trực tiếp với dữ liệu trò chuyện được lưu trữ cục bộ."
+}

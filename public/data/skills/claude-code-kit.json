@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-kit",
+  "slug": "claude-code-kit",
+  "name": "Claude Code Kit",
+  "headline": "install claude code infrastructure in seconds",
+  "short_description": "Claude Code infrastructure with auto-activating skills and framework-specific kits.  Install complete Claude Code infrastructure in 30 seconds with automatic framework detection and skill auto-activation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "blencorp",
+  "install_command": "git clone https://github.com/blencorp/claude-code-kit.git",
+  "source_repo_url": "https://github.com/blencorp/claude-code-kit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code Kit installs complete AI agent infrastructure for your project in under 30 seconds by automatically detecting your frameworks like Next.js, React, Express, and Prisma. The kit includes 6 hooks for automation, 6 specialized agents for complex tasks, 6 slash commands for common workflows, and framework-specific skills that activate based on your prompts, file edits, and technology usage. Skills automatically engage when you work with your stack—mention \"create a server component\" and the Next.js skill activates, or edit a Prisma schema and get ORM-specific patterns. This solves the problem of teaching Claude your framework conventions repeatedly by embedding best practices, patterns, and resources directly into your Claude Code environment.\nSet up Next.js projects with automatic Server Component and Server Action patterns\nActivate Prisma ORM expertise when working with database queries and migrations\nGet shadcn/ui component suggestions automatically when building UI components\nTrigger Express middleware and routing patterns during API development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/blencorp/claude-code-kit`",
+    "usage": "```\nInstall the full Claude Code infrastructure with auto-activating skills by running: `claude-code-kit --install [FRAMEWORK_NAME]` where [FRAMEWORK_NAME] can be 'nextjs', 'react', 'django', 'flask', 'rails', or 'node'. After installation, verify the setup by running `claude-code-kit --verify` and test the auto-activated skills with `claude-code-kit --test [SKILL_NAME]`.\n```\nCopy\n\n```\n```\n✅ Claude Code Kit Installation Complete (v1.2.0)\n\nFramework Detected: Next.js 14.2.3\nAuto-activated skills:\n- nextjs-routing-assistant: Generates dynamic route files with middleware\n- nextjs-api-generator: Creates CRUD endpoints with TypeScript types\n- nextjs-component-builder: Scaffolds React components with Storybook files\n\nVerification Results:\n✓ Project structure validated\n✓ Dependencies installed (127 packages)\n✓ Skills auto-activated (17/17)\n✓ Next.js dev server started on port 3000\n\nTest Run - nextjs-routing-assistant:\nGenerated /app/blog/[slug]/page.tsx with:\n- Dynamic route handling\n- Metadata generation\n- Type-safe props interface\n- Example content placeholder\n\nNext Steps:\n1. Run `npm run dev` to start development\n2. Use `claude nextjs-routing-assistant [PAGE_NAME]` for new routes\n3. Check .claude/skills/ for auto-activated configurations\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-kit#main-content",
+      "claude-code-kit#overview",
+      "claude-code-kit#setup",
+      "claude-code-kit#examples",
+      "claude-code-kit#tools",
+      "claude-code-kit#mcp",
+      "claude-code-kit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Kit tự động nhận diện các framework bạn đang dùng như Next.js, React, Express và Prisma để cài đặt toàn bộ hạ tầng AI agent cho dự án trong chưa đầy 30 giây. Bộ kit bao gồm 6 hook tự động hóa, 6 agent chuyên biệt cho các tác vụ phức tạp, 6 slash command cho các quy trình làm việc (workflow) thông dụng, cùng các skill dành riêng cho từng framework được tự động kích hoạt dựa trên prompt, thay đổi file và công nghệ bạn đang sử dụng. Các skill sẽ tự động chạy khi bạn làm việc với stack công nghệ của mình—chỉ cần nhắc đến \"create a server component\" (tạo một server component), skill Next.js sẽ kích hoạt, hoặc khi bạn chỉnh sửa một Prisma schema, hệ thống sẽ gợi ý các pattern chuyên biệt cho ORM này. Điều này giúp giải quyết triệt để vấn đề phải lặp đi lặp lại việc hướng dẫn Claude về các quy chuẩn (convention) của framework bằng cách tích hợp trực tiếp các best practice, pattern và tài nguyên vào môi trường Claude Code của bạn.\n\nThiết lập dự án Next.js với các pattern tự động cho Server Component và Server Action\nKích hoạt kiến thức chuyên môn về Prisma ORM khi làm việc với các câu lệnh truy vấn database và migration\nTự động nhận gợi ý component shadcn/ui khi xây dựng UI component\nKích hoạt các pattern cho Express middleware và routing trong quá trình phát triển API",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ (repository) GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/blencorp/claude-code-kit`",
+    "usage_vi": "```\nCài đặt toàn bộ hạ tầng Claude Code cùng các skill tự động kích hoạt bằng cách chạy lệnh: `claude-code-kit --install [FRAMEWORK_NAME]`, trong đó [FRAMEWORK_NAME] có thể là 'nextjs', 'react', 'django', 'flask', 'rails', hoặc 'node'. Sau khi cài đặt, hãy kiểm tra lại setup bằng cách chạy `claude-code-kit --verify` và test các skill đã được tự động kích hoạt bằng lệnh `claude-code-kit --test [SKILL_NAME]`.\n```\nCopy\n\n```\n```\n✅ Hoàn tất cài đặt Claude Code Kit (v1.2.0)\n\nĐã phát hiện Framework: Next.js 14.2.3\nCác skill đã tự động kích hoạt:\n- nextjs-routing-assistant: Tạo các file route động đi kèm middleware\n- nextjs-api-generator: Tạo các endpoint CRUD với kiểu dữ liệu (type) TypeScript\n- nextjs-component-builder: Khởi tạo cấu trúc (scaffold) các React component đi kèm file Storybook\n\nKết quả kiểm tra:\n✓ Đã xác thực cấu trúc dự án\n✓ Đã cài đặt các dependency (127 package)\n✓ Đã tự động kích hoạt skill (17/17)\n✓ Đã khởi động Next.js dev server tại cổng (port) 3000\n\nChạy thử nghiệm (Test Run) - nextjs-routing-assistant:\nĐã tạo /app/blog/[slug]/page.tsx với:\n- Xử lý route động (Dynamic route)\n- Tự động tạo metadata\n- Interface props đảm bảo type-safe\n- Placeholder nội dung mẫu\n\nCác bước tiếp theo:\n1. Chạy `npm run dev` để bắt đầu phát triển\n2. Sử dụng `claude nextjs-routing-assistant [PAGE_NAME]` để tạo route mới\n3. Kiểm tra thư mục .claude/skills/ để xem các cấu hình tự động kích hoạt\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:24:52.339545Z",
+    "http_status": 200,
+    "content_hash": "e25cffe1be65610af146f84c2ce6af093f0275b80690ad45d163365f79926e68",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-kit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cài đặt hạ tầng Claude Code chỉ trong vài giây",
+  "short_description_vi": "Hạ tầng Claude Code đi kèm các skill tự động kích hoạt và bộ kit chuyên biệt cho từng framework. Cài đặt toàn bộ hạ tầng Claude Code chỉ trong 30 giây với tính năng tự động nhận diện framework và tự động kích hoạt skill."
+}

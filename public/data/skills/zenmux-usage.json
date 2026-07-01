@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zenmux-usage",
+  "slug": "zenmux-usage",
+  "name": "improve-claude-md",
+  "headline": "ZenMux Usage: Real-Time Account Monitoring",
+  "short_description": "The zenmux-usage skill assists users in checking their ZenMux account usage, quota, balance, and generation costs by interfacing with the ZenMux Management API. It's designed for users needing to monitor their subscription and usage metrics.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "zenmux",
+  "install_command": "git clone https://github.com/zenmux/skills",
+  "source_repo_url": "https://github.com/zenmux/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "usage",
+    "zenmux",
+    "ai-agent-skill"
+  ],
+  "sections": {
+    "overview": "The zenmux-usage skill provides AI agents with real-time access to ZenMux account metrics through the Management API. It retrieves subscription details, quota usage across 5-hour, 7-day, and monthly windows, account status, Flow rate limits, PAYG wallet balance, per-generation cost and token breakdowns, and platform statistics including timeseries trends and model leaderboards. This skill enables users to track their resource consumption, monitor spending, and optimize their ZenMux subscription without leaving their development environment. It's designed for developers and teams who need programmatic access to billing and usage data for monitoring, automation, or integration with other tools.\nCheck subscription details and account status.\nRetrieve flow rates for currency conversions.\nMonitor pay-as-you-go balance and credits.\nAnalyze token usage and cost for specific requests.\n- **Subscription Tier**: Pro (100k credits/month)\n- **Current Balance**: 87,245 credits (12.76% remaining)\n- **Generation Costs (Oct)**: $142.87 (1,242 credits used)",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/zenmux/skills --skill zenmux-usage`\n`git clone https://github.com/zenmux/skills`",
+    "usage": "```\nCheck my ZenMux account usage and quota for [MONTH/YEAR]. Show my current balance, generation costs, and any warnings about exceeding limits. Include a breakdown of usage compared to my subscription tier. [ZENMUX_API_KEY]\n```\nCopy\n\n```\n```markdown\n# ZenMux Account Usage Report - October 2023\n\n| Metric               | Used | Limit | Status          |\n|----------------------|------|-------|-----------------|\n| API Calls            | 12,456 | 20,000 | ✅ Under limit  |\n| Text Generation      | 8,765 | 10,000 | ✅ Under limit  |\n| Image Generation     | 342   | 500    | ✅ Under limit  |\n| Storage (GB)         | 42.8  | 50     | ⚠️ 85.6% used   |",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "zenmux-usage#main-content",
+      "zenmux-usage#overview",
+      "zenmux-usage#setup",
+      "zenmux-usage#examples",
+      "zenmux-usage#related",
+      "rivetkit",
+      "vibeindex",
+      "improve-claude-md"
+    ],
+    "overview_vi": "The zenmux-usage skill provides AI agents with real-time access to ZenMux account metrics through the Management API. It retrieves subscription details, quota usage across 5-hour, 7-day, and monthly windows, account status, Flow rate limits, PAYG wallet balance, per-generation cost and token breakdowns, and platform statistics including timeseries trends and model leaderboards. This skill enables users to track their resource consumption, monitor spending, and optimize their ZenMux subscription without leaving their development environment. It's designed for developers and teams who need programmatic access to billing and usage data for monitoring, automation, or integration with other tools.\nCheck subscription details and account status.\nRetrieve flow rates for currency conversions.\nMonitor pay-as-you-go balance and credits.\nAnalyze token usage and cost for specific requests.\n- **Subscription Tier**: Pro (100k credits/month)\n- **Current Balance**: 87,245 credits (12.76% remaining)\n- **Generation Costs (Oct)**: $142.87 (1,242 credits used)",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/zenmux/skills --skill zenmux-usage`\n`git clone https://github.com/zenmux/skills`",
+    "usage_vi": "```\nCheck my ZenMux account usage and quota for [MONTH/YEAR]. Show my current balance, generation costs, and any warnings about exceeding limits. Include a breakdown of usage compared to my subscription tier. [ZENMUX_API_KEY]\n```\nCopy\n\n```\n```markdown\n# ZenMux Account Usage Report - October 2023\n\n| Metric               | Used | Limit | Status          |\n|----------------------|------|-------|-----------------|\n| API Calls            | 12,456 | 20,000 | ✅ Under limit  |\n| Text Generation      | 8,765 | 10,000 | ✅ Under limit  |\n| Image Generation     | 342   | 500    | ✅ Under limit  |\n| Storage (GB)         | 42.8  | 50     | ⚠️ 85.6% used   |"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:30:11.729626Z",
+    "http_status": 200,
+    "content_hash": "f68b4f0b7c2533367ba873c73b27a510d76e0e440526bcba80dcf2ba5698696f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zenmux-usage.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zenmux-usage.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ZenMux Usage: Real-Time Account Monitoring",
+  "short_description_vi": "The zenmux-usage skill assists users in checking their ZenMux account usage, quota, balance, and generation costs by interfacing with the ZenMux Management API. It's designed for users needing to monitor their subscription and usage metrics."
+}

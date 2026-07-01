@@ -1,0 +1,52 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/qa-test-planner",
+  "slug": "qa-test-planner",
+  "name": "Qa Test Planner",
+  "headline": "qa-test-planner: QA Testing",
+  "short_description": "The qa-test-planner skill automates QA test planning, organizing test cases for developers and QA teams. It integrates with existing workflows to save time and improve productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "softaworks",
+  "install_command": "git clone https://github.com/softaworks/agent-toolkit.git",
+  "source_repo_url": "https://github.com/softaworks/agent-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The qa-test-planner skill is designed to automate the planning of quality assurance (QA) tests, making it an essential tool for developers and QA teams. By leveraging this Claude Code skill, users can efficiently organize and manage test cases, ensuring a more structured approach to software testing. This skill integrates seamlessly with existing workflows, allowing teams to focus on critical testing tasks rather than manual planning processes. One of the key benefits of using the qa-test-planner is the significant time savings it offers. By automating the test planning process, teams can reduce the time spent on administrative tasks, enabling them to allocate more resources to actual testing and quality improvement. This not only enhances productivity but also leads to faster release cycles and improved software quality. This skill is particularly beneficial for developers, product managers, and QA practitioners who are looking to optimize their testing processes. For example, a development team can use qa-test-planner to quickly generate a comprehensive test plan for a new feature, ensuring that all scenarios are covered without the usual overhead of manual planning. Additionally, it can be used in continuous integration/continuous deployment (CI/CD) environments to maintain high-quality standards. The implementation of qa-test-planner is straightforward, making it accessible even for those with limited experience in automation. It fits perfectly into AI-first workflows, allowing teams to harness the power of AI automation to enhance their testing strategies. With over 1,855 installations, this skill has proven its value in the industry, making it a reliable choice for organizations aiming to improve their QA processes.\nAutomate the generation of test cases for newly developed software features to ensure comprehensive coverage.\nStreamline regression testing processes for existing applications, reducing the time spent on repetitive tasks.\nCreate detailed and structured test plans that meet compliance audit requirements, facilitating easier reviews.\nEnhance collaboration between development and QA teams by providing a centralized platform for test case management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage": "```\nPlan a QA test strategy for [PRODUCT] release. Focus on [KEY FEATURES] and prioritize based on [RISK CRITERIA]. Include test cases for [PLATFORMS] and [BROWSERS]. Suggest a timeline and assign test cases to [TEAM MEMBERS].\n```\nCopy\n\n```\nBased on the requirements for the upcoming release of the 'EcoTrack' mobile app, here's a comprehensive QA test plan:\n\n1. **Test Scope**: Focus on the new carbon footprint calculator feature, payment integration, and offline functionality.\n2. **Test Cases**: \n   - **Functional Tests**: Verify carbon footprint calculations for 10 different activity types. Test payment processing with 5 major credit cards. Ensure offline data syncs correctly upon reconnection.\n   - **UI Tests**: Validate layout consistency across iOS (versions 14-16) and Android (versions 10-13). Check responsiveness on devices with screen sizes from 5.5\" to 7\".\n   - **Performance Tests**: Measure app launch time with and without cached data. Test memory usage during intensive calculations.\n3. **Timeline**: \n   - Week 1: Functional and UI tests (Assigned to Sarah L. and Mike T.).\n   - Week 2: Performance and security tests (Assigned to Raj P.).\n   - Week 3: Regression testing (Team-wide).\n4. **Risk Mitigation**: Allocate 20% of time for exploratory testing to uncover edge cases. Schedule daily standups to address blockers promptly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "qa-test-planner#main-content",
+      "qa-test-planner#overview",
+      "qa-test-planner#setup",
+      "qa-test-planner#examples",
+      "qa-test-planner#tools",
+      "qa-test-planner#mcp",
+      "qa-test-planner#related",
+      "webapp-testing"
+    ],
+    "overview_vi": "The qa-test-planner skill is designed to automate the planning of quality assurance (QA) tests, making it an essential tool for developers and QA teams. By leveraging this Claude Code skill, users can efficiently organize and manage test cases, ensuring a more structured approach to software testing. This skill integrates seamlessly with existing workflows, allowing teams to focus on critical testing tasks rather than manual planning processes. One of the key benefits of using the qa-test-planner is the significant time savings it offers. By automating the test planning process, teams can reduce the time spent on administrative tasks, enabling them to allocate more resources to actual testing and quality improvement. This not only enhances productivity but also leads to faster release cycles and improved software quality. This skill is particularly beneficial for developers, product managers, and QA practitioners who are looking to optimize their testing processes. For example, a development team can use qa-test-planner to quickly generate a comprehensive test plan for a new feature, ensuring that all scenarios are covered without the usual overhead of manual planning. Additionally, it can be used in continuous integration/continuous deployment (CI/CD) environments to maintain high-quality standards. The implementation of qa-test-planner is straightforward, making it accessible even for those with limited experience in automation. It fits perfectly into AI-first workflows, allowing teams to harness the power of AI automation to enhance their testing strategies. With over 1,855 installations, this skill has proven its value in the industry, making it a reliable choice for organizations aiming to improve their QA processes.\nAutomate the generation of test cases for newly developed software features to ensure comprehensive coverage.\nStreamline regression testing processes for existing applications, reducing the time spent on repetitive tasks.\nCreate detailed and structured test plans that meet compliance audit requirements, facilitating easier reviews.\nEnhance collaboration between development and QA teams by providing a centralized platform for test case management.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/softaworks/agent-toolkit`",
+    "usage_vi": "```\nPlan a QA test strategy for [PRODUCT] release. Focus on [KEY FEATURES] and prioritize based on [RISK CRITERIA]. Include test cases for [PLATFORMS] and [BROWSERS]. Suggest a timeline and assign test cases to [TEAM MEMBERS].\n```\nCopy\n\n```\nBased on the requirements for the upcoming release of the 'EcoTrack' mobile app, here's a comprehensive QA test plan:\n\n1. **Test Scope**: Focus on the new carbon footprint calculator feature, payment integration, and offline functionality.\n2. **Test Cases**: \n   - **Functional Tests**: Verify carbon footprint calculations for 10 different activity types. Test payment processing with 5 major credit cards. Ensure offline data syncs correctly upon reconnection.\n   - **UI Tests**: Validate layout consistency across iOS (versions 14-16) and Android (versions 10-13). Check responsiveness on devices with screen sizes from 5.5\" to 7\".\n   - **Performance Tests**: Measure app launch time with and without cached data. Test memory usage during intensive calculations.\n3. **Timeline**: \n   - Week 1: Functional and UI tests (Assigned to Sarah L. and Mike T.).\n   - Week 2: Performance and security tests (Assigned to Raj P.).\n   - Week 3: Regression testing (Team-wide).\n4. **Risk Mitigation**: Allocate 20% of time for exploratory testing to uncover edge cases. Schedule daily standups to address blockers promptly.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:30:38.502575Z",
+    "http_status": 200,
+    "content_hash": "c54be2fa29b511ba2cf55dd8da16eb3452d6edf463122cddb5d8c0ea2ebbc5a4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\qa-test-planner.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\qa-test-planner.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "qa-test-planner: QA Testing",
+  "short_description_vi": "The qa-test-planner skill automates QA test planning, organizing test cases for developers and QA teams. It integrates with existing workflows to save time and improve productivity."
+}

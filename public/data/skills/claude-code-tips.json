@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-tips",
+  "slug": "claude-code-tips",
+  "name": "browser-use",
+  "headline": "Maximize Claude Code use with expert tips",
+  "short_description": "40+ tips for getting the most out of Claude Code, from basics to advanced - includes a custom status line script, cutting the system prompt in half, using Gemini CLI as Claude Code's minion, and Claude Code running itself in a container. Also includes the dx plugin.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "ykdojo",
+  "install_command": "git clone https://github.com/ykdojo/claude-code-tips.git",
+  "source_repo_url": "https://github.com/ykdojo/claude-code-tips",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-workflow",
+    "agentic-ai",
+    "developer-tools",
+    "productivity",
+    "claude-ai",
+    "agentic",
+    "claude",
+    "agentic-coding",
+    "ai",
+    "cli",
+    "tips-and-tricks"
+  ],
+  "sections": {
+    "overview": "claude-code-tips is a comprehensive resource of over 40 techniques for improving Claude Code performance and development efficiency. The collection covers foundational concepts through advanced strategies, including custom status line scripts for better visibility into token usage and context management. It provides actionable guidance on system prompt optimization, reducing token overhead, and extending Claude Code's capabilities by integrating external tools like Gemini CLI. The resource also documents containerization approaches that enable Claude Code to operate within isolated environments, along with practical dx plugin implementations for enhanced developer experience.\nCustomize your status line to display essential project information at a glance.\nUtilize slash commands to streamline interactions and manage your Claude Code environment efficiently.\nImplement a multi-Claude workflow to enhance productivity through voice input and task automation.\nUse Git worktrees for parallel branch work, improving collaboration and version control.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ykdojo/claude-code-tips`",
+    "usage": "```\nI need advanced Claude Code optimization tips for [SPECIFIC_TASK]. Give me the most relevant tips from your claude-code-tips collection that will help me [ACHIEVE_GOAL]. Focus on [PARTICULAR_AREA] like performance, debugging, or automation. Include code snippets where helpful.\n```\nCopy\n\n```\nHere are the most impactful Claude Code tips for automating a Python codebase refactor:\n\n1. **Status Line Customization** (Saves 20% dev time):\n```bash\n# Add this to your ~/.claude_settings.json\n{\n  \"status_line\": {\n    \"left\": \"${project_name} | ${git_branch} | ${time}\",\n    \"right\": \"CPU:${cpu_usage}% | MEM:${memory_usage}MB\"\n  }\n}\n```\nThis gives me real-time system metrics without leaving the terminal, helping me spot performance issues during long refactors.\n\n2. **System Prompt Optimization** (Cuts token usage by 40%):\n```bash\n# Create ~/.claude/prompts/short_system.md\nYou are an expert Python developer. Focus on clean code and performance.\n```\nThen run: `claude --prompt short_system.md [YOUR_COMMAND]`\n\n3. **Gemini CLI Integration** (Parallel processing):\n```bash\n# Install gemini-cli: pip install gemini-cli\n# Then use in Claude Code:\nclaude> @gemini analyze /path/to/code --parallel 4\n```\nThis lets me run 4 analysis tasks simultaneously while keeping the main context focused.\n\n4. **Containerized Execution** (Isolated environments):\n```bash\n# Create .claude/Dockerfile\nFROM claude:latest\nCOPY . /workspace\nWORKDIR /workspace\n\n# Then run:\nclaude --container .claude/Dockerfile -- \"python /workspace/refactor.py\"\n```\nThis ensures my refactor runs in a clean environment matching production.\n\n**Pro Tip**: Combine these with the dx plugin for instant project setup:\n```bash\nclaude> @dx python-project --name refactor-2024\n```\n\nThese optimizations reduced my refactor time from 8 hours to 3.5 hours while improving code quality.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-tips#main-content",
+      "claude-code-tips#overview",
+      "claude-code-tips#setup",
+      "claude-code-tips#examples",
+      "claude-code-tips#tools",
+      "claude-code-tips#mcp",
+      "claude-code-tips#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-code-tips is a comprehensive resource of over 40 techniques for improving Claude Code performance and development efficiency. The collection covers foundational concepts through advanced strategies, including custom status line scripts for better visibility into token usage and context management. It provides actionable guidance on system prompt optimization, reducing token overhead, and extending Claude Code's capabilities by integrating external tools like Gemini CLI. The resource also documents containerization approaches that enable Claude Code to operate within isolated environments, along with practical dx plugin implementations for enhanced developer experience.\nCustomize your status line to display essential project information at a glance.\nUtilize slash commands to streamline interactions and manage your Claude Code environment efficiently.\nImplement a multi-Claude workflow to enhance productivity through voice input and task automation.\nUse Git worktrees for parallel branch work, improving collaboration and version control.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ykdojo/claude-code-tips`",
+    "usage_vi": "```\nI need advanced Claude Code optimization tips for [SPECIFIC_TASK]. Give me the most relevant tips from your claude-code-tips collection that will help me [ACHIEVE_GOAL]. Focus on [PARTICULAR_AREA] like performance, debugging, or automation. Include code snippets where helpful.\n```\nCopy\n\n```\nHere are the most impactful Claude Code tips for automating a Python codebase refactor:\n\n1. **Status Line Customization** (Saves 20% dev time):\n```bash\n# Add this to your ~/.claude_settings.json\n{\n  \"status_line\": {\n    \"left\": \"${project_name} | ${git_branch} | ${time}\",\n    \"right\": \"CPU:${cpu_usage}% | MEM:${memory_usage}MB\"\n  }\n}\n```\nThis gives me real-time system metrics without leaving the terminal, helping me spot performance issues during long refactors.\n\n2. **System Prompt Optimization** (Cuts token usage by 40%):\n```bash\n# Create ~/.claude/prompts/short_system.md\nYou are an expert Python developer. Focus on clean code and performance.\n```\nThen run: `claude --prompt short_system.md [YOUR_COMMAND]`\n\n3. **Gemini CLI Integration** (Parallel processing):\n```bash\n# Install gemini-cli: pip install gemini-cli\n# Then use in Claude Code:\nclaude> @gemini analyze /path/to/code --parallel 4\n```\nThis lets me run 4 analysis tasks simultaneously while keeping the main context focused.\n\n4. **Containerized Execution** (Isolated environments):\n```bash\n# Create .claude/Dockerfile\nFROM claude:latest\nCOPY . /workspace\nWORKDIR /workspace\n\n# Then run:\nclaude --container .claude/Dockerfile -- \"python /workspace/refactor.py\"\n```\nThis ensures my refactor runs in a clean environment matching production.\n\n**Pro Tip**: Combine these with the dx plugin for instant project setup:\n```bash\nclaude> @dx python-project --name refactor-2024\n```\n\nThese optimizations reduced my refactor time from 8 hours to 3.5 hours while improving code quality.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:59:14.726842Z",
+    "http_status": 200,
+    "content_hash": "81d8d5843f32dee83c72fb717cc43b23ec7ea27ad31c18ec23cace8f764c4344",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-tips.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-tips.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Maximize Claude Code use with expert tips",
+  "short_description_vi": "40+ tips for getting the most out of Claude Code, from basics to advanced - includes a custom status line script, cutting the system prompt in half, using Gemini CLI as Claude Code's minion, and Claude Code running itself in a container. Also includes the dx plugin."
+}

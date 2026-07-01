@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deepagents-autoglm",
+  "slug": "deepagents-autoglm",
+  "name": "DeepAgents-AutoGLM",
+  "headline": "DeepAgents-AutoGLM - Mobile GUI Automation",
+  "short_description": "DeepAgents-AutoGLM integrates Open-AutoGLM's Android and iOS GUI automation into DeepAgents-CLI via LangChain Middleware. This enables LLM orchestration with vision-guided GUI control for operations teams. It connects to mobile devices for automated testing, process automation, and quality assurance workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "270 min",
+  "author": "Illuminated2020",
+  "install_command": "git clone https://github.com/Illuminated2020/DeepAgents-AutoGLM.git",
+  "source_repo_url": "https://github.com/Illuminated2020/DeepAgents-AutoGLM",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "DeepAgents-AutoGLM combines DeepAgents framework with Open-AutoGLM's mobile automation capabilities to enable intelligent phone control directly from terminal-based AI agents. It integrates Android and iOS device automation with web search, shell commands, and custom skills, allowing agents to execute complex multi-step workflows like searching information, analyzing content, and performing native mobile app operations. The skill uses vision-language models to understand and interact with mobile GUIs through clicks, swipes, and text input. Operations teams use it for automated testing, process automation, and quality assurance workflows where LLM agents need to control actual mobile devices as part of larger automation pipelines.\nAutomated testing of Android and iOS applications with visual GUI understanding\nMulti-step mobile app workflows like searching content, generating text, and publishing to apps\nIntelligent mobile process automation triggered by natural language commands\nUnattended quality assurance testing on real devices with visual feedback",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Illuminated2020/DeepAgents-AutoGLM`",
+    "usage": "```\nUse DeepAgents-AutoGLM to automate [TASK] on a [ANDROID/iOS] device connected via [USB/ADB/WiFi]. The task involves: [DESCRIBE_STEPS]. Ensure the automation follows these constraints: [CONSTRAINTS]. Provide the sequence of GUI interactions, validation checks, and any error handling required. Include the LangChain middleware configuration for Open-AutoGLM integration.\n```\nCopy\n\n```\n### DeepAgents-AutoGLM Automation Report\n**Task:** Automate the checkout process for a retail app on an Android device (Pixel 7, Android 14).\n**Steps:**\n1. Launch the app via `adb shell am start -n com.retail.app/.MainActivity`.\n2. Navigate to the 'Products' tab by simulating a tap on the bottom navigation bar at coordinates (540, 2700) with a delay of 1.5s.\n3. Scroll down to find 'Wireless Earbuds' using `adb shell input swipe 540 2000 540 1000 500` (500ms swipe).\n4. Tap the 'Add to Cart' button at (360, 2200) and wait for the confirmation toast.\n5. Tap the cart icon at (900, 2700) and verify the item count updates to '1'.\n6. Proceed to checkout by tapping the 'Checkout' button at (540, 2900).\n7. Fill in shipping details: Name='John Doe', Address='123 Main St', Zip='94105'.\n8. Tap 'Place Order' and validate the success message 'Order #12345 Confirmed' appears.\n\n**LangChain Middleware Config:**\n```python\nfrom langchain_community.agents import AutoGLMAgent\nfrom deepagents_autoglm import DeepAgentsAutoGLM\n\nmiddleware = DeepAgentsAutoGLM(\n    device_id='emulator-5554',\n    platform='android',\n    max_steps=20,\n    vision_enabled=True,\n    error_handling='retry_on_failure'\n)\n\nagent = AutoGLMAgent(\n    middleware=middleware,\n    task_description=\"Automate retail app checkout end-to-end\",\n    constraints=[\"No manual intervention after start\", \"Validate each step with screenshots\"]\n)\n```\n\n**Validation:**\n- Screenshot after Step 3: Confirmed 'Wireless Earbuds' visible.\n- Toast message after Step 4: 'Added to cart' detected.\n- Cart count after Step 5: '1' confirmed via OCR.\n- Order confirmation after Step 8: 'Order #12345 Confirmed' matched.\n\n**Errors Encountered:**\n- Step 6 failed initially due to network latency. Retried after 2s delay with success.\n- Step 7 required scrolling to reveal the 'Zip' field. Adjusted swipe coordinates dynamically.\n\n**Outcome:** Task completed in 42 seconds with 100% success rate. Screenshots and logs saved to `/automation_reports/retail_checkout_20240515/`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "deepagents-autoglm#main-content",
+      "deepagents-autoglm#overview",
+      "deepagents-autoglm#setup",
+      "deepagents-autoglm#examples",
+      "deepagents-autoglm#tools",
+      "deepagents-autoglm#mcp",
+      "deepagents-autoglm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DeepAgents-AutoGLM combines DeepAgents framework with Open-AutoGLM's mobile automation capabilities to enable intelligent phone control directly from terminal-based AI agents. It integrates Android and iOS device automation with web search, shell commands, and custom skills, allowing agents to execute complex multi-step workflows like searching information, analyzing content, and performing native mobile app operations. The skill uses vision-language models to understand and interact with mobile GUIs through clicks, swipes, and text input. Operations teams use it for automated testing, process automation, and quality assurance workflows where LLM agents need to control actual mobile devices as part of larger automation pipelines.\nAutomated testing of Android and iOS applications with visual GUI understanding\nMulti-step mobile app workflows like searching content, generating text, and publishing to apps\nIntelligent mobile process automation triggered by natural language commands\nUnattended quality assurance testing on real devices with visual feedback",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Illuminated2020/DeepAgents-AutoGLM`",
+    "usage_vi": "```\nUse DeepAgents-AutoGLM to automate [TASK] on a [ANDROID/iOS] device connected via [USB/ADB/WiFi]. The task involves: [DESCRIBE_STEPS]. Ensure the automation follows these constraints: [CONSTRAINTS]. Provide the sequence of GUI interactions, validation checks, and any error handling required. Include the LangChain middleware configuration for Open-AutoGLM integration.\n```\nCopy\n\n```\n### DeepAgents-AutoGLM Automation Report\n**Task:** Automate the checkout process for a retail app on an Android device (Pixel 7, Android 14).\n**Steps:**\n1. Launch the app via `adb shell am start -n com.retail.app/.MainActivity`.\n2. Navigate to the 'Products' tab by simulating a tap on the bottom navigation bar at coordinates (540, 2700) with a delay of 1.5s.\n3. Scroll down to find 'Wireless Earbuds' using `adb shell input swipe 540 2000 540 1000 500` (500ms swipe).\n4. Tap the 'Add to Cart' button at (360, 2200) and wait for the confirmation toast.\n5. Tap the cart icon at (900, 2700) and verify the item count updates to '1'.\n6. Proceed to checkout by tapping the 'Checkout' button at (540, 2900).\n7. Fill in shipping details: Name='John Doe', Address='123 Main St', Zip='94105'.\n8. Tap 'Place Order' and validate the success message 'Order #12345 Confirmed' appears.\n\n**LangChain Middleware Config:**\n```python\nfrom langchain_community.agents import AutoGLMAgent\nfrom deepagents_autoglm import DeepAgentsAutoGLM\n\nmiddleware = DeepAgentsAutoGLM(\n    device_id='emulator-5554',\n    platform='android',\n    max_steps=20,\n    vision_enabled=True,\n    error_handling='retry_on_failure'\n)\n\nagent = AutoGLMAgent(\n    middleware=middleware,\n    task_description=\"Automate retail app checkout end-to-end\",\n    constraints=[\"No manual intervention after start\", \"Validate each step with screenshots\"]\n)\n```\n\n**Validation:**\n- Screenshot after Step 3: Confirmed 'Wireless Earbuds' visible.\n- Toast message after Step 4: 'Added to cart' detected.\n- Cart count after Step 5: '1' confirmed via OCR.\n- Order confirmation after Step 8: 'Order #12345 Confirmed' matched.\n\n**Errors Encountered:**\n- Step 6 failed initially due to network latency. Retried after 2s delay with success.\n- Step 7 required scrolling to reveal the 'Zip' field. Adjusted swipe coordinates dynamically.\n\n**Outcome:** Task completed in 42 seconds with 100% success rate. Screenshots and logs saved to `/automation_reports/retail_checkout_20240515/`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:50.012075Z",
+    "http_status": 200,
+    "content_hash": "1559cccef7a1e6e7fc05ea22d3db3c3d8be4e759e16c43a40324d6a1ac926b84",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deepagents-autoglm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\deepagents-autoglm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DeepAgents-AutoGLM - Mobile GUI Automation",
+  "short_description_vi": "DeepAgents-AutoGLM integrates Open-AutoGLM's Android and iOS GUI automation into DeepAgents-CLI via LangChain Middleware. This enables LLM orchestration with vision-guided GUI control for operations teams. It connects to mobile devices for automated testing, process automation, and quality assurance workflows."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/neural",
+  "slug": "neural",
+  "name": "react-native-best-practices",
+  "headline": "Neural: AI Code Generation for Vim & Neovim",
+  "short_description": "Neural is a powerful AI plugin for Vim and Neovim that uses OpenAI's models to generate code snippets, enhancing developer productivity. With support for multiple platforms, it streamlines coding tasks and integrates into existing workflows.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "dense-analysis",
+  "install_command": "claude install dense-analysis/neural",
+  "source_repo_url": "https://github.com/dense-analysis/neural",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "machine-learning",
+    "neovim",
+    "vim",
+    "code-generation",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Neural is a Neovim and Vim plugin that brings AI-assisted code generation directly into your editor using OpenAI's APIs or compatible local models. It supports asynchronous streaming for fast code generation, text completion, and code explanation without leaving your editor. The plugin works with Vim 8.0+ and Neovim 0.8+ on Linux, macOS, and Windows, requiring only Python 3.10+ as a dependency. Beyond code generation, Neural can explain selected code or paragraphs, generate docstrings, and fix grammar in comments and documentation. It prioritizes privacy with optional local model support and integrates with popular Neovim plugins like nui.nvim for enhanced UI experience.\nGenerate boilerplate code for new projects to save time on setup.\nAssist in writing complex functions by providing contextual suggestions.\nProvide code explanations and clarifications to enhance understanding.\nAutomate repetitive coding tasks, reducing the manual effort required.",
+    "setup": "Terminal\nCopy\n`claude install dense-analysis/neural`\n`git clone https://github.com/dense-analysis/neural`",
+    "usage": "```\nIn my Neovim editor with the Neural plugin installed, [WRITE/EDIT/DEBUG/IMPLEMENT] a [PROGRAMMING_LANGUAGE] function that [TASK_DESCRIPTION]. Include inline comments explaining the logic and any assumptions. Use modern best practices for [PROGRAMMING_LANGUAGE] and ensure the code follows [STYLE_GUIDE] if applicable. Add unit test stubs for the main function using the [TEST_FRAMEWORK] framework.\n```\nCopy\n\n```\n```python\n# File: src/utils/string_utils.py\n# Description: Utility functions for string manipulation\n# Created: 2024-05-15\n# Author: AI Assistant\n\nfrom typing import Optional\nimport re\n\n\ndef sanitize_input(input_str: str, max_length: int = 100) -> Optional[str]:\n    \"\"\"\n    Sanitizes user input by removing leading/trailing whitespace, \n    limiting length, and escaping HTML characters.\n    \n    Args:\n        input_str: Raw user input string\n        max_length: Maximum allowed string length (default: 100)\n    \n    Returns:\n        Sanitized string or None if input is empty after sanitization\n    \n    Raises:\n        ValueError: If input_str exceeds max_length\n    \"\"\"\n    if not input_str:\n        return None\n    \n    # Check length constraint\n    if len(input_str) > max_length:\n        raise ValueError(f\"Input exceeds maximum length of {max_length} characters\")\n    \n    # Remove leading/trailing whitespace\n    sanitized = input_str.strip()\n    \n    # Escape HTML characters to prevent XSS\n    sanitized = re.sub(r'[<>&\"\\']', lambda m: {\n        '<': '&lt;',\n        '>': '&gt;',\n        '&': '&amp;',\n        '\"': '&quot;',\n        \"'\": '&#39;'\n    }[m.group(0)], sanitized)\n    \n    return sanitized if sanitized else None\n\n\n# Unit test stubs using pytest\n# File: tests/test_string_utils.py\n# To run: pytest tests/test_string_utils.py -v\n\n# def test_sanitize_input_empty_string():\n#     assert sanitize_input(\"\") is None\n\n# def test_sanitize_input_normal_string():\n#     assert sanitize_input(\"  Hello World  \") == \"Hello World\"\n\n# def test_sanitize_input_html_escaping():\n#     assert sanitize_input(\"<script>alert('xss')</script>\") == \"&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;\"\n\n# def test_sanitize_input_length_exceeded():\n#     with pytest.raises(ValueError):\n#         sanitize_input(\"a\" * 101)\n```\n\n```lua\n-- File: lua/plugins/config.lua\n-- Description: Neovim plugin configuration\n-- Created: 2024-05-15\n-- Author: AI Assistant\n\nlocal M = {}\n\n--- Configure the Neural plugin with custom settings\n---@param opts table Configuration options\nfunction M.setup(opts)\n  opts = opts or {}\n  \n  -- Enable code completion\n  vim.g.neural_enable_completion = true\n  \n  -- Set default model (gpt-4o for balance of speed and quality)\n  vim.g.neural_default_model = \"gpt-4o\"\n  \n  -- Configure context window size\n  vim.g.neural_context_window = 4096\n  \n  -- Set custom prompt template for code generation\n  vim.g.neural_prompt_template = [[\n    You are an expert {language} developer. Write clean, efficient code following these guidelines:\n    1. Use modern {language} features\n    2. Include type hints where applicable\n    3. Add JSDoc/Docstring comments\n    4. Follow {style_guide} style guide\n    5. Add error handling\n    \n    Task: {task_description}\n    \n    File context:\n    {file_context}\n  ]]\n  \n  -- Enable streaming responses for large outputs\n  vim.g.neural_streaming = true\n  \n  -- Configure keybindings\n  vim.keymap.set('n', '<leader>nc', '<cmd>NeuralCode<cr>', {desc = \"Generate code with Neural\"})\n  vim.keymap.set('v', '<leader>nc', '<cmd>NeuralCode<cr>', {desc = \"Generate code with Neural\"})\nend\n\nreturn M\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "neural#main-content",
+      "neural#overview",
+      "neural#setup",
+      "neural#examples",
+      "neural#tools",
+      "neural#mcp",
+      "neural#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Neural is a Neovim and Vim plugin that brings AI-assisted code generation directly into your editor using OpenAI's APIs or compatible local models. It supports asynchronous streaming for fast code generation, text completion, and code explanation without leaving your editor. The plugin works with Vim 8.0+ and Neovim 0.8+ on Linux, macOS, and Windows, requiring only Python 3.10+ as a dependency. Beyond code generation, Neural can explain selected code or paragraphs, generate docstrings, and fix grammar in comments and documentation. It prioritizes privacy with optional local model support and integrates with popular Neovim plugins like nui.nvim for enhanced UI experience.\nGenerate boilerplate code for new projects to save time on setup.\nAssist in writing complex functions by providing contextual suggestions.\nProvide code explanations and clarifications to enhance understanding.\nAutomate repetitive coding tasks, reducing the manual effort required.",
+    "setup_vi": "Terminal\nCopy\n`claude install dense-analysis/neural`\n`git clone https://github.com/dense-analysis/neural`",
+    "usage_vi": "```\nIn my Neovim editor with the Neural plugin installed, [WRITE/EDIT/DEBUG/IMPLEMENT] a [PROGRAMMING_LANGUAGE] function that [TASK_DESCRIPTION]. Include inline comments explaining the logic and any assumptions. Use modern best practices for [PROGRAMMING_LANGUAGE] and ensure the code follows [STYLE_GUIDE] if applicable. Add unit test stubs for the main function using the [TEST_FRAMEWORK] framework.\n```\nCopy\n\n```\n```python\n# File: src/utils/string_utils.py\n# Description: Utility functions for string manipulation\n# Created: 2024-05-15\n# Author: AI Assistant\n\nfrom typing import Optional\nimport re\n\n\ndef sanitize_input(input_str: str, max_length: int = 100) -> Optional[str]:\n    \"\"\"\n    Sanitizes user input by removing leading/trailing whitespace, \n    limiting length, and escaping HTML characters.\n    \n    Args:\n        input_str: Raw user input string\n        max_length: Maximum allowed string length (default: 100)\n    \n    Returns:\n        Sanitized string or None if input is empty after sanitization\n    \n    Raises:\n        ValueError: If input_str exceeds max_length\n    \"\"\"\n    if not input_str:\n        return None\n    \n    # Check length constraint\n    if len(input_str) > max_length:\n        raise ValueError(f\"Input exceeds maximum length of {max_length} characters\")\n    \n    # Remove leading/trailing whitespace\n    sanitized = input_str.strip()\n    \n    # Escape HTML characters to prevent XSS\n    sanitized = re.sub(r'[<>&\"\\']', lambda m: {\n        '<': '&lt;',\n        '>': '&gt;',\n        '&': '&amp;',\n        '\"': '&quot;',\n        \"'\": '&#39;'\n    }[m.group(0)], sanitized)\n    \n    return sanitized if sanitized else None\n\n\n# Unit test stubs using pytest\n# File: tests/test_string_utils.py\n# To run: pytest tests/test_string_utils.py -v\n\n# def test_sanitize_input_empty_string():\n#     assert sanitize_input(\"\") is None\n\n# def test_sanitize_input_normal_string():\n#     assert sanitize_input(\"  Hello World  \") == \"Hello World\"\n\n# def test_sanitize_input_html_escaping():\n#     assert sanitize_input(\"<script>alert('xss')</script>\") == \"&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;\"\n\n# def test_sanitize_input_length_exceeded():\n#     with pytest.raises(ValueError):\n#         sanitize_input(\"a\" * 101)\n```\n\n```lua\n-- File: lua/plugins/config.lua\n-- Description: Neovim plugin configuration\n-- Created: 2024-05-15\n-- Author: AI Assistant\n\nlocal M = {}\n\n--- Configure the Neural plugin with custom settings\n---@param opts table Configuration options\nfunction M.setup(opts)\n  opts = opts or {}\n  \n  -- Enable code completion\n  vim.g.neural_enable_completion = true\n  \n  -- Set default model (gpt-4o for balance of speed and quality)\n  vim.g.neural_default_model = \"gpt-4o\"\n  \n  -- Configure context window size\n  vim.g.neural_context_window = 4096\n  \n  -- Set custom prompt template for code generation\n  vim.g.neural_prompt_template = [[\n    You are an expert {language} developer. Write clean, efficient code following these guidelines:\n    1. Use modern {language} features\n    2. Include type hints where applicable\n    3. Add JSDoc/Docstring comments\n    4. Follow {style_guide} style guide\n    5. Add error handling\n    \n    Task: {task_description}\n    \n    File context:\n    {file_context}\n  ]]\n  \n  -- Enable streaming responses for large outputs\n  vim.g.neural_streaming = true\n  \n  -- Configure keybindings\n  vim.keymap.set('n', '<leader>nc', '<cmd>NeuralCode<cr>', {desc = \"Generate code with Neural\"})\n  vim.keymap.set('v', '<leader>nc', '<cmd>NeuralCode<cr>', {desc = \"Generate code with Neural\"})\nend\n\nreturn M\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:50.146957Z",
+    "http_status": 200,
+    "content_hash": "9348cece41404c534a355d96b336d053d7da09c08681ba126280ef75e721c55f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\neural.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\neural.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Neural: AI Code Generation for Vim & Neovim",
+  "short_description_vi": "Neural is a powerful AI plugin for Vim and Neovim that uses OpenAI's models to generate code snippets, enhancing developer productivity. With support for multiple platforms, it streamlines coding tasks and integrates into existing workflows."
+}

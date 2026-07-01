@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-cto-team",
+  "slug": "claude-cto-team",
+  "name": "browser-use",
+  "headline": "Claude CTO Team: Plan & Execute with Precision",
+  "short_description": "Claude CTO Team provides AI-powered technical leadership for planning and executing projects. Operations teams benefit from automated technical guidance, roadmap development, and workflow optimization. Integrates with Claude Code and Python-based workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "alirezarezvani",
+  "install_command": "git clone https://github.com/alirezarezvani/claude-cto-team.git",
+  "source_repo_url": "https://github.com/alirezarezvani/claude-cto-team",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "cto-office",
+    "ai-agents",
+    "claude-subagents",
+    "claude-ai",
+    "ai-workflow",
+    "cto",
+    "roadmap",
+    "ai-workflow-automation"
+  ],
+  "sections": {
+    "overview": "Claude CTO Team is a three-agent system designed to provide CTO-level technical guidance within Claude Code. It includes cto-orchestrator for routing complex requests, cto-architect for designing scalable system architectures with technology stack recommendations, and strategic-cto-mentor for ruthlessly validating plans against seven risk dimensions. The system covers full-stack development, ML/AI integration, cloud infrastructure, and microservices architecture. Teams use it to validate roadmaps, make build-vs-buy decisions, and stress-test technical plans before committing resources.\nValidating Q2 roadmaps and multi-domain project plans\nDesigning system architectures for scaling to 100K+ users\nMaking build-vs-buy decisions on tools like Auth0 or custom solutions\nGetting CTO-level feedback on technology stack choices",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alirezarezvani/claude-cto-team`",
+    "usage": "```\nAct as the Claude CTO Team. Analyze the technical requirements for [PROJECT_NAME] and propose a high-level architecture, tech stack, and implementation roadmap. Include estimated timelines, potential risks, and mitigation strategies. Focus on scalability, security, and cost-efficiency. Assume the team has [TEAM_SIZE] engineers and [BUDGET_RANGE] budget. Suggest specific tools and frameworks (e.g., Python libraries, cloud services) that align with the project goals. Prioritize [PRIORITY_AREAS] and avoid [CONSTRAINTS].\n```\nCopy\n\n```\n### Technical Leadership Proposal for 'EcoTrack Green Fleet Management'\n\n**Project Overview:** EcoTrack is a SaaS platform enabling logistics companies to optimize fuel consumption and reduce carbon emissions by tracking vehicle performance, suggesting route adjustments, and generating sustainability reports. The MVP must support 1,000 concurrent users and integrate with third-party telematics devices (e.g., Geotab, Samsara).\n\n**Proposed Architecture:**\n- **Frontend:** React.js with TypeScript, hosted on Vercel. Uses D3.js for real-time fuel efficiency dashboards.\n- **Backend:** FastAPI (Python) microservices deployed on AWS ECS with PostgreSQL for relational data (user accounts, fleet metadata) and MongoDB for time-series vehicle telemetry. Redis for caching frequent queries (e.g., route optimization results).\n- **Data Pipeline:** Apache Kafka for ingesting telematics data, processed by PySpark for anomaly detection (e.g., sudden fuel spikes) before storage in MongoDB. Batch processing for monthly sustainability reports using AWS Glue.\n- **DevOps:** Infrastructure as Code (Terraform) for AWS resources, GitHub Actions for CI/CD, and Prometheus/Grafana for monitoring. Cost-optimized with AWS Spot Instances for non-critical workloads.\n\n**Tech Stack Rationale:**\n- FastAPI was chosen for its async support (critical for real-time telematics ingestion) and Python’s rich ecosystem (e.g., Pandas for data analysis, Scikit-learn for predictive modeling).\n- MongoDB’s flexible schema accommodates varying telematics device formats, while PostgreSQL ensures ACID compliance for financial transactions (e.g., subscription billing).\n- Kafka decouples data producers (telematics devices) from consumers (analytics, dashboards), improving scalability.\n\n**Roadmap (6 Months):**\n- **Month 1-2 (MVP):** Core API (user/auth, fleet/vehicle CRUD), basic telematics ingestion, and a React dashboard showing live fuel efficiency metrics. Budget: $15K (AWS, Vercel, third-party APIs).\n- **Month 3-4 (Scaling):** Add route optimization (using OR-Tools), anomaly detection (PyOD library), and initial integrations with Geotab/Samsara. Budget: $20K (additional AWS resources, external consultants).\n- **Month 5-6 (Polish):** Multi-tenant support, automated sustainability reporting, and performance testing (Locust). Budget: $10K (optimization, security audits).\n\n**Risks & Mitigations:**\n1. **Telematics Integration Delays:** Risk of vendor API changes breaking integrations. Mitigation: Implement a circuit breaker pattern in FastAPI and mock third-party APIs during development.\n2. **Cost Overruns:** Unpredictable AWS bills from high-volume data processing. Mitigation: Set up AWS Budgets alerts and use Lambda for sporadic workloads.\n3. **Data Privacy:** Handling sensitive GPS/vehicle data. Mitigation: Encrypt data at rest (AWS KMS) and in transit (TLS 1.3), and implement role-based access control (RBAC) in PostgreSQL.\n\n**Recommended Tools:**\n- **Local Development:** Docker Compose for PostgreSQL/MongoDB, FastAPI’s auto-reload for backend, and Storybook for React components.\n- **Testing:** Pytest for backend unit tests, Cypress for E2E frontend tests, and Locust for load testing.\n- **Monitoring:** AWS CloudWatch for logs, Sentry for error tracking, and Grafana for dashboards.\n\n**Next Steps:**\n1. Validate the architecture with a proof-of-concept (PoC) focusing on telematics ingestion and basic dashboards.\n2. Prioritize security reviews (OWASP Top 10) before Month 3.\n3. Allocate 20% of Month 4 budget for performance tuning based on PoC results.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-cto-team#main-content",
+      "claude-cto-team#overview",
+      "claude-cto-team#setup",
+      "claude-cto-team#examples",
+      "claude-cto-team#tools",
+      "claude-cto-team#mcp",
+      "claude-cto-team#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude CTO Team is a three-agent system designed to provide CTO-level technical guidance within Claude Code. It includes cto-orchestrator for routing complex requests, cto-architect for designing scalable system architectures with technology stack recommendations, and strategic-cto-mentor for ruthlessly validating plans against seven risk dimensions. The system covers full-stack development, ML/AI integration, cloud infrastructure, and microservices architecture. Teams use it to validate roadmaps, make build-vs-buy decisions, and stress-test technical plans before committing resources.\nValidating Q2 roadmaps and multi-domain project plans\nDesigning system architectures for scaling to 100K+ users\nMaking build-vs-buy decisions on tools like Auth0 or custom solutions\nGetting CTO-level feedback on technology stack choices",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alirezarezvani/claude-cto-team`",
+    "usage_vi": "```\nAct as the Claude CTO Team. Analyze the technical requirements for [PROJECT_NAME] and propose a high-level architecture, tech stack, and implementation roadmap. Include estimated timelines, potential risks, and mitigation strategies. Focus on scalability, security, and cost-efficiency. Assume the team has [TEAM_SIZE] engineers and [BUDGET_RANGE] budget. Suggest specific tools and frameworks (e.g., Python libraries, cloud services) that align with the project goals. Prioritize [PRIORITY_AREAS] and avoid [CONSTRAINTS].\n```\nCopy\n\n```\n### Technical Leadership Proposal for 'EcoTrack Green Fleet Management'\n\n**Project Overview:** EcoTrack is a SaaS platform enabling logistics companies to optimize fuel consumption and reduce carbon emissions by tracking vehicle performance, suggesting route adjustments, and generating sustainability reports. The MVP must support 1,000 concurrent users and integrate with third-party telematics devices (e.g., Geotab, Samsara).\n\n**Proposed Architecture:**\n- **Frontend:** React.js with TypeScript, hosted on Vercel. Uses D3.js for real-time fuel efficiency dashboards.\n- **Backend:** FastAPI (Python) microservices deployed on AWS ECS with PostgreSQL for relational data (user accounts, fleet metadata) and MongoDB for time-series vehicle telemetry. Redis for caching frequent queries (e.g., route optimization results).\n- **Data Pipeline:** Apache Kafka for ingesting telematics data, processed by PySpark for anomaly detection (e.g., sudden fuel spikes) before storage in MongoDB. Batch processing for monthly sustainability reports using AWS Glue.\n- **DevOps:** Infrastructure as Code (Terraform) for AWS resources, GitHub Actions for CI/CD, and Prometheus/Grafana for monitoring. Cost-optimized with AWS Spot Instances for non-critical workloads.\n\n**Tech Stack Rationale:**\n- FastAPI was chosen for its async support (critical for real-time telematics ingestion) and Python’s rich ecosystem (e.g., Pandas for data analysis, Scikit-learn for predictive modeling).\n- MongoDB’s flexible schema accommodates varying telematics device formats, while PostgreSQL ensures ACID compliance for financial transactions (e.g., subscription billing).\n- Kafka decouples data producers (telematics devices) from consumers (analytics, dashboards), improving scalability.\n\n**Roadmap (6 Months):**\n- **Month 1-2 (MVP):** Core API (user/auth, fleet/vehicle CRUD), basic telematics ingestion, and a React dashboard showing live fuel efficiency metrics. Budget: $15K (AWS, Vercel, third-party APIs).\n- **Month 3-4 (Scaling):** Add route optimization (using OR-Tools), anomaly detection (PyOD library), and initial integrations with Geotab/Samsara. Budget: $20K (additional AWS resources, external consultants).\n- **Month 5-6 (Polish):** Multi-tenant support, automated sustainability reporting, and performance testing (Locust). Budget: $10K (optimization, security audits).\n\n**Risks & Mitigations:**\n1. **Telematics Integration Delays:** Risk of vendor API changes breaking integrations. Mitigation: Implement a circuit breaker pattern in FastAPI and mock third-party APIs during development.\n2. **Cost Overruns:** Unpredictable AWS bills from high-volume data processing. Mitigation: Set up AWS Budgets alerts and use Lambda for sporadic workloads.\n3. **Data Privacy:** Handling sensitive GPS/vehicle data. Mitigation: Encrypt data at rest (AWS KMS) and in transit (TLS 1.3), and implement role-based access control (RBAC) in PostgreSQL.\n\n**Recommended Tools:**\n- **Local Development:** Docker Compose for PostgreSQL/MongoDB, FastAPI’s auto-reload for backend, and Storybook for React components.\n- **Testing:** Pytest for backend unit tests, Cypress for E2E frontend tests, and Locust for load testing.\n- **Monitoring:** AWS CloudWatch for logs, Sentry for error tracking, and Grafana for dashboards.\n\n**Next Steps:**\n1. Validate the architecture with a proof-of-concept (PoC) focusing on telematics ingestion and basic dashboards.\n2. Prioritize security reviews (OWASP Top 10) before Month 3.\n3. Allocate 20% of Month 4 budget for performance tuning based on PoC results.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:00:17.523634Z",
+    "http_status": 200,
+    "content_hash": "f23c4a3c9fc8fdeb18143d79986304fccb3c76e7be4b577d45e0ee1a7362adf5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-cto-team.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-cto-team.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude CTO Team: Plan & Execute with Precision",
+  "short_description_vi": "Claude CTO Team provides AI-powered technical leadership for planning and executing projects. Operations teams benefit from automated technical guidance, roadmap development, and workflow optimization. Integrates with Claude Code and Python-based workflows."
+}

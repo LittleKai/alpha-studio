@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/freeact",
+  "slug": "freeact",
+  "name": "Freeact",
+  "headline": "Freeact - Code Action Agent for Automation",
+  "short_description": "Freeact is a code action agent with a local execution sandbox. It supports programmatic tool calling, enabling developers to automate complex workflows. It integrates with Python-based tools and workflows, benefiting operations teams by streamlining repetitive tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "gradion-ai",
+  "install_command": "git clone https://github.com/gradion-ai/freeact.git",
+  "source_repo_url": "https://github.com/gradion-ai/freeact",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ipybox",
+    "code-mode",
+    "code-act",
+    "code-action",
+    "ai-agent",
+    "programmatic-tool-calling",
+    "sandbox-runtime"
+  ],
+  "sections": {
+    "overview": "Freeact is a lightweight, general-purpose agent that acts via code actions in a stateful local execution environment. It generates typed Python APIs from MCP server schemas, allowing agents to compose tool calls programmatically within single inference passes and process intermediate results. The platform supports unified execution of Python code, shell commands, and MCP tool calls, with optional sandbox mode for filesystem and network restrictions. Agents can save code actions as reusable tools, capture experience as executable knowledge, and delegate tasks to subagents for specialization and parallelization. Freeact includes action approval mechanisms, tool discovery via semantic search, session persistence for debugging and evaluation, and integration with agent skills from agentskills.io.\nAutomating complex operational workflows with Python code and shell commands\nProgrammatic composition of multiple MCP tool calls with intermediate result processing\nBuilding specialized subagents that delegate and parallelize tasks across execution environments\nCreating reusable agent-authored tools from successful code actions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gradion-ai/freeact`",
+    "usage": "```\nAutomate the following task using Freeact: [DESCRIBE_TASK]. Execute the Python-based workflow in the local sandbox. Handle any required inputs or dependencies automatically. Provide a summary of the steps taken and the final output. If errors occur, suggest fixes or alternatives.\n```\nCopy\n\n```\n### Freeact Execution Summary\n\n**Task:** Automate the generation of a quarterly sales report by extracting data from a CSV file, cleaning outliers, and generating a formatted PDF.\n\n**Steps Executed:**\n1. **Data Extraction:** Loaded `sales_data_q3_2024.csv` from the local directory using `pandas`. The file contained 12,450 records with columns: `date`, `product_id`, `region`, `revenue`, `units_sold`.\n2. **Data Cleaning:** Identified and removed 42 outliers where `revenue` exceeded 3 standard deviations from the mean using `numpy`. Applied a rolling average to smooth weekly fluctuations in `units_sold`.\n3. **Aggregation:** Grouped data by `region` and `product_id` to calculate total revenue and units sold. Generated a pivot table with `region` as rows and `product_id` as columns.\n4. **Report Generation:** Used `matplotlib` to create a bar chart comparing revenue by region. Exported the cleaned data and chart to a PDF report titled `Q3_2024_Sales_Report.pdf` using `reportlab`.\n\n**Output:**\n- Cleaned dataset saved to `cleaned_sales_data_q3_2024.csv` (12,408 records).\n- PDF report generated with 4 pages, including a summary table and chart.\n- No errors encountered during execution.\n\n**Suggested Next Steps:**\n- Schedule this workflow to run automatically on the first Monday of each quarter using a cron job.\n- Add email notifications to stakeholders with the PDF report attached.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "freeact#main-content",
+      "freeact#overview",
+      "freeact#setup",
+      "freeact#examples",
+      "freeact#tools",
+      "freeact#mcp",
+      "freeact#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Freeact là một agent đa năng, dung lượng nhẹ, hoạt động thông qua các hành động bằng mã nguồn (code actions) trong một môi trường thực thi cục bộ có lưu trạng thái (stateful). Công cụ này tự động tạo các API Python định kiểu (typed Python APIs) từ schema của MCP server, cho phép các agent thiết lập các lệnh gọi tool bằng lập trình trong một lượt suy luận duy nhất (single inference pass) và xử lý các kết quả trung gian. Nền tảng hỗ trợ thực thi hợp nhất mã Python, lệnh shell và các lệnh gọi MCP tool, đi kèm chế độ sandbox tùy chọn để giới hạn hệ thống tệp và mạng. Các agent có thể lưu lại các code action dưới dạng các tool có thể tái sử dụng, lưu trữ trải nghiệm thành tri thức có thể thực thi, và ủy quyền tác vụ cho các subagent để chuyên môn hóa và xử lý song song. Freeact bao gồm cơ chế phê duyệt hành động (action approval), tìm kiếm tool thông qua tìm kiếm ngữ nghĩa (semantic search), duy trì session để phục vụ debug và đánh giá, cùng khả năng tích hợp với các agent skill từ agentskills.io.\nTự động hóa các workflow vận hành phức tạp bằng mã Python và lệnh shell\nThiết lập lập trình các lệnh gọi nhiều MCP tool đồng thời xử lý kết quả trung gian\nXây dựng các subagent chuyên biệt để ủy quyền và song song hóa tác vụ trên các môi trường thực thi\nTạo các tool có thể tái sử dụng do agent tự viết từ các code action thành công",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/gradion-ai/freeact`",
+    "usage_vi": "```\nTự động hóa tác vụ sau bằng Freeact: [DESCRIBE_TASK]. Thực thi workflow dựa trên Python trong sandbox cục bộ. Tự động xử lý mọi đầu vào hoặc phụ thuộc (dependencies) được yêu cầu. Cung cấp bản tóm tắt các bước đã thực hiện và kết quả cuối cùng. Nếu xảy ra lỗi, hãy đề xuất hướng khắc phục hoặc giải pháp thay thế.\n```\nCopy\n\n```\n### Tóm tắt thực thi Freeact\n\n**Tác vụ:** Tự động hóa việc tạo báo cáo doanh số hàng quý bằng cách trích xuất dữ liệu từ tệp CSV, làm sạch các điểm dữ liệu dị biệt (outliers) và tạo một tệp PDF được định dạng.\n\n**Các bước đã thực hiện:**\n1. **Trích xuất dữ liệu (Data Extraction):** Tải tệp `sales_data_q3_2024.csv` từ thư mục cục bộ bằng thư viện `pandas`. Tệp chứa 12.450 bản ghi với các cột: `date`, `product_id`, `region`, `revenue`, `units_sold`.\n2. **Làm sạch dữ liệu (Data Cleaning):** Phát hiện và loại bỏ 42 điểm dị biệt (outliers) có giá trị `revenue` vượt quá 3 lần độ lệch chuẩn so với giá trị trung bình bằng `numpy`. Áp dụng trung bình trượt (rolling average) để làm mượt các biến động hàng tuần của `units_sold`.\n3. **Tổng hợp dữ liệu (Aggregation):** Gom nhóm dữ liệu theo `region` và `product_id` để tính tổng doanh thu (revenue) và số lượng bán ra (units sold). Tạo một bảng xoay (pivot table) với `region` làm dòng và `product_id` làm cột.\n4. **Tạo báo cáo (Report Generation):** Sử dụng `matplotlib` để tạo biểu đồ cột so sánh doanh thu theo khu vực. Xuất dữ liệu đã làm sạch và biểu đồ sang báo cáo PDF có tiêu đề `Q3_2024_Sales_Report.pdf` bằng thư viện `reportlab`.\n\n**Kết quả đầu ra (Output):**\n- Tập dữ liệu đã làm sạch được lưu vào tệp `cleaned_sales_data_q3_2024.csv` (12.408 bản ghi).\n- Báo cáo PDF được tạo gồm 4 trang, bao gồm bảng tóm tắt và biểu đồ.\n- Không gặp lỗi nào trong quá trình thực thi.\n\n**Các bước đề xuất tiếp theo:**\n- Lên lịch chạy tự động workflow này vào ngày Thứ Hai đầu tiên của mỗi quý bằng cron job.\n- Thêm tính năng gửi thông báo qua email cho các bên liên quan đính kèm báo cáo PDF.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:52.767043Z",
+    "http_status": 200,
+    "content_hash": "6b04425dad1dcae82a005a9956a077f4d96fea96837a2931b1d2530ad06d4add",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\freeact.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\freeact.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Freeact - Code Action Agent dành cho Tự động hóa",
+  "short_description_vi": "Freeact là một code action agent đi kèm sandbox thực thi cục bộ. Công cụ này hỗ trợ gọi tool bằng lập trình (programmatic tool calling), cho phép các nhà phát triển tự động hóa các quy trình công việc (workflow) phức tạp. Nó tích hợp mượt mà với các công cụ và workflow dựa trên Python, giúp các đội ngũ vận hành tối ưu hóa các tác vụ lặp đi lặp lại."
+}

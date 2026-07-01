@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/upskill",
+  "slug": "upskill",
+  "name": "Upskill",
+  "headline": "Upskill - Agent Skill Generation and Evaluation",
+  "short_description": "Upskill generates and evaluates agent skills for code agents like Claude Code, Open Code, and OpenAI Codex. It benefits operations teams by creating skills with teacher models and optimizing them with student models. It connects to code agents and workflows requiring automated skill evaluation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "huggingface",
+  "install_command": "git clone https://github.com/huggingface/upskill.git",
+  "source_repo_url": "https://github.com/huggingface/upskill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "UPskill automates the creation and evaluation of agent skills for code agents through a two-tier model approach. Teacher models (expensive/slow) generate high-quality skills that student models (cheap/fast) can use to perform complex tasks reliably. The tool generates skills from task descriptions or existing agent traces, creates synthetic test cases, and benchmarks multiple models against defined evaluation criteria. It supports local execution and remote evaluation on Hugging Face Jobs, making it ideal for operations teams building optimized skill libraries for their agent workflows.\nCreate reusable skills for code agents from natural language task descriptions\nOptimize expensive teacher model outputs for cheaper student model inference\nBenchmark multiple models against generated skills to identify performance trade-offs\nImprove existing skills by adding examples and refining based on evaluation results",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/huggingface/upskill`",
+    "usage": "```\nGenerate an agent skill for [AGENT_TYPE] that automates [SPECIFIC_TASK]. The skill should include: 1) A clear description of what it does, 2) Input/output examples, 3) Error handling for edge cases like [EDGE_CASE_1] or [EDGE_CASE_2], and 4) Performance benchmarks with metrics like accuracy or speed. Validate the skill using [TEACHER_MODEL] and optimize it with [STUDENT_MODEL].\n```\nCopy\n\n```\n```json\n{\n  \"skill_name\": \"Automated_API_Documentation_Generator\",\n  \"description\": \"This skill automates the generation of API documentation by parsing codebases, extracting endpoints, and formatting them into Markdown files compatible with tools like Swagger or Postman.\",\n  \"input_example\": {\n    \"repository_url\": \"https://github.com/example/backend-service\",\n    \"target_branches\": [\"main\", \"develop\"],\n    \"output_format\": \"swagger\"\n  },\n  \"output_example\": {\n    \"documentation\": \"Generated Swagger UI-compatible JSON file with 12 endpoints, including request/response schemas and example payloads.\",\n    \"coverage_report\": \"95% of endpoints documented (1 missing due to deprecated endpoint).\",\n    \"execution_time\": \"4.2 seconds\"\n  },\n  \"error_handling\": {\n    \"missing_repository\": \"Returns error: 'Repository not found or inaccessible.'\",\n    \"unsupported_language\": \"Returns error: 'Language not supported. Currently supports Python, JavaScript, and Java.'\",\n    \"invalid_format\": \"Returns error: 'Unsupported output format. Choose from: swagger, postman, or markdown.'\"\n  },\n  \"performance_benchmarks\": {\n    \"accuracy\": \"98% endpoint coverage across 50 tested repositories.\",\n    \"speed\": \"Average execution time: 3.8 seconds for repositories under 100k lines of code.\",\n    \"scalability\": \"Handles repositories up to 500k lines of code without significant degradation.\"\n  }\n}\n```\n\n**Validation & Optimization:**\nThe skill was initially generated using **Claude Code** as the teacher model, which provided a baseline implementation. The student model (**Open Code**) then refined the skill by:\n- Reducing false positives in endpoint detection by 15%.\n- Improving error messages for unsupported languages.\n- Adding support for Java annotations in endpoint parsing.\n\nThe optimized skill was tested on a dataset of 200 repositories, achieving a 97% success rate in generating valid documentation. The student model also suggested adding a caching mechanism to reduce execution time for repeated runs on the same repository.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "upskill#main-content",
+      "upskill#overview",
+      "upskill#setup",
+      "upskill#examples",
+      "upskill#tools",
+      "upskill#mcp",
+      "upskill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "UPskill tự động hóa quy trình tạo và đánh giá skill cho các code agent thông qua phương pháp mô hình hai tầng (two-tier model). Các teacher model (chi phí cao/tốc độ chậm) sẽ tạo ra các skill chất lượng cao, sau đó các student model (chi phí thấp/tốc độ nhanh) có thể sử dụng chúng để thực hiện các tác vụ phức tạp một cách đáng tin cậy. Công cụ này giúp tạo skill từ mô tả tác vụ hoặc các trace của agent hiện có, tạo các test case tổng hợp và benchmark nhiều mô hình dựa trên các tiêu chí đánh giá được xác định sẵn. Nó hỗ trợ thực thi local và đánh giá từ xa trên Hugging Face Jobs, là giải pháp lý tưởng cho các đội ngũ vận hành đang xây dựng thư viện skill tối ưu cho các workflow của agent.\nTạo các skill có thể tái sử dụng cho code agent từ mô tả tác vụ bằng ngôn ngữ tự nhiên\nTối ưu hóa đầu ra của teacher model chi phí cao để phục vụ cho quá trình inference của student model chi phí thấp hơn\nBenchmark nhiều mô hình dựa trên các skill đã tạo để xác định sự đánh đổi về hiệu năng\nCải thiện các skill hiện có bằng cách thêm ví dụ và tinh chỉnh dựa trên kết quả đánh giá",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/huggingface/upskill`",
+    "usage_vi": "```\nTạo một agent skill cho [AGENT_TYPE] để tự động hóa [SPECIFIC_TASK]. Skill này phải bao gồm: 1) Mô tả rõ ràng về chức năng của nó, 2) Các ví dụ đầu vào/đầu ra, 3) Xử lý lỗi cho các edge case như [EDGE_CASE_1] hoặc [EDGE_CASE_2], và 4) Benchmark hiệu năng với các chỉ số như độ chính xác hoặc tốc độ. Xác thực skill bằng cách sử dụng [TEACHER_MODEL] và tối ưu hóa bằng [STUDENT_MODEL].\n```\nCopy\n\n```\n```json\n{\n  \"skill_name\": \"Automated_API_Documentation_Generator\",\n  \"description\": \"Skill này tự động hóa việc tạo tài liệu API bằng cách parse codebase, trích xuất các endpoint và định dạng chúng thành các file Markdown tương thích với các công cụ như Swagger hoặc Postman.\",\n  \"input_example\": {\n    \"repository_url\": \"https://github.com/example/backend-service\",\n    \"target_branches\": [\"main\", \"develop\"],\n    \"output_format\": \"swagger\"\n  },\n  \"output_example\": {\n    \"documentation\": \"Đã tạo file JSON tương thích với Swagger UI gồm 12 endpoint, bao gồm schema của request/response và payload ví dụ.\",\n    \"coverage_report\": \"Đã làm tài liệu cho 95% endpoint (thiếu 1 do endpoint đã bị deprecated).\",\n    \"execution_time\": \"4.2 giây\"\n  },\n  \"error_handling\": {\n    \"missing_repository\": \"Trả về lỗi: 'Repository không tìm thấy hoặc không thể truy cập.'\",\n    \"unsupported_language\": \"Trả về lỗi: 'Ngôn ngữ không được hỗ trợ. Hiện tại hỗ trợ Python, JavaScript và Java.'\",\n    \"invalid_format\": \"Trả về lỗi: 'Định dạng đầu ra không được hỗ trợ. Chọn từ: swagger, postman hoặc markdown.'\"\n  },\n  \"performance_benchmarks\": {\n    \"accuracy\": \"Độ bao phủ endpoint đạt 98% trên 50 repository được kiểm thử.\",\n    \"speed\": \"Thời gian thực thi trung bình: 3.8 giây đối với các repository dưới 100k dòng code.\",\n    \"scalability\": \"Xử lý các repository lên đến 500k dòng code mà hiệu năng không bị giảm sút đáng kể.\"\n  }\n}\n```\n\n**Xác thực & Tối ưu hóa:**\nSkill này ban đầu được tạo bằng cách sử dụng **Claude Code** làm teacher model để cung cấp một triển khai cơ sở (baseline implementation). Sau đó, student model (**Open Code**) đã tinh chỉnh skill bằng cách:\n- Giảm 15% tỷ lệ dương tính giả (false positive) trong việc phát hiện endpoint.\n- Cải thiện các thông báo lỗi cho các ngôn ngữ không được hỗ trợ.\n- Thêm hỗ trợ cho Java annotation trong việc parse endpoint.\n\nSkill đã tối ưu hóa được kiểm thử trên tập dữ liệu gồm 200 repository, đạt tỷ lệ thành công 97% trong việc tạo tài liệu hợp lệ. Student model cũng đề xuất thêm cơ chế cache để giảm thời gian thực thi cho các lần chạy lặp lại trên cùng một repository."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:15:22.243113Z",
+    "http_status": 200,
+    "content_hash": "cc51b6f4facac7c1b660611ceafadff4a2b56518ed21d30e48adacb593a863e2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\upskill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\upskill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Upskill - Tạo và Đánh giá Skill cho Agent",
+  "short_description_vi": "Upskill hỗ trợ tạo và đánh giá các skill cho các code agent như Claude Code, Open Code và OpenAI Codex. Công cụ này mang lại lợi ích cho các đội ngũ vận hành nhờ khả năng tạo skill bằng các teacher model và tối ưu hóa chúng bằng các student model. Nó dễ dàng kết nối với các code agent và workflow yêu cầu đánh giá skill tự động."
+}

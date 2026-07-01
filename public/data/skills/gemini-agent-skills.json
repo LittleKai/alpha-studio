@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini-agent-skills",
+  "slug": "gemini-agent-skills",
+  "name": "browser-use",
+  "headline": "Gemini Agent Skills - Convert Claude Agents to",
+  "short_description": "Convert and optimize Claude Code agents for Google Gemini. Operations teams use this to integrate AI agents into their workflows, connecting to Gemini's ecosystem and enhancing automation capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "saeed-vayghan",
+  "install_command": "git clone https://github.com/saeed-vayghan/gemini-agent-skills.git",
+  "source_repo_url": "https://github.com/saeed-vayghan/gemini-agent-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "agents",
+    "gemini",
+    "antigravity",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Gemini Agent Skills is a CLI tool that converts Anthropic Claude Code configurations—including plugins, agents, and skills—into Google Gemini Agent Skills format. It uses Gemini 2.0 Flash to intelligently parse and restructure existing agent definitions for use in the Gemini Agent Playground. The tool supports dual conversion modes: Plugin Mode merges multiple agents into a unified skill, while Agents Mode batch-converts individual markdown files into separate skills. Features include AI-powered directory analysis, smart asset extraction from code blocks, automatic broken link detection, and registry generation. Operations teams can pick specific agents from the modular repository or convert custom Claude prompts instantly, building tailored teams of AI experts for their workflows.\nMigrate existing Claude Code agents to Gemini without manual reconfiguration\nConvert custom Claude agent prompts into Gemini-compatible skill format\nBatch convert multiple agent markdown files into independent Gemini Skills\nExtract and organize code assets from agent definitions automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/saeed-vayghan/gemini-agent-skills`",
+    "usage": "```\nConvert the following Claude Code agent configuration to Google Gemini format. Here is the [AGENT_CONFIGURATION]: [PASTE_CONFIGURATION_HERE]. Ensure the conversion maintains all functionality and optimizes for Gemini's ecosystem. Include any necessary adjustments for API endpoints, authentication, and data processing.\n```\nCopy\n\n```\n# Google Gemini Agent Configuration",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gemini-agent-skills#main-content",
+      "gemini-agent-skills#overview",
+      "gemini-agent-skills#setup",
+      "gemini-agent-skills#examples",
+      "gemini-agent-skills#tools",
+      "gemini-agent-skills#mcp",
+      "gemini-agent-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini Agent Skills is a CLI tool that converts Anthropic Claude Code configurations—including plugins, agents, and skills—into Google Gemini Agent Skills format. It uses Gemini 2.0 Flash to intelligently parse and restructure existing agent definitions for use in the Gemini Agent Playground. The tool supports dual conversion modes: Plugin Mode merges multiple agents into a unified skill, while Agents Mode batch-converts individual markdown files into separate skills. Features include AI-powered directory analysis, smart asset extraction from code blocks, automatic broken link detection, and registry generation. Operations teams can pick specific agents from the modular repository or convert custom Claude prompts instantly, building tailored teams of AI experts for their workflows.\nMigrate existing Claude Code agents to Gemini without manual reconfiguration\nConvert custom Claude agent prompts into Gemini-compatible skill format\nBatch convert multiple agent markdown files into independent Gemini Skills\nExtract and organize code assets from agent definitions automatically",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/saeed-vayghan/gemini-agent-skills`",
+    "usage_vi": "```\nConvert the following Claude Code agent configuration to Google Gemini format. Here is the [AGENT_CONFIGURATION]: [PASTE_CONFIGURATION_HERE]. Ensure the conversion maintains all functionality and optimizes for Gemini's ecosystem. Include any necessary adjustments for API endpoints, authentication, and data processing.\n```\nCopy\n\n```\n# Google Gemini Agent Configuration"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:18:10.359436Z",
+    "http_status": 200,
+    "content_hash": "cc91643f71a60a00dae1765da6f0f812124d9531feb3830f1d215678c22c2104",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini-agent-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini-agent-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Gemini Agent Skills - Convert Claude Agents to",
+  "short_description_vi": "Convert and optimize Claude Code agents for Google Gemini. Operations teams use this to integrate AI agents into their workflows, connecting to Gemini's ecosystem and enhancing automation capabilities."
+}

@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-bmad-skills",
+  "slug": "claude-code-bmad-skills",
+  "name": "Claude Code Bmad Skills",
+  "headline": "bm code skills for Claude Code automation",
+  "short_description": "The BMAD Method skill integrates auto-detection, memory, and slash commands into Claude Code. It enables developers to use agile development methodologies with AI assistance. The skill connects to Claude Code and enhances development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "aj-geddes",
+  "install_command": "git clone https://github.com/aj-geddes/claude-code-bmad-skills.git",
+  "source_repo_url": "https://github.com/aj-geddes/claude-code-bmad-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agile",
+    "development-tools",
+    "bmad-method",
+    "claude-code",
+    "bmad",
+    "skills",
+    "llm",
+    "ai-development",
+    "agentic-ai"
+  ],
+  "sections": {
+    "overview": "BMAD Method v6 transforms Claude Code into a complete agile development environment by integrating nine specialized skills—including Business Analyst, Product Manager, System Architect, and Developer agents—with fifteen structured workflow commands. The methodology optimizes token usage by 70-85% through a helper pattern approach while providing native Claude Code integration without external dependencies. It guides development through five phases: product discovery, requirements planning, system architecture, sprint planning, and implementation, with additional modules for custom agent creation, creative intelligence, and UX design. Teams benefit from reduced context switching, standardized agile processes, and AI-assisted workflows that maintain consistency across projects. The skill works cross-platform on Windows, Linux, macOS, and WSL with automatic platform detection during installation.\nInitialize new projects with structured product discovery and requirements gathering using /product-brief and /prd commands\nPlan and execute development sprints with /sprint-planning and /create-story for user story generation\nDesign system architecture using the System Architect agent before implementation begins\nCreate custom agents and workflows for team-specific processes with the Builder module",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aj-geddes/claude-code-bmad-skills`",
+    "usage": "```\nUse the BMAD Method with Claude Code to [TASK]. Start with `/detect` to analyze the repository structure and identify [FOCUS_AREAS]. Then use `/memory` to load relevant context from [CONTEXT_FILES]. Finally, execute `/agile` to generate and implement [DELIVERABLE] while maintaining [METRICS]. Document all steps in [LOG_FILE].\n```\nCopy\n\n```\n### BMAD Method Execution Report\n**Project:** Acme Corp E-commerce Platform\n**Task:** Refactor legacy checkout flow to reduce latency by 30%\n\n**Step 1: Repository Detection (/detect)**\nAnalyzed 47 files across `/src`, `/tests`, and `/config`. Identified 12 files in `/src/checkout` with average complexity score of 7.2/10. Highlighted `PaymentProcessor.js` (1500 lines) and `CartService.js` (800 lines) as primary bottlenecks.\n\n**Step 2: Context Loading (/memory)**\nLoaded:\n- `checkout_architecture.md` (last updated 2 weeks ago)\n- `performance_metrics.json` (showing 4.2s avg checkout time)\n- `tech_debt_report.csv` (flagging 8 critical issues)\n\n**Step 3: Agile Execution (/agile)**\nGenerated 3 sprint tasks:\n1. Split `PaymentProcessor.js` into `PaymentGateway.js` and `FraudDetection.js` (estimated 2 days)\n2. Implement Redis caching for cart sessions (estimated 1 day)\n3. Add load testing with k6 (estimated 0.5 days)\n\n**Metrics Tracked:**\n- Code coverage: 85% → 92% (+7%)\n- Latency: 4.2s → 2.9s (-31%)\n- Cyclomatic complexity: 7.2 → 4.1 (-43%)\n\n**Deliverables:**\n- `/src/checkout/services/` (new directory)\n- `checkout_refactor.md` (documentation)\n- `performance_after_refactor.json` (validation data)\n\nAll changes committed to `feature/checkout-refactor` branch with PR #1245 ready for review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-bmad-skills#main-content",
+      "claude-code-bmad-skills#overview",
+      "claude-code-bmad-skills#setup",
+      "claude-code-bmad-skills#examples",
+      "claude-code-bmad-skills#tools",
+      "claude-code-bmad-skills#mcp",
+      "claude-code-bmad-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "BMAD Method v6 transforms Claude Code into a complete agile development environment by integrating nine specialized skills—including Business Analyst, Product Manager, System Architect, and Developer agents—with fifteen structured workflow commands. The methodology optimizes token usage by 70-85% through a helper pattern approach while providing native Claude Code integration without external dependencies. It guides development through five phases: product discovery, requirements planning, system architecture, sprint planning, and implementation, with additional modules for custom agent creation, creative intelligence, and UX design. Teams benefit from reduced context switching, standardized agile processes, and AI-assisted workflows that maintain consistency across projects. The skill works cross-platform on Windows, Linux, macOS, and WSL with automatic platform detection during installation.\nInitialize new projects with structured product discovery and requirements gathering using /product-brief and /prd commands\nPlan and execute development sprints with /sprint-planning and /create-story for user story generation\nDesign system architecture using the System Architect agent before implementation begins\nCreate custom agents and workflows for team-specific processes with the Builder module",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aj-geddes/claude-code-bmad-skills`",
+    "usage_vi": "```\nUse the BMAD Method with Claude Code to [TASK]. Start with `/detect` to analyze the repository structure and identify [FOCUS_AREAS]. Then use `/memory` to load relevant context from [CONTEXT_FILES]. Finally, execute `/agile` to generate and implement [DELIVERABLE] while maintaining [METRICS]. Document all steps in [LOG_FILE].\n```\nCopy\n\n```\n### BMAD Method Execution Report\n**Project:** Acme Corp E-commerce Platform\n**Task:** Refactor legacy checkout flow to reduce latency by 30%\n\n**Step 1: Repository Detection (/detect)**\nAnalyzed 47 files across `/src`, `/tests`, and `/config`. Identified 12 files in `/src/checkout` with average complexity score of 7.2/10. Highlighted `PaymentProcessor.js` (1500 lines) and `CartService.js` (800 lines) as primary bottlenecks.\n\n**Step 2: Context Loading (/memory)**\nLoaded:\n- `checkout_architecture.md` (last updated 2 weeks ago)\n- `performance_metrics.json` (showing 4.2s avg checkout time)\n- `tech_debt_report.csv` (flagging 8 critical issues)\n\n**Step 3: Agile Execution (/agile)**\nGenerated 3 sprint tasks:\n1. Split `PaymentProcessor.js` into `PaymentGateway.js` and `FraudDetection.js` (estimated 2 days)\n2. Implement Redis caching for cart sessions (estimated 1 day)\n3. Add load testing with k6 (estimated 0.5 days)\n\n**Metrics Tracked:**\n- Code coverage: 85% → 92% (+7%)\n- Latency: 4.2s → 2.9s (-31%)\n- Cyclomatic complexity: 7.2 → 4.1 (-43%)\n\n**Deliverables:**\n- `/src/checkout/services/` (new directory)\n- `checkout_refactor.md` (documentation)\n- `performance_after_refactor.json` (validation data)\n\nAll changes committed to `feature/checkout-refactor` branch with PR #1245 ready for review.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:18:52.109638Z",
+    "http_status": 200,
+    "content_hash": "690def2a654b0fd41e0beaba8fb780abf3c1d38ce3cc90aac37d8f16c19c2f18",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-bmad-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-bmad-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "bm code skills for Claude Code automation",
+  "short_description_vi": "The BMAD Method skill integrates auto-detection, memory, and slash commands into Claude Code. It enables developers to use agile development methodologies with AI assistance. The skill connects to Claude Code and enhances development workflows."
+}

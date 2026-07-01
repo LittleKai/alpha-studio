@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-statusline-powerline",
+  "slug": "claude-statusline-powerline",
+  "name": "Claude Statusline Powerline",
+  "headline": "Claude Code statusline with git and cost tracking",
+  "short_description": "Claude Statusline Powerline is a TypeScript-based tool that enhances the Claude Code interface with a customizable powerline-style statusline. It integrates with git for version control, tracks active sessions, and monitors usage costs. Developers benefit from real-time insights and a streamlined workflow.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "spences10",
+  "install_command": "git clone https://github.com/spences10/claude-statusline-powerline.git",
+  "source_repo_url": "https://github.com/spences10/claude-statusline-powerline",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-tools",
+    "cli",
+    "themeing",
+    "claude-code",
+    "terminal",
+    "git",
+    "poweline",
+    "ai-tools",
+    "statusbar",
+    "statusline"
+  ],
+  "sections": {
+    "overview": "Claude Statusline Powerline enhances the Claude Code interface with a customizable powerline-style statusline displaying real-time development metrics. The tool integrates with git to show branch status and file changes, tracks active session tokens and estimated costs, and monitors context usage with cache performance data. Developers can configure multiple visual themes (dark, dracula, nord, tokyo-night, and more), customize segment order across multiple lines, and enable IntelliSense for settings validation. It supports Nerd Font and powerline font profiles with adjustable separators and icons, helping developers maintain workflow awareness without leaving the Claude Code environment.\nMonitor token consumption and API costs during AI-assisted development sessions\nDisplay git branch status with file change indicators alongside Claude model information\nTrack context window usage with warnings at 75% and 90% capacity thresholds\nCustomize statusline layout with multiple visual themes and separator styles",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spences10/claude-statusline-powerline`",
+    "usage": "```\nSet up and customize the Claude Statusline Powerline for [PROJECT_NAME] in [DIRECTORY_PATH]. Configure the powerline to display [GIT_BRANCH], [SESSION_DURATION], [USAGE_COST], and [ACTIVE_TASKS]. Ensure the statusline updates in real-time and matches the [THEME_COLORS] theme. Provide the TypeScript configuration file and installation steps.\n```\nCopy\n\n```\n```typescript\n// Claude Statusline Powerline Configuration for 'ecommerce-backend' project\n// File: .claude/statusline.ts\nimport { Statusline } from '@claude/statusline-powerline';\n\nconst statusline = new Statusline({\n  git: { enabled: true, branch: true, status: true },\n  session: { enabled: true, duration: true, activeTasks: true },\n  cost: { enabled: true, tracking: true, currency: 'USD' },\n  theme: {\n    background: '#1e1e2e',\n    foreground: '#cdd6f4',\n    git: { clean: '#a6e3a1', dirty: '#f38ba8' },\n    session: { active: '#89b4fa', idle: '#9399b2' },\n    cost: { low: '#f9e2af', high: '#f38ba8' }\n  }\n});\n\nexport default statusline;\n```\n\n**Current Statusline Output:**\n```\n ecommerce-backend  main [+2 ~3 -1]  01:23:45  $12.47  3 tasks \n```\n\n**Breakdown:**\n- Git: On branch `main` with 2 staged changes, 3 unstaged, and 1 deleted file\n- Session: Active for 1 hour, 23 minutes, and 45 seconds\n- Cost: $12.47 spent in current billing cycle (using Claude Code's $0.15/1K tokens pricing)\n- Active Tasks: 3 background processes running (linting, tests, and build watcher)\n\n**Installation Steps Completed:**\n1. Added `.claude/statusline.ts` to project root\n2. Configured `claude.json` to load the statusline module\n3. Verified real-time updates by making a git commit (statusline refreshed in <1s)\n4. Tested theme colors by modifying background to #1e1e2e\n\n**Next Steps:**\n- Add custom segments for [LINT_ERRORS] and [TEST_COVERAGE] metrics\n- Configure cost tracking for specific project budgets\n- Share configuration with team via Git repository\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-statusline-powerline#main-content",
+      "claude-statusline-powerline#overview",
+      "claude-statusline-powerline#setup",
+      "claude-statusline-powerline#examples",
+      "claude-statusline-powerline#tools",
+      "claude-statusline-powerline#mcp",
+      "claude-statusline-powerline#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Statusline Powerline enhances the Claude Code interface with a customizable powerline-style statusline displaying real-time development metrics. The tool integrates with git to show branch status and file changes, tracks active session tokens and estimated costs, and monitors context usage with cache performance data. Developers can configure multiple visual themes (dark, dracula, nord, tokyo-night, and more), customize segment order across multiple lines, and enable IntelliSense for settings validation. It supports Nerd Font and powerline font profiles with adjustable separators and icons, helping developers maintain workflow awareness without leaving the Claude Code environment.\nMonitor token consumption and API costs during AI-assisted development sessions\nDisplay git branch status with file change indicators alongside Claude model information\nTrack context window usage with warnings at 75% and 90% capacity thresholds\nCustomize statusline layout with multiple visual themes and separator styles",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spences10/claude-statusline-powerline`",
+    "usage_vi": "```\nSet up and customize the Claude Statusline Powerline for [PROJECT_NAME] in [DIRECTORY_PATH]. Configure the powerline to display [GIT_BRANCH], [SESSION_DURATION], [USAGE_COST], and [ACTIVE_TASKS]. Ensure the statusline updates in real-time and matches the [THEME_COLORS] theme. Provide the TypeScript configuration file and installation steps.\n```\nCopy\n\n```\n```typescript\n// Claude Statusline Powerline Configuration for 'ecommerce-backend' project\n// File: .claude/statusline.ts\nimport { Statusline } from '@claude/statusline-powerline';\n\nconst statusline = new Statusline({\n  git: { enabled: true, branch: true, status: true },\n  session: { enabled: true, duration: true, activeTasks: true },\n  cost: { enabled: true, tracking: true, currency: 'USD' },\n  theme: {\n    background: '#1e1e2e',\n    foreground: '#cdd6f4',\n    git: { clean: '#a6e3a1', dirty: '#f38ba8' },\n    session: { active: '#89b4fa', idle: '#9399b2' },\n    cost: { low: '#f9e2af', high: '#f38ba8' }\n  }\n});\n\nexport default statusline;\n```\n\n**Current Statusline Output:**\n```\n ecommerce-backend  main [+2 ~3 -1]  01:23:45  $12.47  3 tasks \n```\n\n**Breakdown:**\n- Git: On branch `main` with 2 staged changes, 3 unstaged, and 1 deleted file\n- Session: Active for 1 hour, 23 minutes, and 45 seconds\n- Cost: $12.47 spent in current billing cycle (using Claude Code's $0.15/1K tokens pricing)\n- Active Tasks: 3 background processes running (linting, tests, and build watcher)\n\n**Installation Steps Completed:**\n1. Added `.claude/statusline.ts` to project root\n2. Configured `claude.json` to load the statusline module\n3. Verified real-time updates by making a git commit (statusline refreshed in <1s)\n4. Tested theme colors by modifying background to #1e1e2e\n\n**Next Steps:**\n- Add custom segments for [LINT_ERRORS] and [TEST_COVERAGE] metrics\n- Configure cost tracking for specific project budgets\n- Share configuration with team via Git repository\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:45.008559Z",
+    "http_status": 200,
+    "content_hash": "a50efc65a7ef657fe57d7c111d1717cf143efb0a2aad5dab4501d9a893b2e181",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-statusline-powerline.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-statusline-powerline.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code statusline with git and cost tracking",
+  "short_description_vi": "Claude Statusline Powerline is a TypeScript-based tool that enhances the Claude Code interface with a customizable powerline-style statusline. It integrates with git for version control, tracks active sessions, and monitors usage costs. Developers benefit from real-time insights and a streamlined workflow."
+}

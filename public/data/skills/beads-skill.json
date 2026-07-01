@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/beads-skill",
+  "slug": "beads-skill",
+  "name": "Beads Skill",
+  "headline": "beads skill for Claude code",
+  "short_description": "Beads skill enables Claude Code to interact with Beads, a shell-based automation tool. It benefits operations teams by automating workflows and integrating with existing shell scripts. The skill connects Claude Code to Beads, allowing for streamlined automation of repetitive tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "mrf",
+  "install_command": "git clone https://github.com/mrf/beads-skill.git",
+  "source_repo_url": "https://github.com/mrf/beads-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Beads skill connects Claude Code to Beads, a lightweight issue tracker designed for AI agent workflows. It provides slash commands for common operations like creating issues, tracking dependencies, and managing work status, helping Claude remember context across sessions. The skill includes a Project Manager agent that ensures alignment between tracked issues and actual project work. Operations and development teams benefit from automated task tracking, dependency management, and persistent memory that eliminates context loss between sessions.\nTrack coding tasks and dependencies across multiple Claude sessions\nMaintain project alignment with automated Project Manager audits\nCreate and manage hierarchical issues with parent-child relationships\nIdentify unblocked work ready to start with the /beads:ready command",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mrf/beads-skill`",
+    "usage": "```\nI need to automate a workflow using Beads. Here are the details: [WORKFLOW_DESCRIPTION]. Can you generate the necessary Beads script and explain how it works?\n```\nCopy\n\n```\n# Beads Automation Script for [WORKFLOW_DESCRIPTION]\n\n```bash\n#!/bin/bash\n\n# Define variables\nCOMPANY=\"Example Corp\"\nINDUSTRY=\"Technology\"\nDATA=\"user_data.csv\"\n\n# Step 1: Data Preparation\nif [ -f \"$DATA\" ]; then\n    echo \"Data file found. Preparing for processing...\"\n    # Add data preparation steps here\nelse\n    echo \"Error: Data file not found.\"\n    exit 1\nfi\n\n# Step 2: Data Processing\n# Add data processing steps here\n\n# Step 3: Data Analysis\n# Add data analysis steps here\n\n# Step 4: Report Generation\n# Add report generation steps here\n\necho \"Workflow completed successfully.\"\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "beads-skill#main-content",
+      "beads-skill#overview",
+      "beads-skill#setup",
+      "beads-skill#examples",
+      "beads-skill#tools",
+      "beads-skill#mcp",
+      "beads-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kỹ năng Beads kết nối Claude Code với hệ thống quản lý công việc và tiến trình Beads siêu nhẹ dành riêng cho các AI agent. Kỹ năng này cung cấp các lệnh slash (lệnh gạch chéo) cho các thao tác phổ biến như tạo thẻ công việc, theo dõi tiến trình phụ thuộc và cập nhật trạng thái làm việc, giúp Claude ghi nhớ ngữ cảnh dự án giữa các phiên làm việc khác nhau. Đi kèm với một agent Quản lý dự án để giám sát công việc. Đội ngũ phát triển và vận hành sẽ được hưởng lợi lớn nhờ tính năng theo dõi tự động và bộ nhớ dài hạn tránh mất mát thông tin dự án.",
+    "setup_vi": "Xem hướng dẫn cấu hình thủ công tại GitHub:\n`git clone https://github.com/mrf/beads-skill`",
+    "usage_vi": "Kịch bản tự động hóa quy trình chuẩn bị, xử lý, phân tích dữ liệu và xuất báo cáo bằng shell script sử dụng Beads."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:22.939005Z",
+    "http_status": 200,
+    "content_hash": "8bcecb0d2e93e39388d63d0d5775a0fa38ee0598386120fbfec5c347a814311d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\beads-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\beads-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng Beads cho Claude Code - Tự động hóa quy trình quản lý tác vụ",
+  "short_description_vi": "Kích hoạt khả năng kết nối giữa Claude Code và Beads - công cụ tự động hóa dòng lệnh. Hỗ trợ đắc lực cho đội ngũ vận hành trong việc thiết lập kịch bản shell tự động và quản lý tiến độ công việc liên thông."
+}

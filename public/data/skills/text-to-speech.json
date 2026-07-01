@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/text-to-speech",
+  "slug": "text-to-speech",
+  "name": "Text-to-Speech",
+  "headline": "Text-to-Speech: Convert Text to Speech in 70+",
+  "short_description": "This skill generates natural speech from text, supporting over 70 languages with multiple models that balance quality and latency. It is ideal for developers looking to convert written content into spoken language with fine-tuned voice characteristics.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "elevenlabs",
+  "install_command": "git clone https://github.com/elevenlabs/skills",
+  "source_repo_url": "https://github.com/elevenlabs/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "speech",
+    "speech-synthesis",
+    "text"
+  ],
+  "sections": {
+    "overview": "This skill converts written text into natural-sounding speech using ElevenLabs' voice synthesis technology. It supports over 70 languages with six different models optimized for different use cases—from highest-quality emotional speech (eleven_v3) to ultra-low latency real-time applications (eleven_flash_v2_5). You can select from pre-built voices or create custom ones, and fine-tune output with stability, similarity boost, style, and speaker boost settings. The skill also offers request stitching to eliminate audio artifacts across long-form content, language enforcement for pronunciation control, text normalization for natural number and date reading, and multiple output formats including MP3, PCM, Opus, and telephony-standard μ-law. Developers building voice applications, voiceover systems, multilingual content platforms, or real-time conversational AI benefit from its flexible architecture and streaming capabilities.\nGenerating audio for educational content\nCreating voiceovers for videos\nTranscribing meetings and events into spoken summaries\nDeveloping interactive voice applications",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/elevenlabs/skills --skill text-to-speech`\n`git clone https://github.com/elevenlabs/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "text-to-speech#main-content",
+      "text-to-speech#overview",
+      "text-to-speech#setup",
+      "text-to-speech#examples",
+      "text-to-speech#tools",
+      "text-to-speech#mcp",
+      "text-to-speech#related"
+    ],
+    "overview_vi": "Skill này chuyển đổi văn bản viết thành giọng nói tự nhiên bằng công nghệ tổng hợp giọng nói của ElevenLabs. Skill hỗ trợ hơn 70 ngôn ngữ với 6 model khác nhau được tối ưu hóa cho từng trường hợp sử dụng cụ thể—từ giọng nói biểu cảm chất lượng cao nhất (eleven_v3) cho đến các ứng dụng thời gian thực với latency cực thấp (eleven_flash_v2_5). Bạn có thể chọn từ các giọng nói có sẵn hoặc tạo giọng nói tùy chỉnh, đồng thời tinh chỉnh đầu ra với các thiết lập stability (độ ổn định), similarity boost (tăng độ tương đồng), style (phong cách) và speaker boost (tăng cường giọng loa). Skill này cũng cung cấp tính năng ghép nối yêu cầu (request stitching) để loại bỏ hiện tượng nhiễu âm thanh trên các nội dung dài, bắt buộc ngôn ngữ (language enforcement) để kiểm soát phát âm, chuẩn hóa văn bản (text normalization) để đọc số và ngày tháng tự nhiên, cùng nhiều định dạng đầu ra bao gồm MP3, PCM, Opus và chuẩn điện thoại μ-law. Các nhà phát triển đang xây dựng ứng dụng thoại, hệ thống lồng tiếng, nền tảng nội dung đa ngôn ngữ hoặc AI hội thoại thời gian thực sẽ được hưởng lợi từ kiến trúc linh hoạt và khả năng streaming của skill này.\nTạo âm thanh cho nội dung giáo dục\nTạo voiceover cho video\nChuyển đổi cuộc họp và sự kiện thành bản tóm tắt dạng nói\nPhát triển các ứng dụng thoại tương tác",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/elevenlabs/skills --skill text-to-speech`\n`git clone https://github.com/elevenlabs/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nTham khảo GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:20:27.712052Z",
+    "http_status": 200,
+    "content_hash": "b907e15b26041f2c06c21603bfbe16edda77e9f6978283115cce5a9fc7549156",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\text-to-speech.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\text-to-speech.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Text-to-Speech: Chuyển đổi văn bản thành giọng nói với hơn 70 ngôn ngữ",
+  "short_description_vi": "Skill này tạo ra giọng nói tự nhiên từ văn bản, hỗ trợ hơn 70 ngôn ngữ với nhiều model giúp cân bằng giữa chất lượng và latency. Đây là giải pháp lý tưởng cho các nhà phát triển muốn chuyển đổi nội dung văn bản thành giọng nói với các đặc trưng giọng điệu được tinh chỉnh chi tiết."
+}

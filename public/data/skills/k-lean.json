@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/k-lean",
+  "slug": "k-lean",
+  "name": "browser-use",
+  "headline": "K-LEAN - Multi-LLM Consensus for Claude Code",
+  "short_description": "K-LEAN is a cross-platform toolkit that enhances Claude Code with multi-LLM consensus, specialist agents, semantic knowledge search, and one-command install. It benefits developers and operations teams by automating code reviews, integrating with CLI, and providing persistent memory for AI agents. K-LEAN connects to Claude Code, Litellm, Nano-GPT, and OpenRouter.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "calinfaja",
+  "install_command": "git clone https://github.com/calinfaja/K-LEAN.git",
+  "source_repo_url": "https://github.com/calinfaja/K-LEAN",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "k-lean",
+    "openrouter-integration",
+    "claude-code-plugin",
+    "code-review-automation",
+    "litellm",
+    "persistent-memory",
+    "smolagents",
+    "nano-gpt",
+    "cli"
+  ],
+  "sections": {
+    "overview": "K-LEAN is a cross-platform toolkit that integrates multiple large language models directly into Claude Code, enabling developers to validate code decisions through multi-LLM consensus. When 3-5 models agree on a finding, confidence increases significantly compared to single-model reviews. The skill includes 8 specialist agents (security auditor, Rust expert, C pro, ARM Cortex expert, debugger, performance engineer, code reviewer, orchestrator) that autonomously explore your codebase using tools like file reading, grep, and knowledge search. It also provides persistent knowledge management—capture learnings mid-session with /kln:learn, auto-extract insights at session end with /kln:remember, and search historical patterns and decisions across projects. K-LEAN connects to NanoGPT and OpenRouter for unified model access, runs on Windows, Linux, and macOS natively, and installs in one command via pipx.\nGet security reviews and vulnerability audits before merging sensitive code\nBreak out of debugging loops by requesting contrarian problem-solving approaches\nBuild persistent institutional knowledge from code reviews and session learnings\nValidate error handling and performance bottlenecks across 3-5 models in parallel",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/calinfaja/K-LEAN`",
+    "usage": "```\nUse K-LEAN to automate a [TASK] in [PROJECT/PATH] with multi-LLM consensus. First, install K-LEAN in [DIRECTORY] using the one-command install. Then, configure it to use [PRIMARY_LLM] as the main model and [SECONDARY_LLM] as the consensus validator. Run the task with the command: `klean --task '[TASK_DESCRIPTION]' --path '[PROJECT/PATH]' --consensus-threshold [THRESHOLD]`. Provide a summary of the results, including any code changes, issues resolved, or recommendations made.\n```\nCopy\n\n```\nAfter installing K-LEAN in `/workspace/my_project` and configuring it with `gpt-4` as the primary LLM and `claude-3-opus` as the consensus validator, I executed the following command to automate a code review for a Python API migration:\n\n```bash\nklean --task 'Review the API migration from Flask to FastAPI, ensuring backward compatibility and performance improvements' --path '/workspace/my_project/api' --consensus-threshold 85\n```\n\nThe tool processed 12 files, including `app.py`, `routes.py`, and `models.py`. It identified 3 critical issues:\n1. **Endpoint Conflict**: A duplicate route in `routes.py` (`/api/v1/users`) was flagged by both LLMs, causing a 500 error in testing. The tool suggested renaming one endpoint to `/api/v1/users/legacy` and updating the frontend calls.\n2. **Performance Bottleneck**: The `models.py` file had a slow ORM query in the `get_user_history` method. K-LEAN recommended adding an index on the `user_id` column and caching frequent queries. The primary LLM (gpt-4) initially missed this, but the consensus validator (claude-3-opus) caught it, achieving an 88% consensus.\n3. **Deprecation Warning**: The `Flask` import in `app.py` was flagged as deprecated in favor of `FastAPI`. The tool suggested updating the import and adjusting the startup logic.\n\nThe tool also provided 7 minor recommendations, such as adding type hints, optimizing error handling, and updating documentation. All changes were automatically applied to a new branch `feature/api-migration-review`, and a summary report was generated in `/workspace/my_project/reports/api_migration_review_2024-05-20.md`. The total review time was reduced from 2 hours (manual) to 12 minutes (automated).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "k-lean#main-content",
+      "k-lean#overview",
+      "k-lean#setup",
+      "k-lean#examples",
+      "k-lean#tools",
+      "k-lean#mcp",
+      "k-lean#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "K-LEAN is a cross-platform toolkit that integrates multiple large language models directly into Claude Code, enabling developers to validate code decisions through multi-LLM consensus. When 3-5 models agree on a finding, confidence increases significantly compared to single-model reviews. The skill includes 8 specialist agents (security auditor, Rust expert, C pro, ARM Cortex expert, debugger, performance engineer, code reviewer, orchestrator) that autonomously explore your codebase using tools like file reading, grep, and knowledge search. It also provides persistent knowledge management—capture learnings mid-session with /kln:learn, auto-extract insights at session end with /kln:remember, and search historical patterns and decisions across projects. K-LEAN connects to NanoGPT and OpenRouter for unified model access, runs on Windows, Linux, and macOS natively, and installs in one command via pipx.\nGet security reviews and vulnerability audits before merging sensitive code\nBreak out of debugging loops by requesting contrarian problem-solving approaches\nBuild persistent institutional knowledge from code reviews and session learnings\nValidate error handling and performance bottlenecks across 3-5 models in parallel",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/calinfaja/K-LEAN`",
+    "usage_vi": "```\nUse K-LEAN to automate a [TASK] in [PROJECT/PATH] with multi-LLM consensus. First, install K-LEAN in [DIRECTORY] using the one-command install. Then, configure it to use [PRIMARY_LLM] as the main model and [SECONDARY_LLM] as the consensus validator. Run the task with the command: `klean --task '[TASK_DESCRIPTION]' --path '[PROJECT/PATH]' --consensus-threshold [THRESHOLD]`. Provide a summary of the results, including any code changes, issues resolved, or recommendations made.\n```\nCopy\n\n```\nAfter installing K-LEAN in `/workspace/my_project` and configuring it with `gpt-4` as the primary LLM and `claude-3-opus` as the consensus validator, I executed the following command to automate a code review for a Python API migration:\n\n```bash\nklean --task 'Review the API migration from Flask to FastAPI, ensuring backward compatibility and performance improvements' --path '/workspace/my_project/api' --consensus-threshold 85\n```\n\nThe tool processed 12 files, including `app.py`, `routes.py`, and `models.py`. It identified 3 critical issues:\n1. **Endpoint Conflict**: A duplicate route in `routes.py` (`/api/v1/users`) was flagged by both LLMs, causing a 500 error in testing. The tool suggested renaming one endpoint to `/api/v1/users/legacy` and updating the frontend calls.\n2. **Performance Bottleneck**: The `models.py` file had a slow ORM query in the `get_user_history` method. K-LEAN recommended adding an index on the `user_id` column and caching frequent queries. The primary LLM (gpt-4) initially missed this, but the consensus validator (claude-3-opus) caught it, achieving an 88% consensus.\n3. **Deprecation Warning**: The `Flask` import in `app.py` was flagged as deprecated in favor of `FastAPI`. The tool suggested updating the import and adjusting the startup logic.\n\nThe tool also provided 7 minor recommendations, such as adding type hints, optimizing error handling, and updating documentation. All changes were automatically applied to a new branch `feature/api-migration-review`, and a summary report was generated in `/workspace/my_project/reports/api_migration_review_2024-05-20.md`. The total review time was reduced from 2 hours (manual) to 12 minutes (automated).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:15:45.737770Z",
+    "http_status": 200,
+    "content_hash": "f9e62a7a46659cb251d4b71d2bce20c978c14dcd21739cf60178014df7543bcf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\k-lean.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\k-lean.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "K-LEAN - Multi-LLM Consensus for Claude Code",
+  "short_description_vi": "K-LEAN is a cross-platform toolkit that enhances Claude Code with multi-LLM consensus, specialist agents, semantic knowledge search, and one-command install. It benefits developers and operations teams by automating code reviews, integrating with CLI, and providing persistent memory for AI agents. K-LEAN connects to Claude Code, Litellm, Nano-GPT, and OpenRouter."
+}

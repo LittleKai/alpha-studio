@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/barista",
+  "slug": "barista",
+  "name": "claude code cli statusline",
+  "headline": "claude code cli statusline - Barista",
+  "short_description": "Barista is a modular statusline for Claude Code CLI that provides real-time context usage, rate limits, costs, and git status. It offers 20+ customizable modules for developers to monitor their development environment and optimize workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "pstuart",
+  "install_command": "git clone https://github.com/pstuart/Barista.git",
+  "source_repo_url": "https://github.com/pstuart/Barista",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "statusline",
+    "claude",
+    "anthropic",
+    "cli",
+    "shell",
+    "developer-tools",
+    "macos",
+    "bash",
+    "terminal",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Barista is a feature-rich statusline for Claude Code CLI that provides developers with real-time visibility into their AI sessions. It displays context usage with visual progress bars, rate limit tracking across 5-hour and 7-day windows, session costs with burn rates, and git status information. The tool includes 20+ customizable modules covering core development metrics (directory, model, project type), system information (CPU, memory, disk, battery), and dev tools (Docker, Node.js, weather). Developers can choose from multiple color themes, display modes (normal, compact, verbose), and separator styles to match their workflow preferences. Setup is straightforward through an interactive installer that supports bash 3.2+ on macOS and partial Linux support.\nMonitor Claude Code context usage and avoid hitting limits during long sessions\nTrack API costs and burn rates in real-time to optimize spending\nView git branch status and changes alongside AI session metrics\nDisplay system resources (CPU, memory, battery) during development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pstuart/Barista`",
+    "usage": "```\nAct as a barista for my development environment. Display real-time context usage, rate limits, costs, and git status. Customize the statusline with the following modules: [MODULES]. Provide updates every [TIME_INTERVAL] minutes. Use the following color scheme: [COLOR_SCHEME].\n```\nCopy\n\n```\n# Development Environment Status",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "barista#main-content",
+      "barista#overview",
+      "barista#setup",
+      "barista#examples",
+      "barista#tools",
+      "barista#mcp",
+      "barista#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Barista là một statusline giàu tính năng dành cho Claude Code CLI, giúp lập trình viên theo dõi trực quan các phiên làm việc AI theo thời gian thực. Công cụ hiển thị mức sử dụng context qua các thanh tiến trình trực quan, theo dõi rate limit trong khung thời gian 5 giờ và 7 ngày, thống kê chi phí phiên làm việc kèm burn rate, cũng như thông tin trạng thái git. Ngoài ra, Barista đi kèm hơn 20 mô-đun tùy chỉnh bao gồm các chỉ số phát triển cốt lõi (thư mục, model, loại dự án), thông tin hệ thống (CPU, bộ nhớ, ổ đĩa, pin) và các công cụ phát triển (Docker, Node.js, thời tiết). Lập trình viên có thể tùy chọn nhiều chủ đề màu sắc, chế độ hiển thị (normal, compact, verbose) và kiểu ký tự phân cách (separator) phù hợp với sở thích workflow của mình. Quá trình setup rất đơn giản nhờ bộ cài đặt tương tác hỗ trợ bash 3.2+ trên macOS và hỗ trợ một phần trên Linux.\nGiám sát mức sử dụng context của Claude Code và tránh vượt quá giới hạn trong các phiên làm việc kéo dài\nTheo dõi chi phí API và burn rate theo thời gian thực để tối ưu hóa ngân sách\nXem trạng thái nhánh git và các thay đổi song song với các chỉ số của phiên làm việc AI\nHiển thị tài nguyên hệ thống (CPU, bộ nhớ, pin) trong quá trình phát triển",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/pstuart/Barista`",
+    "usage_vi": "```\nHãy đóng vai trò là một barista cho môi trường phát triển của tôi. Hiển thị thời gian thực mức sử dụng context, rate limits, chi phí và trạng thái git. Tùy chỉnh statusline với các mô-đun sau: [MODULES]. Cập nhật thông tin sau mỗi [TIME_INTERVAL] phút. Sử dụng bảng màu sau: [COLOR_SCHEME].\n```\nCopy\n\n```\n# Trạng thái môi trường phát triển"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:12:54.836539Z",
+    "http_status": 200,
+    "content_hash": "6a88ad036c65ec130f6a5bbbd8c07ad1c134983e6ea4ae3d3ed71d9acef80962",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\barista.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\barista.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "statusline cho Claude Code CLI - Barista",
+  "short_description_vi": "Barista là một statusline dạng mô-đun dành cho Claude Code CLI, cung cấp thông tin thời gian thực về mức độ sử dụng context, rate limit, chi phí và trạng thái git. Với hơn 20 mô-đun tùy chỉnh, Barista giúp lập trình viên dễ dàng giám sát môi trường phát triển và tối ưu hóa workflow của mình."
+}

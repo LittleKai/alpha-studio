@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesomeagentskills",
+  "slug": "awesomeagentskills",
+  "name": "langchain-salesforce",
+  "headline": "awesomeAgentskills - Skills for AI Agents",
+  "short_description": "awesomeAgentskills is a curated collection of skills designed for Claude Code and other AI agents, providing users with essential tools to enhance their AI capabilities. This repository serves as a valuable resource for developers and businesses looking to use AI technologies effectively.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "littleben",
+  "install_command": "claude install littleben/awesomeAgentskills",
+  "source_repo_url": "https://github.com/littleben/awesomeAgentskills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "AI skills",
+    "Claude Code",
+    "automation",
+    "repository",
+    "development"
+  ],
+  "sections": {
+    "overview": "awesomeAgentskills is a curated repository of specialized skills designed to extend Claude Code and other AI agents' capabilities. Skills are structured workflows and prompts that codify best practices and domain expertise into reusable patterns, enabling agents to perform complex tasks more effectively. The collection includes official Anthropic skills for creative design, development, enterprise communication, and document manipulation, alongside community-contributed skills for framework documentation, web performance optimization, SEO improvements, internationalization, and production deployment. Developers and businesses use these skills to solve specific problems systematically—from building SaaS applications with Shipany to fixing accessibility issues and deploying to production. Each skill provides clear usage instructions, actionable workflows, and best practice guidance.\nEnhancing AI agent performance\nIntegrating skills into applications\nAutomating routine tasks\nDeveloping custom AI solutions",
+    "setup": "Terminal\nCopy\n`claude install littleben/awesomeAgentskills`\n`git clone https://github.com/littleben/awesomeAgentskills`",
+    "usage": "```\nUse the awesomeAgentskills repository to [ACTION] for [PURPOSE]. Focus on [SPECIFIC_TASK] and ensure the output is optimized for [TOOL_NAME] like Automa. Example: 'Use the awesomeAgentskills repository to automate a lead generation workflow for a SaaS company. Focus on scraping LinkedIn for potential leads and exporting the data to a CRM-compatible format. Ensure the output is optimized for Automa's browser automation capabilities.'\n```\nCopy\n\n```\n### Automated LinkedIn Lead Scraping Workflow for SaaS Company\n\n**Objective:** Scrape 500 high-quality leads from LinkedIn Sales Navigator for a SaaS company targeting mid-market HR tech buyers in the U.S.\n\n**Workflow Steps:**\n1. **Login & Authentication:**\n   - Automated login to LinkedIn using stored credentials via Automa.\n   - Bypass 2FA using Automa's session persistence feature.\n\n2. **Search Configuration:**\n   - Applied filters: Location = United States, Industry = Human Resources, Company Size = 51-500 employees.\n   - Keywords: \"HR software\", \"HR tech\", \"talent management\", \"employee experience\".\n   - Results: 1,247 potential leads identified.\n\n3. **Data Extraction:**\n   - Scraped the following fields for each lead:\n     - Name, Job Title, Company Name, Company Size, Industry, LinkedIn Profile URL.\n     - Email pattern detected (e.g., firstname.lastname@company.com).\n   - Extracted 683 valid leads after filtering out incomplete profiles.\n\n4. **Data Export:**\n   - Exported data to CSV format with headers: `Name, Title, Company, Size, Industry, Email, LinkedIn_URL`.\n   - File saved as `sass_leads_2024_05_15.csv` in Google Drive.\n\n5. **CRM Integration:**\n   - Uploaded CSV to HubSpot via API using Automa's HTTP request module.\n   - Mapped fields: `Name` → Contact Name, `Title` → Job Title, `Email` → Email, etc.\n   - Created a new list in HubSpot: \"HR Tech Leads - May 2024\".\n\n**Quality Assurance:**\n- Verified 92% of emails were valid using a free email verification API.\n- Removed 142 duplicates based on LinkedIn profile URLs.\n- Final dataset: 541 unique, high-quality leads.\n\n**Next Steps:**\n- Schedule automated follow-up emails using HubSpot sequences.\n- Assign leads to sales reps based on territory (e.g., West Coast, East Coast).\n- Monitor open rates and adjust targeting criteria for future campaigns.\n\n**Automa Workflow Link:** [View Workflow](https://automa.site/workflow/12345)\n**Time Saved:** ~8 hours of manual work per week.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesomeagentskills#main-content",
+      "awesomeagentskills#overview",
+      "awesomeagentskills#setup",
+      "awesomeagentskills#examples",
+      "awesomeagentskills#tools",
+      "awesomeagentskills#mcp",
+      "awesomeagentskills#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "awesomeAgentskills is a curated repository of specialized skills designed to extend Claude Code and other AI agents' capabilities. Skills are structured workflows and prompts that codify best practices and domain expertise into reusable patterns, enabling agents to perform complex tasks more effectively. The collection includes official Anthropic skills for creative design, development, enterprise communication, and document manipulation, alongside community-contributed skills for framework documentation, web performance optimization, SEO improvements, internationalization, and production deployment. Developers and businesses use these skills to solve specific problems systematically—from building SaaS applications with Shipany to fixing accessibility issues and deploying to production. Each skill provides clear usage instructions, actionable workflows, and best practice guidance.\nEnhancing AI agent performance\nIntegrating skills into applications\nAutomating routine tasks\nDeveloping custom AI solutions",
+    "setup_vi": "Terminal\nCopy\n`claude install littleben/awesomeAgentskills`\n`git clone https://github.com/littleben/awesomeAgentskills`",
+    "usage_vi": "```\nUse the awesomeAgentskills repository to [ACTION] for [PURPOSE]. Focus on [SPECIFIC_TASK] and ensure the output is optimized for [TOOL_NAME] like Automa. Example: 'Use the awesomeAgentskills repository to automate a lead generation workflow for a SaaS company. Focus on scraping LinkedIn for potential leads and exporting the data to a CRM-compatible format. Ensure the output is optimized for Automa's browser automation capabilities.'\n```\nCopy\n\n```\n### Automated LinkedIn Lead Scraping Workflow for SaaS Company\n\n**Objective:** Scrape 500 high-quality leads from LinkedIn Sales Navigator for a SaaS company targeting mid-market HR tech buyers in the U.S.\n\n**Workflow Steps:**\n1. **Login & Authentication:**\n   - Automated login to LinkedIn using stored credentials via Automa.\n   - Bypass 2FA using Automa's session persistence feature.\n\n2. **Search Configuration:**\n   - Applied filters: Location = United States, Industry = Human Resources, Company Size = 51-500 employees.\n   - Keywords: \"HR software\", \"HR tech\", \"talent management\", \"employee experience\".\n   - Results: 1,247 potential leads identified.\n\n3. **Data Extraction:**\n   - Scraped the following fields for each lead:\n     - Name, Job Title, Company Name, Company Size, Industry, LinkedIn Profile URL.\n     - Email pattern detected (e.g., firstname.lastname@company.com).\n   - Extracted 683 valid leads after filtering out incomplete profiles.\n\n4. **Data Export:**\n   - Exported data to CSV format with headers: `Name, Title, Company, Size, Industry, Email, LinkedIn_URL`.\n   - File saved as `sass_leads_2024_05_15.csv` in Google Drive.\n\n5. **CRM Integration:**\n   - Uploaded CSV to HubSpot via API using Automa's HTTP request module.\n   - Mapped fields: `Name` → Contact Name, `Title` → Job Title, `Email` → Email, etc.\n   - Created a new list in HubSpot: \"HR Tech Leads - May 2024\".\n\n**Quality Assurance:**\n- Verified 92% of emails were valid using a free email verification API.\n- Removed 142 duplicates based on LinkedIn profile URLs.\n- Final dataset: 541 unique, high-quality leads.\n\n**Next Steps:**\n- Schedule automated follow-up emails using HubSpot sequences.\n- Assign leads to sales reps based on territory (e.g., West Coast, East Coast).\n- Monitor open rates and adjust targeting criteria for future campaigns.\n\n**Automa Workflow Link:** [View Workflow](https://automa.site/workflow/12345)\n**Time Saved:** ~8 hours of manual work per week.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:57:00.540916Z",
+    "http_status": 200,
+    "content_hash": "b680e121a221f2a103f19fbbe0d07823eb738f8d99055dad5247ad73a62103c5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesomeagentskills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesomeagentskills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "awesomeAgentskills - Skills for AI Agents",
+  "short_description_vi": "awesomeAgentskills is a curated collection of skills designed for Claude Code and other AI agents, providing users with essential tools to enhance their AI capabilities. This repository serves as a valuable resource for developers and businesses looking to use AI technologies effectively."
+}

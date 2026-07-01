@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-usage-tracker",
+  "slug": "claude-usage-tracker",
+  "name": "Claude-Usage-Tracker",
+  "headline": "claude usage tracker: live limits on macOS",
+  "short_description": "Real-time tracking of Claude AI usage limits for macOS users. Operations teams monitor and manage AI usage to avoid overages. Connects to Claude API for accurate tracking and integrates with macOS menu bar for easy access.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "hamed-elfayome",
+  "install_command": "git clone https://github.com/hamed-elfayome/Claude-Usage-Tracker.git",
+  "source_repo_url": "https://github.com/hamed-elfayome/Claude-Usage-Tracker",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claudecode",
+    "macos",
+    "usage-application",
+    "claude",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude-Usage-Tracker is a native macOS application that provides real-time monitoring of Claude AI API usage limits directly from your menu bar. It connects to the Claude API to fetch accurate usage data and displays consumption metrics without leaving your workflow. The tool helps operations teams and individual developers track API spending, stay within budget limits, and avoid unexpected overage charges. By integrating into the macOS menu bar, it offers quick access to usage statistics without requiring separate dashboard logins. The app supports multiple profiles and provides localization across 13 languages for global teams.\nMonitor multiple Claude AI accounts simultaneously from the macOS menu bar.\nReceive notifications when usage thresholds are reached to avoid overages.\nAutomatically switch between different Claude profiles based on the active project.\nTrack session and weekly usage statistics for better resource management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hamed-elfayome/Claude-Usage-Tracker`",
+    "usage": "```\nTrack my Claude AI usage for the past 7 days. Show me the total number of prompts, average tokens per prompt, and remaining usage limit for my current plan. Also, provide a breakdown of usage by hour for today. [INCLUDE] a warning if I'm approaching my limit.\n```\nCopy\n\n```\nHere's your Claude AI usage summary for the past 7 days:\n\nTotal prompts: 142\nAverage tokens per prompt: 128\nRemaining usage limit: 58% (1,250 tokens remaining)\n\nToday's usage by hour:\n- 9 AM - 12 PM: 24 prompts (3,072 tokens)\n- 12 PM - 3 PM: 18 prompts (2,352 tokens)\n- 3 PM - 6 PM: 12 prompts (1,560 tokens)\n\nWarning: You've used 42% of your daily limit. Consider reducing usage or upgrading your plan if needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-usage-tracker#main-content",
+      "claude-usage-tracker#overview",
+      "claude-usage-tracker#setup",
+      "claude-usage-tracker#examples",
+      "claude-usage-tracker#tools",
+      "claude-usage-tracker#mcp",
+      "claude-usage-tracker#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Usage-Tracker là một ứng dụng native trên macOS, cho phép giám sát theo thời gian thực giới hạn sử dụng Claude AI API ngay từ menu bar của bạn. Ứng dụng kết nối trực tiếp với Claude API để lấy dữ liệu sử dụng chính xác và hiển thị các chỉ số tiêu thụ mà không làm gián đoạn workflow. Công cụ này giúp các đội ngũ vận hành và lập trình viên cá nhân theo dõi chi tiêu API, duy trì trong giới hạn ngân sách và tránh phát sinh chi phí vượt định mức ngoài ý muốn. Bằng cách tích hợp vào menu bar của macOS, ứng dụng giúp truy cập nhanh các số liệu thống kê sử dụng mà không cần đăng nhập vào dashboard riêng. Ứng dụng hỗ trợ nhiều profile và được bản địa hóa cho 13 ngôn ngữ, phù hợp cho các đội ngũ toàn cầu.\nGiám sát đồng thời nhiều tài khoản Claude AI từ menu bar của macOS.\nNhận thông báo khi đạt ngưỡng sử dụng để tránh phát sinh chi phí vượt định mức.\nTự động chuyển đổi giữa các profile Claude khác nhau dựa trên dự án đang hoạt động.\nTheo dõi số liệu thống kê sử dụng theo phiên (session) và hàng tuần để quản lý tài nguyên hiệu quả hơn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/hamed-elfayome/Claude-Usage-Tracker`",
+    "usage_vi": "```\nTheo dõi mức độ sử dụng Claude AI của tôi trong 7 ngày qua. Hiển thị tổng số prompt, số token trung bình trên mỗi prompt và giới hạn sử dụng còn lại của gói hiện tại. Đồng thời, cung cấp báo cáo chi tiết mức sử dụng theo giờ trong ngày hôm nay. [INCLUDE] cảnh báo nếu tôi sắp dùng hết giới hạn.\n```\nCopy\n\n```\nDưới đây là tóm tắt mức độ sử dụng Claude AI của bạn trong 7 ngày qua:\n\nTổng số prompt: 142\nSố token trung bình trên mỗi prompt: 128\nGiới hạn sử dụng còn lại: 58% (còn lại 1.250 token)\n\nMức sử dụng hôm nay theo giờ:\n- 9h - 12h: 24 prompt (3.072 token)\n- 12h - 15h: 18 prompt (2.352 token)\n- 15h - 18h: 12 prompt (1.560 token)\n\nCảnh báo: Bạn đã sử dụng 42% giới hạn hàng ngày. Hãy cân nhắc giảm tần suất sử dụng hoặc nâng cấp gói dịch vụ nếu cần.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:32.966461Z",
+    "http_status": 200,
+    "content_hash": "93e14af0c18a9930655f95b6f93bd946679b97982ae326bcf6969fffc3ff35e5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-usage-tracker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-usage-tracker.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình theo dõi sử dụng Claude: Giới hạn thời gian thực trên macOS",
+  "short_description_vi": "Theo dõi thời gian thực giới hạn sử dụng Claude AI dành cho người dùng macOS. Giúp các đội ngũ vận hành giám sát và quản lý việc sử dụng AI nhằm tránh vượt hạn mức. Ứng dụng kết nối với Claude API để tracking chính xác và tích hợp trực tiếp vào thanh menu (menu bar) của macOS để dễ dàng truy cập."
+}

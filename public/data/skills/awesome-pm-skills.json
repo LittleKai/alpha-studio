@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-pm-skills",
+  "slug": "awesome-pm-skills",
+  "name": "browser-use",
+  "headline": "awesome pm skills for product managers",
+  "short_description": "28 AI-powered PM skills from Lenny's Podcast. Helps product managers use Claude Code and Cursor to improve product development. Benefits PMs by automating tasks and providing insights throughout the product lifecycle.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "menkesu",
+  "install_command": "git clone https://github.com/menkesu/awesome-pm-skills.git",
+  "source_repo_url": "https://github.com/menkesu/awesome-pm-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "lenny-rachitsky",
+    "claude",
+    "cursor",
+    "pm-skills",
+    "ai",
+    "product-management",
+    "awesome-list"
+  ],
+  "sections": {
+    "overview": "Awesome PM Skills transforms your AI coding assistant into a product management partner by embedding 28 domain-specific frameworks directly into Claude Code and Cursor. Built from 300+ episodes of Lenny's Podcast featuring insights from Brian Chesky, Shreyas Doshi, Kevin Weil, and 40+ world-class PMs, these skills guide AI through the entire product lifecycle—from idea validation and prototyping to launch, strategy, stakeholder communication, and team leadership. Skills are organized into five modes: Builder (prototyping and shipping), Communicator (storytelling and positioning), Strategist (decisions and prioritization), Navigator (influence and organizational dynamics), and Leader (culture and career growth). Rather than static reference material, these are active frameworks that apply real-time guidance as you build products with your AI assistant.\nBuilding products end-to-end from idea to prototype to launch with strategic guidance\nMaking prioritization and product strategy decisions using frameworks from leading PMs\nWriting executive communications and positioning statements grounded in proven approaches\nNavigating stakeholder feedback, influence, and organizational dynamics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/menkesu/awesome-pm-skills`",
+    "usage": "```\nAct as an expert product manager using AI tools. Using [PRODUCT_DATA] and [USER_GOALS], analyze the current product state and suggest 3 high-impact improvements. For each suggestion, provide: 1) a clear hypothesis, 2) metrics to measure success, 3) implementation steps, and 4) potential risks. Focus on [SPECIFIC_AREA] like user engagement, retention, or monetization. Prioritize based on expected impact and feasibility.\n```\nCopy\n\n```\nFor a SaaS product with 5,000 monthly active users (MAUs) and a 30% 30-day retention rate, here are three high-impact improvements:\n\n1. **Hypothesis**: Adding a 'Quick Start' tutorial will increase new user activation from 20% to 40% within 30 days.\n   - **Metrics**: Activation rate, time-to-first-value, and 7-day retention.\n   - **Implementation**: Create an interactive 3-step tutorial using [TOOL_NAME]. Deploy via in-app modal and email sequence.\n   - **Risks**: Tutorial fatigue if too long; mitigate by limiting to 3 steps and offering 'skip' option.\n\n2. **Hypothesis**: Introducing a 'Usage Tips' sidebar will increase feature adoption by 15% in 60 days.\n   - **Metrics**: Feature adoption rate, session duration, and feature-specific retention.\n   - **Implementation**: Build a contextual sidebar using Cursor IDE. Populate with tips based on user behavior (e.g., 'Try this feature if you haven't used X in 7 days').\n   - **Risks**: Overwhelming users; mitigate by A/B testing with 50% of users and iterating based on feedback.\n\n3. **Hypothesis**: Launching a 'Referral Program' will increase organic growth by 20% in 90 days.\n   - **Metrics**: Referral conversion rate, new user acquisition cost (CAC), and viral coefficient.\n   - **Implementation**: Design a two-sided reward system (e.g., 'Refer a friend, get 1 month free'). Use Claude Code to automate reward distribution and track performance.\n   - **Risks**: Low participation; mitigate by promoting the program in onboarding emails and in-app notifications.\n\nPrioritize the Quick Start tutorial first due to its potential to immediately impact retention and aligns with our goal of improving new user experience.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-pm-skills#main-content",
+      "awesome-pm-skills#overview",
+      "awesome-pm-skills#setup",
+      "awesome-pm-skills#examples",
+      "awesome-pm-skills#tools",
+      "awesome-pm-skills#mcp",
+      "awesome-pm-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome PM Skills transforms your AI coding assistant into a product management partner by embedding 28 domain-specific frameworks directly into Claude Code and Cursor. Built from 300+ episodes of Lenny's Podcast featuring insights from Brian Chesky, Shreyas Doshi, Kevin Weil, and 40+ world-class PMs, these skills guide AI through the entire product lifecycle—from idea validation and prototyping to launch, strategy, stakeholder communication, and team leadership. Skills are organized into five modes: Builder (prototyping and shipping), Communicator (storytelling and positioning), Strategist (decisions and prioritization), Navigator (influence and organizational dynamics), and Leader (culture and career growth). Rather than static reference material, these are active frameworks that apply real-time guidance as you build products with your AI assistant.\nBuilding products end-to-end from idea to prototype to launch with strategic guidance\nMaking prioritization and product strategy decisions using frameworks from leading PMs\nWriting executive communications and positioning statements grounded in proven approaches\nNavigating stakeholder feedback, influence, and organizational dynamics",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/menkesu/awesome-pm-skills`",
+    "usage_vi": "```\nAct as an expert product manager using AI tools. Using [PRODUCT_DATA] and [USER_GOALS], analyze the current product state and suggest 3 high-impact improvements. For each suggestion, provide: 1) a clear hypothesis, 2) metrics to measure success, 3) implementation steps, and 4) potential risks. Focus on [SPECIFIC_AREA] like user engagement, retention, or monetization. Prioritize based on expected impact and feasibility.\n```\nCopy\n\n```\nFor a SaaS product with 5,000 monthly active users (MAUs) and a 30% 30-day retention rate, here are three high-impact improvements:\n\n1. **Hypothesis**: Adding a 'Quick Start' tutorial will increase new user activation from 20% to 40% within 30 days.\n   - **Metrics**: Activation rate, time-to-first-value, and 7-day retention.\n   - **Implementation**: Create an interactive 3-step tutorial using [TOOL_NAME]. Deploy via in-app modal and email sequence.\n   - **Risks**: Tutorial fatigue if too long; mitigate by limiting to 3 steps and offering 'skip' option.\n\n2. **Hypothesis**: Introducing a 'Usage Tips' sidebar will increase feature adoption by 15% in 60 days.\n   - **Metrics**: Feature adoption rate, session duration, and feature-specific retention.\n   - **Implementation**: Build a contextual sidebar using Cursor IDE. Populate with tips based on user behavior (e.g., 'Try this feature if you haven't used X in 7 days').\n   - **Risks**: Overwhelming users; mitigate by A/B testing with 50% of users and iterating based on feedback.\n\n3. **Hypothesis**: Launching a 'Referral Program' will increase organic growth by 20% in 90 days.\n   - **Metrics**: Referral conversion rate, new user acquisition cost (CAC), and viral coefficient.\n   - **Implementation**: Design a two-sided reward system (e.g., 'Refer a friend, get 1 month free'). Use Claude Code to automate reward distribution and track performance.\n   - **Risks**: Low participation; mitigate by promoting the program in onboarding emails and in-app notifications.\n\nPrioritize the Quick Start tutorial first due to its potential to immediately impact retention and aligns with our goal of improving new user experience.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:34:14.595667Z",
+    "http_status": 200,
+    "content_hash": "0fc51d8b989d649028868ba227a7e6903b7029dca47e40e285ad7d05e0545842",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-pm-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-pm-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "awesome pm skills for product managers",
+  "short_description_vi": "28 AI-powered PM skills from Lenny's Podcast. Helps product managers use Claude Code and Cursor to improve product development. Benefits PMs by automating tasks and providing insights throughout the product lifecycle."
+}

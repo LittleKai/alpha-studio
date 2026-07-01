@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/octomind",
+  "slug": "octomind",
+  "name": "Octomind",
+  "headline": "Octomind - AI-Powered CLI Development Assistant",
+  "short_description": "Octomind is an autonomous AI framework for CLI that enables developers to interact with codebases conversationally. It supports multimodal vision, integrates with multiple AI providers, and includes built-in MCP tools. Developers benefit from efficient codebase navigation, semantic search, and automated task execution.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Muvon",
+  "install_command": "git clone https://github.com/Muvon/octomind.git",
+  "source_repo_url": "https://github.com/Muvon/octomind",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "ai-developer",
+    "ai-assistant",
+    "agentic-ai",
+    "code-assist-tool",
+    "development",
+    "mcp",
+    "vibe-coding",
+    "cli",
+    "semantic-search",
+    "developer-tools",
+    "cli-app",
+    "code-assistant",
+    "claude-code",
+    "autonomous-agents",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Octomind is an open-source runtime for deploying specialist AI agents across any domain via a command-line interface. Agents are packaged expertise—complete with system prompts, MCP servers, model configurations, and tool permissions—fetched from a community tap registry and ready to run in seconds. The runtime handles adaptive context compression to maintain performance in long sessions, enforces spending caps and model selection per task, and governs autonomous behavior through deterministic policy scripts. Developers benefit from zero-config deployment, dynamic capability loading that activates only when relevant, and the ability to spawn sub-agents and enable MCP servers mid-conversation without restart.\nDeploy domain-specific agents for medicine, law, finance, or DevOps without manual configuration\nEnable agents to spawn sub-agents and activate new MCP servers mid-session based on task context\nControl per-task costs and model selection across multiple AI providers with hard spending caps\nGovern autonomous agent behavior with policy-as-code guardrails instead of approval workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Muvon/octomind`",
+    "usage": "```\nUse Octomind to [TASK] in the [PROJECT_NAME] codebase. Focus on [SPECIFIC_GOAL] while leveraging its multimodal vision and MCP tools. Provide step-by-step reasoning for your approach and validate each step with the codebase. Include code snippets where relevant. For example: 'Use Octomind to refactor the authentication middleware in the 'auth-service' project. Focus on improving performance by reducing nested callbacks while maintaining backward compatibility. Provide a diff of changes and explain the trade-offs of each modification.'\n```\nCopy\n\n```\n### Octomind Refactoring Task: Authentication Middleware in 'auth-service'\n\n**Objective**: Refactor the `authenticateUser` middleware in `src/middleware/auth.js` to reduce nested callbacks and improve performance without breaking existing API contracts.\n\n**Step 1: Analyze Current Implementation**\nOctomind’s vision mode identified the following pattern in `src/middleware/auth.js`:\n```javascript\nconst authenticateUser = (req, res, next) => {\n  if (!req.headers.authorization) {\n    return res.status(401).json({ error: 'Unauthorized' });\n  }\n  jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET, (err, decoded) => {\n    if (err) {\n      return res.status(403).json({ error: 'Invalid token' });\n    }\n    req.user = decoded;\n    next();\n  });\n};\n```\nThe nested callback structure creates a pyramid of doom and blocks the event loop for I/O-bound operations.\n\n**Step 2: Propose Refactored Solution**\nUsing Octomind’s MCP tools, I generated a promisified version with async/await:\n```javascript\nconst authenticateUser = async (req, res, next) => {\n  try {\n    if (!req.headers.authorization) {\n      throw new Error('Unauthorized');\n    }\n    const token = req.headers.authorization.split(' ')[1];\n    const decoded = await jwt.verify(token, process.env.JWT_SECRET);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    const status = err.message === 'Unauthorized' ? 401 : 403;\n    res.status(status).json({ error: err.message });\n  }\n};\n```\n\n**Step 3: Validate Changes**\nOctomind’s semantic search confirmed:\n- No breaking changes to the `authenticateUser` signature (still accepts `(req, res, next)`).\n- All existing tests in `tests/middleware/auth.test.js` pass with the new implementation.\n- Performance improvement: Reduced average response time from 45ms to 12ms (measured via `autocannon` benchmark).\n\n**Step 4: Trade-offs Analysis**\n- **Pros**: Cleaner code, better error handling, improved performance.\n- **Cons**: Requires Node.js 8+ (already satisfied by the project’s `.nvmrc`).\n\n**Next Steps**:\n1. Commit the changes with message: 'refactor(auth): promisify authenticateUser middleware'.\n2. Run `npm run test:integration` to verify no regressions.\n3. Deploy to staging for A/B testing with 5% of traffic.\n\n**Octomind Validation**: All MCP tools confirmed the refactor is safe and improves maintainability.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "octomind#main-content",
+      "octomind#overview",
+      "octomind#setup",
+      "octomind#examples",
+      "octomind#tools",
+      "octomind#mcp",
+      "octomind#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Octomind is an open-source runtime for deploying specialist AI agents across any domain via a command-line interface. Agents are packaged expertise—complete with system prompts, MCP servers, model configurations, and tool permissions—fetched from a community tap registry and ready to run in seconds. The runtime handles adaptive context compression to maintain performance in long sessions, enforces spending caps and model selection per task, and governs autonomous behavior through deterministic policy scripts. Developers benefit from zero-config deployment, dynamic capability loading that activates only when relevant, and the ability to spawn sub-agents and enable MCP servers mid-conversation without restart.\nDeploy domain-specific agents for medicine, law, finance, or DevOps without manual configuration\nEnable agents to spawn sub-agents and activate new MCP servers mid-session based on task context\nControl per-task costs and model selection across multiple AI providers with hard spending caps\nGovern autonomous agent behavior with policy-as-code guardrails instead of approval workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Muvon/octomind`",
+    "usage_vi": "```\nUse Octomind to [TASK] in the [PROJECT_NAME] codebase. Focus on [SPECIFIC_GOAL] while leveraging its multimodal vision and MCP tools. Provide step-by-step reasoning for your approach and validate each step with the codebase. Include code snippets where relevant. For example: 'Use Octomind to refactor the authentication middleware in the 'auth-service' project. Focus on improving performance by reducing nested callbacks while maintaining backward compatibility. Provide a diff of changes and explain the trade-offs of each modification.'\n```\nCopy\n\n```\n### Octomind Refactoring Task: Authentication Middleware in 'auth-service'\n\n**Objective**: Refactor the `authenticateUser` middleware in `src/middleware/auth.js` to reduce nested callbacks and improve performance without breaking existing API contracts.\n\n**Step 1: Analyze Current Implementation**\nOctomind’s vision mode identified the following pattern in `src/middleware/auth.js`:\n```javascript\nconst authenticateUser = (req, res, next) => {\n  if (!req.headers.authorization) {\n    return res.status(401).json({ error: 'Unauthorized' });\n  }\n  jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET, (err, decoded) => {\n    if (err) {\n      return res.status(403).json({ error: 'Invalid token' });\n    }\n    req.user = decoded;\n    next();\n  });\n};\n```\nThe nested callback structure creates a pyramid of doom and blocks the event loop for I/O-bound operations.\n\n**Step 2: Propose Refactored Solution**\nUsing Octomind’s MCP tools, I generated a promisified version with async/await:\n```javascript\nconst authenticateUser = async (req, res, next) => {\n  try {\n    if (!req.headers.authorization) {\n      throw new Error('Unauthorized');\n    }\n    const token = req.headers.authorization.split(' ')[1];\n    const decoded = await jwt.verify(token, process.env.JWT_SECRET);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    const status = err.message === 'Unauthorized' ? 401 : 403;\n    res.status(status).json({ error: err.message });\n  }\n};\n```\n\n**Step 3: Validate Changes**\nOctomind’s semantic search confirmed:\n- No breaking changes to the `authenticateUser` signature (still accepts `(req, res, next)`).\n- All existing tests in `tests/middleware/auth.test.js` pass with the new implementation.\n- Performance improvement: Reduced average response time from 45ms to 12ms (measured via `autocannon` benchmark).\n\n**Step 4: Trade-offs Analysis**\n- **Pros**: Cleaner code, better error handling, improved performance.\n- **Cons**: Requires Node.js 8+ (already satisfied by the project’s `.nvmrc`).\n\n**Next Steps**:\n1. Commit the changes with message: 'refactor(auth): promisify authenticateUser middleware'.\n2. Run `npm run test:integration` to verify no regressions.\n3. Deploy to staging for A/B testing with 5% of traffic.\n\n**Octomind Validation**: All MCP tools confirmed the refactor is safe and improves maintainability.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:41:03.949662Z",
+    "http_status": 200,
+    "content_hash": "55bb9abbd194eee332bbf3bb098558370651c9814c5f7e03f9de486322375ded",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octomind.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octomind.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Octomind - AI-Powered CLI Development Assistant",
+  "short_description_vi": "Octomind is an autonomous AI framework for CLI that enables developers to interact with codebases conversationally. It supports multimodal vision, integrates with multiple AI providers, and includes built-in MCP tools. Developers benefit from efficient codebase navigation, semantic search, and automated task execution."
+}

@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cupcake",
+  "slug": "cupcake",
+  "name": "Cupcake",
+  "headline": "Cupcake - Policy Enforcement for AI Agents",
+  "short_description": "Cupcake is a native policy enforcement layer for AI coding agents, built on OPA/Rego. It ensures AI agents follow predefined rules and security policies. Useful for operations teams managing AI agents in development and production environments. Integrates with Claude, Cursor, and Factory AI.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "eqtylab",
+  "install_command": "git clone https://github.com/eqtylab/cupcake.git",
+  "source_repo_url": "https://github.com/eqtylab/cupcake",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "factory-ai",
+    "cursor",
+    "mcp",
+    "gemini-cli",
+    "agent-security",
+    "opencode",
+    "hooks",
+    "alignment",
+    "llm-as-a-judge",
+    "claude-code",
+    "opa",
+    "coding-agents"
+  ],
+  "sections": {
+    "overview": "Cupcake intercepts and evaluates AI agent actions against user-defined rules written in OPA/Rego, compiled to WebAssembly for fast, sandboxed execution. The tool supports multiple AI coding agents including Claude Code, Cursor, Factory AI, and OpenCode through native integrations. Actions can be allowed, modified, blocked, or require human review based on policy decisions. Cupcake solves the problem of AI agents inconsistently following operational and security rules by moving enforcement out of model context into deterministic policy-as-code. Operations teams managing AI agents in development and production environments benefit from better performance, improved security, and reactive automation without relying on the agent to conduct rule enforcement tasks.\nEnforce security policies on file system operations and git commands\nBlock dangerous agent actions like symlink traversal or unauthorized pushes\nAuto-correct agent behavior by modifying commands before execution\nPrevent agents from acting until CI tests pass or human review approves",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eqtylab/cupcake`",
+    "usage": "```\nEnforce the following security policy on the AI coding agent's output: [POLICY_RULE]. Review the generated code for compliance and suggest fixes if violations are found. If the code is compliant, confirm its safety. Policy to enforce: [SPECIFIC_POLICY].\n```\nCopy\n\n```\n### Policy Enforcement Report\n\n**Policy Rule:** *Do not use hardcoded secrets or API keys in the generated code. All sensitive data must be injected via environment variables or secure vaults.*\n\n**Reviewed Code Snippet:**\n```python\nimport os\n\n# API Key for external service (VIOLATION: Hardcoded secret)\nAPI_KEY = \"sk_live_abc123xyz456\"\n\ndef fetch_user_data(user_id):\n    response = requests.get(\n        f\"https://api.example.com/users/{user_id}\",\n        headers={\"Authorization\": f\"Bearer {API_KEY}\"}\n    )\n    return response.json()\n```\n\n**Compliance Status:** ❌ **FAILED**\n\n**Violation Details:**\n- Line 3: API key is hardcoded in the source code.\n- Risk: Exposure of sensitive credentials in version control or logs.\n\n**Suggested Fix:**\n```python\nimport os\n\ndef fetch_user_data(user_id):\n    api_key = os.getenv(\"EXAMPLE_API_KEY\")  # Load from environment variable\n    if not api_key:\n        raise ValueError(\"API key not configured in environment variables.\")\n    \n    response = requests.get(\n        f\"https://api.example.com/users/{user_id}\",\n        headers={\"Authorization\": f\"Bearer {api_key}\"}\n    )\n    return response.json()\n```\n\n**Next Steps:**\n1. Update the `.env` file in the project root:\n   ```\n   EXAMPLE_API_KEY=sk_live_abc123xyz456\n   ```\n2. Add `.env` to `.gitignore` to prevent accidental commits.\n3. Re-run the policy check to confirm compliance.\n\n**Recommendation:** Integrate Cupcake into your CI/CD pipeline to automatically enforce this policy on every code generation request.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cupcake#main-content",
+      "cupcake#overview",
+      "cupcake#setup",
+      "cupcake#examples",
+      "cupcake#tools",
+      "cupcake#mcp",
+      "cupcake#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Cupcake chặn và đánh giá các hành động của AI agent dựa trên các quy tắc do người dùng định nghĩa được viết bằng OPA/Rego, rồi biên dịch sang WebAssembly để thực thi nhanh chóng trong môi trường sandbox. Công cụ này hỗ trợ nhiều AI coding agent bao gồm Claude Code, Cursor, Factory AI và OpenCode thông qua các tích hợp native. Các hành động có thể được cho phép, sửa đổi, chặn hoặc yêu cầu con người phê duyệt dựa trên quyết định từ chính sách. Cupcake giải quyết vấn đề các AI agent tuân thủ không nhất quán các quy tắc vận hành và bảo mật bằng cách chuyển việc thực thi ra khỏi ngữ cảnh mô hình (model context) sang chính sách dưới dạng mã nguồn (policy-as-code) mang tính xác định. Các đội ngũ vận hành quản lý AI agent trong môi trường development và production sẽ được hưởng lợi từ hiệu năng tốt hơn, bảo mật nâng cao và tự động hóa phản ứng (reactive automation) mà không cần phụ thuộc vào việc agent tự thực hiện các tác vụ thực thi quy tắc.\nThực thi các chính sách bảo mật trên các thao tác hệ thống tệp và lệnh git\nChặn các hành động nguy hiểm của agent như duyệt qua symlink (symlink traversal) hoặc push trái phép\nTự động sửa hành vi của agent bằng cách sửa đổi lệnh trước khi thực thi\nNgăn chặn agent hoạt động cho đến khi các bài test CI vượt qua hoặc được con người phê duyệt",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/eqtylab/cupcake`",
+    "usage_vi": "```\nThực thi chính sách bảo mật sau đây đối với đầu ra của AI coding agent: [POLICY_RULE]. Xem xét mã nguồn được tạo để đánh giá mức độ tuân thủ và đề xuất cách khắc phục nếu phát hiện vi phạm. Nếu mã nguồn tuân thủ, hãy xác nhận tính an toàn của nó. Chính sách cần thực thi: [SPECIFIC_POLICY].\n```\nCopy\n\n```\n### Báo cáo Thực thi Chính sách\n\n**Quy tắc Chính sách:** *Không sử dụng secret hoặc API key được ghi cứng (hardcoded) trong mã nguồn được tạo. Tất cả dữ liệu nhạy cảm phải được truyền qua biến môi trường (environment variables) hoặc các kho lưu trữ bảo mật (secure vaults).*\n\n**Đoạn mã được xem xét:**\n```python\nimport os\n\n# API Key cho dịch vụ bên ngoài (VI PHẠM: Ghi cứng secret)\nAPI_KEY = \"sk_live_abc123xyz456\"\n\ndef fetch_user_data(user_id):\n    response = requests.get(\n        f\"https://api.example.com/users/{user_id}\",\n        headers={\"Authorization\": f\"Bearer {API_KEY}\"}\n    )\n    return response.json()\n```\n\n**Trạng thái Tuân thủ:** ❌ **THẤT BẠI**\n\n**Chi tiết Vi phạm:**\n- Dòng 3: API key bị ghi cứng trong mã nguồn.\n- Rủi ro: Lộ thông tin xác thực nhạy cảm trong hệ thống quản lý phiên bản (version control) hoặc log.\n\n**Đề xuất Khắc phục:**\n```python\nimport os\n\ndef fetch_user_data(user_id):\n    api_key = os.getenv(\"EXAMPLE_API_KEY\")  # Tải từ biến môi trường\n    if not api_key:\n        raise ValueError(\"API key chưa được cấu hình trong biến môi trường.\")\n    \n    response = requests.get(\n        f\"https://api.example.com/users/{user_id}\",\n        headers={\"Authorization\": f\"Bearer {api_key}\"}\n    )\n    return response.json()\n```\n\n**Các bước tiếp theo:**\n1. Cập nhật tệp `.env` trong thư mục gốc của dự án:\n   ```\n   EXAMPLE_API_KEY=sk_live_abc123xyz456\n   ```\n2. Thêm `.env` vào `.gitignore` để tránh commit nhầm.\n3. Chạy lại trình kiểm tra chính sách để xác nhận tính tuân thủ.\n\n**Khuyến nghị:** Tích hợp Cupcake vào pipeline CI/CD của bạn để tự động thực thi chính sách này trên mỗi yêu cầu tạo mã nguồn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:43:34.516089Z",
+    "http_status": 200,
+    "content_hash": "d3c9821b2974900a8c274e3686bdf4d816eab91f0f6b58579f392a106d54be02",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cupcake.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cupcake.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cupcake - Thực thi chính sách cho AI Agent",
+  "short_description_vi": "Cupcake là lớp thực thi chính sách (policy enforcement layer) native dành cho các AI coding agent, được xây dựng trên OPA/Rego. Công cụ này giúp đảm bảo các AI agent tuân thủ các quy tắc và chính sách bảo mật được thiết lập sẵn. Đây là giải pháp hữu ích cho các đội ngũ vận hành (operations) quản lý AI agent trong cả môi trường development và production. Hỗ trợ tích hợp với Claude, Cursor và Factory AI."
+}

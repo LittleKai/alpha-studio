@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-feedback-enhanced",
+  "slug": "mcp-feedback-enhanced",
+  "name": "react-native-best-practices",
+  "headline": "MCP Feedback Enhanced - AI Development Tool",
+  "short_description": "The mcp-feedback-enhanced is an advanced server designed for interactive user feedback and command execution in AI-assisted development. It supports both Web UI and Desktop Application interfaces, ensuring intelligent environment detection and cross-platform compatibility.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "Minidoracat",
+  "install_command": "claude install Minidoracat/mcp-feedback-enhanced",
+  "source_repo_url": "https://github.com/Minidoracat/mcp-feedback-enhanced",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "user feedback",
+    "interactive interface",
+    "command execution",
+    "cross-platform",
+    "AI-assisted development"
+  ],
+  "sections": {
+    "overview": "mcp-feedback-enhanced is an MCP server designed to facilitate interactive user feedback and command execution within AI-assisted development workflows. It provides dual interface support through both Web UI and Desktop Application, with built-in intelligent environment detection to ensure cross-platform compatibility. The server handles user interactions and command execution efficiently, making it suitable for developers integrating AI agents into their development processes. It supports multilingual notifications and WebSocket-based communication for real-time feedback loops. The project is actively maintained with comprehensive release notes and documentation for integration.\nGather user feedback during the development cycle to refine features.\nExecute commands based on user input, improving responsiveness to developer needs.\nDetect user environments automatically to optimize application performance.\nFacilitate cross-platform development workflows by providing consistent interfaces.",
+    "setup": "Terminal\nCopy\n`claude install Minidoracat/mcp-feedback-enhanced`\n`git clone https://github.com/Minidoracat/mcp-feedback-enhanced`",
+    "usage": "```\nAct as an mcp-feedback-enhanced server for interactive development feedback. Use the [PLATFORM] interface ([WEB_UI] or [DESKTOP_APP]) to provide real-time feedback on [TASK]. Execute commands like [COMMAND_EXAMPLE] and analyze the output. For [TASK], suggest improvements or next steps based on the feedback. Example: 'Act as an mcp-feedback-enhanced server. I'm using the [DESKTOP_APP] interface to develop a Python script for [TASK: automating Forma workshop registration data]. Execute the command `python3 register_workshop.py --input data.csv` and analyze the output. Suggest improvements for handling edge cases in the data.'\n```\nCopy\n\n```\n```\n**mcp-feedback-enhanced Server Response (Desktop App Interface)**\n\n**Command Executed:**\n`python3 register_workshop.py --input data.csv`\n\n**Output Analysis:**\nThe script processed 124 workshop registration records from `data.csv`. Key observations:\n- 8 records had missing `participant_email` fields, causing the script to skip them. This resulted in 8 incomplete registrations for the \"Hand-Tied Bouquets\" workshop.\n- 3 records contained duplicate entries for the same email (e.g., `jane.doe@example.com` registered twice for \"Kokedama\" and \"Terrariums\"). The script flagged these but did not merge them.\n- The `workshop_date` field had inconsistent formatting (e.g., \"2024-05-15\" vs. \"May 15, 2024\"), leading to 12 records being miscategorized under the wrong month.\n\n**Suggested Improvements:**\n1. **Data Validation:** Add a pre-processing step to validate and clean the input data. For example:\n   ```python\n   import pandas as pd\n   df = pd.read_csv('data.csv')\n   df['participant_email'] = df['participant_email'].fillna('')\n   df = df.drop_duplicates(subset=['participant_email', 'workshop_name'])\n   df['workshop_date'] = pd.to_datetime(df['workshop_date'], errors='coerce').dt.strftime('%Y-%m-%d')\n   ```\n2. **Error Handling:** Modify the script to log skipped records and send an alert for manual review. Example:\n   ```python\n   skipped_records = df[df['participant_email'].isna()]\n   with open('skipped_records.log', 'a') as f:\n       f.write(f\"Skipped {len(skipped_records)} records with missing emails.\\n\")\n   ```\n3. **Duplicate Detection:** Implement a merge logic for duplicate registrations. For example, combine workshops into a single entry with a comma-separated list:\n   ```python\n   df['workshop_name'] = df.groupby('participant_email')['workshop_name'].transform(lambda x: ', '.join(x))\n   ```\n\n**Next Steps:**\n- Would you like me to generate the updated script with these improvements?\n- Should we prioritize fixing the date formatting issue first?\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "mcp-feedback-enhanced#main-content",
+      "mcp-feedback-enhanced#overview",
+      "mcp-feedback-enhanced#setup",
+      "mcp-feedback-enhanced#examples",
+      "mcp-feedback-enhanced#tools",
+      "mcp-feedback-enhanced#mcp",
+      "mcp-feedback-enhanced#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcp-feedback-enhanced is an MCP server designed to facilitate interactive user feedback and command execution within AI-assisted development workflows. It provides dual interface support through both Web UI and Desktop Application, with built-in intelligent environment detection to ensure cross-platform compatibility. The server handles user interactions and command execution efficiently, making it suitable for developers integrating AI agents into their development processes. It supports multilingual notifications and WebSocket-based communication for real-time feedback loops. The project is actively maintained with comprehensive release notes and documentation for integration.\nGather user feedback during the development cycle to refine features.\nExecute commands based on user input, improving responsiveness to developer needs.\nDetect user environments automatically to optimize application performance.\nFacilitate cross-platform development workflows by providing consistent interfaces.",
+    "setup_vi": "Terminal\nCopy\n`claude install Minidoracat/mcp-feedback-enhanced`\n`git clone https://github.com/Minidoracat/mcp-feedback-enhanced`",
+    "usage_vi": "```\nAct as an mcp-feedback-enhanced server for interactive development feedback. Use the [PLATFORM] interface ([WEB_UI] or [DESKTOP_APP]) to provide real-time feedback on [TASK]. Execute commands like [COMMAND_EXAMPLE] and analyze the output. For [TASK], suggest improvements or next steps based on the feedback. Example: 'Act as an mcp-feedback-enhanced server. I'm using the [DESKTOP_APP] interface to develop a Python script for [TASK: automating Forma workshop registration data]. Execute the command `python3 register_workshop.py --input data.csv` and analyze the output. Suggest improvements for handling edge cases in the data.'\n```\nCopy\n\n```\n```\n**mcp-feedback-enhanced Server Response (Desktop App Interface)**\n\n**Command Executed:**\n`python3 register_workshop.py --input data.csv`\n\n**Output Analysis:**\nThe script processed 124 workshop registration records from `data.csv`. Key observations:\n- 8 records had missing `participant_email` fields, causing the script to skip them. This resulted in 8 incomplete registrations for the \"Hand-Tied Bouquets\" workshop.\n- 3 records contained duplicate entries for the same email (e.g., `jane.doe@example.com` registered twice for \"Kokedama\" and \"Terrariums\"). The script flagged these but did not merge them.\n- The `workshop_date` field had inconsistent formatting (e.g., \"2024-05-15\" vs. \"May 15, 2024\"), leading to 12 records being miscategorized under the wrong month.\n\n**Suggested Improvements:**\n1. **Data Validation:** Add a pre-processing step to validate and clean the input data. For example:\n   ```python\n   import pandas as pd\n   df = pd.read_csv('data.csv')\n   df['participant_email'] = df['participant_email'].fillna('')\n   df = df.drop_duplicates(subset=['participant_email', 'workshop_name'])\n   df['workshop_date'] = pd.to_datetime(df['workshop_date'], errors='coerce').dt.strftime('%Y-%m-%d')\n   ```\n2. **Error Handling:** Modify the script to log skipped records and send an alert for manual review. Example:\n   ```python\n   skipped_records = df[df['participant_email'].isna()]\n   with open('skipped_records.log', 'a') as f:\n       f.write(f\"Skipped {len(skipped_records)} records with missing emails.\\n\")\n   ```\n3. **Duplicate Detection:** Implement a merge logic for duplicate registrations. For example, combine workshops into a single entry with a comma-separated list:\n   ```python\n   df['workshop_name'] = df.groupby('participant_email')['workshop_name'].transform(lambda x: ', '.join(x))\n   ```\n\n**Next Steps:**\n- Would you like me to generate the updated script with these improvements?\n- Should we prioritize fixing the date formatting issue first?\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:03:33.460948Z",
+    "http_status": 200,
+    "content_hash": "605c0480907e02f6d2688ff4943722982a8b9e6d475dabb1dbf45282a1156239",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-feedback-enhanced.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-feedback-enhanced.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MCP Feedback Enhanced - AI Development Tool",
+  "short_description_vi": "The mcp-feedback-enhanced is an advanced server designed for interactive user feedback and command execution in AI-assisted development. It supports both Web UI and Desktop Application interfaces, ensuring intelligent environment detection and cross-platform compatibility."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudetainer",
+  "slug": "claudetainer",
+  "name": "claudetainer",
+  "headline": "claudetainer for Claude Code workflows",
+  "short_description": "Claudetainer automates development workflows using Claude Code in devcontainers. It benefits developers and operations teams by streamlining code environments. It connects to devcontainer tools and workflows, enhancing productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "smithclay",
+  "install_command": "git clone https://github.com/smithclay/claudetainer.git",
+  "source_repo_url": "https://github.com/smithclay/claudetainer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "devcontainer-feature"
+  ],
+  "sections": {
+    "overview": "Claudetainer automates Claude Code setup within isolated devcontainers, eliminating manual environment configuration for Python, Node.js, Go, Rust, and Shell projects. It provides persistent SSH sessions with built-in terminal multiplexing (Zellij/tmux) optimized for mobile coding, allowing developers to work from anywhere without a keyboard. The tool includes specialized sub-agents, automated quality control, slash commands, and team-ready configuration sharing via GitHub. Developers and operations teams benefit from instant project initialization, secure devcontainer isolation, and push notifications for workflow awareness.\nRemote development from mobile devices or limited-bandwidth environments\nTeam collaboration with shareable GitHub preset configurations\nRapid project initialization with language-specific presets\nSecure, isolated Claude Code execution within devcontainers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/smithclay/claudetainer`",
+    "usage": "```\nUse Claudetainer to automate the setup of a [PROGRAMMING_LANGUAGE] development environment in a devcontainer for [PROJECT_NAME]. Configure the devcontainer to include [DEPENDENCIES] and [TOOLS]. After setup, run [TEST_COMMAND] to verify the environment. Document any issues encountered in [LOG_FILE].\n```\nCopy\n\n```\n### Claudetainer Environment Setup Report\n\n**Project:** `acme-auth-service` (Node.js v18 + PostgreSQL)\n**Devcontainer Configuration:**\n- Base image: `mcr.microsoft.com/devcontainers/base:ubuntu`\n- Dependencies: `node@18.17.1`, `npm@9.6.7`, `postgresql@15`, `docker@24.0.5`\n- Tools: `git`, `curl`, `jq`, `docker-compose@2.20.3`\n- VS Code extensions: `ESLint`, `Prettier`, `PostgreSQL`\n\n**Setup Process:**\n1. Claudetainer initialized the devcontainer using the `acme-auth-service/.devcontainer/devcontainer.json` template.\n2. Container built successfully in 3m 42s (cached layers: 85% reused).\n3. PostgreSQL service started automatically with user `devuser` and database `acme_auth`.\n4. Node.js dependencies installed via `npm ci` (127 packages, 0 vulnerabilities).\n5. Environment variables loaded from `.env.example` (missing values prompted for user input).\n\n**Verification:**\n```bash\n$ npm run test:unit\n PASS  tests/unit/auth.service.test.js (5.2s)\n  ✓ should validate JWT tokens (300ms)\n  ✓ should hash passwords correctly (150ms)\n\nTest Suites: 1 passed, 1 total\nTests:       2 passed, 2 total\n```\n\n**Issues Logged:**\n- Warning: PostgreSQL `max_connections` set to default (100). Recommended to increase for CI environments.\n- Note: VS Code extensions installed but not activated until workspace reload.\n\n**Next Steps:**\n- Run `npm run dev` to start the application locally.\n- Configure `DATABASE_URL` in `.env` for persistent data.\n- Push changes to `.devcontainer/devcontainer.json` to version control the configuration.\n\n**Time Saved:** Estimated 45 minutes (manual setup time for a new developer).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudetainer#main-content",
+      "claudetainer#overview",
+      "claudetainer#setup",
+      "claudetainer#examples",
+      "claudetainer#tools",
+      "claudetainer#mcp",
+      "claudetainer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claudetainer tự động hóa quá trình setup Claude Code bên trong các devcontainer cô lập, loại bỏ thao tác cấu hình môi trường thủ công cho các dự án Python, Node.js, Go, Rust và Shell. Công cụ này cung cấp các session SSH liên tục tích hợp trình đa năng hóa terminal (Zellij/tmux) được tối ưu cho việc lập trình trên di động, giúp lập trình viên làm việc mọi lúc mọi nơi mà không cần bàn phím. Ngoài ra, Claudetainer còn tích hợp các sub-agent chuyên dụng, quy trình kiểm soát chất lượng tự động, slash command và khả năng chia sẻ cấu hình cho đội ngũ thông qua GitHub. Lập trình viên và đội ngũ vận hành sẽ được hưởng lợi từ khả năng khởi tạo dự án tức thì, tính năng cô lập devcontainer bảo mật và hệ thống push notification để cập nhật trạng thái workflow.\n- Phát triển từ xa từ thiết bị di động hoặc môi trường băng thông hạn chế\n- Cộng tác nhóm hiệu quả nhờ các cấu hình preset GitHub dễ dàng chia sẻ\n- Khởi tạo dự án nhanh chóng với các preset tối ưu theo từng ngôn ngữ\n- Thực thi Claude Code an toàn và cô lập hoàn toàn bên trong devcontainer",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/smithclay/claudetainer`",
+    "usage_vi": "```\nSử dụng Claudetainer để tự động hóa việc setup môi trường phát triển [PROGRAMMING_LANGUAGE] trong một devcontainer cho [PROJECT_NAME]. Cấu hình devcontainer để tích hợp [DEPENDENCIES] và [TOOLS]. Sau khi setup, chạy [TEST_COMMAND] để xác minh môi trường. Ghi nhận lại bất kỳ lỗi nào gặp phải vào [LOG_FILE].\n```\nCopy\n\n```\n### Báo cáo setup môi trường Claudetainer\n\n**Dự án:** `acme-auth-service` (Node.js v18 + PostgreSQL)\n**Cấu hình Devcontainer:**\n- Base image: `mcr.microsoft.com/devcontainers/base:ubuntu`\n- Dependencies: `node@18.17.1`, `npm@9.6.7`, `postgresql@15`, `docker@24.0.5`\n- Tools: `git`, `curl`, `jq`, `docker-compose@2.20.3`\n- VS Code extensions: `ESLint`, `Prettier`, `PostgreSQL`\n\n**Quy trình setup:**\n1. Claudetainer đã khởi tạo devcontainer bằng cách sử dụng template `acme-auth-service/.devcontainer/devcontainer.json`.\n2. Build container thành công trong 3 phút 42 giây (cached layer: tái sử dụng 85%).\n3. Service PostgreSQL tự động khởi chạy với user `devuser` và database `acme_auth`.\n4. Cài đặt các dependency Node.js qua `npm ci` (127 package, 0 lỗ hổng bảo mật).\n5. Load các biến môi trường từ `.env.example` (các giá trị còn thiếu sẽ yêu cầu người dùng nhập vào).\n\n**Xác minh:**\n```bash\n$ npm run test:unit\n PASS  tests/unit/auth.service.test.js (5.2s)\n  ✓ should validate JWT tokens (300ms)\n  ✓ should hash passwords correctly (150ms)\n\nTest Suites: 1 passed, 1 total\nTests:       2 passed, 2 total\n```\n\n**Lịch sử ghi nhận lỗi (Issues Logged):**\n- Warning: `max_connections` của PostgreSQL đang để mặc định (100). Khuyến nghị tăng thông số này đối với môi trường CI.\n- Note: Các extension VS Code đã được cài đặt nhưng chỉ kích hoạt sau khi reload workspace.\n\n**Các bước tiếp theo:**\n- Chạy `npm run dev` để khởi chạy ứng dụng local.\n- Cấu hình `DATABASE_URL` trong `.env` để lưu trữ dữ liệu bền vững.\n- Push các thay đổi trong `.devcontainer/devcontainer.json` lên hệ thống quản lý phiên bản (version control) để lưu lại cấu hình.\n\n**Thời gian tiết kiệm được:** Ước tính 45 phút (so với thời gian setup thủ công của một lập trình viên mới).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:54:06.957158Z",
+    "http_status": 200,
+    "content_hash": "f7fc76c97884f2ae62c60c4c55036552d4333c051b86c08bc847c6b8485c03d3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudetainer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudetainer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claudetainer dành cho workflow Claude Code",
+  "short_description_vi": "Claudetainer tự động hóa các workflow phát triển bằng cách sử dụng Claude Code trong devcontainer. Công cụ này mang lại lợi ích cho lập trình viên và đội ngũ vận hành nhờ khả năng tối ưu hóa môi trường phát triển, đồng thời kết nối trực tiếp với các công cụ và workflow devcontainer để nâng cao năng suất."
+}

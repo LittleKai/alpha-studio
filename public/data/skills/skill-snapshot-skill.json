@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-snapshot-skill",
+  "slug": "skill-snapshot-skill",
+  "name": "browser-use",
+  "headline": "Skill Snapshot - Version Control for AI Skills",
+  "short_description": "Skill Snapshot enables version control for AI skills, allowing operations teams to save, restore, and compare skill versions. Backups are stored in private GitHub repositories, ensuring data security and easy retrieval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "wshuyi",
+  "install_command": "git clone https://github.com/wshuyi/skill-snapshot-skill.git",
+  "source_repo_url": "https://github.com/wshuyi/skill-snapshot-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skill Snapshot provides version control for Claude Code skills, allowing you to save snapshots, restore previous versions, and compare changes with ease. Backups are automatically stored in a private GitHub repository, ensuring your skill modifications are secure and recoverable. The skill includes smart scanning to identify which skills need backup, automatic version tagging, and skip rules that prevent backing up archived skills, symlinks, or skills with existing version control. Operations teams can initialize repositories, save snapshots before modifications, restore broken skills to known-good versions, and track changes across multiple skill versions.\nSave skill snapshots before making modifications to enable quick rollback if issues arise\nRestore broken skills to a previous working version tagged with version numbers\nScan your skills directory to identify which skills need backup and which already have version control\nCompare current skill state with previous snapshots to track what changed",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wshuyi/skill-snapshot-skill`",
+    "usage": "```\nCreate a version control snapshot for the AI skill '[SKILL_NAME]' with the following details: [SKILL_DESCRIPTION]. Save the snapshot to the private GitHub repository '[REPO_NAME]' under the branch '[BRANCH_NAME]'. Include a changelog entry summarizing the changes made since the last version [PREVIOUS_VERSION].\n```\nCopy\n\n```\n```json\n{\n  \"snapshot_id\": \"v1.2.3-20241015\",\n  \"skill_name\": \"Customer Support Ticket Classifier\",\n  \"description\": \"AI skill that automatically classifies incoming support tickets into predefined categories (Billing, Technical, Feature Request, General Inquiry) with 94% accuracy. Uses a fine-tuned BERT model with 128M parameters.\",\n  \"repository\": \"acme-ai-skills\",\n  \"branch\": \"main\",\n  \"previous_version\": \"v1.2.2\",\n  \"changelog\": {\n    \"major_changes\": [\n      \"Added support for Spanish language classification (accuracy: 89%)\",\n      \"Implemented fallback mechanism when confidence score < 0.7\",\n      \"Updated training dataset to include 15K additional tickets from Q3 2024\"\n    ],\n    \"minor_changes\": [\n      \"Optimized model inference speed by 18% through quantization\",\n      \"Added new category 'Account Management' for subscription-related tickets\",\n      \"Improved error handling for edge cases in ticket preprocessing\"\n    ],\n    \"bug_fixes\": [\n      \"Fixed misclassification of high-priority tickets as 'General Inquiry'\",\n      \"Resolved memory leak in batch processing mode\"\n    ]\n  },\n  \"files_modified\": [\n    {\"path\": \"models/ticket_classifier_v1.2.3.onnx\", \"size\": \"45.2MB\", \"hash\": \"a1b2c3d4...\"},\n    {\"path\": \"datasets/training_data_v2.csv\", \"size\": \"124MB\", \"hash\": \"e5f6g7h8...\"},\n    {\"path\": \"src/preprocessing.py\", \"size\": \"2.1KB\", \"hash\": \"i9j0k1l2...\"}\n  ],\n  \"metadata\": {\n    \"author\": \"AI Ops Team\",\n    \"created_at\": \"2024-10-15T14:30:00Z\",\n    \"validation_status\": \"passed\",\n    \"performance_metrics\": {\n      \"accuracy\": \"94.1%\",\n      \"latency\": \"125ms\",\n      \"throughput\": \"450 tickets/minute\"\n    }\n  }\n}\n```\n\nThe snapshot has been successfully saved to the private GitHub repository `acme-ai-skills` under the `main` branch. The version `v1.2.3` now includes significant improvements in multilingual support and model efficiency. The changelog provides clear documentation of all changes, making it easy to roll back if needed. The team can now reference this snapshot for audits, compliance, or rollback scenarios.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-snapshot-skill#main-content",
+      "skill-snapshot-skill#overview",
+      "skill-snapshot-skill#setup",
+      "skill-snapshot-skill#examples",
+      "skill-snapshot-skill#tools",
+      "skill-snapshot-skill#mcp",
+      "skill-snapshot-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Snapshot provides version control for Claude Code skills, allowing you to save snapshots, restore previous versions, and compare changes with ease. Backups are automatically stored in a private GitHub repository, ensuring your skill modifications are secure and recoverable. The skill includes smart scanning to identify which skills need backup, automatic version tagging, and skip rules that prevent backing up archived skills, symlinks, or skills with existing version control. Operations teams can initialize repositories, save snapshots before modifications, restore broken skills to known-good versions, and track changes across multiple skill versions.\nSave skill snapshots before making modifications to enable quick rollback if issues arise\nRestore broken skills to a previous working version tagged with version numbers\nScan your skills directory to identify which skills need backup and which already have version control\nCompare current skill state with previous snapshots to track what changed",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wshuyi/skill-snapshot-skill`",
+    "usage_vi": "```\nCreate a version control snapshot for the AI skill '[SKILL_NAME]' with the following details: [SKILL_DESCRIPTION]. Save the snapshot to the private GitHub repository '[REPO_NAME]' under the branch '[BRANCH_NAME]'. Include a changelog entry summarizing the changes made since the last version [PREVIOUS_VERSION].\n```\nCopy\n\n```\n```json\n{\n  \"snapshot_id\": \"v1.2.3-20241015\",\n  \"skill_name\": \"Customer Support Ticket Classifier\",\n  \"description\": \"AI skill that automatically classifies incoming support tickets into predefined categories (Billing, Technical, Feature Request, General Inquiry) with 94% accuracy. Uses a fine-tuned BERT model with 128M parameters.\",\n  \"repository\": \"acme-ai-skills\",\n  \"branch\": \"main\",\n  \"previous_version\": \"v1.2.2\",\n  \"changelog\": {\n    \"major_changes\": [\n      \"Added support for Spanish language classification (accuracy: 89%)\",\n      \"Implemented fallback mechanism when confidence score < 0.7\",\n      \"Updated training dataset to include 15K additional tickets from Q3 2024\"\n    ],\n    \"minor_changes\": [\n      \"Optimized model inference speed by 18% through quantization\",\n      \"Added new category 'Account Management' for subscription-related tickets\",\n      \"Improved error handling for edge cases in ticket preprocessing\"\n    ],\n    \"bug_fixes\": [\n      \"Fixed misclassification of high-priority tickets as 'General Inquiry'\",\n      \"Resolved memory leak in batch processing mode\"\n    ]\n  },\n  \"files_modified\": [\n    {\"path\": \"models/ticket_classifier_v1.2.3.onnx\", \"size\": \"45.2MB\", \"hash\": \"a1b2c3d4...\"},\n    {\"path\": \"datasets/training_data_v2.csv\", \"size\": \"124MB\", \"hash\": \"e5f6g7h8...\"},\n    {\"path\": \"src/preprocessing.py\", \"size\": \"2.1KB\", \"hash\": \"i9j0k1l2...\"}\n  ],\n  \"metadata\": {\n    \"author\": \"AI Ops Team\",\n    \"created_at\": \"2024-10-15T14:30:00Z\",\n    \"validation_status\": \"passed\",\n    \"performance_metrics\": {\n      \"accuracy\": \"94.1%\",\n      \"latency\": \"125ms\",\n      \"throughput\": \"450 tickets/minute\"\n    }\n  }\n}\n```\n\nThe snapshot has been successfully saved to the private GitHub repository `acme-ai-skills` under the `main` branch. The version `v1.2.3` now includes significant improvements in multilingual support and model efficiency. The changelog provides clear documentation of all changes, making it easy to roll back if needed. The team can now reference this snapshot for audits, compliance, or rollback scenarios.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:44:22.337057Z",
+    "http_status": 200,
+    "content_hash": "129596a599daa834632999f949de9daed315d46fcbcf97e3268ce93439505147",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-snapshot-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-snapshot-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skill Snapshot - Version Control for AI Skills",
+  "short_description_vi": "Skill Snapshot enables version control for AI skills, allowing operations teams to save, restore, and compare skill versions. Backups are stored in private GitHub repositories, ensuring data security and easy retrieval."
+}

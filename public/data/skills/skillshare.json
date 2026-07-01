@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillshare",
+  "slug": "skillshare",
+  "name": "skillshare",
+  "headline": "Skillshare: Sync AI Skills Across Tools",
+  "short_description": "Skillshare synchronizes skills across AI CLI tools like Claude Code, OpenCode, and Codex. Operations teams use it to maintain consistent skill sets across multiple tools, improving productivity and collaboration. It connects to various AI coding assistants, ensuring that skills are up-to-date and accessible across different platforms.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "runkids",
+  "install_command": "claude install runkids/skillshare",
+  "source_repo_url": "https://github.com/runkids/skillshare",
+  "works_with": [
+    "ClaudeCodexCursor"
+  ],
+  "tags": [
+    "cli",
+    "team-management",
+    "cross-machine-sync",
+    "ai-tools",
+    "skills-management"
+  ],
+  "sections": {
+    "overview": "Skillshare is a command-line tool that provides centralized management of skills for AI agents and coding assistants. It enables users to maintain, search, audit, and synchronize skills across different platforms and environments. The tool includes features for collecting local agents, managing agent installations, and performing security audits on skill repositories. Skillshare supports structured output formats including JSON and SARIF, making it suitable for integration into automated workflows. Development teams and AI operations can use Skillshare to standardize skill deployment across multiple coding assistant platforms.\nSync skills across multiple AI tools for teams\nManage and update skills in one command\nEnhance collaboration among AI developers",
+    "setup": "Terminal\nCopy\n`claude install runkids/skillshare`\n`git clone https://github.com/runkids/skillshare`",
+    "usage": "```\nSynchronize the following skills across my AI CLI tools: [LIST OF SKILLS]. Ensure consistency between [TOOL 1], [TOOL 2], and [TOOL 3]. Verify that all tools have the latest updates and are ready for use. Provide a summary of the synchronization process and any potential issues encountered.\n```\nCopy\n\n```\nThe synchronization process for the requested skills has been completed successfully. The following skills have been updated across Claude Code, OpenCode, and Codex: Python scripting, SQL query optimization, and API integration. All tools now have the latest versions of these skills. During the synchronization, a minor version mismatch was detected in OpenCode, which has been resolved. The tools are now fully synchronized and ready for use.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Codex, Cursor"
+    ],
+    "related_skills": [
+      "skillshare#main-content",
+      "skillshare#overview",
+      "skillshare#setup",
+      "skillshare#examples",
+      "skillshare#tools",
+      "skillshare#mcp",
+      "skillshare#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Skillshare is a command-line tool that provides centralized management of skills for AI agents and coding assistants. It enables users to maintain, search, audit, and synchronize skills across different platforms and environments. The tool includes features for collecting local agents, managing agent installations, and performing security audits on skill repositories. Skillshare supports structured output formats including JSON and SARIF, making it suitable for integration into automated workflows. Development teams and AI operations can use Skillshare to standardize skill deployment across multiple coding assistant platforms.\nSync skills across multiple AI tools for teams\nManage and update skills in one command\nEnhance collaboration among AI developers",
+    "setup_vi": "Terminal\nCopy\n`claude install runkids/skillshare`\n`git clone https://github.com/runkids/skillshare`",
+    "usage_vi": "```\nSynchronize the following skills across my AI CLI tools: [LIST OF SKILLS]. Ensure consistency between [TOOL 1], [TOOL 2], and [TOOL 3]. Verify that all tools have the latest updates and are ready for use. Provide a summary of the synchronization process and any potential issues encountered.\n```\nCopy\n\n```\nThe synchronization process for the requested skills has been completed successfully. The following skills have been updated across Claude Code, OpenCode, and Codex: Python scripting, SQL query optimization, and API integration. All tools now have the latest versions of these skills. During the synchronization, a minor version mismatch was detected in OpenCode, which has been resolved. The tools are now fully synchronized and ready for use.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:18.544815Z",
+    "http_status": 200,
+    "content_hash": "99f8eb25c70fd9090a8e0509462d97d2191e71185602335a031df489c3c59df4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillshare.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillshare.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skillshare: Sync AI Skills Across Tools",
+  "short_description_vi": "Skillshare synchronizes skills across AI CLI tools like Claude Code, OpenCode, and Codex. Operations teams use it to maintain consistent skill sets across multiple tools, improving productivity and collaboration. It connects to various AI coding assistants, ensuring that skills are up-to-date and accessible across different platforms."
+}

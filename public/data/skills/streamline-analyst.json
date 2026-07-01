@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/streamline-analyst",
+  "slug": "streamline-analyst",
+  "name": "Streamline-Analyst",
+  "headline": "Streamline-Analyst: AI-Powered Data Analysis",
+  "short_description": "Streamline-Analyst is an AI agent that uses advanced LLMs to simplify and accelerate data analysis processes. With its intuitive capabilities, users can easily derive insights and make data-driven decisions efficiently.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Wilson-ZheLin",
+  "install_command": "claude install Wilson-ZheLin/Streamline-Analyst",
+  "source_repo_url": "https://github.com/Wilson-ZheLin/Streamline-Analyst",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "AI agent",
+    "insights",
+    "data analysis",
+    "LLMs"
+  ],
+  "sections": {
+    "overview": "Streamline Analyst is an open-source LLM-powered agent that automates end-to-end data analysis tasks. It handles data cleaning, null value management, encoding, dimensionality reduction, and automatic model selection across classification, clustering, and regression tasks. The tool recommends optimal preprocessing strategies and generates real-time performance metrics and visualizations. Users select their data file, choose an analysis mode, and the agent handles complex operations like target variable identification, test set partitioning, and model training. It's designed for analysts and teams who need high-quality results efficiently without manual coding.\nAutomate the process of cleaning and preprocessing large datasets to save time and reduce errors.\nGenerate comprehensive reports from raw data in minutes, allowing for quicker decision-making.\nVisualize data trends and patterns through intuitive graphical representations for better insights.\nConduct sentiment analysis on customer feedback to gauge public opinion and improve products.",
+    "setup": "Terminal\nCopy\n`claude install Wilson-ZheLin/Streamline-Analyst`\n`git clone https://github.com/Wilson-ZheLin/Streamline-Analyst`",
+    "usage": "```\nAct as a Streamline-Analyst AI agent. Your task is to analyze the provided dataset [DATASET] and generate a concise report with key insights, trends, and actionable recommendations. Structure the report with clear headings: 1) Summary of Findings, 2) Key Trends, 3) Anomalies, 4) Recommendations. Use simple language and avoid jargon. Ensure the report is no longer than 500 words.\n```\nCopy\n\n```\n### Streamline-Analyst Report: Q2 2024 Customer Support Metrics\n\n**Summary of Findings:**\nIn Q2 2024, our customer support team handled 12,450 tickets, a 15% increase from Q1. The average resolution time dropped to 4.2 hours (down from 5.1 hours), while customer satisfaction (CSAT) scores improved to 88% from 82%. First-contact resolution (FCR) rates reached 76%, up from 70%. These improvements align with our recent training initiatives and the rollout of our new knowledge base.\n\n**Key Trends:**\n- **Ticket Volume:** Support tickets spiked in May (4,200 tickets) due to a product update, but resolution times remained stable thanks to our expanded agent pool.\n- **Channel Performance:** Live chat saw a 22% increase in usage, now accounting for 35% of all tickets. Email volume decreased by 8%, likely due to the improved self-service options in our new knowledge base.\n- **Agent Productivity:** Top-performing agents resolved tickets 30% faster than the average, with CSAT scores consistently above 92%. Agents with access to the new AI-powered suggestion tool (deployed in June) showed a 12% improvement in FCR rates.\n\n**Anomalies:**\n- **June Spike in Escalations:** Escalated tickets jumped to 18% in June, up from the quarterly average of 12%. This coincided with a temporary issue in our billing system, which was resolved by June 15th.\n- **Regional Disparities:** Support tickets from EMEA customers took 1.5 hours longer to resolve on average, primarily due to language barriers and time zone differences. This suggests a need for localized support or additional language training.\n\n**Recommendations:**\n1. **Scale Chat Support:** Allocate 2 additional agents to live chat during peak hours (10 AM - 4 PM EST) to reduce wait times, which currently average 4 minutes.\n2. **Address Escalation Triggers:** Investigate recurring billing issues to prevent future escalations. Implement automated alerts for billing-related tickets to flag potential problems early.\n3. **Regional Support Strategy:** Pilot a 24/7 support desk for EMEA customers or partner with a local outsourcing provider to improve response times. Consider offering multilingual support for top customer segments.\n4. **Leverage Top Performers:** Use the insights from top-performing agents to create a training module for the rest of the team. Focus on their use of the AI suggestion tool and time management techniques.\n\n**Next Steps:**\n- Share this report with the support leadership team by EOD Friday.\n- Schedule a workshop with top performers to document their best practices.\n- Review the EMEA support strategy with the regional manager by next Wednesday.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "streamline-analyst#main-content",
+      "streamline-analyst#overview",
+      "streamline-analyst#setup",
+      "streamline-analyst#examples",
+      "streamline-analyst#tools",
+      "streamline-analyst#mcp",
+      "streamline-analyst#related",
+      "data-analyst-agent",
+      "mcp-server-chart",
+      "ai-analyst-agent"
+    ],
+    "overview_vi": "Streamline Analyst is an open-source LLM-powered agent that automates end-to-end data analysis tasks. It handles data cleaning, null value management, encoding, dimensionality reduction, and automatic model selection across classification, clustering, and regression tasks. The tool recommends optimal preprocessing strategies and generates real-time performance metrics and visualizations. Users select their data file, choose an analysis mode, and the agent handles complex operations like target variable identification, test set partitioning, and model training. It's designed for analysts and teams who need high-quality results efficiently without manual coding.\nAutomate the process of cleaning and preprocessing large datasets to save time and reduce errors.\nGenerate comprehensive reports from raw data in minutes, allowing for quicker decision-making.\nVisualize data trends and patterns through intuitive graphical representations for better insights.\nConduct sentiment analysis on customer feedback to gauge public opinion and improve products.",
+    "setup_vi": "Terminal\nCopy\n`claude install Wilson-ZheLin/Streamline-Analyst`\n`git clone https://github.com/Wilson-ZheLin/Streamline-Analyst`",
+    "usage_vi": "```\nAct as a Streamline-Analyst AI agent. Your task is to analyze the provided dataset [DATASET] and generate a concise report with key insights, trends, and actionable recommendations. Structure the report with clear headings: 1) Summary of Findings, 2) Key Trends, 3) Anomalies, 4) Recommendations. Use simple language and avoid jargon. Ensure the report is no longer than 500 words.\n```\nCopy\n\n```\n### Streamline-Analyst Report: Q2 2024 Customer Support Metrics\n\n**Summary of Findings:**\nIn Q2 2024, our customer support team handled 12,450 tickets, a 15% increase from Q1. The average resolution time dropped to 4.2 hours (down from 5.1 hours), while customer satisfaction (CSAT) scores improved to 88% from 82%. First-contact resolution (FCR) rates reached 76%, up from 70%. These improvements align with our recent training initiatives and the rollout of our new knowledge base.\n\n**Key Trends:**\n- **Ticket Volume:** Support tickets spiked in May (4,200 tickets) due to a product update, but resolution times remained stable thanks to our expanded agent pool.\n- **Channel Performance:** Live chat saw a 22% increase in usage, now accounting for 35% of all tickets. Email volume decreased by 8%, likely due to the improved self-service options in our new knowledge base.\n- **Agent Productivity:** Top-performing agents resolved tickets 30% faster than the average, with CSAT scores consistently above 92%. Agents with access to the new AI-powered suggestion tool (deployed in June) showed a 12% improvement in FCR rates.\n\n**Anomalies:**\n- **June Spike in Escalations:** Escalated tickets jumped to 18% in June, up from the quarterly average of 12%. This coincided with a temporary issue in our billing system, which was resolved by June 15th.\n- **Regional Disparities:** Support tickets from EMEA customers took 1.5 hours longer to resolve on average, primarily due to language barriers and time zone differences. This suggests a need for localized support or additional language training.\n\n**Recommendations:**\n1. **Scale Chat Support:** Allocate 2 additional agents to live chat during peak hours (10 AM - 4 PM EST) to reduce wait times, which currently average 4 minutes.\n2. **Address Escalation Triggers:** Investigate recurring billing issues to prevent future escalations. Implement automated alerts for billing-related tickets to flag potential problems early.\n3. **Regional Support Strategy:** Pilot a 24/7 support desk for EMEA customers or partner with a local outsourcing provider to improve response times. Consider offering multilingual support for top customer segments.\n4. **Leverage Top Performers:** Use the insights from top-performing agents to create a training module for the rest of the team. Focus on their use of the AI suggestion tool and time management techniques.\n\n**Next Steps:**\n- Share this report with the support leadership team by EOD Friday.\n- Schedule a workshop with top performers to document their best practices.\n- Review the EMEA support strategy with the regional manager by next Wednesday.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:02.025351Z",
+    "http_status": 200,
+    "content_hash": "9adca31e28f4c3014ae0e906189ecc8ba7dd7c2144ab457f95a6f93a344f1673",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\streamline-analyst.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\streamline-analyst.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Streamline-Analyst: AI-Powered Data Analysis",
+  "short_description_vi": "Streamline-Analyst is an AI agent that uses advanced LLMs to simplify and accelerate data analysis processes. With its intuitive capabilities, users can easily derive insights and make data-driven decisions efficiently."
+}

@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-model-merging-methods-theories-applications",
+  "slug": "awesome-model-merging-methods-theories-applications",
+  "name": "Awesome-Model-Merging-Methods-Theories-Applications",
+  "headline": "model merging theories for LLMs and beyond",
+  "short_description": "Model merging techniques for LLMs, MLLMs, and other AI models. Operations teams use this to combine models for improved performance, robustness, and multi-task learning. Integrates with Claude and other AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "EnnengYang",
+  "install_command": "git clone https://github.com/EnnengYang/Awesome-Model-Merging-Methods-Theories-Applications.git",
+  "source_repo_url": "https://github.com/EnnengYang/Awesome-Model-Merging-Methods-Theories-Applications",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "diffusion-models",
+    "robustness",
+    "model-fusion",
+    "model-merging",
+    "transfer-learning",
+    "ensemble-learning",
+    "multi-domain-learning",
+    "few-shot-learning",
+    "attack-defense",
+    "federated-learning",
+    "zero-shot-learning",
+    "large-language-models",
+    "foundation-models",
+    "generalization",
+    "multi-task-learning",
+    "generative-model",
+    "llms",
+    "continual-learning",
+    "knowledge-fusion",
+    "meta-learning"
+  ],
+  "sections": {
+    "overview": "Awesome-Model-Merging-Methods-Theories-Applications is a curated collection of research and techniques for merging large language models, multimodal large language models, and other AI models without requiring raw training data or expensive computation. The resource covers exhaustive taxonomies of model merging methods and their theoretical foundations, making it a reference for understanding how to combine trained models effectively. Applications span continual learning, multi-task learning, few-shot learning, and 10+ machine learning subfields. Operations and ML teams use these techniques to enhance model performance and robustness by merging complementary trained models. The underlying survey, published in ACM Computing Surveys 2026, provides comprehensive coverage of merging methods, practical applications, and future research directions in the field.\nAutomate the merging of multiple LLMs to create a more robust and versatile model.\nImplement model merging techniques to improve the performance of generative models in creative applications.\nUtilize model merging to facilitate knowledge transfer in multi-task learning scenarios.\nEnhance the efficiency of federated learning systems by aggregating local models through merging.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/EnnengYang/Awesome-Model-Merging-Methods-Theories-Applications`",
+    "usage": "```\nMerge [MODEL_A] and [MODEL_B] using [MERGE_METHOD] to optimize for [TARGET_TASK]. Apply [WEIGHTING_SCHEME] with [TUNING_PARAMETERS] and validate performance on [EVALUATION_DATASET]. Generate a merged model file and provide a summary of trade-offs (e.g., latency vs. accuracy, robustness improvements). Include code snippets for [FRAMEWORK] if applicable.\n```\nCopy\n\n```\n### Merged Model Report: Llama-2-7B + Mistral-7B (Task: Code Generation)\n\n**Merge Method**: TIES-Merging (0.75 weight for Llama, 0.25 for Mistral)\n**Weighting Scheme**: Task-Arithmetic with task vector scaling factor = 0.5\n**Tuning Parameters**: LoRA rank=8, alpha=16, dropout=0.1\n**Evaluation Dataset**: HumanEval (164 problems)\n\n**Performance Metrics**:\n- Pass@1: 68.3% (vs. 62.1% Llama-2-7B, 65.8% Mistral-7B)\n- Latency: 1.2s per 100 tokens (vs. 1.1s Llama-2, 1.3s Mistral)\n- Robustness: 15% fewer failures on adversarial prompts\n\n**Trade-offs**:\n- Slight increase in memory usage (7.8GB vs. 7.2GB base models)\n- Reduced hallucination rate by 22% on factual QA tasks\n\n**Merged Model Artifacts**:\n- HuggingFace Hub: `merged-models/llama-mistral-codegen-v1`\n- ONNX export: `merged-model.onnx` (4.2GB)\n- Quantized INT8 version: `merged-model-int8.gguf` (1.8GB)\n\n**Code Snippet (HuggingFace Transformers)**:\n```python\nfrom transformers import AutoModelForCausalLM\nmodel = AutoModelForCausalLM.from_pretrained(\"merged-models/llama-mistral-codegen-v1\")\ntokenizer = AutoTokenizer.from_pretrained(\"merged-models/llama-mistral-codegen-v1\")\ninputs = tokenizer(\"Write a Python function to sort a list of dictionaries by key\", return_tensors=\"pt\")\noutputs = model.generate(**inputs, max_new_tokens=128)\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-model-merging-methods-theories-applications#main-content",
+      "awesome-model-merging-methods-theories-applications#overview",
+      "awesome-model-merging-methods-theories-applications#setup",
+      "awesome-model-merging-methods-theories-applications#examples",
+      "awesome-model-merging-methods-theories-applications#tools",
+      "awesome-model-merging-methods-theories-applications#mcp",
+      "awesome-model-merging-methods-theories-applications#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome-Model-Merging-Methods-Theories-Applications is a curated collection of research and techniques for merging large language models, multimodal large language models, and other AI models without requiring raw training data or expensive computation. The resource covers exhaustive taxonomies of model merging methods and their theoretical foundations, making it a reference for understanding how to combine trained models effectively. Applications span continual learning, multi-task learning, few-shot learning, and 10+ machine learning subfields. Operations and ML teams use these techniques to enhance model performance and robustness by merging complementary trained models. The underlying survey, published in ACM Computing Surveys 2026, provides comprehensive coverage of merging methods, practical applications, and future research directions in the field.\nAutomate the merging of multiple LLMs to create a more robust and versatile model.\nImplement model merging techniques to improve the performance of generative models in creative applications.\nUtilize model merging to facilitate knowledge transfer in multi-task learning scenarios.\nEnhance the efficiency of federated learning systems by aggregating local models through merging.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/EnnengYang/Awesome-Model-Merging-Methods-Theories-Applications`",
+    "usage_vi": "```\nMerge [MODEL_A] and [MODEL_B] using [MERGE_METHOD] to optimize for [TARGET_TASK]. Apply [WEIGHTING_SCHEME] with [TUNING_PARAMETERS] and validate performance on [EVALUATION_DATASET]. Generate a merged model file and provide a summary of trade-offs (e.g., latency vs. accuracy, robustness improvements). Include code snippets for [FRAMEWORK] if applicable.\n```\nCopy\n\n```\n### Merged Model Report: Llama-2-7B + Mistral-7B (Task: Code Generation)\n\n**Merge Method**: TIES-Merging (0.75 weight for Llama, 0.25 for Mistral)\n**Weighting Scheme**: Task-Arithmetic with task vector scaling factor = 0.5\n**Tuning Parameters**: LoRA rank=8, alpha=16, dropout=0.1\n**Evaluation Dataset**: HumanEval (164 problems)\n\n**Performance Metrics**:\n- Pass@1: 68.3% (vs. 62.1% Llama-2-7B, 65.8% Mistral-7B)\n- Latency: 1.2s per 100 tokens (vs. 1.1s Llama-2, 1.3s Mistral)\n- Robustness: 15% fewer failures on adversarial prompts\n\n**Trade-offs**:\n- Slight increase in memory usage (7.8GB vs. 7.2GB base models)\n- Reduced hallucination rate by 22% on factual QA tasks\n\n**Merged Model Artifacts**:\n- HuggingFace Hub: `merged-models/llama-mistral-codegen-v1`\n- ONNX export: `merged-model.onnx` (4.2GB)\n- Quantized INT8 version: `merged-model-int8.gguf` (1.8GB)\n\n**Code Snippet (HuggingFace Transformers)**:\n```python\nfrom transformers import AutoModelForCausalLM\nmodel = AutoModelForCausalLM.from_pretrained(\"merged-models/llama-mistral-codegen-v1\")\ntokenizer = AutoTokenizer.from_pretrained(\"merged-models/llama-mistral-codegen-v1\")\ninputs = tokenizer(\"Write a Python function to sort a list of dictionaries by key\", return_tensors=\"pt\")\noutputs = model.generate(**inputs, max_new_tokens=128)\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:22:27.070307Z",
+    "http_status": 200,
+    "content_hash": "6220e1af58f18ca8c397ba330e66c523a5934a922916d12538de80736ef42876",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-model-merging-methods-theories-applications.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-model-merging-methods-theories-applications.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "model merging theories for LLMs and beyond",
+  "short_description_vi": "Model merging techniques for LLMs, MLLMs, and other AI models. Operations teams use this to combine models for improved performance, robustness, and multi-task learning. Integrates with Claude and other AI agents."
+}

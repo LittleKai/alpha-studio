@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/learn-low-code-agentic-ai",
+  "slug": "learn-low-code-agentic-ai",
+  "name": "browser-use",
+  "headline": "Low-Code Agentic AI - Build AI Agents",
+  "short_description": "Low-code full-stack agentic AI development using LLMs, n8n, Loveable, UXPilot, Supabase, and MCP. Enables operations teams to build and deploy AI agents with minimal coding, integrating workflows and databases for automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "panaversity",
+  "install_command": "git clone https://github.com/panaversity/learn-low-code-agentic-ai.git",
+  "source_repo_url": "https://github.com/panaversity/learn-low-code-agentic-ai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "supabase",
+    "loveable",
+    "n8n",
+    "llms",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "This skill teaches full-stack agentic AI development using a low-code approach, combining n8n for workflow automation and AI orchestration, Loveable for frontend design, Supabase for data storage and authentication, and the Model Context Protocol (MCP) as an integration layer. You'll learn to build AI agents that perceive, plan, and act across multiple systems—from inbox triage and report generation to data analysis and DevOps automation—without extensive coding. The curriculum begins with prompt and context engineering fundamentals, then progresses through tool integration, memory management, and multi-step workflows. This approach enables faster prototyping and deployment compared to full-code frameworks while maintaining control over agent behavior and safety guardrails.\nAutomate data retrieval and processing workflows using n8n to connect various APIs and databases.\nCreate a responsive AI helpdesk that reads user inquiries and escalates to human agents when necessary.\nDevelop a report generator that fetches data from APIs, summarizes findings with LLMs, and exports results to various formats.\nBuild a research assistant that scrapes web pages, organizes data, and allows users to query the information interactively.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/panaversity/learn-low-code-agentic-ai`",
+    "usage": "```\nBuild a low-code agentic AI workflow that [DESCRIBE_TASK] using n8n, Loveable, UXPilot, Supabase, and MCP. The workflow should include: 1) Data ingestion from [SOURCE] into Supabase, 2) An AI agent in Loveable that processes the data with [SPECIFIC_PROMPT], 3) Automated actions triggered by UXPilot when [CONDITION] is met, and 4) Integration with MCP for [SPECIFIC_SERVICE]. Use minimal code and provide a step-by-step deployment guide in Markdown format.\n```\nCopy\n\n```\n### Low-Code Agentic AI Workflow: Automated Customer Support Triage\n\n**Workflow Overview**\nThis workflow automates the triage of customer support tickets by routing urgent issues to the right team with minimal human intervention. Built using n8n for workflow orchestration, Loveable for AI agent logic, UXPilot for UI automation, Supabase as the database, and MCP for Slack integration.\n\n**Step 1: Data Ingestion**\nCustomer support tickets from Zendesk are ingested into Supabase via n8n. The n8n workflow runs every 15 minutes, fetching new tickets with a status of 'new' or 'open' and storing them in the `tickets` table with columns: `id`, `subject`, `description`, `priority`, `customer_email`, and `created_at`. A trigger in n8n checks for new tickets and passes the data to the Loveable agent.\n\n**Step 2: AI Agent Processing**\nThe Loveable agent analyzes each ticket using the following prompt: *\"Analyze the following customer support ticket and classify it into one of these categories: 'Technical Issue', 'Billing Question', 'Feature Request', or 'General Inquiry'. Assign a priority score from 1-10 based on urgency. Return the classification, priority score, and a suggested response template in JSON format.\"* For example, a ticket with subject *\"Payment failed for subscription #12345\"* is classified as *\"Billing Question\"* with a priority score of *9* and a suggested response: *\"We noticed a failed payment for your subscription. Please update your payment method here: [link]. Let us know if you need assistance.\"*\n\n**Step 3: Automated Actions**\nUXPilot monitors the Supabase `tickets` table for rows where `priority >= 8` or `classification = 'Technical Issue'`. When triggered, UXPilot opens a Slack channel named `#urgent-tickets` and posts a message with the ticket details, suggested response, and a button to 'Assign to Team'. Clicking the button triggers an n8n workflow that updates the ticket status to 'assigned' and emails the assigned team member.\n\n**Step 4: MCP Integration**\nMCP is used to fetch real-time Slack user data for assigning tickets. When a ticket is assigned via UXPilot, MCP retrieves the list of available support agents and their current workload from Slack, then suggests the least busy agent for assignment. The agent’s Slack ID is stored in the Supabase `tickets` table.\n\n**Deployment Steps**\n1. Set up Supabase with the `tickets` table schema.\n2. Configure n8n to fetch Zendesk tickets and trigger the Loveable agent.\n3. Deploy the Loveable agent with the classification prompt and JSON output schema.\n4. Set up UXPilot to monitor Supabase and trigger Slack actions.\n5. Integrate MCP with Slack to fetch agent availability data.\n\n**Result**\nThis workflow reduced manual triage time by 70% and improved response times for urgent tickets by 40%. The entire system was built with less than 50 lines of custom code, primarily in n8n and Loveable.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "learn-low-code-agentic-ai#main-content",
+      "learn-low-code-agentic-ai#overview",
+      "learn-low-code-agentic-ai#setup",
+      "learn-low-code-agentic-ai#examples",
+      "learn-low-code-agentic-ai#tools",
+      "learn-low-code-agentic-ai#mcp",
+      "learn-low-code-agentic-ai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill teaches full-stack agentic AI development using a low-code approach, combining n8n for workflow automation and AI orchestration, Loveable for frontend design, Supabase for data storage and authentication, and the Model Context Protocol (MCP) as an integration layer. You'll learn to build AI agents that perceive, plan, and act across multiple systems—from inbox triage and report generation to data analysis and DevOps automation—without extensive coding. The curriculum begins with prompt and context engineering fundamentals, then progresses through tool integration, memory management, and multi-step workflows. This approach enables faster prototyping and deployment compared to full-code frameworks while maintaining control over agent behavior and safety guardrails.\nAutomate data retrieval and processing workflows using n8n to connect various APIs and databases.\nCreate a responsive AI helpdesk that reads user inquiries and escalates to human agents when necessary.\nDevelop a report generator that fetches data from APIs, summarizes findings with LLMs, and exports results to various formats.\nBuild a research assistant that scrapes web pages, organizes data, and allows users to query the information interactively.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/panaversity/learn-low-code-agentic-ai`",
+    "usage_vi": "```\nBuild a low-code agentic AI workflow that [DESCRIBE_TASK] using n8n, Loveable, UXPilot, Supabase, and MCP. The workflow should include: 1) Data ingestion from [SOURCE] into Supabase, 2) An AI agent in Loveable that processes the data with [SPECIFIC_PROMPT], 3) Automated actions triggered by UXPilot when [CONDITION] is met, and 4) Integration with MCP for [SPECIFIC_SERVICE]. Use minimal code and provide a step-by-step deployment guide in Markdown format.\n```\nCopy\n\n```\n### Low-Code Agentic AI Workflow: Automated Customer Support Triage\n\n**Workflow Overview**\nThis workflow automates the triage of customer support tickets by routing urgent issues to the right team with minimal human intervention. Built using n8n for workflow orchestration, Loveable for AI agent logic, UXPilot for UI automation, Supabase as the database, and MCP for Slack integration.\n\n**Step 1: Data Ingestion**\nCustomer support tickets from Zendesk are ingested into Supabase via n8n. The n8n workflow runs every 15 minutes, fetching new tickets with a status of 'new' or 'open' and storing them in the `tickets` table with columns: `id`, `subject`, `description`, `priority`, `customer_email`, and `created_at`. A trigger in n8n checks for new tickets and passes the data to the Loveable agent.\n\n**Step 2: AI Agent Processing**\nThe Loveable agent analyzes each ticket using the following prompt: *\"Analyze the following customer support ticket and classify it into one of these categories: 'Technical Issue', 'Billing Question', 'Feature Request', or 'General Inquiry'. Assign a priority score from 1-10 based on urgency. Return the classification, priority score, and a suggested response template in JSON format.\"* For example, a ticket with subject *\"Payment failed for subscription #12345\"* is classified as *\"Billing Question\"* with a priority score of *9* and a suggested response: *\"We noticed a failed payment for your subscription. Please update your payment method here: [link]. Let us know if you need assistance.\"*\n\n**Step 3: Automated Actions**\nUXPilot monitors the Supabase `tickets` table for rows where `priority >= 8` or `classification = 'Technical Issue'`. When triggered, UXPilot opens a Slack channel named `#urgent-tickets` and posts a message with the ticket details, suggested response, and a button to 'Assign to Team'. Clicking the button triggers an n8n workflow that updates the ticket status to 'assigned' and emails the assigned team member.\n\n**Step 4: MCP Integration**\nMCP is used to fetch real-time Slack user data for assigning tickets. When a ticket is assigned via UXPilot, MCP retrieves the list of available support agents and their current workload from Slack, then suggests the least busy agent for assignment. The agent’s Slack ID is stored in the Supabase `tickets` table.\n\n**Deployment Steps**\n1. Set up Supabase with the `tickets` table schema.\n2. Configure n8n to fetch Zendesk tickets and trigger the Loveable agent.\n3. Deploy the Loveable agent with the classification prompt and JSON output schema.\n4. Set up UXPilot to monitor Supabase and trigger Slack actions.\n5. Integrate MCP with Slack to fetch agent availability data.\n\n**Result**\nThis workflow reduced manual triage time by 70% and improved response times for urgent tickets by 40%. The entire system was built with less than 50 lines of custom code, primarily in n8n and Loveable.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:38:37.153326Z",
+    "http_status": 200,
+    "content_hash": "8078e29bcdba9a75bc6e57faf9798e77a419623b6ddbad915a5206b2e1299353",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-low-code-agentic-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-low-code-agentic-ai.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Low-Code Agentic AI - Build AI Agents",
+  "short_description_vi": "Low-code full-stack agentic AI development using LLMs, n8n, Loveable, UXPilot, Supabase, and MCP. Enables operations teams to build and deploy AI agents with minimal coding, integrating workflows and databases for automation."
+}

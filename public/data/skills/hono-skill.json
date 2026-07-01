@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hono-skill",
+  "slug": "hono-skill",
+  "name": "Hono Skill",
+  "headline": "Hono Skill - Develop Hono Applications",
+  "short_description": "Develop Hono applications efficiently using the Hono CLI. Ideal for operations teams building web services, APIs, and serverless functions. Integrates with existing workflows and connects to cloud platforms.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "yusukebe",
+  "install_command": "git clone https://github.com/yusukebe/hono-skill.git",
+  "source_repo_url": "https://github.com/yusukebe/hono-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Hono Skill is an agent skill that enables developers to build Hono web applications efficiently with integrated API reference and request testing capabilities. It provides inline knowledge of Hono's core features including routing, context, middleware, JSX, validation, RPC, streaming, and helper functions. The skill uses the Hono CLI to test requests directly within your development environment. It supports Claude Code and skills.sh installation methods and optionally integrates with the hono-docs MCP server for real-time documentation search and retrieval. This skill helps developers accelerate web service and API development by combining language model assistance with practical testing tools.\nBuilding REST APIs with Hono routing and middleware\nCreating serverless functions with Hono context and helpers\nTesting API requests during development without leaving your IDE\nImplementing request validation and streaming responses",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yusukebe/hono-skill`",
+    "usage": "```\nUse the Hono CLI to scaffold and deploy a new Hono application for [PURPOSE: e.g., 'a RESTful API for user authentication'] with the following specifications: [LANGUAGE: TypeScript/JavaScript], [FRAMEWORK: e.g., Hono + Drizzle ORM], and [DEPLOYMENT_TARGET: e.g., Cloudflare Workers, Vercel, or Deno Deploy]. Include authentication middleware, a basic CRUD endpoint for [ENTITY: e.g., 'users'], and configure environment variables for [DATABASE_URL, JWT_SECRET]. Generate the project structure, install dependencies, and provide deployment commands.\n```\nCopy\n\n```\n### Hono Application Scaffolding Report\n\n**Project Structure:**\n```\nmy-hono-api/\n├── src/\n│   ├── index.ts          # Main application entry\n│   ├── routes/\n│   │   ├── auth.ts       # Authentication routes (JWT middleware)\n│   │   └── users.ts      # CRUD endpoints for users\n│   ├── models/\n│   │   └── user.ts       # Drizzle ORM schema for users\n│   └── middleware/\n│       └── auth.ts       # JWT validation middleware\n├── drizzle.config.ts     # Drizzle ORM configuration\n├── package.json          # Dependencies and scripts\n└── .env                  # Environment variables (auto-generated)\n```\n\n**Key Files Generated:**\n1. **`src/index.ts`**:\n   ```typescript\n   import { Hono } from 'hono';\n   import { auth } from './routes/auth';\n   import { users } from './routes/users';\n   \n   const app = new Hono();\n   app.route('/auth', auth);\n   app.route('/users', users);\n   \n   export default app;\n   ```\n\n2. **`src/routes/users.ts`**:\n   ```typescript\n   import { Hono } from 'hono';\n   import { db } from '../models/user';\n   import { eq } from 'drizzle-orm';\n   \n   const app = new Hono();\n   \n   // GET /users - List all users\n   app.get('/', async (c) => {\n     const users = await db.select().from(usersTable).all();\n     return c.json({ users });\n   });\n   \n   // POST /users - Create a user\n   app.post('/', async (c) => {\n     const { name, email } = await c.req.json();\n     const newUser = await db.insert(usersTable).values({ name, email }).returning();\n     return c.json({ user: newUser[0] }, 201);\n   });\n   ```\n\n3. **Deployment Commands:**\n   ```bash\n   # Install dependencies\n   npm install hono @hono/auth-js drizzle-orm better-sqlite3\n   \n   # Run locally\n   npm run dev\n   \n   # Deploy to Cloudflare Workers\n   npm install -g wrangler\n   wrangler deploy\n   \n   # Deploy to Vercel\n   vercel --prod\n   ```\n\n**Environment Variables:**\n```env\nDATABASE_URL=\"better-sqlite3://./db.sqlite\"\nJWT_SECRET=\"your-super-secret-key-here\"\n```\n\n**Next Steps:**\n1. Run `npm run dev` to test locally.\n2. Configure your database connection in `drizzle.config.ts`.\n3. Deploy using the provided commands (adjust for your target platform).\n4. Add rate-limiting and CORS middleware in production.\n\n**Estimated Time to Deploy:** ~15 minutes (including dependencies and testing).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hono-skill#main-content",
+      "hono-skill#overview",
+      "hono-skill#setup",
+      "hono-skill#examples",
+      "hono-skill#tools",
+      "hono-skill#mcp",
+      "hono-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Hono Skill is an agent skill that enables developers to build Hono web applications efficiently with integrated API reference and request testing capabilities. It provides inline knowledge of Hono's core features including routing, context, middleware, JSX, validation, RPC, streaming, and helper functions. The skill uses the Hono CLI to test requests directly within your development environment. It supports Claude Code and skills.sh installation methods and optionally integrates with the hono-docs MCP server for real-time documentation search and retrieval. This skill helps developers accelerate web service and API development by combining language model assistance with practical testing tools.\nBuilding REST APIs with Hono routing and middleware\nCreating serverless functions with Hono context and helpers\nTesting API requests during development without leaving your IDE\nImplementing request validation and streaming responses",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yusukebe/hono-skill`",
+    "usage_vi": "```\nUse the Hono CLI to scaffold and deploy a new Hono application for [PURPOSE: e.g., 'a RESTful API for user authentication'] with the following specifications: [LANGUAGE: TypeScript/JavaScript], [FRAMEWORK: e.g., Hono + Drizzle ORM], and [DEPLOYMENT_TARGET: e.g., Cloudflare Workers, Vercel, or Deno Deploy]. Include authentication middleware, a basic CRUD endpoint for [ENTITY: e.g., 'users'], and configure environment variables for [DATABASE_URL, JWT_SECRET]. Generate the project structure, install dependencies, and provide deployment commands.\n```\nCopy\n\n```\n### Hono Application Scaffolding Report\n\n**Project Structure:**\n```\nmy-hono-api/\n├── src/\n│   ├── index.ts          # Main application entry\n│   ├── routes/\n│   │   ├── auth.ts       # Authentication routes (JWT middleware)\n│   │   └── users.ts      # CRUD endpoints for users\n│   ├── models/\n│   │   └── user.ts       # Drizzle ORM schema for users\n│   └── middleware/\n│       └── auth.ts       # JWT validation middleware\n├── drizzle.config.ts     # Drizzle ORM configuration\n├── package.json          # Dependencies and scripts\n└── .env                  # Environment variables (auto-generated)\n```\n\n**Key Files Generated:**\n1. **`src/index.ts`**:\n   ```typescript\n   import { Hono } from 'hono';\n   import { auth } from './routes/auth';\n   import { users } from './routes/users';\n   \n   const app = new Hono();\n   app.route('/auth', auth);\n   app.route('/users', users);\n   \n   export default app;\n   ```\n\n2. **`src/routes/users.ts`**:\n   ```typescript\n   import { Hono } from 'hono';\n   import { db } from '../models/user';\n   import { eq } from 'drizzle-orm';\n   \n   const app = new Hono();\n   \n   // GET /users - List all users\n   app.get('/', async (c) => {\n     const users = await db.select().from(usersTable).all();\n     return c.json({ users });\n   });\n   \n   // POST /users - Create a user\n   app.post('/', async (c) => {\n     const { name, email } = await c.req.json();\n     const newUser = await db.insert(usersTable).values({ name, email }).returning();\n     return c.json({ user: newUser[0] }, 201);\n   });\n   ```\n\n3. **Deployment Commands:**\n   ```bash\n   # Install dependencies\n   npm install hono @hono/auth-js drizzle-orm better-sqlite3\n   \n   # Run locally\n   npm run dev\n   \n   # Deploy to Cloudflare Workers\n   npm install -g wrangler\n   wrangler deploy\n   \n   # Deploy to Vercel\n   vercel --prod\n   ```\n\n**Environment Variables:**\n```env\nDATABASE_URL=\"better-sqlite3://./db.sqlite\"\nJWT_SECRET=\"your-super-secret-key-here\"\n```\n\n**Next Steps:**\n1. Run `npm run dev` to test locally.\n2. Configure your database connection in `drizzle.config.ts`.\n3. Deploy using the provided commands (adjust for your target platform).\n4. Add rate-limiting and CORS middleware in production.\n\n**Estimated Time to Deploy:** ~15 minutes (including dependencies and testing).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:30.791974Z",
+    "http_status": 200,
+    "content_hash": "603a47c031a7fd35506ef5812482462a51ad37e801b1d957ccc33da7a283bb5f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hono-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hono-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hono Skill - Develop Hono Applications",
+  "short_description_vi": "Develop Hono applications efficiently using the Hono CLI. Ideal for operations teams building web services, APIs, and serverless functions. Integrates with existing workflows and connects to cloud platforms."
+}

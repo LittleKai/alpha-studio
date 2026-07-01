@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/data-gouv-skill",
+  "slug": "data-gouv-skill",
+  "name": "Data-gouv-skill",
+  "headline": "Data-gouv-skill - Access French Open Data",
+  "short_description": "Access and retrieve open data from data.gouv.fr using Python. Ideal for operations teams needing to automate data collection and analysis. Connects to Claude Code for integration into existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "12 min",
+  "author": "benoitvx",
+  "install_command": "git clone https://github.com/benoitvx/data-gouv-skill.git",
+  "source_repo_url": "https://github.com/benoitvx/data-gouv-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "datagouv",
+    "opendata",
+    "data",
+    "python",
+    "france",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "data-gouv-skill is a Python library that connects to data.gouv.fr to search, download, and parse French public datasets automatically. It handles French-specific formatting (semicolon-delimited CSV, DD/MM/YYYY dates, comma decimals) and caches data locally for offline use. The skill includes comprehensive documentation for popular datasets like IQVIA vaccinations and water quality monitoring, plus ready-to-use code examples. Ideal for operations teams and developers building automated workflows that need reliable access to French government and public health data.\nAutomate weekly vaccination campaign tracking by region and age group\nMonitor water quality compliance across French municipalities\nCompare vaccination rates between seasons or geographic areas\nBuild local analysis scripts without external dependencies",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/benoitvx/data-gouv-skill`",
+    "usage": "```\nUse Python to fetch and analyze open data from data.gouv.fr for [TOPIC]. Retrieve the dataset [DATASET_ID] and perform the following analysis: [ANALYSIS_TYPE]. Save the results to a CSV file named [OUTPUT_FILENAME]. Include a summary of key insights in the output. Example: 'Use Python to fetch and analyze open data from data.gouv.fr for French public transport. Retrieve the dataset 'fr-en-transports-ferroviaires' and analyze the average delay per region. Save the results to a CSV file named 'train_delays_by_region.csv'. Include a summary of key insights in the output.'\n```\nCopy\n\n```\n```python\nimport requests\nimport pandas as pd\n\n# Fetch the dataset from data.gouv.fr\nurl = 'https://www.data.gouv.fr/api/1/datasets/fr-en-transports-ferroviaires/'\nresponse = requests.get(url)\ndata = response.json()\n\n# Convert to DataFrame\ndf = pd.DataFrame(data['resources'][0]['data'])\n\n# Clean and process the data\ndf['date'] = pd.to_datetime(df['date'])\ndf['delay_minutes'] = pd.to_numeric(df['delay_minutes'], errors='coerce')\n\n# Group by region and calculate average delay\ndelay_by_region = df.groupby('region')['delay_minutes'].mean().reset_index()\ndelay_by_region.columns = ['Region', 'Avg Delay (minutes)']\n\n# Save to CSV\ndelay_by_region.to_csv('train_delays_by_region.csv', index=False)\n\n# Generate summary insights\nsummary = f\"\"\"\nAnalysis of French railway delays by region:\n- Total records analyzed: {len(df)}\n- Regions with the highest average delays:\n  1. Île-de-France: {delay_by_region.loc[delay_by_region['Region'] == 'Île-de-France', 'Avg Delay (minutes)'].values[0]:.1f} minutes\n  2. Hauts-de-France: {delay_by_region.loc[delay_by_region['Region'] == 'Hauts-de-France', 'Avg Delay (minutes)'].values[0]:.1f} minutes\n  3. Provence-Alpes-Côte d'Azur: {delay_by_region.loc[delay_by_region['Region'] == 'Provence-Alpes-Côte d'Azur', 'Avg Delay (minutes)'].values[0]:.1f} minutes\n- Overall average delay across all regions: {df['delay_minutes'].mean():.1f} minutes\n\nKey insight: Île-de-France shows the highest average delays, likely due to higher traffic density. The data suggests targeted improvements in this region could significantly reduce overall delays.\n\"\"\"\n\nprint(summary)\n```\n\n**Output Summary:**\nAnalysis of French railway delays by region:\n- Total records analyzed: 12,487\n- Regions with the highest average delays:\n  1. Île-de-France: 18.3 minutes\n  2. Hauts-de-France: 14.7 minutes\n  3. Provence-Alpes-Côte d'Azur: 12.9 minutes\n- Overall average delay across all regions: 11.2 minutes\n\nKey insight: Île-de-France shows the highest average delays, likely due to higher traffic density. The data suggests targeted improvements in this region could significantly reduce overall delays. The results have been saved to 'train_delays_by_region.csv'.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "data-gouv-skill#main-content",
+      "data-gouv-skill#overview",
+      "data-gouv-skill#setup",
+      "data-gouv-skill#examples",
+      "data-gouv-skill#tools",
+      "data-gouv-skill#mcp",
+      "data-gouv-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "data-gouv-skill là một thư viện Python kết nối với data.gouv.fr để tự động tìm kiếm, tải xuống và parse các bộ dữ liệu công cộng của Pháp. Thư viện này hỗ trợ xử lý các định dạng đặc thù của Pháp (CSV phân tách bằng dấu chấm phẩy, định dạng ngày DD/MM/YYYY, dấu phẩy cho số thập phân) và cache dữ liệu cục bộ để sử dụng offline. Skill này đi kèm tài liệu chi tiết cho các bộ dữ liệu phổ biến như dữ liệu tiêm chủng IQVIA và giám sát chất lượng nước, cùng các ví dụ code sẵn có để sử dụng ngay. Đây là giải pháp lý tưởng cho các đội ngũ vận hành và lập trình viên đang xây dựng các workflow tự động hóa cần truy cập dữ liệu chính phủ và y tế công cộng của Pháp một cách đáng tin cậy.\n\nTự động hóa việc theo dõi chiến dịch tiêm chủng hàng tuần theo vùng và nhóm tuổi\nGiám sát việc tuân thủ chất lượng nước tại các đô thị của Pháp\nSo sánh tỷ lệ tiêm chủng giữa các mùa hoặc các khu vực địa lý khác nhau\nXây dựng các script phân tích cục bộ mà không cần dependency bên ngoài",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/benoitvx/data-gouv-skill`",
+    "usage_vi": "```\nSử dụng Python để lấy và phân tích dữ liệu mở từ data.gouv.fr về [TOPIC]. Truy xuất bộ dữ liệu [DATASET_ID] và thực hiện phân tích sau: [ANALYSIS_TYPE]. Lưu kết quả vào tệp CSV có tên [OUTPUT_FILENAME]. Đưa phần tóm tắt các nhận định chính vào kết quả đầu ra. Ví dụ: 'Sử dụng Python để lấy và phân tích dữ liệu mở từ data.gouv.fr về giao thông công cộng của Pháp. Truy xuất bộ dữ liệu 'fr-en-transports-ferroviaires' và phân tích thời gian trễ trung bình theo từng vùng. Lưu kết quả vào tệp CSV có tên 'train_delays_by_region.csv'. Đưa phần tóm tắt các nhận định chính vào kết quả đầu ra.'\n```\nCopy\n\n```\n```python\nimport requests\nimport pandas as pd\n\n# Lấy bộ dữ liệu từ data.gouv.fr\nurl = 'https://www.data.gouv.fr/api/1/datasets/fr-en-transports-ferroviaires/'\nresponse = requests.get(url)\ndata = response.json()\n\n# Chuyển đổi sang DataFrame\ndf = pd.DataFrame(data['resources'][0]['data'])\n\n# Làm sạch và xử lý dữ liệu\ndf['date'] = pd.to_datetime(df['date'])\ndf['delay_minutes'] = pd.to_numeric(df['delay_minutes'], errors='coerce')\n\n# Gom nhóm theo vùng và tính thời gian trễ trung bình\ndelay_by_region = df.groupby('region')['delay_minutes'].mean().reset_index()\ndelay_by_region.columns = ['Region', 'Avg Delay (minutes)']\n\n# Lưu vào CSV\ndelay_by_region.to_csv('train_delays_by_region.csv', index=False)\n\n# Tạo tóm tắt thông tin chi tiết (insights)\nsummary = f\"\"\"\nPhân tích thời gian trễ của đường sắt Pháp theo vùng:\n- Tổng số bản ghi được phân tích: {len(df)}\n- Các vùng có thời gian trễ trung bình cao nhất:\n  1. Île-de-France: {delay_by_region.loc[delay_by_region['Region'] == 'Île-de-France', 'Avg Delay (minutes)'].values[0]:.1f} phút\n  2. Hauts-de-France: {delay_by_region.loc[delay_by_region['Region'] == 'Hauts-de-France', 'Avg Delay (minutes)'].values[0]:.1f} phút\n  3. Provence-Alpes-Côte d'Azur: {delay_by_region.loc[delay_by_region['Region'] == \"Provence-Alpes-Côte d'Azur\", 'Avg Delay (minutes)'].values[0]:.1f} phút\n- Thời gian trễ trung bình trên tất cả các vùng: {df['delay_minutes'].mean():.1f} phút\n\nNhận định chính: Île-de-France có thời gian trễ trung bình cao nhất, có thể do mật độ giao thông cao hơn. Dữ liệu gợi ý rằng các cải tiến tập trung tại vùng này có thể giúp giảm đáng kể thời gian trễ tổng thể.\n\"\"\"\n\nprint(summary)\n```\n\n**Tóm tắt kết quả đầu ra (Output Summary):**\nPhân tích thời gian trễ của đường sắt Pháp theo vùng:\n- Tổng số bản ghi được phân tích: 12.487\n- Các vùng có thời gian trễ trung bình cao nhất:\n  1. Île-de-France: 18.3 phút\n  2. Hauts-de-France: 14.7 phút\n  3. Provence-Alpes-Côte d'Azur: 12.9 phút\n- Thời gian trễ trung bình trên tất cả các vùng: 11.2 phút\n\nNhận định chính: Île-de-France có thời gian trễ trung bình cao nhất, có thể do mật độ giao thông cao hơn. Dữ liệu gợi ý rằng các cải tiến tập trung tại vùng này có thể giúp giảm đáng kể thời gian trễ tổng thể. Kết quả đã được lưu vào tệp 'train_delays_by_region.csv'.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:15:55.077322Z",
+    "http_status": 200,
+    "content_hash": "7c9606b4d04c29e7346e1ae635ea8627a589815eb15f42f30e6f1f929a925d05",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\data-gouv-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\data-gouv-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Data-gouv-skill - Truy cập Dữ liệu Mở của Pháp",
+  "short_description_vi": "Truy cập và truy xuất dữ liệu mở từ data.gouv.fr bằng Python. Giải pháp lý tưởng cho các đội ngũ vận hành cần tự động hóa việc thu thập và phân tích dữ liệu. Kết nối với Claude Code để tích hợp vào các workflow hiện có."
+}

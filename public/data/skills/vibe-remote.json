@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibe-remote",
+  "slug": "vibe-remote",
+  "name": "Vibe Remote",
+  "headline": "vibe-remote: Coding from Slack",
+  "short_description": "Vibe Remote enables developers to command AI coding agents like Claude Code, OpenCode, or Codex directly from Slack. It allows teams to write, debug, and deploy code without needing a laptop or IDE, streamlining remote development workflows and integrating with existing Slack-based operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "cyhhao",
+  "install_command": "git clone https://github.com/cyhhao/vibe-remote.git",
+  "source_repo_url": "https://github.com/cyhhao/vibe-remote",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "llm",
+    "vibe-coding",
+    "opencode",
+    "ai-agents",
+    "chatops",
+    "codex",
+    "devtools",
+    "claude",
+    "claude-code",
+    "slack-bot",
+    "ai"
+  ],
+  "sections": {
+    "overview": "The vibe-remote skill is a powerful automation tool designed for developers looking to enhance their coding efficiency directly from Slack. This skill allows users to stream Claude Code, OpenCode, or Codex in real-time, enabling seamless collaboration and coding without the need to switch between multiple applications. By centralizing coding tasks within a familiar communication platform, vibe-remote simplifies the development process, making it easier to manage projects and communicate with team members simultaneously. One of the key benefits of using vibe-remote is the potential for significant time savings in workflow automation. While specific time savings are currently unknown, the ability to execute coding tasks from Slack can drastically reduce the time spent on context switching and enhance productivity. Developers can command their AI coding army to assist with various tasks, allowing them to focus on higher-level problem-solving and creative aspects of their projects. This skill is particularly valuable for teams that prioritize agile development practices and need to maintain constant communication. vibe-remote is ideally suited for developers, product managers, and AI practitioners who are looking to integrate AI automation into their daily workflows. By leveraging this skill, teams can foster a more collaborative environment, where coding and communication go hand in hand. Practical use cases include real-time code reviews, collaborative debugging sessions, and instant code generation based on team discussions, all facilitated through Slack. This skill empowers teams to respond quickly to changes and challenges, making it an essential tool in fast-paced development environments. With an intermediate implementation difficulty and an estimated setup time of just 30 minutes, vibe-remote is accessible for teams ready to embrace AI-first workflows. While it does not currently have verified status or a high number of weekly installs, its GitHub popularity, reflected in 148 stars, indicates a growing interest in this innovative automation solution. As organizations increasingly adopt AI agents for coding tasks, vibe-remote positions itself as a valuable asset for teams aiming to enhance their coding capabilities and streamline their workflows.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cyhhao/vibe-remote`",
+    "usage": "```\nUse /vibe-remote in Slack to execute the following coding task: '[TASK_DESCRIPTION]'. Ensure the AI agent follows best practices for [LANGUAGE/FRAMEWORK]. After completion, post the results back to the Slack channel with a summary of changes made. Example: '/vibe-remote Implement JWT authentication for the user service in Python using FastAPI. Add unit tests and update the README.'\n```\nCopy\n\n```\n```\n🚀 Vibe Remote Task Initiated: 'Implement JWT authentication for the user service in Python using FastAPI'\n\n✅ Task Completed in 3m 42s\n\n📝 Summary of Changes:\n- Added `auth.py` with JWT token generation/validation logic\n- Updated `user/models.py` to include password hashing with bcrypt\n- Created `tests/test_auth.py` with 3 test cases for token handling\n- Modified `main.py` to load JWT secret from environment variables\n- Added `require_auth` dependency for protected routes\n\n📊 Code Quality:\n- Linting: 0 errors (flake8)\n- Test Coverage: 85% (user service)\n\n🔗 Next Steps:\n1. Review changes in #dev-review channel\n2. Merge PR #123 after approval\n3. Deploy to staging via GitHub Actions\n\n💬 Questions? Ask in #dev-help\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibe-remote#main-content",
+      "vibe-remote#overview",
+      "vibe-remote#setup",
+      "vibe-remote#examples",
+      "vibe-remote#tools",
+      "vibe-remote#mcp",
+      "vibe-remote#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill vibe-remote là một công cụ tự động hóa mạnh mẽ được thiết kế cho các nhà phát triển muốn nâng cao hiệu suất lập trình trực tiếp từ Slack. Skill này cho phép người dùng stream Claude Code, OpenCode hoặc Codex theo thời gian thực, hỗ trợ cộng tác và lập trình mượt mà mà không cần chuyển đổi qua lại giữa nhiều ứng dụng. Bằng cách tập trung các tác vụ code vào một nền tảng giao tiếp quen thuộc, vibe-remote đơn giản hóa quy trình phát triển, giúp việc quản lý dự án và trao đổi với các thành viên trong nhóm diễn ra song song một cách dễ dàng hơn. Một trong những lợi ích chính của việc sử dụng vibe-remote là khả năng tiết kiệm đáng kể thời gian nhờ tự động hóa quy trình làm việc. Mặc dù chưa có số liệu cụ thể về thời gian tiết kiệm được, khả năng thực hiện các tác vụ lập trình ngay từ Slack có thể giảm thiểu đáng kể thời gian chuyển đổi ngữ cảnh (context switching) và nâng cao năng suất. Lập trình viên có thể điều khiển \"lực lượng\" AI coding hỗ trợ nhiều tác vụ khác nhau, từ đó tập trung vào giải quyết các vấn đề phức tạp hơn và phát triển các khía cạnh sáng tạo của dự án. Skill này đặc biệt giá trị cho các đội ngũ ưu tiên quy trình phát triển tinh gọn (agile) và cần duy trì giao tiếp liên tục. vibe-remote cực kỳ phù hợp cho các nhà phát triển, product manager và các chuyên gia AI đang tìm cách tích hợp tự động hóa AI vào quy trình làm việc hàng ngày. Nhờ tận dụng skill này, các đội ngũ có thể thúc đẩy một môi trường cộng tác chặt chẽ hơn, nơi việc lập trình và giao tiếp luôn đồng hành cùng nhau. Các trường hợp sử dụng thực tế bao gồm code review theo thời gian thực, các buổi debug chung và tạo code tức thì dựa trên thảo luận của nhóm, tất cả đều được thực hiện qua Slack. Skill này giúp các đội ngũ phản ứng nhanh chóng với các thay đổi và thách thức, biến nó thành một công cụ thiết yếu trong môi trường phát triển tốc độ cao. Với độ khó triển khai ở mức trung bình và thời gian setup ước tính chỉ 30 phút, vibe-remote là một lựa chọn dễ tiếp cận cho các đội ngũ đã sẵn sàng áp dụng quy trình làm việc ưu tiên AI (AI-first). Dù hiện chưa có trạng thái đã xác minh (verified status) hay lượng cài đặt hàng tuần lớn, mức độ phổ biến trên GitHub với 148 star cho thấy sự quan tâm ngày càng tăng đối với giải pháp tự động hóa sáng tạo này. Trong bối cảnh các tổ chức ngày càng áp dụng nhiều AI agent cho các tác vụ lập trình, vibe-remote khẳng định vị thế là một tài sản giá trị cho các đội ngũ muốn nâng cao năng lực viết code và tối ưu hóa quy trình làm việc của mình.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cyhhao/vibe-remote`",
+    "usage_vi": "```\nSử dụng /vibe-remote trong Slack để thực hiện tác vụ lập trình sau: '[TASK_DESCRIPTION]'. Đảm bảo AI agent tuân thủ các best practice cho [LANGUAGE/FRAMEWORK]. Sau khi hoàn thành, hãy đăng kết quả trở lại kênh Slack kèm theo bản tóm tắt các thay đổi đã thực hiện. Ví dụ: '/vibe-remote Implement JWT authentication for the user service in Python using FastAPI. Add unit tests and update the README.'\n```\n\n```\n🚀 Vibe Remote Task Initiated: 'Implement JWT authentication for the user service in Python using FastAPI'\n\n✅ Task Completed in 3m 42s\n\n📝 Tóm tắt thay đổi:\n- Thêm `auth.py` với logic khởi tạo/xác thực token JWT\n- Cập nhật `user/models.py` để tích hợp mã hóa mật khẩu bằng bcrypt\n- Tạo `tests/test_auth.py` với 3 test case xử lý token\n- Sửa đổi `main.py` để tải JWT secret từ biến môi trường\n- Thêm dependency `require_auth` cho các route cần bảo mật\n\n📊 Chất lượng Code:\n- Linting: 0 lỗi (flake8)\n- Test Coverage: 85% (user service)\n\n🔗 Bước tiếp theo:\n1. Review các thay đổi trong kênh #dev-review\n2. Merge PR #123 sau khi được duyệt\n3. Deploy lên staging qua GitHub Actions\n\n💬 Thắc mắc? Hãy hỏi trong kênh #dev-help\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:56.056128Z",
+    "http_status": 200,
+    "content_hash": "4bef684d82a9228ea02763c3c96eddcf6a10e4aec51a80c6956dd274b2bba864",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-remote.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-remote.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "vibe-remote: Lập trình trực tiếp từ Slack",
+  "short_description_vi": "Vibe Remote cho phép các nhà phát triển điều khiển các AI coding agent như Claude Code, OpenCode hoặc Codex trực tiếp từ Slack. Công cụ này giúp các đội ngũ có thể viết, debug và deploy code mà không cần máy tính xách tay hay IDE, giúp tối ưu hóa quy trình phát triển từ xa và tích hợp mượt mà với các hoạt động hiện có trên Slack."
+}

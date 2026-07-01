@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dotai",
+  "slug": "dotai",
+  "name": "Dotai",
+  "headline": "Dotai - Context Manager for AI Agents",
+  "short_description": "Dotai is a context manager for AI agents, enabling integration and management of multiple agents within operations workflows. It connects to Claude and other AI tools, allowing teams to automate complex tasks and improve efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "udecode",
+  "install_command": "git clone https://github.com/udecode/dotai.git",
+  "source_repo_url": "https://github.com/udecode/dotai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "codex",
+    "cursor",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Dotai is a modular development toolkit designed for AI agents working with Claude. It provides seven plugins including a four-phase debugging framework, TDD workflow support, and library exploration tools, along with five commands and three skills for enhanced agent functionality. The toolkit integrates with Claude through plugin installation and marketplace registration, enabling developers to extend agent capabilities with debugging, testing, notifications, and media control. Teams can install dotai components individually or as a complete suite to streamline AI agent development and improve workflow automation.\nGenerate comprehensive app design documentation to streamline development processes.\nAutomate the creation and updating of technology stack documentation for better project management.\nUtilize the debugging framework to identify and resolve issues in code systematically.\nCreate and manage pull requests with detailed descriptions and automated reviews.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/udecode/dotai`",
+    "usage": "```\nSet up a dotai context manager workflow to automate [TASK/PROCESS]. Define the following agents: [AGENT_1_ROLE], [AGENT_2_ROLE], and [AGENT_3_ROLE]. Configure their interactions to handle [SPECIFIC_INPUTS] and produce [DESIRED_OUTPUTS]. Include error handling for [COMMON_FAILURE_POINTS].\n```\nCopy\n\n```\n### Dotai Workflow Setup: Customer Support Escalation Automation\n\n**Workflow Name:** Support Ticket Escalation Pipeline\n**Trigger:** New ticket created in Zendesk with priority=high or tags=urgent\n\n**Agent Configuration:**\n1. **Intake Agent** (Claude Code):\n   - Role: Analyze incoming tickets for completeness and urgency\n   - Input: Raw ticket data from Zendesk API\n   - Output: Structured ticket object with priority score (1-10) and required actions\n   - Example Output: `{\"ticket_id\": \"ZEN-12345\", \"priority\": 8, \"actions\": [\"verify customer contract\", \"check SLA compliance\"], \"assigned_agent\": \"support_team_lead\"}`\n\n2. **Verification Agent** (Claude Code + Python):\n   - Role: Cross-reference ticket details with CRM and contract database\n   - Input: Structured ticket object from Intake Agent\n   - Output: Updated ticket with contract validity, SLA status, and customer history\n   - Example Output: `{\"ticket_id\": \"ZEN-12345\", \"contract_valid\": true, \"sla_breach_risk\": \"high\", \"customer_tier\": \"enterprise\", \"escalation_path\": \"account_manager\"}`\n\n3. **Escalation Agent** (Claude Desktop + Slack API):\n   - Role: Initiate escalation protocol based on verification results\n   - Input: Verified ticket object from Verification Agent\n   - Output: Escalation notification to Slack channel #escalations and update ticket status\n   - Example Output: `{\"escalation_triggered\": true, \"notified_parties\": [\"@account_manager\", \"@support_director\"], \"ticket_status\": \"escalated\", \"timestamp\": \"2024-05-15T14:32:15Z\"}`\n\n**Error Handling:**\n- If Verification Agent fails to access CRM: Intake Agent retries with cached contract data\n- If Escalation Agent fails to notify Slack: System logs error and sends email alert to ops team\n- If priority score is ambiguous: Default to manual review by senior agent\n\n**Integration Points:**\n- Zendesk API (webhook trigger)\n- Salesforce CRM (contract verification)\n- Slack API (notifications)\n- Internal logging system (audit trail)\n\n**Success Metrics:**\n- 95% of high-priority tickets escalated within 15 minutes\n- 0% data loss during agent handoffs\n- 20% reduction in manual escalation work\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dotai#main-content",
+      "dotai#overview",
+      "dotai#setup",
+      "dotai#examples",
+      "dotai#tools",
+      "dotai#mcp",
+      "dotai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Dotai is a modular development toolkit designed for AI agents working with Claude. It provides seven plugins including a four-phase debugging framework, TDD workflow support, and library exploration tools, along with five commands and three skills for enhanced agent functionality. The toolkit integrates with Claude through plugin installation and marketplace registration, enabling developers to extend agent capabilities with debugging, testing, notifications, and media control. Teams can install dotai components individually or as a complete suite to streamline AI agent development and improve workflow automation.\nGenerate comprehensive app design documentation to streamline development processes.\nAutomate the creation and updating of technology stack documentation for better project management.\nUtilize the debugging framework to identify and resolve issues in code systematically.\nCreate and manage pull requests with detailed descriptions and automated reviews.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/udecode/dotai`",
+    "usage_vi": "```\nSet up a dotai context manager workflow to automate [TASK/PROCESS]. Define the following agents: [AGENT_1_ROLE], [AGENT_2_ROLE], and [AGENT_3_ROLE]. Configure their interactions to handle [SPECIFIC_INPUTS] and produce [DESIRED_OUTPUTS]. Include error handling for [COMMON_FAILURE_POINTS].\n```\nCopy\n\n```\n### Dotai Workflow Setup: Customer Support Escalation Automation\n\n**Workflow Name:** Support Ticket Escalation Pipeline\n**Trigger:** New ticket created in Zendesk with priority=high or tags=urgent\n\n**Agent Configuration:**\n1. **Intake Agent** (Claude Code):\n   - Role: Analyze incoming tickets for completeness and urgency\n   - Input: Raw ticket data from Zendesk API\n   - Output: Structured ticket object with priority score (1-10) and required actions\n   - Example Output: `{\"ticket_id\": \"ZEN-12345\", \"priority\": 8, \"actions\": [\"verify customer contract\", \"check SLA compliance\"], \"assigned_agent\": \"support_team_lead\"}`\n\n2. **Verification Agent** (Claude Code + Python):\n   - Role: Cross-reference ticket details with CRM and contract database\n   - Input: Structured ticket object from Intake Agent\n   - Output: Updated ticket with contract validity, SLA status, and customer history\n   - Example Output: `{\"ticket_id\": \"ZEN-12345\", \"contract_valid\": true, \"sla_breach_risk\": \"high\", \"customer_tier\": \"enterprise\", \"escalation_path\": \"account_manager\"}`\n\n3. **Escalation Agent** (Claude Desktop + Slack API):\n   - Role: Initiate escalation protocol based on verification results\n   - Input: Verified ticket object from Verification Agent\n   - Output: Escalation notification to Slack channel #escalations and update ticket status\n   - Example Output: `{\"escalation_triggered\": true, \"notified_parties\": [\"@account_manager\", \"@support_director\"], \"ticket_status\": \"escalated\", \"timestamp\": \"2024-05-15T14:32:15Z\"}`\n\n**Error Handling:**\n- If Verification Agent fails to access CRM: Intake Agent retries with cached contract data\n- If Escalation Agent fails to notify Slack: System logs error and sends email alert to ops team\n- If priority score is ambiguous: Default to manual review by senior agent\n\n**Integration Points:**\n- Zendesk API (webhook trigger)\n- Salesforce CRM (contract verification)\n- Slack API (notifications)\n- Internal logging system (audit trail)\n\n**Success Metrics:**\n- 95% of high-priority tickets escalated within 15 minutes\n- 0% data loss during agent handoffs\n- 20% reduction in manual escalation work\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:37:52.459405Z",
+    "http_status": 200,
+    "content_hash": "db75b36b005c314bafcc9f9b93a01a75cf8b3066e4844915ff8a0a516a68c2fd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dotai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dotai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Dotai - Context Manager for AI Agents",
+  "short_description_vi": "Dotai is a context manager for AI agents, enabling integration and management of multiple agents within operations workflows. It connects to Claude and other AI tools, allowing teams to automate complex tasks and improve efficiency."
+}

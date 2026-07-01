@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-obsidian-starter",
+  "slug": "claude-code-obsidian-starter",
+  "name": "Claude Code Obsidian Starter",
+  "headline": "Claude Code & Obsidian Starter Kit for Productivity",
+  "short_description": "The Claude Code + Obsidian starter kit offers a pre-configured vault designed to enhance productivity for managing projects, tasks, clients, and daily routines. Ideal for users looking to streamline their workflow with minimal setup.",
+  "tier": "Silver",
+  "category": "GrowthMarketing",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "ArtemXTech",
+  "install_command": "claude install ArtemXTech/claude-code-obsidian-starter",
+  "source_repo_url": "https://github.com/ArtemXTech/claude-code-obsidian-starter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "Claude Code",
+    "productivity",
+    "Obsidian",
+    "automation",
+    "AI"
+  ],
+  "sections": {
+    "overview": "The Claude Code + Obsidian Starter Kit is a ready-to-use vault that combines Obsidian's note-taking capabilities with Claude Code automation. It includes four core skills: query for finding projects, clients, and tasks; tasknotes for creating and managing tasks; review for morning, evening, and weekly routines; and client for managing follow-ups and emails. The kit reduces setup time by providing a pre-configured structure, allowing users to start organizing their work immediately. Clone the repository, open it in Obsidian, and run the /setup-memory command to build your CLAUDE.md file and begin automating your workflow.\nOrganizing project tasks\nManaging client interactions\nTracking daily routines\nEnhancing team collaboration",
+    "setup": "Terminal\nCopy\n`claude install ArtemXTech/claude-code-obsidian-starter`\n`git clone https://github.com/ArtemXTech/claude-code-obsidian-starter`",
+    "usage": "```\nSet up a new Obsidian vault using the claude-code-obsidian-starter template for [PROJECT_NAME]. Configure the vault to track [TASKS_TO_TRACK] and integrate with [TOOLS_TO_CONNECT]. Document the project's budget in [BUDGET_DOCUMENT_NAME] and outline key milestones in [MILESTONES_DOCUMENT_NAME]. Ensure all notes are linked using [[wikilinks]] and include metadata fields like #status, #priority, and #due-date.\n```\nCopy\n\n```\n### Project Setup Complete: 'Q3 Marketing Campaign Launch'\n\nI've successfully initialized the Obsidian vault using the claude-code-obsidian-starter template for the 'Q3 Marketing Campaign Launch' project. The vault is now structured with the following core components:\n\n**Core Folders:**\n- `01-Projects/` (contains project-specific notes)\n- `02-Tasks/` (organized by status: Backlog, In Progress, Done)\n- `03-Clients/` (client profiles with contact details)\n- `04-Meetings/` (meeting notes with action items)\n- `05-Resources/` (templates, guides, and reference materials)\n\n**Key Integrations:**\n- **Productiv API:** Connected to track software subscriptions. The budget document 'Q3-Marketing-Budget.md' now shows:\n  - Active subscriptions: $12,450/month (including $3,200 for Adobe Creative Cloud and $1,800 for HubSpot Marketing Hub)\n  - Identified 2 unused licenses (Canva Pro and Zoom Pro) totaling $480/month savings\n  - Forecasted renewal costs for Q4: $15,200 (with $2,800 in potential savings if renewals are optimized)\n\n- **Task Tracking:** All tasks are tagged with metadata:\n  - #status/backlog: 12 tasks (e.g., 'Design landing page mockups' due 2024-07-15)\n  - #status/in-progress: 5 tasks (e.g., 'Write blog post series' due 2024-07-10, assigned to @marketing-team)\n  - #status/done: 8 tasks (e.g., 'Set up Google Analytics 4' completed 2024-07-05)\n\n**Linked Notes:**\n- The 'Q3-Milestones.md' document outlines:\n  - Milestone 1: 'Brand Guidelines Finalized' (Due: 2024-07-20)\n  - Milestone 2: 'Campaign Assets Ready' (Due: 2024-08-01)\n  - Milestone 3: 'Launch Week' (Due: 2024-08-15)\n\nAll notes are cross-linked using [[wikilinks]], and the vault is ready for daily use with minimal friction. The Productiv integration ensures real-time visibility into software spending, while the task and milestone tracking keeps the team aligned on priorities.\n\n**Next Steps:**\n1. Review the 'Q3-Marketing-Budget.md' for potential cost savings.\n2. Assign owners to backlog tasks using the @mention syntax.\n3. Schedule a weekly review in the '04-Meetings/Weekly-Sync.md' note.\n\nThe vault is now optimized for productivity and ready to scale with the project's needs.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-obsidian-starter#main-content",
+      "claude-code-obsidian-starter#overview",
+      "claude-code-obsidian-starter#setup",
+      "claude-code-obsidian-starter#examples",
+      "claude-code-obsidian-starter#tools",
+      "claude-code-obsidian-starter#mcp",
+      "claude-code-obsidian-starter#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "The Claude Code + Obsidian Starter Kit is a ready-to-use vault that combines Obsidian's note-taking capabilities with Claude Code automation. It includes four core skills: query for finding projects, clients, and tasks; tasknotes for creating and managing tasks; review for morning, evening, and weekly routines; and client for managing follow-ups and emails. The kit reduces setup time by providing a pre-configured structure, allowing users to start organizing their work immediately. Clone the repository, open it in Obsidian, and run the /setup-memory command to build your CLAUDE.md file and begin automating your workflow.\nOrganizing project tasks\nManaging client interactions\nTracking daily routines\nEnhancing team collaboration",
+    "setup_vi": "Terminal\nCopy\n`claude install ArtemXTech/claude-code-obsidian-starter`\n`git clone https://github.com/ArtemXTech/claude-code-obsidian-starter`",
+    "usage_vi": "```\nSet up a new Obsidian vault using the claude-code-obsidian-starter template for [PROJECT_NAME]. Configure the vault to track [TASKS_TO_TRACK] and integrate with [TOOLS_TO_CONNECT]. Document the project's budget in [BUDGET_DOCUMENT_NAME] and outline key milestones in [MILESTONES_DOCUMENT_NAME]. Ensure all notes are linked using [[wikilinks]] and include metadata fields like #status, #priority, and #due-date.\n```\nCopy\n\n```\n### Project Setup Complete: 'Q3 Marketing Campaign Launch'\n\nI've successfully initialized the Obsidian vault using the claude-code-obsidian-starter template for the 'Q3 Marketing Campaign Launch' project. The vault is now structured with the following core components:\n\n**Core Folders:**\n- `01-Projects/` (contains project-specific notes)\n- `02-Tasks/` (organized by status: Backlog, In Progress, Done)\n- `03-Clients/` (client profiles with contact details)\n- `04-Meetings/` (meeting notes with action items)\n- `05-Resources/` (templates, guides, and reference materials)\n\n**Key Integrations:**\n- **Productiv API:** Connected to track software subscriptions. The budget document 'Q3-Marketing-Budget.md' now shows:\n  - Active subscriptions: $12,450/month (including $3,200 for Adobe Creative Cloud and $1,800 for HubSpot Marketing Hub)\n  - Identified 2 unused licenses (Canva Pro and Zoom Pro) totaling $480/month savings\n  - Forecasted renewal costs for Q4: $15,200 (with $2,800 in potential savings if renewals are optimized)\n\n- **Task Tracking:** All tasks are tagged with metadata:\n  - #status/backlog: 12 tasks (e.g., 'Design landing page mockups' due 2024-07-15)\n  - #status/in-progress: 5 tasks (e.g., 'Write blog post series' due 2024-07-10, assigned to @marketing-team)\n  - #status/done: 8 tasks (e.g., 'Set up Google Analytics 4' completed 2024-07-05)\n\n**Linked Notes:**\n- The 'Q3-Milestones.md' document outlines:\n  - Milestone 1: 'Brand Guidelines Finalized' (Due: 2024-07-20)\n  - Milestone 2: 'Campaign Assets Ready' (Due: 2024-08-01)\n  - Milestone 3: 'Launch Week' (Due: 2024-08-15)\n\nAll notes are cross-linked using [[wikilinks]], and the vault is ready for daily use with minimal friction. The Productiv integration ensures real-time visibility into software spending, while the task and milestone tracking keeps the team aligned on priorities.\n\n**Next Steps:**\n1. Review the 'Q3-Marketing-Budget.md' for potential cost savings.\n2. Assign owners to backlog tasks using the @mention syntax.\n3. Schedule a weekly review in the '04-Meetings/Weekly-Sync.md' note.\n\nThe vault is now optimized for productivity and ready to scale with the project's needs.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:20.588111Z",
+    "http_status": 200,
+    "content_hash": "f2f603e7d2413a20fadb1a093532e55166b2779dd89e33fa9860f9c95cfee0ef",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-obsidian-starter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-obsidian-starter.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code & Obsidian Starter Kit for Productivity",
+  "short_description_vi": "The Claude Code + Obsidian starter kit offers a pre-configured vault designed to enhance productivity for managing projects, tasks, clients, and daily routines. Ideal for users looking to streamline their workflow with minimal setup."
+}

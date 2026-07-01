@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-bootstrap",
+  "slug": "claude-bootstrap",
+  "name": "Claude Bootstrap",
+  "headline": "claude-bootstrap: Start projects with security",
+  "short_description": "Claude Bootstrap initializes projects with security-first, spec-driven, AI-native principles. It benefits developers by automating project setup, ensuring compliance, and accelerating development cycles. It connects to Claude Code for AI-native development workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "alinaqi",
+  "install_command": "git clone https://github.com/alinaqi/claude-bootstrap.git",
+  "source_repo_url": "https://github.com/alinaqi/claude-bootstrap",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "react",
+    "typescript",
+    "project-initialization",
+    "security",
+    "developer-tools",
+    "ai-coding",
+    "python",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Bootstrap is a project initialization skill that establishes foundational architecture with security and specification-driven design at its core. It automates the setup phase of development projects while embedding compliance checks and security best practices from the start. The skill integrates intent tracking through ReasonNodes, enabling developers to document and maintain the reasoning behind code changes throughout the development lifecycle. It works with Claude Code and AI agent workflows to streamline project onboarding, reduce manual configuration, and maintain a clear audit trail of design decisions. Teams using Claude Bootstrap benefit from faster development cycles, reduced compliance overhead, and better integration with AI-native development patterns.\nInitialize a new project with predefined security and structure settings.\nAutomate the setup of CI/CD pipelines based on project specifications.\nRun iterative TDD loops to ensure all features are thoroughly tested before deployment.\nMonitor commit sizes and advise on optimal commit practices to maintain code quality.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alinaqi/claude-bootstrap`",
+    "usage": "```\nInitialize a new project named [PROJECT_NAME] with the following specifications: [SPECIFICATIONS]. Ensure it follows [SECURITY_STANDARDS] and integrates with [INTEGRATIONS]. Use Claude Code for AI-native development workflows.\n```\nCopy\n\n```\nProject Initialization Report\n\nProject Name: SecureEcom\nStatus: Initialized\n\nSpecifications:\n- E-commerce platform\n- User authentication\n- Payment processing\n- Inventory management\n\nSecurity Standards:\n- OWASP Top 10 compliance\n- GDPR compliance\n- Regular security audits\n\nIntegrations:\n- Stripe\n- PayPal\n- Shopify\n\nAI-Native Development Workflows:\n- Automated code reviews\n- AI-assisted debugging\n- Continuous integration and deployment\n\nNext Steps:\n1. Review the generated project structure.\n2. Customize the codebase as needed.\n3. Implement additional features.\n4. Deploy the project to a staging environment for testing.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-bootstrap#main-content",
+      "claude-bootstrap#overview",
+      "claude-bootstrap#setup",
+      "claude-bootstrap#examples",
+      "claude-bootstrap#tools",
+      "claude-bootstrap#mcp",
+      "claude-bootstrap#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Bootstrap là một skill khởi tạo dự án giúp thiết lập kiến trúc nền tảng cốt lõi dựa trên thiết kế định hướng theo đặc tả và bảo mật. Nó tự động hóa giai đoạn setup dự án phát triển, đồng thời tích hợp sẵn các quy trình kiểm tra tuân thủ và các thực hành bảo mật tốt nhất ngay từ đầu. Skill này tích hợp khả năng theo dõi mục đích (intent tracking) thông qua ReasonNodes, cho phép lập trình viên tài liệu hóa và lưu vết lập luận đằng sau các thay đổi mã nguồn trong suốt vòng đời phát triển. Nó hoạt động cùng với Claude Code và các workflow AI agent để đơn giản hóa việc onboarding dự án, giảm thiểu cấu hình thủ công và duy trì lịch sử kiểm định rõ ràng cho các quyết định thiết kế. Các đội ngũ sử dụng Claude Bootstrap sẽ được hưởng lợi từ chu kỳ phát triển nhanh hơn, giảm thiểu chi phí tuân thủ và tích hợp tốt hơn với các mô hình phát triển thuần AI.\nKhởi tạo dự án mới với các cấu hình cấu trúc và bảo mật được định nghĩa trước.\nTự động hóa việc setup các pipeline CI/CD dựa trên đặc tả dự án.\nChạy các vòng lặp TDD lặp đi lặp lại để đảm bảo tất cả tính năng được kiểm thử kỹ lưỡng trước khi triển khai.\nGiám sát dung lượng commit và đưa ra lời khuyên về các thực hành commit tối ưu nhằm duy trì chất lượng code.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/alinaqi/claude-bootstrap`",
+    "usage_vi": "```\nKhởi tạo một dự án mới tên là [PROJECT_NAME] với các đặc tả sau: [SPECIFICATIONS]. Đảm bảo dự án tuân thủ [SECURITY_STANDARDS] và tích hợp với [INTEGRATIONS]. Sử dụng Claude Code cho các workflow phát triển thuần AI.\n```\nSao chép\n\n```\nBáo cáo khởi tạo dự án\n\nTên dự án: SecureEcom\nTrạng thái: Đã khởi tạo\n\nĐặc tả:\n- Nền tảng thương mại điện tử\n- Xác thực người dùng\n- Xử lý thanh toán\n- Quản lý kho hàng\n\nTiêu chuẩn bảo mật:\n- Tuân thủ OWASP Top 10\n- Tuân thủ GDPR\n- Đánh giá bảo mật định kỳ\n\nTích hợp:\n- Stripe\n- PayPal\n- Shopify\n\nWorkflow phát triển thuần AI:\n- Review code tự động\n- Debug có AI hỗ trợ\n- Tích hợp và triển khai liên tục\n\nCác bước tiếp theo:\n1. Xem xét cấu trúc dự án đã được tạo.\n2. Tùy chỉnh codebase khi cần thiết.\n3. Triển khai các tính năng bổ sung.\n4. Triển khai dự án lên môi trường staging để thử nghiệm.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:58:03.166417Z",
+    "http_status": 200,
+    "content_hash": "526b73cd144b4beae1218411e4cb217cfc4d190133f9bd61f94ee8e9fa57b631",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-bootstrap.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-bootstrap.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-bootstrap: Khởi tạo dự án an toàn và bảo mật",
+  "short_description_vi": "Claude Bootstrap khởi tạo dự án dựa trên các nguyên tắc ưu tiên bảo mật (security-first), định hướng theo đặc tả (spec-driven) và thuần AI (AI-native). Công cụ này giúp lập trình viên tự động hóa việc setup dự án, đảm bảo tuân thủ tiêu chuẩn và rút ngắn chu kỳ phát triển. Nó kết nối với Claude Code để tối ưu hóa các workflow phát triển thuần AI."
+}

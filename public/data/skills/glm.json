@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/glm",
+  "slug": "glm",
+  "name": "GLM CLI",
+  "headline": "GLM CLI - Switch AI Models Easily",
+  "short_description": "CLI tool for switching between GLM-4.7/4.6 and Claude Code. Manage API tokens and set up AI-powered dev environments with one command. Ideal for ops teams automating AI workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "xqsit94",
+  "install_command": "git clone https://github.com/xqsit94/glm.git",
+  "source_repo_url": "https://github.com/xqsit94/glm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "glm",
+    "zhipuai",
+    "glm-4",
+    "anthropic",
+    "bigmodel",
+    "golang",
+    "chatglm",
+    "claude-code",
+    "glm-4-7"
+  ],
+  "sections": {
+    "overview": "GLM CLI is a command-line interface that enables Claude Code to use GLM models (glm-5, glm-4.7, glm-4.6, and others) through BigModel API without persistent configuration changes. It works by setting temporary environment variables for each Claude session, allowing you to switch between models at launch time while keeping your system configuration clean. The tool includes secure token management, automatic Claude Code installation, flag passthrough to the claude CLI, and a YOLO mode to skip permission prompts for faster workflows. Built for development teams and ops engineers who need to integrate multiple AI models into automated workflows without managing complex persistent configs.\nSwitch between GLM and Claude models per-session without system-wide config changes\nAutomate AI-powered development environments with model selection at launch time\nManage authentication tokens securely across multiple AI models\nBypass permission prompts in automated CI/CD pipelines using YOLO mode",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/xqsit94/glm`\n\nFirst, ensure you have the GLM CLI tool installed. You can download it from the official repository or use the following command:\n\n```bash\npip install glm-cli\n```",
+    "usage": "```\nI need to switch my AI model from GLM-4.6 to Claude Code for a [PROJECT] in the [INDUSTRY] sector. Can you guide me through the process using the GLM CLI tool? Also, I need to manage my API tokens for [COMPANY] securely.\n```\nCopy\n\n```\n# Switching AI Models with GLM CLI Tool",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "glm#main-content",
+      "glm#overview",
+      "glm#setup",
+      "glm#examples",
+      "glm#tools",
+      "glm#mcp",
+      "glm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GLM CLI là một giao diện dòng lệnh (command-line interface) cho phép Claude Code sử dụng các mô hình GLM (glm-5, glm-4.7, glm-4.6 và các mô hình khác) thông qua BigModel API mà không cần thay đổi cấu hình hệ thống vĩnh viễn. Công cụ hoạt động bằng cách thiết lập các biến môi trường (environment variables) tạm thời cho từng session của Claude, cho phép bạn chuyển đổi linh hoạt giữa các mô hình tại thời điểm khởi chạy mà vẫn giữ sạch cấu hình hệ thống. Công cụ này hỗ trợ quản lý token bảo mật, tự động cài đặt Claude Code, chuyển tiếp flag (flag passthrough) đến claude CLI, và tích hợp chế độ YOLO để bỏ qua các xác nhận cấp quyền giúp tối ưu hóa workflow. Đây là giải pháp được thiết kế riêng cho các đội ngũ phát triển và kỹ sư ops cần tích hợp nhiều mô hình AI vào các workflow tự động mà không muốn quản lý cấu hình lưu trữ phức tạp.\nChuyển đổi linh hoạt giữa các mô hình GLM và Claude theo từng session mà không ảnh hưởng đến cấu hình toàn hệ thống\nTự động hóa môi trường phát triển tích hợp AI bằng cách lựa chọn mô hình ngay khi khởi chạy\nQuản lý an toàn các token xác thực cho nhiều mô hình AI khác nhau\nBỏ qua các xác nhận cấp quyền trong các pipeline CI/CD tự động nhờ chế độ YOLO mode",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/xqsit94/glm`\n\nTrước tiên, hãy đảm bảo rằng bạn đã cài đặt công cụ GLM CLI. Bạn có thể tải xuống từ repository chính thức hoặc sử dụng lệnh sau:\n\n```bash\npip install glm-cli\n```",
+    "usage_vi": "```\nTôi cần chuyển đổi mô hình AI của mình từ GLM-4.6 sang Claude Code cho dự án [PROJECT] trong lĩnh vực [INDUSTRY]. Bạn có thể hướng dẫn tôi thực hiện quy trình này bằng công cụ GLM CLI không? Ngoài ra, tôi cũng cần quản lý các API token của mình cho [COMPANY] một cách an toàn.\n```\nCopy\n\n```\n# Chuyển đổi mô hình AI với công cụ GLM CLI\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:59:34.836524Z",
+    "http_status": 200,
+    "content_hash": "788b8191a9d6728f9278be127379f7a292431f928da8e3d07cf0f94b56cecd24",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\glm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\glm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GLM CLI - Chuyển đổi mô hình AI dễ dàng",
+  "short_description_vi": "Công cụ CLI giúp chuyển đổi linh hoạt giữa GLM-4.7/4.6 và Claude Code. Quản lý API token và setup môi trường phát triển tích hợp AI chỉ với một câu lệnh duy nhất. Giải pháp lý tưởng cho các đội ngũ ops muốn tự động hóa workflow AI."
+}

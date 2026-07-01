@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spec-flow",
+  "slug": "spec-flow",
+  "name": "Spec-Flow",
+  "headline": "Spec-Flow - Automate Feature Development",
+  "short_description": "Spec-Flow automates feature development with AI-powered spec-driven workflows. Operations teams benefit from repeatable Claude Code workflows, quality gates, and auditable artifacts. Connects to npm for package management and integrates with existing development tools.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "marcusgoll",
+  "install_command": "git clone https://github.com/marcusgoll/Spec-Flow.git",
+  "source_repo_url": "https://github.com/marcusgoll/Spec-Flow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "bash",
+    "productivity",
+    "developer-tools",
+    "automation",
+    "ai-workflows",
+    "claude-code",
+    "spec-driven-development",
+    "workflow",
+    "workflow-automation",
+    "documentation",
+    "ai-agents",
+    "ai-assisted-development",
+    "powershell",
+    "claude",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Spec-Flow is a workflow toolkit that transforms feature development by replacing ad-hoc prompting with a structured pipeline. It automates the journey from specification through planning, task breakdown, implementation with test-driven development, quality validation, and deployment. The tool enforces TDD, runs parallel quality gates including performance and security checks, and maintains auditable artifacts at every phase. Teams using Spec-Flow benefit from repeatable patterns, efficient context management, and complete traceability of decisions. Installation adds workflow files to your project with no package.json dependency, and commands like /feature, /epic, and /quick integrate directly into Claude Code.\nAutomating feature development from specification to production deployment\nEnforcing test-driven development and quality gates across teams\nBreaking down large epics into parallel sprints with locked API contracts\nCreating auditable artifacts for compliance and knowledge retention",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/marcusgoll/Spec-Flow`",
+    "usage": "```\nGenerate a Spec-Flow workflow for [FEATURE_NAME] that includes: 1) A Claude Code script to auto-generate test cases from [SPEC_DOCUMENT_URL], 2) A quality gate that enforces [TEST_COVERAGE_THRESHOLD]% coverage, 3) A GitHub Actions workflow to run tests on [BRANCH_NAME] pushes, and 4) A changelog entry template for [VERSION_NUMBER]. Use [PACKAGE_MANAGER] (npm/pnpm/yarn) for dependency management.\n```\nCopy\n\n```\n### Spec-Flow Workflow for 'User Authentication Refresh'\n\n**1. Auto-Generated Test Cases (Claude Code Script)**\n```javascript\n// Generated from: https://specs.company.com/auth-refresh-2024\nconst testCases = [\n  { scenario: 'Valid credentials with 2FA enabled', expected: 'Returns JWT token', steps: ['POST /auth/login', 'Verify 2FA code'] },\n  { scenario: 'Expired refresh token', expected: 'Returns 401 Unauthorized', steps: ['POST /auth/refresh', 'Verify token age'] },\n  { scenario: 'Rate-limited login attempts', expected: 'Returns 429 Too Many Requests', steps: ['POST /auth/login (5x)'] }\n];\n```\n\n**2. Quality Gate Configuration**\n```yaml\n# .spec-flow/quality-gate.yml\ncoverage_threshold: 85\nrequired_tests:\n  - auth.spec.ts\n  - refresh-token.spec.ts\n  - rate-limiting.spec.ts\n```\n\n**3. GitHub Actions Workflow**\n```yaml\n# .github/workflows/spec-flow.yml\nname: Spec-Flow CI\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n      - run: npm ci\n      - run: npx spec-flow generate --spec https://specs.company.com/auth-refresh-2024\n      - run: npm test\n      - run: npx spec-flow audit --threshold 85\n```\n\n**4. Changelog Entry Template**\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "spec-flow#main-content",
+      "spec-flow#overview",
+      "spec-flow#setup",
+      "spec-flow#examples",
+      "spec-flow#tools",
+      "spec-flow#mcp",
+      "spec-flow#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Spec-Flow is a workflow toolkit that transforms feature development by replacing ad-hoc prompting with a structured pipeline. It automates the journey from specification through planning, task breakdown, implementation with test-driven development, quality validation, and deployment. The tool enforces TDD, runs parallel quality gates including performance and security checks, and maintains auditable artifacts at every phase. Teams using Spec-Flow benefit from repeatable patterns, efficient context management, and complete traceability of decisions. Installation adds workflow files to your project with no package.json dependency, and commands like /feature, /epic, and /quick integrate directly into Claude Code.\nAutomating feature development from specification to production deployment\nEnforcing test-driven development and quality gates across teams\nBreaking down large epics into parallel sprints with locked API contracts\nCreating auditable artifacts for compliance and knowledge retention",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/marcusgoll/Spec-Flow`",
+    "usage_vi": "```\nGenerate a Spec-Flow workflow for [FEATURE_NAME] that includes: 1) A Claude Code script to auto-generate test cases from [SPEC_DOCUMENT_URL], 2) A quality gate that enforces [TEST_COVERAGE_THRESHOLD]% coverage, 3) A GitHub Actions workflow to run tests on [BRANCH_NAME] pushes, and 4) A changelog entry template for [VERSION_NUMBER]. Use [PACKAGE_MANAGER] (npm/pnpm/yarn) for dependency management.\n```\nCopy\n\n```\n### Spec-Flow Workflow for 'User Authentication Refresh'\n\n**1. Auto-Generated Test Cases (Claude Code Script)**\n```javascript\n// Generated from: https://specs.company.com/auth-refresh-2024\nconst testCases = [\n  { scenario: 'Valid credentials with 2FA enabled', expected: 'Returns JWT token', steps: ['POST /auth/login', 'Verify 2FA code'] },\n  { scenario: 'Expired refresh token', expected: 'Returns 401 Unauthorized', steps: ['POST /auth/refresh', 'Verify token age'] },\n  { scenario: 'Rate-limited login attempts', expected: 'Returns 429 Too Many Requests', steps: ['POST /auth/login (5x)'] }\n];\n```\n\n**2. Quality Gate Configuration**\n```yaml\n# .spec-flow/quality-gate.yml\ncoverage_threshold: 85\nrequired_tests:\n  - auth.spec.ts\n  - refresh-token.spec.ts\n  - rate-limiting.spec.ts\n```\n\n**3. GitHub Actions Workflow**\n```yaml\n# .github/workflows/spec-flow.yml\nname: Spec-Flow CI\non: [push]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n      - run: npm ci\n      - run: npx spec-flow generate --spec https://specs.company.com/auth-refresh-2024\n      - run: npm test\n      - run: npx spec-flow audit --threshold 85\n```\n\n**4. Changelog Entry Template**\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:26:42.451828Z",
+    "http_status": 200,
+    "content_hash": "c033da754fcac24ef3846eedb8be46e0fcfe1556b7e1b753bf11a138fe7bcf94",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec-flow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec-flow.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Spec-Flow - Automate Feature Development",
+  "short_description_vi": "Spec-Flow automates feature development with AI-powered spec-driven workflows. Operations teams benefit from repeatable Claude Code workflows, quality gates, and auditable artifacts. Connects to npm for package management and integrates with existing development tools."
+}

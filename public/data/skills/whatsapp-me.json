@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/whatsapp-me",
+  "slug": "whatsapp-me",
+  "name": "browser-use",
+  "headline": "whatsapp-me: Messaging with Claude Code",
+  "short_description": "The WhatsApp-Me plugin enables Claude Code to send and receive messages via WhatsApp. Operations teams benefit from real-time notifications and two-way communication for task updates, error alerts, and input requests. It integrates directly with Claude Code, enhancing workflow automation and reducing response times.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "AsharibAli",
+  "install_command": "git clone https://github.com/AsharibAli/whatsapp-me.git",
+  "source_repo_url": "https://github.com/AsharibAli/whatsapp-me",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "whatsapp-me"
+  ],
+  "sections": {
+    "overview": "The whatsapp-me skill is an innovative automation tool that allows Claude Code to send messages directly to your WhatsApp account. This minimal plugin simplifies communication by integrating AI capabilities with one of the most popular messaging platforms. By leveraging this skill, users can automate notifications, reminders, or updates right to their mobile devices, ensuring they stay connected without the need for constant manual checks. One of the key benefits of the whatsapp-me skill is its potential to save time in communication processes. While the exact time savings are currently unknown, the ability to receive automated messages can significantly reduce the time spent on routine notifications. This skill is particularly beneficial for developers and product managers who need to stay updated on project statuses or receive alerts about system changes without interrupting their workflow. This skill is designed for professionals who are looking to enhance their productivity through AI automation. Developers can use it to automate deployment notifications, while product managers can set it up for user feedback alerts. The intermediate complexity level means that users should have a basic understanding of integrating plugins with Claude Code, but the implementation time is relatively short at around 30 minutes, making it accessible for busy professionals. Incorporating the whatsapp-me skill into your AI-first workflows can streamline communication and enhance overall efficiency. As businesses increasingly adopt AI automation, skills like whatsapp-me are essential for maintaining effective communication channels. With its straightforward setup and practical use cases, this skill is a valuable addition for anyone looking to optimize their messaging processes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AsharibAli/whatsapp-me`",
+    "usage": "```\nUse the whatsapp-me plugin to send a message to [WHATSAPP_NUMBER] with the following content: '[MESSAGE_CONTENT]'. After sending, wait for a response and forward any replies to [RECIPIENT_EMAIL] or log them in [LOG_FILE_PATH].\n```\nCopy\n\n```\n```\nSent message to +1234567890:\n\"URGENT: Database backup failed for server prod-db-01. Please investigate immediately.\"\n\nReceived reply from +1234567890 at 14:23:15:\n\"On it. Restarting the backup service now. ETA 5 mins.\"\n\nForwarded reply to ops-team@company.com and logged in /var/log/whatsapp_alerts.log:\n[2024-05-15 14:23:15] +1234567890: On it. Restarting the backup service now. ETA 5 mins.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "whatsapp-me#main-content",
+      "whatsapp-me#overview",
+      "whatsapp-me#setup",
+      "whatsapp-me#examples",
+      "whatsapp-me#tools",
+      "whatsapp-me#mcp",
+      "whatsapp-me#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The whatsapp-me skill is an innovative automation tool that allows Claude Code to send messages directly to your WhatsApp account. This minimal plugin simplifies communication by integrating AI capabilities with one of the most popular messaging platforms. By leveraging this skill, users can automate notifications, reminders, or updates right to their mobile devices, ensuring they stay connected without the need for constant manual checks. One of the key benefits of the whatsapp-me skill is its potential to save time in communication processes. While the exact time savings are currently unknown, the ability to receive automated messages can significantly reduce the time spent on routine notifications. This skill is particularly beneficial for developers and product managers who need to stay updated on project statuses or receive alerts about system changes without interrupting their workflow. This skill is designed for professionals who are looking to enhance their productivity through AI automation. Developers can use it to automate deployment notifications, while product managers can set it up for user feedback alerts. The intermediate complexity level means that users should have a basic understanding of integrating plugins with Claude Code, but the implementation time is relatively short at around 30 minutes, making it accessible for busy professionals. Incorporating the whatsapp-me skill into your AI-first workflows can streamline communication and enhance overall efficiency. As businesses increasingly adopt AI automation, skills like whatsapp-me are essential for maintaining effective communication channels. With its straightforward setup and practical use cases, this skill is a valuable addition for anyone looking to optimize their messaging processes.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AsharibAli/whatsapp-me`",
+    "usage_vi": "```\nUse the whatsapp-me plugin to send a message to [WHATSAPP_NUMBER] with the following content: '[MESSAGE_CONTENT]'. After sending, wait for a response and forward any replies to [RECIPIENT_EMAIL] or log them in [LOG_FILE_PATH].\n```\nCopy\n\n```\n```\nSent message to +1234567890:\n\"URGENT: Database backup failed for server prod-db-01. Please investigate immediately.\"\n\nReceived reply from +1234567890 at 14:23:15:\n\"On it. Restarting the backup service now. ETA 5 mins.\"\n\nForwarded reply to ops-team@company.com and logged in /var/log/whatsapp_alerts.log:\n[2024-05-15 14:23:15] +1234567890: On it. Restarting the backup service now. ETA 5 mins.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:19:42.688219Z",
+    "http_status": 200,
+    "content_hash": "e87bc01e270380b4d9a56d3e17f0e1597ff42c905473ce34795c2e5f2dbf1fc2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\whatsapp-me.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\whatsapp-me.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "whatsapp-me: Messaging with Claude Code",
+  "short_description_vi": "The WhatsApp-Me plugin enables Claude Code to send and receive messages via WhatsApp. Operations teams benefit from real-time notifications and two-way communication for task updates, error alerts, and input requests. It integrates directly with Claude Code, enhancing workflow automation and reducing response times."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-chatgpt-prompts",
+  "slug": "awesome-chatgpt-prompts",
+  "name": "Awesome Chatgpt Prompts",
+  "headline": "Awesome Chatgpt Prompts for Creative Ideas",
+  "short_description": "Awesome Chatgpt Prompts provides a library of prompts to inspire creative conversations and brainstorming. Engineers use it to generate ideas for coding, documentation, and problem-solving. It connects to agents like Claude Code and Cursor to streamline workflows and enhance productivity.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/f",
+  "source_repo_url": "https://github.com/sh/f",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "content generation",
+    "AI prompts",
+    "creativity",
+    "brainstorming"
+  ],
+  "sections": {
+    "overview": "Awesome Chatgpt Prompts is a curated library of prompts designed to facilitate creative conversations and structured brainstorming. Engineers can leverage this skill to generate ideas for coding tasks, technical documentation, and problem-solving scenarios. It integrates with agent tools like Claude Code and Cursor to streamline development workflows and boost productivity.\nContent creation\nSocial media engagement\nIdea generation",
+    "setup": "Terminal\nCopy\n`npx skills add sh/f`\n`git clone https://github.com/sh/f`",
+    "usage": "```\nGenerate a list of 5 creative coding project ideas using [PROGRAMMING_LANGUAGE]. For each idea, include a brief description, key technical challenges, and suggested libraries/frameworks. Format the output as a markdown table with columns: Idea, Description, Challenges, Libraries/Frameworks.\n```\nCopy\n\n```\n```markdown\n| Idea | Description | Challenges | Libraries/Frameworks |\n|------|-------------|------------|----------------------|\n| **AI-Powered Code Review Assistant** | A tool that analyzes Python code for style, security, and performance issues using static analysis. Integrates with GitHub/GitLab to provide real-time feedback in PRs. | Handling large codebases efficiently, minimizing false positives in security checks, scaling to multiple languages | `ast` (Python), `pylint`, `bandit`, `GitHub API`, `FastAPI` |\n| **Real-Time Collaborative Whiteboard** | A web-based whiteboard with multi-user support, drawing tools, and export functionality. Uses WebSockets for real-time updates. | Implementing conflict resolution for concurrent edits, optimizing canvas rendering for large drawings, ensuring browser compatibility | `React`, `Socket.io`, `Konva.js`, `Canvas API`, `Firebase` |\n| **Personal Finance Dashboard** | A dashboard that aggregates transactions from multiple bank accounts, categorizes spending, and provides budgeting insights. Uses Plaid API for bank data. | Handling sensitive financial data securely, ensuring data consistency across multiple sources, designing intuitive UX for complex data | `React`, `D3.js`, `Plaid API`, `PostgreSQL`, `FastAPI` |\n| **Automated Meeting Notes Generator** | A tool that joins Zoom/Google Meet calls, transcribes audio, and generates structured meeting notes with action items. Uses Whisper for transcription. | Handling background noise in transcription, accurately identifying speakers, integrating with calendar APIs | `Whisper` (OpenAI), `Django`, `Google Calendar API`, `AssemblyAI` |\n| **Smart Home Energy Monitor** | A system that tracks electricity usage in real-time using IoT sensors, predicts consumption patterns, and suggests optimizations. Uses ESP32 microcontrollers. | Calibrating sensors for accuracy, handling intermittent connectivity, designing energy-efficient data transmission | `ESP32`, `MQTT`, `InfluxDB`, `Grafana`, `Python` |\n```\n\n### Key Technical Considerations\n1. **Scalability**: The AI-Powered Code Review Assistant must handle repositories with thousands of files without significant latency.\n2. **Security**: The Personal Finance Dashboard requires end-to-end encryption for all financial data transfers and storage.\n3. **Real-Time Performance**: The Collaborative Whiteboard must maintain sub-100ms latency for smooth user experience even with 50+ concurrent users.\n4. **Integration Complexity**: The Meeting Notes Generator needs to work seamlessly with both Zoom and Google Meet APIs, which have different authentication flows.\n\nWould you like me to elaborate on any of these ideas or provide implementation roadmaps for a specific project?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "awesome-chatgpt-prompts#main-content",
+      "awesome-chatgpt-prompts#overview",
+      "awesome-chatgpt-prompts#setup",
+      "awesome-chatgpt-prompts#examples",
+      "awesome-chatgpt-prompts#tools",
+      "awesome-chatgpt-prompts#mcp",
+      "awesome-chatgpt-prompts#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Awesome Chatgpt Prompts is a curated library of prompts designed to facilitate creative conversations and structured brainstorming. Engineers can leverage this skill to generate ideas for coding tasks, technical documentation, and problem-solving scenarios. It integrates with agent tools like Claude Code and Cursor to streamline development workflows and boost productivity.\nContent creation\nSocial media engagement\nIdea generation",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/f`\n`git clone https://github.com/sh/f`",
+    "usage_vi": "```\nGenerate a list of 5 creative coding project ideas using [PROGRAMMING_LANGUAGE]. For each idea, include a brief description, key technical challenges, and suggested libraries/frameworks. Format the output as a markdown table with columns: Idea, Description, Challenges, Libraries/Frameworks.\n```\nCopy\n\n```\n```markdown\n| Idea | Description | Challenges | Libraries/Frameworks |\n|------|-------------|------------|----------------------|\n| **AI-Powered Code Review Assistant** | A tool that analyzes Python code for style, security, and performance issues using static analysis. Integrates with GitHub/GitLab to provide real-time feedback in PRs. | Handling large codebases efficiently, minimizing false positives in security checks, scaling to multiple languages | `ast` (Python), `pylint`, `bandit`, `GitHub API`, `FastAPI` |\n| **Real-Time Collaborative Whiteboard** | A web-based whiteboard with multi-user support, drawing tools, and export functionality. Uses WebSockets for real-time updates. | Implementing conflict resolution for concurrent edits, optimizing canvas rendering for large drawings, ensuring browser compatibility | `React`, `Socket.io`, `Konva.js`, `Canvas API`, `Firebase` |\n| **Personal Finance Dashboard** | A dashboard that aggregates transactions from multiple bank accounts, categorizes spending, and provides budgeting insights. Uses Plaid API for bank data. | Handling sensitive financial data securely, ensuring data consistency across multiple sources, designing intuitive UX for complex data | `React`, `D3.js`, `Plaid API`, `PostgreSQL`, `FastAPI` |\n| **Automated Meeting Notes Generator** | A tool that joins Zoom/Google Meet calls, transcribes audio, and generates structured meeting notes with action items. Uses Whisper for transcription. | Handling background noise in transcription, accurately identifying speakers, integrating with calendar APIs | `Whisper` (OpenAI), `Django`, `Google Calendar API`, `AssemblyAI` |\n| **Smart Home Energy Monitor** | A system that tracks electricity usage in real-time using IoT sensors, predicts consumption patterns, and suggests optimizations. Uses ESP32 microcontrollers. | Calibrating sensors for accuracy, handling intermittent connectivity, designing energy-efficient data transmission | `ESP32`, `MQTT`, `InfluxDB`, `Grafana`, `Python` |\n```\n\n### Key Technical Considerations\n1. **Scalability**: The AI-Powered Code Review Assistant must handle repositories with thousands of files without significant latency.\n2. **Security**: The Personal Finance Dashboard requires end-to-end encryption for all financial data transfers and storage.\n3. **Real-Time Performance**: The Collaborative Whiteboard must maintain sub-100ms latency for smooth user experience even with 50+ concurrent users.\n4. **Integration Complexity**: The Meeting Notes Generator needs to work seamlessly with both Zoom and Google Meet APIs, which have different authentication flows.\n\nWould you like me to elaborate on any of these ideas or provide implementation roadmaps for a specific project?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:43:21.102757Z",
+    "http_status": 200,
+    "content_hash": "01c4247b270a29b83c056d47d455094931857cebe420d8079258d9fadff4563c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-chatgpt-prompts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-chatgpt-prompts.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Awesome Chatgpt Prompts for Creative Ideas",
+  "short_description_vi": "Awesome Chatgpt Prompts provides a library of prompts to inspire creative conversations and brainstorming. Engineers use it to generate ideas for coding, documentation, and problem-solving. It connects to agents like Claude Code and Cursor to streamline workflows and enhance productivity."
+}

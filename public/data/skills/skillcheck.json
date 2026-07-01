@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillcheck",
+  "slug": "skillcheck",
+  "name": "browser-use",
+  "headline": "SkillCheck: Claude Skill Security Scanner",
+  "short_description": "Security scanner that detects hardcoded secrets, command injection, and path traversal vulnerabilities in Claude SKILL.md files before production deployment.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "agentigy",
+  "install_command": "git clone https://github.com/agentigy/skillcheck.git",
+  "source_repo_url": "https://github.com/agentigy/skillcheck",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "SkillCheck is a security scanner purpose-built for Claude SKILL.md files. It detects five categories of vulnerabilities—hardcoded secrets, command injection, privilege escalation, path traversal, and information disclosure—using context-aware analysis to reduce false positives. The tool runs locally via CLI or integrates into CI/CD pipelines, outputting color-coded console reports or SARIF format for GitHub Security. Development teams use SkillCheck to identify and remediate security issues before skills reach production.\nScanning skill repositories for hardcoded API keys and credentials before deployment\nDetecting unsafe shell command execution patterns in skill code blocks\nIdentifying path traversal vulnerabilities in file operation logic\nIntegrating security checks into CI/CD pipelines via SARIF GitHub upload",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/agentigy/skillcheck`",
+    "usage": "```\nScan the following SKILL.md file for security vulnerabilities. Look for issues like hardcoded credentials, sensitive data exposure, or insecure configurations. Here is the file content: [FILE_CONTENT]. Provide a detailed report with findings and recommendations.\n```\nCopy\n\n```\n# Security Scan Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillcheck#main-content",
+      "skillcheck#overview",
+      "skillcheck#setup",
+      "skillcheck#examples",
+      "skillcheck#tools",
+      "skillcheck#mcp",
+      "skillcheck#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SkillCheck is a security scanner purpose-built for Claude SKILL.md files. It detects five categories of vulnerabilities—hardcoded secrets, command injection, privilege escalation, path traversal, and information disclosure—using context-aware analysis to reduce false positives. The tool runs locally via CLI or integrates into CI/CD pipelines, outputting color-coded console reports or SARIF format for GitHub Security. Development teams use SkillCheck to identify and remediate security issues before skills reach production.\nScanning skill repositories for hardcoded API keys and credentials before deployment\nDetecting unsafe shell command execution patterns in skill code blocks\nIdentifying path traversal vulnerabilities in file operation logic\nIntegrating security checks into CI/CD pipelines via SARIF GitHub upload",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/agentigy/skillcheck`",
+    "usage_vi": "```\nScan the following SKILL.md file for security vulnerabilities. Look for issues like hardcoded credentials, sensitive data exposure, or insecure configurations. Here is the file content: [FILE_CONTENT]. Provide a detailed report with findings and recommendations.\n```\nCopy\n\n```\n# Security Scan Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:16:43.241122Z",
+    "http_status": 200,
+    "content_hash": "197d255a86e0c43e6a659cd31a942edd94c1edad80a645dd6e0db7618ac1b901",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillcheck.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillcheck.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SkillCheck: Claude Skill Security Scanner",
+  "short_description_vi": "Security scanner that detects hardcoded secrets, command injection, and path traversal vulnerabilities in Claude SKILL.md files before production deployment."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opentui",
+  "slug": "opentui",
+  "name": "OpenTUI",
+  "headline": "OpenTUI - Build Terminal UIs",
+  "short_description": "OpenTUI is a TypeScript library for building terminal user interfaces (TUIs). It enables developers to create interactive command-line applications. Operations teams benefit from streamlined workflows and improved user experiences. OpenTUI integrates with existing terminal-based tools and workflows.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "anomalyco",
+  "install_command": "git clone https://github.com/anomalyco/opentui.git",
+  "source_repo_url": "https://github.com/anomalyco/opentui",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "OpenTUI is a TypeScript library designed for building terminal user interfaces (TUIs) that enable developers to create interactive command-line applications. The library provides the foundation for constructing custom terminal-based tools with proper Unicode handling and character width calculation for precise layout control. OpenTUI integrates with existing terminal-based tools and workflows, making it suitable for operations teams seeking to modernize their CLI tooling. The library handles complex character encoding requirements, including proper UTF-8 support and emoji rendering, ensuring terminal output remains properly aligned and readable. Developers can use OpenTUI to build responsive command-line applications without managing low-level terminal rendering details.\nCreate interactive command-line applications that require user input and dynamic output.\nDevelop terminal-based dashboards for monitoring system performance or application metrics.\nBuild custom CLI tools that integrate with existing workflows and automate repetitive tasks.\nDesign educational tools that guide users through command-line operations in a user-friendly manner.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anomalyco/opentui`",
+    "usage": "```\nCreate a terminal user interface (TUI) for [SPECIFIC_TOOL] using OpenTUI. The interface should include [FEATURES] such as real-time data visualization, interactive forms, and command execution. Ensure the TUI is responsive and user-friendly, with clear navigation and intuitive controls.\n```\nCopy\n\n```\nHere's an example of a TUI created using OpenTUI for a monitoring tool:\n\n```typescript\nimport { TUI, Text, Button, List, Input } from 'opentui';\n\nconst tui = new TUI();\ntui.add(new Text('System Monitoring Dashboard'));\ntui.add(new List(['CPU Usage', 'Memory Usage', 'Disk Usage', 'Network Traffic']));\ntui.add(new Button('Refresh Data', () => {\n  // Code to refresh data\n}));\ntui.add(new Input('Enter command:', (command) => {\n  // Code to execute command\n}));\ntui.run();\n```\n\nThis TUI provides a real-time view of system metrics, allowing users to monitor their systems efficiently. The interface includes a list of metrics, a refresh button to update the data, and an input field for executing commands. The TUI is designed to be intuitive and responsive, ensuring a seamless user experience.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "opentui#main-content",
+      "opentui#overview",
+      "opentui#setup",
+      "opentui#examples",
+      "opentui#tools",
+      "opentui#mcp",
+      "opentui#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OpenTUI là một thư viện TypeScript được thiết kế để xây dựng giao diện người dùng terminal (TUI), cho phép các nhà phát triển tạo ra các ứng dụng dòng lệnh tương tác. Thư viện này cung cấp nền tảng để xây dựng các công cụ dựa trên terminal tùy biến với khả năng xử lý Unicode chuẩn xác và tính toán độ rộng ký tự để kiểm soát layout chính xác. OpenTUI tích hợp mượt mà với các công cụ và quy trình làm việc trên terminal hiện có, rất phù hợp cho các đội ngũ vận hành muốn hiện đại hóa bộ công cụ CLI của mình. Thư viện tự động xử lý các yêu cầu mã hóa ký tự phức tạp, bao gồm hỗ trợ UTF-8 chuẩn xác và render emoji, đảm bảo đầu ra trên terminal luôn thẳng hàng và dễ đọc. Các nhà phát triển có thể sử dụng OpenTUI để xây dựng các ứng dụng dòng lệnh responsive mà không cần quản lý các chi tiết render terminal ở cấp độ thấp.\nTạo các ứng dụng dòng lệnh tương tác yêu cầu dữ liệu nhập từ người dùng và đầu ra động.\nPhát triển các dashboard dựa trên terminal để giám sát hiệu suất hệ thống hoặc các chỉ số của ứng dụng.\nXây dựng các công cụ CLI tùy chỉnh tích hợp với các quy trình làm việc hiện có và tự động hóa các tác vụ lặp đi lặp lại.\nThiết kế các công cụ giáo dục hướng dẫn người dùng thực hiện các thao tác dòng lệnh một cách trực quan và thân thiện.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/anomalyco/opentui`",
+    "usage_vi": "```\nTạo một giao diện người dùng terminal (TUI) cho [SPECIFIC_TOOL] bằng cách sử dụng OpenTUI. Giao diện nên bao gồm các [FEATURES] như trực quan hóa dữ liệu thời gian thực, biểu mẫu tương tác và thực thi lệnh. Hãy đảm bảo TUI responsive và thân thiện với người dùng, với tính năng điều hướng rõ ràng cùng các nút điều khiển trực quan.\n```\nSao chép\n\n```\nDưới đây là một ví dụ về TUI được tạo bằng OpenTUI cho một công cụ giám sát:\n\n```typescript\nimport { TUI, Text, Button, List, Input } from 'opentui';\n\nconst tui = new TUI();\ntui.add(new Text('System Monitoring Dashboard'));\ntui.add(new List(['CPU Usage', 'Memory Usage', 'Disk Usage', 'Network Traffic']));\ntui.add(new Button('Refresh Data', () => {\n  // Code to refresh data\n}));\ntui.add(new Input('Enter command:', (command) => {\n  // Code to execute command\n}));\ntui.run();\n```\n\nTUI này cung cấp chế độ xem thời gian thực về các chỉ số hệ thống, cho phép người dùng giám sát hệ thống của họ một cách hiệu quả. Giao diện bao gồm một danh sách các chỉ số, một nút làm mới để cập nhật dữ liệu và một trường nhập liệu để thực thi lệnh. TUI được thiết kế trực quan và responsive, đảm bảo trải nghiệm người dùng mượt mà.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:36.236665Z",
+    "http_status": 200,
+    "content_hash": "c976a06bdf30cd9355d3f4b7f42de0c70115943ac48e639996ebc5606bc33c3e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opentui.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opentui.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OpenTUI - Xây dựng Terminal UI",
+  "short_description_vi": "OpenTUI là một thư viện TypeScript dùng để xây dựng giao diện người dùng terminal (TUI). Thư viện này cho phép các nhà phát triển tạo ra các ứng dụng dòng lệnh tương tác. Các đội ngũ vận hành (operations teams) sẽ được hưởng lợi từ quy trình làm việc tinh gọn và trải nghiệm người dùng được cải thiện. OpenTUI tích hợp mượt mà với các công cụ và quy trình làm việc dựa trên terminal hiện có."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/google-docs-skill",
+  "slug": "google-docs-skill",
+  "name": "Google Docs Skill",
+  "headline": "Google Docs Skill: Docs & Drive Automation for",
+  "short_description": "A Claude Code skill that enables reading, creating, and managing Google Docs and Drive files, including Markdown import, table operations, and OAuth-based file sharing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "robtaylor",
+  "install_command": "git clone https://github.com/robtaylor/google-docs-skill.git",
+  "source_repo_url": "https://github.com/robtaylor/google-docs-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The google-docs-skill gives Claude Code agents direct access to Google Docs and Google Drive through OAuth authentication. It supports reading and creating documents, inserting and appending content, replacing text, applying formatting, and adding page breaks. A Markdown-to-Docs pipeline lets agents convert headings, bold, italic, code, bullet lists, numbered lists, checkboxes, tables, and horizontal rules into properly styled Google Docs elements. Drive operations include uploading, downloading, searching, sharing, listing, moving, and exporting files. Developers and teams automating document workflows—reports, meeting notes, project trackers—can use this skill to connect AI-generated content directly to their Google Workspace.\nConvert a Markdown report into a formatted Google Doc with headings and tables\nAutomatically append AI-generated summaries to an existing Google Doc\nUpload local files to Google Drive and set sharing permissions\nSearch Google Drive for specific files and export them in alternate formats",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/robtaylor/google-docs-skill`",
+    "usage": "```\nI need to automate a task in Google Docs and Drive. Here's what I want to do: [DESCRIBE_TASK]. Can you generate the necessary Google Apps Script code to accomplish this? I want to [SPECIFIC_OUTCOME]. Please provide the complete script and explain how to implement it.\n```\nCopy\n\n```\n# Google Apps Script for Automating Document Formatting\n\nHere's a script that will automatically format new Google Docs based on your specifications:\n\n```javascript\nfunction onOpen(e) {\n  var doc = DocumentApp.getActiveDocument();\n  var body = doc.getBody();\n  body.setAttributes({ 'fontFamily': 'Arial', 'fontSize': 11 });\n  body.setAttributes({ 'pageWidth': 8.5, 'pageHeight': 11 });\n  body.setAttributes({ 'marginTop': 0.5, 'marginBottom': 0.5, 'marginLeft': 0.5, 'marginRight': 0.5 });\n}\n\nfunction createFormattedDoc() {\n  var folder = DriveApp.getFolderById('YOUR_FOLDER_ID');\n  var doc = DocumentApp.create('Formatted Document');\n  var body = doc.getBody();\n  body.appendParagraph('This document was automatically formatted').setHeading(DocumentApp.ParagraphHeading.HEADING1);\n  folder.addFile(doc.getAs('application/vnd.google-apps.document'));\n  DriveApp.getRoot().removeFile(doc.getAs('application/vnd.google-apps.document'));\n}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "google-docs-skill#main-content",
+      "google-docs-skill#overview",
+      "google-docs-skill#setup",
+      "google-docs-skill#examples",
+      "google-docs-skill#tools",
+      "google-docs-skill#mcp",
+      "google-docs-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "google-docs-skill cung cấp cho các agent Claude Code quyền truy cập trực tiếp vào Google Docs và Google Drive thông qua xác thực OAuth. Skill này hỗ trợ đọc và tạo tài liệu, chèn và append nội dung, thay thế văn bản, áp dụng định dạng và thêm dấu ngắt trang. Một pipeline Markdown-to-Docs cho phép các agent chuyển đổi heading, chữ in đậm, in nghiêng, code, bullet list, danh sách đánh số, checkbox, bảng và đường kẻ ngang thành các phần tử Google Docs được định dạng chuẩn. Các thao tác trên Drive bao gồm tải lên, tải xuống, tìm kiếm, chia sẻ, liệt kê, di chuyển và xuất file. Lập trình viên và các đội ngũ cần tự động hóa quy trình tài liệu—báo cáo, ghi chú cuộc họp, theo dõi dự án—có thể sử dụng skill này để kết nối trực tiếp nội dung do AI tạo với Google Workspace của họ.\nChuyển đổi báo cáo Markdown thành Google Doc được định dạng kèm heading và bảng\nTự động append các bản tóm tắt do AI tạo vào Google Doc hiện có\nUpload file cục bộ lên Google Drive và thiết lập quyền chia sẻ\nTìm kiếm file cụ thể trên Google Drive và xuất chúng sang các định dạng khác",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/robtaylor/google-docs-skill`",
+    "usage_vi": "```\nTôi cần tự động hóa một tác vụ trong Google Docs và Drive. Đây là những gì tôi muốn làm: [DESCRIBE_TASK]. Bạn có thể tạo mã Google Apps Script cần thiết để thực hiện việc này không? Tôi muốn [SPECIFIC_OUTCOME]. Vui lòng cung cấp script hoàn chỉnh và giải thích cách triển khai.\n```\nCopy\n\n```\n# Google Apps Script để tự động hóa định dạng tài liệu\n\nDưới đây là script tự động định dạng các Google Docs mới dựa trên yêu cầu của bạn:\n\n```javascript\nfunction onOpen(e) {\n  var doc = DocumentApp.getActiveDocument();\n  var body = doc.getBody();\n  body.setAttributes({ 'fontFamily': 'Arial', 'fontSize': 11 });\n  body.setAttributes({ 'pageWidth': 8.5, 'pageHeight': 11 });\n  body.setAttributes({ 'marginTop': 0.5, 'marginBottom': 0.5, 'marginLeft': 0.5, 'marginRight': 0.5 });\n}\n\nfunction createFormattedDoc() {\n  var folder = DriveApp.getFolderById('YOUR_FOLDER_ID');\n  var doc = DocumentApp.create('Formatted Document');\n  var body = doc.getBody();\n  body.appendParagraph('This document was automatically formatted').setHeading(DocumentApp.ParagraphHeading.HEADING1);\n  folder.addFile(doc.getAs('application/vnd.google-apps.document'));\n  DriveApp.getRoot().removeFile(doc.getAs('application/vnd.google-apps.document'));\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:28:22.099087Z",
+    "http_status": 200,
+    "content_hash": "a667ab5383b36fbba74c2d3355e9c15ac9ea1b82705f92c42b00c4a7addb7979",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\google-docs-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\google-docs-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Google Docs Skill: Tự động hóa Docs & Drive dành cho",
+  "short_description_vi": "Một skill của Claude Code cho phép đọc, tạo và quản lý các file Google Docs và Drive, bao gồm import Markdown, thao tác với bảng và chia sẻ file qua xác thực OAuth."
+}

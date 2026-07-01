@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prompt-engineering-skills",
+  "slug": "prompt-engineering-skills",
+  "name": "Prompt Engineering Skills",
+  "headline": "Prompt Engineering Skills - Optimize AI",
+  "short_description": "AI prompt engineering skills for Claude Code, ChatGPT GPTs, and Gemini Gems. Includes model-specific patterns for GPT-5.2, Claude 4.5, Gemini 3, Veo 3.1, and Nano Banana. Optimizes AI interactions for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "treylom",
+  "install_command": "git clone https://github.com/treylom/prompt-engineering-skills.git",
+  "source_repo_url": "https://github.com/treylom/prompt-engineering-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "prompt-engineering-skills is a unified repository of prompt engineering techniques designed for Claude Code, ChatGPT GPTs, and Gemini Gems. It provides model-specific strategies for Claude Fable 5, GPT 5.x, and Gemini 3.1, along with specialized guides for image prompting, research and fact-checking, slide generation, expert domain priming, and Context Engineering principles. The skill ships as a single canonical merged guide plus per-area split guides, allowing users to install only the assets matching their environment. Installation is straightforward for Claude Code via git clone, with separate setup paths for Windows, GPTs, and Gems platforms.\nOptimizing prompts for Claude Code, ChatGPT GPTs, and Gemini Gems workflows\nGenerating effective image and video prompts across AI platforms\nConducting research and fact-checking with AI agents\nCreating presentation slides and structured outputs with AI",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/treylom/prompt-engineering-skills`",
+    "usage": "```\nDesign a custom GPT for [TEAM_NAME] operations using [MODEL_NAME] with these constraints: [CONSTRAINTS]. Include model-specific patterns for [MODEL_NAME] (e.g., XML tags for Claude, structured output for GPT-5.2). The GPT should handle [PRIMARY_TASK] and provide [OUTPUT_FORMAT]. Test the GPT with this sample input: '[SAMPLE_INPUT]' and refine based on edge cases like [EDGE_CASE_1] and [EDGE_CASE_2].\n```\nCopy\n\n```\nHere’s a refined GPT configuration for the **OpsGenie Alert Triage Team** using **Claude 4.5**, optimized for handling high-volume incident alerts with structured outputs and model-specific patterns:\n\n```xml\n<GPT_CONFIG>\n  <NAME>OpsGenie Alert Triage</NAME>\n  <MODEL>Claude 4.5</MODEL>\n  <PRIMARY_TASK>Triage and categorize incoming OpsGenie alerts based on severity, service, and escalation rules.</PRIMARY_TASK>\n  <OUTPUT_FORMAT>\n    - **Alert ID**: [ALERT_ID]\n    - **Severity**: [CRITICAL/HIGH/MEDIUM/LOW]\n    - **Service**: [SERVICE_NAME]\n    - **Action**: [ESCALATE/ACKNOWLEDGE/IGNORE]\n    - **Reasoning**: [BRIEF_JUSTIFICATION]\n  </OUTPUT_FORMAT>\n  <CONSTRAINTS>\n    - Prioritize alerts tagged with \"pagerduty\" or \"critical\".\n    - Ignore alerts older than 2 hours unless manually escalated.\n    - Use XML tags for structured responses to avoid parsing errors.\n  </CONSTRAINTS>\n</GPT_CONFIG>\n```\n\n**Test Input:**\n`\"New alert: [ALERT-2024-0543] - Service: payment-gateway - Severity: CRITICAL - Details: 5xx errors detected in /checkout endpoint\"`\n\n**Refined Output:**\n```xml\n<ALERT_TRIAGE>\n  <ALERT_ID>ALERT-2024-0543</ALERT_ID>\n  <SEVERITY>CRITICAL</SEVERITY>\n  <SERVICE>payment-gateway</SERVICE>\n  <ACTION>ESCALATE</ACTION>\n  <REASONING>\n    Critical severity with 5xx errors in a core service. Escalate to on-call engineer immediately.\n  </REASONING>\n</ALERT_TRIAGE>\n```\n\n**Edge Case Handling:**\n- For alerts with missing severity tags, default to **HIGH** and flag for review.\n- For duplicate alerts, merge into a single entry with combined details.\n- For non-urgent alerts (e.g., \"low disk space\" on dev servers), **IGNORE** unless explicitly requested.\n\nThis configuration reduces manual triage time by 60% and ensures consistent alert handling across shifts.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "prompt-engineering-skills#main-content",
+      "prompt-engineering-skills#overview",
+      "prompt-engineering-skills#setup",
+      "prompt-engineering-skills#examples",
+      "prompt-engineering-skills#tools",
+      "prompt-engineering-skills#mcp",
+      "prompt-engineering-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "prompt-engineering-skills là một repository hợp nhất các kỹ thuật prompt engineering được thiết kế cho Claude Code, ChatGPT GPTs và Gemini Gems. Tài liệu cung cấp các chiến lược đặc thù cho từng mô hình như Claude Fable 5, GPT 5.x và Gemini 3.1, cùng các hướng dẫn chuyên sâu về prompt hình ảnh, nghiên cứu và xác thực thông tin (fact-checking), tạo slide, định hướng chuyên gia (expert domain priming) và các nguyên lý Context Engineering. Skill này được cung cấp dưới dạng một tài liệu hướng dẫn hợp nhất chuẩn duy nhất kèm theo các hướng dẫn riêng lẻ cho từng phần, cho phép người dùng chỉ cài đặt các tài nguyên (assets) phù hợp với môi trường của họ. Quá trình cài đặt rất đơn giản cho Claude Code thông qua git clone, với các lộ trình setup riêng cho các nền tảng Windows, GPTs và Gems.\nTối ưu hóa prompt cho quy trình làm việc (workflows) trên Claude Code, ChatGPT GPTs và Gemini Gems\nTạo prompt hình ảnh và video hiệu quả trên các nền tảng AI\nNghiên cứu và xác thực thông tin với các AI agent\nTạo slide thuyết trình và dữ liệu đầu ra có cấu trúc (structured outputs) bằng AI",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/treylom/prompt-engineering-skills`",
+    "usage_vi": "```\nThiết kế một GPT tùy chỉnh cho hoạt động vận hành của [TEAM_NAME] sử dụng [MODEL_NAME] với các ràng buộc sau: [CONSTRAINTS]. Bao gồm các pattern đặc thù của mô hình cho [MODEL_NAME] (ví dụ: thẻ XML cho Claude, structured output cho GPT-5.2). GPT này cần xử lý [PRIMARY_TASK] và cung cấp [OUTPUT_FORMAT]. Kiểm tra GPT bằng dữ liệu đầu vào mẫu này: '[SAMPLE_INPUT]' và tinh chỉnh dựa trên các trường hợp biên như [EDGE_CASE_1] và [EDGE_CASE_2].\n```\nSao chép\n\n```\nDưới đây là cấu hình GPT đã được tinh chỉnh cho **OpsGenie Alert Triage Team** sử dụng **Claude 4.5**, được tối ưu hóa để xử lý lượng lớn cảnh báo sự cố với dữ liệu đầu ra có cấu trúc (structured outputs) và các pattern đặc thù của mô hình:\n\n```xml\n<GPT_CONFIG>\n  <NAME>OpsGenie Alert Triage</NAME>\n  <MODEL>Claude 4.5</MODEL>\n  <PRIMARY_TASK>Phân loại và sắp xếp các cảnh báo OpsGenie gửi đến dựa trên mức độ nghiêm trọng, dịch vụ và quy tắc chuyển tiếp (escalation rules).</PRIMARY_TASK>\n  <OUTPUT_FORMAT>\n    - **Alert ID**: [ALERT_ID]\n    - **Severity**: [CRITICAL/HIGH/MEDIUM/LOW]\n    - **Service**: [SERVICE_NAME]\n    - **Action**: [ESCALATE/ACKNOWLEDGE/IGNORE]\n    - **Reasoning**: [BRIEF_JUSTIFICATION]\n  </OUTPUT_FORMAT>\n  <CONSTRAINTS>\n    - Ưu tiên các cảnh báo được gắn thẻ \"pagerduty\" hoặc \"critical\".\n    - Bỏ qua các cảnh báo cũ hơn 2 giờ trừ khi được chuyển tiếp thủ công.\n    - Sử dụng các thẻ XML cho phản hồi có cấu trúc để tránh lỗi cú pháp (parsing errors).\n  </CONSTRAINTS>\n</GPT_CONFIG>\n```\n\n**Dữ liệu đầu vào kiểm thử (Test Input):**\n`\"New alert: [ALERT-2024-0543] - Service: payment-gateway - Severity: CRITICAL - Details: 5xx errors detected in /checkout endpoint\"`\n\n**Dữ liệu đầu ra tinh chỉnh (Refined Output):**\n```xml\n<ALERT_TRIAGE>\n  <ALERT_ID>ALERT-2024-0543</ALERT_ID>\n  <SEVERITY>CRITICAL</SEVERITY>\n  <SERVICE>payment-gateway</SERVICE>\n  <ACTION>ESCALATE</ACTION>\n  <REASONING>\n    Mức độ nghiêm trọng CRITICAL với lỗi 5xx trong dịch vụ cốt lõi. Chuyển tiếp ngay lập tức cho kỹ sư trực on-call.\n  </REASONING>\n</ALERT_TRIAGE>\n```\n\n**Xử lý trường hợp biên (Edge Cases):**\n- Đối với các cảnh báo thiếu thẻ mức độ nghiêm trọng, mặc định là **HIGH** và gắn cờ để xem xét.\n- Đối với các cảnh báo trùng lặp, gộp thành một mục duy nhất kèm theo thông tin chi tiết kết hợp.\n- Đối với các cảnh báo không khẩn cấp (ví dụ: \"low disk space\" trên máy chủ dev), **IGNORE** trừ khi có yêu cầu rõ ràng.\n\nCấu hình này giúp giảm 60% thời gian phân loại thủ công và đảm bảo xử lý cảnh báo nhất quán giữa các ca trực.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:12:11.409982Z",
+    "http_status": 200,
+    "content_hash": "99e5c438f0e478e4357019c2d25bdf6f93bcdec66fa0e26a87fc5f5272de47b0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prompt-engineering-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prompt-engineering-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng Prompt Engineering - Tối ưu hóa AI",
+  "short_description_vi": "Các kỹ năng prompt engineering AI dành cho Claude Code, ChatGPT GPTs và Gemini Gems. Bao gồm các pattern đặc thù cho từng mô hình như GPT-5.2, Claude 4.5, Gemini 3, Veo 3.1 và Nano Banana. Tối ưu hóa tương tác AI cho các đội ngũ vận hành."
+}

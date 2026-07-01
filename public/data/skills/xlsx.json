@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xlsx",
+  "slug": "xlsx",
+  "name": "xlsx",
+  "headline": "xlsx: Excel Management",
+  "short_description": "The xlsx skill for Claude Code enables manipulation of Excel files, allowing users to read, write, and modify spreadsheets programmatically. This skill streamlines data handling processes, significantly saving time for developers and AI practitioners.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills.git",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The xlsx skill is designed for Claude Code, providing users with the ability to efficiently handle Excel files through automation. This skill allows developers and AI practitioners to read, write, and modify spreadsheets programmatically, making it an essential tool for any workflow that involves data manipulation. By integrating this skill into their projects, users can automate repetitive tasks associated with Excel, enhancing productivity and accuracy. One of the key benefits of the xlsx skill is the significant time savings it offers. Instead of manually updating spreadsheets or performing complex calculations, users can leverage this skill to automate these processes. This not only reduces the risk of human error but also allows teams to focus on higher-level tasks that require critical thinking and creativity. The ability to manipulate Excel files programmatically can lead to faster decision-making and improved data analysis. This skill is particularly useful for developers, product managers, and AI practitioners who frequently work with data stored in Excel. It can be applied in various scenarios, such as generating reports, analyzing datasets, or automating data entry tasks. For example, a product manager might use the xlsx skill to automatically compile sales data from multiple sources into a single Excel report, saving hours of manual work. Additionally, AI practitioners can utilize this skill to prepare training datasets by manipulating Excel files with ease. In terms of implementation, the xlsx skill is relatively straightforward, making it accessible even for those with limited programming experience. It fits seamlessly into AI-first workflows, enabling users to integrate data handling capabilities directly into their automation processes. By incorporating the xlsx skill into their toolkit, users can enhance their workflow automation strategies, ultimately leading to more efficient and effective project outcomes.\nAutomate the generation of sales reports directly from Excel data.\nPrepare and modify training datasets by manipulating Excel files for machine learning projects.\nStreamline data entry processes in inventory management by automating updates to Excel sheets.\nCreate dynamic dashboards that pull real-time data from Excel spreadsheets for better decision-making.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nI have an Excel file named [FILE_NAME] with the following columns: [COLUMN_NAMES]. I need to [TASK_DESCRIPTION]. Please provide the necessary code to accomplish this task using the xlsx skill in Claude Code.\n```\nCopy\n\n```\nBased on your request, here's a Python code snippet using the xlsx skill to manipulate your Excel file:\n\n```python\nimport claudecode as cc\n\n# Initialize the xlsx skill\nxlsx = cc.skills.xlsx\n\n# Load the Excel file\nfile_path = 'sales_data.xlsx'\ndata = xlsx.load(file_path)\n\n# Filter data for Q3 2023\nq3_data = [row for row in data if row['Date'].startswith('2023-Q3')]\n\n# Calculate total sales for Q3\nq3_sales = sum(float(row['Sales']) for row in q3_data)\n\n# Create a summary dictionary\nsummary = {\n    'Quarter': 'Q3 2023',\n    'Total Sales': q3_sales,\n    'Number of Transactions': len(q3_data)\n}\n\n# Save the summary to a new Excel file\nxlsx.save('q3_summary.xlsx', summary)\n```\n\nThis code will create a new Excel file named 'q3_summary.xlsx' with the summary of Q3 2023 sales data.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xlsx#main-content",
+      "xlsx#overview",
+      "xlsx#setup",
+      "xlsx#examples",
+      "xlsx#tools",
+      "xlsx#mcp",
+      "xlsx#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The xlsx skill is designed for Claude Code, providing users with the ability to efficiently handle Excel files through automation. This skill allows developers and AI practitioners to read, write, and modify spreadsheets programmatically, making it an essential tool for any workflow that involves data manipulation. By integrating this skill into their projects, users can automate repetitive tasks associated with Excel, enhancing productivity and accuracy. One of the key benefits of the xlsx skill is the significant time savings it offers. Instead of manually updating spreadsheets or performing complex calculations, users can leverage this skill to automate these processes. This not only reduces the risk of human error but also allows teams to focus on higher-level tasks that require critical thinking and creativity. The ability to manipulate Excel files programmatically can lead to faster decision-making and improved data analysis. This skill is particularly useful for developers, product managers, and AI practitioners who frequently work with data stored in Excel. It can be applied in various scenarios, such as generating reports, analyzing datasets, or automating data entry tasks. For example, a product manager might use the xlsx skill to automatically compile sales data from multiple sources into a single Excel report, saving hours of manual work. Additionally, AI practitioners can utilize this skill to prepare training datasets by manipulating Excel files with ease. In terms of implementation, the xlsx skill is relatively straightforward, making it accessible even for those with limited programming experience. It fits seamlessly into AI-first workflows, enabling users to integrate data handling capabilities directly into their automation processes. By incorporating the xlsx skill into their toolkit, users can enhance their workflow automation strategies, ultimately leading to more efficient and effective project outcomes.\nAutomate the generation of sales reports directly from Excel data.\nPrepare and modify training datasets by manipulating Excel files for machine learning projects.\nStreamline data entry processes in inventory management by automating updates to Excel sheets.\nCreate dynamic dashboards that pull real-time data from Excel spreadsheets for better decision-making.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nI have an Excel file named [FILE_NAME] with the following columns: [COLUMN_NAMES]. I need to [TASK_DESCRIPTION]. Please provide the necessary code to accomplish this task using the xlsx skill in Claude Code.\n```\nCopy\n\n```\nBased on your request, here's a Python code snippet using the xlsx skill to manipulate your Excel file:\n\n```python\nimport claudecode as cc\n\n# Initialize the xlsx skill\nxlsx = cc.skills.xlsx\n\n# Load the Excel file\nfile_path = 'sales_data.xlsx'\ndata = xlsx.load(file_path)\n\n# Filter data for Q3 2023\nq3_data = [row for row in data if row['Date'].startswith('2023-Q3')]\n\n# Calculate total sales for Q3\nq3_sales = sum(float(row['Sales']) for row in q3_data)\n\n# Create a summary dictionary\nsummary = {\n    'Quarter': 'Q3 2023',\n    'Total Sales': q3_sales,\n    'Number of Transactions': len(q3_data)\n}\n\n# Save the summary to a new Excel file\nxlsx.save('q3_summary.xlsx', summary)\n```\n\nThis code will create a new Excel file named 'q3_summary.xlsx' with the summary of Q3 2023 sales data.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:38:20.684604Z",
+    "http_status": 200,
+    "content_hash": "5bb6448c46ac3d6828f17d71a0b1c17db5e2da4bc2a9e7b600d8215fd002d848",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xlsx.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xlsx.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "xlsx: Excel Management",
+  "short_description_vi": "The xlsx skill for Claude Code enables manipulation of Excel files, allowing users to read, write, and modify spreadsheets programmatically. This skill streamlines data handling processes, significantly saving time for developers and AI practitioners."
+}

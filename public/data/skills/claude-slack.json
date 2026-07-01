@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-slack",
+  "slug": "claude-slack",
+  "name": "browser-use",
+  "headline": "Slack integration for Claude Code: real-time",
+  "short_description": "Claude-Slack enables bidirectional communication between Claude Code sessions and Slack. It supports multi-session management and real-time messaging, benefiting operations teams by streamlining workflows and improving collaboration. Integrates with Slack's socket mode for reliable messaging.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "dbenn8",
+  "install_command": "git clone https://github.com/dbenn8/claude-slack.git",
+  "source_repo_url": "https://github.com/dbenn8/claude-slack",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "bidirectional",
+    "claude-code",
+    "python",
+    "real-time",
+    "slack",
+    "claude",
+    "socket-mode",
+    "integration",
+    "slack-bot"
+  ],
+  "sections": {
+    "overview": "Claude-Slack provides bidirectional communication between Claude Code sessions and Slack, allowing you to send notifications when events occur in Claude and retrieve responses from Slack on demand or automatically. The integration supports multiple concurrent Claude sessions with thread-based organization in Slack, enabling mobile-friendly control and team collaboration. It uses Slack's Socket Mode for reliable real-time messaging and offers three phases: basic manual check commands, automatic response injection, and multi-session routing. This is particularly useful for operations teams who need to approve decisions, provide input, or monitor Claude Code execution from mobile devices without manual polling.\nApprove/reject Claude Code decisions from mobile during development\nSend status notifications and alerts from Claude Code to team Slack channels\nManage multiple concurrent Claude projects with thread-based session routing\nEnable remote team collaboration by centralizing Claude Code events in Slack",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dbenn8/claude-slack`",
+    "usage": "```\nUse claude-slack to send a real-time update to the #operations channel in Slack about the deployment status of [SERVICE_NAME]. Include the deployment ID [DEPLOYMENT_ID], current status ([STATUS_OPTIONS: pending, in-progress, completed, failed]), and estimated completion time [ESTIMATED_TIME]. Tag @operations-team if the status is [FAILURE_STATUS].\n```\nCopy\n\n```\n🚀 **Deployment Update**\n\n**Service:** Customer Portal API\n**Deployment ID:** dp-2024-05-14-1822\n**Status:** in-progress\n**Progress:** 68% complete (3/4 containers running)\n**Estimated Completion:** 14:35 UTC\n\n⚠️ **Action Required:** The database migration step is taking longer than expected due to high load on the primary cluster. Monitoring is active, but manual intervention may be needed if it exceeds 15 minutes.\n\ncc: @operations-team\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-slack#main-content",
+      "claude-slack#overview",
+      "claude-slack#setup",
+      "claude-slack#examples",
+      "claude-slack#tools",
+      "claude-slack#mcp",
+      "claude-slack#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Slack provides bidirectional communication between Claude Code sessions and Slack, allowing you to send notifications when events occur in Claude and retrieve responses from Slack on demand or automatically. The integration supports multiple concurrent Claude sessions with thread-based organization in Slack, enabling mobile-friendly control and team collaboration. It uses Slack's Socket Mode for reliable real-time messaging and offers three phases: basic manual check commands, automatic response injection, and multi-session routing. This is particularly useful for operations teams who need to approve decisions, provide input, or monitor Claude Code execution from mobile devices without manual polling.\nApprove/reject Claude Code decisions from mobile during development\nSend status notifications and alerts from Claude Code to team Slack channels\nManage multiple concurrent Claude projects with thread-based session routing\nEnable remote team collaboration by centralizing Claude Code events in Slack",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dbenn8/claude-slack`",
+    "usage_vi": "```\nUse claude-slack to send a real-time update to the #operations channel in Slack about the deployment status of [SERVICE_NAME]. Include the deployment ID [DEPLOYMENT_ID], current status ([STATUS_OPTIONS: pending, in-progress, completed, failed]), and estimated completion time [ESTIMATED_TIME]. Tag @operations-team if the status is [FAILURE_STATUS].\n```\nCopy\n\n```\n🚀 **Deployment Update**\n\n**Service:** Customer Portal API\n**Deployment ID:** dp-2024-05-14-1822\n**Status:** in-progress\n**Progress:** 68% complete (3/4 containers running)\n**Estimated Completion:** 14:35 UTC\n\n⚠️ **Action Required:** The database migration step is taking longer than expected due to high load on the primary cluster. Monitoring is active, but manual intervention may be needed if it exceeds 15 minutes.\n\ncc: @operations-team\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:17.964510Z",
+    "http_status": 200,
+    "content_hash": "55355357140d85243654128c14829b7d79163f65876ee30bca52c231f712cb21",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-slack.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-slack.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Slack integration for Claude Code: real-time",
+  "short_description_vi": "Claude-Slack enables bidirectional communication between Claude Code sessions and Slack. It supports multi-session management and real-time messaging, benefiting operations teams by streamlining workflows and improving collaboration. Integrates with Slack's socket mode for reliable messaging."
+}

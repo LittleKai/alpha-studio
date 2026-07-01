@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-toolkit",
+  "slug": "claude-code-toolkit",
+  "name": "browser-use",
+  "headline": "claude code cross-platform toolkit",
+  "short_description": "Cross-platform toolkit for Claude Code. Enables operations teams to automate code tasks across Linux, macOS, and Windows. Integrates with shell scripts and connects to Claude agents for code execution and management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "xixu-me",
+  "install_command": "git clone https://github.com/xixu-me/claude-code-toolkit.git",
+  "source_repo_url": "https://github.com/xixu-me/claude-code-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "cross-platform",
+    "toolkit"
+  ],
+  "sections": {
+    "overview": "Claude Code Toolkit simplifies Claude Code installation and configuration across Linux, macOS, and Windows environments. It provides automated setup for multiple Anthropic-compatible API providers, including the official Anthropic API and services like Moonshot AI with the latest Kimi model. The toolkit handles Node.js and npm installation, manages persistent provider configurations with secure API key storage, and enables seamless switching between configured providers. Operations teams use it to standardize Claude Code deployments and reduce manual configuration overhead.\nAutomated Claude Code installation across multiple team machines\nSwitching between Anthropic API and Moonshot AI Kimi model providers\nSetting up custom Anthropic-compatible API providers with one command\nManaging API key configurations across Linux, macOS, and Windows environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/xixu-me/claude-code-toolkit`",
+    "usage": "```\nUse the claude-code-toolkit to automate [TASK_DESCRIPTION] across [PLATFORM: Linux/macOS/Windows]. Execute the following shell command: [SHELL_COMMAND]. If the task requires multi-step logic, break it into [STEPS] and validate each step's output. Log all operations to [LOG_FILE_PATH] and provide a summary of changes made.\n```\nCopy\n\n```\n```\n=== claude-code-toolkit Execution Report ===\nTask: Automate dependency updates for a Python project across Linux, macOS, and Windows.\nPlatforms: Linux (Ubuntu 22.04), macOS (Ventura 13.4), Windows (10 Pro)\n\nStep 1: Update pip and virtualenv\n- Linux: ✅ Updated pip from 22.0.4 to 23.3.1\n- macOS: ✅ Updated pip from 22.3.1 to 23.3.1\n- Windows: ✅ Updated pip from 22.1.2 to 23.3.1\n\nStep 2: Check outdated packages\n- Linux: Found 12 outdated packages (e.g., requests 2.28.1 → 2.31.0)\n- macOS: Found 10 outdated packages (e.g., numpy 1.23.5 → 1.26.2)\n- Windows: Found 14 outdated packages (e.g., pandas 1.5.3 → 2.1.1)\n\nStep 3: Generate update script\nCreated update_script.sh with platform-specific commands:\n```bash\n# Linux/macOS\npip install --upgrade $(pip list --outdated | awk 'NR>2 {print $1}')\n\n# Windows\npip install --upgrade (pip list --outdated | Select-Object -Skip 2 | ForEach-Object { $_.Split()[0] })\n```\n\nStep 4: Execute update\n- Linux: Updated 12 packages successfully\n- macOS: Updated 10 packages successfully\n- Windows: Updated 14 packages successfully\n\n=== Summary ===\nTotal packages updated: 36\nPlatforms processed: 3\nTime elapsed: 4m 22s\nLog saved to: /reports/dependency_updates_20231115.log\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-toolkit#main-content",
+      "claude-code-toolkit#overview",
+      "claude-code-toolkit#setup",
+      "claude-code-toolkit#examples",
+      "claude-code-toolkit#tools",
+      "claude-code-toolkit#mcp",
+      "claude-code-toolkit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Toolkit simplifies Claude Code installation and configuration across Linux, macOS, and Windows environments. It provides automated setup for multiple Anthropic-compatible API providers, including the official Anthropic API and services like Moonshot AI with the latest Kimi model. The toolkit handles Node.js and npm installation, manages persistent provider configurations with secure API key storage, and enables seamless switching between configured providers. Operations teams use it to standardize Claude Code deployments and reduce manual configuration overhead.\nAutomated Claude Code installation across multiple team machines\nSwitching between Anthropic API and Moonshot AI Kimi model providers\nSetting up custom Anthropic-compatible API providers with one command\nManaging API key configurations across Linux, macOS, and Windows environments",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/xixu-me/claude-code-toolkit`",
+    "usage_vi": "```\nUse the claude-code-toolkit to automate [TASK_DESCRIPTION] across [PLATFORM: Linux/macOS/Windows]. Execute the following shell command: [SHELL_COMMAND]. If the task requires multi-step logic, break it into [STEPS] and validate each step's output. Log all operations to [LOG_FILE_PATH] and provide a summary of changes made.\n```\nCopy\n\n```\n```\n=== claude-code-toolkit Execution Report ===\nTask: Automate dependency updates for a Python project across Linux, macOS, and Windows.\nPlatforms: Linux (Ubuntu 22.04), macOS (Ventura 13.4), Windows (10 Pro)\n\nStep 1: Update pip and virtualenv\n- Linux: ✅ Updated pip from 22.0.4 to 23.3.1\n- macOS: ✅ Updated pip from 22.3.1 to 23.3.1\n- Windows: ✅ Updated pip from 22.1.2 to 23.3.1\n\nStep 2: Check outdated packages\n- Linux: Found 12 outdated packages (e.g., requests 2.28.1 → 2.31.0)\n- macOS: Found 10 outdated packages (e.g., numpy 1.23.5 → 1.26.2)\n- Windows: Found 14 outdated packages (e.g., pandas 1.5.3 → 2.1.1)\n\nStep 3: Generate update script\nCreated update_script.sh with platform-specific commands:\n```bash\n# Linux/macOS\npip install --upgrade $(pip list --outdated | awk 'NR>2 {print $1}')\n\n# Windows\npip install --upgrade (pip list --outdated | Select-Object -Skip 2 | ForEach-Object { $_.Split()[0] })\n```\n\nStep 4: Execute update\n- Linux: Updated 12 packages successfully\n- macOS: Updated 10 packages successfully\n- Windows: Updated 14 packages successfully\n\n=== Summary ===\nTotal packages updated: 36\nPlatforms processed: 3\nTime elapsed: 4m 22s\nLog saved to: /reports/dependency_updates_20231115.log\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:27:33.169455Z",
+    "http_status": 200,
+    "content_hash": "c532c01a12b5ca35de6fba424d0661ff8d23be78b6a4c0d229e1c6654e88193e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-toolkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-toolkit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code cross-platform toolkit",
+  "short_description_vi": "Cross-platform toolkit for Claude Code. Enables operations teams to automate code tasks across Linux, macOS, and Windows. Integrates with shell scripts and connects to Claude agents for code execution and management."
+}

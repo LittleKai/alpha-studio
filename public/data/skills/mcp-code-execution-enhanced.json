@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-code-execution-enhanced",
+  "slug": "mcp-code-execution-enhanced",
+  "name": "MCP Code Execution",
+  "headline": "MCP Code Execution - Enhanced Edition",
+  "short_description": "Enhanced MCP code execution reduces token usage by 99.6% for operations teams. CLI-based scripts and progressive tool discovery optimize Model Context Protocol servers. Works with any agent framework, optimized for Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "yoloshii",
+  "install_command": "git clone https://github.com/yoloshii/mcp-code-execution-enhanced.git",
+  "source_repo_url": "https://github.com/yoloshii/mcp-code-execution-enhanced",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "mcp-code-execution-enhanced is an optimized implementation of Anthropic's Code Execution with MCP pattern, designed for Claude Code and any AI agent framework. It reduces token usage by 99.6% through CLI-based Python scripts with command-line arguments and progressive tool discovery, eliminating the need for file editing during execution. The system supports multiple MCP transport types (stdio, SSE, HTTP), includes native Claude Code Skills integration with auto-discovery, and provides optional container sandboxing with security controls. Built on type-safe Pydantic models with 129 passing tests, it's production-ready and works seamlessly with operations teams automating workflows.\nAutomating repetitive operations workflows with reusable CLI-based scripts\nReducing token consumption for AI agents executing code operations\nIntegrating multiple MCP servers (Git, web tools, APIs) in a single agent context\nSandboxing code execution with rootless container isolation for security",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoloshii/mcp-code-execution-enhanced`",
+    "usage": "```\nUse MCP-Code-Execution-Enhanced to analyze and optimize the performance of [SERVER_NAME] running on [PLATFORM] with [FRAMEWORK]. Identify the top 3 bottlenecks in [SPECIFIC_AREA] and generate a CLI-based script to resolve them. Include progressive tool discovery to validate the changes. Output should include before/after metrics and a rollback plan if issues arise.\n```\nCopy\n\n```\n### Performance Analysis for 'api-gateway-prod' on Kubernetes (Claude Code v1.0)\n\n**Current State:**\n- Avg. response time: 420ms (P95: 850ms)\n- Memory leaks detected in /api/v2/analytics endpoint (3.2MB/min growth)\n- CPU throttling observed during traffic spikes (40% above baseline)\n\n**Optimization Script (Generated via MCP-Code-Execution-Enhanced):**\n```bash\n#!/bin/bash\n# Progressive tool discovery enabled\nkubectl exec -it api-gateway-prod-abc123 -- /bin/sh -c \"\necho '=== Memory Leak Fix ==='\n# Patch Node.js GC settings\nkubectl set env deployment/api-gateway-prod NODE_OPTIONS='--max-old-space-size=512 --gc-global'\n\n# Validate memory improvement\necho '=== Validation ==='\nkubectl exec -it api-gateway-prod-abc123 -- /bin/sh -c \"\n  node -e \\\"console.log('Heap after fix:', process.memoryUsage().heapUsed/1024/1024 + 'MB')\\\"\n\"\n\"\n```\n\n**Results After Implementation:**\n- Avg. response time: 180ms (P95: 320ms) → **57% improvement**\n- Memory growth stabilized at 0.1MB/min\n- CPU usage during spikes reduced to 15% above baseline\n\n**Rollback Plan:**\n```bash\nkubectl rollout undo deployment/api-gateway-prod\n```\n\n*Generated with 99.6% token efficiency vs. traditional methods. Progressive tools validated changes in 2.1s (vs. 45s manual checks).*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-code-execution-enhanced#main-content",
+      "mcp-code-execution-enhanced#overview",
+      "mcp-code-execution-enhanced#setup",
+      "mcp-code-execution-enhanced#examples",
+      "mcp-code-execution-enhanced#tools",
+      "mcp-code-execution-enhanced#mcp",
+      "mcp-code-execution-enhanced#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcp-code-execution-enhanced is an optimized implementation of Anthropic's Code Execution with MCP pattern, designed for Claude Code and any AI agent framework. It reduces token usage by 99.6% through CLI-based Python scripts with command-line arguments and progressive tool discovery, eliminating the need for file editing during execution. The system supports multiple MCP transport types (stdio, SSE, HTTP), includes native Claude Code Skills integration with auto-discovery, and provides optional container sandboxing with security controls. Built on type-safe Pydantic models with 129 passing tests, it's production-ready and works seamlessly with operations teams automating workflows.\nAutomating repetitive operations workflows with reusable CLI-based scripts\nReducing token consumption for AI agents executing code operations\nIntegrating multiple MCP servers (Git, web tools, APIs) in a single agent context\nSandboxing code execution with rootless container isolation for security",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoloshii/mcp-code-execution-enhanced`",
+    "usage_vi": "```\nUse MCP-Code-Execution-Enhanced to analyze and optimize the performance of [SERVER_NAME] running on [PLATFORM] with [FRAMEWORK]. Identify the top 3 bottlenecks in [SPECIFIC_AREA] and generate a CLI-based script to resolve them. Include progressive tool discovery to validate the changes. Output should include before/after metrics and a rollback plan if issues arise.\n```\nCopy\n\n```\n### Performance Analysis for 'api-gateway-prod' on Kubernetes (Claude Code v1.0)\n\n**Current State:**\n- Avg. response time: 420ms (P95: 850ms)\n- Memory leaks detected in /api/v2/analytics endpoint (3.2MB/min growth)\n- CPU throttling observed during traffic spikes (40% above baseline)\n\n**Optimization Script (Generated via MCP-Code-Execution-Enhanced):**\n```bash\n#!/bin/bash\n# Progressive tool discovery enabled\nkubectl exec -it api-gateway-prod-abc123 -- /bin/sh -c \"\necho '=== Memory Leak Fix ==='\n# Patch Node.js GC settings\nkubectl set env deployment/api-gateway-prod NODE_OPTIONS='--max-old-space-size=512 --gc-global'\n\n# Validate memory improvement\necho '=== Validation ==='\nkubectl exec -it api-gateway-prod-abc123 -- /bin/sh -c \"\n  node -e \\\"console.log('Heap after fix:', process.memoryUsage().heapUsed/1024/1024 + 'MB')\\\"\n\"\n\"\n```\n\n**Results After Implementation:**\n- Avg. response time: 180ms (P95: 320ms) → **57% improvement**\n- Memory growth stabilized at 0.1MB/min\n- CPU usage during spikes reduced to 15% above baseline\n\n**Rollback Plan:**\n```bash\nkubectl rollout undo deployment/api-gateway-prod\n```\n\n*Generated with 99.6% token efficiency vs. traditional methods. Progressive tools validated changes in 2.1s (vs. 45s manual checks).*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:40.957952Z",
+    "http_status": 200,
+    "content_hash": "033176b94373070b446fc79558c80f45e379d1ad086235398ee7b9cfae9abd74",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-code-execution-enhanced.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-code-execution-enhanced.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP Code Execution - Enhanced Edition",
+  "short_description_vi": "Enhanced MCP code execution reduces token usage by 99.6% for operations teams. CLI-based scripts and progressive tool discovery optimize Model Context Protocol servers. Works with any agent framework, optimized for Claude Code."
+}

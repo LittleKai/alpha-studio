@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/carter-marketplace",
+  "slug": "carter-marketplace",
+  "name": "browser-use",
+  "headline": "Claude code plugin for fast coding tasks",
+  "short_description": "carter-marketplace with claude code plugin to speed up coding tasks. handy tools include subagents, mcp, skills, command.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "bjzgcai",
+  "install_command": "git clone https://github.com/bjzgcai/carter-marketplace.git",
+  "source_repo_url": "https://github.com/bjzgcai/carter-marketplace",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Carter Marketplace provides a curated collection of production-ready Claude Code plugins designed to supercharge development workflows. It includes specialized agents like code-review and chrome-devtools for complex multi-step tasks, creative skills such as frontend-design for building distinctive interfaces, efficient commands like /commit for git automation, and MCP server integrations for external tools. Each plugin works out of the box with minimal configuration, solving real development problems through autonomous sub-processes, domain-specific capabilities, and lightweight operations. Developers benefit from pre-configured tools that handle code quality analysis, security audits, browser debugging, and frontend development without manual setup.\nPerforming automated code reviews with security and performance analysis\nReal-time frontend debugging using Chrome DevTools in live browsers\nCreating production-grade, distinctive web interfaces and components\nAutomating git commits following Angular convention",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bjzgcai/carter-marketplace`",
+    "usage": "```\nI'm working on a project for [COMPANY], a [INDUSTRY] company. I need to automate [SPECIFIC TASK] using the carter-marketplace plugin. Can you help me with this? I have [DATA] available to work with. Please use subagents, MCP, skills, or command tools as needed.\n```\nCopy\n\n```\n```python\n# Carter Marketplace Automation Script\n# Company: GreenTech Solutions\n# Industry: Renewable Energy\n# Task: Automate customer data processing\n\nimport carter_marketplace as cm\n\n# Initialize subagents\nagent1 = cm.SubAgent('data_processor')\nagent2 = cm.SubAgent('report_generator')\n\n# Use MCP for data processing\nprocessed_data = cm.MCP.process([DATA], agent1)\n\n# Generate report using skills\nreport = cm.Skills.generate_report(processed_data, agent2)\n\n# Execute command to save report\ncm.Command.execute('save_report', report)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "carter-marketplace#main-content",
+      "carter-marketplace#overview",
+      "carter-marketplace#setup",
+      "carter-marketplace#examples",
+      "carter-marketplace#tools",
+      "carter-marketplace#mcp",
+      "carter-marketplace#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Carter Marketplace provides a curated collection of production-ready Claude Code plugins designed to supercharge development workflows. It includes specialized agents like code-review and chrome-devtools for complex multi-step tasks, creative skills such as frontend-design for building distinctive interfaces, efficient commands like /commit for git automation, and MCP server integrations for external tools. Each plugin works out of the box with minimal configuration, solving real development problems through autonomous sub-processes, domain-specific capabilities, and lightweight operations. Developers benefit from pre-configured tools that handle code quality analysis, security audits, browser debugging, and frontend development without manual setup.\nPerforming automated code reviews with security and performance analysis\nReal-time frontend debugging using Chrome DevTools in live browsers\nCreating production-grade, distinctive web interfaces and components\nAutomating git commits following Angular convention",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bjzgcai/carter-marketplace`",
+    "usage_vi": "```\nI'm working on a project for [COMPANY], a [INDUSTRY] company. I need to automate [SPECIFIC TASK] using the carter-marketplace plugin. Can you help me with this? I have [DATA] available to work with. Please use subagents, MCP, skills, or command tools as needed.\n```\nCopy\n\n```\n```python\n# Carter Marketplace Automation Script\n# Company: GreenTech Solutions\n# Industry: Renewable Energy\n# Task: Automate customer data processing\n\nimport carter_marketplace as cm\n\n# Initialize subagents\nagent1 = cm.SubAgent('data_processor')\nagent2 = cm.SubAgent('report_generator')\n\n# Use MCP for data processing\nprocessed_data = cm.MCP.process([DATA], agent1)\n\n# Generate report using skills\nreport = cm.Skills.generate_report(processed_data, agent2)\n\n# Execute command to save report\ncm.Command.execute('save_report', report)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:33:02.819453Z",
+    "http_status": 200,
+    "content_hash": "1ed01c941f5f99023431920fcb7496c9955f05f169792821586bb0c851fb076a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\carter-marketplace.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\carter-marketplace.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude code plugin for fast coding tasks",
+  "short_description_vi": "carter-marketplace with claude code plugin to speed up coding tasks. handy tools include subagents, mcp, skills, command."
+}

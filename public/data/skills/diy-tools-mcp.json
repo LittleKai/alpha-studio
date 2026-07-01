@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/diy-tools-mcp",
+  "slug": "diy-tools-mcp",
+  "name": "DIY Tools MCP Server",
+  "headline": "DIY Tools MCP Server - Add Custom Tools at Runtime",
+  "short_description": "The DIY Tools MCP Server enables users to dynamically add custom tools and functions at runtime. Operations teams can extend agent capabilities without redeploying the server. It connects to Claude agents and integrates with existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "hesreallyhim",
+  "install_command": "git clone https://github.com/hesreallyhim/diy-tools-mcp.git",
+  "source_repo_url": "https://github.com/hesreallyhim/diy-tools-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "mcp",
+    "agentic-ai",
+    "mcp-framework",
+    "anthropic",
+    "claude-code",
+    "mcp-tools",
+    "anthropic-claude",
+    "claude",
+    "agent-frameworks",
+    "agentic-coding"
+  ],
+  "sections": {
+    "overview": "DIY Tools MCP Server enables dynamic custom tool creation at runtime in multiple programming languages including Python, JavaScript, Bash, and TypeScript. Instead of building a full MCP server, you provide function code and parameter schemas—the server handles validation, execution, persistence, and MCP protocol integration. Tools can be defined inline or in separate files for better maintainability, with automatic syntax validation and comprehensive error handling. Operations teams can extend Claude agent capabilities on-the-fly without server redeployment, making it ideal for teams that need flexible, evolving tool ecosystems.\nExtending Claude capabilities with custom domain-specific functions without redeploying\nBuilding dynamic operational tools that teams can register and modify at runtime\nIntegrating existing Python or JavaScript functions into Claude workflows without refactoring\nMaintaining version-controlled function libraries in separate files for complex tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hesreallyhim/diy-tools-mcp`",
+    "usage": "```\nExtend the capabilities of my AI agent by dynamically adding a new tool using the DIY Tools MCP Server. Define a custom function named [FUNCTION_NAME] that performs [FUNCTION_DESCRIPTION]. Include the required parameters: [PARAMETER_LIST]. Ensure the function integrates seamlessly with my existing workflows and returns output in JSON format. Test the function with sample input: [SAMPLE_INPUT].\n```\nCopy\n\n```\n```json\n{\n  \"function_name\": \"generate_invoice_reminder\",\n  \"description\": \"Generates a personalized invoice reminder email for overdue invoices and schedules it for delivery.\",\n  \"parameters\": {\n    \"invoice_id\": \"string (required)\",\n    \"customer_email\": \"string (required)\",\n    \"due_date\": \"string (YYYY-MM-DD, required)\",\n    \"amount_due\": \"number (required)\",\n    \"late_fee\": \"number (optional, default: 0)\",\n    \"custom_message\": \"string (optional)\"\n  },\n  \"sample_output\": {\n    \"invoice_id\": \"INV-2023-0456\",\n    \"customer_email\": \"john.doe@acmecorp.com\",\n    \"due_date\": \"2023-11-15\",\n    \"amount_due\": 1250.75,\n    \"late_fee\": 25.00,\n    \"custom_message\": \"Your invoice is now 5 days overdue. Please process payment at your earliest convenience.\",\n    \"email_subject\": \"Action Required: Invoice INV-2023-0456 is Overdue\",\n    \"email_body\": \"Dear John Doe,\\n\\nThis is a friendly reminder that Invoice INV-2023-0456 for $1,250.75 (plus a late fee of $25.00) is now 5 days overdue. The original due date was November 15, 2023.\\n\\nPlease process the payment as soon as possible to avoid further delays. You can view and pay the invoice here: [PAYMENT_LINK].\\n\\nThank you for your prompt attention to this matter.\\n\\nBest regards,\\nAccounts Receivable Team\",\n    \"next_action\": \"Schedule email for delivery at 9 AM tomorrow using the email service integration.\"\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "diy-tools-mcp#main-content",
+      "diy-tools-mcp#overview",
+      "diy-tools-mcp#setup",
+      "diy-tools-mcp#examples",
+      "diy-tools-mcp#tools",
+      "diy-tools-mcp#mcp",
+      "diy-tools-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DIY Tools MCP Server cho phép tạo động các công cụ tùy chỉnh tại runtime bằng nhiều ngôn ngữ lập trình khác nhau như Python, JavaScript, Bash và TypeScript. Thay vì xây dựng một MCP server đầy đủ, bạn chỉ cần cung cấp function code và parameter schema — server sẽ tự động xử lý việc validation, thực thi (execution), lưu trữ dữ liệu (persistence) và tích hợp giao thức MCP. Các công cụ có thể được định nghĩa inline hoặc trong các file riêng biệt để dễ bảo trì hơn, đi kèm tính năng tự động kiểm tra cú pháp và xử lý lỗi toàn diện. Đội ngũ vận hành có thể mở rộng khả năng của Claude agent ngay lập tức (on-the-fly) mà không cần redeploy server, rất lý tưởng cho các đội ngũ cần một hệ sinh thái công cụ linh hoạt và liên tục phát triển.\nMở rộng khả năng của Claude bằng các hàm nghiệp vụ đặc thù (domain-specific) tùy chỉnh mà không cần redeploy\nXây dựng các công cụ vận hành động mà các đội ngũ có thể đăng ký và sửa đổi ngay tại runtime\nTích hợp các hàm Python hoặc JavaScript sẵn có vào workflow của Claude mà không cần refactor\nQuản lý phiên bản (version control) cho các thư viện hàm trong các file riêng biệt đối với các công cụ phức tạp",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/hesreallyhim/diy-tools-mcp`",
+    "usage_vi": "```\nMở rộng khả năng của AI agent của tôi bằng cách thêm động một công cụ mới bằng DIY Tools MCP Server. Định nghĩa một hàm tùy chỉnh tên là [FUNCTION_NAME] thực hiện [FUNCTION_DESCRIPTION]. Bao gồm các tham số bắt buộc: [PARAMETER_LIST]. Đảm bảo hàm tích hợp mượt mà với các workflow hiện tại của tôi và trả về kết quả ở định dạng JSON. Kiểm tra hàm với đầu vào mẫu: [SAMPLE_INPUT].\n```\nSao chép\n\n```\n```json\n{\n  \"function_name\": \"generate_invoice_reminder\",\n  \"description\": \"Tạo email nhắc nhở thanh toán hóa đơn cá nhân hóa cho các hóa đơn quá hạn và lên lịch gửi.\",\n  \"parameters\": {\n    \"invoice_id\": \"string (bắt buộc)\",\n    \"customer_email\": \"string (bắt buộc)\",\n    \"due_date\": \"string (YYYY-MM-DD, bắt buộc)\",\n    \"amount_due\": \"number (bắt buộc)\",\n    \"late_fee\": \"number (tùy chọn, mặc định: 0)\",\n    \"custom_message\": \"string (tùy chọn)\"\n  },\n  \"sample_output\": {\n    \"invoice_id\": \"INV-2023-0456\",\n    \"customer_email\": \"john.doe@acmecorp.com\",\n    \"due_date\": \"2023-11-15\",\n    \"amount_due\": 1250.75,\n    \"late_fee\": 25.00,\n    \"custom_message\": \"Hóa đơn của bạn đã quá hạn 5 ngày. Vui lòng tiến hành thanh toán trong thời gian sớm nhất.\",\n    \"email_subject\": \"Yêu cầu xử lý: Hóa đơn INV-2023-0456 đã quá hạn\",\n    \"email_body\": \"Kính gửi John Doe,\\n\\nĐây là thư nhắc nhở thân thiện rằng Hóa đơn INV-2023-0456 trị giá $1,250.75 (cộng thêm phí trả chậm $25.00) hiện đã quá hạn 5 ngày. Hạn thanh toán ban đầu là ngày 15 tháng 11 năm 2023.\\n\\nVui lòng tiến hành thanh toán càng sớm càng tốt để tránh việc chậm trễ hơn nữa. Bạn có thể xem và thanh toán hóa đơn tại đây: [PAYMENT_LINK].\\n\\nCảm ơn bạn đã nhanh chóng lưu ý đến vấn đề này.\\n\\nTrân trọng,\\nĐội ngũ Kế toán Phải thu\",\n    \"next_action\": \"Lên lịch gửi email vào lúc 9 giờ sáng mai bằng cách sử dụng tích hợp dịch vụ email.\"\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:58:00.666400Z",
+    "http_status": 200,
+    "content_hash": "0343c72369415bcfecfa580db1f6d0ae5745c0c932ac68d1cd634bf4f42faca9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\diy-tools-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\diy-tools-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DIY Tools MCP Server - Thêm công cụ tùy chỉnh tại runtime",
+  "short_description_vi": "DIY Tools MCP Server cho phép người dùng thêm động các công cụ và hàm tùy chỉnh tại runtime. Đội ngũ vận hành có thể mở rộng khả năng của agent mà không cần redeploy server. Nó kết nối trực tiếp với các Claude agent và tích hợp vào các workflow hiện có."
+}

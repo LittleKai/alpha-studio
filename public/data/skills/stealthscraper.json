@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/stealthscraper",
+  "slug": "stealthscraper",
+  "name": "stealthscraper",
+  "headline": "Stealthscraper: GUI-Based Social Media Scraper",
+  "short_description": "A social media scraper using GUI automation to mimic human browser behavior, avoiding detection while extracting data from LinkedIn, Twitter, YouTube, and Facebook.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "TheKevinWang",
+  "install_command": "git clone https://github.com/TheKevinWang/stealthscraper.git",
+  "source_repo_url": "https://github.com/TheKevinWang/stealthscraper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Stealthscraper is a Python-based social media scraper that uses GUI automation to extract data while simulating human behavior. It controls an actual Chrome browser, moving the mouse and keyboard realistically to avoid detection systems. The tool supports scraping LinkedIn employees and posts, Twitter tweets, YouTube video URLs and descriptions, and Facebook post text. It works on Windows with Chrome and can run in a VM for background operation. Users can authenticate manually or provide credentials, with output available in JSON or text format.\nExtracting LinkedIn employee lists from company pages for recruiting research\nCollecting Twitter tweet data for social listening and sentiment analysis\nScraping YouTube channel video metadata and descriptions for content analysis\nGathering Facebook post text for market research and audience insights\n\n- **Platform**: LinkedIn\n- **Target Company**: TechInnovate Solutions\n- **Data Points Collected**: 1,245\n- **Timeframe**: Last 30 days",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TheKevinWang/stealthscraper`",
+    "usage": "```\nAct as a stealthy social media scraper for [COMPANY] in the [INDUSTRY] sector. Extract the following [DATA] from [PLATFORM] without triggering anti-bot measures. Use GUI automation to simulate human-like behavior. Focus on [SPECIFIC_DATA_POINTS] and provide the results in a structured format.\n```\nCopy\n\n```\n# Social Media Scraping Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "stealthscraper#main-content",
+      "stealthscraper#overview",
+      "stealthscraper#setup",
+      "stealthscraper#examples",
+      "stealthscraper#tools",
+      "stealthscraper#mcp",
+      "stealthscraper#related",
+      "marketingskills",
+      "copywriting",
+      "burbnbot"
+    ],
+    "overview_vi": "Stealthscraper là công cụ cào dữ liệu mạng xã hội viết bằng Python, sử dụng tự động hóa GUI để trích xuất dữ liệu đồng thời mô phỏng hành vi của con người. Công cụ này điều khiển một trình duyệt Chrome thực tế, di chuyển chuột và gõ phím một cách tự nhiên để tránh các hệ thống phát hiện. Công cụ hỗ trợ cào danh sách nhân viên và bài viết trên LinkedIn, tweet trên Twitter, URL và mô tả video trên YouTube, cũng như nội dung bài viết trên Facebook. Công cụ hoạt động trên Windows với Chrome và có thể chạy trong VM để hoạt động ở chế độ nền. Người dùng có thể tự xác thực thủ công hoặc cung cấp thông tin đăng nhập, với dữ liệu đầu ra có định dạng JSON hoặc văn bản.\nTrích xuất danh sách nhân viên LinkedIn từ trang công ty phục vụ cho nghiên cứu tuyển dụng\nThu thập dữ liệu tweet trên Twitter cho mục đích lắng nghe mạng xã hội (social listening) và phân tích cảm xúc\nCào siêu dữ liệu (metadata) và mô tả video của kênh YouTube để phân tích nội dung\nThu thập nội dung bài đăng Facebook phục vụ nghiên cứu thị trường và thấu hiểu khách hàng\n\n- **Nền tảng**: LinkedIn\n- **Công ty mục tiêu**: TechInnovate Solutions\n- **Số điểm dữ liệu đã thu thập**: 1.245\n- **Khung thời gian**: 30 ngày qua",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/TheKevinWang/stealthscraper`",
+    "usage_vi": "```\nĐóng vai trò là một trình cào dữ liệu mạng xã hội ẩn danh cho [COMPANY] trong lĩnh vực [INDUSTRY]. Trích xuất [DATA] sau đây từ [PLATFORM] mà không làm kích hoạt các biện pháp chống bot. Sử dụng tự động hóa GUI để mô phỏng hành vi giống con người. Tập trung vào [SPECIFIC_DATA_POINTS] và cung cấp kết quả dưới định dạng có cấu trúc.\n```\nSao chép\n\n```\n# Báo cáo cào dữ liệu mạng xã hội"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:05.672018Z",
+    "http_status": 200,
+    "content_hash": "5e7d387940ad772911c393b83466f1fd394408e69345e95bc4ac15d76e5c2eaa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stealthscraper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stealthscraper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Stealthscraper: Công cụ cào dữ liệu mạng xã hội dựa trên GUI",
+  "short_description_vi": "Công cụ cào dữ liệu mạng xã hội sử dụng tự động hóa GUI để mô phỏng hành vi duyệt web của con người, giúp tránh bị phát hiện trong khi trích xuất dữ liệu từ LinkedIn, Twitter, YouTube và Facebook."
+}

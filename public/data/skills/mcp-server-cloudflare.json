@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-server-cloudflare",
+  "slug": "mcp-server-cloudflare",
+  "name": "MCP Server Cloudflare",
+  "headline": "mcp-server-cloudflare: TypeScript Server for",
+  "short_description": "The mcp-server-cloudflare repository provides a TypeScript-based server solution optimized for Cloudflare environments. With over 3,300 stars, it is a popular choice for developers looking to enhance their applications with Cloudflare's capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "cloudflare",
+  "install_command": "claude install cloudflare/mcp-server-cloudflare",
+  "source_repo_url": "https://github.com/cloudflare/mcp-server-cloudflare",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "API",
+    "Cloudflare",
+    "server",
+    "TypeScript",
+    "web development"
+  ],
+  "sections": {
+    "overview": "mcp-server-cloudflare is a TypeScript-based Model Context Protocol server that connects Cloudflare's platform capabilities to AI agents and development tools. It allows developers to interact with Cloudflare services through MCP-compatible clients like Claude Code and Cursor, automating infrastructure tasks and management workflows. The server is actively maintained and widely adopted, with over 3,800 GitHub stars demonstrating strong community support. This skill solves the problem of programmatic Cloudflare service access for developers building AI-powered applications and automation tools.\nBuild server applications on Cloudflare to utilize its global infrastructure.\nIntegrate Cloudflare features into existing projects for enhanced performance and security.\nDevelop scalable web services that can handle increased traffic and data processing.\nEnhance application performance with Cloudflare's caching and optimization tools.",
+    "setup": "Terminal\nCopy\n`claude install cloudflare/mcp-server-cloudflare`\n`git clone https://github.com/cloudflare/mcp-server-cloudflare`",
+    "usage": "```\nCreate a Cloudflare Worker using the mcp-server-cloudflare repository to handle [SPECIFIC_WEB_REQUEST_TYPE] for [WEBSITE_DOMAIN]. Implement [FUNCTIONALITY] and ensure it integrates with [CLOUDFLARE_SERVICE] for optimal performance.\n```\nCopy\n\n```\nHere's a Cloudflare Worker script that handles image optimization for example.com using the mcp-server-cloudflare repository:\n\n```javascript\nexport default {\n  async fetch(request) {\n    const url = new URL(request.url);\n    const imagePath = url.pathname;\n\n    // Check if the request is for an image\n    if (imagePath.match(/\\.(jpg|jpeg|png|webp)$/i)) {\n      // Fetch the original image from the origin server\n      const response = await fetch(`https://origin.example.com${imagePath}`);\n      const imageBuffer = await response.arrayBuffer();\n\n      // Optimize the image using Cloudflare Images\n      const optimizedImage = await optimizeImage(imageBuffer, {\n        format: 'webp',\n        quality: 80,\n        width: 1200\n      });\n\n      // Return the optimized image\n      return new Response(optimizedImage, {\n        headers: {\n          'Content-Type': 'image/webp'\n        }\n      });\n    }\n\n    // For non-image requests, fetch from the origin server\n    return fetch(request);\n  }\n};\n\n// Helper function to optimize images using Cloudflare Images\nasync function optimizeImage(buffer, options) {\n  // Implementation would use Cloudflare Images API\n  // This is a placeholder for the actual implementation\n  return buffer;\n}\n```\n\nThis script will intercept image requests, optimize them using Cloudflare Images, and serve the optimized versions to users. The original images are fetched from the origin server (example.com in this case) and then processed before being served to the client.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "mcp-server-cloudflare#main-content",
+      "mcp-server-cloudflare#overview",
+      "mcp-server-cloudflare#setup",
+      "mcp-server-cloudflare#examples",
+      "mcp-server-cloudflare#tools",
+      "mcp-server-cloudflare#mcp",
+      "mcp-server-cloudflare#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcp-server-cloudflare là một Model Context Protocol server viết bằng TypeScript, giúp kết nối các tính năng của nền tảng Cloudflare với các AI agent và công cụ phát triển. Nó cho phép các nhà phát triển tương tác với các dịch vụ của Cloudflare thông qua các client tương thích với MCP như Claude Code và Cursor, tự động hóa các tác vụ hạ tầng và quy trình quản lý. Server này liên tục được bảo trì và sử dụng rộng rãi, với hơn 3.800 star trên GitHub minh chứng cho sự hỗ trợ mạnh mẽ từ cộng đồng. Skill này giải quyết bài toán truy cập lập trình vào dịch vụ Cloudflare cho các nhà phát triển đang xây dựng ứng dụng tích hợp AI và công cụ tự động hóa.\nXây dựng các ứng dụng server trên Cloudflare để tận dụng hạ tầng toàn cầu của nền tảng này.\nTích hợp các tính năng của Cloudflare vào dự án hiện có để tăng cường hiệu năng và bảo mật.\nPhát triển các dịch vụ web có khả năng mở rộng để xử lý lưu lượng truy cập và dữ liệu ngày càng tăng.\nTối ưu hiệu năng ứng dụng với các công cụ tối ưu hóa và caching của Cloudflare.",
+    "setup_vi": "Terminal\nSao chép\n`claude install cloudflare/mcp-server-cloudflare`\n`git clone https://github.com/cloudflare/mcp-server-cloudflare`",
+    "usage_vi": "```\nTạo một Cloudflare Worker sử dụng repository mcp-server-cloudflare để xử lý [SPECIFIC_WEB_REQUEST_TYPE] cho [WEBSITE_DOMAIN]. Triển khai [FUNCTIONALITY] và đảm bảo tích hợp với [CLOUDFLARE_SERVICE] để đạt hiệu năng tối ưu.\n```\nSao chép\n\n```\nDưới đây là đoạn script Cloudflare Worker xử lý tối ưu hóa hình ảnh cho example.com sử dụng repository mcp-server-cloudflare:\n\n```javascript\nexport default {\n  async fetch(request) {\n    const url = new URL(request.url);\n    const imagePath = url.pathname;\n\n    // Kiểm tra xem request có phải là hình ảnh hay không\n    if (imagePath.match(/\\.(jpg|jpeg|png|webp)$/i)) {\n      // Lấy hình ảnh gốc từ origin server\n      const response = await fetch(`https://origin.example.com${imagePath}`);\n      const imageBuffer = await response.arrayBuffer();\n\n      // Tối ưu hóa hình ảnh bằng Cloudflare Images\n      const optimizedImage = await optimizeImage(imageBuffer, {\n        format: 'webp',\n        quality: 80,\n        width: 1200\n      });\n\n      // Trả về hình ảnh đã được tối ưu hóa\n      return new Response(optimizedImage, {\n        headers: {\n          'Content-Type': 'image/webp'\n        }\n      });\n    }\n\n    // Đối với các request không phải hình ảnh, lấy dữ liệu từ origin server\n    return fetch(request);\n  }\n};\n\n// Hàm helper để tối ưu hóa hình ảnh bằng Cloudflare Images\nasync function optimizeImage(buffer, options) {\n  // Phần triển khai thực tế sẽ sử dụng Cloudflare Images API\n  // Đây là phần giữ chỗ (placeholder) cho triển khai thực tế\n  return buffer;\n}\n```\n\nScript này sẽ chặn các request hình ảnh, tối ưu hóa chúng bằng Cloudflare Images và trả về phiên bản đã được tối ưu cho người dùng. Các hình ảnh gốc sẽ được lấy từ origin server (trong trường hợp này là example.com), sau đó được xử lý trước khi phân phối tới client.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:55.778688Z",
+    "http_status": 200,
+    "content_hash": "9ae0a7941131efefd97359a0fa76527331734a90fe36623394552108f2411545",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-cloudflare.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-cloudflare.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp-server-cloudflare: TypeScript Server dành cho",
+  "short_description_vi": "Repository mcp-server-cloudflare cung cấp giải pháp server viết bằng TypeScript được tối ưu hóa cho môi trường Cloudflare. Với hơn 3.300 star, đây là lựa chọn phổ biến cho các nhà phát triển muốn nâng cấp ứng dụng của mình bằng các tính năng của Cloudflare."
+}

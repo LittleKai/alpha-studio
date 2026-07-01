@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-reflect",
+  "slug": "claude-reflect",
+  "name": "browser-use",
+  "headline": "claude reflect: feedback loop synchronization",
+  "short_description": "Claude Reflect is a self-learning system for Claude Code that captures corrections, positive feedback, and preferences. It syncs this data to CLAUDE.md and AGENTS.md, improving Claude's performance over time. Benefits operations teams by automating knowledge capture and feedback loops.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "BayramAnnakov",
+  "install_command": "git clone https://github.com/BayramAnnakov/claude-reflect.git",
+  "source_repo_url": "https://github.com/BayramAnnakov/claude-reflect",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "memory",
+    "productivity",
+    "self-learning",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "Claude Reflect is a self-learning system designed for Claude Code that automatically captures corrections, positive feedback, and user preferences during development sessions. The skill syncs captured learnings to CLAUDE.md and AGENTS.md files, creating a persistent knowledge base that improves Claude's performance over time. It includes per-project learnings queues to prevent cross-project contamination, session start reminders for pending feedback, and a /reflect command to review and manage captured insights. Operations teams benefit from automated knowledge capture and structured feedback loops that reduce manual documentation overhead. The system supports viewing queues, reflecting on learnings, and skipping feedback when needed through dedicated slash commands.\nAutomatically remember corrections made during coding sessions to improve future interactions.\nAnalyze past sessions to discover repetitive tasks and suggest reusable commands.\nSync personal preferences and feedback to maintain a tailored coding environment.\nFacilitate the creation of skills based on identified workflow patterns to enhance productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/claude-reflect`",
+    "usage": "```\nUse claude-reflect to capture feedback from a recent [TASK_NAME] session. Extract key learnings from [FEEDBACK_SOURCE] (e.g., 'the client's email', 'the Slack thread', 'the PR review comments'). Update CLAUDE.md and AGENTS.md with: 1) What worked well, 2) What didn’t, 3) Specific improvements for future sessions. Format as a concise summary with actionable next steps.\n```\nCopy\n\n```\n### claude-reflect Output: Automated Feedback Capture\n\n**Task Context:** Refactored the `payment_processor.py` module to handle Stripe webhook events more efficiently. Client requested changes after testing the new implementation.\n\n**Feedback Source:** Client's email (Subject: \"Payment Processor Issues\")\n- **What Worked:** The new event handling logic reduced latency by 40% and passed all unit tests.\n- **What Didn’t:** The client reported missing error logs for failed webhook events, causing confusion during debugging.\n- **Improvements Identified:**\n  1. Add structured logging for webhook failures with timestamps.\n  2. Include a retry mechanism for transient errors (e.g., network timeouts).\n  3. Document the new error handling flow in the module's README.\n\n**Updates Applied:**\n- **CLAUDE.md:** Added a new section under \"Common Pitfalls\" for Stripe webhook debugging, including the client's feedback and suggested fixes.\n- **AGENTS.md:** Updated the `payment_processor` agent's configuration to prioritize error logging and retry logic in future refactoring tasks.\n\n**Next Steps:**\n1. Implement the retry mechanism in the next sprint.\n2. Share the updated logging standards with the team via Slack.\n3. Schedule a follow-up with the client to validate the changes.\n\n---\n*Reflection completed at 2024-05-20 14:32:15 UTC. Auto-saved to CLAUDE.md and AGENTS.md.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-reflect#main-content",
+      "claude-reflect#overview",
+      "claude-reflect#setup",
+      "claude-reflect#examples",
+      "claude-reflect#tools",
+      "claude-reflect#mcp",
+      "claude-reflect#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Reflect is a self-learning system designed for Claude Code that automatically captures corrections, positive feedback, and user preferences during development sessions. The skill syncs captured learnings to CLAUDE.md and AGENTS.md files, creating a persistent knowledge base that improves Claude's performance over time. It includes per-project learnings queues to prevent cross-project contamination, session start reminders for pending feedback, and a /reflect command to review and manage captured insights. Operations teams benefit from automated knowledge capture and structured feedback loops that reduce manual documentation overhead. The system supports viewing queues, reflecting on learnings, and skipping feedback when needed through dedicated slash commands.\nAutomatically remember corrections made during coding sessions to improve future interactions.\nAnalyze past sessions to discover repetitive tasks and suggest reusable commands.\nSync personal preferences and feedback to maintain a tailored coding environment.\nFacilitate the creation of skills based on identified workflow patterns to enhance productivity.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/claude-reflect`",
+    "usage_vi": "```\nUse claude-reflect to capture feedback from a recent [TASK_NAME] session. Extract key learnings from [FEEDBACK_SOURCE] (e.g., 'the client's email', 'the Slack thread', 'the PR review comments'). Update CLAUDE.md and AGENTS.md with: 1) What worked well, 2) What didn’t, 3) Specific improvements for future sessions. Format as a concise summary with actionable next steps.\n```\nCopy\n\n```\n### claude-reflect Output: Automated Feedback Capture\n\n**Task Context:** Refactored the `payment_processor.py` module to handle Stripe webhook events more efficiently. Client requested changes after testing the new implementation.\n\n**Feedback Source:** Client's email (Subject: \"Payment Processor Issues\")\n- **What Worked:** The new event handling logic reduced latency by 40% and passed all unit tests.\n- **What Didn’t:** The client reported missing error logs for failed webhook events, causing confusion during debugging.\n- **Improvements Identified:**\n  1. Add structured logging for webhook failures with timestamps.\n  2. Include a retry mechanism for transient errors (e.g., network timeouts).\n  3. Document the new error handling flow in the module's README.\n\n**Updates Applied:**\n- **CLAUDE.md:** Added a new section under \"Common Pitfalls\" for Stripe webhook debugging, including the client's feedback and suggested fixes.\n- **AGENTS.md:** Updated the `payment_processor` agent's configuration to prioritize error logging and retry logic in future refactoring tasks.\n\n**Next Steps:**\n1. Implement the retry mechanism in the next sprint.\n2. Share the updated logging standards with the team via Slack.\n3. Schedule a follow-up with the client to validate the changes.\n\n---\n*Reflection completed at 2024-05-20 14:32:15 UTC. Auto-saved to CLAUDE.md and AGENTS.md.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:28:23.121529Z",
+    "http_status": 200,
+    "content_hash": "4eb4010ff10f470e7617a2cc56303279ab34324155c3c97b11c6d4f0477f3772",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-reflect.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-reflect.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude reflect: feedback loop synchronization",
+  "short_description_vi": "Claude Reflect is a self-learning system for Claude Code that captures corrections, positive feedback, and preferences. It syncs this data to CLAUDE.md and AGENTS.md, improving Claude's performance over time. Benefits operations teams by automating knowledge capture and feedback loops."
+}

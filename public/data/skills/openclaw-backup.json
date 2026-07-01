@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openclaw-backup",
+  "slug": "openclaw-backup",
+  "name": "OpenClaw Backup",
+  "headline": "OpenClaw Backup: Encrypted Workspace Backups",
+  "short_description": "This skill provides encrypted backup and restore functionality for OpenClaw Agent workspace files. It is designed for users needing to securely manage their workspace backups with auto-generated AES-256-CBC passwords.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "theagentservice",
+  "install_command": "git clone https://github.com/theagentservice/skills",
+  "source_repo_url": "https://github.com/theagentservice/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "openclaw",
+    "backup",
+    "backup-and-restore"
+  ],
+  "sections": {
+    "overview": "OpenClaw Backup is an automated backup and restore skill for Claude Code that secures OpenClaw Agent workspace files with military-grade AES-256-CBC encryption. The skill auto-generates a unique 32-character random password for each backup, eliminating password reuse risks and simplifying security management. It automatically collects key workspace files like SOUL.md and MEMORY.md, enforces a 20MB size limit, and stores critical recovery metadata in a local recovery file. Users can trigger backups, restores, and deletions through natural language commands in Claude Code, while the Python script also supports manual operation. This skill solves the problem of securely managing agent workspace data with minimal manual password handling and automatic recovery file generation.\nUpload workspace files with encryption\nDownload and decrypt previous backups\nDelete remote backups from storage",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/theagentservice/skills --skill openclaw-backup`\n`git clone https://github.com/theagentservice/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "openclaw-backup#main-content",
+      "openclaw-backup#overview",
+      "openclaw-backup#setup",
+      "openclaw-backup#examples",
+      "openclaw-backup#tools",
+      "openclaw-backup#mcp",
+      "openclaw-backup#related"
+    ],
+    "overview_vi": "OpenClaw Backup là một skill sao lưu và khôi phục tự động dành cho Claude Code, giúp bảo mật các file trong workspace của OpenClaw Agent bằng công nghệ mã hóa AES-256-CBC chuẩn quân đội. Skill này tự động tạo một mật khẩu ngẫu nhiên 32 ký tự duy nhất cho mỗi bản sao lưu, loại bỏ rủi ro tái sử dụng mật khẩu và đơn giản hóa việc quản lý bảo mật. Nó tự động thu thập các file workspace quan trọng như SOUL.md và MEMORY.md, áp dụng giới hạn dung lượng 20MB, và lưu trữ metadata khôi phục quan trọng trong một file recovery cục bộ. Người dùng có thể kích hoạt các tác vụ sao lưu, khôi phục và xóa thông qua câu lệnh bằng ngôn ngữ tự nhiên trong Claude Code, đồng thời script Python cũng hỗ trợ vận hành thủ công. Skill này giải quyết bài toán quản lý an toàn dữ liệu workspace của agent với việc giảm thiểu tối đa thao tác nhập mật khẩu thủ công và tự động tạo file recovery.\n\nTải lên các file workspace có mã hóa\nTải xuống và giải mã các bản sao lưu trước đó\nXóa các bản sao lưu từ xa khỏi bộ lưu trữ",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/theagentservice/skills --skill openclaw-backup`\n`git clone https://github.com/theagentservice/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nVui lòng kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:07:25.632839Z",
+    "http_status": 200,
+    "content_hash": "bba59e67d39b877a0030c6684dec146b1619d78d50563e2feb4ed022f3234160",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openclaw-backup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openclaw-backup.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OpenClaw Backup: Sao lưu Workspace được mã hóa",
+  "short_description_vi": "Skill này cung cấp tính năng sao lưu và khôi phục mã hóa cho các file trong workspace của OpenClaw Agent. Nó được thiết kế dành cho người dùng cần quản lý an toàn các bản sao lưu workspace của mình bằng mật khẩu AES-256-CBC được tạo tự động."
+}

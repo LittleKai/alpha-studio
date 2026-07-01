@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gtd-coach-plugin",
+  "slug": "gtd-coach-plugin",
+  "name": "GTD Coach Plugin",
+  "headline": "GTD Coach Plugin - Breaks Down Goals into Tasks",
+  "short_description": "GTD Coach Plugin breaks down annual goals into actionable daily tasks, providing structured plans and automatic progress tracking. Ideal for operations teams, it integrates with Claude to streamline workflows and enhance productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "iamzifei",
+  "install_command": "git clone https://github.com/iamzifei/gtd-coach-plugin.git",
+  "source_repo_url": "https://github.com/iamzifei/gtd-coach-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code",
+    "claude-skill",
+    "ai"
+  ],
+  "sections": {
+    "overview": "GTD Coach is a Claude plugin that converts high-level annual goals into structured quarterly milestones and prioritized daily tasks. It breaks down each task into specific actionable steps and maintains automatic memory of progress across conversations, eliminating the need to repeat context. The plugin includes daily, weekly, monthly, and quarterly review templates, and adapts recommendations based on actual progress. It supports English, Chinese, and Japanese, making it useful for individuals and teams managing goal-driven workflows.\nSaaS founders breaking down annual revenue targets into daily development tasks\nFreelancers converting income growth goals into client acquisition and service delivery milestones\nOperations teams tracking quarterly objectives with persistent session memory\nProject managers organizing multi-month initiatives into weekly and daily deliverables",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iamzifei/gtd-coach-plugin`",
+    "usage": "```\nAct as a GTD Coach Plugin. Break down the annual goal '[ANNUAL_GOAL]' into actionable daily tasks for the next [TIMEFRAME]. Prioritize tasks based on [PRIORITY_CRITERIA] and provide a structured plan with estimated durations. Include automatic progress tracking by suggesting a [TRACKING_METHOD] (e.g., spreadsheet, tool, or habit tracker).\n```\nCopy\n\n```\nYour annual goal is to 'Launch a new customer support chatbot by Q4 2024' with a priority criteria of 'high-impact tasks first.' Here’s your 30-day GTD breakdown:\n\n**Week 1 (Research & Planning):**\n- Day 1: Research top 5 chatbot platforms (2 hrs, Track: Notion checklist)\n- Day 2: Draft chatbot use cases (1.5 hrs, Track: Google Doc)\n- Day 3: Compare platform pricing (1 hr, Track: Airtable)\n- Day 4: Finalize platform choice (1 hr, Track: Slack update)\n- Day 5: Set up development environment (2 hrs, Track: GitHub milestone)\n\n**Week 2 (Prototyping):**\n- Day 8: Build basic chatbot flow (3 hrs, Track: Figma prototype)\n- Day 9: Test chatbot with 5 sample queries (2 hrs, Track: Jira ticket)\n- Day 10: Refine chatbot responses (2.5 hrs, Track: Loom recording)\n- Day 11: Integrate with customer support ticketing system (4 hrs, Track: Zapier logs)\n\n**Week 3 (Testing & Feedback):**\n- Day 15: Conduct A/B test with 20 users (3 hrs, Track: Google Forms)\n- Day 16: Analyze feedback and adjust chatbot (2.5 hrs, Track: Trello board)\n- Day 17: Train support team on chatbot (2 hrs, Track: Zoom recording)\n\n**Week 4 (Launch Prep):**\n- Day 22: Finalize chatbot FAQ (1.5 hrs, Track: Confluence page)\n- Day 23: Schedule launch webinar (1 hr, Track: Calendly)\n- Day 24: Soft launch with 5% of users (2 hrs, Track: HubSpot analytics)\n- Day 25: Monitor performance and iterate (3 hrs, Track: Datadog dashboards)\n\n**Progress Tracking:** Use a shared Google Sheet with columns for Task, Status (Not Started/In Progress/Completed), Priority, and Deadline. Update daily in your 15-minute morning review. For automation, set up Zapier to log completed tasks from your task manager (e.g., Todoist) into the sheet.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gtd-coach-plugin#main-content",
+      "gtd-coach-plugin#overview",
+      "gtd-coach-plugin#setup",
+      "gtd-coach-plugin#examples",
+      "gtd-coach-plugin#tools",
+      "gtd-coach-plugin#mcp",
+      "gtd-coach-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GTD Coach là một plugin Claude giúp chuyển đổi các mục tiêu năm vĩ mô thành các cột mốc quý có cấu trúc và các nhiệm vụ hàng ngày được ưu tiên. Plugin này chia nhỏ từng nhiệm vụ thành các bước thực hiện cụ thể và tự động ghi nhớ tiến độ qua các phiên trò chuyện, loại bỏ việc phải lặp lại ngữ cảnh. Ngoài ra, plugin còn cung cấp các mẫu đánh giá hàng ngày, hàng tuần, hàng tháng, hàng quý và tự động điều chỉnh các gợi ý dựa trên tiến độ thực tế. Hỗ trợ tiếng Anh, tiếng Trung và tiếng Nhật, đây là công cụ hữu ích cho cả cá nhân lẫn đội ngũ quản lý quy trình làm việc theo mục tiêu.\nNhà sáng lập SaaS cần chia nhỏ mục tiêu doanh thu năm thành các nhiệm vụ phát triển hàng ngày\nFreelancer muốn chuyển đổi mục tiêu tăng trưởng thu nhập thành các cột mốc tiếp cận khách hàng và bàn giao dịch vụ\nĐội ngũ vận hành cần theo dõi mục tiêu quý với tính năng lưu trữ bộ nhớ phiên (session memory) liên tục\nQuản lý dự án cần tổ chức các kế hoạch dài hạn nhiều tháng thành các đầu việc bàn giao hàng tuần và hàng ngày",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/iamzifei/gtd-coach-plugin`",
+    "usage_vi": "```\nHãy đóng vai là một Plugin GTD Coach. Hãy chia nhỏ mục tiêu năm '[MỤC_TIÊU_NĂM]' thành các nhiệm vụ hàng ngày khả thi trong vòng [KHUNG_THỜI_GIAN] tới. Sắp xếp thứ tự ưu tiên cho các nhiệm vụ dựa trên [TIÊU_CHÍ_ƯU_TIÊN] và cung cấp một kế hoạch có cấu trúc kèm theo thời gian ước tính hoàn thành. Tích hợp tính năng tự động theo dõi tiến độ bằng cách đề xuất một [PHƯƠNG_PHÁP_THEO_DÕI] (ví dụ: bảng tính, công cụ hoặc ứng dụng theo dõi thói quen).\n```\nCopy\n\n```\nMục tiêu năm của bạn là 'Ra mắt chatbot hỗ trợ khách hàng mới vào Quý 4 năm 2024' với tiêu chí ưu tiên là 'các nhiệm vụ có tác động lớn thực hiện trước'. Dưới đây là bảng phân rã GTD trong 30 ngày của bạn:\n\n**Tuần 1 (Nghiên cứu & Lập kế hoạch):**\n- Ngày 1: Nghiên cứu top 5 nền tảng chatbot (2 giờ, Theo dõi: Notion checklist)\n- Ngày 2: Phác thảo các kịch bản sử dụng (use cases) chatbot (1.5 giờ, Theo dõi: Google Doc)\n- Ngày 3: So sánh giá cả các nền tảng (1 giờ, Theo dõi: Airtable)\n- Ngày 4: Chốt lựa chọn nền tảng (1 giờ, Theo dõi: Cập nhật Slack)\n- Ngày 5: Thiết lập môi trường phát triển (2 giờ, Theo dõi: GitHub milestone)\n\n**Tuần 2 (Tạo mẫu thử - Prototyping):**\n- Ngày 8: Xây dựng luồng chatbot cơ bản (3 giờ, Theo dõi: Figma prototype)\n- Ngày 9: Thử nghiệm chatbot với 5 câu hỏi mẫu (2 giờ, Theo dõi: Jira ticket)\n- Ngày 10: Tinh chỉnh câu trả lời của chatbot (2.5 giờ, Theo dõi: Loom recording)\n- Ngày 11: Tích hợp với hệ thống quản lý yêu cầu hỗ trợ (ticketing system) (4 giờ, Theo dõi: Zapier logs)\n\n**Tuần 3 (Kiểm thử & Phản hồi):**\n- Ngày 15: Tiến hành thử nghiệm A/B với 20 người dùng (3 giờ, Theo dõi: Google Forms)\n- Ngày 16: Phân tích phản hồi và điều chỉnh chatbot (2.5 giờ, Theo dõi: Trello board)\n- Ngày 17: Đào tạo đội ngũ hỗ trợ về chatbot (2 giờ, Theo dõi: Zoom recording)\n\n**Tuần 4 (Chuẩn bị ra mắt):**\n- Ngày 22: Hoàn thiện FAQ cho chatbot (1.5 giờ, Theo dõi: Trang Confluence)\n- Ngày 23: Lên lịch webinar ra mắt (1 giờ, Theo dõi: Calendly)\n- Ngày 24: Ra mắt thử nghiệm (soft launch) với 5% người dùng (2 giờ, Theo dõi: HubSpot analytics)\n- Ngày 25: Giám sát hiệu suất và tối ưu hóa (3 giờ, Theo dõi: Datadog dashboards)\n\n**Theo dõi tiến độ:** Sử dụng một bảng tính Google Sheets chia sẻ chung với các cột: Nhiệm vụ (Task), Trạng thái (Status - Chưa bắt đầu/Đang tiến hành/Hoàn thành), Độ ưu tiên (Priority), và Hạn chót (Deadline). Cập nhật hàng ngày trong buổi họp nhanh 15 phút mỗi sáng. Để tự động hóa, hãy thiết lập Zapier để tự động đồng bộ các nhiệm vụ đã hoàn thành từ ứng dụng quản lý công việc của bạn (ví dụ: Todoist) vào bảng tính.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:23:49.385691Z",
+    "http_status": 200,
+    "content_hash": "36e8c32b1d3a2843effaf371e14efe01b0d82ce28ddbcb68f9961b87e955da2c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gtd-coach-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gtd-coach-plugin.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Plugin GTD Coach - Chia nhỏ mục tiêu thành nhiệm vụ",
+  "short_description_vi": "Plugin GTD Coach giúp chia nhỏ các mục tiêu năm thành những nhiệm vụ hàng ngày khả thi, cung cấp kế hoạch chi tiết cùng tính năng tự động theo dõi tiến độ. Rất phù hợp cho các đội ngũ vận hành, plugin này tích hợp trực tiếp với Claude để tối ưu hóa quy trình làm việc và nâng cao năng suất."
+}

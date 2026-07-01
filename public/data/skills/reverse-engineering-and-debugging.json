@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reverse-engineering-and-debugging",
+  "slug": "reverse-engineering-and-debugging",
+  "name": "CTF Solver",
+  "headline": "Reverse Engineering & Debugging: Binary Analysis",
+  "short_description": "This skill focuses on the methodologies of static analysis, dynamic analysis, debugging, and binary exploitation. It is intended for professionals in security and software development.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "r00tedbrain-backup",
+  "install_command": "git clone https://github.com/r00tedbrain-backup/skills",
+  "source_repo_url": "https://github.com/r00tedbrain-backup/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "debugging",
+    "security",
+    "engineering",
+    "reverse"
+  ],
+  "sections": {
+    "overview": "This skill provides professional-grade reverse engineering methodology covering static analysis, dynamic debugging, malware analysis, and binary exploitation. It supports all major binary formats—ELF, PE, Mach-O, DEX, APK, firmware, and managed code—with guided workflows for identifying target architecture, establishing analysis scope, and selecting appropriate tools. The skill includes reference modules for platform-specific techniques (Android APK repackaging, iOS Keychain analysis, Windows kernel debugging), specialized tasks (symbol recovery, struct layout inference, protocol reversing, anti-cheat analysis), and advanced scripting approaches via Ghidra Python, IDAPython, and Frida hooking. It ships with bundled utilities including an IDA Pro export plugin, Frida DEX memory dumper, and MCP server integration for live querying of analysis tools.\nStatic analysis of binary files.\nDynamic analysis for runtime behavior inspection.\nDebugging applications to identify vulnerabilities.\nBinary exploitation techniques for security assessments.\nAnalyzed `malware_sample.exe` (MD5: `a1b2c3d4e5f6...`) using static and dynamic analysis. The binary is a 32-bit PE executable with obfuscated strings and anti-debugging checks. Primary goal: extract C2 (Command & Control) server addresses and encryption keys.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/r00tedbrain-backup/skills --skill reverse-engineering`\n`git clone https://github.com/r00tedbrain-backup/skills`",
+    "usage": "```\nAct as a reverse engineering expert. Analyze this [FILE_TYPE] file ([FILE_PATH]) for vulnerabilities, obfuscation, or malicious behavior. Focus on extracting [SPECIFIC_GOAL: e.g., API calls, encryption logic, or hidden strings]. Use tools like Ghidra, IDA Pro, or x64dbg if necessary. Provide a detailed breakdown of your findings, including pseudocode, control flow, and potential attack vectors. If the file is packed or encrypted, suggest methods to unpack or decrypt it. Assume I have basic knowledge of assembly and debugging.\n```\nCopy\n\n```\n# Reverse Engineering Analysis Report: `malware_sample.exe`",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "reverse-engineering-and-debugging#main-content",
+      "reverse-engineering-and-debugging#overview",
+      "reverse-engineering-and-debugging#setup",
+      "reverse-engineering-and-debugging#examples",
+      "reverse-engineering-and-debugging#related",
+      "ghost-scan-code",
+      "audit",
+      "ctf-solver"
+    ],
+    "overview_vi": "This skill provides professional-grade reverse engineering methodology covering static analysis, dynamic debugging, malware analysis, and binary exploitation. It supports all major binary formats—ELF, PE, Mach-O, DEX, APK, firmware, and managed code—with guided workflows for identifying target architecture, establishing analysis scope, and selecting appropriate tools. The skill includes reference modules for platform-specific techniques (Android APK repackaging, iOS Keychain analysis, Windows kernel debugging), specialized tasks (symbol recovery, struct layout inference, protocol reversing, anti-cheat analysis), and advanced scripting approaches via Ghidra Python, IDAPython, and Frida hooking. It ships with bundled utilities including an IDA Pro export plugin, Frida DEX memory dumper, and MCP server integration for live querying of analysis tools.\nStatic analysis of binary files.\nDynamic analysis for runtime behavior inspection.\nDebugging applications to identify vulnerabilities.\nBinary exploitation techniques for security assessments.\nAnalyzed `malware_sample.exe` (MD5: `a1b2c3d4e5f6...`) using static and dynamic analysis. The binary is a 32-bit PE executable with obfuscated strings and anti-debugging checks. Primary goal: extract C2 (Command & Control) server addresses and encryption keys.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/r00tedbrain-backup/skills --skill reverse-engineering`\n`git clone https://github.com/r00tedbrain-backup/skills`",
+    "usage_vi": "```\nAct as a reverse engineering expert. Analyze this [FILE_TYPE] file ([FILE_PATH]) for vulnerabilities, obfuscation, or malicious behavior. Focus on extracting [SPECIFIC_GOAL: e.g., API calls, encryption logic, or hidden strings]. Use tools like Ghidra, IDA Pro, or x64dbg if necessary. Provide a detailed breakdown of your findings, including pseudocode, control flow, and potential attack vectors. If the file is packed or encrypted, suggest methods to unpack or decrypt it. Assume I have basic knowledge of assembly and debugging.\n```\nCopy\n\n```\n# Reverse Engineering Analysis Report: `malware_sample.exe`"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:57:09.247511Z",
+    "http_status": 200,
+    "content_hash": "c6a13e1c95ad33f90dca89f3481b7b4727bd358858b3c3c74b6c6b7d85c3a73d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reverse-engineering-and-debugging.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reverse-engineering-and-debugging.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Reverse Engineering & Debugging: Binary Analysis",
+  "short_description_vi": "This skill focuses on the methodologies of static analysis, dynamic analysis, debugging, and binary exploitation. It is intended for professionals in security and software development."
+}

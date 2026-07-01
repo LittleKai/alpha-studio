@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/health-skillz",
+  "slug": "health-skillz",
+  "name": "Health Skillz",
+  "headline": "Health Skillz - Analyze Health Records",
+  "short_description": "Health Skillz connects to and analyzes personal health records via SMART on FHIR. It enables healthcare operations teams to automate data extraction and analysis from electronic health records (EHRs). The skill integrates with EHR systems like Epic, allowing for streamlined data workflows and improved operational efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "jmandel",
+  "install_command": "git clone https://github.com/jmandel/health-skillz.git",
+  "source_repo_url": "https://github.com/jmandel/health-skillz",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "healthcare",
+    "agents",
+    "smart-on-fhir-fhir",
+    "ehr-data",
+    "health",
+    "ehr",
+    "claude-skills",
+    "epic"
+  ],
+  "sections": {
+    "overview": "Health Skillz enables users to collect SMART on FHIR records directly from patient portals and review them locally. The skill supports end-to-end encrypted upload for secure sharing with AI systems, making it useful for individuals managing their own records and healthcare operations teams handling data workflows. It integrates with major EHR systems through standard SMART on FHIR authentication, eliminating manual data extraction. The tool provides a live demo instance and downloadable skill for Claude, with local development support via Bun. Healthcare professionals and patients can use Health Skillz to streamline record access without exposing sensitive data through unencrypted channels.\nPatients collecting and reviewing their own health records from multiple providers\nHealthcare teams automating EHR data extraction for analysis and reporting\nSecure sharing of FHIR records with AI assistants using end-to-end encryption\nIntegration with Epic and other SMART on FHIR-compliant EHR systems",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jmandel/health-skillz`",
+    "usage": "```\nAnalyze the following patient data from [EHR_SYSTEM] and identify trends in [HEALTH_METRIC] over the past [TIME_PERIOD]. Provide a summary of key findings and suggest potential interventions. The data is as follows: [PATIENT_DATA].\n```\nCopy\n\n```\n# Health Data Analysis Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "health-skillz#main-content",
+      "health-skillz#overview",
+      "health-skillz#setup",
+      "health-skillz#examples",
+      "health-skillz#tools",
+      "health-skillz#mcp",
+      "health-skillz#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Health Skillz cho phép người dùng thu thập hồ sơ SMART on FHIR trực tiếp từ các cổng thông tin bệnh nhân và xem lại cục bộ. Skill này hỗ trợ tải lên mã hóa đầu cuối (end-to-end) để chia sẻ an toàn với các hệ thống AI, rất hữu ích cho cả cá nhân tự quản lý hồ sơ và các đội ngũ vận hành y tế xử lý quy trình dữ liệu. Thiết lập này tích hợp với các hệ thống EHR lớn thông qua phương thức xác thực chuẩn SMART on FHIR, loại bỏ hoàn toàn việc trích xuất dữ liệu thủ công. Công cụ cung cấp một bản demo trực tiếp (live demo) và skill tải xuống cho Claude, hỗ trợ phát triển cục bộ (local development) qua Bun. Các chuyên gia y tế và bệnh nhân có thể sử dụng Health Skillz để đơn giản hóa việc truy cập hồ sơ mà không lo lộ dữ liệu nhạy cảm qua các kênh không được mã hóa.\nBệnh nhân tự thu thập và xem lại hồ sơ sức khỏe từ nhiều nhà cung cấp dịch vụ y tế khác nhau\nCác đội ngũ y tế tự động hóa việc trích xuất dữ liệu EHR để phân tích và báo cáo\nChia sẻ an toàn hồ sơ FHIR với các trợ lý AI bằng mã hóa đầu cuối (end-to-end)\nTích hợp với Epic và các hệ thống EHR tuân thủ tiêu chuẩn SMART on FHIR",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jmandel/health-skillz`",
+    "usage_vi": "```\nPhân tích dữ liệu bệnh nhân sau đây từ [EHR_SYSTEM] và xác định các xu hướng của [HEALTH_METRIC] trong [TIME_PERIOD] qua. Cung cấp bản tóm tắt các phát hiện chính và đề xuất các biện pháp can thiệp tiềm năng. Dữ liệu cụ thể như sau: [PATIENT_DATA].\n```\nCopy\n\n```\n# Báo cáo phân tích dữ liệu sức khỏe\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:46:46.383557Z",
+    "http_status": 200,
+    "content_hash": "0488659c7c64c22ceebb43b7411ea336f4dd5ee0c374451fb22c88ad4c9bf3b6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\health-skillz.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\health-skillz.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Health Skillz - Phân tích hồ sơ sức khỏe",
+  "short_description_vi": "Health Skillz kết nối và phân tích hồ sơ sức khỏe cá nhân qua SMART on FHIR. Skill này giúp các đội ngũ vận hành y tế tự động hóa quy trình trích xuất và phân tích dữ liệu từ hồ sơ sức khỏe điện tử (EHR). Skill tích hợp mượt mà với các hệ thống EHR như Epic, giúp tối ưu hóa quy trình xử lý dữ liệu và nâng cao hiệu quả vận hành."
+}

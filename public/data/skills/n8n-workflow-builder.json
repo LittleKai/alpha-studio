@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-workflow-builder",
+  "slug": "n8n-workflow-builder",
+  "name": "n8n Workflow Builder",
+  "headline": "n8n Workflow Builder - AI Assistant Integration for",
+  "short_description": "AI assistant integration for n8n workflow automation through Model Context Protocol (MCP). Connect Claude Desktop, ChatGPT, and other AI assistants to n8n for natural language workflow management. Operations teams can automate repetitive tasks, integrate APIs, and manage workflows using natural language commands.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "220 min",
+  "author": "makafeli",
+  "install_command": "git clone https://github.com/makafeli/n8n-workflow-builder.git",
+  "source_repo_url": "https://github.com/makafeli/n8n-workflow-builder",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "webhook",
+    "ai-assistant",
+    "rest-api",
+    "typescript",
+    "n8n",
+    "workflow-automation",
+    "no-code",
+    "ai-automation",
+    "ai-integration",
+    "low-code",
+    "api-integration",
+    "workflow-management",
+    "chatgpt-integration",
+    "claude-desktop",
+    "automation-tools",
+    "api-wrapper",
+    "mcp-server",
+    "nodejs",
+    "model-context-protocol"
+  ],
+  "sections": {
+    "overview": "The n8n Workflow Builder MCP Server enables AI assistants like Claude Desktop and ChatGPT to manage n8n workflows directly through the Model Context Protocol. It provides complete workflow management capabilities including listing, creating, executing, activating, deactivating, updating, and deleting workflows via natural language commands. Teams using n8n can now leverage AI assistants to automate workflow creation and execution without manually accessing the n8n web interface. The server works with self-hosted or cloud n8n instances and requires only an n8n API key for secure authentication. Installation is straightforward through NPX or manual setup, making it accessible for operations teams managing automation and API integrations.\nAutomate the creation of complex workflows in n8n using natural language commands.\nExecute existing workflows on demand through AI assistant interactions.\nManage workflow lifecycles, including activation, deactivation, and updates, via conversational prompts.\nRetrieve detailed status information about workflows to monitor performance and issues.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/makafeli/n8n-workflow-builder`",
+    "usage": "```\nBuild an n8n workflow in [LANGUAGE] that [ACTION] when [TRIGGER] occurs. Include these steps: [STEP_1], [STEP_2], and [STEP_3]. Use [API_SERVICE] for [FUNCTION]. The workflow should handle errors by [ERROR_HANDLING]. Deploy it to n8n with [DEPLOYMENT_METHOD].\n```\nCopy\n\n```\nHere’s a complete n8n workflow in JSON format for automating Slack notifications when new GitHub issues labeled 'urgent' are created. The workflow triggers on GitHub webhooks, filters issues by label, formats a Slack message with issue details, and posts it to a designated channel. It includes error handling for failed API calls and is deployed via n8n’s web interface.\n\n```json\n{\n  \"name\": \"GitHub Urgent Issues to Slack\",\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"path\": \"github-webhook\",\n        \"method\": \"POST\"\n      },\n      \"id\": \"github-trigger\",\n      \"name\": \"GitHub Trigger\",\n      \"type\": \"n8n-nodes-base.webhook\",\n      \"typeVersion\": 2,\n      \"position\": [250, 300]\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"string\": [\n            {\n              \"value1\": \"={{$json[\"label\"]}}\",\n              \"operation\": \"contains\",\n              \"value2\": \"urgent\"\n            }\n          ]\n        }\n      },\n      \"id\": \"filter-urgent\",\n      \"name\": \"Filter Urgent Issues\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 1,\n      \"position\": [450, 300]\n    },\n    {\n      \"parameters\": {\n        \"functionCode\": \"return {\\n  issueTitle: items[0].json.title,\\n  issueUrl: items[0].json.html_url,\\n  repoName: items[0].json.repository.full_name,\\n  assignee: items[0].json.assignee?.login || 'unassigned'\\n};\"\n      },\n      \"id\": \"format-message\",\n      \"name\": \"Format Slack Message\",\n      \"type\": \"n8n-nodes-base.function\",\n      \"typeVersion\": 1,\n      \"position\": [650, 300]\n    },\n    {\n      \"parameters\": {\n        \"channel\": \"#urgent-issues\",\n        \"text\": \"🚨 Urgent GitHub Issue: {{ $('Format Slack Message').item.json.issueTitle }} ({{ $('Format Slack Message').item.json.issueUrl }}) in {{ $('Format Slack Message').item.json.repoName }} assigned to {{ $('Format Slack Message').item.json.assignee }}\"\n      },\n      \"id\": \"send-slack\",\n      \"name\": \"Send Slack Notification\",\n      \"type\": \"n8n-nodes-base.slack\",\n      \"typeVersion\": 2,\n      \"position\": [850, 300]\n    },\n    {\n      \"parameters\": {\n        \"options\": {\n          \"continueOnFail\": true\n        }\n      },\n      \"id\": \"error-handler\",\n      \"name\": \"Error Handler\",\n      \"type\": \"n8n-nodes-base.errorHandler\",\n      \"typeVersion\": 1,\n      \"position\": [650, 450]\n    }\n  ],\n  \"connections\": {\n    \"GitHub Trigger\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Filter Urgent Issues\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Filter Urgent Issues\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Format Slack Message\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Error Handler\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Format Slack Message\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send Slack Notification\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  }\n}\n```\n\nTo deploy this workflow:\n1. Open n8n in your browser.\n2. Click 'New Workflow' and import the JSON above.\n3. Configure the Slack credentials in the 'Send Slack Notification' node.\n4. Set up a GitHub webhook pointing to your n8n instance’s `/webhook/github-webhook` endpoint.\n5. Activate the workflow and test by creating an urgent GitHub issue.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "n8n-workflow-builder#main-content",
+      "n8n-workflow-builder#overview",
+      "n8n-workflow-builder#setup",
+      "n8n-workflow-builder#examples",
+      "n8n-workflow-builder#tools",
+      "n8n-workflow-builder#mcp",
+      "n8n-workflow-builder#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "n8n Workflow Builder MCP Server cho phép các AI assistant như Claude Desktop và ChatGPT quản lý trực tiếp các workflow n8n thông qua Model Context Protocol. Nó cung cấp đầy đủ khả năng quản lý workflow bao gồm liệt kê, tạo, thực thi, kích hoạt, hủy kích hoạt, cập nhật và xóa workflow thông qua các câu lệnh ngôn ngữ tự nhiên. Giờ đây, các đội ngũ sử dụng n8n có thể tận dụng các AI assistant để tự động hóa việc tạo và thực thi workflow mà không cần phải truy cập thủ công vào giao diện web của n8n. Server này hoạt động với cả phiên bản n8n self-hosted hoặc cloud và chỉ yêu cầu n8n API key để xác thực bảo mật. Quá trình cài đặt rất đơn giản thông qua NPX hoặc setup thủ công, giúp các đội ngũ vận hành dễ dàng tiếp cận để quản lý tự động hóa và tích hợp API.\nTự động hóa việc tạo các workflow phức tạp trong n8n bằng câu lệnh ngôn ngữ tự nhiên.\nThực thi các workflow hiện có theo yêu cầu (on-demand) thông qua tương tác với AI assistant.\nQuản lý vòng đời workflow, bao gồm kích hoạt, hủy kích hoạt và cập nhật, thông qua các câu lệnh trò chuyện (conversational prompts).\nLấy thông tin trạng thái chi tiết của workflow để giám sát hiệu suất và phát hiện lỗi.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn setup thủ công.\n`git clone https://github.com/makafeli/n8n-workflow-builder`",
+    "usage_vi": "```\nXây dựng một workflow n8n bằng [NGÔN_NGỮ] để thực hiện [HÀNH_ĐỘNG] khi [TRIGGER] xảy ra. Bao gồm các bước sau: [BƯỚC_1], [BƯỚC_2] và [BƯỚC_3]. Sử dụng [DỊCH_VỤ_API] cho [CHỨC_NĂNG]. Workflow này cần xử lý lỗi bằng cách [XỬ_LÝ_LỖI]. Triển khai nó lên n8n bằng [PHƯƠNG_THỨC_TRIỂN_KHAI].\n```\nSao chép\n\n```\nDưới đây là workflow n8n hoàn chỉnh ở định dạng JSON để tự động hóa việc gửi thông báo Slack khi có các issue GitHub mới được gắn nhãn 'urgent'. Workflow này được kích hoạt bởi GitHub webhook, lọc các issue theo nhãn, định dạng tin nhắn Slack với chi tiết của issue và gửi tin nhắn đó đến kênh đã được chỉ định. Nó bao gồm cơ chế xử lý lỗi cho các cuộc gọi API bị lỗi và được triển khai thông qua giao diện web của n8n.\n\n```json\n{\n  \"name\": \"GitHub Urgent Issues to Slack\",\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"path\": \"github-webhook\",\n        \"method\": \"POST\"\n      },\n      \"id\": \"github-trigger\",\n      \"name\": \"GitHub Trigger\",\n      \"type\": \"n8n-nodes-base.webhook\",\n      \"typeVersion\": 2,\n      \"position\": [250, 300]\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"string\": [\n            {\n              \"value1\": \"={{$json[\\\"label\\\"]}}\",\n              \"operation\": \"contains\",\n              \"value2\": \"urgent\"\n            }\n          ]\n        }\n      },\n      \"id\": \"filter-urgent\",\n      \"name\": \"Filter Urgent Issues\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 1,\n      \"position\": [450, 300]\n    },\n    {\n      \"parameters\": {\n        \"functionCode\": \"return {\\n  issueTitle: items[0].json.title,\\n  issueUrl: items[0].json.html_url,\\n  repoName: items[0].json.repository.full_name,\\n  assignee: items[0].json.assignee?.login || 'unassigned'\\n};\"\n      },\n      \"id\": \"format-message\",\n      \"name\": \"Format Slack Message\",\n      \"type\": \"n8n-nodes-base.function\",\n      \"typeVersion\": 1,\n      \"position\": [650, 300]\n    },\n    {\n      \"parameters\": {\n        \"channel\": \"#urgent-issues\",\n        \"text\": \"🚨 Urgent GitHub Issue: {{ $('Format Slack Message').item.json.issueTitle }} ({{ $('Format Slack Message').item.json.issueUrl }}) in {{ $('Format Slack Message').item.json.repoName }} assigned to {{ $('Format Slack Message').item.json.assignee }}\"\n      },\n      \"id\": \"send-slack\",\n      \"name\": \"Send Slack Notification\",\n      \"type\": \"n8n-nodes-base.slack\",\n      \"typeVersion\": 2,\n      \"position\": [850, 300]\n    },\n    {\n      \"parameters\": {\n        \"options\": {\n          \"continueOnFail\": true\n        }\n      },\n      \"id\": \"error-handler\",\n      \"name\": \"Error Handler\",\n      \"type\": \"n8n-nodes-base.errorHandler\",\n      \"typeVersion\": 1,\n      \"position\": [650, 450]\n    }\n  ],\n  \"connections\": {\n    \"GitHub Trigger\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Filter Urgent Issues\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Filter Urgent Issues\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Format Slack Message\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Error Handler\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Format Slack Message\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send Slack Notification\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  }\n}\n```\n\nĐể triển khai workflow này:\n1. Mở n8n trên trình duyệt của bạn.\n2. Nhấp vào 'New Workflow' và import đoạn JSON phía trên.\n3. Cấu hình thông tin xác thực (credentials) Slack trong node 'Send Slack Notification'.\n4. Cấu hình một GitHub webhook trỏ đến endpoint `/webhook/github-webhook` trên instance n8n của bạn.\n5. Kích hoạt workflow và kiểm tra bằng cách tạo một issue 'urgent' trên GitHub."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:05.446721Z",
+    "http_status": 200,
+    "content_hash": "e9f6238fd2423c0518a626eae82d9f2cd46e28d8ed14fcb13d066d39de8c79a7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-workflow-builder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-workflow-builder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "n8n Workflow Builder - Tích hợp AI Assistant dành cho",
+  "short_description_vi": "Tích hợp AI assistant để tự động hóa workflow trên n8n thông qua Model Context Protocol (MCP). Kết nối Claude Desktop, ChatGPT và các AI assistant khác với n8n để quản lý workflow bằng ngôn ngữ tự nhiên. Các đội ngũ vận hành có thể tự động hóa các tác vụ lặp đi lặp lại, tích hợp API và quản lý workflow bằng các câu lệnh ngôn ngữ tự nhiên."
+}

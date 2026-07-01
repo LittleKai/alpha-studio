@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-in-avinyc",
+  "slug": "claude-code-in-avinyc",
+  "name": "Claude Code In Avinyc",
+  "headline": "claude-code-in-avinyc: Automation Tasks",
+  "short_description": "Claude-code-in-avinyc is a collection of AI agent skills for Ruby, Rails, and SaaS development. It automates repetitive tasks, enhances code quality, and accelerates development workflows. Ideal for operations teams, it integrates with existing development tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "aviflombaum",
+  "install_command": "git clone https://github.com/aviflombaum/claude-code-in-avinyc.git",
+  "source_repo_url": "https://github.com/aviflombaum/claude-code-in-avinyc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The claude-code-in-avinyc skill is a curated collection of Claude Code plugins designed to enhance automation capabilities within various workflows. This intermediate-level skill allows developers and AI practitioners to integrate multiple automation tools seamlessly, facilitating a more efficient development process. By leveraging these plugins, users can automate repetitive tasks, thus freeing up valuable time for more complex problem-solving activities. One of the key benefits of the claude-code-in-avinyc skill is its ability to streamline workflow automation. Although specific time savings are not quantified, users can expect to significantly reduce the time spent on manual tasks. This skill is particularly beneficial for developers and product managers who are looking to enhance their productivity and optimize their project timelines. By implementing this skill, teams can focus on innovation rather than routine operations, leading to better resource allocation and faster project delivery. This automation skill is well-suited for developers and AI practitioners who are familiar with intermediate coding concepts and are looking to enhance their AI agent skills. It can be particularly useful in software development environments where automation can lead to improved efficiency and reduced errors. For instance, a developer could use this skill to automate the testing of code changes, ensuring that new features are deployed faster and with higher reliability. Implementing the claude-code-in-avinyc skill requires approximately 30 minutes, making it a quick addition to any developer's toolkit. Its intermediate complexity means that users should have a foundational understanding of coding and automation principles. By incorporating this skill into their AI-first workflows, teams can leverage the power of automation to drive innovation and maintain a competitive edge in the rapidly evolving tech landscape.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aviflombaum/claude-code-in-avinyc`",
+    "usage": "```\nI'm a developer working on a Ruby on Rails project for [COMPANY], a [INDUSTRY] company. I need to [SPECIFIC TASK, e.g., 'generate a RESTful API controller for managing user subscriptions']. Can you help me with this using the Claude-code-in-avinyc skills?\n```\nCopy\n\n```\n# Ruby on Rails API Controller for User Subscriptions\n\nHere's a complete implementation for your user subscriptions API:\n\n```ruby\nclass SubscriptionsController < ApplicationController\n  before_action :set_user\n  before_action :set_subscription, only: [:show, :update, :destroy]\n\n  # GET /users/:user_id/subscriptions\n  def index\n    @subscriptions = @user.subscriptions\n    render json: @subscriptions\n  end\n\n  # GET /users/:user_id/subscriptions/:id\n  def show\n    render json: @subscription\n  end\n\n  # POST /users/:user_id/subscriptions\n  def create\n    @subscription = @user.subscriptions.new(subscription_params)\n\n    if @subscription.save\n      render json: @subscription, status: :created\n    else\n      render json: @subscription.errors, status: :unprocessable_entity\n    end\n  end\n\n  # PATCH/PUT /users/:user_id/subscriptions/:id\n  def update\n    if @subscription.update(subscription_params)\n      render json: @subscription\n    else\n      render json: @subscription.errors, status: :unprocessable_entity\n    end\n  end\n\n  # DELETE /users/:user_id/subscriptions/:id\n  def destroy\n    @subscription.destroy\n    head :no_content\n  end\n\n  private\n    def set_user\n      @user = User.find(params[:user_id])\n    end\n\n    def set_subscription\n      @subscription = @user.subscriptions.find(params[:id])\n    end\n\n    def subscription_params\n      params.require(:subscription).permit(:plan_id, :start_date, :end_date, :status)\n    end\nend\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-in-avinyc#main-content",
+      "claude-code-in-avinyc#overview",
+      "claude-code-in-avinyc#setup",
+      "claude-code-in-avinyc#examples",
+      "claude-code-in-avinyc#tools",
+      "claude-code-in-avinyc#mcp",
+      "claude-code-in-avinyc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-code-in-avinyc skill is a curated collection of Claude Code plugins designed to enhance automation capabilities within various workflows. This intermediate-level skill allows developers and AI practitioners to integrate multiple automation tools seamlessly, facilitating a more efficient development process. By leveraging these plugins, users can automate repetitive tasks, thus freeing up valuable time for more complex problem-solving activities. One of the key benefits of the claude-code-in-avinyc skill is its ability to streamline workflow automation. Although specific time savings are not quantified, users can expect to significantly reduce the time spent on manual tasks. This skill is particularly beneficial for developers and product managers who are looking to enhance their productivity and optimize their project timelines. By implementing this skill, teams can focus on innovation rather than routine operations, leading to better resource allocation and faster project delivery. This automation skill is well-suited for developers and AI practitioners who are familiar with intermediate coding concepts and are looking to enhance their AI agent skills. It can be particularly useful in software development environments where automation can lead to improved efficiency and reduced errors. For instance, a developer could use this skill to automate the testing of code changes, ensuring that new features are deployed faster and with higher reliability. Implementing the claude-code-in-avinyc skill requires approximately 30 minutes, making it a quick addition to any developer's toolkit. Its intermediate complexity means that users should have a foundational understanding of coding and automation principles. By incorporating this skill into their AI-first workflows, teams can leverage the power of automation to drive innovation and maintain a competitive edge in the rapidly evolving tech landscape.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aviflombaum/claude-code-in-avinyc`",
+    "usage_vi": "```\nI'm a developer working on a Ruby on Rails project for [COMPANY], a [INDUSTRY] company. I need to [SPECIFIC TASK, e.g., 'generate a RESTful API controller for managing user subscriptions']. Can you help me with this using the Claude-code-in-avinyc skills?\n```\nCopy\n\n```\n# Ruby on Rails API Controller for User Subscriptions\n\nHere's a complete implementation for your user subscriptions API:\n\n```ruby\nclass SubscriptionsController < ApplicationController\n  before_action :set_user\n  before_action :set_subscription, only: [:show, :update, :destroy]\n\n  # GET /users/:user_id/subscriptions\n  def index\n    @subscriptions = @user.subscriptions\n    render json: @subscriptions\n  end\n\n  # GET /users/:user_id/subscriptions/:id\n  def show\n    render json: @subscription\n  end\n\n  # POST /users/:user_id/subscriptions\n  def create\n    @subscription = @user.subscriptions.new(subscription_params)\n\n    if @subscription.save\n      render json: @subscription, status: :created\n    else\n      render json: @subscription.errors, status: :unprocessable_entity\n    end\n  end\n\n  # PATCH/PUT /users/:user_id/subscriptions/:id\n  def update\n    if @subscription.update(subscription_params)\n      render json: @subscription\n    else\n      render json: @subscription.errors, status: :unprocessable_entity\n    end\n  end\n\n  # DELETE /users/:user_id/subscriptions/:id\n  def destroy\n    @subscription.destroy\n    head :no_content\n  end\n\n  private\n    def set_user\n      @user = User.find(params[:user_id])\n    end\n\n    def set_subscription\n      @subscription = @user.subscriptions.find(params[:id])\n    end\n\n    def subscription_params\n      params.require(:subscription).permit(:plan_id, :start_date, :end_date, :status)\n    end\nend\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:37.728513Z",
+    "http_status": 200,
+    "content_hash": "df8df1648431f0f3e36393d256029845e3beeaa10170a79e96510338b821778a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-in-avinyc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-in-avinyc.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-code-in-avinyc: Automation Tasks",
+  "short_description_vi": "Claude-code-in-avinyc is a collection of AI agent skills for Ruby, Rails, and SaaS development. It automates repetitive tasks, enhances code quality, and accelerates development workflows. Ideal for operations teams, it integrates with existing development tools and workflows."
+}

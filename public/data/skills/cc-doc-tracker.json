@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-doc-tracker",
+  "slug": "cc-doc-tracker",
+  "name": "Cc Doc Tracker",
+  "headline": "Automated Claude Code documentation tracker",
+  "short_description": "Automated tracker for Claude Code official documentation changes. Benefits operations teams by monitoring updates, ensuring teams stay informed about the latest features and changes. Connects to Claude Code documentation and integrates with workflows for continuous updates.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "oikon48",
+  "install_command": "git clone https://github.com/oikon48/cc-doc-tracker.git",
+  "source_repo_url": "https://github.com/oikon48/cc-doc-tracker",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Code Documentation Tracker is an automated tool that monitors and syncs official Claude Code documentation changes using Git-based scraping. It fetches documentation four times daily (3:00, 9:00, 15:00, 21:00 JST) by pulling from authoritative sources like llms.txt and docs_map.md, then stores pure Markdown files with complete change history. The system merges duplicate URLs, removes orphaned files, and maintains metadata on fetch success rates. Operations and development teams benefit by staying informed of feature additions, updates, and deprecations without manual documentation review. The TypeScript implementation uses lightweight dependencies and integrates with GitHub Actions for continuous, hands-off monitoring.\nMonitor Claude Code feature releases and API changes for product teams\nTrack documentation updates for internal knowledge base synchronization\nMaintain audit trails of official documentation changes for compliance\nAlert engineering teams to breaking changes or new capabilities",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/oikon48/cc-doc-tracker`",
+    "usage": "```\nTrack changes in the Claude Code documentation for [COMPANY] in the [INDUSTRY] sector. Monitor updates for the past [TIMEFRAME] and provide a summary of new features, changes, and deprecations. Focus on [SPECIFIC_TOPIC] if applicable.\n```\nCopy\n\n```\n# Claude Code Documentation Update Summary",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-doc-tracker#main-content",
+      "cc-doc-tracker#overview",
+      "cc-doc-tracker#setup",
+      "cc-doc-tracker#examples",
+      "cc-doc-tracker#tools",
+      "cc-doc-tracker#mcp",
+      "cc-doc-tracker#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Documentation Tracker là một công cụ tự động giúp giám sát và đồng bộ hóa các thay đổi trong tài liệu chính thức của Claude Code bằng phương pháp Git-based scraping. Hệ thống fetch tài liệu 4 lần mỗi ngày (3:00, 9:00, 15:00, 21:00 JST) từ các nguồn đáng tin cậy như llms.txt và docs_map.md, sau đó lưu trữ dưới dạng các file Markdown thuần túy kèm lịch sử thay đổi đầy đủ. Hệ thống sẽ tự động gộp các URL trùng lặp, loại bỏ các orphaned files và duy trì metadata về tỷ lệ fetch thành công. Các đội ngũ vận hành và phát triển có thể dễ dàng nắm bắt kịp thời các tính năng mới, các cập nhật và các phần bị deprecate mà không cần tự đối chiếu tài liệu thủ công. Bản triển khai bằng TypeScript này sử dụng các dependency nhẹ và tích hợp với GitHub Actions để giám sát liên tục, tự động (hands-off).\nGiám sát các đợt phát hành tính năng và thay đổi API của Claude Code cho các đội ngũ sản phẩm (product teams)\nTheo dõi cập nhật tài liệu để đồng bộ hóa kho tri thức (knowledge base) nội bộ\nDuy trì audit trail về các thay đổi tài liệu chính thức để phục vụ yêu cầu tuân thủ (compliance)\nCảnh báo các đội ngũ kỹ thuật về các breaking changes hoặc các tính năng mới",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/oikon48/cc-doc-tracker`",
+    "usage_vi": "```\nTheo dõi các thay đổi trong tài liệu Claude Code của [COMPANY] thuộc lĩnh vực [INDUSTRY]. Giám sát các cập nhật trong [TIMEFRAME] qua và cung cấp bản tóm tắt các tính năng mới, thay đổi và các phần bị deprecate. Tập trung vào [SPECIFIC_TOPIC] nếu có.\n```\nCopy\n\n```\n# Tóm tắt Cập nhật Tài liệu Claude Code"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:20:20.417887Z",
+    "http_status": 200,
+    "content_hash": "b4c033cc08175f5bfefbbce851bc8e65c2bb4c36d3d437f58e257ac566023f94",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-doc-tracker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-doc-tracker.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình theo dõi tự động tài liệu Claude Code",
+  "short_description_vi": "Trình theo dõi tự động các thay đổi trong tài liệu chính thức của Claude Code. Công cụ này hỗ trợ các đội ngũ vận hành bằng cách giám sát các cập nhật, đảm bảo các nhóm luôn nắm bắt kịp thời các tính năng và thay đổi mới nhất. Hệ thống kết nối trực tiếp với tài liệu Claude Code và tích hợp vào các workflow để liên tục cập nhật."
+}

@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zmcptools",
+  "slug": "zmcptools",
+  "name": "browser-use",
+  "headline": "ZMCPTools: MCP Server for Claude Code Automation",
+  "short_description": "ZMCPTools is a TypeScript MCP server for Claude Code that provides web scraping, knowledge graph memory, and multi-agent coordination tools via the Model Context Protocol.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "ZachHandley",
+  "install_command": "git clone https://github.com/ZachHandley/ZMCPTools.git",
+  "source_repo_url": "https://github.com/ZachHandley/ZMCPTools",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "feature-rich",
+    "claude-ai",
+    "claude",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "ZMCPTools is a custom TypeScript MCP (Model Context Protocol) server designed to extend Claude Code with additional automation capabilities. It includes tools for navigating and scraping web pages, storing and querying a persistent knowledge graph, and coordinating multi-agent workflows. The server indexes scraped content into a database for later retrieval, managing token limits by truncating MCP responses while preserving full storage. It is built for developers who want to augment Claude Code with durable memory, structured web data extraction, and agent-to-agent communication within a single MCP integration.\nScraping and indexing web pages for later DOM navigation and content retrieval\nStoring and querying a persistent knowledge graph to give Claude Code long-term memory\nCoordinating multiple AI agents in a shared workflow using multi-agent tools\nRetrieving structured web content without hitting MCP token limits via smart truncation\nGreenTech Solutions, a renewable energy company, aims to automate its data processing workflows using a custom TypeScript MCP Server built with ZMCPTools. This server will handle real-time energy consumption data and integrate with existing IoT devices and analytics tools.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZachHandley/ZMCPTools`",
+    "usage": "```\nCreate a TypeScript MCP Server using ZMCPTools for [COMPANY] in the [INDUSTRY] sector. The server should handle [DATA] and integrate with [SPECIFIC_TOOLS]. Provide a detailed implementation plan including setup instructions, key features, and expected outcomes.\n```\nCopy\n\n```\n# ZMCPTools Implementation Plan for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zmcptools#main-content",
+      "zmcptools#overview",
+      "zmcptools#setup",
+      "zmcptools#examples",
+      "zmcptools#tools",
+      "zmcptools#mcp",
+      "zmcptools#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ZMCPTools is a custom TypeScript MCP (Model Context Protocol) server designed to extend Claude Code with additional automation capabilities. It includes tools for navigating and scraping web pages, storing and querying a persistent knowledge graph, and coordinating multi-agent workflows. The server indexes scraped content into a database for later retrieval, managing token limits by truncating MCP responses while preserving full storage. It is built for developers who want to augment Claude Code with durable memory, structured web data extraction, and agent-to-agent communication within a single MCP integration.\nScraping and indexing web pages for later DOM navigation and content retrieval\nStoring and querying a persistent knowledge graph to give Claude Code long-term memory\nCoordinating multiple AI agents in a shared workflow using multi-agent tools\nRetrieving structured web content without hitting MCP token limits via smart truncation\nGreenTech Solutions, a renewable energy company, aims to automate its data processing workflows using a custom TypeScript MCP Server built with ZMCPTools. This server will handle real-time energy consumption data and integrate with existing IoT devices and analytics tools.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZachHandley/ZMCPTools`",
+    "usage_vi": "```\nCreate a TypeScript MCP Server using ZMCPTools for [COMPANY] in the [INDUSTRY] sector. The server should handle [DATA] and integrate with [SPECIFIC_TOOLS]. Provide a detailed implementation plan including setup instructions, key features, and expected outcomes.\n```\nCopy\n\n```\n# ZMCPTools Implementation Plan for GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:24:42.222544Z",
+    "http_status": 200,
+    "content_hash": "34dfb2cbfb7696f500e94f98bc68bf8751602c58a31f73fb04212b22190af96e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zmcptools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zmcptools.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ZMCPTools: MCP Server for Claude Code Automation",
+  "short_description_vi": "ZMCPTools is a TypeScript MCP server for Claude Code that provides web scraping, knowledge graph memory, and multi-agent coordination tools via the Model Context Protocol."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deepdive",
+  "slug": "deepdive",
+  "name": "browser-use",
+  "headline": "Deepdive - Multi-Round Reasoning",
+  "short_description": "Deepdive is a slash command for Claude Code that enables multi-round exploratory reasoning and non-linear problem-solving. It benefits operations teams by allowing iterative deep thinking for complex problem-solving. It connects to Claude Code for enhanced reasoning capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "wanpengxie",
+  "install_command": "git clone https://github.com/wanpengxie/deepdive.git",
+  "source_repo_url": "https://github.com/wanpengxie/deepdive",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "deep-thinking",
+    "claude-code-commands",
+    "claude",
+    "iterative-reasoning"
+  ],
+  "sections": {
+    "overview": "Deepdive is a slash command that changes how Claude Code approaches complex problems by converting thinking into explicit todo lists rather than single-pass responses. Instead of accepting problem frames uncritically and reaching premature conclusions, it guides Claude through iterative exploration: identifying confusions, exploring multiple angles, testing edge cases, and delivering honest assessments of confidence levels. The command works by replicating Claude Code's built-in multi-step reasoning capabilities, allowing theoretically unlimited depth of thought even as context accumulates. It's designed for architecture decisions, technology selection, product strategy, and deep analysis where there's no single correct answer and real thinking is inherently non-linear.\nArchitecture and system design with multiple valid approaches\nTechnology selection requiring trade-off analysis\nProduct strategy and direction decisions\nDeep exploratory analysis of complex problems",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wanpengxie/deepdive`",
+    "usage": "```\nUse /deepdive to analyze [PROBLEM_STATEMENT] with iterative reasoning. Break the problem into sub-questions, explore edge cases, and validate assumptions. Iterate until you reach a well-reasoned conclusion or identify unresolved gaps. Start with: 'Let's deepdive into [PROBLEM_STATEMENT].'\n```\nCopy\n\n```\nLet's deepdive into the root cause of the sudden 30% drop in user engagement for the mobile app in Q3 2024.\n\n**Initial Analysis:**\nThe engagement drop correlates with the release of v2.4.1, which included a redesigned onboarding flow. However, the correlation isn't causal yet—we need to isolate variables.\n\n**First Iteration:**\n- Hypothesis 1: The new onboarding flow is too complex, causing users to abandon before completing setup.\n- Hypothesis 2: A bug in v2.4.1 introduced performance issues, frustrating users.\n\n**Second Iteration:**\n- Checked crash reports: No spike in errors post-launch. Performance metrics (app load time, latency) remained stable.\n- Analyzed funnel data: 40% of users who started onboarding in v2.4.1 dropped off at the 'permissions request' step, vs. 25% in v2.3.0.\n\n**Third Iteration:**\n- Surveyed 500 users: 68% cited 'too many permission requests upfront' as the reason for abandoning onboarding.\n- Cross-referenced with A/B test data: Users who saw a simplified permissions flow (test group) had 15% higher completion rates.\n\n**Conclusion:**\nThe root cause is the redesigned onboarding flow’s permission request strategy. The fix is to revert to the v2.3.0 permission flow and gradually reintroduce requests post-setup.\n\n**Unresolved Gaps:**\n- Need to validate if this is region-specific (e.g., GDPR-heavy regions may behave differently).\n- Long-term impact of this change on user retention isn’t yet measurable (requires 30-day follow-up).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "deepdive#main-content",
+      "deepdive#overview",
+      "deepdive#setup",
+      "deepdive#examples",
+      "deepdive#tools",
+      "deepdive#mcp",
+      "deepdive#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Deepdive is a slash command that changes how Claude Code approaches complex problems by converting thinking into explicit todo lists rather than single-pass responses. Instead of accepting problem frames uncritically and reaching premature conclusions, it guides Claude through iterative exploration: identifying confusions, exploring multiple angles, testing edge cases, and delivering honest assessments of confidence levels. The command works by replicating Claude Code's built-in multi-step reasoning capabilities, allowing theoretically unlimited depth of thought even as context accumulates. It's designed for architecture decisions, technology selection, product strategy, and deep analysis where there's no single correct answer and real thinking is inherently non-linear.\nArchitecture and system design with multiple valid approaches\nTechnology selection requiring trade-off analysis\nProduct strategy and direction decisions\nDeep exploratory analysis of complex problems",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wanpengxie/deepdive`",
+    "usage_vi": "```\nUse /deepdive to analyze [PROBLEM_STATEMENT] with iterative reasoning. Break the problem into sub-questions, explore edge cases, and validate assumptions. Iterate until you reach a well-reasoned conclusion or identify unresolved gaps. Start with: 'Let's deepdive into [PROBLEM_STATEMENT].'\n```\nCopy\n\n```\nLet's deepdive into the root cause of the sudden 30% drop in user engagement for the mobile app in Q3 2024.\n\n**Initial Analysis:**\nThe engagement drop correlates with the release of v2.4.1, which included a redesigned onboarding flow. However, the correlation isn't causal yet—we need to isolate variables.\n\n**First Iteration:**\n- Hypothesis 1: The new onboarding flow is too complex, causing users to abandon before completing setup.\n- Hypothesis 2: A bug in v2.4.1 introduced performance issues, frustrating users.\n\n**Second Iteration:**\n- Checked crash reports: No spike in errors post-launch. Performance metrics (app load time, latency) remained stable.\n- Analyzed funnel data: 40% of users who started onboarding in v2.4.1 dropped off at the 'permissions request' step, vs. 25% in v2.3.0.\n\n**Third Iteration:**\n- Surveyed 500 users: 68% cited 'too many permission requests upfront' as the reason for abandoning onboarding.\n- Cross-referenced with A/B test data: Users who saw a simplified permissions flow (test group) had 15% higher completion rates.\n\n**Conclusion:**\nThe root cause is the redesigned onboarding flow’s permission request strategy. The fix is to revert to the v2.3.0 permission flow and gradually reintroduce requests post-setup.\n\n**Unresolved Gaps:**\n- Need to validate if this is region-specific (e.g., GDPR-heavy regions may behave differently).\n- Long-term impact of this change on user retention isn’t yet measurable (requires 30-day follow-up).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:43:25.724129Z",
+    "http_status": 200,
+    "content_hash": "fbe424deb5e0c06b8e7928440bb46e203e03b172aaf3cb9986d10338ff8c3ddd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\deepdive.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\deepdive.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Deepdive - Multi-Round Reasoning",
+  "short_description_vi": "Deepdive is a slash command for Claude Code that enables multi-round exploratory reasoning and non-linear problem-solving. It benefits operations teams by allowing iterative deep thinking for complex problem-solving. It connects to Claude Code for enhanced reasoning capabilities."
+}

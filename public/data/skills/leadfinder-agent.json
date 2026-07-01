@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/leadfinder-agent",
+  "slug": "leadfinder-agent",
+  "name": "LeadFinder-Agent",
+  "headline": "LeadFinder-Agent: AI-Powered Lead Generation Tool",
+  "short_description": "LeadFinder-Agent is an AI-driven tool that converts user queries into targeted lead searches on Quora. Utilizing Groq AI and Firecrawl, it intelligently processes queries and scrapes the web to uncover potential leads, enhancing lead generation efforts for businesses.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "charans2702",
+  "install_command": "claude install charans2702/LeadFinder-Agent",
+  "source_repo_url": "https://github.com/charans2702/LeadFinder-Agent",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "Quora",
+    "AI",
+    "web scraping",
+    "lead generation",
+    "Groq"
+  ],
+  "sections": {
+    "overview": "LeadFinder-Agent is an AI-driven lead generation tool that converts natural language queries into targeted searches on Quora, automatically extracting user interactions and contact information. It combines Groq AI for intelligent query processing with Firecrawl's web scraping capabilities to identify and format potential leads. The tool includes a FastAPI backend and React dashboard, making it accessible for sales teams seeking qualified prospects. Simply provide a search query and the number of leads needed, and the agent returns comprehensive lead data ready for outreach.\nGenerate leads from Quora based on specific queries\nIdentify potential customers through user interactions\nEnhance marketing strategies with targeted insights",
+    "setup": "Terminal\nCopy\n`claude install charans2702/LeadFinder-Agent`\n`git clone https://github.com/charans2702/LeadFinder-Agent`",
+    "usage": "```\nAct as LeadFinder-Agent. Find 5 potential leads for [COMPANY] in the [INDUSTRY] sector. Use [KEYWORD] as a search term on Quora and provide details like company name, job title, and contact information if available.\n```\nCopy\n\n```\n# Potential Leads for GreenTech Solutions in the Renewable Energy Sector\n\n1. **John Smith**\n   - **Company**: Solar Innovations Inc.\n   - **Job Title**: Director of Business Development\n   - **Contact Information**: LinkedIn profile available\n\n2. **Emily Johnson**\n   - **Company**: Wind Energy Solutions\n   - **Job Title**: Sales Manager\n   - **Contact Information**: Email: emily.johnson@windenergy.com\n\n3. **Michael Brown**\n   - **Company**: EcoPower Systems\n   - **Job Title**: VP of Sales\n   - **Contact Information**: LinkedIn profile available\n\n4. **Sarah Davis**\n   - **Company**: Green Energy Corp\n   - **Job Title**: Business Development Manager\n   - **Contact Information**: Email: sarah.davis@greenenergy.com\n\n5. **David Wilson**\n   - **Company**: Renewable Tech\n   - **Job Title**: Sales Director\n   - **Contact Information**: LinkedIn profile available\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "leadfinder-agent#main-content",
+      "leadfinder-agent#overview",
+      "leadfinder-agent#setup",
+      "leadfinder-agent#examples",
+      "leadfinder-agent#tools",
+      "leadfinder-agent#mcp",
+      "leadfinder-agent#related",
+      "sales-outreach-automation-langgraph",
+      "proposal-system-generates",
+      "prospectio-api-mcp"
+    ],
+    "overview_vi": "LeadFinder-Agent is an AI-driven lead generation tool that converts natural language queries into targeted searches on Quora, automatically extracting user interactions and contact information. It combines Groq AI for intelligent query processing with Firecrawl's web scraping capabilities to identify and format potential leads. The tool includes a FastAPI backend and React dashboard, making it accessible for sales teams seeking qualified prospects. Simply provide a search query and the number of leads needed, and the agent returns comprehensive lead data ready for outreach.\nGenerate leads from Quora based on specific queries\nIdentify potential customers through user interactions\nEnhance marketing strategies with targeted insights",
+    "setup_vi": "Terminal\nCopy\n`claude install charans2702/LeadFinder-Agent`\n`git clone https://github.com/charans2702/LeadFinder-Agent`",
+    "usage_vi": "```\nAct as LeadFinder-Agent. Find 5 potential leads for [COMPANY] in the [INDUSTRY] sector. Use [KEYWORD] as a search term on Quora and provide details like company name, job title, and contact information if available.\n```\nCopy\n\n```\n# Potential Leads for GreenTech Solutions in the Renewable Energy Sector\n\n1. **John Smith**\n   - **Company**: Solar Innovations Inc.\n   - **Job Title**: Director of Business Development\n   - **Contact Information**: LinkedIn profile available\n\n2. **Emily Johnson**\n   - **Company**: Wind Energy Solutions\n   - **Job Title**: Sales Manager\n   - **Contact Information**: Email: emily.johnson@windenergy.com\n\n3. **Michael Brown**\n   - **Company**: EcoPower Systems\n   - **Job Title**: VP of Sales\n   - **Contact Information**: LinkedIn profile available\n\n4. **Sarah Davis**\n   - **Company**: Green Energy Corp\n   - **Job Title**: Business Development Manager\n   - **Contact Information**: Email: sarah.davis@greenenergy.com\n\n5. **David Wilson**\n   - **Company**: Renewable Tech\n   - **Job Title**: Sales Director\n   - **Contact Information**: LinkedIn profile available\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:52.089502Z",
+    "http_status": 200,
+    "content_hash": "f638607ede56877d468d61f300f94734aea0f7827555d70fd66b6c9fa8ccc28f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\leadfinder-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\leadfinder-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LeadFinder-Agent: AI-Powered Lead Generation Tool",
+  "short_description_vi": "LeadFinder-Agent is an AI-driven tool that converts user queries into targeted lead searches on Quora. Utilizing Groq AI and Firecrawl, it intelligently processes queries and scrapes the web to uncover potential leads, enhancing lead generation efforts for businesses."
+}

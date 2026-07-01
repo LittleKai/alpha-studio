@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-marketing-content-gallery",
+  "slug": "ai-marketing-content-gallery",
+  "name": "AI-Marketing-Content-Gallery",
+  "headline": "AI Marketing Content Gallery Factory",
+  "short_description": "Build an automated content factory that reads product information from a CSV file, uses Google's Gemini 2.5 Pro model to write compelling marketing descriptions, and then calls the Imagen model to generate a unique product image to match.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "engr-krooozy",
+  "install_command": "git clone https://github.com/engr-krooozy/AI-Marketing-Content-Gallery.git",
+  "source_repo_url": "https://github.com/engr-krooozy/AI-Marketing-Content-Gallery",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The AI-Marketing-Content-Gallery is a serverless application that automates end-to-end content creation for product marketing. It reads product information from CSV files, uses Google's Gemini 3.0 Pro model to generate compelling marketing descriptions, and calls the Gemini 3.0 Image model to create unique product images that match the text. The entire pipeline runs on Google Cloud with content moderation filters, error handling, and results stored in BigQuery. A Streamlit frontend on Cloud Run displays the generated content in an interactive gallery, making it ideal for e-commerce teams, marketing operations, and product teams needing to scale content production without manual effort.\nGenerate marketing descriptions and product images at scale for e-commerce catalogs\nAutomate content creation for marketplace listings across multiple platforms\nCreate variant marketing copy and imagery for A/B testing campaigns\nRapidly populate product galleries for new inventory launches",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/engr-krooozy/AI-Marketing-Content-Gallery`",
+    "usage": "```\nCreate a marketing content gallery for [COMPANY] in the [INDUSTRY] sector. Use the following product data from a CSV file: [DATA]. Generate compelling marketing descriptions for each product using Google's Gemini 2.5 Pro model. Then, use the Imagen model to create a unique product image for each description. Ensure the images are high-quality and visually appealing.\n```\nCopy\n\n```\n# Marketing Content Gallery for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-marketing-content-gallery#main-content",
+      "ai-marketing-content-gallery#overview",
+      "ai-marketing-content-gallery#setup",
+      "ai-marketing-content-gallery#examples",
+      "ai-marketing-content-gallery#tools",
+      "ai-marketing-content-gallery#mcp",
+      "ai-marketing-content-gallery#related",
+      "marketingskills",
+      "copywriting",
+      "index-now-submit-sitemap-urls-action"
+    ],
+    "overview_vi": "AI-Marketing-Content-Gallery là một ứng dụng serverless giúp tự động hóa quy trình sản xuất nội dung toàn diện (end-to-end) cho marketing sản phẩm. Ứng dụng đọc thông tin sản phẩm từ file CSV, sử dụng model Gemini 3.0 Pro của Google để tạo mô tả marketing hấp dẫn, và gọi model Gemini 3.0 Image để tạo hình ảnh sản phẩm độc đáo phù hợp với văn bản. Toàn bộ pipeline chạy trên Google Cloud tích hợp các bộ lọc kiểm duyệt nội dung (content moderation), xử lý lỗi và lưu trữ kết quả trong BigQuery. Frontend Streamlit trên Cloud Run hiển thị nội dung được tạo dưới dạng thư viện tương tác, cực kỳ lý tưởng cho các đội ngũ e-commerce, vận hành marketing và phát triển sản phẩm cần mở rộng quy mô sản xuất nội dung một cách tự động.\nTạo mô tả marketing và hình ảnh sản phẩm hàng loạt cho danh mục e-commerce\nTự động hóa việc tạo nội dung cho danh sách sản phẩm trên nhiều sàn thương mại điện tử\nTạo các biến thể nội dung và hình ảnh marketing phục vụ cho chiến dịch A/B testing\nNhanh chóng cập nhật thư viện sản phẩm khi ra mắt các danh mục hàng mới",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/engr-krooozy/AI-Marketing-Content-Gallery`",
+    "usage_vi": "```\nTạo một thư viện nội dung marketing cho [COMPANY] trong lĩnh vực [INDUSTRY]. Sử dụng dữ liệu sản phẩm sau đây từ file CSV: [DATA]. Tạo mô tả marketing hấp dẫn cho từng sản phẩm bằng model Gemini 2.5 Pro của Google. Sau đó, sử dụng model Imagen để tạo một hình ảnh sản phẩm độc đáo cho mỗi mô tả. Đảm bảo hình ảnh chất lượng cao và bắt mắt.\n```\nSao chép\n\n```\n# Thư viện Nội dung Marketing cho GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:13:12.662503Z",
+    "http_status": 200,
+    "content_hash": "85ee8c4f0e0a9bd53f98647b8fbf12f8a7ad2ac336344e1d3ce3f82cf5be6c54",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-marketing-content-gallery.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-marketing-content-gallery.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nhà máy Tự động hóa Thư viện Nội dung Marketing bằng AI",
+  "short_description_vi": "Xây dựng quy trình tự động hóa sản xuất nội dung (content factory) giúp đọc thông tin sản phẩm từ file CSV, sử dụng model Gemini 2.5 Pro của Google để viết mô tả marketing hấp dẫn, và gọi model Imagen để tạo hình ảnh sản phẩm độc đáo tương ứng."
+}

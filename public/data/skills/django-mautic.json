@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/django-mautic",
+  "slug": "django-mautic",
+  "name": "Django Mautic",
+  "headline": "django-mautic: Marketing Automation",
+  "short_description": "An integration to bring Mautic marketing automation into Django models",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "faangbait",
+  "install_command": "git clone https://github.com/faangbait/django-mautic.git",
+  "source_repo_url": "https://github.com/faangbait/django-mautic",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The django-mautic skill is designed to seamlessly integrate Mautic marketing automation capabilities into Django models. This integration allows developers to leverage Mautic's powerful marketing features directly within their Django applications, enabling them to create more dynamic and responsive marketing campaigns. By connecting these two platforms, users can automate various marketing tasks, such as email campaigns and lead tracking, directly from their Django environment. One of the key benefits of using the django-mautic skill is the significant improvement in workflow automation for marketing teams. While the exact time savings are currently unknown, the ability to manage marketing activities within an existing Django application can lead to increased efficiency and reduced manual work. This skill is particularly valuable for developers and product managers who are looking to enhance their marketing strategies without the need to switch between different platforms. This skill is ideal for marketing teams, product managers, and developers who are involved in building and maintaining applications that require marketing automation. By integrating Mautic into Django, users can streamline their marketing processes, making it easier to track user interactions and optimize campaigns based on real-time data. For example, a developer could use this skill to automatically segment users based on their behavior and trigger personalized email campaigns, significantly enhancing user engagement. The implementation of django-mautic is categorized as intermediate, requiring a solid understanding of both Django and Mautic. With an estimated implementation time of around 30 minutes, developers can quickly set up this integration to begin harnessing the power of marketing automation. As businesses increasingly adopt AI-first workflows, integrating tools like Mautic into existing applications becomes essential for maintaining a competitive edge in the digital marketing landscape.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/faangbait/django-mautic`",
+    "usage": "```\nCreate a Django model for a [COMPANY] in the [INDUSTRY] that integrates with Mautic. The model should include fields for [DATA] and ensure seamless synchronization with Mautic's marketing automation features. Provide the necessary code and configuration steps.\n```\nCopy\n\n```\n# Django Model for Mautic Integration\n\n```python\nfrom django.db import models\nfrom mautic_django.models import MauticModel\n\nclass Customer(MauticModel):\n    first_name = models.CharField(max_length=100)\n    last_name = models.CharField(max_length=100)\n    email = models.EmailField(unique=True)\n    phone = models.CharField(max_length=20, blank=True, null=True)\n    company = models.CharField(max_length=100)\n    industry = models.CharField(max_length=50)\n    mautic_segment = models.CharField(max_length=50, default='default_segment')\n\n    def __str__(self):\n        return f'{self.first_name} {self.last_name}'\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "django-mautic#main-content",
+      "django-mautic#overview",
+      "django-mautic#setup",
+      "django-mautic#examples",
+      "django-mautic#tools",
+      "django-mautic#mcp",
+      "django-mautic#related",
+      "marketingskills",
+      "copywriting",
+      "mailchamp"
+    ],
+    "overview_vi": "The django-mautic skill is designed to seamlessly integrate Mautic marketing automation capabilities into Django models. This integration allows developers to leverage Mautic's powerful marketing features directly within their Django applications, enabling them to create more dynamic and responsive marketing campaigns. By connecting these two platforms, users can automate various marketing tasks, such as email campaigns and lead tracking, directly from their Django environment. One of the key benefits of using the django-mautic skill is the significant improvement in workflow automation for marketing teams. While the exact time savings are currently unknown, the ability to manage marketing activities within an existing Django application can lead to increased efficiency and reduced manual work. This skill is particularly valuable for developers and product managers who are looking to enhance their marketing strategies without the need to switch between different platforms. This skill is ideal for marketing teams, product managers, and developers who are involved in building and maintaining applications that require marketing automation. By integrating Mautic into Django, users can streamline their marketing processes, making it easier to track user interactions and optimize campaigns based on real-time data. For example, a developer could use this skill to automatically segment users based on their behavior and trigger personalized email campaigns, significantly enhancing user engagement. The implementation of django-mautic is categorized as intermediate, requiring a solid understanding of both Django and Mautic. With an estimated implementation time of around 30 minutes, developers can quickly set up this integration to begin harnessing the power of marketing automation. As businesses increasingly adopt AI-first workflows, integrating tools like Mautic into existing applications becomes essential for maintaining a competitive edge in the digital marketing landscape.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/faangbait/django-mautic`",
+    "usage_vi": "```\nCreate a Django model for a [COMPANY] in the [INDUSTRY] that integrates with Mautic. The model should include fields for [DATA] and ensure seamless synchronization with Mautic's marketing automation features. Provide the necessary code and configuration steps.\n```\nCopy\n\n```\n# Django Model for Mautic Integration\n\n```python\nfrom django.db import models\nfrom mautic_django.models import MauticModel\n\nclass Customer(MauticModel):\n    first_name = models.CharField(max_length=100)\n    last_name = models.CharField(max_length=100)\n    email = models.EmailField(unique=True)\n    phone = models.CharField(max_length=20, blank=True, null=True)\n    company = models.CharField(max_length=100)\n    industry = models.CharField(max_length=50)\n    mautic_segment = models.CharField(max_length=50, default='default_segment')\n\n    def __str__(self):\n        return f'{self.first_name} {self.last_name}'\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:02.215315Z",
+    "http_status": 200,
+    "content_hash": "3a10d9580947c632cb78029fed52b03281991b196f0ec48fedf4cb94ebf0ab61",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\django-mautic.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\django-mautic.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "django-mautic: Marketing Automation",
+  "short_description_vi": "An integration to bring Mautic marketing automation into Django models"
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/variant-analysis",
+  "slug": "variant-analysis",
+  "name": "Variant Analysis",
+  "headline": "Variant Analysis: Find Similar Vulnerabilities",
+  "short_description": "This skill helps identify similar vulnerabilities and bugs using a five-step process. It is designed for developers and security professionals who need to enhance their code audits and vulnerability analysis.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "trailofbits",
+  "install_command": "git clone https://github.com/trailofbits/skills",
+  "source_repo_url": "https://github.com/trailofbits/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "variant",
+    "security",
+    "analysis"
+  ],
+  "sections": {
+    "overview": "Variant Analysis is a security skill that helps developers and security professionals identify similar vulnerabilities and bugs across codebases using pattern-based analysis. The skill applies a structured five-step process to detect vulnerability variants, enabling more thorough code audits and enhanced vulnerability analysis workflows. By automating the discovery of code patterns that match known security issues, it reduces manual review effort and helps teams catch similar vulnerabilities that might otherwise be missed. The skill integrates with Claude Code and Cursor to provide real-time vulnerability pattern matching during code review and security analysis tasks.\nSearch for similar instances of identified vulnerabilities.\nBuild or refine CodeQL/Semgrep queries.\nPerform systematic code audits after discovering an issue.\nHunt for bug variants across a codebase.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/trailofbits/skills --skill variant-analysis`\n`git clone https://github.com/trailofbits/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "variant-analysis#main-content",
+      "variant-analysis#overview",
+      "variant-analysis#setup",
+      "variant-analysis#examples",
+      "variant-analysis#tools",
+      "variant-analysis#mcp",
+      "variant-analysis#related",
+      "llm-security",
+      "ghost-scan-code",
+      "audit"
+    ],
+    "overview_vi": "Variant Analysis là một skill bảo mật giúp các lập trình viên và chuyên gia bảo mật phát hiện các lỗ hổng cũng như lỗi tương tự trên toàn bộ codebase bằng phương pháp phân tích dựa trên pattern. Skill này áp dụng một quy trình 5 bước được cấu trúc chặt chẽ để phát hiện các biến thể lỗ hổng, hỗ trợ quá trình code audit toàn diện hơn và tối ưu hóa workflow phân tích lỗ hổng. Bằng cách tự động hóa việc tìm kiếm các code pattern trùng khớp với các sự cố bảo mật đã biết, skill giúp giảm thiểu công sức review thủ công và hỗ trợ các đội ngũ phát hiện các lỗ hổng tương tự vốn có thể bị bỏ sót. Skill này tích hợp với Claude Code và Cursor để cung cấp tính năng đối sánh pattern lỗ hổng theo thời gian thực trong quá trình code review và thực hiện các tác vụ phân tích bảo mật.\nTìm kiếm các phiên bản tương tự của các lỗ hổng đã xác định.\nXây dựng hoặc cải tiến các truy vấn CodeQL/Semgrep.\nThực hiện code audit một cách hệ thống sau khi phát hiện sự cố.\nSăn tìm các biến thể lỗi (bug variants) trên toàn bộ codebase.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/trailofbits/skills --skill variant-analysis`\n`git clone https://github.com/trailofbits/skills`",
+    "usage_vi": "📝\n### Không có ví dụ sẵn có\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:03.748801Z",
+    "http_status": 200,
+    "content_hash": "539b52da36f5721afe85f58a1a1c6321dd0db0f99336dfdfd883f07557ccbd7c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\variant-analysis.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\variant-analysis.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Variant Analysis: Tìm kiếm các lỗ hổng tương tự",
+  "short_description_vi": "Skill này giúp phát hiện các lỗ hổng và lỗi bảo mật tương tự thông qua quy trình 5 bước. Skill được thiết kế dành cho các lập trình viên và chuyên gia bảo mật có nhu cầu nâng cao hiệu quả code audit và phân tích lỗ hổng."
+}

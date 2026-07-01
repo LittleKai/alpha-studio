@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/webscraper",
+  "slug": "webscraper",
+  "name": "react-native-best-practices",
+  "headline": "Webscraper - Efficient Web Data Extraction",
+  "short_description": "The webscraper skill efficiently extracts content from web pages and converts it into Markdown format, enhancing AI search applications. Ideal for developers looking to streamline data collection and improve content accessibility.",
+  "tier": "Gold",
+  "category": "GrowthMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "zzzgydi",
+  "install_command": "claude install zzzgydi/webscraper",
+  "source_repo_url": "https://github.com/zzzgydi/webscraper",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "Markdown",
+    "AI enhancement",
+    "web scraping",
+    "Go",
+    "data extraction"
+  ],
+  "sections": {
+    "overview": "Web Scraper is a tool that extracts content from web pages and automatically converts it to Markdown format, making it ideal for AI-powered search applications and content processing workflows. It supports both headless and interactive browser modes, with optional readability enhancement to improve HTML conversion quality. The skill runs locally with Chrome and can be deployed via Docker, offering flexibility for developers building AI agents that need to access and process web data. It exposes a REST API endpoint that accepts multiple URLs and returns cleanly formatted Markdown output, simplifying integration into AI search pipelines and data collection workflows.\nExtracting product details from e-commerce sites\nGathering market research data from competitor websites\nConverting blog content into Markdown for easier editing",
+    "setup": "Terminal\nCopy\n`claude install zzzgydi/webscraper`\n`git clone https://github.com/zzzgydi/webscraper`",
+    "usage": "```\nExtract the main content from the webpage at [URL] and convert it into clean Markdown format. Preserve headings, lists, tables, and code blocks while removing navigation menus, ads, and boilerplate text. If the page contains structured data (e.g., tables, JSON), format it as a Markdown table or code block. Exclude any interactive elements like buttons or forms. Return only the Markdown content without any additional commentary.\n```\nCopy\n\n```\n```markdown\n# Forma Workshops: Bringing Nature Indoors",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "webscraper#main-content",
+      "webscraper#overview",
+      "webscraper#setup",
+      "webscraper#examples",
+      "webscraper#tools",
+      "webscraper#mcp",
+      "webscraper#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Web Scraper is a tool that extracts content from web pages and automatically converts it to Markdown format, making it ideal for AI-powered search applications and content processing workflows. It supports both headless and interactive browser modes, with optional readability enhancement to improve HTML conversion quality. The skill runs locally with Chrome and can be deployed via Docker, offering flexibility for developers building AI agents that need to access and process web data. It exposes a REST API endpoint that accepts multiple URLs and returns cleanly formatted Markdown output, simplifying integration into AI search pipelines and data collection workflows.\nExtracting product details from e-commerce sites\nGathering market research data from competitor websites\nConverting blog content into Markdown for easier editing",
+    "setup_vi": "Terminal\nCopy\n`claude install zzzgydi/webscraper`\n`git clone https://github.com/zzzgydi/webscraper`",
+    "usage_vi": "```\nExtract the main content from the webpage at [URL] and convert it into clean Markdown format. Preserve headings, lists, tables, and code blocks while removing navigation menus, ads, and boilerplate text. If the page contains structured data (e.g., tables, JSON), format it as a Markdown table or code block. Exclude any interactive elements like buttons or forms. Return only the Markdown content without any additional commentary.\n```\nCopy\n\n```\n```markdown\n# Forma Workshops: Bringing Nature Indoors"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:49:33.961134Z",
+    "http_status": 200,
+    "content_hash": "489600d7cbca772db844d66439c080e33b3322b994f222868b2673e43035a8da",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webscraper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webscraper.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Webscraper - Efficient Web Data Extraction",
+  "short_description_vi": "The webscraper skill efficiently extracts content from web pages and converts it into Markdown format, enhancing AI search applications. Ideal for developers looking to streamline data collection and improve content accessibility."
+}

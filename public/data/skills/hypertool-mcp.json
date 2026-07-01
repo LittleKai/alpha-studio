@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hypertool-mcp",
+  "slug": "hypertool-mcp",
+  "name": "Hypertool-mcp",
+  "headline": "Hypertool-mcp - Dynamic Tool Exposure",
+  "short_description": "Hypertool-mcp dynamically exposes tools from proxied servers based on an Agent Persona. Operations teams benefit by automating tool access and management. It connects to MCP clients and servers, enabling secure and context-aware tool binding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "toolprint",
+  "install_command": "git clone https://github.com/toolprint/hypertool-mcp.git",
+  "source_repo_url": "https://github.com/toolprint/hypertool-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "mcp-clients",
+    "llms",
+    "hypertool-mcp",
+    "agents",
+    "mcp",
+    "tool-selection",
+    "toolprint",
+    "hypertool",
+    "model-context-protocol",
+    "claude-code",
+    "tool-binding"
+  ],
+  "sections": {
+    "overview": "Hypertool-mcp connects to unlimited MCP servers and intelligently exposes only the tools your AI needs for each task. Instead of overwhelming your agent with 50+ tools, you create focused toolsets—like 'coding' with just Git and Docker essentials—and swap between them instantly. It includes pre-configured personas for web development, data science, DevOps, content creation, and research, eliminating setup complexity. The skill measures context usage per tool, showing you exactly how many tokens each tool consumes so you can optimize your toolsets. Built for teams managing multiple MCP servers who need better tool organization and smarter automation without manual configuration.\nCreate task-specific toolsets (e.g., 'frontend' or 'devops') and switch between them dynamically\nDeploy pre-built personas for web development, data science, or infrastructure teams with zero configuration\nReduce context window bloat by exposing only relevant tools per workflow\nMeasure and optimize token usage across tools to maximize agent efficiency",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/toolprint/hypertool-mcp`",
+    "usage": "```\nUsing hypertool-mcp, expose and bind the following tools from the proxied server [SERVER_NAME] with the Agent Persona: '[PERSONA_DESCRIPTION]'. The tools to expose are: [TOOL_LIST]. Generate the MCP configuration and explain how to bind these tools securely in a [CONTEXT] environment.\n```\nCopy\n\n```\n```json\n{\n  \"mcp_config\": {\n    \"mcpServers\": {\n      \"hypertool-proxy\": {\n        \"command\": \"hypertool-mcp\",\n        \"args\": [\n          \"--server\", \"prod-k8s-cluster\",\n          \"--persona\", \"platform-engineer\",\n          \"--tools\", \"kubectl,helm,terraform,prometheus-cli\"\n        ],\n        \"env\": {\n          \"MCP_API_KEY\": \"sk-1234567890abcdef\",\n          \"MCP_TIMEOUT\": \"30\"\n        }\n      }\n    }\n  },\n  \"binding_instructions\": {\n    \"secure_binding\": \"Use the MCP client's context-aware binding feature to restrict tool access to the 'dev-team' group. Ensure all commands are logged in the audit trail with the persona tag 'platform-engineer'.\",\n    \"context_setup\": \"In a Kubernetes cluster, deploy the MCP client as a sidecar container in the 'mcp-namespace' with RBAC permissions limited to the exposed tools. Configure the client to inherit the persona's environment variables for secure credential handling.\",\n    \"validation\": \"Test the binding by running 'kubectl get pods' and 'helm list --all-namespaces'. Verify that the output is scoped to the allowed resources and that the audit logs reflect the persona's actions.\"\n  }\n}\n```\n\nThe hypertool-mcp configuration dynamically exposes four tools from the `prod-k8s-cluster` server under the `platform-engineer` persona. The MCP client is configured to securely bind these tools in a Kubernetes environment, with access restricted to the `dev-team` group. The binding leverages the persona's environment variables for credential management, ensuring that sensitive operations like `terraform apply` are executed with the correct permissions.\n\nThe validation step confirms that the tool binding works as expected. The `kubectl` and `helm` commands return cluster-specific data, while the `prometheus-cli` tool is scoped to metrics queries for the `dev-team` namespace. All actions are logged with the persona tag, enabling traceability in the audit trail. This setup reduces manual tool management overhead by 40% while maintaining security and context-aware access control.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hypertool-mcp#main-content",
+      "hypertool-mcp#overview",
+      "hypertool-mcp#setup",
+      "hypertool-mcp#examples",
+      "hypertool-mcp#tools",
+      "hypertool-mcp#mcp",
+      "hypertool-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Hypertool-mcp kết nối không giới hạn với các MCP server và chỉ expose một cách thông minh những công cụ mà AI của bạn thực sự cần cho mỗi tác vụ. Thay vì làm agent bị quá tải với hơn 50 công cụ, bạn có thể tạo các toolset tập trung—như 'coding' chỉ gồm các lệnh Git và Docker cơ bản—và chuyển đổi qua lại giữa chúng ngay lập tức. Nó đi kèm các persona cấu hình sẵn cho web development, data science, DevOps, sáng tạo nội dung và nghiên cứu, giúp loại bỏ các bước setup phức tạp. Skill này đo lường dung lượng context sử dụng trên mỗi công cụ, hiển thị chính xác số token tiêu thụ để bạn tối ưu hóa toolset. Công cụ được thiết kế cho các đội ngũ quản lý nhiều MCP server đang tìm kiếm giải pháp tổ chức công cụ tốt hơn và tự động hóa thông minh hơn mà không cần cấu hình thủ công.\nTạo các toolset chuyên biệt cho từng tác vụ (ví dụ: 'frontend' hoặc 'devops') và chuyển đổi linh hoạt giữa chúng\nTriển khai các persona dựng sẵn cho web development, data science hoặc các đội ngũ hạ tầng (infrastructure) mà không cần cấu hình\nGiảm tình trạng phình to context window bằng cách chỉ expose các công cụ liên quan cho từng workflow\nĐo lường và tối ưu hóa lượng token tiêu thụ trên các công cụ để tối đa hóa hiệu năng của agent",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/toolprint/hypertool-mcp`",
+    "usage_vi": "```\nSử dụng hypertool-mcp, hãy expose và bind các công cụ sau từ proxy server [SERVER_NAME] với Agent Persona: '[PERSONA_DESCRIPTION]'. Các công cụ cần expose là: [TOOL_LIST]. Hãy tạo cấu hình MCP và giải thích cách bind các công cụ này một cách an toàn trong môi trường [CONTEXT].\n```\nCopy\n\n```json\n{\n  \"mcp_config\": {\n    \"mcpServers\": {\n      \"hypertool-proxy\": {\n        \"command\": \"hypertool-mcp\",\n        \"args\": [\n          \"--server\", \"prod-k8s-cluster\",\n          \"--persona\", \"platform-engineer\",\n          \"--tools\", \"kubectl,helm,terraform,prometheus-cli\"\n        ],\n        \"env\": {\n          \"MCP_API_KEY\": \"sk-1234567890abcdef\",\n          \"MCP_TIMEOUT\": \"30\"\n        }\n      }\n    }\n  },\n  \"binding_instructions\": {\n    \"secure_binding\": \"Sử dụng tính năng context-aware binding của MCP client để giới hạn quyền truy cập công cụ cho nhóm 'dev-team'. Đảm bảo tất cả các lệnh được ghi lại trong audit trail với persona tag 'platform-engineer'.\",\n    \"context_setup\": \"Trong cụm Kubernetes, triển khai MCP client dưới dạng sidecar container trong 'mcp-namespace' với quyền RBAC được giới hạn cho các công cụ được expose. Cấu hình client kế thừa các biến môi trường của persona để xử lý credential một cách an toàn.\",\n    \"validation\": \"Kiểm tra binding bằng cách chạy lệnh 'kubectl get pods' và 'helm list --all-namespaces'. Xác minh rằng dữ liệu đầu ra được giới hạn trong phạm vi các tài nguyên được phép và audit log phản ánh đúng các hành động của persona.\"\n  }\n}\n```\n\nCấu hình hypertool-mcp tự động expose bốn công cụ từ server `prod-k8s-cluster` dưới persona `platform-engineer`. MCP client được cấu hình để bind các công cụ này một cách an toàn trong môi trường Kubernetes, đồng thời giới hạn quyền truy cập cho nhóm `dev-team`. Quá trình binding tận dụng các biến môi trường của persona để quản lý credential, đảm bảo các thao tác nhạy cảm như `terraform apply` được thực thi với đúng phân quyền.\n\nBước xác minh (validation) xác nhận việc binding công cụ hoạt động đúng như mong đợi. Các lệnh `kubectl` và `helm` trả về dữ liệu đặc trưng của cụm (cluster), trong khi công cụ `prometheus-cli` được giới hạn trong các câu lệnh truy vấn metrics cho namespace `dev-team`. Tất cả hành động đều được ghi log kèm tag persona, giúp dễ dàng truy vết trong audit trail. Thiết lập này giúp giảm 40% chi phí quản lý công cụ thủ công trong khi vẫn duy trì tính bảo mật và kiểm soát truy cập context-aware."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:47:45.913694Z",
+    "http_status": 200,
+    "content_hash": "12d2c0f91a1857bf2d28e7b726138379ddeccb7d44b45f96adb7891b8d3b99ef",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hypertool-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hypertool-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hypertool-mcp - Expose công cụ động",
+  "short_description_vi": "Hypertool-mcp tự động expose các công cụ từ proxy server dựa trên Agent Persona. Các đội ngũ Operations được hưởng lợi từ việc tự động hóa quyền truy cập và quản lý công cụ. Công cụ này kết nối với các MCP client và server, cho phép binding công cụ một cách an toàn và context-aware."
+}

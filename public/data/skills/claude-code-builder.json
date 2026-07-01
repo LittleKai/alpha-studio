@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-builder",
+  "slug": "claude-code-builder",
+  "name": "Claude Code Builder",
+  "headline": "Claude Code Builder: Automate Development Lifecycle",
+  "short_description": "Claude Code Builder is an AI-powered Python CLI tool that automates the software development lifecycle using the Claude Code SDK. It handles tasks from specification to deployment, benefiting operations teams by streamlining workflows and reducing manual coding efforts. The tool integrates with existing development environments and CI/CD pipelines.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "360 min",
+  "author": "krzemienski",
+  "install_command": "git clone https://github.com/krzemienski/claude-code-builder.git",
+  "source_repo_url": "https://github.com/krzemienski/claude-code-builder",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-sdk",
+    "opus4",
+    "anthropic",
+    "claude",
+    "claude-code",
+    "ai-code-generation"
+  ],
+  "sections": {
+    "overview": "The Claude Code Builder is an AI-powered Python CLI tool designed to automate the entire software development lifecycle using the Claude Code SDK. This skill streamlines the process from specification through to deployment, allowing developers to focus on building high-quality software rather than getting bogged down in repetitive tasks. By leveraging AI automation, the Claude Code Builder enhances productivity and efficiency in development workflows. One of the key benefits of using the Claude Code Builder is the significant reduction in manual effort required throughout the development lifecycle. While the exact time savings are currently unknown, the automation of tasks such as code generation, testing, and deployment can lead to a more efficient workflow, freeing developers to concentrate on critical problem-solving and innovation. This tool is particularly beneficial for teams looking to optimize their development processes and minimize time-to-market for new features or products. This skill is particularly suited for developers, product managers, and AI practitioners who are involved in software development and deployment. Whether you are part of a startup or a larger organization, integrating the Claude Code Builder into your workflow can lead to improved collaboration and faster delivery times. Practical use cases include automating the setup of development environments, generating boilerplate code, and managing deployment pipelines, which can significantly enhance team productivity. The implementation of the Claude Code Builder is rated as intermediate in difficulty, with an estimated setup time of around 30 minutes. Users will need a basic understanding of Python and familiarity with the Claude Code SDK to fully leverage this tool. As organizations increasingly adopt AI-first workflows, the Claude Code Builder stands out as a crucial component that enables teams to harness AI automation effectively, driving innovation and efficiency in software development.\nThis script automates the data processing workflow for [COMPANY] in the [INDUSTRY] sector. It handles [SPECIFIC_TASK] and integrates with the existing [DEVELOPMENT_ENVIRONMENT_OR_CICD_PIPELINE].",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/krzemienski/claude-code-builder`",
+    "usage": "```\nI need to automate a [SPECIFIC_TASK] for my [COMPANY] in the [INDUSTRY] sector. The task involves [DATA_PROCESSING_OR_OPERATIONS]. Can you generate a Python script using the Claude Code SDK to handle this? The script should include [SPECIFIC_FUNCTIONALITY] and integrate with our existing [DEVELOPMENT_ENVIRONMENT_OR_CICD_PIPELINE].\n```\nCopy\n\n```\n# Automated Data Processing Script for [COMPANY]\n\n```python\nfrom claude_code_sdk import DataProcessor\n\n# Initialize the data processor\nprocessor = DataProcessor(\n    source=[DATA_SOURCE],\n    transformations=[SPECIFIC_TRANSFORMATIONS],\n    validation_rules=[VALIDATION_RULES],\n    destination=[DESTINATION_SYSTEM]\n)\n\n# Run the data processing workflow\nprocessor.run()\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-builder#main-content",
+      "claude-code-builder#overview",
+      "claude-code-builder#setup",
+      "claude-code-builder#examples",
+      "claude-code-builder#tools",
+      "claude-code-builder#mcp",
+      "claude-code-builder#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Claude Code Builder is an AI-powered Python CLI tool designed to automate the entire software development lifecycle using the Claude Code SDK. This skill streamlines the process from specification through to deployment, allowing developers to focus on building high-quality software rather than getting bogged down in repetitive tasks. By leveraging AI automation, the Claude Code Builder enhances productivity and efficiency in development workflows. One of the key benefits of using the Claude Code Builder is the significant reduction in manual effort required throughout the development lifecycle. While the exact time savings are currently unknown, the automation of tasks such as code generation, testing, and deployment can lead to a more efficient workflow, freeing developers to concentrate on critical problem-solving and innovation. This tool is particularly beneficial for teams looking to optimize their development processes and minimize time-to-market for new features or products. This skill is particularly suited for developers, product managers, and AI practitioners who are involved in software development and deployment. Whether you are part of a startup or a larger organization, integrating the Claude Code Builder into your workflow can lead to improved collaboration and faster delivery times. Practical use cases include automating the setup of development environments, generating boilerplate code, and managing deployment pipelines, which can significantly enhance team productivity. The implementation of the Claude Code Builder is rated as intermediate in difficulty, with an estimated setup time of around 30 minutes. Users will need a basic understanding of Python and familiarity with the Claude Code SDK to fully leverage this tool. As organizations increasingly adopt AI-first workflows, the Claude Code Builder stands out as a crucial component that enables teams to harness AI automation effectively, driving innovation and efficiency in software development.\nThis script automates the data processing workflow for [COMPANY] in the [INDUSTRY] sector. It handles [SPECIFIC_TASK] and integrates with the existing [DEVELOPMENT_ENVIRONMENT_OR_CICD_PIPELINE].",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/krzemienski/claude-code-builder`",
+    "usage_vi": "```\nI need to automate a [SPECIFIC_TASK] for my [COMPANY] in the [INDUSTRY] sector. The task involves [DATA_PROCESSING_OR_OPERATIONS]. Can you generate a Python script using the Claude Code SDK to handle this? The script should include [SPECIFIC_FUNCTIONALITY] and integrate with our existing [DEVELOPMENT_ENVIRONMENT_OR_CICD_PIPELINE].\n```\nCopy\n\n```\n# Automated Data Processing Script for [COMPANY]\n\n```python\nfrom claude_code_sdk import DataProcessor\n\n# Initialize the data processor\nprocessor = DataProcessor(\n    source=[DATA_SOURCE],\n    transformations=[SPECIFIC_TRANSFORMATIONS],\n    validation_rules=[VALIDATION_RULES],\n    destination=[DESTINATION_SYSTEM]\n)\n\n# Run the data processing workflow\nprocessor.run()\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:29.728309Z",
+    "http_status": 200,
+    "content_hash": "f4414c7f2f2d339fc05c2d5a15fb9cf323b7e745cf376bbcad1794db58e26896",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-builder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-builder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Builder: Automate Development Lifecycle",
+  "short_description_vi": "Claude Code Builder is an AI-powered Python CLI tool that automates the software development lifecycle using the Claude Code SDK. It handles tasks from specification to deployment, benefiting operations teams by streamlining workflows and reducing manual coding efforts. The tool integrates with existing development environments and CI/CD pipelines."
+}

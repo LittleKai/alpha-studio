@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/disk-cleaner",
+  "slug": "disk-cleaner",
+  "name": "browser-use",
+  "headline": "Disk Cleaner: Cross-Platform Disk Analysis & Safe",
+  "short_description": "A powerful Claude Code skill that provides safe disk space analysis, junk file cleaning, and real-time monitoring across Windows, Linux, and macOS.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "gccszs",
+  "install_command": "git clone https://github.com/gccszs/disk-cleaner.git",
+  "source_repo_url": "https://github.com/gccszs/disk-cleaner",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Disk Cleaner is a comprehensive Python toolkit for managing disk space across Windows, Linux, and macOS. It analyzes disk usage with 3D file classification (by type, risk level, and age), detects duplicate files, and safely removes temporary files and caches specific to each platform. The tool features progressive scanning for large disks, incremental caching for faster repeat scans, and file lock detection to prevent deletion of in-use files. Users benefit from smart cleanup recommendations, real-time disk monitoring with configurable alerts, and automated scheduling for recurring cleanup tasks—all without external dependencies.\nReclaim disk space by identifying and removing duplicate files and large unnecessary directories\nSafely clean platform-specific caches (Windows Update, APT, Homebrew, Xcode derived data)\nMonitor disk usage in real-time with configurable thresholds and automated alerts\nSchedule recurring cleanup tasks across development, server, or personal machines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gccszs/disk-cleaner`\n- **Threshold**: 85%\n- **Alert Method**: Desktop Notification\n- **Monitoring Frequency**: Every 6 hours\n\n### Next Steps\n1. Review the junk files list and confirm deletion.\n2. Run the cleanup script as administrator.\n3. Set up the real-time monitoring system.\n```",
+    "usage": "```\nAnalyze my disk space usage and identify junk files that can be safely deleted. Provide a breakdown of file types and sizes. Then, create a script to clean these files on [OPERATING_SYSTEM]. Also, set up a real-time monitoring system to track disk usage and alert me when it exceeds [THRESHOLD]%.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "disk-cleaner#main-content",
+      "disk-cleaner#overview",
+      "disk-cleaner#setup",
+      "disk-cleaner#examples",
+      "disk-cleaner#tools",
+      "disk-cleaner#mcp",
+      "disk-cleaner#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Disk Cleaner is a comprehensive Python toolkit for managing disk space across Windows, Linux, and macOS. It analyzes disk usage with 3D file classification (by type, risk level, and age), detects duplicate files, and safely removes temporary files and caches specific to each platform. The tool features progressive scanning for large disks, incremental caching for faster repeat scans, and file lock detection to prevent deletion of in-use files. Users benefit from smart cleanup recommendations, real-time disk monitoring with configurable alerts, and automated scheduling for recurring cleanup tasks—all without external dependencies.\nReclaim disk space by identifying and removing duplicate files and large unnecessary directories\nSafely clean platform-specific caches (Windows Update, APT, Homebrew, Xcode derived data)\nMonitor disk usage in real-time with configurable thresholds and automated alerts\nSchedule recurring cleanup tasks across development, server, or personal machines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gccszs/disk-cleaner`\n- **Threshold**: 85%\n- **Alert Method**: Desktop Notification\n- **Monitoring Frequency**: Every 6 hours\n\n### Next Steps\n1. Review the junk files list and confirm deletion.\n2. Run the cleanup script as administrator.\n3. Set up the real-time monitoring system.\n```",
+    "usage_vi": "```\nAnalyze my disk space usage and identify junk files that can be safely deleted. Provide a breakdown of file types and sizes. Then, create a script to clean these files on [OPERATING_SYSTEM]. Also, set up a real-time monitoring system to track disk usage and alert me when it exceeds [THRESHOLD]%.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:22:02.025147Z",
+    "http_status": 200,
+    "content_hash": "ee05849ccf02fb9776d4f9b67d44a2df208fcd1377f21d72c8703697c7063dde",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\disk-cleaner.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\disk-cleaner.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Disk Cleaner: Cross-Platform Disk Analysis & Safe",
+  "short_description_vi": "A powerful Claude Code skill that provides safe disk space analysis, junk file cleaning, and real-time monitoring across Windows, Linux, and macOS."
+}

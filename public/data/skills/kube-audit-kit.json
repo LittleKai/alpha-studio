@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kube-audit-kit",
+  "slug": "kube-audit-kit",
+  "name": "browser-use",
+  "headline": "Kube Audit Kit - Kubernetes Security Audits",
+  "short_description": "Kube Audit Kit automates non-intrusive security audits of Kubernetes clusters. It exports and sanitizes resources in specified contexts or namespaces. Operations teams use it to identify security risks without disrupting cluster operations. It integrates with Claude Code Skills and connects to Kubernetes clusters.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "crazygit",
+  "install_command": "git clone https://github.com/crazygit/kube-audit-kit.git",
+  "source_repo_url": "https://github.com/crazygit/kube-audit-kit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "audit",
+    "skills",
+    "kubernetes"
+  ],
+  "sections": {
+    "overview": "Kube Audit Kit is a Claude Code Skill that performs comprehensive security audits of Kubernetes clusters without modifying cluster state. It exports all resources from specified contexts or namespaces, deeply sanitizes them, and intelligently groups applications before generating detailed security reports. The skill evaluates pod security, RBAC permissions, network policies, host path mounts, seccomp/AppArmor configurations, high availability settings, and sensitive data exposure against Pod Security Standards, NSA Kubernetes Guidelines, and CIS Kubernetes Benchmark. Operations teams use it to identify security risks, compliance gaps, and misconfigurations across their Kubernetes infrastructure with scripted static analysis combined with AI-powered deep inspection.\nAudit production Kubernetes clusters for security policy compliance\nAnalyze RBAC configurations for over-privileged roles and dangerous wildcards\nScan for exposed secrets and sensitive data in ConfigMaps\nEvaluate network policies and service exposure risks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/crazygit/kube-audit-kit`",
+    "usage": "```\nAudit the Kubernetes cluster in [NAMESPACE] for security risks. Focus on [SPECIFIC_RISK_TYPE] such as misconfigured RBAC roles or exposed secrets. Generate a report with prioritized recommendations. Use the Kube Audit Kit to export and sanitize the resources.\n```\nCopy\n\n```\nAfter running the Kube Audit Kit on the 'production' namespace, the following security risks were identified:\n\n1. **Exposed Secrets**: Three secrets were found with base64-encoded credentials. Recommendation: Use Kubernetes Secrets with proper encryption and access controls. Priority: High.\n\n2. **RBAC Misconfigurations**: Two roles were granted excessive permissions. Recommendation: Apply the principle of least privilege. Priority: Medium.\n\n3. **Unused Resources**: Five unused deployments were discovered. Recommendation: Remove unused resources to reduce attack surface. Priority: Low.\n\nThe audit was completed without disrupting cluster operations. Detailed findings and remediation steps are attached.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kube-audit-kit#main-content",
+      "kube-audit-kit#overview",
+      "kube-audit-kit#setup",
+      "kube-audit-kit#examples",
+      "kube-audit-kit#tools",
+      "kube-audit-kit#mcp",
+      "kube-audit-kit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kube Audit Kit is a Claude Code Skill that performs comprehensive security audits of Kubernetes clusters without modifying cluster state. It exports all resources from specified contexts or namespaces, deeply sanitizes them, and intelligently groups applications before generating detailed security reports. The skill evaluates pod security, RBAC permissions, network policies, host path mounts, seccomp/AppArmor configurations, high availability settings, and sensitive data exposure against Pod Security Standards, NSA Kubernetes Guidelines, and CIS Kubernetes Benchmark. Operations teams use it to identify security risks, compliance gaps, and misconfigurations across their Kubernetes infrastructure with scripted static analysis combined with AI-powered deep inspection.\nAudit production Kubernetes clusters for security policy compliance\nAnalyze RBAC configurations for over-privileged roles and dangerous wildcards\nScan for exposed secrets and sensitive data in ConfigMaps\nEvaluate network policies and service exposure risks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/crazygit/kube-audit-kit`",
+    "usage_vi": "```\nAudit the Kubernetes cluster in [NAMESPACE] for security risks. Focus on [SPECIFIC_RISK_TYPE] such as misconfigured RBAC roles or exposed secrets. Generate a report with prioritized recommendations. Use the Kube Audit Kit to export and sanitize the resources.\n```\nCopy\n\n```\nAfter running the Kube Audit Kit on the 'production' namespace, the following security risks were identified:\n\n1. **Exposed Secrets**: Three secrets were found with base64-encoded credentials. Recommendation: Use Kubernetes Secrets with proper encryption and access controls. Priority: High.\n\n2. **RBAC Misconfigurations**: Two roles were granted excessive permissions. Recommendation: Apply the principle of least privilege. Priority: Medium.\n\n3. **Unused Resources**: Five unused deployments were discovered. Recommendation: Remove unused resources to reduce attack surface. Priority: Low.\n\nThe audit was completed without disrupting cluster operations. Detailed findings and remediation steps are attached.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:01.151084Z",
+    "http_status": 200,
+    "content_hash": "e5b870f7756ed4a937b554fb058cb0974ba22b04f99afb0faacda4c109c24464",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kube-audit-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kube-audit-kit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Kube Audit Kit - Kubernetes Security Audits",
+  "short_description_vi": "Kube Audit Kit automates non-intrusive security audits of Kubernetes clusters. It exports and sanitizes resources in specified contexts or namespaces. Operations teams use it to identify security risks without disrupting cluster operations. It integrates with Claude Code Skills and connects to Kubernetes clusters."
+}

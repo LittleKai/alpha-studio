@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/copilot",
+  "slug": "copilot",
+  "name": "Copilot",
+  "headline": "Boost Productivity with Copilot AI Assistant",
+  "short_description": "Copilot is your ultimate AI assistant, streamlining tasks and enhancing productivity with intelligent suggestions. Unlock your potential by automating routine processes and focusing on what truly matters.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "AI",
+    "automation",
+    "productivity",
+    "agents"
+  ],
+  "sections": {
+    "overview": "Copilot is an AI assistant skill designed to streamline development workflows and enhance productivity through intelligent suggestions. It automates routine processes, allowing developers to focus on higher-priority work. By handling repetitive tasks, Copilot helps unlock potential and improve efficiency across development projects.\ntask automation\ndata analysis\ncustomer support",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nAct as a Copilot for [TEAM/ROLE, e.g., Finance Team] using Productiv to optimize SaaS spending. Review the current software subscriptions in Productiv for [COMPANY_NAME]. Identify [X] redundant or underutilized licenses, calculate potential annual savings, and suggest a prioritized action plan to consolidate or renegotiate contracts. Include renewal dates and compliance risks for each identified tool.\n```\nCopy\n\n```\n### SaaS Spend Optimization Report for Acme Corp\n**Generated:** October 15, 2023\n**Review Period:** Last 90 days\n\n#### **Top 5 Redundant Licenses Identified**\n1. **Zoom Pro (50 licenses)**\n   - **Current Spend:** $4,500/month ($54,000/year)\n   - **Utilization:** 38% (19 active users)\n   - **Issue:** Duplicate with Microsoft Teams Enterprise (already purchased for all employees)\n   - **Action:** Cancel 31 licenses → **Annual Savings: $20,790**\n   - **Renewal Date:** November 30, 2023\n   - **Compliance Risk:** None (no legal obligations)\n\n2. **Slack Enterprise Grid (120 licenses)**\n   - **Current Spend:** $18,000/month ($216,000/year)\n   - **Utilization:** 65% (78 active users)\n   - **Issue:** Overlapping with Microsoft Teams (already integrated with Slack for external partners)\n   - **Action:** Downgrade to Standard plan (50 licenses) → **Annual Savings: $108,000**\n   - **Renewal Date:** December 15, 2023\n   - **Compliance Risk:** Medium (requires 30-day notice to downgrade)\n\n3. **Adobe Creative Cloud (25 licenses)**\n   - **Current Spend:** $3,750/month ($45,000/year)\n   - **Utilization:** 40% (10 active users)\n   - **Issue:** Only 2 designers use the full suite; others only need Photoshop\n   - **Action:** Switch to Adobe Photoshop-only plan for 15 users → **Annual Savings: $22,500**\n   - **Renewal Date:** January 10, 2024\n   - **Compliance Risk:** Low (no legal penalties for downgrading)\n\n4. **Notion Team Plan (80 licenses)**\n   - **Current Spend:** $4,800/month ($57,600/year)\n   - **Utilization:** 70% (56 active users)\n   - **Issue:** 24 ghost licenses (employees left but not deactivated)\n   - **Action:** Deactivate ghost licenses + enforce monthly license audit → **Annual Savings: $17,280**\n   - **Renewal Date:** February 28, 2024\n   - **Compliance Risk:** High (potential audit failure if ghost licenses remain)\n\n5. **HubSpot Marketing Hub (3 seats)**\n   - **Current Spend:** $2,100/month ($25,200/year)\n   - **Utilization:** 10% (only 1 active user)\n   - **Issue:** Underutilized; marketing team switched to internal tools\n   - **Action:** Cancel subscription → **Annual Savings: $25,200**\n   - **Renewal Date:** March 31, 2024\n   - **Compliance Risk:** None\n\n#### **Total Annual Savings Potential:** $193,770 (32% reduction in SaaS spend)\n\n#### **Recommended Next Steps**\n1. **Immediate (Next 2 Weeks):**\n   - Cancel Zoom Pro (31 licenses) and HubSpot Marketing Hub.\n   - Deactivate ghost licenses in Notion.\n   - **Owner:** IT Admin (Sarah Chen)\n   - **Tools:** Productiv + HRIS integration\n\n2. **Short-Term (Next 30 Days):**\n   - Downgrade Slack to Standard plan and negotiate with Adobe for Photoshop-only licenses.\n   - **Owner:** Procurement Manager (James Lee)\n   - **Tools:** Productiv + Adobe Admin Console\n\n3. **Long-Term (Next 90 Days):**\n   - Implement automated license deactivation workflow in Productiv.\n   - Schedule quarterly SaaS audits to prevent future redundancies.\n   - **Owner:** Finance Team (Maria Rodriguez)\n   - **Tools:** Productiv + Jira for tracking\n\n#### **Compliance & Risk Mitigation**\n- **Slack downgrade:** Submit 30-day notice before December 15 renewal to avoid penalties.\n- **Adobe licenses:** Verify that Photoshop-only plan meets all design team needs.\n- **Notion audit:** Enforce monthly license reconciliation to prevent ghost accounts.\n\n#### **Expected ROI**\n- **Cost Savings:** $193,770/year\n- **Time Saved:** 15 hours/month (manual license tracking eliminated)\n- **Risk Reduction:** 100% compliance with software agreements\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "copilot#main-content",
+      "copilot#overview",
+      "copilot#setup",
+      "copilot#examples",
+      "copilot#tools",
+      "copilot#mcp",
+      "copilot#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Copilot is an AI assistant skill designed to streamline development workflows and enhance productivity through intelligent suggestions. It automates routine processes, allowing developers to focus on higher-priority work. By handling repetitive tasks, Copilot helps unlock potential and improve efficiency across development projects.\ntask automation\ndata analysis\ncustomer support",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nAct as a Copilot for [TEAM/ROLE, e.g., Finance Team] using Productiv to optimize SaaS spending. Review the current software subscriptions in Productiv for [COMPANY_NAME]. Identify [X] redundant or underutilized licenses, calculate potential annual savings, and suggest a prioritized action plan to consolidate or renegotiate contracts. Include renewal dates and compliance risks for each identified tool.\n```\nCopy\n\n```\n### SaaS Spend Optimization Report for Acme Corp\n**Generated:** October 15, 2023\n**Review Period:** Last 90 days\n\n#### **Top 5 Redundant Licenses Identified**\n1. **Zoom Pro (50 licenses)**\n   - **Current Spend:** $4,500/month ($54,000/year)\n   - **Utilization:** 38% (19 active users)\n   - **Issue:** Duplicate with Microsoft Teams Enterprise (already purchased for all employees)\n   - **Action:** Cancel 31 licenses → **Annual Savings: $20,790**\n   - **Renewal Date:** November 30, 2023\n   - **Compliance Risk:** None (no legal obligations)\n\n2. **Slack Enterprise Grid (120 licenses)**\n   - **Current Spend:** $18,000/month ($216,000/year)\n   - **Utilization:** 65% (78 active users)\n   - **Issue:** Overlapping with Microsoft Teams (already integrated with Slack for external partners)\n   - **Action:** Downgrade to Standard plan (50 licenses) → **Annual Savings: $108,000**\n   - **Renewal Date:** December 15, 2023\n   - **Compliance Risk:** Medium (requires 30-day notice to downgrade)\n\n3. **Adobe Creative Cloud (25 licenses)**\n   - **Current Spend:** $3,750/month ($45,000/year)\n   - **Utilization:** 40% (10 active users)\n   - **Issue:** Only 2 designers use the full suite; others only need Photoshop\n   - **Action:** Switch to Adobe Photoshop-only plan for 15 users → **Annual Savings: $22,500**\n   - **Renewal Date:** January 10, 2024\n   - **Compliance Risk:** Low (no legal penalties for downgrading)\n\n4. **Notion Team Plan (80 licenses)**\n   - **Current Spend:** $4,800/month ($57,600/year)\n   - **Utilization:** 70% (56 active users)\n   - **Issue:** 24 ghost licenses (employees left but not deactivated)\n   - **Action:** Deactivate ghost licenses + enforce monthly license audit → **Annual Savings: $17,280**\n   - **Renewal Date:** February 28, 2024\n   - **Compliance Risk:** High (potential audit failure if ghost licenses remain)\n\n5. **HubSpot Marketing Hub (3 seats)**\n   - **Current Spend:** $2,100/month ($25,200/year)\n   - **Utilization:** 10% (only 1 active user)\n   - **Issue:** Underutilized; marketing team switched to internal tools\n   - **Action:** Cancel subscription → **Annual Savings: $25,200**\n   - **Renewal Date:** March 31, 2024\n   - **Compliance Risk:** None\n\n#### **Total Annual Savings Potential:** $193,770 (32% reduction in SaaS spend)\n\n#### **Recommended Next Steps**\n1. **Immediate (Next 2 Weeks):**\n   - Cancel Zoom Pro (31 licenses) and HubSpot Marketing Hub.\n   - Deactivate ghost licenses in Notion.\n   - **Owner:** IT Admin (Sarah Chen)\n   - **Tools:** Productiv + HRIS integration\n\n2. **Short-Term (Next 30 Days):**\n   - Downgrade Slack to Standard plan and negotiate with Adobe for Photoshop-only licenses.\n   - **Owner:** Procurement Manager (James Lee)\n   - **Tools:** Productiv + Adobe Admin Console\n\n3. **Long-Term (Next 90 Days):**\n   - Implement automated license deactivation workflow in Productiv.\n   - Schedule quarterly SaaS audits to prevent future redundancies.\n   - **Owner:** Finance Team (Maria Rodriguez)\n   - **Tools:** Productiv + Jira for tracking\n\n#### **Compliance & Risk Mitigation**\n- **Slack downgrade:** Submit 30-day notice before December 15 renewal to avoid penalties.\n- **Adobe licenses:** Verify that Photoshop-only plan meets all design team needs.\n- **Notion audit:** Enforce monthly license reconciliation to prevent ghost accounts.\n\n#### **Expected ROI**\n- **Cost Savings:** $193,770/year\n- **Time Saved:** 15 hours/month (manual license tracking eliminated)\n- **Risk Reduction:** 100% compliance with software agreements\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:45:33.159472Z",
+    "http_status": 200,
+    "content_hash": "498e8d74f96f545d77f9a81876f7701494548ff3a0b85d040ac3b80320aad09c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\copilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\copilot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Boost Productivity with Copilot AI Assistant",
+  "short_description_vi": "Copilot is your ultimate AI assistant, streamlining tasks and enhancing productivity with intelligent suggestions. Unlock your potential by automating routine processes and focusing on what truly matters."
+}

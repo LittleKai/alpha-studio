@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sidekick-dev-web",
+  "slug": "sidekick-dev-web",
+  "name": "Sidekick Dev Web",
+  "headline": "Sidekick Dev Web - AI Coding Agent Documentation",
+  "short_description": "Automatically generate high-quality markdown context files for AI coding agents like Claude, Cursor, and Gemini. Analyzes public GitHub repositories to create documentation for AI agents to use. Connects to GitHub and AI coding agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "saharmor",
+  "install_command": "git clone https://github.com/saharmor/sidekick-dev-web.git",
+  "source_repo_url": "https://github.com/saharmor/sidekick-dev-web",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "cursor",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Sidekick Dev analyzes public GitHub repositories to automatically create high-quality markdown documentation tailored for AI coding agents like Claude, Cursor, Windsurf, and Gemini. The tool uses DeepWiki's AI-powered analysis to extract project architecture, dependencies, code organization, testing strategies, and deployment information into comprehensive context files. Users can download individual markdown files or ZIP archives containing multiple agent-specific versions. The responsive web interface provides real-time progress tracking and clear error handling for private repositories or indexing issues. This streamlines the process of preparing codebases for AI-assisted development workflows.\nPrepare GitHub repositories as context for Claude or Cursor coding sessions\nGenerate onboarding documentation for new team members using AI agents\nCreate multi-agent context files for Windsurf and Gemini simultaneously\nExtract project architecture and setup instructions into markdown format\nA production-ready e-commerce backend built with FastAPI, PostgreSQL, and Redis. Supports user authentication, product catalog, shopping cart, and order processing. Designed for horizontal scalability with Docker and Kubernetes manifests included.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/saharmor/sidekick-dev-web`\n```bash\n# Clone and setup\ngit clone https://github.com/example/fastapi-ecommerce\ncd fastapi-ecommerce\n\n# Install dependencies\npip install -r requirements.txt\npip install -r requirements-dev.txt\n\n# Environment variables\nexport DATABASE_URL=postgresql://user:pass@localhost:5432/ecommerce\nexport JWT_SECRET=your-secret-key\nexport STRIPE_API_KEY=sk_test_...\n\n# Run services\ndocker-compose up -d postgres redis\nairflow db upgrade\nuvicorn main:app --reload\n```",
+    "usage": "```\nGenerate a comprehensive markdown context file for [REPOSITORY_URL] to help an AI coding agent understand the project structure, dependencies, and key components. Include sections for: project overview, architecture diagram (ASCII or Mermaid), key modules with their purposes, environment setup instructions, API endpoints (if applicable), test suites, and common troubleshooting steps. Prioritize clarity for an AI agent working on this codebase.\n```\nCopy\n\n```\n```markdown\n# Project Context: FastAPI E-commerce Backend\n**Repository:** https://github.com/example/fastapi-ecommerce\n**Last Updated:** 2024-05-15",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sidekick-dev-web#main-content",
+      "sidekick-dev-web#overview",
+      "sidekick-dev-web#setup",
+      "sidekick-dev-web#examples",
+      "sidekick-dev-web#tools",
+      "sidekick-dev-web#mcp",
+      "sidekick-dev-web#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sidekick Dev phân tích các repository GitHub công khai để tự động tạo tài liệu markdown chất lượng cao được tối ưu riêng cho các AI coding agent như Claude, Cursor, Windsurf và Gemini. Công cụ này sử dụng công nghệ phân tích dựa trên AI của DeepWiki để trích xuất kiến trúc dự án, dependencies, cách tổ chức code, chiến lược testing và thông tin triển khai vào các file context toàn diện. Người dùng có thể tải về các file markdown riêng lẻ hoặc file nén ZIP chứa nhiều phiên bản dành riêng cho từng agent. Giao diện web responsive hỗ trợ theo dõi tiến độ theo thời gian thực và xử lý lỗi rõ ràng đối với các repository private hoặc các sự cố lập chỉ mục (indexing). Điều này giúp tối ưu hóa quy trình chuẩn bị codebase cho các workflow phát triển phần mềm được hỗ trợ bởi AI.\n\nChuẩn bị các repository GitHub làm context cho các phiên coding với Claude hoặc Cursor\nTạo tài liệu onboarding cho thành viên mới trong team bằng cách sử dụng các AI agent\nTạo đồng thời các file context đa agent cho Windsurf và Gemini\nTrích xuất kiến trúc dự án và hướng dẫn setup sang định dạng markdown\nMột backend thương mại điện tử sẵn sàng cho môi trường production được xây dựng bằng FastAPI, PostgreSQL và Redis. Hỗ trợ xác thực người dùng, danh mục sản phẩm, giỏ hàng và xử lý đơn hàng. Được thiết kế để mở rộng quy mô theo chiều ngang (horizontal scalability) đi kèm với các file manifest của Docker và Kubernetes.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/saharmor/sidekick-dev-web`\n```bash\n# Clone và setup\ngit clone https://github.com/example/fastapi-ecommerce\ncd fastapi-ecommerce\n\n# Cài đặt các dependency\npip install -r requirements.txt\npip install -r requirements-dev.txt\n\n# Biến môi trường\nexport DATABASE_URL=postgresql://user:pass@localhost:5432/ecommerce\nexport JWT_SECRET=your-secret-key\nexport STRIPE_API_KEY=sk_test_...\n\n# Chạy các service\ndocker-compose up -d postgres redis\nairflow db upgrade\nuvicorn main:app --reload\n```",
+    "usage_vi": "```\nTạo một file context markdown toàn diện cho [REPOSITORY_URL] để giúp AI coding agent hiểu cấu trúc dự án, các dependency và những thành phần chính. Bao gồm các phần: tổng quan dự án, sơ đồ kiến trúc (ASCII hoặc Mermaid), các module chính kèm theo vai trò của chúng, hướng dẫn setup môi trường, các API endpoint (nếu có), các bộ test (test suites) và các bước xử lý sự cố thường gặp. Ưu tiên sự rõ ràng để AI agent làm việc hiệu quả trên codebase này.\n```\nSao chép\n\n```\n```markdown\n# Project Context: FastAPI E-commerce Backend\n**Repository:** https://github.com/example/fastapi-ecommerce\n**Last Updated:** 2024-05-15"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:01:31.428310Z",
+    "http_status": 200,
+    "content_hash": "4a43398b714b46babf7705a7e2ca3b21445b991bcec98e6af16ad02cabcd6191",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sidekick-dev-web.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sidekick-dev-web.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sidekick Dev Web - Tài liệu dành cho AI Coding Agent",
+  "short_description_vi": "Tự động tạo các file context markdown chất lượng cao cho các AI coding agent như Claude, Cursor và Gemini. Phân tích các repository GitHub công khai để tạo tài liệu cho AI agent sử dụng. Kết nối trực tiếp với GitHub và các AI coding agent."
+}

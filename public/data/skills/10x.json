@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/10x",
+  "slug": "10x",
+  "name": "10x",
+  "headline": "10x faster ai coding superpowers",
+  "short_description": "10x is an open-source AI agent that accelerates coding tasks by up to 20x. It features smart model routing, bring-your-own-key (BYOK) support, and full self-hosting capabilities. Ideal for developers and operations teams, it integrates with popular coding agents and tools to streamline workflows and boost productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "0xCrunchyy",
+  "install_command": "git clone https://github.com/0xCrunchyy/10x.git",
+  "source_repo_url": "https://github.com/0xCrunchyy/10x",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "claude-code",
+    "coding-agent",
+    "codex",
+    "continue",
+    "ai-agents",
+    "gemini-cli",
+    "claude",
+    "open-code"
+  ],
+  "sections": {
+    "overview": "10x is an open-source AI agent designed to accelerate coding workflows by up to 20x through intelligent model routing and optimization. Built for developers and operations teams, it offers bring-your-own-key (BYOK) support, enabling users to leverage their own API credentials while maintaining full control over their infrastructure. The tool supports full self-hosting capabilities, allowing teams to deploy and run 10x on their own servers without vendor lock-in. By integrating with popular coding agents and tools, 10x streamlines development workflows and boosts overall productivity. The MIT-licensed project is actively maintained and deployed as an open-source solution for teams seeking autonomous coding acceleration.\nAutomate code reviews with in-depth security and performance analysis.\nGenerate pull request descriptions from staged or committed changes effortlessly.\nRefactor code with guided analysis and implementation suggestions.\nConduct step-by-step debugging to identify and fix issues in the code.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/0xCrunchyy/10x`",
+    "usage": "```\nUse 10x to [TASK]. Set up [MODEL_PREFERENCE] for [LANGUAGE] and [FRAMEWORK] if needed. Prioritize [CRITERIA] like speed, accuracy, or cost. Follow these steps: 1) [STEP_1], 2) [STEP_2], 3) [STEP_3]. Share the output in a [FORMAT] like markdown or JSON.\n```\nCopy\n\n```\n### 10x Agent Task Completion Report\n**Task:** Refactor a legacy Python API endpoint to use FastAPI with async support.\n\n**Model Routing:** Selected `gpt-4-1106-preview` (BYOK via Azure OpenAI) for code generation and `codellama-70b` for validation.\n\n**Execution Steps:**\n1. **Analysis:** Scanned 12 endpoints in `app/legacy/routes.py` using 10x's static analysis tool. Identified 3 endpoints with high cyclomatic complexity (>15).\n2. **Refactor Plan:** Generated a FastAPI migration script with async endpoints, Pydantic models, and OpenAPI schema updates. The script included:\n   - Auto-generated type hints\n   - Rate limiting middleware\n   - Swagger UI integration\n3. **Validation:** Ran 10x's built-in linter (`ruff`) and unit tests (pytest) against the refactored code. All 87 tests passed (9 new tests added for async endpoints).\n\n**Performance Metrics:**\n- Original code: 423 lines, 3.2s avg response time\n- Refactored code: 298 lines, 0.8s avg response time (75% faster)\n- Cost: $0.12 (using BYOK credits)\n\n**Next Steps:**\n- Merge PR #452 with staging environment approval\n- Schedule performance benchmarks in production\n- Document breaking changes in `CHANGELOG.md`\n\n**Files Modified:**\n- `app/legacy/routes.py` → `app/api/v2/routes.py`\n- `tests/legacy/test_routes.py` → `tests/api/v2/test_routes.py`\n- Added `app/core/config.py` for async settings\n\n**Tools Used:**\n- 10x CLI v1.2.0\n- FastAPI 0.109.0\n- Python 3.11\n- Azure OpenAI (gpt-4-1106-preview)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "10x#main-content",
+      "10x#overview",
+      "10x#setup",
+      "10x#examples",
+      "10x#tools",
+      "10x#mcp",
+      "10x#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "10x is an open-source AI agent designed to accelerate coding workflows by up to 20x through intelligent model routing and optimization. Built for developers and operations teams, it offers bring-your-own-key (BYOK) support, enabling users to leverage their own API credentials while maintaining full control over their infrastructure. The tool supports full self-hosting capabilities, allowing teams to deploy and run 10x on their own servers without vendor lock-in. By integrating with popular coding agents and tools, 10x streamlines development workflows and boosts overall productivity. The MIT-licensed project is actively maintained and deployed as an open-source solution for teams seeking autonomous coding acceleration.\nAutomate code reviews with in-depth security and performance analysis.\nGenerate pull request descriptions from staged or committed changes effortlessly.\nRefactor code with guided analysis and implementation suggestions.\nConduct step-by-step debugging to identify and fix issues in the code.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/0xCrunchyy/10x`",
+    "usage_vi": "```\nUse 10x to [TASK]. Set up [MODEL_PREFERENCE] for [LANGUAGE] and [FRAMEWORK] if needed. Prioritize [CRITERIA] like speed, accuracy, or cost. Follow these steps: 1) [STEP_1], 2) [STEP_2], 3) [STEP_3]. Share the output in a [FORMAT] like markdown or JSON.\n```\nCopy\n\n```\n### 10x Agent Task Completion Report\n**Task:** Refactor a legacy Python API endpoint to use FastAPI with async support.\n\n**Model Routing:** Selected `gpt-4-1106-preview` (BYOK via Azure OpenAI) for code generation and `codellama-70b` for validation.\n\n**Execution Steps:**\n1. **Analysis:** Scanned 12 endpoints in `app/legacy/routes.py` using 10x's static analysis tool. Identified 3 endpoints with high cyclomatic complexity (>15).\n2. **Refactor Plan:** Generated a FastAPI migration script with async endpoints, Pydantic models, and OpenAPI schema updates. The script included:\n   - Auto-generated type hints\n   - Rate limiting middleware\n   - Swagger UI integration\n3. **Validation:** Ran 10x's built-in linter (`ruff`) and unit tests (pytest) against the refactored code. All 87 tests passed (9 new tests added for async endpoints).\n\n**Performance Metrics:**\n- Original code: 423 lines, 3.2s avg response time\n- Refactored code: 298 lines, 0.8s avg response time (75% faster)\n- Cost: $0.12 (using BYOK credits)\n\n**Next Steps:**\n- Merge PR #452 with staging environment approval\n- Schedule performance benchmarks in production\n- Document breaking changes in `CHANGELOG.md`\n\n**Files Modified:**\n- `app/legacy/routes.py` → `app/api/v2/routes.py`\n- `tests/legacy/test_routes.py` → `tests/api/v2/test_routes.py`\n- Added `app/core/config.py` for async settings\n\n**Tools Used:**\n- 10x CLI v1.2.0\n- FastAPI 0.109.0\n- Python 3.11\n- Azure OpenAI (gpt-4-1106-preview)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:08.819833Z",
+    "http_status": 200,
+    "content_hash": "26cc4c110fad3987427fc1b720da6b5aacc20a218f57ef00fb312ba57c31e0de",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\10x.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\10x.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "10x faster ai coding superpowers",
+  "short_description_vi": "10x is an open-source AI agent that accelerates coding tasks by up to 20x. It features smart model routing, bring-your-own-key (BYOK) support, and full self-hosting capabilities. Ideal for developers and operations teams, it integrates with popular coding agents and tools to streamline workflows and boost productivity."
+}

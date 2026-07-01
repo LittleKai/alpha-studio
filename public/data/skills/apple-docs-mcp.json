@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/apple-docs-mcp",
+  "slug": "apple-docs-mcp",
+  "name": "browser-use",
+  "headline": "apple-docs-mcp for developer documentation search",
+  "short_description": "Search Apple Developer Documentation, WWDC videos, and code examples in Claude, Cursor, and AI assistants. Benefits iOS/macOS/SwiftUI/UIKit developers by providing quick access to official documentation and code samples.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "kimsungwhee",
+  "install_command": "git clone https://github.com/kimsungwhee/apple-docs-mcp.git",
+  "source_repo_url": "https://github.com/kimsungwhee/apple-docs-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "swift-mcp",
+    "swiftui",
+    "ios-development",
+    "apple-docs-mcp",
+    "claude-code",
+    "swift",
+    "ai-assistant",
+    "documentation",
+    "claude",
+    "apple",
+    "cursor",
+    "model-context-protocol",
+    "apple-developer-documentation",
+    "macos-development",
+    "mcp",
+    "api-documentation",
+    "apple-documentation",
+    "objective-c",
+    "apple-developer-docs-mcp"
+  ],
+  "sections": {
+    "overview": "apple-docs-mcp is an MCP tool that integrates Apple Developer Documentation, WWDC video content, and code examples directly into Claude, Cursor, and other AI assistants. The skill provides 18 tools for searching and retrieving official Apple resources, including WWDC video transcripts, documentation articles, and code samples spanning 2014-2025. Developers working with iOS, macOS, SwiftUI, and UIKit can access comprehensive Apple resources without leaving their AI assistant, enabling faster research and implementation. The tool supports searching by keyword, topic, and year, with full transcript and resource retrieval capabilities. Setup involves installing the MCP skill and configuring it in your AI assistant of choice.\nQuickly search for SwiftUI animations and related documentation.\nAccess detailed API references for UIKit components.\nExplore the latest WWDC announcements and technology updates.\nFind sample code examples for iOS development tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kimsungwhee/apple-docs-mcp`",
+    "usage": "```\nSearch the Apple Developer Documentation for information about [TOPIC]. Include relevant code examples from SwiftUI or UIKit. Also find WWDC videos that cover this topic in depth. Focus on content from the last [NUMBER] years.\n```\nCopy\n\n```\nHere's what I found about implementing SwiftUI animations for your iOS app:\n\n**Documentation**: The official Apple documentation on SwiftUI animations explains that you can use implicit animations with the `.animation` modifier or explicit animations with the `withAnimation` function. For example, to animate a view's opacity change:\n```swift\nText(\"Hello, World!\")\n    .opacity(show ? 1.0 : 0.0)\n    .animation(.easeInOut(duration: 1.0), value: show)\n```\n\n**Code Examples**: Apple provides several code examples demonstrating different animation techniques. One example shows how to create a custom transition animation:\n```swift\nstruct ContentView: View {\n    @State private var isPresenting = false\n\n    var body: some View {\n        ZStack {\n            if isPresenting {\n                RoundedRectangle(cornerRadius: 25.0)\n                    .fill(Color.blue)\n                    .frame(width: 200, height: 200)\n                    .transition(.asymmetric(\n                        insertion: .scale,\n                        removal: .opacity\n                    ))\n            }\n        }\n        .onTapGesture {\n            withAnimation {\n                isPresenting.toggle()\n            }\n        }\n    }\n}\n```\n\n**WWDC Videos**: The WWDC 2021 session 'SwiftUI: Implementing Real-World Apps' (https://developer.apple.com/videos/play/wwdc2021/10112/) provides an in-depth look at implementing animations in real-world SwiftUI apps. Another relevant session is 'SwiftUI: Data Essentials' from WWDC 2020, which covers data flow and animations in SwiftUI.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "apple-docs-mcp#main-content",
+      "apple-docs-mcp#overview",
+      "apple-docs-mcp#setup",
+      "apple-docs-mcp#examples",
+      "apple-docs-mcp#tools",
+      "apple-docs-mcp#mcp",
+      "apple-docs-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "apple-docs-mcp is an MCP tool that integrates Apple Developer Documentation, WWDC video content, and code examples directly into Claude, Cursor, and other AI assistants. The skill provides 18 tools for searching and retrieving official Apple resources, including WWDC video transcripts, documentation articles, and code samples spanning 2014-2025. Developers working with iOS, macOS, SwiftUI, and UIKit can access comprehensive Apple resources without leaving their AI assistant, enabling faster research and implementation. The tool supports searching by keyword, topic, and year, with full transcript and resource retrieval capabilities. Setup involves installing the MCP skill and configuring it in your AI assistant of choice.\nQuickly search for SwiftUI animations and related documentation.\nAccess detailed API references for UIKit components.\nExplore the latest WWDC announcements and technology updates.\nFind sample code examples for iOS development tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kimsungwhee/apple-docs-mcp`",
+    "usage_vi": "```\nSearch the Apple Developer Documentation for information about [TOPIC]. Include relevant code examples from SwiftUI or UIKit. Also find WWDC videos that cover this topic in depth. Focus on content from the last [NUMBER] years.\n```\nCopy\n\n```\nHere's what I found about implementing SwiftUI animations for your iOS app:\n\n**Documentation**: The official Apple documentation on SwiftUI animations explains that you can use implicit animations with the `.animation` modifier or explicit animations with the `withAnimation` function. For example, to animate a view's opacity change:\n```swift\nText(\"Hello, World!\")\n    .opacity(show ? 1.0 : 0.0)\n    .animation(.easeInOut(duration: 1.0), value: show)\n```\n\n**Code Examples**: Apple provides several code examples demonstrating different animation techniques. One example shows how to create a custom transition animation:\n```swift\nstruct ContentView: View {\n    @State private var isPresenting = false\n\n    var body: some View {\n        ZStack {\n            if isPresenting {\n                RoundedRectangle(cornerRadius: 25.0)\n                    .fill(Color.blue)\n                    .frame(width: 200, height: 200)\n                    .transition(.asymmetric(\n                        insertion: .scale,\n                        removal: .opacity\n                    ))\n            }\n        }\n        .onTapGesture {\n            withAnimation {\n                isPresenting.toggle()\n            }\n        }\n    }\n}\n```\n\n**WWDC Videos**: The WWDC 2021 session 'SwiftUI: Implementing Real-World Apps' (https://developer.apple.com/videos/play/wwdc2021/10112/) provides an in-depth look at implementing animations in real-world SwiftUI apps. Another relevant session is 'SwiftUI: Data Essentials' from WWDC 2020, which covers data flow and animations in SwiftUI.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:00:32.876258Z",
+    "http_status": 200,
+    "content_hash": "1fb6ce736b0297a32b697d5080cb71a40be879fd296d2b3fe286cae88c3d54b7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\apple-docs-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\apple-docs-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "apple-docs-mcp for developer documentation search",
+  "short_description_vi": "Search Apple Developer Documentation, WWDC videos, and code examples in Claude, Cursor, and AI assistants. Benefits iOS/macOS/SwiftUI/UIKit developers by providing quick access to official documentation and code samples."
+}

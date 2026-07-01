@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/automatewoo",
+  "slug": "automatewoo",
+  "name": "automatewoo",
+  "headline": "AutomateWoo WordPress plugin mirror",
+  "short_description": "A mirror of the AutomateWoo WordPress plugin (v6.3.1) for WooCommerce marketing automation. Enables AI agents to read, modify, and extend AutomateWoo's codebase within coding environments like Claude Code or Cursor.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "pronamic",
+  "install_command": "git clone https://github.com/pronamic/automatewoo.git",
+  "source_repo_url": "https://github.com/pronamic/automatewoo",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "automattic",
+    "marketing",
+    "pronamic",
+    "gplv2",
+    "woocommerce-extension",
+    "mirror",
+    "woocommerce-plugin",
+    "wordpress-plugin",
+    "workflow",
+    "wordpress",
+    "automatewoo",
+    "ecommerce",
+    "workflows",
+    "woocommerce",
+    "shop"
+  ],
+  "sections": {
+    "overview": "The AutomateWoo skill provides a up-to-date mirror of the AutomateWoo WordPress plugin, currently tracking version 6.3.1, maintained by Pronamic. AutomateWoo is a WooCommerce-focused marketing automation plugin that includes admin interfaces, templates, workflow presets, and language files. AI coding agents can use this skill to read and navigate the plugin's source structure—covering directories such as includes, admin, assets, templates, and vendor—to assist with customization, debugging, or extension development. The repository is kept in sync with upstream releases via an automated GitHub Actions mirror workflow. Developers working on WooCommerce stores who need to understand, modify, or build on top of AutomateWoo's codebase will find this skill useful.\nExplore AutomateWoo source code to understand workflow and trigger implementations\nCustomize or extend AutomateWoo templates and admin UI for a WooCommerce store\nDebug AutomateWoo issues by navigating the includes and vendor directories\nReview changelog entries to assess impact of plugin updates before upgrading",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pronamic/automatewoo`\n\n### Task 1: Abandoned Cart Recovery\n\n1. **Navigate to AutomateWoo**: Go to WooCommerce > AutomateWoo in your WordPress dashboard.\n2. **Create a New Workflow**: Click on 'Add New' under the 'Workflows' tab.\n3. **Set Trigger**: Choose 'Abandoned Cart' as the trigger.\n4. **Add Actions**: Select 'Send Email' and customize the email template to remind customers about their abandoned cart.\n5. **Save and Activate**: Save the workflow and activate it.\n\n### Task 2: Customer Follow-Up\n\n1. **Create a New Workflow**: Again, go to WooCommerce > AutomateWoo > Add New.\n2. **Set Trigger**: Choose 'Order Completed' as the trigger.\n3. **Add Actions**: Select 'Send Email' and customize the email to thank the customer and request a review.\n4. **Save and Activate**: Save the workflow and activate it.\n\n### Task 3: Loyalty Program\n\n1. **Create a New Workflow**: Go to WooCommerce > AutomateWoo > Add New.\n2. **Set Trigger**: Choose 'Customer Spends Amount' as the trigger and set the amount to $100.\n3. **Add Actions**: Select 'Add Points' and set the points to reward the customer.\n4. **Save and Activate**: Save the workflow and activate it.\n\nYour AutomateWoo workflows are now set up and ready to streamline your WooCommerce store operations.\n```",
+    "usage": "```\nAct as AutomateWoo. I run a [COMPANY] in the [INDUSTRY] sector. I need to automate my WooCommerce store workflows. Here are the specific tasks I want to automate: [TASKS]. Provide a step-by-step guide on how to set this up using AutomateWoo.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "automatewoo#main-content",
+      "automatewoo#overview",
+      "automatewoo#setup",
+      "automatewoo#examples",
+      "automatewoo#tools",
+      "automatewoo#mcp",
+      "automatewoo#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "Skill AutomateWoo cung cấp một bản mirror luôn được cập nhật của plugin WordPress AutomateWoo, hiện đang theo dõi phiên bản 6.3.1, được duy trì bởi Pronamic. AutomateWoo là một plugin tự động hóa marketing chuyên biệt cho WooCommerce, bao gồm các giao diện admin, template, workflow preset và các file ngôn ngữ. Các AI coding agent có thể sử dụng skill này để đọc và điều hướng cấu trúc mã nguồn của plugin—bao gồm các thư mục như includes, admin, assets, templates, và vendor—để hỗ trợ tùy biến, debug hoặc phát triển tiện ích mở rộng (extension). Repository này được đồng bộ hóa liên tục với các bản phát hành upstream thông qua workflow mirror tự động bằng GitHub Actions. Các nhà phát triển làm việc với các cửa hàng WooCommerce cần tìm hiểu, chỉnh sửa hoặc phát triển thêm dựa trên codebase của AutomateWoo sẽ thấy skill này vô cùng hữu ích.\nKhám phá mã nguồn AutomateWoo để hiểu cách triển khai workflow và trigger\nTùy biến hoặc mở rộng template và giao diện admin của AutomateWoo cho cửa hàng WooCommerce\nDebug các sự cố của AutomateWoo bằng cách điều hướng qua các thư mục includes và vendor\nXem xét các ghi chú thay đổi (changelog) để đánh giá tác động của các bản cập nhật plugin trước khi nâng cấp",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/pronamic/automatewoo`\n\n### Task 1: Khôi phục giỏ hàng bị bỏ quên (Abandoned Cart Recovery)\n\n1. **Điều hướng đến AutomateWoo**: Đi tới WooCommerce > AutomateWoo trong dashboard WordPress của bạn.\n2. **Tạo Workflow mới**: Nhấp vào 'Add New' trong tab 'Workflows'.\n3. **Thiết lập Trigger**: Chọn 'Abandoned Cart' làm trigger.\n4. **Thêm Action**: Chọn 'Send Email' và tùy chỉnh email template để nhắc nhở khách hàng về giỏ hàng bị bỏ quên của họ.\n5. **Lưu và Kích hoạt**: Lưu workflow và kích hoạt nó.\n\n### Task 2: Chăm sóc khách hàng (Customer Follow-Up)\n\n1. **Tạo Workflow mới**: Tiếp tục đi tới WooCommerce > AutomateWoo > Add New.\n2. **Thiết lập Trigger**: Chọn 'Order Completed' làm trigger.\n3. **Thêm Action**: Chọn 'Send Email' và tùy chỉnh email để cảm ơn khách hàng và yêu cầu đánh giá.\n4. **Lưu và Kích hoạt**: Lưu workflow và kích hoạt nó.\n\n### Task 3: Chương trình khách hàng thân thiết (Loyalty Program)\n\n1. **Tạo Workflow mới**: Đi tới WooCommerce > AutomateWoo > Add New.\n2. **Thiết lập Trigger**: Chọn 'Customer Spends Amount' làm trigger và đặt số tiền là $100.\n3. **Thêm Action**: Chọn 'Add Points' và đặt số điểm thưởng cho khách hàng.\n4. **Lưu và Kích hoạt**: Lưu workflow và kích hoạt nó.\n\nCác workflow AutomateWoo của bạn hiện đã được thiết lập (setup) xong và sẵn sàng để tối ưu hóa quy trình hoạt động của cửa hàng WooCommerce.\n```",
+    "usage_vi": "```\nĐóng vai trò là AutomateWoo. Tôi vận hành một [COMPANY] trong lĩnh vực [INDUSTRY]. Tôi cần tự động hóa các workflow cho cửa hàng WooCommerce của mình. Dưới đây là các tác vụ cụ thể tôi muốn tự động hóa: [TASKS]. Hãy cung cấp hướng dẫn từng bước về cách thiết lập bằng AutomateWoo.\n```\nSao chép\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:54:00.353239Z",
+    "http_status": 200,
+    "content_hash": "bf1a70b0c44da72ab3bc5b193c5ce3e089669f8c9f852869468d2ec6a2735bd4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\automatewoo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\automatewoo.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bản mirror của plugin WordPress AutomateWoo",
+  "short_description_vi": "Một bản mirror của plugin WordPress AutomateWoo (v6.3.1) phục vụ cho việc tự động hóa marketing trên WooCommerce. Cho phép các AI agent đọc, chỉnh sửa và mở rộng codebase của AutomateWoo ngay trong các môi trường lập trình như Claude Code hoặc Cursor."
+}

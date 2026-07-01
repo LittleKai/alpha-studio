@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/baoyu-xhs-images",
+  "slug": "baoyu-xhs-images",
+  "name": "browser-use",
+  "headline": "baoyu xhs images automation skill",
+  "short_description": "Automates image processing tasks for operations teams. Integrates with Claude Code to streamline workflows. Connects to Node.js environments for efficient execution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "jimliu",
+  "install_command": "git clone https://github.com/jimliu/baoyu-skills.git",
+  "source_repo_url": "https://github.com/jimliu/baoyu-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "baoyu-xhs-images is a skill that automates the generation of styled images optimized for Xiaohongshu (XHS) content. The skill supports multiple visual styles including chalkboard styling and various layout options, allowing users to create visually consistent social media assets without manual design work. It integrates with Claude Code to streamline image processing workflows and connects to Node.js environments for efficient execution. This skill is particularly useful for content creators, marketing teams, and operations professionals who need to produce high-volume, branded image content for social platforms.\nGenerate infographic images from blog articles to enhance social media posts.\nCreate visually appealing summaries of reports or articles for presentations.\nAutomate the production of educational content in infographic format for online courses.\nTransform raw data into engaging visuals for marketing campaigns.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jimliu/baoyu-skills`",
+    "usage": "```\nAutomate the following image processing tasks for our operations team: [DESCRIBE TASKS]. Use Claude Code to streamline the workflow. Ensure compatibility with our Node.js environment. Provide the necessary code snippets and integration steps.\n```\nCopy\n\n```\nTo automate the image processing tasks for your operations team, we'll focus on resizing, watermarking, and format conversion. Here's a step-by-step guide using Claude Code and Node.js:\n\n1. **Resizing Images**: Use the `sharp` library in Node.js to resize images to specified dimensions. Example code snippet:\n```javascript\nconst sharp = require('sharp');\n\nasync function resizeImage(inputPath, outputPath, width, height) {\n  await sharp(inputPath)\n    .resize(width, height)\n    .toFile(outputPath);\n}\n```\n\n2. **Adding Watermarks**: Implement watermarking using the same `sharp` library. Example code snippet:\n```javascript\nasync function addWatermark(inputPath, outputPath, watermarkText) {\n  await sharp(inputPath)\n    .composite([{ input: Buffer.from(`<svg><text x='10' y='10' font-size='20' fill='white'>${watermarkText}</text></svg>`), top: 10, left: 10 }])\n    .toFile(outputPath);\n}\n```\n\n3. **Format Conversion**: Convert images to the desired format using `sharp`. Example code snippet:\n```javascript\nasync function convertFormat(inputPath, outputPath, format) {\n  await sharp(inputPath)\n    .toFormat(format)\n    .toFile(outputPath);\n}\n```\n\n4. **Integration with Claude Code**: Use Claude Code to automate the execution of these tasks. Example prompt:\n\"Automate the following image processing tasks: resize all images in the 'uploads' folder to 800x600, add a watermark with the text 'Confidential', and convert them to WebP format. Provide the necessary code snippets and integration steps.\"\n\nBy following these steps, you can streamline your image processing workflows and ensure efficient execution in your Node.js environment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "baoyu-xhs-images#main-content",
+      "baoyu-xhs-images#overview",
+      "baoyu-xhs-images#setup",
+      "baoyu-xhs-images#examples",
+      "baoyu-xhs-images#tools",
+      "baoyu-xhs-images#mcp",
+      "baoyu-xhs-images#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "baoyu-xhs-images is a skill that automates the generation of styled images optimized for Xiaohongshu (XHS) content. The skill supports multiple visual styles including chalkboard styling and various layout options, allowing users to create visually consistent social media assets without manual design work. It integrates with Claude Code to streamline image processing workflows and connects to Node.js environments for efficient execution. This skill is particularly useful for content creators, marketing teams, and operations professionals who need to produce high-volume, branded image content for social platforms.\nGenerate infographic images from blog articles to enhance social media posts.\nCreate visually appealing summaries of reports or articles for presentations.\nAutomate the production of educational content in infographic format for online courses.\nTransform raw data into engaging visuals for marketing campaigns.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jimliu/baoyu-skills`",
+    "usage_vi": "```\nAutomate the following image processing tasks for our operations team: [DESCRIBE TASKS]. Use Claude Code to streamline the workflow. Ensure compatibility with our Node.js environment. Provide the necessary code snippets and integration steps.\n```\nCopy\n\n```\nTo automate the image processing tasks for your operations team, we'll focus on resizing, watermarking, and format conversion. Here's a step-by-step guide using Claude Code and Node.js:\n\n1. **Resizing Images**: Use the `sharp` library in Node.js to resize images to specified dimensions. Example code snippet:\n```javascript\nconst sharp = require('sharp');\n\nasync function resizeImage(inputPath, outputPath, width, height) {\n  await sharp(inputPath)\n    .resize(width, height)\n    .toFile(outputPath);\n}\n```\n\n2. **Adding Watermarks**: Implement watermarking using the same `sharp` library. Example code snippet:\n```javascript\nasync function addWatermark(inputPath, outputPath, watermarkText) {\n  await sharp(inputPath)\n    .composite([{ input: Buffer.from(`<svg><text x='10' y='10' font-size='20' fill='white'>${watermarkText}</text></svg>`), top: 10, left: 10 }])\n    .toFile(outputPath);\n}\n```\n\n3. **Format Conversion**: Convert images to the desired format using `sharp`. Example code snippet:\n```javascript\nasync function convertFormat(inputPath, outputPath, format) {\n  await sharp(inputPath)\n    .toFormat(format)\n    .toFile(outputPath);\n}\n```\n\n4. **Integration with Claude Code**: Use Claude Code to automate the execution of these tasks. Example prompt:\n\"Automate the following image processing tasks: resize all images in the 'uploads' folder to 800x600, add a watermark with the text 'Confidential', and convert them to WebP format. Provide the necessary code snippets and integration steps.\"\n\nBy following these steps, you can streamline your image processing workflows and ensure efficient execution in your Node.js environment.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:20:13.650437Z",
+    "http_status": 200,
+    "content_hash": "b26e58b003e49106c13cb388eb2360a064fb87efac7d96ddc1f6a164a3f64c60",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\baoyu-xhs-images.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\baoyu-xhs-images.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "baoyu xhs images automation skill",
+  "short_description_vi": "Automates image processing tasks for operations teams. Integrates with Claude Code to streamline workflows. Connects to Node.js environments for efficient execution."
+}

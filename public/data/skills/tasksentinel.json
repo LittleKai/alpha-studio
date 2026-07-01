@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tasksentinel",
+  "slug": "tasksentinel",
+  "name": "TaskSentinel",
+  "headline": "TaskSentinel - Automate Enterprise Notifications",
+  "short_description": "A powerful, lightweight enterprise notification tool designed for developers and DevOps teams, supporting automated notifications for WeChat Work and DingTalk platforms.| 一个功能强大、轻量级的企业通知工具，专为开发者和运维团队设计，支持企业微信和钉钉平台的自动化通知。| Claude Code",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "gonewx",
+  "install_command": "git clone https://github.com/gonewx/TaskSentinel.git",
+  "source_repo_url": "https://github.com/gonewx/TaskSentinel",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "TaskSentinel is a lightweight Shell script tool that simplifies sending enterprise notifications across multiple platforms including DingTalk, WeChat Work, and Slack. It integrates with CI/CD pipelines, monitoring systems, and development workflows through dedicated Claude Code hooks, GitHub Actions, Jenkins, Docker, and Cron. The tool supports multiple message formats (text and Markdown), intelligent @mentions based on event types, secure webhook authentication with DingTalk HMAC-SHA256 signing, configurable throttling to prevent notification flooding, and comprehensive error handling with retry mechanisms. Developers and DevOps teams benefit from reliable notification delivery, flexible user mapping, template-based messages, and detailed logging for debugging across Linux, macOS, and Windows (WSL) environments.\nSend automated CI/CD pipeline completion and failure notifications to team channels\nIntegrate monitoring system alerts with enterprise messaging platforms\nNotify team members of task completion and code deployment events\nAlert DevOps teams about Docker container status changes and Cron job results",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gonewx/TaskSentinel`",
+    "usage": "```\nCreate a TaskSentinel script to monitor [SERVER_NAME] for [SPECIFIC_EVENT] and send notifications to [TEAM_NAME] on [PLATFORM] (WeChat Work or DingTalk). The script should check for the event every [TIME_INTERVAL] and include [SPECIFIC_DATA] in the notification. Ensure the script is compatible with [OPERATING_SYSTEM] and follows [COMPANY]'s security protocols.\n```\nCopy\n\n```\n# TaskSentinel Monitoring Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tasksentinel#main-content",
+      "tasksentinel#overview",
+      "tasksentinel#setup",
+      "tasksentinel#examples",
+      "tasksentinel#tools",
+      "tasksentinel#mcp",
+      "tasksentinel#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TaskSentinel là một công cụ Shell script gọn nhẹ giúp đơn giản hóa việc gửi thông báo doanh nghiệp trên nhiều nền tảng khác nhau bao gồm DingTalk, WeChat Work và Slack. Công cụ này tích hợp với các pipeline CI/CD, hệ thống giám sát (monitoring) và quy trình làm việc của nhà phát triển thông qua các hook chuyên dụng của Claude Code, GitHub Actions, Jenkins, Docker và Cron. TaskSentinel hỗ trợ nhiều định dạng tin nhắn (văn bản và Markdown), tính năng @nhắc tên thông minh dựa trên loại sự kiện, xác thực webhook bảo mật bằng chữ ký HMAC-SHA256 của DingTalk, cấu hình giới hạn tần suất gửi tin (throttling) để tránh tràn ngập thông báo, cùng cơ chế xử lý lỗi toàn diện và tự động thử lại (retry). Các nhà phát triển và đội ngũ DevOps sẽ được hưởng lợi từ việc phân phối thông báo đáng tin cậy, ánh xạ người dùng (user mapping) linh hoạt, gửi tin nhắn theo mẫu (template) và ghi nhật ký (logging) chi tiết để gỡ lỗi trên các môi trường Linux, macOS và Windows (WSL).\nGửi thông báo tự động khi pipeline CI/CD hoàn thành hoặc thất bại đến các kênh của nhóm\nTích hợp cảnh báo từ hệ thống giám sát với các nền tảng tin nhắn doanh nghiệp\nThông báo cho các thành viên trong nhóm về tiến độ hoàn thành công việc và các sự kiện triển khai mã nguồn (deployment)\nCảnh báo cho đội ngũ DevOps về các thay đổi trạng thái của container Docker và kết quả chạy Cron job",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/gonewx/TaskSentinel`",
+    "usage_vi": "```\nTạo một script TaskSentinel để giám sát [SERVER_NAME] nhằm phát hiện [SPECIFIC_EVENT] và gửi thông báo đến [TEAM_NAME] trên [PLATFORM] (WeChat Work hoặc DingTalk). Script này cần kiểm tra sự kiện sau mỗi [TIME_INTERVAL] và đính kèm [SPECIFIC_DATA] trong thông báo. Đảm bảo script tương thích với [OPERATING_SYSTEM] và tuân thủ các giao thức bảo mật của [COMPANY].\n```\nSao chép\n\n```\n# Báo cáo giám sát TaskSentinel"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:14:30.678703Z",
+    "http_status": 200,
+    "content_hash": "373c96b8f2909001c8cad622e12ff57f38cfb3a29c61c82fd525d0b29277895d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tasksentinel.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tasksentinel.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TaskSentinel - Tự động hóa thông báo doanh nghiệp",
+  "short_description_vi": "Công cụ gửi thông báo doanh nghiệp gọn nhẹ và mạnh mẽ dành riêng cho các nhà phát triển và đội ngũ DevOps, hỗ trợ tự động hóa thông báo trên các nền tảng WeChat Work và DingTalk. | Claude Code"
+}

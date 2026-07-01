@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/actor-finance-monitoring-agent",
+  "slug": "actor-finance-monitoring-agent",
+  "name": "Actor Finance Monitoring Agent",
+  "headline": "Finance Monitoring AI Agent for Investors",
+  "short_description": "The Finance Monitoring AI Agent provides in-depth analysis of financial tickers, delivering comprehensive reports on performance and trends. Ideal for investors and analysts seeking actionable insights to inform their decisions.",
+  "tier": "Silver",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "apify",
+  "install_command": "claude install apify/actor-finance-monitoring-agent",
+  "source_repo_url": "https://github.com/apify/actor-finance-monitoring-agent",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "investing",
+    "reporting",
+    "analytics",
+    "finance",
+    "data-analysis"
+  ],
+  "sections": {
+    "overview": "The Finance Monitoring Agent is an AI-powered tool designed for investors and analysts who need rapid, data-driven insights into specific stocks. It automatically gathers real-time financial data from Google Finance and relevant news from Google News, then processes this information using OpenAI's language models to produce structured markdown reports. The agent analyzes stock performance, identifies market trends, and delivers sentiment analysis—whether to buy, hold, or sell—helping you make informed investment decisions without manual data compilation. By automating the analysis workflow, it saves time while providing nuanced insights that combine quantitative metrics with qualitative market sentiment.\nAnalyzing stock performance for investment decisions\nGenerating trend reports for financial analysts\nMonitoring market changes for timely alerts",
+    "setup": "Terminal\nCopy\n`claude install apify/actor-finance-monitoring-agent`\n`git clone https://github.com/apify/actor-finance-monitoring-agent`",
+    "usage": "```\nAct as a Finance Monitoring AI Agent. Analyze the performance of [TICKER] in [INDUSTRY] over the past [TIME PERIOD]. Provide a comprehensive report including key metrics, trends, and actionable insights for [COMPANY] or individual investors.\n```\nCopy\n\n```\n# Financial Analysis Report for [TICKER]",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "actor-finance-monitoring-agent#main-content",
+      "actor-finance-monitoring-agent#overview",
+      "actor-finance-monitoring-agent#setup",
+      "actor-finance-monitoring-agent#examples",
+      "actor-finance-monitoring-agent#tools",
+      "actor-finance-monitoring-agent#mcp",
+      "actor-finance-monitoring-agent#related",
+      "skills",
+      "multi-agent-investment-platform",
+      "openbb"
+    ],
+    "overview_vi": "The Finance Monitoring Agent is an AI-powered tool designed for investors and analysts who need rapid, data-driven insights into specific stocks. It automatically gathers real-time financial data from Google Finance and relevant news from Google News, then processes this information using OpenAI's language models to produce structured markdown reports. The agent analyzes stock performance, identifies market trends, and delivers sentiment analysis—whether to buy, hold, or sell—helping you make informed investment decisions without manual data compilation. By automating the analysis workflow, it saves time while providing nuanced insights that combine quantitative metrics with qualitative market sentiment.\nAnalyzing stock performance for investment decisions\nGenerating trend reports for financial analysts\nMonitoring market changes for timely alerts",
+    "setup_vi": "Terminal\nCopy\n`claude install apify/actor-finance-monitoring-agent`\n`git clone https://github.com/apify/actor-finance-monitoring-agent`",
+    "usage_vi": "```\nAct as a Finance Monitoring AI Agent. Analyze the performance of [TICKER] in [INDUSTRY] over the past [TIME PERIOD]. Provide a comprehensive report including key metrics, trends, and actionable insights for [COMPANY] or individual investors.\n```\nCopy\n\n```\n# Financial Analysis Report for [TICKER]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:44:49.683270Z",
+    "http_status": 200,
+    "content_hash": "21f2305b9b0f8fe60ea565fac55fb511b10653397409b5974c5cd8a79ea0ba96",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\actor-finance-monitoring-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\actor-finance-monitoring-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Finance Monitoring AI Agent for Investors",
+  "short_description_vi": "The Finance Monitoring AI Agent provides in-depth analysis of financial tickers, delivering comprehensive reports on performance and trends. Ideal for investors and analysts seeking actionable insights to inform their decisions."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/generate-shortcuts-skill",
+  "slug": "generate-shortcuts-skill",
+  "name": "Shortcuts Generator",
+  "headline": "Shortcuts Generator - Create macOS/iOS Shortcuts",
+  "short_description": "Generates valid macOS/iOS Shortcuts plist files for Apple's Shortcuts app. Ideal for operations teams automating workflows. Connects to Claude Code for AI-assisted shortcut creation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "drewocarr",
+  "install_command": "git clone https://github.com/drewocarr/generate-shortcuts-skill.git",
+  "source_repo_url": "https://github.com/drewocarr/generate-shortcuts-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Shortcuts Generator Skill for Claude Code automates the creation of valid .shortcut plist files that can be imported directly into Apple's Shortcuts app. It provides comprehensive documentation of 427 WF*Action identifiers, 728 AppIntent actions, parameter types, variables, and control flow patterns. Users describe their desired automation in natural language, and Claude Code generates the complete plist XML and signs it for immediate import. This skill eliminates manual plist editing and reduces the technical barrier to building sophisticated macOS and iOS automations. Operations teams and developers benefit from rapid prototyping of workflows without deep knowledge of Shortcuts' internal XML format.\nCreate weather notifications and system alerts via natural language prompts\nAutomate text input workflows and conditional logic without XML editing\nBuild Safari navigation and URL handling shortcuts programmatically\nGenerate signed .shortcut files ready for direct Shortcuts app import",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/drewocarr/generate-shortcuts-skill`",
+    "usage": "```\nGenerate a macOS/iOS Shortcuts plist file for [ACTION]. The shortcut should [FUNCTION] and include [INPUTS]. Use [FORMAT] for the output. Ensure the shortcut is compatible with Shortcuts app version [VERSION].\n```\nCopy\n\n```\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <key>shortcutName</key>\n    <string>Batch Rename Files</string>\n    <key>shortcutActions</key>\n    <array>\n        <dict>\n            <key>actionName</key>\n            <string>Get Folder Contents</string>\n            <key>parameters</key>\n            <dict>\n                <key>folderPath</key>\n                <string>./Documents/</string>\n            </dict>\n        </dict>\n        <dict>\n            <key>actionName</key>\n            <string>Repeat Each</string>\n            <key>parameters</key>\n            <dict>\n                <key>input</key>\n                <string>ShortcutInput</string>\n            </dict>\n        </dict>\n        <dict>\n            <key>actionName</key>\n            <string>Rename File</string>\n            <key>parameters</key>\n            <dict>\n                <key>newName</key>\n                <string>IMG_[DATE:yyyyMMdd]_[INDEX]</string>\n            </dict>\n        </dict>\n    </array>\n    <key>shortcutIdentifier</key>\n    <string>com.example.batchrename</string>\n</dict>\n</plist>\n```\n\nThis Shortcuts plist file creates a workflow named 'Batch Rename Files' that processes all files in the Documents folder, renaming them sequentially with a date prefix (e.g., IMG_20240515_1.jpg). The shortcut uses three core actions: Get Folder Contents to retrieve files, Repeat Each to iterate through them, and Rename File with dynamic naming. The output is a valid .shortcut file that can be imported directly into the Shortcuts app on macOS or iOS. The workflow assumes the user has read/write permissions for the target directory and handles basic error cases like duplicate filenames by automatically appending an index number.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "generate-shortcuts-skill#main-content",
+      "generate-shortcuts-skill#overview",
+      "generate-shortcuts-skill#setup",
+      "generate-shortcuts-skill#examples",
+      "generate-shortcuts-skill#tools",
+      "generate-shortcuts-skill#mcp",
+      "generate-shortcuts-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Shortcuts Generator Skill for Claude Code automates the creation of valid .shortcut plist files that can be imported directly into Apple's Shortcuts app. It provides comprehensive documentation of 427 WF*Action identifiers, 728 AppIntent actions, parameter types, variables, and control flow patterns. Users describe their desired automation in natural language, and Claude Code generates the complete plist XML and signs it for immediate import. This skill eliminates manual plist editing and reduces the technical barrier to building sophisticated macOS and iOS automations. Operations teams and developers benefit from rapid prototyping of workflows without deep knowledge of Shortcuts' internal XML format.\nCreate weather notifications and system alerts via natural language prompts\nAutomate text input workflows and conditional logic without XML editing\nBuild Safari navigation and URL handling shortcuts programmatically\nGenerate signed .shortcut files ready for direct Shortcuts app import",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/drewocarr/generate-shortcuts-skill`",
+    "usage_vi": "```\nGenerate a macOS/iOS Shortcuts plist file for [ACTION]. The shortcut should [FUNCTION] and include [INPUTS]. Use [FORMAT] for the output. Ensure the shortcut is compatible with Shortcuts app version [VERSION].\n```\nCopy\n\n```\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <key>shortcutName</key>\n    <string>Batch Rename Files</string>\n    <key>shortcutActions</key>\n    <array>\n        <dict>\n            <key>actionName</key>\n            <string>Get Folder Contents</string>\n            <key>parameters</key>\n            <dict>\n                <key>folderPath</key>\n                <string>./Documents/</string>\n            </dict>\n        </dict>\n        <dict>\n            <key>actionName</key>\n            <string>Repeat Each</string>\n            <key>parameters</key>\n            <dict>\n                <key>input</key>\n                <string>ShortcutInput</string>\n            </dict>\n        </dict>\n        <dict>\n            <key>actionName</key>\n            <string>Rename File</string>\n            <key>parameters</key>\n            <dict>\n                <key>newName</key>\n                <string>IMG_[DATE:yyyyMMdd]_[INDEX]</string>\n            </dict>\n        </dict>\n    </array>\n    <key>shortcutIdentifier</key>\n    <string>com.example.batchrename</string>\n</dict>\n</plist>\n```\n\nThis Shortcuts plist file creates a workflow named 'Batch Rename Files' that processes all files in the Documents folder, renaming them sequentially with a date prefix (e.g., IMG_20240515_1.jpg). The shortcut uses three core actions: Get Folder Contents to retrieve files, Repeat Each to iterate through them, and Rename File with dynamic naming. The output is a valid .shortcut file that can be imported directly into the Shortcuts app on macOS or iOS. The workflow assumes the user has read/write permissions for the target directory and handles basic error cases like duplicate filenames by automatically appending an index number.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:54.891752Z",
+    "http_status": 200,
+    "content_hash": "8a2af6696ff25c90cb65d6d972d7d89e680025b3143d9cea643625e41bcbf9f6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\generate-shortcuts-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\generate-shortcuts-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Shortcuts Generator - Create macOS/iOS Shortcuts",
+  "short_description_vi": "Generates valid macOS/iOS Shortcuts plist files for Apple's Shortcuts app. Ideal for operations teams automating workflows. Connects to Claude Code for AI-assisted shortcut creation."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/longcat-flash-thinking-2601",
+  "slug": "longcat-flash-thinking-2601",
+  "name": "LongCat-Flash-Thinking-2601",
+  "headline": "LongCat-Flash-Thinking-2601 - Automates Operations",
+  "short_description": "LongCat-Flash-Thinking-2601 automates complex decision-making for operations teams. It connects to Claude agents to process large datasets, identify patterns, and generate actionable insights. Ideal for supply chain optimization, demand forecasting, and process automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "meituan-longcat",
+  "install_command": "git clone https://github.com/meituan-longcat/LongCat-Flash-Thinking-2601.git",
+  "source_repo_url": "https://github.com/meituan-longcat/LongCat-Flash-Thinking-2601",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "LongCat-Flash-Thinking-2601 is a 560 billion parameter Large Reasoning Model built on Mixture-of-Experts architecture, purpose-built for agentic reasoning and complex decision-making tasks. The model combines environment scaling with multi-environment reinforcement learning to develop robust agentic skills across diverse scenarios. It incorporates systematic training against environmental noise and uncertainty, enabling reliable performance in imperfect real-world conditions where traditional models struggle. The model features Heavy Thinking Mode for tackling extremely challenging tasks through intensive parallel thinking. It achieves top-tier performance on agentic tool use, agentic search, and tool-integrated reasoning benchmarks.\nMulti-step tool orchestration and agentic reasoning tasks\nComplex decision-making in noisy or uncertain environments\nTool-integrated reasoning with dependency graphs\nRobust task completion under environmental imperfections",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/meituan-longcat/LongCat-Flash-Thinking-2601`",
+    "usage": "```\nUse LongCat-Flash-Thinking-2601 to analyze [DATASET_DESCRIPTION] and generate a prioritized list of [DECISION_TYPE] recommendations. Focus on [KEY_METRIC] while considering [CONSTRAINTS]. Provide the top 5 actions with estimated impact scores (1-100) and implementation timelines.\n```\nCopy\n\n```\nBased on the analysis of 12,478 supply chain transactions from Q4 2023, LongCat-Flash-Thinking-2601 identified critical bottlenecks in our just-in-time inventory system. The top 5 recommendations are:\n\n1. **Reallocate 15% of safety stock** from Warehouse B to Warehouse D (Impact: 92, Timeline: 2 weeks) - This would reduce stockouts in high-demand regions by 40% while cutting carrying costs by $180K annually.\n\n2. **Implement dynamic reorder points** for SKU-456789 (Impact: 88, Timeline: 1 week) - Adjusting reorder triggers based on real-time demand patterns could save $120K in excess inventory.\n\n3. **Negotiate expedited shipping** with Supplier X for critical components (Impact: 85, Timeline: 3 days) - Reducing lead time from 7 to 3 days would prevent $2.1M in potential lost sales during peak season.\n\n4. **Automate PO generation** for low-value items (Impact: 82, Timeline: 4 weeks) - This would free up 12 hours/week of procurement staff time while maintaining 99.5% fill rates.\n\n5. **Create a supplier risk scorecard** (Impact: 79, Timeline: 2 weeks) - Proactively identifying at-risk suppliers could prevent $850K in disruption costs.\n\nThe analysis revealed that 68% of our current inefficiencies stem from static inventory policies that don't account for seasonal demand spikes. The system also flagged that our current safety stock levels are 23% higher than necessary for 80% of our SKUs.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "longcat-flash-thinking-2601#main-content",
+      "longcat-flash-thinking-2601#overview",
+      "longcat-flash-thinking-2601#setup",
+      "longcat-flash-thinking-2601#examples",
+      "longcat-flash-thinking-2601#tools",
+      "longcat-flash-thinking-2601#mcp",
+      "longcat-flash-thinking-2601#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LongCat-Flash-Thinking-2601 là Mô hình Suy luận Lớn (Large Reasoning Model) 560 tỷ tham số được xây dựng trên kiến trúc Mixture-of-Experts, thiết kế chuyên biệt cho các tác vụ suy luận dạng agent (agentic reasoning) và ra quyết định phức tạp. Mô hình kết hợp phương pháp mở rộng môi trường (environment scaling) với học tăng cường đa môi trường để phát triển các kỹ năng agent mạnh mẽ trên nhiều kịch bản đa dạng. Được huấn luyện một cách hệ thống nhằm chống lại nhiễu và các yếu tố bất định từ môi trường, mô hình đảm bảo hiệu năng đáng tin cậy trong các điều kiện thực tế không hoàn hảo—nơi các mô hình truyền thống thường gặp khó khăn. Ngoài ra, mô hình còn sở hữu Chế độ Suy nghĩ Sâu (Heavy Thinking Mode) giúp giải quyết các tác vụ cực kỳ thách thức bằng tư duy song song cường độ cao, đạt hiệu năng hàng đầu trên các bài test benchmark về sử dụng công cụ dạng agent, tìm kiếm dạng agent và suy luận tích hợp công cụ.\n\nCác ứng dụng chính:\n- Điều phối công cụ đa bước và thực hiện tác vụ suy luận dạng agent\n- Ra quyết định phức tạp trong môi trường nhiễu hoặc có độ bất định cao\n- Suy luận tích hợp công cụ dựa trên đồ thị phụ thuộc (dependency graphs)\n- Hoàn thành tác vụ mạnh mẽ dưới các điều kiện môi trường không hoàn hảo",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/meituan-longcat/LongCat-Flash-Thinking-2601`",
+    "usage_vi": "```\nSử dụng LongCat-Flash-Thinking-2601 để phân tích [DATASET_DESCRIPTION] và tạo danh sách đề xuất [DECISION_TYPE] được sắp xếp theo thứ tự ưu tiên. Tập trung vào [KEY_METRIC] đồng thời cân nhắc các [CONSTRAINTS]. Cung cấp 5 hành động hàng đầu kèm theo điểm số tác động ước tính (1-100) và lộ trình triển khai.\n```\nSao chép\n\n```\nDựa trên phân tích 12.478 giao dịch chuỗi cung ứng từ Quý 4 năm 2023, LongCat-Flash-Thinking-2601 đã xác định các điểm nghẽn nghiêm trọng trong hệ thống hàng tồn kho just-in-time của chúng tôi. 5 đề xuất hàng đầu gồm:\n\n1. **Phân bổ lại 15% lượng hàng dự phòng (safety stock)** từ Kho B sang Kho D (Tác động: 92, Thời gian: 2 tuần) - Việc này sẽ giảm 40% tình trạng hết hàng tại các khu vực có nhu cầu cao, đồng thời cắt giảm 180.000 USD chi phí lưu kho hàng năm.\n\n2. **Triển khai các điểm đặt hàng lại động (dynamic reorder points)** cho SKU-456789 (Tác động: 88, Thời gian: 1 tuần) - Điều chỉnh các mốc kích hoạt đặt hàng dựa trên mô hình nhu cầu theo thời gian thực có thể tiết kiệm 120.000 USD chi phí hàng tồn kho dư thừa.\n\n3. **Thương lượng vận chuyển nhanh** với Nhà cung cấp X cho các linh kiện quan trọng (Tác động: 85, Thời gian: 3 ngày) - Giảm thời gian giao hàng (lead time) từ 7 xuống còn 3 ngày sẽ ngăn chặn được khoản thất thu tiềm năng trị giá 2,1 triệu USD trong mùa cao điểm.\n\n4. **Tự động hóa việc tạo PO** cho các mặt hàng giá trị thấp (Tác động: 82, Thời gian: 4 tuần) - Việc này giúp tiết kiệm 12 giờ/tuần cho nhân viên mua hàng trong khi vẫn duy trì tỷ lệ đáp ứng đơn hàng (fill rate) đạt 99,5%.\n\n5. **Xây dựng bảng đánh giá rủi ro nhà cung cấp** (Tác động: 79, Thời gian: 2 tuần) - Chủ động xác định các nhà cung cấp có rủi ro cao có thể ngăn ngừa 850.000 USD chi phí do gián đoạn.\n\nPhân tích cho thấy 68% tình trạng kém hiệu quả hiện tại bắt nguồn từ các chính sách tồn kho tĩnh, vốn không tính đến sự gia tăng đột biến của nhu cầu theo mùa. Hệ thống cũng cảnh báo rằng mức hàng dự phòng hiện tại của chúng tôi đang cao hơn 23% so với mức cần thiết đối với 80% mã SKU.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:27.536834Z",
+    "http_status": 200,
+    "content_hash": "5433f760eb597a1b708d20b473535edc692de4c960f683c3b96808e098ae4875",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\longcat-flash-thinking-2601.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\longcat-flash-thinking-2601.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LongCat-Flash-Thinking-2601 - Tự động hóa vận hành",
+  "short_description_vi": "LongCat-Flash-Thinking-2601 tự động hóa quy trình ra quyết định phức tạp cho các đội ngũ vận hành. Mô hình kết nối với các Claude agent để xử lý các tập dữ liệu lớn, nhận diện quy luật và đưa ra các thông tin phân tích chuyên sâu có thể triển khai ngay. Giải pháp lý tưởng cho việc tối ưu hóa chuỗi cung ứng, dự báo nhu cầu và tự động hóa quy trình."
+}

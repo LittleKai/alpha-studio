@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/workos-skill-router",
+  "slug": "workos-skill-router",
+  "name": "Gemini Integration & Contextual Summarization",
+  "headline": "WorkOS Skill Router: Request Routing for AuthKit",
+  "short_description": "The WorkOS Skill Router helps in routing user requests to the correct reference files based on decision rules. It's designed for developers integrating WorkOS widgets and API calls.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "workos",
+  "install_command": "git clone https://github.com/workos/skills",
+  "source_repo_url": "https://github.com/workos/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "workos",
+    "router",
+    "integration"
+  ],
+  "sections": {
+    "overview": "The WorkOS Skill Router is a decision-based routing skill that intelligently directs AI agents to the correct reference documentation based on user requests. It covers 40+ reference files spanning AuthKit setup across multiple frameworks, backend SDK installation for nine languages, feature implementations like SSO and RBAC, migration guides from competing platforms, and API references. Developers integrating WorkOS authentication and identity solutions benefit from automatic reference selection, eliminating the need to manually install individual documentation files. The router works with Claude Code, Cursor, Codex, Goose, and any agent supporting the skills.sh format.\nRouting user queries to appropriate WorkOS documentation\nImplementing user management with WorkOS widgets\nIntegrating authentication features using WorkOS APIs",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/workos/skills --skill workos`\n`git clone https://github.com/workos/skills`",
+    "usage": "```\nRoute the following user request to the appropriate WorkOS reference file or API endpoint using the Skill Router. Decision criteria: [REQUEST_TYPE], [USER_INTENT], [WORKOS_SERVICE]. Reference files: [FILE_1], [FILE_2], [FILE_3]. Return the correct file path or API endpoint with a brief explanation. Request: '[USER_REQUEST]'\n```\nCopy\n\n```\n**Routing Result:**\n\n**File/API Endpoint:** `/workos/v1/authentication/mfa`\n\n**Explanation:** The request involves a user attempting to enable Multi-Factor Authentication (MFA) for their WorkOS-integrated application. This matches the `authentication/mfa` endpoint, which handles MFA configuration and management. The router directs the request to the MFA reference file for further processing.\n\n**Next Steps:**\n- Verify the user has the necessary permissions.\n- Check if the MFA method (e.g., SMS, authenticator app) is supported.\n- Proceed with the MFA setup workflow.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "workos-skill-router#main-content",
+      "workos-skill-router#overview",
+      "workos-skill-router#setup",
+      "workos-skill-router#examples",
+      "workos-skill-router#related",
+      "gemini-integration-and-contextual-summarization-mkufx265"
+    ],
+    "overview_vi": "The WorkOS Skill Router is a decision-based routing skill that intelligently directs AI agents to the correct reference documentation based on user requests. It covers 40+ reference files spanning AuthKit setup across multiple frameworks, backend SDK installation for nine languages, feature implementations like SSO and RBAC, migration guides from competing platforms, and API references. Developers integrating WorkOS authentication and identity solutions benefit from automatic reference selection, eliminating the need to manually install individual documentation files. The router works with Claude Code, Cursor, Codex, Goose, and any agent supporting the skills.sh format.\nRouting user queries to appropriate WorkOS documentation\nImplementing user management with WorkOS widgets\nIntegrating authentication features using WorkOS APIs",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/workos/skills --skill workos`\n`git clone https://github.com/workos/skills`",
+    "usage_vi": "```\nRoute the following user request to the appropriate WorkOS reference file or API endpoint using the Skill Router. Decision criteria: [REQUEST_TYPE], [USER_INTENT], [WORKOS_SERVICE]. Reference files: [FILE_1], [FILE_2], [FILE_3]. Return the correct file path or API endpoint with a brief explanation. Request: '[USER_REQUEST]'\n```\nCopy\n\n```\n**Routing Result:**\n\n**File/API Endpoint:** `/workos/v1/authentication/mfa`\n\n**Explanation:** The request involves a user attempting to enable Multi-Factor Authentication (MFA) for their WorkOS-integrated application. This matches the `authentication/mfa` endpoint, which handles MFA configuration and management. The router directs the request to the MFA reference file for further processing.\n\n**Next Steps:**\n- Verify the user has the necessary permissions.\n- Check if the MFA method (e.g., SMS, authenticator app) is supported.\n- Proceed with the MFA setup workflow.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:58:11.195072Z",
+    "http_status": 200,
+    "content_hash": "226d2941882cad86eb91d9ead776c0f473da75beaa2d8029b4a574c0cfd5a33c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\workos-skill-router.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\workos-skill-router.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "WorkOS Skill Router: Request Routing for AuthKit",
+  "short_description_vi": "The WorkOS Skill Router helps in routing user requests to the correct reference files based on decision rules. It's designed for developers integrating WorkOS widgets and API calls."
+}

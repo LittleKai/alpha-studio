@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/electron-builder",
+  "slug": "electron-builder",
+  "name": "Electron Builder",
+  "headline": "electron-builder: Electron App Packaging &",
+  "short_description": "electron-builder is a powerful tool for building and packaging Electron applications. It streamlines the setup process for developers looking to create and automate the distribution of their apps.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "pedronauck",
+  "install_command": "git clone https://github.com/electron-userland/electron-builder",
+  "source_repo_url": "https://github.com/electron-userland/electron-builder",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "builder",
+    "development-tools",
+    "electron"
+  ],
+  "sections": {
+    "overview": "electron-builder is a complete solution for packaging and building Electron applications ready for distribution across macOS, Windows, and Linux. It handles native dependency compilation, code signing on CI servers or local machines, and includes auto-update support out of the box. The tool supports numerous target formats including dmg and pkg for macOS, AppImage and snap for Linux, and nsis, MSI, and portable executables for Windows. It also manages publishing artifacts to GitHub Releases, Amazon S3, DigitalOcean Spaces, and other services. Developers benefit from automatic tool downloading, parallel building and publishing, and Docker support for cross-platform builds without manual setup.\nPackage Electron applications for production\nSet up auto-updates for apps\nIntegrate with CI/CD workflows",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/pedronauck/skills --skill electron-builder`\n`git clone https://github.com/electron-userland/electron-builder`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "electron-builder#main-content",
+      "electron-builder#overview",
+      "electron-builder#setup",
+      "electron-builder#examples",
+      "electron-builder#related",
+      "apollo-rover-cli",
+      "knock-cli-skill",
+      "nango-function-builder"
+    ],
+    "overview_vi": "electron-builder là một giải pháp toàn diện cho việc đóng gói và build các ứng dụng Electron để sẵn sàng phân phối trên macOS, Windows và Linux. Công cụ này tự động xử lý biên dịch các native dependency, ký code (code signing) trên các CI server hoặc máy cục bộ, và hỗ trợ auto-update ngay khi cài đặt. electron-builder hỗ trợ nhiều định dạng đầu ra bao gồm dmg và pkg cho macOS, AppImage và snap cho Linux, cùng nsis, MSI và các file thực thi portable cho Windows. Ngoài ra, nó cũng quản lý việc publish các artifact lên GitHub Releases, Amazon S3, DigitalOcean Spaces và các dịch vụ khác. Các nhà phát triển sẽ được tối ưu hóa hiệu năng nhờ tính năng tự động tải công cụ phụ trợ, build và publish song song, cũng như hỗ trợ Docker để build cross-platform mà không cần setup thủ công.\nĐóng gói ứng dụng Electron cho môi trường production\nThiết lập auto-update cho ứng dụng\nTích hợp vào quy trình CI/CD",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/pedronauck/skills --skill electron-builder`\n`git clone https://github.com/electron-userland/electron-builder`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:52:19.518509Z",
+    "http_status": 200,
+    "content_hash": "bb427d3f0278b4e487aabfc495196d455091c4b8df6778f07c85afa83b55b5f4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\electron-builder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\electron-builder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "electron-builder: Đóng gói Ứng dụng Electron &",
+  "short_description_vi": "electron-builder là một công cụ mạnh mẽ để build và đóng gói các ứng dụng Electron. Công cụ này giúp đơn giản hóa quy trình setup cho các nhà phát triển muốn tạo và tự động hóa việc phân phối ứng dụng của mình."
+}

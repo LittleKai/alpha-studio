@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/firebase-basics",
+  "slug": "firebase-basics",
+  "name": "Related Skills",
+  "headline": "Firebase Agent Skills: AI Coding Skills",
+  "short_description": "This skill covers Firebase CLI fundamentals including project setup, authentication, and service initialization. It's intended for developers looking to set up Firebase services like Firestore, Functions, and Hosting efficiently.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "firebase",
+  "install_command": "git clone https://github.com/firebase/skills",
+  "source_repo_url": "https://github.com/firebase/skills",
+  "works_with": [
+    "GitHub Copilot",
+    "Windsurf",
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "firebase",
+    "firebase-skills",
+    "basics"
+  ],
+  "sections": {
+    "overview": "Firebase Agent Skills provides a curated collection of skills that extend AI coding agent capabilities for Firebase development. These skills are packaged as reusable instructions following the Agent Skills format, enabling AI assistants like Claude, Cursor, and others to understand and work with Firebase services more effectively. The skills support installation across multiple platforms including Claude, Cursor, Windsurf, and GitHub Copilot through various methods—CLI tools, local setup, or direct symlinks. Developers can install skills via the Agent Skills CLI, manual setup, or local development workflows to accelerate Firebase project integration and reduce setup complexity.\nSet up Firebase project and authentication\nInitialize Firestore and Functions\nDeploy web applications using Firebase Hosting\nGenerate configuration files for Firebase services",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/firebase/skills --skill firebase-basics`\n`git clone https://github.com/firebase/skills`",
+    "usage": "```\nHelp me set up Firebase for [COMPANY]'s [INDUSTRY] project. I need to initialize Firebase CLI, configure authentication, and set up [SPECIFIC_SERVICE] with basic rules. Show me the commands and explain each step. Use [PROJECT_ID] as the Firebase project ID.\n```\nCopy\n\n```\n# Firebase Setup Guide for Acme Corp's E-commerce Platform",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "firebase-basics#main-content",
+      "firebase-basics#overview",
+      "firebase-basics#setup",
+      "firebase-basics#examples",
+      "firebase-basics#related"
+    ],
+    "overview_vi": "Firebase Agent Skills provides a curated collection of skills that extend AI coding agent capabilities for Firebase development. These skills are packaged as reusable instructions following the Agent Skills format, enabling AI assistants like Claude, Cursor, and others to understand and work with Firebase services more effectively. The skills support installation across multiple platforms including Claude, Cursor, Windsurf, and GitHub Copilot through various methods—CLI tools, local setup, or direct symlinks. Developers can install skills via the Agent Skills CLI, manual setup, or local development workflows to accelerate Firebase project integration and reduce setup complexity.\nSet up Firebase project and authentication\nInitialize Firestore and Functions\nDeploy web applications using Firebase Hosting\nGenerate configuration files for Firebase services",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/firebase/skills --skill firebase-basics`\n`git clone https://github.com/firebase/skills`",
+    "usage_vi": "```\nHelp me set up Firebase for [COMPANY]'s [INDUSTRY] project. I need to initialize Firebase CLI, configure authentication, and set up [SPECIFIC_SERVICE] with basic rules. Show me the commands and explain each step. Use [PROJECT_ID] as the Firebase project ID.\n```\nCopy\n\n```\n# Firebase Setup Guide for Acme Corp's E-commerce Platform"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:58:26.795449Z",
+    "http_status": 200,
+    "content_hash": "efd9946f021c6e8b3d0b922b41b86c27013e4c26f0eeadaaba1d5538096d19fc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\firebase-basics.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\firebase-basics.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Firebase Agent Skills: AI Coding Skills",
+  "short_description_vi": "This skill covers Firebase CLI fundamentals including project setup, authentication, and service initialization. It's intended for developers looking to set up Firebase services like Firestore, Functions, and Hosting efficiently."
+}

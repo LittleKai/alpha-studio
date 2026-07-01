@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cadre-devkit-claude",
+  "slug": "cadre-devkit-claude",
+  "name": "Cadre Devkit Claude",
+  "headline": "Cadre devkit for Claude Code team",
+  "short_description": "A development kit that adds quality gates, security hooks, and structured workflows to Claude Code, helping developers enforce code standards and prevent unsafe operations.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "benshapyro",
+  "install_command": "git clone https://github.com/benshapyro/cadre-devkit-claude.git",
+  "source_repo_url": "https://github.com/benshapyro/cadre-devkit-claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Cadre DevKit transforms Claude Code into a reliable development partner by layering quality assurance and security controls onto AI-assisted coding. It prevents hallucinations through evidence-based verification, blocks dangerous commands via pre-execution hooks, and enforces a structured research-first workflow from planning through shipping. The kit includes anti-slop tooling to remove common AI code issues, knowledge preservation across sessions, and interactive learning commands. Developers get a reliable workflow engine instead of babysitting an unpredictable AI assistant.\nBlocking dangerous bash commands before execution in Claude Code sessions\nEnforcing test-driven development workflow with /plan --tdd for complex features\nRemoving AI code smell (unnecessary comments, any casts, over-engineering) with /slop command\nCreating project specifications and architecture documents with /greenfield for new projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/benshapyro/cadre-devkit-claude`",
+    "usage": "```\nAct as a Cadre team development kit for Claude Code. Implement quality gates, security hooks, and workflow commands for a [COMPANY] in the [INDUSTRY] sector. Use the following [DATA] to create a robust development environment. Ensure the solution integrates seamlessly with existing tools and workflows.\n```\nCopy\n\n```\n# Cadre Team Development Kit Implementation",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cadre-devkit-claude#main-content",
+      "cadre-devkit-claude#overview",
+      "cadre-devkit-claude#setup",
+      "cadre-devkit-claude#examples",
+      "cadre-devkit-claude#tools",
+      "cadre-devkit-claude#mcp",
+      "cadre-devkit-claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Cadre DevKit biến Claude Code thành một đối tác phát triển đáng tin cậy bằng cách tích hợp các lớp kiểm soát chất lượng và bảo mật vào quá trình lập trình có AI hỗ trợ. Công cụ này ngăn ngừa hiện tượng ảo giác (hallucinations) thông qua xác thực dựa trên bằng chứng thực tế, chặn các lệnh nguy hiểm thông qua các pre-execution hooks, và áp đặt workflow có cấu trúc ưu tiên nghiên cứu (research-first) từ khâu lập kế hoạch cho đến khi triển khai (shipping). Bộ công cụ này bao gồm các công cụ chống code rác (anti-slop) để loại bỏ các lỗi code thường gặp của AI, bảo lưu tri thức giữa các session, và cung cấp các lệnh học tập tương tác. Nhờ đó, lập trình viên có được một workflow engine đáng tin cậy thay vì phải tốn công giám sát một trợ lý AI thiếu ổn định.\nChặn các lệnh bash nguy hiểm trước khi thực thi trong các session Claude Code\nÁp dụng workflow phát triển hướng kiểm thử (test-driven development) với lệnh /plan --tdd cho các tính năng phức tạp\nLoại bỏ code smell từ AI (comment không cần thiết, ép kiểu any, over-engineering) bằng lệnh /slop\nTạo tài liệu đặc tả dự án và kiến trúc bằng lệnh /greenfield cho các dự án mới",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/benshapyro/cadre-devkit-claude`",
+    "usage_vi": "```\nHãy đóng vai trò là một Cadre team development kit cho Claude Code. Triển khai các quality gates, security hooks và các lệnh workflow cho một [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Sử dụng [DATA] sau để tạo ra một môi trường phát triển mạnh mẽ. Đảm bảo giải pháp tích hợp liền mạch với các công cụ và workflow hiện có.\n```\nCopy\n\n```\n# Triển khai Cadre Team Development Kit"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:12:36.488218Z",
+    "http_status": 200,
+    "content_hash": "08e8edab2990339d89450c17f555563bcf8ed604553924ea6b2867bc7921e9ee",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cadre-devkit-claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cadre-devkit-claude.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cadre devkit dành cho Claude Code team",
+  "short_description_vi": "Bộ công cụ phát triển tích hợp thêm quality gates, security hooks và các workflow có cấu trúc vào Claude Code, giúp lập trình viên tuân thủ các tiêu chuẩn code và ngăn chặn các thao tác không an toàn."
+}

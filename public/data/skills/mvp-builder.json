@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mvp-builder",
+  "slug": "mvp-builder",
+  "name": "Mvp Builder",
+  "headline": "MVP Builder: TDD Framework for Claude Code",
+  "short_description": "Document-Driven Development framework for Claude Code .  structured specs, TDD cycles, feedback loops, and skills system",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "petbrains",
+  "install_command": "git clone https://github.com/petbrains/mvp-builder.git",
+  "source_repo_url": "https://github.com/petbrains/mvp-builder",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "llm",
+    "mvp",
+    "spec-driven",
+    "ai-agents",
+    "developer-tools",
+    "tdd",
+    "prompt-engineering",
+    "document-driven-development",
+    "claude-code",
+    "code-generator"
+  ],
+  "sections": {
+    "overview": "MVP Builder is a Document-Driven Development framework that transforms how Claude Code builds products. It enforces a structured pipeline from product requirements through design and implementation, with TDD cycles and mandatory self-review to catch incomplete code before shipping. Instead of relying on prompts alone, MVP Builder uses specification documents that map directly to tests and implementation tasks, making progress verifiable and sessions persistent across context resets. The framework prevents common AI coding failures—hallucinations, stub implementations, and context loss—through atomic commits, review feedback loops, and a skills system that extends capabilities without modifying core agents. Teams building MVPs with Claude Code gain enforced quality gates, architectural clarity, and a reusable template that scales from single features to full projects.\nBuilding production-ready MVPs with Claude Code without manual debugging of incomplete features\nEnforcing TDD workflows across AI-assisted development with automatic RED-GREEN cycles\nMaintaining context and progress across multiple Claude sessions using persistent specification documents\nStandardizing design-to-code workflows with Figma integration and component mapping\n\n- **Company**: GreenTech Solutions\n- **Industry**: E-Commerce\n- **Objective**: Develop an MVP for an online platform selling sustainable products.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/petbrains/mvp-builder`",
+    "usage": "```\nAct as an MVP Builder for a [COMPANY] in the [INDUSTRY] sector. Using the Document-Driven Development framework, create a structured specification for a minimum viable product (MVP) based on the following [DATA]. Include TDD cycles, feedback loops, and a skills system. Focus on key features, user flows, and technical requirements.\n```\nCopy\n\n```\n# MVP Builder: E-Commerce Platform for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mvp-builder#main-content",
+      "mvp-builder#overview",
+      "mvp-builder#setup",
+      "mvp-builder#examples",
+      "mvp-builder#tools",
+      "mvp-builder#mcp",
+      "mvp-builder#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MVP Builder là một framework Document-Driven Development (Phát triển hướng tài liệu) giúp thay đổi cách Claude Code xây dựng sản phẩm. Nó bắt buộc một quy trình chuẩn hóa từ yêu cầu sản phẩm đến thiết kế và triển khai, với các chu kỳ TDD và bước tự đánh giá (self-review) bắt buộc nhằm phát hiện code chưa hoàn thiện trước khi release. Thay vì chỉ phụ thuộc vào prompt, MVP Builder sử dụng các tài liệu đặc tả ánh xạ trực tiếp đến các test case và tác vụ triển khai, giúp tiến trình có thể kiểm chứng được và duy trì session ổn định ngay cả khi reset context. Framework này ngăn chặn các lỗi lập trình AI phổ biến — như hallucination (ảo tưởng), stub implementation (code giả lập) và mất context — thông qua các atomic commit, vòng lặp phản hồi (review feedback loops) và hệ thống kỹ năng (skills system) giúp mở rộng năng lực mà không cần chỉnh sửa các agent cốt lõi. Các đội ngũ xây dựng MVP bằng Claude Code sẽ có được các chốt kiểm soát chất lượng (quality gates) nghiêm ngặt, cấu trúc kiến trúc rõ ràng và một template có thể tái sử dụng giúp mở rộng từ các tính năng đơn lẻ lên toàn bộ dự án.\nXây dựng các MVP sẵn sàng cho môi trường production bằng Claude Code mà không cần debug thủ công các tính năng chưa hoàn thiện\nÁp dụng quy trình TDD trong phát triển phần mềm được hỗ trợ bởi AI với các chu kỳ RED-GREEN tự động\nDuy trì context và tiến độ qua nhiều session Claude bằng cách sử dụng tài liệu đặc tả lưu trữ lâu dài (persistent)\nChuẩn hóa quy trình từ thiết kế sang code (design-to-code) thông qua tích hợp Figma và ánh xạ component\n\n- **Công ty**: GreenTech Solutions\n- **Ngành**: Thương mại điện tử\n- **Mục tiêu**: Phát triển một MVP cho nền tảng trực tuyến bán các sản phẩm bền vững.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/petbrains/mvp-builder`",
+    "usage_vi": "```\nĐóng vai trò là một MVP Builder cho một [COMPANY] trong lĩnh vực [INDUSTRY]. Sử dụng framework Document-Driven Development, hãy tạo một đặc tả cấu trúc cho sản phẩm khả dụng tối thiểu (MVP) dựa trên [DATA] sau đây. Bao gồm các chu kỳ TDD, vòng lặp phản hồi và hệ thống kỹ năng. Tập trung vào các tính năng chính, luồng người dùng và các yêu cầu kỹ thuật.\n```\nCopy\n\n```\n# MVP Builder: Nền tảng Thương mại điện tử cho GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:44:18.484992Z",
+    "http_status": 200,
+    "content_hash": "6a979641fc6e5217695ed18ad73704cdee1bc18045ec6909ee6d2187d35b09c3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mvp-builder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mvp-builder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MVP Builder: Framework TDD cho Claude Code",
+  "short_description_vi": "Framework Document-Driven Development cho Claude Code với tài liệu đặc tả cấu trúc, chu kỳ TDD, vòng lặp phản hồi và hệ thống kỹ năng."
+}

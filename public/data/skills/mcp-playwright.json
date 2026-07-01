@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-playwright",
+  "slug": "mcp-playwright",
+  "name": "MCP Playwright",
+  "headline": "mcp-playwright: Automate Browsers & APIs",
+  "short_description": "The mcp-playwright tool automates browser and API interactions, enhancing productivity in various development environments like Claude Desktop and Cursor IDE. Perfect for streamlining testing and automation workflows.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "executeautomation",
+  "install_command": "claude install executeautomation/mcp-playwright",
+  "source_repo_url": "https://github.com/executeautomation/mcp-playwright",
+  "works_with": [
+    "ClaudeCursor"
+  ],
+  "tags": [
+    "TypeScript",
+    "API interaction",
+    "productivity",
+    "automation",
+    "browser testing"
+  ],
+  "sections": {
+    "overview": "mcp-playwright is an MCP (Model Context Protocol) skill that integrates Playwright for automated browser and API interactions within AI development environments. It enables developers to streamline testing workflows, automate web interactions, and validate application behavior without manual browser control. The tool supports device emulation with 143 device presets, portrait/landscape orientation modes, and automatic user-agent configuration. It includes comprehensive tools for resizing, navigating, and interacting with web pages, making it valuable for QA automation, end-to-end testing, and web scraping tasks in development workflows.\nAutomate end-to-end testing of web applications to ensure functionality across different browsers.\nIntegrate API calls seamlessly into development workflows for efficient data handling.\nStreamline browser interactions for quality assurance processes, reducing manual testing time.\nFacilitate automated user interface testing to quickly identify and resolve UI issues.",
+    "setup": "Terminal\nCopy\n`claude install executeautomation/mcp-playwright`\n`git clone https://github.com/executeautomation/mcp-playwright`",
+    "usage": "```\nAutomate a series of browser interactions for [WEBSITE] using mcp-playwright. The interactions should include [ACTIONS] such as logging in, navigating to specific pages, and extracting data. Ensure the script handles [ERROR_CONDITIONS] gracefully. Provide the complete code snippet ready for execution in Claude Desktop or Cursor IDE.\n```\nCopy\n\n```\nHere's an example of automating browser interactions for an e-commerce website using mcp-playwright:\n\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch();\n  const page = await browser.newPage();\n  await page.goto('https://example-ecommerce.com/login');\n  await page.fill('#username', 'testuser');\n  await page.fill('#password', 'password123');\n  await page.click('#login-button');\n  await page.waitForNavigation();\n  await page.goto('https://example-ecommerce.com/products');\n  const productLinks = await page.$$eval('.product-link', links => links.map(link => link.href));\n  console.log('Product links:', productLinks);\n  await browser.close();\n})();\n```\n\nThis script logs in to the e-commerce website, navigates to the products page, and extracts all product links. It handles basic error conditions by waiting for navigation and using appropriate selectors.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor"
+    ],
+    "related_skills": [
+      "mcp-playwright#main-content",
+      "mcp-playwright#overview",
+      "mcp-playwright#setup",
+      "mcp-playwright#examples",
+      "mcp-playwright#tools",
+      "mcp-playwright#mcp",
+      "mcp-playwright#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcp-playwright is an MCP (Model Context Protocol) skill that integrates Playwright for automated browser and API interactions within AI development environments. It enables developers to streamline testing workflows, automate web interactions, and validate application behavior without manual browser control. The tool supports device emulation with 143 device presets, portrait/landscape orientation modes, and automatic user-agent configuration. It includes comprehensive tools for resizing, navigating, and interacting with web pages, making it valuable for QA automation, end-to-end testing, and web scraping tasks in development workflows.\nAutomate end-to-end testing of web applications to ensure functionality across different browsers.\nIntegrate API calls seamlessly into development workflows for efficient data handling.\nStreamline browser interactions for quality assurance processes, reducing manual testing time.\nFacilitate automated user interface testing to quickly identify and resolve UI issues.",
+    "setup_vi": "Terminal\nCopy\n`claude install executeautomation/mcp-playwright`\n`git clone https://github.com/executeautomation/mcp-playwright`",
+    "usage_vi": "```\nAutomate a series of browser interactions for [WEBSITE] using mcp-playwright. The interactions should include [ACTIONS] such as logging in, navigating to specific pages, and extracting data. Ensure the script handles [ERROR_CONDITIONS] gracefully. Provide the complete code snippet ready for execution in Claude Desktop or Cursor IDE.\n```\nCopy\n\n```\nHere's an example of automating browser interactions for an e-commerce website using mcp-playwright:\n\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch();\n  const page = await browser.newPage();\n  await page.goto('https://example-ecommerce.com/login');\n  await page.fill('#username', 'testuser');\n  await page.fill('#password', 'password123');\n  await page.click('#login-button');\n  await page.waitForNavigation();\n  await page.goto('https://example-ecommerce.com/products');\n  const productLinks = await page.$$eval('.product-link', links => links.map(link => link.href));\n  console.log('Product links:', productLinks);\n  await browser.close();\n})();\n```\n\nThis script logs in to the e-commerce website, navigates to the products page, and extracts all product links. It handles basic error conditions by waiting for navigation and using appropriate selectors.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:35.871257Z",
+    "http_status": 200,
+    "content_hash": "71fd6a1f3cc88bb7ea904359243c105f2bc0c63e3248cbd3f7eac97361a403aa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-playwright.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-playwright.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp-playwright: Automate Browsers & APIs",
+  "short_description_vi": "The mcp-playwright tool automates browser and API interactions, enhancing productivity in various development environments like Claude Desktop and Cursor IDE. Perfect for streamlining testing and automation workflows."
+}

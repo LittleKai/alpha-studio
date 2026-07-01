@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jrvs",
+  "slug": "jrvs",
+  "name": "react-native-best-practices",
+  "headline": "JRVS AI Agent - Autonomous Coding & Automation",
+  "short_description": "JRVS is an advanced AI agent leveraging the JARCORE autonomous coding engine, featuring a RAG knowledge base, web scraping, calendar integration, and code generation capabilities. It allows users to harness the power of their preferred local AI for enhanced productivity.",
+  "tier": "Silver",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Xthebuilder",
+  "install_command": "claude install Xthebuilder/JRVS",
+  "source_repo_url": "https://github.com/Xthebuilder/JRVS",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI coding",
+    "web scraping",
+    "automation",
+    "calendar integration",
+    "code generation"
+  ],
+  "sections": {
+    "overview": "JRVS is a self-hosted AI operations assistant designed for teams in regulated industries—healthcare, legal, financial services, government—that cannot send sensitive data to external APIs. It runs scheduled autonomous agents for routine work like inbox digestion, email monitoring, and document drafting, with configurable approval tiers (auto, notify, confirm) that control execution risk. All inference happens locally via Ollama or LM Studio, and every write action to Google Workspace is logged twice (intent and result) in a rotating JSON audit trail for compliance. It includes a RAG pipeline with FAISS embeddings, persistent SQLite memory, web search via Brave API, and MCP support. Setup requires Python 3.8+, a local LLM backend, and Docker—no enterprise licensing or cloud keys required.\nAutomating code generation for projects\nScraping web data for market analysis\nIntegrating calendar events with coding tasks\nEnhancing productivity with autonomous coding assistance",
+    "setup": "Terminal\nCopy\n`claude install Xthebuilder/JRVS`\n`git clone https://github.com/Xthebuilder/JRVS`",
+    "usage": "```\nUse JRVS with the JARCORE autonomous coding engine to design and implement a [DESCRIBE_FEATURE] for the Tomi app. Leverage JRVS's RAG knowledge base to research Tomi's existing architecture, APIs, and documentation gaps. Scrape relevant Tomi developer resources (if available) to gather requirements. Integrate with JRVS's calendar to schedule development milestones for [TIMELINE]. Generate clean, production-ready code for the feature, including unit tests and documentation. Example: 'Use JRVS to build a crypto tip jar feature for Tomi that allows users to send micro-tips (0.001 TOMI) in group chats. Research Tomi's group chat API endpoints, design the tip jar UI/UX, and implement the feature in React Native with Jest tests.'\n```\nCopy\n\n```\n### JRVS Implementation Report: Crypto Tip Jar for Tomi Groups\n\n**Objective**: Build a micro-tip feature (0.001 TOMI minimum) for Tomi group chats to enable seamless tipping between users. The feature includes:\n- A floating tip button in group chat messages\n- A confirmation modal with tip amount and recipient\n- Integration with Tomi's wallet SDK\n- Real-time balance updates\n\n**Research Phase (RAG + Web Scraping)**:\nJRVS analyzed Tomi's public documentation and GitHub repositories to identify:\n1. Group chat API: `POST /api/v1/groups/{groupId}/messages` for sending tips as custom message types\n2. Wallet SDK: `tomi-wallet-sdk@1.2.3` for balance checks and transactions\n3. UI guidelines: Tomi's design system (Figma file `tomi-design-system-v2`) specifies primary color `#4F46E5` for CTAs\n\n**Development Milestones (Calendar Integration)**:\n- Week 1: Backend API extension (JRVS auto-generated code for `TipService.java`)\n- Week 2: Frontend UI components (React Native, tested with Jest)\n- Week 3: Wallet SDK integration and security audit\n- Week 4: Beta testing with 50 Tomi power users\n\n**Generated Code Snippet (Frontend):**\n```javascript\n// TipButton.tsx\nimport { TipModal } from './TipModal';\n\nconst TipButton = ({ userId, groupId }) => {\n  const [isOpen, setIsOpen] = useState(false);\n  const [amount, setAmount] = useState(0.001);\n\n  const handleTip = async () => {\n    const tx = await tomiWallet.sendTip(\n      groupId,\n      userId,\n      amount,\n      'tip_jar_v1'\n    );\n    JRVS.logAnalytics('tip_sent', { amount, userId });\n  };\n\n  return (\n    <>\n      <button\n        onClick={() => setIsOpen(true)}\n        style={{ backgroundColor: '#4F46E5' }}\n      >\n        Tip\n      </button>\n      <TipModal\n        isOpen={isOpen}\n        onClose={() => setIsOpen(false)}\n        onConfirm={handleTip}\n        amount={amount}\n        setAmount={setAmount}\n      />\n    </>\n  );\n};\n```\n\n**Testing Results:**\n- 92% of beta testers successfully sent tips on first try\n- Average transaction time: 1.2 seconds (vs. 3.5s for manual transfers)\n- Zero critical bugs reported\n\n**Next Steps:**\n1. Submit PR to Tomi's `develop` branch\n2. Request security review from Tomi's core team\n3. Schedule App Store release for Q3 2024\n\n**JRVS Efficiency Metrics:**\n- Lines of code generated: 1,247\n- Manual intervention required: 3 hours (UI polish)\n- Time saved vs. manual coding: ~80 hours\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "jrvs#main-content",
+      "jrvs#overview",
+      "jrvs#setup",
+      "jrvs#examples",
+      "jrvs#tools",
+      "jrvs#mcp",
+      "jrvs#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "JRVS is a self-hosted AI operations assistant designed for teams in regulated industries—healthcare, legal, financial services, government—that cannot send sensitive data to external APIs. It runs scheduled autonomous agents for routine work like inbox digestion, email monitoring, and document drafting, with configurable approval tiers (auto, notify, confirm) that control execution risk. All inference happens locally via Ollama or LM Studio, and every write action to Google Workspace is logged twice (intent and result) in a rotating JSON audit trail for compliance. It includes a RAG pipeline with FAISS embeddings, persistent SQLite memory, web search via Brave API, and MCP support. Setup requires Python 3.8+, a local LLM backend, and Docker—no enterprise licensing or cloud keys required.\nAutomating code generation for projects\nScraping web data for market analysis\nIntegrating calendar events with coding tasks\nEnhancing productivity with autonomous coding assistance",
+    "setup_vi": "Terminal\nCopy\n`claude install Xthebuilder/JRVS`\n`git clone https://github.com/Xthebuilder/JRVS`",
+    "usage_vi": "```\nUse JRVS with the JARCORE autonomous coding engine to design and implement a [DESCRIBE_FEATURE] for the Tomi app. Leverage JRVS's RAG knowledge base to research Tomi's existing architecture, APIs, and documentation gaps. Scrape relevant Tomi developer resources (if available) to gather requirements. Integrate with JRVS's calendar to schedule development milestones for [TIMELINE]. Generate clean, production-ready code for the feature, including unit tests and documentation. Example: 'Use JRVS to build a crypto tip jar feature for Tomi that allows users to send micro-tips (0.001 TOMI) in group chats. Research Tomi's group chat API endpoints, design the tip jar UI/UX, and implement the feature in React Native with Jest tests.'\n```\nCopy\n\n```\n### JRVS Implementation Report: Crypto Tip Jar for Tomi Groups\n\n**Objective**: Build a micro-tip feature (0.001 TOMI minimum) for Tomi group chats to enable seamless tipping between users. The feature includes:\n- A floating tip button in group chat messages\n- A confirmation modal with tip amount and recipient\n- Integration with Tomi's wallet SDK\n- Real-time balance updates\n\n**Research Phase (RAG + Web Scraping)**:\nJRVS analyzed Tomi's public documentation and GitHub repositories to identify:\n1. Group chat API: `POST /api/v1/groups/{groupId}/messages` for sending tips as custom message types\n2. Wallet SDK: `tomi-wallet-sdk@1.2.3` for balance checks and transactions\n3. UI guidelines: Tomi's design system (Figma file `tomi-design-system-v2`) specifies primary color `#4F46E5` for CTAs\n\n**Development Milestones (Calendar Integration)**:\n- Week 1: Backend API extension (JRVS auto-generated code for `TipService.java`)\n- Week 2: Frontend UI components (React Native, tested with Jest)\n- Week 3: Wallet SDK integration and security audit\n- Week 4: Beta testing with 50 Tomi power users\n\n**Generated Code Snippet (Frontend):**\n```javascript\n// TipButton.tsx\nimport { TipModal } from './TipModal';\n\nconst TipButton = ({ userId, groupId }) => {\n  const [isOpen, setIsOpen] = useState(false);\n  const [amount, setAmount] = useState(0.001);\n\n  const handleTip = async () => {\n    const tx = await tomiWallet.sendTip(\n      groupId,\n      userId,\n      amount,\n      'tip_jar_v1'\n    );\n    JRVS.logAnalytics('tip_sent', { amount, userId });\n  };\n\n  return (\n    <>\n      <button\n        onClick={() => setIsOpen(true)}\n        style={{ backgroundColor: '#4F46E5' }}\n      >\n        Tip\n      </button>\n      <TipModal\n        isOpen={isOpen}\n        onClose={() => setIsOpen(false)}\n        onConfirm={handleTip}\n        amount={amount}\n        setAmount={setAmount}\n      />\n    </>\n  );\n};\n```\n\n**Testing Results:**\n- 92% of beta testers successfully sent tips on first try\n- Average transaction time: 1.2 seconds (vs. 3.5s for manual transfers)\n- Zero critical bugs reported\n\n**Next Steps:**\n1. Submit PR to Tomi's `develop` branch\n2. Request security review from Tomi's core team\n3. Schedule App Store release for Q3 2024\n\n**JRVS Efficiency Metrics:**\n- Lines of code generated: 1,247\n- Manual intervention required: 3 hours (UI polish)\n- Time saved vs. manual coding: ~80 hours\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:37:01.211765Z",
+    "http_status": 200,
+    "content_hash": "de4e393d312d98d165d334cf66bb32f2c0b675a69084f1173fc63962b8400bba",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jrvs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jrvs.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "JRVS AI Agent - Autonomous Coding & Automation",
+  "short_description_vi": "JRVS is an advanced AI agent leveraging the JARCORE autonomous coding engine, featuring a RAG knowledge base, web scraping, calendar integration, and code generation capabilities. It allows users to harness the power of their preferred local AI for enhanced productivity."
+}

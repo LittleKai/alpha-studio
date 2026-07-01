@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/video-wrapper-skills",
+  "slug": "video-wrapper-skills",
+  "name": "Video Wrapper Skills",
+  "headline": "Video Wrapper Skills - Automate Video Effects",
+  "short_description": "Automatically adds variety show-style visual effects to interview videos. AI analyzes subtitles to generate effect suggestions, which are rendered after user approval. Supports four visual themes. Ideal for operations teams managing video content.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "op7418",
+  "install_command": "git clone https://github.com/op7418/Video-Wrapper-Skills.git",
+  "source_repo_url": "https://github.com/op7418/Video-Wrapper-Skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Video Wrapper analyzes interview and podcast video subtitles using AI to identify key moments and automatically generate professional visual effect suggestions. The skill supports eight visual components—key phrases, lower thirds, chapter titles, term cards, quote callouts, animated stats, bullet points, and social bars—rendered across four distinct themes: Notion (warm knowledge style), Cyberpunk (neon futuristic), Apple (minimalist business), and Aurora (gradient flowing). After AI analysis, users review and approve suggested effects before one-click rendering using either a browser-based engine for high-quality animations or a pure Python PIL engine. Ideal for content teams, educators, and podcast producers who need to enhance long-form video with professional overlays and visual emphasis.\nEducational content: Automatically highlight terminology, key concepts, and definitions in course recordings and online lectures\nInterview and podcast production: Display guest names, roles, and memorable quotes with professional lower thirds and callouts\nYouTube and social media: Add visual variety and engagement overlays to long-form content for platforms like YouTube and Bilibili\nPanel discussions: Emphasize topic transitions with chapter titles and key takeaways for multi-speaker content",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/op7418/Video-Wrapper-Skills`",
+    "usage": "```\nGenerate a video wrapper for the interview transcript below with visual effects. Use the [THEME] theme (choose from: cinematic, playful, corporate, or documentary). Suggest 3-4 effects (e.g., lower-thirds, transitions, B-roll overlays, or animated text) to enhance engagement. Provide the effects in a table with columns: Effect Type, Description, Timing (in seconds), and Rationale. After approval, render the final video with these effects. Interview transcript: [TRANSCRIPT]\n```\nCopy\n\n```\nFor the interview transcript of Dr. Elena Vasquez discussing renewable energy innovations, the AI generated the following effects under the **documentary** theme:\n\n| Effect Type          | Description                                                                 | Timing (seconds) | Rationale                                                                 |\n|-----------------------|-----------------------------------------------------------------------------|------------------|---------------------------------------------------------------------------|\n| Lower-Thirds          | Animated text introducing Dr. Vasquez with name, title, and credentials     | 0:00 - 0:05      | Establishes credibility and context for the audience.                     |\n| Transition (Wipe)     | Smooth horizontal wipe between segments                                     | 2:15 - 2:17      | Visually separates different topics while maintaining flow.               |\n| B-Roll Overlay        | Stock footage of solar panels and wind turbines during key points           | 3:40 - 4:10      | Reinforces spoken content with relevant visuals.                          |\n| Animated Text         | Highlighted keywords (e.g., \"solar\", \"efficiency\") appearing at key moments | 5:20 - 5:25      | Draws attention to critical terms and improves retention.                 |\n\nThe final video was rendered with these effects, resulting in a 6-minute documentary-style interview with dynamic visuals that align with the tone of the content. The lower-thirds provided professional context, while the transitions and B-roll kept the viewer engaged throughout. The animated text highlighted key takeaways, making the video more educational and shareable.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "video-wrapper-skills#main-content",
+      "video-wrapper-skills#overview",
+      "video-wrapper-skills#setup",
+      "video-wrapper-skills#examples",
+      "video-wrapper-skills#tools",
+      "video-wrapper-skills#mcp",
+      "video-wrapper-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Video Wrapper sử dụng AI để phân tích phụ đề video phỏng vấn và podcast nhằm xác định các khoảnh khắc quan trọng, từ đó tự động tạo các đề xuất hiệu ứng hình ảnh chuyên nghiệp. Skill này hỗ trợ 8 thành phần thị giác—cụm từ khóa (key phrases), lower thirds, tiêu đề chương (chapter titles), thẻ thuật ngữ (term cards), quote callouts (hộp trích dẫn), số liệu động (animated stats), bullet points (danh sách ký hiệu) và social bars (thanh mạng xã hội)—được render theo 4 theme khác nhau: Notion (phong cách tri thức ấm áp), Cyberpunk (tương lai neon), Apple (kinh doanh tối giản) và Aurora (gradient chuyển động). Sau khi AI phân tích, người dùng có thể xem lại và phê duyệt các hiệu ứng đề xuất trước khi render chỉ với một cú nhấp chuột bằng engine dựa trên trình duyệt cho hoạt ảnh chất lượng cao hoặc engine PIL thuần Python. Giải pháp lý tưởng cho các đội ngũ nội dung, nhà giáo dục và nhà sản xuất podcast cần nâng tầm video dài bằng các lớp phủ chuyên nghiệp và điểm nhấn thị giác.\n\nNội dung giáo dục: Tự động highlight thuật ngữ, khái niệm chính và định nghĩa trong các video bài giảng và khóa học trực tuyến.\nSản xuất phỏng vấn và podcast: Hiển thị tên khách mời, vai trò và các câu trích dẫn đáng nhớ bằng các thanh lower thirds và callouts chuyên nghiệp.\nYouTube và mạng xã hội: Thêm các hiệu ứng hình ảnh đa dạng và lớp phủ tương tác cho nội dung thời lượng dài trên các nền tảng như YouTube và Bilibili.\nThảo luận bàn tròn: Nhấn mạnh sự chuyển tiếp chủ đề bằng tiêu đề chương và các điểm chính cần lưu ý đối với nội dung có nhiều người nói.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/op7418/Video-Wrapper-Skills`",
+    "usage_vi": "```\nTạo một video wrapper cho bản ghi phỏng vấn dưới đây kèm theo các hiệu ứng hình ảnh. Sử dụng theme [THEME] (chọn từ: cinematic, playful, corporate, hoặc documentary). Đề xuất 3-4 hiệu ứng (ví dụ: lower-thirds, transition, lớp phủ B-roll, hoặc chữ động) để tăng tính tương tác. Cung cấp các hiệu ứng dưới dạng bảng với các cột: Loại hiệu ứng, Mô tả, Thời gian (tính bằng giây) và Lý do. Sau khi được phê duyệt, hãy render video cuối cùng với các hiệu ứng này. Bản ghi phỏng vấn: [TRANSCRIPT]\n```\nCopy\n\n```\nĐối với bản ghi phỏng vấn của Tiến sĩ Elena Vasquez về các đổi mới trong năng lượng tái tạo, AI đã tạo ra các hiệu ứng sau theo theme **documentary**:\n\n| Loại hiệu ứng | Mô tả | Thời gian (giây) | Lý do |\n|-----------------------|-----------------------------------------------------------------------------|------------------|---------------------------------------------------------------------------|\n| Lower-Thirds | Văn bản động giới thiệu Tiến sĩ Vasquez kèm tên, chức danh và bằng cấp | 0:00 - 0:05 | Xây dựng độ tin cậy và ngữ cảnh cho khán giả. |\n| Transition (Wipe) | Hiệu ứng chuyển cảnh gạt ngang (wipe) mượt mà giữa các phân đoạn | 2:15 - 2:17 | Phân tách các chủ đề khác nhau một cách trực quan trong khi vẫn giữ mạch trôi chảy. |\n| B-Roll Overlay | Thước phim stock về pin mặt trời và tuabin gió trong các thời điểm chính | 3:40 - 4:10 | Củng cố nội dung nói bằng hình ảnh trực quan liên quan. |\n| Animated Text | Các từ khóa được làm nổi bật (ví dụ: \"solar\", \"efficiency\") xuất hiện vào thời điểm chính | 5:20 - 5:25 | Thu hút sự chú ý vào các thuật ngữ quan trọng và tăng khả năng ghi nhớ. |\n\nVideo cuối cùng đã được render với các hiệu ứng này, tạo ra một video phỏng vấn dài 6 phút mang phong cách phim tài liệu với các hiệu ứng hình ảnh sống động phù hợp với tone giọng của nội dung. Các lower-thirds cung cấp ngữ cảnh chuyên nghiệp, trong khi các hiệu ứng chuyển cảnh và B-roll giúp duy trì sự tương tác của người xem xuyên suốt. Văn bản động làm nổi bật các điểm chính, giúp video có tính giáo dục hơn và dễ chia sẻ hơn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:02:22.495493Z",
+    "http_status": 200,
+    "content_hash": "09d99e66e5c0694c3dd0520471d7e19ac97548b4de4dd31f874bceabc297d504",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\video-wrapper-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\video-wrapper-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Video Wrapper Skills - Tự động hóa hiệu ứng video",
+  "short_description_vi": "Tự động thêm hiệu ứng hình ảnh phong cách show giải trí vào video phỏng vấn. AI phân tích phụ đề để đề xuất hiệu ứng, sau đó render sau khi được người dùng phê duyệt. Hỗ trợ bốn theme giao diện. Lý tưởng cho các đội ngũ vận hành quản lý nội dung video."
+}

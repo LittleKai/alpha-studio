@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/novel-writer",
+  "slug": "novel-writer",
+  "name": "browser-use",
+  "headline": "Novel Writer - AI Novel Creation",
+  "short_description": "Novel Writer is an AI-driven tool for creating Chinese novels based on Spec-kit. It automates novel writing for content creators and publishers, integrating with Claude and Cur. The tool connects to existing workflows for streamlined content generation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "wordflowlab",
+  "install_command": "git clone https://github.com/wordflowlab/novel-writer.git",
+  "source_repo_url": "https://github.com/wordflowlab/novel-writer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "sdd",
+    "novels",
+    "spec-driven",
+    "spec",
+    "engineering"
+  ],
+  "sections": {
+    "overview": "Novel Writer is an automation skill for generating Chinese novels using AI agents. It implements a unified command structure across 13 AI platforms including Claude Code, Cursor, Gemini CLI, and GitHub Copilot, eliminating the need for platform-specific configurations. The tool uses Spec-kit architecture to manage novel writing workflows with standardized commands like /content.write-draft and /content.audit. It includes built-in experts for plot structure, character development, world-building, and writing style to guide content generation. Publishers and content creators use Novel Writer to streamline novel production while maintaining consistency across multiple AI-assisted writing platforms.\nAutomate the initialization of a new novel project with predefined settings and plugins.\nUtilize AI to generate story specifications and clarify narrative decisions through structured commands.\nManage complex storylines and character relationships with built-in tracking and verification tools.\nIntegrate voice plugins to enhance the storytelling experience with authentic audio elements.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wordflowlab/novel-writer`",
+    "usage": "```\nWrite a [GENRE] Chinese novel titled '[TITLE]' with the following specifications: [TONE], [THEME], [MAIN CHARACTERS], and [SETTING]. The novel should be approximately [WORD_COUNT] words long, divided into [CHAPTER_COUNT] chapters. Include [SPECIFIC_ELEMENTS] such as [EXAMPLE_ELEMENTS]. Ensure the plot follows a [PLOT_STRUCTURE] with [KEY_TWISTS].\n```\nCopy\n\n```\n《重生之大明铁骑》\n\n第一章：穿越之始\n\n公元2024年，35岁的历史系教授李明在一次学术考察中意外坠崖，醒来时发现自己置身于明朝永乐年间的南京城。周围熙熙攘攘的商贩、穿着汉服的行人，以及城墙上飘扬的大明旗帜，让他意识到自己真的穿越了。更令他震惊的是，他发现自己的记忆中多了一段关于军事指挥的知识，这段知识来自于他之前研究的《大明会典》和《武备志》。\n\n李明决定利用这段穿越的机会，改变历史的进程。他首先前往南京城内最大的当铺，用随身携带的21世纪手机换取了一些银两。接着，他前往书肆，购买了《纪效新书》和《练兵实纪》等军事著作，并开始秘密招募一些有志之士。\n\n在招募过程中，李明发现了一个名叫张三的年轻人，他虽然出身贫寒，但对军事颇有天赋。李明决定将他培养为自己的得力助手。同时，他还结识了当地的一位富商刘老板，刘老板对他的军事才能颇为赏识，决定资助他建立一支新军。\n\n第二章：组建新军\n\n经过一个月的秘密招募和训练，李明的新军初具规模。这支军队由500名精挑细选的士兵组成，配备了李明根据现代军事理论改进的火器和战术。李明将这支军队命名为\"铁骑军\"，并制定了严格的训练计划。\n\n然而，新军的建立引起了当地驻军的注意。驻军统领朱将军对李明的行为颇为不满，认为他这是在挑战朝廷的权威。朱将军派人前往南京城，要求李明解散新军，否则将以叛乱罪论处。\n\n李明意识到，如果新军被解散，他的穿越计划将付诸东流。于是，他决定采取行动，先发制人。他命令铁骑军在一个月黑风高的夜晚，突袭朱将军的驻军营地。经过激烈的战斗，铁骑军成功击溃了朱将军的部队，并缴获了大量的武器和粮草。\n\n第三章：奏报朝廷\n\n李明的胜利引起了朝廷的注意。明成祖朱棣在得知李明的事迹后，决定召见他。李明带领铁骑军前往北京，受到了朱棣的亲自接见。在接见过程中，李明展示了铁骑军的战斗力和军事才能，朱棣对他的表现颇为满意。\n\n朱棣决定任命李明为都指挥使，负责统领京师的军队。李明意识到，这是他改变历史进程的绝佳机会。于是，他开始着手改革军队，推行现代化的军事训练和装备，为即将到来的北伐战争做准备。\n\n与此同时，李明还利用自己的影响力，推动了一系列的改革措施，包括兴修水利、发展农业和手工业等。这些改革措施不仅提高了人民的生活水平，也为他的军事改革奠定了坚实的基础。\n\n第四章：北伐战争\n\n永乐八年，李明率领铁骑军和经过改革的京师军队，开始了北伐战争。这场战争的目标是收复被蒙古人占领的北方领土，并彻底消除蒙古人的威胁。\n\n在战争初期，李明采用了现代化的军事战术和装备，使得铁骑军在战斗中占据了绝对的优势。然而，蒙古人也不甘示弱，他们调集了大量的精锐部队，与李明的军队展开了激烈的战斗。\n\n经过数月的激战，李明的军队终于在长城关键战役中取得了决定性的胜利。蒙古人被迫撤退，北方领土重新回到了大明的版图。李明的胜利不仅改变了历史的进程，也为大明王朝的繁荣奋斗了一份力量。\n\n尾声：永乐盛世\n\n永乐十五年，李明被任命为内阁首辅，继续推行他的改革措施。在他的努力下，大明王朝进入了一个前所未有的繁荣时期。人民生活安康，国力强盛，文化艺术也得到了空前的发展。\n\n李明在晚年回顾自己的穿越之旅，感慨万千。他意识到，正是这次穿越，让他有机会改变历史的进程，为后世留下了一个更加美好的世界。\n\n《重生之大明铁骑》全文完。\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "novel-writer#main-content",
+      "novel-writer#overview",
+      "novel-writer#setup",
+      "novel-writer#examples",
+      "novel-writer#tools",
+      "novel-writer#mcp",
+      "novel-writer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Novel Writer is an automation skill for generating Chinese novels using AI agents. It implements a unified command structure across 13 AI platforms including Claude Code, Cursor, Gemini CLI, and GitHub Copilot, eliminating the need for platform-specific configurations. The tool uses Spec-kit architecture to manage novel writing workflows with standardized commands like /content.write-draft and /content.audit. It includes built-in experts for plot structure, character development, world-building, and writing style to guide content generation. Publishers and content creators use Novel Writer to streamline novel production while maintaining consistency across multiple AI-assisted writing platforms.\nAutomate the initialization of a new novel project with predefined settings and plugins.\nUtilize AI to generate story specifications and clarify narrative decisions through structured commands.\nManage complex storylines and character relationships with built-in tracking and verification tools.\nIntegrate voice plugins to enhance the storytelling experience with authentic audio elements.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wordflowlab/novel-writer`",
+    "usage_vi": "```\nWrite a [GENRE] Chinese novel titled '[TITLE]' with the following specifications: [TONE], [THEME], [MAIN CHARACTERS], and [SETTING]. The novel should be approximately [WORD_COUNT] words long, divided into [CHAPTER_COUNT] chapters. Include [SPECIFIC_ELEMENTS] such as [EXAMPLE_ELEMENTS]. Ensure the plot follows a [PLOT_STRUCTURE] with [KEY_TWISTS].\n```\nCopy\n\n```\n《重生之大明铁骑》\n\n第一章：穿越之始\n\n公元2024年，35岁的历史系教授李明在一次学术考察中意外坠崖，醒来时发现自己置身于明朝永乐年间的南京城。周围熙熙攘攘的商贩、穿着汉服的行人，以及城墙上飘扬的大明旗帜，让他意识到自己真的穿越了。更令他震惊的是，他发现自己的记忆中多了一段关于军事指挥的知识，这段知识来自于他之前研究的《大明会典》和《武备志》。\n\n李明决定利用这段穿越的机会，改变历史的进程。他首先前往南京城内最大的当铺，用随身携带的21世纪手机换取了一些银两。接着，他前往书肆，购买了《纪效新书》和《练兵实纪》等军事著作，并开始秘密招募一些有志之士。\n\n在招募过程中，李明发现了一个名叫张三的年轻人，他虽然出身贫寒，但对军事颇有天赋。李明决定将他培养为自己的得力助手。同时，他还结识了当地的一位富商刘老板，刘老板对他的军事才能颇为赏识，决定资助他建立一支新军。\n\n第二章：组建新军\n\n经过一个月的秘密招募和训练，李明的新军初具规模。这支军队由500名精挑细选的士兵组成，配备了李明根据现代军事理论改进的火器和战术。李明将这支军队命名为\"铁骑军\"，并制定了严格的训练计划。\n\n然而，新军的建立引起了当地驻军的注意。驻军统领朱将军对李明的行为颇为不满，认为他这是在挑战朝廷的权威。朱将军派人前往南京城，要求李明解散新军，否则将以叛乱罪论处。\n\n李明意识到，如果新军被解散，他的穿越计划将付诸东流。于是，他决定采取行动，先发制人。他命令铁骑军在一个月黑风高的夜晚，突袭朱将军的驻军营地。经过激烈的战斗，铁骑军成功击溃了朱将军的部队，并缴获了大量的武器和粮草。\n\n第三章：奏报朝廷\n\n李明的胜利引起了朝廷的注意。明成祖朱棣在得知李明的事迹后，决定召见他。李明带领铁骑军前往北京，受到了朱棣的亲自接见。在接见过程中，李明展示了铁骑军的战斗力和军事才能，朱棣对他的表现颇为满意。\n\n朱棣决定任命李明为都指挥使，负责统领京师的军队。李明意识到，这是他改变历史进程的绝佳机会。于是，他开始着手改革军队，推行现代化的军事训练和装备，为即将到来的北伐战争做准备。\n\n与此同时，李明还利用自己的影响力，推动了一系列的改革措施，包括兴修水利、发展农业和手工业等。这些改革措施不仅提高了人民的生活水平，也为他的军事改革奠定了坚实的基础。\n\n第四章：北伐战争\n\n永乐八年，李明率领铁骑军和经过改革的京师军队，开始了北伐战争。这场战争的目标是收复被蒙古人占领的北方领土，并彻底消除蒙古人的威胁。\n\n在战争初期，李明采用了现代化的军事战术和装备，使得铁骑军在战斗中占据了绝对的优势。然而，蒙古人也不甘示弱，他们调集了大量的精锐部队，与李明的军队展开了激烈的战斗。\n\n经过数月的激战，李明的军队终于在长城关键战役中取得了决定性的胜利。蒙古人被迫撤退，北方领土重新回到了大明的版图。李明的胜利不仅改变了历史的进程，也为大明王朝的繁荣奋斗了一份力量。\n\n尾声：永乐盛世\n\n永乐十五年，李明被任命为内阁首辅，继续推行他的改革措施。在他的努力下，大明王朝进入了一个前所未有的繁荣时期。人民生活安康，国力强盛，文化艺术也得到了空前的发展。\n\n李明在晚年回顾自己的穿越之旅，感慨万千。他意识到，正是这次穿越，让他有机会改变历史的进程，为后世留下了一个更加美好的世界。\n\n《重生之大明铁骑》全文完。\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:54:47.708723Z",
+    "http_status": 200,
+    "content_hash": "87b138d880ba79ee0d342a7b87d6c3b800433c837e976cbe1b0125100d768e38",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\novel-writer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\novel-writer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Novel Writer - AI Novel Creation",
+  "short_description_vi": "Novel Writer is an AI-driven tool for creating Chinese novels based on Spec-kit. It automates novel writing for content creators and publishers, integrating with Claude and Cur. The tool connects to existing workflows for streamlined content generation."
+}

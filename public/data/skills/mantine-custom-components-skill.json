@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mantine-custom-components-skill",
+  "slug": "mantine-custom-components-skill",
+  "name": "Mantine Custom Components Skill",
+  "headline": "Mantine Custom Components: Build Integrated UI",
+  "short_description": "This skill provides reusable component templates for the Mantine UI framework, ideal for developers looking to enhance their UI. It includes customizable styles and variants for creating unique components.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "mantinedev",
+  "install_command": "git clone https://github.com/mantinedev/skills",
+  "source_repo_url": "https://github.com/mantinedev/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "components",
+    "mantine",
+    "ui-components",
+    "custom"
+  ],
+  "sections": {
+    "overview": "The Mantine Custom Components skill enables developers to build custom components that fully integrate with Mantine's theming system, Styles API, and core features. It supports component creation using factory functions (factory, polymorphicFactory, genericFactory), CSS variables via createVarsResolver, and compound component patterns. Developers can add Styles API support through classNames, styles, vars, and unstyled props, then register components with MantineProvider via Component.extend(). This skill is essential for teams building design systems or component libraries that need consistent theming, variant management, and style customization across their application.\nCreating consistent UI components\nCustomizing component styles for different themes\nRapidly deploying reusable UI elements",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/mantinedev/skills --skill mantine-custom-components`\n`git clone https://github.com/mantinedev/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "mantine-custom-components-skill#main-content",
+      "mantine-custom-components-skill#overview",
+      "mantine-custom-components-skill#setup",
+      "mantine-custom-components-skill#examples",
+      "mantine-custom-components-skill#tools",
+      "mantine-custom-components-skill#mcp",
+      "mantine-custom-components-skill#related"
+    ],
+    "overview_vi": "The Mantine Custom Components skill enables developers to build custom components that fully integrate with Mantine's theming system, Styles API, and core features. It supports component creation using factory functions (factory, polymorphicFactory, genericFactory), CSS variables via createVarsResolver, and compound component patterns. Developers can add Styles API support through classNames, styles, vars, and unstyled props, then register components with MantineProvider via Component.extend(). This skill is essential for teams building design systems or component libraries that need consistent theming, variant management, and style customization across their application.\nCreating consistent UI components\nCustomizing component styles for different themes\nRapidly deploying reusable UI elements",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/mantinedev/skills --skill mantine-custom-components`\n`git clone https://github.com/mantinedev/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:53.997400Z",
+    "http_status": 200,
+    "content_hash": "975824e95c91c6b0e6363cf2c9e38e4567baa72ca15637ff999dbae192d4de99",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mantine-custom-components-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mantine-custom-components-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Mantine Custom Components: Build Integrated UI",
+  "short_description_vi": "This skill provides reusable component templates for the Mantine UI framework, ideal for developers looking to enhance their UI. It includes customizable styles and variants for creating unique components."
+}

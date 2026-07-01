@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/social-media-monitor",
+  "slug": "social-media-monitor",
+  "name": "popsicle",
+  "headline": "Social-Media-Monitor - Track Social Media Followers",
+  "short_description": "Automatically monitor and log fan counters from social media(Facebook Pages, Twitter, Instagram, YouTube, Google+, OneSignal, Alexa) using APIs to Google Spreadsheet. Very useful for website admins and social media managers.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "35 min",
+  "author": "adam0white",
+  "install_command": "git clone https://github.com/adam0white/Social-Media-Monitor.git",
+  "source_repo_url": "https://github.com/adam0white/Social-Media-Monitor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "google-adwords",
+    "google-apps-script",
+    "analytics",
+    "counter",
+    "chart",
+    "script",
+    "adwords",
+    "social-media",
+    "instagram",
+    "youtube",
+    "monitoring",
+    "twitter",
+    "spreadsheet",
+    "alexa",
+    "onesignal",
+    "google-analytics",
+    "google-spreadsheet",
+    "follower-count",
+    "facebook-page"
+  ],
+  "sections": {
+    "overview": "Social-Media-Monitor is a Google Apps Script that automatically tracks follower counts, likes, and subscriber numbers from major social platforms—Facebook Pages, Twitter, Instagram, YouTube, Google+, OneSignal, and Alexa—logging them daily to Google Sheets without manual effort. The script pulls data via APIs and URL parsing, enabling long-term trend analysis and chart creation directly in your spreadsheet. Website admins and social media managers use it to monitor audience growth across multiple channels in one place. Setup requires copying the script, configuring API keys as needed, and scheduling daily automated runs through Google Apps Script triggers. It eliminates the tedious daily manual tracking that typically consumes social media management time.\nTrack follower growth across Facebook, Twitter, and Instagram from a single dashboard\nMonitor YouTube subscriber trends over time with automated daily logging\nAnalyze social media audience metrics historically and create performance charts\nAutomate OneSignal subscriber count tracking for push notification campaigns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adam0white/Social-Media-Monitor`",
+    "usage": "```\nCreate a Google Apps Script to monitor and log fan counters from social media platforms (Facebook Pages, Twitter, Instagram, YouTube, Google+, OneSignal, Alexa) using their APIs. The script should update a Google Spreadsheet with the latest follower counts every [FREQUENCY] (e.g., daily, weekly). Include error handling for API rate limits and ensure the script can handle [NUMBER] of social media accounts. Provide the complete script code and instructions for setup.\n```\nCopy\n\n```\n```javascript\n// Social Media Monitor Script\n\nfunction monitorSocialMedia() {\n  // Define social media platforms and their API endpoints\n  const platforms = {\n    facebook: {\n      url: 'https://graph.facebook.com/v12.0/[PAGE_ID]/insights/page_fan_counts',\n      apiKey: '[FACEBOOK_API_KEY]'\n    },\n    twitter: {\n      url: 'https://api.twitter.com/2/users/[USER_ID]',\n      apiKey: '[TWITTER_API_KEY]'\n    },\n    // Add other platforms similarly\n  };\n\n  // Open the Google Spreadsheet\n  const sheet = SpreadsheetApp.openById('[SPREADSHEET_ID]').getActiveSheet();\n\n  // Loop through each platform and fetch follower counts\n  for (const [platform, config] of Object.entries(platforms)) {\n    const options = {\n      headers: {\n        'Authorization': `Bearer ${config.apiKey}`\n      }\n    };\n\n    try {\n      const response = UrlFetchApp.fetch(config.url, options);\n      const data = JSON.parse(response.getContentText());\n      const followerCount = data.[PLATFORM_SPECIFIC_FIELD]; // e.g., data.followers_count for Twitter\n\n      // Log the data to the spreadsheet\n      sheet.appendRow([new Date(), platform, followerCount]);\n    } catch (error) {\n      console.error(`Error fetching data from ${platform}: ${error.toString()}`);\n    }\n  }\n}\n```\n\n### Instructions for Setup\n1. **Create a Google Spreadsheet**: Set up a new Google Spreadsheet to log the follower counts.\n2. **Enable Google Apps Script**: Open the script editor from the Extensions menu in Google Sheets.\n3. **Paste the Script**: Copy the provided script into the script editor.\n4. **Replace Placeholders**: Update the placeholders (e.g., `[FACEBOOK_API_KEY]`, `[SPREADSHEET_ID]`) with your actual API keys and spreadsheet ID.\n5. **Set Up Triggers**: Create a time-driven trigger to run the script at your desired frequency (e.g., daily).\n6. **Test the Script**: Run the script manually to ensure it works correctly and logs data to your spreadsheet.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "social-media-monitor#main-content",
+      "social-media-monitor#overview",
+      "social-media-monitor#setup",
+      "social-media-monitor#examples",
+      "social-media-monitor#tools",
+      "social-media-monitor#mcp",
+      "social-media-monitor#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Social-Media-Monitor is a Google Apps Script that automatically tracks follower counts, likes, and subscriber numbers from major social platforms—Facebook Pages, Twitter, Instagram, YouTube, Google+, OneSignal, and Alexa—logging them daily to Google Sheets without manual effort. The script pulls data via APIs and URL parsing, enabling long-term trend analysis and chart creation directly in your spreadsheet. Website admins and social media managers use it to monitor audience growth across multiple channels in one place. Setup requires copying the script, configuring API keys as needed, and scheduling daily automated runs through Google Apps Script triggers. It eliminates the tedious daily manual tracking that typically consumes social media management time.\nTrack follower growth across Facebook, Twitter, and Instagram from a single dashboard\nMonitor YouTube subscriber trends over time with automated daily logging\nAnalyze social media audience metrics historically and create performance charts\nAutomate OneSignal subscriber count tracking for push notification campaigns",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adam0white/Social-Media-Monitor`",
+    "usage_vi": "```\nCreate a Google Apps Script to monitor and log fan counters from social media platforms (Facebook Pages, Twitter, Instagram, YouTube, Google+, OneSignal, Alexa) using their APIs. The script should update a Google Spreadsheet with the latest follower counts every [FREQUENCY] (e.g., daily, weekly). Include error handling for API rate limits and ensure the script can handle [NUMBER] of social media accounts. Provide the complete script code and instructions for setup.\n```\nCopy\n\n```\n```javascript\n// Social Media Monitor Script\n\nfunction monitorSocialMedia() {\n  // Define social media platforms and their API endpoints\n  const platforms = {\n    facebook: {\n      url: 'https://graph.facebook.com/v12.0/[PAGE_ID]/insights/page_fan_counts',\n      apiKey: '[FACEBOOK_API_KEY]'\n    },\n    twitter: {\n      url: 'https://api.twitter.com/2/users/[USER_ID]',\n      apiKey: '[TWITTER_API_KEY]'\n    },\n    // Add other platforms similarly\n  };\n\n  // Open the Google Spreadsheet\n  const sheet = SpreadsheetApp.openById('[SPREADSHEET_ID]').getActiveSheet();\n\n  // Loop through each platform and fetch follower counts\n  for (const [platform, config] of Object.entries(platforms)) {\n    const options = {\n      headers: {\n        'Authorization': `Bearer ${config.apiKey}`\n      }\n    };\n\n    try {\n      const response = UrlFetchApp.fetch(config.url, options);\n      const data = JSON.parse(response.getContentText());\n      const followerCount = data.[PLATFORM_SPECIFIC_FIELD]; // e.g., data.followers_count for Twitter\n\n      // Log the data to the spreadsheet\n      sheet.appendRow([new Date(), platform, followerCount]);\n    } catch (error) {\n      console.error(`Error fetching data from ${platform}: ${error.toString()}`);\n    }\n  }\n}\n```\n\n### Instructions for Setup\n1. **Create a Google Spreadsheet**: Set up a new Google Spreadsheet to log the follower counts.\n2. **Enable Google Apps Script**: Open the script editor from the Extensions menu in Google Sheets.\n3. **Paste the Script**: Copy the provided script into the script editor.\n4. **Replace Placeholders**: Update the placeholders (e.g., `[FACEBOOK_API_KEY]`, `[SPREADSHEET_ID]`) with your actual API keys and spreadsheet ID.\n5. **Set Up Triggers**: Create a time-driven trigger to run the script at your desired frequency (e.g., daily).\n6. **Test the Script**: Run the script manually to ensure it works correctly and logs data to your spreadsheet.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:22:30.241617Z",
+    "http_status": 200,
+    "content_hash": "d8b791e48fda8f1017852fc645c6438167b5c37a9351753bb4746162a7adf9e6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\social-media-monitor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\social-media-monitor.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Social-Media-Monitor - Track Social Media Followers",
+  "short_description_vi": "Automatically monitor and log fan counters from social media(Facebook Pages, Twitter, Instagram, YouTube, Google+, OneSignal, Alexa) using APIs to Google Spreadsheet. Very useful for website admins and social media managers."
+}

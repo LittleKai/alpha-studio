@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-backup",
+  "slug": "claude-backup",
+  "name": "browser-use",
+  "headline": "claude-backup: Secure Claude skill archive",
+  "short_description": "A personal backup repository for Claude Code skills and plugins. Stores and preserves custom AI agent configurations for reuse.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "vapvarun",
+  "install_command": "git clone https://github.com/vapvarun/claude-backup.git",
+  "source_repo_url": "https://github.com/vapvarun/claude-backup",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "claude-backup is a personal repository used to store and back up Claude Code skills and plugins. It serves as a private archive so that custom configurations, commands, and agent skills are not lost and can be restored or reused across environments. This type of backup repository benefits developers who rely on Claude Code and want to preserve their curated tooling. By keeping skills version-controlled in one place, users can more easily manage and redeploy their Claude Code setup.\nBack up custom Claude Code skills to prevent accidental loss\nRestore Claude Code plugins when setting up a new development environment\nVersion-control personal AI agent configurations over time\nCentralize storage of multiple Claude Code plugins in one repository",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vapvarun/claude-backup`",
+    "usage": "```\nCreate a backup of my Claude Code skills and plugins. I want to save the following skills: [SKILL1], [SKILL2], [SKILL3]. Also, include any plugins I have installed. Format the backup as a JSON file with clear labels for each skill and plugin, including their names, descriptions, and any relevant metadata. Ensure the backup is comprehensive and can be easily restored later.\n```\nCopy\n\n```\n```json\n{\n  \"skills\": [\n    {\n      \"name\": \"Data Analysis Assistant\",\n      \"description\": \"Helps with data cleaning, visualization, and statistical analysis.\",\n      \"metadata\": {\n        \"created_at\": \"2023-10-15\",\n        \"last_used\": \"2023-11-20\",\n        \"version\": \"1.2.0\"\n      }\n    },\n    {\n      \"name\": \"Content Generator\",\n      \"description\": \"Generates blog posts, social media content, and marketing copy.\",\n      \"metadata\": {\n        \"created_at\": \"2023-09-22\",\n        \"last_used\": \"2023-11-18\",\n        \"version\": \"2.1.0\"\n      }\n    }\n  ],\n  \"plugins\": [\n    {\n      \"name\": \"Excel Exporter\",\n      \"description\": \"Exports data to Excel format.\",\n      \"metadata\": {\n        \"created_at\": \"2023-10-05\",\n        \"last_used\": \"2023-11-19\",\n        \"version\": \"1.0.1\"\n      }\n    },\n    {\n      \"name\": \"PDF Reader\",\n      \"description\": \"Reads and extracts text from PDF files.\",\n      \"metadata\": {\n        \"created_at\": \"2023-09-30\",\n        \"last_used\": \"2023-11-17\",\n        \"version\": \"1.1.0\"\n      }\n    }\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-backup#main-content",
+      "claude-backup#overview",
+      "claude-backup#setup",
+      "claude-backup#examples",
+      "claude-backup#tools",
+      "claude-backup#mcp",
+      "claude-backup#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-backup is a personal repository used to store and back up Claude Code skills and plugins. It serves as a private archive so that custom configurations, commands, and agent skills are not lost and can be restored or reused across environments. This type of backup repository benefits developers who rely on Claude Code and want to preserve their curated tooling. By keeping skills version-controlled in one place, users can more easily manage and redeploy their Claude Code setup.\nBack up custom Claude Code skills to prevent accidental loss\nRestore Claude Code plugins when setting up a new development environment\nVersion-control personal AI agent configurations over time\nCentralize storage of multiple Claude Code plugins in one repository",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vapvarun/claude-backup`",
+    "usage_vi": "```\nCreate a backup of my Claude Code skills and plugins. I want to save the following skills: [SKILL1], [SKILL2], [SKILL3]. Also, include any plugins I have installed. Format the backup as a JSON file with clear labels for each skill and plugin, including their names, descriptions, and any relevant metadata. Ensure the backup is comprehensive and can be easily restored later.\n```\nCopy\n\n```\n```json\n{\n  \"skills\": [\n    {\n      \"name\": \"Data Analysis Assistant\",\n      \"description\": \"Helps with data cleaning, visualization, and statistical analysis.\",\n      \"metadata\": {\n        \"created_at\": \"2023-10-15\",\n        \"last_used\": \"2023-11-20\",\n        \"version\": \"1.2.0\"\n      }\n    },\n    {\n      \"name\": \"Content Generator\",\n      \"description\": \"Generates blog posts, social media content, and marketing copy.\",\n      \"metadata\": {\n        \"created_at\": \"2023-09-22\",\n        \"last_used\": \"2023-11-18\",\n        \"version\": \"2.1.0\"\n      }\n    }\n  ],\n  \"plugins\": [\n    {\n      \"name\": \"Excel Exporter\",\n      \"description\": \"Exports data to Excel format.\",\n      \"metadata\": {\n        \"created_at\": \"2023-10-05\",\n        \"last_used\": \"2023-11-19\",\n        \"version\": \"1.0.1\"\n      }\n    },\n    {\n      \"name\": \"PDF Reader\",\n      \"description\": \"Reads and extracts text from PDF files.\",\n      \"metadata\": {\n        \"created_at\": \"2023-09-30\",\n        \"last_used\": \"2023-11-17\",\n        \"version\": \"1.1.0\"\n      }\n    }\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:30:09.279003Z",
+    "http_status": 200,
+    "content_hash": "b04ec5dd1193fb53dde3d924f5981e742fd5160cf990ebb1a2dab29ac13bf12c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-backup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-backup.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-backup: Secure Claude skill archive",
+  "short_description_vi": "A personal backup repository for Claude Code skills and plugins. Stores and preserves custom AI agent configurations for reuse."
+}

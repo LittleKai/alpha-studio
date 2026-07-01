@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/webapp-testing",
+  "slug": "webapp-testing",
+  "name": "qa-test-planner",
+  "headline": "webapp-testing: Your Testing Process",
+  "short_description": "The webapp-testing skill for Claude Code automates the testing of web applications, ensuring they function as intended. With 3725 installs, it streamlines the testing process, significantly reducing manual effort and time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills.git",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The webapp-testing skill is designed to automate the testing of web applications, allowing developers to ensure their applications function correctly without the need for extensive manual testing. By utilizing this skill, users can create automated test scripts that run through various scenarios, identifying bugs and performance issues before deployment. This not only enhances the reliability of web applications but also speeds up the overall development cycle. One of the key benefits of the webapp-testing skill is the significant time savings it offers. Manual testing can be labor-intensive and prone to human error, often leading to delays in project timelines. By automating these tests, developers can focus their efforts on more critical tasks, such as feature development and optimization, while the skill handles the repetitive testing processes. This shift not only increases productivity but also improves the quality of the final product. This skill is ideal for developers, product managers, and AI practitioners who are involved in web application development. It is particularly beneficial for teams that follow agile methodologies, as it allows for continuous integration and testing, ensuring that new features do not introduce new bugs. Practical use cases include testing user login functionalities, validating form submissions, and checking for responsive design across devices. The implementation of the webapp-testing skill is relatively straightforward, even for those with moderate coding experience. It fits seamlessly into AI-first workflows, where automation is key to enhancing efficiency. As organizations increasingly adopt AI automation, integrating this skill into their development processes will be crucial for maintaining competitive advantage in the fast-paced tech landscape.\nAutomating user login testing for web applications to ensure security and functionality.\nValidating form submissions across multiple browsers to guarantee consistent user experiences.\nChecking responsive design on various devices to ensure accessibility and usability.\nRunning performance tests on application load times to identify bottlenecks and improve speed.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nTest the login functionality of the web application at [URL]. Verify that the login page loads correctly, that the form fields accept valid inputs, and that the system responds appropriately to both valid and invalid credentials. Document any errors or unexpected behaviors encountered during the process.\n```\nCopy\n\n```\nUpon testing the login functionality of the web application at https://example.com/login, the following observations were made:\n\n1. The login page loaded successfully within 2 seconds, displaying the username and password fields, a 'Remember Me' checkbox, and a 'Login' button.\n2. Valid credentials (username: testuser, password: Password123) were accepted, and the user was redirected to the dashboard page within 1 second.\n3. Invalid credentials (username: invaliduser, password: incorrect) resulted in an error message: 'Invalid username or password. Please try again.' displayed below the password field.\n4. Leaving the password field empty and attempting to log in triggered an error message: 'Please enter your password.'\n5. The 'Remember Me' checkbox functioned as expected, retaining the login session after closing and reopening the browser.\n\nNo critical errors or unexpected behaviors were encountered during the testing process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "webapp-testing#main-content",
+      "webapp-testing#overview",
+      "webapp-testing#setup",
+      "webapp-testing#examples",
+      "webapp-testing#tools",
+      "webapp-testing#mcp",
+      "webapp-testing#related",
+      "qa-test-planner"
+    ],
+    "overview_vi": "The webapp-testing skill is designed to automate the testing of web applications, allowing developers to ensure their applications function correctly without the need for extensive manual testing. By utilizing this skill, users can create automated test scripts that run through various scenarios, identifying bugs and performance issues before deployment. This not only enhances the reliability of web applications but also speeds up the overall development cycle. One of the key benefits of the webapp-testing skill is the significant time savings it offers. Manual testing can be labor-intensive and prone to human error, often leading to delays in project timelines. By automating these tests, developers can focus their efforts on more critical tasks, such as feature development and optimization, while the skill handles the repetitive testing processes. This shift not only increases productivity but also improves the quality of the final product. This skill is ideal for developers, product managers, and AI practitioners who are involved in web application development. It is particularly beneficial for teams that follow agile methodologies, as it allows for continuous integration and testing, ensuring that new features do not introduce new bugs. Practical use cases include testing user login functionalities, validating form submissions, and checking for responsive design across devices. The implementation of the webapp-testing skill is relatively straightforward, even for those with moderate coding experience. It fits seamlessly into AI-first workflows, where automation is key to enhancing efficiency. As organizations increasingly adopt AI automation, integrating this skill into their development processes will be crucial for maintaining competitive advantage in the fast-paced tech landscape.\nAutomating user login testing for web applications to ensure security and functionality.\nValidating form submissions across multiple browsers to guarantee consistent user experiences.\nChecking responsive design on various devices to ensure accessibility and usability.\nRunning performance tests on application load times to identify bottlenecks and improve speed.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nTest the login functionality of the web application at [URL]. Verify that the login page loads correctly, that the form fields accept valid inputs, and that the system responds appropriately to both valid and invalid credentials. Document any errors or unexpected behaviors encountered during the process.\n```\nCopy\n\n```\nUpon testing the login functionality of the web application at https://example.com/login, the following observations were made:\n\n1. The login page loaded successfully within 2 seconds, displaying the username and password fields, a 'Remember Me' checkbox, and a 'Login' button.\n2. Valid credentials (username: testuser, password: Password123) were accepted, and the user was redirected to the dashboard page within 1 second.\n3. Invalid credentials (username: invaliduser, password: incorrect) resulted in an error message: 'Invalid username or password. Please try again.' displayed below the password field.\n4. Leaving the password field empty and attempting to log in triggered an error message: 'Please enter your password.'\n5. The 'Remember Me' checkbox functioned as expected, retaining the login session after closing and reopening the browser.\n\nNo critical errors or unexpected behaviors were encountered during the testing process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:25:12.134411Z",
+    "http_status": 200,
+    "content_hash": "4ec363da834584d445be967a50638dec5b52255b0473474040d5be469aa1e11d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webapp-testing.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webapp-testing.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "webapp-testing: Your Testing Process",
+  "short_description_vi": "The webapp-testing skill for Claude Code automates the testing of web applications, ensuring they function as intended. With 3725 installs, it streamlines the testing process, significantly reducing manual effort and time."
+}

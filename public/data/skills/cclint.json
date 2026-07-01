@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cclint",
+  "slug": "cclint",
+  "name": "cclint",
+  "headline": "cclint Claude Code linter tool",
+  "short_description": "cclint is a linter for Claude Code agents, commands, and skills. It validates YAML frontmatter, enforces structural patterns, detects security issues, and provides quality scoring with improvement recommendations. It benefits developers and operations teams by ensuring code quality and security in Claude Code components.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "dotcommander",
+  "install_command": "git clone https://github.com/dotcommander/cclint.git",
+  "source_repo_url": "https://github.com/dotcommander/cclint",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "linter",
+    "claude-code",
+    "cli",
+    "golang"
+  ],
+  "sections": {
+    "overview": "cclint is a linter designed to validate Claude Code components including agents, commands, skills, plugins, and settings. It catches frontmatter schema errors, enforces structural and naming conventions, and flags cross-file problems like broken references and orphaned skills before they cause runtime issues. The tool provides quality scoring on a 0-100 scale with letter grades (A-F) to help teams prioritize improvements. cclint supports incremental adoption through baseline mode, allowing projects with existing violations to tighten standards over time. Developers and DevOps teams benefit from automated validation integrated into CI/CD pipelines and pre-commit workflows.\nValidate YAML frontmatter and schema compliance in Claude Code components\nDetect and flag broken cross-file references and orphaned skills\nEnforce structural patterns and naming conventions across agents and commands\nGenerate quality scores to prioritize code improvements and refactoring",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dotcommander/cclint`",
+    "usage": "```\nAnalyze the following Claude Code skill using cclint. Provide a detailed report including validation results, structural pattern adherence, security issues, and quality score with improvement recommendations. Skill name: [SKILL_NAME], YAML frontmatter: [YAML_FRONTMATTER], Code: [CODE]\n```\nCopy\n\n```\n```markdown\n# cclint Analysis Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cclint#main-content",
+      "cclint#overview",
+      "cclint#setup",
+      "cclint#examples",
+      "cclint#tools",
+      "cclint#mcp",
+      "cclint#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cclint là một linter được thiết kế để validate các Claude Code component bao gồm agent, command, skill, plugin và setting. Công cụ này giúp phát hiện lỗi frontmatter schema, áp dụng các quy ước cấu trúc và đặt tên, đồng thời cảnh báo các vấn đề liên kết giữa các file như broken reference hay orphaned skill trước khi chúng gây ra lỗi runtime. Công cụ cung cấp điểm số chất lượng theo thang điểm từ 0-100 kèm theo xếp hạng chữ (A-F) giúp các đội ngũ dễ dàng ưu tiên cải tiến mã nguồn. cclint hỗ trợ áp dụng từng bước thông qua baseline mode, cho phép các dự án đang có sẵn lỗi vi phạm có thể siết chặt tiêu chuẩn dần dần theo thời gian. Lập trình viên và các đội ngũ DevOps sẽ được hưởng lợi từ quy trình tự động validate được tích hợp vào các CI/CD pipeline và pre-commit workflow.\nValidate YAML frontmatter và tính tuân thủ schema trong các Claude Code component\nPhát hiện và cảnh báo các broken reference giữa các file và orphaned skill\nÁp dụng các mẫu cấu trúc (structural pattern) và quy ước đặt tên trên các agent và command\nTạo điểm số chất lượng để ưu tiên cải tiến và refactor mã nguồn",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dotcommander/cclint`",
+    "usage_vi": "```\nPhân tích Claude Code skill dưới đây bằng cclint. Cung cấp một báo cáo chi tiết bao gồm kết quả validate, mức độ tuân thủ mẫu cấu trúc (structural pattern), các vấn đề bảo mật và điểm số chất lượng kèm theo các khuyến nghị cải thiện. Tên skill: [SKILL_NAME], YAML frontmatter: [YAML_FRONTMATTER], Code: [CODE]\n```\nSao chép\n\n```\n```markdown\n# Báo cáo phân tích cclint"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:29:28.220970Z",
+    "http_status": 200,
+    "content_hash": "bde8ea12d09d16a19ee674ea5dd982d257b3a1be0bcfebb82fdb2db123a6b27b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cclint.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cclint.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ linter cclint cho Claude Code",
+  "short_description_vi": "cclint là một linter dành cho các Claude Code agent, command và skill. Công cụ này giúp validate YAML frontmatter, áp dụng các mẫu cấu trúc (structural pattern), phát hiện các vấn đề bảo mật và cung cấp điểm số chất lượng đi kèm với các khuyến nghị cải thiện. cclint mang lại lợi ích cho lập trình viên và các đội ngũ vận hành nhờ đảm bảo chất lượng mã nguồn cũng như tính bảo mật cho các component trong Claude Code."
+}

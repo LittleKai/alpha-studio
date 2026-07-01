@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-suno-musicgen-skill",
+  "slug": "claude-code-suno-musicgen-skill",
+  "name": "browser-use",
+  "headline": "Claude Code skill for Suno music generation",
+  "short_description": "Claude Code agent and skill for music generation using suno.com. Unfortunately Suno.com blocks clicking och create and download by using scripts.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "fltman",
+  "install_command": "git clone https://github.com/fltman/claude-code-suno-musicgen-skill.git",
+  "source_repo_url": "https://github.com/fltman/claude-code-suno-musicgen-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code agent and skill for music generation integration with Suno.com. This skill enables automated music creation workflows through Claude Code, interfacing with Suno's music generation capabilities. Note that Suno.com implements anti-automation protections that block script-based interactions with create and download functions, which may limit full automation of the end-to-end music generation pipeline.\nProgrammatically initiate music generation requests through Claude Code agents\nIntegrate Suno music generation into larger automation workflows\nExplore music creation capabilities via Claude-powered agents\nDocument and test Suno API interactions with automation tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fltman/claude-code-suno-musicgen-skill`",
+    "usage": "```\nI want to use Claude Code to automate music generation with Suno.com. Here's what I need: [DESCRIBE SPECIFIC MUSIC STYLE], [NUMBER OF SONGS], and [ANY ADDITIONAL DETAILS]. Can you create a script that can handle the Suno.com interface to generate and download these tracks?\n```\nCopy\n\n```\n```python\n# Music Generation Automation Script for Suno.com\n# This script will help you generate and download music from Suno.com\n\nimport requests\nfrom bs4 import BeautifulSoup\n\n# Configuration\nmusic_style = \"lofi hip hop\"\nnumber_of_songs = 5\n\n# Function to generate music\ndef generate_music(style, count):\n    # This function will simulate the process of generating music on Suno.com\n    # Note: This is a conceptual example and may not work directly with Suno.com's current interface\n    songs = []\n    for i in range(count):\n        song_data = {\n            \"title\": f\"Generated Song {i+1}\",\n            \"style\": style,\n            \"url\": f\"https://suno.com/track/{i+1}\"\n        }\n        songs.append(song_data)\n    return songs\n\n# Generate music\ngenerated_songs = generate_music(music_style, number_of_songs)\n\n# Output the results\nprint(f\"Generated {len(generated_songs)} songs in the style of {music_style}:\")\nfor song in generated_songs:\n    print(f\"- {song['title']}: {song['url']}\")\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-suno-musicgen-skill#main-content",
+      "claude-code-suno-musicgen-skill#overview",
+      "claude-code-suno-musicgen-skill#setup",
+      "claude-code-suno-musicgen-skill#examples",
+      "claude-code-suno-musicgen-skill#tools",
+      "claude-code-suno-musicgen-skill#mcp",
+      "claude-code-suno-musicgen-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code agent and skill for music generation integration with Suno.com. This skill enables automated music creation workflows through Claude Code, interfacing with Suno's music generation capabilities. Note that Suno.com implements anti-automation protections that block script-based interactions with create and download functions, which may limit full automation of the end-to-end music generation pipeline.\nProgrammatically initiate music generation requests through Claude Code agents\nIntegrate Suno music generation into larger automation workflows\nExplore music creation capabilities via Claude-powered agents\nDocument and test Suno API interactions with automation tools",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fltman/claude-code-suno-musicgen-skill`",
+    "usage_vi": "```\nI want to use Claude Code to automate music generation with Suno.com. Here's what I need: [DESCRIBE SPECIFIC MUSIC STYLE], [NUMBER OF SONGS], and [ANY ADDITIONAL DETAILS]. Can you create a script that can handle the Suno.com interface to generate and download these tracks?\n```\nCopy\n\n```\n```python\n# Music Generation Automation Script for Suno.com\n# This script will help you generate and download music from Suno.com\n\nimport requests\nfrom bs4 import BeautifulSoup\n\n# Configuration\nmusic_style = \"lofi hip hop\"\nnumber_of_songs = 5\n\n# Function to generate music\ndef generate_music(style, count):\n    # This function will simulate the process of generating music on Suno.com\n    # Note: This is a conceptual example and may not work directly with Suno.com's current interface\n    songs = []\n    for i in range(count):\n        song_data = {\n            \"title\": f\"Generated Song {i+1}\",\n            \"style\": style,\n            \"url\": f\"https://suno.com/track/{i+1}\"\n        }\n        songs.append(song_data)\n    return songs\n\n# Generate music\ngenerated_songs = generate_music(music_style, number_of_songs)\n\n# Output the results\nprint(f\"Generated {len(generated_songs)} songs in the style of {music_style}:\")\nfor song in generated_songs:\n    print(f\"- {song['title']}: {song['url']}\")\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:27:53.661489Z",
+    "http_status": 200,
+    "content_hash": "545d16409740a71e29fd4ad37a0899ceda27e022cbf35e588b3ae8d5da0e6be8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-suno-musicgen-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-suno-musicgen-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code skill for Suno music generation",
+  "short_description_vi": "Claude Code agent and skill for music generation using suno.com. Unfortunately Suno.com blocks clicking och create and download by using scripts."
+}

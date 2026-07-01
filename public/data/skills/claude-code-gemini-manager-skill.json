@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-gemini-manager-skill",
+  "slug": "claude-code-gemini-manager-skill",
+  "name": "Claude Code Gemini Manager Skill",
+  "headline": "claude code gemini manager plugin automation",
+  "short_description": "Claude Code plugin that manages Gemini CLI as an intern. Claude acts as manager/architect while Gemini does all coding work. Benefits operations teams by automating code implementation, verification, and fixes. Connects to Shell environments and integrates with Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "alchemiststudiosDOTai",
+  "install_command": "git clone https://github.com/alchemiststudiosDOTai/claude-code-gemini-manager-skill.git",
+  "source_repo_url": "https://github.com/alchemiststudiosDOTai/claude-code-gemini-manager-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Gemini Manager is an Agent Skill for Claude Code that establishes a manager-intern workflow: Claude acts as the architect and manager while Gemini CLI handles all code implementation. Claude reads the codebase, plans the work, gives Gemini specific implementation commands, and verifies the results—requesting fixes as needed. This separation of concerns automates code development cycles without Claude writing code directly. Operations teams and developers benefit from streamlined code implementation, verification loops, and integration with Shell environments through Claude Code.\nAutomate feature implementation by having Claude manage Gemini's coding tasks\nVerify code quality through Claude's review before accepting Gemini's work\nDrive bug fixes in loops—Claude detects issues and instructs Gemini on corrections\nManage codebase changes without Claude directly writing code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alchemiststudiosDOTai/claude-code-gemini-manager-skill`",
+    "usage": "```\nAct as my manager/architect for a project. I will use Gemini CLI as the coding intern. Here are the details: [PROJECT_SCOPE], [TECH_STACK], [DEADLINE]. Provide a high-level plan, then delegate tasks to Gemini CLI. Verify the code as it's implemented.\n```\nCopy\n\n```\n# Project Plan: E-commerce Website Backend",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-gemini-manager-skill#main-content",
+      "claude-code-gemini-manager-skill#overview",
+      "claude-code-gemini-manager-skill#setup",
+      "claude-code-gemini-manager-skill#examples",
+      "claude-code-gemini-manager-skill#tools",
+      "claude-code-gemini-manager-skill#mcp",
+      "claude-code-gemini-manager-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini Manager is an Agent Skill for Claude Code that establishes a manager-intern workflow: Claude acts as the architect and manager while Gemini CLI handles all code implementation. Claude reads the codebase, plans the work, gives Gemini specific implementation commands, and verifies the results—requesting fixes as needed. This separation of concerns automates code development cycles without Claude writing code directly. Operations teams and developers benefit from streamlined code implementation, verification loops, and integration with Shell environments through Claude Code.\nAutomate feature implementation by having Claude manage Gemini's coding tasks\nVerify code quality through Claude's review before accepting Gemini's work\nDrive bug fixes in loops—Claude detects issues and instructs Gemini on corrections\nManage codebase changes without Claude directly writing code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alchemiststudiosDOTai/claude-code-gemini-manager-skill`",
+    "usage_vi": "```\nAct as my manager/architect for a project. I will use Gemini CLI as the coding intern. Here are the details: [PROJECT_SCOPE], [TECH_STACK], [DEADLINE]. Provide a high-level plan, then delegate tasks to Gemini CLI. Verify the code as it's implemented.\n```\nCopy\n\n```\n# Project Plan: E-commerce Website Backend"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:17.231571Z",
+    "http_status": 200,
+    "content_hash": "6412859de6ab27c546657de2c2f6b57e629aa9d684b993428d583f3a0da71145",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-gemini-manager-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-gemini-manager-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude code gemini manager plugin automation",
+  "short_description_vi": "Claude Code plugin that manages Gemini CLI as an intern. Claude acts as manager/architect while Gemini does all coding work. Benefits operations teams by automating code implementation, verification, and fixes. Connects to Shell environments and integrates with Claude Code."
+}

@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-api",
+  "slug": "claude-code-api",
+  "name": "Claude Code API",
+  "headline": "AI automation skill using claude-code-api",
+  "short_description": "Claude Code API Gateway enables developers to integrate Claude Code into their applications via an OpenAI-compatible API. It supports streaming and simplifies authentication. Ideal for operations teams building AI-powered workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "codingworkflow",
+  "install_command": "git clone https://github.com/codingworkflow/claude-code-api.git",
+  "source_repo_url": "https://github.com/codingworkflow/claude-code-api",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "ai",
+    "claude-code",
+    "claude-api",
+    "ai-assistant",
+    "anthropic-claude",
+    "claude",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Code API Gateway provides an OpenAI-compatible interface to Claude Code CLI, allowing developers to integrate Claude models into their applications through standard REST endpoints. The gateway supports streaming and non-streaming chat completions, model aliases, and automatic fallback behavior when models are rejected. It offers `/v1/chat/completions` and `/v1/models` endpoints that work with Claude Opus, Sonnet, and Haiku models. Built for operations teams and developers who need to integrate Claude into workflows without managing custom authentication or protocol conversion.\nBuild AI-powered automation workflows with OpenAI-compatible endpoints\nIntegrate Claude models into existing applications using standard chat completion APIs\nDeploy chat interfaces with automatic model fallback and error handling\nStream real-time responses from Claude in web or desktop applications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/codingworkflow/claude-code-api`",
+    "usage": "```\nUse the Claude Code API to [TASK] via an OpenAI-compatible endpoint. Example tasks: 'analyze the codebase in [REPO_PATH] for security vulnerabilities', 'generate documentation for the [MODULE_NAME] module', or 'refactor the [FILE_PATH] file to follow [STYLE_GUIDE]'. Include your API key and endpoint URL if required.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"task\": \"analyze the codebase in /project/backend for security vulnerabilities\",\n  \"summary\": {\n    \"total_files_analyzed\": 427,\n    \"critical_vulnerabilities\": 3,\n    \"high_vulnerabilities\": 12,\n    \"medium_vulnerabilities\": 28,\n    \"low_vulnerabilities\": 45\n  },\n  \"details\": [\n    {\n      \"file\": \"/project/backend/src/auth/middleware.js\",\n      \"vulnerability\": \"SQL Injection\",\n      \"severity\": \"critical\",\n      \"line\": 45,\n      \"suggestion\": \"Use parameterized queries instead of string concatenation for user input.\"\n    },\n    {\n      \"file\": \"/project/backend/src/utils/encryption.js\",\n      \"vulnerability\": \"Hardcoded API Key\",\n      \"severity\": \"high\",\n      \"line\": 12,\n      \"suggestion\": \"Move the API key to environment variables and use a secrets manager.\"\n    },\n    {\n      \"file\": \"/project/backend/tests/integration/user.test.js\",\n      \"vulnerability\": \"Missing Input Validation\",\n      \"severity\": \"medium\",\n      \"line\": 78,\n      \"suggestion\": \"Add validation for user input in the test cases to prevent edge cases.\"\n    }\n  ],\n  \"next_steps\": [\n    \"Fix critical vulnerabilities in middleware.js and encryption.js immediately.\",\n    \"Schedule a code review for high-severity issues.\",\n    \"Update test cases to include input validation scenarios.\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-api#main-content",
+      "claude-code-api#overview",
+      "claude-code-api#setup",
+      "claude-code-api#examples",
+      "claude-code-api#tools",
+      "claude-code-api#mcp",
+      "claude-code-api#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code API Gateway provides an OpenAI-compatible interface to Claude Code CLI, allowing developers to integrate Claude models into their applications through standard REST endpoints. The gateway supports streaming and non-streaming chat completions, model aliases, and automatic fallback behavior when models are rejected. It offers `/v1/chat/completions` and `/v1/models` endpoints that work with Claude Opus, Sonnet, and Haiku models. Built for operations teams and developers who need to integrate Claude into workflows without managing custom authentication or protocol conversion.\nBuild AI-powered automation workflows with OpenAI-compatible endpoints\nIntegrate Claude models into existing applications using standard chat completion APIs\nDeploy chat interfaces with automatic model fallback and error handling\nStream real-time responses from Claude in web or desktop applications",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/codingworkflow/claude-code-api`",
+    "usage_vi": "```\nUse the Claude Code API to [TASK] via an OpenAI-compatible endpoint. Example tasks: 'analyze the codebase in [REPO_PATH] for security vulnerabilities', 'generate documentation for the [MODULE_NAME] module', or 'refactor the [FILE_PATH] file to follow [STYLE_GUIDE]'. Include your API key and endpoint URL if required.\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"task\": \"analyze the codebase in /project/backend for security vulnerabilities\",\n  \"summary\": {\n    \"total_files_analyzed\": 427,\n    \"critical_vulnerabilities\": 3,\n    \"high_vulnerabilities\": 12,\n    \"medium_vulnerabilities\": 28,\n    \"low_vulnerabilities\": 45\n  },\n  \"details\": [\n    {\n      \"file\": \"/project/backend/src/auth/middleware.js\",\n      \"vulnerability\": \"SQL Injection\",\n      \"severity\": \"critical\",\n      \"line\": 45,\n      \"suggestion\": \"Use parameterized queries instead of string concatenation for user input.\"\n    },\n    {\n      \"file\": \"/project/backend/src/utils/encryption.js\",\n      \"vulnerability\": \"Hardcoded API Key\",\n      \"severity\": \"high\",\n      \"line\": 12,\n      \"suggestion\": \"Move the API key to environment variables and use a secrets manager.\"\n    },\n    {\n      \"file\": \"/project/backend/tests/integration/user.test.js\",\n      \"vulnerability\": \"Missing Input Validation\",\n      \"severity\": \"medium\",\n      \"line\": 78,\n      \"suggestion\": \"Add validation for user input in the test cases to prevent edge cases.\"\n    }\n  ],\n  \"next_steps\": [\n    \"Fix critical vulnerabilities in middleware.js and encryption.js immediately.\",\n    \"Schedule a code review for high-severity issues.\",\n    \"Update test cases to include input validation scenarios.\"\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:48.784469Z",
+    "http_status": 200,
+    "content_hash": "c45b0182f84681ce1be014b434d68d4209f0cdde177ccfd1a452c1d20dc81d87",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-api.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-api.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI automation skill using claude-code-api",
+  "short_description_vi": "Claude Code API Gateway enables developers to integrate Claude Code into their applications via an OpenAI-compatible API. It supports streaming and simplifies authentication. Ideal for operations teams building AI-powered workflows."
+}

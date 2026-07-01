@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llmagentpapers",
+  "slug": "llmagentpapers",
+  "name": "browser-use",
+  "headline": "LLMAgentPapers: Stay Informed on LLM Agents",
+  "short_description": "LLMAgentPapers provides a curated list of must-read papers on LLM agents. Operations teams benefit from access to the latest research on agent architectures, in-context learning, and multi-agent systems. The skill connects to Claude and other LLM agents, helping teams stay updated on advancements in natural language processing and agent-based automation.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "zjunlp",
+  "install_command": "git clone https://github.com/zjunlp/LLMAgentPapers.git",
+  "source_repo_url": "https://github.com/zjunlp/LLMAgentPapers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "natural-language-processing",
+    "agent",
+    "multiagent-systems",
+    "prompt",
+    "awsome-list",
+    "interactive",
+    "agents",
+    "survey",
+    "review",
+    "large-language-models",
+    "surveys",
+    "paper-list",
+    "instruction-following",
+    "nlp",
+    "environment",
+    "in-context-learning"
+  ],
+  "sections": {
+    "overview": "LLMAgentPapers is an essential automation skill designed for those interested in the latest research on Large Language Model (LLM) agents. This skill curates must-read papers that provide insights into the advancements and methodologies in the field of natural language processing. By leveraging this skill, users can stay updated on emerging trends and applications of LLMs in multi-agent systems, making it a valuable resource for researchers and practitioners alike. One of the key benefits of LLMAgentPapers is its ability to streamline the research process. In just 30 minutes, users can access a curated list of foundational papers that guide the development of new LLM-based applications. While the specific time savings are unknown, the efficiency gained from having a focused collection of essential readings can significantly enhance productivity. This skill is particularly beneficial for developers, product managers, and AI practitioners who need to stay informed in a rapidly evolving landscape. The target personas for LLMAgentPapers include researchers and professionals in academia and industry who are focused on LLMs and AI automation. Whether you are exploring practical implementations of LLMs or collaborating with peers on innovative projects, this skill provides a solid foundation of knowledge. For example, a product manager could utilize the insights gained from these papers to inform the development of a new AI-driven feature, while a developer might reference the latest methodologies to optimize their coding practices. With an intermediate implementation difficulty, LLMAgentPapers requires users to have a basic understanding of AI concepts and research methodologies. It fits seamlessly into AI-first workflows by providing a structured approach to gathering and reviewing relevant literature. By integrating this skill into your routine, you can ensure that your work is informed by the latest research, ultimately enhancing the quality and impact of your AI automation projects.\nResearching the latest advancements in LLM agents for academic purposes.\nStaying informed about emerging trends and methodologies in natural language processing.\nExploring various applications of LLMs in multi-agent systems for practical implementations.\nReviewing foundational papers to guide the development of new LLM-based applications.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zjunlp/LLMAgentPapers`",
+    "usage": "```\nGenerate a curated list of must-read papers on LLM agents for [TEAM_NAME] focused on [SPECIFIC_TOPIC: e.g., multi-agent collaboration, tool-use efficiency, or in-context learning]. Include papers from the last [TIMEFRAME: e.g., 6 months] and highlight key takeaways for [USE_CASE: e.g., automation workflows, system design, or performance optimization]. Format as a markdown table with columns: Title, Authors, Key Insight, and Why It Matters. Prioritize papers with open-source implementations or benchmarks.\n```\nCopy\n\n```\n### Curated LLM Agent Papers for Operations Team (Q3 2024)\n\n| **Title** | **Authors** | **Key Insight** | **Why It Matters** |\n|-----------|------------|-----------------|-------------------|\n| **AgentBench: Evaluating LLMs as Agents** | Liu et al. (2024) | Introduces a benchmark for testing LLMs in agent-based tasks (e.g., web navigation, tool use) with standardized metrics. | Provides a framework to compare agent architectures and identify performance gaps in real-world scenarios. |\n| **CAMEL: Communicative Agents for \"Mind\" Exploration** | Li et al. (2024) | Demonstrates how multi-agent systems can autonomously collaborate to solve complex tasks by role-playing and debate. | Offers a template for building self-improving agent teams in automation pipelines. |\n| **Toolformer: Language Models Can Teach Themselves to Use Tools** | Schick et al. (2024) | Shows how LLMs can learn to invoke external tools (e.g., APIs, calculators) via self-supervised fine-tuning. | Reduces manual tool integration effort and enables dynamic task execution. |\n| **Reflexion: Language Agents with Verbal Reinforcement Learning** | Shinn et al. (2024) | Proposes a method for agents to reflect on failures and adapt strategies through natural language feedback. | Improves robustness in agentic workflows by enabling continuous learning from errors. |\n\n**Top Pick for Automation Teams**: *Toolformer* for its practical approach to tool integration, which directly applies to our current workflows involving API calls and data processing. The paper includes a GitHub repo with pre-trained models, making it easy to experiment with.\n\n**Action Item**: Schedule a team workshop to implement the *AgentBench* benchmark and compare our current agent architecture against the top-performing models listed in the paper.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "llmagentpapers#main-content",
+      "llmagentpapers#overview",
+      "llmagentpapers#setup",
+      "llmagentpapers#examples",
+      "llmagentpapers#tools",
+      "llmagentpapers#mcp",
+      "llmagentpapers#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LLMAgentPapers is an essential automation skill designed for those interested in the latest research on Large Language Model (LLM) agents. This skill curates must-read papers that provide insights into the advancements and methodologies in the field of natural language processing. By leveraging this skill, users can stay updated on emerging trends and applications of LLMs in multi-agent systems, making it a valuable resource for researchers and practitioners alike. One of the key benefits of LLMAgentPapers is its ability to streamline the research process. In just 30 minutes, users can access a curated list of foundational papers that guide the development of new LLM-based applications. While the specific time savings are unknown, the efficiency gained from having a focused collection of essential readings can significantly enhance productivity. This skill is particularly beneficial for developers, product managers, and AI practitioners who need to stay informed in a rapidly evolving landscape. The target personas for LLMAgentPapers include researchers and professionals in academia and industry who are focused on LLMs and AI automation. Whether you are exploring practical implementations of LLMs or collaborating with peers on innovative projects, this skill provides a solid foundation of knowledge. For example, a product manager could utilize the insights gained from these papers to inform the development of a new AI-driven feature, while a developer might reference the latest methodologies to optimize their coding practices. With an intermediate implementation difficulty, LLMAgentPapers requires users to have a basic understanding of AI concepts and research methodologies. It fits seamlessly into AI-first workflows by providing a structured approach to gathering and reviewing relevant literature. By integrating this skill into your routine, you can ensure that your work is informed by the latest research, ultimately enhancing the quality and impact of your AI automation projects.\nResearching the latest advancements in LLM agents for academic purposes.\nStaying informed about emerging trends and methodologies in natural language processing.\nExploring various applications of LLMs in multi-agent systems for practical implementations.\nReviewing foundational papers to guide the development of new LLM-based applications.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zjunlp/LLMAgentPapers`",
+    "usage_vi": "```\nGenerate a curated list of must-read papers on LLM agents for [TEAM_NAME] focused on [SPECIFIC_TOPIC: e.g., multi-agent collaboration, tool-use efficiency, or in-context learning]. Include papers from the last [TIMEFRAME: e.g., 6 months] and highlight key takeaways for [USE_CASE: e.g., automation workflows, system design, or performance optimization]. Format as a markdown table with columns: Title, Authors, Key Insight, and Why It Matters. Prioritize papers with open-source implementations or benchmarks.\n```\nCopy\n\n```\n### Curated LLM Agent Papers for Operations Team (Q3 2024)\n\n| **Title** | **Authors** | **Key Insight** | **Why It Matters** |\n|-----------|------------|-----------------|-------------------|\n| **AgentBench: Evaluating LLMs as Agents** | Liu et al. (2024) | Introduces a benchmark for testing LLMs in agent-based tasks (e.g., web navigation, tool use) with standardized metrics. | Provides a framework to compare agent architectures and identify performance gaps in real-world scenarios. |\n| **CAMEL: Communicative Agents for \"Mind\" Exploration** | Li et al. (2024) | Demonstrates how multi-agent systems can autonomously collaborate to solve complex tasks by role-playing and debate. | Offers a template for building self-improving agent teams in automation pipelines. |\n| **Toolformer: Language Models Can Teach Themselves to Use Tools** | Schick et al. (2024) | Shows how LLMs can learn to invoke external tools (e.g., APIs, calculators) via self-supervised fine-tuning. | Reduces manual tool integration effort and enables dynamic task execution. |\n| **Reflexion: Language Agents with Verbal Reinforcement Learning** | Shinn et al. (2024) | Proposes a method for agents to reflect on failures and adapt strategies through natural language feedback. | Improves robustness in agentic workflows by enabling continuous learning from errors. |\n\n**Top Pick for Automation Teams**: *Toolformer* for its practical approach to tool integration, which directly applies to our current workflows involving API calls and data processing. The paper includes a GitHub repo with pre-trained models, making it easy to experiment with.\n\n**Action Item**: Schedule a team workshop to implement the *AgentBench* benchmark and compare our current agent architecture against the top-performing models listed in the paper.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:18:25.384304Z",
+    "http_status": 200,
+    "content_hash": "4cd69571863f6c3a9d6afb5a0351eeeda2a6592416d1cf546e7722d4a6347bdc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llmagentpapers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llmagentpapers.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LLMAgentPapers: Stay Informed on LLM Agents",
+  "short_description_vi": "LLMAgentPapers provides a curated list of must-read papers on LLM agents. Operations teams benefit from access to the latest research on agent architectures, in-context learning, and multi-agent systems. The skill connects to Claude and other LLM agents, helping teams stay updated on advancements in natural language processing and agent-based automation."
+}

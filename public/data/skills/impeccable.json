@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/impeccable",
+  "slug": "impeccable",
+  "name": "Impeccable",
+  "headline": "Impeccable - Enhance Frontend Design with LLMs",
+  "short_description": "Impeccable is a set of Claude + Cursor plugins that enhance LLM capabilities in UX and frontend design. It provides 17 commands and curated anti-patterns to improve design quality. Operations teams can use it to streamline design workflows and ensure consistent, high-quality outputs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "pbakaus",
+  "install_command": "git clone https://github.com/pbakaus/impeccable.git",
+  "source_repo_url": "https://github.com/pbakaus/impeccable",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Impeccable is a plugin suite designed to enhance Claude and Cursor's capabilities in UX and frontend design workflows. It provides 17 commands and curated anti-patterns that help teams maintain consistent, high-quality design outputs. The skill includes a critique system that detects design defects and quality issues, enabling operations teams to streamline design processes and enforce brand standards. By automating design quality checks and providing structured guidance, Impeccable reduces manual review cycles and ensures outputs meet established craft requirements. Teams using this skill can integrate it into their AI-assisted design pipeline to catch issues early and maintain design consistency across projects.\nAutomating design quality reviews in UX workflows\nEnforcing consistent design standards across multiple projects\nReducing manual design critique cycles with automated detection\nPreventing anti-patterns in frontend design implementations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pbakaus/impeccable`",
+    "usage": "```\nUse the Impeccable plugin for [TASK] in [PROJECT_NAME]. Focus on [SPECIFIC_DESIGN_GOAL] such as [EXAMPLE_GOAL: e.g., accessibility compliance, responsive layout consistency, or visual hierarchy]. Apply the anti-patterns to avoid [COMMON_MISTAKES]. Provide the final output in [FORMAT: e.g., JSON for design tokens, CSS for components, or Figma component library structure].\n```\nCopy\n\n```\nFor a dashboard redesign project (Project Phoenix), I used Impeccable to audit the color system against WCAG contrast ratios. The plugin flagged 12 instances where primary buttons failed accessibility standards, suggesting alternative hex codes (#2A5C8A for primary buttons instead of #3B82F6). It also generated a JSON file with corrected design tokens and a Figma library with pre-built accessible components. The output included a diff report showing 87% improvement in contrast compliance across the component library. The anti-patterns prevented me from using absolute units for spacing, which would have broken the responsive grid. The final deliverable was a pull request-ready branch with all fixes applied and a summary of changes for the design system team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "impeccable#main-content",
+      "impeccable#overview",
+      "impeccable#setup",
+      "impeccable#examples",
+      "impeccable#tools",
+      "impeccable#mcp",
+      "impeccable#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Impeccable là một bộ plugin được thiết kế để nâng cao khả năng của Claude và Cursor trong quy trình thiết kế UX và frontend. Nó cung cấp 17 lệnh cùng các anti-pattern được chọn lọc kỹ lưỡng nhằm giúp các đội ngũ duy trì kết quả thiết kế đồng nhất và chất lượng cao. Skill này tích hợp một hệ thống đánh giá giúp phát hiện các lỗi thiết kế và vấn đề chất lượng, cho phép các đội ngũ vận hành tinh giản quy trình thiết kế và áp dụng các tiêu chuẩn thương hiệu. Bằng cách tự động hóa việc kiểm tra chất lượng thiết kế và đưa ra hướng dẫn có cấu trúc, Impeccable giảm thiểu các chu kỳ đánh giá thủ công và đảm bảo sản phẩm đầu ra đáp ứng các yêu cầu về độ hoàn thiện (craft requirements) đã thiết lập. Các đội ngũ sử dụng skill này có thể tích hợp nó vào pipeline thiết kế có AI hỗ trợ để phát hiện sớm các vấn đề và duy trì tính nhất quán của thiết kế trên toàn dự án.\nTự động hóa việc đánh giá chất lượng thiết kế trong quy trình UX\nÁp dụng các tiêu chuẩn thiết kế nhất quán trên nhiều dự án\nGiảm thiểu các chu kỳ đánh giá thiết kế thủ công bằng cách tự động phát hiện lỗi\nNgăn chặn các anti-pattern trong quá trình triển khai thiết kế frontend",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/pbakaus/impeccable`",
+    "usage_vi": "```\nSử dụng plugin Impeccable cho [TASK] trong [PROJECT_NAME]. Tập trung vào [SPECIFIC_DESIGN_GOAL] ví dụ như [EXAMPLE_GOAL: ví dụ: tuân thủ khả năng tiếp cận (accessibility), tính nhất quán của bố cục responsive, hoặc phân cấp thị giác (visual hierarchy)]. Áp dụng các anti-pattern để tránh [COMMON_MISTAKES]. Cung cấp kết quả đầu ra cuối cùng dưới định dạng [FORMAT: ví dụ: JSON cho các design token, CSS cho các component, hoặc cấu trúc thư viện component Figma].\n```\nCopy\n\n```\nĐối với dự án thiết kế lại dashboard (Project Phoenix), tôi đã sử dụng Impeccable để kiểm tra hệ thống màu sắc so với tỷ lệ tương phản WCAG. Plugin đã cảnh báo 12 trường hợp nút chính (primary button) không đạt tiêu chuẩn về khả năng tiếp cận, đồng thời đề xuất mã màu hex thay thế (#2A5C8A cho nút chính thay vì #3B82F6). Nó cũng tạo ra một file JSON chứa các design token đã được sửa đổi và một thư viện Figma với các component có khả năng tiếp cận được dựng sẵn. Kết quả đầu ra bao gồm một báo cáo diff cho thấy tỷ lệ tuân thủ độ tương phản trên toàn bộ thư viện component cải thiện 87%. Các anti-pattern đã giúp tôi tránh việc sử dụng đơn vị tuyệt đối cho khoảng cách (spacing) - điều có thể làm hỏng grid responsive. Sản phẩm bàn giao cuối cùng là một nhánh (branch) đã sẵn sàng để tạo pull request với tất cả các lỗi đã được sửa và một báo cáo tóm tắt các thay đổi dành cho đội ngũ phát triển design system.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:13:47.800327Z",
+    "http_status": 200,
+    "content_hash": "d359982f36f7ff225b09f6ff762f9788cf0837100b83a5af2e17baec8192fb85",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\impeccable.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\impeccable.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Impeccable - Nâng cao chất lượng thiết kế frontend với LLM",
+  "short_description_vi": "Impeccable là bộ plugin dành cho Claude + Cursor giúp nâng cao năng lực của LLM trong thiết kế UX và frontend. Bộ công cụ cung cấp 17 lệnh và các anti-pattern được chọn lọc để cải thiện chất lượng thiết kế. Các đội ngũ vận hành có thể sử dụng nó để tinh giản quy trình thiết kế và đảm bảo đầu ra nhất quán, chất lượng cao."
+}

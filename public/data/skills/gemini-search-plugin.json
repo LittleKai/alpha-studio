@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini-search-plugin",
+  "slug": "gemini-search-plugin",
+  "name": "browser-use",
+  "headline": "Gemini Search Plugin - Advanced Web Search for",
+  "short_description": "Gemini Search Plugin is an advanced Claude Code plugin for web search using Gemini CLI. It offers caching, analytics, and validation. It is designed for operations teams to automate web search tasks, extract content, and validate results. It integrates with Claude Code and supports shell scripts.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "d-oit",
+  "install_command": "git clone https://github.com/d-oit/gemini-search-plugin.git",
+  "source_repo_url": "https://github.com/d-oit/gemini-search-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "claude-code",
+    "search-plugin",
+    "shell-scripts",
+    "web-search",
+    "claude-code-plugin",
+    "gemini-cli",
+    "gemini",
+    "caching"
+  ],
+  "sections": {
+    "overview": "Gemini Search Plugin is an advanced web search tool for Claude Code that uses the Gemini CLI in headless mode to perform searches exclusively through Google's web search functionality. It features smart caching with a 1-hour TTL, comprehensive analytics tracking, dynamic content extraction, and false positive validation to ensure result quality. The plugin includes three slash commands—/search, /search-stats, and /clear-cache—plus error detection hooks and pre-edit suggestions. Built for operations teams, it delivers 39% token savings through context isolation and maintains a 60-85% typical cache hit rate, reducing API calls and enabling faster subsequent searches.\nAutomate web searches from Claude Code with result validation and caching\nTrack search usage analytics and monitor cache effectiveness for cost optimization\nExtract and parse content from websites using Gemini during search operations\nValidate search results for relevance and filter false positives automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/d-oit/gemini-search-plugin`",
+    "usage": "```\nI need to automate a web search task for [COMPANY] in the [INDUSTRY] sector. I want to search for [KEYWORDS] and extract the top 5 results. Please use the Gemini Search Plugin to perform this task, cache the results, and provide analytics on the search performance. Also, validate the results to ensure they are relevant to [KEYWORDS].\n```\nCopy\n\n```\n# Web Search Results for [KEYWORDS]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gemini-search-plugin#main-content",
+      "gemini-search-plugin#overview",
+      "gemini-search-plugin#setup",
+      "gemini-search-plugin#examples",
+      "gemini-search-plugin#tools",
+      "gemini-search-plugin#mcp",
+      "gemini-search-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini Search Plugin is an advanced web search tool for Claude Code that uses the Gemini CLI in headless mode to perform searches exclusively through Google's web search functionality. It features smart caching with a 1-hour TTL, comprehensive analytics tracking, dynamic content extraction, and false positive validation to ensure result quality. The plugin includes three slash commands—/search, /search-stats, and /clear-cache—plus error detection hooks and pre-edit suggestions. Built for operations teams, it delivers 39% token savings through context isolation and maintains a 60-85% typical cache hit rate, reducing API calls and enabling faster subsequent searches.\nAutomate web searches from Claude Code with result validation and caching\nTrack search usage analytics and monitor cache effectiveness for cost optimization\nExtract and parse content from websites using Gemini during search operations\nValidate search results for relevance and filter false positives automatically",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/d-oit/gemini-search-plugin`",
+    "usage_vi": "```\nI need to automate a web search task for [COMPANY] in the [INDUSTRY] sector. I want to search for [KEYWORDS] and extract the top 5 results. Please use the Gemini Search Plugin to perform this task, cache the results, and provide analytics on the search performance. Also, validate the results to ensure they are relevant to [KEYWORDS].\n```\nCopy\n\n```\n# Web Search Results for [KEYWORDS]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:43:47.131041Z",
+    "http_status": 200,
+    "content_hash": "b11c0a66b91e04bb8e992048e5df26c3604c7b65f88af49dbb072a012f4a04a2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini-search-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini-search-plugin.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Gemini Search Plugin - Advanced Web Search for",
+  "short_description_vi": "Gemini Search Plugin is an advanced Claude Code plugin for web search using Gemini CLI. It offers caching, analytics, and validation. It is designed for operations teams to automate web search tasks, extract content, and validate results. It integrates with Claude Code and supports shell scripts."
+}

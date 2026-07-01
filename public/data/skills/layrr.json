@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/layrr",
+  "slug": "layrr",
+  "name": "layrr",
+  "headline": "layrr: Browser Coding Tasks",
+  "short_description": "Layrr is a browser-based coding agent interface that enables users to visually select, drag, resize, and edit UI elements on any website. It connects to Claude Code for direct instructions, benefiting operations teams by streamlining design-to-code workflows. It integrates with existing web applications and supports natural language instructions for UI modifications.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "thetronjohnson",
+  "install_command": "git clone https://github.com/thetronjohnson/layrr.git",
+  "source_repo_url": "https://github.com/thetronjohnson/layrr",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "alpine",
+    "design",
+    "javas",
+    "agent",
+    "figma",
+    "ai",
+    "claude-code",
+    "coding-agent",
+    "ai-agent",
+    "golang",
+    "browser-coding-agent",
+    "claude",
+    "design-to-code-conversion",
+    "figmatocode",
+    "design-to-code"
+  ],
+  "sections": {
+    "overview": "The layrr skill is a powerful browser coding agent interface designed to enhance the workflow of developers and product managers by facilitating the selection of web elements and sending precise instructions directly to Claude Code. This skill addresses the need for efficient coding practices in web development, enabling users to interact seamlessly with web applications. By simplifying the coding process, layrr allows for quicker iterations and more efficient testing of web functionalities. One of the key benefits of using layrr is its ability to save time in the coding process. While specific time savings are currently unknown, the skill's intermediate complexity suggests that users can expect a significant reduction in the time spent on repetitive tasks. By automating element selection and instruction delivery, developers can focus on more critical aspects of their projects, ultimately leading to enhanced productivity and faster project turnaround times. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to integrate AI automation into their workflows. With its medium GTM relevance, layrr is ideal for teams looking to adopt AI-driven solutions for their web development tasks. The skill can be applied in various scenarios, such as automating testing processes, streamlining user interface adjustments, or facilitating rapid prototyping of web applications. For example, a developer could use layrr to quickly select elements on a webpage and send commands to Claude Code to modify their attributes, significantly speeding up the development cycle. Implementing layrr requires an intermediate level of coding knowledge, making it accessible for those familiar with web technologies. The estimated time to implement this skill is around 30 minutes, making it a practical addition to any developer's toolkit. As organizations increasingly adopt AI-first workflows, integrating layrr can enhance efficiency and innovation, positioning teams to leverage AI automation effectively in their projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thetronjohnson/layrr`",
+    "usage": "```\nUse Layrr to visually select and edit the [UI_ELEMENT] on [WEBSITE_URL]. Resize it to [NEW_DIMENSIONS] and apply the following styling changes: [STYLING_INSTRUCTIONS]. Then, generate the updated HTML/CSS code for this element and provide a diff showing the changes made. Finally, test the changes in a staging environment to ensure they render correctly across [DEVICES/BROWSERS].\n```\nCopy\n\n```\nI selected the primary call-to-action button on the homepage of 'AcmeCorp's e-commerce site' (https://acmecorp.com) and resized it to 200px width and 60px height. I applied the following styling changes: changed the background color to #2563eb, updated the font to Inter Bold at 16px, and added a subtle box-shadow (#1d4ed8, 0 4px 6px -1px). The updated HTML/CSS code generated is:\n\n```html\n<button class=\"cta-button\">Shop Now</button>\n```\n\n```css\n.cta-button {\n  width: 200px;\n  height: 60px;\n  background-color: #2563eb;\n  color: white;\n  font-family: 'Inter', sans-serif;\n  font-weight: 700;\n  font-size: 16px;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.cta-button:hover {\n  background-color: #1d4ed8;\n}\n```\n\nThe diff showing changes is:\n```diff\n- .cta-button {\n-   background-color: #3b82f6;\n-   font-family: 'Arial', sans-serif;\n-   font-size: 14px;\n- }\n+ .cta-button {\n+   width: 200px;\n+   height: 60px;\n+   background-color: #2563eb;\n+   font-family: 'Inter', sans-serif;\n+   font-weight: 700;\n+   font-size: 16px;\n+   border-radius: 8px;\n+   box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);\n+ }\n```\n\nI tested the changes in a staging environment using Chrome, Firefox, and Safari on desktop and mobile (iPhone 13, Samsung Galaxy S22). The button renders correctly with no layout shifts, and the hover effect works as expected.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "layrr#main-content",
+      "layrr#overview",
+      "layrr#setup",
+      "layrr#examples",
+      "layrr#tools",
+      "layrr#mcp",
+      "layrr#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The layrr skill is a powerful browser coding agent interface designed to enhance the workflow of developers and product managers by facilitating the selection of web elements and sending precise instructions directly to Claude Code. This skill addresses the need for efficient coding practices in web development, enabling users to interact seamlessly with web applications. By simplifying the coding process, layrr allows for quicker iterations and more efficient testing of web functionalities. One of the key benefits of using layrr is its ability to save time in the coding process. While specific time savings are currently unknown, the skill's intermediate complexity suggests that users can expect a significant reduction in the time spent on repetitive tasks. By automating element selection and instruction delivery, developers can focus on more critical aspects of their projects, ultimately leading to enhanced productivity and faster project turnaround times. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to integrate AI automation into their workflows. With its medium GTM relevance, layrr is ideal for teams looking to adopt AI-driven solutions for their web development tasks. The skill can be applied in various scenarios, such as automating testing processes, streamlining user interface adjustments, or facilitating rapid prototyping of web applications. For example, a developer could use layrr to quickly select elements on a webpage and send commands to Claude Code to modify their attributes, significantly speeding up the development cycle. Implementing layrr requires an intermediate level of coding knowledge, making it accessible for those familiar with web technologies. The estimated time to implement this skill is around 30 minutes, making it a practical addition to any developer's toolkit. As organizations increasingly adopt AI-first workflows, integrating layrr can enhance efficiency and innovation, positioning teams to leverage AI automation effectively in their projects.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thetronjohnson/layrr`",
+    "usage_vi": "```\nUse Layrr to visually select and edit the [UI_ELEMENT] on [WEBSITE_URL]. Resize it to [NEW_DIMENSIONS] and apply the following styling changes: [STYLING_INSTRUCTIONS]. Then, generate the updated HTML/CSS code for this element and provide a diff showing the changes made. Finally, test the changes in a staging environment to ensure they render correctly across [DEVICES/BROWSERS].\n```\nCopy\n\n```\nI selected the primary call-to-action button on the homepage of 'AcmeCorp's e-commerce site' (https://acmecorp.com) and resized it to 200px width and 60px height. I applied the following styling changes: changed the background color to #2563eb, updated the font to Inter Bold at 16px, and added a subtle box-shadow (#1d4ed8, 0 4px 6px -1px). The updated HTML/CSS code generated is:\n\n```html\n<button class=\"cta-button\">Shop Now</button>\n```\n\n```css\n.cta-button {\n  width: 200px;\n  height: 60px;\n  background-color: #2563eb;\n  color: white;\n  font-family: 'Inter', sans-serif;\n  font-weight: 700;\n  font-size: 16px;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n}\n.cta-button:hover {\n  background-color: #1d4ed8;\n}\n```\n\nThe diff showing changes is:\n```diff\n- .cta-button {\n-   background-color: #3b82f6;\n-   font-family: 'Arial', sans-serif;\n-   font-size: 14px;\n- }\n+ .cta-button {\n+   width: 200px;\n+   height: 60px;\n+   background-color: #2563eb;\n+   font-family: 'Inter', sans-serif;\n+   font-weight: 700;\n+   font-size: 16px;\n+   border-radius: 8px;\n+   box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);\n+ }\n```\n\nI tested the changes in a staging environment using Chrome, Firefox, and Safari on desktop and mobile (iPhone 13, Samsung Galaxy S22). The button renders correctly with no layout shifts, and the hover effect works as expected.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:46.383939Z",
+    "http_status": 200,
+    "content_hash": "b8374604fc95e1b55b0eb0ec8bb2bb78c9668184054369f9d9a6be3460944000",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\layrr.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\layrr.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "layrr: Browser Coding Tasks",
+  "short_description_vi": "Layrr is a browser-based coding agent interface that enables users to visually select, drag, resize, and edit UI elements on any website. It connects to Claude Code for direct instructions, benefiting operations teams by streamlining design-to-code workflows. It integrates with existing web applications and supports natural language instructions for UI modifications."
+}

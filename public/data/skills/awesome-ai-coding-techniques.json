@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-ai-coding-techniques",
+  "slug": "awesome-ai-coding-techniques",
+  "name": "Awesome Ai Coding Techniques",
+  "headline": "AI coding techniques for developers",
+  "short_description": "Practical techniques for coding with AI assistants like Claude Code, Codex CLI, Cursor, and GitHub Copilot. Helps developers and operations teams streamline workflows, improve code quality, and integrate AI tools into their development processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "inmve",
+  "install_command": "git clone https://github.com/inmve/awesome-ai-coding-techniques.git",
+  "source_repo_url": "https://github.com/inmve/awesome-ai-coding-techniques",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "coding-assistant",
+    "ai-agents",
+    "awesome-list",
+    "ai-coding",
+    "ai-tools",
+    "awesome",
+    "codex",
+    "github-copilot",
+    "techniques",
+    "best-practices",
+    "workflows",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Awesome AI Coding Techniques is a community-maintained resource that organizes practical methods for working with AI coding assistants across the full development lifecycle. The collection structures techniques by stage—from requirements and planning through UI prototyping, coding, debugging, testing, and review—drawing from practitioners like Simon Willison and the Anthropic team. Key techniques include setting up memory files (CLAUDE.md, AGENTS.md) to provide persistent context to AI tools, asking assistants to plan before implementation, and using real-time context features like @-mentions in Cursor. The resource supports Claude Code, Cursor, Codex CLI, and GitHub Copilot, helping developers and operations teams streamline workflows and integrate AI tools effectively into their processes.\nCreating persistent context files (CLAUDE.md, AGENTS.md) to guide AI coding assistants on project standards\nPlanning code implementations by asking AI to outline steps and risks before writing code\nDebugging and refactoring existing codebases with AI assistance using contextual documentation\nPrototyping UI components and architectural designs with AI coding tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/inmve/awesome-ai-coding-techniques`",
+    "usage": "```\nUse [AI_TOOL_NAME] to [TASK_DESCRIPTION] in [PROGRAMMING_LANGUAGE] for [PROJECT_NAME]. Follow these best practices: 1) Use [SPECIFIC_TECHNIQUE] to [ACHIEVE_SPECIFIC_GOAL]. 2) Generate [TYPE_OF_OUTPUT] with [SPECIFIC_QUALITY_CRITERIA]. 3) Include [SPECIFIC_TESTING_OR_VALIDATION_METHOD]. Example: 'Use Cursor to refactor a Python Flask API for a task management app. Apply the 'AI Pair Programming' technique to convert synchronous endpoints to async/await. Generate a Pydantic model for request/response schemas with strict type validation. Include unit tests using pytest to verify 90%+ coverage.'\n```\nCopy\n\n```\nHere’s how I refactored the `TaskManager` API using Cursor with AI Pair Programming techniques:\n\n1. **Async Conversion**: The original Flask endpoints were blocking database calls. I used Cursor’s inline AI suggestions to convert them to async/await, leveraging SQLAlchemy 2.0’s async support. The `get_task` endpoint now looks like this:\n```python\n@app.get(\"/tasks/{task_id}\")\nasync def get_task(task_id: int, db: AsyncSession = Depends(get_db)):\n    result = await db.execute(select(Task).where(Task.id == task_id))\n    task = result.scalars().first()\n    if not task:\n        raise HTTPException(status_code=404, detail=\"Task not found\")\n    return task\n```\n\n2. **Pydantic Models**: Generated strict request/response schemas with validation:\n```python\nfrom pydantic import BaseModel, Field\n\nclass TaskCreate(BaseModel):\n    title: str = Field(..., min_length=3, max_length=100)\n    description: str | None = Field(None, max_length=500)\n    priority: int = Field(1, ge=1, le=5)\n\nclass TaskResponse(BaseModel):\n    id: int\n    title: str\n    status: str\n    priority: int\n    created_at: datetime\n```\n\n3. **Testing**: Added pytest coverage for the new async endpoints:\n```python\n@pytest.mark.asyncio\nasync def test_get_task(client, mock_db):\n    test_task = Task(id=1, title=\"Test\", status=\"pending\", priority=3)\n    mock_db.add(test_task)\n    await mock_db.commit()\n    \n    response = await client.get(\"/tasks/1\")\n    assert response.status_code == 200\n    assert response.json()[\"title\"] == \"Test\"\n```\n\nKey improvements:\n- Reduced endpoint latency by 60% (from 450ms to 180ms) in load tests\n- Added 92% test coverage for the refactored code\n- Generated OpenAPI docs automatically via FastAPI’s integration with Pydantic\n- The AI suggested using `asyncpg` for connection pooling, which we implemented.\n\nNext steps: Use Cursor’s 'Explain' feature to document the async patterns for the team, then set up CI/CD to run these tests on every PR.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-ai-coding-techniques#main-content",
+      "awesome-ai-coding-techniques#overview",
+      "awesome-ai-coding-techniques#setup",
+      "awesome-ai-coding-techniques#examples",
+      "awesome-ai-coding-techniques#tools",
+      "awesome-ai-coding-techniques#mcp",
+      "awesome-ai-coding-techniques#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome AI Coding Techniques là một tài nguyên do cộng đồng đóng góp và duy trì, nhằm hệ thống hóa các phương pháp thực tế khi làm việc với trợ lý lập trình AI xuyên suốt toàn bộ vòng đời phát triển phần mềm. Bộ sưu tập này sắp xếp các kỹ thuật theo từng giai đoạn—từ phân tích yêu cầu, lập kế hoạch cho đến dựng prototype UI, viết code, debug, kiểm thử và review—được tổng hợp từ kinh nghiệm của các chuyên gia thực tế như Simon Willison và đội ngũ Anthropic. Các kỹ thuật cốt lõi bao gồm thiết lập các file bộ nhớ (CLAUDE.md, AGENTS.md) để cung cấp ngữ cảnh lưu trữ lâu dài (persistent context) cho các công cụ AI, yêu cầu trợ lý lập trình lên kế hoạch trước khi triển khai, và sử dụng các tính năng ngữ cảnh thời gian thực như @-mention trong Cursor. Tài nguyên này hỗ trợ Claude Code, Cursor, Codex CLI và GitHub Copilot, giúp lập trình viên và đội ngũ vận hành tối ưu hóa quy trình làm việc và tích hợp các công cụ AI hiệu quả vào quy trình của mình.\nTạo các file ngữ cảnh lâu dài (CLAUDE.md, AGENTS.md) để định hướng cho trợ lý lập trình AI về các tiêu chuẩn của dự án\nLập kế hoạch triển khai code bằng cách yêu cầu AI phác thảo các bước và rủi ro trước khi viết code\nDebug và refactor các codebase hiện tại với sự hỗ trợ của AI dựa trên tài liệu ngữ cảnh\nDựng prototype cho các thành phần UI và thiết kế kiến trúc bằng các công cụ lập trình AI",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/inmve/awesome-ai-coding-techniques`",
+    "usage_vi": "```\nSử dụng [AI_TOOL_NAME] để [TASK_DESCRIPTION] bằng [PROGRAMMING_LANGUAGE] cho [PROJECT_NAME]. Tuân thủ các best practice sau: 1) Sử dụng [SPECIFIC_TECHNIQUE] để [ACHIEVE_SPECIFIC_GOAL]. 2) Tạo [TYPE_OF_OUTPUT] với [SPECIFIC_QUALITY_CRITERIA]. 3) Kèm theo [SPECIFIC_TESTING_OR_VALIDATION_METHOD]. Ví dụ: 'Sử dụng Cursor để refactor một API Python Flask cho ứng dụng quản lý công việc. Áp dụng kỹ thuật 'AI Pair Programming' để chuyển đổi các endpoint đồng bộ sang async/await. Tạo một model Pydantic cho các schema request/response với tính năng xác thực kiểu dữ liệu nghiêm ngặt (strict type validation). Kèm theo các unit test sử dụng pytest để đảm bảo độ bao phủ (coverage) trên 90%.'\n```\nCopy\n\n```\nDưới đây là cách tôi refactor API `TaskManager` bằng Cursor kết hợp với các kỹ thuật AI Pair Programming:\n\n1. **Chuyển đổi Async**: Các endpoint Flask ban đầu gây nghẽn (blocking) các lệnh gọi cơ sở dữ liệu. Tôi đã sử dụng các gợi ý AI inline của Cursor để chuyển đổi chúng sang async/await, tận dụng hỗ trợ async của SQLAlchemy 2.0. Endpoint `get_task` hiện tại trông như sau:\n```python\n@app.get(\"/tasks/{task_id}\")\nasync def get_task(task_id: int, db: AsyncSession = Depends(get_db)):\n    result = await db.execute(select(Task).where(Task.id == task_id))\n    task = result.scalars().first()\n    if not task:\n        raise HTTPException(status_code=404, detail=\"Task not found\")\n    return task\n```\n\n2. **Pydantic Model**: Tạo các schema request/response nghiêm ngặt đi kèm validation:\n```python\nfrom pydantic import BaseModel, Field\n\nclass TaskCreate(BaseModel):\n    title: str = Field(..., min_length=3, max_length=100)\n    description: str | None = Field(None, max_length=500)\n    priority: int = Field(1, ge=1, le=5)\n\nclass TaskResponse(BaseModel):\n    id: int\n    title: str\n    status: str\n    priority: int\n    created_at: datetime\n```\n\n3. **Kiểm thử**: Bổ sung pytest coverage cho các async endpoint mới:\n```python\n@pytest.mark.asyncio\nasync def test_get_task(client, mock_db):\n    test_task = Task(id=1, title=\"Test\", status=\"pending\", priority=3)\n    mock_db.add(test_task)\n    await mock_db.commit()\n    \n    response = await client.get(\"/tasks/1\")\n    assert response.status_code == 200\n    assert response.json()[\"title\"] == \"Test\"\n```\n\nCác cải tiến chính:\n- Giảm 60% độ trễ (latency) của endpoint (từ 450ms xuống còn 180ms) trong các bài kiểm tra tải (load test)\n- Đạt 92% test coverage cho phần code đã được refactor\n- Tự động tạo tài liệu OpenAPI thông qua tích hợp giữa FastAPI và Pydantic\n- AI đã gợi ý sử dụng `asyncpg` để quản lý connection pool và chúng tôi đã triển khai gợi ý này.\n\nCác bước tiếp theo: Sử dụng tính năng 'Explain' của Cursor để viết tài liệu giải thích các mô hình async này cho cả đội ngũ, sau đó thiết lập CI/CD để chạy các test này trên mỗi PR.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:41:11.180214Z",
+    "http_status": 200,
+    "content_hash": "e4a286ad5c1343b71b541162a9d58a3f3832e04a9df46af24f0ebf82d841b35c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-ai-coding-techniques.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-ai-coding-techniques.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ thuật lập trình với AI dành cho lập trình viên",
+  "short_description_vi": "Các kỹ thuật thực tế khi lập trình cùng trợ lý AI như Claude Code, Codex CLI, Cursor và GitHub Copilot. Giúp lập trình viên và đội ngũ vận hành tối ưu hóa quy trình làm việc, nâng cao chất lượng code và tích hợp hiệu quả các công cụ AI vào quy trình phát triển."
+}

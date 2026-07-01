@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/imageretrieval",
+  "slug": "imageretrieval",
+  "name": "ImageRetrieval",
+  "headline": "ImageRetrieval: Content-Based Image Search",
+  "short_description": "With the large-scale image database in the field of science and medicine, as well as in the field of advertising and marketing, it becomes very important to organize the image database and the effective retrieval method. This paper mainly introduces the B/S architecture, focuses on Content-Based Images Retrieval technology, introduces the basic features of image low-level acquisition and corresponding retrieval matching algorithm, including graphics color, local texture and shape characteristics",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "XiaokangLei",
+  "install_command": "git clone https://github.com/XiaokangLei/ImageRetrieval.git",
+  "source_repo_url": "https://github.com/XiaokangLei/ImageRetrieval",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "ImageRetrieval is a web-based image search system built on B/S architecture that enables efficient organization and retrieval of large image databases. The system implements content-based image retrieval (CBIR) technology, analyzing low-level image features including color, local texture, and shape characteristics to match and retrieve similar images. Originally developed as an undergraduate capstone project, it addresses the challenge of effectively managing and searching through extensive image collections in scientific, medical, advertising, and marketing domains. The system has been deployed online and is available for demonstration and educational purposes.\nSearching medical image databases by visual similarity\nOrganizing and retrieving advertising creative assets\nScientific image collection management and discovery\nContent-based image browsing without text metadata",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/XiaokangLei/ImageRetrieval`",
+    "usage": "```\nI need to retrieve images from a database for [COMPANY]'s [INDUSTRY] campaign. The images should match the following criteria: [DESCRIBE CRITERIA]. Please provide a list of relevant images with their metadata, including color, texture, and shape characteristics.\n```\nCopy\n\n```\n# Image Retrieval Results for [COMPANY]'s [INDUSTRY] Campaign",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "imageretrieval#main-content",
+      "imageretrieval#overview",
+      "imageretrieval#setup",
+      "imageretrieval#examples",
+      "imageretrieval#tools",
+      "imageretrieval#related",
+      "marketingskills",
+      "copywriting",
+      "shortify"
+    ],
+    "overview_vi": "ImageRetrieval là hệ thống tìm kiếm hình ảnh trên nền tảng web được xây dựng trên kiến trúc B/S, hỗ trợ tổ chức và truy xuất hiệu quả các cơ sở dữ liệu hình ảnh quy mô lớn. Hệ thống triển khai công nghệ truy xuất hình ảnh dựa trên nội dung (CBIR), phân tích các đặc trưng hình ảnh mức thấp (low-level) bao gồm màu sắc, kết cấu cục bộ và hình dạng để so khớp và truy xuất các hình ảnh tương đồng. Ban đầu được phát triển như một đồ án tốt nghiệp đại học, hệ thống này giải quyết thách thức trong việc quản lý và tìm kiếm hiệu quả các bộ sưu tập hình ảnh lớn trong các lĩnh vực khoa học, y tế, quảng cáo và tiếp thị. Hệ thống đã được triển khai trực tuyến, phục vụ cho mục đích thử nghiệm và giáo dục.\nTìm kiếm cơ sở dữ liệu hình ảnh y tế theo độ tương đồng trực quan\nTổ chức và truy xuất các tài nguyên sáng tạo quảng cáo\nQuản lý và khám phá bộ sưu tập hình ảnh khoa học\nDuyệt hình ảnh dựa trên nội dung mà không cần siêu dữ liệu văn bản",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/XiaokangLei/ImageRetrieval`",
+    "usage_vi": "```\nTôi cần truy xuất các hình ảnh từ cơ sở dữ liệu cho chiến dịch [INDUSTRY] của [COMPANY]. Các hình ảnh phải đáp ứng các tiêu chí sau: [DESCRIBE CRITERIA]. Vui lòng cung cấp danh sách các hình ảnh liên quan kèm theo siêu dữ liệu của chúng, bao gồm các đặc tính về màu sắc, kết cấu và hình dạng.\n```\nSao chép\n\n```\n# Kết quả truy xuất hình ảnh cho chiến dịch [INDUSTRY] của [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:17:36.902071Z",
+    "http_status": 200,
+    "content_hash": "2db053f5eb3a7296ad35d308c1625b4b47950fd733ce1d61b1cd189f6b21fdb5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\imageretrieval.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\imageretrieval.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ImageRetrieval: Tìm kiếm hình ảnh dựa trên nội dung",
+  "short_description_vi": "Với sự phát triển của các cơ sở dữ liệu hình ảnh quy mô lớn trong lĩnh vực khoa học, y tế, cũng như quảng cáo và tiếp thị, việc tổ chức cơ sở dữ liệu hình ảnh và xây dựng phương pháp truy xuất hiệu quả ngày càng trở nên quan trọng. Tài liệu này chủ yếu giới thiệu về kiến trúc B/S, tập trung vào công nghệ Truy xuất hình ảnh dựa trên nội dung (CBIR), giới thiệu các đặc trưng cơ bản thu nhận từ hình ảnh mức thấp (low-level) và thuật toán khớp truy xuất tương ứng, bao gồm các đặc điểm về màu sắc, kết cấu cục bộ và hình dạng."
+}

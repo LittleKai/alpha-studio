@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-plugins-skills-manager",
+  "slug": "claude-plugins-skills-manager",
+  "name": "Claude_plugins-skills-manager",
+  "headline": "claude plugins skills manager user interface",
+  "short_description": "Web-based dashboard for managing Claude Code plugins and skills. Browse 87+ plugins, enable/disable extensions, search a GitHub marketplace of 500+ community tools, and run automated security audits—all without editing JSON files.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "Arxchibobo",
+  "install_command": "git clone https://github.com/Arxchibobo/Claude_plugins-skills-manager.git",
+  "source_repo_url": "https://github.com/Arxchibobo/Claude_plugins-skills-manager",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Plugins & Skills Manager is a web-based dashboard that simplifies managing Claude Code extensions. Instead of manually editing configuration files, users access a local browser interface to browse 87+ plugins, toggle them on or off, and persist changes directly to ~/.claude/settings.json. The tool includes a marketplace browser with 500+ community extensions hosted on GitHub, searchable across 13 categories with parallel API calls for speed. A built-in security audit module leverages the Claude Code CLI to scan projects for vulnerabilities, classify results by severity, and provide fix recommendations. The manager loads skills from both the filesystem and settings files, supporting real-time search and embedded documentation viewing. It runs locally on Node.js 14+ and requires the Claude Code CLI for security scanning.\nEnable and disable Claude Code plugins through a visual interface without editing JSON\nSearch and discover 500+ community extensions from GitHub within the marketplace tab\nRun automated security scans on projects and track vulnerability history over time\nManage both filesystem-based and settings-managed skills with embedded documentation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arxchibobo/Claude_plugins-skills-manager`",
+    "usage": "```\nHelp me manage my Claude plugins. I want to [ACTION] with my plugins. Here are the details: [DETAILS].\n```\nCopy\n\n```\n# Plugin Management Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-plugins-skills-manager#main-content",
+      "claude-plugins-skills-manager#overview",
+      "claude-plugins-skills-manager#setup",
+      "claude-plugins-skills-manager#examples",
+      "claude-plugins-skills-manager#tools",
+      "claude-plugins-skills-manager#mcp",
+      "claude-plugins-skills-manager#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Plugins & Skills Manager is a web-based dashboard that simplifies managing Claude Code extensions. Instead of manually editing configuration files, users access a local browser interface to browse 87+ plugins, toggle them on or off, and persist changes directly to ~/.claude/settings.json. The tool includes a marketplace browser with 500+ community extensions hosted on GitHub, searchable across 13 categories with parallel API calls for speed. A built-in security audit module leverages the Claude Code CLI to scan projects for vulnerabilities, classify results by severity, and provide fix recommendations. The manager loads skills from both the filesystem and settings files, supporting real-time search and embedded documentation viewing. It runs locally on Node.js 14+ and requires the Claude Code CLI for security scanning.\nEnable and disable Claude Code plugins through a visual interface without editing JSON\nSearch and discover 500+ community extensions from GitHub within the marketplace tab\nRun automated security scans on projects and track vulnerability history over time\nManage both filesystem-based and settings-managed skills with embedded documentation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Arxchibobo/Claude_plugins-skills-manager`",
+    "usage_vi": "```\nHelp me manage my Claude plugins. I want to [ACTION] with my plugins. Here are the details: [DETAILS].\n```\nCopy\n\n```\n# Plugin Management Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:22:44.857913Z",
+    "http_status": 200,
+    "content_hash": "87f4fb4fa6963e7ef5ed47a109c9ab1308b3b8d3dc5c87d654d66711d65b2981",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-plugins-skills-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-plugins-skills-manager.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude plugins skills manager user interface",
+  "short_description_vi": "Web-based dashboard for managing Claude Code plugins and skills. Browse 87+ plugins, enable/disable extensions, search a GitHub marketplace of 500+ community tools, and run automated security audits—all without editing JSON files."
+}

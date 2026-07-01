@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini-flow",
+  "slug": "gemini-flow",
+  "name": "Gemini-Flow",
+  "headline": "Gemini-Flow - AI Workflow Automation",
+  "short_description": "Gemini-Flow automates AI development workflows. It enables operations teams to build and deploy AI agents. It connects to Google's Gemini CLI and supports multi-agent systems. It is ideal for devops and software engineering teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "clduab11",
+  "install_command": "git clone https://github.com/clduab11/gemini-flow.git",
+  "source_repo_url": "https://github.com/clduab11/gemini-flow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "workflow-automation",
+    "devops",
+    "code-generation",
+    "code-assistant",
+    "ai-workflow",
+    "autonomous-agents",
+    "ai-automation",
+    "google",
+    "prompt-engineering",
+    "software-engineering",
+    "gemini-cli",
+    "open-source",
+    "mcp-server",
+    "google-gemini",
+    "collaborative-development",
+    "natural-language-processing",
+    "clit-tools",
+    "multi-agent-systems"
+  ],
+  "sections": {
+    "overview": "Gemini-Flow was a production-ready platform for deploying and managing AI agent systems with native Google AI services integration. It supported 66 specialized AI agents, dual protocol architecture (A2A and MCP), and multi-agent coordination for enterprise teams. The project provided official Gemini CLI extension support and integration with Google's complete AI services ecosystem. As of January 2026, the project is archived but remains available as a reference implementation for AI orchestration patterns and agent-based system design.\nAutomate the generation of corporate training videos using Google's Veo3 service.\nCreate high-resolution images for marketing campaigns with Imagen4 in batch processing.\nImplement OAuth 2.0 authentication in applications using the autonomous coding capabilities of Jules Tools.\nSpawn intelligent agent swarms to handle large-scale data processing tasks efficiently.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/clduab11/gemini-flow`",
+    "usage": "```\nCreate a Gemini-Flow workflow to automate [SPECIFIC AI TASK] for our team. The workflow should integrate with [SPECIFIC TOOLS] and handle [SPECIFIC DATA INPUTS]. Include error handling for [COMMON ISSUES] and deploy it to our [DEPLOYMENT ENVIRONMENT].\n```\nCopy\n\n```\nHere's a Gemini-Flow workflow for automating customer support ticket classification:\n\n```yaml\nname: support_ticket_classification\nagents:\n  - name: ticket_receiver\n    type: api\n    config:\n      endpoint: \"https://api.support.example.com/tickets\"\n      auth:\n        type: bearer\n        token: \"${env.SUPPORT_API_TOKEN}\"\n  - name: ticket_classifier\n    type: llm\n    config:\n      model: \"gemini-pro\"\n      prompt:\n        \"Classify the following support ticket into one of these categories: [Billing, Technical, Account, General]. Provide only the category name as output.\"\n  - name: ticket_router\n    type: workflow\n    config:\n      routes:\n        - category: Billing\n          action: \"create_jira_issue\"\n          params:\n            project: \"Billing\"\n            type: \"Task\"\n        - category: Technical\n          action: \"create_jira_issue\"\n          params:\n            project: \"Engineering\"\n            type: \"Bug\"\n        - category: Account\n          action: \"create_jira_issue\"\n          params:\n            project: \"Customer Success\"\n            type: \"Task\"\n        - category: General\n          action: \"create_slack_message\"\n          params:\n            channel: \"#support-team\"\n            message: \"New general support ticket received\"\n\ntriggers:\n  - type: cron\n    schedule: \"0 * * * *\"\n    agent: ticket_receiver\n\n```\n\nThis workflow will run every hour, fetch new support tickets, classify them using Gemini Pro, and route them to the appropriate team or system.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gemini-flow#main-content",
+      "gemini-flow#overview",
+      "gemini-flow#setup",
+      "gemini-flow#examples",
+      "gemini-flow#tools",
+      "gemini-flow#mcp",
+      "gemini-flow#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gemini-Flow was a production-ready platform for deploying and managing AI agent systems with native Google AI services integration. It supported 66 specialized AI agents, dual protocol architecture (A2A and MCP), and multi-agent coordination for enterprise teams. The project provided official Gemini CLI extension support and integration with Google's complete AI services ecosystem. As of January 2026, the project is archived but remains available as a reference implementation for AI orchestration patterns and agent-based system design.\nAutomate the generation of corporate training videos using Google's Veo3 service.\nCreate high-resolution images for marketing campaigns with Imagen4 in batch processing.\nImplement OAuth 2.0 authentication in applications using the autonomous coding capabilities of Jules Tools.\nSpawn intelligent agent swarms to handle large-scale data processing tasks efficiently.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/clduab11/gemini-flow`",
+    "usage_vi": "```\nCreate a Gemini-Flow workflow to automate [SPECIFIC AI TASK] for our team. The workflow should integrate with [SPECIFIC TOOLS] and handle [SPECIFIC DATA INPUTS]. Include error handling for [COMMON ISSUES] and deploy it to our [DEPLOYMENT ENVIRONMENT].\n```\nCopy\n\n```\nHere's a Gemini-Flow workflow for automating customer support ticket classification:\n\n```yaml\nname: support_ticket_classification\nagents:\n  - name: ticket_receiver\n    type: api\n    config:\n      endpoint: \"https://api.support.example.com/tickets\"\n      auth:\n        type: bearer\n        token: \"${env.SUPPORT_API_TOKEN}\"\n  - name: ticket_classifier\n    type: llm\n    config:\n      model: \"gemini-pro\"\n      prompt:\n        \"Classify the following support ticket into one of these categories: [Billing, Technical, Account, General]. Provide only the category name as output.\"\n  - name: ticket_router\n    type: workflow\n    config:\n      routes:\n        - category: Billing\n          action: \"create_jira_issue\"\n          params:\n            project: \"Billing\"\n            type: \"Task\"\n        - category: Technical\n          action: \"create_jira_issue\"\n          params:\n            project: \"Engineering\"\n            type: \"Bug\"\n        - category: Account\n          action: \"create_jira_issue\"\n          params:\n            project: \"Customer Success\"\n            type: \"Task\"\n        - category: General\n          action: \"create_slack_message\"\n          params:\n            channel: \"#support-team\"\n            message: \"New general support ticket received\"\n\ntriggers:\n  - type: cron\n    schedule: \"0 * * * *\"\n    agent: ticket_receiver\n\n```\n\nThis workflow will run every hour, fetch new support tickets, classify them using Gemini Pro, and route them to the appropriate team or system.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:55.595891Z",
+    "http_status": 200,
+    "content_hash": "d1abd4f9f5ef72fac545ec73f24e27f353ecf90b921c0d65af4f53df36c568ef",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-flow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gemini-flow.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Gemini-Flow - AI Workflow Automation",
+  "short_description_vi": "Gemini-Flow automates AI development workflows. It enables operations teams to build and deploy AI agents. It connects to Google's Gemini CLI and supports multi-agent systems. It is ideal for devops and software engineering teams."
+}

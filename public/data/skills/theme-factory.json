@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/theme-factory",
+  "slug": "theme-factory",
+  "name": "algorithmic-art",
+  "headline": "Theme Factory: Design with AI",
+  "short_description": "Theme Factory is a Claude Code skill that automates the generation of customizable themes for applications. It streamlines the design process, allowing developers to save time and focus on core functionality.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills.git",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Theme Factory is an innovative Claude Code skill designed to automate the creation of customizable themes for applications. By leveraging AI automation, this skill allows developers to generate visually appealing themes quickly, reducing the time spent on manual design tasks. The skill integrates seamlessly with existing workflows, enabling teams to maintain focus on core application functionality while ensuring a polished user interface. One of the key benefits of using Theme Factory is the significant time savings it offers. Developers can generate multiple theme variations in a fraction of the time it would take to create them manually. This efficiency not only speeds up the development process but also enhances productivity, allowing teams to deliver projects faster and with higher quality. With its user-friendly interface, Theme Factory makes it easy for developers and product managers to customize themes to meet specific project requirements. This skill is particularly beneficial for developers, product managers, and AI practitioners looking to enhance their applications' visual appeal without compromising on development speed. It is ideal for those working on projects that require frequent updates or iterations, as it allows for rapid theme adjustments based on user feedback or design trends. Practical use cases include creating unique themes for e-commerce platforms, personalizing user interfaces for SaaS applications, and developing visually cohesive branding across multiple digital products. Implementing Theme Factory is straightforward, with minimal technical hurdles, making it accessible even for those with limited experience in AI automation. As organizations increasingly adopt AI-first workflows, integrating Theme Factory into development processes can significantly enhance efficiency and creativity. By automating the theme generation process, teams can focus on innovation and user experience, ultimately driving better outcomes for their applications.\nGenerate unique themes for e-commerce websites to enhance user engagement.\nCreate personalized user interfaces for SaaS applications that reflect brand identity.\nDevelop cohesive branding across multiple digital products for a unified user experience.\nAutomate theme updates based on user feedback to keep designs fresh and relevant.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nGenerate a custom theme for a [TYPE OF APPLICATION] with the following design preferences: [COLOR PALETTE], [FONTS], and [STYLE]. Ensure the theme is responsive and includes [SPECIFIC ELEMENTS] such as buttons, headers, and background patterns. Provide the CSS code and a visual mockup.\n```\nCopy\n\n```\nHere is a custom theme for a fitness tracking mobile application with a vibrant and energetic design:\n\n**Design Preferences:**\n- Color Palette: Deep blues, electric greens, and bright whites\n- Fonts: Bold sans-serif for headers, clean sans-serif for body text\n- Style: Modern, clean, and energetic\n\n**CSS Code:**\n```css\n:root {\n  --primary-color: #0066cc;\n  --secondary-color: #33cc33;\n  --background-color: #ffffff;\n  --text-color: #333333;\n  --font-header: 'Arial Bold', sans-serif;\n  --font-body: 'Arial', sans-serif;\n}\n\nbody {\n  background-color: var(--background-color);\n  color: var(--text-color);\n  font-family: var(--font-body);\n}\n\n.header {\n  font-family: var(--font-header);\n  color: var(--primary-color);\n}\n\n.button {\n  background-color: var(--secondary-color);\n  color: white;\n  border: none;\n  padding: 10px 20px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n```\n\n**Visual Mockup:**\nThe theme features a clean, modern layout with a deep blue header, electric green buttons, and white backgrounds. The headers are bold and eye-catching, while the body text is easy to read. The buttons are rounded and stand out against the background, making them easily clickable. The overall design is energetic and inviting, perfect for a fitness tracking application.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "theme-factory#main-content",
+      "theme-factory#overview",
+      "theme-factory#setup",
+      "theme-factory#examples",
+      "theme-factory#tools",
+      "theme-factory#mcp",
+      "theme-factory#related",
+      "ui-ux-pro-max",
+      "canvas-design",
+      "algorithmic-art"
+    ],
+    "overview_vi": "Theme Factory is an innovative Claude Code skill designed to automate the creation of customizable themes for applications. By leveraging AI automation, this skill allows developers to generate visually appealing themes quickly, reducing the time spent on manual design tasks. The skill integrates seamlessly with existing workflows, enabling teams to maintain focus on core application functionality while ensuring a polished user interface. One of the key benefits of using Theme Factory is the significant time savings it offers. Developers can generate multiple theme variations in a fraction of the time it would take to create them manually. This efficiency not only speeds up the development process but also enhances productivity, allowing teams to deliver projects faster and with higher quality. With its user-friendly interface, Theme Factory makes it easy for developers and product managers to customize themes to meet specific project requirements. This skill is particularly beneficial for developers, product managers, and AI practitioners looking to enhance their applications' visual appeal without compromising on development speed. It is ideal for those working on projects that require frequent updates or iterations, as it allows for rapid theme adjustments based on user feedback or design trends. Practical use cases include creating unique themes for e-commerce platforms, personalizing user interfaces for SaaS applications, and developing visually cohesive branding across multiple digital products. Implementing Theme Factory is straightforward, with minimal technical hurdles, making it accessible even for those with limited experience in AI automation. As organizations increasingly adopt AI-first workflows, integrating Theme Factory into development processes can significantly enhance efficiency and creativity. By automating the theme generation process, teams can focus on innovation and user experience, ultimately driving better outcomes for their applications.\nGenerate unique themes for e-commerce websites to enhance user engagement.\nCreate personalized user interfaces for SaaS applications that reflect brand identity.\nDevelop cohesive branding across multiple digital products for a unified user experience.\nAutomate theme updates based on user feedback to keep designs fresh and relevant.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nGenerate a custom theme for a [TYPE OF APPLICATION] with the following design preferences: [COLOR PALETTE], [FONTS], and [STYLE]. Ensure the theme is responsive and includes [SPECIFIC ELEMENTS] such as buttons, headers, and background patterns. Provide the CSS code and a visual mockup.\n```\nCopy\n\n```\nHere is a custom theme for a fitness tracking mobile application with a vibrant and energetic design:\n\n**Design Preferences:**\n- Color Palette: Deep blues, electric greens, and bright whites\n- Fonts: Bold sans-serif for headers, clean sans-serif for body text\n- Style: Modern, clean, and energetic\n\n**CSS Code:**\n```css\n:root {\n  --primary-color: #0066cc;\n  --secondary-color: #33cc33;\n  --background-color: #ffffff;\n  --text-color: #333333;\n  --font-header: 'Arial Bold', sans-serif;\n  --font-body: 'Arial', sans-serif;\n}\n\nbody {\n  background-color: var(--background-color);\n  color: var(--text-color);\n  font-family: var(--font-body);\n}\n\n.header {\n  font-family: var(--font-header);\n  color: var(--primary-color);\n}\n\n.button {\n  background-color: var(--secondary-color);\n  color: white;\n  border: none;\n  padding: 10px 20px;\n  border-radius: 5px;\n  cursor: pointer;\n}\n```\n\n**Visual Mockup:**\nThe theme features a clean, modern layout with a deep blue header, electric green buttons, and white backgrounds. The headers are bold and eye-catching, while the body text is easy to read. The buttons are rounded and stand out against the background, making them easily clickable. The overall design is energetic and inviting, perfect for a fitness tracking application.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:33:24.860188Z",
+    "http_status": 200,
+    "content_hash": "cb3a08bc7bff7b0f8ccf12eb8ef6f4c143d0a10441a375ebe22c1507a22441b3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\theme-factory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\theme-factory.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Theme Factory: Design with AI",
+  "short_description_vi": "Theme Factory is a Claude Code skill that automates the generation of customizable themes for applications. It streamlines the design process, allowing developers to save time and focus on core functionality."
+}

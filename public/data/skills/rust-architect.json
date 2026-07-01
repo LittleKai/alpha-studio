@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rust-architect",
+  "slug": "rust-architect",
+  "name": "Rust Architect",
+  "headline": "Rust Architect: Production-Ready Project",
+  "short_description": "Claude Code skill that architects production-ready Rust applications with complete documentation, ADRs, guardrails, and handoff materials for AI collaboration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "nanlong",
+  "install_command": "git clone https://github.com/nanlong/rust-architect.git",
+  "source_repo_url": "https://github.com/nanlong/rust-architect",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "axum",
+    "claude-skills",
+    "claude-code",
+    "rust"
+  ],
+  "sections": {
+    "overview": "Rust Architect is a Claude Code skill that generates comprehensive project documentation packages for building complex Rust systems following industry best practices. It creates complete directory structures, 20+ documentation files including architecture guides, Architecture Decision Records, and AI collaboration guardrails designed for Director/Implementor workflows. The skill automatically researches domain-specific patterns for web services, CLI tools, and backend systems using tokio, axum, and sqlx, then generates handoff materials that enable AI agents to successfully implement complex Rust applications with proven architectural patterns.\nArchitecting REST API services with axum and sqlx\nCreating multi-crate workspace projects with clear separation of concerns\nEstablishing AI collaboration guardrails for Director/Implementor workflows\nGenerating Architecture Decision Records for async/await patterns and error handling\nA scalable IoT data processing system for GreenTech Solutions, handling sensor data from 10,000+ devices with real-time analytics and predictive maintenance capabilities.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nanlong/rust-architect`",
+    "usage": "```\nAct as a Rust Architect. Design a robust, scalable system for [COMPANY] in the [INDUSTRY] sector. The system should handle [DATA] with the following requirements: [REQUIREMENTS]. Provide a detailed architecture diagram, key components, and technology stack recommendations.\n```\nCopy\n\n```\n# Rust System Architecture for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "rust-architect#main-content",
+      "rust-architect#overview",
+      "rust-architect#setup",
+      "rust-architect#examples",
+      "rust-architect#tools",
+      "rust-architect#mcp",
+      "rust-architect#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Rust Architect là một skill Claude Code chuyên tạo các bộ tài liệu dự án toàn diện để xây dựng các hệ thống Rust phức tạp theo các best practice của ngành. Công cụ này tự động tạo cấu trúc thư mục hoàn chỉnh cùng hơn 20 file tài liệu, bao gồm hướng dẫn kiến trúc, ADR (Architecture Decision Records) và các guardrail cộng tác AI được thiết kế riêng cho workflow dạng Director/Implementor. Skill này tự động nghiên cứu các pattern đặc thù cho web service, CLI tool và hệ thống backend sử dụng tokio, axum và sqlx, sau đó tạo tài liệu bàn giao để các AI agent có thể triển khai thành công ứng dụng Rust phức tạp dựa trên các mô hình kiến trúc đã được kiểm chứng.\nThiết kế kiến trúc dịch vụ REST API với axum và sqlx\nTạo dự án multi-crate workspace phân tách rõ ràng các thành phần hệ thống (separation of concerns)\nThiết lập các guardrail cộng tác AI cho workflow dạng Director/Implementor\nTạo các Architecture Decision Record cho mô hình async/await và xử lý lỗi (error handling)\nHệ thống xử lý dữ liệu IoT có khả năng mở rộng cho GreenTech Solutions, xử lý dữ liệu cảm biến từ hơn 10.000 thiết bị với khả năng phân tích thời gian thực và bảo trì dự đoán (predictive maintenance).",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/nanlong/rust-architect`",
+    "usage_vi": "```\nHãy đóng vai là một Rust Architect. Thiết kế một hệ thống mạnh mẽ, có khả năng mở rộng cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Hệ thống cần xử lý [DATA] với các yêu cầu sau: [REQUIREMENTS]. Hãy cung cấp sơ đồ kiến trúc chi tiết, các thành phần chính và đề xuất tech stack phù hợp.\n```\nSao chép\n\n```\n# Kiến trúc hệ thống Rust cho GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:34:12.827305Z",
+    "http_status": 200,
+    "content_hash": "ee4aa935f29335c9674c5f3709c973132edf78b3415ebd75bd6b257369fef619",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rust-architect.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rust-architect.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Rust Architect: Thiết kế dự án Production-Ready",
+  "short_description_vi": "Skill Claude Code giúp thiết kế cấu trúc ứng dụng Rust sẵn sàng triển khai (production-ready) với đầy đủ tài liệu, ADR, guardrail và tài liệu bàn giao để cộng tác với AI."
+}

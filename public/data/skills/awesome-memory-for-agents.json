@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-memory-for-agents",
+  "slug": "awesome-memory-for-agents",
+  "name": "browser-use",
+  "headline": "awesome memory papers for language agents",
+  "short_description": "A curated list of papers on memory for language agents. Helps operations teams build agents with improved recall and context retention. Integrates with Claude to enhance agent performance in customer service and data analysis workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "TsinghuaC3I",
+  "install_command": "git clone https://github.com/TsinghuaC3I/Awesome-Memory-for-Agents.git",
+  "source_repo_url": "https://github.com/TsinghuaC3I/Awesome-Memory-for-Agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Awesome-Memory-for-Agents is a structured collection of academic papers focused on memory architectures for language model agents. The repository organizes research by memory type—short-term (context window) and long-term (persistent external storage)—and application domain, including personalization, learning from experience, and long-horizon task execution. It covers papers on memory retrieval, context management, episodic-semantic memory, and memory consolidation techniques. Developers and researchers building AI agents can reference this taxonomy to understand approaches for improving agent recall, context retention, and task performance across conversational, analytical, and multi-step reasoning workflows.\nUnderstanding memory architectures for conversational AI and personalization systems\nResearching context management techniques for long-horizon agent tasks\nDesigning experience accumulation and transfer learning mechanisms for agents\nImplementing retrieval-based memory systems for customer service agents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TsinghuaC3I/Awesome-Memory-for-Agents`",
+    "usage": "```\nBuild a memory-enhanced agent for [TASK] using the Awesome-Memory-for-Agents framework. Start by analyzing the following requirements: [REQUIREMENTS]. Design a memory architecture that includes [MEMORY_TYPES] (e.g., short-term, long-term, episodic). For each memory type, specify the storage mechanism (e.g., vector DB, SQL, or in-memory cache) and retrieval strategy (e.g., semantic search, keyword matching). Provide a step-by-step implementation plan in Python using [FRAMEWORK] (e.g., LangChain, CrewAI). Include error handling for memory overflow and retrieval failures.\n```\nCopy\n\n```\n### Memory-Enhanced Agent Architecture for Customer Support\n\n**Requirements:** Handle 1000+ concurrent customer queries with <2s response time, retain context across sessions, and personalize responses based on past interactions.\n\n**Memory Architecture:**\n1. **Short-Term Memory:** Sliding window of last 5 exchanges (Redis cache, 30s TTL)\n2. **Long-Term Memory:** Customer interaction history (Pinecone vector DB, 1536-dim embeddings)\n3. **Episodic Memory:** Key events (e.g., refunds, escalations) stored in PostgreSQL with metadata tags\n\n**Implementation Plan:**\n```python\nfrom langchain.memory import ConversationBufferMemory, VectorStoreRetrieverMemory\nfrom langchain_community.vectorstores import Pinecone\nfrom pinecone import Pinecone as PineconeClient\n\n# Initialize components\npc = PineconeClient(api_key=\"[API_KEY]\")\nvectorstore = Pinecone.from_existing_index(\"customer-support\", pc)\nretriever = vectorstore.as_retriever(search_kwargs={\"k\": 3})\n\n# Memory stack\nshort_term = ConversationBufferMemory(memory_key=\"short_term\", return_messages=True)\nlong_term = VectorStoreRetrieverMemory(retriever=retriever, memory_key=\"long_term\")\n\n# Integration with agent\nclass MemoryAgent:\n    def __init__(self):\n        self.memory = {\n            \"short_term\": short_term,\n            \"long_term\": long_term\n        }\n    \n    def process_query(self, query, customer_id):\n        # Retrieve relevant memories\n        context = self.memory[\"long_term\"].load_memory_variables({\"subject\": query})\n        \n        # Generate response with context\n        response = f\"Based on your history with {customer_id}: {context['history']}\\n{query}\"\n        \n        # Update memories\n        self.memory[\"short_term\"].save_context({\"input\": query}, {\"output\": response})\n        return response\n\nagent = MemoryAgent()\n```\n\n**Error Handling:**\n- Memory overflow: Auto-shrink short-term window when >100 exchanges\n- Retrieval failures: Fallback to generic responses after 3 retries\n- Context conflicts: Prioritize recent interactions over historical data\n\n**Performance Metrics:**\n- Average response time: 1.8s (95th percentile)\n- Memory retrieval accuracy: 94% (tested on 5000 queries)\n- Customer satisfaction: +12% (post-implementation survey)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-memory-for-agents#main-content",
+      "awesome-memory-for-agents#overview",
+      "awesome-memory-for-agents#setup",
+      "awesome-memory-for-agents#examples",
+      "awesome-memory-for-agents#tools",
+      "awesome-memory-for-agents#mcp",
+      "awesome-memory-for-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome-Memory-for-Agents is a structured collection of academic papers focused on memory architectures for language model agents. The repository organizes research by memory type—short-term (context window) and long-term (persistent external storage)—and application domain, including personalization, learning from experience, and long-horizon task execution. It covers papers on memory retrieval, context management, episodic-semantic memory, and memory consolidation techniques. Developers and researchers building AI agents can reference this taxonomy to understand approaches for improving agent recall, context retention, and task performance across conversational, analytical, and multi-step reasoning workflows.\nUnderstanding memory architectures for conversational AI and personalization systems\nResearching context management techniques for long-horizon agent tasks\nDesigning experience accumulation and transfer learning mechanisms for agents\nImplementing retrieval-based memory systems for customer service agents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TsinghuaC3I/Awesome-Memory-for-Agents`",
+    "usage_vi": "```\nBuild a memory-enhanced agent for [TASK] using the Awesome-Memory-for-Agents framework. Start by analyzing the following requirements: [REQUIREMENTS]. Design a memory architecture that includes [MEMORY_TYPES] (e.g., short-term, long-term, episodic). For each memory type, specify the storage mechanism (e.g., vector DB, SQL, or in-memory cache) and retrieval strategy (e.g., semantic search, keyword matching). Provide a step-by-step implementation plan in Python using [FRAMEWORK] (e.g., LangChain, CrewAI). Include error handling for memory overflow and retrieval failures.\n```\nCopy\n\n```\n### Memory-Enhanced Agent Architecture for Customer Support\n\n**Requirements:** Handle 1000+ concurrent customer queries with <2s response time, retain context across sessions, and personalize responses based on past interactions.\n\n**Memory Architecture:**\n1. **Short-Term Memory:** Sliding window of last 5 exchanges (Redis cache, 30s TTL)\n2. **Long-Term Memory:** Customer interaction history (Pinecone vector DB, 1536-dim embeddings)\n3. **Episodic Memory:** Key events (e.g., refunds, escalations) stored in PostgreSQL with metadata tags\n\n**Implementation Plan:**\n```python\nfrom langchain.memory import ConversationBufferMemory, VectorStoreRetrieverMemory\nfrom langchain_community.vectorstores import Pinecone\nfrom pinecone import Pinecone as PineconeClient\n\n# Initialize components\npc = PineconeClient(api_key=\"[API_KEY]\")\nvectorstore = Pinecone.from_existing_index(\"customer-support\", pc)\nretriever = vectorstore.as_retriever(search_kwargs={\"k\": 3})\n\n# Memory stack\nshort_term = ConversationBufferMemory(memory_key=\"short_term\", return_messages=True)\nlong_term = VectorStoreRetrieverMemory(retriever=retriever, memory_key=\"long_term\")\n\n# Integration with agent\nclass MemoryAgent:\n    def __init__(self):\n        self.memory = {\n            \"short_term\": short_term,\n            \"long_term\": long_term\n        }\n    \n    def process_query(self, query, customer_id):\n        # Retrieve relevant memories\n        context = self.memory[\"long_term\"].load_memory_variables({\"subject\": query})\n        \n        # Generate response with context\n        response = f\"Based on your history with {customer_id}: {context['history']}\\n{query}\"\n        \n        # Update memories\n        self.memory[\"short_term\"].save_context({\"input\": query}, {\"output\": response})\n        return response\n\nagent = MemoryAgent()\n```\n\n**Error Handling:**\n- Memory overflow: Auto-shrink short-term window when >100 exchanges\n- Retrieval failures: Fallback to generic responses after 3 retries\n- Context conflicts: Prioritize recent interactions over historical data\n\n**Performance Metrics:**\n- Average response time: 1.8s (95th percentile)\n- Memory retrieval accuracy: 94% (tested on 5000 queries)\n- Customer satisfaction: +12% (post-implementation survey)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:54:18.879758Z",
+    "http_status": 200,
+    "content_hash": "a881240729b47ef0087ee1137f52391e9ec28ad3f4c83f12a0498ec8c003338c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-memory-for-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-memory-for-agents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "awesome memory papers for language agents",
+  "short_description_vi": "A curated list of papers on memory for language agents. Helps operations teams build agents with improved recall and context retention. Integrates with Claude to enhance agent performance in customer service and data analysis workflows."
+}

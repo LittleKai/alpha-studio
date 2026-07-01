@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/better-auth-best-practices",
+  "slug": "better-auth-best-practices",
+  "name": "react-native-best-practices",
+  "headline": "Better Auth Best Practices - Secure Authentication",
+  "short_description": "Better Auth Best Practices is designed to enhance your authentication processes by providing expert guidelines and proven methods to secure user data efficiently. By leveraging this skill, organizations can reduce security risks, improve user experience, and streamline their authentication workflows.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "better-auth",
+  "install_command": "claude install better-auth/skills/better-auth-best-practices",
+  "source_repo_url": "https://github.com/better-auth/skills",
+  "works_with": [
+    "Claude CodeCursorWindsurfCline"
+  ],
+  "tags": [
+    "best practices",
+    "user experience",
+    "data protection",
+    "security",
+    "authentication"
+  ],
+  "sections": {
+    "overview": "In today's digital landscape, securing user data is paramount for any organization. Better Auth Best Practices equips Sales, Marketing, and RevOps teams with essential strategies to fortify authentication processes, ensuring compliance and enhancing user trust. By implementing these best practices, teams can significantly reduce the time spent on security audits and improve overall efficiency. This skill not only focuses on the technical aspects of authentication but also emphasizes the importance of user experience. By optimizing login flows and incorporating multi-factor authentication, organizations can boost conversion rates and minimize drop-offs during the registration process. Better Auth Best Practices is a critical asset for any team looking to enhance their go-to-market strategy while prioritizing security and user satisfaction.\nImplementing multi-factor authentication for enhanced security\nOptimizing user login processes to increase conversion rates\nTraining teams on best practices for secure user data handling\nAuditing existing authentication methods for compliance and efficiency",
+    "setup": "Terminal\nCopy\n`claude install better-auth/skills/better-auth-best-practices`\n`git clone https://github.com/better-auth/skills`",
+    "usage": "```\nReview the current authentication system for [COMPANY_NAME]'s Lever-based talent acquisition suite. Identify 3 critical security gaps in the [AUTHENTICATION_METHOD] process and provide actionable recommendations to implement better auth best practices. Focus on [SPECIFIC_AREA: e.g., password policies, MFA adoption, session management]. Include code snippets for [LANGUAGE_FRAMEWORK] if applicable.\n```\nCopy\n\n```\nFor Acme Corp’s Lever ATS (Applicant Tracking System), the current authentication system relies solely on password-based login with no multi-factor authentication (MFA) or session timeout policies. Three critical security gaps were identified:\n\n1. **Password Weakness**: The system enforces a minimum 8-character password with no complexity requirements, making accounts vulnerable to brute-force attacks. Acme’s 2023 security audit revealed 12% of employee accounts used passwords from the top 1000 most common passwords (e.g., 'Password123').\n\n2. **Lack of MFA**: Only 3% of users have enabled MFA, leaving the system exposed to credential stuffing attacks. Lever’s API supports TOTP (Time-based One-Time Password) and WebAuthn, but these features are disabled by default in Acme’s configuration.\n\n3. **Unlimited Session Duration**: User sessions remain active indefinitely after login, increasing the risk of account takeover if credentials are compromised. For example, a former employee’s account remained active for 6 months after departure, granting access to sensitive candidate data.\n\n**Recommended Fixes**:\n- Enforce password complexity: Require 12+ characters with mixed case, numbers, and symbols. Integrate with a password manager like Bitwarden for secure storage.\n- Enable MFA by default: Configure Lever to require TOTP for all admin and recruiter accounts. Provide step-by-step guides for employees to set this up.\n- Implement session timeout: Set a 15-minute inactivity timeout for sensitive roles (e.g., hiring managers) and a 4-hour timeout for standard users. Use Lever’s session management API to enforce this.\n\n**Code Snippet (Python - Flask)**:\n```python\nfrom flask import Flask, session\nfrom datetime import timedelta\n\napp = Flask(__name__)\napp.secret_key = os.getenv('FLASK_SECRET_KEY')\napp.permanent_session_lifetime = timedelta(minutes=15)  # For admin roles\n\n@app.route('/login', methods=['POST'])\ndef login():\n    if not validate_mfa(session.get('user_id')):  # Check MFA status\n        return \"MFA required\", 403\n    session.permanent = True\n    return \"Login successful\"\n```\n\nThese changes would reduce Acme’s attack surface while improving compliance with SOC 2 and GDPR requirements for candidate data protection.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline"
+    ],
+    "related_skills": [
+      "better-auth-best-practices#main-content",
+      "better-auth-best-practices#overview",
+      "better-auth-best-practices#setup",
+      "better-auth-best-practices#examples",
+      "better-auth-best-practices#tools",
+      "better-auth-best-practices#mcp",
+      "better-auth-best-practices#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "In today's digital landscape, securing user data is paramount for any organization. Better Auth Best Practices equips Sales, Marketing, and RevOps teams with essential strategies to fortify authentication processes, ensuring compliance and enhancing user trust. By implementing these best practices, teams can significantly reduce the time spent on security audits and improve overall efficiency. This skill not only focuses on the technical aspects of authentication but also emphasizes the importance of user experience. By optimizing login flows and incorporating multi-factor authentication, organizations can boost conversion rates and minimize drop-offs during the registration process. Better Auth Best Practices is a critical asset for any team looking to enhance their go-to-market strategy while prioritizing security and user satisfaction.\nImplementing multi-factor authentication for enhanced security\nOptimizing user login processes to increase conversion rates\nTraining teams on best practices for secure user data handling\nAuditing existing authentication methods for compliance and efficiency",
+    "setup_vi": "Terminal\nCopy\n`claude install better-auth/skills/better-auth-best-practices`\n`git clone https://github.com/better-auth/skills`",
+    "usage_vi": "```\nReview the current authentication system for [COMPANY_NAME]'s Lever-based talent acquisition suite. Identify 3 critical security gaps in the [AUTHENTICATION_METHOD] process and provide actionable recommendations to implement better auth best practices. Focus on [SPECIFIC_AREA: e.g., password policies, MFA adoption, session management]. Include code snippets for [LANGUAGE_FRAMEWORK] if applicable.\n```\nCopy\n\n```\nFor Acme Corp’s Lever ATS (Applicant Tracking System), the current authentication system relies solely on password-based login with no multi-factor authentication (MFA) or session timeout policies. Three critical security gaps were identified:\n\n1. **Password Weakness**: The system enforces a minimum 8-character password with no complexity requirements, making accounts vulnerable to brute-force attacks. Acme’s 2023 security audit revealed 12% of employee accounts used passwords from the top 1000 most common passwords (e.g., 'Password123').\n\n2. **Lack of MFA**: Only 3% of users have enabled MFA, leaving the system exposed to credential stuffing attacks. Lever’s API supports TOTP (Time-based One-Time Password) and WebAuthn, but these features are disabled by default in Acme’s configuration.\n\n3. **Unlimited Session Duration**: User sessions remain active indefinitely after login, increasing the risk of account takeover if credentials are compromised. For example, a former employee’s account remained active for 6 months after departure, granting access to sensitive candidate data.\n\n**Recommended Fixes**:\n- Enforce password complexity: Require 12+ characters with mixed case, numbers, and symbols. Integrate with a password manager like Bitwarden for secure storage.\n- Enable MFA by default: Configure Lever to require TOTP for all admin and recruiter accounts. Provide step-by-step guides for employees to set this up.\n- Implement session timeout: Set a 15-minute inactivity timeout for sensitive roles (e.g., hiring managers) and a 4-hour timeout for standard users. Use Lever’s session management API to enforce this.\n\n**Code Snippet (Python - Flask)**:\n```python\nfrom flask import Flask, session\nfrom datetime import timedelta\n\napp = Flask(__name__)\napp.secret_key = os.getenv('FLASK_SECRET_KEY')\napp.permanent_session_lifetime = timedelta(minutes=15)  # For admin roles\n\n@app.route('/login', methods=['POST'])\ndef login():\n    if not validate_mfa(session.get('user_id')):  # Check MFA status\n        return \"MFA required\", 403\n    session.permanent = True\n    return \"Login successful\"\n```\n\nThese changes would reduce Acme’s attack surface while improving compliance with SOC 2 and GDPR requirements for candidate data protection.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:42:59.125013Z",
+    "http_status": 200,
+    "content_hash": "ab01d1012bb28b28045e8937e69c5044d202593cb3abf266d6793ee21f364714",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\better-auth-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\better-auth-best-practices.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Better Auth Best Practices - Secure Authentication",
+  "short_description_vi": "Better Auth Best Practices is designed to enhance your authentication processes by providing expert guidelines and proven methods to secure user data efficiently. By leveraging this skill, organizations can reduce security risks, improve user experience, and streamline their authentication workflows."
+}

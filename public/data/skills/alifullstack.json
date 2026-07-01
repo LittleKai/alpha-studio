@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/alifullstack",
+  "slug": "alifullstack",
+  "name": "browser-use",
+  "headline": "Alifullstack: local-first ai app builder &",
+  "short_description": "AliFullStack is a local-first, open-source AI app builder for operations teams. It enables rapid development, testing, and deployment of full-stack applications with LLM integration. Teams can build internal tools, automate workflows, and connect to existing systems without vendor lock-in.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "SFARPak",
+  "install_command": "git clone https://github.com/SFARPak/AliFullStack.git",
+  "source_repo_url": "https://github.com/SFARPak/AliFullStack",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "rust",
+    "machinelearning",
+    "typescript",
+    "claude-code",
+    "dyad",
+    "django",
+    "nextjs",
+    "bolt",
+    "react",
+    "openai",
+    "antigravity",
+    "alifullstack",
+    "code-generation",
+    "ai",
+    "devtools",
+    "llm",
+    "agent3",
+    "ai-builder",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "AliFullStack is an open-source, local-first AI-powered full-stack app builder designed for operations teams, developers, and startups who need to build internal tools and automate workflows quickly. It generates frontend, backend, and test code autonomously using your choice of LLM (OpenAI, Claude, Gemini, etc.) while keeping all data private on your machine. The tool supports multiple frameworks including React, Next.js, Vue, Django, FastAPI, and Flask, giving teams flexibility to work with their preferred stack. Unlike cloud-based alternatives, AliFullStack eliminates vendor lock-in by running entirely locally, allowing you to bring your own API keys and maintain complete control over your development pipeline.\nBuild internal tools and admin dashboards for operations teams without cloud dependency\nAutomate business workflows and connect to existing systems with AI-driven code generation\nRapidly prototype and deploy full-stack applications with minimal manual coding\nDevelop and test applications locally while maintaining data privacy and security",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SFARPak/AliFullStack`",
+    "usage": "```\nBuild a full-stack internal tool for [TEAM_NAME] using AliFullStack to [SPECIFIC_GOAL]. The tool should include a [FRONTEND_COMPONENT] (e.g., dashboard, form, or table) connected to a [BACKEND_SERVICE] (e.g., database, API, or automation). Use [PROGRAMMING_LANGUAGE] for the frontend and [PROGRAMMING_LANGUAGE] for the backend. Include LLM integration for [LLM_TASK] (e.g., summarization, classification, or data extraction). Provide the complete codebase with setup instructions and deployment steps.\n```\nCopy\n\n```\nHere’s a full-stack internal tool built with AliFullStack for the Operations team at GreenEarth Solutions to automate their vendor invoice processing workflow. The tool includes a React-based frontend with a drag-and-drop invoice upload interface, a Node.js backend that processes invoices using OCR and LLM-powered validation, and a PostgreSQL database to store vendor data and invoice statuses. The LLM (using the `mistral-7b-instruct` model) extracts key fields like vendor name, invoice number, and amount, then cross-references them with the company’s vendor database to flag discrepancies.\n\n**Frontend (React):**\n- A dashboard displays a real-time table of pending invoices, sorted by urgency. Each row includes a 'Review' button that triggers the LLM validation process.\n- A form allows users to manually input invoice details if OCR fails, with dropdowns pre-populated from the vendor database.\n- The UI updates dynamically via WebSocket connections to the backend, ensuring the team sees changes in real-time.\n\n**Backend (Node.js):**\n- The `/upload` endpoint accepts PDF/JPEG/PNG files, stores them in an S3 bucket, and queues them for processing.\n- The `/process` endpoint uses Tesseract.js for OCR and the LLM to extract and validate invoice data against the vendor database. Invalid invoices are flagged for manual review.\n- The `/status` endpoint provides a RESTful API for the frontend to fetch invoice statuses and updates.\n\n**Database (PostgreSQL):**\n- Schema includes tables for `vendors` (id, name, contact, approved_invoice_threshold), `invoices` (id, vendor_id, file_path, status, extracted_data), and `audit_logs` (id, invoice_id, action, timestamp).\n\n**LLM Integration:**\n- The LLM is prompted with: \"Extract the vendor name, invoice number, date, and total amount from this invoice. Return the data in JSON format. If the vendor name doesn’t match our database, flag it as invalid.\"\n- The backend parses the LLM’s response and updates the invoice status accordingly.\n\n**Deployment:**\n1. Clone the AliFullStack template: `git clone https://github.com/ali-fullstack/ali-fullstack-template.git`\n2. Install dependencies: `npm install` (frontend) and `npm install` (backend).\n3. Set up the database: `docker-compose up -d` (PostgreSQL + S3 mock).\n4. Configure the LLM: Add your API key to `.env` and select the model in `config/llm.js`.\n5. Run the app: `npm run dev` (frontend) and `npm start` (backend).\n6. Deploy using AliFullStack’s built-in CLI: `ali deploy --env production`.\n\nThe tool reduced invoice processing time by 60% in the first week of use, with the LLM handling 85% of validations automatically.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "alifullstack#main-content",
+      "alifullstack#overview",
+      "alifullstack#setup",
+      "alifullstack#examples",
+      "alifullstack#tools",
+      "alifullstack#mcp",
+      "alifullstack#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AliFullStack is an open-source, local-first AI-powered full-stack app builder designed for operations teams, developers, and startups who need to build internal tools and automate workflows quickly. It generates frontend, backend, and test code autonomously using your choice of LLM (OpenAI, Claude, Gemini, etc.) while keeping all data private on your machine. The tool supports multiple frameworks including React, Next.js, Vue, Django, FastAPI, and Flask, giving teams flexibility to work with their preferred stack. Unlike cloud-based alternatives, AliFullStack eliminates vendor lock-in by running entirely locally, allowing you to bring your own API keys and maintain complete control over your development pipeline.\nBuild internal tools and admin dashboards for operations teams without cloud dependency\nAutomate business workflows and connect to existing systems with AI-driven code generation\nRapidly prototype and deploy full-stack applications with minimal manual coding\nDevelop and test applications locally while maintaining data privacy and security",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SFARPak/AliFullStack`",
+    "usage_vi": "```\nBuild a full-stack internal tool for [TEAM_NAME] using AliFullStack to [SPECIFIC_GOAL]. The tool should include a [FRONTEND_COMPONENT] (e.g., dashboard, form, or table) connected to a [BACKEND_SERVICE] (e.g., database, API, or automation). Use [PROGRAMMING_LANGUAGE] for the frontend and [PROGRAMMING_LANGUAGE] for the backend. Include LLM integration for [LLM_TASK] (e.g., summarization, classification, or data extraction). Provide the complete codebase with setup instructions and deployment steps.\n```\nCopy\n\n```\nHere’s a full-stack internal tool built with AliFullStack for the Operations team at GreenEarth Solutions to automate their vendor invoice processing workflow. The tool includes a React-based frontend with a drag-and-drop invoice upload interface, a Node.js backend that processes invoices using OCR and LLM-powered validation, and a PostgreSQL database to store vendor data and invoice statuses. The LLM (using the `mistral-7b-instruct` model) extracts key fields like vendor name, invoice number, and amount, then cross-references them with the company’s vendor database to flag discrepancies.\n\n**Frontend (React):**\n- A dashboard displays a real-time table of pending invoices, sorted by urgency. Each row includes a 'Review' button that triggers the LLM validation process.\n- A form allows users to manually input invoice details if OCR fails, with dropdowns pre-populated from the vendor database.\n- The UI updates dynamically via WebSocket connections to the backend, ensuring the team sees changes in real-time.\n\n**Backend (Node.js):**\n- The `/upload` endpoint accepts PDF/JPEG/PNG files, stores them in an S3 bucket, and queues them for processing.\n- The `/process` endpoint uses Tesseract.js for OCR and the LLM to extract and validate invoice data against the vendor database. Invalid invoices are flagged for manual review.\n- The `/status` endpoint provides a RESTful API for the frontend to fetch invoice statuses and updates.\n\n**Database (PostgreSQL):**\n- Schema includes tables for `vendors` (id, name, contact, approved_invoice_threshold), `invoices` (id, vendor_id, file_path, status, extracted_data), and `audit_logs` (id, invoice_id, action, timestamp).\n\n**LLM Integration:**\n- The LLM is prompted with: \"Extract the vendor name, invoice number, date, and total amount from this invoice. Return the data in JSON format. If the vendor name doesn’t match our database, flag it as invalid.\"\n- The backend parses the LLM’s response and updates the invoice status accordingly.\n\n**Deployment:**\n1. Clone the AliFullStack template: `git clone https://github.com/ali-fullstack/ali-fullstack-template.git`\n2. Install dependencies: `npm install` (frontend) and `npm install` (backend).\n3. Set up the database: `docker-compose up -d` (PostgreSQL + S3 mock).\n4. Configure the LLM: Add your API key to `.env` and select the model in `config/llm.js`.\n5. Run the app: `npm run dev` (frontend) and `npm start` (backend).\n6. Deploy using AliFullStack’s built-in CLI: `ali deploy --env production`.\n\nThe tool reduced invoice processing time by 60% in the first week of use, with the LLM handling 85% of validations automatically.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:23:17.498155Z",
+    "http_status": 200,
+    "content_hash": "9ede12a38dabe9c575cef60e26bbcf5ad8eff5bc03f29a5bd2a9f48a22a8d2b3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\alifullstack.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\alifullstack.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Alifullstack: local-first ai app builder &",
+  "short_description_vi": "AliFullStack is a local-first, open-source AI app builder for operations teams. It enables rapid development, testing, and deployment of full-stack applications with LLM integration. Teams can build internal tools, automate workflows, and connect to existing systems without vendor lock-in."
+}

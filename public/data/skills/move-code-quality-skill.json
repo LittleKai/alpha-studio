@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/move-code-quality-skill",
+  "slug": "move-code-quality-skill",
+  "name": "Move Code Quality Skill",
+  "headline": "Move Code Quality Checker: Move Book Analysis",
+  "short_description": "Claude Code skill that automatically analyzes Move language packages against the official Move Book Code Quality Checklist, identifying violations and providing actionable recommendations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "1NickPappas",
+  "install_command": "git clone https://github.com/1NickPappas/move-code-quality-skill.git",
+  "source_repo_url": "https://github.com/1NickPappas/move-code-quality-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Move Code Quality Checker skill extends Claude Code with automated analysis of Move language packages across 10+ quality dimensions, including code organization, package manifests, imports, structs, functions, testing patterns, and documentation. It validates compliance with Move 2024 Edition standards and provides specific, actionable recommendations grounded in the official Move Book Code Quality Checklist. The skill helps developers write more maintainable, composable Move code by catching common patterns and anti-patterns during development. It activates automatically when working with Move code and offers detailed feedback on visibility modifiers, capability patterns, event naming, and modern idiomatic syntax. Developers benefit from instant quality checks without manual reference to best practices documentation.\nValidate Move 2024 Edition compliance before deployment\nReview package manifests for dependency and address configuration\nAnalyze function signatures for composability and visibility patterns\nCheck testing code for proper attribute usage and assertion patterns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/1NickPappas/move-code-quality-skill`",
+    "usage": "```\nAnalyze the following Move package against the official Move Book Code Quality Checklist. Provide a detailed report with sections for each checklist item, noting whether the code meets the standard, and if not, suggest improvements. The package is for [COMPANY] in the [INDUSTRY] sector and includes [DATA] modules.\n```\nCopy\n\n```\n# Move Code Quality Analysis Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "move-code-quality-skill#main-content",
+      "move-code-quality-skill#overview",
+      "move-code-quality-skill#setup",
+      "move-code-quality-skill#examples",
+      "move-code-quality-skill#tools",
+      "move-code-quality-skill#mcp",
+      "move-code-quality-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Move Code Quality Checker mở rộng tính năng của Claude Code bằng cách tự động phân tích các package ngôn ngữ Move theo hơn 10 khía cạnh chất lượng, bao gồm cấu trúc code, package manifest, import, struct, function, testing pattern và tài liệu hướng dẫn. Skill này xác thực mức độ tuân thủ các tiêu chuẩn của Move 2024 Edition, đồng thời đưa ra các khuyến nghị cụ thể, khả thi dựa trên Checklist Chất lượng Code của Move Book chính thức. Skill giúp lập trình viên viết code Move dễ bảo trì và có tính lắp ghép (composable) tốt hơn nhờ phát hiện sớm các pattern và anti-pattern thường gặp trong quá trình phát triển. Skill tự động kích hoạt khi làm việc với code Move và cung cấp phản hồi chi tiết về các visibility modifier, capability pattern, cách đặt tên event và cú pháp đặc trưng (idiomatic) hiện đại. Lập trình viên có thể kiểm tra chất lượng nhanh chóng mà không cần tra cứu tài liệu best practice một cách thủ công.\n\nXác thực tính tuân thủ Move 2024 Edition trước khi triển khai\nReview package manifest để cấu hình dependency và address\nPhân tích function signature để tối ưu tính lắp ghép và các pattern về quyền truy cập (visibility)\nKiểm tra code thử nghiệm (testing code) để đảm bảo sử dụng đúng attribute và assertion pattern",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/1NickPappas/move-code-quality-skill`",
+    "usage_vi": "```\nAnalyze the following Move package against the official Move Book Code Quality Checklist. Provide a detailed report with sections for each checklist item, noting whether the code meets the standard, and if not, suggest improvements. The package is for [COMPANY] in the [INDUSTRY] sector and includes [DATA] modules.\n```\nSao chép\n\n```\n# Move Code Quality Analysis Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:18.377971Z",
+    "http_status": 200,
+    "content_hash": "3817223adeb59183c438daaeb0ec5999843e3f495914f8e9bdd2cb5b0375fb61",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\move-code-quality-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\move-code-quality-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình kiểm tra chất lượng code Move: Phân tích theo Move Book",
+  "short_description_vi": "Skill dành cho Claude Code giúp tự động phân tích các package ngôn ngữ Move dựa trên Checklist Chất lượng Code của Move Book chính thức, phát hiện các lỗi vi phạm và đưa ra khuyến nghị thực tế."
+}

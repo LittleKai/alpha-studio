@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudecode-nvim",
+  "slug": "claudecode-nvim",
+  "name": "browser-use",
+  "headline": "Claude Code Neovim插件",
+  "short_description": "Claudecode.nvim is a Neovim IDE extension that integrates Claude Code for automated code generation, completion, and review. Developers benefit from AI-assisted coding within their existing Neovim workflow. It connects to Claude Code and enhances productivity for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "coder",
+  "install_command": "git clone https://github.com/coder/claudecode.nvim.git",
+  "source_repo_url": "https://github.com/coder/claudecode.nvim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "neovim"
+  ],
+  "sections": {
+    "overview": "claudecode.nvim is a Neovim extension that brings Claude Code capabilities into your editor workflow. The plugin enables AI-assisted code generation, completion, and review without leaving Neovim. Developers can leverage Claude's code intelligence for faster development and improved code quality. The extension handles integration with Claude Code and manages features like debounce timers and diff views. It's designed for developers who want AI-powered coding assistance while maintaining their existing Neovim setup.\nAutomatically generate code snippets based on user input and context within Neovim.\nReceive real-time code suggestions and improvements while writing code.\nManage and review code diffs suggested by Claude for better version control.\nEasily add files and context to Claude's workspace for more informed suggestions.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coder/claudecode.nvim`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project in Neovim. Here's the current code: [CODE_SNIPPET]. I need to [DESCRIBE_TASK]. Provide the code to accomplish this, with explanations for each significant change. Use the claudecode.nvim interface to generate this solution.\n```\nCopy\n\n```\nBased on your request to implement a user authentication system in Python using Flask, here's the solution generated through claudecode.nvim:\n\n```python\n# app.py\nfrom flask import Flask, request, jsonify\nfrom werkzeug.security import generate_password_hash, check_password_hash\n\napp = Flask(__name__)\n\n# In-memory user storage for demonstration\nusers = {}\n\n@app.route('/register', methods=['POST'])\ndef register():\n    data = request.get_json()\n    username = data.get('username')\n    password = data.get('password')\n    \n    if username in users:\n        return jsonify({'message': 'User already exists'}), 400\n    \n    users[username] = {\n        'password_hash': generate_password_hash(password),\n        'authenticated': False\n    }\n    return jsonify({'message': 'User created successfully'}), 201\n\n@app.route('/login', methods=['POST'])\ndef login():\n    data = request.get_json()\n    username = data.get('username')\n    password = data.get('password')\n    \n    if username not in users or not check_password_hash(users[username]['password_hash'], password):\n        return jsonify({'message': 'Invalid credentials'}), 401\n    \n    users[username]['authenticated'] = True\n    return jsonify({'message': 'Login successful'}), 200\n\n@app.route('/protected', methods=['GET'])\ndef protected():\n    username = request.args.get('username')\n    \n    if username not in users or not users[username]['authenticated']:\n        return jsonify({'message': 'Unauthorized'}), 401\n    \n    return jsonify({'message': 'Access granted to protected resource'}), 200\n\nif __name__ == '__main__':\n    app.run(debug=True)\n```\n\nThe claudecode.nvim interface provided real-time suggestions and code completions as I built this authentication system. It helped me quickly implement secure password hashing, user registration, login functionality, and a protected route. The AI assistant suggested best practices like using Werkzeug's security functions and proper HTTP status codes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudecode-nvim#main-content",
+      "claudecode-nvim#overview",
+      "claudecode-nvim#setup",
+      "claudecode-nvim#examples",
+      "claudecode-nvim#tools",
+      "claudecode-nvim#mcp",
+      "claudecode-nvim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claudecode.nvim is a Neovim extension that brings Claude Code capabilities into your editor workflow. The plugin enables AI-assisted code generation, completion, and review without leaving Neovim. Developers can leverage Claude's code intelligence for faster development and improved code quality. The extension handles integration with Claude Code and manages features like debounce timers and diff views. It's designed for developers who want AI-powered coding assistance while maintaining their existing Neovim setup.\nAutomatically generate code snippets based on user input and context within Neovim.\nReceive real-time code suggestions and improvements while writing code.\nManage and review code diffs suggested by Claude for better version control.\nEasily add files and context to Claude's workspace for more informed suggestions.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coder/claudecode.nvim`",
+    "usage_vi": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project in Neovim. Here's the current code: [CODE_SNIPPET]. I need to [DESCRIBE_TASK]. Provide the code to accomplish this, with explanations for each significant change. Use the claudecode.nvim interface to generate this solution.\n```\nCopy\n\n```\nBased on your request to implement a user authentication system in Python using Flask, here's the solution generated through claudecode.nvim:\n\n```python\n# app.py\nfrom flask import Flask, request, jsonify\nfrom werkzeug.security import generate_password_hash, check_password_hash\n\napp = Flask(__name__)\n\n# In-memory user storage for demonstration\nusers = {}\n\n@app.route('/register', methods=['POST'])\ndef register():\n    data = request.get_json()\n    username = data.get('username')\n    password = data.get('password')\n    \n    if username in users:\n        return jsonify({'message': 'User already exists'}), 400\n    \n    users[username] = {\n        'password_hash': generate_password_hash(password),\n        'authenticated': False\n    }\n    return jsonify({'message': 'User created successfully'}), 201\n\n@app.route('/login', methods=['POST'])\ndef login():\n    data = request.get_json()\n    username = data.get('username')\n    password = data.get('password')\n    \n    if username not in users or not check_password_hash(users[username]['password_hash'], password):\n        return jsonify({'message': 'Invalid credentials'}), 401\n    \n    users[username]['authenticated'] = True\n    return jsonify({'message': 'Login successful'}), 200\n\n@app.route('/protected', methods=['GET'])\ndef protected():\n    username = request.args.get('username')\n    \n    if username not in users or not users[username]['authenticated']:\n        return jsonify({'message': 'Unauthorized'}), 401\n    \n    return jsonify({'message': 'Access granted to protected resource'}), 200\n\nif __name__ == '__main__':\n    app.run(debug=True)\n```\n\nThe claudecode.nvim interface provided real-time suggestions and code completions as I built this authentication system. It helped me quickly implement secure password hashing, user registration, login functionality, and a protected route. The AI assistant suggested best practices like using Werkzeug's security functions and proper HTTP status codes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:49:26.451555Z",
+    "http_status": 200,
+    "content_hash": "cd9984e30637dde57b31a046967f0e66058ea73b02b354036a2d8bf8e10c41e8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecode-nvim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecode-nvim.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Neovim插件",
+  "short_description_vi": "Claudecode.nvim is a Neovim IDE extension that integrates Claude Code for automated code generation, completion, and review. Developers benefit from AI-assisted coding within their existing Neovim workflow. It connects to Claude Code and enhances productivity for operations teams."
+}

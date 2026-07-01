@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/catalyst",
+  "slug": "catalyst",
+  "name": "catalyst",
+  "headline": "Rust hooks for Claude Code skill activation",
+  "short_description": "High-performance Rust hooks for Claude Code skill auto-activation. ~2ms startup, zero dependencies, production-tested patterns.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "dwalleck",
+  "install_command": "git clone https://github.com/dwalleck/catalyst.git",
+  "source_repo_url": "https://github.com/dwalleck/catalyst",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Catalyst provides battle-tested Rust hooks designed to make Claude Code skills activate automatically based on context—keywords, file paths, intent patterns, and file content analysis. Built from 6 months of production use, it runs in ~2ms with zero runtime dependencies, making skill suggestions imperceptible to users. The skill-activation-prompt hook analyzes every user input to match relevant skills, while file-analyzer scans codebases for patterns like async functions without error handling, database usage, and API endpoints. Optional SQLite state management enables tracking file modifications across sessions with rich query capabilities. Developers benefit from dramatically faster skill activation than interpreted alternatives like TypeScript or Python, with minimal memory footprint (3-5MB) and self-contained binaries (1.8-2.4MB).\nAutomatically suggest backend frameworks when detecting API endpoint patterns\nActivate database skills when codebase contains Prisma or SQL queries\nTrigger async error handling skills for unprotected async functions\nEnable context-aware skill loading based on file type and project structure",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dwalleck/catalyst`",
+    "usage": "```\nWrite a Rust function using the catalyst hook to auto-activate Claude Code skills for processing [DATA] in the [INDUSTRY] sector. Ensure it meets production standards with <2ms startup time and no dependencies.\n```\nCopy\n\n```\n# Rust Function for Claude Code Auto-Activation\n\n```rust\nuse catalyst::hook;\n\nfn process_data(data: &str) -> Result<String, String> {\n    let hook = hook::ClaudeCode::new(\"data_processing\")?;\n    let output = hook.execute(data)?;\n    Ok(output)\n}\n\nfn main() {\n    let sample_data = \"2023 Q3 financials for [COMPANY] in the [INDUSTRY] sector\";\n    match process_data(sample_data) {\n        Ok(result) => println!(\"Processed data: {}\", result),\n        Err(e) => eprintln!(\"Error: {}\", e),\n    }\n}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "catalyst#main-content",
+      "catalyst#overview",
+      "catalyst#setup",
+      "catalyst#examples",
+      "catalyst#tools",
+      "catalyst#mcp",
+      "catalyst#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Catalyst provides battle-tested Rust hooks designed to make Claude Code skills activate automatically based on context—keywords, file paths, intent patterns, and file content analysis. Built from 6 months of production use, it runs in ~2ms with zero runtime dependencies, making skill suggestions imperceptible to users. The skill-activation-prompt hook analyzes every user input to match relevant skills, while file-analyzer scans codebases for patterns like async functions without error handling, database usage, and API endpoints. Optional SQLite state management enables tracking file modifications across sessions with rich query capabilities. Developers benefit from dramatically faster skill activation than interpreted alternatives like TypeScript or Python, with minimal memory footprint (3-5MB) and self-contained binaries (1.8-2.4MB).\nAutomatically suggest backend frameworks when detecting API endpoint patterns\nActivate database skills when codebase contains Prisma or SQL queries\nTrigger async error handling skills for unprotected async functions\nEnable context-aware skill loading based on file type and project structure",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dwalleck/catalyst`",
+    "usage_vi": "```\nWrite a Rust function using the catalyst hook to auto-activate Claude Code skills for processing [DATA] in the [INDUSTRY] sector. Ensure it meets production standards with <2ms startup time and no dependencies.\n```\nCopy\n\n```\n# Rust Function for Claude Code Auto-Activation\n\n```rust\nuse catalyst::hook;\n\nfn process_data(data: &str) -> Result<String, String> {\n    let hook = hook::ClaudeCode::new(\"data_processing\")?;\n    let output = hook.execute(data)?;\n    Ok(output)\n}\n\nfn main() {\n    let sample_data = \"2023 Q3 financials for [COMPANY] in the [INDUSTRY] sector\";\n    match process_data(sample_data) {\n        Ok(result) => println!(\"Processed data: {}\", result),\n        Err(e) => eprintln!(\"Error: {}\", e),\n    }\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:16.595253Z",
+    "http_status": 200,
+    "content_hash": "56287abb7f99acb82ec1d1156c810f66165801f958fa49e5b758a2624b91db80",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\catalyst.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\catalyst.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Rust hooks for Claude Code skill activation",
+  "short_description_vi": "High-performance Rust hooks for Claude Code skill auto-activation. ~2ms startup, zero dependencies, production-tested patterns."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/maestro",
+  "slug": "maestro",
+  "name": "Maestro",
+  "headline": "Maestro: Agent Orchestration",
+  "short_description": "Maestro is an agent orchestration command center for automating workflows. Operations teams use it to manage and coordinate AI agents, improving efficiency and reducing manual intervention. It connects to Claude and other generative AI tools, streamlining complex tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "pedramamini",
+  "install_command": "git clone https://github.com/pedramamini/Maestro.git",
+  "source_repo_url": "https://github.com/pedramamini/Maestro",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "generative-ai",
+    "opencode",
+    "ai-agents",
+    "codex",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Maestro is an advanced AI automation skill designed for orchestrating multiple AI agents within a cohesive framework. By acting as a command center, it allows users to manage and coordinate various AI tasks seamlessly, enhancing overall productivity. This skill is particularly beneficial for developers and product managers looking to streamline their workflows by integrating different AI functionalities into a single orchestration point. The key benefits of Maestro include improved efficiency in managing AI agents and the ability to automate complex workflows. Although specific time savings are not quantified, the orchestration capability significantly reduces the manual effort involved in coordinating multiple AI tasks. This translates to faster project completion times and the ability to focus on higher-level strategic initiatives rather than getting bogged down in the minutiae of task management. Maestro is ideal for intermediate users, making it suitable for developers and AI practitioners who have a foundational understanding of AI automation. It can be particularly useful in departments focused on product development, where agile methodologies are employed, and rapid iteration is essential. For instance, a product manager could use Maestro to automate the deployment of updates across various AI agents, ensuring consistency and reducing the risk of errors. Implementing Maestro requires approximately 30 minutes, making it accessible for teams looking to enhance their AI-first workflows without extensive setup time. As organizations increasingly adopt AI automation, integrating Maestro into existing processes will enable teams to leverage AI agents more effectively, ultimately driving innovation and efficiency in their projects.\nAutomate the generation of detailed specification documents and execute them with Auto Run.\nManage multiple AI agents in parallel to streamline project workflows and reduce development time.\nUtilize Git worktrees to run isolated AI agents on different branches without conflicts.\nCoordinate discussions among multiple AI agents for cross-project architecture and decision-making.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pedramamini/Maestro`",
+    "usage": "```\nAct as a Maestro agent orchestration command center. Review the current workflow state for [PROJECT_NAME]. Identify any bottlenecks, stalled tasks, or dependencies that are blocking progress. For each issue, suggest a corrective action or automation rule to resolve it. Prioritize actions based on impact and urgency. Generate a summary report with the top 3 recommendations for immediate implementation. Workflow context: [WORKFLOW_CONTEXT]. Current agent assignments: [AGENT_ASSIGNMENTS].\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "maestro#main-content",
+      "maestro#overview",
+      "maestro#setup",
+      "maestro#examples",
+      "maestro#tools",
+      "maestro#mcp",
+      "maestro#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Maestro là một skill tự động hóa AI nâng cao được thiết kế để điều phối nhiều AI agent trong một framework thống nhất. Bằng cách hoạt động như một trung tâm điều hành, công cụ này cho phép người dùng quản lý và phối hợp các tác vụ AI khác nhau một cách liền mạch, từ đó nâng cao năng suất tổng thể. Skill này đặc biệt hữu ích cho các developer và product manager đang tìm cách tinh giản workflow bằng cách tích hợp các tính năng AI khác nhau vào một điểm điều phối duy nhất. Lợi ích chính của Maestro bao gồm việc nâng cao hiệu quả quản lý các AI agent và khả năng tự động hóa các workflow phức tạp. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, khả năng điều phối này giúp giảm đáng kể công sức thủ công khi phối hợp nhiều tác vụ AI. Điều này giúp rút ngắn thời gian hoàn thành dự án và cho phép đội ngũ tập trung vào các sáng kiến chiến lược cấp cao hơn thay vì bị sa lầy vào những chi tiết nhỏ nhặt của việc quản lý tác vụ. Maestro là lựa chọn lý tưởng cho người dùng ở trình độ trung cấp, phù hợp với các developer và kỹ sư AI đã có kiến thức nền tảng về tự động hóa AI. Công cụ này đặc biệt hữu ích trong các bộ phận phát triển sản phẩm áp dụng phương pháp agile và yêu cầu lặp tiến trình nhanh chóng. Ví dụ, một product manager có thể sử dụng Maestro để tự động hóa việc triển khai các bản cập nhật trên nhiều AI agent khác nhau, đảm bảo tính nhất quán và giảm thiểu rủi ro lỗi. Việc triển khai Maestro chỉ mất khoảng 30 phút, giúp các đội ngũ dễ dàng tiếp cận để cải thiện workflow định hướng AI (AI-first) mà không tốn nhiều thời gian setup. Khi các tổ chức ngày càng ứng dụng tự động hóa AI rộng rãi, việc tích hợp Maestro vào các quy trình hiện tại sẽ giúp các đội ngũ khai thác các AI agent hiệu quả hơn, thúc đẩy sự đổi mới và hiệu suất trong các dự án của họ.\nTự động hóa việc tạo tài liệu đặc tả chi tiết và thực thi chúng bằng Auto Run.\nQuản lý song song nhiều AI agent để tinh giản workflow dự án và rút ngắn thời gian phát triển.\nSử dụng Git worktrees để chạy các AI agent độc lập trên các branch khác nhau mà không bị xung đột.\nPhối hợp thảo luận giữa nhiều AI agent để đưa ra quyết định và thiết kế kiến trúc liên dự án.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/pedramamini/Maestro`",
+    "usage_vi": "```\nĐóng vai trò là trung tâm điều phối agent Maestro. Đánh giá trạng thái workflow hiện tại của [PROJECT_NAME]. Xác định mọi nút thắt cổ chai, tác vụ bị đình trệ hoặc các dependency đang cản trở tiến độ. Với mỗi vấn đề, hãy đề xuất một hành động khắc phục hoặc quy tắc tự động hóa để giải quyết. Sắp xếp thứ tự ưu tiên cho các hành động dựa trên mức độ ảnh hưởng và tính cấp bách. Tạo một báo cáo tóm tắt chứa 3 đề xuất hàng đầu để triển khai ngay lập tức. Ngữ cảnh workflow: [WORKFLOW_CONTEXT]. Phân công agent hiện tại: [AGENT_ASSIGNMENTS].\n```\nSao chép\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:28:30.007764Z",
+    "http_status": 200,
+    "content_hash": "a109b15bbf928e90d8bba9ecddf8d7245844c7466639b95c39c51e3d58c4fa49",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\maestro.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\maestro.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Maestro: Điều phối Agent",
+  "short_description_vi": "Maestro là trung tâm điều phối agent giúp tự động hóa workflow. Các đội ngũ vận hành sử dụng Maestro để quản lý và phối hợp các AI agent, từ đó nâng cao hiệu suất và giảm thiểu can thiệp thủ công. Công cụ này kết nối với Claude và các giải pháp AI tạo sinh khác để tinh giản các tác vụ phức tạp."
+}

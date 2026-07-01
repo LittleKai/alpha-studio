@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rubberduck-vscode",
+  "slug": "rubberduck-vscode",
+  "name": "react-native-best-practices",
+  "headline": "rubberduck-vscode: AI Code Assistant for VS Code",
+  "short_description": "Enhance your coding experience in Visual Studio Code with rubberduck-vscode. This AI-powered extension offers code edits, explanations, generation, and error diagnosis using the OpenAI API, making development more efficient and intuitive.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "lgrammel",
+  "install_command": "claude install lgrammel/rubberduck-vscode",
+  "source_repo_url": "https://github.com/lgrammel/rubberduck-vscode",
+  "works_with": [
+    "ChatGPTVS Code"
+  ],
+  "tags": [
+    "error-diagnosis",
+    "vscode",
+    "code-generation",
+    "ai",
+    "chatbot"
+  ],
+  "sections": {
+    "overview": "rubberduck-vscode is a Visual Studio Code extension that integrates OpenAI capabilities directly into your development workflow. The extension provides code editing, explanation, generation, and error diagnosis features to streamline common development tasks. By leveraging the OpenAI API, it allows developers to quickly understand code, generate new implementations, and identify bugs without leaving the editor. This tool is designed for developers using VS Code who want to enhance their productivity through AI-assisted coding.\nGenerate code snippets based on specific user prompts to accelerate development.\nDiagnose and suggest fixes for coding errors to streamline debugging efforts.\nProvide clear explanations for complex code segments, enhancing understanding and learning.\nFacilitate real-time coding assistance through chat, allowing for immediate feedback and support.",
+    "setup": "Terminal\nCopy\n`claude install lgrammel/rubberduck-vscode`\n`git clone https://github.com/lgrammel/rubberduck-vscode`",
+    "usage": "```\nUse the rubberduck-vscode extension in Visual Studio Code to [TASK]. Focus on [LANGUAGE/FRAMEWORK] and ensure the solution follows [STYLE_GUIDE]. Provide the code changes directly in the editor and explain the reasoning behind each modification. If errors are detected, diagnose them and suggest fixes with context about why they occurred.\n```\nCopy\n\n```\n```python\n# Original code in main.py (line 42-48)\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    if discount_rate > 1:\n        return price  # Bug: Should validate discount_rate <= 1.0\n    return price * (1 - discount_rate)\n\n# Fixed code (auto-applied by rubberduck-vscode)\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    if not 0 <= discount_rate <= 1:\n        raise ValueError(\"Discount rate must be between 0 and 1\")\n    return price * (1 - discount_rate)\n```\n\n**Diagnosis:**\nThe original code failed to validate the `discount_rate` parameter, allowing invalid values like 1.5 (150%) to pass through. This could lead to negative prices or incorrect calculations in downstream systems.\n\n**Explanation of Fixes:**\n1. **Input Validation:** Added explicit bounds checking (`0 <= discount_rate <= 1`) to prevent invalid inputs.\n2. **Error Handling:** Replaced silent failure with a `ValueError` to fail fast and provide clear feedback.\n3. **Type Safety:** Maintained type hints for better IDE support and maintainability.\n\n**Next Steps:**\n- Run unit tests to verify the fix handles edge cases (e.g., `discount_rate = 0`, `discount_rate = 1`).\n- Update any documentation or comments referencing the old behavior.\n- Consider adding logging for invalid inputs in production environments.\n\n**Performance Impact:** Minimal—validation adds negligible overhead for typical use cases.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, VS Code"
+    ],
+    "related_skills": [
+      "rubberduck-vscode#main-content",
+      "rubberduck-vscode#overview",
+      "rubberduck-vscode#setup",
+      "rubberduck-vscode#examples",
+      "rubberduck-vscode#tools",
+      "rubberduck-vscode#mcp",
+      "rubberduck-vscode#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "rubberduck-vscode is a Visual Studio Code extension that integrates OpenAI capabilities directly into your development workflow. The extension provides code editing, explanation, generation, and error diagnosis features to streamline common development tasks. By leveraging the OpenAI API, it allows developers to quickly understand code, generate new implementations, and identify bugs without leaving the editor. This tool is designed for developers using VS Code who want to enhance their productivity through AI-assisted coding.\nGenerate code snippets based on specific user prompts to accelerate development.\nDiagnose and suggest fixes for coding errors to streamline debugging efforts.\nProvide clear explanations for complex code segments, enhancing understanding and learning.\nFacilitate real-time coding assistance through chat, allowing for immediate feedback and support.",
+    "setup_vi": "Terminal\nCopy\n`claude install lgrammel/rubberduck-vscode`\n`git clone https://github.com/lgrammel/rubberduck-vscode`",
+    "usage_vi": "```\nUse the rubberduck-vscode extension in Visual Studio Code to [TASK]. Focus on [LANGUAGE/FRAMEWORK] and ensure the solution follows [STYLE_GUIDE]. Provide the code changes directly in the editor and explain the reasoning behind each modification. If errors are detected, diagnose them and suggest fixes with context about why they occurred.\n```\nCopy\n\n```\n```python\n# Original code in main.py (line 42-48)\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    if discount_rate > 1:\n        return price  # Bug: Should validate discount_rate <= 1.0\n    return price * (1 - discount_rate)\n\n# Fixed code (auto-applied by rubberduck-vscode)\ndef calculate_discount(price: float, discount_rate: float) -> float:\n    if not 0 <= discount_rate <= 1:\n        raise ValueError(\"Discount rate must be between 0 and 1\")\n    return price * (1 - discount_rate)\n```\n\n**Diagnosis:**\nThe original code failed to validate the `discount_rate` parameter, allowing invalid values like 1.5 (150%) to pass through. This could lead to negative prices or incorrect calculations in downstream systems.\n\n**Explanation of Fixes:**\n1. **Input Validation:** Added explicit bounds checking (`0 <= discount_rate <= 1`) to prevent invalid inputs.\n2. **Error Handling:** Replaced silent failure with a `ValueError` to fail fast and provide clear feedback.\n3. **Type Safety:** Maintained type hints for better IDE support and maintainability.\n\n**Next Steps:**\n- Run unit tests to verify the fix handles edge cases (e.g., `discount_rate = 0`, `discount_rate = 1`).\n- Update any documentation or comments referencing the old behavior.\n- Consider adding logging for invalid inputs in production environments.\n\n**Performance Impact:** Minimal—validation adds negligible overhead for typical use cases.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:06:46.116054Z",
+    "http_status": 200,
+    "content_hash": "3b73f66410969e1c0505afa41f7973020d4a043ce7c28ae5e7a4db10c2d44843",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rubberduck-vscode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rubberduck-vscode.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "rubberduck-vscode: AI Code Assistant for VS Code",
+  "short_description_vi": "Enhance your coding experience in Visual Studio Code with rubberduck-vscode. This AI-powered extension offers code edits, explanations, generation, and error diagnosis using the OpenAI API, making development more efficient and intuitive."
+}

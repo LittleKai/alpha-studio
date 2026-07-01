@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bright-data-scrape",
+  "slug": "bright-data-scrape",
+  "name": "Bright Data — Scrape",
+  "headline": "Bright Data Scrape: Extract Webpage Content",
+  "short_description": "This skill enables users to extract clean content like markdown, HTML, or JSON from one or more URLs using the Bright Data CLI. It is suitable for developers and data analysts needing to fetch raw or lightly structured content.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "brightdata",
+  "install_command": "git clone https://github.com/brightdata/skills",
+  "source_repo_url": "https://github.com/brightdata/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "scrape",
+    "data-extraction",
+    "bright",
+    "data"
+  ],
+  "sections": {
+    "overview": "The Bright Data Scrape skill enables extraction of webpage content in multiple formats—markdown, HTML, or JSON—using Bright Data's Web Unlocker infrastructure. It automatically handles bot detection bypass and CAPTCHA circumvention, allowing reliable access to any webpage without manual intervention. The skill integrates with the Bright Data CLI, letting users scrape directly from the terminal with the `brightdata` or `bdata` commands. Developers and data analysts use this to build data pipelines, conduct competitive research, or feed content into RAG systems and AI workflows. It supports both synchronous requests and asynchronous polling for larger scraping jobs.\nExtracting HTML content for web analysis\nSaving scraped data in JSON format for further processing\nTaking screenshots of web pages for visual documentation\nFetching data from various platforms without the need for complex selectors",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/brightdata/skills --skill scrape`\n`git clone https://github.com/brightdata/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "bright-data-scrape#main-content",
+      "bright-data-scrape#overview",
+      "bright-data-scrape#setup",
+      "bright-data-scrape#examples",
+      "bright-data-scrape#tools",
+      "bright-data-scrape#mcp",
+      "bright-data-scrape#related"
+    ],
+    "overview_vi": "Skill Bright Data Scrape hỗ trợ trích xuất nội dung trang web dưới nhiều định dạng khác nhau—markdown, HTML hoặc JSON—sử dụng hạ tầng Web Unlocker của Bright Data. Skill này tự động xử lý việc bypass hệ thống phát hiện bot và vượt CAPTCHA, giúp truy cập ổn định vào bất kỳ trang web nào mà không cần can thiệp thủ công. Nó tích hợp trực tiếp với Bright Data CLI, cho phép người dùng scrape ngay từ terminal bằng các lệnh `brightdata` hoặc `bdata`. Các developer và nhà phân tích dữ liệu thường dùng công cụ này để xây dựng data pipeline, nghiên cứu đối thủ cạnh tranh, hoặc nạp nội dung vào các hệ thống RAG và workflow AI. Skill này hỗ trợ cả request đồng bộ (synchronous) lẫn polling bất đồng bộ (asynchronous) cho các tác vụ scrape lớn hơn.\n\n- Trích xuất nội dung HTML để phân tích web\n- Lưu dữ liệu đã scrape dưới định dạng JSON để xử lý tiếp\n- Chụp ảnh màn hình trang web để làm tài liệu trực quan\n- Thu thập dữ liệu từ nhiều nền tảng khác nhau mà không cần các bộ chọn (selector) phức tạp",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/brightdata/skills --skill scrape`\n`git clone https://github.com/brightdata/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nTham khảo GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:06:52.696108Z",
+    "http_status": 200,
+    "content_hash": "c2e0144a7a6c7efce4d72280041896361cbc398ff6483511c23384f7590d13e1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bright-data-scrape.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bright-data-scrape.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bright Data Scrape: Trích xuất nội dung trang web",
+  "short_description_vi": "Skill này cho phép người dùng trích xuất nội dung sạch dưới dạng markdown, HTML hoặc JSON từ một hoặc nhiều URL bằng cách sử dụng Bright Data CLI. Công cụ này rất phù hợp cho các developer và nhà phân tích dữ liệu cần thu thập nội dung thô hoặc có cấu trúc nhẹ."
+}

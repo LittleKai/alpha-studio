@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/trade-prediction-markets",
+  "slug": "trade-prediction-markets",
+  "name": "Trade Prediction Markets",
+  "headline": "Trade Prediction Markets: Polymarket Strategy",
+  "short_description": "This skill allows users to trade YES/NO tokens on Polymarket prediction markets, focusing on real-world events. It's designed for traders interested in engaging with crypto-related predictions.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "robonet-tech",
+  "install_command": "git clone https://github.com/robonet-tech/skills",
+  "source_repo_url": "https://github.com/robonet-tech/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "prediction",
+    "markets",
+    "trading",
+    "trade"
+  ],
+  "sections": {
+    "overview": "Trade Prediction Markets is a specialized skill for building and testing strategies on Polymarket, a platform for YES/NO token trading on real-world events across politics, economics, sports, and crypto. The skill provides tools to browse available events, analyze market data, create prediction strategies, and backtest performance on historical data before committing capital. Users can design custom trading logic for binary outcome predictions and validate strategy performance with low-cost simulations ($0.001 per backtest). This workflow is self-contained within the prediction market domain and ideal for traders interested in event-driven trading without deploying to traditional crypto exchanges.\nBrowse cryptocurrency prediction markets\nCreate prediction market strategies\nBacktest trading strategies on Polymarket",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/robonet-tech/skills --skill trade-prediction-markets`\n`git clone https://github.com/robonet-tech/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "trade-prediction-markets#main-content",
+      "trade-prediction-markets#overview",
+      "trade-prediction-markets#setup",
+      "trade-prediction-markets#examples",
+      "trade-prediction-markets#tools",
+      "trade-prediction-markets#mcp",
+      "trade-prediction-markets#related",
+      "find-arbitrage-opps"
+    ],
+    "overview_vi": "Trade Prediction Markets là một skill chuyên dụng để xây dựng và thử nghiệm các chiến lược trên Polymarket, nền tảng giao dịch token YES/NO dựa trên các sự kiện thực tế thuộc các lĩnh vực chính trị, kinh tế, thể thao và crypto. Skill này cung cấp các công cụ để duyệt các sự kiện hiện có, phân tích dữ liệu thị trường, tạo chiến lược dự đoán và backtest hiệu suất trên dữ liệu lịch sử trước khi phân bổ vốn. Người dùng có thể thiết kế logic giao dịch tùy chỉnh cho các dự đoán kết quả nhị phân và xác thực hiệu suất chiến lược bằng các giả lập chi phí thấp ($0.001 cho mỗi lần backtest). Quy trình làm việc này hoàn toàn khép kín trong phạm vi thị trường dự đoán và là lựa chọn lý tưởng cho các trader quan tâm đến giao dịch dựa trên sự kiện (event-driven trading) mà không cần triển khai trên các sàn giao dịch crypto truyền thống.\nDuyệt các thị trường dự đoán crypto\nTạo các chiến lược thị trường dự đoán\nBacktest các chiến lược giao dịch trên Polymarket",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/robonet-tech/skills --skill trade-prediction-markets`\n`git clone https://github.com/robonet-tech/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:03:15.106388Z",
+    "http_status": 200,
+    "content_hash": "c26954d3affaafc153e647b78a4c5657b0383920a593bd3f0f12f1db5ea3d06a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trade-prediction-markets.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\trade-prediction-markets.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Giao dịch thị trường dự đoán: Chiến lược Polymarket",
+  "short_description_vi": "Skill này cho phép người dùng giao dịch token YES/NO trên các thị trường dự đoán Polymarket, tập trung vào các sự kiện thực tế. Skill được thiết kế dành cho các trader muốn tham gia vào các dự đoán liên quan đến crypto."
+}

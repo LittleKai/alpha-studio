@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/stagehand",
+  "slug": "stagehand",
+  "name": "stagehand",
+  "headline": "Stagehand: AI Browser Automation Framework",
+  "short_description": "Stagehand is an advanced AI Browser Automation Framework designed for web interaction using popular tools like Playwright, Puppeteer, and Selenium. It helps developers to automate browser tasks efficiently, enhancing productivity in various applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "browserbase",
+  "install_command": "claude install browserbase/stagehand",
+  "source_repo_url": "https://github.com/browserbase/stagehand",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "AI",
+    "web scraping",
+    "browser",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "Stagehand is an advanced browser automation framework designed for AI-driven web interaction using popular tools like Playwright, Puppeteer, and Selenium. It enables developers to automate complex browser tasks efficiently, supporting features like CDP (Chrome DevTools Protocol) attachment for both local and remote browser sessions. The framework handles viewport configuration, device scaling, and browser launch options, making it suitable for building reliable automation workflows. Stagehand is actively maintained with regular updates and a large community following, providing a production-ready solution for web automation at scale.\nAutomate web testing processes to ensure application reliability and performance.\nScrape data from websites for market research or data analysis.\nSimulate user interactions for quality assurance testing of web applications.\nConduct competitive analysis through automated browsing to gather insights on competitors.",
+    "setup": "Terminal\nCopy\n`claude install browserbase/stagehand`\n`git clone https://github.com/browserbase/stagehand`",
+    "usage": "```\nCreate a Stagehand script using [TOOL] to automate the process of [TASK]. The script should include error handling for [SCENARIO] and log results to [OUTPUT_FILE]. Ensure the script is compatible with [BROWSER] and follows best practices for [FRAMEWORK].\n```\nCopy\n\n```\nHere's a Stagehand script that automates the process of scraping product data from an e-commerce website using Playwright:\n\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch({ headless: false });\n  const page = await browser.newPage();\n  await page.goto('https://example-ecommerce-site.com/products');\n\n  // Handle potential errors during navigation\n  try {\n    await page.waitForSelector('.product-item', { timeout: 5000 }); // Wait for products to load\n    const products = await page.$$eval('.product-item', (items) => {\n      return items.map(item => {\n        return {\n          name: item.querySelector('.product-name').innerText,\n          price: item.querySelector('.product-price').innerText,\n          url: item.querySelector('a').href\n        };\n      });\n    });\n\n    // Log results to a JSON file\n    const fs = require('fs');\n    fs.writeFileSync('products.json', JSON.stringify(products, null, 2));\n    console.log('Product data has been saved to products.json');\n  } catch (error) {\n    console.error('Error during scraping:', error);\n  } finally {\n    await browser.close();\n  }\n})();\n```\n\nThis script includes error handling for scenarios where the product items do not load within the specified timeout. It logs the results to a JSON file named 'products.json' and is compatible with the Chromium browser. The script follows Playwright best practices for web scraping.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "stagehand#main-content",
+      "stagehand#overview",
+      "stagehand#setup",
+      "stagehand#examples",
+      "stagehand#tools",
+      "stagehand#mcp",
+      "stagehand#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Stagehand is an advanced browser automation framework designed for AI-driven web interaction using popular tools like Playwright, Puppeteer, and Selenium. It enables developers to automate complex browser tasks efficiently, supporting features like CDP (Chrome DevTools Protocol) attachment for both local and remote browser sessions. The framework handles viewport configuration, device scaling, and browser launch options, making it suitable for building reliable automation workflows. Stagehand is actively maintained with regular updates and a large community following, providing a production-ready solution for web automation at scale.\nAutomate web testing processes to ensure application reliability and performance.\nScrape data from websites for market research or data analysis.\nSimulate user interactions for quality assurance testing of web applications.\nConduct competitive analysis through automated browsing to gather insights on competitors.",
+    "setup_vi": "Terminal\nCopy\n`claude install browserbase/stagehand`\n`git clone https://github.com/browserbase/stagehand`",
+    "usage_vi": "```\nCreate a Stagehand script using [TOOL] to automate the process of [TASK]. The script should include error handling for [SCENARIO] and log results to [OUTPUT_FILE]. Ensure the script is compatible with [BROWSER] and follows best practices for [FRAMEWORK].\n```\nCopy\n\n```\nHere's a Stagehand script that automates the process of scraping product data from an e-commerce website using Playwright:\n\n```javascript\nconst { chromium } = require('playwright');\n\n(async () => {\n  const browser = await chromium.launch({ headless: false });\n  const page = await browser.newPage();\n  await page.goto('https://example-ecommerce-site.com/products');\n\n  // Handle potential errors during navigation\n  try {\n    await page.waitForSelector('.product-item', { timeout: 5000 }); // Wait for products to load\n    const products = await page.$$eval('.product-item', (items) => {\n      return items.map(item => {\n        return {\n          name: item.querySelector('.product-name').innerText,\n          price: item.querySelector('.product-price').innerText,\n          url: item.querySelector('a').href\n        };\n      });\n    });\n\n    // Log results to a JSON file\n    const fs = require('fs');\n    fs.writeFileSync('products.json', JSON.stringify(products, null, 2));\n    console.log('Product data has been saved to products.json');\n  } catch (error) {\n    console.error('Error during scraping:', error);\n  } finally {\n    await browser.close();\n  }\n})();\n```\n\nThis script includes error handling for scenarios where the product items do not load within the specified timeout. It logs the results to a JSON file named 'products.json' and is compatible with the Chromium browser. The script follows Playwright best practices for web scraping.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:40:22.235325Z",
+    "http_status": 200,
+    "content_hash": "768a476900fae78eda3cb3285d43bc57b0c72a5f2fdea2f8baa1b838b0e6759d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stagehand.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stagehand.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Stagehand: AI Browser Automation Framework",
+  "short_description_vi": "Stagehand is an advanced AI Browser Automation Framework designed for web interaction using popular tools like Playwright, Puppeteer, and Selenium. It helps developers to automate browser tasks efficiently, enhancing productivity in various applications."
+}

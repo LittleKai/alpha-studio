@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/go-sdk",
+  "slug": "go-sdk",
+  "name": "react-native-best-practices",
+  "headline": "Go SDK for Model Context Protocol",
+  "short_description": "The go-sdk is the official Go SDK designed for integration with Model Context Protocol servers and clients. Developed in collaboration with Google, it simplifies building applications that use advanced model context capabilities.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/go-sdk",
+  "source_repo_url": "https://github.com/modelcontextprotocol/go-sdk",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "Google Collaboration",
+    "Model Context Protocol",
+    "API Integration",
+    "Go SDK",
+    "Software Development"
+  ],
+  "sections": {
+    "overview": "The go-sdk is the official Go SDK for the Model Context Protocol, enabling developers to build applications that integrate with MCP servers and clients. Developed in collaboration with Google, it provides a streamlined approach to implementing advanced model context capabilities in Go applications. The SDK simplifies the process of connecting to MCP infrastructure, reducing boilerplate code and development complexity. It supports both server and client implementations, making it suitable for building distributed systems that leverage model context. The project is actively maintained with regular updates and has established community adoption.\nBuild applications that utilize model context features for enhanced user interactions.\nIntegrate Go applications with Model Context Protocol to facilitate communication between services.\nDevelop client-server architectures using Go to streamline application deployment.\nCreate APIs for machine learning models that can be easily consumed by other applications.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/go-sdk`\n`git clone https://github.com/modelcontextprotocol/go-sdk`",
+    "usage": "```\nUsing the go-sdk, create a Go application that integrates with a Model Context Protocol server to fetch and display real-time data insights. The application should connect to a [DATA_SOURCE] and perform [ANALYSIS_TYPE] on the data. Ensure the application handles [ERROR_CONDITIONS] gracefully and logs the results to a [LOG_FILE].\n```\nCopy\n\n```\nHere is a sample Go application that uses the go-sdk to connect to a Model Context Protocol server and perform data analysis on a Snowflake data source:\n\n```go\npackage main\n\nimport (\n    \"fmt\"\n    \"log\"\n    \"github.com/model-context-protocol/go-sdk\"\n    \"github.com/model-context-protocol/go-sdk/pkg/client\"\n    \"github.com/model-context-protocol/go-sdk/pkg/model\"\n)\n\nfunc main() {\n    // Initialize the client\n    c, err := client.NewClient(\n        client.WithServerURL(\"https://model-context-protocol-server.example.com\"),\n        client.WithAPIKey(\"your-api-key-here\"),\n    )\n    if err != nil {\n        log.Fatalf(\"Failed to create client: %v\", err)\n    }\n    defer c.Close()\n    \n    // Define the data source\n    dataSource := model.DataSource{\n        Name: \"Snowflake\",\n        ConnectionString: \"user=your-username;password=your-password;account=your-account;warehouse=your-warehouse;database=your-database;schema=your-schema\",\n    }\n    \n    // Perform data analysis\n    analysis, err := c.Analyze(\n        dataSource,\n        model.AnalysisType{\n            Type: \"real-time\",\n            Metrics: []string{\"revenue\", \"conversion_rate\"},\n        },\n    )\n    if err != nil {\n        log.Fatalf(\"Failed to perform analysis: %v\", err)\n    }\n    \n    // Display the results\n    fmt.Printf(\"Analysis Results: %+v\\n\", analysis)\n    \n    // Log the results to a file\n    logFile, err := os.OpenFile(\"analysis.log\", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)\n    if err != nil {\n        log.Fatalf(\"Failed to open log file: %v\", err)\n    }\n    defer logFile.Close()\n    \n    logger := log.New(logFile, \"\", log.LstdFlags)\n    logger.Printf(\"Analysis Results: %+v\\n\", analysis)\n}\n```\n\nThis application connects to a Model Context Protocol server, performs real-time analysis on a Snowflake data source, and logs the results to a file.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "go-sdk#main-content",
+      "go-sdk#overview",
+      "go-sdk#setup",
+      "go-sdk#examples",
+      "go-sdk#tools",
+      "go-sdk#mcp",
+      "go-sdk#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The go-sdk is the official Go SDK for the Model Context Protocol, enabling developers to build applications that integrate with MCP servers and clients. Developed in collaboration with Google, it provides a streamlined approach to implementing advanced model context capabilities in Go applications. The SDK simplifies the process of connecting to MCP infrastructure, reducing boilerplate code and development complexity. It supports both server and client implementations, making it suitable for building distributed systems that leverage model context. The project is actively maintained with regular updates and has established community adoption.\nBuild applications that utilize model context features for enhanced user interactions.\nIntegrate Go applications with Model Context Protocol to facilitate communication between services.\nDevelop client-server architectures using Go to streamline application deployment.\nCreate APIs for machine learning models that can be easily consumed by other applications.",
+    "setup_vi": "Terminal\nCopy\n`claude install modelcontextprotocol/go-sdk`\n`git clone https://github.com/modelcontextprotocol/go-sdk`",
+    "usage_vi": "```\nUsing the go-sdk, create a Go application that integrates with a Model Context Protocol server to fetch and display real-time data insights. The application should connect to a [DATA_SOURCE] and perform [ANALYSIS_TYPE] on the data. Ensure the application handles [ERROR_CONDITIONS] gracefully and logs the results to a [LOG_FILE].\n```\nCopy\n\n```\nHere is a sample Go application that uses the go-sdk to connect to a Model Context Protocol server and perform data analysis on a Snowflake data source:\n\n```go\npackage main\n\nimport (\n    \"fmt\"\n    \"log\"\n    \"github.com/model-context-protocol/go-sdk\"\n    \"github.com/model-context-protocol/go-sdk/pkg/client\"\n    \"github.com/model-context-protocol/go-sdk/pkg/model\"\n)\n\nfunc main() {\n    // Initialize the client\n    c, err := client.NewClient(\n        client.WithServerURL(\"https://model-context-protocol-server.example.com\"),\n        client.WithAPIKey(\"your-api-key-here\"),\n    )\n    if err != nil {\n        log.Fatalf(\"Failed to create client: %v\", err)\n    }\n    defer c.Close()\n    \n    // Define the data source\n    dataSource := model.DataSource{\n        Name: \"Snowflake\",\n        ConnectionString: \"user=your-username;password=your-password;account=your-account;warehouse=your-warehouse;database=your-database;schema=your-schema\",\n    }\n    \n    // Perform data analysis\n    analysis, err := c.Analyze(\n        dataSource,\n        model.AnalysisType{\n            Type: \"real-time\",\n            Metrics: []string{\"revenue\", \"conversion_rate\"},\n        },\n    )\n    if err != nil {\n        log.Fatalf(\"Failed to perform analysis: %v\", err)\n    }\n    \n    // Display the results\n    fmt.Printf(\"Analysis Results: %+v\\n\", analysis)\n    \n    // Log the results to a file\n    logFile, err := os.OpenFile(\"analysis.log\", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)\n    if err != nil {\n        log.Fatalf(\"Failed to open log file: %v\", err)\n    }\n    defer logFile.Close()\n    \n    logger := log.New(logFile, \"\", log.LstdFlags)\n    logger.Printf(\"Analysis Results: %+v\\n\", analysis)\n}\n```\n\nThis application connects to a Model Context Protocol server, performs real-time analysis on a Snowflake data source, and logs the results to a file.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:21.423286Z",
+    "http_status": 200,
+    "content_hash": "617b5464aab4742abb4a990e84027657b012938719512da7ee74593d536dd62c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\go-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\go-sdk.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Go SDK for Model Context Protocol",
+  "short_description_vi": "The go-sdk is the official Go SDK designed for integration with Model Context Protocol servers and clients. Developed in collaboration with Google, it simplifies building applications that use advanced model context capabilities."
+}

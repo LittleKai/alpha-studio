@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/seedream-image-mcp",
+  "slug": "seedream-image-mcp",
+  "name": "browser-use",
+  "headline": "Seedream-image-mcp - AI Image Generation for Cursor",
+  "short_description": "Seedream-image-mcp integrates SeeDream 4.0 for AI image generation in Cursor and Claude Code. It automates high-quality image creation with customizable dimensions and smart reference images, eliminating the need for complex prompts. Ideal for operations teams needing visual content generation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "wearzdk",
+  "install_command": "git clone https://github.com/wearzdk/seedream-image-mcp.git",
+  "source_repo_url": "https://github.com/wearzdk/seedream-image-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "volcengine",
+    "mcp-server",
+    "text-to-image",
+    "cursor-ai",
+    "claude",
+    "image-generation",
+    "mcp",
+    "cursor",
+    "model-context-protocol",
+    "ai"
+  ],
+  "sections": {
+    "overview": "SeeDream-image-mcp is an MCP tool that automates image generation using Volcano Engine's SeeDream 4.0 model, designed for integration with Cursor and Claude Desktop. Instead of writing complex prompts, users describe what they need and the tool automatically generates appropriate image prompts and creates visual content. The skill supports customizable image dimensions and smart reference images, making it useful for teams that need to produce visual assets quickly. Generated images are accessible via direct links, though the README notes that links expire after 24 hours when using the local version. A cloud-hosted alternative is available that offers permanent CDN storage and additional features like WebP compression and background removal.\nGenerate illustrations for web pages and design mockups\nCreate visual assets for marketing content and social media\nProduce concept artwork for product design workflows\nAutomate image creation for documentation and presentations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wearzdk/seedream-image-mcp`",
+    "usage": "```\nGenerate an image of a [OBJECT] in a [STYLE] setting. The image should be [DIMENSIONS] pixels. Use [REFERENCE_IMAGE] as a reference for composition and style.\n```\nCopy\n\n```\n# Image Generation Results",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "seedream-image-mcp#main-content",
+      "seedream-image-mcp#overview",
+      "seedream-image-mcp#setup",
+      "seedream-image-mcp#examples",
+      "seedream-image-mcp#tools",
+      "seedream-image-mcp#mcp",
+      "seedream-image-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SeeDream-image-mcp is an MCP tool that automates image generation using Volcano Engine's SeeDream 4.0 model, designed for integration with Cursor and Claude Desktop. Instead of writing complex prompts, users describe what they need and the tool automatically generates appropriate image prompts and creates visual content. The skill supports customizable image dimensions and smart reference images, making it useful for teams that need to produce visual assets quickly. Generated images are accessible via direct links, though the README notes that links expire after 24 hours when using the local version. A cloud-hosted alternative is available that offers permanent CDN storage and additional features like WebP compression and background removal.\nGenerate illustrations for web pages and design mockups\nCreate visual assets for marketing content and social media\nProduce concept artwork for product design workflows\nAutomate image creation for documentation and presentations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wearzdk/seedream-image-mcp`",
+    "usage_vi": "```\nGenerate an image of a [OBJECT] in a [STYLE] setting. The image should be [DIMENSIONS] pixels. Use [REFERENCE_IMAGE] as a reference for composition and style.\n```\nCopy\n\n```\n# Image Generation Results"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:30:14.916008Z",
+    "http_status": 200,
+    "content_hash": "aad7b8dccbc6b3028df53f9d7c74e188eaa361935cadc2cee876226eb481e1cf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\seedream-image-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\seedream-image-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Seedream-image-mcp - AI Image Generation for Cursor",
+  "short_description_vi": "Seedream-image-mcp integrates SeeDream 4.0 for AI image generation in Cursor and Claude Code. It automates high-quality image creation with customizable dimensions and smart reference images, eliminating the need for complex prompts. Ideal for operations teams needing visual content generation."
+}

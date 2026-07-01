@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/matlab-performance-optimizer",
+  "slug": "matlab-performance-optimizer",
+  "name": "Related Skills",
+  "headline": "MATLAB Performance Optimizer: Code Optimization",
+  "short_description": "This skill provides comprehensive guidelines for optimizing MATLAB code performance. It's aimed at developers and engineers looking to enhance their MATLAB applications through vectorization, memory optimization, and profiling tools.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "matlab",
+  "install_command": "git clone https://github.com/matlab/skills",
+  "source_repo_url": "https://github.com/matlab/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "optimizer",
+    "performance",
+    "matlab",
+    "optimization"
+  ],
+  "sections": {
+    "overview": "This skill provides guidelines for optimizing MATLAB code performance using vectorization, memory optimization, and profiling tools. It helps developers and engineers identify performance bottlenecks and implement best practices to enhance application efficiency. The skill works with AI coding agents to guide optimization decisions throughout the development process. It addresses common performance challenges in MATLAB applications by leveraging built-in profiling and analysis tools. This resource is useful for teams looking to improve computational speed and reduce memory consumption in their MATLAB projects.\nOptimizing slow or inefficient MATLAB code\nConverting loops to vectorized operations\nReducing memory usage\nImproving algorithm performance",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/matlab/skills --skill matlab-performance-optimizer`\n`git clone https://github.com/matlab/skills`",
+    "usage": "```\nAct as a MATLAB Performance Optimizer. Analyze the following MATLAB [CODE_SNIPPET] and suggest specific optimizations for [SPECIFIC_GOAL], such as speed, memory usage, or readability. Focus on vectorization, preallocation, built-in functions, and profiling techniques. Provide actionable recommendations with benchmarks where possible. Code snippet: [CODE_SNIPPET]\n```\nCopy\n\n```\n### MATLAB Performance Optimization Report\n\n**Original Code Snippet:**\n```matlab\nfor i = 1:10000\n    for j = 1:10000\n        A(i,j) = i * j;\n    end\nend\n```\n\n**Optimization Analysis:**\n\n#### **Issue Identified:**\n- **Double Loop Overhead:** The nested loops introduce significant computational overhead, making this O(n²) operation extremely slow for large matrices.\n- **Memory Inefficiency:** The code does not preallocate memory for `A`, which forces MATLAB to dynamically resize the array during each iteration.\n\n#### **Optimized Solution:**\n```matlab\n% Preallocate memory for the matrix\nA = zeros(10000, 10000);\n\n% Use vectorized operations\n[i, j] = meshgrid(1:10000, 1:10000);\nA = i .* j;\n```\n\n#### **Performance Comparison:**\n| Metric               | Original Code | Optimized Code |\n|----------------------|---------------|----------------|\n| Execution Time       | ~45.2 sec     | ~0.12 sec      |\n| Memory Usage (peak)  | ~780 MB       | ~780 MB        |\n| Code Readability     | Low           | High           |\n\n#### **Additional Recommendations:**\n1. **Use `timeit` for Benchmarking:** Always measure performance improvements using MATLAB's `timeit` function to quantify gains objectively.\n2. **Profile with `profile`:** Run `profile viewer` to identify bottlenecks in more complex scripts.\n3. **Leverage GPU Acceleration:** For matrix operations, consider using `gpuArray` if you have a compatible GPU.\n\n**Next Steps:**\n- Test the optimized code with your actual dataset.\n- Monitor memory usage with `memory` or `whos` to ensure no unexpected spikes.\n- Consider parallelizing loops with `parfor` if further speedups are needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "matlab-performance-optimizer#main-content",
+      "matlab-performance-optimizer#overview",
+      "matlab-performance-optimizer#setup",
+      "matlab-performance-optimizer#examples",
+      "matlab-performance-optimizer#tools",
+      "matlab-performance-optimizer#mcp",
+      "matlab-performance-optimizer#related"
+    ],
+    "overview_vi": "This skill provides guidelines for optimizing MATLAB code performance using vectorization, memory optimization, and profiling tools. It helps developers and engineers identify performance bottlenecks and implement best practices to enhance application efficiency. The skill works with AI coding agents to guide optimization decisions throughout the development process. It addresses common performance challenges in MATLAB applications by leveraging built-in profiling and analysis tools. This resource is useful for teams looking to improve computational speed and reduce memory consumption in their MATLAB projects.\nOptimizing slow or inefficient MATLAB code\nConverting loops to vectorized operations\nReducing memory usage\nImproving algorithm performance",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/matlab/skills --skill matlab-performance-optimizer`\n`git clone https://github.com/matlab/skills`",
+    "usage_vi": "```\nAct as a MATLAB Performance Optimizer. Analyze the following MATLAB [CODE_SNIPPET] and suggest specific optimizations for [SPECIFIC_GOAL], such as speed, memory usage, or readability. Focus on vectorization, preallocation, built-in functions, and profiling techniques. Provide actionable recommendations with benchmarks where possible. Code snippet: [CODE_SNIPPET]\n```\nCopy\n\n```\n### MATLAB Performance Optimization Report\n\n**Original Code Snippet:**\n```matlab\nfor i = 1:10000\n    for j = 1:10000\n        A(i,j) = i * j;\n    end\nend\n```\n\n**Optimization Analysis:**\n\n#### **Issue Identified:**\n- **Double Loop Overhead:** The nested loops introduce significant computational overhead, making this O(n²) operation extremely slow for large matrices.\n- **Memory Inefficiency:** The code does not preallocate memory for `A`, which forces MATLAB to dynamically resize the array during each iteration.\n\n#### **Optimized Solution:**\n```matlab\n% Preallocate memory for the matrix\nA = zeros(10000, 10000);\n\n% Use vectorized operations\n[i, j] = meshgrid(1:10000, 1:10000);\nA = i .* j;\n```\n\n#### **Performance Comparison:**\n| Metric               | Original Code | Optimized Code |\n|----------------------|---------------|----------------|\n| Execution Time       | ~45.2 sec     | ~0.12 sec      |\n| Memory Usage (peak)  | ~780 MB       | ~780 MB        |\n| Code Readability     | Low           | High           |\n\n#### **Additional Recommendations:**\n1. **Use `timeit` for Benchmarking:** Always measure performance improvements using MATLAB's `timeit` function to quantify gains objectively.\n2. **Profile with `profile`:** Run `profile viewer` to identify bottlenecks in more complex scripts.\n3. **Leverage GPU Acceleration:** For matrix operations, consider using `gpuArray` if you have a compatible GPU.\n\n**Next Steps:**\n- Test the optimized code with your actual dataset.\n- Monitor memory usage with `memory` or `whos` to ensure no unexpected spikes.\n- Consider parallelizing loops with `parfor` if further speedups are needed.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:36:48.938097Z",
+    "http_status": 200,
+    "content_hash": "c9f7f69ec6fccb3e62b9cc6247003830adabf83f8223e7c5ae6837bcd2a1fa2f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\matlab-performance-optimizer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\matlab-performance-optimizer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MATLAB Performance Optimizer: Code Optimization",
+  "short_description_vi": "This skill provides comprehensive guidelines for optimizing MATLAB code performance. It's aimed at developers and engineers looking to enhance their MATLAB applications through vectorization, memory optimization, and profiling tools."
+}

@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-pdf-autofiller",
+  "slug": "ai-pdf-autofiller",
+  "name": "browser-use",
+  "headline": "AI PDF Autofiller: Form Filling",
+  "short_description": "Backend service that fills AcroForm PDFs by mapping structured user data to form fields using deterministic rules and optional AI-assisted semantic inference.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "lindseystead",
+  "install_command": "git clone https://github.com/lindseystead/ai-pdf-autofiller.git",
+  "source_repo_url": "https://github.com/lindseystead/ai-pdf-autofiller",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-tools",
+    "python",
+    "llm",
+    "backend",
+    "document-automation",
+    "pdf-forms",
+    "pdf",
+    "data-mapping",
+    "ai-automation",
+    "production-ready",
+    "pydantic",
+    "workflow-automation",
+    "semantic-mapping",
+    "openai"
+  ],
+  "sections": {
+    "overview": "PDF Autofiller is a FastAPI-based backend service designed to automatically fill AcroForm PDFs from structured user data. It prioritizes deterministic behavior through key normalization, stable aliases, and value coercion before optionally applying semantic inference for field mapping. The service reads PDF metadata and form fields, maps user data using rule-based matching, and validates that all required fields are resolved before returning the filled PDF. It provides built-in features like file upload size limits, page count restrictions, per-client rate limiting, and optional API authentication. Organizations handling document automation, form processing workflows, or integration with document management systems benefit from its auditable, testable approach to PDF form completion.\nAutomating insurance claim form filling from customer data\nBatch processing employment application forms with applicant information\nPopulating tax or legal document templates from structured records\nIntegration with document management systems for form completion workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lindseystead/ai-pdf-autofiller`",
+    "usage": "```\nI need to fill out a PDF form automatically. The form is a [FORM_TYPE] from [COMPANY]. The fields include [FIELD_1], [FIELD_2], and [FIELD_3]. I have the data in this format: [DATA_FORMAT]. Can you help me create an AI-assisted mapping to fill this form accurately?\n```\nCopy\n\n```\n# PDF Form Filling Solution",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-pdf-autofiller#main-content",
+      "ai-pdf-autofiller#overview",
+      "ai-pdf-autofiller#setup",
+      "ai-pdf-autofiller#examples",
+      "ai-pdf-autofiller#tools",
+      "ai-pdf-autofiller#mcp",
+      "ai-pdf-autofiller#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "PDF Autofiller is a FastAPI-based backend service designed to automatically fill AcroForm PDFs from structured user data. It prioritizes deterministic behavior through key normalization, stable aliases, and value coercion before optionally applying semantic inference for field mapping. The service reads PDF metadata and form fields, maps user data using rule-based matching, and validates that all required fields are resolved before returning the filled PDF. It provides built-in features like file upload size limits, page count restrictions, per-client rate limiting, and optional API authentication. Organizations handling document automation, form processing workflows, or integration with document management systems benefit from its auditable, testable approach to PDF form completion.\nAutomating insurance claim form filling from customer data\nBatch processing employment application forms with applicant information\nPopulating tax or legal document templates from structured records\nIntegration with document management systems for form completion workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lindseystead/ai-pdf-autofiller`",
+    "usage_vi": "```\nI need to fill out a PDF form automatically. The form is a [FORM_TYPE] from [COMPANY]. The fields include [FIELD_1], [FIELD_2], and [FIELD_3]. I have the data in this format: [DATA_FORMAT]. Can you help me create an AI-assisted mapping to fill this form accurately?\n```\nCopy\n\n```\n# PDF Form Filling Solution"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:08:49.679717Z",
+    "http_status": 200,
+    "content_hash": "0033c68cc91c15ea843531c162d7fde1338b07b292f43a3d93def5f2b1e71236",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-pdf-autofiller.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-pdf-autofiller.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI PDF Autofiller: Form Filling",
+  "short_description_vi": "Backend service that fills AcroForm PDFs by mapping structured user data to form fields using deterministic rules and optional AI-assisted semantic inference."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/multi-agent-investment-platform",
+  "slug": "multi-agent-investment-platform",
+  "name": "Multi-Agent Investment Platform",
+  "headline": "Multi-Agent Investment Platform - AI Equity",
+  "short_description": "The Multi-Agent-Investment-Platform is a cutting-edge equity research assistant that transforms natural-language inquiries into concise investment briefings. Utilizing multi-agent orchestration and real-time financial data, it generates analyst-quality reports in seconds.",
+  "tier": "Gold",
+  "category": "AEGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "0xRustPro",
+  "install_command": "claude install 0xRustPro/Multi-Agent-Investment-Platform",
+  "source_repo_url": "https://github.com/0xRustPro/Multi-Agent-Investment-Platform",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "equity research",
+    "ai",
+    "investment",
+    "multi-agent",
+    "financial analysis"
+  ],
+  "sections": {
+    "overview": "The Multi-Agent Investment Research Platform is a FastAPI-powered system that transforms investment questions into structured analyst reports. It orchestrates multiple specialized agents—routing, market data retrieval, sentiment analysis, and visualization—to synthesize real-time data from Yahoo Finance, SEC EDGAR filings, and curated news sources. The platform uses retrieval-augmented generation with ChromaDB to ground answers in vectorized financial filings and market context, while MongoDB stores 24-hour conversation history for multi-turn analysis. A bilingual React frontend supports English and Chinese queries, enabling equity researchers, portfolio managers, and individual investors to conduct faster due diligence and generate professional-grade briefings without manual report compilation.\nGenerating quick investment reports\nAnswering complex financial questions\nProviding real-time market analysis\nCreating personalized investment briefings",
+    "setup": "Terminal\nCopy\n`claude install 0xRustPro/Multi-Agent-Investment-Platform`\n`git clone https://github.com/0xRustPro/Multi-Agent-Investment-Platform`",
+    "usage": "```\nGenerate an investment briefing for [COMPANY] in the [INDUSTRY] sector. Include key financial metrics, recent trends, competitive landscape, and potential risks. Use real-time data and provide a concise summary with actionable insights.\n```\nCopy\n\n```\n# Investment Briefing: GreenTech Innovations",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "multi-agent-investment-platform#main-content",
+      "multi-agent-investment-platform#overview",
+      "multi-agent-investment-platform#setup",
+      "multi-agent-investment-platform#examples",
+      "multi-agent-investment-platform#tools",
+      "multi-agent-investment-platform#mcp",
+      "multi-agent-investment-platform#related",
+      "skills",
+      "openbb",
+      "quantitative-analyst-agent"
+    ],
+    "overview_vi": "The Multi-Agent Investment Research Platform is a FastAPI-powered system that transforms investment questions into structured analyst reports. It orchestrates multiple specialized agents—routing, market data retrieval, sentiment analysis, and visualization—to synthesize real-time data from Yahoo Finance, SEC EDGAR filings, and curated news sources. The platform uses retrieval-augmented generation with ChromaDB to ground answers in vectorized financial filings and market context, while MongoDB stores 24-hour conversation history for multi-turn analysis. A bilingual React frontend supports English and Chinese queries, enabling equity researchers, portfolio managers, and individual investors to conduct faster due diligence and generate professional-grade briefings without manual report compilation.\nGenerating quick investment reports\nAnswering complex financial questions\nProviding real-time market analysis\nCreating personalized investment briefings",
+    "setup_vi": "Terminal\nCopy\n`claude install 0xRustPro/Multi-Agent-Investment-Platform`\n`git clone https://github.com/0xRustPro/Multi-Agent-Investment-Platform`",
+    "usage_vi": "```\nGenerate an investment briefing for [COMPANY] in the [INDUSTRY] sector. Include key financial metrics, recent trends, competitive landscape, and potential risks. Use real-time data and provide a concise summary with actionable insights.\n```\nCopy\n\n```\n# Investment Briefing: GreenTech Innovations"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:42.621758Z",
+    "http_status": 200,
+    "content_hash": "9cd4b3aa24fe853e98968507eeca672e6fe77e6741ad45aa50044194ebc75a2a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\multi-agent-investment-platform.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\multi-agent-investment-platform.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Multi-Agent Investment Platform - AI Equity",
+  "short_description_vi": "The Multi-Agent-Investment-Platform is a cutting-edge equity research assistant that transforms natural-language inquiries into concise investment briefings. Utilizing multi-agent orchestration and real-time financial data, it generates analyst-quality reports in seconds."
+}

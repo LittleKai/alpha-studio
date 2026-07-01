@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/effect-ts-best-practices",
+  "slug": "effect-ts-best-practices",
+  "name": "Effect-TS Best Practices",
+  "headline": "Effect-TS Best Practices: Type-Safe Patterns",
+  "short_description": "This skill enforces consistent patterns for Effect-TS codebases, optimizing for type safety, testability, and maintainability. It is tailored for developers using Effect-TS and React.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "makisuo",
+  "install_command": "git clone https://github.com/makisuo/skills",
+  "source_repo_url": "https://github.com/makisuo/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "practices",
+    "best",
+    "development",
+    "effect"
+  ],
+  "sections": {
+    "overview": "This skill enforces opinionated, consistent patterns for Effect-TS codebases, helping developers write type-safe, testable, and maintainable code. It provides guidance on Effect.Service definitions, Schema.TaggedError error handling, Layer composition, and effect-atom React components. The skill integrates with the Effect Language Server, which catches 30+ Effect-specific issues at edit-time that TypeScript alone cannot detect, including floating Effects, missing requirements, and incorrect yield patterns. Developers using Effect-TS benefit from automated diagnostics, quick info on Effect type parameters, and refactoring tools that convert async code to Effect.gen and auto-compose Layers.\nEnforce business logic patterns in Effect-TS services\nFacilitate React state management with Effect Atom patterns\nEnhance type safety and error handling in Effect-TS codebases",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/makisuo/skills --skill effect-best-practices`\n`git clone https://github.com/makisuo/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "effect-ts-best-practices#main-content",
+      "effect-ts-best-practices#overview",
+      "effect-ts-best-practices#setup",
+      "effect-ts-best-practices#examples",
+      "effect-ts-best-practices#related",
+      "upgrade-react-navigation",
+      "liveblocks-best-practices",
+      "gadget-best-practices"
+    ],
+    "overview_vi": "Skill này áp dụng các pattern nhất quán và có tính định hướng cho các codebase Effect-TS, giúp lập trình viên viết code type-safe, dễ test và dễ bảo trì hơn. Skill cung cấp hướng dẫn về cách định nghĩa Effect.Service, xử lý lỗi với Schema.TaggedError, cấu trúc Layer, và các component React sử dụng effect-atom. Skill tích hợp trực tiếp với Effect Language Server nhằm phát hiện hơn 30 lỗi đặc thù của Effect ngay khi viết code (edit-time) mà một mình TypeScript không thể nhận biết được, bao gồm floating Effects, thiếu requirement và các pattern yield sai. Lập trình viên sử dụng Effect-TS sẽ được hỗ trợ bởi các công cụ chẩn đoán tự động, hiển thị nhanh thông tin type parameter của Effect, cùng các công cụ refactor giúp chuyển đổi code async sang Effect.gen và tự động compose các Layer.\n\nÁp dụng các pattern logic nghiệp vụ trong các service Effect-TS\nHỗ trợ quản lý state React với các pattern Effect Atom\nTăng cường tính type safety và xử lý lỗi trong codebase Effect-TS",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/makisuo/skills --skill effect-best-practices`\n`git clone https://github.com/makisuo/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ nào\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:25:46.916204Z",
+    "http_status": 200,
+    "content_hash": "f33e55a0ab859771c37bbecf35513fa6aecb959055a526b34d6037817e8c8193",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\effect-ts-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\effect-ts-best-practices.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Thực hành tốt nhất với Effect-TS: Các pattern Type-Safe",
+  "short_description_vi": "Skill này áp dụng các pattern nhất quán cho codebase Effect-TS, tối ưu hóa tính type safety, khả năng test và bảo trì. Skill được thiết kế riêng cho lập trình viên sử dụng Effect-TS và React."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/synalinks-skills",
+  "slug": "synalinks-skills",
+  "name": "Synalinks Skills for Claude",
+  "headline": "Synalinks Skills for Claude - Enhance AI",
+  "short_description": "Synalinks-skills enhances Claude's capabilities with neuro-symbolic AI, enabling advanced reasoning and decision-making. This skill set is ideal for leveraging AI in various applications, particularly in sales and marketing contexts.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "SynaLinks",
+  "install_command": "claude install SynaLinks/synalinks-skills",
+  "source_repo_url": "https://github.com/SynaLinks/synalinks-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "artificial-intelligence",
+    "neuro-symbolic",
+    "AI skills",
+    "large-language-models"
+  ],
+  "sections": {
+    "overview": "Synalinks-skills is a collection of modular skill packages designed to extend Claude's capabilities in AI agent development and reasoning. The skill set is organized into specialized components including synalinks-agents, synalinks-control-flow, synalinks-core, synalinks-datasets, synalinks-knowledge, synalinks-modules, synalinks-optimizers, and synalinks-programs. Each module provides specific functionality for building complex AI systems with structured data handling, learning mechanisms, and program orchestration. Developers can install individual skills to their Claude Code or Cursor environment through the canonical ~/.claude/skills/ path and verify installation via the /skills slash command. The modular architecture allows teams to adopt only the components they need for their specific AI application requirements.\nAutomate lead generation by identifying potential customers based on data analysis.\nEnhance customer interactions through personalized responses and recommendations.\nOptimize marketing campaigns by analyzing performance metrics and suggesting improvements.\nAnalyze sales data to uncover trends and insights that drive better decision-making.",
+    "setup": "Terminal\nCopy\n`claude install SynaLinks/synalinks-skills`\n`git clone https://github.com/SynaLinks/synalinks-skills`",
+    "usage": "```\nUsing Synalinks-skills and Mode, analyze the sales performance data for [COMPANY] over the past [TIME_PERIOD]. Identify key trends, top-performing products, and underperforming regions. Provide actionable insights for the sales team to improve performance in the next [TIME_PERIOD].\n```\nCopy\n\n```\nBased on the sales performance data for XYZ Corp over the past quarter, several key trends and insights have emerged. The top-performing products were Product A and Product B, which accounted for 45% of total sales. However, Product C showed a significant decline in sales, dropping by 20% compared to the previous quarter. Regionally, the Northeast and West Coast regions performed exceptionally well, while the Midwest region lagged behind. To improve performance in the next quarter, the sales team should focus on promoting Product C through targeted marketing campaigns and increasing sales efforts in the Midwest region. Additionally, leveraging the strengths of Product A and Product B could help drive overall sales growth.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "synalinks-skills#main-content",
+      "synalinks-skills#overview",
+      "synalinks-skills#setup",
+      "synalinks-skills#examples",
+      "synalinks-skills#tools",
+      "synalinks-skills#mcp",
+      "synalinks-skills#related",
+      "claude-skills",
+      "firecrawl",
+      "intentkit"
+    ],
+    "overview_vi": "Synalinks-skills là một tập hợp các gói skill dạng mô-đun (modular) được thiết kế để mở rộng khả năng của Claude trong việc phát triển AI agent và suy luận. Bộ skill này được tổ chức thành các thành phần chuyên biệt bao gồm synalinks-agents, synalinks-control-flow, synalinks-core, synalinks-datasets, synalinks-knowledge, synalinks-modules, synalinks-optimizers và synalinks-programs. Mỗi mô-đun cung cấp các tính năng cụ thể để xây dựng các hệ thống AI phức tạp với khả năng xử lý dữ liệu có cấu trúc, cơ chế học máy (learning mechanisms) và điều phối chương trình (program orchestration). Các nhà phát triển có thể cài đặt từng skill riêng lẻ vào môi trường Claude Code hoặc Cursor của mình thông qua đường dẫn chuẩn ~/.claude/skills/ và xác minh cài đặt bằng lệnh slash /skills. Kiến trúc mô-đun này cho phép các đội ngũ phát triển chỉ cần tích hợp các thành phần cần thiết cho yêu cầu ứng dụng AI cụ thể của họ.\nTự động hóa quy trình tìm kiếm khách hàng tiềm năng (lead generation) bằng cách xác định các đối tượng triển vọng dựa trên phân tích dữ liệu.\nTăng cường tương tác với khách hàng thông qua các phản hồi và đề xuất mang tính cá nhân hóa.\nTối ưu hóa các chiến dịch marketing bằng cách phân tích các chỉ số hiệu suất và đề xuất cải tiến.\nPhân tích dữ liệu bán hàng để tìm ra các xu hướng và insight giúp đưa ra quyết định tốt hơn.",
+    "setup_vi": "Terminal\nSao chép\n`claude install SynaLinks/synalinks-skills`\n`git clone https://github.com/SynaLinks/synalinks-skills`",
+    "usage_vi": "```\nSử dụng Synalinks-skills và Mode, hãy phân tích dữ liệu hiệu suất bán hàng của [COMPANY] trong [TIME_PERIOD] qua. Xác định các xu hướng chính, các sản phẩm bán chạy nhất và các khu vực có hiệu suất kém. Đưa ra các insight hữu ích (actionable insights) để đội ngũ sales cải thiện hiệu suất trong [TIME_PERIOD] tới.\n```\nSao chép\n\n```\nDựa trên dữ liệu hiệu suất bán hàng của XYZ Corp trong quý vừa qua, một số xu hướng và insight quan trọng đã được ghi nhận. Các sản phẩm bán chạy nhất là Sản phẩm A và Sản phẩm B, chiếm 45% tổng doanh số. Tuy nhiên, Sản phẩm C cho thấy mức sụt giảm doanh số đáng kể, giảm 20% so với quý trước. Về mặt địa lý, các khu vực Đông Bắc và Bờ Tây hoạt động đặc biệt hiệu quả, trong khi khu vực Trung Tây có kết quả tụt lại phía sau. Để cải thiện hiệu suất trong quý tới, đội ngũ sales nên tập trung đẩy mạnh quảng bá Sản phẩm C thông qua các chiến dịch marketing mục tiêu và tăng cường hoạt động bán hàng tại khu vực Trung Tây. Ngoài ra, việc tận dụng thế mạnh của Sản phẩm A và Sản phẩm B cũng có thể giúp thúc đẩy tăng trưởng doanh số chung.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:54.184496Z",
+    "http_status": 200,
+    "content_hash": "24770864e1f9fed50312dc209eefd886eae4acfdee4f0c7e8697800ebb54f547",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\synalinks-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\synalinks-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Synalinks Skills cho Claude - Nâng cao năng lực AI",
+  "short_description_vi": "Synalinks-skills mở rộng năng lực của Claude bằng neuro-symbolic AI, hỗ trợ khả năng suy luận và ra quyết định nâng cao. Bộ skill này là giải pháp lý tưởng để ứng dụng AI vào nhiều tình huống thực tế, đặc biệt là trong lĩnh vực sales và marketing."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-manager",
+  "slug": "skill-manager",
+  "name": "Skill Manager",
+  "headline": "Skill Manager - AI Skill Management",
+  "short_description": "Skill Manager is a Claude Code skill management tool that lets you easily search, browse, and install over 31,767 community skills from GitHub for your AI agent. It is designed for operations teams to streamline AI agent customization and deployment.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "buzhangsan",
+  "install_command": "git clone https://github.com/buzhangsan/skill-manager.git",
+  "source_repo_url": "https://github.com/buzhangsan/skill-manager",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skill Manager is a skill discovery and installation tool for Claude Code and AI agents, providing access to over 31,767 community skills sourced from GitHub. The tool features intelligent search with weighted scoring across skill names, descriptions, and authors, returning results sorted by relevance and GitHub stars. It supports both English and Chinese search with 99.95% translation coverage, enabling teams to quickly find skills suited to their needs. One-click installation automatically downloads and configures skills from GitHub, with usage guides provided after installation. GitHub statistics including stars and forks are displayed for each skill, helping teams evaluate quality before deployment.\nOperations teams streamlining AI agent customization and skill deployment\nDevelopment teams discovering TypeScript and language-specific skills\nFrontend development teams finding UI and frontend-related skills\nCode review and quality assurance teams installing linting and testing skills",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/buzhangsan/skill-manager`",
+    "usage": "```\nUse the Skill Manager to search for [SKILL_NAME_OR_CATEGORY] skills in the Claude Code ecosystem. Install the top-rated skill that matches [SPECIFIC_USE_CASE]. Verify the installation by running a quick test command like '!skill-name --help' to confirm functionality.\n```\nCopy\n\n```\nI searched the Skill Manager for 'data-visualization' skills and found 'plotly-viz' (12,432 installs, 4.8/5 rating) as the top match for creating interactive dashboards. I installed it using `skill-manager install plotly-viz` and verified with `!plotly-viz --version`, which returned 'Plotly Visualization Tool v1.2.3' confirming successful deployment. The skill now appears in my agent's available tools under `/skills/plotly-viz/` with documentation at `/skills/plotly-viz/README.md`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-manager#main-content",
+      "skill-manager#overview",
+      "skill-manager#setup",
+      "skill-manager#examples",
+      "skill-manager#tools",
+      "skill-manager#mcp",
+      "skill-manager#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Manager is a skill discovery and installation tool for Claude Code and AI agents, providing access to over 31,767 community skills sourced from GitHub. The tool features intelligent search with weighted scoring across skill names, descriptions, and authors, returning results sorted by relevance and GitHub stars. It supports both English and Chinese search with 99.95% translation coverage, enabling teams to quickly find skills suited to their needs. One-click installation automatically downloads and configures skills from GitHub, with usage guides provided after installation. GitHub statistics including stars and forks are displayed for each skill, helping teams evaluate quality before deployment.\nOperations teams streamlining AI agent customization and skill deployment\nDevelopment teams discovering TypeScript and language-specific skills\nFrontend development teams finding UI and frontend-related skills\nCode review and quality assurance teams installing linting and testing skills",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/buzhangsan/skill-manager`",
+    "usage_vi": "```\nUse the Skill Manager to search for [SKILL_NAME_OR_CATEGORY] skills in the Claude Code ecosystem. Install the top-rated skill that matches [SPECIFIC_USE_CASE]. Verify the installation by running a quick test command like '!skill-name --help' to confirm functionality.\n```\nCopy\n\n```\nI searched the Skill Manager for 'data-visualization' skills and found 'plotly-viz' (12,432 installs, 4.8/5 rating) as the top match for creating interactive dashboards. I installed it using `skill-manager install plotly-viz` and verified with `!plotly-viz --version`, which returned 'Plotly Visualization Tool v1.2.3' confirming successful deployment. The skill now appears in my agent's available tools under `/skills/plotly-viz/` with documentation at `/skills/plotly-viz/README.md`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:01.091571Z",
+    "http_status": 200,
+    "content_hash": "04204a849e34f5c674ad05e6c04893715cc1b1784694dc5422fe523803c8477a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-manager.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill Manager - AI Skill Management",
+  "short_description_vi": "Skill Manager is a Claude Code skill management tool that lets you easily search, browse, and install over 31,767 community skills from GitHub for your AI agent. It is designed for operations teams to streamline AI agent customization and deployment."
+}

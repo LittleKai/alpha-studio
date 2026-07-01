@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ms-agent",
+  "slug": "ms-agent",
+  "name": "MS-Agent",
+  "headline": "MS-Agent - Autonomous Agent Exploration",
+  "short_description": "MS-Agent is a lightweight framework that enables autonomous exploration for agents in complex task scenarios. It benefits operations teams by automating research, code generation, and chatbot interactions. The framework connects to Python-based workflows and supports agents like Claude.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "modelscope",
+  "install_command": "git clone https://github.com/modelscope/ms-agent.git",
+  "source_repo_url": "https://github.com/modelscope/ms-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agentic-insight",
+    "chat-bot",
+    "memory",
+    "code-generation",
+    "deep-research",
+    "agentic-search"
+  ],
+  "sections": {
+    "overview": "MS-Agent is a lightweight framework designed to enable autonomous exploration for AI agents in complex task scenarios. The framework supports agent systems like Claude and integrates with Python-based workflows, making it accessible to development teams. It automates key operational tasks including research, code generation, and chatbot interactions, reducing manual effort for operations teams. MS-Agent provides a structured approach to agent autonomy, allowing intelligent systems to navigate and complete sophisticated workflows independently. The framework is actively maintained with extensive examples and capabilities documentation for practical implementation.\nAutomate code generation tasks for software development projects.\nFacilitate data analysis by enabling agents to autonomously gather and process information.\nImplement multi-agent systems for collaborative problem-solving in complex scenarios.\nUtilize memory features to build agents that can retain context and improve decision-making over time.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/modelscope/ms-agent`",
+    "usage": "```\nUse the MS-Agent framework to autonomously explore and solve the task: '[TASK_DESCRIPTION]'. Generate a step-by-step plan, execute exploratory actions (e.g., research, code generation, or chatbot interactions), and document findings in a structured report. Include [INPUT_DATA] or [CONTEXT] if provided. Ensure the output is actionable and includes next steps or recommendations.\n```\nCopy\n\n```\n### MS-Agent Task Execution Report\n**Task:** Automate the generation of a Python script to scrape and analyze customer feedback from [WEBSITE_URL] for sentiment trends.\n\n**Step 1: Initial Exploration**\n- MS-Agent identified the target website ([WEBSITE_URL]) and confirmed the need for web scraping due to the lack of a public API.\n- Detected potential challenges: dynamic content loading, CAPTCHAs, and rate-limiting.\n\n**Step 2: Research & Code Generation**\n- Generated a Python script using `requests` and `BeautifulSoup` for static content extraction.\n- Identified `selenium` as a fallback for dynamic content (e.g., JavaScript-rendered reviews).\n- Included error handling for HTTP 429 (rate-limiting) and CAPTCHA detection.\n\n**Step 3: Execution & Validation**\n- Tested the script on a sample of 50 reviews. Successfully extracted 47 reviews (94% success rate).\n- Detected 3 CAPTCHA challenges, triggering the Selenium fallback. All reviews were extracted.\n- Sentiment analysis using `TextBlob` revealed: 62% positive, 23% neutral, 15% negative.\n\n**Step 4: Output & Recommendations**\n- Generated a CSV report (`feedback_analysis_20240515.csv`) with columns: `review_id`, `text`, `sentiment_score`, `timestamp`.\n- Recommended next steps:\n  1. Deploy the script on a cloud server (e.g., AWS Lambda) for scheduled execution.\n  2. Implement a CAPTCHA-solving service (e.g., 2Captcha) for higher reliability.\n  3. Expand sentiment analysis to include emoji detection for nuanced feedback.\n\n**Attachments:**\n- `feedback_scraper.py` (Python script)\n- `feedback_analysis_20240515.csv` (sample output)\n\n**Confidence Level:** High (validated on sample data).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ms-agent#main-content",
+      "ms-agent#overview",
+      "ms-agent#setup",
+      "ms-agent#examples",
+      "ms-agent#tools",
+      "ms-agent#mcp",
+      "ms-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MS-Agent is a lightweight framework designed to enable autonomous exploration for AI agents in complex task scenarios. The framework supports agent systems like Claude and integrates with Python-based workflows, making it accessible to development teams. It automates key operational tasks including research, code generation, and chatbot interactions, reducing manual effort for operations teams. MS-Agent provides a structured approach to agent autonomy, allowing intelligent systems to navigate and complete sophisticated workflows independently. The framework is actively maintained with extensive examples and capabilities documentation for practical implementation.\nAutomate code generation tasks for software development projects.\nFacilitate data analysis by enabling agents to autonomously gather and process information.\nImplement multi-agent systems for collaborative problem-solving in complex scenarios.\nUtilize memory features to build agents that can retain context and improve decision-making over time.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/modelscope/ms-agent`",
+    "usage_vi": "```\nUse the MS-Agent framework to autonomously explore and solve the task: '[TASK_DESCRIPTION]'. Generate a step-by-step plan, execute exploratory actions (e.g., research, code generation, or chatbot interactions), and document findings in a structured report. Include [INPUT_DATA] or [CONTEXT] if provided. Ensure the output is actionable and includes next steps or recommendations.\n```\nCopy\n\n```\n### MS-Agent Task Execution Report\n**Task:** Automate the generation of a Python script to scrape and analyze customer feedback from [WEBSITE_URL] for sentiment trends.\n\n**Step 1: Initial Exploration**\n- MS-Agent identified the target website ([WEBSITE_URL]) and confirmed the need for web scraping due to the lack of a public API.\n- Detected potential challenges: dynamic content loading, CAPTCHAs, and rate-limiting.\n\n**Step 2: Research & Code Generation**\n- Generated a Python script using `requests` and `BeautifulSoup` for static content extraction.\n- Identified `selenium` as a fallback for dynamic content (e.g., JavaScript-rendered reviews).\n- Included error handling for HTTP 429 (rate-limiting) and CAPTCHA detection.\n\n**Step 3: Execution & Validation**\n- Tested the script on a sample of 50 reviews. Successfully extracted 47 reviews (94% success rate).\n- Detected 3 CAPTCHA challenges, triggering the Selenium fallback. All reviews were extracted.\n- Sentiment analysis using `TextBlob` revealed: 62% positive, 23% neutral, 15% negative.\n\n**Step 4: Output & Recommendations**\n- Generated a CSV report (`feedback_analysis_20240515.csv`) with columns: `review_id`, `text`, `sentiment_score`, `timestamp`.\n- Recommended next steps:\n  1. Deploy the script on a cloud server (e.g., AWS Lambda) for scheduled execution.\n  2. Implement a CAPTCHA-solving service (e.g., 2Captcha) for higher reliability.\n  3. Expand sentiment analysis to include emoji detection for nuanced feedback.\n\n**Attachments:**\n- `feedback_scraper.py` (Python script)\n- `feedback_analysis_20240515.csv` (sample output)\n\n**Confidence Level:** High (validated on sample data).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:46.828942Z",
+    "http_status": 200,
+    "content_hash": "0f55ec6b45bb558d4cd754fbfd8ed6815653567f292910539e4fa63776578d0e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ms-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ms-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MS-Agent - Autonomous Agent Exploration",
+  "short_description_vi": "MS-Agent is a lightweight framework that enables autonomous exploration for agents in complex task scenarios. It benefits operations teams by automating research, code generation, and chatbot interactions. The framework connects to Python-based workflows and supports agents like Claude."
+}

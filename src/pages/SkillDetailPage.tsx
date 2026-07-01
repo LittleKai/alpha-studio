@@ -159,16 +159,22 @@ export default function SkillDetailPage() {
   const [activeSection, setActiveSection] = useState('overview');
 
   useEffect(() => {
-    fetch('/data/skills.json')
-      .then(res => res.json())
-      .then((data: Skill[]) => {
-        setSkills(data);
-        const found = data.find(s => s.slug === slug);
-        setSkill(found || null);
+    setLoading(true);
+    Promise.all([
+      fetch(`/data/skills/${slug}.json`).then(res => {
+        if (!res.ok) throw new Error('Skill not found');
+        return res.json();
+      }),
+      fetch('/data/skills-index.json').then(res => res.json())
+    ])
+      .then(([detailData, indexData]) => {
+        setSkill(detailData);
+        setSkills(indexData);
         setLoading(false);
       })
       .catch(err => {
         console.error('Error loading skill detail:', err);
+        setSkill(null);
         setLoading(false);
       });
   }, [slug]);

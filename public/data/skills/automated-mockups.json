@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/automated-mockups",
+  "slug": "automated-mockups",
+  "name": "automated_mockups",
+  "headline": "Automated mockups generator for e-commerce",
+  "short_description": "Automatically generate product mockups at scale. Overlay designs onto t-shirt, hoodie, and other templates with precise positioning. Perfect for POD, e-commerce, and marketing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "CTDave001",
+  "install_command": "git clone https://github.com/CTDave001/automated_mockups.git",
+  "source_repo_url": "https://github.com/CTDave001/automated_mockups",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "batch-processing",
+    "e-commerce",
+    "product-mockup",
+    "t-shirt-mockup",
+    "print-on-demand",
+    "image-processing",
+    "pillow",
+    "mockup",
+    "mockup-generator",
+    "python",
+    "design-tools"
+  ],
+  "sections": {
+    "overview": "Automated Mockup Generator uses color-based placeholder detection to overlay designs onto mockup templates—t-shirts, hoodies, and other products—at scale. The tool analyzes your templates to find colored placeholder boxes, then generates all design-and-mockup combinations automatically with configurable alignment and scaling options. It supports batch processing with parallel execution, multiple output formats (PNG, JPEG, WebP), and both CLI and Python API interfaces. Perfect for e-commerce stores, print-on-demand businesses, and marketing teams needing to visualize designs on product variants quickly.\nPrint-on-demand: Generate product previews for POD storefronts\nE-commerce: Create product images for multiple color and design variants\nMarketing: Quickly visualize designs on merchandise for campaigns\nDesign agencies: Present client work on realistic product mockups",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CTDave001/automated_mockups`",
+    "usage": "```\nGenerate a product mockup for [PRODUCT TYPE] featuring [DESIGN DESCRIPTION]. Use the template for [TEMPLATE NAME] (e.g., 'black t-shirt front view', 'white hoodie side view'). Ensure the design is positioned [POSITIONING DETAILS] (e.g., 'centered on the chest', 'spanning the entire sleeve'). Export the mockup as a high-resolution PNG with a transparent background where applicable. Include a shadow effect for realism.\n```\nCopy\n\n```\nHere’s a mockup for a **black unisex t-shirt** featuring a **vintage-style band logo** centered on the chest. The design includes a subtle distressed texture overlay to match the retro aesthetic. The mockup uses a high-resolution template with realistic fabric draping and a soft shadow beneath the shirt to ground it in the scene. The logo is rendered in a distressed gold foil, adding a premium touch. The final output is a 2048x2048 PNG with a transparent background, ready for e-commerce listings or social media posts. The mockup also includes a subtle ambient shadow on the ground to enhance depth, making it ideal for both flat-lay and lifestyle shots. The design is scalable for both print-on-demand and in-house production use.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "automated-mockups#main-content",
+      "automated-mockups#overview",
+      "automated-mockups#setup",
+      "automated-mockups#examples",
+      "automated-mockups#tools",
+      "automated-mockups#mcp",
+      "automated-mockups#related",
+      "marketingskills",
+      "copywriting",
+      "shortify"
+    ],
+    "overview_vi": "Automated Mockup Generator sử dụng tính năng phát hiện placeholder dựa trên màu sắc để overlay thiết kế lên các template mockup—áo thun, hoodie và các sản phẩm khác—ở quy mô lớn. Công cụ này phân tích các template của bạn để tìm các khung placeholder có màu, sau đó tự động tạo ra tất cả các tổ hợp thiết kế và mockup với các tùy chọn căn chỉnh và scale có thể cấu hình. Nó hỗ trợ xử lý hàng loạt (batch processing) với thực thi song song (parallel execution), nhiều định dạng đầu ra (PNG, JPEG, WebP), và cả giao diện CLI lẫn Python API. Công cụ rất phù hợp cho các cửa hàng thương mại điện tử, doanh nghiệp print-on-demand và các đội ngũ marketing cần trực quan hóa nhanh chóng các thiết kế trên các biến thể sản phẩm.\n\nPrint-on-demand: Tạo bản xem trước sản phẩm cho các gian hàng POD\nE-commerce: Tạo hình ảnh sản phẩm cho nhiều biến thể màu sắc và thiết kế khác nhau\nMarketing: Nhanh chóng trực quan hóa các thiết kế trên sản phẩm thương mại cho các chiến dịch\nDesign agency: Trình bày sản phẩm thiết kế cho khách hàng trên các mockup sản phẩm thực tế",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/CTDave001/automated_mockups`",
+    "usage_vi": "```\nTạo mockup sản phẩm cho [LOẠI SẢN PHẨM] với [MÔ TẢ THIẾT KẾ]. Sử dụng template cho [TÊN TEMPLATE] (ví dụ: 'black t-shirt front view', 'white hoodie side view'). Đảm bảo thiết kế được định vị [CHI TIẾT VỊ TRÍ] (ví dụ: 'căn giữa ngực', 'trải dài toàn bộ tay áo'). Xuất mockup dưới dạng PNG độ phân giải cao với nền trong suốt (nếu có). Thêm hiệu ứng bóng đổ để tăng tính chân thực.\n```\nCopy\n\n```\nDưới đây là mockup cho **áo thun unisex màu đen** có **logo ban nhạc phong cách vintage** được căn giữa ngực. Thiết kế bao gồm một lớp overlay họa tiết giả cổ (distressed texture) nhẹ để phù hợp với thẩm mỹ retro. Mockup sử dụng template độ phân giải cao với nếp gấp vải chân thực và bóng đổ mềm phía dưới áo để tạo độ nổi khối trong không gian. Logo được thể hiện bằng hiệu ứng phủ lá vàng giả cổ (distressed gold foil), mang lại cảm giác cao cấp. Kết quả đầu ra là file PNG 2048x2048 nền trong suốt, sẵn sàng cho các danh mục sản phẩm thương mại điện tử hoặc bài đăng trên mạng xã hội. Mockup cũng bao gồm một bóng đổ môi trường (ambient shadow) nhẹ trên mặt đất để tăng chiều sâu, lý tưởng cho cả ảnh chụp flat-lay và lifestyle. Thiết kế có thể scale tốt cho cả print-on-demand lẫn sản xuất nội bộ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:17:31.220641Z",
+    "http_status": 200,
+    "content_hash": "1e5ad44760660470efec887b0c60f8bfe4e1d5c447aa7e70cd0caedb35bd662d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\automated-mockups.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\automated-mockups.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình tạo mockup tự động cho thương mại điện tử",
+  "short_description_vi": "Tự động tạo mockup sản phẩm hàng loạt. Overlay thiết kế lên template áo thun, hoodie và các sản phẩm khác với vị trí chính xác. Phù hợp cho POD, thương mại điện tử và marketing."
+}

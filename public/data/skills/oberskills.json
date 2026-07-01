@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/oberskills",
+  "slug": "oberskills",
+  "name": "browser-use",
+  "headline": "Oberskills - Claude Code Workflow Automation",
+  "short_description": "Oberskills provides advanced agent orchestration for Claude Code, enabling operations teams to debug workflows and plan tasks. It infers symptoms, dispatches agents for logs/code, synthesizes evidence, and proposes root causes. Integrates with Claude agents for enhanced automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "ryanthedev",
+  "install_command": "git clone https://github.com/ryanthedev/oberskills.git",
+  "source_repo_url": "https://github.com/ryanthedev/oberskills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Oberskills is a skill suite built to improve Claude Code's performance in prompt engineering, agent orchestration, and skill development. It includes five core skills: prompt (adversarial auditing and design with cited principles), agent (dispatch guidance and delegation contracts), skill-craft (end-to-end skill creation with evaluation gates), write (AI-detection resistant prose in edit or review modes), and web-research (parallel search with verified source URLs). The suite bundles a Bun/TypeScript MCP server for skill evaluation, running live Claude sessions to validate structure, test triggers, measure description quality, and grade evaluations. Teams automate workflow debugging, task planning, and agent coordination while maintaining quality gates throughout the development pipeline.\nAdversarially audit and refine prompts for Claude agents with structured verdicts\nDispatch subagents with cost gates, delegation contracts, and debiased verification\nCreate and evaluate Claude Code skills with automated validation and benchmarking\nConduct web research across multiple dimensions with synthesized, sourced results",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryanthedev/oberskills`",
+    "usage": "```\nI'm debugging a workflow for [COMPANY] in the [INDUSTRY] sector. The issue is [DESCRIBE SYMPTOM]. I need your help to: 1) Infer the root cause, 2) Identify the relevant logs/code to examine, and 3) Propose a solution. Use Oberskills to orchestrate agents for this task.\n```\nCopy\n\n```\n# Debugging Workflow Analysis",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "oberskills#main-content",
+      "oberskills#overview",
+      "oberskills#setup",
+      "oberskills#examples",
+      "oberskills#tools",
+      "oberskills#mcp",
+      "oberskills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Oberskills is a skill suite built to improve Claude Code's performance in prompt engineering, agent orchestration, and skill development. It includes five core skills: prompt (adversarial auditing and design with cited principles), agent (dispatch guidance and delegation contracts), skill-craft (end-to-end skill creation with evaluation gates), write (AI-detection resistant prose in edit or review modes), and web-research (parallel search with verified source URLs). The suite bundles a Bun/TypeScript MCP server for skill evaluation, running live Claude sessions to validate structure, test triggers, measure description quality, and grade evaluations. Teams automate workflow debugging, task planning, and agent coordination while maintaining quality gates throughout the development pipeline.\nAdversarially audit and refine prompts for Claude agents with structured verdicts\nDispatch subagents with cost gates, delegation contracts, and debiased verification\nCreate and evaluate Claude Code skills with automated validation and benchmarking\nConduct web research across multiple dimensions with synthesized, sourced results",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryanthedev/oberskills`",
+    "usage_vi": "```\nI'm debugging a workflow for [COMPANY] in the [INDUSTRY] sector. The issue is [DESCRIBE SYMPTOM]. I need your help to: 1) Infer the root cause, 2) Identify the relevant logs/code to examine, and 3) Propose a solution. Use Oberskills to orchestrate agents for this task.\n```\nCopy\n\n```\n# Debugging Workflow Analysis"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:35:23.600345Z",
+    "http_status": 200,
+    "content_hash": "d9b72396cdaea5590f81b50afafd5d8efe69ed05f01d2402b903530df58e5e69",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oberskills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oberskills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Oberskills - Claude Code Workflow Automation",
+  "short_description_vi": "Oberskills provides advanced agent orchestration for Claude Code, enabling operations teams to debug workflows and plan tasks. It infers symptoms, dispatches agents for logs/code, synthesizes evidence, and proposes root causes. Integrates with Claude agents for enhanced automation."
+}

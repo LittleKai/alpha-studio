@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/grepai",
+  "slug": "grepai",
+  "name": "browser-use",
+  "headline": "grepai: Enhance Code Understanding",
+  "short_description": "grepai enables AI agents to perform semantic search and call graphs locally, benefiting developers and operations teams. It connects to codebases and developer tools, allowing for efficient code search and analysis without relying on external services.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "yoanbernabeu",
+  "install_command": "git clone https://github.com/yoanbernabeu/grepai.git",
+  "source_repo_url": "https://github.com/yoanbernabeu/grepai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "vector-search",
+    "code-search",
+    "golang",
+    "privacy-first",
+    "mcp",
+    "cursor",
+    "ai",
+    "embeddings",
+    "cli",
+    "semantic-search"
+  ],
+  "sections": {
+    "overview": "grepai is an innovative automation skill designed for AI agents, particularly Claude Code, that facilitates semantic search and call graph generation for enhanced code understanding. This skill operates entirely locally, allowing developers to quickly search through large codebases and locate critical components such as authentication logic or error handling patterns using natural language queries. By integrating grepai into your workflow, you can streamline your code navigation and improve overall efficiency. One of the key benefits of grepai is its ability to save time by automating the process of locating dependencies and understanding function calls. For instance, developers can trace function calls to identify dependencies before making changes to critical code, reducing the risk of introducing bugs. Additionally, grepai can automatically keep your code index updated with a file watcher, ensuring that your searches remain accurate and relevant. This capability is particularly useful for teams managing large and complex codebases. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their productivity and code comprehension. With a difficulty level classified as beginner, grepai can be implemented in approximately 30 minutes, making it accessible for teams of all skill levels. Its integration with AI agents like Claude Code further enhances its utility, allowing for a more intelligent and responsive development environment. Practical use cases for grepai include quickly locating authentication logic in a large codebase, searching for error handling patterns across projects, and understanding dependencies before making significant changes. By adopting grepai, teams can leverage AI automation to facilitate workflow automation, ultimately leading to improved code quality and faster project delivery. As the demand for efficient coding practices grows, incorporating grepai into your AI-first workflows can provide a competitive edge.\nQuickly locate authentication logic in a large codebase by searching for 'authentication logic'.\nTrace function calls to understand dependencies before making changes to critical code.\nAutomatically keep your code index updated with a file watcher to ensure search accuracy.\nIntegrate grepai with AI agents like Claude Code to enhance code understanding and reduce input tokens.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoanbernabeu/grepai`",
+    "usage": "```\nUse grepai to perform a semantic search and call graph analysis on the [PROJECT_NAME] codebase. Find all functions or methods that interact with [SPECIFIC_MODULE_OR_CLASS] and trace their call paths. Focus on files modified in the last [TIME_PERIOD] and exclude test files. Generate a report with the top 5 most critical call chains and their potential impact on [SPECIFIC_FEATURE_OR_COMPONENT].\n```\nCopy\n\n```\n### Semantic Search & Call Graph Analysis Report for Project: **E-Commerce Platform**\n\n**Scope:** Analyzed 12,456 lines of code across 147 files (last modified in the past 30 days). Excluded 32 test files.\n\n#### **Critical Call Chains Identified**\n\n1. **`PaymentProcessor` → `OrderService` → `InventoryManager`**\n   - **Impact:** High. This chain handles real-time inventory updates during checkout. A latency issue in `InventoryManager.updateStock()` could block payment processing, leading to abandoned carts.\n   - **Files Involved:** `services/payment.py`, `services/order.py`, `models/inventory.py`\n   - **Modification History:** All 3 files were updated in the last 2 weeks to support a new \"reserve inventory\" feature.\n\n2. **`UserAuth` → `SessionManager` → `LoggingMiddleware`**\n   - **Impact:** Medium. Authentication failures in `SessionManager` could trigger excessive logging, degrading performance during peak traffic.\n   - **Files Involved:** `auth/user_auth.py`, `utils/session.py`, `middleware/logging.py`\n   - **Modification History:** `SessionManager` was refactored to use Redis instead of in-memory storage.\n\n3. **`DiscountEngine` → `CartCalculator` → `TaxService`**\n   - **Impact:** Low. Discount calculations are computationally expensive but rarely fail. However, a bug in `TaxService` could misapply discounts.\n   - **Files Involved:** `discounts/engine.py`, `cart/calculator.py`, `tax/service.py`\n   - **Modification History:** `TaxService` was updated to comply with new regional tax laws.\n\n#### **Recommendations**\n- **Immediate:** Add unit tests for `InventoryManager.updateStock()` to catch edge cases where stock levels become negative.\n- **Short-term:** Profile the `PaymentProcessor` → `OrderService` chain for latency bottlenecks. Consider caching frequent inventory checks.\n- **Long-term:** Audit `SessionManager` for memory leaks post-Redis migration. Monitor logging middleware during high-traffic events.\n\n**Next Steps:**\n1. Review the call graph visualization (attached) for deeper insights into nested function calls.\n2. Run a targeted grepai query to find all error-handling paths in the `PaymentProcessor` chain.\n3. Schedule a code review for the `DiscountEngine` to ensure tax law compliance.\n\n---\n*Analysis completed using grepai v1.2.3. Total execution time: 4.2 seconds.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "grepai#main-content",
+      "grepai#overview",
+      "grepai#setup",
+      "grepai#examples",
+      "grepai#tools",
+      "grepai#mcp",
+      "grepai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "grepai is an innovative automation skill designed for AI agents, particularly Claude Code, that facilitates semantic search and call graph generation for enhanced code understanding. This skill operates entirely locally, allowing developers to quickly search through large codebases and locate critical components such as authentication logic or error handling patterns using natural language queries. By integrating grepai into your workflow, you can streamline your code navigation and improve overall efficiency. One of the key benefits of grepai is its ability to save time by automating the process of locating dependencies and understanding function calls. For instance, developers can trace function calls to identify dependencies before making changes to critical code, reducing the risk of introducing bugs. Additionally, grepai can automatically keep your code index updated with a file watcher, ensuring that your searches remain accurate and relevant. This capability is particularly useful for teams managing large and complex codebases. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their productivity and code comprehension. With a difficulty level classified as beginner, grepai can be implemented in approximately 30 minutes, making it accessible for teams of all skill levels. Its integration with AI agents like Claude Code further enhances its utility, allowing for a more intelligent and responsive development environment. Practical use cases for grepai include quickly locating authentication logic in a large codebase, searching for error handling patterns across projects, and understanding dependencies before making significant changes. By adopting grepai, teams can leverage AI automation to facilitate workflow automation, ultimately leading to improved code quality and faster project delivery. As the demand for efficient coding practices grows, incorporating grepai into your AI-first workflows can provide a competitive edge.\nQuickly locate authentication logic in a large codebase by searching for 'authentication logic'.\nTrace function calls to understand dependencies before making changes to critical code.\nAutomatically keep your code index updated with a file watcher to ensure search accuracy.\nIntegrate grepai with AI agents like Claude Code to enhance code understanding and reduce input tokens.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoanbernabeu/grepai`",
+    "usage_vi": "```\nUse grepai to perform a semantic search and call graph analysis on the [PROJECT_NAME] codebase. Find all functions or methods that interact with [SPECIFIC_MODULE_OR_CLASS] and trace their call paths. Focus on files modified in the last [TIME_PERIOD] and exclude test files. Generate a report with the top 5 most critical call chains and their potential impact on [SPECIFIC_FEATURE_OR_COMPONENT].\n```\nCopy\n\n```\n### Semantic Search & Call Graph Analysis Report for Project: **E-Commerce Platform**\n\n**Scope:** Analyzed 12,456 lines of code across 147 files (last modified in the past 30 days). Excluded 32 test files.\n\n#### **Critical Call Chains Identified**\n\n1. **`PaymentProcessor` → `OrderService` → `InventoryManager`**\n   - **Impact:** High. This chain handles real-time inventory updates during checkout. A latency issue in `InventoryManager.updateStock()` could block payment processing, leading to abandoned carts.\n   - **Files Involved:** `services/payment.py`, `services/order.py`, `models/inventory.py`\n   - **Modification History:** All 3 files were updated in the last 2 weeks to support a new \"reserve inventory\" feature.\n\n2. **`UserAuth` → `SessionManager` → `LoggingMiddleware`**\n   - **Impact:** Medium. Authentication failures in `SessionManager` could trigger excessive logging, degrading performance during peak traffic.\n   - **Files Involved:** `auth/user_auth.py`, `utils/session.py`, `middleware/logging.py`\n   - **Modification History:** `SessionManager` was refactored to use Redis instead of in-memory storage.\n\n3. **`DiscountEngine` → `CartCalculator` → `TaxService`**\n   - **Impact:** Low. Discount calculations are computationally expensive but rarely fail. However, a bug in `TaxService` could misapply discounts.\n   - **Files Involved:** `discounts/engine.py`, `cart/calculator.py`, `tax/service.py`\n   - **Modification History:** `TaxService` was updated to comply with new regional tax laws.\n\n#### **Recommendations**\n- **Immediate:** Add unit tests for `InventoryManager.updateStock()` to catch edge cases where stock levels become negative.\n- **Short-term:** Profile the `PaymentProcessor` → `OrderService` chain for latency bottlenecks. Consider caching frequent inventory checks.\n- **Long-term:** Audit `SessionManager` for memory leaks post-Redis migration. Monitor logging middleware during high-traffic events.\n\n**Next Steps:**\n1. Review the call graph visualization (attached) for deeper insights into nested function calls.\n2. Run a targeted grepai query to find all error-handling paths in the `PaymentProcessor` chain.\n3. Schedule a code review for the `DiscountEngine` to ensure tax law compliance.\n\n---\n*Analysis completed using grepai v1.2.3. Total execution time: 4.2 seconds.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:43:08.897912Z",
+    "http_status": 200,
+    "content_hash": "df6a5ebffe1b443306cd431ccb826b14a268785ddae501f45b5a2baf76aa6397",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\grepai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\grepai.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "grepai: Enhance Code Understanding",
+  "short_description_vi": "grepai enables AI agents to perform semantic search and call graphs locally, benefiting developers and operations teams. It connects to codebases and developer tools, allowing for efficient code search and analysis without relying on external services."
+}

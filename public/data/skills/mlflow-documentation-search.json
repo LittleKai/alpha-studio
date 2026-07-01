@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mlflow-documentation-search",
+  "slug": "mlflow-documentation-search",
+  "name": "MLflow Documentation Search",
+  "headline": "MLflow Documentation Search: Find Docs & Code",
+  "short_description": "This skill allows users to fetch and search the MLflow documentation for specific topics, providing relevant page paths and code examples. It is designed for developers and data scientists who want to quickly locate documentation for MLflow.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "mlflow",
+  "install_command": "git clone https://github.com/mlflow/skills",
+  "source_repo_url": "https://github.com/mlflow/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "documentation-search",
+    "mlflow",
+    "documentation",
+    "search"
+  ],
+  "sections": {
+    "overview": "This skill fetches and searches the official MLflow documentation to help developers and data scientists quickly locate information about MLflow features, APIs, integrations, and tracing capabilities. It works by first consulting the MLflow documentation index, then retrieving the relevant markdown source files with complete, verbatim code examples. Use this skill when you need to look up MLflow documentation, understand how to integrate MLflow with other tools like LangGraph or LangChain, or find specific API reference information. The skill ensures you get accurate, up-to-date documentation directly from the official MLflow source rather than outdated or third-party references.\nFetch documentation on a specific MLflow topic\nRetrieve code examples from MLflow docs\nExplore relevant MLflow links for a given topic",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/mlflow/skills --skill searching-mlflow-docs`\n`git clone https://github.com/mlflow/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "mlflow-documentation-search#main-content",
+      "mlflow-documentation-search#overview",
+      "mlflow-documentation-search#setup",
+      "mlflow-documentation-search#examples",
+      "mlflow-documentation-search#tools",
+      "mlflow-documentation-search#mcp",
+      "mlflow-documentation-search#related"
+    ],
+    "overview_vi": "This skill fetches and searches the official MLflow documentation to help developers and data scientists quickly locate information about MLflow features, APIs, integrations, and tracing capabilities. It works by first consulting the MLflow documentation index, then retrieving the relevant markdown source files with complete, verbatim code examples. Use this skill when you need to look up MLflow documentation, understand how to integrate MLflow with other tools like LangGraph or LangChain, or find specific API reference information. The skill ensures you get accurate, up-to-date documentation directly from the official MLflow source rather than outdated or third-party references.\nFetch documentation on a specific MLflow topic\nRetrieve code examples from MLflow docs\nExplore relevant MLflow links for a given topic",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/mlflow/skills --skill searching-mlflow-docs`\n`git clone https://github.com/mlflow/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:09.028138Z",
+    "http_status": 200,
+    "content_hash": "e1687b289fbdc05b491f30d3796115698992a2186896ebbb4f333f80bd67fd65",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mlflow-documentation-search.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mlflow-documentation-search.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MLflow Documentation Search: Find Docs & Code",
+  "short_description_vi": "This skill allows users to fetch and search the MLflow documentation for specific topics, providing relevant page paths and code examples. It is designed for developers and data scientists who want to quickly locate documentation for MLflow."
+}

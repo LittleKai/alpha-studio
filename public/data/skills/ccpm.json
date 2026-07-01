@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccpm",
+  "slug": "ccpm",
+  "name": "browser-use",
+  "headline": "ccpm: Project Management",
+  "short_description": "Project management system for Claude Code using GitHub Issues and Git worktrees. Enables parallel agent execution for AI coding teams. Connects to GitHub for task tracking and version control.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "automazeio",
+  "install_command": "git clone https://github.com/automazeio/ccpm.git",
+  "source_repo_url": "https://github.com/automazeio/ccpm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "project-management",
+    "claude",
+    "vibe-coding",
+    "ai-coding"
+  ],
+  "sections": {
+    "overview": "The ccpm skill is an innovative project management system designed specifically for Claude Code, leveraging GitHub Issues and Git worktrees to facilitate parallel execution of AI agents. This automation skill allows users to create, manage, and synchronize project tasks effectively, ensuring that multiple agents can work on distinct issues simultaneously. By utilizing GitHub as a backbone, ccpm enhances collaboration and efficiency within teams, making project management a more streamlined process. One of the key benefits of the ccpm skill is its ability to transform traditional project management workflows into more dynamic and responsive systems. With the capability to create Product Requirements Documents (PRDs) with guided brainstorming, users can quickly outline project goals and requirements. Additionally, the skill can convert existing PRDs into technical epics, breaking down tasks into manageable components. This structured approach not only saves time but also improves clarity and focus across teams. The ccpm skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their project workflows. By synchronizing epics and tasks with GitHub, teams can maintain real-time updates on project progress, allowing for better tracking and accountability. Practical use cases include launching specialized AI agents to execute tasks while keeping all team members informed, thus enhancing collaboration and reducing bottlenecks. With an intermediate implementation difficulty and a setup time of approximately 30 minutes, ccpm is accessible for teams familiar with GitHub and project management tools. While the exact time savings are not quantified, the efficiency gained through parallel task execution and improved team collaboration is evident. In an AI-first workflow, ccpm integrates seamlessly, allowing teams to harness the power of AI agents to enhance productivity and drive project success.\nCreate a new Product Requirements Document (PRD) with guided brainstorming.\nTransform an existing PRD into a technical epic with detailed task breakdowns.\nSynchronize epics and tasks with GitHub to manage project progress effectively.\nLaunch specialized agents to execute tasks while maintaining real-time updates.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/automazeio/ccpm`",
+    "usage": "```\nSet up a CCPM (Claude Code Project Management) system for [TEAM_NAME]'s AI coding project. Create a GitHub repository named [REPO_NAME] with [NUMBER_OF_ISSUES] GitHub Issues labeled as 'task', 'bug', or 'feature'. For each issue, generate a corresponding Git worktree branch named 'issue-[ISSUE_NUMBER]-[SHORT_DESCRIPTION]'. Initialize each worktree with a README.md file containing the issue details and a basic project structure. Output the commands needed to set up the system and a summary of the created issues and branches.\n```\nCopy\n\n```\n### CCPM System Setup Complete\n\n**Repository Created:** `acme-ai-team/ccpm-demo`\n\n**Issues Created:**\n1. **Issue #101**: \"Implement user authentication API\"\n   - Labels: `task`, `backend`\n   - Branch: `issue-101-implement-user-auth`\n   - Worktree Path: `./worktrees/issue-101-implement-user-auth`\n   - README.md:\n ```markdown\n     # Issue #101: Implement user authentication API\n     **Priority:** High\n     **Assignee:** @ai-dev-1\n     **Description:** Create RESTful endpoints for JWT-based authentication.\n     **Acceptance Criteria:**\n     - [ ] POST /auth/login returns JWT token\n     - [ ] POST /auth/refresh refreshes token\n     - [ ] Unit tests cover all scenarios\n ```\n\n2. **Issue #102**: \"Fix memory leak in data processing module\"\n   - Labels: `bug`, `critical`\n   - Branch: `issue-102-fix-memory-leak`\n   - Worktree Path: `./worktrees/issue-102-fix-memory-leak`\n   - README.md:\n ```markdown\n     # Issue #102: Fix memory leak in data processing module\n     **Priority:** Critical\n     **Assignee:** @ai-dev-2\n     **Description:** Investigate and resolve memory consumption in the batch processing pipeline.\n     **Steps to Reproduce:**\n     - Run `python -m memory_profiler batch_processor.py`\n     - Observe steady memory growth over 10 iterations\n ```\n\n**Setup Commands Executed:**\n```bash\n# Clone repository\ngh repo clone acme-ai-team/ccpm-demo\ncd ccpm-demo\n\n# Create worktrees for each issue\ngit worktree add -b issue-101-implement-user-auth worktrees/issue-101-implement-user-auth origin/main\ngit worktree add -b issue-102-fix-memory-leak worktrees/issue-102-fix-memory-leak origin/main\n\n# Initialize each worktree with README\nfor wt in worktrees/*; do\n  echo \"# $wt\" > $wt/README.md\n  echo \"Issue details and project structure here.\" >> $wt/README.md\ndone\n```\n\n**Next Steps:**\n1. Assign issues to AI agents using `gh issue edit #101 --assignee @ai-dev-1`\n2. Push worktrees to GitHub: `git push --set-upstream origin issue-101-implement-user-auth`\n3. Monitor progress via `gh issue list --label task`\n\nThe system is now ready for parallel AI agent execution with isolated worktrees for each task.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccpm#main-content",
+      "ccpm#overview",
+      "ccpm#setup",
+      "ccpm#examples",
+      "ccpm#tools",
+      "ccpm#mcp",
+      "ccpm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The ccpm skill is an innovative project management system designed specifically for Claude Code, leveraging GitHub Issues and Git worktrees to facilitate parallel execution of AI agents. This automation skill allows users to create, manage, and synchronize project tasks effectively, ensuring that multiple agents can work on distinct issues simultaneously. By utilizing GitHub as a backbone, ccpm enhances collaboration and efficiency within teams, making project management a more streamlined process. One of the key benefits of the ccpm skill is its ability to transform traditional project management workflows into more dynamic and responsive systems. With the capability to create Product Requirements Documents (PRDs) with guided brainstorming, users can quickly outline project goals and requirements. Additionally, the skill can convert existing PRDs into technical epics, breaking down tasks into manageable components. This structured approach not only saves time but also improves clarity and focus across teams. The ccpm skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their project workflows. By synchronizing epics and tasks with GitHub, teams can maintain real-time updates on project progress, allowing for better tracking and accountability. Practical use cases include launching specialized AI agents to execute tasks while keeping all team members informed, thus enhancing collaboration and reducing bottlenecks. With an intermediate implementation difficulty and a setup time of approximately 30 minutes, ccpm is accessible for teams familiar with GitHub and project management tools. While the exact time savings are not quantified, the efficiency gained through parallel task execution and improved team collaboration is evident. In an AI-first workflow, ccpm integrates seamlessly, allowing teams to harness the power of AI agents to enhance productivity and drive project success.\nCreate a new Product Requirements Document (PRD) with guided brainstorming.\nTransform an existing PRD into a technical epic with detailed task breakdowns.\nSynchronize epics and tasks with GitHub to manage project progress effectively.\nLaunch specialized agents to execute tasks while maintaining real-time updates.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/automazeio/ccpm`",
+    "usage_vi": "```\nSet up a CCPM (Claude Code Project Management) system for [TEAM_NAME]'s AI coding project. Create a GitHub repository named [REPO_NAME] with [NUMBER_OF_ISSUES] GitHub Issues labeled as 'task', 'bug', or 'feature'. For each issue, generate a corresponding Git worktree branch named 'issue-[ISSUE_NUMBER]-[SHORT_DESCRIPTION]'. Initialize each worktree with a README.md file containing the issue details and a basic project structure. Output the commands needed to set up the system and a summary of the created issues and branches.\n```\nCopy\n\n```\n### CCPM System Setup Complete\n\n**Repository Created:** `acme-ai-team/ccpm-demo`\n\n**Issues Created:**\n1. **Issue #101**: \"Implement user authentication API\"\n   - Labels: `task`, `backend`\n   - Branch: `issue-101-implement-user-auth`\n   - Worktree Path: `./worktrees/issue-101-implement-user-auth`\n   - README.md:\n ```markdown\n     # Issue #101: Implement user authentication API\n     **Priority:** High\n     **Assignee:** @ai-dev-1\n     **Description:** Create RESTful endpoints for JWT-based authentication.\n     **Acceptance Criteria:**\n     - [ ] POST /auth/login returns JWT token\n     - [ ] POST /auth/refresh refreshes token\n     - [ ] Unit tests cover all scenarios\n ```\n\n2. **Issue #102**: \"Fix memory leak in data processing module\"\n   - Labels: `bug`, `critical`\n   - Branch: `issue-102-fix-memory-leak`\n   - Worktree Path: `./worktrees/issue-102-fix-memory-leak`\n   - README.md:\n ```markdown\n     # Issue #102: Fix memory leak in data processing module\n     **Priority:** Critical\n     **Assignee:** @ai-dev-2\n     **Description:** Investigate and resolve memory consumption in the batch processing pipeline.\n     **Steps to Reproduce:**\n     - Run `python -m memory_profiler batch_processor.py`\n     - Observe steady memory growth over 10 iterations\n ```\n\n**Setup Commands Executed:**\n```bash\n# Clone repository\ngh repo clone acme-ai-team/ccpm-demo\ncd ccpm-demo\n\n# Create worktrees for each issue\ngit worktree add -b issue-101-implement-user-auth worktrees/issue-101-implement-user-auth origin/main\ngit worktree add -b issue-102-fix-memory-leak worktrees/issue-102-fix-memory-leak origin/main\n\n# Initialize each worktree with README\nfor wt in worktrees/*; do\n  echo \"# $wt\" > $wt/README.md\n  echo \"Issue details and project structure here.\" >> $wt/README.md\ndone\n```\n\n**Next Steps:**\n1. Assign issues to AI agents using `gh issue edit #101 --assignee @ai-dev-1`\n2. Push worktrees to GitHub: `git push --set-upstream origin issue-101-implement-user-auth`\n3. Monitor progress via `gh issue list --label task`\n\nThe system is now ready for parallel AI agent execution with isolated worktrees for each task.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:08:08.416145Z",
+    "http_status": 200,
+    "content_hash": "697899879dae6215531fddcf576167826b052a92fa85154daa90ef8ffe7d3fac",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccpm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccpm.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccpm: Project Management",
+  "short_description_vi": "Project management system for Claude Code using GitHub Issues and Git worktrees. Enables parallel agent execution for AI coding teams. Connects to GitHub for task tracking and version control."
+}

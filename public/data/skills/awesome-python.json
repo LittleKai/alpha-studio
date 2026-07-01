@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-python",
+  "slug": "awesome-python",
+  "name": "Awesome Python",
+  "headline": "awesome python libraries for developers",
+  "short_description": "Hand-picked Python libraries and frameworks for automation. Organized by category, this skill helps operations teams streamline workflows. Connects to Jupyter, pandas, and other data tools.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "dylanhogg",
+  "install_command": "git clone https://github.com/dylanhogg/awesome-python.git",
+  "source_repo_url": "https://github.com/dylanhogg/awesome-python",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "python-library",
+    "machine-learning",
+    "chatgpt",
+    "natural-language-processing",
+    "open-source",
+    "awesome-list",
+    "awesome-python",
+    "awesome",
+    "data-science",
+    "nlp",
+    "data",
+    "deep-learning",
+    "jupyter",
+    "python",
+    "pandas"
+  ],
+  "sections": {
+    "overview": "Awesome Python is a hand-picked collection of 1,470+ Python libraries and frameworks organized across 40+ categories including Agentic AI, Machine Learning, Data Processing, LLMs, Natural Language Processing, and Web Development. The skill provides structured access to production-ready tools for automation, data analysis, machine learning operations, and application development. It includes recent repositories and covers specialized areas like reinforcement learning, time series forecasting, blockchain integration, and simulation. Developers use Awesome Python to quickly identify vetted libraries that solve specific problems, streamline research workflows, and integrate complementary tools across data science and engineering projects.\nQuickly find and integrate libraries for data manipulation and analysis in your Python projects.\nDiscover the latest tools for machine learning and deep learning to enhance your AI applications.\nUtilize libraries for web scraping and data collection to automate data gathering tasks.\nImplement testing and debugging tools to improve code quality and reliability in your software.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dylanhogg/awesome-python`",
+    "usage": "```\nGenerate a Python automation script using [LIBRARY_FRAMEWORK] to [TASK_DESCRIPTION]. Include error handling, logging, and comments for clarity. Example: 'Generate a Python automation script using the `requests` library to scrape product prices from an e-commerce site, save the data to a CSV file, and log any errors to a file named scrapelog.txt.'\n```\nCopy\n\n```\n```python\n# Product Price Scraper using requests and pandas\nimport requests\nimport pandas as pd\nimport logging\nfrom datetime import datetime\n\n# Configure logging\nlogging.basicConfig(filename='scrapelog.txt', level=logging.ERROR, \n                    format='%(asctime)s - %(levelname)s - %(message)s')\n\ndef scrape_product_prices(urls, output_file='product_prices.csv'):\n    \"\"\"\n    Scrapes product prices from a list of URLs and saves to CSV.\n    Handles errors gracefully and logs issues.\n    \"\"\"\n    scraped_data = []\n    \n    for url in urls:\n        try:\n            response = requests.get(url, timeout=10)\n            response.raise_for_status()  # Raises HTTPError for bad responses\n            \n            # Extract product name and price (example parsing logic)\n            product_name = response.text.split('<h1 class=\"product-title\">')[1].split('</h1>')[0]\n            price = float(response.text.split('class=\"price\">$')[1].split('<')[0])\n            \n            scraped_data.append({\n                'url': url,\n                'product_name': product_name,\n                'price': price,\n                'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')\n            })\n            \n        except requests.exceptions.RequestException as e:\n            logging.error(f\"Failed to scrape {url}: {str(e)}\")\n            continue\n        except (IndexError, ValueError) as e:\n            logging.error(f\"Data parsing error for {url}: {str(e)}\")\n            continue\n    \n    # Save to CSV\n    if scraped_data:\n        df = pd.DataFrame(scraped_data)\n        df.to_csv(output_file, index=False)\n        print(f\"Successfully saved {len(df)} products to {output_file}\")\n    else:\n        print(\"No data was scraped. Check scrapelog.txt for errors.\")\n\n# Example usage\nif __name__ == \"__main__\":\n    target_urls = [\n        'https://example-store.com/product1',\n        'https://example-store.com/product2',\n        'https://example-store.com/product3'\n    ]\n    scrape_product_prices(target_urls)\n```\n\n**Output:**\n```\nSuccessfully saved 3 products to product_prices.csv\n```\n\n**CSV Output (product_prices.csv):**\n```\nurl,product_name,price,timestamp\nhttps://example-store.com/product1,Wireless Headphones,99.99,2023-11-15 14:30:22\nhttps://example-store.com/product2,Smart Watch,199.99,2023-11-15 14:30:22\nhttps://example-store.com/product3,Bluetooth Speaker,49.99,2023-11-15 14:30:22\n```\n\n**scrapelog.txt:**\n```\n2023-11-15 14:30:22,ERROR,Failed to scrape https://example-store.com/product4: 404 Client Error\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-python#main-content",
+      "awesome-python#overview",
+      "awesome-python#setup",
+      "awesome-python#examples",
+      "awesome-python#tools",
+      "awesome-python#mcp",
+      "awesome-python#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Python là một danh sách tổng hợp được tuyển chọn kỹ lưỡng với hơn 1.470 thư viện và framework Python, phân chia thành hơn 40 danh mục bao gồm Agentic AI, Machine Learning, Xử lý dữ liệu, LLM, Xử lý ngôn ngữ tự nhiên và Phát triển Web. Skill này cung cấp khả năng truy cập có cấu trúc vào các công cụ sẵn sàng cho production để phục vụ tự động hóa, phân tích dữ liệu, vận hành machine learning (MLOps) và phát triển ứng dụng. Tài nguyên này bao gồm các kho lưu trữ (repository) mới nhất và bao quát các lĩnh vực chuyên sâu như học tăng cường (reinforcement learning), dự báo chuỗi thời gian (time series forecasting), tích hợp blockchain và mô phỏng. Các lập trình viên sử dụng Awesome Python để nhanh chóng xác định các thư viện đã được kiểm chứng giúp giải quyết các vấn đề cụ thể, tối ưu hóa quy trình nghiên cứu và tích hợp các công cụ bổ trợ trong các dự án khoa học dữ liệu và kỹ thuật máy tính.\nTìm kiếm nhanh và tích hợp các thư viện xử lý và phân tích dữ liệu vào dự án Python của bạn.\nKhám phá các công cụ mới nhất cho machine learning và deep learning để nâng cấp ứng dụng AI của bạn.\nSử dụng các thư viện cào web (web scraping) và thu thập dữ liệu để tự động hóa các tác vụ thu thập thông tin.\nTriển khai các công cụ kiểm thử (testing) và gỡ lỗi (debugging) để cải thiện chất lượng cũng như độ tin cậy của mã nguồn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dylanhogg/awesome-python`",
+    "usage_vi": "```\nTạo một script tự động hóa bằng Python sử dụng [LIBRARY_FRAMEWORK] để [TASK_DESCRIPTION]. Bao gồm xử lý lỗi, logging và chú thích rõ ràng. Ví dụ: 'Tạo một script tự động hóa bằng Python sử dụng thư viện `requests` để cào giá sản phẩm từ một trang thương mại điện tử, lưu dữ liệu vào tệp CSV và ghi lại lỗi vào tệp scrapelog.txt.'\n```\nCopy\n\n```python\n# Script cào giá sản phẩm sử dụng requests và pandas\nimport requests\nimport pandas as pd\nimport logging\nfrom datetime import datetime\n\n# Cấu hình logging\nlogging.basicConfig(filename='scrapelog.txt', level=logging.ERROR, \n                    format='%(asctime)s - %(levelname)s - %(message)s')\n\ndef scrape_product_prices(urls, output_file='product_prices.csv'):\n    \"\"\"\n    Cào giá sản phẩm từ danh sách URL và lưu vào CSV.\n    Xử lý lỗi một cách mượt mà và ghi log các sự cố.\n    \"\"\"\n    scraped_data = []\n    \n    for url in urls:\n        try:\n            response = requests.get(url, timeout=10)\n            response.raise_for_status()  # Kích hoạt HTTPError đối với các phản hồi lỗi\n            \n            # Trích xuất tên sản phẩm và giá (logic phân tích mẫu)\n            product_name = response.text.split('<h1 class=\"product-title\">')[1].split('</h1>')[0]\n            price = float(response.text.split('class=\"price\">$')[1].split('<')[0])\n            \n            scraped_data.append({\n                'url': url,\n                'product_name': product_name,\n                'price': price,\n                'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')\n            })\n            \n        except requests.exceptions.RequestException as e:\n            logging.error(f\"Failed to scrape {url}: {str(e)}\")\n            continue\n        except (IndexError, ValueError) as e:\n            logging.error(f\"Data parsing error for {url}: {str(e)}\")\n            continue\n    \n    # Lưu vào file CSV\n    if scraped_data:\n        df = pd.DataFrame(scraped_data)\n        df.to_csv(output_file, index=False)\n        print(f\"Đã lưu thành công {len(df)} sản phẩm vào {output_file}\")\n    else:\n        print(\"Không có dữ liệu nào được cào. Kiểm tra scrapelog.txt để biết chi tiết lỗi.\")\n\n# Ví dụ sử dụng\nif __name__ == \"__main__\":\n    target_urls = [\n        'https://example-store.com/product1',\n        'https://example-store.com/product2',\n        'https://example-store.com/product3'\n    ]\n    scrape_product_prices(target_urls)\n```\n\n**Output:**\n```\nĐã lưu thành công 3 sản phẩm vào product_prices.csv\n```\n\n**CSV Output (product_prices.csv):**\n```\nurl,product_name,price,timestamp\nhttps://example-store.com/product1,Wireless Headphones,99.99,2023-11-15 14:30:22\nhttps://example-store.com/product2,Smart Watch,199.99,2023-11-15 14:30:22\nhttps://example-store.com/product3,Bluetooth Speaker,49.99,2023-11-15 14:30:22\n```\n\n**scrapelog.txt:**\n```\n2023-11-15 14:30:22,ERROR,Failed to scrape https://example-store.com/product4: 404 Client Error\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:55.585666Z",
+    "http_status": 200,
+    "content_hash": "91e0d19ee5e64347413e77df6f17fc157a18ea572f25b1617337a9b571d43b13",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-python.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-python.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "các thư viện python tuyệt vời dành cho lập trình viên",
+  "short_description_vi": "Các thư viện và framework Python được tuyển chọn kỹ lưỡng cho tự động hóa. Được sắp xếp theo danh mục, skill này giúp các đội ngũ vận hành tối ưu hóa quy trình làm việc. Kết nối mượt mà với Jupyter, pandas và các công cụ dữ liệu khác."
+}

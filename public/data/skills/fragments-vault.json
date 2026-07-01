@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/fragments-vault",
+  "slug": "fragments-vault",
+  "name": "browser-use",
+  "headline": "Fragments Vault - Capture Reading Insights",
+  "short_description": "Fragments Vault captures and organizes quotes, phrases, and ideas from reading materials. It benefits operations teams by centralizing knowledge for quick reference. The skill integrates with Claude to store and retrieve fragments, enhancing workflows like research, content creation, and knowledge management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "serudda",
+  "install_command": "git clone https://github.com/serudda/fragments-vault.git",
+  "source_repo_url": "https://github.com/serudda/fragments-vault",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "Fragments Vault is a plain-text knowledge management system designed for developers and knowledge workers who want to capture and organize quotes, phrases, and ideas directly from the terminal. It eliminates context-switching by keeping your vault where you code, using a simple inbox-based workflow: capture fragments quickly, then organize them into categories (career, building, life, or custom topics) with structured metadata including author, source, tags, and reasoning. The system uses Markdown and Git for full ownership and portability, preventing knowledge hoarding by requiring you to articulate why each fragment matters. Available skills include /save-fragment for quick inbox capture, /organize-fragments to categorize batches of fragments, and /browse-fragments to search and retrieve related ideas across your vault using a cross-category tag system.\nCapture research insights and quotes during reading sessions without switching apps\nBuild a searchable personal knowledge base organized by career, projects, or life topics\nOrganize and retrieve related ideas across multiple categories using consistent tags\nCreate context for fragments by documenting source, author, and personal relevance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/serudda/fragments-vault`",
+    "usage": "```\nCreate a new fragment in my Fragments Vault. The fragment is: '[FRAGMENT]'. The source is: '[SOURCE]'. The category is: '[CATEGORY]'. The tags are: '[TAGS]'.\n```\nCopy\n\n```\n# Fragment Created\n\n**Fragment:** \"The only way to do great work is to love what you do.\"\n**Source:** Steve Jobs Biography\n**Category:** Motivation\n**Tags:** #leadership #inspiration\n\nYour fragment has been successfully added to your Fragments Vault. You can now retrieve it using the search function.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "fragments-vault#main-content",
+      "fragments-vault#overview",
+      "fragments-vault#setup",
+      "fragments-vault#examples",
+      "fragments-vault#tools",
+      "fragments-vault#mcp",
+      "fragments-vault#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Fragments Vault is a plain-text knowledge management system designed for developers and knowledge workers who want to capture and organize quotes, phrases, and ideas directly from the terminal. It eliminates context-switching by keeping your vault where you code, using a simple inbox-based workflow: capture fragments quickly, then organize them into categories (career, building, life, or custom topics) with structured metadata including author, source, tags, and reasoning. The system uses Markdown and Git for full ownership and portability, preventing knowledge hoarding by requiring you to articulate why each fragment matters. Available skills include /save-fragment for quick inbox capture, /organize-fragments to categorize batches of fragments, and /browse-fragments to search and retrieve related ideas across your vault using a cross-category tag system.\nCapture research insights and quotes during reading sessions without switching apps\nBuild a searchable personal knowledge base organized by career, projects, or life topics\nOrganize and retrieve related ideas across multiple categories using consistent tags\nCreate context for fragments by documenting source, author, and personal relevance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/serudda/fragments-vault`",
+    "usage_vi": "```\nCreate a new fragment in my Fragments Vault. The fragment is: '[FRAGMENT]'. The source is: '[SOURCE]'. The category is: '[CATEGORY]'. The tags are: '[TAGS]'.\n```\nCopy\n\n```\n# Fragment Created\n\n**Fragment:** \"The only way to do great work is to love what you do.\"\n**Source:** Steve Jobs Biography\n**Category:** Motivation\n**Tags:** #leadership #inspiration\n\nYour fragment has been successfully added to your Fragments Vault. You can now retrieve it using the search function.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:29:40.415566Z",
+    "http_status": 200,
+    "content_hash": "9bc368c9047ac9553b10862feb42f25158b70581542344c482558c28fe0a943d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fragments-vault.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\fragments-vault.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Fragments Vault - Capture Reading Insights",
+  "short_description_vi": "Fragments Vault captures and organizes quotes, phrases, and ideas from reading materials. It benefits operations teams by centralizing knowledge for quick reference. The skill integrates with Claude to store and retrieve fragments, enhancing workflows like research, content creation, and knowledge management."
+}

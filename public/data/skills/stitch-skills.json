@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/stitch-skills",
+  "slug": "stitch-skills",
+  "name": "Stitch Skills",
+  "headline": "Boost Productivity with Stitch Skills",
+  "short_description": "Stitch Skills helps users to integrate and automate tasks across various applications, enhancing productivity and efficiency. With its intuitive interface, even beginners can harness the power of AI to simplify their daily workflows.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/google-labs-code",
+  "source_repo_url": "https://github.com/sh/google-labs-code",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "automation",
+    "productivity",
+    "AI",
+    "integration"
+  ],
+  "sections": {
+    "overview": "Stitch Skills is an AI agent skill designed to integrate and automate tasks across various applications. It enables users to connect workflows and reduce manual work by streamlining processes between different tools. The skill features an intuitive interface that makes automation accessible to users of all technical levels. By simplifying task automation, Stitch Skills helps improve overall productivity and efficiency in daily operations.\nAutomating repetitive tasks\nIntegrating multiple apps\nStreamlining data entry",
+    "setup": "Terminal\nCopy\n`npx skills add sh/google-labs-code`\n`git clone https://github.com/sh/google-labs-code`",
+    "usage": "```\nCreate an automated workflow using [TOOL_A] and [TOOL_B] to [SPECIFIC_TASK]. For example, when a new expense report is submitted in [TOOL_A], automatically verify its compliance in [TOOL_B], notify the approver via [TOOL_C], and log the action in [TOOL_D]. Include error handling for cases where the expense exceeds [THRESHOLD_AMOUNT] or violates [POLICY_RULE].\n```\nCopy\n\n```\n### Automated Expense Compliance Workflow\n\n**Trigger:** A new expense report is submitted in Productiv by a marketing team member for a $1,250 client dinner.\n\n**Step 1: Compliance Check in Productiv**\nProductiv’s AI engine cross-references the expense against the company’s SaaS policy rules and flags it for review because:\n- The vendor (Upscale Bistro) is not on the pre-approved list for client entertainment.\n- The amount exceeds the $1,000 per-meal policy for non-executive staff.\n- The report lacks a required receipt attachment.\n\n**Step 2: Approver Notification**\nProductiv sends an automated Slack DM to the finance team lead (Alex Chen) with:\n- A summary of the flagged issues.\n- A direct link to the report in Productiv.\n- A suggested next step: \"Request additional documentation or reject with reason.\"\n\n**Step 3: Approval/Rejection Workflow**\nAlex reviews the report in Productiv and rejects it with the note: \"Please provide receipt and confirm vendor approval.\" The system logs this action in Productiv’s audit trail and updates the expense owner (Sarah Kim) via email with:\n- The rejection reason.\n- A link to submit a revised report.\n\n**Step 4: Compliance Logging**\nProductiv updates its SaaS spending dashboard to reflect:\n- $0 allocated for this expense (pending resubmission).\n- A note in the audit log: \"Report #4521 rejected for policy violation (client dinner, $1,250).\"\n\n**Error Handling:**\nIf the expense exceeds $5,000, Productiv routes it to the CFO for manual review and sends a high-priority Slack alert to the finance team. If the receipt is missing, the system auto-generates a reminder email to the expense owner every 48 hours until resolved.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "stitch-skills#main-content",
+      "stitch-skills#overview",
+      "stitch-skills#setup",
+      "stitch-skills#examples",
+      "stitch-skills#tools",
+      "stitch-skills#mcp",
+      "stitch-skills#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Stitch Skills là một AI agent skill được thiết kế để tích hợp và tự động hóa các tác vụ trên nhiều ứng dụng khác nhau. Công cụ này cho phép người dùng kết nối các workflow và giảm thiểu các thao tác thủ công bằng cách tối ưu hóa quy trình giữa các công cụ khác nhau. Skill này sở hữu giao diện trực quan giúp người dùng ở mọi trình độ kỹ thuật đều có thể dễ dàng tiếp cận việc tự động hóa. Bằng cách đơn giản hóa quy trình tự động hóa tác vụ, Stitch Skills giúp nâng cao năng suất và hiệu quả tổng thể trong các hoạt động hàng ngày.\nTự động hóa các tác vụ lặp đi lặp lại\nTích hợp nhiều ứng dụng\nTối ưu hóa quy trình nhập dữ liệu",
+    "setup_vi": "Terminal\nSao chép\n`npx skills add sh/google-labs-code`\n`git clone https://github.com/sh/google-labs-code`",
+    "usage_vi": "```\nTạo một workflow tự động bằng cách sử dụng [TOOL_A] và [TOOL_B] để [SPECIFIC_TASK]. Ví dụ: khi một báo cáo chi phí mới được gửi trong [TOOL_A], hệ thống sẽ tự động xác minh tính tuân thủ trong [TOOL_B], thông báo cho người phê duyệt qua [TOOL_C] và ghi nhận hoạt động đó vào [TOOL_D]. Hãy thiết lập cả cơ chế xử lý lỗi (error handling) cho các trường hợp chi phí vượt quá [THRESHOLD_AMOUNT] hoặc vi phạm [POLICY_RULE].\n```\nSao chép\n\n```\n### Workflow kiểm tra tuân thủ chi phí tự động\n\n**Trigger:** Một báo cáo chi phí mới trị giá $1,250 cho bữa tối với khách hàng được gửi lên Productiv bởi một thành viên của đội ngũ marketing.\n\n**Bước 1: Kiểm tra tính tuân thủ trong Productiv**\nAI engine của Productiv đối chiếu chi phí với các quy tắc chính sách SaaS của công ty và gắn cờ (flag) để kiểm tra vì các lý do sau:\n- Nhà cung cấp (Upscale Bistro) không nằm trong danh sách được phê duyệt trước cho hoạt động tiếp khách.\n- Số tiền vượt quá hạn mức $1,000 cho mỗi bữa ăn theo chính sách dành cho nhân viên không thuộc cấp quản lý.\n- Báo cáo thiếu hóa đơn đính kèm bắt buộc.\n\n**Bước 2: Thông báo cho người phê duyệt**\nProductiv gửi một tin nhắn trực tiếp (DM) tự động trên Slack đến trưởng nhóm tài chính (Alex Chen) bao gồm:\n- Tóm tắt các vấn đề bị gắn cờ.\n- Đường dẫn trực tiếp đến báo cáo trong Productiv.\n- Gợi ý bước xử lý tiếp theo: \"Yêu cầu thêm tài liệu hoặc từ chối kèm lý do.\"\n\n**Bước 3: Workflow phê duyệt/từ chối**\nAlex xem xét báo cáo trong Productiv và từ chối kèm ghi chú: \"Vui lòng cung cấp hóa đơn và xác nhận phê duyệt nhà cung cấp.\" Hệ thống sẽ ghi lại hành động này trong audit trail của Productiv và cập nhật thông tin cho chủ sở hữu khoản chi (Sarah Kim) qua email với:\n- Lý do từ chối.\n- Đường dẫn để gửi lại báo cáo đã chỉnh sửa.\n\n**Bước 4: Ghi nhật ký tuân thủ**\nProductiv cập nhật dashboard chi tiêu SaaS để phản ánh:\n- Phân bổ $0 cho khoản chi này (đang chờ gửi lại).\n- Ghi chú trong audit log: \"Báo cáo #4521 bị từ chối do vi phạm chính sách (bữa tối với khách hàng, $1,250).\"\n\n**Xử lý lỗi (Error Handling):**\nNếu chi phí vượt quá $5,000, Productiv sẽ tự động chuyển tiếp đến CFO để phê duyệt thủ công và gửi một cảnh báo Slack có độ ưu tiên cao đến đội ngũ tài chính. Nếu thiếu hóa đơn, hệ thống sẽ tự động gửi email nhắc nhở đến chủ sở hữu khoản chi sau mỗi 48 giờ cho đến khi vấn đề được giải quyết.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:59.627931Z",
+    "http_status": 200,
+    "content_hash": "1210af918fd898f773c4e9c002d4801ae2d835480f72df2f2d51da8bd9143850",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stitch-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stitch-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tăng tốc năng suất với Stitch Skills",
+  "short_description_vi": "Stitch Skills giúp người dùng tích hợp và tự động hóa các tác vụ trên nhiều ứng dụng khác nhau, từ đó nâng cao năng suất và hiệu quả công việc. Nhờ giao diện trực quan, ngay cả những người mới bắt đầu cũng có thể khai thác sức mạng của AI để đơn giản hóa quy trình làm việc hàng ngày."
+}

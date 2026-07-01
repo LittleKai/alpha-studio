@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-layered-memory-architecture",
+  "slug": "claude-layered-memory-architecture",
+  "name": "browser-use",
+  "headline": "claude layered memory architecture",
+  "short_description": "A three-layer memory architecture for Claude that eliminates RAG retrieval failures by separating permanent knowledge, bootstrap configuration, and rotational working memory.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "360 min",
+  "author": "juanmacruzherrera",
+  "install_command": "git clone https://github.com/juanmacruzherrera/claude-layered-memory-architecture.git",
+  "source_repo_url": "https://github.com/juanmacruzherrera/claude-layered-memory-architecture",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-skills-creator",
+    "memory-management",
+    "rag",
+    "claude-ai",
+    "architecture",
+    "claude-skills",
+    "claude-code",
+    "context-window",
+    "claude",
+    "ai-memory",
+    "claude-skill",
+    "skills",
+    "learning",
+    "socratic-method",
+    "educational-ai",
+    "long-term-memory",
+    "claude-desktop",
+    "antrophic",
+    "education"
+  ],
+  "sections": {
+    "overview": "Claude Layered Memory Architecture solves AI context saturation by organizing memory into three distinct layers: a Project MD file that acts as a bootstrap config to auto-trigger skill loading, a SKILL.md file containing 900 lines of distilled permanent knowledge, and a rotational RAG layer cleared between sessions to hold only the current working context. This approach was developed after 10+ months of AI-assisted Python learning revealed that accumulating 79,000 lines of documentation in RAG caused 60% retrieval failures and frequent context compaction every 4-5 prompts. By replacing accumulation with hierarchy, the system reduced RAG retrieval failures to 0% and dramatically improved session continuity. It also introduces a Human-as-Firewall principle, where knowledge is manually curated before being uploaded, and supports three-tier sync across local, Claude Code, and Claude Desktop environments. Developers and learners using Claude for long-term, knowledge-intensive workflows are the primary beneficiaries.\nLong-term AI-assisted learning workflows where session context degrades over time\nPython study or coding education using Socratic method with Claude\nProjects where RAG databases have grown too large and cause retrieval failures\nMaintaining consistent Claude context across Claude.ai, Claude Code, and Claude Desktop",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/juanmacruzherrera/claude-layered-memory-architecture`",
+    "usage": "```\nAct as an AI assistant with a three-layer memory architecture. Use the following data to create a layered memory system: [LAYER_1_DATA], [LAYER_2_DATA], [LAYER_3_DATA]. Ensure the system can retrieve and update information across all layers. Provide a summary of the memory architecture and its benefits.\n```\nCopy\n\n```\n# Layered Memory Architecture Summary",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-layered-memory-architecture#main-content",
+      "claude-layered-memory-architecture#overview",
+      "claude-layered-memory-architecture#setup",
+      "claude-layered-memory-architecture#examples",
+      "claude-layered-memory-architecture#tools",
+      "claude-layered-memory-architecture#mcp",
+      "claude-layered-memory-architecture#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Layered Memory Architecture solves AI context saturation by organizing memory into three distinct layers: a Project MD file that acts as a bootstrap config to auto-trigger skill loading, a SKILL.md file containing 900 lines of distilled permanent knowledge, and a rotational RAG layer cleared between sessions to hold only the current working context. This approach was developed after 10+ months of AI-assisted Python learning revealed that accumulating 79,000 lines of documentation in RAG caused 60% retrieval failures and frequent context compaction every 4-5 prompts. By replacing accumulation with hierarchy, the system reduced RAG retrieval failures to 0% and dramatically improved session continuity. It also introduces a Human-as-Firewall principle, where knowledge is manually curated before being uploaded, and supports three-tier sync across local, Claude Code, and Claude Desktop environments. Developers and learners using Claude for long-term, knowledge-intensive workflows are the primary beneficiaries.\nLong-term AI-assisted learning workflows where session context degrades over time\nPython study or coding education using Socratic method with Claude\nProjects where RAG databases have grown too large and cause retrieval failures\nMaintaining consistent Claude context across Claude.ai, Claude Code, and Claude Desktop",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/juanmacruzherrera/claude-layered-memory-architecture`",
+    "usage_vi": "```\nAct as an AI assistant with a three-layer memory architecture. Use the following data to create a layered memory system: [LAYER_1_DATA], [LAYER_2_DATA], [LAYER_3_DATA]. Ensure the system can retrieve and update information across all layers. Provide a summary of the memory architecture and its benefits.\n```\nCopy\n\n```\n# Layered Memory Architecture Summary"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:35.236953Z",
+    "http_status": 200,
+    "content_hash": "ad93e2d2ca202df33bdbef624fb8bb7307338fb98514b78193404021d74bcb0c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-layered-memory-architecture.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-layered-memory-architecture.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude layered memory architecture",
+  "short_description_vi": "A three-layer memory architecture for Claude that eliminates RAG retrieval failures by separating permanent knowledge, bootstrap configuration, and rotational working memory."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/suitecrm-mcp",
+  "slug": "suitecrm-mcp",
+  "name": "N8N-Automation-Suite",
+  "headline": "SuiteCRM Integration for AI Assistants",
+  "short_description": "The SuiteCRM_MCP is a powerful integration tool that allows AI assistants to interact with SuiteCRM for efficient lead management, contact operations, and streamlined CRM workflows. Enhance your sales and marketing efforts with this strong model context protocol server.",
+  "tier": "Silver",
+  "category": "SDRAEMarketingRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "lrtherond",
+  "install_command": "claude install lrtherond/SuiteCRM_MCP",
+  "source_repo_url": "https://github.com/lrtherond/SuiteCRM_MCP",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "CRM workflows",
+    "AI integration",
+    "JavaScript",
+    "SuiteCRM",
+    "lead management"
+  ],
+  "sections": {
+    "overview": "SuiteCRM_MCP is a Model Context Protocol server that connects AI assistants like Claude to SuiteCRM's JSON API v8, automating lead and contact management workflows. It enables creation, searching, updating, and conversion of leads, along with advanced contact operations including linking, assignment, and duplicate management. The server handles OAuth 2.0 authentication automatically and supports full CRUD operations across all SuiteCRM modules with relationship management. Sales teams benefit from streamlined workflows that reduce manual data entry and accelerate lead processing through AI-assisted operations. Installation is available via NPM, source code, or Docker, with straightforward configuration through environment variables.\nAutomating lead entry into SuiteCRM\nRetrieving contact information for sales calls\nManaging CRM workflows through AI commands\nGenerating reports from SuiteCRM data",
+    "setup": "Terminal\nCopy\n`claude install lrtherond/SuiteCRM_MCP`\n`git clone https://github.com/lrtherond/SuiteCRM_MCP`",
+    "usage": "```\nAs a sales manager at [COMPANY], I need to manage leads and contacts in SuiteCRM. Use the SuiteCRM_MCP to [ACTION: e.g., 'find leads from the healthcare industry', 'update contact details', or 'create a new opportunity']. Provide a step-by-step guide with clear instructions.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "suitecrm-mcp#main-content",
+      "suitecrm-mcp#overview",
+      "suitecrm-mcp#setup",
+      "suitecrm-mcp#examples",
+      "suitecrm-mcp#tools",
+      "suitecrm-mcp#mcp",
+      "suitecrm-mcp#related",
+      "sendur",
+      "attio-mcp",
+      "n8n-automation-suite"
+    ],
+    "overview_vi": "SuiteCRM_MCP is a Model Context Protocol server that connects AI assistants like Claude to SuiteCRM's JSON API v8, automating lead and contact management workflows. It enables creation, searching, updating, and conversion of leads, along with advanced contact operations including linking, assignment, and duplicate management. The server handles OAuth 2.0 authentication automatically and supports full CRUD operations across all SuiteCRM modules with relationship management. Sales teams benefit from streamlined workflows that reduce manual data entry and accelerate lead processing through AI-assisted operations. Installation is available via NPM, source code, or Docker, with straightforward configuration through environment variables.\nAutomating lead entry into SuiteCRM\nRetrieving contact information for sales calls\nManaging CRM workflows through AI commands\nGenerating reports from SuiteCRM data",
+    "setup_vi": "Terminal\nCopy\n`claude install lrtherond/SuiteCRM_MCP`\n`git clone https://github.com/lrtherond/SuiteCRM_MCP`",
+    "usage_vi": "```\nAs a sales manager at [COMPANY], I need to manage leads and contacts in SuiteCRM. Use the SuiteCRM_MCP to [ACTION: e.g., 'find leads from the healthcare industry', 'update contact details', or 'create a new opportunity']. Provide a step-by-step guide with clear instructions.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:03:18.140705Z",
+    "http_status": 200,
+    "content_hash": "fdd429db9c61d54e3c0446eaba5a1619f5fb28b3f95c34148c89a0b1764c0837",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\suitecrm-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\suitecrm-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "SuiteCRM Integration for AI Assistants",
+  "short_description_vi": "The SuiteCRM_MCP is a powerful integration tool that allows AI assistants to interact with SuiteCRM for efficient lead management, contact operations, and streamlined CRM workflows. Enhance your sales and marketing efforts with this strong model context protocol server."
+}

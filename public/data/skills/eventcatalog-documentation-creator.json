@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/eventcatalog-documentation-creator",
+  "slug": "eventcatalog-documentation-creator",
+  "name": "Explain Code",
+  "headline": "EventCatalog Documentation Creator: Auto-Generate",
+  "short_description": "This skill generates well-structured EventCatalog documentation files based on existing projects. It's designed for users who need to document EventCatalog projects following best practices.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "event-catalog",
+  "install_command": "git clone https://github.com/event-catalog/skills",
+  "source_repo_url": "https://github.com/event-catalog/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "eventcatalog",
+    "creator",
+    "documentation"
+  ],
+  "sections": {
+    "overview": "The EventCatalog Documentation Creator skill automates the generation of properly formatted EventCatalog documentation files, including services, agents, events, commands, queries, domains, flows, channels, and containers. It handles frontmatter configuration and folder structure according to EventCatalog best practices, eliminating manual setup overhead. This skill works standalone or as part of a larger documentation workflow—you can document individual services and events directly, or feed it output from the code-to-catalog skill for comprehensive architectural documentation. It's ideal for teams building event-driven systems who need consistent, standards-compliant documentation without manual file scaffolding.\nGenerate documentation for new EventCatalog projects\nUpdate existing EventCatalog documentation\nVerify if a repository is structured as an EventCatalog project\nThis documentation describes the event-driven architecture of Acme Corp's E-Commerce Platform, implemented using EventCatalog. The system handles order management, inventory updates, and customer notifications through a series of domain events, commands, and aggregates.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/event-catalog/skills --skill catalog-documentation-creator`\n`git clone https://github.com/event-catalog/skills`",
+    "usage": "```\nGenerate comprehensive EventCatalog documentation for a project in [COMPANY]'s [INDUSTRY] domain. Include domain events, commands, queries, and aggregates. Use the following project structure: [DATA]. Ensure the documentation follows EventCatalog best practices and includes clear descriptions, versioning, and relationships between components. Format the output as a ready-to-use EventCatalog markdown file.\n```\nCopy\n\n```\n# EventCatalog Documentation for Acme Corp's E-Commerce Platform",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "eventcatalog-documentation-creator#main-content",
+      "eventcatalog-documentation-creator#overview",
+      "eventcatalog-documentation-creator#setup",
+      "eventcatalog-documentation-creator#examples",
+      "eventcatalog-documentation-creator#related",
+      "readme-generator",
+      "wds-documentation-navigator",
+      "explain-code"
+    ],
+    "overview_vi": "The EventCatalog Documentation Creator skill automates the generation of properly formatted EventCatalog documentation files, including services, agents, events, commands, queries, domains, flows, channels, and containers. It handles frontmatter configuration and folder structure according to EventCatalog best practices, eliminating manual setup overhead. This skill works standalone or as part of a larger documentation workflow—you can document individual services and events directly, or feed it output from the code-to-catalog skill for comprehensive architectural documentation. It's ideal for teams building event-driven systems who need consistent, standards-compliant documentation without manual file scaffolding.\nGenerate documentation for new EventCatalog projects\nUpdate existing EventCatalog documentation\nVerify if a repository is structured as an EventCatalog project\nThis documentation describes the event-driven architecture of Acme Corp's E-Commerce Platform, implemented using EventCatalog. The system handles order management, inventory updates, and customer notifications through a series of domain events, commands, and aggregates.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/event-catalog/skills --skill catalog-documentation-creator`\n`git clone https://github.com/event-catalog/skills`",
+    "usage_vi": "```\nGenerate comprehensive EventCatalog documentation for a project in [COMPANY]'s [INDUSTRY] domain. Include domain events, commands, queries, and aggregates. Use the following project structure: [DATA]. Ensure the documentation follows EventCatalog best practices and includes clear descriptions, versioning, and relationships between components. Format the output as a ready-to-use EventCatalog markdown file.\n```\nCopy\n\n```\n# EventCatalog Documentation for Acme Corp's E-Commerce Platform"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:28:53.378054Z",
+    "http_status": 200,
+    "content_hash": "16ad030e728a11beddb8dd7511b1a673fde5d291bd575cd66afdf0c3fc3c9f6a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\eventcatalog-documentation-creator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\eventcatalog-documentation-creator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "EventCatalog Documentation Creator: Auto-Generate",
+  "short_description_vi": "This skill generates well-structured EventCatalog documentation files based on existing projects. It's designed for users who need to document EventCatalog projects following best practices."
+}

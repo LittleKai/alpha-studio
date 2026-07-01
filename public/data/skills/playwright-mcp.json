@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/playwright-mcp",
+  "slug": "playwright-mcp",
+  "name": "Playwright MCP",
+  "headline": "Playwright MCP - Browser Testing Automation Server",
+  "short_description": "Playwright MCP automates browser testing for developers. It manages browser contexts, enabling structured accessibility snapshots for LLM interaction. Integrates with GitHub Copilot and VS Code, enhancing testing workflows.",
+  "tier": "Gold",
+  "category": "GrowthDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "65 min",
+  "author": "microsoft",
+  "install_command": "claude install microsoft/playwright-mcp",
+  "source_repo_url": "https://github.com/microsoft/playwright-mcp",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "automation",
+    "browser",
+    "testing",
+    "Playwright",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "Playwright MCP is a Model Context Protocol server built by Microsoft that integrates Playwright browser automation with AI agents like Claude and Cursor. It manages browser contexts and generates structured accessibility snapshots that allow LLMs to understand and interact with web pages programmatically. The skill enables developers to automate browser testing, validate web application behavior, and create end-to-end test scenarios directly within AI-powered development environments. It bridges the gap between AI agents and real browser interactions, making it possible to test web applications, verify UI elements, and capture page state for analysis. Developers using GitHub Copilot, VS Code, and other AI tools can leverage Playwright MCP to enhance their testing workflows and automate quality assurance tasks.\nAutomating end-to-end browser tests for web applications to ensure functionality across different browsers.\nManaging multiple browser contexts to test various user scenarios in parallel, speeding up the testing process.\nIntegrating Playwright MCP with CI/CD pipelines to automate testing as part of the deployment process.\nSimulating complex user interactions, such as drag-and-drop or multi-step forms, to validate application behavior.",
+    "setup": "Terminal\nCopy\n`claude install microsoft/playwright-mcp`\n`git clone https://github.com/microsoft/playwright-mcp`",
+    "usage": "```\nSet up a Playwright MCP test for a [WEBSITE] that checks for [ACCESSIBILITY CRITERIA]. Generate a structured accessibility snapshot and integrate it with GitHub Copilot for review. Ensure the test runs automatically in [BROWSER] using VS Code.\n```\nCopy\n\n```\nThe Playwright MCP test for the e-commerce website 'ShopEasy' has been successfully set up. The test checks for WCAG 2.1 AA compliance, focusing on keyboard navigation, ARIA attributes, and color contrast. The structured accessibility snapshot includes detailed reports on each page element, highlighting issues such as missing alt text for images and insufficient color contrast in the product filters. The snapshot is now integrated with GitHub Copilot, which provides actionable suggestions for fixes. The test is configured to run automatically in Chrome using VS Code, with results displayed in the integrated terminal. Developers can now review and address the accessibility issues directly within their development environment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "playwright-mcp#main-content",
+      "playwright-mcp#overview",
+      "playwright-mcp#setup",
+      "playwright-mcp#examples",
+      "playwright-mcp#tools",
+      "playwright-mcp#mcp",
+      "playwright-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Playwright MCP là một server Model Context Protocol do Microsoft xây dựng nhằm tích hợp tính năng tự động hóa trình duyệt của Playwright với các AI agent như Claude và Cursor. Công cụ này quản lý các browser context và tạo ra các accessibility snapshot có cấu trúc, giúp LLM hiểu và tương tác lập trình (programmatically) với các trang web. Skill này cho phép lập trình viên tự động hóa việc kiểm thử trình duyệt, xác thực hành vi của ứng dụng web và xây dựng các kịch bản kiểm thử end-to-end ngay trong môi trường phát triển tích hợp AI. Nó thu hẹp khoảng cách giữa các AI agent và tương tác thực tế trên trình duyệt, giúp việc kiểm thử ứng dụng web, xác thực các phần tử UI và ghi lại trạng thái trang để phân tích trở nên khả thi. Các nhà phát triển sử dụng GitHub Copilot, VS Code và các công cụ AI khác có thể tận dụng Playwright MCP để tối ưu hóa workflow kiểm thử và tự động hóa các tác vụ đảm bảo chất lượng (QA).\n\nTự động hóa các bài kiểm thử trình duyệt end-to-end cho ứng dụng web để đảm bảo tính năng hoạt động ổn định trên nhiều trình duyệt khác nhau.\nQuản lý nhiều browser context cùng lúc để kiểm thử song song nhiều kịch bản người dùng khác nhau, giúp đẩy nhanh tốc độ kiểm thử.\nTích hợp Playwright MCP vào CI/CD pipeline để tự động hóa việc kiểm thử như một phần của quy trình deployment.\nMô phỏng các tương tác phức tạp của người dùng, chẳng hạn như kéo thả (drag-and-drop) hoặc điền form nhiều bước, để xác thực hành vi của ứng dụng.",
+    "setup_vi": "Terminal\nSao chép\n`claude install microsoft/playwright-mcp`\n`git clone https://github.com/microsoft/playwright-mcp`",
+    "usage_vi": "```\nThiết lập một bài test Playwright MCP cho [WEBSITE] để kiểm tra [ACCESSIBILITY CRITERIA]. Tạo một accessibility snapshot có cấu trúc và tích hợp với GitHub Copilot để review. Đảm bảo bài test tự động chạy trên [BROWSER] bằng VS Code.\n```\nSao chép\n\n```\nBài test Playwright MCP cho trang web thương mại điện tử 'ShopEasy' đã được thiết lập thành công. Bài test này sẽ kiểm tra mức độ tuân thủ tiêu chuẩn WCAG 2.1 AA, tập trung vào điều hướng bằng bàn phím (keyboard navigation), các thuộc tính ARIA và độ tương phản màu sắc. Accessibility snapshot có cấu trúc bao gồm các báo cáo chi tiết cho từng phần tử trên trang, làm nổi bật các sự cố như thiếu thẻ alt cho hình ảnh và độ tương phản màu sắc không đạt yêu cầu trong các bộ lọc sản phẩm. Snapshot này hiện đã được tích hợp với GitHub Copilot để cung cấp các gợi ý khắc phục khả thi. Bài test được cấu hình để tự động chạy trên Chrome bằng VS Code, với kết quả được hiển thị trực tiếp trong terminal tích hợp. Các lập trình viên hiện có thể xem xét và xử lý các vấn đề về accessibility ngay trong môi trường phát triển của mình.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:09:21.117928Z",
+    "http_status": 200,
+    "content_hash": "63383def354f716f8ee1a8a94cd28244d8a7b067d2dfcff797e85059a8ae79a6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\playwright-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\playwright-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Playwright MCP - Server tự động hóa kiểm thử trình duyệt",
+  "short_description_vi": "Playwright MCP tự động hóa quy trình kiểm thử trình duyệt cho lập trình viên. Công cụ này quản lý các browser context, cho phép tạo các accessibility snapshot có cấu trúc để tương tác với LLM. Nhờ khả năng tích hợp với GitHub Copilot và VS Code, Playwright MCP giúp tối ưu hóa các workflow kiểm thử."
+}

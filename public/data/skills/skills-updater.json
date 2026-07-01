@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-updater",
+  "slug": "skills-updater",
+  "name": "Skills Updater",
+  "headline": "Skills Updater - Manage Claude Code Skills",
+  "short_description": "Manage, update, and discover Claude Code skills. Automatically checks for updates, reinstalls affected skills after market updates, and recommends popular skills from skills.sh. Supports both Chinese and English environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "yizhiyanhua-ai",
+  "install_command": "git clone https://github.com/yizhiyanhua-ai/skills-updater.git",
+  "source_repo_url": "https://github.com/yizhiyanhua-ai/skills-updater",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skills Updater helps Claude Code users keep their installed skills current and discover new ones. It scans your installed skills to identify available updates, automatically reinstalls affected skills when marketplaces are updated, and recommends popular skills from skills.sh. The tool supports both Chinese and English environments, automatically detecting your language preference. Use natural language commands like 'check skills updates' or 'recommend some skills' to trigger core functions, or use the /skills-updater command for quick access.\nCheck for updates across all installed skills and view version status\nUpdate specific skill marketplaces and automatically reinstall affected skills\nDiscover trending and popular skills from skills.sh recommendations\nMaintain multilingual skill management in Chinese or English environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yizhiyanhua-ai/skills-updater`",
+    "usage": "```\nCheck for updates to all installed Claude Code skills and reinstall any that have new versions. Then, recommend 5 popular skills from skills.sh that match the following criteria: [CATEGORY/TYPE, e.g., 'automation', 'data analysis', 'Chinese language support']. Output the results in a table with columns: Skill Name, Version, Description, and Installation Command.\n```\nCopy\n\n```\n```markdown\n| Skill Name               | Version | Description                                      | Installation Command                     |\n|--------------------------|---------|--------------------------------------------------|------------------------------------------|\n| skills-updater           | 1.2.0   | Automates skill updates and recommendations      | `skills install skills-updater`          |\n| data-validator           | 2.1.1   | Validates and cleans datasets                    | `skills install data-validator`          |\n| chinese-text-summarizer  | 1.0.3   | Summarizes Chinese text with context preservation| `skills install chinese-text-summarizer`  |\n| workflow-automator       | 3.0.2   | Automates repetitive workflow tasks              | `skills install workflow-automator`      |\n| json-formatter           | 1.1.0   | Formats and validates JSON files                 | `skills install json-formatter`          |\n```\n\n**Update Summary:**\n- Updated 8 skills automatically. No conflicts detected.\n- 3 skills required manual reinstallation due to breaking changes in dependencies.\n\n**Recommendations:**\n1. **workflow-automator**: Highly rated for automating repetitive tasks like file organization or API calls. Ideal for teams managing large datasets.\n2. **chinese-text-summarizer**: Perfect for processing Chinese-language documents or customer feedback. Supports batch processing for efficiency.\n3. **data-validator**: Critical for ensuring data integrity before analysis. Includes built-in error correction for common issues like missing fields.\n4. **json-formatter**: Essential for developers working with APIs or configuration files. Reduces manual errors in JSON formatting.\n5. **skills-updater**: Core tool for maintaining a healthy skill ecosystem. Automatically handles version conflicts and dependencies.\n\n**Next Steps:**\nRun `skills audit` to verify all skills are functioning correctly. If any issues arise, use `skills reinstall [SKILL_NAME]` to resolve them.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skills-updater#main-content",
+      "skills-updater#overview",
+      "skills-updater#setup",
+      "skills-updater#examples",
+      "skills-updater#tools",
+      "skills-updater#mcp",
+      "skills-updater#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skills Updater giúp người dùng Claude Code duy trì các skill đã cài đặt luôn ở phiên bản mới nhất và khám phá các skill mới. Công cụ này quét các skill đã cài đặt để xác định các bản cập nhật khả dụng, tự động cài đặt lại các skill bị ảnh hưởng khi các marketplace được cập nhật, và đề xuất các skill phổ biến từ skills.sh. Công cụ hỗ trợ cả môi trường tiếng Anh và tiếng Trung, tự động phát hiện ngôn ngữ ưu tiên của bạn. Sử dụng các câu lệnh ngôn ngữ tự nhiên như 'check skills updates' hoặc 'recommend some skills' để kích hoạt các chức năng cốt lõi, hoặc sử dụng lệnh /skills-updater để truy cập nhanh.\nKiểm tra cập nhật cho tất cả các skill đã cài đặt và xem trạng thái phiên bản\nCập nhật các skill marketplace cụ thể và tự động cài đặt lại các skill bị ảnh hưởng\nKhám phá các skill đang thịnh hành và phổ biến từ các đề xuất của skills.sh\nDuy trì quản lý skill đa ngôn ngữ trong môi trường tiếng Trung hoặc tiếng Anh",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yizhiyanhua-ai/skills-updater`",
+    "usage_vi": "```\nKiểm tra cập nhật cho tất cả các skill Claude Code đã cài đặt và cài đặt lại bất kỳ skill nào có phiên bản mới. Sau đó, đề xuất 5 skill phổ biến từ skills.sh khớp với tiêu chí sau: [CATEGORY/TYPE, ví dụ: 'automation', 'data analysis', 'Chinese language support']. Xuất kết quả dưới dạng bảng có các cột: Skill Name, Version, Description, và Installation Command.\n```\nCopy\n\n```\n```markdown\n| Skill Name               | Version | Description                                      | Installation Command                     |\n|--------------------------|---------|--------------------------------------------------|------------------------------------------|\n| skills-updater           | 1.2.0   | Tự động hóa việc cập nhật và đề xuất skill       | `skills install skills-updater`          |\n| data-validator           | 2.1.1   | Xác thực và làm sạch các tập dữ liệu             | `skills install data-validator`          |\n| chinese-text-summarizer  | 1.0.3   | Tóm tắt văn bản tiếng Trung và giữ nguyên ngữ cảnh| `skills install chinese-text-summarizer` |\n| workflow-automator       | 3.0.2   | Tự động hóa các tác vụ workflow lặp đi lặp lại   | `skills install workflow-automator`      |\n| json-formatter           | 1.1.0   | Định dạng và xác thực các file JSON              | `skills install json-formatter`          |\n```\n\n**Tóm tắt cập nhật:**\n- Đã tự động cập nhật 8 skill. Không phát hiện xung đột.\n- 3 skill yêu cầu cài đặt lại thủ công do có các thay đổi lớn gây lỗi (breaking changes) trong các dependency.\n\n**Đề xuất:**\n1. **workflow-automator**: Được đánh giá cao trong việc tự động hóa các tác vụ lặp đi lặp lại như tổ chức file hoặc gọi API. Lý tưởng cho các nhóm quản lý tập dữ liệu lớn.\n2. **chinese-text-summarizer**: Hoàn hảo để xử lý các tài liệu tiếng Trung hoặc phản hồi của khách hàng. Hỗ trợ xử lý hàng loạt (batch processing) để đạt hiệu suất cao.\n3. **data-validator**: Quan trọng để đảm bảo tính toàn vẹn của dữ liệu trước khi phân tích. Đi kèm tính năng sửa lỗi tích hợp cho các vấn đề phổ biến như thiếu trường thông tin.\n4. **json-formatter**: Cần thiết cho các lập trình viên làm việc với API hoặc file cấu hình. Giảm thiểu các lỗi thủ công khi định dạng JSON.\n5. **skills-updater**: Công cụ cốt lõi để duy trì một hệ sinh thái skill hoạt động ổn định. Tự động xử lý các xung đột phiên bản và dependency.\n\n**Các bước tiếp theo:**\nChạy lệnh `skills audit` để xác minh tất cả các skill hoạt động chính xác. Nếu có bất kỳ vấn đề nào phát sinh, sử dụng `skills reinstall [SKILL_NAME]` để giải quyết.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:56:56.201087Z",
+    "http_status": 200,
+    "content_hash": "1ed90b2e62c1c56d4b2dc270699852fab2a713712e0ae23916b4bf3fe1ecc937",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-updater.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-updater.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skills Updater - Quản lý các skill của Claude Code",
+  "short_description_vi": "Quản lý, cập nhật và khám phá các skill của Claude Code. Tự động kiểm tra cập nhật, cài đặt lại các skill bị ảnh hưởng sau khi cập nhật marketplace, và đề xuất các skill phổ biến từ skills.sh. Hỗ trợ cả môi trường tiếng Anh và tiếng Trung."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-obsidian-skills",
+  "slug": "claude-obsidian-skills",
+  "name": "browser-use",
+  "headline": "claude obsidian: manage vaults efficiently",
+  "short_description": "Claude Obsidian Skills automates Markdown and Obsidian workflows. Operations teams use it to manage vaults, extract insights, and streamline documentation. It connects to Claude Code, Gemini CLI, and other AI assistants.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "jykim",
+  "install_command": "git clone https://github.com/jykim/claude-obsidian-skills.git",
+  "source_repo_url": "https://github.com/jykim/claude-obsidian-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Obsidian Skills is a collection of reusable AI agent skills designed to automate personal knowledge management and Obsidian workflows. The toolkit includes skills for creating and managing Obsidian Canvas files, formatting wiki links, standardizing YAML frontmatter, validating markdown structure, generating Mermaid diagrams, creating presentation slides, producing narrated videos, and cleaning video content. Users can connect these skills to Claude Code, Gemini CLI, and other AI assistants to streamline documentation, manage knowledge vaults, and extract insights from their notes. Operations teams and knowledge workers benefit from automated vault management, consistent document formatting, and rapid content generation without manual configuration.\nValidate and fix broken wiki links across Obsidian vaults\nStandardize YAML frontmatter properties for consistent metadata\nCreate visual knowledge maps using Obsidian Canvas with automatic layout\nGenerate Mermaid diagrams for process flows and system architecture",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jykim/claude-obsidian-skills`",
+    "usage": "```\nAutomate the following Obsidian vault workflow: [TASK]. Use Claude Code to [SPECIFIC_ACTION] in the vault located at [VAULT_PATH]. Ensure all changes are committed to Git with the message '[COMMIT_MESSAGE]'. If errors occur, log them to [LOG_FILE] and suggest fixes. Example tasks: 'generate daily notes for [DATE_RANGE]', 'extract all backlinks for [[TARGET_NOTE]]', or 'sync tags across [NOTE_PATTERN]'.\n```\nCopy\n\n```\n```markdown\n# Automated Obsidian Workflow Report\n**Task:** Generate daily notes for 2024-01-01 to 2024-01-07\n**Vault Path:** ~/Obsidian/SecondBrain\n**Actions Completed:**\n1. Created 7 daily notes with YAML frontmatter (tags: #daily #log)\n2. Added template variables for [[Daily Template]]\n3. Committed changes to Git with message: 'feat: add Jan 1-7 daily notes'\n4. Generated backlink report for [[Productivity]] (found 12 references)\n\n**Errors Encountered:**\n- None - all operations completed successfully.\n\n**Suggested Next Steps:**\n- Review daily notes for [[2024-01-04]] (mentions [[Meeting Notes]] but no backlink)\n- Run `obsidian-sync-tags --pattern \"#meeting/*\"` to standardize tags\n```\n\n**Git Commit Summary:**\n```\ncommit 1a2b3c4d (HEAD -> main)\nAuthor: AI Assistant <ai@example.com>\nDate:   Mon Jan 8 10:15:00 2024 -0500\n\n    feat: add Jan 1-7 daily notes\n\n .obsidian/plugins/quickadd/data.json |  2 +-\n 2024-01-01.md                         | 15 +++++++++++++++\n 2024-01-02.md                         | 15 +++++++++++++++\n ... (5 more files)\n7 files changed, 105 insertions(+), 1 deletion(-)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-obsidian-skills#main-content",
+      "claude-obsidian-skills#overview",
+      "claude-obsidian-skills#setup",
+      "claude-obsidian-skills#examples",
+      "claude-obsidian-skills#tools",
+      "claude-obsidian-skills#mcp",
+      "claude-obsidian-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Obsidian Skills is a collection of reusable AI agent skills designed to automate personal knowledge management and Obsidian workflows. The toolkit includes skills for creating and managing Obsidian Canvas files, formatting wiki links, standardizing YAML frontmatter, validating markdown structure, generating Mermaid diagrams, creating presentation slides, producing narrated videos, and cleaning video content. Users can connect these skills to Claude Code, Gemini CLI, and other AI assistants to streamline documentation, manage knowledge vaults, and extract insights from their notes. Operations teams and knowledge workers benefit from automated vault management, consistent document formatting, and rapid content generation without manual configuration.\nValidate and fix broken wiki links across Obsidian vaults\nStandardize YAML frontmatter properties for consistent metadata\nCreate visual knowledge maps using Obsidian Canvas with automatic layout\nGenerate Mermaid diagrams for process flows and system architecture",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jykim/claude-obsidian-skills`",
+    "usage_vi": "```\nAutomate the following Obsidian vault workflow: [TASK]. Use Claude Code to [SPECIFIC_ACTION] in the vault located at [VAULT_PATH]. Ensure all changes are committed to Git with the message '[COMMIT_MESSAGE]'. If errors occur, log them to [LOG_FILE] and suggest fixes. Example tasks: 'generate daily notes for [DATE_RANGE]', 'extract all backlinks for [[TARGET_NOTE]]', or 'sync tags across [NOTE_PATTERN]'.\n```\nCopy\n\n```\n```markdown\n# Automated Obsidian Workflow Report\n**Task:** Generate daily notes for 2024-01-01 to 2024-01-07\n**Vault Path:** ~/Obsidian/SecondBrain\n**Actions Completed:**\n1. Created 7 daily notes with YAML frontmatter (tags: #daily #log)\n2. Added template variables for [[Daily Template]]\n3. Committed changes to Git with message: 'feat: add Jan 1-7 daily notes'\n4. Generated backlink report for [[Productivity]] (found 12 references)\n\n**Errors Encountered:**\n- None - all operations completed successfully.\n\n**Suggested Next Steps:**\n- Review daily notes for [[2024-01-04]] (mentions [[Meeting Notes]] but no backlink)\n- Run `obsidian-sync-tags --pattern \"#meeting/*\"` to standardize tags\n```\n\n**Git Commit Summary:**\n```\ncommit 1a2b3c4d (HEAD -> main)\nAuthor: AI Assistant <ai@example.com>\nDate:   Mon Jan 8 10:15:00 2024 -0500\n\n    feat: add Jan 1-7 daily notes\n\n .obsidian/plugins/quickadd/data.json |  2 +-\n 2024-01-01.md                         | 15 +++++++++++++++\n 2024-01-02.md                         | 15 +++++++++++++++\n ... (5 more files)\n7 files changed, 105 insertions(+), 1 deletion(-)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:16:17.923898Z",
+    "http_status": 200,
+    "content_hash": "ddfd96d3ee45bb133ed3f94524bc7db0dcd4f21b7f1d9a0f04a9b45296c0a2c0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-obsidian-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-obsidian-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude obsidian: manage vaults efficiently",
+  "short_description_vi": "Claude Obsidian Skills automates Markdown and Obsidian workflows. Operations teams use it to manage vaults, extract insights, and streamline documentation. It connects to Claude Code, Gemini CLI, and other AI assistants."
+}

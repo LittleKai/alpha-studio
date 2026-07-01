@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mautic-eb",
+  "slug": "mautic-eb",
+  "name": "Mautic EB",
+  "headline": "Mautic EB - Scalable Marketing Automation",
+  "short_description": "Mautic EB deploys Mautic on AWS Elastic Beanstalk for scalable marketing automation. Marketing teams benefit from automated campaigns, lead management, and analytics. Connects to AWS services for deployment and scaling.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "TheDMSGroup",
+  "install_command": "git clone https://github.com/TheDMSGroup/mautic-eb.git",
+  "source_repo_url": "https://github.com/TheDMSGroup/mautic-eb",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "marketing-automation",
+    "aws-elastic-beanstalk",
+    "php",
+    "mautic"
+  ],
+  "sections": {
+    "overview": "Mautic EB simplifies deploying Mautic marketing automation on Amazon Elastic Beanstalk, enabling teams to scale to millions of leads per week while maintaining HIPAA and PCI compliance. The solution integrates with AWS services including RDS MySQL, EFS for shared storage, and Redis for session management across scaled instances. It automates campaign triggers, lead management, and contact processing through configurable worker processes for kickoff, scheduled, and inactive campaign actions. Teams can deploy via Travis CI or manually using Elastic Beanstalk CLI, with support for optional integrations like CloudFlare and New Relic monitoring. Custom plugins and brand-specific customizations are supported through standardized folder structures and Composer-based dependency management.\nDeploy scalable marketing automation handling millions of weekly leads\nMaintain HIPAA and PCI compliance in email marketing operations\nAutomate multi-channel campaign triggers across scaled infrastructure\nIntegrate lead management with AWS infrastructure and monitoring tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TheDMSGroup/mautic-eb`",
+    "usage": "```\nDeploy a Mautic instance on AWS Elastic Beanstalk for [COMPANY_NAME]’s marketing team. Configure the environment with [PHP_VERSION], [INSTANCE_TYPE], and [DATABASE_OPTION]. Enable automated scaling with a minimum of [MIN_INSTANCES] and maximum of [MAX_INSTANCES]. Integrate with [AWS_SERVICE] for email delivery and [AWS_SERVICE] for analytics. Provide the deployment URL and admin credentials upon completion.\n```\nCopy\n\n```\nMautic has been successfully deployed on AWS Elastic Beanstalk for Acme Corp’s marketing team. The environment is running PHP 8.2 on t3.medium instances with a MySQL RDS database. Auto-scaling is configured with a minimum of 2 and maximum of 5 instances, triggered at 70% CPU utilization. Amazon SES is integrated for email delivery, and Amazon CloudWatch is set up for real-time analytics. The deployment URL is https://mautic.acmecorp.com, and the admin credentials are: Username: admin@acmecorp.com, Password: T3mpP@ssw0rd!2024. The instance is ready for campaign setup, lead segmentation, and performance tracking.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mautic-eb#main-content",
+      "mautic-eb#overview",
+      "mautic-eb#setup",
+      "mautic-eb#examples",
+      "mautic-eb#tools",
+      "mautic-eb#mcp",
+      "mautic-eb#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "Mautic EB đơn giản hóa việc triển khai hệ thống tự động hóa marketing Mautic trên Amazon Elastic Beanstalk, cho phép các đội ngũ mở rộng quy mô xử lý hàng triệu lead mỗi tuần trong khi vẫn duy trì tuân thủ các tiêu chuẩn HIPAA và PCI. Giải pháp này tích hợp trực tiếp với các dịch vụ AWS bao gồm RDS MySQL, EFS cho shared storage, và Redis để quản lý session trên các instance đã scale. Nó tự động hóa các trigger chiến dịch, quản lý lead và xử lý contact thông qua các tiến trình worker có thể cấu hình cho các hành động khởi chạy, lên lịch hoặc tạm dừng chiến dịch (kickoff, scheduled, và inactive campaign actions). Các đội ngũ có thể triển khai qua Travis CI hoặc thủ công bằng Elastic Beanstalk CLI, hỗ trợ các tùy chọn tích hợp như CloudFlare và giám sát qua New Relic. Ngoài ra, giải pháp cũng hỗ trợ các plugin tùy chỉnh và tùy biến thương hiệu thông qua cấu trúc thư mục chuẩn hóa và quản lý dependency bằng Composer.\nTriển khai hệ thống tự động hóa marketing có khả năng mở rộng, xử lý hàng triệu lead hàng tuần\nDuy trì tuân thủ HIPAA và PCI trong các hoạt động email marketing\nTự động hóa các trigger chiến dịch đa kênh trên hạ tầng được scale\nTích hợp quản lý lead với hạ tầng AWS và các công cụ giám sát (monitoring)",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn setup thủ công.\n`git clone https://github.com/TheDMSGroup/mautic-eb`",
+    "usage_vi": "```\nTriển khai một instance Mautic trên AWS Elastic Beanstalk cho đội ngũ marketing của [COMPANY_NAME]. Cấu hình môi trường với [PHP_VERSION], [INSTANCE_TYPE] và [DATABASE_OPTION]. Kích hoạt tự động mở rộng (auto-scaling) với tối thiểu [MIN_INSTANCES] và tối đa [MAX_INSTANCES] instance. Tích hợp với [AWS_SERVICE] để gửi email và [AWS_SERVICE] để phân tích. Cung cấp URL triển khai và thông tin đăng nhập admin sau khi hoàn tất.\n```\nCopy\n\n```\nMautic đã được triển khai thành công trên AWS Elastic Beanstalk cho đội ngũ marketing của Acme Corp. Môi trường đang chạy PHP 8.2 trên các instance t3.medium với cơ sở dữ liệu MySQL RDS. Auto-scaling được cấu hình với tối thiểu 2 và tối đa 5 instance, được trigger ở mức sử dụng CPU 70%. Amazon SES đã được tích hợp để gửi email, và Amazon CloudWatch được thiết lập để phân tích thời gian thực. URL triển khai là https://mautic.acmecorp.com, và thông tin đăng nhập admin là: Username: admin@acmecorp.com, Password: T3mpP@ssw0rd!2024. Instance đã sẵn sàng cho việc setup chiến dịch, phân khúc lead và theo dõi hiệu suất.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:55.694273Z",
+    "http_status": 200,
+    "content_hash": "3c49314f78104e51af9cfcadc9de31212f242ad2dc844c71840f0e64bc408384",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mautic-eb.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mautic-eb.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Mautic EB - Tự động hóa Marketing có khả năng mở rộng",
+  "short_description_vi": "Mautic EB hỗ trợ triển khai Mautic trên AWS Elastic Beanstalk để tự động hóa marketing với khả năng mở rộng cao. Các đội ngũ marketing có thể tận dụng các tính năng tự động hóa chiến dịch, quản lý lead và phân tích số liệu. Giải pháp này kết nối trực tiếp với các dịch vụ AWS để tối ưu hóa việc triển khai và scale."
+}

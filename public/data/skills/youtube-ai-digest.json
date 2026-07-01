@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/youtube-ai-digest",
+  "slug": "youtube-ai-digest",
+  "name": "YouTube AI Digest",
+  "headline": "YouTube AI Digest - Automate AI Video Research",
+  "short_description": "Browse, summarize, and capture AI-related YouTube videos. Operations teams benefit by staying updated on AI trends without manual effort. Connects to Claude for AI analysis and summarization.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "yizhiyanhua-ai",
+  "install_command": "git clone https://github.com/yizhiyanhua-ai/youtube-ai-digest.git",
+  "source_repo_url": "https://github.com/yizhiyanhua-ai/youtube-ai-digest",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "YouTube AI Digest automates the process of tracking AI-related content across subscribed YouTube channels. The skill fetches the latest videos, extracts captions (including auto-generated subtitles), downloads thumbnails, and generates structured Markdown reports. Operations and research teams use it to monitor AI trends and developments without spending time manually browsing videos. Integration with Claude enables intelligent summarization and analysis of video content directly within your workflow.\nMonitor latest AI research and developments across multiple YouTube channels\nExtract video transcripts and auto-generate summaries for team reports\nBuild a searchable archive of AI video content with structured metadata\nStay informed on AI trends without manual video browsing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yizhiyanhua-ai/youtube-ai-digest`",
+    "usage": "```\nFind and summarize the top 5 AI-related YouTube videos from the past week. Focus on [INDUSTRY] trends. Provide key insights, speaker details, and timestamps for each video. Format the output with clear headers and bullet points.\n```\nCopy\n\n```\n# AI Video Digest: [INDUSTRY] Trends (Week of [DATE])",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "youtube-ai-digest#main-content",
+      "youtube-ai-digest#overview",
+      "youtube-ai-digest#setup",
+      "youtube-ai-digest#examples",
+      "youtube-ai-digest#tools",
+      "youtube-ai-digest#mcp",
+      "youtube-ai-digest#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "YouTube AI Digest automates the process of tracking AI-related content across subscribed YouTube channels. The skill fetches the latest videos, extracts captions (including auto-generated subtitles), downloads thumbnails, and generates structured Markdown reports. Operations and research teams use it to monitor AI trends and developments without spending time manually browsing videos. Integration with Claude enables intelligent summarization and analysis of video content directly within your workflow.\nMonitor latest AI research and developments across multiple YouTube channels\nExtract video transcripts and auto-generate summaries for team reports\nBuild a searchable archive of AI video content with structured metadata\nStay informed on AI trends without manual video browsing",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yizhiyanhua-ai/youtube-ai-digest`",
+    "usage_vi": "```\nFind and summarize the top 5 AI-related YouTube videos from the past week. Focus on [INDUSTRY] trends. Provide key insights, speaker details, and timestamps for each video. Format the output with clear headers and bullet points.\n```\nCopy\n\n```\n# AI Video Digest: [INDUSTRY] Trends (Week of [DATE])"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:36:04.804859Z",
+    "http_status": 200,
+    "content_hash": "0deac8936b888502681f14fca144f7d27d3913f15decfcc9b3915d3cc3564144",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\youtube-ai-digest.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\youtube-ai-digest.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "YouTube AI Digest - Automate AI Video Research",
+  "short_description_vi": "Browse, summarize, and capture AI-related YouTube videos. Operations teams benefit by staying updated on AI trends without manual effort. Connects to Claude for AI analysis and summarization."
+}

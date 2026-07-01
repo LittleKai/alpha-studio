@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/python-seo-analyzer",
+  "slug": "python-seo-analyzer",
+  "name": "popsicle",
+  "headline": "Python SEO Analyzer: Google Rank & Speed Tool",
+  "short_description": "Python automation script that checks website Google search ranking and page load speed for specified keywords without using proxies.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "dvbuiilds",
+  "install_command": "git clone https://github.com/dvbuiilds/python-seo-analyzer.git",
+  "source_repo_url": "https://github.com/dvbuiilds/python-seo-analyzer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Python SEO Analyzer is a free command-line tool that automates two critical SEO metrics: your website's Google search ranking for target keywords and page loading speed. The script scrapes Google SERPs using robobrowser to extract ranking data and measures page performance, outputting results in JSON format. It's designed for site owners and SEO professionals who need to monitor keyword rankings and performance without paid tools. Simply add your target keywords to a CSV file, specify your website URL and device type, and the script generates a comprehensive analysis. Note that checking large keyword volumes may trigger Google's rate limiting.\nMonitor keyword rankings for competitive analysis\nTrack page load speed performance over time\nAutomate SEO audits for multiple sites\nGenerate ranking reports for specific keywords",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dvbuiilds/python-seo-analyzer`",
+    "usage": "```\nCreate a Python script that analyzes SEO metrics for a website. The script should include functions to measure page loading time and check Google rankings for specific keywords. The output should be formatted in a clear, readable way. Focus on [COMPANY] in the [INDUSTRY] sector, using [KEYWORDS] as the target keywords for ranking analysis.\n```\nCopy\n\n```\n```python\n# SEO Analyzer Script\n\nimport requests\nimport time\nfrom bs4 import BeautifulSoup\n\n# Function to measure page loading time\ndef measure_page_load_time(url):\n    start_time = time.time()\n    response = requests.get(url)\n    end_time = time.time()\n    load_time = end_time - start_time\n    return load_time\n\n# Function to check Google rankings for keywords\ndef check_google_ranking(keywords, url):\n    rankings = {}\n    for keyword in keywords:\n        search_url = f\"https://www.google.com/search?q={keyword}\"\n        response = requests.get(search_url, headers={'User-Agent': 'Mozilla/5.0'})\n        soup = BeautifulSoup(response.text, 'html.parser')\n        results = soup.find_all('div', class_='tF2Cxc')\n        for i, result in enumerate(results, 1):\n            if url in result.text:\n                rankings[keyword] = i\n                break\n    return rankings\n\n# Example usage\ncompany_url = \"https://www.exampletech.com\"\nkeywords = [\"cloud computing\", \"AI solutions\", \"data analytics\"]\n\nload_time = measure_page_load_time(company_url)\nrankings = check_google_ranking(keywords, company_url)\n\nprint(f\"Page Load Time: {load_time:.2f} seconds\")\nprint(\"Google Rankings:\")\nfor keyword, rank in rankings.items():\n    print(f\"{keyword}: Rank #{rank}\")\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "python-seo-analyzer#main-content",
+      "python-seo-analyzer#overview",
+      "python-seo-analyzer#setup",
+      "python-seo-analyzer#examples",
+      "python-seo-analyzer#tools",
+      "python-seo-analyzer#mcp",
+      "python-seo-analyzer#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Python SEO Analyzer is a free command-line tool that automates two critical SEO metrics: your website's Google search ranking for target keywords and page loading speed. The script scrapes Google SERPs using robobrowser to extract ranking data and measures page performance, outputting results in JSON format. It's designed for site owners and SEO professionals who need to monitor keyword rankings and performance without paid tools. Simply add your target keywords to a CSV file, specify your website URL and device type, and the script generates a comprehensive analysis. Note that checking large keyword volumes may trigger Google's rate limiting.\nMonitor keyword rankings for competitive analysis\nTrack page load speed performance over time\nAutomate SEO audits for multiple sites\nGenerate ranking reports for specific keywords",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dvbuiilds/python-seo-analyzer`",
+    "usage_vi": "```\nCreate a Python script that analyzes SEO metrics for a website. The script should include functions to measure page loading time and check Google rankings for specific keywords. The output should be formatted in a clear, readable way. Focus on [COMPANY] in the [INDUSTRY] sector, using [KEYWORDS] as the target keywords for ranking analysis.\n```\nCopy\n\n```\n```python\n# SEO Analyzer Script\n\nimport requests\nimport time\nfrom bs4 import BeautifulSoup\n\n# Function to measure page loading time\ndef measure_page_load_time(url):\n    start_time = time.time()\n    response = requests.get(url)\n    end_time = time.time()\n    load_time = end_time - start_time\n    return load_time\n\n# Function to check Google rankings for keywords\ndef check_google_ranking(keywords, url):\n    rankings = {}\n    for keyword in keywords:\n        search_url = f\"https://www.google.com/search?q={keyword}\"\n        response = requests.get(search_url, headers={'User-Agent': 'Mozilla/5.0'})\n        soup = BeautifulSoup(response.text, 'html.parser')\n        results = soup.find_all('div', class_='tF2Cxc')\n        for i, result in enumerate(results, 1):\n            if url in result.text:\n                rankings[keyword] = i\n                break\n    return rankings\n\n# Example usage\ncompany_url = \"https://www.exampletech.com\"\nkeywords = [\"cloud computing\", \"AI solutions\", \"data analytics\"]\n\nload_time = measure_page_load_time(company_url)\nrankings = check_google_ranking(keywords, company_url)\n\nprint(f\"Page Load Time: {load_time:.2f} seconds\")\nprint(\"Google Rankings:\")\nfor keyword, rank in rankings.items():\n    print(f\"{keyword}: Rank #{rank}\")\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:20:38.178750Z",
+    "http_status": 200,
+    "content_hash": "c5f8d29e8d73af1de08c5c8452711393bb581f4c873be6ba137ffe8f5a007ae0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\python-seo-analyzer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\python-seo-analyzer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Python SEO Analyzer: Google Rank & Speed Tool",
+  "short_description_vi": "Python automation script that checks website Google search ranking and page load speed for specified keywords without using proxies."
+}

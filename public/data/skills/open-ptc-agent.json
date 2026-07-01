@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-ptc-agent",
+  "slug": "open-ptc-agent",
+  "name": "browser-use",
+  "headline": "Open PTC Agent - Automates Code Execution",
+  "short_description": "Open PTC Agent automates code execution with Programatic Tool Calling (PTC) for operations teams. It connects to LangChain and Langraph workflows, enabling developers to build custom agents for Claude LLM. The open-source tool is written in Python 3.12+ and is licensed under MIT.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Chen-zexi",
+  "install_command": "git clone https://github.com/Chen-zexi/open-ptc-agent.git",
+  "source_repo_url": "https://github.com/Chen-zexi/open-ptc-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "daytona",
+    "langraph",
+    "langchain",
+    "mcp",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Open PTC Agent is an open-source Python framework that automates code execution using Programmatic Tool Calling (PTC) for operations teams and developers. It integrates with LangChain and LangGraph workflows, enabling the creation of custom autonomous agents powered by Claude LLM. Written in Python 3.12+, the tool provides a foundation for building specialized agents that can execute code and handle complex workflows. The MIT-licensed project includes demo skills and MCP server implementations, making it suitable for teams seeking to extend Claude's capabilities with automated tool execution.\nAutomate the analysis of financial market data by fetching and processing stock prices for multiple tickers.\nCreate complex data visualizations by executing Python code that aggregates and transforms raw data.\nStreamline the generation of reports by automating the extraction and formatting of data from various sources.\nImplement background tasks that allow for asynchronous execution of multiple data processing jobs without blocking the main workflow.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Chen-zexi/open-ptc-agent`",
+    "usage": "```\nUse the Open PTC Agent to [TASK] by integrating it with [LANGCHAIN/LANGGRAPH_WORKFLOW]. Configure the agent with [PYTHON_CONFIGURATION] and execute it via [COMMAND_LINE_INTERFACE]. Monitor the output and handle any errors using [LOGGING/DEBUGGING_TOOLS].\n```\nCopy\n\n```\n```python\n# Example: Automating a data processing task with Open PTC Agent\nfrom open_ptc_agent import PTC_Agent\nfrom langchain_community.llms import Ollama\n\n# Initialize the agent with a custom workflow\nagent = PTC_Agent(\n    workflow=\"data_processing_pipeline\",\n    config={\n        \"model\": \"llama3\",\n        \"temperature\": 0.7,\n        \"max_tokens\": 1000\n    }\n)\n\n# Define the task: Process a CSV file and generate a summary report\nresult = agent.execute(\n    task=\"Process the sales_data.csv file to generate a summary report with total revenue, top products, and sales trends.\",\n    tools=[\"pandas\", \"matplotlib\"],\n    input_data={\n        \"file_path\": \"/data/sales_data.csv\",\n        \"output_dir\": \"/reports\"\n    }\n)\n\n# Output the results\nprint(\"Task completed successfully!\")\nprint(\"Generated report:\", result['report_path'])\nprint(\"Summary metrics:\", result['metrics'])\n```\n\n**Execution Log:**\n```\n[2024-05-20 14:30:22] INFO: Initializing PTC Agent with workflow 'data_processing_pipeline'\n[2024-05-20 14:30:25] INFO: Loading model 'llama3' with config {'temperature': 0.7, 'max_tokens': 1000}\n[2024-05-20 14:30:28] INFO: Executing task: Process sales_data.csv\n[2024-05-20 14:31:15] INFO: Data loaded successfully. Rows: 12,450\n[2024-05-20 14:32:03] INFO: Generating summary report...\n[2024-05-20 14:32:45] INFO: Report saved to /reports/sales_summary_2024-05-20.pdf\n[2024-05-20 14:32:45] INFO: Metrics calculated: Total Revenue: $1,245,678.90, Top Product: Widget Pro (34% of sales)\n```\n\nThe agent successfully processed the CSV file, generated a visual summary report with matplotlib, and calculated key metrics. The report is now ready for review in the specified output directory.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-ptc-agent#main-content",
+      "open-ptc-agent#overview",
+      "open-ptc-agent#setup",
+      "open-ptc-agent#examples",
+      "open-ptc-agent#tools",
+      "open-ptc-agent#mcp",
+      "open-ptc-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open PTC Agent is an open-source Python framework that automates code execution using Programmatic Tool Calling (PTC) for operations teams and developers. It integrates with LangChain and LangGraph workflows, enabling the creation of custom autonomous agents powered by Claude LLM. Written in Python 3.12+, the tool provides a foundation for building specialized agents that can execute code and handle complex workflows. The MIT-licensed project includes demo skills and MCP server implementations, making it suitable for teams seeking to extend Claude's capabilities with automated tool execution.\nAutomate the analysis of financial market data by fetching and processing stock prices for multiple tickers.\nCreate complex data visualizations by executing Python code that aggregates and transforms raw data.\nStreamline the generation of reports by automating the extraction and formatting of data from various sources.\nImplement background tasks that allow for asynchronous execution of multiple data processing jobs without blocking the main workflow.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Chen-zexi/open-ptc-agent`",
+    "usage_vi": "```\nUse the Open PTC Agent to [TASK] by integrating it with [LANGCHAIN/LANGGRAPH_WORKFLOW]. Configure the agent with [PYTHON_CONFIGURATION] and execute it via [COMMAND_LINE_INTERFACE]. Monitor the output and handle any errors using [LOGGING/DEBUGGING_TOOLS].\n```\nCopy\n\n```\n```python\n# Example: Automating a data processing task with Open PTC Agent\nfrom open_ptc_agent import PTC_Agent\nfrom langchain_community.llms import Ollama\n\n# Initialize the agent with a custom workflow\nagent = PTC_Agent(\n    workflow=\"data_processing_pipeline\",\n    config={\n        \"model\": \"llama3\",\n        \"temperature\": 0.7,\n        \"max_tokens\": 1000\n    }\n)\n\n# Define the task: Process a CSV file and generate a summary report\nresult = agent.execute(\n    task=\"Process the sales_data.csv file to generate a summary report with total revenue, top products, and sales trends.\",\n    tools=[\"pandas\", \"matplotlib\"],\n    input_data={\n        \"file_path\": \"/data/sales_data.csv\",\n        \"output_dir\": \"/reports\"\n    }\n)\n\n# Output the results\nprint(\"Task completed successfully!\")\nprint(\"Generated report:\", result['report_path'])\nprint(\"Summary metrics:\", result['metrics'])\n```\n\n**Execution Log:**\n```\n[2024-05-20 14:30:22] INFO: Initializing PTC Agent with workflow 'data_processing_pipeline'\n[2024-05-20 14:30:25] INFO: Loading model 'llama3' with config {'temperature': 0.7, 'max_tokens': 1000}\n[2024-05-20 14:30:28] INFO: Executing task: Process sales_data.csv\n[2024-05-20 14:31:15] INFO: Data loaded successfully. Rows: 12,450\n[2024-05-20 14:32:03] INFO: Generating summary report...\n[2024-05-20 14:32:45] INFO: Report saved to /reports/sales_summary_2024-05-20.pdf\n[2024-05-20 14:32:45] INFO: Metrics calculated: Total Revenue: $1,245,678.90, Top Product: Widget Pro (34% of sales)\n```\n\nThe agent successfully processed the CSV file, generated a visual summary report with matplotlib, and calculated key metrics. The report is now ready for review in the specified output directory.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:29:39.461018Z",
+    "http_status": 200,
+    "content_hash": "5ff46033b9d399c4bd7344d962fda3a9b33805da08bf2f2d782fcac7a333ec3e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\open-ptc-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\open-ptc-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Open PTC Agent - Automates Code Execution",
+  "short_description_vi": "Open PTC Agent automates code execution with Programatic Tool Calling (PTC) for operations teams. It connects to LangChain and Langraph workflows, enabling developers to build custom agents for Claude LLM. The open-source tool is written in Python 3.12+ and is licensed under MIT."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dagster-expert",
+  "slug": "dagster-expert",
+  "name": "Dagster Expert",
+  "headline": "Dagster Expert: Production Dagster Guidance",
+  "short_description": "dagster-expert provides in-depth knowledge of Dagster concepts and assists in project structure, debugging, and codebase navigation. It is aimed at users looking for expert guidance in working with Dagster and its CLI.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "dagster-io",
+  "install_command": "git clone https://github.com/dagster-io/skills",
+  "source_repo_url": "https://github.com/dagster-io/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "ai-agent-skills",
+    "expert",
+    "dagster"
+  ],
+  "sections": {
+    "overview": "dagster-expert is an AI agent skill that provides comprehensive guidance for building and managing Dagster data pipelines and workflows. It assists with project scaffolding, asset pattern design, automation setup using schedules and sensors, and CLI command usage. The skill helps developers debug materialization issues, structure projects for multiple pipelines, and implement best practices for production-quality Dagster applications. It supports asset dependencies, partitioning strategies, multi-assets, metadata configuration, and declarative automation patterns.\nGuiding users through Dagster project setup and asset definitions.\nAssisting in debugging and navigating the Dagster codebase.\nFacilitating integration with over 40 external tools.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/dagster-io/skills --skill dagster-expert`\n`git clone https://github.com/dagster-io/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "dagster-expert#main-content",
+      "dagster-expert#overview",
+      "dagster-expert#setup",
+      "dagster-expert#examples",
+      "dagster-expert#tools",
+      "dagster-expert#mcp",
+      "dagster-expert#related",
+      "long-running-agent-harness",
+      "agno"
+    ],
+    "overview_vi": "dagster-expert là một skill AI agent cung cấp hướng dẫn toàn diện để xây dựng và quản lý các data pipeline và workflow trong Dagster. Skill này hỗ trợ scaffolding dự án, thiết kế asset pattern, setup tự động hóa bằng schedule và sensor, cũng như cách sử dụng các lệnh CLI. Ngoài ra, nó còn giúp nhà phát triển debug các vấn đề về materialization, cấu trúc dự án cho nhiều pipeline và áp dụng các best practice để xây dựng ứng dụng Dagster đạt chuẩn production. Công cụ hỗ trợ quản lý dependency giữa các asset, chiến lược partitioning, multi-asset, cấu hình metadata và các declarative automation pattern.\nHướng dẫn người dùng setup dự án Dagster và định nghĩa asset.\nHỗ trợ debug và điều hướng codebase của Dagster.\nHỗ trợ tích hợp với hơn 40 công cụ bên ngoài.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/dagster-io/skills --skill dagster-expert`\n`git clone https://github.com/dagster-io/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nXem kho lưu trữ GitHub hoặc tài liệu hướng dẫn để biết các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:32.950639Z",
+    "http_status": 200,
+    "content_hash": "486a4a4086582affb20fc8d4870745b37dc457936ce94ce436269297e9a03fb7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dagster-expert.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dagster-expert.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Chuyên gia Dagster: Hướng dẫn Dagster cho môi trường Production",
+  "short_description_vi": "dagster-expert cung cấp kiến thức chuyên sâu về các khái niệm của Dagster, đồng thời hỗ trợ cấu trúc dự án, debug và điều hướng codebase. Skill này hướng đến những người dùng đang tìm kiếm hướng dẫn chuyên sâu từ chuyên gia khi làm việc với Dagster và CLI của công cụ này."
+}

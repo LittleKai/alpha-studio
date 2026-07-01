@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-agent-builder",
+  "slug": "open-agent-builder",
+  "name": "Open Agent Builder",
+  "headline": "Open Agent Builder - Visual AI Workflow Tool",
+  "short_description": "The open-agent-builder is a powerful visual workflow tool for creating AI agents with ease. It features drag-and-drop functionality for building web scraping pipelines, enabling real-time execution and integration into your projects.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "firecrawl",
+  "install_command": "claude install firecrawl/open-agent-builder",
+  "source_repo_url": "https://github.com/firecrawl/open-agent-builder",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "TypeScript",
+    "visual builder",
+    "web scraping",
+    "AI agents",
+    "workflow automation"
+  ],
+  "sections": {
+    "overview": "Open-agent-builder is an open-source visual workflow tool designed for building AI agents without requiring extensive coding. It features a drag-and-drop interface that enables developers to construct web scraping pipelines and other automation workflows efficiently. The platform supports real-time execution of workflows and integrates with multiple LLM providers including Anthropic, OpenAI, and Groq through user-specific API key management. It includes edge validation, error notifications, and auto-save functionality to streamline the agent development process. The tool is built with a modern tech stack and allows workflows to be integrated directly into projects.\nBuild dynamic web scraping pipelines to gather market intelligence.\nAutomate data collection processes for lead generation campaigns.\nCreate complex workflows for competitive analysis and reporting.\nIntegrate real-time data extraction into existing applications.",
+    "setup": "Terminal\nCopy\n`claude install firecrawl/open-agent-builder`\n`git clone https://github.com/firecrawl/open-agent-builder`",
+    "usage": "```\nUse the open-agent-builder in [Type] to create an AI agent that scrapes [WEBSITE_URL] for [SPECIFIC_DATA_TYPE, e.g., product prices, job listings, news headlines]. Configure the pipeline to extract [FIELDS_TO_EXTRACT] and output the results in [OUTPUT_FORMAT, e.g., CSV, JSON]. Test the agent in real-time and refine the scraping logic if needed.\n```\nCopy\n\n```\n### AI Agent Scraping Pipeline Report\n\n**Agent Name:** Product Price Monitor\n**Target Website:** [TechGadgets.com](https://techgadgets.com)\n**Data Type:** Smartphone prices and availability\n\n#### Pipeline Configuration:\n1. **Entry Point:** `https://techgadgets.com/smartphones`\n2. **Scraping Logic:**\n   - Extract product names, prices, and stock status from each product card.\n   - Follow pagination links to scrape all 5 pages of listings.\n   - Handle dynamic content using headless browser emulation.\n3. **Output Format:** JSON with fields: `product_name`, `price`, `availability`, `timestamp`.\n\n#### Real-Time Execution Results:\n```json\n[\n  {\n    \"product_name\": \"Galaxy S24 Ultra\",\n    \"price\": \"$1,199.99\",\n    \"availability\": \"In Stock\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"iPhone 15 Pro\",\n    \"price\": \"$999.00\",\n    \"availability\": \"Out of Stock\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Pixel 8 Pro\",\n    \"price\": \"$899.99\",\n    \"availability\": \"In Stock\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  }\n]\n```\n\n#### Refined Logic:\n- Added retry logic for failed requests (e.g., 403 errors).\n- Implemented rate limiting to avoid IP bans (1 request every 2 seconds).\n- Excluded sponsored listings to focus on organic results.\n\n**Next Steps:**\n- Schedule the agent to run daily at 8 AM UTC.\n- Set up alerts for price drops >10%.\n- Integrate with Google Sheets for team access.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "open-agent-builder#main-content",
+      "open-agent-builder#overview",
+      "open-agent-builder#setup",
+      "open-agent-builder#examples",
+      "open-agent-builder#tools",
+      "open-agent-builder#mcp",
+      "open-agent-builder#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Open-agent-builder is an open-source visual workflow tool designed for building AI agents without requiring extensive coding. It features a drag-and-drop interface that enables developers to construct web scraping pipelines and other automation workflows efficiently. The platform supports real-time execution of workflows and integrates with multiple LLM providers including Anthropic, OpenAI, and Groq through user-specific API key management. It includes edge validation, error notifications, and auto-save functionality to streamline the agent development process. The tool is built with a modern tech stack and allows workflows to be integrated directly into projects.\nBuild dynamic web scraping pipelines to gather market intelligence.\nAutomate data collection processes for lead generation campaigns.\nCreate complex workflows for competitive analysis and reporting.\nIntegrate real-time data extraction into existing applications.",
+    "setup_vi": "Terminal\nCopy\n`claude install firecrawl/open-agent-builder`\n`git clone https://github.com/firecrawl/open-agent-builder`",
+    "usage_vi": "```\nUse the open-agent-builder in [Type] to create an AI agent that scrapes [WEBSITE_URL] for [SPECIFIC_DATA_TYPE, e.g., product prices, job listings, news headlines]. Configure the pipeline to extract [FIELDS_TO_EXTRACT] and output the results in [OUTPUT_FORMAT, e.g., CSV, JSON]. Test the agent in real-time and refine the scraping logic if needed.\n```\nCopy\n\n```\n### AI Agent Scraping Pipeline Report\n\n**Agent Name:** Product Price Monitor\n**Target Website:** [TechGadgets.com](https://techgadgets.com)\n**Data Type:** Smartphone prices and availability\n\n#### Pipeline Configuration:\n1. **Entry Point:** `https://techgadgets.com/smartphones`\n2. **Scraping Logic:**\n   - Extract product names, prices, and stock status from each product card.\n   - Follow pagination links to scrape all 5 pages of listings.\n   - Handle dynamic content using headless browser emulation.\n3. **Output Format:** JSON with fields: `product_name`, `price`, `availability`, `timestamp`.\n\n#### Real-Time Execution Results:\n```json\n[\n  {\n    \"product_name\": \"Galaxy S24 Ultra\",\n    \"price\": \"$1,199.99\",\n    \"availability\": \"In Stock\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"iPhone 15 Pro\",\n    \"price\": \"$999.00\",\n    \"availability\": \"Out of Stock\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  },\n  {\n    \"product_name\": \"Pixel 8 Pro\",\n    \"price\": \"$899.99\",\n    \"availability\": \"In Stock\",\n    \"timestamp\": \"2024-05-20T14:30:00Z\"\n  }\n]\n```\n\n#### Refined Logic:\n- Added retry logic for failed requests (e.g., 403 errors).\n- Implemented rate limiting to avoid IP bans (1 request every 2 seconds).\n- Excluded sponsored listings to focus on organic results.\n\n**Next Steps:**\n- Schedule the agent to run daily at 8 AM UTC.\n- Set up alerts for price drops >10%.\n- Integrate with Google Sheets for team access.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:11.586015Z",
+    "http_status": 200,
+    "content_hash": "b5e0ee4d72206c8a98a317e7d63690dc685879537b9df2b4619010b8b8660427",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-agent-builder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-agent-builder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Open Agent Builder - Visual AI Workflow Tool",
+  "short_description_vi": "The open-agent-builder is a powerful visual workflow tool for creating AI agents with ease. It features drag-and-drop functionality for building web scraping pipelines, enabling real-time execution and integration into your projects."
+}

@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-branch-memory-manager",
+  "slug": "claude-code-branch-memory-manager",
+  "name": "Claude Code Branch Memory Manager",
+  "headline": "branch memory management for Claude Code",
+  "short_description": "Automatically manages branch-specific CLAUDE.md files so Claude always has the right context for your current work. Switch branches without losing your development context, notes, or current progress.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Davidcreador",
+  "install_command": "git clone https://github.com/Davidcreador/claude-code-branch-memory-manager.git",
+  "source_repo_url": "https://github.com/Davidcreador/claude-code-branch-memory-manager",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "bash",
+    "productivity",
+    "productivity-tools",
+    "developer-tools",
+    "ai",
+    "claude-code",
+    "context-management",
+    "git",
+    "git-hooks",
+    "branching",
+    "ai-tools",
+    "claude",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Code Branch Memory Manager solves the problem of losing development context when switching git branches. It stores and loads branch-specific CLAUDE.md files automatically, keeping separate memories for each branch in a .claude/memories/ directory. Works as a Claude Code plugin that intercepts git checkout and git switch commands, or as a standalone CLI tool. Install via npm and memories switch automatically—no manual intervention required. Ideal for developers juggling multiple feature branches who need Claude to remember the right context for each task.\nSwitch between feature branches without losing Claude Code context and notes\nMaintain separate development notes and progress tracking per branch\nAutomatically backup and restore branch-specific memories when checking out\nShare branch context across team members by committing memories to git",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Davidcreador/claude-code-branch-memory-manager`",
+    "usage": "```\nCreate a CLAUDE.md file for my current branch in the [REPOSITORY] repository. Include these key details: [KEY DETAILS]. Also, add these specific notes: [NOTES]. Make sure to reference the branch name [BRANCH NAME] in the file.\n```\nCopy\n\n```\n# CLAUDE.md for branch: feature/user-authentication",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-branch-memory-manager#main-content",
+      "claude-code-branch-memory-manager#overview",
+      "claude-code-branch-memory-manager#setup",
+      "claude-code-branch-memory-manager#examples",
+      "claude-code-branch-memory-manager#tools",
+      "claude-code-branch-memory-manager#mcp",
+      "claude-code-branch-memory-manager#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Branch Memory Manager solves the problem of losing development context when switching git branches. It stores and loads branch-specific CLAUDE.md files automatically, keeping separate memories for each branch in a .claude/memories/ directory. Works as a Claude Code plugin that intercepts git checkout and git switch commands, or as a standalone CLI tool. Install via npm and memories switch automatically—no manual intervention required. Ideal for developers juggling multiple feature branches who need Claude to remember the right context for each task.\nSwitch between feature branches without losing Claude Code context and notes\nMaintain separate development notes and progress tracking per branch\nAutomatically backup and restore branch-specific memories when checking out\nShare branch context across team members by committing memories to git",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Davidcreador/claude-code-branch-memory-manager`",
+    "usage_vi": "```\nCreate a CLAUDE.md file for my current branch in the [REPOSITORY] repository. Include these key details: [KEY DETAILS]. Also, add these specific notes: [NOTES]. Make sure to reference the branch name [BRANCH NAME] in the file.\n```\nCopy\n\n```\n# CLAUDE.md for branch: feature/user-authentication"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:37:39.632909Z",
+    "http_status": 200,
+    "content_hash": "cd77cff0b19cef7416be2ebcc46cf2e03280eb392aab8e4188ddde07edf2c8e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-branch-memory-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-branch-memory-manager.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "branch memory management for Claude Code",
+  "short_description_vi": "Automatically manages branch-specific CLAUDE.md files so Claude always has the right context for your current work. Switch branches without losing your development context, notes, or current progress."
+}

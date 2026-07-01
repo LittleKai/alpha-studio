@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/backend-skill",
+  "slug": "backend-skill",
+  "name": "Backend Skill",
+  "headline": "Backend Java Development Automation",
+  "short_description": "A Claude Code skill set for Java Spring Boot backend development that automates code generation, testing, and Git commits through 14 specialized slash commands covering the full development lifecycle.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "zhangloveyan",
+  "install_command": "git clone https://github.com/zhangloveyan/backend-skill.git",
+  "source_repo_url": "https://github.com/zhangloveyan/backend-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "backend-skill is a Claude Code skill collection built for Java Spring Boot enterprise projects, providing 14 slash commands that cover the entire development lifecycle from requirements analysis to Git commit. Developers can use commands like /proj-analyze-req, /proj-gen, /proj-review, and /proj-gen-test to automate code generation for SQL, Entity, Service, and Controller layers, run code reviews with security and performance checks, and produce JUnit 5 unit and integration tests. The skill set also handles edge cases like mid-session interruption recovery via /proj-resume and keeps documentation synchronized with code changes using /proj-sync-doc. It targets Java developers using Claude Code who work with the Spring Boot 3.x, MyBatis-Plus, MySQL, Redis, and Knife4j stack.\nGenerate boilerplate SQL, Entity, Service, and Controller code from a one-line requirement description\nRun automated code reviews with security and performance checks before committing\nAutomatically generate JUnit 5 unit tests and integration tests for new or changed code\nResume a development session after interruption and continue from the last tracked task",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zhangloveyan/backend-skill`",
+    "usage": "```\nAct as a backend Java developer. Using the following requirements, generate a complete Java class with unit tests and a Git commit message: [REQUIREMENTS]. Follow best practices for clean code and include proper documentation. The output should be ready to commit to a repository.\n```\nCopy\n\n```\n# Backend Java Development Output",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "backend-skill#main-content",
+      "backend-skill#overview",
+      "backend-skill#setup",
+      "backend-skill#examples",
+      "backend-skill#tools",
+      "backend-skill#mcp",
+      "backend-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "backend-skill is a Claude Code skill collection built for Java Spring Boot enterprise projects, providing 14 slash commands that cover the entire development lifecycle from requirements analysis to Git commit. Developers can use commands like /proj-analyze-req, /proj-gen, /proj-review, and /proj-gen-test to automate code generation for SQL, Entity, Service, and Controller layers, run code reviews with security and performance checks, and produce JUnit 5 unit and integration tests. The skill set also handles edge cases like mid-session interruption recovery via /proj-resume and keeps documentation synchronized with code changes using /proj-sync-doc. It targets Java developers using Claude Code who work with the Spring Boot 3.x, MyBatis-Plus, MySQL, Redis, and Knife4j stack.\nGenerate boilerplate SQL, Entity, Service, and Controller code from a one-line requirement description\nRun automated code reviews with security and performance checks before committing\nAutomatically generate JUnit 5 unit tests and integration tests for new or changed code\nResume a development session after interruption and continue from the last tracked task",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zhangloveyan/backend-skill`",
+    "usage_vi": "```\nAct as a backend Java developer. Using the following requirements, generate a complete Java class with unit tests and a Git commit message: [REQUIREMENTS]. Follow best practices for clean code and include proper documentation. The output should be ready to commit to a repository.\n```\nCopy\n\n```\n# Backend Java Development Output"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:09.284246Z",
+    "http_status": 200,
+    "content_hash": "3d42c60aa60720a3d698af32ee3c816da1c7191bdaa53e4e31699fac85c53a2d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\backend-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\backend-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Backend Java Development Automation",
+  "short_description_vi": "A Claude Code skill set for Java Spring Boot backend development that automates code generation, testing, and Git commits through 14 specialized slash commands covering the full development lifecycle."
+}

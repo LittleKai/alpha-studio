@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/voice-ai-integration",
+  "slug": "voice-ai-integration",
+  "name": "Spanora Setup Agent Skill",
+  "headline": "Voice AI Integration: Build AI Voice Agents",
+  "short_description": "This skill allows developers to incorporate voice AI functionalities into their applications. It is designed for developers who want to enhance user interactions through voice commands and AI responses.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "shengwang-community",
+  "install_command": "git clone https://github.com/shengwang-community/skills",
+  "source_repo_url": "https://github.com/shengwang-community/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "voice",
+    "integration",
+    "ai-integration"
+  ],
+  "sections": {
+    "overview": "Voice AI Integration is a collection of reusable skills for developers building with the Shengwang platform. It provides modular components for AI voice agent lifecycle management (create, stop, update, query), real-time audio/video calls, messaging, cloud recording, and token generation. The skill supports multiple languages including Go, Java, and Python, and works across Web, Android, iOS, and Flutter platforms. Developers describe their needs to an AI agent, which automatically routes requests to the appropriate product module—whether that's ConvoAI for voice agents, RTC SDK for real-time calls, or token servers for secure authentication. This approach lets agents handle integration, configuration, and debugging workflows for voice-enabled applications.\nEnable voice commands in applications\nCreate interactive voice response systems\nFacilitate voice-activated features in devices\nSuccessfully integrated voice AI into RetailChain’s mobile app to handle customer queries via voice commands. The system supports English and Spanish, with real-time transcription accuracy of 94% in quiet environments and 87% in noisy retail store settings.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/shengwang-community/skills --skill voice-ai-integration`\n`git clone https://github.com/shengwang-community/skills`",
+    "usage": "```\nCreate a voice AI integration for [COMPANY]'s [INDUSTRY] application. The integration should support [LANGUAGE] voice commands, real-time transcription, and AI-generated responses for customer queries. Ensure the system handles background noise and provides fallback responses when the AI is unsure. Use [DATA] for training the voice model.\n```\nCopy\n\n```\n```markdown\n# Voice AI Integration for RetailChain’s Customer Support App",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "voice-ai-integration#main-content",
+      "voice-ai-integration#overview",
+      "voice-ai-integration#setup",
+      "voice-ai-integration#examples",
+      "voice-ai-integration#tools",
+      "voice-ai-integration#mcp",
+      "voice-ai-integration#related",
+      "copilotkit",
+      "spanora-setup-agent-skill"
+    ],
+    "overview_vi": "Voice AI Integration is a collection of reusable skills for developers building with the Shengwang platform. It provides modular components for AI voice agent lifecycle management (create, stop, update, query), real-time audio/video calls, messaging, cloud recording, and token generation. The skill supports multiple languages including Go, Java, and Python, and works across Web, Android, iOS, and Flutter platforms. Developers describe their needs to an AI agent, which automatically routes requests to the appropriate product module—whether that's ConvoAI for voice agents, RTC SDK for real-time calls, or token servers for secure authentication. This approach lets agents handle integration, configuration, and debugging workflows for voice-enabled applications.\nEnable voice commands in applications\nCreate interactive voice response systems\nFacilitate voice-activated features in devices\nSuccessfully integrated voice AI into RetailChain’s mobile app to handle customer queries via voice commands. The system supports English and Spanish, with real-time transcription accuracy of 94% in quiet environments and 87% in noisy retail store settings.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/shengwang-community/skills --skill voice-ai-integration`\n`git clone https://github.com/shengwang-community/skills`",
+    "usage_vi": "```\nCreate a voice AI integration for [COMPANY]'s [INDUSTRY] application. The integration should support [LANGUAGE] voice commands, real-time transcription, and AI-generated responses for customer queries. Ensure the system handles background noise and provides fallback responses when the AI is unsure. Use [DATA] for training the voice model.\n```\nCopy\n\n```\n```markdown\n# Voice AI Integration for RetailChain’s Customer Support App"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:03:09.803916Z",
+    "http_status": 200,
+    "content_hash": "75a373c3d67da4f5846f2cb6a39474809eb5ebb369f6291739c2859baa89a234",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\voice-ai-integration.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\voice-ai-integration.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Voice AI Integration: Build AI Voice Agents",
+  "short_description_vi": "This skill allows developers to incorporate voice AI functionalities into their applications. It is designed for developers who want to enhance user interactions through voice commands and AI responses."
+}

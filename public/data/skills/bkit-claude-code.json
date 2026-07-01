@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bkit-claude-code",
+  "slug": "bkit-claude-code",
+  "name": "Bkit Claude Code",
+  "headline": "vibecoding toolkit for ai dev with Claude",
+  "short_description": "bkit-claude-code combines PDCA methodology with Claude Code for AI-native development. Operations teams use it to automate workflows, improve processes, and integrate AI agents into existing systems. It connects to JavaScript-based tools and workflows, enhancing productivity and efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "popup-studio-ai",
+  "install_command": "git clone https://github.com/popup-studio-ai/bkit-claude-code.git",
+  "source_repo_url": "https://github.com/popup-studio-ai/bkit-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "plugin-repo",
+    "ai-agents",
+    "ai-driven-work",
+    "ai-native-development",
+    "multi-language",
+    "claude-code",
+    "pipeline",
+    "pdca"
+  ],
+  "sections": {
+    "overview": "bkit transforms Claude Code into a context engineering system that guides AI-generated code through automated verification against design specifications. It eliminates guesswork by measuring code quality against your requirements, auto-repairing gaps up to five cycles, and halting workflows at 11 quality gates before drift compounds. The tool splits large projects into context-budgeted sprints that fit within Claude Code's session window, preserving progress and memory across interruptions. Built for first-time AI developers, solo builders, and team leads, bkit uses 44 skills and 34 specialist agents orchestrated by an AI tech lead to handle frontend, backend, QA, and security tasks in parallel. Every feature generates documentation (PRD, design, analysis, completion report) that serves as an audit trail.\nVerify AI-generated code matches design specifications before deployment\nSplit large releases into context-budgeted sprints that survive session interruptions\nRun parallel specialist agents (frontend, backend, QA, security) without managing prompts\nAuto-repair code drift with gap detection and iterative fixes up to 5 cycles",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/popup-studio-ai/bkit-claude-code`",
+    "usage": "```\nUse bkit-claude-code to automate [WORKFLOW_NAME] in [TECH_STACK]. Start with a Plan phase: document the current process steps and identify [SPECIFIC_PAIN_POINT]. In the Do phase, write a Claude Code script to [AUTOMATION_TASK] using [LIBRARY/TOOL]. For the Check phase, execute the script with test data from [TEST_DATA_SOURCE] and log output to [LOG_FILE]. Finally, in the Act phase, refine the script based on errors or inefficiencies and deploy to [DEPLOYMENT_TARGET]. Include error handling for [EDGE_CASES].\n```\nCopy\n\n```\n### Plan Phase\nCurrent process for `user-onboarding` involves 5 manual steps: 1) Email new user welcome kit, 2) Assign role in Auth0, 3) Add to Slack workspace, 4) Create Jira ticket for provisioning, 5) Notify sales rep. Pain point: 30% of new users don’t complete onboarding due to delayed role assignment (average delay: 2.1 days).\n\n### Do Phase\nGenerated `onboarding-automation.js` using Claude Code with the following components:\n- `auth0-management` SDK for role assignment\n- Slack API for workspace invites\n- Jira REST API for ticket creation\n- Nodemailer for welcome emails\n- Error handling for rate limits and API timeouts\n\nScript logic:\n1. Trigger on new user creation in CRM (HubSpot webhook)\n2. Parallelize Auth0 role assignment and Slack invite\n3. Create Jira ticket with pre-filled template\n4. Send welcome email with calendar invite\n5. Log all actions to `onboarding.log` with timestamps\n\n### Check Phase\nExecuted script with test data (5 synthetic users) and observed:\n- Auth0 assignments: 100% success (avg time: 4.2s)\n- Slack invites: 80% success (2 failures due to invalid emails)\n- Jira tickets: 100% success (avg time: 6.8s)\n- Welcome emails: 100% success (avg time: 3.5s)\n\nLog output:\n```\n[2024-05-15 14:30:22] INFO: Processing user user_12345\n[2024-05-15 14:30:26] ERROR: Slack invite failed for user_12345 - Invalid email domain\n[2024-05-15 14:30:27] INFO: Auth0 role assigned to user_12345\n[2024-05-15 14:30:33] INFO: Jira ticket created for user_12345\n```\n\n### Act Phase\nRefined script to:\n- Add email domain validation before Slack invite\n- Implement retry logic for Auth0 API (3 attempts)\n- Add Slack workspace membership check before invite\n- Deployed to production via GitHub Actions with environment variables for API keys.\n\nResult after 1 week in production:\n- Onboarding completion rate increased from 70% to 94%\n- Average time to complete onboarding reduced from 2.1 days to 2.3 hours\n- Zero critical errors in production logs\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bkit-claude-code#main-content",
+      "bkit-claude-code#overview",
+      "bkit-claude-code#setup",
+      "bkit-claude-code#examples",
+      "bkit-claude-code#tools",
+      "bkit-claude-code#mcp",
+      "bkit-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "bkit biến Claude Code thành một hệ thống context engineering giúp kiểm chứng tự động code do AI tạo ra dựa trên các đặc tả thiết kế. Công cụ này loại bỏ việc phỏng đoán bằng cách đo lường chất lượng code theo đúng yêu cầu của bạn, tự động sửa lỗi (auto-repair) các khoảng trống lên đến 5 chu kỳ, và dừng workflow tại 11 chốt kiểm soát chất lượng (quality gates) trước khi các sai lệch (drift) tích tụ phức tạp hơn. bkit chia nhỏ các dự án lớn thành các sprint được tối ưu hóa ngân sách context (context-budgeted sprints) để vừa vặn với session window của Claude Code, giúp bảo toàn tiến trình và bộ nhớ ngay cả khi bị gián đoạn. Được thiết kế cho người mới phát triển AI, lập trình viên độc lập (solo builder) và team lead, bkit sử dụng 44 skill và 34 specialist agent được điều phối bởi một AI tech lead để xử lý song song các tác vụ frontend, backend, QA và bảo mật. Mọi tính năng đều tự động tạo tài liệu (PRD, thiết kế, phân tích, báo cáo hoàn thành) đóng vai trò như một nhật ký kiểm toán (audit trail).\n\n- Xác thực code do AI tạo ra khớp với đặc tả thiết kế trước khi deploy\n- Chia nhỏ các đợt release lớn thành các sprint được phân bổ ngân sách context để không bị mất dữ liệu khi session bị gián đoạn\n- Chạy song song các specialist agent (frontend, backend, QA, bảo mật) mà không cần tự quản lý prompt\n- Tự động sửa lỗi lệch code (code drift) nhờ phát hiện khoảng cách và sửa lỗi lặp lại lên đến 5 chu kỳ",
+    "setup_vi": "Không hỗ trợ lệnh cài đặt tự động. Vui lòng tham khảo kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/popup-studio-ai/bkit-claude-code`",
+    "usage_vi": "```\nSử dụng bkit-claude-code để tự động hóa [WORKFLOW_NAME] trong [TECH_STACK]. Bắt đầu với pha Plan: ghi lại các bước của quy trình hiện tại và xác định [SPECIFIC_PAIN_POINT]. Trong pha Do, viết một script Claude Code để [AUTOMATION_TASK] sử dụng [LIBRARY/TOOL]. Đối với pha Check, thực thi script với dữ liệu test từ [TEST_DATA_SOURCE] và ghi log đầu ra vào [LOG_FILE]. Cuối cùng, ở pha Act, tối ưu hóa script dựa trên các lỗi hoặc điểm chưa hiệu quả và deploy lên [DEPLOYMENT_TARGET]. Hãy cấu hình xử lý lỗi cho các [EDGE_CASES].\n```\nCopy\n\n```\n### Pha Plan\nQuy trình hiện tại cho `user-onboarding` gồm 5 bước thủ công: 1) Gửi email bộ tài liệu chào mừng cho người dùng mới, 2) Gán role trong Auth0, 3) Thêm vào workspace Slack, 4) Tạo Jira ticket để cấp quyền, 5) Thông báo cho nhân viên sales. Điểm nghẽn (Pain point): 30% người dùng mới không hoàn tất onboarding do việc gán role bị chậm trễ (thời gian trễ trung bình: 2,1 ngày).\n\n### Pha Do\nTạo file `onboarding-automation.js` bằng cách sử dụng Claude Code với các thành phần sau:\n- SDK `auth0-management` để gán role\n- Slack API để mời vào workspace\n- Jira REST API để tạo ticket\n- Nodemailer để gửi email chào mừng\n- Xử lý lỗi cho rate limit và API timeout\n\nLogic của script:\n1. Kích hoạt khi có người dùng mới được tạo trong CRM (HubSpot webhook)\n2. Chạy song song việc gán role trên Auth0 và gửi lời mời trên Slack\n3. Tạo Jira ticket với template điền sẵn\n4. Gửi email chào mừng kèm theo lời mời trên lịch (calendar)\n5. Ghi tất cả hành động vào `onboarding.log` kèm theo timestamp\n\n### Pha Check\nThực thi script với dữ liệu test (5 người dùng giả lập) và ghi nhận:\n- Gán role trên Auth0: thành công 100% (thời gian trung bình: 4.2s)\n- Mời vào Slack: thành công 80% (2 lượt thất bại do email không hợp lệ)\n- Tạo Jira ticket: thành công 100% (thời gian trung bình: 6.8s)\n- Email chào mừng: thành công 100% (thời gian trung bình: 3.5s)\n\nLog đầu ra:\n```\n[2024-05-15 14:30:22] INFO: Processing user user_12345\n[2024-05-15 14:30:26] ERROR: Slack invite failed for user_12345 - Invalid email domain\n[2024-05-15 14:30:27] INFO: Auth0 role assigned to user_12345\n[2024-05-15 14:30:33] INFO: Jira ticket created for user_12345\n```\n\n### Pha Act\nCải tiến script để:\n- Thêm bước xác thực domain email trước khi gửi lời mời Slack\n- Cài đặt cơ chế retry cho Auth0 API (thử lại 3 lần)\n- Thêm bước kiểm tra trạng thái thành viên trong workspace Slack trước khi mời\n- Đã deploy lên môi trường production thông qua GitHub Actions với các biến môi trường cấu hình API key.\n\nKết quả sau 1 tuần chạy production:\n- Tỷ lệ hoàn thành onboarding tăng từ 70% lên 94%\n- Thời gian trung bình để hoàn thành onboarding giảm từ 2,1 ngày xuống còn 2,3 giờ\n- Không có lỗi nghiêm trọng (critical error) nào trong log hệ thống production\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:55.545704Z",
+    "http_status": 200,
+    "content_hash": "15a83fd7a56ed075ff4fbce5617d3ba75dec7fbb05f3e999fcfa78b1235a755a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bkit-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\bkit-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "vibecoding toolkit dành cho lập trình viên AI với Claude",
+  "short_description_vi": "bkit-claude-code kết hợp phương pháp luận PDCA với Claude Code để phát triển ứng dụng AI-native. Các đội ngũ vận hành có thể sử dụng công cụ này để tự động hóa các workflow, cải tiến quy trình và tích hợp các AI agent vào hệ thống hiện có. Nó kết nối mượt mà với các công cụ và workflow dựa trên JavaScript, giúp nâng cao năng suất và hiệu suất làm việc."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/amon-agent",
+  "slug": "amon-agent",
+  "name": "Amon Agent",
+  "headline": "amon-agent: ai coworker on your desktop",
+  "short_description": "Amon-agent is an AI coworker that runs on your desktop, automating repetitive tasks and assisting with workflows. It benefits operations teams by streamlining processes and integrating with supported agents like Claude. The skill connects to desktop environments and workflow tools, enhancing productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "liruifengv",
+  "install_command": "git clone https://github.com/liruifengv/amon-agent.git",
+  "source_repo_url": "https://github.com/liruifengv/amon-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agents",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Amon is a locally-running AI coworker that integrates into your desktop environment to handle repetitive work like code writing, command execution, file management, and information retrieval. It features a provider-agnostic architecture supporting multiple LLM providers including Anthropic Claude, OpenAI, Google Gemini, and API-compatible services. The application uses a three-layer agent architecture with a custom runtime, eliminating dependency on external SDKs. Amon operates on a per-workspace basis, allowing teams to organize projects and maintain separate agent configurations. It benefits operations teams, developers, and knowledge workers by reducing manual task overhead and integrating directly into existing desktop workflows.\nAutomating repetitive coding tasks and file modifications across workspaces\nExecuting bash commands and managing system operations without manual intervention\nOrganizing and managing multiple project workspaces with different configurations\nSearching for information and retrieving data while maintaining conversation context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liruifengv/amon-agent`",
+    "usage": "```\nAct as my Amon-agent desktop assistant. [TASK: Describe a repetitive or workflow-related task you want automated, e.g., 'Organize my weekly expense reports from emails and spreadsheets']. Use Amon's capabilities to handle this end-to-end. Provide step-by-step progress updates and confirm completion. If any step fails, suggest alternatives or ask for clarification before proceeding.\n```\nCopy\n\n```\n=== Amon-Agent Task Execution Report ===\n\n**Task:** Automate weekly expense report consolidation from emails and spreadsheets.\n**Start Time:** 2024-05-15 09:17:23\n\n**Step 1: Email Scraping (9:17:25 - 9:18:12)**\n- Scanned inbox for emails with subject lines containing 'Expense Report' or 'Receipt'.\n- Found 12 emails from 8 senders. Filtered out 3 spam/duplicate messages.\n- Extracted 9 valid expense reports with attachments (PDFs and Excel files).\n- Logged sender emails and report dates for audit trail.\n\n**Step 2: File Download & Validation (9:18:15 - 9:19:45)**\n- Downloaded all 9 attachments to local directory: `C:\\Amon\\Expenses\\Raw\\2024-05-15`.\n- Validated file integrity: 8 files passed checksum verification; 1 PDF was corrupted and skipped (flagged for manual review).\n- Renamed files using format: `Expense_[SenderInitials]_[Date].pdf/Excel`.\n\n**Step 3: Data Extraction (9:19:47 - 9:22:33)**\n- Used OCR to extract text from PDF receipts (8 files).\n- Parsed Excel files for structured data (line items, totals, categories).\n- Consolidated all data into a single CSV: `C:\\Amon\\Expenses\\Consolidated\\Weekly_Report_2024-05-15.csv`.\n- Identified 3 duplicate line items (flagged for manual review).\n\n**Step 4: Report Generation (9:22:35 - 9:23:10)**\n- Generated a summary report in Google Sheets with:\n  - Total expenses: $2,456.78\n  - Breakdown by category: Meals ($892.34), Travel ($1,234.56), Supplies ($330.88)\n  - Top 3 highest expenses: Flight ticket ($675.00), Hotel stay ($559.56), Client dinner ($342.00)\n- Added conditional formatting to highlight expenses >$200.\n\n**Step 5: Notification & Cleanup (9:23:12 - 9:23:20)**\n- Sent Slack notification to #finance-team: 'Weekly expense report consolidated. Total: $2,456.78. View here: [Google Sheets Link].'\n- Moved raw files to archive: `C:\\Amon\\Expenses\\Archive\\2024-05-15`.\n- Deleted temporary files from desktop.\n\n**Completion Status:** ✅ SUCCESS\n**End Time:** 2024-05-15 09:23:20\n**Total Duration:** 5 minutes 57 seconds\n\n**Notes:**\n- Manual review recommended for 1 corrupted file and 3 duplicate line items.\n- Next steps: Schedule this task to run every Friday at 9 AM via Amon's scheduler.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "amon-agent#main-content",
+      "amon-agent#overview",
+      "amon-agent#setup",
+      "amon-agent#examples",
+      "amon-agent#tools",
+      "amon-agent#mcp",
+      "amon-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Amon là một đồng nghiệp AI chạy local, tích hợp trực tiếp vào môi trường desktop của bạn để xử lý các công việc lặp đi lặp lại như viết code, thực thi câu lệnh, quản lý file và truy xuất thông tin. Amon sở hữu kiến trúc độc lập nhà cung cấp (provider-agnostic) hỗ trợ nhiều nhà cung cấp LLM khác nhau bao gồm Anthropic Claude, OpenAI, Google Gemini và các dịch vụ tương thích API. Ứng dụng sử dụng kiến trúc agent ba lớp với một runtime tùy chỉnh, loại bỏ hoàn toàn sự phụ thuộc vào các SDK bên ngoài. Amon hoạt động theo từng workspace, cho phép các đội ngũ tổ chức dự án và duy trì các cấu hình agent riêng biệt. Công cụ này mang lại lợi ích cho các đội ngũ vận hành, nhà phát triển và những người làm việc với dữ liệu nhờ giảm thiểu các tác vụ thủ công và tích hợp trực tiếp vào các workflow hiện có trên desktop.\nTự động hóa các tác vụ code lặp đi lặp lại và chỉnh sửa file trên các workspace khác nhau\nThực thi các lệnh bash và quản lý vận hành hệ thống mà không cần can thiệp thủ công\nTổ chức và quản lý nhiều workspace dự án với các cấu hình khác nhau\nTìm kiếm thông tin và truy xuất dữ liệu trong khi vẫn duy trì ngữ cảnh cuộc hội thoại",
+    "setup_vi": "Không có sẵn lệnh cài đặt nhanh. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/liruifengv/amon-agent`",
+    "usage_vi": "```\nHãy đóng vai trò là trợ lý desktop Amon-agent của tôi. [NHIỆM VỤ: Mô tả một tác vụ lặp đi lặp lại hoặc liên quan đến workflow mà bạn muốn tự động hóa, ví dụ: 'Tổng hợp báo cáo chi tiêu hàng tuần từ email và bảng tính']. Sử dụng các khả năng của Amon để xử lý trọn gói tác vụ này từ đầu đến cuối. Cung cấp các thông tin cập nhật tiến độ theo từng bước và xác nhận khi hoàn thành. Nếu có bất kỳ bước nào thất bại, hãy đề xuất giải pháp thay thế hoặc yêu cầu làm rõ trước khi tiếp tục.\n```\nCopy\n\n```\n=== Báo cáo thực thi tác vụ Amon-Agent ===\n\n**Tác vụ:** Tự động hóa việc tổng hợp báo cáo chi tiêu hàng tuần từ email và bảng tính.\n**Thời gian bắt đầu:** 2024-05-15 09:17:23\n\n**Bước 1: Quét Email (9:17:25 - 9:18:12)**\n- Đã quét hộp thư đến để tìm các email có dòng tiêu đề chứa 'Expense Report' hoặc 'Receipt'.\n- Tìm thấy 12 email từ 8 người gửi. Đã lọc bỏ 3 email rác/trùng lặp.\n- Trích xuất được 9 báo cáo chi tiêu hợp lệ kèm file đính kèm (PDF và Excel).\n- Ghi lại email người gửi và ngày báo cáo để phục vụ đối soát (audit trail).\n\n**Bước 2: Tải file & Xác thực (9:18:15 - 9:19:45)**\n- Đã tải toàn bộ 9 file đính kèm về thư mục cục bộ: `C:\\\\Amon\\\\Expenses\\\\Raw\\\\2024-05-15`.\n- Xác thực tính toàn vẹn của file: 8 file đã vượt qua kiểm tra checksum; 1 file PDF bị lỗi và bị bỏ qua (được đánh dấu để kiểm tra thủ công).\n- Đổi tên file theo định dạng: `Expense_[SenderInitials]_[Date].pdf/Excel`.\n\n**Bước 3: Trích xuất dữ liệu (9:19:47 - 9:22:33)**\n- Sử dụng OCR để trích xuất văn bản từ hóa đơn PDF (8 file).\n- Parse dữ liệu từ các file Excel để lấy cấu trúc dữ liệu (các mục chi tiết, tổng tiền, danh mục).\n- Hợp nhất tất cả dữ liệu vào một file CSV duy nhất: `C:\\\\Amon\\\\Expenses\\\\Consolidated\\\\Weekly_Report_2024-05-15.csv`.\n- Phát hiện 3 mục chi tiết bị trùng lặp (đã đánh dấu để kiểm tra thủ công).\n\n**Bước 4: Tạo báo cáo (9:22:35 - 9:23:10)**\n- Tạo báo cáo tổng hợp trên Google Sheets với:\n  - Tổng chi phí: $2,456.78\n  - Chi tiết theo danh mục: Ăn uống ($892.34), Đi lại ($1,234.56), Thiết bị văn phòng ($330.88)\n  - Top 3 khoản chi lớn nhất: Vé máy bay ($675.00), Tiền khách sạn ($559.56), Tiệc tiếp khách ($342.00)\n- Thêm định dạng có điều kiện (conditional formatting) để làm nổi bật các khoản chi >$200.\n\n**Bước 5: Thông báo & Dọn dẹp (9:23:12 - 9:23:20)**\n- Gửi thông báo Slack tới kênh #finance-team: 'Báo cáo chi tiêu hàng tuần đã được tổng hợp. Tổng số tiền: $2,456.78. Xem tại đây: [Google Sheets Link].'\n- Di chuyển các file gốc vào thư mục lưu trữ: `C:\\\\Amon\\\\Expenses\\\\Archive\\\\2024-05-15`.\n- Xóa các file tạm thời khỏi desktop.\n\n**Trạng thái hoàn thành:** ✅ THÀNH CÔNG\n**Thời gian kết thúc:** 2024-05-15 09:23:20\n**Tổng thời gian thực hiện:** 5 phút 57 giây\n\n**Lưu ý:**\n- Khuyến nghị kiểm tra thủ công đối với 1 file bị lỗi và 3 mục chi tiết bị trùng lặp.\n- Các bước tiếp theo: Lên lịch chạy tác vụ này vào mỗi Thứ Sáu lúc 9 giờ sáng thông qua bộ lập lịch (scheduler) của Amon.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:54:39.136374Z",
+    "http_status": 200,
+    "content_hash": "d71d43188cfb1be09e5c09fa33b06b214f563309a1929cc10ad946c77b5c7b53",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\amon-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\amon-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "amon-agent: đồng nghiệp AI trên desktop của bạn",
+  "short_description_vi": "Amon-agent là một đồng nghiệp AI (AI coworker) chạy trực tiếp trên desktop của bạn, giúp tự động hóa các tác vụ lặp đi lặp lại và hỗ trợ các workflow. Công cụ này mang lại lợi ích cho các đội ngũ vận hành bằng cách tinh giản quy trình và tích hợp với các agent được hỗ trợ như Claude. Skill này kết nối trực tiếp với môi trường desktop và các công cụ workflow để nâng cao hiệu suất làm việc."
+}

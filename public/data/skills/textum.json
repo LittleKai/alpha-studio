@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/textum",
+  "slug": "textum",
+  "name": "browser-use",
+  "headline": "Textum - Structured AI Coding Workflow",
+  "short_description": "Textum is a structured workflow that ensures AI adheres to your requirements. It features 4 phases with validation gates, making the process more controllable. Ideal for operations teams, it weaves ideas into functional code, reducing errors and improving reliability.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "snakeying",
+  "install_command": "git clone https://github.com/snakeying/Textum.git",
+  "source_repo_url": "https://github.com/snakeying/Textum",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "codex-skill",
+    "codex",
+    "claude-skill",
+    "vibe-coding"
+  ],
+  "sections": {
+    "overview": "Textum is a workflow automation skill designed to improve AI-assisted code generation by breaking projects into four controlled phases: Requirements Clarification, Technical Decisions, Task Breakdown, and Code Implementation. Instead of dumping all requirements at once, Textum feeds information phase by phase with validation gates, preventing AI from losing context mid-project. It solves the problem of requirement changes forcing complete regeneration and AI forgetting earlier specifications by using numbered features and a global context that persists across all coding tasks. The skill works best for operations teams and developers building small-to-medium projects (10–35 features), where it produces solid results by keeping each story focused and validated before moving forward.\nBuilding expense tracker or todo applications with consistent feature implementation\nCreating blog platforms or survey systems with clear architectural decisions\nDeveloping admin panels with multiple roles where requirements need structured breakdown\nProjects requiring iterative refinement without full regeneration on each requirement change",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/snakeying/Textum`",
+    "usage": "```\nFollow the Textum structured workflow to generate [OUTPUT_TYPE] for [PROJECT_NAME]. Phase 1: Define requirements by listing all constraints, inputs, and expected outputs. Phase 2: Generate a structured plan with clear milestones and validation checkpoints. Phase 3: Develop the output iteratively, ensuring each step aligns with the plan. Phase 4: Validate the final output against the requirements and refine as needed. Here are the details: [PROJECT_DETAILS].\n```\nCopy\n\n```\nFor a project named 'E-commerce Chatbot Integration,' the Textum workflow produced the following structured output:\n\n**Phase 1: Define Requirements**\n- Constraints: Must integrate with Shopify API, handle 100+ concurrent users, and comply with GDPR.\n- Inputs: Product catalog, customer data, and order history.\n- Expected Output: A Python-based chatbot with REST API endpoints for order tracking and customer support.\n\n**Phase 2: Structured Plan**\n- Milestone 1: API documentation review (Day 1)\n- Milestone 2: Core chatbot logic development (Days 2-3)\n- Milestone 3: Integration testing with Shopify sandbox (Day 4)\n- Milestone 4: Load testing and GDPR compliance audit (Day 5)\n- Validation Checkpoints: Code review after each milestone, final QA before deployment.\n\n**Phase 3: Development Iteration**\n- Day 1: Reviewed Shopify API docs and set up development environment.\n- Day 2: Implemented basic chatbot logic with intent recognition using NLTK.\n- Day 3: Added order tracking functionality via REST API calls.\n- Day 4: Integrated with Shopify sandbox and tested basic order queries.\n- Day 5: Conducted load testing with 200 simulated users and audited GDPR compliance.\n\n**Phase 4: Validation**\n- Final output validated against requirements: API integration successful, chatbot handles 150+ concurrent users, and GDPR compliance confirmed.\n- Minor refinements made to error handling for order queries.\n- Delivered a production-ready chatbot with 99.8% uptime guarantee.\n\nThe structured approach reduced development time by 30% and eliminated post-deployment bugs by 40%.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "textum#main-content",
+      "textum#overview",
+      "textum#setup",
+      "textum#examples",
+      "textum#tools",
+      "textum#mcp",
+      "textum#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Textum is a workflow automation skill designed to improve AI-assisted code generation by breaking projects into four controlled phases: Requirements Clarification, Technical Decisions, Task Breakdown, and Code Implementation. Instead of dumping all requirements at once, Textum feeds information phase by phase with validation gates, preventing AI from losing context mid-project. It solves the problem of requirement changes forcing complete regeneration and AI forgetting earlier specifications by using numbered features and a global context that persists across all coding tasks. The skill works best for operations teams and developers building small-to-medium projects (10–35 features), where it produces solid results by keeping each story focused and validated before moving forward.\nBuilding expense tracker or todo applications with consistent feature implementation\nCreating blog platforms or survey systems with clear architectural decisions\nDeveloping admin panels with multiple roles where requirements need structured breakdown\nProjects requiring iterative refinement without full regeneration on each requirement change",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/snakeying/Textum`",
+    "usage_vi": "```\nFollow the Textum structured workflow to generate [OUTPUT_TYPE] for [PROJECT_NAME]. Phase 1: Define requirements by listing all constraints, inputs, and expected outputs. Phase 2: Generate a structured plan with clear milestones and validation checkpoints. Phase 3: Develop the output iteratively, ensuring each step aligns with the plan. Phase 4: Validate the final output against the requirements and refine as needed. Here are the details: [PROJECT_DETAILS].\n```\nCopy\n\n```\nFor a project named 'E-commerce Chatbot Integration,' the Textum workflow produced the following structured output:\n\n**Phase 1: Define Requirements**\n- Constraints: Must integrate with Shopify API, handle 100+ concurrent users, and comply with GDPR.\n- Inputs: Product catalog, customer data, and order history.\n- Expected Output: A Python-based chatbot with REST API endpoints for order tracking and customer support.\n\n**Phase 2: Structured Plan**\n- Milestone 1: API documentation review (Day 1)\n- Milestone 2: Core chatbot logic development (Days 2-3)\n- Milestone 3: Integration testing with Shopify sandbox (Day 4)\n- Milestone 4: Load testing and GDPR compliance audit (Day 5)\n- Validation Checkpoints: Code review after each milestone, final QA before deployment.\n\n**Phase 3: Development Iteration**\n- Day 1: Reviewed Shopify API docs and set up development environment.\n- Day 2: Implemented basic chatbot logic with intent recognition using NLTK.\n- Day 3: Added order tracking functionality via REST API calls.\n- Day 4: Integrated with Shopify sandbox and tested basic order queries.\n- Day 5: Conducted load testing with 200 simulated users and audited GDPR compliance.\n\n**Phase 4: Validation**\n- Final output validated against requirements: API integration successful, chatbot handles 150+ concurrent users, and GDPR compliance confirmed.\n- Minor refinements made to error handling for order queries.\n- Delivered a production-ready chatbot with 99.8% uptime guarantee.\n\nThe structured approach reduced development time by 30% and eliminated post-deployment bugs by 40%.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:43:23.478762Z",
+    "http_status": 200,
+    "content_hash": "d0e7701b08000a00d349e45094c8a5272db69765118741aa2799c96b91768229",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\textum.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\textum.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Textum - Structured AI Coding Workflow",
+  "short_description_vi": "Textum is a structured workflow that ensures AI adheres to your requirements. It features 4 phases with validation gates, making the process more controllable. Ideal for operations teams, it weaves ideas into functional code, reducing errors and improving reliability."
+}

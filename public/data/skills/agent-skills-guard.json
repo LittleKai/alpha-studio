@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skills-guard",
+  "slug": "agent-skills-guard",
+  "name": "Agent Skills Guard",
+  "headline": "agent-skills-guard for security management",
+  "short_description": "Agent Skills Guard is a desktop application that provides security scanning and visual management for Agent Skills. It benefits operations teams by ensuring the safety and organization of skills, similar to an app store. The tool connects to Claude Code and helps manage skills within the skill marketplace.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "brucevanfdm",
+  "install_command": "git clone https://github.com/brucevanfdm/agent-skills-guard.git",
+  "source_repo_url": "https://github.com/brucevanfdm/agent-skills-guard",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "skills-manager",
+    "skills-guard",
+    "claude-code",
+    "skill-marketplace"
+  ],
+  "sections": {
+    "overview": "Agent Skills Guard is a desktop application for macOS and Windows that transforms Claude Code skill management into a visual, app-store-like experience. It scans skills for 8+ risk categories including destructive operations, remote code execution, command injection, and Unicode exploits using a multi-layer pipeline engine. The tool provides one-click installation from curated repositories, automatic update detection, batch synchronization to Claude Code and other programming tools, and unified management of locally installed CLI tools from npm, pip, Homebrew, and other package managers. Operations teams benefit from centralized skill discovery, automated safety verification before installation, and complete lifecycle management without command-line complexity.\nScreen new Claude Code skills for security risks before installation\nManage multiple installed skills and plugins across different tools from one interface\nAutomatically detect and batch-update CLI tools installed via package managers\nSynchronize discovered skills to Claude Code, Codex, Antigravity, and OpenCode simultaneously",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brucevanfdm/agent-skills-guard`",
+    "usage": "```\nScan the [SKILL_NAME] for security vulnerabilities and organization issues using Agent Skills Guard. Check for: 1) [SPECIFIC_RISK_TYPE] risks, 2) compliance with [COMPANY_POLICY], and 3) proper categorization under [SKILL_CATEGORY]. Generate a report with actionable recommendations for remediation.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-skills-guard#main-content",
+      "agent-skills-guard#overview",
+      "agent-skills-guard#setup",
+      "agent-skills-guard#examples",
+      "agent-skills-guard#tools",
+      "agent-skills-guard#mcp",
+      "agent-skills-guard#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent Skills Guard là ứng dụng desktop dành cho macOS và Windows giúp chuyển đổi trải nghiệm quản lý skill trong Claude Code thành một giao diện trực quan tương tự như kho ứng dụng (app store). Bằng cách sử dụng engine pipeline đa lớp, công cụ này có thể quét và phát hiện hơn 8 nhóm nguy cơ bảo mật của các skill, bao gồm các thao tác phá hoại, thực thi mã từ xa (RCE), command injection và khai thác lỗ hổng Unicode. Công cụ hỗ trợ cài đặt chỉ với một cú nhấp chuột từ các repository được kiểm duyệt, tự động phát hiện cập nhật, đồng bộ hóa hàng loạt sang Claude Code cũng như các công cụ lập trình khác, đồng thời quản lý tập trung các công cụ CLI được cài đặt cục bộ qua npm, pip, Homebrew và các package manager khác. Đội ngũ vận hành sẽ được hưởng lợi từ việc khám phá skill tập trung, tự động xác minh an toàn trước khi cài đặt và quản lý toàn bộ vòng đời của skill mà không cần đến các thao tác dòng lệnh phức tạp.\nSàng lọc các rủi ro bảo mật của các skill Claude Code mới trước khi cài đặt\nQuản lý nhiều skill và plugin đã cài đặt trên các công cụ khác nhau từ một giao diện duy nhất\nTự động phát hiện và cập nhật hàng loạt các công cụ CLI được cài đặt qua các package manager\nĐồng bộ hóa các skill đã tìm thấy sang Claude Code, Codex, Antigravity và OpenCode cùng một lúc",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/brucevanfdm/agent-skills-guard`",
+    "usage_vi": "```\nQuét [SKILL_NAME] để phát hiện các lỗ hổng bảo mật và vấn đề tổ chức bằng Agent Skills Guard. Kiểm tra: 1) các rủi ro [SPECIFIC_RISK_TYPE], 2) mức độ tuân thủ [COMPANY_POLICY] và 3) phân loại phù hợp trong [SKILL_CATEGORY]. Xuất báo cáo đi kèm các khuyến nghị khắc phục khả thi.\n```\nSao chép\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:22:38.220926Z",
+    "http_status": 200,
+    "content_hash": "c4b0274b2a08e5d4e7a5e6086c3df9ca533103e5d3322ebd82246f79aa48e563",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-guard.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-guard.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agent-skills-guard hỗ trợ quản lý bảo mật",
+  "short_description_vi": "Agent Skills Guard là ứng dụng desktop giúp quét bảo mật và quản lý trực quan các Agent Skills. Công cụ này hỗ trợ đắc lực cho các đội ngũ vận hành trong việc đảm bảo an toàn và tổ chức sắp xếp các skill tương tự như một kho ứng dụng. Công cụ này kết nối trực tiếp với Claude Code để hỗ trợ quản lý các skill trong skill marketplace."
+}

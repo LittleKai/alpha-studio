@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/create-pg-super-document",
+  "slug": "create-pg-super-document",
+  "name": "browser-use",
+  "headline": "PostgreSQL Documentation Generator",
+  "short_description": "create_pg_super_document is a project that generates documentation for all symbols in the PostgreSQL codebase, then utilizes these symbol documents to create high-quality documentation for functionalities, components, and other elements using AI agents",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "ryogrid",
+  "install_command": "git clone https://github.com/ryogrid/create_pg_super_document.git",
+  "source_repo_url": "https://github.com/ryogrid/create_pg_super_document",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "document-generation",
+    "python",
+    "llm",
+    "duckdb",
+    "automation",
+    "documentation",
+    "mcp",
+    "postgresql",
+    "dependency-analysis",
+    "ai-agent",
+    "context-engineering",
+    "agent"
+  ],
+  "sections": {
+    "overview": "create_pg_super_document automates documentation generation for the entire PostgreSQL codebase by first indexing all symbols using GNU GLOBAL, then using AI agents to create detailed documentation for functions, components, and other elements. The project stores symbol definitions, references, and relationships in DuckDB, enabling AI agents to retrieve context and generate accurate technical documentation. It includes scripts for symbol clustering, batch preparation, and cross-referencing, producing output in Markdown, JSON, and CSV formats. This tool is valuable for PostgreSQL contributors, maintainers, and developers needing to understand complex subsystems and navigate the 1+ million line codebase.\nGenerate documentation for PostgreSQL subsystems and modules\nCreate symbol reference guides for specific PostgreSQL components\nAnalyze function call chains and dependencies in PostgreSQL\nProduce AI-assisted technical documentation for PostgreSQL contributors",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryogrid/create_pg_super_document`",
+    "usage": "```\nGenerate a PostgreSQL Super Document for [SYMBOL_NAME] in the PostgreSQL codebase. Include: (1) a detailed symbol definition extracted from the code, (2) its purpose and usage context, (3) related symbols or dependencies, (4) examples of how it is used in real queries or functions, and (5) common pitfalls or performance considerations. Use the PostgreSQL 16 source code as reference. Format the output as a Markdown document with clear sections and code blocks for examples.\n```\nCopy\n\n```\n```markdown\n# PostgreSQL Super Document: `pg_stat_progress_vacuum`\n\n`pg_stat_progress_vacuum` is used to monitor long-running VACUUM operations, which can block table access during execution. Database administrators use this view to:\n- Identify stalled VACUUM operations\n- Estimate time remaining for VACUUM jobs\n- Diagnose performance issues during maintenance\n\nThe view is automatically updated during VACUUM execution and is visible to all users with read access to system catalogs.\n\n\n### Basic Monitoring Query\n```sql\nSELECT pid, datname, relid::regclass AS table_name,\n       phase, heap_blks_total, heap_blks_scanned,\n       heap_blks_vacuumed, index_vacuum_count\nFROM pg_stat_progress_vacuum\nWHERE relid = 'public.orders'::regclass;\n```\n\n### Identifying Stalled Operations\n```sql\nSELECT pid, datname, relid::regclass AS table_name,\n       now() - query_start AS duration,\n       phase, heap_blks_total, heap_blks_scanned\nFROM pg_stat_progress_vacuum\nWHERE now() - query_start > interval '5 minutes'\nORDER BY duration DESC;\n```\n\n### Performance Considerations\n- The view adds minimal overhead to VACUUM operations\n- Frequent queries against this view during active VACUUM may slightly impact performance\n- For large tables, consider querying this view every 30-60 seconds rather than continuously",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "create-pg-super-document#main-content",
+      "create-pg-super-document#overview",
+      "create-pg-super-document#setup",
+      "create-pg-super-document#examples",
+      "create-pg-super-document#tools",
+      "create-pg-super-document#mcp",
+      "create-pg-super-document#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "create_pg_super_document automates documentation generation for the entire PostgreSQL codebase by first indexing all symbols using GNU GLOBAL, then using AI agents to create detailed documentation for functions, components, and other elements. The project stores symbol definitions, references, and relationships in DuckDB, enabling AI agents to retrieve context and generate accurate technical documentation. It includes scripts for symbol clustering, batch preparation, and cross-referencing, producing output in Markdown, JSON, and CSV formats. This tool is valuable for PostgreSQL contributors, maintainers, and developers needing to understand complex subsystems and navigate the 1+ million line codebase.\nGenerate documentation for PostgreSQL subsystems and modules\nCreate symbol reference guides for specific PostgreSQL components\nAnalyze function call chains and dependencies in PostgreSQL\nProduce AI-assisted technical documentation for PostgreSQL contributors",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryogrid/create_pg_super_document`",
+    "usage_vi": "```\nGenerate a PostgreSQL Super Document for [SYMBOL_NAME] in the PostgreSQL codebase. Include: (1) a detailed symbol definition extracted from the code, (2) its purpose and usage context, (3) related symbols or dependencies, (4) examples of how it is used in real queries or functions, and (5) common pitfalls or performance considerations. Use the PostgreSQL 16 source code as reference. Format the output as a Markdown document with clear sections and code blocks for examples.\n```\nCopy\n\n```\n```markdown\n# PostgreSQL Super Document: `pg_stat_progress_vacuum`\n\n`pg_stat_progress_vacuum` is used to monitor long-running VACUUM operations, which can block table access during execution. Database administrators use this view to:\n- Identify stalled VACUUM operations\n- Estimate time remaining for VACUUM jobs\n- Diagnose performance issues during maintenance\n\nThe view is automatically updated during VACUUM execution and is visible to all users with read access to system catalogs.\n\n\n### Basic Monitoring Query\n```sql\nSELECT pid, datname, relid::regclass AS table_name,\n       phase, heap_blks_total, heap_blks_scanned,\n       heap_blks_vacuumed, index_vacuum_count\nFROM pg_stat_progress_vacuum\nWHERE relid = 'public.orders'::regclass;\n```\n\n### Identifying Stalled Operations\n```sql\nSELECT pid, datname, relid::regclass AS table_name,\n       now() - query_start AS duration,\n       phase, heap_blks_total, heap_blks_scanned\nFROM pg_stat_progress_vacuum\nWHERE now() - query_start > interval '5 minutes'\nORDER BY duration DESC;\n```\n\n### Performance Considerations\n- The view adds minimal overhead to VACUUM operations\n- Frequent queries against this view during active VACUUM may slightly impact performance\n- For large tables, consider querying this view every 30-60 seconds rather than continuously"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:35:14.042076Z",
+    "http_status": 200,
+    "content_hash": "549a4c31876f2a9d94f9315c1c64be1409e18d70b2253be28bb44cc1c3625c20",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\create-pg-super-document.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\create-pg-super-document.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "PostgreSQL Documentation Generator",
+  "short_description_vi": "create_pg_super_document is a project that generates documentation for all symbols in the PostgreSQL codebase, then utilizes these symbol documents to create high-quality documentation for functionalities, components, and other elements using AI agents"
+}

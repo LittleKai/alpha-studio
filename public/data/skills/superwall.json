@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/superwall",
+  "slug": "superwall",
+  "name": "Related Skills",
+  "headline": "Superwall: Paywall & Campaign API Management",
+  "short_description": "Superwall is a versatile skill for managing paywalls and campaigns via an API, as well as querying event data using ClickHouse. It's aimed at developers looking to integrate Superwall functionalities into their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "superwall",
+  "install_command": "git clone https://github.com/superwall/skills",
+  "source_repo_url": "https://github.com/superwall/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "superwall",
+    "api-and-analytics"
+  ],
+  "sections": {
+    "overview": "The Superwall skill enables developers to programmatically manage paywalls, campaigns, products, entitlements, and webhooks through Superwall's REST API. It includes ClickHouse-backed analytics for querying product data and event information. The skill also provides documentation lookup, SDK integration guidance, and dashboard access without leaving your development environment. Setup requires an org-scoped API key with appropriate permission scopes for read and write operations. Developers can use this skill to automate paywall configuration, monitor entitlements, manage campaigns, and analyze user events across their applications.\nMaking API calls to manage projects\nQuerying event data from ClickHouse\nAnalyzing revenue and subscriptions\nSetting up API keys for Superwall",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/superwall/skills --skill superwall`\n`git clone https://github.com/superwall/skills`",
+    "usage": "```\nI'm building a [COMPANY] app in the [INDUSTRY] industry and need to integrate Superwall for paywall management and campaign analytics. Can you help me configure the Superwall SDK to handle paywall events and retrieve campaign performance data from ClickHouse? Here's the current [DATA] I have: [PAYWALL_CONFIGURATION].\n```\nCopy\n\n```\n# Superwall Paywall & Analytics Integration Report",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "superwall#main-content",
+      "superwall#overview",
+      "superwall#setup",
+      "superwall#examples",
+      "superwall#tools",
+      "superwall#related"
+    ],
+    "overview_vi": "The Superwall skill enables developers to programmatically manage paywalls, campaigns, products, entitlements, and webhooks through Superwall's REST API. It includes ClickHouse-backed analytics for querying product data and event information. The skill also provides documentation lookup, SDK integration guidance, and dashboard access without leaving your development environment. Setup requires an org-scoped API key with appropriate permission scopes for read and write operations. Developers can use this skill to automate paywall configuration, monitor entitlements, manage campaigns, and analyze user events across their applications.\nMaking API calls to manage projects\nQuerying event data from ClickHouse\nAnalyzing revenue and subscriptions\nSetting up API keys for Superwall",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/superwall/skills --skill superwall`\n`git clone https://github.com/superwall/skills`",
+    "usage_vi": "```\nI'm building a [COMPANY] app in the [INDUSTRY] industry and need to integrate Superwall for paywall management and campaign analytics. Can you help me configure the Superwall SDK to handle paywall events and retrieve campaign performance data from ClickHouse? Here's the current [DATA] I have: [PAYWALL_CONFIGURATION].\n```\nCopy\n\n```\n# Superwall Paywall & Analytics Integration Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:31:45.414118Z",
+    "http_status": 200,
+    "content_hash": "82977bae578386aa7f52b2e24bda7d1d2102ad2c363a42197fb9f1be5da52800",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\superwall.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\superwall.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Superwall: Paywall & Campaign API Management",
+  "short_description_vi": "Superwall is a versatile skill for managing paywalls and campaigns via an API, as well as querying event data using ClickHouse. It's aimed at developers looking to integrate Superwall functionalities into their applications."
+}

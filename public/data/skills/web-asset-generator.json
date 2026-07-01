@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/web-asset-generator",
+  "slug": "web-asset-generator",
+  "name": "Web Asset Generator",
+  "headline": "Web Asset Generator - Automate Icon Creation",
+  "short_description": "Generates favicons, app icons, and social media images from logos, text, or emojis. Supports emoji suggestions, validation, and framework auto-integration. Benefits operations teams by automating asset creation and ensuring consistency across web properties.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "alonw0",
+  "install_command": "git clone https://github.com/alonw0/web-asset-generator.git",
+  "source_repo_url": "https://github.com/alonw0/web-asset-generator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Web Asset Generator is a Claude Code skill that automates creation of favicons, app icons, PWA manifest files, and social media images through natural language. Users describe what they need—such as 'Create a favicon for my coffee shop'—and Claude automatically suggests relevant emojis, generates all required icon sizes (16×16 through 512×512), validates files and accessibility compliance, detects the project framework, and offers to integrate HTML tags directly into code. The skill supports emoji suggestions, WCAG contrast validation, and framework auto-integration for Next.js, Astro, and other platforms, eliminating manual asset creation and ensuring consistency across web properties.\nGenerate favicon sets with multiple icon sizes from a single emoji or logo\nCreate Open Graph and social media preview images for blogs and websites\nAuto-generate PWA manifest.json with app icons and metadata\nValidate favicon file sizes, dimensions, and accessibility compliance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alonw0/web-asset-generator`",
+    "usage": "```\nGenerate a [ASSET_TYPE] for [BRAND_NAME] using the following specifications: [LOGO_OR_TEXT_OR_EMOJI]. The asset should be [STYLE_OR_COLOR_SCHEME] and optimized for [PLATFORM_OR_USE_CASE]. Include a favicon.ico file for web browsers and a square PNG for social media. Validate the design for visual clarity at [RESOLUTIONS]. Provide download links for the generated files and suggest emoji alternatives if the current design lacks contrast or memorability.\n```\nCopy\n\n```\nGenerated assets for **Acme Corp** using their logo (a stylized lightning bolt) and the emoji ⚡. The design features a vibrant blue (#0066FF) lightning bolt on a white background, optimized for both light and dark mode. Three files were created:\n\n1. **favicon.ico** (16x16, 32x32, 48x48, 64x64) – Compatible with all major browsers and desktop shortcuts. The smallest size (16x16) was tested in Chrome, Firefox, and Safari, ensuring clarity even at low resolution.\n2. **app_icon.png** (1024x1024) – High-resolution icon for app stores, featuring a subtle drop shadow for depth. The design maintains the brand’s lightning bolt motif while ensuring scalability.\n3. **social_media.png** (1200x630) – Optimized for LinkedIn, Twitter, and Facebook. The lightning bolt is centered with ample white space to avoid cropping issues on mobile devices.\n\n**Validation Notes:**\n- Contrast ratio between the blue (#0066FF) and white background is 8.59:1 (WCAG AA compliant for normal text).\n- The emoji alternative ⚡ was tested and retained due to its strong association with speed and energy, aligning with Acme Corp’s branding.\n\n**Download Links:**\n- [favicon.ico](https://example.com/acme-favicon.ico)\n- [app_icon.png](https://example.com/acme-app-icon.png)\n- [social_media.png](https://example.com/acme-social-media.png)\n\n**Recommendations:**\n- For dark mode, consider a slight glow effect around the lightning bolt to improve visibility on dark backgrounds.\n- Test the favicon.ico in Safari’s private browsing mode to ensure it renders correctly in all contexts.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "web-asset-generator#main-content",
+      "web-asset-generator#overview",
+      "web-asset-generator#setup",
+      "web-asset-generator#examples",
+      "web-asset-generator#tools",
+      "web-asset-generator#mcp",
+      "web-asset-generator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Web Asset Generator is a Claude Code skill that automates creation of favicons, app icons, PWA manifest files, and social media images through natural language. Users describe what they need—such as 'Create a favicon for my coffee shop'—and Claude automatically suggests relevant emojis, generates all required icon sizes (16×16 through 512×512), validates files and accessibility compliance, detects the project framework, and offers to integrate HTML tags directly into code. The skill supports emoji suggestions, WCAG contrast validation, and framework auto-integration for Next.js, Astro, and other platforms, eliminating manual asset creation and ensuring consistency across web properties.\nGenerate favicon sets with multiple icon sizes from a single emoji or logo\nCreate Open Graph and social media preview images for blogs and websites\nAuto-generate PWA manifest.json with app icons and metadata\nValidate favicon file sizes, dimensions, and accessibility compliance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alonw0/web-asset-generator`",
+    "usage_vi": "```\nGenerate a [ASSET_TYPE] for [BRAND_NAME] using the following specifications: [LOGO_OR_TEXT_OR_EMOJI]. The asset should be [STYLE_OR_COLOR_SCHEME] and optimized for [PLATFORM_OR_USE_CASE]. Include a favicon.ico file for web browsers and a square PNG for social media. Validate the design for visual clarity at [RESOLUTIONS]. Provide download links for the generated files and suggest emoji alternatives if the current design lacks contrast or memorability.\n```\nCopy\n\n```\nGenerated assets for **Acme Corp** using their logo (a stylized lightning bolt) and the emoji ⚡. The design features a vibrant blue (#0066FF) lightning bolt on a white background, optimized for both light and dark mode. Three files were created:\n\n1. **favicon.ico** (16x16, 32x32, 48x48, 64x64) – Compatible with all major browsers and desktop shortcuts. The smallest size (16x16) was tested in Chrome, Firefox, and Safari, ensuring clarity even at low resolution.\n2. **app_icon.png** (1024x1024) – High-resolution icon for app stores, featuring a subtle drop shadow for depth. The design maintains the brand’s lightning bolt motif while ensuring scalability.\n3. **social_media.png** (1200x630) – Optimized for LinkedIn, Twitter, and Facebook. The lightning bolt is centered with ample white space to avoid cropping issues on mobile devices.\n\n**Validation Notes:**\n- Contrast ratio between the blue (#0066FF) and white background is 8.59:1 (WCAG AA compliant for normal text).\n- The emoji alternative ⚡ was tested and retained due to its strong association with speed and energy, aligning with Acme Corp’s branding.\n\n**Download Links:**\n- [favicon.ico](https://example.com/acme-favicon.ico)\n- [app_icon.png](https://example.com/acme-app-icon.png)\n- [social_media.png](https://example.com/acme-social-media.png)\n\n**Recommendations:**\n- For dark mode, consider a slight glow effect around the lightning bolt to improve visibility on dark backgrounds.\n- Test the favicon.ico in Safari’s private browsing mode to ensure it renders correctly in all contexts.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:26:21.798460Z",
+    "http_status": 200,
+    "content_hash": "c3877e4043ebdbb06962c7c41ac79499012830755cc0e20e82c00d2d66952fd3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\web-asset-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\web-asset-generator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Web Asset Generator - Automate Icon Creation",
+  "short_description_vi": "Generates favicons, app icons, and social media images from logos, text, or emojis. Supports emoji suggestions, validation, and framework auto-integration. Benefits operations teams by automating asset creation and ensuring consistency across web properties."
+}

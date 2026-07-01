@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/design-doc-mermaid",
+  "slug": "design-doc-mermaid",
+  "name": "browser-use",
+  "headline": "design-doc-mermaid: Documentation",
+  "short_description": "We build custom AI skills and automations for B2B companies.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "SpillwaveSolutions",
+  "install_command": "git clone https://github.com/SpillwaveSolutions/design-doc-mermaid.git",
+  "source_repo_url": "https://github.com/SpillwaveSolutions/design-doc-mermaid",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The design-doc-mermaid Claude Code skill is an innovative automation tool designed to streamline the creation of design documentation. By leveraging this skill, users can generate visual representations of their design documents using Mermaid syntax, which is particularly beneficial for developers and product managers who need to communicate complex ideas clearly and efficiently. This skill automates the tedious aspects of documentation, allowing users to focus on their core tasks. One of the key benefits of the design-doc-mermaid skill is its ability to save time in the documentation process. While specific time savings are currently unknown, the skill's intermediate implementation level suggests that users can expect a significant reduction in the time spent manually creating diagrams and flowcharts. By automating these tasks, teams can enhance their productivity and ensure that documentation remains up-to-date with minimal effort. This skill is ideal for developers, product managers, and AI practitioners who are involved in the design and development process. It is particularly relevant for those working in environments where clear documentation is crucial for collaboration and project success. The design-doc-mermaid skill can be integrated into existing workflows, making it a valuable addition to any AI-first strategy aimed at improving workflow automation. Implementation of the design-doc-mermaid skill is classified as intermediate, requiring approximately 30 minutes to set up. Users should have a basic understanding of Mermaid syntax to maximize the skill's potential. This skill can be particularly useful in scenarios where teams need to visualize architecture diagrams, process flows, or system designs quickly. By incorporating design-doc-mermaid into their toolkit, teams can enhance their documentation efforts, ensuring clarity and consistency across their projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SpillwaveSolutions/design-doc-mermaid`",
+    "usage": "```\nCreate a Mermaid.js diagram for a design document about [PROJECT_NAME] in [INDUSTRY]. The diagram should visualize [SYSTEM_COMPONENT] and its interactions with [RELATED_COMPONENTS]. Use the following key details: [KEY_DETAILS]. Format the output as a Mermaid.js code block that can be directly inserted into a Markdown document.\n```\nCopy\n\n```\n```mermaid\nclassDiagram\n    class User{\n        +string name\n        +int id\n        +createOrder()\n    }\n    class Order{\n        +int orderId\n        +string status\n        +calculateTotal()\n    }\n    class Payment{\n        +string paymentMethod\n        +processPayment()\n    }\n    User --> Order : places\n    Order --> Payment : requires\n```\n\nThis Mermaid.js diagram visualizes the core components of the e-commerce system for [COMPANY]. The diagram includes:\n- **User**: Represents the customer placing orders.\n- **Order**: Contains order details and status.\n- **Payment**: Handles payment processing.\n\nThe relationships show how users place orders and how orders require payment processing. This diagram can be inserted into a Markdown document to enhance the design documentation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "design-doc-mermaid#main-content",
+      "design-doc-mermaid#overview",
+      "design-doc-mermaid#setup",
+      "design-doc-mermaid#examples",
+      "design-doc-mermaid#tools",
+      "design-doc-mermaid#mcp",
+      "design-doc-mermaid#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The design-doc-mermaid Claude Code skill is an innovative automation tool designed to streamline the creation of design documentation. By leveraging this skill, users can generate visual representations of their design documents using Mermaid syntax, which is particularly beneficial for developers and product managers who need to communicate complex ideas clearly and efficiently. This skill automates the tedious aspects of documentation, allowing users to focus on their core tasks. One of the key benefits of the design-doc-mermaid skill is its ability to save time in the documentation process. While specific time savings are currently unknown, the skill's intermediate implementation level suggests that users can expect a significant reduction in the time spent manually creating diagrams and flowcharts. By automating these tasks, teams can enhance their productivity and ensure that documentation remains up-to-date with minimal effort. This skill is ideal for developers, product managers, and AI practitioners who are involved in the design and development process. It is particularly relevant for those working in environments where clear documentation is crucial for collaboration and project success. The design-doc-mermaid skill can be integrated into existing workflows, making it a valuable addition to any AI-first strategy aimed at improving workflow automation. Implementation of the design-doc-mermaid skill is classified as intermediate, requiring approximately 30 minutes to set up. Users should have a basic understanding of Mermaid syntax to maximize the skill's potential. This skill can be particularly useful in scenarios where teams need to visualize architecture diagrams, process flows, or system designs quickly. By incorporating design-doc-mermaid into their toolkit, teams can enhance their documentation efforts, ensuring clarity and consistency across their projects.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SpillwaveSolutions/design-doc-mermaid`",
+    "usage_vi": "```\nCreate a Mermaid.js diagram for a design document about [PROJECT_NAME] in [INDUSTRY]. The diagram should visualize [SYSTEM_COMPONENT] and its interactions with [RELATED_COMPONENTS]. Use the following key details: [KEY_DETAILS]. Format the output as a Mermaid.js code block that can be directly inserted into a Markdown document.\n```\nCopy\n\n```\n```mermaid\nclassDiagram\n    class User{\n        +string name\n        +int id\n        +createOrder()\n    }\n    class Order{\n        +int orderId\n        +string status\n        +calculateTotal()\n    }\n    class Payment{\n        +string paymentMethod\n        +processPayment()\n    }\n    User --> Order : places\n    Order --> Payment : requires\n```\n\nThis Mermaid.js diagram visualizes the core components of the e-commerce system for [COMPANY]. The diagram includes:\n- **User**: Represents the customer placing orders.\n- **Order**: Contains order details and status.\n- **Payment**: Handles payment processing.\n\nThe relationships show how users place orders and how orders require payment processing. This diagram can be inserted into a Markdown document to enhance the design documentation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:36:36.479465Z",
+    "http_status": 200,
+    "content_hash": "ab929a75a6038e1b3adebe4833ea6ac12fbcbfe4bd89d436bee9626d746786b7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\design-doc-mermaid.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\design-doc-mermaid.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "design-doc-mermaid: Documentation",
+  "short_description_vi": "We build custom AI skills and automations for B2B companies."
+}

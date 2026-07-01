@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-hud",
+  "slug": "claude-hud",
+  "name": "Claude Hud",
+  "headline": "claude-hud: Enhance Your Workflow Efficiency",
+  "short_description": "Claude HUD is a plugin for Claude Code that displays context usage, active tools, running agents, and todo progress. It helps developers monitor and manage their workflows in real-time, improving efficiency and reducing errors. The plugin integrates directly with Claude Code, providing a status line below the input area.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "jarrodwatts",
+  "install_command": "git clone https://github.com/jarrodwatts/claude-hud.git",
+  "source_repo_url": "https://github.com/jarrodwatts/claude-hud",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "statusline",
+    "typescript",
+    "anthropic",
+    "cli",
+    "plugin",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The claude-hud is an innovative Claude Code plugin designed to enhance your workflow by providing real-time insights into your project's context usage, active tools, running agents, and todo progress. This automation skill is particularly useful for developers and product managers who need to keep track of multiple components in their projects. By visualizing critical information directly in your terminal, claude-hud allows you to maintain a clear overview of your development environment, making it easier to identify potential bottlenecks and optimize performance. One of the key benefits of using claude-hud is its ability to monitor context usage, which helps prevent hitting limits during development. This feature is essential for teams working on complex projects where resource management is crucial. Additionally, tracking the status of multiple running agents ensures that tasks are executed efficiently, saving time and reducing the likelihood of errors. The ability to visualize your todo progress in real-time keeps you organized and focused, allowing you to prioritize tasks effectively. This skill is ideal for developers, product managers, and AI practitioners who are looking to streamline their workflows and improve productivity. Whether you are managing a small project or overseeing a large team, claude-hud provides the insights necessary to make informed decisions quickly. Its customization options allow users to tailor the HUD layout to highlight the most relevant information, further enhancing its utility in various work environments. Implementing claude-hud is straightforward, with a beginner-level difficulty and an estimated setup time of just 30 minutes. While the exact time savings are not quantified, the efficiency gained from having a comprehensive overview of your project in one place is invaluable. As part of an AI-first workflow, this skill integrates seamlessly with other AI automation tools, making it a vital addition for anyone looking to leverage AI agents effectively in their development processes.\nMonitor your project's context usage to avoid hitting limits during development.\nTrack the status of multiple running agents to ensure efficient task execution.\nVisualize your todo progress in real-time to stay on top of your tasks.\nObserve active tools and their outputs directly in your terminal for better debugging.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jarrodwatts/claude-hud`",
+    "usage": "```\nActivate the Claude HUD plugin in Claude Code. Display the current context usage, active tools, and running agents. Show the progress of my todo list for the [PROJECT_NAME] project. Highlight any tasks that are overdue or at risk of slipping.\n```\nCopy\n\n```\nClaude HUD Status Line:\n\nContext Usage: 78% of 10,000 tokens used\nActive Tools: GitHub Integration, Code Review Agent, Documentation Generator\nRunning Agents: Code Review Agent (Task: Review PR #456), Documentation Generator (Task: Update API docs)\n\nTodo Progress:\n- [ ] Update API documentation (Due: Today) - High Priority\n- [ ] Review PR #456 (Due: Tomorrow) - High Priority\n- [ ] Fix bug in login module (Due: Friday) - Medium Priority\n- [ ] Optimize database queries (Due: Next Week) - Low Priority\n\nNote: Tasks 'Update API documentation' and 'Review PR #456' are at risk of slipping due to high priority and upcoming deadlines.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-hud#main-content",
+      "claude-hud#overview",
+      "claude-hud#setup",
+      "claude-hud#examples",
+      "claude-hud#tools",
+      "claude-hud#mcp",
+      "claude-hud#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-hud là một plugin Claude Code cải tiến được thiết kế để nâng cao hiệu suất quy trình làm việc của bạn bằng cách cung cấp thông tin chi tiết theo thời gian thực về mức độ sử dụng ngữ cảnh (context usage) của dự án, các công cụ đang hoạt động (active tools), các agent đang chạy và tiến độ công việc cần làm (todo progress). Kỹ năng tự động hóa này đặc biệt hữu ích cho các nhà phát triển và quản lý sản phẩm cần theo dõi nhiều thành phần khác nhau trong dự án của họ. Bằng cách trực quan hóa các thông tin quan trọng trực tiếp trong terminal, claude-hud cho phép bạn duy trì cái nhìn tổng quan rõ ràng về môi trường phát triển, giúp dễ dàng xác định các nút thắt cổ chai tiềm ẩn và tối ưu hóa hiệu năng. Một trong những lợi ích chính khi sử dụng claude-hud là khả năng giám sát context usage, giúp ngăn chặn việc vượt quá giới hạn trong quá trình phát triển. Tính năng này rất cần thiết cho các đội ngũ làm việc trên các dự án phức tạp, nơi việc quản lý tài nguyên đóng vai trò quan trọng. Ngoài ra, việc theo dõi trạng thái của nhiều agent đang chạy đảm bảo các tác vụ được thực thi hiệu quả, tiết kiệm thời gian và giảm thiểu khả năng xảy ra lỗi. Khả năng trực quan hóa tiến độ công việc cần làm trong thời gian thực giúp bạn luôn ngăn nắp và tập trung, cho phép bạn sắp xếp thứ tự ưu tiên các tác vụ một cách hiệu quả. Kỹ năng này lý tưởng cho các nhà phát triển, quản lý sản phẩm và các chuyên gia AI đang tìm cách tối ưu hóa quy trình làm việc và nâng cao năng suất. Dù bạn đang quản lý một dự án nhỏ hay giám sát một đội ngũ lớn, claude-hud đều cung cấp những thông tin chi tiết cần thiết để đưa ra quyết định nhanh chóng. Các tùy chọn tùy chỉnh của nó cho phép người dùng điều chỉnh bố cục HUD để làm nổi bật các thông tin liên quan nhất, nâng cao hơn nữa tính hữu dụng của nó trong nhiều môi trường làm việc khác nhau. Việc triển khai claude-hud rất đơn giản với độ khó ở mức cơ bản và thời gian setup ước tính chỉ khoảng 30 phút. Dù lượng thời gian tiết kiệm được cụ thể chưa được định lượng, nhưng hiệu quả có được từ việc có một cái nhìn tổng quan toàn diện về dự án tại một nơi duy nhất là vô cùng quý giá. Là một phần của quy trình làm việc ưu tiên AI (AI-first workflow), kỹ năng này tích hợp liền mạch với các công cụ tự động hóa AI khác, khiến nó trở thành một sự bổ sung quan trọng cho bất kỳ ai muốn tận dụng các AI agent một cách hiệu quả trong quá trình phát triển của mình.\nGiám sát mức độ sử dụng ngữ cảnh (context usage) của dự án để tránh vượt quá giới hạn trong quá trình phát triển.\nTheo dõi trạng thái của nhiều agent đang chạy để đảm bảo thực thi tác vụ hiệu quả.\nTrực quan hóa tiến độ công việc cần làm theo thời gian thực để luôn nắm bắt tốt các tác vụ của bạn.\nQuan sát các công cụ đang hoạt động (active tools) và đầu ra của chúng trực tiếp trong terminal để debug hiệu quả hơn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jarrodwatts/claude-hud`",
+    "usage_vi": "```\nKích hoạt plugin Claude HUD trong Claude Code. Hiển thị mức sử dụng ngữ cảnh hiện tại, các công cụ đang hoạt động và các agent đang chạy. Hiển thị tiến độ của danh sách công việc cần làm (todo list) cho dự án [PROJECT_NAME]. Làm nổi bật bất kỳ tác vụ nào quá hạn hoặc có nguy cơ bị chậm trễ.\n```\nCopy\n\n```\nClaude HUD Status Line:\n\nContext Usage: Đã dùng 78% của 10.000 token\nActive Tools: GitHub Integration, Code Review Agent, Documentation Generator\nRunning Agents: Code Review Agent (Task: Review PR #456), Documentation Generator (Task: Update API docs)\n\nTodo Progress:\n- [ ] Cập nhật tài liệu API (Hạn chót: Hôm nay) - Ưu tiên cao\n- [ ] Review PR #456 (Hạn chót: Ngày mai) - Ưu tiên cao\n- [ ] Sửa lỗi trong module đăng nhập (Hạn chót: Thứ Sáu) - Ưu tiên trung bình\n- [ ] Tối ưu hóa truy vấn cơ sở dữ liệu (Hạn chót: Tuần tới) - Ưu tiên thấp\n\nLưu ý: Các tác vụ 'Cập nhật tài liệu API' và 'Review PR #456' có nguy cơ bị chậm trễ do mức độ ưu tiên cao và thời hạn sắp tới.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:33:18.608973Z",
+    "http_status": 200,
+    "content_hash": "b385e838cb189f4e076fb4b969db6e05b7ddfe34f100f04f141d3827a7778d18",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-hud.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-hud.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-hud: Nâng cao hiệu suất quy trình làm việc của bạn",
+  "short_description_vi": "Claude HUD là một plugin dành cho Claude Code giúp hiển thị mức độ sử dụng ngữ cảnh (context usage), các công cụ đang hoạt động (active tools), các agent đang chạy (running agents) và tiến độ công việc cần làm (todo progress). Nó giúp các nhà phát triển theo dõi và quản lý quy trình làm việc của họ theo thời gian thực, từ đó nâng cao hiệu suất và giảm thiểu sai sót. Plugin này tích hợp trực tiếp vào Claude Code, cung cấp một dòng trạng thái ngay bên dưới khu vực nhập liệu."
+}

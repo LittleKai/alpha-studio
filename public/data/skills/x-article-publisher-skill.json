@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/x-article-publisher-skill",
+  "slug": "x-article-publisher-skill",
+  "name": "browser-use",
+  "headline": "X Article Publisher - Publish Markdown to X",
+  "short_description": "Publish Markdown articles to X (Twitter) Articles with one command. Eliminates manual rich text editing. Supports dividers, tables, Mermaid diagrams, and cross-platform clipboard. Ideal for content teams and social media managers.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "wshuyi",
+  "install_command": "git clone https://github.com/wshuyi/x-article-publisher-skill.git",
+  "source_repo_url": "https://github.com/wshuyi/x-article-publisher-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "x-article-publisher-skill automates the conversion of Markdown files into formatted X (Twitter) Articles, eliminating manual rich text editing. The skill detects and converts Markdown elements including dividers, tables (rendered as images), and Mermaid diagrams into X Article-compatible formats. It uses a clipboard-based workflow for efficient content transfer and supports YAML frontmatter in Markdown files. Cross-platform clipboard support works on Windows and macOS. This tool is designed for content teams, writers, and social media managers who need to publish formatted articles to X without manually recreating layout and styling.\nAutomate the publishing of Markdown articles to X Articles with a single command.\nEfficiently manage and format multiple images within articles without manual positioning.\nConvert Markdown tables into images for seamless integration into X Articles.\nUtilize Mermaid diagrams in articles by converting them to PNG images automatically.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wshuyi/x-article-publisher-skill`",
+    "usage": "```\nPublish this Markdown article to X (Twitter) Articles: [ARTICLE_MARKDOWN]. Include the following metadata: title '[TITLE]', description '[DESCRIPTION]', and tags '[TAGS]'. Ensure all formatting, including tables and Mermaid diagrams, is preserved. Use cross-platform clipboard for faster publishing.\n```\nCopy\n\n```\nArticle published successfully to X (Twitter) Articles. Title: 'The Future of AI in Healthcare'. Description: 'Exploring how AI is transforming diagnostics, treatment, and patient care'. Tags: #AI #Healthcare #Innovation. Formatting preserved: 2 tables, 1 Mermaid diagram, and 3 dividers. Cross-platform clipboard used for faster publishing. Article URL: https://x.com/i/articles/123456789.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "x-article-publisher-skill#main-content",
+      "x-article-publisher-skill#overview",
+      "x-article-publisher-skill#setup",
+      "x-article-publisher-skill#examples",
+      "x-article-publisher-skill#tools",
+      "x-article-publisher-skill#mcp",
+      "x-article-publisher-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "x-article-publisher-skill automates the conversion of Markdown files into formatted X (Twitter) Articles, eliminating manual rich text editing. The skill detects and converts Markdown elements including dividers, tables (rendered as images), and Mermaid diagrams into X Article-compatible formats. It uses a clipboard-based workflow for efficient content transfer and supports YAML frontmatter in Markdown files. Cross-platform clipboard support works on Windows and macOS. This tool is designed for content teams, writers, and social media managers who need to publish formatted articles to X without manually recreating layout and styling.\nAutomate the publishing of Markdown articles to X Articles with a single command.\nEfficiently manage and format multiple images within articles without manual positioning.\nConvert Markdown tables into images for seamless integration into X Articles.\nUtilize Mermaid diagrams in articles by converting them to PNG images automatically.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wshuyi/x-article-publisher-skill`",
+    "usage_vi": "```\nPublish this Markdown article to X (Twitter) Articles: [ARTICLE_MARKDOWN]. Include the following metadata: title '[TITLE]', description '[DESCRIPTION]', and tags '[TAGS]'. Ensure all formatting, including tables and Mermaid diagrams, is preserved. Use cross-platform clipboard for faster publishing.\n```\nCopy\n\n```\nArticle published successfully to X (Twitter) Articles. Title: 'The Future of AI in Healthcare'. Description: 'Exploring how AI is transforming diagnostics, treatment, and patient care'. Tags: #AI #Healthcare #Innovation. Formatting preserved: 2 tables, 1 Mermaid diagram, and 3 dividers. Cross-platform clipboard used for faster publishing. Article URL: https://x.com/i/articles/123456789.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:31.687120Z",
+    "http_status": 200,
+    "content_hash": "b1206796de23aa8f8b39df71b16e73d02922fcd9b692c16e1e3e53f5f29eab45",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\x-article-publisher-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\x-article-publisher-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "X Article Publisher - Publish Markdown to X",
+  "short_description_vi": "Publish Markdown articles to X (Twitter) Articles with one command. Eliminates manual rich text editing. Supports dividers, tables, Mermaid diagrams, and cross-platform clipboard. Ideal for content teams and social media managers."
+}

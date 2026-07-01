@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bg3se-macos",
+  "slug": "bg3se-macos",
+  "name": "browser-use",
+  "headline": "baldur's gate 3 script extender for macos",
+  "short_description": "BG3SE-macOS is a native macOS implementation of the Baldur's Gate 3 Script Extender. It enables modding capabilities for macOS users, replicating features from Norbyte's Windows BG3SE. The tool connects to the game's scripting environment, allowing for custom modifications and enhancements.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "tdimino",
+  "install_command": "git clone https://github.com/tdimino/bg3se-macos.git",
+  "source_repo_url": "https://github.com/tdimino/bg3se-macos",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ghidra",
+    "baldurs-gate-3",
+    "reverse-engineering"
+  ],
+  "sections": {
+    "overview": "BG3SE-macOS is a ground-up native implementation of the Baldur's Gate 3 Script Extender designed for macOS systems, achieving ~94% feature parity with the Windows version. It enables macOS players to use Script Extender mods—including companion mods, gameplay tweaks, UI enhancements, and other Lua-based modifications—that would otherwise be unavailable on Apple platforms. The tool works by injecting a Lua runtime and the Ext API into the game, allowing mods to directly read PAK files and execute custom scripts. Setup requires building from source using CMake and configuring Steam launch options, after which SE mods install and function identically to standard mods. macOS users with Apple Silicon Macs or Intel systems can now access the broader mod ecosystem previously limited to Windows players.\nEnable companion reaction and banter mods on macOS\nInstall gameplay tweaks and balance modifications for Mac players\nApply UI enhancement mods that require Lua scripting\nAccess Script Extender mods from Nexus Mods on Apple Silicon or Intel Macs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tdimino/bg3se-macos`",
+    "usage": "```\nI'm a Baldur's Gate 3 modder using macOS. I need help creating a mod that [DESCRIBE MOD IDEA]. Can you provide a step-by-step guide using BG3SE-macOS? Include specific code examples and explain how to implement [SPECIFIC FEATURE] in the game.\n```\nCopy\n\n```\n# Baldur's Gate 3 Modding Guide for macOS",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bg3se-macos#main-content",
+      "bg3se-macos#overview",
+      "bg3se-macos#setup",
+      "bg3se-macos#examples",
+      "bg3se-macos#tools",
+      "bg3se-macos#mcp",
+      "bg3se-macos#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "BG3SE-macOS is a ground-up native implementation of the Baldur's Gate 3 Script Extender designed for macOS systems, achieving ~94% feature parity with the Windows version. It enables macOS players to use Script Extender mods—including companion mods, gameplay tweaks, UI enhancements, and other Lua-based modifications—that would otherwise be unavailable on Apple platforms. The tool works by injecting a Lua runtime and the Ext API into the game, allowing mods to directly read PAK files and execute custom scripts. Setup requires building from source using CMake and configuring Steam launch options, after which SE mods install and function identically to standard mods. macOS users with Apple Silicon Macs or Intel systems can now access the broader mod ecosystem previously limited to Windows players.\nEnable companion reaction and banter mods on macOS\nInstall gameplay tweaks and balance modifications for Mac players\nApply UI enhancement mods that require Lua scripting\nAccess Script Extender mods from Nexus Mods on Apple Silicon or Intel Macs",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tdimino/bg3se-macos`",
+    "usage_vi": "```\nI'm a Baldur's Gate 3 modder using macOS. I need help creating a mod that [DESCRIBE MOD IDEA]. Can you provide a step-by-step guide using BG3SE-macOS? Include specific code examples and explain how to implement [SPECIFIC FEATURE] in the game.\n```\nCopy\n\n```\n# Baldur's Gate 3 Modding Guide for macOS"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:30:32.209781Z",
+    "http_status": 200,
+    "content_hash": "5e486a5883e1235280727fb8f336cfde0bd35c344896ed89da686a1d7079d513",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bg3se-macos.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bg3se-macos.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "baldur's gate 3 script extender for macos",
+  "short_description_vi": "BG3SE-macOS is a native macOS implementation of the Baldur's Gate 3 Script Extender. It enables modding capabilities for macOS users, replicating features from Norbyte's Windows BG3SE. The tool connects to the game's scripting environment, allowing for custom modifications and enhancements."
+}

@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-agent-toolkit",
+  "slug": "claude-agent-toolkit",
+  "name": "Claude Agent Toolkit",
+  "headline": "Python toolkit for Claude agent building",
+  "short_description": "Python framework for building agents using claude-code-sdk. Provides decorator-based tools, runtime isolation, and simplified agent development. Benefits developers in operations by streamlining agent creation and integration with existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "cheolwanpark",
+  "install_command": "git clone https://github.com/cheolwanpark/claude-agent-toolkit.git",
+  "source_repo_url": "https://github.com/cheolwanpark/claude-agent-toolkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "claude-code-sdk",
+    "claude-ai",
+    "agents",
+    "agentic-ai",
+    "mcp",
+    "ai",
+    "ai-agents",
+    "python",
+    "agentic-workflow",
+    "claude",
+    "claude-code",
+    "fastmcp",
+    "agentic-ai-development"
+  ],
+  "sections": {
+    "overview": "Claude Agent Toolkit is a Python framework that wraps claude-code-sdk to simplify AI agent development through decorator-based tool creation and Docker-based runtime isolation. It solves the complexity of manual MCP server setup and tool integration by providing a class-based tool system with the @tool decorator, enabling developers to convert Python functions into Claude-compatible tools with minimal configuration. The framework ensures production safety by running tool execution in isolated Docker containers, preventing access to unintended system tools and providing consistent behavior across environments. Built for developers building AI agents who need both ease of development and controlled, predictable runtime execution.\nBuilding calculator and data processing agents with isolated tool execution\nCreating multi-tool agents with parallel execution support and permission controls\nDeveloping production AI applications requiring runtime safety and environment consistency\nReplacing manual claude-code-sdk integration with simplified agent scaffolding",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cheolwanpark/claude-agent-toolkit`",
+    "usage": "```\nUse the claude-agent-toolkit to create a Python agent that [TASK]. The agent should use the [DECORATOR] decorator to handle [FUNCTIONALITY]. Include [RUNTIME_CONFIGURATION] for isolation. Generate the complete agent code and explain how to run it with claude-code-sdk.\n```\nCopy\n\n```\n```python\nfrom claude_agent_toolkit import Agent, task, runtime\n\n@task(description=\"Process customer support tickets from Zendesk API\")\ndef process_tickets():\n    import requests\n    response = requests.get(\"https://zendesk.com/api/v2/tickets.json\", headers={\"Authorization\": \"Bearer [API_KEY]\"})\n    tickets = response.json()[\"tickets\"]\n    for ticket in tickets:\n        if ticket[\"status\"] == \"open\" and ticket[\"priority\"] == \"high\":\n            print(f\"Escalating ticket {ticket['id']} to senior support\")\n\n@runtime(isolation_level=\"process\", timeout=30)\ndef run_agent():\n    agent = Agent(name=\"SupportTicketProcessor\", tasks=[process_tickets])\n    agent.run()\n\nif __name__ == \"__main__\":\n    run_agent()\n```\n\nTo run this agent, install the dependencies:\n```bash\npip install claude-agent-toolkit requests\n```\n\nThen execute with claude-code-sdk:\n```bash\nclaude run agent.py\n```\n\nThe agent will process high-priority open tickets from Zendesk and escalate them automatically. The runtime isolation ensures crashes in the ticket processing don't affect the agent's core functionality. The decorator-based approach makes it easy to add new tasks like database logging or Slack notifications without modifying the core agent logic.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-agent-toolkit#main-content",
+      "claude-agent-toolkit#overview",
+      "claude-agent-toolkit#setup",
+      "claude-agent-toolkit#examples",
+      "claude-agent-toolkit#tools",
+      "claude-agent-toolkit#mcp",
+      "claude-agent-toolkit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Agent Toolkit là một framework Python đóng gói claude-code-sdk nhằm đơn giản hóa việc phát triển AI agent thông qua việc tạo công cụ bằng decorator và cô lập runtime dựa trên Docker. Framework này giải quyết sự phức tạp của việc setup thủ công MCP server và tích hợp công cụ bằng cách cung cấp một hệ thống công cụ dạng class với decorator @tool, cho phép lập trình viên chuyển đổi các hàm Python thành các công cụ tương thích với Claude chỉ với cấu hình tối thiểu. Framework đảm bảo an toàn vận hành (production safety) bằng cách thực thi công cụ trong các container Docker được cô lập, ngăn chặn quyền truy cập vào các công cụ hệ thống không mong muốn và mang lại hành vi nhất quán trên các môi trường khác nhau. Được thiết kế dành cho các lập trình viên xây dựng AI agent cần sự dễ dàng trong phát triển lẫn khả năng kiểm soát và dự đoán quá trình thực thi runtime.\n- Xây dựng các agent tính toán và xử lý dữ liệu với tính năng thực thi công cụ cô lập.\n- Tạo các multi-tool agent hỗ trợ thực thi song song và kiểm soát quyền truy cập.\n- Phát triển các ứng dụng AI production yêu cầu độ an toàn runtime và tính nhất quán của môi trường.\n- Thay thế việc tích hợp claude-code-sdk thủ công bằng các khung agent (agent scaffolding) đơn giản hóa.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để biết hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cheolwanpark/claude-agent-toolkit`",
+    "usage_vi": "```\nSử dụng claude-agent-toolkit để tạo một Python agent thực hiện [TASK]. Agent này nên sử dụng decorator [DECORATOR] để xử lý [FUNCTIONALITY]. Điền [RUNTIME_CONFIGURATION] để thiết lập cô lập. Tạo mã nguồn agent hoàn chỉnh và giải thích cách chạy mã đó bằng claude-code-sdk.\n```\nCopy\n\n```python\nfrom claude_agent_toolkit import Agent, task, runtime\n\n@task(description=\"Xử lý ticket hỗ trợ khách hàng từ Zendesk API\")\ndef process_tickets():\n    import requests\n    response = requests.get(\"https://zendesk.com/api/v2/tickets.json\", headers={\"Authorization\": \"Bearer [API_KEY]\"})\n    tickets = response.json()[\"tickets\"]\n    for ticket in tickets:\n        if ticket[\"status\"] == \"open\" and ticket[\"priority\"] == \"high\":\n            print(f\"Chuyển tiếp ticket {ticket['id']} lên bộ phận hỗ trợ cấp cao\")\n\n@runtime(isolation_level=\"process\", timeout=30)\ndef run_agent():\n    agent = Agent(name=\"SupportTicketProcessor\", tasks=[process_tickets])\n    agent.run()\n\nif __name__ == \"__main__\":\n    run_agent()\n```\n\nĐể chạy agent này, hãy cài đặt các dependency:\n```bash\npip install claude-agent-toolkit requests\n```\n\nSau đó thực thi với claude-code-sdk:\n```bash\nclaude run agent.py\n```\n\nAgent sẽ tự động xử lý và chuyển tiếp các ticket đang mở có độ ưu tiên cao từ Zendesk. Việc cô lập runtime đảm bảo các sự cố (crash) trong quá trình xử lý ticket sẽ không ảnh hưởng đến chức năng cốt lõi của agent. Cách tiếp cận dựa trên decorator giúp dễ dàng thêm các tác vụ mới như ghi log cơ sở dữ liệu hoặc gửi thông báo Slack mà không cần sửa đổi logic cốt lõi của agent."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:09:02.582075Z",
+    "http_status": 200,
+    "content_hash": "1ecefa2bbe76a714aa4b3a7d7486c3ef736b115a5af05e3cd1eb0bcf44773db1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-toolkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-toolkit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ công cụ Python giúp xây dựng Claude agent",
+  "short_description_vi": "Framework Python để xây dựng các agent sử dụng claude-code-sdk. Cung cấp các công cụ dạng decorator, cơ chế cô lập runtime (runtime isolation) và đơn giản hóa quá trình phát triển agent. Hỗ trợ đắc lực cho các lập trình viên vận hành (operations) bằng cách tối ưu hóa quy trình tạo agent và tích hợp vào các workflow sẵn có."
+}

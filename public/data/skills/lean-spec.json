@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lean-spec",
+  "slug": "lean-spec",
+  "name": "LeanSpec",
+  "headline": "LeanSpec - AI-Powered Spec-Driven Development",
+  "short_description": "LeanSpec enables AI-powered Spec-Driven Development (SDD) for modern software projects. It allows operations teams to define, manage, and automate specifications for AI agents. The tool connects to development workflows, ensuring alignment between project requirements and AI agent capabilities.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "80 min",
+  "author": "codervisor",
+  "install_command": "git clone https://github.com/codervisor/lean-spec.git",
+  "source_repo_url": "https://github.com/codervisor/lean-spec",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "development",
+    "ai-agents",
+    "spec-driven-development",
+    "spec",
+    "project-management",
+    "ai"
+  ],
+  "sections": {
+    "overview": "LeanSpec is a spec coding framework that works with your existing workflow—GitHub Issues, Azure DevOps Work Items, Jira, Linear, or plain markdown. It provides a unified CLI, MCP server, and web UI on top of any spec backend, enabling AI coding assistants to access structured spec data regardless of where specs live. The tool is designed for teams practicing Spec-Driven Development (SDD), offering Kanban boards, smart search, dependency tracking, and project metrics. Setup takes minutes with markdown specs working out of the box, and it integrates with Claude Code, Cursor, VS Code Copilot, and other AI assistants via MCP or CLI.\nDefine and manage project specifications in your preferred tool (GitHub Issues, Azure DevOps, or markdown) with unified AI access\nGive AI coding assistants context-efficient spec data to improve code generation accuracy\nTrack spec dependencies and relationships while maintaining visibility across statuses and priorities\nVisualize project progress with Kanban boards and metrics without leaving your current workflow",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/codervisor/lean-spec`",
+    "usage": "```\nAct as a LeanSpec SDD (Spec-Driven Development) agent. Using the project specification [SPEC_FILE_URL_OR_PATH], generate a set of executable test cases for the AI agent defined in [AGENT_CONFIG_FILE]. Ensure the tests validate: 1) [REQUIREMENT_1], 2) [REQUIREMENT_2], 3) [REQUIREMENT_3]. Format the output as a JSON test suite compatible with [TEST_FRAMEWORK_NAME]. Include mock data generation for [DATA_DOMAIN] and edge case handling for [EDGE_CASE].\n```\nCopy\n\n```\n```json\n{\n  \"test_suite\": {\n    \"name\": \"Customer Support Agent - Order Processing Tests\",\n    \"description\": \"Validates order processing workflows for the AI agent handling customer support tickets.\",\n    \"tests\": [\n      {\n        \"id\": \"TST-001\",\n        \"name\": \"Process Standard Order\",\n        \"description\": \"Verifies the agent correctly processes a standard order with valid payment and inventory.\",\n        \"steps\": [\n          {\n            \"action\": \"Agent receives order request\",\n            \"input\": {\n              \"order_id\": \"ORD-2024-00123\",\n              \"customer_id\": \"CUST-45678\",\n              \"items\": [{\"product_id\": \"PROD-9012\", \"quantity\": 2}],\n              \"payment_method\": \"credit_card\"\n            },\n            \"expected_output\": {\n              \"status\": \"completed\",\n              \"confirmation_id\": \"CONF-78901\",\n              \"estimated_delivery\": \"2024-05-15\"\n            }\n          }\n        ],\n        \"mock_data\": {\n          \"inventory\": {\"PROD-9012\": {\"stock\": 10, \"price\": 19.99}},\n          \"customer\": {\"CUST-45678\": {\"name\": \"Sarah Johnson\", \"credit_limit\": 500.00}}\n        }\n      },\n      {\n        \"id\": \"TST-002\",\n        \"name\": \"Handle Low Inventory\",\n        \"description\": \"Tests agent response when inventory is insufficient for the order.\",\n        \"steps\": [\n          {\n            \"action\": \"Agent receives order request\",\n            \"input\": {\n              \"order_id\": \"ORD-2024-00124\",\n              \"customer_id\": \"CUST-45679\",\n              \"items\": [{\"product_id\": \"PROD-9013\", \"quantity\": 5}],\n              \"payment_method\": \"paypal\"\n            },\n            \"expected_output\": {\n              \"status\": \"failed\",\n              \"error\": \"Insufficient inventory for PROD-9013\",\n              \"suggested_alternatives\": [\"PROD-9012\", \"PROD-9014\"]\n            }\n          }\n        ],\n        \"edge_cases\": {\n          \"inventory\": {\"PROD-9013\": {\"stock\": 3}},\n          \"customer\": {\"CUST-45679\": {\"name\": \"Michael Chen\", \"credit_limit\": 200.00}}\n        }\n      }\n    ]\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lean-spec#main-content",
+      "lean-spec#overview",
+      "lean-spec#setup",
+      "lean-spec#examples",
+      "lean-spec#tools",
+      "lean-spec#mcp",
+      "lean-spec#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LeanSpec là một framework lập trình dựa trên đặc tả (spec coding framework) tương thích tốt với workflow hiện tại của bạn—từ GitHub Issues, Azure DevOps Work Items, Jira, Linear cho đến markdown thuần túy. Nó cung cấp một giao diện CLI thống nhất, MCP server và Web UI trên nền mọi spec backend, giúp các trợ lý lập trình AI truy cập dữ liệu đặc tả có cấu trúc bất kể chúng được lưu trữ ở đâu. Công cụ này được thiết kế dành cho các đội ngũ áp dụng quy trình Phát triển dựa trên Đặc tả (SDD), cung cấp bảng Kanban, tìm kiếm thông minh, theo dõi phụ thuộc (dependency tracking) và các chỉ số đo lường dự án (project metrics). Quá trình setup chỉ mất vài phút với các file markdown hoạt động được ngay (out of the box), đồng thời tích hợp mượt mà với Claude Code, Cursor, VS Code Copilot và các trợ lý AI khác thông qua MCP hoặc CLI.\nĐịnh nghĩa và quản lý các đặc tả dự án trên công cụ ưa thích của bạn (GitHub Issues, Azure DevOps hoặc markdown) với khả năng truy cập AI thống nhất\nCung cấp cho trợ lý lập trình AI dữ liệu đặc tả giàu ngữ cảnh để cải thiện độ chính xác khi tạo code\nTheo dõi mối quan hệ và sự phụ thuộc giữa các đặc tả trong khi vẫn duy trì khả năng bao quát trạng thái và mức độ ưu tiên\nTrực quan hóa tiến độ dự án bằng bảng Kanban và các chỉ số đo lường mà không cần rời khỏi workflow hiện tại của bạn",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/codervisor/lean-spec`",
+    "usage_vi": "```\nĐóng vai trò là một LeanSpec SDD (Spec-Driven Development) agent. Sử dụng đặc tả dự án tại [SPEC_FILE_URL_OR_PATH], hãy tạo một bộ test case có thể thực thi cho AI agent được định nghĩa trong [AGENT_CONFIG_FILE]. Đảm bảo các bài test xác thực thành công: 1) [REQUIREMENT_1], 2) [REQUIREMENT_2], 3) [REQUIREMENT_3]. Định dạng đầu ra dưới dạng một JSON test suite tương thích với [TEST_FRAMEWORK_NAME]. Bao gồm việc tự động tạo mock data cho [DATA_DOMAIN] và xử lý các trường hợp biên (edge case) cho [EDGE_CASE].\n```\nCopy\n\n```json\n{\n  \"test_suite\": {\n    \"name\": \"Customer Support Agent - Order Processing Tests\",\n    \"description\": \"Validates order processing workflows for the AI agent handling customer support tickets.\",\n    \"tests\": [\n      {\n        \"id\": \"TST-001\",\n        \"name\": \"Process Standard Order\",\n        \"description\": \"Verifies the agent correctly processes a standard order with valid payment and inventory.\",\n        \"steps\": [\n          {\n            \"action\": \"Agent receives order request\",\n            \"input\": {\n              \"order_id\": \"ORD-2024-00123\",\n              \"customer_id\": \"CUST-45678\",\n              \"items\": [{\"product_id\": \"PROD-9012\", \"quantity\": 2}],\n              \"payment_method\": \"credit_card\"\n            },\n            \"expected_output\": {\n              \"status\": \"completed\",\n              \"confirmation_id\": \"CONF-78901\",\n              \"estimated_delivery\": \"2024-05-15\"\n            }\n          }\n        ],\n        \"mock_data\": {\n          \"inventory\": {\"PROD-9012\": {\"stock\": 10, \"price\": 19.99}},\n          \"customer\": {\"CUST-45678\": {\"name\": \"Sarah Johnson\", \"credit_limit\": 500.00}}\n        }\n      },\n      {\n        \"id\": \"TST-002\",\n        \"name\": \"Handle Low Inventory\",\n        \"description\": \"Tests agent response when inventory is insufficient for the order.\",\n        \"steps\": [\n          {\n            \"action\": \"Agent receives order request\",\n            \"input\": {\n              \"order_id\": \"ORD-2024-00124\",\n              \"customer_id\": \"CUST-45679\",\n              \"items\": [{\"product_id\": \"PROD-9013\", \"quantity\": 5}],\n              \"payment_method\": \"paypal\"\n            },\n            \"expected_output\": {\n              \"status\": \"failed\",\n              \"error\": \"Insufficient inventory for PROD-9013\",\n              \"suggested_alternatives\": [\"PROD-9012\", \"PROD-9014\"]\n            }\n          }\n        ],\n        \"edge_cases\": {\n          \"inventory\": {\"PROD-9013\": {\"stock\": 3}},\n          \"customer\": {\"CUST-45679\": {\"name\": \"Michael Chen\", \"credit_limit\": 200.00}}\n        }\n      }\n    ]\n  }\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:56.308750Z",
+    "http_status": 200,
+    "content_hash": "e0b4c0f0bc161cd59fef65543e6eb97d692bb51f81115b188aa0aae7276f4bfe",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lean-spec.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lean-spec.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LeanSpec - Phát triển dựa trên Đặc tả (Spec-Driven Development) hỗ trợ bởi AI",
+  "short_description_vi": "LeanSpec mang đến quy trình Phát triển dựa trên Đặc tả (Spec-Driven Development - SDD) hỗ trợ bởi AI cho các dự án phần mềm hiện đại. Công cụ này cho phép các đội ngũ vận hành định nghĩa, quản lý và tự động hóa các đặc tả cho AI agent. Đồng thời, LeanSpec kết nối trực tiếp với workflow phát triển, đảm bảo sự đồng bộ nhất quán giữa yêu cầu dự án và khả năng của AI agent."
+}

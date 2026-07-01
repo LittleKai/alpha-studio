@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-guide",
+  "slug": "claude-skills-guide",
+  "name": "browser-use",
+  "headline": "Master Claude Skills development",
+  "short_description": "A comprehensive guide for developing Claude Skills, from basic to advanced techniques. Ideal for operations teams looking to automate workflows. Connects to Claude agents for task automation and process optimization.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "sanshao85",
+  "install_command": "git clone https://github.com/sanshao85/claude-skills-guide.git",
+  "source_repo_url": "https://github.com/sanshao85/claude-skills-guide",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This resource provides structured guidance for creating Claude Skills—standardized packages that encapsulate expert knowledge into reusable files. It includes a detailed development guide covering basics to advanced techniques, 17 official example skills across creative, development, enterprise, and document processing categories, and progressive disclosure mechanisms that optimize token usage. Developers can follow learning paths from beginner to advanced levels, access templates and checklists, and study real-world examples to understand skill architecture including SKILL.md instructions, executable scripts, and reference resources. The guide helps operations teams and developers automate workflows and optimize processes by building professional-grade skills compatible with Claude Code, Cursor, and Claude APIs.\nCreating reusable ability packages for Claude automation\nBuilding document processing skills for Word, PDF, Excel, and PowerPoint\nDeveloping brand guideline and internal communications tools\nCreating algorithmic art and design generation skills",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sanshao85/claude-skills-guide`",
+    "usage": "```\nI need a comprehensive guide to developing a Claude Skill for [TASK/PROCESS]. Break this down into: 1) Core functionality requirements, 2) Input/output design for [TOOL/INTEGRATION], 3) Error handling for [COMMON FAILURE POINTS], 4) Performance optimization for [SCALABILITY NEEDS], and 5) Testing strategy for [VALIDATION CRITERIA]. Include code snippets using [PREFERRED_LANGUAGE] where applicable.\n```\nCopy\n\n```\n### Claude Skill Development Guide: Automated Report Generator\n\n#### **1. Core Functionality Requirements**\nThis skill will automate the generation of weekly sales performance reports by pulling data from Salesforce and HubSpot, merging it with internal KPIs, and delivering a formatted PDF to the operations team via Slack. Key requirements:\n- Real-time data synchronization with both CRMs\n- Conditional logic to flag deals >$50K that haven’t been updated in 7+ days\n- Auto-email PDF reports to [EMAIL_LIST] every Monday at 8 AM\n- Support for both JSON and CSV output formats\n\n#### **2. Input/Output Design**\n**Inputs:**\n- Salesforce API: Query `Opportunity` object with fields `Id`, `Amount`, `CloseDate`, `LastModifiedDate`\n- HubSpot API: Query `Deals` endpoint with properties `dealname`, `amount`, `createdate`, `hs_lastmodifieddate`\n- Configuration file: `config.json` with Slack webhook URL, email list, and report preferences\n\n**Outputs:**\n- Primary: Slack message with download link to PDF report\n- Secondary: JSON summary for dashboard integration\n- Tertiary: Email attachment with formatted PDF\n\n#### **3. Error Handling**\nCritical failure points and mitigation strategies:\n- **API Rate Limiting:** Implement exponential backoff with jitter (max 5 retries)\n- **Data Mismatch:** Validate field types (e.g., `Amount` must be numeric) and log discrepancies\n- **Template Errors:** Fallback to default template if custom template fails to load\n- **Notification Failures:** Queue failed deliveries and retry 3x before logging to `error_log.txt`\n\n#### **4. Performance Optimization**\n- **Parallel Processing:** Use `asyncio` to fetch data from both CRMs simultaneously\n- **Caching:** Store raw data for 1 hour to avoid redundant API calls\n- **Memory Management:** Stream large datasets in chunks (1000 records at a time)\n- **Batch Processing:** Process reports in batches of 50 to prevent timeouts\n\n#### **5. Testing Strategy**\n**Unit Tests:**\n```python\n# test_report_generator.py\ndef test_data_validation():\n    mock_sf_data = [{\"Id\": \"001\", \"Amount\": \"invalid\"}]\n    assert validate_salesforce_data(mock_sf_data) == False\n```\n\n**Integration Tests:**\n- Mock API responses to test error handling\n- Verify PDF generation with sample data\n- Test Slack/email notifications with a sandbox environment\n\n**Load Testing:**\n- Simulate 100 concurrent report generations\n- Measure memory usage and execution time\n\n#### **Next Steps**\n1. Clone the starter template from `claude-skills/report-generator-starter`\n2. Configure `config.json` with your API credentials\n3. Run `python -m pytest` to validate tests\n4. Deploy to your Claude agent and test with a small dataset\n5. Monitor performance for 1 week before full rollout\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-guide#main-content",
+      "claude-skills-guide#overview",
+      "claude-skills-guide#setup",
+      "claude-skills-guide#examples",
+      "claude-skills-guide#tools",
+      "claude-skills-guide#mcp",
+      "claude-skills-guide#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This resource provides structured guidance for creating Claude Skills—standardized packages that encapsulate expert knowledge into reusable files. It includes a detailed development guide covering basics to advanced techniques, 17 official example skills across creative, development, enterprise, and document processing categories, and progressive disclosure mechanisms that optimize token usage. Developers can follow learning paths from beginner to advanced levels, access templates and checklists, and study real-world examples to understand skill architecture including SKILL.md instructions, executable scripts, and reference resources. The guide helps operations teams and developers automate workflows and optimize processes by building professional-grade skills compatible with Claude Code, Cursor, and Claude APIs.\nCreating reusable ability packages for Claude automation\nBuilding document processing skills for Word, PDF, Excel, and PowerPoint\nDeveloping brand guideline and internal communications tools\nCreating algorithmic art and design generation skills",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sanshao85/claude-skills-guide`",
+    "usage_vi": "```\nI need a comprehensive guide to developing a Claude Skill for [TASK/PROCESS]. Break this down into: 1) Core functionality requirements, 2) Input/output design for [TOOL/INTEGRATION], 3) Error handling for [COMMON FAILURE POINTS], 4) Performance optimization for [SCALABILITY NEEDS], and 5) Testing strategy for [VALIDATION CRITERIA]. Include code snippets using [PREFERRED_LANGUAGE] where applicable.\n```\nCopy\n\n```\n### Claude Skill Development Guide: Automated Report Generator\n\n#### **1. Core Functionality Requirements**\nThis skill will automate the generation of weekly sales performance reports by pulling data from Salesforce and HubSpot, merging it with internal KPIs, and delivering a formatted PDF to the operations team via Slack. Key requirements:\n- Real-time data synchronization with both CRMs\n- Conditional logic to flag deals >$50K that haven’t been updated in 7+ days\n- Auto-email PDF reports to [EMAIL_LIST] every Monday at 8 AM\n- Support for both JSON and CSV output formats\n\n#### **2. Input/Output Design**\n**Inputs:**\n- Salesforce API: Query `Opportunity` object with fields `Id`, `Amount`, `CloseDate`, `LastModifiedDate`\n- HubSpot API: Query `Deals` endpoint with properties `dealname`, `amount`, `createdate`, `hs_lastmodifieddate`\n- Configuration file: `config.json` with Slack webhook URL, email list, and report preferences\n\n**Outputs:**\n- Primary: Slack message with download link to PDF report\n- Secondary: JSON summary for dashboard integration\n- Tertiary: Email attachment with formatted PDF\n\n#### **3. Error Handling**\nCritical failure points and mitigation strategies:\n- **API Rate Limiting:** Implement exponential backoff with jitter (max 5 retries)\n- **Data Mismatch:** Validate field types (e.g., `Amount` must be numeric) and log discrepancies\n- **Template Errors:** Fallback to default template if custom template fails to load\n- **Notification Failures:** Queue failed deliveries and retry 3x before logging to `error_log.txt`\n\n#### **4. Performance Optimization**\n- **Parallel Processing:** Use `asyncio` to fetch data from both CRMs simultaneously\n- **Caching:** Store raw data for 1 hour to avoid redundant API calls\n- **Memory Management:** Stream large datasets in chunks (1000 records at a time)\n- **Batch Processing:** Process reports in batches of 50 to prevent timeouts\n\n#### **5. Testing Strategy**\n**Unit Tests:**\n```python\n# test_report_generator.py\ndef test_data_validation():\n    mock_sf_data = [{\"Id\": \"001\", \"Amount\": \"invalid\"}]\n    assert validate_salesforce_data(mock_sf_data) == False\n```\n\n**Integration Tests:**\n- Mock API responses to test error handling\n- Verify PDF generation with sample data\n- Test Slack/email notifications with a sandbox environment\n\n**Load Testing:**\n- Simulate 100 concurrent report generations\n- Measure memory usage and execution time\n\n#### **Next Steps**\n1. Clone the starter template from `claude-skills/report-generator-starter`\n2. Configure `config.json` with your API credentials\n3. Run `python -m pytest` to validate tests\n4. Deploy to your Claude agent and test with a small dataset\n5. Monitor performance for 1 week before full rollout\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:21:22.841454Z",
+    "http_status": 200,
+    "content_hash": "6a99d5e76a0901fe730cf7645ed66d8252c056312fb20b4eefbb3f86b93a3fcb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-guide.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Master Claude Skills development",
+  "short_description_vi": "A comprehensive guide for developing Claude Skills, from basic to advanced techniques. Ideal for operations teams looking to automate workflows. Connects to Claude agents for task automation and process optimization."
+}

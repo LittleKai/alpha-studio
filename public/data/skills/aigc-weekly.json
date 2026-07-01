@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aigc-weekly",
+  "slug": "aigc-weekly",
+  "name": "Aigc Weekly",
+  "headline": "aigc-weekly: Curate AI Content Efficiently",
+  "short_description": "AIGC Weekly is an AI-generated content newsletter driven by Agentic AI Agents. It curates the latest AI news, tools, and resources using AI and serverless technology. It benefits operations teams by providing up-to-date information on AI advancements and tools. The newsletter is accessible online and via RSS feed, integrating with existing workflows for continuous learning.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "miantiao-me",
+  "install_command": "git clone https://github.com/miantiao-me/aigc-weekly.git",
+  "source_repo_url": "https://github.com/miantiao-me/aigc-weekly",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "cloudflare-containers",
+    "claude-agent",
+    "payloadcms",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "The aigc-weekly skill is an innovative automation tool designed to streamline the curation of AI-generated content. Powered by the Agentic AI Agent, this skill compiles a weekly selection of the most relevant and impactful AI-generated content, making it easier for users to stay updated on the latest trends and insights in the AI landscape. By leveraging this skill, users can automate the process of content gathering, saving valuable time that can be redirected towards more strategic initiatives. One of the key benefits of using aigc-weekly is the significant reduction in the time spent searching for quality AI content. While the exact time savings are currently unknown, the skill's ability to aggregate information efficiently suggests that users can expect to reclaim hours of their week. This is particularly advantageous for developers, product managers, and AI practitioners who need to keep their knowledge current without the burden of manual research. This skill is particularly suited for professionals in tech-driven environments who are focused on AI automation and workflow automation. Developers looking to enhance their knowledge base, product managers aiming to stay ahead of market trends, and AI practitioners seeking to refine their expertise will find this skill invaluable. For instance, a product manager could use aigc-weekly to gather insights on emerging AI technologies that could influence product development strategies. Implementing aigc-weekly is straightforward, taking approximately 30 minutes to set up. Although it is categorized as an intermediate skill, the straightforward nature of the implementation process makes it accessible for users with basic technical knowledge. By integrating this skill into their workflows, teams can enhance their AI-first strategies, ensuring they are always informed and ready to leverage the latest advancements in AI-generated content.\nAutomatically curate weekly newsletters featuring the latest AI-generated content.\nIntegrate with Cloudflare services to deploy a serverless application for content delivery.\nUtilize AI to discover and filter relevant resources and tools for developers.\nSet up a headless CMS to manage and publish curated content efficiently.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/miantiao-me/aigc-weekly`",
+    "usage": "```\nGenerate the weekly AIGC Weekly newsletter for [DATE]. Include the following sections: (1) Top 5 AI News Headlines with brief summaries, (2) New AI Tools & Releases with 1-sentence descriptions, (3) AI Research Highlights with 2-3 bullet points, (4) Community Spotlight featuring 1-2 notable contributors, and (5) Upcoming AI Events with dates and links. Format the newsletter in Markdown with clear headings and bullet points for readability. Prioritize recent developments from the past 7 days.\n```\nCopy\n\n```\n# AIGC Weekly - June 10, 2024",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "aigc-weekly#main-content",
+      "aigc-weekly#overview",
+      "aigc-weekly#setup",
+      "aigc-weekly#examples",
+      "aigc-weekly#tools",
+      "aigc-weekly#mcp",
+      "aigc-weekly#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill aigc-weekly là một công cụ tự động hóa sáng tạo được thiết kế để tối ưu hóa quy trình tổng hợp nội dung do AI tạo ra. Vận hành bởi Agentic AI Agent, skill này biên soạn danh sách nội dung AIGC nổi bật và có sức ảnh hưởng nhất mỗi tuần, giúp người dùng dễ dàng cập nhật xu hướng và thông tin mới nhất trong lĩnh vực AI. Bằng cách tận dụng skill này, người dùng có thể tự động hóa quy trình thu thập nội dung, tiết kiệm thời gian quý báu để tập trung vào các sáng kiến mang tính chiến lược hơn. Một trong những lợi ích chính của việc sử dụng aigc-weekly là giảm đáng kể thời gian tìm kiếm nội dung AI chất lượng. Dù chưa có con số chính xác về lượng thời gian tiết kiệm được, khả năng tổng hợp thông tin hiệu quả của skill này cho thấy người dùng có thể giải phóng hàng giờ đồng hồ mỗi tuần. Điều này đặc biệt có lợi cho các developer, product manager và AI practitioner - những người cần liên tục cập nhật kiến thức mà không phải tốn công tự nghiên cứu thủ công.\n\nSkill này cực kỳ phù hợp cho các chuyên gia làm việc trong môi trường công nghệ định hướng tự động hóa AI và tự động hóa workflow. Các developer muốn mở rộng kho kiến thức, product manager đặt mục tiêu đi đầu xu hướng thị trường, hay các AI practitioner muốn nâng cao chuyên môn đều sẽ thấy skill này vô cùng giá trị. Ví dụ, một product manager có thể dùng aigc-weekly để thu thập thông tin về các công nghệ AI mới nổi, từ đó định hình chiến lược phát triển sản phẩm. Việc triển khai aigc-weekly rất đơn giản, chỉ mất khoảng 30 phút để setup. Mặc dù được xếp vào nhóm skill ở cấp độ trung bình (intermediate), quy trình triển khai trực quan giúp những người dùng có kiến thức kỹ thuật cơ bản vẫn có thể dễ dàng tiếp cận. Bằng cách tích hợp skill này vào workflow của mình, các đội ngũ có thể nâng cao chiến lược ưu tiên AI (AI-first), đảm bảo luôn nắm bắt thông tin và sẵn sàng tận dụng những tiến bộ mới nhất của nội dung do AI tạo ra.\n\nTự động biên soạn bản tin hàng tuần với các nội dung do AI tạo ra mới nhất.\nTích hợp với các dịch vụ Cloudflare để triển khai ứng dụng serverless phục vụ phân phối nội dung.\nSử dụng AI để khám phá và chọn lọc các tài nguyên cũng như công cụ phù hợp cho developer.\nThiết lập headless CMS để quản lý và xuất bản nội dung được tổng hợp một cách hiệu quả.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/miantiao-me/aigc-weekly`",
+    "usage_vi": "```\nTạo bản tin AIGC Weekly hàng tuần cho ngày [DATE]. Bao gồm các phần sau: (1) Top 5 Tiêu điểm Tin tức AI kèm tóm tắt ngắn gọn, (2) Công cụ & Bản phát hành AI Mới với mô tả dài 1 câu, (3) Điểm nhấn Nghiên cứu AI với 2-3 gạch đầu dòng, (4) Gương mặt Cộng đồng nổi bật giới thiệu 1-2 người đóng góp tiêu biểu, và (5) Sự kiện AI Sắp tới kèm ngày tháng và liên kết. Định dạng bản tin bằng Markdown với các tiêu đề và gạch đầu dòng rõ ràng để dễ đọc. Ưu tiên các diễn biến mới nhất trong 7 ngày qua.\n```\nSao chép\n\n```\n# AIGC Weekly - Ngày 10 tháng 6, 2024"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:34:53.139966Z",
+    "http_status": 200,
+    "content_hash": "0924ce8acbb689d9548ed1a37f65ac79215edcf586acf29d1b8b7bcd14d7d204",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aigc-weekly.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aigc-weekly.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "aigc-weekly: Tổng hợp nội dung AI hiệu quả",
+  "short_description_vi": "AIGC Weekly là bản tin về nội dung do AI tạo ra (AIGC), được vận hành bởi các Agentic AI Agent. Bản tin này tổng hợp tin tức, công cụ và tài nguyên AI mới nhất nhờ ứng dụng AI và công nghệ serverless. Công cụ này mang lại lợi ích cho các đội ngũ operations bằng cách cung cấp thông tin cập nhật về các tiến bộ và công cụ AI mới nhất. Bản tin có thể được truy cập trực tuyến hoặc qua RSS feed, giúp tích hợp dễ dàng vào các workflow sẵn có để liên tục học hỏi và cập nhật kiến thức."
+}

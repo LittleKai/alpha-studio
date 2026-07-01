@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/curation-skills",
+  "slug": "curation-skills",
+  "name": "Curation Skills",
+  "headline": "Curation Skills - Automate Knowledge Tasks",
+  "short_description": "Curation skills for Claude to automate knowledge-based tasks. Operations teams use these skills to streamline data organization, ontology management, and knowledge curation. Connects to existing workflows and tools for enhanced productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "ai4curation",
+  "install_command": "git clone https://github.com/ai4curation/curation-skills.git",
+  "source_repo_url": "https://github.com/ai4curation/curation-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "monarchinitiative",
+    "ai4curation"
+  ],
+  "sections": {
+    "overview": "Curation Skills is a repository of Claude skills designed to automate specialized curation and knowledge-based tasks. The skills are self-contained folders with instructions and resources that Claude loads dynamically to improve performance on repeatable workflows. Operations teams and knowledge workers use these skills to streamline data organization, ontology management, and knowledge curation while connecting to existing workflows and tools. Skills teach Claude how to complete specific tasks consistently and can be integrated into Claude Code, Cursor, and other AI agent platforms through copy-paste or marketplace installation. The repository includes multiple example skills and patterns that serve as both functional tools and documentation for teams building custom curation workflows.\nAutomating data organization and structuring for knowledge bases\nManaging and maintaining ontologies and taxonomies\nStreamlining knowledge curation workflows in operations teams\nIntegrating curation tasks into existing Claude Code and Cursor workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ai4curation/curation-skills`",
+    "usage": "```\nAct as a knowledge curation assistant for [COMPANY], a [INDUSTRY] company. Your task is to organize and categorize [DATA] into a structured format. Provide a clear hierarchy and suggest relevant tags or metadata for each category. Ensure the output is ready for integration into our existing knowledge management system.\n```\nCopy\n\n```\n# Knowledge Curation Report for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "curation-skills#main-content",
+      "curation-skills#overview",
+      "curation-skills#setup",
+      "curation-skills#examples",
+      "curation-skills#tools",
+      "curation-skills#mcp",
+      "curation-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Curation Skills là một repository chứa các kỹ năng dành cho Claude, được thiết kế để tự động hóa các tác vụ curation và quản lý tri thức chuyên biệt. Các kỹ năng này được lưu trữ trong các thư mục độc lập chứa chỉ dẫn và tài nguyên để Claude tải động (dynamically load), giúp tối ưu hóa hiệu suất của các workflow lặp đi lặp lại. Các đội ngũ vận hành và nhân sự quản lý tri thức sử dụng các kỹ năng này để tinh giản quy trình tổ chức dữ liệu, quản lý ontology và curation tri thức, đồng thời kết nối trực tiếp với các workflow và công cụ hiện có. Những kỹ năng này hướng dẫn Claude cách hoàn thành các tác vụ cụ thể một cách nhất quán, dễ dàng tích hợp vào Claude Code, Cursor và các nền tảng AI agent khác thông qua copy-paste hoặc cài đặt từ marketplace. Repository này cung cấp nhiều kỹ năng mẫu và pattern mẫu, vừa đóng vai trò là công cụ thực thi vừa là tài liệu tham khảo cho các đội ngũ muốn xây dựng workflow curation tùy chỉnh.\nTự động hóa việc tổ chức và cấu trúc dữ liệu cho các knowledge base\nQuản lý và duy trì các ontology và taxonomy\nTinh giản workflow curation tri thức cho các đội ngũ vận hành\nTích hợp các tác vụ curation vào workflow Claude Code và Cursor hiện có",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ai4curation/curation-skills`",
+    "usage_vi": "```\nHãy đóng vai trò là một trợ lý curation tri thức cho [COMPANY], một công ty hoạt động trong lĩnh vực [INDUSTRY]. Nhiệm vụ của bạn là tổ chức và phân loại [DATA] thành một định dạng có cấu trúc. Hãy cung cấp một cấu trúc phân cấp rõ ràng và đề xuất các thẻ (tags) hoặc metadata phù hợp cho từng danh mục. Đảm bảo kết quả đầu ra đã sẵn sàng để tích hợp vào hệ thống quản lý tri thức hiện tại của chúng tôi.\n```\nCopy\n\n```\n# Báo cáo Curation Tri thức cho GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:17:34.678752Z",
+    "http_status": 200,
+    "content_hash": "7732ce8985d1dd186b68018292d9090159ee80e6c3f006891dbe32a9dd35ade7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\curation-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\curation-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Curation Skills - Tự động hóa các tác vụ tri thức",
+  "short_description_vi": "Bộ kỹ năng Curation dành cho Claude giúp tự động hóa các tác vụ liên quan đến tri thức. Các đội ngũ vận hành sử dụng các kỹ năng này để tinh giản quy trình tổ chức dữ liệu, quản lý ontology và curation tri thức. Kết nối mượt mà với các workflow và công cụ hiện có để tối ưu hóa hiệu suất làm việc."
+}

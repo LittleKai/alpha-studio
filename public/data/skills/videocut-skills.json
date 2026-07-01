@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/videocut-skills",
+  "slug": "videocut-skills",
+  "name": "VideoCut Skills",
+  "headline": "VideoCut Skills - Automated Video Editing for",
+  "short_description": "Automates video editing for voice-over content. Uses semantic understanding to detect and remove errors like repetitions and corrections. Integrates with custom dictionaries for accurate transcription of technical terms.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Ceeon",
+  "install_command": "git clone https://github.com/Ceeon/videocut-skills.git",
+  "source_repo_url": "https://github.com/Ceeon/videocut-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Videocut Skills is an AI agent built with Claude Code that automates video editing specifically for voice-over and spoken-word content. It uses semantic understanding to identify and remove common production issues like repeated sentences, verbal corrections, and filler pauses that traditional video editors miss. The skill detects silence (0.2s threshold) and analyzes mouth errors to clean up raw footage automatically. It integrates custom dictionaries to ensure technical terms (Claude Code, MCP, API) are transcribed accurately in subtitles. Creators get AI-assisted editing that reduces manual work while maintaining quality, with a web-based review interface for final adjustments.\nAutomatically detect and correct speech errors in video recordings.\nGenerate high-quality subtitles for videos using a custom dictionary.\nStreamline the video editing process by identifying silent segments and repetitions.\nFacilitate quick reviews of video content through an AI-assisted auditing interface.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ceeon/videocut-skills`",
+    "usage": "```\nEdit the video [VIDEO_FILE] for a voice-over script using the following requirements: \n1. Remove all filler words (e.g., 'um', 'uh', 'like') and false starts. \n2. Correct grammatical errors in the spoken content while preserving natural speech flow. \n3. Use the provided technical dictionary [TECHNICAL_TERMS] for accurate transcription of industry-specific terms. \n4. Ensure the final cut is under [TARGET_DURATION] minutes with smooth transitions. \n5. Export the video in [FORMAT] with subtitles burned in. Include a timestamped log of all edits made.\n```\nCopy\n\n```\nHere’s the edited version of your video, *Introduction to Quantum Computing.mp4* (original duration: 12:47, final cut: 8:23). The AI identified and removed 17 filler words, corrected 3 grammatical errors (e.g., 'we was' → 'we were'), and standardized 8 technical terms using your provided dictionary (e.g., 'qubit' was corrected from 'cubit' in two instances). The video now features seamless cuts between segments, with transitions added at the 2:15, 4:30, and 6:45 marks to improve pacing. The final export is in 1080p MP4 with burned-in subtitles, and the timestamped edit log is attached below:\n\n**Edit Log:**\n- 00:01:22 - Removed 'um' and corrected 'we was' to 'we were'.\n- 00:03:45 - Standardized 'qubit' (previously misheard as 'cubit').\n- 00:05:10 - Removed false start 'So, like, let's talk about...' → 'Let’s discuss...'.\n- 00:07:33 - Adjusted audio level to -12dB for consistency.\n- 00:08:10 - Added crossfade transition (0.5s) between segments.\n\nThe subtitles now reflect the corrected transcript, with technical terms highlighted in bold for emphasis. The video maintains its original educational tone while being more concise and professional. Would you like to review the subtitles or adjust any transitions further?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "videocut-skills#main-content",
+      "videocut-skills#overview",
+      "videocut-skills#setup",
+      "videocut-skills#examples",
+      "videocut-skills#tools",
+      "videocut-skills#mcp",
+      "videocut-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Videocut Skills là một AI agent được xây dựng bằng Claude Code giúp tự động hóa quy trình chỉnh sửa video, đặc biệt chuyên dùng cho nội dung voice-over và giọng nói. Agent này sử dụng semantic understanding để nhận diện và loại bỏ các vấn đề phổ biến khi sản xuất video như lặp câu, tự sửa lỗi khi nói và các khoảng dừng ngập ngừng mà các phần mềm chỉnh sửa truyền thống thường bỏ sót. Skill này phát hiện các khoảng lặng (ngưỡng 0.2s) và phân tích các lỗi khẩu hình để tự động làm sạch source video thô (raw footage). Nó tích hợp từ điển tùy chỉnh để đảm bảo các thuật ngữ kỹ thuật (như Claude Code, MCP, API) được phiên âm chính xác trong phụ đề. Nhờ đó, các nhà sáng tạo có thể chỉnh sửa video với sự hỗ trợ của AI, giảm thiểu tác vụ thủ công mà vẫn giữ nguyên chất lượng, cùng với giao diện web-based review để dễ dàng điều chỉnh lần cuối.\n\n- Tự động phát hiện và sửa các lỗi nói trong video ghi hình.\n- Tạo phụ đề chất lượng cao cho video bằng từ điển tùy chỉnh.\n- Tối ưu hóa quy trình chỉnh sửa video bằng cách nhận diện các phân đoạn im lặng và lặp lại.\n- Hỗ trợ review nhanh nội dung video thông qua giao diện kiểm duyệt tích hợp AI.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Ceeon/videocut-skills`",
+    "usage_vi": "```\nChỉnh sửa video [VIDEO_FILE] cho kịch bản voice-over theo các yêu cầu sau:\n1. Loại bỏ tất cả các từ đệm/từ thừa (ví dụ: 'um', 'uh', 'like') và các đoạn bắt đầu lỗi (false starts).\n2. Sửa các lỗi ngữ pháp trong nội dung nói nhưng vẫn giữ được luồng nói tự nhiên.\n3. Sử dụng từ điển kỹ thuật được cung cấp [TECHNICAL_TERMS] để phiên âm chính xác các thuật ngữ chuyên ngành.\n4. Đảm bảo bản cắt cuối cùng (final cut) dưới [TARGET_DURATION] phút với các hiệu ứng chuyển cảnh mượt mà.\n5. Xuất video dưới định dạng [FORMAT] có chèn sẵn phụ đề (burned-in subtitles). Đính kèm log chỉnh sửa có mốc thời gian (timestamped log).\n```\nCopy\n\n```\nDưới đây là phiên bản đã chỉnh sửa của video *Introduction to Quantum Computing.mp4* (thời lượng gốc: 12:47, bản cắt cuối: 8:23). AI đã phát hiện và loại bỏ 17 từ đệm, sửa 3 lỗi ngữ pháp (ví dụ: 'we was' → 'we were') và chuẩn hóa 8 thuật ngữ kỹ thuật bằng từ điển bạn cung cấp (ví dụ: sửa 'cubit' thành 'qubit' trong hai trường hợp). Video hiện có các đường cắt mượt mà giữa các phân đoạn, kèm theo hiệu ứng chuyển cảnh được thêm tại các mốc 2:15, 4:30 và 6:45 để cải thiện nhịp độ. Bản xuất cuối cùng có định dạng MP4 1080p kèm phụ đề cứng (burned-in subtitles), và log chỉnh sửa kèm timestamp được đính kèm bên dưới:\n\n**Log chỉnh sửa:**\n- 00:01:22 - Đã xóa 'um' và sửa 'we was' thành 'we were'.\n- 00:03:45 - Chuẩn hóa 'qubit' (trước đó bị nghe nhầm thành 'cubit').\n- 00:05:10 - Loại bỏ đoạn bắt đầu lỗi 'So, like, let's talk about...' → 'Let’s discuss...'.\n- 00:07:33 - Điều chỉnh âm lượng thành -12dB để đảm bảo tính nhất quán.\n- 00:08:10 - Thêm hiệu ứng chuyển cảnh crossfade (0.5s) giữa các phân đoạn.\n\nPhần phụ đề hiện đã cập nhật theo bản ghi (transcript) đã sửa, các thuật ngữ kỹ thuật được in đậm để làm nổi bật. Video vẫn giữ nguyên tông giọng giáo dục ban đầu nhưng ngắn gọn và chuyên nghiệp hơn. Bạn có muốn review lại phụ đề hoặc điều chỉnh thêm hiệu ứng chuyển cảnh nào không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:12:52.797734Z",
+    "http_status": 200,
+    "content_hash": "5798dd0bf025e757ab7dacd9fda5246c49c6486bf68386ab4838bd58d9eb9d12",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\videocut-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\videocut-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VideoCut Skills - Tự động hóa chỉnh sửa video cho",
+  "short_description_vi": "Tự động hóa quy trình chỉnh sửa video cho nội dung voice-over. Sử dụng hiểu biết ngữ nghĩa (semantic understanding) để phát hiện và loại bỏ các lỗi như lặp từ hay tự sửa lỗi. Tích hợp với từ điển tùy chỉnh để phiên âm chính xác các thuật ngữ kỹ thuật."
+}

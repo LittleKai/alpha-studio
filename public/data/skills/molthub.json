@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/molthub",
+  "slug": "molthub",
+  "name": "browser-use",
+  "headline": "MoltHub: Central Registry for Moltbot Skills",
+  "short_description": "MoltHub is a centralized registry for discovering and deploying moltbot skills for Claude AI agents. Development teams use MoltHub to search community-contributed automation capabilities, review SOUL.md documentation, and install pre-built skills into production workflows. The platform supports both public and private organizational registries for skill versioning and distribution.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "moltbot",
+  "install_command": "git clone https://github.com/moltbot/molthub.git",
+  "source_repo_url": "https://github.com/moltbot/molthub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "directory",
+    "moltbot",
+    "skill"
+  ],
+  "sections": {
+    "overview": "MoltHub serves as the central registry for moltbot skills, providing a platform where development teams discover, deploy, and manage automation capabilities for Claude AI agents. The registry enables vector search across community-contributed moltbot skills, each documented with SOUL.md files that define skill parameters, integration requirements, and usage instructions. Organizations use MoltHub to deploy pre-built moltbot skills directly into production environments, reducing development cycles and standardizing automation patterns across engineering teams. The registry maintains comprehensive version tracking for deployed skills, ensuring consistency when teams update automation libraries used by Claude AI agents in production workflows. Development teams contribute custom moltbot skills to the platform by publishing SOUL.md documentation alongside skill code, expanding the ecosystem of Claude agent capabilities available through the directory. MoltHub accommodates both public skill sharing and private organizational registries, allowing enterprises to maintain proprietary moltbot libraries while accessing community-driven automation patterns from the public registry. Teams browse MoltHub to identify proven Claude automation patterns, evaluate SOUL.md documentation for implementation requirements, and accelerate AI adoption by deploying tested capabilities from the moltbot ecosystem. By centralizing moltbot skill distribution through the registry, development organizations eliminate redundant automation development, establish standardized Claude agent patterns, and streamline skill discovery and deployment workflows.\nSearch MoltHub registry to discover community moltbot skills\nDeploy production-ready moltbot skills into Claude workflows\nPublish custom moltbot skills with SOUL.md documentation\nMaintain private registries for internal moltbot skill libraries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/moltbot/molthub`",
+    "usage": "```\nSearch MoltHub AI for automation skills related to [SPECIFIC TASK]. Filter results by [CRITERIA] such as popularity, recency, or compatibility with [SPECIFIC TOOL]. Provide a summary of the top 3 skills, including their key features, version history, and SOUL.md documentation links.\n```\nCopy\n\n```\nBased on your request to find automation skills for 'data cleaning in Python,' here are the top 3 results from MoltHub AI:\n\n1. **DataMender**: This skill specializes in cleaning and standardizing datasets. Key features include handling missing values, correcting data types, and removing duplicates. The latest version (v2.1) includes improved handling of datetime formats. [SOUL.md documentation](https://molthub.ai/skills/datamender/soul.md).\n\n2. **CleanSweep**: Focuses on large-scale data cleaning tasks. It supports parallel processing and integrates with Pandas. Version 1.8 adds support for handling nested JSON structures. [SOUL.md documentation](https://molthub.ai/skills/cleansweep/soul.md).\n\n3. **DataScrub**: A versatile tool for general data cleaning tasks. It includes a user-friendly interface for non-technical users. The latest version (v3.0) introduces a new feature for automated outlier detection. [SOUL.md documentation](https://molthub.ai/skills/datascrub/soul.md).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "molthub#main-content",
+      "molthub#overview",
+      "molthub#setup",
+      "molthub#examples",
+      "molthub#tools",
+      "molthub#mcp",
+      "molthub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MoltHub serves as the central registry for moltbot skills, providing a platform where development teams discover, deploy, and manage automation capabilities for Claude AI agents. The registry enables vector search across community-contributed moltbot skills, each documented with SOUL.md files that define skill parameters, integration requirements, and usage instructions. Organizations use MoltHub to deploy pre-built moltbot skills directly into production environments, reducing development cycles and standardizing automation patterns across engineering teams. The registry maintains comprehensive version tracking for deployed skills, ensuring consistency when teams update automation libraries used by Claude AI agents in production workflows. Development teams contribute custom moltbot skills to the platform by publishing SOUL.md documentation alongside skill code, expanding the ecosystem of Claude agent capabilities available through the directory. MoltHub accommodates both public skill sharing and private organizational registries, allowing enterprises to maintain proprietary moltbot libraries while accessing community-driven automation patterns from the public registry. Teams browse MoltHub to identify proven Claude automation patterns, evaluate SOUL.md documentation for implementation requirements, and accelerate AI adoption by deploying tested capabilities from the moltbot ecosystem. By centralizing moltbot skill distribution through the registry, development organizations eliminate redundant automation development, establish standardized Claude agent patterns, and streamline skill discovery and deployment workflows.\nSearch MoltHub registry to discover community moltbot skills\nDeploy production-ready moltbot skills into Claude workflows\nPublish custom moltbot skills with SOUL.md documentation\nMaintain private registries for internal moltbot skill libraries",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/moltbot/molthub`",
+    "usage_vi": "```\nSearch MoltHub AI for automation skills related to [SPECIFIC TASK]. Filter results by [CRITERIA] such as popularity, recency, or compatibility with [SPECIFIC TOOL]. Provide a summary of the top 3 skills, including their key features, version history, and SOUL.md documentation links.\n```\nCopy\n\n```\nBased on your request to find automation skills for 'data cleaning in Python,' here are the top 3 results from MoltHub AI:\n\n1. **DataMender**: This skill specializes in cleaning and standardizing datasets. Key features include handling missing values, correcting data types, and removing duplicates. The latest version (v2.1) includes improved handling of datetime formats. [SOUL.md documentation](https://molthub.ai/skills/datamender/soul.md).\n\n2. **CleanSweep**: Focuses on large-scale data cleaning tasks. It supports parallel processing and integrates with Pandas. Version 1.8 adds support for handling nested JSON structures. [SOUL.md documentation](https://molthub.ai/skills/cleansweep/soul.md).\n\n3. **DataScrub**: A versatile tool for general data cleaning tasks. It includes a user-friendly interface for non-technical users. The latest version (v3.0) introduces a new feature for automated outlier detection. [SOUL.md documentation](https://molthub.ai/skills/datascrub/soul.md).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:31:58.301029Z",
+    "http_status": 200,
+    "content_hash": "2fcc8b135b33d90058bdbcf0b3da66bdf1e4591e96c34bf770f6524af8484cc2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\molthub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\molthub.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MoltHub: Central Registry for Moltbot Skills",
+  "short_description_vi": "MoltHub is a centralized registry for discovering and deploying moltbot skills for Claude AI agents. Development teams use MoltHub to search community-contributed automation capabilities, review SOUL.md documentation, and install pre-built skills into production workflows. The platform supports both public and private organizational registries for skill versioning and distribution."
+}

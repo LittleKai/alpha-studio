@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/safe-action-advanced",
+  "slug": "safe-action-advanced",
+  "name": "Safe Action Advanced",
+  "headline": "safe-action-advanced: Type-Safe Server Actions",
+  "short_description": "The safe-action-advanced skill enhances the next-safe-action framework with features like binding arguments and handling errors. It is aimed at developers using the next-safe-action in their applications for enhanced functionality.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "next-safe-action",
+  "install_command": "git clone https://github.com/next-safe-action/skills",
+  "source_repo_url": "https://github.com/next-safe-action/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "safe",
+    "action",
+    "web-development",
+    "advanced"
+  ],
+  "sections": {
+    "overview": "safe-action-advanced is a skill for the next-safe-action library that provides advanced functionality for server action development in Next.js applications. It enables developers to bind arguments to actions, work with metadata schemas, handle framework-specific errors, and leverage type inference utilities for enhanced type safety. The skill integrates seamlessly with the next-safe-action ecosystem and is designed for teams building robust, type-safe server-side logic. It complements other next-safe-action skills like forms, hooks, and validation error handling to provide comprehensive server action capabilities.\nPass extra arguments to actions via .bind()\nAttach typed metadata to actions\nHandle various framework errors in actions\nInfer types from action functions and middleware",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/next-safe-action/skills --skill safe-action-advanced`\n`git clone https://github.com/next-safe-action/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "safe-action-advanced#main-content",
+      "safe-action-advanced#overview",
+      "safe-action-advanced#setup",
+      "safe-action-advanced#examples",
+      "safe-action-advanced#related",
+      "weapp-tailwindcss",
+      "inertia-rails-architecture",
+      "react-stack-patterns"
+    ],
+    "overview_vi": "safe-action-advanced là một skill dành cho thư viện next-safe-action, cung cấp các tính năng nâng cao để phát triển Server Action trong ứng dụng Next.js. Nó cho phép lập trình viên bind đối số vào action, làm việc với metadata schema, xử lý các lỗi đặc thù của framework, và tận dụng các tiện ích suy luận kiểu (type inference) để tăng cường type safety. Skill này tích hợp mượt mà với hệ sinh thái next-safe-action và được thiết kế cho các đội ngũ xây dựng logic phía server (server-side) mạnh mẽ và type-safe. Nó bổ trợ cho các skill next-safe-action khác như forms, hooks, và xử lý lỗi validation để cung cấp khả năng xử lý Server Action toàn diện.\nTruyền thêm đối số vào action thông qua .bind()\nĐính kèm typed metadata vào action\nXử lý các lỗi framework khác nhau trong action\nSuy luận kiểu (infer types) từ các hàm action và middleware",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/next-safe-action/skills --skill safe-action-advanced`\n`git clone https://github.com/next-safe-action/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ sử dụng\nTham khảo GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ cách dùng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:49.501785Z",
+    "http_status": 200,
+    "content_hash": "d7a7e002b019f7e7b0858e3bb7ac83fd2abcd51d72a084181bb0413a7dad29cd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\safe-action-advanced.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\safe-action-advanced.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "safe-action-advanced: Server Actions đảm bảo Type-Safe",
+  "short_description_vi": "Skill safe-action-advanced bổ sung cho framework next-safe-action các tính năng nâng cao như bind đối số và xử lý lỗi. Skill này hướng tới các lập trình viên đang sử dụng next-safe-action trong ứng dụng của họ để mở rộng chức năng."
+}

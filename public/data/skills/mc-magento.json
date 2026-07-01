@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mc-magento",
+  "slug": "mc-magento",
+  "name": "popsicle",
+  "headline": "Mailchimp for Magento 1 - Sync Data for Email",
+  "short_description": "Syncs Magento 1 data with Mailchimp for email marketing campaigns, automations, ads, and postcards. Benefits marketing teams by automating customer engagement and sales processes. Connects Magento 1 to Mailchimp for unified customer data management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "mailchimp",
+  "install_command": "git clone https://github.com/mailchimp/mc-magento.git",
+  "source_repo_url": "https://github.com/mailchimp/mc-magento",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "email-marketing",
+    "php",
+    "magento",
+    "ecommerce"
+  ],
+  "sections": {
+    "overview": "MailChimp For Magento 1 enables bidirectional synchronization between your Magento store and Mailchimp, syncing newsletter subscribers, customers, orders, and products. The integration allows you to leverage Mailchimp's full suite of email marketing features including campaigns, automations, and audience management. It includes a Mandrill SMTP module for transactional emails and a responsive email capture popup. The module requires Magento Community Edition 1.7+ or Enterprise 1.11+, plus a Mailchimp account, and syncs data through API key authentication in your Magento backend configuration.\nAutomate customer email campaigns triggered by orders and store activity\nSync product catalogs and customer purchase history for personalized Mailchimp automations\nMaintain a unified customer database across Magento and Mailchimp\nCapture newsletter subscribers with responsive email popup forms",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mailchimp/mc-magento`",
+    "usage": "```\nSync [MAGENTO_1_STORE_URL] with Mailchimp to automate customer data for email marketing campaigns. Include customer segments like [CUSTOMER_GROUPS], order data for [CAMPAIGN_TYPES], and abandoned cart triggers for [AUTOMATION_NAME]. Ensure the sync covers [DATA_FIELDS: orders, customer emails, purchase history, etc.] and maps Magento customer attributes to Mailchimp merge tags. Verify the connection and test the first automated email campaign within [TIMEFRAME].\n```\nCopy\n\n```\nSuccessfully synced data from **MageFashion Boutique** (Magento 1 store at magefashion.com) with Mailchimp, covering 1,247 active customers across three segments: *Premium Members* (312), *First-Time Buyers* (456), and *Loyalty Program* (479). The sync included 8,923 orders from the past 12 months, with $1.2M in total revenue, and mapped the following Magento customer attributes to Mailchimp merge tags:\n- `customer_email` → `EMAIL`\n- `customer_first_name` → `FNAME`\n- `customer_last_name` → `LNAME`\n- `total_spent` → `TOTAL_SPENT`\n- `last_order_date` → `LAST_ORDER_DATE`\n\nAbandoned cart automation was configured to trigger emails 1 hour after cart abandonment, with a 3-email sequence sent over 48 hours. The first email achieved a 22% open rate and 8% click-through rate in the initial test run. Postcard campaigns were also enabled for customers with orders over $200, targeting them with a \"Thank You\" mailer within 7 days of purchase. The sync completed in under 15 minutes, and the Mailchimp dashboard now reflects real-time updates from Magento, including new signups and order statuses.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mc-magento#main-content",
+      "mc-magento#overview",
+      "mc-magento#setup",
+      "mc-magento#examples",
+      "mc-magento#tools",
+      "mc-magento#mcp",
+      "mc-magento#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "MailChimp For Magento 1 enables bidirectional synchronization between your Magento store and Mailchimp, syncing newsletter subscribers, customers, orders, and products. The integration allows you to leverage Mailchimp's full suite of email marketing features including campaigns, automations, and audience management. It includes a Mandrill SMTP module for transactional emails and a responsive email capture popup. The module requires Magento Community Edition 1.7+ or Enterprise 1.11+, plus a Mailchimp account, and syncs data through API key authentication in your Magento backend configuration.\nAutomate customer email campaigns triggered by orders and store activity\nSync product catalogs and customer purchase history for personalized Mailchimp automations\nMaintain a unified customer database across Magento and Mailchimp\nCapture newsletter subscribers with responsive email popup forms",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mailchimp/mc-magento`",
+    "usage_vi": "```\nSync [MAGENTO_1_STORE_URL] with Mailchimp to automate customer data for email marketing campaigns. Include customer segments like [CUSTOMER_GROUPS], order data for [CAMPAIGN_TYPES], and abandoned cart triggers for [AUTOMATION_NAME]. Ensure the sync covers [DATA_FIELDS: orders, customer emails, purchase history, etc.] and maps Magento customer attributes to Mailchimp merge tags. Verify the connection and test the first automated email campaign within [TIMEFRAME].\n```\nCopy\n\n```\nSuccessfully synced data from **MageFashion Boutique** (Magento 1 store at magefashion.com) with Mailchimp, covering 1,247 active customers across three segments: *Premium Members* (312), *First-Time Buyers* (456), and *Loyalty Program* (479). The sync included 8,923 orders from the past 12 months, with $1.2M in total revenue, and mapped the following Magento customer attributes to Mailchimp merge tags:\n- `customer_email` → `EMAIL`\n- `customer_first_name` → `FNAME`\n- `customer_last_name` → `LNAME`\n- `total_spent` → `TOTAL_SPENT`\n- `last_order_date` → `LAST_ORDER_DATE`\n\nAbandoned cart automation was configured to trigger emails 1 hour after cart abandonment, with a 3-email sequence sent over 48 hours. The first email achieved a 22% open rate and 8% click-through rate in the initial test run. Postcard campaigns were also enabled for customers with orders over $200, targeting them with a \"Thank You\" mailer within 7 days of purchase. The sync completed in under 15 minutes, and the Mailchimp dashboard now reflects real-time updates from Magento, including new signups and order statuses.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:37:00.681601Z",
+    "http_status": 200,
+    "content_hash": "ef3af86f3f1ad3eedbcf5a041e695b08090980d40efc97bcf0cb08bae304174f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mc-magento.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mc-magento.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mailchimp for Magento 1 - Sync Data for Email",
+  "short_description_vi": "Syncs Magento 1 data with Mailchimp for email marketing campaigns, automations, ads, and postcards. Benefits marketing teams by automating customer engagement and sales processes. Connects Magento 1 to Mailchimp for unified customer data management."
+}

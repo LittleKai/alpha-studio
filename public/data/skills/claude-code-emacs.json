@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-emacs",
+  "slug": "claude-code-emacs",
+  "name": "Claude Code Emacs",
+  "headline": "claude code emacs integration package",
+  "short_description": "Run AI-powered coding sessions in Emacs. Integrates Claude Code for developers to generate, debug, and optimize code. Connects to Anthropic's Claude model for code assistance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "yuya373",
+  "install_command": "git clone https://github.com/yuya373/claude-code-emacs.git",
+  "source_repo_url": "https://github.com/yuya373/claude-code-emacs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "emacs",
+    "mcp",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Emacs brings AI-powered coding directly into your Emacs editor through Model Context Protocol (MCP) integration. Each project gets its own isolated Claude Code session with persistent context via .claude-code.prompt.md files. The skill enables real-time LSP diagnostics, buffer operations, file completion with @ syntax, and custom reusable commands stored in .claude/commands/. Developers can fix LSP errors, review git changes, and run AI-assisted coding workflows using transient menus and keyboard shortcuts without leaving Emacs.\nGenerate and debug code within project-isolated Emacs sessions\nFix LSP diagnostic errors using AI assistance\nReview and apply git diffs through Claude Code\nExecute custom reusable commands defined per project",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yuya373/claude-code-emacs`",
+    "usage": "```\nRun an AI-powered coding session in Emacs to [TASK]. Use claude-code-emacs to generate, debug, or optimize the code. For example: 'Refactor the Python script in /path/to/project/src/main.py to improve performance by reducing nested loops. Add inline comments explaining the changes.'\n```\nCopy\n\n```\nHere’s the refactored version of `/path/to/project/src/main.py` with performance improvements and inline comments:\n\n```python\n# Optimized main.py - Reduced nested loops and improved readability\nimport time\nfrom typing import List, Dict\n\n# Original nested loop structure replaced with dictionary comprehension\n# for O(1) lookups instead of O(n) searches\n\ndef process_data(data: List[Dict[str, int]]) -> List[int]:\n    \"\"\"\n    Process a list of dictionaries containing numeric values.\n    Optimized to avoid nested loops by using dictionary lookups.\n    \"\"\"\n    # Create a lookup dictionary for O(1) access\n    value_map = {item['id']: item['value'] for item in data}\n    \n    # Process values without nested iteration\n    results = []\n    for item in data:\n        # Direct access via dictionary lookup\n        processed = value_map[item['id']] * 2\n        results.append(processed)\n    \n    return results\n\n# Performance comparison (fictional metrics)\n# Before: 150ms average execution time with nested loops\n# After:  45ms average execution time with optimized approach\n\nif __name__ == \"__main__\":\n    sample_data = [\n        {\"id\": 1, \"value\": 10},\n        {\"id\": 2, \"value\": 20},\n        {\"id\": 3, \"value\": 30}\n    ]\n    print(process_data(sample_data))  # Output: [20, 40, 60]\n```\n\nKey improvements made:\n1. Replaced nested loops with dictionary comprehension (O(n) → O(1) lookups)\n2. Added type hints for better IDE support\n3. Included docstring explaining the optimization\n4. Added inline comments for maintainability\n5. Verified with sample data showing 3.3x performance improvement\n\nThe claude-code-emacs session automatically detected the bottleneck using static analysis and suggested this optimization. Would you like me to run the unit tests to verify the changes?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-emacs#main-content",
+      "claude-code-emacs#overview",
+      "claude-code-emacs#setup",
+      "claude-code-emacs#examples",
+      "claude-code-emacs#tools",
+      "claude-code-emacs#mcp",
+      "claude-code-emacs#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Emacs mang khả năng lập trình tích hợp AI trực tiếp vào trình soạn thảo Emacs thông qua việc tích hợp Model Context Protocol (MCP). Mỗi dự án sẽ có một phiên Claude Code cô lập riêng với ngữ cảnh được lưu trữ liên tục qua các tệp `.claude-code.prompt.md`. Skill này hỗ trợ chẩn đoán LSP (LSP diagnostics) theo thời gian thực, các thao tác trên buffer, tự động hoàn thành tệp bằng cú pháp `@` và các lệnh tùy chỉnh có thể tái sử dụng được lưu trữ trong thư mục `.claude/commands/`. Lập trình viên có thể sửa lỗi LSP, xem lại các thay đổi git (git changes) và chạy các quy trình lập trình được hỗ trợ bởi AI thông qua transient menu và các phím tắt mà không cần rời khỏi Emacs.\n\n- Tạo và gỡ lỗi (debug) mã nguồn trong các phiên Emacs được cô lập theo từng dự án\n- Sửa các lỗi chẩn đoán LSP bằng hỗ trợ từ AI\n- Xem lại và áp dụng các thay đổi git (git diffs) thông qua Claude Code\n- Thực thi các lệnh tùy chỉnh có thể tái sử dụng được định nghĩa riêng cho từng dự án",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yuya373/claude-code-emacs`",
+    "usage_vi": "```\nChạy một phiên lập trình tích hợp AI trong Emacs để thực hiện [NHIỆM VỤ]. Sử dụng claude-code-emacs để tạo, gỡ lỗi (debug) hoặc tối ưu hóa mã nguồn. Ví dụ: 'Refactor script Python tại /path/to/project/src/main.py để cải thiện hiệu suất bằng cách giảm số lượng vòng lặp lồng nhau. Thêm các comment dòng (inline comments) giải thích các thay đổi.'\n```\nCopy\n\n```\nDưới đây là phiên bản đã refactor của `/path/to/project/src/main.py` với các cải tiến hiệu suất và comment dòng:\n\n```python\n# main.py đã tối ưu hóa - Giảm số vòng lặp lồng nhau và cải thiện độ đọc hiểu\nimport time\nfrom typing import List, Dict\n\n# Cấu trúc vòng lặp lồng nhau ban đầu được thay thế bằng dictionary comprehension\n# để tra cứu với độ phức tạp O(1) thay vì tìm kiếm O(n)\n\ndef process_data(data: List[Dict[str, int]]) -> List[int]:\n    \"\"\"\n    Xử lý danh sách các dictionary chứa giá trị số.\n    Được tối ưu hóa để tránh vòng lặp lồng nhau bằng cách sử dụng tra cứu dictionary.\n    \"\"\"\n    # Tạo dictionary tra cứu để truy cập O(1)\n    value_map = {item['id']: item['value'] for item in data}\n    \n    # Xử lý các giá trị không cần lặp lồng nhau\n    results = []\n    for item in data:\n        # Truy cập trực tiếp qua tra cứu dictionary\n        processed = value_map[item['id']] * 2\n        results.append(processed)\n    \n    return results\n\n# So sánh hiệu suất (số liệu giả định)\n# Trước: thời gian thực thi trung bình 150ms với vòng lặp lồng nhau\n# Sau:  thời gian thực thi trung bình 45ms với phương pháp tối ưu hóa\n\nif __name__ == \"__main__\":\n    sample_data = [\n        {\"id\": 1, \"value\": 10},\n        {\"id\": 2, \"value\": 20},\n        {\"id\": 3, \"value\": 30}\n    ]\n    print(process_data(sample_data))  # Output: [20, 40, 60]\n```\n\nCác cải tiến chính đã thực hiện:\n1. Thay thế vòng lặp lồng nhau bằng dictionary comprehension (tra cứu O(n) → O(1))\n2. Thêm type hint để hỗ trợ IDE tốt hơn\n3. Thêm docstring giải thích phần tối ưu hóa\n4. Thêm comment dòng (inline comments) để dễ bảo trì\n5. Xác minh với dữ liệu mẫu cho thấy hiệu suất cải thiện gấp 3.3 lần\n\nPhiên claude-code-emacs đã tự động phát hiện ra nút thắt cổ chai bằng cách phân tích tĩnh (static analysis) và đề xuất tối ưu hóa này. Bạn có muốn tôi chạy các unit test để kiểm tra các thay đổi không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:06:33.760282Z",
+    "http_status": 200,
+    "content_hash": "d7825673fdb2730b7af3fae186bd56629e7663d4e6cf4c83928a3aaafa2107d7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-emacs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-emacs.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Gói tích hợp Claude Code cho Emacs",
+  "short_description_vi": "Chạy các phiên lập trình tích hợp AI trong Emacs. Tích hợp Claude Code giúp lập trình viên tạo, gỡ lỗi (debug) và tối ưu hóa mã nguồn. Kết nối với mô hình Claude của Anthropic để hỗ trợ lập trình."
+}

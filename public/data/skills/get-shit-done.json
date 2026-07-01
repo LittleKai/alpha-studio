@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/get-shit-done",
+  "slug": "get-shit-done",
+  "name": "browser-use",
+  "headline": "Get Shit Done - Meta-prompting for Claude Code",
+  "short_description": "Meta-prompting and context engineering system for Claude Code and OpenCode. Helps operations teams maintain context quality, reduce errors, and improve efficiency in AI-driven workflows. Integrates with JavaScript-based tools and workflows.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "glittercowboy",
+  "install_command": "git clone https://github.com/glittercowboy/get-shit-done.git",
+  "source_repo_url": "https://github.com/glittercowboy/get-shit-done",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "meta-prompting",
+    "spec-driven-development",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "Get Shit Done is a meta-prompting and context engineering system built for Claude Code, Cursor, and OpenCode environments. It helps operations teams maintain high-quality context across AI-driven workflows, reducing errors and improving overall efficiency. The system integrates with JavaScript-based tools and provides state management capabilities through a modular architecture. With over 2,800 commits and active development, it includes features like state locking, drift prevention, and shared module management. Teams using this skill benefit from better prompt engineering practices and more reliable AI agent deployments.\nAutomate the creation of project specifications and roadmaps based on user-defined goals.\nFacilitate the generation of code snippets by providing clear context and requirements.\nStreamline the planning and implementation of new features in existing projects.\nEnable rapid prototyping by allowing users to describe their ideas and receive structured outputs.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/glittercowboy/get-shit-done`",
+    "usage": "```\nI'm working on a [PROJECT_TYPE] project and need to automate [TASK]. Here's the context: [CONTEXT]. Please generate a JavaScript-based solution that integrates with [TOOLS]. Ensure the solution maintains high context quality and minimizes errors. Provide the code and explain how it improves efficiency.\n```\nCopy\n\n```\nBased on your request to automate data extraction from PDF invoices for your accounting project, here's a JavaScript solution using Claude Code and OpenCode:\n\n```javascript\n// Load necessary libraries\nconst fs = require('fs');\nconst pdf = require('pdf-parse');\n\n// Function to extract data from PDF\nasync function extractInvoiceData(pdfPath) {\n  let dataBuffer = fs.readFileSync(pdfPath);\n  let data = await pdf(dataBuffer);\n  // Process data to extract relevant information\n  let invoiceData = processInvoiceData(data.text);\n  return invoiceData;\n}\n\n// Function to process and structure invoice data\nfunction processInvoiceData(text) {\n  // Implement data processing logic here\n  // This should include context-aware parsing\n  // and error handling\n  return structuredData;\n}\n\n// Main function to run the automation\nasync function main() {\n  let invoiceData = await extractInvoiceData('invoice.pdf');\n  console.log('Extracted Invoice Data:', invoiceData);\n  // Integrate with accounting system\n  await integrateWithAccountingSystem(invoiceData);\n}\n\nmain().catch(console.error);\n```\n\nThis solution improves efficiency by:\n1. Automating the manual data entry process\n2. Maintaining context quality through structured data processing\n3. Reducing errors with built-in validation\n4. Integrating seamlessly with your existing accounting tools\n\nThe code includes context-aware parsing to handle variations in invoice formats and built-in error handling to ensure data integrity.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "get-shit-done#main-content",
+      "get-shit-done#overview",
+      "get-shit-done#setup",
+      "get-shit-done#examples",
+      "get-shit-done#tools",
+      "get-shit-done#mcp",
+      "get-shit-done#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Get Shit Done is a meta-prompting and context engineering system built for Claude Code, Cursor, and OpenCode environments. It helps operations teams maintain high-quality context across AI-driven workflows, reducing errors and improving overall efficiency. The system integrates with JavaScript-based tools and provides state management capabilities through a modular architecture. With over 2,800 commits and active development, it includes features like state locking, drift prevention, and shared module management. Teams using this skill benefit from better prompt engineering practices and more reliable AI agent deployments.\nAutomate the creation of project specifications and roadmaps based on user-defined goals.\nFacilitate the generation of code snippets by providing clear context and requirements.\nStreamline the planning and implementation of new features in existing projects.\nEnable rapid prototyping by allowing users to describe their ideas and receive structured outputs.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/glittercowboy/get-shit-done`",
+    "usage_vi": "```\nI'm working on a [PROJECT_TYPE] project and need to automate [TASK]. Here's the context: [CONTEXT]. Please generate a JavaScript-based solution that integrates with [TOOLS]. Ensure the solution maintains high context quality and minimizes errors. Provide the code and explain how it improves efficiency.\n```\nCopy\n\n```\nBased on your request to automate data extraction from PDF invoices for your accounting project, here's a JavaScript solution using Claude Code and OpenCode:\n\n```javascript\n// Load necessary libraries\nconst fs = require('fs');\nconst pdf = require('pdf-parse');\n\n// Function to extract data from PDF\nasync function extractInvoiceData(pdfPath) {\n  let dataBuffer = fs.readFileSync(pdfPath);\n  let data = await pdf(dataBuffer);\n  // Process data to extract relevant information\n  let invoiceData = processInvoiceData(data.text);\n  return invoiceData;\n}\n\n// Function to process and structure invoice data\nfunction processInvoiceData(text) {\n  // Implement data processing logic here\n  // This should include context-aware parsing\n  // and error handling\n  return structuredData;\n}\n\n// Main function to run the automation\nasync function main() {\n  let invoiceData = await extractInvoiceData('invoice.pdf');\n  console.log('Extracted Invoice Data:', invoiceData);\n  // Integrate with accounting system\n  await integrateWithAccountingSystem(invoiceData);\n}\n\nmain().catch(console.error);\n```\n\nThis solution improves efficiency by:\n1. Automating the manual data entry process\n2. Maintaining context quality through structured data processing\n3. Reducing errors with built-in validation\n4. Integrating seamlessly with your existing accounting tools\n\nThe code includes context-aware parsing to handle variations in invoice formats and built-in error handling to ensure data integrity.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:16:47.419384Z",
+    "http_status": 200,
+    "content_hash": "76c7aa3eabf0a4dbacf057fb91b6a7475deb5ac4f522ff3508beaa547d810093",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\get-shit-done.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\get-shit-done.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Get Shit Done - Meta-prompting for Claude Code",
+  "short_description_vi": "Meta-prompting and context engineering system for Claude Code and OpenCode. Helps operations teams maintain context quality, reduce errors, and improve efficiency in AI-driven workflows. Integrates with JavaScript-based tools and workflows."
+}

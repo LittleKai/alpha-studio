@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spec-workflow-mcp",
+  "slug": "spec-workflow-mcp",
+  "name": "Spec Workflow MCP",
+  "headline": "Spec Workflow MCP - AI Development Tools",
+  "short_description": "The spec-workflow-mcp is a powerful Model Context Protocol server designed for AI-assisted software development, offering structured spec-driven workflows. It features a real-time web dashboard and a VSCode extension to monitor and manage project progress within your development environment.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "Pimzino",
+  "install_command": "claude install Pimzino/spec-workflow-mcp",
+  "source_repo_url": "https://github.com/Pimzino/spec-workflow-mcp",
+  "works_with": [
+    "VS Code"
+  ],
+  "tags": [
+    "AI development",
+    "workflow management",
+    "spec-driven",
+    "VSCode extension",
+    "real-time dashboard"
+  ],
+  "sections": {
+    "overview": "spec-workflow-mcp is a Model Context Protocol server that enables structured, spec-driven development workflows for AI coding assistants. It provides real-time monitoring and project progress management through an integrated web dashboard and VSCode extension, allowing developers to track workflow status directly within their development environment. The tool supports task status management including blocked status with optional reasons, enabling teams to document impediments and maintain clear project visibility. It integrates with Claude Code and similar AI tools, streamlining communication between AI agents and human developers during collaborative development sessions.\nMonitor project progress in real-time through a dedicated web dashboard.\nIntegrate AI assistance into your development workflows for enhanced efficiency.\nManage and create specifications directly from the VSCode extension.\nVisualize project metrics and track task completion with interactive dashboards.",
+    "setup": "Terminal\nCopy\n`claude install Pimzino/spec-workflow-mcp`\n`git clone https://github.com/Pimzino/spec-workflow-mcp`",
+    "usage": "```\nCreate a detailed software development workflow using the spec-workflow-mcp tool for [PROJECT_NAME]. The workflow should include [NUMBER] key stages, each with specific tasks and deliverables. Ensure the workflow integrates with our existing [TECH_STACK] and aligns with [PROJECT_GOALS]. Provide a timeline for each stage and suggest how to use the real-time dashboard and VSCode extension to monitor progress.\n```\nCopy\n\n```\nHere's a detailed software development workflow for the 'E-Commerce Platform Upgrade' project using the spec-workflow-mcp tool:\n\n1. **Requirements Gathering and Analysis**\n   - *Tasks*: Conduct stakeholder interviews, document functional and non-functional requirements, create user stories.\n   - *Deliverables*: Requirements specification document, user story map.\n   - *Timeline*: 2 weeks\n   - *MCP Tools*: Use the real-time dashboard to track interview progress and document updates.\n\n2. **System Design**\n   - *Tasks*: Create architecture diagrams, database schema, API specifications.\n   - *Deliverables*: System design document, wireframes, API contracts.\n   - *Timeline*: 3 weeks\n   - *MCP Tools*: Integrate with VSCode extension to version control design artifacts and collaborate in real-time.\n\n3. **Development**\n   - *Tasks*: Implement features according to user stories, write unit tests, conduct code reviews.\n   - *Deliverables*: Working software increments, test suites, code review feedback.\n   - *Timeline*: 12 weeks\n   - *MCP Tools*: Monitor development progress through the dashboard, use VSCode extension for real-time collaboration.\n\n4. **Testing**\n   - *Tasks*: Execute test cases, perform integration testing, conduct UAT.\n   - *Deliverables*: Test reports, defect logs, UAT sign-off.\n   - *Timeline*: 4 weeks\n   - *MCP Tools*: Track testing progress and defect resolution through the dashboard.\n\n5. **Deployment and Monitoring**\n   - *Tasks*: Deploy to staging and production, set up monitoring, gather user feedback.\n   - *Deliverables*: Deployment plan, monitoring setup, feedback report.\n   - *Timeline*: 3 weeks\n   - *MCP Tools*: Use the dashboard to monitor deployment progress and post-deployment metrics.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: VS Code"
+    ],
+    "related_skills": [
+      "spec-workflow-mcp#main-content",
+      "spec-workflow-mcp#overview",
+      "spec-workflow-mcp#setup",
+      "spec-workflow-mcp#examples",
+      "spec-workflow-mcp#tools",
+      "spec-workflow-mcp#mcp",
+      "spec-workflow-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "spec-workflow-mcp là một server Model Context Protocol giúp kích hoạt các workflow phát triển dựa trên đặc tả (spec-driven) có cấu trúc dành cho các trợ lý lập trình AI. Công cụ này cung cấp khả năng giám sát thời gian thực và quản lý tiến độ dự án thông qua một dashboard web tích hợp cùng VSCode extension, cho phép lập trình viên theo dõi trạng thái workflow trực tiếp trong môi trường phát triển của mình. Công cụ hỗ trợ quản lý trạng thái tác vụ, bao gồm cả trạng thái bị nghẽn (blocked) kèm lý do tùy chọn, giúp các đội ngũ dễ dàng ghi nhận các trở ngại và duy trì tính minh bạch cho dự án. spec-workflow-mcp tích hợp mượt mà với Claude Code cùng các công cụ AI tương tự, giúp tối ưu hóa giao tiếp giữa các AI agent và lập trình viên trong các phiên phát triển cộng tác.\nTheo dõi tiến độ dự án theo thời gian thực qua dashboard web chuyên dụng.\nTích hợp hỗ trợ từ AI vào workflow phát triển để nâng cao hiệu suất.\nQuản lý và tạo đặc tả (specification) trực tiếp từ VSCode extension.\nTrực quan hóa các chỉ số dự án và theo dõi tiến độ hoàn thành tác vụ với các dashboard tương tác.",
+    "setup_vi": "Terminal\nSao chép\n`claude install Pimzino/spec-workflow-mcp`\n`git clone https://github.com/Pimzino/spec-workflow-mcp`",
+    "usage_vi": "```\nHãy tạo một workflow phát triển phần mềm chi tiết sử dụng công cụ spec-workflow-mcp cho dự án [PROJECT_NAME]. Workflow cần bao gồm [NUMBER] giai đoạn chính, mỗi giai đoạn đi kèm các tác vụ và sản phẩm bàn giao (deliverable) cụ thể. Đảm bảo workflow này tích hợp tốt với [TECH_STACK] hiện tại của chúng tôi và phù hợp với [PROJECT_GOALS]. Hãy cung cấp timeline cho từng giai đoạn và đề xuất cách sử dụng dashboard thời gian thực cũng như VSCode extension để theo dõi tiến độ.\n```\nSao chép\n\n```\nDưới đây là workflow phát triển phần mềm chi tiết cho dự án 'Nâng cấp Nền tảng Thương mại Điện tử' sử dụng công cụ spec-workflow-mcp:\n\n1. **Thu thập và Phân tích Yêu cầu**\n   - *Tác vụ*: Phỏng vấn các bên liên quan (stakeholders), tài liệu hóa các yêu cầu chức năng và phi chức năng, tạo user story.\n   - *Sản phẩm bàn giao*: Tài liệu đặc tả yêu cầu, bản đồ user story (user story map).\n   - *Thời gian thực hiện*: 2 tuần\n   - *Công cụ MCP*: Sử dụng dashboard thời gian thực để theo dõi tiến độ phỏng vấn và cập nhật tài liệu.\n\n2. **Thiết kế Hệ thống**\n   - *Tác vụ*: Vẽ sơ đồ kiến trúc, thiết kế schema cơ sở dữ liệu, xây dựng tài liệu đặc tả API.\n   - *Sản phẩm bàn giao*: Tài liệu thiết kế hệ thống, wireframe, hợp đồng API (API contract).\n   - *Thời gian thực hiện*: 3 tuần\n   - *Công cụ MCP*: Tích hợp với VSCode extension để quản lý phiên bản các thiết kế (design artifacts) và cộng tác trong thời gian thực.\n\n3. **Phát triển (Development)**\n   - *Tác vụ*: Hiện thực hóa các tính năng theo user story, viết unit test, tiến hành review code.\n   - *Sản phẩm bàn giao*: Các phần tăng trưởng phần mềm chạy được (working software increments), bộ test suite, phản hồi review code.\n   - *Thời gian thực hiện*: 12 tuần\n   - *Công cụ MCP*: Giám sát tiến độ phát triển thông qua dashboard, sử dụng VSCode extension để cộng tác thời gian thực.\n\n4. **Kiểm thử (Testing)**\n   - *Tác vụ*: Thực thi các test case, kiểm thử tích hợp (integration testing), tiến hành kiểm thử chấp nhận người dùng (UAT).\n   - *Sản phẩm bàn giao*: Báo cáo kiểm thử, log lỗi (defect logs), biên bản nghiệm thu UAT (UAT sign-off).\n   - *Thời gian thực hiện*: 4 tuần\n   - *Công cụ MCP*: Theo dõi tiến độ kiểm thử và việc khắc phục lỗi thông qua dashboard.\n\n5. **Triển khai và Giám sát**\n   - *Tác vụ*: Triển khai lên môi trường staging và production, thiết lập giám sát (monitoring), thu thập ý kiến phản hồi của người dùng.\n   - *Sản phẩm bàn giao*: Kế hoạch triển khai, cấu hình giám sát, báo cáo phản hồi.\n   - *Thời gian thực hiện*: 3 tuần\n   - *Công cụ MCP*: Sử dụng dashboard để theo dõi tiến độ triển khai và các chỉ số sau triển khai (post-deployment metrics).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:37:45.392277Z",
+    "http_status": 200,
+    "content_hash": "b218bea7ccf5e2702fde0d451ac10a4f80b023ff4a37258965d73448c5c993d2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec-workflow-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec-workflow-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Spec Workflow MCP - Công cụ phát triển hỗ trợ bởi AI",
+  "short_description_vi": "spec-workflow-mcp là một server Model Context Protocol mạnh mẽ được thiết kế cho việc phát triển phần mềm hỗ trợ bởi AI, mang đến các workflow dạng spec-driven (phát triển dựa trên đặc tả) có cấu trúc. Công cụ này tích hợp một dashboard web thời gian thực và một VSCode extension để theo dõi và quản lý tiến độ dự án ngay trong môi trường phát triển của bạn."
+}

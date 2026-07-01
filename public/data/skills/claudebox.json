@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudebox",
+  "slug": "claudebox",
+  "name": "claudebox",
+  "headline": "claudebox: secure execution for macOS",
+  "short_description": "A macOS sandbox wrapper for Claude Code that restricts file system access to project directories while blocking sensitive folders, providing secure isolated execution with automatic package manager detection.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "Greitas-Kodas",
+  "install_command": "git clone https://github.com/Greitas-Kodas/claudebox.git",
+  "source_repo_url": "https://github.com/Greitas-Kodas/claudebox",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "wrapper",
+    "shell",
+    "sandbox",
+    "macos",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claudebox wraps Claude Code in macOS sandbox-exec to create an isolated execution environment that restricts file system access to your project directory while blocking access to sensitive folders like ~/.ssh, ~/.aws, and ~/Documents. It automatically detects installed package managers including Homebrew, npm, nvm, fnm, nodenv, and Nix, then generates a dynamic sandbox profile tailored to your development environment. The tool provides configurable process limits, comprehensive logging, and dry-run modes for testing. This is useful for developers who want to run Claude Code with additional security guarantees, prevent accidental access to sensitive data, or audit exactly what resources Claude can interact with during code generation and execution.\nRunning Claude Code in isolated sandbox for untrusted prompts or code generation tasks\nPreventing accidental access to sensitive files like SSH keys or AWS credentials\nAuditing and controlling which system resources Claude can access during development\nSecuring multi-project development environments with strict file system boundaries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Greitas-Kodas/claudebox`\n- **Isolation Level**: Full process isolation with restricted network access\n- **Resource Limits**: CPU: 2 cores, Memory: 4GB, Disk: 20GB\n- **Security Measures**: Read-only file system, no external network access, sandboxed terminal",
+    "usage": "```\nCreate a secure macOS sandbox environment for [COMPANY] using Claude Code to process [DATA] from [INDUSTRY]. Ensure the environment is isolated and follows best practices for security and data handling.\n```\nCopy\n\n```\n```markdown\n# Secure macOS Sandbox Environment for Data Processing",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudebox#main-content",
+      "claudebox#overview",
+      "claudebox#setup",
+      "claudebox#examples",
+      "claudebox#tools",
+      "claudebox#mcp",
+      "claudebox#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claudebox đóng gói Claude Code bằng sandbox-exec của macOS để tạo ra một môi trường thực thi cô lập, giúp giới hạn quyền truy cập hệ thống tệp trong thư mục dự án của bạn, đồng thời chặn quyền truy cập vào các thư mục nhạy cảm như ~/.ssh, ~/.aws và ~/Documents. Công cụ này tự động phát hiện các package manager được cài đặt (bao gồm Homebrew, npm, nvm, fnm, nodenv và Nix), sau đó tạo ra một sandbox profile động phù hợp với môi trường phát triển của bạn. Công cụ cũng hỗ trợ cấu hình giới hạn tiến trình (process limits), ghi log chi tiết và chế độ dry-run để thử nghiệm. Đây là giải pháp hữu ích cho các lập trình viên muốn chạy Claude Code với các tiêu chuẩn bảo mật tăng cường, ngăn chặn việc vô tình truy cập vào dữ liệu nhạy cảm, hoặc giám sát chính xác những tài nguyên mà Claude có thể tương tác trong quá trình sinh và thực thi mã.\nChạy Claude Code trong sandbox cô lập cho các prompt chưa được kiểm chứng hoặc các tác vụ sinh mã\nTránh vô tình truy cập vào các tệp nhạy cảm như SSH key hoặc AWS credential\nGiám sát và kiểm soát tài nguyên hệ thống mà Claude được phép truy cập trong quá trình phát triển\nBảo mật môi trường phát triển đa dự án bằng các ranh giới hệ thống tệp nghiêm ngặt",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Greitas-Kodas/claudebox`\n- **Mức độ cô lập**: Cô lập hoàn toàn tiến trình với quyền truy cập mạng bị hạn chế\n- **Giới hạn tài nguyên**: CPU: 2 cores, Memory: 4GB, Disk: 20GB\n- **Biện pháp bảo mật**: Hệ thống tệp chỉ đọc (Read-only), không có quyền truy cập mạng bên ngoài, terminal được đưa vào sandbox",
+    "usage_vi": "```\nTạo một môi trường sandbox macOS bảo mật cho [COMPANY] sử dụng Claude Code để xử lý [DATA] từ [INDUSTRY]. Đảm bảo môi trường được cô lập và tuân thủ các quy tắc bảo mật và xử lý dữ liệu tốt nhất.\n```\nCopy\n\n```\n```markdown\n# Môi trường macOS Sandbox bảo mật cho xử lý dữ liệu"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:49:47.573582Z",
+    "http_status": 200,
+    "content_hash": "85c82578ad7d0ee11413f1f51ef4473acd7780df60bdbb643036029083e22462",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudebox.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudebox.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claudebox: môi trường thực thi bảo mật cho macOS",
+  "short_description_vi": "Một sandbox wrapper trên macOS dành cho Claude Code giúp giới hạn quyền truy cập hệ thống tệp trong các thư mục dự án và chặn các thư mục nhạy cảm, cung cấp môi trường thực thi cô lập an toàn với tính năng tự động phát hiện package manager."
+}

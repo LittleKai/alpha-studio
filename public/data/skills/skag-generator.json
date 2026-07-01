@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skag-generator",
+  "slug": "skag-generator",
+  "name": "Skag Generator",
+  "headline": "skag-generator: Google Ads SKAG Builder",
+  "short_description": "Python tool that generates Single Keyword Ad Group (SKAG) templates for Google Ads from Excel input, automating bulk campaign setup and reducing manual configuration time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "kurt213",
+  "install_command": "git clone https://github.com/kurt213/skag-generator.git",
+  "source_repo_url": "https://github.com/kurt213/skag-generator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "marketing-automation",
+    "python",
+    "automation",
+    "digital-marketing",
+    "google-ads",
+    "marketing",
+    "marketing-tools",
+    "google-adwords",
+    "excel"
+  ],
+  "sections": {
+    "overview": "skag-generator is a Python utility designed for PPC marketers and Google Ads managers who need to structure granular, highly organized ad campaigns. The tool reads a pre-populated Excel template containing keywords, ad copy, and campaign parameters, then automatically generates all possible combinations of ad groups, keywords, and expanded text ads ready for bulk upload into Google Ads Editor. It supports multiple keyword match types (exact, phrase, broad match modifier) and validates ad copy character limits before output. By automating SKAG template creation, the tool eliminates time-consuming manual setup while ensuring consistent campaign structure across keyword variations.\nGenerate SKAG templates for multi-keyword product campaigns (e.g., footwear with color and style variations)\nCreate bulk ad group structures with dynamic keyword placeholders in ad copy\nValidate ad copy character limits across keyword-ad combinations before uploading to Google Ads\nExport ready-to-upload SKAG files in CSV and Excel formats for Google Ads Editor",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kurt213/skag-generator`\n\n### Keywords:\n- +affordable +solar +installations\n- +cheap +solar +installations\n- +budget +solar +installations\n\n### Match Types:\n- Broad Modified (+keyword +keyword +keyword)\n- Phrase \"keyword keyword keyword\"\n- Exact [keyword keyword keyword]\n\n### Ad Copy Suggestions:\n1. **Headline 1:** Affordable Solar Installations\n   **Headline 2:** Save on Energy Costs\n   **Description:** GreenTech Solutions provides budget-friendly solar installations. Get a quote today!\n2. **Headline 1:** Cheap Solar Installations\n   **Headline 2:** Quality Solar at Low Prices\n   **Description:** Discover affordable solar solutions from GreenTech. Contact us now!\n\n```",
+    "usage": "```\nGenerate a Single Keyword Ad Group (SKAG) template for [COMPANY] in the [INDUSTRY] industry. Use the following keywords: [KEYWORDS]. Include ad group names, keyword match types, and ad copy suggestions.\n```\nCopy\n\n```\n# Single Keyword Ad Group (SKAG) Template for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skag-generator#main-content",
+      "skag-generator#overview",
+      "skag-generator#setup",
+      "skag-generator#examples",
+      "skag-generator#tools",
+      "skag-generator#mcp",
+      "skag-generator#related",
+      "marketingskills",
+      "copywriting",
+      "voice-marketing-agent"
+    ],
+    "overview_vi": "skag-generator is a Python utility designed for PPC marketers and Google Ads managers who need to structure granular, highly organized ad campaigns. The tool reads a pre-populated Excel template containing keywords, ad copy, and campaign parameters, then automatically generates all possible combinations of ad groups, keywords, and expanded text ads ready for bulk upload into Google Ads Editor. It supports multiple keyword match types (exact, phrase, broad match modifier) and validates ad copy character limits before output. By automating SKAG template creation, the tool eliminates time-consuming manual setup while ensuring consistent campaign structure across keyword variations.\nGenerate SKAG templates for multi-keyword product campaigns (e.g., footwear with color and style variations)\nCreate bulk ad group structures with dynamic keyword placeholders in ad copy\nValidate ad copy character limits across keyword-ad combinations before uploading to Google Ads\nExport ready-to-upload SKAG files in CSV and Excel formats for Google Ads Editor",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kurt213/skag-generator`\n\n### Keywords:\n- +affordable +solar +installations\n- +cheap +solar +installations\n- +budget +solar +installations\n\n### Match Types:\n- Broad Modified (+keyword +keyword +keyword)\n- Phrase \"keyword keyword keyword\"\n- Exact [keyword keyword keyword]\n\n### Ad Copy Suggestions:\n1. **Headline 1:** Affordable Solar Installations\n   **Headline 2:** Save on Energy Costs\n   **Description:** GreenTech Solutions provides budget-friendly solar installations. Get a quote today!\n2. **Headline 1:** Cheap Solar Installations\n   **Headline 2:** Quality Solar at Low Prices\n   **Description:** Discover affordable solar solutions from GreenTech. Contact us now!\n\n```",
+    "usage_vi": "```\nGenerate a Single Keyword Ad Group (SKAG) template for [COMPANY] in the [INDUSTRY] industry. Use the following keywords: [KEYWORDS]. Include ad group names, keyword match types, and ad copy suggestions.\n```\nCopy\n\n```\n# Single Keyword Ad Group (SKAG) Template for GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:17:32.741880Z",
+    "http_status": 200,
+    "content_hash": "0154f9e9b121a3e379927c659d327f075648176b6faa6fddd4c75252619484b9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skag-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skag-generator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "skag-generator: Google Ads SKAG Builder",
+  "short_description_vi": "Python tool that generates Single Keyword Ad Group (SKAG) templates for Google Ads from Excel input, automating bulk campaign setup and reducing manual configuration time."
+}

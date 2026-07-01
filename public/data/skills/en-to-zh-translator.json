@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/en-to-zh-translator",
+  "slug": "en-to-zh-translator",
+  "name": "En To Zh Translator",
+  "headline": "English to Chinese Translator: File Translation",
+  "short_description": "This skill provides a seamless way to translate text from English to Chinese. It's designed for users who frequently need translation services or integrate such functionalities into applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "seefreed",
+  "install_command": "git clone https://github.com/seefreed/skills",
+  "source_repo_url": "https://github.com/seefreed/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "translation",
+    "translator"
+  ],
+  "sections": {
+    "overview": "This skill translates English text files into natural Chinese while maintaining the original sentence structure and paragraph breaks, making it ideal for language learning and translation practice. It automatically combines broken sentences across multiple lines into complete Chinese lines, handles special elements like stage directions and quotes, and outputs translated files with a _zh suffix in the same directory. The translation approach balances natural fluency with reversibility, enabling bidirectional translation practice. It supports both .txt and .md file formats and is triggered when users request Chinese translations of their documents.\nTranslate emails from English to Chinese\nLocalize web content for Chinese audiences\nAssist with language learning and practice",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/seefreed/skills --skill en-to-zh-translator`\n`git clone https://github.com/seefreed/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "en-to-zh-translator#main-content",
+      "en-to-zh-translator#overview",
+      "en-to-zh-translator#setup",
+      "en-to-zh-translator#examples",
+      "en-to-zh-translator#tools",
+      "en-to-zh-translator#mcp",
+      "en-to-zh-translator#related"
+    ],
+    "overview_vi": "Skill này dịch các file văn bản tiếng Anh sang tiếng Trung một cách tự nhiên trong khi vẫn giữ nguyên cấu trúc câu và phân đoạn gốc, rất lý tưởng cho việc học ngôn ngữ và thực hành dịch thuật. Skill tự động gộp các câu bị ngắt dòng trên nhiều dòng thành các dòng tiếng Trung hoàn chỉnh, xử lý các yếu tố đặc biệt như chỉ dẫn sân khấu và dấu ngoặc kép, đồng thời xuất các file đã dịch với hậu tố _zh trong cùng thư mục. Phương pháp dịch này đảm bảo sự cân bằng giữa độ trôi chảy tự nhiên và khả năng dịch ngược, cho phép thực hành dịch song hướng. Skill hỗ trợ cả định dạng file .txt và .md, được kích hoạt khi người dùng yêu cầu dịch tài liệu sang tiếng Trung.\nDịch email từ tiếng Anh sang tiếng Trung\nBản địa hóa nội dung web cho người dùng Trung Quốc\nHỗ trợ học tập và thực hành ngôn ngữ",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/seefreed/skills --skill en-to-zh-translator`\n`git clone https://github.com/seefreed/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:28:58.004161Z",
+    "http_status": 200,
+    "content_hash": "420806f8d194a48c8ac14e3d2f18763a47802490fb561f462f81941cd4fc42f1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\en-to-zh-translator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\en-to-zh-translator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình dịch Anh - Trung: Dịch file",
+  "short_description_vi": "Skill này cung cấp một giải pháp liền mạch để dịch văn bản từ tiếng Anh sang tiếng Trung. Skill được thiết kế dành cho những người dùng thường xuyên có nhu cầu dịch thuật hoặc muốn tích hợp các chức năng này vào ứng dụng."
+}

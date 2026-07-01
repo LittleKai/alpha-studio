@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/windows-to-wsl2-screenshots",
+  "slug": "windows-to-wsl2-screenshots",
+  "name": "Windows-to-WSL2 Screenshots",
+  "headline": "Windows-to-WSL2 Screenshots - Automate Screenshots",
+  "short_description": "Automate Windows screenshots for Claude Code workflows in WSL2. Take screenshots (Win+Shift+S, Win+PrintScreen, Snipping Tool) and   instantly get file paths copied to clipboard for pasting into Claude Code (Terminal or running in VS Code). No more manual   save/copy/paste!",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "jddev273",
+  "install_command": "git clone https://github.com/jddev273/windows-to-wsl2-screenshots.git",
+  "source_repo_url": "https://github.com/jddev273/windows-to-wsl2-screenshots",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "windows-terminal",
+    "productivity",
+    "windows",
+    "screenshot-automation",
+    "powershell-script",
+    "powershell",
+    "wsl2",
+    "workflow",
+    "developer-tools",
+    "clipboard",
+    "linux",
+    "bash",
+    "claude",
+    "claude-code",
+    "screenshot",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Windows-to-WSL2 Screenshot Bridge automates the workflow of taking screenshots in Windows and using them in Claude Code or VS Code running on WSL2. When you take a screenshot using Win+Shift+S, Win+PrintScreen, or the Snipping Tool, the tool automatically saves it to ~/.screenshots/ in your WSL2 distribution and copies the file path to your clipboard. You can then paste the path directly into Claude Code, VS Code, or any WSL2-based application with Ctrl+V, eliminating manual save-and-copy steps. This skill requires Windows 10/11 with WSL2 and Windows Terminal for proper clipboard synchronization.\nSharing screenshots with Claude Code for debugging and documentation\nCapturing UI elements for VS Code development documentation\nQuickly embedding images in WSL2-based workflows without manual file management\nAutomating screenshot workflows in development environments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jddev273/windows-to-wsl2-screenshots`",
+    "usage": "```\nI'm using Windows with WSL2 and need to automate screenshots for my [PROJECT_NAME] workflow. Please generate a script that will: 1) Capture screenshots using Win+Shift+S, 2) Automatically save them to my [SAVE_LOCATION] directory, 3) Copy the file paths to my clipboard, and 4) Make them instantly available in my WSL2 environment. I'm using [SCREENSHOT_TOOL] for capturing screenshots.\n```\nCopy\n\n```\n```bash\n# Windows-to-WSL2 Screenshot Automation Script\n\n# 1. Capture Screenshot using Snipping Tool\n# Press Win+Shift+S to capture screenshot\n# Screenshot saved to: C:\\Users\\User\\Pictures\\Screenshots\\screenshot_20231115_143022.png\n\n# 2. Automatically copy file path to clipboard\n# File path copied to clipboard: C:\\Users\\User\\Pictures\\Screenshots\\screenshot_20231115_143022.png\n\n# 3. Make screenshot available in WSL2\n# Screenshot path in WSL2: /mnt/c/Users/User/Pictures/Screenshots/screenshot_20231115_143022.png\n\n# 4. Ready to use in Claude Code\n# Paste the following path into your Claude Code terminal:\n/mnt/c/Users/User/Pictures/Screenshots/screenshot_20231115_143022.png\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "windows-to-wsl2-screenshots#main-content",
+      "windows-to-wsl2-screenshots#overview",
+      "windows-to-wsl2-screenshots#setup",
+      "windows-to-wsl2-screenshots#examples",
+      "windows-to-wsl2-screenshots#tools",
+      "windows-to-wsl2-screenshots#mcp",
+      "windows-to-wsl2-screenshots#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Windows-to-WSL2 Screenshot Bridge tự động hóa quy trình chụp ảnh màn hình trên Windows và sử dụng chúng trong Claude Code hoặc VS Code chạy trên WSL2. Khi bạn chụp ảnh màn hình bằng Win+Shift+S, Win+PrintScreen hoặc Snipping Tool, công cụ này sẽ tự động lưu ảnh vào thư mục ~/.screenshots/ trong bản phân phối WSL2 của bạn, đồng thời sao chép đường dẫn file vào clipboard. Bạn có thể dán trực tiếp đường dẫn này vào Claude Code, VS Code hoặc bất kỳ ứng dụng nào trên nền WSL2 bằng phím Ctrl+V, loại bỏ hoàn toàn các bước lưu và sao chép thủ công. Skill này yêu cầu Windows 10/11 với WSL2 và Windows Terminal để đồng bộ hóa clipboard chính xác.\nChia sẻ ảnh chụp màn hình với Claude Code để debug và làm tài liệu hướng dẫn\nChụp các thành phần giao diện (UI) cho tài liệu phát triển trong VS Code\nNhúng nhanh hình ảnh vào các workflow chạy trên WSL2 mà không cần quản lý file thủ công\nTự động hóa quy trình chụp ảnh màn hình trong môi trường phát triển",
+    "setup_vi": "Không có sẵn lệnh setup. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jddev273/windows-to-wsl2-screenshots`",
+    "usage_vi": "```\nTôi đang dùng Windows với WSL2 và cần tự động hóa việc chụp ảnh màn hình cho workflow của dự án [PROJECT_NAME]. Vui lòng tạo một script giúp: 1) Chụp ảnh màn hình bằng Win+Shift+S, 2) Tự động lưu vào thư mục [SAVE_LOCATION], 3) Sao chép đường dẫn file vào clipboard của tôi, và 4) Giúp chúng khả dụng ngay lập tức trong môi trường WSL2. Tôi đang dùng [SCREENSHOT_TOOL] để chụp ảnh màn hình.\n```\nCopy\n\n```bash\n# Windows-to-WSL2 Screenshot Automation Script\n\n# 1. Chụp ảnh màn hình bằng Snipping Tool\n# Nhấn Win+Shift+S để chụp ảnh màn hình\n# Ảnh chụp màn hình được lưu tại: C:\\\\Users\\\\User\\\\Pictures\\\\Screenshots\\\\screenshot_20231115_143022.png\n\n# 2. Tự động sao chép đường dẫn file vào clipboard\n# Đường dẫn file đã sao chép vào clipboard: C:\\\\Users\\\\User\\\\Pictures\\\\Screenshots\\\\screenshot_20231115_143022.png\n\n# 3. Đồng bộ ảnh chụp màn hình vào WSL2\n# Đường dẫn ảnh chụp màn hình trong WSL2: /mnt/c/Users/User/Pictures/Screenshots/screenshot_20231115_143022.png\n\n# 4. Đã sẵn sàng sử dụng trong Claude Code\n# Dán đường dẫn sau vào terminal Claude Code của bạn:\n/mnt/c/Users/User/Pictures/Screenshots/screenshot_20231115_143022.png\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:54.222815Z",
+    "http_status": 200,
+    "content_hash": "4b50d6a2e756e787b73db87c6ef42dabb748e06f1442b7e6360dfe5464660248",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\windows-to-wsl2-screenshots.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\windows-to-wsl2-screenshots.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Windows-to-WSL2 Screenshots - Tự động hóa chụp ảnh màn hình",
+  "short_description_vi": "Tự động hóa quy trình chụp ảnh màn hình Windows cho các workflow của Claude Code trong WSL2. Chụp ảnh màn hình (Win+Shift+S, Win+PrintScreen, Snipping Tool) và lập tức sao chép đường dẫn file vào clipboard để dán trực tiếp vào Claude Code (Terminal hoặc đang chạy trong VS Code). Không còn phải lưu, sao chép và dán thủ công!"
+}

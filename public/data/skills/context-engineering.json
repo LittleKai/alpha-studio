@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/context-engineering",
+  "slug": "context-engineering",
+  "name": "Context Engineering",
+  "headline": "Context Engineering - Enhance Coding Agents",
+  "short_description": "Context Engineering enhances coding agents like Claude Code and GitHub Copilot by providing precise context. It benefits developers and operations teams by improving code accuracy and reducing debugging time. Integrates with IDEs and version control systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "wmeints",
+  "install_command": "git clone https://github.com/wmeints/context-engineering.git",
+  "source_repo_url": "https://github.com/wmeints/context-engineering",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "github-copilot",
+    "promptengineering",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Context Engineering is a systematic approach to improving AI agent performance in software development by preparing comprehensive, layered context before tasks begin. Rather than relying on ad-hoc prompts, it uses structured files like TASK.md and custom instructions to provide agents with architectural patterns, documentation, and project-specific knowledge. The methodology combines research-driven plan generation with self-validating workflows, allowing developers to review implementation plans before execution. This approach reduces iteration cycles, improves code consistency, and produces documentation as a natural byproduct. Context Engineering supports both Claude Code and GitHub Copilot in Visual Studio Code.\nGenerating detailed implementation plans before agent-assisted coding\nDocumenting project architecture and patterns for consistent code generation\nReducing debugging time by providing agents comprehensive codebase context\nValidating agent-generated code quality through structured workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wmeints/context-engineering`",
+    "usage": "```\nGenerate precise context for [TASK] in [PROJECT_NAME]. Include: 1) Relevant code snippets from [FILES_OR_MODULES], 2) Recent commit messages or PR descriptions related to [KEYWORD], 3) Error logs or test failures from [TEST_SUITE], and 4) Dependencies or environment variables from [CONFIG_FILE]. Format as a structured context brief for [AI_CODING_TOOL].\n```\nCopy\n\n```\n### Context Brief for Implementing OAuth2 in `auth-service`\n\n**1. Code Snippets:**\nFrom `src/auth/oauth2.py` (v1.2.3):\n```python\nclass OAuth2Client:\n    def __init__(self, client_id, client_secret):\n        self.token_url = \"https://auth.example.com/oauth/token\"\n        self.scope = [\"read:user\", \"write:repo\"]\n```\n\n**2. Recent Commits:**\n- `feat: add refresh token support` (PR #45, 2024-05-12)\n- `fix: validate token expiry before use` (Commit 7a8b9c1, 2024-05-10)\n\n**3. Error Logs:**\n```\nERROR: OAuth2Client - Token refresh failed: 401 Unauthorized\nRequest: POST https://auth.example.com/oauth/token\nHeaders: {'Content-Type': 'application/x-www-form-urlencoded'}\nBody: client_id=...&client_secret=...&grant_type=refresh_token\n```\n\n**4. Dependencies:**\n- `requests>=2.31.0` (from `requirements.txt`)\n- `python-dotenv>=1.0.0` (for `.env` file parsing)\n\n**Task:** Implement a retry mechanism for token refresh failures with exponential backoff. Prioritize handling 401 errors first.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "context-engineering#main-content",
+      "context-engineering#overview",
+      "context-engineering#setup",
+      "context-engineering#examples",
+      "context-engineering#tools",
+      "context-engineering#mcp",
+      "context-engineering#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Context Engineering là một phương pháp tiếp cận mang tính hệ thống nhằm tối ưu hóa hiệu suất của AI agent trong phát triển phần mềm bằng cách chuẩn bị ngữ cảnh phân lớp và toàn diện trước khi bắt đầu tác vụ. Thay vì dựa vào các prompt mang tính tự phát (ad-hoc), phương pháp này sử dụng các file có cấu trúc như TASK.md và các chỉ dẫn tùy chỉnh (custom instructions) để cung cấp cho agent thông tin về pattern kiến trúc, tài liệu kỹ thuật và kiến thức đặc thù của dự án. Quy trình này kết hợp khả năng lập kế hoạch dựa trên nghiên cứu (research-driven) với các workflow tự xác thực, cho phép lập trình viên duyệt lại kế hoạch triển khai trước khi thực thi. Cách tiếp cận này giúp rút ngắn chu kỳ lặp (iteration cycle), nâng cao tính nhất quán của mã nguồn và tự động tạo ra tài liệu đi kèm một cách tự nhiên. Context Engineering hỗ trợ cả Claude Code lẫn GitHub Copilot trên Visual Studio Code.\nLập kế hoạch triển khai chi tiết trước khi bắt đầu coding với agent\nTài liệu hóa kiến trúc và các pattern của dự án để đảm bảo code được tạo ra một cách nhất quán\nGiảm thời gian debug bằng cách cung cấp cho agent ngữ cảnh codebase toàn diện\nXác thực chất lượng code do agent tạo ra thông qua các workflow có cấu trúc",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/wmeints/context-engineering`",
+    "usage_vi": "```\nTạo ngữ cảnh chính xác cho [TASK] trong [PROJECT_NAME]. Bao gồm: 1) Các đoạn code liên quan từ [FILES_OR_MODULES], 2) Các commit message hoặc mô tả PR gần đây liên quan đến [KEYWORD], 3) Log lỗi hoặc test thất bại từ [TEST_SUITE], và 4) Các dependency hoặc biến môi trường từ [CONFIG_FILE]. Định dạng dưới dạng context brief có cấu trúc cho [AI_CODING_TOOL].\n```\nCopy\n\n```\n### Context Brief cho việc triển khai OAuth2 trong `auth-service`\n\n**1. Code Snippets:**\nTừ `src/auth/oauth2.py` (v1.2.3):\n```python\nclass OAuth2Client:\n    def __init__(self, client_id, client_secret):\n        self.token_url = \"https://auth.example.com/oauth/token\"\n        self.scope = [\"read:user\", \"write:repo\"]\n```\n\n**2. Commits gần đây:**\n- `feat: add refresh token support` (PR #45, 2024-05-12)\n- `fix: validate token expiry before use` (Commit 7a8b9c1, 2024-05-10)\n\n**3. Log lỗi:**\n```\nERROR: OAuth2Client - Token refresh failed: 401 Unauthorized\nRequest: POST https://auth.example.com/oauth/token\nHeaders: {'Content-Type': 'application/x-www-form-urlencoded'}\nBody: client_id=...&client_secret=...&grant_type=refresh_token\n```\n\n**4. Dependencies:**\n- `requests>=2.31.0` (từ `requirements.txt`)\n- `python-dotenv>=1.0.0` (để parse file `.env`)\n\n**Yêu cầu (Task):** Triển khai cơ chế retry khi refresh token thất bại sử dụng exponential backoff. Ưu tiên xử lý các lỗi 401 trước.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:29:48.865530Z",
+    "http_status": 200,
+    "content_hash": "a59899283a094ae9552e5f267d5b2a4f5a8069967f2ec00bcce6ef71ceb60d71",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\context-engineering.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\context-engineering.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Context Engineering - Nâng cao hiệu quả Coding Agent",
+  "short_description_vi": "Context Engineering giúp tối ưu hóa các coding agent như Claude Code và GitHub Copilot bằng cách cung cấp ngữ cảnh chính xác. Phương pháp này mang lại lợi ích cho cả lập trình viên lẫn đội ngũ vận hành nhờ nâng cao độ chính xác của mã nguồn và rút ngắn thời gian debug. Hỗ trợ tích hợp mượt mà với các IDE và hệ thống quản lý phiên bản (VCS)."
+}

@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/termly-cli",
+  "slug": "termly-cli",
+  "name": "Termly CLI",
+  "headline": "Termly CLI - AI Coding Assistant Access",
+  "short_description": "Termly CLI enables AI coding assistants on any device. It supports Claude Code, Aider, GitHub Copilot, and terminal-based tools. Operators can integrate with TUI apps like OpenCode for enhanced coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "termly-dev",
+  "install_command": "git clone https://github.com/termly-dev/termly-cli.git",
+  "source_repo_url": "https://github.com/termly-dev/termly-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "encryption",
+    "coding-assistant",
+    "e2ee",
+    "copilot",
+    "nodejs",
+    "mobile",
+    "cli",
+    "websocket",
+    "aider",
+    "github-copilot",
+    "pty",
+    "claude",
+    "terminal",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Termly CLI provides universal access to terminal-based AI coding assistants like Claude Code, Aider, GitHub Copilot, and Cursor from any device—desktop, mobile, or tablet. It uses AES-256-GCM end-to-end encryption with a zero-knowledge server architecture, ensuring your code and conversations remain private. The tool automatically detects installed AI tools, supports multiple simultaneous sessions, and resumes connections with state synchronization. Installation requires only Node.js 18+ with prebuilt binaries for macOS, Linux, and Windows. Teams and individual developers benefit from the ability to run multiple AI tools in parallel, control coding assistants remotely, and maintain encrypted sessions across different environments.\nControl Claude Code or Aider from a mobile device on-the-go\nRun multiple AI coding assistants simultaneously across different project directories\nAccess GitHub Copilot CLI securely from remote machines with encrypted WebSocket connections\nResume interrupted AI coding sessions automatically with state synchronization",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/termly-dev/termly-cli`",
+    "usage": "```\nUse the termly-cli to [TASK] in [PROJECT_PATH]. For example: 'Set up a new Python project with termly-cli in ~/dev/my-project using FastAPI template. Install dependencies, initialize Git, and create a basic REST endpoint at /api/health'. Include any required flags like --template or --no-git if needed.\n```\nCopy\n\n```\n```bash\n$ termly-cli new ~/dev/saas-platform --template=nextjs-fullstack --no-git\n\n✅ Project initialized in /Users/alice/dev/saas-platform\n📦 Dependencies installed:\n  - next@14.1.0\n  - typescript@5.3.3\n  - prisma@5.7.1\n  - @clerk/nextjs@4.29.3\n\n🔧 Git initialized (skipped via --no-git flag)\n📝 Created basic structure:\n  - /app/api/health/route.ts (GET /api/health)\n  - /app/(auth)/login/page.tsx\n  - /prisma/schema.prisma\n\n🚀 Ready to run:\n  $ cd ~/dev/saas-platform\n  $ termly-cli dev\n```\n\nThe project now includes:\n- Next.js 14 with App Router\n- TypeScript strict mode\n- Prisma ORM with SQLite\n- Clerk authentication pre-configured\n- Dockerfile for containerized deployment\n- GitHub Actions workflow for CI/CD\n\nTo integrate with OpenCode TUI:\n1. Install OpenCode: `brew install opencode`\n2. Launch: `opencode ~/dev/saas-platform`\n3. Use termly-cli commands directly from the TUI interface\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "termly-cli#main-content",
+      "termly-cli#overview",
+      "termly-cli#setup",
+      "termly-cli#examples",
+      "termly-cli#tools",
+      "termly-cli#mcp",
+      "termly-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Termly CLI cung cấp khả năng truy cập linh hoạt vào các trợ lý lập trình AI chạy trên terminal như Claude Code, Aider, GitHub Copilot và Cursor từ mọi thiết bị—máy tính để bàn, điện thoại di động hoặc máy tính bảng. Công cụ sử dụng mã hóa đầu cuối AES-256-GCM với kiến trúc máy chủ zero-knowledge, đảm bảo mã nguồn và các cuộc hội thoại của bạn luôn được bảo mật. Công cụ tự động phát hiện các công cụ AI đã cài đặt, hỗ trợ nhiều session đồng thời và khôi phục kết nối với tính năng đồng bộ hóa trạng thái. Quá trình cài đặt chỉ yêu cầu Node.js 18+ với các bản build sẵn (prebuilt binaries) cho macOS, Linux và Windows. Các đội ngũ và nhà phát triển cá nhân có thể chạy song song nhiều công cụ AI, điều khiển từ xa các trợ lý lập trình và duy trì các session mã hóa trên nhiều môi trường khác nhau.\nĐiều khiển Claude Code hoặc Aider ngay trên thiết bị di động khi đang di chuyển\nChạy đồng thời nhiều trợ lý lập trình AI trên các thư mục dự án khác nhau\nTruy cập GitHub Copilot CLI an toàn từ máy từ xa bằng kết nối WebSocket được mã hóa\nTự động khôi phục các phiên lập trình AI bị gián đoạn nhờ tính năng đồng bộ hóa trạng thái",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/termly-dev/termly-cli`",
+    "usage_vi": "```\nSử dụng termly-cli để [TASK] tại [PROJECT_PATH]. Ví dụ: 'Thiết lập một dự án Python mới bằng termly-cli tại ~/dev/my-project sử dụng template FastAPI. Cài đặt các dependencies, khởi tạo Git và tạo một REST endpoint cơ bản tại /api/health'. Đi kèm các flag bắt buộc như --template hoặc --no-git nếu cần thiết.\n```\nCopy\n\n```\n```bash\n$ termly-cli new ~/dev/saas-platform --template=nextjs-fullstack --no-git\n\n✅ Project initialized in /Users/alice/dev/saas-platform\n📦 Dependencies installed:\n  - next@14.1.0\n  - typescript@5.3.3\n  - prisma@5.7.1\n  - @clerk/nextjs@4.29.3\n\n🔧 Git initialized (skipped via --no-git flag)\n📝 Created basic structure:\n  - /app/api/health/route.ts (GET /api/health)\n  - /app/(auth)/login/page.tsx\n  - /prisma/schema.prisma\n\n🚀 Ready to run:\n  $ cd ~/dev/saas-platform\n  $ termly-cli dev\n```\n\nDự án hiện bao gồm:\n- Next.js 14 với App Router\n- TypeScript strict mode\n- Prisma ORM với SQLite\n- Clerk authentication đã được cấu hình sẵn\n- Dockerfile phục vụ deploy container\n- GitHub Actions workflow cho CI/CD\n\nĐể tích hợp với OpenCode TUI:\n1. Cài đặt OpenCode: `brew install opencode`\n2. Khởi chạy: `opencode ~/dev/saas-platform`\n3. Sử dụng trực tiếp các lệnh termly-cli từ giao diện TUI\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:12.379664Z",
+    "http_status": 200,
+    "content_hash": "748bcbc485c679e523f96da8b43cd07653d94b86680c0ca7d8b29f543a999b38",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\termly-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\termly-cli.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Termly CLI - Truy cập Trợ lý Lập trình AI",
+  "short_description_vi": "Termly CLI cho phép sử dụng các trợ lý lập trình AI trên mọi thiết bị. Công cụ hỗ trợ Claude Code, Aider, GitHub Copilot và các công cụ hoạt động trên terminal. Lập trình viên có thể tích hợp với các ứng dụng TUI như OpenCode để tối ưu hóa quy trình lập trình."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agcluster-container",
+  "slug": "agcluster-container",
+  "name": "Agcluster Container",
+  "headline": "agcluster: host platform for claud sdk",
+  "short_description": "Self-hosted platform for Claude Agent SDK agents. Container isolation, real-time execution tracking, and Web UI dashboard. Operations teams can deploy and manage AI agents in isolated environments, monitor performance, and integrate with existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "whiteboardmonk",
+  "install_command": "git clone https://github.com/whiteboardmonk/agcluster-container.git",
+  "source_repo_url": "https://github.com/whiteboardmonk/agcluster-container",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "containers-as-a-service",
+    "claude-ai",
+    "claude-code",
+    "container-platform"
+  ],
+  "sections": {
+    "overview": "AgCluster Container is a self-hosted platform designed for operations teams to deploy and manage Claude Agent SDK instances in isolated Docker containers. It provides a web UI dashboard built with Next.js for monitoring agent execution, managing files, and viewing real-time tool operations, alongside a REST API for integration with existing workflows. The platform includes five preset agent configurations—code-assistant, research-agent, data-analysis, github-code-review, and fullstack-team—each with specialized tool access and resource limits. Users provide their own Anthropic API keys, which are never stored, and can upload files, preview outputs with syntax highlighting, and download results. Features include Server-Sent Events streaming for real-time responses, multi-session support, path traversal protection, and Model Context Protocol integration for connecting external tools.\nFull-stack development with automated debugging and refactoring\nWeb research and information synthesis for reports\nStatistical analysis and data visualization with Jupyter notebooks\nAutomated GitHub pull request reviews with MCP integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/whiteboardmonk/agcluster-container`",
+    "usage": "```\nDeploy and configure the agcluster-container platform to host [NUMBER] AI agents for [TEAM/PROJECT]. Ensure each agent runs in an isolated container with [RESOURCE_LIMITS] (e.g., CPU/memory). Set up real-time execution tracking for [AGENTS_TO_MONITOR] and configure the Web UI dashboard to display [METRICS_TO_TRACK] (e.g., latency, error rates). Provide step-by-step instructions for integration with [EXISTING_TOOLS] (e.g., CI/CD pipelines, monitoring tools).\n```\nCopy\n\n```\n### agcluster-container Deployment Report\n**Platform Version:** agcluster-container v2.1.0\n**Deployment Date:** 2024-05-20\n**Agents Deployed:** 5 (isolated containers)\n\n#### Container Configuration:\n- **Agent 1 (DataProcessor):** 2 vCPUs, 4GB RAM, Ubuntu 22.04\n- **Agent 2 (NLP-Analyzer):** 4 vCPUs, 8GB RAM, Debian 11\n- **Agent 3 (ImageClassifier):** 2 vCPUs, 6GB RAM, Alpine Linux\n- **Agent 4 (SentimentBot):** 1 vCPU, 2GB RAM, Ubuntu 22.04\n- **Agent 5 (WorkflowOrchestrator):** 3 vCPUs, 10GB RAM, Debian 11\n\n#### Real-Time Monitoring Setup:\n- **Execution Tracking:** Enabled for all agents via Prometheus metrics endpoint (`http://agcluster.local:9090/metrics`).\n- **Dashboard Metrics:** Latency (avg. 120ms), Error Rate (<0.5%), CPU/Memory Usage (plotted hourly).\n- **Alerts:** Configured for high latency (>500ms) or memory spikes (>90%).\n\n#### Integration with Existing Tools:\n1. **CI/CD Pipeline (GitHub Actions):** Added a step to deploy agents post-build using `agcluster-cli deploy --config agents.yml`.\n2. **Monitoring (Grafana):** Connected to Prometheus for visualization. Created a dashboard with agent-specific panels.\n3. **Logging (ELK Stack):** Forwarded container logs to Elasticsearch for analysis.\n\n#### Next Steps:\n- Test agent interactions via the Web UI at `http://agcluster.local/dashboard`.\n- Scale resources for Agent 5 (WorkflowOrchestrator) if CPU usage exceeds 70% for 1 hour.\n- Schedule a review of error logs weekly to identify recurring issues.\n\n**Status:** All agents operational. No critical alerts triggered in the last 24 hours.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agcluster-container#main-content",
+      "agcluster-container#overview",
+      "agcluster-container#setup",
+      "agcluster-container#examples",
+      "agcluster-container#tools",
+      "agcluster-container#mcp",
+      "agcluster-container#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AgCluster Container is a self-hosted platform designed for operations teams to deploy and manage Claude Agent SDK instances in isolated Docker containers. It provides a web UI dashboard built with Next.js for monitoring agent execution, managing files, and viewing real-time tool operations, alongside a REST API for integration with existing workflows. The platform includes five preset agent configurations—code-assistant, research-agent, data-analysis, github-code-review, and fullstack-team—each with specialized tool access and resource limits. Users provide their own Anthropic API keys, which are never stored, and can upload files, preview outputs with syntax highlighting, and download results. Features include Server-Sent Events streaming for real-time responses, multi-session support, path traversal protection, and Model Context Protocol integration for connecting external tools.\nFull-stack development with automated debugging and refactoring\nWeb research and information synthesis for reports\nStatistical analysis and data visualization with Jupyter notebooks\nAutomated GitHub pull request reviews with MCP integration",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/whiteboardmonk/agcluster-container`",
+    "usage_vi": "```\nDeploy and configure the agcluster-container platform to host [NUMBER] AI agents for [TEAM/PROJECT]. Ensure each agent runs in an isolated container with [RESOURCE_LIMITS] (e.g., CPU/memory). Set up real-time execution tracking for [AGENTS_TO_MONITOR] and configure the Web UI dashboard to display [METRICS_TO_TRACK] (e.g., latency, error rates). Provide step-by-step instructions for integration with [EXISTING_TOOLS] (e.g., CI/CD pipelines, monitoring tools).\n```\nCopy\n\n```\n### agcluster-container Deployment Report\n**Platform Version:** agcluster-container v2.1.0\n**Deployment Date:** 2024-05-20\n**Agents Deployed:** 5 (isolated containers)\n\n#### Container Configuration:\n- **Agent 1 (DataProcessor):** 2 vCPUs, 4GB RAM, Ubuntu 22.04\n- **Agent 2 (NLP-Analyzer):** 4 vCPUs, 8GB RAM, Debian 11\n- **Agent 3 (ImageClassifier):** 2 vCPUs, 6GB RAM, Alpine Linux\n- **Agent 4 (SentimentBot):** 1 vCPU, 2GB RAM, Ubuntu 22.04\n- **Agent 5 (WorkflowOrchestrator):** 3 vCPUs, 10GB RAM, Debian 11\n\n#### Real-Time Monitoring Setup:\n- **Execution Tracking:** Enabled for all agents via Prometheus metrics endpoint (`http://agcluster.local:9090/metrics`).\n- **Dashboard Metrics:** Latency (avg. 120ms), Error Rate (<0.5%), CPU/Memory Usage (plotted hourly).\n- **Alerts:** Configured for high latency (>500ms) or memory spikes (>90%).\n\n#### Integration with Existing Tools:\n1. **CI/CD Pipeline (GitHub Actions):** Added a step to deploy agents post-build using `agcluster-cli deploy --config agents.yml`.\n2. **Monitoring (Grafana):** Connected to Prometheus for visualization. Created a dashboard with agent-specific panels.\n3. **Logging (ELK Stack):** Forwarded container logs to Elasticsearch for analysis.\n\n#### Next Steps:\n- Test agent interactions via the Web UI at `http://agcluster.local/dashboard`.\n- Scale resources for Agent 5 (WorkflowOrchestrator) if CPU usage exceeds 70% for 1 hour.\n- Schedule a review of error logs weekly to identify recurring issues.\n\n**Status:** All agents operational. No critical alerts triggered in the last 24 hours.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:15.082901Z",
+    "http_status": 200,
+    "content_hash": "29d07c563d749fc052781dcb5fab639f31ef0ffe0281ef0f2f40c94c0d8e00ed",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agcluster-container.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agcluster-container.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agcluster: host platform for claud sdk",
+  "short_description_vi": "Self-hosted platform for Claude Agent SDK agents. Container isolation, real-time execution tracking, and Web UI dashboard. Operations teams can deploy and manage AI agents in isolated environments, monitor performance, and integrate with existing workflows."
+}

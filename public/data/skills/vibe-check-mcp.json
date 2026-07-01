@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibe-check-mcp",
+  "slug": "vibe-check-mcp",
+  "name": "browser-use",
+  "headline": "Vibe Check MCP - AI Coding Safety Net",
+  "short_description": "Real-time anti-pattern detection for AI coding. Prevents overengineering and costly mistakes. Integrates with Claude for collaborative reasoning. Ideal for operations teams using AI tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "kesslerio",
+  "install_command": "git clone https://github.com/kesslerio/vibe-check-mcp.git",
+  "source_repo_url": "https://github.com/kesslerio/vibe-check-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "python",
+    "vibecoding",
+    "mcp-server",
+    "vibe-check",
+    "code-quality",
+    "claude-ai",
+    "ai-safety",
+    "fastmcp",
+    "vibe-testing",
+    "claude",
+    "pattern-detection",
+    "mcp",
+    "vibe-coding",
+    "ai-coding",
+    "debugging-tools"
+  ],
+  "sections": {
+    "overview": "Vibe Check MCP stops you from building expensive mistakes into your codebase by providing real-time anti-pattern detection integrated with Claude. It works like having a team of senior engineers watching over your shoulder, catching decisions before they waste days of development—such as building custom solutions when official APIs exist or getting stuck in error-correction loops. The tool detects infrastructure-without-implementation, symptom-driven development, complexity escalation, and documentation neglect with 87.5% accuracy. It's designed for developers and operations teams using AI coding tools who want to maintain code quality and avoid the common traps of over-reliance on AI suggestions without senior-level review.\nPrevent building custom authentication systems when established services like Auth0 exist\nCatch overengineered solutions and suggest simpler existing approaches mid-development\nStop doom-loop error oscillation where AI fixes create new problems\nValidate AI-generated code for security gaps before deployment",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kesslerio/vibe-check-mcp`",
+    "usage": "```\nPerform a vibe-check on the following [CODE_SNIPPET] using the vibe-check-mcp tool. Identify any anti-patterns, overengineering risks, or potential pitfalls. Focus on [SPECIFIC_CONCERN: e.g., scalability, maintainability, security, or performance]. Provide actionable feedback to simplify or correct the code. If no issues are found, confirm the code is clean and efficient. [CODE_SNIPPET]: ```[PASTE_CODE_HERE]```\n```\nCopy\n\n```\nHere’s the vibe-check analysis for the provided code snippet:\n\n**Code Snippet Analyzed:**\n```python\nclass UserManager:\n    def __init__(self):\n        self.users = {}\n        self.cache = LRUCache(maxsize=1000)\n        self.logger = Logger(\"user_manager.log\")\n        self.metrics = MetricsCollector()\n        self.db_connection = DatabaseConnection(\"postgres://localhost:5432/users\")\n\n    def get_user(self, user_id):\n        if user_id in self.users:\n            self.metrics.increment(\"cache_hit\")\n            return self.users[user_id]\n        user = self.db_connection.query(f\"SELECT * FROM users WHERE id = {user_id}\")\n        self.users[user_id] = user\n        self.cache.put(user_id, user)\n        self.logger.log(f\"Fetched user {user_id} from DB\")\n        return user\n```\n\n**Anti-Patterns Detected:**\n1. **Overengineering:** The `UserManager` class combines caching, logging, metrics, and database operations into a single class. This violates the Single Responsibility Principle (SRP) and makes the class harder to test and maintain. Consider splitting this into separate classes (e.g., `UserCache`, `UserLogger`, `UserMetrics`).\n\n2. **Security Risk:** The `get_user` method directly interpolates `user_id` into an SQL query, which is vulnerable to SQL injection. Replace with parameterized queries: `self.db_connection.query(\"SELECT * FROM users WHERE id = %s\", (user_id,))`.\n\n3. **Performance Concern:** The `users` dictionary and `cache` are redundant. The `LRUCache` already handles eviction and retrieval, so the `users` dict is unnecessary. Remove it to simplify state management.\n\n4. **Logging Overhead:** Logging every database fetch may create excessive log volume in production. Consider reducing the log level or sampling logs for high-traffic scenarios.\n\n**Suggested Refactor:**\n```python\nclass UserCache:\n    def __init__(self, maxsize=1000):\n        self.cache = LRUCache(maxsize=maxsize)\n\n    def get(self, user_id):\n        return self.cache.get(user_id)\n\nclass UserRepository:\n    def __init__(self):\n        self.db_connection = DatabaseConnection(\"postgres://localhost:5432/users\")\n\n    def get_user(self, user_id):\n        return self.db_connection.query(\"SELECT * FROM users WHERE id = %s\", (user_id,))\n\nclass UserService:\n    def __init__(self, cache: UserCache, repository: UserRepository):\n        self.cache = cache\n        self.repository = repository\n\n    def get_user(self, user_id):\n        user = self.cache.get(user_id)\n        if user:\n            return user\n        return self.repository.get_user(user_id)\n```\n\n**Next Steps:**\n- Split the `UserManager` into smaller, focused classes.\n- Replace SQL string interpolation with parameterized queries.\n- Test the refactored code to ensure performance and correctness.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibe-check-mcp#main-content",
+      "vibe-check-mcp#overview",
+      "vibe-check-mcp#setup",
+      "vibe-check-mcp#examples",
+      "vibe-check-mcp#tools",
+      "vibe-check-mcp#mcp",
+      "vibe-check-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Vibe Check MCP stops you from building expensive mistakes into your codebase by providing real-time anti-pattern detection integrated with Claude. It works like having a team of senior engineers watching over your shoulder, catching decisions before they waste days of development—such as building custom solutions when official APIs exist or getting stuck in error-correction loops. The tool detects infrastructure-without-implementation, symptom-driven development, complexity escalation, and documentation neglect with 87.5% accuracy. It's designed for developers and operations teams using AI coding tools who want to maintain code quality and avoid the common traps of over-reliance on AI suggestions without senior-level review.\nPrevent building custom authentication systems when established services like Auth0 exist\nCatch overengineered solutions and suggest simpler existing approaches mid-development\nStop doom-loop error oscillation where AI fixes create new problems\nValidate AI-generated code for security gaps before deployment",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kesslerio/vibe-check-mcp`",
+    "usage_vi": "```\nPerform a vibe-check on the following [CODE_SNIPPET] using the vibe-check-mcp tool. Identify any anti-patterns, overengineering risks, or potential pitfalls. Focus on [SPECIFIC_CONCERN: e.g., scalability, maintainability, security, or performance]. Provide actionable feedback to simplify or correct the code. If no issues are found, confirm the code is clean and efficient. [CODE_SNIPPET]: ```[PASTE_CODE_HERE]```\n```\nCopy\n\n```\nHere’s the vibe-check analysis for the provided code snippet:\n\n**Code Snippet Analyzed:**\n```python\nclass UserManager:\n    def __init__(self):\n        self.users = {}\n        self.cache = LRUCache(maxsize=1000)\n        self.logger = Logger(\"user_manager.log\")\n        self.metrics = MetricsCollector()\n        self.db_connection = DatabaseConnection(\"postgres://localhost:5432/users\")\n\n    def get_user(self, user_id):\n        if user_id in self.users:\n            self.metrics.increment(\"cache_hit\")\n            return self.users[user_id]\n        user = self.db_connection.query(f\"SELECT * FROM users WHERE id = {user_id}\")\n        self.users[user_id] = user\n        self.cache.put(user_id, user)\n        self.logger.log(f\"Fetched user {user_id} from DB\")\n        return user\n```\n\n**Anti-Patterns Detected:**\n1. **Overengineering:** The `UserManager` class combines caching, logging, metrics, and database operations into a single class. This violates the Single Responsibility Principle (SRP) and makes the class harder to test and maintain. Consider splitting this into separate classes (e.g., `UserCache`, `UserLogger`, `UserMetrics`).\n\n2. **Security Risk:** The `get_user` method directly interpolates `user_id` into an SQL query, which is vulnerable to SQL injection. Replace with parameterized queries: `self.db_connection.query(\"SELECT * FROM users WHERE id = %s\", (user_id,))`.\n\n3. **Performance Concern:** The `users` dictionary and `cache` are redundant. The `LRUCache` already handles eviction and retrieval, so the `users` dict is unnecessary. Remove it to simplify state management.\n\n4. **Logging Overhead:** Logging every database fetch may create excessive log volume in production. Consider reducing the log level or sampling logs for high-traffic scenarios.\n\n**Suggested Refactor:**\n```python\nclass UserCache:\n    def __init__(self, maxsize=1000):\n        self.cache = LRUCache(maxsize=maxsize)\n\n    def get(self, user_id):\n        return self.cache.get(user_id)\n\nclass UserRepository:\n    def __init__(self):\n        self.db_connection = DatabaseConnection(\"postgres://localhost:5432/users\")\n\n    def get_user(self, user_id):\n        return self.db_connection.query(\"SELECT * FROM users WHERE id = %s\", (user_id,))\n\nclass UserService:\n    def __init__(self, cache: UserCache, repository: UserRepository):\n        self.cache = cache\n        self.repository = repository\n\n    def get_user(self, user_id):\n        user = self.cache.get(user_id)\n        if user:\n            return user\n        return self.repository.get_user(user_id)\n```\n\n**Next Steps:**\n- Split the `UserManager` into smaller, focused classes.\n- Replace SQL string interpolation with parameterized queries.\n- Test the refactored code to ensure performance and correctness.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:16:27.867306Z",
+    "http_status": 200,
+    "content_hash": "a0c22db7b6d77c1a39e83f045d0d72f59f04c0f6f8875ddad93008740645f68b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vibe-check-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vibe-check-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Vibe Check MCP - AI Coding Safety Net",
+  "short_description_vi": "Real-time anti-pattern detection for AI coding. Prevents overengineering and costly mistakes. Integrates with Claude for collaborative reasoning. Ideal for operations teams using AI tools."
+}

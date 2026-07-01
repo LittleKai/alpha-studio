@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-cs",
+  "slug": "claude-cs",
+  "name": "browser-use",
+  "headline": "Claude CS: Custom Support Automation Tool",
+  "short_description": "Build custom customer support automation for your company. Operations teams can create tailored workflows to handle tickets, reducing manual effort and improving response times. Integrates with ticketing systems and CRM tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "nbashaw",
+  "install_command": "git clone https://github.com/nbashaw/claude-cs.git",
+  "source_repo_url": "https://github.com/nbashaw/claude-cs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill helps operations teams and founders create tailored customer support automation without manual coding. It walks you through discovering your support stack (Zendesk, Stripe, databases), building TypeScript scripts for your platforms, and setting up automated triage workflows. The skill generates response templates, handles common operations like refunds and cancellations, and suggests the most urgent ticket to handle first. By the end, you'll have working scripts, billing operations, database queries, and complete documentation for your team. Ideal for startups handling 10-100 tickets daily or teams wanting to standardize support responses across multiple platforms.\nAuto-triage support tickets by urgency and keywords\nProcess refunds and cancellations with one-click approval\nGather unified customer context from billing, support, and database before replying\nGenerate personalized response templates for common support scenarios",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nbashaw/claude-cs`",
+    "usage": "```\nDesign a custom customer support automation workflow for handling [TYPE_OF_ISSUE] tickets in [TICKETING_SYSTEM]. The workflow should: 1) Automatically categorize tickets based on [CLASSIFICATION_CRITERIA], 2) Assign priority levels using [PRIORITY_RULES], 3) Generate suggested responses for common issues using [RESPONSE_TEMPLATES], and 4) Escalate to [TEAM/ROLE] when [ESCALATION_CONDITIONS] are met. Include error handling for edge cases and logging for tracking.\n```\nCopy\n\n```\nHere's a custom customer support automation workflow for handling 'billing dispute' tickets in Zendesk:\n\n**Workflow Overview:**\nThis automation processes 150+ billing dispute tickets weekly with a 92% first-contact resolution rate. The system:\n\n1. **Automatic Categorization:** Uses regex patterns to identify keywords like 'charge', 'refund', or 'dispute' in subject lines and ticket bodies. Tickets containing 'subscription' + 'cancel' are tagged as 'subscription-related' while those with 'invoice' + 'error' are tagged 'invoice-error'.\n\n2. **Priority Assignment:** Applies the following rules:\n   - High Priority: Tickets from customers with >$500 annual spend OR containing 'urgent' in the subject\n   - Medium Priority: All other billing disputes\n   - Low Priority: Tickets that can't be automatically categorized (flagged for manual review)\n\n3. **Response Generation:** For common issues, the system generates draft responses:\n   - Duplicate charge: 'We've detected a duplicate charge for $X on [DATE]. Here's your refund confirmation: [LINK].'\n   - Incorrect amount: 'Your invoice shows $X but should be $Y. Here's the corrected invoice: [LINK].'\n   - Subscription cancellation: 'Your cancellation request has been processed. Here's your final invoice: [LINK].'\n\n4. **Escalation Path:** Tickets remain unassigned for >2 hours OR contain 'fraud' OR involve amounts >$1000 are automatically escalated to the Billing Team Lead with a summary of the issue and generated response.\n\n**Error Handling:**\n- If the system can't parse the ticket (e.g., image-only attachments), it assigns to 'Support Team - Manual Review' with a 'Needs OCR' tag.\n- For system failures, all affected tickets are paused and a Slack alert is sent to #support-automation.\n\n**Logging:**\nEvery action is logged with timestamps in a dedicated 'Billing Automation Logs' view, including response times, resolution rates, and escalation reasons. Weekly reports show trends in ticket volume by category and priority.\n\n**Integration Notes:**\n- Connects to Stripe API to verify transactions before responding to disputes\n- Updates HubSpot CRM with resolution status for each ticket\n- Syncs with QuickBooks to ensure invoice corrections are reflected in accounting\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-cs#main-content",
+      "claude-cs#overview",
+      "claude-cs#setup",
+      "claude-cs#examples",
+      "claude-cs#tools",
+      "claude-cs#mcp",
+      "claude-cs#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill helps operations teams and founders create tailored customer support automation without manual coding. It walks you through discovering your support stack (Zendesk, Stripe, databases), building TypeScript scripts for your platforms, and setting up automated triage workflows. The skill generates response templates, handles common operations like refunds and cancellations, and suggests the most urgent ticket to handle first. By the end, you'll have working scripts, billing operations, database queries, and complete documentation for your team. Ideal for startups handling 10-100 tickets daily or teams wanting to standardize support responses across multiple platforms.\nAuto-triage support tickets by urgency and keywords\nProcess refunds and cancellations with one-click approval\nGather unified customer context from billing, support, and database before replying\nGenerate personalized response templates for common support scenarios",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nbashaw/claude-cs`",
+    "usage_vi": "```\nDesign a custom customer support automation workflow for handling [TYPE_OF_ISSUE] tickets in [TICKETING_SYSTEM]. The workflow should: 1) Automatically categorize tickets based on [CLASSIFICATION_CRITERIA], 2) Assign priority levels using [PRIORITY_RULES], 3) Generate suggested responses for common issues using [RESPONSE_TEMPLATES], and 4) Escalate to [TEAM/ROLE] when [ESCALATION_CONDITIONS] are met. Include error handling for edge cases and logging for tracking.\n```\nCopy\n\n```\nHere's a custom customer support automation workflow for handling 'billing dispute' tickets in Zendesk:\n\n**Workflow Overview:**\nThis automation processes 150+ billing dispute tickets weekly with a 92% first-contact resolution rate. The system:\n\n1. **Automatic Categorization:** Uses regex patterns to identify keywords like 'charge', 'refund', or 'dispute' in subject lines and ticket bodies. Tickets containing 'subscription' + 'cancel' are tagged as 'subscription-related' while those with 'invoice' + 'error' are tagged 'invoice-error'.\n\n2. **Priority Assignment:** Applies the following rules:\n   - High Priority: Tickets from customers with >$500 annual spend OR containing 'urgent' in the subject\n   - Medium Priority: All other billing disputes\n   - Low Priority: Tickets that can't be automatically categorized (flagged for manual review)\n\n3. **Response Generation:** For common issues, the system generates draft responses:\n   - Duplicate charge: 'We've detected a duplicate charge for $X on [DATE]. Here's your refund confirmation: [LINK].'\n   - Incorrect amount: 'Your invoice shows $X but should be $Y. Here's the corrected invoice: [LINK].'\n   - Subscription cancellation: 'Your cancellation request has been processed. Here's your final invoice: [LINK].'\n\n4. **Escalation Path:** Tickets remain unassigned for >2 hours OR contain 'fraud' OR involve amounts >$1000 are automatically escalated to the Billing Team Lead with a summary of the issue and generated response.\n\n**Error Handling:**\n- If the system can't parse the ticket (e.g., image-only attachments), it assigns to 'Support Team - Manual Review' with a 'Needs OCR' tag.\n- For system failures, all affected tickets are paused and a Slack alert is sent to #support-automation.\n\n**Logging:**\nEvery action is logged with timestamps in a dedicated 'Billing Automation Logs' view, including response times, resolution rates, and escalation reasons. Weekly reports show trends in ticket volume by category and priority.\n\n**Integration Notes:**\n- Connects to Stripe API to verify transactions before responding to disputes\n- Updates HubSpot CRM with resolution status for each ticket\n- Syncs with QuickBooks to ensure invoice corrections are reflected in accounting\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:58:45.947888Z",
+    "http_status": 200,
+    "content_hash": "f98a7f472096e1a0f3494ac04b79a8da5a82f241d55e9846e160778d0190ee3e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-cs.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-cs.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude CS: Custom Support Automation Tool",
+  "short_description_vi": "Build custom customer support automation for your company. Operations teams can create tailored workflows to handle tickets, reducing manual effort and improving response times. Integrates with ticketing systems and CRM tools."
+}

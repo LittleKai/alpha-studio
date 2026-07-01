@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dokploy-deployment",
+  "slug": "dokploy-deployment",
+  "name": "Related Skills",
+  "headline": "Dokploy Deployment: Self-Hosted PaaS Management",
+  "short_description": "Dokploy is an open-source PaaS that allows users to deploy and manage applications on a self-hosted instance using Docker and Traefik. It is intended for developers looking for an alternative platform to Vercel or Heroku.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "sattva2020",
+  "install_command": "git clone https://github.com/sattva2020/skills",
+  "source_repo_url": "https://github.com/sattva2020/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "dokploy",
+    "deployment"
+  ],
+  "sections": {
+    "overview": "This skill provides full API integration for managing self-hosted Dokploy instances, covering projects, applications, databases, and domains. It includes an interactive setup process to configure your Dokploy URL and API credentials, along with comprehensive guides for Next.js deployments and common pitfalls. The skill is designed for developers who want to manage containerized deployments on their own infrastructure without relying on external PaaS platforms. Setup involves running a Python configuration script that guides you through connecting your Dokploy instance via API key authentication.\nDeploy applications using Dokploy\nManage application configurations on Dokploy\nAccess and utilize the Dokploy API for automation\nView application health and logs on the dashboard",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/sattva2020/skills --skill dokploy-api-mcp`\n`git clone https://github.com/sattva2020/skills`",
+    "usage": "```\nDeploy my [APPLICATION_NAME] app to my Dokploy instance. The app is a [APP_TYPE] built with [TECH_STACK]. Here’s the GitHub repo: [REPO_URL]. I want it to be accessible at [SUBDOMAIN].[DOMAIN].com. Use the Dokploy CLI or dashboard to set up the deployment with the following requirements: [REQUIREMENTS]. If environment variables are needed, use these: [ENV_VARS].\n```\nCopy\n\n```\n# Dokploy Deployment Report for 'Acme CRM'",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "dokploy-deployment#main-content",
+      "dokploy-deployment#overview",
+      "dokploy-deployment#setup",
+      "dokploy-deployment#examples",
+      "dokploy-deployment#related"
+    ],
+    "overview_vi": "This skill provides full API integration for managing self-hosted Dokploy instances, covering projects, applications, databases, and domains. It includes an interactive setup process to configure your Dokploy URL and API credentials, along with comprehensive guides for Next.js deployments and common pitfalls. The skill is designed for developers who want to manage containerized deployments on their own infrastructure without relying on external PaaS platforms. Setup involves running a Python configuration script that guides you through connecting your Dokploy instance via API key authentication.\nDeploy applications using Dokploy\nManage application configurations on Dokploy\nAccess and utilize the Dokploy API for automation\nView application health and logs on the dashboard",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/sattva2020/skills --skill dokploy-api-mcp`\n`git clone https://github.com/sattva2020/skills`",
+    "usage_vi": "```\nDeploy my [APPLICATION_NAME] app to my Dokploy instance. The app is a [APP_TYPE] built with [TECH_STACK]. Here’s the GitHub repo: [REPO_URL]. I want it to be accessible at [SUBDOMAIN].[DOMAIN].com. Use the Dokploy CLI or dashboard to set up the deployment with the following requirements: [REQUIREMENTS]. If environment variables are needed, use these: [ENV_VARS].\n```\nCopy\n\n```\n# Dokploy Deployment Report for 'Acme CRM'"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:28:38.708258Z",
+    "http_status": 200,
+    "content_hash": "c227480aeb8114dc579e927bdd79bad6bbec5f262cc5292581351efe03c6956e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dokploy-deployment.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dokploy-deployment.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Dokploy Deployment: Self-Hosted PaaS Management",
+  "short_description_vi": "Dokploy is an open-source PaaS that allows users to deploy and manage applications on a self-hosted instance using Docker and Traefik. It is intended for developers looking for an alternative platform to Vercel or Heroku."
+}

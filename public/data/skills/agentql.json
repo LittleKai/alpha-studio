@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentql",
+  "slug": "agentql",
+  "name": "AgentQL",
+  "headline": "AgentQL - AI Web Integration Toolkit",
+  "short_description": "AgentQL is a powerful toolkit designed to connect AI with the web. It offers a unique query language and Playwright integrations for efficient data extraction and automation, making it ideal for developers and data professionals.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "tinyfish-io",
+  "install_command": "claude install tinyfish-io/agentql",
+  "source_repo_url": "https://github.com/tinyfish-io/agentql",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI",
+    "automation",
+    "web-scraping",
+    "Python",
+    "JavaScript"
+  ],
+  "sections": {
+    "overview": "AgentQL enables AI agents and large language models to connect with and interact across the entire web. It provides a specialized query language designed to work seamlessly with Playwright, allowing developers to build automated web interactions and data extraction workflows. The toolkit bridges the gap between AI systems and web-based information, making it particularly valuable for developers and data professionals who need their agents to navigate, query, and extract data from web pages efficiently. AgentQL simplifies the process of automating web tasks by offering an intelligent abstraction layer that understands both AI capabilities and web structure.\nAutomate the extraction of product data for e-commerce analysis and reporting.\nBuild AI-driven applications that require real-time data from various web sources.\nCreate custom web scrapers for monitoring competitor pricing and product availability.\nIntegrate AI with web services to enhance data processing and analysis capabilities.",
+    "setup": "Terminal\nCopy\n`claude install tinyfish-io/agentql`\n`git clone https://github.com/tinyfish-io/agentql`",
+    "usage": "```\nUse AgentQL to extract data from [WEBSITE_URL] based on the following criteria: [CRITERIA]. The data should be structured in [FORMAT] and saved to [DESTINATION]. Ensure the extraction is done efficiently and accurately.\n```\nCopy\n\n```\nBased on your request, I've used AgentQL to extract product data from the e-commerce website 'ShopEase'. The criteria specified were products with a rating above 4.5 stars and priced under $100. The data is structured in JSON format and saved to a CSV file named 'high_rated_products.csv'. Here are the first 5 entries:\n\n1. Product Name: Wireless Bluetooth Headphones\n   Price: $79.99\n   Rating: 4.7 stars\n   Category: Electronics\n\n2. Product Name: Portable Charger\n   Price: $29.99\n   Rating: 4.6 stars\n   Category: Electronics\n\n3. Product Name: Yoga Mat\n   Price: $39.99\n   Rating: 4.8 stars\n   Category: Fitness\n\n4. Product Name: Stainless Steel Water Bottle\n   Price: $24.99\n   Rating: 4.7 stars\n   Category: Home & Kitchen\n\n5. Product Name: Leather Wallet\n   Price: $49.99\n   Rating: 4.6 stars\n   Category: Accessories\n\nThe extraction was completed in under 2 minutes, and the data is ready for further analysis or integration into your systems.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "agentql#main-content",
+      "agentql#overview",
+      "agentql#setup",
+      "agentql#examples",
+      "agentql#tools",
+      "agentql#mcp",
+      "agentql#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "AgentQL cho phép các AI agent và các mô hình ngôn ngữ lớn kết nối cũng như tương tác trên toàn bộ môi trường web. Nó cung cấp một ngôn ngữ truy vấn chuyên dụng được thiết kế để hoạt động liền mạch với Playwright, giúp lập trình viên dễ dàng xây dựng các quy trình tự động hóa tương tác web và trích xuất dữ liệu. Bộ công cụ này là cầu nối giữa các hệ thống AI và thông tin trên web, đặc biệt hữu ích cho các lập trình viên và chuyên gia dữ liệu cần các agent của họ điều hướng, truy vấn và trích xuất dữ liệu từ các trang web một cách hiệu quả. AgentQL đơn giản hóa quy trình tự động hóa tác vụ web nhờ cung cấp một lớp trừu tượng thông minh, hiểu rõ cả khả năng của AI lẫn cấu trúc web.\nTự động hóa việc trích xuất dữ liệu sản phẩm phục vụ cho việc phân tích và báo cáo thương mại điện tử.\nXây dựng các ứng dụng vận hành bằng AI yêu cầu dữ liệu thời gian thực từ nhiều nguồn web khác nhau.\nTạo các web scraper tùy chỉnh để theo dõi giá cả đối thủ và tình trạng còn hàng của sản phẩm.\nTích hợp AI với các dịch vụ web để nâng cao năng lực xử lý và phân tích dữ liệu.",
+    "setup_vi": "Terminal\nSao chép\n`claude install tinyfish-io/agentql`\n`git clone https://github.com/tinyfish-io/agentql`",
+    "usage_vi": "```\nSử dụng AgentQL để trích xuất dữ liệu từ [WEBSITE_URL] dựa trên các tiêu chí sau: [CRITERIA]. Dữ liệu cần được cấu trúc theo định dạng [FORMAT] và lưu vào [DESTINATION]. Hãy đảm bảo quá trình trích xuất diễn ra hiệu quả và chính xác.\n```\nSao chép\n\n```\nDựa trên yêu cầu của bạn, tôi đã sử dụng AgentQL để trích xuất dữ liệu sản phẩm từ trang web thương mại điện tử 'ShopEase'. Tiêu chí được chỉ định là các sản phẩm có đánh giá trên 4.5 sao và giá dưới $100. Dữ liệu được cấu trúc ở định dạng JSON và được lưu vào tệp CSV có tên 'high_rated_products.csv'. Dưới đây là 5 mục đầu tiên:\n\n1. Tên sản phẩm: Wireless Bluetooth Headphones\n   Giá: $79.99\n   Đánh giá: 4.7 sao\n   Danh mục: Electronics\n\n2. Tên sản phẩm: Portable Charger\n   Giá: $29.99\n   Đánh giá: 4.6 sao\n   Danh mục: Electronics\n\n3. Tên sản phẩm: Yoga Mat\n   Giá: $39.99\n   Đánh giá: 4.8 sao\n   Danh mục: Fitness\n\n4. Tên sản phẩm: Stainless Steel Water Bottle\n   Giá: $24.99\n   Đánh giá: 4.7 sao\n   Danh mục: Home & Kitchen\n\n5. Tên sản phẩm: Leather Wallet\n   Giá: $49.99\n   Đánh giá: 4.6 sao\n   Danh mục: Accessories\n\nQuá trình trích xuất hoàn tất trong chưa đầy 2 phút và dữ liệu đã sẵn sàng để phân tích thêm hoặc tích hợp vào hệ thống của bạn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:52:42.210687Z",
+    "http_status": 200,
+    "content_hash": "3ce0205972d9af5df35f519c5d82e12f0e6609d92d5e6252124002cb2e5ca791",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentql.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentql.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AgentQL - Bộ công cụ tích hợp Web cho AI",
+  "short_description_vi": "AgentQL là một bộ công cụ mạnh mẽ được thiết kế để kết nối AI với web. Bộ công cụ này cung cấp một ngôn ngữ truy vấn độc đáo cùng khả năng tích hợp Playwright giúp trích xuất dữ liệu và tự động hóa hiệu quả, là lựa chọn lý tưởng cho các lập trình viên và chuyên gia dữ liệu."
+}

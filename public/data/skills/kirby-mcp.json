@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kirby-mcp",
+  "slug": "kirby-mcp",
+  "name": "Kirby MCP",
+  "headline": "Kirby MCP - CLI-first Kirby CMS Server",
+  "short_description": "Kirby MCP is a CLI-first server for Kirby CMS projects. It enables developers to inspect blueprints, templates, and plugins, interact with a real Kirby runtime, and access a bundled knowledge base. It connects to Kirby CMS projects and integrates with Claude for enhanced workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "bnomei",
+  "install_command": "git clone https://github.com/bnomei/kirby-mcp.git",
+  "source_repo_url": "https://github.com/bnomei/kirby-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "google-gemini",
+    "commands",
+    "agent-tools",
+    "kirby",
+    "knowledge-base",
+    "codex-cli",
+    "cli",
+    "developer-tools",
+    "model-context-protocol",
+    "php8",
+    "prompts",
+    "resources",
+    "kirby-cms",
+    "tools",
+    "agentic-workflow",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Kirby MCP is a Model Context Protocol server designed for Composer-based Kirby CMS projects, enabling developers and AI agents to inspect project structure, blueprints, templates, snippets, controllers, and plugins through an interactive CLI-first interface. It provides real-time interaction with a Kirby runtime environment, allowing agents to read page content, render templates, execute queries, and run CLI commands with built-in security controls. The server ships with a local knowledge base covering Kirby concepts, common tasks, and field update guides, plus fallback access to official Kirby documentation and plugin directory search. This integration allows Claude Code, Cursor, and other AI agents to make informed plans for content management, form building, configuration updates, and debugging tasks within Kirby projects, reducing reliance on external documentation lookups.\nPlan and implement new page types and blueprints with agent guidance\nDebug template rendering issues using MCP dump and log tail tools\nSearch local Kirby knowledge base and official docs for configuration help\nRead and update page content programmatically via agent interaction",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bnomei/kirby-mcp`",
+    "usage": "```\nUse Kirby MCP to inspect the [BLUEPRINT_NAME] blueprint in my Kirby CMS project located at [PROJECT_PATH]. Check for missing fields, incorrect validation rules, or deprecated options in the blueprint configuration. Then, list all templates that use this blueprint and identify any inconsistencies between the blueprint and template files. Finally, suggest improvements to standardize the field types and validation rules across all templates using this blueprint.\n```\nCopy\n\n```\nI’ve inspected the `article.yml` blueprint in your Kirby CMS project at `/var/www/my-site` and found the following issues:\n\n1. **Missing Fields**: The `article.yml` blueprint is missing a `slug` field, which is critical for URL generation. The `title` field is present but lacks validation for minimum length (currently set to 3 characters, but no maximum limit is enforced).\n\n2. **Inconsistent Templates**: Three templates (`article.php`, `blog-post.php`, and `news.php`) reference this blueprint. However, `news.php` uses a `text` field for the `body` instead of the `textarea` field defined in the blueprint. This inconsistency could lead to rendering issues in the admin panel.\n\n3. **Deprecated Options**: The `status` field in the blueprint uses `draft`, `listed`, and `unlisted`, but the `unlisted` option is deprecated in Kirby 4.x. Replace it with `hidden` for future compatibility.\n\n**Suggested Improvements**:\n- Add a `slug` field with the `required: true` and `type: slug` options.\n- Standardize the `body` field across all templates to use `type: textarea` with a `maxLength: 5000` validation rule.\n- Update the `status` field to use `hidden` instead of `unlisted`.\n\nThese changes will ensure consistency, improve validation, and align with Kirby 4.x best practices.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kirby-mcp#main-content",
+      "kirby-mcp#overview",
+      "kirby-mcp#setup",
+      "kirby-mcp#examples",
+      "kirby-mcp#tools",
+      "kirby-mcp#mcp",
+      "kirby-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kirby MCP là một Model Context Protocol server được thiết kế cho các dự án Kirby CMS chạy trên Composer, giúp các lập trình viên và AI agent dễ dàng kiểm tra cấu trúc dự án, blueprint, template, snippet, controller và plugin thông qua một giao diện CLI-first trực quan. Công cụ hỗ trợ tương tác thời gian thực với môi trường runtime của Kirby, cho phép các agent đọc nội dung trang, render template, thực thi các truy vấn và chạy các lệnh CLI với các kiểm soát bảo mật tích hợp sẵn. Server đi kèm với một cơ sở tri thức (knowledge base) cục bộ bao gồm các khái niệm về Kirby, các tác vụ phổ biến và hướng dẫn cập nhật trường dữ liệu (field), cùng khả năng truy cập dự phòng đến tài liệu chính thức của Kirby và tìm kiếm thư mục plugin. Sự tích hợp này cho phép Claude Code, Cursor và các AI agent khác lập kế hoạch hiệu quả cho việc quản lý nội dung, xây dựng form, cập nhật cấu hình và debug trong các dự án Kirby, giảm thiểu việc phải tra cứu tài liệu bên ngoài.\nLên kế hoạch và triển khai các loại trang và blueprint mới với sự hướng dẫn của agent\nDebug lỗi render template bằng công cụ MCP dump và log tail\nTìm kiếm sự trợ giúp về cấu hình từ cơ sở tri thức Kirby cục bộ và tài liệu chính thức\nĐọc và cập nhật nội dung trang theo lập trình thông qua tương tác với agent",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/bnomei/kirby-mcp`",
+    "usage_vi": "```\nSử dụng Kirby MCP để kiểm tra blueprint [BLUEPRINT_NAME] trong dự án Kirby CMS của tôi tại đường dẫn [PROJECT_PATH]. Hãy kiểm tra xem có trường dữ liệu (field) nào bị thiếu, các quy tắc kiểm tra (validation rule) không chính xác, hoặc các tùy chọn đã lỗi thời (deprecated option) trong cấu hình blueprint hay không. Sau đó, hãy liệt kê tất cả các template sử dụng blueprint này và xác định bất kỳ điểm không nhất quán nào giữa blueprint và các file template. Cuối cùng, hãy đề xuất các cải tiến để chuẩn hóa các loại trường dữ liệu và quy tắc kiểm tra trên tất cả các template sử dụng blueprint này.\n```\nSao chép\n\n```\nTôi đã kiểm tra blueprint `article.yml` trong dự án Kirby CMS của bạn tại `/var/www/my-site` và phát hiện các vấn đề sau:\n\n1. **Thiếu trường dữ liệu (Missing Fields)**: Blueprint `article.yml` đang thiếu trường `slug`, một trường rất quan trọng cho việc tạo URL. Trường `title` có tồn tại nhưng thiếu quy tắc kiểm tra độ dài tối thiểu (hiện được đặt thành 3 ký tự, nhưng không giới hạn độ dài tối đa).\n\n2. **Template không nhất quán (Inconsistent Templates)**: Có ba template (`article.php`, `blog-post.php`, và `news.php`) tham chiếu đến blueprint này. Tuy nhiên, `news.php` lại sử dụng trường `text` cho phần `body` thay vì trường `textarea` được định nghĩa trong blueprint. Sự không nhất quán này có thể dẫn đến lỗi render trong trang quản trị (admin panel).\n\n3. **Tùy chọn đã lỗi thời (Deprecated Options)**: Trường `status` trong blueprint sử dụng `draft`, `listed`, và `unlisted`, nhưng tùy chọn `unlisted` đã bị lỗi thời (deprecated) trong phiên bản Kirby 4.x. Hãy thay thế nó bằng `hidden` để đảm bảo khả năng tương thích trong tương lai.\n\n**Đề xuất cải tiến (Suggested Improvements)**:\n- Thêm trường `slug` với các tùy chọn `required: true` và `type: slug`.\n- Chuẩn hóa trường `body` trên tất cả các template để sử dụng `type: textarea` cùng quy tắc kiểm tra `maxLength: 5000`.\n- Cập nhật trường `status` để sử dụng `hidden` thay vì `unlisted`.\n\nNhững thay đổi này sẽ đảm bảo tính nhất quán, cải thiện khả năng kiểm tra dữ liệu và phù hợp với các best practice của Kirby 4.x.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:18:49.345351Z",
+    "http_status": 200,
+    "content_hash": "907814a6f70c7e9478de6e34ac7381b248a98b446180e5c403a0ef876a31f7ea",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kirby-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kirby-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kirby MCP - CLI-first Server cho Kirby CMS",
+  "short_description_vi": "Kirby MCP là một CLI-first server dành cho các dự án Kirby CMS. Công cụ này cho phép các lập trình viên kiểm tra blueprint, template và plugin, tương tác với một runtime Kirby thực tế và truy cập cơ sở tri thức (knowledge base) đi kèm. Nó kết nối với các dự án Kirby CMS và tích hợp với Claude để tối ưu hóa quy trình làm việc."
+}

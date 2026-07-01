@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccc",
+  "slug": "ccc",
+  "name": "ccc",
+  "headline": "ccc: custom launcher for Claude Code",
+  "short_description": "Custom launcher for Claude Code, supporting dynamic prompts, layered configuration and easy custom hooks and MCPs. Enables developers to configure prompts, commands, agents, hooks, and MCPs from a single place. Integrates with Claude Code for enhanced coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "3rd",
+  "install_command": "git clone https://github.com/3rd/ccc.git",
+  "source_repo_url": "https://github.com/3rd/ccc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-tools",
+    "ai-tools",
+    "claude-code",
+    "coding-agents"
+  ],
+  "sections": {
+    "overview": "CCC is a launcher that lets developers configure Claude Code prompts, commands, agents, hooks, and MCPs from a single place using a layered configuration system. It merges global settings with preset and project-specific overrides, eliminating repetitive setup across different coding contexts. The tool generates system and user prompts dynamically and injects configurations at runtime without modifying your actual Claude installation. Developers can write custom hooks and MCPs in TypeScript with minimal boilerplate, and CCC supports using alternative AI models from vendors like GLM, Kimi K2, and Deepseek through Anthropic-compatible APIs.\nManage different Claude Code configurations for TypeScript vs. Python projects\nDefine project-specific prompts and commands without duplicating global settings\nCreate custom sub-agents and skills in TypeScript for specialized workflows\nConfigure Claude Code to use alternative AI models through vendor APIs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/3rd/ccc`",
+    "usage": "```\nConfigure a custom launcher for Claude Code with the following settings: [SETTINGS]. Set up dynamic prompts for [TASKS]. Implement layered configuration for [CONFIGURATION_LAYERS]. Add custom hooks for [HOOKS]. Define MCPs for [MULTI_COMMAND_PROMPTS]. Ensure integration with Claude Code for enhanced coding workflows.\n```\nCopy\n\n```\nThe custom launcher for Claude Code has been successfully configured with the following settings: dynamic prompts for code generation, debugging, and documentation; layered configuration for development, testing, and production environments; custom hooks for GitHub integration and automated testing; and MCPs for multi-step coding tasks. The integration with Claude Code ensures seamless coding workflows. The launcher is now ready to enhance your coding productivity.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccc#main-content",
+      "ccc#overview",
+      "ccc#setup",
+      "ccc#examples",
+      "ccc#tools",
+      "ccc#mcp",
+      "ccc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCC là một launcher cho phép lập trình viên cấu hình prompt, command, agent, hook và MCP cho Claude Code từ một nơi duy nhất bằng hệ thống cấu hình phân lớp (layered configuration). Nó gộp các cài đặt global với các cấu hình ghi đè (overrides) theo preset hoặc theo từng dự án, loại bỏ việc setup lặp đi lặp lại trên các ngữ cảnh lập trình khác nhau. Công cụ này tự động tạo hệ thống prompt (system prompt) và user prompt một cách linh hoạt, đồng thời inject cấu hình vào runtime mà không cần chỉnh sửa bản cài đặt Claude gốc của bạn. Lập trình viên có thể viết các hook tùy chỉnh và MCP bằng TypeScript với lượng boilerplate tối thiểu. Ngoài ra, CCC cũng hỗ trợ sử dụng các mô hình AI thay thế từ các nhà cung cấp như GLM, Kimi K2 và Deepseek thông qua các API tương thích với Anthropic.\n\n- Quản lý các cấu hình Claude Code khác nhau cho dự án TypeScript và Python\n- Định nghĩa các prompt và command riêng cho từng dự án mà không cần sao chép các cài đặt global\n- Tạo các sub-agent và skill tùy chỉnh bằng TypeScript cho các workflow chuyên biệt\n- Cấu hình Claude Code để sử dụng các mô hình AI thay thế thông qua API của nhà cung cấp",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/3rd/ccc`",
+    "usage_vi": "```\nCấu hình launcher tùy chỉnh cho Claude Code với các cài đặt sau: [SETTINGS]. Thiết lập prompt động cho [TASKS]. Triển khai cấu hình phân lớp cho [CONFIGURATION_LAYERS]. Thêm các hook tùy chỉnh cho [HOOKS]. Định nghĩa các MCP cho [MULTI_COMMAND_PROMPTS]. Đảm bảo tích hợp với Claude Code để tối ưu hóa workflow lập trình.\n```\nSao chép\n\n```\nLauncher tùy chỉnh cho Claude Code đã được cấu hình thành công với các cài đặt sau: prompt động cho việc tạo code, debug và viết tài liệu; cấu hình phân lớp cho các môi trường phát triển (development), kiểm thử (testing) và production; các hook tùy chỉnh để tích hợp GitHub và kiểm thử tự động; và các MCP cho các tác vụ lập trình nhiều bước. Việc tích hợp với Claude Code đảm bảo workflow lập trình diễn ra liền mạch. Launcher hiện đã sẵn sàng để nâng cao năng suất lập trình của bạn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:37:57.207274Z",
+    "http_status": 200,
+    "content_hash": "93dfb9487a95efb3ffbd67852e93bcc2fe57648ada2f637f2404c82d72a7cd89",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccc.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ccc: launcher tùy chỉnh cho Claude Code",
+  "short_description_vi": "Launcher tùy chỉnh cho Claude Code, hỗ trợ prompt động, cấu hình phân lớp, cùng các hook tùy chỉnh và MCP dễ dàng. Giúp lập trình viên cấu hình prompt, command, agent, hook và MCP từ một nơi duy nhất. Tích hợp với Claude Code để tối ưu hóa workflow lập trình."
+}

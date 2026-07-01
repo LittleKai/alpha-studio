@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mlx-dev-skill",
+  "slug": "mlx-dev-skill",
+  "name": "Mlx Dev Skill",
+  "headline": "mlx-dev-skill: Idiomatic Apple MLX Coding for",
+  "short_description": "A Claude Code skill that guides AI agents in writing correct, idiomatic Apple MLX code on Apple Silicon, covering lazy evaluation, neural network patterns, memory management, and PyTorch migration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "tkwn2080",
+  "install_command": "git clone https://github.com/tkwn2080/mlx-dev-skill.git",
+  "source_repo_url": "https://github.com/tkwn2080/mlx-dev-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "mlx-dev-skill is a Claude Code skill designed to help developers write correct, idiomatic Apple MLX code on Apple Silicon hardware. The skill provides reference material and guidance covering key MLX concepts including lazy evaluation, array indexing gotchas, neural network patterns, data types, compilation, and memory management. It also addresses PyTorch migration patterns, making it useful for developers transitioning existing models to MLX. The skill stays current with the MLX API, including up-to-date memory management calls such as mx.get_active_memory() and mx.clear_cache(). It installs directly into Claude Code via the plugin marketplace or manually by copying to the ~/.claude/skills/ directory.\nWriting idiomatic MLX neural network code that avoids common array indexing and lazy evaluation pitfalls\nMigrating PyTorch models and workflows to Apple MLX on Apple Silicon\nManaging GPU memory correctly in MLX projects using current mx.* API calls\nCompiling and optimizing MLX functions for Apple Silicon performance\nThis code is designed to optimize performance for [COMPANY]'s [INDUSTRY] applications on Apple Silicon using MLX. The code leverages the M1/M2 chip's capabilities to enhance computational efficiency.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tkwn2080/mlx-dev-skill`",
+    "usage": "```\nWrite idiomatic Apple MLX code for [COMPANY] in the [INDUSTRY] sector. The code should leverage Apple Silicon's capabilities to [SPECIFIC TASK]. Include error handling and performance optimizations. Use the following [DATA] as a starting point.\n```\nCopy\n\n```\n# Apple MLX Code for Performance Optimization",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mlx-dev-skill#main-content",
+      "mlx-dev-skill#overview",
+      "mlx-dev-skill#setup",
+      "mlx-dev-skill#examples",
+      "mlx-dev-skill#tools",
+      "mlx-dev-skill#mcp",
+      "mlx-dev-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mlx-dev-skill is a Claude Code skill designed to help developers write correct, idiomatic Apple MLX code on Apple Silicon hardware. The skill provides reference material and guidance covering key MLX concepts including lazy evaluation, array indexing gotchas, neural network patterns, data types, compilation, and memory management. It also addresses PyTorch migration patterns, making it useful for developers transitioning existing models to MLX. The skill stays current with the MLX API, including up-to-date memory management calls such as mx.get_active_memory() and mx.clear_cache(). It installs directly into Claude Code via the plugin marketplace or manually by copying to the ~/.claude/skills/ directory.\nWriting idiomatic MLX neural network code that avoids common array indexing and lazy evaluation pitfalls\nMigrating PyTorch models and workflows to Apple MLX on Apple Silicon\nManaging GPU memory correctly in MLX projects using current mx.* API calls\nCompiling and optimizing MLX functions for Apple Silicon performance\nThis code is designed to optimize performance for [COMPANY]'s [INDUSTRY] applications on Apple Silicon using MLX. The code leverages the M1/M2 chip's capabilities to enhance computational efficiency.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tkwn2080/mlx-dev-skill`",
+    "usage_vi": "```\nWrite idiomatic Apple MLX code for [COMPANY] in the [INDUSTRY] sector. The code should leverage Apple Silicon's capabilities to [SPECIFIC TASK]. Include error handling and performance optimizations. Use the following [DATA] as a starting point.\n```\nCopy\n\n```\n# Apple MLX Code for Performance Optimization"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:59.685848Z",
+    "http_status": 200,
+    "content_hash": "bed9868e49ea74c44c1aebb5060a6588b4047638918854150e0e946ea721e62b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mlx-dev-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mlx-dev-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mlx-dev-skill: Idiomatic Apple MLX Coding for",
+  "short_description_vi": "A Claude Code skill that guides AI agents in writing correct, idiomatic Apple MLX code on Apple Silicon, covering lazy evaluation, neural network patterns, memory management, and PyTorch migration."
+}

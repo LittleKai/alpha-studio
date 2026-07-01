@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/varlock-claude-skill",
+  "slug": "varlock-claude-skill",
+  "name": "browser-use",
+  "headline": "Varlock Claude Skill - Secure Environment Variables",
+  "short_description": "Securely manage environment variables in Claude Code sessions. Prevents secret exposure in terminal output, session context, or logs. Ideal for operations teams handling sensitive data.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "wrsmith108",
+  "install_command": "git clone https://github.com/wrsmith108/varlock-claude-skill.git",
+  "source_repo_url": "https://github.com/wrsmith108/varlock-claude-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-skills",
+    "claude-code-skills",
+    "security",
+    "environment-variables"
+  ],
+  "sections": {
+    "overview": "Varlock Skill wraps the Varlock CLI to enforce secure environment variable handling within Claude Code sessions. It prevents secrets from leaking into terminal output, Claude's input/output context, log files, or git commits by validating variables against a schema file and masking sensitive values. Users can safely check if secrets are present, validate configuration, and run commands with injected secrets without exposing values. The skill is ideal for development teams, DevOps engineers, and operations staff who need to work with API keys, database credentials, and other sensitive data while using Claude for coding assistance.\nValidate all environment variables are set without exposing their values\nDebug authentication issues by confirming secrets exist (masked)\nRun development servers with injected secrets safely\nPrevent accidental exposure of API keys in Claude context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wrsmith108/varlock-claude-skill`",
+    "usage": "```\nI'm working in a Claude Code session for [COMPANY], a [INDUSTRY] company. I need to securely manage environment variables containing sensitive [DATA] information. Can you help me set up and use the Varlock skill to handle this securely?\n```\nCopy\n\n```\n# Secure Environment Variable Management Setup\n\n```python\nimport os\n\n# Accessing variables securely\npassword = os.getenv('DB_PASSWORD')\napi_key = os.getenv('API_KEY')\n\n# Using variables in secure operations\ndef secure_operation():\n    # Your secure operations here\n    pass\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "varlock-claude-skill#main-content",
+      "varlock-claude-skill#overview",
+      "varlock-claude-skill#setup",
+      "varlock-claude-skill#examples",
+      "varlock-claude-skill#tools",
+      "varlock-claude-skill#mcp",
+      "varlock-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Varlock Skill wraps the Varlock CLI to enforce secure environment variable handling within Claude Code sessions. It prevents secrets from leaking into terminal output, Claude's input/output context, log files, or git commits by validating variables against a schema file and masking sensitive values. Users can safely check if secrets are present, validate configuration, and run commands with injected secrets without exposing values. The skill is ideal for development teams, DevOps engineers, and operations staff who need to work with API keys, database credentials, and other sensitive data while using Claude for coding assistance.\nValidate all environment variables are set without exposing their values\nDebug authentication issues by confirming secrets exist (masked)\nRun development servers with injected secrets safely\nPrevent accidental exposure of API keys in Claude context",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wrsmith108/varlock-claude-skill`",
+    "usage_vi": "```\nI'm working in a Claude Code session for [COMPANY], a [INDUSTRY] company. I need to securely manage environment variables containing sensitive [DATA] information. Can you help me set up and use the Varlock skill to handle this securely?\n```\nCopy\n\n```\n# Secure Environment Variable Management Setup\n\n```python\nimport os\n\n# Accessing variables securely\npassword = os.getenv('DB_PASSWORD')\napi_key = os.getenv('API_KEY')\n\n# Using variables in secure operations\ndef secure_operation():\n    # Your secure operations here\n    pass\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:28:25.960400Z",
+    "http_status": 200,
+    "content_hash": "504c777be1d651a7f018fd0f68d7fe5e093bc9fa7b0a19f597bb2fe9589c2766",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\varlock-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\varlock-claude-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Varlock Claude Skill - Secure Environment Variables",
+  "short_description_vi": "Securely manage environment variables in Claude Code sessions. Prevents secret exposure in terminal output, session context, or logs. Ideal for operations teams handling sensitive data."
+}

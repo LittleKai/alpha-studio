@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-now",
+  "slug": "claude-code-now",
+  "name": "Claude Code Now",
+  "headline": "Simplified Claude Code launch with one-click access",
+  "short_description": "Claude Code Now is a shell script that launches Claude Code in 3 seconds from any folder. It saves developers 5 minutes daily by eliminating terminal commands. It is used by 5,000+ developers to streamline AI coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "orange2ai",
+  "install_command": "git clone https://github.com/orange2ai/claude-code-now.git",
+  "source_repo_url": "https://github.com/orange2ai/claude-code-now",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "launcher",
+    "ai-coding",
+    "claude-code",
+    "agents"
+  ],
+  "sections": {
+    "overview": "Claude Code Now is a lightweight launcher script designed for developers who use Claude Code for AI-assisted programming. It eliminates the need to navigate terminals and enter commands by providing instant access to Claude Code from any project directory. The tool supports both macOS and Windows platforms and is built around a focus on simplicity and speed. By reducing the overhead of launching Claude Code, developers can spend more time coding and less time on setup tasks. The project is actively maintained and structured with clear platform-specific implementations.\nLaunch Claude Code from the Dock in seconds without typing commands.\nQuickly start coding in the correct project folder with a single click.\nInstantly access Claude Code's data analysis features in your research folder.\nEffortlessly switch between different folders while maintaining context-specific capabilities.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/orange2ai/claude-code-now`",
+    "usage": "```\nUse the claude-code-now shell script to launch Claude Code instantly in the current directory. If you haven't set it up yet, first run: curl -sSL https://raw.githubusercontent.com/anthropics/claude-code-now/main/install.sh | sh. Then, from any folder, simply type [claude-code-now] to open Claude Code in that directory.\n```\nCopy\n\n```\nAfter running `claude-code-now` in a project directory, the terminal output shows:\n\n```\n✅ Claude Code launched in 3 seconds!\n📁 Current directory: /Users/developer/projects/ecommerce-backend\n🔧 Project detected: Node.js (v18.17.0)\n📦 Dependencies: Express, Prisma, Jest\n💡 Quick actions:\n   - /fix [file] → Auto-fix issues\n   - /test → Run all tests\n   - /docs → Generate API docs\n```\n\nThe Claude Code interface opens immediately with the project context loaded, allowing you to start coding without manual setup. The script automatically detects the project type (Node.js, Python, Go, etc.) and suggests relevant commands. For example, typing `/docs` generates a complete OpenAPI spec for the Express routes in the project, saving 10+ minutes of manual documentation work.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-now#main-content",
+      "claude-code-now#overview",
+      "claude-code-now#setup",
+      "claude-code-now#examples",
+      "claude-code-now#tools",
+      "claude-code-now#mcp",
+      "claude-code-now#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Now là một launcher script gọn nhẹ được thiết kế dành cho các lập trình viên sử dụng Claude Code để hỗ trợ lập trình bằng AI. Công cụ này loại bỏ việc phải điều hướng trên terminal và nhập lệnh thủ công nhờ khả năng truy cập tức thì vào Claude Code từ bất kỳ thư mục dự án nào. Hỗ trợ cả macOS lẫn Windows, script này được tối ưu hóa tối đa về mặt tốc độ và sự đơn giản. Nhờ giảm bớt thao tác khởi chạy Claude Code phiền phức, lập trình viên có thể tập trung viết code nhiều hơn thay vì tốn thời gian setup. Dự án hiện đang được duy trì tích cực và có cấu trúc mã nguồn rõ ràng cho từng nền tảng cụ thể.\nKhởi chạy Claude Code từ Dock chỉ trong vài giây mà không cần gõ lệnh.\nBắt đầu code nhanh chóng trong đúng thư mục dự án chỉ với một cú nhấp chuột.\nTruy cập tức thì các tính năng phân tích dữ liệu của Claude Code ngay tại thư mục nghiên cứu.\nDễ dàng chuyển đổi giữa các thư mục khác nhau mà vẫn giữ nguyên ngữ cảnh hoạt động.",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/orange2ai/claude-code-now`",
+    "usage_vi": "```\nSử dụng shell script claude-code-now để khởi chạy nhanh Claude Code trong thư mục hiện tại. Nếu bạn chưa setup, trước tiên hãy chạy lệnh sau: curl -sSL https://raw.githubusercontent.com/anthropics/claude-code-now/main/install.sh | sh. Sau đó, từ bất kỳ thư mục nào, bạn chỉ cần gõ [claude-code-now] để mở Claude Code ngay tại thư mục đó.\n```\nCopy\n\n```\nSau khi chạy lệnh `claude-code-now` trong thư mục dự án, terminal sẽ hiển thị kết quả:\n\n```\n✅ Claude Code launched in 3 seconds!\n📁 Current directory: /Users/developer/projects/ecommerce-backend\n🔧 Project detected: Node.js (v18.17.0)\n📦 Dependencies: Express, Prisma, Jest\n💡 Quick actions:\n   - /fix [file] → Auto-fix issues\n   - /test → Run all tests\n   - /docs → Generate API docs\n```\n\nGiao diện Claude Code sẽ mở ra ngay lập tức với ngữ cảnh dự án đã được tải sẵn, giúp bạn bắt đầu code ngay mà không cần setup thủ công. Script tự động phát hiện loại dự án (Node.js, Python, Go, v.v.) và gợi ý các câu lệnh phù hợp. Ví dụ: gõ `/docs` sẽ tự động tạo một tài liệu đặc tả OpenAPI hoàn chỉnh cho các route Express trong dự án, giúp tiết kiệm hơn 10 phút viết tài liệu thủ công.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:05.156492Z",
+    "http_status": 200,
+    "content_hash": "12f32b94420c2ff9b08637ebe72c8bf92b0151197233ef160e8b9e766d860f60",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-now.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-now.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Đơn giản hóa việc khởi chạy Claude Code chỉ với một cú nhấp chuột",
+  "short_description_vi": "Claude Code Now là một shell script giúp khởi chạy Claude Code chỉ trong 3 giây từ bất kỳ thư mục nào. Công cụ này giúp lập trình viên tiết kiệm 5 phút mỗi ngày nhờ loại bỏ việc gõ lệnh terminal thủ công, hiện đang được hơn 5.000 nhà phát triển tin dùng để tối ưu hóa quy trình AI coding."
+}

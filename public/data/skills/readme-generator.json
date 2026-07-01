@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/readme-generator",
+  "slug": "readme-generator",
+  "name": "Cloudinary Documentation",
+  "headline": "README Generator: Claude Code skill for",
+  "short_description": "The README Generator is for technical writers looking to produce thorough README.md files for software projects. It helps document local development, system functionality, and production deployment requirements.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "shpigford",
+  "install_command": "git clone https://github.com/shpigford/skills",
+  "source_repo_url": "https://github.com/shpigford/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "readme",
+    "generator",
+    "documentation"
+  ],
+  "sections": {
+    "overview": "The README Generator is an AI agent skill designed for technical writers who need to create comprehensive README.md files for software projects. It streamlines documentation by helping you capture local development setup instructions, system functionality details, and production deployment requirements in a structured format. This skill is particularly useful when you need to ensure your project documentation is thorough and covers all critical aspects of implementation and usage.\nGenerate README documentation for open-source projects\nCreate thorough documentation for internal company software\nAssist new developers in understanding project setup and architecture\nProject Phoenix is a scalable, real-time data pipeline designed to process transactional data for [FinTech Solutions Inc.]. Built with Python 3.11, FastAPI, and PostgreSQL, it handles 50,000+ transactions per second with sub-second latency. The system integrates with [Stripe] for payment processing and [Snowflake] for analytics storage.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/shpigford/skills --skill readme`\n`git clone https://github.com/shpigford/skills`\n```bash\n# Clone repository\ngit clone https://github.com/FinTechSolutions/phoenix.git\ncd phoenix\n\n# Environment setup\ndocker-compose -f docker-compose.dev.yml up -d\n\n# Install dependencies\npip install -r requirements.txt\n\n# Run tests\npytest tests/unit --cov=src\n```\n\n### Prerequisites\n- Docker 20.10+\n- Python 3.11+\n- PostgreSQL 15+\n- Kafka 3.4+",
+    "usage": "```\nGenerate a comprehensive README.md for a [PROJECT_NAME] project in the [INDUSTRY] industry. Include sections for: Project Overview, Features, Local Development Setup, System Architecture, API Documentation, Deployment Guide, Contributing Guidelines, and License. Use [COMPANY_NAME]'s tech stack: [LIST_TECH_STACK]. Assume the project uses [VERSION_NUMBER] and has [NUM_USERS] active users. Format everything in GitHub-flavored markdown with proper headers, code blocks, and tables where applicable. Include placeholders for [CONTACT_EMAIL] and [ISSUE_TRACKER_URL].\n```\nCopy\n\n```\n# Project Phoenix\n\n**A next-generation data processing platform for financial analytics**",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "readme-generator#main-content",
+      "readme-generator#overview",
+      "readme-generator#setup",
+      "readme-generator#examples",
+      "readme-generator#tools",
+      "readme-generator#mcp",
+      "readme-generator#related",
+      "wds-documentation-navigator",
+      "explain-code",
+      "cloudinary-documentation"
+    ],
+    "overview_vi": "The README Generator is an AI agent skill designed for technical writers who need to create comprehensive README.md files for software projects. It streamlines documentation by helping you capture local development setup instructions, system functionality details, and production deployment requirements in a structured format. This skill is particularly useful when you need to ensure your project documentation is thorough and covers all critical aspects of implementation and usage.\nGenerate README documentation for open-source projects\nCreate thorough documentation for internal company software\nAssist new developers in understanding project setup and architecture\nProject Phoenix is a scalable, real-time data pipeline designed to process transactional data for [FinTech Solutions Inc.]. Built with Python 3.11, FastAPI, and PostgreSQL, it handles 50,000+ transactions per second with sub-second latency. The system integrates with [Stripe] for payment processing and [Snowflake] for analytics storage.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/shpigford/skills --skill readme`\n`git clone https://github.com/shpigford/skills`\n```bash\n# Clone repository\ngit clone https://github.com/FinTechSolutions/phoenix.git\ncd phoenix\n\n# Environment setup\ndocker-compose -f docker-compose.dev.yml up -d\n\n# Install dependencies\npip install -r requirements.txt\n\n# Run tests\npytest tests/unit --cov=src\n```\n\n### Prerequisites\n- Docker 20.10+\n- Python 3.11+\n- PostgreSQL 15+\n- Kafka 3.4+",
+    "usage_vi": "```\nGenerate a comprehensive README.md for a [PROJECT_NAME] project in the [INDUSTRY] industry. Include sections for: Project Overview, Features, Local Development Setup, System Architecture, API Documentation, Deployment Guide, Contributing Guidelines, and License. Use [COMPANY_NAME]'s tech stack: [LIST_TECH_STACK]. Assume the project uses [VERSION_NUMBER] and has [NUM_USERS] active users. Format everything in GitHub-flavored markdown with proper headers, code blocks, and tables where applicable. Include placeholders for [CONTACT_EMAIL] and [ISSUE_TRACKER_URL].\n```\nCopy\n\n```\n# Project Phoenix\n\n**A next-generation data processing platform for financial analytics**"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:55.410795Z",
+    "http_status": 200,
+    "content_hash": "48cbb971ce73b02a786bb6b8ddd363a993a3fb1e11aa01f3aae74208ad6ed8c4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\readme-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\readme-generator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "README Generator: Claude Code skill for",
+  "short_description_vi": "The README Generator is for technical writers looking to produce thorough README.md files for software projects. It helps document local development, system functionality, and production deployment requirements."
+}

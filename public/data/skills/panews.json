@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/panews",
+  "slug": "panews",
+  "name": "Related Skills",
+  "headline": "PANews: Crypto News & Smart Money Leaderboards",
+  "short_description": "The PANews skill is designed for users interested in following cryptocurrency and blockchain news. It provides market-moving headlines, project updates, and leaderboard snapshots in an accessible format for both technical and non-technical readers.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "panewslab",
+  "install_command": "git clone https://github.com/panewslab/skills",
+  "source_repo_url": "https://github.com/panewslab/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "news",
+    "panews"
+  ],
+  "sections": {
+    "overview": "The PANews skill provides real-time cryptocurrency and blockchain news discovery, market-moving headlines, and project updates in an accessible format. It includes access to public Polymarket smart money leaderboards, allowing users to track smart money behavior and crypto market narratives. The skill aggregates PANews coverage across news, rankings, events, and calendars, serving traders, investors, and enthusiasts who need timely crypto market intelligence. Installation is straightforward via Bun or NPM, with support for Claude Code and Codex-style plugin hosts.\nGet the biggest crypto stories of the day\nFind specific coverage about cryptocurrencies like Bitcoin or Solana\nView the latest Polymarket smart money boards\nCheck who tops the newest boards",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/panewslab/skills --skill panews`\n`git clone https://github.com/panewslab/skills`",
+    "usage": "```\nSummarize the most important crypto and blockchain news from the past 24 hours. Focus on market-moving headlines, project updates, and leaderboard changes. Format the output as a concise briefing with clear sections. Include [COMPANY] or [TOKEN] names where relevant.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "panews#main-content",
+      "panews#overview",
+      "panews#setup",
+      "panews#examples",
+      "panews#related"
+    ],
+    "overview_vi": "The PANews skill provides real-time cryptocurrency and blockchain news discovery, market-moving headlines, and project updates in an accessible format. It includes access to public Polymarket smart money leaderboards, allowing users to track smart money behavior and crypto market narratives. The skill aggregates PANews coverage across news, rankings, events, and calendars, serving traders, investors, and enthusiasts who need timely crypto market intelligence. Installation is straightforward via Bun or NPM, with support for Claude Code and Codex-style plugin hosts.\nGet the biggest crypto stories of the day\nFind specific coverage about cryptocurrencies like Bitcoin or Solana\nView the latest Polymarket smart money boards\nCheck who tops the newest boards",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/panewslab/skills --skill panews`\n`git clone https://github.com/panewslab/skills`",
+    "usage_vi": "```\nSummarize the most important crypto and blockchain news from the past 24 hours. Focus on market-moving headlines, project updates, and leaderboard changes. Format the output as a concise briefing with clear sections. Include [COMPANY] or [TOKEN] names where relevant.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:15:43.079558Z",
+    "http_status": 200,
+    "content_hash": "3419274665b1b6b3caaeec915edafc46ef758a952b1635cd71fe7755ef8dcee2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\panews.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\panews.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "PANews: Crypto News & Smart Money Leaderboards",
+  "short_description_vi": "The PANews skill is designed for users interested in following cryptocurrency and blockchain news. It provides market-moving headlines, project updates, and leaderboard snapshots in an accessible format for both technical and non-technical readers."
+}

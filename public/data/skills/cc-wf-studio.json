@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-wf-studio",
+  "slug": "cc-wf-studio",
+  "name": "Cc Wf Studio",
+  "headline": "cc-wf-studio: workflows",
+  "short_description": "CC Workflow Studio automates repetitive tasks for operations teams. It connects to VSCode and Claude agents to streamline workflows. Teams use it to create, manage, and execute automated processes.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "breaking-brake",
+  "install_command": "git clone https://github.com/breaking-brake/cc-wf-studio.git",
+  "source_repo_url": "https://github.com/breaking-brake/cc-wf-studio",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "workflow-automation",
+    "sub-agents",
+    "vscode-extension",
+    "slash-commands",
+    "agent-skills",
+    "mcp-tools"
+  ],
+  "sections": {
+    "overview": "CC Workflow Studio is a VSCode extension designed for operations teams to automate repetitive tasks through AI-driven workflow automation. The tool integrates Claude agents directly into VSCode, enabling users to create and manage automated processes without leaving their editor. Users can define workflows as nodes and connections, with support for both prompt-based steps and sub-agent execution patterns. The AI editor helps generate workflows intelligently, while the runtime engine executes them with judgment-based logic rather than rigid deterministic constraints. Teams benefit from streamlined task automation that reduces manual work and improves operational efficiency.\nAutomate code review processes by creating workflows that integrate AI assistance.\nDesign and execute complex deployment workflows with conditional logic.\nIntegrate GitHub Copilot to enhance coding efficiency through automated prompts.\nCreate automated testing workflows that run scripts based on specific triggers.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/breaking-brake/cc-wf-studio`",
+    "usage": "```\nCreate a workflow in CC Workflow Studio to automate the process of [TASK]. The workflow should connect to [VSCode/CLAUDE] and perform the following steps: [STEPS]. Ensure the workflow includes error handling for [POTENTIAL_ERRORS].\n```\nCopy\n\n```\nWorkflow Name: Monthly Sales Report Automation\n\nDescription: This workflow automates the generation of monthly sales reports by pulling data from a CSV file, processing it, and generating a formatted report.\n\nSteps:\n1. Connect to VSCode and open the sales data CSV file located at [PATH_TO_CSV].\n2. Use Claude to analyze the data and generate a summary report.\n3. Format the report using predefined templates.\n4. Save the report as a PDF in the [OUTPUT_DIRECTORY].\n5. Send an email notification to [EMAIL_ADDRESS] with the report attached.\n\nError Handling:\n- If the CSV file is not found, notify the user and exit the workflow.\n- If the data processing fails, retry the step once before notifying the user.\n\nNotes: This workflow is designed to run on the first day of each month at 9:00 AM.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-wf-studio#main-content",
+      "cc-wf-studio#overview",
+      "cc-wf-studio#setup",
+      "cc-wf-studio#examples",
+      "cc-wf-studio#tools",
+      "cc-wf-studio#mcp",
+      "cc-wf-studio#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CC Workflow Studio is a VSCode extension designed for operations teams to automate repetitive tasks through AI-driven workflow automation. The tool integrates Claude agents directly into VSCode, enabling users to create and manage automated processes without leaving their editor. Users can define workflows as nodes and connections, with support for both prompt-based steps and sub-agent execution patterns. The AI editor helps generate workflows intelligently, while the runtime engine executes them with judgment-based logic rather than rigid deterministic constraints. Teams benefit from streamlined task automation that reduces manual work and improves operational efficiency.\nAutomate code review processes by creating workflows that integrate AI assistance.\nDesign and execute complex deployment workflows with conditional logic.\nIntegrate GitHub Copilot to enhance coding efficiency through automated prompts.\nCreate automated testing workflows that run scripts based on specific triggers.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/breaking-brake/cc-wf-studio`",
+    "usage_vi": "```\nCreate a workflow in CC Workflow Studio to automate the process of [TASK]. The workflow should connect to [VSCode/CLAUDE] and perform the following steps: [STEPS]. Ensure the workflow includes error handling for [POTENTIAL_ERRORS].\n```\nCopy\n\n```\nWorkflow Name: Monthly Sales Report Automation\n\nDescription: This workflow automates the generation of monthly sales reports by pulling data from a CSV file, processing it, and generating a formatted report.\n\nSteps:\n1. Connect to VSCode and open the sales data CSV file located at [PATH_TO_CSV].\n2. Use Claude to analyze the data and generate a summary report.\n3. Format the report using predefined templates.\n4. Save the report as a PDF in the [OUTPUT_DIRECTORY].\n5. Send an email notification to [EMAIL_ADDRESS] with the report attached.\n\nError Handling:\n- If the CSV file is not found, notify the user and exit the workflow.\n- If the data processing fails, retry the step once before notifying the user.\n\nNotes: This workflow is designed to run on the first day of each month at 9:00 AM.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:56.196538Z",
+    "http_status": 200,
+    "content_hash": "616f6dead200e9b6d9220f8a38dd422dde6d39cbfff80a8519a0a2855012ba20",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-wf-studio.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-wf-studio.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "cc-wf-studio: workflows",
+  "short_description_vi": "CC Workflow Studio automates repetitive tasks for operations teams. It connects to VSCode and Claude agents to streamline workflows. Teams use it to create, manage, and execute automated processes."
+}

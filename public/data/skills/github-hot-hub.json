@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/github-hot-hub",
+  "slug": "github-hot-hub",
+  "name": "GitHub Hot Hub",
+  "headline": "GitHub Hot Hub - Tracks Trending Repositories",
+  "short_description": "Tracks GitHub trending repositories since 2021, updating hourly and archiving daily. Useful for developers and operations teams monitoring open-source trends. Integrates with Python workflows and connects to GitHub's API.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "SnailDev",
+  "install_command": "git clone https://github.com/SnailDev/github-hot-hub.git",
+  "source_repo_url": "https://github.com/SnailDev/github-hot-hub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "github-hot-hub monitors GitHub's trending repositories continuously, capturing hourly snapshots and organizing them into daily archives dating back to January 2021. The skill automatically fetches trending repository data including star counts, programming languages, and daily gains, providing a historical record of open-source momentum. This enables developers, DevOps teams, and technology researchers to track ecosystem trends, identify rising projects, and analyze the evolution of popular repositories over time. The automated hourly update cycle ensures you're always seeing the latest trending data without manual intervention.\nMonitor emerging open-source projects in your technology stack\nAnalyze GitHub trending patterns and ecosystem trends over time\nTrack competitor projects and industry-wide technology adoption\nResearch repository growth and community momentum metrics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SnailDev/github-hot-hub`",
+    "usage": "```\nGenerate a weekly report of trending GitHub repositories in [PROGRAMMING_LANGUAGE] from the past 7 days. Include repository name, description, stars gained, forks gained, and trending rank. Highlight repositories that have gained over [STAR_THRESHOLD] stars this week. Format the output as a Markdown table with columns: Rank, Repository, Description, Stars Gained, Forks Gained, URL. Use the GitHub Trending API or GitHub Archive data for this analysis.\n```\nCopy\n\n```\n### Weekly GitHub Trending Report (Python) - Week of October 16, 2023\n\n| Rank | Repository | Description | Stars Gained | Forks Gained | URL |\n|------|------------|-------------|--------------|--------------|-----|\n| 1 | `fastapi/fastapi` | Modern, fast (high-performance) web framework for building APIs with Python 3.7+ | +1,247 | +382 | [https://github.com/fastapi/fastapi](https://github.com/fastapi/fastapi) |\n| 2 | `tiangolo/full-stack-fastapi-postgresql` | Full stack, modern web application generator. Using FastAPI, PostgreSQL as database, Docker, automatic HTTPS | +892 | +264 | [https://github.com/tiangolo/full-stack-fastapi-postgresql](https://github.com/tiangolo/full-stack-fastapi-postgresql) |\n| 3 | `microsoft/autogen` | Enable next-gen LLM applications with multi-agent conversations | +756 | +198 | [https://github.com/microsoft/autogen](https://github.com/microsoft/autogen) |\n| 4 | `vinta/awesome-python` | A curated list of awesome Python frameworks, libraries, software and resources | +612 | +145 | [https://github.com/vinta/awesome-python](https://github.com/vinta/awesome-python) |\n| 5 | `psf/requests` | A simple, yet elegant HTTP library for Python | +433 | +112 | [https://github.com/psf/requests](https://github.com/psf/requests) |\n\n**Key Insights:**\n- FastAPI continues to dominate Python trending repositories with over 1,200 stars gained this week.\n- Microsoft's `autogen` project shows strong community interest in multi-agent LLM systems.\n- The `full-stack-fastapi-postgresql` template repository remains a top choice for developers building modern web applications.\n\n**Recommendations:**\n- Monitor `autogen` for potential integration into your AI/ML workflows.\n- Evaluate `fastapi` for any new API projects due to its sustained growth and community adoption.\n\n*Data sourced from GitHub Trending API (October 16, 2023).*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "github-hot-hub#main-content",
+      "github-hot-hub#overview",
+      "github-hot-hub#setup",
+      "github-hot-hub#examples",
+      "github-hot-hub#tools",
+      "github-hot-hub#mcp",
+      "github-hot-hub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "github-hot-hub liên tục giám sát các repository xu hướng trên GitHub, chụp snapshot hàng giờ và sắp xếp chúng thành các bản lưu trữ hàng ngày từ tháng 1 năm 2021. Skill này tự động lấy dữ liệu repository thịnh hành bao gồm số lượng star, ngôn ngữ lập trình và lượng star tăng thêm hàng ngày, mang đến một bản ghi lịch sử về sức hút của mã nguồn mở. Nhờ đó, các lập trình viên, đội ngũ DevOps và nhà nghiên cứu công nghệ có thể theo dõi xu hướng hệ sinh thái, nhận diện các dự án đang lên và phân tích sự phát triển của các repository phổ biến theo thời gian. Chu kỳ cập nhật tự động hàng giờ đảm bảo bạn luôn thấy dữ liệu xu hướng mới nhất mà không cần can thiệp thủ công.\nGiám sát các dự án mã nguồn mở mới nổi trong stack công nghệ của bạn\nPhân tích mô hình xu hướng trên GitHub và xu hướng hệ sinh thái theo thời gian\nTheo dõi các dự án của đối thủ và mức độ áp dụng công nghệ trong toàn ngành\nNghiên cứu các chỉ số tăng trưởng của repository và sức hút từ cộng đồng",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/SnailDev/github-hot-hub`",
+    "usage_vi": "```\nTạo báo cáo hàng tuần về các repository GitHub thịnh hành bằng ngôn ngữ [PROGRAMMING_LANGUAGE] trong 7 ngày qua. Bao gồm tên repository, mô tả, số star tăng thêm, số fork tăng thêm và thứ hạng xu hướng. Làm nổi bật các repository đã tăng hơn [STAR_THRESHOLD] star trong tuần này. Định dạng đầu ra dưới dạng bảng Markdown với các cột: Rank, Repository, Description, Stars Gained, Forks Gained, URL. Sử dụng GitHub Trending API hoặc dữ liệu GitHub Archive cho phân tích này.\n```\nCopy\n\n```\n### Báo cáo GitHub Trending hàng tuần (Python) - Tuần ngày 16 tháng 10 năm 2023\n\n| Rank | Repository | Description | Stars Gained | Forks Gained | URL |\n|------|------------|-------------|--------------|--------------|-----|\n| 1 | `fastapi/fastapi` | Framework web hiện đại, nhanh (hiệu năng cao) để xây dựng API với Python 3.7+ | +1,247 | +382 | [https://github.com/fastapi/fastapi](https://github.com/fastapi/fastapi) |\n| 2 | `tiangolo/full-stack-fastapi-postgresql` | Bộ tạo ứng dụng web hiện đại, full-stack. Sử dụng FastAPI, PostgreSQL làm cơ sở dữ liệu, Docker, HTTPS tự động | +892 | +264 | [https://github.com/tiangolo/full-stack-fastapi-postgresql](https://github.com/tiangolo/full-stack-fastapi-postgresql) |\n| 3 | `microsoft/autogen` | Hỗ trợ phát triển ứng dụng LLM thế hệ mới với hội thoại đa agent (multi-agent) | +756 | +198 | [https://github.com/microsoft/autogen](https://github.com/microsoft/autogen) |\n| 4 | `vinta/awesome-python` | Danh sách chọn lọc các framework, thư viện, phần mềm và tài nguyên Python tuyệt vời | +612 | +145 | [https://github.com/vinta/awesome-python](https://github.com/vinta/awesome-python) |\n| 5 | `psf/requests` | Thư viện HTTP đơn giản nhưng tinh tế dành cho Python | +433 | +112 | [https://github.com/psf/requests](https://github.com/psf/requests) |\n\n**Thông tin nổi bật:**\n- FastAPI tiếp tục dẫn đầu các repository Python xu hướng với hơn 1.200 star tăng thêm trong tuần này.\n- Dự án `autogen` của Microsoft cho thấy sự quan tâm mạnh mẽ từ cộng đồng đối với các hệ thống LLM đa agent (multi-agent).\n- Template repository `full-stack-fastapi-postgresql` vẫn là lựa chọn hàng đầu cho các lập trình viên xây dựng ứng dụng web hiện đại.\n\n**Khuyến nghị:**\n- Theo dõi `autogen` để xem xét tích hợp vào workflow AI/ML của bạn.\n- Đánh giá `fastapi` cho bất kỳ dự án API mới nào nhờ sự tăng trưởng bền vững và mức độ đón nhận rộng rãi từ cộng đồng.\n\n*Dữ liệu được lấy từ GitHub Trending API (ngày 16 tháng 10 năm 2023).*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:12:23.313990Z",
+    "http_status": 200,
+    "content_hash": "0bfd463d9a3cacb96ee623b11a0d81b14409a266ea72ab8cac608ca73db645e3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-hot-hub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-hot-hub.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GitHub Hot Hub - Theo dõi các repository xu hướng",
+  "short_description_vi": "Theo dõi các repository xu hướng trên GitHub từ năm 2021, cập nhật mỗi giờ và lưu trữ hàng ngày. Công cụ hữu ích cho lập trình viên và đội ngũ vận hành để theo dõi xu hướng mã nguồn mở. Tích hợp tốt với các workflow Python và kết nối trực tiếp với API của GitHub."
+}

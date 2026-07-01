@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/python-automation",
+  "slug": "python-automation",
+  "name": "python_automation",
+  "headline": "Python Automation: Lead Generation Scripts",
+  "short_description": "Python scripts that automate digital marketing and lead generation tasks, including email scraping, email generation, customer list building, and forum data extraction.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "yesblogger",
+  "install_command": "git clone https://github.com/yesblogger/python_automation.git",
+  "source_repo_url": "https://github.com/yesblogger/python_automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "python_automation is a collection of Python scripts designed to automate repetitive digital marketing and lead generation workflows. The repository includes modules for scraping emails using both the Requests library and Selenium, generating outreach emails, building customer lists, and extracting data from forums. These tools are built for marketers and growth professionals who need to streamline prospecting and data collection tasks. All scripts are written in Python and licensed under MIT.\nScrape email addresses from websites using Requests or Selenium\nAutomatically generate outreach or marketing emails\nBuild and maintain customer or prospect lists\nExtract user data and leads from online forums",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yesblogger/python_automation`",
+    "usage": "```\nCreate a Python script to automate the following digital marketing task for [COMPANY]: [TASK]. The script should use [TOOLS] and process [DATA] from [SOURCE]. Include error handling and logging features. Provide the complete script with comments explaining each section.\n```\nCopy\n\n```\n```python\n# Digital Marketing Automation Script for [COMPANY]\n# Task: Automate social media post scheduling\n# Tools: Python, Facebook Graph API, CSV\n# Data: Social media posts from marketing_calendar.csv\n# Source: Local file system\n\nimport csv\nimport requests\nimport logging\n\n# Configure logging\nlogging.basicConfig(filename='marketing_automation.log', level=logging.INFO)\n\n# Facebook API credentials\nACCESS_TOKEN = '[ACCESS_TOKEN]'\nPAGE_ID = '[PAGE_ID]'\n\n# Read posts from CSV\ndef read_posts(file_path):\n    with open(file_path, mode='r') as file:\n        reader = csv.DictReader(file)\n        return [row for row in reader]\n\n# Post to Facebook\ndef post_to_facebook(message, scheduled_time):\n    url = f'https://graph.facebook.com/v12.0/{PAGE_ID}/feed'\n    params = {\n        'message': message,\n        'published': 'false',\n        'scheduled_published_time': scheduled_time,\n        'access_token': ACCESS_TOKEN\n    }\n    response = requests.post(url, params=params)\n    return response.json()\n\n# Main automation function\ndef automate_posts(file_path):\n    posts = read_posts(file_path)\n    for post in posts:\n        try:\n            result = post_to_facebook(post['message'], post['scheduled_time'])\n            logging.info(f'Posted to Facebook: {result}')\n        except Exception as e:\n            logging.error(f'Error posting to Facebook: {str(e)}')\n\n# Run automation\nif __name__ == '__main__':\n    automate_posts('marketing_calendar.csv')\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "python-automation#main-content",
+      "python-automation#overview",
+      "python-automation#setup",
+      "python-automation#examples",
+      "python-automation#tools",
+      "python-automation#mcp",
+      "python-automation#related",
+      "marketingskills",
+      "copywriting",
+      "post-for-me"
+    ],
+    "overview_vi": "python_automation là một tập hợp các script Python được thiết kế để tự động hóa các quy trình công việc lặp đi lặp lại trong digital marketing và tìm kiếm khách hàng tiềm năng (lead generation). Repository này bao gồm các module hỗ trợ cào email bằng cả thư viện Requests và Selenium, tự động tạo email tiếp cận (outreach email), xây dựng danh sách khách hàng và trích xuất dữ liệu từ các diễn đàn. Các công cụ này được thiết kế dành cho các marketer và chuyên gia tăng trưởng (growth professionals) muốn tối ưu hóa quy trình tìm kiếm khách hàng và thu thập dữ liệu. Tất cả các script đều được viết bằng Python và được cấp phép theo giấy phép MIT.\n- Cào địa chỉ email từ các trang web sử dụng Requests hoặc Selenium\n- Tự động tạo email tiếp cận hoặc email marketing\n- Xây dựng và duy trì danh sách khách hàng hoặc khách hàng tiềm năng\n- Trích xuất dữ liệu người dùng và thông tin khách hàng tiềm năng từ các diễn đàn trực tuyến",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yesblogger/python_automation`",
+    "usage_vi": "```\nViết một script Python để tự động hóa tác vụ digital marketing sau đây cho [COMPANY]: [TASK]. Script này cần sử dụng [TOOLS] và xử lý [DATA] từ [SOURCE]. Hãy tích hợp tính năng xử lý lỗi (error handling) và ghi log (logging). Cung cấp toàn bộ script kèm theo chú thích giải thích chi tiết cho từng phần.\n```\nCopy\n\n```\n```python\n# Script tự động hóa Digital Marketing cho [COMPANY]\n# Tác vụ: Tự động lập lịch đăng bài trên mạng xã hội\n# Công cụ: Python, Facebook Graph API, CSV\n# Dữ liệu: Các bài viết mạng xã hội từ file marketing_calendar.csv\n# Nguồn: Hệ thống tệp cục bộ (Local file system)\n\nimport csv\nimport requests\nimport logging\n\n# Cấu hình logging\nlogging.basicConfig(filename='marketing_automation.log', level=logging.INFO)\n\n# Thông tin xác thực Facebook API\nACCESS_TOKEN = '[ACCESS_TOKEN]'\nPAGE_ID = '[PAGE_ID]'\n\n# Đọc bài đăng từ file CSV\ndef read_posts(file_path):\n    with open(file_path, mode='r') as file:\n        reader = csv.DictReader(file)\n        return [row for row in reader]\n\n# Đăng bài lên Facebook\ndef post_to_facebook(message, scheduled_time):\n    url = f'https://graph.facebook.com/v12.0/{PAGE_ID}/feed'\n    params = {\n        'message': message,\n        'published': 'false',\n        'scheduled_published_time': scheduled_time,\n        'access_token': ACCESS_TOKEN\n    }\n    response = requests.post(url, params=params)\n    return response.json()\n\n# Hàm tự động hóa chính\ndef automate_posts(file_path):\n    posts = read_posts(file_path)\n    for post in posts:\n        try:\n            result = post_to_facebook(post['message'], post['scheduled_time'])\n            logging.info(f'Đã đăng lên Facebook: {result}')\n        except Exception as e:\n            logging.error(f'Lỗi khi đăng lên Facebook: {str(e)}')\n\n# Chạy tự động hóa\nif __name__ == '__main__':\n    automate_posts('marketing_calendar.csv')\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:08:31.875101Z",
+    "http_status": 200,
+    "content_hash": "618a7afb2c9a460a81d03e966ac295403c13fb22c4f3eef4abaa0dadc6b4cf3c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\python-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\python-automation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động hóa Python: Script tìm kiếm khách hàng tiềm năng",
+  "short_description_vi": "Các script Python giúp tự động hóa các tác vụ digital marketing và tìm kiếm khách hàng tiềm năng (lead generation), bao gồm cào email (email scraping), tự động tạo email, xây dựng danh sách khách hàng và khai thác dữ liệu từ các diễn đàn."
+}

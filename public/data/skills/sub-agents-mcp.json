@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sub-agents-mcp",
+  "slug": "sub-agents-mcp",
+  "name": "Sub-Agents MCP",
+  "headline": "Sub-Agents MCP - Automate tasks with AI sub-agents",
+  "short_description": "Define task-specific AI sub-agents in Markdown for any MCP-compatible tool. Operations teams can automate workflows by creating specialized sub-agents that integrate with existing tools and systems. This skill connects to MCP-compatible tools and workflows, enabling efficient task automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "shinpr",
+  "install_command": "git clone https://github.com/shinpr/sub-agents-mcp.git",
+  "source_repo_url": "https://github.com/shinpr/sub-agents-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "mcp",
+    "agent-workflow",
+    "developer-tools",
+    "automation",
+    "claude-code",
+    "codex",
+    "mcp-server",
+    "sub-agents",
+    "ai-agents",
+    "gemini-cli",
+    "multi-agent",
+    "orchestration",
+    "agentic-ai"
+  ],
+  "sections": {
+    "overview": "Sub-Agents MCP Server brings Claude Code–style sub-agent workflows to any MCP-compatible tool, including Cursor, Claude Desktop, Windsurf, and Codex. You define task-specific agents once in Markdown files—such as a code-reviewer or test-writer—and execute them across multiple tools and IDEs without recreating them. The server manages session handling and error recovery, enabling operations teams to build reusable agents that integrate with existing systems. Agents run with fresh context in isolation, making them predictable and maintainable for team workflows.\nCreate a code-reviewer agent to audit code quality across multiple projects\nDefine a test-writer agent to generate unit tests for specific modules\nBuild a doc-writer agent to automatically add JSDoc comments to public methods\nSet up specialized agents for security audits, refactoring tasks, or code style checks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shinpr/sub-agents-mcp`",
+    "usage": "```\nCreate a Markdown-formatted sub-agent definition for [TASK_NAME] using [MCP_TOOL_NAME]. The sub-agent should handle [SPECIFIC_SCENARIO] with the following constraints: [CONSTRAINTS]. Include clear inputs, outputs, error handling, and integration steps with existing systems. Format as a complete MCP sub-agent specification ready for deployment.\n```\nCopy\n\n```\n```markdown\n# Sub-Agent: Database Backup Validator",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sub-agents-mcp#main-content",
+      "sub-agents-mcp#overview",
+      "sub-agents-mcp#setup",
+      "sub-agents-mcp#examples",
+      "sub-agents-mcp#tools",
+      "sub-agents-mcp#mcp",
+      "sub-agents-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sub-Agents MCP Server brings Claude Code–style sub-agent workflows to any MCP-compatible tool, including Cursor, Claude Desktop, Windsurf, and Codex. You define task-specific agents once in Markdown files—such as a code-reviewer or test-writer—and execute them across multiple tools and IDEs without recreating them. The server manages session handling and error recovery, enabling operations teams to build reusable agents that integrate with existing systems. Agents run with fresh context in isolation, making them predictable and maintainable for team workflows.\nCreate a code-reviewer agent to audit code quality across multiple projects\nDefine a test-writer agent to generate unit tests for specific modules\nBuild a doc-writer agent to automatically add JSDoc comments to public methods\nSet up specialized agents for security audits, refactoring tasks, or code style checks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shinpr/sub-agents-mcp`",
+    "usage_vi": "```\nCreate a Markdown-formatted sub-agent definition for [TASK_NAME] using [MCP_TOOL_NAME]. The sub-agent should handle [SPECIFIC_SCENARIO] with the following constraints: [CONSTRAINTS]. Include clear inputs, outputs, error handling, and integration steps with existing systems. Format as a complete MCP sub-agent specification ready for deployment.\n```\nCopy\n\n```\n```markdown\n# Sub-Agent: Database Backup Validator"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:05.377820Z",
+    "http_status": 200,
+    "content_hash": "e7d9414f8b1a583e97be615919d616032313c3c02e45119dc8c7f9126bc67f13",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sub-agents-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sub-agents-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sub-Agents MCP - Automate tasks with AI sub-agents",
+  "short_description_vi": "Define task-specific AI sub-agents in Markdown for any MCP-compatible tool. Operations teams can automate workflows by creating specialized sub-agents that integrate with existing tools and systems. This skill connects to MCP-compatible tools and workflows, enabling efficient task automation."
+}

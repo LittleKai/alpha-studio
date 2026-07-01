@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cursor-rules-java",
+  "slug": "cursor-rules-java",
+  "name": "browser-use",
+  "headline": "Cursor-rules-java - Java automation prompts",
+  "short_description": "Cursor-rules-java provides system prompts for Java that assist software engineers in daily programming tasks and CI/CD pipelines. It integrates with Claude and supports IntelliJ IDEA and VSCode. Engineers benefit from automated code generation, debugging, and optimization.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "jabrena",
+  "install_command": "git clone https://github.com/jabrena/cursor-rules-java.git",
+  "source_repo_url": "https://github.com/jabrena/cursor-rules-java",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "cursor-rules",
+    "intellij-idea",
+    "github-copilot",
+    "cursorai",
+    "junie",
+    "cursor-ai",
+    "prompting",
+    "claude-code-skills",
+    "cursor-agent",
+    "vscode",
+    "system-prompts",
+    "java",
+    "cursor-rules-java"
+  ],
+  "sections": {
+    "overview": "cursor-rules-java provides a collection of reusable skills, agents, and commands designed to enhance Java development within AI coding assistants like Cursor, Claude Code, and GitHub Copilot. The project enables structured workflows across the software development lifecycle: planning with user stories and architecture decisions, building with Maven best practices and secure coding guidance, and operating with observability and performance testing. Teams use these skills to guide AI agents through complex tasks—from reviewing Maven projects to implementing features with Spring Boot, Quarkus, or Micronaut—while maintaining engineering control over proposed changes. It also includes compliance-focused skills for EU regulations including the AI Act, GDPR, and DORA, helping teams integrate regulatory awareness into their development process.\nReview Maven projects for best practices and apply approved improvements\nGenerate feature implementations using framework-specific agents (Spring Boot, Quarkus, Micronaut)\nCreate and update GitHub Issues and ADRs with AI guidance\nPerform secure code reviews and apply security hardening patterns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jabrena/cursor-rules-java`",
+    "usage": "```\nGenerate a Java class that [IMPLEMENTS_SPECIFIC_FUNCTIONALITY] using best practices for [FRAMEWORK/LIBRARY]. Include unit tests with [TESTING_FRAMEWORK] and follow [CODE_STYLE_GUIDELINE]. Add comments explaining key design decisions. [ADDITIONAL_REQUIREMENTS].\n```\nCopy\n\n```\n```java\n/**\n * A REST controller for managing user profiles in a Spring Boot application.\n * Implements CRUD operations with validation and proper error handling.\n */\n@RestController\n@RequestMapping(\"/api/users\")\n@RequiredArgsConstructor\npublic class UserProfileController {\n\n    private final UserService userService;\n    private final UserMapper userMapper;\n\n    @GetMapping(\"/{id}\")\n    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {\n        User user = userService.findById(id)\n            .orElseThrow(() -> new ResourceNotFoundException(\"User not found with id: \" + id));\n        return ResponseEntity.ok(userMapper.toDto(user));\n    }\n\n    @PostMapping\n    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserCreateRequest request) {\n        User user = userMapper.toEntity(request);\n        User savedUser = userService.save(user);\n        return new ResponseEntity<>(userMapper.toDto(savedUser), HttpStatus.CREATED);\n    }\n\n    @PutMapping(\"/{id}\")\n    public ResponseEntity<UserDTO> updateUser(\n            @PathVariable Long id,\n            @Valid @RequestBody UserUpdateRequest request) {\n        User existingUser = userService.findById(id)\n            .orElseThrow(() -> new ResourceNotFoundException(\"User not found with id: \" + id));\n        userMapper.updateEntityFromDto(request, existingUser);\n        User updatedUser = userService.save(existingUser);\n        return ResponseEntity.ok(userMapper.toDto(updatedUser));\n    }\n\n    @DeleteMapping(\"/{id}\")\n    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {\n        userService.deleteById(id);\n        return ResponseEntity.noContent().build();\n    }\n}\n\n```\n\n```java\n/**\n * Unit tests for UserProfileController using JUnit 5 and Mockito.\n * Tests cover happy paths, validation, and error scenarios.\n */\n@ExtendWith(MockitoExtension.class)\n@WebMvcTest(UserProfileController.class)\nclass UserProfileControllerTest {\n\n    @Autowired\n    private MockMvc mockMvc;\n\n    @MockBean\n    private UserService userService;\n\n    @MockBean\n    private UserMapper userMapper;\n\n    @Test\n    void getUser_shouldReturnUserWhenExists() throws Exception {\n        // Given\n        Long userId = 1L;\n        User user = new User(userId, \"test@example.com\", \"password123\", \"Test User\");\n        UserDTO userDTO = new UserDTO(userId, \"test@example.com\", \"Test User\");\n\n        given(userService.findById(userId)).willReturn(Optional.of(user));\n        given(userMapper.toDto(user)).willReturn(userDTO);\n\n        // When & Then\n        mockMvc.perform(get(\"/api/users/{id}\", userId))\n            .andExpect(status().isOk())\n            .andExpect(jsonPath(\"$.id\").value(userId))\n            .andExpect(jsonPath(\"$.email\").value(\"test@example.com\"));\n    }\n\n    @Test\n    void createUser_shouldReturnCreatedUser() throws Exception {\n        // Given\n        UserCreateRequest request = new UserCreateRequest(\"new@example.com\", \"password123\", \"New User\");\n        User user = new User(2L, \"new@example.com\", \"password123\", \"New User\");\n        UserDTO userDTO = new UserDTO(2L, \"new@example.com\", \"New User\");\n\n        given(userMapper.toEntity(request)).willReturn(user);\n        given(userService.save(user)).willReturn(user);\n        given(userMapper.toDto(user)).willReturn(userDTO);\n\n        // When & Then\n        mockMvc.perform(post(\"/api/users\")\n                .contentType(MediaType.APPLICATION_JSON)\n                .content(asJsonString(request)))\n            .andExpect(status().isCreated())\n            .andExpect(jsonPath(\"$.id\").value(2L));\n    }\n\n    private static String asJsonString(final Object obj) {\n        try {\n            return new ObjectMapper().writeValueAsString(obj);\n        } catch (Exception e) {\n            throw new RuntimeException(e);\n        }\n    }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cursor-rules-java#main-content",
+      "cursor-rules-java#overview",
+      "cursor-rules-java#setup",
+      "cursor-rules-java#examples",
+      "cursor-rules-java#tools",
+      "cursor-rules-java#mcp",
+      "cursor-rules-java#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cursor-rules-java provides a collection of reusable skills, agents, and commands designed to enhance Java development within AI coding assistants like Cursor, Claude Code, and GitHub Copilot. The project enables structured workflows across the software development lifecycle: planning with user stories and architecture decisions, building with Maven best practices and secure coding guidance, and operating with observability and performance testing. Teams use these skills to guide AI agents through complex tasks—from reviewing Maven projects to implementing features with Spring Boot, Quarkus, or Micronaut—while maintaining engineering control over proposed changes. It also includes compliance-focused skills for EU regulations including the AI Act, GDPR, and DORA, helping teams integrate regulatory awareness into their development process.\nReview Maven projects for best practices and apply approved improvements\nGenerate feature implementations using framework-specific agents (Spring Boot, Quarkus, Micronaut)\nCreate and update GitHub Issues and ADRs with AI guidance\nPerform secure code reviews and apply security hardening patterns",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jabrena/cursor-rules-java`",
+    "usage_vi": "```\nGenerate a Java class that [IMPLEMENTS_SPECIFIC_FUNCTIONALITY] using best practices for [FRAMEWORK/LIBRARY]. Include unit tests with [TESTING_FRAMEWORK] and follow [CODE_STYLE_GUIDELINE]. Add comments explaining key design decisions. [ADDITIONAL_REQUIREMENTS].\n```\nCopy\n\n```\n```java\n/**\n * A REST controller for managing user profiles in a Spring Boot application.\n * Implements CRUD operations with validation and proper error handling.\n */\n@RestController\n@RequestMapping(\"/api/users\")\n@RequiredArgsConstructor\npublic class UserProfileController {\n\n    private final UserService userService;\n    private final UserMapper userMapper;\n\n    @GetMapping(\"/{id}\")\n    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {\n        User user = userService.findById(id)\n            .orElseThrow(() -> new ResourceNotFoundException(\"User not found with id: \" + id));\n        return ResponseEntity.ok(userMapper.toDto(user));\n    }\n\n    @PostMapping\n    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserCreateRequest request) {\n        User user = userMapper.toEntity(request);\n        User savedUser = userService.save(user);\n        return new ResponseEntity<>(userMapper.toDto(savedUser), HttpStatus.CREATED);\n    }\n\n    @PutMapping(\"/{id}\")\n    public ResponseEntity<UserDTO> updateUser(\n            @PathVariable Long id,\n            @Valid @RequestBody UserUpdateRequest request) {\n        User existingUser = userService.findById(id)\n            .orElseThrow(() -> new ResourceNotFoundException(\"User not found with id: \" + id));\n        userMapper.updateEntityFromDto(request, existingUser);\n        User updatedUser = userService.save(existingUser);\n        return ResponseEntity.ok(userMapper.toDto(updatedUser));\n    }\n\n    @DeleteMapping(\"/{id}\")\n    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {\n        userService.deleteById(id);\n        return ResponseEntity.noContent().build();\n    }\n}\n\n```\n\n```java\n/**\n * Unit tests for UserProfileController using JUnit 5 and Mockito.\n * Tests cover happy paths, validation, and error scenarios.\n */\n@ExtendWith(MockitoExtension.class)\n@WebMvcTest(UserProfileController.class)\nclass UserProfileControllerTest {\n\n    @Autowired\n    private MockMvc mockMvc;\n\n    @MockBean\n    private UserService userService;\n\n    @MockBean\n    private UserMapper userMapper;\n\n    @Test\n    void getUser_shouldReturnUserWhenExists() throws Exception {\n        // Given\n        Long userId = 1L;\n        User user = new User(userId, \"test@example.com\", \"password123\", \"Test User\");\n        UserDTO userDTO = new UserDTO(userId, \"test@example.com\", \"Test User\");\n\n        given(userService.findById(userId)).willReturn(Optional.of(user));\n        given(userMapper.toDto(user)).willReturn(userDTO);\n\n        // When & Then\n        mockMvc.perform(get(\"/api/users/{id}\", userId))\n            .andExpect(status().isOk())\n            .andExpect(jsonPath(\"$.id\").value(userId))\n            .andExpect(jsonPath(\"$.email\").value(\"test@example.com\"));\n    }\n\n    @Test\n    void createUser_shouldReturnCreatedUser() throws Exception {\n        // Given\n        UserCreateRequest request = new UserCreateRequest(\"new@example.com\", \"password123\", \"New User\");\n        User user = new User(2L, \"new@example.com\", \"password123\", \"New User\");\n        UserDTO userDTO = new UserDTO(2L, \"new@example.com\", \"New User\");\n\n        given(userMapper.toEntity(request)).willReturn(user);\n        given(userService.save(user)).willReturn(user);\n        given(userMapper.toDto(user)).willReturn(userDTO);\n\n        // When & Then\n        mockMvc.perform(post(\"/api/users\")\n                .contentType(MediaType.APPLICATION_JSON)\n                .content(asJsonString(request)))\n            .andExpect(status().isCreated())\n            .andExpect(jsonPath(\"$.id\").value(2L));\n    }\n\n    private static String asJsonString(final Object obj) {\n        try {\n            return new ObjectMapper().writeValueAsString(obj);\n        } catch (Exception e) {\n            throw new RuntimeException(e);\n        }\n    }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:40:27.731487Z",
+    "http_status": 200,
+    "content_hash": "2c30ed401107c80e94959b7f1d2e4b20a940ff6640a3e2a50770949aaa5bd8bb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cursor-rules-java.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cursor-rules-java.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Cursor-rules-java - Java automation prompts",
+  "short_description_vi": "Cursor-rules-java provides system prompts for Java that assist software engineers in daily programming tasks and CI/CD pipelines. It integrates with Claude and supports IntelliJ IDEA and VSCode. Engineers benefit from automated code generation, debugging, and optimization."
+}

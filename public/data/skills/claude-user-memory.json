@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-user-memory",
+  "slug": "claude-user-memory",
+  "name": "Claude User Memory",
+  "headline": "claude user memory: speed up development",
+  "short_description": "Autonomous agent substrate for Claude Code CLI. Research→Plan→Implement workflows with quality gates, TDD   enforcement, and multi-agent coordination. 4.8-5.5x faster development. Built on Anthropic's engineering research.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "VAMFI",
+  "install_command": "git clone https://github.com/VAMFI/claude-user-memory.git",
+  "source_repo_url": "https://github.com/VAMFI/claude-user-memory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "workflow-automation",
+    "ai-agents",
+    "ai-coding-assistant",
+    "developer-tools",
+    "multi-agent-system",
+    "tdd",
+    "research-driven-development",
+    "agent-orchestration",
+    "claude-code",
+    "autonomous-agents",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Agentic Substrate is a development automation system that orchestrates 9 specialized agents to handle research, planning, implementation, and deployment workflows in Claude Code. It enforces a research-first methodology, fetching version-accurate documentation before coding to eliminate hallucinations and stale training data. The system includes 5 auto-invoked skills, quality gates that enforce test passing and minimum quality scores, and a persistent knowledge graph that learns patterns across sessions. Built on Anthropic's 2024-2025 research, it supports step-by-step workflows or full automation through commands like /workflow, /research, /plan, and /implement. Developers benefit from reduced development time, built-in TDD enforcement, and automatic circuit breakers that prevent infinite loops.\nAutomating API integration workflows with current, accurate documentation\nImplementing authentication systems with quality validation gates\nAdding caching layers with research-backed planning and testing\nCoordinating multi-agent development tasks with knowledge persistence",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/VAMFI/claude-user-memory`",
+    "usage": "```\nUse the claude-user-memory skill to autonomously develop a [PROJECT_NAME] feature for [TECH_STACK]. Start with a research phase to gather requirements from [SOURCE_1] and [SOURCE_2]. Then create a detailed implementation plan with test cases, edge cases, and performance benchmarks. Execute the plan using TDD, ensuring all tests pass before proceeding to the next phase. Coordinate with [TEAM_MEMBER_ROLE] for code reviews and quality gates. Deliver a production-ready solution with documentation and deployment scripts.\n```\nCopy\n\n```\n### Research Phase\nAnalyzed the GitHub repository for the `nextjs-ecommerce` project and identified 3 critical gaps in the checkout flow: (1) missing address validation, (2) no real-time inventory checks, and (3) slow payment processing under high load. Cross-referenced with Stripe API documentation and Shopify’s performance benchmarks to confirm these are industry-standard pain points. Extracted 12 user stories from the product backlog and mapped them to technical tasks with estimated effort (2-5 story points each).\n\n### Implementation Plan\n**Phase 1: Address Validation**\n- Task 1: Integrate Google Address Validation API with 99.8% accuracy requirement.\n- Task 2: Add client-side validation with debounced API calls to reduce latency.\n- Test Suite: 15 unit tests (Jest), 8 integration tests (Cypress), and 3 load tests (k6).\n- Performance Gate: Response time <200ms for 95th percentile.\n\n**Phase 2: Inventory Sync**\n- Task 1: Implement WebSocket connection to Shopify’s GraphQL API for real-time updates.\n- Task 2: Add optimistic UI updates with rollback on failure.\n- Test Suite: 10 unit tests (Jest), 6 E2E tests (Playwright), and 2 chaos tests (Gremlin).\n- Quality Gate: Zero data inconsistencies in 1000+ checkout simulations.\n\n**Phase 3: Payment Optimization**\n- Task 1: Replace Stripe’s default checkout with a custom form using Elements SDK.\n- Task 2: Implement server-side tokenization and client-side 3D Secure fallback.\n- Test Suite: 12 unit tests (Jest), 5 performance tests (k6), and 4 security tests (OWASP ZAP).\n- Performance Gate: 99.9% success rate under 1000 concurrent users.\n\n### Execution & Coordination\nExecuted Phase 1 in 4 hours with 100% test coverage. Deployed to staging with a canary release (5% traffic) and monitored for 24 hours. Addressed 3 bugs in validation edge cases (e.g., international addresses with non-Latin characters). Coordinated with the DevOps team to set up monitoring dashboards in Grafana. Phase 2 is now 60% complete with 8/10 tests passing. Next steps: Finalize inventory sync and begin Phase 3 performance tuning.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-user-memory#main-content",
+      "claude-user-memory#overview",
+      "claude-user-memory#setup",
+      "claude-user-memory#examples",
+      "claude-user-memory#tools",
+      "claude-user-memory#mcp",
+      "claude-user-memory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agentic Substrate là hệ thống tự động hóa phát triển, điều phối 9 agent chuyên biệt để xử lý các quy trình nghiên cứu, lập kế hoạch, triển khai và deploy trong Claude Code. Hệ thống áp dụng phương pháp ưu tiên nghiên cứu (research-first), tự động lấy tài liệu chuẩn xác theo phiên bản trước khi viết code nhằm loại bỏ hiện tượng ảo giác (hallucinations) và dữ liệu huấn luyện lỗi thời. Hệ thống tích hợp 5 skill tự động kích hoạt, các quality gates đảm bảo test pass và đạt điểm chất lượng tối thiểu, cùng một knowledge graph lưu trữ lâu dài để học hỏi các pattern qua các session. Được xây dựng dựa trên nghiên cứu năm 2024-2025 của Anthropic, hệ thống hỗ trợ cả quy trình từng bước lẫn tự động hóa hoàn toàn thông qua các lệnh như /workflow, /research, /plan, và /implement. Lập trình viên sẽ được rút ngắn thời gian phát triển, áp dụng TDD tự động và cơ chế ngắt mạch (circuit breaker) tự động để ngăn chặn vòng lặp vô hạn.\nTự động hóa quy trình tích hợp API với tài liệu chính xác và cập nhật mới nhất\nTriển khai hệ thống xác thực với các quality validation gates\nBổ sung các lớp caching với quy trình lập kế hoạch và kiểm thử dựa trên nghiên cứu thực tế\nĐiều phối các tác vụ phát triển multi-agent với cơ chế lưu trữ tri thức (knowledge persistence)",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/VAMFI/claude-user-memory`",
+    "usage_vi": "```\nSử dụng skill claude-user-memory để tự động phát triển tính năng [PROJECT_NAME] cho [TECH_STACK]. Bắt đầu với bước nghiên cứu (research phase) để thu thập yêu cầu từ [SOURCE_1] và [SOURCE_2]. Sau đó, lập kế hoạch triển khai chi tiết bao gồm các test case, edge case và benchmark hiệu năng. Thực hiện kế hoạch bằng phương pháp TDD, đảm bảo tất cả các bài test đều pass trước khi chuyển sang giai đoạn tiếp theo. Phối hợp với [TEAM_MEMBER_ROLE] để thực hiện code review và kiểm duyệt qua quality gates. Bàn giao giải pháp sẵn sàng cho môi trường production đi kèm tài liệu và các script deployment.\n```\nCopy\n\n```\n### Research Phase\nĐã phân tích kho lưu trữ GitHub của dự án `nextjs-ecommerce` và xác định 3 thiếu sót nghiêm trọng trong luồng checkout: (1) thiếu xác thực địa chỉ, (2) không kiểm tra tồn kho theo thời gian thực và (3) xử lý thanh toán chậm khi tải cao. Đối chiếu với tài liệu Stripe API và benchmark hiệu năng của Shopify để xác nhận đây là những vấn đề phổ biến trong ngành. Trích xuất 12 user story từ product backlog và ánh xạ chúng thành các tác vụ kỹ thuật với mức độ nỗ lực ước tính (2-5 story point cho mỗi tác vụ).\n\n### Implementation Plan\n**Phase 1: Address Validation**\n- Task 1: Tích hợp Google Address Validation API với yêu cầu độ chính xác 99.8%.\n- Task 2: Thêm xác thực phía client với các lượt gọi API dạng debounce để giảm độ trễ (latency).\n- Test Suite: 15 unit test (Jest), 8 integration test (Cypress) và 3 load test (k6).\n- Performance Gate: Thời gian phản hồi <200ms cho phân vị thứ 95 (95th percentile).\n\n**Phase 2: Inventory Sync**\n- Task 1: Triển khai kết nối WebSocket tới GraphQL API của Shopify để cập nhật theo thời gian thực.\n- Task 2: Thêm cập nhật UI theo dạng optimistic (optimistic UI updates) kèm cơ chế rollback khi thất bại.\n- Test Suite: 10 unit test (Jest), 6 E2E test (Playwright) và 2 chaos test (Gremlin).\n- Quality Gate: Không xảy ra bất kỳ sự không nhất quán dữ liệu nào trong hơn 1000 lượt mô phỏng checkout.\n\n**Phase 3: Payment Optimization**\n- Task 1: Thay thế luồng checkout mặc định của Stripe bằng form tùy chỉnh sử dụng Elements SDK.\n- Task 2: Triển khai tokenization phía server và cơ chế dự phòng (fallback) 3D Secure phía client.\n- Test Suite: 12 unit test (Jest), 5 performance test (k6) và 4 security test (OWASP ZAP).\n- Performance Gate: Tỷ lệ thành công 99.9% dưới mức tải 1000 user đồng thời (concurrent users).\n\n### Execution & Coordination\nĐã thực hiện Phase 1 trong 4 giờ với độ bao phủ kiểm thử (test coverage) đạt 100%. Đã deploy lên môi trường staging theo hình thức canary release (5% lưu lượng truy cập) và giám sát trong 24 giờ. Đã xử lý 3 bug trong các trường hợp biên (edge case) xác thực (ví dụ: địa chỉ quốc tế sử dụng ký tự không thuộc hệ chữ Latinh). Phối hợp với đội ngũ DevOps để thiết lập các dashboard giám sát trong Grafana. Phase 2 hiện đã hoàn thành 60% với 8/10 bài test đã pass. Các bước tiếp theo: Hoàn thiện đồng bộ kho hàng (inventory sync) và bắt đầu tinh chỉnh hiệu năng (performance tuning) cho Phase 3.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:33:23.711981Z",
+    "http_status": 200,
+    "content_hash": "1c2a555a2df834c686fdf91c23fb972ba8c8c208107cf3aae673e881a2bf34b8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-user-memory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-user-memory.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude user memory: tăng tốc quy trình phát triển",
+  "short_description_vi": "Nền tảng agent tự trị (autonomous agent substrate) cho Claude Code CLI. Quy trình Nghiên cứu→Lập kế hoạch→Triển khai tích hợp các quality gates, bắt buộc áp dụng TDD và điều phối multi-agent. Tăng tốc độ phát triển từ 4.8 đến 5.5 lần. Được xây dựng dựa trên các nghiên cứu kỹ thuật của Anthropic."
+}

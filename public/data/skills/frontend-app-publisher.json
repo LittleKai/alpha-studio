@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/frontend-app-publisher",
+  "slug": "frontend-app-publisher",
+  "name": "popsicle",
+  "headline": "Frontend App Publisher - Course & Content",
+  "short_description": "Publisher frontend for managing course creation and marketing content. Integrates with course discovery, ecommerce, and Studio services. Benefits marketing teams by streamlining course and content management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "openedx-unsupported",
+  "install_command": "git clone https://github.com/openedx-unsupported/frontend-app-publisher.git",
+  "source_repo_url": "https://github.com/openedx-unsupported/frontend-app-publisher",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "frontend-app"
+  ],
+  "sections": {
+    "overview": "frontend-app-publisher is a microfrontend application that integrates with Open edX's course discovery, ecommerce, and Studio services. It streamlines course metadata management, course run creation, and ecommerce product configuration without replacing Studio's content authoring capabilities. The tool implements a GitHub-like review workflow for course approvals and is most valuable for organizations managing large course catalogs, third-party content, or frequent course run creation. It centralizes course lifecycle management across Discovery, Programs, and eCommerce, eliminating manual integration work across multiple systems.\nImplementing draft, review, and publish workflows for course creation\nManaging course metadata and ecommerce products from a single interface\nStreamlining course run creation and visibility across multiple courses\nCentralizing integration between courses and eCommerce or Programs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/openedx-unsupported/frontend-app-publisher`",
+    "usage": "```\nI need to publish a new [COURSE_NAME] course on our learning platform. The course is [COURSE_DESCRIPTION]. Use the frontend-app-publisher to: 1) Create a new course entry with metadata including [TAGS], [DIFFICULTY_LEVEL], and [TARGET_AUDIENCE], 2) Generate marketing content including a compelling course title, subtitle, and description optimized for [PLATFORM], 3) Set up the course page with recommended [PRICING_STRATEGY] and [DISCOUNT_OFFERS], and 4) Configure SEO metadata including [META_TITLE], [META_DESCRIPTION], and [KEYWORDS]. Ensure the course meets [BRAND_GUIDELINES] and is ready for immediate publication.\n```\nCopy\n\n```\nCourse successfully published to the learning platform with the following details:\n\n**Course Metadata:**\n- Title: \"Advanced Data Science with Python: From Beginner to Pro\"\n- Subtitle: \"Master machine learning, deep learning, and real-world data analysis\"\n- Description: \"This comprehensive 12-week course takes you from Python fundamentals to advanced data science techniques. Through hands-on projects using real datasets from industries like healthcare and finance, you'll learn to build predictive models, create data visualizations, and deploy machine learning solutions. Perfect for professionals looking to transition into data science or advance their analytical skills.\"\n- Tags: [\"Python\", \"Machine Learning\", \"Data Science\", \"Pandas\", \"Scikit-learn\", \"Deep Learning\"]\n- Difficulty: Intermediate\n- Target Audience: Working professionals, career changers, data analysts\n\n**Marketing Content:**\n- Course Title: \"Data Science Mastery: Python, ML & Real-World Projects\"\n- Subtitle: \"Transform your career with 12 weeks of intensive, project-based learning\"\n- Description: \"Join 5,000+ successful students who've launched data science careers. This course includes 60+ hours of video content, 20+ real-world projects, and lifetime access to course materials. Learn from industry experts with 10+ years of experience at companies like Google and Amazon. Enroll today and get 20% off with code DS2024!\n\n**Course Page Configuration:**\n- Pricing Strategy: Tiered pricing ($199 for basic access, $299 for premium with certificate)\n- Discount Offers: Early bird 30% off until [DATE], referral program 15% off for each friend enrolled\n- Brand Guidelines: Primary color #2E86C1, secondary color #F1C40F, font family Inter\n\n**SEO Metadata:**\n- Meta Title: \"Learn Data Science with Python | Advanced ML Course | [PLATFORM_NAME]\"\n- Meta Description: \"Master Python for data science. Learn machine learning, deep learning, and real-world projects. Get certified and land your dream job in tech.\"\n- Keywords: \"python data science course, machine learning certification, advanced data science, pandas tutorial, scikit-learn course\"\n\nThe course is now live on the platform and accessible to all users. The marketing assets have been generated and are ready for use across email campaigns, social media, and the course discovery pages.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "frontend-app-publisher#main-content",
+      "frontend-app-publisher#overview",
+      "frontend-app-publisher#setup",
+      "frontend-app-publisher#examples",
+      "frontend-app-publisher#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "frontend-app-publisher is a microfrontend application that integrates with Open edX's course discovery, ecommerce, and Studio services. It streamlines course metadata management, course run creation, and ecommerce product configuration without replacing Studio's content authoring capabilities. The tool implements a GitHub-like review workflow for course approvals and is most valuable for organizations managing large course catalogs, third-party content, or frequent course run creation. It centralizes course lifecycle management across Discovery, Programs, and eCommerce, eliminating manual integration work across multiple systems.\nImplementing draft, review, and publish workflows for course creation\nManaging course metadata and ecommerce products from a single interface\nStreamlining course run creation and visibility across multiple courses\nCentralizing integration between courses and eCommerce or Programs",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/openedx-unsupported/frontend-app-publisher`",
+    "usage_vi": "```\nI need to publish a new [COURSE_NAME] course on our learning platform. The course is [COURSE_DESCRIPTION]. Use the frontend-app-publisher to: 1) Create a new course entry with metadata including [TAGS], [DIFFICULTY_LEVEL], and [TARGET_AUDIENCE], 2) Generate marketing content including a compelling course title, subtitle, and description optimized for [PLATFORM], 3) Set up the course page with recommended [PRICING_STRATEGY] and [DISCOUNT_OFFERS], and 4) Configure SEO metadata including [META_TITLE], [META_DESCRIPTION], and [KEYWORDS]. Ensure the course meets [BRAND_GUIDELINES] and is ready for immediate publication.\n```\nCopy\n\n```\nCourse successfully published to the learning platform with the following details:\n\n**Course Metadata:**\n- Title: \"Advanced Data Science with Python: From Beginner to Pro\"\n- Subtitle: \"Master machine learning, deep learning, and real-world data analysis\"\n- Description: \"This comprehensive 12-week course takes you from Python fundamentals to advanced data science techniques. Through hands-on projects using real datasets from industries like healthcare and finance, you'll learn to build predictive models, create data visualizations, and deploy machine learning solutions. Perfect for professionals looking to transition into data science or advance their analytical skills.\"\n- Tags: [\"Python\", \"Machine Learning\", \"Data Science\", \"Pandas\", \"Scikit-learn\", \"Deep Learning\"]\n- Difficulty: Intermediate\n- Target Audience: Working professionals, career changers, data analysts\n\n**Marketing Content:**\n- Course Title: \"Data Science Mastery: Python, ML & Real-World Projects\"\n- Subtitle: \"Transform your career with 12 weeks of intensive, project-based learning\"\n- Description: \"Join 5,000+ successful students who've launched data science careers. This course includes 60+ hours of video content, 20+ real-world projects, and lifetime access to course materials. Learn from industry experts with 10+ years of experience at companies like Google and Amazon. Enroll today and get 20% off with code DS2024!\n\n**Course Page Configuration:**\n- Pricing Strategy: Tiered pricing ($199 for basic access, $299 for premium with certificate)\n- Discount Offers: Early bird 30% off until [DATE], referral program 15% off for each friend enrolled\n- Brand Guidelines: Primary color #2E86C1, secondary color #F1C40F, font family Inter\n\n**SEO Metadata:**\n- Meta Title: \"Learn Data Science with Python | Advanced ML Course | [PLATFORM_NAME]\"\n- Meta Description: \"Master Python for data science. Learn machine learning, deep learning, and real-world projects. Get certified and land your dream job in tech.\"\n- Keywords: \"python data science course, machine learning certification, advanced data science, pandas tutorial, scikit-learn course\"\n\nThe course is now live on the platform and accessible to all users. The marketing assets have been generated and are ready for use across email campaigns, social media, and the course discovery pages.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:23:53.819335Z",
+    "http_status": 200,
+    "content_hash": "cf8fd1c2f94f9106da7f9477899246b623fc67334444d3ce729c18730f1a243b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\frontend-app-publisher.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\frontend-app-publisher.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Frontend App Publisher - Course & Content",
+  "short_description_vi": "Publisher frontend for managing course creation and marketing content. Integrates with course discovery, ecommerce, and Studio services. Benefits marketing teams by streamlining course and content management."
+}

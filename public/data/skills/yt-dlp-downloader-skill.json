@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/yt-dlp-downloader-skill",
+  "slug": "yt-dlp-downloader-skill",
+  "name": "browser-use",
+  "headline": "yt-dlp Downloader Skill - Automate Video Downloads",
+  "short_description": "Cursor Agent Skill for downloading videos from YouTube, Bilibili, Twitter, and thousands of other sites using yt-dlp. Automates video and audio extraction for content creators and operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "MapleShaw",
+  "install_command": "git clone https://github.com/MapleShaw/yt-dlp-downloader-skill.git",
+  "source_repo_url": "https://github.com/MapleShaw/yt-dlp-downloader-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This Cursor Agent Skill automates video downloading from over 1000 websites including YouTube, Bilibili, Twitter, TikTok, Vimeo, and Twitch using yt-dlp. It enables extraction of video files, audio (MP3), and subtitles with quality selection (720p/1080p/best) and automatic YouTube 403 error handling via browser cookies. The skill supports resuming interrupted downloads and simplifies content acquisition workflows for creators, operations teams, and media professionals. Setup requires installing yt-dlp and ffmpeg, then cloning the skill to Cursor's skills directory for natural language command execution.\nDownload YouTube videos with automatic cookie-based authentication\nExtract audio tracks as MP3 files from video content\nBatch download videos from Bilibili, Twitter, and other platforms\nDownload videos with subtitles in specific quality formats",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MapleShaw/yt-dlp-downloader-skill`",
+    "usage": "```\nDownload the highest quality video and audio available from [VIDEO_URL] using yt-dlp. Extract the audio only as an MP3 file named '[FILE_NAME].mp3' and save it to the '[OUTPUT_FOLDER]' directory. Include subtitles if available, formatted as '[FILE_NAME].srt'. Use the following yt-dlp command structure as a reference: yt-dlp --format 'bv+ba' --merge-output-format mp4 --write-subs --sub-lang en --output '[OUTPUT_FOLDER]/[FILE_NAME].%(ext)s' [VIDEO_URL]\n```\nCopy\n\n```\n```\n✅ Download completed successfully!\n\n📁 Saved to: /Users/creative/Downloads/How_to_Edit_Videos_2024\n\n📊 File Details:\n- Video: How_to_Edit_Videos_2024.mp4 (1080p, 2.4GB)\n- Audio: How_to_Edit_Videos_2024.mp3 (320kbps, 2h 15m)\n- Subtitles: How_to_Edit_Videos_2024.en.srt (English)\n\n🔧 Command Used:\nyt-dlp --format 'bv+ba' --merge-output-format mp4 --write-subs --sub-lang en --output '/Users/creative/Downloads/How_to_Edit_Videos_2024/How_to_Edit_Videos_2024.%(ext)s' https://www.youtube.com/watch?v=dQw4w9WgXcQ\n\n💡 Pro Tip: Use --embed-thumbnail to add the video thumbnail to the MP3 file for better metadata.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "yt-dlp-downloader-skill#main-content",
+      "yt-dlp-downloader-skill#overview",
+      "yt-dlp-downloader-skill#setup",
+      "yt-dlp-downloader-skill#examples",
+      "yt-dlp-downloader-skill#tools",
+      "yt-dlp-downloader-skill#mcp",
+      "yt-dlp-downloader-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This Cursor Agent Skill automates video downloading from over 1000 websites including YouTube, Bilibili, Twitter, TikTok, Vimeo, and Twitch using yt-dlp. It enables extraction of video files, audio (MP3), and subtitles with quality selection (720p/1080p/best) and automatic YouTube 403 error handling via browser cookies. The skill supports resuming interrupted downloads and simplifies content acquisition workflows for creators, operations teams, and media professionals. Setup requires installing yt-dlp and ffmpeg, then cloning the skill to Cursor's skills directory for natural language command execution.\nDownload YouTube videos with automatic cookie-based authentication\nExtract audio tracks as MP3 files from video content\nBatch download videos from Bilibili, Twitter, and other platforms\nDownload videos with subtitles in specific quality formats",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MapleShaw/yt-dlp-downloader-skill`",
+    "usage_vi": "```\nDownload the highest quality video and audio available from [VIDEO_URL] using yt-dlp. Extract the audio only as an MP3 file named '[FILE_NAME].mp3' and save it to the '[OUTPUT_FOLDER]' directory. Include subtitles if available, formatted as '[FILE_NAME].srt'. Use the following yt-dlp command structure as a reference: yt-dlp --format 'bv+ba' --merge-output-format mp4 --write-subs --sub-lang en --output '[OUTPUT_FOLDER]/[FILE_NAME].%(ext)s' [VIDEO_URL]\n```\nCopy\n\n```\n```\n✅ Download completed successfully!\n\n📁 Saved to: /Users/creative/Downloads/How_to_Edit_Videos_2024\n\n📊 File Details:\n- Video: How_to_Edit_Videos_2024.mp4 (1080p, 2.4GB)\n- Audio: How_to_Edit_Videos_2024.mp3 (320kbps, 2h 15m)\n- Subtitles: How_to_Edit_Videos_2024.en.srt (English)\n\n🔧 Command Used:\nyt-dlp --format 'bv+ba' --merge-output-format mp4 --write-subs --sub-lang en --output '/Users/creative/Downloads/How_to_Edit_Videos_2024/How_to_Edit_Videos_2024.%(ext)s' https://www.youtube.com/watch?v=dQw4w9WgXcQ\n\n💡 Pro Tip: Use --embed-thumbnail to add the video thumbnail to the MP3 file for better metadata.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:46:22.262599Z",
+    "http_status": 200,
+    "content_hash": "fd63bc431063657c34b58527a5cd8f0dd030f697448c459540e36082677a8b3c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\yt-dlp-downloader-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\yt-dlp-downloader-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "yt-dlp Downloader Skill - Automate Video Downloads",
+  "short_description_vi": "Cursor Agent Skill for downloading videos from YouTube, Bilibili, Twitter, and thousands of other sites using yt-dlp. Automates video and audio extraction for content creators and operations teams."
+}

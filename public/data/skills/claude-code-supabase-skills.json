@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-supabase-skills",
+  "slug": "claude-code-supabase-skills",
+  "name": "Claude Code Supabase Skills",
+  "headline": "Claude Code Supabase API skills",
+  "short_description": "Claude Code skills for Supabase API operations including database CRUD, authentication, file storage, realtime subscriptions, and edge functions deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "Nice-Wolf-Studio",
+  "install_command": "git clone https://github.com/Nice-Wolf-Studio/claude-code-supabase-skills.git",
+  "source_repo_url": "https://github.com/Nice-Wolf-Studio/claude-code-supabase-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Supabase Skills for Claude Code provides comprehensive automation for Supabase backend operations directly within Claude Code and Cursor. The skill set wraps the Supabase API to enable database queries with filters and pagination, user authentication and management, file uploads and storage bucket operations, realtime WebSocket subscriptions to track database changes, and serverless edge function invocation. Developers can set up the skills by cloning the repository, configuring Supabase credentials as environment variables, and linking skills to their Claude workspace. Use cases include building full-stack applications with real-time features, managing user authentication flows, handling file uploads to cloud storage, listening for database changes, and invoking custom serverless functions—all without leaving the Claude Code editor.\nQuery and filter database tables with pagination using Claude Code\nAutomate user sign-up, authentication, and account management\nUpload and manage files in Supabase Storage buckets with signed URLs\nSubscribe to real-time database changes and broadcast messages",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Nice-Wolf-Studio/claude-code-supabase-skills`",
+    "usage": "```\nI need to perform the following Supabase operations using Claude Code skills: [OPERATIONS]. Here's the context: [CONTEXT]. Please provide the code snippets and explanations for each operation. Use the Supabase JavaScript client and ensure the code is production-ready.\n```\nCopy\n\n```\n```javascript\n// Create a new user in Supabase\nconst { data, error } = await supabase\n  .from('users')\n  .insert([{ username: 'new_user', email: 'new_user@example.com' }])\n\nif (error) {\n  console.error('Error creating user:', error)\n} else {\n  console.log('User created successfully:', data)\n}\n```\n\n**Explanation**: This code snippet demonstrates how to create a new user in a Supabase table named 'users'. The `.insert()` method is used to add a new record to the table. Error handling is included to manage any potential issues during the operation.\n\n```javascript\n// Fetch user data with pagination\nconst { data, error } = await supabase\n  .from('users')\n  .select('*')\n  .range(0, 9)\n\nif (error) {\n  console.error('Error fetching users:', error)\n} else {\n  console.log('Fetched users:', data)\n}\n```\n\n**Explanation**: This snippet shows how to fetch user data with pagination. The `.range()` method is used to specify the range of records to return, which is useful for implementing pagination in your application.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-supabase-skills#main-content",
+      "claude-code-supabase-skills#overview",
+      "claude-code-supabase-skills#setup",
+      "claude-code-supabase-skills#examples",
+      "claude-code-supabase-skills#tools",
+      "claude-code-supabase-skills#mcp",
+      "claude-code-supabase-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Supabase Skills for Claude Code provides comprehensive automation for Supabase backend operations directly within Claude Code and Cursor. The skill set wraps the Supabase API to enable database queries with filters and pagination, user authentication and management, file uploads and storage bucket operations, realtime WebSocket subscriptions to track database changes, and serverless edge function invocation. Developers can set up the skills by cloning the repository, configuring Supabase credentials as environment variables, and linking skills to their Claude workspace. Use cases include building full-stack applications with real-time features, managing user authentication flows, handling file uploads to cloud storage, listening for database changes, and invoking custom serverless functions—all without leaving the Claude Code editor.\nQuery and filter database tables with pagination using Claude Code\nAutomate user sign-up, authentication, and account management\nUpload and manage files in Supabase Storage buckets with signed URLs\nSubscribe to real-time database changes and broadcast messages",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Nice-Wolf-Studio/claude-code-supabase-skills`",
+    "usage_vi": "```\nI need to perform the following Supabase operations using Claude Code skills: [OPERATIONS]. Here's the context: [CONTEXT]. Please provide the code snippets and explanations for each operation. Use the Supabase JavaScript client and ensure the code is production-ready.\n```\nCopy\n\n```\n```javascript\n// Create a new user in Supabase\nconst { data, error } = await supabase\n  .from('users')\n  .insert([{ username: 'new_user', email: 'new_user@example.com' }])\n\nif (error) {\n  console.error('Error creating user:', error)\n} else {\n  console.log('User created successfully:', data)\n}\n```\n\n**Explanation**: This code snippet demonstrates how to create a new user in a Supabase table named 'users'. The `.insert()` method is used to add a new record to the table. Error handling is included to manage any potential issues during the operation.\n\n```javascript\n// Fetch user data with pagination\nconst { data, error } = await supabase\n  .from('users')\n  .select('*')\n  .range(0, 9)\n\nif (error) {\n  console.error('Error fetching users:', error)\n} else {\n  console.log('Fetched users:', data)\n}\n```\n\n**Explanation**: This snippet shows how to fetch user data with pagination. The `.range()` method is used to specify the range of records to return, which is useful for implementing pagination in your application.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:34.053841Z",
+    "http_status": 200,
+    "content_hash": "d387d6f552b48701adbd4516c85be74b71918a23a81079cc6f9bc19b1f19fb2f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-supabase-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-supabase-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Supabase API skills",
+  "short_description_vi": "Claude Code skills for Supabase API operations including database CRUD, authentication, file storage, realtime subscriptions, and edge functions deployment."
+}

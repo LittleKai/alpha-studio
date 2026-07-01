@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/everything-claude-code",
+  "slug": "everything-claude-code",
+  "name": "react-native-best-practices",
+  "headline": "Claude Code Configurations for Developers",
+  "short_description": "Explore a comprehensive collection of Claude Code configurations, including agents, skills, hooks, and commands. Perfect for developers looking to enhance productivity with battle-tested solutions from an Anthropic hackathon winner.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "affaan-m",
+  "install_command": "claude install affaan-m/everything-claude-code",
+  "source_repo_url": "https://github.com/affaan-m/everything-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-tools",
+    "ai-agents",
+    "llm",
+    "productivity",
+    "claude"
+  ],
+  "sections": {
+    "overview": "Everything Claude Code (ECC) is a repository of pre-built configurations and tools designed to extend Claude Code's capabilities across multiple platforms including Cursor, Gemini, CodeBuddy, and Claude itself. The collection includes agents, skills, hooks, and commands that developers can integrate into their workflows to enhance productivity and code generation tasks. Each configuration is battle-tested and organized by platform and functionality, allowing developers to quickly adopt proven patterns without building from scratch. The repository supports multiple installation targets and provides prompt defense baselines for secure implementation. Developers can leverage these pre-configured solutions to standardize their AI-assisted coding practices across different tools and environments.\nConfiguring AI agents to automate data entry tasks in enterprise applications.\nIntegrating Claude Code into CI/CD pipelines for automated testing and deployment.\nEnhancing productivity by utilizing pre-built configurations for common development tasks.\nCreating hooks that trigger specific actions based on user interactions within applications.",
+    "setup": "Terminal\nCopy\n`claude install affaan-m/everything-claude-code`\n`git clone https://github.com/affaan-m/everything-claude-code`",
+    "usage": "```\nGenerate a Claude Code configuration for a [SPECIFIC_TASK] using the following requirements: [REQUIREMENTS]. Include all necessary agents, skills, hooks, and commands. Ensure the solution is optimized for [INDUSTRY] workflows.\n```\nCopy\n\n```\nHere's a Claude Code configuration for automating expense report generation in the finance industry:\n\n```json\n{\n  \"agents\": [\n    {\n      \"name\": \"ExpenseAgent\",\n      \"description\": \"Handles expense report generation and approval workflows\",\n      \"skills\": [\n        \"data_extraction\",\n        \"report_generation\",\n        \"approval_routing\"\n      ],\n      \"hooks\": [\n        {\n          \"name\": \"extract_expenses\",\n          \"description\": \"Extracts expense data from email attachments\",\n          \"command\": \"python extract_expenses.py {attachment_path}\"\n        }\n      ]\n    }\n  ],\n  \"commands\": [\n    {\n      \"name\": \"generate_report\",\n      \"description\": \"Generates a formatted expense report\",\n      \"parameters\": [\n        {\n          \"name\": \"month\",\n          \"type\": \"string\",\n          \"description\": \"Month for the report\"\n        }\n      ],\n      \"command\": \"python generate_report.py --month {month}\"\n    }\n  ]\n}\n```\n\nThis configuration includes an agent that handles the entire expense reporting workflow, with specific skills for data extraction, report generation, and approval routing. The hooks allow for seamless integration with email systems to extract expense data from attachments. The command 'generate_report' can be called with a specific month parameter to produce the desired report.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "everything-claude-code#main-content",
+      "everything-claude-code#overview",
+      "everything-claude-code#setup",
+      "everything-claude-code#examples",
+      "everything-claude-code#tools",
+      "everything-claude-code#mcp",
+      "everything-claude-code#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Everything Claude Code (ECC) is a repository of pre-built configurations and tools designed to extend Claude Code's capabilities across multiple platforms including Cursor, Gemini, CodeBuddy, and Claude itself. The collection includes agents, skills, hooks, and commands that developers can integrate into their workflows to enhance productivity and code generation tasks. Each configuration is battle-tested and organized by platform and functionality, allowing developers to quickly adopt proven patterns without building from scratch. The repository supports multiple installation targets and provides prompt defense baselines for secure implementation. Developers can leverage these pre-configured solutions to standardize their AI-assisted coding practices across different tools and environments.\nConfiguring AI agents to automate data entry tasks in enterprise applications.\nIntegrating Claude Code into CI/CD pipelines for automated testing and deployment.\nEnhancing productivity by utilizing pre-built configurations for common development tasks.\nCreating hooks that trigger specific actions based on user interactions within applications.",
+    "setup_vi": "Terminal\nCopy\n`claude install affaan-m/everything-claude-code`\n`git clone https://github.com/affaan-m/everything-claude-code`",
+    "usage_vi": "```\nGenerate a Claude Code configuration for a [SPECIFIC_TASK] using the following requirements: [REQUIREMENTS]. Include all necessary agents, skills, hooks, and commands. Ensure the solution is optimized for [INDUSTRY] workflows.\n```\nCopy\n\n```\nHere's a Claude Code configuration for automating expense report generation in the finance industry:\n\n```json\n{\n  \"agents\": [\n    {\n      \"name\": \"ExpenseAgent\",\n      \"description\": \"Handles expense report generation and approval workflows\",\n      \"skills\": [\n        \"data_extraction\",\n        \"report_generation\",\n        \"approval_routing\"\n      ],\n      \"hooks\": [\n        {\n          \"name\": \"extract_expenses\",\n          \"description\": \"Extracts expense data from email attachments\",\n          \"command\": \"python extract_expenses.py {attachment_path}\"\n        }\n      ]\n    }\n  ],\n  \"commands\": [\n    {\n      \"name\": \"generate_report\",\n      \"description\": \"Generates a formatted expense report\",\n      \"parameters\": [\n        {\n          \"name\": \"month\",\n          \"type\": \"string\",\n          \"description\": \"Month for the report\"\n        }\n      ],\n      \"command\": \"python generate_report.py --month {month}\"\n    }\n  ]\n}\n```\n\nThis configuration includes an agent that handles the entire expense reporting workflow, with specific skills for data extraction, report generation, and approval routing. The hooks allow for seamless integration with email systems to extract expense data from attachments. The command 'generate_report' can be called with a specific month parameter to produce the desired report.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:46:00.867298Z",
+    "http_status": 200,
+    "content_hash": "5d4ac44f96d47d8ef081964e14944ffdc86afd07505e8794fcaad3f36424c04f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\everything-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\everything-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Configurations for Developers",
+  "short_description_vi": "Explore a comprehensive collection of Claude Code configurations, including agents, skills, hooks, and commands. Perfect for developers looking to enhance productivity with battle-tested solutions from an Anthropic hackathon winner."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/h5-promotion",
+  "slug": "h5-promotion",
+  "name": "H5-Promotion",
+  "headline": "H5-Promotion - Interactive HTML5 Marketing Content",
+  "short_description": "H5-Promotion enables marketers to create interactive HTML5 content like shake-to-win, lucky draws, and digital red envelopes. It benefits marketing teams looking to engage users with gamified experiences. The skill connects to web-based marketing campaigns and can be integrated into promotional websites or mobile web apps.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "forrest-lee",
+  "install_command": "git clone https://github.com/forrest-lee/H5-Promotion.git",
+  "source_repo_url": "https://github.com/forrest-lee/H5-Promotion",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "H5-Promotion is a collection of interactive HTML5 components designed for creating engaging promotional experiences. It includes shake-to-win functionality using device motion events, animated red packet opening effects powered by React and CSS3, and interactive UI elements. The skill uses modern web technologies like React state management and CSS3 animations to deliver smooth, responsive promotional interactions. Developers and marketers can integrate these components into web-based campaigns to increase user engagement through gamified experiences.\nCreate shake-to-win promotions using device motion detection\nBuild animated red packet opening interactions for lucky draw campaigns\nDevelop interactive promotional landing pages with gamified elements\nIntegrate animated buttons and UI effects into marketing websites",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/forrest-lee/H5-Promotion`",
+    "usage": "```\nCreate an interactive HTML5 promotional campaign for [PRODUCT/SERVICE] targeting [TARGET_AUDIENCE]. Include a shake-to-win game with [NUMBER] prizes worth [TOTAL_VALUE]. Add a countdown timer for the campaign ending on [DATE]. Design a digital red envelope feature that unlocks after [ACTION_REQUIRED]. Provide the HTML5 code and a brief explanation of how to integrate it into a website. Include social sharing buttons for participants to share their results.\n```\nCopy\n\n```\nHere’s a ready-to-deploy HTML5 promotional campaign for **‘Summer Glow Skincare’**, targeting **millennials aged 25-35** interested in beauty and self-care. The campaign features a **shake-to-win game** with **5 prizes** worth a total of **$500**, including a luxury skincare set ($200), a year’s supply of sunscreen ($150), and three $50 gift cards. The campaign runs from **June 1 to June 30, 2024**, with a countdown timer prominently displayed. Users must **sign up for the newsletter** to unlock a digital red envelope containing a **10% discount code** (valid for 48 hours). The HTML5 code includes responsive design for mobile and desktop, and social sharing buttons encourage participants to post their winnings on Instagram or Twitter with a branded hashtag (#SummerGlowWin).\n\n**Key Features:**\n- **Shake-to-Win Game:** Users physically shake their device (or click a virtual button) to reveal a random prize. The odds are set to **1 in 10** for the grand prize, with smaller prizes more frequent to maintain engagement.\n- **Digital Red Envelope:** After signing up, users receive a virtual red envelope that \"unfolds\" to reveal their discount. The envelope can be shared via WhatsApp or email for additional entries.\n- **Social Sharing:** A modal pops up after winning, prompting users to share their prize on social media for a **bonus entry** into the next draw.\n- **Analytics Integration:** The code includes Google Analytics events to track shakes, red envelope opens, and conversions.\n\n**Integration Instructions:**\n1. Copy the provided HTML5 code into the `<body>` of your promotional landing page.\n2. Replace `[PRODUCT_IMAGE_URL]` and `[BRAND_LOGO]` placeholders with your assets.\n3. Update the prize values and campaign dates in the JavaScript configuration.\n4. Test the shake-to-win functionality on both mobile and desktop devices.\n5. Deploy the campaign via your web hosting service or embed it in your email marketing tool (e.g., Mailchimp) as a dynamic content block.\n\n**Example Output (Simplified Code Snippet):**\n```html\n<div id=\"promo-container\">\n  <h1>Shake to Win!</h1>\n  <p>Win prizes worth up to $500!</p>\n  <button id=\"shake-button\">SHAKE MY DEVICE</button>\n  <div id=\"prize-display\"></div>\n  <div id=\"red-envelope\" style=\"display:none;\">\n    <p>You unlocked a 10% discount!</p>\n    <button onclick=\"shareDiscount()\">Share & Get Bonus Entry</button>\n  </div>\n</div>\n<script>\n  // Prize configuration\n  const prizes = [\n    { name: \"Luxury Skincare Set\", value: 200, odds: 1 },\n    { name: \"Year’s Supply of Sunscreen\", value: 150, odds: 2 },\n    { name: \"$50 Gift Card\", value: 50, odds: 3 }\n  ];\n  // Shake detection and prize logic here...\n</script>\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "h5-promotion#main-content",
+      "h5-promotion#overview",
+      "h5-promotion#setup",
+      "h5-promotion#examples",
+      "h5-promotion#tools",
+      "h5-promotion#mcp",
+      "h5-promotion#related",
+      "marketingskills",
+      "copywriting",
+      "social-media-mass-automation-suite"
+    ],
+    "overview_vi": "H5-Promotion is a collection of interactive HTML5 components designed for creating engaging promotional experiences. It includes shake-to-win functionality using device motion events, animated red packet opening effects powered by React and CSS3, and interactive UI elements. The skill uses modern web technologies like React state management and CSS3 animations to deliver smooth, responsive promotional interactions. Developers and marketers can integrate these components into web-based campaigns to increase user engagement through gamified experiences.\nCreate shake-to-win promotions using device motion detection\nBuild animated red packet opening interactions for lucky draw campaigns\nDevelop interactive promotional landing pages with gamified elements\nIntegrate animated buttons and UI effects into marketing websites",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/forrest-lee/H5-Promotion`",
+    "usage_vi": "```\nCreate an interactive HTML5 promotional campaign for [PRODUCT/SERVICE] targeting [TARGET_AUDIENCE]. Include a shake-to-win game with [NUMBER] prizes worth [TOTAL_VALUE]. Add a countdown timer for the campaign ending on [DATE]. Design a digital red envelope feature that unlocks after [ACTION_REQUIRED]. Provide the HTML5 code and a brief explanation of how to integrate it into a website. Include social sharing buttons for participants to share their results.\n```\nCopy\n\n```\nHere’s a ready-to-deploy HTML5 promotional campaign for **‘Summer Glow Skincare’**, targeting **millennials aged 25-35** interested in beauty and self-care. The campaign features a **shake-to-win game** with **5 prizes** worth a total of **$500**, including a luxury skincare set ($200), a year’s supply of sunscreen ($150), and three $50 gift cards. The campaign runs from **June 1 to June 30, 2024**, with a countdown timer prominently displayed. Users must **sign up for the newsletter** to unlock a digital red envelope containing a **10% discount code** (valid for 48 hours). The HTML5 code includes responsive design for mobile and desktop, and social sharing buttons encourage participants to post their winnings on Instagram or Twitter with a branded hashtag (#SummerGlowWin).\n\n**Key Features:**\n- **Shake-to-Win Game:** Users physically shake their device (or click a virtual button) to reveal a random prize. The odds are set to **1 in 10** for the grand prize, with smaller prizes more frequent to maintain engagement.\n- **Digital Red Envelope:** After signing up, users receive a virtual red envelope that \"unfolds\" to reveal their discount. The envelope can be shared via WhatsApp or email for additional entries.\n- **Social Sharing:** A modal pops up after winning, prompting users to share their prize on social media for a **bonus entry** into the next draw.\n- **Analytics Integration:** The code includes Google Analytics events to track shakes, red envelope opens, and conversions.\n\n**Integration Instructions:**\n1. Copy the provided HTML5 code into the `<body>` of your promotional landing page.\n2. Replace `[PRODUCT_IMAGE_URL]` and `[BRAND_LOGO]` placeholders with your assets.\n3. Update the prize values and campaign dates in the JavaScript configuration.\n4. Test the shake-to-win functionality on both mobile and desktop devices.\n5. Deploy the campaign via your web hosting service or embed it in your email marketing tool (e.g., Mailchimp) as a dynamic content block.\n\n**Example Output (Simplified Code Snippet):**\n```html\n<div id=\"promo-container\">\n  <h1>Shake to Win!</h1>\n  <p>Win prizes worth up to $500!</p>\n  <button id=\"shake-button\">SHAKE MY DEVICE</button>\n  <div id=\"prize-display\"></div>\n  <div id=\"red-envelope\" style=\"display:none;\">\n    <p>You unlocked a 10% discount!</p>\n    <button onclick=\"shareDiscount()\">Share & Get Bonus Entry</button>\n  </div>\n</div>\n<script>\n  // Prize configuration\n  const prizes = [\n    { name: \"Luxury Skincare Set\", value: 200, odds: 1 },\n    { name: \"Year’s Supply of Sunscreen\", value: 150, odds: 2 },\n    { name: \"$50 Gift Card\", value: 50, odds: 3 }\n  ];\n  // Shake detection and prize logic here...\n</script>\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:36:50.300536Z",
+    "http_status": 200,
+    "content_hash": "f1af7e0c6413c239a422b0de62124fb09da3013286051c16c0a36272dae26758",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\h5-promotion.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\h5-promotion.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "H5-Promotion - Interactive HTML5 Marketing Content",
+  "short_description_vi": "H5-Promotion enables marketers to create interactive HTML5 content like shake-to-win, lucky draws, and digital red envelopes. It benefits marketing teams looking to engage users with gamified experiences. The skill connects to web-based marketing campaigns and can be integrated into promotional websites or mobile web apps."
+}

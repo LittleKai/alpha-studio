@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lovstudio-image-creator",
+  "slug": "lovstudio-image-creator",
+  "name": "GPT Image 2",
+  "headline": "Image Creator: Flexible AI Image Generation",
+  "short_description": "The Image Creator provides a framework for generating artwork, photos, and illustrations based on user input. It's ideal for users looking to create various visual assets such as posters and prompts for AI models.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "lovstudio",
+  "install_command": "git clone https://github.com/lovstudio/skills",
+  "source_repo_url": "https://github.com/lovstudio/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "image-generation",
+    "creator",
+    "image",
+    "lovstudio"
+  ],
+  "sections": {
+    "overview": "The Image Creator skill provides a flexible framework for generating visual assets including artwork, photos, illustrations, posters, and AI model prompts. It intelligently selects between three approaches—end-to-end AI generation, code-based rendering, or prompt engineering—to deliver the most appropriate output for your specific needs. This skill is ideal for users creating diverse visual content who want automation without sacrificing quality or customization. Whether you need quick AI-generated images or refined outputs through code or prompt optimization, Image Creator adapts to your workflow.\nGenerate AI artwork in PNG format\nCreate editable designs like posters and cards\nGenerate text prompts for external models such as Midjourney",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/lovstudio/skills --skill lovstudio-image-creator`\n`git clone https://github.com/lovstudio/skills`",
+    "usage": "```\nGenerate a high-quality [POSTER/ILLUSTRATION/PHOTO] for [COMPANY] in the [INDUSTRY] sector. The design should be [STYLE: minimalist, vintage, futuristic, etc.], with a color scheme of [COLORS] and a focal point featuring [KEY ELEMENTS]. Include text: '[TEXT TO INCLUDE]'. Use a [RESOLUTION: 4K, high-res, etc.] format.\n```\nCopy\n\n```\n```markdown\n**Generated Poster for \"EcoHarvest Farms\"**\n\n**Prompt Used:**\nGenerate a high-quality poster for EcoHarvest Farms in the sustainable agriculture sector. The design should be minimalist with a color scheme of earthy greens and warm browns, featuring a focal point of a hand holding a freshly harvested carrot. Include text: \"Fresh from the Farm, Straight to Your Table\". Use a 4K resolution format.\n\n**Output:**\n![Poster Image](https://via.placeholder.com/1920x1080/2E8B57/FFFFFF?text=Fresh+from+the+Farm%2C+Straight+to+Your+Table)\n\n**Design Elements:**\n- **Color Palette:** Earthy greens (#2E8B57) and warm browns (#8B4513)\n- **Focal Point:** A hand holding a freshly harvested carrot\n- **Typography:** Clean, sans-serif font for readability\n- **Additional Details:** Subtle background texture of farmland\n\n**Suggested Use Cases:**\n- Social media campaigns\n- Farm-to-table marketing materials\n- Website headers\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "lovstudio-image-creator#main-content",
+      "lovstudio-image-creator#overview",
+      "lovstudio-image-creator#setup",
+      "lovstudio-image-creator#examples",
+      "lovstudio-image-creator#tools",
+      "lovstudio-image-creator#mcp",
+      "lovstudio-image-creator#related",
+      "app-icon-generation",
+      "spritecook-generate-sprites",
+      "gpt-image-2"
+    ],
+    "overview_vi": "The Image Creator skill provides a flexible framework for generating visual assets including artwork, photos, illustrations, posters, and AI model prompts. It intelligently selects between three approaches—end-to-end AI generation, code-based rendering, or prompt engineering—to deliver the most appropriate output for your specific needs. This skill is ideal for users creating diverse visual content who want automation without sacrificing quality or customization. Whether you need quick AI-generated images or refined outputs through code or prompt optimization, Image Creator adapts to your workflow.\nGenerate AI artwork in PNG format\nCreate editable designs like posters and cards\nGenerate text prompts for external models such as Midjourney",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/lovstudio/skills --skill lovstudio-image-creator`\n`git clone https://github.com/lovstudio/skills`",
+    "usage_vi": "```\nGenerate a high-quality [POSTER/ILLUSTRATION/PHOTO] for [COMPANY] in the [INDUSTRY] sector. The design should be [STYLE: minimalist, vintage, futuristic, etc.], with a color scheme of [COLORS] and a focal point featuring [KEY ELEMENTS]. Include text: '[TEXT TO INCLUDE]'. Use a [RESOLUTION: 4K, high-res, etc.] format.\n```\nCopy\n\n```\n```markdown\n**Generated Poster for \"EcoHarvest Farms\"**\n\n**Prompt Used:**\nGenerate a high-quality poster for EcoHarvest Farms in the sustainable agriculture sector. The design should be minimalist with a color scheme of earthy greens and warm browns, featuring a focal point of a hand holding a freshly harvested carrot. Include text: \"Fresh from the Farm, Straight to Your Table\". Use a 4K resolution format.\n\n**Output:**\n![Poster Image](https://via.placeholder.com/1920x1080/2E8B57/FFFFFF?text=Fresh+from+the+Farm%2C+Straight+to+Your+Table)\n\n**Design Elements:**\n- **Color Palette:** Earthy greens (#2E8B57) and warm browns (#8B4513)\n- **Focal Point:** A hand holding a freshly harvested carrot\n- **Typography:** Clean, sans-serif font for readability\n- **Additional Details:** Subtle background texture of farmland\n\n**Suggested Use Cases:**\n- Social media campaigns\n- Farm-to-table marketing materials\n- Website headers\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:17:16.886865Z",
+    "http_status": 200,
+    "content_hash": "abe246ec021794663d51ecc8ab0ea1cfe8a42c51cd0fa29ee5c12515ab799483",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lovstudio-image-creator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lovstudio-image-creator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Image Creator: Flexible AI Image Generation",
+  "short_description_vi": "The Image Creator provides a framework for generating artwork, photos, and illustrations based on user input. It's ideal for users looking to create various visual assets such as posters and prompts for AI models."
+}

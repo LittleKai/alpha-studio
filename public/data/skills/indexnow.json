@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/indexnow",
+  "slug": "indexnow",
+  "name": "popsicle",
+  "headline": "IndexNow: Automate Search Engine URL Submissions",
+  "short_description": "Bash script that automates IndexNow API submissions to Bing, Yandex, Yahoo, Naver, and Seznam search engines for individual URLs, bulk lists, sitemaps, and web pages.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "nexoslabs",
+  "install_command": "git clone https://github.com/nexoslabs/IndexNow.git",
+  "source_repo_url": "https://github.com/nexoslabs/IndexNow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "indexnow",
+    "shell-script",
+    "automation",
+    "search-engine",
+    "seo"
+  ],
+  "sections": {
+    "overview": "IndexNow is a Bash script that automates URL submission to major search engines including Microsoft Bing, Yandex, Yahoo, Naver, and Seznam through the IndexNow API. It supports four submission methods: single URL submission, bulk URLs from a file, URL extraction from XML sitemaps, and URL discovery from web pages. The script simplifies search engine indexing workflows by eliminating manual submissions and enabling batch processing of URLs. SEO professionals and website administrators benefit from faster index updates and reduced manual effort when notifying search engines of new or updated content.\nSubmit newly published blog posts to search engines immediately after publication\nBulk update search engines with hundreds of URLs from a file\nAutomatically notify search engines of all pages listed in your XML sitemap\nDiscover and submit URLs found on a specific web page to IndexNow",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nexoslabs/IndexNow`",
+    "usage": "```\nCreate a Bash script to automate IndexNow URL submission for [COMPANY] in the [INDUSTRY] sector. The script should support Bing, Yandex, Yahoo, and Seznam. Use the following [DATA] as the base URLs: [URL1], [URL2], [URL3]. Ensure the script is efficient and handles errors gracefully.\n```\nCopy\n\n```\n#!/bin/bash\n\n# IndexNow URL Submission Script\n# Company: GreenTech Solutions\n# Industry: Renewable Energy\n\n# Configuration\nAPI_KEY=\"your_api_key_here\"\nAPI_ENDPOINT=\"https://www.bing.com/indexnow\"\n\n# URLs to submit\nURLS=(\n  \"https://greentech.com/solar-panels\"\n  \"https://greentech.com/wind-turbines\"\n  \"https://greentech.com/battery-storage\"\n)\n\n# Submit URLs to IndexNow\nfor URL in \"${URLS[@]}\"; do\n  echo \"Submitting URL: $URL\"\n  curl -X POST -H \"Content-Type: application/json\" -d \"{\\\"url\\\": \\\"$URL\\\", \\\"key\\\": \\\"$API_KEY\\\"}\" $API_ENDPOINT\n  echo \"\"\ndone\n\necho \"URL submission process completed.\"\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "indexnow#main-content",
+      "indexnow#overview",
+      "indexnow#setup",
+      "indexnow#examples",
+      "indexnow#tools",
+      "indexnow#mcp",
+      "indexnow#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "IndexNow is a Bash script that automates URL submission to major search engines including Microsoft Bing, Yandex, Yahoo, Naver, and Seznam through the IndexNow API. It supports four submission methods: single URL submission, bulk URLs from a file, URL extraction from XML sitemaps, and URL discovery from web pages. The script simplifies search engine indexing workflows by eliminating manual submissions and enabling batch processing of URLs. SEO professionals and website administrators benefit from faster index updates and reduced manual effort when notifying search engines of new or updated content.\nSubmit newly published blog posts to search engines immediately after publication\nBulk update search engines with hundreds of URLs from a file\nAutomatically notify search engines of all pages listed in your XML sitemap\nDiscover and submit URLs found on a specific web page to IndexNow",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nexoslabs/IndexNow`",
+    "usage_vi": "```\nCreate a Bash script to automate IndexNow URL submission for [COMPANY] in the [INDUSTRY] sector. The script should support Bing, Yandex, Yahoo, and Seznam. Use the following [DATA] as the base URLs: [URL1], [URL2], [URL3]. Ensure the script is efficient and handles errors gracefully.\n```\nCopy\n\n```\n#!/bin/bash\n\n# IndexNow URL Submission Script\n# Company: GreenTech Solutions\n# Industry: Renewable Energy\n\n# Configuration\nAPI_KEY=\"your_api_key_here\"\nAPI_ENDPOINT=\"https://www.bing.com/indexnow\"\n\n# URLs to submit\nURLS=(\n  \"https://greentech.com/solar-panels\"\n  \"https://greentech.com/wind-turbines\"\n  \"https://greentech.com/battery-storage\"\n)\n\n# Submit URLs to IndexNow\nfor URL in \"${URLS[@]}\"; do\n  echo \"Submitting URL: $URL\"\n  curl -X POST -H \"Content-Type: application/json\" -d \"{\\\"url\\\": \\\"$URL\\\", \\\"key\\\": \\\"$API_KEY\\\"}\" $API_ENDPOINT\n  echo \"\"\ndone\n\necho \"URL submission process completed.\"\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:56:24.444653Z",
+    "http_status": 200,
+    "content_hash": "b54ce4c884a6793464f7900dd59f01de3489134ce6d0ba1b84b2d89dab27de54",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\indexnow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\indexnow.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "IndexNow: Automate Search Engine URL Submissions",
+  "short_description_vi": "Bash script that automates IndexNow API submissions to Bing, Yandex, Yahoo, Naver, and Seznam search engines for individual URLs, bulk lists, sitemaps, and web pages."
+}

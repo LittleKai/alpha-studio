@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentic-qe",
+  "slug": "agentic-qe",
+  "name": "react-native-best-practices",
+  "headline": "Agentic QE Fleet - AI Quality Engineering Platform",
+  "short_description": "Agentic QE Fleet is an open-source AI-driven quality engineering platform tailored for Claude Code, providing specialized agents for testing throughout the SDLC. Free to use and contribute, it helps developers to enhance product quality effectively.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "200 min",
+  "author": "proffesor-for-testing",
+  "install_command": "claude install proffesor-for-testing/agentic-qe",
+  "source_repo_url": "https://github.com/proffesor-for-testing/agentic-qe",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "AI",
+    "quality-engineering",
+    "open-source",
+    "SDLC",
+    "testing"
+  ],
+  "sections": {
+    "overview": "Agentic QE Fleet is an open-source AI-driven quality engineering platform that automates test generation, coverage analysis, and flaky test detection across your codebase. It coordinates 60 specialized QE agents to generate unit, integration, property-based, and BDD tests in framework-specific output (Jest, Vitest, Playwright, Cypress, pytest, JUnit, Go, Rust, Swift, Flutter, and more). The platform learns your codebase patterns over time and intelligently routes tasks to the appropriate model tier, reducing AI costs while improving test quality. It integrates seamlessly with Claude Code, Cursor, and 9 other coding agent platforms, and works within your existing CI/CD pipeline to identify the most impactful untested code paths through risk-weighted analysis.\nAutomating test case generation\nContinuous integration testing\nPerformance testing for web applications\nRegression testing for software updates",
+    "setup": "Terminal\nCopy\n`claude install proffesor-for-testing/agentic-qe`\n`git clone https://github.com/proffesor-for-testing/agentic-qe`",
+    "usage": "```\nUsing Agentic QE Fleet, create a comprehensive test plan for a new feature in [PRODUCT]. The feature involves [DESCRIBE FEATURE]. Identify key test scenarios, including unit tests, integration tests, and end-to-end tests. Prioritize these tests based on risk and impact. Suggest specific tools or frameworks that would be most effective for each type of test.\n```\nCopy\n\n```\nBased on the feature description for the new 'AI-Powered Recommendation Engine' in the e-commerce platform, here's a comprehensive test plan:\n\n1. **Unit Tests**:\n   - Test individual recommendation algorithms for accuracy and performance.\n   - Use tools like Jest or PyTest to ensure each function behaves as expected.\n   - Prioritize: High\n\n2. **Integration Tests**:\n   - Verify the interaction between the recommendation engine and the database.\n   - Ensure the engine correctly processes user data and preferences.\n   - Use Postman or RestAssured for API testing.\n   - Prioritize: High\n\n3. **End-to-End Tests**:\n   - Simulate user interactions to ensure recommendations are displayed correctly.\n   - Use Selenium or Cypress to automate browser testing.\n   - Prioritize: Medium\n\n4. **Performance Tests**:\n   - Load test the recommendation engine to ensure it can handle peak traffic.\n   - Use JMeter or Gatling to simulate high user loads.\n   - Prioritize: Medium\n\n5. **Security Tests**:\n   - Ensure user data is handled securely and complies with regulations.\n   - Use OWASP ZAP or Burp Suite for security testing.\n   - Prioritize: High\n\nBy focusing on these areas, we can ensure the AI-Powered Recommendation Engine is robust, reliable, and secure.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentic-qe#main-content",
+      "agentic-qe#overview",
+      "agentic-qe#setup",
+      "agentic-qe#examples",
+      "agentic-qe#tools",
+      "agentic-qe#mcp",
+      "agentic-qe#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Agentic QE Fleet is an open-source AI-driven quality engineering platform that automates test generation, coverage analysis, and flaky test detection across your codebase. It coordinates 60 specialized QE agents to generate unit, integration, property-based, and BDD tests in framework-specific output (Jest, Vitest, Playwright, Cypress, pytest, JUnit, Go, Rust, Swift, Flutter, and more). The platform learns your codebase patterns over time and intelligently routes tasks to the appropriate model tier, reducing AI costs while improving test quality. It integrates seamlessly with Claude Code, Cursor, and 9 other coding agent platforms, and works within your existing CI/CD pipeline to identify the most impactful untested code paths through risk-weighted analysis.\nAutomating test case generation\nContinuous integration testing\nPerformance testing for web applications\nRegression testing for software updates",
+    "setup_vi": "Terminal\nCopy\n`claude install proffesor-for-testing/agentic-qe`\n`git clone https://github.com/proffesor-for-testing/agentic-qe`",
+    "usage_vi": "```\nUsing Agentic QE Fleet, create a comprehensive test plan for a new feature in [PRODUCT]. The feature involves [DESCRIBE FEATURE]. Identify key test scenarios, including unit tests, integration tests, and end-to-end tests. Prioritize these tests based on risk and impact. Suggest specific tools or frameworks that would be most effective for each type of test.\n```\nCopy\n\n```\nBased on the feature description for the new 'AI-Powered Recommendation Engine' in the e-commerce platform, here's a comprehensive test plan:\n\n1. **Unit Tests**:\n   - Test individual recommendation algorithms for accuracy and performance.\n   - Use tools like Jest or PyTest to ensure each function behaves as expected.\n   - Prioritize: High\n\n2. **Integration Tests**:\n   - Verify the interaction between the recommendation engine and the database.\n   - Ensure the engine correctly processes user data and preferences.\n   - Use Postman or RestAssured for API testing.\n   - Prioritize: High\n\n3. **End-to-End Tests**:\n   - Simulate user interactions to ensure recommendations are displayed correctly.\n   - Use Selenium or Cypress to automate browser testing.\n   - Prioritize: Medium\n\n4. **Performance Tests**:\n   - Load test the recommendation engine to ensure it can handle peak traffic.\n   - Use JMeter or Gatling to simulate high user loads.\n   - Prioritize: Medium\n\n5. **Security Tests**:\n   - Ensure user data is handled securely and complies with regulations.\n   - Use OWASP ZAP or Burp Suite for security testing.\n   - Prioritize: High\n\nBy focusing on these areas, we can ensure the AI-Powered Recommendation Engine is robust, reliable, and secure.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:45:27.951465Z",
+    "http_status": 200,
+    "content_hash": "08f16d45222a339c3e68b484abab9301bafb3081247bc4334f2989cb8b835bd7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentic-qe.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentic-qe.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Agentic QE Fleet - AI Quality Engineering Platform",
+  "short_description_vi": "Agentic QE Fleet is an open-source AI-driven quality engineering platform tailored for Claude Code, providing specialized agents for testing throughout the SDLC. Free to use and contribute, it helps developers to enhance product quality effectively."
+}

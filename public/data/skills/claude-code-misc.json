@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-misc",
+  "slug": "claude-code-misc",
+  "name": "browser-use",
+  "headline": "claude code misc: useful code configurations",
+  "short_description": "A collection of Claude Code configurations for automating operations tasks. Includes a meta-prompt MCP server for grading and analyzing prompts, benefiting operations teams by streamlining workflows and improving prompt quality.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "delexw",
+  "install_command": "git clone https://github.com/delexw/claude-code-misc.git",
+  "source_repo_url": "https://github.com/delexw/claude-code-misc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "command",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "Claude Code Misc provides three integrated tools for operations automation: a Meta-Prompter MCP server that evaluates and grades prompts across clarity, specificity, context, actionability, safety, testability, hallucination prevention, and token efficiency; a debug-partner command for systematic, evidence-based troubleshooting with code-centric traces; and a StatusLine context monitor that displays real-time token usage and session tracking. The Meta-Prompter returns machine-readable JSON analysis with weighted global scoring, supporting multiple AI providers including Anthropic and OpenAI. This skill streamlines operations workflows by automating prompt quality assessment and providing collaborative debugging workflows with progressive hypothesis testing.\nGrade and optimize prompts before deployment using 8-dimension evaluation framework\nAutomate prompt quality analysis across teams with JSON-formatted results\nSystematic debugging with evidence-based investigation and progressive clarification\nMonitor context window usage in real-time with token consumption tracking",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/delexw/claude-code-misc`",
+    "usage": "```\nAnalyze the following prompt for [COMPANY] in the [INDUSTRY] sector and provide a detailed evaluation. The prompt is: '[PROMPT]'. Return your analysis in JSON format, including sections for clarity, specificity, potential biases, and suggested improvements.\n```\nCopy\n\n```\n```json\n{\n  \"analysis\": {\n    \"clarity\": \"The prompt is generally clear but could benefit from more specific examples.\",\n    \"specificity\": \"The prompt lacks specific details about the desired output format.\",\n    \"potential_biases\": \"The prompt may unintentionally favor recent data over historical data.\",\n    \"suggested_improvements\": [\n      \"Include specific examples of desired outputs.\",\n      \"Specify the time range for the data to be analyzed.\",\n      \"Explicitly state the importance of both recent and historical data.\"\n    ]\n  },\n  \"score\": 7.5\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-misc#main-content",
+      "claude-code-misc#overview",
+      "claude-code-misc#setup",
+      "claude-code-misc#examples",
+      "claude-code-misc#tools",
+      "claude-code-misc#mcp",
+      "claude-code-misc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Misc provides three integrated tools for operations automation: a Meta-Prompter MCP server that evaluates and grades prompts across clarity, specificity, context, actionability, safety, testability, hallucination prevention, and token efficiency; a debug-partner command for systematic, evidence-based troubleshooting with code-centric traces; and a StatusLine context monitor that displays real-time token usage and session tracking. The Meta-Prompter returns machine-readable JSON analysis with weighted global scoring, supporting multiple AI providers including Anthropic and OpenAI. This skill streamlines operations workflows by automating prompt quality assessment and providing collaborative debugging workflows with progressive hypothesis testing.\nGrade and optimize prompts before deployment using 8-dimension evaluation framework\nAutomate prompt quality analysis across teams with JSON-formatted results\nSystematic debugging with evidence-based investigation and progressive clarification\nMonitor context window usage in real-time with token consumption tracking",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/delexw/claude-code-misc`",
+    "usage_vi": "```\nAnalyze the following prompt for [COMPANY] in the [INDUSTRY] sector and provide a detailed evaluation. The prompt is: '[PROMPT]'. Return your analysis in JSON format, including sections for clarity, specificity, potential biases, and suggested improvements.\n```\nCopy\n\n```\n```json\n{\n  \"analysis\": {\n    \"clarity\": \"The prompt is generally clear but could benefit from more specific examples.\",\n    \"specificity\": \"The prompt lacks specific details about the desired output format.\",\n    \"potential_biases\": \"The prompt may unintentionally favor recent data over historical data.\",\n    \"suggested_improvements\": [\n      \"Include specific examples of desired outputs.\",\n      \"Specify the time range for the data to be analyzed.\",\n      \"Explicitly state the importance of both recent and historical data.\"\n    ]\n  },\n  \"score\": 7.5\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:37.043134Z",
+    "http_status": 200,
+    "content_hash": "2c9e59e5a6f3c5ac9533640e35abcc0a95f5d54cdbb6cce201ce948a5fe7fc81",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-misc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-misc.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code misc: useful code configurations",
+  "short_description_vi": "A collection of Claude Code configurations for automating operations tasks. Includes a meta-prompt MCP server for grading and analyzing prompts, benefiting operations teams by streamlining workflows and improving prompt quality."
+}

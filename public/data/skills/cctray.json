@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cctray",
+  "slug": "cctray",
+  "name": "browser-use",
+  "headline": "cctray: monitor Claude Code on macOS",
+  "short_description": "macOS menu bar app that monitors Anthropic Claude API usage in real-time with color-coded alerts, progress visualization, and cost tracking for AI developers.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "goniszewski",
+  "install_command": "git clone https://github.com/goniszewski/cctray.git",
+  "source_repo_url": "https://github.com/goniszewski/cctray",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "ccusage",
+    "claudecode"
+  ],
+  "sections": {
+    "overview": "CCTray is a macOS menu bar application that provides real-time visibility into Anthropic's Claude API usage and costs. It displays dynamic, color-coded metrics directly in your menu bar with green (normal), yellow (warning), and red (critical) states based on usage thresholds. The app offers rich data visualization including progress bars, trend indicators, sparkline charts, and a rotating display of key metrics like cost, burn rate, and remaining session time. Users can customize refresh rates, visual thresholds, and notification preferences through a comprehensive four-tab preferences window. CCTray requires macOS 13.0+, Node.js, and the ccusage CLI tool, making it ideal for developers actively using Claude API who need instant insights into their AI development spending.\nMonitor Claude API costs and token usage in real-time while developing\nSet up visual alerts when approaching budget limits or high burn rates\nTrack API burn rate trends to optimize Claude usage patterns\nQuick-copy usage data to clipboard for reporting or analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/goniszewski/cctray`",
+    "usage": "```\nCreate a cctray macOS menu bar app that monitors my usage of Claude Code. The app should display real-time metrics like tokens used, API calls made, and cost incurred. Include a 7-day usage history graph and a daily limit alert feature. Use [COMPANY] branding colors and ensure it's lightweight and efficient.\n```\nCopy\n\n```\n# cctray - Claude Code Usage Monitor\n\n```\nDay       Tokens   Calls   Cost\nMon       850      30      $0.12\nTue       1,248    42      $0.18\nWed       987      38      $0.14\nThu       1,500    50      $0.22\nFri       750      25      $0.10\nSat       1,100    40      $0.16\nSun       600      20      $0.09\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cctray#main-content",
+      "cctray#overview",
+      "cctray#setup",
+      "cctray#examples",
+      "cctray#tools",
+      "cctray#mcp",
+      "cctray#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCTray is a macOS menu bar application that provides real-time visibility into Anthropic's Claude API usage and costs. It displays dynamic, color-coded metrics directly in your menu bar with green (normal), yellow (warning), and red (critical) states based on usage thresholds. The app offers rich data visualization including progress bars, trend indicators, sparkline charts, and a rotating display of key metrics like cost, burn rate, and remaining session time. Users can customize refresh rates, visual thresholds, and notification preferences through a comprehensive four-tab preferences window. CCTray requires macOS 13.0+, Node.js, and the ccusage CLI tool, making it ideal for developers actively using Claude API who need instant insights into their AI development spending.\nMonitor Claude API costs and token usage in real-time while developing\nSet up visual alerts when approaching budget limits or high burn rates\nTrack API burn rate trends to optimize Claude usage patterns\nQuick-copy usage data to clipboard for reporting or analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/goniszewski/cctray`",
+    "usage_vi": "```\nCreate a cctray macOS menu bar app that monitors my usage of Claude Code. The app should display real-time metrics like tokens used, API calls made, and cost incurred. Include a 7-day usage history graph and a daily limit alert feature. Use [COMPANY] branding colors and ensure it's lightweight and efficient.\n```\nCopy\n\n```\n# cctray - Claude Code Usage Monitor\n\n```\nDay       Tokens   Calls   Cost\nMon       850      30      $0.12\nTue       1,248    42      $0.18\nWed       987      38      $0.14\nThu       1,500    50      $0.22\nFri       750      25      $0.10\nSat       1,100    40      $0.16\nSun       600      20      $0.09\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:28:08.276518Z",
+    "http_status": 200,
+    "content_hash": "29bc34435b6692cc90efa6f2c7ea73d6ec152e2735e1c4e7713a04faf8249517",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cctray.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cctray.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "cctray: monitor Claude Code on macOS",
+  "short_description_vi": "macOS menu bar app that monitors Anthropic Claude API usage in real-time with color-coded alerts, progress visualization, and cost tracking for AI developers."
+}

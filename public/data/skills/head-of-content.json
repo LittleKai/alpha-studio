@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/head-of-content",
+  "slug": "head-of-content",
+  "name": "browser-use",
+  "headline": "Head of Content - Social Media Research",
+  "short_description": "Automates social media content research across X/Twitter, Instagram, YouTube, and TikTok. Identifies winning patterns to optimize marketing strategies. Integrates with Claude Code and Cowork for content analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "bradautomates",
+  "install_command": "git clone https://github.com/bradautomates/head-of-content.git",
+  "source_repo_url": "https://github.com/bradautomates/head-of-content",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Head of Content automates social media research by scraping and analyzing high-performing content across X/Twitter, Instagram, YouTube, and TikTok. The skill uses engagement scoring algorithms to identify statistical outliers, extracts replicable hooks and patterns from viral videos using AI analysis, and generates actionable content plans with cross-platform opportunity scoring. It integrates Apify for social scraping, TubeLab for YouTube outlier detection, and Google Gemini for video analysis. Content creators, marketing strategists, and growth teams benefit by replacing manual research with automated pattern detection and platform-specific playbooks.\nIdentify viral video hooks and structural patterns to replicate in your own content\nTrack competitor accounts across platforms and surface high-performing posts automatically\nGenerate cross-platform content strategies based on engagement data and statistical outliers\nAnalyze YouTube transcripts to extract messaging patterns from top-performing creators",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bradautomates/head-of-content`",
+    "usage": "```\nAnalyze trending content patterns across [PLATFORM: X/Twitter, Instagram, YouTube, or TikTok] for the [INDUSTRY/TOPIC: e.g., 'AI SaaS companies' or 'plant-based recipes']. Focus on top-performing posts from the last [TIMEFRAME: e.g., 30 days] with engagement rates above [THRESHOLD: e.g., 5%]. Extract key themes, hashtags, post formats, and posting times. Then, generate 5 optimized content ideas for [BRAND_NAME] that align with these patterns. Use [TOOL_NAME: e.g., Claude Code or Cowork] to analyze the data and refine the output.\n```\nCopy\n\n```\nAfter analyzing 1,247 trending posts in the AI SaaS space on X/Twitter over the last 30 days, the AI identified three dominant content patterns: 1) **Thread-based educational content** (avg. 8.2% engagement), 2) **Meme-style jokes about AI fails** (avg. 12.1% engagement), and 3) **Short video clips of AI demos** (avg. 6.8% engagement). The most effective posting times were 9 AM and 7 PM EST on weekdays.\n\nFor **AcmeAI**, a B2B AI tool provider, the AI generated these five optimized content ideas:\n\n1. **\"AI vs. Human: Who Writes Better Code?\"** – A humorous thread comparing AcmeAI’s code generation to human developers, using viral meme formats. Scheduled for 9 AM EST on Tuesday.\n2. **\"5 AI Tools That Will Replace Your Job (But Not AcmeAI’s)\"** – A carousel post listing overhyped AI tools, with AcmeAI positioned as the \"ethical alternative.\" Scheduled for 12 PM EST on Thursday.\n3. **\"How AcmeAI Saved a Dev Team 20 Hours/Week\"** – A 30-second Loom video showcasing a real customer’s before/after workflow. Scheduled for 7 PM EST on Wednesday.\n4. **\"The AI Glitch That Went Viral (And How We Fixed It)\"** – A behind-the-scenes thread explaining a recent bug and the team’s transparent response. Scheduled for 9 AM EST on Friday.\n5. **\"AI-Powered Productivity Hacks for Remote Teams\"** – A TikTok-style vertical video with quick tips using AcmeAI’s features. Scheduled for 5 PM EST on Monday.\n\nThe AI also flagged that hashtags like #AITools, #SaaS, and #Productivity were overused, recommending niche alternatives like #DevProductivity or #NoCodeAI. Finally, it suggested A/B testing the meme format against the educational thread to see which resonates more with AcmeAI’s audience.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "head-of-content#main-content",
+      "head-of-content#overview",
+      "head-of-content#setup",
+      "head-of-content#examples",
+      "head-of-content#tools",
+      "head-of-content#mcp",
+      "head-of-content#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Head of Content automates social media research by scraping and analyzing high-performing content across X/Twitter, Instagram, YouTube, and TikTok. The skill uses engagement scoring algorithms to identify statistical outliers, extracts replicable hooks and patterns from viral videos using AI analysis, and generates actionable content plans with cross-platform opportunity scoring. It integrates Apify for social scraping, TubeLab for YouTube outlier detection, and Google Gemini for video analysis. Content creators, marketing strategists, and growth teams benefit by replacing manual research with automated pattern detection and platform-specific playbooks.\nIdentify viral video hooks and structural patterns to replicate in your own content\nTrack competitor accounts across platforms and surface high-performing posts automatically\nGenerate cross-platform content strategies based on engagement data and statistical outliers\nAnalyze YouTube transcripts to extract messaging patterns from top-performing creators",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bradautomates/head-of-content`",
+    "usage_vi": "```\nAnalyze trending content patterns across [PLATFORM: X/Twitter, Instagram, YouTube, or TikTok] for the [INDUSTRY/TOPIC: e.g., 'AI SaaS companies' or 'plant-based recipes']. Focus on top-performing posts from the last [TIMEFRAME: e.g., 30 days] with engagement rates above [THRESHOLD: e.g., 5%]. Extract key themes, hashtags, post formats, and posting times. Then, generate 5 optimized content ideas for [BRAND_NAME] that align with these patterns. Use [TOOL_NAME: e.g., Claude Code or Cowork] to analyze the data and refine the output.\n```\nCopy\n\n```\nAfter analyzing 1,247 trending posts in the AI SaaS space on X/Twitter over the last 30 days, the AI identified three dominant content patterns: 1) **Thread-based educational content** (avg. 8.2% engagement), 2) **Meme-style jokes about AI fails** (avg. 12.1% engagement), and 3) **Short video clips of AI demos** (avg. 6.8% engagement). The most effective posting times were 9 AM and 7 PM EST on weekdays.\n\nFor **AcmeAI**, a B2B AI tool provider, the AI generated these five optimized content ideas:\n\n1. **\"AI vs. Human: Who Writes Better Code?\"** – A humorous thread comparing AcmeAI’s code generation to human developers, using viral meme formats. Scheduled for 9 AM EST on Tuesday.\n2. **\"5 AI Tools That Will Replace Your Job (But Not AcmeAI’s)\"** – A carousel post listing overhyped AI tools, with AcmeAI positioned as the \"ethical alternative.\" Scheduled for 12 PM EST on Thursday.\n3. **\"How AcmeAI Saved a Dev Team 20 Hours/Week\"** – A 30-second Loom video showcasing a real customer’s before/after workflow. Scheduled for 7 PM EST on Wednesday.\n4. **\"The AI Glitch That Went Viral (And How We Fixed It)\"** – A behind-the-scenes thread explaining a recent bug and the team’s transparent response. Scheduled for 9 AM EST on Friday.\n5. **\"AI-Powered Productivity Hacks for Remote Teams\"** – A TikTok-style vertical video with quick tips using AcmeAI’s features. Scheduled for 5 PM EST on Monday.\n\nThe AI also flagged that hashtags like #AITools, #SaaS, and #Productivity were overused, recommending niche alternatives like #DevProductivity or #NoCodeAI. Finally, it suggested A/B testing the meme format against the educational thread to see which resonates more with AcmeAI’s audience.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:13.402682Z",
+    "http_status": 200,
+    "content_hash": "236f1e8beeac679e576b130c3a462f40112ac6532b31b6d9066ee82a2d457835",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\head-of-content.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\head-of-content.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Head of Content - Social Media Research",
+  "short_description_vi": "Automates social media content research across X/Twitter, Instagram, YouTube, and TikTok. Identifies winning patterns to optimize marketing strategies. Integrates with Claude Code and Cowork for content analysis."
+}

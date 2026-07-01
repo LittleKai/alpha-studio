@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp",
+  "slug": "mcp",
+  "name": "mcp",
+  "headline": "Microsoft MCP Catalog for AI Integration",
+  "short_description": "The MCP (Model Context Protocol) catalog provides a comprehensive list of official Microsoft server implementations, enabling AI-powered data access and tool integration. Ideal for developers looking to enhance their applications with Microsoft technologies.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "microsoft",
+  "install_command": "claude install microsoft/mcp",
+  "source_repo_url": "https://github.com/microsoft/mcp",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "AI integration",
+    "MCP",
+    "server implementations",
+    "data access",
+    "Microsoft"
+  ],
+  "sections": {
+    "overview": "The Model Context Protocol (MCP) is an open standard developed by Microsoft that allows AI agents and client applications to securely access external data sources and integrate tools through standardized server implementations. MCP enables developers to build AI-powered features by connecting Claude, Cursor, and other AI tools to custom data and services via server implementations. The protocol provides a structured approach to extending AI agent capabilities without modifying the core AI application. By using MCP servers, developers can expose databases, APIs, file systems, and other resources to AI agents in a secure, consistent manner. MCP is actively maintained with multiple server implementations available across different platforms and use cases.\nIntegrate AI tools with Microsoft servers for enhanced functionality.\nAccess and manipulate data through various MCP implementations.\nAutomate workflows by connecting AI applications with Microsoft services.\nStreamline tool integration for developers using standardized protocols.",
+    "setup": "Terminal\nCopy\n`claude install microsoft/mcp`\n`git clone https://github.com/microsoft/mcp`",
+    "usage": "```\nUsing the MCP (Model Context Protocol) catalog, identify the top 3 Microsoft server implementations for [SPECIFIC USE CASE] in [INDUSTRY]. For each implementation, provide a brief overview, key features, and integration steps with [EXISTING TECHNOLOGY STACK]. Additionally, suggest how Mode (Data Insights) can be used to enhance data access and tool integration for these implementations.\n```\nCopy\n\n```\nBased on your request for enhancing data analytics in the healthcare industry, here are the top 3 Microsoft server implementations from the MCP catalog:\n\n1. **Microsoft SQL Server 2022**: This implementation is renowned for its robust data management capabilities. Key features include advanced security, high availability, and seamless integration with Azure services. To integrate with your existing tech stack, you can use Azure Data Factory for ETL processes and Azure Synapse Analytics for data warehousing. Mode (Data Insights) can be utilized to create interactive dashboards that provide real-time insights into patient data, enabling better decision-making.\n\n2. **Azure Synapse Analytics**: This is a powerful analytics service that brings together big data and data warehousing. Key features include serverless on-demand query, integrated pipelines, and machine learning integration. Integration with your existing tech stack can be achieved using Azure Data Studio for data management and Azure DevOps for CI/CD pipelines. Mode can be used to collaborate with your team on SQL-based data exploration, making it easier to share insights and collaborate on data projects.\n\n3. **Microsoft Power BI Report Server**: This implementation is ideal for organizations that need to share reports and dashboards with stakeholders. Key features include paginated reports, KPIs, and dashboards. Integration with your existing tech stack can be done using Power BI Desktop for report creation and Power BI Gateway for on-premises data connectivity. Mode can be used to enhance data access and tool integration by providing a collaborative platform for data analysis and visualization.\n\nBy leveraging these Microsoft server implementations and integrating them with Mode (Data Insights), you can significantly enhance your data analytics capabilities in the healthcare industry.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "mcp#main-content",
+      "mcp#overview",
+      "mcp#setup",
+      "mcp#examples",
+      "mcp#tools",
+      "mcp#mcp",
+      "mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Model Context Protocol (MCP) là một tiêu chuẩn mở được phát triển bởi Microsoft, cho phép các AI agent và ứng dụng client truy cập an toàn vào các nguồn dữ liệu bên ngoài và tích hợp công cụ thông qua các bản triển khai server chuẩn hóa. MCP giúp các nhà phát triển xây dựng các tính năng AI bằng cách kết nối Claude, Cursor và các công cụ AI khác với dữ liệu và dịch vụ tùy chỉnh qua các server implementation. Giao thức này cung cấp một phương pháp tiếp cận có cấu trúc để mở rộng khả năng của AI agent mà không cần sửa đổi ứng dụng AI cốt lõi. Bằng cách sử dụng các MCP server, nhà phát triển có thể cung cấp quyền truy cập vào cơ sở dữ liệu, API, hệ thống file và các tài nguyên khác cho các AI agent một cách an toàn và nhất quán. MCP đang được tích cực duy trì với nhiều bản triển khai server khả dụng trên nhiều nền tảng và trường hợp sử dụng khác nhau.\nTích hợp các công cụ AI với server của Microsoft để nâng cao tính năng.\nTruy cập và xử lý dữ liệu thông qua các bản triển khai MCP khác nhau.\nTự động hóa quy trình làm việc bằng cách kết nối ứng dụng AI với các dịch vụ của Microsoft.\nĐơn giản hóa việc tích hợp công cụ cho nhà phát triển bằng các giao thức tiêu chuẩn hóa.",
+    "setup_vi": "Terminal\nSao chép\n`claude install microsoft/mcp`\n`git clone https://github.com/microsoft/mcp`",
+    "usage_vi": "```\nSử dụng danh mục MCP (Model Context Protocol), hãy xác định 3 server implementation hàng đầu của Microsoft cho [SPECIFIC USE CASE] trong [INDUSTRY]. Với mỗi bản triển khai, hãy cung cấp thông tin tổng quan ngắn gọn, các tính năng chính và các bước tích hợp với [EXISTING TECHNOLOGY STACK]. Ngoài ra, hãy đề xuất cách sử dụng Mode (Data Insights) để nâng cao khả năng truy cập dữ liệu và tích hợp công cụ cho các bản triển khai này.\n```\nSao chép\n\n```\nDựa trên yêu cầu cải thiện phân tích dữ liệu trong ngành y tế của bạn, dưới đây là 3 bản triển khai server hàng đầu của Microsoft từ danh mục MCP:\n\n1. **Microsoft SQL Server 2022**: Bản triển khai này nổi tiếng với khả năng quản lý dữ liệu mạnh mẽ. Các tính năng chính bao gồm bảo mật nâng cao, tính sẵn sàng cao (high availability) và tích hợp liền mạch với các dịch vụ Azure. Để tích hợp với tech stack hiện tại của bạn, bạn có thể sử dụng Azure Data Factory cho các quy trình ETL và Azure Synapse Analytics để làm kho dữ liệu. Mode (Data Insights) có thể được sử dụng để tạo các dashboard tương tác nhằm cung cấp thông tin chuyên sâu theo thời gian thực về dữ liệu bệnh nhân, giúp đưa ra quyết định tốt hơn.\n\n2. **Azure Synapse Analytics**: Đây là một dịch vụ phân tích mạnh mẽ kết hợp giữa big data và data warehousing. Các tính năng chính bao gồm truy vấn không máy chủ theo yêu cầu (serverless on-demand query), pipeline tích hợp và tích hợp machine learning. Việc tích hợp với tech stack hiện tại của bạn có thể được thực hiện bằng cách sử dụng Azure Data Studio để quản lý dữ liệu và Azure DevOps cho các pipeline CI/CD. Mode có thể được sử dụng để cộng tác với nhóm của bạn trong việc khám phá dữ liệu dựa trên SQL, giúp dễ dàng chia sẻ thông tin chuyên sâu và cộng tác trong các dự án dữ liệu.\n\n3. **Microsoft Power BI Report Server**: Bản triển khai này lý tưởng cho các tổ chức cần chia sẻ báo cáo và dashboard với các bên liên quan. Các tính năng chính bao gồm báo cáo phân trang, KPI và dashboard. Việc tích hợp với tech stack hiện tại của bạn có thể được thực hiện bằng cách sử dụng Power BI Desktop để tạo báo cáo và Power BI Gateway để kết nối dữ liệu on-premises. Mode có thể được sử dụng để tăng cường truy cập dữ liệu và tích hợp công cụ bằng cách cung cấp một nền tảng cộng tác để phân tích và trực quan hóa dữ liệu.\n\nBằng cách tận dụng các server implementation này của Microsoft và tích hợp them chúng với Mode (Data Insights), bạn có thể nâng cao đáng kể khả năng phân tích dữ liệu của mình trong ngành y tế.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:40:47.574670Z",
+    "http_status": 200,
+    "content_hash": "a1143943c6319d4bc5ee653385863768b6f5dcd5c947d21607d635dbe579f075",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Danh mục MCP của Microsoft dành cho tích hợp AI",
+  "short_description_vi": "Danh mục MCP (Model Context Protocol) cung cấp danh sách đầy đủ các bản triển khai server chính thức từ Microsoft, hỗ trợ truy cập dữ liệu bằng AI và tích hợp công cụ. Đây là giải pháp lý tưởng cho các nhà phát triển muốn tối ưu hóa ứng dụng của mình bằng các công nghệ của Microsoft."
+}

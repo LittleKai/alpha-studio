@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/github-skills",
+  "slug": "github-skills",
+  "name": "browser-use",
+  "headline": "GitHub Skills: Automation & CI/CD for Claude Code",
+  "short_description": "Claude Code plugin with GitHub CLI utilities and GitHub Actions workflow generator for automating repetitive GitHub tasks without exposing API keys.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "JamesPrial",
+  "install_command": "git clone https://github.com/JamesPrial/github-skills.git",
+  "source_repo_url": "https://github.com/JamesPrial/github-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "github-skills provides two integrated skills for GitHub automation within Claude Code: gh-cli for GitHub CLI utilities and github-actions-writer for creating CI/CD workflows. The gh-cli skill includes code search, GitHub Actions error extraction, and GitHub Pages deployment automation. github-actions-writer generates GitHub Actions workflows with built-in best practices and security validation. Since the gh CLI handles authentication, you avoid exposing API keys while automating repetitive GitHub workflows.\nSearch GitHub for code examples or leaked credentials\nExtract error messages from failed GitHub Actions runs\nAutomate GitHub Pages deployment workflows\nGenerate GitHub Actions CI/CD workflows for Node.js and other projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JamesPrial/github-skills`",
+    "usage": "```\nI want to use the GitHub CLI to [ACTION] for my [PROJECT]. Here are the details: [DETAILS]. Can you generate the necessary commands?\n```\nCopy\n\n```\n# GitHub CLI Commands for Project 'OpenSourceApp'",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "github-skills#main-content",
+      "github-skills#overview",
+      "github-skills#setup",
+      "github-skills#examples",
+      "github-skills#tools",
+      "github-skills#mcp",
+      "github-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "github-skills provides two integrated skills for GitHub automation within Claude Code: gh-cli for GitHub CLI utilities and github-actions-writer for creating CI/CD workflows. The gh-cli skill includes code search, GitHub Actions error extraction, and GitHub Pages deployment automation. github-actions-writer generates GitHub Actions workflows with built-in best practices and security validation. Since the gh CLI handles authentication, you avoid exposing API keys while automating repetitive GitHub workflows.\nSearch GitHub for code examples or leaked credentials\nExtract error messages from failed GitHub Actions runs\nAutomate GitHub Pages deployment workflows\nGenerate GitHub Actions CI/CD workflows for Node.js and other projects",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JamesPrial/github-skills`",
+    "usage_vi": "```\nI want to use the GitHub CLI to [ACTION] for my [PROJECT]. Here are the details: [DETAILS]. Can you generate the necessary commands?\n```\nCopy\n\n```\n# GitHub CLI Commands for Project 'OpenSourceApp'"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:36:54.091287Z",
+    "http_status": 200,
+    "content_hash": "da8d4de2b364b6db14496865db61a61b02481cb987d2200b633d60ec34c6b382",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\github-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\github-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GitHub Skills: Automation & CI/CD for Claude Code",
+  "short_description_vi": "Claude Code plugin with GitHub CLI utilities and GitHub Actions workflow generator for automating repetitive GitHub tasks without exposing API keys."
+}

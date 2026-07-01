@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/droid",
+  "slug": "droid",
+  "name": "react-native-best-practices",
+  "headline": "Boost Productivity with Droid AI Assistant",
+  "short_description": "Droid is an AI assistant that automates repetitive tasks and enhances productivity for engineers. It integrates with tools like Cursor and Codex to streamline workflows, allowing teams to focus on complex problem-solving. Ideal for developers seeking to optimize their coding and project management processes.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "virtual assistant",
+    "AI",
+    "productivity",
+    "automation"
+  ],
+  "sections": {
+    "overview": "Droid is an AI assistant designed to automate repetitive tasks and boost productivity for software engineers. It integrates seamlessly with development tools like Cursor and Codex to streamline coding workflows and project management processes. By handling routine work, Droid enables development teams to concentrate their efforts on complex problem-solving and higher-value engineering tasks.\nTask automation\nData analysis\nPersonalized recommendations",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nAct as Droid, an AI assistant for developers. Use [CURSOR/CODEX] to automate the following task: [DESCRIBE TASK, e.g., 'Refactor the legacy authentication module in [PROJECT_NAME] to use modern JWT practices']. Include error handling, edge cases, and unit test stubs. Output a step-by-step plan with estimated time savings vs. manual effort. Reference [PRODUCTIV] for license cost implications if relevant.\n```\nCopy\n\n```\n### Droid Task Automation Report: Legacy Auth Module Refactor\n**Project:** AcmeCorp E-Commerce Platform (Node.js/Express)\n**Task:** Refactor legacy session-based auth to JWT with refresh tokens\n\n**Step 1: Dependency Audit**\n- Detected `express-session` (v1.17.2) and `connect-redis` (v4.0.4) in package.json\n- Identified 3 unused dependencies: `cookie-parser`, `csurf`, `helmet` (legacy config)\n- **Productiv Insight:** These unused licenses cost $1,245/year. Recommend removal to save $415/quarter.\n\n**Step 2: Code Transformation Plan**\n- Generated 12 modified files in `/src/auth/`:\n  - `jwt-strategy.js` (new): Stateless JWT validation\n  - `refresh-token-service.js` (new): 30-day refresh token rotation\n  - `auth-controller.js`: Updated to use JWT middleware\n- Added error handling for:\n  - Token expiration (401 responses)\n  - Refresh token reuse attempts (403 responses)\n  - Malformed tokens (400 responses)\n\n**Step 3: Unit Test Coverage**\n- Created Jest test suite (`auth.test.js`):\n  - 18/22 tests passing (82% coverage)\n  - Missing: Edge case for refresh token collision (to be addressed)\n- Generated test stubs for:\n  - Token blacklisting service\n  - Rate limiting on refresh endpoints\n\n**Step 4: Performance Impact**\n- Memory usage reduced by 18% (removed Redis dependency)\n- Authentication latency improved from 45ms → 12ms (73% faster)\n- **Time Savings:** Estimated 8 hours manual work vs. 2 hours with Droid (75% reduction)\n\n**Next Steps:**\n1. Review the generated diff in Cursor (PR #42)\n2. Add refresh token collision handling\n3. Update Postman collection for new endpoints\n4. Schedule deprecation of `/login` endpoint in 2 weeks\n\n**Cost Impact:** $415/quarter saved from unused licenses + $2,100/year in dev hours.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "droid#main-content",
+      "droid#overview",
+      "droid#setup",
+      "droid#examples",
+      "droid#tools",
+      "droid#mcp",
+      "droid#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Droid is an AI assistant designed to automate repetitive tasks and boost productivity for software engineers. It integrates seamlessly with development tools like Cursor and Codex to streamline coding workflows and project management processes. By handling routine work, Droid enables development teams to concentrate their efforts on complex problem-solving and higher-value engineering tasks.\nTask automation\nData analysis\nPersonalized recommendations",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nAct as Droid, an AI assistant for developers. Use [CURSOR/CODEX] to automate the following task: [DESCRIBE TASK, e.g., 'Refactor the legacy authentication module in [PROJECT_NAME] to use modern JWT practices']. Include error handling, edge cases, and unit test stubs. Output a step-by-step plan with estimated time savings vs. manual effort. Reference [PRODUCTIV] for license cost implications if relevant.\n```\nCopy\n\n```\n### Droid Task Automation Report: Legacy Auth Module Refactor\n**Project:** AcmeCorp E-Commerce Platform (Node.js/Express)\n**Task:** Refactor legacy session-based auth to JWT with refresh tokens\n\n**Step 1: Dependency Audit**\n- Detected `express-session` (v1.17.2) and `connect-redis` (v4.0.4) in package.json\n- Identified 3 unused dependencies: `cookie-parser`, `csurf`, `helmet` (legacy config)\n- **Productiv Insight:** These unused licenses cost $1,245/year. Recommend removal to save $415/quarter.\n\n**Step 2: Code Transformation Plan**\n- Generated 12 modified files in `/src/auth/`:\n  - `jwt-strategy.js` (new): Stateless JWT validation\n  - `refresh-token-service.js` (new): 30-day refresh token rotation\n  - `auth-controller.js`: Updated to use JWT middleware\n- Added error handling for:\n  - Token expiration (401 responses)\n  - Refresh token reuse attempts (403 responses)\n  - Malformed tokens (400 responses)\n\n**Step 3: Unit Test Coverage**\n- Created Jest test suite (`auth.test.js`):\n  - 18/22 tests passing (82% coverage)\n  - Missing: Edge case for refresh token collision (to be addressed)\n- Generated test stubs for:\n  - Token blacklisting service\n  - Rate limiting on refresh endpoints\n\n**Step 4: Performance Impact**\n- Memory usage reduced by 18% (removed Redis dependency)\n- Authentication latency improved from 45ms → 12ms (73% faster)\n- **Time Savings:** Estimated 8 hours manual work vs. 2 hours with Droid (75% reduction)\n\n**Next Steps:**\n1. Review the generated diff in Cursor (PR #42)\n2. Add refresh token collision handling\n3. Update Postman collection for new endpoints\n4. Schedule deprecation of `/login` endpoint in 2 weeks\n\n**Cost Impact:** $415/quarter saved from unused licenses + $2,100/year in dev hours.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:07:33.260620Z",
+    "http_status": 200,
+    "content_hash": "bf2828f2920bc44e4d581be3b48add41816121114ecea094165198282cf01671",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\droid.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\droid.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Boost Productivity with Droid AI Assistant",
+  "short_description_vi": "Droid is an AI assistant that automates repetitive tasks and enhances productivity for engineers. It integrates with tools like Cursor and Codex to streamline workflows, allowing teams to focus on complex problem-solving. Ideal for developers seeking to optimize their coding and project management processes."
+}

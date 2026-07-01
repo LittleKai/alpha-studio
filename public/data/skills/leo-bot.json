@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/leo-bot",
+  "slug": "leo-bot",
+  "name": "popsicle",
+  "headline": "LEO BOT: AI Chatbot & Marketing Automation",
+  "short_description": "LEO BOT is an open-source AI platform combining chatbot functionality, marketing automation, and a personalization engine, built for marketers and developers using USPA Technology's LEO CDP.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "USPA-Technology",
+  "install_command": "git clone https://github.com/USPA-Technology/leo-bot.git",
+  "source_repo_url": "https://github.com/USPA-Technology/leo-bot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "generative-ai",
+    "leobot",
+    "marketing-automation",
+    "palm2",
+    "personalization-engine",
+    "chatbot"
+  ],
+  "sections": {
+    "overview": "LEO BOT is an open-source AI-powered system that integrates chatbot capabilities, marketing automation workflows, and a personalization engine into a single platform. It is built on top of the LEO Customer Data Platform (CDP) and supports bot personas, profile-based recommendations, and SSO authentication via Keycloak. The project includes Apache Airflow DAGs for batch profile loading, SQL scripts for data management, and a router module for directing bot interactions. It is designed for marketing and engineering teams who need to automate customer engagement and deliver personalized experiences at scale. The stack supports PostgreSQL for data storage and provides HTTP client tests for validating recommendation and profile-check endpoints.\nDeploying an AI chatbot with configurable personas for customer-facing marketing interactions\nAutomating batch loading of customer profiles into a CDP using Apache Airflow DAGs\nDelivering personalized content recommendations based on individual user profiles\nIntegrating SSO authentication with Keycloak for secure multi-user bot management",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/USPA-Technology/leo-bot`",
+    "usage": "```\nAct as LEO BOT, an AI for chatbot, marketing automation, and personalization. Create a personalized marketing campaign for [COMPANY] in the [INDUSTRY] sector. Use [DATA] to tailor the campaign to the target audience. Include a chatbot script, email sequence, and social media posts.\n```\nCopy\n\n```\n# Personalized Marketing Campaign for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "leo-bot#main-content",
+      "leo-bot#overview",
+      "leo-bot#setup",
+      "leo-bot#examples",
+      "leo-bot#tools",
+      "leo-bot#mcp",
+      "leo-bot#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "LEO BOT is an open-source AI-powered system that integrates chatbot capabilities, marketing automation workflows, and a personalization engine into a single platform. It is built on top of the LEO Customer Data Platform (CDP) and supports bot personas, profile-based recommendations, and SSO authentication via Keycloak. The project includes Apache Airflow DAGs for batch profile loading, SQL scripts for data management, and a router module for directing bot interactions. It is designed for marketing and engineering teams who need to automate customer engagement and deliver personalized experiences at scale. The stack supports PostgreSQL for data storage and provides HTTP client tests for validating recommendation and profile-check endpoints.\nDeploying an AI chatbot with configurable personas for customer-facing marketing interactions\nAutomating batch loading of customer profiles into a CDP using Apache Airflow DAGs\nDelivering personalized content recommendations based on individual user profiles\nIntegrating SSO authentication with Keycloak for secure multi-user bot management",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/USPA-Technology/leo-bot`",
+    "usage_vi": "```\nAct as LEO BOT, an AI for chatbot, marketing automation, and personalization. Create a personalized marketing campaign for [COMPANY] in the [INDUSTRY] sector. Use [DATA] to tailor the campaign to the target audience. Include a chatbot script, email sequence, and social media posts.\n```\nCopy\n\n```\n# Personalized Marketing Campaign for GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:21:56.562336Z",
+    "http_status": 200,
+    "content_hash": "418b8831226164f66418629199d7084152346c7baf36f1049ae199462e1f2b7d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\leo-bot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\leo-bot.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LEO BOT: AI Chatbot & Marketing Automation",
+  "short_description_vi": "LEO BOT is an open-source AI platform combining chatbot functionality, marketing automation, and a personalization engine, built for marketers and developers using USPA Technology's LEO CDP."
+}

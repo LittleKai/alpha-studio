@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mojo-syntax",
+  "slug": "mojo-syntax",
+  "name": "dart-use-pattern-matching",
+  "headline": "Mojo-syntax: Current Language Standards",
+  "short_description": "Mojo-syntax provides guidelines for using the Mojo programming language. It is designed for developers working with Mojo to ensure their code adheres to the latest standards and syntax rules.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "modular",
+  "install_command": "git clone https://github.com/modular/skills",
+  "source_repo_url": "https://github.com/modular/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "programming",
+    "syntax",
+    "mojo"
+  ],
+  "sections": {
+    "overview": "Mojo-syntax is a skill that corrects and guides AI agents in writing valid Mojo code using the latest syntax standards. Since Mojo is rapidly evolving, pretrained models often generate obsolete syntax that no longer compiles. This skill functions as a correction layer, documenting removed syntax (like `fn`, `alias`, and `inout`), their modern replacements (`def`, `comptime`, and `mut`), and current conventions for functions, arguments, and control flow. Developers should use this skill whenever writing any Mojo code, including when translating existing projects or generating new Mojo—it ensures generated code actually builds and follows current best practices.\nFollow syntax rules for Mojo programming\nTest Mojo code for project compilation\nEnsure compatibility with pretrained models",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/modular/skills --skill mojo-syntax`\n`git clone https://github.com/modular/skills`",
+    "usage": "```\nProvide the official Mojo syntax guidelines for [TASK]. Include examples of correct and incorrect usage. Focus on [SPECIFIC_FEATURE, e.g., 'structs', 'functions', 'memory management'] in Mojo. Reference the latest Mojo documentation where applicable.\n```\nCopy\n\n```\n# Mojo Syntax Guidelines for Struct Initialization\n\n```mojo\nstruct Point:\n    var x: Int\n    var y: Int\n\nlet p = Point(x: 5, y: 10)\n```\n\n```mojo\n# Missing type annotations\nstruct Point:\n    var x\n    var y\n\n# Incorrect initialization syntax\nlet p = Point(5, 10)\n```\n\n### Key Rules:\n- All struct fields **must** have explicit type annotations.\n- Initialization must use named parameters (e.g., `Point(x: 5, y: 10)`).\n\nFor more details, refer to the [Mojo Structs Documentation](https://docs.modular.com/mojo/lang/structs).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "mojo-syntax#main-content",
+      "mojo-syntax#overview",
+      "mojo-syntax#setup",
+      "mojo-syntax#examples",
+      "mojo-syntax#related",
+      "dart-use-pattern-matching"
+    ],
+    "overview_vi": "Mojo-syntax is a skill that corrects and guides AI agents in writing valid Mojo code using the latest syntax standards. Since Mojo is rapidly evolving, pretrained models often generate obsolete syntax that no longer compiles. This skill functions as a correction layer, documenting removed syntax (like `fn`, `alias`, and `inout`), their modern replacements (`def`, `comptime`, and `mut`), and current conventions for functions, arguments, and control flow. Developers should use this skill whenever writing any Mojo code, including when translating existing projects or generating new Mojo—it ensures generated code actually builds and follows current best practices.\nFollow syntax rules for Mojo programming\nTest Mojo code for project compilation\nEnsure compatibility with pretrained models",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/modular/skills --skill mojo-syntax`\n`git clone https://github.com/modular/skills`",
+    "usage_vi": "```\nProvide the official Mojo syntax guidelines for [TASK]. Include examples of correct and incorrect usage. Focus on [SPECIFIC_FEATURE, e.g., 'structs', 'functions', 'memory management'] in Mojo. Reference the latest Mojo documentation where applicable.\n```\nCopy\n\n```\n# Mojo Syntax Guidelines for Struct Initialization\n\n```mojo\nstruct Point:\n    var x: Int\n    var y: Int\n\nlet p = Point(x: 5, y: 10)\n```\n\n```mojo\n# Missing type annotations\nstruct Point:\n    var x\n    var y\n\n# Incorrect initialization syntax\nlet p = Point(5, 10)\n```\n\n### Key Rules:\n- All struct fields **must** have explicit type annotations.\n- Initialization must use named parameters (e.g., `Point(x: 5, y: 10)`).\n\nFor more details, refer to the [Mojo Structs Documentation](https://docs.modular.com/mojo/lang/structs).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:28:17.984800Z",
+    "http_status": 200,
+    "content_hash": "126de36b9027242000a8d71f4ac5ecc99aa33a3fa192fb7496e08cf4feeac202",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mojo-syntax.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mojo-syntax.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mojo-syntax: Current Language Standards",
+  "short_description_vi": "Mojo-syntax provides guidelines for using the Mojo programming language. It is designed for developers working with Mojo to ensure their code adheres to the latest standards and syntax rules."
+}

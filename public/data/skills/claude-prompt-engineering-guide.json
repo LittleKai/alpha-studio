@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-prompt-engineering-guide",
+  "slug": "claude-prompt-engineering-guide",
+  "name": "browser-use",
+  "headline": "claude prompts: guide for professional use",
+  "short_description": "A guide for writing professional Claude Standard prompts with MCP, Skills, and Superpowers integration. Official Anthropic best practices for Claude 4.x models. Useful for operations teams automating workflows with Claude.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "ThamJiaHe",
+  "install_command": "git clone https://github.com/ThamJiaHe/claude-prompt-engineering-guide.git",
+  "source_repo_url": "https://github.com/ThamJiaHe/claude-prompt-engineering-guide",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "prompt-engineering",
+    "llm",
+    "mcp",
+    "claude-ai",
+    "claude",
+    "anthropic-claude",
+    "ai",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "This guide provides official Anthropic best practices for writing professional prompts optimized for Claude Opus 4.6, Sonnet 4.6, and Haiku 4.5 models. It covers Skills, MCP integration, Hooks, Agent Teams, and Subagents with 220+ verified sources and real-world examples. The guide is automatically updated weekly via AI research to reflect the latest Claude capabilities, including Claude Code v2.1.83 features like voice mode, 1M context windows, and remote execution. Operations teams use this resource to automate workflows, build multi-agent systems, and optimize prompt engineering across production environments. It includes 100+ curated skills, adaptive thinking strategies, and configurations for extended reasoning with ultrathink mode.\nOperations teams automating workflows with Claude Code and Skills\nBuilding and coordinating multi-agent teams with shared task lists\nOptimizing prompts for specific Claude model versions and performance targets\nImplementing MCP integrations and Hook events for advanced automation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ThamJiaHe/claude-prompt-engineering-guide`",
+    "usage": "```\nAct as an expert in Claude Standard Prompt Engineering. Write a professional prompt for [TASK] that integrates [MCP_FEATURES] and follows Anthropic's best practices for Claude 4.x. Include [SKILL_NAME] integration and [SUPERPOWER] capabilities. Structure the prompt with clear sections: Context, Instructions, Constraints, and Expected Output. Ensure the prompt is optimized for automation workflows and operations teams.\n```\nCopy\n\n```\n```\n**Prompt for Automated Customer Onboarding Workflow with MCP Integration**\n\n**Context:**\nYou are an AI automation specialist managing customer onboarding for a SaaS company. The onboarding process involves 5 stages: account creation, initial setup, feature activation, training completion, and first-value demonstration. Use the MCP (Model Context Protocol) to access real-time customer data from our CRM (Salesforce) and support ticket system (Zendesk).\n\n**Instructions:**\n1. Analyze the customer's account status in Salesforce (Account ID: [ACCOUNT_ID]) and identify which onboarding stage they are currently in.\n2. Cross-reference with Zendesk tickets to check for any open issues or support requests that might block onboarding.\n3. Generate a personalized onboarding checklist for the customer based on their current stage and any identified blockers.\n4. Use the [SKILL_NAME: claude-prompt-engineering-guide] to structure the output as a JSON object with the following fields:\n   - `customer_id`: The unique identifier from Salesforce\n   - `current_stage`: The onboarding stage (e.g., \"Initial Setup\")\n   - `blockers`: List of issues from Zendesk tickets\n   - `checklist`: Array of 3-5 actionable tasks for the customer\n   - `estimated_completion_time`: Time estimate in hours\n   - `next_steps`: Recommendations for the onboarding specialist\n\n**Constraints:**\n- Only use data from Salesforce and Zendesk via MCP.\n- Ensure the checklist tasks are specific, time-bound, and measurable.\n- Format the output strictly as JSON with no additional text.\n- Prioritize tasks that resolve identified blockers first.\n\n**Expected Output:**\n```json\n{\n  \"customer_id\": \"SF-123456\",\n  \"current_stage\": \"Feature Activation\",\n  \"blockers\": [\n    \"ZD-98765: Awaiting admin approval for API access\",\n    \"ZD-98766: User training session not completed\"\n  ],\n  \"checklist\": [\n    {\"task\": \"Submit admin approval form for API access\", \"due\": \"2024-06-15\", \"owner\": \"Customer\"},\n    {\"task\": \"Schedule 1-hour training session with Customer Success Manager\", \"due\": \"2024-06-16\", \"owner\": \"CSM\"},\n    {\"task\": \"Activate premium feature module in admin dashboard\", \"due\": \"2024-06-17\", \"owner\": \"Operations\"}\n  ],\n  \"estimated_completion_time\": 24,\n  \"next_steps\": [\"Follow up with customer on API access approval\", \"Coordinate with CSM to schedule training\"]\n}\n```\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-prompt-engineering-guide#main-content",
+      "claude-prompt-engineering-guide#overview",
+      "claude-prompt-engineering-guide#setup",
+      "claude-prompt-engineering-guide#examples",
+      "claude-prompt-engineering-guide#tools",
+      "claude-prompt-engineering-guide#mcp",
+      "claude-prompt-engineering-guide#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This guide provides official Anthropic best practices for writing professional prompts optimized for Claude Opus 4.6, Sonnet 4.6, and Haiku 4.5 models. It covers Skills, MCP integration, Hooks, Agent Teams, and Subagents with 220+ verified sources and real-world examples. The guide is automatically updated weekly via AI research to reflect the latest Claude capabilities, including Claude Code v2.1.83 features like voice mode, 1M context windows, and remote execution. Operations teams use this resource to automate workflows, build multi-agent systems, and optimize prompt engineering across production environments. It includes 100+ curated skills, adaptive thinking strategies, and configurations for extended reasoning with ultrathink mode.\nOperations teams automating workflows with Claude Code and Skills\nBuilding and coordinating multi-agent teams with shared task lists\nOptimizing prompts for specific Claude model versions and performance targets\nImplementing MCP integrations and Hook events for advanced automation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ThamJiaHe/claude-prompt-engineering-guide`",
+    "usage_vi": "```\nAct as an expert in Claude Standard Prompt Engineering. Write a professional prompt for [TASK] that integrates [MCP_FEATURES] and follows Anthropic's best practices for Claude 4.x. Include [SKILL_NAME] integration and [SUPERPOWER] capabilities. Structure the prompt with clear sections: Context, Instructions, Constraints, and Expected Output. Ensure the prompt is optimized for automation workflows and operations teams.\n```\nCopy\n\n```\n```\n**Prompt for Automated Customer Onboarding Workflow with MCP Integration**\n\n**Context:**\nYou are an AI automation specialist managing customer onboarding for a SaaS company. The onboarding process involves 5 stages: account creation, initial setup, feature activation, training completion, and first-value demonstration. Use the MCP (Model Context Protocol) to access real-time customer data from our CRM (Salesforce) and support ticket system (Zendesk).\n\n**Instructions:**\n1. Analyze the customer's account status in Salesforce (Account ID: [ACCOUNT_ID]) and identify which onboarding stage they are currently in.\n2. Cross-reference with Zendesk tickets to check for any open issues or support requests that might block onboarding.\n3. Generate a personalized onboarding checklist for the customer based on their current stage and any identified blockers.\n4. Use the [SKILL_NAME: claude-prompt-engineering-guide] to structure the output as a JSON object with the following fields:\n   - `customer_id`: The unique identifier from Salesforce\n   - `current_stage`: The onboarding stage (e.g., \"Initial Setup\")\n   - `blockers`: List of issues from Zendesk tickets\n   - `checklist`: Array of 3-5 actionable tasks for the customer\n   - `estimated_completion_time`: Time estimate in hours\n   - `next_steps`: Recommendations for the onboarding specialist\n\n**Constraints:**\n- Only use data from Salesforce and Zendesk via MCP.\n- Ensure the checklist tasks are specific, time-bound, and measurable.\n- Format the output strictly as JSON with no additional text.\n- Prioritize tasks that resolve identified blockers first.\n\n**Expected Output:**\n```json\n{\n  \"customer_id\": \"SF-123456\",\n  \"current_stage\": \"Feature Activation\",\n  \"blockers\": [\n    \"ZD-98765: Awaiting admin approval for API access\",\n    \"ZD-98766: User training session not completed\"\n  ],\n  \"checklist\": [\n    {\"task\": \"Submit admin approval form for API access\", \"due\": \"2024-06-15\", \"owner\": \"Customer\"},\n    {\"task\": \"Schedule 1-hour training session with Customer Success Manager\", \"due\": \"2024-06-16\", \"owner\": \"CSM\"},\n    {\"task\": \"Activate premium feature module in admin dashboard\", \"due\": \"2024-06-17\", \"owner\": \"Operations\"}\n  ],\n  \"estimated_completion_time\": 24,\n  \"next_steps\": [\"Follow up with customer on API access approval\", \"Coordinate with CSM to schedule training\"]\n}\n```\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:52:16.366648Z",
+    "http_status": 200,
+    "content_hash": "6004d0052c0d33b18413505d1127d410224c07a148553ca66b4818aa60730484",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-prompt-engineering-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-prompt-engineering-guide.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude prompts: guide for professional use",
+  "short_description_vi": "A guide for writing professional Claude Standard prompts with MCP, Skills, and Superpowers integration. Official Anthropic best practices for Claude 4.x models. Useful for operations teams automating workflows with Claude."
+}

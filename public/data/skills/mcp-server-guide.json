@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-server-guide",
+  "slug": "mcp-server-guide",
+  "name": "Figma MCP Server Guide",
+  "headline": "Figma MCP Server Guide - Integrate Designs into",
+  "short_description": "The Figma MCP server guide enables operations teams to integrate Figma design files into their workflows. It provides AI agents with design context to generate accurate code. Connects to Claude agents and supports Starter, View, and Collab seats.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "figma",
+  "install_command": "git clone https://github.com/figma/mcp-server-guide.git",
+  "source_repo_url": "https://github.com/figma/mcp-server-guide",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The mcp-server-guide is an MCP server that bridges Figma design files with AI agents like Claude and Cursor. It provides agents with design context and file access, enabling them to generate accurate code informed by actual design specifications. The server supports multiple Figma seat types including Starter, View, and Collab access levels. Operations teams use this integration to streamline workflows by connecting design documentation directly to code generation processes. This eliminates the need to manually describe designs to AI agents, improving code accuracy and alignment with design intent.\nDesign-to-code automation with AI agents reading Figma files directly\nOperations teams integrating design context into development workflows\nClaude and Cursor agent enhancement with design file access\nAutomated code generation from Figma design specifications",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/figma/mcp-server-guide`",
+    "usage": "```\nUse the Figma MCP server to extract design specifications from the Figma file [FIGMA_FILE_URL] for the component [COMPONENT_NAME]. Generate a React component implementation that matches the design tokens (colors, typography, spacing) and includes interactive states (hover, active). Ensure the output follows [DESIGN_SYSTEM_FRAMEWORK] conventions and includes TypeScript types. Share the code in a ready-to-paste format.\n```\nCopy\n\n```\nBased on the Figma file `https://www.figma.com/file/abc123/Primary-Button?node-id=123:456` and the component `PrimaryButton`, here’s a React implementation that matches the design system:\n\n```tsx\nimport React from 'react';\n\ntype ButtonProps = {\n  label: string;\n  onClick: () => void;\n  variant?: 'primary' | 'secondary';\n  size?: 'sm' | 'md' | 'lg';\n  disabled?: boolean;\n};\n\nconst PrimaryButton: React.FC<ButtonProps> = ({\n  label,\n  onClick,\n  variant = 'primary',\n  size = 'md',\n  disabled = false,\n}) => {\n  const baseClasses = 'rounded-lg font-semibold transition-all duration-200';\n  const variantClasses = {\n    primary: 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700',\n    secondary: 'bg-gray-100 text-gray-800 hover:bg-gray-200 active:bg-gray-300',\n  };\n  const sizeClasses = {\n    sm: 'px-3 py-1 text-sm',\n    md: 'px-4 py-2 text-base',\n    lg: 'px-6 py-3 text-lg',\n  };\n\n  return (\n    <button\n      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}\n      onClick={onClick}\n      disabled={disabled}\n    >\n      {label}\n    </button>\n  );\n};\n\nexport default PrimaryButton;\n```\n\nDesign tokens used:\n- Colors: Blue-500 (#3B82F6), Gray-100 (#F3F4F6)\n- Typography: Inter (font-family), 16px (base size)\n- Spacing: 1rem (padding), 0.5rem (gap)\n- Interactive states: Hover (darker shade), Active (darkest shade)\n\nThis implementation aligns with the design system’s `Button` component specifications and includes TypeScript types for better developer experience.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-server-guide#main-content",
+      "mcp-server-guide#overview",
+      "mcp-server-guide#setup",
+      "mcp-server-guide#examples",
+      "mcp-server-guide#tools",
+      "mcp-server-guide#mcp",
+      "mcp-server-guide#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcp-server-guide là một MCP server đóng vai trò cầu nối giữa các file thiết kế Figma với các AI agent như Claude và Cursor. Nó cung cấp cho các agent ngữ cảnh thiết kế và quyền truy cập file, cho phép chúng tạo mã nguồn chính xác dựa trên các đặc tả thiết kế thực tế. Server hỗ trợ nhiều loại tài khoản (seat) Figma bao gồm các cấp độ truy cập Starter, View và Collab. Các đội ngũ vận hành sử dụng tích hợp này để tối ưu hóa quy trình làm việc bằng cách kết nối trực tiếp tài liệu thiết kế với quá trình tạo mã nguồn. Điều này loại bỏ việc phải mô tả thiết kế thủ công cho các AI agent, giúp cải thiện độ chính xác của mã nguồn và đảm bảo đúng với ý đồ thiết kế.\n\nTự động hóa chuyển đổi thiết kế thành mã nguồn (design-to-code) với các AI agent đọc trực tiếp file Figma\nCác đội ngũ vận hành tích hợp ngữ cảnh thiết kế vào quy trình phát triển\nTối ưu hóa Claude và Cursor agent với quyền truy cập file thiết kế\nTạo mã nguồn tự động từ các đặc tả thiết kế Figma",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/figma/mcp-server-guide`",
+    "usage_vi": "```\nSử dụng Figma MCP server để trích xuất các đặc tả thiết kế từ file Figma [FIGMA_FILE_URL] cho component [COMPONENT_NAME]. Tạo một bản triển khai React component khớp với các design token (màu sắc, typography, khoảng cách) và bao gồm các trạng thái tương tác (hover, active). Đảm bảo đầu ra tuân thủ các quy chuẩn của [DESIGN_SYSTEM_FRAMEWORK] và bao gồm các kiểu TypeScript. Chia sẻ mã nguồn dưới định dạng sẵn sàng để sao chép.\n```\nCopy\n\n```\nDựa trên file Figma `https://www.figma.com/file/abc123/Primary-Button?node-id=123:456` và component `PrimaryButton`, dưới đây là bản triển khai React khớp với hệ thống thiết kế (design system):\n\n```tsx\nimport React from 'react';\n\ntype ButtonProps = {\n  label: string;\n  onClick: () => void;\n  variant?: 'primary' | 'secondary';\n  size?: 'sm' | 'md' | 'lg';\n  disabled?: boolean;\n};\n\nconst PrimaryButton: React.FC<ButtonProps> = ({\n  label,\n  onClick,\n  variant = 'primary',\n  size = 'md',\n  disabled = false,\n}) => {\n  const baseClasses = 'rounded-lg font-semibold transition-all duration-200';\n  const variantClasses = {\n    primary: 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700',\n    secondary: 'bg-gray-100 text-gray-800 hover:bg-gray-200 active:bg-gray-300',\n  };\n  const sizeClasses = {\n    sm: 'px-3 py-1 text-sm',\n    md: 'px-4 py-2 text-base',\n    lg: 'px-6 py-3 text-lg',\n  };\n\n  return (\n    <button\n      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}\n      onClick={onClick}\n      disabled={disabled}\n    >\n      {label}\n    </button>\n  );\n};\n\nexport default PrimaryButton;\n```\n\nCác design token được sử dụng:\n- Màu sắc: Blue-500 (#3B82F6), Gray-100 (#F3F4F6)\n- Typography: Inter (font-family), 16px (kích thước cơ sở)\n- Khoảng cách (Spacing): 1rem (padding), 0.5rem (gap)\n- Trạng thái tương tác: Hover (tông màu tối hơn), Active (tông màu tối nhất)\n\nBản triển khai này tuân thủ các đặc tả component `Button` của hệ thống thiết kế và bao gồm các kiểu TypeScript để mang lại trải nghiệm lập trình tốt hơn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:51.177143Z",
+    "http_status": 200,
+    "content_hash": "89e53296fb4e106840247eb917c6cd22b0c8ce3cb834ffbaadabbc9774845d12",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-server-guide.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hướng dẫn Figma MCP Server - Tích hợp thiết kế vào",
+  "short_description_vi": "Tài liệu hướng dẫn Figma MCP server giúp các đội ngũ vận hành tích hợp các file thiết kế Figma vào quy trình làm việc của họ. Nó cung cấp ngữ cảnh thiết kế cho các AI agent để tạo mã nguồn chính xác. Kết nối với các Claude agent và hỗ trợ các loại tài khoản (seats) Starter, View và Collab."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudecode-vertex-proxy",
+  "slug": "claudecode-vertex-proxy",
+  "name": "browser-use",
+  "headline": "Claude Code代理",
+  "short_description": "Proxy service enabling Claude Code to access Claude models via GCP Vertex AI. Ideal for operations teams needing secure, scalable AI model access. Integrates with existing workflows and tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "OrionStarAI",
+  "install_command": "git clone https://github.com/OrionStarAI/claudecode-vertex-proxy.git",
+  "source_repo_url": "https://github.com/OrionStarAI/claudecode-vertex-proxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "vertex-ai",
+    "claude-ai",
+    "gcp"
+  ],
+  "sections": {
+    "overview": "This proxy service converts Claude API requests into Google Cloud Vertex AI format, allowing Claude Code clients to access Claude models through GCP infrastructure. It functions as a protocol translation layer that bridges Claude's API with Vertex AI's endpoint, handling model name mapping and compatibility adjustments automatically. Organizations with existing GCP Vertex AI Claude access can use this tool to integrate Claude Code workflows without managing separate API credentials. The service requires valid Google Cloud credentials and existing Vertex AI Claude model access, ensuring compliance with both Google Cloud and Anthropic terms of service. Setup involves configuring GCP credentials, setting region preferences, and pointing Claude Code to the local proxy endpoint.\nIntegrate Claude Code with existing Google Cloud Vertex AI deployments\nRoute Claude Code requests through GCP for centralized model access control\nEnable teams with Vertex AI Claude access to use Claude Code without separate credentials\nMaintain compliance by keeping Claude API requests within GCP infrastructure",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OrionStarAI/claudecode-vertex-proxy`",
+    "usage": "```\nSet up a secure connection between [YOUR_ORGANIZATION]'s internal tools and GCP Vertex AI using the claudecode-vertex-proxy. Configure the proxy to route requests from [SPECIFIC_TOOL_OR_SYSTEM] through Vertex AI's [MODEL_NAME] endpoint. Test the connection by sending a sample prompt '[SAMPLE_PROMPT]' and verify the response latency is under [MAX_LATENCY_MS]ms. Document the setup steps and any required authentication credentials in [DOCUMENTATION_FILE].\n```\nCopy\n\n```\n### Vertex AI Proxy Setup Report\n\n**Configuration Summary:**\n- Proxy Service: claudecode-vertex-proxy v1.2.3\n- GCP Project: ops-prod-4217\n- Vertex AI Endpoint: projects/ops-prod-4217/locations/us-central1/publishers/anthropic/models/claude-3-opus\n- Internal Tool: Claude Code v1.15.0\n- Authentication: Service Account `claude-proxy@ops-prod-4217.iam.gserviceaccount.com` with Vertex AI User role\n\n**Connection Test Results:**\n1. **Latency Benchmark:**\n   - Average response time: 420ms (target: <500ms)\n   - Peak latency: 680ms (during peak load at 14:22 UTC)\n   - Status: ✅ Within SLA\n\n2. **Sample Prompt Response:**\n   **Prompt:** \"Analyze the last 7 days of error logs from our Kubernetes cluster and identify the top 3 root causes of failures.\"\n   **Response Quality:**\n   - Detected 3 critical patterns:\n     1. Memory pressure in namespace `monitoring` (OOMKilled containers)\n     2. Certificate rotation failures in `istio-system` (expired certs)\n     3. Database connection leaks in `postgres-operator` (unclosed connections)\n   - Provided actionable remediation steps for each issue\n   - Cited specific log file paths and timestamps\n\n**Security Verification:**\n- All requests routed through private VPC endpoint (10.128.0.0/28)\n- IAM policies restrict access to service account only\n- No sensitive data persisted in proxy logs\n\n**Next Steps:**\n- Schedule performance tuning for peak hours (14:00-16:00 UTC)\n- Add monitoring dashboard for error rates and latency\n- Document failover procedures for primary region (us-central1) to backup (europe-west1)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudecode-vertex-proxy#main-content",
+      "claudecode-vertex-proxy#overview",
+      "claudecode-vertex-proxy#setup",
+      "claudecode-vertex-proxy#examples",
+      "claudecode-vertex-proxy#tools",
+      "claudecode-vertex-proxy#mcp",
+      "claudecode-vertex-proxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This proxy service converts Claude API requests into Google Cloud Vertex AI format, allowing Claude Code clients to access Claude models through GCP infrastructure. It functions as a protocol translation layer that bridges Claude's API with Vertex AI's endpoint, handling model name mapping and compatibility adjustments automatically. Organizations with existing GCP Vertex AI Claude access can use this tool to integrate Claude Code workflows without managing separate API credentials. The service requires valid Google Cloud credentials and existing Vertex AI Claude model access, ensuring compliance with both Google Cloud and Anthropic terms of service. Setup involves configuring GCP credentials, setting region preferences, and pointing Claude Code to the local proxy endpoint.\nIntegrate Claude Code with existing Google Cloud Vertex AI deployments\nRoute Claude Code requests through GCP for centralized model access control\nEnable teams with Vertex AI Claude access to use Claude Code without separate credentials\nMaintain compliance by keeping Claude API requests within GCP infrastructure",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OrionStarAI/claudecode-vertex-proxy`",
+    "usage_vi": "```\nSet up a secure connection between [YOUR_ORGANIZATION]'s internal tools and GCP Vertex AI using the claudecode-vertex-proxy. Configure the proxy to route requests from [SPECIFIC_TOOL_OR_SYSTEM] through Vertex AI's [MODEL_NAME] endpoint. Test the connection by sending a sample prompt '[SAMPLE_PROMPT]' and verify the response latency is under [MAX_LATENCY_MS]ms. Document the setup steps and any required authentication credentials in [DOCUMENTATION_FILE].\n```\nCopy\n\n```\n### Vertex AI Proxy Setup Report\n\n**Configuration Summary:**\n- Proxy Service: claudecode-vertex-proxy v1.2.3\n- GCP Project: ops-prod-4217\n- Vertex AI Endpoint: projects/ops-prod-4217/locations/us-central1/publishers/anthropic/models/claude-3-opus\n- Internal Tool: Claude Code v1.15.0\n- Authentication: Service Account `claude-proxy@ops-prod-4217.iam.gserviceaccount.com` with Vertex AI User role\n\n**Connection Test Results:**\n1. **Latency Benchmark:**\n   - Average response time: 420ms (target: <500ms)\n   - Peak latency: 680ms (during peak load at 14:22 UTC)\n   - Status: ✅ Within SLA\n\n2. **Sample Prompt Response:**\n   **Prompt:** \"Analyze the last 7 days of error logs from our Kubernetes cluster and identify the top 3 root causes of failures.\"\n   **Response Quality:**\n   - Detected 3 critical patterns:\n     1. Memory pressure in namespace `monitoring` (OOMKilled containers)\n     2. Certificate rotation failures in `istio-system` (expired certs)\n     3. Database connection leaks in `postgres-operator` (unclosed connections)\n   - Provided actionable remediation steps for each issue\n   - Cited specific log file paths and timestamps\n\n**Security Verification:**\n- All requests routed through private VPC endpoint (10.128.0.0/28)\n- IAM policies restrict access to service account only\n- No sensitive data persisted in proxy logs\n\n**Next Steps:**\n- Schedule performance tuning for peak hours (14:00-16:00 UTC)\n- Add monitoring dashboard for error rates and latency\n- Document failover procedures for primary region (us-central1) to backup (europe-west1)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:26:41.473598Z",
+    "http_status": 200,
+    "content_hash": "9692ad3d3164551868307cde851fab6dc5ec7063c36f1fa7f841b361598702ac",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecode-vertex-proxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecode-vertex-proxy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code代理",
+  "short_description_vi": "Proxy service enabling Claude Code to access Claude models via GCP Vertex AI. Ideal for operations teams needing secure, scalable AI model access. Integrates with existing workflows and tools."
+}

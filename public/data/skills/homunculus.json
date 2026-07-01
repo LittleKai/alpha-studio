@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/homunculus",
+  "slug": "homunculus",
+  "name": "Homunculus",
+  "headline": "Homunculus - Automates tasks by learning your",
+  "short_description": "Homunculus is a Claude Code plugin that observes your workflow, learns your patterns, and evolves to automate repetitive tasks. It benefits operations teams by reducing manual work and improving efficiency. It connects to CLI tools and workflows, adapting to your processes over time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "humanplane",
+  "install_command": "git clone https://github.com/humanplane/homunculus.git",
+  "source_repo_url": "https://github.com/humanplane/homunculus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "anthropic",
+    "cli",
+    "developer-tools",
+    "ai-tools",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Homunculus is a Claude Code plugin that observes everything you do—every prompt and tool use—through 100% reliable hooks. It learns small behavioral rules called instincts, tagged by domain like code-style, testing, git, and debugging. When instincts cluster around a domain, you can evolve them into bigger capabilities: commands, skills, or specialist agents. The system runs a background observer agent that processes observations and auto-approves instincts, requiring no manual intervention except when you run the evolve command. It's designed for developers and operations teams who perform repetitive tasks and want their AI assistant to adapt and improve based on their actual patterns.\nAutomate repetitive code style and formatting preferences across sessions\nLearn and apply project-specific testing and git commit conventions\nReduce manual debugging by capturing and reusing error-fix patterns\nShare learned instincts and behaviors across team members via export/import",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/humanplane/homunculus`",
+    "usage": "```\nUse the Homunculus plugin to automate the following repetitive task: [DESCRIBE_TASK]. Include specific steps like [FILE_PATHS], [COMMANDS], or [WORKFLOW_TRIGGERS]. Let Homunculus observe and learn from my current process before suggesting or executing optimizations.\n```\nCopy\n\n```\nAfter analyzing your weekly data processing workflow, Homunculus suggests the following automation:\n\n1. **File Consolidation**: Instead of manually merging CSV files from `/data/raw/` into `/data/processed/`, Homunculus will now run a Python script that:\n   - Scans `/data/raw/` every Monday at 8 AM\n   - Combines all CSVs with matching column headers\n   - Saves the output to `/data/processed/consolidated_YYYY-MM-DD.csv`\n   - Logs errors to `/logs/consolidation_errors.log`\n\n2. **Validation Check**: Homunculus added a pre-processing step that:\n   - Verifies all input files have the required 'timestamp' and 'user_id' columns\n   - Flags any missing files in Slack channel #data-alerts\n   - Skips corrupted files automatically\n\n3. **Performance Impact**: This automation reduced your manual processing time from 45 minutes to 2 minutes, with a 98% success rate in the first month. The script now handles 120+ files weekly without intervention.\n\nHomunculus also detected that you frequently re-run failed jobs manually. It now:\n- Retries failed consolidations up to 3 times\n- Sends a summary of all actions to your email at 9 AM\n- Provides a dashboard link in Notion for tracking weekly volume\n\nWould you like me to implement these changes or adjust any part of the automation?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "homunculus#main-content",
+      "homunculus#overview",
+      "homunculus#setup",
+      "homunculus#examples",
+      "homunculus#tools",
+      "homunculus#mcp",
+      "homunculus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Homunculus is a Claude Code plugin that observes everything you do—every prompt and tool use—through 100% reliable hooks. It learns small behavioral rules called instincts, tagged by domain like code-style, testing, git, and debugging. When instincts cluster around a domain, you can evolve them into bigger capabilities: commands, skills, or specialist agents. The system runs a background observer agent that processes observations and auto-approves instincts, requiring no manual intervention except when you run the evolve command. It's designed for developers and operations teams who perform repetitive tasks and want their AI assistant to adapt and improve based on their actual patterns.\nAutomate repetitive code style and formatting preferences across sessions\nLearn and apply project-specific testing and git commit conventions\nReduce manual debugging by capturing and reusing error-fix patterns\nShare learned instincts and behaviors across team members via export/import",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/humanplane/homunculus`",
+    "usage_vi": "```\nUse the Homunculus plugin to automate the following repetitive task: [DESCRIBE_TASK]. Include specific steps like [FILE_PATHS], [COMMANDS], or [WORKFLOW_TRIGGERS]. Let Homunculus observe and learn from my current process before suggesting or executing optimizations.\n```\nCopy\n\n```\nAfter analyzing your weekly data processing workflow, Homunculus suggests the following automation:\n\n1. **File Consolidation**: Instead of manually merging CSV files from `/data/raw/` into `/data/processed/`, Homunculus will now run a Python script that:\n   - Scans `/data/raw/` every Monday at 8 AM\n   - Combines all CSVs with matching column headers\n   - Saves the output to `/data/processed/consolidated_YYYY-MM-DD.csv`\n   - Logs errors to `/logs/consolidation_errors.log`\n\n2. **Validation Check**: Homunculus added a pre-processing step that:\n   - Verifies all input files have the required 'timestamp' and 'user_id' columns\n   - Flags any missing files in Slack channel #data-alerts\n   - Skips corrupted files automatically\n\n3. **Performance Impact**: This automation reduced your manual processing time from 45 minutes to 2 minutes, with a 98% success rate in the first month. The script now handles 120+ files weekly without intervention.\n\nHomunculus also detected that you frequently re-run failed jobs manually. It now:\n- Retries failed consolidations up to 3 times\n- Sends a summary of all actions to your email at 9 AM\n- Provides a dashboard link in Notion for tracking weekly volume\n\nWould you like me to implement these changes or adjust any part of the automation?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:59.777140Z",
+    "http_status": 200,
+    "content_hash": "abfe80a4391739928ab0c8115cf507efd918ec470a5a0bdceca5c82efa918321",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\homunculus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\homunculus.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Homunculus - Automates tasks by learning your",
+  "short_description_vi": "Homunculus is a Claude Code plugin that observes your workflow, learns your patterns, and evolves to automate repetitive tasks. It benefits operations teams by reducing manual work and improving efficiency. It connects to CLI tools and workflows, adapting to your processes over time."
+}

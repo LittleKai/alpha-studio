@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-hub",
+  "slug": "skill-hub",
+  "name": "Skill Hub",
+  "headline": "skill-hub: AI Skill Management",
+  "short_description": "一个 本地运行的Web 界面的 Skills 管理工具，帮你：   从 GitHub 一键安装 AI Skills（如 PDF 处理、Excel 操作、代码分析等） 🔗 统一管理：安装一次，多个项目、多个 AI 工具同时使用  可视化配置：勾选即用，自动生成配置文件 支持的 AI 编程工具：  Claude Code - 自动识别 .claude/skills/ 目录 Cursor - 自动读取 AGENTS.md 配置 Trae - 自动读取 AGENTS.md 配置",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "Lincode-hormony",
+  "install_command": "git clone https://github.com/Lincode-hormony/skill-hub.git",
+  "source_repo_url": "https://github.com/Lincode-hormony/skill-hub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The skill-hub is a local web-based management tool designed to streamline the installation and configuration of AI automation skills, specifically tailored for Claude Code and other AI agents. With this skill, users can effortlessly install various AI skills from GitHub with a single click, including functionalities for PDF processing, Excel operations, and code analysis. The skill-hub automatically recognizes the .claude/skills/ directory, making it intuitive for developers to manage their AI capabilities without extensive setup. One of the key benefits of using skill-hub is its unified management system. Users can install skills once and utilize them across multiple projects and AI tools, significantly reducing the repetitive setup time typically associated with integrating new skills. The visual configuration feature allows users to simply check boxes to select the skills they need, automatically generating the necessary configuration files. This not only saves time but also minimizes the potential for errors during manual configuration, making it an efficient choice for those looking to enhance their workflow automation. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in AI automation projects. It caters to those who need to manage multiple AI tools and skills simultaneously, ensuring a seamless integration into their existing workflows. For instance, a data engineer could leverage skill-hub to quickly set up skills for data processing tasks, while a product manager could use it to streamline the integration of AI capabilities into product features. With an intermediate level of difficulty and an estimated implementation time of just 30 minutes, skill-hub is accessible for those with some technical background. It fits perfectly into AI-first workflows by simplifying the management of AI agent skills and enhancing productivity. By adopting skill-hub, teams can focus more on developing innovative solutions rather than getting bogged down in the complexities of skill management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Lincode-hormony/skill-hub`\n\n### Step 1: Open Skill Hub\n1. Launch the Skill Hub application on your local machine.\n2. Ensure you are on the main dashboard.\n\n### Step 2: Search for the Skill\n1. In the search bar, type `[SKILL_NAME]`.\n2. Press Enter to see the search results.\n\n### Step 3: Install the Skill\n1. Click on the `[SKILL_NAME]` skill from the search results.\n2. Click the `Install` button.\n3. Confirm the installation by clicking `Yes` in the pop-up dialog.\n\n### Step 4: Configure the Skill\n1. Navigate to the `Configure` tab.\n2. Select the `[AI_TOOL]` from the dropdown menu.\n3. Check the required options for `[SKILL_NAME]`.\n4. Click `Save` to generate the configuration file.\n\n### Step 5: Verify the Installation\n1. Go to the `Installed Skills` section.\n2. Ensure `[SKILL_NAME]` is listed and active.\n3. Test the skill with your `[AI_TOOL]` to confirm it works as expected.\n```",
+    "usage": "```\nI want to use Skill Hub to manage my AI skills. I'm working with [AI_TOOL] and need to install [SKILL_NAME] from GitHub. Can you guide me through the process?\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-hub#main-content",
+      "skill-hub#overview",
+      "skill-hub#setup",
+      "skill-hub#examples",
+      "skill-hub#tools",
+      "skill-hub#mcp",
+      "skill-hub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The skill-hub is a local web-based management tool designed to streamline the installation and configuration of AI automation skills, specifically tailored for Claude Code and other AI agents. With this skill, users can effortlessly install various AI skills from GitHub with a single click, including functionalities for PDF processing, Excel operations, and code analysis. The skill-hub automatically recognizes the .claude/skills/ directory, making it intuitive for developers to manage their AI capabilities without extensive setup. One of the key benefits of using skill-hub is its unified management system. Users can install skills once and utilize them across multiple projects and AI tools, significantly reducing the repetitive setup time typically associated with integrating new skills. The visual configuration feature allows users to simply check boxes to select the skills they need, automatically generating the necessary configuration files. This not only saves time but also minimizes the potential for errors during manual configuration, making it an efficient choice for those looking to enhance their workflow automation. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in AI automation projects. It caters to those who need to manage multiple AI tools and skills simultaneously, ensuring a seamless integration into their existing workflows. For instance, a data engineer could leverage skill-hub to quickly set up skills for data processing tasks, while a product manager could use it to streamline the integration of AI capabilities into product features. With an intermediate level of difficulty and an estimated implementation time of just 30 minutes, skill-hub is accessible for those with some technical background. It fits perfectly into AI-first workflows by simplifying the management of AI agent skills and enhancing productivity. By adopting skill-hub, teams can focus more on developing innovative solutions rather than getting bogged down in the complexities of skill management.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Lincode-hormony/skill-hub`\n\n### Step 1: Open Skill Hub\n1. Launch the Skill Hub application on your local machine.\n2. Ensure you are on the main dashboard.\n\n### Step 2: Search for the Skill\n1. In the search bar, type `[SKILL_NAME]`.\n2. Press Enter to see the search results.\n\n### Step 3: Install the Skill\n1. Click on the `[SKILL_NAME]` skill from the search results.\n2. Click the `Install` button.\n3. Confirm the installation by clicking `Yes` in the pop-up dialog.\n\n### Step 4: Configure the Skill\n1. Navigate to the `Configure` tab.\n2. Select the `[AI_TOOL]` from the dropdown menu.\n3. Check the required options for `[SKILL_NAME]`.\n4. Click `Save` to generate the configuration file.\n\n### Step 5: Verify the Installation\n1. Go to the `Installed Skills` section.\n2. Ensure `[SKILL_NAME]` is listed and active.\n3. Test the skill with your `[AI_TOOL]` to confirm it works as expected.\n```",
+    "usage_vi": "```\nI want to use Skill Hub to manage my AI skills. I'm working with [AI_TOOL] and need to install [SKILL_NAME] from GitHub. Can you guide me through the process?\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:46:36.813024Z",
+    "http_status": 200,
+    "content_hash": "56d37e8573864c70e87b66cc9846d1a935d1f06a4f625672e09d6a0c909ea1e6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-hub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-hub.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "skill-hub: AI Skill Management",
+  "short_description_vi": "一个 本地运行的Web 界面的 Skills 管理工具，帮你：   从 GitHub 一键安装 AI Skills（如 PDF 处理、Excel 操作、代码分析等） 🔗 统一管理：安装一次，多个项目、多个 AI 工具同时使用  可视化配置：勾选即用，自动生成配置文件 支持的 AI 编程工具：  Claude Code - 自动识别 .claude/skills/ 目录 Cursor - 自动读取 AGENTS.md 配置 Trae - 自动读取 AGENTS.md 配置"
+}

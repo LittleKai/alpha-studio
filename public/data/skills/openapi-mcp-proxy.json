@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openapi-mcp-proxy",
+  "slug": "openapi-mcp-proxy",
+  "name": "Openapi MCP Proxy",
+  "headline": "openapi-mcp-proxy: Explore OpenAPI Schemas",
+  "short_description": "The OpenAPI MCP Proxy enables operations teams to explore large OpenAPI schemas without loading entire schemas into LLM context. It connects to Claude agents and supports Python workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "nyudenkov",
+  "install_command": "git clone https://github.com/nyudenkov/openapi-mcp-proxy.git",
+  "source_repo_url": "https://github.com/nyudenkov/openapi-mcp-proxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-desktop",
+    "llm",
+    "llm-context",
+    "mcp-server",
+    "mcp",
+    "openapi",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The openapi-mcp-proxy skill is an automation tool designed for exploring large OpenAPI schemas efficiently. By acting as an MCP server, it provides developers and product managers with the necessary tools to navigate complex API documentation with ease. This skill streamlines the process of understanding and interacting with APIs, making it an essential asset for teams working in API-driven environments. One of the key benefits of the openapi-mcp-proxy skill is its ability to save time during the API exploration phase. While specific time savings are not quantified, the skill's intermediate implementation difficulty means that users can expect to set it up in approximately 30 minutes. This quick setup allows teams to focus more on developing applications rather than spending excessive time deciphering API documentation, ultimately enhancing productivity. This skill is particularly valuable for developers, product managers, and AI practitioners who frequently engage with APIs. By simplifying the exploration of OpenAPI schemas, it enables these professionals to quickly understand the capabilities of various APIs and integrate them into their projects. For example, a developer can use this skill to quickly assess the endpoints and data structures of a new API, facilitating faster integration into their applications. With an intermediate complexity level, the openapi-mcp-proxy skill is suitable for those with some experience in API management and automation. It fits seamlessly into AI-first workflows by providing a structured approach to API exploration, which is crucial for leveraging AI automation and enhancing workflow automation. This skill not only improves the efficiency of API interactions but also empowers teams to innovate and deliver solutions more rapidly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nyudenkov/openapi-mcp-proxy`",
+    "usage": "```\nI'm working with a [COMPANY] in the [INDUSTRY] sector. I need to explore a large OpenAPI schema for their [API_NAME] API without loading the entire schema into context. Can you help me use the OpenAPI MCP Proxy to examine specific endpoints like [ENDPOINT_PATH] and understand their request/response structures?\n```\nCopy\n\n```\n```markdown# OpenAPI Schema Exploration for 'Order Management API' (v2.3.1)",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "openapi-mcp-proxy#main-content",
+      "openapi-mcp-proxy#overview",
+      "openapi-mcp-proxy#setup",
+      "openapi-mcp-proxy#examples",
+      "openapi-mcp-proxy#tools",
+      "openapi-mcp-proxy#mcp",
+      "openapi-mcp-proxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill openapi-mcp-proxy là một công cụ tự động hóa được thiết kế để khám phá các OpenAPI schema lớn một cách hiệu quả. Bằng cách hoạt động như một MCP server, công cụ này cung cấp cho các nhà phát triển và product manager những công cụ cần thiết để dễ dàng điều hướng qua các tài liệu API phức tạp. Skill này tối ưu hóa quy trình tìm hiểu và tương tác với API, trở thành một giải pháp thiết yếu cho các đội ngũ làm việc trong môi trường định hướng API (API-driven). Một trong những lợi ích chính của openapi-mcp-proxy là khả năng tiết kiệm thời gian trong giai đoạn tìm hiểu API. Dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, với độ khó triển khai ở mức trung bình, người dùng có thể hoàn thành setup trong khoảng 30 phút. Quá trình setup nhanh chóng này giúp các đội ngũ tập trung hơn vào việc phát triển ứng dụng thay vì mất quá nhiều thời gian để giải mã tài liệu API, từ đó nâng cao hiệu suất làm việc. Skill này đặc biệt giá trị đối với các nhà phát triển, product manager và các chuyên gia AI thường xuyên làm việc với API. Bằng cách đơn giản hóa việc khám phá OpenAPI schema, nó giúp họ nhanh chóng nắm bắt khả năng của các API khác nhau và tích hợp chúng vào dự án của mình. Ví dụ, một nhà phát triển có thể dùng skill này để đánh giá nhanh các endpoint và cấu trúc dữ liệu của một API mới, giúp đẩy nhanh quá trình tích hợp vào ứng dụng. Với mức độ phức tạp trung bình, openapi-mcp-proxy phù hợp với những người đã có kinh nghiệm trong quản lý API và tự động hóa. Nó tích hợp mượt mà vào các workflow ưu tiên AI (AI-first) bằng cách cung cấp một phương pháp tiếp cận có cấu trúc để khám phá API - yếu tố cốt lõi để tận dụng tự động hóa bằng AI và nâng cao tự động hóa quy trình làm việc (workflow automation). Skill này không chỉ cải thiện hiệu quả tương tác API mà còn giúp các đội ngũ đổi mới sáng tạo và bàn giao giải pháp nhanh chóng hơn.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/nyudenkov/openapi-mcp-proxy`",
+    "usage_vi": "```\nTôi đang làm việc với một [COMPANY] trong lĩnh vực [INDUSTRY]. Tôi cần khám phá một OpenAPI schema lớn cho API [API_NAME] của họ mà không cần nạp toàn bộ schema vào context. Bạn có thể giúp tôi sử dụng OpenAPI MCP Proxy để kiểm tra các endpoint cụ thể như [ENDPOINT_PATH] và tìm hiểu cấu trúc request/response của chúng không?\n```\nSao chép\n\n```\n```markdown# Khám phá OpenAPI Schema cho 'Order Management API' (v2.3.1)"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:55:35.452461Z",
+    "http_status": 200,
+    "content_hash": "04aa25297ec451b4dcf26cf50ac90384bf6aec3a0cbf28af6e1f20a22b9f0074",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openapi-mcp-proxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openapi-mcp-proxy.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "openapi-mcp-proxy: Khám phá OpenAPI Schema",
+  "short_description_vi": "OpenAPI MCP Proxy cho phép các đội ngũ vận hành khám phá các OpenAPI schema lớn mà không cần nạp toàn bộ schema vào LLM context. Công cụ này kết nối trực tiếp với các Claude agent và hỗ trợ các workflow Python."
+}

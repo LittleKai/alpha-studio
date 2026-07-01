@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-config-editor",
+  "slug": "claude-config-editor",
+  "name": "browser-use",
+  "headline": "Claude Config Editor: Optimize Your Files",
+  "short_description": "Claude Config Editor is a lightweight web tool that helps you clean and optimize your Claude Code/Desktop config files (.claude.json). Analyze project sizes, bulk delete chat histories, export data for backup, manage servers visually, and speed up Claude. all locally, with auto-backup, no dependencies, and cross-platform support.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "gagarinyury",
+  "install_command": "git clone https://github.com/gagarinyury/claude-config-editor.git",
+  "source_repo_url": "https://github.com/gagarinyury/claude-config-editor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-desktop",
+    "python",
+    "mcp-server",
+    "no-dependencies",
+    "claude-ai",
+    "claude",
+    "cross-platform",
+    "mcp-servers",
+    "lightweight"
+  ],
+  "sections": {
+    "overview": "Claude Config Editor is a lightweight web tool that solves the problem of bloated .claude.json configuration files that slow down Claude Code and Claude Desktop. It provides a visual interface to analyze which projects are consuming disk space, bulk delete old chat histories, export conversations before deletion, and manage MCP servers without manual JSON editing. The tool runs entirely locally on localhost:8765 with zero dependencies, auto-backups before every save, and supports macOS, Linux, and Windows across both Claude Code and Claude Desktop installations. Users can reduce 10+ MB configs to under 1 MB in minutes, improving startup performance and responsiveness.\nReduce bloated .claude.json files (10+ MB) to optimize Claude startup speed\nBulk delete old project chat histories while preserving important conversations via export\nView and manage MCP server configurations visually instead of editing JSON manually\nBackup and export individual project histories before cleanup",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gagarinyury/claude-config-editor`",
+    "usage": "```\nUse the Claude Config Editor to analyze and optimize my [PROJECT_NAME] config file located at [FILE_PATH]. Identify redundant or outdated settings, suggest performance improvements, and generate a cleaned-up version of the config. After optimization, export the current chat history to [BACKUP_FOLDER] for safekeeping. Finally, bulk-delete chat histories older than [X_MONTHS] to free up space. Provide a summary of changes made and space saved.\n```\nCopy\n\n```\n### Claude Config Editor Optimization Report for 'Acme Corp' Project\n\n**Analysis Summary:**\n- Total config file size: 2.4MB (reduced from 3.1MB)\n- Detected 12 redundant server configurations in the 'servers' section\n- Found 8 outdated model presets in the 'default_models' array\n- Identified 3 unused API keys in the 'integrations' section\n\n**Optimizations Applied:**\n1. Removed 12 server entries marked as 'inactive' in comments\n2. Consolidated 5 duplicate model presets into single optimized versions\n3. Deleted 3 unused integration keys (OpenRouter, HuggingFace, Replicate)\n4. Compressed image generation settings by 30% using base64 encoding\n5. Reorganized workspace layouts to reduce file fragmentation\n\n**Space Savings:**\n- Original config: 2.4MB\n- Optimized config: 1.8MB (25% reduction)\n- Chat history cleanup: 450MB freed from 18-month-old conversations\n\n**Backup Created:**\n- Exported chat history to: `/backups/acme_corp_2024-01-15.json`\n- Included 1,247 conversations (1.2GB total)\n- Verified checksum: `sha256:abc123...`\n\n**Performance Impact:**\n- Expected startup time reduction: 18% faster\n- Memory usage during operation: 12% lower\n- Server connection times: Improved by 22% for active projects\n\n**Next Steps:**\n1. Review the diff in your version control system\n2. Test the optimized config with a small project first\n3. Consider enabling auto-backup in settings for future changes\n4. Schedule monthly cleanups for chat histories older than 6 months\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-config-editor#main-content",
+      "claude-config-editor#overview",
+      "claude-config-editor#setup",
+      "claude-config-editor#examples",
+      "claude-config-editor#tools",
+      "claude-config-editor#mcp",
+      "claude-config-editor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Config Editor is a lightweight web tool that solves the problem of bloated .claude.json configuration files that slow down Claude Code and Claude Desktop. It provides a visual interface to analyze which projects are consuming disk space, bulk delete old chat histories, export conversations before deletion, and manage MCP servers without manual JSON editing. The tool runs entirely locally on localhost:8765 with zero dependencies, auto-backups before every save, and supports macOS, Linux, and Windows across both Claude Code and Claude Desktop installations. Users can reduce 10+ MB configs to under 1 MB in minutes, improving startup performance and responsiveness.\nReduce bloated .claude.json files (10+ MB) to optimize Claude startup speed\nBulk delete old project chat histories while preserving important conversations via export\nView and manage MCP server configurations visually instead of editing JSON manually\nBackup and export individual project histories before cleanup",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gagarinyury/claude-config-editor`",
+    "usage_vi": "```\nUse the Claude Config Editor to analyze and optimize my [PROJECT_NAME] config file located at [FILE_PATH]. Identify redundant or outdated settings, suggest performance improvements, and generate a cleaned-up version of the config. After optimization, export the current chat history to [BACKUP_FOLDER] for safekeeping. Finally, bulk-delete chat histories older than [X_MONTHS] to free up space. Provide a summary of changes made and space saved.\n```\nCopy\n\n```\n### Claude Config Editor Optimization Report for 'Acme Corp' Project\n\n**Analysis Summary:**\n- Total config file size: 2.4MB (reduced from 3.1MB)\n- Detected 12 redundant server configurations in the 'servers' section\n- Found 8 outdated model presets in the 'default_models' array\n- Identified 3 unused API keys in the 'integrations' section\n\n**Optimizations Applied:**\n1. Removed 12 server entries marked as 'inactive' in comments\n2. Consolidated 5 duplicate model presets into single optimized versions\n3. Deleted 3 unused integration keys (OpenRouter, HuggingFace, Replicate)\n4. Compressed image generation settings by 30% using base64 encoding\n5. Reorganized workspace layouts to reduce file fragmentation\n\n**Space Savings:**\n- Original config: 2.4MB\n- Optimized config: 1.8MB (25% reduction)\n- Chat history cleanup: 450MB freed from 18-month-old conversations\n\n**Backup Created:**\n- Exported chat history to: `/backups/acme_corp_2024-01-15.json`\n- Included 1,247 conversations (1.2GB total)\n- Verified checksum: `sha256:abc123...`\n\n**Performance Impact:**\n- Expected startup time reduction: 18% faster\n- Memory usage during operation: 12% lower\n- Server connection times: Improved by 22% for active projects\n\n**Next Steps:**\n1. Review the diff in your version control system\n2. Test the optimized config with a small project first\n3. Consider enabling auto-backup in settings for future changes\n4. Schedule monthly cleanups for chat histories older than 6 months\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:49:12.059333Z",
+    "http_status": 200,
+    "content_hash": "9d5fc8a2ef04b0e09af22b5b520d5574bec3a7e0b3ff781b87cea88cf6246397",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-config-editor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-config-editor.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Config Editor: Optimize Your Files",
+  "short_description_vi": "Claude Config Editor is a lightweight web tool that helps you clean and optimize your Claude Code/Desktop config files (.claude.json). Analyze project sizes, bulk delete chat histories, export data for backup, manage servers visually, and speed up Claude. all locally, with auto-backup, no dependencies, and cross-platform support."
+}

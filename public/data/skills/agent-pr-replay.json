@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-pr-replay",
+  "slug": "agent-pr-replay",
+  "name": "Agent Pr Replay",
+  "headline": "Reverse-engineer PRs with agent PR replay",
+  "short_description": "Agent PR Replay takes merged PRs from any repository, reverse-engineers the task prompt, runs Claude Code against it, and compares what the agent did versus what humans actually shipped. The result is targeted, empirical guidance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "sshh12",
+  "install_command": "git clone https://github.com/sshh12/agent-pr-replay.git",
+  "source_repo_url": "https://github.com/sshh12/agent-pr-replay",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "context-engineering",
+    "claude",
+    "coding-agents"
+  ],
+  "sections": {
+    "overview": "Agent PR Replay helps development teams understand how AI coding agents navigate their codebases by analyzing real merged pull requests. The tool reverse-engineers task prompts from human PRs, executes Claude Code with identical starting conditions, and systematically compares what the agent produced versus what humans actually shipped. By identifying gaps between agent and human solutions—whether the agent over-engineers, misses context, or diverges in scope—you can generate empirical, evidence-based steering rules and skills. This targets improvement precisely where agents need guidance in your specific codebase patterns and conventions.\nDiscovering systematic patterns where AI agents over-engineer or under-engineer solutions compared to human developers\nGenerating codebase-specific steering rules (CLAUDE.md/AGENTS.md) based on observed behavioral gaps\nIdentifying file access patterns and tool usage inefficiencies in agent behavior\nCreating reusable agent skills with structured guidance derived from real merged PRs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sshh12/agent-pr-replay`",
+    "usage": "```\nI need to analyze the merged PR [PR_NUMBER] from [REPO_URL]. Extract the original task prompt that triggered the PR (if not explicitly stated, infer it from the PR description and code changes). Then, simulate what an AI agent would have produced when given that prompt using Claude Code. Compare the AI-generated output with the actual human implementation in the PR. Highlight key differences in approach, quality, and efficiency. Finally, provide actionable recommendations for improving future AI agent prompts or workflows based on these insights.\n```\nCopy\n\n```\nAnalyzing PR #142 from the `data-pipelines` repository (https://github.com/acme/data-pipelines/pull/142), which merged a new feature to optimize the ETL process for customer transaction data. The PR description stated: 'Add a new column to the transactions table that calculates the rolling 7-day average purchase amount per customer, partitioned by customer_id.'\n\n**Inferred Original Prompt:**\n'Write a SQL query to add a computed column to the transactions table that calculates the 7-day rolling average of purchase amounts, grouped by customer_id. The column should be named rolling_7day_avg and should be updated automatically as new transactions are inserted.'\n\n**AI Agent Simulation (Claude Code Output):**\n```sql\nALTER TABLE transactions\nADD COLUMN rolling_7day_avg DECIMAL(10,2);\n\n-- Create a materialized view for the rolling average\nCREATE MATERIALIZED VIEW customer_rolling_avg AS\nSELECT \n    customer_id,\n    AVG(amount) OVER (\n        PARTITION BY customer_id \n        ORDER BY transaction_date \n        ROWS BETWEEN 6 PRECEDING AND CURRENT ROW\n    ) AS rolling_7day_avg\nFROM transactions;\n```\n\n**Human Implementation (Actual PR):**\n```sql\n-- Added a trigger-based solution\nCREATE OR REPLACE FUNCTION update_rolling_avg()\nRETURNS TRIGGER AS $$\nBEGIN\n    UPDATE transactions \n    SET rolling_7day_avg = (\n        SELECT AVG(amount) \n        FROM transactions t2 \n        WHERE t2.customer_id = NEW.customer_id \n        AND t2.transaction_date BETWEEN NEW.transaction_date - INTERVAL '7 days' AND NEW.transaction_date\n    )\n    WHERE id = NEW.id;\n    RETURN NEW;\nEND;\n$$ LANGUAGE plpgsql;\n\nCREATE TRIGGER trg_update_rolling_avg\nAFTER INSERT ON transactions\nFOR EACH ROW EXECUTE FUNCTION update_rolling_avg();\n```\n\n**Key Differences:**\n1. **Approach:** The AI agent proposed a materialized view, which would require periodic refreshes, while the human implemented a trigger-based solution for real-time updates.\n2. **Performance:** The trigger approach ensures data consistency at write-time, while the materialized view would need to be refreshed to stay current.\n3. **Complexity:** The human solution required additional PL/pgSQL expertise, which the AI agent didn't account for.\n\n**Actionable Recommendations:**\n1. **Prompt Refinement:** Future prompts should specify whether real-time updates are required (e.g., 'Ensure the rolling average is updated in real-time as new transactions are inserted').\n2. **Database Constraints:** The prompt should include database-specific constraints (e.g., 'Use PostgreSQL triggers for real-time updates').\n3. **Testing Requirements:** Add a requirement to test performance under high write loads, as triggers can impact insert performance.\n4. **Documentation:** Include a note about the trade-offs between materialized views and triggers in the prompt to guide the agent's approach.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-pr-replay#main-content",
+      "agent-pr-replay#overview",
+      "agent-pr-replay#setup",
+      "agent-pr-replay#examples",
+      "agent-pr-replay#tools",
+      "agent-pr-replay#mcp",
+      "agent-pr-replay#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent PR Replay helps development teams understand how AI coding agents navigate their codebases by analyzing real merged pull requests. The tool reverse-engineers task prompts from human PRs, executes Claude Code with identical starting conditions, and systematically compares what the agent produced versus what humans actually shipped. By identifying gaps between agent and human solutions—whether the agent over-engineers, misses context, or diverges in scope—you can generate empirical, evidence-based steering rules and skills. This targets improvement precisely where agents need guidance in your specific codebase patterns and conventions.\nDiscovering systematic patterns where AI agents over-engineer or under-engineer solutions compared to human developers\nGenerating codebase-specific steering rules (CLAUDE.md/AGENTS.md) based on observed behavioral gaps\nIdentifying file access patterns and tool usage inefficiencies in agent behavior\nCreating reusable agent skills with structured guidance derived from real merged PRs",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sshh12/agent-pr-replay`",
+    "usage_vi": "```\nI need to analyze the merged PR [PR_NUMBER] from [REPO_URL]. Extract the original task prompt that triggered the PR (if not explicitly stated, infer it from the PR description and code changes). Then, simulate what an AI agent would have produced when given that prompt using Claude Code. Compare the AI-generated output with the actual human implementation in the PR. Highlight key differences in approach, quality, and efficiency. Finally, provide actionable recommendations for improving future AI agent prompts or workflows based on these insights.\n```\nCopy\n\n```\nAnalyzing PR #142 from the `data-pipelines` repository (https://github.com/acme/data-pipelines/pull/142), which merged a new feature to optimize the ETL process for customer transaction data. The PR description stated: 'Add a new column to the transactions table that calculates the rolling 7-day average purchase amount per customer, partitioned by customer_id.'\n\n**Inferred Original Prompt:**\n'Write a SQL query to add a computed column to the transactions table that calculates the 7-day rolling average of purchase amounts, grouped by customer_id. The column should be named rolling_7day_avg and should be updated automatically as new transactions are inserted.'\n\n**AI Agent Simulation (Claude Code Output):**\n```sql\nALTER TABLE transactions\nADD COLUMN rolling_7day_avg DECIMAL(10,2);\n\n-- Create a materialized view for the rolling average\nCREATE MATERIALIZED VIEW customer_rolling_avg AS\nSELECT \n    customer_id,\n    AVG(amount) OVER (\n        PARTITION BY customer_id \n        ORDER BY transaction_date \n        ROWS BETWEEN 6 PRECEDING AND CURRENT ROW\n    ) AS rolling_7day_avg\nFROM transactions;\n```\n\n**Human Implementation (Actual PR):**\n```sql\n-- Added a trigger-based solution\nCREATE OR REPLACE FUNCTION update_rolling_avg()\nRETURNS TRIGGER AS $$\nBEGIN\n    UPDATE transactions \n    SET rolling_7day_avg = (\n        SELECT AVG(amount) \n        FROM transactions t2 \n        WHERE t2.customer_id = NEW.customer_id \n        AND t2.transaction_date BETWEEN NEW.transaction_date - INTERVAL '7 days' AND NEW.transaction_date\n    )\n    WHERE id = NEW.id;\n    RETURN NEW;\nEND;\n$$ LANGUAGE plpgsql;\n\nCREATE TRIGGER trg_update_rolling_avg\nAFTER INSERT ON transactions\nFOR EACH ROW EXECUTE FUNCTION update_rolling_avg();\n```\n\n**Key Differences:**\n1. **Approach:** The AI agent proposed a materialized view, which would require periodic refreshes, while the human implemented a trigger-based solution for real-time updates.\n2. **Performance:** The trigger approach ensures data consistency at write-time, while the materialized view would need to be refreshed to stay current.\n3. **Complexity:** The human solution required additional PL/pgSQL expertise, which the AI agent didn't account for.\n\n**Actionable Recommendations:**\n1. **Prompt Refinement:** Future prompts should specify whether real-time updates are required (e.g., 'Ensure the rolling average is updated in real-time as new transactions are inserted').\n2. **Database Constraints:** The prompt should include database-specific constraints (e.g., 'Use PostgreSQL triggers for real-time updates').\n3. **Testing Requirements:** Add a requirement to test performance under high write loads, as triggers can impact insert performance.\n4. **Documentation:** Include a note about the trade-offs between materialized views and triggers in the prompt to guide the agent's approach.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:48.660589Z",
+    "http_status": 200,
+    "content_hash": "26ebe2ccbf8e9849e0146023a6b77bc870dea26bab09719f577c745c8994af09",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-pr-replay.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-pr-replay.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Reverse-engineer PRs with agent PR replay",
+  "short_description_vi": "Agent PR Replay takes merged PRs from any repository, reverse-engineers the task prompt, runs Claude Code against it, and compares what the agent did versus what humans actually shipped. The result is targeted, empirical guidance."
+}

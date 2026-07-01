@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/seo-automation-pipeline",
+  "slug": "seo-automation-pipeline",
+  "name": "SEO-Automation-Pipeline",
+  "headline": "SEO Automation Pipeline: AI Keyword Analysis",
+  "short_description": "An end-to-end n8n workflow that accepts a target keyword from a custom web interface, retrieves live search data using SerpApi, processes the results using an AI model to extract key SEO metrics, stores the data in Supabase, and returns the analysis to the frontend for display",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "keirara04",
+  "install_command": "git clone https://github.com/keirara04/SEO-Automation-Pipeline.git",
+  "source_repo_url": "https://github.com/keirara04/SEO-Automation-Pipeline",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The SEO Automation Pipeline is a complete workflow integration that combines SerpApi, OpenAI, n8n, and Supabase to deliver real-time keyword analysis. It accepts any keyword through a web interface, retrieves live Google search results, uses AI to extract search intent, difficulty scores (1-100), and identifies top 3 competitors, then persists all data for future reference. The pipeline automatically classifies whether a keyword targets informational, transactional, or navigational user intent, helping marketers and SEO professionals understand search market dynamics without manual analysis. Results are returned instantly to the frontend with color-coded difficulty visualization and competitor rankings, enabling data-driven keyword strategy decisions.\nAnalyze keyword difficulty and competition before targeting new search terms\nClassify user search intent (informational, transactional, navigational) for content strategy\nIdentify top 3 competitor domains ranking for target keywords\nBuild historical keyword analysis database for market trend tracking",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/keirara04/SEO-Automation-Pipeline`",
+    "usage": "```\nCreate an SEO automation pipeline for [COMPANY] in the [INDUSTRY] sector. The pipeline should accept a target keyword from a custom web interface, retrieve live search data using SerpApi, process the results to extract key SEO metrics like search volume, keyword difficulty, and top-ranking URLs, store the data in Supabase, and return the analysis to the frontend for display. Ensure the pipeline is scalable and can handle multiple keywords simultaneously.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "seo-automation-pipeline#main-content",
+      "seo-automation-pipeline#overview",
+      "seo-automation-pipeline#setup",
+      "seo-automation-pipeline#examples",
+      "seo-automation-pipeline#tools",
+      "seo-automation-pipeline#mcp",
+      "seo-automation-pipeline#related",
+      "marketingskills",
+      "copywriting",
+      "social-media-auto-poster"
+    ],
+    "overview_vi": "Pipeline tự động hóa SEO là một tích hợp workflow hoàn chỉnh kết hợp SerpApi, OpenAI, n8n và Supabase để cung cấp khả năng phân tích từ khóa theo thời gian thực. Hệ thống nhận bất kỳ từ khóa nào qua giao diện web, truy xuất kết quả tìm kiếm Google trực tiếp, sử dụng AI để trích xuất ý định tìm kiếm (search intent), điểm độ khó (1-100) và xác định top 3 đối thủ cạnh tranh, sau đó lưu trữ toàn bộ dữ liệu để tham khảo sau này. Pipeline tự động phân loại xem từ khóa hướng tới ý định của người dùng là cung cấp thông tin (informational), giao dịch (transactional) hay điều hướng (navigational), giúp các nhà tiếp thị và chuyên gia SEO hiểu được động lực của thị trường tìm kiếm mà không cần phân tích thủ công. Kết quả được trả về ngay lập tức cho frontend với biểu đồ trực quan hóa độ khó bằng mã màu và xếp hạng đối thủ cạnh tranh, cho phép đưa ra các quyết định chiến lược từ khóa dựa trên dữ liệu.\nPhân tích độ khó của từ khóa và mức độ cạnh tranh trước khi nhắm mục tiêu vào các cụm từ tìm kiếm mới\nPhân loại ý định tìm kiếm của người dùng (informational, transactional, navigational) cho chiến lược nội dung\nXác định top 3 tên miền của đối thủ cạnh tranh đang xếp hạng cho các từ khóa mục tiêu\nXây dựng cơ sở dữ liệu phân tích lịch sử từ khóa để theo dõi xu hướng thị trường",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/keirara04/SEO-Automation-Pipeline`",
+    "usage_vi": "```\nTạo một pipeline tự động hóa SEO cho [COMPANY] trong lĩnh vực [INDUSTRY]. Pipeline này sẽ nhận một từ khóa mục tiêu từ giao diện web tùy chỉnh, truy xuất dữ liệu tìm kiếm trực tiếp bằng SerpApi, xử lý kết quả để trích xuất các chỉ số SEO chính như lượng tìm kiếm (search volume), độ khó từ khóa và các URL xếp hạng đầu, lưu trữ dữ liệu trong Supabase, và trả kết quả phân tích về frontend để hiển thị. Đảm bảo pipeline có khả năng mở rộng và có thể xử lý đồng thời nhiều từ khóa.\n```\nSao chép\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:07:14.957353Z",
+    "http_status": 200,
+    "content_hash": "fdc9e4d1ef6c6f88561d9aa93a26ca7657862868aa1fb902c815ae06dee26158",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\seo-automation-pipeline.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\seo-automation-pipeline.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Pipeline tự động hóa SEO: Phân tích từ khóa bằng AI",
+  "short_description_vi": "Một workflow n8n end-to-end nhận từ khóa mục tiêu từ một giao diện web tùy chỉnh, truy xuất dữ liệu tìm kiếm trực tiếp bằng SerpApi, xử lý kết quả bằng mô hình AI để trích xuất các chỉ số SEO chính, lưu trữ dữ liệu trong Supabase và trả kết quả phân tích về frontend để hiển thị."
+}

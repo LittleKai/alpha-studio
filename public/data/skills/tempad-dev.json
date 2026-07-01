@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tempad-dev",
+  "slug": "tempad-dev",
+  "name": "browser-use",
+  "headline": "Tempad-dev - Automate Figma Panel Inspection",
+  "short_description": "Tempad-dev is an AI-powered Figma extension that automates panel inspection for operations teams. It enables users to quickly analyze and document UI components, improving design consistency and reducing manual effort. The tool connects to Figma workflows, streamlining collaboration between designers and developers.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "ecomfe",
+  "install_command": "git clone https://github.com/ecomfe/tempad-dev.git",
+  "source_repo_url": "https://github.com/ecomfe/tempad-dev",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Tempad-dev is an open-source Figma extension that automates the design handoff process for development teams. It enables users to select any UI element and instantly extract CSS code in both standard format and JavaScript object notation, making it compatible with JSX and modern frameworks. The tool supports unit conversion (px to rem), variable display options, and deep selection mode for easier component inspection in read-only Figma views. Additional features include measuring spacing between elements, scrolling selections into view, and a plugin system for customizing code output. Developers and designers use Tempad-dev to reduce manual documentation effort and improve consistency between design files and implementation.\nQuickly extract CSS styles from Figma designs for use in web projects.\nUtilize deep select mode to navigate complex design layers without repetitive clicks.\nMeasure spacing between design elements to ensure accurate implementation in code.\nCustomize code output using plugins to match specific project requirements.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ecomfe/tempad-dev`",
+    "usage": "```\nInspect the [SPECIFIC_FIGMA_FILE] and generate a detailed report on all UI panels. Focus on [SPECIFIC_COMPONENTS] such as buttons, inputs, and cards. Document their properties, states, and any inconsistencies found. Highlight any deviations from the design system guidelines.\n```\nCopy\n\n```\nAfter analyzing the 'E-commerce Dashboard' Figma file, Tempad-dev identified several inconsistencies in the UI components. The primary call-to-action buttons in the 'Product Listing' panel vary in size and color, with some using the primary blue (#3B82F6) and others using a secondary gray (#9CA3AF). The input fields in the 'Search' panel have inconsistent padding, with some having 8px and others 12px. Additionally, the card components in the 'Featured Products' section have varying shadow properties, with some using a soft shadow (4px blur) and others using a hard shadow (2px blur). These inconsistencies can lead to a fragmented user experience and should be standardized according to the design system guidelines.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tempad-dev#main-content",
+      "tempad-dev#overview",
+      "tempad-dev#setup",
+      "tempad-dev#examples",
+      "tempad-dev#tools",
+      "tempad-dev#mcp",
+      "tempad-dev#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Tempad-dev is an open-source Figma extension that automates the design handoff process for development teams. It enables users to select any UI element and instantly extract CSS code in both standard format and JavaScript object notation, making it compatible with JSX and modern frameworks. The tool supports unit conversion (px to rem), variable display options, and deep selection mode for easier component inspection in read-only Figma views. Additional features include measuring spacing between elements, scrolling selections into view, and a plugin system for customizing code output. Developers and designers use Tempad-dev to reduce manual documentation effort and improve consistency between design files and implementation.\nQuickly extract CSS styles from Figma designs for use in web projects.\nUtilize deep select mode to navigate complex design layers without repetitive clicks.\nMeasure spacing between design elements to ensure accurate implementation in code.\nCustomize code output using plugins to match specific project requirements.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ecomfe/tempad-dev`",
+    "usage_vi": "```\nInspect the [SPECIFIC_FIGMA_FILE] and generate a detailed report on all UI panels. Focus on [SPECIFIC_COMPONENTS] such as buttons, inputs, and cards. Document their properties, states, and any inconsistencies found. Highlight any deviations from the design system guidelines.\n```\nCopy\n\n```\nAfter analyzing the 'E-commerce Dashboard' Figma file, Tempad-dev identified several inconsistencies in the UI components. The primary call-to-action buttons in the 'Product Listing' panel vary in size and color, with some using the primary blue (#3B82F6) and others using a secondary gray (#9CA3AF). The input fields in the 'Search' panel have inconsistent padding, with some having 8px and others 12px. Additionally, the card components in the 'Featured Products' section have varying shadow properties, with some using a soft shadow (4px blur) and others using a hard shadow (2px blur). These inconsistencies can lead to a fragmented user experience and should be standardized according to the design system guidelines.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:30:47.706750Z",
+    "http_status": 200,
+    "content_hash": "bdb4436363030ae80661f52aa623873bf2cd7c17d92fc03a55bdfac90da35b02",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tempad-dev.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\tempad-dev.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Tempad-dev - Automate Figma Panel Inspection",
+  "short_description_vi": "Tempad-dev is an AI-powered Figma extension that automates panel inspection for operations teams. It enables users to quickly analyze and document UI components, improving design consistency and reducing manual effort. The tool connects to Figma workflows, streamlining collaboration between designers and developers."
+}

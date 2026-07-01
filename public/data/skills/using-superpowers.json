@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/using-superpowers",
+  "slug": "using-superpowers",
+  "name": "browser-use",
+  "headline": "using-superpowers: Your Workflows",
+  "short_description": "The 'using-superpowers' Claude Code skill enhances AI automation by providing advanced functionalities that streamline workflows. With 2091 installs, it helps developers and product managers to use AI agents for increased efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "obra",
+  "install_command": "git clone https://github.com/obra/superpowers.git",
+  "source_repo_url": "https://github.com/obra/superpowers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The 'using-superpowers' skill for Claude Code is designed to enhance AI automation capabilities, allowing users to implement advanced functionalities seamlessly. By integrating this skill, developers can create AI agents that perform complex tasks with minimal input, significantly reducing the time spent on repetitive processes. This skill focuses on empowering users to automate workflows effectively, making it a valuable addition to any AI toolkit. One of the key benefits of using 'using-superpowers' is the time savings it offers. By automating routine tasks, users can redirect their focus toward more strategic initiatives, ultimately boosting productivity. For instance, a product manager can utilize this skill to automate data collection and analysis, which traditionally consumes hours of manual effort. This not only speeds up decision-making but also enhances the accuracy of the insights generated. This skill is particularly suited for developers, product managers, and AI practitioners looking to optimize their workflows. It is ideal for those who are already familiar with AI automation and wish to take their projects to the next level. With its user-friendly interface and robust functionality, 'using-superpowers' can be easily integrated into existing systems, making it accessible even for those with moderate technical expertise. Practical use cases include automating customer support responses, generating reports from raw data, and streamlining project management tasks. For example, a development team can automate the deployment of code updates, reducing the manual effort involved and minimizing errors. The implementation difficulty is relatively low, allowing teams to adopt this skill quickly and start reaping the benefits of an AI-first workflow almost immediately.\nAutomate customer support ticket responses to improve response times and customer satisfaction.\nGenerate comprehensive data reports from multiple sources to facilitate informed decision-making.\nStreamline project management updates by automating status reports and task assignments.\nFacilitate code deployment processes to reduce manual errors and speed up release cycles.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage": "```\nI want to use the 'using-superpowers' skill to [SPECIFIC TASK]. Here's the context: [DESCRIBE CONTEXT]. Please guide me through the process step-by-step, including any necessary code snippets or configurations. For example, if I want to automate data extraction from a PDF, you might say: 'First, upload the PDF to your cloud storage. Then, use the following Python script with the 'using-superpowers' skill to extract the data.'\n```\nCopy\n\n```\nTo automate data extraction from a PDF using the 'using-superpowers' skill, follow these steps:\n\n1. **Upload the PDF**: First, upload the PDF file to your preferred cloud storage service, such as Google Drive or Dropbox.\n2. **Install the Skill**: Ensure you have the 'using-superpowers' skill installed in your Claude Code environment. You can do this by navigating to the skills marketplace and installing it.\n3. **Use the Following Python Script**: Here's a sample script to extract data from the PDF:\n```python\nimport requests\n\n# Define the URL of the PDF file in your cloud storage\npdf_url = 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing'\n\n# Use the 'using-superpowers' skill to extract data\nresponse = requests.post(\n    'https://api.claude.ai/v1/skills/using-superpowers/extract',\n    json={\n        'url': pdf_url,\n        'output_format': 'json'\n    },\n    headers={'Authorization': 'Bearer YOUR_API_KEY'}\n)\n\ndata = response.json()\nprint(data)\n```\n4. **Review the Extracted Data**: The script will output the extracted data in JSON format. Review the data to ensure it meets your requirements.\n5. **Automate the Process**: To automate this process, you can schedule the script to run at regular intervals using a task scheduler like cron (on Unix-based systems) or Task Scheduler (on Windows).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "using-superpowers#main-content",
+      "using-superpowers#overview",
+      "using-superpowers#setup",
+      "using-superpowers#examples",
+      "using-superpowers#tools",
+      "using-superpowers#mcp",
+      "using-superpowers#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The 'using-superpowers' skill for Claude Code is designed to enhance AI automation capabilities, allowing users to implement advanced functionalities seamlessly. By integrating this skill, developers can create AI agents that perform complex tasks with minimal input, significantly reducing the time spent on repetitive processes. This skill focuses on empowering users to automate workflows effectively, making it a valuable addition to any AI toolkit. One of the key benefits of using 'using-superpowers' is the time savings it offers. By automating routine tasks, users can redirect their focus toward more strategic initiatives, ultimately boosting productivity. For instance, a product manager can utilize this skill to automate data collection and analysis, which traditionally consumes hours of manual effort. This not only speeds up decision-making but also enhances the accuracy of the insights generated. This skill is particularly suited for developers, product managers, and AI practitioners looking to optimize their workflows. It is ideal for those who are already familiar with AI automation and wish to take their projects to the next level. With its user-friendly interface and robust functionality, 'using-superpowers' can be easily integrated into existing systems, making it accessible even for those with moderate technical expertise. Practical use cases include automating customer support responses, generating reports from raw data, and streamlining project management tasks. For example, a development team can automate the deployment of code updates, reducing the manual effort involved and minimizing errors. The implementation difficulty is relatively low, allowing teams to adopt this skill quickly and start reaping the benefits of an AI-first workflow almost immediately.\nAutomate customer support ticket responses to improve response times and customer satisfaction.\nGenerate comprehensive data reports from multiple sources to facilitate informed decision-making.\nStreamline project management updates by automating status reports and task assignments.\nFacilitate code deployment processes to reduce manual errors and speed up release cycles.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage_vi": "```\nI want to use the 'using-superpowers' skill to [SPECIFIC TASK]. Here's the context: [DESCRIBE CONTEXT]. Please guide me through the process step-by-step, including any necessary code snippets or configurations. For example, if I want to automate data extraction from a PDF, you might say: 'First, upload the PDF to your cloud storage. Then, use the following Python script with the 'using-superpowers' skill to extract the data.'\n```\nCopy\n\n```\nTo automate data extraction from a PDF using the 'using-superpowers' skill, follow these steps:\n\n1. **Upload the PDF**: First, upload the PDF file to your preferred cloud storage service, such as Google Drive or Dropbox.\n2. **Install the Skill**: Ensure you have the 'using-superpowers' skill installed in your Claude Code environment. You can do this by navigating to the skills marketplace and installing it.\n3. **Use the Following Python Script**: Here's a sample script to extract data from the PDF:\n```python\nimport requests\n\n# Define the URL of the PDF file in your cloud storage\npdf_url = 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing'\n\n# Use the 'using-superpowers' skill to extract data\nresponse = requests.post(\n    'https://api.claude.ai/v1/skills/using-superpowers/extract',\n    json={\n        'url': pdf_url,\n        'output_format': 'json'\n    },\n    headers={'Authorization': 'Bearer YOUR_API_KEY'}\n)\n\ndata = response.json()\nprint(data)\n```\n4. **Review the Extracted Data**: The script will output the extracted data in JSON format. Review the data to ensure it meets your requirements.\n5. **Automate the Process**: To automate this process, you can schedule the script to run at regular intervals using a task scheduler like cron (on Unix-based systems) or Task Scheduler (on Windows).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:48:59.590879Z",
+    "http_status": 200,
+    "content_hash": "cbcd4fa8d93583fcbdcb9453d9ca1efc5046c4ce58ff94ec521f9f22ae5e747c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\using-superpowers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\using-superpowers.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "using-superpowers: Your Workflows",
+  "short_description_vi": "The 'using-superpowers' Claude Code skill enhances AI automation by providing advanced functionalities that streamline workflows. With 2091 installs, it helps developers and product managers to use AI agents for increased efficiency."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skills",
+  "slug": "agent-skills",
+  "name": "Agent Skills",
+  "headline": "Agent Skills for AI Development Tools",
+  "short_description": "Agent-skills offers reusable AI skills for developers, enhancing productivity with tools like Claude Code and GitHub Copilot. It covers dependency intelligence, GitHub operations, documentation lookup, and UI/UX design patterns.",
+  "tier": "Silver",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "arvindand",
+  "install_command": "claude install arvindand/agent-skills",
+  "source_repo_url": "https://github.com/arvindand/agent-skills",
+  "works_with": [
+    "ClaudeGitHub Copilot"
+  ],
+  "tags": [
+    "llm",
+    "skills",
+    "ai-agents",
+    "developer-tools",
+    "github-copilot"
+  ],
+  "sections": {
+    "overview": "Agent Skills provides a collection of portable, reusable skills designed for AI coding assistants including Claude Code, GitHub Copilot, OpenCode, and Cursor. The toolkit includes five core skills: context7 for library documentation lookup, github-navigator for GitHub operations and codebase analysis, maven-tools for JVM dependency intelligence and CVE scanning, skill-crafting for creating and validating skills, and ui-ux-design for building accessible interfaces. Skills activate automatically when relevant to your prompt, with no manual invocation needed. The framework uses progressive enhancement, so core functionality works across platforms while leveraging Claude Code-specific features like context forking and stop hooks when available. Installation is straightforward via plugin marketplace or direct file copy to your skills directory.\nAutomating GitHub operations\nEnhancing UI/UX design workflows\nStreamlining documentation lookup\nManaging dependency intelligence",
+    "setup": "Terminal\nCopy\n`claude install arvindand/agent-skills`\n`git clone https://github.com/arvindand/agent-skills`",
+    "usage": "```\nGenerate a reusable AI skill for [SKILL_NAME] that developers can integrate into their workflows. The skill should include: 1) A clear purpose and use case, 2) Implementation steps using GitHub Copilot or Claude Code, 3) Example code snippets or repository templates, and 4) Best practices for maintenance and scalability. Reference the GitHub repositories [open-reusables](https://github.com/docs/open-reusables), [custom-agents-template](https://github.com/docs/custom-agents-template), or [version-identifier](https://github.com/docs/version-identifier) for inspiration. Output the skill in a structured format suitable for direct integration into a developer's toolkit.\n```\nCopy\n\n```\n### Skill: Dependency Intelligence Agent\n\n**Purpose**: Automatically analyze and document third-party dependencies in a project to identify security vulnerabilities, license compliance issues, and outdated packages. This skill integrates with GitHub Copilot to provide real-time suggestions during development.\n\n**Implementation Steps**:\n1. **Setup**: Clone the [open-reusables](https://github.com/docs/open-reusables) repository to access reusable components for dependency parsing. Install the `npm-check-updates` package globally to enable version tracking:\n   ```bash\n   npm install -g npm-check-updates\n   ```\n\n2. **Integration**: Use the `custom-agents-template` repository to scaffold a new agent. Modify the `agent.js` file to include a dependency analysis function:\n   ```javascript\n   const { execSync } = require('child_process');\n   const fs = require('fs');\n\n   async function analyzeDependencies(projectPath) {\n     const packageJson = JSON.parse(fs.readFileSync(`${projectPath}/package.json`, 'utf8'));\n     const outdated = JSON.parse(execSync(`ncu --json`, { cwd: projectPath }));\n     const vulnerabilities = await fetchVulnerabilities(packageJson.dependencies);\n     \n     return {\n       outdatedPackages: outdated,\n       vulnerabilities,\n       licenseIssues: checkLicenses(packageJson.dependencies)\n     };\n   }\n   ```\n\n3. **GitHub Copilot Integration**: Use the `version-identifier` repository to create a VS Code extension that highlights outdated dependencies in the editor. Add a command to trigger the analysis:\n   ```json\n   {\n     \"command\": \"dependency-analyzer.run\",\n     \"title\": \"Run Dependency Analysis\"\n   }\n   ```\n\n4. **Output**: Generate a report in Markdown format for documentation:\n   ```markdown\n   ## Dependency Report for Project: `my-project`\n   \n   | Package | Current Version | Latest Version | Vulnerabilities |\n   |---------|-----------------|----------------|------------------|\n   | lodash  | 4.17.15         | 4.17.21        | CVE-2021-23337   |\n   ```\n\n**Best Practices**:\n- Schedule weekly automated runs using GitHub Actions (inspired by [onboarding-actions](https://github.com/docs/onboarding-actions)).\n- Store historical reports in a dedicated `reports/` directory for trend analysis.\n- Use the `license-checker` npm package to ensure compliance with open-source licenses.\n\n**Example Use Case**: A developer working on a Node.js project receives a Copilot suggestion to update the `express` package from version 4.17.1 to 4.18.2 due to a security patch. The agent also flags a license conflict with the `moment` package, suggesting an alternative library.\n\n**Maintenance**: Regularly update the agent to support new dependency management tools (e.g., `pnpm`, `yarn`).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, GitHub Copilot"
+    ],
+    "related_skills": [
+      "agent-skills#main-content",
+      "agent-skills#overview",
+      "agent-skills#setup",
+      "agent-skills#examples",
+      "agent-skills#tools",
+      "agent-skills#mcp",
+      "agent-skills#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Agent Skills cung cấp một tập hợp các skill linh hoạt, có thể tái sử dụng và được thiết kế riêng cho các trợ lý lập trình AI bao gồm Claude Code, GitHub Copilot, OpenCode và Cursor. Bộ công cụ này gồm năm skill cốt lõi: `context7` để tra cứu tài liệu thư viện, `github-navigator` cho các thao tác GitHub và phân tích codebase, `maven-tools` cho JVM dependency intelligence và quét lỗ hổng bảo mật CVE, `skill-crafting` để tạo và xác thực (validate) các skill, và `ui-ux-design` để xây dựng các giao diện dễ tiếp cận (accessible interfaces). Các skill này sẽ tự động kích hoạt khi nội dung prompt của bạn có liên quan mà không cần gọi thủ công. Framework này áp dụng mô hình progressive enhancement, nhờ đó các chức năng cốt lõi có thể hoạt động trên nhiều nền tảng khác nhau, đồng thời tận dụng các tính năng đặc thù của Claude Code như context forking và stop hooks khi có sẵn. Việc cài đặt rất dễ dàng thông qua marketplace của plugin hoặc copy trực tiếp file vào thư mục chứa skill của bạn.\nTự động hóa các thao tác GitHub\nTối ưu hóa quy trình thiết kế UI/UX\nĐơn giản hóa việc tra cứu tài liệu\nQuản lý dependency intelligence",
+    "setup_vi": "Terminal\nSao chép\n`claude install arvindand/agent-skills`\n`git clone https://github.com/arvindand/agent-skills`",
+    "usage_vi": "```\nTạo một AI skill có thể tái sử dụng cho [SKILL_NAME] để lập trình viên có thể tích hợp vào quy trình làm việc của họ. Skill này cần bao gồm: 1) Mục đích và use case rõ ràng, 2) Các bước triển khai sử dụng GitHub Copilot hoặc Claude Code, 3) Các đoạn code mẫu hoặc template repository, và 4) Các best practice để bảo trì và mở rộng. Tham khảo các GitHub repository [open-reusables](https://github.com/docs/open-reusables), [custom-agents-template](https://github.com/docs/custom-agents-template), hoặc [version-identifier](https://github.com/docs/version-identifier) để lấy ý tưởng. Trả về kết quả skill dưới dạng cấu trúc phù hợp để tích hợp trực tiếp vào bộ công cụ của lập trình viên.\n```\nCopy\n\n```\n### Skill: Dependency Intelligence Agent\n\n**Mục đích**: Tự động phân tích và ghi chép tài liệu về các dependency của bên thứ ba trong dự án nhằm phát hiện các lỗ hổng bảo mật, vấn đề tuân thủ bản quyền (license), và các package đã lỗi thời. Skill này tích hợp với GitHub Copilot để đưa ra các gợi ý theo thời gian thực trong quá trình phát triển.\n\n**Các bước triển khai**:\n1. **Setup**: Clone repository [open-reusables](https://github.com/docs/open-reusables) để sử dụng các component có thể tái sử dụng cho việc parse dependency. Cài đặt package `npm-check-updates` trên toàn hệ thống (global) để kích hoạt tính năng theo dõi phiên bản:\n   ```bash\n   npm install -g npm-check-updates\n   ```\n\n2. **Tích hợp**: Sử dụng repository `custom-agents-template` để tạo khung (scaffold) cho một agent mới. Chỉnh sửa file `agent.js` để thêm hàm phân tích dependency:\n   ```javascript\n   const { execSync } = require('child_process');\n   const fs = require('fs');\n\n   async function analyzeDependencies(projectPath) {\n     const packageJson = JSON.parse(fs.readFileSync(`${projectPath}/package.json`, 'utf8'));\n     const outdated = JSON.parse(execSync(`ncu --json`, { cwd: projectPath }));\n     const vulnerabilities = await fetchVulnerabilities(packageJson.dependencies);\n     \n     return {\n       outdatedPackages: outdated,\n       vulnerabilities,\n       licenseIssues: checkLicenses(packageJson.dependencies)\n     };\n   }\n   ```\n\n3. **Tích hợp GitHub Copilot**: Sử dụng repository `version-identifier` để tạo một extension VS Code giúp highlight các dependency đã lỗi thời ngay trong trình biên soạn. Thêm một command để kích hoạt quá trình phân tích:\n   ```json\n   {\n     \"command\": \"dependency-analyzer.run\",\n     \"title\": \"Run Dependency Analysis\"\n   }\n   ```\n\n4. **Kết quả**: Tạo một báo cáo dưới định dạng Markdown để làm tài liệu:\n   ```markdown\n   ## Dependency Report for Project: `my-project`\n   \n   | Package | Current Version | Latest Version | Vulnerabilities |\n   |---------|-----------------|----------------|------------------|\n   | lodash  | 4.17.15         | 4.17.21        | CVE-2021-23337   |\n   ```\n\n**Best Practices**:\n- Lên lịch chạy tự động hàng tuần bằng GitHub Actions (tham khảo từ [onboarding-actions](https://github.com/docs/onboarding-actions)).\n- Lưu trữ lịch sử các báo cáo trong một thư mục `reports/` riêng biệt để phân tích xu hướng.\n- Sử dụng package npm `license-checker` để đảm bảo tuân thủ các giấy phép nguồn mở (open-source license).\n\n**Ví dụ về Use Case**: Một lập trình viên đang làm việc trên dự án Node.js nhận được gợi ý từ Copilot yêu cầu cập nhật package `express` từ phiên bản 4.17.1 lên 4.18.2 do có bản vá bảo mật. Agent cũng sẽ gắn cờ (flag) cảnh báo xung đột giấy phép với package `moment`, đồng thời đề xuất một thư viện thay thế.\n\n**Bảo trì**: Thường xuyên cập nhật agent để hỗ trợ các công cụ quản lý dependency mới (ví dụ: `pnpm`, `yarn`).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:20:09.282547Z",
+    "http_status": 200,
+    "content_hash": "8fea18178c11f7e4162df60c37b494b240c8cc1535fac343fb186d5d658ae0bc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Agent Skills dành cho các công cụ phát triển AI",
+  "short_description_vi": "Agent-skills cung cấp các AI skill có thể tái sử dụng cho lập trình viên, giúp nâng cao năng suất với các công cụ như Claude Code và GitHub Copilot. Bộ công cụ này hỗ trợ dependency intelligence, các thao tác GitHub, tra cứu tài liệu và các UI/UX design pattern."
+}

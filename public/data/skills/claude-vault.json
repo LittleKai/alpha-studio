@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-vault",
+  "slug": "claude-vault",
+  "name": "browser-use",
+  "headline": "claude vault: markdown sync for AI chats",
+  "short_description": "Claude Vault is a command-line tool that syncs your Claude AI conversations & Claude Code into beautifully formatted Markdown files that integrate with Obsidian and other note-taking tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "MarioPadilla",
+  "install_command": "git clone https://github.com/MarioPadilla/claude-vault.git",
+  "source_repo_url": "https://github.com/MarioPadilla/claude-vault",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "obsidian"
+  ],
+  "sections": {
+    "overview": "Claude Vault is a command-line tool that imports Claude conversations and Claude Code history into beautifully formatted Markdown files for Obsidian and other note-taking systems. It supports three import formats: Claude Web exports, Claude Code history, and OpenCode sessions, with automatic format detection. The tool operates entirely locally—no external APIs required—and optionally uses Ollama for AI-powered tagging, summarization, and semantic search. Built-in features include bi-directional sync with UUID tracking, automatic relationship detection between conversations, watch mode for continuous syncing, and comprehensive PII detection with redaction or skip options. Users benefit from a searchable knowledge base that stays on their machine while maintaining flexibility to rename and reorganize files freely.\nCreate a searchable archive of Claude conversations for personal knowledge management\nAutomatically organize and tag Claude Code sessions with semantic relationships\nProtect sensitive data by detecting and redacting PII before syncing to Obsidian\nEnable semantic search across all conversations by concept, not just keywords",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MarioPadilla/claude-vault`\n- Ensure you have Python 3.8 or later installed. You can check by running `python --version` in your terminal.\n- Install Git from [git-scm.com](https://git-scm.com/).\n\n- Create a virtual environment (optional but recommended):\n  ```bash\n  python -m venv venv\n  source venv/bin/activate  # On Windows use `venv\\Scripts\\activate`\n  ```\n- Install the required packages:\n  ```bash\n  pip install -r requirements.txt\n  ```",
+    "usage": "```\nI want to use Claude Vault to sync my Claude AI conversations and Claude Code into Markdown files. I need help setting it up for my [COMPANY] named [COMPANY_NAME] in the [INDUSTRY] industry. Provide step-by-step instructions and any necessary commands.\n```\nCopy\n\n```\n# Claude Vault Setup Guide for [COMPANY_NAME]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-vault#main-content",
+      "claude-vault#overview",
+      "claude-vault#setup",
+      "claude-vault#examples",
+      "claude-vault#tools",
+      "claude-vault#mcp",
+      "claude-vault#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Vault is a command-line tool that imports Claude conversations and Claude Code history into beautifully formatted Markdown files for Obsidian and other note-taking systems. It supports three import formats: Claude Web exports, Claude Code history, and OpenCode sessions, with automatic format detection. The tool operates entirely locally—no external APIs required—and optionally uses Ollama for AI-powered tagging, summarization, and semantic search. Built-in features include bi-directional sync with UUID tracking, automatic relationship detection between conversations, watch mode for continuous syncing, and comprehensive PII detection with redaction or skip options. Users benefit from a searchable knowledge base that stays on their machine while maintaining flexibility to rename and reorganize files freely.\nCreate a searchable archive of Claude conversations for personal knowledge management\nAutomatically organize and tag Claude Code sessions with semantic relationships\nProtect sensitive data by detecting and redacting PII before syncing to Obsidian\nEnable semantic search across all conversations by concept, not just keywords",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MarioPadilla/claude-vault`\n- Ensure you have Python 3.8 or later installed. You can check by running `python --version` in your terminal.\n- Install Git from [git-scm.com](https://git-scm.com/).\n\n- Create a virtual environment (optional but recommended):\n  ```bash\n  python -m venv venv\n  source venv/bin/activate  # On Windows use `venv\\Scripts\\activate`\n  ```\n- Install the required packages:\n  ```bash\n  pip install -r requirements.txt\n  ```",
+    "usage_vi": "```\nI want to use Claude Vault to sync my Claude AI conversations and Claude Code into Markdown files. I need help setting it up for my [COMPANY] named [COMPANY_NAME] in the [INDUSTRY] industry. Provide step-by-step instructions and any necessary commands.\n```\nCopy\n\n```\n# Claude Vault Setup Guide for [COMPANY_NAME]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:57.630999Z",
+    "http_status": 200,
+    "content_hash": "4c795876b9ce3c0fb63820810f8b7bbfaeaf74f607af3aed6aa5d791d9d170f4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-vault.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-vault.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude vault: markdown sync for AI chats",
+  "short_description_vi": "Claude Vault is a command-line tool that syncs your Claude AI conversations & Claude Code into beautifully formatted Markdown files that integrate with Obsidian and other note-taking tools."
+}

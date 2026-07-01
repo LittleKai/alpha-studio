@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gob",
+  "slug": "gob",
+  "name": "gob",
+  "headline": "Gob - Process Manager for AI Agents",
+  "short_description": "Gob is a process manager for AI agents and humans, enabling efficient task orchestration and workflow automation. It benefits operations teams by streamlining background jobs and integrating with terminal utilities. Gob connects to CLI tools and TUI applications, enhancing developer experience and productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "juanibiapina",
+  "install_command": "git clone https://github.com/juanibiapina/gob.git",
+  "source_repo_url": "https://github.com/juanibiapina/gob",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-experience",
+    "terminal-utilities",
+    "tui",
+    "bubbletea",
+    "golang",
+    "cli",
+    "background-jobs",
+    "opencode",
+    "developer-tools",
+    "codex",
+    "ai-tools",
+    "go",
+    "process-manager",
+    "crush",
+    "cli-app",
+    "terminal",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Gob is a command-line process manager designed for both AI coding agents and human developers to coordinate background jobs from a single interface. It provides real-time log streaming, job persistence, and lifecycle control—start, stop, restart, and monitor processes directly from the CLI or an interactive TUI without copying output through chat. Gob scopes jobs to directories, tracks execution history, detects stuck processes, and monitors listening ports across process trees. Operations teams and developers benefit from eliminating manual process checks and enabling seamless collaboration between AI agents and team members on shared infrastructure.\nStart and monitor dev servers while allowing AI agents to check logs and status\nRun parallel builds and long-running tasks with automatic stuck-job detection\nManage background processes with persistent state surviving daemon restarts\nTrack port usage and process lifecycle across entire process trees",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/juanibiapina/gob`",
+    "usage": "```\nUse Gob to automate the following workflow: [DESCRIBE_THE_WORKFLOW]. Ensure Gob handles error recovery, retries, and logging to [LOG_FILE_PATH]. Include pre- and post-processing steps using [CLI_TOOL_1] and [CLI_TOOL_2] respectively. Monitor the job using Gob's dashboard at [GOB_DASHBOARD_URL].\n```\nCopy\n\n```\n```\n# Gob Job Configuration: data_pipeline_job.json\n{\n  \"name\": \"daily_data_pipeline\",\n  \"description\": \"Orchestrates nightly ETL from raw CSV to processed JSON with validation\",\n  \"steps\": [\n    {\n      \"name\": \"extract_raw_data\",\n      \"command\": \"python3 /scripts/extract.py --source /data/raw --date $(date -d 'yesterday' +%Y%m%d)\",\n      \"timeout\": 300,\n      \"retry_policy\": {\"max_retries\": 3, \"backoff_seconds\": 10}\n    },\n    {\n      \"name\": \"transform_data\",\n      \"command\": \"python3 /scripts/transform.py --input /tmp/extracted_data.csv --output /tmp/transformed_data.json\",\n      \"dependencies\": [\"extract_raw_data\"],\n      \"env\": {\"PYTHONPATH\": \"/scripts\"}\n    },\n    {\n      \"name\": \"validate_output\",\n      \"command\": \"python3 /scripts/validate.py --schema /schemas/data_schema.json --input /tmp/transformed_data.json\",\n      \"dependencies\": [\"transform_data\"],\n      \"on_failure\": \"notify_slack_channel\"\n    },\n    {\n      \"name\": \"load_to_warehouse\",\n      \"command\": \"psql -h db.example.com -U loader -d analytics -c \\\"COPY transformed_data FROM '/tmp/transformed_data.json' FORMAT JSON\\\"\",\n      \"dependencies\": [\"validate_output\"],\n      \"timeout\": 600\n    }\n  ],\n  \"logging\": {\n    \"file\": \"/logs/daily_pipeline.log\",\n    \"level\": \"INFO\",\n    \"rotation\": \"daily\"\n  },\n  \"notifications\": {\n    \"on_success\": \"email devops@company.com\",\n    \"on_failure\": \"webhook https://alerts.example.com/pipeline\"\n  }\n}\n\n# Execution Results:\nJob 'daily_data_pipeline' started at 2024-05-15 02:15:04 UTC\nStep 'extract_raw_data' completed in 45s (exit code 0)\nStep 'transform_data' completed in 120s (exit code 0)\nStep 'validate_output' completed in 30s (exit code 0)\nStep 'load_to_warehouse' completed in 180s (exit code 0)\nJob finished successfully at 2024-05-15 02:20:19 UTC\nTotal runtime: 5m 15s\nData processed: 12,487 records\nValidation warnings: 2 (non-critical)\n\nDashboard: https://gob.example.com/jobs/daily_data_pipeline\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gob#main-content",
+      "gob#overview",
+      "gob#setup",
+      "gob#examples",
+      "gob#tools",
+      "gob#mcp",
+      "gob#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Gob là trình quản lý tiến trình giao diện dòng lệnh (command-line) được thiết kế cho cả AI coding agent và lập trình viên để điều phối các background job từ một giao diện duy nhất. Nó cung cấp khả năng stream log thời gian thực, duy trì trạng thái job (job persistence) và kiểm soát vòng đời tiến trình—khởi chạy, dừng, khởi động lại và giám sát trực tiếp từ CLI hoặc TUI tương tác mà không cần sao chép đầu ra qua chat. Gob giới hạn phạm vi job theo thư mục, theo dõi lịch sử thực thi, phát hiện các tiến trình bị treo (stuck process) và giám sát các cổng đang lắng nghe (listening port) trên toàn bộ cây tiến trình. Các đội ngũ vận hành và lập trình viên sẽ không còn phải kiểm tra tiến trình một cách thủ công, đồng thời có thể cộng tác mượt mà giữa AI agent và các thành viên trong nhóm trên cùng một hạ tầng chung.\nKhởi chạy và giám sát dev server trong khi cho phép AI agent kiểm tra log và trạng thái\nChạy song song các tiến trình build và tác vụ chạy lâu (long-running task) với tính năng tự động phát hiện job bị treo\nQuản lý các tiến trình chạy ngầm với trạng thái được lưu trữ bền vững ngay cả khi daemon khởi động lại\nTheo dõi việc sử dụng cổng (port) và vòng đời tiến trình trên toàn bộ cây tiến trình",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/juanibiapina/gob`",
+    "usage_vi": "```\nSử dụng Gob để tự động hóa quy trình công việc sau: [MÔ_TẢ_WORKFLOW]. Đảm bảo Gob xử lý phục hồi lỗi, thử lại (retry) và ghi log vào [ĐƯỜNG_DẪN_FILE_LOG]. Bao gồm các bước tiền xử lý và hậu xử lý tương ứng bằng cách sử dụng [CÔNG_CỤ_CLI_1] và [CÔNG_CỤ_CLI_2]. Giám sát job bằng dashboard của Gob tại [URL_DASHBOARD_GOB].\n```\nCopy\n\n```\n# Cấu hình Gob Job: data_pipeline_job.json\n{\n  \"name\": \"daily_data_pipeline\",\n  \"description\": \"Điều phối quá trình ETL hàng đêm từ CSV thô sang JSON đã xử lý kèm theo xác thực\",\n  \"steps\": [\n    {\n      \"name\": \"extract_raw_data\",\n      \"command\": \"python3 /scripts/extract.py --source /data/raw --date $(date -d 'yesterday' +%Y%m%d)\",\n      \"timeout\": 300,\n      \"retry_policy\": {\"max_retries\": 3, \"backoff_seconds\": 10}\n    },\n    {\n      \"name\": \"transform_data\",\n      \"command\": \"python3 /scripts/transform.py --input /tmp/extracted_data.csv --output /tmp/transformed_data.json\",\n      \"dependencies\": [\"extract_raw_data\"],\n      \"env\": {\"PYTHONPATH\": \"/scripts\"}\n    },\n    {\n      \"name\": \"validate_output\",\n      \"command\": \"python3 /scripts/validate.py --schema /schemas/data_schema.json --input /tmp/transformed_data.json\",\n      \"dependencies\": [\"transform_data\"],\n      \"on_failure\": \"notify_slack_channel\"\n    },\n    {\n      \"name\": \"load_to_warehouse\",\n      \"command\": \"psql -h db.example.com -U loader -d analytics -c \\\"COPY transformed_data FROM '/tmp/transformed_data.json' FORMAT JSON\\\"\",\n      \"dependencies\": [\"validate_output\"],\n      \"timeout\": 600\n    }\n  ],\n  \"logging\": {\n    \"file\": \"/logs/daily_pipeline.log\",\n    \"level\": \"INFO\",\n    \"rotation\": \"daily\"\n  },\n  \"notifications\": {\n    \"on_success\": \"email devops@company.com\",\n    \"on_failure\": \"webhook https://alerts.example.com/pipeline\"\n  }\n}\n\n# Kết quả thực thi:\nJob 'daily_data_pipeline' đã bắt đầu lúc 2024-05-15 02:15:04 UTC\nBước 'extract_raw_data' hoàn thành trong 45 giây (exit code 0)\nBước 'transform_data' hoàn thành trong 120 giây (exit code 0)\nBước 'validate_output' hoàn thành trong 30 giây (exit code 0)\nBước 'load_to_warehouse' hoàn thành trong 180 giây (exit code 0)\nJob hoàn thành thành công lúc 2024-05-15 02:20:19 UTC\nTổng thời gian chạy: 5 phút 15 giây\nDữ liệu đã xử lý: 12.487 bản ghi\nCảnh báo xác thực: 2 (không nghiêm trọng)\n\nDashboard: https://gob.example.com/jobs/daily_data_pipeline\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:24:20.359555Z",
+    "http_status": 200,
+    "content_hash": "11c6f6d3fee0f420e5e17a6e4ad39226ba4d7dba48ad2d01b0c966e9dfbed367",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gob.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gob.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Gob - Trình quản lý tiến trình dành cho AI Agent",
+  "short_description_vi": "Gob là trình quản lý tiến trình dành cho AI agent và con người, giúp điều phối tác vụ và tự động hóa quy trình làm việc (workflow) một cách hiệu quả. Công cụ này mang lại lợi ích cho các đội ngũ vận hành bằng cách tối ưu hóa các tác vụ chạy ngầm (background job) và tích hợp với các tiện ích terminal. Gob kết nối với các công cụ CLI và ứng dụng TUI, giúp nâng cao trải nghiệm và năng suất của lập trình viên."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/linkedin-article-publisher-skill",
+  "slug": "linkedin-article-publisher-skill",
+  "name": "Linkedin Article Publisher Skill",
+  "headline": "LinkedIn Article Publisher: Publish Markdown to",
+  "short_description": "Automates publishing Markdown articles to LinkedIn Articles with formatting preserved, eliminating manual rich text editing and image placement. Reduces publishing time from 20–30 minutes to 2–3 minutes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "iamzifei",
+  "install_command": "git clone https://github.com/iamzifei/linkedin-article-publisher-skill.git",
+  "source_repo_url": "https://github.com/iamzifei/linkedin-article-publisher-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code",
+    "claude-skill",
+    "ai"
+  ],
+  "sections": {
+    "overview": "LinkedIn Article Publisher Skill automates the entire workflow of converting Markdown files to LinkedIn Articles, preserving all formatting without manual editing. It uses block-index positioning to place images at precise locations, eliminating errors from text-matching methods. The skill handles cover image upload, title extraction, HTML conversion via clipboard paste, and content image insertion in reverse order to maintain accurate positioning. Designed for writers accustomed to Markdown who find LinkedIn's rich text editor tedious, it saves 20+ minutes per article by automating format conversion, image uploads, and placement. Drafts are always saved, never auto-published, giving you full control before sharing.\nConvert Markdown blog posts to LinkedIn Articles while preserving headers, bold, italics, links, and blockquotes\nUpload cover images and multiple content images with exact positioning without manual clicking\nBatch publish technical articles with code blocks and formatted lists to LinkedIn\nMigrate content from personal Markdown writing tools to LinkedIn without reformatting",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iamzifei/linkedin-article-publisher-skill`",
+    "usage": "```\nAct as a LinkedIn article publisher. Publish the following article to my LinkedIn profile: [ARTICLE]. Use the title: [TITLE]. Add the hashtags: [HASHTAGS].\n```\nCopy\n\n```\n# The Future of Remote Work in the Tech Industry\n\nThe tech industry has undergone a significant transformation in recent years, with remote work becoming increasingly prevalent. This shift has been driven by several factors, including advances in technology, changing employee expectations, and the global pandemic. As a result, companies are now more open to hiring remote workers, and employees are increasingly seeking out remote opportunities.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "linkedin-article-publisher-skill#main-content",
+      "linkedin-article-publisher-skill#overview",
+      "linkedin-article-publisher-skill#setup",
+      "linkedin-article-publisher-skill#examples",
+      "linkedin-article-publisher-skill#tools",
+      "linkedin-article-publisher-skill#mcp",
+      "linkedin-article-publisher-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill LinkedIn Article Publisher tự động hóa toàn bộ quy trình chuyển đổi file Markdown thành LinkedIn Articles mà vẫn giữ nguyên định dạng, không cần chỉnh sửa thủ công. Skill sử dụng phương pháp định vị block-index để đặt hình ảnh vào đúng vị trí chính xác, loại bỏ các lỗi phát sinh từ phương pháp so khớp văn bản (text-matching). Công cụ này hỗ trợ tự động tải lên ảnh bìa, trích xuất tiêu đề, chuyển đổi sang HTML qua clipboard, và chèn ảnh nội dung theo thứ tự ngược để duy trì vị trí chính xác. Được thiết kế dành riêng cho những người viết quen thuộc với Markdown và cảm thấy trình soạn thảo rich text của LinkedIn phiền toái, skill này giúp tiết kiệm hơn 20 phút cho mỗi bài viết nhờ tự động hóa việc chuyển đổi định dạng, tải lên và định vị hình ảnh. Các bản nháp (draft) luôn được lưu lại và không tự động xuất bản, giúp bạn toàn quyền kiểm soát trước khi chia sẻ.\nChuyển đổi bài viết blog Markdown sang LinkedIn Articles mà vẫn giữ nguyên tiêu đề (header), chữ in đậm, in nghiêng, liên kết và trích dẫn (blockquote)\nTải lên ảnh bìa và nhiều ảnh nội dung vào đúng vị trí chính xác mà không cần click chuột thủ công\nXuất bản hàng loạt bài viết kỹ thuật có kèm code block và danh sách đã định dạng lên LinkedIn\nDi chuyển nội dung từ các công cụ viết Markdown cá nhân sang LinkedIn mà không cần định dạng lại",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/iamzifei/linkedin-article-publisher-skill`",
+    "usage_vi": "```\nĐóng vai trò là một trình xuất bản bài viết LinkedIn. Xuất bản bài viết sau lên hồ sơ LinkedIn của tôi: [ARTICLE]. Sử dụng tiêu đề: [TITLE]. Thêm các hashtag: [HASHTAGS].\n```\nSao chép\n\n```\n# The Future of Remote Work in the Tech Industry\n\nThe tech industry has undergone a significant transformation in recent years, with remote work becoming increasingly prevalent. This shift has been driven by several factors, including advances in technology, changing employee expectations, and the global pandemic. As a result, companies are now more open to hiring remote workers, and employees are increasingly seeking out remote opportunities.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:37:32.895938Z",
+    "http_status": 200,
+    "content_hash": "95145cd6f616947beed58a5e31e7da5160151fa270f19c63a59ca39dd1ceaa5a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\linkedin-article-publisher-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\linkedin-article-publisher-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Trình xuất bản bài viết LinkedIn: Xuất bản Markdown sang",
+  "short_description_vi": "Tự động hóa quy trình xuất bản bài viết từ định dạng Markdown lên LinkedIn Articles mà vẫn giữ nguyên định dạng, loại bỏ thao tác chỉnh sửa rich text và chèn ảnh thủ công. Giảm thời gian xuất bản từ 20–30 phút xuống chỉ còn 2–3 phút."
+}

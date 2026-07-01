@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/excessibility",
+  "slug": "excessibility",
+  "name": "Excessibility",
+  "headline": "Excessibility - Automated Accessibility Testing",
+  "short_description": "Excessibility automates accessibility testing for Phoenix LiveView apps. It captures HTML snapshots during tests, runs Pa11y for WCAG compliance checks, and provides AI-assisted debugging with timeline analysis. Developers benefit from faster, more thorough accessibility audits integrated into their testing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "lessthanseventy",
+  "install_command": "git clone https://github.com/lessthanseventy/excessibility.git",
+  "source_repo_url": "https://github.com/lessthanseventy/excessibility",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "llm",
+    "pa11y",
+    "snapshot-testing",
+    "wcag",
+    "accessibility",
+    "hex-package",
+    "developer-tools",
+    "testing",
+    "ai-tools",
+    "llm-tools",
+    "debugging",
+    "a11y",
+    "liveview",
+    "elixir",
+    "claude-code",
+    "phoenix"
+  ],
+  "sections": {
+    "overview": "Excessibility integrates accessibility testing directly into your Phoenix test suite by capturing HTML snapshots and running them through axe-core for WCAG compliance violations. It includes LiveView-aware rules that detect accessibility issues specific to Phoenix patterns like phx-click, phx-submit, and phx-debounce that standard tools miss. Developers can lock baseline snapshots, compare changes across refactors, and debug CI-only failures with rich timeline analysis and automatic event capture from existing tests—no code changes required. The library also exposes a runtime Scanner API for building accessibility monitoring into production applications, background jobs, or custom scanning services.\nCatching accessibility regressions during CI/CD alongside functional test failures\nAuditing Phoenix LiveView apps for WCAG compliance before release\nDebugging accessibility issues in LiveView handlers with AI-assisted timeline analysis\nBuilding internal or public accessibility scanning services with the runtime Scanner API",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lessthanseventy/excessibility`",
+    "usage": "```\nRun an accessibility audit on the Phoenix LiveView app for [APP_NAME] using Excessibility. Generate HTML snapshots from the test suite, run Pa11y WCAG compliance checks with [LEVEL (A, AA, or AAA)], and analyze the results with AI-assisted debugging. Highlight the top 3 accessibility issues and suggest specific fixes for each. Include a timeline breakdown of when each issue was introduced (e.g., during a recent refactor or new feature addition).\n```\nCopy\n\n```\n### Accessibility Audit Report for **Phoenix LiveView App: TaskFlow**\n\n**Test Run:** `excessibility --app TaskFlow --level AA --output json`\n**Snapshot Date:** 2023-11-15\n**Pa11y Version:** 6.4.0\n\n#### Summary\n- **Total Issues Found:** 12\n- **Critical Issues:** 3 (WCAG 2.1 Level AA violations)\n- **Automated Fixes Suggested:** 5\n- **Manual Review Required:** 4\n\n---\n\n#### Top 3 Critical Issues\n\n1. **Missing ARIA Labels on Dynamic Form Fields**\n   - **Location:** `lib/task_flow_web/live/task_form.ex` (lines 42-55)\n   - **Issue:** The `phx-update=\"append\"` LiveView container lacks an `aria-live` region to announce new items to screen readers.\n   - **WCAG Violation:** 4.1.2 (Name, Role, Value)\n   - **Timeline:** Introduced in v2.1.0 (2023-10-12) during the \"Bulk Task Import\" feature.\n   - **Suggested Fix:** \n ```elixir\n     <div phx-update=\"append\" aria-live=\"polite\" aria-atomic=\"true\">\n       <%= for task <- @tasks do %>\n         <%= live_component ... />\n       <% end %>\n     </div>\n ```\n   - **Impact:** Users relying on screen readers cannot track newly added tasks.\n\n2. **Color Contrast Failure in Status Badges**\n   - **Location:** `assets/css/app.css` (lines 187-195)\n   - **Issue:** The `status-badge` class uses `#3b82f6` (blue) on a white background, resulting in a contrast ratio of 3.1:1 (fails WCAG 2.1 AA minimum of 4.5:1).\n   - **WCAG Violation:** 1.4.3 (Contrast Minimum)\n   - **Timeline:** Present since initial release (2023-06-01).\n   - **Suggested Fix:** Replace with `#2563eb` (darker blue) for a contrast ratio of 5.6:1.\n   - **Impact:** Users with low vision may struggle to distinguish task statuses.\n\n3. **Non-Descriptive Link Text in Task List**\n   - **Location:** `lib/task_flow_web/live/task_list.html.heex` (line 28)\n   - **Issue:** The link `<a href=\"/tasks/123\">Click here</a>` lacks descriptive text for screen readers.\n   - **WCAG Violation:** 2.4.4 (Link Purpose)\n   - **Timeline:** Introduced in v1.2.0 (2023-08-15) during the initial MVP.\n   - **Suggested Fix:** \n ```html\n     <a href=\"/tasks/123\" aria-label=\"View details for task: Fix login bug\">View Details</a>\n ```\n   - **Impact:** Screen reader users cannot determine the purpose of the link without context.\n\n---\n\n#### Automated Fixes Applied\n- **Fixed:** Missing `lang` attribute in `<html>` tag (added `lang=\"en\"`).\n- **Fixed:** Redundant `role=\"button\"` on `<button>` elements (removed).\n- **Fixed:** Missing `alt` text for decorative icons (added `aria-hidden=\"true\"`).\n\n---\n\n#### Manual Review Required\n1. **Keyboard Navigation in Task Editor:** The modal for editing tasks traps focus incorrectly. Requires manual testing with `Tab` and `Shift+Tab`.\n2. **Skip Links:** No \"Skip to Main Content\" link exists for keyboard users.\n3. **Form Validation Errors:** Error messages are not programmatically associated with form fields (missing `aria-describedby`).\n4. **LiveView Focus Management:** After task completion, focus is not reset to the task list (disrupts keyboard workflow).\n\n---\n\n#### Timeline Analysis\n| Issue | Introduced In | Last Modified | Root Cause |\n|-------|---------------|---------------|------------|\n| Missing ARIA Labels | v2.1.0 (2023-10-12) | 2023-11-10 | Added LiveView append feature without accessibility considerations. |\n| Color Contrast | v1.0.0 (2023-06-01) | 2023-11-05 | Design system did not include accessibility tokens. |\n| Non-Descriptive Links | v1.2.0 (2023-08-15) | 2023-11-08 | Rapid MVP development prioritized functionality over UX. |\n\n---\n\n**Recommendation:** Prioritize fixes for the 3 critical issues. Schedule a follow-up audit after implementing the suggested changes to verify compliance.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "excessibility#main-content",
+      "excessibility#overview",
+      "excessibility#setup",
+      "excessibility#examples",
+      "excessibility#tools",
+      "excessibility#mcp",
+      "excessibility#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Excessibility tích hợp kiểm thử khả năng tiếp cận trực tiếp vào test suite của Phoenix bằng cách chụp các HTML snapshot và chạy chúng qua axe-core để phát hiện các vi phạm tuân thủ WCAG. Thư viện này bao gồm các quy tắc nhận biết LiveView để phát hiện các lỗi khả năng tiếp cận đặc thù trong các pattern của Phoenix như phx-click, phx-submit, và phx-debounce mà các công cụ thông thường bỏ qua. Nhà phát triển có thể khóa các baseline snapshot, so sánh các thay đổi qua các lần refactor, và debug các lỗi chỉ xuất hiện trên CI với phân tích timeline chi tiết và tự động thu thập sự kiện từ các test hiện có — không cần thay đổi code. Thư viện cũng cung cấp một runtime Scanner API để tích hợp giám sát khả năng tiếp cận vào các ứng dụng production, background job, hoặc dịch vụ quét tùy chỉnh.\nPhát hiện các lỗi suy thoái (regressions) về khả năng tiếp cận trong quá trình CI/CD song song với các lỗi kiểm thử chức năng\nAudit các ứng dụng Phoenix LiveView để kiểm tra mức độ tuân thủ WCAG trước khi release\nDebug các lỗi khả năng tiếp cận trong các LiveView handler với phân tích timeline hỗ trợ bởi AI\nXây dựng các dịch vụ quét khả năng tiếp cận nội bộ hoặc công khai với runtime Scanner API",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/lessthanseventy/excessibility`",
+    "usage_vi": "```\nChạy một đợt audit khả năng tiếp cận trên ứng dụng Phoenix LiveView cho [APP_NAME] bằng Excessibility. Tạo các HTML snapshot từ test suite, chạy các bước kiểm tra tuân thủ WCAG của Pa11y với [LEVEL (A, AA, hoặc AAA)], và phân tích kết quả bằng tính năng debug hỗ trợ bởi AI. Nêu bật 3 vấn đề hàng đầu về khả năng tiếp cận và đề xuất các giải pháp khắc phục cụ thể cho từng vấn đề. Gồm cả bảng phân tích timeline chi tiết về thời điểm phát sinh từng lỗi (ví dụ: trong đợt refactor gần đây hoặc khi thêm tính năng mới).\n```\nCopy\n\n```\n### Báo cáo Audit Khả năng tiếp cận cho **Phoenix LiveView App: TaskFlow**\n\n**Lượt test:** `excessibility --app TaskFlow --level AA --output json`\n**Ngày chụp Snapshot:** 2023-11-15\n**Phiên bản Pa11y:** 6.4.0\n\n#### Tóm tắt\n- **Tổng số lỗi tìm thấy:** 12\n- **Lỗi nghiêm trọng:** 3 (vi phạm WCAG 2.1 Level AA)\n- **Đề xuất sửa lỗi tự động:** 5\n- **Cần xem xét thủ công:** 4\n\n---\n\n#### Top 3 Lỗi Nghiêm Trọng\n\n1. **Thiếu ARIA Label trên các trường Form động**\n   - **Vị trí:** `lib/task_flow_web/live/task_form.ex` (dòng 42-55)\n   - **Lỗi:** Container LiveView chứa `phx-update=\"append\"` thiếu vùng `aria-live` để thông báo các mục mới cho trình đọc màn hình (screen reader).\n   - **Vi phạm WCAG:** 4.1.2 (Name, Role, Value)\n   - **Timeline:** Phát sinh trong phiên bản v2.1.0 (12-10-2023) trong quá trình phát triển tính năng \"Bulk Task Import\".\n   - **Đề xuất sửa lỗi:** \n ```elixir\n     <div phx-update=\"append\" aria-live=\"polite\" aria-atomic=\"true\">\n       <%= for task <- @tasks do %>\n         <%= live_component ... %>\n       <% end %>\n     </div>\n ```\n   - **Tác động:** Người dùng sử dụng trình đọc màn hình không thể theo dõi các tác vụ mới được thêm vào.\n\n2. **Lỗi độ tương phản màu sắc trong Badge trạng thái**\n   - **Vị trí:** `assets/css/app.css` (dòng 187-195)\n   - **Lỗi:** Class `status-badge` sử dụng màu `#3b82f6` (xanh dương) trên nền trắng, dẫn đến tỷ lệ tương phản là 3.1:1 (không đạt mức tối thiểu 4.5:1 của WCAG 2.1 AA).\n   - **Vi phạm WCAG:** 1.4.3 (Contrast Minimum)\n   - **Timeline:** Xuất hiện từ phiên bản đầu tiên (01-06-2023).\n   - **Đề xuất sửa lỗi:** Thay thế bằng màu `#2563eb` (xanh dương đậm hơn) để đạt tỷ lệ tương phản 5.6:1.\n   - **Tác động:** Người dùng có thị lực kém có thể gặp khó khăn trong việc phân biệt các trạng thái tác vụ.\n\n3. **Văn bản liên kết không mô tả rõ ràng trong Danh sách tác vụ**\n   - **Vị trí:** `lib/task_flow_web/live/task_list.html.heex` (dòng 28)\n   - **Lỗi:** Liên kết `<a href=\"/tasks/123\">Click here</a>` thiếu văn bản mô tả cho trình đọc màn hình.\n   - **Vi phạm WCAG:** 2.4.4 (Link Purpose)\n   - **Timeline:** Phát sinh trong phiên bản v1.2.0 (15-08-2023) trong phiên bản MVP đầu tiên.\n   - **Đề xuất sửa lỗi:** \n ```html\n     <a href=\"/tasks/123\" aria-label=\"View details for task: Fix login bug\">View Details</a>\n ```\n   - **Tác động:** Người dùng trình đọc màn hình không thể xác định mục đích của liên kết nếu thiếu ngữ cảnh.\n\n---\n\n#### Sửa lỗi tự động đã áp dụng\n- **Đã sửa:** Thiếu thuộc tính `lang` trong thẻ `<html>` (đã thêm `lang=\"en\"`).\n- **Đã sửa:** Thừa thuộc tính `role=\"button\"` trên các phần tử `<button>` (đã xóa).\n- **Đã sửa:** Thiếu văn bản `alt` cho các icon trang trí (đã thêm `aria-hidden=\"true\"`).\n\n---\n\n#### Cần xem xét thủ công\n1. **Điều hướng bằng bàn phím trong Trình chỉnh sửa tác vụ:** Modal chỉnh sửa tác vụ bị giữ focus (trap focus) sai cách. Cần kiểm thử thủ công với `Tab` và `Shift+Tab`.\n2. **Liên kết bỏ qua (Skip Links):** Không có liên kết \"Skip to Main Content\" cho người dùng bàn phím.\n3. **Lỗi xác thực Form:** Các thông báo lỗi không được liên kết một cách lập trình với các trường của form (thiếu `aria-describedby`).\n4. **Quản lý Focus của LiveView:** Sau khi hoàn thành tác vụ, focus không được reset về danh sách tác vụ (gây gián đoạn workflow sử dụng bàn phím).\n\n---\n\n#### Phân tích Timeline\n| Lỗi | Phát sinh từ | Chỉnh sửa cuối | Nguyên nhân gốc rễ |\n|-------|---------------|---------------|------------|\n| Thiếu ARIA Label | v2.1.0 (12-10-2023) | 10-11-2023 | Thêm tính năng append của LiveView nhưng không cân nhắc đến khả năng tiếp cận. |\n| Độ tương phản màu sắc | v1.0.0 (01-06-2023) | 05-11-2023 | Design system không bao gồm các token cho khả năng tiếp cận. |\n| Liên kết thiếu mô tả | v1.2.0 (15-08-2023) | 08-11-2023 | Quá trình phát triển MVP nhanh ưu tiên tính năng hơn trải nghiệm người dùng (UX). |\n\n---\n\n**Khuyến nghị:** Ưu tiên sửa đổi 3 lỗi nghiêm trọng trước. Lên lịch audit tiếp theo sau khi thực hiện các thay đổi đề xuất để xác minh sự tuân thủ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:42.883710Z",
+    "http_status": 200,
+    "content_hash": "d1f442736c39d945dcb5ea0ce5170aff6f12136f63ab43378abe9a0ed0e16e42",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\excessibility.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\excessibility.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Excessibility - Kiểm thử tự động khả năng tiếp cận",
+  "short_description_vi": "Excessibility tự động hóa việc kiểm thử khả năng tiếp cận cho các ứng dụng Phoenix LiveView. Công cụ này chụp các HTML snapshot trong quá trình kiểm thử, chạy Pa11y để kiểm tra sự tuân thủ tiêu chuẩn WCAG, và cung cấp tính năng debug hỗ trợ bởi AI kết hợp phân tích timeline. Các nhà phát triển sẽ tối ưu hóa được quy trình làm việc nhờ các đợt audit khả năng tiếp cận nhanh hơn, toàn diện hơn được tích hợp trực tiếp vào test suite."
+}

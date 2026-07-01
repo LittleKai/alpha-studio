@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/human-writer",
+  "slug": "human-writer",
+  "name": "Related Skills",
+  "headline": "Human Writer: Deslop AI Text",
+  "short_description": "This skill is used to humanize text while preserving the author's meaning and intended style. It's designed for writers and content creators who want to enhance their text quality by reducing AI-generated markers.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "abpai",
+  "install_command": "git clone https://github.com/abpai/skills",
+  "source_repo_url": "https://github.com/abpai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "human",
+    "writing-enhancement",
+    "writer"
+  ],
+  "sections": {
+    "overview": "The Human Writer skill edits prose to sound natural and human-written, removing characteristic markers of AI-generated text while preserving the author's original meaning and intended style. It works by analyzing model-generated content and refining it into more authentic, readable prose that reads like it was written by a person. This skill is designed for writers, content creators, and teams who use AI assistance but want their final output to feel genuinely human-authored. It solves the problem of AI text sounding generic or formulaic by applying editorial techniques that restore natural voice and flow.\nRewrite technical documents to sound friendlier\nEnhance casual blog posts for a more engaging tone\nEdit marketing copy to avoid sounding robotic\nAdjust academic writing for clarity and accessibility",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/abpai/skills --skill human-writer`\n`git clone https://github.com/abpai/skills`",
+    "usage": "```\nHumanize the following text while preserving its original meaning, tone, and style. Make it sound natural, engaging, and authentic as if written by a human writer. Avoid robotic phrasing or overly formal language. Here’s the text: [TEXT_TO_HUMANIZE]\n```\nCopy\n\n```\n### Humanized Version of Your Text\n\n**Original AI-generated text:**\n\"The implementation of the new software solution will result in a significant enhancement of operational efficiency across all departments. Users will experience a streamlined workflow, leading to reduced processing times and improved productivity metrics.\"\n\n**Humanized version:**\n\"Switching to this new software will make day-to-day work smoother for everyone. Teams will spend less time on manual tasks and more time focusing on what really matters—getting things done faster and with fewer headaches.\"\n\n**Why it works:**\n- Replaced \"implementation\" with \"switching to\" for a conversational tone.\n- \"Significant enhancement of operational efficiency\" becomes \"make day-to-day work smoother.\"\n- \"Users will experience a streamlined workflow\" is simplified to \"Teams will spend less time on manual tasks.\"\n- Kept the core idea intact while making it feel like a real person wrote it.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "human-writer#main-content",
+      "human-writer#overview",
+      "human-writer#setup",
+      "human-writer#examples",
+      "human-writer#tools",
+      "human-writer#mcp",
+      "human-writer#related"
+    ],
+    "overview_vi": "The Human Writer skill edits prose to sound natural and human-written, removing characteristic markers of AI-generated text while preserving the author's original meaning and intended style. It works by analyzing model-generated content and refining it into more authentic, readable prose that reads like it was written by a person. This skill is designed for writers, content creators, and teams who use AI assistance but want their final output to feel genuinely human-authored. It solves the problem of AI text sounding generic or formulaic by applying editorial techniques that restore natural voice and flow.\nRewrite technical documents to sound friendlier\nEnhance casual blog posts for a more engaging tone\nEdit marketing copy to avoid sounding robotic\nAdjust academic writing for clarity and accessibility",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/abpai/skills --skill human-writer`\n`git clone https://github.com/abpai/skills`",
+    "usage_vi": "```\nHumanize the following text while preserving its original meaning, tone, and style. Make it sound natural, engaging, and authentic as if written by a human writer. Avoid robotic phrasing or overly formal language. Here’s the text: [TEXT_TO_HUMANIZE]\n```\nCopy\n\n```\n### Humanized Version of Your Text\n\n**Original AI-generated text:**\n\"The implementation of the new software solution will result in a significant enhancement of operational efficiency across all departments. Users will experience a streamlined workflow, leading to reduced processing times and improved productivity metrics.\"\n\n**Humanized version:**\n\"Switching to this new software will make day-to-day work smoother for everyone. Teams will spend less time on manual tasks and more time focusing on what really matters—getting things done faster and with fewer headaches.\"\n\n**Why it works:**\n- Replaced \"implementation\" with \"switching to\" for a conversational tone.\n- \"Significant enhancement of operational efficiency\" becomes \"make day-to-day work smoother.\"\n- \"Users will experience a streamlined workflow\" is simplified to \"Teams will spend less time on manual tasks.\"\n- Kept the core idea intact while making it feel like a real person wrote it.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:43:38.482309Z",
+    "http_status": 200,
+    "content_hash": "1397946823950b9d214a5cdf991012d14a50440b683d2ed3267663e335a5102e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\human-writer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\human-writer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Human Writer: Deslop AI Text",
+  "short_description_vi": "This skill is used to humanize text while preserving the author's meaning and intended style. It's designed for writers and content creators who want to enhance their text quality by reducing AI-generated markers."
+}

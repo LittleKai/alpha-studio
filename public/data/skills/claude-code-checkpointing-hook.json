@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-checkpointing-hook",
+  "slug": "claude-code-checkpointing-hook",
+  "name": "browser-use",
+  "headline": "git checkpointing with claude code hook",
+  "short_description": "This hook integrates with Claude Code to automatically create git checkpoints (snapshots) of your code before any file modifications. It provides a safety net allowing you to easily restore previous states if needed, without interfering with your main git repository.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "Ixe1",
+  "install_command": "git clone https://github.com/Ixe1/claude-code-checkpointing-hook.git",
+  "source_repo_url": "https://github.com/Ixe1/claude-code-checkpointing-hook",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude"
+  ],
+  "sections": {
+    "overview": "Claude Code Checkpointing Hook automatically creates git snapshots before file writes, edits, and multi-edits, providing a safety net for code recovery. It uses shadow repositories stored separately from your main project to avoid cluttering your git history while maintaining full version control capabilities. The tool offers interactive restoration with diff preview, configurable retention policies, and efficient storage via git delta compression. Developers benefit from risk-free code exploration—revert unwanted changes instantly without impacting their primary repository. Installation is straightforward via a bash script, with shell commands for listing, searching, and restoring checkpoints.\nRestore code to a previous state after Claude Code makes unintended file modifications\nSafely explore AI-generated code changes with easy rollback capability\nTrack file modifications across Claude Code sessions with searchable checkpoint history\nMaintain code recovery without polluting your main git repository",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ixe1/claude-code-checkpointing-hook`",
+    "usage": "```\nCreate a checkpoint hook for my [PROJECT_NAME] project in [PROGRAMMING_LANGUAGE]. I want to automatically save a snapshot of my code before any modifications. The checkpoint should be stored in a [STORAGE_LOCATION] directory and include a timestamp. Make sure the hook works with my existing git workflow.\n```\nCopy\n\n```\n# Git Checkpoint Hook for [PROJECT_NAME]\n\n```python\nimport os\nimport shutil\nfrom datetime import datetime\ndef create_checkpoint():\n    # Get current timestamp\n    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')\n    \n    # Define source and destination paths\n    source_dir = os.getcwd()\n    destination_dir = os.path.join(os.getcwd(), 'checkpoints', f'checkpoint_{timestamp}')\n    \n    # Create checkpoint directory\n    os.makedirs(destination_dir, exist_ok=True)\n    \n    # Copy all files to checkpoint directory\n    for root, dirs, files in os.walk(source_dir):\n        for file in files:\n            if file.endswith('.py') or file.endswith('.js'):  # Add more extensions as needed\n                source_file = os.path.join(root, file)\n                relative_path = os.path.relpath(source_file, source_dir)\n                destination_file = os.path.join(destination_dir, relative_path)\n                os.makedirs(os.path.dirname(destination_file), exist_ok=True)\n                shutil.copy2(source_file, destination_file)\n\n    print(f'Checkpoint created at {destination_dir}')\n\n# Call the function to create a checkpoint\ncreate_checkpoint()\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-checkpointing-hook#main-content",
+      "claude-code-checkpointing-hook#overview",
+      "claude-code-checkpointing-hook#setup",
+      "claude-code-checkpointing-hook#examples",
+      "claude-code-checkpointing-hook#tools",
+      "claude-code-checkpointing-hook#mcp",
+      "claude-code-checkpointing-hook#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Checkpointing Hook automatically creates git snapshots before file writes, edits, and multi-edits, providing a safety net for code recovery. It uses shadow repositories stored separately from your main project to avoid cluttering your git history while maintaining full version control capabilities. The tool offers interactive restoration with diff preview, configurable retention policies, and efficient storage via git delta compression. Developers benefit from risk-free code exploration—revert unwanted changes instantly without impacting their primary repository. Installation is straightforward via a bash script, with shell commands for listing, searching, and restoring checkpoints.\nRestore code to a previous state after Claude Code makes unintended file modifications\nSafely explore AI-generated code changes with easy rollback capability\nTrack file modifications across Claude Code sessions with searchable checkpoint history\nMaintain code recovery without polluting your main git repository",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Ixe1/claude-code-checkpointing-hook`",
+    "usage_vi": "```\nCreate a checkpoint hook for my [PROJECT_NAME] project in [PROGRAMMING_LANGUAGE]. I want to automatically save a snapshot of my code before any modifications. The checkpoint should be stored in a [STORAGE_LOCATION] directory and include a timestamp. Make sure the hook works with my existing git workflow.\n```\nCopy\n\n```\n# Git Checkpoint Hook for [PROJECT_NAME]\n\n```python\nimport os\nimport shutil\nfrom datetime import datetime\ndef create_checkpoint():\n    # Get current timestamp\n    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')\n    \n    # Define source and destination paths\n    source_dir = os.getcwd()\n    destination_dir = os.path.join(os.getcwd(), 'checkpoints', f'checkpoint_{timestamp}')\n    \n    # Create checkpoint directory\n    os.makedirs(destination_dir, exist_ok=True)\n    \n    # Copy all files to checkpoint directory\n    for root, dirs, files in os.walk(source_dir):\n        for file in files:\n            if file.endswith('.py') or file.endswith('.js'):  # Add more extensions as needed\n                source_file = os.path.join(root, file)\n                relative_path = os.path.relpath(source_file, source_dir)\n                destination_file = os.path.join(destination_dir, relative_path)\n                os.makedirs(os.path.dirname(destination_file), exist_ok=True)\n                shutil.copy2(source_file, destination_file)\n\n    print(f'Checkpoint created at {destination_dir}')\n\n# Call the function to create a checkpoint\ncreate_checkpoint()\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:41:17.483860Z",
+    "http_status": 200,
+    "content_hash": "6dacbd703e4ee6bde734ae09473dc8cb2c8cdddfbb9c540e15a6247f3b9736dd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-checkpointing-hook.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-checkpointing-hook.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "git checkpointing with claude code hook",
+  "short_description_vi": "This hook integrates with Claude Code to automatically create git checkpoints (snapshots) of your code before any file modifications. It provides a safety net allowing you to easily restore previous states if needed, without interfering with your main git repository."
+}

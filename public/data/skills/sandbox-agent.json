@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sandbox-agent",
+  "slug": "sandbox-agent",
+  "name": "browser-use",
+  "headline": "Sandbox Agent - Universal API for Coding Agents",
+  "short_description": "Universal API for automatic coding agents in sandboxes. Supports Claude Code, Codex, OpenCode, and Amp. Enables developers to interact with multiple coding agents using a single interface. Integrates with existing workflows for automated code generation and testing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "rivet-dev",
+  "install_command": "git clone https://github.com/rivet-dev/sandbox-agent.git",
+  "source_repo_url": "https://github.com/rivet-dev/sandbox-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "e2b",
+    "amp",
+    "sandbox",
+    "daytona",
+    "opencode",
+    "claude",
+    "codex",
+    "ai",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Sandbox-agent provides a unified interface for working with multiple AI coding agent platforms including Claude Code, Codex, OpenCode, and Amp. Rather than managing separate integrations for each agent type, developers can interact with all supported agents through a single standardized API. The skill enables automated code generation, execution, and testing workflows within isolated sandbox environments. This abstraction layer simplifies multi-agent development by reducing implementation complexity and allowing teams to switch between different agents or use them in parallel without changing their core integration code.\nAutomated code generation across multiple AI agent platforms\nStandardized testing and validation of AI-generated code\nMulti-agent development workflows with unified interfaces\nIntegration of coding agents into existing development pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rivet-dev/sandbox-agent`",
+    "usage": "```\nUse the sandbox-agent API to [TASK: e.g., 'generate a Python script for [FUNCTION]'] in a sandbox environment. Specify the agent type as [AGENT: e.g., 'Claude Code'] and the sandbox as [SANDBOX: e.g., 'Ubuntu 22.04']. Include any dependencies or constraints like [DEPENDENCIES: e.g., 'Pandas 2.0+'] or [CONSTRAINTS: e.g., 'No external API calls']. Return the generated code and a brief explanation of the approach.\n```\nCopy\n\n```\nHere’s the generated Python script for a **real-time stock price analyzer** using the sandbox-agent API with **Claude Code** in an **Ubuntu 22.04** sandbox. Dependencies: `yfinance 0.2.33`, `pandas 2.0.3`, and `matplotlib 3.7.2`. Constraints: No external API calls beyond Yahoo Finance.\n\n```python\nimport yfinance as yf\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom datetime import datetime, timedelta\n\ndef fetch_stock_data(ticker, days=30):\n    \"\"\"Fetch historical stock data for a given ticker.\"\"\"\n    end_date = datetime.now()\n    start_date = end_date - timedelta(days=days)\n    data = yf.download(ticker, start=start_date, end=end_date)\n    return data\n\ndef analyze_moving_averages(data, short_window=5, long_window=20):\n    \"\"\"Calculate and plot short-term and long-term moving averages.\"\"\"\n    data['SMA_5'] = data['Close'].rolling(window=short_window).mean()\n    data['SMA_20'] = data['Close'].rolling(window=long_window).mean()\n    \n    plt.figure(figsize=(12, 6))\n    plt.plot(data['Close'], label='Closing Price', alpha=0.5)\n    plt.plot(data['SMA_5'], label='5-Day SMA', color='orange')\n    plt.plot(data['SMA_20'], label='20-Day SMA', color='green')\n    plt.title(f'{ticker} Stock Analysis')\n    plt.legend()\n    plt.savefig('stock_analysis.png')\n    return data\n\n# Example usage\nticker = 'AAPL'\nstock_data = fetch_stock_data(ticker)\nanalysis = analyze_moving_averages(stock_data)\nprint(\"Analysis complete. Plot saved as 'stock_analysis.png'.\")\n```\n\n**Explanation:**\nThe script fetches 30 days of historical data for Apple (AAPL) using the `yfinance` library, calculates 5-day and 20-day simple moving averages (SMAs), and generates a visualization. The moving averages help identify short-term trends (e.g., bullish/bearish crossovers). The sandbox-agent API executed this in an isolated Ubuntu environment, ensuring reproducibility and security. The output includes the generated plot (`stock_analysis.png`) and a Pandas DataFrame with the analyzed data.\n\n**Next Steps:**\n1. Deploy this script in a CI/CD pipeline to automate daily stock analysis.\n2. Extend the script to compare multiple tickers or add technical indicators (e.g., RSI).\n3. Use the sandbox-agent API to test the script across different Python versions or OS environments.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sandbox-agent#main-content",
+      "sandbox-agent#overview",
+      "sandbox-agent#setup",
+      "sandbox-agent#examples",
+      "sandbox-agent#tools",
+      "sandbox-agent#mcp",
+      "sandbox-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sandbox-agent provides a unified interface for working with multiple AI coding agent platforms including Claude Code, Codex, OpenCode, and Amp. Rather than managing separate integrations for each agent type, developers can interact with all supported agents through a single standardized API. The skill enables automated code generation, execution, and testing workflows within isolated sandbox environments. This abstraction layer simplifies multi-agent development by reducing implementation complexity and allowing teams to switch between different agents or use them in parallel without changing their core integration code.\nAutomated code generation across multiple AI agent platforms\nStandardized testing and validation of AI-generated code\nMulti-agent development workflows with unified interfaces\nIntegration of coding agents into existing development pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rivet-dev/sandbox-agent`",
+    "usage_vi": "```\nUse the sandbox-agent API to [TASK: e.g., 'generate a Python script for [FUNCTION]'] in a sandbox environment. Specify the agent type as [AGENT: e.g., 'Claude Code'] and the sandbox as [SANDBOX: e.g., 'Ubuntu 22.04']. Include any dependencies or constraints like [DEPENDENCIES: e.g., 'Pandas 2.0+'] or [CONSTRAINTS: e.g., 'No external API calls']. Return the generated code and a brief explanation of the approach.\n```\nCopy\n\n```\nHere’s the generated Python script for a **real-time stock price analyzer** using the sandbox-agent API with **Claude Code** in an **Ubuntu 22.04** sandbox. Dependencies: `yfinance 0.2.33`, `pandas 2.0.3`, and `matplotlib 3.7.2`. Constraints: No external API calls beyond Yahoo Finance.\n\n```python\nimport yfinance as yf\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom datetime import datetime, timedelta\n\ndef fetch_stock_data(ticker, days=30):\n    \"\"\"Fetch historical stock data for a given ticker.\"\"\"\n    end_date = datetime.now()\n    start_date = end_date - timedelta(days=days)\n    data = yf.download(ticker, start=start_date, end=end_date)\n    return data\n\ndef analyze_moving_averages(data, short_window=5, long_window=20):\n    \"\"\"Calculate and plot short-term and long-term moving averages.\"\"\"\n    data['SMA_5'] = data['Close'].rolling(window=short_window).mean()\n    data['SMA_20'] = data['Close'].rolling(window=long_window).mean()\n    \n    plt.figure(figsize=(12, 6))\n    plt.plot(data['Close'], label='Closing Price', alpha=0.5)\n    plt.plot(data['SMA_5'], label='5-Day SMA', color='orange')\n    plt.plot(data['SMA_20'], label='20-Day SMA', color='green')\n    plt.title(f'{ticker} Stock Analysis')\n    plt.legend()\n    plt.savefig('stock_analysis.png')\n    return data\n\n# Example usage\nticker = 'AAPL'\nstock_data = fetch_stock_data(ticker)\nanalysis = analyze_moving_averages(stock_data)\nprint(\"Analysis complete. Plot saved as 'stock_analysis.png'.\")\n```\n\n**Explanation:**\nThe script fetches 30 days of historical data for Apple (AAPL) using the `yfinance` library, calculates 5-day and 20-day simple moving averages (SMAs), and generates a visualization. The moving averages help identify short-term trends (e.g., bullish/bearish crossovers). The sandbox-agent API executed this in an isolated Ubuntu environment, ensuring reproducibility and security. The output includes the generated plot (`stock_analysis.png`) and a Pandas DataFrame with the analyzed data.\n\n**Next Steps:**\n1. Deploy this script in a CI/CD pipeline to automate daily stock analysis.\n2. Extend the script to compare multiple tickers or add technical indicators (e.g., RSI).\n3. Use the sandbox-agent API to test the script across different Python versions or OS environments.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:05:27.911438Z",
+    "http_status": 200,
+    "content_hash": "c672cd5bd02940e684252a9501ce3b1bb6e2dda67dc49ea05361fc2a29d30196",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sandbox-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sandbox-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Sandbox Agent - Universal API for Coding Agents",
+  "short_description_vi": "Universal API for automatic coding agents in sandboxes. Supports Claude Code, Codex, OpenCode, and Amp. Enables developers to interact with multiple coding agents using a single interface. Integrates with existing workflows for automated code generation and testing."
+}

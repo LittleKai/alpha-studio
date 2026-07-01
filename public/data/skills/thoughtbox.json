@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/thoughtbox",
+  "slug": "thoughtbox",
+  "name": "Thoughtbox",
+  "headline": "Thoughtbox - AI Reasoning Ledger for Claude Code",
+  "short_description": "Reasoning ledger and context engine for Claude Code. Thoughtbox allows Claude to learn within and across runs + sessions, reducing the need to spend human brainpower and energy on the same concepts over and over.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Kastalien-Research",
+  "install_command": "git clone https://github.com/Kastalien-Research/thoughtbox.git",
+  "source_repo_url": "https://github.com/Kastalien-Research/thoughtbox",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "observability",
+    "mcp",
+    "claudecode",
+    "thoughtbox",
+    "sequentialthinking",
+    "ai-agents",
+    "sequential-thinking",
+    "reasoning",
+    "model-context-protocol",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Thoughtbox is an MCP server that creates a persistent reasoning ledger for Claude Code and other AI agents, recording every thought as a numbered, timestamped node in an auditable graph. It supports multiple reasoning patterns—forward thinking for exploration, backward thinking for planning, branching for alternatives, and revision for error correction—each classified by semantic thought type. The Observatory web UI provides real-time visualization of reasoning sessions, branch exploration, and deep analysis of reasoning patterns. A knowledge graph captures concepts, insights, and decisions with typed relations across sessions, enabling agents to learn and reference prior reasoning without repeating work. Multi-agent collaboration is coordinated through a Hub layer where agents register with role-specific profiles (Manager, Architect, Debugger, Security, Researcher, Reviewer) and work through structured problem-solving workflows with proposals, peer review, and consensus tracking.\nMulti-agent problem solving with auditable decision trails\nLearning across sessions by persisting reasoning graphs and knowledge\nReal-time observability of AI reasoning with the Observatory UI\nSystem design and planning using backward reasoning patterns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Kastalien-Research/thoughtbox`",
+    "usage": "```\nInitialize a Thoughtbox session for [PROJECT_NAME] with the following context: [INITIAL_CONTEXT]. Use Thoughtbox to track reasoning, decisions, and learnings across this and future sessions. When working on [TASK], reference prior insights from Thoughtbox to avoid redundant explanations or rework. After completing [TASK], update Thoughtbox with key takeaways, open questions, and next steps for future reference.\n```\nCopy\n\n```\n```thoughtbox\nProject: Acme Corp Website Redesign\nContext: Client wants a modern, accessible, and high-converting landing page. Previous iterations focused on visual appeal but lacked clear CTAs and accessibility compliance. Budget is $15k, timeline is 6 weeks.\n\nKey Insights:\n- Client’s 2023 analytics showed 40% bounce rate on mobile due to slow load times (target: <2s).\n- Competitor analysis revealed 3 key UX patterns: sticky headers, micro-interactions, and minimalist forms.\n- Accessibility audit flagged color contrast issues in 70% of existing components (WCAG 2.1 AA required).\n\nOpen Questions:\n- Should we prioritize A/B testing for CTAs or accessibility fixes first?\n- Can we reuse the existing design system to reduce costs?\n\nNext Steps:\n1. Draft wireframes focusing on mobile-first design and sticky CTAs.\n2. Run accessibility scan on wireframes before high-fidelity mockups.\n3. Schedule stakeholder review to align on priorities.\n```\n\n**Task Output:**\nDesigned 3 mobile-first wireframes with sticky CTAs, achieving 95% color contrast compliance. Open questions resolved: Client chose to prioritize accessibility fixes first due to legal risks. Updated Thoughtbox with revised next steps: finalize wireframes by EOD and share with dev team for feasibility review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "thoughtbox#main-content",
+      "thoughtbox#overview",
+      "thoughtbox#setup",
+      "thoughtbox#examples",
+      "thoughtbox#tools",
+      "thoughtbox#mcp",
+      "thoughtbox#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Thoughtbox là một MCP server giúp tạo sổ cái lập luận lưu trữ lâu dài (persistent reasoning ledger) cho Claude Code và các AI agent khác, ghi lại mọi luồng suy nghĩ dưới dạng một node được đánh số và gắn nhãn thời gian (timestamp) trong một đồ thị có thể kiểm tra (auditable graph). Hệ thống hỗ trợ nhiều mô hình lập luận—lập luận tiến (forward thinking) để khám phá, lập luận lùi (backward thinking) để lập kế hoạch, phân nhánh (branching) để tìm giải pháp thay thế, và hiệu chỉnh (revision) để sửa lỗi—mỗi mô hình được phân loại theo kiểu tư duy ngữ nghĩa (semantic thought type). Web UI Observatory cung cấp khả năng trực quan hóa theo thời gian thực các session lập luận, quá trình khám phá nhánh và phân tích sâu các mô hình lập luận. Một đồ thị tri thức (knowledge graph) ghi lại các khái niệm, insight và quyết định cùng các mối quan hệ được định kiểu xuyên suốt các session, giúp các agent tự học và tham chiếu lại các lập luận trước đó mà không phải làm lại từ đầu. Sự hợp tác giữa nhiều agent được điều phối qua một lớp Hub, nơi các agent đăng ký profile theo vai trò cụ thể (Manager, Architect, Debugger, Security, Researcher, Reviewer) và làm việc qua các quy trình giải quyết vấn đề có cấu trúc với các đề xuất (proposals), phản biện (peer review) và theo dõi sự đồng thuận (consensus tracking).\nGiải quyết vấn đề bằng hệ thống multi-agent với vết quyết định có thể kiểm tra (auditable decision trails)\nHọc hỏi xuyên suốt các session bằng cách lưu trữ lâu dài (persisting) đồ thị lập luận và tri thức\nKhả năng giám sát thời gian thực (real-time observability) quá trình lập luận của AI thông qua UI Observatory\nThiết kế và lập kế hoạch hệ thống sử dụng các mô hình lập luận lùi (backward reasoning)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Kastalien-Research/thoughtbox`",
+    "usage_vi": "```\nKhởi tạo một session Thoughtbox cho [PROJECT_NAME] với ngữ cảnh sau: [INITIAL_CONTEXT]. Sử dụng Thoughtbox để theo dõi lập luận, quyết định và những gì đã học hỏi được trong session này cũng như các session trong tương lai. Khi thực hiện [TASK], hãy tham chiếu các insight trước đó từ Thoughtbox để tránh giải thích trùng lặp hoặc làm lại từ đầu. Sau khi hoàn thành [TASK], hãy cập nhật Thoughtbox với các điểm rút ra quan trọng, câu hỏi mở và các bước tiếp theo để tham khảo sau này.\n```\nSao chép\n\n```\n```thoughtbox\nDự án: Thiết kế lại Website Acme Corp\nNgữ cảnh: Khách hàng muốn một landing page hiện đại, dễ tiếp cận (accessible) và có tỷ lệ chuyển đổi cao. Các phiên bản trước chỉ tập trung vào giao diện trực quan nhưng thiếu các CTA rõ ràng và chưa tuân thủ các tiêu chuẩn về tính tiếp cận (accessibility). Ngân sách là $15k, thời gian thực hiện là 6 tuần.\n\nInsight quan trọng:\n- Số liệu phân tích năm 2023 của khách hàng cho thấy tỷ lệ thoát (bounce rate) trên di động là 40% do thời gian tải trang chậm (mục tiêu: <2s).\n- Phân tích đối thủ cạnh tranh cho thấy 3 pattern UX chính: sticky header, micro-interaction và form tối giản.\n- Kiểm tra tính tiếp cận (accessibility audit) phát hiện vấn đề tương phản màu sắc ở 70% các component hiện tại (yêu cầu chuẩn WCAG 2.1 AA).\n\nCâu hỏi mở:\n- Chúng ta nên ưu tiên thử nghiệm A/B cho CTA hay sửa các lỗi tiếp cận (accessibility fixes) trước?\n- Chúng ta có thể tái sử dụng design system hiện tại để giảm chi phí không?\n\nCác bước tiếp theo:\n1. Phác thảo wireframe tập trung vào thiết kế mobile-first và các CTA dạng sticky.\n2. Chạy quét tính tiếp cận (accessibility scan) trên các wireframe trước khi thiết kế mockup độ trung thực cao (high-fidelity mockups).\n3. Lên lịch đánh giá với các bên liên quan (stakeholders) để thống nhất về các ưu tiên.\n```\n\n**Task Output:**\nĐã thiết kế 3 wireframe mobile-first với các sticky CTA, đạt 95% mức độ tuân thủ tương phản màu sắc. Câu hỏi mở đã được giải quyết: Khách hàng chọn ưu tiên sửa các lỗi tiếp cận trước vì rủi ro pháp lý. Đã cập nhật Thoughtbox với các bước tiếp theo được sửa đổi: hoàn thiện wireframe trước cuối ngày (EOD) và chia sẻ với đội ngũ dev để đánh giá tính khả thi.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:25:08.904429Z",
+    "http_status": 200,
+    "content_hash": "b4651445adbd95be1589d721bb5ec99d4de34b55ad0dae3fcbb2303363019d25",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\thoughtbox.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\thoughtbox.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Thoughtbox - Sổ cái lập luận AI dành cho Claude Code",
+  "short_description_vi": "Sổ cái lập luận và engine ngữ cảnh dành cho Claude Code. Thoughtbox cho phép Claude học hỏi ngay trong một phiên chạy cũng như xuyên suốt nhiều run và session khác nhau, giảm thiểu việc con người phải tốn công sức và chất xám để giải thích đi giải thích lại các khái niệm tương tự."
+}

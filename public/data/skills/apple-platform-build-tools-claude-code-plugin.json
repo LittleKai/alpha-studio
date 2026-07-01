@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/apple-platform-build-tools-claude-code-plugin",
+  "slug": "apple-platform-build-tools-claude-code-plugin",
+  "name": "Apple Platform Build Tools Claude Code Plugin",
+  "headline": "build tools for apple platforms in claude code",
+  "short_description": "Automate building, testing, and archiving Swift packages and Xcode projects for Apple platforms. Integrates with Claude Code to streamline iOS, iPadOS, macOS, tvOS, watchOS, and visionOS development workflows. Connects to Xcode and xcodebuild for efficient CI/CD pipelines.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "55 min",
+  "author": "kylehughes",
+  "install_command": "git clone https://github.com/kylehughes/apple-platform-build-tools-claude-code-plugin.git",
+  "source_repo_url": "https://github.com/kylehughes/apple-platform-build-tools-claude-code-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-plugin",
+    "watchos",
+    "swift",
+    "ios",
+    "ipados",
+    "xcodebuild",
+    "tvos",
+    "xcode",
+    "visionos",
+    "macos",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Apple Platform Build Tools Claude Code Plugin provides reference documentation and automated execution for building Swift packages and Xcode projects targeting iOS, iPadOS, macOS, tvOS, watchOS, and visionOS. It includes an Agent Skill with detailed xcrun tool documentation and a Subagent that discovers project structure, manages simulators and devices, runs builds, and returns results without cluttering the main agent's context. Teams can delegate build and test commands to the Subagent or reference the Agent Skill directly for complex xcodebuild commands, code signing, profiling, distribution, and troubleshooting. The plugin integrates with CI/CD workflows and supports physical device deployment, binary inspection, and performance profiling through xctrace and xcresulttool.\nAutomating CI/CD pipelines for iOS and macOS app builds on GitHub Actions\nManaging simulator lifecycle and deploying to physical devices from Claude Code\nConstructing complex xcodebuild commands for code signing and distribution\nRunning tests with filtering and coverage analysis across Apple platforms",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kylehughes/apple-platform-build-tools-claude-code-plugin`",
+    "usage": "```\nUse the apple-platform-build-tools-claude-code-plugin to [ACTION] the [TARGET] project. [SPECIFIC_TASK]. Ensure the build completes successfully and generate a summary of the output. Example: 'Use the apple-platform-build-tools-claude-code-plugin to build and test the MyApp iOS project for iPhone 15 simulator. Run unit tests and archive the build for distribution.'\n```\nCopy\n\n```\n### Build and Test Summary for MyApp (iOS)\n\n**Build Status**: ✅ Success\n- Target: MyApp (iOS 17.4)\n- Device: iPhone 15 Simulator (iOS 17.4)\n- Xcode Version: 15.3 (15E204a)\n- Build Duration: 4m 22s\n\n**Test Results**:\n- Total Tests: 128\n- Passed: 128 (100%)\n- Failed: 0\n- Skipped: 0\n\n**Warnings**: 3 (all resolved in subsequent builds)\n- Deprecation warnings for UIKit APIs marked for removal in iOS 18\n- Minor memory leaks in networking layer (flagged for future optimization)\n\n**Archive Details**:\n- Archive Path: `/Users/dev/MyApp/Builds/MyApp_2024-05-15.xcarchive`\n- Export Method: App Store Distribution\n- Provisioning Profile: `AppStore_MyApp_2024`\n- Entitlements: Push Notifications, iCloud, HealthKit\n\n**Next Steps**:\n1. Upload the archive to App Store Connect via Transporter.\n2. Review TestFlight feedback from internal testers.\n3. Address deprecation warnings in the next sprint.\n\n**Log Output**:\n```\n[14:32:22] Building for iOS Simulator... (Debug)\n[14:36:44] Compiling Swift sources...\n[14:38:12] Linking MyApp... (100%)\n[14:39:01] Running tests...\n[14:42:15] All tests passed!\n[14:43:00] Archiving for distribution...\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "apple-platform-build-tools-claude-code-plugin#main-content",
+      "apple-platform-build-tools-claude-code-plugin#overview",
+      "apple-platform-build-tools-claude-code-plugin#setup",
+      "apple-platform-build-tools-claude-code-plugin#examples",
+      "apple-platform-build-tools-claude-code-plugin#tools",
+      "apple-platform-build-tools-claude-code-plugin#mcp",
+      "apple-platform-build-tools-claude-code-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Plugin Apple Platform Build Tools cho Claude Code cung cấp tài liệu tham khảo và khả năng thực thi tự động để build các Swift package và project Xcode cho iOS, iPadOS, macOS, tvOS, watchOS và visionOS. Plugin bao gồm một Agent Skill đi kèm tài liệu chi tiết về công cụ xcrun và một Subagent giúp tự động tìm hiểu cấu trúc project, quản lý simulator và thiết bị, thực thi build và trả về kết quả mà không làm loãng context của agent chính. Các đội ngũ phát triển có thể ủy thác lệnh build và test cho Subagent hoặc tham chiếu trực tiếp Agent Skill cho các lệnh xcodebuild phức tạp, code signing, profiling, phân phối và xử lý sự cố. Plugin tích hợp mượt mà với các quy trình CI/CD, hỗ trợ triển khai trên thiết bị vật lý, kiểm tra file nhị phân và phân tích hiệu năng thông qua xctrace và xcresulttool.\n\nTự động hóa các pipeline CI/CD cho các bản build ứng dụng iOS và macOS trên GitHub Actions\nQuản lý vòng đời simulator và triển khai lên thiết bị vật lý trực tiếp từ Claude Code\nXây dựng các lệnh xcodebuild phức tạp phục vụ cho code signing và phân phối\nChạy test với tính năng lọc và phân tích độ bao phủ (coverage analysis) trên các nền tảng Apple",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kylehughes/apple-platform-build-tools-claude-code-plugin`",
+    "usage_vi": "```\nSử dụng apple-platform-build-tools-claude-code-plugin để [ACTION] project [TARGET]. [SPECIFIC_TASK]. Đảm bảo quá trình build hoàn tất thành công và tạo bản tóm tắt kết quả đầu ra. Ví dụ: 'Sử dụng apple-platform-build-tools-claude-code-plugin để build và test project iOS MyApp trên simulator iPhone 15. Chạy các unit test và archive bản build để phân phối.'\n```\nCopy\n\n```\n### Tóm tắt Build và Test cho MyApp (iOS)\n\n**Trạng thái Build**: ✅ Thành công\n- Target: MyApp (iOS 17.4)\n- Thiết bị: iPhone 15 Simulator (iOS 17.4)\n- Phiên bản Xcode: 15.3 (15E204a)\n- Thời gian build: 4m 22s\n\n**Kết quả Test**:\n- Tổng số test: 128\n- Đạt: 128 (100%)\n- Thất bại: 0\n- Bị bỏ qua: 0\n\n**Cảnh báo (Warnings)**: 3 (tất cả đã được giải quyết trong các bản build tiếp theo)\n- Cảnh báo ngưng hỗ trợ (deprecation) đối với các API UIKit bị đánh dấu loại bỏ trong iOS 18\n- Lỗi rò rỉ bộ nhớ (memory leak) nhỏ trong lớp networking (đã được gắn cờ để tối ưu hóa sau)\n\n**Thông tin Archive**:\n- Đường dẫn Archive: `/Users/dev/MyApp/Builds/MyApp_2024-05-15.xcarchive`\n- Phương thức Export: App Store Distribution\n- Provisioning Profile: `AppStore_MyApp_2024`\n- Quyền hạn (Entitlements): Push Notifications, iCloud, HealthKit\n\n**Các bước tiếp theo**:\n1. Tải bản archive lên App Store Connect thông qua Transporter.\n2. Xem lại phản hồi từ TestFlight của các tester nội bộ.\n3. Xử lý các cảnh báo ngưng hỗ trợ trong sprint tiếp theo.\n\n**Log Output**:\n```\n[14:32:22] Building for iOS Simulator... (Debug)\n[14:36:44] Compiling Swift sources...\n[14:38:12] Linking MyApp... (100%)\n[14:39:01] Running tests...\n[14:42:15] All tests passed!\n[14:43:00] Archiving for distribution...\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:19:25.670095Z",
+    "http_status": 200,
+    "content_hash": "197b42144bcc0bf193680be8648f2bcde2cfbc74a1f243348ff60bdd3fe48f7f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apple-platform-build-tools-claude-code-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apple-platform-build-tools-claude-code-plugin.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ công cụ build cho các nền tảng Apple trong Claude Code",
+  "short_description_vi": "Tự động hóa việc build, test và archive các Swift package và project Xcode cho các nền tảng Apple. Tích hợp với Claude Code để tối ưu hóa quy trình phát triển iOS, iPadOS, macOS, tvOS, watchOS và visionOS. Kết nối trực tiếp với Xcode và xcodebuild để xây dựng các pipeline CI/CD hiệu quả."
+}

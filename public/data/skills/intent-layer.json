@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/intent-layer",
+  "slug": "intent-layer",
+  "name": "expo-horizon",
+  "headline": "Intent Layer: Codebase Navigation for AI Agents",
+  "short_description": "The Intent Layer provides a structured way for AI agents to navigate codebases by detecting project states and routing workflows accordingly. It's designed for developers working with complex codebases.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "crafter-station",
+  "install_command": "git clone https://github.com/crafter-station/skills",
+  "source_repo_url": "https://github.com/crafter-station/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "layer",
+    "development",
+    "intent"
+  ],
+  "sections": {
+    "overview": "Intent Layer enables AI agents to understand and navigate complex codebases through structured AGENTS.md files, allowing agents to detect project states and route workflows intelligently. Built on The Intent Layer framework by Tyler Brandt, it bridges the gap between agent capabilities and codebase complexity. The skill works with Claude Code, Cursor, Copilot, and 10+ other agents. By establishing clear context and intent markers, Intent Layer helps agents operate like senior engineers familiar with your project structure. This is essential for teams using AI agents in large, multi-faceted codebases where context and intelligent routing determine agent effectiveness.\nDetect the state of a project through scripts\nRoute projects based on completeness\nManage complex codebases with hierarchical structures",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/crafter-station/skills --skill intent-layer`\n`git clone https://github.com/crafter-station/skills`",
+    "usage": "```\nAnalyze the [PROJECT_NAME] codebase and identify the current state of the [MODULE_NAME] module. Determine the next logical step in the workflow based on the detected state and suggest the most efficient path forward. Return the analysis in a structured format with: 1) Current state assessment, 2) Detected dependencies or blockers, 3) Recommended next action, and 4) Required inputs or outputs for the next step.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "intent-layer#main-content",
+      "intent-layer#overview",
+      "intent-layer#setup",
+      "intent-layer#examples",
+      "intent-layer#tools",
+      "intent-layer#mcp",
+      "intent-layer#related",
+      "harper-best-practices",
+      "macos-menubar-tuist-app",
+      "expo-horizon"
+    ],
+    "overview_vi": "Intent Layer enables AI agents to understand and navigate complex codebases through structured AGENTS.md files, allowing agents to detect project states and route workflows intelligently. Built on The Intent Layer framework by Tyler Brandt, it bridges the gap between agent capabilities and codebase complexity. The skill works with Claude Code, Cursor, Copilot, and 10+ other agents. By establishing clear context and intent markers, Intent Layer helps agents operate like senior engineers familiar with your project structure. This is essential for teams using AI agents in large, multi-faceted codebases where context and intelligent routing determine agent effectiveness.\nDetect the state of a project through scripts\nRoute projects based on completeness\nManage complex codebases with hierarchical structures",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/crafter-station/skills --skill intent-layer`\n`git clone https://github.com/crafter-station/skills`",
+    "usage_vi": "```\nAnalyze the [PROJECT_NAME] codebase and identify the current state of the [MODULE_NAME] module. Determine the next logical step in the workflow based on the detected state and suggest the most efficient path forward. Return the analysis in a structured format with: 1) Current state assessment, 2) Detected dependencies or blockers, 3) Recommended next action, and 4) Required inputs or outputs for the next step.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:01:47.439865Z",
+    "http_status": 200,
+    "content_hash": "853f8baf620044874641ffb6e93f34f5070c63da829a450c694c12c409985479",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\intent-layer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\intent-layer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Intent Layer: Codebase Navigation for AI Agents",
+  "short_description_vi": "The Intent Layer provides a structured way for AI agents to navigate codebases by detecting project states and routing workflows accordingly. It's designed for developers working with complex codebases."
+}

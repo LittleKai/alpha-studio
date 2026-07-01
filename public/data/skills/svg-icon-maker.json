@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/svg-icon-maker",
+  "slug": "svg-icon-maker",
+  "name": "SVG Icon Maker",
+  "headline": "SVG Icon Maker: Raster to Vector Conversion",
+  "short_description": "We build custom AI skills and automations for B2B companies.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "heroygt",
+  "install_command": "git clone https://github.com/heroygt/skills",
+  "source_repo_url": "https://github.com/heroygt/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "maker",
+    "icon",
+    "image-processing"
+  ],
+  "sections": {
+    "overview": "SVG Icon Maker transforms raster images into vibrant, production-ready SVG files using the @neplex/vectorizer package and VTracer technology. The skill preserves color fidelity while intelligently removing backgrounds through 4-corner flood fill, protecting inner details like eyes and fine features. It generates timestamped output folders containing the SVG icon, reference image, and preview PNG for easy comparison. Developers and designers benefit from configurable parameters like colorPrecision (1-8), layerDifference, and filterSpeckle to balance color accuracy against file size and simplicity. Setup requires installing @neplex/vectorizer and sharp, then running the conversion script with your raster image path.\nGenerate SVG icons from PNG images\nCreate scalable graphics for web applications\nConvert logos and designs into SVG format\nAutomate the creation of icons from raster images",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/heroygt/skills --skill svg-icon-maker`\n`git clone https://github.com/heroygt/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "svg-icon-maker#main-content",
+      "svg-icon-maker#overview",
+      "svg-icon-maker#setup",
+      "svg-icon-maker#examples",
+      "svg-icon-maker#tools",
+      "svg-icon-maker#mcp",
+      "svg-icon-maker#related",
+      "html-to-image",
+      "image-to-text",
+      "image-to-svg"
+    ],
+    "overview_vi": "SVG Icon Maker transforms raster images into vibrant, production-ready SVG files using the @neplex/vectorizer package and VTracer technology. The skill preserves color fidelity while intelligently removing backgrounds through 4-corner flood fill, protecting inner details like eyes and fine features. It generates timestamped output folders containing the SVG icon, reference image, and preview PNG for easy comparison. Developers and designers benefit from configurable parameters like colorPrecision (1-8), layerDifference, and filterSpeckle to balance color accuracy against file size and simplicity. Setup requires installing @neplex/vectorizer and sharp, then running the conversion script with your raster image path.\nGenerate SVG icons from PNG images\nCreate scalable graphics for web applications\nConvert logos and designs into SVG format\nAutomate the creation of icons from raster images",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/heroygt/skills --skill svg-icon-maker`\n`git clone https://github.com/heroygt/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:06.885399Z",
+    "http_status": 200,
+    "content_hash": "7bf930ccff571d5a58a38dd6fa3339b88b2e1e7e8fe67d412ccb3a6661e73180",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\svg-icon-maker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\svg-icon-maker.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SVG Icon Maker: Raster to Vector Conversion",
+  "short_description_vi": "We build custom AI skills and automations for B2B companies."
+}

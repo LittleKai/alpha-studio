@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hybrid-cli-agent",
+  "slug": "hybrid-cli-agent",
+  "name": "Hybrid-CLI-Agent",
+  "headline": "Hybrid-CLI-Agent - Multi-Agent CLI Orchestrator",
+  "short_description": "Hybrid-CLI-Agent is a multi-agent CLI orchestrator that combines Claude Code, Gemini CLI, and OpenRouter to automate operations tasks. It enables operations teams to cut costs by ~90% without sacrificing quality. The skill integrates with existing CLI tools and workflows, providing a flexible and cost-effective solution for AI engineering.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "SneezeGUI",
+  "install_command": "git clone https://github.com/SneezeGUI/Hybrid-CLI-Agent.git",
+  "source_repo_url": "https://github.com/SneezeGUI/Hybrid-CLI-Agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "gemini-api",
+    "claude",
+    "cli-app",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "Hybrid-CLI-Agent is a multi-agent orchestrator that routes tasks to the most cost-effective AI model: Gemini (free tier) for reading and summarizing large volumes of logs and documentation, Claude for complex reasoning and code review, and OpenRouter for specialized models and second opinions. It works as both a standalone CLI tool and integrates with Claude Code via MCP, allowing natural language task delegation. The system uses a supervisor pattern where Gemini handles heavy context processing at no cost while Claude performs high-value decision-making, reducing overall AI API spending by approximately 90% without sacrificing output quality. Operations teams, developers, and engineering managers benefit from dramatically lower costs while maintaining access to precise reasoning and comprehensive codebase analysis.\nAnalyze large error logs and documentation using free Gemini tier, then have Claude identify root causes\nDraft code implementations with Gemini review-supervised by Claude before deployment\nResearch deprecated API usage across codebases using Gemini's free heavy-reading capacity\nPerform security-focused code reviews with multi-model consensus between Claude, Gemini, and OpenRouter models",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SneezeGUI/Hybrid-CLI-Agent`",
+    "usage": "```\nAct as a Hybrid-CLI-Agent. Use Claude Code for precise reasoning, Gemini CLI for large context, and OpenRouter to orchestrate the following task: [TASK]. Use the following existing CLI tools: [TOOLS]. Provide a step-by-step plan to automate this task, explaining how each tool will be used and how they integrate together.\n```\nCopy\n\n```\n# Hybrid-CLI-Agent Task Automation Plan",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hybrid-cli-agent#main-content",
+      "hybrid-cli-agent#overview",
+      "hybrid-cli-agent#setup",
+      "hybrid-cli-agent#examples",
+      "hybrid-cli-agent#tools",
+      "hybrid-cli-agent#mcp",
+      "hybrid-cli-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Hybrid-CLI-Agent is a multi-agent orchestrator that routes tasks to the most cost-effective AI model: Gemini (free tier) for reading and summarizing large volumes of logs and documentation, Claude for complex reasoning and code review, and OpenRouter for specialized models and second opinions. It works as both a standalone CLI tool and integrates with Claude Code via MCP, allowing natural language task delegation. The system uses a supervisor pattern where Gemini handles heavy context processing at no cost while Claude performs high-value decision-making, reducing overall AI API spending by approximately 90% without sacrificing output quality. Operations teams, developers, and engineering managers benefit from dramatically lower costs while maintaining access to precise reasoning and comprehensive codebase analysis.\nAnalyze large error logs and documentation using free Gemini tier, then have Claude identify root causes\nDraft code implementations with Gemini review-supervised by Claude before deployment\nResearch deprecated API usage across codebases using Gemini's free heavy-reading capacity\nPerform security-focused code reviews with multi-model consensus between Claude, Gemini, and OpenRouter models",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SneezeGUI/Hybrid-CLI-Agent`",
+    "usage_vi": "```\nAct as a Hybrid-CLI-Agent. Use Claude Code for precise reasoning, Gemini CLI for large context, and OpenRouter to orchestrate the following task: [TASK]. Use the following existing CLI tools: [TOOLS]. Provide a step-by-step plan to automate this task, explaining how each tool will be used and how they integrate together.\n```\nCopy\n\n```\n# Hybrid-CLI-Agent Task Automation Plan"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:06.978428Z",
+    "http_status": 200,
+    "content_hash": "b9d9ce59e1bfb4637c90643264ca09811bd4df7b5ece53a32a67527e680f48d9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hybrid-cli-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hybrid-cli-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hybrid-CLI-Agent - Multi-Agent CLI Orchestrator",
+  "short_description_vi": "Hybrid-CLI-Agent is a multi-agent CLI orchestrator that combines Claude Code, Gemini CLI, and OpenRouter to automate operations tasks. It enables operations teams to cut costs by ~90% without sacrificing quality. The skill integrates with existing CLI tools and workflows, providing a flexible and cost-effective solution for AI engineering."
+}

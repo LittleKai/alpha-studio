@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codexia",
+  "slug": "codexia",
+  "name": "browser-use",
+  "headline": "Codexia - Code Automation Toolkit",
+  "short_description": "Codexia is a GUI and toolkit for Codex CLI and Claude Code. It provides a file tree, prompt notepad, and git worktree. It helps developers automate code generation and management tasks. It integrates with git workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "milisp",
+  "install_command": "git clone https://github.com/milisp/codexia.git",
+  "source_repo_url": "https://github.com/milisp/codexia",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "ollama",
+    "codex-ide",
+    "awesome",
+    "codex",
+    "claude-code",
+    "codex-ui",
+    "gpt-5-codex",
+    "codex-desktop",
+    "codex-gui",
+    "openai",
+    "agentic-ai",
+    "mcp",
+    "openai-codex",
+    "ai",
+    "gpt-oss",
+    "chatgpt",
+    "codex-cli",
+    "openai-codex-cli",
+    "mcp-client"
+  ],
+  "sections": {
+    "overview": "Codexia is a multi-session GUI application built on Tauri and React that extends Codex CLI capabilities for developers working with Claude Code and AI agents. It provides an integrated file tree browser, prompt notepad, and git worktree management to streamline code generation workflows. The tool supports real-time streaming responses, multi-session chat contexts, and session persistence, enabling developers to manage multiple AI-assisted coding tasks simultaneously. Codexia integrates directly with git workflows, allowing teams to automate code generation while maintaining version control. It solves the problem of managing complex AI-assisted development tasks by centralizing file navigation, prompt management, and git operations in a single interface.\nManage multiple coding sessions seamlessly with full context and history.\nUtilize Git worktree support to prevent accidental changes and maintain project integrity.\nPreview and edit various file formats directly from the File Tree for efficient workflow.\nMonitor usage and costs in real-time with the integrated analytics dashboard.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/milisp/codexia`",
+    "usage": "```\nUse Codexia to automate the following task: [TASK_DESCRIPTION]. Follow these steps in Codexia: 1) Open the [FILE_TREE/PROMPT_NOTEPAD] to review the current state. 2) Identify the files or components that need changes based on [REQUIREMENTS]. 3) Use the [CODE_GENERATION/EDITING_TOOLS] to implement the changes. 4) Validate the changes by running [TESTS/CHECKS] in the terminal. 5) Commit the changes to a new git worktree named [BRANCH_NAME] with a message: '[COMMIT_MESSAGE]'.\n```\nCopy\n\n```\n### Codexia Automation Report: Adding Authentication Middleware\n\n**Task Initiated:** Adding JWT authentication middleware to the `/api/v1` routes in the `ecommerce-backend` project.\n\n**Step 1: File Tree Review**\nI opened Codexia's file tree and navigated to `/src/api/v1`. The current structure includes:\n- `routes/` (6 files)\n- `controllers/` (3 files)\n- `middlewares/` (empty)\n- `models/` (4 files)\n\n**Step 2: Requirements Analysis**\nThe new middleware must:\n- Validate JWT tokens from the `Authorization: Bearer <token>` header\n- Attach the decoded user payload to `req.user`\n- Reject requests with invalid/expired tokens (401 status)\n- Log failed attempts to `/var/log/auth_errors.log`\n\n**Step 3: Implementation**\nUsing Codexia's prompt notepad, I drafted the middleware in `/src/api/v1/middlewares/auth.js`:\n```javascript\nconst jwt = require('jsonwebtoken');\nconst fs = require('fs');\n\nconst authenticateJWT = (req, res, next) => {\n  const authHeader = req.headers['authorization'];\n  const token = authHeader && authHeader.split(' ')[1];\n\n  if (!token) return res.sendStatus(401);\n\n  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {\n    if (err) {\n      fs.appendFile('/var/log/auth_errors.log', `Failed auth: ${err.message}\\n`, () => {});\n      return res.sendStatus(403);\n    }\n    req.user = user;\n    next();\n  });\n};\n\nmodule.exports = authenticateJWT;\n```\n\n**Step 4: Validation**\nI ran the test suite in Codexia's integrated terminal:\n```bash\nnpm test -- --grep \"authentication\"\n```\nAll 8 authentication tests passed (400ms total). I manually verified:\n- Valid token → 200 OK with user payload\n- Missing token → 401 Unauthorized\n- Invalid token → 403 Forbidden + log entry\n\n**Step 5: Git Worktree Commit**\nCommitted changes to a new worktree `feature/auth-middleware` with message:\n\"feat(middleware): add JWT authentication middleware for /api/v1 routes\"\n\n**Files Modified:**\n- `/src/api/v1/middlewares/auth.js` (new)\n- `/src/api/v1/routes/userRoutes.js` (updated to use middleware)\n- `/src/api/v1/routes/productRoutes.js` (updated to use middleware)\n\n**Next Steps:**\n1. Push the worktree to GitHub: `git push origin feature/auth-middleware`\n2. Create a PR and request review from @security-team\n3. Update API documentation in `/docs/auth.md`\n\n**Codexia Session Duration:** 12 minutes | **Lines of Code Added:** 34\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codexia#main-content",
+      "codexia#overview",
+      "codexia#setup",
+      "codexia#examples",
+      "codexia#tools",
+      "codexia#mcp",
+      "codexia#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Codexia is a multi-session GUI application built on Tauri and React that extends Codex CLI capabilities for developers working with Claude Code and AI agents. It provides an integrated file tree browser, prompt notepad, and git worktree management to streamline code generation workflows. The tool supports real-time streaming responses, multi-session chat contexts, and session persistence, enabling developers to manage multiple AI-assisted coding tasks simultaneously. Codexia integrates directly with git workflows, allowing teams to automate code generation while maintaining version control. It solves the problem of managing complex AI-assisted development tasks by centralizing file navigation, prompt management, and git operations in a single interface.\nManage multiple coding sessions seamlessly with full context and history.\nUtilize Git worktree support to prevent accidental changes and maintain project integrity.\nPreview and edit various file formats directly from the File Tree for efficient workflow.\nMonitor usage and costs in real-time with the integrated analytics dashboard.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/milisp/codexia`",
+    "usage_vi": "```\nUse Codexia to automate the following task: [TASK_DESCRIPTION]. Follow these steps in Codexia: 1) Open the [FILE_TREE/PROMPT_NOTEPAD] to review the current state. 2) Identify the files or components that need changes based on [REQUIREMENTS]. 3) Use the [CODE_GENERATION/EDITING_TOOLS] to implement the changes. 4) Validate the changes by running [TESTS/CHECKS] in the terminal. 5) Commit the changes to a new git worktree named [BRANCH_NAME] with a message: '[COMMIT_MESSAGE]'.\n```\nCopy\n\n```\n### Codexia Automation Report: Adding Authentication Middleware\n\n**Task Initiated:** Adding JWT authentication middleware to the `/api/v1` routes in the `ecommerce-backend` project.\n\n**Step 1: File Tree Review**\nI opened Codexia's file tree and navigated to `/src/api/v1`. The current structure includes:\n- `routes/` (6 files)\n- `controllers/` (3 files)\n- `middlewares/` (empty)\n- `models/` (4 files)\n\n**Step 2: Requirements Analysis**\nThe new middleware must:\n- Validate JWT tokens from the `Authorization: Bearer <token>` header\n- Attach the decoded user payload to `req.user`\n- Reject requests with invalid/expired tokens (401 status)\n- Log failed attempts to `/var/log/auth_errors.log`\n\n**Step 3: Implementation**\nUsing Codexia's prompt notepad, I drafted the middleware in `/src/api/v1/middlewares/auth.js`:\n```javascript\nconst jwt = require('jsonwebtoken');\nconst fs = require('fs');\n\nconst authenticateJWT = (req, res, next) => {\n  const authHeader = req.headers['authorization'];\n  const token = authHeader && authHeader.split(' ')[1];\n\n  if (!token) return res.sendStatus(401);\n\n  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {\n    if (err) {\n      fs.appendFile('/var/log/auth_errors.log', `Failed auth: ${err.message}\\n`, () => {});\n      return res.sendStatus(403);\n    }\n    req.user = user;\n    next();\n  });\n};\n\nmodule.exports = authenticateJWT;\n```\n\n**Step 4: Validation**\nI ran the test suite in Codexia's integrated terminal:\n```bash\nnpm test -- --grep \"authentication\"\n```\nAll 8 authentication tests passed (400ms total). I manually verified:\n- Valid token → 200 OK with user payload\n- Missing token → 401 Unauthorized\n- Invalid token → 403 Forbidden + log entry\n\n**Step 5: Git Worktree Commit**\nCommitted changes to a new worktree `feature/auth-middleware` with message:\n\"feat(middleware): add JWT authentication middleware for /api/v1 routes\"\n\n**Files Modified:**\n- `/src/api/v1/middlewares/auth.js` (new)\n- `/src/api/v1/routes/userRoutes.js` (updated to use middleware)\n- `/src/api/v1/routes/productRoutes.js` (updated to use middleware)\n\n**Next Steps:**\n1. Push the worktree to GitHub: `git push origin feature/auth-middleware`\n2. Create a PR and request review from @security-team\n3. Update API documentation in `/docs/auth.md`\n\n**Codexia Session Duration:** 12 minutes | **Lines of Code Added:** 34\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:54:58.281782Z",
+    "http_status": 200,
+    "content_hash": "d76b6da4605f24ad3f28e42b9fd2850e5371e386d89bfd4820a112dbacb67a3c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codexia.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codexia.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Codexia - Code Automation Toolkit",
+  "short_description_vi": "Codexia is a GUI and toolkit for Codex CLI and Claude Code. It provides a file tree, prompt notepad, and git worktree. It helps developers automate code generation and management tasks. It integrates with git workflows and supports Claude agents."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/humanizer-ru",
+  "slug": "humanizer-ru",
+  "name": "Humanizer Ru",
+  "headline": "Humanizer RU: Remove AI Text Markers in Russian",
+  "short_description": "Claude Code skill that removes AI-generated text markers from Russian language content, transforming formal, stilted writing into natural, human-sounding text.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "smixs",
+  "install_command": "git clone https://github.com/smixs/humanizer-ru.git",
+  "source_repo_url": "https://github.com/smixs/humanizer-ru",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Humanizer RU is a Claude Code skill designed to detect and eliminate 21 patterns of AI-generated text in Russian, including bureaucratic language, overused vocabulary, structural repetition, and characteristic chatbot artifacts. The skill identifies issues like passive voice overuse, formulaic transitions, weasel words, and artificial tone, then transforms the text into authentic, naturally-written Russian. It covers formal writing problems such as nominalization, genitive chains, and missing copulas, alongside structural patterns like false ranges and synonym cycling. Users paste Russian text into Claude Code and receive humanized output that reads as genuine human communication rather than machine-generated content.\nTransform AI-written marketing copy and product descriptions into conversational Russian prose\nRemove formal bureaucratic language from business communications and emails\nHumanize AI-generated blog posts and article content for Russian audiences\nEdit machine-generated technical documentation to sound more natural and accessible",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/smixs/humanizer-ru`",
+    "usage": "```\nAct as a humanizer for Russian text. Remove any AI-generated text markers, make the text sound more natural, and ensure it flows well. Here is the text to humanize: [TEXT].\n```\nCopy\n\n```\n# Humanized Russian Text\n\n**Original Text:**\n\n\"В связи с высокой конкуренцией на рынке, наша компания решила внедрить новые стратегии для увеличения продаж. Мы провели анализ данных и выявили ключевые тенденции, которые помогут нам достичь поставленных целей.\"\n\n**Humanized Text:**\n\nВ условиях высокой конкуренции на рынке наша компания решила внедрить новые стратегии для увеличения продаж. Мы провели анализ данных и выявили ключевые тенденции, которые помогут нам достичь поставленных целей. Например, мы заметили, что клиенты чаще всего обращают внимание на качество продукции и уровень сервиса. Поэтому мы планируем усилить работу в этих направлениях.\n\n**Key Changes:**\n- Убраны формальные и шаблонные фразы.\n- Добавлены конкретные примеры и детали.\n- Текст стал более естественным и менее «роботоподобным».\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "humanizer-ru#main-content",
+      "humanizer-ru#overview",
+      "humanizer-ru#setup",
+      "humanizer-ru#examples",
+      "humanizer-ru#tools",
+      "humanizer-ru#mcp",
+      "humanizer-ru#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Humanizer RU là một skill Claude Code được thiết kế để phát hiện và loại bỏ 21 dạng mẫu văn bản do AI tạo ra trong tiếng Nga, bao gồm ngôn ngữ hành chính, từ vựng bị lạm dụng, cấu trúc lặp đi lặp lại và các lỗi đặc trưng của chatbot. Skill này nhận diện các vấn đề như lạm dụng thể bị động, các cụm từ chuyển ý rập khuôn, từ ngữ mơ hồ (weasel words) và giọng điệu nhân tạo, sau đó chuyển đổi văn bản thành tiếng Nga tự nhiên và chuẩn xác. Công cụ xử lý tốt các lỗi viết trang trọng như danh từ hóa (nominalization), chuỗi sở hữu cách (genitive chains), thiếu hệ từ (missing copulas), cũng như các lỗi cấu trúc như khoảng giá trị giả lập (false ranges) và xoay vòng từ đồng nghĩa (synonym cycling). Người dùng chỉ cần dán văn bản tiếng Nga vào Claude Code và nhận lại kết quả đã được tối ưu hóa tự nhiên như người viết thực thụ thay vì do máy tạo ra.\nChuyển đổi nội dung marketing và mô tả sản phẩm do AI viết thành văn phong tiếng Nga trò chuyện tự nhiên\nLoại bỏ ngôn từ hành chính cứng nhắc trong email và giao tiếp công việc\nTối ưu hóa các bài blog và nội dung bài viết do AI tạo ra cho độc giả Nga\nBiên tập lại tài liệu kỹ thuật do máy dịch để trở nên tự nhiên và dễ tiếp cận hơn",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/smixs/humanizer-ru`",
+    "usage_vi": "```\nAct as a humanizer for Russian text. Remove any AI-generated text markers, make the text sound more natural, and ensure it flows well. Here is the text to humanize: [TEXT].\n```\nSao chép\n\n```\n# Văn bản tiếng Nga đã được tối ưu hóa\n\n**Văn bản gốc:**\n\n\"В связи с высокой конкуренцией на рынке, наша компания решила внедрить новые стратегии для увеличения продаж. Мы провели анализ данных и выявили ключевые тенденции, которые помогут нам достичь поставленных целей.\"\n\n**Văn bản đã tối ưu hóa:**\n\nВ условиях высокой конкуренции на рынке наша компания решила внедрить новые стратегии для увеличения продаж. Мы провели анализ данных и выявили ключевые тенденции, которые помогут нам достичь поставленных целей. Например, мы заметили, что клиенты чаще всего обращают внимание на качество продукции и уровень сервиса. Поэтому мы планируем усилить работу в этих направлениях.\n\n**Các thay đổi chính:**\n- Loại bỏ các cụm từ trang trọng và rập khuôn.\n- Bổ sung các ví dụ và chi tiết cụ thể.\n- Văn bản trở nên tự nhiên hơn và bớt mang cảm giác \"máy móc\".\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:25.490962Z",
+    "http_status": 200,
+    "content_hash": "41ac7ce5ee38ff29b7166c0fb9f4e48b736cf1f66f3f6a7937f3662b475a63d4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\humanizer-ru.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\humanizer-ru.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Humanizer RU: Loại bỏ dấu vết văn bản AI trong tiếng Nga",
+  "short_description_vi": "Skill Claude Code giúp loại bỏ các dấu vết văn bản do AI tạo ra trong nội dung tiếng Nga, biến văn phong trang trọng, gượng gạo thành văn bản tự nhiên như người viết."
+}

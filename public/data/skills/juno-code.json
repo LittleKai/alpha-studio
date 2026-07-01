@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/juno-code",
+  "slug": "juno-code",
+  "name": "browser-use",
+  "headline": "Juno-code - AI Code Automation",
+  "short_description": "Automate code tasks with AI agents like Claude Code, Codex, and Cursor. Juno-code handles one task per iteration, tracks progress, and commits to git. Ideal for operations teams managing backlogs and repetitive coding tasks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "askbudi",
+  "install_command": "git clone https://github.com/askbudi/juno-code.git",
+  "source_repo_url": "https://github.com/askbudi/juno-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "autonomous-agents",
+    "claude-code",
+    "opencode",
+    "cursor-cli",
+    "backlog-ralph",
+    "ralph-loop",
+    "codex-cli",
+    "ralph-wiggum",
+    "ai-agent"
+  ],
+  "sections": {
+    "overview": "juno-code brings the iterative Ralph Method to production-grade code automation. It runs AI agents in controlled loops—exactly N iterations, until tasks complete, or unlimited—giving you precision over overcooking or undercooking work. Tasks are tracked via NDJSON-based kanban with dependency graphs, git commit links, and full traceability instead of fragile markdown files. Switch between Claude, Codex, Gemini, and Pi with one flag, run tasks in parallel with dependency awareness, and integrate custom hooks at any lifecycle point. Every change maps to a git commit, so you can time-travel through your codebase and let AI search history instead of re-reading everything.\nAutomate large coding backlogs with dependency-aware parallel execution\nRun iterative bug fixes and refactoring across multiple AI models\nScale repetitive code generation tasks without manual oversight\nTrack every code change to a specific task and git commit for full auditability",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/askbudi/juno-code`",
+    "usage": "```\nI need to automate a coding task using Juno-code. Here's the task: [TASK]. The codebase is in [PROGRAMMING_LANGUAGE] and is located at [REPOSITORY_URL]. Please provide a step-by-step plan to complete this task, including any necessary code changes and git commands.\n```\nCopy\n\n```\n# Task Automation Plan",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "juno-code#main-content",
+      "juno-code#overview",
+      "juno-code#setup",
+      "juno-code#examples",
+      "juno-code#tools",
+      "juno-code#mcp",
+      "juno-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "juno-code brings the iterative Ralph Method to production-grade code automation. It runs AI agents in controlled loops—exactly N iterations, until tasks complete, or unlimited—giving you precision over overcooking or undercooking work. Tasks are tracked via NDJSON-based kanban with dependency graphs, git commit links, and full traceability instead of fragile markdown files. Switch between Claude, Codex, Gemini, and Pi with one flag, run tasks in parallel with dependency awareness, and integrate custom hooks at any lifecycle point. Every change maps to a git commit, so you can time-travel through your codebase and let AI search history instead of re-reading everything.\nAutomate large coding backlogs with dependency-aware parallel execution\nRun iterative bug fixes and refactoring across multiple AI models\nScale repetitive code generation tasks without manual oversight\nTrack every code change to a specific task and git commit for full auditability",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/askbudi/juno-code`",
+    "usage_vi": "```\nI need to automate a coding task using Juno-code. Here's the task: [TASK]. The codebase is in [PROGRAMMING_LANGUAGE] and is located at [REPOSITORY_URL]. Please provide a step-by-step plan to complete this task, including any necessary code changes and git commands.\n```\nCopy\n\n```\n# Task Automation Plan"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:04:23.643927Z",
+    "http_status": 200,
+    "content_hash": "d1f3afcd9f5126d1869c321c710642309aa56e363213f214674bf92cf12e1a26",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\juno-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\juno-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Juno-code - AI Code Automation",
+  "short_description_vi": "Automate code tasks with AI agents like Claude Code, Codex, and Cursor. Juno-code handles one task per iteration, tracks progress, and commits to git. Ideal for operations teams managing backlogs and repetitive coding tasks."
+}

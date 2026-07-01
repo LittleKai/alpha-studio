@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/langgraph-dev-navigator",
+  "slug": "langgraph-dev-navigator",
+  "name": "browser-use",
+  "headline": "langgraph-dev-navigator: AI Agent Development",
+  "short_description": "An opinionated development framework for building production-ready AI agents with LangGraph. It grounds AI coding assistants (Cursor, Windsurf, Cline) and guides them to use local, official documentation, ensuring reliable, secure, and observable agentic workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "botingw",
+  "install_command": "git clone https://github.com/botingw/langgraph-dev-navigator.git",
+  "source_repo_url": "https://github.com/botingw/langgraph-dev-navigator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "langgraph",
+    "mcp-server",
+    "ai-coding-assistant",
+    "windsurf",
+    "rag",
+    "langchain",
+    "codex-cli",
+    "cursor",
+    "cline",
+    "ai-agent",
+    "graph-rag"
+  ],
+  "sections": {
+    "overview": "The langgraph-dev-navigator is an opinionated development framework designed to facilitate the creation of production-ready AI agents using LangGraph. This skill empowers developers and AI practitioners by grounding AI coding assistants like Cursor, Windsurf, and Cline in local, official documentation. By ensuring that these agents utilize reliable and secure resources, the framework promotes observable workflows that enhance overall productivity and efficiency in AI automation tasks. One of the key benefits of the langgraph-dev-navigator is its ability to streamline the development process for AI agents. With an implementation time of just 30 minutes, this skill allows teams to quickly set up their workflows without extensive overhead. Although specific time savings are not quantified, the structured approach it offers can lead to significant reductions in development time by minimizing errors and enhancing the reliability of the coding assistants. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in creating and deploying AI automation solutions. By utilizing langgraph-dev-navigator, teams can ensure that their AI agents are not only effective but also compliant with best practices in security and observability. The skill is well-suited for those looking to enhance their workflow automation processes and integrate AI agents into their existing systems seamlessly. In practical terms, the langgraph-dev-navigator can be used in various scenarios, such as developing chatbots, automating data analysis, or creating intelligent customer support systems. The intermediate complexity of this skill means that users should have a foundational understanding of AI development principles. As organizations increasingly adopt AI-first workflows, integrating this skill can significantly enhance the capabilities of teams, allowing them to leverage AI automation more effectively in their projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/botingw/langgraph-dev-navigator`",
+    "usage": "```\nBuild a production-ready AI agent using LangGraph for [USE_CASE]. Follow the LangGraph Developer Navigator framework to: 1) Design a stateful workflow with [COMPONENTS], 2) Integrate [TOOLS/APIs] using official documentation, 3) Implement error handling and observability with [METRICS/TRACES], and 4) Package the agent for deployment. Use the official LangGraph docs at https://langchain-ai.github.io/langgraph/ as your primary reference. Return a complete implementation with comments explaining each decision.\n```\nCopy\n\n```\n### Production-Ready AI Agent for Customer Support Triage\n\n**Workflow Design:**\nThe agent uses a stateful graph with three nodes: `router`, `classifier`, and `resolver`. The `router` node analyzes incoming customer queries using a lightweight LLM call to determine intent (billing, technical, product feedback). The `classifier` node enriches the state with metadata (priority, sentiment score) using a local Hugging Face model (`distilbert-base-uncased-emotion`). The `resolver` node dispatches to one of three subgraphs:\n- **Billing:** Calls Stripe API via `stripe-python==5.24.0` (official SDK) to fetch invoice history and generate a summary.\n- **Technical:** Queries a local vector store (FAISS) built from official product documentation (v2.1.3) using `langchain-community==0.0.36`.\n- **Feedback:** Stores the query in a PostgreSQL table (`customer_feedback`) with a timestamp and sentiment score.\n\n**Error Handling & Observability:**\n- All nodes log to OpenTelemetry with trace IDs propagated across the graph.\n- Failed API calls (e.g., Stripe rate limits) trigger a retry with exponential backoff and alert via Slack webhook (using `slack_sdk==3.21.0`).\n- Metrics are exposed via Prometheus (`langgraph_metrics_total{node=\"resolver\",status=\"success\"}`).\n\n**Deployment:**\nThe agent is packaged as a Docker container with a FastAPI endpoint (`/v1/triage`) and a health check (`/health`). Environment variables are validated at startup using `pydantic==2.6.4`. The container includes a `langgraph` CLI tool for local testing:\n```bash\nlanggraph test --config ./config.yaml --input ./test_queries.jsonl\n```\n\n**State Schema:**\n```python\ntypedef State(TypedDict):\n    query: str\n    intent: Literal[\"billing\", \"technical\", \"feedback\"]\n    priority: int  # 1-5\n    sentiment: float  # -1 to 1\n    resolved: bool\n    trace_id: str\n```\n\n**Why This Works:**\n- **Reliability:** Official SDKs and local documentation reduce dependency on external APIs.\n- **Security:** No external LLM calls for sensitive data (billing queries are resolved locally).\n- **Observability:** Traces and metrics enable debugging in production without guesswork.\n- **Scalability:** The subgraph pattern allows adding new intents (e.g., \"refunds\") without modifying core logic.\n\n**Next Steps:**\n1. Deploy the agent to a Kubernetes cluster with 2 replicas and horizontal pod autoscaling.\n2. Monitor the `langgraph_metrics_total` dashboard for resolver latency spikes.\n3. Add a `feedback_analysis` subgraph to auto-generate monthly reports using `pandas==2.2.1`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "langgraph-dev-navigator#main-content",
+      "langgraph-dev-navigator#overview",
+      "langgraph-dev-navigator#setup",
+      "langgraph-dev-navigator#examples",
+      "langgraph-dev-navigator#tools",
+      "langgraph-dev-navigator#mcp",
+      "langgraph-dev-navigator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The langgraph-dev-navigator is an opinionated development framework designed to facilitate the creation of production-ready AI agents using LangGraph. This skill empowers developers and AI practitioners by grounding AI coding assistants like Cursor, Windsurf, and Cline in local, official documentation. By ensuring that these agents utilize reliable and secure resources, the framework promotes observable workflows that enhance overall productivity and efficiency in AI automation tasks. One of the key benefits of the langgraph-dev-navigator is its ability to streamline the development process for AI agents. With an implementation time of just 30 minutes, this skill allows teams to quickly set up their workflows without extensive overhead. Although specific time savings are not quantified, the structured approach it offers can lead to significant reductions in development time by minimizing errors and enhancing the reliability of the coding assistants. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in creating and deploying AI automation solutions. By utilizing langgraph-dev-navigator, teams can ensure that their AI agents are not only effective but also compliant with best practices in security and observability. The skill is well-suited for those looking to enhance their workflow automation processes and integrate AI agents into their existing systems seamlessly. In practical terms, the langgraph-dev-navigator can be used in various scenarios, such as developing chatbots, automating data analysis, or creating intelligent customer support systems. The intermediate complexity of this skill means that users should have a foundational understanding of AI development principles. As organizations increasingly adopt AI-first workflows, integrating this skill can significantly enhance the capabilities of teams, allowing them to leverage AI automation more effectively in their projects.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/botingw/langgraph-dev-navigator`",
+    "usage_vi": "```\nBuild a production-ready AI agent using LangGraph for [USE_CASE]. Follow the LangGraph Developer Navigator framework to: 1) Design a stateful workflow with [COMPONENTS], 2) Integrate [TOOLS/APIs] using official documentation, 3) Implement error handling and observability with [METRICS/TRACES], and 4) Package the agent for deployment. Use the official LangGraph docs at https://langchain-ai.github.io/langgraph/ as your primary reference. Return a complete implementation with comments explaining each decision.\n```\nCopy\n\n```\n### Production-Ready AI Agent for Customer Support Triage\n\n**Workflow Design:**\nThe agent uses a stateful graph with three nodes: `router`, `classifier`, and `resolver`. The `router` node analyzes incoming customer queries using a lightweight LLM call to determine intent (billing, technical, product feedback). The `classifier` node enriches the state with metadata (priority, sentiment score) using a local Hugging Face model (`distilbert-base-uncased-emotion`). The `resolver` node dispatches to one of three subgraphs:\n- **Billing:** Calls Stripe API via `stripe-python==5.24.0` (official SDK) to fetch invoice history and generate a summary.\n- **Technical:** Queries a local vector store (FAISS) built from official product documentation (v2.1.3) using `langchain-community==0.0.36`.\n- **Feedback:** Stores the query in a PostgreSQL table (`customer_feedback`) with a timestamp and sentiment score.\n\n**Error Handling & Observability:**\n- All nodes log to OpenTelemetry with trace IDs propagated across the graph.\n- Failed API calls (e.g., Stripe rate limits) trigger a retry with exponential backoff and alert via Slack webhook (using `slack_sdk==3.21.0`).\n- Metrics are exposed via Prometheus (`langgraph_metrics_total{node=\"resolver\",status=\"success\"}`).\n\n**Deployment:**\nThe agent is packaged as a Docker container with a FastAPI endpoint (`/v1/triage`) and a health check (`/health`). Environment variables are validated at startup using `pydantic==2.6.4`. The container includes a `langgraph` CLI tool for local testing:\n```bash\nlanggraph test --config ./config.yaml --input ./test_queries.jsonl\n```\n\n**State Schema:**\n```python\ntypedef State(TypedDict):\n    query: str\n    intent: Literal[\"billing\", \"technical\", \"feedback\"]\n    priority: int  # 1-5\n    sentiment: float  # -1 to 1\n    resolved: bool\n    trace_id: str\n```\n\n**Why This Works:**\n- **Reliability:** Official SDKs and local documentation reduce dependency on external APIs.\n- **Security:** No external LLM calls for sensitive data (billing queries are resolved locally).\n- **Observability:** Traces and metrics enable debugging in production without guesswork.\n- **Scalability:** The subgraph pattern allows adding new intents (e.g., \"refunds\") without modifying core logic.\n\n**Next Steps:**\n1. Deploy the agent to a Kubernetes cluster with 2 replicas and horizontal pod autoscaling.\n2. Monitor the `langgraph_metrics_total` dashboard for resolver latency spikes.\n3. Add a `feedback_analysis` subgraph to auto-generate monthly reports using `pandas==2.2.1`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:26:44.491538Z",
+    "http_status": 200,
+    "content_hash": "3e9bdd5298b3a2359256e02f8a52ca342d0d569160832cc6ae60a6cc24899444",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langgraph-dev-navigator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langgraph-dev-navigator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "langgraph-dev-navigator: AI Agent Development",
+  "short_description_vi": "An opinionated development framework for building production-ready AI agents with LangGraph. It grounds AI coding assistants (Cursor, Windsurf, Cline) and guides them to use local, official documentation, ensuring reliable, secure, and observable agentic workflows."
+}

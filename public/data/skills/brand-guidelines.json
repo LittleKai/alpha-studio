@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/brand-guidelines",
+  "slug": "brand-guidelines",
+  "name": "Brand Guidelines",
+  "headline": "brand-guidelines: Brand Management",
+  "short_description": "The brand-guidelines skill for Claude Code automates the management and retrieval of brand assets and guidelines. It streamlines the process, ensuring consistency and efficiency in brand communication.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "anthropics",
+  "install_command": "git clone https://github.com/anthropics/skills.git",
+  "source_repo_url": "https://github.com/anthropics/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The brand-guidelines skill for Claude Code is designed to automate the management and retrieval of brand assets, ensuring that teams have easy access to the latest guidelines and materials. This skill simplifies the workflow by centralizing brand information, allowing users to quickly locate logos, color palettes, typography, and other essential elements. By integrating this skill into your AI agent, you can enhance brand consistency across all platforms and communications. One of the key benefits of the brand-guidelines skill is the significant time savings it offers. Rather than manually searching for brand assets or sifting through outdated documents, users can instantly access the most current guidelines with a simple command. This not only speeds up the workflow but also reduces the risk of using incorrect assets, which can lead to brand inconsistency and confusion. This skill is particularly beneficial for developers, product managers, and marketing teams who need to maintain brand integrity while working on various projects. For example, a marketing team can utilize the brand-guidelines skill to quickly pull up the latest logo files during a campaign launch, ensuring that all promotional materials align with brand standards. Similarly, developers can refer to the guidelines while designing user interfaces, maintaining a cohesive look and feel across applications. Implementation of the brand-guidelines skill is straightforward, making it accessible even for those with limited technical expertise. It fits seamlessly into AI-first workflows, enhancing productivity by integrating brand management into existing processes. With over 2400 installations, this skill is a proven solution for teams looking to optimize their brand management efforts.\nQuickly retrieve brand logos for use in marketing campaigns to ensure brand consistency.\nAutomatically apply brand colors in product design to maintain visual identity.\nEasily access typography guidelines for web development to enhance user experience.\nProvide a centralized repository for brand assets, facilitating collaboration among remote teams.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anthropics/skills`",
+    "usage": "```\nRetrieve the brand guidelines for [BRAND_NAME]. Provide the primary logo files in SVG and PNG formats, the brand color palette in HEX and RGB values, and the typography guidelines including font families and sizes. Additionally, include the brand voice and tone guidelines for [MEDIA_TYPE] content.\n```\nCopy\n\n```\nFor the brand 'EcoVibe', here are the requested brand guidelines:\n\n**Logo Files:**\n- Primary Logo (SVG): [Link to SVG file]\n- Primary Logo (PNG): [Link to PNG file]\n- Secondary Logo (SVG): [Link to SVG file]\n- Secondary Logo (PNG): [Link to PNG file]\n\n**Color Palette:**\n- Primary Color: #2E8B57 (RGB: 46, 139, 87)\n- Secondary Color: #4CAF50 (RGB: 76, 175, 80)\n- Accent Color: #8BC34A (RGB: 139, 195, 74)\n\n**Typography Guidelines:**\n- Primary Font: 'Montserrat' (Sans-Serif)\n  - Headings: 24px, Bold\n  - Body Text: 16px, Regular\n- Secondary Font: 'Roboto' (Sans-Serif)\n  - Subheadings: 18px, Semi-Bold\n  - Captions: 12px, Regular\n\n**Brand Voice and Tone Guidelines for Social Media Content:**\n- Voice: Friendly, Informative, and Engaging\n- Tone: Conversational, Supportive, and Encouraging\n- Key Messaging: Focus on sustainability, eco-friendly practices, and community involvement.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "brand-guidelines#main-content",
+      "brand-guidelines#overview",
+      "brand-guidelines#setup",
+      "brand-guidelines#examples",
+      "brand-guidelines#tools",
+      "brand-guidelines#mcp",
+      "brand-guidelines#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill brand-guidelines dành cho Claude Code được thiết kế để tự động hóa việc quản lý và truy xuất các tài nguyên thương hiệu, đảm bảo các đội ngũ dễ dàng tiếp cận các quy chuẩn và tài liệu mới nhất. Skill này đơn giản hóa quy trình làm việc bằng cách tập trung hóa thông tin thương hiệu, cho phép người dùng nhanh chóng tìm thấy logo, bảng màu, kiểu chữ (typography) và các yếu tố thiết yếu khác. Bằng cách tích hợp skill này vào AI agent của bạn, bạn có thể nâng cao tính nhất quán của thương hiệu trên mọi nền tảng và phương tiện truyền thông. Một trong những lợi ích chính của skill brand-guidelines là khả năng tiết kiệm thời gian đáng kể. Thay vì phải tìm kiếm thủ công các tài nguyên thương hiệu hoặc lục lọi các tài liệu cũ kỹ, người dùng có thể truy cập ngay lập tức vào các quy chuẩn mới nhất chỉ bằng một câu lệnh đơn giản. Điều này không chỉ đẩy nhanh tiến độ công việc mà còn giảm thiểu rủi ro sử dụng sai tài nguyên, vốn có thể dẫn đến sự thiếu nhất quán và gây nhầm lẫn về thương hiệu. Skill này đặc biệt hữu ích cho các developer, product manager và đội ngũ marketing cần duy trì tính toàn vẹn của thương hiệu khi làm việc trên nhiều dự án khác nhau. Ví dụ, một đội ngũ marketing có thể sử dụng skill brand-guidelines để nhanh chóng lấy các file logo mới nhất khi khởi chạy chiến dịch, đảm bảo mọi tài liệu quảng bá đều tuân thủ các tiêu chuẩn thương hiệu. Tương tự, các developer có thể tham khảo quy chuẩn này khi thiết kế giao diện người dùng, duy trì diện mạo và trải nghiệm (look and feel) đồng nhất trên toàn bộ ứng dụng. Việc triển khai skill brand-guidelines rất đơn giản, giúp những người có ít chuyên môn kỹ thuật vẫn có thể dễ dàng tiếp cận. Skill này tích hợp mượt mà vào các quy trình làm việc ưu tiên AI (AI-first workflow), nâng cao năng suất nhờ việc đưa quản lý thương hiệu vào các quy trình sẵn có. Với hơn 2400 lượt cài đặt, skill này là một giải pháp đã được chứng minh hiệu quả cho các đội ngũ muốn tối ưu hóa hoạt động quản lý thương hiệu của mình.\nNhanh chóng truy xuất logo thương hiệu để sử dụng trong các chiến dịch marketing nhằm đảm bảo tính nhất quán của thương hiệu.\nTự động áp dụng màu sắc thương hiệu trong thiết kế sản phẩm để duy trì nhận diện hình ảnh.\nDễ dàng truy cập các quy chuẩn kiểu chữ (typography) trong phát triển web để nâng cao trải nghiệm người dùng.\nCung cấp một kho lưu trữ tập trung cho các tài nguyên thương hiệu, hỗ trợ cộng tác hiệu quả giữa các đội ngũ làm việc từ xa.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/anthropics/skills`",
+    "usage_vi": "```\nTruy xuất bộ quy chuẩn thương hiệu cho [BRAND_NAME]. Cung cấp các file logo chính ở định dạng SVG và PNG, bảng màu thương hiệu dưới dạng giá trị HEX và RGB, cùng các quy chuẩn kiểu chữ (typography) bao gồm font family và size. Ngoài ra, hãy đính kèm hướng dẫn về giọng điệu và phong cách (voice and tone) thương hiệu cho nội dung trên [MEDIA_TYPE].\n```\nCopy\n\n```\nDưới đây là bộ quy chuẩn thương hiệu được yêu cầu cho thương hiệu 'EcoVibe':\n\n**Các file Logo:**\n- Logo chính (SVG): [Link to SVG file]\n- Logo chính (PNG): [Link to PNG file]\n- Logo phụ (SVG): [Link to SVG file]\n- Logo phụ (PNG): [Link to PNG file]\n\n**Bảng màu:**\n- Màu chính: #2E8B57 (RGB: 46, 139, 87)\n- Màu phụ: #4CAF50 (RGB: 76, 175, 80)\n- Màu nhấn: #8BC34A (RGB: 139, 195, 74)\n\n**Quy chuẩn Kiểu chữ (Typography):**\n- Font chữ chính: 'Montserrat' (Sans-Serif)\n  - Tiêu đề (Headings): 24px, Bold\n  - Văn bản chính (Body Text): 16px, Regular\n- Font chữ phụ: 'Roboto' (Sans-Serif)\n  - Tiêu đề phụ (Subheadings): 18px, Semi-Bold\n  - Chú thích (Captions): 12px, Regular\n\n**Hướng dẫn Giọng điệu và Phong cách (Voice and Tone) Thương hiệu cho Nội dung Mạng xã hội:**\n- Giọng điệu (Voice): Thân thiện, Cung cấp thông tin và Lôi cuốn\n- Phong cách (Tone): Cởi mở/Trò chuyện, Hỗ trợ và Khuyến khích\n- Thông điệp chính: Tập trung vào tính bền vững, các hoạt động thân thiện với môi trường và sự tham gia của cộng đồng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:13:48.772722Z",
+    "http_status": 200,
+    "content_hash": "f62206bde13bca3e44e016c42aa05ce21888ba41b22e83701fb3e3feef39b0e1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\brand-guidelines.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\brand-guidelines.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "brand-guidelines: Quản lý thương hiệu",
+  "short_description_vi": "Skill brand-guidelines dành cho Claude Code tự động hóa việc quản lý và truy xuất các tài nguyên cũng như bộ quy chuẩn thương hiệu. Nhờ đó, quy trình được tối ưu hóa, đảm bảo tính nhất quán và hiệu quả trong truyền thông thương hiệu."
+}

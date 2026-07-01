@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillsbench",
+  "slug": "skillsbench",
+  "name": "SkillsBench",
+  "headline": "SkillsBench - Evaluate Skill Performance",
+  "short_description": "SkillsBench evaluates skill performance and agent effectiveness. Operations teams use it to optimize workflows. It connects to Claude agents and PDDL language.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "benchflow-ai",
+  "install_command": "git clone https://github.com/benchflow-ai/skillsbench.git",
+  "source_repo_url": "https://github.com/benchflow-ai/skillsbench",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "SkillsBench is a benchmarking framework designed to evaluate the performance and effectiveness of AI agent skills. It provides operations teams with tools to measure how well their agents execute tasks and optimize their automation workflows. The framework integrates with AI agents and supports structured task evaluation, enabling teams to identify performance bottlenecks and improve agent reliability. By running standardized benchmarks, teams can validate skill quality before deploying agents to production environments. SkillsBench helps organizations ensure their AI-driven automation meets performance requirements and delivers consistent results.\nMeasuring AI agent skill performance before production deployment\nOptimizing automation workflows by identifying underperforming tasks\nValidating task quality and agent reliability across teams\nBenchmarking agent effectiveness across different skill implementations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/benchflow-ai/skillsbench`",
+    "usage": "```\nEvaluate the performance of the [AGENT_NAME] agent in handling [WORKFLOW_NAME] workflows over the past [TIME_PERIOD]. Identify the top 3 areas where the agent is excelling and the top 3 areas needing improvement. Provide specific metrics and suggest actionable improvements for each area of improvement.\n```\nCopy\n\n```\nAfter evaluating the performance of the 'Customer Support Agent' in handling 'Ticket Resolution' workflows over the past month, here are the key findings:\n\n**Top 3 Areas of Excellence:**\n1. **Response Time:** The agent consistently resolves 85% of tickets within the SLA of 4 hours, with an average response time of 1.5 hours.\n2. **Customer Satisfaction:** The agent maintains a customer satisfaction score of 92%, which is 15% higher than the team average.\n3. **Knowledge Base Utilization:** The agent effectively uses the knowledge base to resolve 70% of tickets without escalation.\n\n**Top 3 Areas for Improvement:**\n1. **Escalation Rate:** The agent escalates 20% of tickets, which is higher than the team average of 12%. Suggested improvement: Implement a pre-escalation checklist to ensure all possible resolution steps are attempted.\n2. **Follow-up Response Time:** The agent's follow-up response time averages 6 hours, which is above the SLA. Suggested improvement: Set up automated reminders for follow-up responses.\n3. **Ticket Categorization Accuracy:** The agent miscategorizes 15% of tickets. Suggested improvement: Provide additional training on ticket categorization guidelines and best practices.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillsbench#main-content",
+      "skillsbench#overview",
+      "skillsbench#setup",
+      "skillsbench#examples",
+      "skillsbench#tools",
+      "skillsbench#mcp",
+      "skillsbench#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SkillsBench là một benchmarking framework được thiết kế để đánh giá hiệu suất và tính hiệu quả của các kỹ năng AI agent. Framework này cung cấp cho các đội ngũ vận hành các công cụ để đo lường mức độ thực thi tác vụ của agent và tối ưu hóa các workflow tự động hóa của họ. Nó tích hợp trực tiếp với các AI agent và hỗ trợ đánh giá tác vụ có cấu trúc, giúp các đội ngũ xác định các nút thắt cổ chai về hiệu suất và nâng cao độ tin cậy của agent. Bằng cách chạy các bài benchmark tiêu chuẩn hóa, các đội ngũ có thể xác minh chất lượng kỹ năng trước khi triển khai agent lên môi trường production. SkillsBench giúp các tổ chức đảm bảo quy trình tự động hóa bằng AI của họ đáp ứng các yêu cầu về hiệu suất và mang lại kết quả nhất quán.\nĐo lường hiệu suất kỹ năng của AI agent trước khi triển khai lên production\nTối ưu hóa workflow tự động hóa bằng cách xác định các tác vụ kém hiệu quả\nXác minh chất lượng tác vụ và độ tin cậy của agent giữa các đội ngũ\nBenchmark tính hiệu quả của agent trên các cấu hình kỹ năng khác nhau",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/benchflow-ai/skillsbench`",
+    "usage_vi": "```\nĐánh giá hiệu suất của agent [AGENT_NAME] trong việc xử lý các workflow [WORKFLOW_NAME] trong [TIME_PERIOD] qua. Xác định 3 lĩnh vực hàng đầu mà agent đang thực hiện xuất sắc và 3 lĩnh vực cần cải thiện. Cung cấp các chỉ số cụ thể và đề xuất các giải pháp cải thiện khả thi cho từng lĩnh vực cần khắc phục.\n```\nCopy\n\n```\nSau khi đánh giá hiệu suất của 'Customer Support Agent' trong việc xử lý các workflow 'Ticket Resolution' trong tháng qua, dưới đây là các kết quả chính thu được:\n\n**3 Lĩnh vực Xuất sắc Hàng đầu:**\n1. **Thời gian Phản hồi:** Agent liên tục giải quyết 85% số ticket trong thời gian SLA là 4 giờ, với thời gian phản hồi trung bình là 1,5 giờ.\n2. **Sự Hài lòng của Khách hàng:** Agent duy trì điểm số hài lòng của khách hàng ở mức 92%, cao hơn 15% so với mức trung bình của đội ngũ.\n3. **Tận dụng Knowledge Base:** Agent sử dụng hiệu quả knowledge base để giải quyết 70% số ticket mà không cần chuyển tiếp (escalation).\n\n**3 Lĩnh vực Cần Cải thiện Hàng đầu:**\n1. **Tỷ lệ Chuyển tiếp (Escalation Rate):** Agent chuyển tiếp 20% số ticket, cao hơn mức trung bình của đội ngũ là 12%. Đề xuất cải thiện: Triển khai một checklist trước khi chuyển tiếp để đảm bảo đã thử mọi bước giải quyết có thể.\n2. **Thời gian Phản hồi Tiếp theo (Follow-up):** Thời gian phản hồi follow-up trung bình của agent là 6 giờ, vượt quá thời gian SLA. Đề xuất cải thiện: Thiết lập lời nhắc tự động cho các phản hồi follow-up.\n3. **Độ chính xác Phân loại Ticket:** Agent phân loại sai 15% số ticket. Đề xuất cải thiện: Cung cấp thêm tài liệu đào tạo về quy chuẩn phân loại ticket và các best practice.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:37:55.517422Z",
+    "http_status": 200,
+    "content_hash": "62030dc46bd1916529642271da58c781571159e438dd61d24dd8e0f20338ba5f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsbench.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsbench.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SkillsBench - Đánh giá Hiệu suất Kỹ năng",
+  "short_description_vi": "SkillsBench đánh giá hiệu suất kỹ năng và tính hiệu quả của agent. Các đội ngũ vận hành sử dụng công cụ này để tối ưu hóa workflow. Nó kết nối trực tiếp với các Claude agent và ngôn ngữ PDDL."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sf-microclimates",
+  "slug": "sf-microclimates",
+  "name": "SF Microclimates API",
+  "headline": "SF Microclimates API - Hyperlocal Weather Data",
+  "short_description": "Access hyperlocal weather data for 50 San Francisco neighborhoods. Free API with no key required. Ideal for operations teams managing logistics, field services, or outdoor events. Integrates with Claude Code and Clawdbot Skills.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "solo-founders",
+  "install_command": "git clone https://github.com/solo-founders/sf-microclimates.git",
+  "source_repo_url": "https://github.com/solo-founders/sf-microclimates",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "SF Microclimates provides real-time weather and air quality data for all 50 San Francisco neighborhoods, aggregating data from 150+ outdoor sensors instead of relying on distant airport readings. Each neighborhood returns temperature, humidity, PM2.5 concentration, and EPA-calculated AQI in a single JSON response. The API is completely free, requires no authentication, and integrates directly with Claude Code and Clawdbot Skills. Operations teams managing logistics, field services, or outdoor events can query individual neighborhoods or all 50 at once to make location-specific decisions. The service uses Cloudflare Workers for caching and PurpleAir sensors for accurate, hyperlocal air quality monitoring.\nOperations teams optimizing logistics routes based on real neighborhood weather conditions\nField service dispatch deciding which teams need weather-appropriate gear per microclimate\nEvent planners checking hyperlocal conditions across multiple SF neighborhoods\nHome automation triggering actions based on actual neighborhood temperature, not city average",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/solo-founders/sf-microclimates`",
+    "usage": "```\nRetrieve the current microclimate conditions for [NEIGHBORHOOD] in San Francisco, including temperature, humidity, wind speed, and precipitation. Compare these conditions to the city-wide average for today. Format the response as a concise report with bullet points for key differences and potential impacts on outdoor operations. Example: 'Analyze the microclimate in the Mission District for a logistics team planning deliveries this afternoon.'\n```\nCopy\n\n```\n### San Francisco Microclimate Report: Mission District (As of 2:45 PM PST)\n\n**Current Conditions:**\n- Temperature: 68°F (2°C warmer than SF average)\n- Humidity: 52% (5% lower than SF average)\n- Wind Speed: 8 mph (gusts to 12 mph) from the northwest\n- Precipitation: 0% chance today (vs. 15% SF average)\n\n**Key Differences from City Average:**\n- The Mission is consistently 1-3°F warmer due to urban heat island effect, particularly in the afternoon.\n- Wind patterns are more variable here due to the corridor between Twin Peaks and Bernal Heights, creating gusts that may affect lightweight deliveries.\n- Lower humidity reduces risk of equipment condensation but increases static electricity concerns for sensitive electronics.\n\n**Operational Recommendations:**\n- Schedule deliveries between 3-5 PM to avoid peak heat and wind gusts.\n- Use moisture-resistant packaging for electronics, despite low precipitation probability.\n- Deploy additional staff for outdoor setup at 4 PM due to wind gusts up to 12 mph.\n\n*Data sourced from SF Microclimates API (free tier). Next update available in 30 minutes.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sf-microclimates#main-content",
+      "sf-microclimates#overview",
+      "sf-microclimates#setup",
+      "sf-microclimates#examples",
+      "sf-microclimates#tools",
+      "sf-microclimates#mcp",
+      "sf-microclimates#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SF Microclimates provides real-time weather and air quality data for all 50 San Francisco neighborhoods, aggregating data from 150+ outdoor sensors instead of relying on distant airport readings. Each neighborhood returns temperature, humidity, PM2.5 concentration, and EPA-calculated AQI in a single JSON response. The API is completely free, requires no authentication, and integrates directly with Claude Code and Clawdbot Skills. Operations teams managing logistics, field services, or outdoor events can query individual neighborhoods or all 50 at once to make location-specific decisions. The service uses Cloudflare Workers for caching and PurpleAir sensors for accurate, hyperlocal air quality monitoring.\nOperations teams optimizing logistics routes based on real neighborhood weather conditions\nField service dispatch deciding which teams need weather-appropriate gear per microclimate\nEvent planners checking hyperlocal conditions across multiple SF neighborhoods\nHome automation triggering actions based on actual neighborhood temperature, not city average",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/solo-founders/sf-microclimates`",
+    "usage_vi": "```\nRetrieve the current microclimate conditions for [NEIGHBORHOOD] in San Francisco, including temperature, humidity, wind speed, and precipitation. Compare these conditions to the city-wide average for today. Format the response as a concise report with bullet points for key differences and potential impacts on outdoor operations. Example: 'Analyze the microclimate in the Mission District for a logistics team planning deliveries this afternoon.'\n```\nCopy\n\n```\n### San Francisco Microclimate Report: Mission District (As of 2:45 PM PST)\n\n**Current Conditions:**\n- Temperature: 68°F (2°C warmer than SF average)\n- Humidity: 52% (5% lower than SF average)\n- Wind Speed: 8 mph (gusts to 12 mph) from the northwest\n- Precipitation: 0% chance today (vs. 15% SF average)\n\n**Key Differences from City Average:**\n- The Mission is consistently 1-3°F warmer due to urban heat island effect, particularly in the afternoon.\n- Wind patterns are more variable here due to the corridor between Twin Peaks and Bernal Heights, creating gusts that may affect lightweight deliveries.\n- Lower humidity reduces risk of equipment condensation but increases static electricity concerns for sensitive electronics.\n\n**Operational Recommendations:**\n- Schedule deliveries between 3-5 PM to avoid peak heat and wind gusts.\n- Use moisture-resistant packaging for electronics, despite low precipitation probability.\n- Deploy additional staff for outdoor setup at 4 PM due to wind gusts up to 12 mph.\n\n*Data sourced from SF Microclimates API (free tier). Next update available in 30 minutes.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:11.403791Z",
+    "http_status": 200,
+    "content_hash": "fe9ef76daedfd170b601e69fee61b63d7219275368099c6622559814de226580",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sf-microclimates.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sf-microclimates.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SF Microclimates API - Hyperlocal Weather Data",
+  "short_description_vi": "Access hyperlocal weather data for 50 San Francisco neighborhoods. Free API with no key required. Ideal for operations teams managing logistics, field services, or outdoor events. Integrates with Claude Code and Clawdbot Skills."
+}

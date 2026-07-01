@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-getting-started-with-github-copilot",
+  "slug": "skills-getting-started-with-github-copilot",
+  "name": "Skills Getting Started With Github Copilot",
+  "headline": "Getting Started with GitHub Copilot",
+  "short_description": "Kickstart your journey with GitHub Copilot through this hands-on exercise. Learn to use AI-powered coding assistance to enhance your development workflow and improve productivity.",
+  "tier": "Silver",
+  "category": "GrowthCS",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "ebndev",
+  "install_command": "claude install ebndev/skills-getting-started-with-github-copilot",
+  "source_repo_url": "https://github.com/ebndev/skills-getting-started-with-github-copilot",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "productivity",
+    "GitHub Copilot",
+    "AI coding",
+    "JavaScript",
+    "developer tools"
+  ],
+  "sections": {
+    "overview": "Getting Started with GitHub Copilot is a self-paced exercise designed to introduce developers to GitHub Copilot's AI-powered coding assistance capabilities. The skill walks through practical, hands-on exercises that demonstrate how to leverage Copilot to enhance your development workflow. You'll learn to use AI suggestions to write code faster and improve productivity. This exercise is ideal for developers new to Copilot who want to understand how to integrate AI assistance into their daily coding practices.\nIntegrating GitHub Copilot into daily coding tasks\nUsing AI suggestions to write JavaScript functions\nImproving code quality with AI-driven insights\nAccelerating project development timelines",
+    "setup": "Terminal\nCopy\n`claude install ebndev/skills-getting-started-with-github-copilot`\n`git clone https://github.com/ebndev/skills-getting-started-with-github-copilot`\n1. Install the GitHub Copilot extension in your IDE (VS Code, JetBrains, etc.)\n2. Sign in with your GitHub account\n3. Accept the terms and conditions",
+    "usage": "```\nI'm a [ROLE] at [COMPANY] working on [PROJECT]. I'm new to GitHub Copilot. Walk me through setting it up and using it for [PROGRAMMING_LANGUAGE]. Provide clear steps and examples for common tasks like generating code, explaining code, and refactoring.\n```\nCopy\n\n```\n# Getting Started with GitHub Copilot\n\n- **Code Generation**: Start typing a function name and see suggestions\n- **Code Explanation**: Highlight code and ask Copilot to explain it\n- **Refactoring**: Ask Copilot to improve or optimize your code\n\n```python\n# Start typing a function and see suggestions\n\ndef calculate_average(numbers):\n    # Copilot suggests the rest\n    return sum(numbers) / len(numbers)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "skills-getting-started-with-github-copilot#main-content",
+      "skills-getting-started-with-github-copilot#overview",
+      "skills-getting-started-with-github-copilot#setup",
+      "skills-getting-started-with-github-copilot#examples",
+      "skills-getting-started-with-github-copilot#tools",
+      "skills-getting-started-with-github-copilot#mcp",
+      "skills-getting-started-with-github-copilot#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "\"Getting Started with GitHub Copilot\" là một bài thực hành tự học được thiết kế để giới thiệu cho các lập trình viên về khả năng hỗ trợ lập trình bằng AI của GitHub Copilot. Skill này sẽ dẫn dắt qua các bài tập thực hành thực tế, minh họa cách tận dụng Copilot để nâng cao quy trình phát triển của bạn. Bạn sẽ học cách sử dụng các gợi ý từ AI để viết code nhanh hơn và nâng cao năng suất. Bài thực hành này rất lý tưởng cho các lập trình viên mới làm quen với Copilot và muốn tìm hiểu cách tích hợp hỗ trợ AI vào công việc lập trình hàng ngày.\nTích hợp GitHub Copilot vào các tác vụ lập trình hàng ngày\nSử dụng gợi ý từ AI để viết các hàm JavaScript\nNâng cao chất lượng code với các thông tin chi tiết (insights) do AI cung cấp\nĐẩy nhanh tiến độ phát triển dự án",
+    "setup_vi": "Terminal\nCopy\n`claude install ebndev/skills-getting-started-with-github-copilot`\n`git clone https://github.com/ebndev/skills-getting-started-with-github-copilot`\n1. Cài đặt extension GitHub Copilot trong IDE của bạn (VS Code, JetBrains, v.v.)\n2. Đăng nhập bằng tài khoản GitHub\n3. Chấp nhận các điều khoản và điều kiện",
+    "usage_vi": "```\nTôi là một [ROLE] tại [COMPANY] đang làm việc trong dự án [PROJECT]. Tôi mới sử dụng GitHub Copilot. Hãy hướng dẫn tôi setup và sử dụng công cụ này cho [PROGRAMMING_LANGUAGE]. Cung cấp các bước rõ ràng và ví dụ cho các tác vụ phổ biến như tạo code, giải thích code và refactoring.\n```\nCopy\n\n```\n# Bắt đầu với GitHub Copilot\n\n- **Code Generation**: Bắt đầu nhập tên hàm để xem các gợi ý\n- **Code Explanation**: Bôi đen đoạn code và yêu cầu Copilot giải thích\n- **Refactoring**: Yêu cầu Copilot cải thiện hoặc tối ưu hóa code của bạn\n\n```python\n# Bắt đầu nhập một hàm và xem các gợi ý\n\ndef calculate_average(numbers):\n    # Copilot sẽ gợi ý phần còn lại\n    return sum(numbers) / len(numbers)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:51.430261Z",
+    "http_status": 200,
+    "content_hash": "71523851cbf875104e5158f8850cf20c604b6fd92c22aeaaad49a0b09a5f0be7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-getting-started-with-github-copilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-getting-started-with-github-copilot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bắt đầu với GitHub Copilot",
+  "short_description_vi": "Khởi đầu hành trình của bạn với GitHub Copilot qua bài thực hành thực tế này. Học cách sử dụng công cụ hỗ trợ lập trình bằng AI để tối ưu hóa quy trình phát triển và nâng cao năng suất."
+}

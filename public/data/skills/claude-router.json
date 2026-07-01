@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-router",
+  "slug": "claude-router",
+  "name": "browser-use",
+  "headline": "Intelligent Claude model routing tool for developers",
+  "short_description": "Intelligent model orchestration for Claude Code - routes queries to optimal Claude model (Haiku/Sonnet/Opus) based on complexity. It also includes many more features. If this project is working well for you and would like to support me, just help spread the word. Thanks!",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "0xrdan",
+  "install_command": "git clone https://github.com/0xrdan/claude-router.git",
+  "source_repo_url": "https://github.com/0xrdan/claude-router",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "llm",
+    "cost-optimization",
+    "claude",
+    "model-routing"
+  ],
+  "sections": {
+    "overview": "Claude Router is a native Claude Code plugin that intelligently routes queries to the most cost-effective Claude model for the task at hand. It uses zero-latency rule-based classification with LLM fallback to determine whether a query is best handled by Haiku, Sonnet, or Opus, automatically optimizing for both performance and cost. Simple queries route to Haiku for ~80% cost savings, while complex analysis escalates to Opus. The plugin includes manual override commands, usage statistics, a persistent knowledge system, and an Opus Orchestrator that delegates subtasks to cheaper models, delivering estimated 40% additional savings on complex workflows. Installation is one-command via the Claude Code plugin marketplace with no configuration required.\nReduce API costs on simple coding queries by routing to Haiku instead of Opus\nBalance cost and quality for typical coding tasks by automatically routing to Sonnet\nOptimize complex architecture design and analysis with smart delegation between models\nView usage statistics and cost breakdowns per query and model",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/0xrdan/claude-router`",
+    "usage": "```\nAct as a claude-router for [TASK_DESCRIPTION]. Analyze the complexity of this task and recommend the optimal Claude model (Haiku/Sonnet/Opus) to handle it. Justify your recommendation based on [CRITERIA: e.g., depth of analysis, speed requirements, output quality]. If the task involves multiple steps, specify how to break it down across models for efficiency.\n```\nCopy\n\n```\nFor the task of 'Analyze the Q3 financial performance of Acme Corp and draft a 10-page report with visualizations,' I recommend using **Claude Opus** for the following reasons:\n\n1. **Depth of Analysis**: The task requires synthesizing financial data, identifying trends, and generating insights—all of which demand Opus's advanced reasoning capabilities. Haiku would struggle with the nuance, and Sonnet might lack the depth for a comprehensive report.\n\n2. **Output Quality**: Opus excels at structured, high-quality outputs, which is critical for a 10-page report. It can handle complex formatting, integrate visualizations (e.g., charts, tables), and ensure coherence across sections.\n\n3. **Efficiency Breakdown**:\n   - **Step 1 (Opus)**: Parse and analyze the financial data (balance sheets, income statements, cash flow). Identify key metrics like revenue growth, profit margins, and debt-to-equity ratios.\n   - **Step 2 (Sonnet)**: Draft the initial report structure, including executive summary, key findings, and recommendations.\n   - **Step 3 (Haiku)**: Generate visualizations (e.g., bar charts for revenue trends, pie charts for expense breakdowns) and format the final document.\n\n**Why not Sonnet?** While Sonnet is capable, it may not deliver the same level of detail or handle the full scope of the task without additional iterations. Haiku is too limited for this use case.\n\n**Pro Tip**: If you're using this in Claude Code, pre-load the financial data into a variable (e.g., `financial_data = load_csv('q3_financials.csv')`) to speed up the analysis phase.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-router#main-content",
+      "claude-router#overview",
+      "claude-router#setup",
+      "claude-router#examples",
+      "claude-router#tools",
+      "claude-router#mcp",
+      "claude-router#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Router is a native Claude Code plugin that intelligently routes queries to the most cost-effective Claude model for the task at hand. It uses zero-latency rule-based classification with LLM fallback to determine whether a query is best handled by Haiku, Sonnet, or Opus, automatically optimizing for both performance and cost. Simple queries route to Haiku for ~80% cost savings, while complex analysis escalates to Opus. The plugin includes manual override commands, usage statistics, a persistent knowledge system, and an Opus Orchestrator that delegates subtasks to cheaper models, delivering estimated 40% additional savings on complex workflows. Installation is one-command via the Claude Code plugin marketplace with no configuration required.\nReduce API costs on simple coding queries by routing to Haiku instead of Opus\nBalance cost and quality for typical coding tasks by automatically routing to Sonnet\nOptimize complex architecture design and analysis with smart delegation between models\nView usage statistics and cost breakdowns per query and model",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/0xrdan/claude-router`",
+    "usage_vi": "```\nAct as a claude-router for [TASK_DESCRIPTION]. Analyze the complexity of this task and recommend the optimal Claude model (Haiku/Sonnet/Opus) to handle it. Justify your recommendation based on [CRITERIA: e.g., depth of analysis, speed requirements, output quality]. If the task involves multiple steps, specify how to break it down across models for efficiency.\n```\nCopy\n\n```\nFor the task of 'Analyze the Q3 financial performance of Acme Corp and draft a 10-page report with visualizations,' I recommend using **Claude Opus** for the following reasons:\n\n1. **Depth of Analysis**: The task requires synthesizing financial data, identifying trends, and generating insights—all of which demand Opus's advanced reasoning capabilities. Haiku would struggle with the nuance, and Sonnet might lack the depth for a comprehensive report.\n\n2. **Output Quality**: Opus excels at structured, high-quality outputs, which is critical for a 10-page report. It can handle complex formatting, integrate visualizations (e.g., charts, tables), and ensure coherence across sections.\n\n3. **Efficiency Breakdown**:\n   - **Step 1 (Opus)**: Parse and analyze the financial data (balance sheets, income statements, cash flow). Identify key metrics like revenue growth, profit margins, and debt-to-equity ratios.\n   - **Step 2 (Sonnet)**: Draft the initial report structure, including executive summary, key findings, and recommendations.\n   - **Step 3 (Haiku)**: Generate visualizations (e.g., bar charts for revenue trends, pie charts for expense breakdowns) and format the final document.\n\n**Why not Sonnet?** While Sonnet is capable, it may not deliver the same level of detail or handle the full scope of the task without additional iterations. Haiku is too limited for this use case.\n\n**Pro Tip**: If you're using this in Claude Code, pre-load the financial data into a variable (e.g., `financial_data = load_csv('q3_financials.csv')`) to speed up the analysis phase.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:38:42.380627Z",
+    "http_status": 200,
+    "content_hash": "5a9c57e454b9cc05779d07c3606ed10bd5f9d7d1d9ccba7ba6ae7c1ecf37a586",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-router.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-router.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Intelligent Claude model routing tool for developers",
+  "short_description_vi": "Intelligent model orchestration for Claude Code - routes queries to optimal Claude model (Haiku/Sonnet/Opus) based on complexity. It also includes many more features. If this project is working well for you and would like to support me, just help spread the word. Thanks!"
+}

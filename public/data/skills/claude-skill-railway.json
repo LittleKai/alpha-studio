@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-railway",
+  "slug": "claude-skill-railway",
+  "name": "Claude Skill Railway",
+  "headline": "Manage deployments with Claude Railway skill",
+  "short_description": "Manage Railway deployments via CLI. View project, environment, service, and deployment info. Verify deployment health and view logs using natural language. Ideal for operations teams automating deployment management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "mshumer",
+  "install_command": "git clone https://github.com/mshumer/claude-skill-railway.git",
+  "source_repo_url": "https://github.com/mshumer/claude-skill-railway",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Railway skill for Claude Code enables deployment management through natural language commands integrated into your IDE. Execute status checks, health verifications, and log filtering without leaving Claude Code—all commands automatically redact sensitive environment variables. Deploy with built-in health verification, switch between Railway projects, and access database shells directly. Operations teams and developers can automate routine deployment tasks, troubleshoot issues faster by filtering logs by error type or time range, and maintain visibility across multiple projects without context switching.\nCheck deployment status and recent build/deploy logs\nVerify deployment health and troubleshoot with error-filtered logs\nDeploy changes with automatic health verification\nSwitch between Railway projects and manage environment variables",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mshumer/claude-skill-railway`",
+    "usage": "```\nI need to manage my Railway deployments. Please help me with the following: [TASK]. My company is [COMPANY] and we operate in the [INDUSTRY] sector. Here is the relevant [DATA] I have: [DATA].\n```\nCopy\n\n```\n# Railway Deployment Management",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-railway#main-content",
+      "claude-skill-railway#overview",
+      "claude-skill-railway#setup",
+      "claude-skill-railway#examples",
+      "claude-skill-railway#tools",
+      "claude-skill-railway#mcp",
+      "claude-skill-railway#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Railway skill dành cho Claude Code cho phép quản lý deployment bằng các câu lệnh ngôn ngữ tự nhiên ngay trong IDE của bạn. Thực hiện kiểm tra trạng thái, verify health và lọc logs mà không cần rời khỏi Claude Code — tất cả các câu lệnh đều tự động ẩn các biến môi trường (environment variables) nhạy cảm. Thực hiện deploy với tính năng kiểm tra health tích hợp, chuyển đổi linh hoạt giữa các project Railway và truy cập trực tiếp vào database shell. Các đội ngũ operations và developer có thể tự động hóa các tác vụ deployment thường nhật, khắc phục sự cố nhanh hơn nhờ tính năng lọc logs theo loại lỗi hoặc khoảng thời gian, đồng thời dễ dàng theo dõi nhiều project mà không cần chuyển đổi ngữ cảnh (context switching).\nKiểm tra trạng thái deployment và logs build/deploy gần đây\nXác minh health của deployment và khắc phục sự cố bằng logs được lọc theo lỗi\nDeploy các thay đổi đi kèm tính năng tự động verify health\nChuyển đổi giữa các project Railway và quản lý các biến môi trường",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/mshumer/claude-skill-railway`",
+    "usage_vi": "```\nTôi cần quản lý các deployment trên Railway của mình. Vui lòng hỗ trợ tôi thực hiện công việc sau: [TASK]. Công ty của tôi là [COMPANY] và chúng tôi hoạt động trong lĩnh vực [INDUSTRY]. Dưới đây là thông tin [DATA] liên quan: [DATA].\n```\nCopy\n\n```\n# Quản lý Deployment Railway"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:01.910400Z",
+    "http_status": 200,
+    "content_hash": "d9aa1b211a3b56c13fa5219d85bed0f02bde7e43a35b36a7de803a8b42334caa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-railway.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-railway.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quản lý các deployment với Claude Railway skill",
+  "short_description_vi": "Quản lý các deployment trên Railway thông qua CLI. Xem thông tin project, environment, service và deployment. Xác minh trạng thái hoạt động (health check) của deployment và xem logs bằng ngôn ngữ tự nhiên. Giải pháp lý tưởng cho các đội ngũ operations muốn tự động hóa quy trình quản lý deployment."
+}

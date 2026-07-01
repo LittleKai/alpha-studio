@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/book-claude-code",
+  "slug": "book-claude-code",
+  "name": "browser-use",
+  "headline": "claude code for advanced developers",
+  "short_description": "Book Claude-Code automates code review and learning for developers. It benefits operations teams by integrating Claude's AI capabilities into their workflows. The skill connects to code repositories and learning management systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "sysnet4admin",
+  "install_command": "git clone https://github.com/sysnet4admin/_Book_Claude-Code.git",
+  "source_repo_url": "https://github.com/sysnet4admin/_Book_Claude-Code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "claude-code",
+    "agentic-ai",
+    "ai-agents",
+    "claude-desktop",
+    "prompt-engineering",
+    "multiagent",
+    "claude",
+    "prompting",
+    "ai-agent",
+    "claudecode"
+  ],
+  "sections": {
+    "overview": "This skill provides a structured four-week curriculum for mastering Claude Code, covering foundational setup, workflow strategies, and advanced optimization techniques. Each week includes daily lessons with code examples, PDF guides, and practical exercises designed for developers advancing their AI-assisted coding practices. Topics span Claude Code installation, prompt engineering, bootstrapping, test-driven development, code review, MCP integration, and multi-agent systems. The resource includes errata tracking across multiple editions and links to supplementary materials for hands-on learning.\nLearning Claude Code fundamentals from installation through advanced features\nImplementing project bootstrapping and automation with Claude Code\nMastering prompt engineering and context management for AI-assisted development\nIntegrating MCP (Model Context Protocol) into development workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sysnet4admin/_Book_Claude-Code`",
+    "usage": "```\nUse Claude-Code to [ACTION] for [PROJECT/PATH]. Follow these steps: 1) Review the codebase for [CRITERIA], 2) Identify [ISSUES/PATTERNS], 3) Suggest [IMPROVEMENTS/REFACTORINGS], 4) Generate [DOCUMENTATION/TESTS]. Focus on [PERFORMANCE/SECURITY/MAINTAINABILITY].\n```\nCopy\n\n```\nFor the open-source project 'EcoTrack' (a carbon footprint calculator), I used Claude-Code to review the Python codebase. The review revealed three critical issues: 1) A memory leak in the carbon emission calculation module where the Pandas DataFrame wasn't being properly cleared after processing large datasets, causing memory usage to spike from 200MB to 2GB during batch operations. The AI suggested implementing a context manager to handle DataFrame cleanup. 2) Inconsistent error handling across the API endpoints—some used custom exceptions while others relied on generic HTTP errors. The recommendation was to standardize on FastAPI's built-in exception handlers. 3) The Dockerfile lacked multi-stage builds, resulting in a 1.2GB final image. The AI proposed a three-stage build process that reduced the image size to 350MB while maintaining all dependencies. Additionally, it identified a security vulnerability in the JWT token generation where the secret key was hardcoded in the environment variables. The fix involved using AWS Secrets Manager for key rotation. The output included a refactored code snippet for the memory leak fix and a PR-ready commit message summarizing all changes. The entire process took 12 minutes compared to the manual review's estimated 3 hours.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "book-claude-code#main-content",
+      "book-claude-code#overview",
+      "book-claude-code#setup",
+      "book-claude-code#examples",
+      "book-claude-code#tools",
+      "book-claude-code#mcp",
+      "book-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill provides a structured four-week curriculum for mastering Claude Code, covering foundational setup, workflow strategies, and advanced optimization techniques. Each week includes daily lessons with code examples, PDF guides, and practical exercises designed for developers advancing their AI-assisted coding practices. Topics span Claude Code installation, prompt engineering, bootstrapping, test-driven development, code review, MCP integration, and multi-agent systems. The resource includes errata tracking across multiple editions and links to supplementary materials for hands-on learning.\nLearning Claude Code fundamentals from installation through advanced features\nImplementing project bootstrapping and automation with Claude Code\nMastering prompt engineering and context management for AI-assisted development\nIntegrating MCP (Model Context Protocol) into development workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sysnet4admin/_Book_Claude-Code`",
+    "usage_vi": "```\nUse Claude-Code to [ACTION] for [PROJECT/PATH]. Follow these steps: 1) Review the codebase for [CRITERIA], 2) Identify [ISSUES/PATTERNS], 3) Suggest [IMPROVEMENTS/REFACTORINGS], 4) Generate [DOCUMENTATION/TESTS]. Focus on [PERFORMANCE/SECURITY/MAINTAINABILITY].\n```\nCopy\n\n```\nFor the open-source project 'EcoTrack' (a carbon footprint calculator), I used Claude-Code to review the Python codebase. The review revealed three critical issues: 1) A memory leak in the carbon emission calculation module where the Pandas DataFrame wasn't being properly cleared after processing large datasets, causing memory usage to spike from 200MB to 2GB during batch operations. The AI suggested implementing a context manager to handle DataFrame cleanup. 2) Inconsistent error handling across the API endpoints—some used custom exceptions while others relied on generic HTTP errors. The recommendation was to standardize on FastAPI's built-in exception handlers. 3) The Dockerfile lacked multi-stage builds, resulting in a 1.2GB final image. The AI proposed a three-stage build process that reduced the image size to 350MB while maintaining all dependencies. Additionally, it identified a security vulnerability in the JWT token generation where the secret key was hardcoded in the environment variables. The fix involved using AWS Secrets Manager for key rotation. The output included a refactored code snippet for the memory leak fix and a PR-ready commit message summarizing all changes. The entire process took 12 minutes compared to the manual review's estimated 3 hours.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:49:43.825198Z",
+    "http_status": 200,
+    "content_hash": "fe8170440dfac2e09cc6cd09a10f01cabe5af8359d7da401b950119e37780388",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\book-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\book-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code for advanced developers",
+  "short_description_vi": "Book Claude-Code automates code review and learning for developers. It benefits operations teams by integrating Claude's AI capabilities into their workflows. The skill connects to code repositories and learning management systems."
+}

@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-observer",
+  "slug": "ai-observer",
+  "name": "Ai Observer",
+  "headline": "AI Observer: Unified Observability for Coding",
+  "short_description": "AI Observer provides unified local observability for AI coding assistants. It tracks token usage and other metrics for tools like Claude Code, Gemini CLI, and OpenAI Codex CLI. Self-hosted and OpenTelemetry-compatible, it integrates with existing observability stacks.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "tobilg",
+  "install_command": "git clone https://github.com/tobilg/ai-observer.git",
+  "source_repo_url": "https://github.com/tobilg/ai-observer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "opentelemetry",
+    "duckdb",
+    "observability",
+    "gemini-cli",
+    "codex-cli",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "AI Observer is a self-hosted, OpenTelemetry-compatible observability backend designed to monitor local AI coding tools like Claude Code, Gemini CLI, OpenAI Codex CLI, and GitHub Copilot. It tracks token usage, costs, API latency, error rates, and session activity across all your AI assistants in one unified dashboard with real-time updates. The tool runs as a single ~54MB binary with an embedded frontend, requiring zero external dependencies, and stores all telemetry data locally for complete privacy. Features include a drag-and-drop dashboard builder, real-time WebSocket updates, historical session import from local files, cost tracking with embedded pricing data across all supported models, and DuckDB-powered analytics for instant queries on large datasets.\nMonitor token usage and costs across multiple AI coding assistants\nTrack API latency and error rates for debugging tool performance\nImport and analyze historical session data from Claude, Codex, and Gemini\nBuild custom observability dashboards with real-time telemetry updates",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tobilg/ai-observer`",
+    "usage": "```\nGenerate a report for [AI_TOOL_NAME] usage over the last [TIME_PERIOD] days. Include total token consumption, top 5 projects by token usage, average response time per project, and any anomalies in error rates or latency. Compare this against the [BUDGET_LIMIT] token budget for the team. Suggest 3 optimizations to reduce costs while maintaining productivity.\n```\nCopy\n\n```\n### AI Tool Usage Report for Team Alpha (Period: May 1-15, 2024)\n\n**Summary Metrics**\n- Total tokens consumed: 1,247,890 (Budget: 1,500,000 - 17% remaining)\n- Average response time: 2.3s (Target: <3s)\n- Error rate: 0.8% (Target: <1%)\n\n**Top 5 Projects by Token Usage**\n1. **Project Phoenix** (456,780 tokens) - AI-assisted refactoring of legacy monolith\n2. **API Gateway Rewrite** (312,450 tokens) - OpenAPI spec generation and validation\n3. **Data Pipeline Optimization** (201,340 tokens) - SQL query generation and review\n4. **Frontend Migration** (145,670 tokens) - React component generation\n5. **Security Audit** (131,650 tokens) - Vulnerability detection and remediation\n\n**Anomaly Detection**\n- **Project Phoenix** showed a 40% spike in token usage on May 10 (67,890 tokens vs. daily avg of 32,450) - identified as bulk refactoring session for new feature branch.\n- **API Gateway Rewrite** had 3 consecutive errors on May 12 (error rate 2.1%) - resolved by updating OpenAPI spec validation rules.\n\n**Cost Optimization Recommendations**\n1. Implement token budget alerts at 80% consumption (currently triggers at 95%) to allow proactive adjustments.\n2. For Project Phoenix, enable context pruning for large refactoring sessions to reduce redundant token consumption.\n3. Schedule API Gateway Rewrite sessions during off-peak hours to avoid concurrent tool usage spikes.\n\n**Next Steps**\n- Review Project Phoenix's refactoring approach with senior engineers to identify opportunities for more efficient AI-assisted patterns.\n- Update OpenAPI validation rules based on the error patterns observed in the API Gateway Rewrite project.\n- Set up automated weekly reports to track progress against these optimizations.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-observer#main-content",
+      "ai-observer#overview",
+      "ai-observer#setup",
+      "ai-observer#examples",
+      "ai-observer#tools",
+      "ai-observer#mcp",
+      "ai-observer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI Observer là một observability backend dạng self-hosted, tương thích với OpenTelemetry, được thiết kế để giám sát các công cụ lập trình AI local như Claude Code, Gemini CLI, OpenAI Codex CLI và GitHub Copilot. Nó theo dõi lượng sử dụng token, chi phí, độ trễ API, tỷ lệ lỗi và hoạt động của session trên tất cả các trợ lý AI của bạn trong một dashboard thống nhất với các cập nhật theo thời gian thực. Công cụ này chạy dưới dạng một file binary duy nhất dung lượng ~54MB tích hợp sẵn frontend, không yêu cầu bất kỳ dependency bên ngoài nào, và lưu trữ tất cả dữ liệu telemetry local để đảm bảo quyền riêng tư tuyệt đối. Các tính năng nổi bật bao gồm trình dựng dashboard kéo thả, cập nhật thời gian thực qua WebSocket, import lịch sử session từ file local, theo dõi chi phí với dữ liệu giá tích hợp sẵn cho tất cả các mô hình được hỗ trợ, và phân tích dữ liệu dựa trên DuckDB giúp truy vấn tức thì trên các tập dữ liệu lớn.\n\nTheo dõi lượng sử dụng token và chi phí trên nhiều trợ lý lập trình AI khác nhau\nTheo dõi độ trễ API và tỷ lệ lỗi để debug hiệu năng công cụ\nImport và phân tích dữ liệu lịch sử session từ Claude, Codex và Gemini\nDựng dashboard observability tùy chỉnh với dữ liệu telemetry cập nhật theo thời gian thực",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/tobilg/ai-observer`",
+    "usage_vi": "```\nTạo báo cáo sử dụng [AI_TOOL_NAME] trong [TIME_PERIOD] ngày qua. Bao gồm tổng lượng tiêu thụ token, top 5 dự án sử dụng nhiều token nhất, thời gian phản hồi trung bình của mỗi dự án và bất kỳ điểm bất thường nào về tỷ lệ lỗi hoặc độ trễ. So sánh số liệu này với hạn mức ngân sách [BUDGET_LIMIT] token của đội ngũ. Đề xuất 3 phương án tối ưu hóa để giảm chi phí mà vẫn duy trì hiệu suất làm việc.\n```\nCopy\n\n```\n### Báo cáo sử dụng công cụ AI của Team Alpha (Giai đoạn: 1-15 tháng 5, 2024)\n\n**Chỉ số tổng quan**\n- Tổng lượng token đã tiêu thụ: 1.247.890 (Ngân sách: 1.500.000 - còn lại 17%)\n- Thời gian phản hồi trung bình: 2,3 giây (Mục tiêu: <3 giây)\n- Tỷ lệ lỗi: 0,8% (Mục tiêu: <1%)\n\n**Top 5 dự án theo mức sử dụng token**\n1. **Project Phoenix** (456.780 token) - Refactor hệ thống monolith cũ với sự hỗ trợ của AI\n2. **API Gateway Rewrite** (312.450 token) - Tạo và validate đặc tả OpenAPI (OpenAPI spec)\n3. **Data Pipeline Optimization** (201.340 token) - Tạo và review câu lệnh SQL\n4. **Frontend Migration** (145.670 token) - Tạo component React\n5. **Security Audit** (131.650 token) - Phát hiện và khắc phục lỗ hổng bảo mật\n\n**Phát hiện bất thường**\n- **Project Phoenix** ghi nhận lượng token tăng vọt 40% vào ngày 10 tháng 5 (67.890 token so với trung bình hàng ngày là 32.450) - được xác định là do phiên refactor hàng loạt cho một branch tính năng mới.\n- **API Gateway Rewrite** gặp 3 lỗi liên tiếp vào ngày 12 tháng 5 (tỷ lệ lỗi 2,1%) - đã được khắc phục bằng cách cập nhật quy tắc validate của OpenAPI spec.\n\n**Khuyến nghị tối ưu hóa chi phí**\n1. Thiết lập cảnh báo ngân sách token ở mức 80% tiêu thụ (hiện tại là 95%) để kịp thời điều chỉnh một cách chủ động.\n2. Đối với Project Phoenix, hãy bật tính năng loại bỏ bớt context (context pruning) trong các phiên refactor lớn để giảm tiêu thụ token thừa.\n3. Lên lịch thực hiện các phiên làm việc của API Gateway Rewrite vào khung giờ thấp điểm để tránh tình trạng lượng sử dụng công cụ tăng vọt cùng lúc.\n\n**Các bước tiếp theo**\n- Xem xét phương pháp refactor của Project Phoenix cùng với các senior engineer để tìm kiếm các giải pháp tối ưu hơn khi sử dụng AI.\n- Cập nhật các quy tắc validate OpenAPI dựa trên các mô hình lỗi được ghi nhận trong dự án API Gateway Rewrite.\n- Thiết lập báo cáo tự động hàng tuần để theo dõi tiến độ thực hiện các tối ưu hóa này.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:19:30.162958Z",
+    "http_status": 200,
+    "content_hash": "d90dac1864f8e6c2e41ea3c4082b8c11cbb5b7f7fe7a58883869dae547939603",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-observer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-observer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI Observer: Giải pháp Observability thống nhất cho Lập trình",
+  "short_description_vi": "AI Observer cung cấp giải pháp observability local thống nhất cho các trợ lý lập trình AI. Công cụ này giúp theo dõi lượng sử dụng token và các metric khác cho các công cụ như Claude Code, Gemini CLI và OpenAI Codex CLI. Với khả năng self-hosted và tương thích với OpenTelemetry, nó dễ dàng tích hợp vào các stack observability hiện có."
+}

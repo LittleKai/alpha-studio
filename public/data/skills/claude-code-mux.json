@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-mux",
+  "slug": "claude-code-mux",
+  "name": "browser-use",
+  "headline": "AI routing proxy in Rust for business automation",
+  "short_description": "Claude Code Mux is an AI routing proxy that automatically routes requests to the best available AI provider. It supports 15+ providers, including Anthropic, OpenAI, and Cerebras. It is built in Rust for high performance and includes automatic failover and priority-based routing. Operations teams use it to ensure reliable AI service delivery.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "360 min",
+  "author": "9j",
+  "install_command": "git clone https://github.com/9j/claude-code-mux.git",
+  "source_repo_url": "https://github.com/9j/claude-code-mux",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "claude-code-router",
+    "ai",
+    "openai"
+  ],
+  "sections": {
+    "overview": "Claude Code Mux is a lightweight proxy that routes AI requests to the best available provider based on task type and availability. Built in Rust, it supports 18+ providers including Anthropic, OpenAI, Google Gemini, Groq, and Cerebras with automatic failover to backup providers when your primary goes down. The tool includes OAuth 2.0 support for free access via Claude Pro, ChatGPT Plus, and Google AI Pro subscriptions, plus full Server-Sent Events streaming for real-time responses. It offers intelligent routing by task type (websearch, reasoning, background, default), model name transformation via regex patterns, and a modern web UI for configuration. Operations teams use it to ensure reliable AI service delivery with minimal overhead—consuming only 5MB RAM with less than 1ms routing latency.\nAutomatically route AI requests to the best available provider based on task type.\nImplement fallback mechanisms to ensure continuous service during provider outages.\nUtilize multiple AI models in a single session for diverse task handling.\nStream real-time responses from various AI providers for enhanced user interaction.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/9j/claude-code-mux`",
+    "usage": "```\nI need to set up Claude Code Mux to route requests to the best available AI provider. My primary provider is [PRIMARY_PROVIDER], but I want to use [FALLBACK_PROVIDER] as a backup. My priority is [PRIORITY_CRITERIA]. Can you provide the configuration steps and sample code?\n```\nCopy\n\n```\nTo set up Claude Code Mux for routing requests to the best available AI provider, follow these steps:\n\n1. **Installation**: First, ensure you have Rust installed on your system. Then, clone the Claude Code Mux repository and build the project using `cargo build --release`. This will compile the Rust code and generate the executable.\n\n2. **Configuration**: Create a configuration file named `config.toml` in the root directory. Here is a sample configuration:\n\n```toml\n[providers]\nprimary = \"Anthropic\"\nfallback = \"OpenAI\"\n\n[priority]\ncriteria = \"cost\"\n\n[endpoints]\nprimary_endpoint = \"https://api.anthropic.com/v1/complete\"\nfallback_endpoint = \"https://api.openai.com/v1/completions\"\n```\n\n3. **Running the Proxy**: Start the proxy by running the executable generated in the first step. Use the command `./target/release/claude-code-mux`. This will start the proxy server on the default port 8080.\n\n4. **Testing the Setup**: To test the setup, you can use a tool like `curl` to send a request to the proxy. For example:\n\n```bash\ncurl -X POST http://localhost:8080/v1/completions \\\n-H \"Content-Type: application/json\" \\\n-d '{\"prompt\": \"What is the capital of France?\", \"max_tokens\": 5}'\n```\n\nThe proxy will route the request to the primary provider, and if it fails, it will automatically switch to the fallback provider based on the priority criteria specified in the configuration file.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-mux#main-content",
+      "claude-code-mux#overview",
+      "claude-code-mux#setup",
+      "claude-code-mux#examples",
+      "claude-code-mux#tools",
+      "claude-code-mux#mcp",
+      "claude-code-mux#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Mux is a lightweight proxy that routes AI requests to the best available provider based on task type and availability. Built in Rust, it supports 18+ providers including Anthropic, OpenAI, Google Gemini, Groq, and Cerebras with automatic failover to backup providers when your primary goes down. The tool includes OAuth 2.0 support for free access via Claude Pro, ChatGPT Plus, and Google AI Pro subscriptions, plus full Server-Sent Events streaming for real-time responses. It offers intelligent routing by task type (websearch, reasoning, background, default), model name transformation via regex patterns, and a modern web UI for configuration. Operations teams use it to ensure reliable AI service delivery with minimal overhead—consuming only 5MB RAM with less than 1ms routing latency.\nAutomatically route AI requests to the best available provider based on task type.\nImplement fallback mechanisms to ensure continuous service during provider outages.\nUtilize multiple AI models in a single session for diverse task handling.\nStream real-time responses from various AI providers for enhanced user interaction.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/9j/claude-code-mux`",
+    "usage_vi": "```\nI need to set up Claude Code Mux to route requests to the best available AI provider. My primary provider is [PRIMARY_PROVIDER], but I want to use [FALLBACK_PROVIDER] as a backup. My priority is [PRIORITY_CRITERIA]. Can you provide the configuration steps and sample code?\n```\nCopy\n\n```\nTo set up Claude Code Mux for routing requests to the best available AI provider, follow these steps:\n\n1. **Installation**: First, ensure you have Rust installed on your system. Then, clone the Claude Code Mux repository and build the project using `cargo build --release`. This will compile the Rust code and generate the executable.\n\n2. **Configuration**: Create a configuration file named `config.toml` in the root directory. Here is a sample configuration:\n\n```toml\n[providers]\nprimary = \"Anthropic\"\nfallback = \"OpenAI\"\n\n[priority]\ncriteria = \"cost\"\n\n[endpoints]\nprimary_endpoint = \"https://api.anthropic.com/v1/complete\"\nfallback_endpoint = \"https://api.openai.com/v1/completions\"\n```\n\n3. **Running the Proxy**: Start the proxy by running the executable generated in the first step. Use the command `./target/release/claude-code-mux`. This will start the proxy server on the default port 8080.\n\n4. **Testing the Setup**: To test the setup, you can use a tool like `curl` to send a request to the proxy. For example:\n\n```bash\ncurl -X POST http://localhost:8080/v1/completions \\\n-H \"Content-Type: application/json\" \\\n-d '{\"prompt\": \"What is the capital of France?\", \"max_tokens\": 5}'\n```\n\nThe proxy will route the request to the primary provider, and if it fails, it will automatically switch to the fallback provider based on the priority criteria specified in the configuration file.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:08:38.937542Z",
+    "http_status": 200,
+    "content_hash": "b0282e2245983439a5f956549889382fd2ab956f88b0b8ca8dfb935642d1e332",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mux.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-mux.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI routing proxy in Rust for business automation",
+  "short_description_vi": "Claude Code Mux is an AI routing proxy that automatically routes requests to the best available AI provider. It supports 15+ providers, including Anthropic, OpenAI, and Cerebras. It is built in Rust for high performance and includes automatic failover and priority-based routing. Operations teams use it to ensure reliable AI service delivery."
+}

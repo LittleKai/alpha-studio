@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dify",
+  "slug": "dify",
+  "name": "react-native-best-practices",
+  "headline": "Boost Productivity with Dify AI Assistant",
+  "short_description": "Dify is your AI-powered assistant that simplifies complex tasks and enhances productivity, allowing you to focus on what truly matters. With Dify, streamline your daily responsibilities and achieve more in less time.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/langgenius",
+  "source_repo_url": "https://github.com/sh/langgenius",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "Productivity",
+    "AI Assistant",
+    "Automation",
+    "Content Creation"
+  ],
+  "sections": {
+    "overview": "Dify is an AI-powered assistant designed to help users streamline their daily tasks and responsibilities. It simplifies complex workflows by automating and enhancing productivity across various operations. By handling routine and complicated tasks, Dify enables you to concentrate on higher-priority work and accomplish more in less time.\nAutomating routine tasks\nGenerating content ideas\nData analysis and reporting",
+    "setup": "Terminal\nCopy\n`npx skills add sh/langgenius`\n`git clone https://github.com/sh/langgenius`",
+    "usage": "```\nUse Dify to analyze [SOFTWARE_SPEND_DATA] from Productiv and identify 3-5 cost-saving opportunities. Focus on: (1) [UNUSED_LICENSES_CRITERIA], (2) [REDUNDANT_TOOLS_CRITERIA], and (3) [RENEWAL_OPPORTUNITIES_CRITERIA]. For each opportunity, calculate potential annual savings and suggest 2-3 actionable next steps for the finance team. Format the output as a prioritized list with clear headings.\n```\nCopy\n\n```\n### Cost-Saving Opportunities Identified in Q3 2024 Software Spend\n\n**1. Unused Licenses in Marketing Team**\n- **Tool**: Adobe Creative Cloud (25 licenses)\n- **Current Spend**: $12,500/year ($500/license)\n- **Unused Licenses**: 8 (32% of total)\n- **Annual Savings Potential**: $4,000\n- **Action Steps**:\n  - Audit license allocation by [DATE] to confirm unused seats\n  - Reassign licenses to high-usage teams or downgrade unused ones\n  - Schedule quarterly license utilization reviews\n\n**2. Redundant Project Management Tools**\n- **Primary Tool**: Asana (150 users, $9,000/year)\n- **Secondary Tool**: ClickUp (30 users, $3,600/year)\n- **Overlap**: Both used for similar workflows (task tracking, sprints)\n- **Annual Savings Potential**: $3,600 (consolidate to Asana)\n- **Action Steps**:\n  - Map current workflows to Asana features by [DATE]\n  - Create migration plan for ClickUp users (30-day transition)\n  - Negotiate volume discount with Asana for 150+ users\n\n**3. Upcoming Renewal Negotiation - Zoom**\n- **Current Plan**: Zoom Business (120 users, $14,400/year)\n- **Renewal Date**: November 15, 2024\n- **Savings Opportunity**: 15% discount possible (industry standard)\n- **Annual Savings Potential**: $2,160\n- **Action Steps**:\n  - Gather usage analytics (meetings per user, storage needs) by [DATE]\n  - Prepare negotiation script highlighting low utilization metrics\n  - Benchmark against Microsoft Teams/Google Meet pricing\n\n**4. Underutilized Development Tools**\n- **Tool**: JetBrains IDE Suite (45 licenses, $18,000/year)\n- **Usage Data**: Only 20 developers actively using (44% utilization)\n- **Annual Savings Potential**: $10,080 (reduce to 25 licenses)\n- **Action Steps**:\n  - Survey developers on actual tool needs by [DATE]\n  - Implement shared license model for occasional users\n  - Explore open-source alternatives for non-critical use cases\n\n**Total Identified Savings**: $19,760 annually (12.3% of current spend)\n\n*Data Source: Productiv Q3 2024 Spend Report (Generated: October 10, 2024)*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "dify#main-content",
+      "dify#overview",
+      "dify#setup",
+      "dify#examples",
+      "dify#tools",
+      "dify#mcp",
+      "dify#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Dify is an AI-powered assistant designed to help users streamline their daily tasks and responsibilities. It simplifies complex workflows by automating and enhancing productivity across various operations. By handling routine and complicated tasks, Dify enables you to concentrate on higher-priority work and accomplish more in less time.\nAutomating routine tasks\nGenerating content ideas\nData analysis and reporting",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/langgenius`\n`git clone https://github.com/sh/langgenius`",
+    "usage_vi": "```\nUse Dify to analyze [SOFTWARE_SPEND_DATA] from Productiv and identify 3-5 cost-saving opportunities. Focus on: (1) [UNUSED_LICENSES_CRITERIA], (2) [REDUNDANT_TOOLS_CRITERIA], and (3) [RENEWAL_OPPORTUNITIES_CRITERIA]. For each opportunity, calculate potential annual savings and suggest 2-3 actionable next steps for the finance team. Format the output as a prioritized list with clear headings.\n```\nCopy\n\n```\n### Cost-Saving Opportunities Identified in Q3 2024 Software Spend\n\n**1. Unused Licenses in Marketing Team**\n- **Tool**: Adobe Creative Cloud (25 licenses)\n- **Current Spend**: $12,500/year ($500/license)\n- **Unused Licenses**: 8 (32% of total)\n- **Annual Savings Potential**: $4,000\n- **Action Steps**:\n  - Audit license allocation by [DATE] to confirm unused seats\n  - Reassign licenses to high-usage teams or downgrade unused ones\n  - Schedule quarterly license utilization reviews\n\n**2. Redundant Project Management Tools**\n- **Primary Tool**: Asana (150 users, $9,000/year)\n- **Secondary Tool**: ClickUp (30 users, $3,600/year)\n- **Overlap**: Both used for similar workflows (task tracking, sprints)\n- **Annual Savings Potential**: $3,600 (consolidate to Asana)\n- **Action Steps**:\n  - Map current workflows to Asana features by [DATE]\n  - Create migration plan for ClickUp users (30-day transition)\n  - Negotiate volume discount with Asana for 150+ users\n\n**3. Upcoming Renewal Negotiation - Zoom**\n- **Current Plan**: Zoom Business (120 users, $14,400/year)\n- **Renewal Date**: November 15, 2024\n- **Savings Opportunity**: 15% discount possible (industry standard)\n- **Annual Savings Potential**: $2,160\n- **Action Steps**:\n  - Gather usage analytics (meetings per user, storage needs) by [DATE]\n  - Prepare negotiation script highlighting low utilization metrics\n  - Benchmark against Microsoft Teams/Google Meet pricing\n\n**4. Underutilized Development Tools**\n- **Tool**: JetBrains IDE Suite (45 licenses, $18,000/year)\n- **Usage Data**: Only 20 developers actively using (44% utilization)\n- **Annual Savings Potential**: $10,080 (reduce to 25 licenses)\n- **Action Steps**:\n  - Survey developers on actual tool needs by [DATE]\n  - Implement shared license model for occasional users\n  - Explore open-source alternatives for non-critical use cases\n\n**Total Identified Savings**: $19,760 annually (12.3% of current spend)\n\n*Data Source: Productiv Q3 2024 Spend Report (Generated: October 10, 2024)*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:50:14.002337Z",
+    "http_status": 200,
+    "content_hash": "8b245d05d76cb35631dc72daecff6fbda767c23fce2e0e516957cd9743fed7f8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dify.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dify.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Boost Productivity with Dify AI Assistant",
+  "short_description_vi": "Dify is your AI-powered assistant that simplifies complex tasks and enhances productivity, allowing you to focus on what truly matters. With Dify, streamline your daily responsibilities and achieve more in less time."
+}

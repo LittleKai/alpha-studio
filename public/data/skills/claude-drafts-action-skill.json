@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-drafts-action-skill",
+  "slug": "claude-drafts-action-skill",
+  "name": "browser-use",
+  "headline": "create and script actions in drafts via claude",
+  "short_description": "Creates and scripts actions in Drafts, the text capture and automation app. Benefits operations teams by automating text processing workflows. Connects to Drafts for iOS and macOS.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "kerim",
+  "install_command": "git clone https://github.com/kerim/claude-drafts-action-skill.git",
+  "source_repo_url": "https://github.com/kerim/claude-drafts-action-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Drafts Actions Skill provides comprehensive knowledge for creating and scripting Drafts actions—the text capture and automation app for iOS and macOS. The skill covers all 37+ action step types including system integrations, service connections (Notion, Todoist, Dropbox, Google Drive, and 15+ others), and advanced JavaScript scripting. Users can design multi-service workflows, configure template systems with custom tags and date formatting, and integrate external APIs directly into Drafts. Operations teams benefit from automating repetitive text processing, batch operations on drafts, and quick capture to external services. The skill includes real-world examples, complete API documentation, and best practices for action organization and workflow design.\nSend draft content to Notion, Todoist, or other services automatically\nCreate multi-step workflows combining capture, processing, and export\nBatch process drafts with conditional JavaScript logic\nIntegrate external APIs (Claude, custom endpoints) into Drafts actions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kerim/claude-drafts-action-skill`",
+    "usage": "```\nCreate a Drafts action that processes [DATA] for [COMPANY] in the [INDUSTRY] sector. The action should extract key information, format it into a structured report, and save it to a specified location. Include error handling for missing or malformed data.\n```\nCopy\n\n```\n# Drafts Action: Process Customer Feedback\n\n```markdown\n| Customer Name | Feedback Text | Rating | Date       |\n|----------------|---------------|--------|------------|\n| John Doe       | Great service!  | 5      | 2023-10-01   |\n| Jane Smith     | Could improve  | 3      | 2023-10-02   |\n\n**Summary Statistics**\n- Average Rating: 4.0\n- Common Themes: Service, Improvement\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-drafts-action-skill#main-content",
+      "claude-drafts-action-skill#overview",
+      "claude-drafts-action-skill#setup",
+      "claude-drafts-action-skill#examples",
+      "claude-drafts-action-skill#tools",
+      "claude-drafts-action-skill#mcp",
+      "claude-drafts-action-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Drafts Actions Skill provides comprehensive knowledge for creating and scripting Drafts actions—the text capture and automation app for iOS and macOS. The skill covers all 37+ action step types including system integrations, service connections (Notion, Todoist, Dropbox, Google Drive, and 15+ others), and advanced JavaScript scripting. Users can design multi-service workflows, configure template systems with custom tags and date formatting, and integrate external APIs directly into Drafts. Operations teams benefit from automating repetitive text processing, batch operations on drafts, and quick capture to external services. The skill includes real-world examples, complete API documentation, and best practices for action organization and workflow design.\nSend draft content to Notion, Todoist, or other services automatically\nCreate multi-step workflows combining capture, processing, and export\nBatch process drafts with conditional JavaScript logic\nIntegrate external APIs (Claude, custom endpoints) into Drafts actions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kerim/claude-drafts-action-skill`",
+    "usage_vi": "```\nCreate a Drafts action that processes [DATA] for [COMPANY] in the [INDUSTRY] sector. The action should extract key information, format it into a structured report, and save it to a specified location. Include error handling for missing or malformed data.\n```\nCopy\n\n```\n# Drafts Action: Process Customer Feedback\n\n```markdown\n| Customer Name | Feedback Text | Rating | Date       |\n|----------------|---------------|--------|------------|\n| John Doe       | Great service!  | 5      | 2023-10-01   |\n| Jane Smith     | Could improve  | 3      | 2023-10-02   |\n\n**Summary Statistics**\n- Average Rating: 4.0\n- Common Themes: Service, Improvement\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:01:32.308653Z",
+    "http_status": 200,
+    "content_hash": "a42d6aee753ab76d8d80337415cc895cb181a490db50b20e6121cd4c410d9a9a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-drafts-action-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-drafts-action-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "create and script actions in drafts via claude",
+  "short_description_vi": "Creates and scripts actions in Drafts, the text capture and automation app. Benefits operations teams by automating text processing workflows. Connects to Drafts for iOS and macOS."
+}

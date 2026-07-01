@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-powered-insurance-claims-automation-accelerator",
+  "slug": "ai-powered-insurance-claims-automation-accelerator",
+  "name": "AI-Powered-Insurance-Claims-Automation-Accelerator",
+  "headline": "AI-Powered Insurance Claims Automation Accelerator",
+  "short_description": "The AI-Powered Insurance Claims Automation Accelerator streamlines claim processing using advanced AI capabilities. It enhances customer experience by reducing manual effort and processing time through intelligent handling of images, IDs, and documents.",
+  "tier": "Gold",
+  "category": "RevOpsGrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "MSUSAzureAccelerators",
+  "install_command": "claude install MSUSAzureAccelerators/AI-Powered-Insurance-Claims-Automation-Accelerator",
+  "source_repo_url": "https://github.com/MSUSAzureAccelerators/AI-Powered-Insurance-Claims-Automation-Accelerator",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "claims",
+    "insurance",
+    "automation",
+    "AI",
+    "Microsoft"
+  ],
+  "sections": {
+    "overview": "This accelerator uses Azure machine learning and Form Recognizer to automate insurance claims processing. Customers submit claims through a voice-activated chatbot and upload supporting documents like driver's licenses, insurance cards, and damage photos. The system automatically extracts metadata from documents using built-in and custom AI models, stores data in Cosmos DB, and indexes documents in Azure Cognitive Search. This eliminates manual data entry, reduces processing time, and enables instant repair or replacement estimates, improving customer satisfaction while decreasing operational overhead.\nAutomating document verification for claims\nSpeeding up image processing for claim approvals\nReducing manual data entry in insurance claims\nEnhancing customer support through automated claim inquiries",
+    "setup": "Terminal\nCopy\n`claude install MSUSAzureAccelerators/AI-Powered-Insurance-Claims-Automation-Accelerator`\n`git clone https://github.com/MSUSAzureAccelerators/AI-Powered-Insurance-Claims-Automation-Accelerator`",
+    "usage": "```\nAct as an AI-Powered Insurance Claims Automation Accelerator. Process the following claim details for [COMPANY] in the [INDUSTRY] sector. Extract key information from the attached [DOCUMENTS], verify the [IDENTIFICATION] provided, and assess the [DAMAGE] reported. Provide a summary with next steps and potential approval status.\n```\nCopy\n\n```\n# Insurance Claim Processing Summary",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "ai-powered-insurance-claims-automation-accelerator#main-content",
+      "ai-powered-insurance-claims-automation-accelerator#overview",
+      "ai-powered-insurance-claims-automation-accelerator#setup",
+      "ai-powered-insurance-claims-automation-accelerator#examples",
+      "ai-powered-insurance-claims-automation-accelerator#tools",
+      "ai-powered-insurance-claims-automation-accelerator#mcp",
+      "ai-powered-insurance-claims-automation-accelerator#related",
+      "claude-skills",
+      "memu",
+      "claude-workflow-v2"
+    ],
+    "overview_vi": "This accelerator uses Azure machine learning and Form Recognizer to automate insurance claims processing. Customers submit claims through a voice-activated chatbot and upload supporting documents like driver's licenses, insurance cards, and damage photos. The system automatically extracts metadata from documents using built-in and custom AI models, stores data in Cosmos DB, and indexes documents in Azure Cognitive Search. This eliminates manual data entry, reduces processing time, and enables instant repair or replacement estimates, improving customer satisfaction while decreasing operational overhead.\nAutomating document verification for claims\nSpeeding up image processing for claim approvals\nReducing manual data entry in insurance claims\nEnhancing customer support through automated claim inquiries",
+    "setup_vi": "Terminal\nCopy\n`claude install MSUSAzureAccelerators/AI-Powered-Insurance-Claims-Automation-Accelerator`\n`git clone https://github.com/MSUSAzureAccelerators/AI-Powered-Insurance-Claims-Automation-Accelerator`",
+    "usage_vi": "```\nAct as an AI-Powered Insurance Claims Automation Accelerator. Process the following claim details for [COMPANY] in the [INDUSTRY] sector. Extract key information from the attached [DOCUMENTS], verify the [IDENTIFICATION] provided, and assess the [DAMAGE] reported. Provide a summary with next steps and potential approval status.\n```\nCopy\n\n```\n# Insurance Claim Processing Summary"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:01.442393Z",
+    "http_status": 200,
+    "content_hash": "5439ec30ecb33bda21180d17b7b9f2e6d70c131b187395143eeb0a7593f00244",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-powered-insurance-claims-automation-accelerator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-powered-insurance-claims-automation-accelerator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI-Powered Insurance Claims Automation Accelerator",
+  "short_description_vi": "The AI-Powered Insurance Claims Automation Accelerator streamlines claim processing using advanced AI capabilities. It enhances customer experience by reducing manual effort and processing time through intelligent handling of images, IDs, and documents."
+}

@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/maw",
+  "slug": "maw",
+  "name": "browser-use",
+  "headline": "Maw - Crawl and Search Websites Offline",
+  "short_description": "Crawl any website into a single searchable file. Query it offline forever. Useful for operations teams needing persistent access to web data without relying on live connections. Integrates with Claude agents for automated data extraction and analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "memvid",
+  "install_command": "git clone https://github.com/memvid/maw.git",
+  "source_repo_url": "https://github.com/memvid/maw",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mv2",
+    "ai-agents",
+    "crawler",
+    "memory",
+    "firecrawl",
+    "agents",
+    "open-source",
+    "claude",
+    "mcp",
+    "memvid"
+  ],
+  "sections": {
+    "overview": "maw crawls websites, documentation, blogs, codebases, and repositories into a single .mv2 file for persistent offline access. It automatically detects the right crawling method—from simple fetches to stealth browser mode for protected sites—and supports both keyword search (BM25) and semantic search with embeddings. Users can query crawled content instantly with keyword lookup or ask AI-powered questions using Claude or OpenAI. Built for operations teams, developers, and researchers who need reliable access to web data without relying on live connections or maintaining browser tabs.\nArchive documentation for offline reference and persistent access\nSearch across multiple documentation sites combined into one file\nExtract and analyze data from websites using AI agents\nCrawl codebases and repositories for code analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/memvid/maw`",
+    "usage": "```\nCrawl the website [WEBSITE_URL] and extract all relevant content into a single searchable file. Focus on sections related to [TOPIC]. Ensure the file is structured for easy querying and offline access. Include metadata such as timestamps, authors, and any other relevant details.\n```\nCopy\n\n```\nThe website [WEBSITE_URL] has been successfully crawled and the content has been extracted into a single searchable file. The file includes all relevant sections related to [TOPIC], with metadata such as timestamps, authors, and other relevant details. The file is structured for easy querying and offline access, making it useful for operations teams needing persistent access to web data without relying on live connections. The file can be integrated with Claude agents for automated data extraction and analysis.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "maw#main-content",
+      "maw#overview",
+      "maw#setup",
+      "maw#examples",
+      "maw#tools",
+      "maw#mcp",
+      "maw#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "maw crawls websites, documentation, blogs, codebases, and repositories into a single .mv2 file for persistent offline access. It automatically detects the right crawling method—from simple fetches to stealth browser mode for protected sites—and supports both keyword search (BM25) and semantic search with embeddings. Users can query crawled content instantly with keyword lookup or ask AI-powered questions using Claude or OpenAI. Built for operations teams, developers, and researchers who need reliable access to web data without relying on live connections or maintaining browser tabs.\nArchive documentation for offline reference and persistent access\nSearch across multiple documentation sites combined into one file\nExtract and analyze data from websites using AI agents\nCrawl codebases and repositories for code analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/memvid/maw`",
+    "usage_vi": "```\nCrawl the website [WEBSITE_URL] and extract all relevant content into a single searchable file. Focus on sections related to [TOPIC]. Ensure the file is structured for easy querying and offline access. Include metadata such as timestamps, authors, and any other relevant details.\n```\nCopy\n\n```\nThe website [WEBSITE_URL] has been successfully crawled and the content has been extracted into a single searchable file. The file includes all relevant sections related to [TOPIC], with metadata such as timestamps, authors, and other relevant details. The file is structured for easy querying and offline access, making it useful for operations teams needing persistent access to web data without relying on live connections. The file can be integrated with Claude agents for automated data extraction and analysis.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:14:08.631779Z",
+    "http_status": 200,
+    "content_hash": "456190174d6ef9d914f197cb5887a563d335074d4d2e2b814dab3abebd702108",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\maw.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\maw.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Maw - Crawl and Search Websites Offline",
+  "short_description_vi": "Crawl any website into a single searchable file. Query it offline forever. Useful for operations teams needing persistent access to web data without relying on live connections. Integrates with Claude agents for automated data extraction and analysis."
+}

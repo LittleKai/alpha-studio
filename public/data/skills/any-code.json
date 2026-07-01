@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/any-code",
+  "slug": "any-code",
+  "name": "Any-code",
+  "headline": "Any-code ai automation skill framework",
+  "short_description": "Any-code is an AI-powered automation tool that assists with coding tasks. It supports multiple engines and offers a modern, efficient GUI. Operations teams use it to streamline code generation, debugging, and maintenance. It integrates with existing development workflows and tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "anyme123",
+  "install_command": "git clone https://github.com/anyme123/Any-code.git",
+  "source_repo_url": "https://github.com/anyme123/Any-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Any-code is an open-source automation platform that leverages multiple AI engines—including Claude, OpenAI GPT, and Google Gemini—to assist with code generation, debugging, and maintenance tasks. The tool features a modern graphical interface built with Tauri for desktop deployment, enabling seamless integration into existing development workflows. It supports provider management with one-click switching between different AI backends, allowing teams to choose the engine that best fits their needs. Any-code stores configurations locally in JSON format for privacy and security, making it suitable for operations teams seeking to streamline code automation without external dependencies. The platform includes internationalization support and uses modern UI theming for an efficient development experience.\nAutomate code generation tasks using AI models for faster development.\nManage multiple coding sessions across different AI engines with ease.\nTrack and analyze costs associated with API usage for budgeting purposes.\nUtilize intelligent translation features to work with multilingual codebases.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anyme123/Any-code`",
+    "usage": "```\nUse Any-code to [TASK] for [PROJECT/LANGUAGE]. Follow these steps: 1) Analyze [SPECIFIC_CODE_OR_ISSUE], 2) Generate [CODE_SNIPPET_OR_SOLUTION], 3) Optimize for [PERFORMANCE/SECURITY/READABILITY], 4) Provide testing suggestions. Example: 'Use Any-code to refactor a legacy Python script that processes CSV files. The script currently uses pandas but is slow for large datasets. Generate a faster alternative using Dask, optimize memory usage, and add error handling for missing files.'\n```\nCopy\n\n```\nFor a project using Node.js to build a REST API, I used Any-code to refactor a legacy Express.js endpoint that was causing memory leaks. The original code used synchronous file reads and unclosed database connections, which led to crashes under load. Any-code identified the bottlenecks by analyzing the stack trace and suggested replacing the synchronous `fs.readFileSync` with `fs.promises.readFile` and implementing connection pooling for the PostgreSQL database using `pg-pool`. It generated a new endpoint that reduced memory usage by 60% and improved response times from 800ms to 120ms under 1000 concurrent requests. The tool also added proper error handling for missing query parameters and provided a Jest test suite to verify the endpoint’s behavior under edge cases like malformed JSON payloads. The refactored code was integrated into the CI/CD pipeline, and Any-code generated a GitHub Actions workflow to run the tests automatically on every push.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "any-code#main-content",
+      "any-code#overview",
+      "any-code#setup",
+      "any-code#examples",
+      "any-code#tools",
+      "any-code#mcp",
+      "any-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Any-code is an open-source automation platform that leverages multiple AI engines—including Claude, OpenAI GPT, and Google Gemini—to assist with code generation, debugging, and maintenance tasks. The tool features a modern graphical interface built with Tauri for desktop deployment, enabling seamless integration into existing development workflows. It supports provider management with one-click switching between different AI backends, allowing teams to choose the engine that best fits their needs. Any-code stores configurations locally in JSON format for privacy and security, making it suitable for operations teams seeking to streamline code automation without external dependencies. The platform includes internationalization support and uses modern UI theming for an efficient development experience.\nAutomate code generation tasks using AI models for faster development.\nManage multiple coding sessions across different AI engines with ease.\nTrack and analyze costs associated with API usage for budgeting purposes.\nUtilize intelligent translation features to work with multilingual codebases.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/anyme123/Any-code`",
+    "usage_vi": "```\nUse Any-code to [TASK] for [PROJECT/LANGUAGE]. Follow these steps: 1) Analyze [SPECIFIC_CODE_OR_ISSUE], 2) Generate [CODE_SNIPPET_OR_SOLUTION], 3) Optimize for [PERFORMANCE/SECURITY/READABILITY], 4) Provide testing suggestions. Example: 'Use Any-code to refactor a legacy Python script that processes CSV files. The script currently uses pandas but is slow for large datasets. Generate a faster alternative using Dask, optimize memory usage, and add error handling for missing files.'\n```\nCopy\n\n```\nFor a project using Node.js to build a REST API, I used Any-code to refactor a legacy Express.js endpoint that was causing memory leaks. The original code used synchronous file reads and unclosed database connections, which led to crashes under load. Any-code identified the bottlenecks by analyzing the stack trace and suggested replacing the synchronous `fs.readFileSync` with `fs.promises.readFile` and implementing connection pooling for the PostgreSQL database using `pg-pool`. It generated a new endpoint that reduced memory usage by 60% and improved response times from 800ms to 120ms under 1000 concurrent requests. The tool also added proper error handling for missing query parameters and provided a Jest test suite to verify the endpoint’s behavior under edge cases like malformed JSON payloads. The refactored code was integrated into the CI/CD pipeline, and Any-code generated a GitHub Actions workflow to run the tests automatically on every push.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:44.445707Z",
+    "http_status": 200,
+    "content_hash": "75a30daea45da6dccff480ea34812d6c3186cd27f4ac05b9a1a1fd79fb3381fb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\any-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\any-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Any-code ai automation skill framework",
+  "short_description_vi": "Any-code is an AI-powered automation tool that assists with coding tasks. It supports multiple engines and offers a modern, efficient GUI. Operations teams use it to streamline code generation, debugging, and maintenance. It integrates with existing development workflows and tools."
+}

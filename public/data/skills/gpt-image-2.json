@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gpt-image-2",
+  "slug": "gpt-image-2",
+  "name": "SpriteCook Generate Sprites",
+  "headline": "GPT Image 2: Image Generation & Editing",
+  "short_description": "GPT Image 2 allows users to generate and edit images from text or references using the Pilio CLI. Ideal for developers looking to integrate image manipulation in their applications using an API.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "pilioai",
+  "install_command": "git clone https://github.com/pilioai/skills",
+  "source_repo_url": "https://github.com/pilioai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "image-generation",
+    "image"
+  ],
+  "sections": {
+    "overview": "GPT Image 2 is a Pilio skill that enables developers to generate and edit images programmatically using text prompts or image references. The skill integrates with the Pilio CLI and delegates image generation tasks to the Pilio developer API, allowing seamless image manipulation workflows within agent applications. It supports both image generation from text and editing existing images, making it suitable for content creation, design automation, and dynamic asset generation. Developers can test the functionality in a browser at pilio.ai before deploying it to agents, and full documentation is available through the Pilio developer portal.\nGenerate images from textual prompts\nEdit images based on reference images\nCompose images using local inputs",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/pilioai/skills --skill gpt-image-2`\n`git clone https://github.com/pilioai/skills`",
+    "usage": "```\nGenerate an image using GPT Image 2 via the Pilio CLI. Use the prompt: '[DESCRIBE_IMAGE_NEEDED]' and apply these parameters: --style [ART_STYLE], --resolution [WIDTHxHEIGHT], --quality [QUALITY_LEVEL]. Output the image as a PNG file named '[FILENAME].png'.\n```\nCopy\n\n```\n```\nGenerated image saved as `product_hero_v2.png`:\n\n![Product Hero Image](https://example.com/images/product_hero_v2.png)\n\n**Details:**\n- **Style:** Cyberpunk neon\n- **Resolution:** 1920x1080\n- **Quality:** High (100%)\n- **Prompt Used:** \"A futuristic cyberpunk product hero shot with glowing blue accents, sleek metallic surface, and dark background, ultra-detailed\"\n\n**Usage:**\n- File saved in `/output/images/` directory.\n- Ready for integration into [COMPANY]’s marketing campaign.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "gpt-image-2#main-content",
+      "gpt-image-2#overview",
+      "gpt-image-2#setup",
+      "gpt-image-2#examples",
+      "gpt-image-2#related",
+      "app-icon-generation",
+      "lovstudio-image-creator",
+      "spritecook-generate-sprites"
+    ],
+    "overview_vi": "GPT Image 2 is a Pilio skill that enables developers to generate and edit images programmatically using text prompts or image references. The skill integrates with the Pilio CLI and delegates image generation tasks to the Pilio developer API, allowing seamless image manipulation workflows within agent applications. It supports both image generation from text and editing existing images, making it suitable for content creation, design automation, and dynamic asset generation. Developers can test the functionality in a browser at pilio.ai before deploying it to agents, and full documentation is available through the Pilio developer portal.\nGenerate images from textual prompts\nEdit images based on reference images\nCompose images using local inputs",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/pilioai/skills --skill gpt-image-2`\n`git clone https://github.com/pilioai/skills`",
+    "usage_vi": "```\nGenerate an image using GPT Image 2 via the Pilio CLI. Use the prompt: '[DESCRIBE_IMAGE_NEEDED]' and apply these parameters: --style [ART_STYLE], --resolution [WIDTHxHEIGHT], --quality [QUALITY_LEVEL]. Output the image as a PNG file named '[FILENAME].png'.\n```\nCopy\n\n```\n```\nGenerated image saved as `product_hero_v2.png`:\n\n![Product Hero Image](https://example.com/images/product_hero_v2.png)\n\n**Details:**\n- **Style:** Cyberpunk neon\n- **Resolution:** 1920x1080\n- **Quality:** High (100%)\n- **Prompt Used:** \"A futuristic cyberpunk product hero shot with glowing blue accents, sleek metallic surface, and dark background, ultra-detailed\"\n\n**Usage:**\n- File saved in `/output/images/` directory.\n- Ready for integration into [COMPANY]’s marketing campaign.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:01.817139Z",
+    "http_status": 200,
+    "content_hash": "595cb739a16d380c242f9c5082033a6c302abca050aed660d1c4a72455ffc870",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gpt-image-2.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gpt-image-2.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GPT Image 2: Image Generation & Editing",
+  "short_description_vi": "GPT Image 2 allows users to generate and edit images from text or references using the Pilio CLI. Ideal for developers looking to integrate image manipulation in their applications using an API."
+}

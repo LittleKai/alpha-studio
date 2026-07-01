@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/orchestkit",
+  "slug": "orchestkit",
+  "name": "OrchestKit",
+  "headline": "OrchestKit - AI Development Toolkit for Claude Code",
+  "short_description": "OrchestKit is an AI development toolkit for Claude Code, offering 159 skills, 34 agents, 20 commands, and 144 hooks. It provides production-ready patterns for FastAPI, React 19, LangGraph, security, and testing. Operations teams use it to streamline AI development and deployment, integrating with existing workflows and tools.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "yonatangross",
+  "install_command": "git clone https://github.com/yonatangross/orchestkit.git",
+  "source_repo_url": "https://github.com/yonatangross/orchestkit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "mcp",
+    "agents",
+    "react",
+    "claude-code",
+    "fastapi",
+    "testing",
+    "llm",
+    "claude-plugin",
+    "ai-development",
+    "security",
+    "langgraph",
+    "rag"
+  ],
+  "sections": {
+    "overview": "OrchestKit is a unified plugin for Claude Code that eliminates repetitive stack explanation by encoding persistent knowledge of production patterns. It includes 111 reusable skills for RAG, FastAPI, React 19, testing, security, and database design that load on-demand with zero overhead. The plugin features 37 specialized agents that route tasks to the right expert persona, and 211 hooks for pre-commit checks, git protection, and quality gates. Setup is guided by a personalized onboarding wizard that scans your codebase, detects your tech stack, recommends relevant skills, and configures MCP servers. Development teams use OrchestKit to standardize patterns, enforce conventions automatically, and ship code with confidence.\nImplement full-stack features with parallel multi-agent coordination using /ork:implement\nEstablish team coding standards through automatic hooks that block bad commits and enforce quality gates\nOnboard new developers with personalized setup wizard that configures skills for your specific tech stack\nReview pull requests with specialized agents (backend-architect, frontend-dev, security-auditor) in parallel",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yonatangross/orchestkit`\n\n1. Copy `.env.example` to `.env` and configure environment variables\n2. Run `docker-compose up -d` to start PostgreSQL\n3. Install dependencies: `pip install -r requirements.txt`\n4. Start the service: `uvicorn app.main:app --reload`",
+    "usage": "```\nUse OrchestKit to scaffold a [PROJECT_TYPE] project (FastAPI/React 19/LangGraph) with production-ready patterns for [SPECIFIC_FEATURES]. Include [SECURITY_MEASURES] and [TESTING_FRAMEWORK]. Generate the project structure, key files, and initial configuration. Document the setup process in a README.md file.\n```\nCopy\n\n```\n### Project Scaffolding with OrchestKit\n\n**Project Type:** FastAPI microservice for user authentication\n**Features:** JWT authentication, rate limiting, OpenAPI docs, PostgreSQL integration\n**Security Measures:** Environment variables, CORS middleware, input validation\n**Testing Framework:** pytest with coverage reports\n\n---\n\n#### Generated Project Structure:\n```\nauth-service/\n├── .env.example\n├── .gitignore\n├── README.md\n├── app/\n│   ├── __init__.py\n│   ├── main.py\n│   ├── config.py\n│   ├── models/\n│   │   ├── __init__.py\n│   │   └── user.py\n│   ├── routes/\n│   │   ├── __init__.py\n│   │   ├── auth.py\n│   │   └── users.py\n│   ├── services/\n│   │   ├── __init__.py\n│   │   ├── auth_service.py\n│   │   └── user_service.py\n│   ├── utils/\n│   │   ├── __init__.py\n│   │   ├── security.py\n│   │   └── validators.py\n│   └── database/\n│       ├── __init__.py\n│       └── session.py\n├── tests/\n│   ├── __init__.py\n│   ├── test_auth.py\n│   └── test_users.py\n├── requirements.txt\n└── docker-compose.yml\n```\n\n#### Key Files Generated:\n\n**app/main.py**\n```python\nfrom fastapi import FastAPI\nfrom app.routes import auth, users\nfrom app.config import settings\nfrom app.database.session import engine, Base\n\nBase.metadata.create_all(bind=engine)\n\napp = FastAPI(title=\"Auth Service\", version=\"0.1.0\")\napp.include_router(auth.router, prefix=\"/auth\", tags=[\"auth\"])\napp.include_router(users.router, prefix=\"/users\", tags=[\"users\"])\n```\n\n**app/config.py**\n```python\nfrom pydantic_settings import BaseSettings\n\nclass Settings(BaseSettings):\n    database_url: str = \"postgresql://user:password@localhost:5432/auth_db\"\n    jwt_secret: str = \"your-secret-key\"\n    jwt_algorithm: str = \"HS256\"\n    access_token_expire_minutes: int = 30\n\nsettings = Settings()\n```\n\n**README.md**\n```markdown\n# Auth Service\n\nA FastAPI microservice for user authentication.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "orchestkit#main-content",
+      "orchestkit#overview",
+      "orchestkit#setup",
+      "orchestkit#examples",
+      "orchestkit#tools",
+      "orchestkit#mcp",
+      "orchestkit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OrchestKit is a unified plugin for Claude Code that eliminates repetitive stack explanation by encoding persistent knowledge of production patterns. It includes 111 reusable skills for RAG, FastAPI, React 19, testing, security, and database design that load on-demand with zero overhead. The plugin features 37 specialized agents that route tasks to the right expert persona, and 211 hooks for pre-commit checks, git protection, and quality gates. Setup is guided by a personalized onboarding wizard that scans your codebase, detects your tech stack, recommends relevant skills, and configures MCP servers. Development teams use OrchestKit to standardize patterns, enforce conventions automatically, and ship code with confidence.\nImplement full-stack features with parallel multi-agent coordination using /ork:implement\nEstablish team coding standards through automatic hooks that block bad commits and enforce quality gates\nOnboard new developers with personalized setup wizard that configures skills for your specific tech stack\nReview pull requests with specialized agents (backend-architect, frontend-dev, security-auditor) in parallel",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yonatangross/orchestkit`\n\n1. Copy `.env.example` to `.env` and configure environment variables\n2. Run `docker-compose up -d` to start PostgreSQL\n3. Install dependencies: `pip install -r requirements.txt`\n4. Start the service: `uvicorn app.main:app --reload`",
+    "usage_vi": "```\nUse OrchestKit to scaffold a [PROJECT_TYPE] project (FastAPI/React 19/LangGraph) with production-ready patterns for [SPECIFIC_FEATURES]. Include [SECURITY_MEASURES] and [TESTING_FRAMEWORK]. Generate the project structure, key files, and initial configuration. Document the setup process in a README.md file.\n```\nCopy\n\n```\n### Project Scaffolding with OrchestKit\n\n**Project Type:** FastAPI microservice for user authentication\n**Features:** JWT authentication, rate limiting, OpenAPI docs, PostgreSQL integration\n**Security Measures:** Environment variables, CORS middleware, input validation\n**Testing Framework:** pytest with coverage reports\n\n---\n\n#### Generated Project Structure:\n```\nauth-service/\n├── .env.example\n├── .gitignore\n├── README.md\n├── app/\n│   ├── __init__.py\n│   ├── main.py\n│   ├── config.py\n│   ├── models/\n│   │   ├── __init__.py\n│   │   └── user.py\n│   ├── routes/\n│   │   ├── __init__.py\n│   │   ├── auth.py\n│   │   └── users.py\n│   ├── services/\n│   │   ├── __init__.py\n│   │   ├── auth_service.py\n│   │   └── user_service.py\n│   ├── utils/\n│   │   ├── __init__.py\n│   │   ├── security.py\n│   │   └── validators.py\n│   └── database/\n│       ├── __init__.py\n│       └── session.py\n├── tests/\n│   ├── __init__.py\n│   ├── test_auth.py\n│   └── test_users.py\n├── requirements.txt\n└── docker-compose.yml\n```\n\n#### Key Files Generated:\n\n**app/main.py**\n```python\nfrom fastapi import FastAPI\nfrom app.routes import auth, users\nfrom app.config import settings\nfrom app.database.session import engine, Base\n\nBase.metadata.create_all(bind=engine)\n\napp = FastAPI(title=\"Auth Service\", version=\"0.1.0\")\napp.include_router(auth.router, prefix=\"/auth\", tags=[\"auth\"])\napp.include_router(users.router, prefix=\"/users\", tags=[\"users\"])\n```\n\n**app/config.py**\n```python\nfrom pydantic_settings import BaseSettings\n\nclass Settings(BaseSettings):\n    database_url: str = \"postgresql://user:password@localhost:5432/auth_db\"\n    jwt_secret: str = \"your-secret-key\"\n    jwt_algorithm: str = \"HS256\"\n    access_token_expire_minutes: int = 30\n\nsettings = Settings()\n```\n\n**README.md**\n```markdown\n# Auth Service\n\nA FastAPI microservice for user authentication."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:38:04.871447Z",
+    "http_status": 200,
+    "content_hash": "30db392d57d2a5cbc8acc104c11a6f2e85af87a2ebd510d50bfa3fd0605534a8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\orchestkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\orchestkit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OrchestKit - AI Development Toolkit for Claude Code",
+  "short_description_vi": "OrchestKit is an AI development toolkit for Claude Code, offering 159 skills, 34 agents, 20 commands, and 144 hooks. It provides production-ready patterns for FastAPI, React 19, LangGraph, security, and testing. Operations teams use it to streamline AI development and deployment, integrating with existing workflows and tools."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-skills",
+  "slug": "n8n-skills",
+  "name": "N8n Skills",
+  "headline": "n8n Workflow Automation Skills Suite for AI",
+  "short_description": "The n8n Workflow Automation Skills Suite helps AI assistants to automate complex workflows seamlessly. With a focus on enhancing productivity, it integrates various tools and services for efficient task management.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "haunchen",
+  "install_command": "claude install haunchen/n8n-skills",
+  "source_repo_url": "https://github.com/haunchen/n8n-skills",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "automation",
+    "AI",
+    "skills",
+    "n8n",
+    "workflow"
+  ],
+  "sections": {
+    "overview": "n8n Skills is an automation skill pack that provides AI assistants with comprehensive knowledge of 545 n8n nodes and 20 curated workflow templates. It enables users to query node features, parameters, and configuration methods while receiving AI-recommended node combinations for specific tasks. The skill supports Claude Code, Claude.ai Web, and Claude Desktop platforms, with a multi-dimensional priority ranking system that surfaces the most relevant information first. Automation engineers, n8n developers, and workflow designers can use n8n Skills to accelerate workflow creation, explore node best practices, and reduce development time through intelligent AI assistance.\nAutomating lead generation processes\nStreamlining customer support workflows\nIntegrating marketing tools for campaign management\nCreating automated reporting systems",
+    "setup": "Terminal\nCopy\n`claude install haunchen/n8n-skills`\n`git clone https://github.com/haunchen/n8n-skills`",
+    "usage": "```\nCreate an automated workflow in n8n that [DESCRIBE TASK]. The workflow should integrate with [TOOLS/SERVICES] and include the following steps: [STEPS]. Provide the n8n workflow JSON configuration and a brief explanation of how each node functions.\n```\nCopy\n\n```\nTo automate the process of generating customer insights from product reviews, we'll create an n8n workflow that integrates with Shopify and a sentiment analysis API. Here's the workflow configuration:\n\n```json\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"resource\": \"collection\",\n        \"operation\": \"getAll\"\n      },\n      \"name\": \"Shopify Get Reviews\",\n      \"type\": \"n8n-nodes-base.shopify\"\n    },\n    {\n      \"parameters\": {\n        \"text\": \"=\\\"{{$node[\\\"Shopify Get Reviews\\\"].json[\\\"reviews\\\"][0].text}}\\\"\",\n        \"resource\": \"sentiment\",\n        \"operation\": \"analyze\"\n      },\n      \"name\": \"Sentiment Analysis\",\n      \"type\": \"n8n-nodes-base.sentiment\"\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"collection\",\n        \"operation\": \"create\"\n      },\n      \"name\": \"Save Insights\",\n      \"type\": \"n8n-nodes-base.googleSheets\"\n    }\n  ],\n  \"connections\": {\n    \"Shopify Get Reviews\": {\n      \"main\": [[\n        {\n          \"node\": \"Sentiment Analysis\",\n          \"type\": \"main\",\n          \"index\": 0\n        }\n      ]]\n    },\n    \"Sentiment Analysis\": {\n      \"main\": [[\n        {\n          \"node\": \"Save Insights\",\n          \"type\": \"main\",\n          \"index\": 0\n        }\n      ]]\n    }\n  }\n}\n```\n\nThis workflow does the following:\n1. **Shopify Get Reviews**: Fetches the latest product reviews from Shopify.\n2. **Sentiment Analysis**: Analyzes the sentiment of each review using a third-party API.\n3. **Save Insights**: Saves the review text and sentiment score to a Google Sheet for further analysis.\n\nTo implement this workflow, copy the JSON configuration into n8n, connect your Shopify and Google Sheets accounts, and activate the workflow. It will run automatically at the specified interval, keeping your customer insights up-to-date.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "n8n-skills#main-content",
+      "n8n-skills#overview",
+      "n8n-skills#setup",
+      "n8n-skills#examples",
+      "n8n-skills#tools",
+      "n8n-skills#mcp",
+      "n8n-skills#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "n8n Skills là bộ kỹ năng tự động hóa cung cấp cho trợ lý AI kiến thức toàn diện về 545 node n8n và 20 template workflow được tuyển chọn. Bộ công cụ này cho phép người dùng truy vấn các tính năng, tham số và cách cấu hình node, đồng thời nhận các đề xuất kết hợp node từ AI cho các tác vụ cụ thể. Kỹ năng này hỗ trợ các nền tảng Claude Code, Claude.ai Web và Claude Desktop, đi kèm hệ thống xếp hạng ưu tiên đa chiều giúp hiển thị thông tin phù hợp nhất trước tiên. Các kỹ sư tự động hóa, nhà phát triển n8n và nhà thiết kế workflow có thể sử dụng n8n Skills để tăng tốc quá trình tạo workflow, khám phá các best practice của node và rút ngắn thời gian phát triển nhờ sự trợ giúp thông minh từ AI.\n\nTự động hóa quy trình tìm kiếm khách hàng tiềm năng\nTối ưu hóa workflow hỗ trợ khách hàng\nTích hợp các công cụ marketing để quản lý chiến dịch\nXây dựng hệ thống báo cáo tự động",
+    "setup_vi": "Terminal\nSao chép\n`claude install haunchen/n8n-skills`\n`git clone https://github.com/haunchen/n8n-skills`",
+    "usage_vi": "```\nTạo một workflow tự động trong n8n để [MÔ TẢ TÁC VỤ]. Workflow này cần tích hợp với [CÔNG CỤ/DỊCH VỤ] và bao gồm các bước sau: [CÁC BƯỚC]. Hãy cung cấp cấu hình JSON của workflow n8n và giải thích ngắn gọn về chức năng của từng node.\n```\nSao chép\n\n```\nĐể tự động hóa quy trình rút ra insight khách hàng từ các đánh giá sản phẩm, chúng ta sẽ tạo một workflow n8n tích hợp với Shopify và một API phân tích cảm xúc (sentiment analysis). Dưới đây là cấu hình của workflow:\n\n```json\n{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"resource\": \"collection\",\n        \"operation\": \"getAll\"\n      },\n      \"name\": \"Shopify Get Reviews\",\n      \"type\": \"n8n-nodes-base.shopify\"\n    },\n    {\n      \"parameters\": {\n        \"text\": \"=\\\"{{$node[\\\"Shopify Get Reviews\\\"].json[\\\"reviews\\\"][0].text}}\\\"\",\n        \"resource\": \"sentiment\",\n        \"operation\": \"analyze\"\n      },\n      \"name\": \"Sentiment Analysis\",\n      \"type\": \"n8n-nodes-base.sentiment\"\n    },\n    {\n      \"parameters\": {\n        \"resource\": \"collection\",\n        \"operation\": \"create\"\n      },\n      \"name\": \"Save Insights\",\n      \"type\": \"n8n-nodes-base.googleSheets\"\n    }\n  ],\n  \"connections\": {\n    \"Shopify Get Reviews\": {\n      \"main\": [[\n        {\n          \"node\": \"Sentiment Analysis\",\n          \"type\": \"main\",\n          \"index\": 0\n        }\n      ]]\n    },\n    \"Sentiment Analysis\": {\n      \"main\": [[\n        {\n          \"node\": \"Save Insights\",\n          \"type\": \"main\",\n          \"index\": 0\n        }\n      ]]\n    }\n  }\n}\n```\n\nWorkflow này thực hiện các tác vụ sau:\n1. **Shopify Get Reviews**: Lấy các đánh giá sản phẩm mới nhất từ Shopify.\n2. **Sentiment Analysis**: Phân tích cảm xúc của từng đánh giá bằng API của bên thứ ba.\n3. **Save Insights**: Lưu nội dung đánh giá và điểm số cảm xúc vào Google Sheet để phân tích thêm.\n\nĐể triển khai workflow này, hãy sao chép cấu hình JSON vào n8n, kết nối tài khoản Shopify và Google Sheets của bạn, sau đó kích hoạt workflow. Workflow sẽ tự động chạy theo khoảng thời gian được thiết lập, giúp cập nhật liên tục các insight khách hàng của bạn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:10:38.928109Z",
+    "http_status": 200,
+    "content_hash": "7be4a4865ce384783bd7663cfe0927e13a939193cbacec33fecdbde24007abdd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ kỹ năng tự động hóa workflow n8n dành cho AI",
+  "short_description_vi": "Bộ kỹ năng tự động hóa workflow n8n giúp các trợ lý AI tự động hóa các workflow phức tạp một cách liền mạch. Với trọng tâm là nâng cao năng suất, bộ công cụ này tích hợp nhiều công cụ và dịch vụ khác nhau để quản lý tác vụ hiệu quả."
+}

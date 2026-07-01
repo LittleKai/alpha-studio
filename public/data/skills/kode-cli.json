@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kode-cli",
+  "slug": "kode-cli",
+  "name": "Kode-cli",
+  "headline": "Kode-cli: Your Workflow",
+  "short_description": "Kode CLI automates coding tasks for developers and operations teams. It connects to supported agents like Claude to streamline workflows, reducing manual effort and increasing productivity. Ideal for repetitive coding tasks and integration with development tools.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "shareAI-lab",
+  "install_command": "git clone https://github.com/shareAI-lab/Kode-cli.git",
+  "source_repo_url": "https://github.com/shareAI-lab/Kode-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Kode CLI is an innovative automation skill designed for post-human workflows, allowing users to delegate tasks effectively between humans and AI agents. This Claude Code skill enables seamless integration with your CI/CD pipeline, automating code reviews and enhancing project documentation through AGENTS.md. By running complex shell commands and managing outputs directly from the terminal, Kode CLI simplifies the development process, making it easier for teams to focus on high-value tasks. One of the key benefits of Kode CLI is its ability to improve workflow efficiency by utilizing subagents to handle specific tasks. This not only saves time but also reduces the cognitive load on developers and product managers. While the exact time savings are not quantified, the skill's intermediate implementation time of just 30 minutes suggests that teams can quickly start reaping the benefits of automation. By leveraging AI models for intelligent code suggestions and error corrections, Kode CLI enhances the overall quality of code produced, leading to faster project delivery. This skill is particularly valuable for developers, product managers, and AI practitioners who are looking to streamline their workflows and improve collaboration within their teams. With its medium GTM relevance, Kode CLI is well-suited for organizations aiming to adopt AI automation strategies in their development processes. By implementing Kode CLI, users can expect to see a significant enhancement in their operational efficiency, allowing them to allocate resources to more strategic initiatives. The implementation difficulty is categorized as intermediate, making it accessible for those with a foundational understanding of automation tools. Kode CLI fits seamlessly into AI-first workflows, enabling teams to harness the power of AI agents in their daily operations. With practical use cases such as automating code reviews and generating documentation, Kode CLI stands out as a must-have skill for any organization committed to leveraging AI automation for improved productivity.\nAutomate code reviews by integrating Kode with your CI/CD pipeline.\nGenerate and maintain project documentation using AGENTS.md integration.\nRun complex shell commands and manage outputs directly from the terminal.\nDelegate specific tasks to subagents for improved workflow efficiency.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/Kode-cli`",
+    "usage": "```\nUsing Kode CLI, automate the following repetitive coding task: [DESCRIBE TASK]. The task should involve [PROGRAMMING LANGUAGE] and [SPECIFIC TOOLS/FRAMEWORKS]. Ensure the automation includes [SPECIFIC REQUIREMENTS] and follows best practices for [CODE QUALITY/SECURITY/SCALABILITY].\n```\nCopy\n\n```\nTask: Automate the process of generating API documentation for a Node.js application using Swagger. Kode CLI will connect to the Claude agent to streamline this workflow.\n\nStep 1: Kode CLI will scan the Node.js application codebase to identify all API endpoints and their respective methods (GET, POST, PUT, DELETE).\nStep 2: The Claude agent will generate Swagger documentation in YAML format based on the identified endpoints and methods. The documentation will include detailed descriptions of each endpoint, request parameters, response formats, and example requests and responses.\nStep 3: Kode CLI will validate the generated Swagger documentation to ensure it adheres to best practices and follows the OpenAPI specification. Any errors or inconsistencies will be flagged for review.\nStep 4: The validated Swagger documentation will be saved in the project's documentation directory, and a notification will be sent to the development team via Slack, indicating that the documentation has been updated.\nStep 5: Kode CLI will schedule a daily check to ensure that the Swagger documentation remains up-to-date with any changes made to the API endpoints. If changes are detected, the documentation will be regenerated and validated automatically.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kode-cli#main-content",
+      "kode-cli#overview",
+      "kode-cli#setup",
+      "kode-cli#examples",
+      "kode-cli#tools",
+      "kode-cli#mcp",
+      "kode-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kode CLI is an innovative automation skill designed for post-human workflows, allowing users to delegate tasks effectively between humans and AI agents. This Claude Code skill enables seamless integration with your CI/CD pipeline, automating code reviews and enhancing project documentation through AGENTS.md. By running complex shell commands and managing outputs directly from the terminal, Kode CLI simplifies the development process, making it easier for teams to focus on high-value tasks. One of the key benefits of Kode CLI is its ability to improve workflow efficiency by utilizing subagents to handle specific tasks. This not only saves time but also reduces the cognitive load on developers and product managers. While the exact time savings are not quantified, the skill's intermediate implementation time of just 30 minutes suggests that teams can quickly start reaping the benefits of automation. By leveraging AI models for intelligent code suggestions and error corrections, Kode CLI enhances the overall quality of code produced, leading to faster project delivery. This skill is particularly valuable for developers, product managers, and AI practitioners who are looking to streamline their workflows and improve collaboration within their teams. With its medium GTM relevance, Kode CLI is well-suited for organizations aiming to adopt AI automation strategies in their development processes. By implementing Kode CLI, users can expect to see a significant enhancement in their operational efficiency, allowing them to allocate resources to more strategic initiatives. The implementation difficulty is categorized as intermediate, making it accessible for those with a foundational understanding of automation tools. Kode CLI fits seamlessly into AI-first workflows, enabling teams to harness the power of AI agents in their daily operations. With practical use cases such as automating code reviews and generating documentation, Kode CLI stands out as a must-have skill for any organization committed to leveraging AI automation for improved productivity.\nAutomate code reviews by integrating Kode with your CI/CD pipeline.\nGenerate and maintain project documentation using AGENTS.md integration.\nRun complex shell commands and manage outputs directly from the terminal.\nDelegate specific tasks to subagents for improved workflow efficiency.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/Kode-cli`",
+    "usage_vi": "```\nUsing Kode CLI, automate the following repetitive coding task: [DESCRIBE TASK]. The task should involve [PROGRAMMING LANGUAGE] and [SPECIFIC TOOLS/FRAMEWORKS]. Ensure the automation includes [SPECIFIC REQUIREMENTS] and follows best practices for [CODE QUALITY/SECURITY/SCALABILITY].\n```\nCopy\n\n```\nTask: Automate the process of generating API documentation for a Node.js application using Swagger. Kode CLI will connect to the Claude agent to streamline this workflow.\n\nStep 1: Kode CLI will scan the Node.js application codebase to identify all API endpoints and their respective methods (GET, POST, PUT, DELETE).\nStep 2: The Claude agent will generate Swagger documentation in YAML format based on the identified endpoints and methods. The documentation will include detailed descriptions of each endpoint, request parameters, response formats, and example requests and responses.\nStep 3: Kode CLI will validate the generated Swagger documentation to ensure it adheres to best practices and follows the OpenAPI specification. Any errors or inconsistencies will be flagged for review.\nStep 4: The validated Swagger documentation will be saved in the project's documentation directory, and a notification will be sent to the development team via Slack, indicating that the documentation has been updated.\nStep 5: Kode CLI will schedule a daily check to ensure that the Swagger documentation remains up-to-date with any changes made to the API endpoints. If changes are detected, the documentation will be regenerated and validated automatically.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:05.754839Z",
+    "http_status": 200,
+    "content_hash": "cb8564536b3eef589ccffe6f78eabafc8318ab437f124a7bf9c641aa899a821b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kode-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kode-cli.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kode-cli: Your Workflow",
+  "short_description_vi": "Kode CLI automates coding tasks for developers and operations teams. It connects to supported agents like Claude to streamline workflows, reducing manual effort and increasing productivity. Ideal for repetitive coding tasks and integration with development tools."
+}

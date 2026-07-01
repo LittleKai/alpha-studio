@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/minime-mcp",
+  "slug": "minime-mcp",
+  "name": "browser-use",
+  "headline": "MiniMe-MCP - AI Memory Layer for Developers",
+  "short_description": "MiniMe-MCP provides a universal, local memory layer for AI developer assistants. It enables persistent context across tools like Claude, Cursor, and Windsurf. Developers benefit from reduced context re-explanation, improving workflow efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "manujbawa",
+  "install_command": "git clone https://github.com/manujbawa/minime-mcp.git",
+  "source_repo_url": "https://github.com/manujbawa/minime-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-desktop",
+    "cursor-ide",
+    "memory",
+    "mcp-protocol",
+    "context-management",
+    "mcp-server",
+    "ollama",
+    "ai-assistant",
+    "developer-productivity",
+    "llm-memory",
+    "ai-memory",
+    "ide-agents",
+    "mcp",
+    "cline",
+    "model-context-protocol",
+    "persistent-memory"
+  ],
+  "sections": {
+    "overview": "Recallium is a local memory layer designed for AI developer assistants like Claude, Cursor, and Windsurf. It stores and recalls context persistently across sessions, eliminating the need to re-explain project details and workflows. By maintaining continuous memory, Recallium reduces friction in developer workflows and improves efficiency when working with multiple AI tools. The skill operates locally, giving developers full control over their data while enabling seamless context continuity. Setup is straightforward with dedicated installation guides and Docker support.\nMaintaining project context across multiple AI assistant sessions\nReducing repetitive context re-explanation when switching between Claude, Cursor, and Windsurf\nBuilding persistent developer workflows with AI tools\nStoring and recalling development notes and decisions locally",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/manujbawa/minime-mcp`",
+    "usage": "```\nInitialize and configure MiniMe-MCP for [PROJECT_NAME] with the following parameters: [CONTEXT_WINDOW_SIZE] (e.g., 8K tokens), [PERSISTENCE_PATH] (e.g., /Users/me/.minime), and [TOOLS_TO_SYNC] (e.g., Cursor, Windsurf). Ensure the memory layer captures [SPECIFIC_CONTEXT_TYPES] like code snippets, error logs, and design decisions. After setup, verify the memory is accessible via [COMMAND_LINE_TOOL] or [IDE_PLUGIN_NAME].\n```\nCopy\n\n```\nMiniMe-MCP successfully initialized for the 'E-Commerce API Redesign' project with a 16K token context window and persistence path set to `/Users/johndoe/.minime/ecommerce-api`. The memory layer is configured to track code snippets, error logs, and architectural decisions. Here’s a sample of the captured context:\n\n**Active Memory (Last 5 Entries):**\n1. *2024-05-20 14:32* - User added `POST /api/v2/orders` endpoint to handle bulk order creation. Error: `400 Bad Request` when `user_id` is missing. Suggested fix: Validate `user_id` in middleware.\n2. *2024-05-20 13:45* - User refactored `OrderService` class to use dependency injection for `PaymentGateway`. Memory notes: \"This change reduced test execution time by 30%.\"\n3. *2024-05-19 18:12* - User debugged a race condition in `InventorySyncTask`. Solution: Added `synchronized` block to `updateStock()` method.\n4. *2024-05-19 10:00* - User decided to migrate from REST to GraphQL for the frontend. Memory notes: \"GraphQL will reduce over-fetching by 40%.\"\n5. *2024-05-18 15:30* - User fixed a memory leak in `UserSessionManager` by adding `close()` calls to `HttpClient` instances.\n\n**Verification:**\n- Cursor IDE plugin confirms memory is synced (green status indicator).\n- Windsurf shows the last 3 entries in the sidebar under 'Project Context'.\n- CLI command `minime status` returns: `Memory layer active. 5 entries stored. Last updated: 2024-05-20 14:32`.\n\nNext steps: Ask MiniMe-MCP to recall the `OrderService` refactor details or suggest fixes for the `POST /api/v2/orders` endpoint error.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "minime-mcp#main-content",
+      "minime-mcp#overview",
+      "minime-mcp#setup",
+      "minime-mcp#examples",
+      "minime-mcp#tools",
+      "minime-mcp#mcp",
+      "minime-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Recallium is a local memory layer designed for AI developer assistants like Claude, Cursor, and Windsurf. It stores and recalls context persistently across sessions, eliminating the need to re-explain project details and workflows. By maintaining continuous memory, Recallium reduces friction in developer workflows and improves efficiency when working with multiple AI tools. The skill operates locally, giving developers full control over their data while enabling seamless context continuity. Setup is straightforward with dedicated installation guides and Docker support.\nMaintaining project context across multiple AI assistant sessions\nReducing repetitive context re-explanation when switching between Claude, Cursor, and Windsurf\nBuilding persistent developer workflows with AI tools\nStoring and recalling development notes and decisions locally",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/manujbawa/minime-mcp`",
+    "usage_vi": "```\nInitialize and configure MiniMe-MCP for [PROJECT_NAME] with the following parameters: [CONTEXT_WINDOW_SIZE] (e.g., 8K tokens), [PERSISTENCE_PATH] (e.g., /Users/me/.minime), and [TOOLS_TO_SYNC] (e.g., Cursor, Windsurf). Ensure the memory layer captures [SPECIFIC_CONTEXT_TYPES] like code snippets, error logs, and design decisions. After setup, verify the memory is accessible via [COMMAND_LINE_TOOL] or [IDE_PLUGIN_NAME].\n```\nCopy\n\n```\nMiniMe-MCP successfully initialized for the 'E-Commerce API Redesign' project with a 16K token context window and persistence path set to `/Users/johndoe/.minime/ecommerce-api`. The memory layer is configured to track code snippets, error logs, and architectural decisions. Here’s a sample of the captured context:\n\n**Active Memory (Last 5 Entries):**\n1. *2024-05-20 14:32* - User added `POST /api/v2/orders` endpoint to handle bulk order creation. Error: `400 Bad Request` when `user_id` is missing. Suggested fix: Validate `user_id` in middleware.\n2. *2024-05-20 13:45* - User refactored `OrderService` class to use dependency injection for `PaymentGateway`. Memory notes: \"This change reduced test execution time by 30%.\"\n3. *2024-05-19 18:12* - User debugged a race condition in `InventorySyncTask`. Solution: Added `synchronized` block to `updateStock()` method.\n4. *2024-05-19 10:00* - User decided to migrate from REST to GraphQL for the frontend. Memory notes: \"GraphQL will reduce over-fetching by 40%.\"\n5. *2024-05-18 15:30* - User fixed a memory leak in `UserSessionManager` by adding `close()` calls to `HttpClient` instances.\n\n**Verification:**\n- Cursor IDE plugin confirms memory is synced (green status indicator).\n- Windsurf shows the last 3 entries in the sidebar under 'Project Context'.\n- CLI command `minime status` returns: `Memory layer active. 5 entries stored. Last updated: 2024-05-20 14:32`.\n\nNext steps: Ask MiniMe-MCP to recall the `OrderService` refactor details or suggest fixes for the `POST /api/v2/orders` endpoint error.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:19:26.225220Z",
+    "http_status": 200,
+    "content_hash": "4f22bc2f54d9c9089089c3d4d4d713ff5c87669da28cf7f16267a385f3755701",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\minime-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\minime-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MiniMe-MCP - AI Memory Layer for Developers",
+  "short_description_vi": "MiniMe-MCP provides a universal, local memory layer for AI developer assistants. It enables persistent context across tools like Claude, Cursor, and Windsurf. Developers benefit from reduced context re-explanation, improving workflow efficiency."
+}

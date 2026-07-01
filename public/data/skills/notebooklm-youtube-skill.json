@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/notebooklm-youtube-skill",
+  "slug": "notebooklm-youtube-skill",
+  "name": "browser-use",
+  "headline": "NotebookLM YouTube Skill - Automate Research",
+  "short_description": "Automates research and notebook creation from YouTube videos. Identifies featured people, adds sources, and generates audio overviews. Connects to NotebookLM and Claude for research and automation workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "BayramAnnakov",
+  "install_command": "git clone https://github.com/BayramAnnakov/notebooklm-youtube-skill.git",
+  "source_repo_url": "https://github.com/BayramAnnakov/notebooklm-youtube-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill automates the process of converting YouTube videos into NotebookLM notebooks with generated audio overviews. It extracts people mentioned in videos, researches their backgrounds via web search, and creates a notebook containing the video transcript and research documents. The skill uses screenshot-based automation to interact with NotebookLM's interface, making it ideal for researchers, podcasters, and content creators who want to transform interviews, talks, and documentaries into searchable, listenable formats. Works with Claude Desktop and requires Chrome browser with NotebookLM access.\nConvert interview videos into searchable notebooks with speaker research\nGenerate podcast-style audio overviews from educational talks and lectures\nAutomate research documentation for documentary and news video content\nCreate study materials from YouTube educational content with speaker context\n[Audio file generated and attached]",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/notebooklm-youtube-skill`",
+    "usage": "```\nCreate a research notebook from this YouTube video: [YOUTUBE_VIDEO_URL]. Identify key speakers, summarize main points, and generate an audio overview. Connect to NotebookLM for structured notes and Claude for additional insights. Focus on [TOPIC] in the [INDUSTRY] sector.\n```\nCopy\n\n```\n# Research Notebook: [TOPIC] in [INDUSTRY] Sector",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "notebooklm-youtube-skill#main-content",
+      "notebooklm-youtube-skill#overview",
+      "notebooklm-youtube-skill#setup",
+      "notebooklm-youtube-skill#examples",
+      "notebooklm-youtube-skill#tools",
+      "notebooklm-youtube-skill#mcp",
+      "notebooklm-youtube-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill automates the process of converting YouTube videos into NotebookLM notebooks with generated audio overviews. It extracts people mentioned in videos, researches their backgrounds via web search, and creates a notebook containing the video transcript and research documents. The skill uses screenshot-based automation to interact with NotebookLM's interface, making it ideal for researchers, podcasters, and content creators who want to transform interviews, talks, and documentaries into searchable, listenable formats. Works with Claude Desktop and requires Chrome browser with NotebookLM access.\nConvert interview videos into searchable notebooks with speaker research\nGenerate podcast-style audio overviews from educational talks and lectures\nAutomate research documentation for documentary and news video content\nCreate study materials from YouTube educational content with speaker context\n[Audio file generated and attached]",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/notebooklm-youtube-skill`",
+    "usage_vi": "```\nCreate a research notebook from this YouTube video: [YOUTUBE_VIDEO_URL]. Identify key speakers, summarize main points, and generate an audio overview. Connect to NotebookLM for structured notes and Claude for additional insights. Focus on [TOPIC] in the [INDUSTRY] sector.\n```\nCopy\n\n```\n# Research Notebook: [TOPIC] in [INDUSTRY] Sector"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:03:34.266683Z",
+    "http_status": 200,
+    "content_hash": "1fb65dd7389afadae7aeeda3efed7f3d95ef21ed4ce9a5c79cd34e6f75ca1e7d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\notebooklm-youtube-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\notebooklm-youtube-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "NotebookLM YouTube Skill - Automate Research",
+  "short_description_vi": "Automates research and notebook creation from YouTube videos. Identifies featured people, adds sources, and generates audio overviews. Connects to NotebookLM and Claude for research and automation workflows."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/find-skills",
+  "slug": "find-skills",
+  "name": "Find Skills",
+  "headline": "find-skills: Discover AI Automation Efficiencies",
+  "short_description": "The find-skills Claude Code skill helps users discover and utilize various AI automation capabilities effectively. By streamlining the search for relevant skills, it enhances productivity and accelerates workflow automation, saving valuable development time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "vercel-labs",
+  "install_command": "git clone https://github.com/vercel-labs/skills.git",
+  "source_repo_url": "https://github.com/vercel-labs/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The find-skills Claude Code skill is designed to assist developers and product managers in identifying and leveraging AI automation skills seamlessly. By utilizing this skill, users can quickly search for relevant automation capabilities, ensuring they can integrate the best tools into their projects without unnecessary delays. The skill operates by querying a curated database of AI automation skills, providing users with tailored recommendations based on their specific needs. One of the key benefits of the find-skills skill is its ability to significantly reduce the time spent searching for suitable AI agent skills. By streamlining this process, developers can focus more on building and optimizing their applications rather than getting bogged down in skill discovery. This efficiency not only accelerates project timelines but also enhances overall productivity, allowing teams to deliver solutions faster. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their workflow automation processes. For instance, a product manager could use find-skills to quickly identify automation tools that integrate with their existing systems, while a developer might leverage it to find specific AI capabilities that can enhance their application's functionality. The implementation difficulty is low, making it accessible for users with varying levels of technical expertise. In an AI-first workflow, the find-skills skill plays a crucial role by enabling teams to harness the power of AI automation effectively. Use cases include automating repetitive tasks, integrating AI capabilities into customer service applications, and enhancing data processing workflows. By incorporating this skill into their processes, organizations can ensure they remain competitive in an increasingly automated landscape.\nAutomating customer support ticket routing based on specific skill sets to improve response times.\nIntegrating AI capabilities into e-commerce platforms for delivering personalized product recommendations.\nStreamlining data analysis processes by utilizing automated reporting tools that generate insights effortlessly.\nEnhancing marketing campaigns with targeted AI-driven insights to optimize engagement and conversion rates.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vercel-labs/skills`",
+    "usage": "```\nFind all available skills related to [TOPIC]. For each skill, provide a brief description, the category it belongs to, and a use case example. Focus on skills that can help with [SPECIFIC TASK].\n```\nCopy\n\n```\nHere are the top skills related to data analysis that can help with automating reporting processes:\n\n1. **Data Extraction**: Category: Data Processing. This skill automates the extraction of data from various sources like spreadsheets, databases, and APIs. Use case: Automatically pull monthly sales data from a CRM system to generate reports.\n\n2. **Report Generation**: Category: Automation. This skill creates structured reports from extracted data. Use case: Generate a monthly sales performance report with charts and key insights.\n\n3. **Data Visualization**: Category: Data Processing. This skill transforms data into visual formats like charts and graphs. Use case: Create dynamic visualizations of sales trends over the past year.\n\n4. **Automated Insights**: Category: Automation. This skill identifies trends and patterns in data. Use case: Highlight key trends in customer purchasing behavior to inform marketing strategies.\n\n5. **Scheduled Automation**: Category: Automation. This skill schedules and automates repetitive tasks. Use case: Set up a weekly task to extract, analyze, and report on customer feedback data.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "find-skills#main-content",
+      "find-skills#overview",
+      "find-skills#setup",
+      "find-skills#examples",
+      "find-skills#tools",
+      "find-skills#mcp",
+      "find-skills#related",
+      "vercel-composition-patterns",
+      "browser-use",
+      "vercel-react-native-skills"
+    ],
+    "overview_vi": "Skill Claude Code `find-skills` được thiết kế để hỗ trợ các developer và product manager dễ dàng xác định và tận dụng các skill tự động hóa bằng AI. Nhờ sử dụng skill này, người dùng có thể nhanh chóng tìm kiếm các tính năng tự động hóa phù hợp, đảm bảo tích hợp các công cụ tốt nhất vào dự án của mình mà không gặp phải những trì hoãn không đáng có. Skill này hoạt động bằng cách truy vấn một cơ sở dữ liệu được chọn lọc gồm các skill tự động hóa AI, cung cấp cho người dùng các đề xuất được tùy chỉnh theo nhu cầu cụ thể. Một trong những lợi ích chính của `find-skills` là khả năng giảm đáng kể thời gian tìm kiếm các skill AI agent phù hợp. Bằng cách tối giản quy trình này, các developer có thể tập trung nhiều hơn vào việc xây dựng và tối ưu hóa ứng dụng, thay vì bị sa lầy vào việc tìm kiếm skill. Sự hiệu quả này không chỉ đẩy nhanh tiến độ dự án mà còn nâng cao năng suất tổng thể, giúp các đội ngũ triển khai giải pháp nhanh hơn. Skill này đặc biệt hữu ích cho các developer, product manager và chuyên gia AI đang tìm cách cải thiện quy trình tự động hóa công việc của họ. Ví dụ, một product manager có thể dùng `find-skills` để nhanh chóng tìm ra các công cụ tự động hóa tích hợp được với hệ thống hiện tại, trong khi một developer có thể tận dụng nó để tìm kiếm các tính năng AI cụ thể nhằm nâng cấp chức năng cho ứng dụng của mình. Độ khó khi triển khai là rất thấp, giúp người dùng ở mọi cấp độ chuyên môn kỹ thuật đều có thể dễ dàng tiếp cận. Trong một quy trình làm việc ưu tiên AI (AI-first workflow), skill `find-skills` đóng vai trò quan trọng trong việc giúp các đội ngũ khai thác hiệu quả sức mạnh của tự động hóa AI. Các trường hợp sử dụng bao gồm tự động hóa các tác vụ lặp đi lặp lại, tích hợp tính năng AI vào các ứng dụng chăm sóc khách hàng, và cải thiện quy trình xử lý dữ liệu. Bằng cách đưa skill này vào quy trình vận hành, các tổ chức có thể đảm bảo duy trì thế cạnh tranh trong một bối cảnh tự động hóa ngày càng phát triển.\nTự động hóa việc phân tuyến ticket hỗ trợ khách hàng dựa trên các nhóm kỹ năng cụ thể để cải thiện thời gian phản hồi.\nTích hợp các tính năng AI vào nền tảng thương mại điện tử để đưa ra các gợi ý sản phẩm cá nhân hóa.\nTối ưu hóa quy trình phân tích dữ liệu bằng cách sử dụng các công cụ báo cáo tự động giúp tạo ra các insight một cách dễ dàng.\nNâng cao hiệu quả các chiến dịch marketing với các insight định hướng bởi AI nhằm tối ưu hóa tỷ lệ tương tác và chuyển đổi.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/vercel-labs/skills`",
+    "usage_vi": "```\nTìm tất cả các skill có sẵn liên quan đến [TOPIC]. Với mỗi skill, hãy cung cấp mô tả ngắn gọn, danh mục tương ứng và một ví dụ về trường hợp sử dụng. Tập trung vào các skill có thể hỗ trợ thực hiện [SPECIFIC TASK].\n```\nSao chép\n\n```\nDưới đây là các skill hàng đầu liên quan đến phân tích dữ liệu giúp tự động hóa quy trình báo cáo:\n\n1. **Data Extraction**: Danh mục: Data Processing. Skill này tự động hóa việc trích xuất dữ liệu từ nhiều nguồn khác nhau như bảng tính, cơ sở dữ liệu và API. Trường hợp sử dụng: Tự động lấy dữ liệu doanh số hàng tháng từ hệ thống CRM để tạo báo cáo.\n\n2. **Report Generation**: Danh mục: Automation. Skill này tạo các báo cáo có cấu trúc từ dữ liệu đã trích xuất. Trường hợp sử dụng: Tạo báo cáo hiệu suất doanh số hàng tháng đi kèm biểu đồ và các insight quan trọng.\n\n3. **Data Visualization**: Danh mục: Data Processing. Skill này chuyển đổi dữ liệu thành các định dạng trực quan như biểu đồ và đồ thị. Trường hợp sử dụng: Tạo các hình ảnh trực quan động về xu hướng doanh số trong năm qua.\n\n4. **Automated Insights**: Danh mục: Automation. Skill này xác định các xu hướng và mô hình trong dữ liệu. Trường hợp sử dụng: Làm nổi bật các xu hướng chính trong hành vi mua sắm của khách hàng để định hình chiến lược marketing.\n\n5. **Scheduled Automation**: Danh mục: Automation. Skill này lên lịch và tự động hóa các tác vụ lặp đi lặp lại. Trường hợp sử dụng: Thiết lập tác vụ hàng tuần để trích xuất, phân tích và báo cáo dữ liệu phản hồi của khách hàng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:02:43.916588Z",
+    "http_status": 200,
+    "content_hash": "2c38586a66ade6bde7a7fff3dd9005d95b1881fd640ff17408261a9bbe4a7200",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\find-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\find-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "find-skills: Khám phá các giải pháp tự động hóa AI hiệu quả",
+  "short_description_vi": "Skill Claude Code `find-skills` giúp người dùng dễ dàng khám phá và khai thác các tính năng tự động hóa bằng AI một cách hiệu quả. Bằng cách tối ưu hóa việc tìm kiếm các skill phù hợp, công cụ này giúp nâng cao năng suất và đẩy nhanh quy trình tự động hóa công việc, tiết kiệm thời gian phát triển quý báu."
+}

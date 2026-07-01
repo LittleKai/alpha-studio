@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reverse-skills",
+  "slug": "reverse-skills",
+  "name": "browser-use",
+  "headline": "Reverse Skills - Reverse Engineer IDA Code",
+  "short_description": "Reverse engineering skills for Claude Code. Designed for IDA-NO-MCP, this plugin exports decompiled results from IDA for analysis. Benefits security teams and reverse engineers. Integrates with IDA-NO-MCP and Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "P4nda0s",
+  "install_command": "git clone https://github.com/P4nda0s/reverse-skills.git",
+  "source_repo_url": "https://github.com/P4nda0s/reverse-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Reverse-skills is a comprehensive skill collection for reverse engineering and binary analysis, built to work with IDA-NO-MCP and 40+ AI programming tools. It includes eight specialized skills covering function symbol analysis, data structure reconstruction, dynamic instrumentation with Frida, code emulation via Unicorn, DEX dumping from Android apps, Unity IL2CPP symbol extraction, IDAPython scripting reference, and iOS app decryption. The skills enable security teams and reverse engineers to automate decompiled result analysis, generate dynamic instrumentation scripts, and extract symbols across multiple platforms. Setup is straightforward via npm with the command `npx skills add P4nda0s/reverse-skills`, and the collection supports updating and selective removal of individual skills.\nAnalyzing decompiled functions to identify symbols and reconstruct data structures\nGenerating Frida instrumentation scripts for dynamic binary analysis on Android and iOS\nDumping and decrypting applications (DEX files, IL2CPP binaries, encrypted iOS apps) for security research\nEmulating and debugging code segments using Unicorn engine for isolated execution analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/P4nda0s/reverse-skills`",
+    "usage": "```\nUse IDA-NO-MCP to export decompiled code from [TARGET_BINARY] with [SPECIFIC_FUNCTION_NAME] or [ADDRESS_RANGE]. Analyze the decompiled output for [SECURITY_PATTERNS] (e.g., buffer overflows, hardcoded credentials) or [LOGIC_FLAWS]. Provide a breakdown of critical vulnerabilities, suggested patches, and potential exploit paths. Include pseudocode snippets where relevant.\n```\nCopy\n\n```\nAfter analyzing the decompiled output of `libauth.so` (address range 0x400000-0x405000) using IDA-NO-MCP, the following critical issues were identified:\n\n1. **Buffer Overflow in `authenticate_user()`**\n   - **Location**: Function at 0x401234\n   - **Issue**: Unbounded `strcpy()` into a 64-byte stack buffer from user-controlled input (parameter `username`).\n   - **Exploit Path**: Attacker can craft a 256-byte username to overwrite the return address, redirecting execution to shellcode in the heap.\n   - **Pseudocode**:\n ```c\n     void authenticate_user(char *username) {\n         char local_buf[64]; // Stack buffer\n         strcpy(local_buf, username); // No bounds checking\n         // ... rest of auth logic\n     }\n ```\n   - **Patch**: Replace `strcpy()` with `strncpy(local_buf, username, sizeof(local_buf)-1)` and add null terminator.\n\n2. **Hardcoded AES Key**\n   - **Location**: Global variable at 0x403000\n   - **Issue**: AES-256 key is hardcoded as `0xdeadbeefcafebabe...` in plaintext.\n   - **Risk**: Compromised binary exposes key, allowing decryption of sensitive data in transit.\n   - **Mitigation**: Fetch key from secure key management system (e.g., AWS KMS) at runtime.\n\n3. **Race Condition in `file_write()`**\n   - **Location**: Function at 0x402560\n   - **Issue**: No file locking mechanism when writing to `/tmp/auth.log`.\n   - **Exploit Path**: Symlink attack allows overwriting arbitrary files (e.g., `/etc/passwd`).\n   - **Patch**: Use `flock()` or `O_EXCL` flag when opening files.\n\n**Recommendations**:\n- Prioritize patching the buffer overflow (CVSS 9.8) and hardcoded key (CVSS 7.5).\n- Deploy static analysis tools (e.g., CodeQL) in CI/CD to catch similar issues early.\n- Conduct a threat modeling exercise to identify additional attack surfaces.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "reverse-skills#main-content",
+      "reverse-skills#overview",
+      "reverse-skills#setup",
+      "reverse-skills#examples",
+      "reverse-skills#tools",
+      "reverse-skills#mcp",
+      "reverse-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Reverse-skills is a comprehensive skill collection for reverse engineering and binary analysis, built to work with IDA-NO-MCP and 40+ AI programming tools. It includes eight specialized skills covering function symbol analysis, data structure reconstruction, dynamic instrumentation with Frida, code emulation via Unicorn, DEX dumping from Android apps, Unity IL2CPP symbol extraction, IDAPython scripting reference, and iOS app decryption. The skills enable security teams and reverse engineers to automate decompiled result analysis, generate dynamic instrumentation scripts, and extract symbols across multiple platforms. Setup is straightforward via npm with the command `npx skills add P4nda0s/reverse-skills`, and the collection supports updating and selective removal of individual skills.\nAnalyzing decompiled functions to identify symbols and reconstruct data structures\nGenerating Frida instrumentation scripts for dynamic binary analysis on Android and iOS\nDumping and decrypting applications (DEX files, IL2CPP binaries, encrypted iOS apps) for security research\nEmulating and debugging code segments using Unicorn engine for isolated execution analysis",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/P4nda0s/reverse-skills`",
+    "usage_vi": "```\nUse IDA-NO-MCP to export decompiled code from [TARGET_BINARY] with [SPECIFIC_FUNCTION_NAME] or [ADDRESS_RANGE]. Analyze the decompiled output for [SECURITY_PATTERNS] (e.g., buffer overflows, hardcoded credentials) or [LOGIC_FLAWS]. Provide a breakdown of critical vulnerabilities, suggested patches, and potential exploit paths. Include pseudocode snippets where relevant.\n```\nCopy\n\n```\nAfter analyzing the decompiled output of `libauth.so` (address range 0x400000-0x405000) using IDA-NO-MCP, the following critical issues were identified:\n\n1. **Buffer Overflow in `authenticate_user()`**\n   - **Location**: Function at 0x401234\n   - **Issue**: Unbounded `strcpy()` into a 64-byte stack buffer from user-controlled input (parameter `username`).\n   - **Exploit Path**: Attacker can craft a 256-byte username to overwrite the return address, redirecting execution to shellcode in the heap.\n   - **Pseudocode**:\n ```c\n     void authenticate_user(char *username) {\n         char local_buf[64]; // Stack buffer\n         strcpy(local_buf, username); // No bounds checking\n         // ... rest of auth logic\n     }\n ```\n   - **Patch**: Replace `strcpy()` with `strncpy(local_buf, username, sizeof(local_buf)-1)` and add null terminator.\n\n2. **Hardcoded AES Key**\n   - **Location**: Global variable at 0x403000\n   - **Issue**: AES-256 key is hardcoded as `0xdeadbeefcafebabe...` in plaintext.\n   - **Risk**: Compromised binary exposes key, allowing decryption of sensitive data in transit.\n   - **Mitigation**: Fetch key from secure key management system (e.g., AWS KMS) at runtime.\n\n3. **Race Condition in `file_write()`**\n   - **Location**: Function at 0x402560\n   - **Issue**: No file locking mechanism when writing to `/tmp/auth.log`.\n   - **Exploit Path**: Symlink attack allows overwriting arbitrary files (e.g., `/etc/passwd`).\n   - **Patch**: Use `flock()` or `O_EXCL` flag when opening files.\n\n**Recommendations**:\n- Prioritize patching the buffer overflow (CVSS 9.8) and hardcoded key (CVSS 7.5).\n- Deploy static analysis tools (e.g., CodeQL) in CI/CD to catch similar issues early.\n- Conduct a threat modeling exercise to identify additional attack surfaces.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:27:02.015826Z",
+    "http_status": 200,
+    "content_hash": "42edf7ab006283737c2906a7c0c5a0a250a31284aeae35381d5aa55c4df817df",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reverse-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reverse-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Reverse Skills - Reverse Engineer IDA Code",
+  "short_description_vi": "Reverse engineering skills for Claude Code. Designed for IDA-NO-MCP, this plugin exports decompiled results from IDA for analysis. Benefits security teams and reverse engineers. Integrates with IDA-NO-MCP and Claude Code."
+}

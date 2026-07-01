@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/civitai-web-scraper",
+  "slug": "civitai-web-scraper",
+  "name": "Civitai Web Scraper",
+  "headline": "Civitai Web Scraper - Extract AI Images & Prompts",
+  "short_description": "The civitai-web-scraper is a powerful tool designed to extract AI-generated images and prompts from Civitai. Built in Python, it enables users to efficiently gather creative content for various applications, enhancing their projects with unique visuals and ideas.",
+  "tier": "Gold",
+  "category": "GrowthMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "ScreamingHawk",
+  "install_command": "claude install ScreamingHawk/civitai-web-scraper",
+  "source_repo_url": "https://github.com/ScreamingHawk/civitai-web-scraper",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "web scraping",
+    "data extraction",
+    "Python",
+    "AI images"
+  ],
+  "sections": {
+    "overview": "The civitai-web-scraper is a Python tool that automates the extraction of AI-generated images and their associated prompts from Civitai. It provides researchers, artists, and developers with an efficient way to gather creative content at scale. The tool includes both a command-line scraper and a server interface for flexible deployment. Users configure the scraper via a simple INI file, then run the script to begin collecting data. This enables bulk research on generative AI outputs and prompt engineering patterns.\nCollecting AI-generated visuals for marketing campaigns\nGathering prompts for creative writing\nAnalyzing trends in AI-generated content",
+    "setup": "Terminal\nCopy\n`claude install ScreamingHawk/civitai-web-scraper`\n`git clone https://github.com/ScreamingHawk/civitai-web-scraper`",
+    "usage": "```\nExtract all AI-generated images and their associated prompts from Civitai for the following categories: [CATEGORY_1], [CATEGORY_2], and [CATEGORY_3]. Save the images to a local directory named 'civitai_images' and organize them by category. Include metadata such as the model used, resolution, and likes in a CSV file named 'civitai_metadata.csv'.\n```\nCopy\n\n```\n### Extracted Content from Civitai\n\n**Category: Cyberpunk Art**\n\n1. **Image:** `civitai_images/cyberpunk_art/001_cyberpunk_cityscape.png`\n   - **Prompt:** \"A neon-lit cyberpunk city at night, towering skyscrapers with holographic billboards, rain-slicked streets reflecting the glow, cinematic lighting, ultra-detailed, 8K resolution\"\n   - **Model Used:** Stable Diffusion XL 1.0\n   - **Resolution:** 1024x1024\n   - **Likes:** 1,247\n   - **Tags:** cyberpunk, futuristic, neon, cityscape, rain, holographic\n\n2. **Image:** `civitai_images/cyberpunk_art/002_cyberpunk_hacker.png`\n   - **Prompt:** \"A lone hacker in a dark room, wearing a futuristic visor, typing on a holographic keyboard, surrounded by floating code and data streams, cyberpunk aesthetic, highly detailed\"\n   - **Model Used:** SDXL 0.9\n   - **Resolution:** 1152x896\n   - **Likes:** 892\n   - **Tags:** hacker, cyberpunk, futuristic, technology, dark\n\n3. **Image:** `civitai_images/cyberpunk_art/003_cyberpunk_character.png`\n   - **Prompt:** \"A cybernetically enhanced mercenary with glowing cybernetic eyes, wearing a trench coat and gas mask, standing in a dystopian alley, cinematic lighting, ultra-realistic\"\n   - **Model Used:** Realistic Vision v5.1\n   - **Resolution:** 768x1024\n   - **Likes:** 2,103\n   - **Tags:** mercenary, cybernetic, dystopian, character design, futuristic\n\n**Category: Fantasy Creatures**\n\n1. **Image:** `civitai_images/fantasy_creatures/001_dragon.png`\n   - **Prompt:** \"A majestic fire-breathing dragon soaring over a medieval castle, detailed scales, glowing eyes, epic fantasy scene, high fantasy art style\"\n   - **Model Used:** Juggernaut XL\n   - **Resolution:** 1024x1024\n   - **Likes:** 1,567\n   - **Tags:** dragon, fantasy, medieval, fire, epic\n\n2. **Image:** `civitai_images/fantasy_creatures/002_elf_archer.png`\n   - **Prompt:** \"An elven archer in a mystical forest, wearing leafy armor, aiming a glowing bow, surrounded by ancient trees and magical mist\"\n   - **Model Used:** Anything V5\n   - **Resolution:** 896x1152\n   - **Likes:** 987\n   - **Tags:** elf, archer, fantasy, forest, mystical\n\n**Metadata Summary (civitai_metadata.csv):**\n```csv\nFilename,Category,Prompt,Model,Resolution,Likes,Tags\n001_cyberpunk_cityscape.png,Cyberpunk Art,\"A neon-lit cyberpunk city at night...\",Stable Diffusion XL 1.0,1024x1024,1247,\"cyberpunk,futuristic,neon,cityscape,rain,holographic\"\n002_cyberpunk_hacker.png,Cyberpunk Art,\"A lone hacker in a dark room...\",SDXL 0.9,1152x896,892,\"hacker,cyberpunk,futuristic,technology,dark\"\n003_cyberpunk_character.png,Cyberpunk Art,\"A cybernetically enhanced mercenary...\",Realistic Vision v5.1,768x1024,2103,\"mercenary,cybernetic,dystopian,character design,futuristic\"\n001_dragon.png,Fantasy Creatures,\"A majestic fire-breathing dragon...\",Juggernaut XL,1024x1024,1567,\"dragon,fantasy,medieval,fire,epic\"\n002_elf_archer.png,Fantasy Creatures,\"An elven archer in a mystical forest...\",Anything V5,896x1152,987,\"elf,archer,fantasy,forest,mystical\"\n```\n\n**Total Images Extracted:** 5\n**Total Likes:** 6,796\n**Most Popular Model:** Realistic Vision v5.1 (1 image, 2,103 likes)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "civitai-web-scraper#main-content",
+      "civitai-web-scraper#overview",
+      "civitai-web-scraper#setup",
+      "civitai-web-scraper#examples",
+      "civitai-web-scraper#tools",
+      "civitai-web-scraper#mcp",
+      "civitai-web-scraper#related",
+      "deep-research-web-ui",
+      "clinical-trial-inspector",
+      "deep-research"
+    ],
+    "overview_vi": "civitai-web-scraper là công cụ Python giúp tự động hóa quy trình trích xuất hình ảnh do AI tạo ra và các prompt đi kèm từ Civitai. Công cụ này mang đến cho các nhà nghiên cứu, nghệ sĩ và nhà phát triển một phương thức hiệu quả để thu thập nội dung sáng tạo ở quy mô lớn. Dự án bao gồm cả công cụ scraper dòng lệnh (CLI) và giao diện server để triển khai linh hoạt. Người dùng chỉ cần cấu hình scraper qua một file INI đơn giản, sau đó chạy script để bắt đầu thu thập dữ liệu. Nhờ đó, việc nghiên cứu hàng loạt các kết quả đầu ra của AI tạo sinh (generative AI) và các cấu trúc prompt (prompt engineering) trở nên dễ dàng hơn.\n- Thu thập hình ảnh do AI tạo ra cho các chiến dịch marketing\n- Thu thập prompt phục vụ sáng tạo nội dung văn bản\n- Phân tích xu hướng của các nội dung do AI tạo ra",
+    "setup_vi": "Terminal\nSao chép\n`claude install ScreamingHawk/civitai-web-scraper`\n`git clone https://github.com/ScreamingHawk/civitai-web-scraper`",
+    "usage_vi": "```\nTrích xuất tất cả hình ảnh do AI tạo ra và các prompt đi kèm từ Civitai cho các danh mục sau: [CATEGORY_1], [CATEGORY_2] và [CATEGORY_3]. Lưu các hình ảnh vào thư mục cục bộ có tên là 'civitai_images' và sắp xếp chúng theo danh mục. Đính kèm metadata như model được sử dụng, độ phân giải và số lượt thích vào một file CSV có tên là 'civitai_metadata.csv'.\n```\nSao chép\n\n```\n### Nội dung trích xuất từ Civitai\n\n**Danh mục: Cyberpunk Art**\n\n1. **Hình ảnh:** `civitai_images/cyberpunk_art/001_cyberpunk_cityscape.png`\n   - **Prompt:** \"A neon-lit cyberpunk city at night, towering skyscrapers with holographic billboards, rain-slicked streets reflecting the glow, cinematic lighting, ultra-detailed, 8K resolution\"\n   - **Model sử dụng:** Stable Diffusion XL 1.0\n   - **Độ phân giải:** 1024x1024\n   - **Lượt thích:** 1.247\n   - **Tags:** cyberpunk, futuristic, neon, cityscape, rain, holographic\n\n2. **Hình ảnh:** `civitai_images/cyberpunk_art/002_cyberpunk_hacker.png`\n   - **Prompt:** \"A lone hacker in a dark room, wearing a futuristic visor, typing on a holographic keyboard, surrounded by floating code and data streams, cyberpunk aesthetic, highly detailed\"\n   - **Model sử dụng:** SDXL 0.9\n   - **Độ phân giải:** 1152x896\n   - **Lượt thích:** 892\n   - **Tags:** hacker, cyberpunk, futuristic, technology, dark\n\n3. **Hình ảnh:** `civitai_images/cyberpunk_art/003_cyberpunk_character.png`\n   - **Prompt:** \"A cybernetically enhanced mercenary with glowing cybernetic eyes, wearing a trench coat and gas mask, standing in a dystopian alley, cinematic lighting, ultra-realistic\"\n   - **Model sử dụng:** Realistic Vision v5.1\n   - **Độ phân giải:** 768x1024\n   - **Lượt thích:** 2.103\n   - **Tags:** mercenary, cybernetic, dystopian, character design, futuristic\n\n**Danh mục: Fantasy Creatures**\n\n1. **Hình ảnh:** `civitai_images/fantasy_creatures/001_dragon.png`\n   - **Prompt:** \"A majestic fire-breathing dragon soaring over a medieval castle, detailed scales, glowing eyes, epic fantasy scene, high fantasy art style\"\n   - **Model sử dụng:** Juggernaut XL\n   - **Độ phân giải:** 1024x1024\n   - **Lượt thích:** 1.567\n   - **Tags:** dragon, fantasy, medieval, fire, epic\n\n2. **Hình ảnh:** `civitai_images/fantasy_creatures/002_elf_archer.png`\n   - **Prompt:** \"An elven archer in a mystical forest, wearing leafy armor, aiming a glowing bow, surrounded by ancient trees and magical mist\"\n   - **Model sử dụng:** Anything V5\n   - **Độ phân giải:** 896x1152\n   - **Lượt thích:** 987\n   - **Tags:** elf, archer, fantasy, forest, mystical\n\n**Tóm tắt Metadata (civitai_metadata.csv):**\n```csv\nFilename,Category,Prompt,Model,Resolution,Likes,Tags\n001_cyberpunk_cityscape.png,Cyberpunk Art,\"A neon-lit cyberpunk city at night...\",Stable Diffusion XL 1.0,1024x1024,1247,\"cyberpunk,futuristic,neon,cityscape,rain,holographic\"\n002_cyberpunk_hacker.png,Cyberpunk Art,\"A lone hacker in a dark room...\",SDXL 0.9,1152x896,892,\"hacker,cyberpunk,futuristic,technology,dark\"\n003_cyberpunk_character.png,Cyberpunk Art,\"A cybernetically enhanced mercenary...\",Realistic Vision v5.1,768x1024,2103,\"mercenary,cybernetic,dystopian,character design,futuristic\"\n001_dragon.png,Fantasy Creatures,\"A majestic fire-breathing dragon...\",Juggernaut XL,1024x1024,1567,\"dragon,fantasy,medieval,fire,epic\"\n002_elf_archer.png,Fantasy Creatures,\"An elven archer in a mystical forest...\",Anything V5,896x1152,987,\"elf,archer,fantasy,forest,mystical\"\n```\n\n**Tổng số hình ảnh đã trích xuất:** 5\n**Tổng số lượt thích:** 6.796\n**Model phổ biến nhất:** Realistic Vision v5.1 (1 hình ảnh, 2.103 lượt thích)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:01:00.566913Z",
+    "http_status": 200,
+    "content_hash": "3c5911da8752babaff3c0c8fe4d185920272359f3cb70daa340dc7a2d2a5529e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\civitai-web-scraper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\civitai-web-scraper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Civitai Web Scraper - Trích xuất Hình ảnh & Prompt AI",
+  "short_description_vi": "civitai-web-scraper là công cụ mạnh mẽ được thiết kế để trích xuất hình ảnh do AI tạo ra và các prompt đi kèm từ Civitai. Được phát triển bằng Python, công cụ này giúp người dùng thu thập nội dung sáng tạo một cách hiệu quả cho nhiều ứng dụng khác nhau, từ đó nâng tầm dự án với những hình ảnh và ý tưởng độc đáo."
+}

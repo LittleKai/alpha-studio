@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-skills",
+  "slug": "awesome-skills",
+  "name": "Awesome Skills",
+  "headline": "ai agent skills directory for automation",
+  "short_description": "A directory of skills for AI agents, enabling operations teams to extend agent capabilities with packaged routines and workflows. Integrates with Claude and other AI agents via Skillz MCP server.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "intellectronica",
+  "install_command": "git clone https://github.com/intellectronica/awesome-skills.git",
+  "source_repo_url": "https://github.com/intellectronica/awesome-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "directory",
+    "skills",
+    "agents",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Awesome Skills is a community-maintained directory of reusable routines and workflows designed to extend the capabilities of AI agents, including Claude. Each skill is a packaged module that adds specific functionality to your AI agent, enabling operations teams and developers to compose complex workflows without building from scratch. Skills integrate seamlessly with Claude and any AI agent using the Skillz MCP server, a standardized protocol for skill distribution. The repository welcomes community contributions through pull requests, making it a collaborative resource for sharing and discovering agent capabilities.\nExtending Claude with domain-specific workflows\nBuilding modular AI agent capabilities for operations teams\nDiscovering and reusing pre-built routines across agents\nContributing packaged skills to the AI agent ecosystem",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/intellectronica/awesome-skills`",
+    "usage": "```\nExtend the capabilities of my AI agent by implementing the [SKILL_NAME] skill from the awesome-skills directory. Use the Skillz MCP server to integrate this skill into my existing workflow. Focus on [SPECIFIC_USE_CASE] and ensure the agent can handle [KEY_TASKS]. Document the implementation steps and provide a test case to verify functionality.\n```\nCopy\n\n```\nI've successfully integrated the **Automated Incident Escalation** skill from the awesome-skills directory into your AI agent using the Skillz MCP server. This skill automates the triage and escalation of IT incidents based on severity and SLA breaches. Here's how it works in your environment:\n\n**Implementation Steps:**\n1. Installed the Skillz MCP server and configured it to connect to your incident management system (ServiceNow).\n2. Deployed the **Automated Incident Escalation** skill, which monitors incoming tickets in real-time.\n3. Configured escalation rules: P1 incidents escalate to the on-call engineer within 5 minutes, P2 within 30 minutes, and P3 within 2 hours.\n4. Set up automated notifications via Slack and email for escalated incidents.\n5. Tested the workflow by creating a mock P1 incident—your agent detected it, escalated it to the on-call engineer, and sent alerts within 4 minutes.\n\n**Key Features Activated:**\n- **Dynamic Escalation:** Adjusts based on incident priority and team availability.\n- **Audit Logging:** Tracks all escalation actions for compliance.\n- **Integration Hooks:** Works with your existing tools (Jira, PagerDuty, and Microsoft Teams).\n\n**Next Steps:**\n- Review the escalation rules in the Skillz MCP server configuration file to align with your team’s policies.\n- Run a live test with a real incident to validate performance.\n\nThe skill is now active and ready to handle incidents autonomously. Would you like to customize any of the escalation thresholds or add additional integrations?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-skills#main-content",
+      "awesome-skills#overview",
+      "awesome-skills#setup",
+      "awesome-skills#examples",
+      "awesome-skills#tools",
+      "awesome-skills#mcp",
+      "awesome-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Skills is a community-maintained directory of reusable routines and workflows designed to extend the capabilities of AI agents, including Claude. Each skill is a packaged module that adds specific functionality to your AI agent, enabling operations teams and developers to compose complex workflows without building from scratch. Skills integrate seamlessly with Claude and any AI agent using the Skillz MCP server, a standardized protocol for skill distribution. The repository welcomes community contributions through pull requests, making it a collaborative resource for sharing and discovering agent capabilities.\nExtending Claude with domain-specific workflows\nBuilding modular AI agent capabilities for operations teams\nDiscovering and reusing pre-built routines across agents\nContributing packaged skills to the AI agent ecosystem",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/intellectronica/awesome-skills`",
+    "usage_vi": "```\nExtend the capabilities of my AI agent by implementing the [SKILL_NAME] skill from the awesome-skills directory. Use the Skillz MCP server to integrate this skill into my existing workflow. Focus on [SPECIFIC_USE_CASE] and ensure the agent can handle [KEY_TASKS]. Document the implementation steps and provide a test case to verify functionality.\n```\nCopy\n\n```\nI've successfully integrated the **Automated Incident Escalation** skill from the awesome-skills directory into your AI agent using the Skillz MCP server. This skill automates the triage and escalation of IT incidents based on severity and SLA breaches. Here's how it works in your environment:\n\n**Implementation Steps:**\n1. Installed the Skillz MCP server and configured it to connect to your incident management system (ServiceNow).\n2. Deployed the **Automated Incident Escalation** skill, which monitors incoming tickets in real-time.\n3. Configured escalation rules: P1 incidents escalate to the on-call engineer within 5 minutes, P2 within 30 minutes, and P3 within 2 hours.\n4. Set up automated notifications via Slack and email for escalated incidents.\n5. Tested the workflow by creating a mock P1 incident—your agent detected it, escalated it to the on-call engineer, and sent alerts within 4 minutes.\n\n**Key Features Activated:**\n- **Dynamic Escalation:** Adjusts based on incident priority and team availability.\n- **Audit Logging:** Tracks all escalation actions for compliance.\n- **Integration Hooks:** Works with your existing tools (Jira, PagerDuty, and Microsoft Teams).\n\n**Next Steps:**\n- Review the escalation rules in the Skillz MCP server configuration file to align with your team’s policies.\n- Run a live test with a real incident to validate performance.\n\nThe skill is now active and ready to handle incidents autonomously. Would you like to customize any of the escalation thresholds or add additional integrations?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:34:41.347029Z",
+    "http_status": 200,
+    "content_hash": "0d8e633b5015ba54b52418c9d4d59a235c8d414ef368691301f130104c268288",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ai agent skills directory for automation",
+  "short_description_vi": "A directory of skills for AI agents, enabling operations teams to extend agent capabilities with packaged routines and workflows. Integrates with Claude and other AI agents via Skillz MCP server."
+}

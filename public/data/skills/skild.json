@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skild",
+  "slug": "skild",
+  "name": "Skild",
+  "headline": "Skild - Manage AI Agent Skills",
+  "short_description": "Skild is a package manager for AI Agent Skills, enabling developers to discover, install, manage, and publish skills for AI agents. It streamlines the integration of AI capabilities into workflows, benefiting operations teams by reducing setup time and improving agent functionality.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "Peiiii",
+  "install_command": "git clone https://github.com/Peiiii/skild.git",
+  "source_repo_url": "https://github.com/Peiiii/skild",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skild is the npm-equivalent package manager for Agent Skills, an open standard by Anthropic for extending AI agents. It enables developers to discover, install, manage, and publish skills across multiple platforms including Claude, Cursor, Codex, Windsurf, Antigravity, and OpenCode. Skild streamlines skill discovery through its registry and GitHub integration, supports both global and project-level installations, and includes features like skillsets for bundling multiple skills, cross-platform sync to keep tools in lockstep, and skill validation. Operations teams benefit from reduced setup time and improved agent functionality, while developers can create and share custom skills through an integrated publishing workflow.\nInstall and manage AI skills from GitHub repositories or the Skild registry\nCreate and publish custom Agent Skills for internal or community use\nSync skills across multiple AI platforms (Claude, Cursor, Codex, Windsurf) simultaneously\nBundle multiple related skills into skillsets for one-command installation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Peiiii/skild`",
+    "usage": "```\nUse skild to [ACTION: discover/install/manage/publish] the AI skill '[SKILL_NAME]' for [PURPOSE: automation/testing/integration]. If installing, specify the version or source (e.g., 'from the official registry' or 'from GitHub repo [URL]'). Include any required dependencies or configuration flags.\n```\nCopy\n\n```\n```json\n{\n  \"action\": \"install\",\n  \"skill_name\": \"data_ingestion\",\n  \"version\": \"1.2.0\",\n  \"source\": \"official registry\",\n  \"dependencies\": [\"pandas>=2.0.0\", \"requests>=2.31.0\"],\n  \"output\": {\n    \"status\": \"success\",\n    \"installed_path\": \"/usr/local/lib/skild/skills/data_ingestion\",\n    \"dependencies_installed\": true,\n    \"next_steps\": [\n      \"Verify installation with: skild list\",\n      \"Configure API keys in ~/.skild/config.yaml\",\n      \"Test with: skild test data_ingestion --input sample.csv\"\n    ]\n  }\n}\n```\n\n**Example Workflow:**\nYou’re building an AI agent to automate customer support ticket routing. After researching skills in the skild registry, you decide to install `ticket_classifier` to categorize incoming tickets by urgency and topic. Using skild, you run:\n```bash\nskild install ticket_classifier --version 0.9.5 --source official_registry\n```\n\nThe output confirms the skill is installed in `/opt/ai_agents/skills/ticket_classifier` and lists dependencies like `scikit-learn` and `spaCy`. A warning appears: \"Missing config: Add `MODEL_PATH=/models/ticket_classifier_v0.9.5` to ~/.skild/config.yaml.\" You create the directory, download the pre-trained model from the skill’s GitHub releases, and update the config. Finally, you test the skill:\n```bash\nskild test ticket_classifier --input tickets.jsonl --output routed_tickets.json\n```\n\nThe test processes 500 tickets, achieving 89% accuracy on your validation set. The routed_tickets.json file shows tickets labeled with `priority: high`, `topic: billing`, and `assigned_agent: alice@company.com`. You’re now ready to integrate the skill into your agent’s pipeline.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skild#main-content",
+      "skild#overview",
+      "skild#setup",
+      "skild#examples",
+      "skild#tools",
+      "skild#mcp",
+      "skild#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skild là trình quản lý gói tương tự như npm dành cho Agent Skills, một tiêu chuẩn mở của Anthropic để mở rộng khả năng của AI agent. Công cụ này cho phép nhà phát triển tìm kiếm, cài đặt, quản lý và phát hành các skill trên nhiều nền tảng bao gồm Claude, Cursor, Codex, Windsurf, Antigravity và OpenCode. Skild tối ưu hóa việc tìm kiếm skill thông qua registry của mình và tích hợp với GitHub, hỗ trợ cả cài đặt global và cài đặt ở cấp dự án (project-level), đồng thời đi kèm các tính năng như skillset để đóng gói nhiều skill, đồng bộ hóa đa nền tảng để giữ các công cụ luôn đồng bộ, và kiểm định skill (skill validation). Các đội ngũ vận hành sẽ tiết kiệm được thời gian setup và cải thiện tính năng của agent, trong khi các nhà phát triển có thể tạo và chia sẻ các skill tùy chỉnh thông qua quy trình phát hành (publishing workflow) được tích hợp sẵn.\n\nCài đặt và quản lý các AI skill từ các repository GitHub hoặc Skild registry\nTạo và phát hành các Agent Skill tùy chỉnh để sử dụng nội bộ hoặc cho cộng đồng\nĐồng bộ hóa các skill trên nhiều nền tảng AI (Claude, Cursor, Codex, Windsurf) cùng một lúc\nĐóng gói nhiều skill liên quan thành các skillset để cài đặt chỉ bằng một câu lệnh",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Peiiii/skild`",
+    "usage_vi": "```\nSử dụng skild để [ACTION: discover/install/manage/publish] AI skill '[SKILL_NAME]' cho [PURPOSE: automation/testing/integration]. Nếu cài đặt, hãy chỉ định phiên bản hoặc nguồn (ví dụ: 'từ official registry' hoặc 'từ GitHub repo [URL]'). Đi kèm với các dependency hoặc configuration flag bắt buộc.\n```\nCopy\n\n```\n```json\n{\n  \"action\": \"install\",\n  \"skill_name\": \"data_ingestion\",\n  \"version\": \"1.2.0\",\n  \"source\": \"official registry\",\n  \"dependencies\": [\"pandas>=2.0.0\", \"requests>=2.31.0\"],\n  \"output\": {\n    \"status\": \"success\",\n    \"installed_path\": \"/usr/local/lib/skild/skills/data_ingestion\",\n    \"dependencies_installed\": true,\n    \"next_steps\": [\n      \"Xác minh cài đặt bằng lệnh: skild list\",\n      \"Cấu hình API key trong ~/.skild/config.yaml\",\n      \"Kiểm thử bằng lệnh: skild test data_ingestion --input sample.csv\"\n    ]\n  }\n}\n```\n\n**Quy trình mẫu (Example Workflow):**\nBạn đang xây dựng một AI agent để tự động hóa việc định tuyến ticket hỗ trợ khách hàng. Sau khi tìm hiểu các skill trong skild registry, bạn quyết định cài đặt `ticket_classifier` để phân loại các ticket gửi đến theo mức độ khẩn cấp và chủ đề. Sử dụng skild, bạn chạy lệnh:\n```bash\nskild install ticket_classifier --version 0.9.5 --source official_registry\n```\n\nKết quả đầu ra xác nhận skill đã được cài đặt trong `/opt/ai_agents/skills/ticket_classifier` và liệt kê các dependency như `scikit-learn` và `spaCy`. Một cảnh báo xuất hiện: \"Missing config: Add `MODEL_PATH=/models/ticket_classifier_v0.9.5` to ~/.skild/config.yaml.\" Bạn tạo thư mục đó, tải xuống pre-trained model từ các bản phát hành (releases) trên GitHub của skill và cập nhật file config. Cuối cùng, bạn kiểm thử (test) skill đó:\n```bash\nskild test ticket_classifier --input tickets.jsonl --output routed_tickets.json\n```\n\nQuá trình test xử lý 500 ticket, đạt độ chính xác 89% trên tập validation. File routed_tickets.json hiển thị các ticket được gắn nhãn với `priority: high`, `topic: billing`, và `assigned_agent: alice@company.com`. Giờ đây, bạn đã sẵn sàng để tích hợp skill này vào pipeline của agent."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:41:06.972244Z",
+    "http_status": 200,
+    "content_hash": "3198b571d231fe45fa6b2fdfefffcd3609c20af86c30f8e0f2be70ef0adab0c0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skild.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skild.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skild - Quản lý Skill của AI Agent",
+  "short_description_vi": "Skild là trình quản lý gói (package manager) dành cho các Skill của AI Agent, cho phép các nhà phát triển tìm kiếm, cài đặt, quản lý và phát hành các skill cho AI agent. Công cụ này tối ưu hóa việc tích hợp các khả năng AI vào quy trình làm việc (workflow), giúp các đội ngũ vận hành (operations teams) tiết kiệm thời gian setup và cải thiện tính năng của agent."
+}

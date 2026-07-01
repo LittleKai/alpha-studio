@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-tools",
+  "slug": "claude-code-tools",
+  "name": "Claude Code Tools",
+  "headline": "Claude Code Tools - Productivity for CLI Coding",
+  "short_description": "Claude Code Tools offers practical productivity enhancements for CLI coding agents like Claude Code and Codex-CLI. Streamline your coding workflow with these versatile tools designed to boost efficiency and context management.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "pchalasani",
+  "install_command": "claude install pchalasani/claude-code-tools",
+  "source_repo_url": "https://github.com/pchalasani/claude-code-tools",
+  "works_with": [
+    "ClaudeCodexCodex-CLI"
+  ],
+  "tags": [
+    "automation",
+    "productivity",
+    "cli",
+    "coding-tools",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Tools is a collection of utilities designed for CLI coding agents like Claude Code and Codex-CLI. It provides practical enhancements including prompt detection, context management, and automated workflow features to streamline coding tasks. The toolkit includes features such as idle detection, prompt state awareness, and notification systems via slash commands. It integrates with Claude and Codex environments through hooks and watchers that operate intelligently based on agent state. Developers using command-line coding agents benefit from reduced friction and better control over how their agents process and respond to tasks.\nAutomate repetitive coding tasks such as file management and environment setup.\nEnhance context management in coding sessions by resuming previous work seamlessly.\nIntegrate CLI tools for improved workflow, allowing for smoother transitions between tasks.\nUtilize terminal automation for AI agents to interact with other CLI applications effortlessly.",
+    "setup": "Terminal\nCopy\n`claude install pchalasani/claude-code-tools`\n`git clone https://github.com/pchalasani/claude-code-tools`",
+    "usage": "```\nI'm working on a project that requires integrating [PRODUCTIV] with [OTHER_SOFTWARE]. Can you help me understand the API endpoints and data formats I'll need to work with? Also, provide a sample code snippet in [PROGRAMMING_LANGUAGE] to get me started with the integration.\n```\nCopy\n\n```\nTo integrate Productiv with your existing software, you'll primarily work with the following API endpoints:\n\n1. `/api/v1/contracts` - For retrieving and managing contract data\n2. `/api/v1/invoices` - For invoice-related operations\n3. `/api/v1/usage` - For tracking and analyzing usage data\n\nThe API uses JSON format for both requests and responses. Here's a sample code snippet in Python to get you started:\n\n```python\nimport requests\n\n# Base URL for Productiv API\nbase_url = \"https://api.productiv.com\"\n\n# Endpoint for retrieving contracts\nendpoint = \"/api/v1/contracts\"\n\n# Headers including your API key\nheaders = {\n    \"Authorization\": \"Bearer YOUR_API_KEY\",\n    \"Content-Type\": \"application/json\"\n}\n\n# Making a GET request to retrieve contracts\nresponse = requests.get(base_url + endpoint, headers=headers)\n\n# Checking if the request was successful\nif response.status_code == 200:\n    contracts = response.json()\n    print(\"Retrieved contracts:\", contracts)\nelse:\n    print(\"Failed to retrieve contracts. Status code:\", response.status_code)\n```\n\nRemember to replace `YOUR_API_KEY` with your actual API key. This code snippet demonstrates how to make a simple GET request to retrieve contract data. You can build upon this to perform more complex operations and integrations.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Codex, Codex-CLI"
+    ],
+    "related_skills": [
+      "claude-code-tools#main-content",
+      "claude-code-tools#overview",
+      "claude-code-tools#setup",
+      "claude-code-tools#examples",
+      "claude-code-tools#tools",
+      "claude-code-tools#mcp",
+      "claude-code-tools#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Claude Code Tools là bộ tiện ích được thiết kế dành riêng cho các coding agent qua CLI như Claude Code và Codex-CLI. Bộ công cụ này mang lại những cải tiến thực tế bao gồm phát hiện prompt, quản lý context và các tính năng tự động hóa workflow nhằm tối ưu hóa các tác vụ lập trình. Toolkit này bao gồm các tính năng như phát hiện trạng thái rảnh (idle detection), nhận biết trạng thái prompt và hệ thống thông báo qua slash command. Nó tích hợp với môi trường Claude và Codex thông qua các hook và watcher hoạt động thông minh dựa trên trạng thái của agent. Các nhà phát triển sử dụng coding agent qua dòng lệnh sẽ giảm thiểu thao tác thừa và kiểm soát tốt hơn cách agent xử lý cũng như phản hồi các tác vụ.\nTự động hóa các tác vụ lập trình lặp đi lặp lại như quản lý file và setup môi trường.\nTăng cường quản lý context trong các phiên lập trình bằng cách tiếp tục công việc trước đó một cách liền mạch.\nTích hợp các công cụ CLI để cải thiện workflow, giúp chuyển đổi mượt mà hơn giữa các tác vụ.\nTận dụng tính năng tự động hóa terminal để các AI agent tương tác với các ứng dụng CLI khác một cách dễ dàng.",
+    "setup_vi": "Terminal\nSao chép\n`claude install pchalasani/claude-code-tools`\n`git clone https://github.com/pchalasani/claude-code-tools`",
+    "usage_vi": "```\nTôi đang thực hiện một dự án yêu cầu tích hợp [PRODUCTIV] với [OTHER_SOFTWARE]. Bạn có thể giúp tôi hiểu các API endpoint và định dạng dữ liệu mà tôi sẽ cần làm việc cùng không? Ngoài ra, hãy cung cấp một đoạn mã mẫu bằng [PROGRAMMING_LANGUAGE] để tôi bắt đầu tích hợp.\n```\nSao chép\n\n```\nĐể tích hợp Productiv với phần mềm hiện tại của bạn, chủ yếu bạn sẽ làm việc với các API endpoint sau:\n\n1. `/api/v1/contracts` - Dùng để lấy và quản lý dữ liệu hợp đồng\n2. `/api/v1/invoices` - Dùng cho các thao tác liên quan đến hóa đơn\n3. `/api/v1/usage` - Dùng để theo dõi và phân tích dữ liệu sử dụng\n\nAPI sử dụng định dạng JSON cho cả request và response. Dưới đây là một đoạn mã mẫu bằng Python để giúp bạn bắt đầu:\n\n```python\nimport requests\n\n# Base URL của Productiv API\nbase_url = \"https://api.productiv.com\"\n\n# Endpoint để lấy dữ liệu hợp đồng\nendpoint = \"/api/v1/contracts\"\n\n# Headers bao gồm API key của bạn\nheaders = {\n    \"Authorization\": \"Bearer YOUR_API_KEY\",\n    \"Content-Type\": \"application/json\"\n}\n\n# Thực hiện GET request để lấy dữ liệu hợp đồng\nresponse = requests.get(base_url + endpoint, headers=headers)\n\n# Kiểm tra nếu request thành công\nif response.status_code == 200:\n    contracts = response.json()\n    print(\"Retrieved contracts:\", contracts)\nelse:\n    print(\"Failed to retrieve contracts. Status code:\", response.status_code)\n```\n\nHãy nhớ thay thế `YOUR_API_KEY` bằng API key thực tế của bạn. Đoạn mã mẫu này minh họa cách thực hiện một GET request cơ bản để lấy dữ liệu hợp đồng. Bạn có thể phát triển thêm từ đây để thực hiện các thao tác và tích hợp phức tạp hơn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:23.391132Z",
+    "http_status": 200,
+    "content_hash": "2960e5dd4ae126c4a7b64a96162896c6818c69c06db68d5c22a83a2dcfa81cf6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-tools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-tools.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Tools - Tối ưu hiệu suất lập trình trên CLI",
+  "short_description_vi": "Claude Code Tools mang đến những cải tiến hiệu suất thực tế cho các coding agent qua CLI như Claude Code và Codex-CLI. Tối ưu hóa workflow lập trình của bạn với các công cụ đa năng được thiết kế để nâng cao hiệu suất và quản lý context."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudia",
+  "slug": "claudia",
+  "name": "claudia",
+  "headline": "claudia: AI chief of staff in terminal",
+  "short_description": "Claudia is a terminal-based AI chief of staff that helps operations teams manage relationships, track commitments, and think strategically. It runs on Claude Code and integrates with terminal workflows, providing a centralized hub for managing operational tasks and strategic planning.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "kbanc85",
+  "install_command": "git clone https://github.com/kbanc85/claudia.git",
+  "source_repo_url": "https://github.com/kbanc85/claudia",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "productivity",
+    "ai-assistant",
+    "terminal",
+    "claude-code",
+    "relationship-management"
+  ],
+  "sections": {
+    "overview": "Claudia is a Claude Code-powered terminal assistant designed for operations teams who struggle with relationship management, commitment tracking, and strategic decision-making. Unlike generic AI tools that forget context between sessions, Claudia maintains persistent memory of people, projects, and promises using semantic embeddings stored in an Obsidian vault. It catches commitments automatically, tracks relationship health, identifies patterns you might miss, and learns your judgment to apply your priorities consistently. Each morning, overnight background consolidation surfaces new insights and fades less important details, giving you a sharper briefing. The tool syncs to Obsidian in plain markdown, includes a morning-brief command for daily priorities, and routes requests to the right skill automatically.\nTrack follow-ups and commitments with automatic reminders\nMaintain relationship profiles with contact history and relationship health scores\nExtract action items and patterns from meeting notes\nGet daily morning briefs highlighting what needs attention",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kbanc85/claudia`",
+    "usage": "```\nClaudia, I need help managing my team's commitments for this week. Here are the key priorities: [PRIORITIES]. Also, I need to track the status of these relationships: [RELATIONSHIPS]. Provide a summary of what's on track, what's at risk, and suggest strategic actions I should take this week.\n```\nCopy\n\n```\nBased on the priorities and relationships you've provided, here's a summary of your team's commitments for this week:\n\n**On Track:**\n1. **Product Launch Preparation:** The marketing team has completed the initial draft of the launch campaign and is on schedule for the soft launch next Monday. The engineering team has resolved the critical bugs and is proceeding with final testing.\n2. **Client Onboarding:** The onboarding process for the new client, GreenTech Solutions, is progressing smoothly. The account manager has scheduled the initial kickoff meeting for Wednesday.\n\n**At Risk:**\n1. **Quarterly Review:** The finance team is behind schedule on compiling the quarterly review data. They estimate they will need an additional two days to complete the task. I suggest reaching out to the finance lead to understand the bottlenecks and offer assistance if needed.\n2. **Team Morale:** Recent feedback indicates that team morale is slightly lower than usual. The HR team has identified this as a potential issue and is working on a plan to address it. I recommend scheduling a team-wide check-in to discuss any concerns and brainstorm solutions together.\n\n**Strategic Actions:**\n1. **Resource Allocation:** Consider reallocating some resources from the product launch team to assist the finance team with the quarterly review. This could help ensure both projects stay on track.\n2. **Team Building:** Plan a team-building activity for next Friday to boost morale and foster a sense of camaraderie. This could be a virtual escape room or a casual virtual happy hour.\n3. **Client Engagement:** Schedule a follow-up call with the GreenTech Solutions account manager to ensure the onboarding process is going smoothly and to address any potential issues proactively.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudia#main-content",
+      "claudia#overview",
+      "claudia#setup",
+      "claudia#examples",
+      "claudia#tools",
+      "claudia#mcp",
+      "claudia#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claudia là một trợ lý terminal hoạt động trên nền tảng Claude Code, được thiết kế cho các đội ngũ vận hành đang gặp khó khăn trong việc quản lý mối quan hệ, theo dõi cam kết và ra quyết định chiến lược. Khác với các công cụ AI thông thường hay bị mất ngữ cảnh giữa các phiên làm việc, Claudia duy trì bộ nhớ vĩnh viễn về con người, dự án và các lời hứa bằng cách sử dụng semantic embeddings lưu trữ trong một Obsidian vault. Công cụ này tự động ghi nhận các cam kết, theo dõi mức độ gắn kết của mối quan hệ, phát hiện các quy luật mà bạn có thể bỏ lỡ, và học hỏi cách bạn đánh giá để áp dụng các ưu tiên một cách nhất quán. Mỗi buổi sáng, quy trình tổng hợp ngầm chạy qua đêm sẽ đưa các insight mới lên trước và giảm bớt các chi tiết ít quan trọng, mang lại cho bạn một bản tin tóm tắt sắc bén hơn. Công cụ này đồng bộ với Obsidian dưới dạng plain markdown, tích hợp lệnh `morning-brief` cho các ưu tiên hàng ngày, và tự động định tuyến các yêu cầu đến đúng skill cần thiết.\n\nTheo dõi các đầu việc cần follow-up và cam kết bằng lời nhắc tự động\nDuy trì hồ sơ mối quan hệ với lịch sử tương tác và điểm số sức khỏe mối quan hệ\nTrích xuất các action item và quy luật từ biên bản cuộc họp\nNhận bản tin tóm tắt mỗi sáng nêu bật các vấn đề cần lưu ý",
+    "setup_vi": "Hiện không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kbanc85/claudia`",
+    "usage_vi": "```\nClaudia, tôi cần hỗ trợ quản lý các cam kết của đội ngũ trong tuần này. Dưới đây là các ưu tiên chính: [PRIORITIES]. Ngoài ra, tôi cần theo dõi trạng thái của các mối quan hệ sau: [RELATIONSHIPS]. Hãy cung cấp bản tóm tắt về những việc đang đúng tiến độ, những việc có rủi ro, và đề xuất các hành động chiến lược tôi nên thực hiện trong tuần này.\n```\nCopy\n\n```\nDựa trên các ưu tiên và mối quan hệ bạn đã cung cấp, dưới đây là tóm tắt các cam kết của đội ngũ trong tuần này:\n\n**Đang đúng tiến độ (On Track):**\n1. **Chuẩn bị ra mắt sản phẩm:** Đội ngũ marketing đã hoàn thành bản thảo đầu tiên của chiến dịch ra mắt và đang đi đúng tiến độ cho đợt soft launch vào thứ Hai tuần tới. Đội ngũ engineering đã khắc phục các bug nghiêm trọng và đang tiến hành thử nghiệm cuối cùng.\n2. **Onboarding khách hàng:** Quy trình onboarding cho khách hàng mới, GreenTech Solutions, đang diễn ra suôn sẻ. Account manager đã lên lịch cuộc họp kickoff đầu tiên vào thứ Tư.\n\n**Có rủi ro (At Risk):**\n1. **Đánh giá định kỳ quý:** Đội ngũ tài chính đang bị chậm tiến độ trong việc tổng hợp dữ liệu đánh giá quý. Họ ước tính cần thêm hai ngày nữa để hoàn thành nhiệm vụ. Tôi khuyên bạn nên liên hệ với trưởng nhóm tài chính để tìm hiểu các nút thắt cổ chai và đề xuất hỗ trợ nếu cần.\n2. **Tinh thần đội ngũ:** Các phản hồi gần đây cho thấy tinh thần của đội ngũ đang thấp hơn một chút so với bình thường. Đội ngũ nhân sự đã xác định đây là một vấn đề tiềm ẩn và đang lên kế hoạch giải quyết. Tôi khuyên bạn nên lên lịch một buổi check-in toàn đội để thảo luận về các mối quan ngại và cùng nhau tìm giải pháp.\n\n**Hành động chiến lược:**\n1. **Phân bổ nguồn lực:** Cân nhắc điều phối một số nguồn lực từ đội ngũ ra mắt sản phẩm sang hỗ trợ đội tài chính hoàn thành báo cáo đánh giá quý. Việc này có thể giúp đảm bảo cả hai dự án đều đi đúng tiến độ.\n2. **Gắn kết đội ngũ:** Lên kế hoạch cho một hoạt động team-building vào thứ Sáu tới để cải thiện tinh thần và thúc đẩy sự gắn kết. Đó có thể là một phòng trốn thoát (escape room) ảo hoặc một buổi trò chuyện trực tuyến thân mật.\n3. **Tương tác với khách hàng:** Lên lịch một cuộc gọi follow-up với account manager của GreenTech Solutions để đảm bảo quy trình onboarding diễn ra suôn sẻ và chủ động giải quyết mọi vấn đề phát sinh.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:47:29.898465Z",
+    "http_status": 200,
+    "content_hash": "c816c793d9bfd4298358424ac35d91cbe2ef650b0cda19ad6b1a5829e5b41fd8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudia.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudia.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claudia: AI chief of staff ngay trên terminal",
+  "short_description_vi": "Claudia là một AI chief of staff hoạt động trên terminal, hỗ trợ các đội ngũ vận hành quản lý các mối quan hệ, theo dõi cam kết và tư duy chiến lược. Công cụ này chạy trên Claude Code và tích hợp trực tiếp vào terminal workflow, cung cấp một trung tâm quản lý tập trung cho các tác vụ vận hành và lập kế hoạch chiến lược."
+}

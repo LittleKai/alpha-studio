@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/emacs-claude-code",
+  "slug": "emacs-claude-code",
+  "name": "Emacs Claude Code",
+  "headline": "Emacs Claude Code - Emacs interface for Claude Code",
+  "short_description": "Emacs interface for Claude Code with auto-response, vterm integration, and session management. Enables developers to interact with Claude Code directly within Emacs, automating code generation and terminal tasks. Connects to Claude Code API and integrates with vterm for workflow.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "ywatanabe1989",
+  "install_command": "git clone https://github.com/ywatanabe1989/emacs-claude-code.git",
+  "source_repo_url": "https://github.com/ywatanabe1989/emacs-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "vterm",
+    "emacs",
+    "claude-code",
+    "claude",
+    "elisp",
+    "ai"
+  ],
+  "sections": {
+    "overview": "emacs-claude-code provides an Emacs interface for Claude Code and Codex CLI with automatic prompt handling, detecting and responding to Y/N and Y/Y/N permission dialogs without manual intervention. It integrates vterm for terminal workflows and suppresses auto-responses when users are actively typing, preventing unwanted automation. The skill includes state detection (running, waiting, suggestion), a centralized buffer dashboard showing timer status and debug logs, audio notifications with beep tones and TTS alerts, and a yank-as-file feature for efficiently handling large content. Developers get watchdog protection against stuck states, periodic command queuing, and tab highlighting to visualize Claude buffer status in real-time.\nAutomate repetitive Y/N prompts during long-running Claude Code sessions\nMonitor multiple Claude Code vterm buffers simultaneously via dashboard\nKeep sessions active with periodic `/speak` commands and `/compact` cycles\nTransfer large code snippets to remote hosts via yank-as-file without terminal clutter",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ywatanabe1989/emacs-claude-code`",
+    "usage": "```\nI'm a developer working on [PROJECT] for [COMPANY]. I need help with [TASK] in [PROGRAMMING_LANGUAGE]. Can you provide code snippets, explain concepts, or debug issues? I'm using Emacs with the Claude Code integration. Here's the relevant code: [CODE_SNIPPET].\n```\nCopy\n\n```\n```lisp\n;; Emacs Lisp configuration for Claude Code integration\n\n;; Enable Claude Code mode\n(setq claude-code-api-key \"your-api-key-here\")\n(setq claude-code-model \"claude-2\")\n\n;; Auto-response configuration\n(setq claude-code-auto-response t)\n(setq claude-code-auto-response-delay 1)\n\n;; Vterm integration\n(require 'vterm)\n(setq claude-code-vterm-integration t)\n\n;; Session management\n(defun claude-code-start-session ()\n  (interactive)\n  (claude-code-new-session \"default\"))\n\n;; Keybindings\n(global-set-key (kbd \"C-c c c\") 'claude-code-start-session)\n(global-set-key (kbd \"C-c c r\") 'claude-code-auto-response-toggle)\n```\n\n1. Set your API key in the configuration\n2. Enable auto-response for your preferred delay\n3. Use keybindings to start sessions and toggle features\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "emacs-claude-code#main-content",
+      "emacs-claude-code#overview",
+      "emacs-claude-code#setup",
+      "emacs-claude-code#examples",
+      "emacs-claude-code#tools",
+      "emacs-claude-code#mcp",
+      "emacs-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "emacs-claude-code provides an Emacs interface for Claude Code and Codex CLI with automatic prompt handling, detecting and responding to Y/N and Y/Y/N permission dialogs without manual intervention. It integrates vterm for terminal workflows and suppresses auto-responses when users are actively typing, preventing unwanted automation. The skill includes state detection (running, waiting, suggestion), a centralized buffer dashboard showing timer status and debug logs, audio notifications with beep tones and TTS alerts, and a yank-as-file feature for efficiently handling large content. Developers get watchdog protection against stuck states, periodic command queuing, and tab highlighting to visualize Claude buffer status in real-time.\nAutomate repetitive Y/N prompts during long-running Claude Code sessions\nMonitor multiple Claude Code vterm buffers simultaneously via dashboard\nKeep sessions active with periodic `/speak` commands and `/compact` cycles\nTransfer large code snippets to remote hosts via yank-as-file without terminal clutter",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ywatanabe1989/emacs-claude-code`",
+    "usage_vi": "```\nI'm a developer working on [PROJECT] for [COMPANY]. I need help with [TASK] in [PROGRAMMING_LANGUAGE]. Can you provide code snippets, explain concepts, or debug issues? I'm using Emacs with the Claude Code integration. Here's the relevant code: [CODE_SNIPPET].\n```\nCopy\n\n```\n```lisp\n;; Emacs Lisp configuration for Claude Code integration\n\n;; Enable Claude Code mode\n(setq claude-code-api-key \"your-api-key-here\")\n(setq claude-code-model \"claude-2\")\n\n;; Auto-response configuration\n(setq claude-code-auto-response t)\n(setq claude-code-auto-response-delay 1)\n\n;; Vterm integration\n(require 'vterm)\n(setq claude-code-vterm-integration t)\n\n;; Session management\n(defun claude-code-start-session ()\n  (interactive)\n  (claude-code-new-session \"default\"))\n\n;; Keybindings\n(global-set-key (kbd \"C-c c c\") 'claude-code-start-session)\n(global-set-key (kbd \"C-c c r\") 'claude-code-auto-response-toggle)\n```\n\n1. Set your API key in the configuration\n2. Enable auto-response for your preferred delay\n3. Use keybindings to start sessions and toggle features\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:40:34.354156Z",
+    "http_status": 200,
+    "content_hash": "1a337648a5958f84bd5e07615077bb0d3f1b1db6ff1aa6237ccc74898e64722c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\emacs-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\emacs-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Emacs Claude Code - Emacs interface for Claude Code",
+  "short_description_vi": "Emacs interface for Claude Code with auto-response, vterm integration, and session management. Enables developers to interact with Claude Code directly within Emacs, automating code generation and terminal tasks. Connects to Claude Code API and integrates with vterm for workflow."
+}

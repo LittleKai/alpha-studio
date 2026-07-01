@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-achievements",
+  "slug": "claude-code-achievements",
+  "name": "Claude Code Achievements",
+  "headline": "Achievement badges for Claude Code users",
+  "short_description": "Claude Code Achievements is a gamification tool that tracks and rewards coding activities in Claude Code. It benefits developers and teams by adding a fun, competitive element to coding tasks. The system integrates with Claude Code to monitor progress and award achievements, enhancing engagement and motivation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "subinium",
+  "install_command": "git clone https://github.com/subinium/claude-code-achievements.git",
+  "source_repo_url": "https://github.com/subinium/claude-code-achievements",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "gamification",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Code Achievements transforms your AI coding experience into an RPG-style progression system with 29 achievements organized across four skill trees: Getting Started, Workflow, Power Tools, and Mastery. The plugin hooks into Claude Code's event system to automatically track tool usage and trigger real-time notifications when you unlock milestones. Each achievement represents a specific coding milestone—from editing your first file to setting up autonomous coding loops—helping you discover and master Claude Code's full feature set. Progress is saved locally and can be viewed through built-in commands that show unlocked achievements, remaining quests with hints, and category-specific filters. The system supports 5 languages and works across macOS, Linux, and Windows with native platform notifications.\nTrack progress while learning Claude Code features systematically\nMotivate yourself and teammates through achievement-based coding milestones\nDiscover advanced Claude Code capabilities like MCP integration and automation\nBuild healthy coding habits by completing achievement quests",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/subinium/claude-code-achievements`",
+    "usage": "```\nGenerate a list of all [ACHIEVEMENTS] unlocked by [USER_NAME] in Claude Code over the past [TIME_PERIOD]. Include the achievement name, description, date unlocked, and any progress toward related milestones. Format the output as a Markdown table with columns: Achievement | Description | Date Unlocked | Progress. Use [ACHIEVEMENTS] like 'Bug Hunter', 'Code Ninja', 'Refactoring Master', or 'Documentation Champion'.\n```\nCopy\n\n```\n| Achievement | Description | Date Unlocked | Progress |\n|-------------|-------------|---------------|----------|\n| **Bug Hunter** | Fixed 10+ bugs in a single session | 2024-05-12 | 15/20 bugs |\n| **Code Ninja** | Wrote 500+ lines of clean, efficient code | 2024-05-10 | 600/500 lines |\n| **Refactoring Master** | Refactored 3+ legacy functions in one session | 2024-05-08 | 4/3 functions |\n| **Documentation Champion** | Added docstrings to 20+ functions | 2024-05-05 | 25/20 functions |\n| **Speed Demon** | Completed a 100-line feature in under 30 minutes | 2024-05-03 | 100 lines in 25min |\n\n**Summary:** Over the past 7 days, [USER_NAME] has unlocked 5 achievements, with strong progress toward **Bug Hunter** (15/20) and **Code Ninja** (600/500). The **Refactoring Master** achievement was unlocked twice, showing consistent focus on code quality. The **Documentation Champion** achievement highlights a recent push to improve project maintainability. No achievements were missed this week, but **Test Coverage Hero** (90%+ test coverage) remains a target for next week.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-achievements#main-content",
+      "claude-code-achievements#overview",
+      "claude-code-achievements#setup",
+      "claude-code-achievements#examples",
+      "claude-code-achievements#tools",
+      "claude-code-achievements#mcp",
+      "claude-code-achievements#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Achievements biến trải nghiệm lập trình AI của bạn thành một hệ thống thăng tiến theo phong cách RPG với 29 thành tích được chia thành bốn nhánh kỹ năng (skill tree): Getting Started, Workflow, Power Tools, và Mastery. Plugin này hook vào hệ thống sự kiện của Claude Code để tự động theo dõi việc sử dụng công cụ và gửi thông báo thời gian thực khi bạn mở khóa các cột mốc. Mỗi thành tích đại diện cho một cột mốc lập trình cụ thể—từ việc chỉnh sửa tệp đầu tiên cho đến thiết lập các vòng lặp lập trình tự chủ (autonomous coding loops)—giúp bạn khám phá và làm chủ toàn bộ tính năng của Claude Code. Tiến trình được lưu cục bộ (locally) và có thể xem qua các lệnh tích hợp sẵn để hiển thị các thành tích đã mở khóa, các nhiệm vụ (quest) còn lại kèm gợi ý, và bộ lọc theo danh mục. Hệ thống hỗ trợ 5 ngôn ngữ và hoạt động trên macOS, Linux, Windows với thông báo native của hệ điều hành.\nTheo dõi tiến độ trong khi học các tính năng của Claude Code một cách hệ thống\nTạo động lực cho bản thân và đồng đội thông qua các cột mốc lập trình dựa trên thành tích\nKhám phá các khả năng nâng cao của Claude Code như tích hợp MCP và tự động hóa\nXây dựng thói quen lập trình tốt bằng cách hoàn thành các nhiệm vụ thành tích",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/subinium/claude-code-achievements`",
+    "usage_vi": "```\nTạo danh sách tất cả các [ACHIEVEMENTS] được mở khóa bởi [USER_NAME] trong Claude Code trong [TIME_PERIOD] vừa qua. Bao gồm tên thành tích, mô tả, ngày mở khóa và tiến trình thực hiện các cột mốc liên quan. Định dạng đầu ra dưới dạng bảng Markdown với các cột: Achievement | Description | Date Unlocked | Progress. Sử dụng các [ACHIEVEMENTS] như 'Bug Hunter', 'Code Ninja', 'Refactoring Master', hoặc 'Documentation Champion'.\n```\nCopy\n\n```\n| Achievement | Description | Date Unlocked | Progress |\n|-------------|-------------|---------------|----------|\n| **Bug Hunter** | Sửa 10+ bug trong một phiên làm việc | 2024-05-12 | 15/20 bug |\n| **Code Ninja** | Viết 500+ dòng code sạch và tối ưu | 2024-05-10 | 600/500 dòng |\n| **Refactoring Master** | Refactor 3+ hàm legacy trong một phiên làm việc | 2024-05-08 | 4/3 hàm |\n| **Documentation Champion** | Thêm docstring cho 20+ hàm | 2024-05-05 | 25/20 hàm |\n| **Speed Demon** | Hoàn thành tính năng 100 dòng trong chưa đầy 30 phút | 2024-05-03 | 100 dòng trong 25 phút |\n\n**Tóm tắt:** Trong 7 ngày qua, [USER_NAME] đã mở khóa 5 thành tích, với tiến triển tốt hướng tới **Bug Hunter** (15/20) và **Code Ninja** (600/500). Thành tích **Refactoring Master** đã được mở khóa hai lần, cho thấy sự tập trung liên tục vào chất lượng code. Thành tích **Documentation Champion** làm nổi bật nỗ lực gần đây nhằm cải thiện khả năng bảo trì của dự án. Không có thành tích nào bị bỏ lỡ trong tuần này, nhưng **Test Coverage Hero** (độ bao phủ test >= 90%) vẫn là mục tiêu cho tuần tới.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:05:15.132210Z",
+    "http_status": 200,
+    "content_hash": "865250ebaf318e3dda6a9c8d7123b69c3f7981131afac5a1fe362b5630503b55",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-achievements.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-achievements.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Huy hiệu thành tích dành cho người dùng Claude Code",
+  "short_description_vi": "Claude Code Achievements là một công cụ game hóa (gamification) giúp theo dõi và ghi nhận các hoạt động lập trình trong Claude Code. Công cụ mang lại lợi ích cho lập trình viên và các đội ngũ phát triển bằng cách thêm yếu tố thú vị, cạnh tranh vào các tác vụ coding. Hệ thống tích hợp trực tiếp với Claude Code để theo dõi tiến độ và trao thành tích, từ đó tăng cường độ tương tác và tạo động lực làm việc."
+}

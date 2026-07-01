@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-registry",
+  "slug": "claude-skill-registry",
+  "name": "browser-use",
+  "headline": "Explore comprehensive Claude skills registry",
+  "short_description": "A registry of Claude Code skills for automation. Operations teams use it to discover, share, and deploy skills. Connects to Claude agents for workflow automation.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "majiayu000",
+  "install_command": "git clone https://github.com/majiayu000/claude-skill-registry.git",
+  "source_repo_url": "https://github.com/majiayu000/claude-skill-registry",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Skills Registry is a comprehensive, deduplicated index of Claude Code skills aggregated from GitHub and community sources. It provides three access methods: a fast web-based search interface, a terminal CLI package manager (sk), and a direct JSON API for integration. The registry includes thousands of skills across multiple categories including Development, Testing, DevOps, and Design, with quality metadata, descriptions, and popularity rankings. Updated daily through automated workflows, it serves operations teams, developers, and automation engineers who need to discover, share, and deploy Claude agent skills for workflow automation.\nDiscover Claude Code skills for development, testing, and DevOps automation\nSearch and install skills via web interface or command-line terminal\nIntegrate skill discovery into custom applications via JSON API\nAccess deduplicated quality and security indices for skill evaluation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/majiayu000/claude-skill-registry`",
+    "usage": "```\nSearch the claude-skill-registry for [SKILL_TYPE] skills that automate [TASK_NAME] in [ENVIRONMENT]. Filter by [TAGS_IF_ANY] and return the top 3 results with their descriptions, usage examples, and installation commands. Prioritize skills with the highest community ratings.\n```\nCopy\n\n```\nHere are the top 3 skills from the claude-skill-registry that automate log file analysis in AWS CloudWatch environments, filtered by Python and high community ratings:\n\n1. **skill-log-analyzer-aws** (Community Rating: 4.9/5)\n   Description: Automates parsing, filtering, and alerting for CloudWatch log groups. Supports regex-based pattern matching and integrates with Slack for notifications.\n   Usage Example: `claude skill-log-analyzer-aws --log-group /aws/lambda/my-function --pattern \"ERROR\" --notify slack://alerts-channel`\n   Installation: `claude install skill-log-analyzer-aws`\n\n2. **skill-cloudwatch-metrics-exporter** (Community Rating: 4.7/5)\n   Description: Extracts custom metrics from CloudWatch logs and exports them to Prometheus for visualization in Grafana. Supports multi-account AWS setups.\n   Usage Example: `claude skill-cloudwatch-metrics-exporter --log-group /aws/ec2/performance --metric-name \"CPUUtilization\" --prometheus-endpoint http://localhost:9091`\n   Installation: `pip install skill-cloudwatch-metrics-exporter && claude install skill-cloudwatch-metrics-exporter`\n\n3. **skill-log-retention-optimizer** (Community Rating: 4.5/5)\n   Description: Automates log retention policy enforcement across AWS accounts, reducing storage costs by 30-50% while ensuring compliance with retention requirements.\n   Usage Example: `claude skill-log-retention-optimizer --log-groups \"/aws/lambda/*,/aws/ec2/*\" --retention-days 30 --dry-run`\n   Installation: `claude install skill-log-retention-optimizer`\n\nAll skills are MIT-licensed and have active maintainers. The registry shows 12 similar skills with lower ratings. Would you like me to fetch installation instructions or detailed changelogs for any of these?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-registry#main-content",
+      "claude-skill-registry#overview",
+      "claude-skill-registry#setup",
+      "claude-skill-registry#examples",
+      "claude-skill-registry#tools",
+      "claude-skill-registry#mcp",
+      "claude-skill-registry#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skills Registry is a comprehensive, deduplicated index of Claude Code skills aggregated from GitHub and community sources. It provides three access methods: a fast web-based search interface, a terminal CLI package manager (sk), and a direct JSON API for integration. The registry includes thousands of skills across multiple categories including Development, Testing, DevOps, and Design, with quality metadata, descriptions, and popularity rankings. Updated daily through automated workflows, it serves operations teams, developers, and automation engineers who need to discover, share, and deploy Claude agent skills for workflow automation.\nDiscover Claude Code skills for development, testing, and DevOps automation\nSearch and install skills via web interface or command-line terminal\nIntegrate skill discovery into custom applications via JSON API\nAccess deduplicated quality and security indices for skill evaluation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/majiayu000/claude-skill-registry`",
+    "usage_vi": "```\nSearch the claude-skill-registry for [SKILL_TYPE] skills that automate [TASK_NAME] in [ENVIRONMENT]. Filter by [TAGS_IF_ANY] and return the top 3 results with their descriptions, usage examples, and installation commands. Prioritize skills with the highest community ratings.\n```\nCopy\n\n```\nHere are the top 3 skills from the claude-skill-registry that automate log file analysis in AWS CloudWatch environments, filtered by Python and high community ratings:\n\n1. **skill-log-analyzer-aws** (Community Rating: 4.9/5)\n   Description: Automates parsing, filtering, and alerting for CloudWatch log groups. Supports regex-based pattern matching and integrates with Slack for notifications.\n   Usage Example: `claude skill-log-analyzer-aws --log-group /aws/lambda/my-function --pattern \"ERROR\" --notify slack://alerts-channel`\n   Installation: `claude install skill-log-analyzer-aws`\n\n2. **skill-cloudwatch-metrics-exporter** (Community Rating: 4.7/5)\n   Description: Extracts custom metrics from CloudWatch logs and exports them to Prometheus for visualization in Grafana. Supports multi-account AWS setups.\n   Usage Example: `claude skill-cloudwatch-metrics-exporter --log-group /aws/ec2/performance --metric-name \"CPUUtilization\" --prometheus-endpoint http://localhost:9091`\n   Installation: `pip install skill-cloudwatch-metrics-exporter && claude install skill-cloudwatch-metrics-exporter`\n\n3. **skill-log-retention-optimizer** (Community Rating: 4.5/5)\n   Description: Automates log retention policy enforcement across AWS accounts, reducing storage costs by 30-50% while ensuring compliance with retention requirements.\n   Usage Example: `claude skill-log-retention-optimizer --log-groups \"/aws/lambda/*,/aws/ec2/*\" --retention-days 30 --dry-run`\n   Installation: `claude install skill-log-retention-optimizer`\n\nAll skills are MIT-licensed and have active maintainers. The registry shows 12 similar skills with lower ratings. Would you like me to fetch installation instructions or detailed changelogs for any of these?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:20:31.468223Z",
+    "http_status": 200,
+    "content_hash": "a83a50cb44daa8796e21d958422e52de2e9ea97a28e712c4983c6cd600edf6d1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-registry.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-registry.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Explore comprehensive Claude skills registry",
+  "short_description_vi": "A registry of Claude Code skills for automation. Operations teams use it to discover, share, and deploy skills. Connects to Claude agents for workflow automation."
+}

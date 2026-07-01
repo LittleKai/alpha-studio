@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-codex",
+  "slug": "skill-codex",
+  "name": "browser-use",
+  "headline": "Codex Integration - Automate Code Execution",
+  "short_description": "Skill-codex enables Claude Code to delegate prompts to Codex CLI. Operations teams benefit from automated code execution and session management. Integrates with Codex CLI for direct command execution and session handling.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "skills-directory",
+  "install_command": "git clone https://github.com/skills-directory/skill-codex.git",
+  "source_repo_url": "https://github.com/skills-directory/skill-codex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "codex"
+  ],
+  "sections": {
+    "overview": "Skill-codex enables Claude Code to delegate prompts directly to the Codex CLI, providing automated code execution and session management capabilities. The skill integrates seamlessly with Codex CLI to handle direct command execution and manage sessions without manual intervention. Operations teams benefit from streamlined workflows where complex prompts are processed through Codex's models, including gpt-5.5 and gpt-5.4-mini. This integration reduces manual overhead for teams managing infrastructure automation and code execution tasks.\nAnalyze a code repository and suggest improvements for better performance.\nRefactor existing code to enhance readability and maintainability.\nAutomate the process of generating documentation based on code structure.\nIdentify and fix potential bugs in the codebase using Codex's analysis.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/skills-directory/skill-codex`",
+    "usage": "```\nUse skill-codex to execute the following command in Codex CLI: '[COMMAND]'. Ensure the session is properly initialized and terminated. Capture the output and errors for review. If the command requires user input, handle it via [INPUT_METHOD].\n```\nCopy\n\n```\n```\nCommand Executed: skill-codex --execute \"npm run build -- --env=production\"\n\nSession ID: ses_7f3a9b2c\nStatus: Completed\nDuration: 2m 15s\nExit Code: 0\n\nOutput:\n> my-app@1.0.0 build\n> react-scripts build --env=production\n\nCompiled successfully in 2m 10s.\n\nWarnings:\n- Deprecated API used in component Footer.jsx\n\nErrors:\n- None\n\nSession Terminated: ses_7f3a9b2c\n```\n\n**Recommendation**: The build completed successfully, but the deprecated API warning should be addressed in the next sprint. The session logs have been saved to `/logs/build_20231115.log` for audit purposes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-codex#main-content",
+      "skill-codex#overview",
+      "skill-codex#setup",
+      "skill-codex#examples",
+      "skill-codex#tools",
+      "skill-codex#mcp",
+      "skill-codex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill-codex enables Claude Code to delegate prompts directly to the Codex CLI, providing automated code execution and session management capabilities. The skill integrates seamlessly with Codex CLI to handle direct command execution and manage sessions without manual intervention. Operations teams benefit from streamlined workflows where complex prompts are processed through Codex's models, including gpt-5.5 and gpt-5.4-mini. This integration reduces manual overhead for teams managing infrastructure automation and code execution tasks.\nAnalyze a code repository and suggest improvements for better performance.\nRefactor existing code to enhance readability and maintainability.\nAutomate the process of generating documentation based on code structure.\nIdentify and fix potential bugs in the codebase using Codex's analysis.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/skills-directory/skill-codex`",
+    "usage_vi": "```\nUse skill-codex to execute the following command in Codex CLI: '[COMMAND]'. Ensure the session is properly initialized and terminated. Capture the output and errors for review. If the command requires user input, handle it via [INPUT_METHOD].\n```\nCopy\n\n```\n```\nCommand Executed: skill-codex --execute \"npm run build -- --env=production\"\n\nSession ID: ses_7f3a9b2c\nStatus: Completed\nDuration: 2m 15s\nExit Code: 0\n\nOutput:\n> my-app@1.0.0 build\n> react-scripts build --env=production\n\nCompiled successfully in 2m 10s.\n\nWarnings:\n- Deprecated API used in component Footer.jsx\n\nErrors:\n- None\n\nSession Terminated: ses_7f3a9b2c\n```\n\n**Recommendation**: The build completed successfully, but the deprecated API warning should be addressed in the next sprint. The session logs have been saved to `/logs/build_20231115.log` for audit purposes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:35:57.195637Z",
+    "http_status": 200,
+    "content_hash": "92f712ef2837a85746ec7c1883d806037c7e8d7ad9c101c6b8eef8a920b04cdb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-codex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-codex.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Codex Integration - Automate Code Execution",
+  "short_description_vi": "Skill-codex enables Claude Code to delegate prompts to Codex CLI. Operations teams benefit from automated code execution and session management. Integrates with Codex CLI for direct command execution and session handling."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/parsera",
+  "slug": "parsera",
+  "name": "react-native-best-practices",
+  "headline": "Parsera: AI-Powered Web Scraping Library",
+  "short_description": "Parsera is a lightweight library designed for efficient web scraping using large language models (LLMs). It simplifies data extraction from websites, making it an essential tool for developers and data enthusiasts looking to automate their scraping tasks with Python.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "raznem",
+  "install_command": "claude install raznem/parsera",
+  "source_repo_url": "https://github.com/raznem/parsera",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "python",
+    "data-extraction",
+    "webscraping",
+    "opensource",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Parsera is a lightweight Python library designed to streamline web scraping by leveraging large language models for intelligent data extraction. It simplifies the process of automating data collection from websites without requiring complex parsing logic. The library uses LLMs to understand and extract structured data from web pages, making it suitable for developers and data professionals who need reliable, efficient scraping solutions. Parsera handles the complexity of web data extraction, allowing users to focus on their data analysis and automation goals rather than manual parsing implementation.\nExtract product data from e-commerce sites to analyze pricing trends.\nGather market research data from competitor websites for strategic insights.\nAutomate content scraping for analysis, such as news articles or blog posts.\nCollect user reviews from multiple platforms to evaluate customer sentiment.",
+    "setup": "Terminal\nCopy\n`claude install raznem/parsera`\n`git clone https://github.com/raznem/parsera`",
+    "usage": "```\nUse Parsera to scrape the product listings from [WEBSITE_URL]. Extract the product names, prices, and descriptions. Return the data in a structured JSON format. Ensure the output includes [SPECIFIC_FIELDS] such as product ID, category, and availability status.\n```\nCopy\n\n```\nHere is the structured data extracted from the product listings on the specified e-commerce website:\n\n```json\n{\n  \"products\": [\n    {\n      \"product_id\": \"PRD001\",\n      \"name\": \"Wireless Bluetooth Headphones\",\n      \"price\": 99.99,\n      \"description\": \"High-quality wireless headphones with noise cancellation.\",\n      \"category\": \"Electronics\",\n      \"availability\": \"In Stock\"\n    },\n    {\n      \"product_id\": \"PRD002\",\n      \"name\": \"Smart Watch\",\n      \"price\": 199.99,\n      \"description\": \"Fitness tracking and smart notifications.\",\n      \"category\": \"Wearables\",\n      \"availability\": \"Out of Stock\"\n    },\n    {\n      \"product_id\": \"PRD003\",\n      \"name\": \"Portable Charger\",\n      \"price\": 29.99,\n      \"description\": \"Compact and powerful 10,000mAh battery.\",\n      \"category\": \"Accessories\",\n      \"availability\": \"In Stock\"\n    }\n  ]\n}\n```\n\nThis data can now be easily imported into a database or analyzed using tools like Mode for further insights.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "parsera#main-content",
+      "parsera#overview",
+      "parsera#setup",
+      "parsera#examples",
+      "parsera#tools",
+      "parsera#mcp",
+      "parsera#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Parsera is a lightweight Python library designed to streamline web scraping by leveraging large language models for intelligent data extraction. It simplifies the process of automating data collection from websites without requiring complex parsing logic. The library uses LLMs to understand and extract structured data from web pages, making it suitable for developers and data professionals who need reliable, efficient scraping solutions. Parsera handles the complexity of web data extraction, allowing users to focus on their data analysis and automation goals rather than manual parsing implementation.\nExtract product data from e-commerce sites to analyze pricing trends.\nGather market research data from competitor websites for strategic insights.\nAutomate content scraping for analysis, such as news articles or blog posts.\nCollect user reviews from multiple platforms to evaluate customer sentiment.",
+    "setup_vi": "Terminal\nCopy\n`claude install raznem/parsera`\n`git clone https://github.com/raznem/parsera`",
+    "usage_vi": "```\nUse Parsera to scrape the product listings from [WEBSITE_URL]. Extract the product names, prices, and descriptions. Return the data in a structured JSON format. Ensure the output includes [SPECIFIC_FIELDS] such as product ID, category, and availability status.\n```\nCopy\n\n```\nHere is the structured data extracted from the product listings on the specified e-commerce website:\n\n```json\n{\n  \"products\": [\n    {\n      \"product_id\": \"PRD001\",\n      \"name\": \"Wireless Bluetooth Headphones\",\n      \"price\": 99.99,\n      \"description\": \"High-quality wireless headphones with noise cancellation.\",\n      \"category\": \"Electronics\",\n      \"availability\": \"In Stock\"\n    },\n    {\n      \"product_id\": \"PRD002\",\n      \"name\": \"Smart Watch\",\n      \"price\": 199.99,\n      \"description\": \"Fitness tracking and smart notifications.\",\n      \"category\": \"Wearables\",\n      \"availability\": \"Out of Stock\"\n    },\n    {\n      \"product_id\": \"PRD003\",\n      \"name\": \"Portable Charger\",\n      \"price\": 29.99,\n      \"description\": \"Compact and powerful 10,000mAh battery.\",\n      \"category\": \"Accessories\",\n      \"availability\": \"In Stock\"\n    }\n  ]\n}\n```\n\nThis data can now be easily imported into a database or analyzed using tools like Mode for further insights.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:14:12.504467Z",
+    "http_status": 200,
+    "content_hash": "08659d7834d4f94acc06e402dfcc0696222dcb971ad2313f8de4a6f0761c301b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\parsera.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\parsera.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Parsera: AI-Powered Web Scraping Library",
+  "short_description_vi": "Parsera is a lightweight library designed for efficient web scraping using large language models (LLMs). It simplifies data extraction from websites, making it an essential tool for developers and data enthusiasts looking to automate their scraping tasks with Python."
+}

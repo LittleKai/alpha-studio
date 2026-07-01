@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-agent-skills",
+  "slug": "ai-agent-skills",
+  "name": "Ai-Agent-Skills",
+  "headline": "Ai-Agent-Skills: Enhance Your AI Agent Capabilities",
+  "short_description": "Ai-Agent-Skills is a versatile toolkit designed for creating and enhancing AI agent capabilities. This homebrew solution helps developers to customize and optimize AI functionalities, making it ideal for various applications in the AI ecosystem.",
+  "tier": "Gold",
+  "category": "GrowthRevOpsDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "skillcreatorai",
+  "install_command": "claude install skillcreatorai/Ai-Agent-Skills",
+  "source_repo_url": "https://github.com/skillcreatorai/Ai-Agent-Skills",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI",
+    "Agent Skills",
+    "Open Source",
+    "Customization",
+    "Development"
+  ],
+  "sections": {
+    "overview": "Ai-Agent-Skills provides a structured toolkit for developers to create, customize, and extend AI agent capabilities across various applications. The project maintains a catalog of 115+ skills organized by domain, including dedicated marketing, development, and general-purpose packs. It supports both public skill discovery and private library management, enabling teams to build domain-specific skill collections. The toolkit includes a terminal UI for interactive skill browsing and installation, with version control and automated validation through CI/CD pipelines.\nDevelop custom AI agents tailored for specific business tasks and workflows.\nEnhance existing AI functionalities to improve user experience and performance.\nIntegrate various AI skills seamlessly into business processes for increased efficiency.\nCreate tailored solutions for customer interactions, improving engagement and satisfaction.",
+    "setup": "Terminal\nCopy\n`claude install skillcreatorai/Ai-Agent-Skills`\n`git clone https://github.com/skillcreatorai/Ai-Agent-Skills`",
+    "usage": "```\nDesign an AI agent using Ai-Agent-Skills that integrates with Tomi to [SPECIFIC TASK]. The agent should be able to [ACTION 1] and [ACTION 2]. Provide a step-by-step plan for implementation, including necessary APIs and data sources. Ensure the agent can handle [SPECIFIC USE CASE] effectively.\n```\nCopy\n\n```\nTo design an AI agent using Ai-Agent-Skills that integrates with Tomi for managing crypto transactions, follow this plan:\n\n1. **Define Agent Capabilities**: The agent will monitor transaction patterns and alert users of suspicious activities. It will also provide personalized financial advice based on transaction history.\n\n2. **Integrate with Tomi APIs**: Utilize Tomi's chat and wallet APIs to access transaction data and user profiles. Ensure the agent can send alerts and advice through Tomi's messaging system.\n\n3. **Implement Data Processing**: Use Ai-Agent-Skills to process transaction data, identify patterns, and generate alerts. Implement machine learning models to provide personalized financial advice.\n\n4. **Test and Deploy**: Conduct thorough testing to ensure the agent handles various use cases, such as detecting fraudulent transactions and providing relevant financial advice. Deploy the agent and monitor its performance.\n\nBy following these steps, you can create a robust AI agent that enhances Tomi's capabilities and provides valuable services to users.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "ai-agent-skills#main-content",
+      "ai-agent-skills#overview",
+      "ai-agent-skills#setup",
+      "ai-agent-skills#examples",
+      "ai-agent-skills#tools",
+      "ai-agent-skills#mcp",
+      "ai-agent-skills#related",
+      "claude-skills",
+      "nexent",
+      "memu"
+    ],
+    "overview_vi": "Ai-Agent-Skills cung cấp một bộ công cụ có cấu trúc giúp các nhà phát triển tạo, tùy chỉnh và mở rộng năng lực của AI agent trên nhiều ứng dụng khác nhau. Dự án duy trì một danh mục gồm hơn 115 skill được phân loại theo lĩnh vực, bao gồm các gói chuyên dụng cho marketing, phát triển phần mềm và các mục đích chung. Bộ công cụ hỗ trợ cả việc khám phá skill công khai (public) lẫn quản lý thư viện riêng tư (private), giúp các đội ngũ dễ dàng xây dựng các bộ sưu tập skill đặc thù cho từng lĩnh vực. Ngoài ra, công cụ còn tích hợp giao diện dòng lệnh (terminal UI) để duyệt và cài đặt skill trực quan, đi kèm tính năng quản lý phiên bản (version control) và tự động kiểm thử (automated validation) thông qua các pipeline CI/CD.\n\nPhát triển các AI agent tùy biến được thiết kế riêng cho các tác vụ và quy trình công việc cụ thể của doanh nghiệp.\nNâng cao các tính năng AI hiện có nhằm cải thiện trải nghiệm người dùng và hiệu suất hoạt động.\nTích hợp liền mạch các AI skill khác nhau vào quy trình vận hành doanh nghiệp để tăng hiệu quả.\nXây dựng các giải pháp may đo cho hoạt động tương tác với khách hàng, giúp tăng mức độ gắn kết và sự hài lòng.",
+    "setup_vi": "Terminal\nSao chép\n`claude install skillcreatorai/Ai-Agent-Skills`\n`git clone https://github.com/skillcreatorai/Ai-Agent-Skills`",
+    "usage_vi": "```\nThiết kế một AI agent sử dụng Ai-Agent-Skills tích hợp với Tomi để [TÁC VỤ CỤ THỂ]. Agent cần có khả năng [HÀNH ĐỘNG 1] và [HÀNH ĐỘNG 2]. Cung cấp kế hoạch triển khai từng bước, bao gồm các API và nguồn dữ liệu cần thiết. Đảm bảo agent có thể xử lý [TRƯỜNG HỢP SỬ DỤNG CỤ THỂ] một cách hiệu quả.\n```\nSao chép\n\n```\nĐể thiết kế một AI agent sử dụng Ai-Agent-Skills tích hợp với Tomi nhằm quản lý các giao dịch crypto, hãy thực hiện theo kế hoạch sau:\n\n1. **Xác định năng lực của Agent**: Agent sẽ giám sát các mô hình giao dịch và cảnh báo người dùng về các hoạt động đáng ngờ. Nó cũng sẽ đưa ra lời khuyên tài chính cá nhân hóa dựa trên lịch sử giao dịch.\n\n2. **Tích hợp với Tomi API**: Sử dụng API chat và wallet của Tomi để truy cập dữ liệu giao dịch và hồ sơ người dùng. Đảm bảo agent có thể gửi cảnh báo và lời khuyên thông qua hệ thống tin nhắn của Tomi.\n\n3. **Triển khai xử lý dữ liệu**: Sử dụng Ai-Agent-Skills để xử lý dữ liệu giao dịch, nhận diện các mô hình và tạo cảnh báo. Triển khai các mô hình học máy (machine learning) để đưa ra lời khuyên tài chính cá nhân hóa.\n\n4. **Kiểm thử và triển khai**: Tiến hành kiểm thử toàn diện để đảm bảo agent xử lý tốt các trường hợp sử dụng khác nhau, chẳng hạn như phát hiện giao dịch gian lận và cung cấp lời khuyên tài chính phù hợp. Triển khai agent và giám sát hiệu suất hoạt động.\n\nBằng cách làm theo các bước này, bạn có thể tạo ra một AI agent mạnh mẽ giúp nâng cao năng lực của Tomi và mang lại các dịch vụ giá trị cho người dùng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:01:24.590076Z",
+    "http_status": 200,
+    "content_hash": "6e29cc5accc808d1e0d980f1e5324996609646bd6d0ef01c3a851a36f892b9e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-agent-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-agent-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Ai-Agent-Skills: Nâng cao năng lực AI Agent của bạn",
+  "short_description_vi": "Ai-Agent-Skills là một bộ công cụ đa năng được thiết kế để xây dựng và nâng cao năng lực cho các AI agent. Giải pháp homebrew này giúp các nhà phát triển dễ dàng tùy biến và tối ưu hóa các tính năng AI, là lựa chọn lý tưởng cho nhiều ứng dụng khác nhau trong hệ sinh thái AI."
+}

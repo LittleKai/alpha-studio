@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/chrome-devtools-mcp",
+  "slug": "chrome-devtools-mcp",
+  "name": "Chrome Devtools MCP",
+  "headline": "chrome devtools mcp server integration with Claude",
+  "short_description": "Chrome DevTools MCP server enables debugging web applications via the Chrome DevTools Protocol. Integrates with Claude Desktop and Claude Code for streamlined debugging workflows. Ideal for operations teams managing web applications.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "benjaminr",
+  "install_command": "git clone https://github.com/benjaminr/chrome-devtools-mcp.git",
+  "source_repo_url": "https://github.com/benjaminr/chrome-devtools-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-desktop",
+    "frontend",
+    "mcp-server",
+    "dev-tools",
+    "debugging-tools",
+    "dev",
+    "mcp",
+    "chromium",
+    "chrome",
+    "chromium-browser",
+    "monitoring-tool",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Chrome DevTools MCP is a Model Context Protocol server that integrates Chrome's debugging capabilities with Claude, allowing you to debug web applications without leaving your AI assistant. Once installed in Claude Desktop, you can monitor network requests, inspect JavaScript objects, analyze console errors, and track performance metrics in real-time. The server supports DOM inspection, storage access (cookies, localStorage, sessionStorage), and live console output tracking. It installs as a Claude Desktop extension (.dxt) for one-click setup, or via MCP CLI and Claude Code for advanced users. This tool streamlines debugging workflows for developers and operations teams managing web applications.\nDebug network requests and HTTP responses in production applications\nAnalyze JavaScript errors and console logs through Claude conversation\nInspect DOM structure and page metrics for web application troubleshooting\nMonitor performance metrics including resource loading and memory utilization",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/benjaminr/chrome-devtools-mcp`",
+    "usage": "```\nUse the Chrome DevTools MCP server to debug [WEBSITE_URL]. Identify performance bottlenecks in the [PAGE_ELEMENT] and suggest optimizations. Capture a performance profile and analyze the [NETWORK_REQUESTS] for slow responses. Provide a prioritized list of fixes with estimated impact.\n```\nCopy\n\n```\nDebugging report for https://example-ecommerce.com (a fictional online store) using Chrome DevTools MCP:\n\n**Performance Analysis:**\n- Total page load time: 4.2s (target: <2s)\n- Largest Contentful Paint (LCP): 3.1s (caused by hero image at https://cdn.example.com/hero-1080p.jpg)\n- Cumulative Layout Shift (CLS): 0.28 (high - caused by late-loading font at https://fonts.example.com/roboto.woff2)\n\n**Network Bottlenecks:**\n1. API call to /api/products?category=electronics took 1.8s (TTFB: 850ms)\n2. 12 unused JavaScript files totaling 1.4MB (all from /js/vendor/)\n3. 5 blocking CSS files delaying render (critical CSS not inlined)\n\n**Optimization Recommendations:**\n1. Implement lazy loading for hero image (estimated 1.2s improvement)\n2. Preload Roboto font (estimated 0.4s CLS reduction)\n3. Add caching headers for API responses (estimated 0.9s TTFB improvement)\n4. Bundle and minify vendor JS (estimated 0.7s reduction)\n\n**Memory Usage:**\n- Heap snapshot shows 3 orphaned event listeners on #search-input\n- Recommend removing these in the component cleanup phase\n\nFull performance profile and screenshots attached to this report.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "chrome-devtools-mcp#main-content",
+      "chrome-devtools-mcp#overview",
+      "chrome-devtools-mcp#setup",
+      "chrome-devtools-mcp#examples",
+      "chrome-devtools-mcp#tools",
+      "chrome-devtools-mcp#mcp",
+      "chrome-devtools-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Chrome DevTools MCP là một Model Context Protocol server giúp tích hợp khả năng debug của Chrome với Claude, cho phép bạn debug ứng dụng web mà không cần rời khỏi trợ lý AI của mình. Sau khi cài đặt vào Claude Desktop, bạn có thể theo dõi các network request, kiểm tra (inspect) các đối tượng JavaScript, phân tích lỗi console và theo dõi các chỉ số hiệu năng (performance metrics) theo thời gian thực. Server này hỗ trợ kiểm tra DOM, truy cập bộ nhớ lưu trữ (cookies, localStorage, sessionStorage) và theo dõi trực tiếp kết quả console output. Bạn có thể cài đặt dưới dạng tiện ích mở rộng cho Claude Desktop (.dxt) để setup nhanh chóng chỉ với một cú nhấp chuột, hoặc thông qua MCP CLI và Claude Code dành cho người dùng nâng cao. Công cụ này giúp tối ưu hóa quy trình debug cho các nhà phát triển và đội ngũ vận hành quản lý ứng dụng web.\nDebug các network request và HTTP response trong các ứng dụng production\nPhân tích lỗi JavaScript và console log thông qua cuộc trò chuyện với Claude\nKiểm tra cấu trúc DOM và các chỉ số trang để khắc phục sự cố ứng dụng web\nTheo dõi các chỉ số hiệu năng bao gồm việc tải tài nguyên và sử dụng bộ nhớ (memory utilization)",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/benjaminr/chrome-devtools-mcp`",
+    "usage_vi": "```\nSử dụng Chrome DevTools MCP server để debug [WEBSITE_URL]. Hãy xác định các điểm nghẽn hiệu năng (performance bottlenecks) trong [PAGE_ELEMENT] và đề xuất phương án tối ưu hóa. Hãy ghi lại một bản ghi hiệu năng (performance profile) và phân tích các [NETWORK_REQUESTS] để tìm các phản hồi chậm. Cung cấp danh sách các lỗi cần khắc phục được sắp xếp theo thứ tự ưu tiên kèm theo đánh giá mức độ ảnh hưởng.\n```\nCopy\n\n```\nBáo cáo debug cho https://example-ecommerce.com (một cửa hàng trực tuyến giả định) sử dụng Chrome DevTools MCP:\n\n**Phân tích hiệu năng:**\n- Tổng thời gian tải trang: 4.2s (mục tiêu: <2s)\n- Largest Contentful Paint (LCP): 3.1s (gây ra bởi hero image tại https://cdn.example.com/hero-1080p.jpg)\n- Cumulative Layout Shift (CLS): 0.28 (cao - gây ra bởi font tải chậm tại https://fonts.example.com/roboto.woff2)\n\n**Điểm nghẽn mạng (Network Bottlenecks):**\n1. API call đến /api/products?category=electronics mất 1.8s (TTFB: 850ms)\n2. Có 12 file JavaScript không sử dụng với tổng dung lượng 1.4MB (tất cả từ /js/vendor/)\n3. Có 5 file CSS gây chặn hiển thị (blocking CSS), làm chậm quá trình render (critical CSS chưa được inline)\n\n**Đề xuất tối ưu hóa:**\n1. Triển khai lazy loading cho hero image (dự kiến cải thiện 1.2s)\n2. Tải trước (preload) font Roboto (dự kiến giảm 0.4 chỉ số CLS)\n3. Thêm caching header cho các API response (dự kiến cải thiện 0.9s TTFB)\n4. Gom nhóm (bundle) và giảm thiểu dung lượng (minify) vendor JS (dự kiến giảm 0.7s)\n\n**Sử dụng bộ nhớ:**\n- Heap snapshot cho thấy có 3 event listener bị mồ côi (orphaned) trên #search-input\n- Khuyến nghị gỡ bỏ các event listener này trong giai đoạn cleanup component\n\nBản ghi hiệu năng đầy đủ và ảnh chụp màn hình được đính kèm trong báo cáo này.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:53:34.998904Z",
+    "http_status": 200,
+    "content_hash": "96a351f29d3be655d91822f57c01b05cb833a69d1fb66f6d88317b38cf8a18f6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chrome-devtools-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\chrome-devtools-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tích hợp Chrome DevTools MCP server với Claude",
+  "short_description_vi": "Chrome DevTools MCP server cho phép debug ứng dụng web thông qua Chrome DevTools Protocol. Tích hợp mượt mà với Claude Desktop và Claude Code để tối ưu hóa quy trình debug. Giải pháp lý tưởng cho các đội ngũ vận hành (operations) quản lý ứng dụng web."
+}

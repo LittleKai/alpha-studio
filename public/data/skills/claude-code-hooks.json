@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-hooks",
+  "slug": "claude-code-hooks",
+  "name": "browser-use",
+  "headline": "useful claude code hooks collection",
+  "short_description": "Claude Code Hooks is a collection of ready-to-use automation scripts for Claude Code. Operations teams can copy, paste, and customize these hooks to streamline workflows, enhance security, and set up notifications. Connects to Claude Code and integrates with CLI tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "karanb192",
+  "install_command": "git clone https://github.com/karanb192/claude-code-hooks.git",
+  "source_repo_url": "https://github.com/karanb192/claude-code-hooks",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "claude-code",
+    "anthropic",
+    "developer-tools",
+    "notifications",
+    "automation",
+    "claude-code-hooks",
+    "claude",
+    "security",
+    "hooks",
+    "cli"
+  ],
+  "sections": {
+    "overview": "Claude Code Hooks provides a curated collection of tested JavaScript and Python scripts that integrate directly with Claude Code's hook system. The toolkit includes pre-tool-use hooks to block dangerous commands and protect secrets, post-tool-use hooks for git automation, and notification hooks for Slack alerts. Each hook is fully documented with configurable safety levels (critical, high, strict) so teams can enforce security policies tailored to their risk tolerance. Operations teams, DevOps engineers, and development leads benefit from copy-paste installation and straightforward customization without writing hooks from scratch.\nBlock dangerous shell commands and prevent accidental data deletion during Claude Code operations\nProtect sensitive files and prevent secrets exposure in environment variables and config files\nAutomatically stage modified files to git after Claude makes changes\nSend Slack notifications when Claude Code requires user input or permissions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/karanb192/claude-code-hooks`",
+    "usage": "```\nUse claude-code-hooks to [TASK]. For example: 'Use claude-code-hooks to automatically scan the /tmp directory for files older than 7 days and delete them safely.' or 'Use claude-code-hooks to set up a GitHub webhook that notifies #alerts channel in Slack whenever a new release is published in the main branch.'\n```\nCopy\n\n```\nHere’s the automation script generated using claude-code-hooks to streamline the release notification process:\n\n```bash\n#!/bin/bash\n# GitHub Release Notifier to Slack\n# Hook: github-release-to-slack\n# Description: Posts a Slack notification to #alerts when a new release is published in the main branch\n\nGITHUB_TOKEN=\"ghp_1234567890abcdef\"\nSLACK_WEBHOOK_URL=\"https://hooks.slack.com/services/T123/B456/C789\"\nREPO=\"acme-corp/web-app\"\n\n# Fetch the latest release from GitHub\nRELEASE_INFO=$(curl -s -H \"Authorization: token $GITHUB_TOKEN\" \\\n  \"https://api.github.com/repos/$REPO/releases/latest\")\n\n# Extract release details\nRELEASE_TAG=$(echo \"$RELEASE_INFO\" | jq -r '.tag_name')\nRELEASE_NAME=$(echo \"$RELEASE_INFO\" | jq -r '.name')\nRELEASE_URL=$(echo \"$RELEASE_INFO\" | jq -r '.html_url')\n\n# Format Slack message\nSLACK_MESSAGE=$(jq -n --arg tag \"$RELEASE_TAG\" \\\n  --arg name \"$RELEASE_NAME\" \\\n  --arg url \"$RELEASE_URL\" \\\n  '{\"text\": \":rocket: *New Release Published!*\", \"attachments\": [{\"color\": \"#36a64f\", \"fields\": [{\"title\": \"Tag\", \"value\": $tag, \"short\": true}, {\"title\": \"Name\", \"value\": $name, \"short\": true}, {\"title\": \"Release Notes\", \"value\": $url, \"short\": false}]}]}')\n\n# Send to Slack\ncurl -X POST -H 'Content-type: application/json' \\\n  --data \"$SLACK_MESSAGE\" \\\n  \"$SLACK_WEBHOOK_URL\"\n\necho \"Release notification sent to Slack for $REPO:$RELEASE_TAG\"\n```\n\n### Key Features:\n- **GitHub API Integration**: Uses a personal access token to fetch release data securely.\n- **Slack Webhook**: Posts a rich, formatted message to the #alerts channel with release details.\n- **Automation-Ready**: Can be triggered via GitHub Actions or a cron job.\n- **Error Handling**: Silent failure on API issues (can be enhanced with logging).\n\nThis hook reduces manual notifications and ensures the team is instantly alerted to new releases, improving response times for critical updates.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-hooks#main-content",
+      "claude-code-hooks#overview",
+      "claude-code-hooks#setup",
+      "claude-code-hooks#examples",
+      "claude-code-hooks#tools",
+      "claude-code-hooks#mcp",
+      "claude-code-hooks#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Hooks provides a curated collection of tested JavaScript and Python scripts that integrate directly with Claude Code's hook system. The toolkit includes pre-tool-use hooks to block dangerous commands and protect secrets, post-tool-use hooks for git automation, and notification hooks for Slack alerts. Each hook is fully documented with configurable safety levels (critical, high, strict) so teams can enforce security policies tailored to their risk tolerance. Operations teams, DevOps engineers, and development leads benefit from copy-paste installation and straightforward customization without writing hooks from scratch.\nBlock dangerous shell commands and prevent accidental data deletion during Claude Code operations\nProtect sensitive files and prevent secrets exposure in environment variables and config files\nAutomatically stage modified files to git after Claude makes changes\nSend Slack notifications when Claude Code requires user input or permissions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/karanb192/claude-code-hooks`",
+    "usage_vi": "```\nUse claude-code-hooks to [TASK]. For example: 'Use claude-code-hooks to automatically scan the /tmp directory for files older than 7 days and delete them safely.' or 'Use claude-code-hooks to set up a GitHub webhook that notifies #alerts channel in Slack whenever a new release is published in the main branch.'\n```\nCopy\n\n```\nHere’s the automation script generated using claude-code-hooks to streamline the release notification process:\n\n```bash\n#!/bin/bash\n# GitHub Release Notifier to Slack\n# Hook: github-release-to-slack\n# Description: Posts a Slack notification to #alerts when a new release is published in the main branch\n\nGITHUB_TOKEN=\"ghp_1234567890abcdef\"\nSLACK_WEBHOOK_URL=\"https://hooks.slack.com/services/T123/B456/C789\"\nREPO=\"acme-corp/web-app\"\n\n# Fetch the latest release from GitHub\nRELEASE_INFO=$(curl -s -H \"Authorization: token $GITHUB_TOKEN\" \\\n  \"https://api.github.com/repos/$REPO/releases/latest\")\n\n# Extract release details\nRELEASE_TAG=$(echo \"$RELEASE_INFO\" | jq -r '.tag_name')\nRELEASE_NAME=$(echo \"$RELEASE_INFO\" | jq -r '.name')\nRELEASE_URL=$(echo \"$RELEASE_INFO\" | jq -r '.html_url')\n\n# Format Slack message\nSLACK_MESSAGE=$(jq -n --arg tag \"$RELEASE_TAG\" \\\n  --arg name \"$RELEASE_NAME\" \\\n  --arg url \"$RELEASE_URL\" \\\n  '{\"text\": \":rocket: *New Release Published!*\", \"attachments\": [{\"color\": \"#36a64f\", \"fields\": [{\"title\": \"Tag\", \"value\": $tag, \"short\": true}, {\"title\": \"Name\", \"value\": $name, \"short\": true}, {\"title\": \"Release Notes\", \"value\": $url, \"short\": false}]}]}')\n\n# Send to Slack\ncurl -X POST -H 'Content-type: application/json' \\\n  --data \"$SLACK_MESSAGE\" \\\n  \"$SLACK_WEBHOOK_URL\"\n\necho \"Release notification sent to Slack for $REPO:$RELEASE_TAG\"\n```\n\n### Key Features:\n- **GitHub API Integration**: Uses a personal access token to fetch release data securely.\n- **Slack Webhook**: Posts a rich, formatted message to the #alerts channel with release details.\n- **Automation-Ready**: Can be triggered via GitHub Actions or a cron job.\n- **Error Handling**: Silent failure on API issues (can be enhanced with logging).\n\nThis hook reduces manual notifications and ensures the team is instantly alerted to new releases, improving response times for critical updates.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:46:04.440571Z",
+    "http_status": 200,
+    "content_hash": "16887f68236a62f0c3b3f331026fd336873306e52fc06b0c6d6c0d6996325bed",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-hooks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-hooks.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "useful claude code hooks collection",
+  "short_description_vi": "Claude Code Hooks is a collection of ready-to-use automation scripts for Claude Code. Operations teams can copy, paste, and customize these hooks to streamline workflows, enhance security, and set up notifications. Connects to Claude Code and integrates with CLI tools."
+}

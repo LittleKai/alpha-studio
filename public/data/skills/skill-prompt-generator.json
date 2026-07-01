@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-prompt-generator",
+  "slug": "skill-prompt-generator",
+  "name": "langchain-salesforce",
+  "headline": "AI Portrait Prompt Generator - Enhance Your Content",
+  "short_description": "The skill-prompt-generator is an AI-driven system that intelligently combines features from a library to create high-quality portrait description prompts. It includes capabilities for automatic learning, library expansion, and intelligent review, making it a versatile tool for generating tailored prompts.",
+  "tier": "Silver",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "huangserva",
+  "install_command": "claude install huangserva/skill-prompt-generator",
+  "source_repo_url": "https://github.com/huangserva/skill-prompt-generator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "AI",
+    "Machine Learning",
+    "Feature Extraction",
+    "Prompt Generation",
+    "Automation"
+  ],
+  "sections": {
+    "overview": "The skill-prompt-generator is an intelligent prompt creation system that combines features from a curated library to produce detailed portrait description prompts. It includes three generation modes—portrait, cross-domain, and design—with semantic understanding and consistency checking to ensure coherent outputs. The system uses a SQLite database with 1,140+ reusable elements organized across multiple domains including portrait, design, art, and product. It supports automatic element learning and library expansion through a conflict resolution system that validates prompt consistency. This tool is particularly useful for AI agents, prompt engineers, and creators who need to generate contextually appropriate and detailed descriptions without manual composition.\nGenerate personalized marketing prompts for targeted campaigns.\nCreate detailed character descriptions for storytelling and game development.\nAutomate content creation for social media platforms, enhancing user interaction.\nDevelop unique prompts for artistic projects, including illustrations and designs.",
+    "setup": "Terminal\nCopy\n`claude install huangserva/skill-prompt-generator`\n`git clone https://github.com/huangserva/skill-prompt-generator`",
+    "usage": "```\nGenerate a high-quality portrait description prompt for [ARTIST/STYLE]. Include the following elements: [SUBJECT DESCRIPTION], [MOOD/ATMOSPHERE], [COLOR PALETTE], [COMPOSITION STYLE], and [DETAIL LEVEL]. Ensure the prompt is optimized for [AI MODEL/TOOL] and follows best practices for [PORTRAIT TYPE, e.g., photorealistic, anime, digital painting].\n```\nCopy\n\n```\nHere is a tailored portrait description prompt for a photorealistic AI model like MidJourney or Stable Diffusion, designed to generate a high-quality portrait of a young woman in a cyberpunk cityscape:\n\n**Prompt:**\n\"A hyper-detailed photorealistic portrait of a 28-year-old woman with sharp, angular features, piercing amber eyes, and long, dark hair streaked with neon blue. She wears a sleek, form-fitting black bodysuit with glowing circuit-like patterns, standing in the rain on a neon-lit rooftop in Neo-Tokyo. The background features towering holographic billboards, rain-slicked streets reflecting neon signs, and a distant view of flying cars. The color palette is dominated by deep purples, electric blues, and warm amber tones. The composition is cinematic, with a low-angle shot emphasizing her confident gaze. The lighting is dramatic, with rim lighting highlighting her hair and suit, and soft ambient glow from the city below. Ultra-HD, 8K, Unreal Engine 5, hyper-realistic textures, depth of field, cinematic grain.\"\n\n**Negative Prompt (if applicable):**\n\"blurry, low resolution, distorted face, bad anatomy, cartoonish, overly saturated, unrealistic proportions, watermark, text, logo.\"\n\nThis prompt leverages MidJourney’s `--v 6` model parameters for optimal results, including `--ar 16:9` for a cinematic aspect ratio and `--style raw` for a more photorealistic output. The prompt balances specificity with flexibility, allowing the AI to interpret artistic details while maintaining coherence in the final image.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-prompt-generator#main-content",
+      "skill-prompt-generator#overview",
+      "skill-prompt-generator#setup",
+      "skill-prompt-generator#examples",
+      "skill-prompt-generator#tools",
+      "skill-prompt-generator#mcp",
+      "skill-prompt-generator#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "The skill-prompt-generator is an intelligent prompt creation system that combines features from a curated library to produce detailed portrait description prompts. It includes three generation modes—portrait, cross-domain, and design—with semantic understanding and consistency checking to ensure coherent outputs. The system uses a SQLite database with 1,140+ reusable elements organized across multiple domains including portrait, design, art, and product. It supports automatic element learning and library expansion through a conflict resolution system that validates prompt consistency. This tool is particularly useful for AI agents, prompt engineers, and creators who need to generate contextually appropriate and detailed descriptions without manual composition.\nGenerate personalized marketing prompts for targeted campaigns.\nCreate detailed character descriptions for storytelling and game development.\nAutomate content creation for social media platforms, enhancing user interaction.\nDevelop unique prompts for artistic projects, including illustrations and designs.",
+    "setup_vi": "Terminal\nCopy\n`claude install huangserva/skill-prompt-generator`\n`git clone https://github.com/huangserva/skill-prompt-generator`",
+    "usage_vi": "```\nGenerate a high-quality portrait description prompt for [ARTIST/STYLE]. Include the following elements: [SUBJECT DESCRIPTION], [MOOD/ATMOSPHERE], [COLOR PALETTE], [COMPOSITION STYLE], and [DETAIL LEVEL]. Ensure the prompt is optimized for [AI MODEL/TOOL] and follows best practices for [PORTRAIT TYPE, e.g., photorealistic, anime, digital painting].\n```\nCopy\n\n```\nHere is a tailored portrait description prompt for a photorealistic AI model like MidJourney or Stable Diffusion, designed to generate a high-quality portrait of a young woman in a cyberpunk cityscape:\n\n**Prompt:**\n\"A hyper-detailed photorealistic portrait of a 28-year-old woman with sharp, angular features, piercing amber eyes, and long, dark hair streaked with neon blue. She wears a sleek, form-fitting black bodysuit with glowing circuit-like patterns, standing in the rain on a neon-lit rooftop in Neo-Tokyo. The background features towering holographic billboards, rain-slicked streets reflecting neon signs, and a distant view of flying cars. The color palette is dominated by deep purples, electric blues, and warm amber tones. The composition is cinematic, with a low-angle shot emphasizing her confident gaze. The lighting is dramatic, with rim lighting highlighting her hair and suit, and soft ambient glow from the city below. Ultra-HD, 8K, Unreal Engine 5, hyper-realistic textures, depth of field, cinematic grain.\"\n\n**Negative Prompt (if applicable):**\n\"blurry, low resolution, distorted face, bad anatomy, cartoonish, overly saturated, unrealistic proportions, watermark, text, logo.\"\n\nThis prompt leverages MidJourney’s `--v 6` model parameters for optimal results, including `--ar 16:9` for a cinematic aspect ratio and `--style raw` for a more photorealistic output. The prompt balances specificity with flexibility, allowing the AI to interpret artistic details while maintaining coherence in the final image.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:19:03.328473Z",
+    "http_status": 200,
+    "content_hash": "bdfcd4f05cf26c4f6d281abc017e5b2dfb4e1335d90e7329436ae24f1852a2ec",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-prompt-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-prompt-generator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Portrait Prompt Generator - Enhance Your Content",
+  "short_description_vi": "The skill-prompt-generator is an AI-driven system that intelligently combines features from a library to create high-quality portrait description prompts. It includes capabilities for automatic learning, library expansion, and intelligent review, making it a versatile tool for generating tailored prompts."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/talkcody",
+  "slug": "talkcody",
+  "name": "TalkCody",
+  "headline": "TalkCody - Automate Coding Tasks",
+  "short_description": "TalkCody is an open-source AI coding agent that automates coding tasks. It benefits developers by reducing manual coding work. It integrates with GitHub and supports Claude agents. It is built with TypeScript and Rust.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "talkcody",
+  "install_command": "git clone https://github.com/talkcody/talkcody.git",
+  "source_repo_url": "https://github.com/talkcody/talkcody",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "coding-assistant",
+    "vercel-ai-sdk",
+    "ai-agents",
+    "rust",
+    "coding-agent",
+    "tauri2"
+  ],
+  "sections": {
+    "overview": "TalkCody is an open-source AI coding agent designed for developers who prioritize privacy, cost control, and performance. It runs entirely locally on your machine, supporting multiple AI models from OpenAI, Anthropic, Google, and local options like Ollama without vendor lock-in. The tool features four-level parallelism for simultaneous execution across project, task, agent, and tool levels, enabling complex projects to complete faster. TalkCody integrates with existing subscriptions like ChatGPT Plus and GitHub Copilot, offers nine free usage methods, and includes professional features such as multimodal input, MCP server support, and a built-in terminal. Built with React 19, TypeScript, Tauri 2, and Rust, it delivers native performance while keeping your code and data completely private on your machine.\nAutomate repetitive coding tasks across multiple projects simultaneously\nLeverage existing ChatGPT Plus or GitHub Copilot subscriptions for AI-assisted development\nRun offline coding workflows using local AI models like Ollama\nExtend functionality with custom agents, skills, and MCP servers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/talkcody/talkcody`",
+    "usage": "```\nI need to automate a repetitive coding task: [DESCRIBE TASK]. Here's the relevant code context: [PROVIDE CODE SNAPSHOTS]. Generate a TalkCody agent script to handle this task. Include instructions for setting up the agent in my GitHub repository.\n```\nCopy\n\n```\nBased on your request to automate code documentation updates, I've created a TalkCody agent that will: 1) Scan your repository for new or modified TypeScript files, 2) Extract function signatures and JSDoc comments, 3) Generate Markdown documentation in your /docs folder. Here's the agent script:\n\n```typescript\n// talkcody-agent.ts\nimport { Agent } from '@claude-ai/agents'\n\nconst docAgent = new Agent({\n  name: 'CodeDocGenerator',\n  description: 'Automates code documentation updates',\n  tools: [new CodeScanner(), new DocGenerator()],\n  workflow: [\n    { step: 'scan_code', tool: 'CodeScanner' },\n    { step: 'generate_docs', tool: 'DocGenerator' }\n  ]\n})\n\ndocAgent.run()\n```\n\nTo set up this agent:\n1. Add this file to your repository\n2. Create a .env file with your GitHub token\n3. Run 'npm install @claude-ai/agents'\n4. Execute with 'node talkcody-agent.ts'\n\nThe agent will run daily at 2AM and update your documentation automatically.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "talkcody#main-content",
+      "talkcody#overview",
+      "talkcody#setup",
+      "talkcody#examples",
+      "talkcody#tools",
+      "talkcody#mcp",
+      "talkcody#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TalkCody là một AI coding agent mã nguồn mở được thiết kế dành riêng cho các nhà phát triển đề cao quyền riêng tư, tối ưu chi phí và hiệu năng. Công cụ này chạy hoàn toàn local trên máy của bạn, hỗ trợ nhiều mô hình AI từ OpenAI, Anthropic, Google cho đến các tùy chọn local như Ollama mà không lo phụ thuộc nhà cung cấp (vendor lock-in). TalkCody sở hữu kiến trúc xử lý song song 4 cấp độ để thực thi đồng thời ở các cấp độ dự án, tác vụ, agent và công cụ, giúp hoàn thành các dự án phức tạp nhanh hơn. TalkCody tích hợp mượt mà với các gói đăng ký hiện có như ChatGPT Plus và GitHub Copilot, cung cấp 9 phương thức sử dụng miễn phí cùng các tính năng chuyên nghiệp như đầu vào đa phương thức (multimodal), hỗ trợ MCP server và terminal tích hợp sẵn. Được xây dựng trên React 19, TypeScript, Tauri 2 và Rust, TalkCody mang lại hiệu năng native vượt trội trong khi vẫn bảo mật tuyệt đối mã nguồn và dữ liệu của bạn trên máy cá nhân.\n\nTự động hóa các tác vụ lập trình lặp đi lặp lại trên nhiều dự án cùng lúc\nTận dụng các tài khoản đăng ký ChatGPT Plus hoặc GitHub Copilot hiện có để hỗ trợ lập trình bằng AI\nChạy các quy trình lập trình offline sử dụng các mô hình AI local như Ollama\nMở rộng tính năng với các agent, skill tùy chỉnh và MCP server",
+    "setup_vi": "Hiện chưa có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/talkcody/talkcody`",
+    "usage_vi": "```\nTôi cần tự động hóa một tác vụ lập trình lặp đi lặp lại: [MÔ TẢ TÁC VỤ]. Dưới đây là ngữ cảnh code liên quan: [CUNG CẤP CÁC ĐOẠN CODE MẪU]. Hãy tạo một script TalkCody agent để xử lý tác vụ này. Bao gồm cả hướng dẫn thiết lập agent trong GitHub repository của tôi.\n```\nSao chép\n\n```\nDựa trên yêu cầu tự động hóa cập nhật tài liệu code của bạn, tôi đã tạo một TalkCody agent thực hiện: 1) Quét repository của bạn để tìm các file TypeScript mới hoặc bị thay đổi, 2) Trích xuất function signature và các comment JSDoc, 3) Tạo tài liệu Markdown trong thư mục /docs của bạn. Dưới đây là script của agent:\n\n```typescript\n// talkcody-agent.ts\nimport { Agent } from '@claude-ai/agents'\n\nconst docAgent = new Agent({\n  name: 'CodeDocGenerator',\n  description: 'Automates code documentation updates',\n  tools: [new CodeScanner(), new DocGenerator()],\n  workflow: [\n    { step: 'scan_code', tool: 'CodeScanner' },\n    { step: 'generate_docs', tool: 'DocGenerator' }\n  ]\n})\n\ndocAgent.run()\n```\n\nĐể thiết lập agent này:\n1. Thêm file này vào repository của bạn\n2. Tạo một file .env chứa GitHub token của bạn\n3. Chạy lệnh 'npm install @claude-ai/agents'\n4. Thực thi bằng lệnh 'node talkcody-agent.ts'\n\nAgent sẽ chạy hàng ngày vào lúc 2 giờ sáng và tự động cập nhật tài liệu của bạn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:08:13.923330Z",
+    "http_status": 200,
+    "content_hash": "047a849ef4c59daa108065b6ca5a80050457043025380b91327e1bc33bfea168",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\talkcody.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\talkcody.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TalkCody - Tự động hóa các tác vụ lập trình",
+  "short_description_vi": "TalkCody là một AI coding agent mã nguồn mở giúp tự động hóa các tác vụ lập trình, giúp lập trình viên giảm bớt công việc viết code thủ công. Công cụ này tích hợp với GitHub, hỗ trợ các Claude agent và được xây dựng bằng TypeScript và Rust."
+}

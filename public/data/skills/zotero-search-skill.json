@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zotero-search-skill",
+  "slug": "zotero-search-skill",
+  "name": "browser-use",
+  "headline": "Zotero Search Skill - Search Zotero Libraries",
+  "short_description": "Search and analyze Zotero research collections using Pyzotero. Ideal for operations teams managing large libraries. Connects to Zotero and Semantic Scholar for enhanced research capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "urschrei",
+  "install_command": "git clone https://github.com/urschrei/zotero_search_skill.git",
+  "source_repo_url": "https://github.com/urschrei/zotero_search_skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Zotero Claude Skill enables users to search and analyze their Zotero research libraries directly through Claude. It leverages Pyzotero to access library data, run targeted searches, and examine results. The skill also integrates with Semantic Scholar to retrieve related literature and expand research discovery. This is particularly useful for researchers, academics, and operations teams managing large research collections who need programmatic access to their Zotero databases.\nSearch Zotero libraries for specific papers or topics\nAnalyze research collection contents and metadata\nDiscover related literature through Semantic Scholar integration\nManage and organize large research databases programmatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/urschrei/zotero_search_skill`",
+    "usage": "```\nSearch my Zotero library for articles related to [TOPIC] in [INDUSTRY]. Provide a summary of the top 5 most relevant articles, including their titles, authors, publication dates, and key findings. Also, suggest 2-3 additional research directions based on the results.\n```\nCopy\n\n```\n# Zotero Search Results for 'AI in Healthcare'",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zotero-search-skill#main-content",
+      "zotero-search-skill#overview",
+      "zotero-search-skill#setup",
+      "zotero-search-skill#examples",
+      "zotero-search-skill#tools",
+      "zotero-search-skill#mcp",
+      "zotero-search-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Zotero Claude Skill enables users to search and analyze their Zotero research libraries directly through Claude. It leverages Pyzotero to access library data, run targeted searches, and examine results. The skill also integrates with Semantic Scholar to retrieve related literature and expand research discovery. This is particularly useful for researchers, academics, and operations teams managing large research collections who need programmatic access to their Zotero databases.\nSearch Zotero libraries for specific papers or topics\nAnalyze research collection contents and metadata\nDiscover related literature through Semantic Scholar integration\nManage and organize large research databases programmatically",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/urschrei/zotero_search_skill`",
+    "usage_vi": "```\nSearch my Zotero library for articles related to [TOPIC] in [INDUSTRY]. Provide a summary of the top 5 most relevant articles, including their titles, authors, publication dates, and key findings. Also, suggest 2-3 additional research directions based on the results.\n```\nCopy\n\n```\n# Zotero Search Results for 'AI in Healthcare'"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:21:24.893831Z",
+    "http_status": 200,
+    "content_hash": "3b251f4cdf4af7e8fff4ecfcc4a96342bcc2fbe89c57301be76e20756ad73455",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zotero-search-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zotero-search-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Zotero Search Skill - Search Zotero Libraries",
+  "short_description_vi": "Search and analyze Zotero research collections using Pyzotero. Ideal for operations teams managing large libraries. Connects to Zotero and Semantic Scholar for enhanced research capabilities."
+}

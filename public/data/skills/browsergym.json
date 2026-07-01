@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/browsergym",
+  "slug": "browsergym",
+  "name": "BrowserGym",
+  "headline": "BrowserGym: Web Task Automation Tool",
+  "short_description": "BrowserGym is a powerful web task automation tool designed to streamline online workflows. With its intuitive gym environment, users can easily create and manage automated web tasks, enhancing productivity and efficiency.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "110 min",
+  "author": "ServiceNow",
+  "install_command": "claude install ServiceNow/BrowserGym",
+  "source_repo_url": "https://github.com/ServiceNow/BrowserGym",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI agent",
+    "LLM",
+    "Python",
+    "task management",
+    "web automation"
+  ],
+  "sections": {
+    "overview": "BrowserGym is a gym environment designed for automating web tasks and testing AI agents on browser-based interactions. Built by ServiceNow, it provides a standardized framework for developing and evaluating web automation agents across multiple benchmarks including WebArena Verified and TimeWarp. The tool enables developers to create agent environments that interact with websites programmatically, handling common web tasks at scale. BrowserGym supports various backend configurations and task evaluation methodologies, making it suitable for researchers and developers building autonomous web agents. It streamlines the process of testing agent performance on real-world web scenarios.\nAutomating data entry from web forms to reduce manual effort and errors.\nScraping web content for analysis, enabling data-driven decision-making.\nTesting web applications for functionality, ensuring quality assurance.\nExecuting complex workflows that involve multiple web interactions seamlessly.",
+    "setup": "Terminal\nCopy\n`claude install ServiceNow/BrowserGym`\n`git clone https://github.com/ServiceNow/BrowserGym`",
+    "usage": "```\nCreate a BrowserGym automation to [TASK]. The automation should run on [SCHEDULE] and save outputs to [LOCATION]. Include error handling for [SCENARIOS]. Example: 'Create a BrowserGym automation to scrape product prices from [ECOMMERCE_SITE] every Monday at 9 AM. Save the data to a Google Sheet. Include error handling for page load failures and CAPTCHA challenges.'\n```\nCopy\n\n```\nAutomation created successfully. Here's your BrowserGym script:\n\n```javascript\n// BrowserGym Automation Script\n// Task: Scrape product prices from Amazon\n// Schedule: Every Monday at 9 AM\n// Output: Google Sheet (ID: abc123)\n\nconst BrowserGym = require('browsergym');\n\nconst gym = new BrowserGym();\n\n// Define the automation\nconst automation = gym.createAutomation({\n  url: 'https://www.amazon.com',\n  schedule: '0 9 * * 1', // Monday at 9 AM\n  steps: [\n    {\n      action: 'navigate',\n      to: '/best-sellers-books-amazon'\n    },\n    {\n      action: 'scrape',\n      selector: '.p13n-sc-uncoverable-faceout',\n      output: 'products'\n    },\n    {\n      action: 'extract',\n      from: 'products',\n      selector: '.a-price-whole',\n      output: 'prices'\n    },\n    {\n      action: 'save',\n      to: 'gs://abc123',\n      data: 'prices'\n    }\n  ],\n  errorHandling: {\n    pageLoadFailure: 'retry',\n    captcha: 'notify'\n  }\n});\n\n// Start the automation\nautomation.start();\n```\n\nYour automation will now run on the specified schedule. You'll receive notifications if any errors occur.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "browsergym#main-content",
+      "browsergym#overview",
+      "browsergym#setup",
+      "browsergym#examples",
+      "browsergym#tools",
+      "browsergym#mcp",
+      "browsergym#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "BrowserGym là một gym environment được thiết kế để tự động hóa các tác vụ web và thử nghiệm các AI agent trên các tương tác dựa trên trình duyệt. Được phát triển bởi ServiceNow, công cụ này cung cấp một framework chuẩn hóa để phát triển và đánh giá các agent tự động hóa web trên nhiều benchmark khác nhau, bao gồm WebArena Verified và TimeWarp. Công cụ này cho phép nhà phát triển tạo ra các môi trường agent để tương tác với trang web thông qua mã nguồn (programmatically), xử lý các tác vụ web phổ biến ở quy mô lớn. BrowserGym hỗ trợ nhiều cấu hình backend và phương pháp đánh giá tác vụ khác nhau, phù hợp cho các nhà nghiên cứu và nhà phát triển đang xây dựng các autonomous web agent. Nó giúp tối ưu hóa quy trình kiểm thử hiệu năng của agent trên các kịch bản web thực tế.\nTự động hóa việc nhập dữ liệu từ các biểu mẫu web để giảm thiểu thao tác thủ công và sai sót.\nScrape nội dung web để phân tích, hỗ trợ ra quyết định dựa trên dữ liệu.\nKiểm thử chức năng của ứng dụng web, đảm bảo chất lượng (QA).\nThực thi mượt mà các workflow phức tạp bao gồm nhiều tương tác web liên tiếp.",
+    "setup_vi": "Terminal\nSao chép\n`claude install ServiceNow/BrowserGym`\n`git clone https://github.com/ServiceNow/BrowserGym`",
+    "usage_vi": "```\nTạo một tiến trình tự động hóa BrowserGym để thực hiện [TASK]. Tiến trình này sẽ chạy theo [SCHEDULE] và lưu kết quả đầu ra tại [LOCATION]. Thiết lập xử lý lỗi cho [SCENARIOS]. Ví dụ: 'Tạo một tiến trình tự động hóa BrowserGym để cào giá sản phẩm từ [ECOMMERCE_SITE] vào mỗi Thứ Hai lúc 9 giờ sáng. Lưu dữ liệu vào Google Sheet. Thiết lập xử lý lỗi khi tải trang thất bại và khi gặp thử thách CAPTCHA.'\n```\nSao chép\n\n```\nTạo tiến trình tự động hóa thành công. Dưới đây là script BrowserGym của bạn:\n\n```javascript\n// Script tự động hóa BrowserGym\n// Tác vụ: Scrape giá sản phẩm từ Amazon\n// Lịch trình: Mỗi Thứ Hai lúc 9 giờ sáng\n// Đầu ra: Google Sheet (ID: abc123)\n\nconst BrowserGym = require('browsergym');\n\nconst gym = new BrowserGym();\n\n// Định nghĩa tiến trình tự động hóa\nconst automation = gym.createAutomation({\n  url: 'https://www.amazon.com',\n  schedule: '0 9 * * 1', // Thứ Hai lúc 9 giờ sáng\n  steps: [\n    {\n      action: 'navigate',\n      to: '/best-sellers-books-amazon'\n    },\n    {\n      action: 'scrape',\n      selector: '.p13n-sc-uncoverable-faceout',\n      output: 'products'\n    },\n    {\n      action: 'extract',\n      from: 'products',\n      selector: '.a-price-whole',\n      output: 'prices'\n    },\n    {\n      action: 'save',\n      to: 'gs://abc123',\n      data: 'prices'\n    }\n  ],\n  errorHandling: {\n    pageLoadFailure: 'retry',\n    captcha: 'notify'\n  }\n});\n\n// Khởi chạy tiến trình tự động hóa\nautomation.start();\n```\n\nTiến trình tự động hóa của bạn sẽ chạy theo lịch trình đã thiết lập. Bạn sẽ nhận được thông báo nếu có bất kỳ lỗi nào xảy ra.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:14:25.278913Z",
+    "http_status": 200,
+    "content_hash": "8c320706f649faab4e9873b676fbf5d4b55791f8cedbfcbf825130b66320041e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browsergym.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browsergym.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "BrowserGym: Công cụ tự động hóa tác vụ Web",
+  "short_description_vi": "BrowserGym là một công cụ tự động hóa tác vụ web mạnh mẽ được thiết kế để tối ưu hóa các quy trình làm việc trực tuyến. Với gym environment trực quan, người dùng có thể dễ dàng tạo và quản lý các tác vụ web tự động, giúp nâng cao năng suất và hiệu quả."
+}

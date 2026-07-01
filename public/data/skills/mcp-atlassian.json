@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-atlassian",
+  "slug": "mcp-atlassian",
+  "name": "MCP Server for Atlassian Tools",
+  "headline": "MCP Server for Atlassian Tools - Enhance",
+  "short_description": "The MCP server for Atlassian tools integrates with Confluence and Jira, enhancing collaboration and project management. This Python-based solution streamlines workflows, making it easier for teams to manage tasks and documentation effectively.",
+  "tier": "Gold",
+  "category": "RevOpsGrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "sooperset",
+  "install_command": "claude install sooperset/mcp-atlassian",
+  "source_repo_url": "https://github.com/sooperset/mcp-atlassian",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "Confluence",
+    "Atlassian",
+    "MCP",
+    "Python",
+    "Jira"
+  ],
+  "sections": {
+    "overview": "mcp-atlassian is a Python-based MCP server that bridges AI agents like Claude and Cursor with Atlassian tools. It provides comprehensive integration with both Confluence and Jira, allowing agents to manage documentation, create and update pages, handle attachments, and automate project management tasks. The skill supports multiple authentication methods including OAuth 2.0 and Personal Access Tokens, with cross-platform compatibility across Windows, Linux, and macOS. Teams use it to streamline collaboration by enabling AI agents to directly interact with their existing Atlassian infrastructure, reducing manual task switching and improving documentation workflows.\nIntegrate Jira issues directly into team workflows for better task management.\nAutomate updates to Confluence documentation based on project changes.\nEnhance project tracking by pulling real-time data from Jira and Confluence.\nStreamline task management across teams by synchronizing updates between tools.",
+    "setup": "Terminal\nCopy\n`claude install sooperset/mcp-atlassian`\n`git clone https://github.com/sooperset/mcp-atlassian`",
+    "usage": "```\nIntegrate the MCP server with our [ATLASSIAN_TOOL] to automate the creation of [DOCUMENT_TYPE] in Confluence whenever a [JIRA_EVENT] occurs. Ensure the document includes [SPECIFIC_CONTENT] and is tagged with [TAGS]. Also, set up a notification system to alert [TEAM_MEMBERS] via [NOTIFICATION_METHOD] when the document is generated.\n```\nCopy\n\n```\nThe MCP server has been successfully integrated with your Jira instance. From now on, whenever a new bug is created in the 'Backlog' project, a corresponding Confluence page will be automatically generated. The page will include the bug summary, description, priority, and assignee. It will also be tagged with 'Bug Report' and 'Backlog'. Team members in the 'QA' group will receive an email notification with a direct link to the new Confluence page. This integration ensures that all bug reports are documented and easily accessible to the QA team, streamlining the bug tracking and resolution process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "mcp-atlassian#main-content",
+      "mcp-atlassian#overview",
+      "mcp-atlassian#setup",
+      "mcp-atlassian#examples",
+      "mcp-atlassian#tools",
+      "mcp-atlassian#mcp",
+      "mcp-atlassian#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "mcp-atlassian là một MCP server viết bằng Python đóng vai trò cầu nối giữa các AI agent như Claude và Cursor với các công cụ Atlassian. Nó cung cấp khả năng tích hợp toàn diện với cả Confluence và Jira, cho phép các agent quản lý tài liệu, tạo và cập nhật trang, xử lý tệp đính kèm, cũng như tự động hóa các tác vụ quản lý dự án. Skill này hỗ trợ nhiều phương thức xác thực bao gồm OAuth 2.0 và Personal Access Token, tương thích đa nền tảng trên Windows, Linux và macOS. Các đội ngũ sử dụng công cụ này để tối ưu hóa việc cộng tác bằng cách cho phép các AI agent tương tác trực tiếp với hạ tầng Atlassian hiện có, giảm thiểu việc chuyển đổi tác vụ thủ công và cải thiện quy trình làm việc với tài liệu.\nTích hợp trực tiếp các issue Jira vào quy trình làm việc của đội ngũ để quản lý tác vụ tốt hơn.\nTự động hóa việc cập nhật tài liệu Confluence dựa trên các thay đổi của dự án.\nTăng cường theo dõi dự án bằng cách lấy dữ liệu thời gian thực từ Jira và Confluence.\nTinh giản quy trình quản lý tác vụ giữa các đội ngũ bằng cách đồng bộ hóa cập nhật giữa các công cụ.",
+    "setup_vi": "Terminal\nSao chép\n`claude install sooperset/mcp-atlassian`\n`git clone https://github.com/sooperset/mcp-atlassian`",
+    "usage_vi": "```\nTích hợp MCP server với [ATLASSIAN_TOOL] của chúng tôi để tự động hóa việc tạo [DOCUMENT_TYPE] trong Confluence mỗi khi có [JIRA_EVENT] xảy ra. Đảm bảo tài liệu bao gồm [SPECIFIC_CONTENT] và được gắn tag [TAGS]. Ngoài ra, hãy thiết lập hệ thống thông báo để gửi cảnh báo đến [TEAM_MEMBERS] qua [NOTIFICATION_METHOD] khi tài liệu được tạo.\n```\nSao chép\n\n```\nMCP server đã được tích hợp thành công với instance Jira của bạn. Từ giờ trở đi, mỗi khi có bug mới được tạo trong dự án 'Backlog', một trang Confluence tương ứng sẽ tự động được tạo. Trang này sẽ bao gồm thông tin tóm tắt, mô tả, mức độ ưu tiên và người được phân công của bug. Trang cũng sẽ được gắn tag 'Bug Report' và 'Backlog'. Các thành viên trong nhóm 'QA' sẽ nhận được email thông báo kèm đường dẫn trực tiếp đến trang Confluence mới. Việc tích hợp này đảm bảo tất cả báo cáo bug đều được lưu lại tài liệu và đội QA có thể dễ dàng truy cập, giúp tối ưu hóa quy trình theo dõi và giải quyết bug.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:20:45.635110Z",
+    "http_status": 200,
+    "content_hash": "f6f3b665a37569490006efa233dd283cbe14b04347fa64ee66368e8e1243b11e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-atlassian.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-atlassian.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP Server cho Atlassian Tools - Nâng cao",
+  "short_description_vi": "MCP server cho các công cụ Atlassian tích hợp với Confluence và Jira, giúp tăng cường khả năng cộng tác và quản lý dự án. Giải pháp phát triển trên nền tảng Python này tối ưu hóa quy trình làm việc, giúp các đội ngũ dễ dàng quản lý tác vụ và tài liệu một cách hiệu quả."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-safety-net",
+  "slug": "claude-code-safety-net",
+  "name": "browser-use",
+  "headline": "claude-code-safety-net: Prevent Data Loss",
+  "short_description": "Claude Code Safety Net is a plugin that prevents destructive git and filesystem commands from executing. It benefits developers and operations teams by catching errors before they cause damage. It integrates with Claude Code to provide an extra layer of security for code execution workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "kenryu42",
+  "install_command": "git clone https://github.com/kenryu42/claude-code-safety-net.git",
+  "source_repo_url": "https://github.com/kenryu42/claude-code-safety-net",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "destructive-commands",
+    "claude-code-plugin",
+    "claude",
+    "security"
+  ],
+  "sections": {
+    "overview": "The claude-code-safety-net is a powerful Claude Code automation skill designed to act as a protective barrier against destructive git and filesystem commands. By intercepting potentially harmful commands before they execute, this plugin ensures that developers can work more safely and confidently. With its intermediate complexity, the skill can be implemented in approximately 30 minutes, making it a quick yet effective addition to your development toolkit. The primary benefit of the claude-code-safety-net is its ability to prevent accidental execution of critical commands such as 'rm -rf', which can lead to irreversible data loss. Additionally, it blocks destructive git commands like 'git reset --hard', safeguarding uncommitted changes from being lost. This is particularly valuable for teams working in shared environments, as it enhances security protocols by flagging and reviewing all destructive operations before execution. While the time savings are not explicitly quantified, the prevention of data loss and the reduction of troubleshooting time can lead to significant efficiency gains. This skill is essential for developers, product managers, and AI practitioners who rely on git and filesystem commands in their workflows. It is especially relevant for those working in collaborative settings where the risk of unintentional data loss is heightened. By integrating the claude-code-safety-net into your AI-first workflows, you can ensure that AI agents operate within safe parameters, automatically catching harmful commands that could disrupt your projects. Implementing the claude-code-safety-net requires an intermediate understanding of git and filesystem operations. As the skill is still gaining traction, with 944 GitHub stars but no weekly installs reported, it represents a niche yet critical addition to the growing landscape of AI automation tools. By adopting this skill, you can enhance your development practices, reduce the risk of costly mistakes, and foster a more secure coding environment.\nPrevent accidental execution of 'rm -rf' commands that could wipe important directories.\nBlock destructive git commands like 'git reset --hard' that could lead to loss of uncommitted changes.\nAutomatically catch and prevent harmful commands issued by AI agents during automated workflows.\nProvide a safety net for developers working in shared environments to avoid unintentional data loss.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kenryu42/claude-code-safety-net`",
+    "usage": "```\nI'm about to run the following git command: [COMMAND]. Before I execute it, please review it for potential risks. If there are any issues, suggest a safer alternative. Here's the current state of my repository: [REPO_STATUS].\n```\nCopy\n\n```\nAfter reviewing your command `git push --force origin main`, I noticed a few potential risks. This command will overwrite the remote main branch with your local version, which could lead to data loss for your team members. Here's a safer alternative: `git push origin main`. This will only update the remote branch with your new commits, preserving any changes made by others. Additionally, consider communicating with your team before pushing to ensure no one else is working on the same files. If you're certain about overwriting, you might want to create a backup branch first with `git branch backup/main` and then proceed with your original command.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-safety-net#main-content",
+      "claude-code-safety-net#overview",
+      "claude-code-safety-net#setup",
+      "claude-code-safety-net#examples",
+      "claude-code-safety-net#tools",
+      "claude-code-safety-net#mcp",
+      "claude-code-safety-net#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-code-safety-net is a powerful Claude Code automation skill designed to act as a protective barrier against destructive git and filesystem commands. By intercepting potentially harmful commands before they execute, this plugin ensures that developers can work more safely and confidently. With its intermediate complexity, the skill can be implemented in approximately 30 minutes, making it a quick yet effective addition to your development toolkit. The primary benefit of the claude-code-safety-net is its ability to prevent accidental execution of critical commands such as 'rm -rf', which can lead to irreversible data loss. Additionally, it blocks destructive git commands like 'git reset --hard', safeguarding uncommitted changes from being lost. This is particularly valuable for teams working in shared environments, as it enhances security protocols by flagging and reviewing all destructive operations before execution. While the time savings are not explicitly quantified, the prevention of data loss and the reduction of troubleshooting time can lead to significant efficiency gains. This skill is essential for developers, product managers, and AI practitioners who rely on git and filesystem commands in their workflows. It is especially relevant for those working in collaborative settings where the risk of unintentional data loss is heightened. By integrating the claude-code-safety-net into your AI-first workflows, you can ensure that AI agents operate within safe parameters, automatically catching harmful commands that could disrupt your projects. Implementing the claude-code-safety-net requires an intermediate understanding of git and filesystem operations. As the skill is still gaining traction, with 944 GitHub stars but no weekly installs reported, it represents a niche yet critical addition to the growing landscape of AI automation tools. By adopting this skill, you can enhance your development practices, reduce the risk of costly mistakes, and foster a more secure coding environment.\nPrevent accidental execution of 'rm -rf' commands that could wipe important directories.\nBlock destructive git commands like 'git reset --hard' that could lead to loss of uncommitted changes.\nAutomatically catch and prevent harmful commands issued by AI agents during automated workflows.\nProvide a safety net for developers working in shared environments to avoid unintentional data loss.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kenryu42/claude-code-safety-net`",
+    "usage_vi": "```\nI'm about to run the following git command: [COMMAND]. Before I execute it, please review it for potential risks. If there are any issues, suggest a safer alternative. Here's the current state of my repository: [REPO_STATUS].\n```\nCopy\n\n```\nAfter reviewing your command `git push --force origin main`, I noticed a few potential risks. This command will overwrite the remote main branch with your local version, which could lead to data loss for your team members. Here's a safer alternative: `git push origin main`. This will only update the remote branch with your new commits, preserving any changes made by others. Additionally, consider communicating with your team before pushing to ensure no one else is working on the same files. If you're certain about overwriting, you might want to create a backup branch first with `git branch backup/main` and then proceed with your original command.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:05:20.281436Z",
+    "http_status": 200,
+    "content_hash": "bfa8daffc1b591ff08664ad1f0670b225c9d7a38a5f63011432502cf064a2150",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-safety-net.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-safety-net.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-code-safety-net: Prevent Data Loss",
+  "short_description_vi": "Claude Code Safety Net is a plugin that prevents destructive git and filesystem commands from executing. It benefits developers and operations teams by catching errors before they cause damage. It integrates with Claude Code to provide an extra layer of security for code execution workflows."
+}

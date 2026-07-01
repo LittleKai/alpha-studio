@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agents-skill",
+  "slug": "agents-skill",
+  "name": "browser-use",
+  "headline": "Agents-Skill: Generate AGENTS.md with Ease",
+  "short_description": "Generates and maintains AGENTS.md files following the agents.md specification for AI coding agents across Claude Code, Cursor, GitHub Copilot, and compatible platforms.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "netresearch",
+  "install_command": "git clone https://github.com/netresearch/agents-skill.git",
+  "source_repo_url": "https://github.com/netresearch/agents-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "agent-skills",
+    "agents-md",
+    "claude-code-skill",
+    "convention",
+    "documentation",
+    "open-standard",
+    "skill",
+    "ai-agent"
+  ],
+  "sections": {
+    "overview": "This skill automates the creation and maintenance of AGENTS.md files, a Markdown convention adopted by 60,000+ open-source projects to guide AI coding agents. It supports Go, PHP, TypeScript, Python, and hybrid projects, automatically extracting commands from Makefile, package.json, composer.json, and go.mod. The skill creates thin root files with precedence rules and automatically detects subsystems to generate scoped documentation files. It works with Claude Code, Cursor, GitHub Copilot, and other Agent Skills-compatible platforms, making it easier for teams to onboard AI agents into their development workflows.\nGenerate AGENTS.md documentation for new open-source projects\nUpdate agent context files when project structure changes\nCreate scoped AGENTS.md files for multi-language backend/frontend projects\nMaintain consistent AI agent onboarding across team repositories",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/netresearch/agents-skill`",
+    "usage": "```\nGenerate an AGENTS.md file for [COMPANY] in the [INDUSTRY] sector. Include at least 5 agents with their roles, responsibilities, and any relevant details. Follow the agents.md convention and ensure it's compatible with Claude Code.\n```\nCopy\n\n```\n```markdown\n# Agents",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agents-skill#main-content",
+      "agents-skill#overview",
+      "agents-skill#setup",
+      "agents-skill#examples",
+      "agents-skill#tools",
+      "agents-skill#mcp",
+      "agents-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill automates the creation and maintenance of AGENTS.md files, a Markdown convention adopted by 60,000+ open-source projects to guide AI coding agents. It supports Go, PHP, TypeScript, Python, and hybrid projects, automatically extracting commands from Makefile, package.json, composer.json, and go.mod. The skill creates thin root files with precedence rules and automatically detects subsystems to generate scoped documentation files. It works with Claude Code, Cursor, GitHub Copilot, and other Agent Skills-compatible platforms, making it easier for teams to onboard AI agents into their development workflows.\nGenerate AGENTS.md documentation for new open-source projects\nUpdate agent context files when project structure changes\nCreate scoped AGENTS.md files for multi-language backend/frontend projects\nMaintain consistent AI agent onboarding across team repositories",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/netresearch/agents-skill`",
+    "usage_vi": "```\nGenerate an AGENTS.md file for [COMPANY] in the [INDUSTRY] sector. Include at least 5 agents with their roles, responsibilities, and any relevant details. Follow the agents.md convention and ensure it's compatible with Claude Code.\n```\nCopy\n\n```\n```markdown\n# Agents"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:40:54.313170Z",
+    "http_status": 200,
+    "content_hash": "a303e34b8c606dc0c545a35a7ca187e3d59d5c6e249dbed03a32898e1eafe5a5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agents-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agents-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Agents-Skill: Generate AGENTS.md with Ease",
+  "short_description_vi": "Generates and maintains AGENTS.md files following the agents.md specification for AI coding agents across Claude Code, Cursor, GitHub Copilot, and compatible platforms."
+}

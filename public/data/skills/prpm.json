@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prpm",
+  "slug": "prpm",
+  "name": "prpm",
+  "headline": "prpm: Universal Registry for AI Coding Tools",
+  "short_description": "PRPM is a universal registry for AI coding tools. It allows developers to discover, install, and manage cross-platform prompts, rules, and skills. Integrates with Claude and Cursor for streamlined AI workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "pr-pm",
+  "install_command": "git clone https://github.com/pr-pm/prpm.git",
+  "source_repo_url": "https://github.com/pr-pm/prpm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursorrules",
+    "cursor",
+    "package-manager",
+    "prompts",
+    "claude",
+    "claude-code",
+    "cursor-ai-edit"
+  ],
+  "sections": {
+    "overview": "The prpm skill is designed as a universal registry for AI coding tools, streamlining the process of discovering and utilizing various automation resources. By centralizing access to these tools, prpm enhances workflow automation, enabling developers and AI practitioners to quickly find the right coding solutions for their projects. This skill is particularly beneficial for those who regularly engage with AI agents and require a reliable source of coding tools to enhance their productivity. One of the main advantages of using the prpm skill is the potential for significant time savings in the coding process. Although specific time savings are currently unknown, the efficiency gained from having a consolidated registry of AI tools cannot be overstated. This skill allows users to eliminate the tedious task of searching through multiple sources for coding resources, thus enabling them to focus on more critical aspects of their projects. The intermediate complexity of this skill means that users should have a basic understanding of AI automation to effectively leverage its capabilities. Developers, product managers, and AI practitioners will find prpm particularly useful in their daily workflows. For instance, a developer working on a machine learning project can quickly access relevant coding tools to enhance model training, while a product manager can utilize the skill to ensure that their team is equipped with the latest automation resources. The prpm skill is also suitable for teams looking to implement AI-first workflows, as it integrates seamlessly into existing processes, allowing for smoother transitions and more effective collaboration. Implementing the prpm skill is straightforward, requiring approximately 30 minutes to set up. While the skill has not yet been verified and currently has a medium GTM relevance, its potential to enhance workflow automation makes it a valuable addition to any developer's toolkit. As AI continues to evolve, having access to a comprehensive registry of coding tools will be essential for staying ahead in the competitive landscape of AI development.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/pr-pm/prpm`",
+    "usage": "```\nInstall the [SKILL_NAME] skill from PRPM into your AI coding tool of choice ([TOOL1]/[TOOL2]). Then, use [SKILL_NAME] to automate [TASK] for [PROJECT/REPO]. Share the results with your team and suggest improvements based on the output.\n```\nCopy\n\n```\nThe PRPM registry now includes a universal skill for automating Python refactoring tasks across platforms. After installing the skill into Cursor, I triggered it to refactor a legacy codebase for a fintech startup called FinX Capital. The task automated generating type stubs for a complex financial data model, ensuring compatibility with Python 3.11+ and reducing CI pipeline failures by 37%. The output included a detailed PR description with placeholders for [CHANGES], [NEXT_STEPS], and [TEST_COVERAGE]. It suggested specific improvements like adding a linter rule for stub files and updating the CI configuration to run tests in parallel. The refactoring task saved approximately 8 hours of manual work this week, allowing the team to focus on higher-value tasks like optimizing the data model for real-time analytics.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "prpm#main-content",
+      "prpm#overview",
+      "prpm#setup",
+      "prpm#examples",
+      "prpm#tools",
+      "prpm#mcp",
+      "prpm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill prpm được thiết kế như một registry phổ quát dành cho các công cụ lập trình AI, giúp đơn giản hóa quy trình khám phá và sử dụng các tài nguyên tự động hóa khác nhau. Bằng cách tập trung hóa quyền truy cập vào các công cụ này, prpm tăng cường tự động hóa workflow, cho phép các lập trình viên và những người thực hành AI nhanh chóng tìm thấy các giải pháp lập trình phù hợp cho dự án của họ. Skill này đặc biệt hữu ích cho những ai thường xuyên làm việc với các AI agent và cần một nguồn công cụ lập trình đáng tin cậy để nâng cao năng suất. Một trong những ưu điểm chính của việc sử dụng skill prpm là khả năng tiết kiệm đáng kể thời gian trong quá trình viết code. Mặc dù lượng thời gian tiết kiệm cụ thể hiện chưa được xác định, hiệu quả có được từ một registry công cụ AI tập trung là vô cùng lớn. Skill này giúp người dùng loại bỏ công việc tẻ nhạt là phải tìm kiếm tài nguyên lập trình từ nhiều nguồn khác nhau, từ đó giúp họ tập trung vào các khía cạnh quan trọng hơn của dự án. Với độ phức tạp ở mức trung bình (intermediate), người dùng nên có hiểu biết cơ bản về tự động hóa AI để khai thác hiệu quả các khả năng của skill này. Các lập trình viên, product manager và những người thực hành AI sẽ thấy prpm đặc biệt hữu ích trong workflow hàng ngày của họ. Ví dụ, một lập trình viên đang làm việc trong dự án machine learning có thể nhanh chóng truy cập các công cụ lập trình liên quan để cải thiện việc huấn luyện mô hình, trong khi một product manager có thể sử dụng skill này để đảm bảo đội ngũ của mình được trang bị các tài nguyên tự động hóa mới nhất. Skill prpm cũng phù hợp cho các đội ngũ muốn triển khai các workflow ưu tiên AI (AI-first workflow), vì nó tích hợp liền mạch vào các quy trình hiện tại, giúp quá trình chuyển đổi diễn ra trơn tru hơn và cộng tác hiệu quả hơn. Việc triển khai skill prpm khá đơn giản, chỉ mất khoảng 30 phút để setup. Dù skill này chưa được xác minh và hiện có mức độ liên quan GTM ở mức trung bình, tiềm năng nâng cao tự động hóa workflow vẫn khiến nó trở thành một sự bổ sung giá trị cho bộ công cụ của bất kỳ lập trình viên nào. Khi AI tiếp tục phát triển, việc tiếp cận một registry toàn diện về các công cụ lập trình sẽ là yếu tố thiết yếu để dẫn đầu trong bối cảnh cạnh tranh của phát triển AI.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/pr-pm/prpm`",
+    "usage_vi": "```\nCài đặt skill [SKILL_NAME] từ PRPM vào công cụ lập trình AI mà bạn chọn ([TOOL1]/[TOOL2]). Sau đó, sử dụng [SKILL_NAME] để tự động hóa [TASK] cho [PROJECT/REPO]. Chia sẻ kết quả với đội ngũ của bạn và đề xuất các cải tiến dựa trên kết quả đầu ra.\n```\nCopy\n\n```\nRegistry của PRPM giờ đây đã bao gồm một skill phổ quát để tự động hóa các tác vụ refactor Python trên nhiều nền tảng. Sau khi cài đặt skill này vào Cursor, tôi đã kích hoạt nó để refactor một codebase cũ cho một startup fintech tên là FinX Capital. Tác vụ này đã tự động hóa việc tạo các type stub cho một mô hình dữ liệu tài chính phức tạp, đảm bảo tính tương thích với Python 3.11+ và giảm 37% số lần thất bại của CI pipeline. Kết quả đầu ra bao gồm một bản mô tả PR chi tiết với các placeholder cho [CHANGES], [NEXT_STEPS] và [TEST_COVERAGE]. Nó cũng đề xuất các cải tiến cụ thể như thêm một linter rule cho các file stub và cập nhật cấu hình CI để chạy test song song. Tác vụ refactor này đã tiết kiệm khoảng 8 giờ làm việc thủ công trong tuần này, giúp đội ngũ tập trung vào các nhiệm vụ có giá trị cao hơn như tối ưu hóa mô hình dữ liệu cho phân tích thời gian thực (real-time analytics).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:38:14.077372Z",
+    "http_status": 200,
+    "content_hash": "89549a89707c2084910606a79c9714f7eb97f096311c703747c789e7621f4258",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prpm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\prpm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "prpm: Registry phổ quát cho các công cụ lập trình AI",
+  "short_description_vi": "PRPM là một registry phổ quát dành cho các công cụ lập trình AI. Công cụ này cho phép các nhà phát triển khám phá, cài đặt và quản lý các prompt, rule và skill đa nền tảng. Tích hợp mượt mà với Claude và Cursor để tối ưu hóa các workflow AI."
+}

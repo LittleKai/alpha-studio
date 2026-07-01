@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-job-tailor",
+  "slug": "claude-code-job-tailor",
+  "name": "browser-use",
+  "headline": "claude-code-job-tailor: Optimize Your Resume",
+  "short_description": "AI resume optimization system for Claude Code. Analyzes job postings, ranks requirements by priority, and automatically selects your most relevant achievements. Write your experience once in YAML, generate unlimited tailored PDFs in 60 less than seconds using Tailor",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "javiera-vasquez",
+  "install_command": "git clone https://github.com/javiera-vasquez/claude-code-job-tailor.git",
+  "source_repo_url": "https://github.com/javiera-vasquez/claude-code-job-tailor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "automation",
+    "react-pdf",
+    "yaml",
+    "bun",
+    "pdf",
+    "claude",
+    "ats-friendly",
+    "pdf-report",
+    "react",
+    "resume-builder",
+    "pdf-generation",
+    "job-tailoring"
+  ],
+  "sections": {
+    "overview": "The claude-code-job-tailor is an innovative AI automation skill designed to optimize resumes for job seekers using Claude Code. This skill analyzes job postings, ranks the requirements by priority, and automatically selects the most relevant achievements from your experience. By writing your experience once in YAML format, you can generate unlimited tailored PDF resumes in less than 60 seconds, streamlining the job application process significantly. One of the key benefits of using claude-code-job-tailor is the considerable time savings it offers. Instead of manually customizing your resume for each job application, this skill allows you to focus on your core competencies while it handles the tedious task of tailoring your documents. This efficiency is especially valuable for developers, product managers, and AI practitioners who often juggle multiple applications and need to present their skills effectively. This skill is particularly suited for job seekers across various roles, including software developers, data engineers, and product managers. Whether you are applying for a frontend development position or a data engineering role, claude-code-job-tailor ensures that your resume highlights the most relevant experiences and skills required by potential employers. The ability to quickly adapt your resume to match specific job descriptions makes it an essential tool in today's competitive job market. Implementation of the claude-code-job-tailor skill is straightforward, taking approximately 30 minutes to set up. With an intermediate complexity level, users will benefit from having a basic understanding of YAML and Claude Code. By integrating this skill into your AI-first workflow, you can enhance your job application process, allowing you to focus on preparing for interviews rather than getting bogged down in resume customization.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/javiera-vasquez/claude-code-job-tailor`",
+    "usage": "```\nAnalyze the job posting at [JOB_POSTING_URL_OR_TEXT] and my resume in [RESUME_YAML_FILE]. Rank the job requirements by priority, then generate a tailored resume PDF that highlights my most relevant achievements for this role. Focus on [SPECIFIC_SKILLS_OR_KEYWORDS] mentioned in the posting. Use the 'claude-code-job-tailor' system to automate this process and output a ready-to-download PDF named '[CUSTOM_FILENAME].pdf'.\n```\nCopy\n\n```\n### Tailored Resume for Senior DevOps Engineer at TechNova Inc.\n\n**Prioritized Job Requirements:**\n1. **Critical:** 5+ years of Kubernetes administration (⭐ Top Priority)\n2. **Critical:** AWS/GCP cloud architecture experience (⭐ Top Priority)\n3. **High:** CI/CD pipeline automation (GitHub Actions/Terraform)\n4. **Medium:** Infrastructure as Code (Ansible/Pulumi)\n5. **Low:** Team leadership (2+ direct reports)\n\n**Optimized Achievements Highlighted:**\n- **Led 3 Kubernetes cluster migrations** to EKS/GKE, reducing costs by 30% while improving uptime to 99.99% (2023)\n- **Designed and implemented** a GitOps-based CI/CD system using ArgoCD and Terraform, cutting deployment times from 2 hours to 15 minutes (2024)\n- **Automated 80% of manual infrastructure tasks** using Ansible playbooks, saving 15 engineering hours/week (2022)\n- **Mentored 4 junior engineers** in cloud-native development, with 2 promoted to mid-level roles (2023-2024)\n\n**Skills Section:**\n- Kubernetes (EKS/GKE), Terraform, GitHub Actions, Ansible, AWS (EKS, RDS, Lambda), GCP (GKE, Cloud Run), Pulumi, Docker, Prometheus/Grafana\n\n**File Generated:** `devops_engineer_technology_nova_tailored.pdf` (Ready for download)\n\n*Note: Achievements were selected based on their direct relevance to the job posting's top 3 priorities. The YAML resume contained 12 additional achievements that were deprioritized for this role.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-job-tailor#main-content",
+      "claude-code-job-tailor#overview",
+      "claude-code-job-tailor#setup",
+      "claude-code-job-tailor#examples",
+      "claude-code-job-tailor#tools",
+      "claude-code-job-tailor#mcp",
+      "claude-code-job-tailor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-code-job-tailor is an innovative AI automation skill designed to optimize resumes for job seekers using Claude Code. This skill analyzes job postings, ranks the requirements by priority, and automatically selects the most relevant achievements from your experience. By writing your experience once in YAML format, you can generate unlimited tailored PDF resumes in less than 60 seconds, streamlining the job application process significantly. One of the key benefits of using claude-code-job-tailor is the considerable time savings it offers. Instead of manually customizing your resume for each job application, this skill allows you to focus on your core competencies while it handles the tedious task of tailoring your documents. This efficiency is especially valuable for developers, product managers, and AI practitioners who often juggle multiple applications and need to present their skills effectively. This skill is particularly suited for job seekers across various roles, including software developers, data engineers, and product managers. Whether you are applying for a frontend development position or a data engineering role, claude-code-job-tailor ensures that your resume highlights the most relevant experiences and skills required by potential employers. The ability to quickly adapt your resume to match specific job descriptions makes it an essential tool in today's competitive job market. Implementation of the claude-code-job-tailor skill is straightforward, taking approximately 30 minutes to set up. With an intermediate complexity level, users will benefit from having a basic understanding of YAML and Claude Code. By integrating this skill into your AI-first workflow, you can enhance your job application process, allowing you to focus on preparing for interviews rather than getting bogged down in resume customization.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/javiera-vasquez/claude-code-job-tailor`",
+    "usage_vi": "```\nAnalyze the job posting at [JOB_POSTING_URL_OR_TEXT] and my resume in [RESUME_YAML_FILE]. Rank the job requirements by priority, then generate a tailored resume PDF that highlights my most relevant achievements for this role. Focus on [SPECIFIC_SKILLS_OR_KEYWORDS] mentioned in the posting. Use the 'claude-code-job-tailor' system to automate this process and output a ready-to-download PDF named '[CUSTOM_FILENAME].pdf'.\n```\nCopy\n\n```\n### Tailored Resume for Senior DevOps Engineer at TechNova Inc.\n\n**Prioritized Job Requirements:**\n1. **Critical:** 5+ years of Kubernetes administration (⭐ Top Priority)\n2. **Critical:** AWS/GCP cloud architecture experience (⭐ Top Priority)\n3. **High:** CI/CD pipeline automation (GitHub Actions/Terraform)\n4. **Medium:** Infrastructure as Code (Ansible/Pulumi)\n5. **Low:** Team leadership (2+ direct reports)\n\n**Optimized Achievements Highlighted:**\n- **Led 3 Kubernetes cluster migrations** to EKS/GKE, reducing costs by 30% while improving uptime to 99.99% (2023)\n- **Designed and implemented** a GitOps-based CI/CD system using ArgoCD and Terraform, cutting deployment times from 2 hours to 15 minutes (2024)\n- **Automated 80% of manual infrastructure tasks** using Ansible playbooks, saving 15 engineering hours/week (2022)\n- **Mentored 4 junior engineers** in cloud-native development, with 2 promoted to mid-level roles (2023-2024)\n\n**Skills Section:**\n- Kubernetes (EKS/GKE), Terraform, GitHub Actions, Ansible, AWS (EKS, RDS, Lambda), GCP (GKE, Cloud Run), Pulumi, Docker, Prometheus/Grafana\n\n**File Generated:** `devops_engineer_technology_nova_tailored.pdf` (Ready for download)\n\n*Note: Achievements were selected based on their direct relevance to the job posting's top 3 priorities. The YAML resume contained 12 additional achievements that were deprioritized for this role.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:09:21.356512Z",
+    "http_status": 200,
+    "content_hash": "7d62a7d295d1fa4fb5c4c0247fc690e406e05317cb7e6ec2d8425aea53bc91f7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-job-tailor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-job-tailor.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-code-job-tailor: Optimize Your Resume",
+  "short_description_vi": "AI resume optimization system for Claude Code. Analyzes job postings, ranks requirements by priority, and automatically selects your most relevant achievements. Write your experience once in YAML, generate unlimited tailored PDFs in 60 less than seconds using Tailor"
+}

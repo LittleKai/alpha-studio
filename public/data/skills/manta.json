@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/manta",
+  "slug": "manta",
+  "name": "Manta IDE",
+  "headline": "Manta IDE - AI Workflow Automation",
+  "short_description": "Manta IDE is an AI-powered automation tool that enables developers to build and manage workflows using a visual graph interface. It supports Claude AI agents and integrates with Node.js and React, making it ideal for operations teams looking to streamline processes and reduce manual coding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "manta-ide",
+  "install_command": "git clone https://github.com/manta-ide/manta.git",
+  "source_repo_url": "https://github.com/manta-ide/manta",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "artificial-intelligence",
+    "react",
+    "typescript",
+    "vibe-coding",
+    "graph",
+    "ai-agents",
+    "ai",
+    "low-code",
+    "react-flow",
+    "claude",
+    "claude-code",
+    "graphs",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Manta IDE is a graph-based development environment that lets you build applications by creating natural-language nodes and connecting them on a visual canvas. Instead of writing code linearly, you direct an AI agent to construct each node, creating a stateful, editable system where any node can connect to any other. The tool supports property configuration for each node, allowing you to adjust outputs without modifying code logic. Developers and operations teams use Manta to design architecture diagrams, user flows, and feature graphs while maintaining high-level abstraction or drilling down to individual functions. It integrates with Claude AI agents, requires Node.js 18+, and runs locally on http://localhost:3000.\nBuild workflow automation systems visually without writing traditional code\nCreate and document architecture diagrams with interactive nodes\nDesign user flows and feature dependency graphs collaboratively\nRefactor large codebases by visualizing module dependencies and relationships",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/manta-ide/manta`",
+    "usage": "```\nUse Manta IDE to design a [WORKFLOW_NAME] automation workflow for [TEAM_OR_DEPARTMENT]. The workflow should include [TRIGGER_EVENT] as the starting point, followed by [ACTION_1], [ACTION_2], and [ACTION_3]. Ensure the workflow handles errors gracefully and logs all outputs to [LOGGING_SYSTEM]. Include a visual graph structure in the output for clarity.\n```\nCopy\n\n```\nHere’s a designed workflow for the Marketing team’s 'Lead Nurturing Automation' using Manta IDE. The workflow starts when a new lead is added to HubSpot (trigger event). It then performs three actions in sequence: 1) Sends a personalized welcome email via SendGrid, 2) Adds the lead to a Mailchimp drip campaign, and 3) Logs the interaction in Google Sheets. The workflow includes error handling for failed email sends, automatically retrying once before logging the failure to Datadog. Below is the visual graph structure for the workflow:\n\n```\n[HubSpot: New Lead] → [SendGrid: Send Welcome Email]\n    ↓ (Success)\n    → [Mailchimp: Add to Drip Campaign]\n    ↓ (Success)\n    → [Google Sheets: Log Interaction]\n    ↓ (Failure)\n    → [Datadog: Log Error]\n```\n\nThe workflow is implemented in Node.js and uses React for the visual interface in Manta IDE. It leverages Manta’s built-in error handling to ensure robustness and includes a logging system that tracks all actions for auditing purposes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "manta#main-content",
+      "manta#overview",
+      "manta#setup",
+      "manta#examples",
+      "manta#tools",
+      "manta#mcp",
+      "manta#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Manta IDE là một môi trường phát triển dạng đồ thị (graph-based), cho phép bạn xây dựng ứng dụng bằng cách tạo các node ngôn ngữ tự nhiên và kết nối chúng trên một canvas trực quan. Thay vì viết code tuyến tính, bạn chỉ cần chỉ dẫn cho một AI agent xây dựng từng node, tạo ra một hệ thống lưu trạng thái (stateful) và dễ dàng chỉnh sửa, nơi bất kỳ node nào cũng có thể kết nối với nhau. Công cụ này hỗ trợ cấu hình thuộc tính cho từng node, giúp bạn điều chỉnh đầu ra mà không cần sửa đổi logic code. Lập trình viên và các đội ngũ vận hành sử dụng Manta để thiết kế sơ đồ kiến trúc, user flow và đồ thị tính năng, đồng thời có thể duy trì tính trừu tượng ở mức cao hoặc đi sâu vào chi tiết từng hàm cụ thể. Manta tích hợp với các Claude AI agent, yêu cầu Node.js 18+ và chạy local tại http://localhost:3000.\n- Xây dựng trực quan các hệ thống tự động hóa workflow mà không cần viết code truyền thống\n- Tạo và lập tài liệu sơ đồ kiến trúc với các node tương tác\n- Cộng tác thiết kế user flow và đồ thị phụ thuộc tính năng\n- Refactor các codebase lớn bằng cách trực quan hóa quan hệ và sự phụ thuộc giữa các module",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/manta-ide/manta`",
+    "usage_vi": "```\nSử dụng Manta IDE để thiết kế workflow tự động hóa [WORKFLOW_NAME] cho [TEAM_OR_DEPARTMENT]. Workflow này nên bao gồm [TRIGGER_EVENT] làm điểm bắt đầu, theo sau là [ACTION_1], [ACTION_2] và [ACTION_3]. Đảm bảo workflow xử lý lỗi một cách mượt mà và ghi log mọi đầu ra vào [LOGGING_SYSTEM]. Hãy bao gồm cấu trúc đồ thị trực quan trong đầu ra để dễ hình dung hơn.\n```\nSao chép\n\n```\nDưới đây là thiết kế workflow cho 'Tự động hóa nuôi dưỡng khách hàng tiềm năng' (Lead Nurturing Automation) của đội ngũ Marketing bằng Manta IDE. Workflow bắt đầu khi có một lead mới được thêm vào HubSpot (trigger event). Sau đó, nó thực hiện liên tiếp ba hành động: 1) Gửi email chào mừng cá nhân hóa qua SendGrid, 2) Thêm lead vào chiến dịch drip campaign trên Mailchimp, và 3) Ghi log tương tác vào Google Sheets. Workflow cũng bao gồm cơ chế xử lý lỗi khi gửi email thất bại, tự động thử lại một lần trước khi ghi nhận lỗi vào Datadog. Dưới đây là cấu trúc đồ thị trực quan cho workflow:\n\n```\n[HubSpot: Lead mới] → [SendGrid: Gửi email chào mừng]\n    ↓ (Thành công)\n    → [Mailchimp: Thêm vào Drip Campaign]\n    ↓ (Thành công)\n    → [Google Sheets: Ghi log tương tác]\n    ↓ (Thất bại)\n    → [Datadog: Ghi log lỗi]\n```\n\nWorkflow này được triển khai bằng Node.js và sử dụng React cho giao diện trực quan trong Manta IDE. Nó tận dụng cơ chế xử lý lỗi tích hợp sẵn của Manta để đảm bảo tính ổn định và bao gồm một hệ thống logging để theo dõi mọi hoạt động phục vụ cho việc kiểm tra (auditing).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:24:06.511235Z",
+    "http_status": 200,
+    "content_hash": "4de13de2215614918167526e1337f2627358ebef68e589c661626ce31c2447a6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\manta.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\manta.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Manta IDE - Tự động hóa workflow bằng AI",
+  "short_description_vi": "Manta IDE là công cụ tự động hóa hỗ trợ bởi AI, cho phép lập trình viên xây dựng và quản lý các workflow thông qua giao diện đồ thị trực quan. Công cụ này hỗ trợ các Claude AI agent, tích hợp tốt với Node.js và React, là giải pháp lý tưởng cho các đội ngũ vận hành (operations) muốn tối ưu hóa quy trình và giảm thiểu việc viết code thủ công."
+}

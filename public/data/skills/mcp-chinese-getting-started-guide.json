@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-chinese-getting-started-guide",
+  "slug": "mcp-chinese-getting-started-guide",
+  "name": "react-native-best-practices",
+  "headline": "MCP Chinese Getting Started Guide - Learn MCP Fast",
+  "short_description": "The MCP-Chinese-Getting-Started-Guide provides a rapid introduction to the Model Context Protocol (MCP) for developers looking to use AI technologies. This resource is ideal for beginners seeking to understand MCP programming concepts and applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "liaokongVFX",
+  "install_command": "claude install liaokongVFX/MCP-Chinese-Getting-Started-Guide",
+  "source_repo_url": "https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI",
+    "programming",
+    "MCP",
+    "tutorial",
+    "deep learning"
+  ],
+  "sections": {
+    "overview": "MCP-Chinese-Getting-Started-Guide is a comprehensive tutorial for developers learning to implement the Model Context Protocol, an open-source protocol that standardizes how large language models interact with external systems. The guide uses Python 3.11 and the uv project manager to walk through building MCP servers, with a practical example of implementing a web search tool. It covers core MCP features including resources, prompts, tools, sampling, and transport layers (stdio and SSE), with a focus on tools as the primary use case. The guide explains how MCP functions as a standardized interface—comparable to USB-C—enabling AI models to seamlessly connect to various data sources and tools. It's ideal for Chinese-speaking developers and anyone seeking practical, hands-on introduction to MCP development.\nLearn the foundational principles of MCP programming for effective AI development.\nIntegrate MCP into existing AI projects to enhance functionality and data access.\nBuild applications utilizing MCP for improved model context management.\nRapidly prototype new AI features using the standardized MCP framework.",
+    "setup": "Terminal\nCopy\n`claude install liaokongVFX/MCP-Chinese-Getting-Started-Guide`\n`git clone https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide`",
+    "usage": "```\nGenerate a concise getting-started guide for the Model Context Protocol (MCP) in Chinese for developers. Include [PROJECT_NAME] as a placeholder for the specific project or application. Structure the guide as follows: 1) 简介 (Introduction), 2) 快速开始 (Quick Start), 3) 核心概念 (Core Concepts), 4) 示例代码 (Example Code), 5) 常见问题 (FAQ). Write everything in Chinese.\n```\nCopy\n\n```\n### MCP 中文入门指南：[PROJECT_NAME] 项目\n\n#### 1. 简介\nModel Context Protocol (MCP) 是一种用于 AI 应用程序与数据源之间通信的开放协议。本指南将帮助你快速理解 MCP 的核心概念，并为 [PROJECT_NAME] 项目提供实用的入门步骤。MCP 使得 AI 能够动态访问外部数据、工具和服务，从而增强其功能和灵活性。\n\n#### 2. 快速开始\n要开始使用 MCP，请按照以下步骤操作：\n\n1. **安装 MCP SDK**：\n   ```bash\n   pip install mcp-sdk\n   ```\n\n2. **配置项目**：\n   创建一个 `mcp_config.json` 文件，并添加以下配置：\n   ```json\n   {\n     \"servers\": {\n       \"[PROJECT_NAME]\": {\n         \"command\": \"python\",\n         \"args\": [\"-m\", \"mcp_server\", \"--config\", \"config.yaml\"]\n       }\n     }\n   }\n   ```\n\n3. **启动 MCP 服务器**：\n   运行以下命令启动 MCP 服务器：\n   ```bash\n   mcp-server --config mcp_config.json\n   ```\n\n#### 3. 核心概念\n- **资源 (Resources)**：MCP 中的资源是可被 AI 访问的数据实体，例如数据库表、API 端点或文件。\n- **工具 (Tools)**：工具是 MCP 服务器提供的可执行功能，例如查询数据库、调用 API 或处理文件。\n- **上下文 (Context)**：上下文用于在 AI 与 MCP 服务器之间传递信息，例如用户输入、会话状态或配置参数。\n\n#### 4. 示例代码\n以下是一个简单的 MCP 服务器示例，用于查询 [PROJECT_NAME] 数据库中的用户信息：\n\n```python\nfrom mcp import MCPServer\n\nclass UserQueryTool:\n    def __init__(self, db_connection):\n        self.db = db_connection\n\n    def get_user(self, user_id: str):\n        query = \"SELECT * FROM users WHERE id = %s\"\n        result = self.db.execute(query, (user_id,))\n        return result.fetchone()\n\n# 初始化 MCP 服务器\nserver = MCPServer(\"user-query-server\")\n\n# 注册工具\nserver.add_tool(\"get_user\", UserQueryTool.get_user)\n\n# 启动服务器\nserver.run()\n```\n\n#### 5. 常见问题\n**Q: MCP 与 REST API 有什么区别？**\nA: MCP 是一种专为 AI 设计的协议，支持动态上下文传递和工具调用，而 REST API 通常用于静态资源访问。\n\n**Q: 如何在 [PROJECT_NAME] 中集成 MCP？**\nA: 请参考 [PROJECT_NAME] 的官方文档，或使用提供的 SDK 进行集成。\n\n---\n本指南适用于希望快速上手 MCP 的开发者。如需更多详细信息，请访问 [MCP 官方文档](https://github.com/modelcontextprotocol)。\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "mcp-chinese-getting-started-guide#main-content",
+      "mcp-chinese-getting-started-guide#overview",
+      "mcp-chinese-getting-started-guide#setup",
+      "mcp-chinese-getting-started-guide#examples",
+      "mcp-chinese-getting-started-guide#tools",
+      "mcp-chinese-getting-started-guide#mcp",
+      "mcp-chinese-getting-started-guide#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "MCP-Chinese-Getting-Started-Guide is a comprehensive tutorial for developers learning to implement the Model Context Protocol, an open-source protocol that standardizes how large language models interact with external systems. The guide uses Python 3.11 and the uv project manager to walk through building MCP servers, with a practical example of implementing a web search tool. It covers core MCP features including resources, prompts, tools, sampling, and transport layers (stdio and SSE), with a focus on tools as the primary use case. The guide explains how MCP functions as a standardized interface—comparable to USB-C—enabling AI models to seamlessly connect to various data sources and tools. It's ideal for Chinese-speaking developers and anyone seeking practical, hands-on introduction to MCP development.\nLearn the foundational principles of MCP programming for effective AI development.\nIntegrate MCP into existing AI projects to enhance functionality and data access.\nBuild applications utilizing MCP for improved model context management.\nRapidly prototype new AI features using the standardized MCP framework.",
+    "setup_vi": "Terminal\nCopy\n`claude install liaokongVFX/MCP-Chinese-Getting-Started-Guide`\n`git clone https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide`",
+    "usage_vi": "```\nGenerate a concise getting-started guide for the Model Context Protocol (MCP) in Chinese for developers. Include [PROJECT_NAME] as a placeholder for the specific project or application. Structure the guide as follows: 1) 简介 (Introduction), 2) 快速开始 (Quick Start), 3) 核心概念 (Core Concepts), 4) 示例代码 (Example Code), 5) 常见问题 (FAQ). Write everything in Chinese.\n```\nCopy\n\n```\n### MCP 中文入门指南：[PROJECT_NAME] 项目\n\n#### 1. 简介\nModel Context Protocol (MCP) 是一种用于 AI 应用程序与数据源之间通信的开放协议。本指南将帮助你快速理解 MCP 的核心概念，并为 [PROJECT_NAME] 项目提供实用的入门步骤。MCP 使得 AI 能够动态访问外部数据、工具和服务，从而增强其功能和灵活性。\n\n#### 2. 快速开始\n要开始使用 MCP，请按照以下步骤操作：\n\n1. **安装 MCP SDK**：\n   ```bash\n   pip install mcp-sdk\n   ```\n\n2. **配置项目**：\n   创建一个 `mcp_config.json` 文件，并添加以下配置：\n   ```json\n   {\n     \"servers\": {\n       \"[PROJECT_NAME]\": {\n         \"command\": \"python\",\n         \"args\": [\"-m\", \"mcp_server\", \"--config\", \"config.yaml\"]\n       }\n     }\n   }\n   ```\n\n3. **启动 MCP 服务器**：\n   运行以下命令启动 MCP 服务器：\n   ```bash\n   mcp-server --config mcp_config.json\n   ```\n\n#### 3. 核心概念\n- **资源 (Resources)**：MCP 中的资源是可被 AI 访问的数据实体，例如数据库表、API 端点或文件。\n- **工具 (Tools)**：工具是 MCP 服务器提供的可执行功能，例如查询数据库、调用 API 或处理文件。\n- **上下文 (Context)**：上下文用于在 AI 与 MCP 服务器之间传递信息，例如用户输入、会话状态或配置参数。\n\n#### 4. 示例代码\n以下是一个简单的 MCP 服务器示例，用于查询 [PROJECT_NAME] 数据库中的用户信息：\n\n```python\nfrom mcp import MCPServer\n\nclass UserQueryTool:\n    def __init__(self, db_connection):\n        self.db = db_connection\n\n    def get_user(self, user_id: str):\n        query = \"SELECT * FROM users WHERE id = %s\"\n        result = self.db.execute(query, (user_id,))\n        return result.fetchone()\n\n# 初始化 MCP 服务器\nserver = MCPServer(\"user-query-server\")\n\n# 注册工具\nserver.add_tool(\"get_user\", UserQueryTool.get_user)\n\n# 启动服务器\nserver.run()\n```\n\n#### 5. 常见问题\n**Q: MCP 与 REST API 有什么区别？**\nA: MCP 是一种专为 AI 设计的协议，支持动态上下文传递和工具调用，而 REST API 通常用于静态资源访问。\n\n**Q: 如何在 [PROJECT_NAME] 中集成 MCP？**\nA: 请参考 [PROJECT_NAME] 的官方文档，或使用提供的 SDK 进行集成。\n\n---\n本指南适用于希望快速上手 MCP 的开发者。如需更多详细信息，请访问 [MCP 官方文档](https://github.com/modelcontextprotocol)。\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:56:55.396104Z",
+    "http_status": 200,
+    "content_hash": "35b465a376fc95d53fffac306acbf6fd1765050a35e78bf0f6caa27fdcaed21d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-chinese-getting-started-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-chinese-getting-started-guide.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MCP Chinese Getting Started Guide - Learn MCP Fast",
+  "short_description_vi": "The MCP-Chinese-Getting-Started-Guide provides a rapid introduction to the Model Context Protocol (MCP) for developers looking to use AI technologies. This resource is ideal for beginners seeking to understand MCP programming concepts and applications."
+}

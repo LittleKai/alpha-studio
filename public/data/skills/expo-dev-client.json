@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/expo-dev-client",
+  "slug": "expo-dev-client",
+  "name": "expo-tailwind-setup",
+  "headline": "expo-dev-client: React Native Development",
+  "short_description": "The expo-dev-client skill allows developers to streamline the process of building and testing React Native applications. With over 3,188 installations, it enhances workflow automation by providing a development environment.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "expo",
+  "install_command": "git clone https://github.com/expo/skills.git",
+  "source_repo_url": "https://github.com/expo/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The expo-dev-client skill is designed to facilitate the development and testing of React Native applications by providing a robust client for Expo projects. This skill integrates directly with the Expo framework, allowing developers to quickly build, run, and test their applications in a streamlined environment. By utilizing this skill, developers can significantly reduce the time spent on setup and configuration, leading to more efficient development cycles. One of the key benefits of the expo-dev-client skill is its ability to automate repetitive tasks associated with app development. Developers can save valuable time by using this skill to quickly deploy updates and test changes in real-time. This not only accelerates the development process but also enhances productivity by allowing teams to focus on coding rather than configuration. The skill is particularly beneficial for those working on large-scale projects where time efficiency is crucial. This skill is ideal for developers, product managers, and AI practitioners who are involved in mobile app development. It is especially useful for teams looking to implement AI automation in their workflows, as it enables faster iterations and more agile responses to user feedback. Practical use cases include rapid prototyping of new features, conducting user testing sessions, and integrating AI-driven functionalities into existing applications. Implementation of the expo-dev-client skill is straightforward, making it accessible even for those who may not have extensive experience with Expo. It fits seamlessly into AI-first workflows, allowing teams to leverage AI automation to enhance their development processes. By incorporating this skill into your toolkit, you can ensure a more efficient and effective approach to mobile app development.\nRapidly prototype new features in React Native apps to accelerate development cycles.\nConduct user testing sessions with real-time updates to gather feedback and improve user experience.\nIntegrate AI-driven functionalities into existing applications to enhance capabilities and user engagement.\nStreamline the development process for large-scale projects by automating routine tasks and improving team collaboration.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/expo/skills`",
+    "usage": "```\nSet up a new React Native project using expo-dev-client for [PROJECT_NAME]. Include the following dependencies: [LIST_DEPENDENCIES]. Ensure the project is configured for both iOS and Android platforms. Provide a step-by-step guide to run the project on a physical device.\n```\nCopy\n\n```\nTo set up a new React Native project using expo-dev-client for 'MyApp', follow these steps:\n\n1. **Initialize the Project**:\n   ```bash\n   npx create-expo-app MyApp --template expo-template-blank-typescript\n   cd MyApp\n   ```\n\n2. **Install Dependencies**:\n   ```bash\n   npx expo install expo-dev-client\n   npx expo install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view\n   ```\n\n3. **Configure for iOS and Android**:\n   - For iOS, ensure you have Xcode installed and set up.\n   - For Android, ensure you have Android Studio and the necessary SDKs installed.\n\n4. **Run on Physical Device**:\n   - Connect your device via USB and enable USB debugging.\n   - Run the following command:\n ```bash\n     npx expo start --dev-client\n ```\n   - Scan the QR code with the Expo Go app on your device.\n\nYour project 'MyApp' is now set up and ready for development.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "expo-dev-client#main-content",
+      "expo-dev-client#overview",
+      "expo-dev-client#setup",
+      "expo-dev-client#examples",
+      "expo-dev-client#tools",
+      "expo-dev-client#mcp",
+      "expo-dev-client#related",
+      "vue-best-practices",
+      "react-native-best-practices",
+      "expo-tailwind-setup"
+    ],
+    "overview_vi": "The expo-dev-client skill is designed to facilitate the development and testing of React Native applications by providing a robust client for Expo projects. This skill integrates directly with the Expo framework, allowing developers to quickly build, run, and test their applications in a streamlined environment. By utilizing this skill, developers can significantly reduce the time spent on setup and configuration, leading to more efficient development cycles. One of the key benefits of the expo-dev-client skill is its ability to automate repetitive tasks associated with app development. Developers can save valuable time by using this skill to quickly deploy updates and test changes in real-time. This not only accelerates the development process but also enhances productivity by allowing teams to focus on coding rather than configuration. The skill is particularly beneficial for those working on large-scale projects where time efficiency is crucial. This skill is ideal for developers, product managers, and AI practitioners who are involved in mobile app development. It is especially useful for teams looking to implement AI automation in their workflows, as it enables faster iterations and more agile responses to user feedback. Practical use cases include rapid prototyping of new features, conducting user testing sessions, and integrating AI-driven functionalities into existing applications. Implementation of the expo-dev-client skill is straightforward, making it accessible even for those who may not have extensive experience with Expo. It fits seamlessly into AI-first workflows, allowing teams to leverage AI automation to enhance their development processes. By incorporating this skill into your toolkit, you can ensure a more efficient and effective approach to mobile app development.\nRapidly prototype new features in React Native apps to accelerate development cycles.\nConduct user testing sessions with real-time updates to gather feedback and improve user experience.\nIntegrate AI-driven functionalities into existing applications to enhance capabilities and user engagement.\nStreamline the development process for large-scale projects by automating routine tasks and improving team collaboration.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/expo/skills`",
+    "usage_vi": "```\nSet up a new React Native project using expo-dev-client for [PROJECT_NAME]. Include the following dependencies: [LIST_DEPENDENCIES]. Ensure the project is configured for both iOS and Android platforms. Provide a step-by-step guide to run the project on a physical device.\n```\nCopy\n\n```\nTo set up a new React Native project using expo-dev-client for 'MyApp', follow these steps:\n\n1. **Initialize the Project**:\n   ```bash\n   npx create-expo-app MyApp --template expo-template-blank-typescript\n   cd MyApp\n   ```\n\n2. **Install Dependencies**:\n   ```bash\n   npx expo install expo-dev-client\n   npx expo install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view\n   ```\n\n3. **Configure for iOS and Android**:\n   - For iOS, ensure you have Xcode installed and set up.\n   - For Android, ensure you have Android Studio and the necessary SDKs installed.\n\n4. **Run on Physical Device**:\n   - Connect your device via USB and enable USB debugging.\n   - Run the following command:\n ```bash\n     npx expo start --dev-client\n ```\n   - Scan the QR code with the Expo Go app on your device.\n\nYour project 'MyApp' is now set up and ready for development.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:32:44.911040Z",
+    "http_status": 200,
+    "content_hash": "15e09e20d0b245d9a26551dec7b528057ae8a31b24bcad83a03d3c6be3a90e2c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\expo-dev-client.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\expo-dev-client.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "expo-dev-client: React Native Development",
+  "short_description_vi": "The expo-dev-client skill allows developers to streamline the process of building and testing React Native applications. With over 3,188 installations, it enhances workflow automation by providing a development environment."
+}

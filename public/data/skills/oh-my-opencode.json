@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/oh-my-opencode",
+  "slug": "oh-my-opencode",
+  "name": "OhMyOpenCode",
+  "headline": "OhMyOpenCode - Automates Coding Tasks",
+  "short_description": "OhMyOpenCode is an open-source AI agent that automates coding tasks. It integrates with IDEs and TUI tools, benefiting developers and operations teams by streamlining workflows and reducing manual coding efforts. It connects to Claude, ChatGPT, and Gemini for enhanced coding capabilities.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "code-yeongyu",
+  "install_command": "git clone https://github.com/code-yeongyu/oh-my-opencode.git",
+  "source_repo_url": "https://github.com/code-yeongyu/oh-my-opencode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "orchestration",
+    "cursor",
+    "tui",
+    "chatgpt",
+    "typescript",
+    "anthropic",
+    "gemini",
+    "ide",
+    "ai-agents",
+    "openai",
+    "opencode",
+    "amp",
+    "claude",
+    "claude-skills",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "OhMyOpenCode is an open-source AI agent designed to automate repetitive coding tasks across development environments. It integrates directly with IDEs and terminal-based tools, enabling developers and operations teams to streamline their workflows without manual intervention. The platform connects to Claude, ChatGPT, and Gemini APIs, leveraging multiple AI models for enhanced code generation and task automation. By reducing manual coding efforts, OhMyOpenCode helps teams work faster and more efficiently on development and infrastructure tasks.\nAutomate the process of fixing code issues by running Sisyphus to handle ESLint warnings.\nTransform a large codebase into a SaaS application overnight using guided prompts and agent interactions.\nRun background agents to manage multiple coding tasks simultaneously, improving workflow efficiency.\nUtilize specialized agents like oracle and librarian to enhance code quality and knowledge retrieval.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/code-yeongyu/oh-my-opencode`",
+    "usage": "```\nI need to automate the following coding task: [TASK]. I'm using [PROGRAMMING_LANGUAGE] and my IDE is [IDE]. Can you generate the code and explain how to integrate it with OhMyOpenCode?\n```\nCopy\n\n```\nBased on your request to automate a data validation task in Python using VSCode, here's a solution using OhMyOpenCode:\n\n```python\n# Automated data validation script\nimport pandas as pd\n\n# Load data\ndata = pd.read_csv('customer_data.csv')\n\n# Validate data types\nfor column, dtype in data.dtypes.items():\n    if dtype != 'object':  # Example validation\n        print(f\"Column '{column}' should be string type\")\n\n# Validate required fields\nrequired_fields = ['email', 'name']\nfor field in required_fields:\n    if field not in data.columns:\n        print(f\"Required field '{field}' is missing\")\n    elif data[field].isnull().any():\n        print(f\"Field '{field}' contains null values\")\n```\n\nTo integrate with OhMyOpenCode:\n1. Install the OhMyOpenCode VSCode extension\n2. Open the command palette (Ctrl+Shift+P) and select 'OhMyOpenCode: Generate Code'\n3. Paste your requirements and select the 'Python' language\n4. The extension will generate the code and provide integration options\n5. Choose 'Integrate with existing project' and select your VSCode workspace\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "oh-my-opencode#main-content",
+      "oh-my-opencode#overview",
+      "oh-my-opencode#setup",
+      "oh-my-opencode#examples",
+      "oh-my-opencode#tools",
+      "oh-my-opencode#mcp",
+      "oh-my-opencode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "OhMyOpenCode là một AI agent mã nguồn mở được thiết kế để tự động hóa các tác vụ lập trình lặp đi lặp lại trên nhiều môi trường phát triển khác nhau. Công cụ này tích hợp trực tiếp với các IDE và công cụ terminal, giúp các nhà phát triển và đội ngũ operations tối ưu hóa workflow mà không cần can thiệp thủ công. Nền tảng kết nối trực tiếp với API của Claude, ChatGPT và Gemini, tận dụng sức mạnh của nhiều mô hình AI để nâng cao khả năng sinh code (code generation) và tự động hóa tác vụ. Bằng cách giảm thiểu việc viết code thủ công, OhMyOpenCode giúp các team làm việc nhanh chóng và hiệu quả hơn trong cả tác vụ phát triển phần mềm lẫn hạ tầng.\nTự động hóa quy trình sửa lỗi code bằng cách chạy Sisyphus để xử lý các cảnh báo ESLint.\nChuyển đổi một codebase lớn thành ứng dụng SaaS chỉ sau một đêm thông qua các prompt hướng dẫn và tương tác với agent.\nChạy các background agent để xử lý song song nhiều tác vụ lập trình, giúp cải thiện hiệu suất workflow.\nTận dụng các agent chuyên dụng như oracle và librarian để nâng cao chất lượng code và tối ưu hóa việc truy xuất kiến thức.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/code-yeongyu/oh-my-opencode`",
+    "usage_vi": "```\nTôi cần tự động hóa tác vụ lập trình sau: [TASK]. Tôi đang sử dụng [PROGRAMMING_LANGUAGE] và IDE của tôi là [IDE]. Bạn có thể tạo code và hướng dẫn cách tích hợp vào OhMyOpenCode không?\n```\nCopy\n\n```\nDựa trên yêu cầu tự động hóa tác vụ xác thực dữ liệu (data validation) bằng Python trên VSCode của bạn, dưới đây là giải pháp sử dụng OhMyOpenCode:\n\n```python\n# Script tự động hóa xác thực dữ liệu\nimport pandas as pd\n\n# Load dữ liệu\ndata = pd.read_csv('customer_data.csv')\n\n# Xác thực kiểu dữ liệu\nfor column, dtype in data.dtypes.items():\n    if dtype != 'object':  # Ví dụ kiểm tra xác thực\n        print(f\"Cột '{column}' phải thuộc kiểu string\")\n\n# Xác thực các trường bắt buộc\nrequired_fields = ['email', 'name']\nfor field in required_fields:\n    if field not in data.columns:\n        print(f\"Thiếu trường bắt buộc '{field}'\")\n    elif data[field].isnull().any():\n        print(f\"Trường '{field}' chứa giá trị null\")\n```\n\nĐể tích hợp với OhMyOpenCode:\n1. Cài đặt VSCode extension của OhMyOpenCode\n2. Mở command palette (Ctrl+Shift+P) và chọn 'OhMyOpenCode: Generate Code'\n3. Dán yêu cầu của bạn và chọn ngôn ngữ 'Python'\n4. Extension sẽ tiến hành generate code và cung cấp các tùy chọn tích hợp\n5. Chọn 'Integrate with existing project' và chọn VSCode workspace của bạn\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:56:47.501985Z",
+    "http_status": 200,
+    "content_hash": "f7b3aee721e561cebf067c89a065cbba4007515b1140e1fff2839761781f0f24",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\oh-my-opencode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\oh-my-opencode.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OhMyOpenCode - Tự động hóa các tác vụ lập trình",
+  "short_description_vi": "OhMyOpenCode là một AI agent mã nguồn mở giúp tự động hóa các tác vụ lập trình. Công cụ này tích hợp mượt mà với các IDE và công cụ TUI, giúp các lập trình viên và đội ngũ operations tối ưu hóa workflow cũng như giảm thiểu việc viết code thủ công. Ngoài ra, OhMyOpenCode còn kết nối với Claude, ChatGPT và Gemini để nâng cao năng lực xử lý code."
+}

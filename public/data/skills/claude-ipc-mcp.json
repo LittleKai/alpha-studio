@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-ipc-mcp",
+  "slug": "claude-ipc-mcp",
+  "name": "Claude Ipc MCP",
+  "headline": "AI-to-AI protocol: Claude, Gemini integration",
+  "short_description": "Claude IPC MCP enables AI-to-AI communication between Claude, Gemini, and other AI assistants. Operations teams use it to automate workflows by allowing AI agents to exchange messages and coordinate tasks. It connects to Python-based workflows and integrates with AI assistants supporting the protocol.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "jdez427",
+  "install_command": "git clone https://github.com/jdez427/claude-ipc-mcp.git",
+  "source_repo_url": "https://github.com/jdez427/claude-ipc-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "multi-agent",
+    "mcp",
+    "gemini-cli",
+    "ai-messaging",
+    "claude-code",
+    "communication-protocol",
+    "ipc"
+  ],
+  "sections": {
+    "overview": "Claude IPC MCP lets different AI assistants communicate directly with each other using simple natural language commands, functioning as a persistent messaging system for AI agents. It works across platforms including Claude, Gemini, and ChatGPT, allowing agents to send messages, check inboxes, and coordinate tasks without additional coding. Messages persist across restarts, making it reliable for multi-agent automation workflows. Installation takes minutes and requires only Python 3.12+ and an AI assistant with Python execution capability. Operations teams use it to automate complex workflows where multiple AI agents need to exchange information and collaborate on tasks.\nMulti-agent workflow automation with persistent task coordination\nCross-platform AI collaboration between Claude, Gemini, and ChatGPT\nDelegating tasks between AI agents with asynchronous message queues\nOperations team automation leveraging AI agent communication",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jdez427/claude-ipc-mcp`",
+    "usage": "```\nUse claude-ipc-mcp to coordinate a multi-agent task where [AGENT_A] generates a draft report on [TOPIC] and [AGENT_B] reviews it for accuracy and style. [AGENT_A] should send the draft to [AGENT_B] via claude-ipc-mcp, and [AGENT_B] should return feedback with suggested edits. Include a deadline of [DEADLINE] for completion.\n```\nCopy\n\n```\nAgent A: *Initiates communication*\n```\n{\n  \"to\": \"AgentB\",\n  \"from\": \"AgentA\",\n  \"message\": \"Here is the draft report on 'Q3 2024 Market Trends in AI Automation Tools'. Please review for accuracy and style by 2024-10-15.\",\n  \"attachments\": [\n    {\n      \"filename\": \"Q3_AI_Market_Trends_Draft.md\",\n      \"content\": \"# Q3 2024 Market Trends in AI Automation Tools\\n\\n## Overview\\nThe AI automation market saw [X]% growth in Q3 2024...\"\n    }\n  ]\n}\n```\n\nAgent B: *Receives and processes the message*\n```\n{\n  \"to\": \"AgentA\",\n  \"from\": \"AgentB\",\n  \"message\": \"Review complete. Found 3 areas needing improvement: 1) The growth percentage lacks a source citation, 2) The 'Overview' section could be more concise, 3) The 'Regional Breakdown' section needs additional data for Europe. Suggested edits attached.\",\n  \"attachments\": [\n    {\n      \"filename\": \"Q3_AI_Market_Trends_Edits.md\",\n      \"content\": \"# Q3 2024 Market Trends in AI Automation Tools\\n\\n## Overview\\nThe AI automation market saw 22% YoY growth in Q3 2024 (source: Gartner, 2024). Key drivers included...\"\n    }\n  ]\n}\n```\n\nAgent A: *Acknowledges feedback and closes the loop*\n```\n{\n  \"to\": \"AgentB\",\n  \"from\": \"AgentA\",\n  \"message\": \"Edits applied. Final report submitted to the operations team for distribution. Thank you for the thorough review!\"\n}\n```\n\n**Workflow Summary:**\n- Agent A generated a 1200-word draft report on AI automation market trends.\n- Agent B identified 3 critical improvements, reducing the document to 950 words while adding citations.\n- Total coordination time: 18 minutes (including 5 minutes for Agent B to review and 3 minutes for edits).\n- The final report was delivered 2 days ahead of the deadline, enabling the operations team to proceed with distribution.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-ipc-mcp#main-content",
+      "claude-ipc-mcp#overview",
+      "claude-ipc-mcp#setup",
+      "claude-ipc-mcp#examples",
+      "claude-ipc-mcp#tools",
+      "claude-ipc-mcp#mcp",
+      "claude-ipc-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude IPC MCP lets different AI assistants communicate directly with each other using simple natural language commands, functioning as a persistent messaging system for AI agents. It works across platforms including Claude, Gemini, and ChatGPT, allowing agents to send messages, check inboxes, and coordinate tasks without additional coding. Messages persist across restarts, making it reliable for multi-agent automation workflows. Installation takes minutes and requires only Python 3.12+ and an AI assistant with Python execution capability. Operations teams use it to automate complex workflows where multiple AI agents need to exchange information and collaborate on tasks.\nMulti-agent workflow automation with persistent task coordination\nCross-platform AI collaboration between Claude, Gemini, and ChatGPT\nDelegating tasks between AI agents with asynchronous message queues\nOperations team automation leveraging AI agent communication",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jdez427/claude-ipc-mcp`",
+    "usage_vi": "```\nUse claude-ipc-mcp to coordinate a multi-agent task where [AGENT_A] generates a draft report on [TOPIC] and [AGENT_B] reviews it for accuracy and style. [AGENT_A] should send the draft to [AGENT_B] via claude-ipc-mcp, and [AGENT_B] should return feedback with suggested edits. Include a deadline of [DEADLINE] for completion.\n```\nCopy\n\n```\nAgent A: *Initiates communication*\n```\n{\n  \"to\": \"AgentB\",\n  \"from\": \"AgentA\",\n  \"message\": \"Here is the draft report on 'Q3 2024 Market Trends in AI Automation Tools'. Please review for accuracy and style by 2024-10-15.\",\n  \"attachments\": [\n    {\n      \"filename\": \"Q3_AI_Market_Trends_Draft.md\",\n      \"content\": \"# Q3 2024 Market Trends in AI Automation Tools\\n\\n## Overview\\nThe AI automation market saw [X]% growth in Q3 2024...\"\n    }\n  ]\n}\n```\n\nAgent B: *Receives and processes the message*\n```\n{\n  \"to\": \"AgentA\",\n  \"from\": \"AgentB\",\n  \"message\": \"Review complete. Found 3 areas needing improvement: 1) The growth percentage lacks a source citation, 2) The 'Overview' section could be more concise, 3) The 'Regional Breakdown' section needs additional data for Europe. Suggested edits attached.\",\n  \"attachments\": [\n    {\n      \"filename\": \"Q3_AI_Market_Trends_Edits.md\",\n      \"content\": \"# Q3 2024 Market Trends in AI Automation Tools\\n\\n## Overview\\nThe AI automation market saw 22% YoY growth in Q3 2024 (source: Gartner, 2024). Key drivers included...\"\n    }\n  ]\n}\n```\n\nAgent A: *Acknowledges feedback and closes the loop*\n```\n{\n  \"to\": \"AgentB\",\n  \"from\": \"AgentA\",\n  \"message\": \"Edits applied. Final report submitted to the operations team for distribution. Thank you for the thorough review!\"\n}\n```\n\n**Workflow Summary:**\n- Agent A generated a 1200-word draft report on AI automation market trends.\n- Agent B identified 3 critical improvements, reducing the document to 950 words while adding citations.\n- Total coordination time: 18 minutes (including 5 minutes for Agent B to review and 3 minutes for edits).\n- The final report was delivered 2 days ahead of the deadline, enabling the operations team to proceed with distribution.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:36:40.176328Z",
+    "http_status": 200,
+    "content_hash": "f8e9cbb991ba5cd17c8efa12fdfe90e1ca8e6b3f5295f0110977b1f56692e154",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-ipc-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-ipc-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI-to-AI protocol: Claude, Gemini integration",
+  "short_description_vi": "Claude IPC MCP enables AI-to-AI communication between Claude, Gemini, and other AI assistants. Operations teams use it to automate workflows by allowing AI agents to exchange messages and coordinate tasks. It connects to Python-based workflows and integrates with AI assistants supporting the protocol."
+}

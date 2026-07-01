@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-uninstaller",
+  "slug": "claude-code-uninstaller",
+  "name": "browser-use",
+  "headline": "claude code uninstaller for npm",
+  "short_description": "Claude Code Uninstaller removes both npm and native binary installations of Anthropic's Claude Code. It benefits operations teams managing development environments. The script connects to npm and system-level binaries, ensuring complete cleanup.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "burakdede",
+  "install_command": "git clone https://github.com/burakdede/claude-code-uninstaller.git",
+  "source_repo_url": "https://github.com/burakdede/claude-code-uninstaller",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "script",
+    "macos",
+    "linux",
+    "npm",
+    "cleanup-tool",
+    "shell",
+    "uninstaller"
+  ],
+  "sections": {
+    "overview": "Claude Code Uninstaller removes all traces of Anthropic's Claude Code from your system in a single command. It cleans up npm packages, native binaries, configuration files, shell completions, and project-level settings that standard uninstall methods often leave behind. The script creates timestamped backups before deletion and includes safety features like path validation and binary checks to prevent accidental data loss. It supports macOS, Linux, and Windows via WSL, making it useful for development teams managing multiple environments or automating cleanup in CI/CD pipelines.\nRemoving failed or mixed npm/native Claude Code installations\nAutomated cleanup in CI/CD pipelines with --quiet flag\nOperations teams managing development environment consistency\nPreparing systems for fresh Claude Code reinstalls",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/burakdede/claude-code-uninstaller`",
+    "usage": "```\nUninstall all instances of Anthropic's Claude Code from this system. Remove both npm-installed and native binary installations. Verify removal by checking [PATH_VARIABLES] and [NPM_GLOBAL_PATH]. Provide a summary of deleted files and directories. If any remnants are found, suggest manual cleanup steps.\n```\nCopy\n\n```\n```\nClaude Code Uninstallation Report\n================================\n1. Detected npm installation at /usr/local/lib/node_modules/claude-code\n   - Deleted: 123 files (8.4 MB)\n   - Removed: 1 symlink in /usr/local/bin/claude\n2. Native binary found at /opt/claude-code/bin/claude\n   - Deleted: 45 files (12.1 MB)\n   - Removed: 1 desktop entry at /usr/share/applications/claude-code.desktop\n3. System PATH checks:\n   - /usr/local/bin: Clean\n   - /opt/claude-code/bin: Removed from PATH\n   - /home/user/.claude: Not found (user data preserved)\n\nManual cleanup required:\n- Check /etc/environment for lingering PATH entries\n- Verify no systemd services are running (e.g., 'systemctl --user list-units | grep claude')\n\nTotal reclaimed space: 20.5 MB\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-uninstaller#main-content",
+      "claude-code-uninstaller#overview",
+      "claude-code-uninstaller#setup",
+      "claude-code-uninstaller#examples",
+      "claude-code-uninstaller#tools",
+      "claude-code-uninstaller#mcp",
+      "claude-code-uninstaller#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Uninstaller removes all traces of Anthropic's Claude Code from your system in a single command. It cleans up npm packages, native binaries, configuration files, shell completions, and project-level settings that standard uninstall methods often leave behind. The script creates timestamped backups before deletion and includes safety features like path validation and binary checks to prevent accidental data loss. It supports macOS, Linux, and Windows via WSL, making it useful for development teams managing multiple environments or automating cleanup in CI/CD pipelines.\nRemoving failed or mixed npm/native Claude Code installations\nAutomated cleanup in CI/CD pipelines with --quiet flag\nOperations teams managing development environment consistency\nPreparing systems for fresh Claude Code reinstalls",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/burakdede/claude-code-uninstaller`",
+    "usage_vi": "```\nUninstall all instances of Anthropic's Claude Code from this system. Remove both npm-installed and native binary installations. Verify removal by checking [PATH_VARIABLES] and [NPM_GLOBAL_PATH]. Provide a summary of deleted files and directories. If any remnants are found, suggest manual cleanup steps.\n```\nCopy\n\n```\n```\nClaude Code Uninstallation Report\n================================\n1. Detected npm installation at /usr/local/lib/node_modules/claude-code\n   - Deleted: 123 files (8.4 MB)\n   - Removed: 1 symlink in /usr/local/bin/claude\n2. Native binary found at /opt/claude-code/bin/claude\n   - Deleted: 45 files (12.1 MB)\n   - Removed: 1 desktop entry at /usr/share/applications/claude-code.desktop\n3. System PATH checks:\n   - /usr/local/bin: Clean\n   - /opt/claude-code/bin: Removed from PATH\n   - /home/user/.claude: Not found (user data preserved)\n\nManual cleanup required:\n- Check /etc/environment for lingering PATH entries\n- Verify no systemd services are running (e.g., 'systemctl --user list-units | grep claude')\n\nTotal reclaimed space: 20.5 MB\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:31:18.491779Z",
+    "http_status": 200,
+    "content_hash": "abd0b72a3ec30850b3d91f538604051471ba494b744ad1964a927d8777dc357c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-uninstaller.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-uninstaller.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude code uninstaller for npm",
+  "short_description_vi": "Claude Code Uninstaller removes both npm and native binary installations of Anthropic's Claude Code. It benefits operations teams managing development environments. The script connects to npm and system-level binaries, ensuring complete cleanup."
+}

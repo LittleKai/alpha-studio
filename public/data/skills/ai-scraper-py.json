@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-scraper-py",
+  "slug": "ai-scraper-py",
+  "name": "react-native-best-practices",
+  "headline": "AI Scraper: Powerful Web Data Extraction Tool",
+  "short_description": "AI Scraper is a cutting-edge tool designed for data extraction from various web sources. It automates complex scraping tasks, enabling users to create efficient workflows for scalable AI scraping operations.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "oxylabs",
+  "install_command": "claude install oxylabs/ai-scraper-py",
+  "source_repo_url": "https://github.com/oxylabs/ai-scraper-py",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "web scraping",
+    "automation",
+    "AI tools",
+    "data extraction",
+    "open source"
+  ],
+  "sections": {
+    "overview": "AI-Scraper is an experimental tool by Oxylabs AI Studio that extracts data from any public webpage using AI-powered natural language prompts. Instead of writing CSS/XPath selectors or custom parsing logic, you describe what data you need in plain English, and the scraper retrieves and structures it automatically. It supports both JSON output for automation and APIs, and Markdown for human-readable results. The tool includes automatic schema generation from prompts and works seamlessly with existing automation pipelines, making it ideal for e-commerce product extraction, news article parsing, pricing research, and job posting collection.\nExtracting product data from e-commerce sites\nGathering competitor pricing information\nAutomating lead generation from social media\nCollecting market research data from multiple sources",
+    "setup": "Terminal\nCopy\n`claude install oxylabs/ai-scraper-py`\n`git clone https://github.com/oxylabs/ai-scraper-py`",
+    "usage": "```\nUse ai-scraper-py to extract structured data from [WEBSITE_URL] for [USE_CASE]. Focus on extracting [SPECIFIC_DATA_FIELDS] while handling dynamic content, pagination, and anti-scraping measures. Output the data in [OUTPUT_FORMAT] (e.g., CSV, JSON). Include error handling for failed requests or CAPTCHAs. Example: 'Use ai-scraper-py to extract product listings from https://example.com/electronics for a price comparison tool. Extract product name, price, availability, and ratings. Handle pagination up to 5 pages and output as JSON with error logging for failed requests.'\n```\nCopy\n\n```\n```json\n{\n  \"extracted_data\": [\n    {\n      \"product_name\": \"Wireless Bluetooth Headphones\",\n      \"price\": 79.99,\n      \"availability\": \"In Stock\",\n      \"rating\": 4.5,\n      \"url\": \"https://example.com/electronics/headphones/12345\",\n      \"last_updated\": \"2024-05-20T14:30:00Z\"\n    },\n    {\n      \"product_name\": \"Smart LED Desk Lamp\",\n      \"price\": 49.99,\n      \"availability\": \"Out of Stock\",\n      \"rating\": 3.8,\n      \"url\": \"https://example.com/electronics/lamps/67890\",\n      \"last_updated\": \"2024-05-19T09:15:00Z\"\n    }\n  ],\n  \"metadata\": {\n    \"total_items\": 2,\n    \"pages_scraped\": 1,\n    \"errors\": [],\n    \"scraping_timestamp\": \"2024-05-20T15:00:00Z\"\n  }\n}\n```\n\n**Scraping Summary:**\n- Successfully scraped 2 product listings from https://example.com/electronics in 4.2 seconds.\n- No errors encountered during the process. The website did not trigger anti-scraping measures (e.g., CAPTCHA or rate-limiting).\n- The output is structured JSON, ready for integration into a price comparison tool or database.\n\n**Key Observations:**\n1. The product listings include all requested fields (name, price, availability, rating, URL).\n2. The `last_updated` field ensures data freshness for downstream applications.\n3. The `metadata` section provides traceability for debugging or auditing purposes.\n\n**Next Steps:**\n- Schedule this script to run daily at 10 AM UTC to keep the dataset current.\n- Integrate the output with a database (e.g., PostgreSQL) using the provided JSON structure.\n- For larger datasets, consider parallelizing the scraping process across multiple pages or domains.\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "ai-scraper-py#main-content",
+      "ai-scraper-py#overview",
+      "ai-scraper-py#setup",
+      "ai-scraper-py#examples",
+      "ai-scraper-py#tools",
+      "ai-scraper-py#mcp",
+      "ai-scraper-py#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "AI-Scraper is an experimental tool by Oxylabs AI Studio that extracts data from any public webpage using AI-powered natural language prompts. Instead of writing CSS/XPath selectors or custom parsing logic, you describe what data you need in plain English, and the scraper retrieves and structures it automatically. It supports both JSON output for automation and APIs, and Markdown for human-readable results. The tool includes automatic schema generation from prompts and works seamlessly with existing automation pipelines, making it ideal for e-commerce product extraction, news article parsing, pricing research, and job posting collection.\nExtracting product data from e-commerce sites\nGathering competitor pricing information\nAutomating lead generation from social media\nCollecting market research data from multiple sources",
+    "setup_vi": "Terminal\nCopy\n`claude install oxylabs/ai-scraper-py`\n`git clone https://github.com/oxylabs/ai-scraper-py`",
+    "usage_vi": "```\nUse ai-scraper-py to extract structured data from [WEBSITE_URL] for [USE_CASE]. Focus on extracting [SPECIFIC_DATA_FIELDS] while handling dynamic content, pagination, and anti-scraping measures. Output the data in [OUTPUT_FORMAT] (e.g., CSV, JSON). Include error handling for failed requests or CAPTCHAs. Example: 'Use ai-scraper-py to extract product listings from https://example.com/electronics for a price comparison tool. Extract product name, price, availability, and ratings. Handle pagination up to 5 pages and output as JSON with error logging for failed requests.'\n```\nCopy\n\n```\n```json\n{\n  \"extracted_data\": [\n    {\n      \"product_name\": \"Wireless Bluetooth Headphones\",\n      \"price\": 79.99,\n      \"availability\": \"In Stock\",\n      \"rating\": 4.5,\n      \"url\": \"https://example.com/electronics/headphones/12345\",\n      \"last_updated\": \"2024-05-20T14:30:00Z\"\n    },\n    {\n      \"product_name\": \"Smart LED Desk Lamp\",\n      \"price\": 49.99,\n      \"availability\": \"Out of Stock\",\n      \"rating\": 3.8,\n      \"url\": \"https://example.com/electronics/lamps/67890\",\n      \"last_updated\": \"2024-05-19T09:15:00Z\"\n    }\n  ],\n  \"metadata\": {\n    \"total_items\": 2,\n    \"pages_scraped\": 1,\n    \"errors\": [],\n    \"scraping_timestamp\": \"2024-05-20T15:00:00Z\"\n  }\n}\n```\n\n**Scraping Summary:**\n- Successfully scraped 2 product listings from https://example.com/electronics in 4.2 seconds.\n- No errors encountered during the process. The website did not trigger anti-scraping measures (e.g., CAPTCHA or rate-limiting).\n- The output is structured JSON, ready for integration into a price comparison tool or database.\n\n**Key Observations:**\n1. The product listings include all requested fields (name, price, availability, rating, URL).\n2. The `last_updated` field ensures data freshness for downstream applications.\n3. The `metadata` section provides traceability for debugging or auditing purposes.\n\n**Next Steps:**\n- Schedule this script to run daily at 10 AM UTC to keep the dataset current.\n- Integrate the output with a database (e.g., PostgreSQL) using the provided JSON structure.\n- For larger datasets, consider parallelizing the scraping process across multiple pages or domains.\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:20:22.675362Z",
+    "http_status": 200,
+    "content_hash": "ea771ff856a54766398d1c36c1cd0eb4d4d74741e47c1a1a75c3bbdb34bccf27",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-scraper-py.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-scraper-py.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Scraper: Powerful Web Data Extraction Tool",
+  "short_description_vi": "AI Scraper is a cutting-edge tool designed for data extraction from various web sources. It automates complex scraping tasks, enabling users to create efficient workflows for scalable AI scraping operations."
+}

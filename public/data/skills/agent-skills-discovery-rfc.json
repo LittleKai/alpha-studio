@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skills-discovery-rfc",
+  "slug": "agent-skills-discovery-rfc",
+  "name": "Agent Skills Discovery Rfc",
+  "headline": "Discover agent-skills for automation",
+  "short_description": "Agent Skills Discovery via Well-Known URIs enables operations teams to automate the discovery and management of agent skills. It benefits developers and operations teams by providing a standardized way to access and utilize agent skills through well-known URIs. This skill connects to various workflows and tools that require agent skill integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "cloudflare",
+  "install_command": "git clone https://github.com/cloudflare/agent-skills-discovery-rfc.git",
+  "source_repo_url": "https://github.com/cloudflare/agent-skills-discovery-rfc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Agent Skills Discovery via Well-Known URIs defines a mechanism for discovering agent skills using the `.well-known/agent-skills/` URI path, following RFC 8615. Organizations publish a machine-readable index at a predictable location, eliminating the need to search GitHub repositories, documentation sites, and other scattered sources. The specification supports both individual skill files and archives with supporting resources, using progressive disclosure to manage context efficiently. Agents and tools can discover, fetch, and integrate skills without prior configuration. This standardized approach benefits developers who need consistent skill access and operations teams managing skill integration across AI agents.\nAutomated skill discovery for AI agents without manual configuration\nPublishing organization-specific agent skills at a standard endpoint\nBuilding tooling that fetches and indexes skills across multiple domains\nProgressive loading of skill instructions and supporting resources",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cloudflare/agent-skills-discovery-rfc`",
+    "usage": "```\nDiscover and list all agent skills available at the well-known URI endpoint [URI_ENDPOINT]. For each skill, extract the skill name, description, input parameters, and output format. Group skills by their functional categories (e.g., data processing, automation, analysis). Return the results in a structured JSON format suitable for integration with [TOOL_NAME_OR_SYSTEM].\n```\nCopy\n\n```\n```json\n{\n  \"discovered_skills\": [\n    {\n      \"skill_name\": \"data_extraction\",\n      \"description\": \"Extracts structured data from unstructured text using NLP techniques.\",\n      \"input_parameters\": {\n        \"text\": \"string (required)\",\n        \"format\": \"string (optional, default: json)\",\n        \"language\": \"string (optional, default: en)\"\n      },\n      \"output_format\": {\n        \"entities\": \"array of objects\",\n        \"confidence_scores\": \"array of floats\",\n        \"processing_time_ms\": \"integer\"\n      },\n      \"category\": \"data_processing\"\n    },\n    {\n      \"skill_name\": \"automated_workflow_trigger\",\n      \"description\": \"Triggers predefined workflows based on input conditions or events.\",\n      \"input_parameters\": {\n        \"workflow_id\": \"string (required)\",\n        \"trigger_condition\": \"string (required)\",\n        \"parameters\": \"object (optional)\"\n      },\n      \"output_format\": {\n        \"status\": \"string (success/failure)\",\n        \"workflow_run_id\": \"string\",\n        \"execution_time_ms\": \"integer\"\n      },\n      \"category\": \"automation\"\n    },\n    {\n      \"skill_name\": \"sentiment_analysis\",\n      \"description\": \"Analyzes text to determine sentiment (positive, negative, neutral) and emotional tone.\",\n      \"input_parameters\": {\n        \"text\": \"string (required)\",\n        \"model_version\": \"string (optional, default: v2.1)\"\n      },\n      \"output_format\": {\n        \"sentiment\": \"string\",\n        \"confidence\": \"float\",\n        \"emotional_tones\": \"array of strings\",\n        \"summary\": \"string\"\n      },\n      \"category\": \"analysis\"\n    }\n  ],\n  \"total_skills\": 3,\n  \"last_updated\": \"2024-05-15T14:30:00Z\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-skills-discovery-rfc#main-content",
+      "agent-skills-discovery-rfc#overview",
+      "agent-skills-discovery-rfc#setup",
+      "agent-skills-discovery-rfc#examples",
+      "agent-skills-discovery-rfc#tools",
+      "agent-skills-discovery-rfc#mcp",
+      "agent-skills-discovery-rfc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Tính năng Khám phá Agent Skill qua Well-Known URI định nghĩa một cơ chế phát hiện các agent skill bằng cách sử dụng đường dẫn URI `.well-known/agent-skills/` theo chuẩn RFC 8615. Các tổ chức có thể xuất bản một mục lục (index) máy đọc được tại một vị trí cố định, giúp loại bỏ việc phải tìm kiếm trên các kho lưu trữ GitHub, trang tài liệu và các nguồn phân tán khác. Đặc tả này hỗ trợ cả các tệp skill riêng lẻ lẫn các tệp nén lưu trữ (archive) đi kèm tài nguyên hỗ trợ, sử dụng cơ chế hiển thị tăng dần (progressive disclosure) để quản lý ngữ cảnh một cách hiệu quả. Các agent và công cụ có thể tự phát hiện, fetch và tích hợp các skill mà không cần cấu hình trước. Phương pháp chuẩn hóa này mang lại lợi ích cho các lập trình viên cần truy cập skill một cách nhất quán, cũng như các đội ngũ vận hành đang quản lý việc tích hợp skill trên nhiều AI agent khác nhau.\nTự động phát hiện skill cho các AI agent mà không cần cấu hình thủ công\nXuất bản các agent skill đặc thù của tổ chức tại một endpoint tiêu chuẩn\nXây dựng các công cụ giúp fetch và lập chỉ mục (index) các skill trên nhiều domain\nTải tăng dần (progressive loading) các hướng dẫn của skill và tài nguyên hỗ trợ đi kèm",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cloudflare/agent-skills-discovery-rfc`",
+    "usage_vi": "```\nDiscover và liệt kê tất cả các agent skill hiện có tại well-known URI endpoint [URI_ENDPOINT]. Với mỗi skill, hãy trích xuất tên skill (skill name), mô tả (description), tham số đầu vào (input parameters) và định dạng đầu ra (output format). Nhóm các skill theo danh mục chức năng (ví dụ: xử lý dữ liệu, tự động hóa, phân tích). Trả về kết quả dưới định dạng JSON có cấu trúc phù hợp để tích hợp với [TOOL_NAME_OR_SYSTEM].\n```\nCopy\n\n```json\n{\n  \"discovered_skills\": [\n    {\n      \"skill_name\": \"data_extraction\",\n      \"description\": \"Trích xuất dữ liệu có cấu trúc từ văn bản không cấu trúc bằng các kỹ thuật NLP.\",\n      \"input_parameters\": {\n        \"text\": \"string (required)\",\n        \"format\": \"string (optional, default: json)\",\n        \"language\": \"string (optional, default: en)\"\n      },\n      \"output_format\": {\n        \"entities\": \"array of objects\",\n        \"confidence_scores\": \"array of floats\",\n        \"processing_time_ms\": \"integer\"\n      },\n      \"category\": \"data_processing\"\n    },\n    {\n      \"skill_name\": \"automated_workflow_trigger\",\n      \"description\": \"Kích hoạt các workflow được định nghĩa trước dựa trên các điều kiện hoặc sự kiện đầu vào.\",\n      \"input_parameters\": {\n        \"workflow_id\": \"string (required)\",\n        \"trigger_condition\": \"string (required)\",\n        \"parameters\": \"object (optional)\"\n      },\n      \"output_format\": {\n        \"status\": \"string (success/failure)\",\n        \"workflow_run_id\": \"string\",\n        \"execution_time_ms\": \"integer\"\n      },\n      \"category\": \"automation\"\n    },\n    {\n      \"skill_name\": \"sentiment_analysis\",\n      \"description\": \"Phân tích văn bản để xác định sắc thái cảm xúc (tích cực, tiêu cực, trung lập) và tông giọng cảm xúc.\",\n      \"input_parameters\": {\n        \"text\": \"string (required)\",\n        \"model_version\": \"string (optional, default: v2.1)\"\n      },\n      \"output_format\": {\n        \"sentiment\": \"string\",\n        \"confidence\": \"float\",\n        \"emotional_tones\": \"array of strings\",\n        \"summary\": \"string\"\n      },\n      \"category\": \"analysis\"\n    }\n  ],\n  \"total_skills\": 3,\n  \"last_updated\": \"2024-05-15T14:30:00Z\"\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:45:03.754331Z",
+    "http_status": 200,
+    "content_hash": "3da9afb2ed356e16065a55962ccee5e286b88829ae443c5b8c51f36165e49e71",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-discovery-rfc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-discovery-rfc.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Khám phá các agent skill phục vụ tự động hóa",
+  "short_description_vi": "Tính năng Khám phá Agent Skill qua Well-Known URI cho phép các đội ngũ vận hành tự động hóa việc phát hiện và quản lý các agent skill. Tính năng này mang lại lợi ích cho cả lập trình viên và đội ngũ vận hành nhờ cung cấp một phương thức chuẩn hóa để truy cập và sử dụng các agent skill thông qua các well-known URI. Skill này kết nối với nhiều workflow và công cụ yêu cầu tích hợp agent skill."
+}

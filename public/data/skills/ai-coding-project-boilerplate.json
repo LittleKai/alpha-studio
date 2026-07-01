@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-coding-project-boilerplate",
+  "slug": "ai-coding-project-boilerplate",
+  "name": "react-native-best-practices",
+  "headline": "TypeScript Boilerplate for AI Agents -",
+  "short_description": "The ai-coding-project-boilerplate provides a strong TypeScript framework tailored for Claude Code, enabling developers to efficiently create and manage specialized AI agents. This production-ready boilerplate enhances productivity and streamlines the development workflow.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "shinpr",
+  "install_command": "claude install shinpr/ai-coding-project-boilerplate",
+  "source_repo_url": "https://github.com/shinpr/ai-coding-project-boilerplate",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-tools",
+    "ai-agents",
+    "boilerplate",
+    "productivity",
+    "typescript"
+  ],
+  "sections": {
+    "overview": "The ai-coding-project-boilerplate is a TypeScript framework purpose-built for Claude Code that helps developers create production-ready AI agent projects without context exhaustion. It implements sub-agent architecture, where specialized agents handle distinct roles like design, implementation, and review—each with fresh context windows. The boilerplate includes pre-configured slash commands (/implement, /task, /design, /plan, /build, /review), a skills system for project-specific customization, and automatic context injection via /project-inject. It supports Node.js 22+ and TypeScript 5.x, with built-in workflows that keep code quality checks fast by running locally rather than in CI. Teams benefit from standardized agentic coding workflows that scale across larger projects without quality degradation.\nCreating AI-driven applications\nRapid prototyping of AI agents\nStreamlining TypeScript project setup\nEnhancing developer productivity",
+    "setup": "Terminal\nCopy\n`claude install shinpr/ai-coding-project-boilerplate`\n`git clone https://github.com/shinpr/ai-coding-project-boilerplate`",
+    "usage": "```\nGenerate a TypeScript boilerplate for an AI agent project focused on [SPECIFIC_DOMAIN]. The agent should include [KEY_FEATURES] and integrate with [INTEGRATIONS]. Ensure the code follows best practices for [SPECIFIC_FRAMEWORK] and includes comprehensive documentation.\n```\nCopy\n\n```\nHere's a robust TypeScript boilerplate for an AI agent focused on customer support automation:\n\n```typescript\n// Main agent class\nclass CustomerSupportAgent {\n  constructor() {\n    this.initialize();\n  }\n\n  private initialize() {\n    // Initialize integrations\n    this.emailIntegration = new EmailIntegration();\n    this.crmIntegration = new CRMIntegration();\n    this.chatbotIntegration = new ChatbotIntegration();\n\n    // Load configuration\n    this.config = this.loadConfig();\n  }\n\n  // Core support ticket processing method\n  public async processTicket(ticket: SupportTicket): Promise<void> {\n    // Validate ticket\n    if (!this.validateTicket(ticket)) {\n      throw new Error('Invalid ticket data');\n    }\n\n    // Enrich ticket with customer data\n    const customerData = await this.crmIntegration.getCustomerData(ticket.customerId);\n    ticket.customerData = customerData;\n\n    // Route ticket to appropriate handler\n    const handler = this.getHandler(ticket.type);\n    await handler.process(ticket);\n\n    // Update ticket status\n    await this.crmIntegration.updateTicketStatus(ticket.id, 'In Progress');\n  }\n\n  // ... additional methods\n}\n\n// Integration interfaces\ninterface EmailIntegration {\n  sendEmail(to: string, subject: string, body: string): Promise<void>;\n  // ... other email-related methods\n}\n\ninterface CRMIntegration {\n  getCustomerData(customerId: string): Promise<CustomerData>;\n  updateTicketStatus(ticketId: string, status: string): Promise<void>;\n  // ... other CRM-related methods\n}\n\n// ... additional interfaces and utility classes\n```\n\nThis boilerplate includes:\n1. Core agent class with ticket processing logic\n2. Integration interfaces for email, CRM, and chatbot systems\n3. Basic validation and error handling\n4. Configuration management\n5. TypeScript interfaces for type safety\n\nThe code follows best practices for Node.js and includes JSDoc comments for documentation.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-coding-project-boilerplate#main-content",
+      "ai-coding-project-boilerplate#overview",
+      "ai-coding-project-boilerplate#setup",
+      "ai-coding-project-boilerplate#examples",
+      "ai-coding-project-boilerplate#tools",
+      "ai-coding-project-boilerplate#mcp",
+      "ai-coding-project-boilerplate#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The ai-coding-project-boilerplate is a TypeScript framework purpose-built for Claude Code that helps developers create production-ready AI agent projects without context exhaustion. It implements sub-agent architecture, where specialized agents handle distinct roles like design, implementation, and review—each with fresh context windows. The boilerplate includes pre-configured slash commands (/implement, /task, /design, /plan, /build, /review), a skills system for project-specific customization, and automatic context injection via /project-inject. It supports Node.js 22+ and TypeScript 5.x, with built-in workflows that keep code quality checks fast by running locally rather than in CI. Teams benefit from standardized agentic coding workflows that scale across larger projects without quality degradation.\nCreating AI-driven applications\nRapid prototyping of AI agents\nStreamlining TypeScript project setup\nEnhancing developer productivity",
+    "setup_vi": "Terminal\nCopy\n`claude install shinpr/ai-coding-project-boilerplate`\n`git clone https://github.com/shinpr/ai-coding-project-boilerplate`",
+    "usage_vi": "```\nGenerate a TypeScript boilerplate for an AI agent project focused on [SPECIFIC_DOMAIN]. The agent should include [KEY_FEATURES] and integrate with [INTEGRATIONS]. Ensure the code follows best practices for [SPECIFIC_FRAMEWORK] and includes comprehensive documentation.\n```\nCopy\n\n```\nHere's a robust TypeScript boilerplate for an AI agent focused on customer support automation:\n\n```typescript\n// Main agent class\nclass CustomerSupportAgent {\n  constructor() {\n    this.initialize();\n  }\n\n  private initialize() {\n    // Initialize integrations\n    this.emailIntegration = new EmailIntegration();\n    this.crmIntegration = new CRMIntegration();\n    this.chatbotIntegration = new ChatbotIntegration();\n\n    // Load configuration\n    this.config = this.loadConfig();\n  }\n\n  // Core support ticket processing method\n  public async processTicket(ticket: SupportTicket): Promise<void> {\n    // Validate ticket\n    if (!this.validateTicket(ticket)) {\n      throw new Error('Invalid ticket data');\n    }\n\n    // Enrich ticket with customer data\n    const customerData = await this.crmIntegration.getCustomerData(ticket.customerId);\n    ticket.customerData = customerData;\n\n    // Route ticket to appropriate handler\n    const handler = this.getHandler(ticket.type);\n    await handler.process(ticket);\n\n    // Update ticket status\n    await this.crmIntegration.updateTicketStatus(ticket.id, 'In Progress');\n  }\n\n  // ... additional methods\n}\n\n// Integration interfaces\ninterface EmailIntegration {\n  sendEmail(to: string, subject: string, body: string): Promise<void>;\n  // ... other email-related methods\n}\n\ninterface CRMIntegration {\n  getCustomerData(customerId: string): Promise<CustomerData>;\n  updateTicketStatus(ticketId: string, status: string): Promise<void>;\n  // ... other CRM-related methods\n}\n\n// ... additional interfaces and utility classes\n```\n\nThis boilerplate includes:\n1. Core agent class with ticket processing logic\n2. Integration interfaces for email, CRM, and chatbot systems\n3. Basic validation and error handling\n4. Configuration management\n5. TypeScript interfaces for type safety\n\nThe code follows best practices for Node.js and includes JSDoc comments for documentation.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:26:21.147361Z",
+    "http_status": 200,
+    "content_hash": "9a502b310d2af672f2de18d0a6698e8f7b63895c4e3384e8486c61cc7a54460f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-coding-project-boilerplate.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-coding-project-boilerplate.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "TypeScript Boilerplate for AI Agents -",
+  "short_description_vi": "The ai-coding-project-boilerplate provides a strong TypeScript framework tailored for Claude Code, enabling developers to efficiently create and manage specialized AI agents. This production-ready boilerplate enhances productivity and streamlines the development workflow."
+}

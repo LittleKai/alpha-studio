@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/beancount-accounting",
+  "slug": "beancount-accounting",
+  "name": "Related Skills",
+  "headline": "Beancount Accounting: Claude Code skill for",
+  "short_description": "Beancount is a plain-text double-entry accounting system. This skill provides expertise for creating, editing, and querying Beancount files.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "ouachitalabs",
+  "install_command": "git clone https://github.com/ouachitalabs/skills",
+  "source_repo_url": "https://github.com/ouachitalabs/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "beancount",
+    "accounting"
+  ],
+  "sections": {
+    "overview": "Beancount Accounting is a plain-text double-entry accounting system skill that enables users to create, edit, and query Beancount files. This skill provides expertise in managing financial records using Beancount's text-based format, which is suitable for those who prefer ledger-style accounting workflows. The skill supports core accounting operations including file creation, modifications, and data retrieval from Beancount ledgers.\nCreate Beancount files for accounting purposes\nEdit existing Beancount files with new transactions\nQuery Beancount files to analyze financial data",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/ouachitalabs/skills --skill 'Beancount Accounting'`\n`git clone https://github.com/ouachitalabs/skills`",
+    "usage": "```\nAct as a Beancount accounting expert. Create a new Beancount ledger file for [COMPANY], add a transaction for [TRANSACTION_DETAILS], and validate the file for errors. Use the following format: ```beancount\n[BEANCOUNT_LEDGER_CONTENT]\n```\n```\nCopy\n\n```\n# Beancount Ledger for GreenLeaf Organics (2024)\n\n2024-01-15 * \"Payment for Organic Fertilizer Supplier\"\n    Expenses:Supplies:Fertilizer              $125.00\n    Assets:Checking                          $-125.00\n    ; Supplier: EcoGrow Solutions, Invoice #FG-2024-008\n\n2024-01-16 * \"Monthly Payroll\"\n    Expenses:Salaries:EmployeeWages          $4,200.00\n    Assets:Checking                         $-4,200.00\n\n2024-01-17 * \"Office Supplies Purchase\"\n    Expenses:Office:Supplies                $45.50\n    Assets:Checking                         $-45.50\n    ; Vendor: Staples, Receipt #ST-2024-042\n\n2024-01-18 balance Assets:Checking  $8,329.50\n\n# Validation Results\n✅ File is valid (no errors detected)\n✅ Balances match (total debits = total credits)\n✅ All transactions are properly formatted\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "beancount-accounting#main-content",
+      "beancount-accounting#overview",
+      "beancount-accounting#setup",
+      "beancount-accounting#examples",
+      "beancount-accounting#tools",
+      "beancount-accounting#mcp",
+      "beancount-accounting#related"
+    ],
+    "overview_vi": "Beancount Accounting is a plain-text double-entry accounting system skill that enables users to create, edit, and query Beancount files. This skill provides expertise in managing financial records using Beancount's text-based format, which is suitable for those who prefer ledger-style accounting workflows. The skill supports core accounting operations including file creation, modifications, and data retrieval from Beancount ledgers.\nCreate Beancount files for accounting purposes\nEdit existing Beancount files with new transactions\nQuery Beancount files to analyze financial data",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/ouachitalabs/skills --skill 'Beancount Accounting'`\n`git clone https://github.com/ouachitalabs/skills`",
+    "usage_vi": "```\nAct as a Beancount accounting expert. Create a new Beancount ledger file for [COMPANY], add a transaction for [TRANSACTION_DETAILS], and validate the file for errors. Use the following format: ```beancount\n[BEANCOUNT_LEDGER_CONTENT]\n```\n```\nCopy\n\n```\n# Beancount Ledger for GreenLeaf Organics (2024)\n\n2024-01-15 * \"Payment for Organic Fertilizer Supplier\"\n    Expenses:Supplies:Fertilizer              $125.00\n    Assets:Checking                          $-125.00\n    ; Supplier: EcoGrow Solutions, Invoice #FG-2024-008\n\n2024-01-16 * \"Monthly Payroll\"\n    Expenses:Salaries:EmployeeWages          $4,200.00\n    Assets:Checking                         $-4,200.00\n\n2024-01-17 * \"Office Supplies Purchase\"\n    Expenses:Office:Supplies                $45.50\n    Assets:Checking                         $-45.50\n    ; Vendor: Staples, Receipt #ST-2024-042\n\n2024-01-18 balance Assets:Checking  $8,329.50\n\n# Validation Results\n✅ File is valid (no errors detected)\n✅ Balances match (total debits = total credits)\n✅ All transactions are properly formatted\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:57:54.838030Z",
+    "http_status": 200,
+    "content_hash": "7245a6f02ec31ebf518c85b7571e6dd8412f894a2ffbba88c1296370aca6ba6a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\beancount-accounting.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\beancount-accounting.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Beancount Accounting: Claude Code skill for",
+  "short_description_vi": "Beancount is a plain-text double-entry accounting system. This skill provides expertise for creating, editing, and querying Beancount files."
+}

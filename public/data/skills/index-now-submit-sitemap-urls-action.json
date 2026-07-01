@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/index-now-submit-sitemap-urls-action",
+  "slug": "index-now-submit-sitemap-urls-action",
+  "name": "popsicle",
+  "headline": "IndexNow Submit Sitemap URLs Action - Automate SEO",
+  "short_description": "Automatically submit your website's sitemap and URLs to IndexNow for faster indexing by Bing, Yandex, DuckDuckGo, and other search engines. Ideal for marketing teams using GitHub Actions to streamline SEO workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "jakob-bagterp",
+  "install_command": "git clone https://github.com/jakob-bagterp/index-now-submit-sitemap-urls-action.git",
+  "source_repo_url": "https://github.com/jakob-bagterp/index-now-submit-sitemap-urls-action",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "duckduckgo",
+    "indexnow",
+    "github-pages",
+    "github-actions",
+    "yep",
+    "automation",
+    "bing",
+    "seznam",
+    "yandex",
+    "action",
+    "workflow",
+    "naver",
+    "seotools",
+    "seo",
+    "seo-optimization"
+  ],
+  "sections": {
+    "overview": "This GitHub Actions skill automates sitemap submission to IndexNow, a search engine notification protocol supported by Bing, Yandex, DuckDuckGo, Naver, Seznam, and Yep. It enables developers and marketing teams to notify search engines immediately when content is published or updated, improving crawl efficiency and indexing speed. The action parses your sitemap, filters URLs by modification date or pattern matching, and submits them to your chosen IndexNow endpoint. Configuration supports scheduled runs (e.g., monthly), custom sitemap locations, and selective URL submission based on content sections or recent modifications. This eliminates manual index submission and integrates SEO optimization directly into CI/CD workflows.\nSchedule automatic weekly or monthly sitemap submissions to search engines\nNotify Bing and Yandex immediately after publishing new content\nFilter and submit only recently modified URLs to reduce API requests\nIntegrate SEO indexing notifications into GitHub Actions CI/CD pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jakob-bagterp/index-now-submit-sitemap-urls-action`",
+    "usage": "```\nSubmit my website's sitemap and URLs to IndexNow using GitHub Actions. My sitemap is located at [SITEMAP_URL] and my website is [WEBSITE_URL]. Please provide the necessary YAML configuration for my GitHub Actions workflow.\n```\nCopy\n\n```\n```yaml\nname: Submit sitemap to IndexNow\n\non:\n  push:\n    branches: [ main ]\n\njobs:\n  submit-sitemap:\n    runs-on: ubuntu-latest\n    steps:\n    - name: Checkout code\n      uses: actions/checkout@v2\n\n    - name: Submit sitemap to IndexNow\n      uses: indexnow-action/indexnow-action@v1\n      with:\n        key: ${{ secrets.INDEXNOW_KEY }}\n        url: 'https://www.example.com/sitemap.xml'\n        keyLocation: 'https://www.example.com'\n```\n\nTo use this workflow:\n1. Create a new file in your repository at `.github/workflows/submit-sitemap.yml`\n2. Copy the above YAML configuration into the file\n3. Replace `https://www.example.com/sitemap.xml` with your sitemap URL\n4. Replace `https://www.example.com` with your website URL\n5. Add your IndexNow key as a secret in your repository settings\n6. Commit and push the changes to your main branch\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "index-now-submit-sitemap-urls-action#main-content",
+      "index-now-submit-sitemap-urls-action#overview",
+      "index-now-submit-sitemap-urls-action#setup",
+      "index-now-submit-sitemap-urls-action#examples",
+      "index-now-submit-sitemap-urls-action#tools",
+      "index-now-submit-sitemap-urls-action#mcp",
+      "index-now-submit-sitemap-urls-action#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "This GitHub Actions skill automates sitemap submission to IndexNow, a search engine notification protocol supported by Bing, Yandex, DuckDuckGo, Naver, Seznam, and Yep. It enables developers and marketing teams to notify search engines immediately when content is published or updated, improving crawl efficiency and indexing speed. The action parses your sitemap, filters URLs by modification date or pattern matching, and submits them to your chosen IndexNow endpoint. Configuration supports scheduled runs (e.g., monthly), custom sitemap locations, and selective URL submission based on content sections or recent modifications. This eliminates manual index submission and integrates SEO optimization directly into CI/CD workflows.\nSchedule automatic weekly or monthly sitemap submissions to search engines\nNotify Bing and Yandex immediately after publishing new content\nFilter and submit only recently modified URLs to reduce API requests\nIntegrate SEO indexing notifications into GitHub Actions CI/CD pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jakob-bagterp/index-now-submit-sitemap-urls-action`",
+    "usage_vi": "```\nSubmit my website's sitemap and URLs to IndexNow using GitHub Actions. My sitemap is located at [SITEMAP_URL] and my website is [WEBSITE_URL]. Please provide the necessary YAML configuration for my GitHub Actions workflow.\n```\nCopy\n\n```\n```yaml\nname: Submit sitemap to IndexNow\n\non:\n  push:\n    branches: [ main ]\n\njobs:\n  submit-sitemap:\n    runs-on: ubuntu-latest\n    steps:\n    - name: Checkout code\n      uses: actions/checkout@v2\n\n    - name: Submit sitemap to IndexNow\n      uses: indexnow-action/indexnow-action@v1\n      with:\n        key: ${{ secrets.INDEXNOW_KEY }}\n        url: 'https://www.example.com/sitemap.xml'\n        keyLocation: 'https://www.example.com'\n```\n\nTo use this workflow:\n1. Create a new file in your repository at `.github/workflows/submit-sitemap.yml`\n2. Copy the above YAML configuration into the file\n3. Replace `https://www.example.com/sitemap.xml` with your sitemap URL\n4. Replace `https://www.example.com` with your website URL\n5. Add your IndexNow key as a secret in your repository settings\n6. Commit and push the changes to your main branch\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:34:58.565619Z",
+    "http_status": 200,
+    "content_hash": "7f2db2911919cbde95c7aed096f75475d1cf3a983efda0aae666f59b420794e5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\index-now-submit-sitemap-urls-action.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\index-now-submit-sitemap-urls-action.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "IndexNow Submit Sitemap URLs Action - Automate SEO",
+  "short_description_vi": "Automatically submit your website's sitemap and URLs to IndexNow for faster indexing by Bing, Yandex, DuckDuckGo, and other search engines. Ideal for marketing teams using GitHub Actions to streamline SEO workflows."
+}

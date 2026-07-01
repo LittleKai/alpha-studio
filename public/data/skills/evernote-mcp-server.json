@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/evernote-mcp-server",
+  "slug": "evernote-mcp-server",
+  "name": "Evernote MCP Server",
+  "headline": "Evernote MCP Server - Query Notes with LLMs",
+  "short_description": "Evernote MCP server enables LLMs like Claude Desktop to query your Evernote notes via the Model Context Protocol. Operations teams benefit from automated note retrieval and integration with AI workflows. Connects to Evernote API and supports OAuth for secure access.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "brentmid",
+  "install_command": "git clone https://github.com/brentmid/evernote-mcp-server.git",
+  "source_repo_url": "https://github.com/brentmid/evernote-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "claude-desktop",
+    "productivity",
+    "api",
+    "ai-integration",
+    "mcp",
+    "express",
+    "evernote",
+    "nodejs",
+    "model-context-protocol",
+    "claude",
+    "claude-code",
+    "note-taking",
+    "oauth",
+    "thrift"
+  ],
+  "sections": {
+    "overview": "Evernote MCP Server is a local MCP integration that enables Claude Desktop and other MCP-compatible LLMs to search and retrieve your Evernote notes using natural language. It uses OAuth 1.0a authentication for secure access and stores tokens persistently for seamless re-authentication. The server supports read-only operations including note searches, retrieval, and content access, making it ideal for teams that need to incorporate Evernote data into AI-assisted workflows. Recent versions include Docker containerization with security-hardened Chainguard images, remote HTTP/JSON-RPC support, and production-ready stability improvements that eliminate restart cycles.\nSummarize Evernote notes using natural language queries with Claude\nSearch and retrieve specific notes across your Evernote account programmatically\nIntegrate Evernote data into AI workflows for operations and documentation teams\nAutomate note discovery without manual Evernote interface searches",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brentmid/evernote-mcp-server`",
+    "usage": "```\nUse the Evernote MCP server to retrieve and analyze notes from my Evernote account. Focus on notes tagged with [TAG] or created within the last [TIMEFRAME]. Summarize the key insights or action items from these notes and suggest how I can prioritize or act on them. If relevant, extract specific details like deadlines, decisions, or follow-up tasks.\n```\nCopy\n\n```\nHere’s a summary of your Evernote notes tagged with **#project-alpha** from the last **30 days**, extracted via the Evernote MCP server:\n\n1. **Client Meeting Notes (June 12, 2024)**\n   - **Key Decision**: Approved the new branding mockups for the Q3 campaign.\n   - **Action Items**: \n     - Send final mockups to the design team by June 17 (assigned to @john).\n     - Schedule a follow-up with the client on June 20 to review feedback.\n   - **Deadline**: June 17 for design team deliverable.\n\n2. **Budget Review (June 5, 2024)**\n   - **Insight**: The marketing budget for Q3 is 15% over the allocated spend due to unplanned ad placements.\n   - **Recommendation**: Reallocate funds from the digital ads line item to cover the overage. Discuss with finance by June 10.\n\n3. **Team Sync (May 29, 2024)**\n   - **Key Takeaway**: The dev team is blocked on the API integration for the new feature. They need access to the staging environment by June 3.\n   - **Next Steps**: Contact IT to expedite staging environment access.\n\n**Priority Actions**:\n- Follow up with @john on the June 17 deadline.\n- Address the budget overage with finance before June 10.\n- Resolve the staging environment access issue by June 3.\n\nWould you like me to draft an email to @john or the finance team based on these notes?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "evernote-mcp-server#main-content",
+      "evernote-mcp-server#overview",
+      "evernote-mcp-server#setup",
+      "evernote-mcp-server#examples",
+      "evernote-mcp-server#tools",
+      "evernote-mcp-server#mcp",
+      "evernote-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Evernote MCP Server là một tích hợp MCP local cho phép Claude Desktop và các LLM tương thích với MCP khác tìm kiếm và truy xuất ghi chú Evernote của bạn bằng ngôn ngữ tự nhiên. Server sử dụng xác thực OAuth 1.0a để truy cập an toàn và lưu trữ token persistent giúp tái xác thực liền mạch. Server hỗ trợ các thao tác read-only bao gồm tìm kiếm ghi chú, truy xuất và truy cập nội dung, rất lý tưởng cho các đội ngũ cần đưa dữ liệu Evernote vào các workflow hỗ trợ bởi AI. Các phiên bản gần đây đã bổ sung Docker containerization với các image Chainguard được tăng cường bảo mật (security-hardened), hỗ trợ HTTP/JSON-RPC từ xa, cùng các cải tiến về độ ổn định sẵn sàng cho production giúp loại bỏ tình trạng phải khởi động lại liên tục.\n- Tóm tắt ghi chú Evernote bằng các truy vấn ngôn ngữ tự nhiên với Claude\n- Tìm kiếm và truy xuất các ghi chú cụ thể trong tài khoản Evernote bằng lập trình (programmatically)\n- Tích hợp dữ liệu Evernote vào các workflow AI cho đội ngũ vận hành và tài liệu (documentation)\n- Tự động hóa việc tìm kiếm ghi chú mà không cần thao tác thủ công trên giao diện Evernote",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/brentmid/evernote-mcp-server`",
+    "usage_vi": "```\nSử dụng Evernote MCP server để truy xuất và phân tích các ghi chú từ tài khoản Evernote của tôi. Tập trung vào các ghi chú được gắn thẻ [TAG] hoặc được tạo trong khoảng [TIMEFRAME]. Tóm tắt các thông tin chi tiết chính (insights) hoặc các đầu việc cần làm (action items) từ những ghi chú này, đồng thời đề xuất cách tôi có thể ưu tiên hoặc xử lý chúng. Nếu có liên quan, hãy trích xuất các thông tin cụ thể như thời hạn (deadlines), quyết định hoặc các nhiệm vụ tiếp theo.\n```\nCopy\n\n```\nDưới đây là bản tóm tắt các ghi chú Evernote của bạn được gắn thẻ **#project-alpha** trong **30 ngày** qua, được truy xuất thông qua Evernote MCP server:\n\n1. **Ghi chú cuộc họp với khách hàng (Ngày 12 tháng 6 năm 2024)**\n   - **Quyết định chính**: Phê duyệt các bản mockup thương hiệu mới cho chiến dịch Quý 3.\n   - **Đầu việc cần làm (Action Items)**: \n     - Gửi mockup cuối cùng cho đội ngũ thiết kế trước ngày 17 tháng 6 (giao cho @john).\n     - Lên lịch họp tiếp theo với khách hàng vào ngày 20/6 để đánh giá phản hồi.\n   - **Hạn chót (Deadline)**: Ngày 17 tháng 6 cho sản phẩm bàn giao của đội thiết kế.\n\n2. **Đánh giá ngân sách (Ngày 5 tháng 6 năm 2024)**\n   - **Thông tin chi tiết (Insight)**: Ngân sách marketing cho Quý 3 đang vượt 15% so với mức phân bổ do các vị trí đặt quảng cáo phát sinh ngoài kế hoạch.\n   - **Khuyến nghị**: Phân bổ lại ngân sách từ danh mục quảng cáo kỹ thuật số (digital ads) để bù vào phần thâm hụt. Thảo luận với bộ phận tài chính trước ngày 10/6.\n\n3. **Họp đồng bộ đội ngũ (Ngày 29 tháng 5 năm 2024)**\n   - **Ý chính (Key Takeaway)**: Đội ngũ dev đang bị block ở phần tích hợp API cho tính năng mới. Họ cần quyền truy cập vào môi trường staging trước ngày 3 tháng 6.\n   - **Các bước tiếp theo**: Liên hệ với bộ phận IT để đẩy nhanh việc cấp quyền truy cập môi trường staging.\n\n**Hành động ưu tiên**:\n- Theo dõi sát sao với @john về hạn chót ngày 17 tháng 6.\n- Giải quyết vấn đề vượt ngân sách với bộ phận tài chính trước ngày 10 tháng 6.\n- Giải quyết sự cố truy cập môi trường staging trước ngày 3 tháng 6.\n\nBạn có muốn tôi dự thảo một email gửi cho @john hoặc bộ phận tài chính dựa trên những ghi chú này không?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:36.856568Z",
+    "http_status": 200,
+    "content_hash": "bdee849c27ce444ad3795c6a9f4bfdfc4126963a6d9ee6400de8efd125fba1e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\evernote-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\evernote-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Evernote MCP Server - Truy vấn ghi chú bằng LLM",
+  "short_description_vi": "Evernote MCP server cho phép các LLM như Claude Desktop truy vấn ghi chú Evernote của bạn thông qua Model Context Protocol. Các đội ngũ vận hành sẽ được hưởng lợi từ việc tự động truy xuất ghi chú và tích hợp vào các workflow AI. Server kết nối trực tiếp với Evernote API và hỗ trợ OAuth để đảm bảo truy cập an toàn."
+}

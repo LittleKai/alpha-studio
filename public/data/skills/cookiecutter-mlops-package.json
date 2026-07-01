@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cookiecutter-mlops-package",
+  "slug": "cookiecutter-mlops-package",
+  "name": "Cookiecutter-MLOps Package",
+  "headline": "Cookiecutter-MLOps Package - Automate MLOps",
+  "short_description": "Cookiecutter-mlops-package automates the creation of Python packages and Docker images for MLOps tasks. Operations teams benefit from standardized templates for deploying machine learning models. It connects to CI/CD pipelines and container orchestration tools like Kubernetes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "fmind",
+  "install_command": "git clone https://github.com/fmind/cookiecutter-mlops-package.git",
+  "source_repo_url": "https://github.com/fmind/cookiecutter-mlops-package",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "template",
+    "mlops",
+    "cookiecutter",
+    "best-practices",
+    "python"
+  ],
+  "sections": {
+    "overview": "Cookiecutter-mlops-package provides a pre-configured template for generating production-ready Python packages and Docker images tailored to MLOps workflows. The template includes a defined directory structure, automated testing with Pytest and Ruff, pre-commit hooks for code quality, GitHub Actions workflows for CI/CD, and Invoke tasks to streamline development. It works across diverse MLOps platforms including Kubernetes, Vertex AI, Databricks, Azure ML, and AWS SageMaker by providing core Python packaging and containerization foundations. Teams benefit from consistent project setup, enforced code standards, and reduced boilerplate when launching new ML projects.\nQuickly scaffold a new MLOps project with a predefined structure and best practices.\nAutomate the testing and quality checks of your machine learning code using integrated workflows.\nBuild and deploy Docker images for your MLOps applications seamlessly.\nManage dependencies and project tasks using PyInvoke for a more efficient development workflow.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fmind/cookiecutter-mlops-package`",
+    "usage": "```\nGenerate a cookiecutter-mlops-package template for a [PROJECT_NAME] that includes [SPECIFIC_FEATURES]. Ensure the template supports [CI/CD_TOOL] integration and includes Dockerfile configurations for [CONTAINER_ORCHESTRATOR].\n```\nCopy\n\n```\nThe cookiecutter-mlops-package template for the 'Customer Churn Prediction' project has been successfully generated. The template includes the following features:\n\n1. **Project Structure**: The template sets up a standardized directory structure with folders for data, models, tests, and documentation.\n2. **CI/CD Integration**: The template includes configuration files for GitHub Actions, which will automate the building, testing, and deployment of the model.\n3. **Docker Configuration**: The template includes a Dockerfile that specifies the base image, dependencies, and commands to run the model. It also includes a docker-compose.yml file for local development and testing.\n4. **Kubernetes Deployment**: The template includes Kubernetes deployment and service YAML files, which will be used to deploy the model to a Kubernetes cluster.\n5. **Monitoring and Logging**: The template includes configuration files for Prometheus and Grafana, which will be used to monitor the model's performance and log its predictions.\n\nThe template also includes a README file with instructions for setting up the project, running tests, and deploying the model. The template is ready to be customized and used for the 'Customer Churn Prediction' project.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cookiecutter-mlops-package#main-content",
+      "cookiecutter-mlops-package#overview",
+      "cookiecutter-mlops-package#setup",
+      "cookiecutter-mlops-package#examples",
+      "cookiecutter-mlops-package#tools",
+      "cookiecutter-mlops-package#mcp",
+      "cookiecutter-mlops-package#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Cookiecutter-mlops-package cung cấp một template được cấu hình sẵn để khởi tạo các Python package và Docker image sẵn sàng cho môi trường production (production-ready), được thiết kế riêng cho các workflow MLOps. Template này bao gồm cấu trúc thư mục được định nghĩa sẵn, kiểm thử tự động với Pytest và Ruff, các pre-commit hook để đảm bảo chất lượng code, workflow GitHub Actions cho CI/CD, và các Invoke task giúp tối ưu hóa quá trình phát triển. Nó hoạt động linh hoạt trên nhiều nền tảng MLOps khác nhau bao gồm Kubernetes, Vertex AI, Databricks, Azure ML và AWS SageMaker nhờ cung cấp nền tảng đóng gói Python và container hóa cốt lõi. Các đội ngũ phát triển sẽ được hưởng lợi từ việc setup dự án đồng nhất, áp dụng các tiêu chuẩn code nghiêm ngặt và giảm thiểu boilerplate code khi khởi chạy các dự án ML mới.\nKhởi tạo nhanh (scaffold) một dự án MLOps mới với cấu trúc định nghĩa sẵn và các best practice.\nTự động hóa việc kiểm thử và kiểm tra chất lượng mã nguồn machine learning bằng các workflow tích hợp.\nBuild và triển khai các Docker image cho ứng dụng MLOps một cách liền mạch.\nQuản lý các dependency và task của dự án bằng PyInvoke để quy trình phát triển hiệu quả hơn.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/fmind/cookiecutter-mlops-package`",
+    "usage_vi": "```\nGenerate a cookiecutter-mlops-package template for a [PROJECT_NAME] that includes [SPECIFIC_FEATURES]. Ensure the template supports [CI/CD_TOOL] integration and includes Dockerfile configurations for [CONTAINER_ORCHESTRATOR].\n```\nCopy\n\n```\nTemplate cookiecutter-mlops-package cho dự án 'Customer Churn Prediction' đã được khởi tạo thành công. Template bao gồm các tính năng sau:\n\n1. **Project Structure**: Template thiết lập một cấu trúc thư mục chuẩn hóa với các thư mục dành cho data, model, test và tài liệu hướng dẫn (documentation).\n2. **CI/CD Integration**: Template bao gồm các file cấu hình cho GitHub Actions giúp tự động hóa quá trình build, test và triển khai model.\n3. **Docker Configuration**: Template bao gồm một Dockerfile chỉ định base image, các dependency và các lệnh để chạy model. Nó cũng đi kèm file docker-compose.yml để phát triển và test ở môi trường local.\n4. **Kubernetes Deployment**: Template bao gồm các file YAML phục vụ deployment và service trong Kubernetes, dùng để triển khai model lên một Kubernetes cluster.\n5. **Monitoring and Logging**: Template chứa các file cấu hình cho Prometheus và Grafana để giám sát hiệu năng của model và log các dự đoán (predictions).\n\nTemplate cũng đi kèm một file README chứa hướng dẫn setup dự án, chạy test và triển khai model. Template đã sẵn sàng để tùy chỉnh và sử dụng cho dự án 'Customer Churn Prediction'.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:02:52.604472Z",
+    "http_status": 200,
+    "content_hash": "a7f362b53f4b863790901c5ee306c628cd2e51c722efa6a5710adfd0821c5dc0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cookiecutter-mlops-package.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cookiecutter-mlops-package.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cookiecutter-MLOps Package - Tự động hóa MLOps",
+  "short_description_vi": "Cookiecutter-mlops-package tự động hóa việc khởi tạo các Python package và Docker image cho các tác vụ MLOps. Đội ngũ vận hành sẽ được tối ưu hóa quy trình nhờ các template chuẩn hóa dùng để triển khai mô hình machine learning. Công cụ này hỗ trợ kết nối trực tiếp với các CI/CD pipeline và các công cụ container orchestration như Kubernetes."
+}

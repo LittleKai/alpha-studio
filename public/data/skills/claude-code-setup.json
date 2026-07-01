@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-setup",
+  "slug": "claude-code-setup",
+  "name": "Claude Code setup",
+  "headline": "Claude Code setup - comprehensive configuration",
+  "short_description": "Personal Claude Code configuration system using version-controlled dotfiles in ~/.claude/, combining settings, memory, and project guidance for consistent AI agent workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "philoserf",
+  "install_command": "git clone https://github.com/philoserf/claude-code-setup.git",
+  "source_repo_url": "https://github.com/philoserf/claude-code-setup",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "This skill provides a structured approach to managing Claude Code configuration through version control. It demonstrates how to organize user-level memory in CLAUDE.md files, manage Claude Code settings.json, and exclude runtime paths appropriately via .gitignore. The setup keeps your checked-in configuration tree synchronized with live Claude Code settings, enabling reproducible workflows and persistent context across sessions. Rather than a template to clone directly, it serves as a reference implementation showing best practices for organizing AI agent configuration, memory, and project-specific guidance in a version-controlled dotfile structure.\nMaintaining consistent Claude Code settings across machines using git\nOrganizing project-specific guidance and memory for AI agents\nDocumenting configuration decisions and excluding sensitive runtime data\nCreating reproducible Claude Code environments for team workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/philoserf/claude-code-setup`",
+    "usage": "```\nSet up a comprehensive Claude Code environment for [PROJECT_NAME]. Configure [NUMBER] agents with specific roles, [NUMBER] skills for each agent, and [NUMBER] hooks for automation. Ensure the setup integrates with [TOOLS_PLATFORMS] and follows [SPECIFIC_REQUIREMENTS].\n```\nCopy\n\n```\nHere's a comprehensive Claude Code setup for a project called 'SalesOps Automation' that integrates with Salesforce and Slack:\n\n1. **Agents Configuration**:\n   - **Sales Data Analyst**: Analyzes sales pipeline data and identifies trends.\n   - **Customer Support Agent**: Manages customer inquiries and escalations.\n   - **Marketing Automation Agent**: Handles email campaigns and social media posts.\n\n2. **Skills for Each Agent**:\n   - **Sales Data Analyst**: Data extraction from Salesforce, trend analysis, and report generation.\n   - **Customer Support Agent**: Ticket management, response drafting, and escalation protocols.\n   - **Marketing Automation Agent**: Campaign scheduling, content creation, and performance tracking.\n\n3. **Hooks for Automation**:\n   - **Salesforce Integration**: Automatically updates sales data and triggers alerts for high-risk deals.\n   - **Slack Notifications**: Sends real-time updates to the sales team and support agents.\n   - **Email Automation**: Schedules and sends personalized emails to customers based on their interaction history.\n\n4. **Specific Requirements**:\n   - Ensure all agents can access and update a shared knowledge base.\n   - Implement role-based access control to restrict sensitive data access.\n   - Set up a logging system to track all agent activities and interactions.\n\nThis setup ensures seamless integration and automation, enhancing productivity and efficiency.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-setup#main-content",
+      "claude-code-setup#overview",
+      "claude-code-setup#setup",
+      "claude-code-setup#examples",
+      "claude-code-setup#tools",
+      "claude-code-setup#mcp",
+      "claude-code-setup#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này cung cấp một phương pháp tiếp cận có cấu trúc để quản lý cấu hình Claude Code thông qua version control. Nó hướng dẫn cách tổ chức user-level memory trong các file CLAUDE.md, quản lý file settings.json của Claude Code, và loại trừ các đường dẫn runtime một cách hợp lý qua .gitignore. Setup này giúp giữ cho cây cấu hình đã được check-in đồng bộ với các thiết lập Claude Code thực tế, cho phép tái lập các workflow và duy trì context nhất quán giữa các session. Thay vì là một template để clone trực tiếp, đây là một triển khai tham chiếu mô tả các best practice để tổ chức cấu hình AI agent, memory, và hướng dẫn riêng cho từng dự án trong một cấu trúc dotfile được quản lý phiên bản.\n\nDuy trì cấu hình Claude Code nhất quán giữa các máy bằng git\nTổ chức hướng dẫn và memory riêng cho từng dự án cho các AI agent\nTài liệu hóa các quyết định cấu hình và loại trừ dữ liệu runtime nhạy cảm\nTạo các môi trường Claude Code có thể tái lập cho các workflow của nhóm",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/philoserf/claude-code-setup`",
+    "usage_vi": "```\nThiết lập một môi trường Claude Code toàn diện cho [PROJECT_NAME]. Cấu hình [NUMBER] agent với các vai trò cụ thể, [NUMBER] skill cho mỗi agent, và [NUMBER] hook để tự động hóa. Đảm bảo setup tích hợp với [TOOLS_PLATFORMS] và tuân thủ [SPECIFIC_REQUIREMENTS].\n```\nCopy\n\n```\nDưới đây là một setup Claude Code toàn diện cho dự án tên là 'SalesOps Automation' tích hợp với Salesforce và Slack:\n\n1. **Cấu hình Agent**:\n   - **Sales Data Analyst**: Phân tích dữ liệu sales pipeline và xác định xu hướng.\n   - **Customer Support Agent**: Quản lý các yêu cầu hỗ trợ của khách hàng và quy trình chuyển tiếp (escalation).\n   - **Marketing Automation Agent**: Xử lý các chiến dịch email và bài đăng mạng xã hội.\n\n2. **Skill cho từng Agent**:\n   - **Sales Data Analyst**: Trích xuất dữ liệu từ Salesforce, phân tích xu hướng, và tạo báo cáo.\n   - **Customer Support Agent**: Quản lý ticket, soạn thảo phản hồi, và các giao thức chuyển tiếp.\n   - **Marketing Automation Agent**: Lên lịch chiến dịch, sáng tạo nội dung, và theo dõi hiệu suất.\n\n3. **Hook để tự động hóa**:\n   - **Tích hợp Salesforce**: Tự động cập nhật dữ liệu bán hàng và kích hoạt cảnh báo cho các giao dịch rủi ro cao.\n   - **Thông báo Slack**: Gửi cập nhật theo thời gian thực đến đội ngũ bán hàng và các support agent.\n   - **Tự động hóa Email**: Lên lịch và gửi email cá nhân hóa cho khách hàng dựa trên lịch sử tương tác của họ.\n\n4. **Yêu cầu cụ thể**:\n   - Đảm bảo tất cả các agent có thể truy cập và cập nhật một cơ sở tri thức (knowledge base) dùng chung.\n   - Triển khai phân quyền truy cập theo vai trò (role-based access control) để hạn chế truy cập dữ liệu nhạy cảm.\n   - Thiết lập hệ thống ghi log để theo dõi mọi hoạt động và tương tác của agent.\n\nSetup này đảm bảo việc tích hợp và tự động hóa diễn ra liền mạch, giúp nâng cao năng suất và hiệu quả công việc.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:18:37.607794Z",
+    "http_status": 200,
+    "content_hash": "842e0d7aabe01244e6d07714c0565229dacf7e64ab6f9bbdb21640632a1ca312",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-setup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-setup.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Setup Claude Code - cấu hình toàn diện",
+  "short_description_vi": "Hệ thống cấu hình Claude Code cá nhân sử dụng các dotfile được quản lý phiên bản trong ~/.claude/, kết hợp settings, memory và hướng dẫn dự án để đảm bảo các workflow AI agent luôn nhất quán."
+}

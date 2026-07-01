@@ -130,7 +130,7 @@ export default function SkillsPage() {
   const [collapseInstall, setCollapseInstall] = useState(false);
 
   useEffect(() => {
-    fetch('/data/skills.json')
+    fetch('/data/skills-index.json')
       .then(res => res.json())
       .then(data => {
         setSkills(data);

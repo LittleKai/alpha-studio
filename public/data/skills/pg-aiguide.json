@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pg-aiguide",
+  "slug": "pg-aiguide",
+  "name": "react-native-best-practices",
+  "headline": "pg-aiguide: PostgreSQL AI Coding Assistant",
+  "short_description": "pg-aiguide is a powerful MCP server and Claude plugin designed to enhance PostgreSQL coding. It provides comprehensive documentation and tools to help AI coding tools generate optimized PostgreSQL code efficiently.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "timescale",
+  "install_command": "claude install timescale/pg-aiguide",
+  "source_repo_url": "https://github.com/timescale/pg-aiguide",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-plugin",
+    "documentation",
+    "postgres",
+    "mcp",
+    "ai-coding"
+  ],
+  "sections": {
+    "overview": "pg-aiguide enhances AI coding assistants like Claude and Cursor with comprehensive PostgreSQL documentation and code generation tools. It functions as both an MCP server and Claude plugin, enabling AI models to access structured PostgreSQL guidance when writing database code. The skill supports multiple search modes including hybrid search combining semantic and keyword (BM25) approaches with reciprocal rank fusion to deliver the most relevant documentation results. It helps developers and AI assistants generate optimized PostgreSQL queries by providing context-aware documentation lookup during the coding process.\nGenerate optimized PostgreSQL queries that follow best practices.\nAutomate the generation of complex database schemas tailored to specific applications.\nProvide comprehensive documentation on PostgreSQL features and best practices.\nAssist developers in debugging and refining PostgreSQL code for better performance.",
+    "setup": "Terminal\nCopy\n`claude install timescale/pg-aiguide`\n`git clone https://github.com/timescale/pg-aiguide`",
+    "usage": "```\nGenerate a PostgreSQL query to [TASK] using pg-aiguide. The query should optimize for [PERFORMANCE_METRIC] and include error handling for [ERROR_CONDITIONS]. Provide the query in a format compatible with [DATABASE_TOOL].\n```\nCopy\n\n```\nTo optimize the performance of a customer data retrieval query, pg-aiguide generated the following PostgreSQL code:\n\n```sql\nCREATE OR REPLACE FUNCTION get_customer_data(customer_id INT)\nRETURNS TABLE (\n    customer_id INT,\n    name VARCHAR,\n    email VARCHAR,\n    last_purchase DATE,\n    total_spent NUMERIC\n) AS $$\nBEGIN\n    RETURN QUERY\n    SELECT\n        c.customer_id,\n        c.name,\n        c.email,\n        o.purchase_date AS last_purchase,\n        SUM(o.amount) AS total_spent\n    FROM\n        customers c\n    LEFT JOIN\n        orders o ON c.customer_id = o.customer_id\n    WHERE\n        c.customer_id = get_customer_data.customer_id\n    GROUP BY\n        c.customer_id, c.name, c.email, o.purchase_date\n    ORDER BY\n        o.purchase_date DESC\n    LIMIT 1;\nEND;\n$$ LANGUAGE plpgsql;\n\n-- Error handling for cases where customer_id doesn't exist\nDO $$\nBEGIN\n    IF NOT EXISTS (SELECT 1 FROM customers WHERE customer_id = 12345) THEN\n        RAISE NOTICE 'Customer with ID 12345 does not exist.';\n    END IF;\nEND $$;\n```\n\nThis query optimizes for read performance by using appropriate indexing and limiting the result set. It includes error handling for non-existent customer IDs and is compatible with tools like pgAdmin or DBeaver.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pg-aiguide#main-content",
+      "pg-aiguide#overview",
+      "pg-aiguide#setup",
+      "pg-aiguide#examples",
+      "pg-aiguide#tools",
+      "pg-aiguide#mcp",
+      "pg-aiguide#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "pg-aiguide enhances AI coding assistants like Claude and Cursor with comprehensive PostgreSQL documentation and code generation tools. It functions as both an MCP server and Claude plugin, enabling AI models to access structured PostgreSQL guidance when writing database code. The skill supports multiple search modes including hybrid search combining semantic and keyword (BM25) approaches with reciprocal rank fusion to deliver the most relevant documentation results. It helps developers and AI assistants generate optimized PostgreSQL queries by providing context-aware documentation lookup during the coding process.\nGenerate optimized PostgreSQL queries that follow best practices.\nAutomate the generation of complex database schemas tailored to specific applications.\nProvide comprehensive documentation on PostgreSQL features and best practices.\nAssist developers in debugging and refining PostgreSQL code for better performance.",
+    "setup_vi": "Terminal\nCopy\n`claude install timescale/pg-aiguide`\n`git clone https://github.com/timescale/pg-aiguide`",
+    "usage_vi": "```\nGenerate a PostgreSQL query to [TASK] using pg-aiguide. The query should optimize for [PERFORMANCE_METRIC] and include error handling for [ERROR_CONDITIONS]. Provide the query in a format compatible with [DATABASE_TOOL].\n```\nCopy\n\n```\nTo optimize the performance of a customer data retrieval query, pg-aiguide generated the following PostgreSQL code:\n\n```sql\nCREATE OR REPLACE FUNCTION get_customer_data(customer_id INT)\nRETURNS TABLE (\n    customer_id INT,\n    name VARCHAR,\n    email VARCHAR,\n    last_purchase DATE,\n    total_spent NUMERIC\n) AS $$\nBEGIN\n    RETURN QUERY\n    SELECT\n        c.customer_id,\n        c.name,\n        c.email,\n        o.purchase_date AS last_purchase,\n        SUM(o.amount) AS total_spent\n    FROM\n        customers c\n    LEFT JOIN\n        orders o ON c.customer_id = o.customer_id\n    WHERE\n        c.customer_id = get_customer_data.customer_id\n    GROUP BY\n        c.customer_id, c.name, c.email, o.purchase_date\n    ORDER BY\n        o.purchase_date DESC\n    LIMIT 1;\nEND;\n$$ LANGUAGE plpgsql;\n\n-- Error handling for cases where customer_id doesn't exist\nDO $$\nBEGIN\n    IF NOT EXISTS (SELECT 1 FROM customers WHERE customer_id = 12345) THEN\n        RAISE NOTICE 'Customer with ID 12345 does not exist.';\n    END IF;\nEND $$;\n```\n\nThis query optimizes for read performance by using appropriate indexing and limiting the result set. It includes error handling for non-existent customer IDs and is compatible with tools like pgAdmin or DBeaver.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:12:24.674275Z",
+    "http_status": 200,
+    "content_hash": "015cf7e9b03f86f520385f84fa17b7610d123c0985f97248e7d440345223545c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pg-aiguide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pg-aiguide.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "pg-aiguide: PostgreSQL AI Coding Assistant",
+  "short_description_vi": "pg-aiguide is a powerful MCP server and Claude plugin designed to enhance PostgreSQL coding. It provides comprehensive documentation and tools to help AI coding tools generate optimized PostgreSQL code efficiently."
+}

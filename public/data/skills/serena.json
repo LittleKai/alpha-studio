@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/serena",
+  "slug": "serena",
+  "name": "serena",
+  "headline": "Serena: Advanced Coding Agent Toolkit",
+  "short_description": "Serena is an advanced coding agent toolkit that enhances programming efficiency through semantic retrieval and editing capabilities. With integrations like MCP server, it helps developers to streamline their coding processes and improve productivity.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "oraios",
+  "install_command": "claude install oraios/serena",
+  "source_repo_url": "https://github.com/oraios/serena",
+  "works_with": [
+    "ClaudeChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "programming",
+    "coding",
+    "toolkit",
+    "AI agents",
+    "semantic retrieval"
+  ],
+  "sections": {
+    "overview": "Serena is a coding agent toolkit designed to improve developer productivity through semantic code retrieval and intelligent editing capabilities. It integrates with MCP servers to provide seamless integration with AI coding assistants like Claude and Cursor. The toolkit enables developers to search and manipulate codebases intelligently, streamlining common programming tasks. Serena supports multiple programming languages and provides project-aware context management. It runs as a server that connects to your IDE or agent platform, making it suitable for both local development and headless environments like SSH, WSL, and Docker.\nAutomating code suggestions based on project context to save time during development.\nEnhancing code editing with semantic context to improve accuracy and reduce errors.\nIntegrating seamlessly with existing development environments to streamline workflows.\nFacilitating collaborative coding sessions by providing real-time code suggestions to multiple users.",
+    "setup": "Terminal\nCopy\n`claude install oraios/serena`\n`git clone https://github.com/oraios/serena`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project that involves [DESCRIBE_PROJECT]. I need help optimizing the code for [SPECIFIC_GOAL]. Can you analyze the following code snippet and suggest improvements using Serena's semantic retrieval and editing capabilities? Here's the code: [PASTE_CODE_SNIPPET]. Also, can you integrate this with the MCP server to ensure compatibility?\n```\nCopy\n\n```\nAfter analyzing your Python code snippet for the data processing project, I've identified several areas for optimization. The current implementation uses nested loops for data transformation, which can be inefficient for large datasets. Here's an improved version using list comprehensions and vectorized operations with NumPy:\n\n```python\nimport numpy as np\n\n# Original code\n# for i in range(len(data)):\n#     data[i] = transform(data[i])\n\n# Optimized code\ndata_array = np.array(data)\ndata_transformed = np.vectorize(transform)(data_array)\n```\n\nThis change should significantly improve performance, especially for large datasets. I've also ensured compatibility with the MCP server by using standard NumPy operations. Additionally, I've added type hints to improve code clarity and maintainability. The semantic analysis suggests that the transform function could be further optimized by precomputing certain values, but that would require more context about the specific transformation being applied.\n\nTo integrate this with the MCP server, you'll need to:\n1. Install the MCP client library: `pip install mcp-client`\n2. Initialize the client at the beginning of your script:\n```python\nfrom mcp_client import MCPClient\nclient = MCPClient(api_key='your_api_key_here')\n```\n3. Use the client to send and retrieve data from the MCP server as needed in your processing pipeline.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "serena#main-content",
+      "serena#overview",
+      "serena#setup",
+      "serena#examples",
+      "serena#tools",
+      "serena#mcp",
+      "serena#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Serena is a coding agent toolkit designed to improve developer productivity through semantic code retrieval and intelligent editing capabilities. It integrates with MCP servers to provide seamless integration with AI coding assistants like Claude and Cursor. The toolkit enables developers to search and manipulate codebases intelligently, streamlining common programming tasks. Serena supports multiple programming languages and provides project-aware context management. It runs as a server that connects to your IDE or agent platform, making it suitable for both local development and headless environments like SSH, WSL, and Docker.\nAutomating code suggestions based on project context to save time during development.\nEnhancing code editing with semantic context to improve accuracy and reduce errors.\nIntegrating seamlessly with existing development environments to streamline workflows.\nFacilitating collaborative coding sessions by providing real-time code suggestions to multiple users.",
+    "setup_vi": "Terminal\nCopy\n`claude install oraios/serena`\n`git clone https://github.com/oraios/serena`",
+    "usage_vi": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project that involves [DESCRIBE_PROJECT]. I need help optimizing the code for [SPECIFIC_GOAL]. Can you analyze the following code snippet and suggest improvements using Serena's semantic retrieval and editing capabilities? Here's the code: [PASTE_CODE_SNIPPET]. Also, can you integrate this with the MCP server to ensure compatibility?\n```\nCopy\n\n```\nAfter analyzing your Python code snippet for the data processing project, I've identified several areas for optimization. The current implementation uses nested loops for data transformation, which can be inefficient for large datasets. Here's an improved version using list comprehensions and vectorized operations with NumPy:\n\n```python\nimport numpy as np\n\n# Original code\n# for i in range(len(data)):\n#     data[i] = transform(data[i])\n\n# Optimized code\ndata_array = np.array(data)\ndata_transformed = np.vectorize(transform)(data_array)\n```\n\nThis change should significantly improve performance, especially for large datasets. I've also ensured compatibility with the MCP server by using standard NumPy operations. Additionally, I've added type hints to improve code clarity and maintainability. The semantic analysis suggests that the transform function could be further optimized by precomputing certain values, but that would require more context about the specific transformation being applied.\n\nTo integrate this with the MCP server, you'll need to:\n1. Install the MCP client library: `pip install mcp-client`\n2. Initialize the client at the beginning of your script:\n```python\nfrom mcp_client import MCPClient\nclient = MCPClient(api_key='your_api_key_here')\n```\n3. Use the client to send and retrieve data from the MCP server as needed in your processing pipeline.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:36:23.554689Z",
+    "http_status": 200,
+    "content_hash": "d075754f9f342039320fd871b259ebaad5ad023f2a111ec52b1125859d37c1e4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\serena.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\serena.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Serena: Advanced Coding Agent Toolkit",
+  "short_description_vi": "Serena is an advanced coding agent toolkit that enhances programming efficiency through semantic retrieval and editing capabilities. With integrations like MCP server, it helps developers to streamline their coding processes and improve productivity."
+}

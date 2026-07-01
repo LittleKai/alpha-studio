@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/linear-claude-skill",
+  "slug": "linear-claude-skill",
+  "name": "browser-use",
+  "headline": "Linear Claude Skill: Project Management",
+  "short_description": "Linear Claude Skill automates issue tracking, project management, and team coordination in Linear. It connects to MCP tools, SDK automation, and GraphQL APIs for streamlined operations workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "wrsmith108",
+  "install_command": "git clone https://github.com/wrsmith108/linear-claude-skill.git",
+  "source_repo_url": "https://github.com/wrsmith108/linear-claude-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "linear",
+    "project-management",
+    "claude-code-skills",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "The Linear Claude skill is a powerful automation tool designed specifically for managing Linear issues, projects, and teams. By leveraging MCP tools, SDK automation, and GraphQL API patterns, this skill simplifies the workflow for developers and product managers, allowing them to focus on higher-level tasks rather than getting bogged down in manual project management. With an implementation time of just 30 minutes, this intermediate-level skill can be seamlessly integrated into your existing workflows. One of the key benefits of the Linear Claude skill is its ability to enhance productivity through effective workflow automation. By automating repetitive tasks related to issue tracking and project management, users can save valuable time and reduce the likelihood of errors. While the exact time savings are currently unknown, the skill’s design inherently promotes efficiency, making it a worthwhile addition to any team’s toolkit. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to streamline their project management processes. By automating the management of Linear issues and projects, teams can improve collaboration and communication, ensuring that everyone is aligned on project goals and timelines. Practical use cases include automating the assignment of issues based on team members' workloads or generating reports on project status without manual input. With its intermediate complexity, the Linear Claude skill requires a basic understanding of automation principles and familiarity with Linear's API. It fits perfectly into AI-first workflows, allowing teams to harness the power of AI automation to enhance their project management capabilities. By integrating this skill into your operations, you can create a more efficient and responsive project management environment, ultimately leading to better outcomes and faster delivery times.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wrsmith108/linear-claude-skill`",
+    "usage": "```\nUse the Linear Claude Skill to [ACTION] in Linear. For example: 'Automate the creation of a new issue for [TEAM] with the title [ISSUE_TITLE], description [ISSUE_DESCRIPTION], and priority [PRIORITY_LEVEL]. Assign it to [ASSIGNEE] and add it to the [PROJECT_NAME] project.' Or: 'Generate a weekly status report for [PROJECT_NAME] including completed issues, in-progress issues, and blockers. Highlight any overdue tasks.'\n```\nCopy\n\n```\nHere’s the Linear issue created using the Linear Claude Skill:\n\n**Issue Details:**\n- **Team:** Engineering\n- **Title:** Fix API timeout errors in user authentication\n- **Description:** The `/login` endpoint intermittently times out after 30 seconds. Root cause identified as unoptimized database queries in the `UserSession` model. Requires indexing the `last_login_at` column and adding a timeout retry mechanism.\n- **Priority:** High\n- **Assignee:** jane.doe@company.com\n- **Project:** Q2 Security Enhancements\n- **Labels:** bug, backend, critical\n- **Due Date:** 2024-05-15\n\n**Automation Confirmation:**\n✅ Issue created successfully in Linear (ID: ENG-1247).\n✅ Assigned to Jane Doe with High priority.\n✅ Added to 'Q2 Security Enhancements' project and labeled appropriately.\n\n**Next Steps:**\n- Jane has been notified via Linear and Slack.\n- The issue is now tracked in the team’s backlog for sprint planning.\n\n---\n\nHere’s the weekly status report generated for the 'Mobile App Redesign' project:\n\n**Completed Issues (May 6–12):**\n1. **UI-456:** Redesigned login screen (Assigned to: Alex Smith, Completed: 2024-05-08)\n2. **UI-457:** Implemented dark mode toggle (Assigned to: Priya Patel, Completed: 2024-05-10)\n\n**In-Progress Issues:**\n1. **UI-458:** Home screen layout adjustments (Assigned to: Carlos Mendez, Progress: 60%, Due: 2024-05-17)\n2. **UI-459:** Payment flow integration (Assigned to: Priya Patel, Progress: 40%, Due: 2024-05-20)\n\n**Blockers:**\n- **UI-458:** Waiting on design feedback from the UX team (Blocked since: 2024-05-11).\n- **UI-459:** Stripe API integration delayed due to missing test credentials (Blocked since: 2024-05-13).\n\n**Recommendations:**\n- Escalate UI-458 to the UX team for urgent review.\n- Contact Stripe support to expedite test credentials for UI-459.\n\n---\nAutomation completed via Linear Claude Skill. All updates synced with Linear and team notifications sent.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "linear-claude-skill#main-content",
+      "linear-claude-skill#overview",
+      "linear-claude-skill#setup",
+      "linear-claude-skill#examples",
+      "linear-claude-skill#tools",
+      "linear-claude-skill#mcp",
+      "linear-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Linear Claude skill is a powerful automation tool designed specifically for managing Linear issues, projects, and teams. By leveraging MCP tools, SDK automation, and GraphQL API patterns, this skill simplifies the workflow for developers and product managers, allowing them to focus on higher-level tasks rather than getting bogged down in manual project management. With an implementation time of just 30 minutes, this intermediate-level skill can be seamlessly integrated into your existing workflows. One of the key benefits of the Linear Claude skill is its ability to enhance productivity through effective workflow automation. By automating repetitive tasks related to issue tracking and project management, users can save valuable time and reduce the likelihood of errors. While the exact time savings are currently unknown, the skill’s design inherently promotes efficiency, making it a worthwhile addition to any team’s toolkit. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to streamline their project management processes. By automating the management of Linear issues and projects, teams can improve collaboration and communication, ensuring that everyone is aligned on project goals and timelines. Practical use cases include automating the assignment of issues based on team members' workloads or generating reports on project status without manual input. With its intermediate complexity, the Linear Claude skill requires a basic understanding of automation principles and familiarity with Linear's API. It fits perfectly into AI-first workflows, allowing teams to harness the power of AI automation to enhance their project management capabilities. By integrating this skill into your operations, you can create a more efficient and responsive project management environment, ultimately leading to better outcomes and faster delivery times.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wrsmith108/linear-claude-skill`",
+    "usage_vi": "```\nUse the Linear Claude Skill to [ACTION] in Linear. For example: 'Automate the creation of a new issue for [TEAM] with the title [ISSUE_TITLE], description [ISSUE_DESCRIPTION], and priority [PRIORITY_LEVEL]. Assign it to [ASSIGNEE] and add it to the [PROJECT_NAME] project.' Or: 'Generate a weekly status report for [PROJECT_NAME] including completed issues, in-progress issues, and blockers. Highlight any overdue tasks.'\n```\nCopy\n\n```\nHere’s the Linear issue created using the Linear Claude Skill:\n\n**Issue Details:**\n- **Team:** Engineering\n- **Title:** Fix API timeout errors in user authentication\n- **Description:** The `/login` endpoint intermittently times out after 30 seconds. Root cause identified as unoptimized database queries in the `UserSession` model. Requires indexing the `last_login_at` column and adding a timeout retry mechanism.\n- **Priority:** High\n- **Assignee:** jane.doe@company.com\n- **Project:** Q2 Security Enhancements\n- **Labels:** bug, backend, critical\n- **Due Date:** 2024-05-15\n\n**Automation Confirmation:**\n✅ Issue created successfully in Linear (ID: ENG-1247).\n✅ Assigned to Jane Doe with High priority.\n✅ Added to 'Q2 Security Enhancements' project and labeled appropriately.\n\n**Next Steps:**\n- Jane has been notified via Linear and Slack.\n- The issue is now tracked in the team’s backlog for sprint planning.\n\n---\n\nHere’s the weekly status report generated for the 'Mobile App Redesign' project:\n\n**Completed Issues (May 6–12):**\n1. **UI-456:** Redesigned login screen (Assigned to: Alex Smith, Completed: 2024-05-08)\n2. **UI-457:** Implemented dark mode toggle (Assigned to: Priya Patel, Completed: 2024-05-10)\n\n**In-Progress Issues:**\n1. **UI-458:** Home screen layout adjustments (Assigned to: Carlos Mendez, Progress: 60%, Due: 2024-05-17)\n2. **UI-459:** Payment flow integration (Assigned to: Priya Patel, Progress: 40%, Due: 2024-05-20)\n\n**Blockers:**\n- **UI-458:** Waiting on design feedback from the UX team (Blocked since: 2024-05-11).\n- **UI-459:** Stripe API integration delayed due to missing test credentials (Blocked since: 2024-05-13).\n\n**Recommendations:**\n- Escalate UI-458 to the UX team for urgent review.\n- Contact Stripe support to expedite test credentials for UI-459.\n\n---\nAutomation completed via Linear Claude Skill. All updates synced with Linear and team notifications sent.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:23.258148Z",
+    "http_status": 200,
+    "content_hash": "e5b3ec90dedbbf7d3d6f770624092706114f4e13daa575ae09489ef08b0b6044",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\linear-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\linear-claude-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Linear Claude Skill: Project Management",
+  "short_description_vi": "Linear Claude Skill automates issue tracking, project management, and team coordination in Linear. It connects to MCP tools, SDK automation, and GraphQL APIs for streamlined operations workflows."
+}

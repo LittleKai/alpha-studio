@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/local-skills-mcp",
+  "slug": "local-skills-mcp",
+  "name": "Local Skills MCP",
+  "headline": "Local Skills MCP - Local AI Agent Skills",
+  "short_description": "Universal MCP server enabling any LLM or AI agent to utilize expert skills from your local filesystem. Reduces context consumption through lazy loading. Works with Claude, Cline, and any MCP-compatible client.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "kdpa-llc",
+  "install_command": "git clone https://github.com/kdpa-llc/local-skills-mcp.git",
+  "source_repo_url": "https://github.com/kdpa-llc/local-skills-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "llm",
+    "skills",
+    "mcp",
+    "anthropic",
+    "prompt-library",
+    "cline",
+    "ai-agent",
+    "prompts",
+    "model-context-protocol",
+    "claude",
+    "gpt",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Local Skills MCP is a universal Model Context Protocol server that allows any LLM or AI agent—Claude, Cline, Continue.dev, or custom agents—to access expert skills stored in your local filesystem. Skills are auto-discovered from multiple directories including ~/.claude/skills/, project-specific folders, and custom paths, with full support for hot reloading when skills change. The server uses lazy loading to minimize context usage: skill names and descriptions load initially (~50 tokens each), while full skill content loads only when requested. This approach works across any MCP-compatible client while maintaining portability, letting you write skills once and use them across different AI systems without modification.\nCreate reusable expert instructions for specialized tasks across Claude, Cline, and other MCP clients\nOrganize project-specific skills in hidden or visible directories with automatic discovery\nReduce token consumption by lazy-loading skill content only when the AI agent requests it\nCustomize built-in skills by overriding them in your local skill directories",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kdpa-llc/local-skills-mcp`",
+    "usage": "```\nI'm using the Local Skills MCP server to help me with [SPECIFIC TASK]. I have a local skill file named [SKILL_FILE_NAME] that I want to use. The file is located at [FILE_PATH]. Please use this skill to [DESCRIBE TASK] and provide me with the results.\n```\nCopy\n\n```\n# Local Skill Execution Results",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "local-skills-mcp#main-content",
+      "local-skills-mcp#overview",
+      "local-skills-mcp#setup",
+      "local-skills-mcp#examples",
+      "local-skills-mcp#tools",
+      "local-skills-mcp#mcp",
+      "local-skills-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Local Skills MCP là một Model Context Protocol server đa năng, cho phép mọi LLM hoặc AI agent—từ Claude, Cline, Continue.dev cho đến các agent tự phát triển—truy cập vào các kỹ năng chuyên gia được lưu trữ trong filesystem cục bộ của bạn. Hệ thống tự động quét và phát hiện (auto-discovery) kỹ năng từ nhiều thư mục khác nhau như ~/.claude/skills/, các thư mục riêng của dự án và các đường dẫn tùy chỉnh, đồng thời hỗ trợ đầy đủ tính năng hot reloading khi kỹ năng thay đổi. Server áp dụng cơ chế lazy loading để tối ưu hóa dung lượng context: ban đầu chỉ tải tên và mô tả kỹ năng (~50 token mỗi phần), và chỉ tải toàn bộ nội dung kỹ năng khi thực sự được yêu cầu. Giải pháp này hoạt động trên mọi client hỗ trợ MCP mà vẫn đảm bảo tính linh hoạt, giúp bạn chỉ cần viết kỹ năng một lần và tái sử dụng trên nhiều hệ thống AI khác nhau mà không cần chỉnh sửa.\nTạo các chỉ dẫn chuyên gia có thể tái sử dụng cho các tác vụ chuyên biệt trên Claude, Cline và các MCP client khác\nTổ chức các kỹ năng riêng của dự án trong các thư mục ẩn hoặc hiện với tính năng tự động phát hiện\nGiảm lượng token tiêu thụ bằng cách chỉ lazy-load nội dung kỹ năng khi AI agent yêu cầu\nTùy biến các kỹ năng tích hợp sẵn bằng cách ghi đè (override) chúng trong các thư mục kỹ năng cục bộ của bạn",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kdpa-llc/local-skills-mcp`",
+    "usage_vi": "```\nTôi đang sử dụng Local Skills MCP server để hỗ trợ thực hiện [TÁC VỤ CỤ THỂ]. Tôi có một file kỹ năng cục bộ tên là [TÊN_FILE_KỸ_NĂNG] cần sử dụng. File này nằm tại [ĐƯỜNG_DẪN_FILE]. Vui lòng dùng kỹ năng này để [MÔ TẢ TÁC VỤ] và phản hồi kết quả cho tôi.\n```\nSao chép\n\n```\n# Kết quả thực thi kỹ năng cục bộ"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:06:09.808254Z",
+    "http_status": 200,
+    "content_hash": "ca1b00ef7686ea86b3e1b4c129004ca392254f2b055a67ecc346320b2e75f4b8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\local-skills-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\local-skills-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Local Skills MCP - Kỹ năng AI Agent cục bộ",
+  "short_description_vi": "MCP server đa năng cho phép mọi LLM hoặc AI agent khai thác các kỹ năng chuyên gia từ filesystem cục bộ của bạn. Tiết kiệm tài nguyên context nhờ cơ chế lazy loading. Tương thích tốt với Claude, Cline và mọi client hỗ trợ MCP."
+}

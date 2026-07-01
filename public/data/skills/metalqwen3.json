@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/metalqwen3",
+  "slug": "metalqwen3",
+  "name": "MetalQwen3",
+  "headline": "MetalQwen3 - Apple Silicon Qwen3 Model",
+  "short_description": "MetalQwen3 enables macOS operations teams to deploy Qwen3 transformer models with Apple Silicon GPU acceleration. It connects to existing C++ workflows and integrates with Claude agents for enhanced performance in LLM applications.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "BoltzmannEntropy",
+  "install_command": "git clone https://github.com/BoltzmannEntropy/metalQwen3.git",
+  "source_repo_url": "https://github.com/BoltzmannEntropy/metalQwen3",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "cmake",
+    "cpp20",
+    "performance",
+    "apple-silicon",
+    "mlx",
+    "codex",
+    "large-language-models",
+    "apple",
+    "metal",
+    "qwen3",
+    "shaders",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "MetalQwen3 is an automation skill that enables macOS operations teams to deploy Qwen3 transformer models with Apple Silicon GPU acceleration. It bridges LLM capabilities with existing C++ workflows, allowing direct integration of advanced language models into production environments. The skill connects with Claude agents to enhance performance in LLM applications, making it suited for teams running inference workloads on Apple hardware.\nDeploy Qwen3 models on macOS systems with native Apple Silicon GPU optimization\nIntegrate transformer-based language models into existing C++ applications\nEnhance Claude agent performance with Qwen3 model inference capabilities\nRun inference workloads efficiently on Apple Silicon hardware for operations teams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BoltzmannEntropy/metalQwen3`\n```bash\nbrew install cmake\nbrew install boost\n```",
+    "usage": "```\nDeploy a Qwen3 transformer model on macOS with Apple Silicon GPU acceleration for [COMPANY]. The model should integrate with existing C++ workflows and connect to Claude agents for enhanced performance in [INDUSTRY] applications. Provide step-by-step instructions and configuration details.\n```\nCopy\n\n```\n# Deployment Guide for Qwen3 on macOS with Apple Silicon GPU Acceleration",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "metalqwen3#main-content",
+      "metalqwen3#overview",
+      "metalqwen3#setup",
+      "metalqwen3#examples",
+      "metalqwen3#tools",
+      "metalqwen3#mcp",
+      "metalqwen3#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MetalQwen3 là một skill tự động hóa giúp các đội ngũ vận hành trên macOS triển khai các model transformer Qwen3 với khả năng tăng tốc GPU Apple Silicon. Công cụ này làm cầu nối giữa năng lực của LLM với các workflow C++ hiện có, cho phép tích hợp trực tiếp các mô hình ngôn ngữ tiên tiến vào môi trường production. Skill này kết nối với các Claude agent để cải thiện hiệu năng trong các ứng dụng LLM, rất phù hợp cho các đội ngũ chạy các tác vụ inference trên phần cứng Apple.\nTriển khai các model Qwen3 trên hệ thống macOS với khả năng tối ưu hóa GPU Apple Silicon native\nTích hợp các model ngôn ngữ dạng transformer vào các ứng dụng C++ hiện có\nNâng cao hiệu năng của Claude agent nhờ khả năng inference của model Qwen3\nChạy các tác vụ inference hiệu quả trên phần cứng Apple Silicon cho các đội ngũ vận hành",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng hướng dẫn cài đặt thủ công.\n`git clone https://github.com/BoltzmannEntropy/metalQwen3`\n```bash\nbrew install cmake\nbrew install boost\n```",
+    "usage_vi": "```\nTriển khai một model transformer Qwen3 trên macOS với khả năng tăng tốc GPU Apple Silicon cho [COMPANY]. Model này cần tích hợp với các workflow C++ hiện tại và kết nối với các Claude agent để nâng cao hiệu năng trong các ứng dụng thuộc lĩnh vực [INDUSTRY]. Cung cấp hướng dẫn từng bước và thông tin cấu hình chi tiết.\n```\nSao chép\n\n```\n# Hướng dẫn triển khai Qwen3 trên macOS với khả năng tăng tốc GPU Apple Silicon"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:13.169669Z",
+    "http_status": 200,
+    "content_hash": "0db93084d625dfd34d049b396cee0b8655db11fcc1b1896fd5fae48754ec476d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\metalqwen3.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\metalqwen3.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MetalQwen3 - Model Qwen3 cho Apple Silicon",
+  "short_description_vi": "MetalQwen3 cho phép các đội ngũ vận hành hệ thống trên macOS triển khai các model transformer Qwen3 với khả năng tăng tốc GPU Apple Silicon. Công cụ này kết nối với các workflow C++ hiện tại và tích hợp với các Claude agent để tối ưu hóa hiệu năng cho các ứng dụng LLM."
+}

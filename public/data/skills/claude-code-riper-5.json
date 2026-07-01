@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-riper-5",
+  "slug": "claude-code-riper-5",
+  "name": "Claude Code Riper-5",
+  "headline": "Claude Code Riper-5 - custom commands module",
+  "short_description": "Claude Code RIPER-5 is an automation workflow for operations teams. It enables structured development with research, innovation, planning, execution, and review phases. Connects to Claude Code for custom command execution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "tony",
+  "install_command": "git clone https://github.com/tony/claude-code-riper-5.git",
+  "source_repo_url": "https://github.com/tony/claude-code-riper-5",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "riper",
+    "subagents",
+    "riper-5",
+    "claude-subagents",
+    "claude-code",
+    "subagent"
+  ],
+  "sections": {
+    "overview": "RIPER-5 provides a context-efficient workflow framework for Claude Code projects that separates development into five distinct phases: research, innovation, planning, execution, and review. The system uses custom slash commands and subagents to enforce structured decision-making, preventing premature implementation before understanding the problem space. It reduces token usage through specialized agents, maintains clear documentation of technical decisions, and enables reproducible development processes. Teams managing complex features, architectural changes, or critical code refactoring benefit from the enforced planning discipline. The memory bank system persists plans and decisions across sessions, allowing teams to reference prior work and avoid duplicated analysis.\nManaging complex multi-step feature development with clear approval gates\nRefactoring critical code with documented planning and review steps\nImplementing architectural changes with enforced separation of concerns\nBuilding reproducible development workflows across team members",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tony/claude-code-riper-5`",
+    "usage": "```\nI'm using Claude Code RIPER-5 to automate [PROCESS] for [COMPANY] in the [INDUSTRY] sector. Here's my structured workflow:\n\n1. Research: Analyze [DATA] to identify key trends and pain points\n2. Innovate: Generate 3 creative solutions for [SPECIFIC CHALLENGE]\n3. Plan: Create a step-by-step implementation roadmap\n4. Execute: Implement the chosen solution using Claude Code commands\n5. Review: Evaluate results and suggest improvements\n```\nCopy\n\n```\n# Automated Customer Support Optimization for TechCorp",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-riper-5#main-content",
+      "claude-code-riper-5#overview",
+      "claude-code-riper-5#setup",
+      "claude-code-riper-5#examples",
+      "claude-code-riper-5#tools",
+      "claude-code-riper-5#mcp",
+      "claude-code-riper-5#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "RIPER-5 cung cấp một workflow framework tối ưu ngữ cảnh (context-efficient) cho các dự án Claude Code, chia quá trình phát triển thành 5 giai đoạn riêng biệt: nghiên cứu (research), đổi mới (innovation), lập kế hoạch (planning), thực thi (execution) và đánh giá (review). Hệ thống sử dụng các custom slash commands và các subagent để bắt buộc đưa ra quyết định có cấu trúc, ngăn chặn việc triển khai vội vã trước khi thực sự hiểu rõ bài toán. Framework này giúp giảm lượng token tiêu thụ nhờ các agent chuyên dụng, duy trì tài liệu rõ ràng về các quyết định kỹ thuật và hỗ trợ các quy trình phát triển có thể tái lập (reproducible). Các đội ngũ đang quản lý các tính năng phức tạp, thay đổi kiến trúc hoặc refactor các đoạn code quan trọng sẽ được hưởng lợi từ việc tuân thủ kỷ luật lập kế hoạch nghiêm ngặt này. Hệ thống memory bank giúp lưu trữ lâu dài các kế hoạch và quyết định qua các phiên làm việc (sessions), cho phép các đội ngũ tham chiếu lại công việc trước đó và tránh lặp lại phân tích.\n\nQuản lý việc phát triển các tính năng phức tạp gồm nhiều bước với các cổng phê duyệt (approval gates) rõ ràng\nRefactor code quan trọng với các bước lập kế hoạch và đánh giá được ghi chép đầy đủ\nTriển khai các thay đổi về mặt kiến trúc với nguyên tắc phân tách mối quan tâm (separation of concerns) được đảm bảo chặt chẽ\nXây dựng các workflow phát triển có thể tái lập giữa các thành viên trong đội ngũ",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/tony/claude-code-riper-5`",
+    "usage_vi": "```\nTôi đang sử dụng Claude Code RIPER-5 để tự động hóa [PROCESS] cho [COMPANY] trong lĩnh vực [INDUSTRY]. Dưới đây là workflow có cấu trúc của tôi:\n\n1. Research: Phân tích [DATA] để xác định các xu hướng chính và các điểm nghẽn (pain points)\n2. Innovate: Đề xuất 3 giải pháp sáng tạo cho [SPECIFIC CHALLENGE]\n3. Plan: Lập lộ trình (roadmap) triển khai chi tiết từng bước\n4. Execute: Thực thi giải pháp đã chọn bằng các lệnh Claude Code\n5. Review: Đánh giá kết quả và đề xuất các điểm cần cải thiện\n```\nCopy\n\n```\n# Tối ưu hóa tự động dịch vụ hỗ trợ khách hàng cho TechCorp\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:19:14.405849Z",
+    "http_status": 200,
+    "content_hash": "3246f0be7b925d2d2fe545d3d550e8fde45431376588b9f49f3665e9e3ab6495",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-riper-5.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-riper-5.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Riper-5 - module custom commands",
+  "short_description_vi": "Claude Code RIPER-5 là một workflow tự động hóa dành cho các đội ngũ vận hành (operations). Công cụ này hỗ trợ quy trình phát triển có cấu trúc rõ ràng qua các giai đoạn: nghiên cứu (research), đổi mới (innovation), lập kế hoạch (planning), thực thi (execution) và đánh giá (review). Nó kết nối trực tiếp với Claude Code để thực thi các custom commands."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prose",
+  "slug": "prose",
+  "name": "browser-use",
+  "headline": "Prose - AI Automation Language",
+  "short_description": "Prose is a programming language for long-running AI sessions, enabling Turing-complete computation. It allows operations teams to automate complex workflows, integrate with various tools, and build custom applications. Ideal for developers and operations professionals.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "openprose",
+  "install_command": "git clone https://github.com/openprose/prose.git",
+  "source_repo_url": "https://github.com/openprose/prose",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Prose is a programming language designed to enable long-running AI sessions with Turing-complete computation capabilities. It allows operations teams and developers to automate complex workflows, integrate with various tools, and build custom applications by declaring required skills and leveraging AI agent harnesses. Prose components can declare dependencies through a Skills section with fail-closed compile resolution, ensuring all required harness skills are available before execution. The language supports multiple skill search paths and resolves skills against local and global directories, making it flexible for both individual developers and enterprise automation teams. It integrates with Claude Code, Cursor, and other AI agent platforms through standardized plugin manifests.\nAutomate research tasks by querying multiple sources and compiling findings into a structured report.\nStreamline content creation by integrating AI writing agents that refine drafts based on research data.\nFacilitate competitive analysis by running parallel sessions that gather and analyze market data.\nImplement error handling and retry mechanisms in workflows to ensure robustness in automation tasks.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/openprose/prose`",
+    "usage": "```\nWrite a Prose script to [TASK]. Use [TOOLS/APIS] for [FUNCTIONALITY]. Include error handling for [SPECIFIC_ERRORS]. The script should run for [DURATION] and output results to [OUTPUT_DESTINATION].\n```\nCopy\n\n```\n```prose\n// Prose script to monitor server health and auto-scale based on CPU load\n// Runs every 5 minutes for 24 hours, logs to /var/log/server_monitor.log\n\nimport http, json, os\n\nconst MAX_CPU = 80\nconst MIN_CPU = 30\nconst SCALING_FACTOR = 0.5\n\nfn check_cpu() {\n  let response = http.get(\"http://localhost:9100/metrics\")\n  if response.status != 200 {\n    log.error(\"Failed to fetch metrics\")\n    return null\n  }\n  let metrics = json.parse(response.body)\n  return metrics.cpu_usage\n}\n\nfn scale_servers(target_cpu) {\n  let current = check_cpu()\n  if current == null return\n\n  if target_cpu > MAX_CPU {\n    let new_servers = Math.ceil((target_cpu - MAX_CPU) / SCALING_FACTOR)\n    log.info(`Scaling up by ${new_servers} servers`)\n    os.system(`aws ec2 run-instances --image-id ami-123456 --count ${new_servers} --instance-type t3.medium`)\n  } else if target_cpu < MIN_CPU {\n    let remove_servers = Math.ceil((MIN_CPU - target_cpu) / SCALING_FACTOR)\n    log.info(`Scaling down by ${remove_servers} servers`)\n    os.system(`aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances --filters \"Name=tag:Name,Values=web-server\" --query \"Reservations[].Instances[].InstanceId\" --output text | head -${remove_servers})`)\n  }\n}\n\nfor 24 hours every 5 minutes {\n  let cpu = check_cpu()\n  if cpu != null {\n    scale_servers(cpu)\n    log.info(`CPU at ${cpu}%, current servers: ${os.system(\"aws ec2 describe-instances --filters 'Name=tag:Name,Values=web-server' --query 'length(Reservations[].Instances[])'\").trim()}`)\n  }\n}\n```\n\nOutput:\n2024-05-15 14:05:00 INFO: CPU at 85%, current servers: 12\n2024-05-15 14:05:00 INFO: Scaling up by 7 servers\n2024-05-15 14:10:00 INFO: CPU at 72%, current servers: 19\n2024-05-15 14:15:00 INFO: CPU at 68%, current servers: 19\n... [continues for 24 hours] ...\n2024-05-16 13:55:00 INFO: CPU at 28%, current servers: 5\n2024-05-16 14:00:00 INFO: Scaling down by 2 servers\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "prose#main-content",
+      "prose#overview",
+      "prose#setup",
+      "prose#examples",
+      "prose#tools",
+      "prose#mcp",
+      "prose#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Prose is a programming language designed to enable long-running AI sessions with Turing-complete computation capabilities. It allows operations teams and developers to automate complex workflows, integrate with various tools, and build custom applications by declaring required skills and leveraging AI agent harnesses. Prose components can declare dependencies through a Skills section with fail-closed compile resolution, ensuring all required harness skills are available before execution. The language supports multiple skill search paths and resolves skills against local and global directories, making it flexible for both individual developers and enterprise automation teams. It integrates with Claude Code, Cursor, and other AI agent platforms through standardized plugin manifests.\nAutomate research tasks by querying multiple sources and compiling findings into a structured report.\nStreamline content creation by integrating AI writing agents that refine drafts based on research data.\nFacilitate competitive analysis by running parallel sessions that gather and analyze market data.\nImplement error handling and retry mechanisms in workflows to ensure robustness in automation tasks.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/openprose/prose`",
+    "usage_vi": "```\nWrite a Prose script to [TASK]. Use [TOOLS/APIS] for [FUNCTIONALITY]. Include error handling for [SPECIFIC_ERRORS]. The script should run for [DURATION] and output results to [OUTPUT_DESTINATION].\n```\nCopy\n\n```\n```prose\n// Prose script to monitor server health and auto-scale based on CPU load\n// Runs every 5 minutes for 24 hours, logs to /var/log/server_monitor.log\n\nimport http, json, os\n\nconst MAX_CPU = 80\nconst MIN_CPU = 30\nconst SCALING_FACTOR = 0.5\n\nfn check_cpu() {\n  let response = http.get(\"http://localhost:9100/metrics\")\n  if response.status != 200 {\n    log.error(\"Failed to fetch metrics\")\n    return null\n  }\n  let metrics = json.parse(response.body)\n  return metrics.cpu_usage\n}\n\nfn scale_servers(target_cpu) {\n  let current = check_cpu()\n  if current == null return\n\n  if target_cpu > MAX_CPU {\n    let new_servers = Math.ceil((target_cpu - MAX_CPU) / SCALING_FACTOR)\n    log.info(`Scaling up by ${new_servers} servers`)\n    os.system(`aws ec2 run-instances --image-id ami-123456 --count ${new_servers} --instance-type t3.medium`)\n  } else if target_cpu < MIN_CPU {\n    let remove_servers = Math.ceil((MIN_CPU - target_cpu) / SCALING_FACTOR)\n    log.info(`Scaling down by ${remove_servers} servers`)\n    os.system(`aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances --filters \"Name=tag:Name,Values=web-server\" --query \"Reservations[].Instances[].InstanceId\" --output text | head -${remove_servers})`)\n  }\n}\n\nfor 24 hours every 5 minutes {\n  let cpu = check_cpu()\n  if cpu != null {\n    scale_servers(cpu)\n    log.info(`CPU at ${cpu}%, current servers: ${os.system(\"aws ec2 describe-instances --filters 'Name=tag:Name,Values=web-server' --query 'length(Reservations[].Instances[])'\").trim()}`)\n  }\n}\n```\n\nOutput:\n2024-05-15 14:05:00 INFO: CPU at 85%, current servers: 12\n2024-05-15 14:05:00 INFO: Scaling up by 7 servers\n2024-05-15 14:10:00 INFO: CPU at 72%, current servers: 19\n2024-05-15 14:15:00 INFO: CPU at 68%, current servers: 19\n... [continues for 24 hours] ...\n2024-05-16 13:55:00 INFO: CPU at 28%, current servers: 5\n2024-05-16 14:00:00 INFO: Scaling down by 2 servers\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:37:24.411798Z",
+    "http_status": 200,
+    "content_hash": "c21a080b48804c866391b26682d4fd8050432ac8fe74833cfac9da0854f4807a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prose.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prose.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Prose - AI Automation Language",
+  "short_description_vi": "Prose is a programming language for long-running AI sessions, enabling Turing-complete computation. It allows operations teams to automate complex workflows, integrate with various tools, and build custom applications. Ideal for developers and operations professionals."
+}

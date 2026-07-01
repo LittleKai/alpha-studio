@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/amp-skills",
+  "slug": "amp-skills",
+  "name": "Amp Skills",
+  "headline": "Amp Skills: AI Coding Agent for Marketing &",
+  "short_description": "Amp Skills is a versatile collection of AI coding agent skills designed to enhance marketing, content creation, and development workflows. It streamlines processes and boosts productivity across various tasks, making it an essential tool for teams looking to use AI in their operations.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "snarktank",
+  "install_command": "claude install snarktank/amp-skills",
+  "source_repo_url": "https://github.com/snarktank/amp-skills",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "marketing automation",
+    "content creation",
+    "development",
+    "AI skills",
+    "workflow optimization"
+  ],
+  "sections": {
+    "overview": "Amp Skills is a collection of AI coding agent skills created by Snarktank that supports marketing, content creation, and development workflows. The skill set is designed to streamline processes and improve productivity by automating tasks across these domains. It provides teams with AI-powered capabilities to integrate into their operations and enhance their existing workflows.\nAutomate the generation of engaging content for marketing campaigns to save time and resources.\nEnhance coding workflows by implementing best practices and optimizing performance for React and Next.js applications.\nStreamline the planning and scheduling of social media content to maintain a consistent online presence.\nGenerate compelling marketing copy for advertisements, ensuring alignment with brand voice and messaging.",
+    "setup": "Terminal\nCopy\n`claude install snarktank/amp-skills`\n`git clone https://github.com/snarktank/amp-skills`",
+    "usage": "```\nAct as an Amp Skills AI coding agent. Use [TOOL_NAME] to [SPECIFIC_TASK] for [PROJECT_NAME]. For example: 'Use Amp Skills to automate the generation of monthly marketing expense reports by extracting data from Productiv's expense tracking API and formatting it into a CSV file with visualizations.'\n```\nCopy\n\n```\nHere’s a completed task using Amp Skills with Productiv’s expense tracking API for a fictional SaaS company, 'CloudFlow Analytics.'\n\n**Task:** Automate the generation of a monthly marketing expense report for Q2 2024, including a breakdown by category (e.g., digital ads, content creation, events) and a forecast for Q3.\n\n**Output:**\n1. **Data Extraction:** The AI agent pulled expense data from Productiv’s API, filtering for marketing-related categories and the date range of April 1, 2024, to June 30, 2024. The raw data included 127 transactions totaling $45,230.\n\n2. **Categorization & Analysis:** The agent categorized expenses into:\n   - Digital Ads: $18,750 (41.5% of total)\n   - Content Creation: $12,420 (27.5%)\n   - Events: $8,960 (19.8%)\n   - Software Tools: $5,100 (11.3%)\n\n3. **Visualization:** The agent generated a bar chart comparing Q2 expenses to Q1, highlighting a 12% increase in digital ad spend and a 5% decrease in event-related costs. It also created a pie chart for the Q2 breakdown.\n\n4. **Forecasting:** Using Productiv’s budget forecasting tools, the agent projected Q3 marketing expenses to be $48,500, assuming a 7% increase in digital ad spend and a 10% allocation for a new content campaign.\n\n5. **Deliverables:** The agent compiled the report into a PDF with embedded charts and a summary email draft for the marketing team, including recommendations to reallocate 5% of the content creation budget to high-performing ad campaigns.\n\n**Next Steps:** The report was automatically shared with the finance team for approval and the marketing team for review. A follow-up task was scheduled to adjust the Q3 budget based on the forecast.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "amp-skills#main-content",
+      "amp-skills#overview",
+      "amp-skills#setup",
+      "amp-skills#examples",
+      "amp-skills#tools",
+      "amp-skills#related",
+      "marketingskills",
+      "copywriting",
+      "tako"
+    ],
+    "overview_vi": "Amp Skills is a collection of AI coding agent skills created by Snarktank that supports marketing, content creation, and development workflows. The skill set is designed to streamline processes and improve productivity by automating tasks across these domains. It provides teams with AI-powered capabilities to integrate into their operations and enhance their existing workflows.\nAutomate the generation of engaging content for marketing campaigns to save time and resources.\nEnhance coding workflows by implementing best practices and optimizing performance for React and Next.js applications.\nStreamline the planning and scheduling of social media content to maintain a consistent online presence.\nGenerate compelling marketing copy for advertisements, ensuring alignment with brand voice and messaging.",
+    "setup_vi": "Terminal\nCopy\n`claude install snarktank/amp-skills`\n`git clone https://github.com/snarktank/amp-skills`",
+    "usage_vi": "```\nAct as an Amp Skills AI coding agent. Use [TOOL_NAME] to [SPECIFIC_TASK] for [PROJECT_NAME]. For example: 'Use Amp Skills to automate the generation of monthly marketing expense reports by extracting data from Productiv's expense tracking API and formatting it into a CSV file with visualizations.'\n```\nCopy\n\n```\nHere’s a completed task using Amp Skills with Productiv’s expense tracking API for a fictional SaaS company, 'CloudFlow Analytics.'\n\n**Task:** Automate the generation of a monthly marketing expense report for Q2 2024, including a breakdown by category (e.g., digital ads, content creation, events) and a forecast for Q3.\n\n**Output:**\n1. **Data Extraction:** The AI agent pulled expense data from Productiv’s API, filtering for marketing-related categories and the date range of April 1, 2024, to June 30, 2024. The raw data included 127 transactions totaling $45,230.\n\n2. **Categorization & Analysis:** The agent categorized expenses into:\n   - Digital Ads: $18,750 (41.5% of total)\n   - Content Creation: $12,420 (27.5%)\n   - Events: $8,960 (19.8%)\n   - Software Tools: $5,100 (11.3%)\n\n3. **Visualization:** The agent generated a bar chart comparing Q2 expenses to Q1, highlighting a 12% increase in digital ad spend and a 5% decrease in event-related costs. It also created a pie chart for the Q2 breakdown.\n\n4. **Forecasting:** Using Productiv’s budget forecasting tools, the agent projected Q3 marketing expenses to be $48,500, assuming a 7% increase in digital ad spend and a 10% allocation for a new content campaign.\n\n5. **Deliverables:** The agent compiled the report into a PDF with embedded charts and a summary email draft for the marketing team, including recommendations to reallocate 5% of the content creation budget to high-performing ad campaigns.\n\n**Next Steps:** The report was automatically shared with the finance team for approval and the marketing team for review. A follow-up task was scheduled to adjust the Q3 budget based on the forecast.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:33:47.985301Z",
+    "http_status": 200,
+    "content_hash": "8974fa9088a56a1ea7d65612d666d5c0fcdd57030dd01f95ee3f9d83222d13a0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\amp-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\amp-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Amp Skills: AI Coding Agent for Marketing &",
+  "short_description_vi": "Amp Skills is a versatile collection of AI coding agent skills designed to enhance marketing, content creation, and development workflows. It streamlines processes and boosts productivity across various tasks, making it an essential tool for teams looking to use AI in their operations."
+}

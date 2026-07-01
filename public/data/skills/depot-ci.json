@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/depot-ci",
+  "slug": "depot-ci",
+  "name": "Depot CI",
+  "headline": "Depot CI: GitHub Actions Migration & Workflow",
+  "short_description": "Depot CI is a programmable CI system that runs workflows on Depot compute. It supports GitHub Actions syntax to migrate existing workflows for optimized performance.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "depot",
+  "install_command": "git clone https://github.com/depot/skills",
+  "source_repo_url": "https://github.com/depot/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "depot",
+    "continuous-integration"
+  ],
+  "sections": {
+    "overview": "Depot CI is a skill that enables AI coding agents to work with Depot's programmable CI system. It teaches agents how to generate correct Depot CLI commands, manage configurations, and create workflows that run on Depot compute. The skill supports GitHub Actions syntax, allowing agents to help migrate existing workflows to Depot for optimized performance. This is particularly useful for developers who want AI assistance in setting up CI/CD pipelines, managing secrets and variables, and transitioning from standard GitHub Actions to Depot's infrastructure. The skill integrates with Claude Code, Cursor, and other AI agents through the skills.sh marketplace.\nMigrate existing GitHub Actions workflows to Depot CI\nManage CI workflows across multiple organizations\nDebug and control CI processes effectively",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/depot/skills --skill depot-ci`\n`git clone https://github.com/depot/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "depot-ci#main-content",
+      "depot-ci#overview",
+      "depot-ci#setup",
+      "depot-ci#examples",
+      "depot-ci#tools",
+      "depot-ci#mcp",
+      "depot-ci#related"
+    ],
+    "overview_vi": "Depot CI là một skill giúp các AI coding agent làm việc với hệ thống CI có thể lập trình của Depot. Nó hướng dẫn agent cách tạo chính xác các lệnh Depot CLI, quản lý cấu hình và xây dựng các workflow chạy trên hạ tầng tính toán (compute) của Depot. Skill này hỗ trợ cú pháp GitHub Actions, cho phép agent hỗ trợ di chuyển các workflow hiện có sang Depot để tối ưu hóa hiệu năng. Đây là công cụ đặc biệt hữu ích cho các lập trình viên muốn có sự trợ giúp từ AI trong việc setup các pipeline CI/CD, quản lý secret và biến môi trường, cũng như chuyển đổi từ GitHub Actions tiêu chuẩn sang cơ sở hạ tầng của Depot. Skill này tích hợp tốt với Claude Code, Cursor và các AI agent khác thông qua marketplace skills.sh.\n\n- Di chuyển các workflow GitHub Actions hiện có sang Depot CI\n- Quản lý các workflow CI trên nhiều tổ chức (organization)\n- Debug và kiểm soát các tiến trình CI một cách hiệu quả",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/depot/skills --skill depot-ci`\n`git clone https://github.com/depot/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:45:46.115663Z",
+    "http_status": 200,
+    "content_hash": "6faf394da62877e6c8b95e58769be3239983457d9cda39ee2a4729ee7488c790",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\depot-ci.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\depot-ci.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Depot CI: Di chuyển & Workflow GitHub Actions",
+  "short_description_vi": "Depot CI là hệ thống CI có thể lập trình, chạy các workflow trên hạ tầng tính toán (compute) của Depot. Công cụ này hỗ trợ cú pháp GitHub Actions giúp di chuyển các workflow hiện có để tối ưu hóa hiệu năng."
+}

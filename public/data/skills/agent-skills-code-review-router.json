@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skills-code-review-router",
+  "slug": "agent-skills-code-review-router",
+  "name": "Agent Skills Code Review Router",
+  "headline": "agent-skills-code review automation",
+  "short_description": "Automates code review routing to the right developer based on expertise and availability. Benefits engineering teams by reducing review bottlenecks and improving code quality. Integrates with GitHub, GitLab, and Bitbucket for workflow.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "win4r",
+  "install_command": "git clone https://github.com/win4r/agent-skills-code-review-router.git",
+  "source_repo_url": "https://github.com/win4r/agent-skills-code-review-router",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Code Review Router is an Agent Skill that automatically routes code reviews to the optimal AI tool—either Gemini CLI or Codex CLI—based on code characteristics, complexity scoring, and change patterns. It uses a deterministic decision tree to analyze diffs, detect programming languages, identify security-sensitive code, and calculate complexity scores from 0-10. The skill handles multi-tool orchestration without black-box reasoning, includes automatic fallback handling, and integrates with Git repositories to examine uncommitted changes. Engineering teams benefit from reduced review bottlenecks, consistent routing decisions, and optimized tool selection for different code change types.\nRoute large backend changes (database migrations, API endpoints) to Codex for thorough architectural review\nDirect frontend-only changes (React components, CSS) to Gemini for faster visual-focused feedback\nAutomatically escalate security-sensitive code (auth, credentials) to Codex\nHandle multi-service refactors by routing to Codex based on complexity score",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/win4r/agent-skills-code-review-router`",
+    "usage": "```\nAct as a code review router for [TEAM_NAME]. Review the pull request [PR_NUMBER] in [REPO_NAME] (language: [LANGUAGE]). Based on the code changes, match the most suitable reviewer from the team using these criteria: 1) [EXPERTISE_CRITERIA], 2) [AVAILABILITY_CRITERIA], 3) [PAST_REVIEW_HISTORY]. Suggest 1-2 reviewers and explain your reasoning. Include estimated review time and any potential conflicts (e.g., reviewer is OOO).\n```\nCopy\n\n```\nFor PR #42 in the `api-service` repository (Python), I recommend assigning this to **Sarah Chen** (Senior Backend Engineer) with **Alex Rivera** as backup. \n\n**Reasoning:**\n- **Expertise:** Sarah authored 60% of the core API endpoints and has 3+ years of experience with FastAPI, the framework used in this PR. She also contributed to the database migration logic being modified.\n- **Availability:** Currently has 2 open reviews (both minor) and no scheduled PTO this week.\n- **Past Reviews:** Sarah has a 92% approval rate for API-related PRs and previously reviewed similar changes in PR #18.\n\n**Estimated Review Time:** 45 minutes (moderate complexity with 120 lines changed).\n\n**Conflicts:** None for Sarah. Alex Rivera (alternate) is available but has limited experience with FastAPI migrations—suitable only if Sarah is unavailable.\n\n**Next Steps:** Assign to Sarah; notify via Slack #eng-reviews channel with a link to the PR and estimated completion time.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-skills-code-review-router#main-content",
+      "agent-skills-code-review-router#overview",
+      "agent-skills-code-review-router#setup",
+      "agent-skills-code-review-router#examples",
+      "agent-skills-code-review-router#tools",
+      "agent-skills-code-review-router#mcp",
+      "agent-skills-code-review-router#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Code Review Router là một Agent Skill giúp tự động điều phối các lượt code review đến công cụ AI tối ưu nhất—Gemini CLI hoặc Codex CLI—dựa trên đặc điểm của code, điểm độ phức tạp và pattern thay đổi. Nó sử dụng một cây quyết định xác định (deterministic decision tree) để phân tích các file diff, phát hiện ngôn ngữ lập trình, nhận diện các đoạn code nhạy cảm về bảo mật và tính toán điểm độ phức tạp trên thang điểm từ 0-10. Skill này xử lý việc điều phối nhiều công cụ (multi-tool orchestration) mà không phụ thuộc vào cơ chế suy luận hộp đen (black-box reasoning), tích hợp sẵn cơ chế tự động xử lý fallback, và kết nối trực tiếp với các Git repository để kiểm tra các thay đổi chưa được commit. Các đội ngũ kỹ thuật sẽ được hưởng lợi từ việc giảm thiểu điểm nghẽn review, đưa ra quyết định phân bổ nhất quán và lựa chọn công cụ tối ưu cho từng loại thay đổi code khác nhau.\nĐiều hướng các thay đổi backend lớn (database migration, API endpoint) đến Codex để review kiến trúc một cách toàn diện\nChuyển trực tiếp các thay đổi chỉ liên quan đến frontend (React component, CSS) đến Gemini để nhận phản hồi trực quan nhanh hơn\nTự động chuyển tiếp các đoạn code nhạy cảm về bảo mật (auth, credential) lên Codex\nXử lý các đợt refactor trên nhiều service bằng cách điều hướng đến Codex dựa trên điểm độ phức tạp",
+    "setup_vi": "Không hỗ trợ lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/win4r/agent-skills-code-review-router`",
+    "usage_vi": "```\nĐóng vai trò là một code review router cho [TEAM_NAME]. Hãy review pull request [PR_NUMBER] trong [REPO_NAME] (ngôn ngữ: [LANGUAGE]). Dựa trên các thay đổi trong code, hãy chọn người review phù hợp nhất từ đội ngũ theo các tiêu chí sau: 1) [EXPERTISE_CRITERIA], 2) [AVAILABILITY_CRITERIA], 3) [PAST_REVIEW_HISTORY]. Đề xuất 1-2 người review và giải thích lý do của bạn. Cung cấp thêm thời gian review ước tính và các xung đột tiềm ẩn nếu có (ví dụ: người review đang OOO).\n```\nCopy\n\n```\nĐối với PR #42 trong repository `api-service` (Python), tôi khuyên bạn nên phân bổ PR này cho **Sarah Chen** (Senior Backend Engineer) và **Alex Rivera** làm backup.\n\n**Lý do:**\n- **Chuyên môn (Expertise):** Sarah là tác giả của 60% các API endpoint cốt lõi và có hơn 3 năm kinh nghiệm làm việc với FastAPI (framework được sử dụng trong PR này). Cô ấy cũng từng đóng góp vào logic database migration đang được chỉnh sửa.\n- **Tính sẵn sàng (Availability):** Hiện cô ấy đang có 2 lượt review chưa hoàn thành (đều là các task nhỏ) và không có lịch nghỉ phép (PTO) nào trong tuần này.\n- **Lịch sử review (Past Reviews):** Sarah có tỷ lệ phê duyệt (approval rate) là 92% đối với các PR liên quan đến API và trước đó đã từng review các thay đổi tương tự trong PR #18.\n\n**Thời gian review ước tính:** 45 phút (độ phức tạp trung bình với 120 dòng code thay đổi).\n\n**Xung đột (Conflicts):** Sarah không có xung đột nào. Alex Rivera (người thay thế) hiện đang rảnh nhưng có ít kinh nghiệm với FastAPI migration—chỉ phù hợp nếu Sarah không thể tham gia.\n\n**Các bước tiếp theo:** Phân công PR cho Sarah; thông báo qua kênh Slack #eng-reviews kèm link dẫn đến PR và thời gian hoàn thành ước tính.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:52:15.842450Z",
+    "http_status": 200,
+    "content_hash": "c469d032423c8073cd8d6fa3d278c7055a3cb659be390d7b9f21e2835ef5bbae",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-code-review-router.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-code-review-router.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agent-skills - Tự động hóa code review",
+  "short_description_vi": "Tự động hóa việc phân bổ code review đến đúng lập trình viên dựa trên chuyên môn và tính sẵn sàng của họ. Giúp các đội ngũ kỹ thuật tối ưu hóa quy trình bằng cách giảm thiểu tình trạng nghẽn review và nâng cao chất lượng code. Hỗ trợ tích hợp với GitHub, GitLab và Bitbucket vào workflow."
+}

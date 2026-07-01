@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sql-injection",
+  "slug": "sql-injection",
+  "name": "SQL_Injection",
+  "headline": "SQL Injection: WordPress Plugin Vulnerability",
+  "short_description": "Icegram Express - Email Subscribers, Newsletters and Marketing Automation Plugin <= 5.7.14 - Unauthenticated SQL Injection",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "gh-ost00",
+  "install_command": "git clone https://github.com/gh-ost00/SQL_Injection.git",
+  "source_repo_url": "https://github.com/gh-ost00/SQL_Injection",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill detects and exploits SQL injection vulnerabilities affecting two WordPress plugins: Email Subscribers by Icegram Express (CVE-2024-2876, versions up to 5.7.14) and Country State City Dropdown CF7 (CVE-2024-3495, versions up to 2.7.2). Both vulnerabilities stem from insufficient escaping of user-supplied parameters and lack of prepared statements in SQL queries, allowing unauthenticated attackers to append malicious SQL commands. The skill uses FOXA, Publicwww, and Shodan queries to locate affected installations and includes proof-of-concept payloads for SQL union-based injection attacks. Organizations can remediate by upgrading Email Subscribers to version 5.7.15 or later, implementing WAF/WAAP solutions, or enabling automatic security patches.\nIdentify WordPress installations running vulnerable Email Subscribers plugin versions\nLocate Country State City Dropdown CF7 plugin deployments susceptible to SQL injection\nExtract sensitive database information from affected WordPress installations\nValidate plugin patching status across WordPress sites using FOXA and Publicwww reconnaissance\n\nThe Icegram Express plugin, versions 5.7.14 and below, contains an unauthenticated SQL injection vulnerability. This flaw allows attackers to execute arbitrary SQL commands on the database, potentially leading to data breaches, unauthorized access, or complete system compromise.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gh-ost00/SQL_Injection`",
+    "usage": "```\nAnalyze the SQL injection vulnerability in the Icegram Express plugin version 5.7.14. Provide a detailed technical breakdown of the exploit, including the affected parameters, payload examples, and potential impact on [WEBSITE]. Suggest mitigation strategies and best practices to secure the plugin against such attacks.\n```\nCopy\n\n```\n# SQL Injection Vulnerability in Icegram Express Plugin\n\n\n```sql\n' OR '1'='1' -- \n' UNION SELECT NULL, username, password FROM users -- \n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sql-injection#main-content",
+      "sql-injection#overview",
+      "sql-injection#setup",
+      "sql-injection#examples",
+      "sql-injection#tools",
+      "sql-injection#mcp",
+      "sql-injection#related",
+      "marketingskills",
+      "copywriting",
+      "machine-learning-application"
+    ],
+    "overview_vi": "This skill detects and exploits SQL injection vulnerabilities affecting two WordPress plugins: Email Subscribers by Icegram Express (CVE-2024-2876, versions up to 5.7.14) and Country State City Dropdown CF7 (CVE-2024-3495, versions up to 2.7.2). Both vulnerabilities stem from insufficient escaping of user-supplied parameters and lack of prepared statements in SQL queries, allowing unauthenticated attackers to append malicious SQL commands. The skill uses FOXA, Publicwww, and Shodan queries to locate affected installations and includes proof-of-concept payloads for SQL union-based injection attacks. Organizations can remediate by upgrading Email Subscribers to version 5.7.15 or later, implementing WAF/WAAP solutions, or enabling automatic security patches.\nIdentify WordPress installations running vulnerable Email Subscribers plugin versions\nLocate Country State City Dropdown CF7 plugin deployments susceptible to SQL injection\nExtract sensitive database information from affected WordPress installations\nValidate plugin patching status across WordPress sites using FOXA and Publicwww reconnaissance\n\nThe Icegram Express plugin, versions 5.7.14 and below, contains an unauthenticated SQL injection vulnerability. This flaw allows attackers to execute arbitrary SQL commands on the database, potentially leading to data breaches, unauthorized access, or complete system compromise.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gh-ost00/SQL_Injection`",
+    "usage_vi": "```\nAnalyze the SQL injection vulnerability in the Icegram Express plugin version 5.7.14. Provide a detailed technical breakdown of the exploit, including the affected parameters, payload examples, and potential impact on [WEBSITE]. Suggest mitigation strategies and best practices to secure the plugin against such attacks.\n```\nCopy\n\n```\n# SQL Injection Vulnerability in Icegram Express Plugin\n\n\n```sql\n' OR '1'='1' -- \n' UNION SELECT NULL, username, password FROM users -- \n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:14.686492Z",
+    "http_status": 200,
+    "content_hash": "38b1cd6adec971b042be8dac110ae60abccf49735fd1b087925ac66ff7cd4519",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sql-injection.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sql-injection.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SQL Injection: WordPress Plugin Vulnerability",
+  "short_description_vi": "Icegram Express - Email Subscribers, Newsletters and Marketing Automation Plugin <= 5.7.14 - Unauthenticated SQL Injection"
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-viewer",
+  "slug": "claude-code-viewer",
+  "name": "Claude Code Viewer",
+  "headline": "claude-code-viewer: Manage Claude Code Projects",
+  "short_description": "Claude Code Viewer is a web-based client for managing Claude Code projects. It provides interactive functionality for operations teams to view, edit, and manage code projects. It connects to Claude Code repositories and integrates with existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "d-kimuson",
+  "install_command": "git clone https://github.com/d-kimuson/claude-code-viewer.git",
+  "source_repo_url": "https://github.com/d-kimuson/claude-code-viewer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The claude-code-viewer is a comprehensive web-based client designed specifically for managing Claude Code projects. This skill allows users to interactively navigate through conversation logs, automate messaging tasks, and collaborate seamlessly by uploading and previewing files directly within the chat interface. With its intuitive web interface, users can create and manage new projects efficiently, while also monitoring and controlling running sessions in real-time. This functionality is particularly beneficial for teams that require agile project management and streamlined communication. One of the key advantages of the claude-code-viewer is its ability to save time by automating repetitive tasks. For instance, users can schedule automated messages for recurring tasks using cron expressions, which eliminates the need for constant manual intervention. Although specific time savings are not quantified, the efficiency gained from quick searches through conversation logs and the ability to manage projects from a single interface can significantly enhance productivity. This skill is particularly valuable for developers, product managers, and AI practitioners who are looking to optimize their workflow automation and improve team collaboration. The claude-code-viewer is ideal for professionals involved in AI automation and project management. Whether you are a developer looking to streamline your coding projects or a product manager needing to oversee multiple tasks, this skill provides the necessary tools to enhance your operations. Its intermediate implementation difficulty means that users should have a basic understanding of web-based applications, but the 30-minute setup time makes it accessible for most users. Incorporating the claude-code-viewer into your AI-first workflows not only enhances project management but also aligns with modern practices in AI automation. By leveraging this skill, teams can ensure smooth operations and effective communication, ultimately driving better results in their AI initiatives. With a growing number of use cases, including real-time session monitoring and efficient project management, the claude-code-viewer skill stands out as a valuable asset for any AI-driven organization.\nQuickly search through conversation logs to find specific interactions or insights.\nSchedule automated messages for recurring tasks using cron expressions.\nUpload and preview files directly within the chat interface for seamless collaboration.\nCreate and manage new projects efficiently from the web interface.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/d-kimuson/claude-code-viewer`",
+    "usage": "```\nReview the code changes in the [PROJECT_NAME] repository from the last [TIME_PERIOD] and identify any potential issues or areas for improvement. Provide a summary of the changes and suggest specific optimizations or best practices that should be followed. Also, check if the changes align with the project's coding standards and guidelines.\n```\nCopy\n\n```\nAfter reviewing the code changes in the 'E-commerce Platform' repository from the last sprint, I've identified several areas for improvement. The new checkout module has introduced some performance bottlenecks due to inefficient database queries. I suggest implementing query caching and optimizing the SQL statements. Additionally, the team has been inconsistent with the use of dependency injection, which could lead to tighter coupling between components. I recommend enforcing the use of dependency injection throughout the project to improve maintainability. Lastly, the new API endpoints are not following the RESTful conventions established in the project's guidelines. I suggest revisiting the API design to ensure consistency.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-viewer#main-content",
+      "claude-code-viewer#overview",
+      "claude-code-viewer#setup",
+      "claude-code-viewer#examples",
+      "claude-code-viewer#tools",
+      "claude-code-viewer#mcp",
+      "claude-code-viewer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-code-viewer là một web-based client toàn diện được thiết kế chuyên biệt để quản lý các dự án Claude Code. Skill này cho phép người dùng điều hướng một cách tương tác qua các log hội thoại, tự động hóa các tác vụ gửi tin nhắn và cộng tác liền mạch bằng cách tải lên và xem trước file trực tiếp ngay trong giao diện chat. Với giao diện web trực quan, người dùng có thể tạo và quản lý các dự án mới một cách hiệu quả, đồng thời giám sát và kiểm soát các session đang chạy trong thời gian thực (real-time). Tính năng này đặc biệt hữu ích cho các đội ngũ cần quản lý dự án theo mô hình agile và tối ưu hóa giao tiếp. Một trong những ưu điểm chính của claude-code-viewer là khả năng tiết kiệm thời gian nhờ tự động hóa các tác vụ lặp đi lặp lại. Ví dụ: người dùng có thể lên lịch gửi tin nhắn tự động cho các tác vụ định kỳ bằng cron expression, giúp loại bỏ việc phải can thiệp thủ công liên tục. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, nhưng hiệu quả có được từ việc tìm kiếm nhanh trong log hội thoại và khả năng quản lý dự án từ một giao diện duy nhất có thể nâng cao đáng kể năng suất. Skill này đặc biệt giá trị đối với các lập trình viên, product manager và kỹ sư AI đang muốn tối ưu hóa quy trình tự động hóa workflow và cải thiện hiệu quả cộng tác nhóm. claude-code-viewer là lựa chọn lý tưởng cho các chuyên gia trong lĩnh vực tự động hóa AI và quản lý dự án. Cho dù bạn là một developer muốn tinh giản các dự án code của mình hay một product manager cần giám sát nhiều tác vụ, skill này đều cung cấp các công cụ cần thiết để tối ưu hóa hoạt động vận hành. Với độ khó triển khai ở mức trung bình, người dùng chỉ cần có hiểu biết cơ bản về các ứng dụng web, và thời gian setup chỉ khoảng 30 phút giúp hầu hết mọi người đều có thể tiếp cận dễ dàng. Việc tích hợp claude-code-viewer vào các workflow ưu tiên AI (AI-first workflow) không chỉ nâng cao hiệu quả quản lý dự án mà còn phù hợp với các xu hướng tự động hóa AI hiện đại. Bằng cách tận dụng skill này, các đội ngũ có thể đảm bảo vận hành trơn tru và giao tiếp hiệu quả, từ đó mang lại kết quả tốt hơn cho các sáng kiến AI của mình. Với số lượng use case ngày càng tăng, bao gồm giám sát session thời gian thực và quản lý dự án hiệu quả, skill claude-code-viewer thực sự là một giải pháp giá trị cho bất kỳ tổ chức định hướng AI nào.\nTìm kiếm nhanh qua các log hội thoại để tìm các tương tác hoặc thông tin chi tiết cụ thể.\nLên lịch gửi tin nhắn tự động cho các tác vụ định kỳ bằng cron expression.\nTải lên và xem trước file trực tiếp trong giao diện chat để cộng tác liền mạch.\nTạo và quản lý các dự án mới một cách hiệu quả ngay trên giao diện web.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/d-kimuson/claude-code-viewer`",
+    "usage_vi": "```\nReview the code changes in the [PROJECT_NAME] repository from the last [TIME_PERIOD] and identify any potential issues or areas for improvement. Provide a summary of the changes and suggest specific optimizations or best practices that should be followed. Also, check if the changes align with the project's coding standards and guidelines.\n```\nCopy\n\n```\nSau khi xem xét các thay đổi code trong repository 'E-commerce Platform' từ sprint vừa qua, tôi đã xác định được một số điểm cần cải thiện. Module thanh toán mới đã gây ra một số nghẽn hiệu năng (bottleneck) do các truy vấn cơ sở dữ liệu kém hiệu quả. Tôi đề xuất triển khai query caching và tối ưu hóa các câu lệnh SQL. Ngoài ra, việc sử dụng dependency injection của đội ngũ chưa đồng nhất, điều này có thể dẫn đến sự liên kết chặt chẽ (tighter coupling) giữa các component. Tôi khuyên bạn nên bắt buộc sử dụng dependency injection trong toàn bộ dự án để cải thiện khả năng bảo trì (maintainability). Cuối cùng, các API endpoint mới hiện chưa tuân thủ các quy ước RESTful được thiết lập trong guideline của dự án. Tôi đề xuất xem xét lại thiết kế API để đảm bảo tính nhất quán.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:23.323160Z",
+    "http_status": 200,
+    "content_hash": "89764fb98a8a479ff4d207a6b75ae77e8a2397fe796141178e3a831ffd40bd7b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-viewer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-viewer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-code-viewer: Quản lý các dự án Claude Code",
+  "short_description_vi": "Claude Code Viewer là một web-based client dùng để quản lý các dự án Claude Code. Công cụ này cung cấp các tính năng tương tác giúp đội ngũ vận hành dễ dàng xem, chỉnh sửa và quản lý các dự án code. Nó kết nối trực tiếp với các repository Claude Code và tích hợp mượt mà vào các workflow hiện có."
+}

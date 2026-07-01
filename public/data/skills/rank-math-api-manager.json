@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rank-math-api-manager",
+  "slug": "rank-math-api-manager",
+  "name": "Rank Math API Manager",
+  "headline": "Rank Math API Manager for WordPress SEO",
+  "short_description": "The Rank Math API Manager is a powerful WordPress plugin that automates the management of Rank Math metadata for posts and WooCommerce products. It uses the REST API to streamline SEO efforts, enabling users to efficiently update SEO Titles, Descriptions, Canonical URLs, and Focus Keywords.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Devora-AS",
+  "install_command": "claude install Devora-AS/rank-math-api-manager",
+  "source_repo_url": "https://github.com/Devora-AS/rank-math-api-manager",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "api",
+    "metadata",
+    "seo",
+    "wordpress"
+  ],
+  "sections": {
+    "overview": "Rank Math API Manager is a WordPress plugin that extends the REST API with custom endpoints for updating Rank Math SEO fields programmatically. It supports updating SEO titles, descriptions, canonical URLs, and focus keywords for posts and WooCommerce products without manual intervention. The plugin integrates with automation workflows like n8n to enable AI-driven SEO metadata generation and bulk updates. It requires WordPress 5.0+, PHP 7.4+, user authentication via Application Passwords, and edit post permissions. Ideal for agencies and content platforms automating SEO configuration across multiple posts.\nAutomate SEO metadata updates for WordPress posts.\nManage WooCommerce product SEO attributes efficiently.\nIntegrate with other applications via REST API for seamless data flow.",
+    "setup": "Terminal\nCopy\n`claude install Devora-AS/rank-math-api-manager`\n`git clone https://github.com/Devora-AS/rank-math-api-manager`",
+    "usage": "```\nUse Rank Math API Manager to bulk update SEO metadata for [CONTENT_TYPE: posts/WooCommerce products] in WordPress. For each item, set [SEO_TITLE], [META_DESCRIPTION], [CANONICAL_URL], and [FOCUS_KEYWORD]. Apply changes to [SPECIFIC_POSTS/CATEGORY/ALL]. Verify updates via Rank Math API and confirm success with a summary report.\n```\nCopy\n\n```\nSuccessfully updated SEO metadata for 47 WooCommerce products in the 'Winter Collection' category. Changes included:\n\n1. **Product: 'Premium Wool Scarf'**\n   - SEO Title: 'Handwoven Wool Scarf - Cozy Winter Accessory | [Brand]'\n   - Meta Description: 'Discover our premium handwoven wool scarf, perfect for winter. Free shipping on orders over $50. Limited stock!'\n   - Canonical URL: 'https://example.com/products/premium-wool-scarf'\n   - Focus Keyword: 'wool scarf'\n\n2. **Product: 'Faux Fur Beanie'**\n   - SEO Title: 'Faux Fur Beanie - Warm & Trendy | [Brand]'\n   - Meta Description: 'Stay warm this winter with our stylish faux fur beanie. Available in multiple colors. Shop now!'\n   - Canonical URL: 'https://example.com/products/faux-fur-beanie'\n   - Focus Keyword: 'faux fur beanie'\n\n3. **Product: 'Cashmere Gloves'**\n   - SEO Title: 'Luxury Cashmere Gloves - Soft & Warm | [Brand]'\n   - Meta Description: 'Experience ultimate comfort with our cashmere gloves. Handcrafted and durable. Free returns.'\n   - Canonical URL: 'https://example.com/products/cashmere-gloves'\n   - Focus Keyword: 'cashmere gloves'\n\n**Summary Report:**\n- Total items processed: 47\n- Successfully updated: 47\n- Failed updates: 0\n- API response time: 2.3 seconds\n- Rank Math API version: 1.0.123\n\nAll metadata now aligns with the latest SEO best practices for winter accessories. The changes will improve search visibility and click-through rates for these products.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "rank-math-api-manager#main-content",
+      "rank-math-api-manager#overview",
+      "rank-math-api-manager#setup",
+      "rank-math-api-manager#examples",
+      "rank-math-api-manager#tools",
+      "rank-math-api-manager#mcp",
+      "rank-math-api-manager#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "Rank Math API Manager là một plugin WordPress mở rộng REST API bằng các endpoint tùy chỉnh để cập nhật các trường SEO của Rank Math bằng lập trình. Plugin hỗ trợ cập nhật tiêu đề SEO, mô tả, URL canonical và từ khóa chính cho bài viết cũng như sản phẩm WooCommerce mà không cần can thiệp thủ công. Plugin này tích hợp với các workflow tự động hóa như n8n để kích hoạt tính năng tạo metadata SEO bằng AI và cập nhật hàng loạt. Yêu cầu hệ thống bao gồm WordPress 5.0+, PHP 7.4+, xác thực người dùng qua Application Passwords và quyền chỉnh sửa bài viết (edit post permissions). Đây là giải pháp lý tưởng cho các agency và nền tảng nội dung muốn tự động hóa cấu hình SEO trên nhiều bài viết cùng lúc.\nTự động hóa việc cập nhật metadata SEO cho các bài viết WordPress.\nQuản lý hiệu quả các thuộc tính SEO của sản phẩm WooCommerce.\nTích hợp với các ứng dụng khác qua REST API để đồng bộ luồng dữ liệu trơn tru.",
+    "setup_vi": "Terminal\nSao chép\n`claude install Devora-AS/rank-math-api-manager`\n`git clone https://github.com/Devora-AS/rank-math-api-manager`",
+    "usage_vi": "```\nSử dụng Rank Math API Manager để cập nhật hàng loạt metadata SEO cho [CONTENT_TYPE: posts/WooCommerce products] trong WordPress. Với mỗi mục, thiết lập [SEO_TITLE], [META_DESCRIPTION], [CANONICAL_URL] và [FOCUS_KEYWORD]. Áp dụng các thay đổi cho [SPECIFIC_POSTS/CATEGORY/ALL]. Xác thực các cập nhật qua Rank Math API và xác nhận thành công bằng một báo cáo tổng quan.\n```\nSao chép\n\n```\nĐã cập nhật thành công metadata SEO cho 47 sản phẩm WooCommerce trong danh mục 'Winter Collection'. Các thay đổi bao gồm:\n\n1. **Sản phẩm: 'Premium Wool Scarf'**\n   - Tiêu đề SEO: 'Handwoven Wool Scarf - Cozy Winter Accessory | [Brand]'\n   - Thẻ mô tả: 'Discover our premium handwoven wool scarf, perfect for winter. Free shipping on orders over $50. Limited stock!'\n   - URL Canonical: 'https://example.com/products/premium-wool-scarf'\n   - Từ khóa chính: 'wool scarf'\n\n2. **Sản phẩm: 'Faux Fur Beanie'**\n   - Tiêu đề SEO: 'Faux Fur Beanie - Warm & Trendy | [Brand]'\n   - Thẻ mô tả: 'Stay warm this winter with our stylish faux fur beanie. Available in multiple colors. Shop now!'\n   - URL Canonical: 'https://example.com/products/faux-fur-beanie'\n   - Từ khóa chính: 'faux fur beanie'\n\n3. **Sản phẩm: 'Cashmere Gloves'**\n   - Tiêu đề SEO: 'Luxury Cashmere Gloves - Soft & Warm | [Brand]'\n   - Thẻ mô tả: 'Experience ultimate comfort with our cashmere gloves. Handcrafted and durable. Free returns.'\n   - URL Canonical: 'https://example.com/products/cashmere-gloves'\n   - Từ khóa chính: 'cashmere gloves'\n\n**Báo cáo tổng quan:**\n- Tổng số mục đã xử lý: 47\n- Cập nhật thành công: 47\n- Cập nhật thất bại: 0\n- Thời gian phản hồi API: 2.3 giây\n- Phiên bản Rank Math API: 1.0.123\n\nTất cả metadata hiện đã phù hợp với các quy chuẩn SEO tốt nhất cho phụ kiện mùa đông. Những thay đổi này sẽ giúp cải thiện khả năng hiển thị tìm kiếm và tỷ lệ nhấp (CTR) cho các sản phẩm này.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:45:42.267704Z",
+    "http_status": 200,
+    "content_hash": "7957e62d835f7c2b3328e5e39e6022021589e104f374f973bb111404d650f0fc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rank-math-api-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rank-math-api-manager.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Rank Math API Manager cho WordPress SEO",
+  "short_description_vi": "Rank Math API Manager là một plugin WordPress mạnh mẽ giúp tự động hóa việc quản lý metadata Rank Math cho các bài viết và sản phẩm WooCommerce. Plugin này sử dụng REST API để tối ưu hóa quy trình SEO, cho phép người dùng cập nhật tiêu đề SEO (SEO Title), mô tả (Description), URL canonical và từ khóa chính (Focus Keyword) một cách hiệu quả."
+}

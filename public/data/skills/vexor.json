@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vexor",
+  "slug": "vexor",
+  "name": "Vexor",
+  "headline": "Vexor - Semantic Search for Code & Files",
+  "short_description": "Vexor is a semantic search engine for files and code. It enables developers and operations teams to quickly find relevant information within their codebase or documents. Vexor integrates with existing workflows and tools, allowing users to search using natural language queries and get precise results.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "scarletkc",
+  "install_command": "git clone https://github.com/scarletkc/vexor.git",
+  "source_repo_url": "https://github.com/scarletkc/vexor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "skills",
+    "gui",
+    "vector",
+    "embeddings",
+    "cli",
+    "vue",
+    "codex",
+    "search",
+    "claude",
+    "terminal",
+    "python",
+    "desktop-app",
+    "electron",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Vexor enables developers to find files and code using natural language queries instead of grep patterns or directory traversal. It builds reusable semantic indexes over codebases and documents, supporting configurable embedding providers like OpenAI, Google Gemini, and Voyage AI, plus optional reranking with BM25 or FlashRank. Available as a CLI tool, Python API, and experimental desktop app, Vexor integrates into autonomous agent workflows for semantic file discovery. The tool auto-indexes on first search and stores configuration in a single JSON file, making it simple to deploy in CI environments or local development.\nFinding files by functionality rather than filename in large codebases\nEnabling AI coding assistants to discover relevant code autonomously\nWarm-indexing repositories in CI/CD pipelines\nSearching documentation and configuration files with natural language",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/scarletkc/vexor`",
+    "usage": "```\nUse Vexor to search for [QUERY] in the [REPOSITORY/PROJECT_NAME] codebase or documentation. Focus on finding [SPECIFIC_ASPECT, e.g., error handling logic, API endpoints, or configuration files]. Return the most relevant file paths, line numbers, and a brief explanation of why each result is relevant. If no results are found, suggest alternative search terms or approaches.\n```\nCopy\n\n```\nHere’s what Vexor returned for your query to find **JWT authentication middleware in the `auth-service` repository**:\n\n1. **File**: `src/middleware/auth.js` (Line 42-68)\n   **Snippet**: \n   ```javascript\n   const jwt = require('jsonwebtoken');\n   const verifyToken = (req, res, next) => {\n     const token = req.headers['authorization']?.split(' ')[1];\n     if (!token) return res.status(401).json({ error: 'Unauthorized' });\n     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {\n       if (err) return res.status(403).json({ error: 'Invalid token' });\n       req.user = decoded;\n       next();\n     });\n   };\n   ```\n   **Relevance**: This is the core JWT verification middleware used across all protected routes in the service. The `verifyToken` function is referenced in `src/routes/protected.js` (Line 12).\n\n2. **File**: `src/config/jwt.js` (Line 15-25)\n   **Snippet**: \n   ```javascript\n   module.exports = {\n     secret: process.env.JWT_SECRET,\n     expiresIn: '1h',\n     algorithm: 'HS256'\n   };\n   ```\n   **Relevance**: Defines the JWT configuration, including the secret key and token expiration. This is imported in `src/middleware/auth.js`.\n\n3. **File**: `tests/middleware/auth.test.js` (Line 33-50)\n   **Snippet**: \n   ```javascript\n   describe('JWT Authentication', () => {\n     it('should reject requests without a token', async () => {\n       const res = await request(app).get('/protected');\n       expect(res.status).toBe(401);\n     });\n   });\n   ```\n   **Relevance**: Contains unit tests for the JWT middleware, validating edge cases like missing tokens.\n\n**Suggestions**: If you’re looking for how tokens are generated, try searching for `jwt.sign` or `generateToken`. For deployment-specific JWT settings, check `k8s/deployment.yaml` for environment variable references.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vexor#main-content",
+      "vexor#overview",
+      "vexor#setup",
+      "vexor#examples",
+      "vexor#tools",
+      "vexor#mcp",
+      "vexor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Vexor cho phép các nhà phát triển tìm kiếm file và code bằng các truy vấn ngôn ngữ tự nhiên thay vì sử dụng các mẫu grep hoặc duyệt thư mục (directory traversal). Công cụ này xây dựng các chỉ mục ngữ nghĩa (semantic index) có thể tái sử dụng trên các codebase và tài liệu, hỗ trợ các nhà cung cấp embedding linh hoạt như OpenAI, Google Gemini và Voyage AI, cùng tính năng tùy chọn rerank với BM25 hoặc FlashRank. Được cung cấp dưới dạng CLI tool, Python API và ứng dụng desktop thử nghiệm, Vexor tích hợp dễ dàng vào quy trình làm việc của agent tự trị để tìm kiếm file theo ngữ nghĩa. Công cụ tự động đánh chỉ mục trong lần tìm kiếm đầu tiên và lưu trữ cấu hình trong một file JSON duy nhất, giúp đơn giản hóa việc triển khai trong môi trường CI hoặc phát triển local.\n\nTìm kiếm file theo tính năng thay vì tên file trong các codebase lớn\nCho phép các trợ lý lập trình AI tự động tìm kiếm code liên quan\nWarm-index các repository trong pipeline CI/CD\nTìm kiếm tài liệu và file cấu hình bằng ngôn ngữ tự nhiên",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/scarletkc/vexor`",
+    "usage_vi": "```\nSử dụng Vexor để tìm kiếm [QUERY] trong codebase hoặc tài liệu của [REPOSITORY/PROJECT_NAME]. Tập trung vào việc tìm kiếm [SPECIFIC_ASPECT, ví dụ: logic xử lý lỗi, các API endpoint, hoặc các file cấu hình]. Trả về các đường dẫn file liên quan nhất, số dòng và giải thích ngắn gọn lý do tại sao mỗi kết quả lại phù hợp. Nếu không tìm thấy kết quả, hãy gợi ý các cụm từ tìm kiếm hoặc cách tiếp cận thay thế.\n```\nCopy\n\n```\nDưới đây là kết quả Vexor trả về cho truy vấn tìm kiếm **JWT authentication middleware trong repository `auth-service`**:\n\n1. **File**: `src/middleware/auth.js` (Dòng 42-68)\n   **Snippet**: \n   ```javascript\n   const jwt = require('jsonwebtoken');\n   const verifyToken = (req, res, next) => {\n     const token = req.headers['authorization']?.split(' ')[1];\n     if (!token) return res.status(401).json({ error: 'Unauthorized' });\n     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {\n       if (err) return res.status(403).json({ error: 'Invalid token' });\n       req.user = decoded;\n       next();\n     });\n   };\n   ```\n   **Độ liên quan**: Đây là middleware xác thực JWT cốt lõi được sử dụng trên tất cả các route được bảo vệ trong service. Hàm `verifyToken` được tham chiếu trong `src/routes/protected.js` (Dòng 12).\n\n2. **File**: `src/config/jwt.js` (Dòng 15-25)\n   **Snippet**: \n   ```javascript\n   module.exports = {\n     secret: process.env.JWT_SECRET,\n     expiresIn: '1h',\n     algorithm: 'HS256'\n   };\n   ```\n   **Độ liên quan**: Định nghĩa cấu hình JWT, bao gồm secret key và thời gian hết hạn của token. File này được import trong `src/middleware/auth.js`.\n\n3. **File**: `tests/middleware/auth.test.js` (Dòng 33-50)\n   **Snippet**: \n   ```javascript\n   describe('JWT Authentication', () => {\n     it('should reject requests without a token', async () => {\n       const res = await request(app).get('/protected');\n       expect(res.status).toBe(401);\n     });\n   });\n   ```\n   **Độ liên quan**: Chứa các bài unit test cho JWT middleware, giúp xác thực các trường hợp biên như thiếu token.\n\n**Gợi ý**: Nếu bạn muốn tìm cách khởi tạo token, hãy thử tìm kiếm `jwt.sign` hoặc `generateToken`. Đối với các thiết lập JWT đặc thù khi triển khai (deployment), hãy kiểm tra `k8s/deployment.yaml` để xem các tham chiếu biến môi trường.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:22:10.640648Z",
+    "http_status": 200,
+    "content_hash": "1c01d58bfee36f959f7d188abe9c87a9fb39693c595d91409a105ba34f387bb0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vexor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vexor.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Vexor - Tìm kiếm ngữ nghĩa cho code và file",
+  "short_description_vi": "Vexor là một công cụ tìm kiếm ngữ nghĩa cho file và code. Công cụ này giúp các nhà phát triển và đội ngũ vận hành (operations) nhanh chóng tìm thấy thông tin liên quan trong codebase hoặc tài liệu của họ. Vexor tích hợp mượt mà với các quy trình làm việc và công cụ hiện có, cho phép người dùng tìm kiếm bằng các truy vấn ngôn ngữ tự nhiên và nhận được kết quả chính xác."
+}

@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-copilot",
+  "slug": "claude-copilot",
+  "name": "Claude Copilot",
+  "headline": "Claude Copilot: Full Development Suite",
+  "short_description": "Transform Claude Code into a full development team. 11 specialized agents (Architect, Engineer, QA, Security, UX, DevOps, and more), persistent memory across sessions, and 25,000+ on-demand skills. Works immediately for solo devs. customizable with your team's standards, methodologies, and proprietary knowledge.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "Everyone-Needs-A-Copilot",
+  "install_command": "git clone https://github.com/Everyone-Needs-A-Copilot/claude-copilot.git",
+  "source_repo_url": "https://github.com/Everyone-Needs-A-Copilot/claude-copilot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "skills",
+    "mcp",
+    "memory",
+    "anthropic",
+    "ai-agents",
+    "developer-tools",
+    "devex",
+    "ai-framework",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Copilot is a framework that extends Claude Code with 16 specialist agents—Architect, Engineer, QA, DevOps, Docs, Service Designer, and others—each with embedded methodologies and strict points of view. It provides persistent memory across sessions using FTS5 keyword search, allowing decisions and lessons to survive between Claude Code instances. The framework enforces a design-led process through mechanical hooks, enables parallel task orchestration with conflict detection, and supports pause-and-resume workflows. Solo developers and teams benefit from structured, repeatable development processes that reduce context switching, enforce consistent standards, and eliminate the need to re-explain project context in every session.\nSolo developers managing complex projects without losing context between sessions\nTeams enforcing consistent coding standards and methodologies across parallel work streams\nMulti-step development tasks requiring orchestrated parallel execution with dependency tracking\nProjects requiring persistent knowledge repositories and documented decision history\n- **Tech Stack**: React, Node.js, PostgreSQL\n- **Deployment**: AWS EC2, S3, RDS\n- **CI/CD**: GitHub Actions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Everyone-Needs-A-Copilot/claude-copilot`",
+    "usage": "```\nAct as my [ROLE] agent in the Claude Copilot system. I'm working on a [PROJECT_TYPE] for [COMPANY] in the [INDUSTRY] sector. My current task is [TASK_DESCRIPTION]. Provide me with [SPECIFIC_REQUEST] while adhering to [TEAM_STANDARDS] and [METHODOLOGY].\n```\nCopy\n\n```\n```markdown\n# Project Architecture Review",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-copilot#main-content",
+      "claude-copilot#overview",
+      "claude-copilot#setup",
+      "claude-copilot#examples",
+      "claude-copilot#tools",
+      "claude-copilot#mcp",
+      "claude-copilot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Copilot là một framework giúp mở rộng Claude Code với 16 agent chuyên gia—Architect, Engineer, QA, DevOps, Docs, Service Designer và các vai trò khác—mỗi agent được tích hợp sẵn các phương pháp luận và góc nhìn chuyên môn nghiêm ngặt. Framework này cung cấp bộ nhớ persistent xuyên suốt các session bằng cách sử dụng tính năng tìm kiếm từ khóa FTS5, giúp các quyết định và bài học kinh nghiệm được duy trì giữa các instance của Claude Code. Framework thực thi quy trình định hướng thiết kế (design-led process) thông qua các hook cơ học, cho phép điều phối tác vụ song song (parallel task orchestration) kèm phát hiện xung đột, và hỗ trợ quy trình tạm dừng và tiếp tục (pause-and-resume).\n\nSolo dev và các đội ngũ phát triển sẽ được hưởng lợi từ các quy trình phát triển có cấu trúc và khả năng lặp lại cao, giúp giảm thiểu context switching, thực thi các tiêu chuẩn nhất quán và loại bỏ việc phải giải thích lại ngữ cảnh dự án trong mỗi session.\n- Solo dev đang quản lý các dự án phức tạp mà không lo mất ngữ cảnh (context) giữa các session\n- Đội ngũ muốn thực thi các tiêu chuẩn code và phương pháp luận nhất quán trên các luồng công việc song song\n- Các tác vụ phát triển nhiều bước yêu cầu điều phối thực thi song song và theo dõi phụ thuộc (dependency tracking)\n- Các dự án yêu cầu kho tri thức persistent và lịch sử quyết định được tài liệu hóa rõ ràng\n- **Tech Stack**: React, Node.js, PostgreSQL\n- **Deployment**: AWS EC2, S3, RDS\n- **CI/CD**: GitHub Actions",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Everyone-Needs-A-Copilot/claude-copilot`",
+    "usage_vi": "```\nHãy đóng vai trò là agent [ROLE] của tôi trong hệ thống Claude Copilot. Tôi đang phát triển một [PROJECT_TYPE] cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Tác vụ hiện tại của tôi là [TASK_DESCRIPTION]. Hãy cung cấp cho tôi [SPECIFIC_REQUEST] đồng thời tuân thủ [TEAM_STANDARDS] và [METHODOLOGY].\n```\nSao chép\n\n```\n```markdown\n# Đánh giá kiến trúc dự án"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:05:56.226741Z",
+    "http_status": 200,
+    "content_hash": "1d81da96faeb8b02a868acb2747bfa0dfca3ed5fa9d4996f05dcfd5edccc387e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-copilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-copilot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Copilot: Bộ công cụ phát triển toàn diện",
+  "short_description_vi": "Biến Claude Code thành một đội ngũ phát triển toàn diện. Gồm 11 agent chuyên hóa (Architect, Engineer, QA, Security, UX, DevOps, và nhiều vai trò khác), bộ nhớ persistent xuyên suốt các session, cùng hơn 25.000 skill theo yêu cầu. Hoạt động ngay lập tức cho solo dev, dễ dàng tùy chỉnh theo tiêu chuẩn, phương pháp luận (methodologies) và tri thức nội bộ của đội ngũ."
+}

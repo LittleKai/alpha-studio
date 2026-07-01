@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deep-interview",
+  "slug": "deep-interview",
+  "name": "valyu-best-practices",
+  "headline": "Deep Interview: Clarify Vague Requests",
+  "short_description": "The deep-interview skill assists AI agents in conducting detailed and structured interviews. It is designed for developers looking to implement conversational capabilities in their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "devbrother2024",
+  "install_command": "git clone https://github.com/devbrother2024/skills",
+  "source_repo_url": "https://github.com/devbrother2024/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "ai-skills",
+    "interview",
+    "deep"
+  ],
+  "sections": {
+    "overview": "Deep-interview is a skill that transforms ambiguous requests into well-defined requirements through structured Socratic questioning. It systematically identifies and resolves the most critical uncertainty at each step—whether that's unclear goals, scope, constraints, or completion criteria. The skill works by asking one focused question at a time, revealing implicit assumptions and decision criteria rather than imposing answers. It's designed for developers building applications that need to gather and clarify requirements before execution. Use this skill when project goals, scope, or success criteria are fuzzy; skip it for requests that are already specific or for minor tasks like typo fixes or small configuration changes.\nConducting user interviews for product feedback.\nGathering qualitative research data.\nInterviewing candidates for job positions.\nFacilitating customer satisfaction surveys.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/devbrother2024/skills --skill deep-interview`\n`git clone https://github.com/devbrother2024/skills`",
+    "usage": "```\nConduct a deep interview with [SUBJECT_MATTER_EXPERT] in [INDUSTRY]. Focus on [SPECIFIC_TOPIC] and ask follow-up questions to uncover insights. Structure the interview with an opening, core questions, and a closing summary. Aim for 10-15 minutes of dialogue. Begin now.\n```\nCopy\n\n```\n# Deep Interview: AI in Healthcare Logistics\n*Interviewer: AI Assistant*\n*Interviewee: Dr. Sarah Chen, Chief Operations Officer at MedTrans Solutions*\n\n---\n\n### **Opening (2 min)**\n**AI:** Thank you for joining, Dr. Chen. Could you briefly describe MedTrans Solutions and your role in optimizing healthcare logistics?\n\n**Dr. Chen:** Absolutely. MedTrans is a mid-sized logistics provider specializing in temperature-controlled pharmaceutical deliveries. As COO, I oversee 150+ routes, ensuring 99.9% on-time delivery with zero temperature excursions.\n\n---\n\n### **Core Questions (10 min)**\n\n**AI:** What are the biggest challenges in healthcare logistics today?\n\n**Dr. Chen:**\n- **Regulatory compliance:** HIPAA, FDA, and state-level rules add layers of complexity.\n- **Real-time tracking:** Hospitals demand live ETAs, but rural routes often lack GPS coverage.\n- **Cost pressures:** Fuel and labor costs are rising, but reimbursement rates from insurers aren’t keeping pace.\n\n**AI:** How does MedTrans address temperature-sensitive deliveries?\n\n**Dr. Chen:**\n- We use IoT-enabled refrigerated trucks with redundant cooling systems.\n- Drivers carry backup generators for power outages.\n- Data loggers record temperature every 30 seconds, with alerts if thresholds are breached.\n\n**AI:** What’s your approach to handling unexpected delays, like traffic or weather?\n\n**Dr. Chen:**\n- **Dynamic rerouting:** Our AI system integrates with traffic APIs to adjust routes in real time.\n- **Priority protocols:** Critical deliveries (e.g., chemotherapy) get pre-approved backup routes.\n- **Communication:** We notify hospitals 30 minutes before any delay via SMS and our portal.\n\n---\n\n### **Closing Summary (3 min)**\n**AI:** To summarize, MedTrans prioritizes compliance, real-time adaptability, and proactive communication. What’s one piece of advice you’d give to smaller logistics firms entering this space?\n\n**Dr. Chen:** Invest in technology *before* you think you need it. The cost of retrofitting systems later is far higher than scaling early. Also, build relationships with local hospitals—they’re your best source of feedback and referrals.\n\n---\n*Interview completed. Key insights saved to knowledge base.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "deep-interview#main-content",
+      "deep-interview#overview",
+      "deep-interview#setup",
+      "deep-interview#examples",
+      "deep-interview#tools",
+      "deep-interview#mcp",
+      "deep-interview#related",
+      "video-prompting-guide",
+      "valyu-best-practices"
+    ],
+    "overview_vi": "Deep-interview is a skill that transforms ambiguous requests into well-defined requirements through structured Socratic questioning. It systematically identifies and resolves the most critical uncertainty at each step—whether that's unclear goals, scope, constraints, or completion criteria. The skill works by asking one focused question at a time, revealing implicit assumptions and decision criteria rather than imposing answers. It's designed for developers building applications that need to gather and clarify requirements before execution. Use this skill when project goals, scope, or success criteria are fuzzy; skip it for requests that are already specific or for minor tasks like typo fixes or small configuration changes.\nConducting user interviews for product feedback.\nGathering qualitative research data.\nInterviewing candidates for job positions.\nFacilitating customer satisfaction surveys.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/devbrother2024/skills --skill deep-interview`\n`git clone https://github.com/devbrother2024/skills`",
+    "usage_vi": "```\nConduct a deep interview with [SUBJECT_MATTER_EXPERT] in [INDUSTRY]. Focus on [SPECIFIC_TOPIC] and ask follow-up questions to uncover insights. Structure the interview with an opening, core questions, and a closing summary. Aim for 10-15 minutes of dialogue. Begin now.\n```\nCopy\n\n```\n# Deep Interview: AI in Healthcare Logistics\n*Interviewer: AI Assistant*\n*Interviewee: Dr. Sarah Chen, Chief Operations Officer at MedTrans Solutions*\n\n---\n\n### **Opening (2 min)**\n**AI:** Thank you for joining, Dr. Chen. Could you briefly describe MedTrans Solutions and your role in optimizing healthcare logistics?\n\n**Dr. Chen:** Absolutely. MedTrans is a mid-sized logistics provider specializing in temperature-controlled pharmaceutical deliveries. As COO, I oversee 150+ routes, ensuring 99.9% on-time delivery with zero temperature excursions.\n\n---\n\n### **Core Questions (10 min)**\n\n**AI:** What are the biggest challenges in healthcare logistics today?\n\n**Dr. Chen:**\n- **Regulatory compliance:** HIPAA, FDA, and state-level rules add layers of complexity.\n- **Real-time tracking:** Hospitals demand live ETAs, but rural routes often lack GPS coverage.\n- **Cost pressures:** Fuel and labor costs are rising, but reimbursement rates from insurers aren’t keeping pace.\n\n**AI:** How does MedTrans address temperature-sensitive deliveries?\n\n**Dr. Chen:**\n- We use IoT-enabled refrigerated trucks with redundant cooling systems.\n- Drivers carry backup generators for power outages.\n- Data loggers record temperature every 30 seconds, with alerts if thresholds are breached.\n\n**AI:** What’s your approach to handling unexpected delays, like traffic or weather?\n\n**Dr. Chen:**\n- **Dynamic rerouting:** Our AI system integrates with traffic APIs to adjust routes in real time.\n- **Priority protocols:** Critical deliveries (e.g., chemotherapy) get pre-approved backup routes.\n- **Communication:** We notify hospitals 30 minutes before any delay via SMS and our portal.\n\n---\n\n### **Closing Summary (3 min)**\n**AI:** To summarize, MedTrans prioritizes compliance, real-time adaptability, and proactive communication. What’s one piece of advice you’d give to smaller logistics firms entering this space?\n\n**Dr. Chen:** Invest in technology *before* you think you need it. The cost of retrofitting systems later is far higher than scaling early. Also, build relationships with local hospitals—they’re your best source of feedback and referrals.\n\n---\n*Interview completed. Key insights saved to knowledge base.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:47:28.083723Z",
+    "http_status": 200,
+    "content_hash": "0b820345fe0af678f7d262a05e65cfefb6f633b14170c7aabdbc235178f3530f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\deep-interview.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\deep-interview.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Deep Interview: Clarify Vague Requests",
+  "short_description_vi": "The deep-interview skill assists AI agents in conducting detailed and structured interviews. It is designed for developers looking to implement conversational capabilities in their applications."
+}

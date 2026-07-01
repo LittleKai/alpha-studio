@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/constrained-text-generation-studio",
+  "slug": "constrained-text-generation-studio",
+  "name": "Constrained Text Generation Studio",
+  "headline": "Constrained Text Generation Studio - AI Writing",
+  "short_description": "Explore the Constrained-Text-Generation-Studio, a code repository that showcases how language models can be utilized for creative writing. This AI writing assistant enables constrained text generation, making it a valuable tool for developers and writers alike.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "Hellisotherpeople",
+  "install_command": "claude install Hellisotherpeople/Constrained-Text-Generation-Studio",
+  "source_repo_url": "https://github.com/Hellisotherpeople/Constrained-Text-Generation-Studio",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "text generation",
+    "AI writing assistant",
+    "Python",
+    "language models",
+    "creative writing"
+  ],
+  "sections": {
+    "overview": "Constrained Text Generation Studio (CTGS) is an AI writing assistant that enables language models to generate text while adhering to specific creative constraints. The tool filters or penalizes tokens that violate constraints before sampling, ensuring hard constraints are never broken—an advantage over fine-tuning alone. CTGS offers 21 constraint filters across lexical, phonetic, semantic, and structural categories, including lipograms (banned letters), syllable requirements, rhyming, anagrams, and palindromes. It includes progressive relaxation and backtracking mechanisms to prevent vocabulary crippling when constraints are too strict. The tool supports any HuggingFace causal language model at multiple precision levels, making it accessible for recreational linguists, poets, creative writers, and researchers studying constrained text generation.\nGenerating poetry with specific constraints\nCreating marketing copy with defined themes\nAssisting writers in brainstorming ideas\nAutomating content creation for blogs",
+    "setup": "Terminal\nCopy\n`claude install Hellisotherpeople/Constrained-Text-Generation-Studio`\n`git clone https://github.com/Hellisotherpeople/Constrained-Text-Generation-Studio`",
+    "usage": "```\nGenerate a [LENGTH] constrained text piece (e.g., haiku, sonnet, limerick, or micro-fiction) about [TOPIC]. Enforce the following constraints: [CONSTRAINTS]. Use [STYLE] for tone and voice. Ensure the output adheres strictly to the specified form and rules.\n```\nCopy\n\n```\nGenerate a 14-line sonnet about a storm at sea, constrained to iambic pentameter with an ABABCDCDEFEFGG rhyme scheme. Use a melancholic tone, focusing on the contrast between the storm's fury and the stillness of the horizon.\n\nBeneath the sky of bruised and bruising gray,\\nThe waves do rise like giants, wild and free,\\nTheir crests do crash in thunderous array,\\nYet still the distant shore stands steadfastly.\n\nThe wind does howl, a dirge of ancient pain,\\nAs gulls take flight in desperate, frantic flight,\\nTheir cries a echo of the storm’s refrain,\\nA symphony of chaos, dark and bright.\n\nBut lo! Beyond the tempest’s raging might,\\nA sliver of the sun begins to gleam,\\nA promise whispered soft in golden light,\\nThat even storms must yield to dawn’s first beam.\n\nFor though the sea may roar and shake the land,\\nThe horizon waits, unshaken, calm, and grand.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "constrained-text-generation-studio#main-content",
+      "constrained-text-generation-studio#overview",
+      "constrained-text-generation-studio#setup",
+      "constrained-text-generation-studio#examples",
+      "constrained-text-generation-studio#tools",
+      "constrained-text-generation-studio#mcp",
+      "constrained-text-generation-studio#related",
+      "humanizer-zh",
+      "humanizer",
+      "autobloggging-pro"
+    ],
+    "overview_vi": "Constrained Text Generation Studio (CTGS) là một trợ lý viết lách AI giúp các mô hình ngôn ngữ tạo văn bản tuân thủ các ràng buộc sáng tạo cụ thể. Công cụ này hoạt động bằng cách lọc hoặc phạt (penalize) các token vi phạm ràng buộc trước quá trình lấy mẫu (sampling), đảm bảo các ràng buộc cứng (hard constraints) không bao giờ bị vi phạm — một lợi thế vượt trội so với phương pháp chỉ fine-tuning thông thường. CTGS cung cấp 21 bộ lọc ràng buộc thuộc các danh mục từ vựng, ngữ âm, ngữ nghĩa và cấu trúc, bao gồm lipogram (loại bỏ chữ cái), yêu cầu số âm tiết, gieo vần, đảo chữ (anagram) và từ đối xứng (palindrome). Ngoài ra, công cụ còn tích hợp cơ chế nới lỏng dần (progressive relaxation) và quay lui (backtracking) nhằm tránh tình trạng nghẽn vốn từ khi các ràng buộc quá nghiêm ngặt. CTGS hỗ trợ mọi causal language model của HuggingFace ở nhiều mức độ chính xác (precision levels) khác nhau, rất phù hợp cho các nhà ngôn ngữ học giải trí, nhà thơ, nhà văn sáng tạo và các nhà nghiên cứu trong lĩnh vực sinh văn bản có ràng buộc.\n\n- Sáng tác thơ với các ràng buộc cụ thể\n- Tạo nội dung marketing theo chủ đề định sẵn\n- Hỗ trợ người viết lên ý tưởng sáng tạo\n- Tự động hóa sản xuất nội dung cho blog",
+    "setup_vi": "Terminal\nSao chép\n`claude install Hellisotherpeople/Constrained-Text-Generation-Studio`\n`git clone https://github.com/Hellisotherpeople/Constrained-Text-Generation-Studio`",
+    "usage_vi": "```\nTạo một tác phẩm văn bản có ràng buộc dài [LENGTH] (ví dụ: haiku, sonnet, limerick hoặc truyện cực ngắn) về [TOPIC]. Áp dụng các ràng buộc sau: [CONSTRAINTS]. Sử dụng phong cách [STYLE] để thể hiện giọng điệu và văn phong. Đảm bảo kết quả đầu ra tuân thủ nghiêm ngặt định dạng và quy tắc được chỉ định.\n```\nSao chép\n\n```\nTạo một bài thơ sonnet 14 dòng về một cơn bão trên biển, ràng buộc theo thể thơ iambic pentameter với cấu trúc vần ABABCDCDEFEFGG. Sử dụng giọng điệu u sầu, tập trung vào sự tương phản giữa sự thịnh nộ của cơn bão và sự tĩnh lặng nơi chân trời.\n\nBeneath the sky of bruised and bruising gray,\nThe waves do rise like giants, wild and free,\nTheir crests do crash in thunderous array,\nYet still the distant shore stands steadfastly.\n\nThe wind does howl, a dirge of ancient pain,\nAs gulls take flight in desperate, frantic flight,\nTheir cries a echo of the storm’s refrain,\nA symphony of chaos, dark and bright.\n\nBut lo! Beyond the tempest’s raging might,\nA sliver of the sun begins to gleam,\nA promise whispered soft in golden light,\nThat even storms must yield to dawn’s first beam.\n\nFor though the sea may roar and shake the land,\nThe horizon waits, unshaken, calm, and grand.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:10:51.618070Z",
+    "http_status": 200,
+    "content_hash": "32fa823141a103fb50b34fc673443f9c80c3593550b7010d94c878de011e80da",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\constrained-text-generation-studio.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\constrained-text-generation-studio.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Constrained Text Generation Studio - Viết lách sáng tạo cùng AI",
+  "short_description_vi": "Khám phá Constrained-Text-Generation-Studio, kho mã nguồn trình diễn cách ứng dụng các mô hình ngôn ngữ vào viết lách sáng tạo. Trợ lý viết lách AI này hỗ trợ tạo văn bản đi kèm ràng buộc, mang lại giá trị thiết thực cho cả nhà phát triển lẫn người sáng tạo nội dung."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kuato",
+  "slug": "kuato",
+  "name": "Kuato",
+  "headline": "Kuato - Recall Coding Agent Conversations",
+  "short_description": "Built for Claude Code but works in any agent that supports skills, easily recall what you discussed with your favorite coding agents, what decisions you made, and where you left off so you can pick up where you left off as easily as asking \"where did we leave off on XYZ...\"",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "alexknowshtml",
+  "install_command": "git clone https://github.com/alexknowshtml/kuato.git",
+  "source_repo_url": "https://github.com/alexknowshtml/kuato",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "ai-agents"
+  ],
+  "sections": {
+    "overview": "Kuato solves Claude Code's session amnesia by storing and indexing your conversation history locally. When you close a tab and return the next day, search by topic, tools used, or file patterns to instantly retrieve what you discussed, decisions you made, and where you left off. Choose between zero-setup file-based search for quick lookups or PostgreSQL for faster, weighted full-text search across larger session histories. The skill indexes user messages, tools used, and files touched—the metadata that actually defines your work—without requiring full transcript storage.\nResuming multi-day feature development by searching session history\nFinding past decisions and approaches related to specific code components\nFiltering sessions by tools used (Edit, Bash, Read) to narrow results\nSearching across sessions touching specific file patterns or directories",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexknowshtml/kuato`",
+    "usage": "```\nRecall our previous discussion about [PROJECT_NAME] in our coding session. Summarize the key decisions we made, the code changes implemented, and where we left off. Focus on actionable next steps and unresolved issues. Example: 'Recall our work on the user authentication system. What did we decide about the password hashing approach, and where did we pause the implementation?'\n```\nCopy\n\n```\nHere’s a summary of our last session on the **e-commerce checkout flow** (Project: `storefront-v2`), which we paused on **Friday at 3:45 PM** after implementing the cart persistence feature:\n\n**Key Decisions:**\n1. **Database Schema:** We finalized the `carts` table with columns for `user_id`, `session_id`, `items` (JSONB), and `expires_at`. The `items` field will store an array of `{product_id, quantity, price_at_time}` to preserve historical pricing.\n2. **Security:** We agreed to use JWT for session management but deferred the refresh token implementation. Instead, we’ll rely on short-lived (15-minute) access tokens for now.\n3. **Frontend Integration:** The React component `CartDrawer` now syncs with the backend via `/api/cart`, but we need to handle race conditions when multiple tabs are open.\n\n**Where We Left Off:**\n- The `POST /api/cart/items` endpoint works, but the `PATCH /api/cart/items/:product_id` endpoint throws a 500 error when updating quantities. The error suggests a race condition in the `UPDATE` query.\n- We need to add a loading state to the `CartDrawer` to prevent duplicate submissions.\n- The `DELETE /api/cart` endpoint is stubbed but untested.\n\n**Next Steps:**\n1. Debug the `PATCH` endpoint by adding a `console.log` in the `cartService.updateItem()` function to inspect the query parameters.\n2. Write a test case for the `DELETE` endpoint using `vitest` (we’re mocking the database with `pg-mock`).\n3. Schedule a follow-up to discuss refresh tokens—should we use Redis for session storage, or stick with the JWT approach?\n\n**Files Modified:**\n- `backend/services/cartService.js` (added `updateItem` and `deleteCart` stubs)\n- `frontend/src/components/CartDrawer.jsx` (added loading state)\n\nWould you like me to draft the fix for the `PATCH` endpoint or prioritize the `DELETE` tests?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kuato#main-content",
+      "kuato#overview",
+      "kuato#setup",
+      "kuato#examples",
+      "kuato#tools",
+      "kuato#mcp",
+      "kuato#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kuato solves Claude Code's session amnesia by storing and indexing your conversation history locally. When you close a tab and return the next day, search by topic, tools used, or file patterns to instantly retrieve what you discussed, decisions you made, and where you left off. Choose between zero-setup file-based search for quick lookups or PostgreSQL for faster, weighted full-text search across larger session histories. The skill indexes user messages, tools used, and files touched—the metadata that actually defines your work—without requiring full transcript storage.\nResuming multi-day feature development by searching session history\nFinding past decisions and approaches related to specific code components\nFiltering sessions by tools used (Edit, Bash, Read) to narrow results\nSearching across sessions touching specific file patterns or directories",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexknowshtml/kuato`",
+    "usage_vi": "```\nRecall our previous discussion about [PROJECT_NAME] in our coding session. Summarize the key decisions we made, the code changes implemented, and where we left off. Focus on actionable next steps and unresolved issues. Example: 'Recall our work on the user authentication system. What did we decide about the password hashing approach, and where did we pause the implementation?'\n```\nCopy\n\n```\nHere’s a summary of our last session on the **e-commerce checkout flow** (Project: `storefront-v2`), which we paused on **Friday at 3:45 PM** after implementing the cart persistence feature:\n\n**Key Decisions:**\n1. **Database Schema:** We finalized the `carts` table with columns for `user_id`, `session_id`, `items` (JSONB), and `expires_at`. The `items` field will store an array of `{product_id, quantity, price_at_time}` to preserve historical pricing.\n2. **Security:** We agreed to use JWT for session management but deferred the refresh token implementation. Instead, we’ll rely on short-lived (15-minute) access tokens for now.\n3. **Frontend Integration:** The React component `CartDrawer` now syncs with the backend via `/api/cart`, but we need to handle race conditions when multiple tabs are open.\n\n**Where We Left Off:**\n- The `POST /api/cart/items` endpoint works, but the `PATCH /api/cart/items/:product_id` endpoint throws a 500 error when updating quantities. The error suggests a race condition in the `UPDATE` query.\n- We need to add a loading state to the `CartDrawer` to prevent duplicate submissions.\n- The `DELETE /api/cart` endpoint is stubbed but untested.\n\n**Next Steps:**\n1. Debug the `PATCH` endpoint by adding a `console.log` in the `cartService.updateItem()` function to inspect the query parameters.\n2. Write a test case for the `DELETE` endpoint using `vitest` (we’re mocking the database with `pg-mock`).\n3. Schedule a follow-up to discuss refresh tokens—should we use Redis for session storage, or stick with the JWT approach?\n\n**Files Modified:**\n- `backend/services/cartService.js` (added `updateItem` and `deleteCart` stubs)\n- `frontend/src/components/CartDrawer.jsx` (added loading state)\n\nWould you like me to draft the fix for the `PATCH` endpoint or prioritize the `DELETE` tests?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:48.575014Z",
+    "http_status": 200,
+    "content_hash": "114ffe198783fb527bdecb88757a6046902f2a967796dd6234c4c7c30ae964ce",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kuato.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kuato.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kuato - Recall Coding Agent Conversations",
+  "short_description_vi": "Built for Claude Code but works in any agent that supports skills, easily recall what you discussed with your favorite coding agents, what decisions you made, and where you left off so you can pick up where you left off as easily as asking \"where did we leave off on XYZ...\""
+}

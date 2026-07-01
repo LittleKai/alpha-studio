@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cliq",
+  "slug": "cliq",
+  "name": "cliq",
+  "headline": "AI coding assistant CLI with Effect-TS",
+  "short_description": "Cliq is an AI coding assistant CLI built with Effect-TS, supporting multiple AI providers. It helps developers automate coding tasks, generate code, and integrate with various AI models. Ideal for operations teams looking to streamline development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "kpritam",
+  "install_command": "git clone https://github.com/kpritam/cliq.git",
+  "source_repo_url": "https://github.com/kpritam/cliq",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "effect-ts",
+    "coding-assistant",
+    "bunjs",
+    "ai",
+    "claude-code",
+    "ai-agent",
+    "opencode",
+    "vercel-ai-sdk"
+  ],
+  "sections": {
+    "overview": "Cliq is an interactive AI coding assistant CLI built on Effect-TS that enables developers to automate coding tasks and generate code through a functional programming architecture. It supports multiple AI providers including Anthropic, OpenAI, and Google, configurable via environment variables. The tool includes file operations, glob pattern search, ripgrep integration, and persistent session management stored locally. Developers can use slash commands to switch models and manage sessions within the chat interface. Cliq targets Bun 1.1+ and emphasizes pure functional patterns with explicit error handling and dependency injection through Effect layers.\nAutomating repetitive coding tasks and code generation across multiple AI models\nInteractive code reviews and refactoring with file editing and diff preview\nSearching and analyzing codebases using glob patterns and ripgrep\nBuilding development workflows with persistent session and message history",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kpritam/cliq`",
+    "usage": "```\nUse Cliq to [TASK] for [PROJECT/LANGUAGE] with [AI_PROVIDER]. Example: 'Use Cliq to generate a TypeScript function that calculates Fibonacci numbers using the Claude 3.5 Sonnet model.'\n```\nCopy\n\n```\n```typescript\n/**\n * Calculates the nth Fibonacci number using an iterative approach.\n * @param n - The index of the Fibonacci number to compute (must be >= 0)\n * @returns The nth Fibonacci number\n * @example\n * fibonacci(10) // returns 55\n */\nfunction fibonacci(n: number): number {\n  if (n < 0) throw new Error('Input must be a non-negative integer');\n  if (n <= 1) return n;\n\n  let a = 0;\n  let b = 1;\n  let temp: number;\n\n  for (let i = 2; i <= n; i++) {\n    temp = a + b;\n    a = b;\n    b = temp;\n  }\n\n  return b;\n}\n\n// Example usage:\nconsole.log(fibonacci(10)); // Output: 55\nconsole.log(fibonacci(20)); // Output: 6765\n```\n\n**Implementation Notes:**\n1. **Performance**: This O(n) solution avoids recursion to prevent stack overflow for large n.\n2. **Edge Cases**: Explicitly handles n=0 and n=1, and throws an error for negative inputs.\n3. **Type Safety**: Uses TypeScript for compile-time type checking.\n4. **Testing**: You can verify with:\n   ```bash\n   npx ts-node fibonacci.ts 10  # Should output 55\n   npx ts-node fibonacci.ts 20  # Should output 6765\n   ```\n\n**Next Steps:**\n- Add unit tests using Jest or Vitest\n- Consider memoization for repeated calls with the same n\n- Add JSDoc comments for API documentation\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cliq#main-content",
+      "cliq#overview",
+      "cliq#setup",
+      "cliq#examples",
+      "cliq#tools",
+      "cliq#mcp",
+      "cliq#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Cliq is an interactive AI coding assistant CLI built on Effect-TS that enables developers to automate coding tasks and generate code through a functional programming architecture. It supports multiple AI providers including Anthropic, OpenAI, and Google, configurable via environment variables. The tool includes file operations, glob pattern search, ripgrep integration, and persistent session management stored locally. Developers can use slash commands to switch models and manage sessions within the chat interface. Cliq targets Bun 1.1+ and emphasizes pure functional patterns with explicit error handling and dependency injection through Effect layers.\nAutomating repetitive coding tasks and code generation across multiple AI models\nInteractive code reviews and refactoring with file editing and diff preview\nSearching and analyzing codebases using glob patterns and ripgrep\nBuilding development workflows with persistent session and message history",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kpritam/cliq`",
+    "usage_vi": "```\nUse Cliq to [TASK] for [PROJECT/LANGUAGE] with [AI_PROVIDER]. Example: 'Use Cliq to generate a TypeScript function that calculates Fibonacci numbers using the Claude 3.5 Sonnet model.'\n```\nCopy\n\n```\n```typescript\n/**\n * Calculates the nth Fibonacci number using an iterative approach.\n * @param n - The index of the Fibonacci number to compute (must be >= 0)\n * @returns The nth Fibonacci number\n * @example\n * fibonacci(10) // returns 55\n */\nfunction fibonacci(n: number): number {\n  if (n < 0) throw new Error('Input must be a non-negative integer');\n  if (n <= 1) return n;\n\n  let a = 0;\n  let b = 1;\n  let temp: number;\n\n  for (let i = 2; i <= n; i++) {\n    temp = a + b;\n    a = b;\n    b = temp;\n  }\n\n  return b;\n}\n\n// Example usage:\nconsole.log(fibonacci(10)); // Output: 55\nconsole.log(fibonacci(20)); // Output: 6765\n```\n\n**Implementation Notes:**\n1. **Performance**: This O(n) solution avoids recursion to prevent stack overflow for large n.\n2. **Edge Cases**: Explicitly handles n=0 and n=1, and throws an error for negative inputs.\n3. **Type Safety**: Uses TypeScript for compile-time type checking.\n4. **Testing**: You can verify with:\n   ```bash\n   npx ts-node fibonacci.ts 10  # Should output 55\n   npx ts-node fibonacci.ts 20  # Should output 6765\n   ```\n\n**Next Steps:**\n- Add unit tests using Jest or Vitest\n- Consider memoization for repeated calls with the same n\n- Add JSDoc comments for API documentation\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:36:38.636658Z",
+    "http_status": 200,
+    "content_hash": "8e00f45d4de18c3a180d004dcaef829920cee492820700e6d625de55a23a63a5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cliq.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cliq.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI coding assistant CLI with Effect-TS",
+  "short_description_vi": "Cliq is an AI coding assistant CLI built with Effect-TS, supporting multiple AI providers. It helps developers automate coding tasks, generate code, and integrate with various AI models. Ideal for operations teams looking to streamline development workflows."
+}

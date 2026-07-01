@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/copilot-sdk",
+  "slug": "copilot-sdk",
+  "name": "browser-use",
+  "headline": "Copilot SDK - Integrate GitHub Copilot Agent",
+  "short_description": "The Copilot SDK enables developers to integrate GitHub Copilot Agent into their applications. It supports multiple platforms and is ideal for automating code generation, debugging, and documentation tasks. Connects to GitHub repositories and developer tools.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "github",
+  "install_command": "git clone https://github.com/github/copilot-sdk.git",
+  "source_repo_url": "https://github.com/github/copilot-sdk",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Copilot SDK is an open-source toolkit for embedding GitHub Copilot Agent capabilities directly into developer applications and workflows. It supports multiple programming languages including Python, TypeScript, C#, and Rust, making it accessible to diverse development teams. The SDK enables automation of code generation, debugging, and documentation tasks through programmatic access to GitHub Copilot's intelligence. Developers can integrate Copilot functionality into custom tools, IDEs, and applications to enhance productivity and streamline development workflows. The project is actively maintained with regular updates and symbol package support across package managers like NuGet.\nAutomate code generation for repetitive tasks in your applications.\nIntegrate Copilot's agentic workflows into existing software solutions to enhance productivity.\nUtilize the SDK to create custom agents that can perform specific coding tasks based on user-defined logic.\nStreamline the development process by automating file edits and Git operations.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/github/copilot-sdk`",
+    "usage": "```\nIntegrate GitHub Copilot Agent into my [APPLICATION_NAME] using the Copilot SDK. The application is built with [FRAMEWORK/LANGUAGE] and needs to automate [TASK_TYPE, e.g., code generation, debugging, or documentation]. Provide a step-by-step guide, including necessary dependencies and code snippets.\n```\nCopy\n\n```\nTo integrate GitHub Copilot Agent into your React application, follow these steps:\n\n1. **Install Dependencies**: Ensure you have Node.js and npm installed. Run `npm install @github/copilot-sdk` to add the Copilot SDK to your project.\n\n2. **Initialize the Copilot Agent**: In your main application file, import the Copilot SDK and initialize it with your GitHub credentials. Here's a sample code snippet:\n```javascript\nconst { CopilotAgent } = require('@github/copilot-sdk');\n\nconst copilot = new CopilotAgent({\n  githubToken: 'your_github_token',\n  repository: 'your_repository_name'\n});\n```\n\n3. **Automate Code Generation**: Use the Copilot Agent to generate code snippets. For example, to generate a React component, you can use:\n```javascript\ncopilot.generateCode('Create a React component for a user profile page').then((code) => {\n  console.log(code);\n});\n```\n\n4. **Handle Errors and Debugging**: Implement error handling to manage any issues that arise during code generation. Use the Copilot Agent's debugging capabilities to identify and fix errors in your code.\n\n5. **Documentation**: Utilize the Copilot Agent to generate documentation for your code. This can be done by calling the `generateDocumentation` method with the relevant code snippet.\n\nBy following these steps, you can seamlessly integrate GitHub Copilot Agent into your React application, automating code generation, debugging, and documentation tasks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "copilot-sdk#main-content",
+      "copilot-sdk#overview",
+      "copilot-sdk#setup",
+      "copilot-sdk#examples",
+      "copilot-sdk#tools",
+      "copilot-sdk#mcp",
+      "copilot-sdk#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Copilot SDK is an open-source toolkit for embedding GitHub Copilot Agent capabilities directly into developer applications and workflows. It supports multiple programming languages including Python, TypeScript, C#, and Rust, making it accessible to diverse development teams. The SDK enables automation of code generation, debugging, and documentation tasks through programmatic access to GitHub Copilot's intelligence. Developers can integrate Copilot functionality into custom tools, IDEs, and applications to enhance productivity and streamline development workflows. The project is actively maintained with regular updates and symbol package support across package managers like NuGet.\nAutomate code generation for repetitive tasks in your applications.\nIntegrate Copilot's agentic workflows into existing software solutions to enhance productivity.\nUtilize the SDK to create custom agents that can perform specific coding tasks based on user-defined logic.\nStreamline the development process by automating file edits and Git operations.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/github/copilot-sdk`",
+    "usage_vi": "```\nIntegrate GitHub Copilot Agent into my [APPLICATION_NAME] using the Copilot SDK. The application is built with [FRAMEWORK/LANGUAGE] and needs to automate [TASK_TYPE, e.g., code generation, debugging, or documentation]. Provide a step-by-step guide, including necessary dependencies and code snippets.\n```\nCopy\n\n```\nTo integrate GitHub Copilot Agent into your React application, follow these steps:\n\n1. **Install Dependencies**: Ensure you have Node.js and npm installed. Run `npm install @github/copilot-sdk` to add the Copilot SDK to your project.\n\n2. **Initialize the Copilot Agent**: In your main application file, import the Copilot SDK and initialize it with your GitHub credentials. Here's a sample code snippet:\n```javascript\nconst { CopilotAgent } = require('@github/copilot-sdk');\n\nconst copilot = new CopilotAgent({\n  githubToken: 'your_github_token',\n  repository: 'your_repository_name'\n});\n```\n\n3. **Automate Code Generation**: Use the Copilot Agent to generate code snippets. For example, to generate a React component, you can use:\n```javascript\ncopilot.generateCode('Create a React component for a user profile page').then((code) => {\n  console.log(code);\n});\n```\n\n4. **Handle Errors and Debugging**: Implement error handling to manage any issues that arise during code generation. Use the Copilot Agent's debugging capabilities to identify and fix errors in your code.\n\n5. **Documentation**: Utilize the Copilot Agent to generate documentation for your code. This can be done by calling the `generateDocumentation` method with the relevant code snippet.\n\nBy following these steps, you can seamlessly integrate GitHub Copilot Agent into your React application, automating code generation, debugging, and documentation tasks.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:30:54.555509Z",
+    "http_status": 200,
+    "content_hash": "8ce972f2779f32dba7b7b0403d5ce769b1abb614b4f9cf81242071084c8dbf04",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\copilot-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\copilot-sdk.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Copilot SDK - Integrate GitHub Copilot Agent",
+  "short_description_vi": "The Copilot SDK enables developers to integrate GitHub Copilot Agent into their applications. It supports multiple platforms and is ideal for automating code generation, debugging, and documentation tasks. Connects to GitHub repositories and developer tools."
+}

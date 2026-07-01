@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/memex",
+  "slug": "memex",
+  "name": "memex",
+  "headline": "memex: Fast Transcript Search for AI Agents",
+  "short_description": "Fast transcript search for humans and agents. Supports Claude Code, Codex CLI, and OpenCode. Uses BM-25 and optional embeddings for hybrid search. Intended for agents to retrieve past session details.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "nicosuave",
+  "install_command": "git clone https://github.com/nicosuave/memex.git",
+  "source_repo_url": "https://github.com/nicosuave/memex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "bm25",
+    "claude-code",
+    "hybrid-search",
+    "tantivy",
+    "codex-cli",
+    "rag"
+  ],
+  "sections": {
+    "overview": "The memex skill is designed for efficient transcript searching, catering to both humans and AI agents. It supports Claude Code, Codex CLI, and OpenCode, making it a versatile tool for developers and AI practitioners. With its intermediate complexity, memex allows users to quickly locate specific information within transcripts, streamlining the process of data retrieval. This skill is particularly beneficial for teams that rely on extensive documentation or communication logs, enabling them to save time and enhance productivity. One of the key benefits of memex is its ability to significantly reduce the time spent searching for relevant information. By leveraging advanced search capabilities, users can quickly pinpoint crucial data points, thus accelerating decision-making processes. Although the exact time savings are not quantified, the efficiency gained from rapid transcript searches can lead to substantial improvements in workflow automation. This skill is ideal for developers, product managers, and AI practitioners who require quick access to information for project development and management. Memex is particularly useful in scenarios where teams need to analyze meeting notes, customer interactions, or any form of recorded dialogue. For example, a product manager can use memex to swiftly find feedback from past meetings, enabling them to make informed decisions without sifting through lengthy transcripts. Similarly, AI agents can utilize this skill to enhance their responses by accessing relevant historical data, thus improving user interactions. Implementing memex is straightforward, with an estimated time of 30 minutes to get started. Its intermediate difficulty level means that users should have some familiarity with automation tools and coding practices. By integrating memex into AI-first workflows, organizations can enhance their operational efficiency, ensuring that both human and AI agents can work seamlessly together to achieve optimal results.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nicosuave/memex`",
+    "usage": "```\nSearch the memex transcript archive for all sessions where [TOPIC_OR_KEYWORD] was discussed. Return the top 5 most relevant sessions with timestamps, participant names, and a 1-2 sentence summary of each. Focus on sessions where [SPECIFIC_OUTCOME_OR_DECISION] was reached. Format the results as a markdown table with columns: Session ID, Timestamp, Participants, Summary, and Relevant Excerpt.\n```\nCopy\n\n```\n```markdown\n| Session ID | Timestamp | Participants | Summary | Relevant Excerpt |\n|------------|-----------|--------------|---------|------------------|\n| ses_9872   | 2024-05-15 14:32:10 | Alex (PM), Jamie (Dev), Taylor (QA) | Discussed the API rate limiting issue for the payment service. Decided to implement exponential backoff with a 10-second max delay. | \"We need to handle the 429 errors gracefully—exponential backoff with a cap at 10 seconds should prevent cascading failures.\" |\n| ses_9875   | 2024-05-16 09:45:22 | Alex (PM), Morgan (DevOps) | Reviewed the deployment pipeline changes for the new authentication service. Confirmed rollback plan if issues arise. | \"The auth service deployment is ready. If we see latency spikes in staging, we'll roll back to v2.3 immediately.\" |\n| ses_9878   | 2024-05-17 11:12:05 | Jamie (Dev), Taylor (QA), Casey (Support) | Debugged the intermittent timeout errors in the checkout flow. Identified a race condition in the Redis cache. | \"The Redis cache is causing timeouts when multiple requests hit the same key simultaneously. We'll add a mutex lock for writes.\" |\n| ses_9880   | 2024-05-18 16:22:47 | Alex (PM), Morgan (DevOps), Casey (Support) | Finalized the incident response playbook for the auth service outages. Tested failover to the backup region. | \"The failover to us-west-2 worked in staging. We'll document this in the playbook and schedule a chaos engineering test.\" |\n| ses_9882   | 2024-05-19 10:30:15 | Jamie (Dev), Taylor (QA) | Fixed the race condition in the Redis cache and deployed to production. Monitored for 30 minutes post-deployment. | \"The race condition fix is live. No errors in the last 30 minutes—looks good to close this out.\" |\n```\n\n**Key Insights:**\n1. The API rate limiting issue was a recurring theme, with sessions ses_9872 and ses_9878 directly addressing it.\n2. The deployment pipeline for the auth service was reviewed multiple times (ses_9875, ses_9880), indicating its criticality.\n3. The Redis cache race condition (ses_9878) was a critical bug that required cross-team collaboration (Dev, QA, Support).\n\n**Next Steps:**\n- Review the incident response playbook (ses_9880) to ensure it aligns with the latest auth service changes.\n- Schedule a chaos engineering test for the failover procedure in the next sprint.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "memex#main-content",
+      "memex#overview",
+      "memex#setup",
+      "memex#examples",
+      "memex#tools",
+      "memex#mcp",
+      "memex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The memex skill is designed for efficient transcript searching, catering to both humans and AI agents. It supports Claude Code, Codex CLI, and OpenCode, making it a versatile tool for developers and AI practitioners. With its intermediate complexity, memex allows users to quickly locate specific information within transcripts, streamlining the process of data retrieval. This skill is particularly beneficial for teams that rely on extensive documentation or communication logs, enabling them to save time and enhance productivity. One of the key benefits of memex is its ability to significantly reduce the time spent searching for relevant information. By leveraging advanced search capabilities, users can quickly pinpoint crucial data points, thus accelerating decision-making processes. Although the exact time savings are not quantified, the efficiency gained from rapid transcript searches can lead to substantial improvements in workflow automation. This skill is ideal for developers, product managers, and AI practitioners who require quick access to information for project development and management. Memex is particularly useful in scenarios where teams need to analyze meeting notes, customer interactions, or any form of recorded dialogue. For example, a product manager can use memex to swiftly find feedback from past meetings, enabling them to make informed decisions without sifting through lengthy transcripts. Similarly, AI agents can utilize this skill to enhance their responses by accessing relevant historical data, thus improving user interactions. Implementing memex is straightforward, with an estimated time of 30 minutes to get started. Its intermediate difficulty level means that users should have some familiarity with automation tools and coding practices. By integrating memex into AI-first workflows, organizations can enhance their operational efficiency, ensuring that both human and AI agents can work seamlessly together to achieve optimal results.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nicosuave/memex`",
+    "usage_vi": "```\nSearch the memex transcript archive for all sessions where [TOPIC_OR_KEYWORD] was discussed. Return the top 5 most relevant sessions with timestamps, participant names, and a 1-2 sentence summary of each. Focus on sessions where [SPECIFIC_OUTCOME_OR_DECISION] was reached. Format the results as a markdown table with columns: Session ID, Timestamp, Participants, Summary, and Relevant Excerpt.\n```\nCopy\n\n```\n```markdown\n| Session ID | Timestamp | Participants | Summary | Relevant Excerpt |\n|------------|-----------|--------------|---------|------------------|\n| ses_9872   | 2024-05-15 14:32:10 | Alex (PM), Jamie (Dev), Taylor (QA) | Discussed the API rate limiting issue for the payment service. Decided to implement exponential backoff with a 10-second max delay. | \"We need to handle the 429 errors gracefully—exponential backoff with a cap at 10 seconds should prevent cascading failures.\" |\n| ses_9875   | 2024-05-16 09:45:22 | Alex (PM), Morgan (DevOps) | Reviewed the deployment pipeline changes for the new authentication service. Confirmed rollback plan if issues arise. | \"The auth service deployment is ready. If we see latency spikes in staging, we'll roll back to v2.3 immediately.\" |\n| ses_9878   | 2024-05-17 11:12:05 | Jamie (Dev), Taylor (QA), Casey (Support) | Debugged the intermittent timeout errors in the checkout flow. Identified a race condition in the Redis cache. | \"The Redis cache is causing timeouts when multiple requests hit the same key simultaneously. We'll add a mutex lock for writes.\" |\n| ses_9880   | 2024-05-18 16:22:47 | Alex (PM), Morgan (DevOps), Casey (Support) | Finalized the incident response playbook for the auth service outages. Tested failover to the backup region. | \"The failover to us-west-2 worked in staging. We'll document this in the playbook and schedule a chaos engineering test.\" |\n| ses_9882   | 2024-05-19 10:30:15 | Jamie (Dev), Taylor (QA) | Fixed the race condition in the Redis cache and deployed to production. Monitored for 30 minutes post-deployment. | \"The race condition fix is live. No errors in the last 30 minutes—looks good to close this out.\" |\n```\n\n**Key Insights:**\n1. The API rate limiting issue was a recurring theme, with sessions ses_9872 and ses_9878 directly addressing it.\n2. The deployment pipeline for the auth service was reviewed multiple times (ses_9875, ses_9880), indicating its criticality.\n3. The Redis cache race condition (ses_9878) was a critical bug that required cross-team collaboration (Dev, QA, Support).\n\n**Next Steps:**\n- Review the incident response playbook (ses_9880) to ensure it aligns with the latest auth service changes.\n- Schedule a chaos engineering test for the failover procedure in the next sprint.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:08.552197Z",
+    "http_status": 200,
+    "content_hash": "0623c8165fdb2c95fa6d5ce3eb17eab01a510d337198cd6404e4ad4aa7886240",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\memex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\memex.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "memex: Fast Transcript Search for AI Agents",
+  "short_description_vi": "Fast transcript search for humans and agents. Supports Claude Code, Codex CLI, and OpenCode. Uses BM-25 and optional embeddings for hybrid search. Intended for agents to retrieve past session details."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nigerian-fintech-llms-txt",
+  "slug": "nigerian-fintech-llms-txt",
+  "name": "Nigerian Fintech LLMs.txt",
+  "headline": "Nigerian Fintech LLMs.txt - Automate Fintech APIs",
+  "short_description": "A collection of llms.txt files for Nigerian fintech APIs, designed to help LLMs better understand and work with these platforms. Benefits operations teams by automating interactions with fintech services, reducing manual effort, and improving accuracy. Connects to Claude and other LLM-based workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "sin4ch",
+  "install_command": "git clone https://github.com/sin4ch/nigerian-fintech-llms-txt.git",
+  "source_repo_url": "https://github.com/sin4ch/nigerian-fintech-llms-txt",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "llms",
+    "opencode",
+    "fintech",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "This skill provides standardized llms.txt files for major Nigerian fintech providers including Mono, OPay, and Paystack. Each file contains documentation overviews and complete API references designed to help LLMs better understand fintech platforms and their capabilities. By providing structured API documentation, the skill enables AI coding assistants and LLM-powered tools to accurately extract information and assist with API integrations. This reduces manual documentation review and helps developers build fintech solutions faster using Claude and other AI tools. The files follow the llms.txt standard, making them compatible with any LLM-based workflow or coding agent.\nIntegrating Mono open banking APIs with Claude for financial data access automation\nBuilding payment processing workflows with OPay or Paystack using AI coding assistants\nAutomating fintech API integration guidance for development teams\nEnabling LLMs to provide accurate API endpoint recommendations for Nigerian fintech platforms",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sin4ch/nigerian-fintech-llms-txt`",
+    "usage": "```\nUse the Nigerian fintech API documentation provided in the llms.txt files to [TASK]. For example: 'Generate a Python script to fetch transaction history from [FINTECH_PLATFORM] for customer [CUSTOMER_ID] between [START_DATE] and [END_DATE] using their API.' Ensure the script includes error handling for rate limits and authentication failures. Reference the relevant llms.txt file sections for endpoint details and payload structures.\n```\nCopy\n\n```\n```python\n# Script to fetch transaction history from Flutterwave for customer UID-456789\n# Reference: flutterwave_llms.txt, Section 3.2 (Transactions API)\n\nimport requests\nimport json\nfrom datetime import datetime, timedelta\n\n# Configuration\nAPI_KEY = \"FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXX\"\nBASE_URL = \"https://api.flutterwave.com/v3\"\nCUSTOMER_ID = \"UID-456789\"\nSTART_DATE = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')\nEND_DATE = datetime.now().strftime('%Y-%m-%d')\n\n# Headers\nheaders = {\n    \"Authorization\": f\"Bearer {API_KEY}\",\n    \"Content-Type\": \"application/json\"\n}\n\n# API Request\ntry:\n    response = requests.get(\n        f\"{BASE_URL}/transactions?customer={CUSTOMER_ID}&from={START_DATE}&to={END_DATE}\",\n        headers=headers\n    )\n    response.raise_for_status()\n    transactions = response.json().get('data', [])\n    \n    # Process transactions\n    for tx in transactions:\n        print(f\"Transaction ID: {tx['id']}\")\n        print(f\"Amount: {tx['amount']} {tx['currency']}\")\n        print(f\"Status: {tx['status']}\")\n        print(f\"Date: {tx['created_at']}\")\n        print(\"---\")\n        \nexcept requests.exceptions.HTTPError as err:\n    if response.status_code == 429:\n        print(\"Error: Rate limit exceeded. Retry after 60 seconds.\")\n    elif response.status_code == 401:\n        print(\"Error: Invalid API key. Check your credentials.\")\n    else:\n        print(f\"HTTP Error: {err}\")\nexcept Exception as e:\n    print(f\"Unexpected error: {e}\")\n```\n\n**Output:**\nTransaction ID: 987654321\nAmount: 15000 NGN\nStatus: successful\nDate: 2023-10-15T14:30:00.000Z\n---\nTransaction ID: 987654322\nAmount: 7500 NGN\nStatus: pending\nDate: 2023-10-14T09:15:00.000Z\n---\nTransaction ID: 987654323\nAmount: 25000 NGN\nStatus: failed\nDate: 2023-10-13T16:45:00.000Z\n---\n\n**Note:** The script handles rate limits (429) and authentication errors (401) as specified in the Flutterwave llms.txt file (Section 5.1). For production use, add retry logic with exponential backoff and log errors to a monitoring system.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "nigerian-fintech-llms-txt#main-content",
+      "nigerian-fintech-llms-txt#overview",
+      "nigerian-fintech-llms-txt#setup",
+      "nigerian-fintech-llms-txt#examples",
+      "nigerian-fintech-llms-txt#tools",
+      "nigerian-fintech-llms-txt#mcp",
+      "nigerian-fintech-llms-txt#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này cung cấp các tệp llms.txt chuẩn hóa cho các nhà cung cấp fintech lớn tại Nigeria bao gồm Mono, OPay và Paystack. Mỗi tệp chứa phần tổng quan tài liệu và tài liệu tham khảo API đầy đủ, được thiết kế để giúp các LLM hiểu rõ hơn về các nền tảng fintech cũng như khả năng của chúng. Bằng cách cung cấp tài liệu API có cấu trúc, skill này cho phép các trợ lý lập trình AI và công cụ hỗ trợ bởi LLM trích xuất thông tin chính xác và hỗ trợ tích hợp API. Điều này giảm thiểu việc phải tra cứu tài liệu thủ công và giúp các nhà phát triển xây dựng các giải pháp fintech nhanh hơn bằng Claude và các công cụ AI khác. Các tệp tuân thủ tiêu chuẩn llms.txt, tương thích với mọi workflow hoặc coding agent dựa trên LLM.\n\nTích hợp API open banking của Mono với Claude để tự động hóa việc truy cập dữ liệu tài chính\nXây dựng quy trình xử lý thanh toán với OPay hoặc Paystack bằng các trợ lý lập trình AI\nTự động hóa hướng dẫn tích hợp API fintech cho các đội ngũ phát triển\nCho phép các LLM đề xuất chính xác các endpoint API cho các nền tảng fintech của Nigeria",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sin4ch/nigerian-fintech-llms-txt`",
+    "usage_vi": "```\nSử dụng tài liệu API fintech Nigeria được cung cấp trong các tệp llms.txt để [TASK]. Ví dụ: 'Tạo một script Python để lấy lịch sử giao dịch từ [FINTECH_PLATFORM] cho khách hàng [CUSTOMER_ID] từ ngày [START_DATE] đến [END_DATE] bằng API của họ.' Đảm bảo script bao gồm xử lý lỗi cho các trường hợp giới hạn tần suất yêu cầu (rate limit) và lỗi xác thực. Tham chiếu các phần tương ứng trong tệp llms.txt để biết chi tiết về endpoint và cấu trúc payload.\n```\nCopy\n\n```python\n# Script lấy lịch sử giao dịch từ Flutterwave cho khách hàng UID-456789\n# Tham chiếu: flutterwave_llms.txt, Section 3.2 (Transactions API)\n\nimport requests\nimport json\nfrom datetime import datetime, timedelta\n\n# Cấu hình\nAPI_KEY = \"FLWSECK-XXXXXXXXXXXXXXXXXXXXXXXXXXXX\"\nBASE_URL = \"https://api.flutterwave.com/v3\"\nCUSTOMER_ID = \"UID-456789\"\nSTART_DATE = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')\nEND_DATE = datetime.now().strftime('%Y-%m-%d')\n\n# Headers\nheaders = {\n    \"Authorization\": f\"Bearer {API_KEY}\",\n    \"Content-Type\": \"application/json\"\n}\n\n# Gửi yêu cầu API\ntry:\n    response = requests.get(\n        f\"{BASE_URL}/transactions?customer={CUSTOMER_ID}&from={START_DATE}&to={END_DATE}\",\n        headers=headers\n    )\n    response.raise_for_status()\n    transactions = response.json().get('data', [])\n    \n    # Xử lý giao dịch\n    for tx in transactions:\n        print(f\"Transaction ID: {tx['id']}\")\n        print(f\"Amount: {tx['amount']} {tx['currency']}\")\n        print(f\"Status: {tx['status']}\")\n        print(f\"Date: {tx['created_at']}\")\n        print(\"---\")\n        \nexcept requests.exceptions.HTTPError as err:\n    if response.status_code == 429:\n        print(\"Lỗi: Quá giới hạn rate limit. Thử lại sau 60 giây.\")\n    elif response.status_code == 401:\n        print(\"Lỗi: API key không hợp lệ. Vui lòng kiểm tra lại thông tin xác thực.\")\n    else:\n        print(f\"Lỗi HTTP: {err}\")\nexcept Exception as e:\n    print(f\"Lỗi không mong muốn: {e}\")\n```\n\n**Kết quả:**\nTransaction ID: 987654321\nAmount: 15000 NGN\nStatus: successful\nDate: 2023-10-15T14:30:00.000Z\n---\nTransaction ID: 987654322\nAmount: 7500 NGN\nStatus: pending\nDate: 2023-10-14T09:15:00.000Z\n---\nTransaction ID: 987654323\nAmount: 25000 NGN\nStatus: failed\nDate: 2023-10-13T16:45:00.000Z\n---\n\n**Lưu ý:** Script này xử lý các lỗi rate limit (429) và lỗi xác thực (401) như đã chỉ định trong tệp llms.txt của Flutterwave (Mục 5.1). Khi đưa vào sử dụng thực tế (production), hãy thêm logic retry với cơ chế exponential backoff và ghi nhận lỗi vào hệ thống giám sát."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:26:39.599104Z",
+    "http_status": 200,
+    "content_hash": "d7ca43aa9255ae5563febaca78719b2c1bf3f11c5f59c34f1655b28ac9d19e9f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\nigerian-fintech-llms-txt.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\nigerian-fintech-llms-txt.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nigerian Fintech LLMs.txt - Tự động hóa API Fintech",
+  "short_description_vi": "Bộ sưu tập các tệp llms.txt dành cho các API fintech của Nigeria, được thiết kế nhằm giúp các LLM hiểu rõ và tương tác tốt hơn với các nền tảng này. Giải pháp này mang lại lợi ích cho các đội ngũ vận hành nhờ tự động hóa hoạt động tương tác với các dịch vụ fintech, giảm thiểu thao tác thủ công và nâng cao độ chính xác. Kết nối mượt mà với Claude và các workflow dựa trên LLM khác."
+}

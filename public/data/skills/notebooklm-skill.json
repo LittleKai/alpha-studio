@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/notebooklm-skill",
+  "slug": "notebooklm-skill",
+  "name": "Notebooklm Skill",
+  "headline": "NotebookLM Skill for Claude Code Integration",
+  "short_description": "The notebooklm-skill allows Claude Code to interact with Google NotebookLM, providing citation-backed answers from your documents. It features browser automation and library management for a streamlined knowledge retrieval experience.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "PleasePrompto",
+  "install_command": "claude install PleasePrompto/notebooklm-skill",
+  "source_repo_url": "https://github.com/PleasePrompto/notebooklm-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "document management",
+    "AI integration",
+    "citation",
+    "knowledge retrieval"
+  ],
+  "sections": {
+    "overview": "NotebookLM-skill integrates Google NotebookLM with Claude Code, allowing you to retrieve citation-backed answers directly from your uploaded documents. The skill uses browser automation to interact with NotebookLM's interface and manage your document library programmatically. It handles complex workflows like document querying and citation tracking without manual intervention. The modular architecture supports stable interactions with improved timeout handling and thinking message detection. This skill is ideal for researchers, students, and professionals who need to extract verified information from their document collections while maintaining source attribution.\nRetrieve specific information from uploaded documents quickly and accurately.\nAutomate data extraction from Google NotebookLM to save time on repetitive tasks.\nGenerate insights based on personal knowledge bases for informed decision-making.\nEfficiently manage and organize a library of documents with smart tagging and metadata.",
+    "setup": "Terminal\nCopy\n`claude install PleasePrompto/notebooklm-skill`\n`git clone https://github.com/PleasePrompto/notebooklm-skill`",
+    "usage": "```\nUsing the notebooklm-skill, search through my Google NotebookLM documents for insights related to [TOPIC]. Provide a summary of the key points and cite the specific documents where this information was found. Additionally, suggest 3 actionable steps based on these insights that I can take this week to improve [SPECIFIC GOAL].\n```\nCopy\n\n```\nBased on your Google NotebookLM documents, here are the key insights related to 'Q3 sales performance' and 'customer churn':\n\n1. **Sales Performance**: The documents 'Q3 Sales Review' and 'Pipeline Analysis' indicate that sales performance in Q3 was 15% below target. The primary reason cited was delayed responses to customer inquiries, with an average response time of 48 hours.\n\n2. **Customer Churn**: The document 'Customer Feedback Q3' shows that 30% of churned customers cited slow response times and lack of follow-up as key reasons for leaving. The document 'Churn Analysis' suggests that proactive check-ins could reduce churn by up to 20%.\n\n3. **Actionable Steps**:\n   - Implement a response time tracking system to ensure inquiries are addressed within 24 hours.\n   - Schedule weekly follow-up calls with high-risk customers identified in the 'Churn Analysis' document.\n   - Train the sales team on proactive customer engagement strategies using the insights from the 'Customer Feedback Q3' document.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "notebooklm-skill#main-content",
+      "notebooklm-skill#overview",
+      "notebooklm-skill#setup",
+      "notebooklm-skill#examples",
+      "notebooklm-skill#tools",
+      "notebooklm-skill#mcp",
+      "notebooklm-skill#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "NotebookLM-skill tích hợp Google NotebookLM với Claude Code, cho phép bạn truy xuất các câu trả lời kèm trích dẫn xác thực trực tiếp từ các tài liệu đã tải lên. Skill này sử dụng browser automation để tương tác với giao diện của NotebookLM và quản lý thư viện tài liệu bằng mã nguồn (programmatically). Nó tự động xử lý các luồng công việc phức tạp như truy vấn tài liệu và theo dõi trích dẫn mà không cần can thiệp thủ công. Kiến trúc dạng mô-đun (modular architecture) hỗ trợ các tương tác ổn định nhờ khả năng xử lý timeout và phát hiện thinking message được cải tiến. Skill này là giải pháp lý tưởng cho các nhà nghiên cứu, sinh viên và chuyên gia cần trích xuất thông tin đã được xác thực từ kho tài liệu của mình mà vẫn đảm bảo ghi nhận nguồn gốc rõ ràng.\nTruy xuất nhanh chóng và chính xác các thông tin cụ thể từ tài liệu đã tải lên.\nTự động hóa việc trích xuất dữ liệu từ Google NotebookLM để tiết kiệm thời gian cho các tác vụ lặp đi lặp lại.\nTạo ra các insight dựa trên cơ sở tri thức cá nhân để hỗ trợ đưa ra quyết định sáng suốt.\nQuản lý và sắp xếp thư viện tài liệu hiệu quả với tính năng gắn thẻ thông minh (smart tagging) và siêu dữ liệu (metadata).",
+    "setup_vi": "Terminal\nSao chép\n`claude install PleasePrompto/notebooklm-skill`\n`git clone https://github.com/PleasePrompto/notebooklm-skill`",
+    "usage_vi": "```\nSử dụng notebooklm-skill, hãy tìm kiếm trong các tài liệu Google NotebookLM của tôi để tìm các insight liên quan đến [CHỦ ĐỀ]. Cung cấp bản tóm tắt các điểm chính và trích dẫn các tài liệu cụ thể nơi tìm thấy thông tin này. Ngoài ra, hãy đề xuất 3 bước hành động thực tế dựa trên những insight này mà tôi có thể thực hiện trong tuần này để cải thiện [MỤC TIÊU CỤ THỂ].\n```\nSao chép\n\n```\nDựa trên các tài liệu Google NotebookLM của bạn, dưới đây là các insight chính liên quan đến 'hiệu suất bán hàng Q3' và 'tỷ lệ khách hàng rời bỏ':\n\n1. **Hiệu suất bán hàng (Sales Performance)**: Các tài liệu 'Q3 Sales Review' và 'Pipeline Analysis' cho thấy hiệu suất bán hàng trong Q3 thấp hơn 15% so với mục tiêu. Nguyên nhân chính được chỉ ra là do chậm trễ trong việc phản hồi yêu cầu của khách hàng, với thời gian phản hồi trung bình là 48 giờ.\n\n2. **Tỷ lệ khách hàng rời bỏ (Customer Churn)**: Tài liệu 'Customer Feedback Q3' chỉ ra rằng 30% khách hàng ngừng dịch vụ đã nêu lý do phản hồi chậm và thiếu chăm sóc sau bán hàng là nguyên nhân chính. Tài liệu 'Churn Analysis' gợi ý rằng việc chủ động liên hệ chăm sóc khách hàng có thể giảm tỷ lệ rời bỏ tới 20%.\n\n3. **Các bước hành động đề xuất**:\n   - Triển khai hệ thống theo dõi thời gian phản hồi để đảm bảo các yêu cầu được giải quyết trong vòng 24 giờ.\n   - Lên lịch cuộc gọi chăm sóc hàng tuần với những khách hàng có nguy cơ rời bỏ cao được xác định trong tài liệu 'Churn Analysis'.\n   - Đào tạo đội ngũ bán hàng về chiến lược chủ động tương tác với khách hàng bằng cách sử dụng các insight từ tài liệu 'Customer Feedback Q3'.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:45:18.619560Z",
+    "http_status": 200,
+    "content_hash": "ba9fc3d0b901b10875b7a61e47d3727565b1a64e94bc3a8ace641b9cc2815454",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\notebooklm-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\notebooklm-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "NotebookLM Skill tích hợp Claude Code",
+  "short_description_vi": "notebooklm-skill cho phép Claude Code tương tác với Google NotebookLM, cung cấp các câu trả lời đi kèm trích dẫn xác thực từ tài liệu của bạn. Skill này hỗ trợ browser automation và quản lý thư viện để tối ưu hóa trải nghiệm truy xuất kiến thức."
+}

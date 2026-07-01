@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-servers",
+  "slug": "mcp-servers",
+  "name": "MCP-Servers",
+  "headline": "MCP-Servers: Claude Code skill for automation",
+  "short_description": "A Model Context Protocol (MCP) server that provides AI assistants with access to Microsoft OneNote. This server enables AI models to read from and write to OneNote notebooks, sections, and pages.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "rajvirtual",
+  "install_command": "git clone https://github.com/rajvirtual/MCP-Servers.git",
+  "source_repo_url": "https://github.com/rajvirtual/MCP-Servers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "ai-automation",
+    "mcp",
+    "typescript",
+    "onenote",
+    "ai-agents",
+    "ai",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "MCP-Servers is an automation skill that implements a Model Context Protocol (MCP) server for Microsoft OneNote integration. It enables AI assistants to read from and write to OneNote notebooks, sections, and pages, allowing seamless access to stored notes and information. This skill bridges AI models with OneNote's organizational structure, facilitating both retrieval and creation of content within your notebook ecosystem.\nRetrieve specific notes from OneNote notebooks to provide context in AI conversations\nAutomatically write AI-generated summaries or analysis directly into OneNote pages\nOrganize AI-assisted content creation across multiple OneNote sections and notebooks\nEnable AI assistants to access and reference archived notes during conversations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rajvirtual/MCP-Servers`",
+    "usage": "```\nI want to automate my note-taking process using an MCP-Server connected to my OneNote. Here's what I need: [COMPANY] is [INDUSTRY], and I want to create a new section in my OneNote notebook called '[SECTION_NAME]' and add the following notes: [NOTES]. Please provide the MCP-Server commands to accomplish this.\n```\nCopy\n\n```\n```markdown\n# OneNote Automation with MCP-Server",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-servers#main-content",
+      "mcp-servers#overview",
+      "mcp-servers#setup",
+      "mcp-servers#examples",
+      "mcp-servers#tools",
+      "mcp-servers#mcp",
+      "mcp-servers#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP-Servers is an automation skill that implements a Model Context Protocol (MCP) server for Microsoft OneNote integration. It enables AI assistants to read from and write to OneNote notebooks, sections, and pages, allowing seamless access to stored notes and information. This skill bridges AI models with OneNote's organizational structure, facilitating both retrieval and creation of content within your notebook ecosystem.\nRetrieve specific notes from OneNote notebooks to provide context in AI conversations\nAutomatically write AI-generated summaries or analysis directly into OneNote pages\nOrganize AI-assisted content creation across multiple OneNote sections and notebooks\nEnable AI assistants to access and reference archived notes during conversations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rajvirtual/MCP-Servers`",
+    "usage_vi": "```\nI want to automate my note-taking process using an MCP-Server connected to my OneNote. Here's what I need: [COMPANY] is [INDUSTRY], and I want to create a new section in my OneNote notebook called '[SECTION_NAME]' and add the following notes: [NOTES]. Please provide the MCP-Server commands to accomplish this.\n```\nCopy\n\n```\n```markdown\n# OneNote Automation with MCP-Server"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:38:39.813384Z",
+    "http_status": 200,
+    "content_hash": "4bdba9a1d2dfefb6b2fabda1e3bd924e8814c8505cd566bdc9231e849a4e9082",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-servers.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-servers.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP-Servers: Claude Code skill for automation",
+  "short_description_vi": "A Model Context Protocol (MCP) server that provides AI assistants with access to Microsoft OneNote. This server enables AI models to read from and write to OneNote notebooks, sections, and pages."
+}

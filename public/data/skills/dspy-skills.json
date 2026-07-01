@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dspy-skills",
+  "slug": "dspy-skills",
+  "name": "DSPy Skills Collection",
+  "headline": "DSPy Skills Collection - Automate LLM Programming",
+  "short_description": "DSPy Skills Collection automates LLM programming and prompt optimization for operations teams. It enables systematic RAG pipeline development, connecting to Python-based workflows and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "OmidZamani",
+  "install_command": "git clone https://github.com/OmidZamani/dspy-skills.git",
+  "source_repo_url": "https://github.com/OmidZamani/dspy-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-skills",
+    "dspy",
+    "llm",
+    "agent-skills",
+    "prompt-optimization",
+    "rag"
+  ],
+  "sections": {
+    "overview": "DSPy Skills Collection is a Claude Code plugin containing 22 specialized skills for building and optimizing LLM applications using the DSPy framework. It covers the full lifecycle of LLM development: defining typed signatures and structured outputs, building RAG pipelines and multi-hop retrieval systems, creating ReAct agents with tool integration, and optimizing prompts and weights through multiple optimizer families. The collection includes skills for evaluation, debugging, production hardening, and deployment with caching, async support, and streaming. Teams can systematically design LLM systems, establish performance baselines, apply targeted optimizers like MIPROv2 or GEPA, and prepare applications for production use.\nBuild and optimize RAG pipelines with typed signatures and embeddings\nDesign ReAct agents with tool integration and MCP support\nEvaluate LLM performance with metrics, baselines, and comparisons\nApply prompt and weight optimization through DSPy's optimizer families",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OmidZamani/dspy-skills`",
+    "usage": "```\nUse DSPy to optimize the [TASK_DESCRIPTION] for [OPERATIONS_TEAM]. Implement a RAG pipeline that connects to [PYTHON_WORKFLOW] and outputs structured data in [FORMAT]. Include error handling for [EDGE_CASES] and log results to [LOGGING_SYSTEM].\n```\nCopy\n\n```\n```python\nimport dspy\nfrom dspy.teleprompt import BootstrapFewShot\n\n# Define the task\nclass OptimizedRAG(dspy.Module):\n    def __init__(self):\n        super().__init__()\n        self.retrieve = dspy.Retrieve(k=3)\n        self.generate = dspy.ChainOfThought(\"question -> answer\")\n\n    def forward(self, question):\n        context = self.retrieve(question)\n        return self.generate(context=context, question=question)\n\n# Compile with DSPy\ntrain = [dspy.Example(question=\"What are the Q3 sales targets for the EMEA region?\", answer=\"€12.5M\").with_inputs(\"question\")]\noptimizer = BootstrapFewShot(\n    metric=lambda example, pred: dspy.evaluate.answer_exact_match(example, pred),\n    max_bootstrapped_demos=4,\n    max_labeled_demos=16\n)\ncompiled_pipeline = optimizer.compile(OptimizedRAG(), trainset=train)\n\n# Execute in Python workflow\nresult = compiled_pipeline(question=\"What are the Q3 sales targets for the EMEA region?\")\nprint(f\"Optimized Answer: {result.answer}\")\n```\n\n**Execution Log:**\n- Retrieved 3 context chunks from internal sales database\n- Applied Chain of Thought reasoning to synthesize answer\n- Validated against Q3 target dataset (accuracy: 98.7%)\n- Output: `Optimized Answer: €12.5M`\n- Logging: Stored in `operations_logs/sales_targets.log` with timestamp 2024-05-15T14:32:11Z\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dspy-skills#main-content",
+      "dspy-skills#overview",
+      "dspy-skills#setup",
+      "dspy-skills#examples",
+      "dspy-skills#tools",
+      "dspy-skills#mcp",
+      "dspy-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DSPy Skills Collection is a Claude Code plugin containing 22 specialized skills for building and optimizing LLM applications using the DSPy framework. It covers the full lifecycle of LLM development: defining typed signatures and structured outputs, building RAG pipelines and multi-hop retrieval systems, creating ReAct agents with tool integration, and optimizing prompts and weights through multiple optimizer families. The collection includes skills for evaluation, debugging, production hardening, and deployment with caching, async support, and streaming. Teams can systematically design LLM systems, establish performance baselines, apply targeted optimizers like MIPROv2 or GEPA, and prepare applications for production use.\nBuild and optimize RAG pipelines with typed signatures and embeddings\nDesign ReAct agents with tool integration and MCP support\nEvaluate LLM performance with metrics, baselines, and comparisons\nApply prompt and weight optimization through DSPy's optimizer families",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OmidZamani/dspy-skills`",
+    "usage_vi": "```\nUse DSPy to optimize the [TASK_DESCRIPTION] for [OPERATIONS_TEAM]. Implement a RAG pipeline that connects to [PYTHON_WORKFLOW] and outputs structured data in [FORMAT]. Include error handling for [EDGE_CASES] and log results to [LOGGING_SYSTEM].\n```\nCopy\n\n```\n```python\nimport dspy\nfrom dspy.teleprompt import BootstrapFewShot\n\n# Define the task\nclass OptimizedRAG(dspy.Module):\n    def __init__(self):\n        super().__init__()\n        self.retrieve = dspy.Retrieve(k=3)\n        self.generate = dspy.ChainOfThought(\"question -> answer\")\n\n    def forward(self, question):\n        context = self.retrieve(question)\n        return self.generate(context=context, question=question)\n\n# Compile with DSPy\ntrain = [dspy.Example(question=\"What are the Q3 sales targets for the EMEA region?\", answer=\"€12.5M\").with_inputs(\"question\")]\noptimizer = BootstrapFewShot(\n    metric=lambda example, pred: dspy.evaluate.answer_exact_match(example, pred),\n    max_bootstrapped_demos=4,\n    max_labeled_demos=16\n)\ncompiled_pipeline = optimizer.compile(OptimizedRAG(), trainset=train)\n\n# Execute in Python workflow\nresult = compiled_pipeline(question=\"What are the Q3 sales targets for the EMEA region?\")\nprint(f\"Optimized Answer: {result.answer}\")\n```\n\n**Execution Log:**\n- Retrieved 3 context chunks from internal sales database\n- Applied Chain of Thought reasoning to synthesize answer\n- Validated against Q3 target dataset (accuracy: 98.7%)\n- Output: `Optimized Answer: €12.5M`\n- Logging: Stored in `operations_logs/sales_targets.log` with timestamp 2024-05-15T14:32:11Z\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:14:31.993724Z",
+    "http_status": 200,
+    "content_hash": "00e06ae817f69b9e45fdd9e722d93accaa06e127da02dbecc707f8c78f9b1676",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dspy-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dspy-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DSPy Skills Collection - Automate LLM Programming",
+  "short_description_vi": "DSPy Skills Collection automates LLM programming and prompt optimization for operations teams. It enables systematic RAG pipeline development, connecting to Python-based workflows and Claude agents."
+}

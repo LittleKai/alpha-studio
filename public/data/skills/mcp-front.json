@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-front",
+  "slug": "mcp-front",
+  "name": "MCP Front",
+  "headline": "MCP Front - Auth Proxy for Model Context Protocol",
+  "short_description": "Auth proxy for Model Context Protocol servers. Adds authentication to MCP tools like Claude.ai, Claude Code, Cursor, and Gemini. Benefits operations teams by securing access to AI agents and workflows. Integrates with existing MCP infrastructure.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "stainless-api",
+  "install_command": "git clone https://github.com/stainless-api/mcp-front.git",
+  "source_repo_url": "https://github.com/stainless-api/mcp-front",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "auth",
+    "mcp",
+    "proxy",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "mcp-front is an authentication gateway that sits between Claude and internal MCP servers, enabling secure access without internet exposure. It handles multi-user OAuth authentication (Google, Azure AD, GitHub, OIDC) and validates users belong to your organization before proxying requests. The tool isolates each user's session, supports per-user API key management for services like Notion and Linear, and enforces per-service token scoping using RFC 8707 audience claims. Operations teams use mcp-front to grant Claude access to internal databases, APIs, and tools while maintaining organization-wide access control and data security.\nGive Claude access to internal databases and APIs securely for your team\nAdd multi-user authentication to MCP servers without modifying them\nManage per-user API keys for external services like Notion and Linear\nEnforce organization-based access control for internal tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/stainless-api/mcp-front`",
+    "usage": "```\nConfigure the MCP Front proxy to secure access to [MCP_SERVER_NAME] running on [SERVER_ADDRESS:PORT]. Set up [AUTH_METHOD] authentication (e.g., API key, OAuth, JWT) with [CREDENTIALS]. Ensure the proxy routes requests to [TARGET_ENDPOINT] while enforcing rate limits of [RATE_LIMIT] requests per minute. Test the setup by sending a sample request to [TEST_ENDPOINT].\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"proxy_config\": {\n    \"server_name\": \"code-analysis-mcp\",\n    \"server_address\": \"localhost:8080\",\n    \"auth_method\": \"JWT\",\n    \"credentials\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n    \"target_endpoint\": \"http://localhost:3000/mcp\",\n    \"rate_limit\": \"100\",\n    \"test_results\": {\n      \"request_sent\": {\n        \"endpoint\": \"/analyze-code\",\n        \"method\": \"POST\",\n        \"headers\": {\n          \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n          \"Content-Type\": \"application/json\"\n        },\n        \"body\": {\n          \"language\": \"python\",\n          \"code\": \"def hello(): return 'world'\"\n        }\n      },\n      \"response\": {\n        \"status_code\": 200,\n        \"body\": {\n          \"analysis\": \"Code is syntactically correct and follows PEP 8 guidelines.\",\n          \"suggestions\": [\"Consider adding docstrings.\"]\n        }\n      }\n    }\n  }\n}\n```\n\nThe MCP Front proxy is now successfully configured to secure access to the code analysis MCP server. The JWT authentication is enforced, and the proxy correctly routes requests to the target endpoint while maintaining the rate limit. The test request to `/analyze-code` was processed without errors, returning a valid analysis of the provided Python code. The response includes actionable feedback, demonstrating that the proxy is functioning as expected. Operations teams can now securely expose this MCP server to authorized clients like Claude Code or Cursor without exposing the underlying server directly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-front#main-content",
+      "mcp-front#overview",
+      "mcp-front#setup",
+      "mcp-front#examples",
+      "mcp-front#tools",
+      "mcp-front#mcp",
+      "mcp-front#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcp-front là một cổng xác thực (authentication gateway) nằm giữa Claude và các server MCP nội bộ, cho phép truy cập an toàn mà không cần công khai ra internet. Công cụ này xử lý xác thực OAuth đa người dùng (Google, Azure AD, GitHub, OIDC) và xác nhận người dùng thuộc tổ chức của bạn trước khi proxy các request. Công cụ cũng cô lập session của từng người dùng, hỗ trợ quản lý API key theo từng người dùng đối với các dịch vụ như Notion, Linear, và áp đặt phạm vi token (token scoping) cho từng dịch vụ bằng RFC 8707 audience claims. Các đội ngũ vận hành sử dụng mcp-front để cấp quyền truy cập an toàn cho Claude vào database, API và các công cụ nội bộ, đồng thời duy trì kiểm soát truy cập và bảo mật dữ liệu trên toàn tổ chức.\nCấp quyền truy cập an toàn cho Claude vào database và API nội bộ của tổ chức\nThêm cơ chế xác thực đa người dùng cho các server MCP mà không cần sửa đổi chúng\nQuản lý API key theo từng người dùng cho các dịch vụ bên ngoài như Notion và Linear\nÁp đặt kiểm soát truy cập theo tổ chức đối với các công cụ nội bộ",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/stainless-api/mcp-front`",
+    "usage_vi": "```\nCấu hình MCP Front proxy để bảo mật quyền truy cập vào [MCP_SERVER_NAME] đang chạy trên [SERVER_ADDRESS:PORT]. Thiết lập phương thức xác thực [AUTH_METHOD] (ví dụ: API key, OAuth, JWT) với [CREDENTIALS]. Đảm bảo proxy điều phối các request đến [TARGET_ENDPOINT] đồng thời áp đặt rate limit là [RATE_LIMIT] request mỗi phút. Kiểm tra setup bằng cách gửi một request mẫu đến [TEST_ENDPOINT].\n```\nCopy\n\n```\n```json\n{\n  \"status\": \"success\",\n  \"proxy_config\": {\n    \"server_name\": \"code-analysis-mcp\",\n    \"server_address\": \"localhost:8080\",\n    \"auth_method\": \"JWT\",\n    \"credentials\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n    \"target_endpoint\": \"http://localhost:3000/mcp\",\n    \"rate_limit\": \"100\",\n    \"test_results\": {\n      \"request_sent\": {\n        \"endpoint\": \"/analyze-code\",\n        \"method\": \"POST\",\n        \"headers\": {\n          \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n          \"Content-Type\": \"application/json\"\n        },\n        \"body\": {\n          \"language\": \"python\",\n          \"code\": \"def hello(): return 'world'\"\n        }\n      },\n      \"response\": {\n        \"status_code\": 200,\n        \"body\": {\n          \"analysis\": \"Mã nguồn đúng cú pháp và tuân thủ các hướng dẫn PEP 8.\",\n          \"suggestions\": [\"Cân nhắc thêm docstring.\"]\n        }\n      }\n    }\n  }\n}\n```\n\nMCP Front proxy hiện đã được cấu hình thành công để bảo mật quyền truy cập vào server MCP phân tích mã nguồn. Xác thực JWT được áp dụng, và proxy điều phối chính xác các request đến endpoint đích trong khi vẫn duy trì rate limit. Request thử nghiệm đến `/analyze-code` đã được xử lý không lỗi, trả về kết quả phân tích hợp lệ cho đoạn mã Python được cung cấp. Phản hồi bao gồm các góp ý thực tế, chứng minh rằng proxy đang hoạt động đúng như mong đợi. Các đội ngũ vận hành hiện có thể công khai an toàn server MCP này cho các client được ủy quyền như Claude Code hoặc Cursor mà không cần để lộ trực tiếp server gốc.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:42.726340Z",
+    "http_status": 200,
+    "content_hash": "b1aa7de77b40f58c91958df9678c82acca6fd5ec426dddd6b05dc28fce7a8d4d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-front.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-front.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP Front - Auth Proxy cho Model Context Protocol",
+  "short_description_vi": "Auth proxy dành cho các server Model Context Protocol. Bổ sung cơ chế xác thực cho các công cụ MCP như Claude.ai, Claude Code, Cursor và Gemini. Giúp các đội ngũ vận hành (operations teams) bảo mật quyền truy cập vào các AI agent và workflow. Tích hợp dễ dàng với cơ sở hạ tầng MCP hiện có."
+}

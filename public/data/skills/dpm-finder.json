@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dpm-finder",
+  "slug": "dpm-finder",
+  "name": "VictoriaMetrics Metrics Query",
+  "headline": "dpm-finder: Optimize Grafana Cloud Costs",
+  "short_description": "dpm-finder is a tool for Grafana Professional Services that analyzes Prometheus metrics to identify which ones drive high Data Points per Minute (DPM). It provides a per-label breakdown to assist in optimizing Grafana Cloud costs.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "grafana",
+  "install_command": "git clone https://github.com/grafana-ps/dpm-finder",
+  "source_repo_url": "https://github.com/grafana-ps/dpm-finder",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "monitoring",
+    "finder"
+  ],
+  "sections": {
+    "overview": "dpm-finder is a Python script that retrieves all metrics from a Prometheus instance and calculates their data points per minute (DPM) rate using PromQL queries. It automatically filters out histogram/summary components, Grafana internal metrics, and metrics with aggregation rules, then identifies metrics exceeding a configurable DPM threshold. The tool operates in two modes: one-time execution that outputs results to CSV, JSON, text, or Prometheus exposition formats, or as a Prometheus exporter server exposing live DPM metrics. It includes detailed logging, Docker and Docker Compose support, and is designed specifically for Grafana Professional Services to help teams diagnose and control high-volume metric ingestion.\nOptimize costs in Grafana Cloud by analyzing DPM\nBreak down metric performances by labels\nIdentify critical metrics for operational efficiency",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/grafana/skills --skill dpm-finder`\n`git clone https://github.com/grafana-ps/dpm-finder`",
+    "usage": "```\nAnalyze the Prometheus metrics for [COMPANY]'s [INDUSTRY] workload in Grafana Cloud to identify which metrics are driving the highest Data Points per Minute (DPM). Provide a breakdown by label names and values, and suggest optimizations to reduce costs. Use the following query as a starting point: `sum by (job, __name__) (rate(prometheus_tsdb_head_samples_appended_total[5m]))`. Focus on metrics with DPM > 1000.\n```\nCopy\n\n```\n# High-DPM Metrics Analysis for Acme Corp's E-commerce Platform",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "dpm-finder#main-content",
+      "dpm-finder#overview",
+      "dpm-finder#setup",
+      "dpm-finder#examples",
+      "dpm-finder#tools",
+      "dpm-finder#mcp",
+      "dpm-finder#related",
+      "agentspace",
+      "victoriametrics-metrics-query"
+    ],
+    "overview_vi": "dpm-finder is a Python script that retrieves all metrics from a Prometheus instance and calculates their data points per minute (DPM) rate using PromQL queries. It automatically filters out histogram/summary components, Grafana internal metrics, and metrics with aggregation rules, then identifies metrics exceeding a configurable DPM threshold. The tool operates in two modes: one-time execution that outputs results to CSV, JSON, text, or Prometheus exposition formats, or as a Prometheus exporter server exposing live DPM metrics. It includes detailed logging, Docker and Docker Compose support, and is designed specifically for Grafana Professional Services to help teams diagnose and control high-volume metric ingestion.\nOptimize costs in Grafana Cloud by analyzing DPM\nBreak down metric performances by labels\nIdentify critical metrics for operational efficiency",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/grafana/skills --skill dpm-finder`\n`git clone https://github.com/grafana-ps/dpm-finder`",
+    "usage_vi": "```\nAnalyze the Prometheus metrics for [COMPANY]'s [INDUSTRY] workload in Grafana Cloud to identify which metrics are driving the highest Data Points per Minute (DPM). Provide a breakdown by label names and values, and suggest optimizations to reduce costs. Use the following query as a starting point: `sum by (job, __name__) (rate(prometheus_tsdb_head_samples_appended_total[5m]))`. Focus on metrics with DPM > 1000.\n```\nCopy\n\n```\n# High-DPM Metrics Analysis for Acme Corp's E-commerce Platform"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:31:17.067217Z",
+    "http_status": 200,
+    "content_hash": "b6c5b857caab3ad117f73dfa07cb0abe6e0d78a27b54ce546607f18bf2bb4dfa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dpm-finder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dpm-finder.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "dpm-finder: Optimize Grafana Cloud Costs",
+  "short_description_vi": "dpm-finder is a tool for Grafana Professional Services that analyzes Prometheus metrics to identify which ones drive high Data Points per Minute (DPM). It provides a per-label breakdown to assist in optimizing Grafana Cloud costs."
+}

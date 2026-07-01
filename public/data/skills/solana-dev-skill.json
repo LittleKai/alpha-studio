@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/solana-dev-skill",
+  "slug": "solana-dev-skill",
+  "name": "browser-use",
+  "headline": "Solana Dev Skill - Automate Blockchain Development",
+  "short_description": "Automate Solana development tasks with up-to-date best practices. Operations teams can streamline blockchain development, integrate with Solana tools, and maintain secure, efficient workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "solana-foundation",
+  "install_command": "git clone https://github.com/solana-foundation/solana-dev-skill.git",
+  "source_repo_url": "https://github.com/solana-foundation/solana-dev-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill equips Claude Code with comprehensive knowledge of the current Solana development ecosystem, including the Solana Foundation framework-kit for UI, @solana/kit v5.x for client development, and Anchor for program development. It covers testing frameworks like LiteSVM, Mollusk, and Surfpool, plus security vulnerability patterns, version compatibility matrices, and common error solutions. Developers get guidance on wallet connections, transaction building, program development, client generation with Codama, and local testing setups. The skill addresses toolchain issues, version mismatches, and migration paths between framework versions, helping teams maintain secure and efficient Solana workflows.\nBuilding Solana dApps with React and wallet connection flows\nDeveloping on-chain programs with Anchor or Pinocchio\nUnit and integration testing with LiteSVM, Mollusk, and Surfpool\nGenerating typed program clients with Codama",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/solana-foundation/solana-dev-skill`",
+    "usage": "```\nAutomate the Solana smart contract deployment for [PROJECT_NAME] using [SOLANA_TOOLKIT: solana-cli/solana-program-library/anchor]. Follow current best practices for security, gas optimization, and error handling. Generate a deployment script that includes: 1) Environment setup with [NETWORK: devnet/testnet/mainnet-beta], 2) Build and test steps with [TEST_FRAMEWORK: mocha/anchor-test], 3) Secure deployment with [WALLET_TYPE: keypair/ledger], and 4) Post-deployment verification. Include error handling for common Solana issues like transaction timeouts or insufficient funds. Provide the complete script with inline comments explaining each step.\n```\nCopy\n\n```\nHere's a production-ready deployment script for the 'NFTMarketplace' project targeting devnet, using Anchor framework and a local keypair wallet:\n\n```bash\n#!/bin/bash\nset -euo pipefail\n\n# ===== CONFIGURATION =====\nPROJECT_NAME=\"NFTMarketplace\"\nNETWORK=\"devnet\"\nANCHOR_VERSION=\"0.29.0\"\nKEYPAIR_PATH=\"~/.config/solana/devnet.json\"\nPROGRAM_ID=\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\"\n\n# ===== ENVIRONMENT SETUP =====\necho \"🔧 Setting up Solana environment...\"\nsolana config set --url $NETWORK\nsolana config set --keypair $KEYPAIR_PATH\nsolana balance --output json | jq -r '.value' | awk '$1 < 1 {print \"⚠️ Insufficient SOL. Airdrop needed.\"; exit 1}'\n\n# ===== BUILD AND TEST =====\necho \"🔨 Building Anchor project...\"\nanchor build -- --features devnet\n\n# Run tests with coverage\nanchor test --skip-build -- --features devnet --coverage\n\n# ===== DEPLOYMENT =====\necho \"🚀 Deploying program...\"\nANCHOR_PROVIDER_URL=https://api.devnet.solana.com anchor deploy\n\n# Verify deployment\nPROGRAM_ID=$(solana program show --output json | jq -r '.programId')\necho \"✅ Program deployed with ID: $PROGRAM_ID\"\n\n# ===== POST-DEPLOYMENT =====\necho \"🔍 Verifying program state...\"\nsolana program dump $PROGRAM_ID ./program_dump.so\n\n# Check for common issues\nif ! solana program show $PROGRAM_ID --output json | jq -e '.data.parsed' > /dev/null; then\n  echo \"❌ Program data not parsed correctly. Check logs for errors.\"\n  exit 1\nfi\n\necho \"🎉 Deployment completed successfully!\"\n```\n\nKey security measures implemented:\n1. Strict error handling with `set -euo pipefail` to catch failures early\n2. Balance check before deployment to prevent failed transactions\n3. Anchor's built-in security features for program initialization\n4. Post-deployment verification of program state\n5. Explicit network configuration to prevent mainnet accidents\n\nThe script follows Solana's current best practices for:\n- Gas optimization by using Anchor's optimized build system\n- Secure keypair management through environment variables\n- Comprehensive error checking at each deployment stage\n- Test coverage requirements before production deployment\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "solana-dev-skill#main-content",
+      "solana-dev-skill#overview",
+      "solana-dev-skill#setup",
+      "solana-dev-skill#examples",
+      "solana-dev-skill#tools",
+      "solana-dev-skill#mcp",
+      "solana-dev-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill equips Claude Code with comprehensive knowledge of the current Solana development ecosystem, including the Solana Foundation framework-kit for UI, @solana/kit v5.x for client development, and Anchor for program development. It covers testing frameworks like LiteSVM, Mollusk, and Surfpool, plus security vulnerability patterns, version compatibility matrices, and common error solutions. Developers get guidance on wallet connections, transaction building, program development, client generation with Codama, and local testing setups. The skill addresses toolchain issues, version mismatches, and migration paths between framework versions, helping teams maintain secure and efficient Solana workflows.\nBuilding Solana dApps with React and wallet connection flows\nDeveloping on-chain programs with Anchor or Pinocchio\nUnit and integration testing with LiteSVM, Mollusk, and Surfpool\nGenerating typed program clients with Codama",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/solana-foundation/solana-dev-skill`",
+    "usage_vi": "```\nAutomate the Solana smart contract deployment for [PROJECT_NAME] using [SOLANA_TOOLKIT: solana-cli/solana-program-library/anchor]. Follow current best practices for security, gas optimization, and error handling. Generate a deployment script that includes: 1) Environment setup with [NETWORK: devnet/testnet/mainnet-beta], 2) Build and test steps with [TEST_FRAMEWORK: mocha/anchor-test], 3) Secure deployment with [WALLET_TYPE: keypair/ledger], and 4) Post-deployment verification. Include error handling for common Solana issues like transaction timeouts or insufficient funds. Provide the complete script with inline comments explaining each step.\n```\nCopy\n\n```\nHere's a production-ready deployment script for the 'NFTMarketplace' project targeting devnet, using Anchor framework and a local keypair wallet:\n\n```bash\n#!/bin/bash\nset -euo pipefail\n\n# ===== CONFIGURATION =====\nPROJECT_NAME=\"NFTMarketplace\"\nNETWORK=\"devnet\"\nANCHOR_VERSION=\"0.29.0\"\nKEYPAIR_PATH=\"~/.config/solana/devnet.json\"\nPROGRAM_ID=\"Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS\"\n\n# ===== ENVIRONMENT SETUP =====\necho \"🔧 Setting up Solana environment...\"\nsolana config set --url $NETWORK\nsolana config set --keypair $KEYPAIR_PATH\nsolana balance --output json | jq -r '.value' | awk '$1 < 1 {print \"⚠️ Insufficient SOL. Airdrop needed.\"; exit 1}'\n\n# ===== BUILD AND TEST =====\necho \"🔨 Building Anchor project...\"\nanchor build -- --features devnet\n\n# Run tests with coverage\nanchor test --skip-build -- --features devnet --coverage\n\n# ===== DEPLOYMENT =====\necho \"🚀 Deploying program...\"\nANCHOR_PROVIDER_URL=https://api.devnet.solana.com anchor deploy\n\n# Verify deployment\nPROGRAM_ID=$(solana program show --output json | jq -r '.programId')\necho \"✅ Program deployed with ID: $PROGRAM_ID\"\n\n# ===== POST-DEPLOYMENT =====\necho \"🔍 Verifying program state...\"\nsolana program dump $PROGRAM_ID ./program_dump.so\n\n# Check for common issues\nif ! solana program show $PROGRAM_ID --output json | jq -e '.data.parsed' > /dev/null; then\n  echo \"❌ Program data not parsed correctly. Check logs for errors.\"\n  exit 1\nfi\n\necho \"🎉 Deployment completed successfully!\"\n```\n\nKey security measures implemented:\n1. Strict error handling with `set -euo pipefail` to catch failures early\n2. Balance check before deployment to prevent failed transactions\n3. Anchor's built-in security features for program initialization\n4. Post-deployment verification of program state\n5. Explicit network configuration to prevent mainnet accidents\n\nThe script follows Solana's current best practices for:\n- Gas optimization by using Anchor's optimized build system\n- Secure keypair management through environment variables\n- Comprehensive error checking at each deployment stage\n- Test coverage requirements before production deployment\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:12:09.229780Z",
+    "http_status": 200,
+    "content_hash": "fe662a34130dff1c87dc5fb66c5e8587ca49c4c2568b7303c0aa23c277f13d10",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\solana-dev-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\solana-dev-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Solana Dev Skill - Automate Blockchain Development",
+  "short_description_vi": "Automate Solana development tasks with up-to-date best practices. Operations teams can streamline blockchain development, integrate with Solana tools, and maintain secure, efficient workflows."
+}

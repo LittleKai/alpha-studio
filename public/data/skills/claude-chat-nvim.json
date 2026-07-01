@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-chat-nvim",
+  "slug": "claude-chat-nvim",
+  "name": "Claude Chat.nvim",
+  "headline": "claude-chat.nvim: Neovim integration tool",
+  "short_description": "A Neovim plugin that integrates Claude Code CLI directly into your editor, automatically sharing file context and selections without modifying Claude's configuration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "WTFox",
+  "install_command": "git clone https://github.com/WTFox/claude-chat.nvim.git",
+  "source_repo_url": "https://github.com/WTFox/claude-chat.nvim",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "neovim",
+    "neovim-plugin",
+    "claude",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "claude-chat.nvim is a Neovim plugin that wraps Claude Code CLI, enabling seamless AI-assisted coding workflows directly in your editor. It automatically passes your current file, selections, and custom prompts to Claude while displaying changes in real-time. The plugin supports interactive chat in split or floating windows, visual selection handling, and customizable keybindings. Whether you're debugging code, asking about specific functions, or getting general coding advice, claude-chat.nvim bridges your editor and Claude Code without configuration changes. Built for developers using Neovim 0.7+ who want Claude's capabilities without leaving their workflow.\nAsk Claude about the current file or specific code selection\nDebug code issues with context automatically shared\nToggle Claude chat window visibility while preserving conversation state\nSend direct commands to Claude from Neovim without opening external tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/WTFox/claude-chat.nvim`",
+    "usage": "```\nCreate a Neovim plugin that integrates Claude's API for code workflows. The plugin should allow users to send code snippets from their Neovim editor to Claude for analysis, suggestions, or debugging. Include features like syntax highlighting for the code snippets and a sidebar for displaying Claude's responses. The plugin should be compatible with Neovim 0.9 or later. Use the following structure for the plugin: [PLUGIN_NAME], [FEATURES], [COMPATIBILITY].\n```\nCopy\n\n```\n```lua\n-- claude-chat.nvim\nlocal M = {}\n\n-- Setup function\nfunction M.setup()\n  -- Initialize the plugin\n  vim.api.nvim_create_user_command('ClaudeChat', function()\n    -- Open a new buffer for the chat\n    local buf = vim.api.nvim_create_buf(false, true)\n    vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')\n    vim.api.nvim_open_win(buf, true, {\n      relative = 'editor',\n      width = 80,\n      height = 20,\n      col = 0,\n      row = 0,\n      style = 'minimal',\n      border = 'rounded'\n    })\n  end, {})\nend\n\n-- Function to send code to Claude\nfunction M.send_to_claude()\n  local code = vim.api.nvim_get_current_line()\n  -- Here you would integrate with Claude's API\n  -- For now, we'll just print the code to the chat buffer\n  local buf = vim.api.nvim_get_current_buf()\n  vim.api.nvim_buf_set_lines(buf, -1, -1, false, {\n    '```lua\n',\n    code,\n    '```'\n  })\nend\n\nreturn M\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-chat-nvim#main-content",
+      "claude-chat-nvim#overview",
+      "claude-chat-nvim#setup",
+      "claude-chat-nvim#examples",
+      "claude-chat-nvim#tools",
+      "claude-chat-nvim#mcp",
+      "claude-chat-nvim#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-chat.nvim là một plugin Neovim đóng gói (wrap) Claude Code CLI, hỗ trợ quy trình lập trình có AI trợ giúp một cách liền mạch ngay trong trình soạn thảo của bạn. Plugin tự động chuyển file hiện tại, các vùng chọn (selection) và prompt tùy chỉnh tới Claude, đồng thời hiển thị các thay đổi theo thời gian thực. Plugin này cũng hỗ trợ chat tương tác trong cửa sổ chia đôi (split window) hoặc cửa sổ nổi (floating window), xử lý visual selection và tùy biến keybindings. Dù bạn đang debug code, hỏi về các hàm cụ thể hay cần tư vấn lập trình chung, claude-chat.nvim giúp kết nối trình soạn thảo của bạn với Claude Code mà không cần thay đổi cấu hình. Được thiết kế cho các nhà phát triển sử dụng Neovim 0.7+ muốn khai thác sức mạnh của Claude mà không làm gián đoạn workflow.\n\nHỏi Claude về file hiện tại hoặc vùng chọn code cụ thể\nDebug các lỗi code với ngữ cảnh được chia sẻ tự động\nBật/tắt hiển thị cửa sổ chat Claude nhưng vẫn giữ nguyên trạng thái hội thoại\nGửi lệnh trực tiếp đến Claude từ Neovim mà không cần mở các công cụ bên ngoài",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/WTFox/claude-chat.nvim`",
+    "usage_vi": "```\nTạo một plugin Neovim tích hợp API của Claude cho các quy trình làm việc với code. Plugin sẽ cho phép người dùng gửi các đoạn code từ trình soạn thảo Neovim đến Claude để phân tích, gợi ý hoặc debug. Hãy thêm các tính năng như highlight cú pháp cho các đoạn code và một sidebar để hiển thị phản hồi của Claude. Plugin cần tương thích với Neovim 0.9 trở lên. Sử dụng cấu trúc sau cho plugin: [PLUGIN_NAME], [FEATURES], [COMPATIBILITY].\n```\nCopy\n\n```lua\n-- claude-chat.nvim\nlocal M = {}\n\n-- Hàm setup\nfunction M.setup()\n  -- Khởi tạo plugin\n  vim.api.nvim_create_user_command('ClaudeChat', function()\n    -- Mở một buffer mới cho cuộc trò chuyện\n    local buf = vim.api.nvim_create_buf(false, true)\n    vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')\n    vim.api.nvim_open_win(buf, true, {\n      relative = 'editor',\n      width = 80,\n      height = 20,\n      col = 0,\n      row = 0,\n      style = 'minimal',\n      border = 'rounded'\n    })\n  end, {})\nend\n\n-- Hàm gửi code đến Claude\nfunction M.send_to_claude()\n  local code = vim.api.nvim_get_current_line()\n  -- Tại đây bạn sẽ tích hợp với API của Claude\n  -- Hiện tại, chúng ta chỉ ghi code vào chat buffer\n  local buf = vim.api.nvim_get_current_buf()\n  vim.api.nvim_buf_set_lines(buf, -1, -1, false, {\n    '```lua\\n',\n    code,\n    '```'\n  })\nend\n\nreturn M\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:09:21.264378Z",
+    "http_status": 200,
+    "content_hash": "4d23aae1632d1d99acc5de0ff00d76f1d1da1fa54a66f37d18d12e9a3a29fdf4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-chat-nvim.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-chat-nvim.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-chat.nvim: Công cụ tích hợp Neovim",
+  "short_description_vi": "Một plugin Neovim giúp tích hợp trực tiếp Claude Code CLI vào trình soạn thảo của bạn, tự động chia sẻ ngữ cảnh file và các vùng chọn (selection) mà không cần thay đổi cấu hình của Claude."
+}

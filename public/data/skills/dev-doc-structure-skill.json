@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dev-doc-structure-skill",
+  "slug": "dev-doc-structure-skill",
+  "name": "browser-use",
+  "headline": "Dev Doc Structure: Documentation Management",
+  "short_description": "A documentation management system that helps developers create, standardize, and maintain professional development docs across project lifecycles.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "541968679",
+  "install_command": "git clone https://github.com/541968679/dev-doc-structure-skill.git",
+  "source_repo_url": "https://github.com/541968679/dev-doc-structure-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Dev Doc Structure is a universal documentation system management tool designed for development projects. It provides three core capabilities: rapid initialization of standardized documentation for new projects, standardization and deduplication for existing projects, and lifecycle maintenance with clear update rules. The skill includes seven preset structures for different project types (frontend, backend, CLI, libraries, and others), content guidelines specifying what each document should contain, and ten update trigger rules to keep documentation current. It eliminates information duplication through single-source-of-truth architecture and helps teams maintain professional, organized documentation throughout a project's lifecycle.\nInitialize standardized document structures for new Spring Boot or Node.js projects\nConsolidate and deduplicate existing documentation by eliminating redundant content across files\nReceive automatic reminders to update relevant documents when features or APIs change\nMaintain environment setup, architecture, API, and deployment documentation with clear ownership",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/541968679/dev-doc-structure-skill`",
+    "usage": "```\nAct as a development documentation manager. Create a structured documentation system for [PROJECT_NAME], a [PROJECT_TYPE] project in [INDUSTRY]. Include sections for API references, code examples, and troubleshooting guides. Ensure the structure is scalable and easy to navigate.\n```\nCopy\n\n```\n# Development Documentation for [PROJECT_NAME]\n\n### Python Example\n```python\nimport requests\n\n# Retrieve data from the system\nresponse = requests.get('https://api.example.com/data')\ndata = response.json()\nprint(data)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dev-doc-structure-skill#main-content",
+      "dev-doc-structure-skill#overview",
+      "dev-doc-structure-skill#setup",
+      "dev-doc-structure-skill#examples",
+      "dev-doc-structure-skill#tools",
+      "dev-doc-structure-skill#mcp",
+      "dev-doc-structure-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Dev Doc Structure is a universal documentation system management tool designed for development projects. It provides three core capabilities: rapid initialization of standardized documentation for new projects, standardization and deduplication for existing projects, and lifecycle maintenance with clear update rules. The skill includes seven preset structures for different project types (frontend, backend, CLI, libraries, and others), content guidelines specifying what each document should contain, and ten update trigger rules to keep documentation current. It eliminates information duplication through single-source-of-truth architecture and helps teams maintain professional, organized documentation throughout a project's lifecycle.\nInitialize standardized document structures for new Spring Boot or Node.js projects\nConsolidate and deduplicate existing documentation by eliminating redundant content across files\nReceive automatic reminders to update relevant documents when features or APIs change\nMaintain environment setup, architecture, API, and deployment documentation with clear ownership",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/541968679/dev-doc-structure-skill`",
+    "usage_vi": "```\nAct as a development documentation manager. Create a structured documentation system for [PROJECT_NAME], a [PROJECT_TYPE] project in [INDUSTRY]. Include sections for API references, code examples, and troubleshooting guides. Ensure the structure is scalable and easy to navigate.\n```\nCopy\n\n```\n# Development Documentation for [PROJECT_NAME]\n\n### Python Example\n```python\nimport requests\n\n# Retrieve data from the system\nresponse = requests.get('https://api.example.com/data')\ndata = response.json()\nprint(data)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:32:33.035394Z",
+    "http_status": 200,
+    "content_hash": "5d6a86bea6f53306cac07842a055c8c556e808a9f7332c74c0cae27b86e0fcec",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dev-doc-structure-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dev-doc-structure-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Dev Doc Structure: Documentation Management",
+  "short_description_vi": "A documentation management system that helps developers create, standardize, and maintain professional development docs across project lifecycles."
+}

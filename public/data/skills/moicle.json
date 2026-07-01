@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/moicle",
+  "slug": "moicle",
+  "name": "moicle",
+  "headline": "MoiCle: AI Agents & Skills for Claude Code",
+  "short_description": "MoiCle provides 16 AI agents, 21 automation skills, and 9 architecture references to accelerate development in Claude Code, Cursor, Codex CLI, and Antigravity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "phuthuycoding",
+  "install_command": "git clone https://github.com/phuthuycoding/moicle.git",
+  "source_repo_url": "https://github.com/phuthuycoding/moicle",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "ai",
+    "agent-kit",
+    "agent"
+  ],
+  "sections": {
+    "overview": "MoiCle is a toolkit that equips Claude Code, Cursor, Codex CLI, and Antigravity with specialized AI agents, reusable automation skills, and architecture patterns. It includes six developer agents (Flutter, Go, Laravel, Node.js, React, Remix), ten utility agents (API design, security audit, DevOps, testing), and 21 auto-triggered skills covering the full software development lifecycle—from feature development and bug fixes to code review, documentation, and release workflows. Developers install MoiCle via npm and choose their target IDE and scope (global or project-level), gaining immediate access to guided wizards for bootstrapping, brainstorming, and documentation generation.\nAccelerate end-to-end feature development with DDD-guided workflows\nRapidly debug and resolve production incidents with hotfix and root-cause analysis skills\nEnforce code quality and security through automated review and audit agents\nBootstrap new projects with stack-specific architecture and agent templates",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/phuthuycoding/moicle`",
+    "usage": "```\nCreate a reusable AI agent for [COMPANY] in the [INDUSTRY] sector. The agent should automate [SPECIFIC TASK] using [TECHNOLOGY/TOOL]. Provide the code in Python and include detailed comments. Ensure the agent can be easily integrated into [SPECIFIC PLATFORM] like Claude Code or Antigravity.\n```\nCopy\n\n```\n# AI Agent for Automating Customer Support Tickets\n# Company: TechSolutions Inc.\n# Industry: IT Services\n# Task: Automate the categorization and prioritization of customer support tickets\n# Technology: Natural Language Processing (NLP) and Python\n\n```python\nimport requests\nimport json\n\n# API endpoint for the support ticket system\nAPI_URL = \"https://api.techsolutions.com/tickets\"\n\n# Function to categorize and prioritize tickets\ndef process_ticket(ticket_data):\n    # Extract relevant information from the ticket\n    subject = ticket_data['subject']\n    description = ticket_data['description']\n    \n    # Use NLP to categorize the ticket\n    category = categorize_ticket(subject, description)\n    \n    # Determine the priority of the ticket\n    priority = determine_priority(subject, description)\n    \n    # Update the ticket with the new category and priority\n    update_ticket(ticket_data['id'], category, priority)\n    \n# Function to categorize the ticket using NLP\ndef categorize_ticket(subject, description):\n    # Implement NLP logic here\n    # This is a placeholder for the actual NLP implementation\n    if \"login\" in subject.lower() or \"login\" in description.lower():\n        return \"Authentication\"\n    elif \"payment\" in subject.lower() or \"payment\" in description.lower():\n        return \"Billing\"\n    else:\n        return \"General\"\n\n# Function to determine the priority of the ticket\ndef determine_priority(subject, description):\n    # Implement priority logic here\n    # This is a placeholder for the actual priority determination logic\n    if \"urgent\" in subject.lower() or \"urgent\" in description.lower():\n        return \"High\"\n    else:\n        return \"Medium\"\n\n# Function to update the ticket with the new category and priority\ndef update_ticket(ticket_id, category, priority):\n    # Prepare the data to be sent to the API\n    data = {\n        \"ticket_id\": ticket_id,\n        \"category\": category,\n        \"priority\": priority\n    }\n    \n    # Send the data to the API\n    response = requests.post(API_URL, json=data)\n    \n    # Check the response from the API\n    if response.status_code == 200:\n        print(f\"Ticket {ticket_id} updated successfully.\")\n    else:\n        print(f\"Failed to update ticket {ticket_id}. Error: {response.text}\")\n\n# Example usage\nif __name__ == \"__main__\":\n    # Example ticket data\n    ticket_data = {\n        \"id\": 12345,\n        \"subject\": \"Login Issue\",\n        \"description\": \"I am unable to log in to my account.\"\n    }\n    \n    # Process the ticket\n    process_ticket(ticket_data)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "moicle#main-content",
+      "moicle#overview",
+      "moicle#setup",
+      "moicle#examples",
+      "moicle#tools",
+      "moicle#mcp",
+      "moicle#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MoiCle is a toolkit that equips Claude Code, Cursor, Codex CLI, and Antigravity with specialized AI agents, reusable automation skills, and architecture patterns. It includes six developer agents (Flutter, Go, Laravel, Node.js, React, Remix), ten utility agents (API design, security audit, DevOps, testing), and 21 auto-triggered skills covering the full software development lifecycle—from feature development and bug fixes to code review, documentation, and release workflows. Developers install MoiCle via npm and choose their target IDE and scope (global or project-level), gaining immediate access to guided wizards for bootstrapping, brainstorming, and documentation generation.\nAccelerate end-to-end feature development with DDD-guided workflows\nRapidly debug and resolve production incidents with hotfix and root-cause analysis skills\nEnforce code quality and security through automated review and audit agents\nBootstrap new projects with stack-specific architecture and agent templates",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/phuthuycoding/moicle`",
+    "usage_vi": "```\nCreate a reusable AI agent for [COMPANY] in the [INDUSTRY] sector. The agent should automate [SPECIFIC TASK] using [TECHNOLOGY/TOOL]. Provide the code in Python and include detailed comments. Ensure the agent can be easily integrated into [SPECIFIC PLATFORM] like Claude Code or Antigravity.\n```\nCopy\n\n```\n# AI Agent for Automating Customer Support Tickets\n# Company: TechSolutions Inc.\n# Industry: IT Services\n# Task: Automate the categorization and prioritization of customer support tickets\n# Technology: Natural Language Processing (NLP) and Python\n\n```python\nimport requests\nimport json\n\n# API endpoint for the support ticket system\nAPI_URL = \"https://api.techsolutions.com/tickets\"\n\n# Function to categorize and prioritize tickets\ndef process_ticket(ticket_data):\n    # Extract relevant information from the ticket\n    subject = ticket_data['subject']\n    description = ticket_data['description']\n    \n    # Use NLP to categorize the ticket\n    category = categorize_ticket(subject, description)\n    \n    # Determine the priority of the ticket\n    priority = determine_priority(subject, description)\n    \n    # Update the ticket with the new category and priority\n    update_ticket(ticket_data['id'], category, priority)\n    \n# Function to categorize the ticket using NLP\ndef categorize_ticket(subject, description):\n    # Implement NLP logic here\n    # This is a placeholder for the actual NLP implementation\n    if \"login\" in subject.lower() or \"login\" in description.lower():\n        return \"Authentication\"\n    elif \"payment\" in subject.lower() or \"payment\" in description.lower():\n        return \"Billing\"\n    else:\n        return \"General\"\n\n# Function to determine the priority of the ticket\ndef determine_priority(subject, description):\n    # Implement priority logic here\n    # This is a placeholder for the actual priority determination logic\n    if \"urgent\" in subject.lower() or \"urgent\" in description.lower():\n        return \"High\"\n    else:\n        return \"Medium\"\n\n# Function to update the ticket with the new category and priority\ndef update_ticket(ticket_id, category, priority):\n    # Prepare the data to be sent to the API\n    data = {\n        \"ticket_id\": ticket_id,\n        \"category\": category,\n        \"priority\": priority\n    }\n    \n    # Send the data to the API\n    response = requests.post(API_URL, json=data)\n    \n    # Check the response from the API\n    if response.status_code == 200:\n        print(f\"Ticket {ticket_id} updated successfully.\")\n    else:\n        print(f\"Failed to update ticket {ticket_id}. Error: {response.text}\")\n\n# Example usage\nif __name__ == \"__main__\":\n    # Example ticket data\n    ticket_data = {\n        \"id\": 12345,\n        \"subject\": \"Login Issue\",\n        \"description\": \"I am unable to log in to my account.\"\n    }\n    \n    # Process the ticket\n    process_ticket(ticket_data)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:30:30.082363Z",
+    "http_status": 200,
+    "content_hash": "95593650190955f12bac8b71d9c22123ebaf30a11d9b1895d7149dd2cfe37695",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\moicle.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\moicle.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MoiCle: AI Agents & Skills for Claude Code",
+  "short_description_vi": "MoiCle provides 16 AI agents, 21 automation skills, and 9 architecture references to accelerate development in Claude Code, Cursor, Codex CLI, and Antigravity."
+}

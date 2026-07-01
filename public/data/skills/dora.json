@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dora",
+  "slug": "dora",
+  "name": "dora",
+  "headline": "dora - Code Context CLI for AI Agents",
+  "short_description": "dora is a CLI tool that provides AI agents with fast, structured code intelligence. It replaces grep/find/glob with pre-computed aggregates, reducing token usage and improving efficiency. Operations teams benefit from quicker code navigation and context understanding, integrating with tools like Sourcegraph and SQLite.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "butttons",
+  "install_command": "git clone https://github.com/butttons/dora.git",
+  "source_repo_url": "https://github.com/butttons/dora",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cli",
+    "sqlite",
+    "claude-code",
+    "bun",
+    "terminal",
+    "ai-agent",
+    "sourcegraph",
+    "code-intelligence",
+    "code-analysis",
+    "open-code",
+    "scip"
+  ],
+  "sections": {
+    "overview": "dora pre-indexes codebases into SQLite, enabling AI agents to answer questions about code structure, dependencies, and symbol usage through millisecond queries instead of multi-step file exploration. It wraps SCIP language indexers (TypeScript, Python, Java, Rust, and more) and adds Tree-sitter analysis for function signatures, complexity metrics, and code smells. The tool reduces token consumption and speeds up code navigation for operations teams and AI agents working with Claude, Cursor, and other tools. dora outputs results in TOON format optimized for LLM token usage and provides an MCP server interface for direct agent integration.\nFind all references to a symbol across a large codebase in milliseconds\nIdentify bidirectional dependencies and circular imports automatically\nRank files by change risk and coupling to prioritize refactoring\nDiscover the most imported files and unused symbols in a project",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/butttons/dora`",
+    "usage": "```\nUse dora to analyze the [CODEBASE_PATH] repository and identify all functions that call [SPECIFIC_FUNCTION_NAME]. For each caller, extract the file path, line number, and the context of the call (e.g., 3 lines before/after). Format the results as a structured table with columns: File Path, Line Number, Context, and Caller Function Name. Prioritize results by most recently modified files first.\n```\nCopy\n\n```\nHere’s the analysis of calls to `processTransaction()` in the `payment-gateway` repository as of 2024-05-20. The results are ordered by most recently modified files:\n\n| File Path               | Line Number | Context                                                                                     | Caller Function Name       |\n|-------------------------|-------------|---------------------------------------------------------------------------------------------|-----------------------------|\n| src/handlers/api.js     | 42          | ```javascript\n  const result = await processTransaction(\n    transactionData,\n    { retryPolicy: 'exponential' }\n  );\n```                                                                 | handlePaymentRequest       |\n| src/utils/validators.js | 187         | ```javascript\n  if (!isValidTransaction(transaction)) {\n    processTransaction(transaction, { dryRun: true });\n  }\n```                                                                 | validateTransaction         |\n| src/services/ledger.js  | 315         | ```javascript\n  const ledgerEntry = processTransaction(\n    transaction,\n    { includeMetadata: true }\n  );\n```                                                                 | updateLedger               |\n| src/legacy/v1/bridge.js | 78          | ```javascript\n  processTransaction(legacyData, { version: '1.0' });\n```                                                                 | legacyBridgeHandler        |\n\n**Key Insights:**\n- The `api.js` and `validators.js` files are the most frequently modified, suggesting active development in these areas.\n- The `ledger.js` file uses `processTransaction` with metadata, which may be critical for auditing.\n- The `bridge.js` file in the legacy directory appears to be a compatibility layer, indicating potential technical debt.\n\n**Recommendations:**\n1. Review the `api.js` handler for potential optimizations in transaction processing.\n2. Investigate the `validators.js` file for edge cases where `processTransaction` is called with `dryRun: true`.\n3. Consider refactoring the `bridge.js` file to reduce dependency on `processTransaction` in legacy code.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dora#main-content",
+      "dora#overview",
+      "dora#setup",
+      "dora#examples",
+      "dora#tools",
+      "dora#mcp",
+      "dora#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "dora pre-indexes codebases into SQLite, enabling AI agents to answer questions about code structure, dependencies, and symbol usage through millisecond queries instead of multi-step file exploration. It wraps SCIP language indexers (TypeScript, Python, Java, Rust, and more) and adds Tree-sitter analysis for function signatures, complexity metrics, and code smells. The tool reduces token consumption and speeds up code navigation for operations teams and AI agents working with Claude, Cursor, and other tools. dora outputs results in TOON format optimized for LLM token usage and provides an MCP server interface for direct agent integration.\nFind all references to a symbol across a large codebase in milliseconds\nIdentify bidirectional dependencies and circular imports automatically\nRank files by change risk and coupling to prioritize refactoring\nDiscover the most imported files and unused symbols in a project",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/butttons/dora`",
+    "usage_vi": "```\nUse dora to analyze the [CODEBASE_PATH] repository and identify all functions that call [SPECIFIC_FUNCTION_NAME]. For each caller, extract the file path, line number, and the context of the call (e.g., 3 lines before/after). Format the results as a structured table with columns: File Path, Line Number, Context, and Caller Function Name. Prioritize results by most recently modified files first.\n```\nCopy\n\n```\nHere’s the analysis of calls to `processTransaction()` in the `payment-gateway` repository as of 2024-05-20. The results are ordered by most recently modified files:\n\n| File Path               | Line Number | Context                                                                                     | Caller Function Name       |\n|-------------------------|-------------|---------------------------------------------------------------------------------------------|-----------------------------|\n| src/handlers/api.js     | 42          | ```javascript\n  const result = await processTransaction(\n    transactionData,\n    { retryPolicy: 'exponential' }\n  );\n```                                                                 | handlePaymentRequest       |\n| src/utils/validators.js | 187         | ```javascript\n  if (!isValidTransaction(transaction)) {\n    processTransaction(transaction, { dryRun: true });\n  }\n```                                                                 | validateTransaction         |\n| src/services/ledger.js  | 315         | ```javascript\n  const ledgerEntry = processTransaction(\n    transaction,\n    { includeMetadata: true }\n  );\n```                                                                 | updateLedger               |\n| src/legacy/v1/bridge.js | 78          | ```javascript\n  processTransaction(legacyData, { version: '1.0' });\n```                                                                 | legacyBridgeHandler        |\n\n**Key Insights:**\n- The `api.js` and `validators.js` files are the most frequently modified, suggesting active development in these areas.\n- The `ledger.js` file uses `processTransaction` with metadata, which may be critical for auditing.\n- The `bridge.js` file in the legacy directory appears to be a compatibility layer, indicating potential technical debt.\n\n**Recommendations:**\n1. Review the `api.js` handler for potential optimizations in transaction processing.\n2. Investigate the `validators.js` file for edge cases where `processTransaction` is called with `dryRun: true`.\n3. Consider refactoring the `bridge.js` file to reduce dependency on `processTransaction` in legacy code.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:40:52.238735Z",
+    "http_status": 200,
+    "content_hash": "5bda2ba353f046484d4f344304e3334e159939615bab9b553bb7557313770aa4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dora.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dora.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "dora - Code Context CLI for AI Agents",
+  "short_description_vi": "dora is a CLI tool that provides AI agents with fast, structured code intelligence. It replaces grep/find/glob with pre-computed aggregates, reducing token usage and improving efficiency. Operations teams benefit from quicker code navigation and context understanding, integrating with tools like Sourcegraph and SQLite."
+}

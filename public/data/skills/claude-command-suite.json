@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-command-suite",
+  "slug": "claude-command-suite",
+  "name": "Claude-Command-Suite",
+  "headline": "Professional command suite for Claude Code",
+  "short_description": "Professional slash commands for Claude Code that provide   structured workflows for software development tasks including   code review, feature creation, security auditing, and architectural analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "qdhenry",
+  "install_command": "git clone https://github.com/qdhenry/Claude-Command-Suite.git",
+  "source_repo_url": "https://github.com/qdhenry/Claude-Command-Suite",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cli-tools",
+    "productivity",
+    "anthropic",
+    "software-development",
+    "slash-commands",
+    "workflow-automation",
+    "developer-tools",
+    "ai-tools",
+    "code-review",
+    "claude-code",
+    "security-audit"
+  ],
+  "sections": {
+    "overview": "Claude-Command-Suite is a comprehensive command framework that extends Claude Code with 216+ professionally organized slash commands across 12 skills, including webmcp, bigcommerce-api, audit-env-variables, and more. Commands are organized into namespaces like dev/, setup/, spec-workflow/, rust/, media/, and session/ for streamlined access and discovery. The suite supports structured workflows for code review, feature creation, security auditing, and architectural analysis—enabling developers to delegate complex software development tasks to Claude with consistent, repeatable command patterns. Each command namespace groups related functionality, making it easy to discover and execute the right tool for your development stage.\nAutomate code reviews to ensure consistent quality and adherence to best practices.\nGenerate test cases automatically to improve test coverage and reduce manual effort.\nConduct security audits to identify vulnerabilities in the codebase before deployment.\nSynchronize tasks between GitHub and Linear for seamless project management.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/qdhenry/Claude-Command-Suite`",
+    "usage": "```\nUse the Claude-Command-Suite to [TASK]. Run the following commands in sequence: \n1. `claude /code-review [PROJECT_PATH]`\n2. `claude /security-audit [PROJECT_PATH]`\n3. `claude /architectural-analysis [PROJECT_PATH]`\n4. `claude /feature-create [FEATURE_NAME] [PROJECT_PATH]`\n\nAfter each command, review the output and refine the next step based on findings. Focus on [SPECIFIC_FOCUS_AREA] such as performance bottlenecks or security vulnerabilities.\n```\nCopy\n\n```\n### Code Review Report for Project: `acme-ecommerce`\n\n**Critical Issues (3):**\n1. **Memory Leak in Checkout Service** (Line 42, `checkout.py`): The `Cart` class fails to clear session data after order completion, causing memory bloat. Suggested fix: Add `session.clear()` in `process_order()`.\n2. **SQL Injection Vulnerability** (Line 112, `user_dao.py`): User input in `search_users()` is concatenated directly into SQL. Recommend using parameterized queries with `psycopg2`.\n3. **Race Condition in Inventory Update** (Line 78, `inventory_service.py`): No locking mechanism during stock decrement. Fix: Implement `threading.Lock` or use database transactions.\n\n**Performance Bottlenecks:**\n- API endpoint `/products` averages 800ms response time due to unoptimized database queries. Suggest adding an index on `product_category` and caching hot products with Redis.\n\n**Security Audit Findings:**\n- 2 out of 5 endpoints lack rate limiting (CWE-770). Recommend integrating `flask-limiter`.\n- Hardcoded API keys in `config.py` (lines 45-47). Replace with environment variables.\n\n**Architectural Analysis:**\n- Monolithic structure limits scalability. Consider microservices for `auth`, `inventory`, and `payment` domains.\n- No observability tools integrated. Add Prometheus metrics and structured logging.\n\n**Feature Creation Plan for `subscription-tier`:**\n1. Generate new endpoint `/subscriptions` with Stripe integration.\n2. Add tier validation logic in `billing_service.py`.\n3. Update frontend to display tier options in `/pricing`.\n\n**Next Steps:**\n- Prioritize memory leak fix (P0) and deploy within 24 hours.\n- Schedule security patch for next sprint.\n- Refactor inventory service to use optimistic locking.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-command-suite#main-content",
+      "claude-command-suite#overview",
+      "claude-command-suite#setup",
+      "claude-command-suite#examples",
+      "claude-command-suite#tools",
+      "claude-command-suite#mcp",
+      "claude-command-suite#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Command-Suite is a comprehensive command framework that extends Claude Code with 216+ professionally organized slash commands across 12 skills, including webmcp, bigcommerce-api, audit-env-variables, and more. Commands are organized into namespaces like dev/, setup/, spec-workflow/, rust/, media/, and session/ for streamlined access and discovery. The suite supports structured workflows for code review, feature creation, security auditing, and architectural analysis—enabling developers to delegate complex software development tasks to Claude with consistent, repeatable command patterns. Each command namespace groups related functionality, making it easy to discover and execute the right tool for your development stage.\nAutomate code reviews to ensure consistent quality and adherence to best practices.\nGenerate test cases automatically to improve test coverage and reduce manual effort.\nConduct security audits to identify vulnerabilities in the codebase before deployment.\nSynchronize tasks between GitHub and Linear for seamless project management.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/qdhenry/Claude-Command-Suite`",
+    "usage_vi": "```\nUse the Claude-Command-Suite to [TASK]. Run the following commands in sequence: \n1. `claude /code-review [PROJECT_PATH]`\n2. `claude /security-audit [PROJECT_PATH]`\n3. `claude /architectural-analysis [PROJECT_PATH]`\n4. `claude /feature-create [FEATURE_NAME] [PROJECT_PATH]`\n\nAfter each command, review the output and refine the next step based on findings. Focus on [SPECIFIC_FOCUS_AREA] such as performance bottlenecks or security vulnerabilities.\n```\nCopy\n\n```\n### Code Review Report for Project: `acme-ecommerce`\n\n**Critical Issues (3):**\n1. **Memory Leak in Checkout Service** (Line 42, `checkout.py`): The `Cart` class fails to clear session data after order completion, causing memory bloat. Suggested fix: Add `session.clear()` in `process_order()`.\n2. **SQL Injection Vulnerability** (Line 112, `user_dao.py`): User input in `search_users()` is concatenated directly into SQL. Recommend using parameterized queries with `psycopg2`.\n3. **Race Condition in Inventory Update** (Line 78, `inventory_service.py`): No locking mechanism during stock decrement. Fix: Implement `threading.Lock` or use database transactions.\n\n**Performance Bottlenecks:**\n- API endpoint `/products` averages 800ms response time due to unoptimized database queries. Suggest adding an index on `product_category` and caching hot products with Redis.\n\n**Security Audit Findings:**\n- 2 out of 5 endpoints lack rate limiting (CWE-770). Recommend integrating `flask-limiter`.\n- Hardcoded API keys in `config.py` (lines 45-47). Replace with environment variables.\n\n**Architectural Analysis:**\n- Monolithic structure limits scalability. Consider microservices for `auth`, `inventory`, and `payment` domains.\n- No observability tools integrated. Add Prometheus metrics and structured logging.\n\n**Feature Creation Plan for `subscription-tier`:**\n1. Generate new endpoint `/subscriptions` with Stripe integration.\n2. Add tier validation logic in `billing_service.py`.\n3. Update frontend to display tier options in `/pricing`.\n\n**Next Steps:**\n- Prioritize memory leak fix (P0) and deploy within 24 hours.\n- Schedule security patch for next sprint.\n- Refactor inventory service to use optimistic locking.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:44:32.998414Z",
+    "http_status": 200,
+    "content_hash": "26aff740e880642c798e5f63861288a2db78c161bd9dfcffc369d06861c814c3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-command-suite.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-command-suite.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Professional command suite for Claude Code",
+  "short_description_vi": "Professional slash commands for Claude Code that provide   structured workflows for software development tasks including   code review, feature creation, security auditing, and architectural analysis."
+}

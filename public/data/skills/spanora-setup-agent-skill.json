@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spanora-setup-agent-skill",
+  "slug": "spanora-setup-agent-skill",
+  "name": "copilotkit",
+  "headline": "Spanora Setup Agent Skill: LLM Observability",
+  "short_description": "The Spanora Setup Agent Skill guides users through integrating Spanora AI observability into their projects. It is designed for developers looking to enhance LLM monitoring and tracking in their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "spanora",
+  "install_command": "git clone https://github.com/spanora/skills",
+  "source_repo_url": "https://github.com/spanora/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "agent",
+    "spanora",
+    "ai-integration",
+    "setup"
+  ],
+  "sections": {
+    "overview": "The Spanora Setup Agent Skill automates the integration of Spanora AI observability into your project, supporting JavaScript/TypeScript and Python environments. It detects your project language and installed AI SDKs—including Vercel AI, Anthropic, OpenAI, and LangChain—then configures the optimal integration pattern automatically. The skill guides you step-by-step through setup, from API key configuration to instrumenting LLM call sites, ensuring every AI execution produces a trace for full observability. Ideal for developers building AI agents and applications who need to monitor LLM performance, track costs, and gain insight into agent behavior without manual configuration.\nAdd Spanora for AI observability\nSetup LLM monitoring easily\nTrack AI costs with Spanora\nInstrument agents for performance insights",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/spanora/skills --skill spanora-setup`\n`git clone https://github.com/spanora/skills`",
+    "usage": "```\nHelp me integrate Spanora AI observability into my [PROJECT_TYPE, e.g., Python web application, React dashboard, or Node.js backend]. I need to set up monitoring for LLM interactions, track token usage, and log model responses. Provide step-by-step instructions for adding Spanora's SDK to my project and configuring it with my [API_KEY]. Include code snippets for [LANGUAGE, e.g., Python or JavaScript] and best practices for error handling and data validation.\n```\nCopy\n\n```\n### Spanora Integration Guide for Your React Dashboard\n\nHere’s a step-by-step walkthrough to integrate Spanora into your React dashboard (e.g., a customer support tool) to monitor LLM interactions:\n\n---\n\n#### **1. Install the Spanora SDK**\nRun this in your project directory:\n```bash\nnpm install @spanora/react-sdk\n```\n\n#### **2. Initialize Spanora in Your App**\nAdd this to your main `App.js` or entry file:\n```javascript\nimport { SpanoraProvider } from '@spanora/react-sdk';\n\nfunction App() {\n  return (\n    <SpanoraProvider apiKey=\"your_api_key_here\" projectId=\"your_project_id\">\n      {/* Your existing app components */}\n    </SpanoraProvider>\n  );\n}\n```\n\n#### **3. Wrap Your LLM Calls**\nFor example, if you’re using OpenAI’s API in a chat component:\n```javascript\nimport { useSpanora } from '@spanora/react-sdk';\n\nfunction ChatComponent() {\n  const { trackLLMInteraction } = useSpanora();\n\n  const handleSendMessage = async (message) => {\n    const response = await fetch('/api/chat', {\n      method: 'POST',\n      body: JSON.stringify({ message }),\n    });\n\n    const data = await response.json();\n\n    // Track the interaction with Spanora\n    trackLLMInteraction({\n      model: 'gpt-4',\n      input: message,\n      output: data.response,\n      tokensUsed: data.usage?.total_tokens,\n      timestamp: new Date().toISOString(),\n    });\n\n    return data.response;\n  };\n\n  // ... rest of your component\n}\n```\n\n#### **4. Verify Setup in Spanora Dashboard**\n- Log in to your [Spanora dashboard](https://app.spanora.ai).\n- Navigate to **Projects > Your Project > Observability**. You should see real-time logs of your LLM interactions, including:\n  - Input/output pairs\n  - Token usage\n  - Latency metrics\n\n---\n\n#### **Troubleshooting**\n- **401 Errors**: Double-check your `apiKey` and `projectId` in the provider.\n- **Missing Data**: Ensure `trackLLMInteraction` is called *after* the LLM response is received.\n- **Performance Impact**: Spanora’s SDK adds <5ms overhead per call—negligible for most use cases.\n\nFor advanced setups (e.g., custom logging, error tracking), refer to the [Spanora Docs](https://docs.spanora.ai).\n\nLet me know if you’d like help debugging a specific issue!\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "spanora-setup-agent-skill#main-content",
+      "spanora-setup-agent-skill#overview",
+      "spanora-setup-agent-skill#setup",
+      "spanora-setup-agent-skill#examples",
+      "spanora-setup-agent-skill#related",
+      "voice-ai-integration",
+      "copilotkit"
+    ],
+    "overview_vi": "The Spanora Setup Agent Skill automates the integration of Spanora AI observability into your project, supporting JavaScript/TypeScript and Python environments. It detects your project language and installed AI SDKs—including Vercel AI, Anthropic, OpenAI, and LangChain—then configures the optimal integration pattern automatically. The skill guides you step-by-step through setup, from API key configuration to instrumenting LLM call sites, ensuring every AI execution produces a trace for full observability. Ideal for developers building AI agents and applications who need to monitor LLM performance, track costs, and gain insight into agent behavior without manual configuration.\nAdd Spanora for AI observability\nSetup LLM monitoring easily\nTrack AI costs with Spanora\nInstrument agents for performance insights",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/spanora/skills --skill spanora-setup`\n`git clone https://github.com/spanora/skills`",
+    "usage_vi": "```\nHelp me integrate Spanora AI observability into my [PROJECT_TYPE, e.g., Python web application, React dashboard, or Node.js backend]. I need to set up monitoring for LLM interactions, track token usage, and log model responses. Provide step-by-step instructions for adding Spanora's SDK to my project and configuring it with my [API_KEY]. Include code snippets for [LANGUAGE, e.g., Python or JavaScript] and best practices for error handling and data validation.\n```\nCopy\n\n```\n### Spanora Integration Guide for Your React Dashboard\n\nHere’s a step-by-step walkthrough to integrate Spanora into your React dashboard (e.g., a customer support tool) to monitor LLM interactions:\n\n---\n\n#### **1. Install the Spanora SDK**\nRun this in your project directory:\n```bash\nnpm install @spanora/react-sdk\n```\n\n#### **2. Initialize Spanora in Your App**\nAdd this to your main `App.js` or entry file:\n```javascript\nimport { SpanoraProvider } from '@spanora/react-sdk';\n\nfunction App() {\n  return (\n    <SpanoraProvider apiKey=\"your_api_key_here\" projectId=\"your_project_id\">\n      {/* Your existing app components */}\n    </SpanoraProvider>\n  );\n}\n```\n\n#### **3. Wrap Your LLM Calls**\nFor example, if you’re using OpenAI’s API in a chat component:\n```javascript\nimport { useSpanora } from '@spanora/react-sdk';\n\nfunction ChatComponent() {\n  const { trackLLMInteraction } = useSpanora();\n\n  const handleSendMessage = async (message) => {\n    const response = await fetch('/api/chat', {\n      method: 'POST',\n      body: JSON.stringify({ message }),\n    });\n\n    const data = await response.json();\n\n    // Track the interaction with Spanora\n    trackLLMInteraction({\n      model: 'gpt-4',\n      input: message,\n      output: data.response,\n      tokensUsed: data.usage?.total_tokens,\n      timestamp: new Date().toISOString(),\n    });\n\n    return data.response;\n  };\n\n  // ... rest of your component\n}\n```\n\n#### **4. Verify Setup in Spanora Dashboard**\n- Log in to your [Spanora dashboard](https://app.spanora.ai).\n- Navigate to **Projects > Your Project > Observability**. You should see real-time logs of your LLM interactions, including:\n  - Input/output pairs\n  - Token usage\n  - Latency metrics\n\n---\n\n#### **Troubleshooting**\n- **401 Errors**: Double-check your `apiKey` and `projectId` in the provider.\n- **Missing Data**: Ensure `trackLLMInteraction` is called *after* the LLM response is received.\n- **Performance Impact**: Spanora’s SDK adds <5ms overhead per call—negligible for most use cases.\n\nFor advanced setups (e.g., custom logging, error tracking), refer to the [Spanora Docs](https://docs.spanora.ai).\n\nLet me know if you’d like help debugging a specific issue!\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:02:47.219265Z",
+    "http_status": 200,
+    "content_hash": "706bc93e99b16207934ef7fc81ddf3371c7e3a2310584d048319315b46dfbe1f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\spanora-setup-agent-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\spanora-setup-agent-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Spanora Setup Agent Skill: LLM Observability",
+  "short_description_vi": "The Spanora Setup Agent Skill guides users through integrating Spanora AI observability into their projects. It is designed for developers looking to enhance LLM monitoring and tracking in their applications."
+}

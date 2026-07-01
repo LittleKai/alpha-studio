@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/app-seo-ai",
+  "slug": "app-seo-ai",
+  "name": "App SEO Ai",
+  "headline": "App-SEO-AI: Automate Your SEO Efforts",
+  "short_description": "App-SEO-AI is an innovative application designed to automate SEO tasks and use AI for optimization. It streamlines the process of improving website visibility and search rankings, making it essential for digital marketers.",
+  "tier": "Silver",
+  "category": "MarketingGrowth",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "ccnn2509",
+  "install_command": "claude install ccnn2509/app-seo-ai",
+  "source_repo_url": "https://github.com/ccnn2509/app-seo-ai",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "digital marketing",
+    "AI",
+    "optimization",
+    "SEO"
+  ],
+  "sections": {
+    "overview": "App-SEO-AI is a Node.js application that automates core SEO workflows through Google Ads API integration and AI-powered analysis. It enables keyword research, SERP analysis, and competitor research in a unified platform with MCP (Model Context Protocol) support for AI assistants like Claude. The tool streamlines SEO optimization by surfacing keyword opportunities, analyzing search engine results pages, and benchmarking competitor domains. Digital marketers and SEO professionals use it to accelerate research cycles and generate actionable SEO recommendations without manual analysis.\nAutomating keyword research\nGenerating SEO-friendly content\nAnalyzing website performance\nOptimizing meta tags",
+    "setup": "Terminal\nCopy\n`claude install ccnn2509/app-seo-ai`\n`git clone https://github.com/ccnn2509/app-seo-ai`",
+    "usage": "```\nAnalyze the App Store Optimization (ASO) performance of [APP_NAME] on the [APP_STORE_REGION] App Store. Identify the top 5 keywords with the highest search volume that are relevant to [APP_CATEGORY] but currently underutilized by [APP_NAME]'s metadata. For each keyword, provide: (1) search volume, (2) competition score (1-100), (3) current ranking position of [APP_NAME] for that keyword, and (4) a suggested optimization strategy (e.g., title update, subtitle tweak, or keyword field adjustment). Use [COMPETITOR_APPS] as benchmarks for comparison. Format the output as a prioritized action plan with clear next steps.\n```\nCopy\n\n```\n### App Store Optimization (ASO) Analysis for 'Medito: Sleep & Meditation' (iOS - US App Store)\n\n**Top 5 Underutilized Keywords for 'Meditation' Category:**\n\n1. **'mindfulness for beginners'**\n   - Search Volume: 18,400/month\n   - Competition Score: 62/100\n   - Current Ranking: #47 (Medito is currently ranked #112)\n   - Optimization Strategy: Add to subtitle: 'Medito: Sleep & Mindfulness for Beginners'\n   - Benchmark: Headspace ranks #1 for this keyword with subtitle 'Meditation & Sleep'\n\n2. **'stress relief meditation'**\n   - Search Volume: 12,800/month\n   - Competition Score: 58/100\n   - Current Ranking: #63\n   - Optimization Strategy: Include in keyword field: 'stressrelief,stressreliefmeditation'\n   - Benchmark: Calm ranks #2 with keyword 'stress relief' in their title\n\n3. **'guided meditation for anxiety'**\n   - Search Volume: 9,200/month\n   - Competition Score: 71/100\n   - Current Ranking: #89\n   - Optimization Strategy: Update description to include phrase naturally 2-3 times\n   - Benchmark: Insight Timer ranks #1 with 'anxiety' in their title\n\n4. **'sleep stories for adults'**\n   - Search Volume: 7,600/month\n   - Competition Score: 45/100\n   - Current Ranking: #34\n   - Optimization Strategy: Add to subtitle: '...with Sleep Stories for Adults'\n   - Benchmark: ShutEye ranks #1 with 'sleep stories' in their title\n\n5. **'breathing exercises app'**\n   - Search Volume: 6,300/month\n   - Competition Score: 52/100\n   - Current Ranking: #102\n   - Optimization Strategy: Include in keyword field: 'breathingexercises'\n   - Benchmark: Breathwrk ranks #1 with 'breathing exercises' in their title\n\n**Prioritized Action Plan:**\n1. Update subtitle to include 'mindfulness for beginners' and 'sleep stories for adults' (Week 1)\n2. Add 'stressreliefmeditation' and 'breathingexercises' to keyword field (Week 2)\n3. Optimize description with 'guided meditation for anxiety' naturally 2-3 times (Week 3)\n4. Monitor rankings weekly and adjust based on performance (Ongoing)\n\n**Expected Impact:** Potential increase of 20-30% in organic downloads within 4-6 weeks based on historical benchmarks from similar apps in the meditation category.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "app-seo-ai#main-content",
+      "app-seo-ai#overview",
+      "app-seo-ai#setup",
+      "app-seo-ai#examples",
+      "app-seo-ai#tools",
+      "app-seo-ai#mcp",
+      "app-seo-ai#related",
+      "marketingskills",
+      "copywriting",
+      "ai-tools-for-you"
+    ],
+    "overview_vi": "App-SEO-AI là một ứng dụng Node.js giúp tự động hóa các quy trình SEO cốt lõi thông qua việc tích hợp Google Ads API và phân tích bằng AI. Ứng dụng hỗ trợ nghiên cứu từ khóa, phân tích SERP và nghiên cứu đối thủ cạnh tranh trên một nền tảng thống nhất, đồng thời hỗ trợ giao thức MCP (Model Context Protocol) cho các trợ lý AI như Claude. Công cụ này giúp tinh gọn việc tối ưu hóa SEO bằng cách phát hiện các cơ hội từ khóa tiềm năng, phân tích các trang kết quả của công cụ tìm kiếm và đối sánh (benchmarking) tên miền đối thủ. Các digital marketer và chuyên gia SEO có thể sử dụng công cụ này để đẩy nhanh chu kỳ nghiên cứu và tạo ra các đề xuất SEO thực tế có thể triển khai ngay mà không cần phân tích thủ công.\nTự động hóa nghiên cứu từ khóa\nTạo nội dung chuẩn SEO\nPhân tích hiệu suất website\nTối ưu hóa các thẻ meta",
+    "setup_vi": "Terminal\nSao chép\n`claude install ccnn2509/app-seo-ai`\n`git clone https://github.com/ccnn2509/app-seo-ai`",
+    "usage_vi": "```\nPhân tích hiệu suất Tối ưu hóa Kho ứng dụng (ASO) của [APP_NAME] trên App Store khu vực [APP_STORE_REGION]. Hãy xác định top 5 từ khóa có lượng tìm kiếm cao nhất liên quan đến [APP_CATEGORY] nhưng hiện chưa được tận dụng tốt trong metadata của [APP_NAME]. Với mỗi từ khóa, hãy cung cấp: (1) lượng tìm kiếm, (2) điểm cạnh tranh (1-100), (3) thứ hạng hiện tại của [APP_NAME] cho từ khóa đó, và (4) gợi ý chiến lược tối ưu hóa (ví dụ: cập nhật tiêu đề, tinh chỉnh phụ đề, hoặc điều chỉnh trường từ khóa). Sử dụng [COMPETITOR_APPS] làm đối chuẩn (benchmark) để so sánh. Định dạng đầu ra thành một kế hoạch hành động theo thứ tự ưu tiên với các bước tiếp theo rõ ràng.\n```\nSao chép\n\n```\n### Phân tích Tối ưu hóa Kho ứng dụng (ASO) cho 'Medito: Sleep & Meditation' (iOS - US App Store)\n\n**Top 5 Từ khóa chưa được tận dụng tốt cho Danh mục 'Meditation':**\n\n1. **'mindfulness for beginners'**\n   - Lượng tìm kiếm: 18.400/tháng\n   - Điểm cạnh tranh: 62/100\n   - Thứ hạng hiện tại: #47 (Medito hiện xếp hạng #112)\n   - Chiến lược tối ưu hóa: Thêm vào phụ đề: 'Medito: Sleep & Mindfulness for Beginners'\n   - Đối chuẩn (Benchmark): Headspace xếp hạng #1 cho từ khóa này với phụ đề 'Meditation & Sleep'\n\n2. **'stress relief meditation'**\n   - Lượng tìm kiếm: 12.800/tháng\n   - Điểm cạnh tranh: 58/100\n   - Thứ hạng hiện tại: #63\n   - Chiến lược tối ưu hóa: Thêm vào trường từ khóa: 'stressrelief,stressreliefmeditation'\n   - Đối chuẩn (Benchmark): Calm xếp hạng #2 với từ khóa 'stress relief' trong tiêu đề của họ\n\n3. **'guided meditation for anxiety'**\n   - Lượng tìm kiếm: 9.200/tháng\n   - Điểm cạnh tranh: 71/100\n   - Thứ hạng hiện tại: #89\n   - Chiến lược tối ưu hóa: Cập nhật mô tả để chèn cụm từ này một cách tự nhiên từ 2-3 lần\n   - Đối chuẩn (Benchmark): Insight Timer xếp hạng #1 với 'anxiety' trong tiêu đề của họ\n\n4. **'sleep stories for adults'**\n   - Lượng tìm kiếm: 7.600/tháng\n   - Điểm cạnh tranh: 45/100\n   - Thứ hạng hiện tại: #34\n   - Chiến lược tối ưu hóa: Thêm vào phụ đề: '...with Sleep Stories for Adults'\n   - Đối chuẩn (Benchmark): ShutEye xếp hạng #1 với 'sleep stories' trong tiêu đề của họ\n\n5. **'breathing exercises app'**\n   - Lượng tìm kiếm: 6.300/tháng\n   - Điểm cạnh tranh: 52/100\n   - Thứ hạng hiện tại: #102\n   - Chiến lược tối ưu hóa: Thêm vào trường từ khóa: 'breathingexercises'\n   - Đối chuẩn (Benchmark): Breathwrk xếp hạng #1 với 'breathing exercises' trong tiêu đề của họ\n\n**Kế hoạch hành động theo thứ tự ưu tiên:**\n1. Cập nhật phụ đề để bao gồm 'mindfulness for beginners' và 'sleep stories for adults' (Tuần 1)\n2. Thêm 'stressreliefmeditation' và 'breathingexercises' vào trường từ khóa (Tuần 2)\n3. Tối ưu hóa mô tả bằng cách chèn 'guided meditation for anxiety' một cách tự nhiên từ 2-3 lần (Tuần 3)\n4. Theo dõi thứ hạng hàng tuần và điều chỉnh dựa trên hiệu suất (Liên tục)\n\n**Hiệu quả kỳ vọng:** Khả năng tăng 20-30% lượt tải xuống tự nhiên (organic downloads) trong vòng 4-6 tuần dựa trên các dữ liệu đối chuẩn lịch sử từ các ứng dụng tương tự trong danh mục thiền định.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:24:22.282652Z",
+    "http_status": 200,
+    "content_hash": "3c0783384cca98b29e7fabf81f7c0124202f0007fbe35ae0721a4104d4e96f30",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\app-seo-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\app-seo-ai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "App-SEO-AI: Tự động hóa công việc SEO của bạn",
+  "short_description_vi": "App-SEO-AI là một ứng dụng đột phá được thiết kế để tự động hóa các tác vụ SEO và sử dụng AI để tối ưu hóa. Ứng dụng này giúp tinh gọn quy trình cải thiện khả năng hiển thị và thứ hạng tìm kiếm của website, là công cụ không thể thế cho các digital marketer."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/boost",
+  "slug": "boost",
+  "name": "react-native-best-practices",
+  "headline": "Boost: Laravel MCP Server for AI Development",
+  "short_description": "Boost is a Laravel-focused MCP server designed to enhance your AI-powered local development experience. It streamlines workflows and integrates AI capabilities, making it an essential tool for developers working with Laravel.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "laravel",
+  "install_command": "claude install laravel/boost",
+  "source_repo_url": "https://github.com/laravel/boost",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "AI",
+    "laravel",
+    "MCP",
+    "development",
+    "local server"
+  ],
+  "sections": {
+    "overview": "Boost is a Laravel-focused MCP server designed to integrate AI capabilities into your local development workflow. It provides tools for executing PHP code within your application context through its Tinker MCP tool, enabling AI agents like Claude to interact directly with Laravel applications. The server streamlines AI-powered development by offering structured access to your Laravel project, making it easier for developers to leverage AI assistance while maintaining full control over their codebase. Boost is actively maintained and compatible with popular AI coding tools that support the Model Context Protocol.\nEnhancing local Laravel development workflows by automating repetitive tasks.\nIntegrating AI features into Laravel applications for smarter functionality.\nStreamlining development processes with an MCP server to reduce setup time.\nFacilitating rapid prototyping of Laravel applications with AI-generated code.",
+    "setup": "Terminal\nCopy\n`claude install laravel/boost`\n`git clone https://github.com/laravel/boost`",
+    "usage": "```\nI'm working on a Laravel project and need help with [SPECIFIC_TASK]. The current codebase is structured with [DESCRIBE_STRUCTURE]. I need to [EXPLAIN_GOAL]. Can you suggest the best approach using Laravel best practices and Boost's capabilities?\n```\nCopy\n\n```\nBased on your Laravel project focused on an e-commerce platform with a modular structure, here's how to implement a dynamic product recommendation system using Boost's AI integration:\n\n1. **Data Preparation**: First, ensure your product data is well-structured in your database. Boost can help analyze your schema and suggest optimizations. For example, it might recommend adding a 'product_relationships' table to track which products are frequently viewed together.\n\n2. **AI Model Integration**: Use Boost's AI capabilities to create a simple recommendation model. You can start with a basic collaborative filtering approach. Boost can generate the initial Laravel controller and service classes for this. Here's a sample controller method it might create:\n```php\npublic function getRecommendations(Product $product, $limit = 5)\n{\n    $relatedProducts = Product::whereHas('viewedWith', function($query) use ($product) {\n        $query->where('product_id', $product->id);\n    })->limit($limit)->get();\n\n    return $relatedProducts;\n}\n```\n\n3. **Testing**: Boost can help generate test cases for your new recommendation system. It might create tests that verify the system works with different product categories and viewing patterns.\n\n4. **Deployment**: Once tested, Boost can assist in creating deployment scripts specific to your Laravel environment, whether it's a shared hosting setup or a cloud platform.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "boost#main-content",
+      "boost#overview",
+      "boost#setup",
+      "boost#examples",
+      "boost#tools",
+      "boost#mcp",
+      "boost#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Boost is a Laravel-focused MCP server designed to integrate AI capabilities into your local development workflow. It provides tools for executing PHP code within your application context through its Tinker MCP tool, enabling AI agents like Claude to interact directly with Laravel applications. The server streamlines AI-powered development by offering structured access to your Laravel project, making it easier for developers to leverage AI assistance while maintaining full control over their codebase. Boost is actively maintained and compatible with popular AI coding tools that support the Model Context Protocol.\nEnhancing local Laravel development workflows by automating repetitive tasks.\nIntegrating AI features into Laravel applications for smarter functionality.\nStreamlining development processes with an MCP server to reduce setup time.\nFacilitating rapid prototyping of Laravel applications with AI-generated code.",
+    "setup_vi": "Terminal\nCopy\n`claude install laravel/boost`\n`git clone https://github.com/laravel/boost`",
+    "usage_vi": "```\nI'm working on a Laravel project and need help with [SPECIFIC_TASK]. The current codebase is structured with [DESCRIBE_STRUCTURE]. I need to [EXPLAIN_GOAL]. Can you suggest the best approach using Laravel best practices and Boost's capabilities?\n```\nCopy\n\n```\nBased on your Laravel project focused on an e-commerce platform with a modular structure, here's how to implement a dynamic product recommendation system using Boost's AI integration:\n\n1. **Data Preparation**: First, ensure your product data is well-structured in your database. Boost can help analyze your schema and suggest optimizations. For example, it might recommend adding a 'product_relationships' table to track which products are frequently viewed together.\n\n2. **AI Model Integration**: Use Boost's AI capabilities to create a simple recommendation model. You can start with a basic collaborative filtering approach. Boost can generate the initial Laravel controller and service classes for this. Here's a sample controller method it might create:\n```php\npublic function getRecommendations(Product $product, $limit = 5)\n{\n    $relatedProducts = Product::whereHas('viewedWith', function($query) use ($product) {\n        $query->where('product_id', $product->id);\n    })->limit($limit)->get();\n\n    return $relatedProducts;\n}\n```\n\n3. **Testing**: Boost can help generate test cases for your new recommendation system. It might create tests that verify the system works with different product categories and viewing patterns.\n\n4. **Deployment**: Once tested, Boost can assist in creating deployment scripts specific to your Laravel environment, whether it's a shared hosting setup or a cloud platform.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:23:38.615085Z",
+    "http_status": 200,
+    "content_hash": "b5dda1cfce30b90553ae2ed7944f5a240fe2b71b6c9097c4a769674bcc8ff85c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\boost.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\boost.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Boost: Laravel MCP Server for AI Development",
+  "short_description_vi": "Boost is a Laravel-focused MCP server designed to enhance your AI-powered local development experience. It streamlines workflows and integrates AI capabilities, making it an essential tool for developers working with Laravel."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/custom-agent-with-skills",
+  "slug": "custom-agent-with-skills",
+  "name": "browser-use",
+  "headline": "Custom Agent with Skills - Progressive Disclosure",
+  "short_description": "A Pydantic AI agent framework that implements progressive disclosure for efficient context management. Ideal for operations teams automating workflows. Integrates with Claude and other AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "coleam00",
+  "install_command": "git clone https://github.com/coleam00/custom-agent-with-skills.git",
+  "source_repo_url": "https://github.com/coleam00/custom-agent-with-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Custom Agent with Skills is a framework-agnostic skill system for AI agents that implements progressive disclosure—loading skill instructions and resources on-demand to eliminate context window constraints. The system manages AI context efficiently by loading skill metadata first, then full instructions and reference files only when needed, allowing agents to access hundreds of skills without overwhelming the context window. It comes with five production-ready skills for weather forecasts, academic paper search, recipe discovery, timezone conversion, and code review, all built with Pydantic models for type safety. Ideal for operations teams automating workflows and developers extending AI capabilities without vendor lock-in.\nAutomate weather lookups and forecasts across multiple locations\nSearch and summarize academic research papers by topic\nFind recipes based on available ingredients and dietary restrictions\nConvert times and check current time across world timezones",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coleam00/custom-agent-with-skills`",
+    "usage": "```\nCreate a custom agent with the following skills: [SKILL_1], [SKILL_2], [SKILL_3]. The agent should use progressive disclosure to manage context efficiently. The agent will operate in the [INDUSTRY] industry and will process [DATA] data. The agent should be integrated with [AI_TOOL] for additional capabilities.\n```\nCopy\n\n```\n# Custom Agent Design",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "custom-agent-with-skills#main-content",
+      "custom-agent-with-skills#overview",
+      "custom-agent-with-skills#setup",
+      "custom-agent-with-skills#examples",
+      "custom-agent-with-skills#tools",
+      "custom-agent-with-skills#mcp",
+      "custom-agent-with-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Custom Agent with Skills is a framework-agnostic skill system for AI agents that implements progressive disclosure—loading skill instructions and resources on-demand to eliminate context window constraints. The system manages AI context efficiently by loading skill metadata first, then full instructions and reference files only when needed, allowing agents to access hundreds of skills without overwhelming the context window. It comes with five production-ready skills for weather forecasts, academic paper search, recipe discovery, timezone conversion, and code review, all built with Pydantic models for type safety. Ideal for operations teams automating workflows and developers extending AI capabilities without vendor lock-in.\nAutomate weather lookups and forecasts across multiple locations\nSearch and summarize academic research papers by topic\nFind recipes based on available ingredients and dietary restrictions\nConvert times and check current time across world timezones",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coleam00/custom-agent-with-skills`",
+    "usage_vi": "```\nCreate a custom agent with the following skills: [SKILL_1], [SKILL_2], [SKILL_3]. The agent should use progressive disclosure to manage context efficiently. The agent will operate in the [INDUSTRY] industry and will process [DATA] data. The agent should be integrated with [AI_TOOL] for additional capabilities.\n```\nCopy\n\n```\n# Custom Agent Design"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:47:04.444494Z",
+    "http_status": 200,
+    "content_hash": "65fdd66986f4c74c2b6fbf1a66e26688a1807cf429e7e0a806f1ba7138c75b7c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\custom-agent-with-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\custom-agent-with-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Custom Agent with Skills - Progressive Disclosure",
+  "short_description_vi": "A Pydantic AI agent framework that implements progressive disclosure for efficient context management. Ideal for operations teams automating workflows. Integrates with Claude and other AI agents."
+}

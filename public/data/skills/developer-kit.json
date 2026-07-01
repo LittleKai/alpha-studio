@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/developer-kit",
+  "slug": "developer-kit",
+  "name": "Developer Kit",
+  "headline": "Boost Your Development with Developer Kit",
+  "short_description": "The Developer Kit provides tools to automate coding tasks, reducing development time. It connects to IDEs and APIs, helping engineers build applications faster. Teams benefit from increased productivity and consistent code quality.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/giuseppe-trisciuoglio",
+  "source_repo_url": "https://github.com/sh/giuseppe-trisciuoglio",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "automation",
+    "APIs",
+    "development",
+    "productivity"
+  ],
+  "sections": {
+    "overview": "The Developer Kit is an automation skill designed to streamline coding tasks and reduce development time. It integrates with IDEs and APIs to help engineers build applications more efficiently. By automating routine development work, teams achieve increased productivity while maintaining consistent code quality across projects.\nStreamlining app development\nAutomating routine coding tasks\nIntegrating APIs seamlessly",
+    "setup": "Terminal\nCopy\n`npx skills add sh/giuseppe-trisciuoglio`\n`git clone https://github.com/sh/giuseppe-trisciuoglio`\n1. Install dependencies:\n   ```bash\n   pip install requests python-dotenv\n   ```\n\n2. Create `.env` file:\n   ```\n   PRODUCTIV_API_KEY=your_api_key_here\n   SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...\n   ```\n\n3. Run script:\n   ```bash\n   python license_tracker.py\n   ```",
+    "usage": "```\nGenerate a Python script that automates [SPECIFIC_TASK] using the [DEVELOPMENT_TOOL] tool. The script should integrate with [IDE/PLATFORM] and include error handling for [COMMON_ERRORS]. Use [CODING_STANDARD] for formatting. Provide comments explaining key steps and a README.md file with setup instructions. Test the script with [TEST_CASES].\n```\nCopy\n\n```\n```python\n# File: license_tracker.py\n# Automates tracking of unused SaaS licenses using Productiv's API\n# Integrates with VS Code for real-time notifications\n\nimport requests\nimport json\nfrom datetime import datetime, timedelta\nimport os\n\n# Configuration\nPRODUCTIV_API_KEY = os.getenv('PRODUCTIV_API_KEY')\nPRODUCTIV_BASE_URL = 'https://api.productiv.com/v1'\nSLACK_WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_URL')\n\n# Helper functions\ndef get_unused_licenses(days_inactive=90):\n    \"\"\"Fetch licenses unused for specified days\"\"\"\n    headers = {'Authorization': f'Bearer {PRODUCTIV_API_KEY}'}\n    params = {\n        'inactive_days': days_inactive,\n        'status': 'active'\n    }\n    \n    try:\n        response = requests.get(\n            f'{PRODUCTIV_BASE_URL}/licenses',\n            headers=headers,\n            params=params,\n            timeout=30\n        )\n        response.raise_for_status()\n        return response.json()['data']\n    except requests.exceptions.RequestException as e:\n        print(f\"API Error: {e}\")\n        return None\n\ndef notify_team(licenses):\n    \"\"\"Send Slack notification about unused licenses\"\"\"\n    if not licenses:\n        return\n    \n    message = {\n        \"text\": f\"🚨 {len(licenses)} unused licenses detected (inactive >90 days)\",\n        \"attachments\": [\n            {\n                \"color\": \"#FF0000\",\n                \"fields\": [\n                    {\"title\": \"App\", \"value\": l['application_name'], \"short\": True},\n                    {\"title\": \"User\", \"value\": l['user_email'], \"short\": True},\n                    {\"title\": \"Last Used\", \"value\": l['last_used_date'], \"short\": True}\n                ]\n            } for l in licenses[:5]\n        ]\n    }\n    \n    requests.post(SLACK_WEBHOOK_URL, json=message)\n\n# Main execution\ndef main():\n    print(\"Starting license audit...\")\n    unused = get_unused_licenses()\n    \n    if unused:\n        print(f\"Found {len(unused)} unused licenses\")\n        notify_team(unused)\n        \n        # Generate report\n        with open('unused_licenses.json', 'w') as f:\n            json.dump(unused, f, indent=2)\n    else:\n        print(\"No unused licenses found\")\n\nif __name__ == '__main__':\n    main()\n```\n\n---\n\n### README.md\n```markdown\n# SaaS License Tracker\n\nAutomates tracking of unused SaaS licenses using Productiv's API.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "developer-kit#main-content",
+      "developer-kit#overview",
+      "developer-kit#setup",
+      "developer-kit#examples",
+      "developer-kit#tools",
+      "developer-kit#mcp",
+      "developer-kit#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The Developer Kit is an automation skill designed to streamline coding tasks and reduce development time. It integrates with IDEs and APIs to help engineers build applications more efficiently. By automating routine development work, teams achieve increased productivity while maintaining consistent code quality across projects.\nStreamlining app development\nAutomating routine coding tasks\nIntegrating APIs seamlessly",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/giuseppe-trisciuoglio`\n`git clone https://github.com/sh/giuseppe-trisciuoglio`\n1. Install dependencies:\n   ```bash\n   pip install requests python-dotenv\n   ```\n\n2. Create `.env` file:\n   ```\n   PRODUCTIV_API_KEY=your_api_key_here\n   SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...\n   ```\n\n3. Run script:\n   ```bash\n   python license_tracker.py\n   ```",
+    "usage_vi": "```\nGenerate a Python script that automates [SPECIFIC_TASK] using the [DEVELOPMENT_TOOL] tool. The script should integrate with [IDE/PLATFORM] and include error handling for [COMMON_ERRORS]. Use [CODING_STANDARD] for formatting. Provide comments explaining key steps and a README.md file with setup instructions. Test the script with [TEST_CASES].\n```\nCopy\n\n```\n```python\n# File: license_tracker.py\n# Automates tracking of unused SaaS licenses using Productiv's API\n# Integrates with VS Code for real-time notifications\n\nimport requests\nimport json\nfrom datetime import datetime, timedelta\nimport os\n\n# Configuration\nPRODUCTIV_API_KEY = os.getenv('PRODUCTIV_API_KEY')\nPRODUCTIV_BASE_URL = 'https://api.productiv.com/v1'\nSLACK_WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_URL')\n\n# Helper functions\ndef get_unused_licenses(days_inactive=90):\n    \"\"\"Fetch licenses unused for specified days\"\"\"\n    headers = {'Authorization': f'Bearer {PRODUCTIV_API_KEY}'}\n    params = {\n        'inactive_days': days_inactive,\n        'status': 'active'\n    }\n    \n    try:\n        response = requests.get(\n            f'{PRODUCTIV_BASE_URL}/licenses',\n            headers=headers,\n            params=params,\n            timeout=30\n        )\n        response.raise_for_status()\n        return response.json()['data']\n    except requests.exceptions.RequestException as e:\n        print(f\"API Error: {e}\")\n        return None\n\ndef notify_team(licenses):\n    \"\"\"Send Slack notification about unused licenses\"\"\"\n    if not licenses:\n        return\n    \n    message = {\n        \"text\": f\"🚨 {len(licenses)} unused licenses detected (inactive >90 days)\",\n        \"attachments\": [\n            {\n                \"color\": \"#FF0000\",\n                \"fields\": [\n                    {\"title\": \"App\", \"value\": l['application_name'], \"short\": True},\n                    {\"title\": \"User\", \"value\": l['user_email'], \"short\": True},\n                    {\"title\": \"Last Used\", \"value\": l['last_used_date'], \"short\": True}\n                ]\n            } for l in licenses[:5]\n        ]\n    }\n    \n    requests.post(SLACK_WEBHOOK_URL, json=message)\n\n# Main execution\ndef main():\n    print(\"Starting license audit...\")\n    unused = get_unused_licenses()\n    \n    if unused:\n        print(f\"Found {len(unused)} unused licenses\")\n        notify_team(unused)\n        \n        # Generate report\n        with open('unused_licenses.json', 'w') as f:\n            json.dump(unused, f, indent=2)\n    else:\n        print(\"No unused licenses found\")\n\nif __name__ == '__main__':\n    main()\n```\n\n---\n\n### README.md\n```markdown\n# SaaS License Tracker\n\nAutomates tracking of unused SaaS licenses using Productiv's API."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:12:56.299206Z",
+    "http_status": 200,
+    "content_hash": "3f02348bad0704f9bae441598df5a0f64b91f3c0a7059789f4b86bef6da93689",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\developer-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\developer-kit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Boost Your Development with Developer Kit",
+  "short_description_vi": "The Developer Kit provides tools to automate coding tasks, reducing development time. It connects to IDEs and APIs, helping engineers build applications faster. Teams benefit from increased productivity and consistent code quality."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccnexus",
+  "slug": "ccnexus",
+  "name": "browser-use",
+  "headline": "ccNexus intelligent API gateway tool",
+  "short_description": "ccNexus is an intelligent API gateway for Claude Code and Codex CLI. It rotates endpoints, monitors usage, and integrates OpenAI, Gemini, and other platforms. Developers and operations teams use it to manage AI coding workflows efficiently.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "lich0821",
+  "install_command": "git clone https://github.com/lich0821/ccNexus.git",
+  "source_repo_url": "https://github.com/lich0821/ccNexus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-coding",
+    "claude-code-router",
+    "claude-code-proxy"
+  ],
+  "sections": {
+    "overview": "ccNexus is an API gateway designed for developers and operations teams managing AI coding workflows across multiple platforms. It intelligently rotates endpoints, monitors usage patterns, and aggregates models from OpenAI, Gemini, and other AI providers into a single interface. The gateway supports flexible endpoint selection via HTTP headers, special model name formats, and query parameters, with automatic fallback to default models when backend APIs are unavailable. It features a web UI with internationalization support, OpenAI-compatible /v1/models endpoint with configurable caching, and comprehensive usage statistics. Built in Go with both server and desktop CLI interfaces, ccNexus streamlines deployment and management of multi-provider AI agent integrations.\nAutomatically switch to backup endpoints in case of failures to ensure uninterrupted service.\nConvert API requests between Claude, OpenAI, and Gemini formats for versatile application development.\nMonitor API usage statistics in real-time to optimize performance and resource allocation.\nSynchronize configurations and data across multiple devices using WebDAV for seamless access.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lich0821/ccNexus`",
+    "usage": "```\nSet up ccNexus to manage API endpoints for my development team. We need to integrate OpenAI and Gemini APIs, with a focus on rotating endpoints every [TIME_PERIOD] to avoid rate limits. Monitor usage and alert us when we reach [PERCENTAGE] of our monthly quota. Provide a summary of the setup process and any recommended configurations.\n```\nCopy\n\n```\nccNexus Setup Summary\n\n1. **Endpoint Configuration**: Successfully integrated OpenAI and Gemini APIs with endpoint rotation set to every 24 hours. This ensures optimal usage and avoids rate limits.\n\n2. **Usage Monitoring**: Configured alerts to notify the team when usage reaches 80% of the monthly quota. Real-time monitoring dashboards are now accessible via the ccNexus portal.\n\n3. **Security Measures**: Implemented API key encryption and IP whitelisting for added security. All endpoints are now secured with OAuth 2.0.\n\n4. **Integration**: Successfully connected ccNexus with our existing CI/CD pipeline. Automated workflows are now in place for seamless API management.\n\n5. **Recommendations**: It is recommended to schedule regular reviews of API usage patterns to optimize endpoint rotation intervals. Additionally, consider setting up automated scaling for high-traffic periods to ensure uninterrupted service.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccnexus#main-content",
+      "ccnexus#overview",
+      "ccnexus#setup",
+      "ccnexus#examples",
+      "ccnexus#tools",
+      "ccnexus#mcp",
+      "ccnexus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccNexus is an API gateway designed for developers and operations teams managing AI coding workflows across multiple platforms. It intelligently rotates endpoints, monitors usage patterns, and aggregates models from OpenAI, Gemini, and other AI providers into a single interface. The gateway supports flexible endpoint selection via HTTP headers, special model name formats, and query parameters, with automatic fallback to default models when backend APIs are unavailable. It features a web UI with internationalization support, OpenAI-compatible /v1/models endpoint with configurable caching, and comprehensive usage statistics. Built in Go with both server and desktop CLI interfaces, ccNexus streamlines deployment and management of multi-provider AI agent integrations.\nAutomatically switch to backup endpoints in case of failures to ensure uninterrupted service.\nConvert API requests between Claude, OpenAI, and Gemini formats for versatile application development.\nMonitor API usage statistics in real-time to optimize performance and resource allocation.\nSynchronize configurations and data across multiple devices using WebDAV for seamless access.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lich0821/ccNexus`",
+    "usage_vi": "```\nSet up ccNexus to manage API endpoints for my development team. We need to integrate OpenAI and Gemini APIs, with a focus on rotating endpoints every [TIME_PERIOD] to avoid rate limits. Monitor usage and alert us when we reach [PERCENTAGE] of our monthly quota. Provide a summary of the setup process and any recommended configurations.\n```\nCopy\n\n```\nccNexus Setup Summary\n\n1. **Endpoint Configuration**: Successfully integrated OpenAI and Gemini APIs with endpoint rotation set to every 24 hours. This ensures optimal usage and avoids rate limits.\n\n2. **Usage Monitoring**: Configured alerts to notify the team when usage reaches 80% of the monthly quota. Real-time monitoring dashboards are now accessible via the ccNexus portal.\n\n3. **Security Measures**: Implemented API key encryption and IP whitelisting for added security. All endpoints are now secured with OAuth 2.0.\n\n4. **Integration**: Successfully connected ccNexus with our existing CI/CD pipeline. Automated workflows are now in place for seamless API management.\n\n5. **Recommendations**: It is recommended to schedule regular reviews of API usage patterns to optimize endpoint rotation intervals. Additionally, consider setting up automated scaling for high-traffic periods to ensure uninterrupted service.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:44:16.714254Z",
+    "http_status": 200,
+    "content_hash": "4b2f8441291dfc4d839377e39221ba6f76722f233f47e3941598a8b3c675e0ee",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccnexus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccnexus.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccNexus intelligent API gateway tool",
+  "short_description_vi": "ccNexus is an intelligent API gateway for Claude Code and Codex CLI. It rotates endpoints, monitors usage, and integrates OpenAI, Gemini, and other platforms. Developers and operations teams use it to manage AI coding workflows efficiently."
+}

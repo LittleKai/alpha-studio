@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codebase-context-skill",
+  "slug": "codebase-context-skill",
+  "name": "Codebase Context Skill",
+  "headline": "Generate context docs for AI with Claude",
+  "short_description": "Generates context documents for AI agents to understand codebases, with automatic staleness detection. Benefits developers and operations teams by accelerating onboarding and reducing context-switching. Integrates with Claude Code agents to provide immediate codebase understanding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "airowe",
+  "install_command": "git clone https://github.com/airowe/codebase-context-skill.git",
+  "source_repo_url": "https://github.com/airowe/codebase-context-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Codebase Context Skill creates machine-readable and human-readable context files that help AI agents understand project structure without blind exploration. It generates three key artifacts: a concise Markdown overview (80-150 lines), a JSON index for fast concept lookups, and a Mermaid dependency graph. The skill includes automatic staleness detection that identifies when context needs refresh based on directory structure changes, config file updates, and age thresholds. Developers and operations teams benefit by accelerating onboarding, reducing context-switching, and enabling agents to explore codebases efficiently.\nAccelerate AI agent onboarding to unfamiliar codebases with pre-built context\nReduce token waste by referencing context only when needed, not on every request\nEnable dependency visualization and concept lookup for complex multi-package projects\nKeep codebase context fresh with automatic staleness detection",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/airowe/codebase-context-skill`",
+    "usage": "```\nGenerate a context document for the [CODEBASE] repository. Include key details about the architecture, major components, and any unique patterns or conventions. Flag any files or sections that appear stale or outdated. Focus on areas relevant to [TEAM/ROLE] (e.g., frontend, backend, DevOps).\n```\nCopy\n\n```\nContext Document for 'E-Commerce Platform' Repository\n\nArchitecture Overview:\nThe codebase follows a microservices architecture with the following key components:\n- User Service: Handles authentication and user profiles (Node.js)\n- Product Service: Manages product catalog and inventory (Python)\n- Order Service: Processes orders and payments (Java)\n- Frontend: React-based SPA with Redux state management\n\nUnique Patterns:\n- Event-driven communication via Kafka\n- Feature flags for gradual rollouts\n- Custom logging framework for distributed tracing\n\nStale Areas:\n- The 'legacy-checkout' module hasn't been modified in 18 months\n- Documentation in the 'docs' folder is outdated (last updated 2 years ago)\n- Several deprecated API endpoints remain in the 'order-service'\n\nRecommended Actions:\n1. Archive or refactor the 'legacy-checkout' module\n2. Update documentation to reflect current architecture\n3. Deprecate unused API endpoints\n\nLast Updated: 2023-11-15\nStaleness Threshold: 12 months\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codebase-context-skill#main-content",
+      "codebase-context-skill#overview",
+      "codebase-context-skill#setup",
+      "codebase-context-skill#examples",
+      "codebase-context-skill#tools",
+      "codebase-context-skill#mcp",
+      "codebase-context-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Codebase Context Skill tạo ra các file context mà cả máy và người dùng đều có thể đọc được, giúp AI agent hiểu cấu trúc dự án mà không cần phải tự tìm kiếm mò mẫm. Công cụ này tạo ra ba thành phần (artifact) chính: một file Markdown tổng quan ngắn gọn (80-150 dòng), một file JSON index để tra cứu nhanh các khái niệm (concept), và một biểu đồ phụ thuộc Mermaid. Skill này cũng tích hợp cơ chế tự động phát hiện thông tin lỗi thời (staleness detection) để xác định khi nào cần làm mới context dựa trên các thay đổi của cấu trúc thư mục, cập nhật file cấu hình và giới hạn thời gian. Các đội ngũ developer và operations sẽ được hưởng lợi nhờ việc rút ngắn thời gian onboarding, giảm thiểu context-switching và giúp các agent khám phá codebase một cách hiệu quả.\n\n- Đẩy nhanh quá trình onboarding của AI agent vào các codebase mới lạ nhờ context được xây dựng sẵn\n- Giảm hao phí token bằng cách chỉ tham chiếu đến context khi cần thiết, thay vì gửi kèm trong mọi request\n- Hỗ trợ trực quan hóa các mối quan hệ phụ thuộc (dependencies) và tra cứu concept cho các dự án multi-package phức tạp\n- Giữ cho codebase context luôn mới nhờ tính năng tự động phát hiện thông tin lỗi thời",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/airowe/codebase-context-skill`",
+    "usage_vi": "```\nTạo tài liệu context cho kho lưu trữ [CODEBASE]. Bao gồm các thông tin chi tiết chính về kiến trúc, các thành phần quan trọng và bất kỳ pattern hoặc quy ước đặc thù nào. Đánh dấu các file hoặc phần có vẻ đã cũ hoặc lỗi thời. Tập trung vào các phần liên quan đến [TEAM/ROLE] (ví dụ: frontend, backend, DevOps).\n```\nCopy\n\n```\nContext Document cho Kho lưu trữ 'E-Commerce Platform'\n\nTổng quan Kiến trúc:\nCodebase tuân theo kiến trúc microservices với các thành phần chính sau:\n- User Service: Xử lý xác thực và thông tin người dùng (Node.js)\n- Product Service: Quản lý danh mục sản phẩm và kho hàng (Python)\n- Order Service: Xử lý đơn hàng và thanh toán (Java)\n- Frontend: SPA dựa trên React với quản lý state bằng Redux\n\nCác Pattern Đặc thù:\n- Giao tiếp hướng sự kiện (Event-driven) qua Kafka\n- Feature flags để triển khai dần dần (gradual rollouts)\n- Framework logging tùy chỉnh cho distributed tracing\n\nCác phần bị lỗi thời (Stale Areas):\n- Module 'legacy-checkout' đã không được chỉnh sửa trong 18 tháng qua\n- Tài liệu trong thư mục 'docs' đã lỗi thời (cập nhật lần cuối từ 2 năm trước)\n- Một số API endpoint đã bị khai tử (deprecated) vẫn còn tồn tại trong 'order-service'\n\nHành động Khuyến nghị:\n1. Lưu trữ (archive) hoặc tái cấu trúc (refactor) module 'legacy-checkout'\n2. Cập nhật tài liệu để phản ánh đúng kiến trúc hiện tại\n3. Loại bỏ các API endpoint không còn sử dụng\n\nCập nhật lần cuối: 2023-11-15\nNgưỡng lỗi thời (Staleness Threshold): 12 tháng\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:20:16.279309Z",
+    "http_status": 200,
+    "content_hash": "ca72d2eeeb0c704080c32e881369fa838a1ce5dbf8b4fe20a5ff3752f3f836c5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codebase-context-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codebase-context-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tạo tài liệu context cho AI bằng Claude",
+  "short_description_vi": "Tự động tạo tài liệu context giúp AI agent hiểu rõ codebase, đi kèm tính năng tự động phát hiện thông tin lỗi thời (staleness detection). Giải pháp này hỗ trợ các đội ngũ developer và operations bằng cách đẩy nhanh quá trình onboarding và giảm thiểu tình trạng context-switching, đồng thời tích hợp mượt mà với Claude Code agent để mang lại khả năng hiểu codebase tức thì."
+}

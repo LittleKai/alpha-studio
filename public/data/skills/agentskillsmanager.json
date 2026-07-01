@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentskillsmanager",
+  "slug": "agentskillsmanager",
+  "name": "react-native-best-practices",
+  "headline": "AgentSkillsManager - Multi-IDE Skill Management",
+  "short_description": "The AgentSkillsManager is a powerful multi-IDE management extension that allows users to browse and install skill repositories across various platforms including Antigravity, CodeBuddy, and VS Code. With access to a vast cloud catalog of approximately 58K skills, it enhances productivity and streamlines development workflows.",
+  "tier": "Silver",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "lasoons",
+  "install_command": "claude install lasoons/AgentSkillsManager",
+  "source_repo_url": "https://github.com/lasoons/AgentSkillsManager",
+  "works_with": [
+    "ClaudeChatGPTCursorWindsurfVS Code"
+  ],
+  "tags": [
+    "productivity",
+    "cloud catalog",
+    "skill repositories",
+    "IDE management",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "AgentSkillsManager is a multi-IDE extension that centralizes skill management for Claude-based development environments including Cursor, VS Code, Windsurf, Antigravity, CodeBuddy, Qoder, and Trae. The extension lets you add skill repositories, browse available skills, and install them directly into your active IDE's skills directory with a single click. It includes access to a cloud catalog of approximately 58,000 skills from claude-plugins.dev, enabling you to search and install community and official skills instantly. The tool comes pre-configured with official repositories from Anthropic and OpenAI, plus community collections, and automatically scans hidden skill directories within repositories.\nInstalling new development skills\nBrowsing skill repositories for IDEs\nSearching cloud catalog for specific skills\nManaging multiple IDE environments",
+    "setup": "Terminal\nCopy\n`claude install lasoons/AgentSkillsManager`\n`git clone https://github.com/lasoons/AgentSkillsManager`",
+    "usage": "```\nUse the AgentSkillsManager to browse the cloud catalog of skills in [PLATFORM_NAME] and install the following skills for [PROJECT_NAME]: [SKILL_1], [SKILL_2], [SKILL_3]. Verify the installation and list the newly added skills in the project workspace. Ensure all dependencies are resolved and provide a summary of the installation status for each skill.\n```\nCopy\n\n```\nSuccessfully installed the following skills for the 'E-commerce Platform' project in VS Code:\n\n1. **Antigravity/AutoDocstring** (v1.2.3)\n   - Status: Installed\n   - Dependencies: Resolved (Python 3.10+, Docstring-Tools v2.1.0)\n   - Description: Automatically generates Python docstrings in Google or NumPy format based on function signatures.\n\n2. **CodeBuddy/ReactSnippets** (v3.4.1)\n   - Status: Installed\n   - Dependencies: Resolved (React 18+, TypeScript 5.0+)\n   - Description: Provides reusable React component snippets with TypeScript support for faster development.\n\n3. **Antigravity/MarkdownLint** (v2.0.0)\n   - Status: Installed with warnings\n   - Dependencies: Resolved (Node.js 18+)\n   - Description: Lints Markdown files for consistent formatting and style.\n   - Warnings: Detected 3 deprecated rules in configuration. Recommend updating to latest ruleset.\n\n**Summary:**\n- Total skills installed: 3/3 (100%)\n- Dependencies resolved: 100%\n- Skills requiring updates: 1 (MarkdownLint)\n\nAll skills are now available in the VS Code workspace under the 'E-commerce Platform' project. The ReactSnippets skill includes a starter template for a new 'ProductCard' component in the /src/components directory.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT, Cursor, Windsurf, VS Code"
+    ],
+    "related_skills": [
+      "agentskillsmanager#main-content",
+      "agentskillsmanager#overview",
+      "agentskillsmanager#setup",
+      "agentskillsmanager#examples",
+      "agentskillsmanager#tools",
+      "agentskillsmanager#mcp",
+      "agentskillsmanager#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "AgentSkillsManager is a multi-IDE extension that centralizes skill management for Claude-based development environments including Cursor, VS Code, Windsurf, Antigravity, CodeBuddy, Qoder, and Trae. The extension lets you add skill repositories, browse available skills, and install them directly into your active IDE's skills directory with a single click. It includes access to a cloud catalog of approximately 58,000 skills from claude-plugins.dev, enabling you to search and install community and official skills instantly. The tool comes pre-configured with official repositories from Anthropic and OpenAI, plus community collections, and automatically scans hidden skill directories within repositories.\nInstalling new development skills\nBrowsing skill repositories for IDEs\nSearching cloud catalog for specific skills\nManaging multiple IDE environments",
+    "setup_vi": "Terminal\nCopy\n`claude install lasoons/AgentSkillsManager`\n`git clone https://github.com/lasoons/AgentSkillsManager`",
+    "usage_vi": "```\nUse the AgentSkillsManager to browse the cloud catalog of skills in [PLATFORM_NAME] and install the following skills for [PROJECT_NAME]: [SKILL_1], [SKILL_2], [SKILL_3]. Verify the installation and list the newly added skills in the project workspace. Ensure all dependencies are resolved and provide a summary of the installation status for each skill.\n```\nCopy\n\n```\nSuccessfully installed the following skills for the 'E-commerce Platform' project in VS Code:\n\n1. **Antigravity/AutoDocstring** (v1.2.3)\n   - Status: Installed\n   - Dependencies: Resolved (Python 3.10+, Docstring-Tools v2.1.0)\n   - Description: Automatically generates Python docstrings in Google or NumPy format based on function signatures.\n\n2. **CodeBuddy/ReactSnippets** (v3.4.1)\n   - Status: Installed\n   - Dependencies: Resolved (React 18+, TypeScript 5.0+)\n   - Description: Provides reusable React component snippets with TypeScript support for faster development.\n\n3. **Antigravity/MarkdownLint** (v2.0.0)\n   - Status: Installed with warnings\n   - Dependencies: Resolved (Node.js 18+)\n   - Description: Lints Markdown files for consistent formatting and style.\n   - Warnings: Detected 3 deprecated rules in configuration. Recommend updating to latest ruleset.\n\n**Summary:**\n- Total skills installed: 3/3 (100%)\n- Dependencies resolved: 100%\n- Skills requiring updates: 1 (MarkdownLint)\n\nAll skills are now available in the VS Code workspace under the 'E-commerce Platform' project. The ReactSnippets skill includes a starter template for a new 'ProductCard' component in the /src/components directory.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:36:19.933998Z",
+    "http_status": 200,
+    "content_hash": "13619d63d5df471fc61ee5d7edd59cf3c00f9e5eda85f4fd056fffa2001be07b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentskillsmanager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentskillsmanager.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AgentSkillsManager - Multi-IDE Skill Management",
+  "short_description_vi": "The AgentSkillsManager is a powerful multi-IDE management extension that allows users to browse and install skill repositories across various platforms including Antigravity, CodeBuddy, and VS Code. With access to a vast cloud catalog of approximately 58K skills, it enhances productivity and streamlines development workflows."
+}

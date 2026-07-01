@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skiller",
+  "slug": "skiller",
+  "name": "Skiller",
+  "headline": "Skiller - Install Claude Code Plugins",
+  "short_description": "Skiller is a menubar app for browsing and installing Claude Code plugins and Agent Skills. It helps developers and operations teams streamline workflows by integrating AI capabilities directly into their desktop environment. The app connects to Claude's ecosystem, enabling quick access to AI tools and automation features.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "zanwei",
+  "install_command": "git clone https://github.com/zanwei/skiller.git",
+  "source_repo_url": "https://github.com/zanwei/skiller",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "tauri",
+    "skills",
+    "react",
+    "typescript",
+    "rust",
+    "menubar",
+    "plugins",
+    "claude",
+    "desktop-app",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Skiller is a lightweight desktop menubar application that streamlines the discovery and installation of Claude Code plugins and Agent Skills. It connects to the claude-plugins.dev directory and enables one-click installation to multiple AI coding assistants including Claude, Cursor, VS Code, and eight other clients. The app supports four package managers (npm, bun, pnpm, yarn) and integrates with popular terminals across macOS, Windows, and Linux. Developers and operations teams use Skiller to quickly integrate AI capabilities and automation features into their preferred coding environments without leaving the menubar.\nInstalling Claude Code plugins directly from your menubar without opening a browser\nSetting up AI agent skills across multiple coding assistants from one interface\nSwitching between package managers and installation targets during skill setup\nManaging global and project-level AI tool installations with custom keyboard shortcuts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zanwei/skiller`\n\n1. **Open Skiller**: Launch the Skiller app from your menubar.\n2. **Search for Plugins**: Use the search bar to find the plugins listed above.\n3. **Install**: Click on the plugin and follow the on-screen instructions to install.\n4. **Activate**: Once installed, activate the plugin within your Claude interface.\n```",
+    "usage": "```\nI'm looking for a Claude Code plugin or Agent Skill that can help [COMPANY] in the [INDUSTRY] sector automate [SPECIFIC TASK]. Can you recommend some options and guide me through the installation process using Skiller?\n```\nCopy\n\n```\n# Recommended Plugins for Automating Data Analysis\n\nHere are some Claude Code plugins that can help automate data analysis tasks for your company in the healthcare industry:\n\n1. **DataCleaner Pro**: Automates data cleaning and preprocessing for large datasets.\n2. **InsightGenerator**: Generates visual reports and insights from raw data.\n3. **QueryOptimizer**: Optimizes SQL queries for better performance.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skiller#main-content",
+      "skiller#overview",
+      "skiller#setup",
+      "skiller#examples",
+      "skiller#tools",
+      "skiller#mcp",
+      "skiller#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skiller là một ứng dụng menubar gọn nhẹ trên desktop giúp đơn giản hóa việc tìm kiếm và cài đặt các plugin Claude Code cùng các Agent Skill. Ứng dụng kết nối với thư mục claude-plugins.dev, cho phép cài đặt chỉ với một cú nhấp chuột vào nhiều trợ lý lập trình AI khác nhau bao gồm Claude, Cursor, VS Code và 8 client khác. Skiller hỗ trợ 4 package manager (npm, bun, pnpm, yarn) và tích hợp tốt với các terminal phổ biến trên macOS, Windows và Linux. Các developer và đội ngũ vận hành sử dụng Skiller để nhanh chóng tích hợp các tính năng AI và tự động hóa vào môi trường code yêu thích của mình mà không cần rời khỏi menubar.\n\n- Cài đặt các plugin Claude Code trực tiếp từ menubar mà không cần mở trình duyệt.\n- Setup các AI agent skill trên nhiều trợ lý lập trình khác nhau từ một giao diện duy nhất.\n- Chuyển đổi linh hoạt giữa các package manager và mục tiêu cài đặt trong quá trình setup skill.\n- Quản lý việc cài đặt công cụ AI ở cấp độ global hoặc project bằng các phím tắt tùy chỉnh.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/zanwei/skiller`\n\n1. **Mở Skiller**: Khởi chạy ứng dụng Skiller từ menubar của bạn.\n2. **Tìm kiếm Plugin**: Sử dụng thanh tìm kiếm để tìm các plugin được liệt kê ở trên.\n3. **Cài đặt**: Nhấp vào plugin và làm theo hướng dẫn trên màn hình để cài đặt.\n4. **Kích hoạt**: Sau khi cài đặt, kích hoạt plugin trong giao diện Claude của bạn.",
+    "usage_vi": "```\nTôi đang tìm một plugin Claude Code hoặc Agent Skill có thể giúp [CÔNG_TY] trong lĩnh vực [NGÀNH_NGHỀ] tự động hóa [NHIỆM_VỤ_CỤ_THỂ]. Bạn có thể gợi ý một số tùy chọn và hướng dẫn tôi quy trình cài đặt bằng Skiller không?\n```\nSao chép\n\n```\n# Các Plugin được khuyên dùng để Tự động hóa Phân tích Dữ liệu\n\nDưới đây là một số plugin Claude Code có thể giúp tự động hóa các tác vụ phân tích dữ liệu cho công ty của bạn trong ngành y tế:\n\n1. **DataCleaner Pro**: Tự động hóa việc làm sạch và tiền xử lý dữ liệu cho các tập dữ liệu lớn.\n2. **InsightGenerator**: Tạo báo cáo trực quan và insight từ dữ liệu thô.\n3. **QueryOptimizer**: Tối ưu hóa các truy vấn SQL để đạt hiệu suất tốt hơn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:04:55.742697Z",
+    "http_status": 200,
+    "content_hash": "301f92083be8c666876a420f8aa22913ea000a4876ae9bc1e852a5b510683de5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skiller.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skiller.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skiller - Cài đặt Plugin cho Claude Code",
+  "short_description_vi": "Skiller là ứng dụng trên menubar dùng để tìm kiếm và cài đặt các plugin Claude Code và Agent Skill. Ứng dụng giúp các developer và đội ngũ vận hành tối ưu hóa quy trình làm việc bằng cách tích hợp trực tiếp các tính năng AI vào môi trường desktop. Skiller kết nối trực tiếp với hệ sinh thái của Claude, giúp truy cập nhanh vào các công cụ AI và tính năng tự động hóa."
+}

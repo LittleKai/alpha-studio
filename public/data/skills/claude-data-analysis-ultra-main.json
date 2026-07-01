@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-data-analysis-ultra-main",
+  "slug": "claude-data-analysis-ultra-main",
+  "name": "browser-use",
+  "headline": "claude data analysis for internet data tasks",
+  "short_description": "AI-powered data analysis for non-technical users. Enables internet, e-commerce, and other businesses to perform complex data analysis with simple commands. Connects to existing workflows and tools for user analysis, A/B testing, and more.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "liangdabiao",
+  "install_command": "git clone https://github.com/liangdabiao/claude-data-analysis-ultra-main.git",
+  "source_repo_url": "https://github.com/liangdabiao/claude-data-analysis-ultra-main",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Data Analysis Ultra provides two integrated skill systems designed for different analysis needs. The internet analysis mode includes specialized skills for LTV prediction, A/B testing, funnel analysis, attribution modeling, and content sentiment analysis—ideal for e-commerce and growth-focused businesses. The general analysis mode supports exploratory, statistical, predictive, and complete analysis workflows with data exploration, visualization, report generation, and code generation capabilities. Both systems process CSV datasets with automatic data quality validation, statistical testing, anomaly detection, and RFM segmentation. Users can invoke skills individually for targeted analysis or through coordinator skills for comprehensive multi-step workflows.\nE-commerce customer lifetime value prediction and segmentation\nA/B testing design, sample sizing, and statistical validation\nSales funnel analysis with conversion optimization recommendations\nUser review sentiment analysis and topic extraction",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/claude-data-analysis-ultra-main`",
+    "usage": "```\nAnalyze the customer behavior data for [E-COMMERCE_PLATFORM] over the past [TIME_PERIOD]. Focus on [KEY_METRIC] trends, such as conversion rates, cart abandonment, or repeat purchase rates. Identify the top 3 customer segments with the highest [KEY_METRIC] and the top 3 with the lowest. For each segment, provide actionable insights on how to improve performance, including potential A/B test ideas. Use data from [DATA_SOURCE] if available.\n```\nCopy\n\n```\n### Customer Behavior Analysis Report for ShopEase (June 2023 - August 2023)\n\n**Key Metrics Analyzed:**\n- Conversion Rate: 2.8% (down from 3.1% in May)\n- Cart Abandonment Rate: 72% (stable YoY)\n- Repeat Purchase Rate: 18% (up from 15% in Q1)\n\n**Top 3 Customer Segments by Conversion Rate:**\n1. **High-Value Repeat Buyers (10% of customers, 6.2% conversion)**\n   - Behavior: Primarily purchases premium products ($150+ average order value).\n   - Insight: These customers are highly engaged but may benefit from exclusive early access to new products.\n   - A/B Test Idea: Send a \"VIP Preview\" email 3 days before product launch to this segment.\n\n2. **Mobile Shoppers (35% of customers, 3.5% conversion)**\n   - Behavior: 85% of sessions occur on mobile, but mobile conversion lags desktop by 22%.\n   - Insight: Checkout flow may be cumbersome on mobile devices.\n   - A/B Test Idea: Simplify the mobile checkout process by reducing form fields and adding one-click payment options.\n\n3. **Seasonal Shoppers (12% of customers, 4.1% conversion)**\n   - Behavior: Purchases peak during holiday seasons (November-December).\n   - Insight: These customers respond well to urgency-driven campaigns.\n   - A/B Test Idea: Test a countdown timer in the shopping cart for seasonal shoppers.\n\n**Top 3 Customer Segments by Cart Abandonment Rate:**\n1. **First-Time Visitors (22% of sessions, 85% abandonment)**\n   - Insight: Lack of trust or unclear return policy may be deterring purchases.\n   - A/B Test Idea: Add a \"30-Day Return Guarantee\" banner in the checkout flow.\n\n2. **Discount Seekers (15% of sessions, 80% abandonment)**\n   - Insight: These users often abandon carts to search for coupon codes.\n   - A/B Test Idea: Pre-load a 10% discount code in the cart for first-time visitors.\n\n3. **International Shoppers (8% of sessions, 78% abandonment)**\n   - Insight: High shipping costs and long delivery times are major barriers.\n   - A/B Test Idea: Offer free shipping on orders over $100 for international customers.\n\n**Recommendations:**\n- Prioritize mobile checkout optimization, as it impacts 35% of your customer base.\n- Focus on reducing cart abandonment for first-time visitors, as they represent the largest untapped revenue opportunity.\n- Leverage high-value repeat buyers for product launches to drive initial sales momentum.\n\n*Data Source: ShopEase Analytics Dashboard (exported 09/01/2023)*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-data-analysis-ultra-main#main-content",
+      "claude-data-analysis-ultra-main#overview",
+      "claude-data-analysis-ultra-main#setup",
+      "claude-data-analysis-ultra-main#examples",
+      "claude-data-analysis-ultra-main#tools",
+      "claude-data-analysis-ultra-main#mcp",
+      "claude-data-analysis-ultra-main#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Data Analysis Ultra provides two integrated skill systems designed for different analysis needs. The internet analysis mode includes specialized skills for LTV prediction, A/B testing, funnel analysis, attribution modeling, and content sentiment analysis—ideal for e-commerce and growth-focused businesses. The general analysis mode supports exploratory, statistical, predictive, and complete analysis workflows with data exploration, visualization, report generation, and code generation capabilities. Both systems process CSV datasets with automatic data quality validation, statistical testing, anomaly detection, and RFM segmentation. Users can invoke skills individually for targeted analysis or through coordinator skills for comprehensive multi-step workflows.\nE-commerce customer lifetime value prediction and segmentation\nA/B testing design, sample sizing, and statistical validation\nSales funnel analysis with conversion optimization recommendations\nUser review sentiment analysis and topic extraction",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/claude-data-analysis-ultra-main`",
+    "usage_vi": "```\nAnalyze the customer behavior data for [E-COMMERCE_PLATFORM] over the past [TIME_PERIOD]. Focus on [KEY_METRIC] trends, such as conversion rates, cart abandonment, or repeat purchase rates. Identify the top 3 customer segments with the highest [KEY_METRIC] and the top 3 with the lowest. For each segment, provide actionable insights on how to improve performance, including potential A/B test ideas. Use data from [DATA_SOURCE] if available.\n```\nCopy\n\n```\n### Customer Behavior Analysis Report for ShopEase (June 2023 - August 2023)\n\n**Key Metrics Analyzed:**\n- Conversion Rate: 2.8% (down from 3.1% in May)\n- Cart Abandonment Rate: 72% (stable YoY)\n- Repeat Purchase Rate: 18% (up from 15% in Q1)\n\n**Top 3 Customer Segments by Conversion Rate:**\n1. **High-Value Repeat Buyers (10% of customers, 6.2% conversion)**\n   - Behavior: Primarily purchases premium products ($150+ average order value).\n   - Insight: These customers are highly engaged but may benefit from exclusive early access to new products.\n   - A/B Test Idea: Send a \"VIP Preview\" email 3 days before product launch to this segment.\n\n2. **Mobile Shoppers (35% of customers, 3.5% conversion)**\n   - Behavior: 85% of sessions occur on mobile, but mobile conversion lags desktop by 22%.\n   - Insight: Checkout flow may be cumbersome on mobile devices.\n   - A/B Test Idea: Simplify the mobile checkout process by reducing form fields and adding one-click payment options.\n\n3. **Seasonal Shoppers (12% of customers, 4.1% conversion)**\n   - Behavior: Purchases peak during holiday seasons (November-December).\n   - Insight: These customers respond well to urgency-driven campaigns.\n   - A/B Test Idea: Test a countdown timer in the shopping cart for seasonal shoppers.\n\n**Top 3 Customer Segments by Cart Abandonment Rate:**\n1. **First-Time Visitors (22% of sessions, 85% abandonment)**\n   - Insight: Lack of trust or unclear return policy may be deterring purchases.\n   - A/B Test Idea: Add a \"30-Day Return Guarantee\" banner in the checkout flow.\n\n2. **Discount Seekers (15% of sessions, 80% abandonment)**\n   - Insight: These users often abandon carts to search for coupon codes.\n   - A/B Test Idea: Pre-load a 10% discount code in the cart for first-time visitors.\n\n3. **International Shoppers (8% of sessions, 78% abandonment)**\n   - Insight: High shipping costs and long delivery times are major barriers.\n   - A/B Test Idea: Offer free shipping on orders over $100 for international customers.\n\n**Recommendations:**\n- Prioritize mobile checkout optimization, as it impacts 35% of your customer base.\n- Focus on reducing cart abandonment for first-time visitors, as they represent the largest untapped revenue opportunity.\n- Leverage high-value repeat buyers for product launches to drive initial sales momentum.\n\n*Data Source: ShopEase Analytics Dashboard (exported 09/01/2023)*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:40:34.076194Z",
+    "http_status": 200,
+    "content_hash": "2f757f725d0927f2617034a767518fcee1be84e12defc4ac11b92e88e5076cf3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-data-analysis-ultra-main.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-data-analysis-ultra-main.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude data analysis for internet data tasks",
+  "short_description_vi": "AI-powered data analysis for non-technical users. Enables internet, e-commerce, and other businesses to perform complex data analysis with simple commands. Connects to existing workflows and tools for user analysis, A/B testing, and more."
+}

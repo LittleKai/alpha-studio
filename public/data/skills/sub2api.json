@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sub2api",
+  "slug": "sub2api",
+  "name": "browser-use",
+  "headline": "Sub2API: Unified AI API Access & Cost Sharing",
+  "short_description": "Sub2API is an open-source proxy that consolidates Claude, OpenAI, Gemini, and Antigravity API access into a single interface. Teams use it to share subscriptions, control costs, and manage API usage across projects. Supports rate limiting, usage tracking, and billing integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "80 min",
+  "author": "Wei-Shaw",
+  "install_command": "git clone https://github.com/Wei-Shaw/sub2api.git",
+  "source_repo_url": "https://github.com/Wei-Shaw/sub2api",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "crs2",
+    "crs",
+    "antigravity2api",
+    "cc2api",
+    "claude",
+    "codex",
+    "gemini",
+    "2api"
+  ],
+  "sections": {
+    "overview": "Sub2API is an open-source proxy server that consolidates access to multiple AI API providers—Claude, OpenAI, Gemini, and Antigravity—through a single unified interface. Teams use Sub2API to share subscriptions across projects, streamline API key management, and gain visibility into usage patterns. The proxy supports rate limiting and usage tracking, enabling organizations to monitor and control API consumption. By centralizing API access through Sub2API, teams can reduce overhead, prevent key sprawl, and implement consistent governance policies across development and production environments. The tool is designed for engineering teams that work with multiple AI providers and need a standardized way to manage authentication and usage.\nShare API subscriptions across teams while tracking individual usage\nImplement rate limiting and concurrency controls across multiple AI providers\nCentralize billing and cost allocation for AI service consumption\nMigrate between AI providers without changing application code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Wei-Shaw/sub2api`",
+    "usage": "```\nUse Sub2API to [TASK] with [SERVICE_PROVIDER] as the backend. Example: 'Use Sub2API to summarize the following research paper and extract key findings into a bullet-point list, using OpenAI as the backend model.' Include the text or data you want processed in your prompt.\n```\nCopy\n\n```\n### Research Paper Summary: Advances in Quantum Computing\n**Source:** *Nature, Vol. 623, Issue 7985* (Fictional)\n\n**Key Findings:**\n1. **Qubit Stability Breakthrough:** A new error-correction method reduced decoherence by 40% in superconducting qubits, extending coherence times to 1.2 milliseconds. This addresses a critical bottleneck in scalable quantum computing.\n\n2. **Hybrid Quantum-Classical Algorithms:** Researchers demonstrated a 3x speedup in molecular simulations (e.g., drug discovery) using a hybrid approach that offloads partial computations to quantum processors. The test case involved simulating a 128-qubit system for HIV protease inhibitors.\n\n3. **Topological Qubits:** Microsoft’s Station Q team achieved a 99.9% fidelity rate in topological qubit operations, a 15% improvement over previous benchmarks. This paves the way for fault-tolerant quantum computers.\n\n4. **Quantum Supremacy Milestone:** Google’s Sycamore processor solved a classically intractable problem (random circuit sampling) in 200 seconds—estimated to take 10,000 years on a supercomputer—using 53 qubits.\n\n**Limitations:**\n- Current systems require cryogenic temperatures (-273°C), limiting practical deployment.\n- Error rates remain high for NISQ (Noisy Intermediate-Scale Quantum) devices, necessitating repeated measurements.\n\n**Next Steps:**\n- Validate the error-correction method across larger qubit arrays.\n- Explore integration with classical HPC for hybrid workflows.\n\n*Generated using Sub2API (OpenAI backend) on 2024-06-15.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sub2api#main-content",
+      "sub2api#overview",
+      "sub2api#setup",
+      "sub2api#examples",
+      "sub2api#tools",
+      "sub2api#mcp",
+      "sub2api#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sub2API is an open-source proxy server that consolidates access to multiple AI API providers—Claude, OpenAI, Gemini, and Antigravity—through a single unified interface. Teams use Sub2API to share subscriptions across projects, streamline API key management, and gain visibility into usage patterns. The proxy supports rate limiting and usage tracking, enabling organizations to monitor and control API consumption. By centralizing API access through Sub2API, teams can reduce overhead, prevent key sprawl, and implement consistent governance policies across development and production environments. The tool is designed for engineering teams that work with multiple AI providers and need a standardized way to manage authentication and usage.\nShare API subscriptions across teams while tracking individual usage\nImplement rate limiting and concurrency controls across multiple AI providers\nCentralize billing and cost allocation for AI service consumption\nMigrate between AI providers without changing application code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Wei-Shaw/sub2api`",
+    "usage_vi": "```\nUse Sub2API to [TASK] with [SERVICE_PROVIDER] as the backend. Example: 'Use Sub2API to summarize the following research paper and extract key findings into a bullet-point list, using OpenAI as the backend model.' Include the text or data you want processed in your prompt.\n```\nCopy\n\n```\n### Research Paper Summary: Advances in Quantum Computing\n**Source:** *Nature, Vol. 623, Issue 7985* (Fictional)\n\n**Key Findings:**\n1. **Qubit Stability Breakthrough:** A new error-correction method reduced decoherence by 40% in superconducting qubits, extending coherence times to 1.2 milliseconds. This addresses a critical bottleneck in scalable quantum computing.\n\n2. **Hybrid Quantum-Classical Algorithms:** Researchers demonstrated a 3x speedup in molecular simulations (e.g., drug discovery) using a hybrid approach that offloads partial computations to quantum processors. The test case involved simulating a 128-qubit system for HIV protease inhibitors.\n\n3. **Topological Qubits:** Microsoft’s Station Q team achieved a 99.9% fidelity rate in topological qubit operations, a 15% improvement over previous benchmarks. This paves the way for fault-tolerant quantum computers.\n\n4. **Quantum Supremacy Milestone:** Google’s Sycamore processor solved a classically intractable problem (random circuit sampling) in 200 seconds—estimated to take 10,000 years on a supercomputer—using 53 qubits.\n\n**Limitations:**\n- Current systems require cryogenic temperatures (-273°C), limiting practical deployment.\n- Error rates remain high for NISQ (Noisy Intermediate-Scale Quantum) devices, necessitating repeated measurements.\n\n**Next Steps:**\n- Validate the error-correction method across larger qubit arrays.\n- Explore integration with classical HPC for hybrid workflows.\n\n*Generated using Sub2API (OpenAI backend) on 2024-06-15.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:33:40.894535Z",
+    "http_status": 200,
+    "content_hash": "ae8d3bad91d05ddb8694f1969508e103b9b022a23e9ae01ffa9b1680c4401c2b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sub2api.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sub2api.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Sub2API: Unified AI API Access & Cost Sharing",
+  "short_description_vi": "Sub2API is an open-source proxy that consolidates Claude, OpenAI, Gemini, and Antigravity API access into a single interface. Teams use it to share subscriptions, control costs, and manage API usage across projects. Supports rate limiting, usage tracking, and billing integration."
+}

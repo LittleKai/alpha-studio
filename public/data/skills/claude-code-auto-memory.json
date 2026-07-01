@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-auto-memory",
+  "slug": "claude-code-auto-memory",
+  "name": "Claude Code Auto Memory",
+  "headline": "Auto-maintain code documentation with Claude",
+  "short_description": "Claude Code plugin that automatically maintains CLAUDE.md files, ensuring project memory stays up-to-date with edits, deletions, and moves. Benefits developers by reducing manual maintenance and improving project documentation accuracy.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "severity1",
+  "install_command": "git clone https://github.com/severity1/claude-code-auto-memory.git",
+  "source_repo_url": "https://github.com/severity1/claude-code-auto-memory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "claude-code-auto-memory automatically updates CLAUDE.md files whenever Claude Code edits, deletes, or moves files in your project. The plugin tracks changes through a PostToolUse hook with zero token overhead, then spawns an isolated agent at turn-end to update memory without consuming your main conversation context. It detects Edit, Write, Bash operations, and git commands (rm, mv, git rm, git mv), preserving manually-edited sections while updating only auto-managed areas. Set up takes seconds with /auto-memory:init, and the plugin supports monorepo structures with hierarchical CLAUDE.md files. Developers benefit from always-fresh project memory that reduces manual documentation maintenance and keeps team context accurate.\nKeep project memory current as codebase evolves without manual updates\nTrack architecture and convention changes automatically across team edits\nMaintain accurate context in monorepos with per-subtree CLAUDE.md files\nSync memory with file operations outside Claude Code (IDE, terminal)",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/severity1/claude-code-auto-memory`",
+    "usage": "```\nUse the claude-code-auto-memory plugin to update the CLAUDE.md file for [PROJECT_NAME]. Review the recent changes in [DIRECTORY_PATH] since [LAST_UPDATE_DATE]. Ensure the memory file reflects: 1) Newly added [FILE_TYPES], 2) Deleted [FILE_TYPES], 3) Renamed/moved [FILE_TYPES], and 4) Key code patterns or conventions introduced. Focus on maintaining accuracy for [SPECIFIC_TOPICS] like [EXAMPLE_TOPIC].\n```\nCopy\n\n```\nHere’s the updated CLAUDE.md for the `payment-gateway` project, reflecting changes made since the last update on October 12, 2023. The file now includes:\n\n**New Components:**\n- Added `stripe_webhook_handler.py` in `/src/integrations/` to process Stripe webhook events. This handles events like `payment_intent.succeeded` and `invoice.payment_failed` with retry logic for failed deliveries.\n- Introduced `fraud_detection.py` in `/src/utils/` to flag suspicious transactions using a rules-based system (e.g., velocity checks, geolocation mismatches).\n\n**Deleted Components:**\n- Removed `legacy_paypal_adapter.py` from `/src/integrations/`, as the PayPal integration was deprecated in favor of Stripe.\n\n**Renamed/Moved Components:**\n- Moved `currency_converter.py` from `/src/utils/` to `/src/services/` and renamed it to `exchange_rate_service.py` to better reflect its role in fetching real-time exchange rates from an external API.\n\n**Key Patterns & Conventions:**\n- All new integrations now follow the `IntegrationBase` abstract class pattern, ensuring consistent error handling and logging.\n- Added a new `RateLimitError` exception class to handle API rate limits gracefully, with exponential backoff retries.\n\nThe CLAUDE.md file has been trimmed to focus on active components and is now 20% shorter while retaining critical context for the team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-auto-memory#main-content",
+      "claude-code-auto-memory#overview",
+      "claude-code-auto-memory#setup",
+      "claude-code-auto-memory#examples",
+      "claude-code-auto-memory#tools",
+      "claude-code-auto-memory#mcp",
+      "claude-code-auto-memory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-code-auto-memory tự động cập nhật các file CLAUDE.md bất cứ khi nào Claude Code chỉnh sửa, xóa hoặc di chuyển file trong dự án của bạn. Plugin theo dõi các thay đổi thông qua hook PostToolUse mà không tốn thêm token (zero token overhead), sau đó khởi tạo một agent độc lập lúc turn-end để cập nhật memory mà không ảnh hưởng đến context của cuộc hội thoại chính. Plugin có thể phát hiện các thao tác Edit, Write, Bash và các lệnh git (rm, mv, git rm, git mv), giúp giữ nguyên các phần được chỉnh sửa thủ công và chỉ cập nhật các khu vực được quản lý tự động. Quá trình setup cực kỳ nhanh chóng với `/auto-memory:init`, đồng thời plugin cũng hỗ trợ cấu trúc monorepo với các file CLAUDE.md phân cấp. Lập trình viên sẽ luôn có một project memory mới nhất, giảm thiểu việc bảo trì tài liệu thủ công và đảm bảo context của cả team luôn chính xác.\nGiữ cho project memory luôn mới khi codebase phát triển mà không cần cập nhật thủ công\nTự động theo dõi các thay đổi về kiến trúc và convention thông qua các chỉnh sửa của team\nDuy trì context chính xác trong monorepo nhờ các file CLAUDE.md riêng cho từng subtree\nĐồng bộ memory với các thao tác file bên ngoài Claude Code (IDE, terminal)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/severity1/claude-code-auto-memory`",
+    "usage_vi": "```\nSử dụng plugin claude-code-auto-memory để cập nhật file CLAUDE.md cho [PROJECT_NAME]. Xem lại các thay đổi gần đây trong [DIRECTORY_PATH] kể từ ngày [LAST_UPDATE_DATE]. Đảm bảo file memory phản ánh đúng: 1) Các [FILE_TYPES] mới được thêm vào, 2) Các [FILE_TYPES] đã bị xóa, 3) Các [FILE_TYPES] được đổi tên/di chuyển, và 4) Các pattern code hoặc convention chính được đưa vào. Tập trung vào việc duy trì tính chính xác cho các [SPECIFIC_TOPICS] như [EXAMPLE_TOPIC].\n```\nSao chép\n\n```\nDưới đây là file CLAUDE.md đã được cập nhật cho dự án `payment-gateway`, phản ánh các thay đổi kể từ lần cập nhật cuối cùng vào ngày 12 tháng 10 năm 2023. File hiện tại bao gồm:\n\n**Các component mới:**\n- Thêm `stripe_webhook_handler.py` trong `/src/integrations/` để xử lý các event webhook của Stripe. File này xử lý các event như `payment_intent.succeeded` và `invoice.payment_failed` với retry logic cho các lượt gửi thất bại.\n- Bổ sung `fraud_detection.py` trong `/src/utils/` để gắn cờ các giao dịch đáng ngờ bằng hệ thống dựa trên quy tắc (ví dụ: velocity check, sai lệch vị trí địa lý).\n\n**Các component đã xóa:**\n- Loại bỏ `legacy_paypal_adapter.py` khỏi `/src/integrations/`, do tích hợp PayPal đã bị deprecated để chuyển sang dùng Stripe.\n\n**Các component đã đổi tên/di chuyển:**\n- Di chuyển `currency_converter.py` từ `/src/utils/` sang `/src/services/` và đổi tên thành `exchange_rate_service.py` để phản ánh rõ hơn vai trò của nó trong việc lấy tỷ giá hối đoái theo thời gian thực từ một API bên ngoài.\n\n**Các Pattern & Convention chính:**\n- Tất cả các tích hợp mới hiện tuân theo pattern abstract class `IntegrationBase`, đảm bảo tính nhất quán trong xử lý lỗi và ghi log (logging).\n- Thêm một exception class mới `RateLimitError` để xử lý giới hạn tốc độ gọi API (rate limit) một cách mượt mà với cơ chế exponential backoff retry.\n\nFile CLAUDE.md đã được tinh giản để tập trung vào các component đang hoạt động, ngắn hơn 20% nhưng vẫn giữ lại context quan trọng cho team.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:46:00.567193Z",
+    "http_status": 200,
+    "content_hash": "95f6eed063b0d5537061e0e868b10e0558976bef73c1532666ccefb5f5114469",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-auto-memory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-auto-memory.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tự động duy trì tài liệu code bằng Claude",
+  "short_description_vi": "Plugin Claude Code tự động duy trì các file CLAUDE.md, đảm bảo project memory luôn được cập nhật theo các thay đổi như chỉnh sửa, xóa và di chuyển file. Plugin giúp lập trình viên giảm bớt công sức cập nhật thủ công và nâng cao độ chính xác của tài liệu dự án."
+}

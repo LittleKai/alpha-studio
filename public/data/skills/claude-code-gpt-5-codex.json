@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-gpt-5-codex",
+  "slug": "claude-code-gpt-5-codex",
+  "name": "browser-use",
+  "headline": "claude-code-gpt-5-codex: AI Automation",
+  "short_description": "Run Anthropic's Claude Code CLI with OpenAI models like GPT-5-Codex and GPT-5.1 via a local LiteLLM proxy. Ideal for developers and operations teams needing to integrate advanced code generation and analysis into their workflows. Connects to existing CLI tools and development environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "teremterem",
+  "install_command": "git clone https://github.com/teremterem/claude-code-gpt-5-codex.git",
+  "source_repo_url": "https://github.com/teremterem/claude-code-gpt-5-codex",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-code-cli",
+    "anthropic",
+    "gpt-51",
+    "openai",
+    "claude-code-adapter",
+    "gpt-5",
+    "gpt-5-codex",
+    "gpt51",
+    "claude-code-proxy",
+    "gpt-5-pro",
+    "gpt5pro",
+    "litellm",
+    "gpt51codex",
+    "gpt5codex",
+    "gpt5",
+    "gpt-51-codex"
+  ],
+  "sections": {
+    "overview": "The claude-code-gpt-5-codex skill enables users to run Anthropic's Claude Code CLI in conjunction with OpenAI models such as GPT-5-Codex and GPT-5.1 through a local LiteLLM proxy. This integration allows developers and AI practitioners to leverage advanced generative capabilities from OpenAI seamlessly within their existing workflows. By utilizing this skill, users can enhance their coding efficiency and automate repetitive tasks, making it easier to focus on more complex problems. One of the key benefits of this skill is its ability to streamline AI automation processes. With a moderate implementation time of approximately 30 minutes, developers can quickly set up the environment to start benefiting from enhanced coding assistance. Although specific time savings are currently unknown, the potential for increased productivity is significant, as users can automate code generation and debugging tasks, reducing manual effort and accelerating project timelines. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to integrate sophisticated AI capabilities into their projects. By using the claude-code-gpt-5-codex skill, teams can improve their workflow automation, enabling them to deliver higher-quality software faster. For instance, a developer could utilize this skill to generate boilerplate code for a new feature, allowing them to allocate more time to critical development tasks. While the implementation difficulty is rated as intermediate, users will need familiarity with command-line interfaces and basic programming concepts to maximize the benefits of this skill. It fits perfectly into AI-first workflows, where automation and intelligent assistance are crucial for maintaining competitive advantage. As organizations increasingly adopt AI technologies, integrating skills like claude-code-gpt-5-codex can significantly enhance operational efficiency and innovation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/teremterem/claude-code-gpt-5-codex`",
+    "usage": "```\nUse claude-code-gpt-5-codex to analyze and refactor the [PROJECT_NAME] codebase in [LANGUAGE]. Focus on [SPECIFIC_AREA, e.g., performance bottlenecks, security vulnerabilities, or API integration]. Generate a diff with suggested changes and explain the trade-offs of each modification. Test the changes using the existing [TEST_COMMAND] command. Provide a summary of the most critical improvements and their expected impact on [METRIC, e.g., execution time, maintainability, or security posture].\n```\nCopy\n\n```\n### Analysis of `payment_service` (Python/Flask)\n\n**Context:** The `payment_service` handles 5,000+ transactions daily with a 98% success rate but experiences intermittent timeouts during peak hours (10-15% latency spikes). The codebase uses Flask, SQLAlchemy, and Redis for caching.\n\n**Key Findings:**\n1. **Database Bottleneck:** The `process_payment` function executes 3 sequential SQL queries without indexing on `user_id` and `transaction_id`. Query 2 (`SELECT * FROM transactions WHERE user_id = ?`) takes 1.2s on average during peak load. \n2. **Cache Inefficiency:** Redis keys are not prefixed with `payment_`, causing cache invalidation collisions with other services (e.g., `user_profile`).\n3. **Thread Safety:** The `PaymentValidator` class uses a global `redis_conn` without connection pooling, leading to resource exhaustion under load.\n\n**Suggested Changes:**\n```diff\n# Add composite index to transactions table\n+ CREATE INDEX idx_transactions_user_id_status ON transactions(user_id, status);\n\n# Refactor process_payment to use async queries\n+ async def process_payment(payment_data):\n+     user_id = payment_data['user_id']\n+     async with db_session() as session:\n+         transaction = await session.execute(\n+             select(Transaction).where(Transaction.user_id == user_id)\n+         )\n+         if not transaction:\n+             raise PaymentError(\"User not found\")\n+     \n+     # Use prefixed Redis keys\n+     cache_key = f\"payment_{user_id}_{payment_data['txn_id']}\"\n+     cached = await redis.get(cache_key)\n```\n\n**Trade-offs:**\n- **Database Index:** Improves query speed by 60% but requires a migration (downtime: 2 minutes).\n- **Async Refactor:** Increases code complexity but reduces timeout errors by 40% (validated via load testing).\n- **Redis Prefixing:** Adds 5 lines of code but eliminates cache collisions entirely.\n\n**Testing:**\n- Ran `pytest tests/payment_test.py -v` (all tests passed).\n- Load tested with `locust -f tests/load_test.py --headless -u 1000 -r 50` (latency reduced from 1.8s to 0.9s).\n\n**Impact:**\n- **Success Rate:** Expected to reach 99.5% (current: 98%).\n- **Cost:** $200/month saved on cloud database queries.\n- **Developer Time:** 4 hours for implementation + 2 hours for testing.\n\n**Next Steps:**\n1. Schedule database migration during off-peak hours.\n2. Deploy async changes to staging for further validation.\n3. Monitor Redis memory usage post-deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-gpt-5-codex#main-content",
+      "claude-code-gpt-5-codex#overview",
+      "claude-code-gpt-5-codex#setup",
+      "claude-code-gpt-5-codex#examples",
+      "claude-code-gpt-5-codex#tools",
+      "claude-code-gpt-5-codex#mcp",
+      "claude-code-gpt-5-codex#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-code-gpt-5-codex skill enables users to run Anthropic's Claude Code CLI in conjunction with OpenAI models such as GPT-5-Codex and GPT-5.1 through a local LiteLLM proxy. This integration allows developers and AI practitioners to leverage advanced generative capabilities from OpenAI seamlessly within their existing workflows. By utilizing this skill, users can enhance their coding efficiency and automate repetitive tasks, making it easier to focus on more complex problems. One of the key benefits of this skill is its ability to streamline AI automation processes. With a moderate implementation time of approximately 30 minutes, developers can quickly set up the environment to start benefiting from enhanced coding assistance. Although specific time savings are currently unknown, the potential for increased productivity is significant, as users can automate code generation and debugging tasks, reducing manual effort and accelerating project timelines. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to integrate sophisticated AI capabilities into their projects. By using the claude-code-gpt-5-codex skill, teams can improve their workflow automation, enabling them to deliver higher-quality software faster. For instance, a developer could utilize this skill to generate boilerplate code for a new feature, allowing them to allocate more time to critical development tasks. While the implementation difficulty is rated as intermediate, users will need familiarity with command-line interfaces and basic programming concepts to maximize the benefits of this skill. It fits perfectly into AI-first workflows, where automation and intelligent assistance are crucial for maintaining competitive advantage. As organizations increasingly adopt AI technologies, integrating skills like claude-code-gpt-5-codex can significantly enhance operational efficiency and innovation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/teremterem/claude-code-gpt-5-codex`",
+    "usage_vi": "```\nUse claude-code-gpt-5-codex to analyze and refactor the [PROJECT_NAME] codebase in [LANGUAGE]. Focus on [SPECIFIC_AREA, e.g., performance bottlenecks, security vulnerabilities, or API integration]. Generate a diff with suggested changes and explain the trade-offs of each modification. Test the changes using the existing [TEST_COMMAND] command. Provide a summary of the most critical improvements and their expected impact on [METRIC, e.g., execution time, maintainability, or security posture].\n```\nCopy\n\n```\n### Analysis of `payment_service` (Python/Flask)\n\n**Context:** The `payment_service` handles 5,000+ transactions daily with a 98% success rate but experiences intermittent timeouts during peak hours (10-15% latency spikes). The codebase uses Flask, SQLAlchemy, and Redis for caching.\n\n**Key Findings:**\n1. **Database Bottleneck:** The `process_payment` function executes 3 sequential SQL queries without indexing on `user_id` and `transaction_id`. Query 2 (`SELECT * FROM transactions WHERE user_id = ?`) takes 1.2s on average during peak load. \n2. **Cache Inefficiency:** Redis keys are not prefixed with `payment_`, causing cache invalidation collisions with other services (e.g., `user_profile`).\n3. **Thread Safety:** The `PaymentValidator` class uses a global `redis_conn` without connection pooling, leading to resource exhaustion under load.\n\n**Suggested Changes:**\n```diff\n# Add composite index to transactions table\n+ CREATE INDEX idx_transactions_user_id_status ON transactions(user_id, status);\n\n# Refactor process_payment to use async queries\n+ async def process_payment(payment_data):\n+     user_id = payment_data['user_id']\n+     async with db_session() as session:\n+         transaction = await session.execute(\n+             select(Transaction).where(Transaction.user_id == user_id)\n+         )\n+         if not transaction:\n+             raise PaymentError(\"User not found\")\n+     \n+     # Use prefixed Redis keys\n+     cache_key = f\"payment_{user_id}_{payment_data['txn_id']}\"\n+     cached = await redis.get(cache_key)\n```\n\n**Trade-offs:**\n- **Database Index:** Improves query speed by 60% but requires a migration (downtime: 2 minutes).\n- **Async Refactor:** Increases code complexity but reduces timeout errors by 40% (validated via load testing).\n- **Redis Prefixing:** Adds 5 lines of code but eliminates cache collisions entirely.\n\n**Testing:**\n- Ran `pytest tests/payment_test.py -v` (all tests passed).\n- Load tested with `locust -f tests/load_test.py --headless -u 1000 -r 50` (latency reduced from 1.8s to 0.9s).\n\n**Impact:**\n- **Success Rate:** Expected to reach 99.5% (current: 98%).\n- **Cost:** $200/month saved on cloud database queries.\n- **Developer Time:** 4 hours for implementation + 2 hours for testing.\n\n**Next Steps:**\n1. Schedule database migration during off-peak hours.\n2. Deploy async changes to staging for further validation.\n3. Monitor Redis memory usage post-deployment.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:50:13.263281Z",
+    "http_status": 200,
+    "content_hash": "5f07c12fbb38f22a64749d605c41ce51b9750398a17a54cb6b30ca5d1acb10bd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-gpt-5-codex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-gpt-5-codex.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-code-gpt-5-codex: AI Automation",
+  "short_description_vi": "Run Anthropic's Claude Code CLI with OpenAI models like GPT-5-Codex and GPT-5.1 via a local LiteLLM proxy. Ideal for developers and operations teams needing to integrate advanced code generation and analysis into their workflows. Connects to existing CLI tools and development environments."
+}

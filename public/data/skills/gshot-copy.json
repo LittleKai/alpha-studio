@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gshot-copy",
+  "slug": "gshot-copy",
+  "name": "Gshot Copy",
+  "headline": "gshot-copy: Screenshot Utility for Claude Code",
+  "short_description": "A lightweight, distro-agnostic screenshot utility for Linux that automatically names files with timestamps and copies the file path to your clipboard.  This is espcially handy for sharing images with Claude Code on linux.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "thecodecentral",
+  "install_command": "git clone https://github.com/thecodecentral/gshot-copy.git",
+  "source_repo_url": "https://github.com/thecodecentral/gshot-copy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "linux",
+    "claude-code",
+    "screenshot",
+    "vibe-coding",
+    "screenshots"
+  ],
+  "sections": {
+    "overview": "gshot-copy is a distro-agnostic screenshot wrapper for Linux that automates the process of capturing, naming, and sharing screenshots. It automatically generates timestamped filenames in the format gshot-YYYY-MM-DD-HHMMSS-XXXX.png and copies the file path directly to your clipboard, eliminating manual file management. The tool supports three screenshot modes—area selection, window capture, and full screen—and works across bash, zsh, fish, and dash shells. Developers using Claude Code benefit from instant clipboard integration, enabling seamless image sharing with the assistant. With minimal dependencies and cross-shell compatibility, gshot-copy streamlines screenshot workflows on any Linux distribution.\nSharing debug screenshots with Claude Code during development sessions\nCapturing specific UI areas for bug reports with automatic timestamped organization\nTaking window screenshots for documentation with one keyboard shortcut\nFull-screen captures with configurable output directory for team collaboration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thecodecentral/gshot-copy`",
+    "usage": "```\nCreate a bash script for a lightweight, distro-agnostic screenshot utility for Linux called gshot-copy. The script should automatically name files with timestamps and copy the file path to the clipboard. The script should be compatible with [DISTRO] and use [SCREENSHOT_TOOL] for capturing screenshots. Include error handling for common issues like missing dependencies or permission issues.\n```\nCopy\n\n```\n```bash\n#!/bin/bash\n\n# gshot-copy - A lightweight, distro-agnostic screenshot utility for Linux\n\n# Check for dependencies\nif ! command -v scrot &> /dev/null; then\n    echo \"Error: scrot is not installed. Please install it first.\"\nexit 1\nfi\n\nif ! command -v xclip &> /dev/null; then\n    echo \"Error: xclip is not installed. Please install it first.\"\nexit 1\nfi\n\n# Capture screenshot and save with timestamp\nscreenshot_path=\"~/Pictures/Screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png\"\nscrot \"$screenshot_path\"\n\n# Copy file path to clipboard\necho \"$screenshot_path\" | xclip -selection clipboard\n\necho \"Screenshot saved to: $screenshot_path\"\necho \"File path copied to clipboard.\"\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gshot-copy#main-content",
+      "gshot-copy#overview",
+      "gshot-copy#setup",
+      "gshot-copy#examples",
+      "gshot-copy#tools",
+      "gshot-copy#mcp",
+      "gshot-copy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "gshot-copy is a distro-agnostic screenshot wrapper for Linux that automates the process of capturing, naming, and sharing screenshots. It automatically generates timestamped filenames in the format gshot-YYYY-MM-DD-HHMMSS-XXXX.png and copies the file path directly to your clipboard, eliminating manual file management. The tool supports three screenshot modes—area selection, window capture, and full screen—and works across bash, zsh, fish, and dash shells. Developers using Claude Code benefit from instant clipboard integration, enabling seamless image sharing with the assistant. With minimal dependencies and cross-shell compatibility, gshot-copy streamlines screenshot workflows on any Linux distribution.\nSharing debug screenshots with Claude Code during development sessions\nCapturing specific UI areas for bug reports with automatic timestamped organization\nTaking window screenshots for documentation with one keyboard shortcut\nFull-screen captures with configurable output directory for team collaboration",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thecodecentral/gshot-copy`",
+    "usage_vi": "```\nCreate a bash script for a lightweight, distro-agnostic screenshot utility for Linux called gshot-copy. The script should automatically name files with timestamps and copy the file path to the clipboard. The script should be compatible with [DISTRO] and use [SCREENSHOT_TOOL] for capturing screenshots. Include error handling for common issues like missing dependencies or permission issues.\n```\nCopy\n\n```\n```bash\n#!/bin/bash\n\n# gshot-copy - A lightweight, distro-agnostic screenshot utility for Linux\n\n# Check for dependencies\nif ! command -v scrot &> /dev/null; then\n    echo \"Error: scrot is not installed. Please install it first.\"\nexit 1\nfi\n\nif ! command -v xclip &> /dev/null; then\n    echo \"Error: xclip is not installed. Please install it first.\"\nexit 1\nfi\n\n# Capture screenshot and save with timestamp\nscreenshot_path=\"~/Pictures/Screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png\"\nscrot \"$screenshot_path\"\n\n# Copy file path to clipboard\necho \"$screenshot_path\" | xclip -selection clipboard\n\necho \"Screenshot saved to: $screenshot_path\"\necho \"File path copied to clipboard.\"\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:39.663602Z",
+    "http_status": 200,
+    "content_hash": "e0ef144986323f9bd3f232ffa7e571d7a98cbf0024723b91ed80b3c673261b33",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gshot-copy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gshot-copy.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "gshot-copy: Screenshot Utility for Claude Code",
+  "short_description_vi": "A lightweight, distro-agnostic screenshot utility for Linux that automatically names files with timestamps and copies the file path to your clipboard.  This is espcially handy for sharing images with Claude Code on linux."
+}

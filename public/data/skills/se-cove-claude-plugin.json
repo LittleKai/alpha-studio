@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/se-cove-claude-plugin",
+  "slug": "se-cove-claude-plugin",
+  "name": "SE-CoVe Claude Plugin",
+  "headline": "SE-CoVe Claude Plugin - AI Code Verification",
+  "short_description": "SE-CoVe plugin for Claude Code verifies AI-generated code against requirements, reducing bugs. Engineers benefit from unbiased code reviews, improving quality and reducing manual effort. Integrates with Claude Code for automated verification in software development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "vertti",
+  "install_command": "git clone https://github.com/vertti/se-cove-claude-plugin.git",
+  "source_repo_url": "https://github.com/vertti/se-cove-claude-plugin",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-plugin",
+    "multi-agent",
+    "code-quality",
+    "tdd",
+    "chain-of-verification",
+    "ai-code-review",
+    "code-verification",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "SE-CoVe applies Meta's Chain-of-Verification research to code review, improving accuracy by checking against requirements rather than implementation. The plugin analyzes 35+ software engineering claim categories across correctness, security, and performance domains. It uses a multi-agent pipeline with confidence scoring, severity ranking, and parallel verification tracks to identify bugs, security vulnerabilities, and performance issues. Engineers can run quick sanity checks or thorough reviews with domain-specific focus areas like authentication, caching, error handling, and API contracts. Use SE-CoVe for complex code generation, architectural decisions, and bug investigations where independent verification reduces bias and catches issues faster.\nVerify complex code generation for correctness before deployment\nSecurity-focused review of authentication and input validation\nPerformance analysis for N+1 queries, caching, and complexity issues\nAPI contract and error handling verification\n- **Language**: Python\n- **Functionality**: Data processing pipeline\n- **Lines of Code**: 142",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vertti/se-cove-claude-plugin`",
+    "usage": "```\nI'm using the SE-CoVe plugin for Claude Code to verify this AI-generated code for [COMPANY]. Here's the code: [CODE]. Here are the requirements it must meet: [REQUIREMENTS]. Please verify the code against these requirements and provide a detailed report.\n```\nCopy\n\n```\n```markdown\n# Code Verification Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "se-cove-claude-plugin#main-content",
+      "se-cove-claude-plugin#overview",
+      "se-cove-claude-plugin#setup",
+      "se-cove-claude-plugin#examples",
+      "se-cove-claude-plugin#tools",
+      "se-cove-claude-plugin#mcp",
+      "se-cove-claude-plugin#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SE-CoVe áp dụng nghiên cứu Chain-of-Verification của Meta vào việc code review, giúp tăng độ chính xác nhờ đối chiếu với các yêu cầu (requirements) thay vì chỉ kiểm tra cách triển khai (implementation). Plugin này phân tích hơn 35 danh mục tiêu chí kỹ thuật phần mềm thuộc các nhóm: tính chính xác (correctness), bảo mật (security) và hiệu năng (performance). Công cụ sử dụng một pipeline multi-agent kết hợp với cơ chế chấm điểm độ tin cậy, xếp hạng mức độ nghiêm trọng và các luồng xác thực song song để phát hiện bug, lỗ hổng bảo mật và các vấn đề về hiệu năng. Các kỹ sư có thể thực hiện nhanh các bước sanity check hoặc tiến hành review chuyên sâu tập trung vào các mảng cụ thể như authentication, caching, error handling và API contract. Hãy sử dụng SE-CoVe khi cần generate code phức tạp, đưa ra các quyết định kiến trúc hoặc điều tra bug—những trường hợp mà việc xác thực độc lập sẽ giúp giảm thiểu tính chủ quan và phát hiện lỗi nhanh hơn.\n\nXác thực tính chính xác của code phức tạp do AI tạo trước khi deploy\nReview chuyên sâu về bảo mật đối với authentication và input validation\nPhân tích hiệu năng cho các vấn đề truy vấn N+1, caching và độ phức tạp thuật toán\nXác thực API contract và cơ chế error handling\n- **Ngôn ngữ**: Python\n- **Chức năng**: Pipeline xử lý dữ liệu\n- **Số dòng code**: 142",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/vertti/se-cove-claude-plugin`",
+    "usage_vi": "```\nTôi đang sử dụng plugin SE-CoVe cho Claude Code để xác thực đoạn code do AI tạo này cho [COMPANY]. Đây là code: [CODE]. Đây là các yêu cầu cần đáp ứng: [REQUIREMENTS]. Vui lòng xác thực code dựa trên các yêu cầu này và cung cấp báo cáo chi tiết.\n```\nCopy\n\n```\n```markdown\n# Báo cáo xác thực code"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:16:13.456968Z",
+    "http_status": 200,
+    "content_hash": "a9272531e5ddab8e22844b0947623d8c354ef490f4e0b6c274b284a61895e97e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\se-cove-claude-plugin.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\se-cove-claude-plugin.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SE-CoVe Claude Plugin - Xác thực code AI",
+  "short_description_vi": "Plugin SE-CoVe cho Claude Code giúp xác thực code do AI tạo dựa trên các yêu cầu đề ra, từ đó giảm thiểu bug. Các kỹ sư có thể tận dụng quy trình code review khách quan để nâng cao chất lượng code và giảm bớt công sức kiểm tra thủ công. Công cụ này tích hợp mượt mà với Claude Code để tự động hóa khâu xác thực trong quy trình phát triển phần mềm."
+}

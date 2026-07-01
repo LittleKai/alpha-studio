@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/perplexity-comet-mcp",
+  "slug": "perplexity-comet-mcp",
+  "name": "browser-use",
+  "headline": "Perplexity-Comet-MCP: Enhance Autonomous Browsing",
+  "short_description": "MCP server connecting Claude Code to Perplexity Comet browser. Autonomous web browsing, agentic research, multi-tab management. Windows/WSL/macOS support. Smart completion detection, auto-reconnect, tab protection. Enhanced fork with 7 tools including comet_tabs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "RapierCraft",
+  "install_command": "git clone https://github.com/RapierCraft/Perplexity-Comet-MCP.git",
+  "source_repo_url": "https://github.com/RapierCraft/Perplexity-Comet-MCP",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "browser-automation",
+    "anthropic",
+    "claude",
+    "mcp",
+    "perplexity",
+    "ai-agent"
+  ],
+  "sections": {
+    "overview": "The Perplexity-Comet-MCP skill serves as a powerful automation tool that connects Claude Code to the Perplexity Comet browser, enabling autonomous web browsing and agentic research. This skill allows users to manage multiple tabs efficiently, providing support for Windows, WSL, and macOS environments. With features such as smart completion detection, auto-reconnect, and tab protection, it streamlines the browsing experience and enhances productivity for developers and AI practitioners alike. One of the key benefits of the Perplexity-Comet-MCP skill is its ability to save time by automating repetitive tasks associated with web research. Users can conduct extensive research without the need for constant manual intervention, allowing them to focus on more critical aspects of their projects. Although specific time savings are currently unknown, the skill's autonomous capabilities suggest significant efficiency gains, particularly in environments where research is a frequent requirement. This skill is particularly suited for developers, product managers, and AI practitioners who require efficient web browsing and research capabilities. It is beneficial for those working in data engineering, product development, or any role that demands extensive information gathering. For instance, a product manager could use this skill to autonomously gather competitive analysis data across multiple tabs, while a developer might leverage it for research on the latest coding practices or libraries. Implementing the Perplexity-Comet-MCP skill is rated as intermediate in difficulty, with an estimated implementation time of around 30 minutes. Users should have a basic understanding of Claude Code and automation principles to maximize the skill's potential. Integrating this skill into an AI-first workflow enhances productivity by allowing AI agents to handle web browsing tasks autonomously, freeing up human resources for more strategic decision-making.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RapierCraft/Perplexity-Comet-MCP`",
+    "usage": "```\nUse Perplexity Comet MCP to autonomously research [TOPIC] and compile a comprehensive report. Start by opening a new tab with a focused search query: 'What are the latest breakthroughs in [TOPIC] as of [DATE]?' Then, browse the top 3 results, extract key findings, and summarize them in a structured format. Use comet_tabs to manage multi-tab workflows and ensure no critical information is lost. Finally, generate a prioritized list of next steps for further research or action. Include citations for all sources.\n```\nCopy\n\n```\n### Research Report: Breakthroughs in Quantum Computing (Q3 2024)\n\n**Executive Summary:**\nThis report synthesizes the latest advancements in quantum computing as of October 2024, focusing on hardware innovations, algorithmic breakthroughs, and industry adoption trends. Key findings include the successful demonstration of error-corrected logical qubits by IBM and Google, the launch of a 1,000-qubit processor by IonQ, and the growing investment in quantum software stacks by AWS and Microsoft.\n\n**Key Findings:**\n\n1. **Hardware Innovations:**\n   - **IBM:** Achieved a 127-qubit processor with improved error rates (0.001% per gate) using its Heron architecture. The company also announced plans for a 1,121-qubit Condor processor by 2025.\n   - **Google:** Demonstrated a 72-qubit logical qubit using surface code error correction, reducing error rates by 100x compared to previous attempts.\n   - **IonQ:** Released the Aria 2, a 1,000+ qubit trapped-ion system, with a roadmap to 10,000 qubits by 2026.\n\n2. **Algorithmic Breakthroughs:**\n   - **Quantinuum:** Introduced a new quantum error mitigation technique (QEM) that reduces noise in NISQ devices by 40%.\n   - **Rigetti:** Launched a hybrid quantum-classical algorithm for drug discovery, reducing simulation time from weeks to hours.\n\n3. **Industry Adoption:**\n   - **AWS:** Expanded its Braket service to include quantum machine learning (QML) tools, with 50+ enterprise customers.\n   - **Microsoft:** Announced Azure Quantum Elements, integrating quantum computing with classical HPC for material science applications.\n\n**Next Steps:**\n- Investigate the scalability of IBM’s Condor processor for real-world applications.\n- Evaluate the impact of IonQ’s Aria 2 on cryptography and optimization problems.\n- Explore AWS Braket’s QML tools for potential integration into our data science pipeline.\n\n**Sources:**\n- IBM Research Blog (October 2024)\n- Google Quantum AI Lab (Q3 2024 Report)\n- IonQ Press Release (September 2024)\n- AWS Braket Documentation (Updated October 2024)\n\n---\n*Generated autonomously using Perplexity Comet MCP on October 15, 2024.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "perplexity-comet-mcp#main-content",
+      "perplexity-comet-mcp#overview",
+      "perplexity-comet-mcp#setup",
+      "perplexity-comet-mcp#examples",
+      "perplexity-comet-mcp#tools",
+      "perplexity-comet-mcp#mcp",
+      "perplexity-comet-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Perplexity-Comet-MCP skill serves as a powerful automation tool that connects Claude Code to the Perplexity Comet browser, enabling autonomous web browsing and agentic research. This skill allows users to manage multiple tabs efficiently, providing support for Windows, WSL, and macOS environments. With features such as smart completion detection, auto-reconnect, and tab protection, it streamlines the browsing experience and enhances productivity for developers and AI practitioners alike. One of the key benefits of the Perplexity-Comet-MCP skill is its ability to save time by automating repetitive tasks associated with web research. Users can conduct extensive research without the need for constant manual intervention, allowing them to focus on more critical aspects of their projects. Although specific time savings are currently unknown, the skill's autonomous capabilities suggest significant efficiency gains, particularly in environments where research is a frequent requirement. This skill is particularly suited for developers, product managers, and AI practitioners who require efficient web browsing and research capabilities. It is beneficial for those working in data engineering, product development, or any role that demands extensive information gathering. For instance, a product manager could use this skill to autonomously gather competitive analysis data across multiple tabs, while a developer might leverage it for research on the latest coding practices or libraries. Implementing the Perplexity-Comet-MCP skill is rated as intermediate in difficulty, with an estimated implementation time of around 30 minutes. Users should have a basic understanding of Claude Code and automation principles to maximize the skill's potential. Integrating this skill into an AI-first workflow enhances productivity by allowing AI agents to handle web browsing tasks autonomously, freeing up human resources for more strategic decision-making.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/RapierCraft/Perplexity-Comet-MCP`",
+    "usage_vi": "```\nUse Perplexity Comet MCP to autonomously research [TOPIC] and compile a comprehensive report. Start by opening a new tab with a focused search query: 'What are the latest breakthroughs in [TOPIC] as of [DATE]?' Then, browse the top 3 results, extract key findings, and summarize them in a structured format. Use comet_tabs to manage multi-tab workflows and ensure no critical information is lost. Finally, generate a prioritized list of next steps for further research or action. Include citations for all sources.\n```\nCopy\n\n```\n### Research Report: Breakthroughs in Quantum Computing (Q3 2024)\n\n**Executive Summary:**\nThis report synthesizes the latest advancements in quantum computing as of October 2024, focusing on hardware innovations, algorithmic breakthroughs, and industry adoption trends. Key findings include the successful demonstration of error-corrected logical qubits by IBM and Google, the launch of a 1,000-qubit processor by IonQ, and the growing investment in quantum software stacks by AWS and Microsoft.\n\n**Key Findings:**\n\n1. **Hardware Innovations:**\n   - **IBM:** Achieved a 127-qubit processor with improved error rates (0.001% per gate) using its Heron architecture. The company also announced plans for a 1,121-qubit Condor processor by 2025.\n   - **Google:** Demonstrated a 72-qubit logical qubit using surface code error correction, reducing error rates by 100x compared to previous attempts.\n   - **IonQ:** Released the Aria 2, a 1,000+ qubit trapped-ion system, with a roadmap to 10,000 qubits by 2026.\n\n2. **Algorithmic Breakthroughs:**\n   - **Quantinuum:** Introduced a new quantum error mitigation technique (QEM) that reduces noise in NISQ devices by 40%.\n   - **Rigetti:** Launched a hybrid quantum-classical algorithm for drug discovery, reducing simulation time from weeks to hours.\n\n3. **Industry Adoption:**\n   - **AWS:** Expanded its Braket service to include quantum machine learning (QML) tools, with 50+ enterprise customers.\n   - **Microsoft:** Announced Azure Quantum Elements, integrating quantum computing with classical HPC for material science applications.\n\n**Next Steps:**\n- Investigate the scalability of IBM’s Condor processor for real-world applications.\n- Evaluate the impact of IonQ’s Aria 2 on cryptography and optimization problems.\n- Explore AWS Braket’s QML tools for potential integration into our data science pipeline.\n\n**Sources:**\n- IBM Research Blog (October 2024)\n- Google Quantum AI Lab (Q3 2024 Report)\n- IonQ Press Release (September 2024)\n- AWS Braket Documentation (Updated October 2024)\n\n---\n*Generated autonomously using Perplexity Comet MCP on October 15, 2024.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:10:33.812839Z",
+    "http_status": 200,
+    "content_hash": "a286fb8378ab749ce410f6f4f63a7384ca97a3f14adc779e281a359dca01f901",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\perplexity-comet-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\perplexity-comet-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Perplexity-Comet-MCP: Enhance Autonomous Browsing",
+  "short_description_vi": "MCP server connecting Claude Code to Perplexity Comet browser. Autonomous web browsing, agentic research, multi-tab management. Windows/WSL/macOS support. Smart completion detection, auto-reconnect, tab protection. Enhanced fork with 7 tools including comet_tabs."
+}

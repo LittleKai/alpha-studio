@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lynx-devtool",
+  "slug": "lynx-devtool",
+  "name": "Lynx Devtool",
+  "headline": "lynx-devtool: Inspect & Debug Lynx Apps",
+  "short_description": "The DevTool skill allows users to interact with Lynx applications on connected devices including Android, iOS, and Desktop. It is particularly useful for developers looking to streamline their workflow when working with Lynx applications.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "lynx-community",
+  "install_command": "git clone https://github.com/lynx-community/skills",
+  "source_repo_url": "https://github.com/lynx-community/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "development-tools",
+    "devtool",
+    "lynx"
+  ],
+  "sections": {
+    "overview": "The lynx-devtool skill enables developers to inspect and debug Lynx applications running on connected Android, iOS, and Desktop devices. It provides access to DevTool CLI commands, Chrome DevTools Protocol (CDP) functionality, console logs, source inspection, and screenshot capture capabilities. This skill streamlines the debugging workflow for Lynx developers by offering comprehensive visibility into application runtime behavior and performance. It integrates with AI agents to automate debugging tasks and accelerate issue diagnosis across multiple platforms.\nInteract with Lynx applications on various devices.\nProcess multi-line JSON outputs from Lynx commands.\nRun commands using the Lynx DevTool CLI.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/lynx-community/skills --skill lynx-devtool`\n`git clone https://github.com/lynx-community/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "lynx-devtool#main-content",
+      "lynx-devtool#overview",
+      "lynx-devtool#setup",
+      "lynx-devtool#examples",
+      "lynx-devtool#related",
+      "electron-builder",
+      "knock-cli-skill",
+      "apollo-rover-cli"
+    ],
+    "overview_vi": "The lynx-devtool skill enables developers to inspect and debug Lynx applications running on connected Android, iOS, and Desktop devices. It provides access to DevTool CLI commands, Chrome DevTools Protocol (CDP) functionality, console logs, source inspection, and screenshot capture capabilities. This skill streamlines the debugging workflow for Lynx developers by offering comprehensive visibility into application runtime behavior and performance. It integrates with AI agents to automate debugging tasks and accelerate issue diagnosis across multiple platforms.\nInteract with Lynx applications on various devices.\nProcess multi-line JSON outputs from Lynx commands.\nRun commands using the Lynx DevTool CLI.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/lynx-community/skills --skill lynx-devtool`\n`git clone https://github.com/lynx-community/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:34:21.989271Z",
+    "http_status": 200,
+    "content_hash": "cdfddafb6085172b13746ac11f8c74e6496cd0f5ad09795639a03891bb1a2098",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lynx-devtool.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lynx-devtool.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "lynx-devtool: Inspect & Debug Lynx Apps",
+  "short_description_vi": "The DevTool skill allows users to interact with Lynx applications on connected devices including Android, iOS, and Desktop. It is particularly useful for developers looking to streamline their workflow when working with Lynx applications."
+}

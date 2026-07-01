@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tweakcc",
+  "slug": "tweakcc",
+  "name": "TweakCC",
+  "headline": "TweakCC - Customize Claude Code",
+  "short_description": "Customize Claude Code's system prompts, create custom toolsets, add custom input pattern highlighters, custom themes/thinking verbs/spinner, input box style, user message display, sign-in ASCII art, fix bugs (frozen spinner), and add features (context limit customization). Supports both native (binary) and npm installs on all platforms.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "Piebald-AI",
+  "install_command": "git clone https://github.com/Piebald-AI/tweakcc.git",
+  "source_repo_url": "https://github.com/Piebald-AI/tweakcc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "configuration",
+    "bun",
+    "claude-code-ui",
+    "themes",
+    "tweak",
+    "personalization",
+    "terminal",
+    "claude-code-system-prompts",
+    "refined-claude-code",
+    "developer-tools",
+    "agentic",
+    "claude-code",
+    "customization",
+    "token-counter",
+    "styling",
+    "claude-code-native",
+    "anthropic",
+    "command-line",
+    "system-prompts",
+    "claude-code-themes"
+  ],
+  "sections": {
+    "overview": "tweakcc is a customization tool for Claude Code that lets you modify system prompts, create custom toolsets, and personalize the UI with themes, input patterns, and visual elements. It supports both native binary and npm installations across Windows, macOS, and Linux. Users can fix bugs like frozen spinners, customize thinking verbs and spinner animations, style the input box, adjust user message display, and even modify sign-in ASCII art. The tool solves the problem of needing deeper control over Claude Code's behavior and appearance without forking the codebase. Developers who want Claude Code tailored to specific workflows benefit most from tweakcc's flexible customization options.\nCustomize system prompts to better align with your project's terminology and user experience.\nCreate and manage custom toolsets for specific tasks using the new /toolset command.\nHighlight specific input patterns in the Claude Code input box for improved visibility and user feedback.\nDevelop unique themes that enhance the visual appeal of the Claude Code interface.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/tweakcc`",
+    "usage": "```\nI want to customize my Claude Code interface. [DESCRIBE CUSTOMIZATIONS] like [SPECIFIC FEATURES]. Also, I need to [ADD/REMOVE FEATURES] such as [FEATURE NAMES]. Can you help me with the code changes and configuration steps?\n```\nCopy\n\n```\nTo customize your Claude Code interface, you'll need to modify several configuration files. Here's a step-by-step guide based on your request to add a dark theme, customize the input box style, and fix the frozen spinner issue:\n\n1. **Dark Theme**: Add the following CSS to your `styles.css` file:\n```css\n:root {\n  --background-color: #1e1e1e;\n  --text-color: #e0e0e0;\n  --accent-color: #bb86fc;\n}\n```\n\n2. **Input Box Style**: Modify the `inputBox.js` file to include rounded corners and a border:\n```javascript\nconst inputBox = document.getElementById('input-box');\ninputBox.style.borderRadius = '10px';\ninputBox.style.border = '2px solid var(--accent-color)';\n```\n\n3. **Fix Frozen Spinner**: Update the `spinner.js` file to include a timeout function:\n```javascript\nsetTimeout(() => {\n  if (spinner.isRunning) {\n    spinner.stop();\n    console.error('Spinner was frozen and has been stopped.');\n  }\n}, 30000); // 30-second timeout\n```\n\n4. **Configuration**: Update your `config.json` to include the new settings:\n```json\n{\n  \"theme\": \"dark\",\n  \"inputBoxStyle\": {\n    \"borderRadius\": \"10px\",\n    \"border\": \"2px solid var(--accent-color)\"\n  },\n  \"spinnerTimeout\": 30000\n}\n```\n\nAfter making these changes, restart Claude Code to see the new customizations in effect. If you encounter any issues, check the console for error messages and adjust the code accordingly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tweakcc#main-content",
+      "tweakcc#overview",
+      "tweakcc#setup",
+      "tweakcc#examples",
+      "tweakcc#tools",
+      "tweakcc#mcp",
+      "tweakcc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "tweakcc is a customization tool for Claude Code that lets you modify system prompts, create custom toolsets, and personalize the UI with themes, input patterns, and visual elements. It supports both native binary and npm installations across Windows, macOS, and Linux. Users can fix bugs like frozen spinners, customize thinking verbs and spinner animations, style the input box, adjust user message display, and even modify sign-in ASCII art. The tool solves the problem of needing deeper control over Claude Code's behavior and appearance without forking the codebase. Developers who want Claude Code tailored to specific workflows benefit most from tweakcc's flexible customization options.\nCustomize system prompts to better align with your project's terminology and user experience.\nCreate and manage custom toolsets for specific tasks using the new /toolset command.\nHighlight specific input patterns in the Claude Code input box for improved visibility and user feedback.\nDevelop unique themes that enhance the visual appeal of the Claude Code interface.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Piebald-AI/tweakcc`",
+    "usage_vi": "```\nI want to customize my Claude Code interface. [DESCRIBE CUSTOMIZATIONS] like [SPECIFIC FEATURES]. Also, I need to [ADD/REMOVE FEATURES] such as [FEATURE NAMES]. Can you help me with the code changes and configuration steps?\n```\nCopy\n\n```\nTo customize your Claude Code interface, you'll need to modify several configuration files. Here's a step-by-step guide based on your request to add a dark theme, customize the input box style, and fix the frozen spinner issue:\n\n1. **Dark Theme**: Add the following CSS to your `styles.css` file:\n```css\n:root {\n  --background-color: #1e1e1e;\n  --text-color: #e0e0e0;\n  --accent-color: #bb86fc;\n}\n```\n\n2. **Input Box Style**: Modify the `inputBox.js` file to include rounded corners and a border:\n```javascript\nconst inputBox = document.getElementById('input-box');\ninputBox.style.borderRadius = '10px';\ninputBox.style.border = '2px solid var(--accent-color)';\n```\n\n3. **Fix Frozen Spinner**: Update the `spinner.js` file to include a timeout function:\n```javascript\nsetTimeout(() => {\n  if (spinner.isRunning) {\n    spinner.stop();\n    console.error('Spinner was frozen and has been stopped.');\n  }\n}, 30000); // 30-second timeout\n```\n\n4. **Configuration**: Update your `config.json` to include the new settings:\n```json\n{\n  \"theme\": \"dark\",\n  \"inputBoxStyle\": {\n    \"borderRadius\": \"10px\",\n    \"border\": \"2px solid var(--accent-color)\"\n  },\n  \"spinnerTimeout\": 30000\n}\n```\n\nAfter making these changes, restart Claude Code to see the new customizations in effect. If you encounter any issues, check the console for error messages and adjust the code accordingly.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:54.723768Z",
+    "http_status": 200,
+    "content_hash": "34e856aeb5d0ca551b848662d26fc80d2d49778f5aeea7af18b287e77699a2ff",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tweakcc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tweakcc.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TweakCC - Customize Claude Code",
+  "short_description_vi": "Customize Claude Code's system prompts, create custom toolsets, add custom input pattern highlighters, custom themes/thinking verbs/spinner, input box style, user message display, sign-in ASCII art, fix bugs (frozen spinner), and add features (context limit customization). Supports both native (binary) and npm installs on all platforms."
+}

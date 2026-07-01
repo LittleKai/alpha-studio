@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/the-startup",
+  "slug": "the-startup",
+  "name": "browser-use",
+  "headline": "The Agentic Startup - Automate Software Development",
+  "short_description": "The Agentic Startup is a collection of Claude Code commands, skills, and agents designed to accelerate software development. It benefits developers and operations teams by automating repetitive tasks, improving code quality, and speeding up deployment. It connects to Claude Code and integrates with existing development workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "rsmdt",
+  "install_command": "git clone https://github.com/rsmdt/the-startup.git",
+  "source_repo_url": "https://github.com/rsmdt/the-startup",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-marketplace",
+    "claude-plugin",
+    "claude-code-plugin"
+  ],
+  "sections": {
+    "overview": "The Agentic Startup is a multi-agent AI framework designed to transform how Claude Code users approach software development. It implements spec-driven development by requiring comprehensive specifications before coding, then auto-dispatches work across three complexity tiers—Direct, Incremental, and Factory—with parallel specialist agents executing simultaneously. The framework provides 10 slash commands organized across Setup, Build, and Maintain phases, including /specify for creating requirements and solutions, /validate for quality gates, /implement for auto-dispatched execution, /test for test enforcement, /review for multi-agent code review, and /document for documentation generation. It benefits developers and operations teams by reducing rework through upfront clarity, enforcing quality standards via built-in validation gates, and speeding deployment through parallel execution. The framework includes optional project governance rules via /constitution and configurable output styles, requiring only Claude Code v2.0+ with marketplace support.\nAccelerate feature development with spec-driven workflows and parallel agent execution\nEnforce code quality standards across teams using built-in validation gates and multi-agent review\nOrganize complex projects across three decomposition tiers matching task complexity\nAutomate repetitive development tasks across specification, implementation, testing, and documentation phases",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rsmdt/the-startup`",
+    "usage": "```\nUse the-startup skill to [TASK: e.g., 'automate the deployment pipeline for [PROJECT_NAME]', 'generate a pull request template for [TEAM_NAME]', or 'refactor the [MODULE_NAME] to follow best practices']. Focus on [SPECIFIC_GOAL: e.g., 'reducing manual steps', 'improving test coverage', or 'standardizing documentation']. Include [PLACEHOLDERS] for customization like project paths, team names, or module names.\n```\nCopy\n\n```\n### Automated Deployment Pipeline for 'Acme Analytics'\n\n**Context:** The Acme Analytics team requested an automated deployment pipeline to reduce manual errors and accelerate releases. The current process involves:\n- Manual Docker image builds (3 steps)\n- Manual Terraform deployments (2 steps)\n- Manual test suite execution (1 step)\n- Manual rollback procedures (if needed)\n\n**Solution Implemented:**\n1. **CI/CD Pipeline:** Created a GitHub Actions workflow (`/.github/workflows/deploy.yml`) that:\n   - Automatically builds Docker images on `main` branch pushes\n   - Runs unit tests (`pytest`) and integration tests (`cypress`)\n   - Deploys to staging via Terraform (`terraform apply -auto-approve`)\n   - Sends Slack notifications to `#dev-deployments` on success/failure\n   - Includes a manual approval step for production deployments\n\n2. **Rollback Script:** Added a `rollback.sh` script in the `/scripts` directory that:\n   - Reverts the last Terraform deployment\n   - Restores the previous Docker image version\n   - Notifies the team via Slack\n\n3. **Documentation:** Updated the `README.md` with:\n   - Step-by-step deployment instructions\n   - Troubleshooting guide for common issues\n   - Links to monitoring dashboards (Grafana)\n\n**Results:**\n- Deployment time reduced from **45 minutes** to **8 minutes** (82% improvement)\n- Manual errors eliminated (0 failed deployments in the last 2 weeks)\n- Team productivity increased by **30%** due to reduced context switching\n\n**Next Steps:**\n- Add automated performance testing to the pipeline\n- Implement blue-green deployment for zero-downtime releases\n- Integrate with Jira to auto-update ticket statuses post-deployment\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "the-startup#main-content",
+      "the-startup#overview",
+      "the-startup#setup",
+      "the-startup#examples",
+      "the-startup#tools",
+      "the-startup#mcp",
+      "the-startup#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Agentic Startup is a multi-agent AI framework designed to transform how Claude Code users approach software development. It implements spec-driven development by requiring comprehensive specifications before coding, then auto-dispatches work across three complexity tiers—Direct, Incremental, and Factory—with parallel specialist agents executing simultaneously. The framework provides 10 slash commands organized across Setup, Build, and Maintain phases, including /specify for creating requirements and solutions, /validate for quality gates, /implement for auto-dispatched execution, /test for test enforcement, /review for multi-agent code review, and /document for documentation generation. It benefits developers and operations teams by reducing rework through upfront clarity, enforcing quality standards via built-in validation gates, and speeding deployment through parallel execution. The framework includes optional project governance rules via /constitution and configurable output styles, requiring only Claude Code v2.0+ with marketplace support.\nAccelerate feature development with spec-driven workflows and parallel agent execution\nEnforce code quality standards across teams using built-in validation gates and multi-agent review\nOrganize complex projects across three decomposition tiers matching task complexity\nAutomate repetitive development tasks across specification, implementation, testing, and documentation phases",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rsmdt/the-startup`",
+    "usage_vi": "```\nUse the-startup skill to [TASK: e.g., 'automate the deployment pipeline for [PROJECT_NAME]', 'generate a pull request template for [TEAM_NAME]', or 'refactor the [MODULE_NAME] to follow best practices']. Focus on [SPECIFIC_GOAL: e.g., 'reducing manual steps', 'improving test coverage', or 'standardizing documentation']. Include [PLACEHOLDERS] for customization like project paths, team names, or module names.\n```\nCopy\n\n```\n### Automated Deployment Pipeline for 'Acme Analytics'\n\n**Context:** The Acme Analytics team requested an automated deployment pipeline to reduce manual errors and accelerate releases. The current process involves:\n- Manual Docker image builds (3 steps)\n- Manual Terraform deployments (2 steps)\n- Manual test suite execution (1 step)\n- Manual rollback procedures (if needed)\n\n**Solution Implemented:**\n1. **CI/CD Pipeline:** Created a GitHub Actions workflow (`/.github/workflows/deploy.yml`) that:\n   - Automatically builds Docker images on `main` branch pushes\n   - Runs unit tests (`pytest`) and integration tests (`cypress`)\n   - Deploys to staging via Terraform (`terraform apply -auto-approve`)\n   - Sends Slack notifications to `#dev-deployments` on success/failure\n   - Includes a manual approval step for production deployments\n\n2. **Rollback Script:** Added a `rollback.sh` script in the `/scripts` directory that:\n   - Reverts the last Terraform deployment\n   - Restores the previous Docker image version\n   - Notifies the team via Slack\n\n3. **Documentation:** Updated the `README.md` with:\n   - Step-by-step deployment instructions\n   - Troubleshooting guide for common issues\n   - Links to monitoring dashboards (Grafana)\n\n**Results:**\n- Deployment time reduced from **45 minutes** to **8 minutes** (82% improvement)\n- Manual errors eliminated (0 failed deployments in the last 2 weeks)\n- Team productivity increased by **30%** due to reduced context switching\n\n**Next Steps:**\n- Add automated performance testing to the pipeline\n- Implement blue-green deployment for zero-downtime releases\n- Integrate with Jira to auto-update ticket statuses post-deployment\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:45:50.396759Z",
+    "http_status": 200,
+    "content_hash": "7f4dd733dd97fed4992e5085985d73121111e62d1e5bac1b1c3680b81bd95d6c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\the-startup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\the-startup.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "The Agentic Startup - Automate Software Development",
+  "short_description_vi": "The Agentic Startup is a collection of Claude Code commands, skills, and agents designed to accelerate software development. It benefits developers and operations teams by automating repetitive tasks, improving code quality, and speeding up deployment. It connects to Claude Code and integrates with existing development workflows."
+}

@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-prompt-analysis",
+  "slug": "claude-code-prompt-analysis",
+  "name": "Claude Code Prompt Analysis",
+  "headline": "Analyze Claude Code prompt elements effectively",
+  "short_description": "Analyze Claude Code's prompt augmentation mechanisms to understand the differences between Agents, Skills, Commands, and Styles. Useful for developers and operations teams to optimize workflows and improve AI interactions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "AgiFlow",
+  "install_command": "git clone https://github.com/AgiFlow/claude-code-prompt-analysis.git",
+  "source_repo_url": "https://github.com/AgiFlow/claude-code-prompt-analysis",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "This skill analyzes how Claude Code automatically augments prompts across five distinct mechanisms: CLAUDE.md for project-wide context injection, Output Styles for session-wide system prompt changes, Slash Commands for deterministic workflow triggers, Skills for model-invoked capability extension, and Sub-Agents for isolated conversation delegation. By instrumenting network traffic, it reveals exactly where and how each mechanism injects instructions into API requests, enabling developers and operations teams to understand the injection points and scope of each approach. The skill includes a comparison matrix showing activation methods and scope differences, plus a decision guide for choosing between CLAUDE.md (team standards), Output Styles (personal preferences), and Skills versus Slash Commands (automation vs. control). This technical reference helps teams optimize workflows, structure project context effectively, and understand security implications before deploying AI agents in production.\nUnderstand which mechanism to use for team standards (CLAUDE.md) versus session preferences (Output Styles)\nDebug why prompts behave differently across Agents, Skills, Commands, and Styles\nDesign secure AI automation by comparing Skills, Slash Commands, and MCP approaches\nOptimize project context injection strategy for multi-developer teams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AgiFlow/claude-code-prompt-analysis`",
+    "usage": "```\nAnalyze the prompt augmentation mechanisms in Claude Code, specifically comparing Agents, Skills, Commands, and Styles. Focus on how [COMPANY] in the [INDUSTRY] sector can optimize their workflows using these mechanisms. Provide a detailed breakdown of each mechanism's functionality and suggest practical applications for [SPECIFIC USE CASE].\n```\nCopy\n\n```\n# Analysis of Claude Code's Prompt Augmentation Mechanisms",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-prompt-analysis#main-content",
+      "claude-code-prompt-analysis#overview",
+      "claude-code-prompt-analysis#setup",
+      "claude-code-prompt-analysis#examples",
+      "claude-code-prompt-analysis#tools",
+      "claude-code-prompt-analysis#mcp",
+      "claude-code-prompt-analysis#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill analyzes how Claude Code automatically augments prompts across five distinct mechanisms: CLAUDE.md for project-wide context injection, Output Styles for session-wide system prompt changes, Slash Commands for deterministic workflow triggers, Skills for model-invoked capability extension, and Sub-Agents for isolated conversation delegation. By instrumenting network traffic, it reveals exactly where and how each mechanism injects instructions into API requests, enabling developers and operations teams to understand the injection points and scope of each approach. The skill includes a comparison matrix showing activation methods and scope differences, plus a decision guide for choosing between CLAUDE.md (team standards), Output Styles (personal preferences), and Skills versus Slash Commands (automation vs. control). This technical reference helps teams optimize workflows, structure project context effectively, and understand security implications before deploying AI agents in production.\nUnderstand which mechanism to use for team standards (CLAUDE.md) versus session preferences (Output Styles)\nDebug why prompts behave differently across Agents, Skills, Commands, and Styles\nDesign secure AI automation by comparing Skills, Slash Commands, and MCP approaches\nOptimize project context injection strategy for multi-developer teams",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AgiFlow/claude-code-prompt-analysis`",
+    "usage_vi": "```\nAnalyze the prompt augmentation mechanisms in Claude Code, specifically comparing Agents, Skills, Commands, and Styles. Focus on how [COMPANY] in the [INDUSTRY] sector can optimize their workflows using these mechanisms. Provide a detailed breakdown of each mechanism's functionality and suggest practical applications for [SPECIFIC USE CASE].\n```\nCopy\n\n```\n# Analysis of Claude Code's Prompt Augmentation Mechanisms"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:32:49.065568Z",
+    "http_status": 200,
+    "content_hash": "fbdc189da3f0d4d5f7f4801bce0d4c14c096b0f398164d63ab0985723de916da",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-prompt-analysis.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-prompt-analysis.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Analyze Claude Code prompt elements effectively",
+  "short_description_vi": "Analyze Claude Code's prompt augmentation mechanisms to understand the differences between Agents, Skills, Commands, and Styles. Useful for developers and operations teams to optimize workflows and improve AI interactions."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tosage",
+  "slug": "tosage",
+  "name": "Tosage",
+  "headline": "Tosage - Tracks Token Usage",
+  "short_description": "A Go application that tracks Claude Code and Cursor token usage and sends metrics to Prometheus. It can run in CLI mode (outputs today's token count) or daemon mode (system tray application with periodic metrics sending).",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "ca-srg",
+  "install_command": "git clone https://github.com/ca-srg/tosage.git",
+  "source_repo_url": "https://github.com/ca-srg/tosage",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "token",
+    "cursor",
+    "claude-code",
+    "prometheus"
+  ],
+  "sections": {
+    "overview": "tosage monitors token consumption across Claude Code, Cursor, AWS Bedrock, and Google Vertex AI, integrating with Prometheus for centralized metrics collection. It operates in CLI mode for instant token counts or daemon mode with continuous monitoring and system tray integration. The tool automatically discovers Claude Code data, fetches Cursor API metrics, and pulls cloud AI service usage from AWS CloudWatch and Google Cloud Monitoring. Teams can visualize token consumption trends and multi-cloud AI costs using pre-configured Grafana dashboards. CSV export functionality enables historical analysis and reporting of token usage patterns.\nTrack token usage across multiple AI tools for cost accountability\nMonitor team-wide AI consumption trends with Grafana dashboards\nAggregate metrics from Cursor, Claude Code, Bedrock, and Vertex AI in one system\nExport historical token usage data for billing and cost analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ca-srg/tosage`\n\n### Platforms to Track\n- **Claude Code**: Primary platform for code generation\n- **Cursor**: Used for document editing and formatting\n- **AWS Bedrock**: Deployed for custom model training\n\n### Key Metrics to Monitor\n- **Token Count**: Daily and monthly usage\n- **Cost Analysis**: Based on current pricing models\n- **Usage Patterns**: Peak times and user distribution\n\n### Recommended Configuration\n```\n# Example configuration for Tosage\nplatforms:\n  - name: Claude Code\n    api_key: your_api_key_here\n    interval: 3600\n  - name: Cursor\n    api_key: your_api_key_here\n    interval: 7200\n  - name: AWS Bedrock\n    api_key: your_api_key_here\n    interval: 14400\nmetrics:\n  - token_count\n  - cost_analysis\n  - usage_patterns\n```\n\n### Next Steps\n1. Install Tosage on your local machine.\n2. Configure the `config.yaml` file with your API keys.\n3. Run Tosage in daemon mode for continuous monitoring.\n4. Set up Prometheus to collect and visualize the metrics.\n```",
+    "usage": "```\nI'm using Tosage to track my team's AI token usage. We need to monitor [COMPANY] across [INDUSTRY] platforms. Can you help me set up Tosage to track [PLATFORM1], [PLATFORM2], and [PLATFORM3]? What are the key metrics I should focus on for [SPECIFIC_USE_CASE]?\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tosage#main-content",
+      "tosage#overview",
+      "tosage#setup",
+      "tosage#examples",
+      "tosage#tools",
+      "tosage#mcp",
+      "tosage#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "tosage giám sát lượng tiêu thụ token trên các nền tảng Claude Code, Cursor, AWS Bedrock và Google Vertex AI, tích hợp với Prometheus để thu thập metrics tập trung. Công cụ hoạt động ở CLI mode để kiểm tra nhanh số lượng token hoặc daemon mode để giám sát liên tục tích hợp dưới khay hệ thống. Công cụ tự động phát hiện dữ liệu Claude Code, lấy metrics từ Cursor API và kéo dữ liệu sử dụng dịch vụ AI đám mây từ AWS CloudWatch và Google Cloud Monitoring. Các đội ngũ phát triển có thể trực quan hóa xu hướng tiêu thụ token và chi phí AI trên đa đám mây thông qua các dashboard Grafana được cấu hình sẵn. Tính năng xuất dữ liệu CSV hỗ trợ phân tích lịch sử và báo cáo xu hướng sử dụng token.\nTheo dõi lượng sử dụng token trên nhiều công cụ AI để kiểm soát chi phí\nGiám sát xu hướng tiêu thụ AI của toàn đội ngũ bằng các dashboard Grafana\nTích hợp metrics từ Cursor, Claude Code, Bedrock và Vertex AI vào một hệ thống duy nhất\nXuất lịch sử dữ liệu sử dụng token phục vụ cho việc đối soát hóa đơn và phân tích chi phí",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ca-srg/tosage`\n\n### Các nền tảng cần theo dõi\n- **Claude Code**: Nền tảng chính để tạo mã nguồn\n- **Cursor**: Được sử dụng để chỉnh sửa và định dạng tài liệu\n- **AWS Bedrock**: Được triển khai để huấn luyện mô hình tùy chỉnh\n\n### Các chỉ số chính cần giám sát\n- **Token Count**: Lượng sử dụng hàng ngày và hàng tháng\n- **Cost Analysis**: Dựa trên các mô hình giá hiện tại\n- **Usage Patterns**: Khung giờ cao điểm và phân bổ người dùng\n\n### Cấu hình khuyến nghị\n```\n# Cấu hình ví dụ cho Tosage\nplatforms:\n  - name: Claude Code\n    api_key: your_api_key_here\n    interval: 3600\n  - name: Cursor\n    api_key: your_api_key_here\n    interval: 7200\n  - name: AWS Bedrock\n    api_key: your_api_key_here\n    interval: 14400\nmetrics:\n  - token_count\n  - cost_analysis\n  - usage_patterns\n```\n\n### Các bước tiếp theo\n1. Cài đặt Tosage trên máy cục bộ của bạn.\n2. Cấu hình các API key trong file `config.yaml`.\n3. Chạy Tosage ở daemon mode để giám sát liên tục.\n4. Thiết lập Prometheus để thu thập và trực quan hóa metrics.",
+    "usage_vi": "```\nTôi đang sử dụng Tosage để theo dõi lượng sử dụng token AI của đội ngũ mình. Chúng tôi cần giám sát [COMPANY] trên các nền tảng thuộc lĩnh vực [INDUSTRY]. Bạn có thể giúp tôi thiết lập Tosage để theo dõi [PLATFORM1], [PLATFORM2] và [PLATFORM3] không? Tôi nên tập trung vào những metrics quan trọng nào cho [SPECIFIC_USE_CASE]?\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:23:16.047028Z",
+    "http_status": 200,
+    "content_hash": "1f6fe7f2f38e4f9616730994448071d78eb3e9c45d58312e2cc24a3eaed82d42",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tosage.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tosage.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tosage - Theo dõi lượng sử dụng Token",
+  "short_description_vi": "Một ứng dụng viết bằng Go giúp theo dõi lượng sử dụng token của Claude Code và Cursor, đồng thời gửi metrics đến Prometheus. Ứng dụng hỗ trợ chạy ở CLI mode (xuất lượng token tiêu thụ trong ngày) hoặc daemon mode (chạy dưới khay hệ thống và gửi metrics định kỳ)."
+}

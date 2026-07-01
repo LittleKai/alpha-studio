@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/monocle",
+  "slug": "monocle",
+  "name": "Monocle",
+  "headline": "Monocle - Swift Symbol Lookup CLI",
+  "short_description": "Monocle is a Swift symbol lookup CLI tool powered by SourceKit-LSP. It enables coding agents to quickly find and reference symbols in Swift codebases. Operations teams benefit from faster code navigation and reduced context-switching. It integrates with existing development workflows and connects to tools like Claude for enhanced coding assistance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "SwiftedMind",
+  "install_command": "git clone https://github.com/SwiftedMind/monocle.git",
+  "source_repo_url": "https://github.com/SwiftedMind/monocle",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "swift",
+    "gemini-cli",
+    "cli",
+    "codex",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Monocle is a specialized CLI tool that enables coding agents to quickly resolve Swift symbols—including types, methods, and properties—from any location in your codebase or external dependencies. It queries SourceKit-LSP to return symbol definitions, signatures, rendered documentation, and precise file locations in stable JSON format. Agents benefit from fast, reliable symbol resolution without IDE overhead, making it ideal for understanding unfamiliar APIs and third-party packages during code analysis and development tasks. The tool supports both Swift packages and Xcode projects/workspaces, and includes optional daemon mode to eliminate cold starts during repeated lookups.\nAgents resolving symbol definitions and documentation across unfamiliar Swift codebases\nListing and inspecting SwiftPM dependencies for external package analysis\nRetrieving signatures and doc comments for symbols involved in errors or warnings\nFast symbol lookup by name across project and package sources",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SwiftedMind/monocle`",
+    "usage": "```\nUse Monocle to analyze the Swift codebase in [PROJECT_PATH]. Find all references to the symbol [SYMBOL_NAME] (e.g., a class, struct, or function) across the entire codebase, including nested files and dependencies. For each reference, provide the file path, line number, and a brief context (2-3 lines of surrounding code). If the symbol is deprecated or marked with @available(*, unavailable), flag it explicitly. Output the results in a structured format suitable for quick review in [TOOL_NAME].\n```\nCopy\n\n```\n```\nFound 12 references to `NetworkService` in the 'AcmeApp' codebase:\n\n1. **File:** Sources/Networking/NetworkService.swift\n   **Line:** 42\n   **Context:**\n   ```swift\n   final class NetworkService {\n       private let session: URLSession\n   ```\n   **Status:** Active (no deprecation markers)\n\n2. **File:** Sources/Features/Login/LoginViewModel.swift\n   **Line:** 18\n   **Context:**\n   ```swift\n   private let networkService = NetworkService()\n   ```\n   **Status:** Active\n\n3. **File:** Sources/Utilities/Deprecated/OldNetworkLayer.swift\n   **Line:** 25\n   **Context:**\n   ```swift\n   @available(*, deprecated, message: \"Use NetworkService instead\")\n   class OldNetworkLayer {\n   ```\n   **Status:** Deprecated (replace with NetworkService)\n\n4. **File:** Tests/NetworkServiceTests.swift\n   **Line:** 12\n   **Context:**\n   ```swift\n   class NetworkServiceTests: XCTestCase {\n       var sut: NetworkService!\n   ```\n   **Status:** Active\n\n**Summary:**\n- Total references: 12\n- Active symbols: 10\n- Deprecated symbols: 1\n- Unavailable symbols: 1 (in LegacyCode.swift)\n```\n\n**Recommendations:**\n- Replace `OldNetworkLayer` with `NetworkService` in all non-test files.\n- Update `LegacyCode.swift` to use `NetworkService` or remove it.\n- Review `LoginViewModel.swift` for potential optimizations (e.g., dependency injection).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "monocle#main-content",
+      "monocle#overview",
+      "monocle#setup",
+      "monocle#examples",
+      "monocle#tools",
+      "monocle#mcp",
+      "monocle#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Monocle is a specialized CLI tool that enables coding agents to quickly resolve Swift symbols—including types, methods, and properties—from any location in your codebase or external dependencies. It queries SourceKit-LSP to return symbol definitions, signatures, rendered documentation, and precise file locations in stable JSON format. Agents benefit from fast, reliable symbol resolution without IDE overhead, making it ideal for understanding unfamiliar APIs and third-party packages during code analysis and development tasks. The tool supports both Swift packages and Xcode projects/workspaces, and includes optional daemon mode to eliminate cold starts during repeated lookups.\nAgents resolving symbol definitions and documentation across unfamiliar Swift codebases\nListing and inspecting SwiftPM dependencies for external package analysis\nRetrieving signatures and doc comments for symbols involved in errors or warnings\nFast symbol lookup by name across project and package sources",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SwiftedMind/monocle`",
+    "usage_vi": "```\nUse Monocle to analyze the Swift codebase in [PROJECT_PATH]. Find all references to the symbol [SYMBOL_NAME] (e.g., a class, struct, or function) across the entire codebase, including nested files and dependencies. For each reference, provide the file path, line number, and a brief context (2-3 lines of surrounding code). If the symbol is deprecated or marked with @available(*, unavailable), flag it explicitly. Output the results in a structured format suitable for quick review in [TOOL_NAME].\n```\nCopy\n\n```\n```\nFound 12 references to `NetworkService` in the 'AcmeApp' codebase:\n\n1. **File:** Sources/Networking/NetworkService.swift\n   **Line:** 42\n   **Context:**\n   ```swift\n   final class NetworkService {\n       private let session: URLSession\n   ```\n   **Status:** Active (no deprecation markers)\n\n2. **File:** Sources/Features/Login/LoginViewModel.swift\n   **Line:** 18\n   **Context:**\n   ```swift\n   private let networkService = NetworkService()\n   ```\n   **Status:** Active\n\n3. **File:** Sources/Utilities/Deprecated/OldNetworkLayer.swift\n   **Line:** 25\n   **Context:**\n   ```swift\n   @available(*, deprecated, message: \"Use NetworkService instead\")\n   class OldNetworkLayer {\n   ```\n   **Status:** Deprecated (replace with NetworkService)\n\n4. **File:** Tests/NetworkServiceTests.swift\n   **Line:** 12\n   **Context:**\n   ```swift\n   class NetworkServiceTests: XCTestCase {\n       var sut: NetworkService!\n   ```\n   **Status:** Active\n\n**Summary:**\n- Total references: 12\n- Active symbols: 10\n- Deprecated symbols: 1\n- Unavailable symbols: 1 (in LegacyCode.swift)\n```\n\n**Recommendations:**\n- Replace `OldNetworkLayer` with `NetworkService` in all non-test files.\n- Update `LegacyCode.swift` to use `NetworkService` or remove it.\n- Review `LoginViewModel.swift` for potential optimizations (e.g., dependency injection).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:39:01.358291Z",
+    "http_status": 200,
+    "content_hash": "25628939c072b7862bd6ae1ccf8ae8c269b7e94be38718a996cfa4e8c013159e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\monocle.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\monocle.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Monocle - Swift Symbol Lookup CLI",
+  "short_description_vi": "Monocle is a Swift symbol lookup CLI tool powered by SourceKit-LSP. It enables coding agents to quickly find and reference symbols in Swift codebases. Operations teams benefit from faster code navigation and reduced context-switching. It integrates with existing development workflows and connects to tools like Claude for enhanced coding assistance."
+}

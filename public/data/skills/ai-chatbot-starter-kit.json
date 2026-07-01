@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-chatbot-starter-kit",
+  "slug": "ai-chatbot-starter-kit",
+  "name": "react-native-best-practices",
+  "headline": "AI Chatbot Starter Kit - Build Custom Chatbots Fast",
+  "short_description": "The AI Chatbot Starter Kit is an open-source framework designed for developers to quickly create custom AI chatbots. With integrations for popular platforms and data sources, it offers a minimal boilerplate solution for efficient chatbot development.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "UBOS-tech",
+  "install_command": "claude install UBOS-tech/AI-Chatbot-Starter-Kit",
+  "source_repo_url": "https://github.com/UBOS-tech/AI-Chatbot-Starter-Kit",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "customization",
+    "low-code",
+    "AI chatbot",
+    "integration",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "The AI Chatbot Starter Kit is an open-source framework built on Node-RED, MongoDB, and Appsmith that enables developers to create custom chatbots with minimal boilerplate. It supports multiple large language models including GPT-4o, GPT-4o Mini, Claude 3.5, and Llama 3.1, along with vector database integrations for Pinecone and ChromaDB. The kit features unlimited knowledge bases, multi-language support, chatbot personality configuration, and seamless embedding generation using OpenAI's text-embedding-ada-002 model. Developers can deploy white-label solutions or use the SaaS option on the UBOS platform, making it ideal for teams building knowledge-base-driven conversational AI applications.\nRapidly develop customer support bots\nIntegrate chatbots with CRM systems\nCreate multi-platform chatbots for social media\nBuild custom LLM-based chat interfaces",
+    "setup": "Terminal\nCopy\n`claude install UBOS-tech/AI-Chatbot-Starter-Kit`\n`git clone https://github.com/UBOS-tech/AI-Chatbot-Starter-Kit`",
+    "usage": "```\nGenerate a Python script using the AI Chatbot Starter Kit to create a chatbot for [COMPANY] in the [INDUSTRY] sector. The chatbot should integrate with [DATA] and be deployed on [PLATFORM]. Include error handling and logging.\n```\nCopy\n\n```\n# AI Chatbot Starter Kit Implementation for TechCorp\n\n```python\n# Import necessary modules\nfrom chatbot_starter_kit import Chatbot\nfrom integrations import SalesforceAPI, SlackAPI\n\n# Initialize chatbot\ntechcorp_bot = Chatbot(\n    name=\"TechCorp Support Bot\",\n    description=\"AI-powered support for TechCorp customers\",\n    api_key=\"your_api_key_here\"\n)\n\n# Integrate with Salesforce for customer data\ntechcorp_bot.add_integration(SalesforceAPI(\n    username=\"salesforce_user\",\n    password=\"salesforce_password\",\n    security_token=\"salesforce_token\"\n))\n\n# Integrate with Slack for communication\ntechcorp_bot.add_integration(SlackAPI(\n    token=\"slack_token\",\n    channel=\"#support\"\n))\n\n# Define bot's response logic\ndef handle_message(message):\n    # Process message and generate response\n    response = techcorp_bot.process_message(message)\n    return response\n\n# Start the bot\nif __name__ == \"__main__\":\n    techcorp_bot.start()\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "ai-chatbot-starter-kit#main-content",
+      "ai-chatbot-starter-kit#overview",
+      "ai-chatbot-starter-kit#setup",
+      "ai-chatbot-starter-kit#examples",
+      "ai-chatbot-starter-kit#tools",
+      "ai-chatbot-starter-kit#mcp",
+      "ai-chatbot-starter-kit#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The AI Chatbot Starter Kit is an open-source framework built on Node-RED, MongoDB, and Appsmith that enables developers to create custom chatbots with minimal boilerplate. It supports multiple large language models including GPT-4o, GPT-4o Mini, Claude 3.5, and Llama 3.1, along with vector database integrations for Pinecone and ChromaDB. The kit features unlimited knowledge bases, multi-language support, chatbot personality configuration, and seamless embedding generation using OpenAI's text-embedding-ada-002 model. Developers can deploy white-label solutions or use the SaaS option on the UBOS platform, making it ideal for teams building knowledge-base-driven conversational AI applications.\nRapidly develop customer support bots\nIntegrate chatbots with CRM systems\nCreate multi-platform chatbots for social media\nBuild custom LLM-based chat interfaces",
+    "setup_vi": "Terminal\nCopy\n`claude install UBOS-tech/AI-Chatbot-Starter-Kit`\n`git clone https://github.com/UBOS-tech/AI-Chatbot-Starter-Kit`",
+    "usage_vi": "```\nGenerate a Python script using the AI Chatbot Starter Kit to create a chatbot for [COMPANY] in the [INDUSTRY] sector. The chatbot should integrate with [DATA] and be deployed on [PLATFORM]. Include error handling and logging.\n```\nCopy\n\n```\n# AI Chatbot Starter Kit Implementation for TechCorp\n\n```python\n# Import necessary modules\nfrom chatbot_starter_kit import Chatbot\nfrom integrations import SalesforceAPI, SlackAPI\n\n# Initialize chatbot\ntechcorp_bot = Chatbot(\n    name=\"TechCorp Support Bot\",\n    description=\"AI-powered support for TechCorp customers\",\n    api_key=\"your_api_key_here\"\n)\n\n# Integrate with Salesforce for customer data\ntechcorp_bot.add_integration(SalesforceAPI(\n    username=\"salesforce_user\",\n    password=\"salesforce_password\",\n    security_token=\"salesforce_token\"\n))\n\n# Integrate with Slack for communication\ntechcorp_bot.add_integration(SlackAPI(\n    token=\"slack_token\",\n    channel=\"#support\"\n))\n\n# Define bot's response logic\ndef handle_message(message):\n    # Process message and generate response\n    response = techcorp_bot.process_message(message)\n    return response\n\n# Start the bot\nif __name__ == \"__main__\":\n    techcorp_bot.start()\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:28:34.994805Z",
+    "http_status": 200,
+    "content_hash": "47771c089ad31374b069ea93631d85c068e7aed345242b5c0fb80ecb2a560828",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-chatbot-starter-kit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-chatbot-starter-kit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Chatbot Starter Kit - Build Custom Chatbots Fast",
+  "short_description_vi": "The AI Chatbot Starter Kit is an open-source framework designed for developers to quickly create custom AI chatbots. With integrations for popular platforms and data sources, it offers a minimal boilerplate solution for efficient chatbot development."
+}

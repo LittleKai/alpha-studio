@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/catnip",
+  "slug": "catnip",
+  "name": "catnip",
+  "headline": "High-efficiency agentic coding tool",
+  "short_description": "Catnip is an agentic coding tool that enables developers to run and manage multiple Claude agents in parallel. It supports remote operation via web and mobile interfaces, making it ideal for automating complex workflows and tasks. Catnip integrates with Go, SwiftUI, and TypeScript, streamlining development and deployment processes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "wandb",
+  "install_command": "git clone https://github.com/wandb/catnip.git",
+  "source_repo_url": "https://github.com/wandb/catnip",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "swiftui",
+    "cli",
+    "devcontainer-feature",
+    "golang-application",
+    "ios-swift",
+    "ai",
+    "claude-code",
+    "golang",
+    "devcontainer"
+  ],
+  "sections": {
+    "overview": "Catnip is a containerized web service designed to run Claude Code agents in isolated sandbox environments with built-in git worktree management for parallel execution. It solves the problem of keeping multiple Claude sessions organized and accessible by providing web and native iOS interfaces for remote agent operation. Catnip runs locally or in GitHub Codespaces, automatically manages dependencies, and includes terminal access, SSH support, and live preview capabilities. Developers can spawn multiple agents simultaneously, review changes from mobile devices, and maintain full remote development support in IDEs like Cursor and VS Code. The tool comes pre-configured with Node, Python, Go, Rust, and GCC, with support for custom environment setup via setup.sh scripts.\nAutomate the creation and management of git worktrees for multiple coding agents.\nRun Claude Code sessions in a containerized environment for better isolation and security.\nAccess and manage coding sessions remotely via a mobile interface, ensuring productivity on the go.\nIntegrate Catnip with existing GitHub repositories to streamline development workflows.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wandb/catnip`",
+    "usage": "```\nUse Catnip to automate the following task: [TASK_DESCRIPTION]. Configure [NUMBER] Claude agents to work in parallel on [SPECIFIC_OBJECTIVE]. Set up remote monitoring via [WEB/MOBILE_INTERFACE] and ensure the agents are synchronized using [INTEGRATION_LANGUAGE]. Provide a step-by-step breakdown of the automation process, including error handling and progress tracking.\n```\nCopy\n\n```\nI configured Catnip to automate the refactoring of a legacy Go codebase into modular microservices. I deployed 5 parallel Claude agents, each assigned to a specific service layer (API, database, business logic, authentication, and caching). The agents operated remotely via the Catnip mobile interface, with real-time progress updates pushed to my Slack channel. Each agent used Go’s `go/ast` package to parse and refactor the code, ensuring type safety and backward compatibility. The agents synchronized their changes using a shared Redis cache to avoid merge conflicts, and Catnip’s built-in conflict resolver automatically flagged and merged overlapping refactors. After 3 hours, the agents had processed 12,487 lines of code, reduced cyclomatic complexity by 42%, and generated a PR with 187 commits. The automation also included a post-refactor test suite run, which passed all 2,345 unit tests without failures.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "catnip#main-content",
+      "catnip#overview",
+      "catnip#setup",
+      "catnip#examples",
+      "catnip#tools",
+      "catnip#mcp",
+      "catnip#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Catnip is a containerized web service designed to run Claude Code agents in isolated sandbox environments with built-in git worktree management for parallel execution. It solves the problem of keeping multiple Claude sessions organized and accessible by providing web and native iOS interfaces for remote agent operation. Catnip runs locally or in GitHub Codespaces, automatically manages dependencies, and includes terminal access, SSH support, and live preview capabilities. Developers can spawn multiple agents simultaneously, review changes from mobile devices, and maintain full remote development support in IDEs like Cursor and VS Code. The tool comes pre-configured with Node, Python, Go, Rust, and GCC, with support for custom environment setup via setup.sh scripts.\nAutomate the creation and management of git worktrees for multiple coding agents.\nRun Claude Code sessions in a containerized environment for better isolation and security.\nAccess and manage coding sessions remotely via a mobile interface, ensuring productivity on the go.\nIntegrate Catnip with existing GitHub repositories to streamline development workflows.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/wandb/catnip`",
+    "usage_vi": "```\nUse Catnip to automate the following task: [TASK_DESCRIPTION]. Configure [NUMBER] Claude agents to work in parallel on [SPECIFIC_OBJECTIVE]. Set up remote monitoring via [WEB/MOBILE_INTERFACE] and ensure the agents are synchronized using [INTEGRATION_LANGUAGE]. Provide a step-by-step breakdown of the automation process, including error handling and progress tracking.\n```\nCopy\n\n```\nI configured Catnip to automate the refactoring of a legacy Go codebase into modular microservices. I deployed 5 parallel Claude agents, each assigned to a specific service layer (API, database, business logic, authentication, and caching). The agents operated remotely via the Catnip mobile interface, with real-time progress updates pushed to my Slack channel. Each agent used Go’s `go/ast` package to parse and refactor the code, ensuring type safety and backward compatibility. The agents synchronized their changes using a shared Redis cache to avoid merge conflicts, and Catnip’s built-in conflict resolver automatically flagged and merged overlapping refactors. After 3 hours, the agents had processed 12,487 lines of code, reduced cyclomatic complexity by 42%, and generated a PR with 187 commits. The automation also included a post-refactor test suite run, which passed all 2,345 unit tests without failures.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:07.794686Z",
+    "http_status": 200,
+    "content_hash": "297a0b47be938635f2f97ba8a3a802fd04840f7eef0d64597d9da50dc27c669f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\catnip.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\catnip.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "High-efficiency agentic coding tool",
+  "short_description_vi": "Catnip is an agentic coding tool that enables developers to run and manage multiple Claude agents in parallel. It supports remote operation via web and mobile interfaces, making it ideal for automating complex workflows and tasks. Catnip integrates with Go, SwiftUI, and TypeScript, streamlining development and deployment processes."
+}

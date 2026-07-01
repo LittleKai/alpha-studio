@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/augments-mcp-server",
+  "slug": "augments-mcp-server",
+  "name": "browser-use",
+  "headline": "augments-mcp-server: Real-time Documentation Access",
+  "short_description": "Augments MCP Server provides real-time framework documentation access for Claude Code, enabling developers to retrieve TypeScript definitions from npm packages. It features intelligent caching, multi-source integration, and context-aware assistance, streamlining development workflows and improving code accuracy.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "360 min",
+  "author": "augmnt",
+  "install_command": "git clone https://github.com/augmnt/augments-mcp-server.git",
+  "source_repo_url": "https://github.com/augmnt/augments-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "developer-tools",
+    "claude-code",
+    "async",
+    "python",
+    "framework",
+    "mcp",
+    "model-context-protocol",
+    "caching"
+  ],
+  "sections": {
+    "overview": "The augments-mcp-server skill is a powerful tool designed for developers and AI practitioners who require immediate access to framework documentation in real-time. This comprehensive MCP server integrates intelligent caching and multi-source integration, providing context-aware assistance that enhances workflow automation. By streamlining the documentation retrieval process, this skill allows users to focus on development tasks without the distraction of searching for information across various platforms. One of the key benefits of the augments-mcp-server is its ability to save time during the development process. While the exact time savings are not quantified, the skill's real-time access to documentation significantly reduces the friction often experienced when switching contexts. Developers can quickly find the information they need, thus accelerating their workflow and improving overall productivity. This skill is particularly beneficial for teams working in fast-paced environments where efficiency is paramount. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their productivity through AI automation. It is particularly relevant for those involved in software development and project management, where quick access to technical documentation can make a substantial difference in project timelines. The augments-mcp-server is suitable for intermediate users, requiring about 30 minutes to implement, making it accessible for teams that are already familiar with AI agent skills and workflow automation. In practical terms, the augments-mcp-server can be utilized in various scenarios, such as when a developer needs to reference API documentation while coding or when a product manager requires immediate access to feature specifications during meetings. The skill fits seamlessly into AI-first workflows by ensuring that teams have the necessary documentation at their fingertips, thus facilitating smoother collaboration and decision-making. By integrating this skill into your development processes, you can leverage the power of AI to optimize your team's efficiency and effectiveness.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/augmnt/augments-mcp-server`",
+    "usage": "```\nUse the augments-mcp-server to fetch TypeScript definitions for [PACKAGE_NAME] in my current project. Show me the latest stable version's types, including interfaces, classes, and utility functions. If available, include deprecated members and their replacements. Format the output as a markdown table with columns: Name, Type, Description, and Deprecation Note. Example: 'augments-mcp-server fetch types for @types/lodash'\n```\nCopy\n\n```\nHere are the TypeScript definitions for `@types/lodash` (v4.17.21) retrieved via the augments-mcp-server:\n\n| Name | Type | Description | Deprecation Note |\n|------|------|-------------|------------------|\n| `_.chunk` | Function | Creates an array of elements split into groups the length of size. | None |\n| `_.debounce` | Function | Creates a debounced function that delays invoking func until after wait milliseconds have elapsed. | `_.debounce` (v4.17.0) deprecated `leading` and `trailing` options in favor of `options` object. |\n| `_.isEqual` | Function | Performs a deep comparison between two values to determine if they are equivalent. | None |\n| `_.TemplateSettings` | Interface | Settings for template delimiters and evaluation. | None |\n\n**Cache Status**: Fresh (no cache hit).\n**Sources**: npm registry, DefinitelyTyped GitHub, and local cache.\n\n**Usage Example**:\n```typescript\nimport { debounce } from 'lodash';\nconst debouncedFn = debounce(() => console.log('Debounced!'), 300);\ndebouncedFn(); // Logs after 300ms of inactivity\n```\n\n**Note**: For real-time updates, run this command again after updating the package version.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "augments-mcp-server#main-content",
+      "augments-mcp-server#overview",
+      "augments-mcp-server#setup",
+      "augments-mcp-server#examples",
+      "augments-mcp-server#tools",
+      "augments-mcp-server#mcp",
+      "augments-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The augments-mcp-server skill is a powerful tool designed for developers and AI practitioners who require immediate access to framework documentation in real-time. This comprehensive MCP server integrates intelligent caching and multi-source integration, providing context-aware assistance that enhances workflow automation. By streamlining the documentation retrieval process, this skill allows users to focus on development tasks without the distraction of searching for information across various platforms. One of the key benefits of the augments-mcp-server is its ability to save time during the development process. While the exact time savings are not quantified, the skill's real-time access to documentation significantly reduces the friction often experienced when switching contexts. Developers can quickly find the information they need, thus accelerating their workflow and improving overall productivity. This skill is particularly beneficial for teams working in fast-paced environments where efficiency is paramount. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their productivity through AI automation. It is particularly relevant for those involved in software development and project management, where quick access to technical documentation can make a substantial difference in project timelines. The augments-mcp-server is suitable for intermediate users, requiring about 30 minutes to implement, making it accessible for teams that are already familiar with AI agent skills and workflow automation. In practical terms, the augments-mcp-server can be utilized in various scenarios, such as when a developer needs to reference API documentation while coding or when a product manager requires immediate access to feature specifications during meetings. The skill fits seamlessly into AI-first workflows by ensuring that teams have the necessary documentation at their fingertips, thus facilitating smoother collaboration and decision-making. By integrating this skill into your development processes, you can leverage the power of AI to optimize your team's efficiency and effectiveness.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/augmnt/augments-mcp-server`",
+    "usage_vi": "```\nUse the augments-mcp-server to fetch TypeScript definitions for [PACKAGE_NAME] in my current project. Show me the latest stable version's types, including interfaces, classes, and utility functions. If available, include deprecated members and their replacements. Format the output as a markdown table with columns: Name, Type, Description, and Deprecation Note. Example: 'augments-mcp-server fetch types for @types/lodash'\n```\nCopy\n\n```\nHere are the TypeScript definitions for `@types/lodash` (v4.17.21) retrieved via the augments-mcp-server:\n\n| Name | Type | Description | Deprecation Note |\n|------|------|-------------|------------------|\n| `_.chunk` | Function | Creates an array of elements split into groups the length of size. | None |\n| `_.debounce` | Function | Creates a debounced function that delays invoking func until after wait milliseconds have elapsed. | `_.debounce` (v4.17.0) deprecated `leading` and `trailing` options in favor of `options` object. |\n| `_.isEqual` | Function | Performs a deep comparison between two values to determine if they are equivalent. | None |\n| `_.TemplateSettings` | Interface | Settings for template delimiters and evaluation. | None |\n\n**Cache Status**: Fresh (no cache hit).\n**Sources**: npm registry, DefinitelyTyped GitHub, and local cache.\n\n**Usage Example**:\n```typescript\nimport { debounce } from 'lodash';\nconst debouncedFn = debounce(() => console.log('Debounced!'), 300);\ndebouncedFn(); // Logs after 300ms of inactivity\n```\n\n**Note**: For real-time updates, run this command again after updating the package version.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:55:46.851437Z",
+    "http_status": 200,
+    "content_hash": "9801c5b6dc614561f004f5784c2755a6493d938377bfda3e03b6a42d8a27bb7f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\augments-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\augments-mcp-server.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "augments-mcp-server: Real-time Documentation Access",
+  "short_description_vi": "Augments MCP Server provides real-time framework documentation access for Claude Code, enabling developers to retrieve TypeScript definitions from npm packages. It features intelligent caching, multi-source integration, and context-aware assistance, streamlining development workflows and improving code accuracy."
+}

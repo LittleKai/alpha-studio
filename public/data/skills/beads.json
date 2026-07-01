@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/beads",
+  "slug": "beads",
+  "name": "browser-use",
+  "headline": "AI memory upgrade with beads",
+  "short_description": "Beads is a distributed, git-backed graph issue tracker for AI agents. It enhances coding agents' memory and task management, benefiting developers and operations teams. Integrates with Claude and supports cross-platform use.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "steveyegge",
+  "install_command": "git clone https://github.com/steveyegge/beads.git",
+  "source_repo_url": "https://github.com/steveyegge/beads",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "coding",
+    "agents"
+  ],
+  "sections": {
+    "overview": "Beads is a distributed issue tracker built specifically for AI agents, leveraging git as its backing store to maintain a graph-based task structure. It enhances how coding agents like Claude manage memory and track tasks across projects, providing persistent state that survives across sessions. The system integrates directly with Claude and supports cross-platform deployments, making it suitable for developers and operations teams who rely on AI agents for automation and code generation. By treating issues as a git-backed graph, Beads enables AI agents to maintain context, reference past decisions, and coordinate work in distributed environments without external database dependencies.\nTrack and manage tasks across multiple agents in a collaborative coding environment.\nCreate and link tasks with dependencies to visualize project progress and blockers.\nUtilize semantic memory decay to summarize closed tasks, maintaining relevant context for future work.\nRun Beads in stealth mode for personal projects without affecting the main repository.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/steveyegge/beads`",
+    "usage": "```\nCreate a new Beads project for [PROJECT_NAME] with the following initial tasks: [TASK_LIST]. Ensure each task has clear dependencies and priority levels. Assign tasks to the appropriate AI agents based on their capabilities: [AGENT_ASSIGNMENTS].\n```\nCopy\n\n```\nProject: 'Automated Customer Support System' created successfully. Initial tasks include: 1) Design database schema (Priority: High, Assigned to: Database Architect Agent), 2) Develop API endpoints (Priority: Medium, Assigned to: Backend Developer Agent), 3) Create frontend UI components (Priority: Low, Assigned to: Frontend Developer Agent). Task dependencies: API endpoints must be completed before frontend UI components. Project repository initialized at git@github.com:company/automated-customer-support-system.git.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "beads#main-content",
+      "beads#overview",
+      "beads#setup",
+      "beads#examples",
+      "beads#tools",
+      "beads#mcp",
+      "beads#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Beads is a distributed issue tracker built specifically for AI agents, leveraging git as its backing store to maintain a graph-based task structure. It enhances how coding agents like Claude manage memory and track tasks across projects, providing persistent state that survives across sessions. The system integrates directly with Claude and supports cross-platform deployments, making it suitable for developers and operations teams who rely on AI agents for automation and code generation. By treating issues as a git-backed graph, Beads enables AI agents to maintain context, reference past decisions, and coordinate work in distributed environments without external database dependencies.\nTrack and manage tasks across multiple agents in a collaborative coding environment.\nCreate and link tasks with dependencies to visualize project progress and blockers.\nUtilize semantic memory decay to summarize closed tasks, maintaining relevant context for future work.\nRun Beads in stealth mode for personal projects without affecting the main repository.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/steveyegge/beads`",
+    "usage_vi": "```\nCreate a new Beads project for [PROJECT_NAME] with the following initial tasks: [TASK_LIST]. Ensure each task has clear dependencies and priority levels. Assign tasks to the appropriate AI agents based on their capabilities: [AGENT_ASSIGNMENTS].\n```\nCopy\n\n```\nProject: 'Automated Customer Support System' created successfully. Initial tasks include: 1) Design database schema (Priority: High, Assigned to: Database Architect Agent), 2) Develop API endpoints (Priority: Medium, Assigned to: Backend Developer Agent), 3) Create frontend UI components (Priority: Low, Assigned to: Frontend Developer Agent). Task dependencies: API endpoints must be completed before frontend UI components. Project repository initialized at git@github.com:company/automated-customer-support-system.git.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:18:25.324698Z",
+    "http_status": 200,
+    "content_hash": "bb369bfa814dce8a93fc0b18f9a27b9392f792310663dc10a1b8007203c96891",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\beads.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\beads.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI memory upgrade with beads",
+  "short_description_vi": "Beads is a distributed, git-backed graph issue tracker for AI agents. It enhances coding agents' memory and task management, benefiting developers and operations teams. Integrates with Claude and supports cross-platform use."
+}

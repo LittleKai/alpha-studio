@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autospec",
+  "slug": "autospec",
+  "name": "autospec",
+  "headline": "autospec CLI for spec-driven development",
+  "short_description": "Automates spec-driven development with a CLI. Enables operations teams to generate code, tests, and documentation from specifications. Integrates with Claude for agentic workflows and supports Go projects.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "ariel-frischer",
+  "install_command": "git clone https://github.com/ariel-frischer/autospec.git",
+  "source_repo_url": "https://github.com/ariel-frischer/autospec",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "prd",
+    "specification",
+    "golang",
+    "speckit",
+    "vibe-coding",
+    "spec",
+    "developer-tools",
+    "spec-driven-development",
+    "agentic-workflow",
+    "terminal",
+    "command-line",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Autospec is a Go CLI that brings structure to AI-assisted coding through specification-driven workflows. It orchestrates four core stages—specify, plan, tasks, and implement—each producing machine-readable YAML artifacts for programmatic validation and reuse. The tool integrates with Claude Code, Codex CLI, and OpenCode to automate feature development from requirements to implementation, reducing token overhead through bounded sessions per phase. Operations teams and developers use Autospec to systematically build features with automatic git workflows, native desktop notifications, and flexible stage selection.\nGenerate feature specifications and implementation plans from natural language descriptions\nAutomate code generation and testing workflows through AI agent integration\nOrchestrate multi-stage development tasks with automatic retry and validation\nReduce AI-assisted development costs through context-efficient bounded sessions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ariel-frischer/autospec`",
+    "usage": "```\nGenerate a Go project structure, implementation, tests, and documentation from the following specification: [SPECIFICATION]. Use the `autospec` CLI to scaffold the project, then implement the core logic in Go. Ensure the code follows Go best practices, includes unit tests with mocks, and generates Swagger/OpenAPI documentation. Verify the implementation matches the spec by running the tests and checking the generated docs.\n```\nCopy\n\n```\n### Generated Project Structure\n```\nmy-api/\n├── cmd/\n│   └── server/\n│       └── main.go          # Entry point with HTTP server\n├── internal/\n│   ├── handlers/\n│   │   └── user_handler.go  # Implements /users endpoints\n│   ├── models/\n│   │   └── user.go          # User domain model\n│   ├── services/\n│   │   └── user_service.go  # Business logic layer\n│   └── repositories/\n│       └── user_repo.go     # Mockable data access layer\n├── pkg/\n│   └── utils/\n│       └── logger.go        # Shared utilities\n├── api/\n│   └── swagger.yaml         # Auto-generated OpenAPI spec\n├── go.mod\n├── go.sum\n├── Makefile\n└── README.md\n```\n\n### Implementation Details\n1. **API Endpoints** (from spec):\n   - `GET /users` - List all users (paginated)\n   - `POST /users` - Create a new user\n   - `GET /users/{id}` - Get user by ID\n   - `PUT /users/{id}` - Update user\n\n2. **Core Logic** (user_service.go):\n```go\nfunc (s *UserService) CreateUser(ctx context.Context, user *models.User) error {\n    if err := s.validateUser(user); err != nil {\n        return fmt.Errorf(\"validation failed: %w\", err)\n    }\n    return s.repo.Create(ctx, user)\n}\n```\n\n3. **Tests** (user_handler_test.go):\n```go\nfunc TestCreateUserHandler(t *testing.T) {\n    repo := &mocks.UserRepository{}\n    repo.On(\"Create\", mock.Anything, mock.Anything).Return(nil)\n    \n    handler := NewUserHandler(repo)\n    req := httptest.NewRequest(\"POST\", \"/users\", strings.NewReader(`{\"name\":\"Alice\"}`))\n    \n    w := httptest.NewRecorder()\n    handler.CreateUser(w, req)\n    \n    assert.Equal(t, http.StatusCreated, w.Code)\n    repo.AssertExpectations(t)\n}\n```\n\n4. **Generated Swagger Docs** (api/swagger.yaml):\n```yaml\ndefinitions:\n  User:\n    type: object\n    properties:\n      id:\n        type: string\n        format: uuid\n      name:\n        type: string\n      email:\n        type: string\n        format: email\npaths:\n  /users:\n    post:\n      summary: Create a new user\n      parameters:\n        - in: body\n          name: user\n          schema:\n            $ref: '#/definitions/User'\n```\n\n### Verification Results\n- ✅ All unit tests pass (12/12)\n- ✅ Mock repository properly validates inputs\n- ✅ Swagger docs match implemented endpoints\n- ✅ Go linting passes with `golangci-lint`\n- ✅ Build succeeds with `go build ./...`\n\n### Next Steps\n1. Add database integration (replace mock repo)\n2. Implement authentication middleware\n3. Add CI/CD pipeline using the generated Makefile\n4. Deploy to staging environment\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "autospec#main-content",
+      "autospec#overview",
+      "autospec#setup",
+      "autospec#examples",
+      "autospec#tools",
+      "autospec#mcp",
+      "autospec#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Autospec là một công cụ CLI viết bằng Go giúp chuẩn hóa quy trình viết mã hỗ trợ bởi AI thông qua các workflow hướng đặc tả. Nó điều phối bốn giai đoạn cốt lõi—specify (đặc tả), plan (lập kế hoạch), tasks (nhiệm vụ) và implement (triển khai)—mỗi giai đoạn đều tạo ra các artifact YAML có thể đọc được bằng máy phục vụ cho việc xác thực bằng lập trình và tái sử dụng. Công cụ này tích hợp với Claude Code, Codex CLI và OpenCode để tự động hóa việc phát triển tính năng từ khâu yêu cầu đến khi triển khai thực tế, giúp giảm chi phí token thông qua các phiên giới hạn (bounded sessions) cho từng giai đoạn. Các đội ngũ vận hành và nhà phát triển sử dụng Autospec để xây dựng các tính năng một cách có hệ thống với các workflow git tự động, thông báo desktop gốc và khả năng lựa chọn giai đoạn linh hoạt.\n\nTạo các bản đặc tả tính năng và kế hoạch triển khai từ các mô tả bằng ngôn ngữ tự nhiên\nTự động hóa các workflow tạo mã nguồn và kiểm thử thông qua tích hợp AI agent\nĐiều phối các tác vụ phát triển đa giai đoạn với cơ chế tự động thử lại và xác thực\nGiảm chi phí phát triển được hỗ trợ bởi AI thông qua các phiên giới hạn tối ưu hóa ngữ cảnh",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ariel-frischer/autospec`",
+    "usage_vi": "```\nTạo cấu trúc dự án Go, phần triển khai, kiểm thử và tài liệu từ bản đặc tả sau: [SPECIFICATION]. Sử dụng CLI `autospec` để tạo khung dự án (scaffold), sau đó triển khai logic cốt lõi bằng Go. Đảm bảo mã nguồn tuân thủ các thực hành tốt nhất (best practices) của Go, bao gồm các bài unit test sử dụng mock và tự động tạo tài liệu Swagger/OpenAPI. Hãy xác thực xem phần triển khai có khớp với đặc tả hay không bằng cách chạy kiểm thử và kiểm tra tài liệu được tạo ra.\n```\nCopy\n\n```\n### Cấu trúc dự án được sinh ra\nmy-api/\n├── cmd/\n│   └── server/\n│       └── main.go          # Điểm khởi chạy với HTTP server\n├── internal/\n│   ├── handlers/\n│   │   └── user_handler.go  # Triển khai các endpoint /users\n│   ├── models/\n│   │   └── user.go          # Domain model cho User\n│   ├── services/\n│   │   └── user_service.go  # Lớp xử lý logic nghiệp vụ (business logic)\n│   └── repositories/\n│       └── user_repo.go     # Lớp truy cập dữ liệu hỗ trợ mock (mockable data access layer)\n├── pkg/\n│   └── utils/\n│       └── logger.go        # Các tiện ích dùng chung\n├── api/\n│   └── swagger.yaml         # Tài liệu đặc tả OpenAPI được tự động sinh ra\n├── go.mod\n├── go.sum\n├── Makefile\n└── README.md\n```\n\n### Chi tiết triển khai\n1. **API Endpoints** (từ đặc tả):\n   - `GET /users` - Liệt kê tất cả người dùng (có phân trang)\n   - `POST /users` - Tạo người dùng mới\n   - `GET /users/{id}` - Lấy thông tin người dùng theo ID\n   - `PUT /users/{id}` - Cập nhật người dùng\n\n2. **Logic cốt lõi** (user_service.go):\n```go\nfunc (s *UserService) CreateUser(ctx context.Context, user *models.User) error {\n    if err := s.validateUser(user); err != nil {\n        return fmt.Errorf(\"validation failed: %w\", err)\n    }\n    return s.repo.Create(ctx, user)\n}\n```\n\n3. **Kiểm thử** (user_handler_test.go):\n```go\nfunc TestCreateUserHandler(t *testing.T) {\n    repo := &mocks.UserRepository{}\n    repo.On(\"Create\", mock.Anything, mock.Anything).Return(nil)\n    \n    handler := NewUserHandler(repo)\n    req := httptest.NewRequest(\"POST\", \"/users\", strings.NewReader(`{\"name\":\"Alice\"}`))\n    \n    w := httptest.NewRecorder()\n    handler.CreateUser(w, req)\n    \n    assert.Equal(t, http.StatusCreated, w.Code)\n    repo.AssertExpectations(t)\n}\n```\n\n4. **Tài liệu Swagger được sinh ra** (api/swagger.yaml):\n```yaml\ndefinitions:\n  User:\n    type: object\n    properties:\n      id:\n        type: string\n        format: uuid\n      name:\n        type: string\n      email:\n        type: string\n        format: email\npaths:\n  /users:\n    post:\n      summary: Create a new user\n      parameters:\n        - in: body\n          name: user\n          schema:\n            $ref: '#/definitions/User'\n```\n\n### Kết quả xác thực\n- ✅ Tất cả các bài unit test đều vượt qua (12/12)\n- ✅ Mock repository xác thực chính xác dữ liệu đầu vào\n- ✅ Tài liệu Swagger khớp với các endpoint đã triển khai\n- ✅ Quá trình linting Go thành công với `golangci-lint`\n- ✅ Biên dịch (build) thành công bằng lệnh `go build ./...`\n\n### Các bước tiếp theo\n1. Tích hợp cơ sở dữ liệu (thay thế mock repo)\n2. Triển khai middleware xác thực (authentication middleware)\n3. Thêm pipeline CI/CD bằng cách sử dụng Makefile được tạo ra\n4. Triển khai lên môi trường staging\n"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:52:31.435398Z",
+    "http_status": 200,
+    "content_hash": "55f5430089caf32fb25845fb0ae04df6dd1501dfe7d5f99e751a8990d5d0331c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\autospec.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\autospec.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CLI autospec hỗ trợ phát triển hướng đặc tả",
+  "short_description_vi": "Tự động hóa quy trình phát triển hướng đặc tả bằng CLI. Cho phép các đội ngũ vận hành tự động tạo mã nguồn, các bài kiểm thử và tài liệu từ các bản đặc tả. Tích hợp với Claude cho các workflow dạng agent và hỗ trợ các dự án Go."
+}

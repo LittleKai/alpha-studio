@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aha-skill",
+  "slug": "aha-skill",
+  "name": "browser-use",
+  "headline": "convert mcp server to claude skill",
+  "short_description": "Aha-Skill automates the conversion of MCP Server, REST API, and OpenAPI specifications into Claude Skill packages. Operations teams use it to streamline skill development, reducing manual effort and ensuring compatibility with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "melonlee",
+  "install_command": "git clone https://github.com/melonlee/aha-skill.git",
+  "source_repo_url": "https://github.com/melonlee/aha-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Sidonie is an open-source front-end application that integrates chat, notes, study modules, and academic paper management into a single interface. It supports multi-session conversations with file uploads (PDF, Word, CSV, images), structured reasoning through plan and thought extraction, and local persistence using React and localStorage. The application connects to Google Gemini by default and can be extended with DeepSeek, Kimi, and Qwen models via API keys. Designed for students, researchers, and learners who need organized workflows without requiring backend infrastructure, Sidonie runs entirely in the browser with optional AI-powered analysis and curriculum-based learning features.\nMulti-model AI chat with file analysis and streaming responses\nCurriculum-based study with learning cards, XP tracking, and review scheduling\nAcademic paper discovery and management with arXiv integration\nLocal note-taking with tags, themes, and AI assistance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/melonlee/aha-skill`",
+    "usage": "```\nConvert the [MCP_SERVER_SPECIFICATION] / [REST_API_SPECIFICATION] / [OPENAPI_SPECIFICATION] into a Claude Skill package. Ensure the output follows the required schema for Claude Skills, including the 'name', 'description', 'prompt_template', and 'example_output' fields. If the specification includes endpoints, prioritize converting them into actionable skill actions. Use [PLACEHOLDER] for any missing details in the specification.\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"weather_skill_v1\",\n  \"description\": \"A Claude Skill that fetches real-time weather data from the OpenWeatherMap API and provides 5-day forecasts for any location.\",\n  \"prompt_template\": \"Fetch the 5-day weather forecast for [LOCATION] using the OpenWeatherMap API. Include temperature ranges, precipitation chances, and wind speeds. Format the response as a concise table with daily summaries.\",\n  \"example_output\": \"Here’s the 5-day forecast for San Francisco, CA (as of 2024-05-20):\\n\\n| Day       | Temp (°F) | Precip Chance | Wind (mph) |\n|-----------|-----------|---------------|------------|\n| May 21    | 68-75     | 10%           | 8-12       |\n| May 22    | 65-72     | 25%           | 10-15      |\n| May 23    | 63-70     | 5%            | 5-10       |\n| May 24    | 67-74     | 0%            | 7-12       |\n| May 25    | 66-73     | 15%           | 6-11       |\\n\\nData sourced from OpenWeatherMap API (last updated: 2024-05-20T14:30:00Z).\",\n  \"actions\": [\n    {\n      \"name\": \"get_weather_forecast\",\n      \"description\": \"Fetches a 5-day weather forecast for a given location.\",\n      \"parameters\": {\n        \"location\": {\n          \"type\": \"string\",\n          \"description\": \"City and state, e.g., 'San Francisco, CA'\"\n        }\n      }\n    }\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "aha-skill#main-content",
+      "aha-skill#overview",
+      "aha-skill#setup",
+      "aha-skill#examples",
+      "aha-skill#tools",
+      "aha-skill#mcp",
+      "aha-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sidonie is an open-source front-end application that integrates chat, notes, study modules, and academic paper management into a single interface. It supports multi-session conversations with file uploads (PDF, Word, CSV, images), structured reasoning through plan and thought extraction, and local persistence using React and localStorage. The application connects to Google Gemini by default and can be extended with DeepSeek, Kimi, and Qwen models via API keys. Designed for students, researchers, and learners who need organized workflows without requiring backend infrastructure, Sidonie runs entirely in the browser with optional AI-powered analysis and curriculum-based learning features.\nMulti-model AI chat with file analysis and streaming responses\nCurriculum-based study with learning cards, XP tracking, and review scheduling\nAcademic paper discovery and management with arXiv integration\nLocal note-taking with tags, themes, and AI assistance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/melonlee/aha-skill`",
+    "usage_vi": "```\nConvert the [MCP_SERVER_SPECIFICATION] / [REST_API_SPECIFICATION] / [OPENAPI_SPECIFICATION] into a Claude Skill package. Ensure the output follows the required schema for Claude Skills, including the 'name', 'description', 'prompt_template', and 'example_output' fields. If the specification includes endpoints, prioritize converting them into actionable skill actions. Use [PLACEHOLDER] for any missing details in the specification.\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"weather_skill_v1\",\n  \"description\": \"A Claude Skill that fetches real-time weather data from the OpenWeatherMap API and provides 5-day forecasts for any location.\",\n  \"prompt_template\": \"Fetch the 5-day weather forecast for [LOCATION] using the OpenWeatherMap API. Include temperature ranges, precipitation chances, and wind speeds. Format the response as a concise table with daily summaries.\",\n  \"example_output\": \"Here’s the 5-day forecast for San Francisco, CA (as of 2024-05-20):\\n\\n| Day       | Temp (°F) | Precip Chance | Wind (mph) |\n|-----------|-----------|---------------|------------|\n| May 21    | 68-75     | 10%           | 8-12       |\n| May 22    | 65-72     | 25%           | 10-15      |\n| May 23    | 63-70     | 5%            | 5-10       |\n| May 24    | 67-74     | 0%            | 7-12       |\n| May 25    | 66-73     | 15%           | 6-11       |\\n\\nData sourced from OpenWeatherMap API (last updated: 2024-05-20T14:30:00Z).\",\n  \"actions\": [\n    {\n      \"name\": \"get_weather_forecast\",\n      \"description\": \"Fetches a 5-day weather forecast for a given location.\",\n      \"parameters\": {\n        \"location\": {\n          \"type\": \"string\",\n          \"description\": \"City and state, e.g., 'San Francisco, CA'\"\n        }\n      }\n    }\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:20:40.763508Z",
+    "http_status": 200,
+    "content_hash": "d62af4cc56883ddf9b8affe7a7ae6294565b715b24a605b74b08cd8971dd769b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\aha-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\aha-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "convert mcp server to claude skill",
+  "short_description_vi": "Aha-Skill automates the conversion of MCP Server, REST API, and OpenAPI specifications into Claude Skill packages. Operations teams use it to streamline skill development, reducing manual effort and ensuring compatibility with Claude agents."
+}

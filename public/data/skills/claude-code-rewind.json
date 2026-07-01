@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-rewind",
+  "slug": "claude-code-rewind",
+  "name": "browser-use",
+  "headline": "Claude Code rewind - automatic snapshots/rollbacks",
+  "short_description": "🕰 Time machine for Claude Code sessions - Automatic snapshots, granular rollbacks, and visual diffs. Never fear AI mistakes again.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "holasoymalva",
+  "install_command": "git clone https://github.com/holasoymalva/claude-code-rewind.git",
+  "source_repo_url": "https://github.com/holasoymalva/claude-code-rewind",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "coding-productivity",
+    "claude-ai",
+    "diff-viewer",
+    "open-source-project",
+    "claude-code",
+    "developer-tools",
+    "anthropic",
+    "python",
+    "development-workflow",
+    "git-alternative",
+    "debugging-tools",
+    "time-travel",
+    "rollback-system",
+    "ai-coding-assistant",
+    "ai-safety",
+    "terminal-cli",
+    "version-control",
+    "snapshot-tool",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "Claude Code Rewind Tool automatically captures snapshots of every Claude Code action, storing metadata including timestamps, prompts, and affected files. It provides granular rollback capabilities that let you revert to any specific point in your session while preserving your own manual changes. The built-in visual diff engine shows exactly what Claude changed, line by line, with syntax highlighting and context annotations. Use the interactive timeline to navigate your development history, filter by action type or file, and preview changes before applying rollbacks. Developers benefit by reducing debugging time and maintaining confidence that AI-generated mistakes can be instantly undone.\nQuickly undo breaking changes Claude makes to working code\nReview exactly what Claude modified before accepting changes\nSelectively rollback specific files while keeping others\nNavigate development history and restore previous checkpoints",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/holasoymalva/claude-code-rewind`",
+    "usage": "```\nI want to use the Claude Code Rewind feature. Here's my current code: [CODE]. I want to go back to a previous version from [TIMESTAMP]. Can you show me the differences and help me restore it?\n```\nCopy\n\n```\n```diff\n--- Current Version (2023-10-15 14:30)\n+++ Previous Version (2023-10-14 09:15)\n@@ -1,5 +1,5 @@\n def calculate_discount(price, discount_rate):\n-    if discount_rate > 0.5:\n+    if discount_rate > 0.3:\n         raise ValueError(\"Discount rate too high\")\n     return price * (1 - discount_rate)\n-    else:\n+    elif discount_rate > 0:\n         return price * 0.9\n ```\n\n**Changes Made:**\n- Discount rate threshold changed from 0.5 to 0.3\n- Added an explicit `elif` condition\n- Default discount changed from 0.9 to 1.0\n\nWould you like to revert to this previous version?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-rewind#main-content",
+      "claude-code-rewind#overview",
+      "claude-code-rewind#setup",
+      "claude-code-rewind#examples",
+      "claude-code-rewind#tools",
+      "claude-code-rewind#mcp",
+      "claude-code-rewind#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Rewind Tool automatically captures snapshots of every Claude Code action, storing metadata including timestamps, prompts, and affected files. It provides granular rollback capabilities that let you revert to any specific point in your session while preserving your own manual changes. The built-in visual diff engine shows exactly what Claude changed, line by line, with syntax highlighting and context annotations. Use the interactive timeline to navigate your development history, filter by action type or file, and preview changes before applying rollbacks. Developers benefit by reducing debugging time and maintaining confidence that AI-generated mistakes can be instantly undone.\nQuickly undo breaking changes Claude makes to working code\nReview exactly what Claude modified before accepting changes\nSelectively rollback specific files while keeping others\nNavigate development history and restore previous checkpoints",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/holasoymalva/claude-code-rewind`",
+    "usage_vi": "```\nI want to use the Claude Code Rewind feature. Here's my current code: [CODE]. I want to go back to a previous version from [TIMESTAMP]. Can you show me the differences and help me restore it?\n```\nCopy\n\n```\n```diff\n--- Current Version (2023-10-15 14:30)\n+++ Previous Version (2023-10-14 09:15)\n@@ -1,5 +1,5 @@\n def calculate_discount(price, discount_rate):\n-    if discount_rate > 0.5:\n+    if discount_rate > 0.3:\n         raise ValueError(\"Discount rate too high\")\n     return price * (1 - discount_rate)\n-    else:\n+    elif discount_rate > 0:\n         return price * 0.9\n ```\n\n**Changes Made:**\n- Discount rate threshold changed from 0.5 to 0.3\n- Added an explicit `elif` condition\n- Default discount changed from 0.9 to 1.0\n\nWould you like to revert to this previous version?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:03:23.673936Z",
+    "http_status": 200,
+    "content_hash": "892d906eecced49252adf0dbb483f018e82e638a8edcf2db33b586a651fa672c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-rewind.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-rewind.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code rewind - automatic snapshots/rollbacks",
+  "short_description_vi": "🕰 Time machine for Claude Code sessions - Automatic snapshots, granular rollbacks, and visual diffs. Never fear AI mistakes again."
+}

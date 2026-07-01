@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/angular-developer",
+  "slug": "angular-developer",
+  "name": "expo-horizon",
+  "headline": "Angular Developer: Code Generation & Architecture",
+  "short_description": "This skill provides guidelines and best practices for Angular development, ensuring maintainability and performance. It's designed for developers working with Angular to create high-quality applications.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "angular",
+  "install_command": "git clone https://github.com/angular/skills",
+  "source_repo_url": "https://github.com/angular/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "developer",
+    "development",
+    "angular"
+  ],
+  "sections": {
+    "overview": "This skill generates production-ready Angular code and delivers architectural guidance aligned with Angular's style guide and best practices. It supports modern Angular features including Signals, linkedSignal, resource for async reactivity, Signal Forms, dependency injection, routing strategies, SSR, ARIA accessibility patterns, animations, component styling with Tailwind CSS, and testing. The skill analyzes your project's Angular version before providing recommendations, ensures generated code passes build validation with `ng build`, and uses Angular CLI for consistent scaffolding of components, services, directives, pipes, and routes. It serves developers building high-quality, maintainable Angular applications across all complexity levels.\nCreating new Angular projects with best practices\nGenerating code that adheres to Angular's style guide\nRunning and fixing build errors in Angular applications",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/angular/skills --skill angular-developer`\n`git clone https://github.com/angular/skills`",
+    "usage": "```\nI need guidance on best practices for [ANGULAR_VERSION] in [COMPANY]'s [INDUSTRY] application. Focus on [SPECIFIC_AREA: performance optimization, state management, component architecture, etc.]. Provide code examples using [METHODOLOGY: RxJS, NgRx, standalone components, etc.] where relevant. Include common pitfalls and how to avoid them.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "angular-developer#main-content",
+      "angular-developer#overview",
+      "angular-developer#setup",
+      "angular-developer#examples",
+      "angular-developer#tools",
+      "angular-developer#mcp",
+      "angular-developer#related",
+      "harper-best-practices",
+      "macos-menubar-tuist-app",
+      "expo-horizon"
+    ],
+    "overview_vi": "This skill generates production-ready Angular code and delivers architectural guidance aligned with Angular's style guide and best practices. It supports modern Angular features including Signals, linkedSignal, resource for async reactivity, Signal Forms, dependency injection, routing strategies, SSR, ARIA accessibility patterns, animations, component styling with Tailwind CSS, and testing. The skill analyzes your project's Angular version before providing recommendations, ensures generated code passes build validation with `ng build`, and uses Angular CLI for consistent scaffolding of components, services, directives, pipes, and routes. It serves developers building high-quality, maintainable Angular applications across all complexity levels.\nCreating new Angular projects with best practices\nGenerating code that adheres to Angular's style guide\nRunning and fixing build errors in Angular applications",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/angular/skills --skill angular-developer`\n`git clone https://github.com/angular/skills`",
+    "usage_vi": "```\nI need guidance on best practices for [ANGULAR_VERSION] in [COMPANY]'s [INDUSTRY] application. Focus on [SPECIFIC_AREA: performance optimization, state management, component architecture, etc.]. Provide code examples using [METHODOLOGY: RxJS, NgRx, standalone components, etc.] where relevant. Include common pitfalls and how to avoid them.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:39:53.548698Z",
+    "http_status": 200,
+    "content_hash": "d183f5921a67859eb47c9561194fe9e650af17ad50d1f6b05e7124c0a8111058",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\angular-developer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\angular-developer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Angular Developer: Code Generation & Architecture",
+  "short_description_vi": "This skill provides guidelines and best practices for Angular development, ensuring maintainability and performance. It's designed for developers working with Angular to create high-quality applications."
+}

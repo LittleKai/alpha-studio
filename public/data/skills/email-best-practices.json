@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/email-best-practices",
+  "slug": "email-best-practices",
+  "name": "browser-use",
+  "headline": "Email Best Practices - Ensures Compliance and",
+  "short_description": "Email best practices skill helps operations teams build and send emails that follow industry standards. It integrates with email marketing platforms and CRM systems to ensure compliance and improve deliverability.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "resend",
+  "install_command": "git clone https://github.com/resend/email-best-practices.git",
+  "source_repo_url": "https://github.com/resend/email-best-practices",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Email Best Practices skill provides a complete framework for implementing reliable email systems. It covers DNS authentication setup (SPF, DKIM, DMARC), transactional email design, marketing email compliance with CAN-SPAM and GDPR, and production infrastructure including idempotency, retry logic, and webhook processing. Teams can plan email types needed for their application, ensure proper authentication to improve deliverability, and automate suppression lists and list hygiene. The skill includes reference documentation on sender reputation, email verification, and regional compliance requirements.\nSetting up DNS authentication and sender reputation for transactional emails\nBuilding password reset, OTP, and order confirmation email flows\nImplementing marketing email campaigns with consent and segmentation\nProcessing delivery webhooks and managing bounce/suppression lists",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/resend/email-best-practices`",
+    "usage": "```\nReview the draft email below for compliance with email best practices and suggest improvements for [PURPOSE: e.g., deliverability, engagement, or compliance]. Focus on [SPECIFIC_AREA: e.g., subject line, sender reputation, unsubscribe links, spam triggers, or mobile optimization]. Provide a revised version with explanations for each change. \n\nDraft email:\n[EMAIL_CONTENT]\n```\nCopy\n\n```\nSubject: Your Exclusive Invite to the VIP Webinar Series\n\nHi [First Name],\n\nWe’re thrilled to invite you to our upcoming VIP Webinar Series, where industry leaders will share insights on [TOPIC]. This is your chance to learn from the best and connect with like-minded professionals.\n\n📅 **Date:** October 15, 2023\n🕒 **Time:** 2:00 PM EST\n📍 **Platform:** Zoom (link provided after registration)\n\n🔗 [Register Now]\n\nSpots are limited, so don’t miss out!\n\nBest regards,\nThe [Company Name] Team\n\n**Improvements Suggested:**\n1. **Subject Line:** Changed to a more personalized and benefit-driven approach. Original subject was generic and lacked urgency or personalization. The new subject includes the recipient’s name (if available) and clearly states the value.\n2. **Preheader Text:** Added a concise preheader (not shown in the draft) to complement the subject line: \"Join us for expert-led discussions on [TOPIC]—reserve your spot today!\" This increases open rates by providing additional context.\n3. **Sender Name:** Updated to a recognizable team name (e.g., \"The [Company Name] Team\") instead of a generic or unclear sender. This builds trust and improves deliverability.\n4. **Unsubscribe Link:** Added a clear and prominent unsubscribe link in the footer (not shown in the draft) to comply with CAN-SPAM and GDPR regulations. Example: \"Unsubscribe | Update Preferences | Contact Us.\"\n5. **Mobile Optimization:** Ensured the email is mobile-friendly by using a single-column layout, larger fonts, and concise paragraphs. The call-to-action (CTA) button is prominently placed and easy to tap.\n6. **Spam Triggers:** Removed phrases like \"don’t miss out\" (too salesy) and replaced them with more natural language. Added a physical mailing address in the footer to comply with CAN-SPAM.\n7. **Personalization:** Added a placeholder for the recipient’s first name to increase engagement. If dynamic fields aren’t available, use a generic greeting like \"Hi there,\" but avoid \"Dear User\" or \"Dear Customer.\"\n\n**Revised Version:**\nSubject: [First Name], Your Exclusive Invite to the VIP Webinar Series\n\nHi [First Name],\n\nWe’re thrilled to invite *you* to our upcoming VIP Webinar Series, where industry leaders will share insights on [TOPIC]. This is your chance to learn from the best and connect with like-minded professionals—all from the comfort of your desk.\n\n📅 **Date:** October 15, 2023\n🕒 **Time:** 2:00 PM EST\n📍 **Platform:** Zoom (link provided after registration)\n\n🔗 [Register Now]\n\nSpots are limited, so secure your seat today!\n\nBest regards,\nThe [Company Name] Team\n\n[Company Address]\n[Unsubscribe Link | Update Preferences | Contact Us]\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "email-best-practices#main-content",
+      "email-best-practices#overview",
+      "email-best-practices#setup",
+      "email-best-practices#examples",
+      "email-best-practices#tools",
+      "email-best-practices#mcp",
+      "email-best-practices#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Email Best Practices skill provides a complete framework for implementing reliable email systems. It covers DNS authentication setup (SPF, DKIM, DMARC), transactional email design, marketing email compliance with CAN-SPAM and GDPR, and production infrastructure including idempotency, retry logic, and webhook processing. Teams can plan email types needed for their application, ensure proper authentication to improve deliverability, and automate suppression lists and list hygiene. The skill includes reference documentation on sender reputation, email verification, and regional compliance requirements.\nSetting up DNS authentication and sender reputation for transactional emails\nBuilding password reset, OTP, and order confirmation email flows\nImplementing marketing email campaigns with consent and segmentation\nProcessing delivery webhooks and managing bounce/suppression lists",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/resend/email-best-practices`",
+    "usage_vi": "```\nReview the draft email below for compliance with email best practices and suggest improvements for [PURPOSE: e.g., deliverability, engagement, or compliance]. Focus on [SPECIFIC_AREA: e.g., subject line, sender reputation, unsubscribe links, spam triggers, or mobile optimization]. Provide a revised version with explanations for each change. \n\nDraft email:\n[EMAIL_CONTENT]\n```\nCopy\n\n```\nSubject: Your Exclusive Invite to the VIP Webinar Series\n\nHi [First Name],\n\nWe’re thrilled to invite you to our upcoming VIP Webinar Series, where industry leaders will share insights on [TOPIC]. This is your chance to learn from the best and connect with like-minded professionals.\n\n📅 **Date:** October 15, 2023\n🕒 **Time:** 2:00 PM EST\n📍 **Platform:** Zoom (link provided after registration)\n\n🔗 [Register Now]\n\nSpots are limited, so don’t miss out!\n\nBest regards,\nThe [Company Name] Team\n\n**Improvements Suggested:**\n1. **Subject Line:** Changed to a more personalized and benefit-driven approach. Original subject was generic and lacked urgency or personalization. The new subject includes the recipient’s name (if available) and clearly states the value.\n2. **Preheader Text:** Added a concise preheader (not shown in the draft) to complement the subject line: \"Join us for expert-led discussions on [TOPIC]—reserve your spot today!\" This increases open rates by providing additional context.\n3. **Sender Name:** Updated to a recognizable team name (e.g., \"The [Company Name] Team\") instead of a generic or unclear sender. This builds trust and improves deliverability.\n4. **Unsubscribe Link:** Added a clear and prominent unsubscribe link in the footer (not shown in the draft) to comply with CAN-SPAM and GDPR regulations. Example: \"Unsubscribe | Update Preferences | Contact Us.\"\n5. **Mobile Optimization:** Ensured the email is mobile-friendly by using a single-column layout, larger fonts, and concise paragraphs. The call-to-action (CTA) button is prominently placed and easy to tap.\n6. **Spam Triggers:** Removed phrases like \"don’t miss out\" (too salesy) and replaced them with more natural language. Added a physical mailing address in the footer to comply with CAN-SPAM.\n7. **Personalization:** Added a placeholder for the recipient’s first name to increase engagement. If dynamic fields aren’t available, use a generic greeting like \"Hi there,\" but avoid \"Dear User\" or \"Dear Customer.\"\n\n**Revised Version:**\nSubject: [First Name], Your Exclusive Invite to the VIP Webinar Series\n\nHi [First Name],\n\nWe’re thrilled to invite *you* to our upcoming VIP Webinar Series, where industry leaders will share insights on [TOPIC]. This is your chance to learn from the best and connect with like-minded professionals—all from the comfort of your desk.\n\n📅 **Date:** October 15, 2023\n🕒 **Time:** 2:00 PM EST\n📍 **Platform:** Zoom (link provided after registration)\n\n🔗 [Register Now]\n\nSpots are limited, so secure your seat today!\n\nBest regards,\nThe [Company Name] Team\n\n[Company Address]\n[Unsubscribe Link | Update Preferences | Contact Us]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:40:08.218387Z",
+    "http_status": 200,
+    "content_hash": "d3843cb7e18b9006ad7d505c61ad532b3a634a4e27099fa8f2f80fe07849de06",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\email-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\email-best-practices.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Email Best Practices - Ensures Compliance and",
+  "short_description_vi": "Email best practices skill helps operations teams build and send emails that follow industry standards. It integrates with email marketing platforms and CRM systems to ensure compliance and improve deliverability."
+}

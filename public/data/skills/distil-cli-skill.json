@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/distil-cli-skill",
+  "slug": "distil-cli-skill",
+  "name": "Distil CLI Skill",
+  "headline": "Distil CLI Skill - Train Small Language Models",
+  "short_description": "Train task-specific small language models (SLMs) using Distil Labs CLI. Ideal for operations teams needing compact, specialized models. Connects to Distil Labs CLI for model training and deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "distil-labs",
+  "install_command": "git clone https://github.com/distil-labs/distil-cli-skill.git",
+  "source_repo_url": "https://github.com/distil-labs/distil-cli-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Distil CLI Skill teaches Claude to help you build and deploy task-specific small language models (SLMs) using the Distil Labs platform. It supports classification, question answering, tool calling, multi-turn conversations, and RAG-based tasks, enabling you to create models up to 70x smaller while maintaining accuracy. The skill automates the complete workflow: preparing training data, running the Distil CLI, executing teacher evaluation, training models, and deploying locally or remotely via llama-cpp, vLLM, or Distil-managed infrastructure. You can also convert existing production LLM logs into fine-tuned small models. This is particularly valuable for operations teams, support organizations, and enterprises needing efficient, domain-specific models.\nIntent detection and sentiment analysis for customer support chatbots\nInvoice parsing, contract analysis, and ticket extraction from documents\nAPI routing and workflow automation through tool calling\nDevOps and file system assistants using multi-turn tool interactions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/distil-labs/distil-cli-skill`",
+    "usage": "```\nUse the Distil Labs CLI to fine-tune a small language model (SLM) for [TASK_DOMAIN, e.g., customer support ticket classification]. Follow these steps: 1) Preprocess the dataset in [FOLDER_PATH] into Distil Labs-compatible format. 2) Run the CLI command to train the model with [MODEL_NAME, e.g., 'distilbert-base-uncased'] as the base. 3) Evaluate the model on [TEST_SET_PATH] and report metrics like accuracy, F1-score, and inference speed. 4) Export the model to [OUTPUT_DIR] for deployment. Share the full CLI command sequence and a summary of results.\n```\nCopy\n\n```\n### Distil Labs CLI Fine-Tuning Report: Customer Support Ticket Classifier\n\n**Dataset Overview:**\n- Source: 12,450 labeled support tickets from Q1 2024 (CSV format in `/data/support_tickets/`).\n- Classes: 8 (e.g., Billing, Technical Issue, Account Access, Product Feedback).\n- Class distribution: Billing (32%), Technical Issue (28%), Account Access (18%), Product Feedback (12%), Others (10%).\n\n**Preprocessing:**\nConverted raw tickets into Distil Labs format using:\n```bash\npython preprocess.py --input /data/support_tickets/raw.csv --output /data/support_tickets/processed.jsonl --text-field 'description' --label-field 'category'\n```\nResult: 12,450 JSONL entries with cleaned text and labels.\n\n**Training Command:**\n```bash\ndistil train \\\n  --model_name distilbert-base-uncased \\\n  --train_file /data/support_tickets/processed.jsonl \\\n  --validation_file /data/support_tickets/validation.jsonl \\\n  --output_dir /models/support_ticket_classifier_v1 \\\n  --per_device_train_batch_size 16 \\\n  --num_train_epochs 3 \\\n  --learning_rate 2e-5\n```\n\n**Training Metrics:**\n- Training loss: 0.21 (epoch 3)\n- Validation accuracy: 92.3%\n- F1-score (macro avg): 0.91\n- Inference speed: 450 tokens/sec (on AWS g4dn.xlarge)\n- Model size: 240MB (compressed)\n\n**Evaluation on Test Set:**\n| Class            | Precision | Recall | F1-Score | Support |\n|------------------|-----------|--------|----------|---------|\n| Billing          | 0.94      | 0.93   | 0.93     | 1,200   |\n| Technical Issue  | 0.91      | 0.90   | 0.90     | 1,100   |\n| Account Access   | 0.89      | 0.92   | 0.90     | 800     |\n| Product Feedback | 0.87      | 0.85   | 0.86     | 600     |\n\n**Deployment:**\nExported model to `/models/support_ticket_classifier_v1` with:\n```bash\ndistil export --model_dir /models/support_ticket_classifier_v1 --output_dir /deploy/support_ticket_classifier\n```\nThe model is now ready for integration with our ticketing system via REST API.\n\n**Recommendations:**\n1. Monitor drift monthly using a holdout validation set.\n2. Retrain quarterly with new ticket data to maintain accuracy.\n3. Consider quantizing the model to 8-bit for edge deployment (expected size: 60MB).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "distil-cli-skill#main-content",
+      "distil-cli-skill#overview",
+      "distil-cli-skill#setup",
+      "distil-cli-skill#examples",
+      "distil-cli-skill#tools",
+      "distil-cli-skill#mcp",
+      "distil-cli-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Distil CLI Skill giúp Claude hỗ trợ bạn xây dựng và triển khai các mô hình ngôn ngữ nhỏ (SLM) chuyên biệt cho từng tác vụ bằng nền tảng Distil Labs. Công cụ này hỗ trợ phân loại (classification), trả lời câu hỏi (question answering), gọi công cụ (tool calling), hội thoại đa lượt (multi-turn conversations) và các tác vụ dựa trên RAG, cho phép bạn tạo ra các mô hình nhỏ hơn tới 70 lần mà vẫn duy trì được độ chính xác. Skill này tự động hóa toàn bộ quy trình làm việc (workflow): chuẩn bị dữ liệu huấn luyện, chạy Distil CLI, thực hiện đánh giá teacher model (teacher evaluation), huấn luyện mô hình và triển khai cục bộ (locally) hoặc từ xa (remotely) thông qua llama-cpp, vLLM hoặc hạ tầng do Distil quản lý. Bạn cũng có thể chuyển đổi các log LLM thực tế (production LLM logs) hiện có thành các mô hình nhỏ đã được fine-tune. Điều này đặc biệt hữu ích cho các đội ngũ vận hành, tổ chức hỗ trợ khách hàng và doanh nghiệp cần các mô hình hiệu quả, chuyên biệt cho từng lĩnh vực (domain-specific).\nNhận diện ý định (intent detection) và phân tích cảm xúc (sentiment analysis) cho chatbot hỗ trợ khách hàng\nPhân tích hóa đơn (invoice parsing), phân tích hợp đồng và trích xuất thông tin ticket từ tài liệu\nĐịnh tuyến API (API routing) và tự động hóa quy trình làm việc thông qua gọi công cụ (tool calling)\nTrợ lý DevOps và hệ thống tệp tin sử dụng tương tác công cụ đa lượt (multi-turn tool interactions)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/distil-labs/distil-cli-skill`",
+    "usage_vi": "```\nSử dụng Distil Labs CLI để fine-tune một mô hình ngôn ngữ nhỏ (SLM) cho [TASK_DOMAIN, ví dụ: phân loại ticket hỗ trợ khách hàng]. Hãy thực hiện theo các bước sau: 1) Tiền xử lý tập dữ liệu trong [FOLDER_PATH] sang định dạng tương thích với Distil Labs. 2) Chạy lệnh CLI để huấn luyện mô hình với base model là [MODEL_NAME, ví dụ: 'distilbert-base-uncased']. 3) Đánh giá mô hình trên [TEST_SET_PATH] và báo cáo các chỉ số như accuracy (độ chính xác), F1-score và tốc độ suy luận (inference speed). 4) Xuất mô hình sang [OUTPUT_DIR] để triển khai. Chia sẻ toàn bộ chuỗi lệnh CLI và bản tóm tắt kết quả.\n```\nCopy\n\n```\n### Báo cáo Fine-Tuning bằng Distil Labs CLI: Bộ phân loại ticket hỗ trợ khách hàng\n\n**Tổng quan về tập dữ liệu:**\n- Nguồn: 12.450 ticket hỗ trợ đã được gán nhãn từ Quý 1 năm 2024 (định dạng CSV trong `/data/support_tickets/`).\n- Các class: 8 (ví dụ: Thanh toán, Lỗi kỹ thuật, Truy cập tài khoản, Phản hồi sản phẩm).\n- Phân phối class: Thanh toán (32%), Lỗi kỹ thuật (28%), Truy cập tài khoản (18%), Phản hồi sản phẩm (12%), Khác (10%).\n\n**Tiền xử lý:**\nChuyển đổi các ticket thô sang định dạng Distil Labs bằng lệnh:\n```bash\npython preprocess.py --input /data/support_tickets/raw.csv --output /data/support_tickets/processed.jsonl --text-field 'description' --label-field 'category'\n```\nKết quả: 12.450 bản ghi JSONL với văn bản và nhãn đã được làm sạch.\n\n**Lệnh huấn luyện:**\n```bash\ndistil train \\\n  --model_name distilbert-base-uncased \\\n  --train_file /data/support_tickets/processed.jsonl \\\n  --validation_file /data/support_tickets/validation.jsonl \\\n  --output_dir /models/support_ticket_classifier_v1 \\\n  --per_device_train_batch_size 16 \\\n  --num_train_epochs 3 \\\n  --learning_rate 2e-5\n```\n\n**Chỉ số huấn luyện:**\n- Training loss: 0,21 (epoch 3)\n- Validation accuracy: 92,3%\n- F1-score (macro avg): 0,91\n- Tốc độ suy luận (inference speed): 450 tokens/giây (trên AWS g4dn.xlarge)\n- Kích thước mô hình: 240MB (đã nén)\n\n**Đánh giá trên tập kiểm thử (Test Set):**\n| Class            | Precision | Recall | F1-Score | Support |\n|------------------|-----------|--------|----------|---------|\n| Thanh toán       | 0.94      | 0.93   | 0.93     | 1,200   |\n| Lỗi kỹ thuật     | 0.91      | 0.90   | 0.90     | 1,100   |\n| Truy cập tài khoản| 0.89      | 0.92   | 0.90     | 800     |\n| Phản hồi sản phẩm| 0.87      | 0.85   | 0.86     | 600     |\n\n**Triển khai:**\nXuất mô hình sang `/models/support_ticket_classifier_v1` bằng lệnh:\n```bash\ndistil export --model_dir /models/support_ticket_classifier_v1 --output_dir /deploy/support_ticket_classifier\n```\nMô hình hiện đã sẵn sàng để tích hợp vào hệ thống ticketing của chúng tôi qua REST API.\n\n**Khuyến nghị:**\n1. Theo dõi độ lệch dữ liệu (drift) hàng tháng bằng cách sử dụng một tập holdout validation.\n2. Huấn luyện lại (retrain) hàng quý với dữ liệu ticket mới để duy trì độ chính xác.\n3. Cân nhắc lượng tử hóa (quantization) mô hình sang 8-bit để triển khai trên thiết bị ngoại vi/thiết bị biên (edge) (kích thước dự kiến: 60MB).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:12:00.278821Z",
+    "http_status": 200,
+    "content_hash": "7b15d639db3c1c6cbde714983ce422ff45cd4d81ffb0da12b635bb3204d5e821",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\distil-cli-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\distil-cli-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Distil CLI Skill - Huấn luyện Mô hình Ngôn ngữ Nhỏ (SLM)",
+  "short_description_vi": "Huấn luyện các mô hình ngôn ngữ nhỏ (SLM) chuyên biệt cho từng tác vụ bằng cách sử dụng Distil Labs CLI. Giải pháp lý tưởng cho các đội ngũ vận hành (operations) cần các mô hình nhỏ gọn, chuyên dụng. Kết nối trực tiếp với Distil Labs CLI để huấn luyện và triển khai mô hình."
+}

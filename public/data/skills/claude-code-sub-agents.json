@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-sub-agents",
+  "slug": "claude-code-sub-agents",
+  "name": "browser-use",
+  "headline": "AI subagents for personal full-stack use",
+  "short_description": "Collection of 33 specialized AI subagents for Claude Code. Enhances full-stack development workflows with domain-specific expertise and automation. Connects to Claude Code for intelligent automation in operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "lst97",
+  "install_command": "git clone https://github.com/lst97/claude-code-sub-agents.git",
+  "source_repo_url": "https://github.com/lst97/claude-code-sub-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "claudecode-subagents",
+    "claudecode-config",
+    "subagents",
+    "sub-agents"
+  ],
+  "sections": {
+    "overview": "Claude Code Subagents Collection provides 33 domain-specific AI subagents designed to enhance Claude Code's capabilities throughout the full software development lifecycle. Each subagent specializes in a particular area of development, automatically invoked based on context analysis or explicitly called when specialized expertise is needed. The collection enables developers to leverage intelligent automation and expert knowledge across multiple development domains. Subagents are integrated directly into Claude Code workflows, improving efficiency and code quality. This is ideal for full-stack development teams seeking to automate routine tasks and access specialized expertise on demand.\nAutomatically delegate frontend development tasks to the appropriate UI specialists based on project requirements.\nStreamline backend API design and implementation by invoking specialized backend architects for RESTful services.\nEnhance code quality through automated code reviews and testing processes managed by dedicated QA experts.\nOptimize cloud infrastructure and deployment processes with the help of deployment engineers and cloud architects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lst97/claude-code-sub-agents`",
+    "usage": "```\nUse claude-code-sub-agents to automate [TASK] in [PROJECT]. Focus on [SPECIFIC_DOMAIN] and apply [SUBAGENT_NAME] for [PURPOSE]. Ensure the solution integrates with [EXISTING_TOOLS] and follows [CODING_STANDARDS]. Example: 'Use claude-code-sub-agents to automate the deployment pipeline for my React e-commerce app. Focus on backend services and apply the 'database-migrator' subagent to handle schema updates. Ensure the solution integrates with GitHub Actions and follows REST API best practices.'\n```\nCopy\n\n```\nHere’s how the claude-code-sub-agents would automate a full-stack task for a fictional project:\n\n**Project Context**: A Node.js/React SaaS application with a PostgreSQL database and Dockerized deployment pipeline.\n\n**Task**: Automate the monthly database schema migration and API endpoint generation.\n\n**Subagents Used**:\n1. **database-migrator**: Analyzed the current schema (`users`, `products`, `orders` tables) and generated a migration file (`2024_05_01_add_indexes.sql`) to add indexes to frequently queried columns (e.g., `user_email`, `order_date`). The subagent also updated the `migrations/metadata.json` to track the new migration.\n\n2. **api-endpoint-generator**: Scanned the updated schema and auto-generated RESTful CRUD endpoints for the `products` table in `/src/routes/products.js`. The endpoints included:\n   - `GET /api/products` (with pagination support)\n   - `POST /api/products` (with validation for `name`, `price`, `stock` fields)\n   - `PUT /api/products/:id` (with partial updates)\n   - `DELETE /api/products/:id`\n\n**Integration**: The generated migration was automatically added to the CI/CD pipeline in `.github/workflows/deploy.yml`, ensuring it runs before the API deployment. The new endpoints were linted with ESLint and tested with Jest (mocking the database layer).\n\n**Output**:\n- Migration file: `migrations/2024_05_01_add_indexes.sql`\n- API routes: `/src/routes/products.js` (200 lines of auto-generated code)\n- Test coverage: 95% for the new endpoints (simulated with fictional data)\n- CI/CD update: Added `run-migrations` step to the deployment workflow.\n\n**Next Steps**:\n1. Review the generated code in a PR (e.g., `feat/add-product-endpoints`).\n2. Manually test the new endpoints in the staging environment.\n3. Merge the PR and deploy to production.\n\n**Time Saved**: ~4 hours of manual work (schema analysis, endpoint writing, CI/CD updates).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-sub-agents#main-content",
+      "claude-code-sub-agents#overview",
+      "claude-code-sub-agents#setup",
+      "claude-code-sub-agents#examples",
+      "claude-code-sub-agents#tools",
+      "claude-code-sub-agents#mcp",
+      "claude-code-sub-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Subagents Collection provides 33 domain-specific AI subagents designed to enhance Claude Code's capabilities throughout the full software development lifecycle. Each subagent specializes in a particular area of development, automatically invoked based on context analysis or explicitly called when specialized expertise is needed. The collection enables developers to leverage intelligent automation and expert knowledge across multiple development domains. Subagents are integrated directly into Claude Code workflows, improving efficiency and code quality. This is ideal for full-stack development teams seeking to automate routine tasks and access specialized expertise on demand.\nAutomatically delegate frontend development tasks to the appropriate UI specialists based on project requirements.\nStreamline backend API design and implementation by invoking specialized backend architects for RESTful services.\nEnhance code quality through automated code reviews and testing processes managed by dedicated QA experts.\nOptimize cloud infrastructure and deployment processes with the help of deployment engineers and cloud architects.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lst97/claude-code-sub-agents`",
+    "usage_vi": "```\nUse claude-code-sub-agents to automate [TASK] in [PROJECT]. Focus on [SPECIFIC_DOMAIN] and apply [SUBAGENT_NAME] for [PURPOSE]. Ensure the solution integrates with [EXISTING_TOOLS] and follows [CODING_STANDARDS]. Example: 'Use claude-code-sub-agents to automate the deployment pipeline for my React e-commerce app. Focus on backend services and apply the 'database-migrator' subagent to handle schema updates. Ensure the solution integrates with GitHub Actions and follows REST API best practices.'\n```\nCopy\n\n```\nHere’s how the claude-code-sub-agents would automate a full-stack task for a fictional project:\n\n**Project Context**: A Node.js/React SaaS application with a PostgreSQL database and Dockerized deployment pipeline.\n\n**Task**: Automate the monthly database schema migration and API endpoint generation.\n\n**Subagents Used**:\n1. **database-migrator**: Analyzed the current schema (`users`, `products`, `orders` tables) and generated a migration file (`2024_05_01_add_indexes.sql`) to add indexes to frequently queried columns (e.g., `user_email`, `order_date`). The subagent also updated the `migrations/metadata.json` to track the new migration.\n\n2. **api-endpoint-generator**: Scanned the updated schema and auto-generated RESTful CRUD endpoints for the `products` table in `/src/routes/products.js`. The endpoints included:\n   - `GET /api/products` (with pagination support)\n   - `POST /api/products` (with validation for `name`, `price`, `stock` fields)\n   - `PUT /api/products/:id` (with partial updates)\n   - `DELETE /api/products/:id`\n\n**Integration**: The generated migration was automatically added to the CI/CD pipeline in `.github/workflows/deploy.yml`, ensuring it runs before the API deployment. The new endpoints were linted with ESLint and tested with Jest (mocking the database layer).\n\n**Output**:\n- Migration file: `migrations/2024_05_01_add_indexes.sql`\n- API routes: `/src/routes/products.js` (200 lines of auto-generated code)\n- Test coverage: 95% for the new endpoints (simulated with fictional data)\n- CI/CD update: Added `run-migrations` step to the deployment workflow.\n\n**Next Steps**:\n1. Review the generated code in a PR (e.g., `feat/add-product-endpoints`).\n2. Manually test the new endpoints in the staging environment.\n3. Merge the PR and deploy to production.\n\n**Time Saved**: ~4 hours of manual work (schema analysis, endpoint writing, CI/CD updates).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:40:20.659652Z",
+    "http_status": 200,
+    "content_hash": "49ebec4768f0905f4626e8787f543c24cf49390cf4af43a4451470aacad895b2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-sub-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-sub-agents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI subagents for personal full-stack use",
+  "short_description_vi": "Collection of 33 specialized AI subagents for Claude Code. Enhances full-stack development workflows with domain-specific expertise and automation. Connects to Claude Code for intelligent automation in operations."
+}

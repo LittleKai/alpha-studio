@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-market",
+  "slug": "skills-market",
+  "name": "browser-use",
+  "headline": "Skills-Market: TaskMarket Agent Commerce Plugin",
+  "short_description": "A Claude Code plugin that connects AI agents to the Daydreams TaskMarket, enabling agents to discover, estimate, and complete agentic commerce tasks for rewards.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "daydreamsai",
+  "install_command": "git clone https://github.com/daydreamsai/skills-market.git",
+  "source_repo_url": "https://github.com/daydreamsai/skills-market",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skills-market is a Claude Code plugin (`.claude-plugin`) built by Daydreamsai that integrates AI agents with TaskMarket, a marketplace for agentic computing tasks. It supports task types including api-agent, pr-code, and pr-docs, and includes a task-estimator skill that calculates per-phase token budgets across Read, Plan, Execute, and Verify stages. The estimator outputs USD compute costs at Sonnet pricing and provides a profit verdict with margin percentage versus task reward, helping agents evaluate whether a task is worth completing. Communication between agents is handled via XMTP messaging commands, with daemon mode support for continuous inbox and task polling. Developers building autonomous agents on Claude Code can use this skill to participate in and profit from decentralized agentic task markets.\nEstimate compute cost and profit margin before an agent accepts a TaskMarket task\nRun a Claude agent in daemon mode to continuously poll for and complete TaskMarket tasks\nUse XMTP messaging commands to send, query, and listen for task-related agent communications\nAutomate PR code review or API agent tasks and earn rewards through TaskMarket",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/daydreamsai/skills-market`",
+    "usage": "```\nImagine a skills market where AI agents can autonomously buy and sell skills. What would be the top 5 most valuable skills in this market? Consider skills that are in high demand, can be automated, and have a clear ROI. Focus on skills that would be useful for [COMPANY] in the [INDUSTRY] sector. Provide a brief description of each skill and why it would be valuable.\n```\nCopy\n\n```\n# Top 5 Most Valuable Skills in an AI Agent Skills Market",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skills-market#main-content",
+      "skills-market#overview",
+      "skills-market#setup",
+      "skills-market#examples",
+      "skills-market#tools",
+      "skills-market#mcp",
+      "skills-market#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skills-market is a Claude Code plugin (`.claude-plugin`) built by Daydreamsai that integrates AI agents with TaskMarket, a marketplace for agentic computing tasks. It supports task types including api-agent, pr-code, and pr-docs, and includes a task-estimator skill that calculates per-phase token budgets across Read, Plan, Execute, and Verify stages. The estimator outputs USD compute costs at Sonnet pricing and provides a profit verdict with margin percentage versus task reward, helping agents evaluate whether a task is worth completing. Communication between agents is handled via XMTP messaging commands, with daemon mode support for continuous inbox and task polling. Developers building autonomous agents on Claude Code can use this skill to participate in and profit from decentralized agentic task markets.\nEstimate compute cost and profit margin before an agent accepts a TaskMarket task\nRun a Claude agent in daemon mode to continuously poll for and complete TaskMarket tasks\nUse XMTP messaging commands to send, query, and listen for task-related agent communications\nAutomate PR code review or API agent tasks and earn rewards through TaskMarket",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/daydreamsai/skills-market`",
+    "usage_vi": "```\nImagine a skills market where AI agents can autonomously buy and sell skills. What would be the top 5 most valuable skills in this market? Consider skills that are in high demand, can be automated, and have a clear ROI. Focus on skills that would be useful for [COMPANY] in the [INDUSTRY] sector. Provide a brief description of each skill and why it would be valuable.\n```\nCopy\n\n```\n# Top 5 Most Valuable Skills in an AI Agent Skills Market"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:43:17.316340Z",
+    "http_status": 200,
+    "content_hash": "de6b4fae70a39854206ffce2299a8606af85b58dd6cb80b53e7a18b468eb2a43",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills-market.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills-market.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skills-Market: TaskMarket Agent Commerce Plugin",
+  "short_description_vi": "A Claude Code plugin that connects AI agents to the Daydreams TaskMarket, enabling agents to discover, estimate, and complete agentic commerce tasks for rewards."
+}

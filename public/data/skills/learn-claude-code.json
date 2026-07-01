@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/learn-claude-code",
+  "slug": "learn-claude-code",
+  "name": "browser-use",
+  "headline": "learn-claude-code: Simplify Coding Tasks",
+  "short_description": "Learn Claude Code enables developers to create AI agents with minimal code. Operations teams benefit from rapid agent development. The skill connects to Python workflows and supports Claude agents.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "shareAI-lab",
+  "install_command": "git clone https://github.com/shareAI-lab/learn-claude-code.git",
+  "source_repo_url": "https://github.com/shareAI-lab/learn-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "python",
+    "educational",
+    "llm",
+    "claude",
+    "tutorial",
+    "agent-development",
+    "teaching",
+    "ai-agent",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The learn-claude-code skill is designed to empower developers and AI practitioners by enabling them to write efficient Claude Code with just 16 lines of Bash. This automation skill simplifies the process of creating AI agents capable of handling repetitive coding tasks, making it an essential tool for those looking to enhance their workflow automation capabilities. By leveraging this skill, users can create coding agents that not only automate mundane tasks but also interact with external APIs to fetch and process data seamlessly. One of the key benefits of the learn-claude-code skill is its ability to save time and streamline project timelines. With an implementation time of just 30 minutes, developers can quickly set up a tool that organizes tasks and manages complex workflows through a subagent system. This skill is particularly valuable for product managers and developers who need to allocate their time more efficiently and focus on higher-level project objectives rather than repetitive coding chores. This skill is ideal for intermediate-level developers and AI practitioners who are familiar with Bash scripting and are looking to automate their workflows. It fits perfectly into AI-first environments where efficiency and speed are paramount. The existing use cases illustrate its versatility, from building simple AI coding agents to developing sophisticated planning agents that enhance project management. While the complexity is rated as intermediate, the practical implementation requirements are minimal, making it accessible for those with a basic understanding of coding. By integrating the learn-claude-code skill into your AI automation strategies, you can significantly improve productivity and ensure that your team is leveraging the full potential of AI agents in their workflows.\nBuild a simple AI coding agent to automate repetitive coding tasks.\nCreate a tool that interacts with external APIs to fetch and process data.\nDevelop a planning agent that organizes tasks and manages project timelines.\nImplement a subagent system for handling complex workflows in automation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/learn-claude-code`",
+    "usage": "```\nCreate a Claude AI agent that [DESCRIBE TASK]. The agent should use the following Python libraries: [LIST LIBRARIES]. Provide the minimal code required to implement this agent. Ensure the agent can [SPECIFY FUNCTIONALITY].\n```\nCopy\n\n```\nHere's a Claude AI agent that monitors server uptime and alerts the operations team when issues are detected. The agent uses the `requests` and `smtplib` Python libraries to check server status and send email alerts. The minimal code required is as follows:\n\n```python\nimport requests\nimport smtplib\nfrom email.mime.text import MIMEText\n\n# Define server and email settings\nservers = ['https://server1.example.com', 'https://server2.example.com']\nsmtp_server = 'smtp.example.com'\nsmtp_port = 587\nsender_email = 'monitor@example.com'\nreceiver_email = 'ops@example.com'\n\n# Function to check server status\ndef check_server_status(url):\n    try:\n        response = requests.get(url, timeout=5)\n        return response.status_code == 200\n    except:\n        return False\n\n# Function to send email alert\ndef send_alert(subject, body):\n    msg = MIMEText(body)\n    msg['Subject'] = subject\n    msg['From'] = sender_email\n    msg['To'] = receiver_email\n    \n    with smtplib.SMTP(smtp_server, smtp_port) as server:\n        server.starttls()\n        server.login(sender_email, 'password')\n        server.send_message(msg)\n\n# Main agent loop\nwhile True:\n    for server in servers:\n        if not check_server_status(server):\n            subject = f'Server Down Alert: {server}'\n            body = f'The server {server} is currently down. Please investigate immediately.'\n            send_alert(subject, body)\n    time.sleep(300)  # Check every 5 minutes\n```\n\nThis agent will continuously monitor the specified servers and send email alerts to the operations team when a server is down. The agent can be easily customized to monitor additional servers or send alerts through different channels.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "learn-claude-code#main-content",
+      "learn-claude-code#overview",
+      "learn-claude-code#setup",
+      "learn-claude-code#examples",
+      "learn-claude-code#tools",
+      "learn-claude-code#mcp",
+      "learn-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The learn-claude-code skill is designed to empower developers and AI practitioners by enabling them to write efficient Claude Code with just 16 lines of Bash. This automation skill simplifies the process of creating AI agents capable of handling repetitive coding tasks, making it an essential tool for those looking to enhance their workflow automation capabilities. By leveraging this skill, users can create coding agents that not only automate mundane tasks but also interact with external APIs to fetch and process data seamlessly. One of the key benefits of the learn-claude-code skill is its ability to save time and streamline project timelines. With an implementation time of just 30 minutes, developers can quickly set up a tool that organizes tasks and manages complex workflows through a subagent system. This skill is particularly valuable for product managers and developers who need to allocate their time more efficiently and focus on higher-level project objectives rather than repetitive coding chores. This skill is ideal for intermediate-level developers and AI practitioners who are familiar with Bash scripting and are looking to automate their workflows. It fits perfectly into AI-first environments where efficiency and speed are paramount. The existing use cases illustrate its versatility, from building simple AI coding agents to developing sophisticated planning agents that enhance project management. While the complexity is rated as intermediate, the practical implementation requirements are minimal, making it accessible for those with a basic understanding of coding. By integrating the learn-claude-code skill into your AI automation strategies, you can significantly improve productivity and ensure that your team is leveraging the full potential of AI agents in their workflows.\nBuild a simple AI coding agent to automate repetitive coding tasks.\nCreate a tool that interacts with external APIs to fetch and process data.\nDevelop a planning agent that organizes tasks and manages project timelines.\nImplement a subagent system for handling complex workflows in automation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shareAI-lab/learn-claude-code`",
+    "usage_vi": "```\nCreate a Claude AI agent that [DESCRIBE TASK]. The agent should use the following Python libraries: [LIST LIBRARIES]. Provide the minimal code required to implement this agent. Ensure the agent can [SPECIFY FUNCTIONALITY].\n```\nCopy\n\n```\nHere's a Claude AI agent that monitors server uptime and alerts the operations team when issues are detected. The agent uses the `requests` and `smtplib` Python libraries to check server status and send email alerts. The minimal code required is as follows:\n\n```python\nimport requests\nimport smtplib\nfrom email.mime.text import MIMEText\n\n# Define server and email settings\nservers = ['https://server1.example.com', 'https://server2.example.com']\nsmtp_server = 'smtp.example.com'\nsmtp_port = 587\nsender_email = 'monitor@example.com'\nreceiver_email = 'ops@example.com'\n\n# Function to check server status\ndef check_server_status(url):\n    try:\n        response = requests.get(url, timeout=5)\n        return response.status_code == 200\n    except:\n        return False\n\n# Function to send email alert\ndef send_alert(subject, body):\n    msg = MIMEText(body)\n    msg['Subject'] = subject\n    msg['From'] = sender_email\n    msg['To'] = receiver_email\n    \n    with smtplib.SMTP(smtp_server, smtp_port) as server:\n        server.starttls()\n        server.login(sender_email, 'password')\n        server.send_message(msg)\n\n# Main agent loop\nwhile True:\n    for server in servers:\n        if not check_server_status(server):\n            subject = f'Server Down Alert: {server}'\n            body = f'The server {server} is currently down. Please investigate immediately.'\n            send_alert(subject, body)\n    time.sleep(300)  # Check every 5 minutes\n```\n\nThis agent will continuously monitor the specified servers and send email alerts to the operations team when a server is down. The agent can be easily customized to monitor additional servers or send alerts through different channels.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:39:49.081212Z",
+    "http_status": 200,
+    "content_hash": "6dfbd5f22707dd1e5413f6b82f827371124ebae12ae1afe2f09b85c6af210193",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\learn-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "learn-claude-code: Simplify Coding Tasks",
+  "short_description_vi": "Learn Claude Code enables developers to create AI agents with minimal code. Operations teams benefit from rapid agent development. The skill connects to Python workflows and supports Claude agents."
+}

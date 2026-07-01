@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/acp",
+  "slug": "acp",
+  "name": "browser-use",
+  "headline": "AI Config Plaza - Easier AI Tool Configs",
+  "short_description": "The AI Config Plaza (ACP) streamlines AI tool configuration by providing a centralized platform to discover, share, and install verified configurations for MCP servers, Agents, and Prompts. Developers and operations teams benefit from reduced setup time and consistent configurations across tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "AIConfigPlaza",
+  "install_command": "git clone https://github.com/AIConfigPlaza/acp.git",
+  "source_repo_url": "https://github.com/AIConfigPlaza/acp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "copilot",
+    "claude",
+    "cousor",
+    "codex",
+    "ai"
+  ],
+  "sections": {
+    "overview": "ACP (AI-Config-Plaza) simplifies configuration management for AI programming tools by providing a centralized marketplace where developers can discover, share, and apply pre-built configurations for MCP servers, agents, custom prompts, and agent skills. The platform supports multiple AI IDEs including Claude Code, Cursor, GitHub Copilot, and OpenAI Codex, eliminating configuration fragmentation and reducing setup time. Users can browse configurations with search and filtering, apply them to local projects via a one-click CLI tool, and manage permissions with public or private sharing options. Community members rate and download configurations to help others find quality setups, while developers benefit from consistent configurations across tools and reduced tool-switching overhead.\nQuickly set up MCP servers and agent configurations across multiple AI IDEs\nShare and discover community-verified configuration packages for common development workflows\nManage and apply consistent configurations to multiple projects via CLI\nReduce setup time when switching between AI programming tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AIConfigPlaza/acp`",
+    "usage": "```\nFind and install a verified MCP server configuration for [SPECIFIC_TASK] from the AI Config Plaza (ACP). Include [SERVER_NAME] if known, or specify the category (e.g., file system, web scraping, API integration). Provide step-by-step installation instructions and explain how to verify the configuration works with [YOUR_PROJECT_NAME].\n```\nCopy\n\n```\nHere’s a verified MCP server configuration for **real-time web scraping** using Puppeteer, sourced from the AI Config Plaza (ACP). This configuration is optimized for Node.js projects and includes pre-configured error handling for rate limits and dynamic content loading.\n\n### Installation Steps:\n1. **Download the config**: Run `npm install @acp/mcp-puppeteer-scraper@1.2.0` in your project root. This installs the MCP server and its dependencies (Puppeteer v21.6.0).\n2. **Verify dependencies**: Ensure Node.js v18+ and npm are installed. Check Puppeteer’s Chromium binary with `npx puppeteer browsers install` (this avoids download issues during runtime).\n3. **Configure MCP client**: Add the following to your `mcp.json`:\n   ```json\n   {\n     \"servers\": {\n       \"puppeteer-scraper\": {\n         \"command\": \"node\",\n         \"args\": [\"/path/to/mcp-puppeteer-scraper/dist/index.js\"],\n         \"env\": {\n           \"PUPPETEER_EXECUTABLE_PATH\": \"/usr/bin/chromium-browser\"\n         }\n       }\n     }\n   }\n   ```\n4. **Test the setup**: Run `mcp inspect puppeteer-scraper` to confirm the server is responsive. Then, test with a simple query:\n   ```\n   mcp call puppeteer-scraper \"scrape { url: 'https://example.com', selectors: ['h1', 'p'] }\"\n   ```\n   Expected output:\n   ```json\n   {\n     \"results\": [\n       { \"tag\": \"h1\", \"text\": \"Example Domain\" },\n       { \"tag\": \"p\", \"text\": \"This domain is for use in illustrative examples in documents.\" }\n     ]\n   }\n   ```\n\n### Key Features:\n- **Rate limiting**: Automatically retries failed requests with exponential backoff.\n- **Dynamic content**: Waits for JavaScript-rendered elements (e.g., React apps) before scraping.\n- **Error handling**: Logs failed selectors and returns partial results.\n\n### Troubleshooting:\n- If Chromium fails to launch, set `PUPPETEER_EXECUTABLE_PATH` to your local binary (e.g., `/usr/bin/chromium` on Linux).\n- For Docker deployments, use the `puppeteer/puppeteer:21.6.0` image to avoid binary mismatches.\n\nThis configuration saved our team 4 hours of setup time last sprint by eliminating manual Puppeteer tuning for our e-commerce price tracker.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "acp#main-content",
+      "acp#overview",
+      "acp#setup",
+      "acp#examples",
+      "acp#tools",
+      "acp#mcp",
+      "acp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ACP (AI-Config-Plaza) simplifies configuration management for AI programming tools by providing a centralized marketplace where developers can discover, share, and apply pre-built configurations for MCP servers, agents, custom prompts, and agent skills. The platform supports multiple AI IDEs including Claude Code, Cursor, GitHub Copilot, and OpenAI Codex, eliminating configuration fragmentation and reducing setup time. Users can browse configurations with search and filtering, apply them to local projects via a one-click CLI tool, and manage permissions with public or private sharing options. Community members rate and download configurations to help others find quality setups, while developers benefit from consistent configurations across tools and reduced tool-switching overhead.\nQuickly set up MCP servers and agent configurations across multiple AI IDEs\nShare and discover community-verified configuration packages for common development workflows\nManage and apply consistent configurations to multiple projects via CLI\nReduce setup time when switching between AI programming tools",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AIConfigPlaza/acp`",
+    "usage_vi": "```\nFind and install a verified MCP server configuration for [SPECIFIC_TASK] from the AI Config Plaza (ACP). Include [SERVER_NAME] if known, or specify the category (e.g., file system, web scraping, API integration). Provide step-by-step installation instructions and explain how to verify the configuration works with [YOUR_PROJECT_NAME].\n```\nCopy\n\n```\nHere’s a verified MCP server configuration for **real-time web scraping** using Puppeteer, sourced from the AI Config Plaza (ACP). This configuration is optimized for Node.js projects and includes pre-configured error handling for rate limits and dynamic content loading.\n\n### Installation Steps:\n1. **Download the config**: Run `npm install @acp/mcp-puppeteer-scraper@1.2.0` in your project root. This installs the MCP server and its dependencies (Puppeteer v21.6.0).\n2. **Verify dependencies**: Ensure Node.js v18+ and npm are installed. Check Puppeteer’s Chromium binary with `npx puppeteer browsers install` (this avoids download issues during runtime).\n3. **Configure MCP client**: Add the following to your `mcp.json`:\n   ```json\n   {\n     \"servers\": {\n       \"puppeteer-scraper\": {\n         \"command\": \"node\",\n         \"args\": [\"/path/to/mcp-puppeteer-scraper/dist/index.js\"],\n         \"env\": {\n           \"PUPPETEER_EXECUTABLE_PATH\": \"/usr/bin/chromium-browser\"\n         }\n       }\n     }\n   }\n   ```\n4. **Test the setup**: Run `mcp inspect puppeteer-scraper` to confirm the server is responsive. Then, test with a simple query:\n   ```\n   mcp call puppeteer-scraper \"scrape { url: 'https://example.com', selectors: ['h1', 'p'] }\"\n   ```\n   Expected output:\n   ```json\n   {\n     \"results\": [\n       { \"tag\": \"h1\", \"text\": \"Example Domain\" },\n       { \"tag\": \"p\", \"text\": \"This domain is for use in illustrative examples in documents.\" }\n     ]\n   }\n   ```\n\n### Key Features:\n- **Rate limiting**: Automatically retries failed requests with exponential backoff.\n- **Dynamic content**: Waits for JavaScript-rendered elements (e.g., React apps) before scraping.\n- **Error handling**: Logs failed selectors and returns partial results.\n\n### Troubleshooting:\n- If Chromium fails to launch, set `PUPPETEER_EXECUTABLE_PATH` to your local binary (e.g., `/usr/bin/chromium` on Linux).\n- For Docker deployments, use the `puppeteer/puppeteer:21.6.0` image to avoid binary mismatches.\n\nThis configuration saved our team 4 hours of setup time last sprint by eliminating manual Puppeteer tuning for our e-commerce price tracker.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:00.346655Z",
+    "http_status": 200,
+    "content_hash": "73b9cd586c159dd9d76101d5c54ca45ef46161ed077debc925bec9f8ae14e0ca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\acp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\acp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Config Plaza - Easier AI Tool Configs",
+  "short_description_vi": "The AI Config Plaza (ACP) streamlines AI tool configuration by providing a centralized platform to discover, share, and install verified configurations for MCP servers, Agents, and Prompts. Developers and operations teams benefit from reduced setup time and consistent configurations across tools."
+}

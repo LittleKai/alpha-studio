@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aws-agent-skills",
+  "slug": "aws-agent-skills",
+  "name": "AWS Agent Skills",
+  "headline": "AWS Agent Skills for Automation",
+  "short_description": "AWS Agent Skills enable Claude agents to interact with AWS services. Operations teams use it to automate cloud infrastructure tasks. It connects to AWS APIs for managing resources, monitoring, and deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "itsmostafa",
+  "install_command": "git clone https://github.com/itsmostafa/aws-agent-skills.git",
+  "source_repo_url": "https://github.com/itsmostafa/aws-agent-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "aws",
+    "agentic-ai",
+    "codex",
+    "claude-skills",
+    "claude-code",
+    "coding-agents"
+  ],
+  "sections": {
+    "overview": "AWS Agent Skills is a directory of pre-built skills that enable Claude agents to interact with AWS services and APIs. The skill set allows operations teams to automate cloud infrastructure tasks including resource management, monitoring, and deployment workflows. By connecting Claude to AWS APIs, teams can programmatically manage their cloud environment through natural language interactions with the agent. The skills are organized by AWS service category and include examples and best practices for common infrastructure patterns. This enables faster automation of routine cloud operations and reduces manual intervention in infrastructure management.\nAutomate the creation of IAM policies for various AWS services.\nDevelop and debug serverless Lambda functions triggered by S3 events.\nGenerate Infrastructure as Code templates for deploying AWS resources.\nSet up monitoring and alerting using CloudWatch for critical applications.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/itsmostafa/aws-agent-skills`",
+    "usage": "```\nCreate an AWS Agent Skill to [SPECIFIC_TASK] in our AWS environment. The skill should connect to our [AWS_SERVICE] using [AUTHENTICATION_METHOD]. Ensure it follows our [SECURITY_POLICY] guidelines. Provide the necessary IAM permissions and error handling for [COMMON_ISSUES].\n```\nCopy\n\n```\nHere's an AWS Agent Skill to automate EC2 instance scaling based on CPU utilization:\n\n```python\nimport boto3\n\nclass ScaleEC2Instances:\n    def __init__(self):\n        self.cloudwatch = boto3.client('cloudwatch')\n        self.autoscaling = boto3.client('autoscaling')\n\n    def check_cpu_utilization(self, auto_scaling_group_name):\n        # Get CPU utilization metrics for the past 5 minutes\n        response = self.cloudwatch.get_metric_statistics(\n            Namespace='AWS/EC2',\n            MetricName='CPUUtilization',\n            Dimensions=[{'Name': 'AutoScalingGroupName', 'Value': auto_scaling_group_name}],\n            StartTime=datetime.utcnow() - timedelta(minutes=5),\n            EndTime=datetime.utcnow(),\n            Period=300,\n            Statistics=['Average']\n        )\n        return response['Datapoints'][0]['Average'] if response['Datapoints'] else 0\n\n    def scale_instances(self, auto_scaling_group_name, desired_capacity):\n        self.autoscaling.set_desired_capacity(\n            AutoScalingGroupName=auto_scaling_group_name,\n            DesiredCapacity=desired_capacity\n        )\n\n    def execute(self, auto_scaling_group_name):\n        cpu_utilization = self.check_cpu_utilization(auto_scaling_group_name)\n        current_capacity = self.autoscaling.describe_auto_scaling_groups(\n            AutoScalingGroupNames=[auto_scaling_group_name]\n        )['AutoScalingGroups'][0]['DesiredCapacity']\n\n        if cpu_utilization > 70 and current_capacity < 10:\n            self.scale_instances(auto_scaling_group_name, current_capacity + 1)\n        elif cpu_utilization < 30 and current_capacity > 2:\n            self.scale_instances(auto_scaling_group_name, current_capacity - 1)\n```\n\nThis skill monitors CPU utilization and scales instances up or down based on predefined thresholds. It requires IAM permissions for CloudWatch and AutoScaling services. Error handling includes checking for valid metrics and capacity limits.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "aws-agent-skills#main-content",
+      "aws-agent-skills#overview",
+      "aws-agent-skills#setup",
+      "aws-agent-skills#examples",
+      "aws-agent-skills#tools",
+      "aws-agent-skills#mcp",
+      "aws-agent-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AWS Agent Skills là một thư mục chứa các skill được xây dựng sẵn, cho phép các Claude agent tương tác với các dịch vụ và API của AWS. Bộ skill này giúp các đội ngũ vận hành tự động hóa các tác vụ hạ tầng đám mây, bao gồm quản lý tài nguyên, giám sát và luồng công việc triển khai (deployment workflows). Bằng cách kết nối Claude với AWS API, các đội ngũ có thể lập trình để quản lý môi trường đám mây của mình thông qua việc tương tác bằng ngôn ngữ tự nhiên với agent. Các skill được phân loại theo danh mục dịch vụ AWS, bao gồm cả các ví dụ và best practices cho các mô hình hạ tầng phổ biến. Nhờ đó, việc tự động hóa các hoạt động đám mây thường nhật sẽ diễn ra nhanh hơn và giảm bớt sự can thiệp thủ công trong quản lý hạ tầng.\nTự động hóa việc tạo IAM policy cho nhiều dịch vụ AWS khác nhau.\nPhát triển và debug các serverless Lambda function được kích hoạt bởi S3 event.\nTạo các template Infrastructure as Code để triển khai các tài nguyên AWS.\nThiết lập giám sát và cảnh báo bằng CloudWatch cho các ứng dụng quan trọng.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/itsmostafa/aws-agent-skills`",
+    "usage_vi": "```\nTạo một AWS Agent Skill để [SPECIFIC_TASK] trong môi trường AWS của chúng tôi. Skill này cần kết nối với [AWS_SERVICE] của chúng tôi bằng cách sử dụng [AUTHENTICATION_METHOD]. Đảm bảo tuân thủ các nguyên tắc [SECURITY_POLICY] của chúng tôi. Cung cấp các quyền IAM cần thiết và xử lý lỗi cho [COMMON_ISSUES].\n```\nCopy\n\n```\nDưới đây là một AWS Agent Skill để tự động hóa việc scale EC2 instance dựa trên CPU utilization:\n\n```python\nimport boto3\n\nclass ScaleEC2Instances:\n    def __init__(self):\n        self.cloudwatch = boto3.client('cloudwatch')\n        self.autoscaling = boto3.client('autoscaling')\n\n    def check_cpu_utilization(self, auto_scaling_group_name):\n        # Lấy thông số CPU utilization trong 5 phút qua\n        response = self.cloudwatch.get_metric_statistics(\n            Namespace='AWS/EC2',\n            MetricName='CPUUtilization',\n            Dimensions=[{'Name': 'AutoScalingGroupName', 'Value': auto_scaling_group_name}],\n            StartTime=datetime.utcnow() - timedelta(minutes=5),\n            EndTime=datetime.utcnow(),\n            Period=300,\n            Statistics=['Average']\n        )\n        return response['Datapoints'][0]['Average'] if response['Datapoints'] else 0\n\n    def scale_instances(self, auto_scaling_group_name, desired_capacity):\n        self.autoscaling.set_desired_capacity(\n            AutoScalingGroupName=auto_scaling_group_name,\n            DesiredCapacity=desired_capacity\n        )\n\n    def execute(self, auto_scaling_group_name):\n        cpu_utilization = self.check_cpu_utilization(auto_scaling_group_name)\n        current_capacity = self.autoscaling.describe_auto_scaling_groups(\n            AutoScalingGroupNames=[auto_scaling_group_name]\n        )['AutoScalingGroups'][0]['DesiredCapacity']\n\n        if cpu_utilization > 70 and current_capacity < 10:\n            self.scale_instances(auto_scaling_group_name, current_capacity + 1)\n        elif cpu_utilization < 30 and current_capacity > 2:\n            self.scale_instances(auto_scaling_group_name, current_capacity - 1)\n```\n\nSkill này giám sát CPU utilization và tự động scale instances lên hoặc xuống dựa trên các ngưỡng định sẵn. Nó yêu cầu quyền IAM cho các dịch vụ CloudWatch và AutoScaling. Việc xử lý lỗi bao gồm kiểm tra các metric hợp lệ và giới hạn capacity.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:03:33.331002Z",
+    "http_status": 200,
+    "content_hash": "06e750cca0d8c559dbbb5f6c04bb57c5bcf37109203b8c654589a1e324098e51",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aws-agent-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aws-agent-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AWS Agent Skills phục vụ tự động hóa",
+  "short_description_vi": "AWS Agent Skills cho phép các Claude agent tương tác với các dịch vụ AWS. Các đội ngũ vận hành sử dụng bộ kỹ năng này để tự động hóa các tác vụ hạ tầng đám mây. Công cụ này kết nối trực tiếp với AWS API để quản lý tài nguyên, giám sát và triển khai."
+}

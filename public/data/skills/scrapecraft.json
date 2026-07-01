@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/scrapecraft",
+  "slug": "scrapecraft",
+  "name": "scrapecraft",
+  "headline": "Scrapecraft: AI-Powered Web Scraping Tool",
+  "short_description": "Scrapecraft is an AI-driven web scraping editor that allows users to effortlessly build, test, and deploy web scrapers using natural language. With its visual workflow builder, it simplifies data extraction tasks for various applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "ScrapeGraphAI",
+  "install_command": "claude install ScrapeGraphAI/scrapecraft",
+  "source_repo_url": "https://github.com/ScrapeGraphAI/scrapecraft",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "python",
+    "web-scraping",
+    "automation",
+    "data-extraction",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Scrapecraft is a web scraping editor powered by AI that enables users to create, test, and deploy web scrapers without writing complex code. The tool uses natural language processing to understand scraping requirements and automatically generates extraction logic, eliminating the need for manual schema definition and code generation. It features a visual workflow builder that makes it easy to design data extraction pipelines for various web sources. The simplified prompt-only extraction approach reduces dependencies and improves execution speed while maintaining data accuracy. Developers, data analysts, and researchers benefit from faster prototyping and deployment of web scraping tasks.\nExtracting detailed product information from multiple e-commerce platforms to analyze pricing trends.\nGathering competitive intelligence by scraping data from competitor websites for market analysis.\nAutomating the collection of data for market research surveys by scraping relevant online sources.\nBuilding custom scrapers to monitor changes in website content for alerts on price drops or new product launches.",
+    "setup": "Terminal\nCopy\n`claude install ScrapeGraphAI/scrapecraft`\n`git clone https://github.com/ScrapeGraphAI/scrapecraft`",
+    "usage": "```\nCreate a web scraper to extract [DATA_TYPE] from [WEBSITE_URL]. The scraper should handle [SPECIFIC_CHALLENGES] such as dynamic content loading or CAPTCHAs. Output the data in [DESIRED_FORMAT] and save it to [DESTINATION].\n```\nCopy\n\n```\nScraper successfully created. Here's a summary of the configuration:\n\n1. Target Website: https://www.example-retailer.com\n2. Data Type: Product prices and availability\n3. Challenges Handled: Dynamic content loading via JavaScript rendering\n4. Output Format: CSV with columns for product name, price, availability status, and last updated timestamp\n5. Destination: Google Drive folder 'Retail Price Tracking'\n\nThe scraper will run daily at 8 AM and 6 PM, with error notifications sent to your email. You can monitor progress and results in the Rive dashboard.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "scrapecraft#main-content",
+      "scrapecraft#overview",
+      "scrapecraft#setup",
+      "scrapecraft#examples",
+      "scrapecraft#tools",
+      "scrapecraft#mcp",
+      "scrapecraft#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Scrapecraft is a web scraping editor powered by AI that enables users to create, test, and deploy web scrapers without writing complex code. The tool uses natural language processing to understand scraping requirements and automatically generates extraction logic, eliminating the need for manual schema definition and code generation. It features a visual workflow builder that makes it easy to design data extraction pipelines for various web sources. The simplified prompt-only extraction approach reduces dependencies and improves execution speed while maintaining data accuracy. Developers, data analysts, and researchers benefit from faster prototyping and deployment of web scraping tasks.\nExtracting detailed product information from multiple e-commerce platforms to analyze pricing trends.\nGathering competitive intelligence by scraping data from competitor websites for market analysis.\nAutomating the collection of data for market research surveys by scraping relevant online sources.\nBuilding custom scrapers to monitor changes in website content for alerts on price drops or new product launches.",
+    "setup_vi": "Terminal\nCopy\n`claude install ScrapeGraphAI/scrapecraft`\n`git clone https://github.com/ScrapeGraphAI/scrapecraft`",
+    "usage_vi": "```\nCreate a web scraper to extract [DATA_TYPE] from [WEBSITE_URL]. The scraper should handle [SPECIFIC_CHALLENGES] such as dynamic content loading or CAPTCHAs. Output the data in [DESIRED_FORMAT] and save it to [DESTINATION].\n```\nCopy\n\n```\nScraper successfully created. Here's a summary of the configuration:\n\n1. Target Website: https://www.example-retailer.com\n2. Data Type: Product prices and availability\n3. Challenges Handled: Dynamic content loading via JavaScript rendering\n4. Output Format: CSV with columns for product name, price, availability status, and last updated timestamp\n5. Destination: Google Drive folder 'Retail Price Tracking'\n\nThe scraper will run daily at 8 AM and 6 PM, with error notifications sent to your email. You can monitor progress and results in the Rive dashboard.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:47.644581Z",
+    "http_status": 200,
+    "content_hash": "660cf771111954004afdcba57d5a71e3d612cdc2fd9d1c19c6e7c58d2474c301",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\scrapecraft.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\scrapecraft.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Scrapecraft: AI-Powered Web Scraping Tool",
+  "short_description_vi": "Scrapecraft is an AI-driven web scraping editor that allows users to effortlessly build, test, and deploy web scrapers using natural language. With its visual workflow builder, it simplifies data extraction tasks for various applications."
+}

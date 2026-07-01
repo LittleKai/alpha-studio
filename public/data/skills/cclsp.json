@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cclsp",
+  "slug": "cclsp",
+  "name": "browser-use",
+  "headline": "cclsp Claude Code LSP integration tool",
+  "short_description": "Enhance Claude Code with LSP integration for better code completion, error detection, and refactoring. Works outside IDEs, benefiting developers and operations teams. Integrates with MCP servers for improved workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "ktnyt",
+  "install_command": "git clone https://github.com/ktnyt/cclsp.git",
+  "source_repo_url": "https://github.com/ktnyt/cclsp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "mcp-server",
+    "lsp",
+    "claude",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "CCLSP is an MCP server that connects Language Server Protocol (LSP) capabilities to Claude Code, providing developers with advanced code intelligence features. It supports find_definition, find_references, and symbol renaming across TypeScript, Python, Go, and 30+ other languages. The skill includes atomic file editing with backup and rollback support for safe refactoring operations. Developers can use it to enhance code completion, error detection, and refactoring without relying on traditional IDEs. Operations teams benefit from workspace-level code analysis and multi-file synchronization with LSP servers.\nQuickly navigate to function definitions in large codebases using AI assistance.\nAutomatically find all references to a variable or function across multiple files.\nRename variables or functions safely across an entire project with minimal risk.\nIntegrate LSP capabilities into non-IDE environments for enhanced coding workflows.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ktnyt/cclsp`",
+    "usage": "```\nAct as a Claude Code Language Server Protocol (LSP) assistant. Use the [FILE_PATH] and [TASK_DESCRIPTION] to provide: 1) Code completion suggestions with context-aware recommendations, 2) Real-time error detection and fixes for [ERROR_TYPE], 3) Refactoring opportunities for [CODE_BLOCK]. Ensure suggestions align with [PROJECT_STYLE_GUIDE]. Use MCP server integrations if relevant to suggest tools or workflows. Respond with structured JSON including 'completions', 'errors', 'refactors', and 'mcp_suggestions' keys.\n```\nCopy\n\n```\n```json\n{\n  \"completions\": [\n    {\n      \"line\": 42,\n      \"suggestion\": \"const config = new Config({\\n  timeout: 5000,\\n  retries: 3,\\n  logger: console\\n});\",\n      \"reason\": \"Standardized timeout configuration matching project style guide\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"line\": 15,\n      \"error\": \"TypeError: Cannot read property 'map' of undefined\",\n      \"fix\": \"Add null check: data?.map(item => process(item))\",\n      \"severity\": \"high\"\n    }\n  ],\n  \"refactors\": [\n    {\n      \"block\": \"services/api.js (lines 23-35)\",\n      \"suggestion\": \"Extract API client into separate module with dependency injection\",\n      \"benefits\": [\"Improved testability\", \"Reduced coupling\"],\n      \"mcp_suggestions\": [\"Use @modelcontextprotocol/server-node for module isolation\"]\n    }\n  ],\n  \"mcp_suggestions\": [\n    {\n      \"tool\": \"@modelcontextprotocol/server-python\",\n      \"use_case\": \"Generate Python SDK wrappers for internal APIs\",\n      \"command\": \"mcp-python --generate-sdk --input openapi.json --output src/sdk\"\n    }\n  ]\n}\n```\n\nFor the file `src/services/api.js` (150 lines), I detected 3 critical errors and 2 refactoring opportunities. The most urgent issue is in the `fetchUserData` function where the `userId` parameter isn't validated, causing the TypeError on line 15 when `undefined` is passed. The fix involves adding a guard clause: `if (!userId) throw new Error('userId is required')`. \n\nFor refactoring, the `DataProcessor` class violates the Single Responsibility Principle by handling both data transformation and API communication. Extracting the transformation logic into a `DataTransformer` class would improve maintainability. The MCP suggestion to use `@modelcontextprotocol/server-node` would help isolate this new module during testing.\n\nThe code completion suggestion for the configuration object standardizes our timeout settings across the codebase, aligning with our recent architectural decision to enforce consistent API behavior. This prevents the 'callback hell' pattern we've seen in legacy code where timeouts vary between 1-10 seconds.\n\nTotal analysis time: 47 seconds using LSP integration with 89% accuracy on error detection.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cclsp#main-content",
+      "cclsp#overview",
+      "cclsp#setup",
+      "cclsp#examples",
+      "cclsp#tools",
+      "cclsp#mcp",
+      "cclsp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CCLSP is an MCP server that connects Language Server Protocol (LSP) capabilities to Claude Code, providing developers with advanced code intelligence features. It supports find_definition, find_references, and symbol renaming across TypeScript, Python, Go, and 30+ other languages. The skill includes atomic file editing with backup and rollback support for safe refactoring operations. Developers can use it to enhance code completion, error detection, and refactoring without relying on traditional IDEs. Operations teams benefit from workspace-level code analysis and multi-file synchronization with LSP servers.\nQuickly navigate to function definitions in large codebases using AI assistance.\nAutomatically find all references to a variable or function across multiple files.\nRename variables or functions safely across an entire project with minimal risk.\nIntegrate LSP capabilities into non-IDE environments for enhanced coding workflows.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ktnyt/cclsp`",
+    "usage_vi": "```\nAct as a Claude Code Language Server Protocol (LSP) assistant. Use the [FILE_PATH] and [TASK_DESCRIPTION] to provide: 1) Code completion suggestions with context-aware recommendations, 2) Real-time error detection and fixes for [ERROR_TYPE], 3) Refactoring opportunities for [CODE_BLOCK]. Ensure suggestions align with [PROJECT_STYLE_GUIDE]. Use MCP server integrations if relevant to suggest tools or workflows. Respond with structured JSON including 'completions', 'errors', 'refactors', and 'mcp_suggestions' keys.\n```\nCopy\n\n```\n```json\n{\n  \"completions\": [\n    {\n      \"line\": 42,\n      \"suggestion\": \"const config = new Config({\\n  timeout: 5000,\\n  retries: 3,\\n  logger: console\\n});\",\n      \"reason\": \"Standardized timeout configuration matching project style guide\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"line\": 15,\n      \"error\": \"TypeError: Cannot read property 'map' of undefined\",\n      \"fix\": \"Add null check: data?.map(item => process(item))\",\n      \"severity\": \"high\"\n    }\n  ],\n  \"refactors\": [\n    {\n      \"block\": \"services/api.js (lines 23-35)\",\n      \"suggestion\": \"Extract API client into separate module with dependency injection\",\n      \"benefits\": [\"Improved testability\", \"Reduced coupling\"],\n      \"mcp_suggestions\": [\"Use @modelcontextprotocol/server-node for module isolation\"]\n    }\n  ],\n  \"mcp_suggestions\": [\n    {\n      \"tool\": \"@modelcontextprotocol/server-python\",\n      \"use_case\": \"Generate Python SDK wrappers for internal APIs\",\n      \"command\": \"mcp-python --generate-sdk --input openapi.json --output src/sdk\"\n    }\n  ]\n}\n```\n\nFor the file `src/services/api.js` (150 lines), I detected 3 critical errors and 2 refactoring opportunities. The most urgent issue is in the `fetchUserData` function where the `userId` parameter isn't validated, causing the TypeError on line 15 when `undefined` is passed. The fix involves adding a guard clause: `if (!userId) throw new Error('userId is required')`. \n\nFor refactoring, the `DataProcessor` class violates the Single Responsibility Principle by handling both data transformation and API communication. Extracting the transformation logic into a `DataTransformer` class would improve maintainability. The MCP suggestion to use `@modelcontextprotocol/server-node` would help isolate this new module during testing.\n\nThe code completion suggestion for the configuration object standardizes our timeout settings across the codebase, aligning with our recent architectural decision to enforce consistent API behavior. This prevents the 'callback hell' pattern we've seen in legacy code where timeouts vary between 1-10 seconds.\n\nTotal analysis time: 47 seconds using LSP integration with 89% accuracy on error detection.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:02:40.174006Z",
+    "http_status": 200,
+    "content_hash": "f5bedb5e6105303d1c9d0a01956960de47321a720a766b9694a27b1c8768d321",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cclsp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cclsp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "cclsp Claude Code LSP integration tool",
+  "short_description_vi": "Enhance Claude Code with LSP integration for better code completion, error detection, and refactoring. Works outside IDEs, benefiting developers and operations teams. Integrates with MCP servers for improved workflows."
+}

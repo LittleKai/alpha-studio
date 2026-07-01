@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-pointer",
+  "slug": "mcp-pointer",
+  "name": "browser-use",
+  "headline": "MCP Pointer - Guide AI with DOM elements",
+  "short_description": "MCP Pointer lets you point at DOM elements in a browser to guide AI coding tools. Operations teams use it to streamline agentic coding workflows by allowing AI to see and interact with the same UI elements as humans. It connects to browser-based applications and integrates with agentic coding tools like Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "etsd-tech",
+  "install_command": "git clone https://github.com/etsd-tech/mcp-pointer.git",
+  "source_repo_url": "https://github.com/etsd-tech/mcp-pointer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "pointing",
+    "mcp",
+    "mcp-server",
+    "dom-element",
+    "dom",
+    "stdio",
+    "agentic-coding",
+    "cursor",
+    "browser"
+  ],
+  "sections": {
+    "overview": "MCP Pointer is a local tool combining an MCP Server with a Chrome Extension that lets you visually select DOM elements in the browser and make that context available to agentic coding tools like Claude Code, Cursor, and Windsurf. By holding Option and clicking any element, you capture complete element data including text content, CSS classes, HTML attributes, positioning, styling, and React component information. The MCP server bridges the browser and AI tools via the Model Context Protocol, enabling AI assistants to see and analyze the same UI elements as humans. This eliminates the need to manually describe interface elements to your AI tool. Operations teams and developers use MCP Pointer to streamline agentic coding workflows by letting AI tools understand and interact with web applications through actual element context.\nQuickly analyze the styling and attributes of a specific DOM element on a webpage.\nIntegrate AI tools to provide contextual insights about selected elements in real-time.\nFacilitate debugging by extracting detailed information about React components directly from the browser.\nEnhance web scraping tasks by obtaining structured data from targeted DOM elements effortlessly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/etsd-tech/mcp-pointer`",
+    "usage": "```\nUse MCP Pointer to inspect the [UI_ELEMENT] in the browser at [URL]. Identify the XPath or CSS selector for this element and explain its role in the workflow. Then, suggest a code change to [IMPLEMENT_FUNCTIONALITY] using this element. Include a snippet of the modified code and test it in the browser console.\n```\nCopy\n\n```\nIn the browser at https://app.example.com/dashboard, I inspected the **'Export CSV'** button (XPath: `//button[contains(text(), 'Export CSV')]`) which triggers a file download. This button is part of a data export workflow that currently fails when users have >10,000 records.\n\n**Problem Identified:** The backend API truncates results at 10,000 records without warning, causing silent failures.\n\n**Suggested Fix:** Modify the frontend to:\n1. Show a warning modal when >10,000 records are selected\n2. Add a loading spinner during export\n3. Update the API call to handle pagination\n\n**Code Change:**\n```javascript\n// In Dashboard.jsx\nconst handleExport = async () => {\n  if (selectedRecords.length > 10000) {\n    setShowWarning(true);\n    return;\n  }\n  setIsLoading(true);\n  try {\n    const response = await fetch(`/api/export?ids=${selectedRecords.join(',')}`);\n    const blob = await response.blob();\n    saveAs(blob, 'export.csv');\n  } finally {\n    setIsLoading(false);\n  }\n};\n```\n\n**Test Steps:**\n1. Open Chrome DevTools (F12)\n2. Run `document.evaluate('//button[contains(text(), \"Export CSV\")]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()`\n3. Verify the warning modal appears when selecting >10k records\n4. Confirm the export completes successfully for small datasets\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-pointer#main-content",
+      "mcp-pointer#overview",
+      "mcp-pointer#setup",
+      "mcp-pointer#examples",
+      "mcp-pointer#tools",
+      "mcp-pointer#mcp",
+      "mcp-pointer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP Pointer is a local tool combining an MCP Server with a Chrome Extension that lets you visually select DOM elements in the browser and make that context available to agentic coding tools like Claude Code, Cursor, and Windsurf. By holding Option and clicking any element, you capture complete element data including text content, CSS classes, HTML attributes, positioning, styling, and React component information. The MCP server bridges the browser and AI tools via the Model Context Protocol, enabling AI assistants to see and analyze the same UI elements as humans. This eliminates the need to manually describe interface elements to your AI tool. Operations teams and developers use MCP Pointer to streamline agentic coding workflows by letting AI tools understand and interact with web applications through actual element context.\nQuickly analyze the styling and attributes of a specific DOM element on a webpage.\nIntegrate AI tools to provide contextual insights about selected elements in real-time.\nFacilitate debugging by extracting detailed information about React components directly from the browser.\nEnhance web scraping tasks by obtaining structured data from targeted DOM elements effortlessly.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/etsd-tech/mcp-pointer`",
+    "usage_vi": "```\nUse MCP Pointer to inspect the [UI_ELEMENT] in the browser at [URL]. Identify the XPath or CSS selector for this element and explain its role in the workflow. Then, suggest a code change to [IMPLEMENT_FUNCTIONALITY] using this element. Include a snippet of the modified code and test it in the browser console.\n```\nCopy\n\n```\nIn the browser at https://app.example.com/dashboard, I inspected the **'Export CSV'** button (XPath: `//button[contains(text(), 'Export CSV')]`) which triggers a file download. This button is part of a data export workflow that currently fails when users have >10,000 records.\n\n**Problem Identified:** The backend API truncates results at 10,000 records without warning, causing silent failures.\n\n**Suggested Fix:** Modify the frontend to:\n1. Show a warning modal when >10,000 records are selected\n2. Add a loading spinner during export\n3. Update the API call to handle pagination\n\n**Code Change:**\n```javascript\n// In Dashboard.jsx\nconst handleExport = async () => {\n  if (selectedRecords.length > 10000) {\n    setShowWarning(true);\n    return;\n  }\n  setIsLoading(true);\n  try {\n    const response = await fetch(`/api/export?ids=${selectedRecords.join(',')}`);\n    const blob = await response.blob();\n    saveAs(blob, 'export.csv');\n  } finally {\n    setIsLoading(false);\n  }\n};\n```\n\n**Test Steps:**\n1. Open Chrome DevTools (F12)\n2. Run `document.evaluate('//button[contains(text(), \"Export CSV\")]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()`\n3. Verify the warning modal appears when selecting >10k records\n4. Confirm the export completes successfully for small datasets\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:27:49.981598Z",
+    "http_status": 200,
+    "content_hash": "94f85ed186d63380878365a1b4c809765f7ae398f22b71bea3abb976379cc5bc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-pointer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-pointer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MCP Pointer - Guide AI with DOM elements",
+  "short_description_vi": "MCP Pointer lets you point at DOM elements in a browser to guide AI coding tools. Operations teams use it to streamline agentic coding workflows by allowing AI to see and interact with the same UI elements as humans. It connects to browser-based applications and integrates with agentic coding tools like Claude Code."
+}

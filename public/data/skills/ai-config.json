@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-config",
+  "slug": "ai-config",
+  "name": "browser-use",
+  "headline": "ai-config: extensions for coding agents",
+  "short_description": "A collection of skills and extensions for AI coding agents including Claude Code and Codex CLI, adding capabilities like web search and subagent orchestration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "dnouri",
+  "install_command": "git clone https://github.com/dnouri/ai-config.git",
+  "source_repo_url": "https://github.com/dnouri/ai-config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "ai-config is a GitHub repository providing reusable skills and extensions for AI coding agents such as Claude Code, Codex CLI, and pi-coding-agent. It includes a web search skill that handles concurrent browser sessions, retries on failure, and cleans up zombie processes automatically. The repository also offers a subagent extension that enables orchestration of child agents with live streaming output, token usage stats, and session metadata display. An improve-agent skill helps teams refine their agent configurations by analyzing past failures and suggesting new skills or tool fixes. Developers building or customizing AI coding agent workflows benefit from these ready-made, battle-tested components.\nAdding web search capability to Claude Code or Codex CLI agents with concurrent-access safety\nOrchestrating subagents with live streaming output and cost tracking in a TUI\nAutomatically analyzing agent failures to suggest skill or tooling improvements\nExtending pi-coding-agent with reusable, community-maintained skill modules",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dnouri/ai-config`\n```bash\npip install pi-coding-agent claudecode codex-cli\n```",
+    "usage": "```\nAct as an AI configuration expert. I need to set up a [TOOL] for [TASK]. Provide a step-by-step guide with code snippets in [LANGUAGE] to configure it for [SPECIFIC USE CASE]. Include error handling and best practices.\n```\nCopy\n\n```\n# AI Tool Configuration Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-config#main-content",
+      "ai-config#overview",
+      "ai-config#setup",
+      "ai-config#examples",
+      "ai-config#tools",
+      "ai-config#mcp",
+      "ai-config#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ai-config is a GitHub repository providing reusable skills and extensions for AI coding agents such as Claude Code, Codex CLI, and pi-coding-agent. It includes a web search skill that handles concurrent browser sessions, retries on failure, and cleans up zombie processes automatically. The repository also offers a subagent extension that enables orchestration of child agents with live streaming output, token usage stats, and session metadata display. An improve-agent skill helps teams refine their agent configurations by analyzing past failures and suggesting new skills or tool fixes. Developers building or customizing AI coding agent workflows benefit from these ready-made, battle-tested components.\nAdding web search capability to Claude Code or Codex CLI agents with concurrent-access safety\nOrchestrating subagents with live streaming output and cost tracking in a TUI\nAutomatically analyzing agent failures to suggest skill or tooling improvements\nExtending pi-coding-agent with reusable, community-maintained skill modules",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dnouri/ai-config`\n```bash\npip install pi-coding-agent claudecode codex-cli\n```",
+    "usage_vi": "```\nAct as an AI configuration expert. I need to set up a [TOOL] for [TASK]. Provide a step-by-step guide with code snippets in [LANGUAGE] to configure it for [SPECIFIC USE CASE]. Include error handling and best practices.\n```\nCopy\n\n```\n# AI Tool Configuration Guide"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:21:14.755997Z",
+    "http_status": 200,
+    "content_hash": "981993d446fa4491c6bca6bc6534720054212b86eead8f05536a0f80af06ee47",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-config.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ai-config: extensions for coding agents",
+  "short_description_vi": "A collection of skills and extensions for AI coding agents including Claude Code and Codex CLI, adding capabilities like web search and subagent orchestration."
+}

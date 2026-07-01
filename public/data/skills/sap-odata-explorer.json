@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sap-odata-explorer",
+  "slug": "sap-odata-explorer",
+  "name": "SAP OData Explorer",
+  "headline": "SAP OData Explorer - Query SAP Data",
+  "short_description": "Query SAP OData endpoints in plain English. Operations teams use this to automate data retrieval. Connects to SAP systems, logs securely, and handles errors gracefully.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "65 min",
+  "author": "one-kash",
+  "install_command": "git clone https://github.com/one-kash/sap-odata-explorer.git",
+  "source_repo_url": "https://github.com/one-kash/sap-odata-explorer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-skills",
+    "sap",
+    "odata",
+    "claude-ai",
+    "agentic-ai"
+  ],
+  "sections": {
+    "overview": "The SAP OData Explorer skill enables teams to query SAP OData endpoints using natural language commands. Built for operations teams, it automates data retrieval from SAP systems while maintaining secure logging and graceful error handling. This skill bridges the gap between plain English requests and complex SAP API calls, reducing manual integration work.\nRetrieve customer master data from SAP without writing API queries\nAutomate daily inventory status reports by querying OData endpoints\nFetch sales order details in real time for operational dashboards\nExtract financial transaction records for audit and compliance workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/one-kash/sap-odata-explorer`",
+    "usage": "```\nI need to query the [SAP_ODATA_ENDPOINT] for [SPECIFIC_DATA]. Can you help me construct the OData query in plain English? I want to filter by [FILTER_CRITERIA] and sort by [SORT_CRITERIA]. Please ensure the response is in [OUTPUT_FORMAT] and include error handling for [ERROR_CONDITIONS].\n```\nCopy\n\n```\n# SAP OData Query Results",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sap-odata-explorer#main-content",
+      "sap-odata-explorer#overview",
+      "sap-odata-explorer#setup",
+      "sap-odata-explorer#examples",
+      "sap-odata-explorer#tools",
+      "sap-odata-explorer#mcp",
+      "sap-odata-explorer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The SAP OData Explorer skill enables teams to query SAP OData endpoints using natural language commands. Built for operations teams, it automates data retrieval from SAP systems while maintaining secure logging and graceful error handling. This skill bridges the gap between plain English requests and complex SAP API calls, reducing manual integration work.\nRetrieve customer master data from SAP without writing API queries\nAutomate daily inventory status reports by querying OData endpoints\nFetch sales order details in real time for operational dashboards\nExtract financial transaction records for audit and compliance workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/one-kash/sap-odata-explorer`",
+    "usage_vi": "```\nI need to query the [SAP_ODATA_ENDPOINT] for [SPECIFIC_DATA]. Can you help me construct the OData query in plain English? I want to filter by [FILTER_CRITERIA] and sort by [SORT_CRITERIA]. Please ensure the response is in [OUTPUT_FORMAT] and include error handling for [ERROR_CONDITIONS].\n```\nCopy\n\n```\n# SAP OData Query Results"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:29:15.831446Z",
+    "http_status": 200,
+    "content_hash": "fe557e76592a50f9d22d8dc08f4fc4b315cefde5bf6c0931b182955936bc39e7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sap-odata-explorer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sap-odata-explorer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SAP OData Explorer - Query SAP Data",
+  "short_description_vi": "Query SAP OData endpoints in plain English. Operations teams use this to automate data retrieval. Connects to SAP systems, logs securely, and handles errors gracefully."
+}

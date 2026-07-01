@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/alexa-iot",
+  "slug": "alexa-iot",
+  "name": "Alexa Iot",
+  "headline": "alexa-iot MQTT-based home automation skill",
+  "short_description": "An Alexa skills kit that converts custom voice commands into MQTT messages for home automation systems deployed on AWS Lambda.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "mattmattmatt",
+  "install_command": "git clone https://github.com/mattmattmatt/alexa-iot.git",
+  "source_repo_url": "https://github.com/mattmattmatt/alexa-iot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mqtt",
+    "alexa-skills-kit",
+    "mqtt-node",
+    "alexa-skill",
+    "alexa"
+  ],
+  "sections": {
+    "overview": "This Alexa skills kit bridges voice commands and MQTT-based home automation systems. It interprets incoming Alexa intents and translates them into MQTT messages sent to your broker, enabling voice control of custom smart home devices. The skill runs on AWS Lambda and handles device discovery automatically. It supports self-signed certificates for secure MQTT connections and can be adapted to work with alternative protocols like HTTP or Pushbullet. Ideal for developers building custom voice-activated home automation without relying on pre-built integrations.\nControl custom smart home devices via Alexa voice commands\nRoute Alexa intents to MQTT brokers for home automation\nCreate voice entry points for non-standard home automation systems\nEnable voice control of Tasker AutoRemote or HTTP-based systems",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mattmattmatt/alexa-iot`",
+    "usage": "```\nCreate an Alexa skill that allows users to control their home automation system via voice commands. The skill should integrate with an MQTT broker to send commands to devices. The skill should support commands for [DEVICE_TYPE] in [ROOM_NAME] such as 'turn on', 'turn off', 'set brightness to [VALUE]', and 'set temperature to [VALUE]'. Provide the necessary code and instructions for setting up the skill and connecting it to the MQTT broker.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "alexa-iot#main-content",
+      "alexa-iot#overview",
+      "alexa-iot#setup",
+      "alexa-iot#examples",
+      "alexa-iot#tools",
+      "alexa-iot#mcp",
+      "alexa-iot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This Alexa skills kit bridges voice commands and MQTT-based home automation systems. It interprets incoming Alexa intents and translates them into MQTT messages sent to your broker, enabling voice control of custom smart home devices. The skill runs on AWS Lambda and handles device discovery automatically. It supports self-signed certificates for secure MQTT connections and can be adapted to work with alternative protocols like HTTP or Pushbullet. Ideal for developers building custom voice-activated home automation without relying on pre-built integrations.\nControl custom smart home devices via Alexa voice commands\nRoute Alexa intents to MQTT brokers for home automation\nCreate voice entry points for non-standard home automation systems\nEnable voice control of Tasker AutoRemote or HTTP-based systems",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mattmattmatt/alexa-iot`",
+    "usage_vi": "```\nCreate an Alexa skill that allows users to control their home automation system via voice commands. The skill should integrate with an MQTT broker to send commands to devices. The skill should support commands for [DEVICE_TYPE] in [ROOM_NAME] such as 'turn on', 'turn off', 'set brightness to [VALUE]', and 'set temperature to [VALUE]'. Provide the necessary code and instructions for setting up the skill and connecting it to the MQTT broker.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:34.736266Z",
+    "http_status": 200,
+    "content_hash": "21a33837f0563e4f939555cd2a3923bc9f045454b484dd6eab2195041b8f096d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\alexa-iot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\alexa-iot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "alexa-iot MQTT-based home automation skill",
+  "short_description_vi": "An Alexa skills kit that converts custom voice commands into MQTT messages for home automation systems deployed on AWS Lambda."
+}

@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mautic",
+  "slug": "mautic",
+  "name": "youtube-view-generator-bot",
+  "headline": "Mautic - Marketing Automation Software",
+  "short_description": "Mautic is an open-source marketing automation tool that helps marketing teams automate email campaigns, lead management, and customer segmentation. It integrates with CRM systems and other marketing tools to streamline workflows and improve customer engagement.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "mautic",
+  "install_command": "git clone https://github.com/mautic/mautic.git",
+  "source_repo_url": "https://github.com/mautic/mautic",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "digital-experience-platform",
+    "php",
+    "marketing-tools",
+    "digitalexperienceplatform",
+    "dxp",
+    "email-marketing",
+    "marketing-automation",
+    "mautic",
+    "email-marketing-automation",
+    "email-marketing-software",
+    "hacktoberfest",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "Mautic is an open-source marketing automation tool designed to help marketing teams streamline their workflows through automated email campaigns, lead management, and customer segmentation. The platform integrates with CRM systems and other marketing tools to centralize customer engagement efforts. It enables marketers to reduce manual tasks, improve targeting accuracy, and nurture leads more effectively across multiple channels. Mautic is actively maintained with regular updates and contributions from a community of developers, making it a flexible alternative to proprietary marketing automation software.\nAutomate personalized email marketing campaigns based on user behavior and preferences.\nSegment customer lists dynamically to target specific demographics with tailored content.\nIntegrate with third-party applications to synchronize marketing data and enhance campaign effectiveness.\nCreate landing pages and forms that capture leads and automate follow-up processes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mautic/mautic`",
+    "usage": "```\nSet up a Mautic automation workflow to [GOAL, e.g., 'nurture new leads who downloaded your ebook'] using the following criteria: [SEGMENTATION RULES, e.g., 'contacts with email domain @company.com and no prior purchase'] and [TRIGGER CONDITIONS, e.g., 'form submission on landing page']. Include [EMAIL TEMPLATES, e.g., '3-part drip sequence with subject lines: \"Your Free Guide\", \"Expert Tips Inside\", and \"Last Chance: Download Now\"] and [ACTIONS, e.g., 'tag contacts as \"ebook-download\" and add to CRM campaign']. Provide the step-by-step configuration for Mautic’s campaign builder.\n```\nCopy\n\n```\nHere’s a fully configured Mautic automation workflow to nurture leads who downloaded your '2024 SEO Trends' ebook. The workflow targets contacts with a @company.com email domain, no prior purchases, and a form submission on the landing page. The campaign includes a 3-part drip sequence with the following emails:\n\n**Email 1 (Sent immediately):** Subject: \"Your Free SEO Trends Guide is Here!\" \nBody: \"Hi [First Name], thank you for downloading our 2024 SEO Trends guide! Here’s a quick tip to get you started: [insert tip]. Need help? Reply to this email—we’d love to chat. [Download Now Button]\n\n**Email 2 (Sent 3 days later):** Subject: \"Expert Tips Inside Your Guide\" \nBody: \"Hi [First Name], did you know that 68% of marketers see better rankings with these tactics? Check out page 7 of your guide for our top recommendation. [View Page 7 Button]\" \n\n**Email 3 (Sent 7 days later):** Subject: \"Last Chance: Download Our Free SEO Checklist\" \nBody: \"Hi [First Name], this is your final reminder! Our free SEO checklist (worth $99) is still available. Download it now before it’s gone. [Download Checklist Button]\n\n**Actions:** Contacts are automatically tagged as \"ebook-seo-trends-download\" and added to a HubSpot CRM campaign called \"SEO Trends Nurture Series.\" The workflow also scores leads +10 points for engagement and routes high-scoring leads to the sales team after the third email.\n\n**Mautic Configuration:**\n1. **Trigger:** Form submission on the landing page (form ID: 12345).\n2. **Segment:** Contacts with @company.com domain, no prior purchases, and email verified.\n3. **Campaign:** \"SEO Trends Nurtic Series\" with the above email sequence.\n4. **Actions:** Add tags, update CRM, and score leads.\n\nThis workflow increased lead engagement by 42% in our last quarterly review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mautic#main-content",
+      "mautic#overview",
+      "mautic#setup",
+      "mautic#examples",
+      "mautic#tools",
+      "mautic#mcp",
+      "mautic#related",
+      "marketingskills",
+      "copywriting",
+      "youtube-view-generator-bot"
+    ],
+    "overview_vi": "Mautic is an open-source marketing automation tool designed to help marketing teams streamline their workflows through automated email campaigns, lead management, and customer segmentation. The platform integrates with CRM systems and other marketing tools to centralize customer engagement efforts. It enables marketers to reduce manual tasks, improve targeting accuracy, and nurture leads more effectively across multiple channels. Mautic is actively maintained with regular updates and contributions from a community of developers, making it a flexible alternative to proprietary marketing automation software.\nAutomate personalized email marketing campaigns based on user behavior and preferences.\nSegment customer lists dynamically to target specific demographics with tailored content.\nIntegrate with third-party applications to synchronize marketing data and enhance campaign effectiveness.\nCreate landing pages and forms that capture leads and automate follow-up processes.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mautic/mautic`",
+    "usage_vi": "```\nSet up a Mautic automation workflow to [GOAL, e.g., 'nurture new leads who downloaded your ebook'] using the following criteria: [SEGMENTATION RULES, e.g., 'contacts with email domain @company.com and no prior purchase'] and [TRIGGER CONDITIONS, e.g., 'form submission on landing page']. Include [EMAIL TEMPLATES, e.g., '3-part drip sequence with subject lines: \"Your Free Guide\", \"Expert Tips Inside\", and \"Last Chance: Download Now\"] and [ACTIONS, e.g., 'tag contacts as \"ebook-download\" and add to CRM campaign']. Provide the step-by-step configuration for Mautic’s campaign builder.\n```\nCopy\n\n```\nHere’s a fully configured Mautic automation workflow to nurture leads who downloaded your '2024 SEO Trends' ebook. The workflow targets contacts with a @company.com email domain, no prior purchases, and a form submission on the landing page. The campaign includes a 3-part drip sequence with the following emails:\n\n**Email 1 (Sent immediately):** Subject: \"Your Free SEO Trends Guide is Here!\" \nBody: \"Hi [First Name], thank you for downloading our 2024 SEO Trends guide! Here’s a quick tip to get you started: [insert tip]. Need help? Reply to this email—we’d love to chat. [Download Now Button]\n\n**Email 2 (Sent 3 days later):** Subject: \"Expert Tips Inside Your Guide\" \nBody: \"Hi [First Name], did you know that 68% of marketers see better rankings with these tactics? Check out page 7 of your guide for our top recommendation. [View Page 7 Button]\" \n\n**Email 3 (Sent 7 days later):** Subject: \"Last Chance: Download Our Free SEO Checklist\" \nBody: \"Hi [First Name], this is your final reminder! Our free SEO checklist (worth $99) is still available. Download it now before it’s gone. [Download Checklist Button]\n\n**Actions:** Contacts are automatically tagged as \"ebook-seo-trends-download\" and added to a HubSpot CRM campaign called \"SEO Trends Nurture Series.\" The workflow also scores leads +10 points for engagement and routes high-scoring leads to the sales team after the third email.\n\n**Mautic Configuration:**\n1. **Trigger:** Form submission on the landing page (form ID: 12345).\n2. **Segment:** Contacts with @company.com domain, no prior purchases, and email verified.\n3. **Campaign:** \"SEO Trends Nurtic Series\" with the above email sequence.\n4. **Actions:** Add tags, update CRM, and score leads.\n\nThis workflow increased lead engagement by 42% in our last quarterly review.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:29:37.393721Z",
+    "http_status": 200,
+    "content_hash": "2f6181d5e2857139547c0d13d9f3709c4206a7615cc8804dce03bc2ad44867c1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mautic.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mautic.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mautic - Marketing Automation Software",
+  "short_description_vi": "Mautic is an open-source marketing automation tool that helps marketing teams automate email campaigns, lead management, and customer segmentation. It integrates with CRM systems and other marketing tools to streamline workflows and improve customer engagement."
+}

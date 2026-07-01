@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/song-lyrics",
+  "slug": "song-lyrics",
+  "name": "netease-music-cli",
+  "headline": "Song-Lyrics: Songwriting Insights & Techniques",
+  "short_description": "The song-lyrics skill allows users to retrieve and display lyrics for songs. It is suitable for developers who want to integrate song lyrics functionality into their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "adamos486",
+  "install_command": "git clone https://github.com/adamos486/skills",
+  "source_repo_url": "https://github.com/adamos486/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "lyrics",
+    "song",
+    "music"
+  ],
+  "sections": {
+    "overview": "This skill compiles valuable insights and techniques from influential songwriters across different genres to help you enhance your lyrical compositions. It organizes songwriting knowledge by genre, covering effective lyrical techniques, storytelling approaches, and composition best practices. By studying examples of strong and weak songwriting, you'll understand what makes lyrics resonate with listeners and how to craft more compelling narratives. The skill demonstrates both exemplary songwriting—like the vivid imagery in Pink Floyd's 'Dogs' and John Prine's storytelling in 'Sam Stone'—and common pitfalls to avoid. Whether you're a beginner songwriter or experienced musician looking to refine your craft, this resource provides actionable guidance grounded in masterful song examples.\nDisplaying lyrics of any song on a website\nCreating a music app that shows lyrics\nFetching lyrics for a karaoke application\nIntegrating lyrics into a personal music assistant",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/adamos486/skills --skill song-lyrics`\n`git clone https://github.com/adamos486/skills`",
+    "usage": "```\nGive me the lyrics for the song '[SONG_TITLE]' by [ARTIST_NAME]. Include the full lyrics in a clean, readable format with proper line breaks and formatting. If the song has a chorus, bridge, or other repeating sections, highlight them clearly. If the lyrics are not available, let me know immediately and suggest alternative sources or similar songs.\n```\nCopy\n\n```\n### **Lyrics for \"Blinding Lights\" by The Weeknd**\n\n*(Verse 1)*\nI said, ooh, I'm blinded by the lights\nCan't see in the dark, but I can feel you touch\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Pre-Chorus)*\nMidnight, you knock me out, 'til the sun light\nI can't see clearly when it's in my eyes\n\n*(Chorus)*\nI said, ooh, I'm blinded by the lights\nI can't see in the dark, but I can feel you touch\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Verse 2)*\nI said, ooh, I'm blinded by the lights\nCan't stop now, I'm still in the dark\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Bridge)*\nI can't see in the dark, but I can feel you touch\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Outro)*\nI said, ooh, I'm blinded by the lights...\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "song-lyrics#main-content",
+      "song-lyrics#overview",
+      "song-lyrics#setup",
+      "song-lyrics#examples",
+      "song-lyrics#related",
+      "netease-music-cli"
+    ],
+    "overview_vi": "This skill compiles valuable insights and techniques from influential songwriters across different genres to help you enhance your lyrical compositions. It organizes songwriting knowledge by genre, covering effective lyrical techniques, storytelling approaches, and composition best practices. By studying examples of strong and weak songwriting, you'll understand what makes lyrics resonate with listeners and how to craft more compelling narratives. The skill demonstrates both exemplary songwriting—like the vivid imagery in Pink Floyd's 'Dogs' and John Prine's storytelling in 'Sam Stone'—and common pitfalls to avoid. Whether you're a beginner songwriter or experienced musician looking to refine your craft, this resource provides actionable guidance grounded in masterful song examples.\nDisplaying lyrics of any song on a website\nCreating a music app that shows lyrics\nFetching lyrics for a karaoke application\nIntegrating lyrics into a personal music assistant",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/adamos486/skills --skill song-lyrics`\n`git clone https://github.com/adamos486/skills`",
+    "usage_vi": "```\nGive me the lyrics for the song '[SONG_TITLE]' by [ARTIST_NAME]. Include the full lyrics in a clean, readable format with proper line breaks and formatting. If the song has a chorus, bridge, or other repeating sections, highlight them clearly. If the lyrics are not available, let me know immediately and suggest alternative sources or similar songs.\n```\nCopy\n\n```\n### **Lyrics for \"Blinding Lights\" by The Weeknd**\n\n*(Verse 1)*\nI said, ooh, I'm blinded by the lights\nCan't see in the dark, but I can feel you touch\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Pre-Chorus)*\nMidnight, you knock me out, 'til the sun light\nI can't see clearly when it's in my eyes\n\n*(Chorus)*\nI said, ooh, I'm blinded by the lights\nI can't see in the dark, but I can feel you touch\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Verse 2)*\nI said, ooh, I'm blinded by the lights\nCan't stop now, I'm still in the dark\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Bridge)*\nI can't see in the dark, but I can feel you touch\nI said, ooh, I'm drowning in the night\nOh, when I'm like this, you're the one I trust\n\n*(Outro)*\nI said, ooh, I'm blinded by the lights...\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:50:30.315897Z",
+    "http_status": 200,
+    "content_hash": "a3a49117e339b64118767e4bd1e9ce9637bf6a3f0c0de12b4414d3ac8e9814b6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\song-lyrics.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\song-lyrics.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Song-Lyrics: Songwriting Insights & Techniques",
+  "short_description_vi": "The song-lyrics skill allows users to retrieve and display lyrics for songs. It is suitable for developers who want to integrate song lyrics functionality into their applications."
+}

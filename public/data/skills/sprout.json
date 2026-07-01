@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sprout",
+  "slug": "sprout",
+  "name": "browser-use",
+  "headline": "Sprout - Automate Git Worktree and Docker Workflows",
+  "short_description": "Automate git worktree and Docker Compose workflows with a CLI tool. Ideal for operations teams to manage isolated development environments, generate .env files, and handle port allocation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "SecDev-Lab",
+  "install_command": "git clone https://github.com/SecDev-Lab/sprout.git",
+  "source_repo_url": "https://github.com/SecDev-Lab/sprout",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "worktree",
+    "env"
+  ],
+  "sections": {
+    "overview": "Sprout is a CLI tool designed to streamline development environment setup by automating git worktree creation and Docker Compose configuration. It automatically generates .env files from templates, intelligently allocates ports to prevent conflicts across multiple environments, and centralizes worktree management in a .sprout/ directory. The tool supports monorepo architectures with multi-service setups and handles variable templating through environment variables, user prompts, auto-port assignment, and branch name injection. Developers and operations teams benefit from faster environment provisioning, reduced configuration errors, and simplified isolation of development branches.\nCreate isolated development environments for feature branches without port conflicts\nManage multi-service monorepo development with automatic .env generation per service\nAutomate Docker Compose setup with templated configuration files\nGenerate branch-specific environment variables and service names dynamically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SecDev-Lab/sprout`",
+    "usage": "```\nCreate a new isolated development environment for [COMPANY] using Sprout. The environment should be based on the [BRANCH] branch of the [REPOSITORY] repository. The environment should use the [DOCKER_COMPOSE_FILE] Docker Compose file and the [ENVIRONMENT_NAME] environment name. The environment should be created in the [WORKTREE_DIRECTORY] directory.\n```\nCopy\n\n```\n```markdown\n# Sprout Environment Creation Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sprout#main-content",
+      "sprout#overview",
+      "sprout#setup",
+      "sprout#examples",
+      "sprout#tools",
+      "sprout#mcp",
+      "sprout#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sprout is a CLI tool designed to streamline development environment setup by automating git worktree creation and Docker Compose configuration. It automatically generates .env files from templates, intelligently allocates ports to prevent conflicts across multiple environments, and centralizes worktree management in a .sprout/ directory. The tool supports monorepo architectures with multi-service setups and handles variable templating through environment variables, user prompts, auto-port assignment, and branch name injection. Developers and operations teams benefit from faster environment provisioning, reduced configuration errors, and simplified isolation of development branches.\nCreate isolated development environments for feature branches without port conflicts\nManage multi-service monorepo development with automatic .env generation per service\nAutomate Docker Compose setup with templated configuration files\nGenerate branch-specific environment variables and service names dynamically",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SecDev-Lab/sprout`",
+    "usage_vi": "```\nCreate a new isolated development environment for [COMPANY] using Sprout. The environment should be based on the [BRANCH] branch of the [REPOSITORY] repository. The environment should use the [DOCKER_COMPOSE_FILE] Docker Compose file and the [ENVIRONMENT_NAME] environment name. The environment should be created in the [WORKTREE_DIRECTORY] directory.\n```\nCopy\n\n```\n```markdown\n# Sprout Environment Creation Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:21:28.543653Z",
+    "http_status": 200,
+    "content_hash": "76b5a11a0fd31a232defc860b3c8d430be5ab1d39ddd1451c24a229b56faac9d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sprout.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\sprout.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Sprout - Automate Git Worktree and Docker Workflows",
+  "short_description_vi": "Automate git worktree and Docker Compose workflows with a CLI tool. Ideal for operations teams to manage isolated development environments, generate .env files, and handle port allocation."
+}

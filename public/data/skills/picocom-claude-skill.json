@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/picocom-claude-skill",
+  "slug": "picocom-claude-skill",
+  "name": "browser-use",
+  "headline": "Picocom Claude Skill - IoT UART Console Interaction",
+  "short_description": "A Claude Code skill for using picocom to interact with IoT device UART consoles. Enables device enumeration, vulnerability discovery, bootloader manipulation, and root shell access. Ideal for penetration testing operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "BrownFineSecurity",
+  "install_command": "git clone https://github.com/BrownFineSecurity/picocom-claude-skill.git",
+  "source_repo_url": "https://github.com/BrownFineSecurity/picocom-claude-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill enables Claude to interact with IoT device UART consoles through picocom and a custom Python serial helper script for reliable communication. It supports device enumeration, vulnerability discovery, bootloader manipulation, privilege escalation, firmware extraction, and persistence establishment on embedded systems. The skill provides guidance on connection setup, console state detection, interactive command execution, and common IoT exploitation scenarios including direct root shell access, login bypass, U-Boot bootloader manipulation, and shell escape techniques. All serial activity is logged for real-time monitoring and analysis during penetration testing operations.\nEnumerate system information from IoT devices connected via USB-to-serial adapters\nManipulate U-Boot bootloader parameters to gain unauthorized root shell access\nExtract firmware from embedded Linux devices for offline security analysis\nDiscover and exploit privilege escalation vulnerabilities on IoT systems",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BrownFineSecurity/picocom-claude-skill`",
+    "usage": "```\nI'm using the picocom-claude-skill to interact with a [DEVICE_MODEL] in the [INDUSTRY] sector. Here's the UART connection details: [BAUD_RATE], [PARITY], [DATA_BITS], [STOP_BITS]. I need to [TASK: enumerate devices/vulnerability discovery/bootloader manipulation/root shell access]. Can you guide me through the process?\n```\nCopy\n\n```\n# IoT Device UART Interaction Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "picocom-claude-skill#main-content",
+      "picocom-claude-skill#overview",
+      "picocom-claude-skill#setup",
+      "picocom-claude-skill#examples",
+      "picocom-claude-skill#tools",
+      "picocom-claude-skill#mcp",
+      "picocom-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill enables Claude to interact with IoT device UART consoles through picocom and a custom Python serial helper script for reliable communication. It supports device enumeration, vulnerability discovery, bootloader manipulation, privilege escalation, firmware extraction, and persistence establishment on embedded systems. The skill provides guidance on connection setup, console state detection, interactive command execution, and common IoT exploitation scenarios including direct root shell access, login bypass, U-Boot bootloader manipulation, and shell escape techniques. All serial activity is logged for real-time monitoring and analysis during penetration testing operations.\nEnumerate system information from IoT devices connected via USB-to-serial adapters\nManipulate U-Boot bootloader parameters to gain unauthorized root shell access\nExtract firmware from embedded Linux devices for offline security analysis\nDiscover and exploit privilege escalation vulnerabilities on IoT systems",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BrownFineSecurity/picocom-claude-skill`",
+    "usage_vi": "```\nI'm using the picocom-claude-skill to interact with a [DEVICE_MODEL] in the [INDUSTRY] sector. Here's the UART connection details: [BAUD_RATE], [PARITY], [DATA_BITS], [STOP_BITS]. I need to [TASK: enumerate devices/vulnerability discovery/bootloader manipulation/root shell access]. Can you guide me through the process?\n```\nCopy\n\n```\n# IoT Device UART Interaction Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:29:54.777871Z",
+    "http_status": 200,
+    "content_hash": "d76bdda31e0c07f67dd609b5fee1b741a971ddb24f73356fba24bc902b0cd856",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\picocom-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\picocom-claude-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Picocom Claude Skill - IoT UART Console Interaction",
+  "short_description_vi": "A Claude Code skill for using picocom to interact with IoT device UART consoles. Enables device enumeration, vulnerability discovery, bootloader manipulation, and root shell access. Ideal for penetration testing operations."
+}

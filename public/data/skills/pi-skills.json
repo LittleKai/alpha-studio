@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/pi-skills",
+  "slug": "pi-skills",
+  "name": "browser-use",
+  "headline": "pi-skills - Automate Coding Tasks",
+  "short_description": "Skills for pi coding agent enable automation of code generation, debugging, and refactoring tasks. Compatible with Claude Code and Codex CLI, it benefits developers and operations teams by streamlining workflows and integrating with existing tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "badlogic",
+  "install_command": "git clone https://github.com/badlogic/pi-skills.git",
+  "source_repo_url": "https://github.com/badlogic/pi-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "pi-skills is a collection of extensible skills designed for pi-coding-agent, enabling integration with Claude Code, Codex CLI, Amp, and Droid. The skill collection includes tools for web search (Brave Search), browser automation, Google Calendar management, Google Drive operations, Gmail integration, and media transcription capabilities. These skills allow AI agents to interact with external services and automate complex workflows across productivity and development platforms. Developers and teams can leverage these skills to streamline multi-tool workflows and expand agent capabilities beyond code generation.\nIntegrating web search into AI agent workflows\nAutomating Google Calendar and Gmail interactions\nManaging Google Drive files and folders programmatically\nBrowser automation for web-based tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/badlogic/pi-skills`",
+    "usage": "```\nAct as a pi coding agent to automate the following task: [TASK_DESCRIPTION]. Use [PROGRAMMING_LANGUAGE] and follow these constraints: [CONSTRAINTS]. Generate the code with clear comments and error handling. If debugging is needed, analyze the error message: [ERROR_MESSAGE] and suggest fixes. For refactoring, optimize the code for [OPTIMIZATION_GOAL]. Return the final output in a code block.\n```\nCopy\n\n```\n```python\n# Automated code generation for a REST API endpoint to fetch user data\n# Constraints: Must use FastAPI, include rate limiting, and validate JWT tokens\nfrom fastapi import FastAPI, Depends, HTTPException, Request\nfrom fastapi.security import OAuth2PasswordBearer\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom slowapi import Limiter\nfrom slowapi.util import get_remote_address\nfrom slowapi.errors import RateLimitExceeded\nimport jwt\nfrom datetime import datetime, timedelta\n\napp = FastAPI()\nlimiter = Limiter(key_func=get_remote_address)\napp.state.limiter = limiter\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n\nSECRET_KEY = \"your-secret-key-here\"\nALGORITHM = \"HS256\"\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n\n# Mock database\nusers_db = {\n    \"user1\": {\"username\": \"admin\", \"password\": \"hashedpassword\", \"role\": \"admin\"},\n    \"user2\": {\"username\": \"editor\", \"password\": \"hashedpassword\", \"role\": \"editor\"}\n}\n\n@app.get(\"/users/{user_id}\")\n@limiter.limit(\"10/minute\")\nasync def get_user(user_id: int, request: Request, token: str = Depends(oauth2_scheme)):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        username: str = payload.get(\"sub\")\n        if username is None:\n            raise HTTPException(status_code=401, detail=\"Invalid authentication credentials\")\n        user = users_db.get(f\"user{user_id}\")\n        if not user:\n            raise HTTPException(status_code=404, detail=\"User not found\")\n        return {\"user_id\": user_id, \"username\": user[\"username\"], \"role\": user[\"role\"]}\n    except jwt.ExpiredSignatureError:\n        raise HTTPException(status_code=401, detail=\"Token has expired\")\n    except jwt.InvalidTokenError:\n        raise HTTPException(status_code=401, detail=\"Invalid token\")\n    except RateLimitExceeded:\n        raise HTTPException(status_code=429, detail=\"Too many requests\")\n\n# Error handling for invalid routes\n@app.exception_handler(HTTPException)\nasync def http_exception_handler(request, exc):\n    return JSONResponse(\n        status_code=exc.status_code,\n        content={\"message\": exc.detail},\n    )\n```\n\nThis code generates a secure FastAPI endpoint with JWT authentication, rate limiting, and proper error handling. The agent automatically includes best practices like CORS middleware, dependency injection for authentication, and structured error responses. The mock database simulates user data retrieval while the actual implementation would integrate with a real database like PostgreSQL.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "pi-skills#main-content",
+      "pi-skills#overview",
+      "pi-skills#setup",
+      "pi-skills#examples",
+      "pi-skills#tools",
+      "pi-skills#mcp",
+      "pi-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "pi-skills is a collection of extensible skills designed for pi-coding-agent, enabling integration with Claude Code, Codex CLI, Amp, and Droid. The skill collection includes tools for web search (Brave Search), browser automation, Google Calendar management, Google Drive operations, Gmail integration, and media transcription capabilities. These skills allow AI agents to interact with external services and automate complex workflows across productivity and development platforms. Developers and teams can leverage these skills to streamline multi-tool workflows and expand agent capabilities beyond code generation.\nIntegrating web search into AI agent workflows\nAutomating Google Calendar and Gmail interactions\nManaging Google Drive files and folders programmatically\nBrowser automation for web-based tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/badlogic/pi-skills`",
+    "usage_vi": "```\nAct as a pi coding agent to automate the following task: [TASK_DESCRIPTION]. Use [PROGRAMMING_LANGUAGE] and follow these constraints: [CONSTRAINTS]. Generate the code with clear comments and error handling. If debugging is needed, analyze the error message: [ERROR_MESSAGE] and suggest fixes. For refactoring, optimize the code for [OPTIMIZATION_GOAL]. Return the final output in a code block.\n```\nCopy\n\n```\n```python\n# Automated code generation for a REST API endpoint to fetch user data\n# Constraints: Must use FastAPI, include rate limiting, and validate JWT tokens\nfrom fastapi import FastAPI, Depends, HTTPException, Request\nfrom fastapi.security import OAuth2PasswordBearer\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom slowapi import Limiter\nfrom slowapi.util import get_remote_address\nfrom slowapi.errors import RateLimitExceeded\nimport jwt\nfrom datetime import datetime, timedelta\n\napp = FastAPI()\nlimiter = Limiter(key_func=get_remote_address)\napp.state.limiter = limiter\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n\nSECRET_KEY = \"your-secret-key-here\"\nALGORITHM = \"HS256\"\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n\n# Mock database\nusers_db = {\n    \"user1\": {\"username\": \"admin\", \"password\": \"hashedpassword\", \"role\": \"admin\"},\n    \"user2\": {\"username\": \"editor\", \"password\": \"hashedpassword\", \"role\": \"editor\"}\n}\n\n@app.get(\"/users/{user_id}\")\n@limiter.limit(\"10/minute\")\nasync def get_user(user_id: int, request: Request, token: str = Depends(oauth2_scheme)):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        username: str = payload.get(\"sub\")\n        if username is None:\n            raise HTTPException(status_code=401, detail=\"Invalid authentication credentials\")\n        user = users_db.get(f\"user{user_id}\")\n        if not user:\n            raise HTTPException(status_code=404, detail=\"User not found\")\n        return {\"user_id\": user_id, \"username\": user[\"username\"], \"role\": user[\"role\"]}\n    except jwt.ExpiredSignatureError:\n        raise HTTPException(status_code=401, detail=\"Token has expired\")\n    except jwt.InvalidTokenError:\n        raise HTTPException(status_code=401, detail=\"Invalid token\")\n    except RateLimitExceeded:\n        raise HTTPException(status_code=429, detail=\"Too many requests\")\n\n# Error handling for invalid routes\n@app.exception_handler(HTTPException)\nasync def http_exception_handler(request, exc):\n    return JSONResponse(\n        status_code=exc.status_code,\n        content={\"message\": exc.detail},\n    )\n```\n\nThis code generates a secure FastAPI endpoint with JWT authentication, rate limiting, and proper error handling. The agent automatically includes best practices like CORS middleware, dependency injection for authentication, and structured error responses. The mock database simulates user data retrieval while the actual implementation would integrate with a real database like PostgreSQL.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:33.305475Z",
+    "http_status": 200,
+    "content_hash": "9d9c1af0217bc5d13a0b3def50f59260100854d14a0b7aac8d9f7e2e14e0aae8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pi-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\pi-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "pi-skills - Automate Coding Tasks",
+  "short_description_vi": "Skills for pi coding agent enable automation of code generation, debugging, and refactoring tasks. Compatible with Claude Code and Codex CLI, it benefits developers and operations teams by streamlining workflows and integrating with existing tools."
+}

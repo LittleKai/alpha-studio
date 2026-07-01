@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/trading-signals",
+  "slug": "trading-signals",
+  "name": "Commodities Quote",
+  "headline": "Trading Signals: Multi-Asset Analysis & Regime",
+  "short_description": "This skill provides trading signals using a multi-asset analysis approach, integrating market regimes and asset classes. It's designed for traders looking for structured entry and risk management strategies.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "scientiacapital",
+  "install_command": "git clone https://github.com/scientiacapital/skills",
+  "source_repo_url": "https://github.com/scientiacapital/skills",
+  "works_with": [
+    "Windsurf",
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "signals",
+    "finance",
+    "trading"
+  ],
+  "sections": {
+    "overview": "The trading-signals skill delivers actionable trading signals by analyzing multiple asset classes through five technical analysis methodologies and 25+ options strategies. It integrates market regime detection to identify prevailing market conditions and help traders make informed entry and exit decisions. The skill is designed for traders who need structured, data-driven approaches to position management and risk control. By combining regime analysis with asset-class-specific strategies, it supports systematic trading across equities, options, and other markets. Use this skill to generate signals that incorporate both technical patterns and broader market context.\nIdentifying market regimes to inform trading strategies\nApplying risk management techniques for position sizing\nGenerating educational content explaining trading signals",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/scientiacapital/skills --skill trading-signals`\n`git clone https://github.com/scientiacapital/skills`",
+    "usage": "```\nGenerate trading signals for [ASSET_CLASS] in [MARKET_REGIME] using multi-asset analysis. Include entry points, stop-loss levels, and take-profit targets based on [TECHNICAL_INDICATOR] and [FUNDAMENTAL_DATA]. Focus on risk management with a [POSITION_SIZE] allocation. Use [TIMEFRAME] data for [COMPANY] in [INDUSTRY].\n```\nCopy\n\n```\n### Trading Signals Report: NVIDIA (NVDA) - Tech Sector\n**Market Regime:** Bullish (Strong uptrend, RSI > 70)\n\n#### **Signal 1: Long Entry - Breakout Strategy**\n- **Asset:** NVIDIA Corporation (NVDA)\n- **Entry:** $925 (Breakout above $920 resistance)\n- **Stop-Loss:** $900 (-2.7%)\n- **Take-Profit 1:** $950 (+3.2%)\n- **Take-Profit 2:** $980 (+6.0%)\n- **Position Size:** 2% of portfolio\n- **Timeframe:** Daily (Confirmed on 4H chart)\n\n#### **Signal 2: Short Entry - Mean Reversion**\n- **Asset:** SPDR S&P 500 ETF (SPY)\n- **Entry:** $520 (Overbought RSI > 75)\n- **Stop-Loss:** $525 (+1.0%)\n- **Take-Profit 1:** $510 (-1.9%)\n- **Take-Profit 2:** $500 (-3.8%)\n- **Position Size:** 1.5% of portfolio\n\n#### **Risk Notes:**\n- Volatility: High (VIX = 22)\n- Correlation Risk: Tech sector overbought (Nasdaq RSI = 78)\n- Macro Risk: Fed meeting in 3 days (potential volatility spike)\n\n#### **Next Steps:**\n1. Set alerts for $920 support and $925 resistance levels\n2. Monitor SPY for sector rotation signals\n3. Adjust stop-loss to breakeven once NVDA reaches $950\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "trading-signals#main-content",
+      "trading-signals#overview",
+      "trading-signals#setup",
+      "trading-signals#examples",
+      "trading-signals#tools",
+      "trading-signals#mcp",
+      "trading-signals#related",
+      "tushare",
+      "alva",
+      "commodities-quote"
+    ],
+    "overview_vi": "The trading-signals skill delivers actionable trading signals by analyzing multiple asset classes through five technical analysis methodologies and 25+ options strategies. It integrates market regime detection to identify prevailing market conditions and help traders make informed entry and exit decisions. The skill is designed for traders who need structured, data-driven approaches to position management and risk control. By combining regime analysis with asset-class-specific strategies, it supports systematic trading across equities, options, and other markets. Use this skill to generate signals that incorporate both technical patterns and broader market context.\nIdentifying market regimes to inform trading strategies\nApplying risk management techniques for position sizing\nGenerating educational content explaining trading signals",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/scientiacapital/skills --skill trading-signals`\n`git clone https://github.com/scientiacapital/skills`",
+    "usage_vi": "```\nGenerate trading signals for [ASSET_CLASS] in [MARKET_REGIME] using multi-asset analysis. Include entry points, stop-loss levels, and take-profit targets based on [TECHNICAL_INDICATOR] and [FUNDAMENTAL_DATA]. Focus on risk management with a [POSITION_SIZE] allocation. Use [TIMEFRAME] data for [COMPANY] in [INDUSTRY].\n```\nCopy\n\n```\n### Trading Signals Report: NVIDIA (NVDA) - Tech Sector\n**Market Regime:** Bullish (Strong uptrend, RSI > 70)\n\n#### **Signal 1: Long Entry - Breakout Strategy**\n- **Asset:** NVIDIA Corporation (NVDA)\n- **Entry:** $925 (Breakout above $920 resistance)\n- **Stop-Loss:** $900 (-2.7%)\n- **Take-Profit 1:** $950 (+3.2%)\n- **Take-Profit 2:** $980 (+6.0%)\n- **Position Size:** 2% of portfolio\n- **Timeframe:** Daily (Confirmed on 4H chart)\n\n#### **Signal 2: Short Entry - Mean Reversion**\n- **Asset:** SPDR S&P 500 ETF (SPY)\n- **Entry:** $520 (Overbought RSI > 75)\n- **Stop-Loss:** $525 (+1.0%)\n- **Take-Profit 1:** $510 (-1.9%)\n- **Take-Profit 2:** $500 (-3.8%)\n- **Position Size:** 1.5% of portfolio\n\n#### **Risk Notes:**\n- Volatility: High (VIX = 22)\n- Correlation Risk: Tech sector overbought (Nasdaq RSI = 78)\n- Macro Risk: Fed meeting in 3 days (potential volatility spike)\n\n#### **Next Steps:**\n1. Set alerts for $920 support and $925 resistance levels\n2. Monitor SPY for sector rotation signals\n3. Adjust stop-loss to breakeven once NVDA reaches $950\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:41:45.854009Z",
+    "http_status": 200,
+    "content_hash": "e552223a577d05dc701d85ef4de2a3e2c04888b8cbfe4e4c1ffb94e711f373de",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\trading-signals.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\trading-signals.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Trading Signals: Multi-Asset Analysis & Regime",
+  "short_description_vi": "This skill provides trading signals using a multi-asset analysis approach, integrating market regimes and asset classes. It's designed for traders looking for structured entry and risk management strategies."
+}

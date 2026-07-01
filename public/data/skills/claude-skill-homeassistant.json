@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-homeassistant",
+  "slug": "claude-skill-homeassistant",
+  "name": "browser-use",
+  "headline": "Home Assistant management with Claude Code skill",
+  "short_description": "Claude Code skill for expert-level Home Assistant configuration management. Enables efficient deployment workflows, remote CLI access, automation verification, and Lovelace dashboard development. Ideal for operations teams managing smart home systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "komal-SkyNET",
+  "install_command": "git clone https://github.com/komal-SkyNET/claude-skill-homeassistant.git",
+  "source_repo_url": "https://github.com/komal-SkyNET/claude-skill-homeassistant",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-ai",
+    "ai-agents",
+    "home-assistant",
+    "automation"
+  ],
+  "sections": {
+    "overview": "This skill transforms Claude into a Home Assistant expert capable of managing configurations, automations, and Lovelace dashboards at an expert level. It handles rapid development workflows using scp for testing and git for version control, automatically determines when to reload versus restart, and validates configurations before deployment. The skill includes complete automation verification protocols that test automations by triggering them manually and analyzing logs for errors. For dashboard development, it provides tablet-optimized Lovelace design expertise including card type selection, Jinja2 template patterns, and responsive layouts for different screen sizes. Operations teams managing smart home systems benefit from streamlined deployment decisions and iterative debugging workflows.\nCreate and test Home Assistant automations with instant deployment and log verification\nBuild touch-friendly Lovelace dashboards optimized for tablet screens (7\", 11\", 13\")\nDebug template errors and type mismatches in automations using log analysis\nManage remote Home Assistant instances via SSH with hass-cli commands",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/komal-SkyNET/claude-skill-homeassistant`",
+    "usage": "```\nAct as a Home Assistant automation expert using Claude Code. Use the [HOME_ASSISTANT_CONFIG_PATH] directory to perform the following tasks: 1) Validate the YAML configuration files for syntax errors and best practices, 2) Generate a report of all active automations with their last trigger time and status, 3) Create a backup of the current configuration with timestamp, 4) Suggest 3 optimizations for the [SPECIFIC_AUTOMATION_NAME] automation based on energy efficiency and reliability metrics. Execute these tasks in sequence and provide a summary of findings.\n```\nCopy\n\n```\n{\"validation_report\":{\"config_path\":\"/config/configuration.yaml\",\"validation_status\":\"PASSED\",\"issues_found\":[],\"best_practice_warnings\":[{\"line\":42,\"warning\":\"Consider using 'default: []' for empty lists in YAML to avoid ambiguity\",\"suggestion\":\"Replace '[]' with 'default: []' in the automation trigger section\"}]},\"automation_status\":{\"total_automations\":18,\"active_automations\":16,\"inactive_automations\":2,\"automations\":[{\"name\":\"Evening Light Automation\",\"entity_id\":\"automation.evening_lights\",\"last_triggered\":\"2023-11-15T19:42:11.345Z\",\"status\":\"active\",\"conditions_met\":true,\"actions_executed\":124,\"last_error\":null},{\"name\":\"Energy Saver Mode\",\"entity_id\":\"automation.energy_saver\",\"last_triggered\":\"2023-11-15T14:30:00.000Z\",\"status\":\"active\",\"conditions_met\":false,\"actions_executed\":0,\"last_error\":\"Condition 'numeric_state' not met after 10s\"}]},\"backup_summary\":{\"backup_location\":\"/config/backups/2023-11-15_19-45-02_homeassistant.tar.gz\",\"backup_size\":\"2.4MB\",\"files_included\":47,\"checksum\":\"a1b2c3d4e5f6...\",\"verification\":\"Checksum matches source files\"},\"optimization_suggestions\":{\"automation_name\":\"Energy Saver Mode\",\"current_energy_savings\":\"12.5% reduction in standby power\",\"suggestions\":[{\"type\":\"timing_optimization\",\"current\":\"Triggers when power > 50W for 5 minutes\",\"suggested\":\"Change to trigger when power > 40W for 3 minutes to catch more savings opportunities\",\"estimated_savings\":\"Additional 3.2% reduction\",\"implementation\":\"Modify the automation trigger condition in configuration.yaml\"},{\"type\":\"device_grouping\",\"current\":\"Controls 12 individual devices\",\"suggested\":\"Group devices by power consumption patterns and create separate automation for high-power devices\",\"estimated_savings\":\"Additional 1.8% reduction with more precise control\",\"implementation\":\"Create new device groups in groups.yaml and modify automation logic\"},{\"type\":\"sensor_optimization\",\"current\":\"Uses single power sensor with 10-second polling\",\"suggested\":\"Implement power trend analysis with 30-second polling for more accurate detection\",\"estimated_savings\":\"Additional 2.1% reduction with better pattern matching\",\"implementation\":\"Add template sensor in configuration.yaml for power trend analysis\"}]},\"summary\":\"All validation checks passed with minor best practice recommendations. 16 of 18 automations are active and functioning properly. Backup created successfully with 47 files included. Three optimization suggestions generated for Energy Saver Mode with potential for 7.1% additional energy savings. Recommend implementing suggestions incrementally and monitoring impact over 7 days.\"}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-homeassistant#main-content",
+      "claude-skill-homeassistant#overview",
+      "claude-skill-homeassistant#setup",
+      "claude-skill-homeassistant#examples",
+      "claude-skill-homeassistant#tools",
+      "claude-skill-homeassistant#mcp",
+      "claude-skill-homeassistant#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill transforms Claude into a Home Assistant expert capable of managing configurations, automations, and Lovelace dashboards at an expert level. It handles rapid development workflows using scp for testing and git for version control, automatically determines when to reload versus restart, and validates configurations before deployment. The skill includes complete automation verification protocols that test automations by triggering them manually and analyzing logs for errors. For dashboard development, it provides tablet-optimized Lovelace design expertise including card type selection, Jinja2 template patterns, and responsive layouts for different screen sizes. Operations teams managing smart home systems benefit from streamlined deployment decisions and iterative debugging workflows.\nCreate and test Home Assistant automations with instant deployment and log verification\nBuild touch-friendly Lovelace dashboards optimized for tablet screens (7\", 11\", 13\")\nDebug template errors and type mismatches in automations using log analysis\nManage remote Home Assistant instances via SSH with hass-cli commands",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/komal-SkyNET/claude-skill-homeassistant`",
+    "usage_vi": "```\nAct as a Home Assistant automation expert using Claude Code. Use the [HOME_ASSISTANT_CONFIG_PATH] directory to perform the following tasks: 1) Validate the YAML configuration files for syntax errors and best practices, 2) Generate a report of all active automations with their last trigger time and status, 3) Create a backup of the current configuration with timestamp, 4) Suggest 3 optimizations for the [SPECIFIC_AUTOMATION_NAME] automation based on energy efficiency and reliability metrics. Execute these tasks in sequence and provide a summary of findings.\n```\nCopy\n\n```\n{\"validation_report\":{\"config_path\":\"/config/configuration.yaml\",\"validation_status\":\"PASSED\",\"issues_found\":[],\"best_practice_warnings\":[{\"line\":42,\"warning\":\"Consider using 'default: []' for empty lists in YAML to avoid ambiguity\",\"suggestion\":\"Replace '[]' with 'default: []' in the automation trigger section\"}]},\"automation_status\":{\"total_automations\":18,\"active_automations\":16,\"inactive_automations\":2,\"automations\":[{\"name\":\"Evening Light Automation\",\"entity_id\":\"automation.evening_lights\",\"last_triggered\":\"2023-11-15T19:42:11.345Z\",\"status\":\"active\",\"conditions_met\":true,\"actions_executed\":124,\"last_error\":null},{\"name\":\"Energy Saver Mode\",\"entity_id\":\"automation.energy_saver\",\"last_triggered\":\"2023-11-15T14:30:00.000Z\",\"status\":\"active\",\"conditions_met\":false,\"actions_executed\":0,\"last_error\":\"Condition 'numeric_state' not met after 10s\"}]},\"backup_summary\":{\"backup_location\":\"/config/backups/2023-11-15_19-45-02_homeassistant.tar.gz\",\"backup_size\":\"2.4MB\",\"files_included\":47,\"checksum\":\"a1b2c3d4e5f6...\",\"verification\":\"Checksum matches source files\"},\"optimization_suggestions\":{\"automation_name\":\"Energy Saver Mode\",\"current_energy_savings\":\"12.5% reduction in standby power\",\"suggestions\":[{\"type\":\"timing_optimization\",\"current\":\"Triggers when power > 50W for 5 minutes\",\"suggested\":\"Change to trigger when power > 40W for 3 minutes to catch more savings opportunities\",\"estimated_savings\":\"Additional 3.2% reduction\",\"implementation\":\"Modify the automation trigger condition in configuration.yaml\"},{\"type\":\"device_grouping\",\"current\":\"Controls 12 individual devices\",\"suggested\":\"Group devices by power consumption patterns and create separate automation for high-power devices\",\"estimated_savings\":\"Additional 1.8% reduction with more precise control\",\"implementation\":\"Create new device groups in groups.yaml and modify automation logic\"},{\"type\":\"sensor_optimization\",\"current\":\"Uses single power sensor with 10-second polling\",\"suggested\":\"Implement power trend analysis with 30-second polling for more accurate detection\",\"estimated_savings\":\"Additional 2.1% reduction with better pattern matching\",\"implementation\":\"Add template sensor in configuration.yaml for power trend analysis\"}]},\"summary\":\"All validation checks passed with minor best practice recommendations. 16 of 18 automations are active and functioning properly. Backup created successfully with 47 files included. Three optimization suggestions generated for Energy Saver Mode with potential for 7.1% additional energy savings. Recommend implementing suggestions incrementally and monitoring impact over 7 days.\"}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:39:54.269275Z",
+    "http_status": 200,
+    "content_hash": "33d3ec06f1bf597c4d0529285ddd123a9cb98cec5e8cae4331facdcfd55af312",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-homeassistant.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skill-homeassistant.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Home Assistant management with Claude Code skill",
+  "short_description_vi": "Claude Code skill for expert-level Home Assistant configuration management. Enables efficient deployment workflows, remote CLI access, automation verification, and Lovelace dashboard development. Ideal for operations teams managing smart home systems."
+}

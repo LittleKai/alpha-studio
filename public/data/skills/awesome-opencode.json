@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-opencode",
+  "slug": "awesome-opencode",
+  "name": "Awesome Opencode",
+  "headline": "awesome opencode resources for innovative projects",
+  "short_description": "A curated list of plugins, themes, agents, and resources for opencode.ai. Helps developers and operations teams quickly find and integrate tools to streamline workflows and enhance productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "awesome-opencode",
+  "install_command": "git clone https://github.com/awesome-opencode/awesome-opencode.git",
+  "source_repo_url": "https://github.com/awesome-opencode/awesome-opencode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "awesome-opencode is a community-maintained directory of plugins, themes, agents, and resources built for the opencode.ai platform. The project maintains a structured registry with YAML-based entries and JSON exports, making it easy for developers and operations teams to discover and integrate tools. The repository includes automation workflows via GitHub Actions that keep the registry synchronized across multiple formats. Developers can browse categorized resources, access example configurations, and contribute new tools following the established schema. The curated approach helps teams quickly identify vetted solutions to enhance productivity and streamline development workflows.\nIntegrate plugins to automate code generation and enhance productivity in terminal-based coding.\nUtilize themes to customize the look and feel of the Opencode environment for better user experience.\nImplement agents that can handle complex coding tasks autonomously, reducing manual effort.\nLeverage resources from the curated list to quickly find solutions and best practices for common coding challenges.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/awesome-opencode/awesome-opencode`",
+    "usage": "```\nGenerate a curated list of [NUMBER] opencode.ai plugins, themes, agents, or resources tailored for [USE_CASE]. Include a brief description and key features for each item. Prioritize tools that integrate seamlessly with [TOOL_NAME] or solve [SPECIFIC_PROBLEM].\n```\nCopy\n\n```\nHere’s a curated list of 5 opencode.ai plugins tailored for Python backend development teams looking to automate testing and debugging workflows:\n\n1. **AutoTest-Genius**\n   - **Description**: An AI-powered test generator that automatically creates unit and integration tests for Python codebases.\n   - **Key Features**: Supports pytest and unittest frameworks, integrates with GitHub Actions, and generates edge-case tests based on code coverage analysis.\n   - **Best For**: Teams struggling with manual test writing or low test coverage.\n\n2. **DebugPro**\n   - **Description**: A real-time debugging agent that identifies and suggests fixes for runtime errors in Python applications.\n   - **Key Features**: Works with Django and Flask, provides step-by-step debugging guides, and logs error patterns for future reference.\n   - **Best For**: Developers spending too much time debugging production issues.\n\n3. **CodeOptimizer**\n   - **Description**: Analyzes Python code for performance bottlenecks and suggests optimizations.\n   - **Key Features**: Highlights memory leaks, inefficient loops, and suggests refactoring opportunities. Compatible with VS Code and PyCharm.\n   - **Best For**: Teams optimizing legacy Python applications.\n\n4. **DocuBot**\n   - **Description**: Automatically generates and updates API documentation from Python docstrings and code comments.\n   - **Key Features**: Supports Sphinx and MkDocs, integrates with CI/CD pipelines, and ensures documentation stays in sync with code changes.\n   - **Best For**: Teams with outdated or incomplete documentation.\n\n5. **EnvSync**\n   - **Description**: A configuration management tool that synchronizes environment variables across development, staging, and production environments.\n   - **Key Features**: Supports AWS, GCP, and Azure, provides version control for environment files, and detects misconfigurations.\n   - **Best For**: Teams managing complex multi-environment deployments.\n\n**Pro Tip**: Combine AutoTest-Genius with DebugPro to create a full testing and debugging pipeline in your CI/CD workflow. Start with CodeOptimizer if you’re working on a performance-critical project.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-opencode#main-content",
+      "awesome-opencode#overview",
+      "awesome-opencode#setup",
+      "awesome-opencode#examples",
+      "awesome-opencode#tools",
+      "awesome-opencode#mcp",
+      "awesome-opencode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "awesome-opencode là thư mục do cộng đồng duy trì, bao gồm các plugin, theme, agent và tài nguyên được xây dựng cho nền tảng opencode.ai. Dự án duy trì một registry có cấu trúc với các mục nhập dựa trên YAML và xuất dữ liệu dạng JSON, giúp các lập trình viên và đội ngũ vận hành dễ dàng tìm kiếm cũng như tích hợp công cụ. Repository này tích hợp các quy trình tự động hóa (workflow) qua GitHub Actions để giữ cho registry luôn đồng bộ trên nhiều định dạng khác nhau. Các lập trình viên có thể duyệt qua tài nguyên đã được phân loại, truy cập cấu hình mẫu và đóng góp công cụ mới theo schema đã thiết lập sẵn. Cách tiếp cận có chọn lọc này giúp các đội ngũ nhanh chóng xác định các giải pháp đã được kiểm chứng để nâng cao năng suất và tối ưu hóa quy trình phát triển.\nTích hợp các plugin để tự động hóa việc tạo mã (code generation) và nâng cao năng suất khi lập trình trên terminal.\nSử dụng các theme để tùy chỉnh giao diện của môi trường Opencode nhằm mang lại trải nghiệm người dùng tốt hơn.\nTriển khai các agent có khả năng xử lý tự động các tác vụ lập trình phức tạp, giảm thiểu nỗ lực thủ công.\nTận dụng tài nguyên từ danh sách chọn lọc để nhanh chóng tìm ra giải pháp và các thực tiễn tốt nhất (best practices) cho các thách thức lập trình phổ biến.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/awesome-opencode/awesome-opencode`",
+    "usage_vi": "```\nTạo danh sách chọn lọc gồm [NUMBER] plugin, theme, agent hoặc tài nguyên opencode.ai được thiết kế riêng cho [USE_CASE]. Đính kèm mô tả ngắn gọn và các tính năng chính của từng mục. Ưu tiên các công cụ tích hợp mượt mà với [TOOL_NAME] hoặc giải quyết [SPECIFIC_PROBLEM].\n```\nCopy\n\n```\nDưới đây là danh sách chọn lọc gồm 5 plugin opencode.ai được thiết kế riêng cho các đội ngũ phát triển backend Python đang muốn tự động hóa quy trình kiểm thử (testing) và gỡ lỗi (debugging):\n\n1. **AutoTest-Genius**\n   - **Mô tả**: Trình tạo kiểm thử tự động bằng AI, tự động tạo unit test và integration test cho các codebase Python.\n   - **Tính năng chính**: Hỗ trợ framework pytest và unittest, tích hợp với GitHub Actions, và tự động tạo các bài test cho trường hợp biên (edge-case) dựa trên phân tích độ bao phủ mã nguồn (code coverage).\n   - **Phù hợp nhất cho**: Các đội ngũ gặp khó khăn trong việc viết test thủ công hoặc có độ bao phủ test thấp.\n\n2. **DebugPro**\n   - **Mô tả**: Một agent gỡ lỗi thời gian thực giúp phát hiện và đề xuất giải pháp khắc phục các lỗi runtime trong ứng dụng Python.\n   - **Tính năng chính**: Hoạt động với Django và Flask, cung cấp hướng dẫn gỡ lỗi từng bước, và ghi nhật ký (log) các mẫu lỗi để tham khảo sau này.\n   - **Phù hợp nhất cho**: Lập trình viên đang mất quá nhiều thời gian để gỡ lỗi trên môi trường production.\n\n3. **CodeOptimizer**\n   - **Mô tả**: Phân tích mã nguồn Python để tìm các điểm nghẽn hiệu năng (performance bottlenecks) và đề xuất tối ưu hóa.\n   - **Tính năng chính**: Cảnh báo rò rỉ bộ nhớ (memory leaks), các vòng lặp kém hiệu quả, và gợi ý cơ hội tái cấu trúc mã nguồn (refactoring). Tương thích với VS Code và PyCharm.\n   - **Phù hợp nhất cho**: Các đội ngũ đang tối ưu hóa các ứng dụng Python cũ (legacy).\n\n4. **DocuBot**\n   - **Mô tả**: Tự động tạo và cập nhật tài liệu API từ docstring và comment trong mã nguồn Python.\n   - **Tính năng chính**: Hỗ trợ Sphinx và MkDocs, tích hợp với pipeline CI/CD, và đảm bảo tài liệu luôn đồng bộ với các thay đổi của mã nguồn.\n   - **Phù hợp nhất cho**: Các đội ngũ có tài liệu bị lỗi thời hoặc không đầy đủ.\n\n5. **EnvSync**\n   - **Mô tả**: Công cụ quản lý cấu hình giúp đồng bộ hóa các biến môi trường (environment variables) trên các môi trường phát triển (development), thử nghiệm (staging) và vận hành thực tế (production).\n   - **Tính năng chính**: Hỗ trợ AWS, GCP và Azure, cung cấp kiểm soát phiên bản (version control) cho các file cấu hình môi trường, và phát hiện cấu hình sai.\n   - **Phù hợp nhất cho**: Các đội ngũ quản lý việc triển khai trên nhiều môi trường phức tạp.\n\n**Mẹo hữu ích**: Kết hợp AutoTest-Genius với DebugPro để tạo ra một pipeline kiểm thử và gỡ lỗi toàn diện trong workflow CI/CD của bạn. Hãy bắt đầu với CodeOptimizer nếu bạn đang làm việc trong một dự án đòi hỏi khắt khe về hiệu năng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:22:30.033000Z",
+    "http_status": 200,
+    "content_hash": "b2d072affd9eb3786d18f9b4dfc31acb6e51f2c66f20dc01ea18a08ba7134e95",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-opencode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-opencode.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tổng hợp tài nguyên opencode xuất sắc dành cho các dự án sáng tạo",
+  "short_description_vi": "Danh sách chọn lọc các plugin, theme, agent và tài nguyên dành cho opencode.ai. Giúp lập trình viên và đội ngũ vận hành nhanh chóng tìm kiếm cũng như tích hợp các công cụ nhằm tối ưu hóa quy trình làm việc và nâng cao năng suất."
+}

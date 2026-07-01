@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-mcp",
+  "slug": "claude-skills-mcp",
+  "name": "browser-use",
+  "headline": "claude skills mcp for efficient searches",
+  "short_description": "Claude Skills MCP server enables vector search for Claude Agent Skills. Operations teams use it to quickly find and retrieve specific skills for automation tasks. It connects to Claude agents and integrates with existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "K-Dense-AI",
+  "install_command": "git clone https://github.com/K-Dense-AI/claude-skills-mcp.git",
+  "source_repo_url": "https://github.com/K-Dense-AI/claude-skills-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Skills MCP Server was a Model Context Protocol server that provided intelligent vector-based search for discovering Claude Agent Skills. It implemented progressive disclosure architecture to make specialized skills available to any MCP-compatible AI application, including Cursor and other coding assistants. The server supported semantic search across curated skill repositories from Anthropic and K-Dense AI, with a two-package architecture designed to avoid timeout issues. This project is no longer maintained, as Agent Skills have been natively adopted by all major AI platforms including Cursor, Claude Code, and Copilot.\nFinding relevant skills for specific automation tasks using natural language descriptions\nDiscovering specialized scientific skills for bioinformatics and cheminformatics workflows\nIntegrating Claude Agent Skills with non-Claude AI coding assistants via MCP\nBrowsing and exploring available skills across multiple curated repositories",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/K-Dense-AI/claude-skills-mcp`",
+    "usage": "```\nSearch for a Claude Skill that can [AUTOMATION_TASK]. The skill should be compatible with [WORKFLOW_TOOL]. Return the top 3 most relevant skills with a brief description of how each one could be used to accomplish this task.\n```\nCopy\n\n```\nBased on your request to automate customer onboarding, here are the top 3 relevant Claude Skills:\n\n1. **Customer Onboarding Assistant**: This skill can guide new customers through the setup process, answer common questions, and ensure all necessary steps are completed. It integrates with your CRM system to track progress and update customer records.\n\n2. **Document Generation Automation**: This skill can automatically generate onboarding documents such as welcome emails, user manuals, and compliance forms. It pulls data from your CRM and formats it into professional documents.\n\n3. **Workflow Automation**: This skill can automate repetitive tasks such as sending follow-up emails, scheduling training sessions, and updating customer statuses. It integrates with your email and calendar systems to streamline the onboarding process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-mcp#main-content",
+      "claude-skills-mcp#overview",
+      "claude-skills-mcp#setup",
+      "claude-skills-mcp#examples",
+      "claude-skills-mcp#tools",
+      "claude-skills-mcp#mcp",
+      "claude-skills-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skills MCP Server was a Model Context Protocol server that provided intelligent vector-based search for discovering Claude Agent Skills. It implemented progressive disclosure architecture to make specialized skills available to any MCP-compatible AI application, including Cursor and other coding assistants. The server supported semantic search across curated skill repositories from Anthropic and K-Dense AI, with a two-package architecture designed to avoid timeout issues. This project is no longer maintained, as Agent Skills have been natively adopted by all major AI platforms including Cursor, Claude Code, and Copilot.\nFinding relevant skills for specific automation tasks using natural language descriptions\nDiscovering specialized scientific skills for bioinformatics and cheminformatics workflows\nIntegrating Claude Agent Skills with non-Claude AI coding assistants via MCP\nBrowsing and exploring available skills across multiple curated repositories",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/K-Dense-AI/claude-skills-mcp`",
+    "usage_vi": "```\nSearch for a Claude Skill that can [AUTOMATION_TASK]. The skill should be compatible with [WORKFLOW_TOOL]. Return the top 3 most relevant skills with a brief description of how each one could be used to accomplish this task.\n```\nCopy\n\n```\nBased on your request to automate customer onboarding, here are the top 3 relevant Claude Skills:\n\n1. **Customer Onboarding Assistant**: This skill can guide new customers through the setup process, answer common questions, and ensure all necessary steps are completed. It integrates with your CRM system to track progress and update customer records.\n\n2. **Document Generation Automation**: This skill can automatically generate onboarding documents such as welcome emails, user manuals, and compliance forms. It pulls data from your CRM and formats it into professional documents.\n\n3. **Workflow Automation**: This skill can automate repetitive tasks such as sending follow-up emails, scheduling training sessions, and updating customer statuses. It integrates with your email and calendar systems to streamline the onboarding process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:00.875531Z",
+    "http_status": 200,
+    "content_hash": "9c60ba9876a1c02f6318c82b4084782812d8d397712f5356022595210d1b3a81",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude skills mcp for efficient searches",
+  "short_description_vi": "Claude Skills MCP server enables vector search for Claude Agent Skills. Operations teams use it to quickly find and retrieve specific skills for automation tasks. It connects to Claude agents and integrates with existing workflows."
+}

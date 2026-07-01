@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/base44-cli",
+  "slug": "base44-cli",
+  "name": "Base44 CLI",
+  "headline": "base44-cli: Base44 Project Management",
+  "short_description": "The base44-cli skill allows users to create and manage Base44 applications using command-line interface (CLI) commands. It is designed for developers working with Base44 projects to automate tasks such as project initialization, authentication, and resource management.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "base44",
+  "install_command": "git clone https://github.com/base44/skills",
+  "source_repo_url": "https://github.com/base44/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "cli-tools",
+    "base44"
+  ],
+  "sections": {
+    "overview": "The base44-cli skill extends AI coding agents like Claude Code and Cursor with command-line capabilities for Base44 development. It enables developers to initialize Base44 projects, configure resources including entities, backend functions, and AI agents, and manage deployments directly from their coding environment. This skill streamlines Base44 workflow automation by letting agents handle repetitive CLI tasks, reducing manual command entry and accelerating project setup.\nInitialize new Base44 projects.\nDeploy backend functions and manage resources.\nAuthenticate users and check session states.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/base44/skills --skill base44-cli`\n`git clone https://github.com/base44/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "base44-cli#main-content",
+      "base44-cli#overview",
+      "base44-cli#setup",
+      "base44-cli#examples",
+      "base44-cli#tools",
+      "base44-cli#related",
+      "agent-dx-cli-scale",
+      "hf-cli"
+    ],
+    "overview_vi": "Skill base44-cli mở rộng khả năng của các AI coding agent như Claude Code và Cursor bằng các tính năng dòng lệnh phục vụ cho việc phát triển Base44. Công cụ này cho phép nhà phát triển khởi tạo dự án Base44, cấu hình tài nguyên (bao gồm thực thể, backend function và AI agent) và quản lý việc triển khai trực tiếp từ môi trường lập trình của mình. Skill này giúp tối ưu hóa quy trình tự động hóa của Base44 bằng cách để các agent xử lý các tác vụ CLI lặp đi lặp lại, giảm thiểu việc nhập lệnh thủ công và đẩy nhanh quá trình setup dự án.\nKhởi tạo các dự án Base44 mới.\nTriển khai các backend function và quản lý tài nguyên.\nXác thực người dùng và kiểm tra trạng thái session.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/base44/skills --skill base44-cli`\n`git clone https://github.com/base44/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nVui lòng kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:55:18.721897Z",
+    "http_status": 200,
+    "content_hash": "788b47c6639162f92f1551fcf10cef4843815dc527ca1d0e41c5d1747ee5c6fb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\base44-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\base44-cli.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "base44-cli: Quản lý dự án Base44",
+  "short_description_vi": "Skill base44-cli cho phép người dùng tạo và quản lý các ứng dụng Base44 thông qua các câu lệnh giao diện dòng lệnh (CLI). Công cụ này được thiết kế dành cho các nhà phát triển làm việc với dự án Base44 nhằm tự động hóa các tác vụ như khởi tạo dự án, xác thực và quản lý tài nguyên."
+}

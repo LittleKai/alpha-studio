@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-life-assistant",
+  "slug": "claude-life-assistant",
+  "name": "browser-use",
+  "headline": "claude life assistant for autonomous cognition",
+  "short_description": "Claude Life Assistant is an AI agent that remembers everything, acts autonomously, and extends your cognition. It benefits operations teams by automating tasks, providing reminders, and offering intelligent suggestions. It connects to workflows like email management, calendar scheduling, and task automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "lout33",
+  "install_command": "git clone https://github.com/lout33/claude_life_assistant.git",
+  "source_repo_url": "https://github.com/lout33/claude_life_assistant",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "claude",
+    "assistant",
+    "ai",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Claude Life Assistant is an autonomous AI agent designed to remember information persistently and operate independently to augment your decision-making and productivity. It automates routine tasks across email management, calendar scheduling, and task tracking while providing intelligent reminders and suggestions tailored to your workflow. The system maintains continuous awareness of your priorities and commitments, enabling proactive assistance rather than reactive responses. It benefits operations teams, knowledge workers, and individuals seeking to offload cognitive overhead to an intelligent agent. The skill leverages multi-agent hierarchy patterns and thinking loops to reason through complex tasks while maintaining accessible documentation and configuration examples.\nAutomate the tracking of personal development patterns over time to identify areas for improvement.\nExecute code snippets or research tasks directly from the agent based on your current projects.\nMaintain a memory log that captures insights and breakthroughs from your interactions with the agent.\nChallenge your assumptions and blind spots in your work process by receiving direct feedback from the agent.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lout33/claude_life_assistant`",
+    "usage": "```\nAct as my Claude Life Assistant. Remember all my [PREFERENCES], [PRIORITIES], and [CONTEXT]. Automate [TASK] based on my instructions. Proactively suggest improvements for [AREA] and remind me about [DEADLINE/UPCOMING_EVENT]. Handle [SUBTASK] autonomously and report back with a summary of actions taken and next steps.\n```\nCopy\n\n```\nHere’s what happened while you were in your meeting with the product team this afternoon:\n\n**Automated Tasks Completed:**\n1. **Email Management:** Sorted through 23 new emails in your inbox. Flagged 5 high-priority messages from the marketing team about the Q3 campaign launch (due tomorrow) and archived 18 low-priority newsletters. Added a reminder to follow up with Sarah about the budget approval by EOD.\n\n2. **Calendar Optimization:** Noticed a conflict between your 3:00 PM standup and the client call with Acme Corp. Rescheduled the standup to 4:00 PM and sent a calendar update to all attendees. Also blocked 1 hour in your schedule for \"Deep Work\" tomorrow morning based on your preference for focused time.\n\n3. **Task Automation:** Processed your grocery list from the shared family app. Ordered missing items (milk, eggs, bread) via Instacart and set a reminder to pick them up at 7:00 PM. Marked the \"Pay utility bill\" task as complete after confirming the payment went through automatically via your bank app.\n\n**Proactive Suggestions:**\n- Your quarterly goals review is due in 3 days. I’ve drafted an outline based on your last update and attached it to your Notion workspace. Would you like me to schedule a 30-minute review session for tomorrow?\n- The client call with Acme Corp at 2:00 PM tomorrow is with a new stakeholder. I pulled their LinkedIn profile and recent news mentions. Key talking points: their recent Series B funding and your shared connection with their CTO. Should I send you a briefing doc before the call?\n\n**Reminders:**\n- Your sister’s birthday is in 5 days. I’ve set a reminder to buy a gift and suggested a few options based on her recent Amazon wishlist.\n- Your car’s annual inspection is due in 2 weeks. I’ve added it to your calendar and found 3 nearby service centers with availability.\n\n**Next Steps:**\n- Review the email flagged for the Q3 campaign launch and prioritize your response.\n- Approve the rescheduled standup or suggest an alternative time.\n- Let me know if you’d like to adjust any of the proactive suggestions or add new tasks to my queue.\n\n**Summary of Actions:** 7 tasks completed, 2 reminders set, 3 suggestions provided. All actions were logged in your Claude Life Assistant dashboard for review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-life-assistant#main-content",
+      "claude-life-assistant#overview",
+      "claude-life-assistant#setup",
+      "claude-life-assistant#examples",
+      "claude-life-assistant#tools",
+      "claude-life-assistant#mcp",
+      "claude-life-assistant#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Life Assistant is an autonomous AI agent designed to remember information persistently and operate independently to augment your decision-making and productivity. It automates routine tasks across email management, calendar scheduling, and task tracking while providing intelligent reminders and suggestions tailored to your workflow. The system maintains continuous awareness of your priorities and commitments, enabling proactive assistance rather than reactive responses. It benefits operations teams, knowledge workers, and individuals seeking to offload cognitive overhead to an intelligent agent. The skill leverages multi-agent hierarchy patterns and thinking loops to reason through complex tasks while maintaining accessible documentation and configuration examples.\nAutomate the tracking of personal development patterns over time to identify areas for improvement.\nExecute code snippets or research tasks directly from the agent based on your current projects.\nMaintain a memory log that captures insights and breakthroughs from your interactions with the agent.\nChallenge your assumptions and blind spots in your work process by receiving direct feedback from the agent.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lout33/claude_life_assistant`",
+    "usage_vi": "```\nAct as my Claude Life Assistant. Remember all my [PREFERENCES], [PRIORITIES], and [CONTEXT]. Automate [TASK] based on my instructions. Proactively suggest improvements for [AREA] and remind me about [DEADLINE/UPCOMING_EVENT]. Handle [SUBTASK] autonomously and report back with a summary of actions taken and next steps.\n```\nCopy\n\n```\nHere’s what happened while you were in your meeting with the product team this afternoon:\n\n**Automated Tasks Completed:**\n1. **Email Management:** Sorted through 23 new emails in your inbox. Flagged 5 high-priority messages from the marketing team about the Q3 campaign launch (due tomorrow) and archived 18 low-priority newsletters. Added a reminder to follow up with Sarah about the budget approval by EOD.\n\n2. **Calendar Optimization:** Noticed a conflict between your 3:00 PM standup and the client call with Acme Corp. Rescheduled the standup to 4:00 PM and sent a calendar update to all attendees. Also blocked 1 hour in your schedule for \"Deep Work\" tomorrow morning based on your preference for focused time.\n\n3. **Task Automation:** Processed your grocery list from the shared family app. Ordered missing items (milk, eggs, bread) via Instacart and set a reminder to pick them up at 7:00 PM. Marked the \"Pay utility bill\" task as complete after confirming the payment went through automatically via your bank app.\n\n**Proactive Suggestions:**\n- Your quarterly goals review is due in 3 days. I’ve drafted an outline based on your last update and attached it to your Notion workspace. Would you like me to schedule a 30-minute review session for tomorrow?\n- The client call with Acme Corp at 2:00 PM tomorrow is with a new stakeholder. I pulled their LinkedIn profile and recent news mentions. Key talking points: their recent Series B funding and your shared connection with their CTO. Should I send you a briefing doc before the call?\n\n**Reminders:**\n- Your sister’s birthday is in 5 days. I’ve set a reminder to buy a gift and suggested a few options based on her recent Amazon wishlist.\n- Your car’s annual inspection is due in 2 weeks. I’ve added it to your calendar and found 3 nearby service centers with availability.\n\n**Next Steps:**\n- Review the email flagged for the Q3 campaign launch and prioritize your response.\n- Approve the rescheduled standup or suggest an alternative time.\n- Let me know if you’d like to adjust any of the proactive suggestions or add new tasks to my queue.\n\n**Summary of Actions:** 7 tasks completed, 2 reminders set, 3 suggestions provided. All actions were logged in your Claude Life Assistant dashboard for review.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:55:29.526190Z",
+    "http_status": 200,
+    "content_hash": "541daf498ddbec5e306c9fdd517138bba1f4e993c7dc1609775c218e634930ff",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-life-assistant.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-life-assistant.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude life assistant for autonomous cognition",
+  "short_description_vi": "Claude Life Assistant is an AI agent that remembers everything, acts autonomously, and extends your cognition. It benefits operations teams by automating tasks, providing reminders, and offering intelligent suggestions. It connects to workflows like email management, calendar scheduling, and task automation."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/edge-tts",
+  "slug": "edge-tts",
+  "name": "tts",
+  "headline": "Edge TTS: Neural Text-to-Speech Audio",
+  "short_description": "Generate high-quality text-to-speech audio using Microsoft Edge's neural TTS service. Ideal for developers and users needing audio output for accessibility or multitasking.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "aahl",
+  "install_command": "git clone https://github.com/aahl/skills",
+  "source_repo_url": "https://github.com/aahl/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "edge",
+    "text-to-speech"
+  ],
+  "sections": {
+    "overview": "Edge TTS is a text-to-speech skill that leverages Microsoft Edge's neural TTS service to convert written text into high-quality audio. It works through the uvx edge-tts command, making it easy to integrate speech synthesis into AI workflows. The skill supports various voices and languages available through Microsoft's neural engine, making it suitable for accessibility features, content narration, and audio output generation. Developers and users can use Edge TTS to create audio files for multitasking scenarios, accessibility compliance, or automated voice generation without requiring API keys or complex authentication.\nGenerate MP3 audio files from text inputs\nProduce WebVTT subtitles along with audio\nAdjust speech rate, pitch, and volume for customized audio output\nFacilitate audio output for accessibility features",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/aahl/skills --skill edge-tts`\n`git clone https://github.com/aahl/skills`",
+    "usage": "```\nGenerate a high-quality audio file using Edge TTS for the following text: '[TEXT]'. Use the voice '[VOICE_NAME]' and set the output format to '[FORMAT]' (e.g., mp3, wav). Ensure the audio is clear and natural-sounding. Include the command to save the file as '[FILE_NAME].[FORMAT]'.\n```\nCopy\n\n```\nHere’s how you can generate the audio file using Edge TTS:\n\n```bash\nedge-tts --text \"Hello, this is a test of Edge TTS. Welcome to [COMPANY], where innovation meets accessibility.\" --voice en-US-AriaNeural --rate 0% --volume 0% --output test_audio.mp3\n```\n\n### Key Details:\n- **Voice Used:** `en-US-AriaNeural` (Natural-sounding, neural TTS)\n- **Rate:** `0%` (Default speed; adjust with `+50%` or `-50%` as needed)\n- **Volume:** `0%` (Default volume; increase with `+10%` if needed)\n- **Output File:** `test_audio.mp3` (Saved in the current directory)\n\n### Expected Output:\nA clear, natural-sounding audio file (MP3) with the provided text spoken in a friendly, professional tone. Ideal for accessibility features, podcasts, or multitasking workflows.\n\n### Notes:\n- Replace `[COMPANY]` with your organization’s name.\n- For faster speech, use `--rate +50%`. For slower, use `--rate -50%`.\n- To list available voices, run: `edge-tts --list-voices`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "edge-tts#main-content",
+      "edge-tts#overview",
+      "edge-tts#setup",
+      "edge-tts#examples",
+      "edge-tts#related",
+      "tts"
+    ],
+    "overview_vi": "Edge TTS is a text-to-speech skill that leverages Microsoft Edge's neural TTS service to convert written text into high-quality audio. It works through the uvx edge-tts command, making it easy to integrate speech synthesis into AI workflows. The skill supports various voices and languages available through Microsoft's neural engine, making it suitable for accessibility features, content narration, and audio output generation. Developers and users can use Edge TTS to create audio files for multitasking scenarios, accessibility compliance, or automated voice generation without requiring API keys or complex authentication.\nGenerate MP3 audio files from text inputs\nProduce WebVTT subtitles along with audio\nAdjust speech rate, pitch, and volume for customized audio output\nFacilitate audio output for accessibility features",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/aahl/skills --skill edge-tts`\n`git clone https://github.com/aahl/skills`",
+    "usage_vi": "```\nGenerate a high-quality audio file using Edge TTS for the following text: '[TEXT]'. Use the voice '[VOICE_NAME]' and set the output format to '[FORMAT]' (e.g., mp3, wav). Ensure the audio is clear and natural-sounding. Include the command to save the file as '[FILE_NAME].[FORMAT]'.\n```\nCopy\n\n```\nHere’s how you can generate the audio file using Edge TTS:\n\n```bash\nedge-tts --text \"Hello, this is a test of Edge TTS. Welcome to [COMPANY], where innovation meets accessibility.\" --voice en-US-AriaNeural --rate 0% --volume 0% --output test_audio.mp3\n```\n\n### Key Details:\n- **Voice Used:** `en-US-AriaNeural` (Natural-sounding, neural TTS)\n- **Rate:** `0%` (Default speed; adjust with `+50%` or `-50%` as needed)\n- **Volume:** `0%` (Default volume; increase with `+10%` if needed)\n- **Output File:** `test_audio.mp3` (Saved in the current directory)\n\n### Expected Output:\nA clear, natural-sounding audio file (MP3) with the provided text spoken in a friendly, professional tone. Ideal for accessibility features, podcasts, or multitasking workflows.\n\n### Notes:\n- Replace `[COMPANY]` with your organization’s name.\n- For faster speech, use `--rate +50%`. For slower, use `--rate -50%`.\n- To list available voices, run: `edge-tts --list-voices`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:37:47.974502Z",
+    "http_status": 200,
+    "content_hash": "12fef1a95a52e4f2dfc6765b80921223705dcd4dad67737f37137da9d3e3f7d0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\edge-tts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\edge-tts.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Edge TTS: Neural Text-to-Speech Audio",
+  "short_description_vi": "Generate high-quality text-to-speech audio using Microsoft Edge's neural TTS service. Ideal for developers and users needing audio output for accessibility or multitasking."
+}

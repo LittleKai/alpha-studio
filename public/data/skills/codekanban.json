@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codekanban",
+  "slug": "codekanban",
+  "name": "CodeKanban",
+  "headline": "CodeKanban: Unified Terminal Management",
+  "short_description": "CodeKanban centralizes management of terminals and AI coding agents like Claude Code and Codex. Operations teams use it to streamline workflows, track progress, and improve collaboration across coding projects. It integrates with existing development tools and workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "fy0",
+  "install_command": "git clone https://github.com/fy0/CodeKanban.git",
+  "source_repo_url": "https://github.com/fy0/CodeKanban",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "kanban",
+    "vibe-coding",
+    "aiprogramming",
+    "codex",
+    "terminal",
+    "claude-code",
+    "vibecoding",
+    "coding-agents"
+  ],
+  "sections": {
+    "overview": "CodeKanban is an innovative automation skill designed to streamline the management of multiple terminals and AI coding agents from a single, unified interface. This skill simplifies the workflow for developers and AI practitioners by consolidating various coding environments, allowing users to focus on coding without the hassle of switching between different terminals. With an implementation time of just 30 minutes, CodeKanban offers a straightforward setup process that enables users to quickly enhance their productivity. One of the key benefits of using CodeKanban is the potential for significant time savings, as it reduces the friction associated with managing multiple coding environments. By centralizing terminal management, users can easily access their AI agents and coding tools without the need for constant navigation, thus allowing for a more efficient workflow. While the exact time savings are currently unknown, the reduction in context-switching alone can lead to improved focus and faster project completion. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in complex projects requiring collaboration across various coding environments. By utilizing CodeKanban, teams can enhance their workflow automation, ensuring that all coding agents are effectively managed and monitored. Practical use cases include managing deployment processes, coordinating team coding efforts, and integrating with existing CI/CD pipelines, all of which can be executed seamlessly through the CodeKanban interface. With an intermediate level of complexity, CodeKanban is suitable for users who have some experience with automation tools and coding environments. It fits perfectly into AI-first workflows by enabling teams to leverage AI agents more effectively, ensuring that they can maximize their potential while minimizing the time spent on manual management tasks. As organizations increasingly adopt AI automation, skills like CodeKanban will play a crucial role in enhancing productivity and driving innovation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fy0/CodeKanban`",
+    "usage": "```\nSet up a CodeKanban board for [PROJECT_NAME] and initialize terminals for [LANGUAGE_FRAMEWORK]. Create task cards for [FEATURE_TO_IMPLEMENT] and [BUG_TO_FIX]. Assign priority levels and link relevant documentation. Use the following commands: 'kanban init', 'terminal new', 'task add [TASK_NAME] --priority [HIGH/MEDIUM/LOW] --link [DOC_LINK]'.\n```\nCopy\n\n```\n```\nCodeKanban Board: 'E-Commerce API Refactor'\nStatus: Active | Terminals: 3/3 | Tasks: 5/5\n\n--- HIGH PRIORITY ---\n[1] Implement JWT Authentication (Terminal: api-dev)\n   - Owner: dev-team-1\n   - Docs: https://docs.company.com/auth-guide\n   - Status: In Progress | Progress: 60% | ETA: 2 days\n\n--- MEDIUM PRIORITY ---\n[2] Optimize Database Queries (Terminal: db-dev)\n   - Owner: data-team\n   - Docs: https://docs.company.com/query-optimization\n   - Status: Pending | Estimated: 3 days\n\n--- LOW PRIORITY ---\n[3] Add Rate Limiting (Terminal: api-dev)\n   - Owner: dev-team-2\n   - Docs: https://docs.company.com/rate-limiting\n   - Status: Backlog\n\nTerminals Active:\n- api-dev (Node.js 20, Express 4.18): Ready for new tasks\n- db-dev (PostgreSQL 15, Prisma 5.0): Running migration tests\n- ui-dev (React 18, Tailwind 3.4): Waiting for API endpoints\n\nNext Steps:\n1. Review PR #42 for JWT implementation\n2. Schedule database optimization meeting\n3. Assign rate limiting to junior dev for learning\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codekanban#main-content",
+      "codekanban#overview",
+      "codekanban#setup",
+      "codekanban#examples",
+      "codekanban#tools",
+      "codekanban#mcp",
+      "codekanban#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodeKanban là một skill tự động hóa đột phá được thiết kế để đơn giản hóa việc quản lý nhiều terminal và AI coding agent từ một giao diện hợp nhất duy nhất. Skill này tinh giản workflow cho các lập trình viên và chuyên gia AI bằng cách hợp nhất nhiều môi trường lập trình khác nhau, cho phép người dùng tập trung vào việc viết code mà không phải tốn công chuyển đổi qua lại giữa các terminal. Với thời gian triển khai chỉ khoảng 30 phút, CodeKanban cung cấp một quy trình setup đơn giản giúp người dùng nhanh chóng nâng cao năng suất làm việc. Một trong những lợi ích cốt lõi khi sử dụng CodeKanban là khả năng tiết kiệm thời gian đáng kể nhờ giảm thiểu các trở ngại trong việc quản lý nhiều môi trường lập trình cùng lúc. Bằng cách tập trung hóa việc quản lý terminal, người dùng có thể dễ dàng tiếp cận các AI agent và công cụ lập trình của mình mà không cần phải chuyển đổi liên tục, giúp quy trình làm việc trở nên hiệu quả hơn. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được đo lường chính xác, nhưng chỉ riêng việc giảm thiểu chuyển đổi ngữ cảnh (context-switching) đã giúp cải thiện độ tập trung và đẩy nhanh tiến độ hoàn thành dự án. Skill này đặc biệt hữu ích cho các lập trình viên, quản lý sản phẩm (product managers) và các chuyên gia AI tham gia vào các dự án phức tạp đòi hỏi sự cộng tác trên nhiều môi trường lập trình khác nhau. Bằng cách ứng dụng CodeKanban, các đội ngũ có thể nâng cao hiệu quả tự động hóa workflow, đảm bảo mọi coding agent đều được quản lý và giám sát một cách hiệu quả. Các trường hợp sử dụng thực tế bao gồm quản lý quy trình triển khai (deployment), điều phối nỗ lực lập trình của nhóm và tích hợp với các pipeline CI/CD hiện có—tất cả đều có thể được thực hiện mượt mà ngay trên giao diện của CodeKanban. Với mức độ phức tạp trung bình, CodeKanban phù hợp cho những người dùng đã có kinh nghiệm với các công cụ tự động hóa và môi trường lập trình. Công cụ này hoàn toàn tương thích với các workflow định hướng AI (AI-first) bằng cách cho phép các đội ngũ khai thác AI agent hiệu quả hơn, tối đa hóa tiềm năng của chúng và giảm thiểu thời gian dành cho các tác vụ quản lý thủ công. Khi các tổ chức ngày càng ứng dụng mạnh mẽ tự động hóa AI, các skill như CodeKanban sẽ đóng vai trò then chốt trong việc nâng cao năng suất và thúc đẩy đổi mới sáng tạo.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/fy0/CodeKanban`",
+    "usage_vi": "```\nThiết lập một bảng CodeKanban cho [PROJECT_NAME] và khởi tạo các terminal cho [LANGUAGE_FRAMEWORK]. Tạo các task card cho [FEATURE_TO_IMPLEMENT] và [BUG_TO_FIX]. Gán mức độ ưu tiên và liên kết tài liệu liên quan. Sử dụng các lệnh sau: 'kanban init', 'terminal new', 'task add [TASK_NAME] --priority [HIGH/MEDIUM/LOW] --link [DOC_LINK]'.\n```\nCopy\n\n```\nCodeKanban Board: 'E-Commerce API Refactor'\nTrạng thái: Active | Terminal: 3/3 | Task: 5/5\n\n--- ĐỘ ƯU TIÊN CAO ---\n[1] Triển khai JWT Authentication (Terminal: api-dev)\n   - Người phụ trách: dev-team-1\n   - Docs: https://docs.company.com/auth-guide\n   - Trạng thái: In Progress | Tiến độ: 60% | ETA: 2 ngày\n\n--- ĐỘ ƯU TIÊN TRUNG BÌNH ---\n[2] Tối ưu hóa Database Queries (Terminal: db-dev)\n   - Người phụ trách: data-team\n   - Docs: https://docs.company.com/query-optimization\n   - Trạng thái: Pending | Dự kiến: 3 ngày\n\n--- ĐỘ ƯU TIÊN THẤP ---\n[3] Thêm Rate Limiting (Terminal: api-dev)\n   - Người phụ trách: dev-team-2\n   - Docs: https://docs.company.com/rate-limiting\n   - Trạng thái: Backlog\n\nCác Terminal đang hoạt động:\n- api-dev (Node.js 20, Express 4.18): Sẵn sàng cho task mới\n- db-dev (PostgreSQL 15, Prisma 5.0): Đang chạy các test migration\n- ui-dev (React 18, Tailwind 3.4): Đang chờ các API endpoint\n\nCác bước tiếp theo:\n1. Review PR #42 cho phần triển khai JWT\n2. Lên lịch họp tối ưu hóa cơ sở dữ liệu\n3. Giao task rate limiting cho junior dev để học hỏi\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:20:25.454131Z",
+    "http_status": 200,
+    "content_hash": "13fd8cb222b1e5ca03e814f79ad0e207b4cefa4d8c1ca47e2e422a16a8e74937",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codekanban.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codekanban.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CodeKanban: Quản lý Terminal Tập trung",
+  "short_description_vi": "CodeKanban giúp quản lý tập trung các terminal và AI coding agent như Claude Code và Codex. Các đội ngũ vận hành sử dụng công cụ này để tối ưu hóa workflow, theo dõi tiến độ và tăng cường cộng tác trên các dự án lập trình. Công cụ này tích hợp mượt mà với các công cụ phát triển và workflow hiện có."
+}

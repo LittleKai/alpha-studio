@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codex-mcp-server",
+  "slug": "codex-mcp-server",
+  "name": "Codex MCP Server",
+  "headline": "Codex MCP Server - Codex AI for Claude Code",
+  "short_description": "Codex MCP Server enables Claude Code to use Codex's AI capabilities directly. It is a TypeScript wrapper for OpenAI Codex CLI that allows operations teams to automate code generation, refactoring, and debugging tasks. Integrates with Cursor and other MCP-compatible tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "tuannvm",
+  "install_command": "git clone https://github.com/tuannvm/codex-mcp-server.git",
+  "source_repo_url": "https://github.com/tuannvm/codex-mcp-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "codex",
+    "cursor",
+    "claude-code",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "Codex MCP Server connects Claude Code, Cursor, and other MCP-compatible editors to OpenAI's Codex CLI for AI-driven code operations. It enables multi-turn conversations with session support, code review for uncommitted changes and branches, web search capabilities, and advanced features like model selection and structured output metadata. The server acts as a bridge between your editor and Codex CLI, allowing you to request code analysis, security reviews, refactoring suggestions, and automated tasks without leaving your development environment. Teams can authenticate once with an OpenAI API key and immediately access AI-powered code assistance across multiple editors and machines.\nSecurity analysis of authentication and authorization logic\nMulti-turn code refactoring conversations with session persistence\nAutomated code review of pull request changes and uncommitted work\nComplex code analysis using advanced models like o3 with high reasoning effort",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tuannvm/codex-mcp-server`",
+    "usage": "```\nUse the codex-mcp-server to [TASK: generate/refactor/debug] the following code snippet: [CODE_SNIPPET]. Apply [SPECIFIC_REQUIREMENTS: e.g., 'Python 3.10+ syntax', 'React best practices', 'OOP design patterns']. Return the updated code with inline comments explaining key changes. If debugging, include the error message: [ERROR_MESSAGE].\n```\nCopy\n\n```\n```python\n# Original code (simplified for example):\ndef calculate_discount(price, discount_percent):\n    return price * (1 - discount_percent)\n\n# Refactored code with requirements (Python 3.10+, type hints, validation):\nfrom typing import Union\n\ndef calculate_discount(\n    price: Union[int, float],\n    discount_percent: Union[int, float]\n) -> float:\n    \"\"\"\n    Calculate the discounted price with input validation.\n    \n    Args:\n        price: Original price (must be positive)\n        discount_percent: Discount percentage (0-100)\n    \n    Returns:\n        Discounted price\n    \n    Raises:\n        ValueError: If inputs are invalid\n    \"\"\"\n    if not isinstance(price, (int, float)) or price <= 0:\n        raise ValueError(\"Price must be a positive number\")\n    if not isinstance(discount_percent, (int, float)) or not (0 <= discount_percent <= 100):\n        raise ValueError(\"Discount must be a number between 0 and 100\")\n    \n    return round(price * (1 - discount_percent / 100), 2)\n\n# Key changes:\n# 1. Added type hints for better IDE support and maintainability\n# 2. Included input validation for robustness\n# 3. Normalized discount_percent to 0-100 range\n# 4. Added rounding to 2 decimal places for currency\n# 5. Included docstring for API documentation\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codex-mcp-server#main-content",
+      "codex-mcp-server#overview",
+      "codex-mcp-server#setup",
+      "codex-mcp-server#examples",
+      "codex-mcp-server#tools",
+      "codex-mcp-server#mcp",
+      "codex-mcp-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Codex MCP Server kết nối Claude Code, Cursor và các trình soạn thảo tương thích MCP khác với OpenAI Codex CLI để thực hiện các thao tác lập trình bằng AI. Công cụ này hỗ trợ hội thoại nhiều lượt (multi-turn) kèm tính năng lưu session, review code cho các thay đổi chưa commit và các nhánh, khả năng tìm kiếm web, cùng các tính năng nâng cao như lựa chọn model và siêu dữ liệu đầu ra có cấu trúc (structured output metadata). Server này đóng vai trò như một cầu nối giữa trình soạn thảo của bạn và Codex CLI, cho phép bạn yêu cầu phân tích code, review bảo mật, gợi ý refactor và thực hiện các tác vụ tự động mà không cần rời khỏi môi trường phát triển. Các đội ngũ chỉ cần xác thực một lần bằng OpenAI API key là có thể truy cập ngay lập tức vào công cụ hỗ trợ code bằng AI trên nhiều trình soạn thảo và thiết bị khác nhau.\nPhân tích bảo mật cho logic xác thực và phân quyền\nHội thoại refactor code nhiều lượt với session được duy trì liên tục\nTự động review code cho các thay đổi trong pull request và các phần việc chưa commit\nPhân tích code phức tạp bằng cách sử dụng các model tiên tiến như o3 với khả năng suy luận (reasoning effort) cao",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/tuannvm/codex-mcp-server`",
+    "usage_vi": "```\nSử dụng codex-mcp-server để [TASK: generate/refactor/debug] đoạn code sau: [CODE_SNIPPET]. Áp dụng [SPECIFIC_REQUIREMENTS: ví dụ: 'cú pháp Python 3.10+', 'React best practices', 'OOP design patterns']. Trả về code đã cập nhật kèm theo các comment trực tiếp (inline comment) giải thích những thay đổi chính. Nếu là debug, hãy đính kèm thông báo lỗi: [ERROR_MESSAGE].\n```\nCopy\n\n```python\n# Code ban đầu (được đơn giản hóa làm ví dụ):\ndef calculate_discount(price, discount_percent):\n    return price * (1 - discount_percent)\n\n# Code đã refactor theo yêu cầu (Python 3.10+, type hints, validation):\nfrom typing import Union\n\ndef calculate_discount(\n    price: Union[int, float],\n    discount_percent: Union[int, float]\n) -> float:\n    \"\"\"\n    Tính toán giá đã chiết khấu có validate đầu vào.\n    \n    Args:\n        price: Giá gốc (phải là số dương)\n        discount_percent: Phần trăm chiết khấu (0-100)\n    \n    Returns:\n        Giá sau khi chiết khấu\n    \n    Raises:\n        ValueError: Nếu đầu vào không hợp lệ\n    \"\"\"\n    if not isinstance(price, (int, float)) or price <= 0:\n        raise ValueError(\"Price must be a positive number\")\n    if not isinstance(discount_percent, (int, float)) or not (0 <= discount_percent <= 100):\n        raise ValueError(\"Discount must be a number between 0 and 100\")\n    \n    return round(price * (1 - discount_percent / 100), 2)\n\n# Các thay đổi chính:\n# 1. Thêm type hints để IDE hỗ trợ tốt hơn và dễ bảo trì hơn\n# 2. Bổ sung validate đầu vào để tăng độ ổn định (robustness)\n# 3. Chuẩn hóa discount_percent về khoảng 0-100\n# 4. Làm tròn đến 2 chữ số thập phân cho tiền tệ\n# 5. Thêm docstring để phục vụ việc tạo tài liệu API (API documentation)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:53:12.650612Z",
+    "http_status": 200,
+    "content_hash": "a6d607207ad399480410df214d4964afe341bcaa528988aec1efdf6ce67a01b8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codex-mcp-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codex-mcp-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Codex MCP Server - Codex AI dành cho Claude Code",
+  "short_description_vi": "Codex MCP Server cho phép Claude Code khai thác trực tiếp các tính năng AI của Codex. Đây là một wrapper viết bằng TypeScript dành cho OpenAI Codex CLI, giúp các đội ngũ vận hành tự động hóa các tác vụ tạo mã (code generation), refactor và debug. Công cụ này tích hợp mượt mà với Cursor và các công cụ tương thích MCP khác."
+}

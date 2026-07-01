@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/langsmith-fetch-skill",
+  "slug": "langsmith-fetch-skill",
+  "name": "browser-use",
+  "headline": "LangSmith Fetch Skill - Debug AI Agents",
+  "short_description": "Fetch execution traces from LangSmith Studio in your terminal. Debug LangChain and LangGraph agents using Claude Code. Improve AI observability and streamline debugging for developers.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "OthmanAdi",
+  "install_command": "git clone https://github.com/OthmanAdi/langsmith-fetch-skill.git",
+  "source_repo_url": "https://github.com/OthmanAdi/langsmith-fetch-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-tools",
+    "ai-agents",
+    "claude-skills-creator",
+    "developer-tools-ai-agent",
+    "langsmith-tracing",
+    "observability",
+    "llm-ops",
+    "claude-skills-libary",
+    "langsmith",
+    "langchain",
+    "claude-skills-hub",
+    "agent-debugging",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "LangSmith Fetch Skill teaches Claude to debug LangChain and LangGraph agents by automatically retrieving and analyzing execution traces from LangSmith Studio. Simply ask Claude to debug your agent, and it fetches traces, identifies errors, analyzes performance bottlenecks, and reviews tool call execution. The skill detects failures and root causes, tracks token usage, examines memory operations, and compares agent performance across runs. Developers working with LangChain agents benefit from streamlined observability and faster debugging workflows without leaving the terminal.\nDebug failing agent traces and identify root causes automatically\nAnalyze execution performance and identify slowest operations\nReview tool calls and memory operations for agent orchestration\nExport debugging sessions for team review and documentation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OthmanAdi/langsmith-fetch-skill`",
+    "usage": "```\nFetch the execution traces for the [AGENT_NAME] agent from LangSmith Studio. Include all traces from the last [TIME_PERIOD] hours. Format the output for debugging in Claude Code.\n```\nCopy\n\n```\n```markdown\n# Execution Traces for 'Order Processing Agent'",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "langsmith-fetch-skill#main-content",
+      "langsmith-fetch-skill#overview",
+      "langsmith-fetch-skill#setup",
+      "langsmith-fetch-skill#examples",
+      "langsmith-fetch-skill#tools",
+      "langsmith-fetch-skill#mcp",
+      "langsmith-fetch-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LangSmith Fetch Skill teaches Claude to debug LangChain and LangGraph agents by automatically retrieving and analyzing execution traces from LangSmith Studio. Simply ask Claude to debug your agent, and it fetches traces, identifies errors, analyzes performance bottlenecks, and reviews tool call execution. The skill detects failures and root causes, tracks token usage, examines memory operations, and compares agent performance across runs. Developers working with LangChain agents benefit from streamlined observability and faster debugging workflows without leaving the terminal.\nDebug failing agent traces and identify root causes automatically\nAnalyze execution performance and identify slowest operations\nReview tool calls and memory operations for agent orchestration\nExport debugging sessions for team review and documentation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OthmanAdi/langsmith-fetch-skill`",
+    "usage_vi": "```\nFetch the execution traces for the [AGENT_NAME] agent from LangSmith Studio. Include all traces from the last [TIME_PERIOD] hours. Format the output for debugging in Claude Code.\n```\nCopy\n\n```\n```markdown\n# Execution Traces for 'Order Processing Agent'"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:31:50.614493Z",
+    "http_status": 200,
+    "content_hash": "c8a2ce09e297a124c7679924b29305ea534298775d8066c85797d9860a2988cb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langsmith-fetch-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\langsmith-fetch-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LangSmith Fetch Skill - Debug AI Agents",
+  "short_description_vi": "Fetch execution traces from LangSmith Studio in your terminal. Debug LangChain and LangGraph agents using Claude Code. Improve AI observability and streamline debugging for developers."
+}

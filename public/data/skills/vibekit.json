@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibekit",
+  "slug": "vibekit",
+  "name": "vibekit",
+  "headline": "VibeKit: Secure AI Agent Execution",
+  "short_description": "VibeKit enables secure execution of coding agents like Claude Code, Gemini, and Codex in an isolated sandbox. It redacts sensitive data and provides observability, making it ideal for operations teams handling confidential information.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "superagent-ai",
+  "install_command": "git clone https://github.com/superagent-ai/vibekit.git",
+  "source_repo_url": "https://github.com/superagent-ai/vibekit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "claude-code",
+    "ai",
+    "codex",
+    "vibe-coding",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "VibeKit is an innovative automation skill designed to run Claude Code, Gemini, Codex, or any coding agent in a clean, isolated sandbox environment. This skill ensures sensitive data redaction and observability, making it an essential tool for developers and AI practitioners who need to execute AI-generated code securely. By utilizing VibeKit, users can prevent data leaks and maintain the integrity of their applications while benefiting from the power of AI automation. The key benefits of VibeKit include its ability to automatically redact sensitive information from code completions and monitor agent operations for better debugging and performance tracking. While the exact time savings are not quantified, the streamlined process of running AI agents in a secure environment significantly reduces the risk of data exposure and enhances overall productivity. With its intermediate complexity, VibeKit can be implemented in approximately 30 minutes, making it accessible for those with a moderate level of technical expertise. This skill is particularly valuable for developers, product managers, and AI practitioners who require a reliable method for testing and executing AI-generated code without compromising sensitive information. VibeKit can be seamlessly integrated into applications that demand safe execution of AI-generated code, providing a local sandbox for testing that does not affect the main development environment. Use cases include running AI coding agents in secure environments, integrating with existing workflows, and utilizing the skill for debugging and performance monitoring. In an AI-first workflow, VibeKit plays a crucial role by enabling safe experimentation with AI automation. Its implementation requires a basic understanding of coding environments and the ability to integrate with existing applications. As organizations increasingly adopt AI technologies, VibeKit stands out as a necessary skill for maintaining security and efficiency in AI-driven development processes.\nRun AI coding agents in a secure environment to prevent data leaks.\nAutomatically redact sensitive information from code completions.\nMonitor and log agent operations for better debugging and performance tracking.\nIntegrate VibeKit into applications requiring safe execution of AI-generated code.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/superagent-ai/vibekit`",
+    "usage": "```\nI need to automate a data processing task using VibeKit. The task involves handling sensitive customer data from [DATABASE_NAME]. The data includes [DATA_TYPES] and must be processed according to [SPECIFIC_PROCESSING_REQUIREMENTS]. Ensure all sensitive information is redacted and provide a secure execution plan.\n```\nCopy\n\n```\nBased on your requirements, here's a secure execution plan for processing sensitive customer data from the 'CustomerDB' database. The data includes PII such as names, addresses, and credit card numbers, and must be processed to generate monthly spending reports while ensuring GDPR compliance.\n\n1. **Data Extraction**: Use VibeKit to connect to 'CustomerDB' and extract the necessary data fields. VibeKit will automatically redact all PII fields, replacing them with placeholders like '[REDACTED_NAME]', '[REDACTED_ADDRESS]', etc.\n\n2. **Data Processing**: Implement a Python script within the VibeKit sandbox to process the redacted data. The script will calculate monthly spending totals, categorize expenses, and generate summary statistics.\n\n3. **Report Generation**: Use the processed data to create a monthly spending report. The report will include aggregated data and insights, ensuring no sensitive information is exposed.\n\n4. **Observability**: VibeKit will provide detailed logs and monitoring of the entire process, allowing you to track data flow and ensure compliance with security policies.\n\n5. **Output Delivery**: The final report will be delivered securely to the designated stakeholders, with all sensitive data remaining redacted throughout the process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibekit#main-content",
+      "vibekit#overview",
+      "vibekit#setup",
+      "vibekit#examples",
+      "vibekit#tools",
+      "vibekit#mcp",
+      "vibekit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "VibeKit is an innovative automation skill designed to run Claude Code, Gemini, Codex, or any coding agent in a clean, isolated sandbox environment. This skill ensures sensitive data redaction and observability, making it an essential tool for developers and AI practitioners who need to execute AI-generated code securely. By utilizing VibeKit, users can prevent data leaks and maintain the integrity of their applications while benefiting from the power of AI automation. The key benefits of VibeKit include its ability to automatically redact sensitive information from code completions and monitor agent operations for better debugging and performance tracking. While the exact time savings are not quantified, the streamlined process of running AI agents in a secure environment significantly reduces the risk of data exposure and enhances overall productivity. With its intermediate complexity, VibeKit can be implemented in approximately 30 minutes, making it accessible for those with a moderate level of technical expertise. This skill is particularly valuable for developers, product managers, and AI practitioners who require a reliable method for testing and executing AI-generated code without compromising sensitive information. VibeKit can be seamlessly integrated into applications that demand safe execution of AI-generated code, providing a local sandbox for testing that does not affect the main development environment. Use cases include running AI coding agents in secure environments, integrating with existing workflows, and utilizing the skill for debugging and performance monitoring. In an AI-first workflow, VibeKit plays a crucial role by enabling safe experimentation with AI automation. Its implementation requires a basic understanding of coding environments and the ability to integrate with existing applications. As organizations increasingly adopt AI technologies, VibeKit stands out as a necessary skill for maintaining security and efficiency in AI-driven development processes.\nRun AI coding agents in a secure environment to prevent data leaks.\nAutomatically redact sensitive information from code completions.\nMonitor and log agent operations for better debugging and performance tracking.\nIntegrate VibeKit into applications requiring safe execution of AI-generated code.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/superagent-ai/vibekit`",
+    "usage_vi": "```\nI need to automate a data processing task using VibeKit. The task involves handling sensitive customer data from [DATABASE_NAME]. The data includes [DATA_TYPES] and must be processed according to [SPECIFIC_PROCESSING_REQUIREMENTS]. Ensure all sensitive information is redacted and provide a secure execution plan.\n```\nCopy\n\n```\nBased on your requirements, here's a secure execution plan for processing sensitive customer data from the 'CustomerDB' database. The data includes PII such as names, addresses, and credit card numbers, and must be processed to generate monthly spending reports while ensuring GDPR compliance.\n\n1. **Data Extraction**: Use VibeKit to connect to 'CustomerDB' and extract the necessary data fields. VibeKit will automatically redact all PII fields, replacing them with placeholders like '[REDACTED_NAME]', '[REDACTED_ADDRESS]', etc.\n\n2. **Data Processing**: Implement a Python script within the VibeKit sandbox to process the redacted data. The script will calculate monthly spending totals, categorize expenses, and generate summary statistics.\n\n3. **Report Generation**: Use the processed data to create a monthly spending report. The report will include aggregated data and insights, ensuring no sensitive information is exposed.\n\n4. **Observability**: VibeKit will provide detailed logs and monitoring of the entire process, allowing you to track data flow and ensure compliance with security policies.\n\n5. **Output Delivery**: The final report will be delivered securely to the designated stakeholders, with all sensitive data remaining redacted throughout the process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:40.200546Z",
+    "http_status": 200,
+    "content_hash": "492e93a2922ce15648f7f257ad7f40d4567c57d85058b21ef4dc72af14851bc5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibekit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibekit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VibeKit: Secure AI Agent Execution",
+  "short_description_vi": "VibeKit enables secure execution of coding agents like Claude Code, Gemini, and Codex in an isolated sandbox. It redacts sensitive data and provides observability, making it ideal for operations teams handling confidential information."
+}

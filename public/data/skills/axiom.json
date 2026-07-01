@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/axiom",
+  "slug": "axiom",
+  "name": "browser-use",
+  "headline": "Axiom: Code Skills for xOS Development",
+  "short_description": "Axiom provides battle-tested Claude Code skills for xOS development. It supports Swift 6, SwiftUI, Liquid Glass, and Apple Intelligence. Ideal for operations teams building or maintaining iOS, iPadOS, watchOS, and tvOS applications.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "CharlesWiltgen",
+  "install_command": "git clone https://github.com/CharlesWiltgen/Axiom.git",
+  "source_repo_url": "https://github.com/CharlesWiltgen/Axiom",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Axiom provides a specialized Claude Code skill for building and maintaining applications across Apple's xOS ecosystem. It includes battle-tested support for Swift 6, SwiftUI, Liquid Glass, and Apple Intelligence, enabling developers to leverage AI-assisted coding for iOS, iPadOS, watchOS, and tvOS projects. The skill is designed specifically for operations and development teams managing Apple platform applications, offering integrated tooling through multiple deployment options including Claude plugin, Codex port, and MCP bundle formats. With over 885 commits and active maintenance, Axiom delivers production-ready patterns and routing logic optimized for Apple development workflows.\nBuilding iOS and iPadOS applications with Swift 6 and SwiftUI\nDeveloping watchOS and tvOS applications with Apple Intelligence\nMaintaining existing xOS codebases with AI-assisted refactoring\nImplementing Liquid Glass design patterns in Apple apps",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CharlesWiltgen/Axiom`",
+    "usage": "```\nGenerate a Swift 6 code snippet for a [FEATURE] in an iOS app using SwiftUI. The feature should include [SPECIFIC_FUNCTIONALITY] and be compatible with Apple Intelligence. Ensure the code follows best practices for performance and security. Provide a brief explanation of the implementation.\n```\nCopy\n\n```\nHere's a Swift 6 code snippet for a location-based reminder feature in an iOS app using SwiftUI and Apple Intelligence:\n\n```swift\nimport SwiftUI\nimport CoreLocation\n\nstruct LocationReminderView: View {\n    @State private var locationManager = CLLocationManager()\n    @State private var reminders: [Reminder] = []\n\n    var body: some View {\n        List(reminders) { reminder in\n            VStack(alignment: .leading) {\n                Text(reminder.title)\n                    .font(.headline)\n                Text(reminder.location)\n                    .font(.subheadline)\n                Text(reminder.time)\n                    .font(.caption)\n            }\n        }\n        .navigationTitle(\"Location Reminders\")\n        .toolbar {\n            Button(action: {\n                // Add new reminder logic here\n            }) {\n                Image(systemName: \"plus\")\n            }\n        }\n        .onAppear {\n            locationManager.requestWhenInUseAuthorization()\n            locationManager.startUpdatingLocation()\n        }\n    }\n}\n\nstruct Reminder: Identifiable {\n    let id = UUID()\n    var title: String\n    var location: String\n    var time: String\n}\n```\n\nThis code sets up a basic SwiftUI view for managing location-based reminders. The `CLLocationManager` is used to handle location services, and the view displays a list of reminders with their titles, locations, and times. The `onAppear` modifier requests location authorization and starts updating the location when the view appears. To add new reminders, you would implement the logic in the button action.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "axiom#main-content",
+      "axiom#overview",
+      "axiom#setup",
+      "axiom#examples",
+      "axiom#tools",
+      "axiom#mcp",
+      "axiom#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Axiom provides a specialized Claude Code skill for building and maintaining applications across Apple's xOS ecosystem. It includes battle-tested support for Swift 6, SwiftUI, Liquid Glass, and Apple Intelligence, enabling developers to leverage AI-assisted coding for iOS, iPadOS, watchOS, and tvOS projects. The skill is designed specifically for operations and development teams managing Apple platform applications, offering integrated tooling through multiple deployment options including Claude plugin, Codex port, and MCP bundle formats. With over 885 commits and active maintenance, Axiom delivers production-ready patterns and routing logic optimized for Apple development workflows.\nBuilding iOS and iPadOS applications with Swift 6 and SwiftUI\nDeveloping watchOS and tvOS applications with Apple Intelligence\nMaintaining existing xOS codebases with AI-assisted refactoring\nImplementing Liquid Glass design patterns in Apple apps",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CharlesWiltgen/Axiom`",
+    "usage_vi": "```\nGenerate a Swift 6 code snippet for a [FEATURE] in an iOS app using SwiftUI. The feature should include [SPECIFIC_FUNCTIONALITY] and be compatible with Apple Intelligence. Ensure the code follows best practices for performance and security. Provide a brief explanation of the implementation.\n```\nCopy\n\n```\nHere's a Swift 6 code snippet for a location-based reminder feature in an iOS app using SwiftUI and Apple Intelligence:\n\n```swift\nimport SwiftUI\nimport CoreLocation\n\nstruct LocationReminderView: View {\n    @State private var locationManager = CLLocationManager()\n    @State private var reminders: [Reminder] = []\n\n    var body: some View {\n        List(reminders) { reminder in\n            VStack(alignment: .leading) {\n                Text(reminder.title)\n                    .font(.headline)\n                Text(reminder.location)\n                    .font(.subheadline)\n                Text(reminder.time)\n                    .font(.caption)\n            }\n        }\n        .navigationTitle(\"Location Reminders\")\n        .toolbar {\n            Button(action: {\n                // Add new reminder logic here\n            }) {\n                Image(systemName: \"plus\")\n            }\n        }\n        .onAppear {\n            locationManager.requestWhenInUseAuthorization()\n            locationManager.startUpdatingLocation()\n        }\n    }\n}\n\nstruct Reminder: Identifiable {\n    let id = UUID()\n    var title: String\n    var location: String\n    var time: String\n}\n```\n\nThis code sets up a basic SwiftUI view for managing location-based reminders. The `CLLocationManager` is used to handle location services, and the view displays a list of reminders with their titles, locations, and times. The `onAppear` modifier requests location authorization and starts updating the location when the view appears. To add new reminders, you would implement the logic in the button action.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:07:27.896997Z",
+    "http_status": 200,
+    "content_hash": "4f3dbc8a540961c5a628f3bf9d44be0d5a07b2be544011ff1a7f8af8fadb4615",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\axiom.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\axiom.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Axiom: Code Skills for xOS Development",
+  "short_description_vi": "Axiom provides battle-tested Claude Code skills for xOS development. It supports Swift 6, SwiftUI, Liquid Glass, and Apple Intelligence. Ideal for operations teams building or maintaining iOS, iPadOS, watchOS, and tvOS applications."
+}

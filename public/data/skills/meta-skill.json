@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/meta-skill",
+  "slug": "meta-skill",
+  "name": "Meta Skill",
+  "headline": "Meta Skill - CLI for Claude Code Skill Management",
+  "short_description": "Rust CLI for managing Claude Code skills. Index, build, bundle, and share skills. Integrates with CASS to mine coding session history into reusable skills. Ideal for operations teams automating workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "Dicklesworthstone",
+  "install_command": "git clone https://github.com/Dicklesworthstone/meta_skill.git",
+  "source_repo_url": "https://github.com/Dicklesworthstone/meta_skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Meta Skill (ms) is a local-first skill management platform that organizes operational knowledge into structured, searchable, reusable artifacts. It combines SQLite for fast queries with Git for audit trails, uses deterministic hash embeddings for semantic search without external dependencies, and includes multi-layer security with prompt injection defense and command safety gates. The platform supports dependency graph analysis, provenance tracking, adaptive suggestions via bandit optimization, and native AI agent integration through MCP. Skills can be hand-written, mined from CASS sessions, imported from bundles, or generated through workflows, making it suitable for teams automating complex operational processes.\nIndex and search coding skills across team sessions with hybrid semantic and lexical search\nExtract reusable skills from CASS session history for automation\nTrack skill provenance and dependencies with Git-backed audit trails\nExpose skills as native tools for Claude and other AI agents via MCP",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Dicklesworthstone/meta_skill`",
+    "usage": "```\nUse the `meta_skill` Rust CLI to [INDEX/BUILD/BUNDLE/SHARE] the following Claude Code skill: [SKILL_NAME]. If mining session history, extract reusable patterns from [SESSION_ID/PATH] using CASS. Include [OPTIONAL_FLAGS] for customization (e.g., --output-dir).\n```\nCopy\n\n```\n```\n$ meta_skill mine --session-id ses_abc123 --output-dir ./skills/my_automation\n\nMining session history for reusable patterns...\n✅ Extracted 12 reusable snippets from CASS session 'ses_abc123'\n✅ Validated 8 skills against existing templates\n✅ Bundled 'auto_deploy' skill with dependencies:\n   - Dockerfile (updated)\n   - README.md (auto-generated)\n   - skill.json (validated schema)\n\nSkill 'auto_deploy' is ready for sharing:\n- Path: ./skills/my_automation/auto_deploy/\n- SHA256: a1b2c3d4e5f6...\n- Size: 42KB\n\nTo share:\n$ meta_skill share --skill-path ./skills/my_automation/auto_deploy --registry https://skills.example.com\n```\n\nExample skill output (auto_deploy.json):\n```json\n{\n  \"name\": \"auto_deploy\",\n  \"description\": \"Automates Docker-based deployments to AWS ECS\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": [\"docker\", \"aws-cli\"],\n  \"commands\": [\n    \"docker build -t my-app:${TAG} .\",\n    \"aws ecs update-service --cluster prod --service my-app --force-new-deployment\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "meta-skill#main-content",
+      "meta-skill#overview",
+      "meta-skill#setup",
+      "meta-skill#examples",
+      "meta-skill#tools",
+      "meta-skill#mcp",
+      "meta-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Meta Skill (ms) là nền tảng quản lý skill ưu tiên chạy local (local-first), giúp tổ chức tri thức vận hành thành các artifact có cấu trúc, có thể tìm kiếm và tái sử dụng. Nền tảng này kết hợp SQLite để truy vấn nhanh với Git để lưu vết kiểm toán (audit trails), sử dụng deterministic hash embedding để tìm kiếm ngữ nghĩa (semantic search) mà không cần dependency bên ngoài, đồng thời tích hợp bảo mật nhiều lớp với cơ chế phòng chống prompt injection và các cổng kiểm soát lệnh an toàn (command safety gates). Nền tảng hỗ trợ phân tích đồ thị phụ thuộc (dependency graph analysis), theo dõi nguồn gốc (provenance tracking), đề xuất thích ứng qua tối ưu hóa bandit (bandit optimization) và tích hợp native AI agent thông qua MCP. Các skill có thể được viết tay, khai thác từ các CASS session, import từ bundle hoặc tạo tự động qua workflow, phù hợp cho các team cần tự động hóa các quy trình vận hành phức tạp.\n\nIndex và tìm kiếm các coding skill trên các session của team bằng tìm kiếm kết hợp ngữ nghĩa và từ khóa (hybrid semantic/lexical search)\nTrích xuất các skill có thể tái sử dụng từ lịch sử CASS session để tự động hóa\nTheo dõi nguồn gốc và dependency của skill bằng audit trail chạy trên nền Git\nCung cấp các skill dưới dạng tool native cho Claude và các AI agent khác qua MCP",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Dicklesworthstone/meta_skill`",
+    "usage_vi": "```\nSử dụng Rust CLI `meta_skill` để [INDEX/BUILD/BUNDLE/SHARE] Claude Code skill sau: [SKILL_NAME]. Nếu khai thác lịch sử session, hãy trích xuất các pattern có thể tái sử dụng từ [SESSION_ID/PATH] bằng CASS. Sử dụng thêm các [OPTIONAL_FLAGS] để tùy chỉnh (ví dụ: --output-dir).\n```\nCopy\n\n```\n```\n$ meta_skill mine --session-id ses_abc123 --output-dir ./skills/my_automation\n\nĐang khai thác lịch sử session để tìm các pattern có thể tái sử dụng...\n✅ Đã trích xuất 12 snippet có thể tái sử dụng từ CASS session 'ses_abc123'\n✅ Đã kiểm tra 8 skill dựa trên các template hiện có\n✅ Đã đóng gói (bundle) skill 'auto_deploy' với các dependency đi kèm:\n   - Dockerfile (đã cập nhật)\n   - README.md (tự động tạo)\n   - skill.json (schema đã được validate)\n\nSkill 'auto_deploy' đã sẵn sàng để chia sẻ:\n- Đường dẫn: ./skills/my_automation/auto_deploy/\n- SHA256: a1b2c3d4e5f6...\n- Dung lượng: 42KB\n\nĐể chia sẻ:\n$ meta_skill share --skill-path ./skills/my_automation/auto_deploy --registry https://skills.example.com\n```\n\nĐầu ra skill ví dụ (auto_deploy.json):\n```json\n{\n  \"name\": \"auto_deploy\",\n  \"description\": \"Automates Docker-based deployments to AWS ECS\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": [\"docker\", \"aws-cli\"],\n  \"commands\": [\n    \"docker build -t my-app:${TAG} .\",\n    \"aws ecs update-service --cluster prod --service my-app --force-new-deployment\"\n  ]\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:11:34.939273Z",
+    "http_status": 200,
+    "content_hash": "a736f7897cbcde637cba6e3ce54c7ec87ac3ab75f58c13dea6076e230354bad4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\meta-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\meta-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Meta Skill - CLI quản lý skill cho Claude Code",
+  "short_description_vi": "Rust CLI quản lý các Claude Code skill. Hỗ trợ index, build, đóng gói (bundle) và chia sẻ skill. Tích hợp với CASS để khai thác lịch sử session coding thành các skill có thể tái sử dụng. Giải pháp lý tưởng cho các operations team tự động hóa workflow."
+}

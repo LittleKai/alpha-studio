@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/writing-for-interfaces",
+  "slug": "writing-for-interfaces",
+  "name": "edit-article",
+  "headline": "Writing for Interfaces: Consistent UI Copy",
+  "short_description": "Writing for Interfaces focuses on making interface writing an integral part of the design process. It's aimed at designers and writers looking to create seamless product experiences by aligning text with layout and interactions.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "andrewgleave",
+  "install_command": "git clone https://github.com/andrewgleave/skills",
+  "source_repo_url": "https://github.com/andrewgleave/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "writing",
+    "interfaces"
+  ],
+  "sections": {
+    "overview": "Writing for Interfaces helps product teams establish and maintain consistent voice across UI copy. The skill uses a structured workflow: establish your product's voice by documenting what it does, who it's for, and its personality traits; evaluate whether the task involves new copy, reviews, or rewrites; apply voice and core principles grounded in accessibility and clarity; and flag terminology drift to keep phrasing consistent. This approach ensures UI text supports both usability and brand identity, reducing confusion and creating seamless product experiences. Teams benefit from systematic copy evaluation, clearer communication with users, and tools to maintain voice consistency across interfaces.\nImprove user interactions with thoughtful text placement\nEnhance product clarity through cohesive design and writing\nFacilitate smoother user experiences by considering text and design simultaneously",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/andrewgleave/skills --skill writing-for-interfaces`\n`git clone https://github.com/andrewgleave/skills`",
+    "usage": "```\nAct as a UX writing consultant for [COMPANY], a [INDUSTRY] business. Review the following interface copy for [PRODUCT/APP NAME] and suggest improvements to enhance clarity, consistency, and user engagement. Focus on microcopy, error messages, and CTAs. Here’s the copy: [PASTE COPY HERE]\n```\nCopy\n\n```\n### **UX Writing Review for [PRODUCT/APP NAME]**\n\n#### **Current Copy Analysis**\n\n**1. Login Button**\n*Current:* \"Click here to log in\"\n*Feedback:* Too generic. Lacks urgency and clarity. \n*Suggested:* \"Log in to access your dashboard\"\n*Why:* Directs users to the next step while reinforcing value.\n\n**2. Error Message**\n*Current:* \"Invalid input. Try again.\"\n*Feedback:* Passive and unhelpful. Doesn’t explain the issue.\n*Suggested:* \"Email must include an @ symbol. Example: user@example.com\"\n*Why:* Provides clear guidance to correct the mistake.\n\n**3. Empty State**\n*Current:* \"No items found\"\n*Feedback:* Bleak and unmotivating. Doesn’t guide users forward.\n*Suggested:* \"Your cart is empty. Start shopping to add items!\"\n*Why:* Encourages action while maintaining a friendly tone.\n\n#### **Key Improvements**\n- **Consistency:** Standardize terminology (e.g., \"Log in\" vs. \"Sign in\").\n- **Tone:** Align with [COMPANY]’s brand voice (e.g., professional, friendly).\n- **Clarity:** Prioritize user goals over technical jargon.\n\n#### **Next Steps**\n1. Audit all CTAs for action-oriented language.\n2. Test error messages with real users for comprehension.\n3. Update the style guide to reflect these changes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "writing-for-interfaces#main-content",
+      "writing-for-interfaces#overview",
+      "writing-for-interfaces#setup",
+      "writing-for-interfaces#examples",
+      "writing-for-interfaces#tools",
+      "writing-for-interfaces#mcp",
+      "writing-for-interfaces#related",
+      "edit-article"
+    ],
+    "overview_vi": "Writing for Interfaces helps product teams establish and maintain consistent voice across UI copy. The skill uses a structured workflow: establish your product's voice by documenting what it does, who it's for, and its personality traits; evaluate whether the task involves new copy, reviews, or rewrites; apply voice and core principles grounded in accessibility and clarity; and flag terminology drift to keep phrasing consistent. This approach ensures UI text supports both usability and brand identity, reducing confusion and creating seamless product experiences. Teams benefit from systematic copy evaluation, clearer communication with users, and tools to maintain voice consistency across interfaces.\nImprove user interactions with thoughtful text placement\nEnhance product clarity through cohesive design and writing\nFacilitate smoother user experiences by considering text and design simultaneously",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/andrewgleave/skills --skill writing-for-interfaces`\n`git clone https://github.com/andrewgleave/skills`",
+    "usage_vi": "```\nAct as a UX writing consultant for [COMPANY], a [INDUSTRY] business. Review the following interface copy for [PRODUCT/APP NAME] and suggest improvements to enhance clarity, consistency, and user engagement. Focus on microcopy, error messages, and CTAs. Here’s the copy: [PASTE COPY HERE]\n```\nCopy\n\n```\n### **UX Writing Review for [PRODUCT/APP NAME]**\n\n#### **Current Copy Analysis**\n\n**1. Login Button**\n*Current:* \"Click here to log in\"\n*Feedback:* Too generic. Lacks urgency and clarity. \n*Suggested:* \"Log in to access your dashboard\"\n*Why:* Directs users to the next step while reinforcing value.\n\n**2. Error Message**\n*Current:* \"Invalid input. Try again.\"\n*Feedback:* Passive and unhelpful. Doesn’t explain the issue.\n*Suggested:* \"Email must include an @ symbol. Example: user@example.com\"\n*Why:* Provides clear guidance to correct the mistake.\n\n**3. Empty State**\n*Current:* \"No items found\"\n*Feedback:* Bleak and unmotivating. Doesn’t guide users forward.\n*Suggested:* \"Your cart is empty. Start shopping to add items!\"\n*Why:* Encourages action while maintaining a friendly tone.\n\n#### **Key Improvements**\n- **Consistency:** Standardize terminology (e.g., \"Log in\" vs. \"Sign in\").\n- **Tone:** Align with [COMPANY]’s brand voice (e.g., professional, friendly).\n- **Clarity:** Prioritize user goals over technical jargon.\n\n#### **Next Steps**\n1. Audit all CTAs for action-oriented language.\n2. Test error messages with real users for comprehension.\n3. Update the style guide to reflect these changes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:38:51.835459Z",
+    "http_status": 200,
+    "content_hash": "c3ddbff899bf24d73ee55bb67cb1efb40139213d0dd9be3e78ebb132db1b90fd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\writing-for-interfaces.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\writing-for-interfaces.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Writing for Interfaces: Consistent UI Copy",
+  "short_description_vi": "Writing for Interfaces focuses on making interface writing an integral part of the design process. It's aimed at designers and writers looking to create seamless product experiences by aligning text with layout and interactions."
+}

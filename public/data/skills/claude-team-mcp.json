@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-team-mcp",
+  "slug": "claude-team-mcp",
+  "name": "browser-use",
+  "headline": "claude-team-mcp: Orchestrate AI Agents for",
+  "short_description": "Claude Team MCP Server enables AI agents like GPT, Claude, and Gemini to collaborate as a development team. It orchestrates these agents to work together on complex tasks, benefiting software development teams by automating coding, testing, and documentation workflows. The server connects to tools like Claude Code, Windsurf, and Cursor for integration into existing development environments.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "7836246",
+  "install_command": "git clone https://github.com/7836246/claude-team-mcp.git",
+  "source_repo_url": "https://github.com/7836246/claude-team-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "windsurf",
+    "agent",
+    "nodejs",
+    "typescript",
+    "mcp",
+    "cursor",
+    "gemini",
+    "ai"
+  ],
+  "sections": {
+    "overview": "The claude-team-mcp skill is designed to enhance AI automation by enabling Claude Code, Windsurf, and Cursor to work together as a cohesive AI development team. This Multi-Agent MCP Server skill facilitates the orchestration of multiple AI agents, such as GPT, Claude, and Gemini, allowing them to collaborate effectively on various tasks. By leveraging this skill, users can streamline their development processes and improve overall productivity. One of the key benefits of using the claude-team-mcp skill is its ability to save time by automating complex workflows that would typically require significant manual effort. While specific time savings are currently unknown, the integration of multiple AI agents can lead to faster project completion and reduced overhead in managing individual tasks. This skill is particularly beneficial for developers and product managers who are looking to optimize their workflow automation and enhance their team's efficiency. This skill is ideal for developers, product managers, and AI practitioners who are involved in AI automation and workflow management. It fits well within an AI-first workflow, where teams can leverage the capabilities of various AI agents to tackle different aspects of a project simultaneously. For example, a development team could use this skill to have GPT generate code, Claude review it for quality, and Gemini assist with deployment, all working in tandem to reduce bottlenecks. The implementation of the claude-team-mcp skill is rated as intermediate, with an estimated time to implement of about 30 minutes. Users should have a basic understanding of AI agents and their functionalities to maximize the effectiveness of this skill. As businesses increasingly adopt AI-driven solutions, integrating such automation skills into their workflows becomes essential for maintaining a competitive edge.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/7836246/claude-team-mcp`",
+    "usage": "```\nSet up a multi-agent development team using the claude-team-mcp server to [TASK]. Assign roles to agents as [ROLES] (e.g., 'frontend specialist, backend specialist, QA engineer'). Use tools like [TOOLS] (e.g., 'Claude Code, GitHub') to execute the workflow. Provide a step-by-step plan with clear deliverables and deadlines. Example: 'Set up a team to refactor the legacy authentication module in our Python monolith. Assign roles to agents as 'Python expert, security reviewer, and documentation writer'. Use Claude Code and GitHub for execution.'\n```\nCopy\n\n```\n### Multi-Agent Development Team Report: Refactoring Legacy Authentication Module\n\n**Team Composition:**\n- **Python Expert (Agent A):** Focused on code refactoring and performance optimization.\n- **Security Reviewer (Agent B):** Responsible for identifying vulnerabilities and ensuring compliance with OWASP standards.\n- **Documentation Writer (Agent C):** Tasked with updating API docs, architecture diagrams, and inline comments.\n\n**Workflow Execution:**\n1. **Code Analysis (Agent A):** Identified 3 critical bottlenecks in the JWT validation logic, reducing processing time by 40%. Proposed modularizing the auth service into `auth_core`, `auth_utils`, and `auth_handlers` packages.\n2. **Security Audit (Agent B):** Detected 2 medium-severity issues: (1) Hardcoded secret keys in environment variables, (2) Lack of rate-limiting on `/login` endpoint. Generated a remediation plan with PR #1234.\n3. **Documentation Update (Agent C):** Updated Swagger docs to reflect new endpoints (`/auth/refresh`, `/auth/validate`). Added sequence diagrams for the OAuth2 flow and updated the `README.md` with setup instructions.\n\n**Deliverables:**\n- Refactored code in `src/auth/` (PR #1233, merged).\n- Security fixes in `config/security.yaml` (PR #1234, awaiting review).\n- Updated docs in `/docs/auth/` (PR #1235, approved).\n\n**Next Steps:**\n- Merge PR #1234 after security team review.\n- Schedule a team demo to walk through changes.\n- Update CI/CD pipeline to include new auth service tests.\n\n**Metrics:**\n- Code coverage improved from 78% to 92%.\n- API response time reduced from 250ms to 150ms.\n- Security vulnerabilities addressed: 2 high, 1 medium.\n\n**Tools Used:**\n- Claude Code for refactoring and testing.\n- GitHub for PR management and reviews.\n- Windsurf for real-time collaboration on docs.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-team-mcp#main-content",
+      "claude-team-mcp#overview",
+      "claude-team-mcp#setup",
+      "claude-team-mcp#examples",
+      "claude-team-mcp#tools",
+      "claude-team-mcp#mcp",
+      "claude-team-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-team-mcp skill is designed to enhance AI automation by enabling Claude Code, Windsurf, and Cursor to work together as a cohesive AI development team. This Multi-Agent MCP Server skill facilitates the orchestration of multiple AI agents, such as GPT, Claude, and Gemini, allowing them to collaborate effectively on various tasks. By leveraging this skill, users can streamline their development processes and improve overall productivity. One of the key benefits of using the claude-team-mcp skill is its ability to save time by automating complex workflows that would typically require significant manual effort. While specific time savings are currently unknown, the integration of multiple AI agents can lead to faster project completion and reduced overhead in managing individual tasks. This skill is particularly beneficial for developers and product managers who are looking to optimize their workflow automation and enhance their team's efficiency. This skill is ideal for developers, product managers, and AI practitioners who are involved in AI automation and workflow management. It fits well within an AI-first workflow, where teams can leverage the capabilities of various AI agents to tackle different aspects of a project simultaneously. For example, a development team could use this skill to have GPT generate code, Claude review it for quality, and Gemini assist with deployment, all working in tandem to reduce bottlenecks. The implementation of the claude-team-mcp skill is rated as intermediate, with an estimated time to implement of about 30 minutes. Users should have a basic understanding of AI agents and their functionalities to maximize the effectiveness of this skill. As businesses increasingly adopt AI-driven solutions, integrating such automation skills into their workflows becomes essential for maintaining a competitive edge.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/7836246/claude-team-mcp`",
+    "usage_vi": "```\nSet up a multi-agent development team using the claude-team-mcp server to [TASK]. Assign roles to agents as [ROLES] (e.g., 'frontend specialist, backend specialist, QA engineer'). Use tools like [TOOLS] (e.g., 'Claude Code, GitHub') to execute the workflow. Provide a step-by-step plan with clear deliverables and deadlines. Example: 'Set up a team to refactor the legacy authentication module in our Python monolith. Assign roles to agents as 'Python expert, security reviewer, and documentation writer'. Use Claude Code and GitHub for execution.'\n```\nCopy\n\n```\n### Multi-Agent Development Team Report: Refactoring Legacy Authentication Module\n\n**Team Composition:**\n- **Python Expert (Agent A):** Focused on code refactoring and performance optimization.\n- **Security Reviewer (Agent B):** Responsible for identifying vulnerabilities and ensuring compliance with OWASP standards.\n- **Documentation Writer (Agent C):** Tasked with updating API docs, architecture diagrams, and inline comments.\n\n**Workflow Execution:**\n1. **Code Analysis (Agent A):** Identified 3 critical bottlenecks in the JWT validation logic, reducing processing time by 40%. Proposed modularizing the auth service into `auth_core`, `auth_utils`, and `auth_handlers` packages.\n2. **Security Audit (Agent B):** Detected 2 medium-severity issues: (1) Hardcoded secret keys in environment variables, (2) Lack of rate-limiting on `/login` endpoint. Generated a remediation plan with PR #1234.\n3. **Documentation Update (Agent C):** Updated Swagger docs to reflect new endpoints (`/auth/refresh`, `/auth/validate`). Added sequence diagrams for the OAuth2 flow and updated the `README.md` with setup instructions.\n\n**Deliverables:**\n- Refactored code in `src/auth/` (PR #1233, merged).\n- Security fixes in `config/security.yaml` (PR #1234, awaiting review).\n- Updated docs in `/docs/auth/` (PR #1235, approved).\n\n**Next Steps:**\n- Merge PR #1234 after security team review.\n- Schedule a team demo to walk through changes.\n- Update CI/CD pipeline to include new auth service tests.\n\n**Metrics:**\n- Code coverage improved from 78% to 92%.\n- API response time reduced from 250ms to 150ms.\n- Security vulnerabilities addressed: 2 high, 1 medium.\n\n**Tools Used:**\n- Claude Code for refactoring and testing.\n- GitHub for PR management and reviews.\n- Windsurf for real-time collaboration on docs.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:24:27.453030Z",
+    "http_status": 200,
+    "content_hash": "7728396477e50eabe3c265de72f6325e16706b80dff8cf185be91696f061faf7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-team-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-team-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-team-mcp: Orchestrate AI Agents for",
+  "short_description_vi": "Claude Team MCP Server enables AI agents like GPT, Claude, and Gemini to collaborate as a development team. It orchestrates these agents to work together on complex tasks, benefiting software development teams by automating coding, testing, and documentation workflows. The server connects to tools like Claude Code, Windsurf, and Cursor for integration into existing development environments."
+}

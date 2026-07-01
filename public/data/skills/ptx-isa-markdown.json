@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ptx-isa-markdown",
+  "slug": "ptx-isa-markdown",
+  "name": "browser-use",
+  "headline": "ptx-isa-markdown: CUDA Docs & Claude Skill",
+  "short_description": "Complete searchable markdown conversion of NVIDIA's PTX ISA 9.1, CUDA Runtime API 13.1, and CUDA Driver API 13.1 documentation with Claude Code skill for GPU development.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "technillogue",
+  "install_command": "git clone https://github.com/technillogue/ptx-isa-markdown.git",
+  "source_repo_url": "https://github.com/technillogue/ptx-isa-markdown",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill converts NVIDIA's PTX ISA 9.1 and CUDA API documentation from fragmented HTML pages into 640+ organized markdown files, enabling fast offline lookup via grep or Claude search. It includes complete instruction set reference, Runtime and Driver API function documentation, data structure definitions, and profiling/debugging workflows. The Claude Code skill provides PTX instruction lookup, CUDA API reference, TensorCore operation details, and profiling patterns using nsys and ncu. Developers working with CUDA can ask Claude questions about register layouts, error codes, context management, or memory operations and instantly retrieve relevant documentation with section references.\nLook up PTX instructions and register fragment layouts for WGMMA operations\nFind CUDA Runtime API functions, parameters, and error code meanings\nQuery CUDA Driver API for low-level context and memory management\nReference TensorCore (WMMA, WGMMA, TMA) operation details\nPTX ISA 9.1 is a virtual machine instruction set architecture for NVIDIA GPUs. It enables developers to write parallel programs that can be executed on NVIDIA's CUDA architecture.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/technillogue/ptx-isa-markdown`",
+    "usage": "```\nConvert the following PTX ISA 9.1 documentation to searchable markdown format. Include all technical specifications, instructions, and examples. Ensure the output is well-structured with clear headings and bullet points. Focus on the following sections: [SECTIONS]. Also, integrate Claude Code skill for CUDA development where applicable. Use the provided data: [DATA].\n```\nCopy\n\n```\n# PTX ISA 9.1 Documentation\n\n```cuda\n// Example of PTX ISA 9.1 code\n.mad.lo.s32 %r1, %r2, %r3, %r4;\n// Multiplies and adds two 32-bit integers\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ptx-isa-markdown#main-content",
+      "ptx-isa-markdown#overview",
+      "ptx-isa-markdown#setup",
+      "ptx-isa-markdown#examples",
+      "ptx-isa-markdown#tools",
+      "ptx-isa-markdown#mcp",
+      "ptx-isa-markdown#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill converts NVIDIA's PTX ISA 9.1 and CUDA API documentation from fragmented HTML pages into 640+ organized markdown files, enabling fast offline lookup via grep or Claude search. It includes complete instruction set reference, Runtime and Driver API function documentation, data structure definitions, and profiling/debugging workflows. The Claude Code skill provides PTX instruction lookup, CUDA API reference, TensorCore operation details, and profiling patterns using nsys and ncu. Developers working with CUDA can ask Claude questions about register layouts, error codes, context management, or memory operations and instantly retrieve relevant documentation with section references.\nLook up PTX instructions and register fragment layouts for WGMMA operations\nFind CUDA Runtime API functions, parameters, and error code meanings\nQuery CUDA Driver API for low-level context and memory management\nReference TensorCore (WMMA, WGMMA, TMA) operation details\nPTX ISA 9.1 is a virtual machine instruction set architecture for NVIDIA GPUs. It enables developers to write parallel programs that can be executed on NVIDIA's CUDA architecture.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/technillogue/ptx-isa-markdown`",
+    "usage_vi": "```\nConvert the following PTX ISA 9.1 documentation to searchable markdown format. Include all technical specifications, instructions, and examples. Ensure the output is well-structured with clear headings and bullet points. Focus on the following sections: [SECTIONS]. Also, integrate Claude Code skill for CUDA development where applicable. Use the provided data: [DATA].\n```\nCopy\n\n```\n# PTX ISA 9.1 Documentation\n\n```cuda\n// Example of PTX ISA 9.1 code\n.mad.lo.s32 %r1, %r2, %r3, %r4;\n// Multiplies and adds two 32-bit integers\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:18:11.008976Z",
+    "http_status": 200,
+    "content_hash": "a5fe844213e8322f8c1b3e235c2c14138302419eb6615f484ccf54e82fdf32ce",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ptx-isa-markdown.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ptx-isa-markdown.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ptx-isa-markdown: CUDA Docs & Claude Skill",
+  "short_description_vi": "Complete searchable markdown conversion of NVIDIA's PTX ISA 9.1, CUDA Runtime API 13.1, and CUDA Driver API 13.1 documentation with Claude Code skill for GPU development."
+}

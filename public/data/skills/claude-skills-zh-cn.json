@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-zh-cn",
+  "slug": "claude-skills-zh-cn",
+  "name": "Claude_skills_zh-CN",
+  "headline": "Claude skills 中文 automation tools",
+  "short_description": "Claude_skills_zh-CN provides a Chinese-translated version of Anthropic's official skills repository. It enables developers to quickly understand and implement Claude's capabilities for document processing, including Word, PDF, PPTX, and XLSX handling. The skill benefits operations teams by reducing setup time and offering localized documentation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "LeastBit",
+  "install_command": "git clone https://github.com/LeastBit/Claude_skills_zh-CN.git",
+  "source_repo_url": "https://github.com/LeastBit/Claude_skills_zh-CN",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "skills",
+    "study",
+    "translate"
+  ],
+  "sections": {
+    "overview": "Claude_skills_zh-CN is a comprehensive Chinese-language version of Anthropic's official skills repository, designed to help Chinese-speaking developers quickly understand and implement Claude's capabilities. The repository includes complete translations and localized guides for document processing skills covering Word, PDF, PowerPoint, and Excel file handling, alongside creative and development skills for design, web artifacts, and MCP server building. Developers can learn from official examples, reference code patterns for enterprise Copilots, and apply skills directly in Claude Code, Claude.ai, or via API. The structured documentation reduces implementation time and provides best practices for skill design and integration.\nCreating and editing Word documents with revision tracking and comment management\nExtracting text and tables from PDFs, merging documents, and filling forms\nGenerating and editing PowerPoint presentations with HTML-based slide creation\nBuilding and analyzing Excel spreadsheets with formulas and data visualization",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/LeastBit/Claude_skills_zh-CN`",
+    "usage": "```\n请将以下[ENGLISH_TEXT]翻译成中文，并保持原文的技术术语、格式和专业术语准确性。确保翻译后的内容符合中文表达习惯，适合技术文档阅读。\n\n[ENGLISH_TEXT]\n```\nCopy\n\n```\n以下是一段来自Anthropic官方技术文档的英文原文及其中文翻译示例：\n\n**原文**：\n\"Claude Skills is a repository of pre-built capabilities that developers can integrate into their applications. These skills cover a range of document processing tasks, including parsing Word documents, extracting tables from PDFs, and generating summaries from PPTX files. Each skill is designed to be modular, allowing for easy customization and extension.\"\n\n**翻译**：\n\"Claude Skills 是一个预构建能力的存储库，开发者可以将其集成到自己的应用程序中。这些技能涵盖了多种文档处理任务，包括解析 Word 文档、从 PDF 中提取表格，以及从 PPTX 文件生成摘要。每个技能都设计为模块化，便于定制和扩展。\"\n\n**关键术语对照**：\n- Claude Skills → Claude 技能\n- repository → 存储库\n- modular → 模块化\n- customization → 定制\n- parsing → 解析\n- extracting tables → 提取表格\n- generating summaries → 生成摘要\n\n翻译后的内容保留了原文的技术精度，同时采用了中文技术文档的常见表达方式，确保可读性和专业性。\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-zh-cn#main-content",
+      "claude-skills-zh-cn#overview",
+      "claude-skills-zh-cn#setup",
+      "claude-skills-zh-cn#examples",
+      "claude-skills-zh-cn#tools",
+      "claude-skills-zh-cn#mcp",
+      "claude-skills-zh-cn#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude_skills_zh-CN là phiên bản tiếng Trung toàn diện của repository chứa các skill chính thức từ Anthropic, được thiết kế để giúp các nhà phát triển nói tiếng Trung nhanh chóng hiểu và triển khai các khả năng của Claude. Repository này bao gồm các bản dịch hoàn chỉnh và hướng dẫn bản địa hóa cho các skill xử lý tài liệu như Word, PDF, PowerPoint và Excel, bên cạnh các skill sáng tạo và phát triển dành cho thiết kế, web artifact và xây dựng MCP server. Các nhà phát triển có thể học hỏi từ các ví dụ chính thức, tham khảo các mẫu code pattern cho enterprise Copilot và áp dụng trực tiếp các skill trong Claude Code, Claude.ai hoặc qua API. Tài liệu được cấu trúc rõ ràng giúp giảm thời gian triển khai và cung cấp các best practice cho việc thiết kế và tích hợp skill.\nTạo và chỉnh sửa tài liệu Word với tính năng theo dõi thay đổi (revision tracking) và quản lý bình luận\nTrích xuất văn bản và bảng biểu từ PDF, gộp tài liệu và điền biểu mẫu\nTạo và chỉnh sửa bài thuyết trình PowerPoint với tính năng tạo slide dựa trên HTML\nXây dựng và phân tích bảng tính Excel với công thức và trực quan hóa dữ liệu",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/LeastBit/Claude_skills_zh-CN`",
+    "usage_vi": "```\n请将以下[ENGLISH_TEXT]翻译成中文，并保持原文的技术术语、格式和专业术语准确性。确保翻译后的内容符合中文表达习惯，适合技术文档阅读。\n\n[ENGLISH_TEXT]\n```\nSao chép\n\n```\n以下是一段来自Anthropic官方技术文档的英文原文及其中文翻译示例：\n\n**原文**：\n\"Claude Skills is a repository of pre-built capabilities that developers can integrate into their applications. These skills cover a range of document processing tasks, including parsing Word documents, extracting tables from PDFs, and generating summaries from PPTX files. Each skill is designed to be modular, allowing for easy customization and extension.\"\n\n**翻译**：\n\"Claude Skills 是一个预构建能力的存储库，开发者可以将其集成到自己的应用程序中。这些技能涵盖了多种文档处理任务，包括解析 Word 文档、从 PDF 中提取表格，以及从 PPTX 文件生成摘要。每个技能都设计为模块化，便于定制和扩展。\"\n\n**关键术语对照**：\n- Claude Skills → Claude 技能\n- repository → 存储库\n- modular → 模块化\n- customization → 定制\n- parsing → 解析\n- extracting tables → 提取表格\n- generating summaries → 生成摘要\n\n翻译后的内容保留了原文的技术精度，同时采用了中文技术文档的常见表达方式，确保可读性和专业性。\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:33:16.173219Z",
+    "http_status": 200,
+    "content_hash": "c930aaed4c3a28f6267768a57b86cdf6c7da2b4918eac9e8c6a6ae7d4e1a80d2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skills-zh-cn.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skills-zh-cn.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ tự động hóa Claude skills tiếng Trung",
+  "short_description_vi": "Claude_skills_zh-CN cung cấp phiên bản dịch tiếng Trung của repository chính thức chứa các skill của Anthropic. Nó giúp các nhà phát triển nhanh chóng hiểu và triển khai các khả năng của Claude trong xử lý tài liệu, bao gồm xử lý Word, PDF, PPTX và XLSX. Skill này mang lại lợi ích cho các đội ngũ vận hành nhờ giảm thời gian setup và cung cấp tài liệu được bản địa hóa."
+}

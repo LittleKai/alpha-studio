@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/scrapling",
+  "slug": "scrapling",
+  "name": "Scrapling",
+  "headline": "Scrapling: Python Web Scraping with Anti-Bot Bypass",
+  "short_description": "Scrapling is a Python web scraping library built for production environments with anti-bot detection, automatic CAPTCHA bypass, and JavaScript rendering without headless browsers. It handles Cloudflare protection, proxy rotation, and rate limiting automatically, using 70% less memory than Selenium. Data engineers use scrapling for large-scale scraping pipelines, competitive intelligence, and automated content extraction where traditional scrapers like BeautifulSoup or Scrapy get blocked.",
+  "tier": "Gold",
+  "category": "GrowthRevOpsMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "40 min",
+  "author": "D4Vinci",
+  "install_command": "claude install D4Vinci/Scrapling",
+  "source_repo_url": "https://github.com/D4Vinci/Scrapling",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "web scraping",
+    "data extraction",
+    "crawler",
+    "Python"
+  ],
+  "sections": {
+    "overview": "Using scrapling to scrape Cloudflare-protected e-commerce sites for price monitoring\nBuilding scrapling pipelines for large-scale product data extraction with automatic proxy rotation\nDeploying async scrapling scripts to extract JavaScript-rendered content without Selenium\nImplementing scrapling for real estate listing aggregation across anti-bot protected sites",
+    "setup": "Terminal\nCopy\n`claude install D4Vinci/Scrapling`\n`git clone https://github.com/D4Vinci/Scrapling`",
+    "usage": "```\nUse scrapling to extract product pricing data from [ECOMMERCE_SITE] for [PRODUCT_CATEGORY]. Set up a scraper that runs daily at [TIME] and saves the results to a CSV file in [CLOUD_STORAGE_PATH]. Include error handling for CAPTCHAs and rate limiting. Use proxy rotation to avoid IP blocking.\n```\nCopy\n\n```\nScraper setup complete for extracting product pricing data from Amazon for 'Smart Home Devices'. The scraper will run daily at 2:00 AM and save results to 'gs://my-bucket/scraping-results/'. It includes automatic CAPTCHA solving and proxy rotation. Initial test run successfully collected 1,243 product listings with prices, descriptions, and availability. Memory usage was 68% lower than with Selenium. The scraper will automatically retry failed requests up to 3 times before marking them as failed. Alerts will be sent to [EMAIL] if the failure rate exceeds 10% in a single run.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "scrapling#main-content",
+      "scrapling#overview",
+      "scrapling#setup",
+      "scrapling#examples",
+      "scrapling#tools",
+      "scrapling#mcp",
+      "scrapling#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Sử dụng Scrapling để scrape các trang thương mại điện tử được Cloudflare bảo vệ nhằm theo dõi giá cả\nXây dựng các pipeline Scrapling để trích xuất dữ liệu sản phẩm quy mô lớn với tính năng proxy rotation tự động\nTriển khai các script Scrapling bất đồng bộ (async) để trích xuất nội dung render bằng JavaScript mà không cần Selenium\nTích hợp Scrapling để tổng hợp tin đăng bất động sản trên các trang web có cơ chế bảo vệ anti-bot",
+    "setup_vi": "Terminal\nSao chép\n`claude install D4Vinci/Scrapling`\n`git clone https://github.com/D4Vinci/Scrapling`",
+    "usage_vi": "```\nSử dụng Scrapling để trích xuất dữ liệu giá sản phẩm từ [ECOMMERCE_SITE] cho danh mục [PRODUCT_CATEGORY]. Thiết lập một scraper chạy hàng ngày vào lúc [TIME] và lưu kết quả vào file CSV tại [CLOUD_STORAGE_PATH]. Tích hợp cơ chế xử lý lỗi cho CAPTCHA và rate limiting. Sử dụng proxy rotation để tránh bị chặn IP.\n```\nSao chép\n\n```\nHoàn tất setup scraper để trích xuất dữ liệu giá sản phẩm từ Amazon cho 'Smart Home Devices'. Scraper sẽ chạy hàng ngày vào lúc 2:00 AM và lưu kết quả vào 'gs://my-bucket/scraping-results/'. Hệ thống đã tích hợp sẵn tính năng tự động giải CAPTCHA và proxy rotation. Lần chạy thử nghiệm đầu tiên đã thu thập thành công 1.243 danh sách sản phẩm bao gồm giá cả, mô tả và tình trạng còn hàng. Lượng bộ nhớ sử dụng thấp hơn 68% so với Selenium. Scraper sẽ tự động thử lại các request bị lỗi tối đa 3 lần trước khi đánh dấu là thất bại. Cảnh báo sẽ được gửi đến [EMAIL] nếu tỷ lệ lỗi vượt quá 10% trong một lần chạy.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:33:06.524115Z",
+    "http_status": 200,
+    "content_hash": "245f2e48ed94ee3b5078bf4b0ee3c1e635cdf2b950e9c115deb3049cd350eaff",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\scrapling.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\scrapling.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Scrapling: Web Scraping bằng Python với khả năng Vượt Anti-Bot",
+  "short_description_vi": "Scrapling là một thư viện web scraping bằng Python được thiết kế cho môi trường production, tích hợp khả năng phát hiện anti-bot, tự động vượt CAPTCHA và render JavaScript mà không cần headless browser. Thư viện này tự động xử lý cơ chế bảo vệ của Cloudflare, proxy rotation và rate limiting, đồng thời tiết kiệm bộ nhớ đến 70% so với Selenium. Các data engineer sử dụng Scrapling cho các pipeline scraping quy mô lớn, thu thập thông tin cạnh tranh và trích xuất nội dung tự động trong những trường hợp mà các công cụ scraper truyền thống như BeautifulSoup hay Scrapy bị chặn."
+}

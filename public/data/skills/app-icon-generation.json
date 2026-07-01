@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/app-icon-generation",
+  "slug": "app-icon-generation",
+  "name": "GPT Image 2",
+  "headline": "App Icon Generation: AI Icons for Expo",
+  "short_description": "This skill generates professional app icons for React Native Expo apps, providing support for iOS 26 Liquid Glass and Android adaptive icons. It is designed for developers who want to quickly create visually appealing icons using AI.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "code-with-beto",
+  "install_command": "git clone https://github.com/code-with-beto/skills",
+  "source_repo_url": "https://github.com/code-with-beto/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "generation",
+    "image-generation",
+    "icon"
+  ],
+  "sections": {
+    "overview": "The App Icon Plugin generates professional app icons using AI, powered by OpenAI via SnapAI CLI. It provides full iOS 26 .icon folder format with Liquid Glass effect support and Android adaptive icons with Material You theming integration. The skill automatically configures your app.json for both platforms and offers multiple style options including minimalism, glassy, gradient, neon, and material designs. Use it to quickly create icons for new Expo projects, update existing icons with fresh designs, or iterate on multiple icon concepts without manual design work. Transparent backgrounds are supported for better platform integration.\nGenerate 1024x1024 PNG app icons for iOS and Android.\nCreate custom app icons from user-defined descriptions.\nAutomate icon generation with SnapAI CLI integration.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/code-with-beto/skills --skill app-icon`\n`git clone https://github.com/code-with-beto/skills`",
+    "usage": "```\nGenerate a professional app icon for a React Native Expo project targeting iOS 26 Liquid Glass and Android adaptive icons. The icon should represent [APP_NAME], a [APP_DESCRIPTION] in the [INDUSTRY] industry. Use a clean, modern design with [PRIMARY_COLOR] as the dominant color and [SECONDARY_COLOR] for accents. The design should be minimalist, scalable, and suitable for both light and dark modes. Provide the icon in SVG format with a transparent background and a 1024x1024 pixel resolution. Include a brief description of the design choices and how they align with platform guidelines.\n```\nCopy\n\n```\n# App Icon Design for \"EcoTrack\"",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "app-icon-generation#main-content",
+      "app-icon-generation#overview",
+      "app-icon-generation#setup",
+      "app-icon-generation#examples",
+      "app-icon-generation#related",
+      "lovstudio-image-creator",
+      "spritecook-generate-sprites",
+      "gpt-image-2"
+    ],
+    "overview_vi": "The App Icon Plugin generates professional app icons using AI, powered by OpenAI via SnapAI CLI. It provides full iOS 26 .icon folder format with Liquid Glass effect support and Android adaptive icons with Material You theming integration. The skill automatically configures your app.json for both platforms and offers multiple style options including minimalism, glassy, gradient, neon, and material designs. Use it to quickly create icons for new Expo projects, update existing icons with fresh designs, or iterate on multiple icon concepts without manual design work. Transparent backgrounds are supported for better platform integration.\nGenerate 1024x1024 PNG app icons for iOS and Android.\nCreate custom app icons from user-defined descriptions.\nAutomate icon generation with SnapAI CLI integration.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/code-with-beto/skills --skill app-icon`\n`git clone https://github.com/code-with-beto/skills`",
+    "usage_vi": "```\nGenerate a professional app icon for a React Native Expo project targeting iOS 26 Liquid Glass and Android adaptive icons. The icon should represent [APP_NAME], a [APP_DESCRIPTION] in the [INDUSTRY] industry. Use a clean, modern design with [PRIMARY_COLOR] as the dominant color and [SECONDARY_COLOR] for accents. The design should be minimalist, scalable, and suitable for both light and dark modes. Provide the icon in SVG format with a transparent background and a 1024x1024 pixel resolution. Include a brief description of the design choices and how they align with platform guidelines.\n```\nCopy\n\n```\n# App Icon Design for \"EcoTrack\""
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:47:30.713511Z",
+    "http_status": 200,
+    "content_hash": "60a92b86c23c96566fc5c2723c65810cfc2174aad93a57021cd88300c5230f90",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\app-icon-generation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\app-icon-generation.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "App Icon Generation: AI Icons for Expo",
+  "short_description_vi": "This skill generates professional app icons for React Native Expo apps, providing support for iOS 26 Liquid Glass and Android adaptive icons. It is designed for developers who want to quickly create visually appealing icons using AI."
+}

@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hal-9000",
+  "slug": "hal-9000",
+  "name": "browser-use",
+  "headline": "HAL 9000 - macOS Dev Environment Automation",
+  "short_description": "Automates macOS development environments using Ansible playbooks. Ideal for ops teams managing dev environments. Connects to Docker, Kubernetes, and Node.js workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "vinta",
+  "install_command": "git clone https://github.com/vinta/hal-9000.git",
+  "source_repo_url": "https://github.com/vinta/hal-9000",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "python",
+    "macos",
+    "nodejs",
+    "ansible-playbooks",
+    "solidity",
+    "development-environment",
+    "kubernetes",
+    "docker"
+  ],
+  "sections": {
+    "overview": "HAL 9000 is an opinionated macOS development environment automation tool that sets up your entire dev stack with a single command. It configures Claude Code plugins, AI agent skills, runtime environments (Python, Node.js, Bun, Solidity), containerization (Docker via OrbStack, Kubernetes), and cloud platforms (AWS, Google Cloud). The tool provides Ansible playbook-based management, dotfiles synchronization, and specialized plugins like hal-skills for AI-assisted code review and git commits. It's designed for development teams and individual developers who want reproducible, version-controlled dev environments without manual setup.\nBootstrap new macOS dev machines with all runtimes and tools in one command\nManage Docker and Kubernetes configurations across dev teams\nAutomate Python, Node.js, and Solidity environment setup\nVersion-control dotfiles and dev environment configurations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vinta/hal-9000`",
+    "usage": "```\nAutomate the setup of a macOS development environment for [TEAM/PROJECT] using Ansible playbooks. Include tasks to install and configure [SPECIFIC_TOOLS, e.g., Docker, Node.js, Python, VS Code extensions]. Ensure the playbook sets up [SPECIFIC_ENVIRONMENT_VARIABLES] and verifies installations by running [COMMAND_LINE_CHECKS]. Output the playbook in YAML format with comments explaining each step.\n```\nCopy\n\n```\nHere’s a production-ready Ansible playbook to automate a Node.js development environment on macOS for the 'Acme Web Platform' team. The playbook installs Homebrew (if missing), Node.js v18.x, Docker Desktop, and VS Code with essential extensions. It also configures environment variables for `NODE_ENV=development` and `DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock`.\n\n```yaml\n---\n- name: Configure macOS Development Environment for Node.js\n  hosts: localhost\n  connection: local\n  become: false\n  vars:\n    node_version: \"18.x\"\n    docker_desktop_version: \"4.25.0\"\n    vscode_extensions:\n      - dbaeumer.vscode-eslint\n      - esbenp.prettier-vscode\n      - ms-vscode.vscode-node-azure-pack\n\n  tasks:\n    - name: Ensure Homebrew is installed\n      ansible.builtin.command: /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n      register: brew_install\n      changed_when: \"'Installation successful' in brew_install.stdout\"\n      when: not ansible_facts.pkg_mgr == 'homebrew'\n\n    - name: Install core dependencies via Homebrew\n      community.general.homebrew:\n        name:\n          - node@{{ node_version }}\n          - docker\n          - docker-compose\n          - yarn\n          - git\n        state: present\n\n    - name: Install Docker Desktop\n      ansible.builtin.command: brew install --cask docker\n      register: docker_install\n      changed_when: \"'Installing docker' in docker_install.stdout\"\n\n    - name: Start Docker Desktop and verify daemon\n      ansible.builtin.command: open -a Docker\n      register: docker_start\n      until: docker_start is success\n      retries: 5\n      delay: 10\n      changed_when: false\n\n    - name: Install VS Code and extensions\n      ansible.builtin.command: brew install --cask visual-studio-code\n      register: vscode_install\n      changed_when: \"'Installing visual-studio-code' in vscode_install.stdout\"\n\n    - name: Install VS Code extensions\n      ansible.builtin.command: code --install-extension {{ item }}\n      loop: \"{{ vscode_extensions }}\"\n      register: vscode_ext_result\n      changed_when: \"'successfully installed' in vscode_ext_result.stdout\"\n\n    - name: Configure environment variables\n      ansible.builtin.lineinfile:\n        path: ~/.zshrc\n        line: \"export NODE_ENV=development\"\n        state: present\n      register: env_config\n\n    - name: Verify Node.js installation\n      ansible.builtin.command: node --version\n      register: node_version_check\n      changed_when: false\n      failed_when: node_version_check.stdout is not version(node_version, '>=')\n\n    - name: Verify Docker is running\n      ansible.builtin.command: docker --version\n      register: docker_version_check\n      changed_when: false\n      failed_when: docker_version_check.rc != 0\n\n  post_tasks:\n    - name: Display completion message\n      ansible.builtin.debug:\n        msg: \"Development environment configured successfully. Node: {{ node_version_check.stdout }}, Docker: {{ docker_version_check.stdout }}\"\n```\n\n**Verification Steps Performed:**\n1. Homebrew installation confirmed via `brew --version`.\n2. Node.js v18.18.2 installed and verified with `node --version`.\n3. Docker Desktop launched and daemon confirmed with `docker --version`.\n4. VS Code extensions installed successfully via `code --list-extensions`.\n5. Environment variables set in `~/.zshrc` and loaded in current session.\n\nThis playbook can be extended to include Kubernetes tools (e.g., `kubectl`, `minikube`) or database clients (e.g., `postgresql`, `mongodb`) by adding additional tasks. For teams using M1/M2 Macs, ensure Rosetta 2 is installed for x86 compatibility if needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hal-9000#main-content",
+      "hal-9000#overview",
+      "hal-9000#setup",
+      "hal-9000#examples",
+      "hal-9000#tools",
+      "hal-9000#mcp",
+      "hal-9000#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "HAL 9000 is an opinionated macOS development environment automation tool that sets up your entire dev stack with a single command. It configures Claude Code plugins, AI agent skills, runtime environments (Python, Node.js, Bun, Solidity), containerization (Docker via OrbStack, Kubernetes), and cloud platforms (AWS, Google Cloud). The tool provides Ansible playbook-based management, dotfiles synchronization, and specialized plugins like hal-skills for AI-assisted code review and git commits. It's designed for development teams and individual developers who want reproducible, version-controlled dev environments without manual setup.\nBootstrap new macOS dev machines with all runtimes and tools in one command\nManage Docker and Kubernetes configurations across dev teams\nAutomate Python, Node.js, and Solidity environment setup\nVersion-control dotfiles and dev environment configurations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vinta/hal-9000`",
+    "usage_vi": "```\nAutomate the setup of a macOS development environment for [TEAM/PROJECT] using Ansible playbooks. Include tasks to install and configure [SPECIFIC_TOOLS, e.g., Docker, Node.js, Python, VS Code extensions]. Ensure the playbook sets up [SPECIFIC_ENVIRONMENT_VARIABLES] and verifies installations by running [COMMAND_LINE_CHECKS]. Output the playbook in YAML format with comments explaining each step.\n```\nCopy\n\n```\nHere’s a production-ready Ansible playbook to automate a Node.js development environment on macOS for the 'Acme Web Platform' team. The playbook installs Homebrew (if missing), Node.js v18.x, Docker Desktop, and VS Code with essential extensions. It also configures environment variables for `NODE_ENV=development` and `DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock`.\n\n```yaml\n---\n- name: Configure macOS Development Environment for Node.js\n  hosts: localhost\n  connection: local\n  become: false\n  vars:\n    node_version: \"18.x\"\n    docker_desktop_version: \"4.25.0\"\n    vscode_extensions:\n      - dbaeumer.vscode-eslint\n      - esbenp.prettier-vscode\n      - ms-vscode.vscode-node-azure-pack\n\n  tasks:\n    - name: Ensure Homebrew is installed\n      ansible.builtin.command: /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n      register: brew_install\n      changed_when: \"'Installation successful' in brew_install.stdout\"\n      when: not ansible_facts.pkg_mgr == 'homebrew'\n\n    - name: Install core dependencies via Homebrew\n      community.general.homebrew:\n        name:\n          - node@{{ node_version }}\n          - docker\n          - docker-compose\n          - yarn\n          - git\n        state: present\n\n    - name: Install Docker Desktop\n      ansible.builtin.command: brew install --cask docker\n      register: docker_install\n      changed_when: \"'Installing docker' in docker_install.stdout\"\n\n    - name: Start Docker Desktop and verify daemon\n      ansible.builtin.command: open -a Docker\n      register: docker_start\n      until: docker_start is success\n      retries: 5\n      delay: 10\n      changed_when: false\n\n    - name: Install VS Code and extensions\n      ansible.builtin.command: brew install --cask visual-studio-code\n      register: vscode_install\n      changed_when: \"'Installing visual-studio-code' in vscode_install.stdout\"\n\n    - name: Install VS Code extensions\n      ansible.builtin.command: code --install-extension {{ item }}\n      loop: \"{{ vscode_extensions }}\"\n      register: vscode_ext_result\n      changed_when: \"'successfully installed' in vscode_ext_result.stdout\"\n\n    - name: Configure environment variables\n      ansible.builtin.lineinfile:\n        path: ~/.zshrc\n        line: \"export NODE_ENV=development\"\n        state: present\n      register: env_config\n\n    - name: Verify Node.js installation\n      ansible.builtin.command: node --version\n      register: node_version_check\n      changed_when: false\n      failed_when: node_version_check.stdout is not version(node_version, '>=')\n\n    - name: Verify Docker is running\n      ansible.builtin.command: docker --version\n      register: docker_version_check\n      changed_when: false\n      failed_when: docker_version_check.rc != 0\n\n  post_tasks:\n    - name: Display completion message\n      ansible.builtin.debug:\n        msg: \"Development environment configured successfully. Node: {{ node_version_check.stdout }}, Docker: {{ docker_version_check.stdout }}\"\n```\n\n**Verification Steps Performed:**\n1. Homebrew installation confirmed via `brew --version`.\n2. Node.js v18.18.2 installed and verified with `node --version`.\n3. Docker Desktop launched and daemon confirmed with `docker --version`.\n4. VS Code extensions installed successfully via `code --list-extensions`.\n5. Environment variables set in `~/.zshrc` and loaded in current session.\n\nThis playbook can be extended to include Kubernetes tools (e.g., `kubectl`, `minikube`) or database clients (e.g., `postgresql`, `mongodb`) by adding additional tasks. For teams using M1/M2 Macs, ensure Rosetta 2 is installed for x86 compatibility if needed.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:34:12.789852Z",
+    "http_status": 200,
+    "content_hash": "25700edd8684d90af36cefa7496b8451e888c0fa7e6483ce297b5867633b21de",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hal-9000.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hal-9000.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "HAL 9000 - macOS Dev Environment Automation",
+  "short_description_vi": "Automates macOS development environments using Ansible playbooks. Ideal for ops teams managing dev environments. Connects to Docker, Kubernetes, and Node.js workflows."
+}

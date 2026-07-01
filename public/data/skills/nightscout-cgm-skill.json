@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nightscout-cgm-skill",
+  "slug": "nightscout-cgm-skill",
+  "name": "react-native-best-practices",
+  "headline": "Nightscout CGM Skill for Blood Glucose Analysis",
+  "short_description": "The Nightscout CGM Skill uses GitHub Copilot to facilitate blood glucose analysis for diabetes management. This Python-based tool helps users with real-time insights and data visualization to enhance their health monitoring experience.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "shanselman",
+  "install_command": "claude install shanselman/nightscout-cgm-skill",
+  "source_repo_url": "https://github.com/shanselman/nightscout-cgm-skill",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "healthcare",
+    "Python",
+    "GitHub",
+    "blood glucose",
+    "CGM"
+  ],
+  "sections": {
+    "overview": "The Nightscout CGM Skill is an Agent Skill that helps diabetes community members analyze their Continuous Glucose Monitor data locally and privately. It generates interactive HTML reports with charts, clinical-standard Ambulatory Glucose Profile (AGP) reports for healthcare providers, and identifies glucose patterns like recurring lows or highs. The skill works with GitHub Copilot CLI, Claude Code, and VS Code agent mode, and includes insulin delivery tracking for Loop/OpenAPS users, real-time glucose readings with trend direction, time-in-range statistics, and period comparisons. All data is processed and stored locally on your machine with no external syncing.\nAnalyze blood glucose data trends\nVisualize glucose levels over time\nIntegrate with diabetes management systems\nProvide insights for dietary adjustments",
+    "setup": "Terminal\nCopy\n`claude install shanselman/nightscout-cgm-skill`\n`git clone https://github.com/shanselman/nightscout-cgm-skill`",
+    "usage": "```\nAnalyze the latest [NUMBER] days of blood glucose data from my Nightscout CGM for [PATIENT_NAME] (age [AGE], diabetes type [TYPE]). Generate a report highlighting: 1) Time in Range (TIR) percentages and trends, 2) Hypoglycemic events (below 70 mg/dL) with timestamps and duration, 3) Hyperglycemic spikes (above 180 mg/dL) with potential causes, 4) Patterns in insulin dosing vs. glucose levels, and 5) Actionable recommendations for [SPECIFIC_GOAL, e.g., 'reducing overnight lows' or 'improving post-breakfast spikes']. Use the data from [DATA_SOURCE, e.g., 'my Dexcom Clarity export' or 'Nightscout API'] and format the output as a markdown table with embedded charts for trends over time. Include a summary of key findings in bullet points at the top of the report.\n```\nCopy\n\n```\n### Nightscout CGM Analysis Report for Alex Carter (Type 1 Diabetes, Age 28)\n*Generated on November 15, 2025*\n\n**Key Findings:**\n- **Time in Range (70-180 mg/dL):** 68% (Goal: >70%) - *Slightly below target, declining trend over past 30 days*\n- **Hypoglycemic Events (Below 70 mg/dL):** 12 events (avg. duration: 22 minutes) - *Peak risk between 2-4 AM*\n- **Hyperglycemic Spikes (Above 180 mg/dL):** 8 episodes (avg. peak: 245 mg/dL) - *Most common 30-60 mins post-meal*\n- **Insulin Sensitivity:** Pre-breakfast sensitivity factor improved by 12% vs. last month, but post-dinner sensitivity declined by 8%\n\n**Detailed Analysis:**\n\n| Metric | 7-Day Avg | 30-Day Trend | Target | Status |\n|--------|-----------|--------------|--------|--------|\n| Time in Range | 65% | ▼ -5% | >70% | ⚠️ Below |\n| Glucose Management Indicator (GMI) | 7.2% | ▼ -0.3% | <7% | ✅ Good |\n| Average Glucose | 168 mg/dL | ▼ -8 mg/dL | <154 mg/dL | ⚠️ High |\n| Coefficient of Variation | 38% | ▼ -2% | <36% | ⚠️ High |\n\n**Hypoglycemia Events (Last 7 Days):**\n| Date | Time | Duration | Lowest BG | Suspected Cause |\n|------|------|----------|-----------|-----------------|\n| Nov 12 | 03:15 AM | 28 min | 58 mg/dL | Missed bedtime snack |\n| Nov 13 | 11:42 PM | 15 min | 65 mg/dL | Over-correction for 150 mg/dL |\n| Nov 14 | 02:30 AM | 22 min | 62 mg/dL | Basal rate too high |\n\n**Hyperglycemia Spikes (Last 7 Days):**\n| Date | Time | Peak BG | Meal | Insulin Dose |\n|------|------|---------|------|--------------|\n| Nov 11 | 12:30 PM | 250 mg/dL | Large pasta lunch | 6.5u (30% under-dosed) |\n| Nov 12 | 07:15 PM | 235 mg/dL | Pizza dinner | 5u (25% under-dosed) |\n\n**Trend Analysis (Last 30 Days):**\n- **Morning Patterns:** Gradual rise in fasting glucose (145→158 mg/dL) despite consistent basal dosing\n- **Exercise Impact:** Post-run glucose drops more aggressively (avg. 15 mg/dL drop per 30 mins exercise)\n- **Weekend vs. Weekday:** 18% more hyperglycemic events on weekends (likely higher carb intake)\n\n**Actionable Recommendations:**\n1. **Reduce Overnight Lows:** Adjust basal rate from 0.8u/h to 0.7u/h between 1-4 AM. Consider adding a 10g slow-digesting snack at 9:30 PM.\n2. **Improve Post-Meal Control:** Increase insulin-to-carb ratio for lunch by 15% and dinner by 10%. Enable dual-wave bolus for high-fat meals.\n3. **Exercise Safety:** Reduce pre-exercise insulin by 20% for runs >30 mins. Monitor glucose during and 2 hours post-exercise.\n4. **Weekend Strategy:** Plan higher basal rates (+0.1u/h) for Saturday/Sunday mornings. Track weekend carb intake in a food diary.\n\n**Next Steps:**\n- Review basal rate adjustments in CareLink/Pump Settings\n- Enable CGM trend arrows in Nightscout for real-time alerts\n- Schedule endocrinologist appointment to discuss pattern adjustments\n\n*Data Source: Dexcom Clarity Export (Nov 1-15, 2025) | Analysis performed using Nightscout CGM Skill v2.1.4*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "nightscout-cgm-skill#main-content",
+      "nightscout-cgm-skill#overview",
+      "nightscout-cgm-skill#setup",
+      "nightscout-cgm-skill#examples",
+      "nightscout-cgm-skill#tools",
+      "nightscout-cgm-skill#mcp",
+      "nightscout-cgm-skill#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The Nightscout CGM Skill is an Agent Skill that helps diabetes community members analyze their Continuous Glucose Monitor data locally and privately. It generates interactive HTML reports with charts, clinical-standard Ambulatory Glucose Profile (AGP) reports for healthcare providers, and identifies glucose patterns like recurring lows or highs. The skill works with GitHub Copilot CLI, Claude Code, and VS Code agent mode, and includes insulin delivery tracking for Loop/OpenAPS users, real-time glucose readings with trend direction, time-in-range statistics, and period comparisons. All data is processed and stored locally on your machine with no external syncing.\nAnalyze blood glucose data trends\nVisualize glucose levels over time\nIntegrate with diabetes management systems\nProvide insights for dietary adjustments",
+    "setup_vi": "Terminal\nCopy\n`claude install shanselman/nightscout-cgm-skill`\n`git clone https://github.com/shanselman/nightscout-cgm-skill`",
+    "usage_vi": "```\nAnalyze the latest [NUMBER] days of blood glucose data from my Nightscout CGM for [PATIENT_NAME] (age [AGE], diabetes type [TYPE]). Generate a report highlighting: 1) Time in Range (TIR) percentages and trends, 2) Hypoglycemic events (below 70 mg/dL) with timestamps and duration, 3) Hyperglycemic spikes (above 180 mg/dL) with potential causes, 4) Patterns in insulin dosing vs. glucose levels, and 5) Actionable recommendations for [SPECIFIC_GOAL, e.g., 'reducing overnight lows' or 'improving post-breakfast spikes']. Use the data from [DATA_SOURCE, e.g., 'my Dexcom Clarity export' or 'Nightscout API'] and format the output as a markdown table with embedded charts for trends over time. Include a summary of key findings in bullet points at the top of the report.\n```\nCopy\n\n```\n### Nightscout CGM Analysis Report for Alex Carter (Type 1 Diabetes, Age 28)\n*Generated on November 15, 2025*\n\n**Key Findings:**\n- **Time in Range (70-180 mg/dL):** 68% (Goal: >70%) - *Slightly below target, declining trend over past 30 days*\n- **Hypoglycemic Events (Below 70 mg/dL):** 12 events (avg. duration: 22 minutes) - *Peak risk between 2-4 AM*\n- **Hyperglycemic Spikes (Above 180 mg/dL):** 8 episodes (avg. peak: 245 mg/dL) - *Most common 30-60 mins post-meal*\n- **Insulin Sensitivity:** Pre-breakfast sensitivity factor improved by 12% vs. last month, but post-dinner sensitivity declined by 8%\n\n**Detailed Analysis:**\n\n| Metric | 7-Day Avg | 30-Day Trend | Target | Status |\n|--------|-----------|--------------|--------|--------|\n| Time in Range | 65% | ▼ -5% | >70% | ⚠️ Below |\n| Glucose Management Indicator (GMI) | 7.2% | ▼ -0.3% | <7% | ✅ Good |\n| Average Glucose | 168 mg/dL | ▼ -8 mg/dL | <154 mg/dL | ⚠️ High |\n| Coefficient of Variation | 38% | ▼ -2% | <36% | ⚠️ High |\n\n**Hypoglycemia Events (Last 7 Days):**\n| Date | Time | Duration | Lowest BG | Suspected Cause |\n|------|------|----------|-----------|-----------------|\n| Nov 12 | 03:15 AM | 28 min | 58 mg/dL | Missed bedtime snack |\n| Nov 13 | 11:42 PM | 15 min | 65 mg/dL | Over-correction for 150 mg/dL |\n| Nov 14 | 02:30 AM | 22 min | 62 mg/dL | Basal rate too high |\n\n**Hyperglycemia Spikes (Last 7 Days):**\n| Date | Time | Peak BG | Meal | Insulin Dose |\n|------|------|---------|------|--------------|\n| Nov 11 | 12:30 PM | 250 mg/dL | Large pasta lunch | 6.5u (30% under-dosed) |\n| Nov 12 | 07:15 PM | 235 mg/dL | Pizza dinner | 5u (25% under-dosed) |\n\n**Trend Analysis (Last 30 Days):**\n- **Morning Patterns:** Gradual rise in fasting glucose (145→158 mg/dL) despite consistent basal dosing\n- **Exercise Impact:** Post-run glucose drops more aggressively (avg. 15 mg/dL drop per 30 mins exercise)\n- **Weekend vs. Weekday:** 18% more hyperglycemic events on weekends (likely higher carb intake)\n\n**Actionable Recommendations:**\n1. **Reduce Overnight Lows:** Adjust basal rate from 0.8u/h to 0.7u/h between 1-4 AM. Consider adding a 10g slow-digesting snack at 9:30 PM.\n2. **Improve Post-Meal Control:** Increase insulin-to-carb ratio for lunch by 15% and dinner by 10%. Enable dual-wave bolus for high-fat meals.\n3. **Exercise Safety:** Reduce pre-exercise insulin by 20% for runs >30 mins. Monitor glucose during and 2 hours post-exercise.\n4. **Weekend Strategy:** Plan higher basal rates (+0.1u/h) for Saturday/Sunday mornings. Track weekend carb intake in a food diary.\n\n**Next Steps:**\n- Review basal rate adjustments in CareLink/Pump Settings\n- Enable CGM trend arrows in Nightscout for real-time alerts\n- Schedule endocrinologist appointment to discuss pattern adjustments\n\n*Data Source: Dexcom Clarity Export (Nov 1-15, 2025) | Analysis performed using Nightscout CGM Skill v2.1.4*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:48:55.286624Z",
+    "http_status": 200,
+    "content_hash": "e11cb6b7382f96e31cf224e5c2f4707b097a17ee7edd7ab636d75fddbe5a1ea9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nightscout-cgm-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nightscout-cgm-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Nightscout CGM Skill for Blood Glucose Analysis",
+  "short_description_vi": "The Nightscout CGM Skill uses GitHub Copilot to facilitate blood glucose analysis for diabetes management. This Python-based tool helps users with real-time insights and data visualization to enhance their health monitoring experience."
+}

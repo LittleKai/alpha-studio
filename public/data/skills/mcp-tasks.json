@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-tasks",
+  "slug": "mcp-tasks",
+  "name": "MCP Tasks",
+  "headline": "MCP Tasks - Automate Task Management",
+  "short_description": "MCP Tasks is a task management server supporting Markdown, JSON, and YAML formats. It enables teams to automate task creation, tracking, and completion using AI agents like Claude. Integrates with Cursor and other MCP-compatible tools for streamlined workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "flesler",
+  "install_command": "git clone https://github.com/flesler/mcp-tasks.git",
+  "source_repo_url": "https://github.com/flesler/mcp-tasks",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "llm",
+    "cursor",
+    "mcp",
+    "todo",
+    "ai",
+    "task-manager",
+    "model-context-protocol",
+    "claude",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "MCP Tasks is a task management server designed for AI agents like Claude to automate task creation, tracking, and organization. It supports three file formats—Markdown, JSON, and YAML—allowing teams to choose their preferred storage method while maintaining consistent functionality. The tool provides five core operations: setup, search with filtering, add tasks, update task status, and view summaries with work-in-progress tracking. Built with LLM efficiency in mind, it minimizes API calls through batch operations and smart defaults while preventing duplicate tasks. MCP Tasks integrates with Cursor, Claude Desktop, and other MCP-compatible tools, making it ideal for development teams automating their workflow management.\nDevelopers using Claude or Cursor to auto-generate and track development tasks\nProject teams maintaining task lists in Markdown while enabling AI-assisted task management\nTeams needing multi-format task file support (Markdown, JSON, YAML) for different workflows\nAutomating task creation during AI-assisted coding sessions without manual file editing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/flesler/mcp-tasks`",
+    "usage": "```\nCreate a new task in MCP Tasks for [COMPANY] in the [INDUSTRY] sector. The task should be titled '[TASK TITLE]' and have the following details: [TASK DETAILS]. Assign it to [TEAM MEMBER] with a priority of [PRIORITY LEVEL]. Format the output in YAML.\n```\nCopy\n\n```\n```yaml\n- task:\n    title: 'Update Customer Database'\n    description: 'Migrate all customer records from the legacy system to the new CRM platform.'\n    assigned_to: 'Sarah Johnson'\n    priority: 'High'\n    status: 'Pending'\n    due_date: '2023-12-15'\n    project: 'CRM Migration'\n    tags:\n      - 'Data Migration'\n      - 'CRM'\n      - 'High Priority'\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-tasks#main-content",
+      "mcp-tasks#overview",
+      "mcp-tasks#setup",
+      "mcp-tasks#examples",
+      "mcp-tasks#tools",
+      "mcp-tasks#mcp",
+      "mcp-tasks#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP Tasks là một task management server được thiết kế cho các AI agent như Claude để tự động hóa việc tạo, theo dõi và sắp xếp tác vụ. Công cụ này hỗ trợ ba định dạng tệp—Markdown, JSON và YAML—cho phép các đội ngũ lựa chọn phương thức lưu trữ ưa thích của mình mà vẫn đảm bảo tính năng nhất quán. Công cụ cung cấp năm thao tác cốt lõi: setup, tìm kiếm kèm bộ lọc, thêm tác vụ, cập nhật trạng thái tác vụ và xem bản tóm tắt cùng với tính năng theo dõi tiến độ công việc (work-in-progress). Được thiết kế tối ưu cho hiệu suất LLM, MCP Tasks giảm thiểu số lượng API call thông qua các thao tác hàng loạt (batch operations) và thiết lập mặc định thông minh, đồng thời ngăn chặn việc trùng lặp tác vụ. MCP Tasks tích hợp mượt mà với Cursor, Claude Desktop và các công cụ tương thích MCP khác, rất lý tưởng cho các đội ngũ phát triển muốn tự động hóa việc quản lý workflow của mình.\nCác lập trình viên sử dụng Claude hoặc Cursor để tự động tạo và theo dõi các tác vụ phát triển\nCác đội ngũ dự án muốn duy trì danh sách tác vụ bằng Markdown nhưng vẫn áp dụng quản lý tác vụ được hỗ trợ bởi AI\nCác đội ngũ cần hỗ trợ tệp tác vụ đa định dạng (Markdown, JSON, YAML) cho các workflow khác nhau\nTự động hóa việc tạo tác vụ trong các phiên lập trình có AI hỗ trợ mà không cần chỉnh sửa tệp thủ công",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/flesler/mcp-tasks`",
+    "usage_vi": "```\nTạo một tác vụ mới trong MCP Tasks cho [COMPANY] thuộc lĩnh vực [INDUSTRY]. Tác vụ phải có tiêu đề là '[TASK TITLE]' và các thông tin chi tiết sau: [TASK DETAILS]. Giao tác vụ này cho [TEAM MEMBER] với độ ưu tiên là [PRIORITY LEVEL]. Định dạng đầu ra dưới dạng YAML.\n```\nCopy\n\n```\n```yaml\n- task:\n    title: 'Cập nhật Cơ sở dữ liệu Khách hàng'\n    description: 'Di chuyển toàn bộ hồ sơ khách hàng từ hệ thống cũ sang nền tảng CRM mới.'\n    assigned_to: 'Sarah Johnson'\n    priority: 'High'\n    status: 'Pending'\n    due_date: '2023-12-15'\n    project: 'CRM Migration'\n    tags:\n      - 'Data Migration'\n      - 'CRM'\n      - 'High Priority'\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:27.102664Z",
+    "http_status": 200,
+    "content_hash": "0640e15dc40d4293d692ddc5517eef9a4a36fa74f72a12b48d95524637beba6e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-tasks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-tasks.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP Tasks - Tự động hóa quản lý tác vụ",
+  "short_description_vi": "MCP Tasks là một task management server hỗ trợ các định dạng Markdown, JSON và YAML. Công cụ này cho phép các đội ngũ tự động hóa việc tạo, theo dõi và hoàn thành tác vụ bằng cách sử dụng các AI agent như Claude. Tích hợp mượt mà với Cursor và các công cụ tương thích MCP khác để tối ưu hóa workflow."
+}

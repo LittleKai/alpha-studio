@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/polyakov-claude-skills",
+  "slug": "polyakov-claude-skills",
+  "name": "Polyakov Claude Skills",
+  "headline": "Polyakov Claude Skills - Automate Document",
+  "short_description": "Polyakov Claude Skills is a collection of Python-based plugins for Claude that automate document processing and web scraping. Operations teams use it to streamline contract management and data extraction. It integrates with Claude's plugin system to enhance productivity in document-heavy workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "artwist-polyakov",
+  "install_command": "git clone https://github.com/artwist-polyakov/polyakov-claude-skills.git",
+  "source_repo_url": "https://github.com/artwist-polyakov/polyakov-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Polyakov Claude Skills provides a comprehensive collection of 19+ Python-based plugins extending Claude Code's capabilities for automation and data extraction. The skills cover document processing (Word template filling), web scraping with JavaScript rendering and anti-bot bypass, SSH remote server access, genetic data analysis, and integrations with Yandex services including search analytics, Wordstat keyword research, and Metrika analytics. Installation is available through the Claude marketplace or manual setup, with skills triggering automatically based on context. Operations teams and developers benefit from streamlined workflows in contract management, SEO research, server administration, and content publishing.\nAutomating contract and form filling with Word templates\nWeb scraping with JavaScript rendering and CAPTCHA bypass\nSSH server management and Docker container operations\nYandex keyword research and search demand analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/artwist-polyakov/polyakov-claude-skills`",
+    "usage": "```\nUse the Polyakov Claude Skills plugin to extract key details from a contract document. Provide the following details: [COMPANY], [INDUSTRY], and [DOCUMENT_PATH]. The output should include the contract's effective date, termination clauses, and any renewal terms.\n```\nCopy\n\n```\n# Contract Analysis Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "polyakov-claude-skills#main-content",
+      "polyakov-claude-skills#overview",
+      "polyakov-claude-skills#setup",
+      "polyakov-claude-skills#examples",
+      "polyakov-claude-skills#tools",
+      "polyakov-claude-skills#mcp",
+      "polyakov-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Polyakov Claude Skills cung cấp bộ sưu tập toàn diện gồm hơn 19 plugin viết bằng Python, giúp mở rộng khả năng tự động hóa và trích xuất dữ liệu của Claude Code. Các skill này bao gồm xử lý tài liệu (điền thông tin vào mẫu Word), web scraping hỗ trợ render JavaScript và vượt cơ chế anti-bot, truy cập máy chủ từ xa qua SSH, phân tích dữ liệu di truyền, cũng như tích hợp các dịch vụ của Yandex như phân tích tìm kiếm, nghiên cứu từ khóa Wordstat và phân tích Metrika. Bạn có thể cài đặt thông qua Claude marketplace hoặc setup thủ công, các skill sẽ tự động kích hoạt dựa trên ngữ cảnh thực tế. Cả đội ngũ vận hành lẫn lập trình viên đều có thể tối ưu hóa các workflow của mình trong việc quản lý hợp đồng, nghiên cứu SEO, quản trị máy chủ và xuất bản nội dung.\n\nTự động hóa việc điền hợp đồng và biểu mẫu bằng Word template\nWeb scraping hỗ trợ render JavaScript và vượt CAPTCHA\nQuản lý máy chủ SSH và thao tác với container Docker\nNghiên cứu từ khóa Yandex và phân tích nhu cầu tìm kiếm",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn setup thủ công.\n`git clone https://github.com/artwist-polyakov/polyakov-claude-skills`",
+    "usage_vi": "```\nSử dụng plugin Polyakov Claude Skills để trích xuất các thông tin chính từ một tài liệu hợp đồng. Hãy cung cấp các thông tin sau: [COMPANY], [INDUSTRY], và [DOCUMENT_PATH]. Kết quả đầu ra cần bao gồm ngày có hiệu lực của hợp đồng, các điều khoản chấm dứt và bất kỳ điều khoản gia hạn nào.\n```\nCopy\n\n```\n# Báo cáo Phân tích Hợp đồng\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:47:06.161527Z",
+    "http_status": 200,
+    "content_hash": "c13bd57e5edcb9f4b2b946f32ecec43da6a0fe11097a0732d44e688aef1ea32e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\polyakov-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\polyakov-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Polyakov Claude Skills - Tự động hóa tài liệu",
+  "short_description_vi": "Polyakov Claude Skills là bộ plugin viết bằng Python dành cho Claude, hỗ trợ tự động hóa việc xử lý tài liệu và web scraping. Các đội ngũ vận hành sử dụng bộ công cụ này để tối ưu hóa quy trình quản lý hợp đồng và trích xuất dữ liệu. Nhờ tích hợp trực tiếp với hệ thống plugin của Claude, bộ kỹ năng này giúp nâng cao hiệu suất cho các workflow xử lý nhiều tài liệu."
+}

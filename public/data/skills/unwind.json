@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/unwind",
+  "slug": "unwind",
+  "name": "Unwind",
+  "headline": "Unwind - AI Codebase Analysis & Rebuild",
+  "short_description": "Unwind analyzes and documents legacy codebases to enable AI-driven rebuilds. Operations teams use it to create machine-readable documentation and phased rebuild plans. It connects to existing codebases and integrates with AI agents for modernization.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "cliftonc",
+  "install_command": "git clone https://github.com/cliftonc/unwind.git",
+  "source_repo_url": "https://github.com/cliftonc/unwind",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Unwind analyzes legacy codebases across five phases—discovery, layer analysis, gap detection, gap completion, and synthesis—to generate complete machine-readable documentation and strategic rebuild plans. It extracts repository structure, identifies technology stacks, and documents each architectural layer (database, domain model, service, API, frontend) in dependency order, preserving external API contracts, business logic, and data integrity. Operations teams and engineers use Unwind to create work lists for AI-driven modernization, translating systems into new frameworks while maintaining behavioral compatibility. The skill outputs architecture diagrams, layer-by-layer documentation, and a comprehensive REBUILD-PLAN.md that serves as a blueprint for system reconstruction.\nDocumenting legacy applications before framework or language migrations\nCreating AI-readable blueprints for system modernization projects\nGenerating layer analysis for monolith-to-microservices refactors\nBuilding rebuild plans that preserve business logic and API contracts during technology transitions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cliftonc/unwind`",
+    "usage": "```\nAnalyze the following legacy codebase for [COMPANY] in the [INDUSTRY] sector. Generate machine-readable documentation and a phased rebuild plan. Focus on [DATA] as a critical component. Provide a summary of key findings and recommendations.\n```\nCopy\n\n```\n# Legacy Codebase Analysis for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "unwind#main-content",
+      "unwind#overview",
+      "unwind#setup",
+      "unwind#examples",
+      "unwind#tools",
+      "unwind#mcp",
+      "unwind#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Unwind analyzes legacy codebases across five phases—discovery, layer analysis, gap detection, gap completion, and synthesis—to generate complete machine-readable documentation and strategic rebuild plans. It extracts repository structure, identifies technology stacks, and documents each architectural layer (database, domain model, service, API, frontend) in dependency order, preserving external API contracts, business logic, and data integrity. Operations teams and engineers use Unwind to create work lists for AI-driven modernization, translating systems into new frameworks while maintaining behavioral compatibility. The skill outputs architecture diagrams, layer-by-layer documentation, and a comprehensive REBUILD-PLAN.md that serves as a blueprint for system reconstruction.\nDocumenting legacy applications before framework or language migrations\nCreating AI-readable blueprints for system modernization projects\nGenerating layer analysis for monolith-to-microservices refactors\nBuilding rebuild plans that preserve business logic and API contracts during technology transitions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cliftonc/unwind`",
+    "usage_vi": "```\nAnalyze the following legacy codebase for [COMPANY] in the [INDUSTRY] sector. Generate machine-readable documentation and a phased rebuild plan. Focus on [DATA] as a critical component. Provide a summary of key findings and recommendations.\n```\nCopy\n\n```\n# Legacy Codebase Analysis for GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:33:24.867660Z",
+    "http_status": 200,
+    "content_hash": "846328b1b90a5e8a81e0e2108c6def8bf5ff06396299ab4752b68dffbacff22a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\unwind.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\unwind.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Unwind - AI Codebase Analysis & Rebuild",
+  "short_description_vi": "Unwind analyzes and documents legacy codebases to enable AI-driven rebuilds. Operations teams use it to create machine-readable documentation and phased rebuild plans. It connects to existing codebases and integrates with AI agents for modernization."
+}

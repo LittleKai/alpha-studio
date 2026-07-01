@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sequence",
+  "slug": "sequence",
+  "name": "Sequence",
+  "headline": "Sequence - Email Marketing Automation",
+  "short_description": "Sequence is an open-source email marketing automation tool that enables marketers to segment customers by events, user attributes, or event attributes. It helps create multi-channel campaigns and analyze performance. Connects to analytics tools and supports TypeScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "sequence-so",
+  "install_command": "git clone https://github.com/sequence-so/sequence.git",
+  "source_repo_url": "https://github.com/sequence-so/sequence",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "marketing",
+    "audiences",
+    "email",
+    "analytics",
+    "segment"
+  ],
+  "sections": {
+    "overview": "Sequence is an open-core email marketing automation tool designed for data-driven marketers who need to segment customers and launch targeted campaigns without data silos. It enables you to segment audiences by events, user attributes, or event attributes through a drag-and-drop interface, then create multi-step campaigns across multiple touchpoints. The platform connects to multiple data sources including Segment, APIs, SDKs, and supports integrations with Intercom and CSV imports. With its GraphQL and HTTP API-first architecture, Sequence eliminates the need for expensive ETL by operating directly within your data warehouse, allowing you to combine marketing, product, and sales data for comprehensive campaign analytics.\nBuild customer segments based on behavioral events and user properties without SQL knowledge\nCreate multi-step email campaigns targeting specific audience segments\nAnalyze campaign performance by combining marketing data with product and sales metrics\nConnect data from Segment, APIs, or SDKs to power targeted messaging\n- **Objective**: Increase engagement and conversions for new product launch\n- **Target Audience**: Tech-savvy professionals in the renewable energy sector\n- **Channels**: Email, SMS, Push Notifications\n- **Duration**: 2 weeks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sequence-so/sequence`",
+    "usage": "```\nHelp me design a multi-channel email marketing campaign for [COMPANY] in the [INDUSTRY] sector. I want to segment my audience based on [USER_ATTRIBUTE] and [EVENT_ATTRIBUTE]. Provide a step-by-step plan using Sequence, including email content ideas, timing, and channels to use.\n```\nCopy\n\n```\n# Multi-Channel Email Marketing Campaign for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sequence#main-content",
+      "sequence#overview",
+      "sequence#setup",
+      "sequence#examples",
+      "sequence#tools",
+      "sequence#mcp",
+      "sequence#related",
+      "marketingskills",
+      "copywriting",
+      "index-now-submit-sitemap-urls-action"
+    ],
+    "overview_vi": "Sequence là công cụ tự động hóa email marketing dạng open-core, được thiết kế dành cho các nhà tiếp thị định hướng dữ liệu (data-driven) cần phân khúc khách hàng và triển khai các chiến dịch mục tiêu mà không gặp tình trạng silo dữ liệu. Công cụ cho phép bạn phân khúc đối tượng theo sự kiện, thuộc tính người dùng hoặc thuộc tính sự kiện thông qua giao diện kéo thả, sau đó tạo các chiến dịch đa bước trên nhiều điểm chạm (touchpoints). Nền tảng kết nối với nhiều nguồn dữ liệu bao gồm Segment, API, SDK, đồng thời hỗ trợ tích hợp với Intercom và nhập dữ liệu từ file CSV. Với kiến trúc GraphQL và HTTP API-first, Sequence loại bỏ quy trình ETL tốn kém bằng cách vận hành trực tiếp trên data warehouse của bạn, cho phép kết hợp dữ liệu marketing, sản phẩm và bán hàng để phân tích chiến dịch một cách toàn diện.\n\nXây dựng các phân khúc khách hàng dựa trên sự kiện hành vi và thuộc tính người dùng mà không cần kiến thức SQL\nTạo các chiến dịch email đa bước nhắm đến các phân khúc đối tượng cụ thể\nPhân tích hiệu suất chiến dịch bằng cách kết hợp dữ liệu marketing với các chỉ số sản phẩm và bán hàng\nKết nối dữ liệu từ Segment, API hoặc SDK để tối ưu hóa việc gửi thông điệp mục tiêu\n- **Mục tiêu**: Tăng tương tác và tỷ lệ chuyển đổi cho đợt ra mắt sản phẩm mới\n- **Đối tượng mục tiêu**: Các chuyên gia am hiểu công nghệ trong lĩnh vực năng lượng tái tạo\n- **Kênh**: Email, SMS, Push Notification\n- **Thời gian**: 2 tuần",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/sequence-so/sequence`",
+    "usage_vi": "```\nHãy giúp tôi thiết kế một chiến dịch email marketing đa kênh cho [COMPANY] trong lĩnh vực [INDUSTRY]. Tôi muốn phân khúc đối tượng mục tiêu dựa trên [USER_ATTRIBUTE] và [EVENT_ATTRIBUTE]. Hãy cung cấp một kế hoạch từng bước sử dụng Sequence, bao gồm các ý tưởng nội dung email, thời gian gửi và các kênh sử dụng.\n```\nSao chép\n\n```\n# Chiến dịch Email Marketing đa kênh cho GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:19:55.470816Z",
+    "http_status": 200,
+    "content_hash": "049b5d7389793ac70828e7ea0b6e83f55c394e2992ceea03de92ba9dc0cce47e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sequence.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sequence.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sequence - Tự động hóa Email Marketing",
+  "short_description_vi": "Sequence là công cụ tự động hóa email marketing mã nguồn mở, cho phép các nhà tiếp thị phân khúc khách hàng theo sự kiện, thuộc tính người dùng hoặc thuộc tính sự kiện. Công cụ này hỗ trợ tạo các chiến dịch đa kênh, phân tích hiệu suất, kết nối với các công cụ phân tích và hỗ trợ TypeScript."
+}

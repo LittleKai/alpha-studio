@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/e2b",
+  "slug": "e2b",
+  "name": "react-native-best-practices",
+  "headline": "E2B: Open-Source AI Agent Development Platform",
+  "short_description": "E2B is an open-source platform designed for enterprise-grade AI agents, providing a secure environment with real-world tools. It supports various programming languages and frameworks, making it ideal for developers looking to build advanced AI applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "420 min",
+  "author": "e2b-dev",
+  "install_command": "claude install e2b-dev/E2B",
+  "source_repo_url": "https://github.com/e2b-dev/E2B",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "AI tools",
+    "enterprise",
+    "secure environment",
+    "development",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "E2B is an open-source platform designed for building enterprise-grade AI agents in secure, isolated environments. It provides sandboxed execution that allows AI agents to safely interact with real-world tools while maintaining security boundaries. The platform supports multiple programming languages and frameworks, giving developers flexibility in how they architect their AI applications. E2B includes SDKs for TypeScript and Python, enabling integration with popular AI models and coding assistants. Developers use E2B to build advanced AI applications that need controlled access to tools and external systems without compromising security.\nBuilding AI-driven applications that enhance user engagement and automate customer interactions.\nIntegrating AI agents into existing workflows to streamline operations and reduce manual effort.\nDeveloping secure enterprise solutions that protect sensitive data while leveraging AI capabilities.\nCreating custom AI tools tailored to specific business needs, improving efficiency and effectiveness.",
+    "setup": "Terminal\nCopy\n`claude install e2b-dev/E2B`\n`git clone https://github.com/e2b-dev/E2B`",
+    "usage": "```\nI need to integrate Productiv's finance solution into my E2B platform. Provide a step-by-step guide to connect Productiv's API with E2B, including authentication setup, data synchronization, and error handling. Use Python as the primary language for implementation.\n```\nCopy\n\n```\nTo integrate Productiv's finance solution with E2B, follow these steps:\n\n1. **Authentication Setup**:\n   - Obtain your API credentials from Productiv's developer portal.\n   - Use the `requests` library in Python to handle API calls.\n   - Example code:\n ```python\n     import requests\n     \n     # Replace with your actual credentials\n     API_KEY = 'your_api_key'\n     API_SECRET = 'your_api_secret'\n     \n     def authenticate():\n         url = 'https://api.productiv.com/auth'\n         headers = {\n             'Content-Type': 'application/json'\n         }\n         payload = {\n             'api_key': API_KEY,\n             'api_secret': API_SECRET\n         }\n         response = requests.post(url, json=payload, headers=headers)\n         return response.json()\n ```\n\n2. **Data Synchronization**:\n   - Fetch financial data from Productiv and sync it with your E2B platform.\n   - Example code:\n ```python\n     def fetch_financial_data():\n         url = 'https://api.productiv.com/financial-data'\n         headers = {\n             'Authorization': 'Bearer YOUR_ACCESS_TOKEN'\n         }\n         response = requests.get(url, headers=headers)\n         return response.json()\n ```\n\n3. **Error Handling**:\n   - Implement robust error handling to manage API failures and data inconsistencies.\n   - Example code:\n ```python\n     def handle_errors(response):\n         if response.status_code == 200:\n             return response.json()\n         else:\n             print(f'Error: {response.status_code} - {response.text}')\n             return None\n ```\n\n4. **Testing and Deployment**:\n   - Test the integration thoroughly in a sandbox environment.\n   - Deploy the solution to your production environment once testing is complete.\n\nBy following these steps, you can successfully integrate Productiv's finance solution with your E2B platform, ensuring seamless data synchronization and robust error handling.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "e2b#main-content",
+      "e2b#overview",
+      "e2b#setup",
+      "e2b#examples",
+      "e2b#tools",
+      "e2b#mcp",
+      "e2b#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "E2B is an open-source platform designed for building enterprise-grade AI agents in secure, isolated environments. It provides sandboxed execution that allows AI agents to safely interact with real-world tools while maintaining security boundaries. The platform supports multiple programming languages and frameworks, giving developers flexibility in how they architect their AI applications. E2B includes SDKs for TypeScript and Python, enabling integration with popular AI models and coding assistants. Developers use E2B to build advanced AI applications that need controlled access to tools and external systems without compromising security.\nBuilding AI-driven applications that enhance user engagement and automate customer interactions.\nIntegrating AI agents into existing workflows to streamline operations and reduce manual effort.\nDeveloping secure enterprise solutions that protect sensitive data while leveraging AI capabilities.\nCreating custom AI tools tailored to specific business needs, improving efficiency and effectiveness.",
+    "setup_vi": "Terminal\nCopy\n`claude install e2b-dev/E2B`\n`git clone https://github.com/e2b-dev/E2B`",
+    "usage_vi": "```\nI need to integrate Productiv's finance solution into my E2B platform. Provide a step-by-step guide to connect Productiv's API with E2B, including authentication setup, data synchronization, and error handling. Use Python as the primary language for implementation.\n```\nCopy\n\n```\nTo integrate Productiv's finance solution with E2B, follow these steps:\n\n1. **Authentication Setup**:\n   - Obtain your API credentials from Productiv's developer portal.\n   - Use the `requests` library in Python to handle API calls.\n   - Example code:\n ```python\n     import requests\n     \n     # Replace with your actual credentials\n     API_KEY = 'your_api_key'\n     API_SECRET = 'your_api_secret'\n     \n     def authenticate():\n         url = 'https://api.productiv.com/auth'\n         headers = {\n             'Content-Type': 'application/json'\n         }\n         payload = {\n             'api_key': API_KEY,\n             'api_secret': API_SECRET\n         }\n         response = requests.post(url, json=payload, headers=headers)\n         return response.json()\n ```\n\n2. **Data Synchronization**:\n   - Fetch financial data from Productiv and sync it with your E2B platform.\n   - Example code:\n ```python\n     def fetch_financial_data():\n         url = 'https://api.productiv.com/financial-data'\n         headers = {\n             'Authorization': 'Bearer YOUR_ACCESS_TOKEN'\n         }\n         response = requests.get(url, headers=headers)\n         return response.json()\n ```\n\n3. **Error Handling**:\n   - Implement robust error handling to manage API failures and data inconsistencies.\n   - Example code:\n ```python\n     def handle_errors(response):\n         if response.status_code == 200:\n             return response.json()\n         else:\n             print(f'Error: {response.status_code} - {response.text}')\n             return None\n ```\n\n4. **Testing and Deployment**:\n   - Test the integration thoroughly in a sandbox environment.\n   - Deploy the solution to your production environment once testing is complete.\n\nBy following these steps, you can successfully integrate Productiv's finance solution with your E2B platform, ensuring seamless data synchronization and robust error handling.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:38:33.598113Z",
+    "http_status": 200,
+    "content_hash": "76d47b944fde219d95a13fa75a3d7c95237b454f3deac97a47a4bd4b9064e703",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\e2b.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\e2b.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "E2B: Open-Source AI Agent Development Platform",
+  "short_description_vi": "E2B is an open-source platform designed for enterprise-grade AI agents, providing a secure environment with real-world tools. It supports various programming languages and frameworks, making it ideal for developers looking to build advanced AI applications."
+}

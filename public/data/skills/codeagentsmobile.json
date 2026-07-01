@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codeagentsmobile",
+  "slug": "codeagentsmobile",
+  "name": "browser-use",
+  "headline": "Claude Code mobile client for automation",
+  "short_description": "CodeAgentsMobile is a mobile client for Claude Code, enabling users to run Claude code on any Linux SSH server. It benefits operations teams by providing on-the-go access to AI-powered code execution. The app connects to existing Linux servers, streamlining workflows for developers and IT professionals.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "eugenepyvovarov",
+  "install_command": "git clone https://github.com/eugenepyvovarov/CodeAgentsMobile.git",
+  "source_repo_url": "https://github.com/eugenepyvovarov/CodeAgentsMobile",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codeagent",
+    "claude-api",
+    "claude",
+    "mobile-app",
+    "ai"
+  ],
+  "sections": {
+    "overview": "CodeAgentsMobile is an iOS app that connects to remote Linux servers via SSH and executes Claude-generated code directly from your iPhone or iPad. The app includes a rebuilt chat interface, background task support, file management tools, skills integration, and MCP server support. It works with multiple AI providers including Anthropic, Z.ai, Minimax, and Moonshot. Users can provision servers with Digital Ocean or Hetzner, configure agent permissions and scheduled tasks, and manage custom environment variables. This enables developers and operations teams to execute code-generation tasks remotely without needing a desktop, streamlining workflows for on-the-go development and system administration.\nRemote server management and automation from mobile devices\nRunning Claude-generated code on production Linux systems via SSH\nOn-call operations work with instant access to code execution\nManaging multiple remote servers with custom permissions and environment variables",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eugenepyvovarov/CodeAgentsMobile`",
+    "usage": "```\nUse CodeAgentsMobile to [TASK] on [SERVER_IP_OR_HOSTNAME]. Connect to the server via SSH using the credentials [USERNAME] and [PASSWORD_OR_KEY_PATH]. Execute the following command: [COMMAND_OR_SCRIPT]. Capture the output and provide a summary of the results, including any errors or warnings. If the task requires multiple steps, break them down and confirm each step's success before proceeding.\n```\nCopy\n\n```\nSuccessfully connected to the Linux server at `192.168.1.100` via SSH using the provided credentials. Executed the command `sudo apt update && sudo apt upgrade -y` to update the system packages.\n\n**Output Summary:**\n- **Package Updates:** 45 packages were successfully upgraded (including `nginx`, `python3`, and `openssl`).\n- **Errors/Warnings:** No critical errors were encountered. A warning was noted for `docker-ce` due to a held-back package, but this does not impact system stability.\n- **Disk Space:** Post-update, 12.4GB of disk space remains available (87% used before update).\n\n**Next Steps:**\n1. Verify service restarts for critical applications (`nginx`, `postgresql`).\n2. Monitor system performance for 30 minutes post-update.\n3. If no issues arise, proceed with a full system reboot at the next maintenance window.\n\nWould you like me to run additional commands to verify service status or check for pending reboots?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codeagentsmobile#main-content",
+      "codeagentsmobile#overview",
+      "codeagentsmobile#setup",
+      "codeagentsmobile#examples",
+      "codeagentsmobile#tools",
+      "codeagentsmobile#mcp",
+      "codeagentsmobile#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodeAgentsMobile is an iOS app that connects to remote Linux servers via SSH and executes Claude-generated code directly from your iPhone or iPad. The app includes a rebuilt chat interface, background task support, file management tools, skills integration, and MCP server support. It works with multiple AI providers including Anthropic, Z.ai, Minimax, and Moonshot. Users can provision servers with Digital Ocean or Hetzner, configure agent permissions and scheduled tasks, and manage custom environment variables. This enables developers and operations teams to execute code-generation tasks remotely without needing a desktop, streamlining workflows for on-the-go development and system administration.\nRemote server management and automation from mobile devices\nRunning Claude-generated code on production Linux systems via SSH\nOn-call operations work with instant access to code execution\nManaging multiple remote servers with custom permissions and environment variables",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eugenepyvovarov/CodeAgentsMobile`",
+    "usage_vi": "```\nUse CodeAgentsMobile to [TASK] on [SERVER_IP_OR_HOSTNAME]. Connect to the server via SSH using the credentials [USERNAME] and [PASSWORD_OR_KEY_PATH]. Execute the following command: [COMMAND_OR_SCRIPT]. Capture the output and provide a summary of the results, including any errors or warnings. If the task requires multiple steps, break them down and confirm each step's success before proceeding.\n```\nCopy\n\n```\nSuccessfully connected to the Linux server at `192.168.1.100` via SSH using the provided credentials. Executed the command `sudo apt update && sudo apt upgrade -y` to update the system packages.\n\n**Output Summary:**\n- **Package Updates:** 45 packages were successfully upgraded (including `nginx`, `python3`, and `openssl`).\n- **Errors/Warnings:** No critical errors were encountered. A warning was noted for `docker-ce` due to a held-back package, but this does not impact system stability.\n- **Disk Space:** Post-update, 12.4GB of disk space remains available (87% used before update).\n\n**Next Steps:**\n1. Verify service restarts for critical applications (`nginx`, `postgresql`).\n2. Monitor system performance for 30 minutes post-update.\n3. If no issues arise, proceed with a full system reboot at the next maintenance window.\n\nWould you like me to run additional commands to verify service status or check for pending reboots?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:34:03.775673Z",
+    "http_status": 200,
+    "content_hash": "df956e25f186877e61b4cb0dff403950f24642d176c4594c4ab3a8303dc65bbf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codeagentsmobile.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codeagentsmobile.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code mobile client for automation",
+  "short_description_vi": "CodeAgentsMobile is a mobile client for Claude Code, enabling users to run Claude code on any Linux SSH server. It benefits operations teams by providing on-the-go access to AI-powered code execution. The app connects to existing Linux servers, streamlining workflows for developers and IT professionals."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/basecamp-workflow-command",
+  "slug": "basecamp-workflow-command",
+  "name": "Automation Workflows",
+  "headline": "Basecamp Workflow Command: CLI Project Management",
+  "short_description": "The Basecamp Workflow Command provides a comprehensive CLI tool for managing Basecamp projects, covering 155 endpoints. It's designed for developers and project managers looking to streamline their workflows in Basecamp.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "basecamp",
+  "install_command": "git clone https://github.com/basecamp/skills",
+  "source_repo_url": "https://github.com/basecamp/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "command",
+    "workflow",
+    "productivity",
+    "basecamp"
+  ],
+  "sections": {
+    "overview": "The Basecamp Workflow Command provides complete CLI integration with Basecamp's project management features, including todos, cards, messages, files, schedule, check-ins, timeline, recordings, templates, webhooks, subscriptions, lineup, and campfire. It enables developers and project managers to automate and streamline Basecamp workflows directly from the command line. The skill requires the Basecamp CLI and an authenticated Basecamp account to function. Use it to manage projects programmatically, integrate Basecamp into development workflows, and reduce manual project management tasks.\nManaging todos within Basecamp projects\nAutomating notifications and updates\nGenerating reports on project assignments\nParsing project URLs for API interaction",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/basecamp/skills --skill basecamp`\n`git clone https://github.com/basecamp/skills`",
+    "usage": "```\nCreate a Basecamp Workflow Command script to [ACTION] in [COMPANY]'s Basecamp projects. Use the Basecamp CLI tool with the following parameters: [SPECIFIC_PARAMETERS]. Ensure the script handles errors gracefully and provides clear output.\n```\nCopy\n\n```\n# Basecamp Workflow Command Script Output",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "basecamp-workflow-command#main-content",
+      "basecamp-workflow-command#overview",
+      "basecamp-workflow-command#setup",
+      "basecamp-workflow-command#examples",
+      "basecamp-workflow-command#tools",
+      "basecamp-workflow-command#mcp",
+      "basecamp-workflow-command#related",
+      "slidespeak-presentation-skill",
+      "prompt-optimizer",
+      "automation-workflows"
+    ],
+    "overview_vi": "The Basecamp Workflow Command provides complete CLI integration with Basecamp's project management features, including todos, cards, messages, files, schedule, check-ins, timeline, recordings, templates, webhooks, subscriptions, lineup, and campfire. It enables developers and project managers to automate and streamline Basecamp workflows directly from the command line. The skill requires the Basecamp CLI and an authenticated Basecamp account to function. Use it to manage projects programmatically, integrate Basecamp into development workflows, and reduce manual project management tasks.\nManaging todos within Basecamp projects\nAutomating notifications and updates\nGenerating reports on project assignments\nParsing project URLs for API interaction",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/basecamp/skills --skill basecamp`\n`git clone https://github.com/basecamp/skills`",
+    "usage_vi": "```\nCreate a Basecamp Workflow Command script to [ACTION] in [COMPANY]'s Basecamp projects. Use the Basecamp CLI tool with the following parameters: [SPECIFIC_PARAMETERS]. Ensure the script handles errors gracefully and provides clear output.\n```\nCopy\n\n```\n# Basecamp Workflow Command Script Output"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:46:45.201324Z",
+    "http_status": 200,
+    "content_hash": "4bff81d9f0fe0bd7f1da329dfadc65301b2fc6d8ffd5dfd847a41f2136c946cd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\basecamp-workflow-command.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\basecamp-workflow-command.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Basecamp Workflow Command: CLI Project Management",
+  "short_description_vi": "The Basecamp Workflow Command provides a comprehensive CLI tool for managing Basecamp projects, covering 155 endpoints. It's designed for developers and project managers looking to streamline their workflows in Basecamp."
+}

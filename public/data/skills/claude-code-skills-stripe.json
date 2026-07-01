@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-skills-stripe",
+  "slug": "claude-code-skills-stripe",
+  "name": "browser-use",
+  "headline": "AI automation with Claude Code Stripe",
+  "short_description": "AI automation skill: claude-code-skills-stripe",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "IncomeStreamSurfer",
+  "install_command": "git clone https://github.com/IncomeStreamSurfer/claude-code-skills-stripe.git",
+  "source_repo_url": "https://github.com/IncomeStreamSurfer/claude-code-skills-stripe",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code Skills for Stripe is an AI automation skill that integrates Claude's code generation capabilities with Stripe payment processing. This skill enables automated workflows that can interact with Stripe's API through intelligent code generation. It's designed for users who need to automate Stripe-related tasks through AI-assisted coding.\nGenerate Stripe API integration code automatically\nAutomate payment processing workflows\nCreate customer management scripts for Stripe accounts\nBuild subscription handling automation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/IncomeStreamSurfer/claude-code-skills-stripe`",
+    "usage": "```\nI need help automating a payment processing workflow using Stripe. Here's what I need: [DESCRIBE WORKFLOW]. Can you generate Python code that integrates with Stripe's API to [SPECIFIC TASK]? I want to handle [ERROR CASES] and ensure [SECURITY CONSIDERATIONS].\n```\nCopy\n\n```\n# Stripe Payment Processing Automation\n\n```python\nimport stripe\n\n# Initialize Stripe API\nstripe.api_key = 'sk_test_your_stripe_key'\n\n# Function to process payment\ndef process_payment(amount, currency, customer_email):\n    try:\n        # Create a PaymentIntent\n        payment_intent = stripe.PaymentIntent.create(\n            amount=amount,\n            currency=currency,\n            payment_method_types=['card'],\n            receipt_email=customer_email,\n            metadata={'integration_check': 'accept_a_payment'}\n        )\n        \n        return payment_intent.client_secret\n    except stripe.error.CardError as e:\n        # Handle card errors\n        return {'error': str(e)}\n    except Exception as e:\n        # Handle other errors\n        return {'error': 'An unexpected error occurred'}\n\n# Example usage\nclient_secret = process_payment(2000, 'usd', 'customer@example.com')\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-skills-stripe#main-content",
+      "claude-code-skills-stripe#overview",
+      "claude-code-skills-stripe#setup",
+      "claude-code-skills-stripe#examples",
+      "claude-code-skills-stripe#tools",
+      "claude-code-skills-stripe#mcp",
+      "claude-code-skills-stripe#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Skills for Stripe is an AI automation skill that integrates Claude's code generation capabilities with Stripe payment processing. This skill enables automated workflows that can interact with Stripe's API through intelligent code generation. It's designed for users who need to automate Stripe-related tasks through AI-assisted coding.\nGenerate Stripe API integration code automatically\nAutomate payment processing workflows\nCreate customer management scripts for Stripe accounts\nBuild subscription handling automation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/IncomeStreamSurfer/claude-code-skills-stripe`",
+    "usage_vi": "```\nI need help automating a payment processing workflow using Stripe. Here's what I need: [DESCRIBE WORKFLOW]. Can you generate Python code that integrates with Stripe's API to [SPECIFIC TASK]? I want to handle [ERROR CASES] and ensure [SECURITY CONSIDERATIONS].\n```\nCopy\n\n```\n# Stripe Payment Processing Automation\n\n```python\nimport stripe\n\n# Initialize Stripe API\nstripe.api_key = 'sk_test_your_stripe_key'\n\n# Function to process payment\ndef process_payment(amount, currency, customer_email):\n    try:\n        # Create a PaymentIntent\n        payment_intent = stripe.PaymentIntent.create(\n            amount=amount,\n            currency=currency,\n            payment_method_types=['card'],\n            receipt_email=customer_email,\n            metadata={'integration_check': 'accept_a_payment'}\n        )\n        \n        return payment_intent.client_secret\n    except stripe.error.CardError as e:\n        # Handle card errors\n        return {'error': str(e)}\n    except Exception as e:\n        # Handle other errors\n        return {'error': 'An unexpected error occurred'}\n\n# Example usage\nclient_secret = process_payment(2000, 'usd', 'customer@example.com')\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:32:45.486704Z",
+    "http_status": 200,
+    "content_hash": "e836d0d47fbe707e01e5d4cb68bd10d813de1fd5d4d7d027baa1b2660c1a1870",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-skills-stripe.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-skills-stripe.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI automation with Claude Code Stripe",
+  "short_description_vi": "AI automation skill: claude-code-skills-stripe"
+}

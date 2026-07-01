@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-supervisor",
+  "slug": "claude-code-supervisor",
+  "name": "browser-use",
+  "headline": "Claude Code for efficient task supervision",
+  "short_description": "Auto-review and iterate on code tasks until quality work is delivered. Switch between multiple Claude Code providers (Kimi, GLM, MiniMax, etc.) with a single command. Ideal for developers and operations teams managing AI code generation workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "guyskk",
+  "install_command": "git clone https://github.com/guyskk/claude-code-supervisor.git",
+  "source_repo_url": "https://github.com/guyskk/claude-code-supervisor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "claude-code",
+    "ai-agents",
+    "claude-code-cli",
+    "ai-development-tools",
+    "developer-tools",
+    "kimi-k2",
+    "opencode",
+    "claude-code-plugin",
+    "glm",
+    "minimax",
+    "provider-management",
+    "codex",
+    "ai",
+    "zhipuai"
+  ],
+  "sections": {
+    "overview": "ccc is a command-line configuration switcher that enables developers to seamlessly switch between multiple Claude Code providers including Kimi, GLM, and MiniMax. The tool manages provider-specific API endpoints, authentication tokens, and model configurations through a unified interface, eliminating manual setup for each provider swap. It supports configuration merging to preserve existing Claude Code settings while applying provider-specific overrides. The tool includes validation commands to verify provider setup and a patch feature to replace the default claude command system-wide, making it ideal for teams managing multiple AI code generation workflows or evaluating different provider capabilities.\nSwitch between multiple Claude Code providers without manual reconfiguration\nCompare code generation quality across different LLM providers\nManage provider API keys and model settings in a single configuration file\nValidate provider configurations before running Claude Code tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/guyskk/claude-code-supervisor`",
+    "usage": "```\nAct as a claude-code-supervisor. Use [PROVIDER] to generate code for [TASK_DESCRIPTION]. After generating the code, run [TEST_COMMAND] to verify functionality. If tests fail, analyze the error output and iterate with [PROVIDER] at least 3 times until all tests pass or you confirm the issue is unresolvable. Document each iteration with a brief summary of changes made. Final output must include: 1) The working code, 2) Test results, 3) A changelog of iterations, and 4) Any unresolved issues. Provider options: [Kimi, GLM, MiniMax, DeepSeek, Qwen]. Example: 'Use Kimi to build a Python script that scrapes product prices from an e-commerce site. Run pytest to verify. Iterate until all tests pass.'\n```\nCopy\n\n```\n### Initial Generation (Kimi)\n```python\nimport requests\nfrom bs4 import BeautifulSoup\n\ndef scrape_prices(url):\n    response = requests.get(url)\n    soup = BeautifulSoup(response.text, 'html.parser')\n    products = soup.find_all('div', class_='product')\n    return [{'name': p.find('h2').text, 'price': p.find('span', class_='price').text} for p in products]\n\nif __name__ == '__main__':\n    print(scrape_prices('https://example-ecommerce.com/products'))\n```\n\n### Test Results (pytest)\n```\n============================= test session starts ==============================\ntest_scraper.py::test_scrape_prices FAILED                              [100%]\n\n=================================== FAILURES ===================================\n______________________________ test_scrape_prices ______________________________\n\n    def test_scrape_prices():\n        mock_response = Mock()\n        mock_response.text = '<div class=\"product\"><h2>Widget</h2><span class=\"price\">$19.99</span></div>'\n        with patch('requests.get', return_value=mock_response):\n>           assert scrape_prices('test-url') == [{'name': 'Widget', 'price': '$19.99'}]\nE           AssertionError: assert [{'name': 'Widget', 'price': '$19.99'}] == []\nE            +  where [] = scrape_prices('test-url')\n\n========================= 1 failed in 6.28s ==============================\n```\n\n### Iteration 1 (GLM)\nFixed the class selector to match the actual HTML structure. Added error handling for missing elements.\n```python\n# Updated code\nproducts = soup.find_all('div', class_='product-item')  # Changed class name\nfor p in products:\n    name_tag = p.find('h3')  # Updated to h3\n    price_tag = p.find('span', class_='price-text')  # Updated class\n    if name_tag and price_tag:\n        results.append({'name': name_tag.text.strip(), 'price': price_tag.text.strip()})\n```\n\n### Test Results (pytest)\n```\n============================= test session starts ==============================\ntest_scraper.py::test_scrape_prices PASSED                              [100%]\n```\n\n### Final Output\n**Working Code:**\n```python\nimport requests\nfrom bs4 import BeautifulSoup\n\ndef scrape_prices(url):\n    try:\n        response = requests.get(url, timeout=10)\n        response.raise_for_status()\n        soup = BeautifulSoup(response.text, 'html.parser')\n        products = soup.find_all('div', class_='product-item')\n        results = []\n        for p in products:\n            name_tag = p.find('h3')\n            price_tag = p.find('span', class_='price-text')\n            if name_tag and price_tag:\n                results.append({'name': name_tag.text.strip(), 'price': price_tag.text.strip()})\n        return results\n    except Exception as e:\n        print(f\"Error scraping {url}: {e}\")\n        return []\n\nif __name__ == '__main__':\n    prices = scrape_prices('https://example-ecommerce.com/products')\n    print(prices)\n```\n\n**Test Results:**\n```\n============================= test session starts ==============================\ntest_scraper.py::test_scrape_prices PASSED                              [100%]\n============================== 1 passed in 0.42s ==============================\n```\n\n**Changelog:**\n- Iteration 1: Fixed class selectors and added error handling.\n- Iteration 2: Added timeout and status code checks.\n- Iteration 3: Improved data extraction logic and edge case handling.\n\n**Unresolved Issues:** None. All tests passing.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-supervisor#main-content",
+      "claude-code-supervisor#overview",
+      "claude-code-supervisor#setup",
+      "claude-code-supervisor#examples",
+      "claude-code-supervisor#tools",
+      "claude-code-supervisor#mcp",
+      "claude-code-supervisor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccc is a command-line configuration switcher that enables developers to seamlessly switch between multiple Claude Code providers including Kimi, GLM, and MiniMax. The tool manages provider-specific API endpoints, authentication tokens, and model configurations through a unified interface, eliminating manual setup for each provider swap. It supports configuration merging to preserve existing Claude Code settings while applying provider-specific overrides. The tool includes validation commands to verify provider setup and a patch feature to replace the default claude command system-wide, making it ideal for teams managing multiple AI code generation workflows or evaluating different provider capabilities.\nSwitch between multiple Claude Code providers without manual reconfiguration\nCompare code generation quality across different LLM providers\nManage provider API keys and model settings in a single configuration file\nValidate provider configurations before running Claude Code tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/guyskk/claude-code-supervisor`",
+    "usage_vi": "```\nAct as a claude-code-supervisor. Use [PROVIDER] to generate code for [TASK_DESCRIPTION]. After generating the code, run [TEST_COMMAND] to verify functionality. If tests fail, analyze the error output and iterate with [PROVIDER] at least 3 times until all tests pass or you confirm the issue is unresolvable. Document each iteration with a brief summary of changes made. Final output must include: 1) The working code, 2) Test results, 3) A changelog of iterations, and 4) Any unresolved issues. Provider options: [Kimi, GLM, MiniMax, DeepSeek, Qwen]. Example: 'Use Kimi to build a Python script that scrapes product prices from an e-commerce site. Run pytest to verify. Iterate until all tests pass.'\n```\nCopy\n\n```\n### Initial Generation (Kimi)\n```python\nimport requests\nfrom bs4 import BeautifulSoup\n\ndef scrape_prices(url):\n    response = requests.get(url)\n    soup = BeautifulSoup(response.text, 'html.parser')\n    products = soup.find_all('div', class_='product')\n    return [{'name': p.find('h2').text, 'price': p.find('span', class_='price').text} for p in products]\n\nif __name__ == '__main__':\n    print(scrape_prices('https://example-ecommerce.com/products'))\n```\n\n### Test Results (pytest)\n```\n============================= test session starts ==============================\ntest_scraper.py::test_scrape_prices FAILED                              [100%]\n\n=================================== FAILURES ===================================\n______________________________ test_scrape_prices ______________________________\n\n    def test_scrape_prices():\n        mock_response = Mock()\n        mock_response.text = '<div class=\"product\"><h2>Widget</h2><span class=\"price\">$19.99</span></div>'\n        with patch('requests.get', return_value=mock_response):\n>           assert scrape_prices('test-url') == [{'name': 'Widget', 'price': '$19.99'}]\nE           AssertionError: assert [{'name': 'Widget', 'price': '$19.99'}] == []\nE            +  where [] = scrape_prices('test-url')\n\n========================= 1 failed in 6.28s ==============================\n```\n\n### Iteration 1 (GLM)\nFixed the class selector to match the actual HTML structure. Added error handling for missing elements.\n```python\n# Updated code\nproducts = soup.find_all('div', class_='product-item')  # Changed class name\nfor p in products:\n    name_tag = p.find('h3')  # Updated to h3\n    price_tag = p.find('span', class_='price-text')  # Updated class\n    if name_tag and price_tag:\n        results.append({'name': name_tag.text.strip(), 'price': price_tag.text.strip()})\n```\n\n### Test Results (pytest)\n```\n============================= test session starts ==============================\ntest_scraper.py::test_scrape_prices PASSED                              [100%]\n```\n\n### Final Output\n**Working Code:**\n```python\nimport requests\nfrom bs4 import BeautifulSoup\n\ndef scrape_prices(url):\n    try:\n        response = requests.get(url, timeout=10)\n        response.raise_for_status()\n        soup = BeautifulSoup(response.text, 'html.parser')\n        products = soup.find_all('div', class_='product-item')\n        results = []\n        for p in products:\n            name_tag = p.find('h3')\n            price_tag = p.find('span', class_='price-text')\n            if name_tag and price_tag:\n                results.append({'name': name_tag.text.strip(), 'price': price_tag.text.strip()})\n        return results\n    except Exception as e:\n        print(f\"Error scraping {url}: {e}\")\n        return []\n\nif __name__ == '__main__':\n    prices = scrape_prices('https://example-ecommerce.com/products')\n    print(prices)\n```\n\n**Test Results:**\n```\n============================= test session starts ==============================\ntest_scraper.py::test_scrape_prices PASSED                              [100%]\n============================== 1 passed in 0.42s ==============================\n```\n\n**Changelog:**\n- Iteration 1: Fixed class selectors and added error handling.\n- Iteration 2: Added timeout and status code checks.\n- Iteration 3: Improved data extraction logic and edge case handling.\n\n**Unresolved Issues:** None. All tests passing.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:09:40.504144Z",
+    "http_status": 200,
+    "content_hash": "ba6345d580e5b8f6ab232aebad06fdd6cc6f2b98f780f676686dc83a2c193b58",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-supervisor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-supervisor.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code for efficient task supervision",
+  "short_description_vi": "Auto-review and iterate on code tasks until quality work is delivered. Switch between multiple Claude Code providers (Kimi, GLM, MiniMax, etc.) with a single command. Ideal for developers and operations teams managing AI code generation workflows."
+}

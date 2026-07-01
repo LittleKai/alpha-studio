@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-code-interface-el",
+  "slug": "ai-code-interface-el",
+  "name": "browser-use",
+  "headline": "ai-code-interface.el: unified interface support",
+  "short_description": "Unified Emacs interface for AI coding assistants. Integrates Claude Code, Gemini CLI, OpenAI Codex, and GitHub Copilot CLI. Enables developers to streamline coding tasks, generate code, and automate workflows directly within Emacs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "165 min",
+  "author": "tninja",
+  "install_command": "git clone https://github.com/tninja/ai-code-interface.el.git",
+  "source_repo_url": "https://github.com/tninja/ai-code-interface.el",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "llm",
+    "ai-coding-assistant",
+    "emacs-lisp",
+    "opencode",
+    "kiro-cli",
+    "agile-development",
+    "cursor-cli",
+    "github-copilot-cli",
+    "grok-cli",
+    "codex-cli",
+    "openai-codex",
+    "gemini-cli",
+    "emacs",
+    "ai"
+  ],
+  "sections": {
+    "overview": "ai-code-interface.el is an Emacs integration layer that unifies access to multiple AI coding assistants including Claude Code, Gemini CLI, OpenAI Codex, and GitHub Copilot CLI. It enables developers to leverage these tools directly within their editor, streamlining code generation and task automation without context switching. The tool consolidates separate AI interfaces into a single, cohesive Emacs workflow for faster development cycles.\nGenerate code snippets and functions using multiple AI models from within Emacs\nAutomate repetitive coding tasks by calling different AI assistants through a unified interface\nCompare outputs from Claude, Gemini, OpenAI, and GitHub Copilot without leaving the editor\nStreamline debugging and code refactoring workflows using integrated AI assistance",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tninja/ai-code-interface.el`",
+    "usage": "```\nUse `ai-code-interface.el` to [TASK]. For example: 'Generate a Python function that [DESCRIBE_FUNCTION] using [SPECIFIC_LIBRARY].' or 'Refactor the [FILE_PATH] file to follow [CODING_STYLE].' Include [CONTEXT] if needed, such as error messages or specific requirements.\n```\nCopy\n\n```\n```elisp\n;; Generated function for parsing JSON logs with error handling\n(defun parse-log-json (log-string)\n  \"Parse a JSON log string into an Emacs Lisp plist.\n   Handles malformed JSON by returning nil and logging the error.\n   Example input: '{\"level\":\"error\",\"message\":\"Failed to connect\"}'\"\n  (condition-case err\n      (json-read-from-string log-string)\n    (error\n     (message \"Failed to parse log JSON: %s\" (error-message-string err))\n     nil)))\n\n;; Refactored function to follow elisp best practices\n(defun calculate-stats (data)\n  \"Calculate mean, median, and mode of NUMBERS.\n   Returns a plist with :mean, :median, and :mode keys.\n   NUMBERS should be a list of integers or floats.\"\n  (let ((sorted (sort (copy-sequence data) #'<))\n        (len (length data)))\n    (list :mean (/ (apply #'+ data) len)\n          :median (nth (/ len 2) sorted)\n          :mode (car (cl-reduce (lambda (a b) (if (> (cdr a) (cdr b)) a b))\n                               (cl-map 'list\n                                       (lambda (x) (cons x (cl-count x data)))\n                                       (delete-dups data)))))))\n```\n\n**Usage Notes:**\n- The `parse-log-json` function now includes robust error handling for malformed input.\n- The `calculate-stats` function follows Emacs Lisp conventions with proper docstrings and type hints.\n- Both functions are ready to be added to your `utils.el` file.\n\nWould you like me to generate unit tests for these functions using `ert`?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-code-interface-el#main-content",
+      "ai-code-interface-el#overview",
+      "ai-code-interface-el#setup",
+      "ai-code-interface-el#examples",
+      "ai-code-interface-el#tools",
+      "ai-code-interface-el#mcp",
+      "ai-code-interface-el#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ai-code-interface.el is an Emacs integration layer that unifies access to multiple AI coding assistants including Claude Code, Gemini CLI, OpenAI Codex, and GitHub Copilot CLI. It enables developers to leverage these tools directly within their editor, streamlining code generation and task automation without context switching. The tool consolidates separate AI interfaces into a single, cohesive Emacs workflow for faster development cycles.\nGenerate code snippets and functions using multiple AI models from within Emacs\nAutomate repetitive coding tasks by calling different AI assistants through a unified interface\nCompare outputs from Claude, Gemini, OpenAI, and GitHub Copilot without leaving the editor\nStreamline debugging and code refactoring workflows using integrated AI assistance",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tninja/ai-code-interface.el`",
+    "usage_vi": "```\nUse `ai-code-interface.el` to [TASK]. For example: 'Generate a Python function that [DESCRIBE_FUNCTION] using [SPECIFIC_LIBRARY].' or 'Refactor the [FILE_PATH] file to follow [CODING_STYLE].' Include [CONTEXT] if needed, such as error messages or specific requirements.\n```\nCopy\n\n```\n```elisp\n;; Generated function for parsing JSON logs with error handling\n(defun parse-log-json (log-string)\n  \"Parse a JSON log string into an Emacs Lisp plist.\n   Handles malformed JSON by returning nil and logging the error.\n   Example input: '{\"level\":\"error\",\"message\":\"Failed to connect\"}'\"\n  (condition-case err\n      (json-read-from-string log-string)\n    (error\n     (message \"Failed to parse log JSON: %s\" (error-message-string err))\n     nil)))\n\n;; Refactored function to follow elisp best practices\n(defun calculate-stats (data)\n  \"Calculate mean, median, and mode of NUMBERS.\n   Returns a plist with :mean, :median, and :mode keys.\n   NUMBERS should be a list of integers or floats.\"\n  (let ((sorted (sort (copy-sequence data) #'<))\n        (len (length data)))\n    (list :mean (/ (apply #'+ data) len)\n          :median (nth (/ len 2) sorted)\n          :mode (car (cl-reduce (lambda (a b) (if (> (cdr a) (cdr b)) a b))\n                               (cl-map 'list\n                                       (lambda (x) (cons x (cl-count x data)))\n                                       (delete-dups data)))))))\n```\n\n**Usage Notes:**\n- The `parse-log-json` function now includes robust error handling for malformed input.\n- The `calculate-stats` function follows Emacs Lisp conventions with proper docstrings and type hints.\n- Both functions are ready to be added to your `utils.el` file.\n\nWould you like me to generate unit tests for these functions using `ert`?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:05:36.654191Z",
+    "http_status": 200,
+    "content_hash": "aff7e846689f1e53c171887dc762400d27384ea97c6fcb40bff4e15d217c22e0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-code-interface-el.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-code-interface-el.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ai-code-interface.el: unified interface support",
+  "short_description_vi": "Unified Emacs interface for AI coding assistants. Integrates Claude Code, Gemini CLI, OpenAI Codex, and GitHub Copilot CLI. Enables developers to streamline coding tasks, generate code, and automate workflows directly within Emacs."
+}

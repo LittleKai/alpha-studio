@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/python-template-for-claude-code",
+  "slug": "python-template-for-claude-code",
+  "name": "Python Template for Claude Code",
+  "headline": "Python Template for Claude Code - AI-Assisted",
+  "short_description": "Python project template for Claude Code centric development. Enables operations teams to quickly set up Python projects with pre-configured tools and best practices. Integrates with Claude Code for AI-assisted coding and workflow automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "discus0434",
+  "install_command": "git clone https://github.com/discus0434/python-template-for-claude-code.git",
+  "source_repo_url": "https://github.com/discus0434/python-template-for-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "This template provides a structured starting point for Python projects designed to work seamlessly with Claude Code. It includes pre-configured development tools like uv for dependency management, Ruff for code styling, and comprehensive documentation (CLAUDE.md) that helps Claude Code understand your project structure and conventions. The template comes with custom slash commands (/ensure-quality, /write-tests, /commit-and-pr, /safe-refactor, /analyze, /improve) that automate common development tasks. It supports Python 3.12+ with integrated CI/CD workflows, pre-commit hooks, and TDD-focused test templates. Operations teams and developers can clone the repository, run the setup script for automatic project initialization, and immediately begin AI-assisted coding with Claude Code.\nSetting up Python projects with Claude Code integration and best practices\nAutomating code quality checks and formatting across team projects\nImplementing test-driven development workflows with AI assistance\nManaging code refactoring safely while maintaining test coverage",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/discus0434/python-template-for-claude-code`",
+    "usage": "```\nSet up a new Python project using the Claude Code-centric template for [PROJECT_NAME]. Configure it with [PYTHON_VERSION], [PROJECT_DESCRIPTION], and [AUTHOR_NAME]. Ensure the template includes: a virtual environment, pre-commit hooks, pytest configuration, logging setup, and a README template. Generate the project structure and provide instructions for initializing it in Claude Code.\n```\nCopy\n\n```\nHere’s a newly generated Python project for **`data-pipeline`** using the Claude Code-centric template. The project is configured for **Python 3.11**, authored by **Jane Doe**, and includes the following structure:\n\n```\ndata-pipeline/\n├── .gitignore\n├── .pre-commit-config.yaml\n├── README.md\n├── pyproject.toml\n├── src/\n│   └── data_pipeline/\n│       ├── __init__.py\n│       ├── core.py\n│       └── utils.py\n├── tests/\n│   ├── __init__.py\n│   └── test_core.py\n└── .vscode/\n    └── settings.json\n```\n\n### Key Configurations:\n- **Virtual Environment**: Automatically created using `uv` (fast Python package manager). Run `uv sync` to install dependencies.\n- **Pre-commit Hooks**: Configured with `black`, `isort`, `flake8`, and `mypy` for code quality. Install hooks with `pre-commit install`.\n- **Testing**: `pytest` is pre-configured with coverage reporting. Run tests with `pytest --cov=src`.\n- **Logging**: Structured logging is set up in `src/data_pipeline/core.py` with a `get_logger()` function.\n- **VS Code Integration**: `.vscode/settings.json` includes recommended extensions (Python, Pylance) and formatting rules.\n\n### Next Steps:\n1. Initialize the project in Claude Code: Open the folder and run `uv sync`.\n2. Activate the virtual environment: `source .venv/bin/activate` (or `.venv\\Scripts\\activate` on Windows).\n3. Run pre-commit hooks: `pre-commit run --all-files`.\n4. Start coding! The `src/data_pipeline/core.py` file is pre-populated with a `DataProcessor` class template.\n\nWould you like me to generate additional boilerplate code for a specific use case (e.g., API client, CLI tool, or data processing)?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "python-template-for-claude-code#main-content",
+      "python-template-for-claude-code#overview",
+      "python-template-for-claude-code#setup",
+      "python-template-for-claude-code#examples",
+      "python-template-for-claude-code#tools",
+      "python-template-for-claude-code#mcp",
+      "python-template-for-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This template provides a structured starting point for Python projects designed to work seamlessly with Claude Code. It includes pre-configured development tools like uv for dependency management, Ruff for code styling, and comprehensive documentation (CLAUDE.md) that helps Claude Code understand your project structure and conventions. The template comes with custom slash commands (/ensure-quality, /write-tests, /commit-and-pr, /safe-refactor, /analyze, /improve) that automate common development tasks. It supports Python 3.12+ with integrated CI/CD workflows, pre-commit hooks, and TDD-focused test templates. Operations teams and developers can clone the repository, run the setup script for automatic project initialization, and immediately begin AI-assisted coding with Claude Code.\nSetting up Python projects with Claude Code integration and best practices\nAutomating code quality checks and formatting across team projects\nImplementing test-driven development workflows with AI assistance\nManaging code refactoring safely while maintaining test coverage",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/discus0434/python-template-for-claude-code`",
+    "usage_vi": "```\nSet up a new Python project using the Claude Code-centric template for [PROJECT_NAME]. Configure it with [PYTHON_VERSION], [PROJECT_DESCRIPTION], and [AUTHOR_NAME]. Ensure the template includes: a virtual environment, pre-commit hooks, pytest configuration, logging setup, and a README template. Generate the project structure and provide instructions for initializing it in Claude Code.\n```\nCopy\n\n```\nHere’s a newly generated Python project for **`data-pipeline`** using the Claude Code-centric template. The project is configured for **Python 3.11**, authored by **Jane Doe**, and includes the following structure:\n\n```\ndata-pipeline/\n├── .gitignore\n├── .pre-commit-config.yaml\n├── README.md\n├── pyproject.toml\n├── src/\n│   └── data_pipeline/\n│       ├── __init__.py\n│       ├── core.py\n│       └── utils.py\n├── tests/\n│   ├── __init__.py\n│   └── test_core.py\n└── .vscode/\n    └── settings.json\n```\n\n### Key Configurations:\n- **Virtual Environment**: Automatically created using `uv` (fast Python package manager). Run `uv sync` to install dependencies.\n- **Pre-commit Hooks**: Configured with `black`, `isort`, `flake8`, and `mypy` for code quality. Install hooks with `pre-commit install`.\n- **Testing**: `pytest` is pre-configured with coverage reporting. Run tests with `pytest --cov=src`.\n- **Logging**: Structured logging is set up in `src/data_pipeline/core.py` with a `get_logger()` function.\n- **VS Code Integration**: `.vscode/settings.json` includes recommended extensions (Python, Pylance) and formatting rules.\n\n### Next Steps:\n1. Initialize the project in Claude Code: Open the folder and run `uv sync`.\n2. Activate the virtual environment: `source .venv/bin/activate` (or `.venv\\Scripts\\activate` on Windows).\n3. Run pre-commit hooks: `pre-commit run --all-files`.\n4. Start coding! The `src/data_pipeline/core.py` file is pre-populated with a `DataProcessor` class template.\n\nWould you like me to generate additional boilerplate code for a specific use case (e.g., API client, CLI tool, or data processing)?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:15:08.858252Z",
+    "http_status": 200,
+    "content_hash": "cb19555cdd23e21d6a2c5658c1c0d8d33a876be2d46f03924348945e728aea65",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\python-template-for-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\python-template-for-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Python Template for Claude Code - AI-Assisted",
+  "short_description_vi": "Python project template for Claude Code centric development. Enables operations teams to quickly set up Python projects with pre-configured tools and best practices. Integrates with Claude Code for AI-assisted coding and workflow automation."
+}

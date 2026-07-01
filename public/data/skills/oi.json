@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/oi",
+  "slug": "oi",
+  "name": "react-native-best-practices",
+  "headline": "Overide: AI-Powered Code Generation Tool",
+  "short_description": "Overide is a CLI tool that integrates AI-driven code generation into development workflows. It supports multiple platforms and enhances coding efficiency by allowing developers to generate, update, and integrate code using predefined prompts. It connects to ChatGPT and is written in TypeScript.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "oi-overide",
+  "install_command": "claude install oi-overide/oi",
+  "source_repo_url": "https://github.com/oi-overide/oi",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "CLI tool",
+    "developer productivity",
+    "AI code generation",
+    "TypeScript",
+    "integration"
+  ],
+  "sections": {
+    "overview": "Overide is a CLI tool that brings AI-driven code generation into your development workflow, compatible with any IDE or text editor. It uses OpenAI's API to generate and automatically insert code based on simple prompt syntax embedded in your files. The tool continuously monitors your project files and converts prompts marked with //> <// patterns into functional code. Developers benefit from faster iteration cycles by focusing on creative problem-solving while Overide handles code generation. It integrates seamlessly into existing workflows through project configuration and supports ignoring specified files and directories.\nAutomating repetitive coding tasks\nGenerating code snippets based on prompts\nIntegrating AI suggestions directly into code editors",
+    "setup": "Terminal\nCopy\n`claude install oi-overide/oi`\n`git clone https://github.com/oi-overide/oi`",
+    "usage": "```\nUse Overide to generate a [LANGUAGE] function that [DESCRIBE_FUNCTION_TASK]. The function should follow [PROJECT_NAME]'s coding standards, including [STYLING_RULES] and [ERROR_HANDLING]. Include unit tests using [TEST_FRAMEWORK]. Output the full file with clear comments and type annotations. Example: 'Use Overide to generate a Python function that validates a user's email format. The function should follow the project's PEP 8 standards, include type hints, and use pytest for unit tests. Output the full file with clear comments and error handling for edge cases.'\n```\nCopy\n\n```\n```python\n# File: src/utils/email_validator.py\n# Description: Validates email format and checks for disposable domains\n# Dependencies: re, typing, pytest\n# Standards: PEP 8, Project Email Validation Spec v2.1\n\nfrom typing import Optional\nimport re\n\n# Disposable email domain list (last updated: 2024-05-15)\nDISPOSABLE_DOMAINS = {\n    \"mailinator.com\", \"tempmail.com\", \"guerrillamail.com\", \n    \"10minutemail.com\", \"throwawaymail.com\"\n}\n\n\ndef validate_email(email: str) -> tuple[bool, Optional[str]]:\n    \"\"\"\n    Validates an email address format and checks against disposable domains.\n    \n    Args:\n        email: The email address to validate\n        \n    Returns:\n        tuple: (is_valid, error_message)\n               is_valid: True if email is valid and not disposable\n               error_message: None if valid, otherwise specific error\n    \"\"\"\n    # Basic format validation\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    if not re.match(pattern, email):\n        return False, \"Invalid email format\"\n    \n    # Extract domain\n    _, domain = email.split('@', 1)\n    \n    # Check for disposable domains\n    if domain.lower() in DISPOSABLE_DOMAINS:\n        return False, \"Disposable email domain detected\"\n    \n    # Check for role-based emails (admin@, support@, etc.)\n    local_part = email.split('@')[0]\n    if local_part.lower() in {\"admin\", \"support\", \"info\", \"contact\"}:\n        return False, \"Role-based email addresses are not accepted\"\n    \n    return True, None\n\n\ndef test_validate_email():\n    \"\"\"Unit tests for email validation function\"\"\"\n    import pytest\n    \n    test_cases = [\n        (\"user@example.com\", True, None),\n        (\"invalid-email\", False, \"Invalid email format\"),\n        (\"test@mailinator.com\", False, \"Disposable email domain detected\"),\n        (\"admin@company.com\", False, \"Role-based email addresses are not accepted\"),\n        (\"user.name+tag@sub.domain.co.uk\", True, None),\n        (\"\", False, \"Invalid email format\"),\n        (\"user@localhost\", False, \"Invalid email format\")\n    ]\n    \n    for email, expected_valid, expected_error in test_cases:\n        is_valid, error = validate_email(email)\n        assert is_valid == expected_valid, f\"Failed for {email}\"\n        assert error == expected_error, f\"Failed for {email}\"\n    \n    print(\"All tests passed!\")\n\n\nif __name__ == \"__main__\":\n    test_validate_email()\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "oi#main-content",
+      "oi#overview",
+      "oi#setup",
+      "oi#examples",
+      "oi#tools",
+      "oi#mcp",
+      "oi#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Overide is a CLI tool that brings AI-driven code generation into your development workflow, compatible with any IDE or text editor. It uses OpenAI's API to generate and automatically insert code based on simple prompt syntax embedded in your files. The tool continuously monitors your project files and converts prompts marked with //> <// patterns into functional code. Developers benefit from faster iteration cycles by focusing on creative problem-solving while Overide handles code generation. It integrates seamlessly into existing workflows through project configuration and supports ignoring specified files and directories.\nAutomating repetitive coding tasks\nGenerating code snippets based on prompts\nIntegrating AI suggestions directly into code editors",
+    "setup_vi": "Terminal\nCopy\n`claude install oi-overide/oi`\n`git clone https://github.com/oi-overide/oi`",
+    "usage_vi": "```\nUse Overide to generate a [LANGUAGE] function that [DESCRIBE_FUNCTION_TASK]. The function should follow [PROJECT_NAME]'s coding standards, including [STYLING_RULES] and [ERROR_HANDLING]. Include unit tests using [TEST_FRAMEWORK]. Output the full file with clear comments and type annotations. Example: 'Use Overide to generate a Python function that validates a user's email format. The function should follow the project's PEP 8 standards, include type hints, and use pytest for unit tests. Output the full file with clear comments and error handling for edge cases.'\n```\nCopy\n\n```\n```python\n# File: src/utils/email_validator.py\n# Description: Validates email format and checks for disposable domains\n# Dependencies: re, typing, pytest\n# Standards: PEP 8, Project Email Validation Spec v2.1\n\nfrom typing import Optional\nimport re\n\n# Disposable email domain list (last updated: 2024-05-15)\nDISPOSABLE_DOMAINS = {\n    \"mailinator.com\", \"tempmail.com\", \"guerrillamail.com\", \n    \"10minutemail.com\", \"throwawaymail.com\"\n}\n\n\ndef validate_email(email: str) -> tuple[bool, Optional[str]]:\n    \"\"\"\n    Validates an email address format and checks against disposable domains.\n    \n    Args:\n        email: The email address to validate\n        \n    Returns:\n        tuple: (is_valid, error_message)\n               is_valid: True if email is valid and not disposable\n               error_message: None if valid, otherwise specific error\n    \"\"\"\n    # Basic format validation\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    if not re.match(pattern, email):\n        return False, \"Invalid email format\"\n    \n    # Extract domain\n    _, domain = email.split('@', 1)\n    \n    # Check for disposable domains\n    if domain.lower() in DISPOSABLE_DOMAINS:\n        return False, \"Disposable email domain detected\"\n    \n    # Check for role-based emails (admin@, support@, etc.)\n    local_part = email.split('@')[0]\n    if local_part.lower() in {\"admin\", \"support\", \"info\", \"contact\"}:\n        return False, \"Role-based email addresses are not accepted\"\n    \n    return True, None\n\n\ndef test_validate_email():\n    \"\"\"Unit tests for email validation function\"\"\"\n    import pytest\n    \n    test_cases = [\n        (\"user@example.com\", True, None),\n        (\"invalid-email\", False, \"Invalid email format\"),\n        (\"test@mailinator.com\", False, \"Disposable email domain detected\"),\n        (\"admin@company.com\", False, \"Role-based email addresses are not accepted\"),\n        (\"user.name+tag@sub.domain.co.uk\", True, None),\n        (\"\", False, \"Invalid email format\"),\n        (\"user@localhost\", False, \"Invalid email format\")\n    ]\n    \n    for email, expected_valid, expected_error in test_cases:\n        is_valid, error = validate_email(email)\n        assert is_valid == expected_valid, f\"Failed for {email}\"\n        assert error == expected_error, f\"Failed for {email}\"\n    \n    print(\"All tests passed!\")\n\n\nif __name__ == \"__main__\":\n    test_validate_email()\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:31:09.546361Z",
+    "http_status": 200,
+    "content_hash": "deaeb18463991abdf27abe0612fe13544d1dfb3f21cfe06b58650a2b5dd142ba",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\oi.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Overide: AI-Powered Code Generation Tool",
+  "short_description_vi": "Overide is a CLI tool that integrates AI-driven code generation into development workflows. It supports multiple platforms and enhances coding efficiency by allowing developers to generate, update, and integrate code using predefined prompts. It connects to ChatGPT and is written in TypeScript."
+}

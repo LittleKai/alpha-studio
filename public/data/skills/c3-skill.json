@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/c3-skill",
+  "slug": "c3-skill",
+  "name": "C3 Skill",
+  "headline": "C3 architecture for Claude Code",
+  "short_description": "C3 turns your codebase architecture into a queryable, machine-verifiable markdown structure that LLMs can safely read and update through Claude Code or CLI.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "lagz0ne",
+  "install_command": "git clone https://github.com/lagz0ne/c3-skill.git",
+  "source_repo_url": "https://github.com/lagz0ne/c3-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "C3 solves architecture documentation drift by making your codebase structure machine-readable and machine-verifiable. It creates a sealed `.c3/` directory of markdown files that define your entity model—containers, components, references, rules, and ADRs—with validation enforced by your team's own definitions. Agents query by meaning using semantic search, look up which component owns a file, trace transitive impact across your architecture, and write changes that pass structural and semantic validation. Use it through the Claude Code plugin with `/c3 onboard this project`, or via the `npx` CLI for batch operations. Git tracks all architectural decisions in reviewable diffs, while `c3.db` remains a local, disposable cache.\nQuery codebase architecture by meaning without knowing exact file paths or entity names\nValidate that architecture documentation matches your team's definitions before agents modify code\nTrace transitive impact of changes across containers, components, and cross-cutting references\nCreate and enforce architectural standards (ADRs, rules, refs) with machine-readable validation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/lagz0ne/c3-skill`",
+    "usage": "```\nDesign a C3 architecture for a [PRODUCT_TYPE] application. The application should have [NUMBER] core features: [FEATURE_LIST]. Generate the context diagram, container diagram, and component diagrams with detailed descriptions. Use [PROGRAMMING_LANGUAGE] for the implementation.\n```\nCopy\n\n```\nFor a task management application with 5 core features: task creation, task assignment, task tracking, reporting, and user management, here's a C3 architecture design:\n\n1. Context Diagram:\n   - System: Task Management Application\n   - Users: Project Managers, Team Members, Admins\n   - Other Systems: Email Service, Calendar Service, Database\n\n2. Container Diagram:\n   - Web Container: Handles user interfaces and business logic (React.js)\n   - API Container: Manages data processing and business logic (Node.js)\n   - Database Container: Stores application data (PostgreSQL)\n\n3. Component Diagrams:\n   - Task Creation Component: Handles task creation and validation\n   - Task Assignment Component: Manages task assignment and notifications\n   - Task Tracking Component: Tracks task progress and updates\n   - Reporting Component: Generates reports and analytics\n   - User Management Component: Manages user authentication and authorization\n\nEach component is designed to be modular and reusable, following the C3 architecture methodology. The application is implemented in JavaScript, with React.js for the frontend and Node.js for the backend.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "c3-skill#main-content",
+      "c3-skill#overview",
+      "c3-skill#setup",
+      "c3-skill#examples",
+      "c3-skill#tools",
+      "c3-skill#mcp",
+      "c3-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "C3 giải quyết vấn đề sai lệch tài liệu kiến trúc bằng cách giúp cấu trúc codebase của bạn có thể đọc và kiểm chứng được bằng máy. Nó tạo ra một thư mục `.c3/` khép kín chứa các file markdown định nghĩa mô hình thực thể của bạn—bao gồm container, component, reference, rule và ADR—với quy trình validation được thực thi dựa trên các định nghĩa của chính đội ngũ của bạn. Các agent thực hiện truy vấn theo ý nghĩa bằng cách sử dụng semantic search, tra cứu xem component nào sở hữu một file, theo dấu tác động bắc cầu (transitive impact) trên toàn bộ kiến trúc, và ghi các thay đổi vượt qua vòng xác thực cấu trúc và ngữ nghĩa. Sử dụng công cụ này thông qua plugin Claude Code với `/c3 onboard this project`, hoặc qua CLI của `npx` cho các thao tác hàng loạt. Git theo dõi tất cả các quyết định kiến trúc dưới dạng các diff có thể review được, trong khi `c3.db` đóng vai trò là cache cục bộ có thể xóa bỏ tạm thời.\nTruy vấn kiến trúc codebase theo ngữ nghĩa mà không cần biết chính xác đường dẫn file hay tên thực thể\nXác thực tài liệu kiến trúc khớp với các định nghĩa của đội ngũ trước khi các agent sửa đổi code\nTheo dấu tác động bắc cầu của các thay đổi trên khắp các container, component và tham chiếu chéo (cross-cutting references)\nTạo và thực thi các tiêu chuẩn kiến trúc (ADRs, rules, refs) bằng các xác thực có thể đọc bằng máy",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/lagz0ne/c3-skill`",
+    "usage_vi": "```\nThiết kế kiến trúc C3 cho ứng dụng [PRODUCT_TYPE]. Ứng dụng này cần có [NUMBER] tính năng cốt lõi: [FEATURE_LIST]. Hãy tạo context diagram, container diagram, và các component diagram kèm theo mô tả chi tiết. Sử dụng [PROGRAMMING_LANGUAGE] để triển khai.\n```\nSao chép\n\n```\nDưới đây là thiết kế kiến trúc C3 cho một ứng dụng quản lý công việc với 5 tính năng cốt lõi: tạo công việc, giao việc, theo dõi công việc, báo cáo và quản lý người dùng:\n\n1. Context Diagram:\n   - System: Ứng dụng Quản lý Công việc\n   - Users: Quản lý dự án, Thành viên nhóm, Admin\n   - Other Systems: Dịch vụ Email, Dịch vụ Lịch (Calendar), Cơ sở dữ liệu (Database)\n\n2. Container Diagram:\n   - Web Container: Xử lý giao diện người dùng và logic nghiệp vụ (React.js)\n   - API Container: Quản lý xử lý dữ liệu và logic nghiệp vụ (Node.js)\n   - Database Container: Lưu trữ dữ liệu ứng dụng (PostgreSQL)\n\n3. Component Diagrams:\n   - Task Creation Component: Xử lý việc tạo công việc và kiểm tra tính hợp lệ (validation)\n   - Task Assignment Component: Quản lý việc giao việc và thông báo\n   - Task Tracking Component: Theo dõi tiến độ công việc và cập nhật\n   - Reporting Component: Tạo báo cáo và phân tích\n   - User Management Component: Quản lý xác thực (authentication) và phân quyền (authorization)\n\nMỗi component được thiết kế để đảm bảo tính modular và khả năng tái sử dụng, tuân theo phương pháp kiến trúc C3. Ứng dụng được triển khai bằng JavaScript, sử dụng React.js cho frontend và Node.js cho backend.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:19:54.426705Z",
+    "http_status": 200,
+    "content_hash": "e117722939c160b1eba8a41832fd3fae228845fd7a92172b7373c7bd726260be",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\c3-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\c3-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kiến trúc C3 dành cho Claude Code",
+  "short_description_vi": "C3 chuyển đổi kiến trúc codebase của bạn thành cấu trúc markdown có thể truy vấn và kiểm chứng bằng máy, giúp các LLM đọc và cập nhật một cách an toàn thông qua Claude Code hoặc CLI."
+}

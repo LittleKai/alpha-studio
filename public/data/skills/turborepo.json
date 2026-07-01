@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/turborepo",
+  "slug": "turborepo",
+  "name": "react-native-best-practices",
+  "headline": "Turborepo: Optimize Your Monorepo Workflow",
+  "short_description": "Turborepo optimizes multi-package development by caching and parallelizing tasks, reducing build times. Engineering teams benefit from faster iterations and consistent workflows across projects. It integrates with common JavaScript tools like npm, yarn, and webpack.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/vercel",
+  "source_repo_url": "https://github.com/sh/vercel",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "collaboration",
+    "monorepo",
+    "development",
+    "build optimization"
+  ],
+  "sections": {
+    "overview": "Turborepo is a development tool that optimizes multi-package JavaScript projects by implementing intelligent caching and task parallelization. It reduces build times by avoiding redundant work and executing tasks concurrently across your monorepo. Turborepo integrates seamlessly with common package managers and bundlers including npm, yarn, and webpack, enabling engineering teams to maintain consistent workflows without tool switching.\nMonorepo management\nFaster build times\nImproved project collaboration",
+    "setup": "Terminal\nCopy\n`npx skills add sh/vercel`\n`git clone https://github.com/sh/vercel`\n\n1. Initialize Turborepo in the root directory:\n```bash\nnpx turbo init\n```\n\n2. Create package directories and initialize packages:\n```bash\nmkdir -p packages/{frontend,backend}\ncd packages/frontend && npm init -y\ncd ../backend && npm init -y\n```\n\n3. Add scripts to each package's `package.json`:\n```json\n\"scripts\": {\n  \"build\": \"webpack\",\n  \"lint\": \"eslint . --fix\"\n}\n```\n\n4. Run Turborepo commands:\n```bash\n# Build all packages\nnpx turbo run build\n\n# Lint all packages\nnpx turbo run lint\n```\n```",
+    "usage": "```\nSet up Turborepo for a monorepo project with [NUMBER] packages. Use [PACKAGE_MANAGER] and [BUILD_TOOL]. Optimize for [SPECIFIC_USE_CASE] like frontend/backend development or library management. Provide configuration files and step-by-step setup instructions.\n```\nCopy\n\n```\n# Turborepo Setup for Monorepo Project",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "turborepo#main-content",
+      "turborepo#overview",
+      "turborepo#setup",
+      "turborepo#examples",
+      "turborepo#tools",
+      "turborepo#mcp",
+      "turborepo#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Turborepo is a development tool that optimizes multi-package JavaScript projects by implementing intelligent caching and task parallelization. It reduces build times by avoiding redundant work and executing tasks concurrently across your monorepo. Turborepo integrates seamlessly with common package managers and bundlers including npm, yarn, and webpack, enabling engineering teams to maintain consistent workflows without tool switching.\nMonorepo management\nFaster build times\nImproved project collaboration",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/vercel`\n`git clone https://github.com/sh/vercel`\n\n1. Initialize Turborepo in the root directory:\n```bash\nnpx turbo init\n```\n\n2. Create package directories and initialize packages:\n```bash\nmkdir -p packages/{frontend,backend}\ncd packages/frontend && npm init -y\ncd ../backend && npm init -y\n```\n\n3. Add scripts to each package's `package.json`:\n```json\n\"scripts\": {\n  \"build\": \"webpack\",\n  \"lint\": \"eslint . --fix\"\n}\n```\n\n4. Run Turborepo commands:\n```bash\n# Build all packages\nnpx turbo run build\n\n# Lint all packages\nnpx turbo run lint\n```\n```",
+    "usage_vi": "```\nSet up Turborepo for a monorepo project with [NUMBER] packages. Use [PACKAGE_MANAGER] and [BUILD_TOOL]. Optimize for [SPECIFIC_USE_CASE] like frontend/backend development or library management. Provide configuration files and step-by-step setup instructions.\n```\nCopy\n\n```\n# Turborepo Setup for Monorepo Project"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:35:45.718273Z",
+    "http_status": 200,
+    "content_hash": "03ad2c27aa501ac3f3b707b5533495658ba8f4de02a22aec41d6f3d477edbd0e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\turborepo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\turborepo.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Turborepo: Optimize Your Monorepo Workflow",
+  "short_description_vi": "Turborepo optimizes multi-package development by caching and parallelizing tasks, reducing build times. Engineering teams benefit from faster iterations and consistent workflows across projects. It integrates with common JavaScript tools like npm, yarn, and webpack."
+}

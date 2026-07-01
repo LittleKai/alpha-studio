@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spec-driven-workflow",
+  "slug": "spec-driven-workflow",
+  "name": "Spec-Driven Workflow",
+  "headline": "Spec-Driven Workflow - AI-Guided Development",
+  "short_description": "A lightweight markdown-based workflow for collaborating with AI coding assistants using spec-driven development. Enables operations teams to build predictable software with a repeatable AI-guided workflow. Connects to AI coding assistants like Claude and integrates with development tools.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "liatrio-labs",
+  "install_command": "git clone https://github.com/liatrio-labs/spec-driven-workflow.git",
+  "source_repo_url": "https://github.com/liatrio-labs/spec-driven-workflow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "development-workflow",
+    "markdown",
+    "claude-code",
+    "spec-driven-development",
+    "ai-coding-assistant",
+    "workflow-automation",
+    "context-engineering",
+    "prompts",
+    "prompt-engineering",
+    "ai-agents",
+    "ai-assisted-development",
+    "sdd",
+    "windsurf"
+  ],
+  "sections": {
+    "overview": "Spec-Driven Development Workflow is a skill-first framework for collaborating with AI coding assistants like Claude to build predictable software through a repeatable four-phase process. The workflow guides agents through defining clear specifications with demo criteria, breaking work into demoable tasks, executing implementation with checkpoints, and validating against the spec with evidence artifacts. Install as a single reusable skill that reassesses repository state and continues from persisted artifacts, or use individual prompt files as slash commands. This approach keeps AI agents focused and consistent across long conversations, enabling operations teams to deliver reliable outcomes with structured, auditable development practices.\nCollaborating with Claude or other AI coding assistants on feature development\nBuilding predictable software with repeatable, audited workflows\nBreaking down complex features into demoable, verifiable tasks\nMaintaining spec-to-implementation traceability with proof artifacts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liatrio-labs/spec-driven-workflow`",
+    "usage": "```\nI'm working on [PROJECT_NAME], a [BRIEF_PROJECT_DESCRIPTION]. Here's the current spec in markdown format:\n\n```markdown\n[SPEC_CONTENT]\n```\n\nPlease implement the next task: [TASK_DESCRIPTION]. Follow the spec exactly, including:\n- [SPEC_SECTION_1]\n- [SPEC_SECTION_2]\n- [SPEC_SECTION_3]\n\nAfter implementation, validate against these test cases:\n```\n[TEST_CASES]\n```\n\nProvide:\n1. The code changes in a diff format\n2. Explanation of how it meets the spec\n3. Any deviations or questions about the spec\n4. Next task suggestion based on the spec\n```\nCopy\n\n```\n### Implementation for Task: Implement User Authentication Endpoint\n\n**Diff:**\n```diff\n+ // src/controllers/authController.ts\n+ export const loginUser = async (req: Request, res: Response) => {\n+   const { email, password } = req.body;\n+\n+   // Validate input\n+   if (!email || !password) {\n+     return res.status(400).json({ error: 'Email and password are required' });\n+   }\n+\n+   // Find user\n+   const user = await User.findOne({ email });\n+   if (!user) {\n+     return res.status(401).json({ error: 'Invalid credentials' });\n+   }\n+\n+   // Verify password\n+   const isMatch = await bcrypt.compare(password, user.password);\n+   if (!isMatch) {\n+     return res.status(401).json({ error: 'Invalid credentials' });\n+   }\n+\n+   // Generate token\n+   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {\n+     expiresIn: '1h',\n+   });\n+\n+   res.json({ token });\n+ };\n```\n\n**Validation Against Spec:**\n✅ Implements POST /api/auth/login endpoint\n✅ Requires email and password in request body\n✅ Validates input presence\n✅ Returns 400 for missing fields\n✅ Uses bcrypt for password comparison\n✅ Generates JWT token with 1h expiration\n✅ Returns 401 for invalid credentials\n✅ Returns 200 with token on success\n\n**Test Results:**\n```\n✅ Valid credentials → 200 with token\n✅ Missing email → 400 error\n✅ Missing password → 400 error\n✅ Invalid email → 401 error\n✅ Invalid password → 401 error\n```\n\n**Questions/Deviations:**\n1. Spec mentions rate limiting but not implemented - should we add this?\n2. Password strength requirements not specified - implement basic check?\n\n**Next Task Suggestion:**\nBased on the spec's \"Authentication\" section, next would be implementing the token refresh endpoint.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "spec-driven-workflow#main-content",
+      "spec-driven-workflow#overview",
+      "spec-driven-workflow#setup",
+      "spec-driven-workflow#examples",
+      "spec-driven-workflow#tools",
+      "spec-driven-workflow#mcp",
+      "spec-driven-workflow#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Spec-Driven Development Workflow is a skill-first framework for collaborating with AI coding assistants like Claude to build predictable software through a repeatable four-phase process. The workflow guides agents through defining clear specifications with demo criteria, breaking work into demoable tasks, executing implementation with checkpoints, and validating against the spec with evidence artifacts. Install as a single reusable skill that reassesses repository state and continues from persisted artifacts, or use individual prompt files as slash commands. This approach keeps AI agents focused and consistent across long conversations, enabling operations teams to deliver reliable outcomes with structured, auditable development practices.\nCollaborating with Claude or other AI coding assistants on feature development\nBuilding predictable software with repeatable, audited workflows\nBreaking down complex features into demoable, verifiable tasks\nMaintaining spec-to-implementation traceability with proof artifacts",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liatrio-labs/spec-driven-workflow`",
+    "usage_vi": "```\nI'm working on [PROJECT_NAME], a [BRIEF_PROJECT_DESCRIPTION]. Here's the current spec in markdown format:\n\n```markdown\n[SPEC_CONTENT]\n```\n\nPlease implement the next task: [TASK_DESCRIPTION]. Follow the spec exactly, including:\n- [SPEC_SECTION_1]\n- [SPEC_SECTION_2]\n- [SPEC_SECTION_3]\n\nAfter implementation, validate against these test cases:\n```\n[TEST_CASES]\n```\n\nProvide:\n1. The code changes in a diff format\n2. Explanation of how it meets the spec\n3. Any deviations or questions about the spec\n4. Next task suggestion based on the spec\n```\nCopy\n\n```\n### Implementation for Task: Implement User Authentication Endpoint\n\n**Diff:**\n```diff\n+ // src/controllers/authController.ts\n+ export const loginUser = async (req: Request, res: Response) => {\n+   const { email, password } = req.body;\n+\n+   // Validate input\n+   if (!email || !password) {\n+     return res.status(400).json({ error: 'Email and password are required' });\n+   }\n+\n+   // Find user\n+   const user = await User.findOne({ email });\n+   if (!user) {\n+     return res.status(401).json({ error: 'Invalid credentials' });\n+   }\n+\n+   // Verify password\n+   const isMatch = await bcrypt.compare(password, user.password);\n+   if (!isMatch) {\n+     return res.status(401).json({ error: 'Invalid credentials' });\n+   }\n+\n+   // Generate token\n+   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {\n+     expiresIn: '1h',\n+   });\n+\n+   res.json({ token });\n+ };\n```\n\n**Validation Against Spec:**\n✅ Implements POST /api/auth/login endpoint\n✅ Requires email and password in request body\n✅ Validates input presence\n✅ Returns 400 for missing fields\n✅ Uses bcrypt for password comparison\n✅ Generates JWT token with 1h expiration\n✅ Returns 401 for invalid credentials\n✅ Returns 200 with token on success\n\n**Test Results:**\n```\n✅ Valid credentials → 200 with token\n✅ Missing email → 400 error\n✅ Missing password → 400 error\n✅ Invalid email → 401 error\n✅ Invalid password → 401 error\n```\n\n**Questions/Deviations:**\n1. Spec mentions rate limiting but not implemented - should we add this?\n2. Password strength requirements not specified - implement basic check?\n\n**Next Task Suggestion:**\nBased on the spec's \"Authentication\" section, next would be implementing the token refresh endpoint.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:32:22.519365Z",
+    "http_status": 200,
+    "content_hash": "2e081472df77566951a95cfd3e6a2121fac0fc6ef00ff6a6b92bbed227f53ba4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec-driven-workflow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spec-driven-workflow.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Spec-Driven Workflow - AI-Guided Development",
+  "short_description_vi": "A lightweight markdown-based workflow for collaborating with AI coding assistants using spec-driven development. Enables operations teams to build predictable software with a repeatable AI-guided workflow. Connects to AI coding assistants like Claude and integrates with development tools."
+}

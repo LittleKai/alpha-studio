@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agenticflow-skill",
+  "slug": "agenticflow-skill",
+  "name": "Agenticflow Skill",
+  "headline": "AgenticFlow Automation Workflows with Claude",
+  "short_description": "AgenticFlow skill enables users to create automation workflows with over 2,500 service integrations. Designed for Claude, it enhances productivity by simplifying complex tasks through automation.",
+  "tier": "Silver",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "PixelML",
+  "install_command": "claude install PixelML/agenticflow-skill",
+  "source_repo_url": "https://github.com/PixelML/agenticflow-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "workflow",
+    "integrations",
+    "claude",
+    "ai"
+  ],
+  "sections": {
+    "overview": "AgenticFlow skill extends Claude Code, Cursor, Gemini CLI, and other AI agents with access to the AgenticFlow platform. It enables you to build individual AI agents, deploy multi-agent workforces, inspect and attach MCP tool providers, and automate operations through the `af` CLI. The skill auto-routes based on your prompts—choosing between workforce management, agent creation, or MCP tool integration—making it straightforward to set up complex automation pipelines. After installing the npm-based CLI and authenticating with an API key, you can bootstrap your session, manage agents and workforces, and wire multi-agent workflows directly from your coding environment.\nAutomating lead generation processes\nIntegrating CRM systems with marketing tools\nStreamlining customer support workflows\nCreating automated reporting dashboards\n\nThis workflow automates the process of generating and distributing monthly performance reports for GreenTech Solutions, a renewable energy company. It integrates Salesforce and Google Sheets to streamline data collection and reporting.",
+    "setup": "Terminal\nCopy\n`claude install PixelML/agenticflow-skill`\n`git clone https://github.com/PixelML/agenticflow-skill`",
+    "usage": "```\nCreate an automation workflow for [COMPANY] in the [INDUSTRY] sector. The workflow should integrate [SERVICE_1] and [SERVICE_2] to automate [SPECIFIC_TASK]. Provide a step-by-step breakdown of the workflow and ensure it is compatible with AgenticFlow's integrations.\n```\nCopy\n\n```\n# Automation Workflow for GreenTech Solutions",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agenticflow-skill#main-content",
+      "agenticflow-skill#overview",
+      "agenticflow-skill#setup",
+      "agenticflow-skill#examples",
+      "agenticflow-skill#tools",
+      "agenticflow-skill#mcp",
+      "agenticflow-skill#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Skill AgenticFlow mở rộng khả năng của Claude Code, Cursor, Gemini CLI và các AI agent khác bằng cách cấp quyền truy cập vào nền tảng AgenticFlow. Nó cho phép bạn xây dựng các AI agent riêng lẻ, triển khai các hệ thống multi-agent, kiểm tra và liên kết các nhà cung cấp công cụ MCP (MCP tool providers), cũng như tự động hóa các hoạt động thông qua `af` CLI. Skill này tự động điều hướng (auto-route) dựa trên prompt của bạn—lựa chọn giữa quản lý hệ thống agent, tạo agent hoặc tích hợp công cụ MCP—giúp việc thiết lập các pipeline tự động hóa phức tạp trở nên đơn giản. Sau khi cài đặt CLI qua npm và xác thực bằng API key, bạn có thể khởi tạo (bootstrap) session, quản lý agent và hệ thống agent, cũng như kết nối các workflow multi-agent trực tiếp từ môi trường lập trình của mình.\n\nTự động hóa quy trình tìm kiếm khách hàng tiềm năng (lead generation)\nTích hợp hệ thống CRM với các công cụ marketing\nTối ưu hóa các workflow hỗ trợ khách hàng\nTạo các dashboard báo cáo tự động\n\nWorkflow này tự động hóa quy trình tạo và phân phối báo cáo hiệu suất hàng tháng cho GreenTech Solutions, một công ty năng lượng tái tạo. Nó tích hợp Salesforce và Google Sheets để tối ưu hóa việc thu thập dữ liệu và báo cáo.",
+    "setup_vi": "Terminal\nSao chép\n`claude install PixelML/agenticflow-skill`\n`git clone https://github.com/PixelML/agenticflow-skill`",
+    "usage_vi": "```\nHãy tạo một workflow tự động hóa cho [COMPANY] trong lĩnh vực [INDUSTRY]. Workflow này cần tích hợp [SERVICE_1] và [SERVICE_2] để tự động hóa [SPECIFIC_TASK]. Cung cấp các bước phân tích chi tiết của workflow và đảm bảo nó tương thích với các tích hợp của AgenticFlow.\n```\nSao chép\n\n```\n# Workflow tự động hóa cho GreenTech Solutions"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:26:11.373997Z",
+    "http_status": 200,
+    "content_hash": "51b512947b4cda739ab2901b7aab2715c67d6fd7f1f70dddc54b6454eac32c08",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agenticflow-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agenticflow-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Workflow tự động hóa AgenticFlow với Claude",
+  "short_description_vi": "Skill AgenticFlow cho phép người dùng tạo các workflow tự động hóa với hơn 2.500 dịch vụ tích hợp. Được thiết kế dành riêng cho Claude, skill này giúp nâng cao năng suất nhờ đơn giản hóa các tác vụ phức tạp thông qua tự động hóa."
+}

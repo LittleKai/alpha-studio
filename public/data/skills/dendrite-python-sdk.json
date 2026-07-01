@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dendrite-python-sdk",
+  "slug": "dendrite-python-sdk",
+  "name": "Dendrite Python Sdk",
+  "headline": "Dendrite Python SDK for Web AI Agents",
+  "short_description": "The dendrite-python-sdk provides powerful tools for building web AI agents capable of authenticating, interacting with, and extracting data from any website. This SDK is ideal for developers looking to automate web tasks and enhance their AI applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "dendrite-systems",
+  "install_command": "claude install dendrite-systems/dendrite-python-sdk",
+  "source_repo_url": "https://github.com/dendrite-systems/dendrite-python-sdk",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "RPA",
+    "scraping",
+    "data extraction",
+    "AI agents",
+    "web automation"
+  ],
+  "sections": {
+    "overview": "Dendrite is an open-source Python SDK that enables AI agents to browse and interact with websites using natural language instructions. The framework handles authentication, element interaction, structured data extraction, file downloads, and anti-blocking measures—allowing developers to build web automation tools without APIs. It works with Claude and other LLMs through a simple async interface. Dendrite caches extracted scripts for reuse and self-healing when websites update. While no longer under active development, the fully open-source codebase remains available for learning, forking, and adaptation.\nAutomating data collection from competitor websites\nBuilding chatbots that interact with web services\nCreating agents for market research by scraping data\nIntegrating web data into CRM systems",
+    "setup": "Terminal\nCopy\n`claude install dendrite-systems/dendrite-python-sdk`\n`git clone https://github.com/dendrite-systems/dendrite-python-sdk`",
+    "usage": "```\nUse the dendrite-python-sdk to build a web AI agent that automates data extraction from [WEBSITE_URL]. The agent should authenticate using [AUTH_METHOD], navigate to [SPECIFIC_PAGE], and extract [DATA_FIELDS]. Handle dynamic content and potential CAPTCHAs. Return the structured data in JSON format.\n```\nCopy\n\n```\n```json\n{\n  \"extraction_timestamp\": \"2023-11-15T14:30:22Z\",\n  \"source_url\": \"https://example-ecommerce.com/products/category/electronics\",\n  \"data\": [\n    {\n      \"product_id\": \"ELEC-2023-001\",\n      \"name\": \"Wireless Noise-Cancelling Headphones\",\n      \"price\": 299.99,\n      \"availability\": \"In Stock\",\n      \"rating\": 4.7,\n      \"specs\": {\n        \"brand\": \"SoundMaster\",\n        \"color\": \"Black\",\n        \"battery_life\": \"30 hours\",\n        \"weight\": \"250g\"\n      },\n      \"metadata\": {\n        \"last_updated\": \"2023-11-10T08:15:00Z\",\n        \"extracted_by\": \"dendrite-python-sdk-v1.2.4\"\n      }\n    },\n    {\n      \"product_id\": \"ELEC-2023-002\",\n      \"name\": \"Smartphone with 5G\",\n      \"price\": 899.00,\n      \"availability\": \"Out of Stock\",\n      \"rating\": 4.2,\n      \"specs\": {\n        \"brand\": \"TechNova\",\n        \"storage\": \"256GB\",\n        \"screen_size\": \"6.5 inches\",\n        \"os\": \"Android 14\"\n      },\n      \"metadata\": {\n        \"last_updated\": \"2023-11-12T11:42:00Z\",\n        \"extracted_by\": \"dendrite-python-sdk-v1.2.4\"\n      }\n    }\n  ],\n  \"summary\": {\n    \"total_products\": 2,\n    \"avg_rating\": 4.45,\n    \"price_range\": {\"min\": 299.99, \"max\": 899.00},\n    \"availability_breakdown\": {\"in_stock\": 1, \"out_of_stock\": 1}\n  },\n  \"warnings\": [\n    \"CAPTCHA encountered on page 2. Retried with delay.\",\n    \"Dynamic content load failed for product ELEC-2023-003. Skipped.\"\n  ]\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "dendrite-python-sdk#main-content",
+      "dendrite-python-sdk#overview",
+      "dendrite-python-sdk#setup",
+      "dendrite-python-sdk#examples",
+      "dendrite-python-sdk#tools",
+      "dendrite-python-sdk#mcp",
+      "dendrite-python-sdk#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Dendrite is an open-source Python SDK that enables AI agents to browse and interact with websites using natural language instructions. The framework handles authentication, element interaction, structured data extraction, file downloads, and anti-blocking measures—allowing developers to build web automation tools without APIs. It works with Claude and other LLMs through a simple async interface. Dendrite caches extracted scripts for reuse and self-healing when websites update. While no longer under active development, the fully open-source codebase remains available for learning, forking, and adaptation.\nAutomating data collection from competitor websites\nBuilding chatbots that interact with web services\nCreating agents for market research by scraping data\nIntegrating web data into CRM systems",
+    "setup_vi": "Terminal\nCopy\n`claude install dendrite-systems/dendrite-python-sdk`\n`git clone https://github.com/dendrite-systems/dendrite-python-sdk`",
+    "usage_vi": "```\nUse the dendrite-python-sdk to build a web AI agent that automates data extraction from [WEBSITE_URL]. The agent should authenticate using [AUTH_METHOD], navigate to [SPECIFIC_PAGE], and extract [DATA_FIELDS]. Handle dynamic content and potential CAPTCHAs. Return the structured data in JSON format.\n```\nCopy\n\n```\n```json\n{\n  \"extraction_timestamp\": \"2023-11-15T14:30:22Z\",\n  \"source_url\": \"https://example-ecommerce.com/products/category/electronics\",\n  \"data\": [\n    {\n      \"product_id\": \"ELEC-2023-001\",\n      \"name\": \"Wireless Noise-Cancelling Headphones\",\n      \"price\": 299.99,\n      \"availability\": \"In Stock\",\n      \"rating\": 4.7,\n      \"specs\": {\n        \"brand\": \"SoundMaster\",\n        \"color\": \"Black\",\n        \"battery_life\": \"30 hours\",\n        \"weight\": \"250g\"\n      },\n      \"metadata\": {\n        \"last_updated\": \"2023-11-10T08:15:00Z\",\n        \"extracted_by\": \"dendrite-python-sdk-v1.2.4\"\n      }\n    },\n    {\n      \"product_id\": \"ELEC-2023-002\",\n      \"name\": \"Smartphone with 5G\",\n      \"price\": 899.00,\n      \"availability\": \"Out of Stock\",\n      \"rating\": 4.2,\n      \"specs\": {\n        \"brand\": \"TechNova\",\n        \"storage\": \"256GB\",\n        \"screen_size\": \"6.5 inches\",\n        \"os\": \"Android 14\"\n      },\n      \"metadata\": {\n        \"last_updated\": \"2023-11-12T11:42:00Z\",\n        \"extracted_by\": \"dendrite-python-sdk-v1.2.4\"\n      }\n    }\n  ],\n  \"summary\": {\n    \"total_products\": 2,\n    \"avg_rating\": 4.45,\n    \"price_range\": {\"min\": 299.99, \"max\": 899.00},\n    \"availability_breakdown\": {\"in_stock\": 1, \"out_of_stock\": 1}\n  },\n  \"warnings\": [\n    \"CAPTCHA encountered on page 2. Retried with delay.\",\n    \"Dynamic content load failed for product ELEC-2023-003. Skipped.\"\n  ]\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:29:12.294866Z",
+    "http_status": 200,
+    "content_hash": "78059b11679fce781da220bd56edeca22a1fff6e323521e5997cb3472b853c42",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dendrite-python-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dendrite-python-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Dendrite Python SDK for Web AI Agents",
+  "short_description_vi": "The dendrite-python-sdk provides powerful tools for building web AI agents capable of authenticating, interacting with, and extracting data from any website. This SDK is ideal for developers looking to automate web tasks and enhance their AI applications."
+}

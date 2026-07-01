@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome",
+  "slug": "awesome",
+  "name": "awesome",
+  "headline": "awesome repositories list with GitHub actions",
+  "short_description": "Automatically curates and updates a list of GitHub stars. Benefits developers by maintaining an organized repository of starred projects. Integrates with GitHub Actions for scheduled updates at UTC 00:00 and 16:00.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "erbanku",
+  "install_command": "git clone https://github.com/erbanku/awesome.git",
+  "source_repo_url": "https://github.com/erbanku/awesome",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "awesome-list",
+    "awesome-stars",
+    "awesome"
+  ],
+  "sections": {
+    "overview": "Awesome Stars is an automation skill that generates and maintains a curated list of GitHub starred repositories, organized by programming language and category. It uses the starred tool to automatically compile starred projects into a structured, searchable directory covering 60+ languages including Python, JavaScript, TypeScript, Rust, Go, and more. The skill integrates with GitHub Actions for scheduled updates, keeping your star collection current without manual effort. Developers benefit by having a centralized, well-organized reference of useful projects and resources they've bookmarked, making it easy to discover and share tools relevant to specific tech stacks.\nMaintain an organized public portfolio of favorite development tools and libraries\nCreate searchable documentation of starred projects by programming language\nShare curated resource lists with team members or the developer community\nKeep track of interesting projects across diverse technology stacks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/erbanku/awesome`",
+    "usage": "```\nCreate a GitHub Actions workflow that automatically curates and updates a list of starred repositories for [USERNAME]. The workflow should run at UTC 00:00 and 16:00 daily, fetch the starred repos, and update a markdown file in the [REPO_NAME] repository. Include error handling for rate limits and API failures. Use the GitHub API token [GITHUB_TOKEN] for authentication.\n```\nCopy\n\n```\n```yaml\n# .github/workflows/update_starred_repos.yml\nname: Update Starred Repositories\n\non:\n  schedule:\n    - cron: '0 0 * * *'\n    - cron: '0 16 * * *'\n  workflow_dispatch:\n\njobs:\n  update:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v4\n\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: '3.11'\n\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install requests\n\n      - name: Fetch starred repositories\n        id: fetch_stars\n        run: |\n          python << 'EOF'\n          import requests\n          import os\n          \n          GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')\n          USERNAME = 'alice-dev'\n          REPO_NAME = 'awesome-stars'\n          \n          headers = {\n              'Authorization': f'token {GITHUB_TOKEN}',\n              'Accept': 'application/vnd.github.v3+json'\n          }\n          \n          try:\n              response = requests.get(\n                  f'https://api.github.com/users/{USERNAME}/starred',\n                  headers=headers,\n                  params={'per_page': 100}\n              )\n              response.raise_for_status()\n              repos = response.json()\n              \n              with open('starred_repos.md', 'w') as f:\n                  f.write('# Starred Repositories\\n\\n')\n                  for repo in repos:\n                      f.write(f\"- [{repo['name']}]({repo['html_url']}) - {repo['description'] or 'No description'}\\n\")\n              \n              print(f\"Updated starred repos for {USERNAME}\")\n          except requests.exceptions.RequestException as e:\n              print(f\"Error fetching starred repos: {e}\")\n              exit(1)\n          EOF\n\n      - name: Commit and push changes\n        run: |\n          git config --global user.name 'github-actions[bot]'\n          git config --global user.email 'github-actions[bot]@users.noreply.github.com'\n          git add starred_repos.md\n          git diff --quiet && git diff --staged --quiet || git commit -m \"Update starred repositories [skip ci]\"\n          git push\n```\n\nThe workflow will:\n1. Run at UTC 00:00 and 16:00 daily.\n2. Fetch starred repositories for `alice-dev` using the GitHub API.\n3. Update the `starred_repos.md` file in the `awesome-stars` repository with the latest starred projects.\n4. Commit and push changes if updates are found.\n5. Handle API errors gracefully with error logging.\n\nThe resulting `starred_repos.md` file will look like:\n```markdown\n# Starred Repositories\n\n- [react](https://github.com/facebook/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces\n- [next.js](https://github.com/vercel/next.js) - The React Framework for Production\n- [tailwindcss](https://github.com/tailwindlabs/tailwindcss) - A utility-first CSS framework for rapidly building custom designs\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome#main-content",
+      "awesome#overview",
+      "awesome#setup",
+      "awesome#examples",
+      "awesome#tools",
+      "awesome#mcp",
+      "awesome#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Stars là một skill tự động hóa giúp tạo và duy trì danh sách chọn lọc các repository đã starred trên GitHub, được sắp xếp theo ngôn ngữ lập trình và danh mục. Skill này sử dụng công cụ starred để tự động tổng hợp các dự án đã đánh dấu sao thành một thư mục có cấu trúc, cho phép tìm kiếm dễ dàng và hỗ trợ hơn 60 ngôn ngữ lập trình bao gồm Python, JavaScript, TypeScript, Rust, Go, và nhiều ngôn ngữ khác. Skill tích hợp trực tiếp với GitHub Actions để cập nhật theo lịch trình, giúp bộ sưu tập starred của bạn luôn mới mà không cần thao tác thủ công. Lập trình viên sẽ có một trang tham chiếu tập trung, được tổ chức khoa học chứa các dự án và tài nguyên hữu ích đã lưu, giúp dễ dàng tìm kiếm và chia sẻ các công cụ phù hợp với từng tech stack cụ thể.\nDuy trì một portfolio công khai, ngăn nắp chứa các thư viện và công cụ phát triển yêu thích\nTạo tài liệu hướng dẫn có thể tìm kiếm cho các dự án đã starred theo ngôn ngữ lập trình\nChia sẻ danh sách tài nguyên chọn lọc với các thành viên trong nhóm hoặc cộng đồng lập trình viên\nTheo dõi các dự án thú vị trên nhiều tech stack khác nhau",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/erbanku/awesome`",
+    "usage_vi": "```\nTạo một workflow GitHub Actions tự động thu thập và cập nhật danh sách các repository đã starred của [USERNAME]. Workflow sẽ chạy vào lúc 00:00 và 16:00 UTC hàng ngày, lấy dữ liệu các repo đã starred và cập nhật vào một file markdown trong repository [REPO_NAME]. Thiết lập xử lý lỗi cho trường hợp bị giới hạn tần suất yêu cầu (rate limit) và lỗi API. Sử dụng GitHub API token [GITHUB_TOKEN] để xác thực.\n```\nCopy\n\n```yaml\n# .github/workflows/update_starred_repos.yml\nname: Update Starred Repositories\n\non:\n  schedule:\n    - cron: '0 0 * * *'\n    - cron: '0 16 * * *'\n  workflow_dispatch:\n\njobs:\n  update:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v4\n\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: '3.11'\n\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install requests\n\n      - name: Fetch starred repositories\n        id: fetch_stars\n        run: |\n          python << 'EOF'\n          import requests\n          import os\n          \n          GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')\n          USERNAME = 'alice-dev'\n          REPO_NAME = 'awesome-stars'\n          \n          headers = {\n              'Authorization': f'token {GITHUB_TOKEN}',\n              'Accept': 'application/vnd.github.v3+json'\n          }\n          \n          try:\n              response = requests.get(\n                  f'https://api.github.com/users/{USERNAME}/starred',\n                  headers=headers,\n                  params={'per_page': 100}\n              )\n              response.raise_for_status()\n              repos = response.json()\n              \n              with open('starred_repos.md', 'w') as f:\n                  f.write('# Starred Repositories\\n\\n')\n                  for repo in repos:\n                      f.write(f\"- [{repo['name']}]({repo['html_url']}) - {repo['description'] or 'No description'}\\n\")\n              \n              print(f\"Updated starred repos for {USERNAME}\")\n          except requests.exceptions.RequestException as e:\n              print(f\"Error fetching starred repos: {e}\")\n              exit(1)\n          EOF\n\n      - name: Commit and push changes\n        run: |\n          git config --global user.name 'github-actions[bot]'\n          git config --global user.email 'github-actions[bot]@users.noreply.github.com'\n          git add starred_repos.md\n          git diff --quiet && git diff --staged --quiet || git commit -m \"Update starred repositories [skip ci]\"\n          git push\n```\n\nWorkflow này sẽ:\n1. Chạy vào lúc 00:00 và 16:00 UTC hàng ngày.\n2. Lấy danh sách các repository đã starred của `alice-dev` thông qua GitHub API.\n3. Cập nhật file `starred_repos.md` trong repository `awesome-stars` với các dự án đã starred mới nhất.\n4. Commit và push các thay đổi nếu phát hiện có cập nhật mới.\n5. Xử lý lỗi API một cách mượt mà và ghi log lỗi.\n\nFile `starred_repos.md` kết quả sẽ có dạng:\n```markdown\n# Starred Repositories\n\n- [react](https://github.com/facebook/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces\n- [next.js](https://github.com/vercel/next.js) - The React Framework for Production\n- [tailwindcss](https://github.com/tailwindlabs/tailwindcss) - A utility-first CSS framework for rapidly building custom designs\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:51:23.060206Z",
+    "http_status": 200,
+    "content_hash": "72b89b46e9563ba81cc41fa039db41e2575534c129d66fc7872102d82d70a944",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Danh sách repository nổi bật (awesome list) với GitHub Actions",
+  "short_description_vi": "Tự động thu thập và cập nhật danh sách các repository đã starred trên GitHub. Hỗ trợ lập trình viên duy trì một repository khoa học chứa các dự án đã starred. Tích hợp với GitHub Actions để tự động cập nhật theo lịch trình vào lúc 00:00 và 16:00 UTC."
+}

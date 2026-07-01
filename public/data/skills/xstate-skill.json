@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xstate-skill",
+  "slug": "xstate-skill",
+  "name": "XState-Skill",
+  "headline": "XState Skill: State Machines & Actor Model",
+  "short_description": "Claude Code skill for XState v5 - state management and orchestration with state machines, statecharts, and the actor model (Alpha)",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "justSteve",
+  "install_command": "git clone https://github.com/justSteve/XState-Skill.git",
+  "source_repo_url": "https://github.com/justSteve/XState-Skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "XState Skill is a Claude Code extension that provides specialized knowledge and workflows for XState v5 development. It covers state machines, statecharts, and the actor model—essential patterns for managing complex application logic in JavaScript and TypeScript. The skill includes quick reference examples ranging from beginner toggle machines to advanced observable actors, comprehensive API documentation, TypeScript 5.0+ configuration guidance, and inspection tools for debugging state machine behavior. Developers migrating from XState v4 to v5, or building frameworks like React, Vue, or Svelte with XState, benefit from explicit v5-only patterns and best practices bundled into the skill.\nDesign and implement state machines for form workflows and user interactions\nBuild actor systems for event handling with callback and observable actors\nMigrate existing XState v4 code to v5 with type-safe patterns\nSet up TypeScript 5.0+ configuration for XState development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/justSteve/XState-Skill`",
+    "usage": "```\nI need help designing a state machine for a [COMPANY] in the [INDUSTRY] sector. The system should manage [DATA] workflows. Here are the key states and transitions: [STATES]. Can you generate the XState v5 code for this state machine and explain how it works?\n```\nCopy\n\n```\n# XState v5 State Machine for Order Processing System\n\n```javascript\nimport { createMachine, assign } from 'xstate';\n\nconst orderMachine = createMachine({\n  id: 'order',\n  initial: 'pending',\n  context: {\n    orderId: null,\n    customer: null,\n    items: []\n  },\n  states: {\n    pending: {\n      on: {\n        CUSTOMER_PLACED_ORDER: {\n          target: 'processing',\n          actions: assign({\n            orderId: (_, event) => event.orderId,\n            customer: (_, event) => event.customer,\n            items: (_, event) => event.items\n          })\n        }\n      }\n    },\n    processing: {\n      on: {\n        ORDER_PROCESSED: 'shipped',\n        ORDER_CANCELLED: 'cancelled'\n      }\n    },\n    shipped: {\n      type: 'final'\n    },\n    cancelled: {\n      type: 'final'\n    }\n  }\n});\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xstate-skill#main-content",
+      "xstate-skill#overview",
+      "xstate-skill#setup",
+      "xstate-skill#examples",
+      "xstate-skill#tools",
+      "xstate-skill#mcp",
+      "xstate-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "XState Skill là một tiện ích mở rộng của Claude Code cung cấp kiến thức chuyên sâu và các workflow phát triển dành riêng cho XState v5. Tiện ích này bao gồm state machine, statechart và actor model — những pattern thiết yếu để quản lý logic ứng dụng phức tạp trong JavaScript và TypeScript. Skill đi kèm các ví dụ tham khảo nhanh từ toggle machine cơ bản đến các observable actor nâng cao, tài liệu API toàn diện, hướng dẫn cấu hình TypeScript 5.0+ và các công cụ kiểm tra (inspection tools) để debug hành vi của state machine. Các nhà phát triển đang chuyển đổi từ XState v4 sang v5, hoặc tích hợp XState vào các framework như React, Vue hoặc Svelte, sẽ được hưởng lợi từ các pattern và best practice dành riêng cho v5 được tích hợp sẵn.\n\nThiết kế và triển khai state machine cho các workflow của form và tương tác người dùng\nXây dựng hệ thống actor để xử lý sự kiện với callback và observable actor\nChuyển đổi mã nguồn XState v4 hiện tại sang v5 bằng các pattern type-safe\nSetup cấu hình TypeScript 5.0+ cho việc phát triển XState",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/justSteve/XState-Skill`",
+    "usage_vi": "```\nTôi cần hỗ trợ thiết kế một state machine cho [COMPANY] trong lĩnh vực [INDUSTRY]. Hệ thống cần quản lý các workflow [DATA]. Dưới đây là các trạng thái và chuyển đổi (transition) chính: [STATES]. Bạn có thể tạo mã nguồn XState v5 cho state machine này và giải thích cách hoạt động của nó không?\n```\nCopy\n\n```\n# XState v5 State Machine cho Hệ thống Xử lý Đơn hàng\n\n```javascript\nimport { createMachine, assign } from 'xstate';\n\nconst orderMachine = createMachine({\n  id: 'order',\n  initial: 'pending',\n  context: {\n    orderId: null,\n    customer: null,\n    items: []\n  },\n  states: {\n    pending: {\n      on: {\n        CUSTOMER_PLACED_ORDER: {\n          target: 'processing',\n          actions: assign({\n            orderId: (_, event) => event.orderId,\n            customer: (_, event) => event.customer,\n            items: (_, event) => event.items\n          })\n        }\n      }\n    },\n    processing: {\n      on: {\n        ORDER_PROCESSED: 'shipped',\n        ORDER_CANCELLED: 'cancelled'\n      }\n    },\n    shipped: {\n      type: 'final'\n    },\n    cancelled: {\n      type: 'final'\n    }\n  }\n});\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:07.480459Z",
+    "http_status": 200,
+    "content_hash": "67f6650baeb634ce2ab428898fda75ee76a3198ea1c0c648946dca1b85fb2354",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xstate-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xstate-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "XState Skill: State Machine & Actor Model",
+  "short_description_vi": "Skill Claude Code dành cho XState v5 - quản lý và điều phối trạng thái với state machine, statechart và actor model (Alpha)"
+}

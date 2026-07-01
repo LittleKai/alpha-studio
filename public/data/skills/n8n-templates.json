@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-templates",
+  "slug": "n8n-templates",
+  "name": "N8n Templates",
+  "headline": "Free & Premium n8n Templates for SEO Automation",
+  "short_description": "Discover a versatile collection of free and premium n8n templates designed to streamline SEO and content optimization tasks. Automate your workflows effortlessly and enhance productivity with these ready-to-use solutions.",
+  "tier": "Gold",
+  "category": "MarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Marvomatic",
+  "install_command": "claude install Marvomatic/n8n-templates",
+  "source_repo_url": "https://github.com/Marvomatic/n8n-templates",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "n8n",
+    "workflow",
+    "automation templates",
+    "SEO",
+    "content optimization"
+  ],
+  "sections": {
+    "overview": "n8n-templates is a curated collection of workflow templates designed to automate SEO and content marketing tasks within the n8n automation platform. The templates include specialized workflows for keyword rank tracking, Google Search Console data retrieval, AI-powered content analysis, and landing page optimization. Users can leverage pre-built workflows such as the AI-powered SEO team, Google index checker, and GSC AI SEO writer to streamline repetitive marketing operations. These templates reduce manual work in SEO analysis, traffic monitoring, and content optimization, making them ideal for digital marketers, SEO professionals, and automation engineers. The collection offers both foundational templates and advanced AI-integrated workflows for comprehensive SEO automation.\nAutomate SEO reporting to save time and ensure accuracy in performance tracking.\nOptimize content for search engines using data-driven insights and automated suggestions.\nStreamline social media posting by integrating various marketing tools into a cohesive workflow.\nManage content workflows efficiently, reducing the dependency on manual processes.",
+    "setup": "Terminal\nCopy\n`claude install Marvomatic/n8n-templates`\n`git clone https://github.com/Marvomatic/n8n-templates`",
+    "usage": "```\nFind and customize an n8n workflow template to automate [SPECIFIC_SEO_TASK] for [WEBSITE_DOMAIN]. Use the template to [KEY_ACTION, e.g., 'generate SEO reports', 'optimize meta tags', or 'track keyword rankings']. Replace any placeholder API keys or credentials with your own. Deploy the workflow in n8n and test it with [SAMPLE_DATA, e.g., 'a list of target keywords'].\n```\nCopy\n\n```\nI’ve identified the **‘SEO Content Optimization Pipeline’** template in n8n’s template library, which is designed to automate meta tag updates, keyword density analysis, and internal linking suggestions for a given website. Here’s how I customized and deployed it for **‘GreenEarthGardens.com’**, a fictional e-commerce site specializing in organic gardening supplies:\n\n1. **Template Setup**: I imported the template into my n8n instance and replaced the placeholder API keys for Google Search Console, Ahrefs, and the website’s CMS (WordPress). The template includes pre-configured nodes for:\n   - Fetching top-performing keywords from Ahrefs.\n   - Scraping current meta titles/descriptions from the website via the WordPress REST API.\n   - Analyzing keyword density in existing product descriptions using a custom Python script.\n   - Generating optimized meta tags and internal linking suggestions via an LLM (I used Claude 3.5 Sonnet for this step).\n\n2. **Data Input**: I provided the workflow with a CSV file containing 50 target keywords (e.g., ‘organic tomato fertilizer’, ‘compost bin for small spaces’) and the URLs of 20 product pages that needed optimization.\n\n3. **Execution**: The workflow ran in under 2 minutes, processing all 20 pages. It flagged 8 pages where meta titles were missing or under 60 characters, and 12 pages where keyword density for primary terms was below 1.5%. For each page, it generated:\n   - Optimized meta titles (e.g., ‘Organic Tomato Fertilizer | Fast-Acting & Eco-Friendly | GreenEarth Gardens’).\n   - Meta descriptions with primary keywords and a call-to-action (e.g., ‘Boost your tomato harvest with our organic fertilizer! Fast-acting, pet-safe, and delivered to your door. Shop now.’).\n   - Internal linking suggestions to related blog posts (e.g., linking ‘organic fertilizer’ to a blog post titled ‘5 Ways to Improve Soil Health Naturally’).\n\n4. **Output**: The results were exported as a JSON file and pushed to Google Sheets for review. The workflow also sent a Slack notification to the marketing team with a summary of changes made and a link to the Google Sheet. The entire process saved approximately 4 hours of manual work per month.\n\n**Next Steps**: I scheduled the workflow to run weekly, pulling fresh keyword data from Ahrefs and updating the website’s meta tags automatically. I also added a step to log all changes in a Notion database for audit purposes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "n8n-templates#main-content",
+      "n8n-templates#overview",
+      "n8n-templates#setup",
+      "n8n-templates#examples",
+      "n8n-templates#tools",
+      "n8n-templates#mcp",
+      "n8n-templates#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "n8n-templates là một bộ sưu tập chọn lọc các template workflow được thiết kế để tự động hóa các tác vụ SEO và content marketing trên nền tảng tự động hóa n8n. Các template này bao gồm các workflow chuyên dụng cho việc theo dõi thứ hạng từ khóa, truy xuất dữ liệu từ Google Search Console, phân tích nội dung bằng AI, và tối ưu hóa landing page. Người dùng có thể tận dụng các workflow được xây dựng sẵn như AI-powered SEO team, Google index checker, và GSC AI SEO writer để tinh giản các hoạt động marketing lặp đi lặp lại. Những template này giúp giảm thiểu công việc thủ công trong phân tích SEO, giám sát traffic và tối ưu hóa nội dung, rất lý tưởng cho các chuyên viên digital marketing, chuyên gia SEO và kỹ sư tự động hóa. Bộ sưu tập cung cấp cả các template cơ bản và các workflow tích hợp AI nâng cao để tự động hóa SEO một cách toàn diện.\nTự động hóa báo cáo SEO để tiết kiệm thời gian và đảm bảo độ chính xác trong việc theo dõi hiệu suất.\nTối ưu hóa nội dung cho các công cụ tìm kiếm bằng cách sử dụng thông tin chi tiết dựa trên dữ liệu và các gợi ý tự động.\nTinh giản việc đăng bài trên mạng xã hội bằng cách tích hợp các công cụ marketing khác nhau vào một workflow thống nhất.\nQuản lý workflow nội dung một cách hiệu quả, giảm sự phụ thuộc vào các quy trình thủ công.",
+    "setup_vi": "Terminal\nSao chép\n`claude install Marvomatic/n8n-templates`\n`git clone https://github.com/Marvomatic/n8n-templates`",
+    "usage_vi": "```\nTìm và tùy chỉnh một template workflow n8n để tự động hóa [SPECIFIC_SEO_TASK] cho [WEBSITE_DOMAIN]. Sử dụng template này để [KEY_ACTION, ví dụ: 'tạo báo cáo SEO', 'tối ưu hóa thẻ meta', hoặc 'theo dõi thứ hạng từ khóa']. Thay thế bất kỳ API key hoặc thông tin xác thực (credential) giả định nào bằng thông tin của bạn. Triển khai workflow trong n8n và chạy thử nghiệm với [SAMPLE_DATA, ví dụ: 'danh sách từ khóa mục tiêu'].\n```\nSao chép\n\n```\nTôi đã xác định được template **‘SEO Content Optimization Pipeline’** trong thư viện template của n8n, được thiết kế để tự động hóa việc cập nhật thẻ meta, phân tích mật độ từ khóa và gợi ý liên kết nội bộ cho một website cụ thể. Dưới đây là cách tôi tùy chỉnh và triển khai nó cho **‘GreenEarthGardens.com’**, một trang thương mại điện tử giả định chuyên về vật tư làm vườn hữu cơ:\n\n1. **Thiết lập Template (Template Setup)**: Tôi đã import template vào instance n8n của mình và thay thế các API key giả định của Google Search Console, Ahrefs và CMS của website (WordPress). Template này bao gồm các node được cấu hình sẵn để:\n   - Lấy các từ khóa có hiệu suất cao nhất từ Ahrefs.\n   - Thu thập (scrape) các tiêu đề/mô tả meta hiện tại từ website thông qua WordPress REST API.\n   - Phân tích mật độ từ khóa trong các mô tả sản phẩm hiện có bằng một script Python tùy chỉnh.\n   - Tạo các thẻ meta đã tối ưu hóa và gợi ý liên kết nội bộ qua một LLM (tôi đã sử dụng Claude 3.5 Sonnet cho bước này).\n\n2. **Dữ liệu đầu vào (Data Input)**: Tôi đã cung cấp cho workflow một file CSV chứa 50 từ khóa mục tiêu (ví dụ: 'organic tomato fertilizer', 'compost bin for small spaces') và URL của 20 trang sản phẩm cần tối ưu hóa.\n\n3. **Thực thi (Execution)**: Workflow chạy trong chưa đầy 2 phút, xử lý toàn bộ 20 trang. Nó đã gắn cờ 8 trang bị thiếu tiêu đề meta hoặc có độ dài dưới 60 ký tự, và 12 trang có mật độ từ khóa cho các cụm từ chính dưới 1.5%. Với mỗi trang, nó đã tạo ra:\n   - Tiêu đề meta (meta title) được tối ưu hóa (ví dụ: 'Organic Tomato Fertilizer | Fast-Acting & Eco-Friendly | GreenEarth Gardens').\n   - Mô tả meta (meta description) với các từ khóa chính và một lời kêu gọi hành động (call-to-action) (ví dụ: 'Boost your tomato harvest with our organic fertilizer! Fast-acting, pet-safe, and delivered to your door. Shop now.').\n   - Gợi ý liên kết nội bộ đến các bài viết blog liên quan (ví dụ: liên kết từ 'organic fertilizer' đến bài viết blog có tiêu đề '5 Ways to Improve Soil Health Naturally').\n\n4. **Kết quả đầu ra (Output)**: Kết quả được xuất ra dưới dạng file JSON và đẩy lên Google Sheets để kiểm tra. Workflow cũng gửi một thông báo Slack đến đội ngũ marketing với bản tóm tắt các thay đổi đã thực hiện và liên kết đến Google Sheet. Toàn bộ quy trình đã tiết kiệm được khoảng 4 giờ làm việc thủ công mỗi tháng.\n\n**Các bước tiếp theo**: Tôi đã lập lịch (schedule) cho workflow chạy hàng tuần, tự động lấy dữ liệu từ khóa mới từ Ahrefs và cập nhật các thẻ meta của website. Tôi cũng đã thêm một bước để ghi log tất cả các thay đổi vào cơ sở dữ liệu Notion nhằm phục vụ mục đích audit.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:39:00.472132Z",
+    "http_status": 200,
+    "content_hash": "ea7f41ed8968632abed1c6e401a6951cb8e539b266b78c1e8f64c86589f0a3b9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-templates.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-templates.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Template n8n Miễn phí & Premium cho Tự động hóa SEO",
+  "short_description_vi": "Khám phá bộ sưu tập đa dạng các template n8n miễn phí và premium được thiết kế để tinh giản các tác vụ SEO và tối ưu hóa nội dung. Tự động hóa các workflow một cách dễ dàng và nâng cao năng suất với những giải pháp sẵn có này."
+}

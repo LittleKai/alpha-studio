@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/article-recommender-skill",
+  "slug": "article-recommender-skill",
+  "name": "Article Recommender Skill",
+  "headline": "article recommender for bestblogs newsletter",
+  "short_description": "A professional Claude AI skill that generates three-version article recommendations (standard, concise, and critical commentary) in both Chinese and English, specifically designed for BestBlogs.dev's weekly newsletter.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "ginobefun",
+  "install_command": "git clone https://github.com/ginobefun/article-recommender-skill.git",
+  "source_repo_url": "https://github.com/ginobefun/article-recommender-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Article Recommender is a Claude AI skill that automates content curation by generating three distinct recommendation versions for each article: a comprehensive standard overview, a concise summary, and critical commentary with professional analysis. The skill supports multiple content domains—AI, Product, Business, and Programming—and handles various formats including articles, videos, podcasts, and tweets. It produces bilingual output in both Chinese and English, applying domain-specific strategies to highlight technical depth, user value, practical limitations, and assumptions. This skill streamlines the newsletter curation process by providing systematic, multi-perspective analysis that helps readers understand content value and encourages critical thinking alongside quick-scan options.\nWeekly newsletter curation with multiple recommendation perspectives\nBilingual content analysis for AI, product, and business articles\nVideo and podcast recommendations with time-investment analysis\nCritical analysis of content with potential limitations and assumptions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ginobefun/article-recommender-skill`",
+    "usage": "```\nAct as an article recommender for BestBlogs.dev's weekly newsletter. Generate three versions of article recommendations in both English and Chinese: a standard version (3-5 articles), a concise version (1-2 articles), and a critical commentary version (1-2 articles with analysis). The recommendations should be tailored to [INDUSTRY] professionals. Use the following [DATA] as a reference: [DATA].\n```\nCopy\n\n```\n# Article Recommendations for BestBlogs.dev Newsletter",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "article-recommender-skill#main-content",
+      "article-recommender-skill#overview",
+      "article-recommender-skill#setup",
+      "article-recommender-skill#examples",
+      "article-recommender-skill#tools",
+      "article-recommender-skill#mcp",
+      "article-recommender-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Article Recommender là một Claude AI skill giúp tự động hóa quy trình tuyển chọn nội dung (content curation) bằng cách tạo ra ba phiên bản gợi ý khác nhau cho mỗi bài viết: tổng quan tiêu chuẩn chi tiết, tóm tắt ngắn gọn và bình luận phản biện đi kèm phân tích chuyên môn. Skill này hỗ trợ nhiều lĩnh vực nội dung khác nhau như AI, Product, Business và Programming, đồng thời xử lý được nhiều định dạng bao gồm bài viết, video, podcast và tweet. Công cụ này tạo kết quả song ngữ bằng cả tiếng Trung và tiếng Anh, áp dụng các chiến lược đặc thù cho từng lĩnh vực để làm nổi bật chiều sâu kỹ thuật, giá trị mang lại cho người dùng, các hạn chế thực tế và các giả định liên quan. Skill này giúp tối ưu hóa quy trình biên soạn newsletter nhờ cung cấp các phân tích đa chiều và hệ thống, giúp người đọc nắm bắt nhanh giá trị nội dung, đồng thời khuyến khích tư duy phản biện song song với các lựa chọn đọc nhanh.\n\nBiên soạn newsletter hàng tuần với nhiều góc nhìn gợi ý đa dạng\nPhân tích nội dung song ngữ cho các bài viết về AI, product và business\nGợi ý video và podcast đi kèm phân tích thời gian đầu tư (time-investment)\nPhân tích phản biện nội dung cùng các hạn chế và giả định tiềm ẩn",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ginobefun/article-recommender-skill`",
+    "usage_vi": "```\nĐóng vai trò là một công cụ gợi ý bài viết cho newsletter hàng tuần của BestBlogs.dev. Hãy tạo ba phiên bản gợi ý bài viết bằng cả tiếng Anh và tiếng Trung: phiên bản tiêu chuẩn (3-5 bài viết), phiên bản rút gọn (1-2 bài viết) và phiên bản bình luận phản biện (1-2 bài viết kèm phân tích). Các gợi ý này cần được thiết kế riêng cho các chuyên gia trong lĩnh vực [INDUSTRY]. Sử dụng [DATA] sau đây làm tài liệu tham khảo: [DATA].\n```\nCopy\n\n```\n# Gợi ý bài viết cho BestBlogs.dev Newsletter"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:14.692963Z",
+    "http_status": 200,
+    "content_hash": "fd7af393dd70da2c86713673f7ac93cc560a641268621a32d5283712493c0548",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\article-recommender-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\article-recommender-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ gợi ý bài viết cho newsletter BestBlogs",
+  "short_description_vi": "Một Claude AI skill chuyên nghiệp giúp tự động tạo gợi ý bài viết dưới ba phiên bản (tiêu chuẩn, rút gọn và bình luận phản biện) bằng cả tiếng Trung và tiếng Anh, được thiết kế riêng cho newsletter hàng tuần của BestBlogs.dev."
+}

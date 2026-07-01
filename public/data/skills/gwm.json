@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gwm",
+  "slug": "gwm",
+  "name": "Git Worktree Manager",
+  "headline": "Git Worktree Manager - Git Workflows",
+  "short_description": "Git worktree manager cli. Switch Git contexts with zero friction. Review pull requests, create feature branches, and clean up your workspace. all from a single interactive CLI. Benefits developers and operations teams by streamlining Git workflows and reducing context switching.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "shutootaki",
+  "install_command": "git clone https://github.com/shutootaki/gwm.git",
+  "source_repo_url": "https://github.com/shutootaki/gwm",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "git",
+    "react",
+    "gemini-cli",
+    "typescript",
+    "git-worktree",
+    "cli",
+    "rust-lang",
+    "claude-code",
+    "ink"
+  ],
+  "sections": {
+    "overview": "gwm is a CLI tool that wraps Git's worktree feature with an interactive TUI, allowing developers to work on multiple branches simultaneously without repeated stashing and checking out. It solves the friction of context switching when reviewing pull requests, handling hotfixes, or developing features in parallel by creating separate directories for each branch. Key features include fuzzy-searchable branch selection, automatic remote branch creation, merged worktree detection and cleanup, and shell integration for seamless directory navigation. The tool benefits development teams by streamlining Git workflows and reducing manual Git commands through intuitive commands like `gwm add`, `gwm go`, `gwm remove`, and `gwm clean`.\nReview multiple pull requests without stashing work\nCreate feature branches and worktrees from remote branches instantly\nSwitch between branches with automatic shell directory change\nClean up merged worktrees automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shutootaki/gwm`",
+    "usage": "```\nUse `gwm` (Git Worktree Manager) to [ACTION] in the [REPOSITORY_PATH] repository. [ACTION] could be: 'switch to the feature branch for [ISSUE_NUMBER]', 'create a new worktree for reviewing PR #[PR_NUMBER]', 'clean up stale worktrees older than [DAYS]', or 'list all active worktrees with their associated branches'. For example: 'Use `gwm` to switch to the feature branch for issue #123 in the ~/projects/my-app repository and pull the latest changes.'\n```\nCopy\n\n```\n```bash\n$ gwm list\nActive worktrees in ~/projects/my-app:\n  1. main (HEAD detached at origin/main) - Last used: 2024-05-15\n  2. feature/login-page (origin/feature/login-page) - Last used: 2024-05-18\n  3. bugfix/header-rendering (origin/bugfix/header-rendering) - Last used: 2024-05-17\n  4. pr-review/456 (origin/pr/456) - Last used: 2024-05-20\n\n$ gwm switch pr-review/456\nSwitched to worktree: ~/projects/my-app/pr-review/456\nCurrent branch: pr-review/456\nLast commit: Fix typo in login form (2024-05-20)\n```\n\n```bash\n$ gwm cleanup --older-than 7\nFound 2 stale worktrees:\n  - bugfix/old-login-form (last used: 2024-05-10)\n  - experimental/ui-redesign (last used: 2024-05-08)\nRemoving bugfix/old-login-form... Done\nRemoving experimental/ui-redesign... Done\nCleanup complete. 2 worktrees removed.\n```\n\n```bash\n$ gwm create --pr 789\nCreated new worktree at ~/projects/my-app/pr-review/789\nSwitched to worktree: ~/projects/my-app/pr-review/789\nCloned PR #789 (feat: add dark mode) into local branch pr-review/789\nRemote: https://github.com/my-org/my-app/pull/789\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gwm#main-content",
+      "gwm#overview",
+      "gwm#setup",
+      "gwm#examples",
+      "gwm#tools",
+      "gwm#mcp",
+      "gwm#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "gwm là một công cụ CLI bọc ngoài tính năng worktree của Git với giao diện TUI tương tác, cho phép lập trình viên làm việc trên nhiều branch cùng lúc mà không cần liên tục stash và checkout. Công cụ này giải quyết sự phiền toái của việc context switching khi review pull request, xử lý hotfix hoặc phát triển song song nhiều feature bằng cách tạo các thư mục riêng biệt cho từng branch. Các tính năng chính bao gồm tìm kiếm fuzzy-search khi chọn branch, tự động tạo remote branch, phát hiện và dọn dẹp các worktree đã merge, cùng khả năng tích hợp shell để chuyển đổi thư mục mượt mà. Công cụ giúp tối ưu hóa Git workflows của các đội ngũ phát triển và giảm bớt các câu lệnh Git thủ công thông qua các lệnh trực quan như `gwm add`, `gwm go`, `gwm remove` và `gwm clean`.\nReview nhiều pull request mà không cần stash công việc đang dang dở\nTạo nhanh feature branch và worktree từ remote branch\nChuyển đổi giữa các branch và tự động đổi thư mục trên shell\nTự động dọn dẹp các worktree đã được merge",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/shutootaki/gwm`",
+    "usage_vi": "```\nSử dụng `gwm` (Git Worktree Manager) để [ACTION] trong repository [REPOSITORY_PATH]. [ACTION] có thể là: 'chuyển sang feature branch của [ISSUE_NUMBER]', 'tạo worktree mới để review PR #[PR_NUMBER]', 'dọn dẹp các worktree cũ hơn [DAYS] ngày', hoặc 'liệt kê tất cả các worktree đang hoạt động cùng branch liên kết'. Ví dụ: 'Sử dụng `gwm` để chuyển sang feature branch của issue #123 trong repository ~/projects/my-app và pull các thay đổi mới nhất.'\n```\n\n```bash\n$ gwm list\nActive worktrees in ~/projects/my-app:\n  1. main (HEAD detached at origin/main) - Last used: 2024-05-15\n  2. feature/login-page (origin/feature/login-page) - Last used: 2024-05-18\n  3. bugfix/header-rendering (origin/bugfix/header-rendering) - Last used: 2024-05-17\n  4. pr-review/456 (origin/pr/456) - Last used: 2024-05-20\n\n$ gwm switch pr-review/456\nSwitched to worktree: ~/projects/my-app/pr-review/456\nCurrent branch: pr-review/456\nLast commit: Fix typo in login form (2024-05-20)\n```\n\n```bash\n$ gwm cleanup --older-than 7\nFound 2 stale worktrees:\n  - bugfix/old-login-form (last used: 2024-05-10)\n  - experimental/ui-redesign (last used: 2024-05-08)\nRemoving bugfix/old-login-form... Done\nRemoving experimental/ui-redesign... Done\nCleanup complete. 2 worktrees removed.\n```\n\n```bash\n$ gwm create --pr 789\nCreated new worktree at ~/projects/my-app/pr-review/789\nSwitched to worktree: ~/projects/my-app/pr-review/789\nCloned PR #789 (feat: add dark mode) into local branch pr-review/789\nRemote: https://github.com/my-org/my-app/pull/789\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:16:00.501073Z",
+    "http_status": 200,
+    "content_hash": "624436dd229385c747646ae52bf8812c82b3ad29e19223ac6933f4b2f229ab45",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gwm.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gwm.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Git Worktree Manager - Quản lý Git Workflows",
+  "short_description_vi": "Công cụ CLI quản lý Git worktree. Chuyển đổi context Git mượt mà. Review pull request, tạo feature branch và dọn dẹp workspace—tất cả từ một CLI tương tác duy nhất. Giúp ích cho các lập trình viên và đội ngũ vận hành nhờ tối ưu hóa Git workflows và giảm thiểu context switching."
+}

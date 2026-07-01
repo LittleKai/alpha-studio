@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillup",
+  "slug": "skillup",
+  "name": "SkillUp",
+  "headline": "SkillUp: Auto-Generate Semantic Machine Skills",
+  "short_description": "Semantic machine skills encapsulate behavior of manufacturing machines similar to web services in SOA and support interoperability in automation. But creating a semantic machine skill by hand is a tedious and error-prone task. Use Skill-Up to easily create machine skills automatically! Skill-Up converts a plain Java class into a skill including an ontological description and an invocation interface (OPC UA or RESTful web service)",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "420 min",
+  "author": "CaSkade-Automation",
+  "install_command": "git clone https://github.com/CaSkade-Automation/SkillUp.git",
+  "source_repo_url": "https://github.com/CaSkade-Automation/SkillUp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "machine-skills",
+    "industry-40",
+    "smart-factory",
+    "opc-ua",
+    "skills",
+    "skill-based-engineering",
+    "machine-capabilities",
+    "capabilities",
+    "semantic-skills",
+    "restful-webservices"
+  ],
+  "sections": {
+    "overview": "Skill-Up is a Java framework that eliminates manual semantic skill development in automation. It converts plain Java classes into fully functional machine skills by automatically generating ISA 88 state machines, invocation interfaces (RESTful web services or OPC UA), and OWL-based ontological descriptions. Developers simply annotate their Java classes with Skill-Up annotations—no ontology expertise required. This solves the challenge of creating vendor-neutral, machine-readable skill descriptions that enable interoperability in automation systems without the tedium and error-proneness of manual development.\nManufacturing equipment skill automation and interoperability\nCreating OPC UA and REST-based machine interfaces automatically\nGenerating semantic descriptions for machine capabilities\nDeploying ISA 88 compliant state machines from Java code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CaSkade-Automation/SkillUp`",
+    "usage": "```\nConvert the following Java class into a semantic machine skill for [MACHINE_TYPE] in [INDUSTRY]. Generate an ontological description and an invocation interface (OPC UA or RESTful web service). Here is the Java class: [JAVA_CLASS].\n```\nCopy\n\n```\n# Semantic Machine Skill for CNC Mill in Manufacturing\n\n```java\nCNC_Milling_Skill skill = new CNC_Milling_Skill();\nskill.setMaterialType(\"Aluminum 6061\");\nskill.setDimensions(new Float[]{10.5, 5.2, 2.0});\nskill.setTolerance(0.01);\nskill.invoke();\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillup#main-content",
+      "skillup#overview",
+      "skillup#setup",
+      "skillup#examples",
+      "skillup#tools",
+      "skillup#mcp",
+      "skillup#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill-Up is a Java framework that eliminates manual semantic skill development in automation. It converts plain Java classes into fully functional machine skills by automatically generating ISA 88 state machines, invocation interfaces (RESTful web services or OPC UA), and OWL-based ontological descriptions. Developers simply annotate their Java classes with Skill-Up annotations—no ontology expertise required. This solves the challenge of creating vendor-neutral, machine-readable skill descriptions that enable interoperability in automation systems without the tedium and error-proneness of manual development.\nManufacturing equipment skill automation and interoperability\nCreating OPC UA and REST-based machine interfaces automatically\nGenerating semantic descriptions for machine capabilities\nDeploying ISA 88 compliant state machines from Java code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CaSkade-Automation/SkillUp`",
+    "usage_vi": "```\nConvert the following Java class into a semantic machine skill for [MACHINE_TYPE] in [INDUSTRY]. Generate an ontological description and an invocation interface (OPC UA or RESTful web service). Here is the Java class: [JAVA_CLASS].\n```\nCopy\n\n```\n# Semantic Machine Skill for CNC Mill in Manufacturing\n\n```java\nCNC_Milling_Skill skill = new CNC_Milling_Skill();\nskill.setMaterialType(\"Aluminum 6061\");\nskill.setDimensions(new Float[]{10.5, 5.2, 2.0});\nskill.setTolerance(0.01);\nskill.invoke();\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:45:38.076842Z",
+    "http_status": 200,
+    "content_hash": "dd1f367745fd477add2119b46d9e5b3874f9530c5c696456aea6d238a1f9d65b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillup.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SkillUp: Auto-Generate Semantic Machine Skills",
+  "short_description_vi": "Semantic machine skills encapsulate behavior of manufacturing machines similar to web services in SOA and support interoperability in automation. But creating a semantic machine skill by hand is a tedious and error-prone task. Use Skill-Up to easily create machine skills automatically! Skill-Up converts a plain Java class into a skill including an ontological description and an invocation interface (OPC UA or RESTful web service)"
+}

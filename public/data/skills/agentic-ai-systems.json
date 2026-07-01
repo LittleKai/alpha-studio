@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentic-ai-systems",
+  "slug": "agentic-ai-systems",
+  "name": "browser-use",
+  "headline": "agentic ai systems explained with chickens",
+  "short_description": "Agentic AI Systems enables operations teams to design and manage complex workflows using agent-based orchestration. It simplifies the creation of main agents and subagents, allowing for efficient task delegation and execution. This skill connects to various workflow tools and integrates with Claude for advanced AI capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "ThibautMelen",
+  "install_command": "git clone https://github.com/ThibautMelen/agentic-ai-systems.git",
+  "source_repo_url": "https://github.com/ThibautMelen/agentic-ai-systems",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agentic-systems",
+    "ai-agents",
+    "agentic-patterns",
+    "anthropic",
+    "llm",
+    "workflows",
+    "llm-patterns",
+    "awesome",
+    "design-patterns",
+    "agentic",
+    "claude",
+    "subagents",
+    "orchestration",
+    "agent-sdk",
+    "mcp",
+    "tool-use",
+    "agentic-frameworks"
+  ],
+  "sections": {
+    "overview": "Agentic AI Systems is a reference implementation for designing multi-agent workflows with Claude. It provides six workflow patterns—from simple baseline tasks to complex orchestrator-worker setups—plus autonomous agent patterns for open-ended problems. The skill includes decision trees to help you choose the right pattern based on task complexity, predictability, and whether you need specialist delegation. Implementation components cover subagents, commands, skills, and hooks for Claude Code integration. Use it to build prompt chaining workflows, parallel task execution, routing-based dispatch, quality iteration loops, or fully autonomous agents that control their own flow.\nSequential task automation with prompt chaining\nMulti-expert delegation using orchestrator-worker patterns\nParallel independent subtask execution\nOpen-ended problem solving with autonomous agents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ThibautMelen/agentic-ai-systems`",
+    "usage": "```\nDesign an agentic workflow for [TASK/PROCESS] using a main agent and 2-3 specialized subagents. The main agent should handle [OVERARCHING_GOAL], while subagents manage [SPECIFIC_SUBTASKS]. Include error handling for [COMMON_FAILURE_POINTS] and a feedback loop to [VALIDATION_CRITERIA]. Provide the workflow in a step-by-step format with clear inputs/outputs for each agent.\n```\nCopy\n\n```\nHere’s a designed agentic workflow for processing customer support tickets in a SaaS company:\n\n**Main Agent: Ticket Orchestrator**\n- Input: Raw customer ticket from Zendesk (priority: P1-P3, category: billing/technical/feature request).\n- Goal: Route tickets to the correct team with 95% accuracy and resolve within SLA.\n- Output: Ticket assigned to subagent with context and deadline.\n\n**Subagent 1: Billing Specialist**\n- Input: Ticket with category='billing' and priority=P1.\n- Tasks: Verify payment status, issue refunds if applicable, update CRM.\n- Output: Resolution status (resolved/requires escalation) and notes for customer.\n- Error Handling: If payment status is unclear, escalate to Finance Team via Slack.\n\n**Subagent 2: Technical Support**\n- Input: Ticket with category='technical' and priority=P2.\n- Tasks: Diagnose issue using internal knowledge base, provide step-by-step guide, or escalate to Engineering.\n- Output: Resolution steps or ticket moved to Engineering queue with logs.\n- Feedback Loop: If resolution time exceeds 2 hours, notify manager via email.\n\n**Subagent 3: Feature Request Analyst**\n- Input: Ticket with category='feature request' and priority=P3.\n- Tasks: Categorize request, check for duplicates in Productboard, and log in Jira.\n- Output: Ticket logged in Jira with priority (low/medium/high) and stakeholder tags.\n- Validation: Ensure no duplicate requests exist; if found, merge and notify requester.\n\n**Workflow Execution:**\n1. Ticket arrives in Zendesk → Main Agent analyzes and routes.\n2. Subagents execute tasks in parallel, updating status in real-time.\n3. Main Agent monitors SLA compliance and escalates if needed.\n4. Post-resolution, Main Agent sends a satisfaction survey to the customer.\n\n**Integration Points:**\n- Zendesk API for ticket ingestion.\n- Slack for escalations.\n- CRM (HubSpot) for customer context.\n- Jira for feature request tracking.\n\nThis workflow reduces manual triage time by 60% and improves SLA compliance by 25% based on pilot data from Q2 2024.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentic-ai-systems#main-content",
+      "agentic-ai-systems#overview",
+      "agentic-ai-systems#setup",
+      "agentic-ai-systems#examples",
+      "agentic-ai-systems#tools",
+      "agentic-ai-systems#mcp",
+      "agentic-ai-systems#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agentic AI Systems is a reference implementation for designing multi-agent workflows with Claude. It provides six workflow patterns—from simple baseline tasks to complex orchestrator-worker setups—plus autonomous agent patterns for open-ended problems. The skill includes decision trees to help you choose the right pattern based on task complexity, predictability, and whether you need specialist delegation. Implementation components cover subagents, commands, skills, and hooks for Claude Code integration. Use it to build prompt chaining workflows, parallel task execution, routing-based dispatch, quality iteration loops, or fully autonomous agents that control their own flow.\nSequential task automation with prompt chaining\nMulti-expert delegation using orchestrator-worker patterns\nParallel independent subtask execution\nOpen-ended problem solving with autonomous agents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ThibautMelen/agentic-ai-systems`",
+    "usage_vi": "```\nDesign an agentic workflow for [TASK/PROCESS] using a main agent and 2-3 specialized subagents. The main agent should handle [OVERARCHING_GOAL], while subagents manage [SPECIFIC_SUBTASKS]. Include error handling for [COMMON_FAILURE_POINTS] and a feedback loop to [VALIDATION_CRITERIA]. Provide the workflow in a step-by-step format with clear inputs/outputs for each agent.\n```\nCopy\n\n```\nHere’s a designed agentic workflow for processing customer support tickets in a SaaS company:\n\n**Main Agent: Ticket Orchestrator**\n- Input: Raw customer ticket from Zendesk (priority: P1-P3, category: billing/technical/feature request).\n- Goal: Route tickets to the correct team with 95% accuracy and resolve within SLA.\n- Output: Ticket assigned to subagent with context and deadline.\n\n**Subagent 1: Billing Specialist**\n- Input: Ticket with category='billing' and priority=P1.\n- Tasks: Verify payment status, issue refunds if applicable, update CRM.\n- Output: Resolution status (resolved/requires escalation) and notes for customer.\n- Error Handling: If payment status is unclear, escalate to Finance Team via Slack.\n\n**Subagent 2: Technical Support**\n- Input: Ticket with category='technical' and priority=P2.\n- Tasks: Diagnose issue using internal knowledge base, provide step-by-step guide, or escalate to Engineering.\n- Output: Resolution steps or ticket moved to Engineering queue with logs.\n- Feedback Loop: If resolution time exceeds 2 hours, notify manager via email.\n\n**Subagent 3: Feature Request Analyst**\n- Input: Ticket with category='feature request' and priority=P3.\n- Tasks: Categorize request, check for duplicates in Productboard, and log in Jira.\n- Output: Ticket logged in Jira with priority (low/medium/high) and stakeholder tags.\n- Validation: Ensure no duplicate requests exist; if found, merge and notify requester.\n\n**Workflow Execution:**\n1. Ticket arrives in Zendesk → Main Agent analyzes and routes.\n2. Subagents execute tasks in parallel, updating status in real-time.\n3. Main Agent monitors SLA compliance and escalates if needed.\n4. Post-resolution, Main Agent sends a satisfaction survey to the customer.\n\n**Integration Points:**\n- Zendesk API for ticket ingestion.\n- Slack for escalations.\n- CRM (HubSpot) for customer context.\n- Jira for feature request tracking.\n\nThis workflow reduces manual triage time by 60% and improves SLA compliance by 25% based on pilot data from Q2 2024.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:40:32.206713Z",
+    "http_status": 200,
+    "content_hash": "a5e551a968ffc4942d755b980c06d3b723124ba7e2e938f2f6a2ccb4cd685584",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentic-ai-systems.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agentic-ai-systems.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agentic ai systems explained with chickens",
+  "short_description_vi": "Agentic AI Systems enables operations teams to design and manage complex workflows using agent-based orchestration. It simplifies the creation of main agents and subagents, allowing for efficient task delegation and execution. This skill connects to various workflow tools and integrates with Claude for advanced AI capabilities."
+}

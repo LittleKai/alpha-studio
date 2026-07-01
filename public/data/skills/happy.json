@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/happy",
+  "slug": "happy",
+  "name": "browser-use",
+  "headline": "happy: Enhance AI Workflow Automation",
+  "short_description": "Happy is a mobile and web client for Codex and Claude Code. It enables developers to access these tools from anywhere with real-time voice, encryption, and a fully featured interface. It benefits developers and teams needing secure, remote access to AI coding assistants.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "slopus",
+  "install_command": "git clone https://github.com/slopus/happy.git",
+  "source_repo_url": "https://github.com/slopus/happy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-desktop",
+    "codex",
+    "codex-cli",
+    "claude-mobile",
+    "hacktoberfest"
+  ],
+  "sections": {
+    "overview": "The 'happy' skill is a versatile mobile and web client designed for Codex and Claude Code, offering real-time voice interaction, encryption, and a fully featured experience. This skill allows developers and AI practitioners to manage their AI coding projects seamlessly, whether they are at their desk or on the go. With its intermediate complexity, users can implement this skill in about 30 minutes, making it an efficient addition to any AI automation toolkit. One of the key benefits of the happy skill is its ability to streamline workflow automation. Users can receive push notifications for permission requests or errors from their AI tools, ensuring they stay updated on the status of their projects without needing to be physically present. Additionally, the skill enables users to switch control between mobile and desktop devices with a single keypress, enhancing productivity and flexibility. Although specific time savings are not quantified, the hands-free voice command feature significantly reduces the time spent managing tasks manually, allowing users to focus on more critical aspects of their work. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in ongoing AI coding projects. The practical use cases include monitoring projects while away from the desk, auditing and contributing to the open-source codebase for customization, and utilizing voice commands to interact with AI coding agents. These features make it an ideal tool for those looking to enhance their AI-first workflows and improve collaboration across teams. With an implementation difficulty rated as intermediate, users will need some familiarity with AI tools and coding practices to fully leverage the capabilities of the happy skill. However, its integration into existing workflows can significantly enhance productivity and responsiveness in AI development environments. By adopting this skill, teams can ensure they are maximizing their efficiency and staying ahead in the rapidly evolving landscape of AI automation.\nMonitor ongoing AI coding projects while away from your desk.\nReceive push notifications for permission requests or errors from your AI tools.\nSwitch control between mobile and desktop with a single keypress.\nUtilize voice commands to interact with your AI coding agents hands-free.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/slopus/happy`",
+    "usage": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project and need help with [SPECIFIC_TASK]. Can you provide code snippets and explain the logic behind them? I want to understand how to [ACHIEVE_GOAL] efficiently. Also, suggest best practices for [ASPECT_OF_CODE] in this context.\n```\nCopy\n\n```\nSure! For your Python project focused on data analysis, here's how you can efficiently clean and preprocess your dataset using pandas. First, let's handle missing values:\n\n```python\n# Load the dataset\nimport pandas as pd\ndata = pd.read_csv('your_dataset.csv')\n\n# Check for missing values\ndata.isnull().sum()\n\n# Fill missing values with the median for numerical columns\nfor column in data.select_dtypes(include=['float64', 'int64']).columns:\n    data[column].fillna(data[column].median(), inplace=True)\n\n# For categorical columns, fill missing values with the mode\nfor column in data.select_dtypes(include=['object']).columns:\n    data[column].fillna(data[column].mode()[0], inplace=True)\n```\n\nThis code first loads your dataset and checks for missing values. It then fills numerical columns with the median and categorical columns with the mode. This approach ensures that you maintain the integrity of your data while handling missing values.\n\nNext, let's standardize your data:\n\n```python\nfrom sklearn.preprocessing import StandardScaler\n\n# Select numerical columns for standardization\nnumerical_cols = data.select_dtypes(include=['float64', 'int64']).columns\n\n# Standardize the data\nscaler = StandardScaler()\ndata[numerical_cols] = scaler.fit_transform(data[numerical_cols])\n```\n\nStandardizing your data is crucial for many machine learning algorithms, as it ensures that all features are on the same scale. This can significantly improve the performance of your models.\n\nFor best practices, always ensure that your data is clean and preprocessed consistently. Document your steps and parameters used in preprocessing, as this will make your analysis reproducible. Additionally, consider using pipelines in scikit-learn to streamline your preprocessing and modeling workflow.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "happy#main-content",
+      "happy#overview",
+      "happy#setup",
+      "happy#examples",
+      "happy#tools",
+      "happy#mcp",
+      "happy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The 'happy' skill is a versatile mobile and web client designed for Codex and Claude Code, offering real-time voice interaction, encryption, and a fully featured experience. This skill allows developers and AI practitioners to manage their AI coding projects seamlessly, whether they are at their desk or on the go. With its intermediate complexity, users can implement this skill in about 30 minutes, making it an efficient addition to any AI automation toolkit. One of the key benefits of the happy skill is its ability to streamline workflow automation. Users can receive push notifications for permission requests or errors from their AI tools, ensuring they stay updated on the status of their projects without needing to be physically present. Additionally, the skill enables users to switch control between mobile and desktop devices with a single keypress, enhancing productivity and flexibility. Although specific time savings are not quantified, the hands-free voice command feature significantly reduces the time spent managing tasks manually, allowing users to focus on more critical aspects of their work. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in ongoing AI coding projects. The practical use cases include monitoring projects while away from the desk, auditing and contributing to the open-source codebase for customization, and utilizing voice commands to interact with AI coding agents. These features make it an ideal tool for those looking to enhance their AI-first workflows and improve collaboration across teams. With an implementation difficulty rated as intermediate, users will need some familiarity with AI tools and coding practices to fully leverage the capabilities of the happy skill. However, its integration into existing workflows can significantly enhance productivity and responsiveness in AI development environments. By adopting this skill, teams can ensure they are maximizing their efficiency and staying ahead in the rapidly evolving landscape of AI automation.\nMonitor ongoing AI coding projects while away from your desk.\nReceive push notifications for permission requests or errors from your AI tools.\nSwitch control between mobile and desktop with a single keypress.\nUtilize voice commands to interact with your AI coding agents hands-free.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/slopus/happy`",
+    "usage_vi": "```\nI'm working on a [PROGRAMMING_LANGUAGE] project and need help with [SPECIFIC_TASK]. Can you provide code snippets and explain the logic behind them? I want to understand how to [ACHIEVE_GOAL] efficiently. Also, suggest best practices for [ASPECT_OF_CODE] in this context.\n```\nCopy\n\n```\nSure! For your Python project focused on data analysis, here's how you can efficiently clean and preprocess your dataset using pandas. First, let's handle missing values:\n\n```python\n# Load the dataset\nimport pandas as pd\ndata = pd.read_csv('your_dataset.csv')\n\n# Check for missing values\ndata.isnull().sum()\n\n# Fill missing values with the median for numerical columns\nfor column in data.select_dtypes(include=['float64', 'int64']).columns:\n    data[column].fillna(data[column].median(), inplace=True)\n\n# For categorical columns, fill missing values with the mode\nfor column in data.select_dtypes(include=['object']).columns:\n    data[column].fillna(data[column].mode()[0], inplace=True)\n```\n\nThis code first loads your dataset and checks for missing values. It then fills numerical columns with the median and categorical columns with the mode. This approach ensures that you maintain the integrity of your data while handling missing values.\n\nNext, let's standardize your data:\n\n```python\nfrom sklearn.preprocessing import StandardScaler\n\n# Select numerical columns for standardization\nnumerical_cols = data.select_dtypes(include=['float64', 'int64']).columns\n\n# Standardize the data\nscaler = StandardScaler()\ndata[numerical_cols] = scaler.fit_transform(data[numerical_cols])\n```\n\nStandardizing your data is crucial for many machine learning algorithms, as it ensures that all features are on the same scale. This can significantly improve the performance of your models.\n\nFor best practices, always ensure that your data is clean and preprocessed consistently. Document your steps and parameters used in preprocessing, as this will make your analysis reproducible. Additionally, consider using pipelines in scikit-learn to streamline your preprocessing and modeling workflow.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:39:51.745708Z",
+    "http_status": 200,
+    "content_hash": "d7bc80f9389029f7cf6f9b23f4277b2e95412c0b9593ed86c44365cd67bc47b7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\happy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\happy.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "happy: Enhance AI Workflow Automation",
+  "short_description_vi": "Happy is a mobile and web client for Codex and Claude Code. It enables developers to access these tools from anywhere with real-time voice, encryption, and a fully featured interface. It benefits developers and teams needing secure, remote access to AI coding assistants."
+}

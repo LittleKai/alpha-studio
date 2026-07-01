@@ -1,0 +1,51 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-anything",
+  "slug": "ai-anything",
+  "name": "AI-anything",
+  "headline": "skill.md generator from youtube content",
+  "short_description": "The foundation your revenue team is missing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "110 min",
+  "author": "yfe404",
+  "install_command": "git clone https://github.com/yfe404/AI-anything.git",
+  "source_repo_url": "https://github.com/yfe404/AI-anything",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "YouTube to Skill automates the extraction and transformation of video tutorials into machine-readable AI agent skills. It solves the problem of trapped video knowledge by pulling transcripts, identifying technologies and versions, verifying current state against official documentation, and converting narrative content into actionable instructions. The tool uses a five-stage pipeline: extract (YouTube captions with Whisper fallback), identify (technologies and frameworks), verify (with Context7 MCP and WebSearch), transform (narrative to imperative), and generate (standard SKILL.md format). This benefits developers and teams who want to package video-based workflows for AI assistants like Claude Code and Cursor without manual transcription and restructuring.\nConvert programming tutorial videos into skills for Claude Code\nTransform framework setup guides into reusable agent instructions\nExtract API documentation workflows from video walkthroughs\nCreate skills from DevOps and CLI tool tutorials",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yfe404/AI-anything`",
+    "usage": "```\nConvert the following YouTube video [URL] into a SKILL.md file. The video is about [TOPIC] and is intended for [AUDIENCE]. Include clear instructions, prerequisites, and example outputs. Format the file to be immediately usable by Claude Code.\n```\nCopy\n\n```\n# Skill: Video Editing Basics\n\n- A short edited video demonstrating the techniques learned.\n- A project file that can be shared and reviewed.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-anything#main-content",
+      "ai-anything#overview",
+      "ai-anything#setup",
+      "ai-anything#examples",
+      "ai-anything#tools",
+      "ai-anything#mcp",
+      "ai-anything#related"
+    ],
+    "overview_vi": "YouTube to Skill automates the extraction and transformation of video tutorials into machine-readable AI agent skills. It solves the problem of trapped video knowledge by pulling transcripts, identifying technologies and versions, verifying current state against official documentation, and converting narrative content into actionable instructions. The tool uses a five-stage pipeline: extract (YouTube captions with Whisper fallback), identify (technologies and frameworks), verify (with Context7 MCP and WebSearch), transform (narrative to imperative), and generate (standard SKILL.md format). This benefits developers and teams who want to package video-based workflows for AI assistants like Claude Code and Cursor without manual transcription and restructuring.\nConvert programming tutorial videos into skills for Claude Code\nTransform framework setup guides into reusable agent instructions\nExtract API documentation workflows from video walkthroughs\nCreate skills from DevOps and CLI tool tutorials",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yfe404/AI-anything`",
+    "usage_vi": "```\nConvert the following YouTube video [URL] into a SKILL.md file. The video is about [TOPIC] and is intended for [AUDIENCE]. Include clear instructions, prerequisites, and example outputs. Format the file to be immediately usable by Claude Code.\n```\nCopy\n\n```\n# Skill: Video Editing Basics\n\n- A short edited video demonstrating the techniques learned.\n- A project file that can be shared and reviewed."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:12:44.983263Z",
+    "http_status": 200,
+    "content_hash": "7c20145db53947ee959186ab49c17e133e5a0868c571fbf330b13837ec2334f6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-anything.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-anything.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "skill.md generator from youtube content",
+  "short_description_vi": "The foundation your revenue team is missing."
+}

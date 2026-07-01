@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-fact-checker-skill",
+  "slug": "claude-fact-checker-skill",
+  "name": "browser-use",
+  "headline": "claude fact checker skill for immediate verification",
+  "short_description": "A fact-checking skill for Claude that extracts verifiable claims from text or URLs, cross-references them against academic, government, and journalistic sources, and delivers structured credibility reports.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "fdaudens",
+  "install_command": "git clone https://github.com/fdaudens/claude-fact-checker-skill.git",
+  "source_repo_url": "https://github.com/fdaudens/claude-fact-checker-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The claude-fact-checker-skill equips Claude with a structured verification workflow that identifies factual claims in any submitted text or article, then researches them against a curated list of trusted sources including Google Scholar, PubMed, CDC, WHO, PolitiFact, Reuters, and major newspapers. Each claim receives a status rating—TRUE, FALSE, PARTIALLY TRUE, UNVERIFIED, or OPINION—alongside a confidence level and a weighted credibility score calculated from source type, methodology, recency, and corroboration. Verification reports include an executive summary, per-claim findings with supporting and contradictory evidence, a scored source bibliography, and recommendations for further investigation. This skill is valuable for journalists, researchers, students, and anyone who needs to assess the factual accuracy of articles, statistics, or public statements quickly and systematically.\nFact-checking a news article by pasting its text or URL\nVerifying medical or scientific claims against peer-reviewed sources\nChecking the accuracy of statistics cited in reports or presentations\nAssessing the credibility of political statements or public claims",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fdaudens/claude-fact-checker-skill`",
+    "usage": "```\nAct as a fact-checker. Verify the following statement: '[STATEMENT]'. Provide sources, credibility ratings, and any conflicting information. Focus on [TOPIC] and prioritize recent data from [COUNTRY/REGION] if applicable.\n```\nCopy\n\n```\n# Fact-Checking Results",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-fact-checker-skill#main-content",
+      "claude-fact-checker-skill#overview",
+      "claude-fact-checker-skill#setup",
+      "claude-fact-checker-skill#examples",
+      "claude-fact-checker-skill#tools",
+      "claude-fact-checker-skill#mcp",
+      "claude-fact-checker-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claude-fact-checker-skill equips Claude with a structured verification workflow that identifies factual claims in any submitted text or article, then researches them against a curated list of trusted sources including Google Scholar, PubMed, CDC, WHO, PolitiFact, Reuters, and major newspapers. Each claim receives a status rating—TRUE, FALSE, PARTIALLY TRUE, UNVERIFIED, or OPINION—alongside a confidence level and a weighted credibility score calculated from source type, methodology, recency, and corroboration. Verification reports include an executive summary, per-claim findings with supporting and contradictory evidence, a scored source bibliography, and recommendations for further investigation. This skill is valuable for journalists, researchers, students, and anyone who needs to assess the factual accuracy of articles, statistics, or public statements quickly and systematically.\nFact-checking a news article by pasting its text or URL\nVerifying medical or scientific claims against peer-reviewed sources\nChecking the accuracy of statistics cited in reports or presentations\nAssessing the credibility of political statements or public claims",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/fdaudens/claude-fact-checker-skill`",
+    "usage_vi": "```\nAct as a fact-checker. Verify the following statement: '[STATEMENT]'. Provide sources, credibility ratings, and any conflicting information. Focus on [TOPIC] and prioritize recent data from [COUNTRY/REGION] if applicable.\n```\nCopy\n\n```\n# Fact-Checking Results"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:44:24.769776Z",
+    "http_status": 200,
+    "content_hash": "41497b044bea1110978a4894b24c673bf55be7684db154d4f01a375d40b1edaf",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-fact-checker-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-fact-checker-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude fact checker skill for immediate verification",
+  "short_description_vi": "A fact-checking skill for Claude that extracts verifiable claims from text or URLs, cross-references them against academic, government, and journalistic sources, and delivers structured credibility reports."
+}

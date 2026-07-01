@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/n8n-twitter-thread-fetcher",
+  "slug": "n8n-twitter-thread-fetcher",
+  "name": "N8n Twitter Thread Fetcher",
+  "headline": "n8n Twitter Thread Fetcher: Extract & Automate",
+  "short_description": "Unlock lightning-fast, cost-effective Twitter (X) thread extraction with this ready-to-use n8n workflow template! Effortlessly fetch, merge, and automate entire Twitter threads for research, content curation, or archiving-no more manual copy-paste. Supercharge your social media automation and save time with Twitter API integration!",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "enescingoz",
+  "install_command": "git clone https://github.com/enescingoz/n8n-twitter-thread-fetcher.git",
+  "source_repo_url": "https://github.com/enescingoz/n8n-twitter-thread-fetcher",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "n8n-scraper",
+    "twitter-scraper",
+    "n8n-template",
+    "n8n-twitter",
+    "workflow-automation",
+    "n8n-workflow",
+    "twitter-automation",
+    "twitter-thread",
+    "no-code-automation",
+    "n8n-automation",
+    "automation-templates"
+  ],
+  "sections": {
+    "overview": "This n8n template automates Twitter thread extraction by detecting whether a link points to a single tweet or full thread, then fetching and merging all connected tweets in correct order. The workflow filters out empty results and returns complete threads as clean, readable text, with setup powered by twitterapi.io API credentials. Fetches 15-tweet threads in 3 seconds at $0.0027 per thread, eliminating manual copy-paste work. Perfect for researchers, journalists, content curators, and social media managers who need to automate Twitter data collection, content curation, or archiving at scale.\nAutomate content research by extracting full Twitter threads for analysis\nArchive Twitter conversations for compliance or documentation\nFeed extracted threads into Notion or Google Sheets for team collaboration\nBuild social media automation workflows triggered by webhooks or schedules\n\nThis n8n workflow template fetches a Twitter thread using the Twitter API. It includes nodes for authentication, fetching the thread, and merging the tweets into a single text output.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/enescingoz/n8n-twitter-thread-fetcher`",
+    "usage": "```\nCreate an n8n workflow template that fetches a Twitter thread using the Twitter API. The workflow should include nodes for authentication, fetching the thread, and merging the tweets into a single text output. The thread should be from [TWITTER_HANDLE] and the first tweet ID should be [TWEET_ID]. Ensure the workflow is reusable and can be triggered manually or on a schedule.\n```\nCopy\n\n```\n# Twitter Thread Fetcher Workflow",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "n8n-twitter-thread-fetcher#main-content",
+      "n8n-twitter-thread-fetcher#overview",
+      "n8n-twitter-thread-fetcher#setup",
+      "n8n-twitter-thread-fetcher#examples",
+      "n8n-twitter-thread-fetcher#tools",
+      "n8n-twitter-thread-fetcher#mcp",
+      "n8n-twitter-thread-fetcher#related",
+      "marketingskills",
+      "copywriting",
+      "digimark"
+    ],
+    "overview_vi": "Template n8n này tự động hóa việc trích xuất thread Twitter bằng cách tự động nhận diện liên kết trỏ đến một tweet đơn lẻ hay toàn bộ thread, sau đó lấy và gộp tất cả các tweet liên quan theo đúng thứ tự. Workflow này sẽ lọc bỏ các kết quả trống và trả về thread hoàn chỉnh dưới dạng văn bản sạch, dễ đọc. Quá trình setup sử dụng API credential từ twitterapi.io. Tốc độ xử lý cực nhanh: lấy thread dài 15 tweet chỉ trong 3 giây với chi phí $0.0027 mỗi thread, loại bỏ hoàn toàn việc copy-paste thủ công. Đây là công cụ hoàn hảo cho các nhà nghiên cứu, nhà báo, người sáng tạo nội dung và quản lý mạng xã hội cần tự động hóa việc thu thập, chọn lọc hoặc lưu trữ dữ liệu Twitter ở quy mô lớn.\n\nTự động hóa việc nghiên cứu nội dung bằng cách trích xuất toàn bộ thread Twitter để phân tích\nLưu trữ các cuộc hội thoại trên Twitter để phục vụ việc tuân thủ hoặc làm tài liệu\nĐưa các thread đã trích xuất vào Notion hoặc Google Sheets để cộng tác nhóm\nXây dựng các workflow tự động hóa mạng xã hội được kích hoạt bằng webhook hoặc lập lịch (schedule)\n\nWorkflow template n8n này lấy thread Twitter bằng Twitter API. Nó bao gồm các node để xác thực, lấy thread và gộp các tweet thành một đầu ra văn bản duy nhất.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/enescingoz/n8n-twitter-thread-fetcher`",
+    "usage_vi": "```\nTạo một workflow template n8n để lấy thread Twitter bằng Twitter API. Workflow phải bao gồm các node để xác thực, lấy thread và gộp các tweet thành một đầu ra văn bản duy nhất. Thread cần lấy thuộc về [TWITTER_HANDLE] và ID tweet đầu tiên là [TWEET_ID]. Đảm bảo workflow có thể tái sử dụng và có thể kích hoạt thủ công hoặc theo lịch trình (schedule).\n```\nCopy\n\n```\n# Twitter Thread Fetcher Workflow\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:35:50.889547Z",
+    "http_status": 200,
+    "content_hash": "b188b8de8fc40788008e78cb0c0854e5348277343ae3acdfa4c2888e0b9d8bde",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-twitter-thread-fetcher.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\n8n-twitter-thread-fetcher.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "n8n Twitter Thread Fetcher: Trích xuất & Tự động hóa",
+  "short_description_vi": "Trích xuất thread Twitter (X) cực nhanh và tiết kiệm chi phí với template workflow n8n ăn liền này! Dễ dàng lấy, gộp và tự động hóa toàn bộ các thread Twitter phục vụ cho việc nghiên cứu, chọn lọc nội dung hoặc lưu trữ—không còn phải copy-paste thủ công. Tối ưu hóa quy trình tự động hóa mạng xã hội và tiết kiệm thời gian nhờ tích hợp Twitter API!"
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/browser-to-api",
+  "slug": "browser-to-api",
+  "name": "Related Skills",
+  "headline": "Browser to API: OpenAPI Spec Generation",
+  "short_description": "Browser to API consumes a `browser-trace` capture to generate OpenAPI 3.1 documents and coverage reports. It's ideal for users who need to extract endpoints and JSON schemas from websites that lack a formal API specification.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "browserbase",
+  "install_command": "git clone https://github.com/browserbase/skills",
+  "source_repo_url": "https://github.com/browserbase/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "browser",
+    "api-skills"
+  ],
+  "sections": {
+    "overview": "Browser to API analyzes HTTP traffic captured during browser automation to automatically generate OpenAPI 3.1 documentation and coverage reports. By processing browser-trace captures—which include DevTools protocol data, screenshots, and DOM snapshots—the skill extracts observable API endpoints and infers JSON schemas without requiring access to backend source code. This is particularly valuable for reverse-engineering APIs from websites that lack public specifications, integrating with undocumented services, or documenting legacy web applications. Teams building integrations, API clients, or testing tools can use this skill to quickly understand and document the actual API surface of any website.\nGenerate OpenAPI documents for third-party websites\nExtract endpoints and schemas from browser-trace captures\nBuild clients for sites without published specs\nProvide coverage reports for API flows",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/browserbase/skills --skill browser-to-api`\n`git clone https://github.com/browserbase/skills`",
+    "usage": "```\nGenerate an OpenAPI 3.1 specification and coverage report from this browser-trace capture: [BROWSER_TRACE_FILE_OR_LINK]. Extract all API endpoints, request/response schemas, and HTTP methods. Include example payloads for each endpoint and flag any inconsistencies or missing fields in the schema.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "browser-to-api#main-content",
+      "browser-to-api#overview",
+      "browser-to-api#setup",
+      "browser-to-api#examples",
+      "browser-to-api#tools",
+      "browser-to-api#mcp",
+      "browser-to-api#related"
+    ],
+    "overview_vi": "Browser to API analyzes HTTP traffic captured during browser automation to automatically generate OpenAPI 3.1 documentation and coverage reports. By processing browser-trace captures—which include DevTools protocol data, screenshots, and DOM snapshots—the skill extracts observable API endpoints and infers JSON schemas without requiring access to backend source code. This is particularly valuable for reverse-engineering APIs from websites that lack public specifications, integrating with undocumented services, or documenting legacy web applications. Teams building integrations, API clients, or testing tools can use this skill to quickly understand and document the actual API surface of any website.\nGenerate OpenAPI documents for third-party websites\nExtract endpoints and schemas from browser-trace captures\nBuild clients for sites without published specs\nProvide coverage reports for API flows",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/browserbase/skills --skill browser-to-api`\n`git clone https://github.com/browserbase/skills`",
+    "usage_vi": "```\nGenerate an OpenAPI 3.1 specification and coverage report from this browser-trace capture: [BROWSER_TRACE_FILE_OR_LINK]. Extract all API endpoints, request/response schemas, and HTTP methods. Include example payloads for each endpoint and flag any inconsistencies or missing fields in the schema.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:41:26.892520Z",
+    "http_status": 200,
+    "content_hash": "a6eb3cd0d54f157569afd248e67f4748eb7cab8254fcef130efa15ce336a8745",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\browser-to-api.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\browser-to-api.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Browser to API: OpenAPI Spec Generation",
+  "short_description_vi": "Browser to API consumes a `browser-trace` capture to generate OpenAPI 3.1 documents and coverage reports. It's ideal for users who need to extract endpoints and JSON schemas from websites that lack a formal API specification."
+}

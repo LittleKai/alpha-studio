@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agents-md",
+  "slug": "agents-md",
+  "name": "Agents Md",
+  "headline": "agents-md: Agent Documentation Generator",
+  "short_description": "This skill enforces research-backed best practices for agent-facing documentation, ensuring quality by keeping it concise. It analyzes project structure to provide relevant instructions without unnecessary filler.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "getsentry",
+  "install_command": "git clone https://github.com/getsentry/skills",
+  "source_repo_url": "https://github.com/getsentry/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "documentation",
+    "agents"
+  ],
+  "sections": {
+    "overview": "agents-md enforces best practices for agent-facing documentation by creating and maintaining concise AGENTS.md and CLAUDE.md files. It analyzes your project structure to provide relevant, research-backed instructions tailored to agent capabilities, eliminating unnecessary filler. The skill helps teams document their projects effectively for AI agents like Claude Code and Cursor, ensuring documentation stays focused and actionable. It follows the Agent Skills open format and integrates seamlessly into Sentry's documentation workflows.\nCreate concise documentation for agent commands\nMaintain project-specific documentation styles\nAnalyze repository structure for relevant documentation\nReduce clutter in agent documentation",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/getsentry/skills --skill agents-md`\n`git clone https://github.com/getsentry/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "agents-md#main-content",
+      "agents-md#overview",
+      "agents-md#setup",
+      "agents-md#examples",
+      "agents-md#related",
+      "explain-code",
+      "cloudinary-documentation",
+      "readme-generator"
+    ],
+    "overview_vi": "agents-md áp dụng các best practice cho tài liệu hướng tới agent bằng cách tạo và duy trì các file AGENTS.md và CLAUDE.md súc tích. Nó phân tích cấu trúc dự án của bạn để cung cấp các hướng dẫn liên quan, dựa trên các nghiên cứu thực tế và được điều chỉnh phù hợp với khả năng của agent, giúp loại bỏ các thông tin rườm rà không cần thiết. Skill này hỗ trợ các đội ngũ xây dựng tài liệu dự án hiệu quả cho các AI agent như Claude Code và Cursor, đảm bảo tài liệu luôn cô đọng và có tính ứng dụng cao. Công cụ này tuân theo định dạng mở Agent Skills và tích hợp liền mạch vào workflow tài liệu của Sentry.\n\nTạo tài liệu súc tích cho các lệnh của agent\nDuy trì phong cách viết tài liệu đặc thù của dự án\nPhân tích cấu trúc repository để cung cấp tài liệu liên quan\nGiảm thiểu sự rườm rà trong tài liệu dành cho agent",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/getsentry/skills --skill agents-md`\n`git clone https://github.com/getsentry/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nTham khảo repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:05:12.276480Z",
+    "http_status": 200,
+    "content_hash": "9270a095b4b43d145eb3ce0778f92a279d3ebf3249d89e744b2f21622a22eb5f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agents-md.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agents-md.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agents-md: Trình tạo tài liệu cho Agent",
+  "short_description_vi": "Skill này áp dụng các best practice đã được nghiên cứu chứng minh dành cho tài liệu hướng tới agent, đảm bảo chất lượng bằng cách giữ cho thông tin luôn súc tích. Công cụ này phân tích cấu trúc dự án để cung cấp các hướng dẫn liên quan mà không chứa nội dung thừa."
+}

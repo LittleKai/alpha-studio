@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/relentless",
+  "slug": "relentless",
+  "name": "Relentless",
+  "headline": "Relentless - AI Agent Orchestrator",
+  "short_description": "Relentless is an AI agent orchestrator that runs coding agents like Claude Code, Amp, and OpenCode repeatedly until all tasks are complete. It benefits operations teams by automating complex workflows and integrating with existing tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "ArvorCo",
+  "install_command": "git clone https://github.com/ArvorCo/Relentless.git",
+  "source_repo_url": "https://github.com/ArvorCo/Relentless",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Relentless automates multi-step coding tasks by running AI agents in continuous loops with fresh context and persistent memory across iterations. It solves the problem of agents losing context mid-task or hitting rate limits by spawning new agents and routing work to the most cost-effective model for each task's complexity. The tool enforces structured specs, task breakdown, and quality checks before agents begin work, reducing wasted iterations. Built for operations teams and developers managing complex workflows, Relentless supports Claude, Amp, OpenCode, Codex, Droid, and Gemini with automatic fallback when rate limits are hit.\nAutomating multi-day coding tasks without manual re-prompting\nReducing AI agent API costs by routing simple tasks to cheaper models\nRunning continuous integration workflows with structured task planning\nBuilding features across multiple agents when one hits rate limits",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ArvorCo/Relentless`",
+    "usage": "```\nUse Relentless to automate the following workflow: [TASK_DESCRIPTION]. Configure the agent to retry on failure with [MAX_RETRIES] attempts and log all actions to [LOG_FILE_PATH]. Include error handling for [SPECIFIC_ERROR_TYPES] and notify [TEAM_CHANNEL] upon completion or failure. Use [AGENT_TYPE] as the primary coding agent.\n```\nCopy\n\n```\n```json\n{\n  \"workflow_id\": \"relentless_20240515_143022\",\n  \"status\": \"completed\",\n  \"total_attempts\": 3,\n  \"successful_runs\": 2,\n  \"failed_runs\": 1,\n  \"errors\": [\n    {\n      \"attempt\": 1,\n      \"error_type\": \"timeout\",\n      \"message\": \"Agent failed to fetch repository metadata after 10 minutes\",\n      \"timestamp\": \"2024-05-15T14:32:15Z\"\n    }\n  ],\n  \"outputs\": {\n    \"generated_files\": [\n      {\"path\": \"/repos/acme/api/src/main.py\", \"size\": \"4.2KB\"},\n      {\"path\": \"/repos/acme/api/tests/test_main.py\", \"size\": \"1.8KB\"}\n    ],\n    \"logs\": [\n      \"[14:30:25] Initializing Relentless orchestrator for workflow 'api_generation'\",\n      \"[14:30:27] Agent 'claude-code' started with prompt: 'Generate REST API skeleton for Acme Corp...'\",\n      \"[14:31:45] Agent failed: TimeoutError - Repository not cloned within expected time\",\n      \"[14:32:01] Retry attempt #2 initiated with agent 'amp'\",\n      \"[14:34:12] Agent 'amp' completed successfully\",\n      \"[14:35:00] Verifying generated files against requirements...\"\n    ]\n  },\n  \"notifications\": {\n    \"slack_channel\": \"#devops-alerts\",\n    \"message\": \"✅ Relentless workflow 'api_generation' completed in 4m38s. 2 files generated. See logs: /logs/relentless_20240515_143022.log\"\n  }\n}\n```\n\nThe Relentless orchestrator successfully automated the generation of a REST API skeleton for Acme Corp's new microservice. The initial attempt using Claude Code failed after 10 minutes due to a timeout while cloning the repository, but the system automatically triggered a retry with the Amp agent, which completed the task in 2 minutes and 11 seconds. The generated codebase includes a main.py file with 4.2KB of Python code implementing CRUD endpoints for users and products, along with corresponding test files. All actions were logged to `/logs/relentless_20240515_143022.log`, and the team was notified via Slack. The workflow demonstrates Relentless' ability to handle transient failures gracefully while maintaining audit trails for compliance and debugging purposes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "relentless#main-content",
+      "relentless#overview",
+      "relentless#setup",
+      "relentless#examples",
+      "relentless#tools",
+      "relentless#mcp",
+      "relentless#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Relentless tự động hóa các tác vụ lập trình nhiều bước bằng cách chạy các AI agent trong các vòng lặp liên tục với context mới và persistent memory xuyên suốt các iteration. Công cụ này giải quyết vấn đề agent bị mất context giữa chừng hoặc chạm rate limit bằng cách khởi tạo (spawn) các agent mới và định tuyến công việc đến mô hình tối ưu chi phí nhất tùy theo độ phức tạp của từng tác vụ. Công cụ áp dụng các quy chuẩn chặt chẽ về spec cấu trúc, phân rã tác vụ (task breakdown) và kiểm định chất lượng trước khi agent bắt đầu làm việc, giúp giảm thiểu các iteration lãng phí. Được thiết kế cho các operations team và nhà phát triển quản lý các workflow phức tạp, Relentless hỗ trợ Claude, Amp, OpenCode, Codex, Droid và Gemini với tính năng tự động fallback khi gặp rate limit.\n\nTự động hóa các tác vụ lập trình kéo dài nhiều ngày mà không cần re-prompt thủ công\nGiảm chi phí API của AI agent bằng cách định tuyến các tác vụ đơn giản đến các mô hình rẻ hơn\nChạy các workflow tích hợp liên tục (CI) với kế hoạch tác vụ được cấu trúc rõ ràng\nPhát triển tính năng trên nhiều agent khi một agent bị chạm rate limit",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ArvorCo/Relentless`",
+    "usage_vi": "```\nSử dụng Relentless để tự động hóa workflow sau: [TASK_DESCRIPTION]. Cấu hình agent thử lại khi thất bại với số lần thử tối đa là [MAX_RETRIES] và ghi log tất cả hành động vào [LOG_FILE_PATH]. Bao gồm xử lý lỗi cho [SPECIFIC_ERROR_TYPES] và thông báo tới [TEAM_CHANNEL] khi hoàn thành hoặc thất bại. Sử dụng [AGENT_TYPE] làm coding agent chính.\n```\nCopy\n\n```\n```json\n{\n  \"workflow_id\": \"relentless_20240515_143022\",\n  \"status\": \"completed\",\n  \"total_attempts\": 3,\n  \"successful_runs\": 2,\n  \"failed_runs\": 1,\n  \"errors\": [\n    {\n      \"attempt\": 1,\n      \"error_type\": \"timeout\",\n      \"message\": \"Agent không thể lấy metadata của repository sau 10 phút\",\n      \"timestamp\": \"2024-05-15T14:32:15Z\"\n    }\n  ],\n  \"outputs\": {\n    \"generated_files\": [\n      {\"path\": \"/repos/acme/api/src/main.py\", \"size\": \"4.2KB\"},\n      {\"path\": \"/repos/acme/api/tests/test_main.py\", \"size\": \"1.8KB\"}\n    ],\n    \"logs\": [\n      \"[14:30:25] Đang khởi tạo bộ điều phối Relentless cho workflow 'api_generation'\",\n      \"[14:30:27] Agent 'claude-code' đã bắt đầu với prompt: 'Generate REST API skeleton for Acme Corp...'\",\n      \"[14:31:45] Agent thất bại: TimeoutError - Không thể clone repository trong thời gian dự kiến\",\n      \"[14:32:01] Khởi động lần thử lại #2 với agent 'amp'\",\n      \"[14:34:12] Agent 'amp' đã hoàn thành thành công\",\n      \"[14:35:00] Đang xác thực các file được tạo so với yêu cầu...\"\n    ]\n  },\n  \"notifications\": {\n    \"slack_channel\": \"#devops-alerts\",\n    \"message\": \"✅ Workflow Relentless 'api_generation' đã hoàn thành trong 4m38s. Đã tạo 2 file. Xem log tại: /logs/relentless_20240515_143022.log\"\n  }\n}\n```\n\nBộ điều phối Relentless đã tự động hóa thành công việc tạo khung REST API cho microservice mới của Acme Corp. Lần thử đầu tiên sử dụng Claude Code đã thất bại sau 10 phút do bị timeout khi clone repository, nhưng hệ thống đã tự động kích hoạt thử lại với agent Amp, hoàn thành tác vụ trong 2 phút 11 giây. Mã nguồn được tạo bao gồm file main.py chứa 4.2KB code Python triển khai các CRUD endpoint cho user và product, cùng với các file test tương ứng. Tất cả hành động đã được ghi log tại `/logs/relentless_20240515_143022.log`, và đội ngũ đã nhận được thông báo qua Slack. Workflow này chứng minh khả năng của Relentless trong việc xử lý các lỗi tạm thời (transient failures) một cách mượt mà, đồng thời duy trì lịch sử hoạt động (audit trails) phục vụ cho mục đích tuân thủ quy trình và debug.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:54:28.894551Z",
+    "http_status": 200,
+    "content_hash": "fb7c607ab65470d845c52a9693a558e3035c92dc3c709ab3c955430c6ed3deb9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\relentless.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\relentless.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Relentless - Bộ điều phối AI Agent",
+  "short_description_vi": "Relentless là bộ điều phối AI agent chuyên vận hành liên tục các coding agent như Claude Code, Amp và OpenCode cho đến khi hoàn thành mọi tác vụ. Công cụ này hỗ trợ đắc lực cho các operations team nhờ khả năng tự động hóa các workflow phức tạp và tích hợp mượt mà với các công cụ hiện có."
+}

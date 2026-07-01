@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/simple",
+  "slug": "simple",
+  "name": "Related Skills",
+  "headline": "fun-brainstorming: Fast Design Decisions",
+  "short_description": "This skill guides users through the brainstorming process, moving from an idea to an approved design direction without unnecessary overhead. It is aimed at teams or individuals involved in design and decision-making, ensuring clarity and direction before implementation.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "roin-orca",
+  "install_command": "git clone https://github.com/roin-orca/skills",
+  "source_repo_url": "https://github.com/roin-orca/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "brainstorming",
+    "simple"
+  ],
+  "sections": {
+    "overview": "fun-brainstorming is a simplified brainstorming skill designed for speed and practical decision-making. It maintains structured thinking and exploration of alternatives while removing overhead like sequential single-question discovery and rigid multi-phase flows. The skill is optimized for quick feature additions, bug fix planning, refactoring decisions, and sessions under 30 minutes where fast approval is needed before implementation. It works best when the problem scope is already mostly clear and you need to decide between a few concrete options rather than conduct extensive upfront discovery.\nFacilitating quick design decisions\nHelping teams clarify project goals\nStreamlining the brainstorming process for software features",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/roin-orca/skills --skill simple`\n`git clone https://github.com/roin-orca/skills`",
+    "usage": "```\nI’m brainstorming a new [PRODUCT/SERVICE/CONCEPT] for [COMPANY] in the [INDUSTRY] space. Start by helping me define the core problem or opportunity this [PRODUCT/SERVICE/CONCEPT] addresses. Then, guide me through generating 5-10 initial ideas, filtering them down to the top 3 based on feasibility and impact, and finally refining the best idea into a rough design direction or action plan. Keep the process structured but flexible—ask clarifying questions as needed to ensure we’re aligned on goals and constraints.\n```\nCopy\n\n```\n### Brainstorming Session: New Mobile App for EcoCart\n\n**1. Defining the Core Problem:**\nWhat problem or opportunity is EcoCart’s new mobile app addressing?\n- *Current pain point:* Users want to track their carbon footprint from purchases but find existing tools too complex or disconnected from their shopping habits.\n- *Opportunity:* Simplify carbon tracking by integrating with e-commerce platforms and providing real-time, actionable insights.\n\n**2. Generating Initial Ideas:**\nHere are 5 initial concepts:\n- **Idea 1:** A gamified app that rewards users for eco-friendly purchases with discounts from partner brands.\n- **Idea 2:** A browser extension that calculates carbon footprint per order and suggests greener alternatives.\n- **Idea 3:** A social feed where users share their sustainability wins and challenges.\n- **Idea 4:** A dashboard that aggregates carbon data from multiple sources (bank transactions, loyalty programs).\n- **Idea 5:** A chatbot that helps users plan low-carbon shopping lists before they buy.\n\n**3. Filtering to Top 3:**\nAfter evaluating feasibility and impact:\n- **Top Idea:** *Browser extension* (Idea 2) – Low development effort, high user adoption potential.\n- **Runner-up:** *Gamified app* (Idea 1) – Engaging but requires more resources.\n- **Wildcard:** *Social feed* (Idea 3) – High engagement but may dilute the primary focus.\n\n**4. Refining the Top Idea:**\n**Design Direction for Browser Extension:**\n- **Core Features:**\n  - Real-time carbon footprint calculation per order.\n  - Suggestions for greener alternatives (e.g., \"Switch to Brand X for 30% lower emissions\").\n  - Integration with major e-commerce platforms (Amazon, Etsy, etc.).\n- **User Flow:**\n  1. Install extension → 2. Shop as usual → 3. View carbon impact post-purchase → 4. Receive tips for next purchase.\n- **Next Steps:**\n  - Validate demand with a landing page and waitlist.\n  - Develop a prototype for user testing.\n\n**Action Plan:**\n- Week 1-2: Research competitor extensions and user pain points.\n- Week 3-4: Design wireframes for the extension.\n- Week 5-6: Build a minimal viable prototype.\n\nWould you like to dive deeper into any of these steps?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "simple#main-content",
+      "simple#overview",
+      "simple#setup",
+      "simple#examples",
+      "simple#tools",
+      "simple#mcp",
+      "simple#related"
+    ],
+    "overview_vi": "fun-brainstorming is a simplified brainstorming skill designed for speed and practical decision-making. It maintains structured thinking and exploration of alternatives while removing overhead like sequential single-question discovery and rigid multi-phase flows. The skill is optimized for quick feature additions, bug fix planning, refactoring decisions, and sessions under 30 minutes where fast approval is needed before implementation. It works best when the problem scope is already mostly clear and you need to decide between a few concrete options rather than conduct extensive upfront discovery.\nFacilitating quick design decisions\nHelping teams clarify project goals\nStreamlining the brainstorming process for software features",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/roin-orca/skills --skill simple`\n`git clone https://github.com/roin-orca/skills`",
+    "usage_vi": "```\nI’m brainstorming a new [PRODUCT/SERVICE/CONCEPT] for [COMPANY] in the [INDUSTRY] space. Start by helping me define the core problem or opportunity this [PRODUCT/SERVICE/CONCEPT] addresses. Then, guide me through generating 5-10 initial ideas, filtering them down to the top 3 based on feasibility and impact, and finally refining the best idea into a rough design direction or action plan. Keep the process structured but flexible—ask clarifying questions as needed to ensure we’re aligned on goals and constraints.\n```\nCopy\n\n```\n### Brainstorming Session: New Mobile App for EcoCart\n\n**1. Defining the Core Problem:**\nWhat problem or opportunity is EcoCart’s new mobile app addressing?\n- *Current pain point:* Users want to track their carbon footprint from purchases but find existing tools too complex or disconnected from their shopping habits.\n- *Opportunity:* Simplify carbon tracking by integrating with e-commerce platforms and providing real-time, actionable insights.\n\n**2. Generating Initial Ideas:**\nHere are 5 initial concepts:\n- **Idea 1:** A gamified app that rewards users for eco-friendly purchases with discounts from partner brands.\n- **Idea 2:** A browser extension that calculates carbon footprint per order and suggests greener alternatives.\n- **Idea 3:** A social feed where users share their sustainability wins and challenges.\n- **Idea 4:** A dashboard that aggregates carbon data from multiple sources (bank transactions, loyalty programs).\n- **Idea 5:** A chatbot that helps users plan low-carbon shopping lists before they buy.\n\n**3. Filtering to Top 3:**\nAfter evaluating feasibility and impact:\n- **Top Idea:** *Browser extension* (Idea 2) – Low development effort, high user adoption potential.\n- **Runner-up:** *Gamified app* (Idea 1) – Engaging but requires more resources.\n- **Wildcard:** *Social feed* (Idea 3) – High engagement but may dilute the primary focus.\n\n**4. Refining the Top Idea:**\n**Design Direction for Browser Extension:**\n- **Core Features:**\n  - Real-time carbon footprint calculation per order.\n  - Suggestions for greener alternatives (e.g., \"Switch to Brand X for 30% lower emissions\").\n  - Integration with major e-commerce platforms (Amazon, Etsy, etc.).\n- **User Flow:**\n  1. Install extension → 2. Shop as usual → 3. View carbon impact post-purchase → 4. Receive tips for next purchase.\n- **Next Steps:**\n  - Validate demand with a landing page and waitlist.\n  - Develop a prototype for user testing.\n\n**Action Plan:**\n- Week 1-2: Research competitor extensions and user pain points.\n- Week 3-4: Design wireframes for the extension.\n- Week 5-6: Build a minimal viable prototype.\n\nWould you like to dive deeper into any of these steps?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:46:11.530358Z",
+    "http_status": 200,
+    "content_hash": "814549272bf71e4c73206a70ae840e2fc8d0a13055974679ab49d86d1cf04a91",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\simple.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\simple.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "fun-brainstorming: Fast Design Decisions",
+  "short_description_vi": "This skill guides users through the brainstorming process, moving from an idea to an approved design direction without unnecessary overhead. It is aimed at teams or individuals involved in design and decision-making, ensuring clarity and direction before implementation."
+}

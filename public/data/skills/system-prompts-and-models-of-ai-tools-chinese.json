@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/system-prompts-and-models-of-ai-tools-chinese",
+  "slug": "system-prompts-and-models-of-ai-tools-chinese",
+  "name": "browser-use",
+  "headline": "AI编程工具中文提示词合集",
+  "short_description": "AI编程工具中文提示词合集，包含Cursor、Antigravity、VSCode Agent等多种AI编程工具的提示词，为中文开发者提供AI辅助编程参考资源。持续更新中文编程Rules和最新AI编程提示词。适用于中文开发者，提升编程效率，支持多种AI编程工具。",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "CreatorEdition",
+  "install_command": "git clone https://github.com/CreatorEdition/system-prompts-and-models-of-ai-tools-chinese.git",
+  "source_repo_url": "https://github.com/CreatorEdition/system-prompts-and-models-of-ai-tools-chinese",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "trae",
+    "v0",
+    "system-prompts-leak",
+    "kiro",
+    "github-copilot",
+    "windsurf",
+    "trae-ide",
+    "trae-ai",
+    "windsurf-ai",
+    "doubao",
+    "vscode",
+    "system-prompts",
+    "cursor",
+    "antigravity"
+  ],
+  "sections": {
+    "overview": "This project provides 100% complete Chinese translations of system prompts and model designs from over 40 mainstream AI programming tools, including Claude, GPT, Grok, Gemini, Cursor, Cline, and enterprise platforms. It covers core large language models, IDE integrations, coding assistants, and tools from major Chinese vendors like ByteDance and Alibaba. Developers can use these translated prompts to understand how different AI systems work, optimize interactions with AI tools, design similar products, study AI Agent architectures, and compare design approaches across platforms. The repository includes 25,000+ lines of translated content organized by vendor and tool type, with detailed progress reports and version tracking.\nLearn how Claude, GPT, and Grok system prompts are structured and designed\nUnderstand AI Agent planning, execution, and tool-calling mechanisms\nOptimize interactions with Cursor, Cline, and other IDE-integrated AI tools\nCompare system prompt design approaches across 40+ AI tools for product development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CreatorEdition/system-prompts-and-models-of-ai-tools-chinese`",
+    "usage": "```\n使用以下[AI_TOOL]（如Cursor、Antigravity或VSCode Agent）为中文项目生成高效的编程提示词。提示词需包含：[PROJECT_TYPE]（如Web前端、后端API、数据分析脚本等）、[PROGRAMMING_LANGUAGE]（如Python、JavaScript、Go等）、[TASK_DESCRIPTION]（具体需求，如实现用户登录功能、优化SQL查询等）。确保提示词符合中文开发者的习惯，并包含对代码质量、性能或可维护性的要求。\n```\nCopy\n\n```\n假设你使用Cursor为一个中文电商平台的后端API项目（Python + FastAPI）生成提示词，要求实现「用户订单状态管理」功能。Cursor返回的提示词如下：\n\n**提示词模板：**\n\"请为中文电商平台的后端API项目（Python + FastAPI）生成一个「用户订单状态管理」模块。要求：\n1. 设计数据库表结构（使用SQLAlchemy ORM），包含订单ID、用户ID、订单状态（如待支付、已支付、已发货、已完成、已取消）、创建时间、更新时间等字段；\n2. 实现订单状态变更的API接口（/orders/{order_id}/status），支持GET（查询订单状态）和PUT（更新订单状态）操作；\n3. 状态变更需触发对应的业务逻辑（如支付成功后自动发货、超时订单自动取消）；\n4. 添加单元测试，覆盖至少80%的代码路径；\n5. 代码需符合中文注释规范，变量名使用中文或拼音（如order_status），并确保接口文档（使用FastAPI的Swagger UI）支持中文。\n6. 性能要求：查询接口响应时间<200ms（1000并发下）。\n\n请提供完整的代码实现和部署说明。\"\n\n**Cursor的输出示例（部分）：**\n```python\n# models.py\nfrom sqlalchemy import Column, Integer, String, DateTime, Enum\nfrom sqlalchemy.ext.declarative import declarative_base\nfrom enum import Enum as PyEnum\n\nBase = declarative_base()\n\nclass OrderStatus(PyEnum):\n    PENDING = \"待支付\"\n    PAID = \"已支付\"\n    SHIPPED = \"已发货\"\n    COMPLETED = \"已完成\"\n    CANCELLED = \"已取消\"\n\nclass Order(Base):\n    __tablename__ = \"orders\"\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    user_id = Column(Integer, nullable=False)\n    status = Column(Enum(OrderStatus), default=OrderStatus.PENDING, nullable=False)\n    created_at = Column(DateTime, nullable=False)\n    updated_at = Column(DateTime, nullable=False)\n\n# api.py\nfrom fastapi import FastAPI, HTTPException\nfrom .models import Order, OrderStatus\nfrom datetime import datetime\n\napp = FastAPI()\n\n@app.get(\"/orders/{order_id}/status\")\nasync def get_order_status(order_id: int):\n    order = await Order.get(order_id)\n    if not order:\n        raise HTTPException(status_code=404, detail=\"订单不存在\")\n    return {\"status\": order.status.value}\n\n@app.put(\"/orders/{order_id}/status\")\nasync def update_order_status(order_id: int, new_status: str):\n    valid_statuses = [s.value for s in OrderStatus]\n    if new_status not in valid_statuses:\n        raise HTTPException(status_code=400, detail=\"无效的订单状态\")\n    order = await Order.get(order_id)\n    if not order:\n        raise HTTPException(status_code=404, detail=\"订单不存在\")\n    order.status = OrderStatus(new_status)\n    order.updated_at = datetime.now()\n    await order.save()\n    return {\"message\": \"订单状态更新成功\"}\n```\n\n**部署说明：**\n1. 使用PostgreSQL作为数据库，创建orders表；\n2. 通过Docker部署FastAPI应用，配置.env文件管理环境变量；\n3. 使用Nginx作为反向代理，并启用Gzip压缩优化响应。\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "system-prompts-and-models-of-ai-tools-chinese#main-content",
+      "system-prompts-and-models-of-ai-tools-chinese#overview",
+      "system-prompts-and-models-of-ai-tools-chinese#setup",
+      "system-prompts-and-models-of-ai-tools-chinese#examples",
+      "system-prompts-and-models-of-ai-tools-chinese#tools",
+      "system-prompts-and-models-of-ai-tools-chinese#mcp",
+      "system-prompts-and-models-of-ai-tools-chinese#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This project provides 100% complete Chinese translations of system prompts and model designs from over 40 mainstream AI programming tools, including Claude, GPT, Grok, Gemini, Cursor, Cline, and enterprise platforms. It covers core large language models, IDE integrations, coding assistants, and tools from major Chinese vendors like ByteDance and Alibaba. Developers can use these translated prompts to understand how different AI systems work, optimize interactions with AI tools, design similar products, study AI Agent architectures, and compare design approaches across platforms. The repository includes 25,000+ lines of translated content organized by vendor and tool type, with detailed progress reports and version tracking.\nLearn how Claude, GPT, and Grok system prompts are structured and designed\nUnderstand AI Agent planning, execution, and tool-calling mechanisms\nOptimize interactions with Cursor, Cline, and other IDE-integrated AI tools\nCompare system prompt design approaches across 40+ AI tools for product development",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CreatorEdition/system-prompts-and-models-of-ai-tools-chinese`",
+    "usage_vi": "```\n使用以下[AI_TOOL]（如Cursor、Antigravity或VSCode Agent）为中文项目生成高效的编程提示词。提示词需包含：[PROJECT_TYPE]（如Web前端、后端API、数据分析脚本等）、[PROGRAMMING_LANGUAGE]（如Python、JavaScript、Go等）、[TASK_DESCRIPTION]（具体需求，如实现用户登录功能、优化SQL查询等）。确保提示词符合中文开发者的习惯，并包含对代码质量、性能或可维护性的要求。\n```\nCopy\n\n```\n假设你使用Cursor为一个中文电商平台的后端API项目（Python + FastAPI）生成提示词，要求实现「用户订单状态管理」功能。Cursor返回的提示词如下：\n\n**提示词模板：**\n\"请为中文电商平台的后端API项目（Python + FastAPI）生成一个「用户订单状态管理」模块。要求：\n1. 设计数据库表结构（使用SQLAlchemy ORM），包含订单ID、用户ID、订单状态（如待支付、已支付、已发货、已完成、已取消）、创建时间、更新时间等字段；\n2. 实现订单状态变更的API接口（/orders/{order_id}/status），支持GET（查询订单状态）和PUT（更新订单状态）操作；\n3. 状态变更需触发对应的业务逻辑（如支付成功后自动发货、超时订单自动取消）；\n4. 添加单元测试，覆盖至少80%的代码路径；\n5. 代码需符合中文注释规范，变量名使用中文或拼音（如order_status），并确保接口文档（使用FastAPI的Swagger UI）支持中文。\n6. 性能要求：查询接口响应时间<200ms（1000并发下）。\n\n请提供完整的代码实现和部署说明。\"\n\n**Cursor的输出示例（部分）：**\n```python\n# models.py\nfrom sqlalchemy import Column, Integer, String, DateTime, Enum\nfrom sqlalchemy.ext.declarative import declarative_base\nfrom enum import Enum as PyEnum\n\nBase = declarative_base()\n\nclass OrderStatus(PyEnum):\n    PENDING = \"待支付\"\n    PAID = \"已支付\"\n    SHIPPED = \"已发货\"\n    COMPLETED = \"已完成\"\n    CANCELLED = \"已取消\"\n\nclass Order(Base):\n    __tablename__ = \"orders\"\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    user_id = Column(Integer, nullable=False)\n    status = Column(Enum(OrderStatus), default=OrderStatus.PENDING, nullable=False)\n    created_at = Column(DateTime, nullable=False)\n    updated_at = Column(DateTime, nullable=False)\n\n# api.py\nfrom fastapi import FastAPI, HTTPException\nfrom .models import Order, OrderStatus\nfrom datetime import datetime\n\napp = FastAPI()\n\n@app.get(\"/orders/{order_id}/status\")\nasync def get_order_status(order_id: int):\n    order = await Order.get(order_id)\n    if not order:\n        raise HTTPException(status_code=404, detail=\"订单不存在\")\n    return {\"status\": order.status.value}\n\n@app.put(\"/orders/{order_id}/status\")\nasync def update_order_status(order_id: int, new_status: str):\n    valid_statuses = [s.value for s in OrderStatus]\n    if new_status not in valid_statuses:\n        raise HTTPException(status_code=400, detail=\"无效的订单状态\")\n    order = await Order.get(order_id)\n    if not order:\n        raise HTTPException(status_code=404, detail=\"订单不存在\")\n    order.status = OrderStatus(new_status)\n    order.updated_at = datetime.now()\n    await order.save()\n    return {\"message\": \"订单状态更新成功\"}\n```\n\n**部署说明：**\n1. 使用PostgreSQL作为数据库，创建orders表；\n2. 通过Docker部署FastAPI应用，配置.env文件管理环境变量；\n3. 使用Nginx作为反向代理，并启用Gzip压缩优化响应。\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:43:22.735721Z",
+    "http_status": 200,
+    "content_hash": "edb3cd126a94eaa1812a4c969007ebb5c6b19f55d5abe51ddb1f0971421d5294",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\system-prompts-and-models-of-ai-tools-chinese.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\system-prompts-and-models-of-ai-tools-chinese.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI编程工具中文提示词合集",
+  "short_description_vi": "AI编程工具中文提示词合集，包含Cursor、Antigravity、VSCode Agent等多种AI编程工具的提示词，为中文开发者提供AI辅助编程参考资源。持续更新中文编程Rules和最新AI编程提示词。适用于中文开发者，提升编程效率，支持多种AI编程工具。"
+}

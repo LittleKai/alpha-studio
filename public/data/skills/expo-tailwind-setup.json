@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/expo-tailwind-setup",
+  "slug": "expo-tailwind-setup",
+  "name": "react-native-best-practices",
+  "headline": "expo-tailwind-setup: Simplify UI Design",
+  "short_description": "The expo-tailwind-setup skill streamlines the integration of Tailwind CSS into Expo projects, enabling developers to enhance UI design efficiently. This skill simplifies setup, saving time and effort in creating responsive layouts.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "expo",
+  "install_command": "git clone https://github.com/expo/skills.git",
+  "source_repo_url": "https://github.com/expo/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The expo-tailwind-setup skill provides a seamless way to integrate Tailwind CSS into your Expo projects, allowing developers to leverage the utility-first CSS framework for rapid UI development. With this skill, you can quickly set up Tailwind, enabling you to focus on building beautiful, responsive interfaces without the hassle of manual configuration. It simplifies the process, making it accessible even for those who may not be familiar with Tailwind's setup intricacies. One of the key benefits of using the expo-tailwind-setup skill is the significant time savings it offers. By automating the setup process, developers can avoid the repetitive tasks associated with configuring Tailwind in their projects. This means you can spend more time on feature development and less on boilerplate setup. Additionally, the skill is designed to work seamlessly with Expo, ensuring that you can take advantage of Expo's powerful features while enjoying the flexibility of Tailwind CSS. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their workflow automation. Whether you're building a new mobile application or updating an existing one, the expo-tailwind-setup skill can help you achieve a polished look with minimal effort. Practical use cases include creating a landing page for a new product, developing a user-friendly dashboard, or designing a mobile app interface that requires rapid iteration and testing. In terms of implementation difficulty, the expo-tailwind-setup skill is straightforward and user-friendly, making it suitable for both novice and experienced developers. By incorporating this skill into your AI-first workflows, you can ensure that your design processes are not only efficient but also adaptive to the evolving needs of your projects. With over 3,000 installs, it's clear that the developer community recognizes the value of this skill in enhancing their development practices.\nCreating a responsive landing page for a new product launch using Tailwind CSS.\nDesigning a user-friendly dashboard for data visualization with dynamic components.\nBuilding a mobile app interface that allows for rapid iteration and design changes.\nDeveloping a prototype for user testing that incorporates Tailwind CSS for quick styling.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/expo/skills`",
+    "usage": "```\nSet up Tailwind CSS in my Expo project. I'm using [EXPO_VERSION] and want to integrate Tailwind CSS for styling. Please provide step-by-step instructions, including any necessary dependencies and configuration files. Also, include tips for optimizing performance and ensuring compatibility with Expo's native components.\n```\nCopy\n\n```\nTo set up Tailwind CSS in your Expo project, follow these steps:\n\n1. **Install Dependencies**: First, install the necessary dependencies by running the following commands in your project directory:\n\n```bash\nnpm install -D tailwindcss postcss autoprefixer\nnpx tailwindcss init\n```\n\n2. **Configure Tailwind**: Create a `tailwind.config.js` file in your project root. Here's a basic configuration:\n\n```javascript\nmodule.exports = {\n  content: [\n    \"./app/**/*.{js,jsx,ts,tsx}\",\n    \"./components/**/*.{js,jsx,ts,tsx}\",\n  ],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}\n```\n\n3. **Add Tailwind Directives**: In your global CSS file (e.g., `app/_layout.css`), add the following directives:\n\n```css\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n```\n\n4. **Update Babel Config**: Ensure your `babel.config.js` includes the necessary presets:\n\n```javascript\nmodule.exports = {\n  presets: ['babel-preset-expo'],\n};\n```\n\n5. **Run Your Project**: Start your Expo project to see the changes:\n\n```bash\nnpx expo start\n```\n\n**Tips for Optimization**:\n- Use the `purge` option in your `tailwind.config.js` to remove unused styles in production.\n- Consider using `postcss-import` to manage your CSS imports efficiently.\n- Ensure your Expo project is using the latest version to avoid compatibility issues.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "expo-tailwind-setup#main-content",
+      "expo-tailwind-setup#overview",
+      "expo-tailwind-setup#setup",
+      "expo-tailwind-setup#examples",
+      "expo-tailwind-setup#tools",
+      "expo-tailwind-setup#mcp",
+      "expo-tailwind-setup#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The expo-tailwind-setup skill provides a seamless way to integrate Tailwind CSS into your Expo projects, allowing developers to leverage the utility-first CSS framework for rapid UI development. With this skill, you can quickly set up Tailwind, enabling you to focus on building beautiful, responsive interfaces without the hassle of manual configuration. It simplifies the process, making it accessible even for those who may not be familiar with Tailwind's setup intricacies. One of the key benefits of using the expo-tailwind-setup skill is the significant time savings it offers. By automating the setup process, developers can avoid the repetitive tasks associated with configuring Tailwind in their projects. This means you can spend more time on feature development and less on boilerplate setup. Additionally, the skill is designed to work seamlessly with Expo, ensuring that you can take advantage of Expo's powerful features while enjoying the flexibility of Tailwind CSS. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their workflow automation. Whether you're building a new mobile application or updating an existing one, the expo-tailwind-setup skill can help you achieve a polished look with minimal effort. Practical use cases include creating a landing page for a new product, developing a user-friendly dashboard, or designing a mobile app interface that requires rapid iteration and testing. In terms of implementation difficulty, the expo-tailwind-setup skill is straightforward and user-friendly, making it suitable for both novice and experienced developers. By incorporating this skill into your AI-first workflows, you can ensure that your design processes are not only efficient but also adaptive to the evolving needs of your projects. With over 3,000 installs, it's clear that the developer community recognizes the value of this skill in enhancing their development practices.\nCreating a responsive landing page for a new product launch using Tailwind CSS.\nDesigning a user-friendly dashboard for data visualization with dynamic components.\nBuilding a mobile app interface that allows for rapid iteration and design changes.\nDeveloping a prototype for user testing that incorporates Tailwind CSS for quick styling.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/expo/skills`",
+    "usage_vi": "```\nSet up Tailwind CSS in my Expo project. I'm using [EXPO_VERSION] and want to integrate Tailwind CSS for styling. Please provide step-by-step instructions, including any necessary dependencies and configuration files. Also, include tips for optimizing performance and ensuring compatibility with Expo's native components.\n```\nCopy\n\n```\nTo set up Tailwind CSS in your Expo project, follow these steps:\n\n1. **Install Dependencies**: First, install the necessary dependencies by running the following commands in your project directory:\n\n```bash\nnpm install -D tailwindcss postcss autoprefixer\nnpx tailwindcss init\n```\n\n2. **Configure Tailwind**: Create a `tailwind.config.js` file in your project root. Here's a basic configuration:\n\n```javascript\nmodule.exports = {\n  content: [\n    \"./app/**/*.{js,jsx,ts,tsx}\",\n    \"./components/**/*.{js,jsx,ts,tsx}\",\n  ],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}\n```\n\n3. **Add Tailwind Directives**: In your global CSS file (e.g., `app/_layout.css`), add the following directives:\n\n```css\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n```\n\n4. **Update Babel Config**: Ensure your `babel.config.js` includes the necessary presets:\n\n```javascript\nmodule.exports = {\n  presets: ['babel-preset-expo'],\n};\n```\n\n5. **Run Your Project**: Start your Expo project to see the changes:\n\n```bash\nnpx expo start\n```\n\n**Tips for Optimization**:\n- Use the `purge` option in your `tailwind.config.js` to remove unused styles in production.\n- Consider using `postcss-import` to manage your CSS imports efficiently.\n- Ensure your Expo project is using the latest version to avoid compatibility issues.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:32:01.007427Z",
+    "http_status": 200,
+    "content_hash": "81205b7b68ba5fb6f5d222b8adac9bffddf5047c3e0a41fa2419e2457617d138",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\expo-tailwind-setup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\expo-tailwind-setup.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "expo-tailwind-setup: Simplify UI Design",
+  "short_description_vi": "The expo-tailwind-setup skill streamlines the integration of Tailwind CSS into Expo projects, enabling developers to enhance UI design efficiently. This skill simplifies setup, saving time and effort in creating responsive layouts."
+}

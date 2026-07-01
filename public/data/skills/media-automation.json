@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/media-automation",
+  "slug": "media-automation",
+  "name": "popsicle",
+  "headline": "media-automation: Social Media Automation Scripts",
+  "short_description": "A collection of personal Python scripts for automating social media and messaging tasks, including Instagram analysis, email and WhatsApp bulk messaging, and anti-AFK utilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "tofolo17",
+  "install_command": "git clone https://github.com/tofolo17/media-automation.git",
+  "source_repo_url": "https://github.com/tofolo17/media-automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "selenium",
+    "pyautogui",
+    "instaloader-scripts",
+    "python3"
+  ],
+  "sections": {
+    "overview": "media-automation is a personal Python project collection focused on automating repetitive social media and messaging processes. It includes a MailBomber that uses Beautiful Soup to scrape text from a URL, splits it into segments, and sends it to multiple email addresses rapidly. The WhatsAppBomber similarly extracts text and uses PyAutoGUI or Selenium to send bulk messages or images to WhatsApp contacts. An Instagram tool compares following and followers lists to identify non-reciprocal accounts. The repository also includes an anti-AFK random walk utility and shared helper scripts in a Utils module.\nScrape a webpage and distribute its text across multiple email addresses using MailBomber\nSend bulk text or image messages to a WhatsApp contact via PyAutoGUI or Selenium\nCompare Instagram following and followers lists to find accounts that don't follow back\nKeep a session active with an anti-AFK random walk automation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tofolo17/media-automation`",
+    "usage": "```\nAct as a social media automation assistant. Create a 3-step plan to automate [TASK] for [COMPANY] in the [INDUSTRY] using [TOOLS]. Include time-saving tips and potential pitfalls to avoid.\n```\nCopy\n\n```\n# Social Media Automation Plan for GreenThumb Nursery",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "media-automation#main-content",
+      "media-automation#overview",
+      "media-automation#setup",
+      "media-automation#examples",
+      "media-automation#tools",
+      "media-automation#mcp",
+      "media-automation#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "media-automation is a personal Python project collection focused on automating repetitive social media and messaging processes. It includes a MailBomber that uses Beautiful Soup to scrape text from a URL, splits it into segments, and sends it to multiple email addresses rapidly. The WhatsAppBomber similarly extracts text and uses PyAutoGUI or Selenium to send bulk messages or images to WhatsApp contacts. An Instagram tool compares following and followers lists to identify non-reciprocal accounts. The repository also includes an anti-AFK random walk utility and shared helper scripts in a Utils module.\nScrape a webpage and distribute its text across multiple email addresses using MailBomber\nSend bulk text or image messages to a WhatsApp contact via PyAutoGUI or Selenium\nCompare Instagram following and followers lists to find accounts that don't follow back\nKeep a session active with an anti-AFK random walk automation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tofolo17/media-automation`",
+    "usage_vi": "```\nAct as a social media automation assistant. Create a 3-step plan to automate [TASK] for [COMPANY] in the [INDUSTRY] using [TOOLS]. Include time-saving tips and potential pitfalls to avoid.\n```\nCopy\n\n```\n# Social Media Automation Plan for GreenThumb Nursery"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:02:17.100617Z",
+    "http_status": 200,
+    "content_hash": "cc293d36a6045aa664c522495a73c69f9d3e66d52df8aaf5836084b74a2680e4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\media-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\media-automation.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "media-automation: Social Media Automation Scripts",
+  "short_description_vi": "A collection of personal Python scripts for automating social media and messaging tasks, including Instagram analysis, email and WhatsApp bulk messaging, and anti-AFK utilities."
+}

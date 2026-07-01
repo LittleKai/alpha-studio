@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xhs-images",
+  "slug": "xhs-images",
+  "name": "XHS Images Generator",
+  "headline": "XHS Images Generator - Create Xiaohongshu",
+  "short_description": "Xiaohongshu (Little Red Book) infographic series generator for creating eye-catching social media graphics. Benefits marketing and operations teams by automating visual content creation. Connects to Claude for generating infographics from articles or notes.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "manwithshit",
+  "install_command": "git clone https://github.com/manwithshit/xhs-images.git",
+  "source_repo_url": "https://github.com/manwithshit/xhs-images",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "XHS Images Generator automates the creation of visually appealing infographic series for Xiaohongshu (Little Red Book) from articles or notes. The skill offers 11 distinct visual styles—ranging from cute aesthetic to modern tech—and 6 information layout types including sparse, balanced, dense, list, comparison, and process flows. Users input content and the skill intelligently selects the best style and layout combination, generating 1-10 polished images automatically. It analyzes content, creates an outline, generates each image, and outputs a complete report with all assets. Marketing and operations teams benefit from reduced time spent on visual content creation while maintaining platform-specific design standards.\nGenerate beauty and fashion infographics for lifestyle content creators\nCreate tech tutorial visuals with modern design for educational posts\nProduce knowledge-sharing graphics with minimal aesthetic for productivity content\nAutomate social media asset creation for marketing campaigns on Xiaohongshu",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/manwithshit/xhs-images`",
+    "usage": "```\nGenerate a 3-slide Xiaohongshu infographic series based on the following [ARTICLE/TOPIC]. Each slide should have: 1) A bold headline in Chinese, 2) 3-5 key bullet points in Chinese, 3) A minimalist background color and icon. Format as a JSON array with 'slide_1', 'slide_2', 'slide_3' keys. Include pinyin for headlines. Topic: [PLACEHOLDER FOR TOPIC OR ARTICLE TEXT]\n```\nCopy\n\n```\n```json\n[\n  {\n    \"slide_1\": {\n      \"headline\": \"夏日清凉攻略 | Xia Rì Qīng Liáng Gōng Lüè\",\n      \"pinyin\": \"Summer Cooling Guide\",\n      \"bullets\": [\n        \"☀️ 避免10-16点外出 | Bì miǎn 10-16 diǎn wài chū | Avoid going out 10AM-4PM\",\n        \"💧 每天补水2L | Měi tiān bǔ shuǐ 2L | Drink 2L water daily\",\n        \"🍉 多吃西瓜和黄瓜 | Duō chī xī guā hé huáng guā | Eat more watermelon & cucumber\"\n      ],\n      \"background\": \"#FF6B6B\",\n      \"icon\": \"🌞\"\n    },\n    \"slide_2\": {\n      \"headline\": \"DIY清凉小物 | DIY Qīng Liáng Xiǎo Wù\",\n      \"pinyin\": \"DIY Cooling Gadgets\",\n      \"bullets\": [\n        \"🧊 冰袖套自制法 | Bīng xiù tào zì zhì fǎ | DIY arm sleeve cooling\",\n        \"🧴 迷你风扇贴片 | Mí nǐ fēng shàn tiē piàn | Mini fan stickers\",\n        \"🧼 冰毛巾叠法 | Bīng máo jīn dié fǎ | Folded ice towel method\"\n      ],\n      \"background\": \"#4ECDC4\",\n      \"icon\": \"❄️\"\n    },\n    \"slide_3\": {\n      \"headline\": \"宅家也能凉爽 | Zhái jiā yě néng liáng shuǎng\",\n      \"pinyin\": \"Stay Cool Indoors\",\n      \"bullets\": [\n        \"🌬️ 开窗通风夜间 | Kāi chuāng tōng fēng yè jiān | Open windows at night\",\n        \"🍵 喝菊花茶降温 | Hē jú huā chá jiàng wēn | Drink chrysanthemum tea\",\n        \"📱 空调温度26°C | Kōng tiáo wēn dù 26°C | Set AC to 26°C\"\n      ],\n      \"background\": \"#FFE66D\",\n      \"icon\": \"🏠\"\n    }\n  }\n]\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xhs-images#main-content",
+      "xhs-images#overview",
+      "xhs-images#setup",
+      "xhs-images#examples",
+      "xhs-images#tools",
+      "xhs-images#mcp",
+      "xhs-images#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "XHS Images Generator tự động hóa việc tạo ra các chuỗi infographic bắt mắt cho Xiaohongshu (Tiểu Hồng Thư) từ các văn bản bài viết hoặc ghi chú có sẵn. Kỹ năng này cung cấp 11 phong cách thiết kế độc đáo—từ thẩm mỹ dễ thương đến công nghệ hiện đại—và 6 kiểu bố cục trình bày thông tin bao gồm tối giản, cân đối, mật độ cao, danh sách, so sánh và quy trình. Người dùng chỉ cần nhập nội dung, AI sẽ tự động lựa chọn phong cách và bố cục tối ưu nhất để xuất ra từ 1-10 hình ảnh hoàn chỉnh. Nó phân tích nội dung, lên dàn ý chi tiết, vẽ từng ảnh và xuất báo cáo tổng hợp. Đội ngũ marketing và vận hành sẽ tiết kiệm được tối đa thời gian thiết kế mà vẫn đảm bảo tiêu chuẩn hình ảnh chuyên nghiệp của nền tảng.",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Hãy xem kho mã nguồn GitHub để cài đặt thủ công:\n`git clone https://github.com/manwithshit/xhs-images`",
+    "usage_vi": "Nhập prompt hướng dẫn tạo slide infographic Xiaohongshu dựa trên chủ đề hoặc bài viết mẫu. Cấu trúc kết quả trả về dạng mảng JSON chứa các khóa slide_1, slide_2, slide_3 với tiêu đề chữ Trung, pinyin và nội dung tiếng Anh tương ứng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:22.665113Z",
+    "http_status": 200,
+    "content_hash": "9cd2c413e643cf06fc854156ce6202ac98fdf8b413a9783f47cf49ca849d4fb2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xhs-images.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xhs-images.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ tạo ảnh Xiaohongshu (XHS) - Sáng tạo nội dung mạng xã hội",
+  "short_description_vi": "Công cụ tự động hóa thiết kế infographic và hình ảnh chuyên nghiệp cho mạng xã hội Xiaohongshu từ bài viết hoặc ghi chú. Phù hợp cho đội ngũ marketing và vận hành để tối ưu quy trình sản xuất nội dung visual chất lượng cao kết nối với Claude."
+}

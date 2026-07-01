@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sora-digital-photo-frame",
+  "slug": "sora-digital-photo-frame",
+  "name": "Sora Digital Photo Frame",
+  "headline": "Sora Digital Photo Frame - Smart Display Solution",
+  "short_description": "Turn any screen into a smart digital photo frame. Operations teams can use this to display rotating images, announcements, or dashboards on idle screens. Connects to local or cloud-based image sources, works with Raspberry Pi or any display.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Sorbh",
+  "install_command": "git clone https://github.com/Sorbh/sora-digital-photo-frame.git",
+  "source_repo_url": "https://github.com/Sorbh/sora-digital-photo-frame",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "javascript",
+    "selfhosted",
+    "raspberry-pi",
+    "claude-code",
+    "nodejs",
+    "digital-signage",
+    "photo-gallery",
+    "opensource",
+    "smart-display",
+    "home-automation"
+  ],
+  "sections": {
+    "overview": "SORA Frame is an open-source digital photo frame that transforms any device with a web browser into a full-screen slideshow display. It features remote photo management through an admin panel accessible on your network, drag-and-drop uploads, and organized folder structures for targeted slideshows. The platform supports JPEG, PNG, WebP, and GIF formats with smooth fade transitions, keyboard shortcuts, and Wake Lock support to keep displays active. Teams can deploy it on tablets, laptops, smart TVs, or Raspberry Pi devices for displaying rotating images, announcements, or content across multiple locations.\nDisplay rotating announcements and company updates on office lobby screens\nShow curated photo collections on tablets or smart TVs in retail or hospitality spaces\nManage multiple digital displays across different locations from a single admin panel\nCreate memory slideshows on home entertainment systems with remote folder filtering",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Sorbh/sora-digital-photo-frame`",
+    "usage": "```\nSet up a rotating digital photo frame on [DEVICE_TYPE] using Sora. Pull images from [IMAGE_SOURCE: local folder/cloud storage/URL]. Display images for [DURATION] seconds each. Include [CONTENT_TYPES: photos, announcements, dashboards, or mixed]. Schedule updates every [UPDATE_INTERVAL].\n```\nCopy\n\n```\n### Digital Photo Frame Setup Complete\n\n**Device:** Raspberry Pi 4 (4GB RAM) running Raspberry Pi OS\n**Image Source:** Local folder `/home/pi/photos` + Cloud storage (Google Drive API) for announcements\n**Display Schedule:**\n- Photos: 10 seconds per image\n- Announcements: 15 seconds per slide (rotated every 30 minutes)\n- Dashboards: 30 seconds per view (updated hourly)\n\n**Content Rotation:**\n1. **Family Photos (Local):** 60% of display time\n   - Recent vacation shots from 2023 Italy trip\n   - Kids' school events and birthdays\n   - Pet photos (2 dogs, 1 cat)\n\n2. **Announcements (Cloud):** 20% of display time\n   - Weekly team meeting reminders (auto-generated from Google Calendar)\n   - Project deadline alerts (pulled from Jira API)\n   - Weather updates (API call to OpenWeatherMap)\n\n3. **Dashboards (Mixed):** 20% of display time\n   - **Sales Pipeline:** $1.2M in deals, 3 at risk (next steps: follow up with Client X by EOD)\n   - **Server Status:** All systems operational (last update: 2 mins ago)\n   - **Team Metrics:** 87% sprint completion, 3 blockers (Engineering to resolve by Friday)\n\n**Technical Details:**\n- Auto-start on boot via systemd service\n- Fallback to solid color (blue) if image fails to load\n- Logs stored at `/var/log/sora-frame.log`\n- Remote management via SSH (port 22) and web interface (port 8080)\n\n**Next Steps:**\n1. Verify image permissions: `chmod -R 755 /home/pi/photos`\n2. Test cloud sync: `sora sync --check`\n3. Adjust durations in `/etc/sora/config.json` if needed\n4. Schedule a reboot to confirm auto-start: `sudo reboot`\n\n**Troubleshooting:**\n- If display freezes, restart service: `sudo systemctl restart sora-frame`\n- Check logs: `journalctl -u sora-frame -f`\n- Force sync: `sora sync --force`\n\nAll systems operational. Enjoy your smart photo frame!\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sora-digital-photo-frame#main-content",
+      "sora-digital-photo-frame#overview",
+      "sora-digital-photo-frame#setup",
+      "sora-digital-photo-frame#examples",
+      "sora-digital-photo-frame#tools",
+      "sora-digital-photo-frame#mcp",
+      "sora-digital-photo-frame#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SORA Frame is an open-source digital photo frame that transforms any device with a web browser into a full-screen slideshow display. It features remote photo management through an admin panel accessible on your network, drag-and-drop uploads, and organized folder structures for targeted slideshows. The platform supports JPEG, PNG, WebP, and GIF formats with smooth fade transitions, keyboard shortcuts, and Wake Lock support to keep displays active. Teams can deploy it on tablets, laptops, smart TVs, or Raspberry Pi devices for displaying rotating images, announcements, or content across multiple locations.\nDisplay rotating announcements and company updates on office lobby screens\nShow curated photo collections on tablets or smart TVs in retail or hospitality spaces\nManage multiple digital displays across different locations from a single admin panel\nCreate memory slideshows on home entertainment systems with remote folder filtering",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Sorbh/sora-digital-photo-frame`",
+    "usage_vi": "```\nSet up a rotating digital photo frame on [DEVICE_TYPE] using Sora. Pull images from [IMAGE_SOURCE: local folder/cloud storage/URL]. Display images for [DURATION] seconds each. Include [CONTENT_TYPES: photos, announcements, dashboards, or mixed]. Schedule updates every [UPDATE_INTERVAL].\n```\nCopy\n\n```\n### Digital Photo Frame Setup Complete\n\n**Device:** Raspberry Pi 4 (4GB RAM) running Raspberry Pi OS\n**Image Source:** Local folder `/home/pi/photos` + Cloud storage (Google Drive API) for announcements\n**Display Schedule:**\n- Photos: 10 seconds per image\n- Announcements: 15 seconds per slide (rotated every 30 minutes)\n- Dashboards: 30 seconds per view (updated hourly)\n\n**Content Rotation:**\n1. **Family Photos (Local):** 60% of display time\n   - Recent vacation shots from 2023 Italy trip\n   - Kids' school events and birthdays\n   - Pet photos (2 dogs, 1 cat)\n\n2. **Announcements (Cloud):** 20% of display time\n   - Weekly team meeting reminders (auto-generated from Google Calendar)\n   - Project deadline alerts (pulled from Jira API)\n   - Weather updates (API call to OpenWeatherMap)\n\n3. **Dashboards (Mixed):** 20% of display time\n   - **Sales Pipeline:** $1.2M in deals, 3 at risk (next steps: follow up with Client X by EOD)\n   - **Server Status:** All systems operational (last update: 2 mins ago)\n   - **Team Metrics:** 87% sprint completion, 3 blockers (Engineering to resolve by Friday)\n\n**Technical Details:**\n- Auto-start on boot via systemd service\n- Fallback to solid color (blue) if image fails to load\n- Logs stored at `/var/log/sora-frame.log`\n- Remote management via SSH (port 22) and web interface (port 8080)\n\n**Next Steps:**\n1. Verify image permissions: `chmod -R 755 /home/pi/photos`\n2. Test cloud sync: `sora sync --check`\n3. Adjust durations in `/etc/sora/config.json` if needed\n4. Schedule a reboot to confirm auto-start: `sudo reboot`\n\n**Troubleshooting:**\n- If display freezes, restart service: `sudo systemctl restart sora-frame`\n- Check logs: `journalctl -u sora-frame -f`\n- Force sync: `sora sync --force`\n\nAll systems operational. Enjoy your smart photo frame!\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:12.941528Z",
+    "http_status": 200,
+    "content_hash": "73202d49bd2cd05e8c3a2a1fc545e743fd0a813f66bf83b219656ad267ec24a8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sora-digital-photo-frame.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sora-digital-photo-frame.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sora Digital Photo Frame - Smart Display Solution",
+  "short_description_vi": "Turn any screen into a smart digital photo frame. Operations teams can use this to display rotating images, announcements, or dashboards on idle screens. Connects to local or cloud-based image sources, works with Raspberry Pi or any display."
+}

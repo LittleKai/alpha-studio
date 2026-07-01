@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/makepad-skills",
+  "slug": "makepad-skills",
+  "name": "browser-use",
+  "headline": "Makepad Skills - Build Cross-Platform Apps",
+  "short_description": "Build cross-platform apps with Makepad and AI skills. Developers use this to create applications with Rust, integrating Claude for code assistance. Connects to Makepad's design and development tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "ZhangHanDong",
+  "install_command": "git clone https://github.com/ZhangHanDong/makepad-skills.git",
+  "source_repo_url": "https://github.com/ZhangHanDong/makepad-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "makepad",
+    "rust",
+    "app",
+    "claude",
+    "cross-platform"
+  ],
+  "sections": {
+    "overview": "Makepad-skills provides a collection of AI-powered skills designed for building cross-platform user interfaces with Makepad 2.0. The repository includes conceptual anchors and patterns for GPU rendering, Flexbox layout, shader integration, and cross-platform design. These skills are available as Claude Code plugins, enabling developers to leverage AI assistance directly within their Makepad development workflow. The skill set covers design judgment, layout strategies, popup and overlay patterns, and troubleshooting guidance. Developers working on complex UI applications benefit from this structured knowledge base integrated with Claude's code assistance capabilities.\nRapidly develop cross-platform UI applications using Makepad.\nImplement GPU-accelerated graphics for enhanced application performance.\nUtilize live design features for quick iterations on UI components.\nIntegrate community-contributed patterns to extend application functionality.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZhangHanDong/makepad-skills`",
+    "usage": "```\nBuild a cross-platform desktop app for [APP_NAME] using Makepad and Rust. The app should have [FEATURES] and follow Makepad's design system. Use [SPECIFIC_LIBRARY] for [FUNCTIONALITY]. Generate the complete project structure, including Cargo.toml, main.rs, and UI files. Write idiomatic Rust code with comments explaining key sections. Include error handling for [COMMON_ERROR_CASES].\n```\nCopy\n\n```\n```rust\n// Makepad App: Task Manager v1.0\n// Project structure generated for cross-platform (Windows/macOS/Linux)\n\n// Cargo.toml\n[package]\nname = \"task_manager\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\nmakepad-widgets = \"0.3.0\"\nmakepad-platform = \"0.3.0\"\nserde = { version = \"1.0\", features = [\"derive\"] }\nserde_json = \"1.0\"\n\n[lib]\ncrate-type = [\"cdylib\", \"rlib\"]\n\n// src/main.rs\nuse makepad_widgets::*;\n\nlive_design! {\n    import makepad_widgets::base::*;\n    import makepad_widgets::theme_desktop_dark::*;\n\n    App = {{App}} {\n        flow: Down, spacing: 10.0\n        width: Fill, height: Fill\n        \n        header = <View> {\n            width: Fill, height: 60\n            flow: Right, spacing: 10\n            <Label> { text: \"Task Manager\" }\n            <Button> { text: \"Add Task\" }\n        }\n        \n        task_list = <PortalList> {\n            width: Fill, height: Fill\n            flow: Down, spacing: 5\n            \n            Task = {{Task}} {\n                width: Fill, height: 50\n                flow: Right, spacing: 10\n                \n                <Checkbox> { \n                    checked: false\n                    on_toggle: self.set_checked()\n                }\n                <Label> { text: \"[TASK_DESCRIPTION]\" }\n                <Button> { text: \"Delete\" }\n            }\n        }\n    }\n}\n\n#[derive(Live, LiveHook)]\npub struct App {\n    #[live] task_list: PortalListRef,\n    #[rust] tasks: Vec<TaskData>\n}\n\n#[derive(Clone, Debug, Default, Serialize, Deserialize)]\nstruct TaskData {\n    id: u64,\n    description: String,\n    completed: bool\n}\n\nimpl LiveRegister for App {\n    fn live_register(cx: &mut Cx) {\n        crate::makepad_task_manager::live_design(cx);\n    }\n}\n\nimpl AppMain for App {\n    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {\n        // Event handling for button clicks, checkbox toggles, etc.\n        self.task_list.handle_event(cx, event, scope);\n        \n        if let Event::Actions(actions) = event {\n            if self.button(id!(add_task)).clicked(actions) {\n                self.add_task(cx, \"New Task\".to_string());\n            }\n        }\n    }\n\n    fn draw_walk(&mut self, cx: &mut Cx2d, walk: Walk) {\n        // Render the UI\n        self.task_list.draw_walk(cx, walk);\n    }\n}\n\nimpl App {\n    pub fn add_task(&mut self, cx: &mut Cx, description: String) {\n        let task = TaskData {\n            id: self.tasks.len() as u64,\n            description,\n            completed: false\n        };\n        self.tasks.push(task);\n        self.task_list.redraw(cx);\n    }\n}\n\napp_main!(App);\n```\n\n**Project Structure:**\n```\ntask_manager/\n├── Cargo.toml\n├── src/\n│   ├── main.rs\n│   └── makepad_task_manager/\n│       ├── live_design.rs\n│       └── lib.rs\n├── assets/\n│   └── icons/\n└── makepad.toml\n```\n\n**Key Features Implemented:**\n1. Cross-platform compatible (Windows/macOS/Linux)\n2. Task list with checkboxes and delete functionality\n3. Add task button with real-time updates\n4. Persistent state using serde_json\n5. Makepad's responsive design system\n\n**Next Steps:**\n- Run `makepad build --release` to compile\n- Test on target platforms\n- Extend with additional features like task categories or due dates\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "makepad-skills#main-content",
+      "makepad-skills#overview",
+      "makepad-skills#setup",
+      "makepad-skills#examples",
+      "makepad-skills#tools",
+      "makepad-skills#mcp",
+      "makepad-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Makepad-skills provides a collection of AI-powered skills designed for building cross-platform user interfaces with Makepad 2.0. The repository includes conceptual anchors and patterns for GPU rendering, Flexbox layout, shader integration, and cross-platform design. These skills are available as Claude Code plugins, enabling developers to leverage AI assistance directly within their Makepad development workflow. The skill set covers design judgment, layout strategies, popup and overlay patterns, and troubleshooting guidance. Developers working on complex UI applications benefit from this structured knowledge base integrated with Claude's code assistance capabilities.\nRapidly develop cross-platform UI applications using Makepad.\nImplement GPU-accelerated graphics for enhanced application performance.\nUtilize live design features for quick iterations on UI components.\nIntegrate community-contributed patterns to extend application functionality.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ZhangHanDong/makepad-skills`",
+    "usage_vi": "```\nBuild a cross-platform desktop app for [APP_NAME] using Makepad and Rust. The app should have [FEATURES] and follow Makepad's design system. Use [SPECIFIC_LIBRARY] for [FUNCTIONALITY]. Generate the complete project structure, including Cargo.toml, main.rs, and UI files. Write idiomatic Rust code with comments explaining key sections. Include error handling for [COMMON_ERROR_CASES].\n```\nCopy\n\n```\n```rust\n// Makepad App: Task Manager v1.0\n// Project structure generated for cross-platform (Windows/macOS/Linux)\n\n// Cargo.toml\n[package]\nname = \"task_manager\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\nmakepad-widgets = \"0.3.0\"\nmakepad-platform = \"0.3.0\"\nserde = { version = \"1.0\", features = [\"derive\"] }\nserde_json = \"1.0\"\n\n[lib]\ncrate-type = [\"cdylib\", \"rlib\"]\n\n// src/main.rs\nuse makepad_widgets::*;\n\nlive_design! {\n    import makepad_widgets::base::*;\n    import makepad_widgets::theme_desktop_dark::*;\n\n    App = {{App}} {\n        flow: Down, spacing: 10.0\n        width: Fill, height: Fill\n        \n        header = <View> {\n            width: Fill, height: 60\n            flow: Right, spacing: 10\n            <Label> { text: \"Task Manager\" }\n            <Button> { text: \"Add Task\" }\n        }\n        \n        task_list = <PortalList> {\n            width: Fill, height: Fill\n            flow: Down, spacing: 5\n            \n            Task = {{Task}} {\n                width: Fill, height: 50\n                flow: Right, spacing: 10\n                \n                <Checkbox> { \n                    checked: false\n                    on_toggle: self.set_checked()\n                }\n                <Label> { text: \"[TASK_DESCRIPTION]\" }\n                <Button> { text: \"Delete\" }\n            }\n        }\n    }\n}\n\n#[derive(Live, LiveHook)]\npub struct App {\n    #[live] task_list: PortalListRef,\n    #[rust] tasks: Vec<TaskData>\n}\n\n#[derive(Clone, Debug, Default, Serialize, Deserialize)]\nstruct TaskData {\n    id: u64,\n    description: String,\n    completed: bool\n}\n\nimpl LiveRegister for App {\n    fn live_register(cx: &mut Cx) {\n        crate::makepad_task_manager::live_design(cx);\n    }\n}\n\nimpl AppMain for App {\n    fn handle_event(&mut self, cx: &mut Cx, event: &Event, scope: &mut Scope) {\n        // Event handling for button clicks, checkbox toggles, etc.\n        self.task_list.handle_event(cx, event, scope);\n        \n        if let Event::Actions(actions) = event {\n            if self.button(id!(add_task)).clicked(actions) {\n                self.add_task(cx, \"New Task\".to_string());\n            }\n        }\n    }\n\n    fn draw_walk(&mut self, cx: &mut Cx2d, walk: Walk) {\n        // Render the UI\n        self.task_list.draw_walk(cx, walk);\n    }\n}\n\nimpl App {\n    pub fn add_task(&mut self, cx: &mut Cx, description: String) {\n        let task = TaskData {\n            id: self.tasks.len() as u64,\n            description,\n            completed: false\n        };\n        self.tasks.push(task);\n        self.task_list.redraw(cx);\n    }\n}\n\napp_main!(App);\n```\n\n**Project Structure:**\n```\ntask_manager/\n├── Cargo.toml\n├── src/\n│   ├── main.rs\n│   └── makepad_task_manager/\n│       ├── live_design.rs\n│       └── lib.rs\n├── assets/\n│   └── icons/\n└── makepad.toml\n```\n\n**Key Features Implemented:**\n1. Cross-platform compatible (Windows/macOS/Linux)\n2. Task list with checkboxes and delete functionality\n3. Add task button with real-time updates\n4. Persistent state using serde_json\n5. Makepad's responsive design system\n\n**Next Steps:**\n- Run `makepad build --release` to compile\n- Test on target platforms\n- Extend with additional features like task categories or due dates\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:51:01.827329Z",
+    "http_status": 200,
+    "content_hash": "a16166d7a81f5fc70562e161e656089f6caa040ab15c7eb2b6bca90d80a03266",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\makepad-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\makepad-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Makepad Skills - Build Cross-Platform Apps",
+  "short_description_vi": "Build cross-platform apps with Makepad and AI skills. Developers use this to create applications with Rust, integrating Claude for code assistance. Connects to Makepad's design and development tools."
+}

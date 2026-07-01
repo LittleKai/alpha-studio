@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mautic-installer",
+  "slug": "mautic-installer",
+  "name": "popsicle",
+  "headline": "Mautic-Installer: Marketing Setup",
+  "short_description": "Bash script installer for Mautic Marketing Automation Software for Ubuntu Linux",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "frazras",
+  "install_command": "git clone https://github.com/frazras/Mautic-Installer.git",
+  "source_repo_url": "https://github.com/frazras/Mautic-Installer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mautic",
+    "ubuntu-linux",
+    "mautic-marketing-automation"
+  ],
+  "sections": {
+    "overview": "The Mautic-Installer is a specialized Bash script designed to simplify the installation process for Mautic Marketing Automation Software on Ubuntu Linux. This skill is particularly valuable for developers and product managers who are looking to enhance their marketing automation capabilities without the hassle of manual installation. By executing this script, users can quickly set up Mautic and focus on leveraging its features to drive marketing success. One of the key benefits of the Mautic-Installer is its ability to significantly reduce the time required for installation. While the exact time savings are not quantified, the straightforward nature of the script allows for a complete setup in approximately 30 minutes, making it an efficient choice for busy professionals. The intermediate complexity of the skill ensures that users have a foundational understanding of Bash scripting and Ubuntu, enabling them to implement the solution effectively. This skill is ideal for marketing teams, developers, and AI practitioners who are involved in workflow automation and require a robust marketing automation tool. By integrating Mautic into their workflows, users can automate repetitive marketing tasks, manage campaigns, and analyze customer interactions with greater ease. For example, a marketing team can utilize Mautic to automate email campaigns, segment audiences, and track engagement metrics, all of which contribute to improved marketing performance. The Mautic-Installer fits seamlessly into AI-first workflows by enabling teams to adopt advanced marketing automation tools quickly. With its intermediate implementation difficulty, users should be comfortable with command-line interfaces and basic Linux operations. This skill not only enhances productivity but also empowers teams to harness the full potential of AI-driven marketing strategies, making it a valuable addition to any tech-savvy marketer's toolkit.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/frazras/Mautic-Installer`",
+    "usage": "```\nCreate a bash script to install Mautic Marketing Automation Software on Ubuntu Linux. The script should include all dependencies, configure the environment, and set up the database. Use the latest stable version of Mautic and ensure it's ready for [COMPANY] in the [INDUSTRY] sector. The script should also include error handling and logging for troubleshooting.\n```\nCopy\n\n```\n```bash\n#!/bin/bash\n\n# Mautic Installer for Ubuntu Linux\n# Version: 1.0\n# Last Updated: 2023-10-05\n\n# Update and upgrade system\nsudo apt update && sudo apt upgrade -y\n\n# Install dependencies\nsudo apt install -y apache2 mariadb-server php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-zip php-soap php-intl php-apcu php-imagick\n\n# Download and extract Mautic\nwget https://github.com/mautic/mautic/releases/download/4.4.2/mautic.4.4.2.zip\nunzip mautic.4.4.2.zip -d /var/www/html/\n\n# Set permissions\nsudo chown -R www-data:www-data /var/www/html/mautic/\nsudo chmod -R 755 /var/www/html/mautic/\n\n# Configure Apache\nsudo cp /var/www/html/mautic/.htaccess /var/www/html/\nsudo cp /var/www/html/mautic/.htaccess /var/www/html/mautic/\n\n# Secure the installation\nsudo a2enmod rewrite\nsudo systemctl restart apache2\n\n# Database setup\nsudo mysql_secure_installation\n\n# Create Mautic database\nmysql -u root -p -e \"CREATE DATABASE mautic;\"\nmysql -u root -p -e \"CREATE USER 'mauticuser'@'localhost' IDENTIFIED BY 'password';\"\nmysql -u root -p -e \"GRANT ALL PRIVILEGES ON mautic.* TO 'mauticuser'@'localhost';\"\nmysql -u root -p -e \"FLUSH PRIVILEGES;\"\n\n# Log completion\necho \"Mautic installation completed successfully. Please visit http://your-server-ip/mautic to complete the web installation.\" >> /var/log/mautic_install.log\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mautic-installer#main-content",
+      "mautic-installer#overview",
+      "mautic-installer#setup",
+      "mautic-installer#examples",
+      "mautic-installer#tools",
+      "mautic-installer#mcp",
+      "mautic-installer#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "The Mautic-Installer is a specialized Bash script designed to simplify the installation process for Mautic Marketing Automation Software on Ubuntu Linux. This skill is particularly valuable for developers and product managers who are looking to enhance their marketing automation capabilities without the hassle of manual installation. By executing this script, users can quickly set up Mautic and focus on leveraging its features to drive marketing success. One of the key benefits of the Mautic-Installer is its ability to significantly reduce the time required for installation. While the exact time savings are not quantified, the straightforward nature of the script allows for a complete setup in approximately 30 minutes, making it an efficient choice for busy professionals. The intermediate complexity of the skill ensures that users have a foundational understanding of Bash scripting and Ubuntu, enabling them to implement the solution effectively. This skill is ideal for marketing teams, developers, and AI practitioners who are involved in workflow automation and require a robust marketing automation tool. By integrating Mautic into their workflows, users can automate repetitive marketing tasks, manage campaigns, and analyze customer interactions with greater ease. For example, a marketing team can utilize Mautic to automate email campaigns, segment audiences, and track engagement metrics, all of which contribute to improved marketing performance. The Mautic-Installer fits seamlessly into AI-first workflows by enabling teams to adopt advanced marketing automation tools quickly. With its intermediate implementation difficulty, users should be comfortable with command-line interfaces and basic Linux operations. This skill not only enhances productivity but also empowers teams to harness the full potential of AI-driven marketing strategies, making it a valuable addition to any tech-savvy marketer's toolkit.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/frazras/Mautic-Installer`",
+    "usage_vi": "```\nCreate a bash script to install Mautic Marketing Automation Software on Ubuntu Linux. The script should include all dependencies, configure the environment, and set up the database. Use the latest stable version of Mautic and ensure it's ready for [COMPANY] in the [INDUSTRY] sector. The script should also include error handling and logging for troubleshooting.\n```\nCopy\n\n```\n```bash\n#!/bin/bash\n\n# Mautic Installer for Ubuntu Linux\n# Version: 1.0\n# Last Updated: 2023-10-05\n\n# Update and upgrade system\nsudo apt update && sudo apt upgrade -y\n\n# Install dependencies\nsudo apt install -y apache2 mariadb-server php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-zip php-soap php-intl php-apcu php-imagick\n\n# Download and extract Mautic\nwget https://github.com/mautic/mautic/releases/download/4.4.2/mautic.4.4.2.zip\nunzip mautic.4.4.2.zip -d /var/www/html/\n\n# Set permissions\nsudo chown -R www-data:www-data /var/www/html/mautic/\nsudo chmod -R 755 /var/www/html/mautic/\n\n# Configure Apache\nsudo cp /var/www/html/mautic/.htaccess /var/www/html/\nsudo cp /var/www/html/mautic/.htaccess /var/www/html/mautic/\n\n# Secure the installation\nsudo a2enmod rewrite\nsudo systemctl restart apache2\n\n# Database setup\nsudo mysql_secure_installation\n\n# Create Mautic database\nmysql -u root -p -e \"CREATE DATABASE mautic;\"\nmysql -u root -p -e \"CREATE USER 'mauticuser'@'localhost' IDENTIFIED BY 'password';\"\nmysql -u root -p -e \"GRANT ALL PRIVILEGES ON mautic.* TO 'mauticuser'@'localhost';\"\nmysql -u root -p -e \"FLUSH PRIVILEGES;\"\n\n# Log completion\necho \"Mautic installation completed successfully. Please visit http://your-server-ip/mautic to complete the web installation.\" >> /var/log/mautic_install.log\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:12:13.544640Z",
+    "http_status": 200,
+    "content_hash": "7d52e10cec3b238090931f372b952831f036a91dd24b1a73d0b2d9b1c0d8aeb4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mautic-installer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mautic-installer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mautic-Installer: Marketing Setup",
+  "short_description_vi": "Bash script installer for Mautic Marketing Automation Software for Ubuntu Linux"
+}

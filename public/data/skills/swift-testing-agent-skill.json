@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/swift-testing-agent-skill",
+  "slug": "swift-testing-agent-skill",
+  "name": "Swift Testing Agent Skill",
+  "headline": "Swift Testing Agent Skill - Expert Testing Guidance",
+  "short_description": "Swift Testing Agent Skill provides expert guidance for AI coding tools using the Swift Testing framework. It covers test doubles, fixtures, async patterns, XCTest migration, and testing best practices. Ideal for teams adopting Swift Testing who need modern testing strategies.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "bocato",
+  "install_command": "git clone https://github.com/bocato/swift-testing-agent-skill.git",
+  "source_repo_url": "https://github.com/bocato/swift-testing-agent-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "swift",
+    "unit-testing",
+    "swift-testing",
+    "ai-coding-assistant",
+    "github-copilot",
+    "testing",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Swift Testing Agent Skill equips AI coding tools with comprehensive guidance on the Swift Testing framework, including test doubles, fixtures, async testing patterns, and XCTest migration strategies. The skill helps teams adopt modern testing practices by covering Martin Fowler's test double taxonomy, F.I.R.S.T. principles, and the test pyramid approach. It supports developers writing unit tests, integration tests, and snapshot tests while providing practical patterns for reliable test infrastructure. The skill works across multiple AI tools including Claude Code, GitHub Copilot, Cursor, and Gemini CLI through the Agent Skills open format.\nMigrate existing XCTest codebases to Swift Testing framework\nWrite unit tests with proper test doubles and fixtures\nTest async code with correct Swift Testing patterns\nSet up snapshot testing for UI regression detection",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bocato/swift-testing-agent-skill`",
+    "usage": "```\nAct as a Swift Testing Agent expert. Using the Swift Testing framework (swift-testing), help me design a comprehensive test suite for [PROJECT_NAME], a [BRIEF_PROJECT_DESCRIPTION]. Focus on: 1) Creating realistic test doubles for [MODULE_NAME] using mocks/stubs, 2) Implementing fixtures for [TEST_SCENARIO] with proper setup/teardown, 3) Testing async/await patterns in [ASYNC_FUNCTION], and 4) Providing migration advice from XCTest to Swift Testing for [TEST_CLASS]. Include code snippets and explain tradeoffs in your approach.\n```\nCopy\n\n```\nFor a hypothetical e-commerce app called 'ShopSwift' with a `PaymentProcessor` module handling credit card transactions, here's a Swift Testing framework test suite design:\n\n**Test Doubles for PaymentProcessor:**\n```swift\nstruct MockPaymentGateway: PaymentGatewayProtocol {\n    var shouldFail: Bool = false\n    var capturedAmount: Double?\n    \n    func processPayment(amount: Double) async throws -> PaymentResult {\n        capturedAmount = amount\n        if shouldFail { throw PaymentError.networkFailure }\n        return PaymentResult.success\n    }\n}\n```\n\n**Fixtures for Checkout Scenarios:**\n```swift\nstruct CheckoutFixtures {\n    static let validCart = Cart(items: [\n        CartItem(product: \"iPhone 15\", price: 999.99, quantity: 1),\n        CartItem(product: \"AirPods Pro\", price: 249.00, quantity: 2)\n    ])\n    \n    static let emptyCart = Cart(items: [])\n    \n    static let invalidPaymentMethod = PaymentMethod(type: .creditCard, number: \"4111111111111111\", expiry: \"12/25\")\n}\n```\n\n**Async Testing for Payment Processing:**\n```swift\n@Test func testAsyncPaymentProcessing() async {\n    let mockGateway = MockPaymentGateway()\n    let processor = PaymentProcessor(gateway: mockGateway)\n    \n    await #expect(throws: PaymentError.self) {\n        try await processor.processCheckout(\n            cart: CheckoutFixtures.validCart,\n            paymentMethod: CheckoutFixtures.invalidPaymentMethod\n        )\n    }\n    \n    #expect(mockGateway.capturedAmount == 1497.99)\n}\n```\n\n**XCTest Migration Guide:**\nFor migrating from XCTest's `XCTestCase` to Swift Testing's `@Suite`:\n1. Replace `XCTestCase` subclasses with `@Suite` structs\n2. Convert `XCTestExpectation` to Swift Testing's `#expect`\n3. Replace `setUp()`/`tearDown()` with `@Suite` initialization\n4. Use `Tag` to categorize tests instead of XCTest's `XCTestCase` grouping\n\nTesting tradeoffs considered:\n- Mocking provides isolation but may hide integration issues\n- Fixtures improve readability but increase test maintenance if product changes\n- Async testing requires careful handling of timeouts and race conditions\n- Migration path preserves existing test coverage while adopting new patterns\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "swift-testing-agent-skill#main-content",
+      "swift-testing-agent-skill#overview",
+      "swift-testing-agent-skill#setup",
+      "swift-testing-agent-skill#examples",
+      "swift-testing-agent-skill#tools",
+      "swift-testing-agent-skill#mcp",
+      "swift-testing-agent-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Swift Testing Agent Skill trang bị cho các công cụ AI coding tài liệu hướng dẫn toàn diện về framework Swift Testing, bao gồm test doubles, fixtures, các async testing pattern, và chiến lược di chuyển từ XCTest. Skill này giúp các đội ngũ áp dụng các phương pháp kiểm thử hiện đại nhờ bao quát hệ thống phân loại test double của Martin Fowler, các nguyên tắc F.I.R.S.T. và mô hình kim tự tháp kiểm thử (test pyramid). Hỗ trợ lập trình viên viết unit test, integration test, snapshot test, đồng thời cung cấp các pattern thực tế để xây dựng hạ tầng kiểm thử đáng tin cậy. Skill này hoạt động trên nhiều công cụ AI bao gồm Claude Code, GitHub Copilot, Cursor và Gemini CLI thông qua định dạng mở Agent Skills.\nDi chuyển các codebase XCTest hiện có sang framework Swift Testing\nViết unit test với test doubles và fixtures phù hợp\nKiểm thử code bất đồng bộ (async) với các pattern Swift Testing chuẩn xác\nThiết lập snapshot testing để phát hiện lỗi giao diện (UI regression)",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/bocato/swift-testing-agent-skill`",
+    "usage_vi": "```\nAct as a Swift Testing Agent expert. Using the Swift Testing framework (swift-testing), help me design a comprehensive test suite for [PROJECT_NAME], a [BRIEF_PROJECT_DESCRIPTION]. Focus on: 1) Creating realistic test doubles for [MODULE_NAME] using mocks/stubs, 2) Implementing fixtures for [TEST_SCENARIO] with proper setup/teardown, 3) Testing async/await patterns in [ASYNC_FUNCTION], and 4) Providing migration advice from XCTest to Swift Testing for [TEST_CLASS]. Include code snippets and explain tradeoffs in your approach.\n```\nCopy\n\n```\nDưới đây là thiết kế bộ test suite bằng framework Swift Testing cho một ứng dụng thương mại điện tử giả định tên là 'ShopSwift' có module `PaymentProcessor` xử lý các giao dịch thẻ tín dụng:\n\n**Test Doubles cho PaymentProcessor:**\n```swift\nstruct MockPaymentGateway: PaymentGatewayProtocol {\n    var shouldFail: Bool = false\n    var capturedAmount: Double?\n    \n    func processPayment(amount: Double) async throws -> PaymentResult {\n        capturedAmount = amount\n        if shouldFail { throw PaymentError.networkFailure }\n        return PaymentResult.success\n    }\n}\n```\n\n**Fixtures cho các kịch bản Checkout:**\n```swift\nstruct CheckoutFixtures {\n    static let validCart = Cart(items: [\n        CartItem(product: \"iPhone 15\", price: 999.99, quantity: 1),\n        CartItem(product: \"AirPods Pro\", price: 249.00, quantity: 2)\n    ])\n    \n    static let emptyCart = Cart(items: [])\n    \n    static let invalidPaymentMethod = PaymentMethod(type: .creditCard, number: \"4111111111111111\", expiry: \"12/25\")\n}\n```\n\n**Async Testing cho xử lý thanh toán (Payment Processing):**\n```swift\n@Test func testAsyncPaymentProcessing() async {\n    let mockGateway = MockPaymentGateway()\n    let processor = PaymentProcessor(gateway: mockGateway)\n    \n    await #expect(throws: PaymentError.self) {\n        try await processor.processCheckout(\n            cart: CheckoutFixtures.validCart,\n            paymentMethod: CheckoutFixtures.invalidPaymentMethod\n        )\n    }\n    \n    #expect(mockGateway.capturedAmount == 1497.99)\n}\n```\n\n**Hướng dẫn di chuyển từ XCTest (XCTest Migration Guide):**\nĐể di chuyển từ `XCTestCase` của XCTest sang `@Suite` của Swift Testing:\n1. Thay thế các subclass của `XCTestCase` bằng các struct `@Suite`\n2. Chuyển đổi `XCTestExpectation` thành `#expect` của Swift Testing\n3. Thay thế `setUp()`/`tearDown()` bằng hàm khởi tạo (initialization) của `@Suite`\n4. Sử dụng `Tag` để phân loại test thay vì gom nhóm bằng `XCTestCase` của XCTest\n\nCác đánh đổi (tradeoffs) trong kiểm thử được xem xét:\n- Mocking giúp cô lập code nhưng có thể che giấu các vấn đề tích hợp (integration issues)\n- Fixtures giúp tăng khả năng đọc hiểu nhưng làm tăng chi phí bảo trì test nếu sản phẩm thay đổi\n- Async testing yêu cầu xử lý cẩn thận các vấn đề timeout và race condition\n- Lộ trình di chuyển giúp duy trì độ phủ kiểm thử (test coverage) hiện tại trong khi áp dụng các pattern mới\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:18:46.940020Z",
+    "http_status": 200,
+    "content_hash": "12ca4e3a84d3e30b755f05802afa3cbdd8f0e19abb14d04d8acf0633be14be55",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\swift-testing-agent-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\swift-testing-agent-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Swift Testing Agent Skill - Hướng dẫn kiểm thử chuyên sâu",
+  "short_description_vi": "Swift Testing Agent Skill cung cấp hướng dẫn chuyên môn cho các công cụ AI coding sử dụng framework Swift Testing. Skill này bao gồm test doubles, fixtures, các async pattern, di chuyển từ XCTest (XCTest migration), và các best practice trong kiểm thử. Đây là giải pháp lý tưởng cho các đội ngũ đang áp dụng Swift Testing và cần các chiến lược kiểm thử hiện đại."
+}

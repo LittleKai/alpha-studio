@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-lead-generation-agent",
+  "slug": "ai-lead-generation-agent",
+  "name": "AI-Lead-Generation-Agent",
+  "headline": "AI Lead Generation Agent for Quora Insights",
+  "short_description": "The AI Lead Generation Agent automates the discovery and qualification of leads from Quora, leveraging advanced web scraping and orchestration tools. This system minimizes human intervention while continuously generating and organizing qualified leads for sales teams.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "GURPREETKAURJETHRA",
+  "install_command": "claude install GURPREETKAURJETHRA/AI-Lead-Generation-Agent",
+  "source_repo_url": "https://github.com/GURPREETKAURJETHRA/AI-Lead-Generation-Agent",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "automation",
+    "aiagents",
+    "leadgeneration",
+    "web-scraping",
+    "googlesheets"
+  ],
+  "sections": {
+    "overview": "The AI Lead Generation Agent automates the process of finding and qualifying potential leads from Quora discussions. It uses Firecrawl's search and Extract endpoints to identify relevant user profiles and pull valuable information, then organizes the data into Google Sheets automatically. The system combines web scraping, agent orchestration via Phidata, and OpenAI GPT-4o to qualify leads with minimal human intervention. Sales and marketing teams can build targeted lead lists while eliminating hours of manual research, copying, and spreadsheet updates.\nAutomating lead discovery from Quora\nQualifying leads based on predefined criteria\nIntegrating lead data into Google Sheets for easy access\nReducing manual effort in lead generation",
+    "setup": "Terminal\nCopy\n`claude install GURPREETKAURJETHRA/AI-Lead-Generation-Agent`\n`git clone https://github.com/GURPREETKAURJETHRA/AI-Lead-Generation-Agent`",
+    "usage": "```\nAct as an AI Lead Generation Agent. Scrape Quora for leads related to [COMPANY] in the [INDUSTRY] sector. Extract and organize the following data: [DATA] (e.g., names, job titles, company names, contact information, and any relevant insights). Qualify these leads based on predefined criteria such as engagement level, relevance, and potential value. Provide a structured report of the top 20 qualified leads.\n```\nCopy\n\n```\n# AI Lead Generation Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "ai-lead-generation-agent#main-content",
+      "ai-lead-generation-agent#overview",
+      "ai-lead-generation-agent#setup",
+      "ai-lead-generation-agent#examples",
+      "ai-lead-generation-agent#tools",
+      "ai-lead-generation-agent#mcp",
+      "ai-lead-generation-agent#related",
+      "sendur",
+      "proposal-system-generates",
+      "sales-outreach-automation-langgraph"
+    ],
+    "overview_vi": "Agent AI Lead Generation tự động hóa quy trình tìm kiếm và đánh giá khách hàng tiềm năng từ các cuộc thảo luận trên Quora. Hệ thống sử dụng các endpoint search và extract của Firecrawl để xác định các hồ sơ người dùng phù hợp và thu thập thông tin giá trị, sau đó tự động sắp xếp dữ liệu vào Google Sheets. Giải pháp này kết hợp web scraping, agent orchestration qua Phidata và OpenAI GPT-4o để đánh giá chất lượng lead với mức độ can thiệp tối thiểu từ con người. Nhờ đó, các đội ngũ sales và marketing có thể nhanh chóng xây dựng danh sách lead mục tiêu mà không cần tốn hàng giờ tự nghiên cứu, sao chép và cập nhật bảng tính thủ công.\n\nTự động hóa quy trình tìm kiếm lead từ Quora\nĐánh giá chất lượng lead dựa trên các tiêu chí thiết lập sẵn\nTích hợp dữ liệu lead vào Google Sheets để dễ dàng truy cập\nGiảm thiểu công sức thủ công trong quy trình lead generation",
+    "setup_vi": "Terminal\nSao chép\n`claude install GURPREETKAURJETHRA/AI-Lead-Generation-Agent`\n`git clone https://github.com/GURPREETKAURJETHRA/AI-Lead-Generation-Agent`",
+    "usage_vi": "```\nĐóng vai trò là một AI Lead Generation Agent. Hãy cào (scrape) dữ liệu Quora để tìm kiếm các lead liên quan đến [COMPANY] trong lĩnh vực [INDUSTRY]. Trích xuất và sắp xếp các dữ liệu sau: [DATA] (ví dụ: tên, chức danh, tên công ty, thông tin liên hệ và các thông tin hữu ích liên quan). Đánh giá chất lượng các lead này dựa trên các tiêu chí thiết lập sẵn như mức độ tương tác, độ phù hợp và giá trị tiềm năng. Cung cấp một báo cáo có cấu trúc gồm top 20 lead đã được đánh giá chất lượng.\n```\nSao chép\n\n```\n# Báo cáo AI Lead Generation"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:22.513003Z",
+    "http_status": 200,
+    "content_hash": "b9c6ec8bcda13dba09e177eed7c1a2fedf8f408e331a221d5ddfd82a3da54034",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-lead-generation-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-lead-generation-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Agent AI Tìm kiếm Khách hàng Tiềm năng từ Quora Insights",
+  "short_description_vi": "Agent AI Lead Generation tự động hóa quy trình tìm kiếm và đánh giá chất lượng khách hàng tiềm năng từ Quora bằng cách tận dụng các công cụ web scraping và orchestration nâng cao. Hệ thống này giảm thiểu sự can thiệp của con người trong khi liên tục tạo và sắp xếp các lead chất lượng cho đội ngũ sales."
+}

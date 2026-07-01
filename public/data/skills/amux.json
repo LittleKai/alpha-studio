@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/amux",
+  "slug": "amux",
+  "name": "browser-use",
+  "headline": "amux: tui for parallel coding agents",
+  "short_description": "Amux is a TUI for managing and running parallel coding agents. It benefits developers and operations teams by simplifying the orchestration of multiple AI agents. It connects to various coding agents like Claude, Codex, and Gemini, streamlining workflows in software development and operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "andyrewlee",
+  "install_command": "git clone https://github.com/andyrewlee/amux.git",
+  "source_repo_url": "https://github.com/andyrewlee/amux",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "droid",
+    "ai-agents",
+    "ampcode",
+    "opencode",
+    "parallel-agents",
+    "orchestration",
+    "cursor-agent",
+    "codex",
+    "gemini-cli",
+    "conductor",
+    "tui"
+  ],
+  "sections": {
+    "overview": "Amux is a terminal user interface that simplifies running multiple coding agents in parallel within isolated workspaces backed by git worktrees. It works with popular coding agents including Claude Code, Codex, Gemini, Amp, OpenCode, and Droid without requiring wrappers or modifications. Each agent runs in its own tmux session for terminal isolation and persistence, allowing developers to launch multiple agents simultaneously and merge changes back when ready. The tool supports both keyboard and mouse control, includes diff viewing, and provides terminal access—all within a single interface. It's ideal for development teams and operations staff who need to orchestrate multiple AI agents across different branches or contexts.\nRun multiple coding agents on different branches simultaneously for parallel development\nManage isolated workspaces with git worktrees for agent collaboration\nView and compare diffs across multiple agent outputs in one interface\nOrchestrate agents with custom setup, run, and archive commands per project",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/andyrewlee/amux`",
+    "usage": "```\nI'm a developer working at [COMPANY] in the [INDUSTRY] sector. I need to automate [SPECIFIC TASK] using Amux. Here's the [DATA] I have available. Can you help me set up and run parallel coding agents to accomplish this?\n```\nCopy\n\n```\n# Amux Setup for Automated Code Review",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "amux#main-content",
+      "amux#overview",
+      "amux#setup",
+      "amux#examples",
+      "amux#tools",
+      "amux#mcp",
+      "amux#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Amux is a terminal user interface that simplifies running multiple coding agents in parallel within isolated workspaces backed by git worktrees. It works with popular coding agents including Claude Code, Codex, Gemini, Amp, OpenCode, and Droid without requiring wrappers or modifications. Each agent runs in its own tmux session for terminal isolation and persistence, allowing developers to launch multiple agents simultaneously and merge changes back when ready. The tool supports both keyboard and mouse control, includes diff viewing, and provides terminal access—all within a single interface. It's ideal for development teams and operations staff who need to orchestrate multiple AI agents across different branches or contexts.\nRun multiple coding agents on different branches simultaneously for parallel development\nManage isolated workspaces with git worktrees for agent collaboration\nView and compare diffs across multiple agent outputs in one interface\nOrchestrate agents with custom setup, run, and archive commands per project",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/andyrewlee/amux`",
+    "usage_vi": "```\nI'm a developer working at [COMPANY] in the [INDUSTRY] sector. I need to automate [SPECIFIC TASK] using Amux. Here's the [DATA] I have available. Can you help me set up and run parallel coding agents to accomplish this?\n```\nCopy\n\n```\n# Amux Setup for Automated Code Review"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:06:52.909722Z",
+    "http_status": 200,
+    "content_hash": "fe585c49f7c2fbe6b3832b7848f78f47ae184c388173f5c0cd9f63795e5283fa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\amux.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\amux.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "amux: tui for parallel coding agents",
+  "short_description_vi": "Amux is a TUI for managing and running parallel coding agents. It benefits developers and operations teams by simplifying the orchestration of multiple AI agents. It connects to various coding agents like Claude, Codex, and Gemini, streamlining workflows in software development and operations."
+}

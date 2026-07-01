@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/deepcontext-mcp",
+  "slug": "deepcontext-mcp",
+  "name": "browser-use",
+  "headline": "DeepContext - Smarter Code Search",
+  "short_description": "DeepContext adds symbol-aware semantic search to Claude Code, Codex CLI, and other agents. It enables faster, smarter context retrieval for large codebases. Developers and operations teams benefit from improved code navigation and understanding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "Wildcard-Official",
+  "install_command": "git clone https://github.com/Wildcard-Official/deepcontext-mcp.git",
+  "source_repo_url": "https://github.com/Wildcard-Official/deepcontext-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "ai-agents",
+    "search",
+    "vector-database",
+    "rag",
+    "code",
+    "code-context",
+    "claude",
+    "mcp",
+    "codex",
+    "ai"
+  ],
+  "sections": {
+    "overview": "DeepContext is an MCP server that replaces grep-based text search with semantic code search for AI agents. It uses Abstract Syntax Tree parsing to understand code structure, then combines vector embeddings and BM25 full-text search with reranking to find relevant code chunks by meaning rather than text patterns. This preserves token budgets and reduces hallucinations by returning only semantically relevant results instead of hundreds of irrelevant matches. Developers working with large TypeScript and Python codebases benefit from faster context retrieval and smarter code navigation, while incremental indexing ensures efficient reprocessing of only modified files.\nFinding semantically related functions across files that keyword search misses\nReducing token usage and API costs by returning precise code chunks instead of entire files\nImproving AI agent completion speed and accuracy on large codebases\nIndexing and searching TypeScript and Python repositories instantly",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Wildcard-Official/deepcontext-mcp`",
+    "usage": "```\nUse DeepContext-MCP to analyze the [PROJECT_NAME] codebase. Find all references to the [SYMBOL_NAME] symbol across all files. Summarize how [SYMBOL_NAME] is used in [CONTEXT_AREA] (e.g., API layer, database layer, UI layer). Highlight any inconsistencies or deprecated patterns in its usage. Provide a prioritized list of files that need updates based on this analysis.\n```\nCopy\n\n```\nDeepContext-MCP analysis of the `auth-service` codebase reveals the following insights about the `JWTValidator` symbol:\n\n**Cross-Referenced Usage:**\n- Found in 24 files across 6 modules (auth-api, auth-models, auth-utils, auth-tests, auth-integration, auth-docs)\n- Primary usage in `auth-api/src/handlers/token_handler.py` (34 occurrences) and `auth-utils/src/jwt_utils.py` (18 occurrences)\n\n**Contextual Breakdown:**\n- **API Layer (6 files):** Used in request validation middleware and token refresh endpoints. All instances follow consistent pattern with `JWTValidator.validate(token)` calls.\n- **Database Layer (4 files):** Only referenced in `auth-models/src/user_repository.py` for token blacklisting. Implementation uses deprecated `JWTValidator.blacklist()` method (marked for removal in v2.3).\n- **UI Layer (2 files):** Found in `auth-frontend/src/components/LoginForm.tsx` for client-side validation. Uses outdated `JWTValidator.decode()` which doesn't verify expiration.\n\n**Critical Findings:**\n1. **Deprecated API Usage:** 12 files still use `JWTValidator.blacklist()` which will break in next release. Priority: HIGH\n2. **Inconsistent Validation:** Client-side validation in `LoginForm.tsx` doesn't check token expiration, creating security risk. Priority: CRITICAL\n3. **Missing Documentation:** No usage examples in `auth-docs/` despite being core component. Priority: MEDIUM\n\n**Recommended Actions:**\n1. Update all `blacklist()` calls to new `TokenBlacklistService` (see migration guide in auth-docs)\n2. Refactor `LoginForm.tsx` to use server-side validation endpoint\n3. Add symbol usage examples to documentation\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "deepcontext-mcp#main-content",
+      "deepcontext-mcp#overview",
+      "deepcontext-mcp#setup",
+      "deepcontext-mcp#examples",
+      "deepcontext-mcp#tools",
+      "deepcontext-mcp#mcp",
+      "deepcontext-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DeepContext is an MCP server that replaces grep-based text search with semantic code search for AI agents. It uses Abstract Syntax Tree parsing to understand code structure, then combines vector embeddings and BM25 full-text search with reranking to find relevant code chunks by meaning rather than text patterns. This preserves token budgets and reduces hallucinations by returning only semantically relevant results instead of hundreds of irrelevant matches. Developers working with large TypeScript and Python codebases benefit from faster context retrieval and smarter code navigation, while incremental indexing ensures efficient reprocessing of only modified files.\nFinding semantically related functions across files that keyword search misses\nReducing token usage and API costs by returning precise code chunks instead of entire files\nImproving AI agent completion speed and accuracy on large codebases\nIndexing and searching TypeScript and Python repositories instantly",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Wildcard-Official/deepcontext-mcp`",
+    "usage_vi": "```\nUse DeepContext-MCP to analyze the [PROJECT_NAME] codebase. Find all references to the [SYMBOL_NAME] symbol across all files. Summarize how [SYMBOL_NAME] is used in [CONTEXT_AREA] (e.g., API layer, database layer, UI layer). Highlight any inconsistencies or deprecated patterns in its usage. Provide a prioritized list of files that need updates based on this analysis.\n```\nCopy\n\n```\nDeepContext-MCP analysis of the `auth-service` codebase reveals the following insights about the `JWTValidator` symbol:\n\n**Cross-Referenced Usage:**\n- Found in 24 files across 6 modules (auth-api, auth-models, auth-utils, auth-tests, auth-integration, auth-docs)\n- Primary usage in `auth-api/src/handlers/token_handler.py` (34 occurrences) and `auth-utils/src/jwt_utils.py` (18 occurrences)\n\n**Contextual Breakdown:**\n- **API Layer (6 files):** Used in request validation middleware and token refresh endpoints. All instances follow consistent pattern with `JWTValidator.validate(token)` calls.\n- **Database Layer (4 files):** Only referenced in `auth-models/src/user_repository.py` for token blacklisting. Implementation uses deprecated `JWTValidator.blacklist()` method (marked for removal in v2.3).\n- **UI Layer (2 files):** Found in `auth-frontend/src/components/LoginForm.tsx` for client-side validation. Uses outdated `JWTValidator.decode()` which doesn't verify expiration.\n\n**Critical Findings:**\n1. **Deprecated API Usage:** 12 files still use `JWTValidator.blacklist()` which will break in next release. Priority: HIGH\n2. **Inconsistent Validation:** Client-side validation in `LoginForm.tsx` doesn't check token expiration, creating security risk. Priority: CRITICAL\n3. **Missing Documentation:** No usage examples in `auth-docs/` despite being core component. Priority: MEDIUM\n\n**Recommended Actions:**\n1. Update all `blacklist()` calls to new `TokenBlacklistService` (see migration guide in auth-docs)\n2. Refactor `LoginForm.tsx` to use server-side validation endpoint\n3. Add symbol usage examples to documentation\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:21:54.495978Z",
+    "http_status": 200,
+    "content_hash": "d685d61592e22811d91f8c65443604d803eb9dff25556e3a9782c5536d83fb64",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\deepcontext-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\deepcontext-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "DeepContext - Smarter Code Search",
+  "short_description_vi": "DeepContext adds symbol-aware semantic search to Claude Code, Codex CLI, and other agents. It enables faster, smarter context retrieval for large codebases. Developers and operations teams benefit from improved code navigation and understanding."
+}

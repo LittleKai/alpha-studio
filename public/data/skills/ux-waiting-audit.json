@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ux-waiting-audit",
+  "slug": "ux-waiting-audit",
+  "name": "browser-use",
+  "headline": "UX Waiting Audit: Evaluate Long-Running Operations",
+  "short_description": "Audit UX waiting states in web apps with long-running operations (30+ seconds) using Claude Code and browser automation. Evaluates 10 key factors affecting perceived wait time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "BayramAnnakov",
+  "install_command": "git clone https://github.com/BayramAnnakov/ux-waiting-audit.git",
+  "source_repo_url": "https://github.com/BayramAnnakov/ux-waiting-audit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "UX Waiting States Audit is a Claude Code skill that evaluates how web applications handle extended operations lasting 30+ seconds or longer. Using browser automation and AI, it assesses your interface against a 10-point checklist covering progressive value, heartbeat indicators, time estimation, process explanation, sunk cost visibility, and other factors that influence how users perceive wait times. The skill generates detailed reports with screenshots, scoring, identified strengths and gaps, and prioritized recommendations. Built from real-world experience improving wait-time UX at AI agent platforms, it helps product teams reduce user anxiety and abandonment during long operations by implementing psychology-backed design patterns.\nAudit AI agent platforms with 30-60+ second processing times\nEvaluate report generation or data processing workflows\nAssess streaming UI implementations (text, results, progress)\nIdentify missing feedback during long-running API calls\nThe audit focused on [COMPANY]'s [WEBSITE] with a specific emphasis on the [SPECIFIC_FEATURE] feature. The audit identified several areas where the user experience during waiting states could be improved.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/ux-waiting-audit`",
+    "usage": "```\nConduct a UX waiting audit for [COMPANY]'s [WEBSITE] focusing on [SPECIFIC_FEATURE]. Identify all long-running operations and evaluate the waiting states. Use browser automation to test these states and provide recommendations for improvement. Include screenshots and timing data in your report.\n```\nCopy\n\n```\n# UX Waiting Audit Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ux-waiting-audit#main-content",
+      "ux-waiting-audit#overview",
+      "ux-waiting-audit#setup",
+      "ux-waiting-audit#examples",
+      "ux-waiting-audit#tools",
+      "ux-waiting-audit#mcp",
+      "ux-waiting-audit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "UX Waiting States Audit is a Claude Code skill that evaluates how web applications handle extended operations lasting 30+ seconds or longer. Using browser automation and AI, it assesses your interface against a 10-point checklist covering progressive value, heartbeat indicators, time estimation, process explanation, sunk cost visibility, and other factors that influence how users perceive wait times. The skill generates detailed reports with screenshots, scoring, identified strengths and gaps, and prioritized recommendations. Built from real-world experience improving wait-time UX at AI agent platforms, it helps product teams reduce user anxiety and abandonment during long operations by implementing psychology-backed design patterns.\nAudit AI agent platforms with 30-60+ second processing times\nEvaluate report generation or data processing workflows\nAssess streaming UI implementations (text, results, progress)\nIdentify missing feedback during long-running API calls\nThe audit focused on [COMPANY]'s [WEBSITE] with a specific emphasis on the [SPECIFIC_FEATURE] feature. The audit identified several areas where the user experience during waiting states could be improved.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/BayramAnnakov/ux-waiting-audit`",
+    "usage_vi": "```\nConduct a UX waiting audit for [COMPANY]'s [WEBSITE] focusing on [SPECIFIC_FEATURE]. Identify all long-running operations and evaluate the waiting states. Use browser automation to test these states and provide recommendations for improvement. Include screenshots and timing data in your report.\n```\nCopy\n\n```\n# UX Waiting Audit Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:46.998994Z",
+    "http_status": 200,
+    "content_hash": "9e1c58a4f8552a72815d8b116a7ecdd1219e6de91fe1b8160f8e64fa1db99241",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ux-waiting-audit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ux-waiting-audit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "UX Waiting Audit: Evaluate Long-Running Operations",
+  "short_description_vi": "Audit UX waiting states in web apps with long-running operations (30+ seconds) using Claude Code and browser automation. Evaluates 10 key factors affecting perceived wait time."
+}

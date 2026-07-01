@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lobster",
+  "slug": "lobster",
+  "name": "lobster",
+  "headline": "Lobster: Workflow Automation",
+  "short_description": "Lobster is a Clawdbot-native workflow shell: a typed, local-first “macro engine” that turns skills/tools into composable pipelines and safe automations. and lets Clawdbot call those  workflows in one step.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "moltbot",
+  "install_command": "git clone https://github.com/moltbot/lobster.git",
+  "source_repo_url": "https://github.com/moltbot/lobster",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Lobster is an innovative Clawdbot-native workflow shell designed to enhance AI automation by allowing users to create composable pipelines and safe automations. This intermediate-level skill functions as a typed, local-first macro engine that simplifies the process of integrating various skills and tools into cohesive workflows. By leveraging Lobster, users can streamline their automation processes, enabling Clawdbot to execute complex workflows with a single command. The primary benefit of using Lobster lies in its ability to significantly reduce the complexity of workflow automation. While the exact time savings are currently unknown, the efficiency gained from creating reusable and composable workflows can lead to substantial productivity improvements. Developers, product managers, and AI practitioners will find value in Lobster as it allows them to automate repetitive tasks, thus freeing up time for more strategic initiatives. Lobster is particularly suited for teams looking to enhance their AI-first workflows. For instance, a data engineering team could utilize Lobster to automate data ingestion processes, while a frontend development team might streamline the deployment of UI components. By integrating Lobster into their existing workflows, users can achieve a higher level of operational efficiency and reduce the potential for errors in their automation tasks. With a moderate implementation difficulty, Lobster can be set up in approximately 30 minutes, making it accessible for users with intermediate technical skills. While there are no specific departmental requirements, its versatility makes it applicable across various roles. As AI automation continues to evolve, Lobster stands out as a practical tool that empowers users to optimize their workflows and harness the full potential of AI agents.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/moltbot/lobster`",
+    "usage": "```\nCreate a Lobster workflow that automates [PROCESS] for [TEAM]. The workflow should include [STEP 1], [STEP 2], and [STEP 3]. Ensure the workflow is composable and can be triggered by a single command in Clawdbot.\n```\nCopy\n\n```\nHere's a Lobster workflow that automates the weekly sales report generation for the sales team:\n\n```lobster\nworkflow generate_sales_report {\n  step 1: fetch_sales_data {\n    tool: sales_api\n    input: {\n      date_range: \"last_week\"\n    }\n  }\n  step 2: clean_data {\n    tool: data_cleaner\n    input: {\n      data: fetch_sales_data.output\n    }\n  }\n  step 3: generate_report {\n    tool: report_generator\n    input: {\n      data: clean_data.output\n      template: \"weekly_sales_template\"\n    }\n  }\n  step 4: send_report {\n    tool: email_sender\n    input: {\n      recipients: \"sales_team@company.com\"\n      subject: \"Weekly Sales Report\"\n      body: \"Please find attached the weekly sales report.\"\n      attachment: generate_report.output\n    }\n  }\n}\n```\n\nThis workflow can be triggered by a single command in Clawdbot: `run generate_sales_report`. The workflow is composable, meaning that individual steps can be reused in other workflows.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lobster#main-content",
+      "lobster#overview",
+      "lobster#setup",
+      "lobster#examples",
+      "lobster#tools",
+      "lobster#mcp",
+      "lobster#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Lobster là một workflow shell đột phá, native của Clawdbot, được thiết kế để tăng cường khả năng tự động hóa bằng AI bằng cách cho phép người dùng tạo ra các pipeline có thể lắp ghép (composable) và các tác vụ tự động hóa an toàn. Skill cấp độ trung cấp này hoạt động như một macro engine dạng typed, local-first, giúp đơn giản hóa quá trình tích hợp nhiều skill và tool khác nhau thành các workflow thống nhất. Nhờ tận dụng Lobster, người dùng có thể tối ưu hóa quy trình tự động hóa của mình, cho phép Clawdbot thực thi các workflow phức tạp chỉ với một câu lệnh duy nhất. Lợi ích cốt lõi của việc sử dụng Lobster nằm ở khả năng giảm thiểu đáng kể độ phức tạp của việc tự động hóa workflow. Dù chưa xác định được lượng thời gian tiết kiệm cụ thể, hiệu quả đạt được từ việc tạo ra các workflow có thể tái sử dụng và lắp ghép sẽ mang lại những cải tiến rõ rệt về mặt năng suất. Các lập trình viên, product manager và chuyên gia AI sẽ thấy rõ giá trị của Lobster khi nó cho phép họ tự động hóa các tác vụ lặp đi lặp lại, từ đó giải phóng thời gian cho các sáng kiến chiến lược hơn. Lobster đặc biệt phù hợp cho các đội ngũ muốn cải tiến các workflow ưu tiên AI (AI-first). Ví dụ, một đội ngũ data engineering có thể sử dụng Lobster để tự động hóa quy trình nạp dữ liệu (data ingestion), trong khi đội ngũ phát triển frontend có thể tối ưu hóa việc triển khai (deployment) các component giao diện người dùng. Bằng cách tích hợp Lobster vào workflow hiện có, người dùng có thể đạt hiệu quả vận hành cao hơn và giảm thiểu rủi ro xảy ra lỗi trong các tác vụ tự động hóa. Với độ khó triển khai ở mức trung bình, Lobster có thể được setup trong khoảng 30 phút, giúp những người dùng có kỹ năng kỹ thuật ở mức khá dễ dàng tiếp cận. Dù không có yêu cầu cụ thể nào về bộ phận sử dụng, tính linh hoạt của nó giúp công cụ này có thể áp dụng cho nhiều vai trò khác nhau. Khi quá trình tự động hóa bằng AI tiếp tục phát triển, Lobster nổi lên như một công cụ thiết thực giúp người dùng tối ưu hóa workflow và khai thác tối đa tiềm năng của các AI agent.",
+    "setup_vi": "Không có câu lệnh cài đặt sẵn. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/moltbot/lobster`",
+    "usage_vi": "```\nHãy tạo một workflow trên Lobster để tự động hóa [PROCESS] cho [TEAM]. Workflow này cần bao gồm [STEP 1], [STEP 2] và [STEP 3]. Đảm bảo workflow có tính lắp ghép (composable) và có thể được kích hoạt bằng một câu lệnh duy nhất trong Clawdbot.\n```\nCopy\n\n```\nDưới đây là một workflow trên Lobster giúp tự động hóa việc tạo báo cáo doanh số hàng tuần cho đội ngũ kinh doanh (sales team):\n\n```lobster\nworkflow generate_sales_report {\n  step 1: fetch_sales_data {\n    tool: sales_api\n    input: {\n      date_range: \"last_week\"\n    }\n  }\n  step 2: clean_data {\n    tool: data_cleaner\n    input: {\n      data: fetch_sales_data.output\n    }\n  }\n  step 3: generate_report {\n    tool: report_generator\n    input: {\n      data: clean_data.output\n      template: \"weekly_sales_template\"\n    }\n  }\n  step 4: send_report {\n    tool: email_sender\n    input: {\n      recipients: \"sales_team@company.com\"\n      subject: \"Weekly Sales Report\"\n      body: \"Please find attached the weekly sales report.\"\n      attachment: generate_report.output\n    }\n  }\n}\n```\n\nWorkflow này có thể được kích hoạt chỉ bằng một lệnh duy nhất trong Clawdbot: `run generate_sales_report`. Workflow này có tính lắp ghép (composable), nghĩa là các bước riêng lẻ có thể được tái sử dụng trong các workflow khác.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:36.921194Z",
+    "http_status": 200,
+    "content_hash": "65afc6a97a8e51b031f73e622ffe3860f0802e8525bb54b3587d5ebfb68a4f0b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lobster.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\lobster.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Lobster: Tự động hóa Workflow",
+  "short_description_vi": "Lobster là một workflow shell native của Clawdbot: một “macro engine” định kiểu (typed) và ưu tiên xử lý cục bộ (local-first) giúp chuyển đổi các skill/tool thành các pipeline có thể lắp ghép (composable) và các tác vụ tự động hóa an toàn, đồng thời cho phép Clawdbot gọi các workflow đó chỉ với một bước duy nhất."
+}

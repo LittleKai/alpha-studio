@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/crawlee",
+  "slug": "crawlee",
+  "name": "crawlee",
+  "headline": "Crawlee: Web Scraping & Automation Library for",
+  "short_description": "Crawlee is a powerful web scraping and browser automation library for Node.js, enabling developers to create reliable crawlers in JavaScript and TypeScript. It supports data extraction for AI applications, including LLMs and GPTs, and offers features like proxy rotation and both headful and headless modes.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "apify",
+  "install_command": "claude install apify/crawlee",
+  "source_repo_url": "https://github.com/apify/crawlee",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "web scraping",
+    "crawler",
+    "Node.js",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "Crawlee is a web scraping and browser automation library built for Node.js developers using JavaScript or TypeScript. It provides tools for building reliable crawlers that can extract data from websites, with support for both headful and headless browser modes. The library is designed for data extraction workflows including AI applications, LLMs, and GPTs. Crawlee includes features like proxy rotation to handle large-scale scraping tasks effectively. Developers can use Crawlee to automate web interactions and collect structured data for machine learning and AI training pipelines.\nExtracting product data from e-commerce sites for price comparison and market analysis.\nGathering competitive intelligence from industry websites to inform business strategies.\nAutomating data collection for research purposes, such as gathering statistics or survey results.\nDownloading media files from various sources for analysis and content creation.",
+    "setup": "Terminal\nCopy\n`claude install apify/crawlee`\n`git clone https://github.com/apify/crawlee`",
+    "usage": "```\nUsing Crawlee, scrape the latest product reviews from [ECOMMERCE_SITE] for [PRODUCT_CATEGORY]. Extract key metrics like average rating, common praise points, and frequent complaints. Save the data in a structured JSON format for analysis. Use proxy rotation to avoid IP blocking and run in headless mode for efficiency.\n```\nCopy\n\n```\nSuccessfully scraped 1,243 product reviews from Amazon for the 'Bluetooth Headphones' category. The average rating is 4.2 stars, with common praise points including 'comfortable fit' (mentioned 312 times) and 'excellent sound quality' (287 mentions). Frequent complaints include 'battery life could be better' (143 mentions) and 'connectivity issues' (98 mentions). Data saved in structured JSON format with fields for review text, rating, and date. Proxy rotation successfully avoided IP blocking, and headless mode ensured efficient scraping.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "crawlee#main-content",
+      "crawlee#overview",
+      "crawlee#setup",
+      "crawlee#examples",
+      "crawlee#tools",
+      "crawlee#mcp",
+      "crawlee#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Crawlee là thư viện web scraping và tự động hóa trình duyệt được xây dựng dành cho các nhà phát triển Node.js sử dụng JavaScript hoặc TypeScript. Thư viện cung cấp các công cụ để xây dựng các crawler đáng tin cậy có thể trích xuất dữ liệu từ các trang web, hỗ trợ cả chế độ trình duyệt headful và headless. Thư viện này được thiết kế cho các quy trình trích xuất dữ liệu bao gồm các ứng dụng AI, LLM và GPT. Crawlee tích hợp các tính năng như xoay vòng proxy để xử lý hiệu quả các tác vụ scraping quy mô lớn. Các nhà phát triển có thể sử dụng Crawlee để tự động hóa các tương tác web và thu thập dữ liệu có cấu trúc cho các pipeline huấn luyện AI và machine learning.\nTrích xuất dữ liệu sản phẩm từ các trang thương mại điện tử để so sánh giá và phân tích thị trường.\nThu thập thông tin cạnh tranh từ các trang web trong ngành để định hướng chiến lược kinh doanh.\nTự động hóa việc thu thập dữ liệu cho mục đích nghiên cứu, chẳng hạn như thu thập số liệu thống kê hoặc kết quả khảo sát.\nTải xuống các tệp đa phương tiện từ nhiều nguồn khác nhau để phân tích và sáng tạo nội dung.",
+    "setup_vi": "Terminal\nSao chép\n`claude install apify/crawlee`\n`git clone https://github.com/apify/crawlee`",
+    "usage_vi": "```\nSử dụng Crawlee, hãy scrape các đánh giá sản phẩm mới nhất từ [ECOMMERCE_SITE] cho [PRODUCT_CATEGORY]. Trích xuất các chỉ số chính như điểm đánh giá trung bình, các điểm khen ngợi phổ biến và các phàn nàn thường gặp. Lưu dữ liệu dưới định dạng JSON có cấu trúc để phân tích. Sử dụng xoay vòng proxy để tránh bị chặn IP và chạy ở chế độ headless để đạt hiệu quả cao.\n```\nSao chép\n\n```\nĐã scrape thành công 1.243 đánh giá sản phẩm từ Amazon cho danh mục 'Tai nghe Bluetooth'. Điểm đánh giá trung bình là 4.2 sao, với các điểm khen ngợi phổ biến bao gồm 'đeo thoải mái' (được nhắc đến 312 lần) và 'chất lượng âm thanh xuất sắc' (287 lần). Các phàn nàn thường gặp bao gồm 'thời lượng pin có thể tốt hơn' (143 lần) và 'lỗi kết nối' (98 lần). Dữ liệu đã được lưu dưới định dạng JSON có cấu trúc với các trường cho nội dung đánh giá, điểm đánh giá và ngày tháng. Tính năng xoay vòng proxy đã tránh chặn IP thành công, và chế độ headless giúp đảm bảo hiệu suất scraping.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:16:56.068714Z",
+    "http_status": 200,
+    "content_hash": "b8ff485c9b837c924741ae5d6ce8b7a3478cea78fb3b8bb5bc547ba0c87fb87a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crawlee.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\crawlee.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Crawlee: Thư viện Web Scraping & Tự động hóa dành cho",
+  "short_description_vi": "Crawlee là một thư viện web scraping và tự động hóa trình duyệt mạnh mẽ dành cho Node.js, giúp các nhà phát triển xây dựng các crawler đáng tin cậy bằng JavaScript và TypeScript. Thư viện này hỗ trợ trích xuất dữ liệu cho các ứng dụng AI, bao gồm cả LLM và GPT, đồng thời cung cấp các tính năng như xoay vòng proxy cùng cả hai chế độ headful và headless."
+}

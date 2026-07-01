@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/linkedin-marketing-workflow",
+  "slug": "linkedin-marketing-workflow",
+  "name": "Linkedin Marketing Workflow",
+  "headline": "LinkedIn Marketing Workflow: Automate Your Posts",
+  "short_description": "A github workflow to do a linkedin post everytime you update your blog RSS Feed",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "p4p1",
+  "install_command": "git clone https://github.com/p4p1/linkedin-marketing-workflow.git",
+  "source_repo_url": "https://github.com/p4p1/linkedin-marketing-workflow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "marketing-automation",
+    "linkedin",
+    "marketing"
+  ],
+  "sections": {
+    "overview": "The LinkedIn Marketing Workflow skill is a powerful GitHub automation tool designed to streamline your social media presence by automatically posting updates to LinkedIn whenever you update your blog's RSS feed. This skill simplifies the process of keeping your LinkedIn profile active and engaging, ensuring that your audience is consistently informed about your latest content without requiring manual intervention. By integrating this workflow into your existing systems, you can enhance your marketing strategy with minimal effort. One of the key benefits of this skill is the time savings it offers. While the exact time savings may not be quantified, the reduction in manual posting efforts can free up valuable time for marketers and developers alike. Instead of spending time crafting and scheduling posts, you can focus on creating high-quality content and engaging with your audience. This automation not only increases efficiency but also ensures that your LinkedIn presence remains dynamic and up-to-date with your latest blog entries. This skill is particularly beneficial for marketers, product managers, and AI practitioners who are looking to enhance their workflow automation capabilities. By leveraging this Claude Code skill, users can ensure that their LinkedIn profiles are automatically updated, allowing them to maintain a strong online presence without the repetitive task of posting manually. For example, a product manager can use this skill to share product updates and insights directly from their blog, while a marketer can promote new articles and thought leadership pieces effortlessly. Implementing the LinkedIn Marketing Workflow is straightforward, requiring an intermediate level of technical knowledge and approximately 30 minutes to set up. Users will need a GitHub account and familiarity with GitHub workflows to get started. This skill fits seamlessly into AI-first workflows by automating routine tasks, allowing users to focus on strategic initiatives. By integrating this automation into your marketing efforts, you can enhance your overall productivity and ensure that your online presence remains consistent and impactful.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/p4p1/linkedin-marketing-workflow`",
+    "usage": "```\nCreate a GitHub Actions workflow that automatically posts a summary of my new blog post to LinkedIn whenever my RSS feed is updated. My blog URL is [BLOG_URL], and my LinkedIn API credentials are [API_KEY] and [API_SECRET]. The workflow should extract the post title, excerpt, and URL, then format it as a LinkedIn post with a call-to-action to read more.\n```\nCopy\n\n```\n```yaml\nname: LinkedIn Blog Post Automation\n\non:\n  schedule:\n    - cron: '0 0 * * *'  # Runs daily at midnight\n  workflow_dispatch:\n\njobs:\n  post-to-linkedin:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v2\n\n      - name: Set up Python\n        uses: actions/setup-python@v2\n        with:\n          python-version: '3.x'\n\n      - name: Install dependencies\n        run: pip install feedparser requests\n\n      - name: Fetch and post to LinkedIn\n        run: python post_to_linkedin.py\n        env:\n          BLOG_URL: ${{ secrets.BLOG_URL }}\n          API_KEY: ${{ secrets.API_KEY }}\n          API_SECRET: ${{ secrets.API_SECRET }}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "linkedin-marketing-workflow#main-content",
+      "linkedin-marketing-workflow#overview",
+      "linkedin-marketing-workflow#setup",
+      "linkedin-marketing-workflow#examples",
+      "linkedin-marketing-workflow#tools",
+      "linkedin-marketing-workflow#mcp",
+      "linkedin-marketing-workflow#related",
+      "marketingskills",
+      "copywriting",
+      "instagram-automation"
+    ],
+    "overview_vi": "Skill LinkedIn Marketing Workflow là một công cụ tự động hóa GitHub mạnh mẽ, được thiết kế để tối ưu hóa sự hiện diện của bạn trên mạng xã hội bằng cách tự động đăng cập nhật lên LinkedIn mỗi khi bạn cập nhật RSS feed của blog. Skill này đơn giản hóa quy trình duy trì hoạt động và tương tác cho hồ sơ LinkedIn của bạn, đảm bảo người theo dõi luôn được cập nhật nội dung mới nhất mà không cần bạn phải thao tác thủ công. Bằng cách tích hợp workflow này vào hệ thống hiện tại, bạn có thể nâng cao chiến lược tiếp thị của mình với nỗ lực tối thiểu. Một trong những lợi ích chính của skill này là khả năng tiết kiệm thời gian. Dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, việc giảm bớt công sức đăng bài thủ công sẽ giải phóng thời gian quý báu cho cả nhà tiếp thị lẫn lập trình viên. Thay vì tốn thời gian soạn thảo và lên lịch bài đăng, bạn có thể tập trung vào việc sáng tạo nội dung chất lượng cao và tương tác với khán giả của mình. Quá trình tự động hóa này không chỉ tăng hiệu suất mà còn đảm bảo trang LinkedIn của bạn luôn hoạt động sôi nổi và cập nhật các bài viết blog mới nhất. Skill này đặc biệt hữu ích cho các nhà tiếp thị, product manager và chuyên gia AI đang muốn nâng cao khả năng tự động hóa workflow của họ. Bằng cách tận dụng skill Claude Code này, người dùng có thể đảm bảo hồ sơ LinkedIn được tự động cập nhật, giúp duy trì sự hiện diện trực tuyến mạnh mẽ mà không cần thực hiện công việc đăng bài thủ công lặp đi lặp lại. Ví dụ, một product manager có thể dùng skill này để chia sẻ các cập nhật sản phẩm và thông tin chuyên sâu trực tiếp từ blog của họ, trong khi một nhà tiếp thị có thể quảng bá các bài viết mới và bài chia sẻ chuyên môn một cách dễ dàng. Việc triển khai LinkedIn Marketing Workflow rất đơn giản, chỉ yêu cầu kiến thức kỹ thuật ở mức trung bình và mất khoảng 30 phút để setup. Người dùng cần có tài khoản GitHub và quen thuộc với GitHub workflow để bắt đầu. Skill này tích hợp liền mạch vào các AI-first workflow bằng cách tự động hóa các tác vụ lặp đi lặp lại, cho phép người dùng tập trung vào các sáng kiến mang tính chiến lược. Bằng cách tích hợp giải pháp tự động hóa này vào các hoạt động marketing, bạn có thể nâng cao năng suất tổng thể và đảm bảo sự hiện diện trực tuyến của mình luôn nhất quán và hiệu quả.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/p4p1/linkedin-marketing-workflow`",
+    "usage_vi": "```\nTạo một GitHub Actions workflow tự động đăng bản tóm tắt bài viết blog mới của tôi lên LinkedIn bất cứ khi nào RSS feed của tôi được cập nhật. URL blog của tôi là [BLOG_URL], và thông tin xác thực LinkedIn API của tôi là [API_KEY] và [API_SECRET]. Workflow này sẽ trích xuất tiêu đề, đoạn trích và URL của bài viết, sau đó định dạng thành một bài đăng LinkedIn kèm theo lời kêu gọi hành động để đọc thêm.\n```\nCopy\n\n```yaml\nname: LinkedIn Blog Post Automation\n\non:\n  schedule:\n    - cron: '0 0 * * *'  # Chạy hàng ngày vào lúc nửa đêm\n  workflow_dispatch:\n\njobs:\n  post-to-linkedin:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v2\n\n      - name: Set up Python\n        uses: actions/setup-python@v2\n        with:\n          python-version: '3.x'\n\n      - name: Install dependencies\n        run: pip install feedparser requests\n\n      - name: Fetch and post to LinkedIn\n        run: python post_to_linkedin.py\n        env:\n          BLOG_URL: ${{ secrets.BLOG_URL }}\n          API_KEY: ${{ secrets.API_KEY }}\n          API_SECRET: ${{ secrets.API_SECRET }}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:38:08.491090Z",
+    "http_status": 200,
+    "content_hash": "993cadc8c51f73bb17c756f41e1fb2f45da88ef2e14e6afc03ca1fcee46fcda7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\linkedin-marketing-workflow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\linkedin-marketing-workflow.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "LinkedIn Marketing Workflow: Tự động hóa bài đăng của bạn",
+  "short_description_vi": "GitHub workflow giúp tự động đăng bài lên LinkedIn mỗi khi bạn cập nhật RSS Feed của blog"
+}

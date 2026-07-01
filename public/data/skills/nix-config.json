@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nix-config",
+  "slug": "nix-config",
+  "name": "Nix-config",
+  "headline": "Nix-config - Automate System Configs",
+  "short_description": "Nix-config automates system configuration for macOS and Linux, managing terminal tools and programs. It benefits operations teams by standardizing environments, reducing setup time, and ensuring consistency across systems. Connects to home-manager, neovim, and other terminal tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "malob",
+  "install_command": "git clone https://github.com/malob/nix-config.git",
+  "source_repo_url": "https://github.com/malob/nix-config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "dotfiles",
+    "nix-configs",
+    "claude-code-plugins",
+    "home-manager",
+    "nix-dotfiles",
+    "claude-code",
+    "nix",
+    "nixpkgs",
+    "claude-skills",
+    "nix-flake",
+    "nix-expressions",
+    "neovim",
+    "nix-darwin"
+  ],
+  "sections": {
+    "overview": "nix-config is a Nix flake that automates system configuration for both macOS (via nix-darwin) and Linux (via home-manager). It provides a structured approach to managing user-level packages, terminal tools, shell configurations, and application settings through reusable modules. The configuration uses live-editable symlinks for Claude Code settings, MCP server definitions, and custom plugins, allowing iteration without full rebuilds. It standardizes development environments across multiple machines and simplifies onboarding by capturing the entire system setup in declarative Nix code.\nAutomate the setup of development environments on macOS and Linux using Nix configurations.\nEasily manage and update external dependencies through Nix flakes for consistent builds.\nIntegrate user configurations for tools like Neovim and Git using home-manager.\nUtilize a unified colorscheme across multiple terminal applications for a cohesive look.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/malob/nix-config`",
+    "usage": "```\nGenerate a Nix configuration for a [OPERATING_SYSTEM] environment. Include [SPECIFIC_TOOLS] and [TERMINAL_TOOLS]. Ensure compatibility with [HOME_MANAGER] and [NEOVIM]. Optimize for [USE_CASE], such as development, data analysis, or system administration.\n```\nCopy\n\n```\nHere's a Nix configuration tailored for a macOS development environment, optimized for web development with Node.js and Docker:\n\n```nix\n{ config, pkgs, ... }:\n\n{\n  # Enable home-manager\n  home-manager.useHomeManager = true;\n  home-manager.users.${config.username} = { pkgs, ... }:\n    {\n      home.packages = with pkgs; [\n        nodejs\n        yarn\n        docker\n        docker-compose\n        neovim\n        tmux\n        git\n        gh\n      ];\n      home.file.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "nix-config#main-content",
+      "nix-config#overview",
+      "nix-config#setup",
+      "nix-config#examples",
+      "nix-config#tools",
+      "nix-config#mcp",
+      "nix-config#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "nix-config is a Nix flake that automates system configuration for both macOS (via nix-darwin) and Linux (via home-manager). It provides a structured approach to managing user-level packages, terminal tools, shell configurations, and application settings through reusable modules. The configuration uses live-editable symlinks for Claude Code settings, MCP server definitions, and custom plugins, allowing iteration without full rebuilds. It standardizes development environments across multiple machines and simplifies onboarding by capturing the entire system setup in declarative Nix code.\nAutomate the setup of development environments on macOS and Linux using Nix configurations.\nEasily manage and update external dependencies through Nix flakes for consistent builds.\nIntegrate user configurations for tools like Neovim and Git using home-manager.\nUtilize a unified colorscheme across multiple terminal applications for a cohesive look.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/malob/nix-config`",
+    "usage_vi": "```\nGenerate a Nix configuration for a [OPERATING_SYSTEM] environment. Include [SPECIFIC_TOOLS] and [TERMINAL_TOOLS]. Ensure compatibility with [HOME_MANAGER] and [NEOVIM]. Optimize for [USE_CASE], such as development, data analysis, or system administration.\n```\nCopy\n\n```\nHere's a Nix configuration tailored for a macOS development environment, optimized for web development with Node.js and Docker:\n\n```nix\n{ config, pkgs, ... }:\n\n{\n  # Enable home-manager\n  home-manager.useHomeManager = true;\n  home-manager.users.${config.username} = { pkgs, ... }:\n    {\n      home.packages = with pkgs; [\n        nodejs\n        yarn\n        docker\n        docker-compose\n        neovim\n        tmux\n        git\n        gh\n      ];\n      home.file.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:16:31.903248Z",
+    "http_status": 200,
+    "content_hash": "2119584e61583812fb3a340ce78730c24af3740b424140e0aa2499e720620d1d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\nix-config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\nix-config.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nix-config - Automate System Configs",
+  "short_description_vi": "Nix-config automates system configuration for macOS and Linux, managing terminal tools and programs. It benefits operations teams by standardizing environments, reducing setup time, and ensuring consistency across systems. Connects to home-manager, neovim, and other terminal tools."
+}

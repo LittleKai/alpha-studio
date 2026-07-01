@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillport",
+  "slug": "skillport",
+  "name": "react-native-best-practices",
+  "headline": "Skillport: Enhance AI Agent Skills Effortlessly",
+  "short_description": "Skillport helps users to integrate and manage agent skills across various AI agents and coding environments seamlessly. With a focus on efficiency, it allows for centralized management and deployment via CLI or MCP, making it versatile for developers and AI enthusiasts.",
+  "tier": "Gold",
+  "category": "GrowthDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "gotalab",
+  "install_command": "claude install gotalab/skillport",
+  "source_repo_url": "https://github.com/gotalab/skillport",
+  "works_with": [
+    "ClaudeGitHub Copilot"
+  ],
+  "tags": [
+    "agent-skills",
+    "coding",
+    "automation",
+    "management",
+    "ai-agent"
+  ],
+  "sections": {
+    "overview": "SkillPort provides a complete skill lifecycle management system for AI agents and coding environments. It validates skills against the Agent Skills specification, manages skill installation from GitHub or local sources, and serves skills via CLI or MCP protocol. The toolkit implements a search-first loading pattern for efficient skill discovery across large collections, loading metadata upfront and full instructions on demand. SkillPort works with Cursor, Copilot, Windsurf, Cline, and any MCP-compatible client, offering both per-project CLI mode and centralized MCP server deployment options.\nIntegrate custom skills into AI agents\nManage agent capabilities across different platforms\nEnhance coding efficiency with AI assistance\nAutomate skill deployment in development environments",
+    "setup": "Terminal\nCopy\n`claude install gotalab/skillport`\n`git clone https://github.com/gotalab/skillport`",
+    "usage": "```\nIntegrate the [SKILL_NAME] skill into my Automa agent to automate [TASK]. Ensure the skill is properly configured to handle [SPECIFIC_DATA] and deploy it using the CLI. Provide a step-by-step guide for testing and validating the integration.\n```\nCopy\n\n```\nTo integrate the Skillport skill into your Automa agent for automating lead generation, follow these steps:\n\n1. **Install and Configure Skillport**:\n   - Use the CLI to install the Skillport package: `pip install skillport`.\n   - Configure the Skillport settings in your Automa agent by specifying the required parameters such as API keys and data sources.\n\n2. **Define the Task**:\n   - In your Automa agent, define the task you want to automate. For example, you might want to automate the process of collecting lead information from a web form.\n   - Specify the data you want to collect, such as names, email addresses, and phone numbers.\n\n3. **Deploy the Skill**:\n   - Use the CLI to deploy the Skillport skill to your Automa agent. This will involve running a command like `automa deploy --skill skillport --agent [AGENT_NAME]`.\n\n4. **Test and Validate**:\n   - Test the integration by running the Automa agent and verifying that the Skillport skill is correctly collecting and processing the specified data.\n   - Validate the results by checking the output logs and ensuring that the data is accurate and complete.\n\nBy following these steps, you can successfully integrate the Skillport skill into your Automa agent and automate the lead generation process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, GitHub Copilot"
+    ],
+    "related_skills": [
+      "skillport#main-content",
+      "skillport#overview",
+      "skillport#setup",
+      "skillport#examples",
+      "skillport#tools",
+      "skillport#mcp",
+      "skillport#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "SkillPort provides a complete skill lifecycle management system for AI agents and coding environments. It validates skills against the Agent Skills specification, manages skill installation from GitHub or local sources, and serves skills via CLI or MCP protocol. The toolkit implements a search-first loading pattern for efficient skill discovery across large collections, loading metadata upfront and full instructions on demand. SkillPort works with Cursor, Copilot, Windsurf, Cline, and any MCP-compatible client, offering both per-project CLI mode and centralized MCP server deployment options.\nIntegrate custom skills into AI agents\nManage agent capabilities across different platforms\nEnhance coding efficiency with AI assistance\nAutomate skill deployment in development environments",
+    "setup_vi": "Terminal\nCopy\n`claude install gotalab/skillport`\n`git clone https://github.com/gotalab/skillport`",
+    "usage_vi": "```\nIntegrate the [SKILL_NAME] skill into my Automa agent to automate [TASK]. Ensure the skill is properly configured to handle [SPECIFIC_DATA] and deploy it using the CLI. Provide a step-by-step guide for testing and validating the integration.\n```\nCopy\n\n```\nTo integrate the Skillport skill into your Automa agent for automating lead generation, follow these steps:\n\n1. **Install and Configure Skillport**:\n   - Use the CLI to install the Skillport package: `pip install skillport`.\n   - Configure the Skillport settings in your Automa agent by specifying the required parameters such as API keys and data sources.\n\n2. **Define the Task**:\n   - In your Automa agent, define the task you want to automate. For example, you might want to automate the process of collecting lead information from a web form.\n   - Specify the data you want to collect, such as names, email addresses, and phone numbers.\n\n3. **Deploy the Skill**:\n   - Use the CLI to deploy the Skillport skill to your Automa agent. This will involve running a command like `automa deploy --skill skillport --agent [AGENT_NAME]`.\n\n4. **Test and Validate**:\n   - Test the integration by running the Automa agent and verifying that the Skillport skill is correctly collecting and processing the specified data.\n   - Validate the results by checking the output logs and ensuring that the data is accurate and complete.\n\nBy following these steps, you can successfully integrate the Skillport skill into your Automa agent and automate the lead generation process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:56:04.671073Z",
+    "http_status": 200,
+    "content_hash": "dc1f73d9d72f763b6cea854de2cadea95191069dc8fd066446f33cf1c315b5a7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillport.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skillport.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Skillport: Enhance AI Agent Skills Effortlessly",
+  "short_description_vi": "Skillport helps users to integrate and manage agent skills across various AI agents and coding environments seamlessly. With a focus on efficiency, it allows for centralized management and deployment via CLI or MCP, making it versatile for developers and AI enthusiasts."
+}

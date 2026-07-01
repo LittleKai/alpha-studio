@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vly-money-claude-skill",
+  "slug": "vly-money-claude-skill",
+  "name": "vly-money Claude Skill",
+  "headline": "vly-money Claude Skill - Crypto Payment Links",
+  "short_description": "The vly-money Claude skill enables crypto payment link generation and X402 protocol support for vly.money wallet. It allows operations teams to create payment links for USDC, USDT, vUSD, ICP, and CKUSDC across Solana and Ethereum networks. This skill integrates with Claude to streamline crypto transactions and enhance payment workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "zCloak-Network",
+  "install_command": "git clone https://github.com/zCloak-Network/vly-money-claude-skill.git",
+  "source_repo_url": "https://github.com/zCloak-Network/vly-money-claude-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The vly.money Claude skill integrates crypto payment functionality directly into Claude, enabling seamless generation of payment links for USDC, USDT, vUSD, ICP, and CKUSDC across six blockchain networks. It automatically detects and handles X402 Payment Required responses for paid content access. Operations teams and developers can create payment links, access the vly.money wallet interface, and process crypto transactions without leaving Claude. The skill supports multiple networks including Solana, Ethereum, Base, BSC, ICP, and Vly, streamlining payment workflows for teams managing blockchain-based services.\nGenerate USDC payment links for SaaS services on Solana or Ethereum\nHandle X402 protected content access with automatic payment detection\nCreate multi-chain payment links for cross-network transaction support\nStreamline operations team workflows for crypto payment processing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zCloak-Network/vly-money-claude-skill`",
+    "usage": "```\nGenerate a payment link for [AMOUNT] [CRYPTOCURRENCY] using the vly.money wallet. The recipient's address is [RECIPIENT_ADDRESS]. Ensure the link supports the X402 protocol and is compatible with [NETWORK] (Solana or Ethereum).\n```\nCopy\n\n```\n# Payment Link Generated\n\n- **Amount**: 500 USDC\n- **Recipient Address**: 0x7f3a...b9d5\n- **Network**: Ethereum\n- **Protocol**: X402\n\n**Payment Link**: [vly.money/pay?amount=500&currency=USDC&recipient=0x7f3a...b9d5&network=ethereum&protocol=x402](https://vly.money/pay?amount=500&currency=USDC&recipient=0x7f3a...b9d5&network=ethereum&protocol=x402)\n\nThis link is valid for 24 hours and supports instant settlement via the vly.money wallet.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vly-money-claude-skill#main-content",
+      "vly-money-claude-skill#overview",
+      "vly-money-claude-skill#setup",
+      "vly-money-claude-skill#examples",
+      "vly-money-claude-skill#tools",
+      "vly-money-claude-skill#mcp",
+      "vly-money-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The vly.money Claude skill integrates crypto payment functionality directly into Claude, enabling seamless generation of payment links for USDC, USDT, vUSD, ICP, and CKUSDC across six blockchain networks. It automatically detects and handles X402 Payment Required responses for paid content access. Operations teams and developers can create payment links, access the vly.money wallet interface, and process crypto transactions without leaving Claude. The skill supports multiple networks including Solana, Ethereum, Base, BSC, ICP, and Vly, streamlining payment workflows for teams managing blockchain-based services.\nGenerate USDC payment links for SaaS services on Solana or Ethereum\nHandle X402 protected content access with automatic payment detection\nCreate multi-chain payment links for cross-network transaction support\nStreamline operations team workflows for crypto payment processing",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zCloak-Network/vly-money-claude-skill`",
+    "usage_vi": "```\nGenerate a payment link for [AMOUNT] [CRYPTOCURRENCY] using the vly.money wallet. The recipient's address is [RECIPIENT_ADDRESS]. Ensure the link supports the X402 protocol and is compatible with [NETWORK] (Solana or Ethereum).\n```\nCopy\n\n```\n# Payment Link Generated\n\n- **Amount**: 500 USDC\n- **Recipient Address**: 0x7f3a...b9d5\n- **Network**: Ethereum\n- **Protocol**: X402\n\n**Payment Link**: [vly.money/pay?amount=500&currency=USDC&recipient=0x7f3a...b9d5&network=ethereum&protocol=x402](https://vly.money/pay?amount=500&currency=USDC&recipient=0x7f3a...b9d5&network=ethereum&protocol=x402)\n\nThis link is valid for 24 hours and supports instant settlement via the vly.money wallet.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:15:54.829096Z",
+    "http_status": 200,
+    "content_hash": "8d743b90fe109bd795722627c5ddcd7e9f16fddda8a5d01ac9c09a204231057c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vly-money-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vly-money-claude-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "vly-money Claude Skill - Crypto Payment Links",
+  "short_description_vi": "The vly-money Claude skill enables crypto payment link generation and X402 protocol support for vly.money wallet. It allows operations teams to create payment links for USDC, USDT, vUSD, ICP, and CKUSDC across Solana and Ethereum networks. This skill integrates with Claude to streamline crypto transactions and enhance payment workflows."
+}

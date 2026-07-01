@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/devrag",
+  "slug": "devrag",
+  "name": "DevRag",
+  "headline": "DevRag - Markdown Vector Search for Claude Code",
+  "short_description": "DevRag is a lightweight RAG system for Claude Code that enables natural language search of markdown files using multilingual-e5-small embeddings. It helps developers quickly find relevant information without reading entire documents, saving tokens and time. The system connects to local markdown files and integrates with Claude Code for efficient document retrieval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "tomohiro-owada",
+  "install_command": "git clone https://github.com/tomohiro-owada/devrag.git",
+  "source_repo_url": "https://github.com/tomohiro-owada/devrag",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "onnx",
+    "mcp",
+    "markdown",
+    "developer-tools",
+    "local-ai",
+    "sqlite",
+    "claude-code",
+    "embeddings",
+    "documentation",
+    "semantic-search",
+    "golang",
+    "vector-search",
+    "rag"
+  ],
+  "sections": {
+    "overview": "DevRag is a free, local RAG system built specifically for developers using Claude Code. It automatically indexes markdown files and enables natural language semantic search, retrieving only relevant document chunks instead of entire files. This approach consumes 40x fewer tokens and executes 15x faster than traditional document reading. The system uses multilingual-e5-small embeddings to support 100+ languages and runs as a single binary with no Python dependencies. DevRag integrates with Claude Code via MCP, auto-discovering documents and allowing developers to find information quickly without knowing exact file names or paths.\nSearch technical documentation and API references without reading entire files\nQuery project notes and design documents with natural language\nFind relevant code patterns across multiple markdown guides\nRetrieve authentication and security procedures from documentation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tomohiro-owada/devrag`",
+    "usage": "```\nI'm using DevRag to search my [COMPANY] documentation. Please find information about [TOPIC] in the following markdown files: [FILE1.md, FILE2.md, FILE3.md]. Provide a concise summary with key points and relevant code snippets if available.\n```\nCopy\n\n```\n# Summary of [TOPIC] in [COMPANY] Documentation",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "devrag#main-content",
+      "devrag#overview",
+      "devrag#setup",
+      "devrag#examples",
+      "devrag#tools",
+      "devrag#mcp",
+      "devrag#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "DevRag is a free, local RAG system built specifically for developers using Claude Code. It automatically indexes markdown files and enables natural language semantic search, retrieving only relevant document chunks instead of entire files. This approach consumes 40x fewer tokens and executes 15x faster than traditional document reading. The system uses multilingual-e5-small embeddings to support 100+ languages and runs as a single binary with no Python dependencies. DevRag integrates with Claude Code via MCP, auto-discovering documents and allowing developers to find information quickly without knowing exact file names or paths.\nSearch technical documentation and API references without reading entire files\nQuery project notes and design documents with natural language\nFind relevant code patterns across multiple markdown guides\nRetrieve authentication and security procedures from documentation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tomohiro-owada/devrag`",
+    "usage_vi": "```\nI'm using DevRag to search my [COMPANY] documentation. Please find information about [TOPIC] in the following markdown files: [FILE1.md, FILE2.md, FILE3.md]. Provide a concise summary with key points and relevant code snippets if available.\n```\nCopy\n\n```\n# Summary of [TOPIC] in [COMPANY] Documentation"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:36.833051Z",
+    "http_status": 200,
+    "content_hash": "2f19f84ce7fb9163bc0dec31b260ca2759eb578b071ca311bd12b41a2472d993",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\devrag.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\devrag.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "DevRag - Markdown Vector Search for Claude Code",
+  "short_description_vi": "DevRag is a lightweight RAG system for Claude Code that enables natural language search of markdown files using multilingual-e5-small embeddings. It helps developers quickly find relevant information without reading entire documents, saving tokens and time. The system connects to local markdown files and integrates with Claude Code for efficient document retrieval."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-cmd",
+  "slug": "claude-cmd",
+  "name": "Claude Cmd",
+  "headline": "claude-cmd: Manage Claude Code commands",
+  "short_description": "Claude Code Commands Manager (claude-cmd) is a lightweight CLI tool for managing Claude commands, configurations, and workflows. It helps operations teams automate and streamline interactions with Claude, improving efficiency in workflow automation and integration with other tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "kiliczsh",
+  "install_command": "git clone https://github.com/kiliczsh/claude-cmd.git",
+  "source_repo_url": "https://github.com/kiliczsh/claude-cmd",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "commands",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claude-cmd is a lightweight CLI tool that streamlines management of Claude commands, project configurations, and Model Context Protocol (MCP) servers. It provides an interactive command-line interface for discovering and installing from 184+ available commands, creating project-specific CLAUDE.md configuration files, and managing security profiles. The tool supports both local and remote command repositories, enabling teams to organize custom Claude workflows and automate interactions across projects. With hierarchical configuration management and built-in MCP integration, claude-cmd helps operations and development teams reduce manual setup time and maintain consistent Claude AI configurations.\nDiscovering and installing reusable Claude commands from online repositories\nCreating and managing project-specific Claude instructions with CLAUDE.md files\nConfiguring security profiles and permissions for Claude operations\nManaging multiple MCP servers across different projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kiliczsh/claude-cmd`",
+    "usage": "```\nUse claude-cmd to [TASK]. For example: 'List all saved Claude commands tagged with [TAG].' or 'Run the command named [COMMAND_NAME] with arguments [ARGUMENTS].' Ensure the output is formatted for easy integration into [TARGET_SYSTEM].\n```\nCopy\n\n```\n```json\n{\n  \"commands\": [\n    {\n      \"name\": \"analyze-logs\",\n      \"description\": \"Parses application logs for errors and generates a summary report.\",\n      \"tags\": [\"devops\", \"log-analysis\"],\n      \"last_run\": \"2024-05-15T14:30:00Z\",\n      \"usage\": \"claude-cmd run analyze-logs --path /var/log/app --threshold 50\"\n    },\n    {\n      \"name\": \"deploy-service\",\n      \"description\": \"Deploys a microservice to Kubernetes with rollback support.\",\n      \"tags\": [\"devops\", \"kubernetes\"],\n      \"last_run\": \"2024-05-14T09:15:00Z\",\n      \"usage\": \"claude-cmd run deploy-service --image myapp:v1.2.3 --namespace staging\"\n    }\n  ],\n  \"total_commands\": 2,\n  \"recent_activity\": {\n    \"last_command\": \"deploy-service\",\n    \"status\": \"success\",\n    \"output_path\": \"/tmp/deploy-service-20240514.log\"\n  }\n}\n```\n\n**Key Insights:**\n- The `analyze-logs` command was last run 2 days ago and is tagged for devops workflows. It’s ideal for proactive error detection in production environments.\n- The `deploy-service` command supports Kubernetes deployments with built-in rollback, making it critical for CI/CD pipelines. Its recent successful run indicates stability.\n- Both commands integrate seamlessly with GitHub Actions and Jenkins, as confirmed by their configuration files in `~/.claude-cmd/configs/`.\n\n**Next Steps:**\n1. Use `claude-cmd run analyze-logs --path /var/log/app --threshold 50` to generate a fresh error report for today’s logs.\n2. Schedule the `deploy-service` command in your CI pipeline to trigger deployments automatically after code merges to the `main` branch.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-cmd#main-content",
+      "claude-cmd#overview",
+      "claude-cmd#setup",
+      "claude-cmd#examples",
+      "claude-cmd#tools",
+      "claude-cmd#mcp",
+      "claude-cmd#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-cmd là một công cụ CLI gọn nhẹ giúp tối ưu hóa việc quản lý các lệnh Claude, cấu hình dự án và các server Model Context Protocol (MCP). Công cụ cung cấp một giao diện dòng lệnh tương tác để tìm kiếm và cài đặt từ hơn 184 lệnh có sẵn, tạo các file cấu hình CLAUDE.md riêng cho từng dự án, và quản lý các profile bảo mật. Công cụ hỗ trợ cả repository chứa lệnh local và remote, cho phép các đội ngũ tổ chức các workflow Claude tùy chỉnh và tự động hóa các tương tác giữa các dự án. Với tính năng quản lý cấu hình theo cấp bậc (hierarchical) và tích hợp MCP sẵn có, claude-cmd giúp các đội ngũ vận hành và phát triển giảm thời gian setup thủ công và duy trì các cấu hình Claude AI đồng nhất.\nTìm kiếm và cài đặt các lệnh Claude có thể tái sử dụng từ các repository trực tuyến\nTạo và quản lý các chỉ dẫn Claude riêng cho dự án bằng file CLAUDE.md\nCấu hình các profile bảo mật và quyền hạn cho các hoạt động của Claude\nQuản lý nhiều server MCP trên các dự án khác nhau",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kiliczsh/claude-cmd`",
+    "usage_vi": "```\nSử dụng claude-cmd để [TASK]. Ví dụ: 'Liệt kê tất cả các lệnh Claude đã lưu có gắn tag [TAG].' hoặc 'Chạy lệnh có tên [COMMAND_NAME] với các đối số [ARGUMENTS].' Đảm bảo đầu ra được định dạng để dễ dàng tích hợp vào [TARGET_SYSTEM].\n```\nCopy\n\n```\n```json\n{\n  \"commands\": [\n    {\n      \"name\": \"analyze-logs\",\n      \"description\": \"Phân tích log ứng dụng để tìm lỗi và tạo báo cáo tóm tắt.\",\n      \"tags\": [\"devops\", \"log-analysis\"],\n      \"last_run\": \"2024-05-15T14:30:00Z\",\n      \"usage\": \"claude-cmd run analyze-logs --path /var/log/app --threshold 50\"\n    },\n    {\n      \"name\": \"deploy-service\",\n      \"description\": \"Triển khai một microservice lên Kubernetes có hỗ trợ rollback.\",\n      \"tags\": [\"devops\", \"kubernetes\"],\n      \"last_run\": \"2024-05-14T09:15:00Z\",\n      \"usage\": \"claude-cmd run deploy-service --image myapp:v1.2.3 --namespace staging\"\n    }\n  ],\n  \"total_commands\": 2,\n  \"recent_activity\": {\n    \"last_command\": \"deploy-service\",\n    \"status\": \"success\",\n    \"output_path\": \"/tmp/deploy-service-20240514.log\"\n  }\n}\n```\n\n**Thông tin chính:**\n- Lệnh `analyze-logs` được chạy lần cuối cách đây 2 ngày và được gắn tag cho các workflow devops. Lệnh này rất lý tưởng cho việc chủ động phát hiện lỗi trong môi trường production.\n- Lệnh `deploy-service` hỗ trợ triển khai Kubernetes với tính năng rollback tích hợp sẵn, đóng vai trò quan trọng trong các pipeline CI/CD. Lần chạy thành công gần đây cho thấy sự ổn định.\n- Cả hai lệnh đều tích hợp mượt mà với GitHub Actions và Jenkins, như đã xác nhận bởi các file cấu hình tương ứng trong `~/.claude-cmd/configs/`.\n\n**Các bước tiếp theo:**\n1. Sử dụng lệnh `claude-cmd run analyze-logs --path /var/log/app --threshold 50` để tạo báo cáo lỗi mới cho các log ngày hôm nay.\n2. Lập lịch cho lệnh `deploy-service` trong CI pipeline của bạn để tự động kích hoạt triển khai sau khi code được merge vào branch `main`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:35:34.624663Z",
+    "http_status": 200,
+    "content_hash": "19d3e985f352b7953dccd81c409abcf827468969a0e0d6fdb9653df73ef3107f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-cmd.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-cmd.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-cmd: Quản lý các lệnh Claude Code",
+  "short_description_vi": "Claude Code Commands Manager (claude-cmd) là một công cụ CLI gọn nhẹ để quản lý các lệnh, cấu hình và workflow của Claude. Công cụ này giúp các đội ngũ vận hành (operations) tự động hóa và tối ưu hóa các tương tác với Claude, nâng cao hiệu quả tự động hóa quy trình làm việc và tích hợp với các công cụ khác."
+}

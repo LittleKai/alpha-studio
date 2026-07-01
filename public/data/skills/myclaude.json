@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/myclaude",
+  "slug": "myclaude",
+  "name": "myclaude",
+  "headline": "Claude Code Multi-Agent Workflow System",
+  "short_description": "Multi-agent orchestration workflow for Claude agents. Enables operations teams to automate complex tasks by coordinating multiple AI agents. Connects to Claude Code, Codex, and Gemini OpenCode for enhanced workflow automation.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "cexll",
+  "install_command": "git clone https://github.com/cexll/myclaude.git",
+  "source_repo_url": "https://github.com/cexll/myclaude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "myclaude is a multi-agent orchestration system designed for Claude agents to automate complex workflows by coordinating multiple AI agents. The system auto-detects project types and injects relevant skills into sub-agent prompts, enabling intelligent task execution without manual configuration. It features per-task skill specification, project fingerprinting (go.mod, package.json), and built-in skill content injection. The framework supports organized agent architecture with dedicated agent directories, CLI tools for skill management, and structured task execution pipelines. Operations teams use myclaude to reduce manual intervention in complex multi-step automation scenarios.\nAutomate feature development using the '/do' command for structured workflows.\nQuickly investigate and fix bugs with the intelligent routing of the '/omo' command.\nManage large enterprise projects efficiently with the '/bmad-pilot' command.\nRapidly prototype new ideas using the lightweight '/requirements-pilot' command.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cexll/myclaude`",
+    "usage": "```\nCreate a multi-agent orchestration workflow for [SPECIFIC TASK] using Claude agents. The workflow should coordinate between Claude Code, Codex, and Gemini OpenCode to automate the process. Ensure the workflow includes error handling and progress tracking. Provide a step-by-step plan for implementation.\n```\nCopy\n\n```\nTo automate the process of generating and deploying a web application, we can create a multi-agent orchestration workflow that coordinates between Claude Code, Codex, and Gemini OpenCode. The workflow will consist of the following steps:\n\n1. **Task Decomposition**: Claude Code will break down the task of generating and deploying a web application into smaller subtasks, such as designing the user interface, writing the backend code, and setting up the deployment environment.\n\n2. **Code Generation**: Codex will generate the necessary code for each subtask. For example, it will generate the HTML, CSS, and JavaScript code for the user interface and the Python or Node.js code for the backend.\n\n3. **Code Review and Optimization**: Gemini OpenCode will review the generated code for errors, optimize it for performance, and ensure it follows best practices.\n\n4. **Deployment**: Claude Code will deploy the optimized code to a cloud platform like AWS or Azure. It will also set up monitoring and logging to track the application's performance.\n\n5. **Error Handling and Progress Tracking**: Throughout the workflow, Claude Code will monitor the progress of each subtask and handle any errors that may occur. It will also provide regular updates on the overall progress of the task.\n\nBy coordinating between these three AI agents, we can automate the entire process of generating and deploying a web application, reducing the time and effort required to complete the task.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "myclaude#main-content",
+      "myclaude#overview",
+      "myclaude#setup",
+      "myclaude#examples",
+      "myclaude#tools",
+      "myclaude#mcp",
+      "myclaude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "myclaude is a multi-agent orchestration system designed for Claude agents to automate complex workflows by coordinating multiple AI agents. The system auto-detects project types and injects relevant skills into sub-agent prompts, enabling intelligent task execution without manual configuration. It features per-task skill specification, project fingerprinting (go.mod, package.json), and built-in skill content injection. The framework supports organized agent architecture with dedicated agent directories, CLI tools for skill management, and structured task execution pipelines. Operations teams use myclaude to reduce manual intervention in complex multi-step automation scenarios.\nAutomate feature development using the '/do' command for structured workflows.\nQuickly investigate and fix bugs with the intelligent routing of the '/omo' command.\nManage large enterprise projects efficiently with the '/bmad-pilot' command.\nRapidly prototype new ideas using the lightweight '/requirements-pilot' command.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cexll/myclaude`",
+    "usage_vi": "```\nCreate a multi-agent orchestration workflow for [SPECIFIC TASK] using Claude agents. The workflow should coordinate between Claude Code, Codex, and Gemini OpenCode to automate the process. Ensure the workflow includes error handling and progress tracking. Provide a step-by-step plan for implementation.\n```\nCopy\n\n```\nTo automate the process of generating and deploying a web application, we can create a multi-agent orchestration workflow that coordinates between Claude Code, Codex, and Gemini OpenCode. The workflow will consist of the following steps:\n\n1. **Task Decomposition**: Claude Code will break down the task of generating and deploying a web application into smaller subtasks, such as designing the user interface, writing the backend code, and setting up the deployment environment.\n\n2. **Code Generation**: Codex will generate the necessary code for each subtask. For example, it will generate the HTML, CSS, and JavaScript code for the user interface and the Python or Node.js code for the backend.\n\n3. **Code Review and Optimization**: Gemini OpenCode will review the generated code for errors, optimize it for performance, and ensure it follows best practices.\n\n4. **Deployment**: Claude Code will deploy the optimized code to a cloud platform like AWS or Azure. It will also set up monitoring and logging to track the application's performance.\n\n5. **Error Handling and Progress Tracking**: Throughout the workflow, Claude Code will monitor the progress of each subtask and handle any errors that may occur. It will also provide regular updates on the overall progress of the task.\n\nBy coordinating between these three AI agents, we can automate the entire process of generating and deploying a web application, reducing the time and effort required to complete the task.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:43:24.115872Z",
+    "http_status": 200,
+    "content_hash": "308139c3120a8efd053ea978619ae2421b77c904a060bf923874d4ea4d55c94c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\myclaude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\myclaude.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Multi-Agent Workflow System",
+  "short_description_vi": "Multi-agent orchestration workflow for Claude agents. Enables operations teams to automate complex tasks by coordinating multiple AI agents. Connects to Claude Code, Codex, and Gemini OpenCode for enhanced workflow automation."
+}

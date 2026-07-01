@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-install-instructions-generator",
+  "slug": "mcp-install-instructions-generator",
+  "name": "browser-use",
+  "headline": "MCP Install Instructions Generator - Automate MCP",
+  "short_description": "Generates step-by-step installation instructions for MCP servers across various IDEs and platforms. Benefits developers and operations teams by automating documentation. Connects to Cursor, VS Code, Claude Code, and more.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "hyprmcp",
+  "install_command": "git clone https://github.com/hyprmcp/mcp-install-instructions-generator.git",
+  "source_repo_url": "https://github.com/hyprmcp/mcp-install-instructions-generator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-desktop",
+    "mcp-server",
+    "code",
+    "hyprmcp",
+    "chatgpt",
+    "remote-mcp-server",
+    "typescript",
+    "mcp",
+    "gemini"
+  ],
+  "sections": {
+    "overview": "MCP Install Instructions Generator automates the creation of setup documentation for MCP servers across multiple IDEs and platforms including Cursor, VS Code, and Claude Code. The tool works as a web application, CLI tool, MCP server, or JavaScript package, allowing developers to generate installation guides in markdown format for their own MCP implementations. It eliminates manual documentation work by parsing MCP server configurations and producing platform-specific instructions. Operations teams and developers benefit from reduced setup friction and consistent, accurate installation guidance across different development environments.\nGenerate installation guides for custom MCP servers across multiple platforms\nAutomate MCP documentation for IDE integration (Cursor, VS Code, Claude Code)\nCreate markdown installation instructions via CLI for developer tooling\nEmbed installation guides directly in web applications using the web component",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hyprmcp/mcp-install-instructions-generator`\n1. **Clone the MCP Repository**\n   - Open a terminal in VS Code\n   - Run: `git clone https://github.com/mcp/mcp-server.git`\n   - Navigate to the cloned directory: `cd mcp-server`\n\n2. **Install Dependencies**\n   - Run: `npm install`\n   - If you encounter permission issues, use: `sudo npm install` (Linux/Mac)\n\n3. **Configure the Server**\n   - Open the `config.json` file\n   - Update the following settings:\n     - `server.port`: Set to your desired port (e.g., 3000)\n     - `database.connectionString`: Enter your database connection string\n\n4. **Start the Server**\n   - Run: `npm start`\n   - The server should now be running on `http://localhost:[PORT]`",
+    "usage": "```\nGenerate step-by-step installation instructions for an MCP server in [IDE/Platform]. Include prerequisites, step-by-step commands, and troubleshooting tips. Format the output as a clear, numbered list with bullet points for additional details.\n```\nCopy\n\n```\n# MCP Server Installation Instructions for Visual Studio Code",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-install-instructions-generator#main-content",
+      "mcp-install-instructions-generator#overview",
+      "mcp-install-instructions-generator#setup",
+      "mcp-install-instructions-generator#examples",
+      "mcp-install-instructions-generator#tools",
+      "mcp-install-instructions-generator#mcp",
+      "mcp-install-instructions-generator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP Install Instructions Generator automates the creation of setup documentation for MCP servers across multiple IDEs and platforms including Cursor, VS Code, and Claude Code. The tool works as a web application, CLI tool, MCP server, or JavaScript package, allowing developers to generate installation guides in markdown format for their own MCP implementations. It eliminates manual documentation work by parsing MCP server configurations and producing platform-specific instructions. Operations teams and developers benefit from reduced setup friction and consistent, accurate installation guidance across different development environments.\nGenerate installation guides for custom MCP servers across multiple platforms\nAutomate MCP documentation for IDE integration (Cursor, VS Code, Claude Code)\nCreate markdown installation instructions via CLI for developer tooling\nEmbed installation guides directly in web applications using the web component",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/hyprmcp/mcp-install-instructions-generator`\n1. **Clone the MCP Repository**\n   - Open a terminal in VS Code\n   - Run: `git clone https://github.com/mcp/mcp-server.git`\n   - Navigate to the cloned directory: `cd mcp-server`\n\n2. **Install Dependencies**\n   - Run: `npm install`\n   - If you encounter permission issues, use: `sudo npm install` (Linux/Mac)\n\n3. **Configure the Server**\n   - Open the `config.json` file\n   - Update the following settings:\n     - `server.port`: Set to your desired port (e.g., 3000)\n     - `database.connectionString`: Enter your database connection string\n\n4. **Start the Server**\n   - Run: `npm start`\n   - The server should now be running on `http://localhost:[PORT]`",
+    "usage_vi": "```\nGenerate step-by-step installation instructions for an MCP server in [IDE/Platform]. Include prerequisites, step-by-step commands, and troubleshooting tips. Format the output as a clear, numbered list with bullet points for additional details.\n```\nCopy\n\n```\n# MCP Server Installation Instructions for Visual Studio Code"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:31:29.485625Z",
+    "http_status": 200,
+    "content_hash": "ab8b2f560f695846558f2f1beccf2a88bad347ba54bd38b88d3a32e75607b526",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-install-instructions-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-install-instructions-generator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MCP Install Instructions Generator - Automate MCP",
+  "short_description_vi": "Generates step-by-step installation instructions for MCP servers across various IDEs and platforms. Benefits developers and operations teams by automating documentation. Connects to Cursor, VS Code, Claude Code, and more."
+}

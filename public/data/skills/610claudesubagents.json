@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/610claudesubagents",
+  "slug": "610claudesubagents",
+  "name": "610ClaudeSubagents",
+  "headline": "610ClaudeSubagents: AI task automation",
+  "short_description": "610ClaudeSubagents enables operations teams to deploy 600+ AI agents for parallel task automation. Benefits include streamlined workflows, reduced manual effort, and enhanced productivity. Integrates with Claude agents to automate complex processes without coding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "ChrisRoyse",
+  "install_command": "git clone https://github.com/ChrisRoyse/610ClaudeSubagents.git",
+  "source_repo_url": "https://github.com/ChrisRoyse/610ClaudeSubagents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "610ClaudeSubagents provides a comprehensive AI agent ecosystem with 610+ specialized agents designed for enterprise automation. The framework includes 422 non-coding agents for business strategy, market research, financial analysis, and predictions, plus 188 coding agents spanning development, testing, DevOps, and AI-ML. Agents operate with full internet access and can be orchestrated in parallel swarms to automate market research, customer journey optimization, competitive intelligence, technology evaluation, pricing strategies, and multi-channel campaigns. Operations teams and business analysts can deploy agents for tasks like comprehensive market analysis, investment evaluation, and marketing campaign orchestration without writing code.\nComprehensive market research and competitive intelligence gathering across multiple data sources\nCustomer journey optimization and conversion rate analysis across all touchpoints\nMulti-channel marketing campaign planning with A/B testing and performance prediction\nTechnology stack evaluation and investment opportunity analysis",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ChrisRoyse/610ClaudeSubagents`",
+    "usage": "```\nDeploy [NUMBER] 610ClaudeSubagents to automate [TASK/DEPARTMENT] workflows. Configure each agent to handle [SPECIFIC_ACTION] for [TARGET_INPUT]. Monitor progress via [MONITORING_TOOL] and log results to [OUTPUT_DESTINATION]. Ensure agents follow the priority order: [PRIORITY_CRITERIA].\n```\nCopy\n\n```\n### 610ClaudeSubagents Deployment Report\n**Task:** Automate invoice processing for 500+ vendors\n**Agents Deployed:** 120 subagents (batch processing, validation, and approval routing)\n**Actions Per Agent:**\n- Agent 1-40: Extract data from PDF invoices (vendor name, amount, due date)\n- Agent 41-80: Validate vendor details against internal database (flag mismatches)\n- Agent 81-120: Route approved invoices to accounting team via Slack API\n\n**Progress Log (First 2 Hours):**\n- 0-30 min: 120 agents activated, 450/500 invoices processed (90%)\n- 30-60 min: 98% validation accuracy (441/450 invoices passed checks)\n- 60-120 min: 38 invoices flagged for manual review (vendor discrepancies)\n- **Output:** 412 invoices auto-approved and routed to QuickBooks; 38 pending resolution\n\n**Errors Detected:**\n- 5 invoices: Missing PO numbers (auto-flagged for accounting team)\n- 2 invoices: Vendor not in approved list (escalated to procurement)\n- 1 invoice: Duplicate entry (removed from queue)\n\n**Next Steps:**\n1. Review 38 flagged invoices in priority order (highest amounts first)\n2. Trigger Agent 121 (escalation handler) to notify stakeholders via email\n3. Generate summary report for finance team with processing metrics\n\n**Performance Metrics:**\n- Total time saved: ~16 hours (vs. manual processing)\n- Accuracy: 98% (vs. ~92% for human teams)\n- Cost reduction: $1,200 (estimated labor savings)\n\n**Agent Utilization:**\n- Idle agents (0% CPU): 12 (waiting for next batch)\n- Active agents (80%+ CPU): 108\n- Failed agents: 0 (100% uptime during deployment)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "610claudesubagents#main-content",
+      "610claudesubagents#overview",
+      "610claudesubagents#setup",
+      "610claudesubagents#examples",
+      "610claudesubagents#tools",
+      "610claudesubagents#mcp",
+      "610claudesubagents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "610ClaudeSubagents cung cấp một hệ sinh thái agent AI toàn diện với hơn 610 agent chuyên dụng được thiết kế cho việc tự động hóa doanh nghiệp. Framework này bao gồm 422 agent không cần code phục vụ cho chiến lược kinh doanh, nghiên cứu thị trường, phân tích tài chính và dự báo, cùng với 188 agent lập trình hỗ trợ phát triển, kiểm thử, DevOps và AI-ML. Các agent hoạt động với quyền truy cập internet toàn diện và có thể được điều phối theo các nhóm song song (swarm) để tự động hóa nghiên cứu thị trường, tối ưu hóa hành trình khách hàng, thu thập thông tin cạnh tranh, đánh giá công nghệ, chiến lược giá và các chiến dịch đa kênh. Đội ngũ vận hành và các business analyst có thể triển khai các agent cho các tác vụ như phân tích thị trường toàn diện, đánh giá đầu tư và điều phối chiến dịch marketing mà không cần viết code.\nNghiên cứu thị trường toàn diện và thu thập thông tin cạnh tranh trên nhiều nguồn dữ liệu khác nhau\nTối ưu hóa hành trình khách hàng và phân tích tỷ lệ chuyển đổi trên mọi điểm chạm\nLập kế hoạch chiến dịch marketing đa kênh với thử nghiệm A/B và dự đoán hiệu suất\nĐánh giá stack công nghệ và phân tích cơ hội đầu tư",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ChrisRoyse/610ClaudeSubagents`",
+    "usage_vi": "```\nTriển khai [NUMBER] 610ClaudeSubagents để tự động hóa quy trình làm việc của [TASK/DEPARTMENT]. Cấu hình từng agent để xử lý [SPECIFIC_ACTION] cho [TARGET_INPUT]. Giám sát tiến độ qua [MONITORING_TOOL] và ghi log kết quả vào [OUTPUT_DESTINATION]. Đảm bảo các agent tuân thủ thứ tự ưu tiên: [PRIORITY_CRITERIA].\n```\nCopy\n\n```\n### Báo cáo triển khai 610ClaudeSubagents\n**Tác vụ:** Tự động hóa quy trình xử lý hóa đơn cho hơn 500 nhà cung cấp\n**Agent đã triển khai:** 120 subagent (xử lý hàng loạt, xác thực và định tuyến phê duyệt)\n**Hành động của từng Agent:**\n- Agent 1-40: Trích xuất dữ liệu từ hóa đơn PDF (tên nhà cung cấp, số tiền, hạn thanh toán)\n- Agent 41-80: Xác thực thông tin chi tiết của nhà cung cấp đối chiếu với cơ sở dữ liệu nội bộ (đánh dấu các trường hợp không khớp)\n- Agent 81-120: Định tuyến các hóa đơn đã phê duyệt đến đội ngũ kế toán qua Slack API\n\n**Nhật ký tiến độ (2 giờ đầu tiên):**\n- 0-30 phút: Kích hoạt 120 agent, đã xử lý 450/500 hóa đơn (90%)\n- 30-60 phút: Độ chính xác xác thực đạt 98% (441/450 hóa đơn vượt qua các bước kiểm tra)\n- 60-120 phút: 38 hóa đơn bị gắn cờ để xem xét thủ công (sai lệch thông tin nhà cung cấp)\n- **Đầu ra:** 412 hóa đơn được tự động phê duyệt và định tuyến đến QuickBooks; 38 hóa đơn đang chờ giải quyết\n\n**Lỗi được phát hiện:**\n- 5 hóa đơn: Thiếu số PO (tự động gắn cờ cho đội ngũ kế toán)\n- 2 hóa đơn: Nhà cung cấp không có trong danh sách được phê duyệt (chuyển tiếp yêu cầu hỗ trợ lên bộ phận mua sắm)\n- 1 hóa đơn: Trùng lặp mục nhập (đã xóa khỏi hàng đợi)\n\n**Các bước tiếp theo:**\n1. Xem xét 38 hóa đơn bị gắn cờ theo thứ tự ưu tiên (ưu tiên số tiền lớn nhất trước)\n2. Kích hoạt Agent 121 (bộ xử lý chuyển tiếp yêu cầu) để thông báo cho các bên liên quan qua email\n3. Tạo báo cáo tổng hợp cho đội ngũ tài chính với các chỉ số xử lý\n\n**Chỉ số hiệu suất:**\n- Tổng thời gian tiết kiệm được: ~16 giờ (so với xử lý thủ công)\n- Độ chính xác: 98% (so với ~92% của đội ngũ nhân sự thực hiện)\n- Cắt giảm chi phí: $1,200 (ước tính chi phí nhân công tiết kiệm được)\n\n**Tỷ lệ sử dụng Agent:**\n- Agent rảnh rỗi (0% CPU): 12 (đang chờ lô tiếp theo)\n- Agent hoạt động (80%+ CPU): 108\n- Agent bị lỗi: 0 (uptime đạt 100% trong suốt quá trình triển khai)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:56:08.879863Z",
+    "http_status": 200,
+    "content_hash": "7c3f551ff468aece5c59b711bd4c56f29de6b2d1ded7deb91451410e86af4e04",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\610claudesubagents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\610claudesubagents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "610ClaudeSubagents: Tự động hóa tác vụ bằng AI",
+  "short_description_vi": "610ClaudeSubagents cho phép các đội ngũ vận hành triển khai hơn 600 agent AI để tự động hóa tác vụ song song. Các lợi ích bao gồm tối ưu hóa quy trình làm việc, giảm thiểu công sức thủ công và nâng cao năng suất. Tích hợp với các agent Claude để tự động hóa các quy trình phức tạp mà không cần lập trình."
+}

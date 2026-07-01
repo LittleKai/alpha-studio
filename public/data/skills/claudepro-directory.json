@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudepro-directory",
+  "slug": "claudepro-directory",
+  "name": "Claudepro Directory",
+  "headline": "Claude Pro目录",
+  "short_description": "Claude Pro Directory is a searchable collection of pre-built configurations, MCP servers, and custom rules designed to enhance Claude AI's performance for specific tasks. It benefits operations teams by providing expert rules, specialized agents, and automation hooks. The directory connects to Claude AI and other workflows to improve efficiency and productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "JSONbored",
+  "install_command": "git clone https://github.com/JSONbored/claudepro-directory.git",
+  "source_repo_url": "https://github.com/JSONbored/claudepro-directory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "developer-tools",
+    "claude-api",
+    "claude",
+    "anthropic",
+    "ai-tools",
+    "prompt-engineering",
+    "prompts",
+    "claude-skills",
+    "ai-directory",
+    "claude-ai",
+    "claude-desktop",
+    "artificial-intelligence",
+    "open-source",
+    "mcp-servers",
+    "claudecode",
+    "claude-prompts",
+    "awesome-list",
+    "build-in-public",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "HeyClaude is a human-reviewed registry of pre-built Claude resources organized into 10 categories: AI agents, MCP servers, tools, skills, rules, commands, hooks, guides, collections, and statuslines. The directory contains over 1030 file-backed entries that function as both an awesome-list catalog and a machine-readable registry for Claude builders. Resources are available through multiple interfaces including a browsable web directory, API endpoints, MCP package integration, RSS feeds, and LLM exports. The platform supports source-first user-generated content with a human merge gate to ensure quality, helping teams discover and integrate specialized agents, automation hooks, and custom rules to improve Claude performance for specific tasks.\nDiscovering specialized Claude agents and expert role configurations\nFinding and integrating MCP servers to extend Claude capabilities\nAccessing pre-built automation hooks and Claude Code configurations\nBrowsing guardrail rules and prompt templates for consistent workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JSONbored/claudepro-directory`",
+    "usage": "```\nFind and configure a [SPECIFIC_TASK] solution in the Claude Pro Directory. Search for [KEYWORD] and review the top 3 results. Compare their features, setup requirements, and compatibility with [YOUR_TOOL_OR_PLATFORM]. Select the best option and provide step-by-step instructions to implement it in [YOUR_WORKFLOW].\n```\nCopy\n\n```\nI searched the Claude Pro Directory for 'automated customer support agents' and found three promising options: **SupportBot Pro**, **TicketMaster AI**, and **HelpDesk Hero**. Here’s a detailed comparison:\n\n**SupportBot Pro**\n- Features: Pre-trained customer service agent with email, chat, and ticketing integrations; supports 10+ languages; includes sentiment analysis and escalation rules.\n- Setup: Requires API keys for your CRM (e.g., Salesforce) and a Slack/Teams workspace. Installation takes ~30 minutes using the provided MCP server.\n- Compatibility: Works with Zoho Desk, Freshdesk, and HubSpot. Best for teams handling 500+ support tickets/month.\n- Pricing: Free tier for up to 100 tickets/month; paid plans start at $49/month.\n\n**TicketMaster AI**\n- Features: Focuses on ticket routing and prioritization; uses ML to categorize and assign tickets based on urgency and agent load. Includes a dashboard for real-time monitoring.\n- Setup: Requires access to your ticketing system (e.g., Jira Service Desk) and a PostgreSQL database for historical data. Setup guide includes SQL queries for data migration.\n- Compatibility: Integrates with ServiceNow, Zendesk, and Jira. Ideal for IT support teams with complex ticket workflows.\n- Pricing: $99/month for teams up to 20 agents; custom pricing for larger teams.\n\n**HelpDesk Hero**\n- Features: Combines AI-powered responses with knowledge base integration; includes a chatbot for FAQs and a 'suggested reply' feature for agents.\n- Setup: Requires a knowledge base (e.g., Notion or Confluence) and a live chat platform (e.g., Intercom). Setup involves configuring the knowledge base and training the AI on your FAQs.\n- Compatibility: Works with Intercom, Drift, and Gorgias. Best for SaaS companies with a strong self-service culture.\n- Pricing: Starts at $149/month for up to 1,000 monthly conversations.\n\n**Recommendation:** For our team’s needs (handling 800+ tickets/month with a mix of email and chat support), **SupportBot Pro** is the best fit. It offers the most comprehensive feature set and integrates seamlessly with our existing Salesforce and Slack workflows. Here’s how to implement it:\n\n1. **Sign Up and API Keys:** Create an account on the SupportBot Pro website and generate API keys for Salesforce and Slack.\n2. **Install the MCP Server:** Download the MCP server from the directory and follow the installation guide to connect it to your Claude AI instance. Use the command `claude install supportbot-mcp --api-key YOUR_API_KEY`.\n3. **Configure Integrations:** In the SupportBot Pro dashboard, link your Salesforce account and Slack workspace. Set up the email and chat channels you want to automate.\n4. **Test and Train:** Run a pilot with a small batch of tickets to test the AI’s responses. Use the feedback to train the agent on your specific use cases (e.g., common customer complaints).\n5. **Deploy Gradually:** Start with low-priority tickets and gradually expand to higher-priority ones as the AI improves. Monitor performance using the built-in analytics dashboard.\n\n**Pro Tip:** Use the directory’s 'custom rules' feature to fine-tune the AI’s responses. For example, you can add rules to prioritize tickets from high-value customers or escalate issues related to billing errors.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudepro-directory#main-content",
+      "claudepro-directory#overview",
+      "claudepro-directory#setup",
+      "claudepro-directory#examples",
+      "claudepro-directory#tools",
+      "claudepro-directory#mcp",
+      "claudepro-directory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "HeyClaude is a human-reviewed registry of pre-built Claude resources organized into 10 categories: AI agents, MCP servers, tools, skills, rules, commands, hooks, guides, collections, and statuslines. The directory contains over 1030 file-backed entries that function as both an awesome-list catalog and a machine-readable registry for Claude builders. Resources are available through multiple interfaces including a browsable web directory, API endpoints, MCP package integration, RSS feeds, and LLM exports. The platform supports source-first user-generated content with a human merge gate to ensure quality, helping teams discover and integrate specialized agents, automation hooks, and custom rules to improve Claude performance for specific tasks.\nDiscovering specialized Claude agents and expert role configurations\nFinding and integrating MCP servers to extend Claude capabilities\nAccessing pre-built automation hooks and Claude Code configurations\nBrowsing guardrail rules and prompt templates for consistent workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/JSONbored/claudepro-directory`",
+    "usage_vi": "```\nFind and configure a [SPECIFIC_TASK] solution in the Claude Pro Directory. Search for [KEYWORD] and review the top 3 results. Compare their features, setup requirements, and compatibility with [YOUR_TOOL_OR_PLATFORM]. Select the best option and provide step-by-step instructions to implement it in [YOUR_WORKFLOW].\n```\nCopy\n\n```\nI searched the Claude Pro Directory for 'automated customer support agents' and found three promising options: **SupportBot Pro**, **TicketMaster AI**, and **HelpDesk Hero**. Here’s a detailed comparison:\n\n**SupportBot Pro**\n- Features: Pre-trained customer service agent with email, chat, and ticketing integrations; supports 10+ languages; includes sentiment analysis and escalation rules.\n- Setup: Requires API keys for your CRM (e.g., Salesforce) and a Slack/Teams workspace. Installation takes ~30 minutes using the provided MCP server.\n- Compatibility: Works with Zoho Desk, Freshdesk, and HubSpot. Best for teams handling 500+ support tickets/month.\n- Pricing: Free tier for up to 100 tickets/month; paid plans start at $49/month.\n\n**TicketMaster AI**\n- Features: Focuses on ticket routing and prioritization; uses ML to categorize and assign tickets based on urgency and agent load. Includes a dashboard for real-time monitoring.\n- Setup: Requires access to your ticketing system (e.g., Jira Service Desk) and a PostgreSQL database for historical data. Setup guide includes SQL queries for data migration.\n- Compatibility: Integrates with ServiceNow, Zendesk, and Jira. Ideal for IT support teams with complex ticket workflows.\n- Pricing: $99/month for teams up to 20 agents; custom pricing for larger teams.\n\n**HelpDesk Hero**\n- Features: Combines AI-powered responses with knowledge base integration; includes a chatbot for FAQs and a 'suggested reply' feature for agents.\n- Setup: Requires a knowledge base (e.g., Notion or Confluence) and a live chat platform (e.g., Intercom). Setup involves configuring the knowledge base and training the AI on your FAQs.\n- Compatibility: Works with Intercom, Drift, and Gorgias. Best for SaaS companies with a strong self-service culture.\n- Pricing: Starts at $149/month for up to 1,000 monthly conversations.\n\n**Recommendation:** For our team’s needs (handling 800+ tickets/month with a mix of email and chat support), **SupportBot Pro** is the best fit. It offers the most comprehensive feature set and integrates seamlessly with our existing Salesforce and Slack workflows. Here’s how to implement it:\n\n1. **Sign Up and API Keys:** Create an account on the SupportBot Pro website and generate API keys for Salesforce and Slack.\n2. **Install the MCP Server:** Download the MCP server from the directory and follow the installation guide to connect it to your Claude AI instance. Use the command `claude install supportbot-mcp --api-key YOUR_API_KEY`.\n3. **Configure Integrations:** In the SupportBot Pro dashboard, link your Salesforce account and Slack workspace. Set up the email and chat channels you want to automate.\n4. **Test and Train:** Run a pilot with a small batch of tickets to test the AI’s responses. Use the feedback to train the agent on your specific use cases (e.g., common customer complaints).\n5. **Deploy Gradually:** Start with low-priority tickets and gradually expand to higher-priority ones as the AI improves. Monitor performance using the built-in analytics dashboard.\n\n**Pro Tip:** Use the directory’s 'custom rules' feature to fine-tune the AI’s responses. For example, you can add rules to prioritize tickets from high-value customers or escalate issues related to billing errors.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:40.717471Z",
+    "http_status": 200,
+    "content_hash": "8a498125de2ebd20726327492bb15d02d525319bca9e9b14d5e2926d410eb6a3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudepro-directory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudepro-directory.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Pro目录",
+  "short_description_vi": "Claude Pro Directory is a searchable collection of pre-built configurations, MCP servers, and custom rules designed to enhance Claude AI's performance for specific tasks. It benefits operations teams by providing expert rules, specialized agents, and automation hooks. The directory connects to Claude AI and other workflows to improve efficiency and productivity."
+}

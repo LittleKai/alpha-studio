@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/trae",
+  "slug": "trae",
+  "name": "react-native-best-practices",
+  "headline": "Boost Productivity with Trae AI Assistant",
+  "short_description": "Trae automates repetitive tasks and manages workflows for operations teams. It integrates with Claude Code, Cursor, Windsurf, Cline, and Codex to boost productivity and reduce manual effort.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "task management",
+    "AI",
+    "productivity",
+    "automation"
+  ],
+  "sections": {
+    "overview": "Trae is an AI agent skill designed to automate repetitive tasks and streamline workflow management for operations teams. It integrates seamlessly with popular development tools including Claude Code, Cursor, Windsurf, Cline, and Codex to enhance team productivity. By handling routine operations work, Trae reduces manual effort and allows teams to focus on higher-value activities.\nSchedule management\nTask automation\nData analysis",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nUse Trae to automate the following workflow: [WORKFLOW_DESCRIPTION]. Integrate with Productiv to fetch SaaS spending data for [DEPARTMENT/TEAM]. Identify [SPECIFIC_TASKS, e.g., unused licenses, upcoming renewals, or cost-saving opportunities] and generate a report with actionable recommendations. Execute the automation in [TARGET_ENVIRONMENT, e.g., Claude Code, Cursor, or Cline] and log the results for review.\n```\nCopy\n\n```\n### Trae Automation Report: SaaS License Optimization for Engineering Team\n\n**Workflow Executed:** Automated license audit and renewal tracking for the Engineering department (12 team members).\n\n**Productiv Data Fetched:**\n- Total SaaS spend: $18,450/month\n- Licenses reviewed: 42 across 15 tools\n- Renewals due in next 90 days: 8 licenses\n\n**Key Findings:**\n1. **Unused Licenses:** Identified 3 unused Zoom Pro licenses (cost: $1,200/year) and 2 unused Figma Enterprise seats (cost: $1,800/year).\n2. **Redundant Subscriptions:** Discovered overlapping functionality between Slack Premium ($1,500/year) and Microsoft Teams Enterprise ($2,100/year). Recommendation: Consolidate to Teams.\n3. **Renewal Alerts:** 8 licenses (including Adobe Creative Cloud and Jira Premium) are up for renewal in Q3. Trae flagged these for review.\n\n**Actionable Recommendations:**\n- **Immediate:** Cancel Zoom Pro and Figma licenses (save $3,000/year).\n- **Short-term:** Migrate from Slack to Teams (save $600/year).\n- **Long-term:** Negotiate bulk discounts for Adobe and Jira renewals (potential 15% savings).\n\n**Trae Automation Log:**\n- Executed in Cursor IDE with Productiv API integration.\n- Generated CSV report saved to `/reports/2024-06-15_engineering_license_audit.csv`.\n- Notifications sent to Engineering Manager and Finance team via Slack.\n\n**Next Steps:** Schedule a 30-minute review with Engineering and Finance to approve changes and finalize negotiations.\n\n---\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "trae#main-content",
+      "trae#overview",
+      "trae#setup",
+      "trae#examples",
+      "trae#tools",
+      "trae#mcp",
+      "trae#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Trae is an AI agent skill designed to automate repetitive tasks and streamline workflow management for operations teams. It integrates seamlessly with popular development tools including Claude Code, Cursor, Windsurf, Cline, and Codex to enhance team productivity. By handling routine operations work, Trae reduces manual effort and allows teams to focus on higher-value activities.\nSchedule management\nTask automation\nData analysis",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nUse Trae to automate the following workflow: [WORKFLOW_DESCRIPTION]. Integrate with Productiv to fetch SaaS spending data for [DEPARTMENT/TEAM]. Identify [SPECIFIC_TASKS, e.g., unused licenses, upcoming renewals, or cost-saving opportunities] and generate a report with actionable recommendations. Execute the automation in [TARGET_ENVIRONMENT, e.g., Claude Code, Cursor, or Cline] and log the results for review.\n```\nCopy\n\n```\n### Trae Automation Report: SaaS License Optimization for Engineering Team\n\n**Workflow Executed:** Automated license audit and renewal tracking for the Engineering department (12 team members).\n\n**Productiv Data Fetched:**\n- Total SaaS spend: $18,450/month\n- Licenses reviewed: 42 across 15 tools\n- Renewals due in next 90 days: 8 licenses\n\n**Key Findings:**\n1. **Unused Licenses:** Identified 3 unused Zoom Pro licenses (cost: $1,200/year) and 2 unused Figma Enterprise seats (cost: $1,800/year).\n2. **Redundant Subscriptions:** Discovered overlapping functionality between Slack Premium ($1,500/year) and Microsoft Teams Enterprise ($2,100/year). Recommendation: Consolidate to Teams.\n3. **Renewal Alerts:** 8 licenses (including Adobe Creative Cloud and Jira Premium) are up for renewal in Q3. Trae flagged these for review.\n\n**Actionable Recommendations:**\n- **Immediate:** Cancel Zoom Pro and Figma licenses (save $3,000/year).\n- **Short-term:** Migrate from Slack to Teams (save $600/year).\n- **Long-term:** Negotiate bulk discounts for Adobe and Jira renewals (potential 15% savings).\n\n**Trae Automation Log:**\n- Executed in Cursor IDE with Productiv API integration.\n- Generated CSV report saved to `/reports/2024-06-15_engineering_license_audit.csv`.\n- Notifications sent to Engineering Manager and Finance team via Slack.\n\n**Next Steps:** Schedule a 30-minute review with Engineering and Finance to approve changes and finalize negotiations.\n\n---\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:40:56.363773Z",
+    "http_status": 200,
+    "content_hash": "937524af32751e6367dca41d85737791208eb51af3674e6f96f31c3db9701ade",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\trae.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\trae.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Boost Productivity with Trae AI Assistant",
+  "short_description_vi": "Trae automates repetitive tasks and manages workflows for operations teams. It integrates with Claude Code, Cursor, Windsurf, Cline, and Codex to boost productivity and reduce manual effort."
+}

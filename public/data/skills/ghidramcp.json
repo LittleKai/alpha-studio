@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ghidramcp",
+  "slug": "ghidramcp",
+  "name": "react-native-best-practices",
+  "headline": "GhidraMCP: MCP Server for Ghidra",
+  "short_description": "GhidraMCP is a powerful MCP Server designed for Ghidra, facilitating enhanced reverse engineering capabilities. With a strong Java foundation, it streamlines analysis workflows for security researchers and developers alike.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "LaurieWired",
+  "install_command": "claude install LaurieWired/GhidraMCP",
+  "source_repo_url": "https://github.com/LaurieWired/GhidraMCP",
+  "works_with": [
+    "ChatGPT",
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "MCP Server",
+    "Java",
+    "reverse engineering",
+    "security",
+    "Ghidra"
+  ],
+  "sections": {
+    "overview": "GhidraMCP is an MCP server that bridges AI agents with Ghidra, the open-source reverse engineering platform. It enables security researchers and developers to automate binary analysis workflows by exposing Ghidra's capabilities through the Model Context Protocol. The server supports cross-reference lookups, string enumeration, function analysis, and code navigation within binaries. By integrating with Claude Code, Cursor, and other AI agents, GhidraMCP streamlines security research, vulnerability analysis, and malware investigation tasks that traditionally require manual interaction with Ghidra's GUI.\nIntegrate Ghidra with custom plugins to extend its functionality and tailor it to specific needs.\nAutomate repetitive reverse engineering tasks to save time and reduce manual errors.\nEnhance security analysis workflows by streamlining the process of analyzing vulnerabilities in software.\nCollaborate on Ghidra projects by sharing insights and findings with team members in real-time.",
+    "setup": "Terminal\nCopy\n`claude install LaurieWired/GhidraMCP`\n`git clone https://github.com/LaurieWired/GhidraMCP`",
+    "usage": "```\nUse GhidraMCP to analyze the binary [FILE_PATH] for potential vulnerabilities. Focus on identifying [SPECIFIC_VULNERABILITY_TYPE] such as buffer overflows or memory corruption issues. Provide a detailed report including: 1) Disassembly of the vulnerable function, 2) Exploitability assessment, 3) Recommended mitigations, and 4) Pseudo-code of the vulnerable logic. Ensure the analysis includes cross-references to relevant CWE entries.\n```\nCopy\n\n```\n### GhidraMCP Vulnerability Analysis Report\n**Binary Analyzed:** `sample_app.exe` (MD5: `a1b2c3d4e5f6...`)\n**Analysis Date:** 2024-05-15\n**Vulnerability Type:** Stack-based Buffer Overflow (CWE-121)\n\n---\n\n#### 1. Vulnerable Function Disassembly\nThe following disassembly of `process_input()` (address `0x00401234`) reveals a classic stack-based buffer overflow:\n\n```c\nvoid process_input(char *user_input) {\n    char buffer[64];  // Allocated on the stack\n    \n    // Vulnerable: No bounds checking on user_input\n    strcpy(buffer, user_input);  // Dangerous function!\n    \n    // ... rest of function ...\n}\n```\n\n**Key Observations:**\n- `buffer` is a 64-byte stack-allocated array.\n- `strcpy()` is used without validating the length of `user_input`.\n- The function lacks any input sanitization.\n\n---\n\n#### 2. Exploitability Assessment\n**Exploitability Score:** HIGH (CVSS 8.5)\n\n**Exploit Scenario:**\n1. An attacker sends a 128-byte input string (e.g., `python -c \"print('A'*128)\"`).\n2. The `strcpy()` operation overwrites the return address on the stack, redirecting execution to attacker-controlled code.\n3. The attacker can achieve arbitrary code execution with the privileges of the vulnerable process.\n\n**Proof of Concept (PoC) Input:**\n```python\nimport struct\n\n# Craft payload to overwrite return address\npayload = b'A' * 64  # Fill buffer\npayload += b'B' * 4   # Overwrite saved EBP\npayload += struct.pack('<I', 0xdeadbeef)  # Overwrite return address\n\n# Send payload to vulnerable binary\nwith open('exploit.bin', 'wb') as f:\n    f.write(payload)\n```\n\n---\n\n#### 3. Recommended Mitigations\n| Mitigation | Implementation | Effectiveness |\n|------------|----------------|---------------|\n| **Replace `strcpy()`** | Use `strncpy(buffer, user_input, sizeof(buffer)-1)` | High |\n| **Stack Canary** | Enable `-fstack-protector` in GCC | High |\n| **Address Space Layout Randomization (ASLR)** | Enable ASLR in OS | Medium |\n| **Data Execution Prevention (DEP)** | Enable NX bit in binary | High |\n\n**Compiler Flags:**\n```bash\ngcc -fstack-protector -Wformat -Werror=format-security -z noexecstack -o safe_app sample_app.c\n```\n\n---\n\n#### 4. Pseudo-Code of Vulnerable Logic\n```c\nfunction process_input(user_input):\n    buffer = allocate_stack(64)  // 64-byte stack buffer\n    \n    // No length validation\n    copy_string(buffer, user_input)  // strcpy() equivalent\n    \n    // Process buffer (e.g., log, parse)\n    log_message(buffer)\n    \n    return\n```\n\n**Flow of Exploitation:**\n1. User provides `user_input` of length > 64.\n2. `copy_string()` overflows `buffer`, corrupting adjacent stack frames.\n3. Return address is overwritten, allowing control flow hijacking.\n\n---\n\n#### 5. Additional Notes\n- **CWE Reference:** [CWE-121: Stack-based Buffer Overflow](https://cwe.mitre.org/data/definitions/121.html)\n- **Related Ghidra Analysis:**\n  - Cross-references to `strcpy` in the decompiler view.\n  - Stack frame visualization showing buffer layout.\n- **Tools Used:** Ghidra 11.0.2, GhidraMCP 2.1.0, Python 3.11.\n\n**Next Steps:**\n1. Patch the binary using the recommended mitigations.\n2. Re-test with GhidraMCP to confirm the vulnerability is resolved.\n3. Perform fuzz testing (e.g., with AFL++) to identify similar issues.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "ghidramcp#main-content",
+      "ghidramcp#overview",
+      "ghidramcp#setup",
+      "ghidramcp#examples",
+      "ghidramcp#tools",
+      "ghidramcp#mcp",
+      "ghidramcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "GhidraMCP is an MCP server that bridges AI agents with Ghidra, the open-source reverse engineering platform. It enables security researchers and developers to automate binary analysis workflows by exposing Ghidra's capabilities through the Model Context Protocol. The server supports cross-reference lookups, string enumeration, function analysis, and code navigation within binaries. By integrating with Claude Code, Cursor, and other AI agents, GhidraMCP streamlines security research, vulnerability analysis, and malware investigation tasks that traditionally require manual interaction with Ghidra's GUI.\nIntegrate Ghidra with custom plugins to extend its functionality and tailor it to specific needs.\nAutomate repetitive reverse engineering tasks to save time and reduce manual errors.\nEnhance security analysis workflows by streamlining the process of analyzing vulnerabilities in software.\nCollaborate on Ghidra projects by sharing insights and findings with team members in real-time.",
+    "setup_vi": "Terminal\nCopy\n`claude install LaurieWired/GhidraMCP`\n`git clone https://github.com/LaurieWired/GhidraMCP`",
+    "usage_vi": "```\nUse GhidraMCP to analyze the binary [FILE_PATH] for potential vulnerabilities. Focus on identifying [SPECIFIC_VULNERABILITY_TYPE] such as buffer overflows or memory corruption issues. Provide a detailed report including: 1) Disassembly of the vulnerable function, 2) Exploitability assessment, 3) Recommended mitigations, and 4) Pseudo-code of the vulnerable logic. Ensure the analysis includes cross-references to relevant CWE entries.\n```\nCopy\n\n```\n### GhidraMCP Vulnerability Analysis Report\n**Binary Analyzed:** `sample_app.exe` (MD5: `a1b2c3d4e5f6...`)\n**Analysis Date:** 2024-05-15\n**Vulnerability Type:** Stack-based Buffer Overflow (CWE-121)\n\n---\n\n#### 1. Vulnerable Function Disassembly\nThe following disassembly of `process_input()` (address `0x00401234`) reveals a classic stack-based buffer overflow:\n\n```c\nvoid process_input(char *user_input) {\n    char buffer[64];  // Allocated on the stack\n    \n    // Vulnerable: No bounds checking on user_input\n    strcpy(buffer, user_input);  // Dangerous function!\n    \n    // ... rest of function ...\n}\n```\n\n**Key Observations:**\n- `buffer` is a 64-byte stack-allocated array.\n- `strcpy()` is used without validating the length of `user_input`.\n- The function lacks any input sanitization.\n\n---\n\n#### 2. Exploitability Assessment\n**Exploitability Score:** HIGH (CVSS 8.5)\n\n**Exploit Scenario:**\n1. An attacker sends a 128-byte input string (e.g., `python -c \"print('A'*128)\"`).\n2. The `strcpy()` operation overwrites the return address on the stack, redirecting execution to attacker-controlled code.\n3. The attacker can achieve arbitrary code execution with the privileges of the vulnerable process.\n\n**Proof of Concept (PoC) Input:**\n```python\nimport struct\n\n# Craft payload to overwrite return address\npayload = b'A' * 64  # Fill buffer\npayload += b'B' * 4   # Overwrite saved EBP\npayload += struct.pack('<I', 0xdeadbeef)  # Overwrite return address\n\n# Send payload to vulnerable binary\nwith open('exploit.bin', 'wb') as f:\n    f.write(payload)\n```\n\n---\n\n#### 3. Recommended Mitigations\n| Mitigation | Implementation | Effectiveness |\n|------------|----------------|---------------|\n| **Replace `strcpy()`** | Use `strncpy(buffer, user_input, sizeof(buffer)-1)` | High |\n| **Stack Canary** | Enable `-fstack-protector` in GCC | High |\n| **Address Space Layout Randomization (ASLR)** | Enable ASLR in OS | Medium |\n| **Data Execution Prevention (DEP)** | Enable NX bit in binary | High |\n\n**Compiler Flags:**\n```bash\ngcc -fstack-protector -Wformat -Werror=format-security -z noexecstack -o safe_app sample_app.c\n```\n\n---\n\n#### 4. Pseudo-Code of Vulnerable Logic\n```c\nfunction process_input(user_input):\n    buffer = allocate_stack(64)  // 64-byte stack buffer\n    \n    // No length validation\n    copy_string(buffer, user_input)  // strcpy() equivalent\n    \n    // Process buffer (e.g., log, parse)\n    log_message(buffer)\n    \n    return\n```\n\n**Flow of Exploitation:**\n1. User provides `user_input` of length > 64.\n2. `copy_string()` overflows `buffer`, corrupting adjacent stack frames.\n3. Return address is overwritten, allowing control flow hijacking.\n\n---\n\n#### 5. Additional Notes\n- **CWE Reference:** [CWE-121: Stack-based Buffer Overflow](https://cwe.mitre.org/data/definitions/121.html)\n- **Related Ghidra Analysis:**\n  - Cross-references to `strcpy` in the decompiler view.\n  - Stack frame visualization showing buffer layout.\n- **Tools Used:** Ghidra 11.0.2, GhidraMCP 2.1.0, Python 3.11.\n\n**Next Steps:**\n1. Patch the binary using the recommended mitigations.\n2. Re-test with GhidraMCP to confirm the vulnerability is resolved.\n3. Perform fuzz testing (e.g., with AFL++) to identify similar issues.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:04:50.462753Z",
+    "http_status": 200,
+    "content_hash": "b6472bcde1acfe81b52ee07ddf8659239c9991d35d709f00764822b1d364b223",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ghidramcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ghidramcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "GhidraMCP: MCP Server for Ghidra",
+  "short_description_vi": "GhidraMCP is a powerful MCP Server designed for Ghidra, facilitating enhanced reverse engineering capabilities. With a strong Java foundation, it streamlines analysis workflows for security researchers and developers alike."
+}

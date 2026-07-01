@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/probe",
+  "slug": "probe",
+  "name": "react-native-best-practices",
+  "headline": "Probe: Semantic Code Search Engine for AI Tools",
+  "short_description": "Probe is a cutting-edge semantic code search engine designed for large codebases, enabling AI-driven coding tools to enhance productivity. Its local architecture ensures fast and efficient code retrieval, making it an essential resource for developers.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "probelabs",
+  "install_command": "claude install probelabs/probe",
+  "source_repo_url": "https://github.com/probelabs/probe",
+  "works_with": [
+    "VS CodeGitHub Copilot"
+  ],
+  "tags": [
+    "AI coding",
+    "local search",
+    "Rust",
+    "semantic search",
+    "code search"
+  ],
+  "sections": {
+    "overview": "Probe is a code and markdown context engine designed for enterprise-scale codebases, treating code as structured syntax rather than plain text. It uses Tree-sitter AST parsing and Elasticsearch-style boolean queries to deliver complete, meaningful context in single calls—entire functions and classes instead of fragmented lines. Unlike text-based grep tools or embedding-based search requiring indexing and external models, Probe works fully offline with zero setup, deterministic results, and SIMD-accelerated pattern matching. It integrates natively with Claude Code and Cursor via MCP, and includes a built-in agent for code understanding tasks like spec-driven development, code reviews, and onboarding. Developers benefit from faster agentic loops, token-aware context retrieval, and support for 13+ languages including Rust, Python, JavaScript, TypeScript, Go, Java, and more.\nQuickly locate specific functions or classes in extensive codebases to save time during development.\nEnhance AI coding assistants by providing them with precise code retrieval capabilities for better context understanding.\nStreamline code reviews by efficiently finding relevant code snippets and ensuring quality control.\nSupport onboarding of new developers by enabling them to easily search and understand existing code structures.",
+    "setup": "Terminal\nCopy\n`claude install probelabs/probe`\n`git clone https://github.com/probelabs/probe`",
+    "usage": "```\nUse Probe to search for all instances of [FUNCTION_NAME] in the [PROJECT_NAME] codebase. Identify patterns in how this function is called and suggest optimizations. Highlight any potential security vulnerabilities or performance bottlenecks. Provide code snippets for the top 3 recommendations.\n```\nCopy\n\n```\nAfter analyzing the 'calculateDiscount' function in the 'EcommercePlatform' codebase, Probe identified several key patterns and issues:\n\n1. **Inconsistent Parameter Handling**: The function is called with varying parameter orders, leading to potential bugs. Recommend standardizing the parameter order to (userId, productId, discountCode) across all calls.\n\n2. **Security Vulnerability**: In the 'applyDiscount' module, the function is called without proper input validation. Recommend adding validation for discountCode format and userId existence.\n\n3. **Performance Bottleneck**: The function is called synchronously in the 'checkout' module, causing delays. Recommend implementing an async version for non-critical paths.\n\nCode Snippets:\n- Standardized call: `calculateDiscount(userId, productId, discountCode)`\n- Validated call: `if (validateInputs(userId, productId, discountCode)) { calculateDiscount(...)}`\n- Async call: `calculateDiscountAsync(userId, productId, discountCode).then(handleResponse)`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: VS Code, GitHub Copilot"
+    ],
+    "related_skills": [
+      "probe#main-content",
+      "probe#overview",
+      "probe#setup",
+      "probe#examples",
+      "probe#tools",
+      "probe#mcp",
+      "probe#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Probe is a code and markdown context engine designed for enterprise-scale codebases, treating code as structured syntax rather than plain text. It uses Tree-sitter AST parsing and Elasticsearch-style boolean queries to deliver complete, meaningful context in single calls—entire functions and classes instead of fragmented lines. Unlike text-based grep tools or embedding-based search requiring indexing and external models, Probe works fully offline with zero setup, deterministic results, and SIMD-accelerated pattern matching. It integrates natively with Claude Code and Cursor via MCP, and includes a built-in agent for code understanding tasks like spec-driven development, code reviews, and onboarding. Developers benefit from faster agentic loops, token-aware context retrieval, and support for 13+ languages including Rust, Python, JavaScript, TypeScript, Go, Java, and more.\nQuickly locate specific functions or classes in extensive codebases to save time during development.\nEnhance AI coding assistants by providing them with precise code retrieval capabilities for better context understanding.\nStreamline code reviews by efficiently finding relevant code snippets and ensuring quality control.\nSupport onboarding of new developers by enabling them to easily search and understand existing code structures.",
+    "setup_vi": "Terminal\nCopy\n`claude install probelabs/probe`\n`git clone https://github.com/probelabs/probe`",
+    "usage_vi": "```\nUse Probe to search for all instances of [FUNCTION_NAME] in the [PROJECT_NAME] codebase. Identify patterns in how this function is called and suggest optimizations. Highlight any potential security vulnerabilities or performance bottlenecks. Provide code snippets for the top 3 recommendations.\n```\nCopy\n\n```\nAfter analyzing the 'calculateDiscount' function in the 'EcommercePlatform' codebase, Probe identified several key patterns and issues:\n\n1. **Inconsistent Parameter Handling**: The function is called with varying parameter orders, leading to potential bugs. Recommend standardizing the parameter order to (userId, productId, discountCode) across all calls.\n\n2. **Security Vulnerability**: In the 'applyDiscount' module, the function is called without proper input validation. Recommend adding validation for discountCode format and userId existence.\n\n3. **Performance Bottleneck**: The function is called synchronously in the 'checkout' module, causing delays. Recommend implementing an async version for non-critical paths.\n\nCode Snippets:\n- Standardized call: `calculateDiscount(userId, productId, discountCode)`\n- Validated call: `if (validateInputs(userId, productId, discountCode)) { calculateDiscount(...)}`\n- Async call: `calculateDiscountAsync(userId, productId, discountCode).then(handleResponse)`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:25:41.498448Z",
+    "http_status": 200,
+    "content_hash": "c65904e5cdb3e3767fbbd49df486237dbdc5ed7c452897cad94901ef2d7259f5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\probe.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\probe.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Probe: Semantic Code Search Engine for AI Tools",
+  "short_description_vi": "Probe is a cutting-edge semantic code search engine designed for large codebases, enabling AI-driven coding tools to enhance productivity. Its local architecture ensures fast and efficient code retrieval, making it an essential resource for developers."
+}

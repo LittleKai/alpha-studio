@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-brain",
+  "slug": "claude-brain",
+  "name": "Claude Brain",
+  "headline": "claude-brain: Enhance AI Memory with Ease",
+  "short_description": "Claude Brain enables persistent memory for Claude Code in a single portable .mv2 file. Operations teams can share, version, and deploy this file across environments without databases. It integrates with git, scp, and other file-sharing tools, providing sub-millisecond operations for quick access to historical context.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "memvid",
+  "install_command": "git clone https://github.com/memvid/claude-brain.git",
+  "source_repo_url": "https://github.com/memvid/claude-brain",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "context-window",
+    "long-term-memory",
+    "anthropic",
+    "llm-memory",
+    "developer-tools",
+    "claude-agents",
+    "ai-tools",
+    "memvid",
+    "rag",
+    "rust",
+    "persistent-memory",
+    "portable",
+    "claude",
+    "claude-skills",
+    "claude-code",
+    "single-file",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "The claude-brain skill provides Claude Code with a unique capability to retain information in a single, portable .mv2 file. Unlike traditional methods that rely on databases like SQLite or ChromaDB, this skill simplifies memory management, allowing users to easily commit, share, or transfer the file using standard tools like git or scp. Built on a native Rust core, it ensures sub-millisecond operations, making it an efficient choice for those looking to enhance their AI's memory without the overhead of complex database systems. One of the key benefits of the claude-brain skill is its ability to streamline workflows by reducing the time spent on data retrieval and management. With implementation taking only about 30 minutes, developers and AI practitioners can quickly integrate this skill into their existing setups. While specific time savings are not quantified, the reduction in operational complexity and the ease of use suggest significant efficiency gains, especially for teams that handle large datasets or require quick access to historical information. This skill is particularly suited for developers, product managers, and AI practitioners who are looking to optimize their AI agents for tasks requiring memory retention and quick information access. By consolidating memory into a single file, users can ensure that their AI agents operate more effectively in AI-first workflows, where rapid data processing and retrieval are essential for success. Practical use cases include enhancing chatbots with contextual memory, improving recommendation systems with historical user data, or even aiding in project management by keeping track of past decisions and changes. The implementation of claude-brain is categorized as intermediate, which means users should have a basic understanding of AI automation and file management. The skill's straightforward integration into existing systems makes it an attractive option for teams looking to leverage AI automation without the need for extensive training or resources. By adopting this skill, organizations can position themselves to take full advantage of AI capabilities, ensuring that their workflows are not only efficient but also future-ready.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/memvid/claude-brain`",
+    "usage": "```\nInitialize a new Claude Brain .mv2 file for [PROJECT_NAME] with persistent memory for [TEAM_NAME]. Include context about [PROJECT_GOALS], [KEY_DEPENDENCIES], and [PAST_ISSUES]. Store the file in [DIRECTORY_PATH] and ensure it's version-controlled in git. After creation, verify the memory is accessible with a test query about [SPECIFIC_QUERY].\n```\nCopy\n\n```\n```\n# Claude Brain Memory File for Project: Acme E-Commerce Replatform\n# Team: DevOps Infrastructure\n# Version: 1.0.0\n# Created: 2024-05-20T14:30:00Z",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-brain#main-content",
+      "claude-brain#overview",
+      "claude-brain#setup",
+      "claude-brain#examples",
+      "claude-brain#tools",
+      "claude-brain#mcp",
+      "claude-brain#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill claude-brain cung cấp cho Claude Code khả năng lưu giữ thông tin độc đáo trong một file .mv2 di động duy nhất. Khác với các phương pháp truyền thống phụ thuộc vào cơ sở dữ liệu như SQLite hay ChromaDB, skill này đơn giản hóa việc quản lý bộ nhớ, cho phép người dùng dễ dàng commit, chia sẻ hoặc truyền file bằng các công cụ tiêu chuẩn như git hoặc scp. Được xây dựng trên lõi Rust native, nó đảm bảo các thao tác xử lý dưới mili-giây, là lựa chọn hiệu quả cho những ai muốn nâng cao bộ nhớ AI mà không gặp phải gánh nặng của các hệ thống cơ sở dữ liệu phức tạp. Một trong những lợi ích chính của skill claude-brain là khả năng tối ưu hóa quy trình làm việc bằng cách giảm thời gian truy xuất và quản lý dữ liệu. Với thời gian cài đặt chỉ mất khoảng 30 phút, các nhà phát triển và chuyên gia AI có thể nhanh chóng tích hợp skill này vào setup hiện tại của họ. Dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, việc giảm bớt độ phức tạp trong vận hành và tính dễ sử dụng hứa hẹn mang lại hiệu quả vượt trội, đặc biệt đối với các đội ngũ xử lý tập dữ liệu lớn hoặc cần truy cập nhanh vào thông tin lịch sử. Skill này đặc biệt phù hợp cho các nhà phát triển, quản lý sản phẩm và chuyên gia AI đang muốn tối ưu hóa các AI agent của họ cho các tác vụ yêu cầu lưu giữ bộ nhớ và truy cập thông tin nhanh chóng. Bằng cách hợp nhất bộ nhớ vào một file duy nhất, người dùng có thể đảm bảo các AI agent của mình hoạt động hiệu quả hơn trong các quy trình làm việc ưu tiên AI, nơi việc xử lý và truy xuất dữ liệu nhanh chóng là yếu tố quyết định thành công. Các tình huống sử dụng thực tế bao gồm nâng cao khả năng ghi nhớ ngữ cảnh cho chatbot, cải thiện hệ thống gợi ý bằng dữ liệu lịch sử của người dùng, hoặc thậm chí hỗ trợ quản lý dự án bằng cách theo dõi các quyết định và thay đổi trong quá khứ. Mức độ triển khai của claude-brain được xếp vào nhóm trung cấp (intermediate), nghĩa là người dùng cần có hiểu biết cơ bản về tự động hóa AI và quản lý file. Việc tích hợp dễ dàng của skill này vào các hệ thống hiện có biến nó thành một lựa chọn hấp dẫn cho các đội ngũ muốn tận dụng tự động hóa AI mà không cần đào tạo chuyên sâu hay đầu tư quá nhiều tài nguyên. Bằng cách áp dụng skill này, các tổ chức có thể sẵn sàng khai thác tối đa tiềm năng của AI, đảm bảo quy trình làm việc của họ không chỉ hiệu quả mà còn sẵn sàng cho tương lai.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/memvid/claude-brain`",
+    "usage_vi": "```\nKhởi tạo một file .mv2 Claude Brain mới cho [PROJECT_NAME] với bộ nhớ persistent cho [TEAM_NAME]. Bao gồm ngữ cảnh về [PROJECT_GOALS], [KEY_DEPENDENCIES] và [PAST_ISSUES]. Lưu file trong [DIRECTORY_PATH] và đảm bảo nó được quản lý phiên bản trong git. Sau khi tạo, hãy xác minh bộ nhớ có thể truy cập được bằng một truy vấn thử nghiệm về [SPECIFIC_QUERY].\n```\nCopy\n\n```\n```\n# Claude Brain Memory File for Project: Acme E-Commerce Replatform\n# Team: DevOps Infrastructure\n# Version: 1.0.0\n# Created: 2024-05-20T14:30:00Z"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:54:37.244717Z",
+    "http_status": 200,
+    "content_hash": "b257c1c4fae60cce9ebb48269b70cb7a8bd6b765b5537110340325c5afb6c57c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-brain.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-brain.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude-brain: Nâng cao bộ nhớ AI một cách dễ dàng",
+  "short_description_vi": "Claude Brain cung cấp bộ nhớ persistent cho Claude Code chỉ trong một file .mv2 di động duy nhất. Các đội ngũ vận hành có thể chia sẻ, quản lý phiên bản và triển khai file này trên nhiều môi trường khác nhau mà không cần cơ sở dữ liệu. Nó tích hợp với git, scp và các công cụ chia sẻ file khác, mang lại tốc độ xử lý dưới mili-giây để truy cập nhanh chóng vào ngữ cảnh lịch sử."
+}

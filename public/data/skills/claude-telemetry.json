@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-telemetry",
+  "slug": "claude-telemetry",
+  "name": "claude_telemetry",
+  "headline": "Claude telemetry for code analysis",
+  "short_description": "OpenTelemetry wrapper for Claude Code CLI that logs tool calls, token usage, costs, and execution traces to Logfire, Sentry, Honeycomb, or Datadog. Drop-in replacement that swaps 'claude' command for 'claudia'.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "TechNickAI",
+  "install_command": "git clone https://github.com/TechNickAI/claude_telemetry.git",
+  "source_repo_url": "https://github.com/TechNickAI/claude_telemetry",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "datadog",
+    "python",
+    "honeycomb",
+    "logfire",
+    "cli",
+    "sentry",
+    "tracing",
+    "claude-code",
+    "llm-monitoring",
+    "anthropic-claude",
+    "observability",
+    "opentelemetry"
+  ],
+  "sections": {
+    "overview": "claude_telemetry adds full observability to Claude Code by wrapping the CLI with OpenTelemetry tracing. Every agent run captures tool calls, token counts, costs, execution time, and errors—visible in Logfire, Sentry, Honeycomb, Datadog, or any OTEL backend. The wrapper is a drop-in replacement: use 'claudia' instead of 'claude code' on the command line or call run_agent_with_telemetry() in Python scripts. This solves the visibility gap when running agents headless in CI/CD pipelines, cron jobs, or production environments where console output isn't available. Engineers can debug remote failures without local reproduction, track costs to optimize expensive workflows, and understand exactly what happened during each execution.\nDebug Claude Code agent failures in CI/CD pipelines without reproducing locally\nTrack token usage and costs for production agent runs to optimize expensive workflows\nMonitor headless agents in cron jobs and automated tasks with full execution traces\nCapture tool call sequences and timing for performance analysis and bottleneck identification",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TechNickAI/claude_telemetry`\n\n### Current Observability Stack\n- **Platform**: [TARGET_PLATFORM]\n- **Current Tools**: [CURRENT_TOOLS]\n- **Key Metrics**: Token usage, costs, execution traces\n\n### Recommended Setup\n1. **Installation**: Replace the `claude` command with `claudia` by installing the Claude Telemetry wrapper.\n2. **Configuration**: Set up the wrapper to log to [TARGET_PLATFORM].\n3. **Monitoring**: Track [SPECIFIC_METRICS] to optimize AI interactions.\n\n### Expected Benefits\n- **Cost Optimization**: Monitor token usage to reduce costs.\n- **Performance Insights**: Track execution traces to identify bottlenecks.\n- **Compliance**: Ensure all AI interactions are logged for auditing.\n\n```",
+    "usage": "```\nI want to use Claude Telemetry to monitor my AI interactions. Here's my setup: [COMPANY] is a [INDUSTRY] company. We currently use [CURRENT_TOOLS] for observability. I want to track [SPECIFIC_METRICS] like token usage, costs, and execution traces. Can you guide me through setting up Claude Telemetry with [TARGET_PLATFORM]?\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-telemetry#main-content",
+      "claude-telemetry#overview",
+      "claude-telemetry#setup",
+      "claude-telemetry#examples",
+      "claude-telemetry#tools",
+      "claude-telemetry#mcp",
+      "claude-telemetry#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude_telemetry adds full observability to Claude Code by wrapping the CLI with OpenTelemetry tracing. Every agent run captures tool calls, token counts, costs, execution time, and errors—visible in Logfire, Sentry, Honeycomb, Datadog, or any OTEL backend. The wrapper is a drop-in replacement: use 'claudia' instead of 'claude code' on the command line or call run_agent_with_telemetry() in Python scripts. This solves the visibility gap when running agents headless in CI/CD pipelines, cron jobs, or production environments where console output isn't available. Engineers can debug remote failures without local reproduction, track costs to optimize expensive workflows, and understand exactly what happened during each execution.\nDebug Claude Code agent failures in CI/CD pipelines without reproducing locally\nTrack token usage and costs for production agent runs to optimize expensive workflows\nMonitor headless agents in cron jobs and automated tasks with full execution traces\nCapture tool call sequences and timing for performance analysis and bottleneck identification",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TechNickAI/claude_telemetry`\n\n### Current Observability Stack\n- **Platform**: [TARGET_PLATFORM]\n- **Current Tools**: [CURRENT_TOOLS]\n- **Key Metrics**: Token usage, costs, execution traces\n\n### Recommended Setup\n1. **Installation**: Replace the `claude` command with `claudia` by installing the Claude Telemetry wrapper.\n2. **Configuration**: Set up the wrapper to log to [TARGET_PLATFORM].\n3. **Monitoring**: Track [SPECIFIC_METRICS] to optimize AI interactions.\n\n### Expected Benefits\n- **Cost Optimization**: Monitor token usage to reduce costs.\n- **Performance Insights**: Track execution traces to identify bottlenecks.\n- **Compliance**: Ensure all AI interactions are logged for auditing.\n\n```",
+    "usage_vi": "```\nI want to use Claude Telemetry to monitor my AI interactions. Here's my setup: [COMPANY] is a [INDUSTRY] company. We currently use [CURRENT_TOOLS] for observability. I want to track [SPECIFIC_METRICS] like token usage, costs, and execution traces. Can you guide me through setting up Claude Telemetry with [TARGET_PLATFORM]?\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:00.559925Z",
+    "http_status": 200,
+    "content_hash": "f22fac7b47ccfc9410e5807c0ad3a6358e2365a4dc4618e9513b89a94715f3e3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-telemetry.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-telemetry.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude telemetry for code analysis",
+  "short_description_vi": "OpenTelemetry wrapper for Claude Code CLI that logs tool calls, token usage, costs, and execution traces to Logfire, Sentry, Honeycomb, or Datadog. Drop-in replacement that swaps 'claude' command for 'claudia'."
+}

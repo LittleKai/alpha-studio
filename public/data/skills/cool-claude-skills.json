@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cool-claude-skills",
+  "slug": "cool-claude-skills",
+  "name": "Cool Claude Skills",
+  "headline": "Cool Claude Skills - Automate Repetitive Tasks",
+  "short_description": "Cool Claude Skills automates repetitive tasks for operations teams by teaching Claude to perform specific functions. It connects to terminal outputs and web browsers, enabling quick viewing of data. Ideal for streamlining workflows and reducing manual explanations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "rohunvora",
+  "install_command": "git clone https://github.com/rohunvora/cool-claude-skills.git",
+  "source_repo_url": "https://github.com/rohunvora/cool-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Cool Claude Skills is a collection of reusable Claude Code skills that automate common operational tasks. It includes quick-view for converting terminal output to browsable HTML, table-filters for generating context-aware column filters, and incremental-fetch for resumable API pagination. The skills connect Claude to terminal outputs and web browsers, letting you say 'show me this' and get formatted, interactive results instantly. Ideal for operations teams reviewing logs, JSON, datasets, and API responses without manual reformatting.\nConvert terminal logs and JSON output to readable HTML dashboards\nAdd intelligent filters (text, date range, checkboxes) to data tables automatically\nResume interrupted API data downloads without losing progress\nExport and visually browse Are.na channel blocks with AI-enriched metadata",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rohunvora/cool-claude-skills`",
+    "usage": "```\nI need to automate a repetitive task for my operations team. Here's the process I want to streamline: [DESCRIBE TASK]. Can you create a Cool Claude Skill to handle this? The skill should connect to [TERMINAL/WEB BROWSER] and perform the following steps: [LIST STEPS].\n```\nCopy\n\n```\n# Cool Claude Skill: Server Status Checker\n\nThis skill automates the process of checking server statuses for your operations team.\n\n```\nServer: web-server-1\nStatus: Operational\nCPU Usage: 45%\nMemory Usage: 62%\n\nServer: db-server-1\nStatus: Operational\nCPU Usage: 38%\nMemory Usage: 55%\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cool-claude-skills#main-content",
+      "cool-claude-skills#overview",
+      "cool-claude-skills#setup",
+      "cool-claude-skills#examples",
+      "cool-claude-skills#tools",
+      "cool-claude-skills#mcp",
+      "cool-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Cool Claude Skills là một tập hợp các kỹ năng Claude Code có thể tái sử dụng giúp tự động hóa các tác vụ vận hành phổ biến. Bộ kỹ năng này bao gồm quick-view để chuyển đổi terminal output thành trang HTML có thể duyệt được, table-filters để tự động tạo các bộ lọc cột theo ngữ cảnh, và incremental-fetch để phân trang API có thể tiếp tục tải khi bị gián đoạn. Các kỹ năng này kết nối Claude với terminal output và trình duyệt web, cho phép bạn chỉ cần ra lệnh \"hiển thị cho tôi cái này\" và nhận ngay kết quả được định dạng trực quan, có tính tương tác. Đây là giải pháp lý tưởng cho các đội ngũ vận hành khi cần kiểm tra log, JSON, tập dữ liệu và API response mà không cần định dạng lại một cách thủ công.\nChuyển đổi terminal log và JSON output thành các dashboard HTML trực quan dễ đọc\nTự động thêm bộ lọc thông minh (văn bản, khoảng ngày, checkbox) vào các bảng dữ liệu\nTiếp tục tải xuống dữ liệu API bị gián đoạn mà không mất tiến trình\nXuất và duyệt trực quan các block kênh Are.na với siêu dữ liệu (metadata) được làm phong phú bởi AI",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/rohunvora/cool-claude-skills`",
+    "usage_vi": "```\nTôi cần tự động hóa một tác vụ lặp đi lặp lại cho đội ngũ vận hành của mình. Dưới đây là quy trình tôi muốn tối ưu hóa: [MÔ TẢ TÁC VỤ]. Bạn có thể tạo một Cool Claude Skill để xử lý việc này không? Skill này cần kết nối với [TERMINAL/TRÌNH DUYỆT WEB] và thực hiện các bước sau: [LIỆT KÊ CÁC BƯỚC].\n```\nSao chép\n\n```\n# Cool Claude Skill: Server Status Checker\n\nSkill này tự động hóa quy trình kiểm tra trạng thái máy chủ cho đội ngũ vận hành của bạn.\n\n```\nServer: web-server-1\nStatus: Operational\nCPU Usage: 45%\nMemory Usage: 62%\n\nServer: db-server-1\nStatus: Operational\nCPU Usage: 38%\nMemory Usage: 55%\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:49:44.166687Z",
+    "http_status": 200,
+    "content_hash": "0f129a02b4b211f5956586aed7f929319458a755dd6f59d8b99856051af92806",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cool-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cool-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cool Claude Skills - Tự động hóa các tác vụ lặp đi lặp lại",
+  "short_description_vi": "Cool Claude Skills tự động hóa các tác vụ lặp đi lặp lại cho các đội ngũ vận hành bằng cách dạy Claude thực hiện các chức năng cụ thể. Bộ công cụ này kết nối với terminal output và trình duyệt web, giúp xem nhanh dữ liệu trực quan. Đây là giải pháp lý tưởng để tối ưu hóa quy trình làm việc và giảm thiểu các thao tác giải thích thủ công."
+}

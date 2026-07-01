@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openskills",
+  "slug": "openskills",
+  "name": "react-native-best-practices",
+  "headline": "Openskills: Universal Skills Loader for AI Agents",
+  "short_description": "Openskills is a universal skills loader designed for AI coding agents, enabling integration of various skills into your projects. With easy installation via npm, it enhances the capabilities of AI tools for developers.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "numman-ali",
+  "install_command": "claude install numman-ali/openskills",
+  "source_repo_url": "https://github.com/numman-ali/openskills",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "AI",
+    "coding",
+    "skills loader",
+    "npm",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "OpenSkills is a Node.js-based CLI tool that enables AI coding agents like Claude Code, Cursor, and Windsurf to discover, install, and manage reusable skills from GitHub repositories. It uses the SKILL.md format standardized by Anthropic and supports dual-loading from multiple directories (.agent/skills, .claude/skills, ~/.openskills). The tool provides core commands to list installed skills, get skills from GitHub or Git URLs, load skills to stdout for AI agents, and remove skills. Developers can install OpenSkills globally via npm and immediately start extending their AI coding agent capabilities without manual file management.\nIntegrate AI skills into your coding projects for enhanced functionality.\nAutomate repetitive coding tasks to save time and reduce errors.\nUtilize AI-driven insights to improve software development processes.\nStreamline the integration of various AI tools into existing workflows.",
+    "setup": "Terminal\nCopy\n`claude install numman-ali/openskills`\n`git clone https://github.com/numman-ali/openskills`",
+    "usage": "```\nIntegrate the [SKILL_NAME] skill into my [PROJECT_TYPE] project using Openskills. Ensure compatibility with [FRAMEWORK] and provide a step-by-step guide for implementation. Include best practices for optimizing performance and scalability.\n```\nCopy\n\n```\nTo integrate the [SKILL_NAME] skill into your [PROJECT_TYPE] project using Openskills, follow these steps:\n\n1. **Install Openskills**: Begin by installing Openskills via npm. Open your terminal and run the following command:\n\n```bash\nnpm install @openskills/core\n```\n\n2. **Initialize Openskills**: Create a new instance of Openskills in your project. In your main project file, import and initialize Openskills:\n\n```javascript\nconst { Openskills } = require('@openskills/core');\nconst openskills = new Openskills();\n```\n\n3. **Load the Skill**: Load the specific skill you want to integrate. For example, to load the [SKILL_NAME] skill, use the following code:\n\n```javascript\nopenskills.loadSkill('[SKILL_NAME]');\n```\n\n4. **Configure the Skill**: Configure the skill according to your project requirements. This may involve setting up parameters, event listeners, or other configurations specific to the skill.\n\n```javascript\nopenskills.configure('[SKILL_NAME]', {\n  parameter1: 'value1',\n  parameter2: 'value2'\n});\n```\n\n5. **Test the Integration**: Finally, test the integration to ensure that the skill is working as expected. You can do this by running your project and verifying that the skill performs the desired actions.\n\n```javascript\nopenskills.test('[SKILL_NAME]');\n```\n\nBy following these steps, you can successfully integrate the [SKILL_NAME] skill into your [PROJECT_TYPE] project using Openskills. This will enhance the capabilities of your project and streamline your development workflow.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "openskills#main-content",
+      "openskills#overview",
+      "openskills#setup",
+      "openskills#examples",
+      "openskills#tools",
+      "openskills#mcp",
+      "openskills#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "OpenSkills is a Node.js-based CLI tool that enables AI coding agents like Claude Code, Cursor, and Windsurf to discover, install, and manage reusable skills from GitHub repositories. It uses the SKILL.md format standardized by Anthropic and supports dual-loading from multiple directories (.agent/skills, .claude/skills, ~/.openskills). The tool provides core commands to list installed skills, get skills from GitHub or Git URLs, load skills to stdout for AI agents, and remove skills. Developers can install OpenSkills globally via npm and immediately start extending their AI coding agent capabilities without manual file management.\nIntegrate AI skills into your coding projects for enhanced functionality.\nAutomate repetitive coding tasks to save time and reduce errors.\nUtilize AI-driven insights to improve software development processes.\nStreamline the integration of various AI tools into existing workflows.",
+    "setup_vi": "Terminal\nCopy\n`claude install numman-ali/openskills`\n`git clone https://github.com/numman-ali/openskills`",
+    "usage_vi": "```\nIntegrate the [SKILL_NAME] skill into my [PROJECT_TYPE] project using Openskills. Ensure compatibility with [FRAMEWORK] and provide a step-by-step guide for implementation. Include best practices for optimizing performance and scalability.\n```\nCopy\n\n```\nTo integrate the [SKILL_NAME] skill into your [PROJECT_TYPE] project using Openskills, follow these steps:\n\n1. **Install Openskills**: Begin by installing Openskills via npm. Open your terminal and run the following command:\n\n```bash\nnpm install @openskills/core\n```\n\n2. **Initialize Openskills**: Create a new instance of Openskills in your project. In your main project file, import and initialize Openskills:\n\n```javascript\nconst { Openskills } = require('@openskills/core');\nconst openskills = new Openskills();\n```\n\n3. **Load the Skill**: Load the specific skill you want to integrate. For example, to load the [SKILL_NAME] skill, use the following code:\n\n```javascript\nopenskills.loadSkill('[SKILL_NAME]');\n```\n\n4. **Configure the Skill**: Configure the skill according to your project requirements. This may involve setting up parameters, event listeners, or other configurations specific to the skill.\n\n```javascript\nopenskills.configure('[SKILL_NAME]', {\n  parameter1: 'value1',\n  parameter2: 'value2'\n});\n```\n\n5. **Test the Integration**: Finally, test the integration to ensure that the skill is working as expected. You can do this by running your project and verifying that the skill performs the desired actions.\n\n```javascript\nopenskills.test('[SKILL_NAME]');\n```\n\nBy following these steps, you can successfully integrate the [SKILL_NAME] skill into your [PROJECT_TYPE] project using Openskills. This will enhance the capabilities of your project and streamline your development workflow.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:04:34.028676Z",
+    "http_status": 200,
+    "content_hash": "81084f52b0c9b19c5f991b65657b1c7104aff4dc531ace9f77c2724f81d75c3b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openskills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openskills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Openskills: Universal Skills Loader for AI Agents",
+  "short_description_vi": "Openskills is a universal skills loader designed for AI coding agents, enabling integration of various skills into your projects. With easy installation via npm, it enhances the capabilities of AI tools for developers."
+}

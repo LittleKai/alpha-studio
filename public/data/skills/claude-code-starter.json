@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-starter",
+  "slug": "claude-code-starter",
+  "name": "browser-use",
+  "headline": "Start AI development with Claude Code",
+  "short_description": "Meta-documentation framework for AI-assisted development with Claude Code. Helps beginners practice vibe-coding by providing structured guidance. Connects to Claude Code for code generation and documentation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "alexeykrol",
+  "install_command": "git clone https://github.com/alexeykrol/claude-code-starter.git",
+  "source_repo_url": "https://github.com/alexeykrol/claude-code-starter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "vibe-coding",
+    "frameworks",
+    "development-environment"
+  ],
+  "sections": {
+    "overview": "Claude Code Starter is a file-structure framework that organizes AI-assisted development projects for Claude Code. It separates project contracts (architecture, invariants, methodology) from operational state (snapshots, backlogs, dialogs) across a `.claude/` directory with modular rules, skills, agents, and hooks. The framework automatically detects whether your project is code, content, or hybrid and installs the appropriate configuration layer. It preserves session dialogs as JSONL files, prevents framework state from leaking into git history, and provides reusable workflows through skills like `/start`, `/finish`, and `/save-dialog`. Single-file installation works on new, existing, or legacy projects without flags.\nOrganizing long-running Claude Code projects with persistent memory between sessions\nSetting up modular operational rules and reusable skills across multiple projects\nPreserving AI agent dialogs for analysis while keeping framework state out of public git history\nTransitioning existing projects to a standardized Claude Code structure",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexeykrol/claude-code-starter`",
+    "usage": "```\nUse claude-code-starter to generate a complete project structure for a [PROJECT_TYPE] called [PROJECT_NAME]. Include: 1) A README.md with setup instructions, 2) A basic implementation in [LANGUAGE], 3) Unit tests in [TEST_FRAMEWORK], 4) A .gitignore file, and 5) A simple script to run the project. Start by creating the directory structure and files. Then implement the core functionality with clear comments. Finally, add a section in the README explaining how to extend the project.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-starter#main-content",
+      "claude-code-starter#overview",
+      "claude-code-starter#setup",
+      "claude-code-starter#examples",
+      "claude-code-starter#tools",
+      "claude-code-starter#mcp",
+      "claude-code-starter#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Starter is a file-structure framework that organizes AI-assisted development projects for Claude Code. It separates project contracts (architecture, invariants, methodology) from operational state (snapshots, backlogs, dialogs) across a `.claude/` directory with modular rules, skills, agents, and hooks. The framework automatically detects whether your project is code, content, or hybrid and installs the appropriate configuration layer. It preserves session dialogs as JSONL files, prevents framework state from leaking into git history, and provides reusable workflows through skills like `/start`, `/finish`, and `/save-dialog`. Single-file installation works on new, existing, or legacy projects without flags.\nOrganizing long-running Claude Code projects with persistent memory between sessions\nSetting up modular operational rules and reusable skills across multiple projects\nPreserving AI agent dialogs for analysis while keeping framework state out of public git history\nTransitioning existing projects to a standardized Claude Code structure",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexeykrol/claude-code-starter`",
+    "usage_vi": "```\nUse claude-code-starter to generate a complete project structure for a [PROJECT_TYPE] called [PROJECT_NAME]. Include: 1) A README.md with setup instructions, 2) A basic implementation in [LANGUAGE], 3) Unit tests in [TEST_FRAMEWORK], 4) A .gitignore file, and 5) A simple script to run the project. Start by creating the directory structure and files. Then implement the core functionality with clear comments. Finally, add a section in the README explaining how to extend the project.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:30:24.591246Z",
+    "http_status": 200,
+    "content_hash": "bad698a11859d1d107de4a0e738abb9f3ed5641627adbc6d604bdc623afa915c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-starter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-starter.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Start AI development with Claude Code",
+  "short_description_vi": "Meta-documentation framework for AI-assisted development with Claude Code. Helps beginners practice vibe-coding by providing structured guidance. Connects to Claude Code for code generation and documentation."
+}

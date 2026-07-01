@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-sdk-docker",
+  "slug": "claude-code-sdk-docker",
+  "name": "browser-use",
+  "headline": "Claude Code SDK docker - Typescript/Python support",
+  "short_description": "Docker containers for Claude Code SDKs in Typescript and Python. Includes built-in authentication for Claude Pro and Max plans. Enables developers to automate code generation, analysis, and refactoring tasks. Integrates with CI/CD pipelines and developer workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "cabinlab",
+  "install_command": "git clone https://github.com/cabinlab/claude-code-sdk-docker.git",
+  "source_repo_url": "https://github.com/cabinlab/claude-code-sdk-docker",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "docker-container",
+    "claude-code-sdk"
+  ],
+  "sections": {
+    "overview": "Claude Agent SDKs in Docker provides pre-configured container images for TypeScript and Python that eliminate interactive authentication workflows. The images include the official Claude Agent SDK, Claude Code CLI, and essential development tools, designed to run non-interactively in CI/CD pipelines and containerized environments. Users generate an OAuth token once on their host machine, then pass it to containers via environment variable—no browser flows or setup wizards required. Available in Debian and Alpine variants, these images support code generation, analysis, and refactoring tasks. They're ideal for developers automating Claude interactions in production workflows, Docker-based development environments, and automated testing pipelines.\nAutomate code generation and refactoring in CI/CD pipelines\nRun Claude SDK scripts non-interactively in containerized environments\nDevelop and test TypeScript/Python code with Claude Agent SDK without manual auth setup\nDeploy containerized AI agents for code analysis and automation tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cabinlab/claude-code-sdk-docker`",
+    "usage": "```\nI want to use the claude-code-sdk-docker to automate code refactoring for my [COMPANY] in the [INDUSTRY] sector. I need to integrate this with my existing CI/CD pipeline. Please provide step-by-step instructions for setting up the Docker container, authenticating with my Claude Pro account, and implementing a basic code refactoring workflow.\n```\nCopy\n\n```\n# Claude Code SDK Docker Setup Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-sdk-docker#main-content",
+      "claude-code-sdk-docker#overview",
+      "claude-code-sdk-docker#setup",
+      "claude-code-sdk-docker#examples",
+      "claude-code-sdk-docker#tools",
+      "claude-code-sdk-docker#mcp",
+      "claude-code-sdk-docker#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Agent SDKs in Docker provides pre-configured container images for TypeScript and Python that eliminate interactive authentication workflows. The images include the official Claude Agent SDK, Claude Code CLI, and essential development tools, designed to run non-interactively in CI/CD pipelines and containerized environments. Users generate an OAuth token once on their host machine, then pass it to containers via environment variable—no browser flows or setup wizards required. Available in Debian and Alpine variants, these images support code generation, analysis, and refactoring tasks. They're ideal for developers automating Claude interactions in production workflows, Docker-based development environments, and automated testing pipelines.\nAutomate code generation and refactoring in CI/CD pipelines\nRun Claude SDK scripts non-interactively in containerized environments\nDevelop and test TypeScript/Python code with Claude Agent SDK without manual auth setup\nDeploy containerized AI agents for code analysis and automation tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cabinlab/claude-code-sdk-docker`",
+    "usage_vi": "```\nI want to use the claude-code-sdk-docker to automate code refactoring for my [COMPANY] in the [INDUSTRY] sector. I need to integrate this with my existing CI/CD pipeline. Please provide step-by-step instructions for setting up the Docker container, authenticating with my Claude Pro account, and implementing a basic code refactoring workflow.\n```\nCopy\n\n```\n# Claude Code SDK Docker Setup Guide"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:17:54.530869Z",
+    "http_status": 200,
+    "content_hash": "af0be0f94de12bac63c6d59654f7a0c3e110bf996d987c56e4a5380cd566d56b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-sdk-docker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-sdk-docker.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code SDK docker - Typescript/Python support",
+  "short_description_vi": "Docker containers for Claude Code SDKs in Typescript and Python. Includes built-in authentication for Claude Pro and Max plans. Enables developers to automate code generation, analysis, and refactoring tasks. Integrates with CI/CD pipelines and developer workflows."
+}

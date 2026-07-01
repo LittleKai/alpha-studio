@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccprompts",
+  "slug": "ccprompts",
+  "name": "browser-use",
+  "headline": "ccprompts Claude Code command set",
+  "short_description": "ccprompts provides practical Claude code commands and subagents for operations teams. It enables automation of repetitive tasks, streamlines workflows, and integrates with existing systems. Teams benefit from increased efficiency and reduced manual effort.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "ursisterbtw",
+  "install_command": "git clone https://github.com/ursisterbtw/ccprompts.git",
+  "source_repo_url": "https://github.com/ursisterbtw/ccprompts",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "prompt-engineering",
+    "prompts",
+    "agents",
+    "claude",
+    "ai",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "ccprompts is a comprehensive Claude Code plugin collection featuring over 70 production-ready slash commands organized across 12 development phases, from initial workflow through enterprise-scale governance. It includes 10 specialized AI agents for domain-specific expertise and a Dagger-based container isolation system for safe command execution. The plugin provides multi-dimensional validation across structure, security, quality, and performance, plus MCP integration and workflow automation capabilities. Teams can install ccprompts as a plugin for instant access across projects or customize commands locally. It addresses repetitive task automation, workflow streamlining, and enterprise governance across development, testing, deployment, security, and collaboration phases.\nAutomating code review and security auditing workflows\nStreamlining project setup with documentation and MCP integration\nManaging multi-repo governance and compliance at enterprise scale\nOrchestrating testing and deployment across CI/CD pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ursisterbtw/ccprompts`",
+    "usage": "```\nUse the ccprompts skill to automate [TASK] in [SYSTEM]. Write a Claude Code command that [SPECIFIC_ACTION], such as processing files, querying databases, or triggering workflows. Include error handling for [COMMON_ISSUES]. Example: 'Write a Claude Code command to parse a CSV file at [FILE_PATH], extract rows where [COLUMN] meets [CONDITION], and save the filtered results to [OUTPUT_PATH] with validation checks for missing data.'\n```\nCopy\n\n```\n```claudecode\n// Claude Code command to automate weekly sales report generation\n// Input: Weekly sales data (CSV) from /data/sales/weekly_sales_2024-05-13.csv\n// Output: Filtered report saved to /reports/weekly_sales_summary_2024-05-13.csv\n\nimport csv\nfrom datetime import datetime\n\ninput_path = \"/data/sales/weekly_sales_2024-05-13.csv\"\noutput_path = \"/reports/weekly_sales_summary_2024-05-13.csv\"\n\n# Validate input file exists\nif not os.path.exists(input_path):\n    raise FileNotFoundError(f\"Input file not found: {input_path}\")\n\n# Process data: Filter for deals closed this week, calculate totals\nwith open(input_path, 'r') as infile, open(output_path, 'w', newline='') as outfile:\n    reader = csv.DictReader(infile)\n    writer = csv.DictWriter(outfile, fieldnames=['Deal_ID', 'Customer', 'Amount', 'Close_Date', 'Status'])\n    writer.writeheader()\n    \n    total_amount = 0\n    deals_processed = 0\n    \n    for row in reader:\n        try:\n            close_date = datetime.strptime(row['Close_Date'], '%Y-%m-%d')\n            if close_date >= datetime(2024, 5, 6):  # Current week start\n                amount = float(row['Amount'])\n                writer.writerow(row)\n                total_amount += amount\n                deals_processed += 1\n        except (ValueError, KeyError) as e:\n            print(f\"Skipping invalid row: {row} - Error: {e}\")\n            continue\n\n# Generate summary\nsummary = {\n    \"total_deals\": deals_processed,\n    \"total_amount\": f\"${total_amount:,.2f}\",\n    \"report_date\": datetime.now().strftime('%Y-%m-%d %H:%M:%S')\n}\n\nprint(f\"Report generated successfully. {summary['total_deals']} deals processed, totaling {summary['total_amount']}\")\n```\n\n**Output:**\n```\nReport generated successfully. 42 deals processed, totaling $1,245,678.90\n```\n\nThe command processed 42 deals closed in the current week, filtering out 3 invalid rows with missing or malformed data. The filtered report was saved to the specified output path with a summary of key metrics. Error handling ensured the script continued processing even when encountering problematic data.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccprompts#main-content",
+      "ccprompts#overview",
+      "ccprompts#setup",
+      "ccprompts#examples",
+      "ccprompts#tools",
+      "ccprompts#mcp",
+      "ccprompts#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccprompts is a comprehensive Claude Code plugin collection featuring over 70 production-ready slash commands organized across 12 development phases, from initial workflow through enterprise-scale governance. It includes 10 specialized AI agents for domain-specific expertise and a Dagger-based container isolation system for safe command execution. The plugin provides multi-dimensional validation across structure, security, quality, and performance, plus MCP integration and workflow automation capabilities. Teams can install ccprompts as a plugin for instant access across projects or customize commands locally. It addresses repetitive task automation, workflow streamlining, and enterprise governance across development, testing, deployment, security, and collaboration phases.\nAutomating code review and security auditing workflows\nStreamlining project setup with documentation and MCP integration\nManaging multi-repo governance and compliance at enterprise scale\nOrchestrating testing and deployment across CI/CD pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ursisterbtw/ccprompts`",
+    "usage_vi": "```\nUse the ccprompts skill to automate [TASK] in [SYSTEM]. Write a Claude Code command that [SPECIFIC_ACTION], such as processing files, querying databases, or triggering workflows. Include error handling for [COMMON_ISSUES]. Example: 'Write a Claude Code command to parse a CSV file at [FILE_PATH], extract rows where [COLUMN] meets [CONDITION], and save the filtered results to [OUTPUT_PATH] with validation checks for missing data.'\n```\nCopy\n\n```\n```claudecode\n// Claude Code command to automate weekly sales report generation\n// Input: Weekly sales data (CSV) from /data/sales/weekly_sales_2024-05-13.csv\n// Output: Filtered report saved to /reports/weekly_sales_summary_2024-05-13.csv\n\nimport csv\nfrom datetime import datetime\n\ninput_path = \"/data/sales/weekly_sales_2024-05-13.csv\"\noutput_path = \"/reports/weekly_sales_summary_2024-05-13.csv\"\n\n# Validate input file exists\nif not os.path.exists(input_path):\n    raise FileNotFoundError(f\"Input file not found: {input_path}\")\n\n# Process data: Filter for deals closed this week, calculate totals\nwith open(input_path, 'r') as infile, open(output_path, 'w', newline='') as outfile:\n    reader = csv.DictReader(infile)\n    writer = csv.DictWriter(outfile, fieldnames=['Deal_ID', 'Customer', 'Amount', 'Close_Date', 'Status'])\n    writer.writeheader()\n    \n    total_amount = 0\n    deals_processed = 0\n    \n    for row in reader:\n        try:\n            close_date = datetime.strptime(row['Close_Date'], '%Y-%m-%d')\n            if close_date >= datetime(2024, 5, 6):  # Current week start\n                amount = float(row['Amount'])\n                writer.writerow(row)\n                total_amount += amount\n                deals_processed += 1\n        except (ValueError, KeyError) as e:\n            print(f\"Skipping invalid row: {row} - Error: {e}\")\n            continue\n\n# Generate summary\nsummary = {\n    \"total_deals\": deals_processed,\n    \"total_amount\": f\"${total_amount:,.2f}\",\n    \"report_date\": datetime.now().strftime('%Y-%m-%d %H:%M:%S')\n}\n\nprint(f\"Report generated successfully. {summary['total_deals']} deals processed, totaling {summary['total_amount']}\")\n```\n\n**Output:**\n```\nReport generated successfully. 42 deals processed, totaling $1,245,678.90\n```\n\nThe command processed 42 deals closed in the current week, filtering out 3 invalid rows with missing or malformed data. The filtered report was saved to the specified output path with a summary of key metrics. Error handling ensured the script continued processing even when encountering problematic data.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:28:11.522044Z",
+    "http_status": 200,
+    "content_hash": "1d85eec205968c4c3be402fd691b3ac1c948d0ed0a369f817cf95c5fb2a3da1f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccprompts.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccprompts.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccprompts Claude Code command set",
+  "short_description_vi": "ccprompts provides practical Claude code commands and subagents for operations teams. It enables automation of repetitive tasks, streamlines workflows, and integrates with existing systems. Teams benefit from increased efficiency and reduced manual effort."
+}

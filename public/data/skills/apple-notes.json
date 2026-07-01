@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/apple-notes",
+  "slug": "apple-notes",
+  "name": "browser-use",
+  "headline": "claude plugin for apple notes interaction",
+  "short_description": "Claude Code plugin that enables persistent note storage and retrieval using Apple Notes on macOS, with full CRUD operations and iCloud sync.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "ALucek",
+  "install_command": "git clone https://github.com/ALucek/apple-notes.git",
+  "source_repo_url": "https://github.com/ALucek/apple-notes",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "skills",
+    "apple-notes",
+    "agent-skills",
+    "notes",
+    "apple",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The Apple Notes plugin provides Claude Code agents with persistent storage and retrieval capabilities through Apple's native Notes app on macOS. It supports complete CRUD operations—create, read, list, and delete notes—all scoped to a dedicated agent-notes folder. Notes persist across sessions and automatically sync via iCloud, making it ideal for agents that need to maintain information between conversations or tasks. Developers can format notes with HTML and access full documentation for integration into their agent workflows.\nStore conversation history and task outcomes across Claude Code sessions\nMaintain persistent agent memory and knowledge bases in Notes\nLog and retrieve structured data in HTML-formatted notes\nCreate automated note-taking workflows triggered by agent actions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ALucek/apple-notes`",
+    "usage": "```\nI want to automate my note-taking workflow using Apple Notes. Here's what I need: [DESCRIBE TASK]. Can you create a step-by-step plan to accomplish this using Apple Notes automation?\n```\nCopy\n\n```\n### Automated Note-Taking Workflow for Apple Notes\n\n**Objective**: Streamline meeting notes and action items\n\n**Steps**:\n1. **Meeting Trigger**: Set up a calendar event trigger for all meetings\n2. **Note Creation**: Automatically create a new note titled '[MEETING TOPIC] - [DATE]' in Apple Notes\n3. **Template Insertion**: Insert a pre-formatted template with sections for:\n   - Meeting attendees\n   - Key discussion points\n   - Action items\n   - Deadlines\n4. **Post-Meeting Automation**: After the meeting ends, send a reminder to review and complete the note within 24 hours\n5. **Tagging System**: Automatically tag notes with '#meeting' and '#[PROJECT NAME]' for easy organization\n\n**Integration**: This workflow can be connected to your calendar app and Apple Notes via Shortcuts automation\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "apple-notes#main-content",
+      "apple-notes#overview",
+      "apple-notes#setup",
+      "apple-notes#examples",
+      "apple-notes#tools",
+      "apple-notes#mcp",
+      "apple-notes#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Apple Notes plugin provides Claude Code agents with persistent storage and retrieval capabilities through Apple's native Notes app on macOS. It supports complete CRUD operations—create, read, list, and delete notes—all scoped to a dedicated agent-notes folder. Notes persist across sessions and automatically sync via iCloud, making it ideal for agents that need to maintain information between conversations or tasks. Developers can format notes with HTML and access full documentation for integration into their agent workflows.\nStore conversation history and task outcomes across Claude Code sessions\nMaintain persistent agent memory and knowledge bases in Notes\nLog and retrieve structured data in HTML-formatted notes\nCreate automated note-taking workflows triggered by agent actions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ALucek/apple-notes`",
+    "usage_vi": "```\nI want to automate my note-taking workflow using Apple Notes. Here's what I need: [DESCRIBE TASK]. Can you create a step-by-step plan to accomplish this using Apple Notes automation?\n```\nCopy\n\n```\n### Automated Note-Taking Workflow for Apple Notes\n\n**Objective**: Streamline meeting notes and action items\n\n**Steps**:\n1. **Meeting Trigger**: Set up a calendar event trigger for all meetings\n2. **Note Creation**: Automatically create a new note titled '[MEETING TOPIC] - [DATE]' in Apple Notes\n3. **Template Insertion**: Insert a pre-formatted template with sections for:\n   - Meeting attendees\n   - Key discussion points\n   - Action items\n   - Deadlines\n4. **Post-Meeting Automation**: After the meeting ends, send a reminder to review and complete the note within 24 hours\n5. **Tagging System**: Automatically tag notes with '#meeting' and '#[PROJECT NAME]' for easy organization\n\n**Integration**: This workflow can be connected to your calendar app and Apple Notes via Shortcuts automation\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:32.552272Z",
+    "http_status": 200,
+    "content_hash": "6baacf8fcce93599c1bd8a560577b12876a7798c5de2f12a87ef8d28d3bf746a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\apple-notes.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\apple-notes.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude plugin for apple notes interaction",
+  "short_description_vi": "Claude Code plugin that enables persistent note storage and retrieval using Apple Notes on macOS, with full CRUD operations and iCloud sync."
+}

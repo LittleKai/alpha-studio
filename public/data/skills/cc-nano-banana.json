@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-nano-banana",
+  "slug": "cc-nano-banana",
+  "name": "browser-use",
+  "headline": "Generate images with Nano Banana skill",
+  "short_description": "Generate and edit images using Nano Banana. Operations teams can create visuals from text prompts, modify existing images, and restore photos. Integrates with Gemini CLI for streamlined workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "kkoppenhaver",
+  "install_command": "git clone https://github.com/kkoppenhaver/cc-nano-banana.git",
+  "source_repo_url": "https://github.com/kkoppenhaver/cc-nano-banana",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Nano Banana is a Claude Code skill that leverages the Gemini CLI's nanobanana extension to generate, edit, and restore images. It supports text-to-image generation, photo restoration, icon creation, diagram generation, pattern synthesis, and sequential narrative images. Users can work with natural language prompts to create visuals without manual design tools. Setup requires installing Gemini CLI, configuring an API key, and adding the nanobanana extension. The skill outputs images to a local directory and supports customization through options like style application, seed control, and multiple variation generation.\nGenerate blog header images and social media graphics from text descriptions\nCreate app icons, favicons, and UI assets for software projects\nProduce flowcharts, architecture diagrams, and technical visualizations\nRestore and repair damaged or old photographs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kkoppenhaver/cc-nano-banana`",
+    "usage": "```\nUse Nano Banana to [GENERATE/EDIT/RESTORE] an image based on the following request: [DESCRIPTION]. For editing, include the original image as [IMAGE_URL_OR_PATH]. Specify any constraints like style, resolution, or composition. Example: 'Generate a high-resolution illustration of a futuristic cityscape at sunset with neon lights, in a cyberpunk art style, 4K resolution.'\n```\nCopy\n\n```\nHere’s your generated image: A stunning cyberpunk cityscape at dusk, with towering skyscrapers wrapped in holographic billboards and glowing neon signs in shades of electric blue, magenta, and violet. The sky is a gradient of deep orange and purple, with flying cars streaking between buildings. The foreground features a rain-soaked street reflecting the city lights, and a lone figure in a trench coat walks past a street vendor selling synthetic food. The image is rendered in a hyper-detailed, cinematic style with a 4K resolution, showcasing intricate textures and lighting effects.\n\nTo edit this image, I can adjust elements like the color palette (e.g., 'Make the neon lights warmer, with more amber and gold tones'), composition (e.g., 'Add a futuristic hoverboard in the foreground'), or style (e.g., 'Convert this to a watercolor painting with soft edges'). For restoration, I can enhance the resolution of an old photo or remove scratches and blemishes from a damaged image.\n\nWould you like to refine this image further or apply a specific edit?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-nano-banana#main-content",
+      "cc-nano-banana#overview",
+      "cc-nano-banana#setup",
+      "cc-nano-banana#examples",
+      "cc-nano-banana#tools",
+      "cc-nano-banana#mcp",
+      "cc-nano-banana#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Nano Banana is a Claude Code skill that leverages the Gemini CLI's nanobanana extension to generate, edit, and restore images. It supports text-to-image generation, photo restoration, icon creation, diagram generation, pattern synthesis, and sequential narrative images. Users can work with natural language prompts to create visuals without manual design tools. Setup requires installing Gemini CLI, configuring an API key, and adding the nanobanana extension. The skill outputs images to a local directory and supports customization through options like style application, seed control, and multiple variation generation.\nGenerate blog header images and social media graphics from text descriptions\nCreate app icons, favicons, and UI assets for software projects\nProduce flowcharts, architecture diagrams, and technical visualizations\nRestore and repair damaged or old photographs",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kkoppenhaver/cc-nano-banana`",
+    "usage_vi": "```\nUse Nano Banana to [GENERATE/EDIT/RESTORE] an image based on the following request: [DESCRIPTION]. For editing, include the original image as [IMAGE_URL_OR_PATH]. Specify any constraints like style, resolution, or composition. Example: 'Generate a high-resolution illustration of a futuristic cityscape at sunset with neon lights, in a cyberpunk art style, 4K resolution.'\n```\nCopy\n\n```\nHere’s your generated image: A stunning cyberpunk cityscape at dusk, with towering skyscrapers wrapped in holographic billboards and glowing neon signs in shades of electric blue, magenta, and violet. The sky is a gradient of deep orange and purple, with flying cars streaking between buildings. The foreground features a rain-soaked street reflecting the city lights, and a lone figure in a trench coat walks past a street vendor selling synthetic food. The image is rendered in a hyper-detailed, cinematic style with a 4K resolution, showcasing intricate textures and lighting effects.\n\nTo edit this image, I can adjust elements like the color palette (e.g., 'Make the neon lights warmer, with more amber and gold tones'), composition (e.g., 'Add a futuristic hoverboard in the foreground'), or style (e.g., 'Convert this to a watercolor painting with soft edges'). For restoration, I can enhance the resolution of an old photo or remove scratches and blemishes from a damaged image.\n\nWould you like to refine this image further or apply a specific edit?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:42:18.679041Z",
+    "http_status": 200,
+    "content_hash": "ef5a3fb8423553f8d67a740916fb97258f2c96c493e204426fc6bf2a072d4fc8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-nano-banana.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-nano-banana.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Generate images with Nano Banana skill",
+  "short_description_vi": "Generate and edit images using Nano Banana. Operations teams can create visuals from text prompts, modify existing images, and restore photos. Integrates with Gemini CLI for streamlined workflows."
+}

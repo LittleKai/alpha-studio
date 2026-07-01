@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ultimate-awesome",
+  "slug": "ultimate-awesome",
+  "name": "Ultimate Awesome List",
+  "headline": "Ultimate Awesome List - Automated Resource",
+  "short_description": "Automatically aggregates and updates every awesome list on any topic, including meta-lists. Operations teams use it to discover resources, tools, and workflows. Connects to Claude for automated updates and curation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "andrew",
+  "install_command": "git clone https://github.com/andrew/ultimate-awesome.git",
+  "source_repo_url": "https://github.com/andrew/ultimate-awesome",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "awesome-lists",
+    "awesome-list",
+    "resources",
+    "awesome",
+    "awesome-readme"
+  ],
+  "sections": {
+    "overview": "ultimate-awesome is an automatically generated directory of every awesome list on every topic, including awesome lists of awesome lists. It sources data from awesome.ecosyste.ms, an open API indexing awesome lists of open source software, and includes over 10,000 curated lists with at least 30 items each, sorted by GitHub stars. The skill maintains daily updates, organizing lists by programming language, topic area, and meta-lists to help operations teams quickly discover resources, tools, frameworks, and learning materials. Whether you need Python libraries, JavaScript frameworks, or cross-domain resources, ultimate-awesome provides a centralized, continuously updated reference point.\nDiscovering tools and libraries across 50+ programming languages\nFinding curated learning resources by topic area\nAccessing meta-lists that aggregate other awesome lists\nBuilding resource recommendations with sorted, star-ranked lists",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/andrew/ultimate-awesome`",
+    "usage": "```\nAutomatically aggregate and update the ultimate-awesome list for [TOPIC]. Include meta-lists and cross-reference with [ADDITIONAL_SOURCES] like GitHub repositories, blogs, or documentation. Ensure the list is current as of [DATE] and includes: 1) Top 5 most starred GitHub repos, 2) Top 3 most cited research papers, 3) Top 2 trending tools in the past month, and 4) A curated meta-list of related awesome lists. Format the output as a Markdown table with columns: Name, Description, Link, Last Updated, Stars/Usage Metric. Use Claude's built-in tools to fetch real-time data from GitHub API and web searches if necessary.\n```\nCopy\n\n```\n### Ultimate Awesome List: AI-Powered DevOps Tools (Updated: October 10, 2023)\n\n| Name | Description | Link | Last Updated | Stars/Usage Metric |\n|------|-------------|------|--------------|-------------------|\n| **DevOpsGPT** | AI-driven DevOps automation tool that generates CI/CD pipelines from natural language prompts. | [GitHub](https://github.com/yourusername/devopsgpt) | Oct 9, 2023 | 1,247 ⭐ |\n| **Terraform AI** | AI assistant for Terraform that suggests optimizations and detects misconfigurations. | [GitHub](https://github.com/hashicorp/terraform-ai) | Oct 8, 2023 | 892 ⭐ |\n| **Dora** | AI-powered observability platform for Kubernetes clusters with anomaly detection. | [Website](https://dora.ai) | Oct 7, 2023 | 12,345 users |\n| **Awesome AI DevOps** | Meta-list of 47 AI-powered DevOps tools curated by the DevOps community. | [GitHub](https://github.com/awesome-ai-devops) | Oct 5, 2023 | 3,210 ⭐ |\n| **KubeAI** | AI-driven Kubernetes cost optimizer with predictive scaling. | [GitHub](https://github.com/kubeai/kubeai) | Oct 3, 2023 | 567 ⭐ |\n\n#### Top Research Papers (2023)\n1. **\"Self-Healing Infrastructure with Reinforcement Learning\"** (arXiv:2305.12345) - 142 citations\n2. **\"AI for Incident Prediction in Cloud Systems\"** (IEEE, 2023) - 89 citations\n3. **\"Autonomous DevOps: A Survey\"** (ACM, 2023) - 67 citations\n\n#### Trending Tools (Past Month)\n- **Synth** (AI-generated synthetic data for DevOps testing) - 45% growth\n- **OpsPilot** (AI chatbot for DevOps teams) - 38% growth\n\n#### Related Awesome Lists\n- [Awesome AI Tools](https://github.com/awesome-ai-tools)\n- [Awesome Kubernetes](https://github.com/awesome-kubernetes)\n- [Awesome Automation](https://github.com/awesome-automation)\n\n*Source: Aggregated from GitHub, arXiv, and community curation. Last verified: October 10, 2023.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ultimate-awesome#main-content",
+      "ultimate-awesome#overview",
+      "ultimate-awesome#setup",
+      "ultimate-awesome#examples",
+      "ultimate-awesome#tools",
+      "ultimate-awesome#mcp",
+      "ultimate-awesome#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ultimate-awesome là một danh mục được tạo tự động chứa mọi awesome list thuộc mọi chủ đề, bao gồm cả các awesome list của các awesome list (meta-list). Công cụ này lấy dữ liệu từ awesome.ecosyste.ms, một API mở chuyên index các awesome list về phần mềm nguồn mở, và bao gồm hơn 10.000 danh sách được tuyển chọn (curated lists) với ít nhất 30 mục cho mỗi danh sách, được sắp xếp theo số star trên GitHub. Skill này duy trì cập nhật hàng ngày, phân loại các danh sách theo ngôn ngữ lập trình, lĩnh vực chủ đề và các meta-list nhằm giúp các đội ngũ vận hành nhanh chóng tìm kiếm tài nguyên, công cụ, framework và tài liệu học tập. Cho dù bạn cần các thư viện Python, framework JavaScript hay các tài nguyên liên miền (cross-domain), ultimate-awesome đều cung cấp một điểm tham chiếu tập trung và được cập nhật liên tục.\n\nKhám phá các công cụ và thư viện trên hơn 50 ngôn ngữ lập trình\nTìm kiếm tài nguyên học tập được tuyển chọn theo lĩnh vực chủ đề\nTruy cập các meta-list tổng hợp các awesome list khác\nĐưa ra các gợi ý tài nguyên bằng các danh sách được sắp xếp và xếp hạng theo số star",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/andrew/ultimate-awesome`",
+    "usage_vi": "```\nTự động tổng hợp và cập nhật danh sách ultimate-awesome cho [TOPIC]. Bao gồm các meta-list và tham chiếu chéo với [ADDITIONAL_SOURCES] như các GitHub repository, blog hoặc tài liệu hướng dẫn. Đảm bảo danh sách được cập nhật mới nhất tính đến ngày [DATE] và bao gồm: 1) Top 5 repo GitHub được gắn star nhiều nhất, 2) Top 3 bài báo nghiên cứu được trích dẫn nhiều nhất, 3) Top 2 công cụ thịnh hành nhất trong tháng qua, và 4) Một meta-list tuyển chọn gồm các awesome list liên quan. Định dạng đầu ra dưới dạng bảng Markdown với các cột: Tên (Name), Mô tả (Description), Liên kết (Link), Cập nhật lần cuối (Last Updated), Chỉ số Star/Sử dụng (Stars/Usage Metric). Sử dụng các công cụ tích hợp sẵn của Claude để lấy dữ liệu thời gian thực từ GitHub API và tìm kiếm web nếu cần thiết.\n```\nSao chép\n\n```\n### Ultimate Awesome List: Công cụ DevOps tích hợp AI (Cập nhật: 10 tháng 10, 2023)\n\n| Tên | Mô tả | Liên kết | Cập nhật lần cuối | Chỉ số Star/Sử dụng |\n|------|-------------|------|--------------|-------------------|\n| **DevOpsGPT** | Công cụ tự động hóa DevOps dựa trên AI giúp tạo các pipeline CI/CD từ các câu lệnh (prompt) ngôn ngữ tự nhiên. | [GitHub](https://github.com/yourusername/devopsgpt) | 09/10/2023 | 1.247 ⭐ |\n| **Terraform AI** | Trợ lý AI cho Terraform giúp gợi ý tối ưu hóa và phát hiện các cấu hình sai. | [GitHub](https://github.com/hashicorp/terraform-ai) | 08/10/2023 | 892 ⭐ |\n| **Dora** | Nền tảng quan sát (observability) tích hợp AI cho các cụm Kubernetes hỗ trợ phát hiện bất thường. | [Website](https://dora.ai) | 07/10/2023 | 12.345 người dùng |\n| **Awesome AI DevOps** | Meta-list gồm 47 công cụ DevOps tích hợp AI được tuyển chọn bởi cộng đồng DevOps. | [GitHub](https://github.com/awesome-ai-devops) | 05/10/2023 | 3.210 ⭐ |\n| **KubeAI** | Công cụ tối ưu hóa chi phí Kubernetes dựa trên AI với tính năng tự động điều chỉnh quy mô dự đoán (predictive scaling). | [GitHub](https://github.com/kubeai/kubeai) | 03/10/2023 | 567 ⭐ |\n\n#### Các bài báo nghiên cứu hàng đầu (2023)\n1. **\"Self-Healing Infrastructure with Reinforcement Learning\"** (arXiv:2305.12345) - 142 lượt trích dẫn\n2. **\"AI for Incident Prediction in Cloud Systems\"** (IEEE, 2023) - 89 lượt trích dẫn\n3. **\"Autonomous DevOps: A Survey\"** (ACM, 2023) - 67 lượt trích dẫn\n\n#### Công cụ thịnh hành (Tháng qua)\n- **Synth** (Dữ liệu tổng hợp tạo bởi AI cho kiểm thử DevOps) - tăng trưởng 45%\n- **OpsPilot** (AI chatbot dành cho các đội ngũ DevOps) - tăng trưởng 38%\n\n#### Các Awesome List liên quan\n- [Awesome AI Tools](https://github.com/awesome-ai-tools)\n- [Awesome Kubernetes](https://github.com/awesome-kubernetes)\n- [Awesome Automation](https://github.com/awesome-automation)\n\n*Nguồn: Tổng hợp từ GitHub, arXiv và tuyển chọn từ cộng đồng. Xác minh lần cuối: 10 tháng 10, 2023.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:52:07.399180Z",
+    "http_status": 200,
+    "content_hash": "6d72905da3fab5708992ab38a0a0cc4b57432ad845ad5e35270b48ab820016b2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ultimate-awesome.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ultimate-awesome.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Ultimate Awesome List - Tài nguyên tự động hóa",
+  "short_description_vi": "Tự động tổng hợp và cập nhật mọi awesome list thuộc bất kỳ chủ đề nào, bao gồm cả các meta-list. Các đội ngũ vận hành (operations teams) sử dụng công cụ này để tìm kiếm tài nguyên, công cụ và workflow. Kết nối với Claude để tự động cập nhật và tuyển chọn (curation)."
+}

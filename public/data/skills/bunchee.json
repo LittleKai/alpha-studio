@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bunchee",
+  "slug": "bunchee",
+  "name": "browser-use",
+  "headline": "Bunchee bundler for npm packages",
+  "short_description": "Bunchee is a zero-config bundler for npm packages that simplifies the bundling process for JavaScript and TypeScript projects. It benefits developers by automating the bundling of CommonJS and ES modules, including JSX and React Server Components. Bunchee integrates into existing workflows and connects to npm packages, reducing setup time and complexity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "huozhi",
+  "install_command": "git clone https://github.com/huozhi/bunchee.git",
+  "source_repo_url": "https://github.com/huozhi/bunchee",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "javascript",
+    "jsx",
+    "server-components",
+    "bundler",
+    "minify",
+    "commonjs",
+    "react",
+    "typescript",
+    "rsc",
+    "esmodule"
+  ],
+  "sections": {
+    "overview": "Bunchee is a zero-config bundler designed to simplify the npm package bundling process for JavaScript and TypeScript developers. It automatically handles multiple output formats including CommonJS and ES modules, with native support for JSX and React Server Components. By eliminating complex configuration requirements, Bunchee reduces setup time and integrates seamlessly into existing development workflows. The tool is particularly beneficial for library authors and maintainers who need to publish packages with multiple module formats without extensive tooling overhead. Bunchee connects directly to npm, streamlining the entire build-to-publish pipeline.\nEasily bundle a TypeScript library with minimal configuration.\nAutomatically generate exports for multiple files using wildcard patterns.\nBuild React Server Components with proper chunk separation for client and server.\nCreate executable binaries from TypeScript files with simple directory structure.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/huozhi/bunchee`",
+    "usage": "```\nUse Bunchee to bundle the [PROJECT_NAME] package located in [PROJECT_PATH]. Ensure the output includes both CommonJS and ES module formats in the [OUTPUT_DIR]. Include support for [JSX/TSX/React Server Components] if applicable. Verify the bundle size and generate a summary of the bundled files with their respective sizes.\n```\nCopy\n\n```\nSuccessfully bundled **@acme/ui-components@1.2.0** from `/projects/ui-components` using Bunchee. The output was generated in `/dist` with the following files:\n\n- **dist/index.cjs.js** (CommonJS): 42.3 KB (minified: 18.7 KB)\n- **dist/index.esm.js** (ES Module): 38.9 KB (minified: 16.2 KB)\n- **dist/index.d.ts** (TypeScript declarations): 2.1 KB\n\nThe bundle includes support for React Server Components and JSX. Tree-shaking removed 12 unused exports, reducing the final size by 15%. All dependencies (e.g., `react@^18.2.0`, `lodash-es@^4.17.21`) were bundled inline. The build completed in **1.8s** with zero configuration. No errors or warnings were detected during the process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bunchee#main-content",
+      "bunchee#overview",
+      "bunchee#setup",
+      "bunchee#examples",
+      "bunchee#tools",
+      "bunchee#mcp",
+      "bunchee#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Bunchee is a zero-config bundler designed to simplify the npm package bundling process for JavaScript and TypeScript developers. It automatically handles multiple output formats including CommonJS and ES modules, with native support for JSX and React Server Components. By eliminating complex configuration requirements, Bunchee reduces setup time and integrates seamlessly into existing development workflows. The tool is particularly beneficial for library authors and maintainers who need to publish packages with multiple module formats without extensive tooling overhead. Bunchee connects directly to npm, streamlining the entire build-to-publish pipeline.\nEasily bundle a TypeScript library with minimal configuration.\nAutomatically generate exports for multiple files using wildcard patterns.\nBuild React Server Components with proper chunk separation for client and server.\nCreate executable binaries from TypeScript files with simple directory structure.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/huozhi/bunchee`",
+    "usage_vi": "```\nUse Bunchee to bundle the [PROJECT_NAME] package located in [PROJECT_PATH]. Ensure the output includes both CommonJS and ES module formats in the [OUTPUT_DIR]. Include support for [JSX/TSX/React Server Components] if applicable. Verify the bundle size and generate a summary of the bundled files with their respective sizes.\n```\nCopy\n\n```\nSuccessfully bundled **@acme/ui-components@1.2.0** from `/projects/ui-components` using Bunchee. The output was generated in `/dist` with the following files:\n\n- **dist/index.cjs.js** (CommonJS): 42.3 KB (minified: 18.7 KB)\n- **dist/index.esm.js** (ES Module): 38.9 KB (minified: 16.2 KB)\n- **dist/index.d.ts** (TypeScript declarations): 2.1 KB\n\nThe bundle includes support for React Server Components and JSX. Tree-shaking removed 12 unused exports, reducing the final size by 15%. All dependencies (e.g., `react@^18.2.0`, `lodash-es@^4.17.21`) were bundled inline. The build completed in **1.8s** with zero configuration. No errors or warnings were detected during the process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:37:22.384058Z",
+    "http_status": 200,
+    "content_hash": "50fcd8163dd88791a7b420081d3ad8710cc5b335ec9aefabc78fe1a47bb0d8fa",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bunchee.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bunchee.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Bunchee bundler for npm packages",
+  "short_description_vi": "Bunchee is a zero-config bundler for npm packages that simplifies the bundling process for JavaScript and TypeScript projects. It benefits developers by automating the bundling of CommonJS and ES modules, including JSX and React Server Components. Bunchee integrates into existing workflows and connects to npm packages, reducing setup time and complexity."
+}

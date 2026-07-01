@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codealive-mcp",
+  "slug": "codealive-mcp",
+  "name": "browser-use",
+  "headline": "Optimize codebases with Codealive MCP",
+  "short_description": "The most accurate and comprehensive Context Engine as a service, optimized for large codebases, powered by advanced GraphRAG and accessible via MCP. It enriches the context for AI agents like Codex, Claude Code, Cursor, etc., making them 35% more efficient and up to 84% faster.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "CodeAlive-AI",
+  "install_command": "git clone https://github.com/CodeAlive-AI/codealive-mcp.git",
+  "source_repo_url": "https://github.com/CodeAlive-AI/codealive-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "graphrag",
+    "rag",
+    "large-codebase",
+    "mcp",
+    "cursor"
+  ],
+  "sections": {
+    "overview": "CodeAlive MCP is a context engine for large codebases that connects AI agents like Claude Code, Cursor, and Codex to advanced semantic search and code understanding capabilities. It uses graph-based retrieval to help agents find relevant code faster, understand project architecture beyond isolated files, and reduce token usage by 45%. The tool provides semantic search, grep search, artifact fetching, call graph analysis, and codebase Q&A through standard MCP integration, enabling AI agents to work more efficiently on complex repositories.\nFinding authentication code patterns across large microservice architectures\nIdentifying all references to a specific API before refactoring\nUnderstanding payment flow integration across distributed codebases\nLocating regex patterns and configuration files by exact match",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CodeAlive-AI/codealive-mcp`",
+    "usage": "```\nUse the codealive-mcp Context Engine to analyze the [PROJECT_NAME] codebase for [SPECIFIC_TASK]. Focus on [KEY_AREAS] such as [AREA_1], [AREA_2], and [AREA_3]. Provide a prioritized list of insights, refactoring opportunities, and potential bugs. Include code snippets where relevant. Context Engine ID: [ENGINE_ID].\n```\nCopy\n\n```\nFor the open-source project 'EcoSim' (a climate modeling toolkit), the codealive-mcp Context Engine identified the following high-impact opportunities:\n\n1. **Performance Bottleneck in `climate_model.py`**: The `simulate_weather` function uses a nested loop over grid cells (10,000+ iterations) that could be optimized using NumPy vectorization. Current runtime: 42 seconds per simulation. Proposed fix reduces this to 3.2 seconds (92% improvement).\n\n2. **Memory Leak in `data_loader.py`**: The `load_climate_data` function caches large datasets in memory without releasing them after processing. This caused the application to crash after 50 simulations on a 16GB RAM machine. Suggested solution: Implement chunked loading with `dask.dataframe` or use `weakref` for cache management.\n\n3. **API Inconsistency in `api/endpoints.py`**: The `/predict` endpoint returns raw JSON while `/visualize` returns a base64-encoded image. Standardizing to return JSON with embedded image URLs would simplify frontend integration. Example refactor:\n   ```python\n   # Before\n   return {\"image\": \"data:image/png;base64,...\"}\n   # After\n   return {\"image_url\": \"/static/predictions/20240515.png\"}\n   ```\n\n4. **Missing Test Coverage**: Only 42% of the `utils/math_utils.py` module is covered by tests. Critical functions like `calculate_co2_equivalent` lack edge-case testing. Recommend adding pytest cases for negative emissions scenarios.\n\n5. **Dependency Conflicts**: The project uses `pandas==1.3.5` and `geopandas==0.10.2`, which are incompatible with newer versions of `shapely`. Resolved by pinning to `shapely==1.8.5` in `requirements.txt`.\n\nThe Context Engine also flagged 12 potential race conditions in the `parallel_processing.py` module, all related to shared state in multi-threaded simulations. These should be addressed before merging the upcoming v2.1 release.\n\nTotal estimated time savings: 15 developer-hours per sprint. Bug fixes would prevent ~8 hours of debugging time monthly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codealive-mcp#main-content",
+      "codealive-mcp#overview",
+      "codealive-mcp#setup",
+      "codealive-mcp#examples",
+      "codealive-mcp#tools",
+      "codealive-mcp#mcp",
+      "codealive-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodeAlive MCP is a context engine for large codebases that connects AI agents like Claude Code, Cursor, and Codex to advanced semantic search and code understanding capabilities. It uses graph-based retrieval to help agents find relevant code faster, understand project architecture beyond isolated files, and reduce token usage by 45%. The tool provides semantic search, grep search, artifact fetching, call graph analysis, and codebase Q&A through standard MCP integration, enabling AI agents to work more efficiently on complex repositories.\nFinding authentication code patterns across large microservice architectures\nIdentifying all references to a specific API before refactoring\nUnderstanding payment flow integration across distributed codebases\nLocating regex patterns and configuration files by exact match",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/CodeAlive-AI/codealive-mcp`",
+    "usage_vi": "```\nUse the codealive-mcp Context Engine to analyze the [PROJECT_NAME] codebase for [SPECIFIC_TASK]. Focus on [KEY_AREAS] such as [AREA_1], [AREA_2], and [AREA_3]. Provide a prioritized list of insights, refactoring opportunities, and potential bugs. Include code snippets where relevant. Context Engine ID: [ENGINE_ID].\n```\nCopy\n\n```\nFor the open-source project 'EcoSim' (a climate modeling toolkit), the codealive-mcp Context Engine identified the following high-impact opportunities:\n\n1. **Performance Bottleneck in `climate_model.py`**: The `simulate_weather` function uses a nested loop over grid cells (10,000+ iterations) that could be optimized using NumPy vectorization. Current runtime: 42 seconds per simulation. Proposed fix reduces this to 3.2 seconds (92% improvement).\n\n2. **Memory Leak in `data_loader.py`**: The `load_climate_data` function caches large datasets in memory without releasing them after processing. This caused the application to crash after 50 simulations on a 16GB RAM machine. Suggested solution: Implement chunked loading with `dask.dataframe` or use `weakref` for cache management.\n\n3. **API Inconsistency in `api/endpoints.py`**: The `/predict` endpoint returns raw JSON while `/visualize` returns a base64-encoded image. Standardizing to return JSON with embedded image URLs would simplify frontend integration. Example refactor:\n   ```python\n   # Before\n   return {\"image\": \"data:image/png;base64,...\"}\n   # After\n   return {\"image_url\": \"/static/predictions/20240515.png\"}\n   ```\n\n4. **Missing Test Coverage**: Only 42% of the `utils/math_utils.py` module is covered by tests. Critical functions like `calculate_co2_equivalent` lack edge-case testing. Recommend adding pytest cases for negative emissions scenarios.\n\n5. **Dependency Conflicts**: The project uses `pandas==1.3.5` and `geopandas==0.10.2`, which are incompatible with newer versions of `shapely`. Resolved by pinning to `shapely==1.8.5` in `requirements.txt`.\n\nThe Context Engine also flagged 12 potential race conditions in the `parallel_processing.py` module, all related to shared state in multi-threaded simulations. These should be addressed before merging the upcoming v2.1 release.\n\nTotal estimated time savings: 15 developer-hours per sprint. Bug fixes would prevent ~8 hours of debugging time monthly.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:49:44.180912Z",
+    "http_status": 200,
+    "content_hash": "daaa02b46a5bc9d2097b30f7481736a6691ae8dc550fde4156544d04d79bafe0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codealive-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codealive-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Optimize codebases with Codealive MCP",
+  "short_description_vi": "The most accurate and comprehensive Context Engine as a service, optimized for large codebases, powered by advanced GraphRAG and accessible via MCP. It enriches the context for AI agents like Codex, Claude Code, Cursor, etc., making them 35% more efficient and up to 84% faster."
+}

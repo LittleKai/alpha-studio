@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-aso-skill",
+  "slug": "claude-code-aso-skill",
+  "name": "Claude Code Aso Skill",
+  "headline": "AEO Automation Framework for Claude Code",
+  "short_description": "The AEO Automation Framework for Claude Code offers a beginner-friendly solution for automating GitHub tasks with one-click efficiency. It features a fleet of AEO sub-agents for planning, execution, and reporting, enabling instant work triggers through AEO slash-commands.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "alirezarezvani",
+  "install_command": "claude install alirezarezvani/claude-code-aso-skill",
+  "source_repo_url": "https://github.com/alirezarezvani/claude-code-aso-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "app-store-optimization",
+    "GitHub",
+    "AEO",
+    "Claude AI"
+  ],
+  "sections": {
+    "overview": "The ASO Agent System is a multi-agent framework built for Claude Code and Claude Desktop that automates App Store Optimization across iOS and Android platforms. It combines four specialized AI agents—research, optimization, strategy, and orchestration—with real iTunes Search API data to generate character-validated metadata, competitive analysis, keyword strategies, and 47-item pre-launch checklists. The system delivers copy-paste ready content for App Store Connect and Google Play Console, specific timeline calendars, A/B test configurations, and ongoing optimization templates. Users can run complete ASO audits, competitive intelligence analysis, metadata optimization, or pre-launch validation through slash commands that take 10-40 minutes depending on scope.\nAutomate GitHub issue tracking\nGenerate executive summaries for projects\nTrigger automated reports on project progress\nManage actionable items from GitHub tasks",
+    "setup": "Terminal\nCopy\n`claude install alirezarezvani/claude-code-aso-skill`\n`git clone https://github.com/alirezarezvani/claude-code-aso-skill`",
+    "usage": "```\nUse the AEO Automation Framework in Claude Code to automate a GitHub task for [REPOSITORY_NAME]. Trigger the AEO sub-agents with the command /aeo [TASK_TYPE] [SPECIFIC_ACTION]. For example: '/aeo pr create --title \"Fix login bug\" --body \"Resolves issue #42\"'. Ensure the framework handles planning, execution, and reporting in one seamless workflow.\n```\nCopy\n\n```\n### AEO Automation Framework Execution Report\n**Repository:** docs/custom-agents-template\n**Task:** Create a pull request for a new VS Code extension feature\n**Trigger Command:** `/aeo pr create --title \"Add reusable snippet support\" --body \"Implements snippet storage and retrieval system per issue #12\"`\n\n---\n\n#### Phase 1: Planning (AEO-Planner Sub-Agent)\n**Analysis:**\n- Detected 3 open issues tagged with 'enhancement' in the repository\n- Identified missing `snippets/` directory in the project structure\n- Verified no existing PR addresses snippet functionality\n\n**Plan Generated:**\n1. Create new branch: `feature/snippet-support`\n2. Add `snippets/` directory with sample configuration\n3. Update `package.json` to include snippet dependencies\n4. Create PR with auto-generated title/body from issue #12\n5. Request review from @garnertb (primary maintainer)\n\n---\n\n#### Phase 2: Execution (AEO-Executor Sub-Agent)\n**Actions Completed:**\n```bash\n# Branch creation\n$ git checkout -b feature/snippet-support\n\n# Directory structure\n$ mkdir -p snippets/config\n$ touch snippets/config/.gitkeep\n\n# Package updates\n$ npm install --save-dev vscode-snippets\n\n# Commit changes\n$ git add .\n$ git commit -m \"feat: add snippet support infrastructure\"\n\n# PR creation\n$ gh pr create --title \"Add reusable snippet support\" --body \"Implements snippet storage and retrieval system per issue #12\" --base main --head feature/snippet-support --reviewer @garnertb\n```\n\n**Output:**\n```\nCreating pull request for feature/snippet-support into main...\n\n✅ Created PR #47: \"Add reusable snippet support\"\n   URL: https://github.com/docs/custom-agents-template/pull/47\n   Reviewers: @garnertb\n```\n\n---\n\n#### Phase 3: Reporting (AEO-Reporter Sub-Agent)\n**Summary:**\n- Task completed in 2.3 minutes (vs 15-20 minutes manually)\n- 4 Git commands executed automatically\n- PR created with proper reviewers and linking to issue #12\n\n**Next Steps:**\n1. Monitor PR #47 for feedback from @garnertb\n2. Address any requested changes via additional AEO commands\n3. Merge when approved (automated merge available via /aeo merge #47)\n\n**Metrics:**\n- Time saved: ~17.7 minutes\n- Command reduction: 85% (4 vs 25+ manual steps)\n- Error rate: 0% (vs ~15% for manual PR creation)\n\n---\n\n**Framework Status:** ✅ All phases completed successfully\n**Next Task:** Ready for /aeo merge #47 or /aeo issue comment #12 \"LGTM\"\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-aso-skill#main-content",
+      "claude-code-aso-skill#overview",
+      "claude-code-aso-skill#setup",
+      "claude-code-aso-skill#examples",
+      "claude-code-aso-skill#tools",
+      "claude-code-aso-skill#mcp",
+      "claude-code-aso-skill#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "ASO Agent System là một multi-agent framework được thiết kế cho Claude Code và Claude Desktop giúp tự động hóa App Store Optimization (ASO) trên cả hai nền tảng iOS và Android. Hệ thống kết hợp bốn AI agent chuyên biệt—research, optimization, strategy, và orchestration—với dữ liệu thực tế từ iTunes Search API để tạo ra metadata được kiểm tra giới hạn ký tự, phân tích cạnh tranh, chiến lược từ khóa và checklist trước khi phát hành gồm 47 hạng mục. Hệ thống cung cấp nội dung dạng copy-paste cho App Store Connect và Google Play Console, lịch trình chi tiết, cấu hình A/B test và các template tối ưu hóa liên tục. Người dùng có thể thực hiện kiểm định ASO toàn diện, phân tích đối thủ cạnh tranh, tối ưu hóa metadata hoặc xác thực trước khi phát hành thông qua các slash command với thời gian xử lý từ 10-40 phút tùy theo quy mô.\nTự động hóa việc theo dõi issue trên GitHub\nTạo báo cáo tóm tắt dự án (executive summary)\nKích hoạt báo cáo tự động về tiến độ dự án\nQuản lý các đầu việc cần xử lý (actionable item) từ các tác vụ GitHub",
+    "setup_vi": "Terminal\nSao chép\n`claude install alirezarezvani/claude-code-aso-skill`\n`git clone https://github.com/alirezarezvani/claude-code-aso-skill`",
+    "usage_vi": "```\nSử dụng AEO Automation Framework trong Claude Code để tự động hóa một tác vụ GitHub cho [REPOSITORY_NAME]. Kích hoạt các AEO sub-agent bằng lệnh `/aeo [TASK_TYPE] [SPECIFIC_ACTION]`. Ví dụ: '/aeo pr create --title \"Fix login bug\" --body \"Resolves issue #42\"'. Đảm bảo framework xử lý các bước lập kế hoạch (planning), thực thi (execution) và báo cáo (reporting) trong một quy trình làm việc liền mạch.\n```\nSao chép\n\n```\n### Báo cáo thực thi AEO Automation Framework\n**Repository:** docs/custom-agents-template\n**Tác vụ:** Tạo pull request cho tính năng extension mới của VS Code\n**Lệnh kích hoạt:** `/aeo pr create --title \"Add reusable snippet support\" --body \"Implements snippet storage and retrieval system per issue #12\"`\n\n---\n\n#### Giai đoạn 1: Lập kế hoạch (AEO-Planner Sub-Agent)\n**Phân tích:**\n- Phát hiện 3 open issue được gắn tag 'enhancement' trong repository\n- Xác định thiếu thư mục `snippets/` trong cấu trúc dự án\n- Xác nhận không có PR nào hiện tại xử lý chức năng snippet\n\n**Kế hoạch được tạo:**\n1. Tạo branch mới: `feature/snippet-support`\n2. Thêm thư mục `snippets/` kèm cấu hình mẫu\n3. Cập nhật `package.json` để thêm các dependency cho snippet\n4. Tạo PR với tiêu đề/nội dung tự động tạo từ issue #12\n5. Yêu cầu review từ @garnertb (maintainer chính)\n\n---\n\n#### Giai đoạn 2: Thực thi (AEO-Executor Sub-Agent)\n**Các hành động đã hoàn thành:**\n```bash\n# Tạo branch\n$ git checkout -b feature/snippet-support\n\n# Cấu trúc thư mục\n$ mkdir -p snippets/config\n$ touch snippets/config/.gitkeep\n\n# Cập nhật package\n$ npm install --save-dev vscode-snippets\n\n# Commit các thay đổi\n$ git add .\n$ git commit -m \"feat: add snippet support infrastructure\"\n\n# Tạo PR\n$ gh pr create --title \"Add reusable snippet support\" --body \"Implements snippet storage and retrieval system per issue #12\" --base main --head feature/snippet-support --reviewer @garnertb\n```\n\n**Kết quả (Output):**\n```\nCreating pull request for feature/snippet-support into main...\n\n✅ Created PR #47: \"Add reusable snippet support\"\n   URL: https://github.com/docs/custom-agents-template/pull/47\n   Reviewers: @garnertb\n```\n\n---\n\n#### Giai đoạn 3: Báo cáo (AEO-Reporter Sub-Agent)\n**Tóm tắt:**\n- Tác vụ hoàn thành trong 2.3 phút (so với 15-20 phút nếu làm thủ công)\n- 4 lệnh Git được thực thi tự động\n- PR được tạo với reviewer phù hợp và liên kết với issue #12\n\n**Các bước tiếp theo:**\n1. Theo dõi PR #47 để nhận phản hồi từ @garnertb\n2. Xử lý các thay đổi được yêu cầu thông qua các lệnh AEO bổ sung\n3. Merge khi được phê duyệt (hỗ trợ merge tự động qua /aeo merge #47)\n\n**Số liệu đo lường (Metrics):**\n- Thời gian tiết kiệm được: ~17.7 phút\n- Giảm thiểu số lệnh: 85% (4 so với hơn 25 bước thủ công)\n- Tỷ lệ lỗi: 0% (so với khoảng 15% khi tạo PR thủ công)\n\n---\n\n**Trạng thái Framework:** ✅ Tất cả các giai đoạn đã hoàn thành thành công\n**Tác vụ tiếp theo:** Sẵn sàng cho /aeo merge #47 hoặc /aeo issue comment #12 \"LGTM\"\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:12:53.502771Z",
+    "http_status": 200,
+    "content_hash": "065bd87a3bdc14b6664ed9ee32f1918b621b64569931a6e8575d6f417eda6dc6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-aso-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-aso-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AEO Automation Framework cho Claude Code",
+  "short_description_vi": "AEO Automation Framework cho Claude Code cung cấp giải pháp thân thiện với người mới bắt đầu giúp tự động hóa các tác vụ GitHub hiệu quả chỉ với một click. Framework sở hữu một hệ thống các AEO sub-agent hỗ trợ lập kế hoạch, thực thi và báo cáo, giúp kích hoạt công việc tức thì qua các AEO slash-command."
+}

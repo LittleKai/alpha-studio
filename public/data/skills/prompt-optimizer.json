@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/prompt-optimizer",
+  "slug": "prompt-optimizer",
+  "name": "XMind 思维导图处理技能",
+  "headline": "Prompt Optimizer: Framework Selection & Prompt",
+  "short_description": "Prompt Optimizer is designed to help users select appropriate prompt frameworks based on specific task scenarios and generate clearer, more actionable prompts. It assists prompt creators in optimizing their prompts for better performance.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "chujianyun",
+  "install_command": "git clone https://github.com/chujianyun/skills",
+  "source_repo_url": "https://github.com/chujianyun/skills",
+  "works_with": [
+    "ChatGPT",
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "optimizer",
+    "productivity",
+    "prompt"
+  ],
+  "sections": {
+    "overview": "Prompt Optimizer is a reviewer and generator skill that diagnoses and improves AI prompts across different task scenarios. It helps prompt creators select the right framework for their use case—whether instructional, role-based, structured, or domain-specific—then generates clearer, more actionable prompt text. Rather than offering generic suggestions, it first assesses your prompt's current state and task requirements, then provides targeted improvements. Teams building AI agents, developing instruction sets, or refining Claude prompts benefit from this structured approach to prompt optimization.\nChoosing the right prompt structure for a given task.\nImproving the clarity and execution of prompts.\nRefining and polishing existing prompts based on specific requirements.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/chujianyun/skills --skill prompt-optimizer`\n`git clone https://github.com/chujianyun/skills`",
+    "usage": "```\nOptimize this prompt for [TASK GOAL] in [COMPANY/INDUSTRY] context. Current prompt: \"[PROMPT TO OPTIMIZE]\". Focus on improving clarity, specificity, and actionability. Suggest a refined version and explain the optimizations made.\n```\nCopy\n\n```\n### Optimized Prompt for Customer Feedback Analysis\n\n**Original Prompt:**\n\"Analyze customer feedback for our e-commerce platform.\"\n\n**Optimized Prompt:**\n\"As a data analyst for [Company Name], an e-commerce platform specializing in [INDUSTRY], analyze the last 3 months of customer feedback stored in [DATA SOURCE]. Focus on identifying:\n- Top 3 recurring complaints about product quality or shipping delays\n- Sentiment trends (positive/negative/neutral) in product reviews\n- Specific suggestions mentioned by customers for improving our checkout process\n\nProvide a summary report with:\n1. A ranked list of pain points (1 being most critical)\n2. 3 actionable recommendations to address the top issues\n3. Sample responses to common complaints\n\nPrioritize feedback from VIP customers (top 10% by spending) and exclude spam or bot-generated comments.\"\n\n**Optimizations Applied:**\n- Added **context** (company, industry, data source) to ground the analysis\n- Defined **specific focus areas** (complaints, sentiment, suggestions) instead of vague \"analyze\"\n- Structured **output requirements** (ranked list, recommendations, sample responses) for actionability\n- Included **filtering criteria** (VIP customers, spam exclusion) to improve relevance\n- Set **time bounds** (last 3 months) for temporal context\n\nThis version ensures the AI delivers a **targeted, structured, and business-relevant** analysis while minimizing ambiguity.\n\nWould you like me to refine this further for a specific use case (e.g., marketing, product development) or adjust the tone (e.g., technical, executive summary)?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "prompt-optimizer#main-content",
+      "prompt-optimizer#overview",
+      "prompt-optimizer#setup",
+      "prompt-optimizer#examples",
+      "prompt-optimizer#tools",
+      "prompt-optimizer#mcp",
+      "prompt-optimizer#related",
+      "slidespeak-presentation-skill",
+      "automation-workflows",
+      "xmind"
+    ],
+    "overview_vi": "Prompt Optimizer is a reviewer and generator skill that diagnoses and improves AI prompts across different task scenarios. It helps prompt creators select the right framework for their use case—whether instructional, role-based, structured, or domain-specific—then generates clearer, more actionable prompt text. Rather than offering generic suggestions, it first assesses your prompt's current state and task requirements, then provides targeted improvements. Teams building AI agents, developing instruction sets, or refining Claude prompts benefit from this structured approach to prompt optimization.\nChoosing the right prompt structure for a given task.\nImproving the clarity and execution of prompts.\nRefining and polishing existing prompts based on specific requirements.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/chujianyun/skills --skill prompt-optimizer`\n`git clone https://github.com/chujianyun/skills`",
+    "usage_vi": "```\nOptimize this prompt for [TASK GOAL] in [COMPANY/INDUSTRY] context. Current prompt: \"[PROMPT TO OPTIMIZE]\". Focus on improving clarity, specificity, and actionability. Suggest a refined version and explain the optimizations made.\n```\nCopy\n\n```\n### Optimized Prompt for Customer Feedback Analysis\n\n**Original Prompt:**\n\"Analyze customer feedback for our e-commerce platform.\"\n\n**Optimized Prompt:**\n\"As a data analyst for [Company Name], an e-commerce platform specializing in [INDUSTRY], analyze the last 3 months of customer feedback stored in [DATA SOURCE]. Focus on identifying:\n- Top 3 recurring complaints about product quality or shipping delays\n- Sentiment trends (positive/negative/neutral) in product reviews\n- Specific suggestions mentioned by customers for improving our checkout process\n\nProvide a summary report with:\n1. A ranked list of pain points (1 being most critical)\n2. 3 actionable recommendations to address the top issues\n3. Sample responses to common complaints\n\nPrioritize feedback from VIP customers (top 10% by spending) and exclude spam or bot-generated comments.\"\n\n**Optimizations Applied:**\n- Added **context** (company, industry, data source) to ground the analysis\n- Defined **specific focus areas** (complaints, sentiment, suggestions) instead of vague \"analyze\"\n- Structured **output requirements** (ranked list, recommendations, sample responses) for actionability\n- Included **filtering criteria** (VIP customers, spam exclusion) to improve relevance\n- Set **time bounds** (last 3 months) for temporal context\n\nThis version ensures the AI delivers a **targeted, structured, and business-relevant** analysis while minimizing ambiguity.\n\nWould you like me to refine this further for a specific use case (e.g., marketing, product development) or adjust the tone (e.g., technical, executive summary)?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:28:54.609666Z",
+    "http_status": 200,
+    "content_hash": "49bf805c08bef6a370d7e8ffb5c90d78114c44349da3d1b91a2b71c7976d14b4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prompt-optimizer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\prompt-optimizer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Prompt Optimizer: Framework Selection & Prompt",
+  "short_description_vi": "Prompt Optimizer is designed to help users select appropriate prompt frameworks based on specific task scenarios and generate clearer, more actionable prompts. It assists prompt creators in optimizing their prompts for better performance."
+}

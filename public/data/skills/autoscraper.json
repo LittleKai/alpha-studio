@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autoscraper",
+  "slug": "autoscraper",
+  "name": "autoscraper",
+  "headline": "Autoscraper: Fast & Lightweight Web Scraper for",
+  "short_description": "Autoscraper is a lightweight and efficient web scraping tool designed for Python developers. It automates the process of extracting data from websites, making it ideal for tasks in data collection and analysis.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "alirezamika",
+  "install_command": "claude install alirezamika/autoscraper",
+  "source_repo_url": "https://github.com/alirezamika/autoscraper",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "web scraping",
+    "machine learning",
+    "data extraction",
+    "Python"
+  ],
+  "sections": {
+    "overview": "AutoScraper is a smart, automatic web scraper for Python that simplifies data extraction from websites. It works by learning scraping rules from sample data you provide—such as text, URLs, or HTML tag values—then applies those rules to extract similar content from new pages. Instead of writing complex selectors or parsing logic, you supply examples of what you want to scrape, and AutoScraper infers the pattern and retrieves matching elements. This approach makes it ideal for developers who need to collect data quickly without manually defining scraping rules for each website.\nExtract product prices from e-commerce sites to analyze pricing trends.\nGather data for market research by scraping competitor websites.\nAutomate content collection for SEO purposes by extracting relevant articles.\nMonitor competitor websites for changes in product offerings or pricing.",
+    "setup": "Terminal\nCopy\n`claude install alirezamika/autoscraper`\n`git clone https://github.com/alirezamika/autoscraper`",
+    "usage": "```\nUse Autoscraper to extract structured data from [WEBSITE_URL]. Target the following elements: [LIST_OF_ELEMENTS_TO_EXTRACT, e.g., product names, prices, descriptions, images, availability status]. Save the output as a [FORMAT, e.g., CSV, JSON] file named [FILE_NAME]. Include error handling for cases where elements are missing or the website structure changes.\n```\nCopy\n\n```\n```json\n{\n  \"extracted_data\": [\n    {\n      \"product_name\": \"Automa.com Domain\",\n      \"price\": \"$325,000\",\n      \"description\": \"A captivating blend of automation and innovation. Ideal for tech startups specializing in AI, robotics, or software development.\",\n      \"image_url\": \"https://img.atom.com/story_images/visual_images/logo-image-12216-automa.jpg?class=show\",\n      \"availability\": \"Available for purchase\",\n      \"payment_options\": [\n        {\"type\": \"Full Payment\", \"amount\": \"$325,000\"},\n        {\"type\": \"Installment Plan\", \"down_payment\": \"$35,000\", \"monthly_payment\": \"$7,553\", \"duration\": \"48 months\"}\n      ],\n      \"source_url\": \"https://www.atom.com/domains/automa.com\"\n    },\n    {\n      \"product_name\": \"Escrow Service\",\n      \"price\": \"Not specified\",\n      \"description\": \"Independent escrow service for secure domain transfers. Funds held by Escrow.com until domain is successfully transferred.\",\n      \"image_url\": \"https://img.atom.com/public/images/new_landing/escrow-logo.svg\",\n      \"availability\": \"Available\",\n      \"payment_options\": [\n        {\"type\": \"Escrow\", \"platform\": \"Escrow.com\"}\n      ],\n      \"source_url\": \"https://www.atom.com/domains/automa.com\"\n    }\n  ],\n  \"metadata\": {\n    \"scraped_at\": \"2023-11-15T14:30:00Z\",\n    \"scraper_version\": \"autoscraper-2.3.1\",\n    \"website_structure_changed\": false,\n    \"notes\": \"All product names and prices extracted from the domain listing page. Payment options include full payment and installment plans.\"\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "autoscraper#main-content",
+      "autoscraper#overview",
+      "autoscraper#setup",
+      "autoscraper#examples",
+      "autoscraper#tools",
+      "autoscraper#mcp",
+      "autoscraper#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "AutoScraper là một công cụ web scraping tự động, thông minh dành cho Python giúp đơn giản hóa việc trích xuất dữ liệu từ website. Hoạt động theo cơ chế tự học các quy tắc scraping từ dữ liệu mẫu bạn cung cấp—như văn bản, URL hoặc giá trị thẻ HTML—sau đó áp dụng các quy tắc đó để trích xuất nội dung tương tự từ các trang web mới. Thay vì phải viết các selector phức tạp hay logic phân tích cú pháp, bạn chỉ cần cung cấp ví dụ về nội dung muốn cào, AutoScraper sẽ tự suy luận pattern và lấy ra các phần tử phù hợp. Cách tiếp cận này vô cùng lý tưởng cho các lập trình viên cần thu thập dữ liệu nhanh chóng mà không cần phải định nghĩa thủ công quy tắc scraping cho từng website.\nTrích xuất giá sản phẩm từ các trang thương mại điện tử để phân tích xu hướng giá.\nThu thập dữ liệu phục vụ nghiên cứu thị trường bằng cách scrape website đối thủ cạnh tranh.\nTự động hóa việc thu thập nội dung cho mục đích SEO bằng cách trích xuất các bài viết liên quan.\nTheo dõi website đối thủ để phát hiện các thay đổi về danh mục sản phẩm hoặc giá cả.",
+    "setup_vi": "Terminal\nSao chép\n`claude install alirezamika/autoscraper`\n`git clone https://github.com/alirezamika/autoscraper`",
+    "usage_vi": "```\nSử dụng Autoscraper để trích xuất dữ liệu có cấu trúc từ [WEBSITE_URL]. Nhắm mục tiêu vào các phần tử sau: [LIST_OF_ELEMENTS_TO_EXTRACT, ví dụ: tên sản phẩm, giá cả, mô tả, hình ảnh, tình trạng còn hàng]. Lưu kết quả đầu ra dưới dạng tệp [FORMAT, ví dụ: CSV, JSON] có tên [FILE_NAME]. Thiết lập xử lý lỗi cho các trường hợp thiếu phần tử hoặc cấu trúc website bị thay đổi.\n```\nSao chép\n\n```\n```json\n{\n  \"extracted_data\": [\n    {\n      \"product_name\": \"Tên miền Automa.com\",\n      \"price\": \"$325,000\",\n      \"description\": \"Sự kết hợp đầy cuốn hút giữa tự động hóa và đổi mới. Lý tưởng cho các startup công nghệ chuyên về AI, robot hoặc phát triển phần mềm.\",\n      \"image_url\": \"https://img.atom.com/story_images/visual_images/logo-image-12216-automa.jpg?class=show\",\n      \"availability\": \"Có thể mua\",\n      \"payment_options\": [\n        {\"type\": \"Thanh toán toàn bộ\", \"amount\": \"$325,000\"},\n        {\"type\": \"Kế hoạch trả góp\", \"down_payment\": \"$35,000\", \"monthly_payment\": \"$7,553\", \"duration\": \"48 tháng\"}\n      ],\n      \"source_url\": \"https://www.atom.com/domains/automa.com\"\n    },\n    {\n      \"product_name\": \"Dịch vụ Escrow\",\n      \"price\": \"Không xác định\",\n      \"description\": \"Dịch vụ ký quỹ (escrow) độc lập giúp chuyển nhượng tên miền an toàn. Tiền được giữ bởi Escrow.com cho đến khi tên miền được chuyển nhượng thành công.\",\n      \"image_url\": \"https://img.atom.com/public/images/new_landing/escrow-logo.svg\",\n      \"availability\": \"Sẵn sàng\",\n      \"payment_options\": [\n        {\"type\": \"Ký quỹ\", \"platform\": \"Escrow.com\"}\n      ],\n      \"source_url\": \"https://www.atom.com/domains/automa.com\"\n    }\n  ],\n  \"metadata\": {\n    \"scraped_at\": \"2023-11-15T14:30:00Z\",\n    \"scraper_version\": \"autoscraper-2.3.1\",\n    \"website_structure_changed\": false,\n    \"notes\": \"Tất cả tên sản phẩm và giá được trích xuất từ trang danh sách tên miền. Các tùy chọn thanh toán bao gồm thanh toán toàn bộ và trả góp.\"\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:09:57.779444Z",
+    "http_status": 200,
+    "content_hash": "e926921fe0775dfb41a79870283ccf8b136c986d4748c152412ab1e834adb7f0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\autoscraper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\autoscraper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Autoscraper: Công cụ Web Scraper nhanh & gọn nhẹ dành cho",
+  "short_description_vi": "Autoscraper là một công cụ web scraping gọn nhẹ và hiệu quả dành cho lập trình viên Python. Công cụ này tự động hóa quy trình trích xuất dữ liệu từ website, rất lý tưởng cho các tác vụ thu thập và phân tích dữ liệu."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-resources",
+  "slug": "agent-resources",
+  "name": "Agent Resources",
+  "headline": "Claude, Cursor skills installation via GitHub",
+  "short_description": "Agent-resources is a package manager for AI agents. It enables users to install agent skills from GitHub with a single command. It benefits developers and operations teams by streamlining the integration of AI skills into workflows. It connects to Claude Code, Cursor, and GitHub Copilot.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "kasperjunge",
+  "install_command": "git clone https://github.com/kasperjunge/agent-resources.git",
+  "source_repo_url": "https://github.com/kasperjunge/agent-resources",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "claude-code-skills",
+    "claude-code-commands",
+    "claude-code-subagents",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "agr treats AI agent skills like software dependencies—declared in a manifest, versioned in a lock file, and installed with a single command. It works with Claude Code, Cursor, OpenAI Codex, OpenCode, GitHub Copilot, and Pi, letting teams share identical skill setups across machines and projects. Skills can be installed from any public Git repository using simple handles like `owner/repo/skill`, or from local directories during development. The tool solves skill drift by pinning exact versions in `agr.lock`, ensuring every teammate runs the same skills. Teams commit `agr.toml` and `agr.lock` to their repository while adding skill directories to `.gitignore`, enabling new developers to sync their entire skill environment with `agr sync`.\nQuickly install frontend design skills from GitHub to enhance web development projects.\nRun PDF processing skills directly from the terminal to automate document analysis.\nSync team dependencies effortlessly using agr.toml to ensure all members have the same skills installed.\nCreate and share custom skills with teammates to streamline specific tasks in AI applications.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kasperjunge/agent-resources`",
+    "usage": "```\nInstall the [AGENT_SKILL_NAME] AI skill using agent-resources. Verify the installation by running a test command. Example: 'Install the web-scraper skill from GitHub using agent-resources. Then test it by scraping the top 5 headlines from example.com and summarizing them in 3 bullet points.'\n```\nCopy\n\n```\n```bash\n$ agent-resources install web-scraper\nInstalling web-scraper from GitHub... ✅\nDependencies resolved. Installing required packages...\nweb-scraper installed successfully in /usr/local/bin/agent-resources/skills/web-scraper\n\n$ agent-resources test web-scraper --url=\"https://example.com\" --max-headlines=5\n✅ Skill web-scraper is functioning correctly.\n\nTop 5 Headlines from example.com:\n1. **Breaking: New AI Model Exceeds Human Performance in Complex Tasks** - Researchers at TechCorp unveiled a breakthrough in AI that outperforms humans in multi-step problem-solving scenarios, with potential applications in healthcare diagnostics and climate modeling.\n2. **Stock Market Volatility Continues as Fed Hints at Rate Hike Pause** - Major indices saw sharp fluctuations after Federal Reserve minutes suggested a potential pause in interest rate hikes, leaving investors uncertain about the near-term economic outlook.\n3. **Local Startup Acquired by Global Tech Giant for $2.3B** - Silicon Valley-based AI startup Neuralink was acquired by TechGiant Inc. in a deal that values the company at $2.3 billion, signaling a major consolidation in the AI-driven automation sector.\n4. **Climate Summit Ends with Mixed Results on Emission Reduction Pledges** - The annual Global Climate Summit concluded with 60% of participating nations committing to stricter emission targets, though critics argue the pledges fall short of what’s needed to meet 2030 goals.\n5. **New Study Reveals Surprising Link Between Sleep and Cognitive Performance** - A 10-year longitudinal study published in Nature found that individuals who consistently sleep 7-8 hours per night exhibit a 23% higher cognitive performance in tasks requiring memory and problem-solving.\n\nSummary: The headlines highlight significant developments in AI, the economy, and climate policy, with a recurring theme of technological advancement and its societal impacts. The stock market's reaction to Fed policy and the acquisition of Neuralink underscore the rapid pace of change in the tech industry.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-resources#main-content",
+      "agent-resources#overview",
+      "agent-resources#setup",
+      "agent-resources#examples",
+      "agent-resources#tools",
+      "agent-resources#mcp",
+      "agent-resources#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "agr quản lý các AI agent skill tương tự như các dependency trong phần mềm—được khai báo trong manifest, cố định phiên bản trong lock file và cài đặt chỉ bằng một câu lệnh duy nhất. Công cụ này hoạt động tốt với Claude Code, Cursor, OpenAI Codex, OpenCode, GitHub Copilot và Pi, giúp các đội ngũ chia sẻ cấu hình skill đồng nhất giữa các máy tính và dự án khác nhau. Bạn có thể cài đặt skill từ bất kỳ kho lưu trữ Git công khai nào bằng các đường dẫn đơn giản như `owner/repo/skill`, hoặc từ các thư mục cục bộ (local directory) trong quá trình phát triển. Công cụ này giải quyết triệt để tình trạng lệch phiên bản (skill drift) bằng cách cố định chính xác phiên bản trong file `agr.lock`, đảm bảo mọi thành viên trong nhóm đều chạy các skill giống hệt nhau. Các nhóm phát triển chỉ cần commit `agr.toml` và `agr.lock` lên kho lưu trữ của họ, đồng thời đưa các thư mục chứa skill vào `.gitignore`, giúp các nhà phát triển mới dễ dàng đồng bộ hóa toàn bộ môi trường skill của mình bằng lệnh `agr sync`.\nNhanh chóng cài đặt các skill thiết kế frontend từ GitHub để cải thiện các dự án phát triển web.\nChạy trực tiếp các skill xử lý PDF từ terminal để tự động hóa quy trình phân tích tài liệu.\nĐồng bộ hóa các dependency của cả nhóm một cách dễ dàng bằng file agr.toml để đảm bảo tất cả thành viên đều cài đặt các skill giống nhau.\nTạo và chia sẻ các skill tùy chỉnh với đồng nghiệp để tối ưu hóa các tác vụ cụ thể trong ứng dụng AI.",
+    "setup_vi": "Không có sẵn câu lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kasperjunge/agent-resources`",
+    "usage_vi": "```\nCài đặt AI skill [AGENT_SKILL_NAME] bằng agent-resources. Xác minh cài đặt bằng cách chạy lệnh test. Ví dụ: 'Cài đặt skill web-scraper từ GitHub bằng agent-resources. Sau đó kiểm tra bằng cách cào 5 tiêu đề hàng đầu từ example.com và tóm tắt chúng thành 3 gạch đầu dòng.'\n```\nCopy\n\n```bash\n$ agent-resources install web-scraper\nInstalling web-scraper from GitHub... ✅\nDependencies resolved. Installing required packages...\nweb-scraper installed successfully in /usr/local/bin/agent-resources/skills/web-scraper\n\n$ agent-resources test web-scraper --url=\"https://example.com\" --max-headlines=5\n✅ Skill web-scraper is functioning correctly.\n\nTop 5 Headlines từ example.com:\n1. **Tin nóng: Mô hình AI mới vượt trội hơn con người trong các tác vụ phức tạp** - Các nhà nghiên cứu tại TechCorp đã công bố một bước đột phá về AI giúp vượt trội hơn con người trong các kịch bản giải quyết vấn đề nhiều bước, với các ứng dụng tiềm năng trong chẩn đoán y tế và mô hình hóa khí hậu.\n2. **Thị trường chứng khoán tiếp tục biến động khi Fed gợi ý tạm dừng tăng lãi suất** - Các chỉ số chính biến động mạnh sau khi biên bản cuộc họp của Cục Dự trữ Liên bang gợi ý về khả năng tạm dừng tăng lãi suất, khiến các nhà đầu tư không chắc chắn về triển vọng kinh tế ngắn hạn.\n3. **Startup địa phương được gã khổng lồ công nghệ toàn cầu thâu tóm với giá 2,3 tỷ USD** - Startup AI Neuralink có trụ sở tại Thung lũng Silicon đã được TechGiant Inc. mua lại trong một thương vụ định giá công ty ở mức 2,3 tỷ USD, báo hiệu sự hợp nhất lớn trong lĩnh vực tự động hóa do AI thúc đẩy.\n4. **Hội nghị thượng đỉnh về khí hậu kết thúc với kết quả trái chiều về cam kết giảm phát thải** - Hội nghị Thượng đỉnh Khí hậu Toàn cầu thường niên đã khép lại với 60% quốc gia tham gia cam kết thực hiện các mục tiêu phát thải nghiêm ngặt hơn, mặc dù các nhà phê bình cho rằng các cam kết này vẫn chưa đủ để đạt được mục tiêu năm 2030.\n5. **Nghiên cứu mới tiết lộ mối liên hệ đáng ngạc nhiên giữa giấc ngủ và hiệu suất nhận thức** - Một nghiên cứu dài hạn kéo dài 10 năm được công bố trên tạp chí Nature cho thấy những người ngủ đủ 7-8 tiếng mỗi đêm có hiệu suất nhận thức cao hơn 23% trong các tác vụ yêu cầu trí nhớ và giải quyết vấn đề.\n\nTóm tắt: Các tiêu đề nổi bật nêu bật những phát triển quan trọng trong lĩnh vực AI, kinh tế và chính sách khí hậu, với chủ đề lặp đi lặp lại về tiến bộ công nghệ và các tác động xã hội của nó. Phản ứng của thị trường chứng khoán đối với chính sách của Fed và việc thâu tóm Neuralink nhấn mạnh tốc độ thay đổi nhanh chóng trong ngành công nghệ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:33:30.872092Z",
+    "http_status": 200,
+    "content_hash": "5f10db32b56cb65fe93886530ffa81e85e7a14c8922aa179c960aafe539b21b7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-resources.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-resources.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cài đặt skill cho Claude và Cursor qua GitHub",
+  "short_description_vi": "agent-resources là trình quản lý gói dành cho AI agent, cho phép người dùng cài đặt các agent skill từ GitHub chỉ với một câu lệnh duy nhất. Công cụ này giúp các nhà phát triển và đội ngũ vận hành tối ưu hóa việc tích hợp AI skill vào quy trình làm việc, đồng thời kết nối mượt mà với Claude Code, Cursor và GitHub Copilot."
+}

@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/higgsfield-soul-character",
+  "slug": "higgsfield-soul-character",
+  "name": "Higgsfield Soul Character",
+  "headline": "Higgsfield Soul Character: Train Reusable Identity",
+  "short_description": "This skill allows users to train a face-faithful identity model that can be reused across all Soul-powered generations. It is intended for developers looking to create accurate identity representations in their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "higgsfield-ai",
+  "install_command": "git clone https://github.com/higgsfield-ai/skills",
+  "source_repo_url": "https://github.com/higgsfield-ai/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "soul",
+    "higgsfield",
+    "character",
+    "ai-identity-modeling"
+  ],
+  "sections": {
+    "overview": "Higgsfield Soul Character lets you train a personalized identity model from face photos that can be reused across all Soul-powered image and video generations. The skill captures a person's appearance into a reusable reference ID, which is then passed to generation models like text2image_soul_v2 or soul_cinematic_studio. Training requires 5–20 face photos from varied angles and lighting, and returns a reference ID for downstream use. This solves the problem of maintaining consistent identity across multiple generated outputs without manual face-swapping. Developers building avatar systems, digital twin applications, or identity-consistent content pipelines benefit most.\nTrain a realistic character identity for gaming.\nCreate personalized avatars for social media.\nDevelop identity models for virtual assistants.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/higgsfield-ai/skills --skill higgsfield-soul-id`\n`git clone https://github.com/higgsfield-ai/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "higgsfield-soul-character#main-content",
+      "higgsfield-soul-character#overview",
+      "higgsfield-soul-character#setup",
+      "higgsfield-soul-character#examples",
+      "higgsfield-soul-character#tools",
+      "higgsfield-soul-character#mcp",
+      "higgsfield-soul-character#related"
+    ],
+    "overview_vi": "Higgsfield Soul Character lets you train a personalized identity model from face photos that can be reused across all Soul-powered image and video generations. The skill captures a person's appearance into a reusable reference ID, which is then passed to generation models like text2image_soul_v2 or soul_cinematic_studio. Training requires 5–20 face photos from varied angles and lighting, and returns a reference ID for downstream use. This solves the problem of maintaining consistent identity across multiple generated outputs without manual face-swapping. Developers building avatar systems, digital twin applications, or identity-consistent content pipelines benefit most.\nTrain a realistic character identity for gaming.\nCreate personalized avatars for social media.\nDevelop identity models for virtual assistants.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/higgsfield-ai/skills --skill higgsfield-soul-id`\n`git clone https://github.com/higgsfield-ai/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:36.988471Z",
+    "http_status": 200,
+    "content_hash": "83a5eddbb74b453e90a7b0dbe84f296a2dcbd09268f732af1c611f1f77446be6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\higgsfield-soul-character.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\higgsfield-soul-character.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Higgsfield Soul Character: Train Reusable Identity",
+  "short_description_vi": "This skill allows users to train a face-faithful identity model that can be reused across all Soul-powered generations. It is intended for developers looking to create accurate identity representations in their applications."
+}

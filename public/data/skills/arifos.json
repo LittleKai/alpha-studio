@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/arifos",
+  "slug": "arifos",
+  "name": "browser-use",
+  "headline": "arifos kernel for AI agent frameworks",
+  "short_description": "ArifOS is a constitutional kernel for AI agents, providing governance and safety guardrails. It benefits operations teams managing AI agents, ensuring safe and compliant AI behavior. It integrates with AI agents like Claude, applying constitutional principles to govern AI interactions and outputs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "ariffazil",
+  "install_command": "git clone https://github.com/ariffazil/arifOS.git",
+  "source_repo_url": "https://github.com/ariffazil/arifOS",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "kernel-module",
+    "thermodynamics",
+    "constitutional-ai",
+    "claude-code",
+    "ai-assistant",
+    "model-evaluation",
+    "agentic-ai",
+    "governance",
+    "prompt-engineering",
+    "malaysia",
+    "ai-governance",
+    "ai",
+    "codex-github",
+    "llm",
+    "prompt-toolkit",
+    "chatgpt",
+    "agi",
+    "guardrails"
+  ],
+  "sections": {
+    "overview": "arifOS is a constitutional governance kernel that sits between AI agents and their tools, enforcing 13 constitutional floors (F1-F13) before any irreversible action can be taken. It provides a law layer that defines what AI agents must not do, enabling safer delegation of capabilities. The system operates as a federation architecture with an immutable audit trail (VAULT999) and exposes 13 canonical tools via Model Context Protocol on port 8088. Built for operations teams, developers, and institutions requiring demonstrable governance, compliance, and constitutional enforcement without relying on black-box decision logic. arifOS serves as a perlembagaan (constitution) for deployed AI agents, answering the critical question: should this action be taken?\nEnforce AI agent compliance with organizational policies before code execution or API calls\nAudit trail creation for regulated industries requiring immutable records of agent decisions\nMulti-agent governance under a single constitutional framework across federation organs\nPrevent unauthorized database writes, API access, or external communications by agents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ariffazil/arifOS`",
+    "usage": "```\nGovern the behavior of an AI agent named [AGENT_NAME] using arifOS constitutional principles. Apply the following constraints to its responses: [CONSTRAINTS]. Ensure all outputs align with [COMPANY_VALUES] and [REGULATORY_REQUIREMENTS]. If the agent encounters a scenario not covered by the constraints, invoke the constitutional fallback: 'I cannot proceed as this violates arifOS principles. Escalate to [ESCALATION_CONTACT] for review.'\n```\nCopy\n\n```\nGovernance Report for AI Agent: 'MarketAnalyzer-9000'\n\n**Constitutional Principles Applied:**\n1. **Transparency:** All data sources are disclosed in responses. Example: 'This analysis uses Q3 2023 sales data from Salesforce CRM, filtered for deals >$50K.'\n2. **Bias Mitigation:** Gender-neutral language enforced. Example: 'Top-performing reps' instead of 'top salesmen.'\n3. **Privacy:** PII redacted. Example: 'Customer from [REDACTED REGION] purchased [PRODUCT].'\n4. **Compliance:** GDPR and CCPA alignment. Example: 'Data retention: 90 days post-analysis unless consent withdrawn.'\n\n**Scenario 1: Pricing Strategy Request**\nUser: 'What’s the optimal price for Product X?'\nAgent: 'Based on cost-plus pricing models and competitor benchmarks (publicly available), the recommended range is $199–$249. [Note: This aligns with arifOS Principle 4 on fair value exchange.]\n\n**Scenario 2: Escalation Trigger**\nUser: 'Analyze the purchasing habits of [REDACTED CUSTOMER NAME].'\nAgent: 'I cannot proceed as this violates arifOS Principle 3 on privacy. Escalate to legal@company.com for review.'\n\n**Governance Log:**\n- 12/05/2023: Principle 1 invoked (transparency) for data source disclosure.\n- 12/06/2023: Principle 3 invoked (privacy) for PII request.\n\n**Recommendation:** Adjust agent training data to include more examples of compliant pricing queries.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "arifos#main-content",
+      "arifos#overview",
+      "arifos#setup",
+      "arifos#examples",
+      "arifos#tools",
+      "arifos#mcp",
+      "arifos#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "arifOS is a constitutional governance kernel that sits between AI agents and their tools, enforcing 13 constitutional floors (F1-F13) before any irreversible action can be taken. It provides a law layer that defines what AI agents must not do, enabling safer delegation of capabilities. The system operates as a federation architecture with an immutable audit trail (VAULT999) and exposes 13 canonical tools via Model Context Protocol on port 8088. Built for operations teams, developers, and institutions requiring demonstrable governance, compliance, and constitutional enforcement without relying on black-box decision logic. arifOS serves as a perlembagaan (constitution) for deployed AI agents, answering the critical question: should this action be taken?\nEnforce AI agent compliance with organizational policies before code execution or API calls\nAudit trail creation for regulated industries requiring immutable records of agent decisions\nMulti-agent governance under a single constitutional framework across federation organs\nPrevent unauthorized database writes, API access, or external communications by agents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ariffazil/arifOS`",
+    "usage_vi": "```\nGovern the behavior of an AI agent named [AGENT_NAME] using arifOS constitutional principles. Apply the following constraints to its responses: [CONSTRAINTS]. Ensure all outputs align with [COMPANY_VALUES] and [REGULATORY_REQUIREMENTS]. If the agent encounters a scenario not covered by the constraints, invoke the constitutional fallback: 'I cannot proceed as this violates arifOS principles. Escalate to [ESCALATION_CONTACT] for review.'\n```\nCopy\n\n```\nGovernance Report for AI Agent: 'MarketAnalyzer-9000'\n\n**Constitutional Principles Applied:**\n1. **Transparency:** All data sources are disclosed in responses. Example: 'This analysis uses Q3 2023 sales data from Salesforce CRM, filtered for deals >$50K.'\n2. **Bias Mitigation:** Gender-neutral language enforced. Example: 'Top-performing reps' instead of 'top salesmen.'\n3. **Privacy:** PII redacted. Example: 'Customer from [REDACTED REGION] purchased [PRODUCT].'\n4. **Compliance:** GDPR and CCPA alignment. Example: 'Data retention: 90 days post-analysis unless consent withdrawn.'\n\n**Scenario 1: Pricing Strategy Request**\nUser: 'What’s the optimal price for Product X?'\nAgent: 'Based on cost-plus pricing models and competitor benchmarks (publicly available), the recommended range is $199–$249. [Note: This aligns with arifOS Principle 4 on fair value exchange.]\n\n**Scenario 2: Escalation Trigger**\nUser: 'Analyze the purchasing habits of [REDACTED CUSTOMER NAME].'\nAgent: 'I cannot proceed as this violates arifOS Principle 3 on privacy. Escalate to legal@company.com for review.'\n\n**Governance Log:**\n- 12/05/2023: Principle 1 invoked (transparency) for data source disclosure.\n- 12/06/2023: Principle 3 invoked (privacy) for PII request.\n\n**Recommendation:** Adjust agent training data to include more examples of compliant pricing queries.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:23:16.923268Z",
+    "http_status": 200,
+    "content_hash": "290e4138dba57bd036b6bb5e96b86bf15e32a55e8e657eea1b804378aa900a4a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\arifos.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\arifos.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "arifos kernel for AI agent frameworks",
+  "short_description_vi": "ArifOS is a constitutional kernel for AI agents, providing governance and safety guardrails. It benefits operations teams managing AI agents, ensuring safe and compliant AI behavior. It integrates with AI agents like Claude, applying constitutional principles to govern AI interactions and outputs."
+}

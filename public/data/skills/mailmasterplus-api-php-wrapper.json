@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mailmasterplus-api-php-wrapper",
+  "slug": "mailmasterplus-api-php-wrapper",
+  "name": "popsicle",
+  "headline": "MailMasterPlus-API-PHP-wrapper: Marketing Tasks",
+  "short_description": "PHP wrapper for SalesAutopilot online marketing automation system",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "gykhauth",
+  "install_command": "git clone https://github.com/gykhauth/MailMasterPlus-API-PHP-wrapper.git",
+  "source_repo_url": "https://github.com/gykhauth/MailMasterPlus-API-PHP-wrapper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The MailMasterPlus-API-PHP-wrapper is a powerful tool designed for developers and marketing professionals looking to streamline their marketing automation efforts using the SalesAutopilot online marketing system. This PHP wrapper simplifies the integration process, allowing users to easily connect their applications with SalesAutopilot's robust features. By leveraging this skill, you can automate various marketing tasks, enhancing efficiency and effectiveness in your campaigns. One of the key benefits of using the MailMasterPlus wrapper is the potential for significant time savings in implementing marketing automation workflows. While the exact time savings are not quantified, the ease of integration and the reduction in manual tasks can lead to a more efficient marketing process. With an implementation time of just 30 minutes, this skill is accessible for those with intermediate PHP knowledge, making it an ideal choice for developers who want to enhance their marketing capabilities without extensive overhead. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in marketing automation. It allows users to create tailored marketing experiences and manage campaigns more effectively. For example, a product manager could use the MailMasterPlus wrapper to automate email campaigns based on user behavior, ensuring timely and relevant communication with customers. Additionally, developers can integrate this skill into existing applications, allowing for seamless data flow between their systems and SalesAutopilot. The implementation of the MailMasterPlus-API-PHP-wrapper requires an intermediate understanding of PHP and API integrations. As businesses increasingly adopt AI-first workflows, this skill fits perfectly into the landscape of AI automation, enabling teams to leverage AI agents for enhanced decision-making and campaign management. By incorporating this wrapper into your marketing strategies, you position your organization to take full advantage of the capabilities offered by AI and automation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gykhauth/MailMasterPlus-API-PHP-wrapper`",
+    "usage": "```\nCreate a PHP wrapper class for the MailMasterPlus API to integrate with SalesAutopilot. The wrapper should include methods for [ACTIONS] such as sending emails, managing lists, and tracking campaigns. Use [COMPANY]'s branding guidelines and ensure the code follows [INDUSTRY] best practices for security and performance. Provide error handling and logging capabilities.\n```\nCopy\n\n```\n```php\n<?php\n\nclass MailMasterPlusWrapper {\n    private $apiKey;\n    private $baseUrl = 'https://api.mailmasterplus.com/v1/';\n\n    public function __construct($apiKey) {\n        $this->apiKey = $apiKey;\n    }\n\n    public function sendEmail($to, $subject, $body, $from = null) {\n        $endpoint = 'emails/send';\n        $data = [\n            'to' => $to,\n            'subject' => $subject,\n            'body' => $body,\n            'from' => $from ?: 'noreply@mailmasterplus.com'\n        ];\n\n        return $this->makeRequest('POST', $endpoint, $data);\n    }\n\n    private function makeRequest($method, $endpoint, $data = []) {\n        $headers = [\n            'Authorization: Bearer ' . $this->apiKey,\n            'Content-Type: application/json'\n        ];\n\n        $ch = curl_init();\n        curl_setopt($ch, CURLOPT_URL, $this->baseUrl . $endpoint);\n        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);\n        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\n\n        if ($method === 'POST') {\n            curl_setopt($ch, CURLOPT_POST, true);\n            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));\n        }\n\n        $response = curl_exec($ch);\n        curl_close($ch);\n\n        return json_decode($response, true);\n    }\n}\n\n// Example usage:\n$wrapper = new MailMasterPlusWrapper('your_api_key_here');\n$wrapper->sendEmail(\n    'customer@example.com',\n    'Welcome to Our Newsletter',\n    'Thank you for subscribing to our newsletter. Here is your first email.'\n);\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mailmasterplus-api-php-wrapper#main-content",
+      "mailmasterplus-api-php-wrapper#overview",
+      "mailmasterplus-api-php-wrapper#setup",
+      "mailmasterplus-api-php-wrapper#examples",
+      "mailmasterplus-api-php-wrapper#tools",
+      "mailmasterplus-api-php-wrapper#mcp",
+      "mailmasterplus-api-php-wrapper#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "The MailMasterPlus-API-PHP-wrapper is a powerful tool designed for developers and marketing professionals looking to streamline their marketing automation efforts using the SalesAutopilot online marketing system. This PHP wrapper simplifies the integration process, allowing users to easily connect their applications with SalesAutopilot's robust features. By leveraging this skill, you can automate various marketing tasks, enhancing efficiency and effectiveness in your campaigns. One of the key benefits of using the MailMasterPlus wrapper is the potential for significant time savings in implementing marketing automation workflows. While the exact time savings are not quantified, the ease of integration and the reduction in manual tasks can lead to a more efficient marketing process. With an implementation time of just 30 minutes, this skill is accessible for those with intermediate PHP knowledge, making it an ideal choice for developers who want to enhance their marketing capabilities without extensive overhead. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in marketing automation. It allows users to create tailored marketing experiences and manage campaigns more effectively. For example, a product manager could use the MailMasterPlus wrapper to automate email campaigns based on user behavior, ensuring timely and relevant communication with customers. Additionally, developers can integrate this skill into existing applications, allowing for seamless data flow between their systems and SalesAutopilot. The implementation of the MailMasterPlus-API-PHP-wrapper requires an intermediate understanding of PHP and API integrations. As businesses increasingly adopt AI-first workflows, this skill fits perfectly into the landscape of AI automation, enabling teams to leverage AI agents for enhanced decision-making and campaign management. By incorporating this wrapper into your marketing strategies, you position your organization to take full advantage of the capabilities offered by AI and automation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gykhauth/MailMasterPlus-API-PHP-wrapper`",
+    "usage_vi": "```\nCreate a PHP wrapper class for the MailMasterPlus API to integrate with SalesAutopilot. The wrapper should include methods for [ACTIONS] such as sending emails, managing lists, and tracking campaigns. Use [COMPANY]'s branding guidelines and ensure the code follows [INDUSTRY] best practices for security and performance. Provide error handling and logging capabilities.\n```\nCopy\n\n```\n```php\n<?php\n\nclass MailMasterPlusWrapper {\n    private $apiKey;\n    private $baseUrl = 'https://api.mailmasterplus.com/v1/';\n\n    public function __construct($apiKey) {\n        $this->apiKey = $apiKey;\n    }\n\n    public function sendEmail($to, $subject, $body, $from = null) {\n        $endpoint = 'emails/send';\n        $data = [\n            'to' => $to,\n            'subject' => $subject,\n            'body' => $body,\n            'from' => $from ?: 'noreply@mailmasterplus.com'\n        ];\n\n        return $this->makeRequest('POST', $endpoint, $data);\n    }\n\n    private function makeRequest($method, $endpoint, $data = []) {\n        $headers = [\n            'Authorization: Bearer ' . $this->apiKey,\n            'Content-Type: application/json'\n        ];\n\n        $ch = curl_init();\n        curl_setopt($ch, CURLOPT_URL, $this->baseUrl . $endpoint);\n        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);\n        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\n\n        if ($method === 'POST') {\n            curl_setopt($ch, CURLOPT_POST, true);\n            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));\n        }\n\n        $response = curl_exec($ch);\n        curl_close($ch);\n\n        return json_decode($response, true);\n    }\n}\n\n// Example usage:\n$wrapper = new MailMasterPlusWrapper('your_api_key_here');\n$wrapper->sendEmail(\n    'customer@example.com',\n    'Welcome to Our Newsletter',\n    'Thank you for subscribing to our newsletter. Here is your first email.'\n);\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:52:14.616787Z",
+    "http_status": 200,
+    "content_hash": "ff502de04ae208e38198a7d652f63ad86d4c68670272eafc678aa94d6e8272da",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mailmasterplus-api-php-wrapper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mailmasterplus-api-php-wrapper.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MailMasterPlus-API-PHP-wrapper: Marketing Tasks",
+  "short_description_vi": "PHP wrapper for SalesAutopilot online marketing automation system"
+}

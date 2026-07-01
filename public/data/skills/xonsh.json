@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xonsh",
+  "slug": "xonsh",
+  "name": "browser-use",
+  "headline": "xonsh: Automate Workflows with Python",
+  "short_description": "Xonsh is a Python-powered shell that enables operations teams to automate tasks across platforms. It connects to tools like Alacritty, VSCode, and Raspberry Pi, streamlining workflows for data engineering, DevOps, and security automation.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "xonsh",
+  "install_command": "git clone https://github.com/xonsh/xonsh.git",
+  "source_repo_url": "https://github.com/xonsh/xonsh",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "devsecops",
+    "xonsh",
+    "claude-code",
+    "anthropic",
+    "claude",
+    "console",
+    "hyper",
+    "security-automation",
+    "flipperzero",
+    "vscode-extension",
+    "vscode",
+    "kitty",
+    "chatgpt",
+    "alacritty",
+    "raspberry-pi",
+    "data-engineering",
+    "iterm2",
+    "devops",
+    "wezterm"
+  ],
+  "sections": {
+    "overview": "The xonsh skill is a powerful automation tool that combines the flexibility of a Python-powered shell with the functionality of traditional shell commands. This full-featured, cross-platform environment allows users to seamlessly integrate Python scripts into their command-line workflows. With its intermediate complexity, xonsh is designed for developers and AI practitioners who are looking to enhance their automation capabilities without sacrificing the power of Python's extensive libraries. One of the key benefits of using xonsh is its ability to save time by automating repetitive tasks. Users can streamline data processing by combining shell commands with Python scripts, allowing for efficient manipulation and analysis of data. Additionally, xonsh facilitates the creation of custom command-line tools that leverage both shell and Python functionalities, enabling users to manage system configurations and deployments effectively. By enhancing existing shell workflows with Python libraries, users can achieve greater productivity and focus on higher-level tasks. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in data engineering, system administration, or workflow automation. By integrating xonsh into their daily operations, these professionals can significantly reduce the time spent on manual processes and improve their overall efficiency. The practical use cases for xonsh include automating data processing tasks, integrating with cloud services and APIs, and managing deployments with Python-based scripts, making it a versatile tool in any tech stack. Implementing xonsh requires an intermediate understanding of both shell environments and Python programming. With a time commitment of approximately 30 minutes, users can quickly set up and start leveraging this skill to enhance their AI-first workflows. As organizations increasingly adopt AI automation, xonsh stands out as a valuable asset for those looking to optimize their processes and drive innovation.\nAutomate data processing tasks by combining shell commands with Python scripts.\nIntegrate with cloud services and APIs seamlessly using Python's rich ecosystem.\nCreate custom command-line tools that utilize both shell and Python functionalities.\nManage system configurations and deployments using Python-based scripts in a shell environment.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/xonsh/xonsh`",
+    "usage": "```\nCreate a xonsh script to automate [TASK] across [PLATFORMS]. The script should use [SPECIFIC_TOOLS] and follow these requirements: [REQUIREMENTS]. Include error handling for common issues like [ISSUES].\n```\nCopy\n\n```\nHere's a xonsh script to automate database backups across multiple servers:\n\n```python\nfrom xonsh.jobs import get_jobs\nfrom xonsh.tools import backup_db\n\n# Define servers and backup locations\ndef backup_servers(servers, backup_location):\n    for server in servers:\n        try:\n            job = backup_db(server, backup_location)\n            job.wait()\n            print(f'Backup completed for {server}')\n        except Exception as e:\n            print(f'Error backing up {server}: {e}')\n\n# List of servers and backup location\nservers = ['server1', 'server2', 'server3']\nbackup_location = '/mnt/backups'\n\n# Execute backup\nbackup_servers(servers, backup_location)\n```\n\nThis script uses xonsh's built-in `backup_db` function to handle the backup process. It includes error handling to manage potential issues during the backup. The script is designed to be run in a terminal with xonsh installed, and it can be easily modified to include additional servers or change the backup location.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "xonsh#main-content",
+      "xonsh#overview",
+      "xonsh#setup",
+      "xonsh#examples",
+      "xonsh#tools",
+      "xonsh#mcp",
+      "xonsh#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The xonsh skill is a powerful automation tool that combines the flexibility of a Python-powered shell with the functionality of traditional shell commands. This full-featured, cross-platform environment allows users to seamlessly integrate Python scripts into their command-line workflows. With its intermediate complexity, xonsh is designed for developers and AI practitioners who are looking to enhance their automation capabilities without sacrificing the power of Python's extensive libraries. One of the key benefits of using xonsh is its ability to save time by automating repetitive tasks. Users can streamline data processing by combining shell commands with Python scripts, allowing for efficient manipulation and analysis of data. Additionally, xonsh facilitates the creation of custom command-line tools that leverage both shell and Python functionalities, enabling users to manage system configurations and deployments effectively. By enhancing existing shell workflows with Python libraries, users can achieve greater productivity and focus on higher-level tasks. This skill is particularly beneficial for developers, product managers, and AI practitioners who are involved in data engineering, system administration, or workflow automation. By integrating xonsh into their daily operations, these professionals can significantly reduce the time spent on manual processes and improve their overall efficiency. The practical use cases for xonsh include automating data processing tasks, integrating with cloud services and APIs, and managing deployments with Python-based scripts, making it a versatile tool in any tech stack. Implementing xonsh requires an intermediate understanding of both shell environments and Python programming. With a time commitment of approximately 30 minutes, users can quickly set up and start leveraging this skill to enhance their AI-first workflows. As organizations increasingly adopt AI automation, xonsh stands out as a valuable asset for those looking to optimize their processes and drive innovation.\nAutomate data processing tasks by combining shell commands with Python scripts.\nIntegrate with cloud services and APIs seamlessly using Python's rich ecosystem.\nCreate custom command-line tools that utilize both shell and Python functionalities.\nManage system configurations and deployments using Python-based scripts in a shell environment.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/xonsh/xonsh`",
+    "usage_vi": "```\nCreate a xonsh script to automate [TASK] across [PLATFORMS]. The script should use [SPECIFIC_TOOLS] and follow these requirements: [REQUIREMENTS]. Include error handling for common issues like [ISSUES].\n```\nCopy\n\n```\nHere's a xonsh script to automate database backups across multiple servers:\n\n```python\nfrom xonsh.jobs import get_jobs\nfrom xonsh.tools import backup_db\n\n# Define servers and backup locations\ndef backup_servers(servers, backup_location):\n    for server in servers:\n        try:\n            job = backup_db(server, backup_location)\n            job.wait()\n            print(f'Backup completed for {server}')\n        except Exception as e:\n            print(f'Error backing up {server}: {e}')\n\n# List of servers and backup location\nservers = ['server1', 'server2', 'server3']\nbackup_location = '/mnt/backups'\n\n# Execute backup\nbackup_servers(servers, backup_location)\n```\n\nThis script uses xonsh's built-in `backup_db` function to handle the backup process. It includes error handling to manage potential issues during the backup. The script is designed to be run in a terminal with xonsh installed, and it can be easily modified to include additional servers or change the backup location.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:18:08.201322Z",
+    "http_status": 200,
+    "content_hash": "dbc87dfe40170172745de724d97b88263c82ceaf02e9270112725ec5021eae3e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xonsh.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\xonsh.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "xonsh: Automate Workflows with Python",
+  "short_description_vi": "Xonsh is a Python-powered shell that enables operations teams to automate tasks across platforms. It connects to tools like Alacritty, VSCode, and Raspberry Pi, streamlining workflows for data engineering, DevOps, and security automation."
+}

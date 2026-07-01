@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cortex-tms",
+  "slug": "cortex-tms",
+  "name": "browser-use",
+  "headline": "Cortex TMS - AI Governance Platform for Cost",
+  "short_description": "Cortex TMS is an AI governance platform that reduces AI API costs by 40-60% through intelligent context management. It includes an interactive CLI tool and high-signal documentation standard. Benefits developers and operations teams by optimizing AI agent performance and reducing GPU cycles on outdated documents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "cortex-tms",
+  "install_command": "git clone https://github.com/cortex-tms/cortex-tms.git",
+  "source_repo_url": "https://github.com/cortex-tms/cortex-tms",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "architecture",
+    "task-management",
+    "cli",
+    "claude-code",
+    "developer-tools",
+    "anthropic",
+    "documentation",
+    "cursor",
+    "developer-experience",
+    "project-scaffolding",
+    "governance",
+    "github-copilot",
+    "best-practices",
+    "version-control",
+    "code-generation",
+    "ai",
+    "devtools",
+    "llm",
+    "typescipt",
+    "workflow-automation"
+  ],
+  "sections": {
+    "overview": "Cortex TMS is an open-source documentation governance platform designed specifically for AI coding agents like Claude. It scaffolds governance templates (PATTERNS.md, CLAUDE.md, ARCHITECTURE.md) that keep AI agents aligned with your project standards, then validates documentation health through automated checks including staleness detection that flags when docs drift from code changes. The tool includes CLI commands for initialization, validation, status tracking, and task archival, with support for ecosystem-specific presets (Node.js, Python, Go) and CI/CD integration. Teams use Cortex TMS to prevent AI agents from overengineering solutions, ensure code consistency, and maintain human oversight through documented approval gates.\nInitialize governance documentation templates for new AI-integrated projects\nDetect and flag outdated governance docs before they mislead AI agents\nValidate documentation health and completeness in CI/CD pipelines\nArchive completed tasks to keep NEXT-TASKS.md focused and maintainable",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cortex-tms/cortex-tms`",
+    "usage": "```\nUse Cortex TMS to optimize the AI API calls for [PROJECT_NAME]. Identify the top 5 most expensive API calls by cost per 1000 tokens and analyze their context windows. For each, suggest a more efficient context management strategy using Cortex TMS's [FEATURE_SET] (e.g., dynamic context pruning, retrieval optimization, or prompt compression). Provide the projected cost savings for each optimization and the estimated implementation effort (low/medium/high).\n```\nCopy\n\n```\n### Cortex TMS Optimization Report for Project 'DocuBot Pro' (Generated: 2024-05-15)\n\n**Top 5 Costliest API Calls (Last 30 Days)**\n1. **Call ID: `doc-parse-001`**\n   - **Cost:** $1,247.89 (1,247,890 tokens)\n   - **Context:** Full legal document (15,000 tokens) parsed for entity extraction\n   - **Current Context Window:** 15,000 tokens (static)\n   - **Optimization:** Dynamic context pruning using Cortex TMS's `semantic_chunking` feature\n     - **New Context Window:** 3,200 tokens (relevant sections only)\n     - **Projected Savings:** $1,012.45/month (81% reduction)\n     - **Effort:** Low (pre-built integration)\n\n2. **Call ID: `qa-summary-002`**\n   - **Cost:** $892.34 (892,340 tokens)\n   - **Context:** 100-page technical manual summarized\n   - **Current Context Window:** 10,000 tokens (full document)\n   - **Optimization:** Retrieval-optimized chunking with `relevance_filtering`\n     - **New Context Window:** 2,100 tokens (key sections + metadata)\n     - **Projected Savings:** $713.87/month (80% reduction)\n     - **Effort:** Medium (requires metadata tagging)\n\n3. **Call ID: `email-classify-003`**\n   - **Cost:** $654.12 (654,120 tokens)\n   - **Context:** 500 emails classified by urgency (avg. 500 tokens/email)\n   - **Current Context Window:** 500 tokens/email (no batching)\n   - **Optimization:** Batch processing with `context_batching`\n     - **New Context Window:** 45 tokens/email (compressed prompts)\n     - **Projected Savings:** $588.71/month (90% reduction)\n     - **Effort:** Low (CLI flag adjustment)\n\n**Total Projected Monthly Savings:** $2,315.03 (82% reduction in API costs)\n**Implementation Timeline:** 2-3 days (parallelizable optimizations)\n\n**Next Steps:**\n1. Apply `semantic_chunking` to `doc-parse-001` using Cortex TMS CLI: `cortex optimize --call doc-parse-001 --feature semantic_chunking`\n2. Test `relevance_filtering` on `qa-summary-002` with sample documents\n3. Deploy batching for `email-classify-003` in staging environment\n\n*Cortex TMS v2.1.4 | Documentation: https://docs.cortex-tms.ai/optimization-guide*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cortex-tms#main-content",
+      "cortex-tms#overview",
+      "cortex-tms#setup",
+      "cortex-tms#examples",
+      "cortex-tms#tools",
+      "cortex-tms#mcp",
+      "cortex-tms#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Cortex TMS is an open-source documentation governance platform designed specifically for AI coding agents like Claude. It scaffolds governance templates (PATTERNS.md, CLAUDE.md, ARCHITECTURE.md) that keep AI agents aligned with your project standards, then validates documentation health through automated checks including staleness detection that flags when docs drift from code changes. The tool includes CLI commands for initialization, validation, status tracking, and task archival, with support for ecosystem-specific presets (Node.js, Python, Go) and CI/CD integration. Teams use Cortex TMS to prevent AI agents from overengineering solutions, ensure code consistency, and maintain human oversight through documented approval gates.\nInitialize governance documentation templates for new AI-integrated projects\nDetect and flag outdated governance docs before they mislead AI agents\nValidate documentation health and completeness in CI/CD pipelines\nArchive completed tasks to keep NEXT-TASKS.md focused and maintainable",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cortex-tms/cortex-tms`",
+    "usage_vi": "```\nUse Cortex TMS to optimize the AI API calls for [PROJECT_NAME]. Identify the top 5 most expensive API calls by cost per 1000 tokens and analyze their context windows. For each, suggest a more efficient context management strategy using Cortex TMS's [FEATURE_SET] (e.g., dynamic context pruning, retrieval optimization, or prompt compression). Provide the projected cost savings for each optimization and the estimated implementation effort (low/medium/high).\n```\nCopy\n\n```\n### Cortex TMS Optimization Report for Project 'DocuBot Pro' (Generated: 2024-05-15)\n\n**Top 5 Costliest API Calls (Last 30 Days)**\n1. **Call ID: `doc-parse-001`**\n   - **Cost:** $1,247.89 (1,247,890 tokens)\n   - **Context:** Full legal document (15,000 tokens) parsed for entity extraction\n   - **Current Context Window:** 15,000 tokens (static)\n   - **Optimization:** Dynamic context pruning using Cortex TMS's `semantic_chunking` feature\n     - **New Context Window:** 3,200 tokens (relevant sections only)\n     - **Projected Savings:** $1,012.45/month (81% reduction)\n     - **Effort:** Low (pre-built integration)\n\n2. **Call ID: `qa-summary-002`**\n   - **Cost:** $892.34 (892,340 tokens)\n   - **Context:** 100-page technical manual summarized\n   - **Current Context Window:** 10,000 tokens (full document)\n   - **Optimization:** Retrieval-optimized chunking with `relevance_filtering`\n     - **New Context Window:** 2,100 tokens (key sections + metadata)\n     - **Projected Savings:** $713.87/month (80% reduction)\n     - **Effort:** Medium (requires metadata tagging)\n\n3. **Call ID: `email-classify-003`**\n   - **Cost:** $654.12 (654,120 tokens)\n   - **Context:** 500 emails classified by urgency (avg. 500 tokens/email)\n   - **Current Context Window:** 500 tokens/email (no batching)\n   - **Optimization:** Batch processing with `context_batching`\n     - **New Context Window:** 45 tokens/email (compressed prompts)\n     - **Projected Savings:** $588.71/month (90% reduction)\n     - **Effort:** Low (CLI flag adjustment)\n\n**Total Projected Monthly Savings:** $2,315.03 (82% reduction in API costs)\n**Implementation Timeline:** 2-3 days (parallelizable optimizations)\n\n**Next Steps:**\n1. Apply `semantic_chunking` to `doc-parse-001` using Cortex TMS CLI: `cortex optimize --call doc-parse-001 --feature semantic_chunking`\n2. Test `relevance_filtering` on `qa-summary-002` with sample documents\n3. Deploy batching for `email-classify-003` in staging environment\n\n*Cortex TMS v2.1.4 | Documentation: https://docs.cortex-tms.ai/optimization-guide*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:32:37.241163Z",
+    "http_status": 200,
+    "content_hash": "ba1a0b986ee930c0430695edb8dedd81a186b32dc8651802770605d17937b95c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cortex-tms.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cortex-tms.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Cortex TMS - AI Governance Platform for Cost",
+  "short_description_vi": "Cortex TMS is an AI governance platform that reduces AI API costs by 40-60% through intelligent context management. It includes an interactive CLI tool and high-signal documentation standard. Benefits developers and operations teams by optimizing AI agent performance and reducing GPU cycles on outdated documents."
+}

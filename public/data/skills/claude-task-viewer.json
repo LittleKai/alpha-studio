@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-task-viewer",
+  "slug": "claude-task-viewer",
+  "name": "browser-use",
+  "headline": "claude-task viewer for Kanban boards",
+  "short_description": "A web-based Kanban board for real-time observation of Claude Code tasks. View task dependencies, manage priorities, and track task cleanup. Ideal for developers and operations teams using Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "L1AD",
+  "install_command": "git clone https://github.com/L1AD/claude-task-viewer.git",
+  "source_repo_url": "https://github.com/L1AD/claude-task-viewer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "anthropic",
+    "kanban",
+    "nodejs",
+    "task-management",
+    "claude",
+    "cli"
+  ],
+  "sections": {
+    "overview": "Claude Task Viewer is a web-based dashboard that monitors Claude Code tasks as they execute across multiple sessions. It displays task status, dependencies, and timing in a persistent visual interface accessible via http://localhost:3456, eliminating the need to rely solely on terminal output. The viewer watches the Claude Code task directory for real-time changes and pushes updates via Server-Sent Events, showing exactly what Claude is working on, which tasks are blocked, and when work completes. Desktop and audio notifications alert you when tasks finish, while an optional Gantt-style timeline visualizes task duration and sequence. It's designed for developers and ops teams who need visibility into Claude Code's work breakdown and task dependencies without interfering with Claude's autonomous task management.\nMonitor multiple Claude Code sessions simultaneously from one dashboard\nVisualize task dependencies to understand critical path and blockers\nTrack task timing and durations with Gantt-style timeline view\nReceive notifications when long-running tasks complete",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/L1AD/claude-task-viewer`",
+    "usage": "```\nOpen the Claude Task Viewer at [TASK_VIEWER_URL]. Filter tasks by [STATUS: running/queued/completed] and sort by [PRIORITY/DEPENDENCY]. Identify tasks with blocking dependencies or stalled progress. For each critical task, suggest cleanup actions or priority adjustments. Share a summary of high-risk tasks and recommended next steps for the team.\n```\nCopy\n\n```\nHere’s the current state of your Claude Code tasks in the Task Viewer:\n\n**High-Priority Tasks (Blocked):**\n1. **Task #4721** - Data Pipeline Refactor\n   - Status: Queued (since 10:15 AM)\n   - Dependencies: Awaiting PR #1245 (\"Auth Service Update\") to merge\n   - Risk: Stalled for 2.5 hours; likely due to merge conflict in `auth_service.py`\n   - Recommended Action: Escalate to @dev-team to resolve PR #1245 or reroute Task #4721 to use a feature branch.\n\n2. **Task #4725** - API Rate Limiting Fix\n   - Status: Running (since 9:30 AM)\n   - Progress: 68% complete (12/18 endpoints tested)\n   - Blockers: 3 failing tests in `test_rate_limiting.py` (timeout errors)\n   - Recommended Action: Assign @qa-team to investigate and rerun tests after fixing `config.py` (last modified by @ops-team).\n\n**Medium-Priority Tasks:**\n- Task #4718 (\"Cache Invalidation\") - Running (85% complete). No dependencies. Ready for review.\n- Task #4720 (\"Logging Enhancement\") - Completed. Cleanup pending (remove `debug.log` files).\n\n**Cleanup Needed:**\n- 5 completed tasks have unmerged branches (e.g., `feature/xyz`). Delete branches after PRs are merged.\n\n**Next Steps:**\n1. Unblock Task #4721 by resolving PR #1245 or rerouting.\n2. Assign @qa-team to debug `test_rate_limiting.py` and update `config.py`.\n3. Merge Task #4718 and delete its branch.\n4. Schedule a cleanup for completed tasks with unmerged branches.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-task-viewer#main-content",
+      "claude-task-viewer#overview",
+      "claude-task-viewer#setup",
+      "claude-task-viewer#examples",
+      "claude-task-viewer#tools",
+      "claude-task-viewer#mcp",
+      "claude-task-viewer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Task Viewer is a web-based dashboard that monitors Claude Code tasks as they execute across multiple sessions. It displays task status, dependencies, and timing in a persistent visual interface accessible via http://localhost:3456, eliminating the need to rely solely on terminal output. The viewer watches the Claude Code task directory for real-time changes and pushes updates via Server-Sent Events, showing exactly what Claude is working on, which tasks are blocked, and when work completes. Desktop and audio notifications alert you when tasks finish, while an optional Gantt-style timeline visualizes task duration and sequence. It's designed for developers and ops teams who need visibility into Claude Code's work breakdown and task dependencies without interfering with Claude's autonomous task management.\nMonitor multiple Claude Code sessions simultaneously from one dashboard\nVisualize task dependencies to understand critical path and blockers\nTrack task timing and durations with Gantt-style timeline view\nReceive notifications when long-running tasks complete",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/L1AD/claude-task-viewer`",
+    "usage_vi": "```\nOpen the Claude Task Viewer at [TASK_VIEWER_URL]. Filter tasks by [STATUS: running/queued/completed] and sort by [PRIORITY/DEPENDENCY]. Identify tasks with blocking dependencies or stalled progress. For each critical task, suggest cleanup actions or priority adjustments. Share a summary of high-risk tasks and recommended next steps for the team.\n```\nCopy\n\n```\nHere’s the current state of your Claude Code tasks in the Task Viewer:\n\n**High-Priority Tasks (Blocked):**\n1. **Task #4721** - Data Pipeline Refactor\n   - Status: Queued (since 10:15 AM)\n   - Dependencies: Awaiting PR #1245 (\"Auth Service Update\") to merge\n   - Risk: Stalled for 2.5 hours; likely due to merge conflict in `auth_service.py`\n   - Recommended Action: Escalate to @dev-team to resolve PR #1245 or reroute Task #4721 to use a feature branch.\n\n2. **Task #4725** - API Rate Limiting Fix\n   - Status: Running (since 9:30 AM)\n   - Progress: 68% complete (12/18 endpoints tested)\n   - Blockers: 3 failing tests in `test_rate_limiting.py` (timeout errors)\n   - Recommended Action: Assign @qa-team to investigate and rerun tests after fixing `config.py` (last modified by @ops-team).\n\n**Medium-Priority Tasks:**\n- Task #4718 (\"Cache Invalidation\") - Running (85% complete). No dependencies. Ready for review.\n- Task #4720 (\"Logging Enhancement\") - Completed. Cleanup pending (remove `debug.log` files).\n\n**Cleanup Needed:**\n- 5 completed tasks have unmerged branches (e.g., `feature/xyz`). Delete branches after PRs are merged.\n\n**Next Steps:**\n1. Unblock Task #4721 by resolving PR #1245 or rerouting.\n2. Assign @qa-team to debug `test_rate_limiting.py` and update `config.py`.\n3. Merge Task #4718 and delete its branch.\n4. Schedule a cleanup for completed tasks with unmerged branches.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:33:23.879934Z",
+    "http_status": 200,
+    "content_hash": "be576ade16bedca487dc2010b1e94dd1a381d4772fdd3aa77634bf0acb3f3597",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-task-viewer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-task-viewer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude-task viewer for Kanban boards",
+  "short_description_vi": "A web-based Kanban board for real-time observation of Claude Code tasks. View task dependencies, manage priorities, and track task cleanup. Ideal for developers and operations teams using Claude Code."
+}

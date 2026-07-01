@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-tutor-skill",
+  "slug": "ai-tutor-skill",
+  "name": "browser-use",
+  "headline": "ai tutor skill for tech concepts",
+  "short_description": "Explains complex AI and ML concepts in plain English. Ideal for training teams, creating documentation, and onboarding new hires. Integrates with Claude to provide structured, accessible explanations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "ShawhinT",
+  "install_command": "git clone https://github.com/ShawhinT/ai-tutor-skill.git",
+  "source_repo_url": "https://github.com/ShawhinT/ai-tutor-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "ai-tutor-skill transforms abstract AI and ML concepts into accessible explanations using structured narrative frameworks. It integrates with Claude to deliver clear, technical content suitable for training teams, creating documentation, and onboarding new hires. The skill handles YouTube transcript extraction (when running locally in Claude Code) and structures complex ideas for learners at all levels. Use it to demystify machine learning terminology, explain neural networks, clarify algorithm basics, or prepare educational materials. It's designed for anyone who needs to communicate technical AI concepts to non-specialists.\nTraining technical teams on AI and ML fundamentals\nCreating accessible documentation for machine learning projects\nOnboarding new hires with structured AI concept explanations\nExtracting and explaining YouTube content about AI topics",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ShawhinT/ai-tutor-skill`",
+    "usage": "```\nExplain [CONCEPT] in plain English as if teaching a beginner. Use analogies and avoid jargon. Assume the learner has no prior knowledge of AI/ML. Include a real-world example to illustrate the concept. Format the explanation with clear headings and bullet points for readability. [CONCEPT] = [e.g., 'transformers in LLMs', 'gradient descent', 'overfitting in models']\n```\nCopy\n\n```\n### **What is a Transformer in Large Language Models (LLMs)?**\n\n**Analogy:** Imagine you’re at a busy international conference where people speak different languages. Instead of translating every sentence in real-time, you have a team of interpreters who listen to the speaker, break down the speech into key ideas, and then translate those ideas—not word-for-word, but idea-by-idea. This is similar to how Transformers work in AI.\n\n#### **Key Components:**\n1. **Self-Attention Mechanism:** Think of this as the interpreter’s ability to focus on the most important parts of a sentence *as it’s being spoken*. For example, in the sentence *\"The cat sat on the mat because it was tired,\"* the word *\"it\"* refers to *\"the cat,\"* not *\"the mat.\"* The Transformer figures this out by weighing the relevance of each word to others in the sentence.\n\n2. **Parallel Processing:** Unlike older models that processed words one by one (like reading a book), Transformers read the entire sentence at once. This is like having a team of interpreters working simultaneously to translate a speech in real-time, rather than waiting for each sentence to finish.\n\n3. **Contextual Understanding:** Transformers don’t just memorize words; they understand the *context*. For example, the word *\"bank\"* could mean a financial institution or the side of a river, depending on the surrounding words. The model uses context to disambiguate.\n\n#### **Real-World Example:**\nWhen you ask an AI like me, *\"What’s the capital of France?\"*, the Transformer breaks down your question:\n- Identifies *\"capital\"*, *\"France\"*, and the implied question mark.\n- Uses self-attention to link *\"capital\"* to *\"France\"* (not, say, *\"Paris\"*).\n- Generates the answer *\"Paris\"* based on its training data.\n\n**Why It Matters:** Transformers power models like me, enabling them to understand and generate human-like text. Without them, AI would struggle with context, nuance, and speed.\n\n**Try It Yourself:** Next time you use an AI chatbot, ask it a multi-part question (e.g., *\"Explain quantum computing and give a real-world example.\"*). Notice how it handles context—this is the Transformer at work!\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-tutor-skill#main-content",
+      "ai-tutor-skill#overview",
+      "ai-tutor-skill#setup",
+      "ai-tutor-skill#examples",
+      "ai-tutor-skill#tools",
+      "ai-tutor-skill#mcp",
+      "ai-tutor-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ai-tutor-skill transforms abstract AI and ML concepts into accessible explanations using structured narrative frameworks. It integrates with Claude to deliver clear, technical content suitable for training teams, creating documentation, and onboarding new hires. The skill handles YouTube transcript extraction (when running locally in Claude Code) and structures complex ideas for learners at all levels. Use it to demystify machine learning terminology, explain neural networks, clarify algorithm basics, or prepare educational materials. It's designed for anyone who needs to communicate technical AI concepts to non-specialists.\nTraining technical teams on AI and ML fundamentals\nCreating accessible documentation for machine learning projects\nOnboarding new hires with structured AI concept explanations\nExtracting and explaining YouTube content about AI topics",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ShawhinT/ai-tutor-skill`",
+    "usage_vi": "```\nExplain [CONCEPT] in plain English as if teaching a beginner. Use analogies and avoid jargon. Assume the learner has no prior knowledge of AI/ML. Include a real-world example to illustrate the concept. Format the explanation with clear headings and bullet points for readability. [CONCEPT] = [e.g., 'transformers in LLMs', 'gradient descent', 'overfitting in models']\n```\nCopy\n\n```\n### **What is a Transformer in Large Language Models (LLMs)?**\n\n**Analogy:** Imagine you’re at a busy international conference where people speak different languages. Instead of translating every sentence in real-time, you have a team of interpreters who listen to the speaker, break down the speech into key ideas, and then translate those ideas—not word-for-word, but idea-by-idea. This is similar to how Transformers work in AI.\n\n#### **Key Components:**\n1. **Self-Attention Mechanism:** Think of this as the interpreter’s ability to focus on the most important parts of a sentence *as it’s being spoken*. For example, in the sentence *\"The cat sat on the mat because it was tired,\"* the word *\"it\"* refers to *\"the cat,\"* not *\"the mat.\"* The Transformer figures this out by weighing the relevance of each word to others in the sentence.\n\n2. **Parallel Processing:** Unlike older models that processed words one by one (like reading a book), Transformers read the entire sentence at once. This is like having a team of interpreters working simultaneously to translate a speech in real-time, rather than waiting for each sentence to finish.\n\n3. **Contextual Understanding:** Transformers don’t just memorize words; they understand the *context*. For example, the word *\"bank\"* could mean a financial institution or the side of a river, depending on the surrounding words. The model uses context to disambiguate.\n\n#### **Real-World Example:**\nWhen you ask an AI like me, *\"What’s the capital of France?\"*, the Transformer breaks down your question:\n- Identifies *\"capital\"*, *\"France\"*, and the implied question mark.\n- Uses self-attention to link *\"capital\"* to *\"France\"* (not, say, *\"Paris\"*).\n- Generates the answer *\"Paris\"* based on its training data.\n\n**Why It Matters:** Transformers power models like me, enabling them to understand and generate human-like text. Without them, AI would struggle with context, nuance, and speed.\n\n**Try It Yourself:** Next time you use an AI chatbot, ask it a multi-part question (e.g., *\"Explain quantum computing and give a real-world example.\"*). Notice how it handles context—this is the Transformer at work!\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:33:08.705137Z",
+    "http_status": 200,
+    "content_hash": "cdcfc198af949e32d1e7547711a9dffcd91ff5a1c38bc89df9e44b67f111e343",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-tutor-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-tutor-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ai tutor skill for tech concepts",
+  "short_description_vi": "Explains complex AI and ML concepts in plain English. Ideal for training teams, creating documentation, and onboarding new hires. Integrates with Claude to provide structured, accessible explanations."
+}

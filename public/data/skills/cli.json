@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cli",
+  "slug": "cli",
+  "name": "browser-use",
+  "headline": "DeepSeek CLI: Command-Line Interface for DeepSeek",
+  "short_description": "DeepSeek CLI is a command-line interface for accessing DeepSeek AI models directly from your terminal. The deepseek cli tool enables developers to run chat completions, generate code, and configure model settings through simple shell commands. Use deepseek cli to integrate DeepSeek's API into scripts, CI/CD pipelines, and automated workflows without leaving the terminal.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "prompt-scheduler",
+  "install_command": "git clone https://github.com/prompt-scheduler/cli.git",
+  "source_repo_url": "https://github.com/prompt-scheduler/cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "prompt-scheduler",
+    "cli",
+    "tmux-integration",
+    "batch-prompting",
+    "sequential-execution",
+    "claude-automation",
+    "automated-prompts",
+    "claude-code",
+    "usage-limit-detection",
+    "ai-agent-tools",
+    "schedule-prompts",
+    "intelligent-waiting",
+    "prompt-execution",
+    "tmux-automation",
+    "prompt-automation",
+    "typescript-cli",
+    "ai-workflow",
+    "automation",
+    "typescript",
+    "ai-productivity"
+  ],
+  "sections": {
+    "overview": "Prompt Scheduler is a modern TypeScript tool that automates the execution of sequential prompts sent to AI agents, primarily Claude Code, through tmux sessions. It detects and automatically handles Claude usage limits by parsing reset times and pausing execution until limits clear. The tool provides real-time status tracking, customizable wait times between prompts, and flexible execution modes—supporting direct sequential sending or tmux history-based repetition. Developers and automation engineers benefit from skip logic that avoids resending prompts, time controls to stop execution at specific times, and a colorful terminal interface with progress monitoring.\nRunning deepseek cli commands for AI-powered code generation in terminal\nUsing deepseek cli for chat completions and code assistance without GUI\nIntegrating deepseek cli into shell scripts for automated AI workflows\nBuilding CI/CD pipelines with deepseek cli for code review and generation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/prompt-scheduler/cli`",
+    "usage": "```\nCreate a TypeScript CLI tool to automate interactions with Claude Code. The tool should be able to schedule and execute prompts, detect usage limits intelligently, and integrate with tmux for efficient workflow management. The CLI should be designed for [COMPANY], a [INDUSTRY] company, to handle [DATA] processing tasks.\n```\nCopy\n\n```\n```typescript\n// Example CLI tool code snippet\nimport { exec } from 'child_process';\nimport { scheduleJob } from 'node-schedule';\n\n// Function to execute a prompt\nfunction executePrompt(prompt: string) {\n  return new Promise((resolve, reject) => {\n    exec(`echo \"${prompt}\" | claude-code`, (error, stdout, stderr) => {\n      if (error) {\n        reject(error);\n        return;\n      }\n      resolve(stdout);\n    });\n  });\n}\n\n// Schedule a job to run every hour\nscheduleJob('0 * * * *', async () => {\n  try {\n    const result = await executePrompt('Generate a report for the last hour');\n    console.log(result);\n  } catch (error) {\n    console.error('Error executing prompt:', error);\n  }\n});\n```\n\n### Features\n- **Scheduling**: Schedule prompts to run at specific intervals.\n- **Usage Limit Detection**: Intelligently detects and manages usage limits.\n- **Tmux Integration**: Integrates with tmux for efficient workflow management.\n- **Error Handling**: Robust error handling for prompt execution.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cli#main-content",
+      "cli#overview",
+      "cli#setup",
+      "cli#examples",
+      "cli#tools",
+      "cli#mcp",
+      "cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Prompt Scheduler is a modern TypeScript tool that automates the execution of sequential prompts sent to AI agents, primarily Claude Code, through tmux sessions. It detects and automatically handles Claude usage limits by parsing reset times and pausing execution until limits clear. The tool provides real-time status tracking, customizable wait times between prompts, and flexible execution modes—supporting direct sequential sending or tmux history-based repetition. Developers and automation engineers benefit from skip logic that avoids resending prompts, time controls to stop execution at specific times, and a colorful terminal interface with progress monitoring.\nRunning deepseek cli commands for AI-powered code generation in terminal\nUsing deepseek cli for chat completions and code assistance without GUI\nIntegrating deepseek cli into shell scripts for automated AI workflows\nBuilding CI/CD pipelines with deepseek cli for code review and generation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/prompt-scheduler/cli`",
+    "usage_vi": "```\nCreate a TypeScript CLI tool to automate interactions with Claude Code. The tool should be able to schedule and execute prompts, detect usage limits intelligently, and integrate with tmux for efficient workflow management. The CLI should be designed for [COMPANY], a [INDUSTRY] company, to handle [DATA] processing tasks.\n```\nCopy\n\n```\n```typescript\n// Example CLI tool code snippet\nimport { exec } from 'child_process';\nimport { scheduleJob } from 'node-schedule';\n\n// Function to execute a prompt\nfunction executePrompt(prompt: string) {\n  return new Promise((resolve, reject) => {\n    exec(`echo \"${prompt}\" | claude-code`, (error, stdout, stderr) => {\n      if (error) {\n        reject(error);\n        return;\n      }\n      resolve(stdout);\n    });\n  });\n}\n\n// Schedule a job to run every hour\nscheduleJob('0 * * * *', async () => {\n  try {\n    const result = await executePrompt('Generate a report for the last hour');\n    console.log(result);\n  } catch (error) {\n    console.error('Error executing prompt:', error);\n  }\n});\n```\n\n### Features\n- **Scheduling**: Schedule prompts to run at specific intervals.\n- **Usage Limit Detection**: Intelligently detects and manages usage limits.\n- **Tmux Integration**: Integrates with tmux for efficient workflow management.\n- **Error Handling**: Robust error handling for prompt execution.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:58:54.593295Z",
+    "http_status": 200,
+    "content_hash": "e8249b0c821bb02e05b57e4efd149a7a140f6ee161f4b1a08a7db6513934051f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cli.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "DeepSeek CLI: Command-Line Interface for DeepSeek",
+  "short_description_vi": "DeepSeek CLI is a command-line interface for accessing DeepSeek AI models directly from your terminal. The deepseek cli tool enables developers to run chat completions, generate code, and configure model settings through simple shell commands. Use deepseek cli to integrate DeepSeek's API into scripts, CI/CD pipelines, and automated workflows without leaving the terminal."
+}

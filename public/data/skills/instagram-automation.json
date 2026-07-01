@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/instagram-automation",
+  "slug": "instagram-automation",
+  "name": "Instagram-automation",
+  "headline": "Instagram-automation: Your Marketing",
+  "short_description": "Find python codes for automating the popular social media, Instagram.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "darshanchaithram",
+  "install_command": "git clone https://github.com/darshanchaithram/Instagram-automation.git",
+  "source_repo_url": "https://github.com/darshanchaithram/Instagram-automation",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Instagram-automation skill is designed to help marketers automate tasks on the popular social media platform, Instagram, using Python codes. This skill allows users to streamline their marketing efforts by automating repetitive activities such as posting content, engaging with followers, and analyzing performance metrics. By leveraging this skill, users can focus on strategic initiatives rather than getting bogged down by manual processes. One of the key benefits of using the Instagram-automation skill is the potential time savings it offers. While the exact time savings are currently unknown, automating tasks that typically require manual effort can lead to significant efficiency gains. Marketers can implement this skill in approximately 30 minutes, making it a practical addition to their workflow. The intermediate complexity level means that users should have a basic understanding of Python programming to effectively utilize the automation scripts. This skill is particularly beneficial for product managers, digital marketers, and AI practitioners who are looking to enhance their marketing strategies through automation. By integrating Instagram-automation into their daily operations, these professionals can improve engagement rates, maintain consistent posting schedules, and derive actionable insights from their social media data. For example, a digital marketer could set up automated posts for product launches or promotions, ensuring that their audience is consistently engaged without manual intervention. Incorporating the Instagram-automation skill into an AI-first workflow aligns with modern marketing practices that prioritize efficiency and data-driven decision-making. As businesses increasingly rely on automation to enhance productivity, this skill serves as a valuable tool for those looking to optimize their social media marketing efforts. With the growing relevance of AI automation in marketing, the Instagram-automation skill stands out as a practical solution for professionals aiming to elevate their social media strategies.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/darshanchaithram/Instagram-automation`",
+    "usage": "```\nGenerate Python code to automate Instagram tasks for [COMPANY]. I need to [TASK], such as [SPECIFIC_ACTION]. Ensure the code is up-to-date with Instagram's latest API requirements and includes error handling for common issues like rate limits or login failures.\n```\nCopy\n\n```\n```python\n# Instagram Automation Script for [COMPANY]\n\nimport instagrapi\n\n# Initialize the client\nclient = instagrapi.Client()\n\n# Login to Instagram\ntry:\n    client.login(\"[USERNAME]\", \"[PASSWORD]\")\n    print(\"Login successful!\")\nexcept Exception as e:\n    print(f\"Login failed: {e}\")\n\n# Post an image\ntry:\n    client.photo_upload(\"[IMAGE_PATH]\", \"[CAPTION]\")\n    print(\"Image posted successfully!\")\nexcept Exception as e:\n    print(f\"Posting failed: {e}\")\n\n# Follow users based on hashtag\ntry:\n    users = client.hashtag_followers(\"[HASHTAG]\")\n    for user in users[:10]:  # Follow the first 10 users\n        client.user_follow(user.id)\n        print(f\"Followed user: {user.username}\")\nexcept Exception as e:\n    print(f\"Following failed: {e}\")\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "instagram-automation#main-content",
+      "instagram-automation#overview",
+      "instagram-automation#setup",
+      "instagram-automation#examples",
+      "instagram-automation#tools",
+      "instagram-automation#mcp",
+      "instagram-automation#related",
+      "marketingskills",
+      "copywriting",
+      "agentic-articles"
+    ],
+    "overview_vi": "The Instagram-automation skill is designed to help marketers automate tasks on the popular social media platform, Instagram, using Python codes. This skill allows users to streamline their marketing efforts by automating repetitive activities such as posting content, engaging with followers, and analyzing performance metrics. By leveraging this skill, users can focus on strategic initiatives rather than getting bogged down by manual processes. One of the key benefits of using the Instagram-automation skill is the potential time savings it offers. While the exact time savings are currently unknown, automating tasks that typically require manual effort can lead to significant efficiency gains. Marketers can implement this skill in approximately 30 minutes, making it a practical addition to their workflow. The intermediate complexity level means that users should have a basic understanding of Python programming to effectively utilize the automation scripts. This skill is particularly beneficial for product managers, digital marketers, and AI practitioners who are looking to enhance their marketing strategies through automation. By integrating Instagram-automation into their daily operations, these professionals can improve engagement rates, maintain consistent posting schedules, and derive actionable insights from their social media data. For example, a digital marketer could set up automated posts for product launches or promotions, ensuring that their audience is consistently engaged without manual intervention. Incorporating the Instagram-automation skill into an AI-first workflow aligns with modern marketing practices that prioritize efficiency and data-driven decision-making. As businesses increasingly rely on automation to enhance productivity, this skill serves as a valuable tool for those looking to optimize their social media marketing efforts. With the growing relevance of AI automation in marketing, the Instagram-automation skill stands out as a practical solution for professionals aiming to elevate their social media strategies.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/darshanchaithram/Instagram-automation`",
+    "usage_vi": "```\nGenerate Python code to automate Instagram tasks for [COMPANY]. I need to [TASK], such as [SPECIFIC_ACTION]. Ensure the code is up-to-date with Instagram's latest API requirements and includes error handling for common issues like rate limits or login failures.\n```\nCopy\n\n```\n```python\n# Instagram Automation Script for [COMPANY]\n\nimport instagrapi\n\n# Initialize the client\nclient = instagrapi.Client()\n\n# Login to Instagram\ntry:\n    client.login(\"[USERNAME]\", \"[PASSWORD]\")\n    print(\"Login successful!\")\nexcept Exception as e:\n    print(f\"Login failed: {e}\")\n\n# Post an image\ntry:\n    client.photo_upload(\"[IMAGE_PATH]\", \"[CAPTION]\")\n    print(\"Image posted successfully!\")\nexcept Exception as e:\n    print(f\"Posting failed: {e}\")\n\n# Follow users based on hashtag\ntry:\n    users = client.hashtag_followers(\"[HASHTAG]\")\n    for user in users[:10]:  # Follow the first 10 users\n        client.user_follow(user.id)\n        print(f\"Followed user: {user.username}\")\nexcept Exception as e:\n    print(f\"Following failed: {e}\")\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:12.602251Z",
+    "http_status": 200,
+    "content_hash": "c1fb751aac4e1bd8f0fe258eca2b3d1e706664afbbe1fe7b822b9017f0ac8e43",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\instagram-automation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\instagram-automation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Instagram-automation: Your Marketing",
+  "short_description_vi": "Find python codes for automating the popular social media, Instagram."
+}

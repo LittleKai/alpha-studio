@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-coding-factory",
+  "slug": "ai-coding-factory",
+  "name": "Ai Coding Factory",
+  "headline": "ai-coding-factory: replace software outsourcing",
+  "short_description": "AI Coding Factory replaces outsourcing vendors with internal AI for .NET development. Operations teams use it to build and maintain software in-house, with traceability and governance. It integrates with GitHub and Azure DevOps for version control and CI/CD.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "mitkox",
+  "install_command": "git clone https://github.com/mitkox/ai-coding-factory.git",
+  "source_repo_url": "https://github.com/mitkox/ai-coding-factory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "AI Coding Factory is an open-source platform that enables organizations to build and maintain .NET software in-house using local AI inference, eliminating dependency on external vendors. It enforces enterprise governance and traceability by default, with built-in Definition of Done templates, automated traceability reports, and release notes. The platform integrates with GitHub or Azure DevOps for version control, CI/CD, and backlog management, and supports offline-capable deployments through vLLM or LM Studio. Operations and development teams use AI Coding Factory to deliver auditable, private software with quality gates and security policies enforced throughout the story-to-release workflow. It includes .NET 8+ Clean Architecture templates, a Scrum Team as Code framework with specialized agents, and 12 reusable skills for automated development tasks.\nAutomating .NET software delivery with full audit trails and governance compliance\nRunning private AI-driven development without relying on external cloud vendors\nEnforcing enterprise policy across story planning, development, testing, and release\nBuilding microservices with Kubernetes-ready templates and automated quality gates",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mitkox/ai-coding-factory`",
+    "usage": "```\nAct as an AI Coding Factory engineer. Generate a pull request for [FEATURE_NAME] in our .NET [PROJECT_NAME] repository. Include: 1) A concise summary of changes, 2) Code snippets for critical logic, 3) Unit tests covering edge cases, 4) Performance benchmarks if applicable, 5) A changelog entry. Use [GITHUB_USERNAME] as the author. Reference ticket [TICKET_NUMBER].\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-coding-factory#main-content",
+      "ai-coding-factory#overview",
+      "ai-coding-factory#setup",
+      "ai-coding-factory#examples",
+      "ai-coding-factory#tools",
+      "ai-coding-factory#mcp",
+      "ai-coding-factory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI Coding Factory là một nền tảng mã nguồn mở cho phép các tổ chức tự xây dựng và bảo trì phần mềm .NET (in-house) bằng cơ chế suy luận AI cục bộ (local AI inference), loại bỏ hoàn toàn sự phụ thuộc vào các đối tác bên ngoài. Hệ thống mặc định áp dụng các tiêu chuẩn quản lý doanh nghiệp (governance) và khả năng truy xuất nguồn gốc (traceability), tích hợp sẵn các template Definition of Done, báo cáo traceability tự động và release notes. Nền tảng này tích hợp trực tiếp với GitHub hoặc Azure DevOps để kiểm soát phiên bản, CI/CD và quản lý backlog, đồng thời hỗ trợ triển khai offline thông qua vLLM hoặc LM Studio. Các đội ngũ vận hành và phát triển sử dụng AI Coding Factory để bàn giao phần mềm bảo mật, có thể kiểm toán (auditable) nhờ các quality gate và chính sách bảo mật được áp dụng xuyên suốt quy trình từ story đến release. Hệ thống bao gồm các template .NET 8+ Clean Architecture, một framework Scrum Team as Code với các agent chuyên biệt, cùng 12 kỹ năng (skills) có thể tái sử dụng cho các tác vụ phát triển tự động.\nTự động hóa quy trình bàn giao phần mềm .NET với đầy đủ lịch sử kiểm toán (audit trails) và tuân thủ quản trị (governance compliance)\nVận hành quy trình phát triển dựa trên AI riêng tư mà không phụ thuộc vào các nhà cung cấp cloud bên ngoài\nÁp dụng chính sách doanh nghiệp xuyên suốt từ khâu lập kế hoạch story, phát triển, kiểm thử cho đến khi release\nXây dựng microservices với các template sẵn sàng cho Kubernetes và các quality gate tự động",
+    "setup_vi": "Không có lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/mitkox/ai-coding-factory`",
+    "usage_vi": "```\nĐóng vai trò là một kỹ sư AI Coding Factory. Hãy tạo một pull request cho [FEATURE_NAME] trong repository .NET [PROJECT_NAME] của chúng tôi. Bao gồm: 1) Tóm tắt súc tích các thay đổi, 2) Các đoạn code snippet cho các logic quan trọng, 3) Unit test bao quát các edge case, 4) Performance benchmark nếu có, 5) Một mục ghi chép thay đổi (changelog). Sử dụng [GITHUB_USERNAME] làm tác giả. Tham chiếu đến ticket [TICKET_NUMBER].\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:12.077645Z",
+    "http_status": 200,
+    "content_hash": "884c6ba97a1b8642c33ea1f3e8408443034466f79b1ffd9ca19b8e3bbe581066",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-coding-factory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-coding-factory.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ai-coding-factory: thay thế outsourcing phần mềm",
+  "short_description_vi": "AI Coding Factory thay thế các nhà cung cấp outsourcing bằng AI nội bộ phục vụ phát triển .NET. Các đội ngũ vận hành có thể sử dụng công cụ này để tự xây dựng và bảo trì phần mềm in-house, đảm bảo khả năng truy xuất nguồn gốc (traceability) và quản trị (governance). Giải pháp này tích hợp trực tiếp với GitHub và Azure DevOps để kiểm soát phiên bản (version control) và CI/CD."
+}

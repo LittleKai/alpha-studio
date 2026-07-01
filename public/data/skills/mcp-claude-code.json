@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-claude-code",
+  "slug": "mcp-claude-code",
+  "name": "MCP Claude Code",
+  "headline": "MCP Claude Code - Automate Code Changes",
+  "short_description": "MCP Claude Code enables Claude to directly execute instructions for modifying and improving project files. It benefits operations teams by automating code changes and improvements. It connects to Python-based workflows and integrates with MCP-compatible tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "SDGLBL",
+  "install_command": "git clone https://github.com/SDGLBL/mcp-claude-code.git",
+  "source_repo_url": "https://github.com/SDGLBL/mcp-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "mcp-server",
+    "claude-code",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "MCP Claude Code is an MCP server implementation that allows Claude to directly execute instructions for analyzing, modifying, and improving project files. It provides tools for code understanding, targeted file edits, command execution, and code discovery across your codebase. The skill supports multiple LLM providers via LiteLLM, includes Jupyter notebook support, and enables agent delegation for concurrent task execution. Operations teams benefit from automated code changes with built-in security controls including permission prompts and restricted directory access. It integrates seamlessly with MCP-compatible clients like Claude Desktop.\nAutomate code refactoring and improvements across large projects\nExecute Python-based workflows with direct file modification capabilities\nSearch and analyze codebases using AST-aware pattern matching\nEdit Jupyter notebooks programmatically with cell management",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SDGLBL/mcp-claude-code`",
+    "usage": "```\nUse MCP Claude Code to [TASK DESCRIPTION] in the [PROJECT_PATH] directory. Ensure all changes are [REQUIREMENTS, e.g., backward-compatible, follow PEP 8, include error handling]. Generate a summary of the changes made and any potential impacts. Example: 'Use MCP Claude Code to refactor the legacy API client in /src/api/ to use async/await and add comprehensive logging. Ensure the changes maintain backward compatibility and include unit tests.'\n```\nCopy\n\n```\n### Summary of Changes\n\n**Files Modified:**\n1. `/src/api/legacy_client.py`\n   - Refactored synchronous HTTP requests to use `aiohttp` for async/await support.\n   - Added structured logging using `logging` module with log levels: DEBUG, INFO, WARNING, ERROR.\n   - Introduced retry logic for transient failures (max 3 retries with exponential backoff).\n   - Added type hints for all public methods and improved docstrings.\n\n2. `/src/api/__init__.py`\n   - Updated imports to include `aiohttp` and `logging_config` module.\n   - Added `__all__` to expose only the public API surface.\n\n3. `/tests/test_legacy_client.py`\n   - Added async test cases for the new async methods using `pytest-asyncio`.\n   - Included mock tests for retry logic and error handling.\n   - Updated existing tests to work with the new async interface.\n\n**Key Improvements:**\n- **Performance:** Reduced average response time from 2.1s to 0.8s under load (tested with 100 concurrent requests).\n- **Reliability:** Retry logic reduced transient failure rates from 5% to 0.2%.\n- **Maintainability:** Type hints and docstrings make the codebase 40% easier to onboard new developers (based on internal feedback).\n\n**Potential Impacts:**\n- **Breaking Changes:** The synchronous `fetch_data()` method is now deprecated. Users should migrate to `fetch_data_async()`. A deprecation warning is logged when the old method is called.\n- **Dependencies:** Added `aiohttp>=3.8.0` and `pytest-asyncio>=0.20.0` to `requirements.txt`.\n- **Monitoring:** New logs are emitted to `/var/log/api_client.log` with rotation every 10MB.\n\n**Next Steps:**\n1. Update documentation in `/docs/api_usage.md` to reflect async usage.\n2. Run integration tests in the staging environment.\n3. Deploy to production in a phased rollout (10% traffic first).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-claude-code#main-content",
+      "mcp-claude-code#overview",
+      "mcp-claude-code#setup",
+      "mcp-claude-code#examples",
+      "mcp-claude-code#tools",
+      "mcp-claude-code#mcp",
+      "mcp-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "MCP Claude Code là một triển khai (implementation) MCP server cho phép Claude trực tiếp thực thi các chỉ thị để phân tích, sửa đổi và cải thiện các tệp tin dự án. Công cụ này cung cấp các tính năng giúp hiểu code, chỉnh sửa tệp tin mục tiêu, thực thi lệnh và khám phá code trên toàn bộ codebase của bạn. Skill này hỗ trợ nhiều nhà cung cấp LLM thông qua LiteLLM, bao gồm hỗ trợ Jupyter notebook và cho phép ủy quyền agent (agent delegation) để thực thi tác vụ đồng thời. Các đội ngũ vận hành sẽ được hưởng lợi từ việc tự động hóa thay đổi code với các biện pháp kiểm soát bảo mật tích hợp sẵn, bao gồm yêu cầu cấp quyền và giới hạn quyền truy cập thư mục. Công cụ tích hợp liền mạch với các client tương thích với MCP như Claude Desktop.\n\nTự động hóa việc refactor và cải thiện code trên các dự án lớn\nThực thi các workflow dựa trên Python với khả năng sửa đổi tệp tin trực tiếp\nTìm kiếm và phân tích codebase bằng cách khớp mẫu (pattern matching) nhận diện AST (AST-aware)\nChỉnh sửa Jupyter notebook bằng lập trình với tính năng quản lý cell",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/SDGLBL/mcp-claude-code`",
+    "usage_vi": "```\nSử dụng MCP Claude Code để [MÔ TẢ TÁC VỤ] trong thư mục [PROJECT_PATH]. Đảm bảo tất cả các thay đổi đều [YÊU CẦU, ví dụ: tương thích ngược, tuân thủ PEP 8, bao gồm xử lý lỗi]. Tạo bản tóm tắt các thay đổi đã thực hiện và mọi tác động tiềm ẩn. Ví dụ: 'Sử dụng MCP Claude Code để refactor API client cũ trong /src/api/ nhằm sử dụng async/await và thêm logging toàn diện. Đảm bảo các thay đổi duy trì tính tương thích ngược và bao gồm các unit test.'\n```\nSao chép\n\n```\n### Tóm tắt các thay đổi\n\n**Các tệp đã sửa đổi:**\n1. `/src/api/legacy_client.py`\n   - Refactor các HTTP request đồng bộ để sử dụng `aiohttp` nhằm hỗ trợ async/await.\n   - Thêm structured logging bằng module `logging` với các log level: DEBUG, INFO, WARNING, ERROR.\n   - Triển khai cơ chế retry cho các lỗi tạm thời (tối đa 3 lần thử lại với exponential backoff).\n   - Thêm type hint cho tất cả các public method và cải thiện docstring.\n\n2. `/src/api/__init__.py`\n   - Cập nhật các import để bao gồm `aiohttp` và module `logging_config`.\n   - Thêm `__all__` để chỉ export các public API.\n\n3. `/tests/test_legacy_client.py`\n   - Thêm các async test case cho các async method mới sử dụng `pytest-asyncio`.\n   - Bổ sung các mock test cho cơ chế retry và xử lý lỗi.\n   - Cập nhật các test hiện tại để tương thích với interface async mới.\n\n**Các cải tiến chính:**\n- **Hiệu năng (Performance):** Giảm thời gian phản hồi trung bình từ 2.1s xuống 0.8s khi chịu tải (đã test với 100 request đồng thời).\n- **Độ tin cậy (Reliability):** Cơ chế retry giúp giảm tỷ lệ lỗi tạm thời từ 5% xuống 0.2%.\n- **Khả năng bảo trì (Maintainability):** Type hint và docstring giúp codebase dễ tiếp cận hơn 40% đối với các lập trình viên mới (dựa trên phản hồi nội bộ).\n\n**Tác động tiềm ẩn:**\n- **Thay đổi lớn gây lỗi (Breaking Changes):** Method đồng bộ `fetch_data()` hiện đã bị deprecate. Người dùng nên chuyển sang sử dụng `fetch_data_async()`. Hệ thống sẽ ghi nhận cảnh báo deprecation khi method cũ được gọi.\n- **Thư viện phụ thuộc (Dependencies):** Đã thêm `aiohttp>=3.8.0` và `pytest-asyncio>=0.20.0` vào `requirements.txt`.\n- **Giám sát (Monitoring):** Log mới sẽ được ghi ra file `/var/log/api_client.log` với chế độ xoay vòng (rotation) mỗi 10MB.\n\n**Các bước tiếp theo:**\n1. Cập nhật tài liệu hướng dẫn trong `/docs/api_usage.md` để phản ánh cách sử dụng async.\n2. Chạy các bài test tích hợp (integration tests) trên môi trường staging.\n3. Deploy lên production theo từng giai đoạn (bắt đầu với 10% traffic).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:40:00.782884Z",
+    "http_status": 200,
+    "content_hash": "0546c8b50720307f26d98787c192cd464552a60bfbb7aaf23def9d957afd9f80",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP Claude Code - Tự động hóa các thay đổi code",
+  "short_description_vi": "MCP Claude Code cho phép Claude trực tiếp thực thi các chỉ thị để sửa đổi và cải thiện các tệp tin trong dự án. Công cụ này mang lại lợi ích cho các đội ngũ vận hành (operations teams) nhờ tự động hóa việc thay đổi và tối ưu hóa code. Ngoài ra, nó còn kết nối với các workflow dựa trên Python và tích hợp với các công cụ tương thích với MCP."
+}

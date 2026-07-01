@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zammad-mcp",
+  "slug": "zammad-mcp",
+  "name": "browser-use",
+  "headline": "Zammad-MCP - AI-Powered Ticket Management",
+  "short_description": "Zammad-MCP is an automation skill that enables AI assistants to interact with Zammad's ticket management system. It allows AI to access and manage tickets, users, and organizations through the Model Context Protocol (MCP). This skill is beneficial for operations teams looking to automate customer support workflows and integrate AI into their helpdesk operations. It connects to Zammad's API and is designed for use with Claude AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "basher83",
+  "install_command": "git clone https://github.com/basher83/Zammad-MCP.git",
+  "source_repo_url": "https://github.com/basher83/Zammad-MCP",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "python",
+    "mcp",
+    "customer-support",
+    "mcp-server",
+    "zammad-api",
+    "zammad",
+    "ticket-management",
+    "api-integration",
+    "model-context-protocol-servers",
+    "model-context-protocol",
+    "helpdesk"
+  ],
+  "sections": {
+    "overview": "Zammad-MCP is an MCP server that integrates AI assistants with Zammad ticket management systems. It provides comprehensive tools for automating customer support workflows, including ticket search, creation, updates, and article management with attachment support. The skill enables operations teams to manage users, organizations, and system data like ticket states and priorities, with built-in caching for performance optimization. Deployment options include direct execution via uvx, Docker containers, or developer setup. Authentication supports API tokens, OAuth2, or username/password credentials with optional TLS configuration.\nAutomate ticket creation and updates from customer interactions\nSearch and analyze tickets with multiple filters for prioritization\nAdd comments and attachments to tickets programmatically\nGenerate escalation summaries and draft responses for support teams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/basher83/Zammad-MCP`",
+    "usage": "```\nUse the Zammad-MCP skill to [ACTION] in Zammad. For example: 'Search for all open tickets assigned to [AGENT_NAME] with priority [PRIORITY_LEVEL] and summarize the key issues. Then, update the priority of the most critical ticket to [NEW_PRIORITY] and assign it to [NEW_AGENT_NAME]. Finally, create a follow-up ticket for [CUSTOMER_NAME] with a due date of [DUE_DATE] and the subject '[TICKET_SUBJECT]'.'\n```\nCopy\n\n```\nI’ve executed your request using the Zammad-MCP skill. Here’s a summary of the actions taken and results:\n\n1. **Ticket Search**: Found 5 open tickets assigned to Sarah Johnson with priority 'high'. The key issues were:\n   - Ticket #1245: 'Payment gateway failing for 10% of users' (created 3 days ago)\n   - Ticket #1247: 'API rate limiting causing 500 errors' (created 2 days ago)\n   - Ticket #1249: 'User unable to reset password' (created yesterday)\n   - Ticket #1251: 'Mobile app crashing on startup' (created 6 hours ago)\n   - Ticket #1253: 'Billing discrepancy for customer XYZ Corp' (created 4 hours ago)\n\n2. **Priority Update**: Updated the priority of Ticket #1245 ('Payment gateway failing for 10% of users') from 'high' to 'urgent' due to its critical impact on revenue.\n\n3. **Assignment Change**: Reassigned Ticket #1245 from Sarah Johnson to Michael Chen, as Michael has expertise in payment integrations.\n\n4. **Follow-up Creation**: Created a follow-up ticket for 'Acme Corp' with the subject 'Investigate API rate limiting issues' and a due date of '2024-05-20'. The ticket was assigned to Sarah Johnson for initial triage.\n\nAll changes have been logged in Zammad, and the affected users (Sarah, Michael, and the Acme Corp contact) have been notified via email. The Zammad-MCP skill confirmed that all operations were successful, with no errors reported.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zammad-mcp#main-content",
+      "zammad-mcp#overview",
+      "zammad-mcp#setup",
+      "zammad-mcp#examples",
+      "zammad-mcp#tools",
+      "zammad-mcp#mcp",
+      "zammad-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Zammad-MCP is an MCP server that integrates AI assistants with Zammad ticket management systems. It provides comprehensive tools for automating customer support workflows, including ticket search, creation, updates, and article management with attachment support. The skill enables operations teams to manage users, organizations, and system data like ticket states and priorities, with built-in caching for performance optimization. Deployment options include direct execution via uvx, Docker containers, or developer setup. Authentication supports API tokens, OAuth2, or username/password credentials with optional TLS configuration.\nAutomate ticket creation and updates from customer interactions\nSearch and analyze tickets with multiple filters for prioritization\nAdd comments and attachments to tickets programmatically\nGenerate escalation summaries and draft responses for support teams",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/basher83/Zammad-MCP`",
+    "usage_vi": "```\nUse the Zammad-MCP skill to [ACTION] in Zammad. For example: 'Search for all open tickets assigned to [AGENT_NAME] with priority [PRIORITY_LEVEL] and summarize the key issues. Then, update the priority of the most critical ticket to [NEW_PRIORITY] and assign it to [NEW_AGENT_NAME]. Finally, create a follow-up ticket for [CUSTOMER_NAME] with a due date of [DUE_DATE] and the subject '[TICKET_SUBJECT]'.'\n```\nCopy\n\n```\nI’ve executed your request using the Zammad-MCP skill. Here’s a summary of the actions taken and results:\n\n1. **Ticket Search**: Found 5 open tickets assigned to Sarah Johnson with priority 'high'. The key issues were:\n   - Ticket #1245: 'Payment gateway failing for 10% of users' (created 3 days ago)\n   - Ticket #1247: 'API rate limiting causing 500 errors' (created 2 days ago)\n   - Ticket #1249: 'User unable to reset password' (created yesterday)\n   - Ticket #1251: 'Mobile app crashing on startup' (created 6 hours ago)\n   - Ticket #1253: 'Billing discrepancy for customer XYZ Corp' (created 4 hours ago)\n\n2. **Priority Update**: Updated the priority of Ticket #1245 ('Payment gateway failing for 10% of users') from 'high' to 'urgent' due to its critical impact on revenue.\n\n3. **Assignment Change**: Reassigned Ticket #1245 from Sarah Johnson to Michael Chen, as Michael has expertise in payment integrations.\n\n4. **Follow-up Creation**: Created a follow-up ticket for 'Acme Corp' with the subject 'Investigate API rate limiting issues' and a due date of '2024-05-20'. The ticket was assigned to Sarah Johnson for initial triage.\n\nAll changes have been logged in Zammad, and the affected users (Sarah, Michael, and the Acme Corp contact) have been notified via email. The Zammad-MCP skill confirmed that all operations were successful, with no errors reported.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:47:12.439844Z",
+    "http_status": 200,
+    "content_hash": "e57a3da74df4d0f15fcff327d4e4c01a7ba74791524443fbc0dc60e75e08f1b1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zammad-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zammad-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Zammad-MCP - AI-Powered Ticket Management",
+  "short_description_vi": "Zammad-MCP is an automation skill that enables AI assistants to interact with Zammad's ticket management system. It allows AI to access and manage tickets, users, and organizations through the Model Context Protocol (MCP). This skill is beneficial for operations teams looking to automate customer support workflows and integrate AI into their helpdesk operations. It connects to Zammad's API and is designed for use with Claude AI agents."
+}

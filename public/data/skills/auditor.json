@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/auditor",
+  "slug": "auditor",
+  "name": "Auditor",
+  "headline": "Auditor automation tool for business tasks",
+  "short_description": "Auditor automates code security analysis for operations teams. It identifies vulnerabilities in JavaScript, Python, and TypeScript codebases, integrating with security tools to provide taint analysis and SAST capabilities. Teams benefit from proactive security scanning and reduced risk of vulnerabilities in production.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "TheAuditorTool",
+  "install_command": "git clone https://github.com/TheAuditorTool/Auditor.git",
+  "source_repo_url": "https://github.com/TheAuditorTool/Auditor",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "code-analysis",
+    "opus",
+    "security-analysis",
+    "security-tools",
+    "taint-analysis",
+    "typescript",
+    "security",
+    "ast",
+    "anthropic-claude",
+    "sast",
+    "python",
+    "vulnerability-scanners",
+    "claude-code",
+    "javascript",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Auditor is an AI context and enforcement layer built for code-generating agents. It provides security oversight and enforcement capabilities to help teams maintain code quality and security standards during automated code generation workflows. The tool is designed to work alongside AI agents that generate code, adding an additional layer of review and validation. By integrating with code-generating AI systems, Auditor helps teams ensure that automatically generated code meets their security and quality requirements before deployment.\nPerform comprehensive security analysis on multi-language codebases to identify vulnerabilities.\nUtilize deterministic query tools to verify code changes and prevent hallucinations in AI-assisted development.\nConduct architectural intelligence assessments to detect hotspots and circular dependencies in large projects.\nImplement cross-file taint tracking to ensure data flow integrity across complex applications.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TheAuditorTool/Auditor`",
+    "usage": "```\nAnalyze the following code snippet for security vulnerabilities in [LANGUAGE: JavaScript/Python/TypeScript]. Identify potential risks such as SQL injection, XSS, or insecure dependencies. Provide a risk assessment and suggest remediation steps. Code snippet: [CODE_SNIPPET].\n```\nCopy\n\n```\nAfter analyzing the provided JavaScript code snippet, Auditor identified several security concerns:\n\n1. **SQL Injection Risk**: The code directly interpolates user input into SQL queries (lines 15-20). This could allow attackers to manipulate database queries. Recommendation: Use parameterized queries or an ORM.\n\n2. **Insecure Dependency**: The code uses the 'crypto-js' library (version 3.1.9-11) which has known vulnerabilities. Recommendation: Update to version 4.0.0 or later.\n\n3. **Sensitive Data Exposure**: API keys are hardcoded in the configuration file (lines 5-7). Recommendation: Use environment variables or a secrets manager.\n\n4. **Cross-Site Scripting (XSS)**: User input is rendered directly in the DOM without sanitization (lines 25-28). Recommendation: Use a sanitization library like DOMPurify.\n\nOverall Risk Assessment: High. Immediate action is recommended to address these vulnerabilities before deploying to production.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "auditor#main-content",
+      "auditor#overview",
+      "auditor#setup",
+      "auditor#examples",
+      "auditor#tools",
+      "auditor#mcp",
+      "auditor#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Auditor is an AI context and enforcement layer built for code-generating agents. It provides security oversight and enforcement capabilities to help teams maintain code quality and security standards during automated code generation workflows. The tool is designed to work alongside AI agents that generate code, adding an additional layer of review and validation. By integrating with code-generating AI systems, Auditor helps teams ensure that automatically generated code meets their security and quality requirements before deployment.\nPerform comprehensive security analysis on multi-language codebases to identify vulnerabilities.\nUtilize deterministic query tools to verify code changes and prevent hallucinations in AI-assisted development.\nConduct architectural intelligence assessments to detect hotspots and circular dependencies in large projects.\nImplement cross-file taint tracking to ensure data flow integrity across complex applications.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TheAuditorTool/Auditor`",
+    "usage_vi": "```\nAnalyze the following code snippet for security vulnerabilities in [LANGUAGE: JavaScript/Python/TypeScript]. Identify potential risks such as SQL injection, XSS, or insecure dependencies. Provide a risk assessment and suggest remediation steps. Code snippet: [CODE_SNIPPET].\n```\nCopy\n\n```\nAfter analyzing the provided JavaScript code snippet, Auditor identified several security concerns:\n\n1. **SQL Injection Risk**: The code directly interpolates user input into SQL queries (lines 15-20). This could allow attackers to manipulate database queries. Recommendation: Use parameterized queries or an ORM.\n\n2. **Insecure Dependency**: The code uses the 'crypto-js' library (version 3.1.9-11) which has known vulnerabilities. Recommendation: Update to version 4.0.0 or later.\n\n3. **Sensitive Data Exposure**: API keys are hardcoded in the configuration file (lines 5-7). Recommendation: Use environment variables or a secrets manager.\n\n4. **Cross-Site Scripting (XSS)**: User input is rendered directly in the DOM without sanitization (lines 25-28). Recommendation: Use a sanitization library like DOMPurify.\n\nOverall Risk Assessment: High. Immediate action is recommended to address these vulnerabilities before deploying to production.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:34:25.168521Z",
+    "http_status": 200,
+    "content_hash": "34b54658cc03d48003d6912b1a9620462b764d320311200288b6b6a0a40b5ec7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\auditor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\auditor.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Auditor automation tool for business tasks",
+  "short_description_vi": "Auditor automates code security analysis for operations teams. It identifies vulnerabilities in JavaScript, Python, and TypeScript codebases, integrating with security tools to provide taint analysis and SAST capabilities. Teams benefit from proactive security scanning and reduced risk of vulnerabilities in production."
+}

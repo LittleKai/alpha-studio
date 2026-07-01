@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-cli",
+  "slug": "claude-skills-cli",
+  "name": "browser-use",
+  "headline": "CLI creation for Claude Skills",
+  "short_description": "CLI for creating Claude Agent Skills with progressive disclosure validation. Built for Claude Code to use when humans ask it to create skills. Enables operations teams to automate skill creation with specific package manager commands.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "spences10",
+  "install_command": "git clone https://github.com/spences10/claude-skills-cli.git",
+  "source_repo_url": "https://github.com/spences10/claude-skills-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "agentic-ai",
+    "claude",
+    "cli",
+    "agent"
+  ],
+  "sections": {
+    "overview": "claude-skills-cli is a command-line tool designed for Claude Code to programmatically generate Claude Agent Skills with built-in progressive disclosure validation. It enforces a three-level skill architecture that optimizes token usage by loading metadata, documentation, and references on-demand rather than all at once. The CLI provides initialization, validation, and packaging commands with configurable strictness modes, helping teams standardize skill structure and prevent oversized documentation. It includes activation hooks that improve skill reliability in Claude Code, addressing the common issue of skills failing to auto-activate without explicit instructions.\nAutomating skill creation for API client integrations via Claude Code prompts\nValidating skill documentation structure before deployment to Claude.ai\nEnsuring consistent progressive disclosure across multiple team-created skills\nPackaging and uploading validated skills to Claude.ai",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spences10/claude-skills-cli`",
+    "usage": "```\nUse the claude-skills-cli to create a new skill for [SKILL_NAME] that validates user inputs progressively. The skill should include [INPUT_FIELDS] and enforce [VALIDATION_RULES]. Generate the skill files in the ./skills/[SKILL_NAME] directory. After creation, run the validation tests using 'claude-skills-cli test ./skills/[SKILL_NAME]'.\n```\nCopy\n\n```\n```\n✅ Skill 'inventory-audit' created successfully in ./skills/inventory-audit\n\n📁 Generated files:\n- ./skills/inventory-audit/skill.json\n- ./skills/inventory-audit/prompt_template.md\n- ./skills/inventory-audit/validation_tests.json\n- ./skills/inventory-audit/README.md\n\n🔍 Validation results:\n✅ All 12 progressive disclosure tests passed\n✅ Input field 'product_id' validated against SKU format\n✅ Input field 'quantity' validated against warehouse limits\n✅ Input field 'location' cross-validated with warehouse zones\n✅ CLI command 'claude-skills-cli publish ./skills/inventory-audit' ready for deployment\n\n📊 Skill metrics:\n- Input fields: 3 (product_id, quantity, location)\n- Validation rules: 5 (format, range, cross-reference, required, conditional)\n- Progressive steps: 4 (init → validate → confirm → submit)\n- Estimated skill size: 1.2MB\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-cli#main-content",
+      "claude-skills-cli#overview",
+      "claude-skills-cli#setup",
+      "claude-skills-cli#examples",
+      "claude-skills-cli#tools",
+      "claude-skills-cli#mcp",
+      "claude-skills-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-skills-cli is a command-line tool designed for Claude Code to programmatically generate Claude Agent Skills with built-in progressive disclosure validation. It enforces a three-level skill architecture that optimizes token usage by loading metadata, documentation, and references on-demand rather than all at once. The CLI provides initialization, validation, and packaging commands with configurable strictness modes, helping teams standardize skill structure and prevent oversized documentation. It includes activation hooks that improve skill reliability in Claude Code, addressing the common issue of skills failing to auto-activate without explicit instructions.\nAutomating skill creation for API client integrations via Claude Code prompts\nValidating skill documentation structure before deployment to Claude.ai\nEnsuring consistent progressive disclosure across multiple team-created skills\nPackaging and uploading validated skills to Claude.ai",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/spences10/claude-skills-cli`",
+    "usage_vi": "```\nUse the claude-skills-cli to create a new skill for [SKILL_NAME] that validates user inputs progressively. The skill should include [INPUT_FIELDS] and enforce [VALIDATION_RULES]. Generate the skill files in the ./skills/[SKILL_NAME] directory. After creation, run the validation tests using 'claude-skills-cli test ./skills/[SKILL_NAME]'.\n```\nCopy\n\n```\n```\n✅ Skill 'inventory-audit' created successfully in ./skills/inventory-audit\n\n📁 Generated files:\n- ./skills/inventory-audit/skill.json\n- ./skills/inventory-audit/prompt_template.md\n- ./skills/inventory-audit/validation_tests.json\n- ./skills/inventory-audit/README.md\n\n🔍 Validation results:\n✅ All 12 progressive disclosure tests passed\n✅ Input field 'product_id' validated against SKU format\n✅ Input field 'quantity' validated against warehouse limits\n✅ Input field 'location' cross-validated with warehouse zones\n✅ CLI command 'claude-skills-cli publish ./skills/inventory-audit' ready for deployment\n\n📊 Skill metrics:\n- Input fields: 3 (product_id, quantity, location)\n- Validation rules: 5 (format, range, cross-reference, required, conditional)\n- Progressive steps: 4 (init → validate → confirm → submit)\n- Estimated skill size: 1.2MB\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:32:48.047887Z",
+    "http_status": 200,
+    "content_hash": "f83a1a12b39879ab1248e01210917ee4a9ee634a50a21b264b9cc3549e217aea",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-cli.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CLI creation for Claude Skills",
+  "short_description_vi": "CLI for creating Claude Agent Skills with progressive disclosure validation. Built for Claude Code to use when humans ask it to create skills. Enables operations teams to automate skill creation with specific package manager commands."
+}

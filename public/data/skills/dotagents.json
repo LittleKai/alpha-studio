@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dotagents",
+  "slug": "dotagents",
+  "name": "dotagents",
+  "headline": "dotagents - AI Tool Management",
+  "short_description": "dotagents is a centralized repository for all AI hooks, commands, skills, and AGENT/CLAUDE.md files. It provides a single source of truth for operations teams to manage and deploy AI tools efficiently. The skill integrates with Claude and is designed for safe, repeatable execution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "iannuttall",
+  "install_command": "git clone https://github.com/iannuttall/dotagents.git",
+  "source_repo_url": "https://github.com/iannuttall/dotagents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "dotagents provides a CLI-based repository for managing AI hooks, commands, and skills in a canonical .agents directory structure. It supports integration with Claude, Cursor, Gemini CLI, and other AI tools through standardized AGENT/CLAUDE.md files and symlink management. The tool includes features for skills and marketplace installation, migration wizards with backups, and comprehensive testing to ensure safe, repeatable execution. Teams use dotagents to maintain a single source of truth for AI agent configurations across their projects, eliminating scattered tool definitions and enabling consistent deployments.\nEasily manage and link AI tool configurations across multiple projects.\nCreate and maintain a centralized repository for commands and skills used by various AI clients.\nQuickly repair or update symlinks for AI tools without manual intervention.\nAutomate the backup process of your AI configurations to ensure data safety.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iannuttall/dotagents`",
+    "usage": "```\nUse dotagents to deploy and manage the AI skill '[SKILL_NAME]' for [TEAM/PROJECT]. Ensure the deployment follows the [SAFETY_PROTOCOLS] outlined in the AGENT/CLAUDE.md file. Verify the skill's configuration in the dotagents repository and trigger a test run with [TEST_INPUT]. Report any errors or deviations from expected behavior.\n```\nCopy\n\n```\nThe dotagents repository was queried for the latest version of the 'customer_support_automation' skill. The AGENT/CLAUDE.md file specified a safety protocol requiring input validation and rate limiting. The skill was deployed to the 'support-team' project with the following configuration:\n\n```yaml\nconfig:\n  max_concurrent_requests: 5\n  input_validation: strict\n  rate_limit: 100 requests/minute\n```\n\nA test run was executed with the input: 'Resolve customer ticket #12345 for John Doe with issue: delayed order #789'. The skill processed the request and returned:\n\n```json\n{\n  \"status\": \"completed\",\n  \"actions_taken\": [\n    {\n      \"action\": \"query_order_status\",\n      \"parameters\": { \"order_id\": \"789\" },\n      \"result\": \"Order shipped on 2024-05-15, tracking #TRK123456\"\n    },\n    {\n      \"action\": \"update_ticket\",\n      \"parameters\": { \n        \"ticket_id\": \"12345\",\n        \"status\": \"resolved\",\n        \"resolution\": \"Order shipped on 2024-05-15. Tracking number provided to customer.\"\n      },\n      \"result\": \"Ticket updated successfully\"\n    }\n  ],\n  \"next_steps\": [\n    \"Notify customer via email with tracking details\",\n    \"Log resolution in CRM under account #JDOE\"\n  ]\n}\n```\n\nNo errors were detected during the test run. The skill is now ready for production use.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dotagents#main-content",
+      "dotagents#overview",
+      "dotagents#setup",
+      "dotagents#examples",
+      "dotagents#tools",
+      "dotagents#mcp",
+      "dotagents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "dotagents cung cấp một repository dạng CLI để quản lý các AI hook, command và skill theo cấu trúc thư mục chuẩn .agents. Nó hỗ trợ tích hợp với Claude, Cursor, Gemini CLI và các AI tool khác thông qua các file AGENT/CLAUDE.md tiêu chuẩn và quản lý symlink. Công cụ này bao gồm các tính năng cài đặt skill và marketplace, trình hướng dẫn di chuyển (migration wizard) kèm backup, cùng quy trình kiểm thử toàn diện để đảm bảo thực thi an toàn, nhất quán. Các đội ngũ sử dụng dotagents để duy trì một single source of truth cho cấu hình AI agent trên toàn bộ dự án, loại bỏ các định nghĩa công cụ phân tán và cho phép triển khai đồng bộ.\nDễ dàng quản lý và liên kết cấu hình AI tool trên nhiều dự án khác nhau.\nTạo và duy trì một repository tập trung cho các command và skill được sử dụng bởi nhiều AI client khác nhau.\nNhanh chóng sửa chữa hoặc cập nhật symlink cho các AI tool mà không cần can thiệp thủ công.\nTự động hóa quy trình backup cấu hình AI để đảm bảo an toàn dữ liệu.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/iannuttall/dotagents`",
+    "usage_vi": "```\nSử dụng dotagents để triển khai và quản lý AI skill '[SKILL_NAME]' cho [TEAM/PROJECT]. Đảm bảo quá trình triển khai tuân thủ các [SAFETY_PROTOCOLS] được mô tả trong file AGENT/CLAUDE.md. Kiểm tra cấu hình của skill trong repository dotagents và kích hoạt một lượt chạy thử nghiệm với [TEST_INPUT]. Báo cáo mọi lỗi hoặc sai lệch so với hành vi dự kiến.\n```\nCopy\n\n```\nRepository dotagents đã được truy vấn để lấy phiên bản mới nhất của skill 'customer_support_automation'. File AGENT/CLAUDE.md đã chỉ định một giao thức an toàn (safety protocol) yêu cầu xác thực đầu vào (input validation) và giới hạn tần suất (rate limiting). Skill đã được triển khai cho dự án 'support-team' với cấu hình sau:\n\n```yaml\nconfig:\n  max_concurrent_requests: 5\n  input_validation: strict\n  rate_limit: 100 requests/minute\n```\n\nMột lượt chạy thử nghiệm đã được thực thi với đầu vào: 'Resolve customer ticket #12345 for John Doe with issue: delayed order #789'. Skill đã xử lý yêu cầu và trả về:\n\n```json\n{\n  \"status\": \"completed\",\n  \"actions_taken\": [\n    {\n      \"action\": \"query_order_status\",\n      \"parameters\": { \"order_id\": \"789\" },\n      \"result\": \"Order shipped on 2024-05-15, tracking #TRK123456\"\n    },\n    {\n      \"action\": \"update_ticket\",\n      \"parameters\": { \n        \"ticket_id\": \"12345\",\n        \"status\": \"resolved\",\n        \"resolution\": \"Order shipped on 2024-05-15. Tracking number provided to customer.\"\n      },\n      \"result\": \"Ticket updated successfully\"\n    }\n  ],\n  \"next_steps\": [\n    \"Notify customer via email with tracking details\",\n    \"Log resolution in CRM under account #JDOE\"\n  ]\n}\n```\n\nKhông phát hiện lỗi nào trong quá trình chạy thử nghiệm. Skill hiện đã sẵn sàng để đưa vào vận hành (production).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:51:30.639703Z",
+    "http_status": 200,
+    "content_hash": "f411e397cd295ff73aa652659ac778e608f6b3fcc8084b74655c4e8be3541491",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dotagents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\dotagents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "dotagents - Quản lý AI Tool",
+  "short_description_vi": "dotagents là một repository tập trung cho tất cả các AI hook, command, skill và file AGENT/CLAUDE.md. Nó cung cấp một single source of truth giúp các đội ngũ vận hành quản lý và triển khai các AI tool một cách hiệu quả. Skill này tích hợp với Claude và được thiết kế để thực thi an toàn, lặp lại một cách nhất quán."
+}

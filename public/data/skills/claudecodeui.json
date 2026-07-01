@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudecodeui",
+  "slug": "claudecodeui",
+  "name": "browser-use",
+  "headline": "claudecodeui: Manage Claude Code Sessions",
+  "short_description": "Use Claude Code, Cursor CLI or Codex on mobile and web with CloudCLI (aka Claude Code UI). CloudCLI is a free open source webui/GUI that helps you manage your Claude Code session and projects remotely",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "siteboon",
+  "install_command": "git clone https://github.com/siteboon/claudecodeui.git",
+  "source_repo_url": "https://github.com/siteboon/claudecodeui",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "claude-api",
+    "claude-code-ui",
+    "mobile-first",
+    "claude",
+    "react",
+    "gui",
+    "anthropic-claude",
+    "ui",
+    "anthropic-ai",
+    "claudecode"
+  ],
+  "sections": {
+    "overview": "The claudecodeui skill is a powerful automation tool designed to enhance the management of Claude Code sessions and projects, both on mobile and web platforms. This skill leverages CloudCLI, a free open-source web interface that provides a graphical user interface (GUI) for users to interact with their Claude Code environment seamlessly. By integrating with Cursor CLI and Codex, claudecodeui allows users to switch between these tools effortlessly, making it a versatile solution for developers and AI practitioners alike. One of the key benefits of using claudecodeui is its ability to streamline workflows. Users can manage multiple Claude Code sessions from a single interface, edit and save files directly within an interactive file explorer, and utilize an integrated shell terminal for real-time command execution. This centralized approach not only simplifies project management but also enhances productivity by allowing users to track project history and manage tasks with AI integration. Although the exact time savings are currently unknown, the efficiency gained from using a single interface is significant, especially for those juggling multiple projects. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their workflow automation processes. With its intermediate complexity, claudecodeui requires approximately 30 minutes to implement, making it accessible for those with some technical expertise. The skill's design caters to a variety of use cases, such as managing collaborative projects, conducting real-time testing, and enhancing productivity through AI-driven task management. Incorporating claudecodeui into an AI-first workflow can significantly improve how teams interact with their development environments. By providing a cohesive platform for managing Claude Code, Cursor CLI, and Codex, this skill empowers users to focus on building and deploying AI automation solutions without the hassle of switching between multiple tools. As AI continues to play a critical role in various industries, adopting such automation skills will be essential for staying competitive in the rapidly evolving tech landscape.\nManage multiple Claude Code sessions and projects from a single interface.\nEdit and save files directly within the interactive file explorer.\nUtilize the integrated shell terminal for real-time command execution.\nTrack project history and manage tasks with AI integration for enhanced productivity.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/siteboon/claudecodeui`",
+    "usage": "```\nI'm working on a [PROJECT_TYPE] project in [PROGRAMMING_LANGUAGE]. I need to [DESCRIBE_TASK] using CloudCLI. Here's my current code: [CODE_SNIPPET]. Please help me [SPECIFIC_ACTION] and explain the changes.\n```\nCopy\n\n```\nBased on your request to improve the user authentication flow in your React.js project, I've made the following changes to your code:\n\n1. Added JWT validation middleware to your server-side routes:\n```javascript\nconst jwt = require('jsonwebtoken');\n\nfunction authenticateToken(req, res, next) {\n  const authHeader = req.headers['authorization'];\n  const token = authHeader && authHeader.split(' ')[1];\n  if (token == null) return res.sendStatus(401);\n  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {\n    if (err) return res.sendStatus(403);\n    req.user = user;\n    next();\n  });\n}\n```\n\n2. Created a new protected route example:\n```javascript\nrouter.get('/dashboard', authenticateToken, (req, res) => {\n  res.json({ message: 'Welcome to your dashboard', user: req.user });\n});\n```\n\n3. Updated your client-side login function to handle the token:\n```javascript\nconst login = async (email, password) => {\n  const response = await fetch('/login', {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify({ email, password }),\n  });\n  const data = await response.json();\n  if (data.token) {\n    localStorage.setItem('token', data.token);\n  }\n  return data;\n};\n```\n\nThese changes will help secure your application by implementing proper JWT authentication. The token will be stored in localStorage on the client side and sent with each request to protected routes. Remember to set up your ACCESS_TOKEN_SECRET in your environment variables for this to work properly.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudecodeui#main-content",
+      "claudecodeui#overview",
+      "claudecodeui#setup",
+      "claudecodeui#examples",
+      "claudecodeui#tools",
+      "claudecodeui#mcp",
+      "claudecodeui#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The claudecodeui skill is a powerful automation tool designed to enhance the management of Claude Code sessions and projects, both on mobile and web platforms. This skill leverages CloudCLI, a free open-source web interface that provides a graphical user interface (GUI) for users to interact with their Claude Code environment seamlessly. By integrating with Cursor CLI and Codex, claudecodeui allows users to switch between these tools effortlessly, making it a versatile solution for developers and AI practitioners alike. One of the key benefits of using claudecodeui is its ability to streamline workflows. Users can manage multiple Claude Code sessions from a single interface, edit and save files directly within an interactive file explorer, and utilize an integrated shell terminal for real-time command execution. This centralized approach not only simplifies project management but also enhances productivity by allowing users to track project history and manage tasks with AI integration. Although the exact time savings are currently unknown, the efficiency gained from using a single interface is significant, especially for those juggling multiple projects. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to optimize their workflow automation processes. With its intermediate complexity, claudecodeui requires approximately 30 minutes to implement, making it accessible for those with some technical expertise. The skill's design caters to a variety of use cases, such as managing collaborative projects, conducting real-time testing, and enhancing productivity through AI-driven task management. Incorporating claudecodeui into an AI-first workflow can significantly improve how teams interact with their development environments. By providing a cohesive platform for managing Claude Code, Cursor CLI, and Codex, this skill empowers users to focus on building and deploying AI automation solutions without the hassle of switching between multiple tools. As AI continues to play a critical role in various industries, adopting such automation skills will be essential for staying competitive in the rapidly evolving tech landscape.\nManage multiple Claude Code sessions and projects from a single interface.\nEdit and save files directly within the interactive file explorer.\nUtilize the integrated shell terminal for real-time command execution.\nTrack project history and manage tasks with AI integration for enhanced productivity.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/siteboon/claudecodeui`",
+    "usage_vi": "```\nI'm working on a [PROJECT_TYPE] project in [PROGRAMMING_LANGUAGE]. I need to [DESCRIBE_TASK] using CloudCLI. Here's my current code: [CODE_SNIPPET]. Please help me [SPECIFIC_ACTION] and explain the changes.\n```\nCopy\n\n```\nBased on your request to improve the user authentication flow in your React.js project, I've made the following changes to your code:\n\n1. Added JWT validation middleware to your server-side routes:\n```javascript\nconst jwt = require('jsonwebtoken');\n\nfunction authenticateToken(req, res, next) {\n  const authHeader = req.headers['authorization'];\n  const token = authHeader && authHeader.split(' ')[1];\n  if (token == null) return res.sendStatus(401);\n  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {\n    if (err) return res.sendStatus(403);\n    req.user = user;\n    next();\n  });\n}\n```\n\n2. Created a new protected route example:\n```javascript\nrouter.get('/dashboard', authenticateToken, (req, res) => {\n  res.json({ message: 'Welcome to your dashboard', user: req.user });\n});\n```\n\n3. Updated your client-side login function to handle the token:\n```javascript\nconst login = async (email, password) => {\n  const response = await fetch('/login', {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify({ email, password }),\n  });\n  const data = await response.json();\n  if (data.token) {\n    localStorage.setItem('token', data.token);\n  }\n  return data;\n};\n```\n\nThese changes will help secure your application by implementing proper JWT authentication. The token will be stored in localStorage on the client side and sent with each request to protected routes. Remember to set up your ACCESS_TOKEN_SECRET in your environment variables for this to work properly.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:00:47.067797Z",
+    "http_status": 200,
+    "content_hash": "f921378260f5c0192ed8f5b1d22ee1f1bdca425f592f49f4e77ce5cca3a291d6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecodeui.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecodeui.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claudecodeui: Manage Claude Code Sessions",
+  "short_description_vi": "Use Claude Code, Cursor CLI or Codex on mobile and web with CloudCLI (aka Claude Code UI). CloudCLI is a free open source webui/GUI that helps you manage your Claude Code session and projects remotely"
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/solidity-auditor",
+  "slug": "solidity-auditor",
+  "name": "Related Skills",
+  "headline": "Solidity Auditor: Smart Contract Security",
+  "short_description": "The solidity-auditor skill facilitates parallelized auditing of smart contracts for security vulnerabilities. It's designed for developers and auditors aiming to ensure the security of Solidity code before deployment.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "pashov",
+  "install_command": "git clone https://github.com/pashov/skills",
+  "source_repo_url": "https://github.com/pashov/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "security-audit",
+    "solidity",
+    "auditor"
+  ],
+  "sections": {
+    "overview": "Solidity Auditor is a security agent that scans smart contracts for vulnerabilities using parallelized analysis, delivering findings in minutes rather than weeks. Built for Solidity developers, security researchers, and teams who need rapid security checks before deployment or commit. The tool targets specific contracts to maximize context density and catch high-confidence vulnerabilities through repeated passes. While not a replacement for formal audits, it provides essential pre-review screening to identify issues early in development. Run it on active contracts to catch security problems before they reach production.\nAudit smart contracts for security flaws\nGenerate markdown reports for audit findings\nSkip unnecessary files during audits\n**File:** `TokenSale.sol`\n**Purpose:** ERC-20 token sale with staking functionality\n**Lines Audited:** 1-156\n\n---",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/pashov/skills --skill solidity-auditor`\n`git clone https://github.com/pashov/skills`",
+    "usage": "```\nAct as a Solidity security auditor. Review the following Solidity smart contract code for vulnerabilities, gas inefficiencies, and best practice violations. Focus on reentrancy, overflow/underflow, access control, and upgradeability risks. Provide a detailed report with line numbers, severity ratings (Critical/High/Medium/Low), and suggested fixes. \n\nContract: [SOLIDITY_CODE]\n\nAdditional context: [CONTRACT_PURPOSE_OR_ENVIRONMENT]\n```\nCopy\n\n```\n# Solidity Security Audit Report",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "solidity-auditor#main-content",
+      "solidity-auditor#overview",
+      "solidity-auditor#setup",
+      "solidity-auditor#examples",
+      "solidity-auditor#related"
+    ],
+    "overview_vi": "Solidity Auditor is a security agent that scans smart contracts for vulnerabilities using parallelized analysis, delivering findings in minutes rather than weeks. Built for Solidity developers, security researchers, and teams who need rapid security checks before deployment or commit. The tool targets specific contracts to maximize context density and catch high-confidence vulnerabilities through repeated passes. While not a replacement for formal audits, it provides essential pre-review screening to identify issues early in development. Run it on active contracts to catch security problems before they reach production.\nAudit smart contracts for security flaws\nGenerate markdown reports for audit findings\nSkip unnecessary files during audits\n**File:** `TokenSale.sol`\n**Purpose:** ERC-20 token sale with staking functionality\n**Lines Audited:** 1-156\n\n---",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/pashov/skills --skill solidity-auditor`\n`git clone https://github.com/pashov/skills`",
+    "usage_vi": "```\nAct as a Solidity security auditor. Review the following Solidity smart contract code for vulnerabilities, gas inefficiencies, and best practice violations. Focus on reentrancy, overflow/underflow, access control, and upgradeability risks. Provide a detailed report with line numbers, severity ratings (Critical/High/Medium/Low), and suggested fixes. \n\nContract: [SOLIDITY_CODE]\n\nAdditional context: [CONTRACT_PURPOSE_OR_ENVIRONMENT]\n```\nCopy\n\n```\n# Solidity Security Audit Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:07:14.542797Z",
+    "http_status": 200,
+    "content_hash": "48b62e3478cd244b6093d1b1724d2cb064d8e9670c24d3b35a0e094aa6a05b22",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\solidity-auditor.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\solidity-auditor.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Solidity Auditor: Smart Contract Security",
+  "short_description_vi": "The solidity-auditor skill facilitates parallelized auditing of smart contracts for security vulnerabilities. It's designed for developers and auditors aiming to ensure the security of Solidity code before deployment."
+}

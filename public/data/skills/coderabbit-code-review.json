@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/coderabbit-code-review",
+  "slug": "coderabbit-code-review",
+  "name": "CodeRabbit Code Review",
+  "headline": "CodeRabbit Code Review: AI Bug Detection",
+  "short_description": "This skill enables developers to perform AI-powered code reviews, identifying bugs, security vulnerabilities, and quality risks in their code. It can operate autonomously or be triggered explicitly, making it suitable for developers looking to enhance code quality and security.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "coderabbitai",
+  "install_command": "git clone https://github.com/coderabbitai/skills",
+  "source_repo_url": "https://github.com/coderabbitai/skills",
+  "works_with": [
+    "GitHub Copilot",
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "coderabbit",
+    "code-review",
+    "review",
+    "code"
+  ],
+  "sections": {
+    "overview": "CodeRabbit Code Review is an agent-native skill that integrates AI-powered code analysis into your coding workflow. It automatically detects bugs, security vulnerabilities, and quality risks in your code before you merge. The skill works across 35+ coding agents including Claude Code, Cursor, GitHub Copilot, and others, operating either autonomously or when explicitly triggered. Simply ask your agent to review your code, and it will analyze your changes, group findings by severity, and optionally fix issues and re-review. Installation requires the CodeRabbit CLI and takes minutes to set up globally or per-project.\nIdentify bugs and security vulnerabilities in code changes\nGroup findings by severity for better prioritization\nConduct code reviews on staged or committed changes\nAutonomously fix issues and re-run reviews to verify",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/coderabbitai/skills --skill code-review`\n`git clone https://github.com/coderabbitai/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "coderabbit-code-review#main-content",
+      "coderabbit-code-review#overview",
+      "coderabbit-code-review#setup",
+      "coderabbit-code-review#examples",
+      "coderabbit-code-review#tools",
+      "coderabbit-code-review#mcp",
+      "coderabbit-code-review#related"
+    ],
+    "overview_vi": "CodeRabbit Code Review là một agent-native skill giúp tích hợp tính năng phân tích mã nguồn bằng AI vào workflow lập trình của bạn. Nó tự động phát hiện các bug, lỗ hổng bảo mật và rủi ro về chất lượng trong code của bạn trước khi merge. Skill này tương thích với hơn 35 coding agent bao gồm Claude Code, Cursor, GitHub Copilot và nhiều công cụ khác, hoạt động tự động hoặc khi được kích hoạt trực tiếp. Chỉ cần yêu cầu agent review code của bạn, nó sẽ phân tích các thay đổi, phân nhóm kết quả phát hiện theo mức độ nghiêm trọng, và hỗ trợ tự động sửa lỗi cũng như review lại. Việc cài đặt yêu cầu CodeRabbit CLI và chỉ mất vài phút để setup trên toàn hệ thống hoặc theo từng dự án.\n\nPhát hiện các bug và lỗ hổng bảo mật trong các thay đổi của code\nNhóm các kết quả phát hiện theo mức độ nghiêm trọng để dễ dàng ưu tiên xử lý\nThực hiện code review trên các thay đổi đã staged hoặc committed\nTự động sửa lỗi và chạy lại review để xác minh",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/coderabbitai/skills --skill code-review`\n`git clone https://github.com/coderabbitai/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nTham khảo repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:06:42.333161Z",
+    "http_status": 200,
+    "content_hash": "5d134d805ea392a138268573420c0defdaefe5db1a4434d0009d3f4cab642717",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\coderabbit-code-review.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\coderabbit-code-review.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CodeRabbit Code Review: Phát hiện lỗi bằng AI",
+  "short_description_vi": "Skill này giúp lập trình viên thực hiện code review bằng AI nhằm phát hiện các bug, lỗ hổng bảo mật và rủi ro về chất lượng mã nguồn. Công cụ này có thể hoạt động tự động hoặc được kích hoạt trực tiếp, là lựa chọn lý tưởng cho các lập trình viên muốn nâng cao chất lượng code và tính bảo mật."
+}

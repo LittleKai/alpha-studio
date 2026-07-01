@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nanobrowser",
+  "slug": "nanobrowser",
+  "name": "slack-gif-creator",
+  "headline": "Nanobrowser: AI-Powered Web Automation Tool",
+  "short_description": "Nanobrowser is an open-source Chrome extension that enables AI-powered web automation through multi-agent workflows. It allows users to use their own LLM API key for enhanced automation capabilities, making it a powerful alternative to OpenAI Operator.",
+  "tier": "Gold",
+  "category": "GrowthRevOpsMarketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "nanobrowser",
+  "install_command": "claude install nanobrowser/nanobrowser",
+  "source_repo_url": "https://github.com/nanobrowser/nanobrowser",
+  "works_with": [
+    "ChatGPTClaude"
+  ],
+  "tags": [
+    "ai-tools",
+    "automation",
+    "chrome-extension",
+    "web-automation",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "Nanobrowser is an open-source Chrome extension designed for AI-powered web automation through multi-agent workflows. It allows users to bring their own LLM API key, providing flexibility and control over automation capabilities without relying on a single provider. The extension integrates directly with Chrome, enabling AI agents to interact with web pages, navigate complex workflows, and automate repetitive tasks. By supporting multi-agent architectures, Nanobrowser can handle sophisticated automation scenarios that require coordination between multiple AI processes. It serves as a powerful alternative for users seeking self-hosted or provider-agnostic web automation solutions.\nAutomate data scraping from multiple websites to gather insights for market research.\nExecute multi-step workflows for lead generation, including form submissions and email follow-ups.\nIntegrate with CRM systems to automate updates and maintain accurate customer records.\nSchedule regular data extraction tasks to keep your datasets up-to-date without manual intervention.",
+    "setup": "Terminal\nCopy\n`claude install nanobrowser/nanobrowser`\n`git clone https://github.com/nanobrowser/nanobrowser`",
+    "usage": "```\nUse Nanobrowser to automate a multi-step workflow for [TASK]. For example, 'Research and compile a list of top 10 [PRODUCT] suppliers, then compare their pricing and delivery times, and finally summarize the findings in a table.' Specify the AI model to use (e.g., GPT-4) and any specific instructions for each step.\n```\nCopy\n\n```\nBased on your request to automate the process of finding and comparing suppliers for office chairs, here's the workflow I've set up using Nanobrowser with GPT-4:\n\n1. **Research Phase**: The AI agent searched for 'top 10 office chair suppliers' using Google and compiled a list of 10 suppliers with their websites and contact information.\n2. **Data Collection**: For each supplier, the agent visited their website, extracted pricing for the 'Ergonomic Executive Chair' model, and noted delivery times ranging from 3 to 15 business days.\n3. **Comparison**: The agent compared the data and identified the top 3 suppliers based on price and delivery speed.\n4. **Summary**: The final output is a table with supplier names, prices, delivery times, and a brief note on customer reviews.\n\nHere's the summary table:\n\n| Supplier Name       | Price (USD) | Delivery Time | Customer Rating |\n|---------------------|-------------|----------------|-----------------|\n| Ergonomic Solutions | $299.99      | 5 business days | 4.8/5 (1,200 reviews) |\n| Office Furnishings  | $319.00      | 3 business days | 4.7/5 (850 reviews)  |\n| Chair Experts      | $279.50      | 7 business days | 4.6/5 (920 reviews)  |\n\nThe agent also noted that Ergonomic Solutions offers free shipping and a 30-day return policy, which might be valuable for your decision-making process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, Claude"
+    ],
+    "related_skills": [
+      "nanobrowser#main-content",
+      "nanobrowser#overview",
+      "nanobrowser#setup",
+      "nanobrowser#examples",
+      "nanobrowser#tools",
+      "nanobrowser#mcp",
+      "nanobrowser#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Nanobrowser is an open-source Chrome extension designed for AI-powered web automation through multi-agent workflows. It allows users to bring their own LLM API key, providing flexibility and control over automation capabilities without relying on a single provider. The extension integrates directly with Chrome, enabling AI agents to interact with web pages, navigate complex workflows, and automate repetitive tasks. By supporting multi-agent architectures, Nanobrowser can handle sophisticated automation scenarios that require coordination between multiple AI processes. It serves as a powerful alternative for users seeking self-hosted or provider-agnostic web automation solutions.\nAutomate data scraping from multiple websites to gather insights for market research.\nExecute multi-step workflows for lead generation, including form submissions and email follow-ups.\nIntegrate with CRM systems to automate updates and maintain accurate customer records.\nSchedule regular data extraction tasks to keep your datasets up-to-date without manual intervention.",
+    "setup_vi": "Terminal\nCopy\n`claude install nanobrowser/nanobrowser`\n`git clone https://github.com/nanobrowser/nanobrowser`",
+    "usage_vi": "```\nUse Nanobrowser to automate a multi-step workflow for [TASK]. For example, 'Research and compile a list of top 10 [PRODUCT] suppliers, then compare their pricing and delivery times, and finally summarize the findings in a table.' Specify the AI model to use (e.g., GPT-4) and any specific instructions for each step.\n```\nCopy\n\n```\nBased on your request to automate the process of finding and comparing suppliers for office chairs, here's the workflow I've set up using Nanobrowser with GPT-4:\n\n1. **Research Phase**: The AI agent searched for 'top 10 office chair suppliers' using Google and compiled a list of 10 suppliers with their websites and contact information.\n2. **Data Collection**: For each supplier, the agent visited their website, extracted pricing for the 'Ergonomic Executive Chair' model, and noted delivery times ranging from 3 to 15 business days.\n3. **Comparison**: The agent compared the data and identified the top 3 suppliers based on price and delivery speed.\n4. **Summary**: The final output is a table with supplier names, prices, delivery times, and a brief note on customer reviews.\n\nHere's the summary table:\n\n| Supplier Name       | Price (USD) | Delivery Time | Customer Rating |\n|---------------------|-------------|----------------|-----------------|\n| Ergonomic Solutions | $299.99      | 5 business days | 4.8/5 (1,200 reviews) |\n| Office Furnishings  | $319.00      | 3 business days | 4.7/5 (850 reviews)  |\n| Chair Experts      | $279.50      | 7 business days | 4.6/5 (920 reviews)  |\n\nThe agent also noted that Ergonomic Solutions offers free shipping and a 30-day return policy, which might be valuable for your decision-making process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:44:23.322615Z",
+    "http_status": 200,
+    "content_hash": "db241f15dff714c639cdd1f7640b43bce809e52fea9029cd252c87bc1da79c96",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nanobrowser.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nanobrowser.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Nanobrowser: AI-Powered Web Automation Tool",
+  "short_description_vi": "Nanobrowser is an open-source Chrome extension that enables AI-powered web automation through multi-agent workflows. It allows users to use their own LLM API key for enhanced automation capabilities, making it a powerful alternative to OpenAI Operator."
+}

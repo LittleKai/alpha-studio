@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-audit",
+  "slug": "cc-audit",
+  "name": "browser-use",
+  "headline": "AI-free static security scanner for Claude",
+  "short_description": "AI-free static security scanner for Claude Code artifacts. Detects data exfiltration, prompt injection, and supply chain risks. Works with Skills, Hooks, and MCP configs. Provides deterministic, reproducible results for operations teams.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "ryo-ebata",
+  "install_command": "git clone https://github.com/ryo-ebata/cc-audit.git",
+  "source_repo_url": "https://github.com/ryo-ebata/cc-audit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills",
+    "anthropic",
+    "mcp-server",
+    "static-analysis",
+    "rust",
+    "security-audit",
+    "hooks",
+    "cli"
+  ],
+  "sections": {
+    "overview": "cc-audit is a deterministic static security scanner designed to audit Claude Code skills, hooks, MCP servers, and related artifacts before installation. It detects over 100 security vulnerabilities including data exfiltration via environment variables, privilege escalation attempts, persistence mechanisms, prompt injection vectors, and overpermissioned tool access. The tool works offline without AI dependencies, providing reproducible results suitable for operations teams and security reviews. It supports multiple output formats (JSON, HTML, SARIF, Markdown), integrates with CI/CD pipelines, and can scan GitHub repositories directly to evaluate ecosystem artifacts from marketplaces.\nPre-installation security screening of third-party Claude Code skills before enabling them\nAutomated CI/CD security gates to block artifacts with critical vulnerabilities\nRisk scoring and compliance reporting for enterprise Claude Code deployments\nDevelopment workflow monitoring with watch mode during skill creation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryo-ebata/cc-audit`",
+    "usage": "```\nRun a security audit on the following Claude Code artifact: [ARTIFACT]. Check for data exfiltration, prompt injection, and supply chain risks. Provide a detailed report with findings and recommendations. The artifact is used by [COMPANY] in the [INDUSTRY] sector.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-audit#main-content",
+      "cc-audit#overview",
+      "cc-audit#setup",
+      "cc-audit#examples",
+      "cc-audit#tools",
+      "cc-audit#mcp",
+      "cc-audit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cc-audit is a deterministic static security scanner designed to audit Claude Code skills, hooks, MCP servers, and related artifacts before installation. It detects over 100 security vulnerabilities including data exfiltration via environment variables, privilege escalation attempts, persistence mechanisms, prompt injection vectors, and overpermissioned tool access. The tool works offline without AI dependencies, providing reproducible results suitable for operations teams and security reviews. It supports multiple output formats (JSON, HTML, SARIF, Markdown), integrates with CI/CD pipelines, and can scan GitHub repositories directly to evaluate ecosystem artifacts from marketplaces.\nPre-installation security screening of third-party Claude Code skills before enabling them\nAutomated CI/CD security gates to block artifacts with critical vulnerabilities\nRisk scoring and compliance reporting for enterprise Claude Code deployments\nDevelopment workflow monitoring with watch mode during skill creation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ryo-ebata/cc-audit`",
+    "usage_vi": "```\nRun a security audit on the following Claude Code artifact: [ARTIFACT]. Check for data exfiltration, prompt injection, and supply chain risks. Provide a detailed report with findings and recommendations. The artifact is used by [COMPANY] in the [INDUSTRY] sector.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:15:12.166474Z",
+    "http_status": 200,
+    "content_hash": "7be92c3b68684060821113444fb73dfd1af844ab8f398f517f5cb413345e4233",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-audit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-audit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI-free static security scanner for Claude",
+  "short_description_vi": "AI-free static security scanner for Claude Code artifacts. Detects data exfiltration, prompt injection, and supply chain risks. Works with Skills, Hooks, and MCP configs. Provides deterministic, reproducible results for operations teams."
+}

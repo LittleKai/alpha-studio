@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/manim-skill",
+  "slug": "manim-skill",
+  "name": "Manim Skill",
+  "headline": "Manim Skill - Create 3Blue1Brown Style Animations",
+  "short_description": "Manim skill enables agents to create 3Blue1Brown style animations. Operations teams benefit by automating complex visual explanations. Connects to Python workflows for data visualization and educational content creation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "adithya-s-k",
+  "install_command": "git clone https://github.com/adithya-s-k/manim_skill.git",
+  "source_repo_url": "https://github.com/adithya-s-k/manim_skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills"
+  ],
+  "sections": {
+    "overview": "Manim skill provides a comprehensive collection of best practices, patterns, and examples for both Manim Community Edition and ManimGL—3Blue1Brown's OpenGL-based version. It enables AI agents to generate production-ready mathematical animations with battle-tested code examples and guidelines. The skill supports two distinct workflows: Manim Community Edition for stable, well-documented community projects, and ManimGL for advanced OpenGL rendering capabilities. Teams use this skill to automate visual explanations, educational content creation, and complex mathematical visualizations without manual animation work.\nCreate educational videos that explain mathematical concepts visually.\nDevelop interactive animations for presentations or online courses.\nGenerate quick prototypes of mathematical animations for testing ideas.\nAutomate the rendering of animations based on user-defined parameters.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adithya-s-k/manim_skill`",
+    "usage": "```\nGenerate a Manim animation that visualizes [DATASET/PHENOMENON] using [STYLE: '3Blue1Brown', 'simple', 'modern'] in Python. Include [ELEMENTS: axes, moving parts, color gradients, labels] to explain [CONCEPT]. Output the full Python script ready to run with Manim in a file named [FILENAME.py].\n```\nCopy\n\n```\n```python\nfrom manim import *\n\nclass QuadraticRoots(Scene):\n    def construct(self):\n        # Set up axes and parabola\n        axes = Axes(\n            x_range=[-5, 5, 1],\n            y_range=[-1, 10, 1],\n            axis_config={\"color\": BLUE},\n        )\n        parabola = axes.plot(lambda x: x**2 - 4, color=GREEN)\n        parabola_label = axes.get_graph_label(parabola, label=\"x² - 4\")\n\n        # Highlight roots\n        roots = axes.x_axis.get_roots(parabola)\n        root_dots = VGroup(*[\n            Dot(axes.c2p(root, 0), color=RED) for root in roots\n        ])\n        root_labels = VGroup(*[\n            MathTex(f\"x={root:.1f}\").next_to(dot, DOWN)\n            for root, dot in zip(roots, root_dots)\n        ])\n\n        # Animation sequence\n        self.play(Create(axes), Write(parabola_label))\n        self.wait(0.5)\n        self.play(Create(parabola))\n        self.wait(1)\n        self.play(LaggedStart(\n            Create(root_dots),\n            Write(root_labels),\n            lag_ratio=0.5,\n            run_time=2\n        ))\n        self.wait(2)\n        self.play(FadeOut(root_labels), FadeOut(root_dots))\n\n# To render: manim -pql quadratic_roots.py QuadraticRoots\n```\n\nThis script creates a 3Blue1Brown-style animation showing the roots of the quadratic equation x² - 4 = 0. The parabola is plotted on labeled axes, with red dots marking the roots at x = -2 and x = 2. The animation follows a logical sequence: first drawing the axes and label, then the parabola, and finally highlighting the roots with their coordinates. The final output is a high-quality MP4 file showing the entire process with smooth transitions. The code is optimized for clarity and follows Manim's modern API conventions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "manim-skill#main-content",
+      "manim-skill#overview",
+      "manim-skill#setup",
+      "manim-skill#examples",
+      "manim-skill#tools",
+      "manim-skill#mcp",
+      "manim-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Manim skill provides a comprehensive collection of best practices, patterns, and examples for both Manim Community Edition and ManimGL—3Blue1Brown's OpenGL-based version. It enables AI agents to generate production-ready mathematical animations with battle-tested code examples and guidelines. The skill supports two distinct workflows: Manim Community Edition for stable, well-documented community projects, and ManimGL for advanced OpenGL rendering capabilities. Teams use this skill to automate visual explanations, educational content creation, and complex mathematical visualizations without manual animation work.\nCreate educational videos that explain mathematical concepts visually.\nDevelop interactive animations for presentations or online courses.\nGenerate quick prototypes of mathematical animations for testing ideas.\nAutomate the rendering of animations based on user-defined parameters.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adithya-s-k/manim_skill`",
+    "usage_vi": "```\nGenerate a Manim animation that visualizes [DATASET/PHENOMENON] using [STYLE: '3Blue1Brown', 'simple', 'modern'] in Python. Include [ELEMENTS: axes, moving parts, color gradients, labels] to explain [CONCEPT]. Output the full Python script ready to run with Manim in a file named [FILENAME.py].\n```\nCopy\n\n```\n```python\nfrom manim import *\n\nclass QuadraticRoots(Scene):\n    def construct(self):\n        # Set up axes and parabola\n        axes = Axes(\n            x_range=[-5, 5, 1],\n            y_range=[-1, 10, 1],\n            axis_config={\"color\": BLUE},\n        )\n        parabola = axes.plot(lambda x: x**2 - 4, color=GREEN)\n        parabola_label = axes.get_graph_label(parabola, label=\"x² - 4\")\n\n        # Highlight roots\n        roots = axes.x_axis.get_roots(parabola)\n        root_dots = VGroup(*[\n            Dot(axes.c2p(root, 0), color=RED) for root in roots\n        ])\n        root_labels = VGroup(*[\n            MathTex(f\"x={root:.1f}\").next_to(dot, DOWN)\n            for root, dot in zip(roots, root_dots)\n        ])\n\n        # Animation sequence\n        self.play(Create(axes), Write(parabola_label))\n        self.wait(0.5)\n        self.play(Create(parabola))\n        self.wait(1)\n        self.play(LaggedStart(\n            Create(root_dots),\n            Write(root_labels),\n            lag_ratio=0.5,\n            run_time=2\n        ))\n        self.wait(2)\n        self.play(FadeOut(root_labels), FadeOut(root_dots))\n\n# To render: manim -pql quadratic_roots.py QuadraticRoots\n```\n\nThis script creates a 3Blue1Brown-style animation showing the roots of the quadratic equation x² - 4 = 0. The parabola is plotted on labeled axes, with red dots marking the roots at x = -2 and x = 2. The animation follows a logical sequence: first drawing the axes and label, then the parabola, and finally highlighting the roots with their coordinates. The final output is a high-quality MP4 file showing the entire process with smooth transitions. The code is optimized for clarity and follows Manim's modern API conventions.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:23:20.549748Z",
+    "http_status": 200,
+    "content_hash": "85f5761bf394f5c2a64bdf38107baaf6e11e8c64bd1fe01e24275723fc0933a0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\manim-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\manim-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Manim Skill - Create 3Blue1Brown Style Animations",
+  "short_description_vi": "Manim skill enables agents to create 3Blue1Brown style animations. Operations teams benefit by automating complex visual explanations. Connects to Python workflows for data visualization and educational content creation."
+}

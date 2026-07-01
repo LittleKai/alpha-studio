@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/building-with-base-account",
+  "slug": "building-with-base-account",
+  "name": "Related Skills",
+  "headline": "Base Skills: AI Agent Blockchain Development",
+  "short_description": "Base Account provides a smart wallet for universal sign-on and one-tap USDC payments. It's designed for developers looking to integrate blockchain functionalities into their applications.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "base",
+  "install_command": "git clone https://github.com/base/skills",
+  "source_repo_url": "https://github.com/base/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "base",
+    "blockchain-wallets",
+    "account",
+    "building"
+  ],
+  "sections": {
+    "overview": "Base Skills are a collection of agent skills that enable AI agents to interact with the Base blockchain network. These skills allow developers to deploy smart contracts, integrate wallet authentication, process USDC payments, and manage blockchain operations programmatically. The skill set includes consolidated tools like build-on-base for complete development workflows and base-mcp for wallet integration via MCP servers. Developers can use these skills to add blockchain functionality to applications without managing low-level protocol details directly.\nIntegrate universal sign-on functionality in applications\nImplement one-tap USDC payments\nSupport multiple blockchain networks in a single wallet\nThis plan outlines the integration of Base Account’s smart wallet into GreenFarm Co-op’s farm-to-table subscription platform to enable seamless USDC payments and user onboarding.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/base/skills --skill building-with-base-account`\n`git clone https://github.com/base/skills`",
+    "usage": "```\nGenerate a Base Account smart wallet integration plan for [COMPANY_NAME]'s [INDUSTRY] application. Include steps for wallet creation, USDC payment flows, and user onboarding. Use [DATA_SOURCE] for user data and [BLOCKCHAIN_NETWORK] for deployment. Ensure the plan covers security, compliance, and scalability. Return a structured JSON response with clear actions.\n```\nCopy\n\n```\n# Base Account Smart Wallet Integration Plan for GreenFarm Co-op",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "building-with-base-account#main-content",
+      "building-with-base-account#overview",
+      "building-with-base-account#setup",
+      "building-with-base-account#examples",
+      "building-with-base-account#tools",
+      "building-with-base-account#mcp",
+      "building-with-base-account#related"
+    ],
+    "overview_vi": "Base Skills are a collection of agent skills that enable AI agents to interact with the Base blockchain network. These skills allow developers to deploy smart contracts, integrate wallet authentication, process USDC payments, and manage blockchain operations programmatically. The skill set includes consolidated tools like build-on-base for complete development workflows and base-mcp for wallet integration via MCP servers. Developers can use these skills to add blockchain functionality to applications without managing low-level protocol details directly.\nIntegrate universal sign-on functionality in applications\nImplement one-tap USDC payments\nSupport multiple blockchain networks in a single wallet\nThis plan outlines the integration of Base Account’s smart wallet into GreenFarm Co-op’s farm-to-table subscription platform to enable seamless USDC payments and user onboarding.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/base/skills --skill building-with-base-account`\n`git clone https://github.com/base/skills`",
+    "usage_vi": "```\nGenerate a Base Account smart wallet integration plan for [COMPANY_NAME]'s [INDUSTRY] application. Include steps for wallet creation, USDC payment flows, and user onboarding. Use [DATA_SOURCE] for user data and [BLOCKCHAIN_NETWORK] for deployment. Ensure the plan covers security, compliance, and scalability. Return a structured JSON response with clear actions.\n```\nCopy\n\n```\n# Base Account Smart Wallet Integration Plan for GreenFarm Co-op"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:12:37.659924Z",
+    "http_status": 200,
+    "content_hash": "6c9846ecda5e29f0405cedc614e390919244c5935b988928c915ebc125220780",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\building-with-base-account.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\building-with-base-account.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Base Skills: AI Agent Blockchain Development",
+  "short_description_vi": "Base Account provides a smart wallet for universal sign-on and one-tap USDC payments. It's designed for developers looking to integrate blockchain functionalities into their applications."
+}

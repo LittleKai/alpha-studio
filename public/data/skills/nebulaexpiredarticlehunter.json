@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/nebulaexpiredarticlehunter",
+  "slug": "nebulaexpiredarticlehunter",
+  "name": "popsicle",
+  "headline": "NebulaExpiredArticleHunter: Claude Code skill for",
+  "short_description": "Nebula Expired Article Hunter is a marketing tool you can use to get expired content from www.archive.org A.K.A. wayback machine, you could use this kind of content to grow up your blog with evergreen information, improve your marketing campaigns without investing in writing services, or whatever you imagine is useful for.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "eneiromatos",
+  "install_command": "git clone https://github.com/eneiromatos/NebulaExpiredArticleHunter.git",
+  "source_repo_url": "https://github.com/eneiromatos/NebulaExpiredArticleHunter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "article-extractor",
+    "wayback-machine-downloader",
+    "marketing-tools"
+  ],
+  "sections": {
+    "overview": "Nebula Expired Article Hunter extracts archived articles from the Wayback Machine that are no longer indexed by search engines, making them available for reuse. The tool scrapes expired domains and organizes discovered articles in a structured, user-friendly format while consuming minimal memory. Configure word count ranges, connection parameters, and output folders via a simple config.ini file. This skill is ideal for content marketers, SEO professionals, and bloggers who want to repurpose evergreen content without commissioning new writing or violating search engine guidelines.\nRecover evergreen articles from expired domains to expand blog content libraries\nSource non-indexed content for SEO-friendly website expansion without plagiarism risk\nBuild marketing campaign content from archived sources at minimal cost\nFind forgotten niche articles for topical authority building",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eneiromatos/NebulaExpiredArticleHunter`",
+    "usage": "```\nAct as NebulaExpiredArticleHunter. Find expired articles from [WEBSITE] on archive.org. Provide the URLs, titles, and a brief summary of each article. Focus on topics related to [INDUSTRY] and [COMPANY]’s products or services. Return the results in a numbered list.\n```\nCopy\n\n```\nHere are 5 expired articles from [WEBSITE] that could be useful for [COMPANY]’s marketing campaigns in the [INDUSTRY] industry:\n\n1. **Title:** \"The Future of [INDUSTRY] in 2020\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article discusses emerging trends in [INDUSTRY], including the rise of [TECHNOLOGY] and its impact on consumer behavior. It provides insights that could be repurposed for [COMPANY]’s blog or social media content.\n\n2. **Title:** \"How [INDUSTRY] Companies Can Improve Customer Engagement\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article offers practical tips for enhancing customer engagement in [INDUSTRY]. It includes case studies and strategies that [COMPANY] could adapt for its own marketing efforts.\n\n3. **Title:** \"The Role of AI in [INDUSTRY]\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article explores how AI is transforming [INDUSTRY], with a focus on automation and data analytics. It could be a valuable resource for [COMPANY]’s content marketing strategy.\n\n4. **Title:** \"Top [INDUSTRY] Trends to Watch in 2021\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article highlights key trends in [INDUSTRY] that are still relevant today. It provides data and insights that [COMPANY] could use to inform its marketing campaigns.\n\n5. **Title:** \"The Impact of [TECHNOLOGY] on [INDUSTRY]\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article examines how [TECHNOLOGY] is reshaping [INDUSTRY], with a focus on innovation and efficiency. It could be a useful resource for [COMPANY]’s thought leadership content.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "nebulaexpiredarticlehunter#main-content",
+      "nebulaexpiredarticlehunter#overview",
+      "nebulaexpiredarticlehunter#setup",
+      "nebulaexpiredarticlehunter#examples",
+      "nebulaexpiredarticlehunter#tools",
+      "nebulaexpiredarticlehunter#mcp",
+      "nebulaexpiredarticlehunter#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Nebula Expired Article Hunter extracts archived articles from the Wayback Machine that are no longer indexed by search engines, making them available for reuse. The tool scrapes expired domains and organizes discovered articles in a structured, user-friendly format while consuming minimal memory. Configure word count ranges, connection parameters, and output folders via a simple config.ini file. This skill is ideal for content marketers, SEO professionals, and bloggers who want to repurpose evergreen content without commissioning new writing or violating search engine guidelines.\nRecover evergreen articles from expired domains to expand blog content libraries\nSource non-indexed content for SEO-friendly website expansion without plagiarism risk\nBuild marketing campaign content from archived sources at minimal cost\nFind forgotten niche articles for topical authority building",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/eneiromatos/NebulaExpiredArticleHunter`",
+    "usage_vi": "```\nAct as NebulaExpiredArticleHunter. Find expired articles from [WEBSITE] on archive.org. Provide the URLs, titles, and a brief summary of each article. Focus on topics related to [INDUSTRY] and [COMPANY]’s products or services. Return the results in a numbered list.\n```\nCopy\n\n```\nHere are 5 expired articles from [WEBSITE] that could be useful for [COMPANY]’s marketing campaigns in the [INDUSTRY] industry:\n\n1. **Title:** \"The Future of [INDUSTRY] in 2020\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article discusses emerging trends in [INDUSTRY], including the rise of [TECHNOLOGY] and its impact on consumer behavior. It provides insights that could be repurposed for [COMPANY]’s blog or social media content.\n\n2. **Title:** \"How [INDUSTRY] Companies Can Improve Customer Engagement\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article offers practical tips for enhancing customer engagement in [INDUSTRY]. It includes case studies and strategies that [COMPANY] could adapt for its own marketing efforts.\n\n3. **Title:** \"The Role of AI in [INDUSTRY]\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article explores how AI is transforming [INDUSTRY], with a focus on automation and data analytics. It could be a valuable resource for [COMPANY]’s content marketing strategy.\n\n4. **Title:** \"Top [INDUSTRY] Trends to Watch in 2021\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article highlights key trends in [INDUSTRY] that are still relevant today. It provides data and insights that [COMPANY] could use to inform its marketing campaigns.\n\n5. **Title:** \"The Impact of [TECHNOLOGY] on [INDUSTRY]\"\n   **URL:** [ARCHIVE.ORG/URL]\n   **Summary:** This article examines how [TECHNOLOGY] is reshaping [INDUSTRY], with a focus on innovation and efficiency. It could be a useful resource for [COMPANY]’s thought leadership content.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:48:50.796221Z",
+    "http_status": 200,
+    "content_hash": "c627a1ee14fbe44b25336e0814dea21307cd8ed3ef7fbaa355f98aa373e0d726",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nebulaexpiredarticlehunter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\nebulaexpiredarticlehunter.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "NebulaExpiredArticleHunter: Claude Code skill for",
+  "short_description_vi": "Nebula Expired Article Hunter is a marketing tool you can use to get expired content from www.archive.org A.K.A. wayback machine, you could use this kind of content to grow up your blog with evergreen information, improve your marketing campaigns without investing in writing services, or whatever you imagine is useful for."
+}

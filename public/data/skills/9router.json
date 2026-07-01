@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/9router",
+  "slug": "9router",
+  "name": "browser-use",
+  "headline": "9router: Universal AI proxy service",
+  "short_description": "9router is an AI proxy that routes requests to multiple AI models like Claude Code, Codex, Cursor, OpenAI, Gemini, and Copilot. It benefits developers and operations teams by abstracting away model-specific APIs, enabling integration into existing workflows and tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "decolua",
+  "install_command": "git clone https://github.com/decolua/9router.git",
+  "source_repo_url": "https://github.com/decolua/9router",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "vibecoding",
+    "cliproxyapi",
+    "9router",
+    "cursor",
+    "antigravity"
+  ],
+  "sections": {
+    "overview": "9router is an AI proxy that simplifies integration of multiple AI models into existing applications and workflows. It routes requests across models like Claude, OpenAI, Gemini, and others, eliminating the need to manage different API specifications for each provider. By abstracting away model-specific implementation details, 9router provides a unified interface that reduces development complexity and maintenance overhead. The tool is designed for developers and operations teams who need flexible, multi-model AI capabilities without rewriting integrations for each provider. This abstraction layer enables teams to switch between models or add new ones without changing their application code.\nUnified API access across multiple AI model providers\nSwitching between AI models without code changes\nAbstracting model-specific APIs in production systems\nManaging diverse AI tool integrations in development workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/decolua/9router`",
+    "usage": "```\nUse 9router to route a [TASK_DESCRIPTION] to the most suitable AI model. Prioritize [CRITERIA] such as cost efficiency, response speed, or task-specific strengths (e.g., code generation, creative writing, or data analysis). Return the model used, the routed request, and the final output. Example: 'Route a request to generate a Python script for web scraping with error handling to the fastest available model in 9router.'\n```\nCopy\n\n```\n### 9router Output\n**Routed Request:** Generate a Python script for web scraping with error handling, prioritizing speed and reliability.\n\n**Model Selected:** Claude Code (via 9router)\n**Reason:** Optimized for Python code generation with robust error handling and fast execution.\n\n**Generated Script:**\n```python\nimport requests\nfrom bs4 import BeautifulSoup\nimport logging\nfrom urllib.parse import urljoin\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nclass WebScraper:\n    def __init__(self, base_url):\n        self.base_url = base_url\n        self.session = requests.Session()\n        self.session.headers.update({'User-Agent': 'Mozilla/5.0'})\n\n    def fetch_page(self, url):\n        try:\n            response = self.session.get(url, timeout=10)\n            response.raise_for_status()\n            return response.text\n        except requests.RequestException as e:\n            logger.error(f\"Failed to fetch {url}: {e}\")\n            return None\n\n    def parse_links(self, html, base_url):\n        soup = BeautifulSoup(html, 'html.parser')\n        links = set()\n        for link in soup.find_all('a', href=True):\n            absolute_url = urljoin(base_url, link['href'])\n            links.add(absolute_url)\n        return links\n\n    def scrape(self):\n        html = self.fetch_page(self.base_url)\n        if not html:\n            return []\n        return self.parse_links(html, self.base_url)\n\n# Example usage\nif __name__ == \"__main__\":\n    scraper = WebScraper(\"https://example.com\")\n    links = scraper.scrape()\n    print(f\"Found {len(links)} links:\")\n    for link in links:\n        print(link)\n```\n\n**Verification:** The script includes error handling for network requests, uses a timeout, and logs failures. It also handles relative URLs by converting them to absolute paths. The model ensured the script is production-ready with clear structure and comments.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "9router#main-content",
+      "9router#overview",
+      "9router#setup",
+      "9router#examples",
+      "9router#tools",
+      "9router#mcp",
+      "9router#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "9router is an AI proxy that simplifies integration of multiple AI models into existing applications and workflows. It routes requests across models like Claude, OpenAI, Gemini, and others, eliminating the need to manage different API specifications for each provider. By abstracting away model-specific implementation details, 9router provides a unified interface that reduces development complexity and maintenance overhead. The tool is designed for developers and operations teams who need flexible, multi-model AI capabilities without rewriting integrations for each provider. This abstraction layer enables teams to switch between models or add new ones without changing their application code.\nUnified API access across multiple AI model providers\nSwitching between AI models without code changes\nAbstracting model-specific APIs in production systems\nManaging diverse AI tool integrations in development workflows",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/decolua/9router`",
+    "usage_vi": "```\nUse 9router to route a [TASK_DESCRIPTION] to the most suitable AI model. Prioritize [CRITERIA] such as cost efficiency, response speed, or task-specific strengths (e.g., code generation, creative writing, or data analysis). Return the model used, the routed request, and the final output. Example: 'Route a request to generate a Python script for web scraping with error handling to the fastest available model in 9router.'\n```\nCopy\n\n```\n### 9router Output\n**Routed Request:** Generate a Python script for web scraping with error handling, prioritizing speed and reliability.\n\n**Model Selected:** Claude Code (via 9router)\n**Reason:** Optimized for Python code generation with robust error handling and fast execution.\n\n**Generated Script:**\n```python\nimport requests\nfrom bs4 import BeautifulSoup\nimport logging\nfrom urllib.parse import urljoin\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nclass WebScraper:\n    def __init__(self, base_url):\n        self.base_url = base_url\n        self.session = requests.Session()\n        self.session.headers.update({'User-Agent': 'Mozilla/5.0'})\n\n    def fetch_page(self, url):\n        try:\n            response = self.session.get(url, timeout=10)\n            response.raise_for_status()\n            return response.text\n        except requests.RequestException as e:\n            logger.error(f\"Failed to fetch {url}: {e}\")\n            return None\n\n    def parse_links(self, html, base_url):\n        soup = BeautifulSoup(html, 'html.parser')\n        links = set()\n        for link in soup.find_all('a', href=True):\n            absolute_url = urljoin(base_url, link['href'])\n            links.add(absolute_url)\n        return links\n\n    def scrape(self):\n        html = self.fetch_page(self.base_url)\n        if not html:\n            return []\n        return self.parse_links(html, self.base_url)\n\n# Example usage\nif __name__ == \"__main__\":\n    scraper = WebScraper(\"https://example.com\")\n    links = scraper.scrape()\n    print(f\"Found {len(links)} links:\")\n    for link in links:\n        print(link)\n```\n\n**Verification:** The script includes error handling for network requests, uses a timeout, and logs failures. It also handles relative URLs by converting them to absolute paths. The model ensured the script is production-ready with clear structure and comments.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:57:28.690755Z",
+    "http_status": 200,
+    "content_hash": "917e3a055b88303783f35167bcc59ca7b3f059ed0c2eb2ef01b88b4cef70c5c6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\9router.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\9router.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "9router: Universal AI proxy service",
+  "short_description_vi": "9router is an AI proxy that routes requests to multiple AI models like Claude Code, Codex, Cursor, OpenAI, Gemini, and Copilot. It benefits developers and operations teams by abstracting away model-specific APIs, enabling integration into existing workflows and tools."
+}

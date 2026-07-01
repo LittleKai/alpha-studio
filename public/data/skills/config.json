@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/config",
+  "slug": "config",
+  "name": "browser-use",
+  "headline": "Config: AI Agent Management",
+  "short_description": "Web interface for managing AI CLI agent configurations. Supports Claude Code, OpenAI Codex, and Gemini CLI. Enables operations teams to streamline AI agent setup and maintenance. Integrates with existing CLI workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "35 min",
+  "author": "icefort-ai",
+  "install_command": "git clone https://github.com/icefort-ai/config.git",
+  "source_repo_url": "https://github.com/icefort-ai/config",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codex",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "The Config skill is a powerful web interface designed for managing AI CLI agent configurations, specifically for Claude Code, OpenAI Codex, and Gemini CLI. This skill simplifies the process of configuring AI agents, allowing users to easily adjust settings and parameters without delving into complex command-line interfaces. With an intermediate difficulty level, it can be implemented in just 30 minutes, making it accessible for those with a moderate understanding of AI tools and workflows. By utilizing the Config skill, developers and product managers can significantly enhance their workflow automation. Although specific time savings are currently unknown, the streamlined management of AI agent configurations can lead to increased efficiency in project setups and adjustments. This skill is particularly beneficial for teams looking to optimize their AI automation processes, as it reduces the overhead associated with manual configuration changes. Ideal users for the Config skill include developers working on AI projects, product managers overseeing AI product development, and AI practitioners who require a user-friendly interface for managing multiple AI agents. The skill is especially relevant for teams aiming to integrate AI-first workflows into their development processes, as it provides a centralized solution for configuration management. Practical use cases for the Config skill include setting up new AI projects where multiple configurations are required, adjusting existing agent parameters for improved performance, or quickly switching between different AI agents for testing purposes. With its intermediate complexity, users should have a foundational knowledge of AI tools and CLI environments to fully leverage the skill. By incorporating the Config skill into their workflows, teams can ensure that their AI automation efforts are efficient and effective.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/icefort-ai/config`",
+    "usage": "```\nGenerate a configuration file for a [AI_CLI_TOOL] agent to perform [TASK] in [ENVIRONMENT]. Include [REQUIRED_SETTINGS] such as API keys, model parameters, and tool integrations. Ensure the config follows [BEST_PRACTICES] for [SECURITY/SCALABILITY/PERFORMANCE]. Output the full YAML/JSON configuration ready for deployment.\n```\nCopy\n\n```\n```yaml\n# AI CLI Agent Configuration for Automated Customer Support Agent\n# Generated for OpenAI Codex in Production Environment\n# Best Practices: Secure API handling, rate limiting, and logging\n\nmodel:\n  provider: openai\n  model: gpt-4-turbo\n  temperature: 0.7\n  max_tokens: 4096\n  top_p: 1.0\n\napi:\n  key: env:OPENAI_API_KEY\n  organization: org-12345678\n  base_url: https://api.openai.com/v1\n\ntools:\n  - name: web_search\n    enabled: true\n    timeout: 10s\n    max_results: 5\n  - name: email_client\n    enabled: true\n    smtp_server: smtp.gmail.com\n    smtp_port: 587\n    smtp_user: support-bot@company.com\n    smtp_password: env:EMAIL_PASSWORD\n\nintegrations:\n  - type: database\n    name: customer_db\n    connection_string: env:DB_CONNECTION_STRING\n    table: customer_queries\n  - type: logging\n    provider: datadog\n    api_key: env:DATADOG_API_KEY\n    service_name: support-agent\n\nsecurity:\n  allowed_domains:\n    - company.com\n    - partner.com\n  rate_limit:\n    requests_per_minute: 100\n    burst_capacity: 200\n\nlogging:\n  level: INFO\n  file: /var/log/ai-agent/support-agent.log\n  max_size: 10MB\n  max_backups: 5\n\nmonitoring:\n  enable_health_checks: true\n  health_check_interval: 30s\n  metrics_port: 9090\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "config#main-content",
+      "config#overview",
+      "config#setup",
+      "config#examples",
+      "config#tools",
+      "config#mcp",
+      "config#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Config skill is a powerful web interface designed for managing AI CLI agent configurations, specifically for Claude Code, OpenAI Codex, and Gemini CLI. This skill simplifies the process of configuring AI agents, allowing users to easily adjust settings and parameters without delving into complex command-line interfaces. With an intermediate difficulty level, it can be implemented in just 30 minutes, making it accessible for those with a moderate understanding of AI tools and workflows. By utilizing the Config skill, developers and product managers can significantly enhance their workflow automation. Although specific time savings are currently unknown, the streamlined management of AI agent configurations can lead to increased efficiency in project setups and adjustments. This skill is particularly beneficial for teams looking to optimize their AI automation processes, as it reduces the overhead associated with manual configuration changes. Ideal users for the Config skill include developers working on AI projects, product managers overseeing AI product development, and AI practitioners who require a user-friendly interface for managing multiple AI agents. The skill is especially relevant for teams aiming to integrate AI-first workflows into their development processes, as it provides a centralized solution for configuration management. Practical use cases for the Config skill include setting up new AI projects where multiple configurations are required, adjusting existing agent parameters for improved performance, or quickly switching between different AI agents for testing purposes. With its intermediate complexity, users should have a foundational knowledge of AI tools and CLI environments to fully leverage the skill. By incorporating the Config skill into their workflows, teams can ensure that their AI automation efforts are efficient and effective.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/icefort-ai/config`",
+    "usage_vi": "```\nGenerate a configuration file for a [AI_CLI_TOOL] agent to perform [TASK] in [ENVIRONMENT]. Include [REQUIRED_SETTINGS] such as API keys, model parameters, and tool integrations. Ensure the config follows [BEST_PRACTICES] for [SECURITY/SCALABILITY/PERFORMANCE]. Output the full YAML/JSON configuration ready for deployment.\n```\nCopy\n\n```\n```yaml\n# AI CLI Agent Configuration for Automated Customer Support Agent\n# Generated for OpenAI Codex in Production Environment\n# Best Practices: Secure API handling, rate limiting, and logging\n\nmodel:\n  provider: openai\n  model: gpt-4-turbo\n  temperature: 0.7\n  max_tokens: 4096\n  top_p: 1.0\n\napi:\n  key: env:OPENAI_API_KEY\n  organization: org-12345678\n  base_url: https://api.openai.com/v1\n\ntools:\n  - name: web_search\n    enabled: true\n    timeout: 10s\n    max_results: 5\n  - name: email_client\n    enabled: true\n    smtp_server: smtp.gmail.com\n    smtp_port: 587\n    smtp_user: support-bot@company.com\n    smtp_password: env:EMAIL_PASSWORD\n\nintegrations:\n  - type: database\n    name: customer_db\n    connection_string: env:DB_CONNECTION_STRING\n    table: customer_queries\n  - type: logging\n    provider: datadog\n    api_key: env:DATADOG_API_KEY\n    service_name: support-agent\n\nsecurity:\n  allowed_domains:\n    - company.com\n    - partner.com\n  rate_limit:\n    requests_per_minute: 100\n    burst_capacity: 200\n\nlogging:\n  level: INFO\n  file: /var/log/ai-agent/support-agent.log\n  max_size: 10MB\n  max_backups: 5\n\nmonitoring:\n  enable_health_checks: true\n  health_check_interval: 30s\n  metrics_port: 9090\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:22:46.680290Z",
+    "http_status": 200,
+    "content_hash": "5c63c65809298e098f08f51cd45d978dbcc7d65c03351969e746970dcdbbff6a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\config.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\config.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Config: AI Agent Management",
+  "short_description_vi": "Web interface for managing AI CLI agent configurations. Supports Claude Code, OpenAI Codex, and Gemini CLI. Enables operations teams to streamline AI agent setup and maintenance. Integrates with existing CLI workflows."
+}

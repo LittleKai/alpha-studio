@@ -1,0 +1,72 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/antigravity-setup",
+  "slug": "antigravity-setup",
+  "name": "browser-use",
+  "headline": "antigravity-setup for ai coding standards",
+  "short_description": "Antigravity Setup provides a strong framework for AI coding agents, ensuring consistent, high-quality outputs. It benefits software engineers and operations teams by standardizing AI agent behavior, improving code reliability, and reducing debugging time. The setup integrates with Claude agents to enforce best practices in software design, architecture, and testing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "irahardianto",
+  "install_command": "git clone https://github.com/irahardianto/antigravity-setup.git",
+  "source_repo_url": "https://github.com/irahardianto/antigravity-setup",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "generative-ai",
+    "claude-code",
+    "framework",
+    "open-source",
+    "coding-standards",
+    "software-engineering",
+    "agent-rules",
+    "roo-code",
+    "software-design",
+    "software-architecture",
+    "software-testing",
+    "ai-coding",
+    "ai-agent",
+    "antigravity",
+    "best-practices",
+    "testing"
+  ],
+  "sections": {
+    "overview": "Awesome AGV is a modular configuration toolkit designed to elevate AI coding agents with comprehensive standards and practices. It includes 42 rules covering security, reliability, architecture, and maintainability; 43 specialized skills for debugging and optimization; and 12 end-to-end workflows. The setup uses a two-tier rule system with always-on mandates and contextual principles to ensure generated code is secure, defensible, and maintainable. It's portable across multiple AI coding assistants including Claude Code, Roo Code, and Cline, installed via a single npm command into the `.agents/` directory.\nEnforcing security and reliability standards across AI-generated code\nStandardizing code architecture and design patterns for teams\nIntegrating rugged software principles into AI coding workflows\nReducing debugging time through consistent code quality standards",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/irahardianto/antigravity-setup`",
+    "usage": "```\nSet up an AI coding agent using the Antigravity framework for [PROJECT_NAME]. Configure the agent to follow best practices in [PROGRAMMING_LANGUAGE] with a focus on [ARCHITECTURAL_PATTERN] and [TESTING_STRATEGY]. Ensure the agent generates modular, well-documented code with clear error handling. Include a [DEPLOYMENT_TARGET] deployment strategy and integrate [CI/CD_TOOL] for automated testing and linting. Provide a sample implementation for [SPECIFIC_FEATURE].\n```\nCopy\n\n```\n### Antigravity Framework Setup for 'Inventory Management System'\n\n**Agent Configuration:**\n- **Language:** Python 3.11\n- **Architecture:** Clean Architecture (Domain/Application/Infrastructure layers)\n- **Testing:** Pytest for unit tests, Playwright for E2E tests\n- **CI/CD:** GitHub Actions with pre-commit hooks (black, flake8, mypy)\n- **Deployment:** Dockerized FastAPI app deployed to AWS ECS with Terraform\n\n**Generated Code Structure:**\n```\ninventory/\n├── domain/\n│   ├── models.py (Product, Category entities)\n│   └── repositories.py (interfaces)\n├── application/\n│   ├── services.py (use cases)\n│   └── exceptions.py (domain-specific errors)\n├── infrastructure/\n│   ├── adapters.py (SQLAlchemy implementations)\n│   └── api.py (FastAPI endpoints)\n└── tests/\n    ├── unit/\n    │   └── test_services.py\n    └── e2e/\n        └── test_api.py\n```\n\n**Key Features Implemented:**\n1. **Product CRUD Operations** with SQLAlchemy ORM\n2. **Caching Layer** using Redis for frequently accessed products\n3. **Async Event Handling** for inventory updates via RabbitMQ\n4. **Comprehensive Logging** with structured JSON output\n5. **Health Check Endpoint** for monitoring\n\n**Testing Results:**\n- Unit tests: 92% coverage (123/134 tests passing)\n- E2E tests: 87% coverage (13/15 scenarios passing)\n- Linting: 0 errors (black, flake8, mypy)\n\n**Next Steps:**\n1. Run `docker-compose up --build` to verify local deployment\n2. Execute `pytest -v` to review test coverage\n3. Push changes to trigger GitHub Actions pipeline\n4. Monitor CloudWatch logs for deployment verification\n\nThe agent automatically generated 47 files (2,843 lines of code) with 95% documentation coverage. All components follow SOLID principles and include type hints. The deployment strategy includes blue-green deployment for zero-downtime updates.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "antigravity-setup#main-content",
+      "antigravity-setup#overview",
+      "antigravity-setup#setup",
+      "antigravity-setup#examples",
+      "antigravity-setup#tools",
+      "antigravity-setup#mcp",
+      "antigravity-setup#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome AGV is a modular configuration toolkit designed to elevate AI coding agents with comprehensive standards and practices. It includes 42 rules covering security, reliability, architecture, and maintainability; 43 specialized skills for debugging and optimization; and 12 end-to-end workflows. The setup uses a two-tier rule system with always-on mandates and contextual principles to ensure generated code is secure, defensible, and maintainable. It's portable across multiple AI coding assistants including Claude Code, Roo Code, and Cline, installed via a single npm command into the `.agents/` directory.\nEnforcing security and reliability standards across AI-generated code\nStandardizing code architecture and design patterns for teams\nIntegrating rugged software principles into AI coding workflows\nReducing debugging time through consistent code quality standards",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/irahardianto/antigravity-setup`",
+    "usage_vi": "```\nSet up an AI coding agent using the Antigravity framework for [PROJECT_NAME]. Configure the agent to follow best practices in [PROGRAMMING_LANGUAGE] with a focus on [ARCHITECTURAL_PATTERN] and [TESTING_STRATEGY]. Ensure the agent generates modular, well-documented code with clear error handling. Include a [DEPLOYMENT_TARGET] deployment strategy and integrate [CI/CD_TOOL] for automated testing and linting. Provide a sample implementation for [SPECIFIC_FEATURE].\n```\nCopy\n\n```\n### Antigravity Framework Setup for 'Inventory Management System'\n\n**Agent Configuration:**\n- **Language:** Python 3.11\n- **Architecture:** Clean Architecture (Domain/Application/Infrastructure layers)\n- **Testing:** Pytest for unit tests, Playwright for E2E tests\n- **CI/CD:** GitHub Actions with pre-commit hooks (black, flake8, mypy)\n- **Deployment:** Dockerized FastAPI app deployed to AWS ECS with Terraform\n\n**Generated Code Structure:**\n```\ninventory/\n├── domain/\n│   ├── models.py (Product, Category entities)\n│   └── repositories.py (interfaces)\n├── application/\n│   ├── services.py (use cases)\n│   └── exceptions.py (domain-specific errors)\n├── infrastructure/\n│   ├── adapters.py (SQLAlchemy implementations)\n│   └── api.py (FastAPI endpoints)\n└── tests/\n    ├── unit/\n    │   └── test_services.py\n    └── e2e/\n        └── test_api.py\n```\n\n**Key Features Implemented:**\n1. **Product CRUD Operations** with SQLAlchemy ORM\n2. **Caching Layer** using Redis for frequently accessed products\n3. **Async Event Handling** for inventory updates via RabbitMQ\n4. **Comprehensive Logging** with structured JSON output\n5. **Health Check Endpoint** for monitoring\n\n**Testing Results:**\n- Unit tests: 92% coverage (123/134 tests passing)\n- E2E tests: 87% coverage (13/15 scenarios passing)\n- Linting: 0 errors (black, flake8, mypy)\n\n**Next Steps:**\n1. Run `docker-compose up --build` to verify local deployment\n2. Execute `pytest -v` to review test coverage\n3. Push changes to trigger GitHub Actions pipeline\n4. Monitor CloudWatch logs for deployment verification\n\nThe agent automatically generated 47 files (2,843 lines of code) with 95% documentation coverage. All components follow SOLID principles and include type hints. The deployment strategy includes blue-green deployment for zero-downtime updates.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:59:41.171009Z",
+    "http_status": 200,
+    "content_hash": "5b59963778e8136d37884dbab6b06ace3588f7b9d9aa880335262a02302b4d08",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\antigravity-setup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\antigravity-setup.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "antigravity-setup for ai coding standards",
+  "short_description_vi": "Antigravity Setup provides a strong framework for AI coding agents, ensuring consistent, high-quality outputs. It benefits software engineers and operations teams by standardizing AI agent behavior, improving code reliability, and reducing debugging time. The setup integrates with Claude agents to enforce best practices in software design, architecture, and testing."
+}

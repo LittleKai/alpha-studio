@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/python-sdk",
+  "slug": "python-sdk",
+  "name": "Python Sdk",
+  "headline": "Python SDK for Model Context Protocol",
+  "short_description": "The Python SDK for Model Context Protocol simplifies the integration of servers and clients, enabling developers to easily implement and manage context-aware applications. With a strong set of features and extensive documentation, it accelerates development workflows.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/python-sdk",
+  "source_repo_url": "https://github.com/modelcontextprotocol/python-sdk",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "Development Tools",
+    "SDK",
+    "API",
+    "Python",
+    "Model Context Protocol"
+  ],
+  "sections": {
+    "overview": "The Python SDK for Model Context Protocol provides developers with a comprehensive toolkit to implement MCP servers and clients in Python applications. It simplifies context-aware integration by offering well-documented APIs and examples that accelerate development workflows. The SDK includes extensive examples, automated CI/CD pipelines, and active maintenance with regular updates. Developers can use it to build applications that maintain contextual state across distributed systems. The project is actively maintained with 856+ commits and includes comprehensive test coverage.\nIntegrate context-aware features into existing applications to improve user experience.\nBuild robust client-server architectures that effectively manage state and context.\nEnhance API interactions by utilizing context-aware data for more relevant responses.\nRapidly prototype AI models that adapt based on user context and preferences.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/python-sdk`\n`git clone https://github.com/modelcontextprotocol/python-sdk`",
+    "usage": "```\nIntegrate the Python SDK for Model Context Protocol into my [APPLICATION_NAME] to enable context-aware features. Provide a step-by-step guide for setting up the server and client components. Include best practices for managing context data and handling real-time updates. Ensure compatibility with [EXISTING_SYSTEMS] and provide sample code snippets for common use cases.\n```\nCopy\n\n```\nTo integrate the Python SDK for Model Context Protocol into your application, follow these steps:\n\n1. **Install the SDK**: Use pip to install the SDK package:\n   ```bash\n   pip install model-context-protocol-sdk\n   ```\n\n2. **Set Up the Server**: Create a server instance and configure it to handle context data:\n   ```python\n   from model_context_protocol import Server\n\n   server = Server()\n   server.configure(context_data_handler=your_context_handler)\n   server.start()\n   ```\n\n3. **Set Up the Client**: Initialize the client and connect it to the server:\n   ```python\n   from model_context_protocol import Client\n\n   client = Client(server_address='localhost:8080')\n   client.connect()\n   ```\n\n4. **Manage Context Data**: Implement functions to update and retrieve context data:\n   ```python\n   def update_context(context_data):\n       client.update_context(context_data)\n\n   def get_context():\n       return client.get_context()\n   ```\n\n5. **Handle Real-Time Updates**: Set up event listeners for real-time context updates:\n   ```python\n   def on_context_update(context_data):\n       print(f'Context updated: {context_data}')\n\n   client.on('context_update', on_context_update)\n   ```\n\n6. **Ensure Compatibility**: Test the integration with your existing systems and ensure seamless data flow.\n\n7. **Sample Code Snippets**: Refer to the SDK documentation for sample code snippets that cover common use cases and best practices.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "python-sdk#main-content",
+      "python-sdk#overview",
+      "python-sdk#setup",
+      "python-sdk#examples",
+      "python-sdk#tools",
+      "python-sdk#mcp",
+      "python-sdk#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Python SDK cho Model Context Protocol cung cấp cho lập trình viên một bộ công cụ toàn diện để triển khai MCP server và client trong các ứng dụng Python. SDK này đơn giản hóa việc tích hợp nhận biết ngữ cảnh bằng cách cung cấp các API được tài liệu hóa chi tiết cùng các ví dụ thực tế giúp tăng tốc quy trình phát triển. SDK bao gồm kho ví dụ phong phú, các pipeline CI/CD tự động, và được bảo trì tích cực với các bản cập nhật thường xuyên. Lập trình viên có thể sử dụng bộ SDK này để xây dựng các ứng dụng duy trì trạng thái ngữ cảnh (contextual state) trên các hệ thống phân tán. Dự án hiện đang được duy trì tích cực với hơn 856 commit và có độ bao phủ kiểm thử (test coverage) toàn diện.\nTích hợp các tính năng context-aware vào ứng dụng hiện có để cải thiện trải nghiệm người dùng.\nXây dựng kiến trúc client-server mạnh mẽ giúp quản lý trạng thái và ngữ cảnh hiệu quả.\nTối ưu hóa các tương tác API bằng cách sử dụng dữ liệu context-aware để đưa ra phản hồi phù hợp hơn.\nNhanh chóng tạo prototype cho các mô hình AI có khả năng tự thích ứng dựa trên ngữ cảnh và tùy chọn của người dùng.",
+    "setup_vi": "Terminal\nSao chép\n`claude install modelcontextprotocol/python-sdk`\n`git clone https://github.com/modelcontextprotocol/python-sdk`",
+    "usage_vi": "```\nTích hợp Python SDK cho Model Context Protocol vào [APPLICATION_NAME] của tôi để kích hoạt các tính năng context-aware. Cung cấp hướng dẫn từng bước để thiết lập các thành phần server và client. Bao gồm các best practice để quản lý dữ liệu ngữ cảnh và xử lý cập nhật theo thời gian thực (real-time). Đảm bảo tính tương thích với [EXISTING_SYSTEMS] và cung cấp các đoạn mã mẫu cho các trường hợp sử dụng phổ biến.\n```\nSao chép\n\n```\nĐể tích hợp Python SDK cho Model Context Protocol vào ứng dụng của bạn, hãy thực hiện các bước sau:\n\n1. **Cài đặt SDK**: Sử dụng pip để cài đặt package SDK:\n   ```bash\n   pip install model-context-protocol-sdk\n   ```\n\n2. **Thiết lập Server**: Tạo một server instance và cấu hình để xử lý dữ liệu ngữ cảnh:\n   ```python\n   from model_context_protocol import Server\n\n   server = Server()\n   server.configure(context_data_handler=your_context_handler)\n   server.start()\n   ```\n\n3. **Thiết lập Client**: Khởi tạo client và kết nối tới server:\n   ```python\n   from model_context_protocol import Client\n\n   client = Client(server_address='localhost:8080')\n   client.connect()\n   ```\n\n4. **Quản lý dữ liệu ngữ cảnh**: Triển khai các hàm để cập nhật và lấy dữ liệu ngữ cảnh:\n   ```python\n   def update_context(context_data):\n       client.update_context(context_data)\n\n   def get_context():\n       return client.get_context()\n   ```\n\n5. **Xử lý cập nhật thời gian thực**: Thiết lập các event listener để nhận cập nhật ngữ cảnh theo thời gian thực:\n   ```python\n   def on_context_update(context_data):\n       print(f'Context updated: {context_data}')\n\n   client.on('context_update', on_context_update)\n   ```\n\n6. **Đảm bảo tính tương thích**: Kiểm thử tích hợp với các hệ thống hiện tại của bạn và đảm bảo luồng dữ liệu hoạt động liền mạch.\n\n7. **Đoạn mã mẫu**: Tham khảo tài liệu hướng dẫn của SDK để xem các đoạn mã mẫu cho các trường hợp sử dụng phổ biến và các best practice.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:42:20.774769Z",
+    "http_status": 200,
+    "content_hash": "94bf1d22271375cc6e42e161400d679c8931164c085ea5c3701d00e467a088ed",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\python-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\python-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Python SDK cho Model Context Protocol",
+  "short_description_vi": "Python SDK cho Model Context Protocol giúp đơn giản hóa việc tích hợp giữa server và client, cho phép lập trình viên dễ dàng triển khai và quản lý các ứng dụng nhận biết ngữ cảnh (context-aware). Với bộ tính năng mạnh mẽ cùng tài liệu hướng dẫn chi tiết, bộ SDK này giúp tăng tốc quy trình phát triển."
+}

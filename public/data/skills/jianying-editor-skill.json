@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jianying-editor-skill",
+  "slug": "jianying-editor-skill",
+  "name": "browser-use",
+  "headline": "JianYing Editor Skill - Automate Video Editing",
+  "short_description": "Automates video editing in JianYing (CapCut Chinese version) for operations teams. Creates, edits, and exports video drafts using AI agents. Integrates with Antigravity for workflow automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "luoluoluo22",
+  "install_command": "git clone https://github.com/luoluoluo22/jianying-editor-skill.git",
+  "source_repo_url": "https://github.com/luoluoluo22/jianying-editor-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "JianYing Editor Skill integrates AI agents with JianYing (the Chinese version of CapCut) to automate video editing workflows. The skill enables programmatic creation, editing, and export of video drafts, allowing operations teams to scale video production without manual editing. It provides structured tools and prompts for agents to manipulate video projects, add effects, manage audio layers, and handle timing configurations. Built with comprehensive examples, rules, and references, this skill reduces manual video editing overhead and integrates with broader automation workflows. Operations teams benefit from faster turnaround times and consistent editing output across multiple video projects.\nAutomate bulk video draft creation and editing for content operations teams\nProgrammatically export edited videos with consistent formatting and effects\nScale social media video production using AI agent workflows\nIntegrate video editing into broader business process automation pipelines",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/luoluoluo22/jianying-editor-skill`",
+    "usage": "```\nUse JianYing (CapCut Chinese version) to create a video draft for [VIDEO_TOPIC/PURPOSE]. Apply the following edits: [EDIT_INSTRUCTIONS, e.g., 'add a 3-second intro with [MUSIC_TRACK], overlay text '[CAPTION]' at 0:05, trim clip to 15 seconds']. Export the video in [RESOLUTION, e.g., 1080p] and save it to [OUTPUT_FOLDER_PATH]. Integrate the workflow with Antigravity for automated processing.\n```\nCopy\n\n```\nHere’s the JianYing project file for your video draft, ready for review and export:\n\n**Project Details:**\n- **Topic:** Product demo for \"EcoClean Laundry Detergent\"\n- **Duration:** 22 seconds\n- **Resolution:** 1080p (1920x1080)\n- **Music:** Soft acoustic track (\"Calm Waves\")\n- **Text Overlays:** \n  - 0:00-0:03: \"Discover EcoClean\"\n  - 0:05-0:08: \"Gentle on clothes, tough on stains\"\n  - 0:15-0:18: \"Try it today!\"\n\n**Edits Applied:**\n1. **Intro:** Added a 3-second fade-in with the EcoClean logo animation.\n2. **Clips:** Trimmed a 25-second raw clip to 22 seconds, removing the last 3 seconds of a shaky shot.\n3. **Transitions:** Used a smooth crossfade between the product shot and the label close-up.\n4. **Effects:** Applied a subtle color grade to enhance the blue-green palette of the detergent bottle.\n5. **Export:** Saved the project as `ecoclean_demo_v1.cpr` in the `~/Projects/Marketing/Videos` folder.\n\n**Antigravity Integration:**\n- The project file has been uploaded to Antigravity’s `/videos/pending` folder for automated QA checks (frame consistency, audio levels, and branding compliance).\n- A notification will be sent to the marketing team’s Slack channel upon completion.\n\n**Next Steps:**\n- Review the draft in JianYing. If adjustments are needed, reply with specific changes (e.g., 'replace the music with [TRACK_NAME]' or 'adjust the text at 0:15').\n- Approve the export to finalize the video for social media distribution.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "jianying-editor-skill#main-content",
+      "jianying-editor-skill#overview",
+      "jianying-editor-skill#setup",
+      "jianying-editor-skill#examples",
+      "jianying-editor-skill#tools",
+      "jianying-editor-skill#mcp",
+      "jianying-editor-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "JianYing Editor Skill integrates AI agents with JianYing (the Chinese version of CapCut) to automate video editing workflows. The skill enables programmatic creation, editing, and export of video drafts, allowing operations teams to scale video production without manual editing. It provides structured tools and prompts for agents to manipulate video projects, add effects, manage audio layers, and handle timing configurations. Built with comprehensive examples, rules, and references, this skill reduces manual video editing overhead and integrates with broader automation workflows. Operations teams benefit from faster turnaround times and consistent editing output across multiple video projects.\nAutomate bulk video draft creation and editing for content operations teams\nProgrammatically export edited videos with consistent formatting and effects\nScale social media video production using AI agent workflows\nIntegrate video editing into broader business process automation pipelines",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/luoluoluo22/jianying-editor-skill`",
+    "usage_vi": "```\nUse JianYing (CapCut Chinese version) to create a video draft for [VIDEO_TOPIC/PURPOSE]. Apply the following edits: [EDIT_INSTRUCTIONS, e.g., 'add a 3-second intro with [MUSIC_TRACK], overlay text '[CAPTION]' at 0:05, trim clip to 15 seconds']. Export the video in [RESOLUTION, e.g., 1080p] and save it to [OUTPUT_FOLDER_PATH]. Integrate the workflow with Antigravity for automated processing.\n```\nCopy\n\n```\nHere’s the JianYing project file for your video draft, ready for review and export:\n\n**Project Details:**\n- **Topic:** Product demo for \"EcoClean Laundry Detergent\"\n- **Duration:** 22 seconds\n- **Resolution:** 1080p (1920x1080)\n- **Music:** Soft acoustic track (\"Calm Waves\")\n- **Text Overlays:** \n  - 0:00-0:03: \"Discover EcoClean\"\n  - 0:05-0:08: \"Gentle on clothes, tough on stains\"\n  - 0:15-0:18: \"Try it today!\"\n\n**Edits Applied:**\n1. **Intro:** Added a 3-second fade-in with the EcoClean logo animation.\n2. **Clips:** Trimmed a 25-second raw clip to 22 seconds, removing the last 3 seconds of a shaky shot.\n3. **Transitions:** Used a smooth crossfade between the product shot and the label close-up.\n4. **Effects:** Applied a subtle color grade to enhance the blue-green palette of the detergent bottle.\n5. **Export:** Saved the project as `ecoclean_demo_v1.cpr` in the `~/Projects/Marketing/Videos` folder.\n\n**Antigravity Integration:**\n- The project file has been uploaded to Antigravity’s `/videos/pending` folder for automated QA checks (frame consistency, audio levels, and branding compliance).\n- A notification will be sent to the marketing team’s Slack channel upon completion.\n\n**Next Steps:**\n- Review the draft in JianYing. If adjustments are needed, reply with specific changes (e.g., 'replace the music with [TRACK_NAME]' or 'adjust the text at 0:15').\n- Approve the export to finalize the video for social media distribution.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:11:41.672290Z",
+    "http_status": 200,
+    "content_hash": "c846939428bb3e80053a91242ab4e9d022ab00da10bef8509912ea3adfe4e332",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jianying-editor-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jianying-editor-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "JianYing Editor Skill - Automate Video Editing",
+  "short_description_vi": "Automates video editing in JianYing (CapCut Chinese version) for operations teams. Creates, edits, and exports video drafts using AI agents. Integrates with Antigravity for workflow automation."
+}

@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/docmole",
+  "slug": "docmole",
+  "name": "browser-use",
+  "headline": "Docmole - AI Documentation Search",
+  "short_description": "Docmole is an AI-powered documentation search tool that enables users to quickly find and retrieve information from any documentation. It is particularly useful for operations teams who need to access and manage large volumes of documentation. Docmole integrates with AI assistants like Claude and Cursor, allowing users to search and retrieve information from documentation using natural language queries.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "Vigtu",
+  "install_command": "git clone https://github.com/Vigtu/docmole.git",
+  "source_repo_url": "https://github.com/Vigtu/docmole",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "bun",
+    "documentation",
+    "mintlify",
+    "claude",
+    "typescript",
+    "mcp",
+    "model-context-protocol",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Docmole is an MCP server that integrates with AI assistants like Claude and Cursor to enable natural language search across documentation sites. It supports two modes: Local RAG Mode, which crawls documentation and generates embeddings with OpenAI and LanceDB for self-hosted search, and Mintlify Mode, which proxies requests to Mintlify's AI Assistant API for zero-setup access. The tool works with any documentation site, performs hybrid semantic and keyword matching, and maintains multi-turn conversation context. Operations teams and developers benefit from instant access to large documentation volumes without manual searching.\nSearch internal or external documentation using natural language questions in Claude or Cursor\nIndex company documentation sites and query them through AI assistants\nAccess Mintlify-powered documentation sites like Vercel, Resend, or Upstash instantly\nRetrieve specific information from large documentation volumes across multi-turn conversations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Vigtu/docmole`",
+    "usage": "```\nAct as Docmole, an AI-powered documentation search tool. Search the documentation for [TOPIC/PRODUCT] and retrieve the most relevant information. Summarize the key points and provide direct links or references to the source documentation where applicable. Focus on actionable details for [USER_ROLE].\n```\nCopy\n\n```\nHere’s what Docmole retrieved for your query on **'AWS Lambda cold start optimization techniques'** in the AWS documentation:\n\n**Key Findings:**\n1. **Provisioned Concurrency**: AWS recommends using Provisioned Concurrency to reduce cold starts by keeping functions warm. This is ideal for latency-sensitive applications. [Source: AWS Lambda Developer Guide, Section 5.2](https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html)\n2. **Smaller Deployment Packages**: Reducing the size of your deployment package (e.g., by removing unused dependencies) can decrease initialization time. For example, a 50MB package may take 200ms to load, while a 10MB package could load in 50ms. [Source: AWS Well-Architected Framework, Operational Excellence Pillar](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/optimize-lambda-performance.html)\n3. **Avoiding VPC Attachment**: Lambda functions attached to VPCs experience higher cold starts due to ENI creation. If possible, avoid VPC attachment or use VPC endpoints to mitigate this. [Source: AWS Lambda FAQs](https://aws.amazon.com/lambda/faqs/)\n\n**Actionable Next Steps:**\n- For your **serverless API** (currently experiencing 300ms cold starts), enable Provisioned Concurrency for the critical Lambda functions and monitor the impact using CloudWatch metrics.\n- Audit your deployment packages and remove unused libraries (e.g., `numpy` in a Python function that doesn’t use it).\n- If your Lambda is in a VPC, consider migrating it to a public subnet or using PrivateLink for internal resources.\n\n**References:**\n- [AWS Lambda Performance Tuning Guide](https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html)\n- [Benchmarking Cold Starts](https://aws.amazon.com/blogs/compute/optimizing-aws-lambda-performance-with-provisioned-concurrency/)\n\nWould you like me to search for additional details on a specific technique or tool?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "docmole#main-content",
+      "docmole#overview",
+      "docmole#setup",
+      "docmole#examples",
+      "docmole#tools",
+      "docmole#mcp",
+      "docmole#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Docmole is an MCP server that integrates with AI assistants like Claude and Cursor to enable natural language search across documentation sites. It supports two modes: Local RAG Mode, which crawls documentation and generates embeddings with OpenAI and LanceDB for self-hosted search, and Mintlify Mode, which proxies requests to Mintlify's AI Assistant API for zero-setup access. The tool works with any documentation site, performs hybrid semantic and keyword matching, and maintains multi-turn conversation context. Operations teams and developers benefit from instant access to large documentation volumes without manual searching.\nSearch internal or external documentation using natural language questions in Claude or Cursor\nIndex company documentation sites and query them through AI assistants\nAccess Mintlify-powered documentation sites like Vercel, Resend, or Upstash instantly\nRetrieve specific information from large documentation volumes across multi-turn conversations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Vigtu/docmole`",
+    "usage_vi": "```\nAct as Docmole, an AI-powered documentation search tool. Search the documentation for [TOPIC/PRODUCT] and retrieve the most relevant information. Summarize the key points and provide direct links or references to the source documentation where applicable. Focus on actionable details for [USER_ROLE].\n```\nCopy\n\n```\nHere’s what Docmole retrieved for your query on **'AWS Lambda cold start optimization techniques'** in the AWS documentation:\n\n**Key Findings:**\n1. **Provisioned Concurrency**: AWS recommends using Provisioned Concurrency to reduce cold starts by keeping functions warm. This is ideal for latency-sensitive applications. [Source: AWS Lambda Developer Guide, Section 5.2](https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html)\n2. **Smaller Deployment Packages**: Reducing the size of your deployment package (e.g., by removing unused dependencies) can decrease initialization time. For example, a 50MB package may take 200ms to load, while a 10MB package could load in 50ms. [Source: AWS Well-Architected Framework, Operational Excellence Pillar](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/optimize-lambda-performance.html)\n3. **Avoiding VPC Attachment**: Lambda functions attached to VPCs experience higher cold starts due to ENI creation. If possible, avoid VPC attachment or use VPC endpoints to mitigate this. [Source: AWS Lambda FAQs](https://aws.amazon.com/lambda/faqs/)\n\n**Actionable Next Steps:**\n- For your **serverless API** (currently experiencing 300ms cold starts), enable Provisioned Concurrency for the critical Lambda functions and monitor the impact using CloudWatch metrics.\n- Audit your deployment packages and remove unused libraries (e.g., `numpy` in a Python function that doesn’t use it).\n- If your Lambda is in a VPC, consider migrating it to a public subnet or using PrivateLink for internal resources.\n\n**References:**\n- [AWS Lambda Performance Tuning Guide](https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html)\n- [Benchmarking Cold Starts](https://aws.amazon.com/blogs/compute/optimizing-aws-lambda-performance-with-provisioned-concurrency/)\n\nWould you like me to search for additional details on a specific technique or tool?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:17:37.848401Z",
+    "http_status": 200,
+    "content_hash": "f75235e6cd395738a85cf2a41c6c3a7e47371e4069130c1aec2316fa1deb53f5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\docmole.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\docmole.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Docmole - AI Documentation Search",
+  "short_description_vi": "Docmole is an AI-powered documentation search tool that enables users to quickly find and retrieve information from any documentation. It is particularly useful for operations teams who need to access and manage large volumes of documentation. Docmole integrates with AI assistants like Claude and Cursor, allowing users to search and retrieve information from documentation using natural language queries."
+}

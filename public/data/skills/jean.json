@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/jean",
+  "slug": "jean",
+  "name": "browser-use",
+  "headline": "Jean - Automate Projects & Sessions",
+  "short_description": "Jean manages multiple projects, worktrees, and sessions with Claude CLI. It automates worktree management, loads context from sessions, GitHub issues, and pull requests, and executes Git commands. Operations teams benefit from streamlined workflows and reduced manual effort.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "coollabsio",
+  "install_command": "git clone https://github.com/coollabsio/jean.git",
+  "source_repo_url": "https://github.com/coollabsio/jean",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "worktree",
+    "ai",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Jean is a project and worktree management automation tool designed for Claude CLI users handling multiple concurrent projects. It automates the creation and management of Git worktrees, loads context directly from saved sessions, GitHub issues, and pull requests, and executes Git commands programmatically. The tool eliminates repetitive manual setup tasks, allowing developers and operations teams to focus on code rather than environment configuration. Jean integrates with Claude's CLI backend to provide streamlined access to project context and reduce context-switching overhead in multi-project environments.\nManaging multiple Git worktrees across different project branches simultaneously\nLoading GitHub issue and pull request context directly into Claude sessions\nAutomating Git command execution for repetitive worktree operations\nStreamlining multi-project workflows with pre-configured session contexts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coollabsio/jean`",
+    "usage": "```\nUse Jean to automate worktree management for [PROJECT_NAME]. Load context from [SESSION_NAME] or [GITHUB_ISSUE_URL/PR_URL]. Execute Git commands to sync branches, resolve conflicts, or push changes. Report the final state of the worktree and any actions taken.\n```\nCopy\n\n```\nJean initialized a new worktree for the `feature/user-authentication` project from the main branch. It loaded context from the active session `dev-session-2024` and fetched the latest changes from GitHub issue #1234 (\"Add OAuth2 support\"). Jean executed the following commands:\n\n```bash\ngit checkout -b feature/user-authentication origin/main\ngit merge --no-ff origin/main\ngit push --set-upstream origin feature/user-authentication\n```\n\nThe worktree is now at commit `a1b2c3d4` with no conflicts. All changes from the issue and session were applied successfully. The branch is up-to-date with remote and ready for review. No manual intervention was required.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "jean#main-content",
+      "jean#overview",
+      "jean#setup",
+      "jean#examples",
+      "jean#tools",
+      "jean#mcp",
+      "jean#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Jean is a project and worktree management automation tool designed for Claude CLI users handling multiple concurrent projects. It automates the creation and management of Git worktrees, loads context directly from saved sessions, GitHub issues, and pull requests, and executes Git commands programmatically. The tool eliminates repetitive manual setup tasks, allowing developers and operations teams to focus on code rather than environment configuration. Jean integrates with Claude's CLI backend to provide streamlined access to project context and reduce context-switching overhead in multi-project environments.\nManaging multiple Git worktrees across different project branches simultaneously\nLoading GitHub issue and pull request context directly into Claude sessions\nAutomating Git command execution for repetitive worktree operations\nStreamlining multi-project workflows with pre-configured session contexts",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/coollabsio/jean`",
+    "usage_vi": "```\nUse Jean to automate worktree management for [PROJECT_NAME]. Load context from [SESSION_NAME] or [GITHUB_ISSUE_URL/PR_URL]. Execute Git commands to sync branches, resolve conflicts, or push changes. Report the final state of the worktree and any actions taken.\n```\nCopy\n\n```\nJean initialized a new worktree for the `feature/user-authentication` project from the main branch. It loaded context from the active session `dev-session-2024` and fetched the latest changes from GitHub issue #1234 (\"Add OAuth2 support\"). Jean executed the following commands:\n\n```bash\ngit checkout -b feature/user-authentication origin/main\ngit merge --no-ff origin/main\ngit push --set-upstream origin feature/user-authentication\n```\n\nThe worktree is now at commit `a1b2c3d4` with no conflicts. All changes from the issue and session were applied successfully. The branch is up-to-date with remote and ready for review. No manual intervention was required.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:57:31.038442Z",
+    "http_status": 200,
+    "content_hash": "23bd8b785d0314368239428cf5f8d10595b144fe740387d347ad156e28183229",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jean.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\jean.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Jean - Automate Projects & Sessions",
+  "short_description_vi": "Jean manages multiple projects, worktrees, and sessions with Claude CLI. It automates worktree management, loads context from sessions, GitHub issues, and pull requests, and executes Git commands. Operations teams benefit from streamlined workflows and reduced manual effort."
+}

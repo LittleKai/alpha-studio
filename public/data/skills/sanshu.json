@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sanshu",
+  "slug": "sanshu",
+  "name": "Sanshu",
+  "headline": "Sanshu - Automate Operations Tasks",
+  "short_description": "Sanshu is an open-source binary MCP that automates operations tasks. It connects to Claude agents to streamline workflows, reducing manual effort and improving efficiency for operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "yuaotian",
+  "install_command": "git clone https://github.com/yuaotian/sanshu.git",
+  "source_repo_url": "https://github.com/yuaotian/sanshu",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Sanshu is an open-source MCP binary that connects Claude agents with three core tools for enhanced developer productivity. The 智 (intelligence) tool provides interactive decision-making and multi-modal input through MCP popups; 记 (memory) maintains global project-level context including rules, preferences, and patterns; and 搜 (search) enables semantic code search with real-time file indexing via the acemcp engine. Sanshu also integrates context7 documentation queries, icon search, and UI/UX design tools. Available for Windows, macOS, and Linux, it reduces manual effort by automating context retrieval and enabling transparent AI collaboration.\nInteractive code review with AI agents through intelligent decision-making popups\nSemantic search across large codebases for pattern discovery and refactoring\nMaintaining project-specific rules and preferences across development sessions\nReal-time framework documentation lookup for Next.js, React, Vue, and other libraries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yuaotian/sanshu`",
+    "usage": "```\nUse the Sanshu MCP server to automate [OPERATION_TASK] for [SYSTEM_OR_ENVIRONMENT]. Include the following parameters: [PARAMETERS_IF_ANY]. Execute the task and provide a summary of the actions taken, results, and any errors encountered.\n```\nCopy\n\n```\n### Sanshu MCP Automation Report\n**Task:** Restart failed system services on the production web tier\n**Environment:** AWS EC2 (us-west-2), Ubuntu 22.04 LTS\n**Parameters:** --service nginx,postgresql,redis --timeout 30s --notify slack_channel #ops-alerts\n\n**Actions Executed:**\n1. **Service Discovery:** Scanned systemd for services matching nginx, postgresql, or redis (found 3 active services)\n2. **Status Check:** Verified current status of each service:\n   - nginx: active (running)\n   - postgresql: inactive (dead) [FAILED]\n   - redis: active (running)\n3. **Restart Attempt:** Issued `systemctl restart postgresql` (attempt 1/3)\n4. **Verification:** Confirmed postgresql status changed to active (running)\n5. **Notification:** Sent Slack alert to #ops-alerts with restart confirmation\n\n**Results:**\n- Successfully restarted 1 service (postgresql)\n- 2 services required no action (nginx, redis)\n- Total execution time: 8.4 seconds\n- No errors encountered\n\n**Recommendation:** Monitor postgresql logs for 15 minutes to ensure stability. Schedule a weekly health check for this tier.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sanshu#main-content",
+      "sanshu#overview",
+      "sanshu#setup",
+      "sanshu#examples",
+      "sanshu#tools",
+      "sanshu#mcp",
+      "sanshu#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sanshu is an open-source MCP binary that connects Claude agents with three core tools for enhanced developer productivity. The 智 (intelligence) tool provides interactive decision-making and multi-modal input through MCP popups; 记 (memory) maintains global project-level context including rules, preferences, and patterns; and 搜 (search) enables semantic code search with real-time file indexing via the acemcp engine. Sanshu also integrates context7 documentation queries, icon search, and UI/UX design tools. Available for Windows, macOS, and Linux, it reduces manual effort by automating context retrieval and enabling transparent AI collaboration.\nInteractive code review with AI agents through intelligent decision-making popups\nSemantic search across large codebases for pattern discovery and refactoring\nMaintaining project-specific rules and preferences across development sessions\nReal-time framework documentation lookup for Next.js, React, Vue, and other libraries",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yuaotian/sanshu`",
+    "usage_vi": "```\nUse the Sanshu MCP server to automate [OPERATION_TASK] for [SYSTEM_OR_ENVIRONMENT]. Include the following parameters: [PARAMETERS_IF_ANY]. Execute the task and provide a summary of the actions taken, results, and any errors encountered.\n```\nCopy\n\n```\n### Sanshu MCP Automation Report\n**Task:** Restart failed system services on the production web tier\n**Environment:** AWS EC2 (us-west-2), Ubuntu 22.04 LTS\n**Parameters:** --service nginx,postgresql,redis --timeout 30s --notify slack_channel #ops-alerts\n\n**Actions Executed:**\n1. **Service Discovery:** Scanned systemd for services matching nginx, postgresql, or redis (found 3 active services)\n2. **Status Check:** Verified current status of each service:\n   - nginx: active (running)\n   - postgresql: inactive (dead) [FAILED]\n   - redis: active (running)\n3. **Restart Attempt:** Issued `systemctl restart postgresql` (attempt 1/3)\n4. **Verification:** Confirmed postgresql status changed to active (running)\n5. **Notification:** Sent Slack alert to #ops-alerts with restart confirmation\n\n**Results:**\n- Successfully restarted 1 service (postgresql)\n- 2 services required no action (nginx, redis)\n- Total execution time: 8.4 seconds\n- No errors encountered\n\n**Recommendation:** Monitor postgresql logs for 15 minutes to ensure stability. Schedule a weekly health check for this tier.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:30.047063Z",
+    "http_status": 200,
+    "content_hash": "eaea026f28ca29b90a7065358445c6752eb57a5c14088113bcbe9c09da848ad9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sanshu.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sanshu.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sanshu - Automate Operations Tasks",
+  "short_description_vi": "Sanshu is an open-source binary MCP that automates operations tasks. It connects to Claude agents to streamline workflows, reducing manual effort and improving efficiency for operations teams."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-playwright-minimal",
+  "slug": "skill-playwright-minimal",
+  "name": "Skill Playwright Minimal",
+  "headline": "Playwright Minimal: Browser Automation for Claude",
+  "short_description": "A persistent browser daemon that lets Claude navigate pages, execute JavaScript, read console logs, and inspect the DOM without repeatedly opening and closing Chrome.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "noiv",
+  "install_command": "git clone https://github.com/noiv/skill-playwright-minimal.git",
+  "source_repo_url": "https://github.com/noiv/skill-playwright-minimal",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill launches a background Chrome daemon controlled by Claude through simple file-based commands. Navigate to URLs, run JavaScript in the page context, capture console logs with source locations, and query the DOM—all without manual browser management. It's designed for iterative web development and debugging workflows where you need Claude to inspect live pages, check element counts, verify styles, or track down console warnings. The daemon automatically restarts if Chrome closes, restoring your last URL and maintaining continuity across sessions.\nDebugging layout issues by querying DOM selectors and element counts\nTracking down console warnings and errors with source file locations\nAutomating interactive testing workflows like form filling and button state verification\nIterating on web apps by reloading and checking console output between changes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/noiv/skill-playwright-minimal`",
+    "usage": "```\nI'm using Playwright to automate browser tasks. Here are the console logs from my script: [LOGS]. Based on these logs, help me write a minimal JavaScript snippet to [TASK]. The script should be concise and focused on achieving [GOAL].\n```\nCopy\n\n```\n# JavaScript Snippet for Playwright Automation\n\n```javascript\n// Wait for element to be visible\nconst element = await page.waitForSelector('#submit-button', { state: 'visible' }); \n\n// Click the element\nawait element.click();\n\n// Fill in a form field\nawait page.fill('#username', 'testuser');\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-playwright-minimal#main-content",
+      "skill-playwright-minimal#overview",
+      "skill-playwright-minimal#setup",
+      "skill-playwright-minimal#examples",
+      "skill-playwright-minimal#tools",
+      "skill-playwright-minimal#mcp",
+      "skill-playwright-minimal#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này khởi chạy một Chrome daemon chạy ngầm được Claude điều khiển thông qua các lệnh dạng file đơn giản. Điều hướng đến các URL, chạy JavaScript trong page context, capture console log kèm vị trí file nguồn, và truy vấn DOM—tất cả mà không cần quản lý trình duyệt thủ công. Công cụ này được thiết kế cho quy trình phát triển web lặp (iterative) và debug khi bạn cần Claude kiểm tra các trang live, kiểm tra số lượng element, xác minh style, hoặc truy vết các cảnh báo console. Daemon sẽ tự động khởi động lại nếu Chrome bị đóng, giúp khôi phục URL cuối cùng và duy trì tính liên tục giữa các session.\n\n- Debug các lỗi layout bằng cách truy vấn các DOM selector và số lượng element\n- Truy vết các cảnh báo và lỗi console kèm vị trí file nguồn\n- Tự động hóa các quy trình test tương tác như điền form và xác minh trạng thái button\n- Phát triển lặp (iterative) trên ứng dụng web bằng cách reload và kiểm tra console output sau mỗi thay đổi",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/noiv/skill-playwright-minimal`",
+    "usage_vi": "```\nTôi đang sử dụng Playwright để tự động hóa các tác vụ trình duyệt. Dưới đây là các console log từ script của tôi: [LOGS]. Dựa trên các log này, hãy giúp tôi viết một đoạn mã JavaScript tối giản để [TASK]. Script cần ngắn gọn và tập trung vào việc đạt được [GOAL].\n```\nCopy\n\n```\n# Đoạn mã JavaScript cho Tự động hóa Playwright\n\n```javascript\n// Chờ element hiển thị\nconst element = await page.waitForSelector('#submit-button', { state: 'visible' }); \n\n// Click vào element\nawait element.click();\n\n// Điền thông tin vào trường form\nawait page.fill('#username', 'testuser');\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:36:43.807968Z",
+    "http_status": 200,
+    "content_hash": "98da685fe982345ab4b395cbbb165e501c55fd597c98836e0cd1e5ab452993fb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-playwright-minimal.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-playwright-minimal.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Playwright Minimal: Tự động hóa trình duyệt cho Claude",
+  "short_description_vi": "Một browser daemon chạy ngầm liên tục giúp Claude điều hướng trang, thực thi JavaScript, đọc console log và kiểm tra DOM mà không cần phải liên tục mở và đóng Chrome."
+}

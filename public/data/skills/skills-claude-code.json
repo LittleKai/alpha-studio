@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills-claude-code",
+  "slug": "skills-claude-code",
+  "name": "Claude Code Skills",
+  "headline": "Claude Code Skills - Build Reusable Specializations",
+  "short_description": "Claude Code Skills is an open-source project for building reusable specializations to improve development workflows. It benefits developers by automating tasks and integrating with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "Bikach",
+  "install_command": "git clone https://github.com/Bikach/skills-claude-code.git",
+  "source_repo_url": "https://github.com/Bikach/skills-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code Skills is a collaborative, open-source framework for creating composable specializations that extend Claude's capabilities. Skills are portable folders containing instructions, scripts, and resources that Claude automatically loads when relevant to your task. The system is designed to be efficient—Claude loads only the minimal information needed—while remaining powerful enough to include executable code for reliable task execution. Skills work across Claude applications, Claude Code, and the API, making them shareable across teams via version control.\nAutomating repetitive development tasks with custom instructions\nCreating team-specific onboarding materials for Claude agents\nBuilding portable workflows that work across Claude applications\nCombining multiple skills to coordinate complex multi-step tasks",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Bikach/skills-claude-code`\n1. Clone the repository\n   ```bash\n   git clone https://github.com/yourusername/automated-test-generation.git\n   ```\n2. Install dependencies\n   ```bash\n   pip install -r requirements.txt\n   ```",
+    "usage": "```\nCreate a Claude Code Skill for automating [TASK] in [PROGRAMMING_LANGUAGE]. Include a clear description, the necessary files, and instructions for installation and usage. Ensure it integrates seamlessly with the Claude AI agent.\n```\nCopy\n\n```\n# Claude Code Skill: Automated Test Generation for Python\n\n1. Place your Python file in the `src` directory\n2. Run the test generator\n   ```bash\n   python test_generator.py --file src/yourfile.py\n   ```\n3. Review the generated tests in the `tests` directory",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skills-claude-code#main-content",
+      "skills-claude-code#overview",
+      "skills-claude-code#setup",
+      "skills-claude-code#examples",
+      "skills-claude-code#tools",
+      "skills-claude-code#mcp",
+      "skills-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Skills is a collaborative, open-source framework for creating composable specializations that extend Claude's capabilities. Skills are portable folders containing instructions, scripts, and resources that Claude automatically loads when relevant to your task. The system is designed to be efficient—Claude loads only the minimal information needed—while remaining powerful enough to include executable code for reliable task execution. Skills work across Claude applications, Claude Code, and the API, making them shareable across teams via version control.\nAutomating repetitive development tasks with custom instructions\nCreating team-specific onboarding materials for Claude agents\nBuilding portable workflows that work across Claude applications\nCombining multiple skills to coordinate complex multi-step tasks",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Bikach/skills-claude-code`\n1. Clone the repository\n   ```bash\n   git clone https://github.com/yourusername/automated-test-generation.git\n   ```\n2. Install dependencies\n   ```bash\n   pip install -r requirements.txt\n   ```",
+    "usage_vi": "```\nCreate a Claude Code Skill for automating [TASK] in [PROGRAMMING_LANGUAGE]. Include a clear description, the necessary files, and instructions for installation and usage. Ensure it integrates seamlessly with the Claude AI agent.\n```\nCopy\n\n```\n# Claude Code Skill: Automated Test Generation for Python\n\n1. Place your Python file in the `src` directory\n2. Run the test generator\n   ```bash\n   python test_generator.py --file src/yourfile.py\n   ```\n3. Review the generated tests in the `tests` directory"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:02.648963Z",
+    "http_status": 200,
+    "content_hash": "7af3966c748b699a02e1547af9069606f277c1e0f380fe5fb1f92883dabea0f7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skills-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code Skills - Build Reusable Specializations",
+  "short_description_vi": "Claude Code Skills is an open-source project for building reusable specializations to improve development workflows. It benefits developers by automating tasks and integrating with Claude agents."
+}

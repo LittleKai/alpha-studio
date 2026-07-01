@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skind-skills",
+  "slug": "skind-skills",
+  "name": "Skind Skills",
+  "headline": "skind-skills: Investment Research & Video Creation",
+  "short_description": "Collection of Claude Code skills for US stock investment research and professional educational video creation using Kurzgesagt/回形针 visual style.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "skindhu",
+  "install_command": "git clone https://github.com/skindhu/skind-skills.git",
+  "source_repo_url": "https://github.com/skindhu/skind-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "skind-skills provides two specialized Claude Code skills for professionals and educators. The us-stock-researcher skill performs institutional-grade analysis of US stock SEC filings, automatically downloading 10-K, 10-Q, and other documents to generate professional investment research reports with dynamic industry-specific frameworks. The educational-video-creator skill produces professional explainer videos with Kurzgesagt/回形针 flat design style, automating the complete workflow from script writing through storyboard, animation with Remotion, TTS narration generation, and quality assurance. Both skills streamline complex workflows that typically require multiple specialized tools.\nAnalyze SEC filings and generate institutional investment research reports for public companies\nCreate professional educational videos with consistent visual branding and automated narration\nPerform deep financial analysis of stocks across sectors including technology, pharma, and finance\nProduce explainer videos and science animations for educational content marketing",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/skindhu/skind-skills`",
+    "usage": "```\nI need to automate [TASK] in my workflow. Can you suggest a Claude Code skill that can help me with this? If no existing skill fits, can you create a new one using [TOOLS]? The skill should [SPECIFIC REQUIREMENTS].\n```\nCopy\n\n```\nBased on your request to automate data entry from emails into a spreadsheet, I've created a new Claude Code skill called 'Email to Spreadsheet'. This skill uses the Gmail API and Google Sheets API to extract data from incoming emails matching specific criteria and automatically populate a spreadsheet. The skill can be customized to handle different email formats and spreadsheet structures. To use this skill, you'll need to provide your Gmail account credentials and share the target spreadsheet with the skill's service account. The skill will run automatically whenever new emails arrive, keeping your spreadsheet up-to-date without any manual intervention.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skind-skills#main-content",
+      "skind-skills#overview",
+      "skind-skills#setup",
+      "skind-skills#examples",
+      "skind-skills#tools",
+      "skind-skills#mcp",
+      "skind-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "skind-skills cung cấp hai skill Claude Code chuyên dụng dành cho các chuyên gia và nhà giáo dục. Skill us-stock-researcher thực hiện phân tích báo cáo SEC của các cổ phiếu Mỹ ở cấp độ tổ chức tài chính, tự động tải xuống báo cáo 10-K, 10-Q và các tài liệu khác để tạo báo cáo nghiên cứu đầu tư chuyên nghiệp với các khung phân tích động đặc thù theo từng ngành. Skill educational-video-creator sản xuất các video giải thích (explainer video) chuyên nghiệp theo phong cách thiết kế phẳng (flat design) của Kurzgesagt/回形针, tự động hóa toàn bộ quy trình từ viết kịch bản, lên storyboard, tạo hoạt ảnh bằng Remotion, tạo giọng đọc thuyết minh TTS, cho đến khâu kiểm định chất lượng (QA). Cả hai skill này giúp tối ưu hóa các quy trình phức tạp vốn thường đòi hỏi nhiều công cụ chuyên dụng khác nhau.\nPhân tích báo cáo SEC và lập báo cáo nghiên cứu đầu tư cấp tổ chức cho các công ty đại chúng\nSản xuất video giáo dục chuyên nghiệp với nhận diện hình ảnh nhất quán và thuyết minh tự động\nPhân tích tài chính chuyên sâu cho các cổ phiếu thuộc nhiều lĩnh vực khác nhau như công nghệ, dược phẩm và tài chính\nSản xuất video giải thích và hoạt hình khoa học phục vụ cho hoạt động marketing nội dung giáo dục",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/skindhu/skind-skills`",
+    "usage_vi": "```\nTôi cần tự động hóa [TASK] trong quy trình làm việc của mình. Bạn có thể đề xuất một skill Claude Code nào hỗ trợ việc này không? Nếu không có skill nào sẵn có phù hợp, bạn có thể tạo một skill mới bằng cách sử dụng [TOOLS] không? Skill này cần [SPECIFIC REQUIREMENTS].\n```\nCopy\n\n```\nDựa trên yêu cầu tự động hóa việc nhập dữ liệu từ email vào bảng tính của bạn, tôi đã tạo một skill Claude Code mới tên là 'Email to Spreadsheet'. Skill này sử dụng Gmail API và Google Sheets API để trích xuất dữ liệu từ các email nhận được khớp với tiêu chí cụ thể và tự động điền vào bảng tính. Skill này có thể được tùy chỉnh để xử lý các định dạng email và cấu trúc bảng tính khác nhau. Để sử dụng skill này, bạn cần cung cấp thông tin xác thực tài khoản Gmail và chia sẻ bảng tính mục tiêu với tài khoản dịch vụ (service account) của skill. Skill sẽ tự động chạy mỗi khi có email mới, giúp bảng tính của bạn luôn được cập nhật mà không cần can thiệp thủ công.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:51:41.955887Z",
+    "http_status": 200,
+    "content_hash": "b12ca76bea652b87d8ddd3a4ded3a12ccee29af5461990a2f71d492e1cc3bdd2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skind-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skind-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "skind-skills: Nghiên cứu đầu tư & Sản xuất video",
+  "short_description_vi": "Bộ sưu tập các skill Claude Code hỗ trợ nghiên cứu đầu tư cổ phiếu Mỹ và sản xuất video giáo dục chuyên nghiệp theo phong cách trực quan Kurzgesagt/回形针."
+}

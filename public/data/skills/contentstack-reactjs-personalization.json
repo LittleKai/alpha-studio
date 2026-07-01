@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/contentstack-reactjs-personalization",
+  "slug": "contentstack-reactjs-personalization",
+  "name": "Contentstack Reactjs Personalization",
+  "headline": "Contentstack ReactJS Personalization: A/B Testing",
+  "short_description": "Personalization is a powerful marketing tool that helps marketing and product teams to create variants for their website pages to engage customers. Through the results of these experiments, they can gauge which variations work best so that the overall customer experience can be enhanced.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "contentstack",
+  "install_command": "git clone https://github.com/contentstack/contentstack-reactjs-personalization.git",
+  "source_repo_url": "https://github.com/contentstack/contentstack-reactjs-personalization",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill enables marketing and product teams to implement personalization on Contentstack-powered React websites using Optimizely's Feature Test framework. It allows you to create multiple page variants—such as banner variations—and run experiments to determine which versions drive better customer engagement. By testing different content variations, teams can gather performance data and make informed decisions about which variations enhance overall user experience. The integration bridges Contentstack's headless CMS with Optimizely's experimentation capabilities, streamlining the process of deploying and measuring personalized content variations without modifying core application code.\nA/B testing banner designs to increase click-through rates\nTesting multiple page variants to optimize conversion rates\nComparing product recommendation layouts for user engagement\nExperimenting with call-to-action button variations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/contentstack/contentstack-reactjs-personalization`",
+    "usage": "```\nCreate a ReactJS component for a contentstack-powered website that personalizes content based on user behavior. The component should display different variants of a product page for users in the [INDUSTRY] industry. Use the following [DATA] to create three distinct variants: one for first-time visitors, one for returning visitors, and one for users who have previously purchased from [COMPANY]. Ensure the component is responsive and optimized for performance.\n```\nCopy\n\n```\n```markdown\n# ReactJS Contentstack Personalization Component\n\nHere's a ReactJS component that personalizes content based on user behavior for a website in the [INDUSTRY] industry:\n\n```javascript\nimport React, { useEffect, useState } from 'react';\nimport Contentstack from 'contentstack';\n\nconst PersonalizedProductPage = ({ userData }) => {\n  const [content, setContent] = useState(null);\n  const [variant, setVariant] = useState('');\n\n  useEffect(() => {\n    // Initialize Contentstack\n    const Stack = Contentstack.Stack({ api_key: 'YOUR_API_KEY', delivery_token: 'YOUR_DELIVERY_TOKEN' });\n    const ContentType = Stack.ContentType('product_page');\n\n    // Determine variant based on user data\n    if (userData.isFirstTimeVisitor) {\n      setVariant('first_time');\n    } else if (userData.isReturningVisitor) {\n      setVariant('returning');\n    } else if (userData.hasPurchased) {\n      setVariant('purchased');\n    }\n\n    // Query Contentstack for the appropriate variant\n    ContentType.Query().where('variant', variant).toJSON().find().then((result) => {\n      setContent(result);\n    });\n  }, [userData]);\n\n  if (!content) {\n    return <div>Loading...</div>;\n  }\n\n  return (\n    <div className='product-page'>\n      <h1>{content.title}</h1>\n      <p>{content.description}</p>\n      <img src={content.image_url} alt={content.title} />\n      <button className='cta-button'>{content.cta_text}</button>\n    </div>\n  );\n};\n\nexport default PersonalizedProductPage;\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "contentstack-reactjs-personalization#main-content",
+      "contentstack-reactjs-personalization#overview",
+      "contentstack-reactjs-personalization#setup",
+      "contentstack-reactjs-personalization#examples",
+      "contentstack-reactjs-personalization#tools",
+      "contentstack-reactjs-personalization#mcp",
+      "contentstack-reactjs-personalization#related",
+      "marketingskills",
+      "copywriting",
+      "agentic-articles"
+    ],
+    "overview_vi": "Skill này giúp đội ngũ marketing và phát triển sản phẩm triển khai tính năng cá nhân hóa trên các website React sử dụng Contentstack thông qua framework Feature Test của Optimizely. Giải pháp cho phép tạo nhiều biến thể trang—như các phiên bản banner khác nhau—và chạy thử nghiệm để xác định phiên bản nào mang lại tương tác tốt hơn từ khách hàng. Bằng cách thử nghiệm các biến thể nội dung khác nhau, các đội ngũ có thể thu thập dữ liệu hiệu suất và đưa ra quyết định chính xác về việc biến thể nào giúp tối ưu hóa trải nghiệm người dùng tổng thể. Sự tích hợp này tạo cầu nối giữa headless CMS của Contentstack và các tính năng thử nghiệm của Optimizely, giúp tinh giản quy trình triển khai cũng như đo lường các biến thể nội dung cá nhân hóa mà không cần chỉnh sửa mã nguồn core của ứng dụng.\n\nA/B testing thiết kế banner để tăng tỷ lệ click-through\nThử nghiệm nhiều biến thể trang để tối ưu hóa tỷ lệ chuyển đổi\nSo sánh các bố cục gợi ý sản phẩm nhằm tăng tương tác của người dùng\nThử nghiệm các biến thể của nút kêu gọi hành động (CTA)",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/contentstack/contentstack-reactjs-personalization`",
+    "usage_vi": "```\nTạo một component ReactJS cho website chạy trên nền tảng Contentstack để cá nhân hóa nội dung dựa trên hành vi của người dùng. Component này cần hiển thị các biến thể khác nhau của một trang sản phẩm dành cho người dùng thuộc ngành công nghiệp [INDUSTRY]. Sử dụng dữ liệu [DATA] sau đây để tạo ba biến thể riêng biệt: một cho khách truy cập lần đầu, một cho khách quay lại, và một cho người dùng đã từng mua hàng từ [COMPANY]. Đảm bảo component này có hỗ trợ responsive và được tối ưu hóa về hiệu suất.\n```\nCopy\n\n```\n```markdown\n# Component Cá nhân hóa ReactJS Contentstack\n\nDưới đây là một component ReactJS thực hiện cá nhân hóa nội dung dựa trên hành vi của người dùng đối với một website trong ngành công nghiệp [INDUSTRY]:\n\n```javascript\nimport React, { useEffect, useState } from 'react';\nimport Contentstack from 'contentstack';\n\nconst PersonalizedProductPage = ({ userData }) => {\n  const [content, setContent] = useState(null);\n  const [variant, setVariant] = useState('');\n\n  useEffect(() => {\n    // Khởi tạo Contentstack\n    const Stack = Contentstack.Stack({ api_key: 'YOUR_API_KEY', delivery_token: 'YOUR_DELIVERY_TOKEN' });\n    const ContentType = Stack.ContentType('product_page');\n\n    // Xác định biến thể dựa trên dữ liệu người dùng\n    if (userData.isFirstTimeVisitor) {\n      setVariant('first_time');\n    } else if (userData.isReturningVisitor) {\n      setVariant('returning');\n    } else if (userData.hasPurchased) {\n      setVariant('purchased');\n    }\n\n    // Truy vấn Contentstack để lấy biến thể phù hợp\n    ContentType.Query().where('variant', variant).toJSON().find().then((result) => {\n      setContent(result);\n    });\n  }, [userData]);\n\n  if (!content) {\n    return <div>Loading...</div>;\n  }\n\n  return ( \n    <div className='product-page'>\n      <h1>{content.title}</h1>\n      <p>{content.description}</p>\n      <img src={content.image_url} alt={content.title} />\n      <button className='cta-button'>{content.cta_text}</button>\n    </div>\n  );\n};\n\nexport default PersonalizedProductPage;\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:26.004570Z",
+    "http_status": 200,
+    "content_hash": "1363d92b5edf1819f537fa00bbcdee51dce7f30ede83e5ccb48dd8df93a8de81",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\contentstack-reactjs-personalization.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\contentstack-reactjs-personalization.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cá nhân hóa Contentstack ReactJS: A/B Testing",
+  "short_description_vi": "Cá nhân hóa là một công cụ marketing mạnh mẽ giúp đội ngũ marketing và phát triển sản phẩm tạo ra các biến thể cho trang web nhằm tăng tương tác với khách hàng. Từ kết quả của các thử nghiệm này, họ có thể đánh giá biến thể nào hoạt động hiệu quả nhất để tối ưu hóa trải nghiệm tổng thể của khách hàng."
+}

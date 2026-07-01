@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/antigravity-skills",
+  "slug": "antigravity-skills",
+  "name": "browser-use",
+  "headline": "antigravity-skills for expert ai solutions",
+  "short_description": "Help agents with professional capabilities in specific fields (such as full-stack development, complex logic planning, multimedia processing, etc.) through modular Skills definitions, allowing agents to solve complex problems systematically like human experts.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "guanyang",
+  "install_command": "git clone https://github.com/guanyang/antigravity-skills.git",
+  "source_repo_url": "https://github.com/guanyang/antigravity-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-agents",
+    "opencode",
+    "claude-code-plugin",
+    "claude-code",
+    "ai-skills",
+    "superpowers",
+    "antigravity-ide",
+    "notebooklm",
+    "cursor",
+    "antigravity",
+    "skills",
+    "planning",
+    "ui-ux-design",
+    "antigravity-ai",
+    "context-engineering",
+    "full-stack",
+    "workflows",
+    "anthropic-skills",
+    "agent"
+  ],
+  "sections": {
+    "overview": "antigravity-skills is a curated directory of reusable skill definitions designed to enhance AI agents with professional capabilities across specialized fields. It organizes expert-level knowledge into modular components that agents can leverage to solve complex problems systematically, similar to how human experts approach domain-specific challenges. The repository maintains an actively synced collection of skills covering full-stack development, complex logic planning, multimedia processing, and other specialized areas. By structuring capabilities as discrete, well-defined skills, agents can access domain expertise and execute workflows more effectively. This skill directory supports Claude Code, Cursor, and other AI platforms seeking to expand their problem-solving capabilities.\nEnhancing AI agents with full-stack development expertise\nEnabling complex logic planning and problem decomposition\nProviding multimedia processing capabilities to AI assistants\nBuilding specialized workflow automation with modular skills",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/guanyang/antigravity-skills`",
+    "usage": "```\nAct as a modular expert in [FIELD: e.g., full-stack development, complex logic planning, multimedia processing]. Break down the task '[TASK: e.g., optimize this React application for performance, design a fault-tolerant distributed system, or process this video to extract metadata]' into 3-5 systematic steps. For each step, provide: (1) a clear action, (2) required tools/resources, and (3) expected output. Conclude with a summary of dependencies and potential pitfalls to avoid. Format the response as a structured report with headers for each step.\n```\nCopy\n\n```\n### **Modular Expert Analysis: Optimizing a React Application for Performance**\n\n**Task:** Optimize a React e-commerce dashboard with 10,000+ concurrent users, slow load times, and frequent re-renders.\n\n---\n\n#### **Step 1: Audit Current Performance with Lighthouse & React DevTools**\n- **Action:** Run a Lighthouse audit in Chrome DevTools and analyze React DevTools Profiler for component re-renders.\n- **Tools/Resources:** Chrome DevTools, React DevTools, Lighthouse.\n- **Expected Output:** \n  - Lighthouse report showing FCP (First Contentful Paint) at 3.2s (target: <1.8s), TTI (Time to Interactive) at 5.1s (target: <3.8s).\n  - React DevTools reveals 12 unnecessary re-renders in the product listing component due to state updates in parent components.\n\n#### **Step 2: Implement Code Splitting with React.lazy and Suspense**\n- **Action:** Split the dashboard into chunks using `React.lazy` for non-critical routes (e.g., user profile, analytics). Wrap lazy-loaded components in `Suspense` with fallback loading states.\n- **Tools/Resources:** Webpack (or Vite), `@babel/plugin-syntax-dynamic-import`.\n- **Expected Output:** \n  - Bundle size reduced from 2.4MB to 1.1MB (54% reduction).\n  - Critical path analysis shows main bundle now loads in 1.2s (down from 2.1s).\n\n#### **Step 3: Memoize Expensive Components with React.memo and useMemo**\n- **Action:** Identify and memoize components with heavy computations (e.g., product card, price calculator) using `React.memo` and `useMemo` to prevent unnecessary re-renders.\n- **Tools/Resources:** React DevTools, `useMemo` hook.\n- **Expected Output:** \n  - Re-renders in the product listing component drop from 12 to 3 per user interaction.\n  - CPU profiling shows 40% reduction in script execution time during user interactions.\n\n#### **Step 4: Optimize State Management with Context API + useReducer**\n- **Action:** Replace global state (e.g., Redux) with React Context API + `useReducer` for the shopping cart and user session to reduce boilerplate and improve state updates.\n- **Tools/Resources:** React Context API, `useReducer` hook.\n- **Expected Output:** \n  - State updates now trigger only 2 re-renders (down from 8) when adding items to cart.\n  - Bundle size reduced by an additional 300KB (total reduction: 67%).\n\n#### **Step 5: Deploy and Monitor with Performance Budgets**\n- **Action:** Deploy the optimized build to a staging environment and set up performance budgets in CI/CD (e.g., bundle size <1.5MB, TTI <4s). Monitor with New Relic or Sentry.\n- **Tools/Resources:** GitHub Actions, New Relic, Sentry.\n- **Expected Output:** \n  - Staging environment shows FCP at 1.5s and TTI at 3.2s (both within targets).\n  - Alerts triggered if bundle size exceeds 1.5MB or TTI exceeds 4s in production.\n\n---\n\n**Dependencies:**\n- Requires React 16.8+ for hooks.\n- Assumes Webpack/Vite is used for bundling.\n\n**Pitfalls to Avoid:**\n- Over-memoization can lead to stale state or unnecessary complexity.\n- Lazy-loaded components must include proper error boundaries to handle loading failures.\n- Performance gains may vary based on user device capabilities (test on low-end devices).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "antigravity-skills#main-content",
+      "antigravity-skills#overview",
+      "antigravity-skills#setup",
+      "antigravity-skills#examples",
+      "antigravity-skills#tools",
+      "antigravity-skills#mcp",
+      "antigravity-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "antigravity-skills is a curated directory of reusable skill definitions designed to enhance AI agents with professional capabilities across specialized fields. It organizes expert-level knowledge into modular components that agents can leverage to solve complex problems systematically, similar to how human experts approach domain-specific challenges. The repository maintains an actively synced collection of skills covering full-stack development, complex logic planning, multimedia processing, and other specialized areas. By structuring capabilities as discrete, well-defined skills, agents can access domain expertise and execute workflows more effectively. This skill directory supports Claude Code, Cursor, and other AI platforms seeking to expand their problem-solving capabilities.\nEnhancing AI agents with full-stack development expertise\nEnabling complex logic planning and problem decomposition\nProviding multimedia processing capabilities to AI assistants\nBuilding specialized workflow automation with modular skills",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/guanyang/antigravity-skills`",
+    "usage_vi": "```\nAct as a modular expert in [FIELD: e.g., full-stack development, complex logic planning, multimedia processing]. Break down the task '[TASK: e.g., optimize this React application for performance, design a fault-tolerant distributed system, or process this video to extract metadata]' into 3-5 systematic steps. For each step, provide: (1) a clear action, (2) required tools/resources, and (3) expected output. Conclude with a summary of dependencies and potential pitfalls to avoid. Format the response as a structured report with headers for each step.\n```\nCopy\n\n```\n### **Modular Expert Analysis: Optimizing a React Application for Performance**\n\n**Task:** Optimize a React e-commerce dashboard with 10,000+ concurrent users, slow load times, and frequent re-renders.\n\n---\n\n#### **Step 1: Audit Current Performance with Lighthouse & React DevTools**\n- **Action:** Run a Lighthouse audit in Chrome DevTools and analyze React DevTools Profiler for component re-renders.\n- **Tools/Resources:** Chrome DevTools, React DevTools, Lighthouse.\n- **Expected Output:** \n  - Lighthouse report showing FCP (First Contentful Paint) at 3.2s (target: <1.8s), TTI (Time to Interactive) at 5.1s (target: <3.8s).\n  - React DevTools reveals 12 unnecessary re-renders in the product listing component due to state updates in parent components.\n\n#### **Step 2: Implement Code Splitting with React.lazy and Suspense**\n- **Action:** Split the dashboard into chunks using `React.lazy` for non-critical routes (e.g., user profile, analytics). Wrap lazy-loaded components in `Suspense` with fallback loading states.\n- **Tools/Resources:** Webpack (or Vite), `@babel/plugin-syntax-dynamic-import`.\n- **Expected Output:** \n  - Bundle size reduced from 2.4MB to 1.1MB (54% reduction).\n  - Critical path analysis shows main bundle now loads in 1.2s (down from 2.1s).\n\n#### **Step 3: Memoize Expensive Components with React.memo and useMemo**\n- **Action:** Identify and memoize components with heavy computations (e.g., product card, price calculator) using `React.memo` and `useMemo` to prevent unnecessary re-renders.\n- **Tools/Resources:** React DevTools, `useMemo` hook.\n- **Expected Output:** \n  - Re-renders in the product listing component drop from 12 to 3 per user interaction.\n  - CPU profiling shows 40% reduction in script execution time during user interactions.\n\n#### **Step 4: Optimize State Management with Context API + useReducer**\n- **Action:** Replace global state (e.g., Redux) with React Context API + `useReducer` for the shopping cart and user session to reduce boilerplate and improve state updates.\n- **Tools/Resources:** React Context API, `useReducer` hook.\n- **Expected Output:** \n  - State updates now trigger only 2 re-renders (down from 8) when adding items to cart.\n  - Bundle size reduced by an additional 300KB (total reduction: 67%).\n\n#### **Step 5: Deploy and Monitor with Performance Budgets**\n- **Action:** Deploy the optimized build to a staging environment and set up performance budgets in CI/CD (e.g., bundle size <1.5MB, TTI <4s). Monitor with New Relic or Sentry.\n- **Tools/Resources:** GitHub Actions, New Relic, Sentry.\n- **Expected Output:** \n  - Staging environment shows FCP at 1.5s and TTI at 3.2s (both within targets).\n  - Alerts triggered if bundle size exceeds 1.5MB or TTI exceeds 4s in production.\n\n---\n\n**Dependencies:**\n- Requires React 16.8+ for hooks.\n- Assumes Webpack/Vite is used for bundling.\n\n**Pitfalls to Avoid:**\n- Over-memoization can lead to stale state or unnecessary complexity.\n- Lazy-loaded components must include proper error boundaries to handle loading failures.\n- Performance gains may vary based on user device capabilities (test on low-end devices).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:25:16.061724Z",
+    "http_status": 200,
+    "content_hash": "9be4ef1523931b8ec147e917f2fe4f78d7f4e383c7d9665fac15ceb8dbfb8629",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\antigravity-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\antigravity-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "antigravity-skills for expert ai solutions",
+  "short_description_vi": "Help agents with professional capabilities in specific fields (such as full-stack development, complex logic planning, multimedia processing, etc.) through modular Skills definitions, allowing agents to solve complex problems systematically like human experts."
+}

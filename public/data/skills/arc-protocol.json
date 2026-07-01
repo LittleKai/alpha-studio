@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/arc-protocol",
+  "slug": "arc-protocol",
+  "name": "Arc Protocol",
+  "headline": "arc protocol for ai-assisted dev workflows",
+  "short_description": "ARC Protocol automates AI-assisted development workflows with persistent context. Operations teams use it to analyze, run, and confirm project execution. It integrates with Python-based tools and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "140 min",
+  "author": "AshishOP",
+  "install_command": "git clone https://github.com/AshishOP/arc-protocol.git",
+  "source_repo_url": "https://github.com/AshishOP/arc-protocol",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "workflow",
+    "ai-agent",
+    "antigravity",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ARC Protocol is a managed context protocol that prevents AI-assisted coding from becoming fragmented or unreliable. It enforces a three-phase workflow—Analyze, Run, Confirm—where specialized agents (Researcher, Coder, Auditor) work together on a single project while maintaining awareness of the full codebase architecture. Unlike single-file AI approaches, ARC requires agents to check project contracts and codebase maps before making changes. It integrates with Claude, Cursor, and other AI editors through slash-commands, and works with Python 3.10+ codebases without requiring paid API keys.\nInitialize and structure new Python projects with guided AI planning\nMap and document existing codebases before making coordinated changes\nExecute multi-step development tasks with specialized agent roles\nVerify code quality and functionality before committing changes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AshishOP/arc-protocol`",
+    "usage": "```\nUse ARC Protocol to automate the [PROJECT_NAME] workflow. Start by analyzing the [REPOSITORY_PATH] for [SPECIFIC_ISSUE_TYPE] issues. Run the automated test suite in [ENVIRONMENT_NAME] and confirm all critical paths pass. Document the results in [OUTPUT_FORMAT] and flag any regressions for immediate review. Prioritize fixes based on [SEVERITY_CRITERIA].\n```\nCopy\n\n```\nARC Protocol has completed the automated analysis of the 'payment-gateway' repository in the staging environment. The protocol identified 3 critical issues: 1) A race condition in the transaction retry logic affecting 0.8% of requests, 2) A memory leak in the rate-limiting module causing 5% performance degradation after 48 hours of continuous operation, and 3) A missing validation check in the refund endpoint that could allow negative balances.\n\nThe automated test suite (Python-based, pytest framework) was executed in the 'staging' environment with 98.7% code coverage. The protocol confirmed that 127/132 tests passed, with 5 failures directly related to the identified issues. The regression suite flagged a 15% increase in latency for the refund endpoint compared to the previous build (120ms vs 104ms baseline).\n\nThe protocol generated a structured report in Markdown format with:\n- Issue severity ratings (Critical: 2, High: 1)\n- Root cause analysis for each failure\n- Recommended fixes with estimated effort (race condition: 2h, memory leak: 6h, validation check: 1h)\n- Priority queue for the engineering team (Critical issues first)\n\nAll artifacts were automatically pushed to the 'arc-reports' Slack channel and tagged with #payment-gateway-alerts. The protocol also created a Jira ticket for each issue with pre-populated descriptions and linked test results.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "arc-protocol#main-content",
+      "arc-protocol#overview",
+      "arc-protocol#setup",
+      "arc-protocol#examples",
+      "arc-protocol#tools",
+      "arc-protocol#mcp",
+      "arc-protocol#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ARC Protocol là một giao thức quản lý context giúp ngăn chặn việc lập trình hỗ trợ bởi AI trở nên rời rạc hoặc thiếu tin cậy. Giao thức này áp dụng quy trình ba giai đoạn—Analyze, Run, Confirm—nơi các agent chuyên dụng (Researcher, Coder, Auditor) cộng tác trên một dự án duy nhất trong khi vẫn nắm rõ toàn bộ kiến trúc codebase. Khác với các phương pháp tiếp cận AI trên từng file đơn lẻ, ARC yêu cầu các agent phải kiểm tra project contract và codebase map trước khi thực hiện thay đổi. Nó tích hợp với Claude, Cursor và các trình soạn thảo AI khác thông qua các slash-command, đồng thời tương thích tốt với các codebase Python 3.10+ mà không yêu cầu API key trả phí.\nKhởi tạo và cấu trúc các dự án Python mới với kế hoạch được AI hướng dẫn\nXây dựng bản đồ và tài liệu hóa các codebase hiện có trước khi thực hiện các thay đổi đồng bộ\nThực thi các tác vụ phát triển nhiều bước với các vai trò agent chuyên trách\nXác minh chất lượng và chức năng của code trước khi commit thay đổi",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/AshishOP/arc-protocol`",
+    "usage_vi": "```\nSử dụng ARC Protocol để tự động hóa workflow của [PROJECT_NAME]. Bắt đầu bằng việc phân tích [REPOSITORY_PATH] để tìm các lỗi [SPECIFIC_ISSUE_TYPE]. Chạy bộ test tự động trong [ENVIRONMENT_NAME] và xác nhận rằng tất cả các luồng xử lý quan trọng (critical path) đều đạt yêu cầu. Ghi lại kết quả dưới định dạng [OUTPUT_FORMAT] và đánh dấu bất kỳ lỗi regression nào để xem xét ngay lập tức. Ưu tiên sửa lỗi dựa trên [SEVERITY_CRITERIA].\n```\nCopy\n\n```\nARC Protocol đã hoàn thành phân tích tự động đối với repository 'payment-gateway' trong môi trường staging. Giao thức đã phát hiện 3 lỗi nghiêm trọng (critical issues): 1) Lỗi race condition trong logic thử lại giao dịch (transaction retry) ảnh hưởng đến 0.8% số lượng request, 2) Rò rỉ bộ nhớ (memory leak) trong module rate-limiting gây giảm 5% hiệu năng sau 48 giờ hoạt động liên tục, và 3) Thiếu bước kiểm tra hợp lệ (validation check) ở endpoint hoàn tiền (refund endpoint), có thể dẫn đến số dư âm.\n\nBộ test tự động (dựa trên Python, framework pytest) đã được thực thi trong môi trường 'staging' với độ bao phủ code (code coverage) đạt 98.7%. Giao thức xác nhận có 127/132 test case vượt qua, với 5 test case thất bại liên quan trực tiếp đến các lỗi được phát hiện. Bộ test regression ghi nhận độ trễ (latency) của endpoint hoàn tiền tăng 15% so với bản build trước (120ms so với mức baseline là 104ms).\n\nGiao thức đã tạo một báo cáo có cấu trúc định dạng Markdown gồm:\n- Đánh giá mức độ nghiêm trọng của lỗi (Critical: 2, High: 1)\n- Phân tích nguyên nhân gốc rễ (root cause analysis) cho từng trường hợp thất bại\n- Đề xuất phương án khắc phục kèm thời gian ước tính (race condition: 2h, memory leak: 6h, validation check: 1h)\n- Danh sách ưu tiên xử lý cho đội ngũ kỹ thuật (Engineering team) (ưu tiên các lỗi Critical trước)\n\nTất cả các tài liệu (artifacts) đã được tự động gửi đến kênh Slack 'arc-reports' và gắn thẻ #payment-gateway-alerts. Giao thức cũng đã tạo một ticket Jira cho từng lỗi với phần mô tả được điền sẵn và liên kết đến kết quả kiểm thử.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:03.953136Z",
+    "http_status": 200,
+    "content_hash": "0e2548cb19248b9f7c5ba058f8f3cc8ae1b7ac49b604abba7821b57043fc29e0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\arc-protocol.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\arc-protocol.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Giao thức ARC cho các workflow phát triển hỗ trợ bởi AI",
+  "short_description_vi": "ARC Protocol tự động hóa các workflow phát triển hỗ trợ bởi AI với context được duy trì liên tục. Các đội ngũ vận hành sử dụng giao thức này để phân tích, thực thi và xác nhận việc triển khai dự án. Nó tích hợp tốt với các công cụ phát triển bằng Python và các Claude agent."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gemini",
+  "slug": "gemini",
+  "name": "react-native-best-practices",
+  "headline": "Boost Productivity with Gemini AI Agent",
+  "short_description": "Gemini automates repetitive sales tasks, freeing up time for strategic work. It integrates with Claude Code, Cursor, Windsurf, Cline, and Codex to streamline workflows. Sales teams benefit from faster data processing and improved efficiency.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "efficiency",
+    "AI",
+    "productivity",
+    "automation"
+  ],
+  "sections": {
+    "overview": "Gemini is a development skill that automates repetitive sales tasks, enabling sales teams to redirect their focus toward strategic initiatives. It integrates seamlessly with Claude Code, Cursor, Windsurf, Cline, and Codex to streamline development and sales workflows. By automating routine data processing and administrative work, Gemini helps teams improve operational efficiency and accelerate task completion.\nTask automation\nData analysis\nCustomer support",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nUse Gemini to automate repetitive sales tasks for [SALES_TEAM_NAME] by integrating with [TOOL_NAME: Claude Code/Cursor/Windsurf/Cline/Codex]. Focus on [SPECIFIC_TASK: e.g., lead qualification, follow-up emails, data entry, pipeline updates]. Generate a step-by-step workflow that includes: 1) Identifying the most time-consuming tasks, 2) Creating automation scripts or templates, 3) Setting up integrations with [TOOL_NAME], and 4) Testing and refining the workflow. Provide actionable next steps for the team to implement this immediately.\n```\nCopy\n\n```\nFor the **Acme Corp Sales Team**, we automated three critical but time-consuming tasks using **Gemini + Cursor** to free up 15+ hours per week for strategic work. First, we identified that **lead qualification** and **follow-up emails** were the biggest bottlenecks, consuming 40% of the team’s time. We then created a **Gemini-powered automation script** in Cursor that: \n\n1. **Scrapes LinkedIn Sales Navigator** for new leads matching Acme’s ICP (e.g., mid-market SaaS companies in the Midwest with 50-200 employees) and exports them to HubSpot. The script uses a custom regex to extract job titles, company names, and contact details, reducing manual data entry by 80%.\n\n2. **Generates personalized follow-up emails** based on the lead’s role (e.g., CTO vs. VP of Sales) and recent company news (e.g., funding rounds or product launches). For example, a lead at a company that raised $10M last month received an email like: \n   > *Subject: Congrats on your $10M round! Here’s how [Acme’s Product] can help [Company] scale faster*\n   > *Hi [First Name],*\n   > *I noticed [Company]’s recent $10M Series B—congrats! At Acme, we help teams like yours [specific value prop, e.g., ‘reduce cloud costs by 30%’]. Would you be open to a quick 15-minute chat next week?*\n\n3. **Syncs with HubSpot** via Cursor’s API integration, ensuring all leads and emails are logged automatically. The team now spends **zero time** on manual data entry or email drafting.\n\n4. **Tracks performance** using a shared dashboard in Cursor that highlights conversion rates, response times, and engagement metrics. For instance, the team’s open rates improved from 22% to 45% after switching to personalized templates.\n\n**Next Steps for Acme Corp:**\n- Assign a sales ops intern to review the automation script weekly for edge cases (e.g., leads with incomplete data).\n- Schedule a 30-minute training session in Cursor to onboard the team on the new workflow.\n- Set up a Slack channel (#gemini-automation) to collect feedback and iterate on the scripts.\n\nThe team now spends **80% less time** on repetitive tasks and has seen a **25% increase in qualified pipeline** in the first month.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "gemini#main-content",
+      "gemini#overview",
+      "gemini#setup",
+      "gemini#examples",
+      "gemini#tools",
+      "gemini#mcp",
+      "gemini#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Gemini is a development skill that automates repetitive sales tasks, enabling sales teams to redirect their focus toward strategic initiatives. It integrates seamlessly with Claude Code, Cursor, Windsurf, Cline, and Codex to streamline development and sales workflows. By automating routine data processing and administrative work, Gemini helps teams improve operational efficiency and accelerate task completion.\nTask automation\nData analysis\nCustomer support",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nUse Gemini to automate repetitive sales tasks for [SALES_TEAM_NAME] by integrating with [TOOL_NAME: Claude Code/Cursor/Windsurf/Cline/Codex]. Focus on [SPECIFIC_TASK: e.g., lead qualification, follow-up emails, data entry, pipeline updates]. Generate a step-by-step workflow that includes: 1) Identifying the most time-consuming tasks, 2) Creating automation scripts or templates, 3) Setting up integrations with [TOOL_NAME], and 4) Testing and refining the workflow. Provide actionable next steps for the team to implement this immediately.\n```\nCopy\n\n```\nFor the **Acme Corp Sales Team**, we automated three critical but time-consuming tasks using **Gemini + Cursor** to free up 15+ hours per week for strategic work. First, we identified that **lead qualification** and **follow-up emails** were the biggest bottlenecks, consuming 40% of the team’s time. We then created a **Gemini-powered automation script** in Cursor that: \n\n1. **Scrapes LinkedIn Sales Navigator** for new leads matching Acme’s ICP (e.g., mid-market SaaS companies in the Midwest with 50-200 employees) and exports them to HubSpot. The script uses a custom regex to extract job titles, company names, and contact details, reducing manual data entry by 80%.\n\n2. **Generates personalized follow-up emails** based on the lead’s role (e.g., CTO vs. VP of Sales) and recent company news (e.g., funding rounds or product launches). For example, a lead at a company that raised $10M last month received an email like: \n   > *Subject: Congrats on your $10M round! Here’s how [Acme’s Product] can help [Company] scale faster*\n   > *Hi [First Name],*\n   > *I noticed [Company]’s recent $10M Series B—congrats! At Acme, we help teams like yours [specific value prop, e.g., ‘reduce cloud costs by 30%’]. Would you be open to a quick 15-minute chat next week?*\n\n3. **Syncs with HubSpot** via Cursor’s API integration, ensuring all leads and emails are logged automatically. The team now spends **zero time** on manual data entry or email drafting.\n\n4. **Tracks performance** using a shared dashboard in Cursor that highlights conversion rates, response times, and engagement metrics. For instance, the team’s open rates improved from 22% to 45% after switching to personalized templates.\n\n**Next Steps for Acme Corp:**\n- Assign a sales ops intern to review the automation script weekly for edge cases (e.g., leads with incomplete data).\n- Schedule a 30-minute training session in Cursor to onboard the team on the new workflow.\n- Set up a Slack channel (#gemini-automation) to collect feedback and iterate on the scripts.\n\nThe team now spends **80% less time** on repetitive tasks and has seen a **25% increase in qualified pipeline** in the first month.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:05.865323Z",
+    "http_status": 200,
+    "content_hash": "3be525b0e5766c56d808b7ef20b05e00321a0375a5ba560b3c29c33029544612",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\gemini.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Boost Productivity with Gemini AI Agent",
+  "short_description_vi": "Gemini automates repetitive sales tasks, freeing up time for strategic work. It integrates with Claude Code, Cursor, Windsurf, Cline, and Codex to streamline workflows. Sales teams benefit from faster data processing and improved efficiency."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/qiaomu-x-article-publisher",
+  "slug": "qiaomu-x-article-publisher",
+  "name": "Qiaomu X Article Publisher",
+  "headline": "Qiaomu X Article Publisher - Automate X Article",
+  "short_description": "Publish Markdown articles to X (Twitter) Articles with one click. Ideal for content creators and operations teams. Integrates with Claude Code Skill for persistent authentication and standalone operation. Works on macOS with Python 3.9+.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "5 min",
+  "author": "joeseesun",
+  "install_command": "git clone https://github.com/joeseesun/qiaomu-x-article-publisher.git",
+  "source_repo_url": "https://github.com/joeseesun/qiaomu-x-article-publisher",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Qiaomu X Article Publisher automates publishing Markdown articles directly to X (Twitter) Articles, eliminating the need to use X's web editor. It converts Markdown formatting—including headings, bold, italic, lists, quotes, links, and images—into X Articles format and uploads images automatically. The skill features 7-day persistent authentication so you don't need to log in repeatedly, and saves articles as drafts rather than auto-publishing for safety. It works standalone or integrates seamlessly with Claude Code, letting you write and publish articles without leaving your editor.\nContent creators publishing long-form articles from local Markdown files to X\nOperations teams automating article distribution with version control via Git\nClaude Code users publishing articles generated during code assistant conversations\nWriters managing article drafts locally while syncing to X Articles platform",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joeseesun/qiaomu-x-article-publisher`",
+    "usage": "```\nPublish the following Markdown article to X (Twitter) Articles as a [TITLE]. Use the filename [FILENAME.md] and include the following frontmatter: title: [TITLE], description: [SHORT_DESCRIPTION], tags: [COMMA_SEPARATED_TAGS]. Format the article with proper Markdown syntax and ensure the first paragraph is a compelling hook. [ARTICLE_MARKDOWN]\n```\nCopy\n\n```\n📢 **Published to X Articles!**\n\n**Title:** The Future of AI-Powered Content Creation\n**URL:** https://x.com/i/articles/1234567890\n**Stats:** 1,247 views | 47 likes | 12 bookmarks\n\n**Content Preview:**\nThe rise of generative AI isn’t just changing *what* we create—it’s revolutionizing *how* we distribute content. In 2024, platforms like X Articles are becoming the new battleground for thought leadership, where a single well-structured post can reach 10x more readers than a traditional blog. But here’s the catch: most creators are still treating these platforms like blogs, not social networks. The difference? **Hooks in the first 2 lines.**\n\n**Key Insights:**\n1. **Algorithm-Friendly Structure:** X Articles prioritizes posts with clear sections (H2/H3 headers) and bullet points. My draft used 3 H2 headers and 5 bullet lists—resulting in 2x the average engagement.\n2. **Metadata Matters:** The frontmatter tags (\"AI\", \"Content Strategy\", \"Twitter\") matched trending topics, pushing the post into the \"For You\" feed for 3 hours longer than usual.\n3. **Visual Breaks:** Added a horizontal rule (---) after the hook and before the conclusion. Readers spent 40% more time scrolling vs. my previous posts without it.\n\n**Next Steps:**\n- Share the link in your newsletter with a CTA like: \"Want the full template? Reply with ‘TEMPLATE’ and I’ll send it.\"\n- Schedule a follow-up thread in 48 hours teasing a case study (e.g., \"How this post got 5K views in 3 days—here’s the breakdown\").\n\n**Full Article:** [See attached file or visit the link above]\n\n*Tip: To maximize reach, pin this article to your profile and add it to your Linktree!*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "qiaomu-x-article-publisher#main-content",
+      "qiaomu-x-article-publisher#overview",
+      "qiaomu-x-article-publisher#setup",
+      "qiaomu-x-article-publisher#examples",
+      "qiaomu-x-article-publisher#tools",
+      "qiaomu-x-article-publisher#mcp",
+      "qiaomu-x-article-publisher#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Qiaomu X Article Publisher automates publishing Markdown articles directly to X (Twitter) Articles, eliminating the need to use X's web editor. It converts Markdown formatting—including headings, bold, italic, lists, quotes, links, and images—into X Articles format and uploads images automatically. The skill features 7-day persistent authentication so you don't need to log in repeatedly, and saves articles as drafts rather than auto-publishing for safety. It works standalone or integrates seamlessly with Claude Code, letting you write and publish articles without leaving your editor.\nContent creators publishing long-form articles from local Markdown files to X\nOperations teams automating article distribution with version control via Git\nClaude Code users publishing articles generated during code assistant conversations\nWriters managing article drafts locally while syncing to X Articles platform",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joeseesun/qiaomu-x-article-publisher`",
+    "usage_vi": "```\nPublish the following Markdown article to X (Twitter) Articles as a [TITLE]. Use the filename [FILENAME.md] and include the following frontmatter: title: [TITLE], description: [SHORT_DESCRIPTION], tags: [COMMA_SEPARATED_TAGS]. Format the article with proper Markdown syntax and ensure the first paragraph is a compelling hook. [ARTICLE_MARKDOWN]\n```\nCopy\n\n```\n📢 **Published to X Articles!**\n\n**Title:** The Future of AI-Powered Content Creation\n**URL:** https://x.com/i/articles/1234567890\n**Stats:** 1,247 views | 47 likes | 12 bookmarks\n\n**Content Preview:**\nThe rise of generative AI isn’t just changing *what* we create—it’s revolutionizing *how* we distribute content. In 2024, platforms like X Articles are becoming the new battleground for thought leadership, where a single well-structured post can reach 10x more readers than a traditional blog. But here’s the catch: most creators are still treating these platforms like blogs, not social networks. The difference? **Hooks in the first 2 lines.**\n\n**Key Insights:**\n1. **Algorithm-Friendly Structure:** X Articles prioritizes posts with clear sections (H2/H3 headers) and bullet points. My draft used 3 H2 headers and 5 bullet lists—resulting in 2x the average engagement.\n2. **Metadata Matters:** The frontmatter tags (\"AI\", \"Content Strategy\", \"Twitter\") matched trending topics, pushing the post into the \"For You\" feed for 3 hours longer than usual.\n3. **Visual Breaks:** Added a horizontal rule (---) after the hook and before the conclusion. Readers spent 40% more time scrolling vs. my previous posts without it.\n\n**Next Steps:**\n- Share the link in your newsletter with a CTA like: \"Want the full template? Reply with ‘TEMPLATE’ and I’ll send it.\"\n- Schedule a follow-up thread in 48 hours teasing a case study (e.g., \"How this post got 5K views in 3 days—here’s the breakdown\").\n\n**Full Article:** [See attached file or visit the link above]\n\n*Tip: To maximize reach, pin this article to your profile and add it to your Linktree!*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:50.343374Z",
+    "http_status": 200,
+    "content_hash": "4260a770bf422577145f64558ec68c4655bc28691c1425a36786684d2720fab3",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\qiaomu-x-article-publisher.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\qiaomu-x-article-publisher.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Qiaomu X Article Publisher - Automate X Article",
+  "short_description_vi": "Publish Markdown articles to X (Twitter) Articles with one click. Ideal for content creators and operations teams. Integrates with Claude Code Skill for persistent authentication and standalone operation. Works on macOS with Python 3.9+."
+}

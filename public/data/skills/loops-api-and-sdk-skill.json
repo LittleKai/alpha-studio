@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/loops-api-and-sdk-skill",
+  "slug": "loops-api-and-sdk-skill",
+  "name": "Loops API and SDK Skill",
+  "headline": "Loops API Skill: Backend Email & Contact",
+  "short_description": "This skill aids in implementing Loops workflows in application code, particularly for backend integrations and SDK decision-making. It's designed for developers and technical teams managing Loops functionalities.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "loops-so",
+  "install_command": "git clone https://github.com/loops-so/skills",
+  "source_repo_url": "https://github.com/loops-so/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "loops",
+    "api-integration"
+  ],
+  "sections": {
+    "overview": "The Loops API and SDK skill provides AI agents with direct access to Loops API functionality for backend integrations. It covers contact creation and management, custom contact properties, mailing list operations, event sending, transactional email delivery, campaign drafting, and image uploads. The skill helps developers choose between official SDKs and raw HTTP requests, handle rate limits, and implement idempotency keys. It solves the problem of integrating Loops workflows into application code with accurate API documentation, reducing implementation errors and development time.\nIntegrate Loops into an app or backend\nDecide between SDKs and raw HTTP\nManage contacts and mailing lists\nValidate credentials or troubleshoot requests",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/loops-so/skills --skill api`\n`git clone https://github.com/loops-so/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "loops-api-and-sdk-skill#main-content",
+      "loops-api-and-sdk-skill#overview",
+      "loops-api-and-sdk-skill#setup",
+      "loops-api-and-sdk-skill#examples",
+      "loops-api-and-sdk-skill#tools",
+      "loops-api-and-sdk-skill#mcp",
+      "loops-api-and-sdk-skill#related",
+      "newapi",
+      "alchemy-api-with-api-key"
+    ],
+    "overview_vi": "Skill Loops API và SDK cung cấp cho các AI agent quyền truy cập trực tiếp vào các tính năng của Loops API để tích hợp backend. Skill này hỗ trợ tạo và quản lý liên hệ (contact), các thuộc tính liên hệ tùy chỉnh, thao tác với danh sách gửi thư (mailing list), gửi event, gửi email giao dịch (transactional email), soạn thảo chiến dịch và tải lên hình ảnh. Skill giúp nhà phát triển lựa chọn giữa SDK chính thức và raw HTTP request, xử lý giới hạn tần suất (rate limits) và triển khai idempotency key. Skill giải quyết vấn đề tích hợp các workflow của Loops vào mã nguồn ứng dụng nhờ cung cấp tài liệu API chính xác, giúp giảm thiểu lỗi triển khai và tiết kiệm thời gian phát triển.\n\nTích hợp Loops vào ứng dụng hoặc backend\nLựa chọn giữa SDK và raw HTTP\nQuản lý liên hệ và danh sách gửi thư\nXác thực thông tin đăng nhập hoặc khắc phục sự cố yêu cầu",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/loops-so/skills --skill api`\n`git clone https://github.com/loops-so/skills`",
+    "usage_vi": "📝\n### Không có ví dụ khả dụng\nTham khảo GitHub repository hoặc tài liệu để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:39:57.541513Z",
+    "http_status": 200,
+    "content_hash": "581a564afcc98160c90c4bb5953a6ee98951efd407f6f5e34c936de295ceced5",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\loops-api-and-sdk-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\loops-api-and-sdk-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Loops API Skill: Email & Liên hệ Backend",
+  "short_description_vi": "Skill này hỗ trợ triển khai các workflow của Loops trong mã nguồn ứng dụng, đặc biệt là tích hợp backend và đưa ra quyết định lựa chọn SDK. Skill được thiết kế dành cho các nhà phát triển và đội ngũ kỹ thuật quản lý các tính năng của Loops."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-rules",
+  "slug": "ai-rules",
+  "name": "Ai Rules",
+  "headline": "AI Rules: Configurations for Development",
+  "short_description": "AI assistant configurations for Claude Code, Codex CLI, OpenCode, and Gemini CLI. Supports Solidity and TypeScript development with enterprise-grade defaults. Ideal for operations teams automating blockchain and cloud-native infrastructure tasks.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "roderik",
+  "install_command": "git clone https://github.com/roderik/ai-rules.git",
+  "source_repo_url": "https://github.com/roderik/ai-rules",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "codex",
+    "cursor",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ai-rules is a collection of professional skills for AI assistants including Claude Code, Codex CLI, OpenCode, and Gemini CLI. It provides pre-configured, production-ready skills for Solidity smart contract development, TypeScript applications, Kubernetes deployments, infrastructure-as-code with Pulumi, and modern authentication frameworks. The skill set emphasizes security-first practices for blockchain development and enterprise-grade defaults for cloud-native infrastructure automation. Operations teams and developers can install skills globally or sync them to projects, then reference them through natural language commands to accelerate setup and implementation. Each skill includes best practices for tools like Foundry, Drizzle ORM, NestJS, and the TanStack ecosystem.\nSecure Solidity smart contract development with Foundry\nTypeScript and full-stack application setup with modern tooling\nKubernetes and multi-cloud infrastructure deployments\nInfrastructure-as-Code automation with Pulumi",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/roderik/ai-rules`",
+    "usage": "```\nGenerate a production-ready AI assistant configuration for [TOOL_NAME] (e.g., Claude Code, Codex CLI, OpenCode, or Gemini CLI) optimized for [LANGUAGE] development with enterprise-grade defaults. Include: 1) Pre-configured rules for [SPECIFIC_TASK] (e.g., Solidity smart contract audits, TypeScript API scaffolding), 2) Security and compliance checks for [REGULATORY_FRAMEWORK] (e.g., GDPR, SOC2), 3) Performance benchmarks for [INFRASTRUCTURE] (e.g., AWS Lambda, Ethereum mainnet), and 4) Error handling for [COMMON_FAILURE_MODES] (e.g., gas limit errors, race conditions). Output the configuration as a [FORMAT] file (e.g., .claude.json, .codexrc).\n```\nCopy\n\n```\n{\"file\":\".claude.json\",\"content\":{\"rules\":{\"solidity_audit\":{\"description\":\"Enterprise-grade Solidity smart contract audit ruleset\",\"checks\":[{\"rule\":\"reentrancy_guard\",\"severity\":\"critical\",\"description\":\"Enforce checks-effects-interactions pattern\",\"example\":\"require(!locked, \\\"Reentrancy detected\\\");\"},{\"rule\":\"gas_optimization\",\"severity\":\"high\",\"description\":\"Optimize storage layout and function calls\",\"threshold\":\"10% gas reduction vs. baseline\"},{\"rule\":\"compliance_solidity\",\"severity\":\"high\",\"description\":\"Validate against ERC standards and regulatory requirements\",\"standards\":[\"ERC20\",\"ERC721\"],\"regulatory\":[\"SEC_DeFi_Guidelines\"]}],\"performance\":{\"benchmark\":\"ethereum_mainnet\",\"target\":\"500ms avg. execution time\",\"max_gas\":\"8M\"},\"error_handling\":{\"common_failures\":[\"out_of_gas\",\"stack_too_deep\"],\"fallback\":\"Use OpenZeppelin's SafeMath and custom gas estimators\"}},\"typescript_api\":{\"description\":\"TypeScript API scaffolding with enterprise defaults\",\"checks\":[{\"rule\":\"type_safety\",\"severity\":\"critical\",\"description\":\"Enforce strict null checks and type guards\",\"example\":\"export type UserId = string & { __brand: 'UserId' };\"},{\"rule\":\"security_headers\",\"severity\":\"high\",\"description\":\"Validate security headers for API responses\",\"headers\":[\"X-Content-Type-Options\",\"Strict-Transport-Security\"]}],\"performance\":{\"benchmark\":\"aws_lambda\",\"target\":\"100ms cold start\",\"memory\":\"512MB\"}}},\"metadata\":{\"version\":\"1.2.0\",\"last_updated\":\"2024-05-15\",\"author\":\"Enterprise DevOps Team\",\"compatibility\":{\"tools\":[\"Claude Code\",\"Codex CLI\"],\"languages\":[\"Solidity\",\"TypeScript\"]}}}}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-rules#main-content",
+      "ai-rules#overview",
+      "ai-rules#setup",
+      "ai-rules#examples",
+      "ai-rules#tools",
+      "ai-rules#mcp",
+      "ai-rules#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ai-rules là một bộ kỹ năng (skills) chuyên nghiệp dành cho các AI assistant bao gồm Claude Code, Codex CLI, OpenCode và Gemini CLI. Bộ công cụ này cung cấp các kỹ năng cấu hình sẵn, sẵn sàng cho môi trường production để phát triển smart contract Solidity, ứng dụng TypeScript, triển khai Kubernetes, hạ tầng dưới dạng mã nguồn (Infrastructure-as-Code) với Pulumi, và các framework xác thực hiện đại. Bộ kỹ năng nhấn mạnh vào các thực hành ưu tiên bảo mật (security-first) cho phát triển blockchain và các cấu hình mặc định chuẩn enterprise cho việc tự động hóa hạ tầng cloud-native. Các đội ngũ operations và nhà phát triển có thể cài đặt các kỹ năng này trên phạm vi global hoặc đồng bộ hóa trực tiếp vào dự án, sau đó tham chiếu chúng qua các câu lệnh ngôn ngữ tự nhiên để tăng tốc quá trình setup và triển khai. Mỗi kỹ năng đều bao gồm các best practices cho các công cụ như Foundry, Drizzle ORM, NestJS và hệ sinh thái TanStack.\nPhát triển smart contract Solidity bảo mật với Foundry\nSetup ứng dụng TypeScript và full-stack với các công cụ hiện đại\nTriển khai hạ tầng Kubernetes và multi-cloud\nTự động hóa Infrastructure-as-Code với Pulumi",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/roderik/ai-rules`",
+    "usage_vi": "```\nTạo cấu hình AI assistant sẵn sàng cho production dành cho [TOOL_NAME] (ví dụ: Claude Code, Codex CLI, OpenCode hoặc Gemini CLI) được tối ưu hóa cho việc phát triển bằng ngôn ngữ [LANGUAGE] với các cấu hình mặc định chuẩn enterprise. Bao gồm: 1) Các quy tắc cấu hình sẵn cho [SPECIFIC_TASK] (ví dụ: audit smart contract Solidity, dựng khung API TypeScript), 2) Kiểm tra bảo mật và tuân thủ cho [REGULATORY_FRAMEWORK] (ví dụ: GDPR, SOC2), 3) Benchmark hiệu năng cho [INFRASTRUCTURE] (ví dụ: AWS Lambda, Ethereum mainnet), và 4) Xử lý lỗi cho [COMMON_FAILURE_MODES] (ví dụ: lỗi gas limit, race conditions). Xuất cấu hình dưới dạng file [FORMAT] (ví dụ: .claude.json, .codexrc).\n```\nSao chép\n\n```\n{\"file\":\".claude.json\",\"content\":{\"rules\":{\"solidity_audit\":{\"description\":\"Bộ quy tắc audit smart contract Solidity chuẩn enterprise\",\"checks\":[{\"rule\":\"reentrancy_guard\",\"severity\":\"critical\",\"description\":\"Áp dụng bắt buộc pattern checks-effects-interactions\",\"example\":\"require(!locked, \\\"Reentrancy detected\\\");\"},{\"rule\":\"gas_optimization\",\"severity\":\"high\",\"description\":\"Tối ưu hóa bố cục lưu trữ (storage layout) và các lệnh gọi hàm\",\"threshold\":\"giảm 10% gas so với baseline\"},{\"rule\":\"compliance_solidity\",\"severity\":\"high\",\"description\":\"Xác thực dựa trên các tiêu chuẩn ERC và yêu cầu pháp lý\",\"standards\":[\"ERC20\",\"ERC721\"],\"regulatory\":[\"SEC_DeFi_Guidelines\"]}],\"performance\":{\"benchmark\":\"ethereum_mainnet\",\"target\":\"thời gian thực thi trung bình 500ms\",\"max_gas\":\"8M\"},\"error_handling\":{\"common_failures\":[\"out_of_gas\",\"stack_too_deep\"],\"fallback\":\"Sử dụng SafeMath của OpenZeppelin và các công cụ ước lượng gas tùy chỉnh\"}},\"typescript_api\":{\"description\":\"Dựng khung (scaffolding) API TypeScript với các cấu hình mặc định chuẩn enterprise\",\"checks\":[{\"rule\":\"type_safety\",\"severity\":\"critical\",\"description\":\"Bắt buộc kiểm tra strict null và type guard\",\"example\":\"export type UserId = string & { __brand: 'UserId' };\"},{\"rule\":\"security_headers\",\"severity\":\"high\",\"description\":\"Xác thực các header bảo mật cho phản hồi API\",\"headers\":[\"X-Content-Type-Options\",\"Strict-Transport-Security\"]}],\"performance\":{\"benchmark\":\"aws_lambda\",\"target\":\"cold start 100ms\",\"memory\":\"512MB\"}}},\"metadata\":{\"version\":\"1.2.0\",\"last_updated\":\"2024-05-15\",\"author\":\"Enterprise DevOps Team\",\"compatibility\":{\"tools\":[\"Claude Code\",\"Codex CLI\"],\"languages\":[\"Solidity\",\"TypeScript\"]}}}}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:25:43.414203Z",
+    "http_status": 200,
+    "content_hash": "b410a3e1c9bf008a2e6422cd21efddd90d3601c3fe2419e9d6d71062df92979c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-rules.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-rules.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI Rules: Cấu hình dành cho phát triển phần mềm",
+  "short_description_vi": "Các cấu hình AI assistant dành cho Claude Code, Codex CLI, OpenCode và Gemini CLI. Hỗ trợ phát triển Solidity và TypeScript với các cấu hình mặc định chuẩn enterprise. Đây là giải pháp lý tưởng cho các đội ngũ operations để tự động hóa các tác vụ blockchain và hạ tầng cloud-native."
+}

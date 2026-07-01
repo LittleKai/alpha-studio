@@ -1,0 +1,56 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tikhub-api-skill",
+  "slug": "tikhub-api-skill",
+  "name": "TikHub API Skill",
+  "headline": "TikHub API Skill - Social Media Data Access",
+  "short_description": "TikHub API 助手是一个 Claude Code Agent Skill，用于帮助用户搜索、发现和调用 TikHub API。TikHub 提供了多平台社交媒体数据 API，支持抖音、TikTok、小红书、Instagram、YouTube、Twitter、Reddit 等平台。This is a TikHub API skill/documentation repository. TikHub is a multi-platform social media data API service that provides RESTful endpoints for platforms including Douyin (抖音), TikTok, Xiaohongshu (小红书),",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "liangdabiao",
+  "install_command": "git clone https://github.com/liangdabiao/tikhub_api_skill.git",
+  "source_repo_url": "https://github.com/liangdabiao/tikhub_api_skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "TikHub API Helper is a Claude Code Agent Skill that enables users to search, discover, and invoke TikHub's multi-platform social media data APIs. It supports 12+ platforms including TikTok, Douyin (抖音), Xiaohongshu (小红书), Instagram, YouTube, Twitter, Reddit, Bilibili, Weibo, and Zhihu, with over 370 total API endpoints. The skill provides keyword-based API search in Chinese and English, automatic authentication with built-in development tokens, and direct API invocation through command-line tools. Users can retrieve user profiles, search content, fetch trending videos, and access platform-specific data without manually managing authentication or endpoint documentation.\nFetch user profiles and account information from TikTok, Douyin, or Xiaohongshu\nSearch videos and content across multiple platforms with keyword queries\nRetrieve trending and viral content from TikTok, YouTube, and Douyin\nGather social media data for research on topics discussed across platforms",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/tikhub_api_skill`",
+    "usage": "```\nI need to use the TikHub API to gather data from [PLATFORM] for [COMPANY]. Can you help me find the right endpoint and parameters to retrieve [DATA]? I want to focus on [SPECIFIC_METRIC] like engagement rates or follower growth.\n```\nCopy\n\n```\n# TikHub API Query for TikTok Engagement Data\n\n```json\n{\n  \"data\": [\n    {\n      \"date\": \"2023-01-01\",\n      \"likes\": 1200,\n      \"comments\": 45,\n      \"shares\": 30,\n      \"views\": 25000\n    },\n    {\n      \"date\": \"2023-01-02\",\n      \"likes\": 1500,\n      \"comments\": 50,\n      \"shares\": 35,\n      \"views\": 28000\n    }\n  ],\n  \"status\": \"success\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "tikhub-api-skill#main-content",
+      "tikhub-api-skill#overview",
+      "tikhub-api-skill#setup",
+      "tikhub-api-skill#examples",
+      "tikhub-api-skill#tools",
+      "tikhub-api-skill#mcp",
+      "tikhub-api-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TikHub API Helper is a Claude Code Agent Skill that enables users to search, discover, and invoke TikHub's multi-platform social media data APIs. It supports 12+ platforms including TikTok, Douyin (抖音), Xiaohongshu (小红书), Instagram, YouTube, Twitter, Reddit, Bilibili, Weibo, and Zhihu, with over 370 total API endpoints. The skill provides keyword-based API search in Chinese and English, automatic authentication with built-in development tokens, and direct API invocation through command-line tools. Users can retrieve user profiles, search content, fetch trending videos, and access platform-specific data without manually managing authentication or endpoint documentation.\nFetch user profiles and account information from TikTok, Douyin, or Xiaohongshu\nSearch videos and content across multiple platforms with keyword queries\nRetrieve trending and viral content from TikTok, YouTube, and Douyin\nGather social media data for research on topics discussed across platforms",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/tikhub_api_skill`",
+    "usage_vi": "```\nI need to use the TikHub API to gather data from [PLATFORM] for [COMPANY]. Can you help me find the right endpoint and parameters to retrieve [DATA]? I want to focus on [SPECIFIC_METRIC] like engagement rates or follower growth.\n```\nCopy\n\n```\n# TikHub API Query for TikTok Engagement Data\n\n```json\n{\n  \"data\": [\n    {\n      \"date\": \"2023-01-01\",\n      \"likes\": 1200,\n      \"comments\": 45,\n      \"shares\": 30,\n      \"views\": 25000\n    },\n    {\n      \"date\": \"2023-01-02\",\n      \"likes\": 1500,\n      \"comments\": 50,\n      \"shares\": 35,\n      \"views\": 28000\n    }\n  ],\n  \"status\": \"success\"\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:38.760423Z",
+    "http_status": 200,
+    "content_hash": "0bced602a89569ad532e9c53dc3c45defe90115f568d06874f5d2cd77182534d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tikhub-api-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tikhub-api-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TikHub API Skill - Social Media Data Access",
+  "short_description_vi": "TikHub API 助手是一个 Claude Code Agent Skill，用于帮助用户搜索、发现和调用 TikHub API。TikHub 提供了多平台社交媒体数据 API，支持抖音、TikTok、小红书、Instagram、YouTube、Twitter、Reddit 等平台。This is a TikHub API skill/documentation repository. TikHub is a multi-platform social media data API service that provides RESTful endpoints for platforms including Douyin (抖音), TikTok, Xiaohongshu (小红书),"
+}

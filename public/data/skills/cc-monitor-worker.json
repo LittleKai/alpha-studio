@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-monitor-worker",
+  "slug": "cc-monitor-worker",
+  "name": "Cc Monitor Worker",
+  "headline": "Monitor Claude Code via Cloudflare Workers",
+  "short_description": "Monitor Claude Code usage with Cloudflare Workers and Workers Analytics Engine. Track API costs and usage patterns via OpenTelemetry or API proxy with SQL-powered analytics.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "cometkim",
+  "install_command": "git clone https://github.com/cometkim/cc-monitor-worker.git",
+  "source_repo_url": "https://github.com/cometkim/cc-monitor-worker",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cloudflare-workers",
+    "claude-code",
+    "opentelemetry"
+  ],
+  "sections": {
+    "overview": "cc-monitor-worker provides real-time monitoring of Claude Code usage through Cloudflare Workers and Workers Analytics Engine. It supports two monitoring modes: OpenTelemetry for official, trend-based tracking of activities and costs, or API proxy mode for intercepting requests and calculating exact API costs. The serverless solution includes SQL-powered analytics, Bearer token authentication, and one-click deployment. Data is retained for three months on Cloudflare's platform, with archival options for historical analysis. This skill is ideal for teams and developers who need visibility into Claude Code consumption, cost tracking, and usage pattern analysis.\nTrack Claude Code API costs and usage trends in real-time\nMonitor productivity metrics and coding patterns across teams\nCalculate exact API expenses via LLM Gateway proxy mode\nArchive and analyze historical usage data beyond three months",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cometkim/cc-monitor-worker`\n\nTo monitor your website's performance using Cloudflare Workers and Workers Analytics Engine, follow these steps:\n\n### 1. Set Up Workers Analytics Engine\n\n1. Log in to your Cloudflare dashboard.\n2. Navigate to the Workers & Pages section.\n3. Select Analytics Engine from the left-hand menu.\n4. Click on 'Create Dataset' and follow the prompts to configure your data collection.\n\n### 2. Integrate Monitoring Code\n\nAdd the following code to your Worker script to track the specified metrics:\n```javascript\naddEventListener('fetch', event => {\n  event.respondWith(handleRequest(event.request))\n})\n\nasync function handleRequest(request) {\n  const url = new URL(request.url)\n  const response = await fetch(request)\n  const analytics = {\n    status: response.status,\n    latency: Date.now() - request.timeStart,\n    size: response.headers.get('content-length')\n  }\n  // Send analytics data to Workers Analytics Engine\n  // Add your specific monitoring logic here\n  return response\n}\n```\n\n### 3. Configure Alerts\n\n1. In the Cloudflare dashboard, go to Workers Analytics Engine.\n2. Select your dataset and click on 'Alerts'.\n3. Create a new alert for each metric you want to monitor.\n4. Set the threshold values for each alert.\n5. Configure the notification preferences to receive alerts via email or other channels.\n\n### 4. Test and Deploy\n\n1. Test your Worker script in the Cloudflare Workers playground.\n2. Deploy your Worker to the Cloudflare network.\n3. Monitor the analytics data and alerts to ensure everything is working as expected.\n\n```",
+    "usage": "```\nI want to monitor my [COMPANY] website's performance using Cloudflare Workers and Workers Analytics Engine. Here's the code I'm using: [CODE]. Please help me set up monitoring to track [METRICS] and alert me when [THRESHOLDS] are exceeded. Provide a step-by-step guide and any necessary configuration details.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-monitor-worker#main-content",
+      "cc-monitor-worker#overview",
+      "cc-monitor-worker#setup",
+      "cc-monitor-worker#examples",
+      "cc-monitor-worker#tools",
+      "cc-monitor-worker#mcp",
+      "cc-monitor-worker#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cc-monitor-worker cung cấp khả năng giám sát theo thời gian thực hoạt động sử dụng Claude Code thông qua Cloudflare Workers và Workers Analytics Engine. Công cụ này hỗ trợ hai chế độ giám sát: OpenTelemetry để theo dõi chính thức các hoạt động và chi phí theo xu hướng, hoặc chế độ API proxy để chặn các request và tính toán chi phí API chính xác. Giải pháp serverless này tích hợp sẵn tính năng phân tích bằng SQL, xác thực Bearer token và khả năng triển khai nhanh chỉ với một cú nhấp chuột. Dữ liệu được lưu trữ trong ba tháng trên nền tảng của Cloudflare, đi kèm các tùy chọn lưu trữ (archive) để phục vụ cho việc phân tích lịch sử dữ liệu. Skill này rất phù hợp cho các đội ngũ và nhà phát triển cần kiểm soát mức độ tiêu thụ Claude Code, theo dõi chi phí và phân tích xu hướng sử dụng.\n\nTheo dõi chi phí API Claude Code và xu hướng sử dụng theo thời gian thực\nGiám sát các chỉ số năng suất và thói quen lập trình của các nhóm\nTính toán chính xác chi phí API thông qua chế độ proxy của LLM Gateway\nLưu trữ và phân tích dữ liệu sử dụng trong lịch sử vượt quá mốc ba tháng",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/cometkim/cc-monitor-worker`\n\nĐể giám sát hiệu suất website của bạn bằng Cloudflare Workers và Workers Analytics Engine, hãy thực hiện theo các bước sau:\n\n### 1. Thiết lập Workers Analytics Engine\n\n1. Đăng nhập vào Cloudflare dashboard của bạn.\n2. Di chuyển đến mục Workers & Pages.\n3. Chọn Analytics Engine từ menu bên trái.\n4. Nhấp vào 'Create Dataset' và làm theo hướng dẫn để cấu hình việc thu thập dữ liệu.\n\n### 2. Tích hợp mã giám sát (Monitoring Code)\n\nThêm đoạn mã sau vào Worker script của bạn để theo dõi các chỉ số mong muốn:\n```javascript\naddEventListener('fetch', event => {\n  event.respondWith(handleRequest(event.request))\n})\n\nasync function handleRequest(request) {\n  const url = new URL(request.url)\n  const response = await fetch(request)\n  const analytics = {\n    status: response.status,\n    latency: Date.now() - request.timeStart,\n    size: response.headers.get('content-length')\n  }\n  // Gửi dữ liệu phân tích đến Workers Analytics Engine\n  // Thêm logic giám sát riêng của bạn tại đây\n  return response\n}\n```\n\n### 3. Cấu hình cảnh báo\n\n1. Trên Cloudflare dashboard, đi tới Workers Analytics Engine.\n2. Chọn dataset của bạn và nhấp vào 'Alerts'.\n3. Tạo một cảnh báo mới cho từng chỉ số bạn muốn giám sát.\n4. Thiết lập các giá trị ngưỡng (threshold) cho từng cảnh báo.\n5. Cấu hình tùy chọn nhận thông báo để nhận cảnh báo qua email hoặc các kênh khác.\n\n### 4. Kiểm thử và Triển khai\n\n1. Kiểm thử Worker script của bạn trong Cloudflare Workers playground.\n2. Triển khai Worker của bạn lên mạng lưới của Cloudflare.\n3. Theo dõi dữ liệu phân tích và cảnh báo để đảm bảo mọi thứ hoạt động bình thường.\n\n```",
+    "usage_vi": "```\nTôi muốn giám sát hiệu suất website của [COMPANY] bằng cách sử dụng Cloudflare Workers và Workers Analytics Engine. Đây là đoạn mã tôi đang dùng: [CODE]. Vui lòng hướng dẫn tôi thiết lập giám sát để theo dõi [METRICS] và cảnh báo cho tôi khi vượt quá [THRESHOLDS]. Hãy cung cấp hướng dẫn từng bước và các thông tin cấu hình cần thiết.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:09:23.229256Z",
+    "http_status": 200,
+    "content_hash": "737085f02adacd24df7f04f385ab4a047b32ecdece93fda7eba1e1ac045a064c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-monitor-worker.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-monitor-worker.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Giám sát Claude Code thông qua Cloudflare Workers",
+  "short_description_vi": "Giám sát hoạt động sử dụng Claude Code với Cloudflare Workers và Workers Analytics Engine. Theo dõi chi phí API và xu hướng sử dụng thông qua OpenTelemetry hoặc API proxy kết hợp phân tích dữ liệu bằng SQL."
+}

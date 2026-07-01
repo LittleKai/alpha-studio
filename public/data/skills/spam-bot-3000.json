@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/spam-bot-3000",
+  "slug": "spam-bot-3000",
+  "name": "Spam-bot-3000",
+  "headline": "Spam-bot-3000 - Social Media Automation",
+  "short_description": "Automate social media research and promotion with a CLI bot. Scrape data from platforms like Reddit, Twitter, and Facebook using custom queries. Promote content to relevant audiences. Ideal for marketing teams needing efficient, semi-autonomous tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "toadlyBroodle",
+  "install_command": "git clone https://github.com/toadlyBroodle/spam-bot-3000.git",
+  "source_repo_url": "https://github.com/toadlyBroodle/spam-bot-3000",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "instagram",
+    "firefox",
+    "cli",
+    "bot",
+    "selenium",
+    "scrape-dumps",
+    "geckodriver",
+    "social-media",
+    "python",
+    "facebook",
+    "marketing",
+    "twitter",
+    "keyword",
+    "scraper",
+    "command-line-tool",
+    "reddit",
+    "research",
+    "promotion",
+    "hashtag"
+  ],
+  "sections": {
+    "overview": "spam-bot-3000 is a Python command-line bot that automates research and promotion workflows across Reddit, Twitter, and Facebook. It scrapes social media platforms using custom AND/OR/NOT keyword queries and automatically promotes content to relevant results. The tool supports multiple promotion strategies: on Reddit it replies to posts with promotional messages; on Twitter it can follow users, favorite tweets, reply, and send direct messages either via the tweepy API or through Selenium browser automation to bypass API limits; on Facebook it scrapes both public and private profiles and group feeds using Selenium. The bot includes anti-spam features and activity logging, making it useful for marketing teams conducting targeted outreach and content distribution at scale.\nScrape Reddit subreddits for posts matching specific keywords and auto-reply with promotional content\nMonitor Twitter for custom queries and follow/favorite/reply to relevant tweets automatically\nSearch Facebook profiles and groups for keyword matches to find target audiences\nConduct keyword and hashtag research by analyzing scraped social media results",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/toadlyBroodle/spam-bot-3000`",
+    "usage": "```\nAct as Spam-Bot-3000 CLI. Use the following parameters: [PLATFORM] (reddit/twitter/facebook), [QUERY] (e.g., 'marketing automation tools'), [PROMOTION_TARGET] (e.g., 'r/automarketing'), [CONTENT_TO_PROMOTE] (link or text), [DELAY_MINUTES] (e.g., 30). Run the bot to scrape [PLATFORM] for [QUERY], identify top 10 relevant threads/posts, and auto-promote [CONTENT_TO_PROMOTE] with a natural-sounding comment. Log all actions to 'spam_bot_log.txt'.\n```\nCopy\n\n```\n=== Spam-Bot-3000 CLI Report === \n\n[2023-11-15 14:32:01] Starting bot on Reddit. Query: 'marketing automation tools'. Target: r/automarketing. \n\nScraped 47 threads. Top 10 relevant threads identified:\n1. Thread: 'Best marketing automation tools in 2023?' (124 upvotes, 47 comments) - https://reddit.com/r/automarketing/comments/abc123\n2. Thread: 'HubSpot vs. Marketo for SMBs?' (89 upvotes, 32 comments) - https://reddit.com/r/automarketing/comments/def456\n3. Thread: 'Free marketing automation tools?' (76 upvotes, 28 comments) - https://reddit.com/r/automarketing/comments/ghi789\n4. Thread: 'Automation workflows for lead gen?' (65 upvotes, 22 comments) - https://reddit.com/r/automarketing/comments/jkl012\n5. Thread: 'How to automate email campaigns?' (58 upvotes, 19 comments) - https://reddit.com/r/automarketing/comments/mno234\n6. Thread: 'Marketing automation for e-commerce?' (52 upvotes, 15 comments) - https://reddit.com/r/automarketing/comments/pqr345\n7. Thread: 'Pardot vs. ActiveCampaign?' (45 upvotes, 12 comments) - https://reddit.com/r/automarketing/comments/stu456\n8. Thread: 'Automation tools for SaaS marketing?' (41 upvotes, 10 comments) - https://reddit.com/r/automarketing/comments/vwx567\n9. Thread: 'Best practices for marketing automation?' (38 upvotes, 8 comments) - https://reddit.com/r/automarketing/comments/yzz678\n10. Thread: 'Marketing automation ROI?' (35 upvotes, 6 comments) - https://reddit.com/r/automarketing/comments/101112\n\nPromoting content: 'Check out our free guide on marketing automation for 2024: [LINK]. We’ve tested 20+ tools and this one stands out for its ease of use and scalability. Happy to share insights!' \n\nAction log:\n- Commented on Thread 1 (natural-sounding reply, no spam flags)\n- Commented on Thread 3 (added value with a follow-up question)\n- Commented on Thread 5 (shared a tip from the guide)\n- Commented on Thread 7 (engaged with a direct answer)\n- Skipped Thread 9 (too low engagement, risk of downvotes)\n\nTotal comments posted: 4. Delay between posts: 30 minutes. \n\nLog saved to spam_bot_log.txt. \n\n=== Bot completed successfully. ===\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "spam-bot-3000#main-content",
+      "spam-bot-3000#overview",
+      "spam-bot-3000#setup",
+      "spam-bot-3000#examples",
+      "spam-bot-3000#tools",
+      "spam-bot-3000#mcp",
+      "spam-bot-3000#related",
+      "marketingskills",
+      "copywriting",
+      "twitter-bot"
+    ],
+    "overview_vi": "spam-bot-3000 là một bot dòng lệnh (command-line bot) viết bằng Python giúp tự động hóa quy trình nghiên cứu và quảng bá trên Reddit, Twitter và Facebook. Công cụ này scrape các nền tảng mạng xã hội bằng các truy vấn từ khóa tùy chỉnh sử dụng toán tử AND/OR/NOT và tự động quảng bá nội dung đến các kết quả phù hợp. Công cụ hỗ trợ nhiều chiến lược quảng bá: trên Reddit, nó tự động phản hồi các bài đăng bằng thông điệp quảng cáo; trên Twitter, nó có thể theo dõi người dùng, thích tweet, phản hồi và gửi tin nhắn trực tiếp qua tweepy API hoặc qua công cụ tự động hóa trình duyệt Selenium để vượt qua giới hạn API (API limits); trên Facebook, nó sử dụng Selenium để scrape cả trang cá nhân công khai/riêng tư lẫn bảng tin của các nhóm. Bot tích hợp sẵn các tính năng chống spam và ghi log hoạt động (activity logging), rất hữu ích cho các đội ngũ marketing thực hiện tiếp cận mục tiêu (targeted outreach) và phân phối nội dung ở quy mô lớn.\n- Scrape các subreddit trên Reddit để tìm bài đăng khớp với các từ khóa cụ thể và tự động phản hồi bằng nội dung quảng bá\n- Giám sát Twitter theo các truy vấn tùy chỉnh, tự động theo dõi/thích/phản hồi các tweet liên quan\n- Tìm kiếm trên các trang cá nhân và nhóm Facebook theo từ khóa trùng khớp để tìm đối tượng mục tiêu\n- Nghiên cứu từ khóa và hashtag bằng cách phân tích kết quả mạng xã hội đã scrape được",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/toadlyBroodle/spam-bot-3000`",
+    "usage_vi": "```\nĐóng vai trò là CLI của Spam-Bot-3000. Sử dụng các tham số sau: [PLATFORM] (reddit/twitter/facebook), [QUERY] (ví dụ: 'marketing automation tools'), [PROMOTION_TARGET] (ví dụ: 'r/automarketing'), [CONTENT_TO_PROMOTE] (đường dẫn hoặc văn bản), [DELAY_MINUTES] (ví dụ: 30). Chạy bot để scrape [PLATFORM] theo [QUERY], xác định top 10 thread/bài đăng phù hợp nhất và tự động quảng bá [CONTENT_TO_PROMOTE] bằng một bình luận tự nhiên. Ghi lại tất cả hành động vào file 'spam_bot_log.txt'.\n```\nCopy\n\n```\n=== Báo cáo CLI Spam-Bot-3000 === \n\n[2023-11-15 14:32:01] Đang khởi chạy bot trên Reddit. Truy vấn: 'marketing automation tools'. Mục tiêu: r/automarketing. \n\nĐã scrape 47 thread. Xác định được top 10 thread liên quan nhất:\n1. Thread: 'Best marketing automation tools in 2023?' (124 upvote, 47 bình luận) - https://reddit.com/r/automarketing/comments/abc123\n2. Thread: 'HubSpot vs. Marketo for SMBs?' (89 upvote, 32 bình luận) - https://reddit.com/r/automarketing/comments/def456\n3. Thread: 'Free marketing automation tools?' (76 upvote, 28 bình luận) - https://reddit.com/r/automarketing/comments/ghi789\n4. Thread: 'Automation workflows for lead gen?' (65 upvote, 22 bình luận) - https://reddit.com/r/automarketing/comments/jkl012\n5. Thread: 'How to automate email campaigns?' (58 upvote, 19 bình luận) - https://reddit.com/r/automarketing/comments/mno234\n6. Thread: 'Marketing automation for e-commerce?' (52 upvote, 15 bình luận) - https://reddit.com/r/automarketing/comments/pqr345\n7. Thread: 'Pardot vs. ActiveCampaign?' (45 upvote, 12 bình luận) - https://reddit.com/r/automarketing/comments/stu456\n8. Thread: 'Automation tools for SaaS marketing?' (41 upvote, 10 bình luận) - https://reddit.com/r/automarketing/comments/vwx567\n9. Thread: 'Best practices for marketing automation?' (38 upvote, 8 bình luận) - https://reddit.com/r/automarketing/comments/yzz678\n10. Thread: 'Marketing automation ROI?' (35 upvote, 6 bình luận) - https://reddit.com/r/automarketing/comments/101112\n\nĐang quảng bá nội dung: 'Check out our free guide on marketing automation for 2024: [LINK]. We’ve tested 20+ tools and this one stands out for its ease of use and scalability. Happy to share insights!' \n\nNhật ký hành động:\n- Đã bình luận trên Thread 1 (phản hồi tự nhiên, không bị gắn cờ spam)\n- Đã bình luận trên Thread 3 (tăng giá trị bằng một câu hỏi tiếp nối)\n- Đã bình luận trên Thread 5 (chia sẻ một mẹo từ tài liệu hướng dẫn)\n- Đã bình luận trên Thread 7 (tương tác bằng câu trả lời trực tiếp)\n- Đã bỏ qua Thread 9 (tương tác quá thấp, có nguy cơ bị downvote)\n\nTổng số bình luận đã đăng: 4. Khoảng thời gian giãn cách giữa các bài đăng: 30 phút. \n\nĐã lưu log vào file spam_bot_log.txt. \n\n=== Bot đã hoàn thành thành công. ===\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:37:32.218420Z",
+    "http_status": 200,
+    "content_hash": "64523745d655b3db6f4556ae83fb3004a0400e1fd96c32511e1351756ec5958c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spam-bot-3000.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\spam-bot-3000.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Spam-bot-3000 - Tự động hóa Mạng xã hội",
+  "short_description_vi": "Tự động hóa quy trình nghiên cứu và quảng bá trên mạng xã hội với bot CLI. Scrape dữ liệu từ các nền tảng như Reddit, Twitter và Facebook bằng các truy vấn tùy chỉnh. Quảng bá nội dung đến các đối tượng mục tiêu phù hợp. Lý tưởng cho các đội ngũ marketing cần các công cụ bán tự động hiệu quả."
+}

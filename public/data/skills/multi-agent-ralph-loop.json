@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/multi-agent-ralph-loop",
+  "slug": "multi-agent-ralph-loop",
+  "name": "Multi-Agent Ralph Loop",
+  "headline": "Multi-Agent Ralph Loop - AI Orchestration for",
+  "short_description": "Multi-Agent AI Orchestration with GLM-4.7, Claude, Codex, and Gemini. Quality gates, memory system, and 67 hooks. Automates complex workflows, ensures code quality, and integrates with CI/CD pipelines. Benefits operations teams by reducing manual oversight and improving process reliability.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "alfredolopez80",
+  "install_command": "git clone https://github.com/alfredolopez80/multi-agent-ralph-loop.git",
+  "source_repo_url": "https://github.com/alfredolopez80/multi-agent-ralph-loop",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "llm",
+    "multi-agent",
+    "dynamic-contexts",
+    "codex-cli",
+    "state-machine",
+    "eval-driven-development",
+    "minimax",
+    "ultrathink",
+    "ai-orchestration",
+    "quality-gates",
+    "observability",
+    "plan-lifecycle",
+    "bats-testing",
+    "ralph-loop",
+    "multi-agent-system",
+    "code-quality",
+    "opencode",
+    "codex",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Ralph Loop is an autonomous orchestration framework that extends Claude Code with a structured memory system inspired by the Method of Loci (MemPalace technique). It decomposes complex tasks using Aristotle First Principles analysis, executes independent work in parallel across 6 specialized agent teammates (coder, reviewer, tester, researcher, frontend, security), and validates all output through 4-stage blocking quality gates covering correctness, quality, security, and consistency. The framework includes a 4-layer memory architecture (L0-L3) that persists learned rules in an Obsidian vault, automatic learning pipelines that graduate universal patterns to global scope, and lifecycle hooks for validation and security enforcement. Built for development teams and operations that need reliable, auditable automation of complex multi-step workflows with minimal manual oversight.\nAutomate full-cycle development workflows with parallel code generation, testing, and security review\nExecute complex CI/CD pipeline tasks with built-in quality gates and consistency checks\nBuild autonomous research and experimentation loops with multi-agent cross-validation\nPerform systematic security audits across codebases with OWASP and semgrep integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alfredolopez80/multi-agent-ralph-loop`",
+    "usage": "```\nOrchestrate a multi-agent workflow to [TASK] using GLM-4.7, Claude, Codex, and Gemini. Follow these steps: 1) Initialize agents with [ROLES] and [MEMORY_HOOKS]. 2) Execute the workflow with [INPUT_DATA] and apply [QUALITY_GATES]. 3) Monitor progress via [MONITORING_HOOKS] and log outputs to [LOG_FILE]. 4) Validate results against [CRITERIA] and trigger [AUTOMATION_HOOKS] if thresholds are met. 5) Integrate final output into [CI/CD_PIPELINE]. Use [AGENT_CONFIG_FILE] for setup.\n```\nCopy\n\n```\n```json\n{\n  \"workflow_id\": \"ralph-loop-20241015-1422\",\n  \"status\": \"completed\",\n  \"agents\": {\n    \"glm-4.7\": {\n      \"role\": \"orchestrator\",\n      \"output\": {\"plan\": \"validated\", \"next_steps\": [\"code_review\", \"test_automation\"]},\n      \"memory_hook\": \"plan_approved\"\n    },\n    \"claude\": {\n      \"role\": \"code_reviewer\",\n      \"output\": {\"issues\": [{\"severity\": \"high\", \"file\": \"api/handlers.py\", \"line\": 42}], \"suggestions\": [\"refactor_logic\", \"add_unit_tests\"]},\n      \"memory_hook\": \"review_completed\"\n    },\n    \"codex\": {\n      \"role\": \"code_fixer\",\n      \"output\": {\"changes\": [{\"file\": \"api/handlers.py\", \"diff\": \"- old_logic\\n+ new_logic\"}], \"status\": \"applied\"},\n      \"memory_hook\": \"fixes_applied\"\n    },\n    \"gemini\": {\n      \"role\": \"test_automator\",\n      \"output\": {\"test_coverage\": \"92%\", \"failed_tests\": [\"test_edge_case_12\"], \"status\": \"partial_pass\"},\n      \"memory_hook\": \"tests_executed\"\n    }\n  },\n  \"quality_gates\": {\n    \"code_review\": \"passed\",\n    \"test_coverage\": \"85% (threshold: 80%)\",\n    \"security_scan\": \"no_critical_issues\"\n  },\n  \"automation_hooks\": {\n    \"deploy_to_staging\": \"triggered\",\n    \"notify_team\": \"slack_channel_#devops\"\n  },\n  \"ci_cd_integration\": {\n    \"pipeline\": \"devops-pipeline-123\",\n    \"status\": \"deployed_to_staging\",\n    \"logs\": \"https://ci.example.com/builds/123/logs\"\n  },\n  \"next_actions\": [\n    \"Monitor staging deployment for 30 minutes\",\n    \"Run post-deployment smoke tests\",\n    \"Update documentation if changes were significant\"\n  ]\n}\n```\n\n### Key Metrics:\n- **Total Execution Time:** 12 minutes 45 seconds\n- **Agent Collaboration Score:** 94% (based on handoff efficiency)\n- **Error Rate:** 0% (no manual interventions required)\n- **Memory System Usage:** 67 hooks activated (100% coverage for this workflow)\n\n### Observations:\nThe multi-agent system efficiently handled the deployment of the new `user_auth` module. Codex resolved 3 critical code issues identified by Claude, while Gemini ensured 92% test coverage—exceeding the 80% threshold. The GLM-4.7 orchestrator dynamically adjusted priorities when the security scan flagged a minor vulnerability in `auth_utils.py`, triggering a re-review by Claude. All quality gates passed, and the CI/CD pipeline automatically deployed the changes to staging. The memory system logged every decision point, enabling full traceability for compliance audits.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "multi-agent-ralph-loop#main-content",
+      "multi-agent-ralph-loop#overview",
+      "multi-agent-ralph-loop#setup",
+      "multi-agent-ralph-loop#examples",
+      "multi-agent-ralph-loop#tools",
+      "multi-agent-ralph-loop#mcp",
+      "multi-agent-ralph-loop#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Ralph Loop là một framework điều phối tự động (autonomous orchestration framework) giúp mở rộng Claude Code bằng hệ thống bộ nhớ có cấu trúc lấy cảm hứng từ Phương pháp Loci (kỹ thuật MemPalace). Framework này phân rã các tác vụ phức tạp bằng phương pháp phân tích Nguyên lý đầu tiên của Aristotle (First Principles), thực thi song song các công việc độc lập thông qua 6 agent chuyên biệt trong nhóm (coder, reviewer, tester, researcher, frontend, security), và xác thực mọi kết quả đầu ra thông qua các blocking quality gate 4 giai đoạn bao gồm tính chính xác, chất lượng, bảo mật và tính nhất quán. Framework tích hợp kiến trúc bộ nhớ 4 lớp (L0-L3) giúp lưu trữ lâu dài các quy tắc đã học trong Obsidian vault, các pipeline học tự động để nâng cấp các pattern phổ quát lên phạm vi global, và các lifecycle hook phục vụ cho việc xác thực và thực thi bảo mật. Được thiết kế cho các đội ngũ phát triển và vận hành cần tự động hóa các workflow phức tạp gồm nhiều bước một cách đáng tin cậy, có khả năng audit và hạn chế tối đa việc giám sát thủ công.\nTự động hóa các workflow phát triển toàn vòng đời (full-cycle) với khả năng tạo code song song, kiểm thử và review bảo mật\nThực thi các tác vụ pipeline CI/CD phức tạp với các quality gate và kiểm tra tính nhất quán được tích hợp sẵn\nXây dựng các vòng lặp nghiên cứu và thử nghiệm tự động với cơ chế kiểm tra chéo (cross-validation) giữa các agent\nThực hiện audit bảo mật hệ thống trên toàn bộ codebase nhờ tích hợp OWASP và semgrep",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/alfredolopez80/multi-agent-ralph-loop`",
+    "usage_vi": "```\nĐiều phối workflow multi-agent để thực hiện [TASK] sử dụng GLM-4.7, Claude, Codex và Gemini. Làm theo các bước sau: 1) Khởi tạo các agent với [ROLES] và [MEMORY_HOOKS]. 2) Thực thi workflow với [INPUT_DATA] và áp dụng [QUALITY_GATES]. 3) Giám sát tiến độ qua [MONITORING_HOOKS] và ghi log output ra [LOG_FILE]. 4) Xác thực kết quả dựa trên [CRITERIA] và kích hoạt [AUTOMATION_HOOKS] nếu đạt các ngưỡng thiết lập. 5) Tích hợp kết quả đầu ra cuối cùng vào [CI/CD_PIPELINE]. Sử dụng [AGENT_CONFIG_FILE] để setup.\n```\nCopy\n\n```json\n{\n  \"workflow_id\": \"ralph-loop-20241015-1422\",\n  \"status\": \"completed\",\n  \"agents\": {\n    \"glm-4.7\": {\n      \"role\": \"orchestrator\",\n      \"output\": {\"plan\": \"validated\", \"next_steps\": [\"code_review\", \"test_automation\"]},\n      \"memory_hook\": \"plan_approved\"\n    },\n    \"claude\": {\n      \"role\": \"code_reviewer\",\n      \"output\": {\"issues\": [{\"severity\": \"high\", \"file\": \"api/handlers.py\", \"line\": 42}], \"suggestions\": [\"refactor_logic\", \"add_unit_tests\"]},\n      \"memory_hook\": \"review_completed\"\n    },\n    \"codex\": {\n      \"role\": \"code_fixer\",\n      \"output\": {\"changes\": [{\"file\": \"api/handlers.py\", \"diff\": \"- old_logic\\n+ new_logic\"}], \"status\": \"applied\"},\n      \"memory_hook\": \"fixes_applied\"\n    },\n    \"gemini\": {\n      \"role\": \"test_automator\",\n      \"output\": {\"test_coverage\": \"92%\", \"failed_tests\": [\"test_edge_case_12\"], \"status\": \"partial_pass\"},\n      \"memory_hook\": \"tests_executed\"\n    }\n  },\n  \"quality_gates\": {\n    \"code_review\": \"passed\",\n    \"test_coverage\": \"85% (threshold: 80%)\",\n    \"security_scan\": \"no_critical_issues\"\n  },\n  \"automation_hooks\": {\n    \"deploy_to_staging\": \"triggered\",\n    \"notify_team\": \"slack_channel_#devops\"\n  },\n  \"ci_cd_integration\": {\n    \"pipeline\": \"devops-pipeline-123\",\n    \"status\": \"deployed_to_staging\",\n    \"logs\": \"https://ci.example.com/builds/123/logs\"\n  },\n  \"next_actions\": [\n    \"Giám sát việc triển khai trên staging trong 30 phút\",\n    \"Chạy các smoke test sau triển khai\",\n    \"Cập nhật tài liệu nếu có những thay đổi quan trọng\"\n  ]\n}\n```\n\n### Chỉ số chính:\n- **Tổng thời gian thực thi:** 12 phút 45 giây\n- **Điểm số cộng tác của Agent:** 94% (dựa trên hiệu quả bàn giao)\n- **Tỷ lệ lỗi:** 0% (không cần can thiệp thủ công)\n- **Mức độ sử dụng hệ thống bộ nhớ:** Đã kích hoạt 67 hook (đạt 100% độ bao phủ cho workflow này)\n\n### Nhận xét:\nHệ thống multi-agent đã xử lý hiệu quả việc triển khai module `user_auth` mới. Codex đã giải quyết 3 lỗi code nghiêm trọng do Claude phát hiện, trong khi Gemini đảm bảo test coverage đạt 92%—vượt qua ngưỡng 80% yêu cầu. Bộ điều phối (orchestrator) GLM-4.7 đã linh hoạt điều chỉnh mức độ ưu tiên khi quá trình quét bảo mật phát hiện một lỗ hổng nhỏ trong `auth_utils.py`, từ đó kích hoạt Claude thực hiện review lại. Tất cả các quality gate đều đã pass, và pipeline CI/CD đã tự động deploy các thay đổi lên môi trường staging. Hệ thống bộ nhớ đã ghi lại mọi điểm ra quyết định, giúp truy xuất nguồn gốc đầy đủ phục vụ cho việc audit tuân thủ."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:13.629196Z",
+    "http_status": 200,
+    "content_hash": "bd84fa75108124f2217c72deb92577f49f28467b8a828951e06e7175f7e1367f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\multi-agent-ralph-loop.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\multi-agent-ralph-loop.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Multi-Agent Ralph Loop - Điều phối AI cho",
+  "short_description_vi": "Giải pháp điều phối AI Multi-Agent với GLM-4.7, Claude, Codex và Gemini. Tích hợp các quality gate, hệ thống bộ nhớ và 67 hook. Tự động hóa các workflow phức tạp, đảm bảo chất lượng code và tích hợp mượt mà với pipeline CI/CD. Mang lại lợi ích cho các đội ngũ vận hành nhờ giảm thiểu việc giám sát thủ công và nâng cao độ tin cậy của quy trình."
+}

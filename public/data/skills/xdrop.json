@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/xdrop",
+  "slug": "xdrop",
+  "name": "xdrop",
+  "headline": "Xdrop: Secure File Upload & Download",
+  "short_description": "Xdrop is a skill for uploading and downloading files to Xdrop servers, designed for users needing efficient file sharing capabilities. It supports local file handling and requires specific environment setups like Bun and network access.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "xixu-me",
+  "install_command": "git clone https://github.com/xixu-me/skills",
+  "source_repo_url": "https://github.com/xixu-me/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "file-management",
+    "xdrop"
+  ],
+  "sections": {
+    "overview": "Xdrop is a skill that streamlines file transfers through terminal commands, allowing users to upload and download files from Xdrop servers efficiently. It supports encrypted share-link workflows, making it ideal for secure file distribution and collaboration. The skill integrates with command-line environments and requires Bun runtime and network access. Teams and developers benefit from its straightforward terminal interface for managing file transfers without leaving the command line. Xdrop bundles executable scripts to handle file operations reliably across different system setups.\nUpload files to Xdrop servers quickly and share links.\nDownload files from Xdrop using share links and decrypt them locally.\nManage local file transfers with ease through bundled scripts.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/xixu-me/skills --skill xdrop`\n`git clone https://github.com/xixu-me/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "xdrop#main-content",
+      "xdrop#overview",
+      "xdrop#setup",
+      "xdrop#examples",
+      "xdrop#related",
+      "file-manager"
+    ],
+    "overview_vi": "Xdrop là một skill giúp tối ưu hóa việc truyền tải file thông qua các câu lệnh terminal, cho phép người dùng tải lên và tải xuống file từ server Xdrop một cách hiệu quả. Nó hỗ trợ quy trình chia sẻ qua link được mã hóa, rất lý tưởng cho việc phân phối file an toàn và cộng tác nhóm. Skill này tích hợp tốt với môi trường dòng lệnh (command-line), yêu cầu runtime Bun và kết nối mạng. Các đội ngũ phát triển và lập trình viên có thể tận dụng giao diện terminal trực quan này để quản lý truyền tải file mà không cần rời khỏi dòng lệnh. Xdrop đóng gói sẵn các script thực thi giúp xử lý các thao tác file một cách đáng tin cậy trên nhiều setup hệ thống khác nhau.\n\nTải file lên server Xdrop nhanh chóng và chia sẻ link.\nTải file từ Xdrop bằng link chia sẻ và giải mã cục bộ.\nDễ dàng quản lý truyền tải file cục bộ thông qua các script đi kèm.",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/xixu-me/skills --skill xdrop`\n`git clone https://github.com/xixu-me/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nHãy kiểm tra GitHub repository hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:23:39.919192Z",
+    "http_status": 200,
+    "content_hash": "0654db23e9a8fd0de31687d0de8ba80832011c7eb967526798911226c98ca016",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xdrop.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xdrop.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Xdrop: Tải lên & Tải xuống file bảo mật",
+  "short_description_vi": "Xdrop là một skill hỗ trợ tải lên và tải xuống file từ server Xdrop, được thiết kế cho người dùng có nhu cầu chia sẻ file hiệu quả. Skill này hỗ trợ xử lý file cục bộ và yêu cầu một số setup môi trường cụ thể như Bun và kết nối mạng."
+}

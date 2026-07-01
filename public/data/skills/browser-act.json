@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/browser-act",
+  "slug": "browser-act",
+  "name": "Browser Act",
+  "headline": "browser-act: Browser Automation for AI Agents",
+  "short_description": "Browser-act is a browser automation command-line interface specifically designed for AI agents. It offers features like navigation, data extraction, and session management, making it suitable for developers and data scientists who need to automate web interactions.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "browser-act",
+  "install_command": "uv tool install browser-act-cli --python 3.12",
+  "source_repo_url": "https://github.com/browser-act/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "browser-automation",
+    "browser"
+  ],
+  "sections": {
+    "overview": "browser-act is a browser automation command-line interface built specifically for AI agents like Claude Code and Cursor. It handles JavaScript-rendered content extraction, multi-browser session management, form automation, screenshots, and network request capture without requiring visible browser windows. The tool manages isolated browser profiles, maintains authenticated sessions across multiple accounts in parallel, and includes verification assistance for interactive challenges. Developers and data scientists use browser-act to automate web interactions, extract dynamic content, fill complex forms, and manage multi-account workflows while keeping all credentials and session data stored locally on their machine.\nAutomate web form filling and data extraction\nCapture screenshots of web pages for reports\nEnable complex interactions in web applications",
+    "setup": "Terminal\nCopy\n`uv tool install browser-act-cli --python 3.12`\n`git clone https://github.com/browser-act/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "browser-act#main-content",
+      "browser-act#overview",
+      "browser-act#setup",
+      "browser-act#examples",
+      "browser-act#related",
+      "browser-automation-chrome-mcp-server"
+    ],
+    "overview_vi": "browser-act is a browser automation command-line interface built specifically for AI agents like Claude Code and Cursor. It handles JavaScript-rendered content extraction, multi-browser session management, form automation, screenshots, and network request capture without requiring visible browser windows. The tool manages isolated browser profiles, maintains authenticated sessions across multiple accounts in parallel, and includes verification assistance for interactive challenges. Developers and data scientists use browser-act to automate web interactions, extract dynamic content, fill complex forms, and manage multi-account workflows while keeping all credentials and session data stored locally on their machine.\nAutomate web form filling and data extraction\nCapture screenshots of web pages for reports\nEnable complex interactions in web applications",
+    "setup_vi": "Terminal\nCopy\n`uv tool install browser-act-cli --python 3.12`\n`git clone https://github.com/browser-act/skills`",
+    "usage_vi": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:34:13.982337Z",
+    "http_status": 200,
+    "content_hash": "d663d70fc2f32b752f4e6a1efef6d69520c68d3ca7c2e9b066d552e30292b6af",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browser-act.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\browser-act.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "browser-act: Browser Automation for AI Agents",
+  "short_description_vi": "Browser-act is a browser automation command-line interface specifically designed for AI agents. It offers features like navigation, data extraction, and session management, making it suitable for developers and data scientists who need to automate web interactions."
+}

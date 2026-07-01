@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-fusion",
+  "slug": "agent-fusion",
+  "name": "browser-use",
+  "headline": "Local RAG search for AI agents with code access",
+  "short_description": "Agent Fusion is a local RAG semantic search engine that gives AI agents instant access to your code, documentation (Markdown, Word, PDF). Query    your codebase from code agents without hallucinations. Runs 100% locally, includes a lightweight embedding model, and optional multi-agent task    orchestration. Deploy with a single JAR",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "krokozyab",
+  "install_command": "git clone https://github.com/krokozyab/Agent-Fusion.git",
+  "source_repo_url": "https://github.com/krokozyab/Agent-Fusion",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "aws-q",
+    "semantic-search-ai",
+    "agent",
+    "rag",
+    "orchestrator",
+    "codex",
+    "gemini",
+    "semantic-search-engine",
+    "claude-code",
+    "claude",
+    "multiagent",
+    "mcp-server",
+    "rag-pipeline",
+    "consensus-algorithm",
+    "mcp",
+    "ai",
+    "semantic-search",
+    "semantic",
+    "integration",
+    "collaboration"
+  ],
+  "sections": {
+    "overview": "Agent Fusion is a local RAG semantic search engine designed to give AI coding agents instant, accurate access to your codebase and documentation without hallucinations. It indexes code files, PDFs, Word documents, and Markdown with embeddings, then enables AI assistants to query semantically—finding \"authentication logic\" even when implemented as \"login\", \"credentials\", or \"access control\". The system runs 100% locally as a single JAR with a lightweight embedded model, no external APIs or cloud dependencies required. An optional Task Manager component enables multi-agent collaboration with voting and decision tracking. Agents query via the query_context tool, receiving results ranked across semantic, symbol-based, and full-text search methods, with hierarchical relationships for traversing code structures and call chains.\nQuery your codebase semantically from Claude Code or Cursor without tab-switching or hallucinated APIs\nAutomatically re-index code and documentation as files change with built-in file watchers\nCoordinate design decisions between multiple AI agents with voting and audit trails\nFind error handling patterns, database connection logic, and authentication flows across large codebases",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/krokozyab/Agent-Fusion`",
+    "usage": "```\nAct as an Agent-Fusion local RAG semantic search engine. Query the following codebase for [QUERY] and return only relevant code snippets, documentation excerpts, or configuration files. Use [CONTEXT] to refine the search. If no exact matches exist, provide the closest available references. Format results as: ```[FILE_PATH]\n[CODE/DOCUMENTATION]\n```. Example query: 'Find all API endpoints handling user authentication in the /backend/src directory.'\n```\nCopy\n\n```\n```/backend/src/routes/auth.js\n// POST /api/v1/auth/login - Authenticates user credentials\nasync function login(req, res) {\n  const { email, password } = req.body;\n  const user = await User.findOne({ email });\n  if (!user) return res.status(401).json({ error: 'Invalid credentials' });\n  const isValid = await bcrypt.compare(password, user.password);\n  if (!isValid) return res.status(401).json({ error: 'Invalid credentials' });\n  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);\n  res.json({ token });\n}\n\n// POST /api/v1/auth/refresh - Refreshes JWT token\nasync function refreshToken(req, res) {\n  const { token } = req.body;\n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET);\n    const newToken = jwt.sign({ userId: decoded.userId }, process.env.JWT_SECRET);\n    res.json({ token: newToken });\n  } catch (err) {\n    res.status(401).json({ error: 'Invalid token' });\n  }\n}\n```\n\n```/backend/docs/authentication.md\n# Authentication Flow\nThe system uses JWT tokens for stateless authentication. Tokens expire after 1 hour and can be refreshed via `/api/v1/auth/refresh`.",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-fusion#main-content",
+      "agent-fusion#overview",
+      "agent-fusion#setup",
+      "agent-fusion#examples",
+      "agent-fusion#tools",
+      "agent-fusion#mcp",
+      "agent-fusion#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent Fusion is a local RAG semantic search engine designed to give AI coding agents instant, accurate access to your codebase and documentation without hallucinations. It indexes code files, PDFs, Word documents, and Markdown with embeddings, then enables AI assistants to query semantically—finding \"authentication logic\" even when implemented as \"login\", \"credentials\", or \"access control\". The system runs 100% locally as a single JAR with a lightweight embedded model, no external APIs or cloud dependencies required. An optional Task Manager component enables multi-agent collaboration with voting and decision tracking. Agents query via the query_context tool, receiving results ranked across semantic, symbol-based, and full-text search methods, with hierarchical relationships for traversing code structures and call chains.\nQuery your codebase semantically from Claude Code or Cursor without tab-switching or hallucinated APIs\nAutomatically re-index code and documentation as files change with built-in file watchers\nCoordinate design decisions between multiple AI agents with voting and audit trails\nFind error handling patterns, database connection logic, and authentication flows across large codebases",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/krokozyab/Agent-Fusion`",
+    "usage_vi": "```\nAct as an Agent-Fusion local RAG semantic search engine. Query the following codebase for [QUERY] and return only relevant code snippets, documentation excerpts, or configuration files. Use [CONTEXT] to refine the search. If no exact matches exist, provide the closest available references. Format results as: ```[FILE_PATH]\n[CODE/DOCUMENTATION]\n```. Example query: 'Find all API endpoints handling user authentication in the /backend/src directory.'\n```\nCopy\n\n```\n```/backend/src/routes/auth.js\n// POST /api/v1/auth/login - Authenticates user credentials\nasync function login(req, res) {\n  const { email, password } = req.body;\n  const user = await User.findOne({ email });\n  if (!user) return res.status(401).json({ error: 'Invalid credentials' });\n  const isValid = await bcrypt.compare(password, user.password);\n  if (!isValid) return res.status(401).json({ error: 'Invalid credentials' });\n  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);\n  res.json({ token });\n}\n\n// POST /api/v1/auth/refresh - Refreshes JWT token\nasync function refreshToken(req, res) {\n  const { token } = req.body;\n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET);\n    const newToken = jwt.sign({ userId: decoded.userId }, process.env.JWT_SECRET);\n    res.json({ token: newToken });\n  } catch (err) {\n    res.status(401).json({ error: 'Invalid token' });\n  }\n}\n```\n\n```/backend/docs/authentication.md\n# Authentication Flow\nThe system uses JWT tokens for stateless authentication. Tokens expire after 1 hour and can be refreshed via `/api/v1/auth/refresh`."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:30:33.773470Z",
+    "http_status": 200,
+    "content_hash": "4669094acbad5e74855bc388055f35be8ffde05e459c1f9e7cdd839e2e976333",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-fusion.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-fusion.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Local RAG search for AI agents with code access",
+  "short_description_vi": "Agent Fusion is a local RAG semantic search engine that gives AI agents instant access to your code, documentation (Markdown, Word, PDF). Query    your codebase from code agents without hallucinations. Runs 100% locally, includes a lightweight embedding model, and optional multi-agent task    orchestration. Deploy with a single JAR"
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-cli",
+  "slug": "mcp-cli",
+  "name": "mcp-cli",
+  "headline": "mcp-cli - MCP Server Automation",
+  "short_description": "A lightweight CLI tool for interacting with MCP servers. Operations teams use it to automate server management tasks. It connects to MCP servers and integrates with existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "philschmid",
+  "install_command": "git clone https://github.com/philschmid/mcp-cli.git",
+  "source_repo_url": "https://github.com/philschmid/mcp-cli",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "mcp-cli is a command-line interface tool that enables direct interaction with MCP (Model Context Protocol) servers. It allows operations teams to automate server management tasks by connecting to MCP servers and executing commands through the CLI. The tool outputs raw text content that integrates seamlessly with standard Unix utilities like grep, head, and jq, making it easy to pipe results into existing workflows. Users can call MCP server tools directly from the command line without additional protocol envelope overhead. This approach simplifies server automation for teams already using CLI-based deployment and management practices.\nQuickly list and manage available tools on multiple MCP servers.\nAutomate file reading and writing tasks across different server environments.\nIntegrate with GitHub to search for repositories and fetch file contents programmatically.\nCreate complex workflows by chaining multiple MCP calls using shell tools.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/philschmid/mcp-cli`",
+    "usage": "```\nUse the `mcp-cli` tool to [ACTION] on the MCP server at [SERVER_ADDRESS]. For example: 'List all active services on the server at 10.0.1.5', 'Restart the nginx service on the server at 192.168.1.100', or 'Check the disk usage for the server at db-server.internal'.\n```\nCopy\n\n```\n```bash\n$ mcp-cli --server 10.0.1.5 --action list-services\n\nActive Services on 10.0.1.5:\n- nginx (running, PID: 1234)\n- postgresql (running, PID: 5678)\n- redis (stopped, last error: connection refused)\n- sshd (running, PID: 9101)\n\nTotal active: 3\nTotal stopped: 1\n\n$ mcp-cli --server 192.168.1.100 --action restart-service --service nginx\n\nRestarting nginx on 192.168.1.100...\nService nginx restarted successfully (PID: 2345).\n\n$ mcp-cli --server db-server.internal --action check-disk-usage\n\nDisk Usage for db-server.internal:\n- / (root): 68% used (120GB/176GB)\n- /var: 45% used (89GB/197GB)\n- /home: 12% used (15GB/124GB)\n- /tmp: 5% used (2GB/40GB)\n\nAlert: / filesystem is approaching 70% capacity. Consider cleanup or expansion.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-cli#main-content",
+      "mcp-cli#overview",
+      "mcp-cli#setup",
+      "mcp-cli#examples",
+      "mcp-cli#tools",
+      "mcp-cli#mcp",
+      "mcp-cli#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcp-cli is a command-line interface tool that enables direct interaction with MCP (Model Context Protocol) servers. It allows operations teams to automate server management tasks by connecting to MCP servers and executing commands through the CLI. The tool outputs raw text content that integrates seamlessly with standard Unix utilities like grep, head, and jq, making it easy to pipe results into existing workflows. Users can call MCP server tools directly from the command line without additional protocol envelope overhead. This approach simplifies server automation for teams already using CLI-based deployment and management practices.\nQuickly list and manage available tools on multiple MCP servers.\nAutomate file reading and writing tasks across different server environments.\nIntegrate with GitHub to search for repositories and fetch file contents programmatically.\nCreate complex workflows by chaining multiple MCP calls using shell tools.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/philschmid/mcp-cli`",
+    "usage_vi": "```\nUse the `mcp-cli` tool to [ACTION] on the MCP server at [SERVER_ADDRESS]. For example: 'List all active services on the server at 10.0.1.5', 'Restart the nginx service on the server at 192.168.1.100', or 'Check the disk usage for the server at db-server.internal'.\n```\nCopy\n\n```\n```bash\n$ mcp-cli --server 10.0.1.5 --action list-services\n\nActive Services on 10.0.1.5:\n- nginx (running, PID: 1234)\n- postgresql (running, PID: 5678)\n- redis (stopped, last error: connection refused)\n- sshd (running, PID: 9101)\n\nTotal active: 3\nTotal stopped: 1\n\n$ mcp-cli --server 192.168.1.100 --action restart-service --service nginx\n\nRestarting nginx on 192.168.1.100...\nService nginx restarted successfully (PID: 2345).\n\n$ mcp-cli --server db-server.internal --action check-disk-usage\n\nDisk Usage for db-server.internal:\n- / (root): 68% used (120GB/176GB)\n- /var: 45% used (89GB/197GB)\n- /home: 12% used (15GB/124GB)\n- /tmp: 5% used (2GB/40GB)\n\nAlert: / filesystem is approaching 70% capacity. Consider cleanup or expansion.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:28:42.165002Z",
+    "http_status": 200,
+    "content_hash": "03547cc815ec7bf50621106f5b7cc0c41c293c89d52c7f036475653459b5010e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-cli.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp-cli - MCP Server Automation",
+  "short_description_vi": "A lightweight CLI tool for interacting with MCP servers. Operations teams use it to automate server management tasks. It connects to MCP servers and integrates with existing workflows."
+}

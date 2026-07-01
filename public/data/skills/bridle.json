@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/bridle",
+  "slug": "bridle",
+  "name": "browser-use",
+  "headline": "bridle config manager for agentic harnesses",
+  "short_description": "Bridle is a TUI/CLI tool for managing configurations across multiple AI coding assistants like Claude Code, OpenCode, and Goose. It allows developers to switch profiles, install skills, and manage commands efficiently. Bridle integrates with Amp, Copilot CLI, and Crush, streamlining workflows for teams using these tools.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "80 min",
+  "author": "neiii",
+  "install_command": "git clone https://github.com/neiii/bridle.git",
+  "source_repo_url": "https://github.com/neiii/bridle",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ampcode",
+    "copilot-cli",
+    "crush-cli",
+    "rust",
+    "opencode",
+    "terminal",
+    "configuration",
+    "mcp",
+    "ai",
+    "cli",
+    "tui"
+  ],
+  "sections": {
+    "overview": "Bridle is a TUI/CLI tool that centralizes configuration management across six AI coding assistants: Claude Code, OpenCode, Goose, Amp, Copilot CLI, and Crush. It functions as a package manager for skills, agents, commands, and MCPs, automatically translating paths and schemas for each harness—so a skill written for Claude Code works seamlessly on OpenCode without manual reconfiguration. Users can create named profiles for different workflows (work, personal, minimal) and switch between them instantly. Bridle solves the friction of managing multiple AI tools with different config formats and directory structures, enabling teams to standardize skill installation and quickly adapt configurations across their entire AI coding assistant stack.\nQuickly switch between work and personal configurations for different AI coding assistants.\nInstall and manage skills from GitHub repositories across multiple harnesses with a single command.\nCreate and edit profiles to customize the setup for specific projects or tasks.\nMonitor the status of configurations across all harnesses to ensure consistency.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/neiii/bridle`",
+    "usage": "```\nUse Bridle to [ACTION] for [TARGET]. For example, switch to the [PROFILE_NAME] profile, install the [SKILL_NAME] skill, or run the [COMMAND_NAME] command across [TOOLS]. Include any necessary flags or arguments like --force or --path=[PATH].\n```\nCopy\n\n```\n```\n$ bridle profile switch --name=python_dev\nSwitched to profile: python_dev\n\n$ bridle skill install --name=debugger --force\nInstalled skill 'debugger' for:\n- Claude Code (v1.2.3)\n- OpenCode (v0.9.8)\n- Goose (v2.1.0)\n\n$ bridle command run --name=format_code --path=/projects/my_app\nExecuted 'format_code' on:\n- Amp: ✅ Success (2.3s)\n- Copilot CLI: ✅ Success (1.8s)\n- Crush: ❌ Failed (permission denied)\n\nTip: Run 'bridle status' to check profile and skill versions.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "bridle#main-content",
+      "bridle#overview",
+      "bridle#setup",
+      "bridle#examples",
+      "bridle#tools",
+      "bridle#mcp",
+      "bridle#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Bridle is a TUI/CLI tool that centralizes configuration management across six AI coding assistants: Claude Code, OpenCode, Goose, Amp, Copilot CLI, and Crush. It functions as a package manager for skills, agents, commands, and MCPs, automatically translating paths and schemas for each harness—so a skill written for Claude Code works seamlessly on OpenCode without manual reconfiguration. Users can create named profiles for different workflows (work, personal, minimal) and switch between them instantly. Bridle solves the friction of managing multiple AI tools with different config formats and directory structures, enabling teams to standardize skill installation and quickly adapt configurations across their entire AI coding assistant stack.\nQuickly switch between work and personal configurations for different AI coding assistants.\nInstall and manage skills from GitHub repositories across multiple harnesses with a single command.\nCreate and edit profiles to customize the setup for specific projects or tasks.\nMonitor the status of configurations across all harnesses to ensure consistency.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/neiii/bridle`",
+    "usage_vi": "```\nUse Bridle to [ACTION] for [TARGET]. For example, switch to the [PROFILE_NAME] profile, install the [SKILL_NAME] skill, or run the [COMMAND_NAME] command across [TOOLS]. Include any necessary flags or arguments like --force or --path=[PATH].\n```\nCopy\n\n```\n```\n$ bridle profile switch --name=python_dev\nSwitched to profile: python_dev\n\n$ bridle skill install --name=debugger --force\nInstalled skill 'debugger' for:\n- Claude Code (v1.2.3)\n- OpenCode (v0.9.8)\n- Goose (v2.1.0)\n\n$ bridle command run --name=format_code --path=/projects/my_app\nExecuted 'format_code' on:\n- Amp: ✅ Success (2.3s)\n- Copilot CLI: ✅ Success (1.8s)\n- Crush: ❌ Failed (permission denied)\n\nTip: Run 'bridle status' to check profile and skill versions.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:18:09.466942Z",
+    "http_status": 200,
+    "content_hash": "206afbc7f5fcc4136c97c0def01c1f4fa8fe11c5d27e858b8da67693411248f1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bridle.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\bridle.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "bridle config manager for agentic harnesses",
+  "short_description_vi": "Bridle is a TUI/CLI tool for managing configurations across multiple AI coding assistants like Claude Code, OpenCode, and Goose. It allows developers to switch profiles, install skills, and manage commands efficiently. Bridle integrates with Amp, Copilot CLI, and Crush, streamlining workflows for teams using these tools."
+}

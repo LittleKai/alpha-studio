@@ -1,0 +1,76 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-ai-agents",
+  "slug": "awesome-ai-agents",
+  "name": "browser-use",
+  "headline": "AI agents list for business tasks automation",
+  "short_description": "A curated list of 1,500+ resources and tools for AI agents. Helps operations teams discover frameworks, CLI tools, and workflows to build and manage AI agents. Integrates with Claude and supports agent-based modeling, multi-agent systems, and agentic workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "jim-schwoebel",
+  "install_command": "git clone https://github.com/jim-schwoebel/awesome_ai_agents.git",
+  "source_repo_url": "https://github.com/jim-schwoebel/awesome_ai_agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agentic-workflow",
+    "multi-agent-systems",
+    "ai-agents-cli",
+    "awesome-lists",
+    "ai-agent",
+    "aiagents",
+    "ai-agents-framework",
+    "ai-agent-tools",
+    "agents",
+    "agentic",
+    "aiworkflow",
+    "agentic-ai",
+    "learning",
+    "multi-agent",
+    "ai-agent-framework",
+    "multi-agent-system",
+    "ai",
+    "aiagent",
+    "agent-based-modeling",
+    "awesome-list"
+  ],
+  "sections": {
+    "overview": "Awesome AI Agents is a comprehensive hub providing a curated collection of tools, frameworks, datasets, and projects for AI agent development. The repository serves as a one-stop destination for researchers, developers, and AI enthusiasts seeking resources to build, manage, and deploy AI-driven agents. It aggregates the most advanced and practical solutions available in the AI agents ecosystem, making it easier to discover relevant frameworks and tools. Whether you're implementing multi-agent systems, agent-based modeling, or agentic workflows, this directory helps you identify the best resources for your use case. The community-driven collection is continuously updated with new additions across automation, NLP, and related domains.\nAutomate repetitive tasks in business processes using AI agents.\nUtilize AI agents for personalized content generation in marketing campaigns.\nImplement AI-driven customer support agents to enhance user interaction.\nLeverage AI agents for data analysis and insights generation in research.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jim-schwoebel/awesome_ai_agents`",
+    "usage": "```\nI need to research AI agent frameworks and tools for [PROJECT_NAME]. My focus is on [SPECIFIC_NEEDS: e.g., multi-agent systems, CLI-based agents, or agent orchestration]. Use the awesome_ai_agents curated list to recommend 5-7 tools that best fit my requirements. For each tool, provide: 1) a brief description, 2) key features, 3) integration requirements (e.g., Python, Docker), and 4) a link to the official documentation or GitHub repo. Prioritize tools that integrate with [PLATFORM: e.g., Claude, LangChain, or CrewAI].\n```\nCopy\n\n```\nFor your project **AutoTradeBot**, which requires a multi-agent system for real-time stock market analysis and automated trading execution, here are the top tools from the awesome_ai_agents curated list that align with your needs:\n\n1. **CrewAI**\n   - *Description*: A framework for orchestrating role-playing, autonomous AI agents in Python. It excels at defining agent roles, tools, and workflows for complex tasks.\n   - *Key Features*: Supports hierarchical agent teams, custom tool integration (e.g., APIs, databases), and async task execution. Integrates seamlessly with LangChain and Ollama.\n   - *Integration Requirements*: Python 3.9+, LangChain (optional), and Docker for containerized deployments.\n   - *Link*: [https://github.com/joaomdmoura/crewAI](https://github.com/joaomdmoura/crewAI)\n\n2. **AutoGen** (by Microsoft)\n   - *Description*: A framework enabling conversational AI agents to collaborate to solve tasks. Ideal for agentic workflows where agents debate, refine, or delegate tasks.\n   - *Key Features*: Supports both single-agent and multi-agent conversations, customizable agent roles (e.g., researcher, critic), and integration with Hugging Face models.\n   - *Integration Requirements*: Python 3.8+, requires OpenAI API key (or alternative LLM providers) and Redis for state management.\n   - *Link*: [https://github.com/microsoft/autogen](https://github.com/microsoft/autogen)\n\n3. **LangGraph**\n   - *Description*: A library for building stateful, multi-actor applications with LLMs at their core. Perfect for workflows requiring memory, conditional logic, and tool usage.\n   - *Key Features*: Graph-based agent workflows, built-in memory management, and support for custom nodes (e.g., API calls, database queries).\n   - *Integration Requirements*: Python 3.10+, LangChain (optional), and PostgreSQL for persistent memory.\n   - *Link*: [https://github.com/langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)\n\n4. **Huginn**\n   - *Description*: A self-hosted agent system for automating tasks via agents that monitor and act on events (e.g., web scraping, email alerts).\n   - *Key Features*: Event-driven architecture, no-code agent configuration via UI, and support for Ruby-based agents.\n   - *Integration Requirements*: Ruby 3.0+, PostgreSQL for data storage, and Docker for easy deployment.\n   - *Link*: [https://github.com/huginn/huginn](https://github.com/huginn/huginn)\n\n5. **SmolAgents**\n   - *Description*: A lightweight framework for building and deploying AI agents with minimal overhead. Great for prototyping or low-resource environments.\n   - *Key Features*: Minimal dependencies, supports both local and cloud-based LLMs, and includes pre-built tools for web searches and file operations.\n   - *Integration Requirements*: Python 3.7+, requires only `requests` and `transformers` libraries.\n   - *Link*: [https://github.com/huggingface/smolagents](https://github.com/huggingface/smolagents)\n\n6. **AgentOS**\n   - *Description*: A platform for building, testing, and deploying AI agents with a focus on observability and scalability.\n   - *Key Features*: Built-in monitoring dashboards, support for multi-agent teams, and integration with cloud providers (AWS, GCP).\n   - *Integration Requirements*: Python 3.9+, Kubernetes for orchestration, and Prometheus for metrics.\n   - *Link*: [https://github.com/agentos-ai/agentos](https://github.com/agentos-ai/agentos)\n\n**Recommendation**: For your **AutoTradeBot**, **CrewAI** is the best fit due to its Python-first approach, strong LangChain integration, and support for hierarchical agent teams. Pair it with **LangGraph** for stateful workflows (e.g., tracking market trends over time) and **AutoGen** for agent debates (e.g., validating trading signals). Deploy using Docker for consistency across environments. Start with a minimal prototype using **SmolAgents** to validate core logic before scaling.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-ai-agents#main-content",
+      "awesome-ai-agents#overview",
+      "awesome-ai-agents#setup",
+      "awesome-ai-agents#examples",
+      "awesome-ai-agents#tools",
+      "awesome-ai-agents#mcp",
+      "awesome-ai-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome AI Agents is a comprehensive hub providing a curated collection of tools, frameworks, datasets, and projects for AI agent development. The repository serves as a one-stop destination for researchers, developers, and AI enthusiasts seeking resources to build, manage, and deploy AI-driven agents. It aggregates the most advanced and practical solutions available in the AI agents ecosystem, making it easier to discover relevant frameworks and tools. Whether you're implementing multi-agent systems, agent-based modeling, or agentic workflows, this directory helps you identify the best resources for your use case. The community-driven collection is continuously updated with new additions across automation, NLP, and related domains.\nAutomate repetitive tasks in business processes using AI agents.\nUtilize AI agents for personalized content generation in marketing campaigns.\nImplement AI-driven customer support agents to enhance user interaction.\nLeverage AI agents for data analysis and insights generation in research.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jim-schwoebel/awesome_ai_agents`",
+    "usage_vi": "```\nI need to research AI agent frameworks and tools for [PROJECT_NAME]. My focus is on [SPECIFIC_NEEDS: e.g., multi-agent systems, CLI-based agents, or agent orchestration]. Use the awesome_ai_agents curated list to recommend 5-7 tools that best fit my requirements. For each tool, provide: 1) a brief description, 2) key features, 3) integration requirements (e.g., Python, Docker), and 4) a link to the official documentation or GitHub repo. Prioritize tools that integrate with [PLATFORM: e.g., Claude, LangChain, or CrewAI].\n```\nCopy\n\n```\nFor your project **AutoTradeBot**, which requires a multi-agent system for real-time stock market analysis and automated trading execution, here are the top tools from the awesome_ai_agents curated list that align with your needs:\n\n1. **CrewAI**\n   - *Description*: A framework for orchestrating role-playing, autonomous AI agents in Python. It excels at defining agent roles, tools, and workflows for complex tasks.\n   - *Key Features*: Supports hierarchical agent teams, custom tool integration (e.g., APIs, databases), and async task execution. Integrates seamlessly with LangChain and Ollama.\n   - *Integration Requirements*: Python 3.9+, LangChain (optional), and Docker for containerized deployments.\n   - *Link*: [https://github.com/joaomdmoura/crewAI](https://github.com/joaomdmoura/crewAI)\n\n2. **AutoGen** (by Microsoft)\n   - *Description*: A framework enabling conversational AI agents to collaborate to solve tasks. Ideal for agentic workflows where agents debate, refine, or delegate tasks.\n   - *Key Features*: Supports both single-agent and multi-agent conversations, customizable agent roles (e.g., researcher, critic), and integration with Hugging Face models.\n   - *Integration Requirements*: Python 3.8+, requires OpenAI API key (or alternative LLM providers) and Redis for state management.\n   - *Link*: [https://github.com/microsoft/autogen](https://github.com/microsoft/autogen)\n\n3. **LangGraph**\n   - *Description*: A library for building stateful, multi-actor applications with LLMs at their core. Perfect for workflows requiring memory, conditional logic, and tool usage.\n   - *Key Features*: Graph-based agent workflows, built-in memory management, and support for custom nodes (e.g., API calls, database queries).\n   - *Integration Requirements*: Python 3.10+, LangChain (optional), and PostgreSQL for persistent memory.\n   - *Link*: [https://github.com/langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)\n\n4. **Huginn**\n   - *Description*: A self-hosted agent system for automating tasks via agents that monitor and act on events (e.g., web scraping, email alerts).\n   - *Key Features*: Event-driven architecture, no-code agent configuration via UI, and support for Ruby-based agents.\n   - *Integration Requirements*: Ruby 3.0+, PostgreSQL for data storage, and Docker for easy deployment.\n   - *Link*: [https://github.com/huginn/huginn](https://github.com/huginn/huginn)\n\n5. **SmolAgents**\n   - *Description*: A lightweight framework for building and deploying AI agents with minimal overhead. Great for prototyping or low-resource environments.\n   - *Key Features*: Minimal dependencies, supports both local and cloud-based LLMs, and includes pre-built tools for web searches and file operations.\n   - *Integration Requirements*: Python 3.7+, requires only `requests` and `transformers` libraries.\n   - *Link*: [https://github.com/huggingface/smolagents](https://github.com/huggingface/smolagents)\n\n6. **AgentOS**\n   - *Description*: A platform for building, testing, and deploying AI agents with a focus on observability and scalability.\n   - *Key Features*: Built-in monitoring dashboards, support for multi-agent teams, and integration with cloud providers (AWS, GCP).\n   - *Integration Requirements*: Python 3.9+, Kubernetes for orchestration, and Prometheus for metrics.\n   - *Link*: [https://github.com/agentos-ai/agentos](https://github.com/agentos-ai/agentos)\n\n**Recommendation**: For your **AutoTradeBot**, **CrewAI** is the best fit due to its Python-first approach, strong LangChain integration, and support for hierarchical agent teams. Pair it with **LangGraph** for stateful workflows (e.g., tracking market trends over time) and **AutoGen** for agent debates (e.g., validating trading signals). Deploy using Docker for consistency across environments. Start with a minimal prototype using **SmolAgents** to validate core logic before scaling.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:47:17.962269Z",
+    "http_status": 200,
+    "content_hash": "33a04f5e5b61458b97181d821c159569c9696bd7fbe36c645c52645b1963416e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-ai-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-ai-agents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI agents list for business tasks automation",
+  "short_description_vi": "A curated list of 1,500+ resources and tools for AI agents. Helps operations teams discover frameworks, CLI tools, and workflows to build and manage AI agents. Integrates with Claude and supports agent-based modeling, multi-agent systems, and agentic workflows."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/finishing-a-development-branch",
+  "slug": "finishing-a-development-branch",
+  "name": "Finishing a Development Branch",
+  "headline": "Finishing a Development Branch - Automate CI/CD",
+  "short_description": "Automates the final steps of a development branch, including testing, merging, and deployment. Benefits operations teams by reducing manual effort and ensuring consistent workflows. Integrates with CI/CD pipelines and version control systems.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "obra",
+  "install_command": "git clone https://github.com/obra/superpowers.git",
+  "source_repo_url": "https://github.com/obra/superpowers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The finishing-a-development-branch skill automates the closing stages of feature development, handling testing, merging, and deployment tasks that typically require manual coordination. It integrates with CI/CD pipelines and version control systems to ensure consistent, repeatable workflows across teams. This skill reduces operational overhead by eliminating repetitive manual steps and standardizing how branches transition from development to production. Operations teams benefit from decreased human error, faster cycle times, and predictable deployment processes. The skill supports sandboxed environments and includes safeguards to prevent data loss during cleanup operations.\nAutomatically verify tests before merging a development branch.\nPresent options for merging, pull requests, or discarding changes based on task completion.\nClean up the worktree after finishing development tasks to maintain a tidy project environment.\nFacilitate collaboration by ensuring all team members are aligned on branch finalization decisions.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage": "```\nAutomate the final steps for the development branch named [BRANCH_NAME] in the [REPOSITORY]. Ensure all tests pass, merge into the main branch, and deploy to the staging environment. Use the CI/CD pipeline configured in [CI_TOOL] and follow the deployment checklist in [DOCUMENTATION_LINK].\n```\nCopy\n\n```\nThe automation process for the development branch 'feature/user-authentication' in the 'ecommerce-platform' repository has been successfully completed. All unit and integration tests passed with 100% coverage. The branch was merged into the main branch using the pull request #456. The deployment to the staging environment was successful, and the application is now available at [STAGING_URL]. The deployment checklist was followed, and all post-deployment checks were completed. The deployment log can be found at [LOG_LINK].\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "finishing-a-development-branch#main-content",
+      "finishing-a-development-branch#overview",
+      "finishing-a-development-branch#setup",
+      "finishing-a-development-branch#examples",
+      "finishing-a-development-branch#tools",
+      "finishing-a-development-branch#mcp",
+      "finishing-a-development-branch#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill \"finishing-a-development-branch\" tự động hóa các giai đoạn cuối cùng của quá trình phát triển tính năng, xử lý các tác vụ kiểm thử, hợp nhất và triển khai vốn thường yêu cầu phối hợp thủ công. Skill này tích hợp với các pipeline CI/CD và hệ thống quản lý phiên bản nhằm đảm bảo quy trình làm việc nhất quán, có thể lặp lại giữa các đội ngũ. Công cụ này giúp giảm chi phí vận hành bằng cách loại bỏ các bước thủ công lặp đi lặp lại và chuẩn hóa cách chuyển đổi các nhánh từ môi trường phát triển sang môi trường production. Đội ngũ vận hành sẽ được hưởng lợi từ việc giảm thiểu sai sót do con người, rút ngắn chu kỳ phát triển và có quy trình triển khai dễ dự đoán trước. Skill hỗ trợ các môi trường sandbox và tích hợp các cơ chế bảo vệ để ngăn mất dữ liệu trong quá trình dọn dẹp.\nTự động xác thực các bài kiểm thử trước khi hợp nhất nhánh phát triển.\nĐưa ra các tùy chọn hợp nhất, tạo pull request hoặc hủy bỏ các thay đổi dựa trên trạng thái hoàn thành tác vụ.\nDọn dẹp worktree sau khi hoàn tất các tác vụ phát triển để giữ cho môi trường dự án luôn ngăn nắp.\nThúc đẩy sự cộng tác bằng cách đảm bảo tất cả thành viên trong nhóm thống nhất về quyết định đóng nhánh.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/obra/superpowers`",
+    "usage_vi": "```\nTự động hóa các bước cuối cùng cho nhánh phát triển có tên [BRANCH_NAME] trong kho lưu trữ [REPOSITORY]. Hãy đảm bảo mọi bài kiểm thử đều vượt qua, hợp nhất vào nhánh main và triển khai lên môi trường staging. Sử dụng pipeline CI/CD được cấu hình trong [CI_TOOL] và làm theo tài liệu hướng dẫn triển khai tại [DOCUMENTATION_LINK].\n```\nCopy\n\n```\nQuá trình tự động hóa cho nhánh phát triển 'feature/user-authentication' trong kho lưu trữ 'ecommerce-platform' đã hoàn tất thành công. Toàn bộ các bài kiểm thử đơn vị (unit test) và kiểm thử tích hợp (integration test) đều vượt qua với tỷ lệ bao phủ (coverage) 100%. Nhánh này đã được hợp nhất vào nhánh main thông qua pull request #456. Việc triển khai lên môi trường staging đã thành công và ứng dụng hiện khả dụng tại đường dẫn [STAGING_URL]. Quy trình kiểm tra sau triển khai đã được tuân thủ và hoàn tất. Bạn có thể xem log triển khai tại [LOG_LINK].\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:11:09.307176Z",
+    "http_status": 200,
+    "content_hash": "a8fd72159bbb0b3fec81d9c3387ab0ac4f1f7aadc5034c89c865c73761d6fb74",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\finishing-a-development-branch.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\finishing-a-development-branch.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hoàn tất nhánh phát triển - Tự động hóa CI/CD",
+  "short_description_vi": "Tự động hóa các bước cuối cùng khi đóng một nhánh phát triển, bao gồm chạy kiểm thử, hợp nhất và triển khai. Giải pháp này giúp giảm thiểu thao tác thủ công và đảm bảo quy trình làm việc nhất quán cho đội ngũ vận hành. Tích hợp trực tiếp với các pipeline CI/CD và hệ thống quản lý phiên bản."
+}

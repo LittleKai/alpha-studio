@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-agent-server",
+  "slug": "claude-agent-server",
+  "name": "Claude Agent Server",
+  "headline": "Claude agent server sandbox control",
+  "short_description": "Run Claude Agent in a sandbox, control it via websocket. Operations teams use this to automate workflows, integrate with internal tools, and manage AI interactions in real-time. Connects to TypeScript-based systems and supports bidirectional communication.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "dzhng",
+  "install_command": "git clone https://github.com/dzhng/claude-agent-server.git",
+  "source_repo_url": "https://github.com/dzhng/claude-agent-server",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "claude-agents",
+    "claude-agent-sdk",
+    "claude",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Claude Agent Server is a WebSocket-based server that enables real-time bidirectional communication with Claude through the Claude Agent SDK. It deploys as an E2B sandbox template and connects via TypeScript client library, making it ideal for operations teams automating workflows and integrating AI into internal tools. The server runs on port 3000 and handles message serialization, sandbox management, and resource cleanup automatically through the included client library. You can modify server behavior by editing TypeScript code and test changes locally before rebuilding the E2B template. The typical workflow involves building an E2B image, installing the client library in your project, and connecting via WebSocket with configuration options for custom agents, allowed tools, and system prompts.\nDeploy an interactive AI assistant in a controlled environment for testing purposes.\nIntegrate Claude Agent into existing applications to enhance user interaction with AI.\nCustomize server behavior to tailor AI responses for specific use cases.\nRun local tests on AI interactions before deploying to production environments.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dzhng/claude-agent-server`",
+    "usage": "```\nDeploy a Claude Agent Server instance to automate [WORKFLOW_NAME]. Configure the agent to connect via WebSocket to [INTERNAL_TOOL_OR_SYSTEM] and execute the following tasks: [TASK_LIST]. Ensure the agent handles errors by logging them to [LOGGING_ENDPOINT] and provides real-time status updates to [MONITORING_DASHBOARD]. Use the TypeScript SDK for integration.\n```\nCopy\n\n```\n```typescript\n// Example deployment script for Claude Agent Server\nimport { ClaudeAgentServer } from '@claude-ai/server-sdk';\nimport { WebSocketClient } from 'ws';\n\n// Initialize the agent server\nconst agentServer = new ClaudeAgentServer({\n  port: 8080,\n  sandbox: true,\n  maxConcurrentAgents: 5,\n  logger: {\n    endpoint: 'https://logs.internal.company.com/api/v1/traces',\n    level: 'debug'\n  }\n});\n\n// Connect to internal tooling via WebSocket\nconst wsClient = new WebSocketClient('ws://internal-tools.company.com/claude-agent');\n\n// Define workflow automation tasks\nagentServer.registerTask('data-pipeline', {\n  steps: [\n    { action: 'fetch', source: 's3://raw-data-bucket/daily', target: '/tmp/raw' },\n    { action: 'transform', script: 'transform.py', inputs: ['/tmp/raw'] },\n    { action: 'load', destination: 'postgres://analytics-db.company.com/warehouse' }\n  ],\n  errorHandling: {\n    retryAttempts: 3,\n    fallback: 'notify-team@company.com'\n  }\n});\n\n// Start the server\nagentServer.start().then(() => {\n  console.log('Claude Agent Server running on port 8080');\n  wsClient.connect();\n});\n\n// Real-time status updates\nagentServer.on('status', (data) => {\n  console.log(`[${new Date().toISOString()}] Agent Status:`, data);\n  wsClient.send(JSON.stringify({\n    type: 'agent-status',\n    payload: data\n  }));\n});\n```\n\n**Execution Log:**\n- 2024-05-15T14:32:10Z: Agent Server initialized with 5 concurrent agents\n- 2024-05-15T14:32:11Z: WebSocket connection established to internal-tools.company.com\n- 2024-05-15T14:32:15Z: Task 'data-pipeline' started (ID: task_12345)\n- 2024-05-15T14:32:17Z: Step 1/3: Downloaded 2.4GB from s3://raw-data-bucket/daily\n- 2024-05-15T14:32:22Z: Step 2/3: Transformation completed (98% success rate)\n- 2024-05-15T14:32:25Z: Step 3/3: Loaded 1.8M records to analytics-db.company.com\n- 2024-05-15T14:32:25Z: Task 'data-pipeline' completed successfully\n\n**Monitoring Dashboard Output:**\n```json\n{\n  \"agent_id\": \"claude-agent-001\",\n  \"status\": \"idle\",\n  \"last_task\": \"data-pipeline\",\n  \"resource_usage\": {\n    \"cpu\": \"12%\",\n    \"memory\": \"450MB\",\n    \"disk\": \"2.1GB\"\n  },\n  \"uptime\": \"2h 15m\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-agent-server#main-content",
+      "claude-agent-server#overview",
+      "claude-agent-server#setup",
+      "claude-agent-server#examples",
+      "claude-agent-server#tools",
+      "claude-agent-server#mcp",
+      "claude-agent-server#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Agent Server là một máy chủ dựa trên WebSocket cho phép giao tiếp hai chiều theo thời gian thực với Claude thông qua Claude Agent SDK. Dự án được triển khai dưới dạng một E2B sandbox template và kết nối qua thư viện client TypeScript, rất lý tưởng cho các đội ngũ vận hành cần tự động hóa workflow và tích hợp AI vào các công cụ nội bộ. Server chạy trên cổng 3000 và tự động xử lý việc tuần tự hóa thông điệp (message serialization), quản lý sandbox và dọn dẹp tài nguyên thông qua thư viện client đi kèm. Bạn có thể sửa đổi hành vi của server bằng cách chỉnh sửa mã nguồn TypeScript và kiểm thử các thay đổi cục bộ trước khi build lại template E2B. Quy trình làm việc thông thường bao gồm build E2B image, cài đặt thư viện client vào dự án của bạn và kết nối qua WebSocket với các tùy chọn cấu hình cho agent tùy chỉnh, các công cụ được cho phép (allowed tools) và system prompt.\nTriển khai một trợ lý AI tương tác trong môi trường được kiểm soát để phục vụ mục đích kiểm thử.\nTích hợp Claude Agent vào các ứng dụng hiện có để cải thiện trải nghiệm tương tác của người dùng với AI.\nTùy chỉnh hành vi của server để điều chỉnh phản hồi của AI cho các trường hợp sử dụng cụ thể.\nChạy các bài kiểm thử cục bộ (local test) về tương tác AI trước khi triển khai lên môi trường production.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dzhng/claude-agent-server`",
+    "usage_vi": "```\nTriển khai một instance Claude Agent Server để tự động hóa [WORKFLOW_NAME]. Cấu hình agent kết nối qua WebSocket tới [INTERNAL_TOOL_OR_SYSTEM] và thực hiện các tác vụ sau: [TASK_LIST]. Đảm bảo agent xử lý lỗi bằng cách ghi log vào [LOGGING_ENDPOINT] và cung cấp các cập nhật trạng thái theo thời gian thực tới [MONITORING_DASHBOARD]. Sử dụng TypeScript SDK để tích hợp.\n```\nCopy\n\n```\n```typescript\n// Kịch bản triển khai mẫu cho Claude Agent Server\nimport { ClaudeAgentServer } from '@claude-ai/server-sdk';\nimport { WebSocketClient } from 'ws';\n\n// Khởi tạo agent server\nconst agentServer = new ClaudeAgentServer({\n  port: 8080,\n  sandbox: true,\n  maxConcurrentAgents: 5,\n  logger: {\n    endpoint: 'https://logs.internal.company.com/api/v1/traces',\n    level: 'debug'\n  }\n});\n\n// Kết nối với công cụ nội bộ qua WebSocket\nconst wsClient = new WebSocketClient('ws://internal-tools.company.com/claude-agent');\n\n// Định nghĩa các tác vụ tự động hóa workflow\nagentServer.registerTask('data-pipeline', {\n  steps: [\n    { action: 'fetch', source: 's3://raw-data-bucket/daily', target: '/tmp/raw' },\n    { action: 'transform', script: 'transform.py', inputs: ['/tmp/raw'] },\n    { action: 'load', destination: 'postgres://analytics-db.company.com/warehouse' }\n  ],\n  errorHandling: {\n    retryAttempts: 3,\n    fallback: 'notify-team@company.com'\n  }\n});\n\n// Khởi động server\nagentServer.start().then(() => {\n  console.log('Claude Agent Server running on port 8080');\n  wsClient.connect();\n});\n\n// Cập nhật trạng thái theo thời gian thực\nagentServer.on('status', (data) => {\n  console.log(`[${new Date().toISOString()}] Agent Status:`, data);\n  wsClient.send(JSON.stringify({\n    type: 'agent-status',\n    payload: data\n  }));\n});\n```\n\n**Nhật ký thực thi:**\n- 2024-05-15T14:32:10Z: Khởi tạo Agent Server với 5 agent đồng thời (concurrent agents)\n- 2024-05-15T14:32:11Z: Đã thiết lập kết nối WebSocket tới internal-tools.company.com\n- 2024-05-15T14:32:15Z: Tác vụ 'data-pipeline' bắt đầu (ID: task_12345)\n- 2024-05-15T14:32:17Z: Bước 1/3: Đã tải xuống 2.4GB từ s3://raw-data-bucket/daily\n- 2024-05-15T14:32:22Z: Bước 2/3: Hoàn thành biến đổi dữ liệu (tỷ lệ thành công 98%)\n- 2024-05-15T14:32:25Z: Bước 3/3: Đã nạp 1.8 triệu bản ghi vào analytics-db.company.com\n- 2024-05-15T14:32:25Z: Tác vụ 'data-pipeline' đã hoàn thành thành công\n\n**Kết quả trên Monitoring Dashboard:**\n```json\n{\n  \"agent_id\": \"claude-agent-001\",\n  \"status\": \"idle\",\n  \"last_task\": \"data-pipeline\",\n  \"resource_usage\": {\n    \"cpu\": \"12%\",\n    \"memory\": \"450MB\",\n    \"disk\": \"2.1GB\"\n  },\n  \"uptime\": \"2h 15m\"\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:21:05.136503Z",
+    "http_status": 200,
+    "content_hash": "fa9f80af1864e197fea14e7f167fb407feef773b6f3181e64bdd8aba18d8c1c0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-server.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-server.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Điều khiển sandbox cho Claude agent server",
+  "short_description_vi": "Chạy Claude Agent trong sandbox và điều khiển qua websocket. Các đội ngũ vận hành sử dụng công cụ này để tự động hóa workflow, tích hợp với các công cụ nội bộ và quản lý tương tác AI theo thời gian thực. Hỗ trợ kết nối với các hệ thống viết bằng TypeScript và giao tiếp hai chiều."
+}

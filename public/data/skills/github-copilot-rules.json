@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/github-copilot-rules",
+  "slug": "github-copilot-rules",
+  "name": "GitHub Copilot Rules",
+  "headline": "GitHub Copilot Rules - Enforce .NET Best Practices",
+  "short_description": "GitHub Copilot AI rules for .NET development best practices. Helps operations teams enforce coding standards and improve code quality. Integrates with GitHub Copilot in Visual Studio Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "NikiforovAll",
+  "install_command": "git clone https://github.com/NikiforovAll/github-copilot-rules.git",
+  "source_repo_url": "https://github.com/NikiforovAll/github-copilot-rules",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "github-copilot",
+    "prompts",
+    "copilot",
+    "ai"
+  ],
+  "sections": {
+    "overview": "GitHub Copilot Handbook provides ready-to-use customizations for GitHub Copilot in VS Code, including coding guidelines, style conventions, test generation rules, and custom agents. The collection includes path-specific instructions for enforcing .NET best practices, reusable prompt templates, and specialized agent modes for code review, debugging, and analysis. Teams can copy files into their project's .github/ directory and configure VS Code settings to apply these rules automatically. This approach helps development and operations teams maintain consistent coding standards, improve code quality, and streamline common development workflows like commit message generation and test creation.\nEnforce .NET coding standards across development teams\nAuto-generate conventional commit messages in GitHub\nRun structured code reviews with prioritized feedback\nGenerate xUnit tests following team conventions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/NikiforovAll/github-copilot-rules`",
+    "usage": "```\nGenerate a GitHub Copilot AI rule for [RULE_NAME] in .NET development. The rule should enforce [STANDARD/PATTERN] for [CODE_CONTEXT]. Include a clear explanation of the rule, why it matters, and a code snippet showing the correct and incorrect implementation. Example: 'Generate a GitHub Copilot AI rule for 'Avoid async void methods' in .NET. Explain why this rule matters for error handling and thread safety, and provide a code snippet showing the correct (async Task) and incorrect (async void) implementations.'\n```\nCopy\n\n```\n```markdown\n# GitHub Copilot AI Rule: Avoid Async Void Methods in .NET",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "github-copilot-rules#main-content",
+      "github-copilot-rules#overview",
+      "github-copilot-rules#setup",
+      "github-copilot-rules#examples",
+      "github-copilot-rules#tools",
+      "github-copilot-rules#mcp",
+      "github-copilot-rules#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GitHub Copilot Handbook cung cấp các tùy chỉnh có sẵn cho GitHub Copilot trong VS Code, bao gồm hướng dẫn lập trình, quy ước viết code (style convention), quy tắc tạo test và các custom agent. Bộ sưu tập này chứa các chỉ dẫn theo từng đường dẫn cụ thể để áp dụng best practice cho .NET, các mẫu prompt có thể tái sử dụng, cùng các chế độ agent chuyên dụng cho việc code review, debug và phân tích mã nguồn. Các đội ngũ phát triển có thể sao chép các file này vào thư mục .github/ của dự án và cấu hình VS Code để tự động áp dụng các quy tắc này. Phương thức tiếp cận này giúp các đội ngũ phát triển và vận hành duy trì tiêu chuẩn lập trình nhất quán, nâng cao chất lượng code và tối ưu hóa các quy trình phát triển phổ biến như tự động tạo commit message và tạo test case.\nÁp dụng đồng bộ các tiêu chuẩn lập trình .NET trong các đội ngũ phát triển\nTự động tạo commit message chuẩn hóa (conventional commit) trên GitHub\nThực hiện code review có cấu trúc với phản hồi được sắp xếp theo độ ưu tiên\nTạo các xUnit test tuân thủ theo quy ước của đội ngũ",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/NikiforovAll/github-copilot-rules`",
+    "usage_vi": "```\nTạo một quy tắc AI cho GitHub Copilot cho [RULE_NAME] trong phát triển .NET. Quy tắc này cần áp dụng [STANDARD/PATTERN] cho [CODE_CONTEXT]. Hãy đưa ra giải thích rõ ràng về quy tắc, lý tại sao nó lại quan trọng, và một đoạn code minh họa cách triển khai đúng và sai. Ví dụ: 'Tạo một quy tắc AI cho GitHub Copilot về việc 'Tránh sử dụng các method async void' trong .NET. Giải thích tại sao quy tắc này lại quan trọng đối với việc xử lý lỗi và an toàn luồng (thread safety), đồng thời cung cấp một đoạn code minh họa cách triển khai đúng (async Task) và sai (async void).'\n```\nCopy\n\n```\n```markdown\n# Quy tắc AI cho GitHub Copilot: Tránh sử dụng Method Async Void trong .NET"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:03.072505Z",
+    "http_status": 200,
+    "content_hash": "c094df80fa889dfd70a2f7f6c15a04b372ca4c18f3775720314b0d0a1c438fbe",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-copilot-rules.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\github-copilot-rules.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quy tắc GitHub Copilot - Áp dụng các Best Practice cho .NET",
+  "short_description_vi": "Bộ quy tắc AI của GitHub Copilot dành cho các best practice phát triển .NET. Giúp các đội ngũ vận hành thực thi tiêu chuẩn lập trình và cải thiện chất lượng mã nguồn. Tích hợp trực tiếp với GitHub Copilot trong Visual Studio Code."
+}

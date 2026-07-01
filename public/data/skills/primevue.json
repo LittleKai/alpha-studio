@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/primevue",
+  "slug": "primevue",
+  "name": "daisyUI 5",
+  "headline": "PrimeVue: Vue UI Setup & Components",
+  "short_description": "PrimeVue is a comprehensive UI toolkit specifically designed for Vue.js applications. It includes a variety of rich components, themes, and templates, making it suitable for developers looking to enhance their Vue projects.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "kindy",
+  "install_command": "npm install primevue @primeuix/themes",
+  "source_repo_url": "https://github.com/kindy/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "ui-framework",
+    "primevue"
+  ],
+  "sections": {
+    "overview": "This skill guides you through configuring PrimeVue, a complete UI component library for Vue.js applications, in Vue 3 and Vite projects. It covers plugin setup with preset themes (Aura, Lara, Nora), auto-import configuration using unplugin-vue-components, and usage patterns for common components like Button, InputText, DataTable, and Dialog. The skill enables developers to quickly scaffold projects with pre-skinned UI components or use unstyled mode for custom styling with Tailwind or Bootstrap. It's essential for teams building feature-rich Vue applications that need professional, accessible UI components out of the box.\nConfiguring PrimeVue in Vue 3 projects\nUtilizing styled and unstyled modes\nSetting up auto-import for components\nTheming with pre-skinned themes",
+    "setup": "Terminal\nCopy\n`npm install primevue @primeuix/themes`\n`git clone https://github.com/kindy/skills`",
+    "usage": "```\nAs an expert in Vue.js and PrimeVue, help me [TASK] using PrimeVue components. Focus on [COMPONENT_TYPE] and ensure the implementation follows best practices for [INDUSTRY] applications. Use [THEME] theme for styling. Here's the context: [PROJECT_DETAILS]\n```\nCopy\n\n```\n```vue\n<template>\n  <div class=\"p-grid\">\n    <div class=\"p-col-12\">\n      <h2>Customer Dashboard</h2>\n      <DataTable :value=\"customers\" :paginator=\"true\" :rows=\"10\" responsiveLayout=\"scroll\">\n        <Column field=\"id\" header=\"ID\"></Column>\n        <Column field=\"name\" header=\"Name\"></Column>\n        <Column field=\"email\" header=\"Email\"></Column>\n        <Column field=\"status\" header=\"Status\">\n          <template #body=\"slotProps\">\n            <Tag :value=\"slotProps.data.status\" :severity=\"getStatusSeverity(slotProps.data.status)\" />\n          </template>\n        </Column>\n      </DataTable>\n    </div>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      customers: [\n        { id: 1, name: 'John Doe', email: 'john@example.com', status: 'Active' },\n        { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive' }\n      ]\n    }\n  },\n  methods: {\n    getStatusSeverity(status) {\n      return status === 'Active' ? 'success' : 'danger';\n    }\n  }\n}\n</script>\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "primevue#main-content",
+      "primevue#overview",
+      "primevue#setup",
+      "primevue#examples",
+      "primevue#related",
+      "daisyui-5"
+    ],
+    "overview_vi": "This skill guides you through configuring PrimeVue, a complete UI component library for Vue.js applications, in Vue 3 and Vite projects. It covers plugin setup with preset themes (Aura, Lara, Nora), auto-import configuration using unplugin-vue-components, and usage patterns for common components like Button, InputText, DataTable, and Dialog. The skill enables developers to quickly scaffold projects with pre-skinned UI components or use unstyled mode for custom styling with Tailwind or Bootstrap. It's essential for teams building feature-rich Vue applications that need professional, accessible UI components out of the box.\nConfiguring PrimeVue in Vue 3 projects\nUtilizing styled and unstyled modes\nSetting up auto-import for components\nTheming with pre-skinned themes",
+    "setup_vi": "Terminal\nCopy\n`npm install primevue @primeuix/themes`\n`git clone https://github.com/kindy/skills`",
+    "usage_vi": "```\nAs an expert in Vue.js and PrimeVue, help me [TASK] using PrimeVue components. Focus on [COMPONENT_TYPE] and ensure the implementation follows best practices for [INDUSTRY] applications. Use [THEME] theme for styling. Here's the context: [PROJECT_DETAILS]\n```\nCopy\n\n```\n```vue\n<template>\n  <div class=\"p-grid\">\n    <div class=\"p-col-12\">\n      <h2>Customer Dashboard</h2>\n      <DataTable :value=\"customers\" :paginator=\"true\" :rows=\"10\" responsiveLayout=\"scroll\">\n        <Column field=\"id\" header=\"ID\"></Column>\n        <Column field=\"name\" header=\"Name\"></Column>\n        <Column field=\"email\" header=\"Email\"></Column>\n        <Column field=\"status\" header=\"Status\">\n          <template #body=\"slotProps\">\n            <Tag :value=\"slotProps.data.status\" :severity=\"getStatusSeverity(slotProps.data.status)\" />\n          </template>\n        </Column>\n      </DataTable>\n    </div>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      customers: [\n        { id: 1, name: 'John Doe', email: 'john@example.com', status: 'Active' },\n        { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive' }\n      ]\n    }\n  },\n  methods: {\n    getStatusSeverity(status) {\n      return status === 'Active' ? 'success' : 'danger';\n    }\n  }\n}\n</script>\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:26:34.848131Z",
+    "http_status": 200,
+    "content_hash": "aa204700c2f12162143cf886abadf441b2319545ed18a846c89ea6ee71d8f14f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\primevue.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\primevue.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "PrimeVue: Vue UI Setup & Components",
+  "short_description_vi": "PrimeVue is a comprehensive UI toolkit specifically designed for Vue.js applications. It includes a variety of rich components, themes, and templates, making it suitable for developers looking to enhance their Vue projects."
+}

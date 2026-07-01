@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agi-alpha-agent-v0",
+  "slug": "agi-alpha-agent-v0",
+  "name": "AGI-Alpha-Agent-v0",
+  "headline": "AGI-Alpha-Agent-v0: Comprehensive AI Mission System",
+  "short_description": "AGI-Alpha-Agent-v0 is an experimental AI agent framework for end-to-end automation. It identifies tasks, learns from data, thinks strategically, designs solutions, and executes actions. Operations teams can use it to automate complex workflows, connecting to various tools and systems. It supports Claude agents and is built with Python.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "MontrealAI",
+  "install_command": "git clone https://github.com/MontrealAI/AGI-Alpha-Agent-v0.git",
+  "source_repo_url": "https://github.com/MontrealAI/AGI-Alpha-Agent-v0",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agentic",
+    "aiagents",
+    "agentic-framework",
+    "ai",
+    "meta-learning",
+    "reinforcement-learning",
+    "llm",
+    "meta-agentic",
+    "agentic-ai",
+    "aiagent"
+  ],
+  "sections": {
+    "overview": "AGI-Alpha-Agent-v0 is a Python-based research framework for building autonomous agents that automate complex workflows. The system identifies tasks, analyzes data, applies strategic thinking, designs solutions, and executes actions across connected tools and systems. It supports Claude agents and includes both offline and API-driven modes for flexibility. The framework emphasizes self-contained randomness generation and auditability without external subscription dependencies. Operations teams can deploy it to automate intricate multi-step processes while maintaining control over execution and system behavior.\nAutomating multi-step operational workflows across integrated business tools\nBuilding autonomous agents that learn from operational data patterns\nExecuting complex task chains with strategic decision-making at each step\nTesting AI agent behavior in offline simulation mode before production deployment",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MontrealAI/AGI-Alpha-Agent-v0`",
+    "usage": "```\nDeploy AGI-Alpha-Agent-v0 to automate [TASK_OR_WORKFLOW] in [SYSTEM/ENVIRONMENT]. Start by analyzing the current process for [SPECIFIC_STEPS]. Identify bottlenecks or inefficiencies in [AREA_TO_OPTIMIZE]. Design a step-by-step automation plan using AGI-Alpha-Agent-v0's strategic thinking and tool integration capabilities. Execute the plan and provide a detailed report of actions taken, outcomes achieved, and any adjustments made during the process. Include code snippets or configuration changes required for implementation.\n```\nCopy\n\n```\nAGI-Alpha-Agent-v0 has successfully automated the monthly financial reconciliation process for TechCorp's accounting team. The agent began by analyzing the existing workflow, which involved 12 manual steps including data extraction from SAP, Excel manipulations, and cross-referencing with bank statements. It identified that 65% of the time was spent on the Excel data manipulation phase, particularly in reconciling 478 line items with mismatched formats.\n\nThe agent designed a multi-phase automation plan:\n1. **Data Extraction**: Used Python's `pandas` library to extract data directly from SAP via API (reducing time from 45 minutes to 3 minutes).\n2. **Pre-processing**: Implemented automated format standardization for all transaction types, handling 12 different currency formats and 8 date formats.\n3. **Matching Engine**: Built a fuzzy-matching algorithm to handle 98% of transactions with 99.7% accuracy (vs 87% manual accuracy).\n4. **Exception Handling**: Created a tiered system where simple mismatches are auto-corrected, while complex cases are flagged for human review with suggested resolutions.\n5. **Reporting**: Generated a reconciliation report with visual indicators for matched/unmatched items and automated email distribution to stakeholders.\n\nExecution results:\n- Total process time reduced from 3.5 hours to 22 minutes (90% improvement)\n- Accuracy improved from 87% to 99.8% (12.8% improvement)\n- Human intervention required only for 2% of transactions (vs 15% previously)\n- Cost savings of $18,450 annually based on current workload\n\nThe agent provided the following deliverables:\n- Python script (`reconciliation_automation.py`) with 472 lines of code\n- Configuration file (`config.yaml`) with SAP credentials and email settings\n- Detailed documentation including error handling procedures\n- Test suite with 127 test cases covering edge scenarios\n\nThe accounting team reported that the automation eliminated their monthly overtime during reconciliation periods and reduced errors in financial reporting by 60%. The agent continues to monitor performance and has scheduled a review after 30 days to address any emerging edge cases.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agi-alpha-agent-v0#main-content",
+      "agi-alpha-agent-v0#overview",
+      "agi-alpha-agent-v0#setup",
+      "agi-alpha-agent-v0#examples",
+      "agi-alpha-agent-v0#tools",
+      "agi-alpha-agent-v0#mcp",
+      "agi-alpha-agent-v0#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AGI-Alpha-Agent-v0 is a Python-based research framework for building autonomous agents that automate complex workflows. The system identifies tasks, analyzes data, applies strategic thinking, designs solutions, and executes actions across connected tools and systems. It supports Claude agents and includes both offline and API-driven modes for flexibility. The framework emphasizes self-contained randomness generation and auditability without external subscription dependencies. Operations teams can deploy it to automate intricate multi-step processes while maintaining control over execution and system behavior.\nAutomating multi-step operational workflows across integrated business tools\nBuilding autonomous agents that learn from operational data patterns\nExecuting complex task chains with strategic decision-making at each step\nTesting AI agent behavior in offline simulation mode before production deployment",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/MontrealAI/AGI-Alpha-Agent-v0`",
+    "usage_vi": "```\nDeploy AGI-Alpha-Agent-v0 to automate [TASK_OR_WORKFLOW] in [SYSTEM/ENVIRONMENT]. Start by analyzing the current process for [SPECIFIC_STEPS]. Identify bottlenecks or inefficiencies in [AREA_TO_OPTIMIZE]. Design a step-by-step automation plan using AGI-Alpha-Agent-v0's strategic thinking and tool integration capabilities. Execute the plan and provide a detailed report of actions taken, outcomes achieved, and any adjustments made during the process. Include code snippets or configuration changes required for implementation.\n```\nCopy\n\n```\nAGI-Alpha-Agent-v0 has successfully automated the monthly financial reconciliation process for TechCorp's accounting team. The agent began by analyzing the existing workflow, which involved 12 manual steps including data extraction from SAP, Excel manipulations, and cross-referencing with bank statements. It identified that 65% of the time was spent on the Excel data manipulation phase, particularly in reconciling 478 line items with mismatched formats.\n\nThe agent designed a multi-phase automation plan:\n1. **Data Extraction**: Used Python's `pandas` library to extract data directly from SAP via API (reducing time from 45 minutes to 3 minutes).\n2. **Pre-processing**: Implemented automated format standardization for all transaction types, handling 12 different currency formats and 8 date formats.\n3. **Matching Engine**: Built a fuzzy-matching algorithm to handle 98% of transactions with 99.7% accuracy (vs 87% manual accuracy).\n4. **Exception Handling**: Created a tiered system where simple mismatches are auto-corrected, while complex cases are flagged for human review with suggested resolutions.\n5. **Reporting**: Generated a reconciliation report with visual indicators for matched/unmatched items and automated email distribution to stakeholders.\n\nExecution results:\n- Total process time reduced from 3.5 hours to 22 minutes (90% improvement)\n- Accuracy improved from 87% to 99.8% (12.8% improvement)\n- Human intervention required only for 2% of transactions (vs 15% previously)\n- Cost savings of $18,450 annually based on current workload\n\nThe agent provided the following deliverables:\n- Python script (`reconciliation_automation.py`) with 472 lines of code\n- Configuration file (`config.yaml`) with SAP credentials and email settings\n- Detailed documentation including error handling procedures\n- Test suite with 127 test cases covering edge scenarios\n\nThe accounting team reported that the automation eliminated their monthly overtime during reconciliation periods and reduced errors in financial reporting by 60%. The agent continues to monitor performance and has scheduled a review after 30 days to address any emerging edge cases.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:33:36.680963Z",
+    "http_status": 200,
+    "content_hash": "f571f459a1332fa65270bd68959a56252866e3ab5151287a55866a1d59fbd610",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agi-alpha-agent-v0.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agi-alpha-agent-v0.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AGI-Alpha-Agent-v0: Comprehensive AI Mission System",
+  "short_description_vi": "AGI-Alpha-Agent-v0 is an experimental AI agent framework for end-to-end automation. It identifies tasks, learns from data, thinks strategically, designs solutions, and executes actions. Operations teams can use it to automate complex workflows, connecting to various tools and systems. It supports Claude agents and is built with Python."
+}

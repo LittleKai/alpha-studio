@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-skills-lab",
+  "slug": "claude-code-skills-lab",
+  "name": "Claude Code Skills Lab",
+  "headline": "Hands-on Claude Code skills for students",
+  "short_description": "A collection of hands-on skills for students to explore and practice when learning the Skills concept in Claude Code. These examples accompany **Lesson 04 of Chapter 5** in the AI Native Development book.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "panaversity",
+  "install_command": "git clone https://github.com/panaversity/claude-code-skills-lab.git",
+  "source_repo_url": "https://github.com/panaversity/claude-code-skills-lab",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Code Skills Lab is a curated collection of 13 practical skills designed for students learning Claude Code fundamentals through the AI Native Development book curriculum. The skills cover essential capabilities including browser automation with Playwright, document manipulation (Word, PDF, PowerPoint, Excel), internal communications templates, and skill creation guidance. Each skill demonstrates specific workflows and tool integrations—from web scraping and form automation to collaborative documentation and spreadsheet analysis. Students use these hands-on examples to understand how to extend Claude's capabilities for real-world tasks, with particular focus on Lesson 04 of Chapter 5 covering the Skills concept.\nLearning Claude Code skills through structured educational examples\nPracticing web automation and form filling with Playwright integration\nCreating and editing documents (Word, PDF, PowerPoint, Excel) programmatically\nBuilding guided workflows for documentation and discovery conversations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/panaversity/claude-code-skills-lab`",
+    "usage": "```\nCreate a skill for me that [DESCRIBE TASK]. The skill should include a prompt template with [PLACEHOLDERS] for user inputs. Also provide an example output, a how-to-use guide, and a long description. The skill should be related to [TOPIC].\n```\nCopy\n\n```\nSkill Name: Automated Meeting Summarizer\n\nPrompt Template: 'Summarize the key points from the meeting notes in [FILE]. Highlight the top 3 action items and assign them to the appropriate team members based on [CRITERIA].'\n\nExample Output: 'Key Points: 1. Q3 sales targets revised to $5M. 2. Marketing campaign launch delayed to next quarter. 3. New hire onboarding process to be streamlined.\nTop 3 Action Items: 1. Sarah to finalize Q3 sales strategy by EOD Friday. 2. Marketing team to present revised campaign timeline at next meeting. 3. HR to draft new onboarding checklist and share with team by EOD Wednesday.'\n\nHow to Use: 1. Save meeting notes in a text file. 2. Copy the prompt template and replace [FILE] with the file name and [CRITERIA] with your specific criteria. 3. Paste the prompt into Claude Code. 4. Review the output and make any necessary adjustments.\n\nLong Description: The Automated Meeting Summarizer skill is designed to help teams efficiently process and act on meeting notes. This skill benefits team leaders, project managers, and administrative professionals who need to quickly distill actionable insights from lengthy meeting notes. By automating the summarization process, this skill saves time and ensures that critical action items are not overlooked. The skill integrates seamlessly into existing workflows, making it a valuable tool for enhancing productivity and collaboration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-skills-lab#main-content",
+      "claude-code-skills-lab#overview",
+      "claude-code-skills-lab#setup",
+      "claude-code-skills-lab#examples",
+      "claude-code-skills-lab#tools",
+      "claude-code-skills-lab#mcp",
+      "claude-code-skills-lab#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Skills Lab là bộ sưu tập chọn lọc gồm 13 kỹ năng thực hành được thiết kế dành cho học sinh, sinh viên đang tìm hiểu các kiến thức cơ bản về Claude Code theo giáo trình của cuốn sách AI Native Development. Các kỹ năng này bao gồm những khả năng thiết yếu như tự động hóa trình duyệt với Playwright, xử lý tài liệu (Word, PDF, PowerPoint, Excel), các template giao tiếp nội bộ, và hướng dẫn tạo skill. Mỗi skill sẽ minh họa các workflow và tích hợp công cụ cụ thể — từ web scraping và tự động điền form cho đến cộng tác soạn thảo tài liệu và phân tích bảng tính. Học sinh, sinh viên có thể sử dụng các ví dụ thực tế này để hiểu cách mở rộng khả năng của Claude nhằm giải quyết các tác vụ thực tế, đặc biệt tập trung vào Bài 04 thuộc Chương 5 nói về khái niệm Skills.\n\nHọc các kỹ năng Claude Code thông qua các ví dụ giáo dục được cấu trúc trực quan\nThực hành tự động hóa web và điền form tích hợp Playwright\nTạo và chỉnh sửa tài liệu (Word, PDF, PowerPoint, Excel) bằng lập trình\nXây dựng các workflow có hướng dẫn để soạn thảo tài liệu và thực hiện các cuộc hội thoại khám phá thông tin",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/panaversity/claude-code-skills-lab`",
+    "usage_vi": "```\nHãy tạo cho tôi một skill thực hiện [MÔ TẢ TÁC VỤ]. Skill này cần bao gồm một prompt template chứa các [THAM SỐ] để người dùng nhập thông tin. Hãy cung cấp thêm một kết quả đầu ra ví dụ, hướng dẫn sử dụng và phần mô tả chi tiết. Skill này phải liên quan đến [CHỦ ĐỀ].\n```\nCopy\n\n```\nTên Skill: Tóm tắt cuộc họp tự động (Automated Meeting Summarizer)\n\nPrompt Template: 'Tóm tắt các ý chính từ biên bản cuộc họp trong [FILE]. Nêu bật 3 đầu việc quan trọng nhất (action items) và phân công cho các thành viên phù hợp trong nhóm dựa trên [TIÊU CHÍ].'\n\nKết quả đầu ra ví dụ: 'Các ý chính: 1. Mục tiêu doanh số Quý 3 được điều chỉnh thành 5 triệu USD. 2. Việc khởi động chiến dịch Marketing bị hoãn sang quý sau. 3. Quy trình onboarding nhân sự mới cần được tối ưu hóa.\n3 đầu việc quan trọng nhất: 1. Sarah hoàn thiện chiến lược doanh số Quý 3 trước cuối ngày Thứ Sáu. 2. Đội Marketing trình bày lộ trình chiến dịch đã điều chỉnh tại cuộc họp tiếp theo. 3. Bộ phận HR soạn thảo checklist onboarding mới và chia sẻ với toàn đội trước cuối ngày Thứ Tư.'\n\nHướng dẫn sử dụng: 1. Lưu biên bản cuộc họp vào một file văn bản. 2. Sao chép prompt template và thay thế [FILE] bằng tên file, [TIÊU CHÍ] bằng các tiêu chí cụ thể của bạn. 3. Dán prompt vào Claude Code. 4. Xem lại kết quả đầu ra và thực hiện các điều chỉnh nếu cần.\n\nMô tả chi tiết: Skill Tóm tắt cuộc họp tự động được thiết kế để giúp các đội nhóm xử lý và triển khai công việc từ biên bản cuộc họp một cách hiệu quả. Skill này mang lại lợi ích cho các trưởng nhóm, quản lý dự án và nhân viên hành chính — những người cần nhanh chóng chắt lọc các thông tin quan trọng từ những biên bản cuộc họp dài. Bằng cách tự động hóa quy trình tóm tắt, skill này giúp tiết kiệm thời gian và đảm bảo các đầu việc quan trọng không bị bỏ sót. Skill tích hợp mượt mà vào các workflow hiện tại, biến nó thành một công cụ giá trị để nâng cao năng suất và hiệu quả cộng tác.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:25:09.518497Z",
+    "http_status": 200,
+    "content_hash": "b5602d2b92aab3060ac8f9e90eae395d005ab05181bf4ee68ea94dfb479f1cca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-skills-lab.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-skills-lab.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng thực hành Claude Code thực tế dành cho học sinh, sinh viên",
+  "short_description_vi": "Bộ sưu tập các kỹ năng thực hành thực tế giúp học sinh, sinh viên khám phá và luyện tập khi tìm hiểu khái niệm Skills trong Claude Code. Các ví dụ này đi kèm với **Bài 04, Chương 5** của cuốn sách AI Native Development."
+}

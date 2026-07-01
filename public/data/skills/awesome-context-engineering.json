@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-context-engineering",
+  "slug": "awesome-context-engineering",
+  "name": "browser-use",
+  "headline": "Context engineering resources for AI agents",
+  "short_description": "A curated collection of resources, papers, tools, and best practices for Context Engineering in AI agents and LLMs. Helps operations teams optimize AI agent performance and accuracy by improving context handling.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "yzfly",
+  "install_command": "git clone https://github.com/yzfly/awesome-context-engineering.git",
+  "source_repo_url": "https://github.com/yzfly/awesome-context-engineering",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "awesome-context-engineering",
+    "prompt-engineering",
+    "awesome-context",
+    "manus",
+    "claude",
+    "prompt-engineering-techniques",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "Awesome Context Engineering is a comprehensive directory of papers, tools, and strategies for systematically optimizing information payloads in LLMs and AI agents. It covers five core disciplines: context retrieval and generation, processing, management, compression, and isolation. The collection includes featured articles from Anthropic, LangChain, and production AI agent builders, research papers on memory systems and retrieval-augmented generation, and practical guides for reducing token usage while preserving essential information. Teams building AI agents use these resources to handle context windows effectively, prevent context failure modes like poisoning and distraction, and implement techniques such as RAG, context pruning, and summarization.\nOptimizing context windows for multi-turn agent conversations\nImplementing retrieval-augmented generation (RAG) systems\nReducing token usage through context compression techniques\nDesigning memory systems and state management for agents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yzfly/awesome-context-engineering`",
+    "usage": "```\nAct as an expert in Context Engineering for AI agents. Using the resources from the Awesome Context Engineering repository, analyze the following AI agent workflow: [WORKFLOW_DESCRIPTION]. Identify 3 specific context-handling bottlenecks in this workflow and suggest concrete optimizations using tools like [TOOL1], [TOOL2], or techniques from [PAPER1]. Provide a step-by-step implementation plan with expected impact on agent accuracy and latency. Reference specific resources from the repository where applicable.\n```\nCopy\n\n```\nHere’s an analysis of a customer support AI agent workflow for an e-commerce platform. The agent currently handles 5,000 daily tickets but struggles with context retention across multi-turn conversations, leading to a 12% resolution rate drop after the 3rd interaction.\n\n**Identified Bottlenecks:**\n1. **Context Window Fragmentation**: The agent uses a fixed 4,000-token context window, causing critical customer history to be truncated mid-conversation. This forces agents to re-ask for order numbers or preferences, increasing resolution time by 40%. The repository’s *Dynamic Context Truncation* paper (Section 3.2) suggests using a sliding window with priority scoring for historical context retention.\n\n2. **Tool Call Context Leaks**: When the agent invokes external tools (e.g., payment verification), the tool’s output isn’t properly contextualized in the conversation history. This results in 8% of follow-up responses ignoring prior tool results. The *Context Injection Patterns* toolkit (available in the repository’s GitHub) provides a middleware solution to merge tool outputs with the conversation state.\n\n3. **User Intent Drift**: The agent fails to detect when user intent shifts mid-conversation (e.g., switching from refunds to shipping inquiries). This causes 6% of tickets to be escalated unnecessarily. The repository’s *Intent-Aware Context Management* framework recommends using a lightweight intent classifier to dynamically adjust context retention policies.\n\n**Implementation Plan:**\n1. **Week 1-2**: Deploy the *Dynamic Context Truncation* middleware (from the repository’s `context-engineering-utils` package) to prioritize recent interactions and customer-specific data in the context window. Expected impact: 18% reduction in resolution time.\n2. **Week 3**: Integrate the *Context Injection Patterns* toolkit to ensure tool outputs are merged into the conversation state. Expected impact: 5% reduction in escalations.\n3. **Week 4**: Add the *Intent-Aware Context Management* classifier to detect intent shifts. Expected impact: 10% improvement in first-contact resolution.\n\n**Tools/Resources Used:**\n- Dynamic Context Truncation: `awesome-context-engineering/context-truncation`\n- Context Injection Patterns: `awesome-context-engineering/injection-patterns`\n- Intent Classifier: `awesome-context-engineering/intent-detection`\n\n**Expected Outcome**: After 4 weeks, the agent’s resolution rate should improve from 78% to 88%, with a 25% reduction in average handling time. Latency may increase by 100ms initially due to context processing overhead, but this is expected to stabilize after optimization.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-context-engineering#main-content",
+      "awesome-context-engineering#overview",
+      "awesome-context-engineering#setup",
+      "awesome-context-engineering#examples",
+      "awesome-context-engineering#tools",
+      "awesome-context-engineering#mcp",
+      "awesome-context-engineering#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Context Engineering is a comprehensive directory of papers, tools, and strategies for systematically optimizing information payloads in LLMs and AI agents. It covers five core disciplines: context retrieval and generation, processing, management, compression, and isolation. The collection includes featured articles from Anthropic, LangChain, and production AI agent builders, research papers on memory systems and retrieval-augmented generation, and practical guides for reducing token usage while preserving essential information. Teams building AI agents use these resources to handle context windows effectively, prevent context failure modes like poisoning and distraction, and implement techniques such as RAG, context pruning, and summarization.\nOptimizing context windows for multi-turn agent conversations\nImplementing retrieval-augmented generation (RAG) systems\nReducing token usage through context compression techniques\nDesigning memory systems and state management for agents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yzfly/awesome-context-engineering`",
+    "usage_vi": "```\nAct as an expert in Context Engineering for AI agents. Using the resources from the Awesome Context Engineering repository, analyze the following AI agent workflow: [WORKFLOW_DESCRIPTION]. Identify 3 specific context-handling bottlenecks in this workflow and suggest concrete optimizations using tools like [TOOL1], [TOOL2], or techniques from [PAPER1]. Provide a step-by-step implementation plan with expected impact on agent accuracy and latency. Reference specific resources from the repository where applicable.\n```\nCopy\n\n```\nHere’s an analysis of a customer support AI agent workflow for an e-commerce platform. The agent currently handles 5,000 daily tickets but struggles with context retention across multi-turn conversations, leading to a 12% resolution rate drop after the 3rd interaction.\n\n**Identified Bottlenecks:**\n1. **Context Window Fragmentation**: The agent uses a fixed 4,000-token context window, causing critical customer history to be truncated mid-conversation. This forces agents to re-ask for order numbers or preferences, increasing resolution time by 40%. The repository’s *Dynamic Context Truncation* paper (Section 3.2) suggests using a sliding window with priority scoring for historical context retention.\n\n2. **Tool Call Context Leaks**: When the agent invokes external tools (e.g., payment verification), the tool’s output isn’t properly contextualized in the conversation history. This results in 8% of follow-up responses ignoring prior tool results. The *Context Injection Patterns* toolkit (available in the repository’s GitHub) provides a middleware solution to merge tool outputs with the conversation state.\n\n3. **User Intent Drift**: The agent fails to detect when user intent shifts mid-conversation (e.g., switching from refunds to shipping inquiries). This causes 6% of tickets to be escalated unnecessarily. The repository’s *Intent-Aware Context Management* framework recommends using a lightweight intent classifier to dynamically adjust context retention policies.\n\n**Implementation Plan:**\n1. **Week 1-2**: Deploy the *Dynamic Context Truncation* middleware (from the repository’s `context-engineering-utils` package) to prioritize recent interactions and customer-specific data in the context window. Expected impact: 18% reduction in resolution time.\n2. **Week 3**: Integrate the *Context Injection Patterns* toolkit to ensure tool outputs are merged into the conversation state. Expected impact: 5% reduction in escalations.\n3. **Week 4**: Add the *Intent-Aware Context Management* classifier to detect intent shifts. Expected impact: 10% improvement in first-contact resolution.\n\n**Tools/Resources Used:**\n- Dynamic Context Truncation: `awesome-context-engineering/context-truncation`\n- Context Injection Patterns: `awesome-context-engineering/injection-patterns`\n- Intent Classifier: `awesome-context-engineering/intent-detection`\n\n**Expected Outcome**: After 4 weeks, the agent’s resolution rate should improve from 78% to 88%, with a 25% reduction in average handling time. Latency may increase by 100ms initially due to context processing overhead, but this is expected to stabilize after optimization.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:35:30.519107Z",
+    "http_status": 200,
+    "content_hash": "f69700e36c5e0f2a18bcbade4d6f3ed2d965da0dbaf0cdce9be180804acd4f2a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-context-engineering.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\awesome-context-engineering.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Context engineering resources for AI agents",
+  "short_description_vi": "A curated collection of resources, papers, tools, and best practices for Context Engineering in AI agents and LLMs. Helps operations teams optimize AI agent performance and accuracy by improving context handling."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-pdf-to-epub",
+  "slug": "claude-skill-pdf-to-epub",
+  "name": "Claude-Skill-pdf-to-epub",
+  "headline": "Claude skill pdf to epub automation",
+  "short_description": "Automatically converts PDF books to EPUB format with chapter detection, image optimization, and footnote hyperlinking. Ideal for publishers and operations teams managing digital content workflows. Integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "koreyba",
+  "install_command": "git clone https://github.com/koreyba/Claude-Skill-pdf-to-epub.git",
+  "source_repo_url": "https://github.com/koreyba/Claude-Skill-pdf-to-epub",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This Claude Code skill automates PDF-to-EPUB conversion by analyzing document structure to detect chapters based on font analysis, extracting and compressing images for e-readers, and converting footnote references into clickable hyperlinks. It handles both single-column and multi-column layouts with configurable reading order detection and includes quality validation to verify text completeness and preserve reading order. The skill follows a four-phase workflow—analyze, convert, validate, and adapt—making it suitable for publishers managing digital content workflows and operations teams handling batch conversions. Configuration examples support fiction books, academic papers, and other document types.\nConvert published PDF books to EPUB for digital distribution\nBatch convert academic papers and multi-column research documents\nExtract and optimize images from PDFs for e-reader compatibility\nAutomate footnote and endnote conversion to clickable links",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/koreyba/Claude-Skill-pdf-to-epub`",
+    "usage": "```\nConvert the PDF file at [PDF_FILE_PATH] to EPUB format with the following specifications: \n- Preserve chapter structure and hierarchy from [PDF_FILE_PATH].\n- Optimize embedded images for EPUB compatibility (resolution: [TARGET_DPI], format: [TARGET_FORMAT]).\n- Hyperlink all footnotes to their corresponding endnotes or references.\n- Set metadata: title=[BOOK_TITLE], author=[AUTHOR_NAME], language=[LANGUAGE_CODE].\n- Output the EPUB file to [OUTPUT_PATH].\n```\nCopy\n\n```\n```\nConversion completed successfully!\n\nFile Details:\n- Input: /documents/advanced_algorithms.pdf (12.4 MB, 487 pages)\n- Output: /output/advanced_algorithms.epub (8.1 MB)\n\nMetadata Applied:\n- Title: Advanced Algorithms for Modern Systems\n- Author: Dr. Evelyn Carter\n- Language: en-US\n\nProcessing Summary:\n- Chapters Detected: 24 (including preface and appendices)\n- Images Optimized: 112 (converted to WebP at 150 DPI)\n- Footnotes Hyperlinked: 487 (all linked to endnotes)\n- Table of Contents: Auto-generated with 3-level depth\n\nQuality Checks:\n- EPUB Validation: Passed (W3C EPUB Validator)\n- Accessibility: WCAG 2.1 AA compliant\n- Compatibility: Tested on Kindle, Kobo, and Apple Books\n\nNext Steps:\n1. Review the EPUB in Calibre to verify chapter order and image placement.\n2. Upload to your digital distribution platform (e.g., Amazon KDP, IngramSpark).\n3. For enhanced distribution, consider adding DRM via [DRM_TOOL_NAME].\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-pdf-to-epub#main-content",
+      "claude-skill-pdf-to-epub#overview",
+      "claude-skill-pdf-to-epub#setup",
+      "claude-skill-pdf-to-epub#examples",
+      "claude-skill-pdf-to-epub#tools",
+      "claude-skill-pdf-to-epub#mcp",
+      "claude-skill-pdf-to-epub#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This Claude Code skill automates PDF-to-EPUB conversion by analyzing document structure to detect chapters based on font analysis, extracting and compressing images for e-readers, and converting footnote references into clickable hyperlinks. It handles both single-column and multi-column layouts with configurable reading order detection and includes quality validation to verify text completeness and preserve reading order. The skill follows a four-phase workflow—analyze, convert, validate, and adapt—making it suitable for publishers managing digital content workflows and operations teams handling batch conversions. Configuration examples support fiction books, academic papers, and other document types.\nConvert published PDF books to EPUB for digital distribution\nBatch convert academic papers and multi-column research documents\nExtract and optimize images from PDFs for e-reader compatibility\nAutomate footnote and endnote conversion to clickable links",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/koreyba/Claude-Skill-pdf-to-epub`",
+    "usage_vi": "```\nConvert the PDF file at [PDF_FILE_PATH] to EPUB format with the following specifications: \n- Preserve chapter structure and hierarchy from [PDF_FILE_PATH].\n- Optimize embedded images for EPUB compatibility (resolution: [TARGET_DPI], format: [TARGET_FORMAT]).\n- Hyperlink all footnotes to their corresponding endnotes or references.\n- Set metadata: title=[BOOK_TITLE], author=[AUTHOR_NAME], language=[LANGUAGE_CODE].\n- Output the EPUB file to [OUTPUT_PATH].\n```\nCopy\n\n```\n```\nConversion completed successfully!\n\nFile Details:\n- Input: /documents/advanced_algorithms.pdf (12.4 MB, 487 pages)\n- Output: /output/advanced_algorithms.epub (8.1 MB)\n\nMetadata Applied:\n- Title: Advanced Algorithms for Modern Systems\n- Author: Dr. Evelyn Carter\n- Language: en-US\n\nProcessing Summary:\n- Chapters Detected: 24 (including preface and appendices)\n- Images Optimized: 112 (converted to WebP at 150 DPI)\n- Footnotes Hyperlinked: 487 (all linked to endnotes)\n- Table of Contents: Auto-generated with 3-level depth\n\nQuality Checks:\n- EPUB Validation: Passed (W3C EPUB Validator)\n- Accessibility: WCAG 2.1 AA compliant\n- Compatibility: Tested on Kindle, Kobo, and Apple Books\n\nNext Steps:\n1. Review the EPUB in Calibre to verify chapter order and image placement.\n2. Upload to your digital distribution platform (e.g., Amazon KDP, IngramSpark).\n3. For enhanced distribution, consider adding DRM via [DRM_TOOL_NAME].\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:26.094708Z",
+    "http_status": 200,
+    "content_hash": "76fed6c4f2075ab589b53cf4e0ca30de1fcabba4283692eeab8bc59c1b0044dd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-pdf-to-epub.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-pdf-to-epub.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude skill pdf to epub automation",
+  "short_description_vi": "Automatically converts PDF books to EPUB format with chapter detection, image optimization, and footnote hyperlinking. Ideal for publishers and operations teams managing digital content workflows. Integrates with Claude agents."
+}

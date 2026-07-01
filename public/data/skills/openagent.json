@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openagent",
+  "slug": "openagent",
+  "name": "browser-use",
+  "headline": "Open Agent - AI Agent Orchestrator",
+  "short_description": "Self-hosted orchestrator for AI autonomous agents. Run Claude Code & Open Code in isolated Linux workspaces. Manage skills, configs, and encrypted secrets with a git repo. Ideal for developers and operations teams.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Th0rgal",
+  "install_command": "git clone https://github.com/Th0rgal/openagent.git",
+  "source_repo_url": "https://github.com/Th0rgal/openagent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "autonomous-agents",
+    "claude-code",
+    "ai-agents",
+    "developer-tools",
+    "llm",
+    "opencode",
+    "coding-assistant",
+    "claude",
+    "orchestration",
+    "mcp",
+    "workspace-isoaltion",
+    "containerization",
+    "self-hosted"
+  ],
+  "sections": {
+    "overview": "sandboxed.sh is a self-hosted cloud orchestrator designed for AI coding agents, enabling developers and operations teams to run multiple agent runtimes—including Claude Code, OpenCode, Codex, Gemini, and Grok—in isolated Linux containers. Each agent executes in its own containerized environment using systemd-nspawn, ensuring workspaces are scoped securely with dedicated directories. The platform centralizes skills, tools, rules, and configurations in a git-backed library, allowing version control and reproducible deployments. Features include real-time mission monitoring, scheduled automations with cron-like triggers, model routing with provider fallback chains, and optional MCP registry integration for additional tool servers. Installation options span Docker (for rapid deployment on any OS) and native Ubuntu 24.04 setup (for production performance), making it suitable for local inference workloads, multi-day unattended operations, and sensitive data analysis.\nAutonomous code generation and testing: point an agent at a GitHub issue to write code, run tests, and open PRs automatically\nLong-running ML operations: give agents SSH access to run model training and fine-tuning unattended over days\nLocal sensitive data analysis: process sequenced DNA or proprietary datasets with local inference, no cloud exposure\nMulti-agent orchestration: coordinate Claude Code, OpenCode, and other runtimes on shared infrastructure with skill libraries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Th0rgal/openagent`",
+    "usage": "```\nSet up and run an autonomous AI agent using OpenAgent to [TASK]. Use the [SKILL] configuration from [REPO_PATH]. Ensure the agent operates in an isolated Linux workspace with access to [REQUIRED_TOOLS]. Log all actions to [LOG_FILE_PATH] and encrypt secrets using the provided [ENCRYPTION_KEY].\n```\nCopy\n\n```\n```\n# OpenAgent Autonomous Agent Setup Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "openagent#main-content",
+      "openagent#overview",
+      "openagent#setup",
+      "openagent#examples",
+      "openagent#tools",
+      "openagent#mcp",
+      "openagent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "sandboxed.sh is a self-hosted cloud orchestrator designed for AI coding agents, enabling developers and operations teams to run multiple agent runtimes—including Claude Code, OpenCode, Codex, Gemini, and Grok—in isolated Linux containers. Each agent executes in its own containerized environment using systemd-nspawn, ensuring workspaces are scoped securely with dedicated directories. The platform centralizes skills, tools, rules, and configurations in a git-backed library, allowing version control and reproducible deployments. Features include real-time mission monitoring, scheduled automations with cron-like triggers, model routing with provider fallback chains, and optional MCP registry integration for additional tool servers. Installation options span Docker (for rapid deployment on any OS) and native Ubuntu 24.04 setup (for production performance), making it suitable for local inference workloads, multi-day unattended operations, and sensitive data analysis.\nAutonomous code generation and testing: point an agent at a GitHub issue to write code, run tests, and open PRs automatically\nLong-running ML operations: give agents SSH access to run model training and fine-tuning unattended over days\nLocal sensitive data analysis: process sequenced DNA or proprietary datasets with local inference, no cloud exposure\nMulti-agent orchestration: coordinate Claude Code, OpenCode, and other runtimes on shared infrastructure with skill libraries",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Th0rgal/openagent`",
+    "usage_vi": "```\nSet up and run an autonomous AI agent using OpenAgent to [TASK]. Use the [SKILL] configuration from [REPO_PATH]. Ensure the agent operates in an isolated Linux workspace with access to [REQUIRED_TOOLS]. Log all actions to [LOG_FILE_PATH] and encrypt secrets using the provided [ENCRYPTION_KEY].\n```\nCopy\n\n```\n```\n# OpenAgent Autonomous Agent Setup Report"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:30:16.161612Z",
+    "http_status": 200,
+    "content_hash": "8bc89e55152c1aeebc2a6ed62797cf28b964f2b050b41abcd5cb3364a5fff87c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openagent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openagent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Open Agent - AI Agent Orchestrator",
+  "short_description_vi": "Self-hosted orchestrator for AI autonomous agents. Run Claude Code & Open Code in isolated Linux workspaces. Manage skills, configs, and encrypted secrets with a git repo. Ideal for developers and operations teams."
+}

@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zagi",
+  "slug": "zagi",
+  "name": "browser-use",
+  "headline": "zagi - Optimized Git CLI for AI Agents",
+  "short_description": "zagi is a git CLI optimized for AI agents. It offers 121 git-compatible commands with 50% smaller output, 1.5-2x faster performance, and agent-friendly features like fork, prompt, and guardrails. It integrates with git and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "mattzcarey",
+  "install_command": "git clone https://github.com/mattzcarey/zagi.git",
+  "source_repo_url": "https://github.com/mattzcarey/zagi",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "git",
+    "ai-agents",
+    "github",
+    "opencode",
+    "agents",
+    "trajectory",
+    "claude",
+    "gitworktrees",
+    "vcs",
+    "zig",
+    "bugbot",
+    "cursor",
+    "ai",
+    "cli"
+  ],
+  "sections": {
+    "overview": "zagi is a drop-in git replacement designed specifically for AI agents like Claude Code and Cursor. It implements 121 git-compatible commands with three output modes: succinct (50% smaller for token efficiency), compatible (identical to git), and JSON (for machine parsing). Beyond standard git operations, zagi provides agent-specific features including fork/worktree management, prompt tracking to record user requests in commits, and optional guardrails to block destructive commands. Installation is straightforward via a single curl command, and it integrates seamlessly with existing git workflows while passing through any unimplemented commands to standard git.\nReduce context window usage when AI agents run git commands during code generation\nCreate isolated experiment branches with fork for comparing different implementation approaches\nTrack which user prompts and AI agents created specific commits using prompt metadata\nProtect against accidental destructive git operations in agent environments with guardrails",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mattzcarey/zagi`",
+    "usage": "```\nUse zagi to [ACTION] in the [REPOSITORY_PATH] repository. [SPECIFIC_TASK]. For example: 'Use zagi to create a new branch named feature/ai-integration in the /home/user/projects/my-app repository. Commit all staged changes with the message \"Add AI integration scaffolding\" and push the branch to the remote.'\n```\nCopy\n\n```\n```\n✅ Branch created: feature/ai-integration (origin/feature/ai-integration)\n📝 Commit created: 1a2b3c4 (\"Add AI integration scaffolding\")\n🚀 Pushed to remote in 0.8s (vs 1.6s with standard git)\n\n📊 Performance:\n- Branch creation: 30% faster than git\n- Commit: 40% smaller output (2KB vs 3.5KB)\n- Push: 1.5x faster (0.8s vs 1.2s)\n\n🔍 Agent-friendly features used:\n- Fork: Created isolated branch\n- Guardrails: Validated commit message format\n- Prompt: Generated commit message automatically\n```\n\nNext steps:\n1. Run `zagi prompt --task \"Generate unit tests for the new AI integration\"` to get test scaffolding\n2. Use `zagi fork --base main --name feature/ai-integration-tests` to create a test branch\n3. Commit and push tests with `zagi commit -m \"Add unit tests for AI integration\"`\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zagi#main-content",
+      "zagi#overview",
+      "zagi#setup",
+      "zagi#examples",
+      "zagi#tools",
+      "zagi#mcp",
+      "zagi#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "zagi is a drop-in git replacement designed specifically for AI agents like Claude Code and Cursor. It implements 121 git-compatible commands with three output modes: succinct (50% smaller for token efficiency), compatible (identical to git), and JSON (for machine parsing). Beyond standard git operations, zagi provides agent-specific features including fork/worktree management, prompt tracking to record user requests in commits, and optional guardrails to block destructive commands. Installation is straightforward via a single curl command, and it integrates seamlessly with existing git workflows while passing through any unimplemented commands to standard git.\nReduce context window usage when AI agents run git commands during code generation\nCreate isolated experiment branches with fork for comparing different implementation approaches\nTrack which user prompts and AI agents created specific commits using prompt metadata\nProtect against accidental destructive git operations in agent environments with guardrails",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mattzcarey/zagi`",
+    "usage_vi": "```\nUse zagi to [ACTION] in the [REPOSITORY_PATH] repository. [SPECIFIC_TASK]. For example: 'Use zagi to create a new branch named feature/ai-integration in the /home/user/projects/my-app repository. Commit all staged changes with the message \"Add AI integration scaffolding\" and push the branch to the remote.'\n```\nCopy\n\n```\n```\n✅ Branch created: feature/ai-integration (origin/feature/ai-integration)\n📝 Commit created: 1a2b3c4 (\"Add AI integration scaffolding\")\n🚀 Pushed to remote in 0.8s (vs 1.6s with standard git)\n\n📊 Performance:\n- Branch creation: 30% faster than git\n- Commit: 40% smaller output (2KB vs 3.5KB)\n- Push: 1.5x faster (0.8s vs 1.2s)\n\n🔍 Agent-friendly features used:\n- Fork: Created isolated branch\n- Guardrails: Validated commit message format\n- Prompt: Generated commit message automatically\n```\n\nNext steps:\n1. Run `zagi prompt --task \"Generate unit tests for the new AI integration\"` to get test scaffolding\n2. Use `zagi fork --base main --name feature/ai-integration-tests` to create a test branch\n3. Commit and push tests with `zagi commit -m \"Add unit tests for AI integration\"`\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:36:31.744234Z",
+    "http_status": 200,
+    "content_hash": "bfdcd02ed1e4cdbad3588bcb6f90a1a7b0b853dd7ceaf6ac4cce8c19551a519c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zagi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zagi.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "zagi - Optimized Git CLI for AI Agents",
+  "short_description_vi": "zagi is a git CLI optimized for AI agents. It offers 121 git-compatible commands with 50% smaller output, 1.5-2x faster performance, and agent-friendly features like fork, prompt, and guardrails. It integrates with git and supports Claude agents."
+}

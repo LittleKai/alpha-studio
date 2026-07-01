@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skills-marketplace",
+  "slug": "claude-skills-marketplace",
+  "name": "browser-use",
+  "headline": "claude skills for software engineering tasks",
+  "short_description": "Claude Skills Marketplace provides a curated collection of Claude Code plugins for software engineering workflows. It automates Git operations, testing, and code reviews. Developers and engineering teams benefit from streamlined workflows and improved code quality. It integrates with Git repositories and CI/CD pipelines.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "mhattingpete",
+  "install_command": "git clone https://github.com/mhattingpete/claude-skills-marketplace.git",
+  "source_repo_url": "https://github.com/mhattingpete/claude-skills-marketplace",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "anthropic",
+    "ai-agents",
+    "automation",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "Claude Skills Marketplace is a collection of Claude Code plugins that automate common software engineering tasks. It includes plugins for engineering workflows (Git operations, test fixing, code reviews), visual documentation (architecture diagrams, flowcharts, dashboards), productivity optimization (code auditing, codebase documentation), and code operations (refactoring, file analysis). The marketplace features an execution runtime that reduces token usage by 90-99% for bulk operations by executing Python locally instead of processing through API calls. Developers and engineering teams use it to streamline workflows, improve code quality, and accelerate project delivery.\nAutomate Git operations and code review workflows\nGenerate visual documentation like architecture diagrams and flowcharts\nPerform bulk code refactoring across multiple files with token savings\nAudit code quality and generate comprehensive codebase documentation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mhattingpete/claude-skills-marketplace`",
+    "usage": "```\nUse the Claude Skills Marketplace to [ACTION] in my [PROJECT/PROGRAMMING_LANGUAGE] project. Specifically, [SPECIFIC_TASK] using the [SKILL_NAME] plugin. Ensure the changes are tested and follow best practices for [PROJECT_TYPE].\n```\nCopy\n\n```\nI've analyzed your Python-based e-commerce platform repository using the `claude-code-review` plugin from the Claude Skills Marketplace. The plugin identified 3 critical issues in your payment processing module:\n\n1. **Security Vulnerability**: The `process_payment` function in `payment_service.py` (line 42) uses an outdated encryption method (AES-128) instead of the recommended AES-256-GCM. This exposes customer payment data to potential decryption attacks. The plugin automatically generated a secure alternative implementation and flagged this for immediate review.\n\n2. **Performance Bottleneck**: The `get_customer_orders` function in `orders.py` (line 89) performs a full table scan on the `orders` table during peak hours, causing 400ms+ response times. The plugin suggested adding an index on `customer_id` and `order_date` columns, which would reduce query time to 15ms. It even provided the exact SQL command to execute.\n\n3. **Code Smell**: The `calculate_discount` function in `pricing.py` violates the Single Responsibility Principle by handling both discount calculation and logging. The plugin refactored this into two separate functions and added proper type hints.\n\nThe plugin also ran the full test suite (127 tests) and confirmed all tests pass with the proposed changes. It generated a PR description with these findings and suggested next steps:\n- Review the security fix with your DevSecOps team\n- Schedule a performance tuning session with your DBA\n- Merge the refactored pricing module in the next sprint\n\nAll changes were automatically committed to a new branch `claude-review/2024-05-15` with descriptive commit messages. The CI pipeline (GitHub Actions) was triggered and passed all checks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skills-marketplace#main-content",
+      "claude-skills-marketplace#overview",
+      "claude-skills-marketplace#setup",
+      "claude-skills-marketplace#examples",
+      "claude-skills-marketplace#tools",
+      "claude-skills-marketplace#mcp",
+      "claude-skills-marketplace#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Skills Marketplace is a collection of Claude Code plugins that automate common software engineering tasks. It includes plugins for engineering workflows (Git operations, test fixing, code reviews), visual documentation (architecture diagrams, flowcharts, dashboards), productivity optimization (code auditing, codebase documentation), and code operations (refactoring, file analysis). The marketplace features an execution runtime that reduces token usage by 90-99% for bulk operations by executing Python locally instead of processing through API calls. Developers and engineering teams use it to streamline workflows, improve code quality, and accelerate project delivery.\nAutomate Git operations and code review workflows\nGenerate visual documentation like architecture diagrams and flowcharts\nPerform bulk code refactoring across multiple files with token savings\nAudit code quality and generate comprehensive codebase documentation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mhattingpete/claude-skills-marketplace`",
+    "usage_vi": "```\nUse the Claude Skills Marketplace to [ACTION] in my [PROJECT/PROGRAMMING_LANGUAGE] project. Specifically, [SPECIFIC_TASK] using the [SKILL_NAME] plugin. Ensure the changes are tested and follow best practices for [PROJECT_TYPE].\n```\nCopy\n\n```\nI've analyzed your Python-based e-commerce platform repository using the `claude-code-review` plugin from the Claude Skills Marketplace. The plugin identified 3 critical issues in your payment processing module:\n\n1. **Security Vulnerability**: The `process_payment` function in `payment_service.py` (line 42) uses an outdated encryption method (AES-128) instead of the recommended AES-256-GCM. This exposes customer payment data to potential decryption attacks. The plugin automatically generated a secure alternative implementation and flagged this for immediate review.\n\n2. **Performance Bottleneck**: The `get_customer_orders` function in `orders.py` (line 89) performs a full table scan on the `orders` table during peak hours, causing 400ms+ response times. The plugin suggested adding an index on `customer_id` and `order_date` columns, which would reduce query time to 15ms. It even provided the exact SQL command to execute.\n\n3. **Code Smell**: The `calculate_discount` function in `pricing.py` violates the Single Responsibility Principle by handling both discount calculation and logging. The plugin refactored this into two separate functions and added proper type hints.\n\nThe plugin also ran the full test suite (127 tests) and confirmed all tests pass with the proposed changes. It generated a PR description with these findings and suggested next steps:\n- Review the security fix with your DevSecOps team\n- Schedule a performance tuning session with your DBA\n- Merge the refactored pricing module in the next sprint\n\nAll changes were automatically committed to a new branch `claude-review/2024-05-15` with descriptive commit messages. The CI pipeline (GitHub Actions) was triggered and passed all checks.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:09:16.569305Z",
+    "http_status": 200,
+    "content_hash": "c43bc941b048002940b574880b402be36d5de7113a55c6bc5a01ad108f131405",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-marketplace.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-skills-marketplace.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude skills for software engineering tasks",
+  "short_description_vi": "Claude Skills Marketplace provides a curated collection of Claude Code plugins for software engineering workflows. It automates Git operations, testing, and code reviews. Developers and engineering teams benefit from streamlined workflows and improved code quality. It integrates with Git repositories and CI/CD pipelines."
+}

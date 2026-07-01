@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "build:seo": "npm run build && node scripts/prerender.mjs",
     "preview": "vite preview",
+    "skills:merge": "node scripts/merge_and_split_skills.js",
+    "skills:split": "node scripts/split_skills.js",
     "postinstall": "node -e \"const fs=require('fs');const p='public/tinymce';if(!fs.existsSync(p)){fs.cpSync('node_modules/tinymce',p,{recursive:true})}\" && npx puppeteer browsers install chrome"
   },
   "dependencies": {

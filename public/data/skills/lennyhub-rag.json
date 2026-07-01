@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/lennyhub-rag",
+  "slug": "lennyhub-rag",
+  "name": "browser-use",
+  "headline": "LennyHub RAG - AI-Powered Podcast Insights",
+  "short_description": "LennyHub RAG is an AI automation skill that enables operations teams to quickly access insights from Lenny's Podcast transcripts. It uses a retrieval-augmented generation system to provide relevant information from conversations with top product leaders and growth experts. The skill integrates with Claude agents and is designed for intermediate-level users.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "traversaal-ai",
+  "install_command": "git clone https://github.com/traversaal-ai/lennyhub-rag.git",
+  "source_repo_url": "https://github.com/traversaal-ai/lennyhub-rag",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "LennyHub RAG is a production-ready retrieval-augmented generation system built on 297 transcripts from Lenny's Podcast, featuring conversations with product leaders, growth experts, and founders. It combines Qdrant vector database storage with LightRAG knowledge graph extraction to enable multiple search strategies—hybrid, local, global, and naive—for retrieving relevant insights. The system includes a Streamlit web interface for querying, an interactive graph viewer displaying 544 people and their connections, and CLI tools for direct access. Setup is automated and can process all transcripts in 25-35 minutes using parallel processing, making it accessible for teams seeking structured access to industry expertise on product management, growth strategy, leadership, and career development.\nQuickly set up a knowledge base from podcast transcripts for product management insights.\nUtilize interactive queries to extract expert advice on growth strategies and career development.\nVisualize connections among industry leaders to identify potential collaboration opportunities.\nImplement advanced search strategies to retrieve specific information from a large dataset of transcripts.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/traversaal-ai/lennyhub-rag`",
+    "usage": "```\nExtract key insights about [TOPIC] from Lenny's Podcast transcripts. Focus on actionable advice, frameworks, or case studies shared by guests. Provide direct quotes where relevant and cite the episode number. Example topics: 'how to improve user onboarding', 'scaling a SaaS product', or 'hiring for product teams'.\n```\nCopy\n\n```\nHere are the top insights about **improving user onboarding** from Lenny’s Podcast transcripts, extracted using LennyHub RAG:\n\n1. **Onboarding Frameworks from Brian Balfour (Episode #212)**\n   - *Quote*: \"The first 10 minutes of a user’s experience determine 90% of their long-term retention. Focus on reducing friction in the sign-up flow and delivering immediate value.\"\n   - *Key Takeaway*: Implement a \"progressive disclosure\" approach—unlock features gradually based on user behavior (e.g., invite-only beta → public signup → advanced features).\n   - *Case Study*: Brian shared how Reforge’s onboarding reduced drop-off by 40% by adding a 3-step tutorial that only appears after the user completes the core action (e.g., creating a project).\n\n2. **Data-Driven Onboarding from April Dunford (Episode #189)**\n   - *Quote*: \"Segment your users by intent before designing onboarding. A founder who signs up for a CRM tool expects different guidance than a marketer testing a new analytics platform.\"\n   - *Key Takeaway*: Use a short survey (2-3 questions) during signup to segment users and tailor the onboarding flow. For example, if a user selects \"I’m evaluating this for my team,\" prioritize team collaboration features in their initial experience.\n   - *Framework*: April recommends the \"Job-to-be-Done\" lens—ask: *What job is the user hiring your product to do?* Then design onboarding to fulfill that job immediately.\n\n3. **Psychological Triggers from Nir Eyal (Episode #156)**\n   - *Quote*: \"The hook model isn’t just for habit-forming products. Even B2B tools can leverage triggers like scarcity (limited-time features) or social proof (e.g., ‘Join 5,000+ teams using this daily’).\"\n   - *Key Takeaway*: Add a \"limited-time offer\" banner for new users that unlocks a premium feature (e.g., advanced analytics) after 7 days of active use. This leverages the *scarcity trigger* to drive engagement.\n\n**Actionable Next Steps**:\n- Audit your current onboarding flow using the frameworks above. Identify 1-2 friction points (e.g., too many steps, unclear value prop).\n- Implement a user segmentation survey during signup and A/B test tailored onboarding flows for each segment.\n- Add a scarcity-based trigger (e.g., ‘Only 3 spots left in this beta program’) to your post-signup emails.\n\n*Sources: Episodes #212, #189, #156.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "lennyhub-rag#main-content",
+      "lennyhub-rag#overview",
+      "lennyhub-rag#setup",
+      "lennyhub-rag#examples",
+      "lennyhub-rag#tools",
+      "lennyhub-rag#mcp",
+      "lennyhub-rag#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "LennyHub RAG is a production-ready retrieval-augmented generation system built on 297 transcripts from Lenny's Podcast, featuring conversations with product leaders, growth experts, and founders. It combines Qdrant vector database storage with LightRAG knowledge graph extraction to enable multiple search strategies—hybrid, local, global, and naive—for retrieving relevant insights. The system includes a Streamlit web interface for querying, an interactive graph viewer displaying 544 people and their connections, and CLI tools for direct access. Setup is automated and can process all transcripts in 25-35 minutes using parallel processing, making it accessible for teams seeking structured access to industry expertise on product management, growth strategy, leadership, and career development.\nQuickly set up a knowledge base from podcast transcripts for product management insights.\nUtilize interactive queries to extract expert advice on growth strategies and career development.\nVisualize connections among industry leaders to identify potential collaboration opportunities.\nImplement advanced search strategies to retrieve specific information from a large dataset of transcripts.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/traversaal-ai/lennyhub-rag`",
+    "usage_vi": "```\nExtract key insights about [TOPIC] from Lenny's Podcast transcripts. Focus on actionable advice, frameworks, or case studies shared by guests. Provide direct quotes where relevant and cite the episode number. Example topics: 'how to improve user onboarding', 'scaling a SaaS product', or 'hiring for product teams'.\n```\nCopy\n\n```\nHere are the top insights about **improving user onboarding** from Lenny’s Podcast transcripts, extracted using LennyHub RAG:\n\n1. **Onboarding Frameworks from Brian Balfour (Episode #212)**\n   - *Quote*: \"The first 10 minutes of a user’s experience determine 90% of their long-term retention. Focus on reducing friction in the sign-up flow and delivering immediate value.\"\n   - *Key Takeaway*: Implement a \"progressive disclosure\" approach—unlock features gradually based on user behavior (e.g., invite-only beta → public signup → advanced features).\n   - *Case Study*: Brian shared how Reforge’s onboarding reduced drop-off by 40% by adding a 3-step tutorial that only appears after the user completes the core action (e.g., creating a project).\n\n2. **Data-Driven Onboarding from April Dunford (Episode #189)**\n   - *Quote*: \"Segment your users by intent before designing onboarding. A founder who signs up for a CRM tool expects different guidance than a marketer testing a new analytics platform.\"\n   - *Key Takeaway*: Use a short survey (2-3 questions) during signup to segment users and tailor the onboarding flow. For example, if a user selects \"I’m evaluating this for my team,\" prioritize team collaboration features in their initial experience.\n   - *Framework*: April recommends the \"Job-to-be-Done\" lens—ask: *What job is the user hiring your product to do?* Then design onboarding to fulfill that job immediately.\n\n3. **Psychological Triggers from Nir Eyal (Episode #156)**\n   - *Quote*: \"The hook model isn’t just for habit-forming products. Even B2B tools can leverage triggers like scarcity (limited-time features) or social proof (e.g., ‘Join 5,000+ teams using this daily’).\"\n   - *Key Takeaway*: Add a \"limited-time offer\" banner for new users that unlocks a premium feature (e.g., advanced analytics) after 7 days of active use. This leverages the *scarcity trigger* to drive engagement.\n\n**Actionable Next Steps**:\n- Audit your current onboarding flow using the frameworks above. Identify 1-2 friction points (e.g., too many steps, unclear value prop).\n- Implement a user segmentation survey during signup and A/B test tailored onboarding flows for each segment.\n- Add a scarcity-based trigger (e.g., ‘Only 3 spots left in this beta program’) to your post-signup emails.\n\n*Sources: Episodes #212, #189, #156.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:54:49.113409Z",
+    "http_status": 200,
+    "content_hash": "5d3f9ca02efe7111b41a0afdbff08bad3a229854cb101b0a908d5c722f2d941c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lennyhub-rag.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\lennyhub-rag.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "LennyHub RAG - AI-Powered Podcast Insights",
+  "short_description_vi": "LennyHub RAG is an AI automation skill that enables operations teams to quickly access insights from Lenny's Podcast transcripts. It uses a retrieval-augmented generation system to provide relevant information from conversations with top product leaders and growth experts. The skill integrates with Claude agents and is designed for intermediate-level users."
+}

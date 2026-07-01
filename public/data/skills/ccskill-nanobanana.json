@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccskill-nanobanana",
+  "slug": "ccskill-nanobanana",
+  "name": "Ccskill Nanobanana",
+  "headline": "ccskill-nanobanana image generation tool",
+  "short_description": "Generate images using Nano Banana Pro API. Operations teams automate image creation for marketing, product listings, and internal documentation. Connects to Python workflows and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "35 min",
+  "author": "feedtailor",
+  "install_command": "git clone https://github.com/feedtailor/ccskill-nanobanana.git",
+  "source_repo_url": "https://github.com/feedtailor/ccskill-nanobanana",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This Claude Code skill integrates Google's Nano Banana Pro (Gemini 3 Pro Image) API for automated image generation. Users can generate images with customizable resolution (1K, 2K, 4K), aspect ratios, and optional reference images for editing and style transfer. The skill supports operations teams automating visual content creation for marketing materials, product listings, and internal documentation. Setup requires Python 3.10+, a Google API key with billing enabled, and environment configuration. Images are output in PNG, JPEG, or WebP format with SynthID watermarks.\nGenerate marketing images and product photography at scale\nCreate product listing images with consistent styling\nEdit existing images using reference images for background changes or style transfer\nAutomate internal documentation graphics and diagrams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/feedtailor/ccskill-nanobanana`",
+    "usage": "```\nGenerate 3 product images for [PRODUCT_NAME] in [STYLE] style. Include [PRODUCT_FEATURES] prominently. Output as PNG files with dimensions [WIDTH]x[HEIGHT].\n```\nCopy\n\n```\n# Product Images for EcoClean Laundry Pods",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccskill-nanobanana#main-content",
+      "ccskill-nanobanana#overview",
+      "ccskill-nanobanana#setup",
+      "ccskill-nanobanana#examples",
+      "ccskill-nanobanana#tools",
+      "ccskill-nanobanana#mcp",
+      "ccskill-nanobanana#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This Claude Code skill integrates Google's Nano Banana Pro (Gemini 3 Pro Image) API for automated image generation. Users can generate images with customizable resolution (1K, 2K, 4K), aspect ratios, and optional reference images for editing and style transfer. The skill supports operations teams automating visual content creation for marketing materials, product listings, and internal documentation. Setup requires Python 3.10+, a Google API key with billing enabled, and environment configuration. Images are output in PNG, JPEG, or WebP format with SynthID watermarks.\nGenerate marketing images and product photography at scale\nCreate product listing images with consistent styling\nEdit existing images using reference images for background changes or style transfer\nAutomate internal documentation graphics and diagrams",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/feedtailor/ccskill-nanobanana`",
+    "usage_vi": "```\nGenerate 3 product images for [PRODUCT_NAME] in [STYLE] style. Include [PRODUCT_FEATURES] prominently. Output as PNG files with dimensions [WIDTH]x[HEIGHT].\n```\nCopy\n\n```\n# Product Images for EcoClean Laundry Pods"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:30:40.452083Z",
+    "http_status": 200,
+    "content_hash": "38ccc1ac09eb9348219767381fe0a45ed30ae651e87696588cdd3a0114f87178",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccskill-nanobanana.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccskill-nanobanana.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ccskill-nanobanana image generation tool",
+  "short_description_vi": "Generate images using Nano Banana Pro API. Operations teams automate image creation for marketing, product listings, and internal documentation. Connects to Python workflows and Claude agents."
+}

@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibeproxy",
+  "slug": "vibeproxy",
+  "name": "VibeProxy",
+  "headline": "VibeProxy - AI Coding Assistant Proxy",
+  "short_description": "VibeProxy is a native macOS menu bar app that enables developers to use their Claude Code and ChatGPT subscriptions with AI coding tools without requiring API keys. It benefits developers and operations teams by simplifying access to AI coding assistants. The app integrates with macOS and connects to AI coding tools, enhancing productivity in software development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "automazeio",
+  "install_command": "git clone https://github.com/automazeio/vibeproxy.git",
+  "source_repo_url": "https://github.com/automazeio/vibeproxy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cli-proxy",
+    "factory-droids",
+    "claude-code",
+    "gpt-5-codex",
+    "codex",
+    "claudecode"
+  ],
+  "sections": {
+    "overview": "VibeProxy is a native macOS menu bar application that bridges your existing Claude and ChatGPT subscriptions with AI coding tools, eliminating the need for separate API keys. The app runs locally on Apple Silicon Macs and provides a proxy layer that integrates with coding assistants and IDEs. It simplifies access to AI-powered development features for developers and operations teams who already have paid Claude and ChatGPT accounts. By removing the API key requirement, VibeProxy streamlines authentication and reduces friction in AI-assisted coding workflows. The application supports provider management with enable/disable toggles for controlling which models are available.\nAuthenticate and manage multiple AI service accounts from a single menu bar application.\nQuickly switch between different AI models like Claude Code and Gemini for diverse coding tasks.\nUtilize powerful AI coding tools like Factory Droids without needing to manage separate API keys.\nAutomatically route requests through Vercel AI Gateway for enhanced security and reliability.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/automazeio/vibeproxy`",
+    "usage": "```\nUse VibeProxy to [TASK] in [PROJECT_NAME] without requiring API keys. For example: 'Run a full code review of the /src directory in the AcmeCorp project, flagging potential security vulnerabilities and suggesting optimizations for the payment processing module.'\n```\nCopy\n\n```\nHere’s the output from running a security-focused code review on the AcmeCorp project using VibeProxy:\n\n**Critical Findings (3):**\n1. **SQL Injection Risk** in `/src/db/queries.js` (Line 42): The `getUserOrders` function directly interpolates user input into a SQL query without parameterization. Fix: Replace with `db.query('SELECT * FROM orders WHERE user_id = ?', [userId])`.\n2. **Hardcoded API Key** in `/src/config/secrets.ts` (Line 15): The Stripe API key is exposed in plaintext. Fix: Move to environment variables and use `process.env.STRIPE_KEY`.\n3. **Missing Input Validation** in `/src/routes/auth.js`: The `login` endpoint accepts raw JSON without sanitization. Fix: Add schema validation using `zod` or `joi`.\n\n**Optimizations (5):**\n- **Performance:** The `/api/users` endpoint fetches all records at once. Suggest pagination with `?limit=50&offset=0`.\n- **Logging:** Add structured logging with `winston` to `/src/utils/logger.js` for better debugging.\n- **Dependencies:** Update `lodash` from v4.17.15 to v4.17.21 to patch prototype pollution vulnerabilities.\n- **Error Handling:** Wrap the `/api/payments` endpoint in a try-catch block to avoid unhandled rejections.\n- **Type Safety:** Add TypeScript types to `/src/models/User.ts` for better IDE support.\n\n**Next Steps:**\n1. Address the SQL injection risk immediately—this is a high-priority item.\n2. Refactor the secrets management to use environment variables.\n3. Implement pagination for the `/api/users` endpoint.\n4. Add unit tests for the `/api/auth` endpoint to cover edge cases.\n\nTotal files analyzed: 42 | Critical issues: 3 | Optimizations: 5 | Estimated fix time: 4 hours.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibeproxy#main-content",
+      "vibeproxy#overview",
+      "vibeproxy#setup",
+      "vibeproxy#examples",
+      "vibeproxy#tools",
+      "vibeproxy#mcp",
+      "vibeproxy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "VibeProxy is a native macOS menu bar application that bridges your existing Claude and ChatGPT subscriptions with AI coding tools, eliminating the need for separate API keys. The app runs locally on Apple Silicon Macs and provides a proxy layer that integrates with coding assistants and IDEs. It simplifies access to AI-powered development features for developers and operations teams who already have paid Claude and ChatGPT accounts. By removing the API key requirement, VibeProxy streamlines authentication and reduces friction in AI-assisted coding workflows. The application supports provider management with enable/disable toggles for controlling which models are available.\nAuthenticate and manage multiple AI service accounts from a single menu bar application.\nQuickly switch between different AI models like Claude Code and Gemini for diverse coding tasks.\nUtilize powerful AI coding tools like Factory Droids without needing to manage separate API keys.\nAutomatically route requests through Vercel AI Gateway for enhanced security and reliability.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/automazeio/vibeproxy`",
+    "usage_vi": "```\nUse VibeProxy to [TASK] in [PROJECT_NAME] without requiring API keys. For example: 'Run a full code review of the /src directory in the AcmeCorp project, flagging potential security vulnerabilities and suggesting optimizations for the payment processing module.'\n```\nCopy\n\n```\nHere’s the output from running a security-focused code review on the AcmeCorp project using VibeProxy:\n\n**Critical Findings (3):**\n1. **SQL Injection Risk** in `/src/db/queries.js` (Line 42): The `getUserOrders` function directly interpolates user input into a SQL query without parameterization. Fix: Replace with `db.query('SELECT * FROM orders WHERE user_id = ?', [userId])`.\n2. **Hardcoded API Key** in `/src/config/secrets.ts` (Line 15): The Stripe API key is exposed in plaintext. Fix: Move to environment variables and use `process.env.STRIPE_KEY`.\n3. **Missing Input Validation** in `/src/routes/auth.js`: The `login` endpoint accepts raw JSON without sanitization. Fix: Add schema validation using `zod` or `joi`.\n\n**Optimizations (5):**\n- **Performance:** The `/api/users` endpoint fetches all records at once. Suggest pagination with `?limit=50&offset=0`.\n- **Logging:** Add structured logging with `winston` to `/src/utils/logger.js` for better debugging.\n- **Dependencies:** Update `lodash` from v4.17.15 to v4.17.21 to patch prototype pollution vulnerabilities.\n- **Error Handling:** Wrap the `/api/payments` endpoint in a try-catch block to avoid unhandled rejections.\n- **Type Safety:** Add TypeScript types to `/src/models/User.ts` for better IDE support.\n\n**Next Steps:**\n1. Address the SQL injection risk immediately—this is a high-priority item.\n2. Refactor the secrets management to use environment variables.\n3. Implement pagination for the `/api/users` endpoint.\n4. Add unit tests for the `/api/auth` endpoint to cover edge cases.\n\nTotal files analyzed: 42 | Critical issues: 3 | Optimizations: 5 | Estimated fix time: 4 hours.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:17:29.229637Z",
+    "http_status": 200,
+    "content_hash": "e08d2456c726bbc73df9ceaf19a48b551e8aac3385fbcac123e314ac0897fdc8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibeproxy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibeproxy.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VibeProxy - AI Coding Assistant Proxy",
+  "short_description_vi": "VibeProxy is a native macOS menu bar app that enables developers to use their Claude Code and ChatGPT subscriptions with AI coding tools without requiring API keys. It benefits developers and operations teams by simplifying access to AI coding assistants. The app integrates with macOS and connects to AI coding tools, enhancing productivity in software development workflows."
+}

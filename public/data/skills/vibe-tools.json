@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibe-tools",
+  "slug": "vibe-tools",
+  "name": "Vibe Tools",
+  "headline": "Vibe-Tools: Enhance Your Cursor Agent with AI",
+  "short_description": "Vibe-tools enhances Cursor Agent with AI capabilities and team collaboration features. It benefits operations teams by streamlining workflows and improving efficiency. The tool connects to Cursor Agent, enabling advanced AI-driven productivity enhancements.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "eastlondoner",
+  "install_command": "claude install eastlondoner/vibe-tools",
+  "source_repo_url": "https://github.com/eastlondoner/vibe-tools",
+  "works_with": [
+    "Cursor"
+  ],
+  "tags": [
+    "productivity enhancement",
+    "AI tools",
+    "Cursor Agent",
+    "TypeScript",
+    "team collaboration"
+  ],
+  "sections": {
+    "overview": "Vibe-tools extends AI agents with command-line interface capabilities designed to streamline development operations. The skill includes GitHub PR command tools with customizable output flags (reviewOnly, discussionOnly, metadatOnly, noLinks, hideResolved) for tailored pull request analysis, and integrates with Doppler for secure secret management. It supports both Claude and Cursor agents through dedicated rule files, enabling developers to automate code review workflows and manage configuration secrets programmatically. The tool is actively maintained with version 0.63.3 and provides enhanced error messaging and type safety for CLI operations.\nAutomate repetitive tasks to save time and reduce manual effort.\nEnhance team collaboration by integrating AI tools into communication platforms.\nFacilitate real-time data analysis to make informed decisions quickly.\nStreamline project management processes by automating updates and task assignments.",
+    "setup": "Terminal\nCopy\n`claude install eastlondoner/vibe-tools`\n`git clone https://github.com/eastlondoner/vibe-tools`",
+    "usage": "```\nSet up a Vibe-tools AI assistant for [TEAM NAME] to streamline [SPECIFIC WORKFLOW]. Configure it to integrate with [TOOLS] and automate [TASKS]. Ensure it can collaborate with [TEAM MEMBERS] and provide real-time updates.\n```\nCopy\n\n```\nThe Vibe-tools AI assistant for the Marketing Team has been successfully set up. It is now integrated with Slack, Trello, and Google Drive, automating the creation of social media content calendars and tracking campaign performance. The assistant can collaborate with team members by assigning tasks, sending reminders, and providing real-time updates on project progress. It has been configured to generate weekly reports and suggest optimizations based on data trends.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Cursor"
+    ],
+    "related_skills": [
+      "vibe-tools#main-content",
+      "vibe-tools#overview",
+      "vibe-tools#setup",
+      "vibe-tools#examples",
+      "vibe-tools#tools",
+      "vibe-tools#mcp",
+      "vibe-tools#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Vibe-tools mở rộng khả năng của các AI agent bằng giao diện dòng lệnh (CLI) được thiết kế để tối ưu hóa quy trình vận hành phát triển (devops). Skill này cung cấp các công cụ dòng lệnh cho GitHub PR với các flag đầu ra tùy biến (reviewOnly, discussionOnly, metadatOnly, noLinks, hideResolved) giúp phân tích pull request theo nhu cầu, đồng thời tích hợp với Doppler để quản lý secret an toàn. Công cụ hỗ trợ cả Claude và Cursor agent thông qua các tệp quy tắc (rule files) chuyên dụng, cho phép lập trình viên tự động hóa quy trình code review và quản lý cấu hình secret bằng mã nguồn. Vibe-tools hiện được bảo trì tích cực ở phiên bản 0.63.3, cung cấp thông báo lỗi chi tiết hơn và đảm bảo type safety cho các thao tác CLI.\nTự động hóa các tác vụ lặp đi lặp lại để tiết kiệm thời gian và giảm thiểu công sức thủ công.\nTăng cường cộng tác nhóm bằng cách tích hợp các công cụ AI vào các nền tảng giao tiếp.\nHỗ trợ phân tích dữ liệu thời gian thực để nhanh chóng đưa ra quyết định chính xác.\nTối ưu hóa quy trình quản lý dự án nhờ tự động hóa việc cập nhật trạng thái và phân công công việc.",
+    "setup_vi": "Terminal\nSao chép\n`claude install eastlondoner/vibe-tools`\n`git clone https://github.com/eastlondoner/vibe-tools`",
+    "usage_vi": "```\nThiết lập một trợ lý AI Vibe-tools cho [TÊN NHÓM] để tối ưu hóa [QUY TRÌNH LÀM VIỆC CỤ THỂ]. Cấu hình trợ lý để tích hợp với [CÔNG CỤ] và tự động hóa [NHIỆM VỤ]. Đảm bảo trợ lý có thể cộng tác với [THÀNH VIÊN NHÓM] và cung cấp thông tin cập nhật theo thời gian thực.\n```\nSao chép\n\n```\nTrợ lý AI Vibe-tools dành cho Đội ngũ Marketing đã được thiết lập thành công. Trợ lý hiện đã được tích hợp với Slack, Trello và Google Drive, giúp tự động hóa việc lập lịch nội dung mạng xã hội và theo dõi hiệu suất chiến dịch. Trợ lý có thể cộng tác với các thành viên trong nhóm bằng cách phân công công việc, gửi lời nhắc và cập nhật tiến độ dự án theo thời gian thực. Ngoài ra, trợ lý cũng được cấu hình để tạo báo cáo hàng tuần và đề xuất các phương án tối ưu hóa dựa trên xu hướng dữ liệu.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:11:23.224492Z",
+    "http_status": 200,
+    "content_hash": "29d93cdff518ef733b585971d2508a9b681040aa95dfb6548ed072c8bff98dc8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-tools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-tools.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Vibe-Tools: Nâng tầm Cursor Agent bằng AI",
+  "short_description_vi": "Vibe-tools tích hợp các khả năng AI và tính năng cộng tác nhóm vào Cursor Agent. Công cụ này hỗ trợ đắc lực cho các đội ngũ vận hành bằng cách tối ưu hóa quy trình làm việc và nâng cao hiệu suất. Nhờ kết nối trực tiếp với Cursor Agent, Vibe-tools mang lại những cải tiến hiệu suất vượt trội được thúc đẩy bởi AI."
+}

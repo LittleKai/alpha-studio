@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/subtask",
+  "slug": "subtask",
+  "name": "Subtask",
+  "headline": "Subtask - Parallel Task Automation",
+  "short_description": "Subtask enables Claude Code to create tasks, spawn subagents, and track progress in parallel Git worktrees. Ideal for operations teams managing complex workflows, it allows for safe, concurrent task execution and real-time collaboration between agents. Connects to Git and CLI tools for streamlined automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "zippoxer",
+  "install_command": "git clone https://github.com/zippoxer/subtask.git",
+  "source_repo_url": "https://github.com/zippoxer/subtask",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "codex",
+    "claude-code",
+    "codex-cli"
+  ],
+  "sections": {
+    "overview": "Subtask is a CLI skill that integrates with Claude Code to create, manage, and execute multiple tasks concurrently using Git worktrees. Each task runs in its own isolated worktree, enabling safe parallel execution without conflicts. Claude can spawn subagents to work on tasks independently, interrupt them for collaboration, and track real-time progress through a TUI that displays status, diffs, and agent conversations. Tasks are persisted in folders and support both Claude and Codex subagents. This is particularly valuable for operations teams, development leads, and engineering teams managing complex multi-step workflows, code reviews, and feature development cycles.\nFix multiple bugs in parallel while tracking progress and reviewing changes\nImplement multiple features simultaneously with subagents working independently\nManage complex workflows requiring code review and merge coordination\nPlan and execute multi-step development tasks with real-time agent collaboration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zippoxer/subtask`",
+    "usage": "```\nUse the `subtask` skill to break down [TASK] into [NUMBER] parallel sub-tasks. For each sub-task, create a dedicated Git worktree named [WORKTREE_PREFIX]-[SUBTASK_NAME]. Track progress in a shared markdown file at [PROGRESS_FILE_PATH]. Assign each sub-task to a separate agent with a specific focus: [AGENT_FOCUS_AREAS]. Ensure all worktrees are cleaned up after completion.\n```\nCopy\n\n```\n### Subtask Execution Report\n**Parent Task:** Refactor legacy authentication system for Acme Corp\n**Worktrees Created:**\n1. `auth-refactor-database` - Focus: Migrate user data schema from MongoDB to PostgreSQL\n   - **Agent:** db-migrator-01\n   - **Progress:** 65% (Schema migration complete, indexes pending)\n   - **Output:** `worktrees/auth-refactor-database/logs/migration.log`\n2. `auth-refactor-api` - Focus: Update REST endpoints to use new auth service\n   - **Agent:** api-updater-02\n   - **Progress:** 40% (Endpoints updated, integration tests failing)\n   - **Output:** `worktrees/auth-refactor-api/logs/endpoint_errors.json`\n3. `auth-refactor-ui` - Focus: Rebuild login flow with new auth service\n   - **Agent:** ui-rebuilder-03\n   - **Progress:** 80% (UI components updated, awaiting API stabilization)\n   - **Output:** `worktrees/auth-refactor-ui/logs/ui_changes.md`\n\n**Shared Progress File:** `worktrees/auth-refactor-progress.md`\n- Last updated: 2023-11-15 14:30 UTC\n- Blockers: API endpoints need schema validation fixes\n- Dependencies: UI work paused until API stabilizes\n\n**Cleanup Status:** All worktrees remain active. Scheduled for deletion on 2023-11-18 after final review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "subtask#main-content",
+      "subtask#overview",
+      "subtask#setup",
+      "subtask#examples",
+      "subtask#tools",
+      "subtask#mcp",
+      "subtask#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Subtask là một skill CLI tích hợp với Claude Code để tạo, quản lý và thực thi nhiều tác vụ đồng thời bằng cách sử dụng các Git worktree. Mỗi tác vụ chạy trong một worktree độc lập riêng biệt, giúp thực thi song song an toàn mà không bị xung đột. Claude có thể khởi tạo các subagent để xử lý các tác vụ một cách độc lập, tạm dừng chúng để cộng tác, và theo dõi tiến độ theo thời gian thực thông qua một giao diện TUI hiển thị trạng thái, các bản diff và hội thoại của agent. Các tác vụ được lưu lại trong các thư mục và hỗ trợ cả subagent Claude lẫn Codex. Công cụ này đặc biệt giá trị cho các đội ngũ vận hành, dev lead và đội ngũ kỹ thuật đang quản lý các workflow nhiều bước phức tạp, duyệt code (code review) và các chu kỳ phát triển tính năng.\nSửa nhiều bug song song trong khi vẫn theo dõi tiến độ và review các thay đổi\nTriển khai đồng thời nhiều tính năng với các subagent hoạt động độc lập\nQuản lý các workflow phức tạp yêu cầu duyệt code và điều phối merge (hợp nhất)\nLên kế hoạch và thực thi các tác vụ phát triển nhiều bước với sự cộng tác của agent theo thời gian thực",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ (repository) GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/zippoxer/subtask`",
+    "usage_vi": "```\nSử dụng skill `subtask` để chia nhỏ [TASK] thành [NUMBER] tác vụ con (sub-task) song song. Với mỗi tác vụ con, tạo một Git worktree riêng biệt có tên là [WORKTREE_PREFIX]-[SUBTASK_NAME]. Theo dõi tiến độ trong một file markdown chung tại [PROGRESS_FILE_PATH]. Giao từng tác vụ con cho một agent riêng biệt với trọng tâm cụ thể: [AGENT_FOCUS_AREAS]. Đảm bảo dọn dẹp sạch sẽ tất cả các worktree sau khi hoàn thành.\n```\nCopy\n\n```\n### Báo cáo thực thi Subtask\n**Tác vụ cha (Parent Task):** Tái cấu trúc (refactor) hệ thống xác thực cũ cho Acme Corp\n**Các worktree đã tạo:**\n1. `auth-refactor-database` - Trọng tâm: Di chuyển (migrate) schema dữ liệu người dùng từ MongoDB sang PostgreSQL\n   - **Agent:** db-migrator-01\n   - **Tiến độ:** 65% (Đã hoàn thành di chuyển schema, đang chờ xử lý index)\n   - **Đầu ra (Output):** `worktrees/auth-refactor-database/logs/migration.log`\n2. `auth-refactor-api` - Trọng tâm: Cập nhật các endpoint REST để sử dụng dịch vụ xác thực mới\n   - **Agent:** api-updater-02\n   - **Tiến độ:** 40% (Đã cập nhật các endpoint, integration test đang lỗi)\n   - **Đầu ra (Output):** `worktrees/auth-refactor-api/logs/endpoint_errors.json`\n3. `auth-refactor-ui` - Trọng tâm: Dựng lại luồng đăng nhập với dịch vụ xác thực mới\n   - **Agent:** ui-rebuilder-03\n   - **Tiến độ:** 80% (Đã cập nhật các UI component, đang chờ API ổn định)\n   - **Đầu ra (Output):** `worktrees/auth-refactor-ui/logs/ui_changes.md`\n\n**File tiến độ chung (Shared Progress File):** `worktrees/auth-refactor-progress.md`\n- Cập nhật lần cuối: 2023-11-15 14:30 UTC\n- Điểm nghẽn (Blockers): Các endpoint API cần sửa lỗi kiểm tra schema (schema validation)\n- Phụ thuộc (Dependencies): Công việc UI tạm dừng cho đến khi API ổn định\n\n**Trạng thái dọn dẹp (Cleanup Status):** Tất cả các worktree vẫn đang hoạt động. Dự kiến xóa vào ngày 2023-11-18 sau khi review lần cuối.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:06:10.893499Z",
+    "http_status": 200,
+    "content_hash": "a36a318768abf840dbb624b91aada1c9a1c18ab0225c74a14e9841acef52c974",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\subtask.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\subtask.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Subtask - Tự động hóa tác vụ song song",
+  "short_description_vi": "Subtask cho phép Claude Code tạo tác vụ, khởi tạo các subagent và theo dõi tiến độ trong các Git worktree song song. Là giải pháp lý tưởng cho các đội ngũ vận hành quản lý quy trình công việc (workflow) phức tạp, công cụ này hỗ trợ thực thi tác vụ đồng thời một cách an toàn và cộng tác theo thời gian thực giữa các agent. Kết nối trực tiếp với Git và các công cụ CLI để tối ưu hóa quy trình tự động hóa."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentation",
+  "slug": "agentation",
+  "name": "Agentation",
+  "headline": "Agentation: AI-Powered Workflow Automation",
+  "short_description": "Agentation simplifies your workflow by using AI to automate repetitive tasks, boosting productivity and efficiency. Experience integration and enhanced performance tailored to your specific needs.",
+  "tier": "Silver",
+  "category": "AI Engineers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/benjitaylor",
+  "source_repo_url": "https://github.com/sh/benjitaylor",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "automation",
+    "productivity",
+    "AI",
+    "workflow"
+  ],
+  "sections": {
+    "overview": "Agentation is an AI-powered automation skill that streamlines workflows by automating repetitive tasks. It integrates seamlessly into your existing processes to boost productivity and efficiency. The skill is designed to adapt to your specific needs, delivering enhanced performance through intelligent task automation.\nautomating email responses\nscheduling social media posts\ndata analysis and reporting",
+    "setup": "Terminal\nCopy\n`npx skills add sh/benjitaylor`\n`git clone https://github.com/sh/benjitaylor`",
+    "usage": "```\nAnalyze our SaaS spending in [PRODUCTIV] for [DEPARTMENT/TEAM] over the past [TIME PERIOD]. Identify [X] highest-cost subscriptions, [Y] redundant or underutilized licenses, and [Z] upcoming renewals due in [TIME FRAME]. For each item, calculate potential savings if optimized (e.g., downgrades, cancellations, or negotiations) and flag any compliance risks. Provide a prioritized action plan with next steps for the finance team.\n```\nCopy\n\n```\n### SaaS Spend Analysis for Engineering Team (Q3 2023)\n\n**Top 5 Highest-Cost Subscriptions:**\n1. **GitHub Enterprise** ($12,800/year) – 120 licenses, but only 85 active users. Potential savings: $3,840/year by reducing to 90 licenses.\n2. **Slack Pro** ($9,600/year) – 150 licenses, but 20 are unused. Potential savings: $1,280/year by reallocating licenses.\n3. **Jira Premium** ($7,200/year) – 50 licenses, but 10 are inactive. Potential savings: $1,440/year by consolidating.\n4. **AWS CloudTrail** ($4,800/year) – No recent usage detected. Potential savings: $4,800/year by canceling.\n5. **Notion Team** ($3,600/year) – 100 licenses, but 30 are unused. Potential savings: $1,080/year by reducing to 70 licenses.\n\n**Redundant/Low-Utilization Licenses:**\n- **Figma** ($2,400/year) – 40 licenses, but only 15 active users. Recommend downgrading to the Professional plan ($1,200/year).\n- **Zoom Pro** ($1,800/year) – 50 licenses, but 10 are unused. Recommend reducing to 40 licenses.\n\n**Upcoming Renewals (Next 90 Days):**\n1. **Datadog** (Renews in 45 days) – $6,000/year. Current usage is below threshold; recommend downgrading to a lower tier ($3,600/year).\n2. **Okta** (Renews in 60 days) – $12,000/year. No recent SSO activity detected; recommend renegotiating or consolidating with another identity provider.\n\n**Compliance Risks:**\n- **Adobe Creative Cloud** – 25 licenses, but 5 are assigned to former employees. Immediate action required to reclaim or deactivate licenses.\n\n**Action Plan:**\n1. **Immediate (This Week):** Reclaim licenses from former employees and cancel AWS CloudTrail.\n2. **Short-Term (Next 30 Days):** Downgrade Figma, Zoom Pro, and Datadog plans; renegotiate Okta contract.\n3. **Long-Term (Next 60 Days):** Implement a quarterly SaaS audit process to prevent future redundancies.\n\n**Potential Annual Savings:** $15,240 (22% reduction in SaaS spend for the Engineering team).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "agentation#main-content",
+      "agentation#overview",
+      "agentation#setup",
+      "agentation#examples",
+      "agentation#tools",
+      "agentation#mcp",
+      "agentation#related",
+      "agents",
+      "ai",
+      "agent-nestjs-skills"
+    ],
+    "overview_vi": "Agentation is an AI-powered automation skill that streamlines workflows by automating repetitive tasks. It integrates seamlessly into your existing processes to boost productivity and efficiency. The skill is designed to adapt to your specific needs, delivering enhanced performance through intelligent task automation.\nautomating email responses\nscheduling social media posts\ndata analysis and reporting",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/benjitaylor`\n`git clone https://github.com/sh/benjitaylor`",
+    "usage_vi": "```\nAnalyze our SaaS spending in [PRODUCTIV] for [DEPARTMENT/TEAM] over the past [TIME PERIOD]. Identify [X] highest-cost subscriptions, [Y] redundant or underutilized licenses, and [Z] upcoming renewals due in [TIME FRAME]. For each item, calculate potential savings if optimized (e.g., downgrades, cancellations, or negotiations) and flag any compliance risks. Provide a prioritized action plan with next steps for the finance team.\n```\nCopy\n\n```\n### SaaS Spend Analysis for Engineering Team (Q3 2023)\n\n**Top 5 Highest-Cost Subscriptions:**\n1. **GitHub Enterprise** ($12,800/year) – 120 licenses, but only 85 active users. Potential savings: $3,840/year by reducing to 90 licenses.\n2. **Slack Pro** ($9,600/year) – 150 licenses, but 20 are unused. Potential savings: $1,280/year by reallocating licenses.\n3. **Jira Premium** ($7,200/year) – 50 licenses, but 10 are inactive. Potential savings: $1,440/year by consolidating.\n4. **AWS CloudTrail** ($4,800/year) – No recent usage detected. Potential savings: $4,800/year by canceling.\n5. **Notion Team** ($3,600/year) – 100 licenses, but 30 are unused. Potential savings: $1,080/year by reducing to 70 licenses.\n\n**Redundant/Low-Utilization Licenses:**\n- **Figma** ($2,400/year) – 40 licenses, but only 15 active users. Recommend downgrading to the Professional plan ($1,200/year).\n- **Zoom Pro** ($1,800/year) – 50 licenses, but 10 are unused. Recommend reducing to 40 licenses.\n\n**Upcoming Renewals (Next 90 Days):**\n1. **Datadog** (Renews in 45 days) – $6,000/year. Current usage is below threshold; recommend downgrading to a lower tier ($3,600/year).\n2. **Okta** (Renews in 60 days) – $12,000/year. No recent SSO activity detected; recommend renegotiating or consolidating with another identity provider.\n\n**Compliance Risks:**\n- **Adobe Creative Cloud** – 25 licenses, but 5 are assigned to former employees. Immediate action required to reclaim or deactivate licenses.\n\n**Action Plan:**\n1. **Immediate (This Week):** Reclaim licenses from former employees and cancel AWS CloudTrail.\n2. **Short-Term (Next 30 Days):** Downgrade Figma, Zoom Pro, and Datadog plans; renegotiate Okta contract.\n3. **Long-Term (Next 60 Days):** Implement a quarterly SaaS audit process to prevent future redundancies.\n\n**Potential Annual Savings:** $15,240 (22% reduction in SaaS spend for the Engineering team).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:44:08.916422Z",
+    "http_status": 200,
+    "content_hash": "74dcd3bdadd6a85abc1b579463dab16e12dfc3b870c4ef218701b754e88d5d6f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentation.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentation.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Agentation: AI-Powered Workflow Automation",
+  "short_description_vi": "Agentation simplifies your workflow by using AI to automate repetitive tasks, boosting productivity and efficiency. Experience integration and enhanced performance tailored to your specific needs."
+}

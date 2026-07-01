@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openwebui-mcp-setup",
+  "slug": "openwebui-mcp-setup",
+  "name": "browser-use",
+  "headline": "openwebui-mcp-setup: MCP-to-Open Web UI Bridge",
+  "short_description": "Universal MCPO/MCP bridge for Open Web UI with AI-powered configuration. Automated setup generation, Docker support, beginner-friendly. Any AI assistant can instantly convert MCP configs to   working Open Web UI integrations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "sonzentherevolution",
+  "install_command": "git clone https://github.com/sonzentherevolution/openwebui-mcp-setup.git",
+  "source_repo_url": "https://github.com/sonzentherevolution/openwebui-mcp-setup",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "zero-config",
+    "open-webui",
+    "mcpo",
+    "agentic-setup",
+    "llm-tools",
+    "ai-automation",
+    "mcp",
+    "model-context-protocol",
+    "docker"
+  ],
+  "sections": {
+    "overview": "openwebui-mcp-setup simplifies adding MCP (Model Context Protocol) tools to Open Web UI through an MCPO bridge. It converts MCP server configurations into working Open Web UI integrations without complex manual setup. The skill supports multiple deployment options including Docker, command-line scripts, and AI-assisted configuration. Users can add tools like persistent memory, file access, time data, and web search capabilities to their chat interface. Setup options range from quick single-command deployments to multi-server Docker configurations.\nAdd persistent memory tools to Open Web UI conversations\nEnable file read/write capabilities in chat interface\nIntegrate web search and API access into AI assistants\nDeploy multiple MCP servers simultaneously with Docker",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sonzentherevolution/openwebui-mcp-setup`\n\n### Step 1: Prerequisites\n- Docker installed on your system\n- Basic understanding of command line interface\n- Your MCP configuration files ready\n\n### Step 2: Docker Setup\n1. Open your terminal or command prompt\n2. Run the following command to pull the Open Web UI MCP bridge image:\n   ```bash\n   docker pull openwebui/mcp-bridge:latest\n   ```\n3. Verify the image was pulled successfully\n\n### Step 3: Configuration\n1. Create a new directory for your configuration files:\n   ```bash\n   mkdir mcp-config\n   cd mcp-config\n   ```\n2. Place your MCP configuration files in this directory\n3. Create a `docker-compose.yml` file with the following content:\n   ```yaml\n   version: '3'\n   services:\n     mcp-bridge:\n       image: openwebui/mcp-bridge:latest\n       volumes:\n         - ./:/config\n       ports:\n         - \"8080:8080\"\n   ```\n\n### Step 4: Running the Bridge\n1. Start the Docker container:\n   ```bash\n   docker-compose up -d\n   ```\n2. Access the bridge at `http://localhost:8080` in your web browser\n3. Follow the on-screen instructions to complete the setup\n\n### Step 5: Integration\n1. Log in to your Open Web UI instance\n2. Navigate to the MCP Bridge integration section\n3. Enter the URL `http://localhost:8080` and your credentials\n4. Test the connection and verify that your data is being processed correctly\n```",
+    "usage": "```\nI need help setting up an Open Web UI MCP bridge for [COMPANY] in the [INDUSTRY] sector. I have [DATA] that needs to be integrated. Can you generate a step-by-step guide for automated setup generation with Docker support?\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "openwebui-mcp-setup#main-content",
+      "openwebui-mcp-setup#overview",
+      "openwebui-mcp-setup#setup",
+      "openwebui-mcp-setup#examples",
+      "openwebui-mcp-setup#tools",
+      "openwebui-mcp-setup#mcp",
+      "openwebui-mcp-setup#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "openwebui-mcp-setup simplifies adding MCP (Model Context Protocol) tools to Open Web UI through an MCPO bridge. It converts MCP server configurations into working Open Web UI integrations without complex manual setup. The skill supports multiple deployment options including Docker, command-line scripts, and AI-assisted configuration. Users can add tools like persistent memory, file access, time data, and web search capabilities to their chat interface. Setup options range from quick single-command deployments to multi-server Docker configurations.\nAdd persistent memory tools to Open Web UI conversations\nEnable file read/write capabilities in chat interface\nIntegrate web search and API access into AI assistants\nDeploy multiple MCP servers simultaneously with Docker",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sonzentherevolution/openwebui-mcp-setup`\n\n### Step 1: Prerequisites\n- Docker installed on your system\n- Basic understanding of command line interface\n- Your MCP configuration files ready\n\n### Step 2: Docker Setup\n1. Open your terminal or command prompt\n2. Run the following command to pull the Open Web UI MCP bridge image:\n   ```bash\n   docker pull openwebui/mcp-bridge:latest\n   ```\n3. Verify the image was pulled successfully\n\n### Step 3: Configuration\n1. Create a new directory for your configuration files:\n   ```bash\n   mkdir mcp-config\n   cd mcp-config\n   ```\n2. Place your MCP configuration files in this directory\n3. Create a `docker-compose.yml` file with the following content:\n   ```yaml\n   version: '3'\n   services:\n     mcp-bridge:\n       image: openwebui/mcp-bridge:latest\n       volumes:\n         - ./:/config\n       ports:\n         - \"8080:8080\"\n   ```\n\n### Step 4: Running the Bridge\n1. Start the Docker container:\n   ```bash\n   docker-compose up -d\n   ```\n2. Access the bridge at `http://localhost:8080` in your web browser\n3. Follow the on-screen instructions to complete the setup\n\n### Step 5: Integration\n1. Log in to your Open Web UI instance\n2. Navigate to the MCP Bridge integration section\n3. Enter the URL `http://localhost:8080` and your credentials\n4. Test the connection and verify that your data is being processed correctly\n```",
+    "usage_vi": "```\nI need help setting up an Open Web UI MCP bridge for [COMPANY] in the [INDUSTRY] sector. I have [DATA] that needs to be integrated. Can you generate a step-by-step guide for automated setup generation with Docker support?\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:54:32.821677Z",
+    "http_status": 200,
+    "content_hash": "faf8a235b932e046c09536e6f34ce309f236af991e0bcd6cc6e2fedb67170600",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openwebui-mcp-setup.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\openwebui-mcp-setup.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "openwebui-mcp-setup: MCP-to-Open Web UI Bridge",
+  "short_description_vi": "Universal MCPO/MCP bridge for Open Web UI with AI-powered configuration. Automated setup generation, Docker support, beginner-friendly. Any AI assistant can instantly convert MCP configs to   working Open Web UI integrations."
+}

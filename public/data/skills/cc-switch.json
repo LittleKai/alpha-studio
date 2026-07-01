@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-switch",
+  "slug": "cc-switch",
+  "name": "slack-gif-creator",
+  "headline": "cc-switch: All-in-One AI Assistant for Developers",
+  "short_description": "cc-switch is a versatile desktop assistant that integrates with Claude Code, Codex, OpenCode, and Gemini CLI, enhancing productivity across platforms. Designed for developers, it streamlines coding tasks and improves workflow efficiency.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "farion1231",
+  "install_command": "claude install farion1231/cc-switch",
+  "source_repo_url": "https://github.com/farion1231/cc-switch",
+  "works_with": [
+    "ClaudeCodexOpenCode"
+  ],
+  "tags": [
+    "ai-tools",
+    "skills-management",
+    "rust",
+    "desktop-app",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "cc-switch is a desktop assistant designed to enhance productivity across multiple AI coding platforms including Claude Code, Cursor, OpenCode, and Gemini CLI. It streamlines common coding tasks by providing seamless integration with these tools, allowing developers to work more efficiently without switching between applications. The skill supports multiple AI providers and includes configurable presets, making it adaptable to different development workflows. cc-switch is actively maintained with regular updates and documentation across multiple languages, serving developers who use various AI-assisted coding environments.\nAutomate the integration of AI tools across different coding platforms.\nStreamline the process of switching between Claude Code, Codex, OpenCode, and Gemini CLI.\nEnhance collaboration by managing shared coding environments efficiently.\nReduce repetitive coding tasks through automation, allowing for more focus on development.",
+    "setup": "Terminal\nCopy\n`claude install farion1231/cc-switch`\n`git clone https://github.com/farion1231/cc-switch`",
+    "usage": "```\nI'm working on a project that requires [SPECIFIC_PROGRAMMING_TASK]. I need help with [DESCRIBE_TASK_DETAILS]. Can you provide code snippets or suggest best practices using [PROGRAMMING_LANGUAGE]? Also, I'm using cc-switch to integrate with [MENTION_AI_TOOL] for this task.\n```\nCopy\n\n```\nBased on your request, here's how you can approach the task of implementing a real-time data visualization dashboard using Python and Plotly. First, ensure you have the necessary libraries installed: `pip install plotly pandas`. Here's a basic code snippet to get you started:\n\n```python\nimport plotly.express as px\nimport pandas as pd\n\n# Sample data\ndata = {\n    'x': [1, 2, 3, 4, 5],\n    'y': [10, 11, 12, 13, 14]\n}\ndf = pd.DataFrame(data)\n\n# Create a simple line plot\nfig = px.line(df, x='x', y='y', title='Real-Time Data Visualization')\nfig.show()\n```\n\nTo integrate this with cc-switch, you can use the following command in your terminal:\n\n```bash\ncc-switch --tool Claude Code --command \"Help me optimize this Plotly code for real-time data updates\"\n```\n\nThis will allow you to leverage the capabilities of Claude Code to refine your code and ensure it meets your project requirements.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Codex, OpenCode"
+    ],
+    "related_skills": [
+      "cc-switch#main-content",
+      "cc-switch#overview",
+      "cc-switch#setup",
+      "cc-switch#examples",
+      "cc-switch#tools",
+      "cc-switch#mcp",
+      "cc-switch#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "cc-switch is a desktop assistant designed to enhance productivity across multiple AI coding platforms including Claude Code, Cursor, OpenCode, and Gemini CLI. It streamlines common coding tasks by providing seamless integration with these tools, allowing developers to work more efficiently without switching between applications. The skill supports multiple AI providers and includes configurable presets, making it adaptable to different development workflows. cc-switch is actively maintained with regular updates and documentation across multiple languages, serving developers who use various AI-assisted coding environments.\nAutomate the integration of AI tools across different coding platforms.\nStreamline the process of switching between Claude Code, Codex, OpenCode, and Gemini CLI.\nEnhance collaboration by managing shared coding environments efficiently.\nReduce repetitive coding tasks through automation, allowing for more focus on development.",
+    "setup_vi": "Terminal\nCopy\n`claude install farion1231/cc-switch`\n`git clone https://github.com/farion1231/cc-switch`",
+    "usage_vi": "```\nI'm working on a project that requires [SPECIFIC_PROGRAMMING_TASK]. I need help with [DESCRIBE_TASK_DETAILS]. Can you provide code snippets or suggest best practices using [PROGRAMMING_LANGUAGE]? Also, I'm using cc-switch to integrate with [MENTION_AI_TOOL] for this task.\n```\nCopy\n\n```\nBased on your request, here's how you can approach the task of implementing a real-time data visualization dashboard using Python and Plotly. First, ensure you have the necessary libraries installed: `pip install plotly pandas`. Here's a basic code snippet to get you started:\n\n```python\nimport plotly.express as px\nimport pandas as pd\n\n# Sample data\ndata = {\n    'x': [1, 2, 3, 4, 5],\n    'y': [10, 11, 12, 13, 14]\n}\ndf = pd.DataFrame(data)\n\n# Create a simple line plot\nfig = px.line(df, x='x', y='y', title='Real-Time Data Visualization')\nfig.show()\n```\n\nTo integrate this with cc-switch, you can use the following command in your terminal:\n\n```bash\ncc-switch --tool Claude Code --command \"Help me optimize this Plotly code for real-time data updates\"\n```\n\nThis will allow you to leverage the capabilities of Claude Code to refine your code and ensure it meets your project requirements.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:11:55.307259Z",
+    "http_status": 200,
+    "content_hash": "884a6a43936b32efc21376498eddd07179f97a80b1c1aa96d45edd5454cc88d6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-switch.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cc-switch.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "cc-switch: All-in-One AI Assistant for Developers",
+  "short_description_vi": "cc-switch is a versatile desktop assistant that integrates with Claude Code, Codex, OpenCode, and Gemini CLI, enhancing productivity across platforms. Designed for developers, it streamlines coding tasks and improves workflow efficiency."
+}

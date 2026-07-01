@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/craftdesk",
+  "slug": "craftdesk",
+  "name": "browser-use",
+  "headline": "CraftDesk - Package Manager for Claude Code",
+  "short_description": "CraftDesk is a package manager for Claude Code skills, agents, and other AI resources. It enables developers to install, manage, and version control AI capabilities. It integrates with Claude Code and supports dependency management for AI workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "mensfeld",
+  "install_command": "git clone https://github.com/mensfeld/craftdesk.git",
+  "source_repo_url": "https://github.com/mensfeld/craftdesk",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "anthropic",
+    "javascript",
+    "llm",
+    "skills",
+    "dependencies",
+    "package-manager",
+    "cli",
+    "agents",
+    "claude",
+    "typescript",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "CraftDesk is a command-line package manager designed for managing AI capabilities in Claude Code and other AI development environments. It provides dependency management, version control, and multi-agent synchronization for skills, agents, commands, hooks, plugins, and collections—similar to npm for Node.js or Bundler for Ruby. With CraftDesk, developers can install crafts from Git repositories with automatic recursive dependency resolution, lock versions for reproducible environments across teams, and manage collections of related AI capabilities. The tool supports monorepos with subdirectory extraction, auto-converts GitHub URLs, and integrates directly with Claude Code settings. A self-hosted registry server is in development to enable private registries and centralized craft distribution.\nInstalling and managing reusable Claude Code skills and agents across teams\nVersion-controlling AI capabilities for reproducible development environments\nSharing collections of related crafts that work together\nManaging dependencies for AI-powered development tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mensfeld/craftdesk`\n\n```bash\ncraftdesk install solar-panel-optimization\ncraftdesk install wind-turbine-maintenance-predictor\ncraftdesk install energy-grid-load-balancer\n```\n```",
+    "usage": "```\nInstall and manage AI capabilities using CraftDesk. List all available skills for [COMPANY] in [INDUSTRY] and provide instructions for installing the top 3 most relevant ones.\n```\nCopy\n\n```\n# Available AI Skills for GreenTech Solutions in Renewable Energy",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "craftdesk#main-content",
+      "craftdesk#overview",
+      "craftdesk#setup",
+      "craftdesk#examples",
+      "craftdesk#tools",
+      "craftdesk#mcp",
+      "craftdesk#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CraftDesk is a command-line package manager designed for managing AI capabilities in Claude Code and other AI development environments. It provides dependency management, version control, and multi-agent synchronization for skills, agents, commands, hooks, plugins, and collections—similar to npm for Node.js or Bundler for Ruby. With CraftDesk, developers can install crafts from Git repositories with automatic recursive dependency resolution, lock versions for reproducible environments across teams, and manage collections of related AI capabilities. The tool supports monorepos with subdirectory extraction, auto-converts GitHub URLs, and integrates directly with Claude Code settings. A self-hosted registry server is in development to enable private registries and centralized craft distribution.\nInstalling and managing reusable Claude Code skills and agents across teams\nVersion-controlling AI capabilities for reproducible development environments\nSharing collections of related crafts that work together\nManaging dependencies for AI-powered development tools",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mensfeld/craftdesk`\n\n```bash\ncraftdesk install solar-panel-optimization\ncraftdesk install wind-turbine-maintenance-predictor\ncraftdesk install energy-grid-load-balancer\n```\n```",
+    "usage_vi": "```\nInstall and manage AI capabilities using CraftDesk. List all available skills for [COMPANY] in [INDUSTRY] and provide instructions for installing the top 3 most relevant ones.\n```\nCopy\n\n```\n# Available AI Skills for GreenTech Solutions in Renewable Energy"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:20:23.266562Z",
+    "http_status": 200,
+    "content_hash": "97d704bfe55f5c55d30913ecaec77dd6a92d678ec7cf40a710f2b19a20b52c84",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\craftdesk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\craftdesk.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CraftDesk - Package Manager for Claude Code",
+  "short_description_vi": "CraftDesk is a package manager for Claude Code skills, agents, and other AI resources. It enables developers to install, manage, and version control AI capabilities. It integrates with Claude Code and supports dependency management for AI workflows."
+}

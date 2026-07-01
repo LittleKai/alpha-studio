@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-guide",
+  "slug": "ai-guide",
+  "name": "Ai Guide",
+  "headline": "Comprehensive AI Resources for Programmers",
+  "short_description": "The ai-guide is a comprehensive resource for programmers, offering tutorials, AI tool usage, and coding techniques. It covers model selection, prompt engineering, and monetization strategies, making it essential for mastering AI technologies.",
+  "tier": "Gold",
+  "category": "GrowthMarketing",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "liyupi",
+  "install_command": "claude install liyupi/ai-guide",
+  "source_repo_url": "https://github.com/liyupi/ai-guide",
+  "works_with": [
+    "ClaudeChatGPTCursor"
+  ],
+  "tags": [
+    "programming",
+    "deep learning",
+    "generative AI",
+    "tutorials",
+    "AI resources"
+  ],
+  "sections": {
+    "overview": "The ai-guide is a comprehensive, free knowledge-sharing platform designed to democratize AI education and reduce information barriers. It provides tutorials, tool evaluations, usage guides, and practical tips for AI applications, with a specific focus on Vibe Coding—an approach to AI-assisted development accessible to beginners and non-technical users alike. The platform covers real-world scenarios, monetization strategies, and industry insights, enabling developers, designers, and creators to build and launch AI-powered products. Grounded in hands-on experience, it serves programmers and aspiring builders who want practical knowledge without paywalls.\nLearn AI programming fundamentals and best practices from the ground up.\nSelect the appropriate AI model tailored to specific project requirements.\nIntegrate AI tools into your development workflow to enhance productivity.\nDesign and implement effective prompts for various AI models to improve output quality.",
+    "setup": "Terminal\nCopy\n`claude install liyupi/ai-guide`\n`git clone https://github.com/liyupi/ai-guide`",
+    "usage": "```\nGenerate a step-by-step guide for integrating Sage's automated invoicing feature with [PROGRAMMING_LANGUAGE] using [FRAMEWORK]. Include code snippets and best practices for error handling and data validation. Focus on [SPECIFIC_BUSINESS_CASE], such as handling recurring invoices for subscription-based services.\n```\nCopy\n\n```\nTo integrate Sage's automated invoicing feature with Python using Django, follow these steps:\n\n1. **Set Up Sage API Credentials**: Obtain your Sage API credentials from the Sage developer portal. Ensure you have the necessary permissions to access the invoicing module.\n\n2. **Install Required Libraries**: Use pip to install the necessary libraries. For example:\n\n```bash\npip install django requests python-dotenv\n```\n\n3. **Configure Django Settings**: Add the Sage API credentials to your Django settings. Use environment variables for security:\n\n```python\n# settings.py\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()\n\nSAGE_API_KEY = os.getenv('SAGE_API_KEY')\nSAGE_API_SECRET = os.getenv('SAGE_API_SECRET')\n```\n\n4. **Create a Sage API Client**: Develop a custom Django management command to handle the Sage API interactions. This command will fetch and process invoicing data:\n\n```python\n# management/commands/fetch_invoices.py\nfrom django.core.management.base import BaseCommand\nimport requests\n\nclass Command(BaseCommand):\n    help = 'Fetches invoices from Sage API'\n\n    def handle(self, *args, **options):\n        headers = {\n            'Authorization': f'Bearer {SAGE_API_KEY}'\n        }\n        response = requests.get('https://api.sage.com/v1/invoices', headers=headers)\n        if response.status_code == 200:\n            invoices = response.json()\n            self.stdout.write(self.style.SUCCESS('Successfully fetched invoices'))\n        else:\n            self.stdout.write(self.style.ERROR('Failed to fetch invoices'))\n```\n\n5. **Handle Recurring Invoices**: Implement a function to handle recurring invoices. This function will check for existing invoices and create new ones if necessary:\n\n```python\n# utils/invoice_utils.py\nimport requests\n\ndef handle_recurring_invoices(customer_id, amount, interval):\n    headers = {\n        'Authorization': f'Bearer {SAGE_API_KEY}'\n    }\n    data = {\n        'customer_id': customer_id,\n        'amount': amount,\n        'interval': interval\n    }\n    response = requests.post('https://api.sage.com/v1/invoices/recurring', headers=headers, json=data)\n    if response.status_code == 201:\n        return response.json()\n    else:\n        raise Exception('Failed to create recurring invoice')\n```\n\n6. **Error Handling and Data Validation**: Implement robust error handling and data validation to ensure the integrity of the invoicing process. Use Django's built-in validation features and custom exceptions to handle errors gracefully.\n\n```python\n# utils/validation.py\nfrom django.core.exceptions import ValidationError\n\ndef validate_invoice_data(data):\n    if not data.get('customer_id'):\n        raise ValidationError('Customer ID is required')\n    if not data.get('amount') or data['amount'] <= 0:\n        raise ValidationError('Amount must be a positive number')\n    if not data.get('interval'):\n        raise ValidationError('Interval is required')\n```\n\nBy following these steps, you can successfully integrate Sage's automated invoicing feature with your Django application, ensuring efficient and accurate invoicing for your subscription-based services.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT, Cursor"
+    ],
+    "related_skills": [
+      "ai-guide#main-content",
+      "ai-guide#overview",
+      "ai-guide#setup",
+      "ai-guide#examples",
+      "ai-guide#tools",
+      "ai-guide#mcp",
+      "ai-guide#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The ai-guide is a comprehensive, free knowledge-sharing platform designed to democratize AI education and reduce information barriers. It provides tutorials, tool evaluations, usage guides, and practical tips for AI applications, with a specific focus on Vibe Coding—an approach to AI-assisted development accessible to beginners and non-technical users alike. The platform covers real-world scenarios, monetization strategies, and industry insights, enabling developers, designers, and creators to build and launch AI-powered products. Grounded in hands-on experience, it serves programmers and aspiring builders who want practical knowledge without paywalls.\nLearn AI programming fundamentals and best practices from the ground up.\nSelect the appropriate AI model tailored to specific project requirements.\nIntegrate AI tools into your development workflow to enhance productivity.\nDesign and implement effective prompts for various AI models to improve output quality.",
+    "setup_vi": "Terminal\nCopy\n`claude install liyupi/ai-guide`\n`git clone https://github.com/liyupi/ai-guide`",
+    "usage_vi": "```\nGenerate a step-by-step guide for integrating Sage's automated invoicing feature with [PROGRAMMING_LANGUAGE] using [FRAMEWORK]. Include code snippets and best practices for error handling and data validation. Focus on [SPECIFIC_BUSINESS_CASE], such as handling recurring invoices for subscription-based services.\n```\nCopy\n\n```\nTo integrate Sage's automated invoicing feature with Python using Django, follow these steps:\n\n1. **Set Up Sage API Credentials**: Obtain your Sage API credentials from the Sage developer portal. Ensure you have the necessary permissions to access the invoicing module.\n\n2. **Install Required Libraries**: Use pip to install the necessary libraries. For example:\n\n```bash\npip install django requests python-dotenv\n```\n\n3. **Configure Django Settings**: Add the Sage API credentials to your Django settings. Use environment variables for security:\n\n```python\n# settings.py\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()\n\nSAGE_API_KEY = os.getenv('SAGE_API_KEY')\nSAGE_API_SECRET = os.getenv('SAGE_API_SECRET')\n```\n\n4. **Create a Sage API Client**: Develop a custom Django management command to handle the Sage API interactions. This command will fetch and process invoicing data:\n\n```python\n# management/commands/fetch_invoices.py\nfrom django.core.management.base import BaseCommand\nimport requests\n\nclass Command(BaseCommand):\n    help = 'Fetches invoices from Sage API'\n\n    def handle(self, *args, **options):\n        headers = {\n            'Authorization': f'Bearer {SAGE_API_KEY}'\n        }\n        response = requests.get('https://api.sage.com/v1/invoices', headers=headers)\n        if response.status_code == 200:\n            invoices = response.json()\n            self.stdout.write(self.style.SUCCESS('Successfully fetched invoices'))\n        else:\n            self.stdout.write(self.style.ERROR('Failed to fetch invoices'))\n```\n\n5. **Handle Recurring Invoices**: Implement a function to handle recurring invoices. This function will check for existing invoices and create new ones if necessary:\n\n```python\n# utils/invoice_utils.py\nimport requests\n\ndef handle_recurring_invoices(customer_id, amount, interval):\n    headers = {\n        'Authorization': f'Bearer {SAGE_API_KEY}'\n    }\n    data = {\n        'customer_id': customer_id,\n        'amount': amount,\n        'interval': interval\n    }\n    response = requests.post('https://api.sage.com/v1/invoices/recurring', headers=headers, json=data)\n    if response.status_code == 201:\n        return response.json()\n    else:\n        raise Exception('Failed to create recurring invoice')\n```\n\n6. **Error Handling and Data Validation**: Implement robust error handling and data validation to ensure the integrity of the invoicing process. Use Django's built-in validation features and custom exceptions to handle errors gracefully.\n\n```python\n# utils/validation.py\nfrom django.core.exceptions import ValidationError\n\ndef validate_invoice_data(data):\n    if not data.get('customer_id'):\n        raise ValidationError('Customer ID is required')\n    if not data.get('amount') or data['amount'] <= 0:\n        raise ValidationError('Amount must be a positive number')\n    if not data.get('interval'):\n        raise ValidationError('Interval is required')\n```\n\nBy following these steps, you can successfully integrate Sage's automated invoicing feature with your Django application, ensuring efficient and accurate invoicing for your subscription-based services.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:52.727235Z",
+    "http_status": 200,
+    "content_hash": "57ac9a10dcdcd68f2a4d15acfab4ff0c54a8164ca623daa55665a8acf6c3c02f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-guide.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Comprehensive AI Resources for Programmers",
+  "short_description_vi": "The ai-guide is a comprehensive resource for programmers, offering tutorials, AI tool usage, and coding techniques. It covers model selection, prompt engineering, and monetization strategies, making it essential for mastering AI technologies."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cc-agent-sdk",
+  "slug": "cc-agent-sdk",
+  "name": "Cc Agent Sdk",
+  "headline": "CC Agent SDK for Claude Code integration",
+  "short_description": "cc-agent-sdk is a lightweight local Claude Agent SDK proxy service built with TypeScript and Bun. It provides HTTP POST and SSE streaming interfaces for other Workers/DO to call Claude Agent SDK or Anthropic-compatible APIs. It benefits operations teams by streamlining agent interactions and supports Skills and Sub Agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "Auto-200",
+  "install_command": "git clone https://github.com/Auto-200/cc-agent-sdk.git",
+  "source_repo_url": "https://github.com/Auto-200/cc-agent-sdk",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "cc-agent-sdk is a local proxy service built with TypeScript and Bun that wraps the Claude Agent SDK, providing HTTP POST and SSE streaming endpoints for other services to interact with Claude or Anthropic-compatible APIs. It supports conversation persistence through session resumption, allowing you to maintain context across multiple requests by storing history in the local `.claude` directory. The service handles model selection, system prompts, tool configuration, and MCP server integration, while supporting authentication via Bearer tokens. Operations teams benefit from a unified entry point for agent interactions, with built-in Docker support for containerized deployment and automatic GitHub Actions-based image publishing to GHCR.\nProxying Claude Agent SDK calls from Cloudflare Workers or Durable Objects\nBuilding persistent multi-turn conversations with automatic session resumption\nIntegrating alternative LLM providers (GLM, etc.) through Anthropic-compatible APIs\nRunning agent skills with custom system prompts and tool configuration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Auto-200/cc-agent-sdk`\n\n1. **Installation**:\n   - Clone the repository\n   - Run `bun install` to install dependencies\n\n2. **Configuration**:\n   - Edit the `config.ts` file to include your API keys\n   - Set the desired streaming options\n\n3. **Deployment**:\n   - Run `bun run start` to start the proxy service",
+    "usage": "```\nI'm setting up cc-agent-sdk to streamline our agent interactions. I need help configuring it for [COMPANY] in the [INDUSTRY] sector. Our current setup involves [DATA] and we want to integrate [SPECIFIC USE CASE]. Can you guide me through the process?\n```\nCopy\n\n```\n# cc-agent-sdk Configuration Guide\n\n\nFor a retail company in the e-commerce sector, you might configure cc-agent-sdk to handle customer service queries by:\n- Setting up a customer service agent\n- Configuring the proxy to handle high-volume requests\n- Integrating with your existing customer service platform",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cc-agent-sdk#main-content",
+      "cc-agent-sdk#overview",
+      "cc-agent-sdk#setup",
+      "cc-agent-sdk#examples",
+      "cc-agent-sdk#tools",
+      "cc-agent-sdk#mcp",
+      "cc-agent-sdk#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "cc-agent-sdk là một dịch vụ proxy cục bộ được xây dựng bằng TypeScript và Bun giúp đóng gói Claude Agent SDK, cung cấp các endpoint HTTP POST và SSE streaming để các dịch vụ khác tương tác với Claude hoặc các API tương thích với Anthropic. Dịch vụ hỗ trợ duy trì hội thoại liên tục thông qua tính năng khôi phục phiên (session resumption), cho phép bạn giữ nguyên ngữ cảnh qua nhiều request bằng cách lưu lịch sử trong thư mục `.claude` cục bộ. Ngoài ra, dịch vụ còn xử lý việc lựa chọn model, system prompt, cấu hình tool, tích hợp MCP server và hỗ trợ xác thực bằng Bearer token. Các đội ngũ vận hành sẽ có một entry point tập trung để tương tác với agent, hỗ trợ sẵn Docker để triển khai container và tự động publish image lên GHCR qua GitHub Actions.\n\n- Proxy các lệnh gọi Claude Agent SDK từ Cloudflare Workers hoặc Durable Objects\n- Xây dựng các cuộc hội thoại nhiều lượt (multi-turn) liên tục với khả năng tự động khôi phục phiên\n- Tích hợp các nhà cung cấp LLM khác (GLM, v.v.) thông qua các API tương thích với Anthropic\n- Chạy các skill của agent với system prompt và cấu hình tool tùy chỉnh",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Auto-200/cc-agent-sdk`\n\n1. **Cài đặt**:\n   - Clone repository\n   - Chạy `bun install` để cài đặt các dependency\n\n2. **Cấu hình**:\n   - Chỉnh sửa file `config.ts` để thêm các API key của bạn\n   - Thiết lập các tùy chọn streaming mong muốn\n\n3. **Triển khai**:\n   - Chạy `bun run start` để khởi động dịch vụ proxy",
+    "usage_vi": "```\nTôi đang thiết lập cc-agent-sdk để tối ưu hóa các tương tác với agent của chúng tôi. Tôi cần trợ giúp cấu hình hệ thống cho [COMPANY] trong lĩnh vực [INDUSTRY]. Hệ thống hiện tại của chúng tôi bao gồm [DATA] và chúng tôi muốn tích hợp [SPECIFIC USE CASE]. Bạn có thể hướng dẫn tôi thực hiện quy trình này không?\n```\nCopy\n\n```\n# Hướng dẫn cấu hình cc-agent-sdk\n\n\nĐối với một công ty bán lẻ trong ngành thương mại điện tử, bạn có thể cấu hình cc-agent-sdk để xử lý các yêu cầu chăm sóc khách hàng bằng cách:\n- Thiết lập một customer service agent\n- Cấu hình proxy để xử lý các yêu cầu lưu lượng lớn\n- Tích hợp với nền tảng chăm sóc khách hàng hiện tại của bạn\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:41:02.192336Z",
+    "http_status": 200,
+    "content_hash": "1f4abbe33ca07efcbf0103896885e0ad2f01a143db58fd34779361ba9161896b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-agent-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cc-agent-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CC Agent SDK để tích hợp Claude Code",
+  "short_description_vi": "cc-agent-sdk là một dịch vụ proxy Claude Agent SDK cục bộ, gọn nhẹ được xây dựng bằng TypeScript và Bun. Nó cung cấp các interface HTTP POST và SSE streaming để các Workers/DO khác gọi Claude Agent SDK hoặc các API tương thích với Anthropic. Dịch vụ này giúp các đội ngũ vận hành tối ưu hóa các tương tác của agent, đồng thời hỗ trợ các Skill và Sub Agent."
+}

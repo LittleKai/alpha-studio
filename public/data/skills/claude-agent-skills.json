@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-agent-skills",
+  "slug": "claude-agent-skills",
+  "name": "Claude Agent Skills",
+  "headline": "repository of Claude agent skills",
+  "short_description": "Claude Agent Skills provides examples of using Claude's Skills API for document generation and custom functionality. Operations teams can automate repetitive tasks and extend Claude's capabilities with Python. Connects to Claude agents for workflow automation.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "meetrais",
+  "install_command": "git clone https://github.com/meetrais/claude-agent-skills.git",
+  "source_repo_url": "https://github.com/meetrais/claude-agent-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude Agent Skills provides Python examples for using Anthropic's Skills API to programmatically generate Excel spreadsheets, PowerPoint presentations, PDFs, and Word documents. It includes a custom skills framework that lets you extend Claude's capabilities by creating markdown-defined skills that execute Python scripts and bash commands. Operations teams and developers can automate document workflows and build intelligent task automation by leveraging Claude's automatic skill selection to choose the right tool for each request.\nGenerate quarterly sales reports and financial spreadsheets automatically\nCreate presentation decks and slides programmatically\nBuild PDF reports and forms with custom data\nAnalyze Git repositories and generate development summaries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/meetrais/claude-agent-skills`",
+    "usage": "```\nCreate a Python script using Claude's Skills API to automate [TASK] for [COMPANY] in the [INDUSTRY] sector. The script should process [DATA] and generate [OUTPUT]. Include error handling and logging functionality.\n```\nCopy\n\n```\n# Automated Report Generation Script\n\n```python\nimport json\nfrom claude import SkillsAPI\n\n# Initialize Skills API\nskills = SkillsAPI(api_key='your_api_key_here')\n\n# Define the task\nreport_data = {\n    'company': 'TechSolutions Inc.',\n    'industry': 'Software Development',\n    'data': 'sales_data.csv',\n    'output': 'quarterly_report.pdf'\n}\n\n# Call the skill\ntry:\n    result = skills.run_skill(\n        skill_name='document_generation',\n        parameters=report_data\n    )\n    print('Report generated successfully!')\nexcept Exception as e:\n    print(f'Error generating report: {e}')\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-agent-skills#main-content",
+      "claude-agent-skills#overview",
+      "claude-agent-skills#setup",
+      "claude-agent-skills#examples",
+      "claude-agent-skills#tools",
+      "claude-agent-skills#mcp",
+      "claude-agent-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Agent Skills provides Python examples for using Anthropic's Skills API to programmatically generate Excel spreadsheets, PowerPoint presentations, PDFs, and Word documents. It includes a custom skills framework that lets you extend Claude's capabilities by creating markdown-defined skills that execute Python scripts and bash commands. Operations teams and developers can automate document workflows and build intelligent task automation by leveraging Claude's automatic skill selection to choose the right tool for each request.\nGenerate quarterly sales reports and financial spreadsheets automatically\nCreate presentation decks and slides programmatically\nBuild PDF reports and forms with custom data\nAnalyze Git repositories and generate development summaries",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/meetrais/claude-agent-skills`",
+    "usage_vi": "```\nCreate a Python script using Claude's Skills API to automate [TASK] for [COMPANY] in the [INDUSTRY] sector. The script should process [DATA] and generate [OUTPUT]. Include error handling and logging functionality.\n```\nCopy\n\n```\n# Automated Report Generation Script\n\n```python\nimport json\nfrom claude import SkillsAPI\n\n# Initialize Skills API\nskills = SkillsAPI(api_key='your_api_key_here')\n\n# Define the task\nreport_data = {\n    'company': 'TechSolutions Inc.',\n    'industry': 'Software Development',\n    'data': 'sales_data.csv',\n    'output': 'quarterly_report.pdf'\n}\n\n# Call the skill\ntry:\n    result = skills.run_skill(\n        skill_name='document_generation',\n        parameters=report_data\n    )\n    print('Report generated successfully!')\nexcept Exception as e:\n    print(f'Error generating report: {e}')\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:55.385826Z",
+    "http_status": 200,
+    "content_hash": "b58768327eae818b397d1d78c7b13a59ea9f0b68f2219a6e539969a2f2b71eb7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-agent-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "repository of Claude agent skills",
+  "short_description_vi": "Claude Agent Skills provides examples of using Claude's Skills API for document generation and custom functionality. Operations teams can automate repetitive tasks and extend Claude's capabilities with Python. Connects to Claude agents for workflow automation."
+}

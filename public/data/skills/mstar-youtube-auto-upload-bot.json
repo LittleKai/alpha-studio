@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mstar-youtube-auto-upload-bot",
+  "slug": "mstar-youtube-auto-upload-bot",
+  "name": "popsicle",
+  "headline": "Mstar Youtube Auto Upload Bot - Automate Video",
+  "short_description": "Mstar Youtube Auto Upload Bot automates video uploads to YouTube, benefiting marketing teams by saving time and ensuring consistent content distribution. It connects to YouTube's API and can be integrated into existing content management workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "AshrafMorningstar",
+  "install_command": "git clone https://github.com/AshrafMorningstar/Mstar-Youtube-Auto-Upload-Bot.git",
+  "source_repo_url": "https://github.com/AshrafMorningstar/Mstar-Youtube-Auto-Upload-Bot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "seo",
+    "viral",
+    "automation"
+  ],
+  "sections": {
+    "overview": "Mstar Youtube Auto Upload Bot is an open-source Python automation tool built for developers seeking efficient YouTube upload workflows. It implements modern software engineering practices with a scalable, high-performance architecture optimized for speed and low latency. The project provides clean, well-documented code that integrates into existing development pipelines. Developers can clone the repository, install dependencies via pip, and run the application with minimal configuration. This solution addresses the need for reliable, repeatable video publishing processes.\nAutomating batch video uploads to YouTube channels\nStreamlining content distribution workflows for development teams\nBuilding scalable video publishing pipelines for content creators\nIntegrating YouTube uploads into automated CI/CD processes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AshrafMorningstar/Mstar-Youtube-Auto-Upload-Bot`",
+    "usage": "```\nCreate a Python script for Mstar Youtube Auto Upload Bot to upload videos to YouTube for [COMPANY] in the [INDUSTRY] sector. The script should handle [NUMBER] videos per day, with titles like '[TITLE_FORMAT]', descriptions including '[KEYWORDS]', and tags like '[TAGS]'. Ensure it integrates with our existing content management system and follows YouTube's API guidelines.\n```\nCopy\n\n```\n```python\n# Mstar Youtube Auto Upload Bot Script\n# Company: GreenTech Solutions\n# Industry: Renewable Energy\n# Videos per day: 3\n# Title Format: 'GreenTech Daily: {Date} - {Topic}'\n# Keywords: renewable energy, solar power, green technology\n# Tags: GreenTech, Solar, Renewable, Energy, Innovation\n\nimport os\nfrom googleapiclient.discovery import build\nfrom googleapiclient.http import MediaFileUpload\n\n# YouTube API setup\nAPI_KEY = 'YOUR_API_KEY'\nyoutube = build('youtube', 'v3', developerKey=API_KEY)\n\n# Video upload function\ndef upload_video(file_path, title, description, tags):\n    request = youtube.videos().insert(\n        part=\"snippet,status\",\n        body={\n            \"snippet\": {\n                \"title\": title,\n                \"description\": description,\n                \"tags\": tags,\n                \"categoryId\": \"22\"\n            },\n            \"status\": {\n                \"privacyStatus\": \"public\"\n            }\n        },\n        media_body=MediaFileUpload(file_path)\n    )\n    response = request.execute()\n    print(\"Video uploaded: \", response['id'])\n\n# Example usage\nupload_video(\n    file_path='./videos/greentech_daily_20231001.mp4',\n    title='GreenTech Daily: 2023-10-01 - Solar Panel Innovations',\n    description='In this episode, we explore the latest innovations in solar panel technology. Stay tuned for more updates from GreenTech Solutions!',\n    tags=['GreenTech', 'Solar', 'Renewable', 'Energy', 'Innovation']\n)\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mstar-youtube-auto-upload-bot#main-content",
+      "mstar-youtube-auto-upload-bot#overview",
+      "mstar-youtube-auto-upload-bot#setup",
+      "mstar-youtube-auto-upload-bot#examples",
+      "mstar-youtube-auto-upload-bot#tools",
+      "mstar-youtube-auto-upload-bot#mcp",
+      "mstar-youtube-auto-upload-bot#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Mstar Youtube Auto Upload Bot is an open-source Python automation tool built for developers seeking efficient YouTube upload workflows. It implements modern software engineering practices with a scalable, high-performance architecture optimized for speed and low latency. The project provides clean, well-documented code that integrates into existing development pipelines. Developers can clone the repository, install dependencies via pip, and run the application with minimal configuration. This solution addresses the need for reliable, repeatable video publishing processes.\nAutomating batch video uploads to YouTube channels\nStreamlining content distribution workflows for development teams\nBuilding scalable video publishing pipelines for content creators\nIntegrating YouTube uploads into automated CI/CD processes",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AshrafMorningstar/Mstar-Youtube-Auto-Upload-Bot`",
+    "usage_vi": "```\nCreate a Python script for Mstar Youtube Auto Upload Bot to upload videos to YouTube for [COMPANY] in the [INDUSTRY] sector. The script should handle [NUMBER] videos per day, with titles like '[TITLE_FORMAT]', descriptions including '[KEYWORDS]', and tags like '[TAGS]'. Ensure it integrates with our existing content management system and follows YouTube's API guidelines.\n```\nCopy\n\n```\n```python\n# Mstar Youtube Auto Upload Bot Script\n# Company: GreenTech Solutions\n# Industry: Renewable Energy\n# Videos per day: 3\n# Title Format: 'GreenTech Daily: {Date} - {Topic}'\n# Keywords: renewable energy, solar power, green technology\n# Tags: GreenTech, Solar, Renewable, Energy, Innovation\n\nimport os\nfrom googleapiclient.discovery import build\nfrom googleapiclient.http import MediaFileUpload\n\n# YouTube API setup\nAPI_KEY = 'YOUR_API_KEY'\nyoutube = build('youtube', 'v3', developerKey=API_KEY)\n\n# Video upload function\ndef upload_video(file_path, title, description, tags):\n    request = youtube.videos().insert(\n        part=\"snippet,status\",\n        body={\n            \"snippet\": {\n                \"title\": title,\n                \"description\": description,\n                \"tags\": tags,\n                \"categoryId\": \"22\"\n            },\n            \"status\": {\n                \"privacyStatus\": \"public\"\n            }\n        },\n        media_body=MediaFileUpload(file_path)\n    )\n    response = request.execute()\n    print(\"Video uploaded: \", response['id'])\n\n# Example usage\nupload_video(\n    file_path='./videos/greentech_daily_20231001.mp4',\n    title='GreenTech Daily: 2023-10-01 - Solar Panel Innovations',\n    description='In this episode, we explore the latest innovations in solar panel technology. Stay tuned for more updates from GreenTech Solutions!',\n    tags=['GreenTech', 'Solar', 'Renewable', 'Energy', 'Innovation']\n)\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:35:53.025432Z",
+    "http_status": 200,
+    "content_hash": "a06ede83c570925af9a3b60f0f6c4c3fd792063eed0b7f946daa04d099a3140f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mstar-youtube-auto-upload-bot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mstar-youtube-auto-upload-bot.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Mstar Youtube Auto Upload Bot - Automate Video",
+  "short_description_vi": "Mstar Youtube Auto Upload Bot automates video uploads to YouTube, benefiting marketing teams by saving time and ensuring consistent content distribution. It connects to YouTube's API and can be integrated into existing content management workflows."
+}

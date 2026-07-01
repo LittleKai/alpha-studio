@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/autosteer",
+  "slug": "autosteer",
+  "name": "browser-use",
+  "headline": "autosteer app for Claude Code management",
+  "short_description": "Desktop application that enhances Claude Code with multi-workspace management, persistent sessions, and seamless context switching across macOS, Linux, and Windows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "notch-ai",
+  "install_command": "git clone https://github.com/notch-ai/autosteer.git",
+  "source_repo_url": "https://github.com/notch-ai/autosteer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "pnpm",
+    "anthropic",
+    "electron",
+    "llm",
+    "mcp",
+    "mcp-server",
+    "claude-4-sonnet",
+    "claude-ai",
+    "nodejs",
+    "shadcn",
+    "vite",
+    "claude",
+    "tailwind",
+    "claude-4-opus",
+    "shadcn-ui",
+    "anthropic-claude"
+  ],
+  "sections": {
+    "overview": "AutoSteer is a desktop application built with Electron that extends Claude Code with organized multi-workspace management capabilities. It enables developers to maintain isolated project contexts with persistent sessions, allowing you to switch between different projects without losing conversation history or state. The tool tracks token usage per message and worktree, provides a protocol trace viewer for debugging agent behavior, and supports custom slash commands to extend Claude Code functionality. AutoSteer runs natively on macOS, Linux, and Windows via WSL, storing all configuration locally for privacy and control.\nManaging multiple concurrent projects with independent Claude Code sessions and file contexts\nResuming long-running conversations across work sessions while preserving full context\nMonitoring token usage and API costs across different worktrees and messages\nDebugging Claude Code agent behavior using the protocol trace viewer",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/notch-ai/autosteer`",
+    "usage": "```\nUse the autosteer skill to automate multi-workspace management in Claude Code. Create a [WORKSPACE_NAME] workspace, add [PROJECT_PATH] as a project, and configure [AUTOMATION_RULES] (e.g., auto-sync on file changes, auto-close idle workspaces after [IDLE_MINUTES] minutes). Ensure all workspaces are optimized for [PERFORMANCE_SETTINGS] (e.g., CPU/GPU allocation, memory limits).\n```\nCopy\n\n```\nI’ve successfully configured autosteer for your multi-workspace setup in Claude Code. Here’s what was accomplished:\n\n1. **Workspace Creation & Configuration**:\n   - Created a new workspace named `dev-frontend` with a project path set to `/Users/alice/projects/ecommerce-dashboard`.\n   - Applied automation rules to auto-sync files on changes and auto-close idle workspaces after 30 minutes of inactivity.\n   - Optimized performance settings with a CPU limit of 80% and memory allocation of 4GB to prevent system slowdowns.\n\n2. **Multi-Workspace Sync**:\n   - Linked three additional workspaces (`dev-backend`, `qa-testing`, and `docs-review`) to the same Claude Code instance.\n   - Enabled cross-workspace file sharing, allowing seamless navigation between projects without manual switching.\n   - Set up a shared `.env` file across all workspaces to maintain consistent environment variables.\n\n3. **Performance Monitoring**:\n   - autosteer logged the following metrics over the last 24 hours:\n     - Average CPU usage per workspace: 65% (within the 80% limit).\n     - Memory usage: 3.2GB (below the 4GB allocation).\n     - Idle workspace closures: 12 instances, all closed without data loss.\n   - No critical errors were detected in the logs.\n\n4. **Next Steps**:\n   - To adjust settings, run `autosteer --update-settings` and modify the YAML config file at `/Users/alice/.claude/autosteer.yaml`.\n   - For troubleshooting, check the logs at `/Users/alice/.claude/autosteer.log` or run `autosteer --diagnostics`.\n\nThis setup ensures your workspaces are always optimized for performance and automation, reducing manual overhead by 70% compared to traditional methods.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "autosteer#main-content",
+      "autosteer#overview",
+      "autosteer#setup",
+      "autosteer#examples",
+      "autosteer#tools",
+      "autosteer#mcp",
+      "autosteer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AutoSteer is a desktop application built with Electron that extends Claude Code with organized multi-workspace management capabilities. It enables developers to maintain isolated project contexts with persistent sessions, allowing you to switch between different projects without losing conversation history or state. The tool tracks token usage per message and worktree, provides a protocol trace viewer for debugging agent behavior, and supports custom slash commands to extend Claude Code functionality. AutoSteer runs natively on macOS, Linux, and Windows via WSL, storing all configuration locally for privacy and control.\nManaging multiple concurrent projects with independent Claude Code sessions and file contexts\nResuming long-running conversations across work sessions while preserving full context\nMonitoring token usage and API costs across different worktrees and messages\nDebugging Claude Code agent behavior using the protocol trace viewer",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/notch-ai/autosteer`",
+    "usage_vi": "```\nUse the autosteer skill to automate multi-workspace management in Claude Code. Create a [WORKSPACE_NAME] workspace, add [PROJECT_PATH] as a project, and configure [AUTOMATION_RULES] (e.g., auto-sync on file changes, auto-close idle workspaces after [IDLE_MINUTES] minutes). Ensure all workspaces are optimized for [PERFORMANCE_SETTINGS] (e.g., CPU/GPU allocation, memory limits).\n```\nCopy\n\n```\nI’ve successfully configured autosteer for your multi-workspace setup in Claude Code. Here’s what was accomplished:\n\n1. **Workspace Creation & Configuration**:\n   - Created a new workspace named `dev-frontend` with a project path set to `/Users/alice/projects/ecommerce-dashboard`.\n   - Applied automation rules to auto-sync files on changes and auto-close idle workspaces after 30 minutes of inactivity.\n   - Optimized performance settings with a CPU limit of 80% and memory allocation of 4GB to prevent system slowdowns.\n\n2. **Multi-Workspace Sync**:\n   - Linked three additional workspaces (`dev-backend`, `qa-testing`, and `docs-review`) to the same Claude Code instance.\n   - Enabled cross-workspace file sharing, allowing seamless navigation between projects without manual switching.\n   - Set up a shared `.env` file across all workspaces to maintain consistent environment variables.\n\n3. **Performance Monitoring**:\n   - autosteer logged the following metrics over the last 24 hours:\n     - Average CPU usage per workspace: 65% (within the 80% limit).\n     - Memory usage: 3.2GB (below the 4GB allocation).\n     - Idle workspace closures: 12 instances, all closed without data loss.\n   - No critical errors were detected in the logs.\n\n4. **Next Steps**:\n   - To adjust settings, run `autosteer --update-settings` and modify the YAML config file at `/Users/alice/.claude/autosteer.yaml`.\n   - For troubleshooting, check the logs at `/Users/alice/.claude/autosteer.log` or run `autosteer --diagnostics`.\n\nThis setup ensures your workspaces are always optimized for performance and automation, reducing manual overhead by 70% compared to traditional methods.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:26:19.286608Z",
+    "http_status": 200,
+    "content_hash": "c15656cc8c3159bc45b579701b0e1666d23704ff8a829070cc79ee83bd6a2f28",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autosteer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\autosteer.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "autosteer app for Claude Code management",
+  "short_description_vi": "Desktop application that enhances Claude Code with multi-workspace management, persistent sessions, and seamless context switching across macOS, Linux, and Windows."
+}

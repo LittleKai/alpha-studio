@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-guide",
+  "slug": "claude-code-guide",
+  "name": "react-native-best-practices",
+  "headline": "Claude Code Guide - Master AI Coding Tools",
+  "short_description": "Claude Code Guide helps sales engineers use Claude AI for coding tasks. It provides setup instructions, command examples, and workflows to integrate Claude into development processes. The guide connects to VS Code and other development tools to streamline coding tasks and improve productivity.",
+  "tier": "Gold",
+  "category": "GrowthDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "zebbern",
+  "install_command": "claude install zebbern/claude-code-guide",
+  "source_repo_url": "https://github.com/zebbern/claude-code-guide",
+  "works_with": [
+    "ClaudeVS Code"
+  ],
+  "tags": [
+    "guide",
+    "coding",
+    "claude",
+    "vscode-extension",
+    "ai-agent"
+  ],
+  "sections": {
+    "overview": "Claude Code Guide is a comprehensive repository of documentation, examples, and agent definitions designed to help developers integrate Claude AI into their coding workflows. The project includes 100+ subagent definitions organized in an agents directory, structured guides covering testing, TypeScript, and security best practices, and a changelog tracking ongoing updates. It serves as a reference resource for understanding how to leverage Claude's capabilities across different development scenarios. The repository is actively maintained and provides practical patterns for implementing Claude-powered coding assistance.\nSet up Claude for efficient coding tasks and project management.\nCreate and manage SKILL.md files to define agent capabilities.\nAutomate repetitive workflows using Claude commands for improved efficiency.\nEnhance productivity with expert coding tricks and shortcuts.",
+    "setup": "Terminal\nCopy\n`claude install zebbern/claude-code-guide`\n`git clone https://github.com/zebbern/claude-code-guide`",
+    "usage": "```\nI'm a sales engineer who needs to use Claude AI for coding tasks. Provide me with a step-by-step guide to set up Claude in [VS CODE/OTHER IDE]. Include command examples for [SPECIFIC PROGRAMMING LANGUAGE] and workflows to integrate Claude into my development process. Focus on [SPECIFIC TASKS] like code generation, debugging, or refactoring.\n```\nCopy\n\n```\nCertainly! Here's a step-by-step guide to set up Claude AI in VS Code for Python development, focusing on code generation and debugging:\n\n1. **Installation**:\n   - Open VS Code and go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or pressing `Ctrl+Shift+X`.\n   - Search for 'Claude AI' and install the extension.\n   - After installation, restart VS Code to ensure the extension is properly loaded.\n\n2. **Authentication**:\n   - Open the Command Palette by pressing `Ctrl+Shift+P` and type 'Claude AI: Sign In'.\n   - Follow the prompts to authenticate with your Claude AI account.\n\n3. **Setting Up the Workspace**:\n   - Create a new folder for your project and open it in VS Code.\n   - Open the Command Palette again and type 'Claude AI: Initialize Workspace'. This will set up the necessary configuration files.\n\n4. **Generating Code**:\n   - Open a new Python file and start typing a function or class. For example, type 'def calculate_average(numbers):'.\n   - Before you finish the function, press `Ctrl+Shift+C` to invoke Claude AI.\n   - Claude will suggest a completion for your function. You can accept the suggestion by pressing `Tab` or modify it as needed.\n\n5. **Debugging**:\n   - If you encounter an error, highlight the problematic code and press `Ctrl+Shift+D` to invoke Claude AI for debugging assistance.\n   - Claude will analyze the code and provide suggestions for fixing the error.\n\n6. **Refactoring**:\n   - To refactor your code, highlight the section you want to refactor and press `Ctrl+Shift+R`.\n   - Claude will suggest improvements and optimizations for your code.\n\nBy following these steps, you can effectively use Claude AI in VS Code to streamline your Python development process.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, VS Code"
+    ],
+    "related_skills": [
+      "claude-code-guide#main-content",
+      "claude-code-guide#overview",
+      "claude-code-guide#setup",
+      "claude-code-guide#examples",
+      "claude-code-guide#tools",
+      "claude-code-guide#mcp",
+      "claude-code-guide#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claude Code Guide is a comprehensive repository of documentation, examples, and agent definitions designed to help developers integrate Claude AI into their coding workflows. The project includes 100+ subagent definitions organized in an agents directory, structured guides covering testing, TypeScript, and security best practices, and a changelog tracking ongoing updates. It serves as a reference resource for understanding how to leverage Claude's capabilities across different development scenarios. The repository is actively maintained and provides practical patterns for implementing Claude-powered coding assistance.\nSet up Claude for efficient coding tasks and project management.\nCreate and manage SKILL.md files to define agent capabilities.\nAutomate repetitive workflows using Claude commands for improved efficiency.\nEnhance productivity with expert coding tricks and shortcuts.",
+    "setup_vi": "Terminal\nCopy\n`claude install zebbern/claude-code-guide`\n`git clone https://github.com/zebbern/claude-code-guide`",
+    "usage_vi": "```\nI'm a sales engineer who needs to use Claude AI for coding tasks. Provide me with a step-by-step guide to set up Claude in [VS CODE/OTHER IDE]. Include command examples for [SPECIFIC PROGRAMMING LANGUAGE] and workflows to integrate Claude into my development process. Focus on [SPECIFIC TASKS] like code generation, debugging, or refactoring.\n```\nCopy\n\n```\nCertainly! Here's a step-by-step guide to set up Claude AI in VS Code for Python development, focusing on code generation and debugging:\n\n1. **Installation**:\n   - Open VS Code and go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or pressing `Ctrl+Shift+X`.\n   - Search for 'Claude AI' and install the extension.\n   - After installation, restart VS Code to ensure the extension is properly loaded.\n\n2. **Authentication**:\n   - Open the Command Palette by pressing `Ctrl+Shift+P` and type 'Claude AI: Sign In'.\n   - Follow the prompts to authenticate with your Claude AI account.\n\n3. **Setting Up the Workspace**:\n   - Create a new folder for your project and open it in VS Code.\n   - Open the Command Palette again and type 'Claude AI: Initialize Workspace'. This will set up the necessary configuration files.\n\n4. **Generating Code**:\n   - Open a new Python file and start typing a function or class. For example, type 'def calculate_average(numbers):'.\n   - Before you finish the function, press `Ctrl+Shift+C` to invoke Claude AI.\n   - Claude will suggest a completion for your function. You can accept the suggestion by pressing `Tab` or modify it as needed.\n\n5. **Debugging**:\n   - If you encounter an error, highlight the problematic code and press `Ctrl+Shift+D` to invoke Claude AI for debugging assistance.\n   - Claude will analyze the code and provide suggestions for fixing the error.\n\n6. **Refactoring**:\n   - To refactor your code, highlight the section you want to refactor and press `Ctrl+Shift+R`.\n   - Claude will suggest improvements and optimizations for your code.\n\nBy following these steps, you can effectively use Claude AI in VS Code to streamline your Python development process.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:26:02.202541Z",
+    "http_status": 200,
+    "content_hash": "db73491230a37825ab2607f3b4654d4a23efe18b99a198155e49c5dc72c3c493",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-guide.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-guide.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Guide - Master AI Coding Tools",
+  "short_description_vi": "Claude Code Guide helps sales engineers use Claude AI for coding tasks. It provides setup instructions, command examples, and workflows to integrate Claude into development processes. The guide connects to VS Code and other development tools to streamline coding tasks and improve productivity."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/icloud-find-my",
+  "slug": "icloud-find-my",
+  "name": "iCloud Find My",
+  "headline": "iCloud Find My: Claude Code skill for Device",
+  "short_description": "iCloud Find My is a skill that allows you to access the locations and battery status of your Apple devices using the iCloud command line interface. It is designed for those who want to track their devices efficiently through command line operations.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "clawdbot",
+  "install_command": "git clone https://github.com/clawdbot/skills",
+  "source_repo_url": "https://github.com/clawdbot/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "icloud",
+    "device-management",
+    "find"
+  ],
+  "sections": {
+    "overview": "iCloud Find My is a device management skill that enables you to locate your Apple devices and check their battery status directly through the command line interface. Using the iCloud command line tools, this skill provides efficient tracking capabilities for users who prefer terminal-based operations. It's designed for those managing multiple Apple devices who need quick access to location and battery information without opening the iCloud website or native app.\nTrack the location of lost Apple devices\nCheck battery status of devices\nManage family sharing of device locations",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/clawdbot/skills --skill icloud-findmy`\n`git clone https://github.com/clawdbot/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "icloud-find-my#main-content",
+      "icloud-find-my#overview",
+      "icloud-find-my#setup",
+      "icloud-find-my#examples",
+      "icloud-find-my#tools",
+      "icloud-find-my#mcp",
+      "icloud-find-my#related"
+    ],
+    "overview_vi": "iCloud Find My là một skill quản lý thiết bị giúp bạn định vị các thiết bị Apple và kiểm tra trạng thái pin trực tiếp từ command line interface. Nhờ sử dụng các công cụ dòng lệnh iCloud, skill này mang lại khả năng theo dõi hiệu quả cho những người dùng ưu tiên làm việc trên terminal. Đây là giải pháp lý tưởng cho những ai quản lý nhiều thiết bị Apple và cần truy cập nhanh thông tin vị trí cùng dung lượng pin mà không cần mở website iCloud hay ứng dụng native.\n\nTheo dõi vị trí của các thiết bị Apple bị thất lạc\nKiểm tra trạng thái pin của thiết bị\nQuản lý chia sẻ vị trí thiết bị trong gia đình",
+    "setup_vi": "Terminal\nSao chép\n`$ npx skills add https://github.com/clawdbot/skills --skill icloud-findmy`\n`git clone https://github.com/clawdbot/skills`",
+    "usage_vi": "📝\n### Hiện chưa có ví dụ\nVui lòng kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:03:14.457332Z",
+    "http_status": 200,
+    "content_hash": "c3e454d2281c083050b17160a84a30809d69c4ff8c63bae51c2bcfb288c5298f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\icloud-find-my.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\icloud-find-my.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "iCloud Find My: Skill Claude Code dành cho Thiết bị",
+  "short_description_vi": "iCloud Find My là một skill giúp bạn truy cập vị trí và trạng thái pin của các thiết bị Apple thông qua command line interface của iCloud. Skill này được thiết kế dành cho những ai muốn theo dõi thiết bị một cách hiệu quả bằng các thao tác trên dòng lệnh."
+}

@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/macos-menubar-tuist-app",
+  "slug": "macos-menubar-tuist-app",
+  "name": "Upstash Skills",
+  "headline": "macOS Menubar Tuist App: Testable Menubar",
+  "short_description": "This skill helps developers create and manage macOS menubar applications using a Tuist-first workflow. It enforces strict architecture boundaries for networking, state, and UI to ensure testable and predictable applications.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "dimillian",
+  "install_command": "git clone https://github.com/dimillian/skills",
+  "source_repo_url": "https://github.com/dimillian/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "menubar",
+    "tuist",
+    "macos",
+    "development"
+  ],
+  "sections": {
+    "overview": "This skill enables developers to build and refactor macOS menubar applications using a Tuist-first workflow and SwiftUI. It enforces strict separation of concerns by keeping networking and decoding logic outside views, state transitions in a dedicated store layer, and UI rendering in separate components. The skill provides core rules, expected file structure, a layered implementation workflow, launch script standards, and validation commands to ensure reliable local builds without relying on hand-edited Xcode artifacts. Developers benefit from predictable, testable code architecture and stable build/run ergonomics when creating LSUIElement menubar utilities.\nDevelop menubar-only macOS applications.\nMaintain stable launch scripts for macOS apps.\nImplement network and UI testing workflows.",
+    "setup": "Terminal\nCopy\n`npx skills add https://github.com/dimillian/skills --skill macos-menubar-tuist-app`\n`git clone https://github.com/dimillian/skills`",
+    "usage": "```\nGenerate a macOS menubar application using Tuist for [COMPANY_NAME]'s internal tooling in the [INDUSTRY] industry. Focus on a clean architecture with separate modules for networking, state management, and UI. Use SwiftUI for the UI layer and include unit tests for critical components. The app should [SPECIFIC_FEATURE, e.g., display real-time API metrics in the menubar]. Provide the full project structure, Tuist configuration, and a basic implementation for the menubar status item.\n```\nCopy\n\n```\n# macOS Menubar App with Tuist",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "macos-menubar-tuist-app#main-content",
+      "macos-menubar-tuist-app#overview",
+      "macos-menubar-tuist-app#setup",
+      "macos-menubar-tuist-app#examples",
+      "macos-menubar-tuist-app#related",
+      "harper-best-practices",
+      "notion-cli",
+      "upstash-skills"
+    ],
+    "overview_vi": "This skill enables developers to build and refactor macOS menubar applications using a Tuist-first workflow and SwiftUI. It enforces strict separation of concerns by keeping networking and decoding logic outside views, state transitions in a dedicated store layer, and UI rendering in separate components. The skill provides core rules, expected file structure, a layered implementation workflow, launch script standards, and validation commands to ensure reliable local builds without relying on hand-edited Xcode artifacts. Developers benefit from predictable, testable code architecture and stable build/run ergonomics when creating LSUIElement menubar utilities.\nDevelop menubar-only macOS applications.\nMaintain stable launch scripts for macOS apps.\nImplement network and UI testing workflows.",
+    "setup_vi": "Terminal\nCopy\n`npx skills add https://github.com/dimillian/skills --skill macos-menubar-tuist-app`\n`git clone https://github.com/dimillian/skills`",
+    "usage_vi": "```\nGenerate a macOS menubar application using Tuist for [COMPANY_NAME]'s internal tooling in the [INDUSTRY] industry. Focus on a clean architecture with separate modules for networking, state management, and UI. Use SwiftUI for the UI layer and include unit tests for critical components. The app should [SPECIFIC_FEATURE, e.g., display real-time API metrics in the menubar]. Provide the full project structure, Tuist configuration, and a basic implementation for the menubar status item.\n```\nCopy\n\n```\n# macOS Menubar App with Tuist"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:59:55.520733Z",
+    "http_status": 200,
+    "content_hash": "eb3863d7738fc7fd64a398a010a7520bb2ba0d84b8a5784fdfdfb698652d7712",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\macos-menubar-tuist-app.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\macos-menubar-tuist-app.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "macOS Menubar Tuist App: Testable Menubar",
+  "short_description_vi": "This skill helps developers create and manage macOS menubar applications using a Tuist-first workflow. It enforces strict architecture boundaries for networking, state, and UI to ensure testable and predictable applications."
+}

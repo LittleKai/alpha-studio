@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codex-1up",
+  "slug": "codex-1up",
+  "name": "Codex 1up",
+  "headline": "codex-1up: Enhance Codex CLI Utility",
+  "short_description": "Codex 1UP enhances the Codex CLI coding agent with essential tools like rg, fd, fzf, jq, yq, ast-grep, bat, git, git-delta, and gh. It automates installation and updates, benefiting operations teams by streamlining workflows and improving efficiency in code management and collaboration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "regenrek",
+  "install_command": "git clone https://github.com/regenrek/codex-1up.git",
+  "source_repo_url": "https://github.com/regenrek/codex-1up",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Codex 1UP automates the setup and maintenance of Codex CLI, a coding agent that reads, edits, and runs code locally. It installs a curated set of shell power tools—ripgrep for fast text search, fd for file discovery, fzf for fuzzy finding, jq/yq for JSON/YAML processing, ast-grep for syntax-aware refactoring, bat for syntax-highlighted output, and git/GitHub CLI for version control workflows. The installer creates a unified Codex config with three profiles (balanced, safe, and yolo) to match different security and autonomy requirements, along with optional per-repository guidance via AGENTS.md and bundled agent skills. Idempotent installation means you can run it repeatedly without reinstalling, and built-in commands keep tools and skills updated. This streamlines onboarding for development and operations teams using Codex as their coding agent.\nQuickly install and update the Codex CLI and its essential tools for efficient coding.\nUtilize advanced searching capabilities with tools like ripgrep and fd to find code snippets rapidly.\nSwitch between different operational profiles to adapt the Codex agent's behavior to various project requirements.\nSet up a global guidance file for Codex to maintain consistent coding standards across multiple projects.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/regenrek/codex-1up`",
+    "usage": "```\nUse Codex 1UP to automate the setup of a new [PROJECT_NAME] repository with the following requirements: [LIST_REQUIRED_TOOLS]. Initialize a Git repository, configure .gitignore for [LANGUAGE/TECH_STACK], and set up a basic CI/CD pipeline using GitHub Actions with [SPECIFIC_WORKFLOWS]. Ensure all dependencies are installed via [PACKAGE_MANAGER] and verify the environment with a test script that checks [TEST_CRITERIA]. Document the setup process in a README.md file.\n```\nCopy\n\n```\nHere’s the automated setup for the **`saas-platform`** repository using Codex 1UP:\n\n1. **Repository Initialization**:\n   - Created a new Git repository with `git init`.\n   - Added a `.gitignore` file tailored for Python/Django, including `__pycache__/`, `.env`, and `*.pyc`.\n   - Configured `pre-commit` hooks with `black`, `flake8`, and `mypy` for code quality.\n\n2. **Dependency Management**:\n   - Installed Python 3.11, pip, and virtualenv via `pyenv` and `pipx`.\n   - Set up a virtual environment and installed dependencies from `requirements.txt`:\n ```\n     Django==5.0.4\n     psycopg2-binary==2.9.9\n     django-allauth==0.58.2\n ```\n\n3. **CI/CD Pipeline**:\n   - Generated a GitHub Actions workflow (`.github/workflows/ci.yml`) with:\n     - Python 3.11 testing on Ubuntu.\n     - Steps for linting (`flake8`), testing (`pytest`), and security scanning (`bandit`).\n     - Auto-deployment to Heroku on `main` branch pushes.\n\n4. **Environment Verification**:\n   - Created a test script (`scripts/test_environment.sh`) that:\n     - Checks Python version (`3.11.6`).\n     - Validates Django installation (`django-admin --version`).\n     - Runs a smoke test (`python manage.py check`).\n   - Output:\n ```\n     ✅ Python 3.11.6 installed\n     ✅ Django 5.0.4 installed\n     ✅ No issues detected in project configuration\n ```\n\n5. **Documentation**:\n   - Generated a `README.md` with:\n     - Setup instructions (`make install`).\n     - CI/CD badge linking to GitHub Actions.\n     - Contribution guidelines (e.g., PR templates, commit conventions).\n\n**Next Steps**:\n- Push the repository to GitHub (`git remote add origin git@github.com:org/saas-platform.git`).\n- Run `make install` to verify the full setup.\n- Trigger the CI pipeline manually to confirm workflows execute as expected.\n\nAll tools (rg, fd, fzf, jq, yq, ast-grep, bat, git, git-delta, gh) were automatically installed and configured by Codex 1UP.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codex-1up#main-content",
+      "codex-1up#overview",
+      "codex-1up#setup",
+      "codex-1up#examples",
+      "codex-1up#tools",
+      "codex-1up#mcp",
+      "codex-1up#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Codex 1UP automates the setup and maintenance of Codex CLI, a coding agent that reads, edits, and runs code locally. It installs a curated set of shell power tools—ripgrep for fast text search, fd for file discovery, fzf for fuzzy finding, jq/yq for JSON/YAML processing, ast-grep for syntax-aware refactoring, bat for syntax-highlighted output, and git/GitHub CLI for version control workflows. The installer creates a unified Codex config with three profiles (balanced, safe, and yolo) to match different security and autonomy requirements, along with optional per-repository guidance via AGENTS.md and bundled agent skills. Idempotent installation means you can run it repeatedly without reinstalling, and built-in commands keep tools and skills updated. This streamlines onboarding for development and operations teams using Codex as their coding agent.\nQuickly install and update the Codex CLI and its essential tools for efficient coding.\nUtilize advanced searching capabilities with tools like ripgrep and fd to find code snippets rapidly.\nSwitch between different operational profiles to adapt the Codex agent's behavior to various project requirements.\nSet up a global guidance file for Codex to maintain consistent coding standards across multiple projects.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/regenrek/codex-1up`",
+    "usage_vi": "```\nUse Codex 1UP to automate the setup of a new [PROJECT_NAME] repository with the following requirements: [LIST_REQUIRED_TOOLS]. Initialize a Git repository, configure .gitignore for [LANGUAGE/TECH_STACK], and set up a basic CI/CD pipeline using GitHub Actions with [SPECIFIC_WORKFLOWS]. Ensure all dependencies are installed via [PACKAGE_MANAGER] and verify the environment with a test script that checks [TEST_CRITERIA]. Document the setup process in a README.md file.\n```\nCopy\n\n```\nHere’s the automated setup for the **`saas-platform`** repository using Codex 1UP:\n\n1. **Repository Initialization**:\n   - Created a new Git repository with `git init`.\n   - Added a `.gitignore` file tailored for Python/Django, including `__pycache__/`, `.env`, and `*.pyc`.\n   - Configured `pre-commit` hooks with `black`, `flake8`, and `mypy` for code quality.\n\n2. **Dependency Management**:\n   - Installed Python 3.11, pip, and virtualenv via `pyenv` and `pipx`.\n   - Set up a virtual environment and installed dependencies from `requirements.txt`:\n ```\n     Django==5.0.4\n     psycopg2-binary==2.9.9\n     django-allauth==0.58.2\n ```\n\n3. **CI/CD Pipeline**:\n   - Generated a GitHub Actions workflow (`.github/workflows/ci.yml`) with:\n     - Python 3.11 testing on Ubuntu.\n     - Steps for linting (`flake8`), testing (`pytest`), and security scanning (`bandit`).\n     - Auto-deployment to Heroku on `main` branch pushes.\n\n4. **Environment Verification**:\n   - Created a test script (`scripts/test_environment.sh`) that:\n     - Checks Python version (`3.11.6`).\n     - Validates Django installation (`django-admin --version`).\n     - Runs a smoke test (`python manage.py check`).\n   - Output:\n ```\n     ✅ Python 3.11.6 installed\n     ✅ Django 5.0.4 installed\n     ✅ No issues detected in project configuration\n ```\n\n5. **Documentation**:\n   - Generated a `README.md` with:\n     - Setup instructions (`make install`).\n     - CI/CD badge linking to GitHub Actions.\n     - Contribution guidelines (e.g., PR templates, commit conventions).\n\n**Next Steps**:\n- Push the repository to GitHub (`git remote add origin git@github.com:org/saas-platform.git`).\n- Run `make install` to verify the full setup.\n- Trigger the CI pipeline manually to confirm workflows execute as expected.\n\nAll tools (rg, fd, fzf, jq, yq, ast-grep, bat, git, git-delta, gh) were automatically installed and configured by Codex 1UP.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:30:13.832742Z",
+    "http_status": 200,
+    "content_hash": "6c4e70e70a6e7a49e92ed0c6dc773d23e80745f569cbe3151bd4b17da4c20ee0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codex-1up.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codex-1up.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "codex-1up: Enhance Codex CLI Utility",
+  "short_description_vi": "Codex 1UP enhances the Codex CLI coding agent with essential tools like rg, fd, fzf, jq, yq, ast-grep, bat, git, git-delta, and gh. It automates installation and updates, benefiting operations teams by streamlining workflows and improving efficiency in code management and collaboration."
+}

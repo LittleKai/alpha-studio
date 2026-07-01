@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-for-beginners",
+  "slug": "mcp-for-beginners",
+  "name": "MCP for Beginners",
+  "headline": "MCP for Beginners - Open Source Curriculum",
+  "short_description": "Explore the fundamentals of Model Context Protocol (MCP) with this open-source curriculum. It provides practical, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust, and Python, helping developers to create modular and secure AI workflows.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "microsoft",
+  "install_command": "claude install microsoft/mcp-for-beginners",
+  "source_repo_url": "https://github.com/microsoft/mcp-for-beginners",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "cross-language",
+    "open-source",
+    "modular design",
+    "MCP",
+    "AI workflows"
+  ],
+  "sections": {
+    "overview": "mcp-for-beginners is an open-source educational curriculum from Microsoft designed to teach developers the Model Context Protocol (MCP) from the ground up. The course provides hands-on, practical examples in six programming languages: .NET, Java, TypeScript, JavaScript, Rust, and Python. It covers core concepts, security best practices, getting started guides, and practical implementation techniques through structured modules including Introduction, Core Concepts, Security, Getting Started, Practical Implementation, and Advanced Topics. The curriculum helps developers build modular and secure AI workflows by understanding how to implement and work with MCP across different technology stacks.\nBuild modular AI applications that can be easily maintained and updated.\nCreate secure AI services that protect sensitive data and ensure compliance.\nOrchestrate AI workflows that integrate multiple services and languages.\nImplement cross-language solutions that allow seamless interaction between different programming environments.",
+    "setup": "Terminal\nCopy\n`claude install microsoft/mcp-for-beginners`\n`git clone https://github.com/microsoft/mcp-for-beginners`",
+    "usage": "```\nExplain the basics of Model Context Protocol (MCP) in [LANGUAGE]. Provide a simple example of how to implement a basic MCP workflow in [LANGUAGE]. Include common pitfalls to avoid when working with MCP in [LANGUAGE].\n```\nCopy\n\n```\nModel Context Protocol (MCP) is a framework designed to create modular and secure AI workflows. In Python, you can start by importing the MCP library and defining your context. Here's a basic example:\n\n```python\nfrom mcp import Context\n\n# Define a context\ncontext = Context(name=\"example_context\")\n\n# Add a model to the context\ncontext.add_model(\"model1\", \"path/to/model1\")\n\n# Run the model\nresult = context.run_model(\"model1\", input_data)\n```\n\nCommon pitfalls to avoid include not properly managing context lifecycles, which can lead to memory leaks, and not securing your models, which can expose sensitive data. Always ensure that your contexts are properly initialized and destroyed, and that your models are secured with appropriate access controls.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "mcp-for-beginners#main-content",
+      "mcp-for-beginners#overview",
+      "mcp-for-beginners#setup",
+      "mcp-for-beginners#examples",
+      "mcp-for-beginners#tools",
+      "mcp-for-beginners#mcp",
+      "mcp-for-beginners#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcp-for-beginners là giáo trình nguồn mở từ Microsoft được thiết kế để hướng dẫn các nhà phát triển về Model Context Protocol (MCP) từ căn bản. Khóa học cung cấp các ví dụ thực hành thực tế trên sáu ngôn ngữ lập trình: .NET, Java, TypeScript, JavaScript, Rust và Python. Nội dung bao gồm các khái niệm cốt lõi, các thực hành bảo mật tốt nhất (security best practices), hướng dẫn bắt đầu và các kỹ thuật triển khai thực tế thông qua các mô-đun được cấu trúc bài bản bao gồm Giới thiệu, Khái niệm Cốt lõi, Bảo mật, Bắt đầu, Triển khai Thực tế và Chủ đề Nâng cao. Giáo trình này giúp nhà phát triển xây dựng các workflow AI bảo mật và có tính mô-đun nhờ hiểu rõ cách triển khai và làm việc với MCP trên nhiều stack công nghệ khác nhau.\nXây dựng các ứng dụng AI dạng mô-đun dễ dàng bảo trì và cập nhật.\nTạo các dịch vụ AI an toàn giúp bảo vệ dữ liệu nhạy cảm và đảm bảo tuân thủ.\nĐiều phối (orchestrate) các workflow AI tích hợp nhiều dịch vụ và ngôn ngữ khác nhau.\nTriển khai các giải pháp đa ngôn ngữ cho phép tương tác liền mạch giữa các môi trường lập trình khác nhau.",
+    "setup_vi": "Terminal\nSao chép\n`claude install microsoft/mcp-for-beginners`\n`git clone https://github.com/microsoft/mcp-for-beginners`",
+    "usage_vi": "```\nGiải thích các khái niệm cơ bản của Model Context Protocol (MCP) bằng [LANGUAGE]. Cung cấp một ví dụ đơn giản về cách triển khai một workflow MCP cơ bản bằng [LANGUAGE]. Liệt kê các lỗi thường gặp cần tránh khi làm việc với MCP bằng [LANGUAGE].\n```\nSao chép\n\n```\nModel Context Protocol (MCP) là một framework được thiết kế để tạo ra các workflow AI bảo mật và có tính mô-đun. Trong Python, bạn có thể bắt đầu bằng cách import thư viện MCP và định nghĩa context của mình. Dưới đây là một ví dụ cơ bản:\n\n```python\nfrom mcp import Context\n\n# Định nghĩa một context\ncontext = Context(name=\"example_context\")\n\n# Thêm một model vào context\ncontext.add_model(\"model1\", \"path/to/model1\")\n\n# Chạy model\nresult = context.run_model(\"model1\", input_data)\n```\n\nCác lỗi thường gặp cần tránh bao gồm việc không quản lý đúng cách vòng đời (lifecycle) của context, có thể dẫn đến rò rỉ bộ nhớ (memory leak), và không bảo mật các model, có thể làm lộ dữ liệu nhạy cảm. Hãy luôn đảm bảo các context được khởi tạo và giải phóng đúng cách, đồng thời các model được bảo vệ bằng các quyền truy cập phù hợp.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:58:10.259543Z",
+    "http_status": 200,
+    "content_hash": "fd2186786348ae984a8418f758cd9e1bc2e7644e163d794f7bc69f42cdf29568",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-for-beginners.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-for-beginners.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "MCP cho Người mới bắt đầu - Giáo trình Nguồn mở",
+  "short_description_vi": "Khám phá các khái niệm cơ bản về Model Context Protocol (MCP) với giáo trình nguồn mở này. Tài liệu cung cấp các ví dụ thực tế, đa ngôn ngữ trên .NET, Java, TypeScript, JavaScript, Rust và Python, giúp lập trình viên xây dựng các workflow AI bảo mật và có tính mô-đun."
+}

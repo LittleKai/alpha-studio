@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-best-practice",
+  "slug": "claude-code-best-practice",
+  "name": "Claude Code Best Practice",
+  "headline": "Enhance coding with Claude best practices",
+  "short_description": "Claude-code-best-practice helps developers improve their coding skills by providing best practice guidance and feedback. It benefits operations teams by ensuring code quality and consistency. It connects to Python workflows and integrates with Claude AI for real-time suggestions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "shanraisshan",
+  "install_command": "git clone https://github.com/shanraisshan/claude-code-best-practice.git",
+  "source_repo_url": "https://github.com/shanraisshan/claude-code-best-practice",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude-code-best-practice is a skill that delivers real-time coding guidance and best practice feedback for developers using Claude Code and similar AI coding tools. It helps teams maintain consistent code quality by providing actionable suggestions aligned with industry standards. The skill integrates directly with Claude AI to analyze code patterns and offer improvement recommendations. Developers benefit from immediate feedback on their work, while operations teams ensure codebase consistency and quality standards are met across projects.\nCode review automation with real-time best practice suggestions\nMaintaining consistent coding standards across development teams\nTraining developers on industry-standard practices and patterns\nQuality assurance for Python workflow integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shanraisshan/claude-code-best-practice`",
+    "usage": "```\nAct as a Python code quality advisor. Review the following Python code snippet: [CODE_SNIPPET]. Identify potential issues including: 1) PEP 8 style violations, 2) anti-patterns or bad practices, 3) performance bottlenecks, 4) security vulnerabilities, 5) missing documentation. Provide specific improvement suggestions with code examples. Focus on maintainability and scalability for production environments.\n```\nCopy\n\n```\nHere's a review of a Python script that processes user uploads in a web application:\n\n**Original Code:**\n```python\ndef process_upload(file_path):\n    with open(file_path, 'r') as f:\n        data = f.read()\n    lines = data.split('\\n')\n    for line in lines:\n        if line.strip():\n            process_line(line)\n```\n\n**Issues Identified:**\n\n1. **Resource Management:** The file handle isn't explicitly closed (though the `with` statement handles this, it's good practice to be explicit). Consider using `try/finally` for more complex scenarios.\n\n2. **Memory Efficiency:** Reading the entire file into memory with `f.read()` is problematic for large files. This could cause memory issues with files >100MB.\n\n3. **Error Handling:** No try-catch block for file operations. What happens if the file doesn't exist or isn't readable?\n\n4. **Documentation:** Missing docstring and type hints. Future maintainers won't know the expected input/output.\n\n5. **Performance:** The `split('\\n')` creates an unnecessary intermediate list. Consider iterating directly over the file object.\n\n**Improved Version:**\n```python\ndef process_upload(file_path: str) -> None:\n    \"\"\"Process a user upload file line by line with proper error handling.\n    \n    Args:\n        file_path: Path to the file to process\n        \n    Raises:\n        FileNotFoundError: If file doesn't exist\n        PermissionError: If file isn't readable\n        ValueError: If file is empty or invalid\n    \"\"\"\n    try:\n        with open(file_path, 'r') as f:\n            for line in f:\n                if line.strip():\n                    process_line(line.strip())\n    except FileNotFoundError as e:\n        raise FileNotFoundError(f\"Upload file not found: {file_path}\") from e\n    except PermissionError as e:\n        raise PermissionError(f\"No permission to read file: {file_path}\") from e\n    except Exception as e:\n        raise ValueError(f\"Error processing file {file_path}: {str(e)}\") from e\n```\n\n**Additional Recommendations:**\n- Consider adding file size validation before processing\n- Implement logging for debugging and monitoring\n- Add unit tests for edge cases (empty files, special characters)\n- For production, consider using a streaming approach with `yield` for very large files\n- Add input validation for the file_path parameter\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-best-practice#main-content",
+      "claude-code-best-practice#overview",
+      "claude-code-best-practice#setup",
+      "claude-code-best-practice#examples",
+      "claude-code-best-practice#tools",
+      "claude-code-best-practice#mcp",
+      "claude-code-best-practice#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-code-best-practice là một skill cung cấp hướng dẫn lập trình real-time và phản hồi theo best practice cho lập trình viên sử dụng Claude Code cũng như các công cụ lập trình AI tương tự. Nó giúp các đội ngũ duy trì chất lượng code đồng nhất bằng cách đưa ra các gợi ý thực tế và phù hợp với tiêu chuẩn ngành. Skill này tích hợp trực tiếp với Claude AI để phân tích pattern của code và đề xuất cải tiến. Lập trình viên sẽ nhận được phản hồi ngay lập tức cho công việc của mình, trong khi các đội ngũ vận hành (operations) đảm bảo được tính nhất quán của codebase và các tiêu chuẩn chất lượng trên toàn dự án.\nTự động hóa code review với các gợi ý best practice real-time\nDuy trì các tiêu chuẩn coding nhất quán giữa các đội ngũ phát triển\nĐào tạo lập trình viên về các pattern và quy chuẩn theo tiêu chuẩn ngành\nĐảm bảo chất lượng (QA) khi tích hợp workflow Python",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/shanraisshan/claude-code-best-practice`",
+    "usage_vi": "```\nĐóng vai trò là một cố vấn chất lượng code Python. Review đoạn code Python sau: [CODE_SNIPPET]. Xác định các vấn đề tiềm ẩn bao gồm: 1) vi phạm tiêu chuẩn PEP 8, 2) anti-pattern hoặc bad practice, 3) bottleneck về hiệu năng, 4) lỗ hổng bảo mật, 5) thiếu tài liệu hướng dẫn (documentation). Cung cấp các đề xuất cải tiến cụ thể kèm ví dụ code. Tập trung vào tính dễ bảo trì (maintainability) và khả năng mở rộng (scalability) cho môi trường production.\n```\nCopy\n\n```\nDưới đây là phần review một script Python xử lý file do người dùng tải lên (upload) trong một ứng dụng web:\n\n**Original Code:**\n```python\ndef process_upload(file_path):\n    with open(file_path, 'r') as f:\n        data = f.read()\n    lines = data.split('\\n')\n    for line in lines:\n        if line.strip():\n            process_line(line)\n```\n\n**Các vấn đề được xác định:**\n\n1. **Quản lý tài nguyên (Resource Management):** Handle của file không được đóng một cách rõ ràng (mặc dù câu lệnh `with` đã xử lý việc này, nhưng tường minh vẫn là một good practice tốt). Hãy cân nhắc sử dụng `try/finally` cho các kịch bản phức tạp hơn.\n\n2. **Hiệu quả bộ nhớ (Memory Efficiency):** Việc đọc toàn bộ file vào bộ nhớ bằng `f.read()` sẽ gây ra vấn đề với các file lớn. Điều này có thể dẫn đến sự cố bộ nhớ khi xử lý các file >100MB.\n\n3. **Xử lý lỗi (Error Handling):** Thiếu khối try-catch cho các thao tác với file. Điều gì sẽ xảy ra nếu file không tồn tại hoặc không thể đọc được?\n\n4. **Tài liệu (Documentation):** Thiếu docstring và type hint. Những lập trình viên bảo trì sau này sẽ không biết đầu vào/đầu ra mong muốn là gì.\n\n5. **Hiệu năng (Performance):** Hàm `split('\\n')` tạo ra một danh sách trung gian không cần thiết. Hãy cân nhắc việc lặp trực tiếp trên file object.\n\n**Phiên bản cải tiến (Improved Version):**\n```python\ndef process_upload(file_path: str) -> None:\n    \"\"\"Xử lý file upload của người dùng theo từng dòng với cơ chế xử lý lỗi phù hợp.\n    \n    Args:\n        file_path: Đường dẫn đến file cần xử lý\n        \n    Raises:\n        FileNotFoundError: Nếu file không tồn tại\n        PermissionError: Nếu không có quyền đọc file\n        ValueError: Nếu file trống hoặc không hợp lệ\n    \"\"\"\n    try:\n        with open(file_path, 'r') as f:\n            for line in f:\n                if line.strip():\n                    process_line(line.strip())\n    except FileNotFoundError as e:\n        raise FileNotFoundError(f\"Không tìm thấy file upload: {file_path}\") from e\n    except PermissionError as e:\n        raise PermissionError(f\"Không có quyền đọc file: {file_path}\") from e\n    except Exception as e:\n        raise ValueError(f\"Lỗi khi xử lý file {file_path}: {str(e)}\") from e\n```\n\n**Khuyến nghị bổ sung:**\n- Cân nhắc thêm bước kiểm tra dung lượng file (file size validation) trước khi xử lý\n- Triển khai logging để hỗ trợ debug và giám sát (monitoring)\n- Bổ sung unit test cho các trường hợp biên (file trống, ký tự đặc biệt)\n- Đối với môi trường production, cân nhắc sử dụng phương thức streaming với `yield` cho các file cực lớn\n- Thêm bước kiểm tra tính hợp lệ của tham số `file_path` đầu vào\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:35:06.131939Z",
+    "http_status": 200,
+    "content_hash": "fe1ac0d03eb6ac99f82d107cff79d4bab367624d7281d50cf12a3e4f2bcd2785",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-best-practice.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-best-practice.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Nâng cao hiệu quả lập trình với các best practice từ Claude",
+  "short_description_vi": "Claude-code-best-practice giúp các lập trình viên nâng cao kỹ năng code bằng cách cung cấp hướng dẫn và phản hồi dựa trên các best practice. Công cụ này hỗ trợ các đội ngũ vận hành (operations) đảm bảo chất lượng và tính nhất quán của mã nguồn, đồng thời kết nối trực tiếp với các workflow Python và tích hợp với Claude AI để đưa ra gợi ý real-time."
+}

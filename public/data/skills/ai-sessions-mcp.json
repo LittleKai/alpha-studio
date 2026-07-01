@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-sessions-mcp",
+  "slug": "ai-sessions-mcp",
+  "name": "browser-use",
+  "headline": "AI Sessions MCP: Access AI Coding History",
+  "short_description": "AI Sessions MCP server enables AI agents to search, list, and access previous coding sessions from Claude Code, OpenAI Codex, Gemini CLI, and opencode. It benefits developers and operations teams by centralizing AI coding history, improving collaboration, and integrating with MCP-compatible clients.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "yoavf",
+  "install_command": "git clone https://github.com/yoavf/ai-sessions-mcp.git",
+  "source_repo_url": "https://github.com/yoavf/ai-sessions-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "gemini-ai",
+    "opencode",
+    "codex-cli",
+    "mcp",
+    "gemini-cli"
+  ],
+  "sections": {
+    "overview": "AI Sessions MCP Server centralizes coding session history from multiple CLI coding agents—Claude Code, OpenAI Codex, Gemini CLI, and opencode—making it searchable and accessible to any MCP-compatible client. The server reads session files stored locally by these agents and exposes tools to list recent sessions, search content using BM25 ranking, and retrieve full session transcripts with pagination. Developers and operations teams use this to find past solutions, review recent work, learn from previous conversations, and resume interrupted projects. Setup involves installing the binary and configuring your MCP client (Claude Code, Codex CLI, or Claude Desktop), after which you can query sessions naturally through your AI agent.\nFinding past solutions to similar coding problems across sessions\nResuming interrupted work from previous Claude Code or Codex CLI sessions\nSearching session history for specific bugs or implementation patterns\nReviewing recent coding conversations and learning from previous AI interactions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoavf/ai-sessions-mcp`",
+    "usage": "```\nSearch for all coding sessions related to [PROJECT_NAME] or [TECHNOLOGY_STACK] from my AI coding history. Filter sessions by [TIME_RANGE] and summarize the key learnings, code snippets, and debugging steps. Highlight any recurring issues or solutions that could be reused. Provide a structured report with sections for: 1) Session Overview, 2) Key Insights, 3) Reusable Code, and 4) Action Items.\n```\nCopy\n\n```\n### AI Sessions MCP Report: React Native Authentication Flow (Last 30 Days)\n\n#### Session Overview\n- **Total Sessions Found:** 12\n- **Time Range:** May 1-30, 2024\n- **Primary Tools Used:** Claude Code (7 sessions), OpenAI Codex (5 sessions)\n- **Topics Covered:** JWT token handling, Firebase integration, error boundary implementation\n\n#### Key Insights\n1. **JWT Token Refresh Logic:** 6 sessions focused on optimizing token refresh timings to avoid 401 errors. The most stable implementation used a 15-minute buffer before expiration.\n2. **Firebase Auth State Persistence:** Sessions #4 and #8 revealed a race condition where `onAuthStateChanged` fired before the app was fully initialized. The solution was to wrap the auth listener in a `useEffect` with a dependency array.\n3. **Error Boundaries:** Sessions #3 and #11 documented a common crash when the auth token expired mid-navigation. The fix involved adding a global error boundary with a retry mechanism.\n\n#### Reusable Code\n```javascript\n// Token refresh utility (from Session #7)\nconst refreshToken = async (expiredToken) => {\n  try {\n    const response = await fetch('/api/refresh-token', {\n      method: 'POST',\n      headers: { 'Authorization': `Bearer ${expiredToken}` }\n    });\n    const { newToken } = await response.json();\n    return newToken;\n  } catch (error) {\n    console.error('Token refresh failed:', error);\n    throw error;\n  }\n};\n\n// Firebase auth setup with race condition fix (from Session #4)\nuseEffect(() => {\n  const unsubscribe = auth.onAuthStateChanged(async (user) => {\n    if (user) {\n      await initializeApp(user); // Wait for app to be ready\n    }\n  });\n  return () => unsubscribe();\n}, []);\n```\n\n#### Action Items\n1. **Document the JWT refresh logic** in the team’s internal wiki (from Session #7).\n2. **Implement the race condition fix** in the staging branch by EOD (from Session #4).\n3. **Add error boundary tests** to the CI pipeline (from Session #11).\n4. **Schedule a team retro** to review all 12 sessions and identify patterns for the next sprint.\n\n**Next Steps:** Use `/mcp ai-sessions-mcp search --project \"React Native Auth\" --export markdown` to generate a full report for the team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ai-sessions-mcp#main-content",
+      "ai-sessions-mcp#overview",
+      "ai-sessions-mcp#setup",
+      "ai-sessions-mcp#examples",
+      "ai-sessions-mcp#tools",
+      "ai-sessions-mcp#mcp",
+      "ai-sessions-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AI Sessions MCP Server centralizes coding session history from multiple CLI coding agents—Claude Code, OpenAI Codex, Gemini CLI, and opencode—making it searchable and accessible to any MCP-compatible client. The server reads session files stored locally by these agents and exposes tools to list recent sessions, search content using BM25 ranking, and retrieve full session transcripts with pagination. Developers and operations teams use this to find past solutions, review recent work, learn from previous conversations, and resume interrupted projects. Setup involves installing the binary and configuring your MCP client (Claude Code, Codex CLI, or Claude Desktop), after which you can query sessions naturally through your AI agent.\nFinding past solutions to similar coding problems across sessions\nResuming interrupted work from previous Claude Code or Codex CLI sessions\nSearching session history for specific bugs or implementation patterns\nReviewing recent coding conversations and learning from previous AI interactions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yoavf/ai-sessions-mcp`",
+    "usage_vi": "```\nSearch for all coding sessions related to [PROJECT_NAME] or [TECHNOLOGY_STACK] from my AI coding history. Filter sessions by [TIME_RANGE] and summarize the key learnings, code snippets, and debugging steps. Highlight any recurring issues or solutions that could be reused. Provide a structured report with sections for: 1) Session Overview, 2) Key Insights, 3) Reusable Code, and 4) Action Items.\n```\nCopy\n\n```\n### AI Sessions MCP Report: React Native Authentication Flow (Last 30 Days)\n\n#### Session Overview\n- **Total Sessions Found:** 12\n- **Time Range:** May 1-30, 2024\n- **Primary Tools Used:** Claude Code (7 sessions), OpenAI Codex (5 sessions)\n- **Topics Covered:** JWT token handling, Firebase integration, error boundary implementation\n\n#### Key Insights\n1. **JWT Token Refresh Logic:** 6 sessions focused on optimizing token refresh timings to avoid 401 errors. The most stable implementation used a 15-minute buffer before expiration.\n2. **Firebase Auth State Persistence:** Sessions #4 and #8 revealed a race condition where `onAuthStateChanged` fired before the app was fully initialized. The solution was to wrap the auth listener in a `useEffect` with a dependency array.\n3. **Error Boundaries:** Sessions #3 and #11 documented a common crash when the auth token expired mid-navigation. The fix involved adding a global error boundary with a retry mechanism.\n\n#### Reusable Code\n```javascript\n// Token refresh utility (from Session #7)\nconst refreshToken = async (expiredToken) => {\n  try {\n    const response = await fetch('/api/refresh-token', {\n      method: 'POST',\n      headers: { 'Authorization': `Bearer ${expiredToken}` }\n    });\n    const { newToken } = await response.json();\n    return newToken;\n  } catch (error) {\n    console.error('Token refresh failed:', error);\n    throw error;\n  }\n};\n\n// Firebase auth setup with race condition fix (from Session #4)\nuseEffect(() => {\n  const unsubscribe = auth.onAuthStateChanged(async (user) => {\n    if (user) {\n      await initializeApp(user); // Wait for app to be ready\n    }\n  });\n  return () => unsubscribe();\n}, []);\n```\n\n#### Action Items\n1. **Document the JWT refresh logic** in the team’s internal wiki (from Session #7).\n2. **Implement the race condition fix** in the staging branch by EOD (from Session #4).\n3. **Add error boundary tests** to the CI pipeline (from Session #11).\n4. **Schedule a team retro** to review all 12 sessions and identify patterns for the next sprint.\n\n**Next Steps:** Use `/mcp ai-sessions-mcp search --project \"React Native Auth\" --export markdown` to generate a full report for the team.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:56:26.287726Z",
+    "http_status": 200,
+    "content_hash": "694293753c2e50467750cfeca048b083c5fd661a5d93790078adf0b1cf75a37e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-sessions-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ai-sessions-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AI Sessions MCP: Access AI Coding History",
+  "short_description_vi": "AI Sessions MCP server enables AI agents to search, list, and access previous coding sessions from Claude Code, OpenAI Codex, Gemini CLI, and opencode. It benefits developers and operations teams by centralizing AI coding history, improving collaboration, and integrating with MCP-compatible clients."
+}

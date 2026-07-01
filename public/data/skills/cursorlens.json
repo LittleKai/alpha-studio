@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cursorlens",
+  "slug": "cursorlens",
+  "name": "react-native-best-practices",
+  "headline": "CursorLens: Open-Source AI Dashboard for Developers",
+  "short_description": "CursorLens is an open-source dashboard designed for the Cursor.sh IDE, enabling users to log AI code generations, track usage, and manage AI models seamlessly. Whether running locally or through an upcoming hosted version, it enhances coding efficiency and analytics.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "HamedMP",
+  "install_command": "claude install HamedMP/CursorLens",
+  "source_repo_url": "https://github.com/HamedMP/CursorLens",
+  "works_with": [
+    "Cursor"
+  ],
+  "tags": [
+    "coding",
+    "AI models",
+    "dashboard",
+    "analytics",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "CursorLens is an open-source tool that acts as a proxy between Cursor IDE and AI providers like OpenAI, Anthropic, Mistral, Cohere, Groq, and Ollama. It captures all AI interactions and provides a dashboard with detailed analytics, including token consumption tracking, cost estimation, and real-time monitoring of AI usage patterns. Developers can configure multiple AI models, enable Anthropic prompt caching to reduce costs, and view statistics on their coding sessions. The tool integrates seamlessly with Cursor by overriding the OpenAI Base URL, requiring no changes to your coding workflow while providing insights to optimize AI usage and reduce expenses.\nLog and analyze AI code generation metrics to improve development efficiency.\nManage and configure local AI models for tailored coding assistance.\nTrack and visualize usage patterns to identify areas for optimization.\nIntegrate seamlessly with Cursor.sh IDE for enhanced AI-assisted coding.",
+    "setup": "Terminal\nCopy\n`claude install HamedMP/CursorLens`\n`git clone https://github.com/HamedMP/CursorLens`",
+    "usage": "```\nSet up CursorLens in [CURSOR.SH IDE] to monitor AI code generation activity for [YOUR_PROJECT_NAME]. Configure the dashboard to track [SPECIFIC_METRICS: e.g., model usage, generation frequency, or error rates]. Compare the performance of [MODEL_A] vs [MODEL_B] during [TIME_PERIOD]. Export the insights as a CSV report titled '[REPORT_NAME]' and highlight any anomalies or trends in code quality or efficiency.\n```\nCopy\n\n```\n### CursorLens Dashboard Report: Project \"E-Commerce API\" (Generated: 2024-05-20)\n\n#### **Overview**\n- **Total AI Generations**: 1,247\n- **Active Models**: 3 (Claude 3 Opus, GPT-4 Turbo, Llama 3 70B)\n- **Top Generating Model**: GPT-4 Turbo (45% of total, 561 generations)\n- **Average Generation Time**: 4.2 seconds\n- **Error Rate**: 3.1% (39 failures)\n\n#### **Model Performance Comparison (Last 7 Days)**\n| Model            | Generations | Avg. Time | Error Rate | Cost (USD) |\n|------------------|-------------|-----------|------------|------------|\n| GPT-4 Turbo      | 561         | 3.8s      | 2.1%       | $124.50    |\n| Claude 3 Opus    | 412         | 4.5s      | 3.4%       | $98.75     |\n| Llama 3 70B      | 274         | 4.9s      | 4.7%       | $18.20     |\n\n#### **Key Insights**\n1. **GPT-4 Turbo** outperformed others in speed and accuracy, with the lowest error rate (2.1%) and fastest average generation time (3.8s). It was used most frequently, likely due to its balance of cost and performance.\n2. **Claude 3 Opus** had a higher error rate (3.4%) but was still preferred for complex logic tasks, accounting for 33% of high-complexity code generations.\n3. **Llama 3 70B** was the most cost-effective but suffered from higher error rates (4.7%), particularly in API integrations. Its usage dropped by 15% after the first 3 days of testing.\n\n#### **Anomalies Detected**\n- **High Error Spike**: On May 16th, Llama 3 70B generated 18 errors in 2 hours, all related to SQL query syntax. This coincided with a deployment of a new database schema.\n- **Performance Degradation**: GPT-4 Turbo’s generation time increased by 22% between May 18-20, likely due to API rate limiting during peak hours.\n\n#### **Recommendations**\n- **For Critical Paths**: Continue using GPT-4 Turbo for high-stakes features (e.g., payment processing) due to its reliability.\n- **For Prototyping**: Use Llama 3 70B to reduce costs, but implement additional validation steps for generated code.\n- **For Complex Logic**: Favor Claude 3 Opus, but pair it with manual review for error-prone tasks like database queries.\n\n**CSV Report Generated**: `ecommerce_api_cursorlens_report_20240520.csv`\n**Next Steps**: Schedule a team review to adjust model assignments based on these insights and set up automated alerts for error rate thresholds (e.g., >5% for any model).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Cursor"
+    ],
+    "related_skills": [
+      "cursorlens#main-content",
+      "cursorlens#overview",
+      "cursorlens#setup",
+      "cursorlens#examples",
+      "cursorlens#tools",
+      "cursorlens#mcp",
+      "cursorlens#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "CursorLens is an open-source tool that acts as a proxy between Cursor IDE and AI providers like OpenAI, Anthropic, Mistral, Cohere, Groq, and Ollama. It captures all AI interactions and provides a dashboard with detailed analytics, including token consumption tracking, cost estimation, and real-time monitoring of AI usage patterns. Developers can configure multiple AI models, enable Anthropic prompt caching to reduce costs, and view statistics on their coding sessions. The tool integrates seamlessly with Cursor by overriding the OpenAI Base URL, requiring no changes to your coding workflow while providing insights to optimize AI usage and reduce expenses.\nLog and analyze AI code generation metrics to improve development efficiency.\nManage and configure local AI models for tailored coding assistance.\nTrack and visualize usage patterns to identify areas for optimization.\nIntegrate seamlessly with Cursor.sh IDE for enhanced AI-assisted coding.",
+    "setup_vi": "Terminal\nCopy\n`claude install HamedMP/CursorLens`\n`git clone https://github.com/HamedMP/CursorLens`",
+    "usage_vi": "```\nSet up CursorLens in [CURSOR.SH IDE] to monitor AI code generation activity for [YOUR_PROJECT_NAME]. Configure the dashboard to track [SPECIFIC_METRICS: e.g., model usage, generation frequency, or error rates]. Compare the performance of [MODEL_A] vs [MODEL_B] during [TIME_PERIOD]. Export the insights as a CSV report titled '[REPORT_NAME]' and highlight any anomalies or trends in code quality or efficiency.\n```\nCopy\n\n```\n### CursorLens Dashboard Report: Project \"E-Commerce API\" (Generated: 2024-05-20)\n\n#### **Overview**\n- **Total AI Generations**: 1,247\n- **Active Models**: 3 (Claude 3 Opus, GPT-4 Turbo, Llama 3 70B)\n- **Top Generating Model**: GPT-4 Turbo (45% of total, 561 generations)\n- **Average Generation Time**: 4.2 seconds\n- **Error Rate**: 3.1% (39 failures)\n\n#### **Model Performance Comparison (Last 7 Days)**\n| Model            | Generations | Avg. Time | Error Rate | Cost (USD) |\n|------------------|-------------|-----------|------------|------------|\n| GPT-4 Turbo      | 561         | 3.8s      | 2.1%       | $124.50    |\n| Claude 3 Opus    | 412         | 4.5s      | 3.4%       | $98.75     |\n| Llama 3 70B      | 274         | 4.9s      | 4.7%       | $18.20     |\n\n#### **Key Insights**\n1. **GPT-4 Turbo** outperformed others in speed and accuracy, with the lowest error rate (2.1%) and fastest average generation time (3.8s). It was used most frequently, likely due to its balance of cost and performance.\n2. **Claude 3 Opus** had a higher error rate (3.4%) but was still preferred for complex logic tasks, accounting for 33% of high-complexity code generations.\n3. **Llama 3 70B** was the most cost-effective but suffered from higher error rates (4.7%), particularly in API integrations. Its usage dropped by 15% after the first 3 days of testing.\n\n#### **Anomalies Detected**\n- **High Error Spike**: On May 16th, Llama 3 70B generated 18 errors in 2 hours, all related to SQL query syntax. This coincided with a deployment of a new database schema.\n- **Performance Degradation**: GPT-4 Turbo’s generation time increased by 22% between May 18-20, likely due to API rate limiting during peak hours.\n\n#### **Recommendations**\n- **For Critical Paths**: Continue using GPT-4 Turbo for high-stakes features (e.g., payment processing) due to its reliability.\n- **For Prototyping**: Use Llama 3 70B to reduce costs, but implement additional validation steps for generated code.\n- **For Complex Logic**: Favor Claude 3 Opus, but pair it with manual review for error-prone tasks like database queries.\n\n**CSV Report Generated**: `ecommerce_api_cursorlens_report_20240520.csv`\n**Next Steps**: Schedule a team review to adjust model assignments based on these insights and set up automated alerts for error rate thresholds (e.g., >5% for any model).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:06:37.738412Z",
+    "http_status": 200,
+    "content_hash": "45b782087c91c66135080d8ac8ed4ba3f8cd431aa854c0e193083c1db8a905a8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cursorlens.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cursorlens.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CursorLens: Open-Source AI Dashboard for Developers",
+  "short_description_vi": "CursorLens is an open-source dashboard designed for the Cursor.sh IDE, enabling users to log AI code generations, track usage, and manage AI models seamlessly. Whether running locally or through an upcoming hosted version, it enhances coding efficiency and analytics."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hf-cli",
+  "slug": "hf-cli",
+  "name": "base44-cli",
+  "headline": "hf-cli: Hugging Face Hub CLI for Agents",
+  "short_description": "The Hugging Face Hub CLI tool `hf` provides commands for interacting with the Hugging Face Hub, replacing the deprecated `huggingface-cli`. It is designed for developers who need a command line interface for downloading, uploading, and managing files in the Hub.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "huggingface",
+  "install_command": "curl -LsSf https://hf.co/cli/install.sh | bash -s.",
+  "source_repo_url": "https://github.com/huggingface/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "cli-tools"
+  ],
+  "sections": {
+    "overview": "The hf-cli skill integrates the Hugging Face Hub CLI directly into your AI agent, enabling full command-line access to Hub operations. Agents can download models and datasets, upload files, manage repositories and buckets, launch Spaces, and execute cloud compute jobs—all through the hf command. The skill is auto-generated from your locally installed CLI, ensuring it stays synchronized with the latest Hub features and commands. This is the recommended first skill to install when giving your agent access to Hugging Face infrastructure.\nDownload datasets from the Hugging Face Hub\nManage authentication with the `hf auth` command\nUpload files or entire folders to the Hub\nSync local directories with Hub repositories",
+    "setup": "Terminal\nCopy\n`curl -LsSf https://hf.co/cli/install.sh | bash -s.`\n`git clone https://github.com/huggingface/skills`",
+    "usage": "```\nUse the Hugging Face Hub CLI (`hf`) to [ACTION, e.g., download a model, upload a dataset, list files in a repo]. Replace [REPO_ID], [FILE_PATH], or [OPTIONS] with your specific details. Example: `hf download [REPO_ID] --local-dir [FILE_PATH]` or `hf upload [REPO_ID] --path [FILE_PATH] --repo-type [dataset/model]`.\n```\nCopy\n\n```\n```bash\n# Downloading a model from the Hugging Face Hub\nhf download mistralai/Mistral-7B-v0.1 --local-dir ./models/mistral-7b\n\n# Uploading a dataset to a Hugging Face repo\nhf upload my-username/my-dataset --path ./data/processed --repo-type dataset\n\n# Listing files in a model repository\nhf ls t5-small --repo-type model\n```\n\n**Output:**\n```\nDownloading (…) tokenizer.json: 100%|██████████| 1.20M/1.20M [00:01<00:00, 1.12MB/s]\nDownloading (…) config.json: 100%|██████████| 1.10k/1.10k [00:00<00:00, 1.05kB/s]\nDownloading pytorch_model.bin: 100%|██████████| 456M/456M [02:30<00:00, 3.02MB/s]\n\nFiles in `t5-small` (model):\n- config.json\n- pytorch_model.bin\n- spiece.model\n- tokenizer.json\n- tokenizer_config.json\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "hf-cli#main-content",
+      "hf-cli#overview",
+      "hf-cli#setup",
+      "hf-cli#examples",
+      "hf-cli#related",
+      "agent-dx-cli-scale",
+      "base44-cli"
+    ],
+    "overview_vi": "The hf-cli skill integrates the Hugging Face Hub CLI directly into your AI agent, enabling full command-line access to Hub operations. Agents can download models and datasets, upload files, manage repositories and buckets, launch Spaces, and execute cloud compute jobs—all through the hf command. The skill is auto-generated from your locally installed CLI, ensuring it stays synchronized with the latest Hub features and commands. This is the recommended first skill to install when giving your agent access to Hugging Face infrastructure.\nDownload datasets from the Hugging Face Hub\nManage authentication with the `hf auth` command\nUpload files or entire folders to the Hub\nSync local directories with Hub repositories",
+    "setup_vi": "Terminal\nCopy\n`curl -LsSf https://hf.co/cli/install.sh | bash -s.`\n`git clone https://github.com/huggingface/skills`",
+    "usage_vi": "```\nUse the Hugging Face Hub CLI (`hf`) to [ACTION, e.g., download a model, upload a dataset, list files in a repo]. Replace [REPO_ID], [FILE_PATH], or [OPTIONS] with your specific details. Example: `hf download [REPO_ID] --local-dir [FILE_PATH]` or `hf upload [REPO_ID] --path [FILE_PATH] --repo-type [dataset/model]`.\n```\nCopy\n\n```\n```bash\n# Downloading a model from the Hugging Face Hub\nhf download mistralai/Mistral-7B-v0.1 --local-dir ./models/mistral-7b\n\n# Uploading a dataset to a Hugging Face repo\nhf upload my-username/my-dataset --path ./data/processed --repo-type dataset\n\n# Listing files in a model repository\nhf ls t5-small --repo-type model\n```\n\n**Output:**\n```\nDownloading (…) tokenizer.json: 100%|██████████| 1.20M/1.20M [00:01<00:00, 1.12MB/s]\nDownloading (…) config.json: 100%|██████████| 1.10k/1.10k [00:00<00:00, 1.05kB/s]\nDownloading pytorch_model.bin: 100%|██████████| 456M/456M [02:30<00:00, 3.02MB/s]\n\nFiles in `t5-small` (model):\n- config.json\n- pytorch_model.bin\n- spiece.model\n- tokenizer.json\n- tokenizer_config.json\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:20:12.821971Z",
+    "http_status": 200,
+    "content_hash": "96d51c9ddce43009cce42d904263013827f03c790879e5cc29b30305982e0437",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hf-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hf-cli.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "hf-cli: Hugging Face Hub CLI for Agents",
+  "short_description_vi": "The Hugging Face Hub CLI tool `hf` provides commands for interacting with the Hugging Face Hub, replacing the deprecated `huggingface-cli`. It is designed for developers who need a command line interface for downloading, uploading, and managing files in the Hub."
+}

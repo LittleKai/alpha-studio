@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/generative-ai-marketing-portal",
+  "slug": "generative-ai-marketing-portal",
+  "name": "Generative Ai Marketing Portal",
+  "headline": "AI Marketing Portal: Generative Content &",
+  "short_description": "AWS CDK deployment for a generative AI-powered marketing portal that creates and distributes personalized content using Amazon Bedrock, Personalize, and Pinpoint.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "aws-samples",
+  "install_command": "git clone https://github.com/aws-samples/generative-ai-marketing-portal.git",
+  "source_repo_url": "https://github.com/aws-samples/generative-ai-marketing-portal",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill deploys a complete marketing content generation platform leveraging Amazon Bedrock for generative AI, Amazon Personalize for audience segmentation, and Amazon Pinpoint with SES for multi-channel distribution. It provides a web portal with Cognito authentication where marketers can generate personalized content and send campaigns via email and SMS. The solution uses CDK for infrastructure-as-code deployment and includes Lambda functions, Langchain integration, and batch processing capabilities. Ideal for teams needing to automate marketing content creation and distribution workflows on AWS infrastructure.\nGenerate personalized email campaigns at scale using Claude AI models\nCreate segmented audience campaigns based on predicted conversion probability\nDeploy multi-channel marketing communications via email and SMS simultaneously\nBuild custom marketing portals with authentication and content management\nThis CDK deployment script sets up a marketing portal that leverages generative AI to create and distribute content. The portal is designed for **TechInnovate Solutions**, a company in the **technology sector**. The AI generates blog posts, social media updates, and email campaigns based on data provided by the marketing team.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aws-samples/generative-ai-marketing-portal`",
+    "usage": "```\nCreate a CDK deployment script for a marketing portal that uses generative AI to create and distribute content. The portal should be tailored for [COMPANY], a company in the [INDUSTRY] sector. The AI should be able to generate blog posts, social media updates, and email campaigns based on [DATA] provided by the marketing team. Ensure the deployment includes necessary security measures and scalability features.\n```\nCopy\n\n```\n# CDK Deployment Script for Generative AI Marketing Portal",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "generative-ai-marketing-portal#main-content",
+      "generative-ai-marketing-portal#overview",
+      "generative-ai-marketing-portal#setup",
+      "generative-ai-marketing-portal#examples",
+      "generative-ai-marketing-portal#tools",
+      "generative-ai-marketing-portal#mcp",
+      "generative-ai-marketing-portal#related",
+      "marketingskills",
+      "copywriting",
+      "instagram-scraper-tool"
+    ],
+    "overview_vi": "Kỹ năng này triển khai một nền tảng tạo nội dung marketing hoàn chỉnh tích hợp Amazon Bedrock cho AI tạo sinh, Amazon Personalize để phân khúc đối tượng và Amazon Pinpoint kèm SES để phân phối đa kênh. Hệ thống cung cấp giao diện web xác thực bằng Cognito giúp các nhà tiếp thị tạo nội dung cá nhân hóa và chạy chiến dịch gửi email/SMS tự động. Giải pháp sử dụng mã nguồn hạ tầng CDK, tích hợp các Lambda function, thư viện Langchain và cơ chế xử lý hàng loạt. Rất lý tưởng cho doanh nghiệp muốn tự động hóa luồng phân phối tiếp thị trên đám mây AWS.",
+    "setup_vi": "Vui lòng kiểm tra GitHub repository để xem hướng dẫn cấu hình thủ công:\n`git clone https://github.com/aws-samples/generative-ai-marketing-portal`",
+    "usage_vi": "Viết mã script triển khai CDK cho cổng thông tin tiếp thị sử dụng trí tuệ nhân tạo để sinh và phân phối nội dung tùy chỉnh theo lĩnh vực doanh nghiệp."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:22.807681Z",
+    "http_status": 200,
+    "content_hash": "05aa76f8a07ddfb18e842c6db6322ec87bfbd7137846e12ff022c018b48a66ae",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\generative-ai-marketing-portal.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\generative-ai-marketing-portal.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cổng thông tin Marketing Generative AI - Cá nhân hóa nội dung đa kênh",
+  "short_description_vi": "Triển khai hạ tầng AWS CDK cho cổng thông tin tiếp thị ứng dụng AI tạo sinh, tự động tạo và phân phối nội dung cá nhân hóa bằng Amazon Bedrock, Personalize và Pinpoint."
+}

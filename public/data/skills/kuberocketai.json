@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kuberocketai",
+  "slug": "kuberocketai",
+  "name": "KubeRocketAI",
+  "headline": "KubeRocketAI - AI-Driven Software Development",
+  "short_description": "KubeRocketAI is a declarative framework for AI-driven software development. It enables teams to define, validate, and orchestrate AI agents as code. This makes the software development lifecycle (SDLC) transparent, auditable, and CI/CD-ready. It integrates with tools like VSCode, Cursor, and Windsurf, benefiting operations teams by automating and streamlining software development workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "140 min",
+  "author": "KubeRocketCI",
+  "install_command": "git clone https://github.com/KubeRocketCI/kuberocketai.git",
+  "source_repo_url": "https://github.com/KubeRocketCI/kuberocketai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "cursor",
+    "ai-as-code",
+    "agentic-framework",
+    "agents",
+    "agentic-ai",
+    "software-development",
+    "vscode",
+    "windsurf",
+    "kuberocketci",
+    "kuberocketai",
+    "claude-code",
+    "sdlc-as-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "KubeRocketAI solves the agent scaling problem by bringing Pipeline-as-Code principles to AI agent management. Teams define agents in version-controlled Markdown files that integrate seamlessly with IDEs like VSCode and Cursor, as well as CI/CD workflows. The framework includes 8+ agents, 32+ tasks, 20+ templates, and 14+ data files out of the box. It provides two deployment modes: focused context for IDE development and full context bundling for web chat tools. Built-in validation ensures agent configurations work consistently across environments before deployment across teams and projects.\nShare AI agent configurations across teams via version control instead of copy-pasting prompts\nDeploy the same agent definition to multiple platforms: IDE, CI pipeline, and web chat interfaces\nMaintain agent libraries across multiple repositories with project-specific customization\nAutomate code review, documentation generation, and analysis in CI/CD workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/KubeRocketCI/kuberocketai`",
+    "usage": "```\nGenerate a KubeRocketAI manifest for deploying an AI agent that [TASK_DESCRIPTION]. The agent should use [MODEL_NAME] and include [ADDITIONAL_RESOURCES] like databases or APIs. Validate the manifest with `kuberocketai validate` and deploy it to a [NAMESPACE] using `kuberocketai apply`. Ensure the agent has [PERMISSIONS] and [MONITORING] configured.\n```\nCopy\n\n```\n```yaml\napiVersion: kuberocket.ai/v1alpha1\nkind: AIAgent\nmetadata:\n  name: code-review-agent\n  namespace: dev-team\nspec:\n  model:\n    name: \"mistral-7b-instruct\"\n    provider: \"huggingface\"\n    parameters:\n      temperature: 0.3\n      max_tokens: 2048\n  tasks:\n    - name: \"code-review\"\n      description: \"Review pull requests for security vulnerabilities, style issues, and best practices.\"\n      input:\n        source: \"github\"\n        repository: \"acme-corp/web-app\"\n        branch: \"main\"\n        file_patterns: [\"*.py\", \"*.js\"]\n      output:\n        format: \"markdown\"\n        destination: \"github-pr-comments\"\n  resources:\n    memory: \"4Gi\"\n    cpu: \"2\"\n    gpu: \"1\"\n  permissions:\n    - apiGroups: [\"\"]\n      resources: [\"pods\", \"services\"]\n      verbs: [\"get\", \"list\", \"watch\"]\n    - apiGroups: [\"batch\"]\n      resources: [\"jobs\"]\n      verbs: [\"create\", \"get\"]\n  monitoring:\n    metrics:\n      - name: \"agent_latency\"\n        description: \"Time taken to process a code review request\"\n      - name: \"agent_errors\"\n        description: \"Number of errors encountered during processing\"\n    alerts:\n      - name: \"high-latency-alert\"\n        threshold: 30000\n        severity: \"warning\"\n```\n\n### Validation Output:\n```\n✅ Manifest validated successfully for 'code-review-agent'\n⚠️ Warning: GPU resource request exceeds cluster capacity (available: 0)\n🔧 Suggestion: Adjust `gpu: \"1\"` to `gpu: \"0\"` or request a GPU-enabled node pool.\n```\n\n### Deployment Output:\n```\n🚀 Deploying 'code-review-agent' to namespace 'dev-team'...\n✅ Agent deployed successfully!\n📊 Monitoring dashboard: http://grafana.dev-team.svc.cluster.local/d/kuberocketai/code-review-agent\n🔗 GitHub integration: https://github.com/acme-corp/web-app/settings/integrations/kuberocketai\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kuberocketai#main-content",
+      "kuberocketai#overview",
+      "kuberocketai#setup",
+      "kuberocketai#examples",
+      "kuberocketai#tools",
+      "kuberocketai#mcp",
+      "kuberocketai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "KubeRocketAI giải quyết bài toán mở rộng quy mô agent bằng cách áp dụng các nguyên lý Pipeline-as-Code vào việc quản lý AI agent. Các đội ngũ định nghĩa agent trong các file Markdown được quản lý phiên bản (version-controlled), tích hợp liền mạch với các IDE như VSCode và Cursor, cũng như các workflow CI/CD. Framework này cung cấp sẵn (out of the box) hơn 8 agent, 32 task, 20 template và 14 file dữ liệu. Nó hỗ trợ hai chế độ triển khai: focused context cho việc phát triển trên IDE và đóng gói toàn bộ ngữ cảnh (full context bundling) cho các công cụ web chat. Tính năng validate tích hợp sẵn giúp đảm bảo các cấu hình agent hoạt động nhất quán trên các môi trường trước khi triển khai rộng rãi cho các đội ngũ và dự án.\nChia sẻ cấu hình AI agent giữa các đội ngũ thông qua hệ thống quản lý phiên bản (version control) thay vì sao chép và dán prompt\nTriển khai cùng một định nghĩa agent lên nhiều nền tảng: IDE, CI pipeline và giao diện web chat\nDuy trì các thư viện agent trên nhiều repository với khả năng tùy biến riêng cho từng dự án\nTự động hóa việc review code, tạo tài liệu và phân tích trong các workflow CI/CD",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/KubeRocketCI/kuberocketai`",
+    "usage_vi": "```\nTạo một manifest KubeRocketAI để triển khai một AI agent thực hiện [TASK_DESCRIPTION]. Agent này sẽ sử dụng [MODEL_NAME] và đi kèm các [ADDITIONAL_RESOURCES] như cơ sở dữ liệu hoặc API. Validate manifest bằng lệnh `kuberocketai validate` và triển khai nó vào một [NAMESPACE] bằng lệnh `kuberocketai apply`. Đảm bảo agent đã được cấu hình [PERMISSIONS] và [MONITORING].\n```\nCopy\n\n```yaml\napiVersion: kuberocket.ai/v1alpha1\nkind: AIAgent\nmetadata:\n  name: code-review-agent\n  namespace: dev-team\nspec:\n  model:\n    name: \"mistral-7b-instruct\"\n    provider: \"huggingface\"\n    parameters:\n      temperature: 0.3\n      max_tokens: 2048\n  tasks:\n    - name: \"code-review\"\n      description: \"Review các pull request để phát hiện lỗ hổng bảo mật, lỗi định dạng code và kiểm tra các best practice.\"\n      input:\n        source: \"github\"\n        repository: \"acme-corp/web-app\"\n        branch: \"main\"\n        file_patterns: [\"*.py\", \"*.js\"]\n      output:\n        format: \"markdown\"\n        destination: \"github-pr-comments\"\n  resources:\n    memory: \"4Gi\"\n    cpu: \"2\"\n    gpu: \"1\"\n  permissions:\n    - apiGroups: [\"\"]\n      resources: [\"pods\", \"services\"]\n      verbs: [\"get\", \"list\", \"watch\"]\n    - apiGroups: [\"batch\"]\n      resources: [\"jobs\"]\n      verbs: [\"create\", \"get\"]\n  monitoring:\n    metrics:\n      - name: \"agent_latency\"\n        description: \"Thời gian xử lý một yêu cầu review code\"\n      - name: \"agent_errors\"\n        description: \"Số lượng lỗi gặp phải trong quá trình xử lý\"\n    alerts:\n      - name: \"high-latency-alert\"\n        threshold: 30000\n        severity: \"warning\"\n```\n\n### Validation Output:\n```\n✅ Manifest đã được validate thành công cho 'code-review-agent'\n⚠️ Warning: Yêu cầu tài nguyên GPU vượt quá dung lượng của cluster (hiện có: 0)\n🔧 Suggestion: Điều chỉnh `gpu: \"1\"` thành `gpu: \"0\"` hoặc yêu cầu một node pool hỗ trợ GPU.\n```\n\n### Deployment Output:\n```\n🚀 Đang triển khai 'code-review-agent' vào namespace 'dev-team'...\n✅ Triển khai agent thành công!\n📊 Monitoring dashboard: http://grafana.dev-team.svc.cluster.local/d/kuberocketai/code-review-agent\n🔗 GitHub integration: https://github.com/acme-corp/web-app/settings/integrations/kuberocketai\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:29:07.902235Z",
+    "http_status": 200,
+    "content_hash": "eb507e0779f82993373ea574a8991d35ac634246295ded84343fe6c389938ff1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kuberocketai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kuberocketai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "KubeRocketAI - Phát triển phần mềm thúc đẩy bởi AI",
+  "short_description_vi": "KubeRocketAI là một declarative framework cho việc phát triển phần mềm thúc đẩy bởi AI. Framework này cho phép các đội ngũ định nghĩa, validate và điều phối (orchestrate) các AI agent dưới dạng mã nguồn (as code). Nhờ đó, vòng đời phát triển phần mềm (SDLC) trở nên minh bạch, có thể kiểm toán (auditable) và sẵn sàng cho CI/CD. KubeRocketAI tích hợp mượt mà với các công cụ như VSCode, Cursor và Windsurf, giúp các đội ngũ vận hành (operations) tự động hóa và tối ưu hóa luồng quy trình phát triển phần mềm."
+}

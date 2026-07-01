@@ -1,0 +1,53 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/search-skill",
+  "slug": "search-skill",
+  "name": "Related Skills",
+  "headline": "Tavily Search: Web Search for AI Agents",
+  "short_description": "This skill allows you to search the web and get relevant results optimized for LLM consumption. It supports various search depth modes and includes advanced filtering options.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "tavily-ai",
+  "install_command": "git clone https://github.com/tavily-ai/skills",
+  "source_repo_url": "https://github.com/tavily-ai/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "search",
+    "web-search"
+  ],
+  "sections": {
+    "overview": "Tavily Search Skill enables AI agents to find relevant web information and return results optimized for language model consumption. The skill supports configurable search depths, domain filtering, and time range constraints to refine queries. It integrates with Claude Code, Cursor, and other AI agents through the Tavily CLI, requiring authentication with a Tavily API key. Use it as the first step in research workflows before extracting specific content from URLs or crawling websites for comprehensive information gathering.\nRetrieve search results with relevant snippets for content generation.\nFilter search results by date, country, and other criteria.\nUse automatic OAuth for hassle-free authentication while searching.",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/tavily-ai/skills --skill search`\n`git clone https://github.com/tavily-ai/skills`",
+    "usage": "```\nSearch the web for [TOPIC] with a focus on [DATA_TYPE] and return the most relevant results. Use a [SEARCH_DEPTH] search depth and apply filters for [FILTER_CRITERIA]. Prioritize authoritative sources and summarize key findings in a structured format.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "search-skill#main-content",
+      "search-skill#overview",
+      "search-skill#setup",
+      "search-skill#examples",
+      "search-skill#related"
+    ],
+    "overview_vi": "Tavily Search Skill enables AI agents to find relevant web information and return results optimized for language model consumption. The skill supports configurable search depths, domain filtering, and time range constraints to refine queries. It integrates with Claude Code, Cursor, and other AI agents through the Tavily CLI, requiring authentication with a Tavily API key. Use it as the first step in research workflows before extracting specific content from URLs or crawling websites for comprehensive information gathering.\nRetrieve search results with relevant snippets for content generation.\nFilter search results by date, country, and other criteria.\nUse automatic OAuth for hassle-free authentication while searching.",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/tavily-ai/skills --skill search`\n`git clone https://github.com/tavily-ai/skills`",
+    "usage_vi": "```\nSearch the web for [TOPIC] with a focus on [DATA_TYPE] and return the most relevant results. Use a [SEARCH_DEPTH] search depth and apply filters for [FILTER_CRITERIA]. Prioritize authoritative sources and summarize key findings in a structured format.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:59:15.489604Z",
+    "http_status": 200,
+    "content_hash": "83a9c873be7753f0faee833fb598715f9e7061d82a5892280f48c5b3a3f9bea1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\search-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\search-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Tavily Search: Web Search for AI Agents",
+  "short_description_vi": "This skill allows you to search the web and get relevant results optimized for LLM consumption. It supports various search depth modes and includes advanced filtering options."
+}

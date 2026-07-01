@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/avatar-video",
+  "slug": "avatar-video",
+  "name": "ComfyUI Retro Anime Skill",
+  "headline": "Avatar Video: AI Avatar Video Generation",
+  "short_description": "The avatar-video skill allows users to generate and incorporate personalized avatar videos into their applications. It is designed for developers looking to enhance user engagement through interactive media.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "heygen-com",
+  "install_command": "git clone https://github.com/heygen-com/skills",
+  "source_repo_url": "https://github.com/heygen-com/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "video",
+    "media-generation",
+    "avatar"
+  ],
+  "sections": {
+    "overview": "The avatar-video skill transforms a photo into a reusable digital avatar that delivers scripted video messages. It works by first creating a persistent avatar identity from your photo, then generating videos where that avatar speaks your script with synchronized lip-sync. The skill handles script generation, video rendering, and returns a shareable link—ideal for developers building personalized video experiences, marketing automation, or interactive applications. Authentication supports both API key and OAuth modes, and videos can be generated in 175+ languages with voice cloning.\nGenerate personalized avatar videos for user profiles\nEnhance marketing materials with unique video content\nCreate interactive tutorials using avatars",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/heygen-com/skills --skill avatar-video`\n`git clone https://github.com/heygen-com/skills`",
+    "usage": "```\nGenerate a personalized avatar video for [COMPANY], [INDUSTRY], using the following script: '[SCRIPT_TEXT]'. The avatar should match the tone of [TONE: professional/friendly/energetic]. Use a [STYLE: realistic/cartoon/3D] avatar and export it in [FORMAT: MP4/MPG/WEBM] with dimensions [RESOLUTION: 1080p/720p/480p].\n```\nCopy\n\n```\n# Personalized Avatar Video for GreenEarth Solutions\n\n**Generated Avatar Video Details:**\n- **Company:** GreenEarth Solutions\n- **Industry:** Sustainable Technology\n- **Script Text:** \"Join us in building a greener future. Our innovative solar solutions power homes and businesses sustainably.\"\n- **Tone:** Professional\n- **Style:** Realistic\n- **Format:** MP4\n- **Resolution:** 1080p\n\n### Preview:\n![Avatar Video Preview](https://example.com/avatar-video-preview.jpg)\n\n**Video Breakdown:**\n- **Duration:** 30 seconds\n- **Avatar:** Professional, neutral expression\n- **Background:** Clean, corporate office setting\n- **Text Overlay:** \"GreenEarth Solutions – Powering Tomorrow, Today\"\n\n**Usage Suggestions:**\n- Embed in company website homepage\n- Share on LinkedIn for marketing campaigns\n- Use in email newsletters for product updates\n\n**File Download:** [Download Avatar Video](https://example.com/greenearth-avatar-video.mp4)\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "avatar-video#main-content",
+      "avatar-video#overview",
+      "avatar-video#setup",
+      "avatar-video#examples",
+      "avatar-video#related",
+      "comfyui-retro-anime-skill"
+    ],
+    "overview_vi": "The avatar-video skill transforms a photo into a reusable digital avatar that delivers scripted video messages. It works by first creating a persistent avatar identity from your photo, then generating videos where that avatar speaks your script with synchronized lip-sync. The skill handles script generation, video rendering, and returns a shareable link—ideal for developers building personalized video experiences, marketing automation, or interactive applications. Authentication supports both API key and OAuth modes, and videos can be generated in 175+ languages with voice cloning.\nGenerate personalized avatar videos for user profiles\nEnhance marketing materials with unique video content\nCreate interactive tutorials using avatars",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/heygen-com/skills --skill avatar-video`\n`git clone https://github.com/heygen-com/skills`",
+    "usage_vi": "```\nGenerate a personalized avatar video for [COMPANY], [INDUSTRY], using the following script: '[SCRIPT_TEXT]'. The avatar should match the tone of [TONE: professional/friendly/energetic]. Use a [STYLE: realistic/cartoon/3D] avatar and export it in [FORMAT: MP4/MPG/WEBM] with dimensions [RESOLUTION: 1080p/720p/480p].\n```\nCopy\n\n```\n# Personalized Avatar Video for GreenEarth Solutions\n\n**Generated Avatar Video Details:**\n- **Company:** GreenEarth Solutions\n- **Industry:** Sustainable Technology\n- **Script Text:** \"Join us in building a greener future. Our innovative solar solutions power homes and businesses sustainably.\"\n- **Tone:** Professional\n- **Style:** Realistic\n- **Format:** MP4\n- **Resolution:** 1080p\n\n### Preview:\n![Avatar Video Preview](https://example.com/avatar-video-preview.jpg)\n\n**Video Breakdown:**\n- **Duration:** 30 seconds\n- **Avatar:** Professional, neutral expression\n- **Background:** Clean, corporate office setting\n- **Text Overlay:** \"GreenEarth Solutions – Powering Tomorrow, Today\"\n\n**Usage Suggestions:**\n- Embed in company website homepage\n- Share on LinkedIn for marketing campaigns\n- Use in email newsletters for product updates\n\n**File Download:** [Download Avatar Video](https://example.com/greenearth-avatar-video.mp4)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:34:22.829779Z",
+    "http_status": 200,
+    "content_hash": "95b1b0af4729eb45c6685b1c0efd76f75125a125b309986468030efa535e4c4d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\avatar-video.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\avatar-video.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Avatar Video: AI Avatar Video Generation",
+  "short_description_vi": "The avatar-video skill allows users to generate and incorporate personalized avatar videos into their applications. It is designed for developers looking to enhance user engagement through interactive media."
+}

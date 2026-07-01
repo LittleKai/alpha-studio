@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ai-analyst-agent",
+  "slug": "ai-analyst-agent",
+  "name": "Ai Analyst Agent",
+  "headline": "AI Analyst Agent for Business Data Insights",
+  "short_description": "The ai-analyst-agent helps users to interact with business data effortlessly using natural language. Generate SQL queries and visualizations without any prior SQL knowledge, while receiving AI-driven insights and recommendations to enhance decision-making.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "sorin177",
+  "install_command": "claude install sorin177/ai-analyst-agent",
+  "source_repo_url": "https://github.com/sorin177/ai-analyst-agent",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "data-visualization",
+    "analytics",
+    "business-intelligence",
+    "ai-assistant",
+    "sql-generation"
+  ],
+  "sections": {
+    "overview": "AI Analyst Agent transforms how teams interact with business data by accepting natural language questions and automatically generating SQL queries, visualizations, and AI-driven insights. Built on Python, MySQL, Streamlit, and OpenAI's GPT-4, it eliminates the need for SQL knowledge while providing actionable recommendations. Users simply ask questions like 'What are my sales for the last quarter?' and receive generated queries, dynamic visualizations via Plotly, and analysis recommendations. The skill solves the accessibility gap for non-technical users who need to make data-driven decisions quickly and independently.\nGenerate SQL queries from plain English questions\nCreate visualizations for business data\nReceive actionable insights based on data analysis\nAutomate data reporting processes",
+    "setup": "Terminal\nCopy\n`claude install sorin177/ai-analyst-agent`\n`git clone https://github.com/sorin177/ai-analyst-agent`",
+    "usage": "```\nAct as an AI analyst agent. I have the following business data: [DATA_SOURCE_OR_DESCRIPTION]. My goal is to [SPECIFIC_ANALYSIS_GOAL, e.g., 'identify underperforming ad campaigns in Q3 2024']. Generate a SQL query to extract the relevant data, then create a visualization (e.g., bar chart, line graph) to highlight key insights. Finally, provide 2-3 actionable recommendations based on the findings. Format the output as: 1) SQL Query, 2) Visualization Code (use Python with matplotlib/seaborn or JavaScript with Chart.js), 3) Insights, 4) Recommendations.\n```\nCopy\n\n```\n### SQL Query\n```sql\nSELECT campaign_name, impressions, clicks, spend, conversions, ROUND((conversions / clicks) * 100, 2) AS conversion_rate\nFROM ad_campaigns\nWHERE campaign_status = 'active'\n  AND start_date BETWEEN '2024-07-01' AND '2024-09-30'\n  AND spend > 1000\nORDER BY conversion_rate ASC;\n```\n\n### Visualization Code (Python with matplotlib)\n```python\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\n# Sample data (replace with actual query results)\ndata = {\n    'campaign_name': ['Summer Sale', 'Holiday Boost', 'New Product Launch', 'Back to School'],\n    'conversion_rate': [1.2, 0.8, 3.5, 2.1],\n    'spend': [5000, 8000, 12000, 6500]\n}\ndf = pd.DataFrame(data)\n\nplt.figure(figsize=(10, 6))\nplt.bar(df['campaign_name'], df['conversion_rate'], color=['red' if x < 2 else 'green' for x in df['conversion_rate']])\nplt.title('Conversion Rates by Campaign (Q3 2024)', fontsize=14)\nplt.xlabel('Campaign Name', fontsize=12)\nplt.ylabel('Conversion Rate (%)', fontsize=12)\nplt.xticks(rotation=45)\nplt.grid(axis='y', linestyle='--', alpha=0.7)\nplt.tight_layout()\nplt.show()\n```\n\n### Insights\n1. **Underperformance Alert**: The 'Holiday Boost' campaign has the lowest conversion rate (0.8%) despite being the second-highest spend ($8,000). This suggests a misalignment between ad creative and audience targeting.\n2. **High ROI Opportunity**: The 'New Product Launch' campaign stands out with a 3.5% conversion rate and $12,000 spend, indicating strong performance that could be scaled further.\n3. **Budget Reallocation**: The 'Summer Sale' campaign ($5,000 spend) underperforms in conversion rate (1.2%) but may benefit from creative refreshes or audience segmentation.\n\n### Recommendations\n1. **Pause or Optimize 'Holiday Boost'**: Allocate $4,000 of its budget to the 'New Product Launch' campaign and reallocate the remaining $4,000 to test new creatives for 'Summer Sale' with a focus on mobile users.\n2. **A/B Test Creatives**: Run a 2-week A/B test for 'Holiday Boost' using two new ad variants (video vs. carousel) to identify which format drives higher conversions.\n3. **Scale 'New Product Launch'**: Increase the daily budget for 'New Product Launch' by 30% ($3,600/month) and expand targeting to lookalike audiences based on past converters.\n\n*Note: Replace the sample data with your actual query results for precise insights.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "ai-analyst-agent#main-content",
+      "ai-analyst-agent#overview",
+      "ai-analyst-agent#setup",
+      "ai-analyst-agent#examples",
+      "ai-analyst-agent#tools",
+      "ai-analyst-agent#mcp",
+      "ai-analyst-agent#related",
+      "mindsdb",
+      "data-analyst-agent",
+      "hack-agent-server"
+    ],
+    "overview_vi": "AI Analyst Agent transforms how teams interact with business data by accepting natural language questions and automatically generating SQL queries, visualizations, and AI-driven insights. Built on Python, MySQL, Streamlit, and OpenAI's GPT-4, it eliminates the need for SQL knowledge while providing actionable recommendations. Users simply ask questions like 'What are my sales for the last quarter?' and receive generated queries, dynamic visualizations via Plotly, and analysis recommendations. The skill solves the accessibility gap for non-technical users who need to make data-driven decisions quickly and independently.\nGenerate SQL queries from plain English questions\nCreate visualizations for business data\nReceive actionable insights based on data analysis\nAutomate data reporting processes",
+    "setup_vi": "Terminal\nCopy\n`claude install sorin177/ai-analyst-agent`\n`git clone https://github.com/sorin177/ai-analyst-agent`",
+    "usage_vi": "```\nAct as an AI analyst agent. I have the following business data: [DATA_SOURCE_OR_DESCRIPTION]. My goal is to [SPECIFIC_ANALYSIS_GOAL, e.g., 'identify underperforming ad campaigns in Q3 2024']. Generate a SQL query to extract the relevant data, then create a visualization (e.g., bar chart, line graph) to highlight key insights. Finally, provide 2-3 actionable recommendations based on the findings. Format the output as: 1) SQL Query, 2) Visualization Code (use Python with matplotlib/seaborn or JavaScript with Chart.js), 3) Insights, 4) Recommendations.\n```\nCopy\n\n```\n### SQL Query\n```sql\nSELECT campaign_name, impressions, clicks, spend, conversions, ROUND((conversions / clicks) * 100, 2) AS conversion_rate\nFROM ad_campaigns\nWHERE campaign_status = 'active'\n  AND start_date BETWEEN '2024-07-01' AND '2024-09-30'\n  AND spend > 1000\nORDER BY conversion_rate ASC;\n```\n\n### Visualization Code (Python with matplotlib)\n```python\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\n# Sample data (replace with actual query results)\ndata = {\n    'campaign_name': ['Summer Sale', 'Holiday Boost', 'New Product Launch', 'Back to School'],\n    'conversion_rate': [1.2, 0.8, 3.5, 2.1],\n    'spend': [5000, 8000, 12000, 6500]\n}\ndf = pd.DataFrame(data)\n\nplt.figure(figsize=(10, 6))\nplt.bar(df['campaign_name'], df['conversion_rate'], color=['red' if x < 2 else 'green' for x in df['conversion_rate']])\nplt.title('Conversion Rates by Campaign (Q3 2024)', fontsize=14)\nplt.xlabel('Campaign Name', fontsize=12)\nplt.ylabel('Conversion Rate (%)', fontsize=12)\nplt.xticks(rotation=45)\nplt.grid(axis='y', linestyle='--', alpha=0.7)\nplt.tight_layout()\nplt.show()\n```\n\n### Insights\n1. **Underperformance Alert**: The 'Holiday Boost' campaign has the lowest conversion rate (0.8%) despite being the second-highest spend ($8,000). This suggests a misalignment between ad creative and audience targeting.\n2. **High ROI Opportunity**: The 'New Product Launch' campaign stands out with a 3.5% conversion rate and $12,000 spend, indicating strong performance that could be scaled further.\n3. **Budget Reallocation**: The 'Summer Sale' campaign ($5,000 spend) underperforms in conversion rate (1.2%) but may benefit from creative refreshes or audience segmentation.\n\n### Recommendations\n1. **Pause or Optimize 'Holiday Boost'**: Allocate $4,000 of its budget to the 'New Product Launch' campaign and reallocate the remaining $4,000 to test new creatives for 'Summer Sale' with a focus on mobile users.\n2. **A/B Test Creatives**: Run a 2-week A/B test for 'Holiday Boost' using two new ad variants (video vs. carousel) to identify which format drives higher conversions.\n3. **Scale 'New Product Launch'**: Increase the daily budget for 'New Product Launch' by 30% ($3,600/month) and expand targeting to lookalike audiences based on past converters.\n\n*Note: Replace the sample data with your actual query results for precise insights.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:24:23.345323Z",
+    "http_status": 200,
+    "content_hash": "0cac4cfb0af62aeea975bcc7fff0e03dfb6d9f4ccbadd31b520763a9052353d2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-analyst-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ai-analyst-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI Analyst Agent for Business Data Insights",
+  "short_description_vi": "The ai-analyst-agent helps users to interact with business data effortlessly using natural language. Generate SQL queries and visualizations without any prior SQL knowledge, while receiving AI-driven insights and recommendations to enhance decision-making."
+}

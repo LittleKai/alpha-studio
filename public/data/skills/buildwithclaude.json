@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/buildwithclaude",
+  "slug": "buildwithclaude",
+  "name": "react-native-best-practices",
+  "headline": "Buildwithclaude - Enhance Your Claude Experience",
+  "short_description": "Buildwithclaude is your go-to hub for discovering and utilizing Claude Skills, Agents, Commands, Hooks, Plugins, and Marketplace collections. Enhance your Claude Code experience with this comprehensive toolset.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "davepoon",
+  "install_command": "claude install davepoon/buildwithclaude",
+  "source_repo_url": "https://github.com/davepoon/buildwithclaude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "commands",
+    "cli-tool",
+    "plugins",
+    "claude",
+    "mcp"
+  ],
+  "sections": {
+    "overview": "buildwithclaude is a comprehensive directory and plugin management system designed for Claude Code users seeking to discover and integrate Skills, Agents, Commands, Hooks, and Plugins. The project provides a web-based interface for browsing available extensions, with sorting and filtering capabilities to help developers find the right tools for their needs. It includes a monorepo structure containing multiple plugins and a test harness to validate configurations. The system supports Docker deployment and maintains active development with regular updates to its core framework, making it suitable for developers who want to extend Claude's functionality in an organized, discoverable way.\nIntegrate custom commands into Claude workflows to automate repetitive tasks.\nExplore and implement plugins for enhanced functionality tailored to specific project needs.\nManage and deploy subagents for specialized tasks like security audits or code reviews.\nUtilize hooks for event-driven automation, such as notifications and automatic formatting.",
+    "setup": "Terminal\nCopy\n`claude install davepoon/buildwithclaude`\n`git clone https://github.com/davepoon/buildwithclaude`",
+    "usage": "```\nI want to build a Claude Skill that [DESCRIBE_SKILL]. Can you help me draft the initial code structure and provide a step-by-step guide to implement this skill using Buildwithclaude? Include any necessary [REQUIRED_COMPONENTS] and best practices for integration with Claude's ecosystem.\n```\nCopy\n\n```\nTo build a Claude Skill that automates customer support ticket categorization, you'll need to follow these steps:\n\n1. **Define the Skill's Purpose**: Clearly outline what the skill will do. For this example, the skill will categorize incoming support tickets into predefined categories like 'Technical Issue', 'Billing Question', 'Feature Request', etc.\n\n2. **Set Up the Development Environment**: Use Buildwithclaude to set up your development environment. This includes installing necessary tools and libraries, and configuring your workspace.\n\n3. **Create the Skill Structure**: Start by creating the basic structure of your skill. This includes defining the skill's name, description, and the commands it will respond to. For this example, you might create a command called 'categorize_ticket'.\n\n4. **Implement the Categorization Logic**: Write the code that will categorize the tickets. This could involve using natural language processing to analyze the content of the ticket and match it to the predefined categories. You might use a library like spaCy or NLTK for this.\n\n5. **Test the Skill**: Use Buildwithclaude's testing tools to thoroughly test your skill. This includes testing with a variety of ticket examples to ensure the categorization is accurate.\n\n6. **Deploy the Skill**: Once you're satisfied with the skill's performance, deploy it using Buildwithclaude. This will make it available for use within the Claude ecosystem.\n\n7. **Monitor and Improve**: After deployment, monitor the skill's performance and make any necessary improvements. This could involve retraining the categorization model with new data, or adjusting the skill's commands based on user feedback.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "buildwithclaude#main-content",
+      "buildwithclaude#overview",
+      "buildwithclaude#setup",
+      "buildwithclaude#examples",
+      "buildwithclaude#tools",
+      "buildwithclaude#mcp",
+      "buildwithclaude#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "buildwithclaude is a comprehensive directory and plugin management system designed for Claude Code users seeking to discover and integrate Skills, Agents, Commands, Hooks, and Plugins. The project provides a web-based interface for browsing available extensions, with sorting and filtering capabilities to help developers find the right tools for their needs. It includes a monorepo structure containing multiple plugins and a test harness to validate configurations. The system supports Docker deployment and maintains active development with regular updates to its core framework, making it suitable for developers who want to extend Claude's functionality in an organized, discoverable way.\nIntegrate custom commands into Claude workflows to automate repetitive tasks.\nExplore and implement plugins for enhanced functionality tailored to specific project needs.\nManage and deploy subagents for specialized tasks like security audits or code reviews.\nUtilize hooks for event-driven automation, such as notifications and automatic formatting.",
+    "setup_vi": "Terminal\nCopy\n`claude install davepoon/buildwithclaude`\n`git clone https://github.com/davepoon/buildwithclaude`",
+    "usage_vi": "```\nI want to build a Claude Skill that [DESCRIBE_SKILL]. Can you help me draft the initial code structure and provide a step-by-step guide to implement this skill using Buildwithclaude? Include any necessary [REQUIRED_COMPONENTS] and best practices for integration with Claude's ecosystem.\n```\nCopy\n\n```\nTo build a Claude Skill that automates customer support ticket categorization, you'll need to follow these steps:\n\n1. **Define the Skill's Purpose**: Clearly outline what the skill will do. For this example, the skill will categorize incoming support tickets into predefined categories like 'Technical Issue', 'Billing Question', 'Feature Request', etc.\n\n2. **Set Up the Development Environment**: Use Buildwithclaude to set up your development environment. This includes installing necessary tools and libraries, and configuring your workspace.\n\n3. **Create the Skill Structure**: Start by creating the basic structure of your skill. This includes defining the skill's name, description, and the commands it will respond to. For this example, you might create a command called 'categorize_ticket'.\n\n4. **Implement the Categorization Logic**: Write the code that will categorize the tickets. This could involve using natural language processing to analyze the content of the ticket and match it to the predefined categories. You might use a library like spaCy or NLTK for this.\n\n5. **Test the Skill**: Use Buildwithclaude's testing tools to thoroughly test your skill. This includes testing with a variety of ticket examples to ensure the categorization is accurate.\n\n6. **Deploy the Skill**: Once you're satisfied with the skill's performance, deploy it using Buildwithclaude. This will make it available for use within the Claude ecosystem.\n\n7. **Monitor and Improve**: After deployment, monitor the skill's performance and make any necessary improvements. This could involve retraining the categorization model with new data, or adjusting the skill's commands based on user feedback.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:55:49.122587Z",
+    "http_status": 200,
+    "content_hash": "6c2267926c0aff7f839d1d6b746be46133dab287413b0db8c014b75ab03a3c29",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\buildwithclaude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\buildwithclaude.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Buildwithclaude - Enhance Your Claude Experience",
+  "short_description_vi": "Buildwithclaude is your go-to hub for discovering and utilizing Claude Skills, Agents, Commands, Hooks, Plugins, and Marketplace collections. Enhance your Claude Code experience with this comprehensive toolset."
+}

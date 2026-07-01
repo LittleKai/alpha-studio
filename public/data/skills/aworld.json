@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aworld",
+  "slug": "aworld",
+  "name": "browser-use",
+  "headline": "AWorld: Multi-Agent Assistance Automation",
+  "short_description": "AWorld enables operations teams to build, evaluate, and train General Multi-Agent Assistance systems. It provides rich environments, intelligent agents, and continuous evolution capabilities. Connects to Python-based workflows and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "inclusionAI",
+  "install_command": "git clone https://github.com/inclusionAI/AWorld.git",
+  "source_repo_url": "https://github.com/inclusionAI/AWorld",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "browsecomp",
+    "rl-training",
+    "agent-learning",
+    "agent-runtime",
+    "agent-framework",
+    "xbench",
+    "world-model",
+    "gaia",
+    "mcp",
+    "environment"
+  ],
+  "sections": {
+    "overview": "AWorld is a framework designed for operations teams to build, evaluate, and train General Multi-Agent Assistance systems. The platform provides rich simulation environments, intelligent agent capabilities, and continuous evolution features that enable agents to improve over time. It integrates with Python-based workflows and supports Claude agents, making it suitable for teams developing complex multi-agent applications. AWorld includes command-line tools (aworld-cli), a core library (aworld), gateway components (aworld_gateway), and a skills library (aworld-skills) for rapid development. Teams use AWorld to create autonomous systems that can learn from interactions and adapt to operational requirements.\nAutomate the retrieval of real-time information from various online sources using intelligent agents.\nCreate multi-agent systems that collaborate to solve complex tasks in dynamic environments.\nTrain agents to adapt and improve their strategies based on past experiences and performance metrics.\nDeploy agents in custom environments to simulate real-world scenarios for testing and evaluation.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/inclusionAI/AWorld`",
+    "usage": "```\nUse AWorld to design a multi-agent system for [SPECIFIC_TASK, e.g., 'customer support ticket triage']. Define the roles of [AGENT_1, e.g., 'intake agent'], [AGENT_2, e.g., 'technical resolver'], and [AGENT_3, e.g., 'escalation coordinator']. Set evaluation criteria based on [METRICS, e.g., 'resolution time < 2 hours' and 'customer satisfaction > 4.5/5']. Train the system with [SAMPLE_DATA, e.g., '1000 historical tickets'] and iterate until the agents achieve [TARGET, e.g., '85% first-contact resolution'].\n```\nCopy\n\n```\n### Multi-Agent Customer Support System Design\n\n**Agent Roles:**\n1. **Intake Agent**: Uses a lightweight LLM to categorize tickets by issue type (billing, technical, account access) and urgency (low/medium/high). Trained on 2,500 historical tickets with 94% accuracy on validation data.\n2. **Technical Resolver**: A specialized agent with access to a knowledge base of 1,200 troubleshooting guides. Achieved 78% resolution rate on first contact for technical issues in the last 30 days.\n3. **Escalation Coordinator**: Monitors unresolved tickets and triggers human handoffs when resolution time exceeds 2 hours or customer sentiment drops below -0.5 (using sentiment analysis on ticket descriptions).\n\n**Evaluation Metrics:**\n- **First-Contact Resolution (FCR):** 82% (target: 85%)\n- **Average Resolution Time:** 1 hour 42 minutes (target: < 2 hours)\n- **Customer Satisfaction (CSAT):** 4.6/5 (target: > 4.5/5)\n\n**Training Iterations:**\n- **Initial Run:** Achieved 65% FCR with high false positives in billing categorization.\n- **Iteration 2:** Added 500 labeled billing tickets; improved billing categorization to 91% accuracy.\n- **Iteration 3:** Introduced sentiment-aware escalation rules; reduced escalations by 18% without increasing resolution time.\n\n**Next Steps:**\n- Deploy the system to a 10% pilot group of agents.\n- Monitor for edge cases where agents misclassify complex multi-issue tickets.\n- Schedule a review in 2 weeks to assess impact on team productivity and customer NPS scores.\n\n**Python Workflow Integration:**\n```python\nfrom aworld import AgentSystem\n\nsystem = AgentSystem(\n    agents=['intake', 'technical_resolver', 'escalation'],\n    evaluation_metrics=['fcr', 'resolution_time', 'csat']\n)\nsystem.train(data_path='tickets.csv', epochs=10)\nsystem.evaluate(validation_data='tickets_validation.csv')\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "aworld#main-content",
+      "aworld#overview",
+      "aworld#setup",
+      "aworld#examples",
+      "aworld#tools",
+      "aworld#mcp",
+      "aworld#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "AWorld is a framework designed for operations teams to build, evaluate, and train General Multi-Agent Assistance systems. The platform provides rich simulation environments, intelligent agent capabilities, and continuous evolution features that enable agents to improve over time. It integrates with Python-based workflows and supports Claude agents, making it suitable for teams developing complex multi-agent applications. AWorld includes command-line tools (aworld-cli), a core library (aworld), gateway components (aworld_gateway), and a skills library (aworld-skills) for rapid development. Teams use AWorld to create autonomous systems that can learn from interactions and adapt to operational requirements.\nAutomate the retrieval of real-time information from various online sources using intelligent agents.\nCreate multi-agent systems that collaborate to solve complex tasks in dynamic environments.\nTrain agents to adapt and improve their strategies based on past experiences and performance metrics.\nDeploy agents in custom environments to simulate real-world scenarios for testing and evaluation.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/inclusionAI/AWorld`",
+    "usage_vi": "```\nUse AWorld to design a multi-agent system for [SPECIFIC_TASK, e.g., 'customer support ticket triage']. Define the roles of [AGENT_1, e.g., 'intake agent'], [AGENT_2, e.g., 'technical resolver'], and [AGENT_3, e.g., 'escalation coordinator']. Set evaluation criteria based on [METRICS, e.g., 'resolution time < 2 hours' and 'customer satisfaction > 4.5/5']. Train the system with [SAMPLE_DATA, e.g., '1000 historical tickets'] and iterate until the agents achieve [TARGET, e.g., '85% first-contact resolution'].\n```\nCopy\n\n```\n### Multi-Agent Customer Support System Design\n\n**Agent Roles:**\n1. **Intake Agent**: Uses a lightweight LLM to categorize tickets by issue type (billing, technical, account access) and urgency (low/medium/high). Trained on 2,500 historical tickets with 94% accuracy on validation data.\n2. **Technical Resolver**: A specialized agent with access to a knowledge base of 1,200 troubleshooting guides. Achieved 78% resolution rate on first contact for technical issues in the last 30 days.\n3. **Escalation Coordinator**: Monitors unresolved tickets and triggers human handoffs when resolution time exceeds 2 hours or customer sentiment drops below -0.5 (using sentiment analysis on ticket descriptions).\n\n**Evaluation Metrics:**\n- **First-Contact Resolution (FCR):** 82% (target: 85%)\n- **Average Resolution Time:** 1 hour 42 minutes (target: < 2 hours)\n- **Customer Satisfaction (CSAT):** 4.6/5 (target: > 4.5/5)\n\n**Training Iterations:**\n- **Initial Run:** Achieved 65% FCR with high false positives in billing categorization.\n- **Iteration 2:** Added 500 labeled billing tickets; improved billing categorization to 91% accuracy.\n- **Iteration 3:** Introduced sentiment-aware escalation rules; reduced escalations by 18% without increasing resolution time.\n\n**Next Steps:**\n- Deploy the system to a 10% pilot group of agents.\n- Monitor for edge cases where agents misclassify complex multi-issue tickets.\n- Schedule a review in 2 weeks to assess impact on team productivity and customer NPS scores.\n\n**Python Workflow Integration:**\n```python\nfrom aworld import AgentSystem\n\nsystem = AgentSystem(\n    agents=['intake', 'technical_resolver', 'escalation'],\n    evaluation_metrics=['fcr', 'resolution_time', 'csat']\n)\nsystem.train(data_path='tickets.csv', epochs=10)\nsystem.evaluate(validation_data='tickets_validation.csv')\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:36:08.124947Z",
+    "http_status": 200,
+    "content_hash": "0f93bd28e8a60463e5e53cd02860b0b80b893e8763f68b44b3250a882d12cf6e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\aworld.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\aworld.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "AWorld: Multi-Agent Assistance Automation",
+  "short_description_vi": "AWorld enables operations teams to build, evaluate, and train General Multi-Agent Assistance systems. It provides rich environments, intelligent agents, and continuous evolution capabilities. Connects to Python-based workflows and supports Claude agents."
+}

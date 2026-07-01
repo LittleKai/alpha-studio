@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/harper-best-practices",
+  "slug": "harper-best-practices",
+  "name": "Upstash Skills",
+  "headline": "Harper Best Practices: Database & API Development",
+  "short_description": "These practices assist in building scalable, secure, and performant applications on Harper. They are aimed at developers involved in schema design, API management, and application deployment.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "harperfast",
+  "install_command": "git clone https://github.com/harperfast/skills",
+  "source_repo_url": "https://github.com/harperfast/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "harper",
+    "best",
+    "practices",
+    "development"
+  ],
+  "sections": {
+    "overview": "This skill provides structured guidelines for building applications on Harper, a backend platform. It covers schema design and data modeling, automatic API generation and querying, authentication and session handling, custom resource creation, and deployment to Harper Fabric. The skill organizes rules by priority—from schema and data design through infrastructure operations—helping developers make decisions that impact scalability and security. Reference these practices when designing database schemas, implementing REST or WebSocket APIs, handling authentication, optimizing data storage with vectors and blobs, or preparing applications for production deployment.\nDefining or modifying database schemas\nImplementing or extending REST/WebSocket APIs\nHandling authentication and session management\nWorking with custom resources and extensions",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/harperfast/skills --skill harper-best-practices`\n`git clone https://github.com/harperfast/skills`",
+    "usage": "```\nGenerate Harper best practices for [COMPONENT_TYPE] in [INDUSTRY]. Focus on [SPECIFIC_GOAL, e.g., security, scalability, or performance]. Include examples for [SCENARIO, e.g., high-traffic API endpoints or multi-tenant databases].\n```\nCopy\n\n```\n# Harper Best Practices for Secure API Design in Healthcare",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "harper-best-practices#main-content",
+      "harper-best-practices#overview",
+      "harper-best-practices#setup",
+      "harper-best-practices#examples",
+      "harper-best-practices#tools",
+      "harper-best-practices#related",
+      "notion-cli",
+      "macos-menubar-tuist-app",
+      "upstash-skills"
+    ],
+    "overview_vi": "This skill provides structured guidelines for building applications on Harper, a backend platform. It covers schema design and data modeling, automatic API generation and querying, authentication and session handling, custom resource creation, and deployment to Harper Fabric. The skill organizes rules by priority—from schema and data design through infrastructure operations—helping developers make decisions that impact scalability and security. Reference these practices when designing database schemas, implementing REST or WebSocket APIs, handling authentication, optimizing data storage with vectors and blobs, or preparing applications for production deployment.\nDefining or modifying database schemas\nImplementing or extending REST/WebSocket APIs\nHandling authentication and session management\nWorking with custom resources and extensions",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/harperfast/skills --skill harper-best-practices`\n`git clone https://github.com/harperfast/skills`",
+    "usage_vi": "```\nGenerate Harper best practices for [COMPONENT_TYPE] in [INDUSTRY]. Focus on [SPECIFIC_GOAL, e.g., security, scalability, or performance]. Include examples for [SCENARIO, e.g., high-traffic API endpoints or multi-tenant databases].\n```\nCopy\n\n```\n# Harper Best Practices for Secure API Design in Healthcare"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T17:56:53.532530Z",
+    "http_status": 200,
+    "content_hash": "5fefd07ff3ac596cc846f1b298abfba3db6d2306136ae87a9ac6b214620f8031",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\harper-best-practices.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\harper-best-practices.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Harper Best Practices: Database & API Development",
+  "short_description_vi": "These practices assist in building scalable, secure, and performant applications on Harper. They are aimed at developers involved in schema design, API management, and application deployment."
+}

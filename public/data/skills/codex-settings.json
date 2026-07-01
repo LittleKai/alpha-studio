@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codex-settings",
+  "slug": "codex-settings",
+  "name": "Codex Settings",
+  "headline": "Codex Settings - OpenAI Codex CLI Configurations",
+  "short_description": "OpenAI Codex CLI settings, configurations, and prompts for vibe coding. Enhances development workflows with reusable templates. Connects to model providers and integrates with Claude Code.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "feiskyer",
+  "install_command": "git clone https://github.com/feiskyer/codex-settings.git",
+  "source_repo_url": "https://github.com/feiskyer/codex-settings",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "litellm",
+    "agents",
+    "ai",
+    "claude-code",
+    "codex",
+    "claude-skills",
+    "spec-driven-development",
+    "vibe-coding",
+    "copilot",
+    "openai",
+    "agentic-ai"
+  ],
+  "sections": {
+    "overview": "Codex-settings provides a comprehensive collection of configurations and custom prompts designed to optimize OpenAI Codex CLI for development workflows. It supports multiple model providers including LiteLLM, ChatGPT, Azure OpenAI, and OpenRouter, allowing developers to choose their preferred AI backend. The repository includes pre-built custom prompts for common tasks like GitHub issue fixing, pull request review, UI engineering, and prompt creation. Skills—experimental instruction bundles—enable automated task execution, including Claude Code integration and long-running task automation. Easy installation via git clone or npx makes it accessible for developers seeking streamlined AI-assisted coding experiences.\nConfigure Codex CLI to work with GitHub Copilot, Azure OpenAI, or ChatGPT subscriptions\nUse pre-built prompts for GitHub issue analysis, PR review, and UI component creation\nAutomate development tasks with Claude Code through hands-off skill execution\nRun long-running complex tasks across multiple sessions with autonomous automation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/feiskyer/codex-settings`",
+    "usage": "```\nGenerate a Codex CLI configuration for [PROJECT_TYPE] that includes: (1) a [MODEL_PROVIDER] model preset with [PARAMETERS], (2) reusable vibe coding prompts for [COMMON_TASKS], and (3) integration hooks for [TOOLS]. Optimize for [PERFORMANCE_METRIC]. Output as a ready-to-use `codex.config.json` file with comments explaining each section.\n```\nCopy\n\n```\n```json\n{\n  \"model\": {\n    \"provider\": \"anthropic\",\n    \"model\": \"claude-3-5-sonnet-20241022\",\n    \"max_tokens\": 4096,\n    \"temperature\": 0.7,\n    \"top_p\": 0.95,\n    \"stop_sequences\": [\"\\n\\nHuman:\", \"\\n\\nAssistant:\"]\n  },\n  \"prompts\": {\n    \"vibe\": {\n      \"file_creation\": {\n        \"prefix\": \"Create a [FILE_TYPE] file for [PROJECT_NAME] with these requirements:\\n1. [REQUIREMENT_1]\\n2. [REQUIREMENT_2]\\n\\nStart with:\",\n        \"suffix\": \"\\n\\nEnsure the file follows [PROJECT_STYLE_GUIDE] and includes [STANDARD_SECTIONS].\"\n      },\n      \"refactor\": {\n        \"prefix\": \"Refactor this [CODE_LANGUAGE] code to improve [QUALITY_ATTRIBUTE] while preserving functionality:\\n```[CODE_LANGUAGE]\\n[CODE_SNIPPET]\\n```\\n\\nSuggested improvements:\",\n        \"suffix\": \"\\n\\nProvide the refactored code in a single code block with minimal changes.\"\n      }\n    }\n  },\n  \"integrations\": {\n    \"claude_code\": {\n      \"enabled\": true,\n      \"commands\": [\"codex run\", \"codex test\"],\n      \"file_watch\": [\"src/**/*.ts\", \"tests/**/*.spec.ts\"]\n    },\n    \"github_copilot\": {\n      \"enabled\": true,\n      \"snippet_prefix\": \"// CODEX: [SNIPPET_NAME]\"\n    }\n  },\n  \"performance\": {\n    \"cache_ttl\": 3600,\n    \"parallel_requests\": 4,\n    \"context_window\": 16384\n  }\n}\n```\n\n**Key Features Configured:**\n1. **Anthropic Model Preset**: Uses Claude 3.5 Sonnet with optimized parameters for code generation (temperature 0.7 for balanced creativity/precision).\n2. **Vibe Coding Prompts**: Predefined templates for common tasks like file creation and refactoring, with placeholders for dynamic inputs.\n3. **Claude Code Integration**: Auto-triggers Codex commands in your IDE and watches specific file patterns for changes.\n4. **Performance Tuning**: Caches responses for 1 hour and allows 4 parallel requests to speed up workflows.\n\n**Usage Example:**\nRun `codex run --prompt \"file_creation\" --params '{\"FILE_TYPE\":\"React component\",\"PROJECT_NAME\":\"Dashboard UI\",\"REQUIREMENT_1\":\"TypeScript with Tailwind CSS\",\"REQUIREMENT_2\":\"Include Storybook stories\"}'` to generate a new component with the configured style guide.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codex-settings#main-content",
+      "codex-settings#overview",
+      "codex-settings#setup",
+      "codex-settings#examples",
+      "codex-settings#tools",
+      "codex-settings#mcp",
+      "codex-settings#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Codex-settings provides a comprehensive collection of configurations and custom prompts designed to optimize OpenAI Codex CLI for development workflows. It supports multiple model providers including LiteLLM, ChatGPT, Azure OpenAI, and OpenRouter, allowing developers to choose their preferred AI backend. The repository includes pre-built custom prompts for common tasks like GitHub issue fixing, pull request review, UI engineering, and prompt creation. Skills—experimental instruction bundles—enable automated task execution, including Claude Code integration and long-running task automation. Easy installation via git clone or npx makes it accessible for developers seeking streamlined AI-assisted coding experiences.\nConfigure Codex CLI to work with GitHub Copilot, Azure OpenAI, or ChatGPT subscriptions\nUse pre-built prompts for GitHub issue analysis, PR review, and UI component creation\nAutomate development tasks with Claude Code through hands-off skill execution\nRun long-running complex tasks across multiple sessions with autonomous automation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/feiskyer/codex-settings`",
+    "usage_vi": "```\nGenerate a Codex CLI configuration for [PROJECT_TYPE] that includes: (1) a [MODEL_PROVIDER] model preset with [PARAMETERS], (2) reusable vibe coding prompts for [COMMON_TASKS], and (3) integration hooks for [TOOLS]. Optimize for [PERFORMANCE_METRIC]. Output as a ready-to-use `codex.config.json` file with comments explaining each section.\n```\nCopy\n\n```\n```json\n{\n  \"model\": {\n    \"provider\": \"anthropic\",\n    \"model\": \"claude-3-5-sonnet-20241022\",\n    \"max_tokens\": 4096,\n    \"temperature\": 0.7,\n    \"top_p\": 0.95,\n    \"stop_sequences\": [\"\\n\\nHuman:\", \"\\n\\nAssistant:\"]\n  },\n  \"prompts\": {\n    \"vibe\": {\n      \"file_creation\": {\n        \"prefix\": \"Create a [FILE_TYPE] file for [PROJECT_NAME] with these requirements:\\n1. [REQUIREMENT_1]\\n2. [REQUIREMENT_2]\\n\\nStart with:\",\n        \"suffix\": \"\\n\\nEnsure the file follows [PROJECT_STYLE_GUIDE] and includes [STANDARD_SECTIONS].\"\n      },\n      \"refactor\": {\n        \"prefix\": \"Refactor this [CODE_LANGUAGE] code to improve [QUALITY_ATTRIBUTE] while preserving functionality:\\n```[CODE_LANGUAGE]\\n[CODE_SNIPPET]\\n```\\n\\nSuggested improvements:\",\n        \"suffix\": \"\\n\\nProvide the refactored code in a single code block with minimal changes.\"\n      }\n    }\n  },\n  \"integrations\": {\n    \"claude_code\": {\n      \"enabled\": true,\n      \"commands\": [\"codex run\", \"codex test\"],\n      \"file_watch\": [\"src/**/*.ts\", \"tests/**/*.spec.ts\"]\n    },\n    \"github_copilot\": {\n      \"enabled\": true,\n      \"snippet_prefix\": \"// CODEX: [SNIPPET_NAME]\"\n    }\n  },\n  \"performance\": {\n    \"cache_ttl\": 3600,\n    \"parallel_requests\": 4,\n    \"context_window\": 16384\n  }\n}\n```\n\n**Key Features Configured:**\n1. **Anthropic Model Preset**: Uses Claude 3.5 Sonnet with optimized parameters for code generation (temperature 0.7 for balanced creativity/precision).\n2. **Vibe Coding Prompts**: Predefined templates for common tasks like file creation and refactoring, with placeholders for dynamic inputs.\n3. **Claude Code Integration**: Auto-triggers Codex commands in your IDE and watches specific file patterns for changes.\n4. **Performance Tuning**: Caches responses for 1 hour and allows 4 parallel requests to speed up workflows.\n\n**Usage Example:**\nRun `codex run --prompt \"file_creation\" --params '{\"FILE_TYPE\":\"React component\",\"PROJECT_NAME\":\"Dashboard UI\",\"REQUIREMENT_1\":\"TypeScript with Tailwind CSS\",\"REQUIREMENT_2\":\"Include Storybook stories\"}'` to generate a new component with the configured style guide.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:25.760563Z",
+    "http_status": 200,
+    "content_hash": "830ba73d95a5b57e25ceb899939ff174aecfa3d64d57e211e8ad5c64609ca2fb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codex-settings.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codex-settings.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Codex Settings - OpenAI Codex CLI Configurations",
+  "short_description_vi": "OpenAI Codex CLI settings, configurations, and prompts for vibe coding. Enhances development workflows with reusable templates. Connects to model providers and integrates with Claude Code."
+}

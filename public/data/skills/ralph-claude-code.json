@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ralph-claude-code",
+  "slug": "ralph-claude-code",
+  "name": "browser-use",
+  "headline": "Ralph Claude Code - Automate AI Development",
+  "short_description": "Autonomous AI development loop for Claude Code with intelligent exit detection. Enables developers to automate code generation, testing, and deployment. Integrates with Claude Code CLI and development workflows.",
+  "tier": "Gold",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "frankbria",
+  "install_command": "git clone https://github.com/frankbria/ralph-claude-code.git",
+  "source_repo_url": "https://github.com/frankbria/ralph-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-code-cli",
+    "ai-agents",
+    "development-tools",
+    "ai-development-tools",
+    "development-workflow",
+    "ai-agent",
+    "ai-development",
+    "ai"
+  ],
+  "sections": {
+    "overview": "ralph-claude-code is an automation skill that creates an autonomous development loop within Claude Code, enabling continuous code generation, testing, and deployment cycles. It integrates with the Claude Code CLI to automate repetitive development workflows while intelligently detecting when tasks are complete and exiting appropriately. The tool includes log rotation to prevent unbounded growth, session continuity management, and error detection capabilities. It supports configuration via .ralphrc files and CLI options, making it adaptable to different development environments. ralph-claude-code is designed for developers who want to offload routine coding tasks to AI-driven automation.\nAutomate the iterative development of AI models by continuously refining code based on feedback.\nIntegrate Ralph into existing projects to manage task imports from GitHub Issues or PRD documents.\nUtilize the interactive `ralph-enable` wizard to set up automation in new or existing projects quickly.\nImplement rate limiting to control API usage and prevent service interruptions during development cycles.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/frankbria/ralph-claude-code`",
+    "usage": "```\nI need to automate a development task using the Claude Code CLI. Here's the task: [DESCRIBE TASK]. The code should be written in [PROGRAMMING LANGUAGE]. Please generate the code, test it, and deploy it to [TARGET ENVIRONMENT]. Use the following requirements: [LIST REQUIREMENTS]. Implement an autonomous loop with intelligent exit detection.\n```\nCopy\n\n```\nBased on your request to automate a data processing pipeline in Python, here's the implementation plan and results:\n\n1. Generated Python script for data processing with pandas and numpy libraries\n2. Created unit tests using pytest\n3. Set up CI/CD pipeline with GitHub Actions\n4. Deployed to AWS Lambda with proper IAM permissions\n\nThe autonomous loop completed successfully after 3 iterations. Here's the final code:\n```python\n# Data processing script\nimport pandas as pd\nimport numpy as np\n\ndef process_data(input_file):\n    df = pd.read_csv(input_file)\n    # Data processing logic here\n    return processed_data\n```\n\nAll tests passed and the deployment was successful. The system detected no further improvements needed and exited the loop.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ralph-claude-code#main-content",
+      "ralph-claude-code#overview",
+      "ralph-claude-code#setup",
+      "ralph-claude-code#examples",
+      "ralph-claude-code#tools",
+      "ralph-claude-code#mcp",
+      "ralph-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ralph-claude-code is an automation skill that creates an autonomous development loop within Claude Code, enabling continuous code generation, testing, and deployment cycles. It integrates with the Claude Code CLI to automate repetitive development workflows while intelligently detecting when tasks are complete and exiting appropriately. The tool includes log rotation to prevent unbounded growth, session continuity management, and error detection capabilities. It supports configuration via .ralphrc files and CLI options, making it adaptable to different development environments. ralph-claude-code is designed for developers who want to offload routine coding tasks to AI-driven automation.\nAutomate the iterative development of AI models by continuously refining code based on feedback.\nIntegrate Ralph into existing projects to manage task imports from GitHub Issues or PRD documents.\nUtilize the interactive `ralph-enable` wizard to set up automation in new or existing projects quickly.\nImplement rate limiting to control API usage and prevent service interruptions during development cycles.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/frankbria/ralph-claude-code`",
+    "usage_vi": "```\nI need to automate a development task using the Claude Code CLI. Here's the task: [DESCRIBE TASK]. The code should be written in [PROGRAMMING LANGUAGE]. Please generate the code, test it, and deploy it to [TARGET ENVIRONMENT]. Use the following requirements: [LIST REQUIREMENTS]. Implement an autonomous loop with intelligent exit detection.\n```\nCopy\n\n```\nBased on your request to automate a data processing pipeline in Python, here's the implementation plan and results:\n\n1. Generated Python script for data processing with pandas and numpy libraries\n2. Created unit tests using pytest\n3. Set up CI/CD pipeline with GitHub Actions\n4. Deployed to AWS Lambda with proper IAM permissions\n\nThe autonomous loop completed successfully after 3 iterations. Here's the final code:\n```python\n# Data processing script\nimport pandas as pd\nimport numpy as np\n\ndef process_data(input_file):\n    df = pd.read_csv(input_file)\n    # Data processing logic here\n    return processed_data\n```\n\nAll tests passed and the deployment was successful. The system detected no further improvements needed and exited the loop.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:23:00.902628Z",
+    "http_status": 200,
+    "content_hash": "f30122f5a87c8a77d890df9c4c3999bea4dfa94a69d9b6feb473d1e65fe1d7a2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ralph-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ralph-claude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Ralph Claude Code - Automate AI Development",
+  "short_description_vi": "Autonomous AI development loop for Claude Code with intelligent exit detection. Enables developers to automate code generation, testing, and deployment. Integrates with Claude Code CLI and development workflows."
+}

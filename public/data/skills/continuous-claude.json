@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/continuous-claude",
+  "slug": "continuous-claude",
+  "name": "Continuous Claude",
+  "headline": "Continuous Claude - Automate PRs with Claude",
+  "short_description": "Automate repetitive coding tasks with continuous-claude. It runs Claude Code in a loop, creating PRs, waiting for checks, and merging autonomously. Ideal for operations teams managing large projects, integrating with GitHub workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "AnandChowdhary",
+  "install_command": "git clone https://github.com/AnandChowdhary/continuous-claude.git",
+  "source_repo_url": "https://github.com/AnandChowdhary/continuous-claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "continuous-ai",
+    "ai-agents",
+    "claude",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Continuous-claude is an automation tool that orchestrates Claude Code execution in continuous loops for repetitive development tasks. It handles the full pull request lifecycle—creating PRs, waiting for CI/CD checks to complete, and automatically merging when checks pass. The tool integrates directly with GitHub workflows, giving operations teams a hands-off approach to managing large projects and reducing manual intervention. Designed for teams that need reliable, autonomous code execution across multiple iterations, it supports health-based stall detection and reviewer provider selection. Use it to streamline code generation, testing, and deployment pipelines without human involvement.\nAutomatically increase test coverage in a large codebase by generating and merging PRs.\nRefactor legacy code incrementally by creating multiple PRs that address specific issues.\nFix post-update breaking changes by continuously running tests and applying fixes until all pass.\nManage dependency updates and resolve issues automatically using release notes.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AnandChowdhary/continuous-claude`",
+    "usage": "```\nAutomate the following repetitive coding task using continuous-claude: [TASK_DESCRIPTION]. Start by creating a new branch named 'claude-[FEATURE_NAME]-automation'. Run tests and generate a pull request. Wait for CI checks to pass, then merge the PR if all checks succeed. Log all actions to [LOG_FILE_PATH].\n```\nCopy\n\n```\n```\n[2024-05-15 14:30:00] Starting continuous-claude automation for 'Add caching to API endpoints'\n[2024-05-15 14:30:01] Creating branch: claude-caching-automation\n[2024-05-15 14:30:05] Running tests...\n[2024-05-15 14:31:22] All tests passed (12/12)\n[2024-05-15 14:31:23] Creating PR: 'feat: add caching to API endpoints #123'\n[2024-05-15 14:31:25] PR created: https://github.com/org/repo/pull/123\n[2024-05-15 14:31:26] Waiting for CI checks...\n[2024-05-15 14:35:41] CI checks passed (lint, unit-tests, build)\n[2024-05-15 14:35:42] Merging PR #123 into main\n[2024-05-15 14:35:45] PR #123 merged successfully\n[2024-05-15 14:35:45] Automation completed in 5m 45s\n```\n\n**Key Details:**\n- Branch: `claude-caching-automation`\n- PR: #123 (https://github.com/org/repo/pull/123)\n- Changes: Added Redis caching to `/api/v2/users` and `/api/v2/posts` endpoints\n- CI Checks: All passed (lint, unit-tests, build)\n- Merge Strategy: Squash merge\n- Log File: `/logs/claude-automation-2024-05-15.log`\n\n**Next Steps:**\n1. Verify the caching behavior in staging environment\n2. Monitor performance metrics for 24 hours\n3. Close related issue: #456\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "continuous-claude#main-content",
+      "continuous-claude#overview",
+      "continuous-claude#setup",
+      "continuous-claude#examples",
+      "continuous-claude#tools",
+      "continuous-claude#mcp",
+      "continuous-claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Continuous-claude là một công cụ tự động hóa giúp điều phối việc thực thi Claude Code theo các vòng lặp liên tục cho các tác vụ phát triển lặp đi lặp lại. Nó xử lý toàn bộ vòng đời của pull request—từ tạo PR, chờ các kiểm tra CI/CD hoàn tất, cho đến tự động merge khi các kiểm tra này vượt qua. Công cụ này tích hợp trực tiếp với GitHub workflow, giúp các đội ngũ vận hành (operations teams) quản lý các dự án lớn một cách rảnh tay và giảm thiểu sự can thiệp thủ công. Được thiết kế cho các đội ngũ cần thực thi mã nguồn tự động và đáng tin cậy qua nhiều phân kỳ (iterations), công cụ này hỗ trợ phát hiện đình trệ dựa trên trạng thái hoạt động (health-based stall detection) và lựa chọn nhà cung cấp reviewer (reviewer provider). Sử dụng công cụ này để tinh giản các pipeline tạo code, kiểm thử (testing) và triển khai (deployment) mà không cần sự can thiệp của con người.\n\nTự động tăng độ bao phủ kiểm thử (test coverage) trong một codebase lớn bằng cách tạo và merge các PR.\nTái cấu trúc mã nguồn cũ (refactor legacy code) theo từng bước bằng cách tạo nhiều PR giải quyết các vấn đề cụ thể.\nSửa các thay đổi gây lỗi (breaking changes) sau khi cập nhật bằng cách liên tục chạy test và áp dụng các bản sửa lỗi cho đến khi tất cả đều pass.\nQuản lý các bản cập nhật dependency và tự động giải quyết các vấn đề bằng cách sử dụng release notes.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/AnandChowdhary/continuous-claude`",
+    "usage_vi": "```\nTự động hóa tác vụ lập trình lặp đi lặp lại sau bằng cách sử dụng continuous-claude: [TASK_DESCRIPTION]. Bắt đầu bằng việc tạo một branch mới có tên là 'claude-[FEATURE_NAME]-automation'. Chạy test và tạo một pull request. Chờ các kiểm tra CI vượt qua, sau đó merge PR nếu tất cả các kiểm tra đều thành công. Ghi log tất cả các hành động vào [LOG_FILE_PATH].\n```\nCopy\n\n```\n[2024-05-15 14:30:00] Starting continuous-claude automation for 'Add caching to API endpoints'\n[2024-05-15 14:30:01] Creating branch: claude-caching-automation\n[2024-05-15 14:30:05] Running tests...\n[2024-05-15 14:31:22] All tests passed (12/12)\n[2024-05-15 14:31:23] Creating PR: 'feat: add caching to API endpoints #123'\n[2024-05-15 14:31:25] PR created: https://github.com/org/repo/pull/123\n[2024-05-15 14:31:26] Waiting for CI checks...\n[2024-05-15 14:35:41] CI checks passed (lint, unit-tests, build)\n[2024-05-15 14:35:42] Merging PR #123 into main\n[2024-05-15 14:35:45] PR #123 merged successfully\n[2024-05-15 14:35:45] Automation completed in 5m 45s\n```\n\n**Thông tin chính:**\n- Branch: `claude-caching-automation`\n- PR: #123 (https://github.com/org/repo/pull/123)\n- Thay đổi: Đã thêm cache Redis vào các endpoint `/api/v2/users` và `/api/v2/posts`\n- CI Checks: Tất cả đều pass (lint, unit-tests, build)\n- Chiến lược merge: Squash merge\n- File log: `/logs/claude-automation-2024-05-15.log`\n\n**Các bước tiếp theo:**\n1. Xác minh cơ chế hoạt động của cache trong môi trường staging\n2. Giám sát các chỉ số hiệu năng (performance metrics) trong vòng 24 giờ\n3. Đóng issue liên quan: #456"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:00:08.627596Z",
+    "http_status": 200,
+    "content_hash": "30ee4151826473e8f1f6f720ab4a61259e7219ab05c0f9da36272a87e80c5423",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\continuous-claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\continuous-claude.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Continuous Claude - Tự động hóa PR với Claude",
+  "short_description_vi": "Tự động hóa các tác vụ lập trình lặp đi lặp lại với continuous-claude. Công cụ này chạy Claude Code theo vòng lặp, tự động tạo PR, chờ kiểm tra (checks) và merge một cách độc lập. Giải pháp lý tưởng cho các đội ngũ vận hành (operations teams) quản lý dự án lớn và tích hợp với GitHub workflow."
+}

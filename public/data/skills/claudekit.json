@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudekit",
+  "slug": "claudekit",
+  "name": "react-native-best-practices",
+  "headline": "Claudekit: Open-Source AI Dev Toolkit for Claude",
+  "short_description": "Claudekit is an open-source AI development toolkit designed for Claude Code, featuring over 27 commands and 34 skills to enhance coding productivity. Ideal for developers looking to streamline their workflow and automate tasks, it offers a free solution for efficient code generation.",
+  "tier": "Silver",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "170 min",
+  "author": "duthaho",
+  "install_command": "claude install duthaho/claudekit",
+  "source_repo_url": "https://github.com/duthaho/claudekit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "developer-tools",
+    "productivity",
+    "automation",
+    "ai-coding",
+    "open-source"
+  ],
+  "sections": {
+    "overview": "Claudekit is an open-source engineering toolkit for Claude Code built on a core principle: every claim has evidence. It provides 15 skills and 8 specialized agents that enforce structured development across investigation, design, implementation, verification, and shipping phases. Each skill includes rationalizations tables documenting common shortcuts with rebuttals, evidence requirements at every checkpoint, and pre-completion gates that verify tests pass and changes work outside the IDE. The toolkit includes five configurable output styles (Brainstorm, Deep Research, Implementation, Review, Token Efficient) and auto-discovers project rules, hooks, and MCP server configurations through an interactive init command. Developers use claudekit to maintain production-grade discipline without friction—catching structural issues before code review and producing reviewable artifacts with verification evidence already attached.\nAutomating repetitive coding tasks\nGenerating code snippets quickly\nEnhancing developer productivity with AI commands\nStreamlining workflow for software projects",
+    "setup": "Terminal\nCopy\n`claude install duthaho/claudekit`\n`git clone https://github.com/duthaho/claudekit`",
+    "usage": "```\nUse Claudekit to [TASK] in a [PROGRAMMING_LANGUAGE] project. Follow these steps: 1) Generate the necessary code snippets using [CLAUDE_COMMAND], 2) Optimize the code for performance with [CLAUDE_SKILL], 3) Add unit tests using [CLAUDE_COMMAND], and 4) Generate documentation with [CLAUDE_SKILL]. Ensure the output is production-ready and follows best practices for [PROGRAMMING_LANGUAGE].\n```\nCopy\n\n```\n### Claudekit Code Generation & Optimization for a Python REST API\n\n**Task:** Build a scalable FastAPI backend for a task management app with PostgreSQL integration.\n\n**Step 1: Generate Initial Code Structure**\n```bash\nclaude generate-api --framework fastapi --db postgresql --name task-manager\n```\nOutput:\n```python\n# task_manager/main.py\nfrom fastapi import FastAPI\nfrom task_manager.routers import tasks\n\napp = FastAPI()\napp.include_router(tasks.router)\n```\n\n**Step 2: Optimize Performance**\n```bash\nclaude optimize-code --language python --target performance --file task_manager/main.py\n```\nOptimized output:\n```python\n# Added async support and connection pooling\nfrom fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom task_manager.routers import tasks\nfrom task_manager.db import get_db\n\napp = FastAPI()\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_methods=[\"*\"],\n)\n```\n\n**Step 3: Generate Unit Tests**\n```bash\nclaude generate-tests --language python --coverage 90 --file task_manager/routers/tasks.py\n```\nTest output:\n```python\n# tests/test_tasks.py\nfrom fastapi.testclient import TestClient\nfrom task_manager.main import app\n\nclient = TestClient(app)\n\ndef test_create_task():\n    response = client.post(\"/tasks\", json={\"title\": \"Test Task\"})\n    assert response.status_code == 201\n    assert response.json()[\"title\"] == \"Test Task\"\n```\n\n**Step 4: Generate Documentation**\n```bash\nclaude generate-docs --format openapi --file task_manager/main.py --output docs/api.yaml\n```\nDocumentation snippet:\n```yaml\n# docs/api.yaml\npaths:\n  /tasks:\n    post:\n      summary: Create a new task\n      requestBody:\n        required: true\n        content:\n          application/json:\n            schema:\n              $ref: '#/components/schemas/Task'\n      responses:\n        '201':\n          description: Task created successfully\n```\n\n**Final Output:**\n- Generated 8 API endpoints\n- Optimized database queries with async/await\n- Achieved 92% test coverage\n- Auto-generated OpenAPI 3.1 docs\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudekit#main-content",
+      "claudekit#overview",
+      "claudekit#setup",
+      "claudekit#examples",
+      "claudekit#tools",
+      "claudekit#mcp",
+      "claudekit#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claudekit is an open-source engineering toolkit for Claude Code built on a core principle: every claim has evidence. It provides 15 skills and 8 specialized agents that enforce structured development across investigation, design, implementation, verification, and shipping phases. Each skill includes rationalizations tables documenting common shortcuts with rebuttals, evidence requirements at every checkpoint, and pre-completion gates that verify tests pass and changes work outside the IDE. The toolkit includes five configurable output styles (Brainstorm, Deep Research, Implementation, Review, Token Efficient) and auto-discovers project rules, hooks, and MCP server configurations through an interactive init command. Developers use claudekit to maintain production-grade discipline without friction—catching structural issues before code review and producing reviewable artifacts with verification evidence already attached.\nAutomating repetitive coding tasks\nGenerating code snippets quickly\nEnhancing developer productivity with AI commands\nStreamlining workflow for software projects",
+    "setup_vi": "Terminal\nCopy\n`claude install duthaho/claudekit`\n`git clone https://github.com/duthaho/claudekit`",
+    "usage_vi": "```\nUse Claudekit to [TASK] in a [PROGRAMMING_LANGUAGE] project. Follow these steps: 1) Generate the necessary code snippets using [CLAUDE_COMMAND], 2) Optimize the code for performance with [CLAUDE_SKILL], 3) Add unit tests using [CLAUDE_COMMAND], and 4) Generate documentation with [CLAUDE_SKILL]. Ensure the output is production-ready and follows best practices for [PROGRAMMING_LANGUAGE].\n```\nCopy\n\n```\n### Claudekit Code Generation & Optimization for a Python REST API\n\n**Task:** Build a scalable FastAPI backend for a task management app with PostgreSQL integration.\n\n**Step 1: Generate Initial Code Structure**\n```bash\nclaude generate-api --framework fastapi --db postgresql --name task-manager\n```\nOutput:\n```python\n# task_manager/main.py\nfrom fastapi import FastAPI\nfrom task_manager.routers import tasks\n\napp = FastAPI()\napp.include_router(tasks.router)\n```\n\n**Step 2: Optimize Performance**\n```bash\nclaude optimize-code --language python --target performance --file task_manager/main.py\n```\nOptimized output:\n```python\n# Added async support and connection pooling\nfrom fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom task_manager.routers import tasks\nfrom task_manager.db import get_db\n\napp = FastAPI()\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_methods=[\"*\"],\n)\n```\n\n**Step 3: Generate Unit Tests**\n```bash\nclaude generate-tests --language python --coverage 90 --file task_manager/routers/tasks.py\n```\nTest output:\n```python\n# tests/test_tasks.py\nfrom fastapi.testclient import TestClient\nfrom task_manager.main import app\n\nclient = TestClient(app)\n\ndef test_create_task():\n    response = client.post(\"/tasks\", json={\"title\": \"Test Task\"})\n    assert response.status_code == 201\n    assert response.json()[\"title\"] == \"Test Task\"\n```\n\n**Step 4: Generate Documentation**\n```bash\nclaude generate-docs --format openapi --file task_manager/main.py --output docs/api.yaml\n```\nDocumentation snippet:\n```yaml\n# docs/api.yaml\npaths:\n  /tasks:\n    post:\n      summary: Create a new task\n      requestBody:\n        required: true\n        content:\n          application/json:\n            schema:\n              $ref: '#/components/schemas/Task'\n      responses:\n        '201':\n          description: Task created successfully\n```\n\n**Final Output:**\n- Generated 8 API endpoints\n- Optimized database queries with async/await\n- Achieved 92% test coverage\n- Auto-generated OpenAPI 3.1 docs\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:38:43.162591Z",
+    "http_status": 200,
+    "content_hash": "b2faf3a1108d4294c5de9f8f44f9ea76f1e66843744e66f94a4bb7ae51a38ecb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudekit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudekit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claudekit: Open-Source AI Dev Toolkit for Claude",
+  "short_description_vi": "Claudekit is an open-source AI development toolkit designed for Claude Code, featuring over 27 commands and 34 skills to enhance coding productivity. Ideal for developers looking to streamline their workflow and automate tasks, it offers a free solution for efficient code generation."
+}

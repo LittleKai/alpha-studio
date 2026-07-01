@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-agent",
+  "slug": "mcp-agent",
+  "name": "MCP Agent",
+  "headline": "mcp-agent: Build Effective AI Agents with Ease",
+  "short_description": "The mcp-agent helps users to create efficient AI agents utilizing the Model Context Protocol alongside straightforward workflow patterns. Ideal for developers looking to enhance their AI capabilities with streamlined processes.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "lastmile-ai",
+  "install_command": "claude install lastmile-ai/mcp-agent",
+  "source_repo_url": "https://github.com/lastmile-ai/mcp-agent",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "llm",
+    "workflow",
+    "ai-agents",
+    "model-context-protocol",
+    "python"
+  ],
+  "sections": {
+    "overview": "mcp-agent is a framework for creating efficient AI agents that leverage the Model Context Protocol (MCP) alongside straightforward workflow patterns. It supports real-time streaming for both Anthropic and Bedrock LLMs with event-driven architecture, enabling responsive agent interactions. The tool simplifies agent development by providing structured processes for integrating LLM capabilities with external tools and resources. Developers can use mcp-agent to build agents that handle asynchronous operations and streaming responses, reducing complexity in multi-step AI workflows. The framework includes comprehensive examples and documentation to help developers quickly prototype and deploy production-ready agents.\nAutomate customer support interactions to provide instant responses to common inquiries.\nCreate personalized marketing responses that adapt to user behavior and preferences.\nStreamline data analysis workflows by automating data collection and reporting tasks.\nFacilitate code generation and debugging to enhance developer productivity.",
+    "setup": "Terminal\nCopy\n`claude install lastmile-ai/mcp-agent`\n`git clone https://github.com/lastmile-ai/mcp-agent`",
+    "usage": "```\nCreate an AI agent using the Model Context Protocol to [SPECIFIC TASK]. The agent should follow this workflow: [WORKFLOW STEPS]. Use Mode for data insights if needed. Ensure the agent can handle [INPUT DATA] and produce [OUTPUT DATA].\n```\nCopy\n\n```\nAgent created successfully. The agent will now monitor sales data from Mode, identify trends, and generate weekly reports. It will also send alerts for any anomalies detected. The agent is configured to handle CSV data inputs and produce PDF reports. You can start by uploading your sales data to the designated folder.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "mcp-agent#main-content",
+      "mcp-agent#overview",
+      "mcp-agent#setup",
+      "mcp-agent#examples",
+      "mcp-agent#tools",
+      "mcp-agent#mcp",
+      "mcp-agent#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mcp-agent là một framework giúp tạo ra các AI agent hiệu quả bằng cách tận dụng Model Context Protocol (MCP) kết hợp với các mẫu workflow đơn giản. Framework này hỗ trợ truyền dữ liệu theo thời gian thực (real-time streaming) cho cả Anthropic và Bedrock LLM dựa trên kiến trúc hướng sự kiện (event-driven architecture), giúp tối ưu hóa khả năng phản hồi của agent. Công cụ này đơn giản hóa quá trình phát triển agent bằng cách cung cấp các quy trình có cấu trúc để tích hợp các tính năng của LLM với các công cụ và tài nguyên bên ngoài. Các nhà phát triển có thể sử dụng mcp-agent để xây dựng các agent có khả năng xử lý các tác vụ bất đồng bộ (asynchronous operations) và phản hồi dạng stream (streaming responses), giúp giảm bớt sự phức tạp trong các workflow AI nhiều bước. Framework này đi kèm với tài liệu hướng dẫn chi tiết và các ví dụ toàn diện, giúp các lập trình viên nhanh chóng tạo bản thử nghiệm (prototype) và triển khai các agent sẵn sàng cho môi trường production.\nTự động hóa các tương tác hỗ trợ khách hàng để phản hồi ngay lập tức các câu hỏi thường gặp.\nTạo các phản hồi marketing cá nhân hóa phù hợp với hành vi và sở thích của người dùng.\nTối ưu hóa các workflow phân tích dữ liệu bằng cách tự động hóa việc thu thập dữ liệu và báo cáo.\nHỗ trợ tạo code và debug nhằm nâng cao hiệu suất làm việc của lập trình viên.",
+    "setup_vi": "Terminal\nSao chép\n`claude install lastmile-ai/mcp-agent`\n`git clone https://github.com/lastmile-ai/mcp-agent`",
+    "usage_vi": "```\nHãy tạo một AI agent sử dụng Model Context Protocol để [NHIỆM VỤ CỤ THỂ]. Agent này cần tuân theo workflow sau: [CÁC BƯỚC WORKFLOW]. Sử dụng Mode để phân tích dữ liệu nếu cần thiết. Đảm bảo agent có thể xử lý [DỮ LIỆU ĐẦU VÀO] và tạo ra [DỮ LIỆU ĐẦU RA].\n```\nSao chép\n\n```\nĐã tạo agent thành công. Agent bây giờ sẽ giám sát dữ liệu doanh số từ Mode, xác định xu hướng và tạo báo cáo hàng tuần. Nó cũng sẽ gửi cảnh báo nếu phát hiện bất kỳ điểm bất thường nào. Agent được cấu hình để xử lý dữ liệu đầu vào dạng CSV và xuất báo cáo PDF. Bạn có thể bắt đầu bằng cách tải dữ liệu doanh số của mình lên thư mục được chỉ định.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:47.694502Z",
+    "http_status": 200,
+    "content_hash": "6ded44c1bb533f7c1dabc543891d90bd91f8b999f06206a92f4bfa7821c2b1c1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mcp-agent.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "mcp-agent: Xây dựng AI agent hiệu quả một cách dễ dàng",
+  "short_description_vi": "mcp-agent giúp người dùng dễ dàng tạo ra các AI agent hiệu quả bằng cách tận dụng Model Context Protocol cùng các mẫu workflow đơn giản. Đây là giải pháp lý tưởng cho các nhà phát triển muốn nâng cao năng lực AI thông qua các quy trình được tối ưu hóa."
+}

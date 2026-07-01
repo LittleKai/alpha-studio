@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vsync",
+  "slug": "vsync",
+  "name": "VSync",
+  "headline": "VSync - Sync AI Coding Tools",
+  "short_description": "Sync MCP servers, Skills, Agents & Commands across Claude Code, Cursor, OpenCode, Codex. One config, all tools. Ideal for operations teams managing multiple AI coding environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "270 min",
+  "author": "nicepkg",
+  "install_command": "git clone https://github.com/nicepkg/vsync.git",
+  "source_repo_url": "https://github.com/nicepkg/vsync",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "mcp-server",
+    "cursor",
+    "productivity",
+    "config-sync",
+    "mcp",
+    "typescript",
+    "nodejs",
+    "cli",
+    "opencode",
+    "developer-tools",
+    "ai-coding",
+    "ai-tools",
+    "codex",
+    "devtools",
+    "claude",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "vsync automates configuration synchronization across multiple AI coding environments by establishing a single source of truth. Instead of manually managing separate directory structures and file formats (JSON, TOML, JSONC) in each tool, vsync reads your source tool's configuration and intelligently syncs Skills, MCP servers, Agents, and Commands to all connected tools. The tool handles format conversion transparently, preserves environment variables, and offers safe mode (additions only) or prune mode (strict mirroring) to match your team's sync strategy. Operations teams managing Claude Code, Cursor, OpenCode, and Codex can eliminate configuration drift and reduce onboarding time with a single `vsync sync` command.\nTeam onboarding: Sync all team Skills and MCP servers to new developer machines instantly\nMulti-tool workflow: Keep Claude Code and Cursor configurations in perfect sync without manual updates\nConfiguration drift prevention: Detect and resolve differences across four AI coding tools automatically\nSafe migrations: Preview changes with dry-run before syncing configurations across all tools",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/nicepkg/vsync`",
+    "usage": "```\nSync my MCP servers, Skills, Agents, and Commands across Claude Code, Cursor, OpenCode, and Codex. Here is my configuration: [CONFIGURATION]. Ensure all environments are updated and consistent.\n```\nCopy\n\n```\n# Synchronization Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vsync#main-content",
+      "vsync#overview",
+      "vsync#setup",
+      "vsync#examples",
+      "vsync#tools",
+      "vsync#mcp",
+      "vsync#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "vsync tự động hóa việc đồng bộ cấu hình trên nhiều môi trường lập trình AI bằng cách thiết lập một nguồn dữ liệu chuẩn duy nhất (single source of truth). Thay vì phải quản lý thủ công các cấu trúc thư mục và định dạng tệp riêng biệt (JSON, TOML, JSONC) trong từng công cụ, vsync sẽ đọc cấu hình từ công cụ nguồn và đồng bộ hóa các Skill, MCP server, Agent và Command một cách thông minh đến tất cả các công cụ được kết nối. Công cụ này xử lý việc chuyển đổi định dạng một cách tự động và rõ ràng, giữ nguyên các biến môi trường, đồng thời cung cấp chế độ an toàn (safe mode - chỉ thêm mới) hoặc chế độ dọn dẹp (prune mode - phản chiếu nghiêm ngặt) để phù hợp với chiến lược đồng bộ của team bạn. Các team vận hành đang quản lý Claude Code, Cursor, OpenCode và Codex có thể loại bỏ tình trạng lệch cấu hình (configuration drift) và giảm thời gian onboarding thành viên mới chỉ với một câu lệnh `vsync sync` duy nhất.\nOnboarding thành viên: Đồng bộ lập tức tất cả Skill và MCP server của team sang máy của nhà phát triển mới\nQuy trình làm việc đa công cụ: Giữ cấu hình Claude Code và Cursor luôn đồng bộ hoàn hảo mà không cần cập nhật thủ công\nNgăn ngừa lệch cấu hình (configuration drift): Tự động phát hiện và giải quyết khác biệt trên cả bốn công cụ lập trình AI\nDi chuyển an toàn (safe migrations): Xem trước các thay đổi bằng dry-run trước khi đồng bộ cấu hình trên tất cả công cụ",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/nicepkg/vsync`",
+    "usage_vi": "```\nĐồng bộ các MCP server, Skill, Agent và Command của tôi trên Claude Code, Cursor, OpenCode và Codex. Đây là cấu hình của tôi: [CONFIGURATION]. Đảm bảo tất cả các môi trường đều được cập nhật và nhất quán.\n```\nSao chép\n\n```\n# Báo cáo đồng bộ hóa"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:48:01.967399Z",
+    "http_status": 200,
+    "content_hash": "5ff80f29e98e199593b8bcb3a1ff20e8bdecdfe54b3b1df34420c97513f455e4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vsync.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vsync.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VSync - Đồng bộ hóa công cụ lập trình AI",
+  "short_description_vi": "Đồng bộ MCP server, Skill, Agent & Command trên Claude Code, Cursor, OpenCode và Codex. Một config, mọi công cụ. Lý tưởng cho các team vận hành quản lý nhiều môi trường lập trình AI."
+}

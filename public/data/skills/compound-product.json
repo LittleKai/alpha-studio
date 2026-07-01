@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/compound-product",
+  "slug": "compound-product",
+  "name": "Compound Product",
+  "headline": "Compound Product - Autonomous Product Improvement",
+  "short_description": "Autonomous system that reads product performance reports, identifies top priorities, and implements fixes without human intervention. Benefits operations teams by reducing manual work and accelerating issue resolution. Connects to product analytics tools and workflow automation systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "snarktank",
+  "install_command": "git clone https://github.com/snarktank/compound-product.git",
+  "source_repo_url": "https://github.com/snarktank/compound-product",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Compound Product is a self-improving automation system that reads your daily performance reports, identifies the #1 actionable priority, and autonomously implements it. The agent analyzes metrics and errors, creates a detailed plan via PRD and task generation, then executes fixes in a loop with quality checks before committing code and opening a pull request. Built on established patterns like Compound Engineering and the Ralph methodology, it reduces manual triage and accelerates issue resolution by handling the analysis-to-implementation cycle while you work on other priorities.\nAutomatically analyze daily performance reports to identify critical issues.\nGenerate and implement fixes for the most impactful problems without manual input.\nCreate pull requests for review based on prioritized tasks derived from report analysis.\nRun quality checks on implemented tasks to ensure code integrity before merging.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/snarktank/compound-product`",
+    "usage": "```\nAct as an autonomous compound-product system. Review the latest product performance report for [PRODUCT_NAME] from [ANALYTICS_TOOL] (accessible via [API_ENDPOINT]). Identify the top 3 performance issues based on [METRICS: e.g., conversion rate, error rate, load time]. For each issue, generate a prioritized action plan with specific fixes and automation steps. Then, execute these fixes using [WORKFLOW_TOOL] (e.g., Zapier, Make, or internal scripts) without requiring manual approval. Provide a summary of actions taken and results achieved.\n```\nCopy\n\n```\n### Autonomous Product Performance Fix Report\n**Product:** *ShopEase Checkout Module*\n**Report Date:** June 10, 2024\n**Analytics Tool:** Google Analytics 4 (via API)\n\n#### Identified Issues & Actions Taken:\n1. **Issue:** Cart abandonment rate increased by 12% (from 68% to 80%) in the last 48 hours.\n   - **Root Cause:** Payment gateway timeout errors (Error Code: PG-408) during peak traffic.\n   - **Fix Applied:** Automatically scaled payment service pods in Kubernetes by 30% and adjusted timeout settings from 30s to 45s using Terraform scripts.\n   - **Result:** Abandonment rate dropped to 71% within 2 hours. No further errors reported.\n\n2. **Issue:** Mobile checkout page load time spiked to 4.2s (target: <3s).\n   - **Root Cause:** Unoptimized image assets (avg. size: 1.8MB per image).\n   - **Fix Applied:** Triggered ImageOptim via Zapier to compress all product images in the checkout flow. Updated CDN cache headers to enforce revalidation.\n   - **Result:** Load time reduced to 2.8s. Performance score improved from 68 to 85 (Lighthouse).\n\n3. **Issue:** Error rate in discount code validation jumped to 8% (from 2%).\n   - **Root Cause:** Race condition in Redis cache during high-concurrency requests.\n   - **Fix Applied:** Deployed a temporary Redis cluster (3 nodes) and updated cache TTL from 5m to 1m. Rolled back via ArgoCD after 1 hour.\n   - **Result:** Error rate stabilized at 2.5%. No customer complaints received.\n\n#### Summary of Actions:\n- **Automated Tools Used:** Kubernetes (scaling), Terraform (config changes), Zapier (image optimization), ArgoCD (rollback).\n- **Time Saved:** ~4 hours of manual debugging and implementation.\n- **Impact:** 15% improvement in checkout completion rate and 22% faster load times.\n\n**Next Steps:** Monitor metrics for 24 hours. If issues recur, escalate to the on-call team with pre-generated runbooks.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "compound-product#main-content",
+      "compound-product#overview",
+      "compound-product#setup",
+      "compound-product#examples",
+      "compound-product#tools",
+      "compound-product#mcp",
+      "compound-product#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Compound Product là một hệ thống tự động hóa tự cải tiến, tự động đọc báo cáo hiệu năng hàng ngày của bạn, xác định ưu tiên hành động số 1 và tự vận hành để triển khai giải pháp. Agent này sẽ phân tích các chỉ số và lỗi, lập kế hoạch chi tiết thông qua việc tạo PRD và tác vụ, sau đó thực hiện các bản vá theo một chu kỳ lặp đi lặp lại đi kèm các bước kiểm tra chất lượng trước khi commit code và tạo pull request. Được xây dựng dựa trên các mô hình đã được khẳng định như Compound Engineering và phương pháp Ralph, hệ thống giúp giảm bớt việc phân loại thủ công và đẩy nhanh tốc độ giải quyết sự cố bằng cách xử lý toàn bộ chu kỳ từ phân tích đến triển khai trong khi bạn tập trung vào các ưu tiên khác.\nTự động phân tích các báo cáo hiệu năng hàng ngày để xác định các sự cố nghiêm trọng.\nTự động tạo và triển khai các bản vá cho các vấn đề có tác động lớn nhất mà không cần nhập liệu thủ công.\nTạo các pull request để xem xét dựa trên các tác vụ đã được ưu tiên từ việc phân tích báo cáo.\nChạy các bước kiểm tra chất lượng trên các tác vụ đã triển khai để đảm bảo tính toàn vẹn của mã nguồn trước khi merge.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/snarktank/compound-product`",
+    "usage_vi": "```\nĐóng vai trò là một hệ thống compound-product tự vận hành. Hãy kiểm tra báo cáo hiệu năng sản phẩm mới nhất của [PRODUCT_NAME] từ [ANALYTICS_TOOL] (truy cập qua [API_ENDPOINT]). Xác định 3 vấn đề hiệu năng hàng đầu dựa trên [METRICS: ví dụ: tỷ lệ chuyển đổi, tỷ lệ lỗi, thời gian tải]. Với mỗi vấn đề, hãy tạo một kế hoạch hành động được ưu tiên với các bản vá cụ thể và các bước tự động hóa. Sau đó, thực thi các bản vá này bằng cách sử dụng [WORKFLOW_TOOL] (ví dụ: Zapier, Make hoặc các script nội bộ) mà không cần phê duyệt thủ công. Cung cấp bản tóm tắt các hành động đã thực hiện và kết quả đạt được.\n```\nCopy\n\n```\n### Báo cáo khắc phục hiệu năng sản phẩm tự vận hành\n**Sản phẩm:** *ShopEase Checkout Module*\n**Ngày báo cáo:** 10 tháng 6, 2024\n**Công cụ phân tích:** Google Analytics 4 (qua API)\n\n#### Các vấn đề được xác định & Hành động đã thực hiện:\n1. **Vấn đề:** Tỷ lệ bỏ giỏ hàng tăng 12% (từ 68% lên 80%) trong 48 giờ qua.\n   - **Nguyên nhân gốc rễ:** Lỗi timeout cổng thanh toán (Mã lỗi: PG-408) trong thời gian lưu lượng truy cập đạt đỉnh.\n   - **Bản vá đã áp dụng:** Tự động scale các pod của dịch vụ thanh toán trong Kubernetes thêm 30% và điều chỉnh cấu hình timeout từ 30s sang 45s bằng các script Terraform.\n   - **Kết quả:** Tỷ lệ bỏ giỏ hàng giảm xuống còn 71% trong vòng 2 giờ. Không ghi nhận thêm lỗi nào khác.\n\n2. **Vấn đề:** Thời gian tải trang thanh toán trên di động tăng vọt lên 4.2s (mục tiêu: <3s).\n   - **Nguyên nhân gốc rễ:** Tài nguyên hình ảnh chưa được tối ưu hóa (kích thước trung bình: 1.8MB mỗi ảnh).\n   - **Bản vá đã áp dụng:** Kích hoạt ImageOptim qua Zapier để nén tất cả hình ảnh sản phẩm trong luồng thanh toán (checkout flow). Cập nhật CDN cache headers để buộc revalidation.\n   - **Kết quả:** Thời gian tải giảm xuống còn 2.8s. Điểm hiệu năng cải thiện từ 68 lên 85 (Lighthouse).\n\n3. **Vấn đề:** Tỷ lệ lỗi khi xác thực mã giảm giá tăng vọt lên 8% (từ 2%).\n   - **Nguyên nhân gốc rễ:** Lỗi race condition trong Redis cache khi có lượng yêu cầu đồng thời (high-concurrency) lớn.\n   - **Bản vá đã áp dụng:** Triển khai một Redis cluster tạm thời (3 node) và cập nhật cache TTL từ 5 phút xuống 1 phút. Rollback lại qua ArgoCD sau 1 giờ.\n   - **Kết quả:** Tỷ lệ lỗi ổn định ở mức 2.5%. Không nhận được khiếu nại nào từ khách hàng.\n\n#### Tóm tắt hành động:\n- **Công cụ tự động hóa đã dùng:** Kubernetes (scaling), Terraform (thay đổi cấu hình), Zapier (tối ưu hóa hình ảnh), ArgoCD (rollback).\n- **Thời gian tiết kiệm được:** ~4 giờ debug và triển khai thủ công.\n- **Tác động:** Tỷ lệ hoàn thành thanh toán cải thiện 15% và tốc độ tải trang nhanh hơn 22%.\n\n**Các bước tiếp theo:** Theo dõi các chỉ số trong 24 giờ. Nếu sự cố tái diễn, chuyển tiếp đến đội ngũ on-call cùng với các runbook đã được tạo sẵn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:44:10.410731Z",
+    "http_status": 200,
+    "content_hash": "07e28c901e000f4a1e6430da8a23dcbe45665a8bc0de3bc18b42e941d2503a37",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\compound-product.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\compound-product.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Compound Product - Cải tiến sản phẩm tự vận hành",
+  "short_description_vi": "Hệ thống tự vận hành chuyên đọc báo cáo hiệu năng sản phẩm, xác định các ưu tiên hàng đầu và tự động triển khai bản vá lỗi mà không cần sự can thiệp của con người. Giải pháp giúp các đội ngũ vận hành giảm thiểu tác vụ thủ công và đẩy nhanh tốc độ xử lý sự cố. Hệ thống kết nối trực tiếp với các công cụ phân tích sản phẩm và hệ thống tự động hóa quy trình làm việc."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-deep-research-skill",
+  "slug": "claude-deep-research-skill",
+  "name": "Claude Deep Research Skill",
+  "headline": "enterprise deep research skill for claude",
+  "short_description": "Enterprise-grade deep research skill for Claude Code with 8-phase pipeline, source credibility scoring, and automated validation. Outperforms OpenAI, Gemini, and Claude Desktop in quality and verification.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "199-biotechnologies",
+  "install_command": "git clone https://github.com/199-biotechnologies/claude-deep-research-skill.git",
+  "source_repo_url": "https://github.com/199-biotechnologies/claude-deep-research-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Deep Research Skill is an enterprise-grade research engine for Claude Code that automates the production of comprehensive, citation-backed reports. It operates through an 8-phase pipeline that spans scope definition, parallel multi-provider search, source triangulation, and multi-persona critique loops to identify and fix gaps. The skill validates all claims against 10+ sources with 3+ citations per major finding, automatically scores source credibility, and generates reports in Markdown, HTML, and PDF formats. It handles reports exceeding 18,000 words through recursive agent spawning with context preservation. Teams conducting competitive research, technical due diligence, market analysis, or complex decision-making benefit from its structured validation and hallucination detection.\nTechnical due diligence for stack migrations (e.g., PostgreSQL vs. Supabase evaluation)\nCompetitive and market research with source credibility verification\nDeep dives on complex topics requiring multi-source triangulation\nGenerating professional reports with automated citation tracking and DOI validation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/199-biotechnologies/claude-deep-research-skill`",
+    "usage": "```\nPerform deep research on [TOPIC] for [COMPANY] in the [INDUSTRY] sector. Use the 8-phase research pipeline to analyze [DATA] sources, score credibility, and validate findings. Provide a comprehensive report with citations and credibility scores.\n```\nCopy\n\n```\n# Deep Research Report: Sustainable Packaging in the Food Industry",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-deep-research-skill#main-content",
+      "claude-deep-research-skill#overview",
+      "claude-deep-research-skill#setup",
+      "claude-deep-research-skill#examples",
+      "claude-deep-research-skill#tools",
+      "claude-deep-research-skill#mcp",
+      "claude-deep-research-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Deep Research Skill là một engine nghiên cứu cấp doanh nghiệp dành cho Claude Code, giúp tự động hóa quy trình sản xuất các báo cáo toàn diện và có trích dẫn nguồn đầy đủ. Engine này hoạt động thông qua một pipeline 8 giai đoạn, bao gồm xác định phạm vi, tìm kiếm song song qua nhiều nhà cung cấp (multi-provider), đối chiếu chéo nguồn tin (source triangulation) và các vòng lặp phản biện đa vai trò (multi-persona critique loops) để phát hiện và khắc phục các lỗ hổng thông tin. Skill này xác minh mọi nhận định dựa trên hơn 10 nguồn với ít nhất 3 trích dẫn cho mỗi phát hiện quan trọng, tự động chấm điểm độ tin cậy của nguồn và xuất báo cáo dưới các định dạng Markdown, HTML và PDF. Nó có khả năng xử lý các báo cáo dài hơn 18.000 từ bằng cơ chế khởi tạo agent đệ quy (recursive agent spawning) và bảo toàn ngữ cảnh. Các đội ngũ thực hiện nghiên cứu đối thủ cạnh tranh, thẩm định kỹ thuật (technical due diligence), phân tích thị trường hoặc đưa ra quyết định phức tạp sẽ được hưởng lợi lớn từ quy trình xác thực có cấu trúc và khả năng phát hiện ảo tưởng (hallucination detection) của công cụ này.\nThẩm định kỹ thuật khi chuyển đổi stack công nghệ (ví dụ: đánh giá PostgreSQL vs. Supabase)\nNghiên cứu thị trường và đối thủ cạnh tranh đi kèm xác minh độ tin cậy của nguồn thông tin\nPhân tích chuyên sâu (deep dive) các chủ đề phức tạp đòi hỏi đối chiếu chéo nhiều nguồn tài liệu\nTạo báo cáo chuyên nghiệp với tính năng tự động theo dõi trích dẫn và xác thực DOI",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/199-biotechnologies/claude-deep-research-skill`",
+    "usage_vi": "```\nThực hiện nghiên cứu chuyên sâu (deep research) về [CHỦ_ĐỀ] cho [CÔNG_TY] trong ngành [NGÀNH]. Sử dụng pipeline nghiên cứu 8 giai đoạn để phân tích các nguồn [DỮ_LIỆU], chấm điểm độ tin cậy và xác thực các phát hiện. Cung cấp một báo cáo toàn diện kèm theo các trích dẫn và điểm tin cậy.\n```\nCopy\n\n```\n# Báo cáo Deep Research: Bao bì bền vững trong ngành thực phẩm\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:17.588828Z",
+    "http_status": 200,
+    "content_hash": "8e5694348fae1017be8789e5991fde857501ae44d5d6f0c6fd05ae9f980e85dc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-deep-research-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-deep-research-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill deep research cấp doanh nghiệp cho Claude",
+  "short_description_vi": "Skill deep research cấp doanh nghiệp cho Claude Code với pipeline 8 giai đoạn, chấm điểm độ tin cậy của nguồn và xác thực tự động. Vượt trội hơn OpenAI, Gemini và Claude Desktop về chất lượng và khả năng xác minh."
+}

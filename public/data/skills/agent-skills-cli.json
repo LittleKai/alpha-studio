@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skills-cli",
+  "slug": "agent-skills-cli",
+  "name": "Universal CLI for AI Agent Skills",
+  "headline": "Universal CLI for AI Agent Skills - agent-skills-cli",
+  "short_description": "The agent-skills-cli is a universal command-line interface that provides access to over 40,000 AI agent skills from SkillsMP. It enables integration and synchronization with popular AI tools like Cursor, Claude Code, and GitHub Copilot.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Karanjot786",
+  "install_command": "claude install Karanjot786/agent-skills-cli",
+  "source_repo_url": "https://github.com/Karanjot786/agent-skills-cli",
+  "works_with": [
+    "ClaudeCursorGitHub Copilot"
+  ],
+  "tags": [
+    "agent-skills",
+    "openai",
+    "cli",
+    "ai-agents",
+    "developer-tools"
+  ],
+  "sections": {
+    "overview": "Agent Skills CLI is a command-line tool that provides access to the world's largest marketplace of AI agent skills, supporting over 175,000 skills across 45 AI platforms including Cursor, Claude Code, GitHub Copilot, Windsurf, Cline, and Zed. It enables developers to search, install, and synchronize skills deterministically using lockfiles, with built-in features for conflict detection, quality scoring, and context budget management. The tool supports installation from multiple sources including the public marketplace, GitHub repositories, private Git servers, and npm registries, making it ideal for teams managing skills across diverse AI development environments.\nSync AI skills to development environments\nEnhance productivity with AI-driven coding assistance\nAccess a vast library of agent skills for various applications",
+    "setup": "Terminal\nCopy\n`claude install Karanjot786/agent-skills-cli`\n`git clone https://github.com/Karanjot786/agent-skills-cli`",
+    "usage": "```\nUse the agent-skills-cli to [ACTION] within [CONTEXT]. For example: 'Use the agent-skills-cli to search for AI skills related to Python debugging in the development category and install the top-rated one.' or 'Use the agent-skills-cli to sync my local AI skills with the SkillsMP repository and update the custom-agents-template with the latest changes.'\n```\nCopy\n\n```\n```bash\n$ agent-skills-cli search --category development --query \"Python debugging\" --limit 5\n\nSearching SkillsMP for AI skills matching 'Python debugging' in the development category...\n\nFound 8 matching skills. Displaying top 5 by rating:\n\n1. **Python Debugger Pro** (Rating: 4.9/5)\n   - Description: AI-powered Python debugger with real-time error analysis and automated fix suggestions.\n   - Tags: debugging, python, automation, ai-assisted\n   - Last Updated: 2025-11-05\n   - Installation Command: `agent-skills-cli install python-debugger-pro`\n\n2. **CodeSense AI Debugger** (Rating: 4.8/5)\n   - Description: Context-aware debugger that integrates with VS Code, PyCharm, and Jupyter Notebooks.\n   - Tags: ide-integration, python, context-analysis\n   - Last Updated: 2025-10-28\n   - Installation Command: `agent-skills-cli install codesense-debugger`\n\n3. **AutoTrace** (Rating: 4.7/5)\n   - Description: Automatically traces and visualizes Python code execution flow for complex debugging scenarios.\n   - Tags: visualization, tracing, python\n   - Last Updated: 2025-11-01\n   - Installation Command: `agent-skills-cli install autotrace`\n\n4. **Exception Handler AI** (Rating: 4.6/5)\n   - Description: Intelligent exception handler that suggests fixes for common Python errors.\n   - Tags: error-handling, python, ai-suggestions\n   - Last Updated: 2025-09-15\n   - Installation Command: `agent-skills-cli install exception-handler-ai`\n\n5. **DebugFlow** (Rating: 4.5/5)\n   - Description: Workflow-based debugger that guides developers through complex debugging sessions.\n   - Tags: workflow, debugging, python\n   - Last Updated: 2025-10-10\n   - Installation Command: `agent-skills-cli install debugflow`\n\nWould you like to install one of these skills? Run `agent-skills-cli install [SKILL_NAME]` to proceed.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, Cursor, GitHub Copilot"
+    ],
+    "related_skills": [
+      "agent-skills-cli#main-content",
+      "agent-skills-cli#overview",
+      "agent-skills-cli#setup",
+      "agent-skills-cli#examples",
+      "agent-skills-cli#tools",
+      "agent-skills-cli#mcp",
+      "agent-skills-cli#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Agent Skills CLI là công cụ dòng lệnh cung cấp quyền truy cập vào chợ ứng dụng kỹ năng AI agent lớn nhất thế giới, hỗ trợ hơn 175.000 kỹ năng trên 45 nền tảng AI bao gồm Cursor, Claude Code, GitHub Copilot, Windsurf, Cline và Zed. Công cụ này giúp lập trình viên tìm kiếm, cài đặt và đồng bộ hóa các kỹ năng một cách xác định (deterministic) thông qua lockfile, đi kèm các tính năng tích hợp sẵn như phát hiện xung đột, đánh giá chất lượng và quản lý context budget. Ngoài ra, công cụ còn hỗ trợ cài đặt từ nhiều nguồn khác nhau bao gồm marketplace công cộng, kho lưu trữ GitHub, máy chủ Git riêng và npm registry, lý tưởng cho các đội ngũ cần quản lý kỹ năng trên nhiều môi trường phát triển AI khác nhau.\nĐồng bộ hóa kỹ năng AI vào môi trường phát triển\nNâng cao hiệu suất với sự hỗ trợ lập trình từ AI\nTruy cập thư viện kỹ năng agent phong phú cho nhiều ứng dụng khác nhau",
+    "setup_vi": "Terminal\nSao chép\n`claude install Karanjot786/agent-skills-cli`\n`git clone https://github.com/Karanjot786/agent-skills-cli`",
+    "usage_vi": "```\nSử dụng agent-skills-cli để [HÀNH ĐỘNG] trong [NGỮ CẢNH]. Ví dụ: 'Sử dụng agent-skills-cli để tìm kiếm các kỹ năng AI liên quan đến debug Python trong danh mục phát triển (development) và cài đặt kỹ năng được đánh giá cao nhất.' hoặc 'Sử dụng agent-skills-cli để đồng bộ các kỹ năng AI cục bộ của tôi với kho lưu trữ SkillsMP và cập nhật custom-agents-template với những thay đổi mới nhất.'\n```\nSao chép\n\n```\n```bash\n$ agent-skills-cli search --category development --query \"Python debugging\" --limit 5\n\nĐang tìm kiếm các kỹ năng AI khớp với 'Python debugging' trong danh mục development trên SkillsMP...\n\nTìm thấy 8 kỹ năng phù hợp. Hiển thị top 5 theo đánh giá:\n\n1. **Python Debugger Pro** (Đánh giá: 4.9/5)\n   - Mô tả: Trình debug Python tích hợp AI với tính năng phân tích lỗi thời gian thực và tự động đề xuất bản sửa lỗi.\n   - Tags: debugging, python, automation, ai-assisted\n   - Cập nhật lần cuối: 2025-11-05\n   - Lệnh cài đặt: `agent-skills-cli install python-debugger-pro`\n\n2. **CodeSense AI Debugger** (Đánh giá: 4.8/5)\n   - Mô tả: Trình debug nhận diện ngữ cảnh, tích hợp với VS Code, PyCharm và Jupyter Notebooks.\n   - Tags: ide-integration, python, context-analysis\n   - Cập nhật lần cuối: 2025-10-28\n   - Lệnh cài đặt: `agent-skills-cli install codesense-debugger`\n\n3. **AutoTrace** (Đánh giá: 4.7/5)\n   - Mô tả: Tự động trace và trực quan hóa luồng thực thi mã nguồn Python cho các kịch bản debug phức tạp.\n   - Tags: visualization, tracing, python\n   - Cập nhật lần cuối: 2025-11-01\n   - Lệnh cài đặt: `agent-skills-cli install autotrace`\n\n4. **Exception Handler AI** (Đánh giá: 4.6/5)\n   - Mô tả: Trình xử lý ngoại lệ thông minh đề xuất các bản sửa lỗi cho các lỗi Python phổ biến.\n   - Tags: error-handling, python, ai-suggestions\n   - Cập nhật lần cuối: 2025-09-15\n   - Lệnh cài đặt: `agent-skills-cli install exception-handler-ai`\n\n5. **DebugFlow** (Đánh giá: 4.5/5)\n   - Mô tả: Trình debug dựa trên workflow, hướng dẫn lập trình viên vượt qua các phiên debug phức tạp.\n   - Tags: workflow, debugging, python\n   - Cập nhật lần cuối: 2025-10-10\n   - Lệnh cài đặt: `agent-skills-cli install debugflow`\n\nBạn có muốn cài đặt một trong các kỹ năng này không? Chạy lệnh `agent-skills-cli install [TÊN_KỸ_NĂNG]` để tiếp tục.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:40:19.628398Z",
+    "http_status": 200,
+    "content_hash": "4c9307776e2f1723d864bd944d1d7fe524d951e826bc678369e25b7a643b58f2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-skills-cli.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "CLI đa năng cho các kỹ năng của AI Agent - agent-skills-cli",
+  "short_description_vi": "agent-skills-cli là giao diện dòng lệnh (CLI) đa năng cung cấp quyền truy cập vào hơn 40.000 kỹ năng của AI agent từ SkillsMP. Công cụ này hỗ trợ tích hợp và đồng bộ hóa với các công cụ AI phổ biến như Cursor, Claude Code và GitHub Copilot."
+}

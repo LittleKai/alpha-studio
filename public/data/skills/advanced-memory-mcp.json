@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/advanced-memory-mcp",
+  "slug": "advanced-memory-mcp",
+  "name": "browser-use",
+  "headline": "Advanced Memory MCP - Knowledge Management",
+  "short_description": "Zettelkasten knowledge management MCP server for Claude Desktop with knowledge graphs, imoort/export tools, and Claude Skills integration\"",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "sandraschi",
+  "install_command": "git clone https://github.com/sandraschi/advanced-memory-mcp.git",
+  "source_repo_url": "https://github.com/sandraschi/advanced-memory-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Advanced Memory (Memops) is a FastMCP 3.2 GA server written in Python that gives Claude and MCP-capable assistants a durable place to store notes, research, and retrieve information. The server exposes 79 tools across 12 functional categories including zettelkasten management, search, knowledge graphs, and RAG capabilities. Instead of losing context at the end of each session, you can search and perform retrieval-augmented generation over your own content, maintaining continuity across conversations. The skill integrates with Claude Desktop and Cursor, supporting both direct MCP client connections and an optional webapp for browser-based access to the same backend.\nMaintain persistent research notes and knowledge bases across Claude sessions\nPerform RAG-based retrieval over personal documents and notes\nBuild and navigate knowledge graphs of connected ideas using zettelkasten methodology\nSearch and organize project-related information without losing context between conversations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sandraschi/advanced-memory-mcp`",
+    "usage": "```\nCreate a new Zettelkasten note in my advanced-memory-mcp server about [TOPIC]. Ensure it's connected to at least 3 related notes in my knowledge graph. Include a summary, key points, and any relevant context from my existing notes. Also, suggest 2 follow-up notes that should be created based on this topic.\n```\nCopy\n\n```\nI've created a new Zettelkasten note titled 'Quantum Computing Applications in Drug Discovery' in your advanced-memory-mcp server. Here's a summary of the note and its connections:\n\nSummary: This note explores how quantum computing can accelerate drug discovery by simulating molecular interactions at quantum levels, potentially reducing drug development timelines from years to months.\n\nKey Points:\n1. Quantum computers can model molecular structures with far greater accuracy than classical computers\n2. Potential to identify new drug candidates by simulating protein folding and molecular docking\n3. Current limitations include qubit stability and error correction challenges\n\nConnected Notes:\n1. 'Quantum Computing Basics' - Provides foundational knowledge about quantum computing principles\n2. 'Molecular Simulation Techniques' - Discusses classical methods for molecular modeling\n3. 'Drug Discovery Process' - Outlines the traditional pharmaceutical development pipeline\n\nSuggested Follow-up Notes:\n1. 'Quantum Machine Learning for Drug Discovery' - Explore how quantum algorithms could enhance machine learning in pharmaceutical research\n2. 'Current Quantum Computing Hardware' - Investigate the state of quantum hardware development and its implications for drug discovery applications\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "advanced-memory-mcp#main-content",
+      "advanced-memory-mcp#overview",
+      "advanced-memory-mcp#setup",
+      "advanced-memory-mcp#examples",
+      "advanced-memory-mcp#tools",
+      "advanced-memory-mcp#mcp",
+      "advanced-memory-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Advanced Memory (Memops) is a FastMCP 3.2 GA server written in Python that gives Claude and MCP-capable assistants a durable place to store notes, research, and retrieve information. The server exposes 79 tools across 12 functional categories including zettelkasten management, search, knowledge graphs, and RAG capabilities. Instead of losing context at the end of each session, you can search and perform retrieval-augmented generation over your own content, maintaining continuity across conversations. The skill integrates with Claude Desktop and Cursor, supporting both direct MCP client connections and an optional webapp for browser-based access to the same backend.\nMaintain persistent research notes and knowledge bases across Claude sessions\nPerform RAG-based retrieval over personal documents and notes\nBuild and navigate knowledge graphs of connected ideas using zettelkasten methodology\nSearch and organize project-related information without losing context between conversations",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sandraschi/advanced-memory-mcp`",
+    "usage_vi": "```\nCreate a new Zettelkasten note in my advanced-memory-mcp server about [TOPIC]. Ensure it's connected to at least 3 related notes in my knowledge graph. Include a summary, key points, and any relevant context from my existing notes. Also, suggest 2 follow-up notes that should be created based on this topic.\n```\nCopy\n\n```\nI've created a new Zettelkasten note titled 'Quantum Computing Applications in Drug Discovery' in your advanced-memory-mcp server. Here's a summary of the note and its connections:\n\nSummary: This note explores how quantum computing can accelerate drug discovery by simulating molecular interactions at quantum levels, potentially reducing drug development timelines from years to months.\n\nKey Points:\n1. Quantum computers can model molecular structures with far greater accuracy than classical computers\n2. Potential to identify new drug candidates by simulating protein folding and molecular docking\n3. Current limitations include qubit stability and error correction challenges\n\nConnected Notes:\n1. 'Quantum Computing Basics' - Provides foundational knowledge about quantum computing principles\n2. 'Molecular Simulation Techniques' - Discusses classical methods for molecular modeling\n3. 'Drug Discovery Process' - Outlines the traditional pharmaceutical development pipeline\n\nSuggested Follow-up Notes:\n1. 'Quantum Machine Learning for Drug Discovery' - Explore how quantum algorithms could enhance machine learning in pharmaceutical research\n2. 'Current Quantum Computing Hardware' - Investigate the state of quantum hardware development and its implications for drug discovery applications\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:44:48.060550Z",
+    "http_status": 200,
+    "content_hash": "b1108b49b60af515aacb41154e07778739f863f8ad176006dd8f63f7673447dd",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\advanced-memory-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\advanced-memory-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Advanced Memory MCP - Knowledge Management",
+  "short_description_vi": "Zettelkasten knowledge management MCP server for Claude Desktop with knowledge graphs, imoort/export tools, and Claude Skills integration\""
+}

@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccstatusline",
+  "slug": "ccstatusline",
+  "name": "browser-use",
+  "headline": "ccstatusline customizable CLI status",
+  "short_description": "Customizable statusline for Claude Code CLI. Supports powerline, themes, and more. Ideal for developers who want to enhance their terminal experience with AI tools.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "sirmalloc",
+  "install_command": "git clone https://github.com/sirmalloc/ccstatusline.git",
+  "source_repo_url": "https://github.com/sirmalloc/ccstatusline",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-tools",
+    "developer-tools",
+    "claude-code",
+    "git",
+    "statusline",
+    "terminal",
+    "statusbar",
+    "themeing",
+    "powerline",
+    "cli"
+  ],
+  "sections": {
+    "overview": "ccstatusline is a customizable statusline utility designed for Claude Code CLI, enabling developers to enhance their terminal interface with powerline themes and status widgets. It provides terminal width probing and configuration options, allowing users to tailor the statusline display to their workflow. The skill supports environment variable overrides like CCSTATUSLINE_WIDTH for explicit control, making it adaptable to various terminal configurations and IDE integrations. Developers benefit from improved terminal visibility and status awareness when using Claude Code for AI-assisted development. The tool is actively maintained with features like remote control status widgets and live theme preview capabilities.\nDisplay real-time token usage and session costs while working in the terminal.\nCustomize the status line to show the current git branch and repository status.\nTrack progress through Claude Code blocks with a visual block timer.\nEasily configure multiple status lines for different projects or workflows.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sirmalloc/ccstatusline`",
+    "usage": "```\nCreate a custom statusline for my Claude Code CLI using the powerline style. I want to include the following elements: [ELEMENTS]. Use the [THEME] color scheme. Make sure it's compatible with my terminal emulator: [TERMINAL_EMULATOR]. Provide the configuration code I need to add to my settings file.\n```\nCopy\n\n```\nHere's a custom statusline configuration for your Claude Code CLI using the powerline style with the 'gruvbox' theme. This configuration includes the current git branch, file name, and Python virtual environment name, and is optimized for the iTerm2 terminal emulator:\n\n```json\n{\n  \"statusline\": {\n    \"style\": \"powerline\",\n    \"theme\": \"gruvbox\",\n    \"segments\": [\n      {\n        \"type\": \"git_branch\",\n        \"format\": \"{branch}\"\n      },\n      {\n        \"type\": \"filename\",\n        \"format\": \"{filename}\"\n      },\n      {\n        \"type\": \"python_venv\",\n        \"format\": \"{venv}\"\n      }\n    ],\n    \"terminal_emulator\": \"iterm2\"\n  }\n}\n```\n\nTo use this configuration, add it to your Claude Code CLI settings file. The statusline will display the current git branch in the left segment, the current file name in the middle segment, and the active Python virtual environment name in the right segment. The powerline style will create a visually appealing separation between segments, and the gruvbox theme will use a color scheme that's easy on the eyes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccstatusline#main-content",
+      "ccstatusline#overview",
+      "ccstatusline#setup",
+      "ccstatusline#examples",
+      "ccstatusline#tools",
+      "ccstatusline#mcp",
+      "ccstatusline#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccstatusline is a customizable statusline utility designed for Claude Code CLI, enabling developers to enhance their terminal interface with powerline themes and status widgets. It provides terminal width probing and configuration options, allowing users to tailor the statusline display to their workflow. The skill supports environment variable overrides like CCSTATUSLINE_WIDTH for explicit control, making it adaptable to various terminal configurations and IDE integrations. Developers benefit from improved terminal visibility and status awareness when using Claude Code for AI-assisted development. The tool is actively maintained with features like remote control status widgets and live theme preview capabilities.\nDisplay real-time token usage and session costs while working in the terminal.\nCustomize the status line to show the current git branch and repository status.\nTrack progress through Claude Code blocks with a visual block timer.\nEasily configure multiple status lines for different projects or workflows.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sirmalloc/ccstatusline`",
+    "usage_vi": "```\nCreate a custom statusline for my Claude Code CLI using the powerline style. I want to include the following elements: [ELEMENTS]. Use the [THEME] color scheme. Make sure it's compatible with my terminal emulator: [TERMINAL_EMULATOR]. Provide the configuration code I need to add to my settings file.\n```\nCopy\n\n```\nHere's a custom statusline configuration for your Claude Code CLI using the powerline style with the 'gruvbox' theme. This configuration includes the current git branch, file name, and Python virtual environment name, and is optimized for the iTerm2 terminal emulator:\n\n```json\n{\n  \"statusline\": {\n    \"style\": \"powerline\",\n    \"theme\": \"gruvbox\",\n    \"segments\": [\n      {\n        \"type\": \"git_branch\",\n        \"format\": \"{branch}\"\n      },\n      {\n        \"type\": \"filename\",\n        \"format\": \"{filename}\"\n      },\n      {\n        \"type\": \"python_venv\",\n        \"format\": \"{venv}\"\n      }\n    ],\n    \"terminal_emulator\": \"iterm2\"\n  }\n}\n```\n\nTo use this configuration, add it to your Claude Code CLI settings file. The statusline will display the current git branch in the left segment, the current file name in the middle segment, and the active Python virtual environment name in the right segment. The powerline style will create a visually appealing separation between segments, and the gruvbox theme will use a color scheme that's easy on the eyes.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:18:34.607603Z",
+    "http_status": 200,
+    "content_hash": "c4f01fd3a4ed63046960184ba43cfc4b2c1ad90f560cc7457012741893210273",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccstatusline.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccstatusline.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccstatusline customizable CLI status",
+  "short_description_vi": "Customizable statusline for Claude Code CLI. Supports powerline, themes, and more. Ideal for developers who want to enhance their terminal experience with AI tools."
+}

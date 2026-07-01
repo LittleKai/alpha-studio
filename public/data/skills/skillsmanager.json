@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillsmanager",
+  "slug": "skillsmanager",
+  "name": "SkillsManager",
+  "headline": "SkillsManager - Manage AI Coding Skills",
+  "short_description": "SkillsManager is a macOS app for discovering, browsing, and installing AI coding assistant skills. It supports Claude Code and Codex, pulling skills from GitHub or local files. Developers and operations teams use it to streamline AI coding workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "tddworks",
+  "install_command": "git clone https://github.com/tddworks/SkillsManager.git",
+  "source_repo_url": "https://github.com/tddworks/SkillsManager",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "codex",
+    "skills"
+  ],
+  "sections": {
+    "overview": "Skills Manager is a macOS application that simplifies skill discovery and management for AI coding assistants like Claude Code and Codex. It lets you browse skills from GitHub repositories such as anthropics/skills, add local directories via file:// URLs, and install to multiple providers simultaneously. The app features tag-based filtering, markdown documentation rendering, a split-pane editor for local skill editing, and support for managing multiple remote catalogs. Developers and operations teams use it to organize and streamline AI coding workflows without manual configuration.\nBrowse and discover skills from Anthropic's official skills repository\nManage skills across both Claude Code and Codex installations from one interface\nCreate custom tags to organize and filter skills across multiple GitHub catalogs\nEdit local skills with live markdown preview in the split-pane editor",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tddworks/SkillsManager`",
+    "usage": "```\nFind and install the top 5 skills for [PROGRAMMING_LANGUAGE] on SkillsManager. Look for skills that improve code quality and follow best practices. Provide installation instructions for each.\n```\nCopy\n\n```\n# Top 5 Skills for Python on SkillsManager\n\nHere are the top 5 Python skills you can install using SkillsManager:\n\n1. **Python Linter Skill**\n   - Automatically checks code for PEP 8 compliance\n   - Provides real-time feedback on style issues\n   - Installation: `skillsmanager install python-linter`\n\n2. **Python Security Scanner**\n   - Identifies common security vulnerabilities\n   - Suggests secure coding practices\n   - Installation: `skillsmanager install python-security-scanner`\n\n3. **Python Docstring Generator**\n   - Automatically generates docstrings for functions\n   - Follows Google, NumPy, and reST styles\n   - Installation: `skillsmanager install python-docstring-generator`\n\n4. **Python Code Optimizer**\n   - Suggests performance improvements\n   - Identifies inefficient code patterns\n   - Installation: `skillsmanager install python-code-optimizer`\n\n5. **Python Test Case Generator**\n   - Creates unit tests based on function signatures\n   - Supports pytest and unittest frameworks\n   - Installation: `skillsmanager install python-test-case-generator`\n\nThese skills will help you write cleaner, more secure, and more efficient Python code.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillsmanager#main-content",
+      "skillsmanager#overview",
+      "skillsmanager#setup",
+      "skillsmanager#examples",
+      "skillsmanager#tools",
+      "skillsmanager#mcp",
+      "skillsmanager#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skills Manager is a macOS application that simplifies skill discovery and management for AI coding assistants like Claude Code and Codex. It lets you browse skills from GitHub repositories such as anthropics/skills, add local directories via file:// URLs, and install to multiple providers simultaneously. The app features tag-based filtering, markdown documentation rendering, a split-pane editor for local skill editing, and support for managing multiple remote catalogs. Developers and operations teams use it to organize and streamline AI coding workflows without manual configuration.\nBrowse and discover skills from Anthropic's official skills repository\nManage skills across both Claude Code and Codex installations from one interface\nCreate custom tags to organize and filter skills across multiple GitHub catalogs\nEdit local skills with live markdown preview in the split-pane editor",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tddworks/SkillsManager`",
+    "usage_vi": "```\nFind and install the top 5 skills for [PROGRAMMING_LANGUAGE] on SkillsManager. Look for skills that improve code quality and follow best practices. Provide installation instructions for each.\n```\nCopy\n\n```\n# Top 5 Skills for Python on SkillsManager\n\nHere are the top 5 Python skills you can install using SkillsManager:\n\n1. **Python Linter Skill**\n   - Automatically checks code for PEP 8 compliance\n   - Provides real-time feedback on style issues\n   - Installation: `skillsmanager install python-linter`\n\n2. **Python Security Scanner**\n   - Identifies common security vulnerabilities\n   - Suggests secure coding practices\n   - Installation: `skillsmanager install python-security-scanner`\n\n3. **Python Docstring Generator**\n   - Automatically generates docstrings for functions\n   - Follows Google, NumPy, and reST styles\n   - Installation: `skillsmanager install python-docstring-generator`\n\n4. **Python Code Optimizer**\n   - Suggests performance improvements\n   - Identifies inefficient code patterns\n   - Installation: `skillsmanager install python-code-optimizer`\n\n5. **Python Test Case Generator**\n   - Creates unit tests based on function signatures\n   - Supports pytest and unittest frameworks\n   - Installation: `skillsmanager install python-test-case-generator`\n\nThese skills will help you write cleaner, more secure, and more efficient Python code.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:25.938163Z",
+    "http_status": 200,
+    "content_hash": "06666bd2ecadc9f39916f42a7118b9e3b3916e06f4841f370f2f5f02c49d7568",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsmanager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillsmanager.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SkillsManager - Manage AI Coding Skills",
+  "short_description_vi": "SkillsManager is a macOS app for discovering, browsing, and installing AI coding assistant skills. It supports Claude Code and Codex, pulling skills from GitHub or local files. Developers and operations teams use it to streamline AI coding workflows."
+}

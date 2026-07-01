@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kiro-cli",
+  "slug": "kiro-cli",
+  "name": "Kiro Cli",
+  "headline": "Boost Productivity with Kiro Cli AI Tool",
+  "short_description": "Kiro Cli automates repetitive command-line tasks for engineers. It integrates with Claude Code, Cursor, Windsurf, Cline, and Codex to streamline workflows, reduce errors, and boost productivity.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "automation",
+    "command-line",
+    "productivity",
+    "AI"
+  ],
+  "sections": {
+    "overview": "Kiro Cli is a development tool that automates repetitive command-line tasks for engineers. It integrates seamlessly with popular AI-assisted coding platforms including Claude Code, Cursor, Windsurf, Cline, and Codex. By automating routine CLI operations, Kiro Cli helps reduce manual errors and streamline engineering workflows. The skill enables developers to focus on higher-level tasks while the tool handles repetitive command execution.\nAutomate command-line operations\nSimplify software development processes\nEnhance workflow efficiency",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nUse Kiro Cli to automate the following repetitive command-line task: [DESCRIBE_TASK]. Run the command in [DIRECTORY_PATH] and ensure it handles errors gracefully. Output the results to [OUTPUT_FILE_PATH] and log any issues to [LOG_FILE_PATH]. Verify the task completed successfully by checking [SUCCESS_CRITERIA].\n```\nCopy\n\n```\n```bash\n# Kiro Cli executed the following automated workflow:\n\n$ cd /home/user/projects/my-app\n$ kiro run --task \"npm outdated --json\" --output outdated-packages.json --log outdated-packages.log\n\n📊 Analysis Results:\n- Total outdated packages: 12\n- Major updates available: 3 (react@18.2.0 → react@19.0.0, lodash@4.17.21 → lodash@5.0.0, axios@1.6.2 → axios@2.0.0)\n- Minor updates available: 7\n- Patches available: 2\n\n⚠️ Issues Detected:\n- 1 package (webpack@5.89.0) has a critical security vulnerability (CVE-2024-1234)\n- 2 packages are no longer maintained (deprecated)\n\n✅ Success Criteria Met:\n- Output file generated: outdated-packages.json (1.2KB)\n- Log file created: outdated-packages.log (456 bytes)\n- Exit code: 0 (success)\n\n💡 Recommendations:\n1. Update react, lodash, and axios immediately due to major version bumps and security fixes\n2. Replace deprecated packages with active alternatives\n3. Run 'npm audit fix' after updating dependencies\n\n📝 Next Steps:\n- Commit the changes to outdated-packages.json\n- Create a PR with the recommended updates\n- Schedule a dependency update sprint for this week\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "kiro-cli#main-content",
+      "kiro-cli#overview",
+      "kiro-cli#setup",
+      "kiro-cli#examples",
+      "kiro-cli#tools",
+      "kiro-cli#mcp",
+      "kiro-cli#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Kiro Cli is a development tool that automates repetitive command-line tasks for engineers. It integrates seamlessly with popular AI-assisted coding platforms including Claude Code, Cursor, Windsurf, Cline, and Codex. By automating routine CLI operations, Kiro Cli helps reduce manual errors and streamline engineering workflows. The skill enables developers to focus on higher-level tasks while the tool handles repetitive command execution.\nAutomate command-line operations\nSimplify software development processes\nEnhance workflow efficiency",
+    "setup_vi": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nUse Kiro Cli to automate the following repetitive command-line task: [DESCRIBE_TASK]. Run the command in [DIRECTORY_PATH] and ensure it handles errors gracefully. Output the results to [OUTPUT_FILE_PATH] and log any issues to [LOG_FILE_PATH]. Verify the task completed successfully by checking [SUCCESS_CRITERIA].\n```\nCopy\n\n```\n```bash\n# Kiro Cli executed the following automated workflow:\n\n$ cd /home/user/projects/my-app\n$ kiro run --task \"npm outdated --json\" --output outdated-packages.json --log outdated-packages.log\n\n📊 Analysis Results:\n- Total outdated packages: 12\n- Major updates available: 3 (react@18.2.0 → react@19.0.0, lodash@4.17.21 → lodash@5.0.0, axios@1.6.2 → axios@2.0.0)\n- Minor updates available: 7\n- Patches available: 2\n\n⚠️ Issues Detected:\n- 1 package (webpack@5.89.0) has a critical security vulnerability (CVE-2024-1234)\n- 2 packages are no longer maintained (deprecated)\n\n✅ Success Criteria Met:\n- Output file generated: outdated-packages.json (1.2KB)\n- Log file created: outdated-packages.log (456 bytes)\n- Exit code: 0 (success)\n\n💡 Recommendations:\n1. Update react, lodash, and axios immediately due to major version bumps and security fixes\n2. Replace deprecated packages with active alternatives\n3. Run 'npm audit fix' after updating dependencies\n\n📝 Next Steps:\n- Commit the changes to outdated-packages.json\n- Create a PR with the recommended updates\n- Schedule a dependency update sprint for this week\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:22:44.717467Z",
+    "http_status": 200,
+    "content_hash": "3361c1c05364a0cca5132b1b3a5304ee90846bcdbe46b27aa8868038b2626667",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kiro-cli.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\kiro-cli.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Boost Productivity with Kiro Cli AI Tool",
+  "short_description_vi": "Kiro Cli automates repetitive command-line tasks for engineers. It integrates with Claude Code, Cursor, Windsurf, Cline, and Codex to streamline workflows, reduce errors, and boost productivity."
+}

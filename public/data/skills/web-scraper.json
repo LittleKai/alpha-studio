@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/web-scraper",
+  "slug": "web-scraper",
+  "name": "Web Scraper",
+  "headline": "Web Scraper: Intelligent Scraping with Apify",
+  "short_description": "Intelligent web scraping Claude Code skill with automatic strategy selection and TypeScript-first Apify Actor development",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "yfe404",
+  "install_command": "git clone https://github.com/yfe404/web-scraper.git",
+  "source_repo_url": "https://github.com/yfe404/web-scraper",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "apify",
+    "typescript",
+    "web-scraping",
+    "crawlee",
+    "playwright",
+    "claude-skills",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "This web scraping skill automates intelligent data extraction through adaptive reconnaissance phases that automatically select the most efficient scraping strategy. It detects website frameworks, validates every selector and API endpoint before reporting, and includes self-critiquing reports with gap analysis. The skill guides implementation from simple HTTP-based extraction through browser automation and anti-blocking techniques, then helps productionize scrapers as TypeScript Apify Actors. Developers benefit from framework-aware detection that skips irrelevant patterns, quality gates that avoid unnecessary work, and iterative implementation that adds complexity only when needed.\nScrape website data with automatic detection of optimal extraction method (curl vs browser)\nDiscover and validate APIs and sitemaps before building scrapers\nCreate production-ready Apify Actors using TypeScript with guided template selection\nTest anti-blocking protections and session-based scraping workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yfe404/web-scraper`",
+    "usage": "```\nI need to scrape data from [WEBSITE_URL] for [COMPANY] in the [INDUSTRY] sector. The data I need includes [DATA_POINTS]. Please generate a TypeScript Apify Actor script that can handle [SPECIFIC_CHALLENGES] like pagination or dynamic content loading. Also, suggest the best scraping strategy for this website.\n```\nCopy\n\n```\n# Web Scraping Strategy for [WEBSITE_URL]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "web-scraper#main-content",
+      "web-scraper#overview",
+      "web-scraper#setup",
+      "web-scraper#examples",
+      "web-scraper#tools",
+      "web-scraper#mcp",
+      "web-scraper#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kỹ năng cào dữ liệu web này tự động hóa quá trình trích xuất dữ liệu thông minh thông qua các pha thăm dò thích ứng, tự động lựa chọn chiến lược cào hiệu quả nhất. Công cụ giúp phát hiện framework của trang web, xác thực mọi selector và API endpoint trước khi báo cáo, đồng thời cung cấp các báo cáo tự đánh giá kèm phân tích lỗ hổng (gap analysis). Kỹ năng này hướng dẫn bạn từ các bước triển khai trích xuất cơ bản bằng HTTP đến tự động hóa trình duyệt (browser automation) và các kỹ thuật chống chặn (anti-blocking), sau đó hỗ trợ chuyển đổi các scraper thành các Apify Actor bằng TypeScript để sẵn sàng vận hành thực tế. Lập trình viên sẽ tối ưu hóa được quy trình nhờ tính năng nhận diện framework giúp bỏ qua các mẫu (pattern) không liên quan, các chốt kiểm định chất lượng (quality gates) để tránh lãng phí tài nguyên, và quy trình triển khai lặp (iterative) chỉ tăng độ phức tạp khi cần thiết.\nCào dữ liệu website với tính năng tự động phát hiện phương thức trích xuất tối ưu (curl vs browser)\nKhám phá và xác thực các API và sitemap trước khi xây dựng scraper\nTạo các Apify Actor sẵn sàng cho production bằng TypeScript thông qua hướng dẫn chọn template\nThử nghiệm các giải pháp chống chặn (anti-blocking) và quy trình cào dữ liệu dựa trên session",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yfe404/web-scraper`",
+    "usage_vi": "```\nTôi cần cào dữ liệu từ [WEBSITE_URL] cho [COMPANY] hoạt động trong lĩnh vực [INDUSTRY]. Dữ liệu tôi cần bao gồm [DATA_POINTS]. Vui lòng tạo một script TypeScript Apify Actor có thể xử lý các [SPECIFIC_CHALLENGES] như phân trang hoặc tải nội dung động. Đồng thời, hãy đề xuất chiến lược cào dữ liệu tốt nhất cho trang web này.\n```\nCopy\n\n```\n# Chiến lược cào dữ liệu Web cho [WEBSITE_URL]\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:45:43.011292Z",
+    "http_status": 200,
+    "content_hash": "7a52e20c70ef523183831b5e7d24355235926c58b2e0e2e18f32bc0e7ee7e7ff",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\web-scraper.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\web-scraper.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Web Scraper: Cào dữ liệu thông minh với Apify",
+  "short_description_vi": "Kỹ năng Claude Code cào web thông minh hỗ trợ tự động chọn chiến lược và phát triển Apify Actor ưu tiên TypeScript"
+}

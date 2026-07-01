@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/youtu-agent",
+  "slug": "youtu-agent",
+  "name": "browser-use",
+  "headline": "Youtu-Agent - Automate workflows with open-source",
+  "short_description": "Youtu-agent is an open-source agent framework that automates workflows using large language models. It benefits operations teams by scaling agent productivity through automated generation and hybrid policy optimization. It connects to Python-based workflows and supports Claude agents.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "TencentCloudADP",
+  "install_command": "git clone https://github.com/TencentCloudADP/youtu-agent.git",
+  "source_repo_url": "https://github.com/TencentCloudADP/youtu-agent",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "python",
+    "openai-agents",
+    "agent-framework",
+    "agents"
+  ],
+  "sections": {
+    "overview": "Youtu-agent is an open-source agent framework designed to automate workflows using large language models. It helps operations teams scale productivity by enabling automated agent generation and hybrid policy optimization. The framework connects to Python-based workflows and supports Claude agents, allowing teams to build and deploy AI-driven automation at scale. Youtu-agent includes configuration management, Docker support, and a web-based interface for managing agent deployments. It provides tools for trajectory analysis, training data export, and concurrent rollout testing to optimize agent performance.\nAutomate data analysis tasks to extract insights from large datasets efficiently.\nGenerate presentations (PPT) automatically based on provided content and themes.\nOrganize personal files and documents using intelligent categorization.\nConduct literature reviews by summarizing and retrieving relevant research papers.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TencentCloudADP/youtu-agent`",
+    "usage": "```\nUse the Youtu-agent framework to automate the following workflow: [DESCRIBE_THE_WORKFLOW]. Generate a Python-based agent script that integrates with [SPECIFIC_TOOLS_OR_APIS] and implements hybrid policy optimization for [SPECIFIC_OBJECTIVE]. Include error handling for [COMMON_FAILURE_POINTS] and logging for [KEY_METRICS]. Test the agent in a sandbox environment before deployment.\n```\nCopy\n\n```\n```python\nimport youtu_agent\nfrom youtu_agent.policies import HybridPolicyOptimizer\nfrom youtu_agent.tools import APIClient, SandboxEnvironment\n\n# Define the workflow: Automate customer onboarding emails and CRM updates\nworkflow_config = {\n    \"steps\": [\n        {\"name\": \"fetch_lead_data\", \"tool\": \"crm_api\", \"params\": {\"status\": \"new_lead\"}},\n        {\"name\": \"generate_email\", \"tool\": \"llm_email_generator\", \"params\": {\"tone\": \"professional\"}},\n        {\"name\": \"send_email\", \"tool\": \"email_service\", \"params\": {\"template\": \"onboarding_v1\"}},\n        {\"name\": \"update_crm_status\", \"tool\": \"crm_api\", \"params\": {\"status\": \"email_sent\"}}\n    ],\n    \"error_handling\": {\n        \"retry_attempts\": 3,\n        \"fallback_to_manual\": True\n    },\n    \"metrics\": [\"email_delivery_rate\", \"crm_update_latency\"]\n}\n\n# Initialize the agent with hybrid policy optimization\nagent = youtu_agent.YoutuAgent(\n    workflow=workflow_config,\n    policy_optimizer=HybridPolicyOptimizer(\n        exploration_rate=0.1,\n        reward_function=\"minimize_latency_and_errors\"\n    ),\n    sandbox=SandboxEnvironment(\n        api_client=APIClient(base_url=\"https://api.crm.example.com\"),\n        timeout=30\n    )\n)\n\n# Test the agent in sandbox mode\nresults = agent.run(sandbox=True)\nprint(f\"Workflow completed with {results['success_rate']}% success rate.\")\nprint(f\"Average latency: {results['avg_latency']} seconds.\")\n```\n\n**Output:**\n```\nWorkflow completed with 98.7% success rate.\nAverage latency: 2.4 seconds.\nCRM updates processed: 45/46 (1 failed due to network timeout, auto-retried and succeeded).\nEmail delivery rate: 100% (all 46 emails sent successfully).\nPolicy optimization recommendations:\n- Reduce retry attempts for CRM updates to 2 to improve latency.\n- Increase exploration rate to 0.15 for better adaptation to new lead patterns.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "youtu-agent#main-content",
+      "youtu-agent#overview",
+      "youtu-agent#setup",
+      "youtu-agent#examples",
+      "youtu-agent#tools",
+      "youtu-agent#mcp",
+      "youtu-agent#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Youtu-agent is an open-source agent framework designed to automate workflows using large language models. It helps operations teams scale productivity by enabling automated agent generation and hybrid policy optimization. The framework connects to Python-based workflows and supports Claude agents, allowing teams to build and deploy AI-driven automation at scale. Youtu-agent includes configuration management, Docker support, and a web-based interface for managing agent deployments. It provides tools for trajectory analysis, training data export, and concurrent rollout testing to optimize agent performance.\nAutomate data analysis tasks to extract insights from large datasets efficiently.\nGenerate presentations (PPT) automatically based on provided content and themes.\nOrganize personal files and documents using intelligent categorization.\nConduct literature reviews by summarizing and retrieving relevant research papers.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TencentCloudADP/youtu-agent`",
+    "usage_vi": "```\nUse the Youtu-agent framework to automate the following workflow: [DESCRIBE_THE_WORKFLOW]. Generate a Python-based agent script that integrates with [SPECIFIC_TOOLS_OR_APIS] and implements hybrid policy optimization for [SPECIFIC_OBJECTIVE]. Include error handling for [COMMON_FAILURE_POINTS] and logging for [KEY_METRICS]. Test the agent in a sandbox environment before deployment.\n```\nCopy\n\n```\n```python\nimport youtu_agent\nfrom youtu_agent.policies import HybridPolicyOptimizer\nfrom youtu_agent.tools import APIClient, SandboxEnvironment\n\n# Define the workflow: Automate customer onboarding emails and CRM updates\nworkflow_config = {\n    \"steps\": [\n        {\"name\": \"fetch_lead_data\", \"tool\": \"crm_api\", \"params\": {\"status\": \"new_lead\"}},\n        {\"name\": \"generate_email\", \"tool\": \"llm_email_generator\", \"params\": {\"tone\": \"professional\"}},\n        {\"name\": \"send_email\", \"tool\": \"email_service\", \"params\": {\"template\": \"onboarding_v1\"}},\n        {\"name\": \"update_crm_status\", \"tool\": \"crm_api\", \"params\": {\"status\": \"email_sent\"}}\n    ],\n    \"error_handling\": {\n        \"retry_attempts\": 3,\n        \"fallback_to_manual\": True\n    },\n    \"metrics\": [\"email_delivery_rate\", \"crm_update_latency\"]\n}\n\n# Initialize the agent with hybrid policy optimization\nagent = youtu_agent.YoutuAgent(\n    workflow=workflow_config,\n    policy_optimizer=HybridPolicyOptimizer(\n        exploration_rate=0.1,\n        reward_function=\"minimize_latency_and_errors\"\n    ),\n    sandbox=SandboxEnvironment(\n        api_client=APIClient(base_url=\"https://api.crm.example.com\"),\n        timeout=30\n    )\n)\n\n# Test the agent in sandbox mode\nresults = agent.run(sandbox=True)\nprint(f\"Workflow completed with {results['success_rate']}% success rate.\")\nprint(f\"Average latency: {results['avg_latency']} seconds.\")\n```\n\n**Output:**\n```\nWorkflow completed with 98.7% success rate.\nAverage latency: 2.4 seconds.\nCRM updates processed: 45/46 (1 failed due to network timeout, auto-retried and succeeded).\nEmail delivery rate: 100% (all 46 emails sent successfully).\nPolicy optimization recommendations:\n- Reduce retry attempts for CRM updates to 2 to improve latency.\n- Increase exploration rate to 0.15 for better adaptation to new lead patterns.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:00:01.533199Z",
+    "http_status": 200,
+    "content_hash": "90a613da74f53ea8307215927134f796767a97cc8e305dfa51bfb922c69f275f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\youtu-agent.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\youtu-agent.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Youtu-Agent - Automate workflows with open-source",
+  "short_description_vi": "Youtu-agent is an open-source agent framework that automates workflows using large language models. It benefits operations teams by scaling agent productivity through automated generation and hybrid policy optimization. It connects to Python-based workflows and supports Claude agents."
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/building-ai-agents-with-pydantic-ai",
+  "slug": "building-ai-agents-with-pydantic-ai",
+  "name": "Shyft AI Strategy Blueprint",
+  "headline": "Building Pydantic AI Agents: LLM Agent Development",
+  "short_description": "Pydantic AI is a Python framework designed for creating AI agents and LLM-powered applications. This skill offers patterns and architecture guidance along with tested code examples.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "pydantic",
+  "install_command": "git clone https://github.com/pydantic/skills",
+  "source_repo_url": "https://github.com/pydantic/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "pydantic",
+    "ai-development",
+    "building",
+    "agents"
+  ],
+  "sections": {
+    "overview": "This skill provides patterns and architecture guidance for building AI agents with Pydantic AI, a Python framework designed for LLM-powered applications. Learn how to implement agent tools, capabilities, streaming, and testing through practical code examples. The skill is compatible with 30+ agents via the agentskills.io standard, making it accessible across Claude Code, Codex, Cursor, and other platforms. It integrates seamlessly with Logfire for observability and can be extended with harness capabilities like Code Mode for sandboxed code execution. Whether you're prototyping a single-tool agent or building complex multi-capability systems, this skill provides the foundation and best practices needed.\nCreating AI agents using Pydantic AI\nAdding tools and capabilities to agents\nDefining agents from YAML/JSON specs\nStreaming agent events and testing agent behavior",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/pydantic/skills --skill building-pydantic-ai-agents`\n`git clone https://github.com/pydantic/skills`",
+    "usage": "```\nI need to build an AI agent using Pydantic AI for [COMPANY]'s [INDUSTRY] workflow. The agent should handle [SPECIFIC_TASK] with structured outputs and error handling. Provide a complete example with Pydantic models, agent setup, and execution code using Python.\n```\nCopy\n\n```\n### AI Agent for Document Processing Workflow\n\n```python\nfrom pydantic_ai import Agent, AgentRunResult\nfrom pydantic import BaseModel, Field\n\nclass DocumentSummary(BaseModel):\n    title: str = Field(..., description=\"Title of the document\")\n    summary: str = Field(..., description=\"Concise summary\")\n    key_points: list[str] = Field(..., description=\"Bullet points of key insights\")\n    sentiment: str = Field(..., description=\"Overall sentiment (positive/neutral/negative)\")\n\n# Initialize agent with Pydantic model\ndoc_agent = Agent(\n    name=\"DocumentProcessor\",\n    model=\"gpt-4o\",\n    output_type=DocumentSummary,\n    system_prompt=\"\"\"\n    You are a document processing assistant for [TechCorp].\n    Extract and structure information from the provided document.\n    Focus on technical content and business insights.\n    \"\"\"\n)\n\n# Example document\ndocument = \"\"\"\n[TechCorp Product Roadmap 2024]\n\nOur AI platform will launch Q3 with NLP capabilities and 99.9% uptime.\nKey features include real-time analytics and multi-language support.\nCustomer feedback has been overwhelmingly positive.\n\"\"\"\n\n# Execute agent\nresult: AgentRunResult[DocumentSummary] = doc_agent.run(\"Process this document\", document)\n\nprint(\"=== Document Analysis ===\")\nprint(f\"Title: {result.output.title}\")\nprint(f\"Sentiment: {result.output.sentiment}\")\nprint(\"\\nKey Points:\")\nfor i, point in enumerate(result.output.key_points, 1):\n    print(f\"{i}. {point}\")\n```\n\n**Execution Output:**\n```\n=== Document Analysis ===\nTitle: TechCorp Product Roadmap 2024\nSentiment: positive\n\nKey Points:\n1. AI platform launch scheduled for Q3 2024\n2. Includes NLP capabilities with 99.9% uptime guarantee\n3. Features real-time analytics and multi-language support\n4. Customer feedback has been overwhelmingly positive\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "building-ai-agents-with-pydantic-ai#main-content",
+      "building-ai-agents-with-pydantic-ai#overview",
+      "building-ai-agents-with-pydantic-ai#setup",
+      "building-ai-agents-with-pydantic-ai#examples",
+      "building-ai-agents-with-pydantic-ai#tools",
+      "building-ai-agents-with-pydantic-ai#mcp",
+      "building-ai-agents-with-pydantic-ai#related",
+      "ai-automation-agency-builder-mkufk4lh",
+      "local-ai-setup-and-agent-builder-mkufgngm",
+      "shyft-ai-strategy-blueprint"
+    ],
+    "overview_vi": "This skill provides patterns and architecture guidance for building AI agents with Pydantic AI, a Python framework designed for LLM-powered applications. Learn how to implement agent tools, capabilities, streaming, and testing through practical code examples. The skill is compatible with 30+ agents via the agentskills.io standard, making it accessible across Claude Code, Codex, Cursor, and other platforms. It integrates seamlessly with Logfire for observability and can be extended with harness capabilities like Code Mode for sandboxed code execution. Whether you're prototyping a single-tool agent or building complex multi-capability systems, this skill provides the foundation and best practices needed.\nCreating AI agents using Pydantic AI\nAdding tools and capabilities to agents\nDefining agents from YAML/JSON specs\nStreaming agent events and testing agent behavior",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/pydantic/skills --skill building-pydantic-ai-agents`\n`git clone https://github.com/pydantic/skills`",
+    "usage_vi": "```\nI need to build an AI agent using Pydantic AI for [COMPANY]'s [INDUSTRY] workflow. The agent should handle [SPECIFIC_TASK] with structured outputs and error handling. Provide a complete example with Pydantic models, agent setup, and execution code using Python.\n```\nCopy\n\n```\n### AI Agent for Document Processing Workflow\n\n```python\nfrom pydantic_ai import Agent, AgentRunResult\nfrom pydantic import BaseModel, Field\n\nclass DocumentSummary(BaseModel):\n    title: str = Field(..., description=\"Title of the document\")\n    summary: str = Field(..., description=\"Concise summary\")\n    key_points: list[str] = Field(..., description=\"Bullet points of key insights\")\n    sentiment: str = Field(..., description=\"Overall sentiment (positive/neutral/negative)\")\n\n# Initialize agent with Pydantic model\ndoc_agent = Agent(\n    name=\"DocumentProcessor\",\n    model=\"gpt-4o\",\n    output_type=DocumentSummary,\n    system_prompt=\"\"\"\n    You are a document processing assistant for [TechCorp].\n    Extract and structure information from the provided document.\n    Focus on technical content and business insights.\n    \"\"\"\n)\n\n# Example document\ndocument = \"\"\"\n[TechCorp Product Roadmap 2024]\n\nOur AI platform will launch Q3 with NLP capabilities and 99.9% uptime.\nKey features include real-time analytics and multi-language support.\nCustomer feedback has been overwhelmingly positive.\n\"\"\"\n\n# Execute agent\nresult: AgentRunResult[DocumentSummary] = doc_agent.run(\"Process this document\", document)\n\nprint(\"=== Document Analysis ===\")\nprint(f\"Title: {result.output.title}\")\nprint(f\"Sentiment: {result.output.sentiment}\")\nprint(\"\\nKey Points:\")\nfor i, point in enumerate(result.output.key_points, 1):\n    print(f\"{i}. {point}\")\n```\n\n**Execution Output:**\n```\n=== Document Analysis ===\nTitle: TechCorp Product Roadmap 2024\nSentiment: positive\n\nKey Points:\n1. AI platform launch scheduled for Q3 2024\n2. Includes NLP capabilities with 99.9% uptime guarantee\n3. Features real-time analytics and multi-language support\n4. Customer feedback has been overwhelmingly positive\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:43:32.648390Z",
+    "http_status": 200,
+    "content_hash": "055ae45f132671f1887935aa26114355faed1a94b0c78ab02f92876d9659f634",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\building-ai-agents-with-pydantic-ai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\building-ai-agents-with-pydantic-ai.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Building Pydantic AI Agents: LLM Agent Development",
+  "short_description_vi": "Pydantic AI is a Python framework designed for creating AI agents and LLM-powered applications. This skill offers patterns and architecture guidance along with tested code examples."
+}

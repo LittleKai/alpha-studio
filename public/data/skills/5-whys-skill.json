@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/5-whys-skill",
+  "slug": "5-whys-skill",
+  "name": "5 Whys Skill",
+  "headline": "5 whys skill: Root cause analysis",
+  "short_description": "Automates root cause analysis using the 5-Whys method. Operations teams identify fundamental causes of problems, not just symptoms. Integrates with Claude Code for structured problem-solving workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "awesome-skills",
+  "install_command": "git clone https://github.com/awesome-skills/5-whys-skill.git",
+  "source_repo_url": "https://github.com/awesome-skills/5-whys-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The 5-Whys Root Cause Analysis skill brings Toyota Production System methodology to Claude Code, enabling teams to trace problems back to their fundamental causes through iterative questioning. It automatically triggers when you ask about root causes, debugging issues, or incident analysis, then applies a structured 5-phase process: defining the problem, asking why iteratively, identifying the root cause, validating the causal chain, and defining countermeasures. The skill outputs a formatted analysis showing the problem statement, why chain with evidence, root cause classification, and recommended actions. Operations teams, incident response leaders, and engineers benefit from fact-based analysis that avoids blame and focuses on preventable, systemic causes rather than symptoms.\nPost-incident root cause analysis for production outages and service degradation\nPerformance regression debugging to identify why latency or resource usage increased\nDeployment failure investigation to trace configuration or code issues\nSystem error analysis for recurring operational problems",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/awesome-skills/5-whys-skill`",
+    "usage": "```\nI'm experiencing [PROBLEM] at [COMPANY]. Use the 5-Whys method to help me identify the root cause. Here's what I know: [CONTEXT]. Walk me through each 'why' step-by-step until we reach the fundamental cause.\n```\nCopy\n\n```\n# Root Cause Analysis: Production Line Downtime\n\n**Problem Statement**: Frequent unplanned downtime on Assembly Line 3 at [Automotive Manufacturer]\n\n**Initial Cause**: Machine failure\n\n**Why 1**: Why did the machine fail?\n- *Answer*: Overheating due to clogged cooling system\n\n**Why 2**: Why was the cooling system clogged?\n- *Answer*: Inadequate maintenance schedule\n\n**Why 3**: Why was the maintenance schedule inadequate?\n- *Answer*: Production demands prioritized over maintenance\n\n**Why 4**: Why were production demands prioritized?\n- *Answer*: Lack of clear maintenance protocols in production planning\n\n**Why 5**: Why are there no clear maintenance protocols?\n- *Answer*: **Root Cause**: No cross-functional standardization of maintenance procedures\n\n**Recommendation**: Establish company-wide maintenance standards with input from production and maintenance teams.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "5-whys-skill#main-content",
+      "5-whys-skill#overview",
+      "5-whys-skill#setup",
+      "5-whys-skill#examples",
+      "5-whys-skill#tools",
+      "5-whys-skill#mcp",
+      "5-whys-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Phân tích nguyên nhân gốc rễ 5-Whys mang phương pháp luận của Hệ thống Sản xuất Toyota (Toyota Production System) vào Claude Code, giúp các đội ngũ truy vết vấn đề về tận gốc rễ thông qua chuỗi câu hỏi lặp đi lặp lại. Skill này tự động kích hoạt khi bạn hỏi về nguyên nhân gốc rễ, debug lỗi hoặc phân tích sự cố, sau đó áp dụng quy trình 5 giai đoạn có cấu trúc: xác định vấn đề, hỏi 'tại sao' lặp lại, tìm ra nguyên nhân gốc rễ, xác thực chuỗi nhân quả và đề xuất giải pháp khắc phục. Kết quả đầu ra của skill là một bản phân tích được định dạng rõ ràng, hiển thị mô tả vấn đề, chuỗi câu hỏi 'tại sao' kèm minh chứng, phân loại nguyên nhân gốc rễ và các hành động khuyến nghị. Các đội ngũ vận hành, trưởng nhóm ứng phó sự cố và kỹ sư sẽ được tiếp cận phương thức phân tích dựa trên thực tế khách quan, tránh đổ lỗi và tập trung vào các nguyên nhân hệ thống có thể ngăn ngừa được thay vì chỉ xử lý triệu chứng bề nổi.\n\nPhân tích nguyên nhân gốc rễ sau sự cố (post-mortem) đối với các trường hợp sập hệ thống production và giảm sút dịch vụ\nDebug lỗi suy giảm hiệu năng (performance regression) để xác định lý do độ trễ hoặc mức sử dụng tài nguyên tăng cao\nĐiều tra lỗi deployment để truy vết các vấn đề về cấu hình hoặc mã nguồn\nPhân tích lỗi hệ thống đối với các sự cố vận hành lặp đi lặp lại",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/awesome-skills/5-whys-skill`",
+    "usage_vi": "```\nTôi đang gặp sự cố [PROBLEM] tại [COMPANY]. Hãy sử dụng phương pháp 5-Whys để giúp tôi tìm ra nguyên nhân gốc rễ. Dưới đây là thông tin hiện có: [CONTEXT]. Hãy dẫn dắt tôi qua từng bước hỏi 'tại sao' cho đến khi tìm ra nguyên nhân cốt lõi.\n```\nCopy\n\n```\n# Phân tích nguyên nhân gốc rễ: Dây chuyền sản xuất ngừng hoạt động\n\n**Mô tả vấn đề**: Dây chuyền lắp ráp số 3 tại [Nhà sản xuất ô tô] thường xuyên bị dừng hoạt động ngoài kế hoạch\n\n**Nguyên nhân ban đầu**: Hỏng máy\n\n**Tại sao 1**: Tại sao máy lại hỏng?\n- *Trả lời*: Quá nhiệt do hệ thống làm mát bị tắc\n\n**Tại sao 2**: Tại sao hệ thống làm mát bị tắc?\n- *Trả lời*: Lịch bảo trì không hợp lý\n\n**Tại sao 3**: Tại sao lịch bảo trì không hợp lý?\n- *Trả lời*: Ưu tiên tiến độ sản xuất hơn việc bảo trì\n\n**Tại sao 4**: Tại sao tiến độ sản xuất lại được ưu tiên?\n- *Trả lời*: Thiếu các quy trình bảo trì rõ ràng trong kế hoạch sản xuất\n\n**Tại sao 5**: Tại sao không có quy trình bảo trì rõ ràng?\n- *Trả lời*: **Nguyên nhân gốc rễ**: Không có sự chuẩn hóa liên phòng ban (cross-functional) cho các quy trình bảo trì\n\n**Khuyến nghị**: Thiết lập các tiêu chuẩn bảo trì trên toàn công ty với sự đóng góp từ cả đội ngũ sản xuất và đội ngũ bảo trì.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:12:29.292437Z",
+    "http_status": 200,
+    "content_hash": "1751d3a50ff98d2e5d0ac76509152a35f588224b446e3feaed0aab258cff03e8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\5-whys-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\5-whys-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill 5 Whys: Phân tích nguyên nhân gốc rễ",
+  "short_description_vi": "Tự động hóa việc phân tích nguyên nhân gốc rễ bằng phương pháp 5-Whys. Giúp các đội ngũ vận hành xác định chính xác nguyên nhân cốt lõi của vấn đề thay vì chỉ xử lý phần ngọn. Tích hợp mượt mà với Claude Code để tối ưu hóa quy trình giải quyết vấn đề theo cấu trúc."
+}

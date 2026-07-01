@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccagents",
+  "slug": "ccagents",
+  "name": "browser-use",
+  "headline": "ccagents: manage Claude Code locally",
+  "short_description": "CLI tool for managing Claude Code agents in local projects. Enables developers to automate tasks, integrate AI agents into workflows, and streamline operations. Connects to Rust-based projects and supports Claude Code agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "Bitropy",
+  "install_command": "git clone https://github.com/Bitropy/ccagents.git",
+  "source_repo_url": "https://github.com/Bitropy/ccagents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude",
+    "ai",
+    "agents"
+  ],
+  "sections": {
+    "overview": "ccagents is a Rust CLI tool that streamlines Claude Code agent management in local projects through symlink-based portability and relative path configuration. It enables developers to add agents from local files or GitHub, enable/disable them without copying, and sync configuration across team members. The tool includes smart diagnostics to detect broken symlinks, missing sources, and orphaned agents, plus cleanup utilities to maintain project integrity. Built for portability, it stores agent metadata in .agents.json and actual files in .ccagents/ while maintaining active agents as symlinks in .claude/agents/.\nEnable/disable Claude Code agents per project without duplicating files\nShare agent configurations across team members with portable relative paths\nDownload and manage individual agent files directly from GitHub repositories\nDiagnose and repair broken agent symlinks and missing source files",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Bitropy/ccagents`",
+    "usage": "```\nCreate a Claude Code agent to automate the following task in my [PROJECT_NAME] project: [DESCRIBE_TASK]. The agent should use the following data sources: [DATA_SOURCES]. Provide the agent configuration in YAML format and explain how it will accomplish the task.\n```\nCopy\n\n```\n# Claude Code Agent Configuration for Project: Rust Web Application\n\n```yaml\nname: \"Rust Web App Tester\"\ndescription: \"Automates testing of Rust web application endpoints\"\ndata_sources:\n  - type: \"api\"\n    url: \"https://api.example.com/v1/\"\n    auth: \"bearer ${API_KEY}\"\n  - type: \"database\"\n    connection_string: \"postgres://user:pass@localhost:5432/db\"\ntriggers:\n  - type: \"schedule\"\n    cron: \"0 0 * * *\"\ntasks:\n  - name: \"test_endpoints\"\n    description: \"Test all API endpoints\"\n    steps:\n      - \"Generate test cases from API documentation\"\n      - \"Execute tests against live endpoints\"\n      - \"Record test results in database\"\n      - \"Generate report if failures detected\"\n```\n\nThis agent will automatically test your Rust web application endpoints daily. It uses your API documentation to generate test cases, executes them against your live endpoints, records the results in your database, and generates a report if any tests fail. The agent is configured to run at midnight UTC every day.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccagents#main-content",
+      "ccagents#overview",
+      "ccagents#setup",
+      "ccagents#examples",
+      "ccagents#tools",
+      "ccagents#mcp",
+      "ccagents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccagents is a Rust CLI tool that streamlines Claude Code agent management in local projects through symlink-based portability and relative path configuration. It enables developers to add agents from local files or GitHub, enable/disable them without copying, and sync configuration across team members. The tool includes smart diagnostics to detect broken symlinks, missing sources, and orphaned agents, plus cleanup utilities to maintain project integrity. Built for portability, it stores agent metadata in .agents.json and actual files in .ccagents/ while maintaining active agents as symlinks in .claude/agents/.\nEnable/disable Claude Code agents per project without duplicating files\nShare agent configurations across team members with portable relative paths\nDownload and manage individual agent files directly from GitHub repositories\nDiagnose and repair broken agent symlinks and missing source files",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Bitropy/ccagents`",
+    "usage_vi": "```\nCreate a Claude Code agent to automate the following task in my [PROJECT_NAME] project: [DESCRIBE_TASK]. The agent should use the following data sources: [DATA_SOURCES]. Provide the agent configuration in YAML format and explain how it will accomplish the task.\n```\nCopy\n\n```\n# Claude Code Agent Configuration for Project: Rust Web Application\n\n```yaml\nname: \"Rust Web App Tester\"\ndescription: \"Automates testing of Rust web application endpoints\"\ndata_sources:\n  - type: \"api\"\n    url: \"https://api.example.com/v1/\"\n    auth: \"bearer ${API_KEY}\"\n  - type: \"database\"\n    connection_string: \"postgres://user:pass@localhost:5432/db\"\ntriggers:\n  - type: \"schedule\"\n    cron: \"0 0 * * *\"\ntasks:\n  - name: \"test_endpoints\"\n    description: \"Test all API endpoints\"\n    steps:\n      - \"Generate test cases from API documentation\"\n      - \"Execute tests against live endpoints\"\n      - \"Record test results in database\"\n      - \"Generate report if failures detected\"\n```\n\nThis agent will automatically test your Rust web application endpoints daily. It uses your API documentation to generate test cases, executes them against your live endpoints, records the results in your database, and generates a report if any tests fail. The agent is configured to run at midnight UTC every day.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:31:34.092197Z",
+    "http_status": 200,
+    "content_hash": "2047f7b0d11f744c2acc1272878ceecdbf77d312fdce0c8b07901be05f92a538",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccagents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\ccagents.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "ccagents: manage Claude Code locally",
+  "short_description_vi": "CLI tool for managing Claude Code agents in local projects. Enables developers to automate tasks, integrate AI agents into workflows, and streamline operations. Connects to Rust-based projects and supports Claude Code agents."
+}

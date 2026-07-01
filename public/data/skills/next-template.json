@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/next-template",
+  "slug": "next-template",
+  "name": "browser-use",
+  "headline": "Next.js Template - Build Web Apps",
+  "short_description": "A Next.js template for building production-ready web applications. It integrates with TypeScript, Tailwind CSS, and Vercel for rapid development. Ideal for operations teams automating web-based workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "35 min",
+  "author": "PaulRBerg",
+  "install_command": "git clone https://github.com/PaulRBerg/next-template.git",
+  "source_repo_url": "https://github.com/PaulRBerg/next-template",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "vercel",
+    "bun",
+    "nextjs",
+    "tailwind",
+    "biomejs",
+    "just",
+    "typescript",
+    "knip",
+    "prettier"
+  ],
+  "sections": {
+    "overview": "This Next.js template provides a complete foundation for building production-ready web applications with modern tooling and best practices. It includes Next.js v16 with App Router, React v19, TypeScript v5, Tailwind CSS v4, and Effect-ts for type-safe functional programming. The template comes pre-configured with Vercel deployment, BiomeJS linting, ESLint validation, Husky Git hooks, and a Just command runner for task automation. Operations teams and developers can quickly scaffold applications with built-in health check APIs, UI components, and AI agent instructions (AGENTS.md) for seamless Claude Code integration. Security-first secret management via dotenvx ensures safe CI/CD deployments.\nRapid prototyping of full-stack web applications with type safety\nAutomating web-based workflows with API routes and Next.js backend\nCI/CD pipeline setup with Vercel and GitHub Actions\nBuilding accessible UI components with Base UI and Tailwind CSS",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PaulRBerg/next-template`",
+    "usage": "```\nGenerate a production-ready Next.js application using the [NEXT_TEMPLATE_NAME] template. Initialize the project with TypeScript, Tailwind CSS, and Vercel integration. Set up [SPECIFIC_FEATURES] (e.g., authentication, API routes, or database connection) and configure [DEPLOYMENT_SETTINGS] (e.g., environment variables, CI/CD pipeline). Include a basic [PAGE_OR_COMPONENT] (e.g., a dashboard, form, or API endpoint) to demonstrate the template's structure. Provide the project structure and key files with explanations for each component. Use [FRAMEWORK_VERSIONS] (e.g., Next.js 14, React 18).\n```\nCopy\n\n```\nHere’s a production-ready Next.js application initialized using the `nextjs-pro-template` template, configured for a SaaS startup’s internal dashboard. The project includes:\n\n**Project Structure:**\n```\nmy-saas-dashboard/\n├── .github/workflows/ci.yml          # GitHub Actions CI/CD pipeline\n├── .env.local.example                # Environment variable template\n├── app/\n│   ├── api/\n│   │   └── users/route.ts            # API endpoint for user management\n│   ├── dashboard/\n│   │   ├── layout.tsx                # Dashboard layout with Tailwind\n│   │   └── page.tsx                   # Main dashboard page\n│   └── layout.tsx                     # Root layout\n├── components/\n│   ├── ui/\n│   │   ├── button.tsx                 # Reusable Button component\n│   │   └── card.tsx                    # Reusable Card component\n│   └── auth-provider.tsx              # Authentication context\n├── lib/\n│   ├── auth.ts                        # Auth utility functions\n│   └── db.ts                          # Database connection (Prisma)\n├── public/\n│   └── assets/                        # Static assets\n├── tailwind.config.ts                 # Tailwind CSS configuration\n├── tsconfig.json                      # TypeScript configuration\n└── vercel.json                        # Vercel deployment settings\n```\n\n**Key Features:**\n1. **Authentication:** Pre-configured with NextAuth.js for OAuth (Google, GitHub) and JWT. The `auth-provider.tsx` wraps the dashboard to protect routes.\n2. **Styling:** Tailwind CSS is set up with a custom theme for the dashboard’s dark mode and responsive design.\n3. **API Routes:** A `/api/users` endpoint demonstrates CRUD operations with Prisma ORM and PostgreSQL.\n4. **Deployment:** The `.github/workflows/ci.yml` file includes a pipeline to run tests and deploy to Vercel on merge to `main`.\n5. **TypeScript:** Strict type checking is enabled, with types auto-generated for API routes.\n\n**Example Dashboard Page (`app/dashboard/page.tsx`):**\n```tsx\nimport { Card } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\n\nexport default function DashboardPage() {\n  return (\n    <div className=\"p-6\">\n      <h1 className=\"text-2xl font-bold mb-4\">Welcome to your SaaS Dashboard</h1>\n      <Card className=\"p-4 mb-4\">\n        <p className=\"text-gray-600\">You have 42 active users this month.</p>\n        <Button className=\"mt-2\" onClick={() => alert('Exporting data...')}>\n          Export Report\n        </Button>\n      </Card>\n    </div>\n  );\n}\n```\n\n**Next Steps:**\n- Replace `.env.local.example` with your actual environment variables.\n- Customize the `tailwind.config.ts` to match your brand colors.\n- Extend the API routes or components as needed for your workflows.\n\nThis template reduces setup time by 80% compared to manual configuration, allowing your team to focus on building features instead of boilerplate.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "next-template#main-content",
+      "next-template#overview",
+      "next-template#setup",
+      "next-template#examples",
+      "next-template#tools",
+      "next-template#mcp",
+      "next-template#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This Next.js template provides a complete foundation for building production-ready web applications with modern tooling and best practices. It includes Next.js v16 with App Router, React v19, TypeScript v5, Tailwind CSS v4, and Effect-ts for type-safe functional programming. The template comes pre-configured with Vercel deployment, BiomeJS linting, ESLint validation, Husky Git hooks, and a Just command runner for task automation. Operations teams and developers can quickly scaffold applications with built-in health check APIs, UI components, and AI agent instructions (AGENTS.md) for seamless Claude Code integration. Security-first secret management via dotenvx ensures safe CI/CD deployments.\nRapid prototyping of full-stack web applications with type safety\nAutomating web-based workflows with API routes and Next.js backend\nCI/CD pipeline setup with Vercel and GitHub Actions\nBuilding accessible UI components with Base UI and Tailwind CSS",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/PaulRBerg/next-template`",
+    "usage_vi": "```\nGenerate a production-ready Next.js application using the [NEXT_TEMPLATE_NAME] template. Initialize the project with TypeScript, Tailwind CSS, and Vercel integration. Set up [SPECIFIC_FEATURES] (e.g., authentication, API routes, or database connection) and configure [DEPLOYMENT_SETTINGS] (e.g., environment variables, CI/CD pipeline). Include a basic [PAGE_OR_COMPONENT] (e.g., a dashboard, form, or API endpoint) to demonstrate the template's structure. Provide the project structure and key files with explanations for each component. Use [FRAMEWORK_VERSIONS] (e.g., Next.js 14, React 18).\n```\nCopy\n\n```\nHere’s a production-ready Next.js application initialized using the `nextjs-pro-template` template, configured for a SaaS startup’s internal dashboard. The project includes:\n\n**Project Structure:**\n```\nmy-saas-dashboard/\n├── .github/workflows/ci.yml          # GitHub Actions CI/CD pipeline\n├── .env.local.example                # Environment variable template\n├── app/\n│   ├── api/\n│   │   └── users/route.ts            # API endpoint for user management\n│   ├── dashboard/\n│   │   ├── layout.tsx                # Dashboard layout with Tailwind\n│   │   └── page.tsx                   # Main dashboard page\n│   └── layout.tsx                     # Root layout\n├── components/\n│   ├── ui/\n│   │   ├── button.tsx                 # Reusable Button component\n│   │   └── card.tsx                    # Reusable Card component\n│   └── auth-provider.tsx              # Authentication context\n├── lib/\n│   ├── auth.ts                        # Auth utility functions\n│   └── db.ts                          # Database connection (Prisma)\n├── public/\n│   └── assets/                        # Static assets\n├── tailwind.config.ts                 # Tailwind CSS configuration\n├── tsconfig.json                      # TypeScript configuration\n└── vercel.json                        # Vercel deployment settings\n```\n\n**Key Features:**\n1. **Authentication:** Pre-configured with NextAuth.js for OAuth (Google, GitHub) and JWT. The `auth-provider.tsx` wraps the dashboard to protect routes.\n2. **Styling:** Tailwind CSS is set up with a custom theme for the dashboard’s dark mode and responsive design.\n3. **API Routes:** A `/api/users` endpoint demonstrates CRUD operations with Prisma ORM and PostgreSQL.\n4. **Deployment:** The `.github/workflows/ci.yml` file includes a pipeline to run tests and deploy to Vercel on merge to `main`.\n5. **TypeScript:** Strict type checking is enabled, with types auto-generated for API routes.\n\n**Example Dashboard Page (`app/dashboard/page.tsx`):**\n```tsx\nimport { Card } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\n\nexport default function DashboardPage() {\n  return (\n    <div className=\"p-6\">\n      <h1 className=\"text-2xl font-bold mb-4\">Welcome to your SaaS Dashboard</h1>\n      <Card className=\"p-4 mb-4\">\n        <p className=\"text-gray-600\">You have 42 active users this month.</p>\n        <Button className=\"mt-2\" onClick={() => alert('Exporting data...')}>\n          Export Report\n        </Button>\n      </Card>\n    </div>\n  );\n}\n```\n\n**Next Steps:**\n- Replace `.env.local.example` with your actual environment variables.\n- Customize the `tailwind.config.ts` to match your brand colors.\n- Extend the API routes or components as needed for your workflows.\n\nThis template reduces setup time by 80% compared to manual configuration, allowing your team to focus on building features instead of boilerplate.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:06:36.288491Z",
+    "http_status": 200,
+    "content_hash": "7ff5c4e33e6d79575503f142dc459e0312688fa94f367c0356a3a9f0718fec2a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\next-template.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\next-template.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Next.js Template - Build Web Apps",
+  "short_description_vi": "A Next.js template for building production-ready web applications. It integrates with TypeScript, Tailwind CSS, and Vercel for rapid development. Ideal for operations teams automating web-based workflows."
+}

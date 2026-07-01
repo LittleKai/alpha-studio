@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-organizer",
+  "slug": "claude-organizer",
+  "name": "Claude Organizer",
+  "headline": "claude organizer: smart file management",
+  "short_description": "AI-powered file organization and context engineering that understands content, not patterns. Automatically sorts temporary scripts from permanent docs while   preserving your workflow. Works with Claude Code hooks. Protects README, LICENSE, configs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "ramakay",
+  "install_command": "git clone https://github.com/ramakay/claude-organizer.git",
+  "source_repo_url": "https://github.com/ramakay/claude-organizer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "context-engineering",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude Organize solves the file clutter problem that occurs when Claude Code creates test scripts, debug files, and documentation at your project root despite instructions. It uses AI-powered categorization to understand file purpose from content and automatically moves files into organized directories like docs/, scripts/, and their subcategories. The tool integrates seamlessly with Claude Code via PostToolUse hooks, running automatically after file creation without requiring manual intervention. It protects critical files like README and LICENSE while reducing context bloat for improved Claude performance. This complements Claude Code best practices by ensuring consistent organization regardless of session length or CLAUDE.md configuration.\nAutomatically sort test scripts, debug utilities, and temporary files away from project root\nOrganize Claude-generated documentation into structured subdirectories by purpose (testing, analysis, troubleshooting, architecture)\nMaintain clean workspace automatically during active Claude Code development sessions\nTeach Claude consistent project structure patterns through organized file placement",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ramakay/claude-organizer`",
+    "usage": "```\nAct as claude-organizer. Review the files in [DIRECTORY_PATH]. Classify each file into one of these categories: TEMPORARY_SCRIPT, PERMANENT_DOC, CONFIG_FILE, LICENSE_FILE, README_FILE, or OTHER. For TEMPORARY_SCRIPT files, suggest a cleanup schedule based on [LAST_MODIFIED_DATE] and [FILE_EXTENSION]. For PERMANENT_DOC files, ensure they are properly indexed for future retrieval. Ignore files matching [IGNORE_PATTERN] (e.g., '.git/*'). Provide a summary of actions taken and files moved.\n```\nCopy\n\n```\n### claude-organizer Report for Directory: /projects/ai-assistant\n\n#### Files Analyzed: 42\n\n**TEMPORARY_SCRIPTS (9 files)**\n- `temp_analyze_sentiment.py` (Last modified: 2024-05-15) → Scheduled for cleanup in 7 days.\n- `debug_model_output.ipynb` (Last modified: 2024-05-18) → Scheduled for cleanup in 3 days.\n- `experimental_rag_pipeline.py` (Last modified: 2024-05-10) → Scheduled for cleanup in 14 days.\n\n**PERMANENT_DOCS (12 files)**\n- `system_prompt_guidelines.md` → Indexed for retrieval.\n- `api_integration_specs.md` → Indexed for retrieval.\n- `user_study_results.pdf` → Indexed for retrieval.\n\n**CONFIG_FILES (5 files)**\n- `.env.local` → Protected (config file).\n- `claude-config.json` → Protected (config file).\n\n**LICENSE_FILES (1 file)**\n- `LICENSE` → Protected (license file).\n\n**README_FILES (2 files)**\n- `README.md` → Protected (README file).\n- `docs/README.md` → Protected (README file).\n\n**OTHER (13 files)**\n- `output.log` → No action (log file).\n- `scratchpad.txt` → No action (temporary note).\n\n#### Actions Taken:\n1. Moved 9 temporary scripts to `/projects/ai-assistant/temp/` (auto-cleanup scheduled).\n2. Indexed 12 permanent docs in the Claude Code knowledge base.\n3. Protected 8 critical files from modification.\n\n#### Next Steps:\n- Review the `temp/` directory in 7 days to confirm cleanup.\n- Add `output.log` to `.claudeignore` if it’s no longer needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-organizer#main-content",
+      "claude-organizer#overview",
+      "claude-organizer#setup",
+      "claude-organizer#examples",
+      "claude-organizer#tools",
+      "claude-organizer#mcp",
+      "claude-organizer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Organize giải quyết tình trạng lộn xộn file phát sinh khi Claude Code tạo các test script, file debug và tài liệu ngay tại thư mục gốc (project root) bất kể các chỉ dẫn trước đó. Bằng cách sử dụng AI để phân loại và hiểu mục đích của file dựa trên nội dung, công cụ này tự động di chuyển chúng vào các thư mục tương ứng như docs/, scripts/ và các thư mục con. Tích hợp mượt mà với Claude Code thông qua PostToolUse hooks, công cụ tự động chạy ngay sau khi file được tạo mà không cần bạn can thiệp thủ công. Ngoài ra, nó còn bảo vệ các file quan trọng như README, LICENSE và giảm thiểu tình trạng phình context (context bloat) để tối ưu hiệu suất cho Claude. Đây là giải pháp bổ trợ hoàn hảo cho các best practice của Claude Code, đảm bảo cấu trúc dự án luôn nhất quán bất kể thời gian phiên làm việc (session) hay cấu hình CLAUDE.md.\n\n- Tự động sắp xếp, chuyển các test script, công cụ debug và file tạm thời ra khỏi thư mục gốc\n- Phân loại tài liệu do Claude tạo vào các thư mục con được cấu trúc theo mục đích rõ ràng (testing, analysis, troubleshooting, architecture)\n- Tự động duy trì workspace sạch sẽ trong suốt các phiên phát triển Claude Code\n- Định hình cho Claude các pattern cấu trúc dự án nhất quán thông qua việc sắp xếp vị trí file hợp lý",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ramakay/claude-organizer`",
+    "usage_vi": "```\nĐóng vai trò là claude-organizer. Kiểm tra các file trong [DIRECTORY_PATH]. Phân loại từng file vào một trong các nhóm sau: TEMPORARY_SCRIPT, PERMANENT_DOC, CONFIG_FILE, LICENSE_FILE, README_FILE, hoặc OTHER. Đối với các file TEMPORARY_SCRIPT, hãy đề xuất lịch dọn dẹp dựa trên [LAST_MODIFIED_DATE] và [FILE_EXTENSION]. Đối với các file PERMANENT_DOC, đảm bảo chúng được index đúng cách để truy xuất sau này. Bỏ qua các file khớp với [IGNORE_PATTERN] (ví dụ: '.git/*'). Cung cấp báo cáo tóm tắt về các hành động đã thực hiện và danh sách file đã di chuyển.\n```\nCopy\n\n```\n### Báo cáo claude-organizer cho thư mục: /projects/ai-assistant\n\n#### Số file đã phân tích: 42\n\n**TEMPORARY_SCRIPTS (9 file)**\n- `temp_analyze_sentiment.py` (Sửa đổi lần cuối: 2024-05-15) → Đã lên lịch dọn dẹp sau 7 ngày.\n- `debug_model_output.ipynb` (Sửa đổi lần cuối: 2024-05-18) → Đã lên lịch dọn dẹp sau 3 ngày.\n- `experimental_rag_pipeline.py` (Sửa đổi lần cuối: 2024-05-10) → Đã lên lịch dọn dẹp sau 14 ngày.\n\n**PERMANENT_DOCS (12 file)**\n- `system_prompt_guidelines.md` → Đã index để truy xuất.\n- `api_integration_specs.md` → Đã index để truy xuất.\n- `user_study_results.pdf` → Đã index để truy xuất.\n\n**CONFIG_FILES (5 file)**\n- `.env.local` → Được bảo vệ (file config).\n- `claude-config.json` → Được bảo vệ (file config).\n\n**LICENSE_FILES (1 file)**\n- `LICENSE` → Được bảo vệ (file license).\n\n**README_FILES (2 file)**\n- `README.md` → Được bảo vệ (file README).\n- `docs/README.md` → Được bảo vệ (file README).\n\n**OTHER (13 file)**\n- `output.log` → Không xử lý (file log).\n- `scratchpad.txt` → Không xử lý (ghi chú tạm thời).\n\n#### Các hành động đã thực hiện:\n1. Đã di chuyển 9 script tạm thời vào `/projects/ai-assistant/temp/` (đã lên lịch tự động dọn dẹp).\n2. Đã index 12 tài liệu cố định vào knowledge base của Claude Code.\n3. Đã bảo vệ 8 file quan trọng khỏi bị chỉnh sửa.\n\n#### Các bước tiếp theo:\n- Kiểm tra thư mục `temp/` sau 7 ngày để xác nhận việc dọn dẹp.\n- Thêm `output.log` vào `.claudeignore` nếu không còn cần thiết.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:37.467175Z",
+    "http_status": 200,
+    "content_hash": "5d02c8346ecc8219c339f69bb2481756b60d57f4ee45faafb93fa83d95c8785c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-organizer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-organizer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "claude organizer: quản lý file thông minh",
+  "short_description_vi": "Sắp xếp file và tối ưu hóa context bằng AI thông qua việc hiểu nội dung thay vì chỉ khớp pattern. Tự động phân tách script tạm thời khỏi tài liệu cố định mà vẫn giữ nguyên workflow của bạn. Tương thích với Claude Code hooks. Bảo vệ an toàn cho các file README, LICENSE và config."
+}

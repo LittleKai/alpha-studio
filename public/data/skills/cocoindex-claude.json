@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/cocoindex-claude",
+  "slug": "cocoindex-claude",
+  "name": "browser-use",
+  "headline": "CocoIndex skill for Claude Code",
+  "short_description": "CocoIndex Claude Code skill enables developers to build data transformation pipelines, create custom functions, and operate flows via CLI or API using the CocoIndex library. Ideal for operations teams handling data processing tasks, it integrates with Claude agents to automate workflows and streamline data operations.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "cocoindex-io",
+  "install_command": "git clone https://github.com/cocoindex-io/cocoindex-claude.git",
+  "source_repo_url": "https://github.com/cocoindex-io/cocoindex-claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "cocoindex",
+    "etl",
+    "data",
+    "claude-skills"
+  ],
+  "sections": {
+    "overview": "CocoIndex Claude Code skill enables developers to construct data transformation pipelines, create custom functions, and operate flows through CLI or API interfaces using the CocoIndex library. It integrates with Claude agents to automate workflows and streamline data operations, making it ideal for operations teams handling data processing tasks. The skill leverages CocoIndex's real-time data transformation framework for incremental processing, allowing extraction from sources, application of transformations, and export to targets like vector databases and knowledge graphs.\nBuilding real-time data transformation pipelines for AI workflows\nAutomating data extraction, transformation, and export to vector databases\nCreating custom data processing functions for operations automation\nConstructing indexing flows that transform data across multiple sources and targets",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cocoindex-io/cocoindex-claude`",
+    "usage": "```\nI need to create a data transformation pipeline using the CocoIndex library. The pipeline should [DESCRIBE TRANSFORMATION]. The input data is in [INPUT FORMAT] and the output should be in [OUTPUT FORMAT]. Can you generate the necessary code and explain how to set up the pipeline?\n```\nCopy\n\n```\nTo create a data transformation pipeline using the CocoIndex library, we'll need to define a series of steps to convert your input data from CSV format to JSON format. Here's a sample code snippet to get you started:\n\n```python\nimport cocoindex as ci\n\n# Define the transformation steps\npipeline = ci.Pipeline()\n\n# Step 1: Read the input CSV file\npipeline.add_step(ci.ReadCSV('input.csv'))\n\n# Step 2: Transform the data\npipeline.add_step(ci.Transform(lambda row: {\n    'id': row['id'],\n    'name': row['name'],\n    'value': float(row['value'])\n}))\n\n# Step 3: Write the output JSON file\npipeline.add_step(ci.WriteJSON('output.json'))\n\n# Execute the pipeline\npipeline.execute()\n```\n\nTo set up the pipeline, you'll need to install the CocoIndex library using pip:\n\n```bash\npip install cocoindex\n```\n\nOnce installed, save the code snippet above in a Python file (e.g., `pipeline.py`) and run it using the command line:\n\n```bash\npython pipeline.py\n```\n\nThis will create a data transformation pipeline that reads the input CSV file, transforms the data, and writes the output JSON file.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "cocoindex-claude#main-content",
+      "cocoindex-claude#overview",
+      "cocoindex-claude#setup",
+      "cocoindex-claude#examples",
+      "cocoindex-claude#tools",
+      "cocoindex-claude#mcp",
+      "cocoindex-claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CocoIndex Claude Code skill enables developers to construct data transformation pipelines, create custom functions, and operate flows through CLI or API interfaces using the CocoIndex library. It integrates with Claude agents to automate workflows and streamline data operations, making it ideal for operations teams handling data processing tasks. The skill leverages CocoIndex's real-time data transformation framework for incremental processing, allowing extraction from sources, application of transformations, and export to targets like vector databases and knowledge graphs.\nBuilding real-time data transformation pipelines for AI workflows\nAutomating data extraction, transformation, and export to vector databases\nCreating custom data processing functions for operations automation\nConstructing indexing flows that transform data across multiple sources and targets",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cocoindex-io/cocoindex-claude`",
+    "usage_vi": "```\nI need to create a data transformation pipeline using the CocoIndex library. The pipeline should [DESCRIBE TRANSFORMATION]. The input data is in [INPUT FORMAT] and the output should be in [OUTPUT FORMAT]. Can you generate the necessary code and explain how to set up the pipeline?\n```\nCopy\n\n```\nTo create a data transformation pipeline using the CocoIndex library, we'll need to define a series of steps to convert your input data from CSV format to JSON format. Here's a sample code snippet to get you started:\n\n```python\nimport cocoindex as ci\n\n# Define the transformation steps\npipeline = ci.Pipeline()\n\n# Step 1: Read the input CSV file\npipeline.add_step(ci.ReadCSV('input.csv'))\n\n# Step 2: Transform the data\npipeline.add_step(ci.Transform(lambda row: {\n    'id': row['id'],\n    'name': row['name'],\n    'value': float(row['value'])\n}))\n\n# Step 3: Write the output JSON file\npipeline.add_step(ci.WriteJSON('output.json'))\n\n# Execute the pipeline\npipeline.execute()\n```\n\nTo set up the pipeline, you'll need to install the CocoIndex library using pip:\n\n```bash\npip install cocoindex\n```\n\nOnce installed, save the code snippet above in a Python file (e.g., `pipeline.py`) and run it using the command line:\n\n```bash\npython pipeline.py\n```\n\nThis will create a data transformation pipeline that reads the input CSV file, transforms the data, and writes the output JSON file.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:45:59.987330Z",
+    "http_status": 200,
+    "content_hash": "d474f83d93c3fa7200f2a38e3ebeede35a69c3365eed114d2982dfebab067ede",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cocoindex-claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\cocoindex-claude.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "CocoIndex skill for Claude Code",
+  "short_description_vi": "CocoIndex Claude Code skill enables developers to build data transformation pipelines, create custom functions, and operate flows via CLI or API using the CocoIndex library. Ideal for operations teams handling data processing tasks, it integrates with Claude agents to automate workflows and streamline data operations."
+}

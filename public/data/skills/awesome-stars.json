@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-stars",
+  "slug": "awesome-stars",
+  "name": "Awesome Stars",
+  "headline": "personal awesome list collection",
+  "short_description": "Curates a list of GitHub stars for easy reference. Useful for developers and teams to track and share favorite repositories. Integrates with GitHub and can be used in workflows for code review, research, and collaboration.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "maguowei",
+  "install_command": "git clone https://github.com/maguowei/awesome-stars.git",
+  "source_repo_url": "https://github.com/maguowei/awesome-stars",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "awesome-list",
+    "awesome",
+    "awesome-stars",
+    "starred"
+  ],
+  "sections": {
+    "overview": "Awesome Stars generates a curated list of GitHub starred repositories, automatically organized by programming language (Python, JavaScript, Go, Rust, etc.) and topic. The tool works by reading your GitHub stars and creating a structured, browsable reference organized into categories like C, Java, TypeScript, and others. It runs on an automated schedule via GitHub Actions, keeping your curated list up-to-date without manual effort. This is useful for developers and teams who want an easy way to reference, organize, and share their favorite repositories across different technology stacks.\nQuickly access a list of your favorite GitHub repositories for reference.\nShare your starred projects with colleagues to facilitate collaboration.\nOrganize and categorize starred repositories by programming language.\nEasily revisit important resources that you've previously starred.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/maguowei/awesome-stars`",
+    "usage": "```\nGenerate a curated list of my GitHub stars for [PROJECT_NAME]. Include the repository name, description, and URL. Group them by [CRITERIA] such as programming language, last updated date, or number of stars. Format the output as a markdown table for easy reference.\n```\nCopy\n\n```\nHere's a curated list of your GitHub stars for the 'Web Development' project, grouped by programming language:\n\n| Repository Name | Description | URL | Stars | Last Updated |\n|----------------|-------------|-----|-------|---------------|\n| React Boilerplate | A highly scalable, offline-first foundation with the best developer experience and a focus on performance and best practices. | https://github.com/react-boilerplate/react-boilerplate | 24.3k | 2023-05-15 |\n| Vue.js | A progressive, incrementally-adoptable framework for building UI on the web. | https://github.com/vuejs/vue | 200k | 2023-06-20 |\n| Angular | One framework. Mobile & desktop. Web, native or enterprise. Angular helps you build apps that work everywhere, for everyone. | https://github.com/angular/angular | 87.5k | 2023-06-18 |\n| Svelte | Cybernetically enhanced web apps. | https://github.com/sveltejs/svelte | 68.8k | 2023-06-22 |\n| Alpine.js | A rugged, minimal framework for composing JavaScript behavior in your markup. | https://github.com/alpinejs/alpine | 20.6k | 2023-06-19 |\n\nThis list is sorted by the number of stars in descending order. You can use this information to quickly access your favorite repositories and stay up-to-date with the latest developments in web development.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-stars#main-content",
+      "awesome-stars#overview",
+      "awesome-stars#setup",
+      "awesome-stars#examples",
+      "awesome-stars#tools",
+      "awesome-stars#mcp",
+      "awesome-stars#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Stars generates a curated list of GitHub starred repositories, automatically organized by programming language (Python, JavaScript, Go, Rust, etc.) and topic. The tool works by reading your GitHub stars and creating a structured, browsable reference organized into categories like C, Java, TypeScript, and others. It runs on an automated schedule via GitHub Actions, keeping your curated list up-to-date without manual effort. This is useful for developers and teams who want an easy way to reference, organize, and share their favorite repositories across different technology stacks.\nQuickly access a list of your favorite GitHub repositories for reference.\nShare your starred projects with colleagues to facilitate collaboration.\nOrganize and categorize starred repositories by programming language.\nEasily revisit important resources that you've previously starred.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/maguowei/awesome-stars`",
+    "usage_vi": "```\nGenerate a curated list of my GitHub stars for [PROJECT_NAME]. Include the repository name, description, and URL. Group them by [CRITERIA] such as programming language, last updated date, or number of stars. Format the output as a markdown table for easy reference.\n```\nCopy\n\n```\nHere's a curated list of your GitHub stars for the 'Web Development' project, grouped by programming language:\n\n| Repository Name | Description | URL | Stars | Last Updated |\n|----------------|-------------|-----|-------|---------------|\n| React Boilerplate | A highly scalable, offline-first foundation with the best developer experience and a focus on performance and best practices. | https://github.com/react-boilerplate/react-boilerplate | 24.3k | 2023-05-15 |\n| Vue.js | A progressive, incrementally-adoptable framework for building UI on the web. | https://github.com/vuejs/vue | 200k | 2023-06-20 |\n| Angular | One framework. Mobile & desktop. Web, native or enterprise. Angular helps you build apps that work everywhere, for everyone. | https://github.com/angular/angular | 87.5k | 2023-06-18 |\n| Svelte | Cybernetically enhanced web apps. | https://github.com/sveltejs/svelte | 68.8k | 2023-06-22 |\n| Alpine.js | A rugged, minimal framework for composing JavaScript behavior in your markup. | https://github.com/alpinejs/alpine | 20.6k | 2023-06-19 |\n\nThis list is sorted by the number of stars in descending order. You can use this information to quickly access your favorite repositories and stay up-to-date with the latest developments in web development.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:41.116001Z",
+    "http_status": 200,
+    "content_hash": "0e25c44c4c9d7c2da189d0417e83e0e275d7b9c435ce2b06f5e736908736ceef",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-stars.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-stars.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "personal awesome list collection",
+  "short_description_vi": "Curates a list of GitHub stars for easy reference. Useful for developers and teams to track and share favorite repositories. Integrates with GitHub and can be used in workflows for code review, research, and collaboration."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-resources-legacy",
+  "slug": "agent-resources-legacy",
+  "name": "Agent Resources Legacy",
+  "headline": "Local install of Claude skills using uvx",
+  "short_description": "My collection of Claude Code skills, slash commands and subagents that can be installed locally using uvx add-skill/add-command/add-agent: https://github.com/kasperjunge/agent-resources-project",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "kasperjunge",
+  "install_command": "git clone https://github.com/kasperjunge/agent-resources-legacy.git",
+  "source_repo_url": "https://github.com/kasperjunge/agent-resources-legacy",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "agent-resources-legacy is a curated collection of Claude Code extensions organized into three categories: skills for complex multi-file workflows, slash commands for frequently used prompts, and subagents for specialized tasks with isolated context. The repository includes practical examples like a frontend-design skill for production-grade interfaces and demonstrates how to create, structure, and publish custom extensions. Users can install individual skills using the skill-add tool, making it easy to extend Claude Code's capabilities within any project without modifying core functionality.\nCreating production-grade frontend interfaces with the frontend-design skill\nInstalling reusable Claude Code extensions across multiple projects\nBuilding custom skills, slash commands, and subagents for team workflows\nManaging complex multi-file workflows automatically triggered by context",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kasperjunge/agent-resources-legacy`\n\nTo install the agent-resources-legacy skill, follow these steps:\n\n1. **Clone the Repository**: Open your terminal and run the following command to clone the repository:\n   ```bash\n   git clone https://github.com/kasperjunge/agent-resources-project.git\n   ```\n\n2. **Navigate to the Directory**: Change your directory to the cloned repository:\n   ```bash\n   cd agent-resources-project\n   ```\n\n3. **Install the Skill**: Use the uvx command to add the skill locally:\n   ```bash\n   uvx add-skill agent-resources-legacy\n   ```\n\n4. **Verify Installation**: Check if the skill is installed correctly by listing all installed skills:\n   ```bash\n   uvx list-skills\n   ```\n\n5. **Start Using the Skill**: You can now start using the agent-resources-legacy skill in your projects.",
+    "usage": "```\nI want to install the agent-resources-legacy skill from the agent-resources-project repository. Please guide me through the process step by step.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-resources-legacy#main-content",
+      "agent-resources-legacy#overview",
+      "agent-resources-legacy#setup",
+      "agent-resources-legacy#examples",
+      "agent-resources-legacy#tools",
+      "agent-resources-legacy#mcp",
+      "agent-resources-legacy#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "agent-resources-legacy là một bộ sưu tập chọn lọc các extension của Claude Code, được chia thành ba nhóm: skill cho các workflow phức tạp liên quan đến nhiều file, slash command cho các prompt thường dùng, và subagent cho các tác vụ chuyên biệt với context độc lập. Repository này bao gồm các ví dụ thực tế như frontend-design skill để thiết kế các giao diện chuẩn production, đồng thời hướng dẫn cách tạo, cấu trúc và xuất bản các extension tùy chỉnh. Người dùng có thể cài đặt từng skill riêng lẻ bằng công cụ skill-add, giúp dễ dàng mở rộng khả năng của Claude Code trong bất kỳ dự án nào mà không cần chỉnh sửa chức năng cốt lõi.\n\nTạo giao diện frontend chuẩn production với frontend-design skill\nCài đặt các extension Claude Code có thể tái sử dụng trên nhiều dự án khác nhau\nXây dựng các skill, slash command và subagent tùy chỉnh cho workflow của đội ngũ\nQuản lý các workflow phức tạp liên quan đến nhiều file, được kích hoạt tự động theo ngữ cảnh (context)",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kasperjunge/agent-resources-legacy`\n\nĐể cài đặt agent-resources-legacy skill, hãy thực hiện theo các bước sau:\n\n1. **Clone Repository**: Mở terminal và chạy lệnh sau để clone repository:\n   ```bash\n   git clone https://github.com/kasperjunge/agent-resources-project.git\n   ```\n\n2. **Di chuyển vào thư mục**: Chuyển thư mục làm việc vào repository vừa clone:\n   ```bash\n   cd agent-resources-project\n   ```\n\n3. **Cài đặt Skill**: Sử dụng lệnh uvx để thêm skill vào local:\n   ```bash\n   uvx add-skill agent-resources-legacy\n   ```\n\n4. **Xác minh cài đặt**: Kiểm tra xem skill đã được cài đặt chính xác chưa bằng cách liệt kê danh sách tất cả các skill đã cài đặt:\n   ```bash\n   uvx list-skills\n   ```\n\n5. **Bắt đầu sử dụng**: Bây giờ bạn có thể bắt đầu sử dụng agent-resources-legacy skill trong các dự án của mình.",
+    "usage_vi": "```\nTôi muốn cài đặt agent-resources-legacy skill từ repository agent-resources-project. Vui lòng hướng dẫn tôi từng bước thực hiện.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:46:14.293150Z",
+    "http_status": 200,
+    "content_hash": "d867cac5716bdce8229e5eb9e955f518e010718f13912b2fa8c490c7c900029d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-resources-legacy.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-resources-legacy.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Cài đặt local các Claude skill bằng uvx",
+  "short_description_vi": "Bộ sưu tập các Claude Code skill, slash command và subagent của tôi, hỗ trợ cài đặt local thông qua uvx add-skill/add-command/add-agent: https://github.com/kasperjunge/agent-resources-project"
+}

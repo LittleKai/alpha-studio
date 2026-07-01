@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/usage4claude",
+  "slug": "usage4claude",
+  "name": "Usage4Claude",
+  "headline": "Usage4Claude - Monitor Claude AI Usage",
+  "short_description": "Usage4Claude monitors Claude AI usage limits in real-time from the macOS menu bar. It tracks 5-hour, 7-day, extra usage, 7-day Opus, and 7-day Sonnet quotas. Ideal for operations teams managing Claude AI usage across multiple users and projects.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "f-is-h",
+  "install_command": "git clone https://github.com/f-is-h/Usage4Claude.git",
+  "source_repo_url": "https://github.com/f-is-h/Usage4Claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-desktop",
+    "productivity",
+    "swift",
+    "menubar-app",
+    "native-app",
+    "swiftui",
+    "status-bar",
+    "macos-app",
+    "utilities",
+    "macos",
+    "claude",
+    "claude-code",
+    "monitoring",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Usage4Claude is a native macOS application that displays Claude AI subscription usage quotas directly in your menu bar, updating in real-time. It monitors all five quota types—5-hour, 7-day, Extra Usage, 7-day Opus, and 7-day Sonnet—and works across all Claude platforms including Claude.ai, Claude Code, Desktop App, Mobile App, and Cowork. The app includes visual color indicators that change based on usage levels, warning notifications at 90% quota, and support for multiple Claude accounts and organizations. It also optionally monitors Codex quotas alongside Claude, with all data stored locally and secured in Keychain.\nOperations teams tracking Claude AI usage across multiple users and projects\nIndividual developers monitoring personal Claude subscription limits in real-time\nTeams managing both Claude and Codex quotas from a single menu bar interface\nOrganizations needing quota reset notifications and usage warnings",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/f-is-h/Usage4Claude`",
+    "usage": "```\nCheck my current Claude AI usage limits and alert me if any quotas are approaching [THRESHOLD_PERCENTAGE]% completion. Specifically monitor: 5-hour usage, 7-day usage, extra usage, 7-day Opus quota, and 7-day Sonnet quota. Provide a breakdown showing current usage vs. limits for each category and suggest next steps if thresholds are exceeded.\n```\nCopy\n\n```\nHere’s your real-time Claude AI usage summary as of 2:45 PM ET on October 12, 2024:\n\n**5-Hour Usage (Limit: 100 messages)**\n- Current: 87 messages (87%)\n- Status: ⚠️ Approaching threshold\n- Next steps: Pause non-critical tasks or switch to a lower-tier model (Haiku) to reset the counter.\n\n**7-Day Usage (Limit: 500 messages)**\n- Current: 342 messages (68%)\n- Status: 🟡 Moderate usage\n- Next steps: Monitor closely; consider batching requests or distributing workloads.\n\n**Extra Usage (Limit: 100 messages)**\n- Current: 98 messages (98%)\n- Status: 🔴 Critical threshold reached\n- Next steps: Immediately switch to a paid plan or pause all non-essential operations until the 7-day counter resets at midnight.\n\n**7-Day Opus Quota (Limit: 50 messages)**\n- Current: 23 messages (46%)\n- Status: 🟢 Healthy usage\n- Next steps: No action required; continue monitoring.\n\n**7-Day Sonnet Quota (Limit: 100 messages)**\n- Current: 67 messages (67%)\n- Status: 🟡 Moderate usage\n- Next steps: Prioritize Sonnet usage for high-impact tasks and reduce reliance on Opus.\n\n**Recommendations:**\n1. Pause all extra usage tasks immediately to avoid hitting the hard limit.\n2. Reassign 30% of Sonnet tasks to Haiku to free up Sonnet quota for critical work.\n3. Schedule a team meeting at 4 PM to redistribute workloads and prevent future overages.\n\n*Tip: Enable Usage4Claude’s menu bar alerts to get real-time notifications when quotas change.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "usage4claude#main-content",
+      "usage4claude#overview",
+      "usage4claude#setup",
+      "usage4claude#examples",
+      "usage4claude#tools",
+      "usage4claude#mcp",
+      "usage4claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Usage4Claude là ứng dụng macOS native hiển thị trực tiếp quota sử dụng gói đăng ký Claude AI trên menu bar và cập nhật theo thời gian thực. Ứng dụng giám sát cả 5 loại quota—5 giờ, 7 ngày, Lượt dùng thêm (Extra Usage), quota Opus 7 ngày và Sonnet 7 ngày—hoạt động đồng bộ trên mọi nền tảng Claude bao gồm Claude.ai, Claude Code, Desktop App, Mobile App và Cowork. Ứng dụng tích hợp các chỉ báo màu sắc trực quan thay đổi theo mức độ sử dụng, gửi thông báo cảnh báo khi đạt 90% quota, đồng thời hỗ trợ nhiều tài khoản và tổ chức (organization) Claude. Ngoài ra, người dùng có thể tùy chọn giám sát thêm quota Codex song song với Claude, với toàn bộ dữ liệu được lưu trữ cục bộ và bảo mật an toàn trong Keychain.\n\nĐối tượng phù hợp:\n- Các operations team cần theo dõi lượng sử dụng Claude AI của nhiều người dùng và dự án.\n- Lập trình viên cá nhân muốn tự giám sát hạn mức gói đăng ký Claude của mình theo thời gian thực.\n- Các đội ngũ cần quản lý cả quota Claude và Codex từ một giao diện menu bar duy nhất.\n- Các tổ chức có nhu cầu nhận thông báo reset quota và cảnh báo giới hạn sử dụng.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/f-is-h/Usage4Claude`",
+    "usage_vi": "```\nKiểm tra hạn mức sử dụng Claude AI hiện tại của tôi và cảnh báo nếu có bất kỳ quota nào sắp đạt mức [THRESHOLD_PERCENTAGE]%. Cụ thể, hãy giám sát: lượng sử dụng 5 giờ, lượng sử dụng 7 ngày, lượt dùng thêm (extra usage), quota Opus 7 ngày và quota Sonnet 7 ngày. Hãy cung cấp bảng phân tích chi tiết so sánh lượng sử dụng hiện tại với giới hạn của từng danh mục và đề xuất các bước xử lý tiếp theo nếu vượt ngưỡng.\n```\nCopy\n\n```\nDưới đây là bản tóm tắt lượng sử dụng Claude AI theo thời gian thực tính đến 2:45 chiều (giờ ET) ngày 12 tháng 10 năm 2024:\n\n**Lượng sử dụng 5 giờ (Giới hạn: 100 tin nhắn)**\n- Hiện tại: 87 tin nhắn (87%)\n- Trạng thái: ⚠️ Sắp đạt ngưỡng cảnh báo\n- Bước tiếp theo: Tạm dừng các tác vụ không quan trọng hoặc chuyển sang mô hình phân khúc thấp hơn (Haiku) để chờ bộ đếm reset.\n\n**Lượng sử dụng 7 ngày (Giới hạn: 500 tin nhắn)**\n- Hiện tại: 342 tin nhắn (68%)\n- Trạng thái: 🟡 Mức độ sử dụng trung bình\n- Bước tiếp theo: Theo dõi sát sao; cân nhắc gộp các yêu cầu (batching) hoặc phân bổ lại khối lượng công việc.\n\n**Lượt dùng thêm - Extra Usage (Giới hạn: 100 tin nhắn)**\n- Hiện tại: 98 tin nhắn (98%)\n- Trạng thái: 🔴 Đã chạm ngưỡng nghiêm trọng\n- Bước tiếp theo: Chuyển sang gói trả phí ngay lập tức hoặc tạm dừng tất cả các hoạt động không thiết yếu cho đến khi bộ đếm 7 ngày reset vào nửa đêm.\n\n**Quota Opus 7 ngày (Giới hạn: 50 tin nhắn)**\n- Hiện tại: 23 tin nhắn (46%)\n- Trạng thái: 🟢 Mức độ sử dụng an toàn\n- Bước tiếp theo: Không cần xử lý; tiếp tục theo dõi.\n\n**Quota Sonnet 7 ngày (Giới hạn: 100 tin nhắn)**\n- Hiện tại: 67 tin nhắn (67%)\n- Trạng thái: 🟡 Mức độ sử dụng trung bình\n- Bước tiếp theo: Ưu tiên sử dụng Sonnet cho các tác vụ quan trọng và giảm bớt sự phụ thuộc vào Opus.\n\n**Khuyến nghị:**\n1. Tạm dừng ngay tất cả các tác vụ sử dụng thêm (extra usage) để tránh vượt quá giới hạn cứng (hard limit).\n2. Chuyển bớt 30% tác vụ Sonnet sang Haiku để giải phóng quota Sonnet cho các công việc quan trọng hơn.\n3. Lên lịch họp team lúc 4 giờ chiều để phân bổ lại khối lượng công việc và tránh phát sinh chi phí vượt mức trong tương lai.\n\n*Mẹo: Bật tính năng cảnh báo trên menu bar của Usage4Claude để nhận thông báo theo thời gian thực khi quota thay đổi.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:42:38.332210Z",
+    "http_status": 200,
+    "content_hash": "0b55a5c0193cd3378c420306799cd9d0200ca72cebd338bfd29b2772856af4f7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\usage4claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\usage4claude.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Usage4Claude - Theo dõi lượng sử dụng Claude AI",
+  "short_description_vi": "Usage4Claude theo dõi hạn mức sử dụng Claude AI theo thời gian thực ngay trên menu bar của macOS. Ứng dụng giám sát các quota 5 giờ, 7 ngày, lượt dùng thêm (extra usage), quota Opus 7 ngày và Sonnet 7 ngày. Giải pháp lý tưởng cho các operations team quản lý lượng sử dụng Claude AI trên nhiều người dùng và dự án."
+}

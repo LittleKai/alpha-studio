@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hcom",
+  "slug": "hcom",
+  "name": "Hcom",
+  "headline": "Hcom - Real-Time AI Agent Messaging",
+  "short_description": "Hcom enables real-time messaging and context sharing between AI coding agents like Claude Code, Gemini CLI, and Codex. Operations teams use it to automate code generation, debugging, and collaboration. It connects to Python-based workflows and integrates with terminal-based development environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "aannoo",
+  "install_command": "git clone https://github.com/aannoo/hcom.git",
+  "source_repo_url": "https://github.com/aannoo/hcom",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "llm",
+    "multi-agent",
+    "subagents",
+    "cli",
+    "claude",
+    "claude-code-hooks",
+    "ai-tools",
+    "claude-skills",
+    "claude-ai",
+    "gemini-cli",
+    "hooks",
+    "terminal",
+    "multiagent",
+    "agent",
+    "orchestration",
+    "codex",
+    "gemini",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "hcom is a lightweight CLI tool that allows AI coding agents like Claude Code, Gemini, Codex, and Cursor to message, observe, and spawn each other in real-time. It works by recording agent activity to a local SQLite database and injecting messages between tool calls, enabling agents to share context, review each other's work, and coordinate multi-agent workflows. The tool requires no background services—it's a single Rust binary that integrates directly into terminal-based development environments. Teams use hcom to automate code generation, split work across multiple agents, handle handoffs with bundled context, and react automatically to file edits or status changes. It supports cross-device agent coordination via encrypted MQTT relay, works with any terminal emulator, and stores hooks in local config directories without interfering with existing agent workflows.\nCoordinate multi-agent pipelines by having agents spawn, fork, and report results to each other\nAutomate code review workflows where one agent reviews another's work and sends fixes\nEnable real-time context sharing and handoffs between different AI coding tools\nSplit complex tasks across multiple agent instances and collect results automatically",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aannoo/hcom`",
+    "usage": "```\nUse hcom to coordinate a multi-agent AI workflow for [TASK]. Have Agent 1 (Claude Code) generate a [FILE_TYPE] file with [FUNCTIONALITY]. Agent 2 (Gemini CLI) will review the file for [CHECK_POINTS]. Agent 3 (Codex) will execute unit tests and suggest fixes. Share real-time context via hcom to resolve any issues. Final deliverable should be [OUTPUT_FORMAT].\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hcom#main-content",
+      "hcom#overview",
+      "hcom#setup",
+      "hcom#examples",
+      "hcom#tools",
+      "hcom#mcp",
+      "hcom#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "hcom là một CLI tool gọn nhẹ cho phép các AI coding agent như Claude Code, Gemini, Codex và Cursor có thể nhắn tin, quan sát và khởi chạy (spawn) lẫn nhau theo thời gian thực. Công cụ này hoạt động bằng cách ghi lại hoạt động của agent vào một cơ sở dữ liệu SQLite cục bộ và chèn các tin nhắn vào giữa các tool call, giúp các agent chia sẻ ngữ cảnh, đánh giá công việc của nhau và điều phối các workflow đa agent. Công cụ này không yêu cầu bất kỳ dịch vụ chạy nền nào—nó là một file binary Rust duy nhất tích hợp trực tiếp vào các môi trường phát triển chạy trên terminal. Các đội ngũ phát triển sử dụng hcom để tự động hóa việc tạo code, phân chia công việc cho nhiều agent, xử lý việc bàn giao kèm theo ngữ cảnh đầy đủ, và tự động phản hồi lại các thay đổi của file hoặc trạng thái. Nó hỗ trợ điều phối agent trên nhiều thiết bị thông qua MQTT relay mã hóa, tương thích với mọi terminal emulator và lưu trữ các hook trong thư mục cấu hình cục bộ mà không gây ảnh hưởng đến các workflow hiện tại của agent.\nĐiều phối các pipeline đa agent bằng cách cho phép các agent tự khởi chạy (spawn), phân nhánh (fork) và báo cáo kết quả cho nhau\nTự động hóa các workflow code review khi một agent đánh giá sản phẩm của agent khác và gửi bản sửa lỗi\nCho phép chia sẻ ngữ cảnh và bàn giao công việc theo thời gian thực giữa các công cụ coding AI khác nhau\nPhân chia tác vụ phức tạp cho nhiều instance của agent và tự động thu thập kết quả",
+    "setup_vi": "Không có sẵn lệnh cài đặt nhanh. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/aannoo/hcom`",
+    "usage_vi": "```\nSử dụng hcom để điều phối một workflow AI đa agent cho [TASK]. Yêu cầu Agent 1 (Claude Code) tạo một file [FILE_TYPE] với chức năng [FUNCTIONALITY]. Agent 2 (Gemini CLI) sẽ review file này để kiểm tra các phần [CHECK_POINTS]. Agent 3 (Codex) sẽ chạy các unit test và đề xuất phương án sửa lỗi. Chia sẻ ngữ cảnh theo thời gian thực qua hcom để giải quyết mọi vấn đề phát sinh. Sản phẩm bàn giao cuối cùng phải ở dạng [OUTPUT_FORMAT].\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:00:59.888653Z",
+    "http_status": 200,
+    "content_hash": "70cc6fba524844d66b5050bd6dfb3736f0957f72d1cc2e99908707eac64b3d36",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hcom.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hcom.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hcom - Nhắn tin thời gian thực giữa các AI agent",
+  "short_description_vi": "Hcom cho phép truyền tin và chia sẻ ngữ cảnh theo thời gian thực giữa các AI coding agent như Claude Code, Gemini CLI và Codex. Các đội ngũ vận hành sử dụng công cụ này để tự động hóa việc tạo code, debug và cộng tác với nhau. Nó có khả năng kết nối với các workflow Python và tích hợp mượt mà vào các môi trường phát triển chạy trên terminal."
+}

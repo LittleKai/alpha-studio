@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-skill-builder",
+  "slug": "claude-skill-builder",
+  "name": "Claude-Skill-Builder",
+  "headline": "meta skill builder for Claude Skills development",
+  "short_description": "A meta-skill for Claude that guides users through building other Claude skills, including file structure generation, validation, ZIP packaging, and git integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "480 min",
+  "author": "jaystarz1",
+  "install_command": "git clone https://github.com/jaystarz1/Claude-Skill-Builder.git",
+  "source_repo_url": "https://github.com/jaystarz1/Claude-Skill-Builder",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Claude-Skill-Builder is a meta-skill designed to help developers create new Claude skills from scratch. It automates the process of generating proper skill file structures, validating skill definitions, and packaging them into distributable ZIP files. The skill integrates with the filesystem MCP for file operations and supports optional zip-creator MCP with a Python fallback for building skill archives. It includes git pre-commit hook support that automatically rebuilds ZIP files on commit, and features dynamic path detection that works across any user or platform. Developers building custom Claude agent skills benefit from consistent templates, comprehensive validation, and a repeatable workflow.\nScaffolding a new Claude skill with correct file and directory structure\nValidating skill definitions for formatting and import errors before distribution\nAutomatically packaging skill files into a ZIP archive for sharing or deployment\nSetting up git pre-commit hooks to keep skill ZIPs in sync with source changes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jaystarz1/Claude-Skill-Builder`",
+    "usage": "```\nHelp me design a new Claude Skill for [SPECIFIC TASK]. The skill should be in the [CATEGORY] category. Provide a prompt template, example output, how to use, and a long description. Use this format: { \"prompt_template\": \"...\", \"example_output\": \"...\", \"how_to_use\": \"...\", \"long_description\": \"...\" }\n```\nCopy\n\n```\n```json\n{\n  \"prompt_template\": \"Generate a [TYPE] for [COMPANY] in the [INDUSTRY] using [DATA].\",\n  \"example_output\": \"### [TYPE] for [COMPANY]\n\n- **Key Insight 1**: [INSIGHT]\n- **Key Insight 2**: [INSIGHT]\n- **Recommendation**: [RECOMMENDATION]\",\n  \"how_to_use\": \"1. Identify the specific [TYPE] you need.\n2. Gather relevant [DATA] for [COMPANY].\n3. Input the information into the prompt template.\n4. Review the output and refine as needed.\",\n  \"long_description\": \"This skill is designed to automate the creation of [TYPE] for businesses. It benefits professionals who need to quickly generate insights and recommendations based on data. By using this skill, users can save time and improve the accuracy of their analyses.\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-skill-builder#main-content",
+      "claude-skill-builder#overview",
+      "claude-skill-builder#setup",
+      "claude-skill-builder#examples",
+      "claude-skill-builder#tools",
+      "claude-skill-builder#mcp",
+      "claude-skill-builder#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-Skill-Builder là một meta-skill được thiết kế để hỗ trợ các developer tạo mới các Claude skill từ con số không. Công cụ này tự động hóa quy trình tạo cấu trúc file skill chuẩn chỉnh, validate các định nghĩa skill và đóng gói chúng thành các file ZIP để phân phối. Skill này tích hợp với filesystem MCP cho các thao tác file và hỗ trợ zip-creator MCP (tùy chọn) kèm theo cơ chế fallback bằng Python để đóng gói tài liệu skill. Công cụ hỗ trợ git pre-commit hook giúp tự động build lại các file ZIP mỗi khi commit, đồng thời tích hợp tính năng tự động phát hiện đường dẫn (dynamic path detection) hoạt động mượt mà trên mọi người dùng và nền tảng. Các developer khi xây dựng custom Claude agent skill sẽ được hưởng lợi từ các template nhất quán, quy trình validation toàn diện và workflow có khả năng tái sử dụng.\nKhởi dựng (scaffolding) một Claude skill mới với cấu trúc file và thư mục chuẩn xác\nValidate các định nghĩa skill để phát hiện lỗi định dạng và lỗi import trước khi phân phối\nTự động đóng gói các file skill thành file ZIP để chia sẻ hoặc triển khai (deployment)\nThiết lập git pre-commit hook để đảm bảo các file ZIP của skill luôn đồng bộ với các thay đổi từ nguồn",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jaystarz1/Claude-Skill-Builder`",
+    "usage_vi": "```\nGiúp tôi thiết kế một Claude Skill mới cho [SPECIFIC TASK]. Skill này thuộc danh mục [CATEGORY]. Hãy cung cấp prompt template, kết quả mẫu (example output), hướng dẫn sử dụng (how to use) và mô tả chi tiết (long description). Sử dụng định dạng sau: { \"prompt_template\": \"...\", \"example_output\": \"...\", \"how_to_use\": \"...\", \"long_description\": \"...\" }\n```\nCopy\n\n```\n```json\n{\n  \"prompt_template\": \"Tạo một [TYPE] cho [COMPANY] trong ngành [INDUSTRY] bằng cách sử dụng [DATA].\",\n  \"example_output\": \"### [TYPE] cho [COMPANY]\\n\\n- **Thông tin chi tiết chính 1**: [INSIGHT]\\n- **Thông tin chi tiết chính 2**: [INSIGHT]\\n- **Khuyến nghị**: [RECOMMENDATION]\",\n  \"how_to_use\": \"1. Xác định [TYPE] cụ thể mà bạn cần.\\n2. Thu thập [DATA] liên quan cho [COMPANY].\\n3. Nhập thông tin vào prompt template.\\n4. Xem lại kết quả đầu ra và tinh chỉnh nếu cần.\",\n  \"long_description\": \"Skill này được thiết kế để tự động hóa việc tạo [TYPE] cho doanh nghiệp. Tiện ích này mang lại lợi ích cho các chuyên gia cần nhanh chóng tạo ra các thông tin chi tiết và khuyến nghị dựa trên dữ liệu. Bằng cách sử dụng skill này, người dùng có thể tiết kiệm thời gian và nâng cao độ chính xác của các phân tích.\"\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:20:17.639271Z",
+    "http_status": 200,
+    "content_hash": "b1012bbdf7e535e0a3971822aad4d1bdd89108197f23ff77c0edb8f8312eb749",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-builder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-builder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Meta-skill builder hỗ trợ phát triển Claude Skill",
+  "short_description_vi": "Một meta-skill dành cho Claude giúp hướng dẫn người dùng xây dựng các Claude skill khác, bao gồm tự động tạo cấu trúc file, validation, đóng gói ZIP và tích hợp git."
+}

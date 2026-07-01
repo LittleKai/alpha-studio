@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudecodeusage",
+  "slug": "claudecodeusage",
+  "name": "browser-use",
+  "headline": "Claude Code用量监视器",
+  "short_description": "ClaudeCodeUsage is a VSCode extension that tracks Claude Code usage and costs in real-time. It helps developers and operations teams monitor their AI code generation expenses directly in the status bar. The extension integrates with VSCode workflows, providing visibility into usage patterns and cost trends.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "jack21",
+  "install_command": "git clone https://github.com/jack21/ClaudeCodeUsage.git",
+  "source_repo_url": "https://github.com/jack21/ClaudeCodeUsage",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "extension-vscode",
+    "vscode"
+  ],
+  "sections": {
+    "overview": "ClaudeCodeUsage is a VS Code status-bar extension that monitors your Claude Code token consumption and provides cost estimates based on public per-million-token rates. It reads local Claude Code conversation logs to display usage patterns, including breakdowns by token type (input, output, cache-write, cache-read) and model. The extension features a dashboard with charts, sessions, projects, and content analysis tabs that show where tokens are consumed—your prompts, tool results, and assistant output. An optional AI advisor (powered by DeepSeek V4 Pro or your own OpenAI-compatible API) analyzes your usage patterns and suggests concrete prompt rewrites to reduce token waste. Developers and operations teams use it to gain visibility into AI code generation expenses and optimize their Claude Code workflows without relying on external billing tools.\nMonitor daily and weekly token usage quotas directly in VS Code status bar\nAnalyze token consumption breakdown by content type to optimize prompts\nGet AI-powered suggestions to reduce unnecessary token spending\nTrack usage patterns across multiple projects and sessions with sortable dashboards",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jack21/ClaudeCodeUsage`",
+    "usage": "```\nUse the ClaudeCodeUsage VSCode extension to analyze my recent [TIME_PERIOD, e.g., 'last week's'] AI-assisted code generation activity. Generate a report that includes: (1) total tokens used, (2) estimated cost breakdown by programming language, (3) top 3 most expensive files I modified, and (4) recommendations to optimize my usage. Focus on [SPECIFIC_GOAL, e.g., 'reducing costs for TypeScript projects' or 'identifying inefficient prompts'].\n```\nCopy\n\n```\nHere's your AI code generation usage report for the past 7 days (March 10-16, 2024) based on data from the ClaudeCodeUsage extension:\n\n**Summary Metrics:**\n- Total tokens generated: 124,850 (≈124.9K)\n- Estimated cost: $37.46 (at $0.30 per 1K tokens)\n- Average session duration: 8.2 minutes\n- Peak usage day: March 14 (23 sessions, $8.72 spent)\n\n**Cost Breakdown by Language:**\n1. TypeScript: 45,200 tokens ($13.56) - 36% of total\n2. Python: 38,750 tokens ($11.63) - 31% of total\n3. JavaScript: 22,100 tokens ($6.63) - 18% of total\n4. SQL: 10,800 tokens ($3.24) - 9% of total\n5. Other: 8,000 tokens ($2.40) - 6% of total\n\n**Top 3 Most Expensive Files Modified:**\n1. src/components/dashboard/AnalyticsChart.tsx (7,850 tokens, $2.36)\n2. backend/services/paymentProcessor.py (6,200 tokens, $1.86)\n3. scripts/dataMigration.js (5,400 tokens, $1.62)\n\n**Optimization Recommendations:**\n1. **TypeScript Cost Reduction:** Your TypeScript files account for the highest cost. Try breaking complex components into smaller files to reduce context length. Consider using the extension's 'Prompt Optimization' feature for TypeScript-specific queries.\n\n2. **Session Management:** You had 3 sessions lasting over 20 minutes (March 12, 13, 14). These sessions cost $4.20, $5.10, and $6.80 respectively. Try setting a 10-minute timer for complex tasks to maintain focus and reduce costs.\n\n3. **Python Efficiency:** Your Python backend services show room for improvement. The extension detected 4 instances where you asked for similar refactoring - consider creating reusable prompt templates for common Python patterns to reduce redundant queries.\n\n**Trend Analysis:**\nYour usage shows a 15% increase in tokens from the previous week, primarily driven by dashboard development. The extension's 'Language Trend' view suggests this spike correlates with your team's focus on analytics features. Would you like me to suggest specific prompt templates for dashboard component development?\n\n*Data source: ClaudeCodeUsage extension v1.2.3 (VSCode). Cost estimates based on current pricing tiers.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudecodeusage#main-content",
+      "claudecodeusage#overview",
+      "claudecodeusage#setup",
+      "claudecodeusage#examples",
+      "claudecodeusage#tools",
+      "claudecodeusage#mcp",
+      "claudecodeusage#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ClaudeCodeUsage is a VS Code status-bar extension that monitors your Claude Code token consumption and provides cost estimates based on public per-million-token rates. It reads local Claude Code conversation logs to display usage patterns, including breakdowns by token type (input, output, cache-write, cache-read) and model. The extension features a dashboard with charts, sessions, projects, and content analysis tabs that show where tokens are consumed—your prompts, tool results, and assistant output. An optional AI advisor (powered by DeepSeek V4 Pro or your own OpenAI-compatible API) analyzes your usage patterns and suggests concrete prompt rewrites to reduce token waste. Developers and operations teams use it to gain visibility into AI code generation expenses and optimize their Claude Code workflows without relying on external billing tools.\nMonitor daily and weekly token usage quotas directly in VS Code status bar\nAnalyze token consumption breakdown by content type to optimize prompts\nGet AI-powered suggestions to reduce unnecessary token spending\nTrack usage patterns across multiple projects and sessions with sortable dashboards",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jack21/ClaudeCodeUsage`",
+    "usage_vi": "```\nUse the ClaudeCodeUsage VSCode extension to analyze my recent [TIME_PERIOD, e.g., 'last week's'] AI-assisted code generation activity. Generate a report that includes: (1) total tokens used, (2) estimated cost breakdown by programming language, (3) top 3 most expensive files I modified, and (4) recommendations to optimize my usage. Focus on [SPECIFIC_GOAL, e.g., 'reducing costs for TypeScript projects' or 'identifying inefficient prompts'].\n```\nCopy\n\n```\nHere's your AI code generation usage report for the past 7 days (March 10-16, 2024) based on data from the ClaudeCodeUsage extension:\n\n**Summary Metrics:**\n- Total tokens generated: 124,850 (≈124.9K)\n- Estimated cost: $37.46 (at $0.30 per 1K tokens)\n- Average session duration: 8.2 minutes\n- Peak usage day: March 14 (23 sessions, $8.72 spent)\n\n**Cost Breakdown by Language:**\n1. TypeScript: 45,200 tokens ($13.56) - 36% of total\n2. Python: 38,750 tokens ($11.63) - 31% of total\n3. JavaScript: 22,100 tokens ($6.63) - 18% of total\n4. SQL: 10,800 tokens ($3.24) - 9% of total\n5. Other: 8,000 tokens ($2.40) - 6% of total\n\n**Top 3 Most Expensive Files Modified:**\n1. src/components/dashboard/AnalyticsChart.tsx (7,850 tokens, $2.36)\n2. backend/services/paymentProcessor.py (6,200 tokens, $1.86)\n3. scripts/dataMigration.js (5,400 tokens, $1.62)\n\n**Optimization Recommendations:**\n1. **TypeScript Cost Reduction:** Your TypeScript files account for the highest cost. Try breaking complex components into smaller files to reduce context length. Consider using the extension's 'Prompt Optimization' feature for TypeScript-specific queries.\n\n2. **Session Management:** You had 3 sessions lasting over 20 minutes (March 12, 13, 14). These sessions cost $4.20, $5.10, and $6.80 respectively. Try setting a 10-minute timer for complex tasks to maintain focus and reduce costs.\n\n3. **Python Efficiency:** Your Python backend services show room for improvement. The extension detected 4 instances where you asked for similar refactoring - consider creating reusable prompt templates for common Python patterns to reduce redundant queries.\n\n**Trend Analysis:**\nYour usage shows a 15% increase in tokens from the previous week, primarily driven by dashboard development. The extension's 'Language Trend' view suggests this spike correlates with your team's focus on analytics features. Would you like me to suggest specific prompt templates for dashboard component development?\n\n*Data source: ClaudeCodeUsage extension v1.2.3 (VSCode). Cost estimates based on current pricing tiers.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:13:54.296432Z",
+    "http_status": 200,
+    "content_hash": "89dd4ef4485c71a6fa772f962a71f95a342a19cbb6321d69ccb57d0bd826496a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecodeusage.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claudecodeusage.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code用量监视器",
+  "short_description_vi": "ClaudeCodeUsage is a VSCode extension that tracks Claude Code usage and costs in real-time. It helps developers and operations teams monitor their AI code generation expenses directly in the status bar. The extension integrates with VSCode workflows, providing visibility into usage patterns and cost trends."
+}

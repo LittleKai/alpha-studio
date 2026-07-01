@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-claude-code-plugins",
+  "slug": "awesome-claude-code-plugins",
+  "name": "Awesome Claude Code Plugins",
+  "headline": "awesome-claude-code-plugins: claude extensions list",
+  "short_description": "A curated list of slash commands, subagents, MCP servers, and hooks for Claude Code. Operations teams use these plugins to automate workflows, integrate tools, and streamline processes. Connects to Claude Code and other compatible agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "ccplugins",
+  "install_command": "git clone https://github.com/ccplugins/awesome-claude-code-plugins.git",
+  "source_repo_url": "https://github.com/ccplugins/awesome-claude-code-plugins",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code-plugin",
+    "awesome-resources",
+    "awesome-plugins",
+    "claude-code-commands",
+    "claude-code-hooks",
+    "claude-code-subagents",
+    "awesome-list",
+    "claude-code",
+    "claude-code-mcp",
+    "awesome-claude-code"
+  ],
+  "sections": {
+    "overview": "Awesome Claude Code Plugins is a curated collection of extensions for Claude Code, including slash commands, subagents, MCP servers, and hooks. The directory organizes plugins across multiple categories such as workflow orchestration, automation DevOps, business sales, code quality testing, data analytics, and design UX. Operations teams use these plugins to automate workflows, integrate external tools, and streamline development processes. Each plugin is documented with its functionality and compatibility with Claude Code and other compatible AI agents. The collection helps teams quickly discover and implement the right tools for their specific automation and integration needs.\nAutomate the deployment process with specialized DevOps plugins to ensure consistent releases.\nUtilize slash commands to streamline common tasks, reducing the time spent on repetitive actions.\nIntegrate various internal systems securely through MCP servers to enhance data accessibility.\nCreate and share custom workflows for testing and debugging, improving collaboration among team members.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ccplugins/awesome-claude-code-plugins`",
+    "usage": "```\nList the top 5 [PLUGIN_TYPE: slash commands/subagents/MCP servers/hooks] from the awesome-claude-code-plugins repository that would most benefit [TEAM_ROLE: DevOps/Backend/DevEx] teams. For each plugin, provide: 1) A brief description of its purpose, 2) A concrete use case with a sample command, and 3) The expected output or result. Format the response as a markdown table with columns: Plugin Name, Type, Purpose, Use Case, Expected Output.\n```\nCopy\n\n```\nHere are the top 5 plugins tailored for a DevOps team focused on infrastructure automation:\n\n| Plugin Name       | Type         | Purpose                                                                 | Use Case                                                                                     | Expected Output                                                                                     |\n|-------------------|--------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|\n| `terraform-plan`  | Slash Command | Generates Terraform execution plans with human-readable diffs.          | Run `terraform-plan --dir=./infra/modules/networking` to preview changes before applying.     | A formatted diff showing added/removed resources, with color-coded changes for easy review.         |\n| `aws-cost-estimator` | MCP Server  | Estimates AWS service costs based on current usage patterns.           | Query `aws-cost-estimator --services=EC2,RDS --region=us-west-2` for a 30-day cost projection.| A breakdown of estimated monthly costs per service, including potential savings from Reserved Instances. |\n| `k8s-debugger`    | Subagent     | Automates Kubernetes pod troubleshooting by collecting logs and events. | Deploy `k8s-debugger --namespace=prod --pod=api-server-abc123` to diagnose a failing pod.      | A zip file containing logs, events, and a summary of potential issues with suggested fixes.           |\n| `github-actions-linter` | Hook      | Validates GitHub Actions workflow files for syntax errors and best practices. | Trigger `github-actions-linter --file=.github/workflows/deploy.yml` before merging a PR.      | A list of linting errors with line numbers and suggested corrections, formatted as GitHub annotations. |\n| `slack-incident-mgmt` | Slash Command | Creates and updates incident channels in Slack with context from monitoring tools. | Run `slack-incident-mgmt --severity=high --service=payment-gateway --description=\"5xx errors\"` | A new Slack channel named `#incident-high-payment-gateway-2024-05-15` with pinned context from Datadog/PagerDuty. |\n\n**Key Insight**: The `terraform-plan` and `aws-cost-estimator` plugins alone can reduce deployment risks by 40% and save ~$12K/month in AWS costs for a mid-sized team, based on internal benchmarks from our 2024 Q1 review.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-claude-code-plugins#main-content",
+      "awesome-claude-code-plugins#overview",
+      "awesome-claude-code-plugins#setup",
+      "awesome-claude-code-plugins#examples",
+      "awesome-claude-code-plugins#tools",
+      "awesome-claude-code-plugins#mcp",
+      "awesome-claude-code-plugins#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Awesome Claude Code Plugins là một bộ sưu tập chọn lọc các extension dành cho Claude Code, bao gồm các slash command, subagent, MCP server và hook. Danh mục này sắp xếp các plugin theo nhiều danh mục như điều phối quy trình công việc (workflow orchestration), DevOps tự động hóa, kinh doanh & bán hàng, kiểm thử chất lượng mã nguồn, phân tích dữ liệu và thiết kế UX. Các đội ngũ vận hành sử dụng các plugin này để tự động hóa workflow, tích hợp các công cụ bên ngoài và tối ưu hóa quy trình phát triển. Mỗi plugin đều được ghi chép đầy đủ về tính năng cũng như khả năng tương thích với Claude Code và các AI agent tương thích khác. Bộ sưu tập này giúp các đội ngũ nhanh chóng tìm kiếm và triển khai các công cụ phù hợp cho các nhu cầu tự động hóa và tích hợp cụ thể của họ.\nTự động hóa quy trình triển khai (deployment) với các plugin DevOps chuyên dụng để đảm bảo các bản phát hành (release) luôn nhất quán.\nSử dụng các slash command để tinh giản các tác vụ phổ biến, giảm thời gian dành cho các hành động lặp đi lặp lại.\nTích hợp bảo mật nhiều hệ thống nội bộ khác nhau thông qua MCP server để tăng cường khả năng truy cập dữ liệu.\nTạo và chia sẻ các workflow tùy chỉnh để kiểm thử và debug, giúp tăng cường khả năng cộng tác giữa các thành viên trong đội ngũ.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ccplugins/awesome-claude-code-plugins`",
+    "usage_vi": "```\nLiệt kê top 5 [PLUGIN_TYPE: slash commands/subagents/MCP servers/hooks] từ repository awesome-claude-code-plugins mang lại nhiều lợi ích nhất cho các đội ngũ [TEAM_ROLE: DevOps/Backend/DevEx]. Đối với mỗi plugin, hãy cung cấp: 1) Mô tả ngắn gọn về mục đích của nó, 2) Một use case cụ thể kèm theo lệnh mẫu, và 3) Kết quả mong đợi. Định dạng phản hồi dưới dạng bảng markdown với các cột: Tên Plugin, Loại, Mục đích, Use Case, Kết quả mong đợi.\n```\nCopy\n\n```\nDưới đây là top 5 plugin được thiết kế riêng cho đội ngũ DevOps tập trung vào tự động hóa hạ tầng:\n\n| Tên Plugin | Loại | Mục đích | Use Case | Kết quả mong đợi |\n|---|---|---|---|---|\n| `terraform-plan` | Slash Command | Tạo plan thực thi Terraform với các bản diff dễ đọc. | Chạy `terraform-plan --dir=./infra/modules/networking` để xem trước các thay đổi trước khi áp dụng. | Một bản diff được định dạng hiển thị các tài nguyên được thêm/xóa, với các thay đổi được đánh dấu màu để dễ dàng xem xét. |\n| `aws-cost-estimator` | MCP Server | Ước tính chi phí dịch vụ AWS dựa trên các mô hình sử dụng hiện tại. | Truy vấn `aws-cost-estimator --services=EC2,RDS --region=us-west-2` để dự báo chi phí trong 30 ngày. | Bảng phân tích chi tiết chi phí ước tính hàng tháng cho từng dịch vụ, bao gồm cả khoản tiết kiệm tiềm năng từ Reserved Instance. |\n| `k8s-debugger` | Subagent | Tự động hóa việc khắc phục sự cố (troubleshooting) pod Kubernetes bằng cách thu thập log và event. | Triển khai `k8s-debugger --namespace=prod --pod=api-server-abc123` để chẩn đoán một pod bị lỗi. | Một file zip chứa các log, event và bản tóm tắt các sự cố tiềm ẩn kèm theo các giải pháp gợi ý. |\n| `github-actions-linter` | Hook | Kiểm tra tính hợp lệ của các file workflow GitHub Actions để tìm lỗi cú pháp và kiểm tra best practice. | Kích hoạt `github-actions-linter --file=.github/workflows/deploy.yml` trước khi merge PR. | Danh sách các lỗi lint kèm theo số dòng và các chỉnh sửa gợi ý, được định dạng dưới dạng GitHub annotation. |\n| `slack-incident-mgmt` | Slash Command | Tạo và cập nhật các kênh sự cố (incident channel) trên Slack với ngữ cảnh từ các công cụ giám sát (monitoring). | Chạy `slack-incident-mgmt --severity=high --service=payment-gateway --description=\"5xx errors\"` | Một kênh Slack mới có tên `#incident-high-payment-gateway-2024-05-15` được ghim ngữ cảnh từ Datadog/PagerDuty. |\n\n**Đánh giá quan trọng**: Chỉ riêng hai plugin `terraform-plan` và `aws-cost-estimator` có thể giảm 40% rủi ro triển khai và tiết kiệm khoảng 12.000 USD/tháng chi phí AWS cho một đội ngũ quy mô trung bình, dựa trên các báo cáo đánh giá nội bộ quý 1 năm 2024 của chúng tôi.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:26:29.263207Z",
+    "http_status": 200,
+    "content_hash": "4b91afb3807ed8bb6374ad89b606d440b6cc44e57feb11054e768a21c5a44e4a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-claude-code-plugins.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-claude-code-plugins.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "awesome-claude-code-plugins: danh sách các extension cho Claude Code",
+  "short_description_vi": "Một danh sách chọn lọc gồm các slash command, subagent, MCP server và hook dành cho Claude Code. Các đội ngũ vận hành sử dụng các plugin này để tự động hóa quy trình công việc, tích hợp công cụ và tối ưu hóa quy trình. Kết nối trực tiếp với Claude Code và các agent tương thích khác."
+}

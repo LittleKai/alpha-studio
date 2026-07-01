@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/llama-terminal-completion",
+  "slug": "llama-terminal-completion",
+  "name": "react-native-best-practices",
+  "headline": "Llama Terminal Completion - AI Terminal Assistant",
+  "short_description": "Llama Terminal Completion is an AI terminal assistant designed for interaction with OpenAI-compatible APIs. It offers features like interactive chat TUI, command generation, and code explanations, making it an essential tool for developers and AI enthusiasts.",
+  "tier": "Gold",
+  "category": "GrowthDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "adammpkins",
+  "install_command": "claude install adammpkins/llama-terminal-completion",
+  "source_repo_url": "https://github.com/adammpkins/llama-terminal-completion",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "interactive chat",
+    "terminal",
+    "AI assistant",
+    "OpenAI",
+    "code generation"
+  ],
+  "sections": {
+    "overview": "LlamaTerm is a single Go binary that brings AI assistance directly to your terminal, compatible with Ollama, LM Studio, OpenAI, and other OpenAI-compatible APIs. It provides fast, streaming responses with features like command generation, code explanation, multi-step agentic loops with tool use, and RAG-backed context retrieval. Developers can ask questions, generate and execute shell commands with confirmation gates, attach images for vision tasks, and maintain persistent sessions across invocations. Built-in safety features include dangerous-command detection, confirmation prompts for write/exec operations, and audit logging for all agent actions.\nGenerate commands for API interactions\nExplain code snippets in real-time\nStream responses from AI models\nFacilitate interactive coding sessions",
+    "setup": "Terminal\nCopy\n`claude install adammpkins/llama-terminal-completion`\n`git clone https://github.com/adammpkins/llama-terminal-completion`",
+    "usage": "```\nGenerate a Python script to [TASK] using the OpenAI API. The script should include error handling and logging. Use the following parameters: model=[MODEL], temperature=[TEMPERATURE], max_tokens=[MAX_TOKENS].\n```\nCopy\n\n```\nHere's a Python script that generates a summary of a given text using the OpenAI API:\n\n```python\nimport openai\nimport logging\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n# Set up OpenAI API\nopenai.api_key = 'your-api-key'\n\ndef summarize_text(text, model='gpt-3.5-turbo', temperature=0.7, max_tokens=150):\n    try:\n        response = openai.ChatCompletion.create(\n            model=model,\n            messages=[{'role': 'user', 'content': f'Summarize the following text:\n{text}'}],\n            temperature=temperature,\n            max_tokens=max_tokens\n        )\n        summary = response['choices'][0]['message']['content']\n        logger.info('Summary generated successfully.')\n        return summary\n    except Exception as e:\n        logger.error(f'An error occurred: {e}')\n        return None\n\n# Example usage\ntext = \"\"\"The OpenAI API provides access to advanced AI models that can perform a wide range of tasks, from text generation to code completion. It is designed to be flexible and easy to use, allowing developers to integrate AI capabilities into their applications with minimal effort. The API supports various models, including GPT-3.5, GPT-4, and specialized models for tasks like image generation and speech recognition.\n\nTo use the OpenAI API, you need to sign up for an account and obtain an API key. Once you have the key, you can make requests to the API using HTTP or through one of the official client libraries available for Python, JavaScript, and other languages. The API supports both synchronous and asynchronous requests, making it suitable for a variety of use cases.\n\nThe OpenAI API is constantly evolving, with new models and features being added regularly. Developers can stay up-to-date with the latest developments by checking the official documentation and release notes. Additionally, OpenAI provides a range of tools and resources to help developers get started, including tutorials, code samples, and a community forum where they can ask questions and share their experiences.\n\"\"\"\n\nsummary = summarize_text(text)\nif summary:\n    print('Generated Summary:')\n    print(summary)\n```\n\nThis script includes error handling and logging, and it uses the OpenAI API to generate a summary of the provided text. The summary is generated using the specified model, temperature, and max_tokens parameters.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "llama-terminal-completion#main-content",
+      "llama-terminal-completion#overview",
+      "llama-terminal-completion#setup",
+      "llama-terminal-completion#examples",
+      "llama-terminal-completion#tools",
+      "llama-terminal-completion#mcp",
+      "llama-terminal-completion#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "LlamaTerm is a single Go binary that brings AI assistance directly to your terminal, compatible with Ollama, LM Studio, OpenAI, and other OpenAI-compatible APIs. It provides fast, streaming responses with features like command generation, code explanation, multi-step agentic loops with tool use, and RAG-backed context retrieval. Developers can ask questions, generate and execute shell commands with confirmation gates, attach images for vision tasks, and maintain persistent sessions across invocations. Built-in safety features include dangerous-command detection, confirmation prompts for write/exec operations, and audit logging for all agent actions.\nGenerate commands for API interactions\nExplain code snippets in real-time\nStream responses from AI models\nFacilitate interactive coding sessions",
+    "setup_vi": "Terminal\nCopy\n`claude install adammpkins/llama-terminal-completion`\n`git clone https://github.com/adammpkins/llama-terminal-completion`",
+    "usage_vi": "```\nGenerate a Python script to [TASK] using the OpenAI API. The script should include error handling and logging. Use the following parameters: model=[MODEL], temperature=[TEMPERATURE], max_tokens=[MAX_TOKENS].\n```\nCopy\n\n```\nHere's a Python script that generates a summary of a given text using the OpenAI API:\n\n```python\nimport openai\nimport logging\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\n# Set up OpenAI API\nopenai.api_key = 'your-api-key'\n\ndef summarize_text(text, model='gpt-3.5-turbo', temperature=0.7, max_tokens=150):\n    try:\n        response = openai.ChatCompletion.create(\n            model=model,\n            messages=[{'role': 'user', 'content': f'Summarize the following text:\n{text}'}],\n            temperature=temperature,\n            max_tokens=max_tokens\n        )\n        summary = response['choices'][0]['message']['content']\n        logger.info('Summary generated successfully.')\n        return summary\n    except Exception as e:\n        logger.error(f'An error occurred: {e}')\n        return None\n\n# Example usage\ntext = \"\"\"The OpenAI API provides access to advanced AI models that can perform a wide range of tasks, from text generation to code completion. It is designed to be flexible and easy to use, allowing developers to integrate AI capabilities into their applications with minimal effort. The API supports various models, including GPT-3.5, GPT-4, and specialized models for tasks like image generation and speech recognition.\n\nTo use the OpenAI API, you need to sign up for an account and obtain an API key. Once you have the key, you can make requests to the API using HTTP or through one of the official client libraries available for Python, JavaScript, and other languages. The API supports both synchronous and asynchronous requests, making it suitable for a variety of use cases.\n\nThe OpenAI API is constantly evolving, with new models and features being added regularly. Developers can stay up-to-date with the latest developments by checking the official documentation and release notes. Additionally, OpenAI provides a range of tools and resources to help developers get started, including tutorials, code samples, and a community forum where they can ask questions and share their experiences.\n\"\"\"\n\nsummary = summarize_text(text)\nif summary:\n    print('Generated Summary:')\n    print(summary)\n```\n\nThis script includes error handling and logging, and it uses the OpenAI API to generate a summary of the provided text. The summary is generated using the specified model, temperature, and max_tokens parameters.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:45:28.055142Z",
+    "http_status": 200,
+    "content_hash": "7bff9d2d3bf8e8a21e67a7f2a5cc0156d6c1b52fd793375a2fd489e5af2134bc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llama-terminal-completion.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\llama-terminal-completion.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Llama Terminal Completion - AI Terminal Assistant",
+  "short_description_vi": "Llama Terminal Completion is an AI terminal assistant designed for interaction with OpenAI-compatible APIs. It offers features like interactive chat TUI, command generation, and code explanations, making it an essential tool for developers and AI enthusiasts."
+}

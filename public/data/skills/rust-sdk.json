@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rust-sdk",
+  "slug": "rust-sdk",
+  "name": "Rust SDK for Model Context Protocol",
+  "headline": "Rust SDK for Model Context Protocol - Official",
+  "short_description": "The rust-sdk is the official Rust SDK designed for the Model Context Protocol, enabling integration and development in Rust. With a focus on performance and reliability, it helps developers to build strong applications efficiently.",
+  "tier": "Gold",
+  "category": "GrowthDevelopment",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/rust-sdk",
+  "source_repo_url": "https://github.com/modelcontextprotocol/rust-sdk",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "Programming",
+    "SDK",
+    "Open Source",
+    "Rust",
+    "Model Context Protocol"
+  ],
+  "sections": {
+    "overview": "The rust-sdk is the official Rust implementation of the Model Context Protocol, providing developers with a high-performance toolkit for integrating MCP into Rust applications. It supports protocol version negotiation, authentication flows including RFC 8707 resource parameters and SEP-835 scope handling, and streamable HTTP client operations. The SDK handles initialization header/body version validation and progressive authorization through scope upgrade configurations. Developers building MCP servers and clients in Rust can leverage this SDK to implement robust integrations with proper error handling and protocol compliance.\nBuild applications that utilize the Model Context Protocol for enhanced functionality.\nIntegrate Rust applications with external services to expand their capabilities.\nDevelop high-performance backend systems that require efficient data processing.\nCreate tools for data processing in Rust, leveraging the SDK's features.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/rust-sdk`\n`git clone https://github.com/modelcontextprotocol/rust-sdk`",
+    "usage": "```\nUsing the rust-sdk, create a Rust application that integrates with the Model Context Protocol to fetch and display data from [DATA_SOURCE]. The application should include error handling for [SPECIFIC_ERRORS] and optimize performance for [PERFORMANCE_CRITERIA]. Provide a step-by-step guide to set up the development environment and run the application.\n```\nCopy\n\n```\nTo create a Rust application that integrates with the Model Context Protocol using the rust-sdk, follow these steps:\n\n1. **Set Up the Development Environment**:\n   - Install Rust using `rustup` by running `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` in your terminal.\n   - Create a new Rust project using `cargo new rust_model_context_app` and navigate into the project directory.\n   - Add the rust-sdk dependency to your `Cargo.toml` file:\n ```toml\n     [dependencies]\n     rust-sdk = \"0.1\"\n ```\n\n2. **Write the Application Code**:\n   - Open `src/main.rs` and write the following code to fetch and display data from a specified data source:\n ```rust\n     use rust_sdk::ModelContextClient;\n     use std::error::Error;\n     \n     fn main() -> Result<(), Box<dyn Error>> {\n         let client = ModelContextClient::new(\"https://api.modelcontextprotocol.com\");\n         let data = client.fetch_data(\"sales_data\")?;\n         println!(\"Fetched data: {:?}\", data);\n         Ok(())\n     }\n ```\n\n3. **Handle Errors and Optimize Performance**:\n   - Add error handling for specific errors such as network timeouts or invalid data formats:\n ```rust\n     use std::time::Duration;\n     use reqwest::Error as ReqwestError;\n     \n     fn fetch_data_with_timeout(url: &str) -> Result<String, ReqwestError> {\n         let client = reqwest::blocking::Client::builder()\n             .timeout(Duration::from_secs(10))\n             .build()?;\n         let response = client.get(url).send()?;\n         let body = response.text()?;\n         Ok(body)\n     }\n ```\n   - Optimize performance by implementing caching or parallel processing as needed.\n\n4. **Run the Application**:\n   - Build and run the application using `cargo run`. Ensure that the application successfully fetches and displays data from the specified data source.\n\nThis example demonstrates how to use the rust-sdk to create a Rust application that integrates with the Model Context Protocol, handles specific errors, and optimizes performance.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "rust-sdk#main-content",
+      "rust-sdk#overview",
+      "rust-sdk#setup",
+      "rust-sdk#examples",
+      "rust-sdk#tools",
+      "rust-sdk#mcp",
+      "rust-sdk#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "rust-sdk là bản triển khai Rust chính thức của Model Context Protocol, cung cấp cho các nhà phát triển một bộ công cụ hiệu năng cao để tích hợp MCP vào các ứng dụng Rust. Thư viện hỗ trợ thương lượng phiên bản giao thức, các luồng xác thực bao gồm tham số tài nguyên RFC 8707 và xử lý scope SEP-835, cũng như các thao tác HTTP client dạng stream. SDK này tự động xử lý việc xác thực phiên bản trong header/body khi khởi tạo và ủy quyền lũy tiến thông qua các cấu hình nâng cấp scope. Các nhà phát triển khi xây dựng server và client MCP bằng Rust có thể tận dụng SDK này để hiện thực hóa các tích hợp mạnh mẽ với khả năng xử lý lỗi chuẩn xác và tuân thủ giao thức.\nXây dựng các ứng dụng sử dụng Model Context Protocol để nâng cao tính năng.\nTích hợp các ứng dụng Rust với các dịch vụ bên ngoài để mở rộng khả năng hoạt động.\nPhát triển các hệ thống backend hiệu năng cao đòi hỏi xử lý dữ liệu hiệu quả.\nTạo các công cụ xử lý dữ liệu trong Rust bằng cách tận dụng các tính năng của SDK.",
+    "setup_vi": "Terminal\nSao chép\n`claude install modelcontextprotocol/rust-sdk`\n`git clone https://github.com/modelcontextprotocol/rust-sdk`",
+    "usage_vi": "```\nSử dụng rust-sdk, hãy tạo một ứng dụng Rust tích hợp với Model Context Protocol để lấy và hiển thị dữ liệu từ [DATA_SOURCE]. Ứng dụng cần bao gồm phần xử lý lỗi cho [SPECIFIC_ERRORS] và tối ưu hóa hiệu năng cho [PERFORMANCE_CRITERIA]. Cung cấp hướng dẫn từng bước để thiết lập môi trường phát triển và chạy ứng dụng.\n```\nSao chép\n\n```\nĐể tạo một ứng dụng Rust tích hợp với Model Context Protocol bằng cách sử dụng rust-sdk, hãy thực hiện theo các bước sau:\n\n1. **Thiết lập môi trường phát triển**:\n   - Cài đặt Rust bằng `rustup` bằng cách chạy lệnh `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` trong terminal của bạn.\n   - Tạo một dự án Rust mới bằng lệnh `cargo new rust_model_context_app` và di chuyển vào thư mục dự án.\n   - Thêm dependency rust-sdk vào file `Cargo.toml` của bạn:\n ```toml\n     [dependencies]\n     rust-sdk = \"0.1\"\n ```\n\n2. **Viết mã nguồn ứng dụng**:\n   - Mở file `src/main.rs` và viết đoạn mã sau để lấy và hiển thị dữ liệu từ một nguồn dữ liệu được chỉ định:\n ```rust\n     use rust_sdk::ModelContextClient;\n     use std::error::Error;\n     \n     fn main() -> Result<(), Box<dyn Error>> {\n         let client = ModelContextClient::new(\"https://api.modelcontextprotocol.com\");\n         let data = client.fetch_data(\"sales_data\")?;\n         println!(\"Fetched data: {:?}\", data);\n         Ok(())\n     }\n ```\n\n3. **Xử lý lỗi và tối ưu hóa hiệu năng**:\n   - Thêm phần xử lý lỗi cho các lỗi cụ thể như hết thời gian chờ mạng hoặc định dạng dữ liệu không hợp lệ:\n ```rust\n     use std::time::Duration;\n     use reqwest::Error as ReqwestError;\n     \n     fn fetch_data_with_timeout(url: &str) -> Result<String, ReqwestError> {\n         let client = reqwest::blocking::Client::builder()\n             .timeout(Duration::from_secs(10))\n             .build()?;\n         let response = client.get(url).send()?;\n         let body = response.text()?;\n         Ok(body)\n     }\n ```\n   - Tối ưu hóa hiệu năng bằng cách triển khai cơ chế cache hoặc xử lý song song khi cần thiết.\n\n4. **Chạy ứng dụng**:\n   - Biên dịch và chạy ứng dụng bằng lệnh `cargo run`. Đảm bảo rằng ứng dụng lấy và hiển thị dữ liệu thành công từ nguồn dữ liệu đã chỉ định.\n\nVí dụ này minh họa cách sử dụng rust-sdk để tạo một ứng dụng Rust tích hợp với Model Context Protocol, xử lý các lỗi cụ thể và tối ưu hóa hiệu năng.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:02:09.747757Z",
+    "http_status": 200,
+    "content_hash": "be281eedd416f24c4874cb6fbef116191afe7948be1192cfcf6cf2ed1dc61ee2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rust-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rust-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Rust SDK chính thức cho Model Context Protocol",
+  "short_description_vi": "rust-sdk là SDK Rust chính thức được thiết kế dành cho Model Context Protocol, hỗ trợ tích hợp và phát triển ứng dụng bằng ngôn ngữ Rust. Tập trung vào hiệu năng và độ tin cậy, thư viện này giúp các nhà phát triển xây dựng các ứng dụng mạnh mẽ một cách hiệu quả."
+}

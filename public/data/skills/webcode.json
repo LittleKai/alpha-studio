@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/webcode",
+  "slug": "webcode",
+  "name": "browser-use",
+  "headline": "WebCode - AI Coding and Office Assistant in Browser",
+  "short_description": "WebCode is a browser-based AI coding platform that lets you remotely run CLI assistants like Claude Code and Codex. Code anywhere with just a web browser. We’re also adding an office-assistant mode for planning, research/summaries, meeting notes, and drafting docs/emails. connected to your project context.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "shuyu-labs",
+  "install_command": "git clone https://github.com/shuyu-labs/WebCode.git",
+  "source_repo_url": "https://github.com/shuyu-labs/WebCode",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "vibecoding",
+    "aicoding",
+    "blazor",
+    "manus",
+    "claude-cowork",
+    "webcode",
+    "codex",
+    "dotnet-core"
+  ],
+  "sections": {
+    "overview": "WebCode is a Blazor Server + .NET 10 platform that transforms local or server-based AI CLI assistants into a managed, remotely-accessible workspace system. It centralizes Claude Code, Codex, and OpenCode sessions alongside workspace management, file operations, and multi-user access control. Users can create, switch, and restore AI sessions from a web browser, mobile app, or Feishu chat interface—each session maintains its own workspace and project directory. WebCode also supports external session imports from existing Claude Code, Codex, and OpenCode local sessions, plus recovery of historical messages from native CLI transcripts. Features include Codex `/goal` workflow support, Superpowers workflow enhancement, multi-user permissions, directory whitelisting, and unified session management across desktop, mobile, and Feishu integrations.\nQuickly generate and edit technical documentation in Markdown or PDF formats.\nRun AI-assisted code reviews and generate test cases for existing codebases.\nCollaborate on project requirements by automatically generating PRDs and user stories.\nConduct data analysis and visualization for project reports directly within the platform.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shuyu-labs/WebCode`",
+    "usage": "```\nI'm working on a [PROJECT_TYPE] project in [PROGRAMMING_LANGUAGE]. I need to [TASK_DESCRIPTION]. Here's the relevant code: [CODE_SNIPPET]. Can you help me [SPECIFIC_REQUEST]?\n```\nCopy\n\n```\nBased on the React.js code snippet you provided for your e-commerce project, here's how you can implement the product filtering functionality:\n\n1. First, create a new file called `ProductFilter.js` in your components folder. Here's the initial setup:\n```javascript\nimport React, { useState } from 'react';\n\nconst ProductFilter = ({ products, onFilter }) => {\n  const [filters, setFilters] = useState({\n    category: 'all',\n    priceRange: [0, 1000],\n    rating: 0\n  });\n\n  // ... rest of the component code\n```\n\n2. To handle the price range filter, add this function inside the component:\n```javascript\nconst handlePriceRangeChange = (event, newValue) => {\n  setFilters(prev => ({\n    ...prev,\n    priceRange: newValue\n  }));\n  onFilter({\n    ...filters,\n    priceRange: newValue\n  });\n};\n```\n\n3. For the category filter, you'll need to map through the unique categories in your products data. Here's how to implement it:\n```javascript\nconst categories = [...new Set(products.map(product => product.category))];\n\nreturn (\n  <div className='product-filter'>\n    <div className='filter-section'>\n      <h3>Category</h3>\n      <select\n        value={filters.category}\n        onChange={(e) => {\n          const newFilters = {\n            ...filters,\n            category: e.target.value\n          };\n          setFilters(newFilters);\n          onFilter(newFilters);\n        }}\n      >\n        <option value='all'>All Categories</option>\n        {categories.map(category => (\n          <option key={category} value={category}>{category}</option>\n        ))}\n      </select>\n    </div>\n    {/* ... other filter sections */}\n  </div>\n);\n```\n\nRemember to import and use this component in your main product listing page. You'll need to pass the products data and a callback function to handle the filtered results.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "webcode#main-content",
+      "webcode#overview",
+      "webcode#setup",
+      "webcode#examples",
+      "webcode#tools",
+      "webcode#mcp",
+      "webcode#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "WebCode is a Blazor Server + .NET 10 platform that transforms local or server-based AI CLI assistants into a managed, remotely-accessible workspace system. It centralizes Claude Code, Codex, and OpenCode sessions alongside workspace management, file operations, and multi-user access control. Users can create, switch, and restore AI sessions from a web browser, mobile app, or Feishu chat interface—each session maintains its own workspace and project directory. WebCode also supports external session imports from existing Claude Code, Codex, and OpenCode local sessions, plus recovery of historical messages from native CLI transcripts. Features include Codex `/goal` workflow support, Superpowers workflow enhancement, multi-user permissions, directory whitelisting, and unified session management across desktop, mobile, and Feishu integrations.\nQuickly generate and edit technical documentation in Markdown or PDF formats.\nRun AI-assisted code reviews and generate test cases for existing codebases.\nCollaborate on project requirements by automatically generating PRDs and user stories.\nConduct data analysis and visualization for project reports directly within the platform.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/shuyu-labs/WebCode`",
+    "usage_vi": "```\nI'm working on a [PROJECT_TYPE] project in [PROGRAMMING_LANGUAGE]. I need to [TASK_DESCRIPTION]. Here's the relevant code: [CODE_SNIPPET]. Can you help me [SPECIFIC_REQUEST]?\n```\nCopy\n\n```\nBased on the React.js code snippet you provided for your e-commerce project, here's how you can implement the product filtering functionality:\n\n1. First, create a new file called `ProductFilter.js` in your components folder. Here's the initial setup:\n```javascript\nimport React, { useState } from 'react';\n\nconst ProductFilter = ({ products, onFilter }) => {\n  const [filters, setFilters] = useState({\n    category: 'all',\n    priceRange: [0, 1000],\n    rating: 0\n  });\n\n  // ... rest of the component code\n```\n\n2. To handle the price range filter, add this function inside the component:\n```javascript\nconst handlePriceRangeChange = (event, newValue) => {\n  setFilters(prev => ({\n    ...prev,\n    priceRange: newValue\n  }));\n  onFilter({\n    ...filters,\n    priceRange: newValue\n  });\n};\n```\n\n3. For the category filter, you'll need to map through the unique categories in your products data. Here's how to implement it:\n```javascript\nconst categories = [...new Set(products.map(product => product.category))];\n\nreturn (\n  <div className='product-filter'>\n    <div className='filter-section'>\n      <h3>Category</h3>\n      <select\n        value={filters.category}\n        onChange={(e) => {\n          const newFilters = {\n            ...filters,\n            category: e.target.value\n          };\n          setFilters(newFilters);\n          onFilter(newFilters);\n        }}\n      >\n        <option value='all'>All Categories</option>\n        {categories.map(category => (\n          <option key={category} value={category}>{category}</option>\n        ))}\n      </select>\n    </div>\n    {/* ... other filter sections */}\n  </div>\n);\n```\n\nRemember to import and use this component in your main product listing page. You'll need to pass the products data and a callback function to handle the filtered results.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:03:49.061048Z",
+    "http_status": 200,
+    "content_hash": "60e698bccdd33fc60c13b160eae206758e724e011da46216d774e2e33c0c2211",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webcode.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\webcode.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "WebCode - AI Coding and Office Assistant in Browser",
+  "short_description_vi": "WebCode is a browser-based AI coding platform that lets you remotely run CLI assistants like Claude Code and Codex. Code anywhere with just a web browser. We’re also adding an office-assistant mode for planning, research/summaries, meeting notes, and drafting docs/emails. connected to your project context."
+}

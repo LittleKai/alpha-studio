@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reposter",
+  "slug": "reposter",
+  "name": "reposter",
+  "headline": "Reposter: Social Media Content Automation",
+  "short_description": "A framework to manage, monitor and deploy marketing in social-media by re-posting content from one place to the another.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "SlapBot",
+  "install_command": "git clone https://github.com/SlapBot/reposter.git",
+  "source_repo_url": "https://github.com/SlapBot/reposter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "reposts",
+    "facebook-page",
+    "reddit",
+    "social-media",
+    "python"
+  ],
+  "sections": {
+    "overview": "Reposter is a framework that manages and automates reposting content across social media platforms. It supports Reddit as a content source and Facebook as a destination, with extensible architecture for adding other platforms. The framework uses declarative JSON configuration to define many-to-many workflows—for example, pulling from multiple subreddits and posting to multiple Facebook pages simultaneously. It includes duplicate detection, scheduling capabilities via cron or built-in application scheduling, and simple APIs for adding new social media integrations. Users can run it natively with Python or via Docker, making it a programmable alternative to Zapier for social media automation.\nAutomatically repost Reddit content to multiple Facebook business pages\nDistribute content from multiple subreddits to multiple social accounts\nSchedule periodic content posting across platforms on defined intervals\nAggregate content from various sources and submit to multiple social media handles",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/SlapBot/reposter`",
+    "usage": "```\nAs a social media manager for [COMPANY], I need to repost content from [PLATFORM] to [PLATFORM]. The content should be tailored to each platform's audience. Here's the content: [CONTENT]. Please adapt it for [PLATFORM] and provide a posting schedule for the next [NUMBER] days.\n```\nCopy\n\n```\n# Social Media Reposting Strategy for [COMPANY]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "reposter#main-content",
+      "reposter#overview",
+      "reposter#setup",
+      "reposter#examples",
+      "reposter#tools",
+      "reposter#mcp",
+      "reposter#related",
+      "marketingskills",
+      "copywriting",
+      "burbnbot"
+    ],
+    "overview_vi": "Reposter là một framework quản lý và tự động hóa việc re-post nội dung trên các nền tảng mạng xã hội. Framework này hỗ trợ Reddit làm nguồn nội dung và Facebook làm đích đến, với kiến trúc có thể mở rộng (extensible architecture) để tích hợp thêm các nền tảng khác. Hệ thống sử dụng cấu hình JSON dạng khai báo (declarative) để định nghĩa các workflow dạng nhiều-nhiều (many-to-many)—ví dụ: lấy nội dung từ nhiều subreddit và đăng đồng thời lên nhiều trang Facebook. Reposter tích hợp sẵn tính năng phát hiện trùng lặp, lên lịch đăng bài qua cron hoặc bộ lập lịch tích hợp của ứng dụng, cùng các API đơn giản để bổ sung các tích hợp mạng xã hội mới. Người dùng có thể chạy trực tiếp với Python hoặc qua Docker, biến nó thành một giải pháp thay thế có khả năng lập trình (programmable alternative) cho Zapier trong việc tự động hóa mạng xã hội.\nTự động re-post nội dung từ Reddit lên nhiều trang doanh nghiệp Facebook\nPhân phối nội dung từ nhiều subreddit đến nhiều tài khoản mạng xã hội\nLên lịch đăng bài định kỳ trên các nền tảng theo khoảng thời gian xác định\nTổng hợp nội dung từ nhiều nguồn khác nhau và gửi đến nhiều tài khoản mạng xã hội",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/SlapBot/reposter`",
+    "usage_vi": "```\nVới vai trò là một người quản lý mạng xã hội cho [COMPANY], tôi cần re-post nội dung từ [PLATFORM] sang [PLATFORM]. Nội dung cần được điều chỉnh cho phù hợp với đối tượng khán giả của từng nền tảng. Dưới đây là nội dung: [CONTENT]. Vui lòng tối ưu hóa nội dung đó cho [PLATFORM] và cung cấp lịch đăng bài cho [NUMBER] ngày tới.\n```\nCopy\n\n```\n# Chiến lược Re-post mạng xã hội cho [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:27:27.510175Z",
+    "http_status": 200,
+    "content_hash": "362e1a8196c6bb5064ef12662413b24535ac538ee5aba363576179f7be877203",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reposter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\reposter.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Reposter: Tự động hóa nội dung mạng xã hội",
+  "short_description_vi": "Một framework giúp quản lý, giám sát và triển khai marketing trên mạng xã hội bằng cách re-post nội dung từ nguồn này sang nguồn khác."
+}

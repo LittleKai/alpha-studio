@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/fluxwing-skills",
+  "slug": "fluxwing-skills",
+  "name": "Fluxwing Skills",
+  "headline": "Fluxwing Skills - Rapid ASCII Design",
+  "short_description": "Fluxwing Skills enables rapid iterative design using ASCII components. Operations teams can create low-fidelity layouts quickly, then refine them with AI assistance. Connects to Claude for AI-driven design iteration and human review.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "trabian",
+  "install_command": "git clone https://github.com/trabian/fluxwing-skills.git",
+  "source_repo_url": "https://github.com/trabian/fluxwing-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude-skills",
+    "claude-code-plugins"
+  ],
+  "sections": {
+    "overview": "Fluxwing Skills is an AI-powered design tool that enables progressive fidelity workflows starting with ASCII layouts. The skill set includes six specialized tools: component creator, library browser, screen scaffolder, component expander, viewer, and screenshot importer. Teams can iterate designs through natural language conversation with Claude, moving from low-fidelity ASCII mockups to structured component metadata. All outputs save to your project workspace as .uxm metadata files and .md ASCII templates, following the uxscii open standard. This approach lets you validate design decisions quickly at low-fidelity before investing in high-fidelity builds.\nCreate reusable button, input, card, and modal components in minutes\nBuild complete UI screens by composing components through conversation\nAdd interactive states (hover, focus, disabled, error) to existing components\nConvert screenshots into uxscii ASCII components for rapid prototyping",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/trabian/fluxwing-skills`",
+    "usage": "```\nCreate a low-fidelity ASCII layout for a [COMPANY] data center in the [INDUSTRY] sector. Include [NUMBER] racks, [NUMBER] servers per rack, and [NUMBER] network switches. Then suggest 3 improvements to optimize airflow and cable management. Use this layout: [ASCII_LAYOUT].\n```\nCopy\n\n```\n# Data Center Layout for GreenTech Solutions\n\n```\n+---------------------+\n| RACK-01 (12 Servers) |\n+---------+-----------+\n| NET-SW-01 | NET-SW-02 |\n+---------------------+\n| RACK-02 (12 Servers) |\n+---------+-----------+\n| NET-SW-03 | NET-SW-04 |\n+---------------------+\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "fluxwing-skills#main-content",
+      "fluxwing-skills#overview",
+      "fluxwing-skills#setup",
+      "fluxwing-skills#examples",
+      "fluxwing-skills#tools",
+      "fluxwing-skills#mcp",
+      "fluxwing-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Fluxwing Skills is an AI-powered design tool that enables progressive fidelity workflows starting with ASCII layouts. The skill set includes six specialized tools: component creator, library browser, screen scaffolder, component expander, viewer, and screenshot importer. Teams can iterate designs through natural language conversation with Claude, moving from low-fidelity ASCII mockups to structured component metadata. All outputs save to your project workspace as .uxm metadata files and .md ASCII templates, following the uxscii open standard. This approach lets you validate design decisions quickly at low-fidelity before investing in high-fidelity builds.\nCreate reusable button, input, card, and modal components in minutes\nBuild complete UI screens by composing components through conversation\nAdd interactive states (hover, focus, disabled, error) to existing components\nConvert screenshots into uxscii ASCII components for rapid prototyping",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/trabian/fluxwing-skills`",
+    "usage_vi": "```\nCreate a low-fidelity ASCII layout for a [COMPANY] data center in the [INDUSTRY] sector. Include [NUMBER] racks, [NUMBER] servers per rack, and [NUMBER] network switches. Then suggest 3 improvements to optimize airflow and cable management. Use this layout: [ASCII_LAYOUT].\n```\nCopy\n\n```\n# Data Center Layout for GreenTech Solutions\n\n```\n+---------------------+\n| RACK-01 (12 Servers) |\n+---------+-----------+\n| NET-SW-01 | NET-SW-02 |\n+---------------------+\n| RACK-02 (12 Servers) |\n+---------+-----------+\n| NET-SW-03 | NET-SW-04 |\n+---------------------+\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:18:59.786023Z",
+    "http_status": 200,
+    "content_hash": "5505e547d4b10fa20a2932871d47457051b462b964c571e2507e1173efc516f7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\fluxwing-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\fluxwing-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Fluxwing Skills - Rapid ASCII Design",
+  "short_description_vi": "Fluxwing Skills enables rapid iterative design using ASCII components. Operations teams can create low-fidelity layouts quickly, then refine them with AI assistance. Connects to Claude for AI-driven design iteration and human review."
+}

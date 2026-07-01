@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/python-repomix",
+  "slug": "python-repomix",
+  "name": "browser-use",
+  "headline": "Python-Repomix - Pack Repositories for AI Tools",
+  "short_description": "python-repomix is a powerful tool that packs your entire repository into a single, AI-friendly file. Perfect for when you need to feed your codebase to Large Language Models (LLMs) or other AI tools like Claude, ChatGPT, and Gemini.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "AndersonBY",
+  "install_command": "git clone https://github.com/AndersonBY/python-repomix.git",
+  "source_repo_url": "https://github.com/AndersonBY/python-repomix",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "python-repomix is a Python tool that consolidates your entire repository into a single, structured file designed for consumption by Large Language Models. It handles multiple directories, respects .gitignore and .repomixignore files, and includes built-in security scanning to detect sensitive information. The tool provides token counting via tiktoken, supports code compression, and offers multiple output formats including markdown and JSON. It works with local directories, remote repositories, and specific Git branches, making it ideal for developers who need to share codebases with AI systems or integrate repository context into AI-powered development workflows.\nFeed entire codebases to Claude, ChatGPT, or Gemini for code analysis and generation\nPrepare repository snapshots for AI code review and documentation generation\nPackage multiple project directories for LLM-based refactoring and architecture planning\nCreate compressed, AI-optimized exports of remote repositories without cloning",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AndersonBY/python-repomix`",
+    "usage": "```\nUse python-repomix to combine the entire codebase of [PROJECT_NAME] into a single file. Include all Python files, configuration files (e.g., requirements.txt, pyproject.toml), and documentation (e.g., README.md). Exclude [FILES_TO_EXCLUDE, e.g., test files, large binary assets, or virtual environment folders]. After generating the file, analyze it to identify: 1) the main entry points of the project, 2) key dependencies, and 3) any potential issues like hardcoded secrets or deprecated functions. Save the output as [OUTPUT_FILENAME].\n```\nCopy\n\n```\n```\n# python-repomix generated file for project 'data-pipeline' (v1.2.0)\n# Generated on 2024-05-15 | Excluded: tests/, .venv/, *.log",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "python-repomix#main-content",
+      "python-repomix#overview",
+      "python-repomix#setup",
+      "python-repomix#examples",
+      "python-repomix#tools",
+      "python-repomix#mcp",
+      "python-repomix#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "python-repomix is a Python tool that consolidates your entire repository into a single, structured file designed for consumption by Large Language Models. It handles multiple directories, respects .gitignore and .repomixignore files, and includes built-in security scanning to detect sensitive information. The tool provides token counting via tiktoken, supports code compression, and offers multiple output formats including markdown and JSON. It works with local directories, remote repositories, and specific Git branches, making it ideal for developers who need to share codebases with AI systems or integrate repository context into AI-powered development workflows.\nFeed entire codebases to Claude, ChatGPT, or Gemini for code analysis and generation\nPrepare repository snapshots for AI code review and documentation generation\nPackage multiple project directories for LLM-based refactoring and architecture planning\nCreate compressed, AI-optimized exports of remote repositories without cloning",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AndersonBY/python-repomix`",
+    "usage_vi": "```\nUse python-repomix to combine the entire codebase of [PROJECT_NAME] into a single file. Include all Python files, configuration files (e.g., requirements.txt, pyproject.toml), and documentation (e.g., README.md). Exclude [FILES_TO_EXCLUDE, e.g., test files, large binary assets, or virtual environment folders]. After generating the file, analyze it to identify: 1) the main entry points of the project, 2) key dependencies, and 3) any potential issues like hardcoded secrets or deprecated functions. Save the output as [OUTPUT_FILENAME].\n```\nCopy\n\n```\n```\n# python-repomix generated file for project 'data-pipeline' (v1.2.0)\n# Generated on 2024-05-15 | Excluded: tests/, .venv/, *.log"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:52:47.863203Z",
+    "http_status": 200,
+    "content_hash": "d86119108cbee918e1e1d7106161f28d49eb55262f12ea65ba0670ea176c8f97",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\python-repomix.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\python-repomix.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Python-Repomix - Pack Repositories for AI Tools",
+  "short_description_vi": "python-repomix is a powerful tool that packs your entire repository into a single, AI-friendly file. Perfect for when you need to feed your codebase to Large Language Models (LLMs) or other AI tools like Claude, ChatGPT, and Gemini."
+}

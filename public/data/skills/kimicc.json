@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/kimicc",
+  "slug": "kimicc",
+  "name": "browser-use",
+  "headline": "KIMICC - Run Claude Code with Kimi K2",
+  "short_description": "Run Claude Code with Kimi K2, GLM-4.6, Qwen3-Coder, or DeepSeek-v3.2 using a single command. Ideal for developers and operations teams automating code execution. Integrates with npm and supports Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "kaichen",
+  "install_command": "git clone https://github.com/kaichen/kimicc.git",
+  "source_repo_url": "https://github.com/kaichen/kimicc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "kimi",
+    "kimi-ai"
+  ],
+  "sections": {
+    "overview": "KIMICC is a lightweight Node.js npm package that configures Claude Code to use alternative AI models including Kimi K2, GLM-4.6, Qwen3-Coder, and DeepSeek-v3.2 with a single command. It sets up environment variables automatically, eliminating manual configuration of Auth Tokens and Base URLs. The tool supports multiple service providers simultaneously through profile management, allowing developers to run concurrent requests and switch between models. Users run `npx kimicc` to initialize and select their preferred model provider, with persistent configuration stored for subsequent launches. This addresses accessibility and cost challenges by leveraging Anthropic-compatible interfaces from domestic and international vendors at a fraction of Claude's subscription cost.\nCost-effective code execution for developers in regions with Claude access restrictions\nRunning concurrent AI code tasks using multiple model providers simultaneously\nSwitching between Kimi, GLM, Qwen, and DeepSeek models without manual environment setup\nOperations teams automating code execution with alternative LLM backends",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kaichen/kimicc`",
+    "usage": "```\nRun the following code using Kimi K2 with the command: `kimicc [OPTIONS] [FILE_PATH]`\n\nCode to execute:\n```[LANGUAGE]\n[CODE]\n```\n\n[OPTIONS] (optional): Add flags like `--model Qwen3-Coder` or `--npm` if needed. Replace [LANGUAGE] and [CODE] with your actual code snippet.\n```\nCopy\n\n```\n```bash\n$ kimicc --model GLM-4.6 --npm /path/to/script.js\n\nExecuting with Kimi K2 (GLM-4.6) and npm support...\n\n✅ Code execution started\n📦 Installing dependencies from package.json... (12 packages)\n✨ Dependencies resolved in 2.1s\n🚀 Running script.js with Node.js v20.12.2...\n\nOutput:\n{\n  \"status\": \"success\",\n  \"result\": {\n    \"processed_records\": 150,\n    \"errors\": 0,\n    \"warnings\": 2,\n    \"performance\": {\n      \"execution_time\": \"420ms\",\n      \"memory_usage\": \"18.4MB\"\n    }\n  }\n}\n\n✅ Execution completed in 3.8s\n📊 Performance metrics:\n- Model: GLM-4.6 (context window: 128K tokens)\n- npm packages: axios, lodash, moment (latest versions)\n- Exit code: 0\n\n💡 Suggestions:\n1. Optimize the `processBatch` function to reduce memory usage by 15%\n2. Consider caching the `fetchConfig` calls to improve performance\n3. Add input validation for the `userId` parameter\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "kimicc#main-content",
+      "kimicc#overview",
+      "kimicc#setup",
+      "kimicc#examples",
+      "kimicc#tools",
+      "kimicc#mcp",
+      "kimicc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "KIMICC is a lightweight Node.js npm package that configures Claude Code to use alternative AI models including Kimi K2, GLM-4.6, Qwen3-Coder, and DeepSeek-v3.2 with a single command. It sets up environment variables automatically, eliminating manual configuration of Auth Tokens and Base URLs. The tool supports multiple service providers simultaneously through profile management, allowing developers to run concurrent requests and switch between models. Users run `npx kimicc` to initialize and select their preferred model provider, with persistent configuration stored for subsequent launches. This addresses accessibility and cost challenges by leveraging Anthropic-compatible interfaces from domestic and international vendors at a fraction of Claude's subscription cost.\nCost-effective code execution for developers in regions with Claude access restrictions\nRunning concurrent AI code tasks using multiple model providers simultaneously\nSwitching between Kimi, GLM, Qwen, and DeepSeek models without manual environment setup\nOperations teams automating code execution with alternative LLM backends",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kaichen/kimicc`",
+    "usage_vi": "```\nRun the following code using Kimi K2 with the command: `kimicc [OPTIONS] [FILE_PATH]`\n\nCode to execute:\n```[LANGUAGE]\n[CODE]\n```\n\n[OPTIONS] (optional): Add flags like `--model Qwen3-Coder` or `--npm` if needed. Replace [LANGUAGE] and [CODE] with your actual code snippet.\n```\nCopy\n\n```\n```bash\n$ kimicc --model GLM-4.6 --npm /path/to/script.js\n\nExecuting with Kimi K2 (GLM-4.6) and npm support...\n\n✅ Code execution started\n📦 Installing dependencies from package.json... (12 packages)\n✨ Dependencies resolved in 2.1s\n🚀 Running script.js with Node.js v20.12.2...\n\nOutput:\n{\n  \"status\": \"success\",\n  \"result\": {\n    \"processed_records\": 150,\n    \"errors\": 0,\n    \"warnings\": 2,\n    \"performance\": {\n      \"execution_time\": \"420ms\",\n      \"memory_usage\": \"18.4MB\"\n    }\n  }\n}\n\n✅ Execution completed in 3.8s\n📊 Performance metrics:\n- Model: GLM-4.6 (context window: 128K tokens)\n- npm packages: axios, lodash, moment (latest versions)\n- Exit code: 0\n\n💡 Suggestions:\n1. Optimize the `processBatch` function to reduce memory usage by 15%\n2. Consider caching the `fetchConfig` calls to improve performance\n3. Add input validation for the `userId` parameter\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:56:44.872878Z",
+    "http_status": 200,
+    "content_hash": "ab7511bb9e2c9723526e371e02cebe9150426a5c631a694ba791b09c118653bc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kimicc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\kimicc.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "KIMICC - Run Claude Code with Kimi K2",
+  "short_description_vi": "Run Claude Code with Kimi K2, GLM-4.6, Qwen3-Coder, or DeepSeek-v3.2 using a single command. Ideal for developers and operations teams automating code execution. Integrates with npm and supports Claude agents."
+}

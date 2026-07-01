@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-tools",
+  "slug": "claude-tools",
+  "name": "Claude Tools",
+  "headline": "Claude Code utilities for better workflow",
+  "short_description": "Claude-tools provides Unix-style utilities for managing Claude Code conversations. It implements a virtual filesystem abstraction, allowing users to interact with Claude conversations using familiar commands. This is useful for operations teams automating workflows and integrating Claude Code into existing systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "dlond",
+  "install_command": "git clone https://github.com/dlond/claude-tools.git",
+  "source_repo_url": "https://github.com/dlond/claude-tools",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "git-worktree",
+    "cli-tool",
+    "bash",
+    "claude-code",
+    "conversation-management",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Claude-tools provides a suite of Unix-style utilities that treat Claude Code conversations as a virtual filesystem, enabling familiar command-line management. It includes tools for listing conversations, copying them (creating forks), moving conversations between projects, removing conversations, and cleaning up orphaned projects. The toolkit supports ghost directories—directories that have been deleted but still contain stored conversations—making it particularly useful for git worktree workflows. All mutation operations include metadata logging for audit trails. Installation is available via curl, Homebrew, Nix, or from source, with shell completions for bash and zsh.\nAutomating conversation backup and archival across multiple Claude Code projects\nIntegrating Claude Code workflows into existing CI/CD and DevOps systems\nManaging conversations across git worktrees without losing conversation history\nCleaning up and reclaiming disk space from orphaned or stale projects",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/dlond/claude-tools`",
+    "usage": "```\nI want to use Claude-tools to manage my Claude Code conversations. Here's what I need to do: [DESCRIBE TASK]. Can you guide me through the process using the appropriate commands?\n```\nCopy\n\n```\n# Managing Claude Code Conversations with Claude-tools",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-tools#main-content",
+      "claude-tools#overview",
+      "claude-tools#setup",
+      "claude-tools#examples",
+      "claude-tools#tools",
+      "claude-tools#mcp",
+      "claude-tools#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude-tools cung cấp một bộ tiện ích theo phong cách Unix, coi các hội thoại Claude Code như một hệ thống tệp ảo (virtual filesystem), cho phép quản lý thông qua dòng lệnh quen thuộc. Bộ công cụ bao gồm các tính năng như liệt kê hội thoại, sao chép (tạo fork), di chuyển hội thoại giữa các dự án, xóa hội thoại và dọn dẹp các dự án mồ côi (orphaned projects). Bộ công cụ này cũng hỗ trợ các thư mục ma (ghost directories) — các thư mục đã bị xóa nhưng vẫn chứa các hội thoại được lưu trữ — giúp nó đặc biệt hữu ích cho các workflow git worktree. Tất cả các thao tác thay đổi dữ liệu (mutation operations) đều hỗ trợ ghi log metadata phục vụ cho mục đích kiểm toán (audit trails). Người dùng có thể cài đặt thông qua curl, Homebrew, Nix hoặc cài đặt từ mã nguồn, đi kèm tính năng shell completion cho bash và zsh.\nTự động hóa việc sao lưu và lưu trữ hội thoại trên nhiều dự án Claude Code khác nhau\nTích hợp workflow Claude Code vào các hệ thống CI/CD và DevOps hiện có\nQuản lý hội thoại trên các git worktree mà không làm mất lịch sử hội thoại\nDọn dẹp và thu hồi dung lượng đĩa từ các dự án mồ côi hoặc không còn hoạt động",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/dlond/claude-tools`",
+    "usage_vi": "```\nTôi muốn sử dụng Claude-tools để quản lý các cuộc hội thoại Claude Code của mình. Đây là việc tôi cần làm: [MÔ TẢ NHIỆM VỤ]. Bạn có thể hướng dẫn tôi thực hiện quy trình này bằng các lệnh phù hợp không?\n```\nCopy\n\n```\n# Quản lý các cuộc hội thoại Claude Code bằng Claude-tools"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:08:24.861714Z",
+    "http_status": 200,
+    "content_hash": "a8d79b4c969be9286813d5d66177fce4cb6a782f493a020d81ca9112167d8a7b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-tools.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-tools.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ công cụ tiện ích Claude Code giúp tối ưu hóa workflow",
+  "short_description_vi": "Claude-tools cung cấp các tiện ích theo phong cách Unix để quản lý các cuộc hội thoại Claude Code. Công cụ này triển khai một lớp trừu tượng hóa hệ thống tệp ảo (virtual filesystem abstraction), cho phép người dùng tương tác với các hội thoại Claude bằng các lệnh quen thuộc. Điều này rất hữu ích cho các đội ngũ vận hành trong việc tự động hóa workflow và tích hợp Claude Code vào các hệ thống hiện có."
+}

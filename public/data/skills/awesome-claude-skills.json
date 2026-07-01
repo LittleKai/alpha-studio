@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/awesome-claude-skills",
+  "slug": "awesome-claude-skills",
+  "name": "Awesome Claude Skills",
+  "headline": "awesome-claude-skills: anthrophic claude",
+  "short_description": "A curated list of Claude Skills, resources, and tools for customizing Claude AI workflows. Benefits operations teams by streamlining automation tasks. Connects to Claude API and integrates with Python-based workflows.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "ComposioHQ",
+  "install_command": "git clone https://github.com/ComposioHQ/awesome-claude-skills.git",
+  "source_repo_url": "https://github.com/ComposioHQ/awesome-claude-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "awesome",
+    "anthropic",
+    "claude-skills-hub",
+    "claude-4",
+    "claude-4-opus",
+    "anthropic-skills",
+    "claude-code",
+    "claude",
+    "claude-skills",
+    "claude-desktop",
+    "claude-api",
+    "skills",
+    "claude-4-5-sonnet",
+    "anthropic-ai",
+    "awesome-lists"
+  ],
+  "sections": {
+    "overview": "awesome-claude-skills is a comprehensive directory of Claude Skills, resources, and tools maintained by ComposioHQ for customizing Claude AI workflows. The repository provides a curated collection of reusable skills and integrations that connect to the Claude API, enabling automation of complex tasks across various domains including document processing, design, analytics, and business operations. Teams can discover and implement skills for brand guidelines, artifact building, changelog generation, and competitive analysis. The collection supports Python-based workflow integration, making it accessible for developers building with Claude Code and similar environments. Operations teams benefit from these pre-built skills to streamline repetitive automation tasks and accelerate workflow development.\nAutomate the process of sending emails based on specific triggers or events.\nCreate and manage issues in project management tools like Jira or GitHub directly from Claude.\nIntegrate Claude with Slack to post updates or notifications automatically.\nFetch and analyze data from various sources to generate reports or insights.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ComposioHQ/awesome-claude-skills`",
+    "usage": "```\nGenerate a custom Claude Skill for [TASK] using the awesome-claude-skills framework. The skill should include: 1) A clear name and purpose, 2) Required dependencies (e.g., Python libraries), 3) Step-by-step implementation instructions, 4) Example usage in a Claude workflow, and 5) Error handling best practices. Base the skill on [SPECIFIC_EXAMPLE_OR_USE_CASE].\n```\nCopy\n\n```\n### Skill: Automated Meeting Notes Generator\n\n**Purpose**: Automatically transcribes Zoom/Google Meet meetings, generates structured notes with action items, and shares them via Slack to the relevant team channel.\n\n**Dependencies**:\n- `pydub` (for audio processing)\n- `speech_recognition` (for transcription)\n- `slack_sdk` (for notifications)\n- `google-api-python-client` (for Google Calendar integration)\n\n**Implementation**:\n1. Create a new Python file `meeting_notes_skill.py` in your Claude Skills directory.\n2. Add the following code:\n```python\nimport os\nfrom pydub import AudioSegment\nimport speech_recognition as sr\nfrom slack_sdk import WebClient\nfrom google.oauth2.credentials import Credentials\nfrom googleapiclient.discovery import build\n\ndef transcribe_audio(audio_path):\n    recognizer = sr.Recognizer()\n    audio = AudioSegment.from_mp3(audio_path)\n    audio.export(\"temp.wav\", format=\"wav\")\n    with sr.AudioFile(\"temp.wav\") as source:\n        audio_data = recognizer.record(source)\n    return recognizer.recognize_google(audio_data)\n\ndef generate_notes(transcript):\n    # Simple NLP processing to extract action items\n    action_items = []\n    for line in transcript.split('\\n'):\n        if any(word in line.lower() for word in ['action item', 'todo', 'next steps']):\n            action_items.append(line)\n    return {\"transcript\": transcript, \"action_items\": action_items}\n\ndef send_to_slack(notes, channel):\n    client = WebClient(token=os.getenv('SLACK_TOKEN'))\n    message = f\"Meeting Notes:\\n{notes['transcript']}\\n\\nAction Items:\\n\" + \"\\n\".join(notes['action_items'])\n    client.chat_postMessage(channel=channel, text=message)\n\n# Example usage\nif __name__ == \"__main__\":\n    transcript = transcribe_audio(\"meeting_audio.mp3\")\n    notes = generate_notes(transcript)\n    send_to_slack(notes, \"#project-alpha\")\n```\n\n**Example Workflow**:\n1. User records a meeting in Zoom and saves the audio file to `~/meetings/`.\n2. User runs: `claude run meeting_notes_skill.py --input ~/meetings/meeting_20240515.mp3 --channel #project-alpha`\n3. Skill processes the audio, generates notes, and posts them to Slack with action items highlighted.\n\n**Error Handling**:\n- Add try/except blocks for API rate limits (Slack/Google).\n- Implement retry logic for transcription failures.\n- Log errors to `meeting_notes.log` for debugging.\n\n**Testing**:\nRun with test audio file: `claude test meeting_notes_skill.py`\nExpected output: Structured notes in Slack channel with 90%+ accuracy for clear audio.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "awesome-claude-skills#main-content",
+      "awesome-claude-skills#overview",
+      "awesome-claude-skills#setup",
+      "awesome-claude-skills#examples",
+      "awesome-claude-skills#tools",
+      "awesome-claude-skills#mcp",
+      "awesome-claude-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "awesome-claude-skills is a comprehensive directory of Claude Skills, resources, and tools maintained by ComposioHQ for customizing Claude AI workflows. The repository provides a curated collection of reusable skills and integrations that connect to the Claude API, enabling automation of complex tasks across various domains including document processing, design, analytics, and business operations. Teams can discover and implement skills for brand guidelines, artifact building, changelog generation, and competitive analysis. The collection supports Python-based workflow integration, making it accessible for developers building with Claude Code and similar environments. Operations teams benefit from these pre-built skills to streamline repetitive automation tasks and accelerate workflow development.\nAutomate the process of sending emails based on specific triggers or events.\nCreate and manage issues in project management tools like Jira or GitHub directly from Claude.\nIntegrate Claude with Slack to post updates or notifications automatically.\nFetch and analyze data from various sources to generate reports or insights.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ComposioHQ/awesome-claude-skills`",
+    "usage_vi": "```\nGenerate a custom Claude Skill for [TASK] using the awesome-claude-skills framework. The skill should include: 1) A clear name and purpose, 2) Required dependencies (e.g., Python libraries), 3) Step-by-step implementation instructions, 4) Example usage in a Claude workflow, and 5) Error handling best practices. Base the skill on [SPECIFIC_EXAMPLE_OR_USE_CASE].\n```\nCopy\n\n```\n### Skill: Automated Meeting Notes Generator\n\n**Purpose**: Automatically transcribes Zoom/Google Meet meetings, generates structured notes with action items, and shares them via Slack to the relevant team channel.\n\n**Dependencies**:\n- `pydub` (for audio processing)\n- `speech_recognition` (for transcription)\n- `slack_sdk` (for notifications)\n- `google-api-python-client` (for Google Calendar integration)\n\n**Implementation**:\n1. Create a new Python file `meeting_notes_skill.py` in your Claude Skills directory.\n2. Add the following code:\n```python\nimport os\nfrom pydub import AudioSegment\nimport speech_recognition as sr\nfrom slack_sdk import WebClient\nfrom google.oauth2.credentials import Credentials\nfrom googleapiclient.discovery import build\n\ndef transcribe_audio(audio_path):\n    recognizer = sr.Recognizer()\n    audio = AudioSegment.from_mp3(audio_path)\n    audio.export(\"temp.wav\", format=\"wav\")\n    with sr.AudioFile(\"temp.wav\") as source:\n        audio_data = recognizer.record(source)\n    return recognizer.recognize_google(audio_data)\n\ndef generate_notes(transcript):\n    # Simple NLP processing to extract action items\n    action_items = []\n    for line in transcript.split('\\n'):\n        if any(word in line.lower() for word in ['action item', 'todo', 'next steps']):\n            action_items.append(line)\n    return {\"transcript\": transcript, \"action_items\": action_items}\n\ndef send_to_slack(notes, channel):\n    client = WebClient(token=os.getenv('SLACK_TOKEN'))\n    message = f\"Meeting Notes:\\n{notes['transcript']}\\n\\nAction Items:\\n\" + \"\\n\".join(notes['action_items'])\n    client.chat_postMessage(channel=channel, text=message)\n\n# Example usage\nif __name__ == \"__main__\":\n    transcript = transcribe_audio(\"meeting_audio.mp3\")\n    notes = generate_notes(transcript)\n    send_to_slack(notes, \"#project-alpha\")\n```\n\n**Example Workflow**:\n1. User records a meeting in Zoom and saves the audio file to `~/meetings/`.\n2. User runs: `claude run meeting_notes_skill.py --input ~/meetings/meeting_20240515.mp3 --channel #project-alpha`\n3. Skill processes the audio, generates notes, and posts them to Slack with action items highlighted.\n\n**Error Handling**:\n- Add try/except blocks for API rate limits (Slack/Google).\n- Implement retry logic for transcription failures.\n- Log errors to `meeting_notes.log` for debugging.\n\n**Testing**:\nRun with test audio file: `claude test meeting_notes_skill.py`\nExpected output: Structured notes in Slack channel with 90%+ accuracy for clear audio.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:35:52.714794Z",
+    "http_status": 200,
+    "content_hash": "5f8fe0a9cb5a88029053c700c0348711fcc494c40b342423bd20668d82b8298b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-claude-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\awesome-claude-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "awesome-claude-skills: anthrophic claude",
+  "short_description_vi": "A curated list of Claude Skills, resources, and tools for customizing Claude AI workflows. Benefits operations teams by streamlining automation tasks. Connects to Claude API and integrates with Python-based workflows."
+}

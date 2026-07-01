@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/csharp-sdk",
+  "slug": "csharp-sdk",
+  "name": "C# SDK for Model Context Protocol",
+  "headline": "C# SDK for Model Context Protocol - Official",
+  "short_description": "The official C# SDK for Model Context Protocol enables integration for developers working with Model Context Protocol servers and clients. Collaboratively maintained with Microsoft, it provides strong tools for building and managing applications efficiently.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "modelcontextprotocol",
+  "install_command": "claude install modelcontextprotocol/csharp-sdk",
+  "source_repo_url": "https://github.com/modelcontextprotocol/csharp-sdk",
+  "works_with": [
+    "VS CodeGitHub Copilot"
+  ],
+  "tags": [
+    "SDK",
+    "Model Context Protocol",
+    "Microsoft",
+    "C#",
+    "API"
+  ],
+  "sections": {
+    "overview": "The C# SDK is the official implementation for Model Context Protocol, a standard for connecting AI agents with external tools and data sources. It provides developers with a complete toolkit for building MCP servers and clients in C#, with strong typing and comprehensive support for protocol operations. Collaboratively maintained with Microsoft, the SDK includes standardized HTTP transport implementation and handles authorization flows including offline access scenarios. The repository contains samples, documentation, and active development reflecting real-world usage patterns. Developers can use this SDK to integrate MCP capabilities into .NET applications and enable AI agents to interact with custom resources.\nIntegrate Model Context Protocol into existing C# applications to enhance functionality.\nBuild client-server applications using the csharp-sdk for efficient communication.\nAutomate data handling processes in C# applications with Model Context Protocol.\nCreate custom tools and services that interact with LLMs through the SDK.",
+    "setup": "Terminal\nCopy\n`claude install modelcontextprotocol/csharp-sdk`\n`git clone https://github.com/modelcontextprotocol/csharp-sdk`",
+    "usage": "```\nGenerate a C# code snippet using the Model Context Protocol SDK to connect to a [SERVER_NAME] server and retrieve data from the [DATA_SOURCE] table. Include error handling and logging for debugging purposes. Ensure the code is compatible with .NET [VERSION] and follows best practices for secure connections.\n```\nCopy\n\n```\nHere's a C# code snippet that demonstrates how to use the Model Context Protocol SDK to connect to a server and retrieve data:\n\n```csharp\nusing System;\nusing Microsoft.ModelContextProtocol.Sdk;\nusing Microsoft.Extensions.Logging;\n\nclass Program\n{\n    static async Task Main(string[] args)\n    {\n        var loggerFactory = LoggerFactory.Create(builder =>\n        {\n            builder.AddConsole();\n        });\n        \n        var logger = loggerFactory.CreateLogger<Program>();\n        \n        try\n        {\n            var connectionString = \"Server=myServer;Database=myDB;User Id=myUser;Password=myPassword;\";\n            using (var connection = new ModelContextProtocolConnection(connectionString))\n            {\n                await connection.OpenAsync();\n                \n                var command = new ModelContextProtocolCommand(\"SELECT * FROM Customers\", connection);\n                using (var reader = await command.ExecuteReaderAsync())\n                {\n                    while (await reader.ReadAsync())\n                    {\n                        Console.WriteLine($\"Customer ID: {reader[\"CustomerID\"]}, Name: {reader[\"Name\"]}\");\n                    }\n                }\n            }\n        }\n        catch (Exception ex)\n        {\n            logger.LogError(ex, \"An error occurred while retrieving data\");\n        }\n    }\n}\n```\n\nThis code connects to a server named 'myServer' and retrieves data from the 'Customers' table. It includes error handling and logging for debugging purposes. The code is compatible with .NET 6.0 and follows best practices for secure connections.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: VS Code, GitHub Copilot"
+    ],
+    "related_skills": [
+      "csharp-sdk#main-content",
+      "csharp-sdk#overview",
+      "csharp-sdk#setup",
+      "csharp-sdk#examples",
+      "csharp-sdk#tools",
+      "csharp-sdk#mcp",
+      "csharp-sdk#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The C# SDK is the official implementation for Model Context Protocol, a standard for connecting AI agents with external tools and data sources. It provides developers with a complete toolkit for building MCP servers and clients in C#, with strong typing and comprehensive support for protocol operations. Collaboratively maintained with Microsoft, the SDK includes standardized HTTP transport implementation and handles authorization flows including offline access scenarios. The repository contains samples, documentation, and active development reflecting real-world usage patterns. Developers can use this SDK to integrate MCP capabilities into .NET applications and enable AI agents to interact with custom resources.\nIntegrate Model Context Protocol into existing C# applications to enhance functionality.\nBuild client-server applications using the csharp-sdk for efficient communication.\nAutomate data handling processes in C# applications with Model Context Protocol.\nCreate custom tools and services that interact with LLMs through the SDK.",
+    "setup_vi": "Terminal\nCopy\n`claude install modelcontextprotocol/csharp-sdk`\n`git clone https://github.com/modelcontextprotocol/csharp-sdk`",
+    "usage_vi": "```\nGenerate a C# code snippet using the Model Context Protocol SDK to connect to a [SERVER_NAME] server and retrieve data from the [DATA_SOURCE] table. Include error handling and logging for debugging purposes. Ensure the code is compatible with .NET [VERSION] and follows best practices for secure connections.\n```\nCopy\n\n```\nHere's a C# code snippet that demonstrates how to use the Model Context Protocol SDK to connect to a server and retrieve data:\n\n```csharp\nusing System;\nusing Microsoft.ModelContextProtocol.Sdk;\nusing Microsoft.Extensions.Logging;\n\nclass Program\n{\n    static async Task Main(string[] args)\n    {\n        var loggerFactory = LoggerFactory.Create(builder =>\n        {\n            builder.AddConsole();\n        });\n        \n        var logger = loggerFactory.CreateLogger<Program>();\n        \n        try\n        {\n            var connectionString = \"Server=myServer;Database=myDB;User Id=myUser;Password=myPassword;\";\n            using (var connection = new ModelContextProtocolConnection(connectionString))\n            {\n                await connection.OpenAsync();\n                \n                var command = new ModelContextProtocolCommand(\"SELECT * FROM Customers\", connection);\n                using (var reader = await command.ExecuteReaderAsync())\n                {\n                    while (await reader.ReadAsync())\n                    {\n                        Console.WriteLine($\"Customer ID: {reader[\"CustomerID\"]}, Name: {reader[\"Name\"]}\");\n                    }\n                }\n            }\n        }\n        catch (Exception ex)\n        {\n            logger.LogError(ex, \"An error occurred while retrieving data\");\n        }\n    }\n}\n```\n\nThis code connects to a server named 'myServer' and retrieves data from the 'Customers' table. It includes error handling and logging for debugging purposes. The code is compatible with .NET 6.0 and follows best practices for secure connections.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:20:52.466135Z",
+    "http_status": 200,
+    "content_hash": "d918c3fb23b3266484e708922bae04bdda5f4bb0b88e2be3efa401764aaca38b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\csharp-sdk.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\csharp-sdk.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "C# SDK for Model Context Protocol - Official",
+  "short_description_vi": "The official C# SDK for Model Context Protocol enables integration for developers working with Model Context Protocol servers and clients. Collaboratively maintained with Microsoft, it provides strong tools for building and managing applications efficiently."
+}

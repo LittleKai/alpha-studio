@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-builder",
+  "slug": "skill-builder",
+  "name": "browser-use",
+  "headline": "skill-builder: Create & Maintain Claude Code Skills",
+  "short_description": "Expert Claude Code Skills architect that helps create, edit, and convert sub-agents to skills using CLI tools, Node.js scripting, and best practices.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "metaskills",
+  "install_command": "git clone https://github.com/metaskills/skill-builder.git",
+  "source_repo_url": "https://github.com/metaskills/skill-builder",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "skill-builder helps developers architect Claude Code skills from scratch, refine existing skills, and convert sub-agent configurations to skill format. It provides interactive guidance for designing skill workflows, writing SKILL.md files with proper metadata, organizing supporting files with intention-revealing names, and leveraging CLI tools and Node.js scripting. The skill emphasizes modern tooling patterns, progressive disclosure for documentation, and adherence to official Claude Code agent skills best practices and conventions.\nCreating new Claude Code skills with proper structure and metadata\nEditing existing skills to improve descriptions and organization\nConverting Claude Code sub-agents to reusable skills\nDesigning skill workflows with CLI and Node.js integration",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/metaskills/skill-builder`",
+    "usage": "```\nAct as a Claude Code Agent Skills Builder. I want to create a new skill for [SPECIFIC TASK]. The skill should be able to [INPUT TYPE] and [OUTPUT TYPE]. The skill should be named [SKILL NAME]. Provide the skill definition in JSON format.\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"Data Analyzer\",\n  \"description\": \"Analyzes CSV data and generates insights\",\n  \"inputs\": [\n    {\n      \"name\": \"file_path\",\n      \"type\": \"string\",\n      \"description\": \"Path to the CSV file\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"name\": \"insights\",\n      \"type\": \"string\",\n      \"description\": \"Generated insights from the data\"\n    }\n  ],\n  \"code\": \"def analyze_data(file_path):\\n    import pandas as pd\\n    data = pd.read_csv(file_path)\\n    insights = data.describe()\\n    return str(insights)\\n\"\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-builder#main-content",
+      "skill-builder#overview",
+      "skill-builder#setup",
+      "skill-builder#examples",
+      "skill-builder#tools",
+      "skill-builder#mcp",
+      "skill-builder#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "skill-builder helps developers architect Claude Code skills from scratch, refine existing skills, and convert sub-agent configurations to skill format. It provides interactive guidance for designing skill workflows, writing SKILL.md files with proper metadata, organizing supporting files with intention-revealing names, and leveraging CLI tools and Node.js scripting. The skill emphasizes modern tooling patterns, progressive disclosure for documentation, and adherence to official Claude Code agent skills best practices and conventions.\nCreating new Claude Code skills with proper structure and metadata\nEditing existing skills to improve descriptions and organization\nConverting Claude Code sub-agents to reusable skills\nDesigning skill workflows with CLI and Node.js integration",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/metaskills/skill-builder`",
+    "usage_vi": "```\nAct as a Claude Code Agent Skills Builder. I want to create a new skill for [SPECIFIC TASK]. The skill should be able to [INPUT TYPE] and [OUTPUT TYPE]. The skill should be named [SKILL NAME]. Provide the skill definition in JSON format.\n```\nCopy\n\n```\n```json\n{\n  \"name\": \"Data Analyzer\",\n  \"description\": \"Analyzes CSV data and generates insights\",\n  \"inputs\": [\n    {\n      \"name\": \"file_path\",\n      \"type\": \"string\",\n      \"description\": \"Path to the CSV file\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"name\": \"insights\",\n      \"type\": \"string\",\n      \"description\": \"Generated insights from the data\"\n    }\n  ],\n  \"code\": \"def analyze_data(file_path):\\n    import pandas as pd\\n    data = pd.read_csv(file_path)\\n    insights = data.describe()\\n    return str(insights)\\n\"\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:34:28.204583Z",
+    "http_status": 200,
+    "content_hash": "2b165f58d2c33d4e430c65d852135e6f2c4f26d3a320298a0e0f5e4daab18551",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-builder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skill-builder.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "skill-builder: Create & Maintain Claude Code Skills",
+  "short_description_vi": "Expert Claude Code Skills architect that helps create, edit, and convert sub-agents to skills using CLI tools, Node.js scripting, and best practices."
+}

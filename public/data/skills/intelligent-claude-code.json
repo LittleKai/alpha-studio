@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/intelligent-claude-code",
+  "slug": "intelligent-claude-code",
+  "name": "Intelligent Claude Code",
+  "headline": "Intelligent Claude Code - Autonomous Dev Teams",
+  "short_description": "Intelligent Claude Code transforms Claude Code into a multi-agent virtual dev team. It enables autonomous development workflows with AgentTasks, memory-first flows, and guardrails. Ideal for operations teams, it connects to existing codebases and development tools to automate repetitive tasks and enhance productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "intelligentcode-ai",
+  "install_command": "git clone https://github.com/intelligentcode-ai/intelligent-claude-code.git",
+  "source_repo_url": "https://github.com/intelligentcode-ai/intelligent-claude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "virtual-team",
+    "autonomous-development",
+    "ai-agents",
+    "ai-agents-framework",
+    "virtual-teams",
+    "ai-agent",
+    "claude",
+    "claude-code",
+    "autonomous-dev",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "Intelligent Claude Code transforms Claude Code into a multi-agent virtual dev team, enabling autonomous development workflows with AgentTasks and memory-first flows. It includes built-in guardrails to ensure safe, controlled automation across your development environment. The skill connects to existing codebases and development tools, making it well-suited for operations teams looking to automate repetitive development tasks and improve overall productivity.\nAutomate repetitive code generation and refactoring tasks across multiple repositories\nSet up autonomous workflows that handle routine development operations without manual intervention\nIntegrate multi-agent coordination into existing development tool chains and CI/CD pipelines\nEnable operations teams to manage development task queues with memory-persistent agent workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/intelligentcode-ai/intelligent-claude-code`",
+    "usage": "```\nUse Intelligent Claude Code to automate [TASK] in our [PROJECT_NAME] repository. Set up AgentTasks to handle [SPECIFIC_STEPS], ensuring memory-first execution with guardrails for [RISK_AREAS]. Integrate with our [DEV_TOOLS] and validate against [TEST_CRITERIA]. Provide a summary of actions taken and any issues encountered.\n```\nCopy\n\n```\n### Intelligent Claude Code Execution Summary\n\n**Task:** Automate dependency updates for the `backend-services` repository.\n\n**AgentTasks Setup:**\n1. **Dependency Scanning:** Deployed a dependency scanner agent to identify outdated packages in `package.json`. Detected 5 outdated dependencies (express@4.17.1 → 4.19.2, axios@0.21.1 → 1.6.7, etc.).\n2. **Update Execution:** Initiated a controlled update process with guardrails:\n   - Created a feature branch `auto-dep-update-2024-05-15`.\n   - Applied updates to 3 non-breaking dependencies (axios, lodash, moment).\n   - Skipped 2 breaking changes (express, bcrypt) with automated rollback to previous versions.\n3. **Validation:** Ran integration tests via GitHub Actions. All tests passed (42/42), but 3 unit tests failed due to deprecated `express` middleware usage. Agent flagged these for manual review.\n4. **Documentation:** Updated `CHANGELOG.md` with version bumps and linked to PR #123.\n\n**Issues Encountered:**\n- Breaking change in `express@4.19.2` caused 3 unit test failures. Agent automatically reverted changes and notified the team via Slack.\n- Memory-first flow preserved context from previous runs, avoiding redundant scans.\n\n**Next Steps:**\n- Manual review required for `express` migration (estimated 2 hours).\n- Schedule re-run after fixes are applied.\n\n**Metrics:**\n- Time saved: ~4 hours (manual dependency updates).\n- Accuracy: 80% (2/5 updates applied automatically).\n- Guardrail triggers: 2 (breaking changes detected).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "intelligent-claude-code#main-content",
+      "intelligent-claude-code#overview",
+      "intelligent-claude-code#setup",
+      "intelligent-claude-code#examples",
+      "intelligent-claude-code#tools",
+      "intelligent-claude-code#mcp",
+      "intelligent-claude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Intelligent Claude Code chuyển đổi Claude Code thành một đội ngũ dev ảo multi-agent, cho phép vận hành các workflow phát triển tự động với AgentTasks và các luồng xử lý ưu tiên bộ nhớ (memory-first flows). Nó tích hợp sẵn các guardrails để đảm bảo quá trình tự động hóa diễn ra an toàn và trong tầm kiểm soát trên toàn bộ môi trường phát triển của bạn. Skill này kết nối với các codebase và công cụ phát triển hiện có, rất phù hợp cho các đội ngũ vận hành (operations teams) đang muốn tự động hóa các tác vụ phát triển lặp đi lặp lại và nâng cao hiệu suất tổng thể.\nTự động hóa việc tạo code và refactor code lặp đi lặp lại trên nhiều repository\nThiết lập các workflow tự vận hành để xử lý các hoạt động phát triển thường nhật mà không cần can thiệp thủ công\nTích hợp khả năng điều phối multi-agent vào các chuỗi công cụ phát triển và pipeline CI/CD hiện có\nGiúp các đội ngũ vận hành quản lý hàng đợi tác vụ phát triển bằng các workflow agent lưu trữ bộ nhớ (memory-persistent agent workflows)",
+    "setup_vi": "Không có lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/intelligentcode-ai/intelligent-claude-code`",
+    "usage_vi": "```\nSử dụng Intelligent Claude Code để tự động hóa [TASK] trong repository [PROJECT_NAME] của chúng ta. Thiết lập AgentTasks để xử lý [SPECIFIC_STEPS], đảm bảo thực thi theo cơ chế memory-first đi kèm guardrails cho [RISK_AREAS]. Tích hợp với các [DEV_TOOLS] của chúng ta và xác thực theo [TEST_CRITERIA]. Cung cấp bản tóm tắt các hành động đã thực hiện và bất kỳ sự cố nào gặp phải.\n```\nSao chép\n\n```\n### Tóm tắt thực thi Intelligent Claude Code\n\n**Tác vụ:** Tự động cập nhật dependency cho repository `backend-services`.\n\n**Cấu hình AgentTasks:**\n1. **Quét Dependency:** Đã triển khai một dependency scanner agent để xác định các package lỗi thời trong `package.json`. Phát hiện 5 dependency lỗi thời (express@4.17.1 → 4.19.2, axios@0.21.1 → 1.6.7, v.v.).\n2. **Thực thi Cập nhật:** Khởi tạo quy trình cập nhật được kiểm soát với các guardrails:\n   - Tạo feature branch `auto-dep-update-2024-05-15`.\n   - Áp dụng cập nhật cho 3 dependency không gây lỗi (non-breaking) (axios, lodash, moment).\n   - Bỏ qua 2 thay đổi gây lỗi (breaking changes) (express, bcrypt) và tự động rollback về phiên bản trước đó.\n3. **Xác thực:** Chạy các integration test thông qua GitHub Actions. Tất cả các test đã vượt qua (42/42), nhưng 3 unit test bị lỗi do sử dụng middleware `express` đã bị deprecated. Agent đã gắn cờ cảnh báo các lỗi này để xem xét thủ công.\n4. **Tài liệu hóa:** Cập nhật file `CHANGELOG.md` với các phiên bản mới và liên kết đến PR #123.\n\n**Sự cố gặp phải:**\n- Thay đổi gây lỗi trong `express@4.19.2` khiến 3 unit test thất bại. Agent đã tự động hoàn tác (revert) các thay đổi và thông báo cho đội ngũ qua Slack.\n- Luồng xử lý memory-first đã lưu giữ ngữ cảnh từ các lần chạy trước, tránh việc quét trùng lặp.\n\n**Bước tiếp theo:**\n- Cần xem xét thủ công đối với việc migration `express` (ước tính khoảng 2 giờ).\n- Lên lịch chạy lại sau khi các bản sửa lỗi được áp dụng.\n\n**Chỉ số đo lường:**\n- Thời gian tiết kiệm được: ~4 giờ (so với cập nhật dependency thủ công).\n- Độ chính xác: 80% (áp dụng thành công 2/5 cập nhật một cách tự động).\n- Số lần kích hoạt Guardrail: 2 (phát hiện thay đổi gây lỗi).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:41:59.592233Z",
+    "http_status": 200,
+    "content_hash": "45005f8f86d35c9db33fa737b5051ab59bf8aa42687006343d42764846720c96",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\intelligent-claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\intelligent-claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Intelligent Claude Code - Đội ngũ Dev Tự vận hành",
+  "short_description_vi": "Intelligent Claude Code chuyển đổi Claude Code thành một đội ngũ dev ảo multi-agent. Giải pháp này cho phép thiết lập các workflow phát triển tự vận hành nhờ AgentTasks, luồng xử lý ưu tiên bộ nhớ (memory-first flows) và các guardrails bảo vệ. Phù hợp cho các đội ngũ vận hành (operations teams), công cụ này kết nối trực tiếp với codebase và các công cụ phát triển sẵn có để tự động hóa các tác vụ lặp đi lặp lại và nâng cao năng suất."
+}

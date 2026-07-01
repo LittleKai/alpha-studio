@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/octocode-mcp",
+  "slug": "octocode-mcp",
+  "name": "Octocode MCP",
+  "headline": "Octocode-MCP: Semantic Code Research & Context",
+  "short_description": "Octocode-MCP is a powerful MCP server designed for semantic code research and context generation using LLM patterns. It enables natural searches across public and private repositories, transforming codebases into AI-optimized knowledge for both simple and complex workflows.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "bgauryy",
+  "install_command": "claude install bgauryy/octocode-mcp",
+  "source_repo_url": "https://github.com/bgauryy/octocode-mcp",
+  "works_with": [
+    "ClaudeChatGPTCursorGitHub Copilot"
+  ],
+  "tags": [
+    "github",
+    "code-intelligence",
+    "llm",
+    "semantic-search",
+    "ai-tools"
+  ],
+  "sections": {
+    "overview": "Octocode-MCP is an MCP server that specializes in semantic code research and context generation using LLM patterns. It allows developers and AI agents to perform natural language searches across both public and private repositories, extracting relevant code context without manual browsing. The tool transforms entire codebases into AI-optimized knowledge suitable for simple and complex development workflows. By enabling intelligent code discovery and synthesis, Octocode-MCP helps developers understand large codebases faster and generate better contextual information for code generation tasks.\nSearch for specific code snippets across multiple private repositories effortlessly.\nGenerate comprehensive context for code documentation to enhance understanding.\nTransform legacy code into modern frameworks, ensuring compatibility and performance.\nFind real implementations of algorithms quickly to accelerate development.",
+    "setup": "Terminal\nCopy\n`claude install bgauryy/octocode-mcp`\n`git clone https://github.com/bgauryy/octocode-mcp`",
+    "usage": "```\nSearch the [REPOSITORY] for all instances where [FUNCTIONALITY] is implemented. Provide a summary of the implementation patterns, including file locations, key functions, and any notable variations. Highlight any potential technical debt or areas for optimization.\n```\nCopy\n\n```\nAfter analyzing the 'custom-agents-template' repository, I found that the core functionality for agent customization is primarily implemented in the 'src/agents' directory. The main files are 'agentFactory.ts', 'agentConfigurator.js', and 'agentExecutor.py'. The implementation follows a factory pattern with configuration-driven agent creation. Notable variations include specialized agents in the 'src/agents/specialized' directory that handle specific enterprise use cases. Potential technical debt includes inconsistent error handling across agent types and lack of comprehensive logging in the agent execution pipeline. Optimization opportunities exist in standardizing the agent interface and implementing a more robust configuration validation system.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT, Cursor, GitHub Copilot"
+    ],
+    "related_skills": [
+      "octocode-mcp#main-content",
+      "octocode-mcp#overview",
+      "octocode-mcp#setup",
+      "octocode-mcp#examples",
+      "octocode-mcp#tools",
+      "octocode-mcp#mcp",
+      "octocode-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Octocode-MCP is an MCP server that specializes in semantic code research and context generation using LLM patterns. It allows developers and AI agents to perform natural language searches across both public and private repositories, extracting relevant code context without manual browsing. The tool transforms entire codebases into AI-optimized knowledge suitable for simple and complex development workflows. By enabling intelligent code discovery and synthesis, Octocode-MCP helps developers understand large codebases faster and generate better contextual information for code generation tasks.\nSearch for specific code snippets across multiple private repositories effortlessly.\nGenerate comprehensive context for code documentation to enhance understanding.\nTransform legacy code into modern frameworks, ensuring compatibility and performance.\nFind real implementations of algorithms quickly to accelerate development.",
+    "setup_vi": "Terminal\nCopy\n`claude install bgauryy/octocode-mcp`\n`git clone https://github.com/bgauryy/octocode-mcp`",
+    "usage_vi": "```\nSearch the [REPOSITORY] for all instances where [FUNCTIONALITY] is implemented. Provide a summary of the implementation patterns, including file locations, key functions, and any notable variations. Highlight any potential technical debt or areas for optimization.\n```\nCopy\n\n```\nAfter analyzing the 'custom-agents-template' repository, I found that the core functionality for agent customization is primarily implemented in the 'src/agents' directory. The main files are 'agentFactory.ts', 'agentConfigurator.js', and 'agentExecutor.py'. The implementation follows a factory pattern with configuration-driven agent creation. Notable variations include specialized agents in the 'src/agents/specialized' directory that handle specific enterprise use cases. Potential technical debt includes inconsistent error handling across agent types and lack of comprehensive logging in the agent execution pipeline. Optimization opportunities exist in standardizing the agent interface and implementing a more robust configuration validation system.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:15:41.569400Z",
+    "http_status": 200,
+    "content_hash": "80847a4a7f5dbb05f6656b494e67a0e1f76ece6bcb66e0402bef274522631aca",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octocode-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octocode-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Octocode-MCP: Semantic Code Research & Context",
+  "short_description_vi": "Octocode-MCP is a powerful MCP server designed for semantic code research and context generation using LLM patterns. It enables natural searches across public and private repositories, transforming codebases into AI-optimized knowledge for both simple and complex workflows."
+}

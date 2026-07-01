@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/stream-tweeter",
+  "slug": "stream-tweeter",
+  "name": "Stream Tweeter",
+  "headline": "Stream Tweeter: Twitch to Twitter Automation",
+  "short_description": "Stream Tweeter automates social media posting for Twitch streamers by publishing dynamically generated tweets with clips to Twitter based on real-time stream activity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "195 min",
+  "author": "edaleeta",
+  "install_command": "git clone https://github.com/edaleeta/stream-tweeter.git",
+  "source_repo_url": "https://github.com/edaleeta/stream-tweeter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Stream Tweeter is a social media automation tool that connects Twitch and Twitter accounts to publish promotional content automatically. It uses the Twitch API to detect when you go live, generates clips from your stream, and posts them to Twitter using customizable templates with real-time placeholders like current game title. The tool monitors stream status via webhooks, captures metrics in a dashboard, and lets you configure posting intervals. Built for Twitch streamers who want to grow their Twitter audience without manual promotion work.\nAutomatically post Twitch clip highlights to Twitter when going live\nGenerate promotional tweets with dynamic game and viewer information\nTrack stream metrics and social content performance in one dashboard\nMaintain consistent Twitter presence without manual posting during streams",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/edaleeta/stream-tweeter`",
+    "usage": "```\nCreate a 3-day Twitter content calendar for a Twitch streamer in the [GAME] community. Include 2 engagement posts, 1 promotional post, and 1 behind-the-scenes post. Use [STREAMER_NAME] as the streamer name and [TWITCH_CHANNEL] as the Twitch channel link.\n```\nCopy\n\n```\n### Day 1\n\n**Engagement Post:**\n\n\"What's your favorite [GAME] build? 🎮 Share yours in the comments and I'll try it out in tonight's stream! 👇 #GamingCommunity #TwitchStream\"\n\n**Promotional Post:**\n\n\"🎉 Tonight's stream: [GAME] Speedrun Challenge! 🏆 Join me at [STREAM_TIME] on [TWITCH_CHANNEL]! #Speedrun #Twitch\"\n\n### Day 2\n\n**Behind-the-Scenes Post:**\n\n\"Setting up my new stream setup! 🎙️💻 What do you think of the new background? #StreamerLife #BehindTheScenes\"\n\n**Engagement Post:**\n\n\"Who's your favorite [GAME] character? 🤔 Mine is [CHARACTER]! Let's discuss in tonight's stream! #Gaming #TwitchChat\"\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "stream-tweeter#main-content",
+      "stream-tweeter#overview",
+      "stream-tweeter#setup",
+      "stream-tweeter#examples",
+      "stream-tweeter#tools",
+      "stream-tweeter#mcp",
+      "stream-tweeter#related",
+      "marketingskills",
+      "copywriting",
+      "klaviyoconnect"
+    ],
+    "overview_vi": "Stream Tweeter là một công cụ tự động hóa mạng xã hội giúp kết nối tài khoản Twitch và Twitter để tự động đăng tải các nội dung quảng bá. Công cụ này sử dụng Twitch API để phát hiện khi bạn go live, tự động tạo clip từ stream và đăng lên Twitter bằng các template có thể tùy chỉnh với các placeholder theo thời gian thực như tên tựa game hiện tại. Công cụ theo dõi trạng thái stream qua webhook, thu thập các chỉ số đo lường trên một dashboard và cho phép bạn cấu hình khoảng thời gian giữa các lần đăng. Được thiết kế dành cho các streamer Twitch muốn phát triển lượng người theo dõi trên Twitter mà không cần quảng bá thủ công.\nTự động đăng clip highlight từ Twitch lên Twitter khi go live\nTạo tweet quảng bá với thông tin động về game và số lượng người xem\nTheo dõi số liệu stream và hiệu suất nội dung mạng xã hội trên một dashboard duy nhất\nDuy trì sự hiện diện liên tục trên Twitter mà không cần đăng bài thủ công khi đang stream",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/edaleeta/stream-tweeter`",
+    "usage_vi": "```\nTạo một lịch trình nội dung Twitter trong 3 ngày cho một streamer Twitch trong cộng đồng [GAME]. Bao gồm 2 bài viết tương tác, 1 bài viết quảng bá và 1 bài viết hậu trường. Sử dụng [STREAMER_NAME] làm tên streamer và [TWITCH_CHANNEL] làm liên kết kênh Twitch.\n```\nCopy\n\n```\n### Ngày 1\n\n**Bài viết tương tác:**\n\n\"Build đồ [GAME] yêu thích của bạn là gì? 🎮 Hãy chia sẻ dưới phần bình luận và mình sẽ dùng thử trong buổi stream tối nay nhé! 👇 #GamingCommunity #TwitchStream\"\n\n**Bài viết quảng bá:**\n\n\"🎉 Buổi stream tối nay: Thử thách Speedrun [GAME]! 🏆 Tham gia cùng mình vào lúc [STREAM_TIME] tại [TWITCH_CHANNEL]! #Speedrun #Twitch\"\n\n### Ngày 2\n\n**Bài viết hậu trường:**\n\n\"Đang căn chỉnh lại setup stream mới của mình! 🎙️💻 Các bạn thấy background mới này thế nào? #StreamerLife #BehindTheScenes\"\n\n**Bài viết tương tác:**\n\n\"Nhân vật [GAME] yêu thích của bạn là ai? 🤔 Mình thích nhất là [CHARACTER]! Cùng thảo luận trong buổi stream tối nay nhé! #Gaming #TwitchChat\"\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:33:01.177474Z",
+    "http_status": 200,
+    "content_hash": "f09faaaeb9b8d331df5968c8aa107da523b9b12fbc9abe06ea7a184fb1f914e4",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stream-tweeter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\stream-tweeter.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Stream Tweeter: Tự động hóa từ Twitch sang Twitter",
+  "short_description_vi": "Stream Tweeter tự động hóa việc đăng bài trên mạng xã hội cho các streamer Twitch bằng cách tự động đăng các tweet kèm clip được tạo động lên Twitter dựa trên hoạt động stream theo thời gian thực."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/banana-skills",
+  "slug": "banana-skills",
+  "name": "Banana Skills",
+  "headline": "AI Agent Skills for Coding Assistants",
+  "short_description": "Banana Skills is a collection of AI agent skills for Claude Code and other AI coding assistants. It helps developers automate coding tasks, recommend relevant skills, and improve productivity. The skills integrate with AI coding assistants to streamline workflows and enhance coding efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "TreyDong",
+  "install_command": "git clone https://github.com/TreyDong/banana-skills.git",
+  "source_repo_url": "https://github.com/TreyDong/banana-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Banana Skills is a collection of three specialized AI agent skills designed to streamline coding workflows. The banana-skill-finder automatically recommends relevant Claude skills based on your tasks, using a three-tier search strategy across SkillsMP, skills.sh, and GitHub. banana-sync-to-notion enables developers to sync local Markdown files to Notion with full formatting preservation and automatic duplicate detection. claude-codex-import lets you migrate Claude Code and Codex conversation history into memory systems for future reference. These skills work with Claude Code, Cursor, Windsurf, GitHub Copilot, and other AI assistants supporting the SKILL.md standard, helping teams automate repetitive tasks and improve documentation workflows.\nAutomatically discover and install skills when encountering specialized coding tasks\nBack up Markdown documentation to Notion with formatting and structure preserved\nImport Claude Code and Codex chat history for building agent memory systems\nMigrate coding conversations into searchable knowledge archives",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/TreyDong/banana-skills`",
+    "usage": "```\nUse Banana Skills to automate the following coding task: [TASK_DESCRIPTION]. Identify the most relevant Banana Skills for this task from the available collection. Apply the recommended skills to [PROJECT_PATH] and execute the automation. Generate a report summarizing the changes made, code improvements, and any errors encountered during execution.\n```\nCopy\n\n```\n### Banana Skills Automation Report\n**Task Executed:** Automated refactoring of legacy Python code in `/projects/legacy_system` to modernize it with type hints and PEP 8 compliance.\n\n**Recommended Skills Applied:**\n1. **`python-type-hint-generator`**: Added type hints to all functions and class methods. For example:\n   ```python\n   # Before\n   def process_data(data):\n       ...\n   \n   # After\n   def process_data(data: list[dict]) -> tuple[dict, int]:\n       ...\n   ```\n2. **`pep8-formatter`**: Reformatted all files to adhere to PEP 8 standards. Fixed issues like:\n   - Line lengths exceeding 79 characters\n   - Inconsistent indentation\n   - Missing docstrings\n3. **`legacy-code-optimizer`**: Identified and replaced deprecated patterns (e.g., `map()` with list comprehensions) and optimized nested loops.\n\n**Changes Summary:**\n- **Files Modified:** 12\n- **Lines Added:** 450 (type hints, docstrings)\n- **Lines Removed:** 180 (redundant or deprecated code)\n- **Errors Encountered:** 3 (resolved via `error-handler` skill)\n\n**Next Steps:**\n- Run `pytest` to validate the refactored code.\n- Merge changes into the `dev` branch after review.\n\n**Performance Impact:** Reduced cyclomatic complexity by 22% and improved IDE linting score from 6.5 to 9.2.\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "banana-skills#main-content",
+      "banana-skills#overview",
+      "banana-skills#setup",
+      "banana-skills#examples",
+      "banana-skills#tools",
+      "banana-skills#mcp",
+      "banana-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Banana Skills là bộ sưu tập gồm ba AI agent skills chuyên dụng được thiết kế để tối ưu hóa quy trình lập trình. Công cụ banana-skill-finder tự động gợi ý các skill Claude phù hợp dựa trên tác vụ của bạn, sử dụng chiến lược tìm kiếm ba cấp trên SkillsMP, skills.sh và GitHub. banana-sync-to-notion cho phép nhà phát triển đồng bộ hóa các file Markdown cục bộ lên Notion mà vẫn giữ nguyên định dạng và tự động phát hiện trùng lặp. claude-codex-import giúp bạn di chuyển lịch sử trò chuyện từ Claude Code và Codex vào hệ thống bộ nhớ (memory systems) để tham chiếu sau này. Các skill này hoạt động tốt với Claude Code, Cursor, Windsurf, GitHub Copilot và các trợ lý AI khác hỗ trợ tiêu chuẩn SKILL.md, giúp các đội ngũ tự động hóa các tác vụ lặp đi lặp lại và cải thiện quy trình quản lý tài liệu.\nTự động phát hiện và cài đặt các skill khi gặp các tác vụ lập trình chuyên biệt\nSao lưu tài liệu Markdown lên Notion mà vẫn giữ nguyên định dạng và cấu trúc\nNhập lịch sử chat từ Claude Code và Codex để xây dựng hệ thống bộ nhớ cho agent\nDi chuyển các cuộc hội thoại lập trình thành kho lưu trữ kiến thức có thể tìm kiếm",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/TreyDong/banana-skills`",
+    "usage_vi": "```\nSử dụng Banana Skills để tự động hóa tác vụ lập trình sau: [TASK_DESCRIPTION]. Xác định các Banana Skills phù hợp nhất cho tác vụ này từ bộ sưu tập có sẵn. Áp dụng các skill được đề xuất vào [PROJECT_PATH] và thực thi tự động hóa. Tạo báo cáo tóm tắt các thay đổi đã thực hiện, các cải tiến mã nguồn và bất kỳ lỗi nào gặp phải trong quá trình thực thi.\n```\nCopy\n\n```\n### Báo cáo Tự động hóa Banana Skills\n**Tác vụ đã thực thi:** Tự động refactor mã nguồn Python cũ trong `/projects/legacy_system` để hiện đại hóa bằng type hints và tuân thủ chuẩn PEP 8.\n\n**Các Skill được Đề xuất và Áp dụng:**\n1. **`python-type-hint-generator`**: Thêm type hints cho tất cả các hàm và phương thức của lớp. Ví dụ:\n   ```python\n   # Trước\n   def process_data(data):\n       ...\n   \n   # Sau\n   def process_data(data: list[dict]) -> tuple[dict, int]:\n       ...\n   ```\n2. **`pep8-formatter`**: Định dạng lại tất cả các file để tuân thủ tiêu chuẩn PEP 8. Khắc phục các vấn đề như:\n   - Độ dài dòng vượt quá 79 ký tự\n   - Thụt lề (indentation) không đồng nhất\n   - Thiếu docstrings\n3. **`legacy-code-optimizer`**: Phát hiện và thay thế các pattern đã lỗi thời (ví dụ: thay `map()` bằng list comprehensions) và tối ưu hóa các vòng lặp lồng nhau.\n\n**Tóm tắt Thay đổi:**\n- **Số file đã chỉnh sửa:** 12\n- **Số dòng thêm mới:** 450 (type hints, docstrings)\n- **Số dòng đã xóa:** 180 (mã nguồn dư thừa hoặc lỗi thời)\n- **Lỗi gặp phải:** 3 (đã xử lý thông qua skill `error-handler`)\n\n**Các bước tiếp theo:**\n- Chạy `pytest` để xác thực mã nguồn sau khi refactor.\n- Merge các thay đổi vào nhánh `dev` sau khi review.\n\n**Tác động Hiệu suất:** Giảm 22% độ phức tạp vòng (cyclomatic complexity) và cải thiện điểm IDE linting từ 6.5 lên 9.2.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:18:28.653753Z",
+    "http_status": 200,
+    "content_hash": "585fefe26bad11aecf220f02838a8b8f534f499cda0854355a857d7f33e09564",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\banana-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\banana-skills.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AI Agent Skills dành cho các Trợ lý Lập trình",
+  "short_description_vi": "Banana Skills là bộ sưu tập các AI agent skills dành cho Claude Code và các trợ lý lập trình AI khác. Bộ công cụ này giúp nhà phát triển tự động hóa các tác vụ lập trình, gợi ý các skill phù hợp và nâng cao năng suất. Các skill này tích hợp trực tiếp với trợ lý lập trình AI để tối ưu hóa quy trình làm việc và nâng cao hiệu suất viết code."
+}

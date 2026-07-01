@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/radon-mcp",
+  "slug": "radon-mcp",
+  "name": "PostHog Debugger",
+  "headline": "Radon MCP: React Native Debugging",
+  "short_description": "Radon MCP is designed to assist developers in inspecting and debugging React Native/Expo applications. It provides various tools for viewing application logs, screenshots, and network requests.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "software-mansion-labs",
+  "install_command": "git clone https://github.com/software-mansion-labs/skills",
+  "source_repo_url": "https://github.com/software-mansion-labs/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "debugging-tools",
+    "radon"
+  ],
+  "sections": {
+    "overview": "Radon MCP is a Claude Code skill that equips AI agents with debugging capabilities for React Native and Expo applications. It integrates Radon IDE's tools to help developers inspect app state through screenshots, component tree inspection, and network request monitoring. The skill covers best practices for viewing logs, reading diagnostic information, and querying React Native documentation—all while coding. This accelerates the debugging workflow by providing real-time visibility into app behavior without leaving your AI-assisted development environment.\nDebugging mobile apps using React Native\nInspecting network traffic for issues in Expo apps\nViewing the component tree structure for layout troubleshooting",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/software-mansion-labs/skills --skill radon-mcp`\n`git clone https://github.com/software-mansion-labs/skills`",
+    "usage": "```\nAct as Radon MCP for [PROJECT_NAME], an Expo/React Native application. Use the `radon-mcp` tool to inspect [SPECIFIC_DEBUG_TARGET] such as logs, network requests, or screenshots. Provide a detailed analysis of [ISSUE_DESCRIPTION] and suggest fixes. Include relevant code snippets or configurations if applicable.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "radon-mcp#main-content",
+      "radon-mcp#overview",
+      "radon-mcp#setup",
+      "radon-mcp#examples",
+      "radon-mcp#related",
+      "posthog-debugger"
+    ],
+    "overview_vi": "Radon MCP is a Claude Code skill that equips AI agents with debugging capabilities for React Native and Expo applications. It integrates Radon IDE's tools to help developers inspect app state through screenshots, component tree inspection, and network request monitoring. The skill covers best practices for viewing logs, reading diagnostic information, and querying React Native documentation—all while coding. This accelerates the debugging workflow by providing real-time visibility into app behavior without leaving your AI-assisted development environment.\nDebugging mobile apps using React Native\nInspecting network traffic for issues in Expo apps\nViewing the component tree structure for layout troubleshooting",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/software-mansion-labs/skills --skill radon-mcp`\n`git clone https://github.com/software-mansion-labs/skills`",
+    "usage_vi": "```\nAct as Radon MCP for [PROJECT_NAME], an Expo/React Native application. Use the `radon-mcp` tool to inspect [SPECIFIC_DEBUG_TARGET] such as logs, network requests, or screenshots. Provide a detailed analysis of [ISSUE_DESCRIPTION] and suggest fixes. Include relevant code snippets or configurations if applicable.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:48.762982Z",
+    "http_status": 200,
+    "content_hash": "c5e5e10441c94789069fb5593fac5c7c68d57a1ba0400e00278f5470311aff8c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\radon-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\radon-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Radon MCP: React Native Debugging",
+  "short_description_vi": "Radon MCP is designed to assist developers in inspecting and debugging React Native/Expo applications. It provides various tools for viewing application logs, screenshots, and network requests."
+}

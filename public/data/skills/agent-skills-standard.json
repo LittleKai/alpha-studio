@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skills-standard",
+  "slug": "agent-skills-standard",
+  "name": "react-native-best-practices",
+  "headline": "Agent Skills Standard for Programming Languages",
+  "short_description": "The agent-skills-standard repository provides a comprehensive collection of best practices and standards for various programming languages and frameworks. It helps AI agents to adhere to coding excellence across platforms like Android, iOS, and web development.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "HoangNguyen0403",
+  "install_command": "claude install HoangNguyen0403/agent-skills-standard",
+  "source_repo_url": "https://github.com/HoangNguyen0403/agent-skills-standard",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "programming-languages",
+    "AI-agents",
+    "best-practices",
+    "coding-standards",
+    "frameworks"
+  ],
+  "sections": {
+    "overview": "Agent Skills Standard is a CLI-driven standards repository that distributes modular, reusable coding skills to AI agents. Instead of repeating engineering rules in prompts, teams define standards once and sync them across Cursor, Claude Code, GitHub Copilot, Gemini, Windsurf, Trae, Kiro, and Roo. The tool uses hierarchical resolution to load only relevant skills based on file type and task, reducing token usage by 85% compared to traditional prompt engineering. Skills are version-controlled, portable, and customizable via `.skillsrc` configuration, ensuring consistent code quality across your team without manual synchronization.\nEnsuring code quality in AI-driven applications\nAutomating adherence to coding standards\nProviding best practice recommendations during development\nEnhancing developer productivity with standardized frameworks",
+    "setup": "Terminal\nCopy\n`claude install HoangNguyen0403/agent-skills-standard`\n`git clone https://github.com/HoangNguyen0403/agent-skills-standard`",
+    "usage": "```\nGenerate a set of coding standards for [PROGRAMMING_LANGUAGE] based on the agent-skills-standard repository. Include guidelines for [SPECIFIC_FRAMEWORK] and best practices for [PLATFORM] development. Ensure the standards align with Productiv's financial analytics requirements for real-time data processing.\n```\nCopy\n\n```\nBased on the agent-skills-standard repository, here are the coding standards for JavaScript in a React framework for web development, tailored to Productiv's financial analytics requirements:\n\n1. **Code Structure**: Follow a modular approach with separate components for each financial metric (e.g., Revenue, Expenses, Profit). Use functional components with hooks for state management.\n2. **Naming Conventions**: Use camelCase for variables and functions, and PascalCase for components. Name files according to their functionality (e.g., RevenueCalculator.js).\n3. **Error Handling**: Implement comprehensive error handling for API calls to Productiv's financial data endpoints. Use try-catch blocks and display user-friendly error messages.\n4. **Performance Optimization**: Optimize performance by using memoization (React.memo) for components that render frequently, such as the real-time financial analytics dashboard.\n5. **Testing**: Write unit tests for each component using Jest and React Testing Library. Ensure tests cover edge cases, such as handling null or undefined financial data.\n6. **Documentation**: Document each component and function using JSDoc. Include examples of how to use the component and what props it accepts.\n7. **Accessibility**: Ensure all components are accessible by following WCAG guidelines. Use ARIA labels and roles where necessary.\n8. **Security**: Sanitize all user inputs and API responses to prevent XSS attacks. Use HTTPS for all API calls to Productiv's endpoints.\n9. **Version Control**: Use Git for version control. Follow a branching strategy that includes feature branches, a development branch, and a main branch. Use meaningful commit messages that describe the changes made.\n10. **Continuous Integration/Continuous Deployment (CI/CD)**: Set up a CI/CD pipeline that automatically runs tests and deploys the application to a staging environment for review. Use tools like GitHub Actions or CircleCI for this purpose.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "agent-skills-standard#main-content",
+      "agent-skills-standard#overview",
+      "agent-skills-standard#setup",
+      "agent-skills-standard#examples",
+      "agent-skills-standard#tools",
+      "agent-skills-standard#mcp",
+      "agent-skills-standard#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Agent Skills Standard is a CLI-driven standards repository that distributes modular, reusable coding skills to AI agents. Instead of repeating engineering rules in prompts, teams define standards once and sync them across Cursor, Claude Code, GitHub Copilot, Gemini, Windsurf, Trae, Kiro, and Roo. The tool uses hierarchical resolution to load only relevant skills based on file type and task, reducing token usage by 85% compared to traditional prompt engineering. Skills are version-controlled, portable, and customizable via `.skillsrc` configuration, ensuring consistent code quality across your team without manual synchronization.\nEnsuring code quality in AI-driven applications\nAutomating adherence to coding standards\nProviding best practice recommendations during development\nEnhancing developer productivity with standardized frameworks",
+    "setup_vi": "Terminal\nCopy\n`claude install HoangNguyen0403/agent-skills-standard`\n`git clone https://github.com/HoangNguyen0403/agent-skills-standard`",
+    "usage_vi": "```\nGenerate a set of coding standards for [PROGRAMMING_LANGUAGE] based on the agent-skills-standard repository. Include guidelines for [SPECIFIC_FRAMEWORK] and best practices for [PLATFORM] development. Ensure the standards align with Productiv's financial analytics requirements for real-time data processing.\n```\nCopy\n\n```\nBased on the agent-skills-standard repository, here are the coding standards for JavaScript in a React framework for web development, tailored to Productiv's financial analytics requirements:\n\n1. **Code Structure**: Follow a modular approach with separate components for each financial metric (e.g., Revenue, Expenses, Profit). Use functional components with hooks for state management.\n2. **Naming Conventions**: Use camelCase for variables and functions, and PascalCase for components. Name files according to their functionality (e.g., RevenueCalculator.js).\n3. **Error Handling**: Implement comprehensive error handling for API calls to Productiv's financial data endpoints. Use try-catch blocks and display user-friendly error messages.\n4. **Performance Optimization**: Optimize performance by using memoization (React.memo) for components that render frequently, such as the real-time financial analytics dashboard.\n5. **Testing**: Write unit tests for each component using Jest and React Testing Library. Ensure tests cover edge cases, such as handling null or undefined financial data.\n6. **Documentation**: Document each component and function using JSDoc. Include examples of how to use the component and what props it accepts.\n7. **Accessibility**: Ensure all components are accessible by following WCAG guidelines. Use ARIA labels and roles where necessary.\n8. **Security**: Sanitize all user inputs and API responses to prevent XSS attacks. Use HTTPS for all API calls to Productiv's endpoints.\n9. **Version Control**: Use Git for version control. Follow a branching strategy that includes feature branches, a development branch, and a main branch. Use meaningful commit messages that describe the changes made.\n10. **Continuous Integration/Continuous Deployment (CI/CD)**: Set up a CI/CD pipeline that automatically runs tests and deploys the application to a staging environment for review. Use tools like GitHub Actions or CircleCI for this purpose.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:51:29.661148Z",
+    "http_status": 200,
+    "content_hash": "f7fa8724b331c5d28dd0c26d39526c1b9f5ffa37b6ff58e9d8d4b8abb690e541",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-skills-standard.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-skills-standard.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Agent Skills Standard for Programming Languages",
+  "short_description_vi": "The agent-skills-standard repository provides a comprehensive collection of best practices and standards for various programming languages and frameworks. It helps AI agents to adhere to coding excellence across platforms like Android, iOS, and web development."
+}

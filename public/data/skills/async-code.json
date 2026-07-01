@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/async-code",
+  "slug": "async-code",
+  "name": "Async Code",
+  "headline": "parallel task execution with ai",
+  "short_description": "Async Code enables parallel execution of AI-powered coding tasks using Claude Code or CodeX CLI. Operations teams can manage multiple agents simultaneously through a Codex-style UI, streamlining workflows and improving efficiency. It connects to Claude Code and CodeX CLI, allowing for integration into existing development environments.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "ObservedObserver",
+  "install_command": "git clone https://github.com/ObservedObserver/async-code.git",
+  "source_repo_url": "https://github.com/ObservedObserver/async-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "codex",
+    "cursor-ai",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Async Code is a task management system for executing multiple AI-powered coding tasks simultaneously using Claude Code and other agents. It provides a Codex-style web interface where operations teams can manage parallel agent execution, compare outputs from different models, and automate Git workflows including repository cloning and PR creation. The system uses containerized execution for secure sandboxed environments and supports self-hosting with Docker Compose. Teams benefit from faster code generation, agent comparison for quality evaluation, and integrated Git operations that streamline development workflows.\nRun multiple AI agents to generate code snippets for different programming tasks simultaneously.\nCompare the outputs of various AI models to determine the best solution for a coding problem.\nAutomate the creation of pull requests from successful coding tasks directly within the web interface.\nManage and execute parallel coding tasks for large projects to speed up development cycles.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ObservedObserver/async-code`",
+    "usage": "```\nI need to execute multiple coding tasks in parallel. Here are the tasks: [TASKS]. Please use Async Code to run these tasks simultaneously. Provide the results in the following format: [OUTPUT_FORMAT].\n```\nCopy\n\n```\nTask 1: Refactoring the user authentication module\nStatus: Completed\nOutput: The user authentication module has been successfully refactored. The new implementation includes improved error handling and support for multi-factor authentication. The changes are ready for review.\n\nTask 2: Writing unit tests for the payment processing module\nStatus: Completed\nOutput: Unit tests have been written for the payment processing module. The tests cover all major scenarios, including successful payments, failed payments, and edge cases. The test suite is ready for execution.\n\nTask 3: Updating the database schema to support new user roles\nStatus: Completed\nOutput: The database schema has been updated to support new user roles. The changes include new tables for role-based permissions and updated foreign key relationships. The migration script is ready for deployment.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "async-code#main-content",
+      "async-code#overview",
+      "async-code#setup",
+      "async-code#examples",
+      "async-code#tools",
+      "async-code#mcp",
+      "async-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Async Code is a task management system for executing multiple AI-powered coding tasks simultaneously using Claude Code and other agents. It provides a Codex-style web interface where operations teams can manage parallel agent execution, compare outputs from different models, and automate Git workflows including repository cloning and PR creation. The system uses containerized execution for secure sandboxed environments and supports self-hosting with Docker Compose. Teams benefit from faster code generation, agent comparison for quality evaluation, and integrated Git operations that streamline development workflows.\nRun multiple AI agents to generate code snippets for different programming tasks simultaneously.\nCompare the outputs of various AI models to determine the best solution for a coding problem.\nAutomate the creation of pull requests from successful coding tasks directly within the web interface.\nManage and execute parallel coding tasks for large projects to speed up development cycles.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ObservedObserver/async-code`",
+    "usage_vi": "```\nI need to execute multiple coding tasks in parallel. Here are the tasks: [TASKS]. Please use Async Code to run these tasks simultaneously. Provide the results in the following format: [OUTPUT_FORMAT].\n```\nCopy\n\n```\nTask 1: Refactoring the user authentication module\nStatus: Completed\nOutput: The user authentication module has been successfully refactored. The new implementation includes improved error handling and support for multi-factor authentication. The changes are ready for review.\n\nTask 2: Writing unit tests for the payment processing module\nStatus: Completed\nOutput: Unit tests have been written for the payment processing module. The tests cover all major scenarios, including successful payments, failed payments, and edge cases. The test suite is ready for execution.\n\nTask 3: Updating the database schema to support new user roles\nStatus: Completed\nOutput: The database schema has been updated to support new user roles. The changes include new tables for role-based permissions and updated foreign key relationships. The migration script is ready for deployment.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:35:29.870761Z",
+    "http_status": 200,
+    "content_hash": "e9b872c7aa39c9ea859cd3c43de992aded74f4a09a24c3d4289132fd38011578",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\async-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\async-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "parallel task execution with ai",
+  "short_description_vi": "Async Code enables parallel execution of AI-powered coding tasks using Claude Code or CodeX CLI. Operations teams can manage multiple agents simultaneously through a Codex-style UI, streamlining workflows and improving efficiency. It connects to Claude Code and CodeX CLI, allowing for integration into existing development environments."
+}

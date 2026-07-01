@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-fortress",
+  "slug": "claude-fortress",
+  "name": "Claude Fortress",
+  "headline": "claude fortress: engage with code creativity",
+  "short_description": "Claude Fortress is an ASCII simulation that lets you command dwarves using natural language. It's inspired by Dwarf Fortress and acts as a fortress overseer. Operations teams can use it to simulate and manage virtual environments, connecting to workflows that require process automation and management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "brimtown",
+  "install_command": "git clone https://github.com/brimtown/claude-fortress.git",
+  "source_repo_url": "https://github.com/brimtown/claude-fortress",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "simulation",
+    "canvas",
+    "typescript",
+    "ascii-art",
+    "dwarf-fortress",
+    "game",
+    "claude",
+    "bun",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Claude Fortress is a natural language-driven ASCII simulation that lets you command dwarves and manage a virtual fortress inspired by Dwarf Fortress. You interact with the simulation by typing commands in plain English—ask Claude to dig rooms, build structures, or check on dwarf needs—and watch the fortress respond in real-time with 500ms simulation ticks. The game includes authentic fortress mechanics: dwarf hunger and thirst, happiness tracking, grief-induced tantrums, strange moods that create artifacts, job assignment, and wealth-based migration. Operations teams and process automation workflows can use Claude Fortress to simulate environment management scenarios, while players enjoy the challenge of keeping their fortress thriving or watching it collapse with full end-game statistics.\nSimulating fortress operations and decision-making in real-time\nLearning natural language command execution through interactive gameplay\nManaging virtual environments with dynamic NPC needs and behaviors\nTesting automation workflows with ASCII-based process simulation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/brimtown/claude-fortress`",
+    "usage": "```\nSimulate a Claude Fortress scenario where I am the overseer. [DESCRIBE THE GOAL, e.g., 'build a sustainable food supply chain', 'defend against goblin raids', or 'expand the fortress underground']. Issue commands to dwarves using natural language, ensuring they follow [RULES, e.g., 'prioritize safety', 'avoid overwork', or 'optimize resource allocation']. Report the fortress status after each cycle, including population, resources, and threats. Adjust strategies based on outcomes.\n```\nCopy\n\n```\n### Cycle 1: Initial Setup\n**Fortress Status:** Population: 12 dwarves (5 miners, 3 farmers, 2 builders, 2 guards). Resources: 50 stone, 30 wood, 10 food. Threats: None detected.\n\n**Commands Issued:**\n1. Miners: \"Dig a new tunnel eastward from the main hall to expand living quarters.\"\n2. Farmers: \"Plant wheat in the southern field and assign 2 dwarves to irrigation.\"\n3. Builders: \"Construct a stone wall around the eastern entrance for defense.\"\n4. Guards: \"Patrol the perimeter twice daily and report any intruders.\"\n\n**Outcome:** Tunnel progress: 15% complete. Wheat planted: 80% of field. Wall foundation laid. No threats detected.\n\n### Cycle 2: Resource Scarcity\n**Fortress Status:** Population: 12 dwarves. Resources: 30 stone, 20 wood, 5 food. Threats: None detected.\n\n**Commands Issued:**\n1. Overseer: \"Prioritize food production. Assign all farmers to harvest remaining wheat and store it in the granary.\"\n2. Miners: \"Pause tunnel expansion and redirect efforts to quarry limestone near the eastern wall.\"\n3. Guards: \"Increase patrol frequency to every 4 hours due to potential goblin scouting parties.\"\n\n**Outcome:** Wheat harvested: 100% of field. Limestone quarried: 20 units. Guards reported no activity but noted suspicious tracks near the eastern border.\n\n### Cycle 3: Crisis Response\n**Fortress Status:** Population: 12 dwarves. Resources: 50 stone, 20 wood, 15 food. Threats: Goblin scouting party detected 50 meters east of the fortress.\n\n**Commands Issued:**\n1. Overseer: \"Sound the alarm! All dwarves: drop current tasks and prepare for defense.\"\n2. Builders: \"Reinforce the eastern wall with remaining stone and assign 2 dwarves to craft crossbows.\"\n3. Guards: \"Deploy to the eastern entrance and prepare to ambush intruders.\"\n4. Farmers: \"Store all food in the underground cellar and assist with defense preparations.\"\n\n**Outcome:** Goblin party repelled. Fortress sustained minor damage to the eastern wall. No casualties. Resources secured.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-fortress#main-content",
+      "claude-fortress#overview",
+      "claude-fortress#setup",
+      "claude-fortress#examples",
+      "claude-fortress#tools",
+      "claude-fortress#mcp",
+      "claude-fortress#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Fortress là một trình giả lập ASCII vận hành bằng ngôn ngữ tự nhiên, cho phép bạn ra lệnh cho các chú lùn và quản lý một pháo đài ảo lấy cảm hứng từ Dwarf Fortress. Bạn tương tác với trình giả lập bằng cách nhập các câu lệnh bằng tiếng Anh thông thường—yêu cầu Claude đào phòng, xây dựng công trình hoặc kiểm tra nhu cầu của các chú lùn—và theo dõi pháo đài phản hồi theo thời gian thực với chu kỳ giả lập (simulation tick) 500ms. Trò chơi tích hợp các cơ chế pháo đài chân thực: cơn đói khát của chú lùn, theo dõi mức độ hạnh phúc, những cơn thịnh nộ do đau buồn, tâm trạng kỳ lạ tạo ra cổ vật, phân công công việc và di cư dựa trên mức độ giàu có. Các đội ngũ vận hành và workflow tự động hóa quy trình có thể sử dụng Claude Fortress để giả lập các kịch bản quản lý môi trường, trong khi người chơi tận hưởng thử thách duy trì sự phát triển của pháo đài hoặc chứng kiến nó sụp đổ với các số liệu thống kê chi tiết khi kết thúc game.\nGiả lập các hoạt động của pháo đài và việc ra quyết định theo thời gian thực\nHọc cách thực thi câu lệnh bằng ngôn ngữ tự nhiên thông qua lối chơi tương tác\nQuản lý môi trường ảo với các hành vi và nhu cầu động của NPC\nThử nghiệm các workflow tự động hóa với trình giả lập quy trình dựa trên ASCII",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/brimtown/claude-fortress`",
+    "usage_vi": "```\nGiả lập một kịch bản Claude Fortress trong đó tôi là người giám sát. [MÔ TẢ MỤC TIÊU, ví dụ: 'xây dựng chuỗi cung ứng thực phẩm bền vững', 'phòng thủ trước các cuộc đột kích của goblin', hoặc 'mở rộng pháo đài dưới lòng đất']. Ra lệnh cho các chú lùn bằng ngôn ngữ tự nhiên, đảm bảo họ tuân theo [QUY TẮC, ví dụ: 'ưu tiên an toàn', 'tránh làm việc quá sức', hoặc 'tối ưu hóa phân bổ tài nguyên']. Báo cáo trạng thái pháo đài sau mỗi chu kỳ, bao gồm dân số, tài nguyên và các mối đe dọa. Điều chỉnh chiến lược dựa trên kết quả đạt được.\n```\nSao chép\n\n```\n### Chu kỳ 1: Thiết lập ban đầu\n**Trạng thái pháo đài:** Dân số: 12 chú lùn (5 thợ mỏ, 3 nông dân, 2 thợ xây, 2 cảnh vệ). Tài nguyên: 50 đá, 30 gỗ, 10 thức ăn. Mối đe dọa: Không phát hiện.\n\n**Các lệnh đã ra:**\n1. Thợ mỏ: \"Đào một đường hầm mới về phía đông từ sảnh chính để mở rộng khu sinh hoạt.\"\n2. Nông dân: \"Gieo lúa mì ở cánh đồng phía nam và phân công 2 chú lùn phụ trách tưới tiêu.\"\n3. Thợ xây: \"Xây dựng một bức tường đá quanh lối vào phía đông để phòng thủ.\"\n4. Cảnh vệ: \"Tuần tra xung quanh hai lần mỗi ngày và báo cáo bất kỳ kẻ xâm nhập nào.\"\n\n**Kết quả:** Tiến độ đường hầm: hoàn thành 15%. Lúa mì đã gieo: 80% cánh đồng. Đã đặt móng tường. Không phát hiện mối đe dọa.\n\n### Chu kỳ 2: Khan hiếm tài nguyên\n**Trạng thái pháo đài:** Dân số: 12 chú lùn. Tài nguyên: 30 đá, 20 gỗ, 5 thức ăn. Mối đe dọa: Không phát hiện.\n\n**Các lệnh đã ra:**\n1. Người giám sát: \"Ưu tiên sản xuất lương thực. Phân công tất cả nông dân thu hoạch số lúa mì còn lại và cất vào kho thóc.\"\n2. Thợ mỏ: \"Tạm dừng mở rộng đường hầm và chuyển hướng nỗ lực sang khai thác đá vôi gần bức tường phía đông.\"\n3. Cảnh vệ: \"Tăng tần suất tuần tra lên 4 giờ một lần do có khả năng xuất hiện các toán trinh sát goblin.\"\n\n**Kết quả:** Lúa mì đã thu hoạch: 100% cánh đồng. Đá vôi đã khai thác: 20 đơn vị. Cảnh vệ báo cáo không có hoạt động nào nhưng ghi nhận các dấu vết khả nghi gần biên giới phía đông.\n\n### Chu kỳ 3: Ứng phó khủng hoảng\n**Trạng thái pháo đài:** Dân số: 12 chú lùn. Tài nguyên: 50 đá, 20 gỗ, 15 thức ăn. Mối đe dọa: Phát hiện toán trinh sát goblin cách pháo đài 50 mét về phía đông.\n\n**Các lệnh đã ra:**\n1. Người giám sát: \"Báo động! Tất cả chú lùn: gác lại các công việc hiện tại và chuẩn bị phòng thủ.\"\n2. Thợ xây: \"Gia cố bức tường phía đông bằng số đá còn lại và phân công 2 chú lùn chế tạo nỏ.\"\n3. Cảnh vệ: \"Triển khai lực lượng đến lối vào phía đông và chuẩn bị phục kích kẻ xâm nhập.\"\n4. Nông dân: \"Cất trữ toàn bộ lương thực trong hầm ngầm và hỗ trợ chuẩn bị phòng thủ.\"\n\n**Kết quả:** Đã đẩy lùi toán goblin. Pháo đài bị hư hại nhẹ ở bức tường phía đông. Không có thương vong. Tài nguyên được đảm bảo.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:25:13.177725Z",
+    "http_status": 200,
+    "content_hash": "2e5cf826690b5cddab542347384be70836092e9259da6211788d4afc53b09ade",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-fortress.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-fortress.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Fortress: Thỏa sức sáng tạo cùng code",
+  "short_description_vi": "Claude Fortress là một trình giả lập ASCII cho phép bạn ra lệnh cho các chú lùn bằng ngôn ngữ tự nhiên. Được truyền cảm hứng từ Dwarf Fortress, công cụ này hoạt động như một người giám sát pháo đài. Các đội ngũ vận hành có thể sử dụng công cụ để giả lập và quản lý các môi trường ảo, kết nối với các workflow yêu cầu tự động hóa và quản lý quy trình."
+}

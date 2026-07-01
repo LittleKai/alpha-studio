@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/web-design-knowledge-claude-code-skill",
+  "slug": "web-design-knowledge-claude-code-skill",
+  "name": "Web Design Knowledge RAG Skill",
+  "headline": "Web Design Knowledge RAG Skill - Expert Guidance",
+  "short_description": "AI skill provides expert web design guidance using a curated library of design books. Uses RAG with ChromaDB and sentence-transformers for semantic search. Benefits operations teams by automating design knowledge retrieval.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "Zie619",
+  "install_command": "git clone https://github.com/Zie619/web-design-knowledge-claude-code-skill.git",
+  "source_repo_url": "https://github.com/Zie619/web-design-knowledge-claude-code-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Web Design Knowledge RAG Skill equips Claude Code with instant access to expert guidance from 20 professional design books covering 12 specialized topics: color theory, typography, layout, UX principles, UI patterns, responsive design, CSS techniques, visual hierarchy, branding, navigation, forms, and performance optimization. It uses ChromaDB and sentence-transformers for semantic search across 9,500+ indexed passages, eliminating the need for API keys through local embeddings. The skill provides four specialized MCP tools for querying design knowledge by topic, including dedicated tools for color advice, layout patterns, and UX reviews. Installation requires Python 3.10+, ~500MB disk space for indexed data, and optional GPU acceleration for faster queries. Once configured, it enables designers and developers to ask natural-language questions about design best practices and receive evidence-based recommendations grounded in professional design literature.\nGetting color palette recommendations for specific app types or industries\nFinding layout patterns and grid systems for dashboards, landing pages, or e-commerce\nReviewing UX best practices for checkout flows, forms, and navigation patterns\nResolving typography hierarchy questions for branding and visual consistency",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Zie619/web-design-knowledge-claude-code-skill`",
+    "usage": "```\nI'm designing a [TYPE] website for [INDUSTRY]. What are the key design principles I should follow? Provide specific examples of successful [TYPE] websites in [INDUSTRY] and explain why they work. Also, suggest 3-5 design tools or frameworks that would be particularly useful for this project.\n```\nCopy\n\n```\nBased on your request for a healthcare e-commerce website, here are key design principles to follow: 1) Prioritize accessibility with high contrast colors and readable fonts, 2) Build trust with clear security badges and professional imagery, 3) Simplify navigation with intuitive category structures. Successful examples include HealthPost (uses a clean, scannable layout with prominent product filters) and MedSupplyPro (features a robust search system with medical terminology support). For your project, consider these tools: Figma for collaborative wireframing, Webflow for visual development, and MUI for pre-designed healthcare UI components. Remember to implement WCAG 2.1 AA standards for maximum accessibility.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "web-design-knowledge-claude-code-skill#main-content",
+      "web-design-knowledge-claude-code-skill#overview",
+      "web-design-knowledge-claude-code-skill#setup",
+      "web-design-knowledge-claude-code-skill#examples",
+      "web-design-knowledge-claude-code-skill#tools",
+      "web-design-knowledge-claude-code-skill#mcp",
+      "web-design-knowledge-claude-code-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill RAG Kiến thức Thiết kế Web trang bị cho Claude Code khả năng truy cập tức thì vào các hướng dẫn chuyên môn từ 20 cuốn sách thiết kế chuyên nghiệp, bao gồm 12 chủ đề chuyên sâu: lý thuyết màu sắc (color theory), nghệ thuật chữ (typography), bố cục (layout), nguyên lý UX, UI pattern, thiết kế đáp ứng (responsive design), kỹ thuật CSS, phân cấp trực quan (visual hierarchy), định vị thương hiệu (branding), điều hướng (navigation), biểu mẫu (forms) và tối ưu hóa hiệu năng (performance optimization). Công cụ này sử dụng ChromaDB và sentence-transformers để tìm kiếm ngữ nghĩa (semantic search) trên hơn 9.500 đoạn văn bản đã được lập chỉ mục (index), giúp loại bỏ nhu cầu sử dụng API key nhờ chạy local embedding. Skill cung cấp 4 công cụ MCP chuyên dụng để truy vấn kiến thức thiết kế theo chủ đề, bao gồm các công cụ riêng cho tư vấn màu sắc, layout pattern và đánh giá UX. Việc cài đặt yêu cầu Python 3.10+, khoảng 500MB dung lượng ổ đĩa cho dữ liệu đã lập chỉ mục, và có thể sử dụng GPU acceleration (tùy chọn) để truy vấn nhanh hơn. Sau khi setup, công cụ cho phép designer và developer đặt câu hỏi bằng ngôn ngữ tự nhiên về các thực hành tốt nhất (best practices) và nhận các đề xuất thực tế, có cơ sở dựa trên tài liệu thiết kế chuyên nghiệp.\nNhận đề xuất bảng màu cho các loại ứng dụng hoặc ngành nghề cụ thể\nTìm kiếm layout pattern và hệ thống lưới (grid system) cho dashboard, landing page hoặc e-commerce\nĐánh giá các thực hành tốt nhất về UX (UX best practices) cho luồng thanh toán, biểu mẫu và mô hình điều hướng (navigation pattern)\nGiải quyết các câu hỏi về phân cấp typography để đảm bảo tính nhất quán của thương hiệu và hình ảnh trực quan",
+    "setup_vi": "Không có lệnh cài đặt tự động. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Zie619/web-design-knowledge-claude-code-skill`",
+    "usage_vi": "```\nTôi đang thiết kế một website [TYPE] cho [INDUSTRY]. Những nguyên lý thiết kế chính nào tôi nên tuân theo? Hãy cung cấp các ví dụ cụ thể về các website [TYPE] thành công trong [INDUSTRY] và giải thích lý do tại sao chúng hiệu quả. Ngoài ra, hãy đề xuất 3-5 công cụ hoặc framework thiết kế đặc biệt hữu ích cho dự án này.\n```\nSao chép\n\n```\nDựa trên yêu cầu của bạn về một website thương mại điện tử lĩnh vực chăm sóc sức khỏe, dưới đây là các nguyên lý thiết kế chính cần tuân thủ: 1) Ưu tiên tính dễ tiếp cận (accessibility) với màu sắc có độ tương phản cao và font chữ dễ đọc, 2) Xây dựng lòng tin bằng các huy hiệu bảo mật rõ ràng và hình ảnh chuyên nghiệp, 3) Đơn giản hóa việc điều hướng bằng cấu trúc danh mục trực quan. Các ví dụ thành công bao gồm HealthPost (sử dụng bố cục sạch sẽ, dễ quét thông tin với các bộ lọc sản phẩm nổi bật) và MedSupplyPro (sở hữu hệ thống tìm kiếm mạnh mẽ hỗ trợ thuật ngữ y tế). Đối với dự án của bạn, hãy cân nhắc các công cụ sau: Figma để thiết kế wireframe cộng tác, Webflow để phát triển trực quan và MUI cho các thành phần UI chăm sóc sức khỏe được thiết kế sẵn. Hãy nhớ áp dụng các tiêu chuẩn WCAG 2.1 AA để tối ưu hóa tính dễ tiếp cận.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:14:19.384511Z",
+    "http_status": 200,
+    "content_hash": "38053749ee0cdaa74a189d18b1901fd681a4fbdf6488439880f4a319b269e3a8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\web-design-knowledge-claude-code-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\web-design-knowledge-claude-code-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill RAG Kiến thức Thiết kế Web - Hướng dẫn từ Chuyên gia",
+  "short_description_vi": "Skill AI cung cấp hướng dẫn thiết kế web chuyên nghiệp từ thư viện sách thiết kế được tuyển chọn. Sử dụng RAG kết hợp với ChromaDB và sentence-transformers để tìm kiếm ngữ nghĩa (semantic search), giúp các đội ngũ vận hành tự động hóa việc truy xuất kiến thức thiết kế."
+}

@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hands-please",
+  "slug": "hands-please",
+  "name": "browser-use",
+  "headline": "hands-please: Automate Background Code Execution",
+  "short_description": "We build custom AI skills and automations for B2B companies.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "joseferben",
+  "install_command": "git clone https://github.com/joseferben/hands-please.git",
+  "source_repo_url": "https://github.com/joseferben/hands-please",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anthropic",
+    "claude",
+    "codex",
+    "openai-codex",
+    "ai",
+    "cli",
+    "agent"
+  ],
+  "sections": {
+    "overview": "The hands-please skill enables users to run Claude Code or OpenAI Codex in the background, streamlining the coding process and enhancing productivity. By automating background tasks, this skill allows developers to focus on more complex issues without being bogged down by repetitive coding tasks. This intermediate-level skill can be implemented in approximately 30 minutes, making it a practical addition to any developer's toolkit. One of the key benefits of the hands-please skill is its potential to save time, although specific time savings are not quantified. By automating code execution in the background, developers can significantly reduce the time spent on mundane tasks, allowing them to allocate more resources to innovation and problem-solving. This skill is particularly valuable for developers and product managers who are looking to optimize their workflow automation processes and enhance their productivity. The hands-please skill is ideal for developers and AI practitioners who are comfortable with intermediate-level coding. It fits seamlessly into AI-first workflows, where the integration of automation can lead to more efficient project management and execution. For instance, a developer working on a large-scale application can utilize this skill to run tests or compile code while simultaneously focusing on new feature development. Implementing hands-please requires a basic understanding of Claude Code and OpenAI Codex, as well as familiarity with coding environments. While the skill has not yet achieved verified status and has a modest number of GitHub stars, its medium GTM relevance suggests it holds promise for those looking to enhance their AI agent skills. Overall, hands-please is a valuable addition to any developer's arsenal, promoting efficiency and allowing for a more streamlined approach to coding.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joseferben/hands-please`",
+    "usage": "```\nPlease analyze the following code snippet from [COMPANY]'s [PROJECT_NAME] repository and suggest fixes for the issues marked with '// @ai fix this code'. The code is in [PROGRAMMING_LANGUAGE] and follows [STYLE_GUIDE] standards. Here is the code: [CODE_SNIPPET].\n```\nCopy\n\n```\n```typescript\n// Analyzed code snippet from [COMPANY]'s [PROJECT_NAME] repository\n\n// Issues found and suggested fixes:\n\n1. **Null Check Issue**\n   - Original code:\n ```typescript\n     function getUserData(userId: string) {\n       const user = findUserById(userId);\n       return user.data;\n     }\n ```\n   - Suggested fix:\n ```typescript\n     function getUserData(userId: string) {\n       const user = findUserById(userId);\n       if (!user) {\n         throw new Error('User not found');\n       }\n       return user.data;\n     }\n ```\n\n2. **Type Safety Improvement**\n   - Original code:\n ```typescript\n     function calculateTotal(items: any[]) {\n       return items.reduce((sum, item) => sum + item.price, 0);\n     }\n ```\n   - Suggested fix:\n ```typescript\n     interface Item {\n       price: number;\n     }\n     \n     function calculateTotal(items: Item[]) {\n       return items.reduce((sum, item) => sum + item.price, 0);\n     }\n ```\n\n3. **Performance Optimization**\n   - Original code:\n ```typescript\n     function processData(data: number[]) {\n       for (let i = 0; i < data.length; i++) {\n         // Process data[i]\n       }\n     }\n ```\n   - Suggested fix:\n ```typescript\n     function processData(data: number[]) {\n       data.forEach(item => {\n         // Process item\n       });\n     }\n ```\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hands-please#main-content",
+      "hands-please#overview",
+      "hands-please#setup",
+      "hands-please#examples",
+      "hands-please#tools",
+      "hands-please#mcp",
+      "hands-please#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The hands-please skill enables users to run Claude Code or OpenAI Codex in the background, streamlining the coding process and enhancing productivity. By automating background tasks, this skill allows developers to focus on more complex issues without being bogged down by repetitive coding tasks. This intermediate-level skill can be implemented in approximately 30 minutes, making it a practical addition to any developer's toolkit. One of the key benefits of the hands-please skill is its potential to save time, although specific time savings are not quantified. By automating code execution in the background, developers can significantly reduce the time spent on mundane tasks, allowing them to allocate more resources to innovation and problem-solving. This skill is particularly valuable for developers and product managers who are looking to optimize their workflow automation processes and enhance their productivity. The hands-please skill is ideal for developers and AI practitioners who are comfortable with intermediate-level coding. It fits seamlessly into AI-first workflows, where the integration of automation can lead to more efficient project management and execution. For instance, a developer working on a large-scale application can utilize this skill to run tests or compile code while simultaneously focusing on new feature development. Implementing hands-please requires a basic understanding of Claude Code and OpenAI Codex, as well as familiarity with coding environments. While the skill has not yet achieved verified status and has a modest number of GitHub stars, its medium GTM relevance suggests it holds promise for those looking to enhance their AI agent skills. Overall, hands-please is a valuable addition to any developer's arsenal, promoting efficiency and allowing for a more streamlined approach to coding.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joseferben/hands-please`",
+    "usage_vi": "```\nPlease analyze the following code snippet from [COMPANY]'s [PROJECT_NAME] repository and suggest fixes for the issues marked with '// @ai fix this code'. The code is in [PROGRAMMING_LANGUAGE] and follows [STYLE_GUIDE] standards. Here is the code: [CODE_SNIPPET].\n```\nCopy\n\n```\n```typescript\n// Analyzed code snippet from [COMPANY]'s [PROJECT_NAME] repository\n\n// Issues found and suggested fixes:\n\n1. **Null Check Issue**\n   - Original code:\n ```typescript\n     function getUserData(userId: string) {\n       const user = findUserById(userId);\n       return user.data;\n     }\n ```\n   - Suggested fix:\n ```typescript\n     function getUserData(userId: string) {\n       const user = findUserById(userId);\n       if (!user) {\n         throw new Error('User not found');\n       }\n       return user.data;\n     }\n ```\n\n2. **Type Safety Improvement**\n   - Original code:\n ```typescript\n     function calculateTotal(items: any[]) {\n       return items.reduce((sum, item) => sum + item.price, 0);\n     }\n ```\n   - Suggested fix:\n ```typescript\n     interface Item {\n       price: number;\n     }\n     \n     function calculateTotal(items: Item[]) {\n       return items.reduce((sum, item) => sum + item.price, 0);\n     }\n ```\n\n3. **Performance Optimization**\n   - Original code:\n ```typescript\n     function processData(data: number[]) {\n       for (let i = 0; i < data.length; i++) {\n         // Process data[i]\n       }\n     }\n ```\n   - Suggested fix:\n ```typescript\n     function processData(data: number[]) {\n       data.forEach(item => {\n         // Process item\n       });\n     }\n ```\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:41:43.670092Z",
+    "http_status": 200,
+    "content_hash": "725b74fadb099261710acd37f2a2ec77955a2a8e21c644be63d6be3270e9dbed",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hands-please.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\hands-please.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "hands-please: Automate Background Code Execution",
+  "short_description_vi": "We build custom AI skills and automations for B2B companies."
+}

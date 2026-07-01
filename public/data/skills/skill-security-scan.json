@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-security-scan",
+  "slug": "skill-security-scan",
+  "name": "Skill-Security-Scan",
+  "headline": "Skill-Security-Scan - Detect Security Risks in",
+  "short_description": "skill-security-scan is a command-line tool designed to scan and detect security risks in Claude Skills. Before installing third-party Skills, use this tool for security review to effectively prevent malicious code from stealing data or compromising your system.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "huifer",
+  "install_command": "git clone https://github.com/huifer/skill-security-scan.git",
+  "source_repo_url": "https://github.com/huifer/skill-security-scan",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "skills"
+  ],
+  "sections": {
+    "overview": "skill-security-scan protects your development environment by performing static analysis on Claude Skills to identify security risks before installation. The tool scans for critical threats including unauthorized network requests to external servers, access to sensitive files like SSH keys and API credentials, dangerous system commands, and code injection patterns. It generates detailed HTML reports with risk scoring, supports multiple output formats including JSON and console output, and allows customization through rule configuration and whitelisting. Developers benefit from automated pre-installation security audits that prevent malicious code from stealing data or compromising their system.\nReview third-party Claude Skills before installing them in your local environment\nAudit custom Skills developed by team members for security vulnerabilities\nGenerate security compliance reports for organizational Skill usage\nIdentify risky patterns like file system access, network calls, and command execution",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/huifer/skill-security-scan`",
+    "usage": "```\nRun `skill-security-scan` on the [SKILL_DIRECTORY_PATH] to perform a security review of the Claude Skill. Focus on detecting potential risks such as [RISK_TYPES: e.g., data exfiltration, privilege escalation, malicious dependencies]. Generate a report highlighting any critical issues and suggest remediation steps. If no issues are found, confirm the Skill's security posture.\n```\nCopy\n\n```\n```\n=== Security Scan Report for Skill: 'finance-assistant' ===\n\nScan completed on: 2024-05-20\nRisk Level: HIGH (1 critical issue detected)\n\nCRITICAL ISSUES:\n1. **Data Exfiltration Risk**\n   - File: `./skills/finance-assistant/utils/data_handler.py`\n   - Issue: Unsanitized user input passed directly to `eval()` function in `process_financial_query()` method.\n   - Impact: Potential arbitrary code execution and sensitive data exposure.\n   - Severity: Critical\n   - Remediation: Replace `eval()` with a safe parser (e.g., `ast.literal_eval()`) or use a dedicated financial calculation library.\n\nWARNINGS:\n1. **Dependency Risk**\n   - Package: `requests==2.25.1`\n   - Issue: Outdated version with known vulnerabilities (CVE-2023-32681).\n   - Remediation: Update to `requests>=2.31.0`.\n\nRECOMMENDATIONS:\n- Review all external API calls for hardcoded credentials.\n- Implement input validation for all user-provided data.\n- Add unit tests to verify security fixes.\n\nScan Summary:\n- Files Scanned: 47\n- Issues Found: 2 (1 Critical, 1 Warning)\n- Security Score: 65/100 (Requires attention)\n```\n\nThe scan identified a critical vulnerability in the `finance-assistant` Skill that could allow attackers to execute arbitrary code if malicious input is provided. The outdated `requests` library also poses a moderate risk. Addressing these issues is strongly recommended before deploying this Skill in production environments.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-security-scan#main-content",
+      "skill-security-scan#overview",
+      "skill-security-scan#setup",
+      "skill-security-scan#examples",
+      "skill-security-scan#tools",
+      "skill-security-scan#mcp",
+      "skill-security-scan#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "skill-security-scan bảo vệ môi trường phát triển của bạn bằng cách thực hiện phân tích tĩnh (static analysis) trên các Claude Skill để xác định các rủi ro bảo mật trước khi cài đặt. Công cụ này quét các mối đe dọa nghiêm trọng bao gồm các yêu cầu mạng trái phép tới máy chủ bên ngoài, việc truy cập các tệp nhạy cảm như SSH key và thông tin xác thực API (API credentials), các lệnh hệ thống nguy hiểm, và các mẫu chèn mã độc (code injection). Công cụ cũng tạo báo cáo HTML chi tiết kèm theo điểm đánh giá rủi ro, hỗ trợ nhiều định dạng đầu ra bao gồm JSON và console output, đồng thời cho phép tùy chỉnh thông qua cấu hình quy tắc (rule configuration) và whitelist. Các nhà phát triển sẽ được hưởng lợi từ việc tự động kiểm tra bảo mật trước khi cài đặt, giúp ngăn chặn mã độc đánh cắp dữ liệu hoặc xâm nhập hệ thống.\nĐánh giá các Claude Skill bên thứ ba trước khi cài đặt chúng vào môi trường local của bạn\nKiểm tra các lỗ hổng bảo mật của các Skill tùy chỉnh do các thành viên trong nhóm phát triển\nTạo báo cáo tuân thủ bảo mật cho việc sử dụng Skill trong tổ chức\nXác định các mẫu hành vi rủi ro như truy cập hệ thống tệp, cuộc gọi mạng (network calls), và thực thi lệnh hệ thống",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/huifer/skill-security-scan`",
+    "usage_vi": "```\nChạy `skill-security-scan` trên [SKILL_DIRECTORY_PATH] để thực hiện đánh giá bảo mật cho Claude Skill. Tập trung vào việc phát hiện các rủi ro tiềm ẩn như [RISK_TYPES: ví dụ: rò rỉ dữ liệu, leo thang đặc quyền, các dependency độc hại]. Tạo một báo cáo làm nổi bật các vấn đề nghiêm trọng và đề xuất các bước khắc phục. Nếu không tìm thấy vấn đề nào, hãy xác nhận trạng thái bảo mật của Skill.\n```\nCopy\n\n```\n```\n=== Báo cáo quét bảo mật cho Skill: 'finance-assistant' ===\n\nQuét hoàn tất vào: 2024-05-20\nMức độ rủi ro: CAO (phát hiện 1 vấn đề nghiêm trọng)\n\nCÁC VẤN ĐỀ NGHIÊM TRỌNG:\n1. **Rủi ro rò rỉ dữ liệu (Data Exfiltration Risk)**\n   - Tệp: `./skills/finance-assistant/utils/data_handler.py`\n   - Vấn đề: Dữ liệu đầu vào của người dùng chưa được làm sạch (unsanitized input) được truyền trực tiếp vào hàm `eval()` trong phương thức `process_financial_query()`.\n   - Ảnh hưởng: Có nguy cơ thực thi mã tùy ý và rò rỉ dữ liệu nhạy cảm.\n   - Mức độ: Nghiêm trọng (Critical)\n   - Khắc phục: Thay thế `eval()` bằng một bộ phân tích cú pháp an toàn (ví dụ: `ast.literal_eval()`) hoặc sử dụng một thư viện tính toán tài chính chuyên dụng.\n\nCẢNH BÁO:\n1. **Rủi ro từ Dependency (Dependency Risk)**\n   - Thư viện: `requests==2.25.1`\n   - Vấn đề: Phiên bản lỗi thời với các lỗ hổng đã biết (CVE-2023-32681).\n   - Khắc phục: Cập nhật lên `requests>=2.31.0`.\n\nKHUYẾN NGHỊ:\n- Kiểm tra tất cả các lệnh gọi API bên ngoài để phát hiện thông tin xác thực bị hardcode.\n- Triển khai kiểm tra tính hợp lệ của dữ liệu đầu vào (input validation) cho tất cả dữ liệu do người dùng cung cấp.\n- Bổ sung các unit test để xác minh các bản vá bảo mật.\n\nTóm tắt quét:\n- Số tệp đã quét: 47\n- Lỗi phát hiện: 2 (1 Nghiêm trọng, 1 Cảnh báo)\n- Điểm bảo mật: 65/100 (Cần lưu ý)\n```\n\nQuá trình quét đã phát hiện một lỗ hổng bảo mật nghiêm trọng trong Skill `finance-assistant` có thể cho phép kẻ tấn công thực thi mã tùy ý nếu cung cấp đầu vào độc hại. Thư viện `requests` lỗi thời cũng gây ra rủi ro ở mức trung bình. Khuyến nghị khắc phục các vấn đề này trước khi triển khai Skill này vào môi trường production."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:24:58.823277Z",
+    "http_status": 200,
+    "content_hash": "5ec10fcf3041d12a63c115f93ab620d1c690f6d7baa2dab43a85e6438907eefc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-security-scan.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-security-scan.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill-Security-Scan - Phát hiện rủi ro bảo mật trong",
+  "short_description_vi": "skill-security-scan là một công cụ dòng lệnh (command-line tool) được thiết kế để quét và phát hiện các rủi ro bảo mật trong các Claude Skill. Trước khi cài đặt các Skill từ bên thứ ba, hãy sử dụng công cụ này để đánh giá bảo mật nhằm ngăn chặn hiệu quả mã độc đánh cắp dữ liệu hoặc gây nguy hại cho hệ thống của bạn."
+}

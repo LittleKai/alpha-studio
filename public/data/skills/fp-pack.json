@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/fp-pack",
+  "slug": "fp-pack",
+  "name": "fp-pack",
+  "headline": "fp-pack - Functional Programming Toolkit",
+  "short_description": "fp-pack is a practical functional programming toolkit for JavaScript and TypeScript. It provides type-safe pipelines, pipes, and currying utilities. Developers use it to build robust, maintainable code. It integrates with existing JavaScript and TypeScript workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "superlucky84",
+  "install_command": "git clone https://github.com/superlucky84/fp-pack.git",
+  "source_repo_url": "https://github.com/superlucky84/fp-pack",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "utility-library",
+    "type-safety",
+    "pipeline",
+    "pipe",
+    "functional-programming",
+    "type-inference",
+    "fp-toolkit"
+  ],
+  "sections": {
+    "overview": "fp-pack is a practical functional programming toolkit designed for JavaScript and TypeScript developers who want composition-first APIs without complex monads or wrapper ceremonies. It centers on pipe and pipeAsync for clean, left-to-right function composition, with strong TypeScript type inference that works without manual annotations. The library includes a SideEffect pattern for declarative error handling and early exits, lazy stream processing for memory-efficient operations on large datasets, and curried utilities for point-free style composition. Zero dependencies and tree-shakeable, fp-pack scales from simple scripts to larger codebases while maintaining readable, maintainable code.\nBuilding type-safe data transformation pipelines with pipe composition\nHandling errors and side effects declaratively with SideEffect pattern\nProcessing large datasets efficiently with lazy stream iterables\nCreating reusable curried utility functions for composable code",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/superlucky84/fp-pack`",
+    "usage": "```\nTransform this JavaScript/TypeScript code snippet into a clean, functional pipeline using fp-pack utilities: [CODE_SNIPPET]. Ensure the pipeline is type-safe and uses currying where appropriate. Add JSDoc comments to document each step. If the snippet contains impure functions, wrap them in a pure interface using fp-pack's `IO` or `Task` types. Optimize for readability and maintainability.\n```\nCopy\n\n```\n```typescript\n// Original code snippet:\nconst processUser = (user) => {\n  const processed = user\n    .map(u => ({ ...u, name: u.name.trim() }))\n    .map(u => ({ ...u, age: u.age + 1 }))\n    .filter(u => u.age > 18);\n  return processed;\n};\n\n// Transformed with fp-pack:\nimport { pipe, map, filter, trim, inc } from 'fp-pack';\n\n/**\n * Processes a user object by trimming the name and incrementing age.\n * @param {User} user - The user object to process\n * @returns {User[]} Filtered list of processed users\n */\nconst processUser = pipe(\n  /** Trim whitespace from user name */\n  map<{ name: string }, { name: string }>(trim('name')),\n  /** Increment user age by 1 */\n  map<{ age: number }, { age: number }>(inc('age')),\n  /** Filter users older than 18 */\n  filter<{ age: number }>(u => u.age > 18)\n);\n\n// Usage:\nconst users = [{ name: '  Alice  ', age: 25 }, { name: 'Bob', age: 17 }];\nconst result = processUser(users);\n// Output: [{ name: 'Alice', age: 26 }]\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "fp-pack#main-content",
+      "fp-pack#overview",
+      "fp-pack#setup",
+      "fp-pack#examples",
+      "fp-pack#tools",
+      "fp-pack#mcp",
+      "fp-pack#related"
+    ],
+    "overview_vi": "fp-pack is a practical functional programming toolkit designed for JavaScript and TypeScript developers who want composition-first APIs without complex monads or wrapper ceremonies. It centers on pipe and pipeAsync for clean, left-to-right function composition, with strong TypeScript type inference that works without manual annotations. The library includes a SideEffect pattern for declarative error handling and early exits, lazy stream processing for memory-efficient operations on large datasets, and curried utilities for point-free style composition. Zero dependencies and tree-shakeable, fp-pack scales from simple scripts to larger codebases while maintaining readable, maintainable code.\nBuilding type-safe data transformation pipelines with pipe composition\nHandling errors and side effects declaratively with SideEffect pattern\nProcessing large datasets efficiently with lazy stream iterables\nCreating reusable curried utility functions for composable code",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/superlucky84/fp-pack`",
+    "usage_vi": "```\nTransform this JavaScript/TypeScript code snippet into a clean, functional pipeline using fp-pack utilities: [CODE_SNIPPET]. Ensure the pipeline is type-safe and uses currying where appropriate. Add JSDoc comments to document each step. If the snippet contains impure functions, wrap them in a pure interface using fp-pack's `IO` or `Task` types. Optimize for readability and maintainability.\n```\nCopy\n\n```\n```typescript\n// Original code snippet:\nconst processUser = (user) => {\n  const processed = user\n    .map(u => ({ ...u, name: u.name.trim() }))\n    .map(u => ({ ...u, age: u.age + 1 }))\n    .filter(u => u.age > 18);\n  return processed;\n};\n\n// Transformed with fp-pack:\nimport { pipe, map, filter, trim, inc } from 'fp-pack';\n\n/**\n * Processes a user object by trimming the name and incrementing age.\n * @param {User} user - The user object to process\n * @returns {User[]} Filtered list of processed users\n */\nconst processUser = pipe(\n  /** Trim whitespace from user name */\n  map<{ name: string }, { name: string }>(trim('name')),\n  /** Increment user age by 1 */\n  map<{ age: number }, { age: number }>(inc('age')),\n  /** Filter users older than 18 */\n  filter<{ age: number }>(u => u.age > 18)\n);\n\n// Usage:\nconst users = [{ name: '  Alice  ', age: 25 }, { name: 'Bob', age: 17 }];\nconst result = processUser(users);\n// Output: [{ name: 'Alice', age: 26 }]\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:12:25.702225Z",
+    "http_status": 200,
+    "content_hash": "64f7680f247705fd134a779f7dd58c6ca8ca46b64831eb28881fe1a7060f29ab",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\fp-pack.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\fp-pack.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "fp-pack - Functional Programming Toolkit",
+  "short_description_vi": "fp-pack is a practical functional programming toolkit for JavaScript and TypeScript. It provides type-safe pipelines, pipes, and currying utilities. Developers use it to build robust, maintainable code. It integrates with existing JavaScript and TypeScript workflows."
+}

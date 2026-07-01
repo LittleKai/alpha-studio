@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-plugins-dev",
+  "slug": "claude-code-plugins-dev",
+  "name": "Claude Code Plugins Dev",
+  "headline": "Automate busy work with Claude Code developer",
+  "short_description": "Automate repetitive developer tasks with AI-powered plugins for Claude Code. Developers benefit from streamlined workflows, improved productivity, and enhanced code quality. Integrates with Git, performance, and security tools to automate code reviews, refactoring, and testing.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "charlesjones-dev",
+  "install_command": "git clone https://github.com/charlesjones-dev/claude-code-plugins-dev.git",
+  "source_repo_url": "https://github.com/charlesjones-dev/claude-code-plugins-dev",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "git-tools",
+    "developer-tools",
+    "ai",
+    "claude-code",
+    "git",
+    "performance-tools",
+    "performance",
+    "llm",
+    "claude",
+    "security-tools",
+    "security"
+  ],
+  "sections": {
+    "overview": "Claude Code Plugins for Developers is a marketplace of AI-powered plugins that streamline development workflows through slash commands. The collection includes tools for accessibility auditing with WCAG compliance, security scanning with dependency analysis, performance optimization, Git automation, Azure DevOps integration, and Swift release readiness checks. Each plugin runs directly on your codebase or prompts for required information interactively. Developers use these plugins to catch issues early—accessibility problems, security vulnerabilities, performance bottlenecks—during development before they reach production. The plugins complement runtime testing tools and professional services by providing static code analysis integrated into Claude Code.\nRun accessibility audits with WCAG compliance checks on codebases\nAutomate Git workflows including commits, pushes, and pull request creation\nPerform security audits and scan dependencies for vulnerabilities\nDetect performance bottlenecks and optimization opportunities",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/charlesjones-dev/claude-code-plugins-dev`\n1. Install the plugin in your project:\n   ```bash\n   npm install -g claude-code-plugin-git-hooks\n   ```\n2. Initialize the plugin:\n   ```bash\n   claude-code init-git-hooks\n   ```\n3. Customize the configuration in `claude-git-hooks.json`:\n   ```json\n   {\n     \"linters\": [\"eslint\", \"prettier\"],\n     \"eslintConfig\": \".eslintrc.js\"\n   }\n   ```\n```\n```",
+    "usage": "```\nDevelop a [PLUGIN_NAME] plugin for Claude Code that automates [SPECIFIC_TASK] in [PROGRAMMING_LANGUAGE]. The plugin should integrate with [TOOL_OR_SERVICE, e.g., GitHub, Jest, ESLint] and handle [EDGE_CASES, e.g., error handling, dependency updates]. Include a README.md with setup instructions and example usage. Test the plugin locally using [TESTING_FRAMEWORK] and ensure it follows [CODING_STANDARDS, e.g., ESLint rules, TypeScript best practices].\n```\nCopy\n\n```\nHere’s a complete implementation of a `claude-code-plugin-git-hooks` plugin for Claude Code that automates Git pre-commit hooks for JavaScript projects. The plugin ensures ESLint and Prettier run before each commit, blocking commits with linting errors and auto-formatting staged files.\n\n**Plugin Structure:**\n```\nclaude-code-plugin-git-hooks/\n├── src/\n│   ├── index.ts          # Main plugin logic\n│   ├── eslint.ts         # ESLint integration\n│   ├── prettier.ts       # Prettier integration\n│   └── git.ts            # Git hook handler\n├── tests/\n│   ├── eslint.test.ts    # ESLint test cases\n│   └── git.test.ts       # Git hook test cases\n├── README.md             # Setup and usage guide\n└── package.json          # Plugin metadata\n```\n\n**Key Features:**\n1. **Automatic Hook Installation:** Detects if Git hooks are missing and installs the pre-commit hook automatically.\n2. **ESLint Integration:** Runs ESLint on staged files and blocks commits if errors are found. Supports custom `.eslintrc` configurations.\n3. **Prettier Integration:** Auto-formats staged files using Prettier if linting passes.\n4. **Error Handling:** Provides clear error messages for missing dependencies (e.g., ESLint, Prettier) and suggests fixes.\n5. **Customizable:** Users can configure which linters/runners to include via a `claude-git-hooks.json` file.\n\n**Example Workflow:**\n1. A developer stages a file with a linting error:\n   ```bash\n   git add src/utils.js\n   ```\n2. The pre-commit hook triggers:\n   ```\n   Running ESLint on staged files...\n   ❌ Found 3 errors in src/utils.js:\n   - Line 42: 'const' is not defined (no-undef)\n   - Line 45: Expected '===' and instead saw '==' (eqeqeq)\n   Commit blocked. Fix errors or use `--no-verify` to skip.\n   ```\n3. The developer fixes the errors, stages the file again, and commits successfully:\n   ```bash\n   git add src/utils.js\n   git commit -m \"Fix linting errors in utils\"\n   ✅ ESLint passed. Running Prettier...\n   ✅ Prettier formatted 1 file.\n   [main 1a2b3c4] Fix linting errors in utils\n    1 file changed, 5 insertions(+), 2 deletions(-)\n   ```\n\n**Testing:**\nThe plugin includes unit tests for Git hook logic, ESLint integration, and Prettier formatting. Tests are run using Jest:\n```bash\nnpm test\n```\nAll tests pass, including edge cases like missing `.eslintrc` files or corrupted Git hooks.\n\n**README.md Excerpt:**\n```markdown",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-plugins-dev#main-content",
+      "claude-code-plugins-dev#overview",
+      "claude-code-plugins-dev#setup",
+      "claude-code-plugins-dev#examples",
+      "claude-code-plugins-dev#tools",
+      "claude-code-plugins-dev#mcp",
+      "claude-code-plugins-dev#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Claude Code Plugins for Developers is a marketplace of AI-powered plugins that streamline development workflows through slash commands. The collection includes tools for accessibility auditing with WCAG compliance, security scanning with dependency analysis, performance optimization, Git automation, Azure DevOps integration, and Swift release readiness checks. Each plugin runs directly on your codebase or prompts for required information interactively. Developers use these plugins to catch issues early—accessibility problems, security vulnerabilities, performance bottlenecks—during development before they reach production. The plugins complement runtime testing tools and professional services by providing static code analysis integrated into Claude Code.\nRun accessibility audits with WCAG compliance checks on codebases\nAutomate Git workflows including commits, pushes, and pull request creation\nPerform security audits and scan dependencies for vulnerabilities\nDetect performance bottlenecks and optimization opportunities",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/charlesjones-dev/claude-code-plugins-dev`\n1. Install the plugin in your project:\n   ```bash\n   npm install -g claude-code-plugin-git-hooks\n   ```\n2. Initialize the plugin:\n   ```bash\n   claude-code init-git-hooks\n   ```\n3. Customize the configuration in `claude-git-hooks.json`:\n   ```json\n   {\n     \"linters\": [\"eslint\", \"prettier\"],\n     \"eslintConfig\": \".eslintrc.js\"\n   }\n   ```\n```\n```",
+    "usage_vi": "```\nDevelop a [PLUGIN_NAME] plugin for Claude Code that automates [SPECIFIC_TASK] in [PROGRAMMING_LANGUAGE]. The plugin should integrate with [TOOL_OR_SERVICE, e.g., GitHub, Jest, ESLint] and handle [EDGE_CASES, e.g., error handling, dependency updates]. Include a README.md with setup instructions and example usage. Test the plugin locally using [TESTING_FRAMEWORK] and ensure it follows [CODING_STANDARDS, e.g., ESLint rules, TypeScript best practices].\n```\nCopy\n\n```\nHere’s a complete implementation of a `claude-code-plugin-git-hooks` plugin for Claude Code that automates Git pre-commit hooks for JavaScript projects. The plugin ensures ESLint and Prettier run before each commit, blocking commits with linting errors and auto-formatting staged files.\n\n**Plugin Structure:**\n```\nclaude-code-plugin-git-hooks/\n├── src/\n│   ├── index.ts          # Main plugin logic\n│   ├── eslint.ts         # ESLint integration\n│   ├── prettier.ts       # Prettier integration\n│   └── git.ts            # Git hook handler\n├── tests/\n│   ├── eslint.test.ts    # ESLint test cases\n│   └── git.test.ts       # Git hook test cases\n├── README.md             # Setup and usage guide\n└── package.json          # Plugin metadata\n```\n\n**Key Features:**\n1. **Automatic Hook Installation:** Detects if Git hooks are missing and installs the pre-commit hook automatically.\n2. **ESLint Integration:** Runs ESLint on staged files and blocks commits if errors are found. Supports custom `.eslintrc` configurations.\n3. **Prettier Integration:** Auto-formats staged files using Prettier if linting passes.\n4. **Error Handling:** Provides clear error messages for missing dependencies (e.g., ESLint, Prettier) and suggests fixes.\n5. **Customizable:** Users can configure which linters/runners to include via a `claude-git-hooks.json` file.\n\n**Example Workflow:**\n1. A developer stages a file with a linting error:\n   ```bash\n   git add src/utils.js\n   ```\n2. The pre-commit hook triggers:\n   ```\n   Running ESLint on staged files...\n   ❌ Found 3 errors in src/utils.js:\n   - Line 42: 'const' is not defined (no-undef)\n   - Line 45: Expected '===' and instead saw '==' (eqeqeq)\n   Commit blocked. Fix errors or use `--no-verify` to skip.\n   ```\n3. The developer fixes the errors, stages the file again, and commits successfully:\n   ```bash\n   git add src/utils.js\n   git commit -m \"Fix linting errors in utils\"\n   ✅ ESLint passed. Running Prettier...\n   ✅ Prettier formatted 1 file.\n   [main 1a2b3c4] Fix linting errors in utils\n    1 file changed, 5 insertions(+), 2 deletions(-)\n   ```\n\n**Testing:**\nThe plugin includes unit tests for Git hook logic, ESLint integration, and Prettier formatting. Tests are run using Jest:\n```bash\nnpm test\n```\nAll tests pass, including edge cases like missing `.eslintrc` files or corrupted Git hooks.\n\n**README.md Excerpt:**\n```markdown"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:36:10.712940Z",
+    "http_status": 200,
+    "content_hash": "66bb21e5014b05137e5d496c385ad4cb87462d18e0826593fb68d79c65d02c6f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-plugins-dev.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code-plugins-dev.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Automate busy work with Claude Code developer",
+  "short_description_vi": "Automate repetitive developer tasks with AI-powered plugins for Claude Code. Developers benefit from streamlined workflows, improved productivity, and enhanced code quality. Integrates with Git, performance, and security tools to automate code reviews, refactoring, and testing."
+}

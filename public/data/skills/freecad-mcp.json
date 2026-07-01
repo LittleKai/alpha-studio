@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/freecad-mcp",
+  "slug": "freecad-mcp",
+  "name": "browser-use",
+  "headline": "FreeCAD MCP - CAD Automation with Natural Language",
+  "short_description": "FreeCAD MCP enables natural language control of FreeCAD for 3D modeling and CAD automation. Operations teams use it to streamline design workflows, reducing manual input and accelerating prototyping. It connects to Claude AI for conversational interaction and FreeCAD's API for model manipulation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "150 min",
+  "author": "contextform",
+  "install_command": "git clone https://github.com/contextform/freecad-mcp.git",
+  "source_repo_url": "https://github.com/contextform/freecad-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "freecad",
+    "cad-automation",
+    "claude",
+    "freecad-api",
+    "mcp",
+    "cursor",
+    "model-context-protocol"
+  ],
+  "sections": {
+    "overview": "FreeCAD MCP integrates FreeCAD's CAD capabilities with Claude AI, allowing users to design 3D models through conversational commands. The skill supports PartDesign operations (pads, revolutions, fillets, chamfers, holes, patterns), Part primitives and boolean operations, and view controls including screenshots and zoom. Installation is cross-platform (Windows, macOS, Linux) with automatic setup via npm, and the MCP bridge server connects Claude directly to FreeCAD's API. Operations teams use it to streamline design workflows and reduce manual modeling effort, while designers and engineers benefit from rapid prototyping without learning complex CAD interfaces.\nCreate parametric 3D objects from text descriptions (boxes, cylinders, complex shapes)\nAutomate repetitive CAD operations like filleting, chamfering, and hole creation\nGenerate linear and circular patterns of features at specified intervals\nPerform boolean operations (union, difference, intersection) on 3D bodies",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/contextform/freecad-mcp`",
+    "usage": "```\nI want to create a 3D model of a [SHAPE] for [COMPANY] in the [INDUSTRY] industry. The model should have [DIMENSIONS] and include [FEATURES]. Can you generate the FreeCAD Python script to create this model?\n```\nCopy\n\n```\n# FreeCAD Python Script for 3D Model Creation\n\n```python\nimport FreeCAD as App\nimport Part\n\n# Create a new document\nApp.newDocument(\"Model\")\n\n# Create a cube with dimensions 100x50x20\ncube = App.ActiveDocument.addObject(\"Part::Box\", \"Cube\")\ncube.Length = 100\ncube.Width = 50\ncube.Height = 20\n\n# Add a cylindrical hole with diameter 20 and depth 20\nhole = App.ActiveDocument.addObject(\"Part::Cylinder\", \"Hole\")\nhole.Radius = 10\nhole.Height = 20\nhole.Placement = App.Placement(App.Vector(50, 25, 0), App.Rotation())\n\n# Cut the hole from the cube\nApp.ActiveDocument.addObject(\"Part::Cut\", \"Cut\").Base = cube\nApp.ActiveDocument.Cut.Tool = hole\n\n# Recompute the document\nApp.ActiveDocument.recompute()\n```\n\nThis script creates a cube with dimensions 100x50x20 and adds a cylindrical hole with a diameter of 20mm in the center of one face. The hole has a depth of 20mm.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "freecad-mcp#main-content",
+      "freecad-mcp#overview",
+      "freecad-mcp#setup",
+      "freecad-mcp#examples",
+      "freecad-mcp#tools",
+      "freecad-mcp#mcp",
+      "freecad-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "FreeCAD MCP integrates FreeCAD's CAD capabilities with Claude AI, allowing users to design 3D models through conversational commands. The skill supports PartDesign operations (pads, revolutions, fillets, chamfers, holes, patterns), Part primitives and boolean operations, and view controls including screenshots and zoom. Installation is cross-platform (Windows, macOS, Linux) with automatic setup via npm, and the MCP bridge server connects Claude directly to FreeCAD's API. Operations teams use it to streamline design workflows and reduce manual modeling effort, while designers and engineers benefit from rapid prototyping without learning complex CAD interfaces.\nCreate parametric 3D objects from text descriptions (boxes, cylinders, complex shapes)\nAutomate repetitive CAD operations like filleting, chamfering, and hole creation\nGenerate linear and circular patterns of features at specified intervals\nPerform boolean operations (union, difference, intersection) on 3D bodies",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/contextform/freecad-mcp`",
+    "usage_vi": "```\nI want to create a 3D model of a [SHAPE] for [COMPANY] in the [INDUSTRY] industry. The model should have [DIMENSIONS] and include [FEATURES]. Can you generate the FreeCAD Python script to create this model?\n```\nCopy\n\n```\n# FreeCAD Python Script for 3D Model Creation\n\n```python\nimport FreeCAD as App\nimport Part\n\n# Create a new document\nApp.newDocument(\"Model\")\n\n# Create a cube with dimensions 100x50x20\ncube = App.ActiveDocument.addObject(\"Part::Box\", \"Cube\")\ncube.Length = 100\ncube.Width = 50\ncube.Height = 20\n\n# Add a cylindrical hole with diameter 20 and depth 20\nhole = App.ActiveDocument.addObject(\"Part::Cylinder\", \"Hole\")\nhole.Radius = 10\nhole.Height = 20\nhole.Placement = App.Placement(App.Vector(50, 25, 0), App.Rotation())\n\n# Cut the hole from the cube\nApp.ActiveDocument.addObject(\"Part::Cut\", \"Cut\").Base = cube\nApp.ActiveDocument.Cut.Tool = hole\n\n# Recompute the document\nApp.ActiveDocument.recompute()\n```\n\nThis script creates a cube with dimensions 100x50x20 and adds a cylindrical hole with a diameter of 20mm in the center of one face. The hole has a depth of 20mm.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:34:32.121538Z",
+    "http_status": 200,
+    "content_hash": "315b9b132f798b6f92527771a65bddb06ebb2eefc2ee1920201b5de223743228",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\freecad-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\freecad-mcp.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "FreeCAD MCP - CAD Automation with Natural Language",
+  "short_description_vi": "FreeCAD MCP enables natural language control of FreeCAD for 3D modeling and CAD automation. Operations teams use it to streamline design workflows, reducing manual input and accelerating prototyping. It connects to Claude AI for conversational interaction and FreeCAD's API for model manipulation."
+}

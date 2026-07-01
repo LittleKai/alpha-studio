@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/html2bricks",
+  "slug": "html2bricks",
+  "name": "HTML to Bricks Builder Converter",
+  "headline": "HTML to Bricks Builder Converter - Convert",
+  "short_description": "Converts HTML, CSS, and JavaScript to Bricks Builder paste-ready JSON format. Supports complete property mapping and native interactions. Ideal for web developers and designers migrating to Bricks Builder. Integrates with existing web development workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "70 min",
+  "author": "iamfilipp",
+  "install_command": "git clone https://github.com/iamfilipp/html2bricks.git",
+  "source_repo_url": "https://github.com/iamfilipp/html2bricks",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "html2bricks is a Claude AI skill that converts HTML, CSS, and JavaScript into Bricks Builder paste-ready JSON format. It supports a flat ID-based structure with 166+ elements across all categories, native parallax effects, complete interactions schema with 16 triggers and 17 actions, and element conditions for server-side show/hide logic. The tool achieves 99.5%+ native CSS property coverage using Bricks' native properties, with _cssCustom fallback for complex transforms and blend modes. Web developers and designers migrating existing websites to Bricks Builder can paste the generated JSON directly into the canvas, eliminating manual element recreation and property mapping.\nMigrate existing HTML websites to Bricks Builder without manual reconstruction\nConvert static HTML components to Bricks-native interactive elements\nBatch convert multiple HTML templates to Bricks JSON format\nAdd interactions and conditions to HTML layouts during Bricks conversion",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/iamfilipp/html2bricks`",
+    "usage": "```\nConvert the following HTML, CSS, and JavaScript code into Bricks Builder paste-ready JSON format. Ensure complete property mapping and native interactions are preserved. Here is the code for [COMPANY] website in [INDUSTRY]: [HTML_CODE], [CSS_CODE], [JAVASCRIPT_CODE].\n```\nCopy\n\n```\n# Bricks Builder JSON Output\n\n```json\n{\n  \"version\": \"1.0\",\n  \"elements\": [\n    {\n      \"type\": \"container\",\n      \"properties\": {\n        \"id\": \"header-container\",\n        \"className\": \"header\",\n        \"styles\": {\n          \"display\": \"flex\",\n          \"justifyContent\": \"space-between\",\n          \"alignItems\": \"center\",\n          \"padding\": \"20px\",\n          \"backgroundColor\": \"#ffffff\"\n        },\n        \"children\": [\n          {\n            \"type\": \"text\",\n            \"properties\": {\n              \"content\": \"Welcome to [COMPANY]\",\n              \"styles\": {\n                \"fontSize\": \"24px\",\n                \"fontWeight\": \"bold\"\n              }\n            }\n          },\n          {\n            \"type\": \"button\",\n            \"properties\": {\n              \"content\": \"Contact Us\",\n              \"styles\": {\n                \"padding\": \"10px 20px\",\n                \"backgroundColor\": \"#007bff\",\n                \"color\": \"#ffffff\",\n                \"borderRadius\": \"5px\"\n              },\n              \"interactions\": {\n                \"onClick\": \"openContactForm()\"\n              }\n            }\n          }\n        ]\n      }\n    }\n  ]\n}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "html2bricks#main-content",
+      "html2bricks#overview",
+      "html2bricks#setup",
+      "html2bricks#examples",
+      "html2bricks#tools",
+      "html2bricks#mcp",
+      "html2bricks#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "html2bricks là một Claude AI skill giúp chuyển đổi HTML, CSS và JavaScript sang định dạng JSON sẵn sàng để dán vào Bricks Builder. Công cụ hỗ trợ cấu trúc phẳng dựa trên ID (flat ID-based structure) với hơn 166 element trên tất cả các danh mục, hiệu ứng parallax native, tương tác hoàn chỉnh với schema gồm 16 trigger và 17 action, cùng các điều kiện element (element conditions) cho logic ẩn/hiện phía server-side. Công cụ đạt độ bao phủ thuộc tính CSS native trên 99.5% bằng cách sử dụng các thuộc tính native của Bricks, kết hợp phương án fallback `_cssCustom` cho các hiệu ứng transform và blend mode phức tạp. Các lập trình viên và nhà thiết kế web khi chuyển đổi website hiện có sang Bricks Builder có thể dán trực tiếp mã JSON được tạo vào canvas, loại bỏ việc dựng lại element thủ công và mapping thuộc tính.\nDi chuyển các website HTML hiện có sang Bricks Builder mà không cần dựng lại thủ công\nChuyển đổi các component HTML tĩnh thành các element tương tác native trong Bricks\nChuyển đổi hàng loạt nhiều template HTML sang định dạng Bricks JSON\nThêm các tương tác và điều kiện vào layout HTML trong quá trình chuyển đổi sang Bricks",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/iamfilipp/html2bricks`",
+    "usage_vi": "```\nChuyển đổi đoạn mã HTML, CSS và JavaScript sau đây sang định dạng JSON sẵn sàng để dán vào Bricks Builder. Đảm bảo giữ nguyên các tương tác native và mapping thuộc tính hoàn chỉnh. Dưới đây là mã nguồn của website [COMPANY] thuộc lĩnh vực [INDUSTRY]: [HTML_CODE], [CSS_CODE], [JAVASCRIPT_CODE].\n```\nSao chép\n\n```\n# JSON Output cho Bricks Builder\n\n```json\n{\n  \"version\": \"1.0\",\n  \"elements\": [\n    {\n      \"type\": \"container\",\n      \"properties\": {\n        \"id\": \"header-container\",\n        \"className\": \"header\",\n        \"styles\": {\n          \"display\": \"flex\",\n          \"justifyContent\": \"space-between\",\n          \"alignItems\": \"center\",\n          \"padding\": \"20px\",\n          \"backgroundColor\": \"#ffffff\"\n        },\n        \"children\": [\n          {\n            \"type\": \"text\",\n            \"properties\": {\n              \"content\": \"Chào mừng bạn đến với [COMPANY]\",\n              \"styles\": {\n                \"fontSize\": \"24px\",\n                \"fontWeight\": \"bold\"\n              }\n            }\n          },\n          {\n            \"type\": \"button\",\n            \"properties\": {\n              \"content\": \"Liên hệ với chúng tôi\",\n              \"styles\": {\n                \"padding\": \"10px 20px\",\n                \"backgroundColor\": \"#007bff\",\n                \"color\": \"#ffffff\",\n                \"borderRadius\": \"5px\"\n              },\n              \"interactions\": {\n                \"onClick\": \"openContactForm()\"\n              }\n            }\n          }\n        ]\n      }\n    }\n  ]\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:24:12.374953Z",
+    "http_status": 200,
+    "content_hash": "c82e606ee703c420cbe3532837e2f4d461f8421173d2a627574f35a6d38a57a1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\html2bricks.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\html2bricks.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Bộ chuyển đổi HTML sang Bricks Builder - Convert",
+  "short_description_vi": "Chuyển đổi HTML, CSS và JavaScript sang định dạng JSON sẵn sàng để dán trực tiếp vào Bricks Builder. Hỗ trợ mapping thuộc tính toàn diện và các tương tác native. Giải pháp lý tưởng cho lập trình viên và nhà thiết kế web đang chuyển dịch sang Bricks Builder. Tích hợp mượt mà vào quy trình phát triển web hiện có."
+}

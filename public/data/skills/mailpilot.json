@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mailpilot",
+  "slug": "mailpilot",
+  "name": "popsicle",
+  "headline": "MailPilot: Email Automation & Templates",
+  "short_description": "MailPilot: A Python library for streamlined email automation, enabling personalized mass mailing, SMTP management, and email marketing automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "yazcaleb",
+  "install_command": "git clone https://github.com/yazcaleb/MailPilot.git",
+  "source_repo_url": "https://github.com/yazcaleb/MailPilot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "python",
+    "email-automation",
+    "email-scheduling",
+    "email-template",
+    "python3",
+    "python-packages",
+    "automated-email",
+    "mailpilot",
+    "email-marketing",
+    "email-sender",
+    "email-campaigns",
+    "email-api",
+    "python-package",
+    "smtp-client-server",
+    "smtp-client",
+    "mass-mailing",
+    "email-automation-python"
+  ],
+  "sections": {
+    "overview": "MailPilot is a Python library designed for streamlined email marketing and communication automation. It enables users to send personalized emails to large recipient lists using customizable HTML templates, with full SMTP server configuration support. The tool provides both command-line and programmatic interfaces for automated email campaigns, allowing marketers and developers to inject recipient-specific data into templates for targeted outreach. MailPilot simplifies the setup and execution of email marketing efforts by handling SMTP management and personalization workflows in a single, documented package.\nPersonalized email marketing campaigns to large mailing lists\nAutomated customer communication with recipient-specific details\nHTML-templated newsletters with dynamic content injection\nSMTP-based bulk email sending with configuration flexibility",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yazcaleb/MailPilot`",
+    "usage": "```\nAct as MailPilot, a Python library for email automation. I need to send a personalized mass email campaign for [COMPANY] in the [INDUSTRY] sector. I have a CSV file with [DATA] including names, email addresses, and custom fields. Generate the Python code to set up the SMTP server, load the data, and send personalized emails with a subject line '[SUBJECT]' and a template '[TEMPLATE]'.\n```\nCopy\n\n```\n# Email Automation Script for [COMPANY] Campaign\n\n```python\nimport pandas as pd\nfrom mailpilot import MailPilot\n\n# Load data from CSV\ncsv_file = 'customer_data.csv'\ndata = pd.read_csv(csv_file)\n\n# Initialize MailPilot\nmailer = MailPilot(\n    smtp_server='smtp.example.com',\n    smtp_port=587,\n    username='your_username',\n    password='your_password'\n)\n\n# Define email template\ntemplate = \"\"\"\nDear [NAME],\n\nWe are excited to share our latest [INDUSTRY] insights tailored just for you. [PERSONALIZED_CONTENT]\n\nBest regards,\n[COMPANY] Team\n\"\"\"\n\n# Send personalized emails\nfor index, row in data.iterrows():\n    personalized_template = template.replace('[NAME]', row['Name'])\n    personalized_template = personalized_template.replace('[PERSONALIZED_CONTENT]', row['CustomField'])\n    mailer.send(\n        to=row['Email'],\n        subject='[SUBJECT]',\n        body=personalized_template\n    )\n\nprint('Email campaign sent successfully!')\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mailpilot#main-content",
+      "mailpilot#overview",
+      "mailpilot#setup",
+      "mailpilot#examples",
+      "mailpilot#tools",
+      "mailpilot#mcp",
+      "mailpilot#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "MailPilot is a Python library designed for streamlined email marketing and communication automation. It enables users to send personalized emails to large recipient lists using customizable HTML templates, with full SMTP server configuration support. The tool provides both command-line and programmatic interfaces for automated email campaigns, allowing marketers and developers to inject recipient-specific data into templates for targeted outreach. MailPilot simplifies the setup and execution of email marketing efforts by handling SMTP management and personalization workflows in a single, documented package.\nPersonalized email marketing campaigns to large mailing lists\nAutomated customer communication with recipient-specific details\nHTML-templated newsletters with dynamic content injection\nSMTP-based bulk email sending with configuration flexibility",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yazcaleb/MailPilot`",
+    "usage_vi": "```\nAct as MailPilot, a Python library for email automation. I need to send a personalized mass email campaign for [COMPANY] in the [INDUSTRY] sector. I have a CSV file with [DATA] including names, email addresses, and custom fields. Generate the Python code to set up the SMTP server, load the data, and send personalized emails with a subject line '[SUBJECT]' and a template '[TEMPLATE]'.\n```\nCopy\n\n```\n# Email Automation Script for [COMPANY] Campaign\n\n```python\nimport pandas as pd\nfrom mailpilot import MailPilot\n\n# Load data from CSV\ncsv_file = 'customer_data.csv'\ndata = pd.read_csv(csv_file)\n\n# Initialize MailPilot\nmailer = MailPilot(\n    smtp_server='smtp.example.com',\n    smtp_port=587,\n    username='your_username',\n    password='your_password'\n)\n\n# Define email template\ntemplate = \"\"\"\nDear [NAME],\n\nWe are excited to share our latest [INDUSTRY] insights tailored just for you. [PERSONALIZED_CONTENT]\n\nBest regards,\n[COMPANY] Team\n\"\"\"\n\n# Send personalized emails\nfor index, row in data.iterrows():\n    personalized_template = template.replace('[NAME]', row['Name'])\n    personalized_template = personalized_template.replace('[PERSONALIZED_CONTENT]', row['CustomField'])\n    mailer.send(\n        to=row['Email'],\n        subject='[SUBJECT]',\n        body=personalized_template\n    )\n\nprint('Email campaign sent successfully!')\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:57:55.874135Z",
+    "http_status": 200,
+    "content_hash": "ccb9fbb6480a681575f9d722d5f937cb3a505d8d333cf94cd18776e873482f4b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mailpilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mailpilot.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "MailPilot: Email Automation & Templates",
+  "short_description_vi": "MailPilot: A Python library for streamlined email automation, enabling personalized mass mailing, SMTP management, and email marketing automation."
+}

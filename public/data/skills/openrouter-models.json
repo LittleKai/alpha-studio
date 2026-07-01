@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openrouter-models",
+  "slug": "openrouter-models",
+  "name": "OpenRouter Models",
+  "headline": "OpenRouter Models: Compare AI Models & Pricing",
+  "short_description": "This skill allows you to discover, search, and compare over 300 AI models available on OpenRouter. It provides live data including pricing, context lengths, and performance metrics for different AI model providers.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "openrouterteam",
+  "install_command": "git clone https://github.com/openrouterteam/skills",
+  "source_repo_url": "https://github.com/openrouterteam/skills",
+  "works_with": [
+    "Claude Code",
+    "Cursor"
+  ],
+  "tags": [
+    "ai-models",
+    "models",
+    "openrouter"
+  ],
+  "sections": {
+    "overview": "The OpenRouter Models skill enables developers to programmatically query available models, compare pricing across providers, check context window lengths, and resolve model names with fuzzy matching. It provides real-time access to OpenRouter's catalog of 600+ AI models, helping teams make informed decisions about which models best fit their use case and budget. This skill integrates seamlessly with Claude Code, Cursor, and other Agent Skills-compatible platforms, giving developers instant visibility into model capabilities, costs, and performance characteristics without leaving their development environment.\nCompare AI model features and pricing\nRetrieve model performance metrics\nSearch for specific AI models based on user needs",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/openrouterteam/skills --skill openrouter-models`\n`git clone https://github.com/openrouterteam/skills`",
+    "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "openrouter-models#main-content",
+      "openrouter-models#overview",
+      "openrouter-models#setup",
+      "openrouter-models#examples",
+      "openrouter-models#tools",
+      "openrouter-models#mcp",
+      "openrouter-models#related"
+    ],
+    "overview_vi": "Skill OpenRouter Models cho phép lập trình viên truy vấn các mô hình hiện có bằng mã lệnh (programmatically), so sánh giá cả giữa các nhà cung cấp, kiểm tra độ dài context window và phân giải tên mô hình bằng fuzzy matching. Skill cung cấp khả năng truy cập thời gian thực vào danh mục hơn 600 mô hình AI của OpenRouter, giúp các đội ngũ đưa ra quyết định sáng suốt về mô hình phù hợp nhất với use case và ngân sách của mình. Skill này tích hợp mượt mà với Claude Code, Cursor và các nền tảng tương thích với Agent Skills khác, giúp lập trình viên có cái nhìn tức thì về khả năng, chi phí và đặc tính hiệu suất của mô hình mà không cần rời khỏi môi trường phát triển của mình.\nSo sánh tính năng và giá của các mô hình AI\nTruy xuất các chỉ số hiệu suất của mô hình\nTìm kiếm các mô hình AI cụ thể dựa trên nhu cầu của người dùng",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/openrouterteam/skills --skill openrouter-models`\n`git clone https://github.com/openrouterteam/skills`",
+    "usage_vi": "📝\n### Chưa có ví dụ khả dụng\nHãy kiểm tra repository GitHub hoặc tài liệu hướng dẫn để xem các ví dụ sử dụng."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:00:53.332278Z",
+    "http_status": 200,
+    "content_hash": "01ba8c5508e87f9336f49402081e53d0b2aceceb6b6f49f37c3102c156b6855f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openrouter-models.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openrouter-models.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OpenRouter Models: So sánh các mô hình AI & Giá cả",
+  "short_description_vi": "Skill này cho phép bạn khám phá, tìm kiếm và so sánh hơn 300 mô hình AI hiện có trên OpenRouter. Skill cung cấp dữ liệu thời gian thực bao gồm giá cả, context length và các chỉ số hiệu suất từ nhiều nhà cung cấp mô hình AI khác nhau."
+}

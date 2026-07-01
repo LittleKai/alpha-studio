@@ -1,0 +1,71 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rowboat",
+  "slug": "rowboat",
+  "name": "browser-use",
+  "headline": "rowboat: Enhance Workflow Automation",
+  "short_description": "Rowboat is a local-first AI coworker with memory, designed for operations teams. It automates repetitive tasks, remembers context, and integrates with existing workflows. Teams benefit from increased productivity and reduced manual effort.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "rowboatlabs",
+  "install_command": "git clone https://github.com/rowboatlabs/rowboat.git",
+  "source_repo_url": "https://github.com/rowboatlabs/rowboat",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "ai-agents",
+    "llm",
+    "productivity",
+    "generative-ai",
+    "agents-sdk",
+    "agents",
+    "chatgpt",
+    "open-source",
+    "ai-agents-automation",
+    "claude-cowork",
+    "orchestration",
+    "opeani",
+    "ai",
+    "multiagent"
+  ],
+  "sections": {
+    "overview": "The rowboat skill is an innovative local-first AI coworker designed to enhance workflow automation by leveraging memory. This intermediate-level skill allows users to draft personalized emails, prepare for meetings, and organize project files based on insights from previous interactions. By utilizing accumulated knowledge, rowboat can run shell commands or scripts, making it an efficient tool for automating repetitive tasks and integrating with external tools to extend functionality. One of the key benefits of the rowboat skill is its ability to save time by streamlining various tasks that often consume valuable hours. For instance, users can quickly access relevant notes and decisions made in past meetings, ensuring they are well-prepared without having to sift through numerous documents. Additionally, the skill's capability to draft emails using insights from prior conversations allows for more personalized communication, which can significantly improve engagement and response rates. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their productivity and automate workflows. With its medium go-to-market relevance, rowboat is suitable for teams that prioritize efficiency and are already familiar with AI automation tools. The skill's practical use cases, such as organizing evolving project files and running scripts based on historical data, make it a versatile addition to any workflow. Implementing the rowboat skill requires an intermediate understanding of AI automation and takes approximately 30 minutes. While the exact time savings are unknown, the efficiency gained through automation can lead to significant productivity boosts over time. As organizations increasingly adopt AI-first workflows, integrating a skill like rowboat can position teams to leverage AI agents effectively, ensuring they remain competitive in a rapidly evolving technological landscape.\nDraft personalized emails using insights from past conversations.\nPrepare for meetings by accessing relevant notes and decisions made previously.\nOrganize project files and documents as they evolve over time.\nRun shell commands or scripts based on accumulated knowledge.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rowboatlabs/rowboat`",
+    "usage": "```\nI need to automate [TASK] in our operations workflow. Can you help me create a script or workflow using Rowboat? The task involves [INPUT_DATA] and should be triggered by [TRIGGER_CONDITION]. I want to integrate it with [TOOLS] and have it run [FREQUENCY].\n```\nCopy\n\n```\nBased on your request, I've created a Rowboat workflow to automate the weekly inventory update process. The workflow will: 1) Pull data from your ERP system (SAP) every Friday at 5 PM, 2) Compare current inventory levels with the previous week's data, 3) Identify any items with significant discrepancies (more than 10% difference), 4) Generate a report highlighting these items, and 5) Send the report to the inventory management team via Slack. The workflow will remember the previous week's data for comparison and can be adjusted for different thresholds or reporting frequencies as needed. It will also integrate with your existing inventory management tools and can be triggered manually if needed.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "rowboat#main-content",
+      "rowboat#overview",
+      "rowboat#setup",
+      "rowboat#examples",
+      "rowboat#tools",
+      "rowboat#mcp",
+      "rowboat#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The rowboat skill is an innovative local-first AI coworker designed to enhance workflow automation by leveraging memory. This intermediate-level skill allows users to draft personalized emails, prepare for meetings, and organize project files based on insights from previous interactions. By utilizing accumulated knowledge, rowboat can run shell commands or scripts, making it an efficient tool for automating repetitive tasks and integrating with external tools to extend functionality. One of the key benefits of the rowboat skill is its ability to save time by streamlining various tasks that often consume valuable hours. For instance, users can quickly access relevant notes and decisions made in past meetings, ensuring they are well-prepared without having to sift through numerous documents. Additionally, the skill's capability to draft emails using insights from prior conversations allows for more personalized communication, which can significantly improve engagement and response rates. This skill is particularly beneficial for developers, product managers, and AI practitioners who are looking to enhance their productivity and automate workflows. With its medium go-to-market relevance, rowboat is suitable for teams that prioritize efficiency and are already familiar with AI automation tools. The skill's practical use cases, such as organizing evolving project files and running scripts based on historical data, make it a versatile addition to any workflow. Implementing the rowboat skill requires an intermediate understanding of AI automation and takes approximately 30 minutes. While the exact time savings are unknown, the efficiency gained through automation can lead to significant productivity boosts over time. As organizations increasingly adopt AI-first workflows, integrating a skill like rowboat can position teams to leverage AI agents effectively, ensuring they remain competitive in a rapidly evolving technological landscape.\nDraft personalized emails using insights from past conversations.\nPrepare for meetings by accessing relevant notes and decisions made previously.\nOrganize project files and documents as they evolve over time.\nRun shell commands or scripts based on accumulated knowledge.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rowboatlabs/rowboat`",
+    "usage_vi": "```\nI need to automate [TASK] in our operations workflow. Can you help me create a script or workflow using Rowboat? The task involves [INPUT_DATA] and should be triggered by [TRIGGER_CONDITION]. I want to integrate it with [TOOLS] and have it run [FREQUENCY].\n```\nCopy\n\n```\nBased on your request, I've created a Rowboat workflow to automate the weekly inventory update process. The workflow will: 1) Pull data from your ERP system (SAP) every Friday at 5 PM, 2) Compare current inventory levels with the previous week's data, 3) Identify any items with significant discrepancies (more than 10% difference), 4) Generate a report highlighting these items, and 5) Send the report to the inventory management team via Slack. The workflow will remember the previous week's data for comparison and can be adjusted for different thresholds or reporting frequencies as needed. It will also integrate with your existing inventory management tools and can be triggered manually if needed.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:39:32.189885Z",
+    "http_status": 200,
+    "content_hash": "71008b30c486097895cbba85b8ce490061d0e4a584bef2f8709abea7aad16815",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rowboat.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rowboat.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "rowboat: Enhance Workflow Automation",
+  "short_description_vi": "Rowboat is a local-first AI coworker with memory, designed for operations teams. It automates repetitive tasks, remembers context, and integrates with existing workflows. Teams benefit from increased productivity and reduced manual effort."
+}

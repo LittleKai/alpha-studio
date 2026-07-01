@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/open-cowork",
+  "slug": "open-cowork",
+  "name": "Open Cowork",
+  "headline": "Open Cowork: Collaboration",
+  "short_description": "Open Cowork is an open-source desktop app that integrates Claude AI into Windows and macOS workflows. It enables users to use AI for tasks like coding, research, and document processing. The app connects to Claude's API, providing a local interface for AI assistance.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "OpenCoworkAI",
+  "install_command": "git clone https://github.com/OpenCoworkAI/open-cowork.git",
+  "source_repo_url": "https://github.com/OpenCoworkAI/open-cowork",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-cowork",
+    "cowork",
+    "anthropic",
+    "open-cowork",
+    "ai-agent",
+    "coworking",
+    "claude-cowork-win",
+    "claude-code",
+    "desktop-app"
+  ],
+  "sections": {
+    "overview": "Open Cowork is an open-source automation skill designed for Claude Code, specifically tailored for both Windows and macOS environments. This skill facilitates seamless collaboration among teams by automating various tasks that are typically manual and time-consuming. By integrating Open Cowork into your workflow, users can enhance productivity and streamline their collaborative efforts, making it an essential tool for developers, product managers, and AI practitioners looking to optimize their processes. One of the key benefits of Open Cowork is its ability to reduce the time spent on repetitive tasks, although specific time savings are currently unknown. The skill's intermediate complexity means that users will need a basic understanding of automation principles to implement it effectively. With an estimated implementation time of just 30 minutes, teams can quickly set up the skill and start reaping the benefits of improved workflow automation. This skill is particularly beneficial for roles that require collaboration across multiple projects, such as developers and product managers. By automating routine tasks, teams can focus on higher-value activities, ultimately driving innovation and efficiency. Practical use cases include automating project updates, synchronizing task lists, and facilitating communication between team members, which can significantly enhance overall productivity. As organizations increasingly adopt AI-first workflows, Open Cowork positions itself as a valuable asset in the realm of AI automation. Its open-source nature allows for customization, enabling teams to tailor the skill to their specific needs. While the GitHub stars count stands at 158 and weekly installs are currently at zero, the potential for growth and utility in various projects is substantial. Embracing Open Cowork can empower teams to leverage AI agent skills effectively, making it a worthwhile addition to any automation toolkit.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/OpenCoworkAI/open-cowork`",
+    "usage": "```\nUse Open Cowork to [TASK]. Follow these steps: 1) Open the Open Cowork app. 2) Select the [FILE/PROJECT/FOLDER] you want to work with. 3) Paste this prompt into the chat: '[YOUR_PROMPT_HERE]'. 4) Review the AI's output and apply it to your task. Example: 'Use Open Cowork to refactor a Python script. Follow these steps: 1) Open the Open Cowork app. 2) Select the Python script file. 3) Paste this prompt: \"Refactor this Python script to improve readability and performance. Focus on PEP 8 compliance and removing redundant code.\" 4) Review the AI's output and apply it to your script.'\n```\nCopy\n\n```\nI used Open Cowork to refactor a Python script for a data processing pipeline. The script was originally 120 lines long, with inconsistent naming conventions, nested loops, and no docstrings. After pasting the prompt into Open Cowork, it suggested the following changes:\n\n1. Renamed variables to follow PEP 8 conventions (e.g., `data_processor` instead of `dp`).\n2. Split a monolithic function into three smaller, focused functions: `clean_data()`, `transform_data()`, and `load_data()`.\n3. Added docstrings to all functions, including type hints and descriptions of inputs/outputs.\n4. Replaced nested loops with list comprehensions and vectorized operations using Pandas.\n5. Added error handling for edge cases like missing files or invalid data types.\n\nThe refactored script is now 95 lines long, runs 30% faster, and is much easier to maintain. Open Cowork also flagged a potential bug in the original code where empty DataFrames were being processed without validation, which I fixed by adding a check for `df.empty`. The AI’s suggestions were directly applicable—I just copied the changes into my editor and tested the pipeline. The entire process took less than 10 minutes.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "open-cowork#main-content",
+      "open-cowork#overview",
+      "open-cowork#setup",
+      "open-cowork#examples",
+      "open-cowork#tools",
+      "open-cowork#mcp",
+      "open-cowork#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Open Cowork là một skill tự động hóa mã nguồn mở được thiết kế cho Claude Code, tối ưu hóa riêng cho cả môi trường Windows và macOS. Skill này giúp đơn giản hóa việc cộng tác liền mạch giữa các nhóm bằng cách tự động hóa nhiều tác vụ thủ công và tốn thời gian. Bằng cách tích hợp Open Cowork vào quy trình làm việc, người dùng có thể nâng cao năng suất và tối ưu hóa nỗ lực cộng tác, biến nó thành công cụ thiết yếu cho các developer, product manager và chuyên gia AI muốn tối ưu hóa quy trình làm việc của mình. Một trong những lợi ích chính của Open Cowork là khả năng giảm thiểu thời gian dành cho các tác vụ lặp đi lặp lại, mặc dù mức tiết kiệm thời gian cụ thể hiện chưa được xác định. Độ phức tạp ở mức trung bình của skill đồng nghĩa với việc người dùng cần có hiểu biết cơ bản về các nguyên lý tự động hóa để triển khai hiệu quả. Với thời gian triển khai ước tính chỉ khoảng 30 phút, các nhóm có thể nhanh chóng setup skill này và bắt đầu hưởng lợi từ quy trình tự động hóa cải tiến. Skill này đặc biệt hữu ích cho các vai trò đòi hỏi sự cộng tác trên nhiều dự án, chẳng hạn như developer và product manager. Bằng cách tự động hóa các tác vụ thông thường, các nhóm có thể tập trung vào những hoạt động có giá trị cao hơn, từ đó thúc đẩy sự đổi mới và hiệu quả. Các case study thực tế bao gồm tự động hóa cập nhật dự án, đồng bộ hóa danh sách công việc và hỗ trợ giao tiếp giữa các thành viên, giúp nâng cao đáng kể năng suất tổng thể. Trong bối cảnh các tổ chức ngày càng áp dụng nhiều quy trình làm việc ưu tiên AI, Open Cowork khẳng định vị thế là một tài sản giá trị trong lĩnh vực tự động hóa AI. Bản chất mã nguồn mở của dự án cho phép tùy biến linh hoạt, giúp các nhóm điều chỉnh skill theo nhu cầu cụ thể. Dù số lượng star trên GitHub hiện tại là 158 và số lượt cài đặt hàng tuần ở mức bằng không, tiềm năng phát triển và tính ứng dụng của nó trong các dự án khác là rất lớn. Việc áp dụng Open Cowork sẽ giúp các nhóm khai thác hiệu quả các skill của AI agent, biến nó thành một mảnh ghép giá trị cho bất kỳ bộ công cụ tự động hóa nào.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/OpenCoworkAI/open-cowork`",
+    "usage_vi": "```\nSử dụng Open Cowork để [TÁC VỤ]. Thực hiện theo các bước sau: 1) Mở ứng dụng Open Cowork. 2) Chọn [FILE/PROJECT/THƯ MỤC] bạn muốn làm việc. 3) Dán prompt này vào ô chat: '[PROMPT_CỦA_BẠN]'. 4) Xem lại kết quả đầu ra của AI và áp dụng vào tác vụ của bạn. Ví dụ: 'Sử dụng Open Cowork để refactor một script Python. Thực hiện theo các bước sau: 1) Mở ứng dụng Open Cowork. 2) Chọn file script Python. 3) Dán prompt sau: \"Refactor script Python này để cải thiện khả năng đọc và hiệu suất. Tập trung vào việc tuân thủ PEP 8 và loại bỏ mã thừa.\" 4) Xem lại kết quả đầu ra của AI và áp dụng vào script của bạn.'\n```\nCopy\n\n```\nTôi đã sử dụng Open Cowork để refactor một script Python cho một pipeline xử lý dữ liệu. Script ban đầu dài 120 dòng, có quy ước đặt tên không nhất quán, các vòng lặp lồng nhau và không có docstring. Sau khi dán prompt vào Open Cowork, ứng dụng đã gợi ý các thay đổi sau:\n\n1. Đổi tên các biến để tuân thủ quy ước PEP 8 (ví dụ: `data_processor` thay vì `dp`).\n2. Chia nhỏ một hàm nguyên khối thành ba hàm nhỏ hơn, tập trung vào từng nhiệm vụ cụ thể: `clean_data()`, `transform_data()`, và `load_data()`.\n3. Thêm docstring cho tất cả các hàm, bao gồm cả type hint và mô tả đầu vào/đầu ra.\n4. Thay thế các vòng lặp lồng nhau bằng list comprehension và các thao tác vector hóa bằng Pandas.\n5. Thêm xử lý lỗi cho các trường hợp biên như thiếu file hoặc kiểu dữ liệu không hợp lệ.\n\nScript sau khi refactor hiện chỉ còn 95 dòng, chạy nhanh hơn 30% và dễ bảo trì hơn rất nhiều. Open Cowork cũng cảnh báo một bug tiềm ẩn trong đoạn code gốc khi các DataFrame rỗng bị xử lý mà không qua kiểm tra (validate), lỗi này tôi đã khắc phục bằng cách thêm kiểm tra `df.empty`. Các gợi ý của AI có thể áp dụng trực tiếp—tôi chỉ cần copy các thay đổi vào trình soạn thảo của mình và test lại pipeline. Toàn bộ quá trình mất chưa đầy 10 phút.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:58:47.952290Z",
+    "http_status": 200,
+    "content_hash": "d15c935f8b51f0a804eb8cc29a7a6fc0a6f101b06e043dc3bbf5d8b7a2dce09a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-cowork.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\open-cowork.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Open Cowork: Cộng tác",
+  "short_description_vi": "Open Cowork là ứng dụng desktop mã nguồn mở giúp tích hợp Claude AI vào quy trình làm việc trên Windows và macOS. Ứng dụng cho phép người dùng sử dụng AI cho các tác vụ như coding, nghiên cứu và xử lý tài liệu. Bằng cách kết nối với API của Claude, ứng dụng cung cấp giao diện local để hỗ trợ tương tác với AI."
+}

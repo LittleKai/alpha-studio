@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/apple-mcp",
+  "slug": "apple-mcp",
+  "name": "Apple MCP",
+  "headline": "Apple MCP: Enhance Your AI Model Context",
+  "short_description": "The apple-mcp is a versatile collection of Apple-native tools designed to enhance the model context protocol. Ideal for developers looking to integrate Apple technologies with AI models, it streamlines workflows and boosts productivity.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "supermemoryai",
+  "install_command": "claude install supermemoryai/apple-mcp",
+  "source_repo_url": "https://github.com/supermemoryai/apple-mcp",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "automation",
+    "model context",
+    "Apple",
+    "tools",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "Apple-mcp is a collection of Apple-native tools designed to work with the Model Context Protocol, allowing AI agents like Claude to interact with macOS systems and Apple applications. The project provides structured integrations for developers building AI-powered workflows that need to access or control Apple ecosystem features. It supports operations like notes management and includes comprehensive test coverage and utilities for reliable integration. Built with TypeScript and compatible with Claude Code and Cursor, apple-mcp streamlines the process of adding Apple technology capabilities to AI agent applications. The skill helps developers create more capable AI assistants that can interact directly with macOS environments.\nAutomate sending scheduled messages to contacts without manual input.\nQuickly search and retrieve specific notes or ideas from your digital note repository.\nEffortlessly manage your calendar by creating and listing events with simple voice commands.\nStreamline email management by sending messages with attachments and scheduling them for later.",
+    "setup": "Terminal\nCopy\n`claude install supermemoryai/apple-mcp`\n`git clone https://github.com/supermemoryai/apple-mcp`",
+    "usage": "```\nUsing apple-mcp, integrate [AI_MODEL] with [APPLE_TECHNOLOGY] to create a seamless workflow. Ensure the integration supports [SPECIFIC_FEATURES] and optimize for [PERFORMANCE_METRICS]. Provide a step-by-step guide and code snippets for implementation.\n```\nCopy\n\n```\nTo integrate the AI model 'NeuralNet' with Apple's Core ML for seamless workflow, follow these steps:\n\n1. **Setup Environment**: Ensure you have Xcode 13 or later installed. Initialize a new project and add the Core ML framework.\n\n2. **Model Conversion**: Convert the NeuralNet model to Core ML format using the coremltools library. This involves running a Python script to transform the model.\n\n3. **Integration**: Import the converted model into your Xcode project. Use the following code snippet to load the model:\n\n```swift\nimport CoreML\n\nlet model = try NeuralNet(configuration: MLModelConfiguration())\n```\n\n4. **Optimization**: Optimize the model for performance by adjusting the batch size and using Metal Performance Shaders (MPS) for faster inference.\n\n5. **Testing**: Test the integration by running the app on a simulator or a physical device. Ensure the model performs as expected and meets the specified performance metrics.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "apple-mcp#main-content",
+      "apple-mcp#overview",
+      "apple-mcp#setup",
+      "apple-mcp#examples",
+      "apple-mcp#tools",
+      "apple-mcp#mcp",
+      "apple-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "apple-mcp là một bộ công cụ native dành cho Apple được thiết kế để hoạt động với Model Context Protocol, cho phép các AI agent như Claude tương tác với hệ điều hành macOS và các ứng dụng Apple. Dự án này cung cấp các giải pháp tích hợp có cấu trúc cho các nhà phát triển đang xây dựng workflow tích hợp AI cần truy cập hoặc điều khiển các tính năng trong hệ sinh thái Apple. Nó hỗ trợ các tác vụ như quản lý ghi chú, đồng thời đi kèm test coverage toàn diện và các tiện ích giúp tích hợp ổn định. Được phát triển bằng TypeScript và tương thích với Claude Code cũng như Cursor, apple-mcp giúp đơn giản hóa quy trình tích hợp các công nghệ của Apple vào ứng dụng AI agent. Skill này giúp lập trình viên xây dựng các trợ lý AI mạnh mẽ hơn, có khả năng tương tác trực tiếp với môi trường macOS.\nTự động hóa việc gửi tin nhắn theo lịch đến danh bạ mà không cần thao tác thủ công.\nTìm kiếm và truy xuất nhanh chóng các ghi chú hoặc ý tưởng cụ thể từ kho lưu trữ cá nhân.\nDễ dàng quản lý lịch trình bằng cách tạo và liệt kê các sự kiện thông qua các câu lệnh giọng nói đơn giản.\nTối ưu hóa quy trình quản lý email bằng cách gửi thư kèm tệp đính kèm và lên lịch gửi sau.",
+    "setup_vi": "Terminal\nSao chép\n`claude install supermemoryai/apple-mcp`\n`git clone https://github.com/supermemoryai/apple-mcp`",
+    "usage_vi": "```\nSử dụng apple-mcp để tích hợp [AI_MODEL] với [APPLE_TECHNOLOGY] nhằm tạo ra một workflow liền mạch. Đảm bảo quá trình tích hợp hỗ trợ [SPECIFIC_FEATURES] và tối ưu hóa cho [PERFORMANCE_METRICS]. Cung cấp hướng dẫn từng bước và các đoạn mã (code snippet) để triển khai.\n```\nSao chép\n\n```\nĐể tích hợp mô hình AI 'NeuralNet' với Core ML của Apple nhằm tạo ra workflow liền mạch, hãy thực hiện theo các bước sau:\n\n1. **Thiết lập Môi trường (Setup)**: Đảm bảo bạn đã cài đặt Xcode 13 trở lên. Khởi tạo một dự án mới và thêm framework Core ML.\n\n2. **Chuyển đổi Mô hình (Model Conversion)**: Chuyển đổi mô hình NeuralNet sang định dạng Core ML bằng thư viện coremltools. Bước này yêu cầu chạy một đoạn script Python để chuyển đổi mô hình.\n\n3. **Tích hợp**: Nhập mô hình đã chuyển đổi vào dự án Xcode của bạn. Sử dụng đoạn code dưới đây để tải mô hình:\n\n```swift\nimport CoreML\n\nlet model = try NeuralNet(configuration: MLModelConfiguration())\n```\n\n4. **Tối ưu hóa**: Tối ưu hóa hiệu suất của mô hình bằng cách điều chỉnh batch size và sử dụng Metal Performance Shaders (MPS) để tăng tốc độ suy luận (inference).\n\n5. **Kiểm thử (Testing)**: Kiểm thử tích hợp bằng cách chạy ứng dụng trên trình giả lập (simulator) hoặc thiết bị vật lý. Đảm bảo mô hình hoạt động như mong đợi và đáp ứng các chỉ số hiệu suất (performance metrics) đã đề ra.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:17.568025Z",
+    "http_status": 200,
+    "content_hash": "6081e282e8e53ec255c769856068a9627fc7fe0f9608e192ac24948bd6b30c2d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apple-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\apple-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Apple MCP: Nâng cao Model Context cho AI của bạn",
+  "short_description_vi": "apple-mcp là bộ công cụ native dành cho hệ sinh thái Apple, được thiết kế linh hoạt để tối ưu hóa Model Context Protocol. Đây là giải pháp lý tưởng cho các nhà phát triển muốn tích hợp công nghệ của Apple với các mô hình AI, giúp tối ưu hóa workflow và nâng cao hiệu suất làm việc."
+}

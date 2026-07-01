@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/youtube-clipper-skill",
+  "slug": "youtube-clipper-skill",
+  "name": "Youtube Clipper Skill",
+  "headline": "Youtube Clipper Skill - Effortless Video Highlights",
+  "short_description": "The Youtube Clipper Skill allows users to effortlessly extract and share highlights from their favorite videos, saving time and enhancing engagement. Perfect for content creators and educators looking to create concise, impactful clips that resonate with their audience.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/op7418",
+  "source_repo_url": "https://github.com/sh/op7418",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "content creation",
+    "education",
+    "social media",
+    "video editing"
+  ],
+  "sections": {
+    "overview": "The Youtube Clipper Skill enables users to extract and share highlights from YouTube videos efficiently. Designed for content creators and educators, it streamlines the process of creating concise clips from longer videos. This skill helps maximize engagement by allowing users to isolate the most impactful moments and distribute them across platforms with minimal effort.\nCreate highlight reels for social media\nGenerate teaching materials from lectures\nShare memorable moments from events",
+    "setup": "Terminal\nCopy\n`npx skills add sh/op7418`\n`git clone https://github.com/sh/op7418`",
+    "usage": "```\nExtract and prepare a high-impact YouTube clip from [VIDEO_URL] focusing on [KEY_TOPIC_OR_MOMENT]. The clip should be between [DURATION_MIN] and [DURATION_MAX] minutes long. Include a compelling hook in the first 5 seconds, a clear call-to-action at the end, and timestamps for easy reference. Provide the clip in [FORMAT: MP4/GIF/MP3] with subtitles embedded if available. Suggest 2-3 engaging captions for social media sharing.\n```\nCopy\n\n```\nHere’s your ready-to-use YouTube clip for the video titled *\"The Future of AI in Education\"* (https://youtu.be/XYZ123), focusing on the segment discussing *personalized learning algorithms*. The clip is **1 minute 45 seconds** long in **MP4 format** with embedded subtitles.\n\n**Clip Structure:**\n- **0:00-0:05 (Hook):** \"Imagine a classroom where every student gets a tutor tailored just for them. That’s the power of AI in education today.\"\n- **0:05-1:20 (Core Content):** The clip highlights a real-world example from a pilot program at Stanford University, where AI-driven tools reduced student dropouts by 30% by adapting lessons to individual learning paces. A professor explains how the system tracks engagement metrics in real time.\n- **1:20-1:45 (Call-to-Action):** \"Want to see this in action? Check out the full case study linked below and let us know in the comments: What’s the biggest challenge in your classroom?\"\n\n**Social Media Captions:**\n1. \"AI isn’t replacing teachers—it’s empowering them. See how personalized learning is transforming education! 🚀 #EdTech #AI\"\n2. \"From Stanford to your classroom: How AI is cutting dropout rates by 30%. Would you try this in your school?\"\n\n**Technical Details:**\n- Format: MP4 (1080p, 60fps)\n- File Size: 12.5MB\n- Subtitles: English (embedded)\n- Recommended Platforms: Twitter, LinkedIn, Instagram Reels\n\n*Note: The clip is optimized for vertical viewing (9:16 aspect ratio) for mobile audiences.*\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "youtube-clipper-skill#main-content",
+      "youtube-clipper-skill#overview",
+      "youtube-clipper-skill#setup",
+      "youtube-clipper-skill#examples",
+      "youtube-clipper-skill#tools",
+      "youtube-clipper-skill#mcp",
+      "youtube-clipper-skill#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Youtube Clipper Skill giúp người dùng trích xuất và chia sẻ các khoảnh khắc nổi bật từ video YouTube một cách hiệu quả. Được thiết kế dành cho các nhà sáng tạo nội dung và nhà giáo dục, skill này tối ưu hóa quy trình tạo clip ngắn gọn từ các video dài. Skill này giúp tối đa hóa tương tác bằng cách cho phép người dùng tách riêng các khoảnh khắc ấn tượng nhất và phân phối chúng trên nhiều nền tảng với nỗ lực tối thiểu.\nTạo các clip highlight cho mạng xã hội\nTạo tài liệu giảng dạy từ các video bài giảng\nChia sẻ những khoảnh khắc đáng nhớ từ các sự kiện",
+    "setup_vi": "Terminal\nSao chép\n`npx skills add sh/op7418`\n`git clone https://github.com/sh/op7418`",
+    "usage_vi": "```\nTrích xuất và chuẩn bị một clip YouTube ấn tượng từ [VIDEO_URL] tập trung vào [KEY_TOPIC_OR_MOMENT]. Clip phải có độ dài từ [DURATION_MIN] đến [DURATION_MAX] phút. Đưa vào một phần mở đầu (hook) hấp dẫn trong 5 giây đầu tiên, một lời kêu gọi hành động (call-to-action) rõ ràng ở cuối và các mốc thời gian (timestamps) để tiện tham khảo. Định dạng clip đầu ra là [FORMAT: MP4/GIF/MP3] có nhúng phụ đề nếu có. Gợi ý 2-3 đoạn chú thích (captions) thu hút để chia sẻ lên mạng xã hội.\n```\nSao chép\n\n```\nDưới đây là clip YouTube đã sẵn sàng sử dụng được trích xuất từ video có tiêu đề *\"The Future of AI in Education\"* (https://youtu.be/XYZ123), tập trung vào phân đoạn thảo luận về *personalized learning algorithms* (thuật toán học tập cá nhân hóa). Clip dài **1 phút 45 giây** ở **định dạng MP4** có nhúng phụ đề.\n\n**Cấu trúc Clip:**\n- **0:00-0:05 (Hook):** \"Hãy tưởng tượng một lớp học nơi mỗi học sinh đều có một gia sư được thiết kế riêng cho mình. Đó chính là sức mạnh của AI trong giáo dục ngày nay.\"\n- **0:05-1:20 (Nội dung chính):** Clip làm nổi bật một ví dụ thực tế từ chương trình thử nghiệm tại Đại học Stanford, nơi các công cụ hỗ trợ bởi AI đã giảm 30% tỷ lệ học sinh bỏ học bằng cách điều chỉnh bài học theo tốc độ tiếp thu của từng cá nhân. Một giáo sư giải thích cách hệ thống theo dõi các chỉ số tương tác theo thời gian thực.\n- **1:20-1:45 (Call-to-Action):** \"Bạn muốn thấy điều này trong thực tế? Hãy xem case study đầy đủ được liên kết bên dưới và cho chúng tôi biết trong phần bình luận: Thách thức lớn nhất trong lớp học của bạn là gì?\"\n\n**Chú thích mạng xã hội:**\n1. \"AI không thay thế giáo viên—nó đang tiếp thêm sức mạnh cho họ. Hãy xem cách học tập cá nhân hóa đang thay đổi nền giáo dục! 🚀 #EdTech #AI\"\n2. \"Từ Stanford đến lớp học của bạn: Cách AI giảm 30% tỷ lệ bỏ học. Bạn có muốn thử nghiệm điều này tại trường học của mình không?\"\n\n**Thông số kỹ thuật:**\n- Định dạng: MP4 (1080p, 60fps)\n- Dung lượng file: 12.5MB\n- Phụ đề: Tiếng Anh (nhúng sẵn)\n- Nền tảng đề xuất: Twitter, LinkedIn, Instagram Reels\n\n*Lưu ý: Clip được tối ưu hóa cho chế độ xem dọc (tỷ lệ khung hình 9:16) dành cho người dùng di động.*\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:11:29.815541Z",
+    "http_status": 200,
+    "content_hash": "06aa7768aa0d5a3020d6d661f30e95ad93a54bd72d050dd16657948c5b70b11a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\youtube-clipper-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\youtube-clipper-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Youtube Clipper Skill - Trích xuất video nổi bật dễ dàng",
+  "short_description_vi": "Youtube Clipper Skill cho phép người dùng dễ dàng trích xuất và chia sẻ các phân đoạn nổi bật (highlights) từ những video yêu thích, giúp tiết kiệm thời gian và tăng cường tương tác. Đây là công cụ hoàn hảo cho các nhà sáng tạo nội dung và nhà giáo dục muốn tạo ra các clip ngắn gọn, ấn tượng và thu hút người xem."
+}

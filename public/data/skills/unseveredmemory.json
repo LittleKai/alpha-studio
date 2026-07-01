@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/unseveredmemory",
+  "slug": "unseveredmemory",
+  "name": "UnseveredMemory",
+  "headline": "UnseveredMemory - Persistent Memory for Claude Code",
+  "short_description": "UnseveredMemory is a lightweight memory system for Claude Code. It enables persistent storage and retrieval of data across sessions. Developers and operations teams benefit from maintaining context in long-running workflows. It connects to Claude Code hooks and can be integrated into bash scripts and markdown documentation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "blas0",
+  "install_command": "git clone https://github.com/blas0/UnseveredMemory.git",
+  "source_repo_url": "https://github.com/blas0/UnseveredMemory",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "persistence",
+    "productivity",
+    "memory",
+    "markdown",
+    "hooks",
+    "developer-tools",
+    "ai-coding",
+    "claude",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Unsevered Memory solves context loss in long Claude Code sessions by enforcing persistence through three hooks: SessionStart loads prior state, UserPromptSubmit injects memory reminders on every prompt (surviving context compaction), and SessionEnd archives work. Unlike simple context injection, this system maintains state across sessions using markdown files stored in .claude/memory/ and .ai/ directories, with daily archives and decision logs. It works offline, requires no databases, and integrates natively with Claude Code's hook system. Developers managing multi-session projects, DevOps automation, and complex workflows benefit from reliable memory enforcement that survives the model's natural tendency to forget earlier instructions.\nMaintaining context in multi-day debugging sessions and troubleshooting workflows\nPreserving architectural decisions and patterns across development sprints\nManaging long-running DevOps automation tasks with cross-session state\nTracking operations logs and findings in live scratchpads during development",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/blas0/UnseveredMemory`",
+    "usage": "```\nUse UnseveredMemory to store and retrieve persistent data for [PROJECT_NAME]. First, save the current state of [DATA_TO_SAVE] with the key '[MEMORY_KEY]'. Then, retrieve and summarize the stored data. Finally, update the memory with [NEW_DATA] under the same key. Ensure all operations are logged in [LOG_FILE].\n```\nCopy\n\n```\n```markdown\n# UnseveredMemory Session Log - Project: AlphaAnalytics",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "unseveredmemory#main-content",
+      "unseveredmemory#overview",
+      "unseveredmemory#setup",
+      "unseveredmemory#examples",
+      "unseveredmemory#tools",
+      "unseveredmemory#mcp",
+      "unseveredmemory#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "UnseveredMemory giải quyết vấn đề mất context trong các session Claude Code kéo dài bằng cách áp dụng cơ chế persistent thông qua ba hook: SessionStart tải trạng thái trước đó, UserPromptSubmit chèn các lời nhắc bộ nhớ vào mỗi prompt (giúp duy trì thông tin ngay cả khi context bị nén), và SessionEnd lưu trữ (archive) lại công việc. Khác với phương pháp chèn context đơn giản, hệ thống này duy trì trạng thái giữa các session bằng các tệp markdown được lưu trong thư mục .claude/memory/ và .ai/, đi kèm nhật ký quyết định và các bản archive hàng ngày. Hệ thống hoạt động offline, không cần cơ sở dữ liệu và tích hợp native với hệ thống hook của Claude Code. Các nhà phát triển quản lý các dự án nhiều session, tự động hóa DevOps và các workflow phức tạp sẽ được hưởng lợi từ cơ chế duy trì bộ nhớ đáng tin cậy này, giúp vượt qua xu hướng tự nhiên của mô hình là dễ quên các chỉ dẫn trước đó.\n\nDuy trì context trong các session debug kéo dài nhiều ngày và các workflow xử lý sự cố (troubleshooting)\nLưu giữ các quyết định và pattern thiết kế kiến trúc qua các sprint phát triển\nQuản lý các tác vụ tự động hóa DevOps chạy lâu dài với trạng thái được duy trì xuyên suốt các session\nTheo dõi nhật ký vận hành (operations log) và các phát hiện trong các scratchpad trực tiếp trong quá trình phát triển",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/blas0/UnseveredMemory`",
+    "usage_vi": "```\nSử dụng UnseveredMemory để lưu trữ và truy xuất dữ liệu persistent cho [PROJECT_NAME]. Đầu tiên, lưu trạng thái hiện tại của [DATA_TO_SAVE] với key '[MEMORY_KEY]'. Sau đó, truy xuất và tóm tắt dữ liệu đã lưu. Cuối cùng, cập nhật bộ nhớ với [NEW_DATA] dưới cùng key đó. Đảm bảo tất cả các thao tác đều được ghi nhật ký trong [LOG_FILE].\n```\nCopy\n\n```\n```markdown\n# UnseveredMemory Session Log - Dự án: AlphaAnalytics"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:01:01.247363Z",
+    "http_status": 200,
+    "content_hash": "159d53ed2246eefbf41f2e16d56de2398dc3faa2a8c8a81797e986f717058f1a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\unseveredmemory.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\unseveredmemory.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "UnseveredMemory - Bộ nhớ persistent cho Claude Code",
+  "short_description_vi": "UnseveredMemory là một hệ thống bộ nhớ dung lượng nhẹ (lightweight) dành cho Claude Code. Hệ thống cho phép lưu trữ persistent và truy xuất dữ liệu giữa các session. Các nhà phát triển và đội ngũ vận hành (operations) có thể duy trì context hiệu quả trong các workflow chạy lâu dài. Nó kết nối trực tiếp với các hook của Claude Code và có thể tích hợp vào các bash script cũng như tài liệu markdown."
+}

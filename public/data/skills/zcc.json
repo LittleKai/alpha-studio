@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zcc",
+  "slug": "zcc",
+  "name": "zcc",
+  "headline": "zcc: Multi-Agent Workflows",
+  "short_description": "zcc transforms Claude Code into a project-aware, context-intelligent development powerhouse. It sets up multi-agent workflows, automates repetitive tasks, and manages long-running projects. Ideal for developers and operations teams, zcc integrates with Claude Code to streamline development workflows and enhance productivity.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "Git-on-my-level",
+  "install_command": "git clone https://github.com/Git-on-my-level/zcc.git",
+  "source_repo_url": "https://github.com/Git-on-my-level/zcc",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude",
+    "coding-agent",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The zcc skill is a lightweight Claude Code framework designed to facilitate the setup of multi-agent workflows, manage common repetitive tasks, and oversee long-running projects. By leveraging this skill, users can create automated processes that enhance productivity and efficiency within their teams. The framework is particularly beneficial for developers and AI practitioners who are looking to streamline their workflows and reduce manual intervention in routine tasks. One of the key advantages of using zcc is its ability to save time by automating repetitive processes. Although specific time savings are currently unknown, the framework's design allows for quicker project management and task execution, ultimately leading to improved team output. With an intermediate implementation difficulty, users can expect to set up zcc in approximately 30 minutes, making it accessible for those with a moderate level of technical expertise. This skill is ideal for roles such as product managers, developers, and AI practitioners who are involved in project management or workflow automation. By integrating zcc into their processes, teams can enhance collaboration and ensure that tasks are completed more efficiently. Practical use cases include automating data collection from various sources, coordinating tasks among multiple AI agents, and managing project timelines without the need for constant manual oversight. Incorporating zcc into an AI-first workflow can significantly elevate the way teams operate. As organizations increasingly adopt AI automation, having a framework like zcc allows for seamless integration of AI agent skills into everyday tasks. This skill not only enhances operational efficiency but also positions teams to leverage AI capabilities fully, driving innovation and productivity in their projects.\n- **Agents Involved**: Code Reviewer, Quality Assurance, Deployment Manager\n- **Trigger**: New pull request created in the repository\n- **Frequency**: Continuous",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Git-on-my-level/zcc`",
+    "usage": "```\nI want to use zcc to automate a repetitive task in my [PROJECT]. The task involves [DESCRIBE_TASK]. Can you help me set up a multi-agent workflow to handle this? I'm working with [TECHNOLOGY_STACK] and need to ensure the workflow integrates seamlessly with my existing tools.\n```\nCopy\n\n```\n# Multi-Agent Workflow for Automated Code Reviews",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zcc#main-content",
+      "zcc#overview",
+      "zcc#setup",
+      "zcc#examples",
+      "zcc#tools",
+      "zcc#mcp",
+      "zcc#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill zcc là một framework gọn nhẹ dành cho Claude Code, được thiết kế để hỗ trợ setup các quy trình làm việc multi-agent, quản lý các tác vụ lặp đi lặp lại phổ biến và giám sát các dự án chạy dài hạn. Bằng cách khai thác skill này, người dùng có thể tạo ra các quy trình tự động giúp nâng cao năng suất và hiệu quả hoạt động trong nhóm. Framework này đặc biệt hữu ích cho các nhà phát triển và chuyên gia AI đang muốn tinh giản quy trình làm việc và giảm thiểu sự can thiệp thủ công vào các tác vụ thường nhật. Một trong những ưu điểm chính của việc sử dụng zcc là khả năng tiết kiệm thời gian nhờ tự động hóa các quy trình lặp đi lặp lại. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được xác định, thiết kế của framework cho phép quản lý dự án và thực thi tác vụ nhanh hơn, từ đó cải thiện hiệu suất đầu ra của nhóm. Với độ khó triển khai ở mức trung bình, người dùng có thể setup zcc trong khoảng 30 phút, giúp những người có trình độ kỹ thuật vừa phải dễ dàng tiếp cận. Skill này lý tưởng cho các vai trò như product manager, nhà phát triển và chuyên gia AI tham gia vào quản lý dự án hoặc tự động hóa quy trình làm việc. Bằng cách tích hợp zcc vào quy trình của mình, các nhóm có thể tăng cường hợp tác và đảm bảo các tác vụ được hoàn thành hiệu quả hơn. Các trường hợp sử dụng thực tế bao gồm tự động hóa việc thu thập dữ liệu từ nhiều nguồn khác nhau, điều phối tác vụ giữa nhiều AI agent và quản lý tiến độ dự án mà không cần giám sát thủ công liên tục. Việc tích hợp zcc vào quy trình làm việc AI-first có thể nâng tầm đáng kể cách thức vận hành của các nhóm. Khi các tổ chức ngày càng ứng dụng tự động hóa bằng AI, một framework như zcc cho phép tích hợp liền mạch các kỹ năng của AI agent vào các tác vụ hàng ngày. Skill này không chỉ nâng cao hiệu quả vận hành mà còn giúp các nhóm sẵn sàng khai thác tối đa năng lực của AI, thúc đẩy sự đổi mới và nâng cao năng suất trong các dự án.\n- **Agent tham gia**: Code Reviewer, Quality Assurance, Deployment Manager\n- **Trigger**: Có pull request mới được tạo trong repository\n- **Tần suất**: Liên tục",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Git-on-my-level/zcc`",
+    "usage_vi": "```\nTôi muốn sử dụng zcc để tự động hóa một tác vụ lặp đi lặp lại trong [PROJECT] của mình. Tác vụ này bao gồm [DESCRIBE_TASK]. Bạn có thể giúp tôi setup một quy trình làm việc multi-agent để xử lý việc này không? Tôi đang làm việc với [TECHNOLOGY_STACK] và cần đảm bảo quy trình tích hợp liền mạch với các công cụ hiện tại của tôi.\n```\nCopy\n\n```\n# Quy trình làm việc Multi-Agent cho Code Review tự động\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:27.796953Z",
+    "http_status": 200,
+    "content_hash": "32365ecce6a765db4c8532f5fda69bdf2d90a0ba3d390b38e50d9bcd5f73dc64",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zcc.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\zcc.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "zcc: Quy trình làm việc Multi-Agent",
+  "short_description_vi": "zcc biến Claude Code thành một công cụ hỗ trợ phát triển mạnh mẽ, có khả năng nhận biết dự án và hiểu rõ ngữ cảnh. Công cụ này hỗ trợ thiết lập các quy trình làm việc multi-agent, tự động hóa các tác vụ lặp đi lặp lại và quản lý các dự án chạy dài hạn. Lý tưởng cho các nhà phát triển và đội ngũ vận hành, zcc tích hợp với Claude Code để tối ưu hóa quy trình phát triển và nâng cao năng suất."
+}

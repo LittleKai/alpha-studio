@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-skills-generator",
+  "slug": "agent-skills-generator",
+  "name": "browser-use",
+  "headline": "agent-skills-generator for documentation",
+  "short_description": "Agent Skills Generator creates AI agent skills from website documentation. Operations teams use it to convert documentation into Markdown skills for AI agents and LLMs. It includes a VS Code extension and Go CLI for easy integration into existing workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "rodydavis",
+  "install_command": "git clone https://github.com/rodydavis/agent-skills-generator.git",
+  "source_repo_url": "https://github.com/rodydavis/agent-skills-generator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "skills",
+    "agent-skills",
+    "go",
+    "ai",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Agent Skills Generator transforms documentation websites into structured Markdown skills ready for AI agents and language models. It offers two interfaces: a VS Code extension with visual rule management and one-click generation, and a high-performance Go CLI for recursive crawling with HTML-to-Markdown conversion. The tool extracts metadata, supports configurable crawling depth and filtering, and stores output in flat structures compatible with RAG systems. Operations teams use it to automate skill creation from existing documentation, reducing manual conversion time and ensuring consistent formatting for AI agent consumption.\nConvert API documentation into skills for Claude Code agents\nAutomatically generate LLM-ready Markdown from technical documentation sites\nBuild skill libraries for internal tools and frameworks\nCreate RAG-compatible documentation sets for AI training",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rodydavis/agent-skills-generator`",
+    "usage": "```\nConvert the documentation from [WEBSITE_URL] into a structured AI agent skill in Markdown format. Follow the format: **Skill Name**: [NAME], **Description**: [ONE_SENTENCE_SUMMARY], **Input Parameters**: [LIST], **Output Format**: [STRUCTURE], **Example Usage**: [CODE_BLOCK]. Ensure the skill is executable by an AI agent and includes error handling for common edge cases.\n```\nCopy\n\n```\n```markdown\n**Skill Name**: GitHub Repository Cloner\n**Description**: Clones a GitHub repository to the local filesystem with branch selection and error handling.\n\n**Input Parameters**:\n- `repo_url` (string): Full URL of the GitHub repository (e.g., `https://github.com/owner/repo.git`).\n- `branch` (string, optional): Branch name to clone. Defaults to `main`.\n- `target_dir` (string, optional): Local directory path. Defaults to `./repo`.\n\n**Output Format**:\n```json\n{\n  \"success\": boolean,\n  \"message\": string,\n  \"repo_path\": string,\n  \"error\": string (if applicable)\n}\n```\n\n**Example Usage**:\n```bash\n# Clone the 'dev' branch of 'my-project' to './my-project'\nskill github-repo-cloner --repo_url \"https://github.com/acme/my-project.git\" --branch \"dev\" --target_dir \"./my-project\"\n```\n\n**Error Handling**:\n- Invalid repository URL: Returns `{\"success\": false, \"message\": \"Invalid repository URL\", \"error\": \"404 Not Found\"}`.\n- Branch not found: Returns `{\"success\": false, \"message\": \"Branch 'feature-x' not found\", \"error\": \"BranchNotFound\"}`.\n- Permission denied: Returns `{\"success\": false, \"message\": \"Git authentication failed\", \"error\": \"PermissionDenied\"}`.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-skills-generator#main-content",
+      "agent-skills-generator#overview",
+      "agent-skills-generator#setup",
+      "agent-skills-generator#examples",
+      "agent-skills-generator#tools",
+      "agent-skills-generator#mcp",
+      "agent-skills-generator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Agent Skills Generator transforms documentation websites into structured Markdown skills ready for AI agents and language models. It offers two interfaces: a VS Code extension with visual rule management and one-click generation, and a high-performance Go CLI for recursive crawling with HTML-to-Markdown conversion. The tool extracts metadata, supports configurable crawling depth and filtering, and stores output in flat structures compatible with RAG systems. Operations teams use it to automate skill creation from existing documentation, reducing manual conversion time and ensuring consistent formatting for AI agent consumption.\nConvert API documentation into skills for Claude Code agents\nAutomatically generate LLM-ready Markdown from technical documentation sites\nBuild skill libraries for internal tools and frameworks\nCreate RAG-compatible documentation sets for AI training",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/rodydavis/agent-skills-generator`",
+    "usage_vi": "```\nConvert the documentation from [WEBSITE_URL] into a structured AI agent skill in Markdown format. Follow the format: **Skill Name**: [NAME], **Description**: [ONE_SENTENCE_SUMMARY], **Input Parameters**: [LIST], **Output Format**: [STRUCTURE], **Example Usage**: [CODE_BLOCK]. Ensure the skill is executable by an AI agent and includes error handling for common edge cases.\n```\nCopy\n\n```\n```markdown\n**Skill Name**: GitHub Repository Cloner\n**Description**: Clones a GitHub repository to the local filesystem with branch selection and error handling.\n\n**Input Parameters**:\n- `repo_url` (string): Full URL of the GitHub repository (e.g., `https://github.com/owner/repo.git`).\n- `branch` (string, optional): Branch name to clone. Defaults to `main`.\n- `target_dir` (string, optional): Local directory path. Defaults to `./repo`.\n\n**Output Format**:\n```json\n{\n  \"success\": boolean,\n  \"message\": string,\n  \"repo_path\": string,\n  \"error\": string (if applicable)\n}\n```\n\n**Example Usage**:\n```bash\n# Clone the 'dev' branch of 'my-project' to './my-project'\nskill github-repo-cloner --repo_url \"https://github.com/acme/my-project.git\" --branch \"dev\" --target_dir \"./my-project\"\n```\n\n**Error Handling**:\n- Invalid repository URL: Returns `{\"success\": false, \"message\": \"Invalid repository URL\", \"error\": \"404 Not Found\"}`.\n- Branch not found: Returns `{\"success\": false, \"message\": \"Branch 'feature-x' not found\", \"error\": \"BranchNotFound\"}`.\n- Permission denied: Returns `{\"success\": false, \"message\": \"Git authentication failed\", \"error\": \"PermissionDenied\"}`.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:02:33.079124Z",
+    "http_status": 200,
+    "content_hash": "658fdcac0802280a9aa4ea76edf17484d2083a3b72dcb25da2b05bf6887f2597",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-skills-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\agent-skills-generator.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "agent-skills-generator for documentation",
+  "short_description_vi": "Agent Skills Generator creates AI agent skills from website documentation. Operations teams use it to convert documentation into Markdown skills for AI agents and LLMs. It includes a VS Code extension and Go CLI for easy integration into existing workflows."
+}

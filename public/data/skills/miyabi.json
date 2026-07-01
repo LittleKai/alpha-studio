@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/miyabi",
+  "slug": "miyabi",
+  "name": "Miyabi",
+  "headline": "Miyabi - Autonomous Development Framework",
+  "short_description": "Miyabi is an open-source, economically-governed, beginner-friendly autonomous development framework built on Issue-Driven Development. It enables operations teams to automate software development tasks, reducing manual effort and accelerating project delivery. Miyabi integrates with GitHub Actions and supports parallel execution, making it ideal for teams looking to streamline their development workflows.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "ShunsukeHayashi",
+  "install_command": "git clone https://github.com/ShunsukeHayashi/Miyabi.git",
+  "source_repo_url": "https://github.com/ShunsukeHayashi/Miyabi",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "agents",
+    "automation",
+    "parallel-execution",
+    "issue-driven-development",
+    "ai",
+    "claude-code",
+    "github-actions",
+    "agentic-ai",
+    "autonomous"
+  ],
+  "sections": {
+    "overview": "Miyabi is an open-source autonomous development framework designed to automate software development tasks within operations teams. Built on Issue-Driven Development principles and governed by economic mechanisms, it enables beginner-friendly automation without requiring deep expertise. The framework integrates directly with GitHub Actions and supports parallel task execution, allowing teams to reduce manual effort and accelerate project delivery through streamlined development workflows.\nAutomate repetitive GitHub-based development tasks and workflows\nExecute multiple development operations in parallel to reduce project timelines\nEnable operations teams to manage software development automation with minimal manual intervention\nIntegrate issue-driven development practices with CI/CD pipelines via GitHub Actions",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ShunsukeHayashi/Miyabi`",
+    "usage": "```\nUse Miyabi to automate [SPECIFIC_TASK] in [PROJECT_NAME] repository. Follow the Issue-Driven Development workflow: create a GitHub issue with label '[LABEL]' describing the task, assign it to the Miyabi automation pipeline, and monitor progress in the Miyabi dashboard. Ensure parallel execution is enabled for [SPECIFIC_STEPS] to optimize performance. Provide a summary of the automation results including execution time, resource usage, and any errors encountered.\n```\nCopy\n\n```\n### Miyabi Automation Report for Project 'E-Commerce Platform'\n\n**Task Automated:** Dependency Update for `react` (v18.2.0 → v18.3.0)\n\n**Workflow Execution:**\n1. **Issue Creation:** GitHub Issue #423 created with label `automation:dependency-update` and title 'Update React to v18.3.0'. Assigned to Miyabi pipeline via GitHub Actions.\n2. **Parallel Execution:** Miyabi split the task into 3 parallel sub-tasks:\n   - Sub-task 1: Update `package.json` and `yarn.lock` files\n   - Sub-task 2: Run `yarn audit` to check for vulnerabilities\n   - Sub-task 3: Execute test suite for affected components\n3. **Execution Metrics:**\n   - Total runtime: 8 minutes 42 seconds (vs. estimated 15 minutes for sequential execution)\n   - CPU usage: 42% average across 3 parallel workers\n   - Memory usage: 1.2GB peak\n   - Sub-task 2 completed with 1 low-severity vulnerability detected (patched automatically)\n4. **Results:**\n   - All dependency files updated successfully\n   - Test suite passed (1234/1234 tests)\n   - Pull request #424 created and merged automatically\n   - No manual intervention required\n\n**Recommendations:**\n- Future dependency updates can reuse this pipeline configuration\n- Consider adding a pre-execution hook to run `npm outdated` for proactive updates\n- Monitor GitHub Actions logs for any timeout issues during peak hours\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "miyabi#main-content",
+      "miyabi#overview",
+      "miyabi#setup",
+      "miyabi#examples",
+      "miyabi#tools",
+      "miyabi#mcp",
+      "miyabi#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Miyabi is an open-source autonomous development framework designed to automate software development tasks within operations teams. Built on Issue-Driven Development principles and governed by economic mechanisms, it enables beginner-friendly automation without requiring deep expertise. The framework integrates directly with GitHub Actions and supports parallel task execution, allowing teams to reduce manual effort and accelerate project delivery through streamlined development workflows.\nAutomate repetitive GitHub-based development tasks and workflows\nExecute multiple development operations in parallel to reduce project timelines\nEnable operations teams to manage software development automation with minimal manual intervention\nIntegrate issue-driven development practices with CI/CD pipelines via GitHub Actions",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ShunsukeHayashi/Miyabi`",
+    "usage_vi": "```\nUse Miyabi to automate [SPECIFIC_TASK] in [PROJECT_NAME] repository. Follow the Issue-Driven Development workflow: create a GitHub issue with label '[LABEL]' describing the task, assign it to the Miyabi automation pipeline, and monitor progress in the Miyabi dashboard. Ensure parallel execution is enabled for [SPECIFIC_STEPS] to optimize performance. Provide a summary of the automation results including execution time, resource usage, and any errors encountered.\n```\nCopy\n\n```\n### Miyabi Automation Report for Project 'E-Commerce Platform'\n\n**Task Automated:** Dependency Update for `react` (v18.2.0 → v18.3.0)\n\n**Workflow Execution:**\n1. **Issue Creation:** GitHub Issue #423 created with label `automation:dependency-update` and title 'Update React to v18.3.0'. Assigned to Miyabi pipeline via GitHub Actions.\n2. **Parallel Execution:** Miyabi split the task into 3 parallel sub-tasks:\n   - Sub-task 1: Update `package.json` and `yarn.lock` files\n   - Sub-task 2: Run `yarn audit` to check for vulnerabilities\n   - Sub-task 3: Execute test suite for affected components\n3. **Execution Metrics:**\n   - Total runtime: 8 minutes 42 seconds (vs. estimated 15 minutes for sequential execution)\n   - CPU usage: 42% average across 3 parallel workers\n   - Memory usage: 1.2GB peak\n   - Sub-task 2 completed with 1 low-severity vulnerability detected (patched automatically)\n4. **Results:**\n   - All dependency files updated successfully\n   - Test suite passed (1234/1234 tests)\n   - Pull request #424 created and merged automatically\n   - No manual intervention required\n\n**Recommendations:**\n- Future dependency updates can reuse this pipeline configuration\n- Consider adding a pre-execution hook to run `npm outdated` for proactive updates\n- Monitor GitHub Actions logs for any timeout issues during peak hours\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:03.309195Z",
+    "http_status": 200,
+    "content_hash": "e556acc0ee839ea90027a0e0cc570920e82e738b6ce6a98789792b6275476ec1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\miyabi.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\miyabi.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Miyabi - Autonomous Development Framework",
+  "short_description_vi": "Miyabi is an open-source, economically-governed, beginner-friendly autonomous development framework built on Issue-Driven Development. It enables operations teams to automate software development tasks, reducing manual effort and accelerating project delivery. Miyabi integrates with GitHub Actions and supports parallel execution, making it ideal for teams looking to streamline their development workflows."
+}

@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/homies",
+  "slug": "homies",
+  "name": "browser-use",
+  "headline": "Homies - Automates Dev Environment Setup",
+  "short_description": "Automates setup of development environments by installing and configuring essential tools and scripts. Benefits operations teams by ensuring consistent, reproducible environments across machines. Connects to shell scripts and configuration files like .screenrc, .vimrc, and .bashrc.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "sontek",
+  "install_command": "git clone https://github.com/sontek/homies.git",
+  "source_repo_url": "https://github.com/sontek/homies",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Homies is a bootstrapping toolkit that automates the setup and configuration of development environments across machines. It uses shell scripts and a justfile to install base tooling and provision all necessary dependencies in a single command. The skill manages configuration files like .screenrc, .vimrc, and .bashrc, ensuring consistent environments across multiple computers. Teams running `just install` after initial bootstrap get fully provisioned environments without manual tool installation. This reduces setup time and eliminates environment inconsistencies that slow down development workflows.\nQuickly bootstrap a development environment with essential tools and configurations.\nRun isolated Docker containers for different projects with specific dependencies.\nAutomate the installation and updating of Vim plugins to maintain a productive coding environment.\nUtilize the Ralph workflow to streamline the implementation, testing, and review phases of software development.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sontek/homies`",
+    "usage": "```\nAutomate the setup of a development environment for a [TEAM/PROJECT_NAME] by installing and configuring essential tools and scripts. Include: [LIST_OF_TOOLS] (e.g., Docker, Node.js, Python, Git), [CONFIGURATION_FILES] (e.g., .vimrc, .bashrc, .screenrc), and [POST_SETUP_SCRIPTS] (e.g., run 'npm install', 'pip install -r requirements.txt'). Output a step-by-step guide for the user to execute this automation, including commands and explanations for each step.\n```\nCopy\n\n```\n### Development Environment Setup for Project 'Nebula'\n\n**Tools Installed:**\n- Docker v24.0.5\n- Node.js v18.16.0\n- Python 3.11.4\n- Git 2.40.1\n- VS Code CLI tools\n- PostgreSQL 15.3\n- tmux 3.3a\n\n**Configuration Files Applied:**\n- `.vimrc` (customized for Python/JS development)\n- `.bashrc` (aliases for Docker and Git shortcuts)\n- `.screenrc` (pre-configured window splits)\n\n**Post-Setup Scripts Executed:**\n1. `npm install` (installed dependencies for the frontend)\n2. `pip install -r requirements.txt` (installed Python dependencies)\n3. `docker-compose up -d` (started database and Redis containers)\n\n**Verification Steps:**\n- Run `docker --version` → Output: `Docker version 24.0.5, build ced0996`\n- Run `node --version` → Output: `v18.16.0`\n- Run `python --version` → Output: `Python 3.11.4`\n- Open VS Code and verify extensions (ESLint, Python, Docker) are installed.\n\n**Next Steps:**\n1. Clone the project repository: `git clone https://github.com/team/nebula.git`\n2. Navigate to the project folder and run `./setup.sh` (if provided) to finalize the environment.\n3. Start developing with the pre-configured tools and scripts.\n\n**Troubleshooting:**\n- If Docker fails to start, ensure your user is added to the `docker` group: `sudo usermod -aG docker $USER` and restart your terminal.\n- For Python dependencies, ensure you’re using a virtual environment: `python -m venv venv && source venv/bin/activate`.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "homies#main-content",
+      "homies#overview",
+      "homies#setup",
+      "homies#examples",
+      "homies#tools",
+      "homies#mcp",
+      "homies#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Homies is a bootstrapping toolkit that automates the setup and configuration of development environments across machines. It uses shell scripts and a justfile to install base tooling and provision all necessary dependencies in a single command. The skill manages configuration files like .screenrc, .vimrc, and .bashrc, ensuring consistent environments across multiple computers. Teams running `just install` after initial bootstrap get fully provisioned environments without manual tool installation. This reduces setup time and eliminates environment inconsistencies that slow down development workflows.\nQuickly bootstrap a development environment with essential tools and configurations.\nRun isolated Docker containers for different projects with specific dependencies.\nAutomate the installation and updating of Vim plugins to maintain a productive coding environment.\nUtilize the Ralph workflow to streamline the implementation, testing, and review phases of software development.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sontek/homies`",
+    "usage_vi": "```\nAutomate the setup of a development environment for a [TEAM/PROJECT_NAME] by installing and configuring essential tools and scripts. Include: [LIST_OF_TOOLS] (e.g., Docker, Node.js, Python, Git), [CONFIGURATION_FILES] (e.g., .vimrc, .bashrc, .screenrc), and [POST_SETUP_SCRIPTS] (e.g., run 'npm install', 'pip install -r requirements.txt'). Output a step-by-step guide for the user to execute this automation, including commands and explanations for each step.\n```\nCopy\n\n```\n### Development Environment Setup for Project 'Nebula'\n\n**Tools Installed:**\n- Docker v24.0.5\n- Node.js v18.16.0\n- Python 3.11.4\n- Git 2.40.1\n- VS Code CLI tools\n- PostgreSQL 15.3\n- tmux 3.3a\n\n**Configuration Files Applied:**\n- `.vimrc` (customized for Python/JS development)\n- `.bashrc` (aliases for Docker and Git shortcuts)\n- `.screenrc` (pre-configured window splits)\n\n**Post-Setup Scripts Executed:**\n1. `npm install` (installed dependencies for the frontend)\n2. `pip install -r requirements.txt` (installed Python dependencies)\n3. `docker-compose up -d` (started database and Redis containers)\n\n**Verification Steps:**\n- Run `docker --version` → Output: `Docker version 24.0.5, build ced0996`\n- Run `node --version` → Output: `v18.16.0`\n- Run `python --version` → Output: `Python 3.11.4`\n- Open VS Code and verify extensions (ESLint, Python, Docker) are installed.\n\n**Next Steps:**\n1. Clone the project repository: `git clone https://github.com/team/nebula.git`\n2. Navigate to the project folder and run `./setup.sh` (if provided) to finalize the environment.\n3. Start developing with the pre-configured tools and scripts.\n\n**Troubleshooting:**\n- If Docker fails to start, ensure your user is added to the `docker` group: `sudo usermod -aG docker $USER` and restart your terminal.\n- For Python dependencies, ensure you’re using a virtual environment: `python -m venv venv && source venv/bin/activate`.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:09:54.660083Z",
+    "http_status": 200,
+    "content_hash": "774f53eadb9326dffbb9fb966941af8a14bb147df8fdcd5704af50b5090f8690",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\homies.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\homies.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Homies - Automates Dev Environment Setup",
+  "short_description_vi": "Automates setup of development environments by installing and configuring essential tools and scripts. Benefits operations teams by ensuring consistent, reproducible environments across machines. Connects to shell scripts and configuration files like .screenrc, .vimrc, and .bashrc."
+}

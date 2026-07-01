@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/opendia",
+  "slug": "opendia",
+  "name": "opendia",
+  "headline": "Opendia: AI Browser Integration Tool",
+  "short_description": "Opendia connects your browser to AI models, automating tasks and boosting productivity. Sales teams use it to streamline research, generate content, and analyze data. It integrates with Chrome, Firefox, and Arc, working with ChatGPT and GitHub Copilot.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOpsGrowth",
+  "difficulty": "Beginner",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "25 min",
+  "author": "aaronjmars",
+  "install_command": "claude install aaronjmars/opendia",
+  "source_repo_url": "https://github.com/aaronjmars/opendia",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "automation",
+    "ai-integration",
+    "chrome-extension",
+    "web-tools",
+    "npm"
+  ],
+  "sections": {
+    "overview": "Opendia is a browser extension that integrates with AI coding assistants like Claude Code, Cursor, Windsurf, and Zed via the Model Context Protocol (MCP). It enables AI agents to automate browser-based tasks, streamline research, and interact with web content directly. The extension works with Chrome, Firefox, and Arc browsers, supporting both local deployment and cloud tunnel modes for flexible access. Teams use Opendia to accelerate workflows that require AI-powered web automation and data extraction.\nAutomate data entry tasks while browsing to save time and reduce errors.\nEnhance customer interactions by providing AI-generated suggestions in real-time.\nStreamline research processes by extracting insights from multiple web sources.\nGenerate creative content ideas based on the latest trends and articles you read.",
+    "setup": "Terminal\nCopy\n`claude install aaronjmars/opendia`\n`git clone https://github.com/aaronjmars/opendia`",
+    "usage": "```\nUse Opendia to [TASK] in [BROWSER]. For example: 'Use Opendia to research the latest trends in [INDUSTRY] and generate a summary report with key insights and potential opportunities.' Or: 'Use Opendia to automate the process of extracting and analyzing data from [WEBSITE] and compile the findings into a structured table.'\n```\nCopy\n\n```\nResearching the latest trends in AI-powered customer support tools, I used Opendia to extract data from G2, Capterra, and TrustRadius. The AI analyzed 150+ reviews and identified three key trends: (1) 68% of users prioritize seamless CRM integration, (2) AI chatbots with sentiment analysis saw a 42% higher satisfaction score, and (3) mid-market companies (100-1,000 employees) are the fastest-growing segment. Opendia then generated a summary report highlighting these insights, including a comparison table of top-rated tools like Zendesk Answer Bot, Intercom Fin, and Freshdesk Neo. The report also flagged a gap in enterprise-grade solutions for large-scale deployments, suggesting an opportunity for a new product line. The entire process took 12 minutes, compared to the usual 2+ hours of manual research and analysis.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "opendia#main-content",
+      "opendia#overview",
+      "opendia#setup",
+      "opendia#examples",
+      "opendia#tools",
+      "opendia#mcp",
+      "opendia#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Opendia là một extension trình duyệt tích hợp với các trợ lý lập trình AI như Claude Code, Cursor, Windsurf và Zed thông qua Model Context Protocol (MCP). Công cụ này cho phép các AI agent tự động hóa các tác vụ trên trình duyệt, tinh gọn quy trình nghiên cứu và tương tác trực tiếp với nội dung web. Extension này hoạt động trên các trình duyệt Chrome, Firefox và Arc, hỗ trợ cả chế độ local deployment (triển khai cục bộ) lẫn cloud tunnel để truy cập linh hoạt. Các đội ngũ sử dụng Opendia để đẩy nhanh các quy trình làm việc cần đến tự động hóa web và trích xuất dữ liệu bằng AI.\nTự động hóa các tác vụ nhập liệu khi đang duyệt web để tiết kiệm thời gian và giảm thiểu sai sót.\nNâng cao hiệu quả tương tác khách hàng thông qua các gợi ý thời gian thực do AI tạo ra.\nTinh gọn quy trình nghiên cứu bằng cách trích xuất thông tin chuyên sâu từ nhiều nguồn web khác nhau.\nTạo ý tưởng nội dung sáng tạo dựa trên các xu hướng mới nhất và các bài báo bạn đang đọc.",
+    "setup_vi": "Terminal\nSao chép\n`claude install aaronjmars/opendia`\n`git clone https://github.com/aaronjmars/opendia`",
+    "usage_vi": "```\nSử dụng Opendia để [TASK] trên [BROWSER]. Ví dụ: 'Sử dụng Opendia để nghiên cứu các xu hướng mới nhất trong [INDUSTRY] và tạo báo cáo tổng hợp với các thông tin chuyên sâu cùng cơ hội tiềm năng.' Hoặc: 'Sử dụng Opendia để tự động hóa quy trình trích xuất và phân tích dữ liệu từ [WEBSITE], sau đó tổng hợp kết quả vào một bảng có cấu trúc.'\n```\nSao chép\n\n```\nĐể nghiên cứu các xu hướng mới nhất về các công cụ hỗ trợ khách hàng tích hợp AI, tôi đã sử dụng Opendia để trích xuất dữ liệu từ G2, Capterra và TrustRadius. AI đã phân tích hơn 150 đánh giá và xác định được ba xu hướng chính: (1) 68% người dùng ưu tiên khả năng tích hợp CRM mượt mà, (2) chatbot AI hỗ trợ phân tích cảm xúc (sentiment analysis) đạt điểm số hài lòng cao hơn 42%, và (3) các công ty quy mô vừa (100-1.000 nhân viên) là phân khúc tăng trưởng nhanh nhất. Sau đó, Opendia đã tạo một báo cáo tóm tắt làm nổi bật các thông tin chuyên sâu này, bao gồm cả bảng so sánh các công cụ hàng đầu như Zendesk Answer Bot, Intercom Fin và Freshdesk Neo. Báo cáo cũng chỉ ra khoảng trống trong các giải pháp cấp doanh nghiệp lớn (enterprise-grade) cho việc triển khai quy mô lớn, mở ra cơ hội phát triển một dòng sản phẩm mới. Toàn bộ quy trình chỉ mất 12 phút, so với mức hơn 2 giờ nếu nghiên cứu và phân tích thủ công như trước đây.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:50:51.756355Z",
+    "http_status": 200,
+    "content_hash": "f55c48d0a16effb726115de81369bb4b46b2caa01c263194eba49beb92ed05d9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opendia.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\opendia.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Opendia: Công cụ tích hợp AI vào trình duyệt",
+  "short_description_vi": "Opendia kết nối trình duyệt của bạn với các mô hình AI, giúp tự động hóa tác vụ và tối ưu hóa hiệu suất làm việc. Đội ngũ kinh doanh có thể sử dụng công cụ này để tinh gọn quy trình nghiên cứu, sáng tạo nội dung và phân tích dữ liệu. Opendia tích hợp mượt mà với Chrome, Firefox và Arc, đồng thời hỗ trợ hoạt động cùng ChatGPT và GitHub Copilot."
+}

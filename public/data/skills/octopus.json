@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/octopus",
+  "slug": "octopus",
+  "name": "octopus",
+  "headline": "Octopus: LLM Management",
+  "short_description": "Octopus is an LLM API aggregation and load balancing service that enables developers to access multiple AI models through a single interface. It supports Claude, OpenAI, and other LLMs, simplifying integration for applications requiring diverse AI capabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "bestruirui",
+  "install_command": "git clone https://github.com/bestruirui/octopus.git",
+  "source_repo_url": "https://github.com/bestruirui/octopus",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "anthropic",
+    "ai",
+    "claude-code",
+    "codex",
+    "llm-gateway",
+    "self-hosted",
+    "claude",
+    "ai-gateway",
+    "openai"
+  ],
+  "sections": {
+    "overview": "The Octopus skill is designed to simplify the management of multiple Large Language Model (LLM) APIs by providing a unified interface. This automation tool allows users to aggregate various LLM services, enabling developers and AI practitioners to manage requests and responses efficiently. With Octopus, you can seamlessly convert requests and responses between different API formats, ensuring that your workflow remains uninterrupted and productive. One of the key benefits of using Octopus is the optimization of response times through automatic balancing of requests across different AI models. This functionality not only enhances performance but also helps in synchronizing model pricing and availability from various LLM providers. While the exact time savings are currently unknown, the streamlined management and reduced complexity of handling multiple APIs can significantly enhance productivity for teams focused on AI automation and workflow automation. Octopus is particularly beneficial for developers, product managers, and AI practitioners who are looking to integrate multiple LLMs into their projects. By leveraging this skill, teams can reduce the friction of managing disparate APIs, allowing them to focus on building innovative solutions rather than getting bogged down by technical complexities. Use cases include aggregating APIs for chatbot development, enhancing natural language processing applications, or even creating a centralized dashboard for monitoring API usage and costs. With an intermediate implementation difficulty and an estimated time of 30 minutes to set up, Octopus is accessible for those with a foundational understanding of API management. It fits seamlessly into AI-first workflows by providing a robust solution for managing multiple AI agent skills, ultimately leading to more efficient and effective automation processes. Explore how Octopus can enhance your AI projects and streamline your workflow on Shyft.ai.\nAggregate multiple LLM APIs into a single interface for easier management.\nAutomatically balance requests across different AI models to optimize response times.\nSynchronize model pricing and availability from various LLM providers.\nConvert requests and responses between different API formats seamlessly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bestruirui/octopus`",
+    "usage": "```\nI want to use Octopus to build an application that needs to access both Claude and OpenAI models. [DESCRIBE APPLICATION]. I need to know the best way to set up the API calls through Octopus to ensure optimal performance and cost efficiency. Provide a step-by-step guide, including any necessary code snippets.\n```\nCopy\n\n```\nTo build your application using Octopus to access both Claude and OpenAI models, follow these steps:\n\n1. **Set Up Octopus Account**: Sign up for an Octopus account and obtain your API key. This key will be used to authenticate your API requests.\n\n2. **Install Octopus SDK**: Install the Octopus SDK in your development environment. For Python, you can use pip:\n   ```bash\n   pip install octopus-sdk\n   ```\n\n3. **Initialize Octopus Client**: Initialize the Octopus client in your code using your API key:\n   ```python\n   from octopus import Octopus\n   octopus = Octopus(api_key='your_api_key_here')\n   ```\n\n4. **Define API Calls**: Define the API calls to the specific models you need. For example, to call Claude and OpenAI:\n   ```python\n   response_claude = octopus.call_model(model='claude', prompt='Your prompt here')\n   response_openai = octopus.call_model(model='openai', prompt='Your prompt here')\n   ```\n\n5. **Handle Responses**: Process the responses from both models and integrate them into your application logic.\n\n6. **Optimize Performance**: Use Octopus's load balancing features to distribute requests efficiently. Monitor performance metrics to ensure cost efficiency.\n\nBy following these steps, you can seamlessly integrate multiple AI models into your application using Octopus.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "octopus#main-content",
+      "octopus#overview",
+      "octopus#setup",
+      "octopus#examples",
+      "octopus#tools",
+      "octopus#mcp",
+      "octopus#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Octopus skill is designed to simplify the management of multiple Large Language Model (LLM) APIs by providing a unified interface. This automation tool allows users to aggregate various LLM services, enabling developers and AI practitioners to manage requests and responses efficiently. With Octopus, you can seamlessly convert requests and responses between different API formats, ensuring that your workflow remains uninterrupted and productive. One of the key benefits of using Octopus is the optimization of response times through automatic balancing of requests across different AI models. This functionality not only enhances performance but also helps in synchronizing model pricing and availability from various LLM providers. While the exact time savings are currently unknown, the streamlined management and reduced complexity of handling multiple APIs can significantly enhance productivity for teams focused on AI automation and workflow automation. Octopus is particularly beneficial for developers, product managers, and AI practitioners who are looking to integrate multiple LLMs into their projects. By leveraging this skill, teams can reduce the friction of managing disparate APIs, allowing them to focus on building innovative solutions rather than getting bogged down by technical complexities. Use cases include aggregating APIs for chatbot development, enhancing natural language processing applications, or even creating a centralized dashboard for monitoring API usage and costs. With an intermediate implementation difficulty and an estimated time of 30 minutes to set up, Octopus is accessible for those with a foundational understanding of API management. It fits seamlessly into AI-first workflows by providing a robust solution for managing multiple AI agent skills, ultimately leading to more efficient and effective automation processes. Explore how Octopus can enhance your AI projects and streamline your workflow on Shyft.ai.\nAggregate multiple LLM APIs into a single interface for easier management.\nAutomatically balance requests across different AI models to optimize response times.\nSynchronize model pricing and availability from various LLM providers.\nConvert requests and responses between different API formats seamlessly.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bestruirui/octopus`",
+    "usage_vi": "```\nI want to use Octopus to build an application that needs to access both Claude and OpenAI models. [DESCRIBE APPLICATION]. I need to know the best way to set up the API calls through Octopus to ensure optimal performance and cost efficiency. Provide a step-by-step guide, including any necessary code snippets.\n```\nCopy\n\n```\nTo build your application using Octopus to access both Claude and OpenAI models, follow these steps:\n\n1. **Set Up Octopus Account**: Sign up for an Octopus account and obtain your API key. This key will be used to authenticate your API requests.\n\n2. **Install Octopus SDK**: Install the Octopus SDK in your development environment. For Python, you can use pip:\n   ```bash\n   pip install octopus-sdk\n   ```\n\n3. **Initialize Octopus Client**: Initialize the Octopus client in your code using your API key:\n   ```python\n   from octopus import Octopus\n   octopus = Octopus(api_key='your_api_key_here')\n   ```\n\n4. **Define API Calls**: Define the API calls to the specific models you need. For example, to call Claude and OpenAI:\n   ```python\n   response_claude = octopus.call_model(model='claude', prompt='Your prompt here')\n   response_openai = octopus.call_model(model='openai', prompt='Your prompt here')\n   ```\n\n5. **Handle Responses**: Process the responses from both models and integrate them into your application logic.\n\n6. **Optimize Performance**: Use Octopus's load balancing features to distribute requests efficiently. Monitor performance metrics to ensure cost efficiency.\n\nBy following these steps, you can seamlessly integrate multiple AI models into your application using Octopus.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:05.866709Z",
+    "http_status": 200,
+    "content_hash": "652700b6a085ac9ca9e7e4ed8192620ea2069cf14ff83adc3d27513260b1761c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octopus.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\octopus.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Octopus: LLM Management",
+  "short_description_vi": "Octopus is an LLM API aggregation and load balancing service that enables developers to access multiple AI models through a single interface. It supports Claude, OpenAI, and other LLMs, simplifying integration for applications requiring diverse AI capabilities."
+}

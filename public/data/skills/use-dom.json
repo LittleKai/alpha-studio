@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/use-dom",
+  "slug": "use-dom",
+  "name": "Use Dom",
+  "headline": "use-dom: DOM Manipulation",
+  "short_description": "The use-dom Claude Code skill enables developers to interact with and manipulate the Document Object Model (DOM) in web applications seamlessly. This skill streamlines workflow automation by simplifying DOM operations, saving valuable development time.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "expo",
+  "install_command": "git clone https://github.com/expo/skills.git",
+  "source_repo_url": "https://github.com/expo/skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The use-dom Claude Code skill is designed to facilitate efficient interaction with the Document Object Model (DOM) in web applications. By providing a streamlined interface for DOM manipulation, this skill allows developers to automate repetitive tasks, such as element selection, attribute modification, and event handling. With 2673 installs, it demonstrates its popularity and effectiveness in enhancing web development workflows. One of the key benefits of the use-dom skill is its ability to significantly reduce the time spent on DOM-related tasks. Developers can automate complex workflows, allowing them to focus on more critical aspects of application development. This skill is particularly useful for teams looking to implement rapid prototyping or iterative development processes, where speed and efficiency are paramount. The use-dom skill is ideal for developers, product managers, and AI practitioners who are involved in web application development. It provides practical solutions for automating common tasks, such as dynamically updating content, managing user interactions, and creating responsive designs. For example, a developer can use this skill to automatically update a user interface based on user input without manually manipulating the DOM each time. Implementation of the use-dom skill is relatively straightforward, making it accessible for developers of varying skill levels. It seamlessly integrates into existing AI-first workflows, allowing teams to leverage AI automation to enhance their development processes. As web applications continue to evolve, incorporating skills like use-dom into your toolkit can lead to more efficient and effective development practices.\nAutomating form validation and displaying error messages in real-time to enhance user experience.\nDynamically updating page content based on user interactions, such as clicks or input changes.\nCreating responsive designs that automatically adjust to various screen sizes and orientations.\nEfficiently managing event listeners for interactive elements to improve performance and maintainability.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/expo/skills`",
+    "usage": "```\nUsing the use-dom skill, create a JavaScript function that will [ACTION] in the DOM of [WEBSITE]. The function should [SPECIFIC TASK] and return the result in [FORMAT]. Ensure it handles [ERROR CONDITIONS] gracefully.\n```\nCopy\n\n```\nHere's a JavaScript function that uses the use-dom skill to scrape product prices from an e-commerce site and calculate the average price:\n\n```javascript\nfunction getAverageProductPrice() {\n  const prices = [];\n  const priceElements = document.querySelectorAll('.product-price');\n  priceElements.forEach(element => {\n    const priceText = element.textContent.trim();\n    const price = parseFloat(priceText.replace(/[^0-9.-]+/g, ''));\n    if (!isNaN(price)) {\n      prices.push(price);\n    }\n  });\n  if (prices.length === 0) {\n    throw new Error('No valid prices found');\n  }\n  const averagePrice = prices.reduce((sum, price) => sum + price, 0) / prices.length;\n  return averagePrice;\n}\n\n// Usage:\ntry {\n  const averagePrice = getAverageProductPrice();\n  console.log(`The average product price is $${averagePrice.toFixed(2)}`);\n} catch (error) {\n  console.error(error.message);\n}\n```\n\nThis function selects all elements with the class 'product-price', extracts the price values, converts them to numbers, and calculates the average. It handles invalid price formats by skipping them and throws an error if no valid prices are found.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "use-dom#main-content",
+      "use-dom#overview",
+      "use-dom#setup",
+      "use-dom#examples",
+      "use-dom#tools",
+      "use-dom#mcp",
+      "use-dom#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Claude Code use-dom được thiết kế để hỗ trợ tương tác hiệu quả với Document Object Model (DOM) trong các ứng dụng web. Bằng cách cung cấp một giao diện tinh gọn cho việc thao tác DOM, skill này cho phép lập trình viên tự động hóa các tác vụ lặp đi lặp lại như chọn phần tử, sửa đổi thuộc tính và xử lý sự kiện. Với 2.673 lượt cài đặt, công cụ này đã chứng minh được mức độ phổ biến và tính hiệu quả trong việc nâng cao quy trình phát triển web. Một trong những lợi ích chính của skill use-dom là khả năng giảm đáng kể thời gian dành cho các tác vụ liên quan đến DOM. Lập trình viên có thể tự động hóa các quy trình phức tạp để tập trung vào các khía cạnh quan trọng hơn của việc phát triển ứng dụng. Skill này đặc biệt hữu ích cho các đội ngũ muốn triển khai tạo mẫu nhanh (rapid prototyping) hoặc quy trình phát triển lặp (iterative development), nơi tốc độ và hiệu quả là yếu tố sống còn. Skill use-dom là lựa chọn lý tưởng cho các lập trình viên, quản lý sản phẩm (product manager) và chuyên gia AI tham gia vào quá trình phát triển ứng dụng web. Nó cung cấp các giải pháp thực tế để tự động hóa các tác vụ phổ biến như cập nhật nội dung động, quản lý tương tác của người dùng và thiết kế giao diện đáp ứng (responsive design). Ví dụ, lập trình viên có thể sử dụng skill này để tự động cập nhật giao diện người dùng dựa trên dữ liệu nhập vào mà không cần phải thao tác DOM thủ công mỗi lần. Việc triển khai skill use-dom tương đối đơn giản, giúp các lập trình viên ở mọi cấp độ đều có thể tiếp cận dễ dàng. Nó tích hợp liền mạch vào các quy trình làm việc ưu tiên AI (AI-first workflow) hiện có, cho phép các đội ngũ tận dụng sức mạnh tự động hóa của AI để cải tiến quy trình phát triển. Khi các ứng dụng web không ngừng phát triển, việc tích hợp các skill như use-dom vào bộ công cụ của bạn sẽ mang lại quy trình phát triển hiệu quả và tối ưu hơn.\nTự động hóa việc xác thực biểu mẫu (form validation) và hiển thị thông báo lỗi theo thời gian thực để cải thiện trải nghiệm người dùng.\nCập nhật động nội dung trang dựa trên tương tác của người dùng, chẳng hạn như click chuột hoặc thay đổi dữ liệu nhập vào.\nTạo các thiết kế đáp ứng (responsive design) tự động điều chỉnh theo các kích thước và hướng màn hình khác nhau.\nQuản lý hiệu quả các trình lắng nghe sự kiện (event listener) cho các phần tử tương tác nhằm cải thiện hiệu năng và khả năng bảo trì.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/expo/skills`",
+    "usage_vi": "```\nSử dụng skill use-dom, hãy tạo một hàm JavaScript thực hiện [ACTION] trong DOM của [WEBSITE]. Hàm này cần [SPECIFIC TASK] và trả về kết quả dưới định dạng [FORMAT]. Đảm bảo hàm xử lý các trường hợp [ERROR CONDITIONS] một cách khéo léo.\n```\nCopy\n\n```\nDưới đây là một hàm JavaScript sử dụng skill use-dom để cào (scrape) giá sản phẩm từ một trang thương mại điện tử và tính giá trung bình:\n\n```javascript\nfunction getAverageProductPrice() {\n  const prices = [];\n  const priceElements = document.querySelectorAll('.product-price');\n  priceElements.forEach(element => {\n    const priceText = element.textContent.trim();\n    const price = parseFloat(priceText.replace(/[^0-9.-]+/g, ''));\n    if (!isNaN(price)) {\n      prices.push(price);\n    }\n  });\n  if (prices.length === 0) {\n    throw new Error('No valid prices found');\n  }\n  const averagePrice = prices.reduce((sum, price) => sum + price, 0) / prices.length;\n  return averagePrice;\n}\n\n// Cách dùng:\ntry {\n  const averagePrice = getAverageProductPrice();\n  console.log(`The average product price is $${averagePrice.toFixed(2)}`);\n} catch (error) {\n  console.error(error.message);\n}\n```\n\nHàm này chọn tất cả các phần tử có class 'product-price', trích xuất giá trị giá cả, chuyển đổi chúng thành dạng số và tính trung bình cộng. Hàm xử lý các định dạng giá không hợp lệ bằng cách bỏ qua chúng và ném ra lỗi (throw error) nếu không tìm thấy mức giá hợp lệ nào.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:24:12.678491Z",
+    "http_status": 200,
+    "content_hash": "e98b5f4ab88672fb999e2c4bd818af4cae9cfd222fa19c4d3b921d002771b445",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\use-dom.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\use-dom.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "use-dom: Thao tác DOM",
+  "short_description_vi": "Skill Claude Code use-dom cho phép các lập trình viên tương tác và thao tác với Document Object Model (DOM) trong các ứng dụng web một cách liền mạch. Skill này tối ưu hóa quy trình tự động hóa bằng cách đơn giản hóa các thao tác DOM, giúp tiết kiệm thời gian phát triển quý báu."
+}

@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/logseq-db-plugin-api-skill",
+  "slug": "logseq-db-plugin-api-skill",
+  "name": "Logseq DB Plugin API Skill",
+  "headline": "Logseq DB Plugin API Skill - Develop Logseq Plugins",
+  "short_description": "Develop Logseq plugins for DB graphs with tag/class management, property handling, and import workflows. Ideal for operations teams automating knowledge management. Connects to Logseq's plugin API for integration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "kerim",
+  "install_command": "git clone https://github.com/kerim/logseq-db-plugin-api-skill.git",
+  "source_repo_url": "https://github.com/kerim/logseq-db-plugin-api-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill provides comprehensive knowledge for developing Logseq plugins for DB (database) graph architecture. It covers the complete plugin API including tag and class management with corrected method names, property handling with full upsertProperty signatures, icon management, tag inheritance, and Datalog query patterns for complex data retrieval. The skill includes authoritative upstream documentation mirrored from logseq/logseq core, production-tested patterns for tag hierarchies and disjunctive queries, and modular reference files for efficient learning. Developers building plugins for Logseq DB graphs gain access to real-world pitfalls, type definitions, Vite bundling setup, and integration patterns verified against TypeScript definitions.\nAutomate tag and property management in Logseq DB graphs\nQuery complex tag hierarchies and inherited relationships with Datalog\nBuild knowledge management plugins for operations teams\nCreate DB graph import and data transformation workflows",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kerim/logseq-db-plugin-api-skill`",
+    "usage": "```\nCreate a Logseq plugin that automates the following tasks for [COMPANY] in the [INDUSTRY] sector: 1) Tag and class management for [SPECIFIC_DATA_TYPE], 2) Property handling for [SPECIFIC_PROPERTIES], and 3) Import workflows from [SOURCE_SYSTEM]. Ensure the plugin integrates seamlessly with Logseq's plugin API and provides error handling for common edge cases.\n```\nCopy\n\n```\n# Logseq Plugin Design for [COMPANY] Knowledge Management",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "logseq-db-plugin-api-skill#main-content",
+      "logseq-db-plugin-api-skill#overview",
+      "logseq-db-plugin-api-skill#setup",
+      "logseq-db-plugin-api-skill#examples",
+      "logseq-db-plugin-api-skill#tools",
+      "logseq-db-plugin-api-skill#mcp",
+      "logseq-db-plugin-api-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill này cung cấp kiến thức toàn diện để phát triển các plugin Logseq dành cho kiến trúc DB (database) graph. Nội dung bao gồm toàn bộ plugin API, gồm quản lý tag và class với các tên method đã được chuẩn hóa, xử lý thuộc tính với đầy đủ signature của upsertProperty, quản lý icon, kế thừa tag, và các pattern truy vấn Datalog để truy xuất dữ liệu phức tạp. Skill này cũng tích hợp tài liệu upstream chuẩn xác được mirror từ logseq/logseq core, các pattern đã được kiểm chứng thực tế (production-tested) cho cấu trúc phân cấp tag và truy vấn tuyển (disjunctive query), cùng các file tham chiếu dạng module giúp học tập hiệu quả. Các nhà phát triển plugin cho Logseq DB graph sẽ nắm được các lỗi thường gặp trong thực tế, các định nghĩa kiểu dữ liệu (type definitions), cấu hình bundling với Vite, và các pattern tích hợp đã được xác thực với định nghĩa TypeScript.\nTự động hóa việc quản lý tag và property trong Logseq DB graph\nTruy vấn các cấu trúc phân cấp tag phức tạp và quan hệ kế thừa bằng Datalog\nXây dựng các plugin quản lý tri thức cho các đội ngũ vận hành\nTạo các quy trình import và chuyển đổi dữ liệu cho DB graph",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Hãy kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/kerim/logseq-db-plugin-api-skill`",
+    "usage_vi": "```\nTạo một plugin Logseq giúp tự động hóa các tác vụ sau cho [COMPANY] trong lĩnh vực [INDUSTRY]: 1) Quản lý tag và class cho [SPECIFIC_DATA_TYPE], 2) Xử lý property cho [SPECIFIC_PROPERTIES], và 3) Quy trình import từ [SOURCE_SYSTEM]. Đảm bảo plugin tích hợp mượt mà với plugin API của Logseq và có xử lý lỗi cho các trường hợp biên (edge case) phổ biến.\n```\nCopy\n\n```\n# Thiết kế Plugin Logseq cho Quản lý Tri thức của [COMPANY]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:16:59.594078Z",
+    "http_status": 200,
+    "content_hash": "7738ea90baf94f3bdcf79f8298914e4a9cb3c9a3d857d22faa750b1aa65dea6d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\logseq-db-plugin-api-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\logseq-db-plugin-api-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Logseq DB Plugin API Skill - Phát triển Plugin Logseq",
+  "short_description_vi": "Phát triển các plugin Logseq cho DB graph với tính năng quản lý tag/class, xử lý property và quy trình import dữ liệu. Phù hợp cho các đội ngũ vận hành muốn tự động hóa việc quản lý tri thức. Kết nối trực tiếp với plugin API của Logseq để tích hợp."
+}

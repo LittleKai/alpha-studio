@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codex-claude-skill",
+  "slug": "codex-claude-skill",
+  "name": "browser-use",
+  "headline": "Codex Review Skill: Code Reviews in Claude Code",
+  "short_description": "A Claude Code skill that integrates OpenAI Codex CLI for independent code reviews - enabling proposer-checker-maker-checker workflows",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "adampaulwalker",
+  "install_command": "git clone https://github.com/adampaulwalker/codex-claude-skill.git",
+  "source_repo_url": "https://github.com/adampaulwalker/codex-claude-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Codex Review Skill for Claude Code enables seamless code reviews by integrating OpenAI's Codex CLI directly into your Claude Code session. Instead of copy-pasting code between terminals, invoke the skill with /codex to get comprehensive reviews of uncommitted changes, specific files, or implementation plans. The skill automates proposer-checker-maker-checker workflows, allowing you to implement code, request independent reviews, fix issues, and validate improvements all within one terminal. Perfect for catching bugs before deployment, getting second opinions on implementation approaches, and maintaining code quality without interrupting your development flow.\nReview uncommitted code changes before committing to repository\nGet independent feedback on authentication or payment flow implementations\nValidate bug fixes and improvements with Codex approval before deployment\nEnable team code review workflows in proposer-checker-maker-checker pattern",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adampaulwalker/codex-claude-skill`",
+    "usage": "```\nReview this code snippet for potential improvements. The code is in [LANGUAGE] and is designed to [PURPOSE]. Identify any issues related to [SPECIFIC_CONCERNS] such as performance, security, or readability. Provide specific suggestions for improvement and explain your reasoning. Here is the code: [CODE_SNIPPET].\n```\nCopy\n\n```\nAfter reviewing the provided Python code snippet designed to process and analyze sales data, I've identified several areas for improvement:\n\n1. **Performance**: The current implementation uses nested loops to process the data, which can be inefficient for large datasets. Consider using list comprehensions or vectorized operations with libraries like NumPy or Pandas to improve performance.\n\n2. **Security**: The code reads data from a file path provided directly by the user. This could be a security risk if the input is not properly validated. Implement input validation to ensure the file path is safe and the file is of the expected type.\n\n3. **Readability**: The function names and variable names could be more descriptive. For example, 'process_data' could be renamed to 'analyze_sales_data' to better reflect its purpose. Similarly, 'data' could be renamed to 'sales_data' to clarify its content.\n\n4. **Error Handling**: The code lacks proper error handling. Add try-except blocks to handle potential errors such as file not found, permission issues, or data format errors. This will make the code more robust and user-friendly.\n\nBy addressing these issues, the code will be more efficient, secure, and maintainable.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codex-claude-skill#main-content",
+      "codex-claude-skill#overview",
+      "codex-claude-skill#setup",
+      "codex-claude-skill#examples",
+      "codex-claude-skill#tools",
+      "codex-claude-skill#mcp",
+      "codex-claude-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Codex Review Skill for Claude Code enables seamless code reviews by integrating OpenAI's Codex CLI directly into your Claude Code session. Instead of copy-pasting code between terminals, invoke the skill with /codex to get comprehensive reviews of uncommitted changes, specific files, or implementation plans. The skill automates proposer-checker-maker-checker workflows, allowing you to implement code, request independent reviews, fix issues, and validate improvements all within one terminal. Perfect for catching bugs before deployment, getting second opinions on implementation approaches, and maintaining code quality without interrupting your development flow.\nReview uncommitted code changes before committing to repository\nGet independent feedback on authentication or payment flow implementations\nValidate bug fixes and improvements with Codex approval before deployment\nEnable team code review workflows in proposer-checker-maker-checker pattern",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adampaulwalker/codex-claude-skill`",
+    "usage_vi": "```\nReview this code snippet for potential improvements. The code is in [LANGUAGE] and is designed to [PURPOSE]. Identify any issues related to [SPECIFIC_CONCERNS] such as performance, security, or readability. Provide specific suggestions for improvement and explain your reasoning. Here is the code: [CODE_SNIPPET].\n```\nCopy\n\n```\nAfter reviewing the provided Python code snippet designed to process and analyze sales data, I've identified several areas for improvement:\n\n1. **Performance**: The current implementation uses nested loops to process the data, which can be inefficient for large datasets. Consider using list comprehensions or vectorized operations with libraries like NumPy or Pandas to improve performance.\n\n2. **Security**: The code reads data from a file path provided directly by the user. This could be a security risk if the input is not properly validated. Implement input validation to ensure the file path is safe and the file is of the expected type.\n\n3. **Readability**: The function names and variable names could be more descriptive. For example, 'process_data' could be renamed to 'analyze_sales_data' to better reflect its purpose. Similarly, 'data' could be renamed to 'sales_data' to clarify its content.\n\n4. **Error Handling**: The code lacks proper error handling. Add try-except blocks to handle potential errors such as file not found, permission issues, or data format errors. This will make the code more robust and user-friendly.\n\nBy addressing these issues, the code will be more efficient, secure, and maintainable.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:46.550172Z",
+    "http_status": 200,
+    "content_hash": "06240e89e9346340ffd1143714259effbc67d2d1bb4cc26c3e49dfe32d65b7b0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codex-claude-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\codex-claude-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Codex Review Skill: Code Reviews in Claude Code",
+  "short_description_vi": "A Claude Code skill that integrates OpenAI Codex CLI for independent code reviews - enabling proposer-checker-maker-checker workflows"
+}

@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudian",
+  "slug": "claudian",
+  "name": "claudian",
+  "headline": "Claudian: AI Collaboration in Obsidian",
+  "short_description": "Claudian is an innovative Obsidian plugin that integrates Claude Code as an AI collaborator within your vault, enhancing productivity and coding efficiency. It uses advanced AI capabilities to assist users in their development workflows seamlessly.",
+  "tier": "Gold",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "YishenTu",
+  "install_command": "claude install YishenTu/claudian",
+  "source_repo_url": "https://github.com/YishenTu/claudian",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "productivity",
+    "development",
+    "obsidian-plugin",
+    "ai-agent",
+    "claude"
+  ],
+  "sections": {
+    "overview": "Claudian brings Claude AI capabilities directly into Obsidian as a native plugin, allowing you to leverage AI assistance without leaving your vault. The plugin integrates with Claude Code to support AI-assisted development and knowledge work within your note-taking environment. It supports multiple AI providers through a provider-neutral architecture, including Claude and Codex, with configurable thinking levels and effort settings to customize AI assistance intensity. Claudian enables inline editing, context-aware interactions, and vault-integrated workflows, making it suitable for developers and knowledge workers who want seamless AI collaboration alongside their documentation and code.\nIntegrate AI assistance in note-taking to enhance content generation and organization.\nAutomate repetitive coding tasks within Obsidian, saving time and reducing errors.\nEnhance project management by utilizing AI collaboration for task tracking and updates.\nStreamline documentation processes with AI-generated summaries and insights.",
+    "setup": "Terminal\nCopy\n`claude install YishenTu/claudian`\n`git clone https://github.com/YishenTu/claudian`",
+    "usage": "```\nI'm using Claudian in Obsidian to [DESCRIBE_TASK]. I need help with [SPECIFIC_PROBLEM]. Can you provide a step-by-step solution or code snippet to help me accomplish this? Here's what I've tried so far: [DESCRIBE_ATTEMPTS].\n```\nCopy\n\n```\nBased on your description, it seems you're trying to automate note-taking from your Productiv financial reports. Here's a Python script you can run through Claudian to extract key data and create structured notes in your Obsidian vault:\n\n```python\nimport requests\nimport json\n\n# Productiv API endpoint\nurl = \"https://api.productiv.com/reports/financial\"\n\n# Headers with your API key\nheaders = {\n    \"Authorization\": \"Bearer YOUR_API_KEY\",\n    \"Content-Type\": \"application/json\"\n}\n\n# Make the API request\nresponse = requests.get(url, headers=headers)\n\n# Parse the JSON response\ndata = json.loads(response.text)\n\n# Process the data and create notes\nfor report in data['reports']:\n    note_content = f\"# {report['title']}\\n\\n## Key Metrics:\\n- Revenue: {report['revenue']}\\n- Expenses: {report['expenses']}\\n- Profit: {report['profit']}\\n\\n## Analysis:\\n{report['analysis']}\"\n    \n    # Save the note to your Obsidian vault\n    with open(f\"vault/notes/{report['title']}.md\", \"w\") as note_file:\n        note_file.write(note_content)\n```\n\nTo use this script:\n1. Replace `YOUR_API_KEY` with your actual Productiv API key\n2. Ensure your Obsidian vault path is correct\n3. Run the script through Claudian\n4. The notes will be created in your specified vault directory\n\nWould you like me to modify this script to better fit your specific needs?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudian#main-content",
+      "claudian#overview",
+      "claudian#setup",
+      "claudian#examples",
+      "claudian#tools",
+      "claudian#mcp",
+      "claudian#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Claudian brings Claude AI capabilities directly into Obsidian as a native plugin, allowing you to leverage AI assistance without leaving your vault. The plugin integrates with Claude Code to support AI-assisted development and knowledge work within your note-taking environment. It supports multiple AI providers through a provider-neutral architecture, including Claude and Codex, with configurable thinking levels and effort settings to customize AI assistance intensity. Claudian enables inline editing, context-aware interactions, and vault-integrated workflows, making it suitable for developers and knowledge workers who want seamless AI collaboration alongside their documentation and code.\nIntegrate AI assistance in note-taking to enhance content generation and organization.\nAutomate repetitive coding tasks within Obsidian, saving time and reducing errors.\nEnhance project management by utilizing AI collaboration for task tracking and updates.\nStreamline documentation processes with AI-generated summaries and insights.",
+    "setup_vi": "Terminal\nCopy\n`claude install YishenTu/claudian`\n`git clone https://github.com/YishenTu/claudian`",
+    "usage_vi": "```\nI'm using Claudian in Obsidian to [DESCRIBE_TASK]. I need help with [SPECIFIC_PROBLEM]. Can you provide a step-by-step solution or code snippet to help me accomplish this? Here's what I've tried so far: [DESCRIBE_ATTEMPTS].\n```\nCopy\n\n```\nBased on your description, it seems you're trying to automate note-taking from your Productiv financial reports. Here's a Python script you can run through Claudian to extract key data and create structured notes in your Obsidian vault:\n\n```python\nimport requests\nimport json\n\n# Productiv API endpoint\nurl = \"https://api.productiv.com/reports/financial\"\n\n# Headers with your API key\nheaders = {\n    \"Authorization\": \"Bearer YOUR_API_KEY\",\n    \"Content-Type\": \"application/json\"\n}\n\n# Make the API request\nresponse = requests.get(url, headers=headers)\n\n# Parse the JSON response\ndata = json.loads(response.text)\n\n# Process the data and create notes\nfor report in data['reports']:\n    note_content = f\"# {report['title']}\\n\\n## Key Metrics:\\n- Revenue: {report['revenue']}\\n- Expenses: {report['expenses']}\\n- Profit: {report['profit']}\\n\\n## Analysis:\\n{report['analysis']}\"\n    \n    # Save the note to your Obsidian vault\n    with open(f\"vault/notes/{report['title']}.md\", \"w\") as note_file:\n        note_file.write(note_content)\n```\n\nTo use this script:\n1. Replace `YOUR_API_KEY` with your actual Productiv API key\n2. Ensure your Obsidian vault path is correct\n3. Run the script through Claudian\n4. The notes will be created in your specified vault directory\n\nWould you like me to modify this script to better fit your specific needs?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:59.391547Z",
+    "http_status": 200,
+    "content_hash": "5d2a76dcbf5f7c4d90b49c3d46a6b4a1c9d45a019ca4c08e39e70a7c1b5a3165",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudian.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudian.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claudian: AI Collaboration in Obsidian",
+  "short_description_vi": "Claudian is an innovative Obsidian plugin that integrates Claude Code as an AI collaborator within your vault, enhancing productivity and coding efficiency. It uses advanced AI capabilities to assist users in their development workflows seamlessly."
+}

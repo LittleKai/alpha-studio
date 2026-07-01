@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vercel-composition-patterns",
+  "slug": "vercel-composition-patterns",
+  "name": "vercel-react-native-skills",
+  "headline": "vercel-composition-patterns: Workflows",
+  "short_description": "The vercel-composition-patterns skill enhances AI automation by providing a structured way to compose and manage complex workflows. This skill simplifies integration for developers, saving time and improving efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "vercel-labs",
+  "install_command": "git clone https://github.com/vercel-labs/agent-skills.git",
+  "source_repo_url": "https://github.com/vercel-labs/agent-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The vercel-composition-patterns skill is designed to streamline the creation and management of complex workflows within AI automation. By leveraging this skill, developers can easily compose various components into cohesive workflows, enhancing the overall efficiency of their applications. This skill is particularly beneficial for those working with AI agents, as it allows for seamless integration and orchestration of tasks. One of the key benefits of the vercel-composition-patterns skill is the significant time savings it offers. By utilizing predefined patterns and components, developers can reduce the time spent on repetitive tasks and focus on more critical aspects of their projects. This not only accelerates development cycles but also minimizes the potential for errors, resulting in more robust applications. This skill is ideal for developers, product managers, and AI practitioners who are looking to optimize their workflow automation processes. It is particularly useful for teams that require a high level of collaboration and need to manage multiple workflows simultaneously. For example, a product manager could use this skill to automate the deployment of updates across various environments, ensuring that all team members are on the same page. Implementation of the vercel-composition-patterns skill is relatively straightforward, making it accessible even for those with limited experience in AI automation. It fits seamlessly into AI-first workflows, allowing teams to harness the full potential of AI agents while maintaining control over their processes. With its growing popularity, evidenced by 6383 installs, this skill is a valuable addition to any developer's toolkit.\nAutomating deployment processes for web applications to ensure faster and more reliable releases.\nIntegrating multiple APIs into a single workflow to streamline data retrieval and processing.\nCreating reusable workflow templates that enhance team collaboration and reduce setup time for new projects.\nStreamlining data processing tasks across different environments to maintain consistency and accuracy.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vercel-labs/agent-skills`",
+    "usage": "```\nGenerate a Vercel composition pattern for a [PROJECT_TYPE] project. The pattern should include [NUMBER] steps, each with specific actions and dependencies. Ensure the pattern is optimized for [SPECIFIC_GOAL], such as performance, scalability, or maintainability.\n```\nCopy\n\n```\nHere's a Vercel composition pattern for a Next.js e-commerce project aimed at improving performance:\n\n1. **Static Site Generation (SSG) for Product Pages**:\n   - Action: Generate static pages for all products at build time.\n   - Dependencies: Product data from CMS, build script.\n   - Output: Static HTML pages for each product.\n\n2. **Incremental Static Regeneration (ISR) for Product Updates**:\n   - Action: Set up ISR to update product pages every 60 seconds.\n   - Dependencies: Product data changes, ISR configuration.\n   - Output: Updated static pages for changed products.\n\n3. **API Routes for Dynamic Data**:\n   - Action: Create API routes for real-time data like inventory and pricing.\n   - Dependencies: Database connection, API route handlers.\n   - Output: Dynamic API endpoints for client-side data fetching.\n\n4. **Edge Functions for A/B Testing**:\n   - Action: Implement edge functions to serve different versions of the homepage.\n   - Dependencies: A/B testing configuration, edge function handlers.\n   - Output: Dynamic homepage variations based on user segments.\n\n5. **Monitoring and Analytics**:\n   - Action: Integrate monitoring tools to track performance and errors.\n   - Dependencies: Monitoring service API, logging configuration.\n   - Output: Real-time performance metrics and error logs.\n\nThis pattern ensures that the e-commerce site is fast, scalable, and easy to maintain, with a seamless user experience.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vercel-composition-patterns#main-content",
+      "vercel-composition-patterns#overview",
+      "vercel-composition-patterns#setup",
+      "vercel-composition-patterns#examples",
+      "vercel-composition-patterns#tools",
+      "vercel-composition-patterns#mcp",
+      "vercel-composition-patterns#related",
+      "find-skills",
+      "browser-use",
+      "vercel-react-native-skills"
+    ],
+    "overview_vi": "The vercel-composition-patterns skill is designed to streamline the creation and management of complex workflows within AI automation. By leveraging this skill, developers can easily compose various components into cohesive workflows, enhancing the overall efficiency of their applications. This skill is particularly beneficial for those working with AI agents, as it allows for seamless integration and orchestration of tasks. One of the key benefits of the vercel-composition-patterns skill is the significant time savings it offers. By utilizing predefined patterns and components, developers can reduce the time spent on repetitive tasks and focus on more critical aspects of their projects. This not only accelerates development cycles but also minimizes the potential for errors, resulting in more robust applications. This skill is ideal for developers, product managers, and AI practitioners who are looking to optimize their workflow automation processes. It is particularly useful for teams that require a high level of collaboration and need to manage multiple workflows simultaneously. For example, a product manager could use this skill to automate the deployment of updates across various environments, ensuring that all team members are on the same page. Implementation of the vercel-composition-patterns skill is relatively straightforward, making it accessible even for those with limited experience in AI automation. It fits seamlessly into AI-first workflows, allowing teams to harness the full potential of AI agents while maintaining control over their processes. With its growing popularity, evidenced by 6383 installs, this skill is a valuable addition to any developer's toolkit.\nAutomating deployment processes for web applications to ensure faster and more reliable releases.\nIntegrating multiple APIs into a single workflow to streamline data retrieval and processing.\nCreating reusable workflow templates that enhance team collaboration and reduce setup time for new projects.\nStreamlining data processing tasks across different environments to maintain consistency and accuracy.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/vercel-labs/agent-skills`",
+    "usage_vi": "```\nGenerate a Vercel composition pattern for a [PROJECT_TYPE] project. The pattern should include [NUMBER] steps, each with specific actions and dependencies. Ensure the pattern is optimized for [SPECIFIC_GOAL], such as performance, scalability, or maintainability.\n```\nCopy\n\n```\nHere's a Vercel composition pattern for a Next.js e-commerce project aimed at improving performance:\n\n1. **Static Site Generation (SSG) for Product Pages**:\n   - Action: Generate static pages for all products at build time.\n   - Dependencies: Product data from CMS, build script.\n   - Output: Static HTML pages for each product.\n\n2. **Incremental Static Regeneration (ISR) for Product Updates**:\n   - Action: Set up ISR to update product pages every 60 seconds.\n   - Dependencies: Product data changes, ISR configuration.\n   - Output: Updated static pages for changed products.\n\n3. **API Routes for Dynamic Data**:\n   - Action: Create API routes for real-time data like inventory and pricing.\n   - Dependencies: Database connection, API route handlers.\n   - Output: Dynamic API endpoints for client-side data fetching.\n\n4. **Edge Functions for A/B Testing**:\n   - Action: Implement edge functions to serve different versions of the homepage.\n   - Dependencies: A/B testing configuration, edge function handlers.\n   - Output: Dynamic homepage variations based on user segments.\n\n5. **Monitoring and Analytics**:\n   - Action: Integrate monitoring tools to track performance and errors.\n   - Dependencies: Monitoring service API, logging configuration.\n   - Output: Real-time performance metrics and error logs.\n\nThis pattern ensures that the e-commerce site is fast, scalable, and easy to maintain, with a seamless user experience.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:19:55.121434Z",
+    "http_status": 200,
+    "content_hash": "3098ce45500a94b3d85f09952c5c2d63ca8aaa925cf8312db7eee6c8c9ce76f2",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vercel-composition-patterns.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\vercel-composition-patterns.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "vercel-composition-patterns: Workflows",
+  "short_description_vi": "The vercel-composition-patterns skill enhances AI automation by providing a structured way to compose and manage complex workflows. This skill simplifies integration for developers, saving time and improving efficiency."
+}

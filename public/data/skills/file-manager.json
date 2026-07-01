@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/file-manager",
+  "slug": "file-manager",
+  "name": "xdrop",
+  "headline": "File-Manager: Command-Line File Operations",
+  "short_description": "The file-manager skill allows users to easily manage files from the command line. It's intended for developers looking for streamlined file operations in their projects.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "ninehills",
+  "install_command": "git clone https://github.com/ninehills/skills",
+  "source_repo_url": "https://github.com/ninehills/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "file-management",
+    "manager",
+    "file"
+  ],
+  "sections": {
+    "overview": "The file-manager skill provides command-line file management capabilities for AI agents running on Claude Code, Cursor, and compatible platforms. It integrates seamlessly with the skills-manager installation system, which uses symbolic links to deploy skills across multiple agent directories including ~/.claude/skills, ~/.codex/skills, ~/.pi/agent/skills, and ~/.hermes/skills. Developers use this skill to perform file operations directly from their agent environment, eliminating context switching and enabling more efficient project workflows. The skill works in conjunction with Shyft's broader skills ecosystem, allowing agents to discover, install, and manage additional capabilities as needed.\nAdd new files to your project easily\nDelete files using command line\nOrganize files in directories with simple commands",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/ninehills/skills --skill file-manager`\n`git clone https://github.com/ninehills/skills`",
+    "usage": "```\nAct as a file manager for [COMPANY]'s [PROJECT_NAME] repository. List all files in the current directory, filter by [FILE_EXTENSION], and show the top 5 largest files by size. Then, create a new directory called 'temp' and move the 3 oldest files from the current directory into it. Finally, compress the 'temp' directory into a .zip file named 'old_files_archive.zip'.\n```\nCopy\n\n```\n```\n### Current Directory Contents\n**Total Files:** 12\n**Filtered by `.log`:** 4 files\n\n#### Top 5 Largest Files (by size)\n1. `debug.log` - 45.2 MB\n2. `app.log` - 12.8 MB\n3. `server.log` - 8.3 MB\n4. `error.log` - 6.1 MB\n5. `access.log` - 4.7 MB\n\n#### Oldest Files (by modification time)\n1. `config.ini` - Last modified: 2023-10-01 09:15:22\n2. `backup.sql` - Last modified: 2023-10-05 14:30:10\n3. `readme.md` - Last modified: 2023-10-07 11:45:05\n\n### Actions Completed\n✅ Created directory: `temp/`\n✅ Moved files into `temp/`:\n   - `config.ini`\n   - `backup.sql`\n   - `readme.md`\n✅ Compressed `temp/` into `old_files_archive.zip` (18.2 MB)\n\n**Next Steps:**\n- Verify the archive contents with `unzip -l old_files_archive.zip`\n- Delete the original files if no longer needed.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "file-manager#main-content",
+      "file-manager#overview",
+      "file-manager#setup",
+      "file-manager#examples",
+      "file-manager#tools",
+      "file-manager#mcp",
+      "file-manager#related",
+      "xdrop"
+    ],
+    "overview_vi": "The file-manager skill provides command-line file management capabilities for AI agents running on Claude Code, Cursor, and compatible platforms. It integrates seamlessly with the skills-manager installation system, which uses symbolic links to deploy skills across multiple agent directories including ~/.claude/skills, ~/.codex/skills, ~/.pi/agent/skills, and ~/.hermes/skills. Developers use this skill to perform file operations directly from their agent environment, eliminating context switching and enabling more efficient project workflows. The skill works in conjunction with Shyft's broader skills ecosystem, allowing agents to discover, install, and manage additional capabilities as needed.\nAdd new files to your project easily\nDelete files using command line\nOrganize files in directories with simple commands",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/ninehills/skills --skill file-manager`\n`git clone https://github.com/ninehills/skills`",
+    "usage_vi": "```\nAct as a file manager for [COMPANY]'s [PROJECT_NAME] repository. List all files in the current directory, filter by [FILE_EXTENSION], and show the top 5 largest files by size. Then, create a new directory called 'temp' and move the 3 oldest files from the current directory into it. Finally, compress the 'temp' directory into a .zip file named 'old_files_archive.zip'.\n```\nCopy\n\n```\n```\n### Current Directory Contents\n**Total Files:** 12\n**Filtered by `.log`:** 4 files\n\n#### Top 5 Largest Files (by size)\n1. `debug.log` - 45.2 MB\n2. `app.log` - 12.8 MB\n3. `server.log` - 8.3 MB\n4. `error.log` - 6.1 MB\n5. `access.log` - 4.7 MB\n\n#### Oldest Files (by modification time)\n1. `config.ini` - Last modified: 2023-10-01 09:15:22\n2. `backup.sql` - Last modified: 2023-10-05 14:30:10\n3. `readme.md` - Last modified: 2023-10-07 11:45:05\n\n### Actions Completed\n✅ Created directory: `temp/`\n✅ Moved files into `temp/`:\n   - `config.ini`\n   - `backup.sql`\n   - `readme.md`\n✅ Compressed `temp/` into `old_files_archive.zip` (18.2 MB)\n\n**Next Steps:**\n- Verify the archive contents with `unzip -l old_files_archive.zip`\n- Delete the original files if no longer needed.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:26:13.276717Z",
+    "http_status": 200,
+    "content_hash": "ab5308b6f2609292272f7855abae752f88c5cba116da2f486cdf5ecced7e633c",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\file-manager.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\file-manager.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "File-Manager: Command-Line File Operations",
+  "short_description_vi": "The file-manager skill allows users to easily manage files from the command line. It's intended for developers looking for streamlined file operations in their projects."
+}

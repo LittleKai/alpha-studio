@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibium",
+  "slug": "vibium",
+  "name": "vibium",
+  "headline": "Vibium: Browser Automation for AI and Humans",
+  "short_description": "Vibium is a powerful browser automation tool designed for both AI agents and human users, streamlining repetitive tasks and enhancing productivity. With its strong capabilities, Vibium helps teams to automate workflows and improve efficiency in various applications.",
+  "tier": "Gold",
+  "category": "RevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "VibiumDev",
+  "install_command": "claude install VibiumDev/vibium",
+  "source_repo_url": "https://github.com/VibiumDev/vibium",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "browser automation",
+    "Go",
+    "open source",
+    "AI agents",
+    "workflow automation"
+  ],
+  "sections": {
+    "overview": "Vibium is a browser automation tool designed to work with AI agents and human users, automating repetitive web-based tasks and workflows. The tool provides recording capabilities that capture browser interactions with detailed event tracking, including tracing and network data. Vibium supports multi-tab automation and offers a command-line interface for managing browser installations and automation sessions. It integrates with multiple client libraries including Java and Python, making it accessible across different development environments. Teams use Vibium to improve efficiency by automating routine web interactions and freeing up resources for higher-value work.\nAutomate data entry tasks in web applications to save time and reduce errors.\nScrape web data for market research, gathering insights quickly and efficiently.\nTest web applications for functionality, ensuring that all features work as intended.\nAutomate repetitive browsing tasks, such as filling out forms or navigating through multiple pages.",
+    "setup": "Terminal\nCopy\n`claude install VibiumDev/vibium`\n`git clone https://github.com/VibiumDev/vibium`",
+    "usage": "```\nAutomate the process of extracting financial data from [WEBSITE] using Vibium. Set up a workflow to scrape [SPECIFIC_DATA_POINTS] such as revenue, expenses, and profit margins. Schedule this task to run [FREQUENCY] and export the results to [DESTINATION] in [FILE_FORMAT]. Ensure the data is formatted for easy integration with Productiv for further analysis.\n```\nCopy\n\n```\nThe Vibium automation workflow has been successfully set up to extract financial data from the specified website. The workflow is configured to scrape revenue, expenses, and profit margins on a weekly basis. The data will be exported to a CSV file and saved in the designated Google Drive folder. The CSV file is formatted with headers for easy integration with Productiv for further analysis. The automation will run every Monday at 9 AM and send a notification upon completion.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "vibium#main-content",
+      "vibium#overview",
+      "vibium#setup",
+      "vibium#examples",
+      "vibium#tools",
+      "vibium#mcp",
+      "vibium#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Vibium là công cụ tự động hóa trình duyệt được thiết kế để tương thích với cả AI agent và người dùng, giúp tự động hóa các tác vụ và quy trình làm việc lặp đi lặp lại trên web. Công cụ này cung cấp tính năng recording giúp ghi lại các tương tác trên trình duyệt với cơ chế theo dõi sự kiện chi tiết, bao gồm cả tracing và dữ liệu network. Vibium hỗ trợ tự động hóa đa tab (multi-tab) và cung cấp giao diện dòng lệnh (CLI) để quản lý các phiên cài đặt trình duyệt và session tự động hóa. Nó tích hợp linh hoạt với nhiều thư viện client như Java và Python, giúp dễ dàng triển khai trên các môi trường phát triển khác nhau. Các đội ngũ phát triển sử dụng Vibium để nâng cao hiệu suất nhờ tự động hóa các tương tác web thông thường, giải phóng nguồn lực cho các công việc có giá trị cao hơn.\n\nTự động hóa các tác vụ nhập liệu trên ứng dụng web để tiết kiệm thời gian và giảm thiểu sai sót.\nThu thập dữ liệu web (web scraping) phục vụ nghiên cứu thị trường, thu nhận thông tin chi tiết một cách nhanh chóng và hiệu quả.\nKiểm thử chức năng ứng dụng web, đảm bảo mọi tính năng hoạt động đúng như thiết kế.\nTự động hóa các tác vụ duyệt web lặp đi lặp lại, như điền form hoặc điều hướng qua nhiều trang khác nhau.",
+    "setup_vi": "Terminal\nSao chép\n`claude install VibiumDev/vibium`\n`git clone https://github.com/VibiumDev/vibium`",
+    "usage_vi": "```\nTự động hóa quy trình trích xuất dữ liệu tài chính từ [WEBSITE] sử dụng Vibium. Thiết lập một workflow để scrape [SPECIFIC_DATA_POINTS] như doanh thu, chi phí và biên lợi nhuận. Lên lịch chạy tác vụ này theo [FREQUENCY] và xuất kết quả ra [DESTINATION] dưới định dạng [FILE_FORMAT]. Đảm bảo dữ liệu được định dạng để dễ dàng tích hợp với Productiv nhằm phục vụ phân tích sâu hơn.\n```\nSao chép\n\n```\nWorkflow tự động hóa của Vibium đã được thiết lập thành công để trích xuất dữ liệu tài chính từ website được chỉ định. Workflow được cấu hình để scrape doanh thu, chi phí và biên lợi nhuận theo tần suất hàng tuần. Dữ liệu sẽ được xuất ra file CSV và lưu vào thư mục Google Drive được chỉ định. File CSV được định dạng kèm header để dễ dàng tích hợp với Productiv nhằm phân tích sâu hơn. Quy trình tự động hóa sẽ chạy vào mỗi thứ Hai lúc 9 giờ sáng và gửi thông báo sau khi hoàn tất.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:27:28.721247Z",
+    "http_status": 200,
+    "content_hash": "9612ea77a029b25fb2c3e03f9d5dc210f9b064928c3d5ca021f0d154f852ec1d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibium.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibium.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Vibium: Tự động hóa trình duyệt dành cho AI và người dùng",
+  "short_description_vi": "Vibium là công cụ tự động hóa trình duyệt mạnh mẽ được thiết kế cho cả AI agent và người dùng, giúp tối giản các tác vụ lặp đi lặp lại và nâng cao năng suất. Với các tính năng vượt trội, Vibium hỗ trợ các đội ngũ tự động hóa quy trình làm việc và tối ưu hóa hiệu quả trên nhiều ứng dụng khác nhau."
+}

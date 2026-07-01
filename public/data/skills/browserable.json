@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/browserable",
+  "slug": "browserable",
+  "name": "langchain-salesforce",
+  "headline": "Browserable: AI-Powered Browser Automation Library",
+  "short_description": "Browserable is an open-source, self-hostable browser automation library designed for AI agents. It enables interaction with web pages, making it ideal for deep research and automation tasks in various applications.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "browserable",
+  "install_command": "claude install browserable/browserable",
+  "source_repo_url": "https://github.com/browserable/browserable",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "deep research",
+    "JavaScript",
+    "AI tools",
+    "browser automation",
+    "open source"
+  ],
+  "sections": {
+    "overview": "Browserable is an open-source browser automation library designed specifically for AI agents like Claude Code and Cursor. It enables AI agents to interact with web pages, capture visual states, and perform automated navigation tasks. The library is self-hostable, giving users control over deployment and data privacy. Browserable supports deep research workflows and complex automation scenarios where agents need to browse, extract information, and take actions across websites. It includes a REST API, SDK, and CLI tools for flexible integration into AI agent workflows.\nAutomate the extraction of product pricing and specifications from e-commerce websites for market analysis.\nConduct competitive analysis by scraping competitor websites to gather insights on their offerings.\nTest web applications by creating AI-driven scripts that simulate user interactions and validate functionality.\nGather insights for market research by automating the collection of data from various online sources.",
+    "setup": "Terminal\nCopy\n`claude install browserable/browserable`\n`git clone https://github.com/browserable/browserable`",
+    "usage": "```\nUse the browserable library to automate a deep research task on [WEBSITE_URL]. Navigate to the [SPECIFIC_PAGE] and extract all [DATA_TYPE] (e.g., product prices, job listings, research papers). Save the results in a structured format like CSV or JSON. Include error handling for pages that load slowly or require login. Example: 'Use browserable to scrape all job postings from https://example.com/careers under the 'Software Engineer' category, including job titles, locations, and application deadlines. Save the data to a JSON file named jobs.json.'\n```\nCopy\n\n```\n```json\n{\n  \"scraped_data\": [\n    {\n      \"job_title\": \"Senior Frontend Engineer\",\n      \"location\": \"San Francisco, CA\",\n      \"application_deadline\": \"2023-12-15\",\n      \"salary_range\": \"$150,000 - $200,000\",\n      \"job_url\": \"https://example.com/careers/frontend-engineer-sf\"\n    },\n    {\n      \"job_title\": \"Backend Engineer (Remote)\",\n      \"location\": \"Anywhere\",\n      \"application_deadline\": \"2023-12-20\",\n      \"salary_range\": \"$130,000 - $180,000\",\n      \"job_url\": \"https://example.com/careers/backend-engineer-remote\"\n    },\n    {\n      \"job_title\": \"DevOps Engineer\",\n      \"location\": \"Austin, TX\",\n      \"application_deadline\": \"2023-12-10\",\n      \"salary_range\": \"$140,000 - $190,000\",\n      \"job_url\": \"https://example.com/careers/devops-engineer-austin\"\n    }\n  ],\n  \"metadata\": {\n    \"total_jobs_found\": 3,\n    \"scraped_at\": \"2023-12-05T14:30:00Z\",\n    \"source_url\": \"https://example.com/careers\",\n    \"notes\": \"All job listings were under the 'Software Engineer' category. One listing required login; browserable handled authentication via saved session cookies.\"\n  }\n}\n```\n\n**Execution Summary:**\n- Successfully navigated to https://example.com/careers/software-engineer.\n- Extracted 3 job postings by simulating clicks on 'Load More' buttons until no new jobs appeared.\n- Handled a CAPTCHA challenge by waiting 5 seconds and retrying (browserable's built-in delay mechanism).\n- Saved results to `jobs.json` in the current directory. The file includes all required fields and is ready for analysis in tools like Excel or Google Sheets.\n\n**Potential Improvements:**\n- Add a step to filter jobs by salary range (e.g., only include postings with salaries > $150,000).\n- Include a screenshot of the final page state for debugging purposes (browserable supports `screenshot()`).\n- Schedule this script to run weekly using a cron job or GitHub Actions.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "browserable#main-content",
+      "browserable#overview",
+      "browserable#setup",
+      "browserable#examples",
+      "browserable#tools",
+      "browserable#mcp",
+      "browserable#related",
+      "claude-skills",
+      "firecrawl",
+      "langchain-salesforce"
+    ],
+    "overview_vi": "Browserable is an open-source browser automation library designed specifically for AI agents like Claude Code and Cursor. It enables AI agents to interact with web pages, capture visual states, and perform automated navigation tasks. The library is self-hostable, giving users control over deployment and data privacy. Browserable supports deep research workflows and complex automation scenarios where agents need to browse, extract information, and take actions across websites. It includes a REST API, SDK, and CLI tools for flexible integration into AI agent workflows.\nAutomate the extraction of product pricing and specifications from e-commerce websites for market analysis.\nConduct competitive analysis by scraping competitor websites to gather insights on their offerings.\nTest web applications by creating AI-driven scripts that simulate user interactions and validate functionality.\nGather insights for market research by automating the collection of data from various online sources.",
+    "setup_vi": "Terminal\nCopy\n`claude install browserable/browserable`\n`git clone https://github.com/browserable/browserable`",
+    "usage_vi": "```\nUse the browserable library to automate a deep research task on [WEBSITE_URL]. Navigate to the [SPECIFIC_PAGE] and extract all [DATA_TYPE] (e.g., product prices, job listings, research papers). Save the results in a structured format like CSV or JSON. Include error handling for pages that load slowly or require login. Example: 'Use browserable to scrape all job postings from https://example.com/careers under the 'Software Engineer' category, including job titles, locations, and application deadlines. Save the data to a JSON file named jobs.json.'\n```\nCopy\n\n```\n```json\n{\n  \"scraped_data\": [\n    {\n      \"job_title\": \"Senior Frontend Engineer\",\n      \"location\": \"San Francisco, CA\",\n      \"application_deadline\": \"2023-12-15\",\n      \"salary_range\": \"$150,000 - $200,000\",\n      \"job_url\": \"https://example.com/careers/frontend-engineer-sf\"\n    },\n    {\n      \"job_title\": \"Backend Engineer (Remote)\",\n      \"location\": \"Anywhere\",\n      \"application_deadline\": \"2023-12-20\",\n      \"salary_range\": \"$130,000 - $180,000\",\n      \"job_url\": \"https://example.com/careers/backend-engineer-remote\"\n    },\n    {\n      \"job_title\": \"DevOps Engineer\",\n      \"location\": \"Austin, TX\",\n      \"application_deadline\": \"2023-12-10\",\n      \"salary_range\": \"$140,000 - $190,000\",\n      \"job_url\": \"https://example.com/careers/devops-engineer-austin\"\n    }\n  ],\n  \"metadata\": {\n    \"total_jobs_found\": 3,\n    \"scraped_at\": \"2023-12-05T14:30:00Z\",\n    \"source_url\": \"https://example.com/careers\",\n    \"notes\": \"All job listings were under the 'Software Engineer' category. One listing required login; browserable handled authentication via saved session cookies.\"\n  }\n}\n```\n\n**Execution Summary:**\n- Successfully navigated to https://example.com/careers/software-engineer.\n- Extracted 3 job postings by simulating clicks on 'Load More' buttons until no new jobs appeared.\n- Handled a CAPTCHA challenge by waiting 5 seconds and retrying (browserable's built-in delay mechanism).\n- Saved results to `jobs.json` in the current directory. The file includes all required fields and is ready for analysis in tools like Excel or Google Sheets.\n\n**Potential Improvements:**\n- Add a step to filter jobs by salary range (e.g., only include postings with salaries > $150,000).\n- Include a screenshot of the final page state for debugging purposes (browserable supports `screenshot()`).\n- Schedule this script to run weekly using a cron job or GitHub Actions.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:29:14.589902Z",
+    "http_status": 200,
+    "content_hash": "075733e13321b1b05830d552de6555d0a702fec9d3fae4dee1c3919348f8cc62",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\browserable.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\browserable.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Browserable: AI-Powered Browser Automation Library",
+  "short_description_vi": "Browserable is an open-source, self-hostable browser automation library designed for AI agents. It enables interaction with web pages, making it ideal for deep research and automation tasks in various applications."
+}

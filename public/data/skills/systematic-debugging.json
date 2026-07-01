@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/systematic-debugging",
+  "slug": "systematic-debugging",
+  "name": "Systematic Debugging",
+  "headline": "systematic-debugging: Debugging",
+  "short_description": "The systematic-debugging skill enhances the debugging process by automating systematic checks and error identification in code. This results in faster issue resolution, saving developers valuable time and effort.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "obra",
+  "install_command": "git clone https://github.com/obra/superpowers.git",
+  "source_repo_url": "https://github.com/obra/superpowers",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The systematic-debugging skill is designed to streamline the debugging process by automating systematic checks and error identification in codebases. By leveraging advanced algorithms, this Claude Code skill helps developers quickly pinpoint issues that may otherwise go unnoticed. This automation not only speeds up the debugging process but also enhances code quality, allowing for more reliable software development. Key benefits of the systematic-debugging skill include significant time savings and improved productivity. Developers can reduce the hours spent on manual debugging by automating repetitive tasks and focusing on more complex issues that require human intervention. This skill is particularly beneficial in large projects where tracking down bugs can be time-consuming and tedious. This skill is ideal for developers, product managers, and AI practitioners who are looking to enhance their debugging workflows. It is particularly useful in environments where rapid development and deployment cycles are critical. For example, a developer working on a large-scale application can use systematic-debugging to quickly identify and resolve bugs during the testing phase, ensuring a smoother release. Implementation of the systematic-debugging skill is straightforward, making it accessible even for those with limited experience in AI automation. Integrating this skill into AI-first workflows allows teams to leverage AI agents for enhanced debugging capabilities, ensuring that code quality remains high while reducing the time to market. Overall, systematic-debugging represents a valuable addition to any developer's toolkit, facilitating more efficient and effective debugging processes.\nAutomate error checks in large codebases to quickly identify issues before deployment.\nEnhance debugging efficiency during Agile development cycles by reducing manual checks.\nMinimize manual debugging time in software testing, allowing for faster release cycles.\nIdentify hidden bugs in legacy systems that traditional debugging methods may overlook.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+    "usage": "```\nI'm debugging a [PROGRAMMING_LANGUAGE] script that's throwing an error: [ERROR_MESSAGE]. Here's the relevant code: [CODE_SNIPPET]. Perform a systematic debug by: 1) Identifying potential root causes, 2) Suggesting specific tests to isolate the issue, and 3) Proposing fixes for each possible cause. Assume I'm using [DEBUGGING_TOOL] for testing.\n```\nCopy\n\n```\nBased on the Python script and the 'TypeError: 'int' object is not subscriptable' error, here's a systematic debug approach:\n\n1. Root causes:\n   - The error occurs when trying to access an element of an integer (line 15)\n   - This suggests 'data' might be an integer when it should be a list or dictionary\n   - Possible causes: data type conversion issue, incorrect API response handling, or logic error in data processing\n\n2. Isolation tests:\n   - Add print statements before line 15 to verify the type of 'data'\n   - Check the API response structure (line 8) to confirm expected data format\n   - Test with mock data that matches both expected and unexpected formats\n\n3. Proposed fixes:\n   - If data type conversion issue: Add type checking and conversion (lines 10-12)\n   - If API response handling: Update the response parsing logic (lines 8-10)\n   - If logic error: Review the data processing algorithm (lines 12-15)\n\nRecommend using Python's built-in 'type()' function and 'pdb' debugger for these tests.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "systematic-debugging#main-content",
+      "systematic-debugging#overview",
+      "systematic-debugging#setup",
+      "systematic-debugging#examples",
+      "systematic-debugging#tools",
+      "systematic-debugging#mcp",
+      "systematic-debugging#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill systematic-debugging được thiết kế để tinh giản quy trình debugging bằng cách tự động hóa các bước kiểm tra có hệ thống và nhận diện lỗi trong codebase. Nhờ tận dụng các thuật toán tiên tiến, skill Claude Code này giúp lập trình viên nhanh chóng xác định chính xác các vấn đề vốn có thể bị bỏ qua. Sự tự động hóa này không chỉ đẩy nhanh quy trình debugging mà còn nâng cao chất lượng code, giúp phát triển phần mềm đáng tin cậy hơn. Các lợi ích chính của skill systematic-debugging bao gồm tiết kiệm đáng kể thời gian và nâng cao năng suất. Lập trình viên có thể giảm số giờ dành cho việc debugging thủ công bằng cách tự động hóa các tác vụ lặp đi lặp lại và tập trung vào các vấn đề phức tạp hơn đòi hỏi sự can thiệp của con người. Skill này đặc biệt hữu ích trong các dự án lớn, nơi việc tìm kiếm bug có thể tốn thời gian và tẻ nhạt. Đây là giải pháp lý tưởng cho các lập trình viên, product manager và kỹ sư AI đang tìm kiếm giải pháp cải thiện workflow debugging của mình. Nó đặc biệt hữu ích trong các môi trường coi trọng chu kỳ phát triển và triển khai nhanh. Ví dụ: một lập trình viên làm việc trên một ứng dụng quy mô lớn có thể sử dụng systematic-debugging để nhanh chóng phát hiện và khắc phục bug trong giai đoạn testing, đảm bảo quá trình release diễn ra suôn sẻ hơn. Việc triển khai skill systematic-debugging rất đơn giản, giúp ngay cả những người có ít kinh nghiệm về tự động hóa bằng AI cũng có thể tiếp cận được. Tích hợp skill này vào các workflow ưu tiên AI cho phép các đội ngũ tận dụng các AI agent để nâng cao khả năng debugging, đảm bảo chất lượng code luôn ở mức cao trong khi rút ngắn thời gian đưa sản phẩm ra thị trường. Nhìn chung, systematic-debugging là một sự bổ sung giá trị vào bộ công cụ của bất kỳ lập trình viên nào, giúp quy trình debugging trở nên hiệu quả và tối ưu hơn.\nTự động hóa việc kiểm tra lỗi trong các codebase lớn để nhanh chóng phát hiện vấn đề trước khi triển khai.\nNâng cao hiệu quả debugging trong các chu kỳ phát triển Agile bằng cách giảm thiểu các bước kiểm tra thủ công.\nGiảm tối đa thời gian debugging thủ công khi test phần mềm, giúp rút ngắn chu kỳ release.\nPhát hiện các bug ẩn trong các hệ thống legacy mà các phương pháp debugging truyền thống có thể bỏ qua.",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/obra/superpowers`",
+    "usage_vi": "```\nTôi đang debug một script viết bằng [PROGRAMMING_LANGUAGE] gặp lỗi: [ERROR_MESSAGE]. Dưới đây là đoạn code liên quan: [CODE_SNIPPET]. Hãy thực hiện debug một cách hệ thống bằng cách: 1) Xác định các nguyên nhân gốc rễ tiềm ẩn, 2) Đề xuất các bài test cụ thể để cô lập lỗi, và 3) Đưa ra phương án khắc phục cho từng nguyên nhân có thể xảy ra. Giả định rằng tôi đang sử dụng [DEBUGGING_TOOL] để test.\n```\nCopy\n\n```\nDựa trên script Python và lỗi 'TypeError: 'int' object is not subscriptable', dưới đây là hướng tiếp cận debug có hệ thống:\n\n1. Nguyên nhân gốc rễ:\n   - Lỗi xảy ra khi cố gắng truy cập một phần tử của một số nguyên (dòng 15)\n   - Điều này cho thấy 'data' có thể là một số nguyên trong khi đáng lẽ phải là một list hoặc dictionary\n   - Các nguyên nhân có thể xảy ra: lỗi chuyển đổi kiểu dữ liệu, xử lý phản hồi API không chính xác hoặc lỗi logic trong quá trình xử lý dữ liệu\n\n2. Các bài test cô lập lỗi:\n   - Thêm các câu lệnh print trước dòng 15 để xác minh kiểu dữ liệu của 'data'\n   - Kiểm tra cấu trúc API response (dòng 8) để xác nhận định dạng dữ liệu mong muốn\n   - Test với dữ liệu giả lập (mock data) khớp với cả định dạng mong muốn và không mong muốn\n\n3. Phương án khắc phục đề xuất:\n   - Nếu do lỗi chuyển đổi kiểu dữ liệu: Thêm bước kiểm tra và chuyển đổi kiểu (dòng 10-12)\n   - Nếu do xử lý phản hồi API: Cập nhật logic parse response (dòng 8-10)\n   - Nếu do lỗi logic: Xem xét lại thuật toán xử lý dữ liệu (dòng 12-15)\n\nKhuyến nghị sử dụng hàm 'type()' tích hợp sẵn của Python và debugger 'pdb' cho các bài test này.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:56:17.203324Z",
+    "http_status": 200,
+    "content_hash": "302a5ff197861194dee7ba6e184da58bec7a4f161cf309346be0edd42a281506",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\systematic-debugging.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\systematic-debugging.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "systematic-debugging: Debugging",
+  "short_description_vi": "Skill systematic-debugging tối ưu hóa quy trình debugging bằng cách tự động hóa các bước kiểm tra có hệ thống và nhận diện lỗi trong code. Nhờ đó, quá trình xử lý sự cố diễn ra nhanh hơn, giúp lập trình viên tiết kiệm tối đa thời gian và công sức."
+}

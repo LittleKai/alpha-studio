@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/grok-skill",
+  "slug": "grok-skill",
+  "name": "grok-skill",
+  "headline": "grok-skill - Routes Twitter/X Prompts to Grok-4",
+  "short_description": "The grok-skill is a Claude Code Skill that routes Twitter/X prompts to Grok-4 Live Search. It benefits operations teams by automating information retrieval from XAI's Grok-4 model. The skill connects to OpenRouter API and integrates with Claude agents to streamline data access and analysis workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "mikedemarais",
+  "install_command": "git clone https://github.com/mikedemarais/grok-skill.git",
+  "source_repo_url": "https://github.com/mikedemarais/grok-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "grok",
+    "openrouter",
+    "claude-code-skills",
+    "claude-code",
+    "claude-skills",
+    "xai"
+  ],
+  "sections": {
+    "overview": "grok-skill is a Claude Code Skill that connects to xAI's Grok 4 model through OpenRouter, enabling real-time searches of X/Twitter data with Live Search enabled. The skill routes natural language queries to Grok 4 and returns summaries with tweet citations, filtered by handles, engagement metrics, and date ranges. Operations teams and analysts use grok-skill to automate information retrieval workflows, accessing trending topics, sentiment analysis, and breaking news directly from X without manual browsing. The skill includes network resilience with automatic retries, comprehensive filtering options, and production-ready error handling to ensure reliable data access at scale.\nMonitor trending AI developments and industry announcements on X in real-time\nTrack crypto market sentiment and news from specific accounts with engagement filters\nAutomate competitive intelligence by searching for mentions of specific organizations\nGather real-time data for reports with date-bounded searches and citation tracking",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mikedemarais/grok-skill`",
+    "usage": "```\nI need to use the grok-skill to search for recent discussions about [TOPIC] on Twitter/X. Please route this prompt to Grok-4 Live Search via the OpenRouter API and provide a summary of the key findings. Focus on insights relevant to [COMPANY] in the [INDUSTRY] sector.\n```\nCopy\n\n```\n# Grok-4 Live Search Results for [TOPIC]",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "grok-skill#main-content",
+      "grok-skill#overview",
+      "grok-skill#setup",
+      "grok-skill#examples",
+      "grok-skill#tools",
+      "grok-skill#mcp",
+      "grok-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "grok-skill is a Claude Code Skill that connects to xAI's Grok 4 model through OpenRouter, enabling real-time searches of X/Twitter data with Live Search enabled. The skill routes natural language queries to Grok 4 and returns summaries with tweet citations, filtered by handles, engagement metrics, and date ranges. Operations teams and analysts use grok-skill to automate information retrieval workflows, accessing trending topics, sentiment analysis, and breaking news directly from X without manual browsing. The skill includes network resilience with automatic retries, comprehensive filtering options, and production-ready error handling to ensure reliable data access at scale.\nMonitor trending AI developments and industry announcements on X in real-time\nTrack crypto market sentiment and news from specific accounts with engagement filters\nAutomate competitive intelligence by searching for mentions of specific organizations\nGather real-time data for reports with date-bounded searches and citation tracking",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mikedemarais/grok-skill`",
+    "usage_vi": "```\nI need to use the grok-skill to search for recent discussions about [TOPIC] on Twitter/X. Please route this prompt to Grok-4 Live Search via the OpenRouter API and provide a summary of the key findings. Focus on insights relevant to [COMPANY] in the [INDUSTRY] sector.\n```\nCopy\n\n```\n# Grok-4 Live Search Results for [TOPIC]"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:37:55.561286Z",
+    "http_status": 200,
+    "content_hash": "7ba688e869f161f5ecf8e8d26378617b0353bdbcda82d2a8c4cb273ca4a29083",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\grok-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\grok-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "grok-skill - Routes Twitter/X Prompts to Grok-4",
+  "short_description_vi": "The grok-skill is a Claude Code Skill that routes Twitter/X prompts to Grok-4 Live Search. It benefits operations teams by automating information retrieval from XAI's Grok-4 model. The skill connects to OpenRouter API and integrates with Claude agents to streamline data access and analysis workflows."
+}

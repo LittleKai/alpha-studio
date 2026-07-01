@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/uniswapv4-hooks-skill",
+  "slug": "uniswapv4-hooks-skill",
+  "name": "Uniswap V4 Hooks Skill",
+  "headline": "Uniswap V4 Hooks Skill - Secure Hook Development",
+  "short_description": "Securely develop Uniswap V4 hooks with AI assistance. Benefits developers by embedding security best practices, vulnerability patterns, and battle-tested code patterns. Integrates with Claude Code for automated, secure smart contract development.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "igoryuzo",
+  "install_command": "git clone https://github.com/igoryuzo/uniswapV4-hooks-skill.git",
+  "source_repo_url": "https://github.com/igoryuzo/uniswapV4-hooks-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This skill integrates security expertise directly into Claude Code for Uniswap V4 hook development. It activates automatically when you mention V4 hooks or work with hook contracts, providing threat modeling guidance, warnings about dangerous patterns like NoOp rug pulls, and secure code templates based on 20+ pages of documentation including official Uniswap security frameworks and real audit reports. The skill covers access control, delta accounting, reentrancy protection, and known vulnerability patterns from Certora and ABDK audits. Developers benefit from pre-deployment checklists and risk assessment frameworks that help catch security issues before they reach production, reducing the risk of exploits that could drain user funds.\nCreate dynamic fee hooks with security best practices embedded\nReview existing hook code for security vulnerabilities and attack vectors\nImplement permission-controlled hooks with proper PoolManager verification\nBuild reward or points system hooks with reentrancy protection",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/igoryuzo/uniswapV4-hooks-skill`",
+    "usage": "```\nI'm developing a Uniswap V4 hook for [COMPANY], a [INDUSTRY] company. The hook should [DESCRIBE HOOK PURPOSE]. Generate secure Solidity code with comments explaining security best practices and potential vulnerabilities to avoid. Include test cases and integration guidance for Uniswap V4.\n```\nCopy\n\n```\n# Uniswap V4 Hook: Dynamic Fee Adjustment",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "uniswapv4-hooks-skill#main-content",
+      "uniswapv4-hooks-skill#overview",
+      "uniswapv4-hooks-skill#setup",
+      "uniswapv4-hooks-skill#examples",
+      "uniswapv4-hooks-skill#tools",
+      "uniswapv4-hooks-skill#mcp",
+      "uniswapv4-hooks-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Kỹ năng này tích hợp kiến thức chuyên môn về bảo mật trực tiếp vào Claude Code phục vụ cho việc phát triển Uniswap V4 hook. Kỹ năng sẽ tự động kích hoạt khi bạn đề cập đến V4 hooks hoặc làm việc với các hook contract, cung cấp các hướng dẫn xây dựng mô hình đe dọa (threat modeling), cảnh báo về các mẫu thiết kế nguy hiểm như NoOp rug pulls, và các template code an toàn dựa trên hơn 20 trang tài liệu bao gồm các framework bảo mật chính thức của Uniswap cùng các báo cáo audit thực tế. Kỹ năng này bao trùm các khía cạnh về kiểm soát truy cập (access control), hạch toán delta (delta accounting), cơ chế chống reentrancy (reentrancy protection), và các mẫu lỗ hổng đã biết từ các đợt audit của Certora và ABDK. Nhà phát triển sẽ được hỗ trợ bởi các checklist trước khi deployment và các framework đánh giá rủi ro giúp phát hiện sớm các vấn đề bảo mật trước khi đưa lên production, giảm thiểu nguy cơ bị exploit gây thất thoát tài sản của người dùng.\nTạo các dynamic fee hooks tích hợp sẵn các best practices về bảo mật\nĐánh giá mã nguồn hook hiện có để phát hiện các lỗ hổng bảo mật và vector tấn công\nTriển khai các hook kiểm soát quyền truy cập với cơ chế xác thực PoolManager chuẩn xác\nXây dựng các hook cho hệ thống phần thưởng hoặc tích điểm có tích hợp cơ chế chống reentrancy",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/igoryuzo/uniswapV4-hooks-skill`",
+    "usage_vi": "```\nTôi đang phát triển một Uniswap V4 hook cho [CÔNG_TY], một doanh nghiệp trong lĩnh vực [LĨNH_VỰC]. Hook này có nhiệm vụ [MÔ_TẢ_MỤC_ĐÍCH_HOOK]. Hãy tạo mã nguồn Solidity an toàn kèm theo chú thích giải thích các best practices về bảo mật và các lỗ hổng tiềm ẩn cần tránh. Đồng thời cung cấp các test case và hướng dẫn tích hợp với Uniswap V4.\n```\nCopy\n\n```\n# Uniswap V4 Hook: Điều chỉnh phí động (Dynamic Fee Adjustment)\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:14:28.460965Z",
+    "http_status": 200,
+    "content_hash": "bf7c984eadaf94650b04ebf30346a6eaac0e744e6d15bbacc4fe0aa2e29c37b8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\uniswapv4-hooks-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\uniswapv4-hooks-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng Uniswap V4 Hooks - Phát triển Hook Bảo mật",
+  "short_description_vi": "Phát triển Uniswap V4 hooks an toàn với sự trợ giúp từ AI. Kỹ năng này hỗ trợ các nhà phát triển bằng cách tích hợp sẵn các best practices về bảo mật, các dạng lỗ hổng phổ biến (vulnerability patterns) và các mẫu mã nguồn đã qua kiểm chứng thực tế. Tích hợp trực tiếp với Claude Code để tự động hóa quy trình phát triển smart contract an toàn."
+}

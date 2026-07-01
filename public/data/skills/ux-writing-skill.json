@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ux-writing-skill",
+  "slug": "ux-writing-skill",
+  "name": "UX Writing Skill",
+  "headline": "UX Writing Skill - Automate UX Writing",
+  "short_description": "Automate UX writing to enforce design system standards. Ideal for operations teams managing large-scale content. Integrates with Claude and Codex for consistent, high-quality output.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "content-designer",
+  "install_command": "git clone https://github.com/content-designer/ux-writing-skill.git",
+  "source_repo_url": "https://github.com/content-designer/ux-writing-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "This agent skill transforms Claude, Codex, and Cursor into specialized UX writing tools by packaging evidence-based writing expertise into an automated framework. It applies four measurable quality standards—Purposeful, Concise, Conversational, and Clear—across common UX patterns like error messages, buttons, empty states, and notifications. The skill includes accessibility guidelines, voice and tone frameworks, research-backed benchmarks, and before/after examples that help teams enforce consistent content quality without manual review bottlenecks. Content designers use it to apply standards systematically; product teams use it to enable non-writers to create on-brand copy; and design system teams use it to scale content enforcement. Installation takes one CLI command, and the skill activates automatically when you write or edit interface copy.\nContent designers applying consistent UX writing standards across products without memorizing every rule\nProduct teams enabling non-writers to create interface copy that follows design system guidelines\nDesign system teams enforcing content standards at scale without becoming a bottleneck\nEarly-stage products building content quality in from the start with proven patterns",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/content-designer/ux-writing-skill`",
+    "usage": "```\nGenerate UX microcopy for [UI_ELEMENT] in [PRODUCT_NAME] following the design system guidelines. Ensure the text is [TONE: e.g., concise, friendly, professional] and adheres to the [STYLE_GUIDE_NAME] rules. Include variations for [USE_CASE: e.g., error states, empty states, tooltips]. Output in a table with columns: 'Context', 'Copy', 'Character Limit', and 'Notes'. Example: 'Generate microcopy for a password reset button in a SaaS app following Material Design guidelines. Include variations for primary and secondary buttons.'\n```\nCopy\n\n```\n### UX Microcopy for Password Reset Button\n\n| **Context**               | **Copy**                     | **Character Limit** | **Notes**                          |\n|---------------------------|------------------------------|---------------------|------------------------------------|\n| Primary Button (Desktop)   | Reset Password               | 20                  | Bold, uppercase, Material Design   |\n| Primary Button (Mobile)    | Reset password               | 18                  | Sentence case, touch-friendly      |\n| Secondary Button           | Forgot password?             | 22                  | Italic, underlined, subtle hover   |\n| Error State (Invalid Email)| Email not found. Try again.  | 25                  | Red text, inline validation        |\n| Tooltip                    | Click to reset your password | 30                  | Appears on hover, concise          |\n| Empty State (Post-Reset)   | Password reset complete!     | 24                  | Green text, success confirmation   |\n\n**Design System Compliance:**\n- All copies use sentence case (except primary buttons).\n- Error state aligns with Material Design's error styling.\n- Tooltip avoids technical jargon (e.g., 'SMTP server' omitted).\n\n**Tone:** Friendly but professional, avoiding overly casual language like 'Oops!' or 'Whoops!'.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ux-writing-skill#main-content",
+      "ux-writing-skill#overview",
+      "ux-writing-skill#setup",
+      "ux-writing-skill#examples",
+      "ux-writing-skill#tools",
+      "ux-writing-skill#mcp",
+      "ux-writing-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill agent này biến Claude, Codex và Cursor thành các công cụ UX writing chuyên dụng bằng cách đóng gói các kiến thức chuyên môn về viết lách dựa trên dữ liệu thực nghiệm vào một framework tự động. Nó áp dụng bốn tiêu chuẩn chất lượng có thể đo lường được—Có mục đích (Purposeful), Ngắn gọn (Concise), Tự nhiên (Conversational) và Rõ ràng (Clear)—cho các UX pattern phổ biến như thông báo lỗi, nút bấm, trạng thái trống (empty states) và thông báo (notifications). Skill này tích hợp sẵn các nguyên tắc về khả năng tiếp cận (accessibility guidelines), bộ khung giọng điệu (voice and tone frameworks), các tiêu chuẩn đánh giá dựa trên nghiên cứu và các ví dụ trước/sau giúp các đội ngũ duy trì chất lượng nội dung đồng nhất mà không gặp phải điểm nghẽn khi phê duyệt thủ công. Các content designer sử dụng công cụ này để áp dụng tiêu chuẩn một cách hệ thống; các đội ngũ sản phẩm dùng nó để giúp những thành viên không chuyên viết lách tạo ra nội dung giao diện đúng định hướng thương hiệu; và các đội ngũ design system sử dụng nó để chuẩn hóa việc áp dụng tiêu chuẩn nội dung trên quy mô lớn. Việc cài đặt chỉ mất một lệnh CLI và skill sẽ tự động kích hoạt khi bạn viết hoặc chỉnh sửa nội dung giao diện.\nContent designer muốn áp dụng các tiêu chuẩn UX writing đồng nhất trên toàn bộ sản phẩm mà không cần phải ghi nhớ mọi quy tắc\nCác đội ngũ sản phẩm muốn hỗ trợ những thành viên không chuyên viết lách tạo ra nội dung giao diện tuân thủ guidelines của design system\nCác đội ngũ design system muốn áp dụng các tiêu chuẩn nội dung trên quy mô lớn mà không làm chậm tiến độ dự án\nCác sản phẩm ở giai đoạn đầu muốn xây dựng chất lượng nội dung chuẩn chỉnh ngay từ đầu với các pattern đã được kiểm chứng",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/content-designer/ux-writing-skill`",
+    "usage_vi": "```\nTạo UX microcopy cho [UI_ELEMENT] trong [PRODUCT_NAME] tuân thủ các hướng dẫn của design system. Đảm bảo văn bản [TONE: ví dụ: ngắn gọn, thân thiện, chuyên nghiệp] và tuân thủ các quy tắc của [STYLE_GUIDE_NAME]. Bao gồm các biến thể cho [USE_CASE: ví dụ: trạng thái lỗi, trạng thái trống, tooltip]. Xuất kết quả dưới dạng bảng với các cột: 'Ngữ cảnh', 'Nội dung (Copy)', 'Giới hạn ký tự' và 'Ghi chú'. Ví dụ: 'Tạo microcopy cho nút đặt lại mật khẩu trong ứng dụng SaaS tuân theo nguyên tắc của Material Design. Bao gồm các biến thể cho nút chính và nút phụ.'\n```\nCopy\n\n```\n### UX Microcopy cho nút đặt lại mật khẩu\n\n| **Ngữ cảnh**               | **Nội dung (Copy)**                     | **Giới hạn ký tự** | **Ghi chú**                          |\n|---------------------------|------------------------------|---------------------|------------------------------------|\n| Nút chính (Desktop)   | Reset Password               | 20                  | Chữ in đậm, viết hoa, Material Design   |\n| Nút chính (Mobile)    | Reset password               | 18                  | Viết hoa chữ cái đầu (Sentence case), thân thiện với thao tác chạm      |\n| Nút phụ           | Forgot password?             | 22                  | Chữ nghiêng, gạch chân, hiệu ứng hover nhẹ   |\n| Trạng thái lỗi (Email không hợp lệ)| Email not found. Try again.  | 25                  | Chữ màu đỏ, kiểm tra lỗi trực tiếp (inline validation)        |\n| Tooltip                    | Click to reset your password | 30                  | Hiển thị khi hover, ngắn gọn          |\n| Trạng thái trống (Sau khi đặt lại)   | Password reset complete!     | 24                  | Chữ màu xanh lá, xác nhận thành công   |\n\n**Mức độ tuân thủ Design System:**\n- Tất cả nội dung (copy) đều viết hoa chữ cái đầu (ngoại trừ các nút chính).\n- Trạng thái lỗi tuân thủ quy chuẩn định dạng lỗi của Material Design.\n- Tooltip tránh sử dụng các thuật ngữ kỹ thuật chuyên ngành (ví dụ: loại bỏ 'SMTP server').\n\n**Giọng điệu (Tone):** Thân thiện nhưng chuyên nghiệp, tránh các từ ngữ quá suồng sã như 'Oops!' hay 'Whoops!'.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:54:02.829718Z",
+    "http_status": 200,
+    "content_hash": "8a51bc9a9016fa0d4d2950cb64bc721e48b82b3f54882f92334b8e993e821ca1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ux-writing-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ux-writing-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill UX Writing - Tự động hóa UX Writing",
+  "short_description_vi": "Tự động hóa UX writing nhằm đảm bảo tuân thủ các tiêu chuẩn của design system. Đây là giải pháp lý tưởng cho các đội ngũ vận hành quản lý nội dung quy mô lớn, tích hợp với Claude và Codex để mang lại kết quả đầu ra đồng nhất và chất lượng cao."
+}

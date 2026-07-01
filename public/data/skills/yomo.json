@@ -1,0 +1,70 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/yomo",
+  "slug": "yomo",
+  "name": "YoMo",
+  "headline": "YoMo - Serverless AI Agent Framework",
+  "short_description": "YoMo is a serverless AI agent framework with geo-distributed edge AI infrastructure. It enables real-time, low-latency automation for operations teams. Connects to OpenAI, Claude, and other AI models for distributed cloud workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "190 min",
+  "author": "yomorun",
+  "install_command": "git clone https://github.com/yomorun/yomo.git",
+  "source_repo_url": "https://github.com/yomorun/yomo",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "distributed-cloud",
+    "cursor",
+    "geodistributedsystems",
+    "mcp",
+    "chatgpt",
+    "function-calling",
+    "a2a-protocol",
+    "openai",
+    "realtime",
+    "low-latency",
+    "quic",
+    "yomo",
+    "stream-processing",
+    "serverless",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "YoMo is an open-source LLM Function Calling Framework designed for building scalable and ultra-fast AI agents. It enables seamless deployment and management of LLM tools and skills in a serverless environment, with enhanced security through TLS v1.3 encryption. The framework focuses on delivering responsive AI interactions for building exceptional customer experiences. YoMo provides infrastructure for developers to create reliable, scalable AI agent solutions without managing complex deployment pipelines.\nAutomate real-time weather information retrieval for user queries.\nBuild AI agents that provide personalized recommendations based on user preferences.\nCreate chatbots that can handle customer inquiries with low latency responses.\nImplement serverless AI functions for processing streaming data in real-time.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yomorun/yomo`",
+    "usage": "```\nCreate a YoMo workflow to monitor [SPECIFIC_METRIC] across [GEOGRAPHIC_REGIONS] in real-time. Trigger an alert when [CONDITION] is met, and automatically execute [ACTION] using [AI_MODEL]. Include error handling for [POTENTIAL_ISSUES].\n```\nCopy\n\n```\nWorkflow Name: Real-Time Server Uptime Monitor\n\nDescription: This YoMo workflow monitors server uptime across three regions (North America, Europe, and Asia) and triggers automated responses based on predefined conditions.\n\nTriggers:\n- Monitor server uptime every 5 minutes\n- Check for uptime below 99.5% in any region\n\nActions:\n- If uptime drops below 99.5% in North America, trigger a Slack alert to the North America Operations team\n- If uptime drops below 99% in any region, use Claude to draft an incident report and send it to the global operations mailing list\n- If uptime remains below 95% for more than 30 minutes, use OpenAI to generate a troubleshooting guide and send it to the on-call engineer\n\nError Handling:\n- If the monitoring service fails, retry the check after 1 minute\n- If the AI model fails to generate a response, fall back to a pre-written template\n- If the alert fails to send, log the error and retry after 5 minutes\n\nDeployment:\n- Deployed to YoMo's edge infrastructure in each region for low-latency response\n- Connected to OpenAI and Claude for AI-generated content\n- Integrated with Slack and email for alerting and reporting\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "yomo#main-content",
+      "yomo#overview",
+      "yomo#setup",
+      "yomo#examples",
+      "yomo#tools",
+      "yomo#mcp",
+      "yomo#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "YoMo là một LLM Function Calling Framework mã nguồn mở được thiết kế để xây dựng các AI agent có khả năng mở rộng và tốc độ cực nhanh. Framework này hỗ trợ triển khai và quản lý mượt mà các công cụ cũng như skill của LLM trong môi trường serverless, với tính bảo mật cao nhờ mã hóa TLS v1.3. YoMo tập trung vào việc mang lại các tương tác AI phản hồi nhanh chóng nhằm xây dựng trải nghiệm khách hàng vượt trội. Nó cung cấp cơ sở hạ tầng giúp nhà phát triển tạo ra các giải pháp AI agent tin cậy, dễ mở rộng mà không cần quản lý các pipeline triển khai phức tạp.\n\nTự động hóa việc truy xuất thông tin thời tiết theo thời gian thực cho các truy vấn của người dùng.\nXây dựng các AI agent cung cấp đề xuất cá nhân hóa dựa trên sở thích của người dùng.\nTạo các chatbot có thể xử lý các yêu cầu của khách hàng với phản hồi độ trễ thấp.\nTriển khai các hàm AI serverless để xử lý dữ liệu stream theo thời gian thực.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/yomorun/yomo`",
+    "usage_vi": "```\nTạo một workflow YoMo để giám sát [SPECIFIC_METRIC] trên khắp [GEOGRAPHIC_REGIONS] theo thời gian thực. Kích hoạt cảnh báo khi điều kiện [CONDITION] được đáp ứng, và tự động thực thi [ACTION] bằng cách sử dụng [AI_MODEL]. Bao gồm cả phần xử lý lỗi cho [POTENTIAL_ISSUES].\n```\nCopy\n\n```\nWorkflow Name: Real-Time Server Uptime Monitor\n\nDescription: Workflow YoMo này giám sát uptime của server trên ba khu vực (Bắc Mỹ, Châu Âu và Châu Á) và kích hoạt phản hồi tự động dựa trên các điều kiện được thiết lập trước.\n\nTriggers:\n- Giám sát uptime của server mỗi 5 phút\n- Kiểm tra xem uptime có giảm xuống dưới 99.5% ở bất kỳ khu vực nào không\n\nActions:\n- Nếu uptime giảm xuống dưới 99.5% ở Bắc Mỹ, kích hoạt cảnh báo Slack tới đội ngũ Operations Bắc Mỹ\n- Nếu uptime giảm xuống dưới 99% ở bất kỳ khu vực nào, sử dụng Claude để nháp báo cáo sự cố (incident report) và gửi tới danh sách email vận hành toàn cầu\n- Nếu uptime duy trì dưới 95% trong hơn 30 minutes, sử dụng OpenAI để tạo hướng dẫn khắc phục sự cố (troubleshooting guide) và gửi cho kỹ sư trực ca (on-call engineer)\n\nError Handling:\n- Nếu dịch vụ giám sát gặp lỗi, thử lại sau 1 phút\n- Nếu mô hình AI không tạo được phản hồi, chuyển sang sử dụng template đã viết sẵn (fall back)\n- Nếu gửi cảnh báo thất bại, ghi nhận lỗi (log) và thử lại sau 5 phút\n\nDeployment:\n- Được triển khai lên cơ sở hạ tầng edge của YoMo tại mỗi khu vực để đảm bảo phản hồi có độ trễ thấp\n- Kết nối với OpenAI và Claude để tạo nội dung bằng AI\n- Tích hợp với Slack và email để gửi cảnh báo và báo cáo\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:51:44.016786Z",
+    "http_status": 200,
+    "content_hash": "9f54e27bd6a8c8be5b0b2a520b6d5e08642569dea86230da7d2fb694eb79694a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\yomo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\yomo.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "YoMo - Serverless AI Agent Framework",
+  "short_description_vi": "YoMo là một serverless AI agent framework với cơ sở hạ tầng edge AI phân tán địa lý. Framework này hỗ trợ tự động hóa thời gian thực với độ trễ thấp cho các đội ngũ vận hành (operations), đồng thời kết nối linh hoạt với OpenAI, Claude và các mô hình AI khác để tối ưu hóa các workflow đám mây phân tán."
+}

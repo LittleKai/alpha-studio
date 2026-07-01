@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rg-history",
+  "slug": "rg-history",
+  "name": "browser-use",
+  "headline": "rg_history - Search Claude Code Memory",
+  "short_description": "Search Claude Code's file system memory without vector databases or indexing. Ideal for operations teams needing quick, overhead-free agent discovery.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "backnotprop",
+  "install_command": "git clone https://github.com/backnotprop/rg_history.git",
+  "source_repo_url": "https://github.com/backnotprop/rg_history",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "agent-memory",
+    "agent-skill"
+  ],
+  "sections": {
+    "overview": "rg_history is a skill for Claude Code that searches the agent's entire file system memory using ripgrep, eliminating the need for vector databases, indexing, or additional infrastructure. It provides fast, lightweight agent discovery by directly querying files stored locally. The skill is designed for operations teams and developers who need quick access to agent history and context without computational overhead. Installation requires ripgrep and a simple git clone into your Claude Code skills directory, after which the skill loads automatically.\nQuickly locate past conversations and agent decisions in Claude Code history\nSearch agent memory for specific context without vector database latency\nOperations teams auditing agent behavior and interactions\nDebugging agent actions by searching file system memory traces",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/backnotprop/rg_history`",
+    "usage": "```\nSearch my file system memory for all instances where [COMPANY] used [INDUSTRY] terminology in the past 30 days. Return the results in a structured format with timestamps and file paths.\n```\nCopy\n\n```\n# Search Results for [COMPANY] and [INDUSTRY] Terminology",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "rg-history#main-content",
+      "rg-history#overview",
+      "rg-history#setup",
+      "rg-history#examples",
+      "rg-history#tools",
+      "rg-history#mcp",
+      "rg-history#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "rg_history is a skill for Claude Code that searches the agent's entire file system memory using ripgrep, eliminating the need for vector databases, indexing, or additional infrastructure. It provides fast, lightweight agent discovery by directly querying files stored locally. The skill is designed for operations teams and developers who need quick access to agent history and context without computational overhead. Installation requires ripgrep and a simple git clone into your Claude Code skills directory, after which the skill loads automatically.\nQuickly locate past conversations and agent decisions in Claude Code history\nSearch agent memory for specific context without vector database latency\nOperations teams auditing agent behavior and interactions\nDebugging agent actions by searching file system memory traces",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/backnotprop/rg_history`",
+    "usage_vi": "```\nSearch my file system memory for all instances where [COMPANY] used [INDUSTRY] terminology in the past 30 days. Return the results in a structured format with timestamps and file paths.\n```\nCopy\n\n```\n# Search Results for [COMPANY] and [INDUSTRY] Terminology"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:04:33.124044Z",
+    "http_status": 200,
+    "content_hash": "38d14579899fdafe30520ba7ec2128ae018a985d427593c3aaf669a738bd5916",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rg-history.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\rg-history.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "rg_history - Search Claude Code Memory",
+  "short_description_vi": "Search Claude Code's file system memory without vector databases or indexing. Ideal for operations teams needing quick, overhead-free agent discovery."
+}

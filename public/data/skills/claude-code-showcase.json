@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code-showcase",
+  "slug": "claude-code-showcase",
+  "name": "react-native-best-practices",
+  "headline": "Claude Code Showcase: Project Configuration Example",
+  "short_description": "Explore a comprehensive example of a Claude Code project configuration featuring hooks, skills, agents, commands, and GitHub Actions workflows. Ideal for developers looking to streamline their AI agent integrations.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "ChrisWiles",
+  "install_command": "claude install ChrisWiles/claude-code-showcase",
+  "source_repo_url": "https://github.com/ChrisWiles/claude-code-showcase",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "GitHub Actions",
+    "AI agents",
+    "Claude",
+    "JavaScript",
+    "project configuration"
+  ],
+  "sections": {
+    "overview": "The claude-code-showcase is a fully-featured project template that demonstrates best practices for configuring Claude Code environments. It includes pre-built hooks for auto-formatting and testing, domain-specific skills for testing and debugging, custom agents like code-reviewer and github-workflow, and multiple slash commands for common tasks. The project also features MCP server integrations with JIRA, GitHub, Linear, Sentry, Postgres, Slack, and Notion, plus LSP support for real-time code intelligence across TypeScript, Python, and Rust. Developers can use this as a reference to understand how to structure their own Claude Code projects and automate development workflows with GitHub Actions.\nIntegrate AI agents into JavaScript projects to automate common coding tasks.\nUtilize GitHub Actions to automate workflows, such as testing and deployment.\nImplement project configuration best practices to ensure code quality and consistency.\nCreate reusable code snippets for AI interactions to enhance development efficiency.",
+    "setup": "Terminal\nCopy\n`claude install ChrisWiles/claude-code-showcase`\n`git clone https://github.com/ChrisWiles/claude-code-showcase`",
+    "usage": "```\nGenerate a comprehensive Claude Code project configuration for a [PROJECT_NAME] that includes: 1) A `hooks/` directory with pre-commit and post-commit hooks for [HOOK_PURPOSE], 2) A `skills/` directory with modular AI agent skills for [SKILL_TYPES], 3) An `agents/` directory with predefined agent configurations for [AGENT_ROLES], 4) A `commands/` directory with reusable CLI commands for [COMMAND_TYPES], and 5) A `.github/workflows/` directory with GitHub Actions workflows for [WORKFLOW_TYPES]. Include detailed comments explaining each component's purpose and configuration options. Use [PROJECT_STRUCTURE] as the base directory structure.\n```\nCopy\n\n```\nHere’s a complete `claude-project.yaml` configuration for a **Customer Support Automation** project, structured to streamline AI agent integrations for a SaaS company:\n\n```yaml\n# Project: Customer Support Automation\n# Version: 1.2.0\n# Description: AI-driven customer support workflow with GitHub Actions for CI/CD\n\nhooks:\n  pre-commit:\n    - name: Validate API Schema\n      run: claude run validate-api-schema --path ./schemas/support-api.yaml\n    - name: Lint Skills\n      run: claude run lint-skills --dir ./skills\n  post-commit:\n    - name: Sync Documentation\n      run: claude run sync-docs --repo docs-support --branch main\n\nskills:\n  - name: TicketClassifier\n    description: Classifies support tickets by priority and category\n    config:\n      model: claude-3-haiku\n      prompt: \"Classify this ticket: [TICKET_TEXT]\"\n  - name: ResponseGenerator\n    description: Generates draft responses for common support queries\n    config:\n      model: claude-3-sonnet\n      templates: [\"default\", \"technical\", \"billing\"]\n\nagents:\n  - name: Tier1SupportAgent\n    role: Handle initial customer inquiries\n    skills: [TicketClassifier, ResponseGenerator]\n    triggers:\n      - event: new_ticket\n        action: classify_and_respond\n  - name: EscalationAgent\n    role: Escalate high-priority or unresolved tickets\n    skills: [TicketClassifier]\n    triggers:\n      - event: ticket_priority_high\n        action: assign_to_engineering\n\ncommands:\n  - name: sync-docs\n    description: Syncs project documentation to GitHub Wiki\n    usage: claude run sync-docs --repo <wiki-repo> --branch <branch>\n  - name: validate-api-schema\n    description: Validates OpenAPI schema for support API\n    usage: claude run validate-api-schema --path <schema-path>\n\n.github/workflows:\n  - name: test-and-deploy\n    on: [push, pull_request]\n    jobs:\n      test:\n        runs-on: ubuntu-latest\n        steps:\n          - uses: actions/checkout@v4\n          - run: claude run test-skills\n      deploy:\n        needs: test\n        runs-on: ubuntu-latest\n        steps:\n          - uses: actions/checkout@v4\n          - run: claude run deploy --env staging\n```\n\n### Key Features Explained:\n1. **Hooks**: Pre-commit hooks validate API schemas and lint skills, while post-commit hooks sync documentation to a GitHub Wiki. This ensures consistency in code and documentation.\n2. **Skills**: Modular AI skills like `TicketClassifier` and `ResponseGenerator` are reusable across agents. Each skill includes a model configuration and prompt templates.\n3. **Agents**: Agents like `Tier1SupportAgent` combine skills to handle specific workflows. Triggers define when agents act (e.g., on new tickets).\n4. **Commands**: CLI commands like `sync-docs` automate repetitive tasks, reducing manual effort.\n5. **GitHub Actions**: Workflows like `test-and-deploy` run tests on push/PR and deploy to staging, ensuring CI/CD integration.\n\nThis configuration reduces setup time for new projects by 70% and ensures consistency across AI agent integrations.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-code-showcase#main-content",
+      "claude-code-showcase#overview",
+      "claude-code-showcase#setup",
+      "claude-code-showcase#examples",
+      "claude-code-showcase#tools",
+      "claude-code-showcase#mcp",
+      "claude-code-showcase#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "The claude-code-showcase is a fully-featured project template that demonstrates best practices for configuring Claude Code environments. It includes pre-built hooks for auto-formatting and testing, domain-specific skills for testing and debugging, custom agents like code-reviewer and github-workflow, and multiple slash commands for common tasks. The project also features MCP server integrations with JIRA, GitHub, Linear, Sentry, Postgres, Slack, and Notion, plus LSP support for real-time code intelligence across TypeScript, Python, and Rust. Developers can use this as a reference to understand how to structure their own Claude Code projects and automate development workflows with GitHub Actions.\nIntegrate AI agents into JavaScript projects to automate common coding tasks.\nUtilize GitHub Actions to automate workflows, such as testing and deployment.\nImplement project configuration best practices to ensure code quality and consistency.\nCreate reusable code snippets for AI interactions to enhance development efficiency.",
+    "setup_vi": "Terminal\nCopy\n`claude install ChrisWiles/claude-code-showcase`\n`git clone https://github.com/ChrisWiles/claude-code-showcase`",
+    "usage_vi": "```\nGenerate a comprehensive Claude Code project configuration for a [PROJECT_NAME] that includes: 1) A `hooks/` directory with pre-commit and post-commit hooks for [HOOK_PURPOSE], 2) A `skills/` directory with modular AI agent skills for [SKILL_TYPES], 3) An `agents/` directory with predefined agent configurations for [AGENT_ROLES], 4) A `commands/` directory with reusable CLI commands for [COMMAND_TYPES], and 5) A `.github/workflows/` directory with GitHub Actions workflows for [WORKFLOW_TYPES]. Include detailed comments explaining each component's purpose and configuration options. Use [PROJECT_STRUCTURE] as the base directory structure.\n```\nCopy\n\n```\nHere’s a complete `claude-project.yaml` configuration for a **Customer Support Automation** project, structured to streamline AI agent integrations for a SaaS company:\n\n```yaml\n# Project: Customer Support Automation\n# Version: 1.2.0\n# Description: AI-driven customer support workflow with GitHub Actions for CI/CD\n\nhooks:\n  pre-commit:\n    - name: Validate API Schema\n      run: claude run validate-api-schema --path ./schemas/support-api.yaml\n    - name: Lint Skills\n      run: claude run lint-skills --dir ./skills\n  post-commit:\n    - name: Sync Documentation\n      run: claude run sync-docs --repo docs-support --branch main\n\nskills:\n  - name: TicketClassifier\n    description: Classifies support tickets by priority and category\n    config:\n      model: claude-3-haiku\n      prompt: \"Classify this ticket: [TICKET_TEXT]\"\n  - name: ResponseGenerator\n    description: Generates draft responses for common support queries\n    config:\n      model: claude-3-sonnet\n      templates: [\"default\", \"technical\", \"billing\"]\n\nagents:\n  - name: Tier1SupportAgent\n    role: Handle initial customer inquiries\n    skills: [TicketClassifier, ResponseGenerator]\n    triggers:\n      - event: new_ticket\n        action: classify_and_respond\n  - name: EscalationAgent\n    role: Escalate high-priority or unresolved tickets\n    skills: [TicketClassifier]\n    triggers:\n      - event: ticket_priority_high\n        action: assign_to_engineering\n\ncommands:\n  - name: sync-docs\n    description: Syncs project documentation to GitHub Wiki\n    usage: claude run sync-docs --repo <wiki-repo> --branch <branch>\n  - name: validate-api-schema\n    description: Validates OpenAPI schema for support API\n    usage: claude run validate-api-schema --path <schema-path>\n\n.github/workflows:\n  - name: test-and-deploy\n    on: [push, pull_request]\n    jobs:\n      test:\n        runs-on: ubuntu-latest\n        steps:\n          - uses: actions/checkout@v4\n          - run: claude run test-skills\n      deploy:\n        needs: test\n        runs-on: ubuntu-latest\n        steps:\n          - uses: actions/checkout@v4\n          - run: claude run deploy --env staging\n```\n\n### Key Features Explained:\n1. **Hooks**: Pre-commit hooks validate API schemas and lint skills, while post-commit hooks sync documentation to a GitHub Wiki. This ensures consistency in code and documentation.\n2. **Skills**: Modular AI skills like `TicketClassifier` and `ResponseGenerator` are reusable across agents. Each skill includes a model configuration and prompt templates.\n3. **Agents**: Agents like `Tier1SupportAgent` combine skills to handle specific workflows. Triggers define when agents act (e.g., on new tickets).\n4. **Commands**: CLI commands like `sync-docs` automate repetitive tasks, reducing manual effort.\n5. **GitHub Actions**: Workflows like `test-and-deploy` run tests on push/PR and deploy to staging, ensuring CI/CD integration.\n\nThis configuration reduces setup time for new projects by 70% and ensures consistency across AI agent integrations.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:40:17.421419Z",
+    "http_status": 200,
+    "content_hash": "9168e3d262e918f02c32c084e3c157e0e136cdbb22029657840498e952cc43ba",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-showcase.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-code-showcase.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Claude Code Showcase: Project Configuration Example",
+  "short_description_vi": "Explore a comprehensive example of a Claude Code project configuration featuring hooks, skills, agents, commands, and GitHub Actions workflows. Ideal for developers looking to streamline their AI agent integrations."
+}

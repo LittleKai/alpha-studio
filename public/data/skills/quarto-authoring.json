@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/quarto-authoring",
+  "slug": "quarto-authoring",
+  "name": "Related Skills",
+  "headline": "Quarto Authoring: Create & Migrate Documents",
+  "short_description": "This skill facilitates the creation and management of documents using Quarto for users looking to leverage advanced authoring features. Ideal for writers and researchers who want seamless integration with AI tools.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "posit-dev",
+  "install_command": "git clone https://github.com/posit-dev/skills",
+  "source_repo_url": "https://github.com/posit-dev/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "document-creation",
+    "authoring",
+    "quarto"
+  ],
+  "sections": {
+    "overview": "The Quarto authoring skill provides comprehensive guidance for creating Quarto documents from scratch and migrating projects from R Markdown, bookdown, blogdown, xaringan, and distill. It covers best practices for document structure, Quarto-specific features including hashpipe syntax, cross-references, callouts, and extensions. Users can write new documents following established conventions, convert existing R Markdown files, and migrate entire projects while leveraging AI-assisted authoring workflows. This skill is designed for researchers, technical writers, and data scientists who want to produce professional documents with seamless integration between their content and AI tools.\nGenerate documents in Quarto format\nAutomate document updates\nIntegrate AI suggestions into writing",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/posit-dev/skills --skill quarto-authoring`\n`git clone https://github.com/posit-dev/skills`",
+    "usage": "```\nCreate a Quarto document for [TOPIC] that includes [SECTIONS] and [DATA_SOURCES]. Ensure the document follows Quarto's markdown syntax, includes appropriate code chunks for reproducibility, and formats tables and figures professionally. Add a YAML header with metadata like title, author, and format (e.g., PDF, HTML, or DOCX).\n```\nCopy\n\n```\n```markdown\n---\ntitle: \"Market Trends in [COMPANY]’s [INDUSTRY]\"\nauthor: \"Jane Doe\"\ndate: \"2024-05-20\"\nformat:\n  pdf:\n    toc: true\n    number-sections: true\nbibliography: references.bib\n---\n\n# Executive Summary\n\nThis report analyzes [COMPANY]’s performance in the [INDUSTRY] sector over the past year, highlighting key trends and insights derived from [DATA_SOURCES]. The document is structured to provide actionable recommendations for stakeholders.",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "quarto-authoring#main-content",
+      "quarto-authoring#overview",
+      "quarto-authoring#setup",
+      "quarto-authoring#examples",
+      "quarto-authoring#related"
+    ],
+    "overview_vi": "The Quarto authoring skill provides comprehensive guidance for creating Quarto documents from scratch and migrating projects from R Markdown, bookdown, blogdown, xaringan, and distill. It covers best practices for document structure, Quarto-specific features including hashpipe syntax, cross-references, callouts, and extensions. Users can write new documents following established conventions, convert existing R Markdown files, and migrate entire projects while leveraging AI-assisted authoring workflows. This skill is designed for researchers, technical writers, and data scientists who want to produce professional documents with seamless integration between their content and AI tools.\nGenerate documents in Quarto format\nAutomate document updates\nIntegrate AI suggestions into writing",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/posit-dev/skills --skill quarto-authoring`\n`git clone https://github.com/posit-dev/skills`",
+    "usage_vi": "```\nCreate a Quarto document for [TOPIC] that includes [SECTIONS] and [DATA_SOURCES]. Ensure the document follows Quarto's markdown syntax, includes appropriate code chunks for reproducibility, and formats tables and figures professionally. Add a YAML header with metadata like title, author, and format (e.g., PDF, HTML, or DOCX).\n```\nCopy\n\n```\n```markdown\n---\ntitle: \"Market Trends in [COMPANY]’s [INDUSTRY]\"\nauthor: \"Jane Doe\"\ndate: \"2024-05-20\"\nformat:\n  pdf:\n    toc: true\n    number-sections: true\nbibliography: references.bib\n---\n\n# Executive Summary\n\nThis report analyzes [COMPANY]’s performance in the [INDUSTRY] sector over the past year, highlighting key trends and insights derived from [DATA_SOURCES]. The document is structured to provide actionable recommendations for stakeholders."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:14:40.863611Z",
+    "http_status": 200,
+    "content_hash": "a0d8ab1e48003d310289d54a71c30ae6d002e17445121fd764ac0c215c0842f6",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\quarto-authoring.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\quarto-authoring.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Quarto Authoring: Create & Migrate Documents",
+  "short_description_vi": "This skill facilitates the creation and management of documents using Quarto for users looking to leverage advanced authoring features. Ideal for writers and researchers who want seamless integration with AI tools."
+}

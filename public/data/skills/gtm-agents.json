@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/gtm-agents",
+  "slug": "gtm-agents",
+  "name": "GTM Agents",
+  "headline": "GTM Agents - Automate Sales & Marketing Workflows",
+  "short_description": "Production-ready GTM agents for sales, marketing, and customer success workflows. Automates repetitive tasks, integrates with Claude code, and requires no coding. Ideal for operations teams to save time and improve efficiency.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "gtmagents",
+  "install_command": "git clone https://github.com/gtmagents/gtm-agents.git",
+  "source_repo_url": "https://github.com/gtmagents/gtm-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "GTM Agents is a free, no-code automation platform built for sales, marketing, growth, and customer success teams. It includes 67 specialized plugins with 92 AI agents designed to automate repetitive GTM tasks like lead generation, content creation, pipeline audits, email sequences, and customer segmentation. Users install plugins into Claude Code and describe what they need in plain English to get instant results. The platform saves teams 15+ hours per week on busywork, with documented use cases ranging from generating 100 qualified leads in 5 minutes to creating 30 days of content in 30 minutes.\nGenerate 100 qualified leads in 5 minutes for sales prospecting\nCreate a month of content in 30 minutes for marketing teams\nAudit pipeline health in 10 minutes with automated workflows\nBuild cold email sequences in 5 minutes",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/gtmagents/gtm-agents`",
+    "usage": "```\nAct as a production-ready GTM (Go-To-Market) agent for [FUNCTION: sales/marketing/customer success]. Automate [TASK: e.g., lead qualification, campaign setup, onboarding follow-ups] using the following parameters: [TARGET AUDIENCE: e.g., enterprise clients, SMBs], [CHANNELS: e.g., email, LinkedIn, CRM], [CRITERIA: e.g., budget > $50K, job title = 'CFO']. Generate a step-by-step execution plan with no-code actions, including templates, sequences, and integrations. Prioritize [GOAL: e.g., response rate > 20%, conversion rate > 15%].\n```\nCopy\n\n```\n### GTM Agent Execution Plan: Lead Qualification for Enterprise SaaS\n\n**Objective:** Qualify 500 inbound leads from LinkedIn ads (targeting CFOs at companies with $50K+ ARR) with a response rate goal of 25% and a conversion rate to demo of 12%.\n\n**Step 1: Lead Segmentation & Scoring**\n- **Tool:** HubSpot CRM (automated workflow)\n- **Action:** Import leads via CSV (sample data below). Assign scores based on:\n  - Budget: $50K–$100K = 20 pts, $100K+ = 40 pts\n  - Job title: 'CFO' = 30 pts, 'VP Finance' = 20 pts\n  - Company size: 500–1K employees = 10 pts, 1K+ = 20 pts\n- **Example:** Lead ID #4721 (Jane Doe, CFO at Acme Corp, $75K ARR) scores 90/100 → **High Priority**.\n\n**Step 2: Automated Outreach Sequence**\n- **Tool:** Lemlist (no-code automation)\n- **Template:**\n  **Subject:** Quick question about [Acme Corp]'s [pain point, e.g., cash flow forecasting]\n  **Body:** Hi [First Name], I noticed [Company] is growing rapidly in [industry]. Many of our clients in this space use [Product] to [solve X problem]. Would you be open to a 15-minute chat next week?\n  **Follow-up:** 3 emails over 7 days (days 3, 5, 7) with case studies and social proof.\n- **Integration:** HubSpot → Lemlist via Zapier (auto-syncs lead scores).\n\n**Step 3: Qualification Criteria**\n- **Auto-flag** leads who:\n  - Open email 3+ times but don’t reply → **Nurture** (add to drip campaign)\n  - Reply with \"Budget approved\" → **Sales Ready** (assign to AE)\n  - Reply with \"Not interested\" → **Archive** (add to suppression list)\n\n**Step 4: Conversion Tracking**\n- **Metrics Dashboard:**\n  - Response rate: 28% (140/500) → **Exceeds goal**\n  - Demo booked: 18% (25/140) → **On track**\n  - Average time to reply: 1.2 days (target: <2 days)\n\n**Step 5: Escalation Path**\n- **Tool:** Slack (Claude integration)\n- **Action:** If a lead replies with objections (e.g., \"We’re using Competitor X\"), trigger a Claude-generated response with a tailored case study comparison within 1 hour.\n\n**Next Steps:**\n1. Review lead scores in HubSpot (filter by >80).\n2. Approve Lemlist sequence in Zapier.\n3. Monitor Slack alerts for urgent replies.\n\n**Time Saved:** ~15 hours/week (manual segmentation + outreach).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "gtm-agents#main-content",
+      "gtm-agents#overview",
+      "gtm-agents#setup",
+      "gtm-agents#examples",
+      "gtm-agents#tools",
+      "gtm-agents#mcp",
+      "gtm-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "GTM Agents là một nền tảng tự động hóa no-code miễn phí được xây dựng cho các đội ngũ sales, marketing, growth và customer success. Nền tảng bao gồm 67 plugin chuyên dụng với 92 AI agent được thiết kế để tự động hóa các tác vụ GTM lặp đi lặp lại như tìm kiếm khách hàng tiềm năng (lead generation), sáng tạo nội dung, audit pipeline, thiết lập chuỗi email (email sequences) và phân khúc khách hàng. Người dùng chỉ cần cài đặt các plugin vào Claude Code và mô tả yêu cầu bằng tiếng Anh thông thường để nhận kết quả ngay lập tức. Nền tảng giúp các đội ngũ tiết kiệm hơn 15 giờ mỗi tuần cho các công việc vụ vặt (busywork), với các case study thực tế được ghi nhận như tạo ra 100 lead chất lượng trong 5 phút hay lên nội dung cho cả tháng chỉ trong 30 phút.\n\nTạo ra 100 lead chất lượng trong 5 phút phục vụ tìm kiếm khách hàng tiềm năng\nSáng tạo nội dung cho cả tháng trong 30 phút cho các đội ngũ marketing\nĐánh giá sức khỏe pipeline (pipeline health audit) trong 10 phút bằng quy trình tự động\nXây dựng chuỗi cold email trong 5 phút",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/gtmagents/gtm-agents`",
+    "usage_vi": "```\nAct as a production-ready GTM (Go-To-Market) agent for [FUNCTION: sales/marketing/customer success]. Automate [TASK: e.g., lead qualification, campaign setup, onboarding follow-ups] using the following parameters: [TARGET AUDIENCE: e.g., enterprise clients, SMBs], [CHANNELS: e.g., email, LinkedIn, CRM], [CRITERIA: e.g., budget > $50K, job title = 'CFO']. Generate a step-by-step execution plan with no-code actions, including templates, sequences, and integrations. Prioritize [GOAL: e.g., response rate > 20%, conversion rate > 15%].\n```\nCopy\n\n```\n### Kế hoạch triển khai GTM Agent: Đánh giá chất lượng lead cho Enterprise SaaS\n\n**Mục tiêu:** Đánh giá chất lượng 500 inbound lead từ quảng cáo LinkedIn (nhắm mục tiêu CFO tại các công ty có ARR từ $50K trở lên) với mục tiêu tỷ lệ phản hồi là 25% và tỷ lệ chuyển đổi sang demo là 12%.\n\n**Bước 1: Phân khúc & chấm điểm Lead (Lead Segmentation & Scoring)**\n- **Công cụ:** HubSpot CRM (quy trình tự động)\n- **Hành động:** Import lead qua file CSV (dữ liệu mẫu bên dưới). Gán điểm số dựa trên:\n  - Ngân sách: $50K–$100K = 20 điểm, $100K+ = 40 điểm\n  - Chức danh: 'CFO' = 30 điểm, 'VP Finance' = 20 điểm\n  - Quy mô công ty: 500–1K nhân sự = 10 điểm, 1K+ = 20 điểm\n- **Ví dụ:** Lead ID #4721 (Jane Doe, CFO tại Acme Corp, $75K ARR) đạt 90/100 điểm → **Ưu tiên cao (High Priority)**.\n\n**Bước 2: Thiết lập chuỗi tiếp cận tự động (Automated Outreach Sequence)**\n- **Công cụ:** Lemlist (tự động hóa no-code)\n- **Template:**\n  **Tiêu đề:** Câu hỏi nhanh về [vấn đề của Acme Corp, ví dụ: dự báo dòng tiền]\n  **Nội dung:** Xin chào [First Name], tôi thấy [Company] đang phát triển rất nhanh trong lĩnh vực [industry]. Nhiều khách hàng của chúng tôi trong ngành này đang dùng [Product] để [giải quyết vấn đề X]. Anh/chị có sẵn sàng dành 15 phút để trao đổi vào tuần tới không?\n  **Follow-up:** Gửi 3 email trong vòng 7 ngày (vào ngày 3, 5, 7) kèm theo case study và các minh chứng thực tế (social proof).\n- **Tích hợp:** Kết nối HubSpot → Lemlist qua Zapier (tự động đồng bộ điểm số lead).\n\n**Bước 3: Tiêu chí đánh giá chất lượng (Qualification Criteria)**\n- **Tự động gắn cờ (Auto-flag)** các lead:\n  - Mở email từ 3 lần trở lên nhưng không phản hồi → **Nuôi dưỡng (Nurture)** (đưa vào chiến dịch nhỏ giọt)\n  - Phản hồi với nội dung \"Đã duyệt ngân sách\" → **Sẵn sàng chuyển giao (Sales Ready)** (chuyển giao cho AE)\n  - Phản hồi \"Không quan tâm\" → **Lưu trữ (Archive)** (thêm vào danh sách hạn chế gửi)\n\n**Bước 4: Theo dõi chuyển đổi (Conversion Tracking)**\n- **Dashboard chỉ số (Metrics Dashboard):**\n  - Tỷ lệ phản hồi: 28% (140/500) → **Vượt mục tiêu**\n  - Số demo được đặt trước: 18% (25/140) → **Đúng tiến độ**\n  - Thời gian phản hồi trung bình: 1.2 ngày (mục tiêu: <2 ngày)\n\n**Bước 5: Kênh xử lý phát sinh (Escalation Path)**\n- **Công cụ:** Slack (tích hợp Claude)\n- **Hành động:** Nếu lead phản hồi kèm ý kiến phản bác (ví dụ: \"Chúng tôi đang dùng đối thủ X\"), kích hoạt phản hồi tự động do Claude tạo ra kèm bảng so sánh case study tùy chỉnh trong vòng 1 giờ.\n\n**Các bước tiếp theo:**\n1. Xem lại điểm số lead trong HubSpot (lọc các lead > 80 điểm).\n2. Phê duyệt chuỗi Lemlist trong Zapier.\n3. Theo dõi các cảnh báo trên Slack để xử lý các phản hồi khẩn cấp.\n\n**Thời gian tiết kiệm được:** ~15 giờ/tuần (so với việc phân khúc và tiếp cận thủ công).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:13:36.981023Z",
+    "http_status": 200,
+    "content_hash": "0e906c570661f7757995e1cf3c4337552dac537b899375ebeb379fce2bb23115",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gtm-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\gtm-agents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "GTM Agents - Tự động hóa quy trình Sales & Marketing",
+  "short_description_vi": "Các GTM agent sẵn sàng cho production dành cho các quy trình sales, marketing và customer success. Giúp tự động hóa các tác vụ lặp đi lặp lại, tích hợp với Claude code và không yêu cầu lập trình. Giải pháp lý tưởng cho các đội ngũ vận hành (operations teams) nhằm tiết kiệm thời gian và nâng cao hiệu suất."
+}

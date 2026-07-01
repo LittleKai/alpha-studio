@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claudetasks-spoon",
+  "slug": "claudetasks-spoon",
+  "name": "ClaudeTasks.spoon",
+  "headline": "ClaudeTasks.spoon for task management",
+  "short_description": "View and manage Claude Code tasks in a floating Hammerspoon window with live updates. Ideal for operations teams using Hammerspoon for automation. Connects to Claude Code for task management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "10 min",
+  "author": "jongwony",
+  "install_command": "git clone https://github.com/jongwony/ClaudeTasks.spoon.git",
+  "source_repo_url": "https://github.com/jongwony/ClaudeTasks.spoon",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "hammerspoon",
+    "task",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ClaudePanel.spoon is a Hammerspoon extension that brings Claude Code task management to a customizable floating window on macOS. It provides Vim-like keyboard navigation (j/k or arrow keys), real-time task search and filtering, and direct terminal launch of Claude sessions. The spoon automatically refreshes when task files change and supports full keyboard customization, making it ideal for developers and operations teams who want quick access to Claude Code tasks without leaving their workflow. Installation is straightforward via git clone or direct download, with configuration options for window size, key bindings, and terminal preferences.\nQuick task management from a floating window while coding\nOperations teams monitoring Claude Code task progress\nDevelopers using Hammerspoon automation who need task visibility\nTerminal-heavy workflows requiring keyboard-only task navigation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/jongwony/ClaudeTasks.spoon`",
+    "usage": "```\nUse the ClaudeTasks.spoon Hammerspoon module to view and manage all active Claude Code tasks in a floating window. Refresh the window to see live updates. Focus on tasks with [STATUS] or [PRIORITY]. For each task, note the [TASK_ID], [DESCRIPTION], and [TIMESTAMP]. Suggest next actions for tasks that are stuck or overdue.\n```\nCopy\n\n```\nThe floating Hammerspoon window displays 5 active Claude Code tasks with the following details:\n\n1. **Task ID: cc-20240515-1422**\n   - Description: \"Debug Python script for data pipeline\"\n   - Status: Stuck (Error: ModuleNotFoundError)\n   - Priority: High\n   - Timestamp: 2024-05-15 14:22:00\n   - Next Action: Check if virtual environment is activated. Run `pip install pandas` if missing.\n\n2. **Task ID: cc-20240515-1345**\n   - Description: \"Generate monthly sales report\"\n   - Status: In Progress\n   - Priority: Medium\n   - Timestamp: 2024-05-15 13:45:00\n   - Next Action: Validate output format with stakeholder requirements.\n\n3. **Task ID: cc-20240515-1210**\n   - Description: \"Optimize database query performance\"\n   - Status: Completed\n   - Priority: Low\n   - Timestamp: 2024-05-15 12:10:00\n\n4. **Task ID: cc-20240515-1130**\n   - Description: \"Refactor legacy authentication module\"\n   - Status: Overdue (Due: 2024-05-14)\n   - Priority: High\n   - Timestamp: 2024-05-15 11:30:00\n   - Next Action: Assign to senior developer or split into smaller subtasks.\n\n5. **Task ID: cc-20240515-0945**\n   - Description: \"Set up CI/CD pipeline for new API\"\n   - Status: Pending\n   - Priority: High\n   - Timestamp: 2024-05-15 09:45:00\n\nThe window updates automatically every 30 seconds, showing real-time changes in task status. A red badge indicates overdue or stuck tasks, while green highlights completed ones.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claudetasks-spoon#main-content",
+      "claudetasks-spoon#overview",
+      "claudetasks-spoon#setup",
+      "claudetasks-spoon#examples",
+      "claudetasks-spoon#tools",
+      "claudetasks-spoon#mcp",
+      "claudetasks-spoon#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ClaudePanel.spoon là một extension của Hammerspoon giúp đưa trình quản lý tác vụ Claude Code vào một floating window có thể tùy chỉnh trên macOS. Extension này hỗ trợ điều hướng bằng bàn phím kiểu Vim (phím j/k hoặc các phím mũi tên), tìm kiếm và lọc tác vụ theo thời gian thực, cũng như khởi chạy trực tiếp các session của Claude từ terminal. Spoon tự động làm mới khi các tệp tác vụ thay đổi và hỗ trợ tùy biến phím tắt toàn diện, cực kỳ phù hợp cho các lập trình viên và operations team muốn truy cập nhanh vào các tác vụ Claude Code mà không cần rời khỏi không gian làm việc. Quá trình cài đặt rất đơn giản thông qua git clone hoặc tải xuống trực tiếp, đi kèm các tùy chọn cấu hình cho kích thước cửa sổ, key binding và thiết lập terminal.\n- Quản lý nhanh các tác vụ từ một floating window trong lúc code\n- Các operations team cần theo dõi tiến độ tác vụ Claude Code\n- Lập trình viên sử dụng tự động hóa Hammerspoon cần hiển thị trực quan các tác vụ\n- Luồng công việc tập trung vào terminal, yêu cầu điều hướng tác vụ hoàn toàn bằng bàn phím",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/jongwony/ClaudeTasks.spoon`",
+    "usage_vi": "```\nSử dụng module Hammerspoon ClaudeTasks.spoon để xem và quản lý tất cả các tác vụ Claude Code đang hoạt động trong một floating window. Làm mới cửa sổ để cập nhật trạng thái theo thời gian thực. Tập trung vào các tác vụ có [STATUS] hoặc [PRIORITY]. Với mỗi tác vụ, lưu ý các thông tin [TASK_ID], [DESCRIPTION] và [TIMESTAMP]. Đề xuất các bước xử lý tiếp theo cho những tác vụ đang bị nghẽn (stuck) hoặc quá hạn (overdue).\n```\nCopy\n\n```\nFloating window của Hammerspoon hiển thị 5 tác vụ Claude Code đang hoạt động với các chi tiết sau:\n\n1. **Task ID: cc-20240515-1422**\n   - Description: \"Debug script Python cho data pipeline\"\n   - Status: Stuck (Error: ModuleNotFoundError)\n   - Priority: High\n   - Timestamp: 2024-05-15 14:22:00\n   - Next Action: Kiểm tra xem virtual environment đã được kích hoạt chưa. Chạy `pip install pandas` nếu còn thiếu.\n\n2. **Task ID: cc-20240515-1345**\n   - Description: \"Tạo báo cáo doanh số hàng tháng\"\n   - Status: In Progress\n   - Priority: Medium\n   - Timestamp: 2024-05-15 13:45:00\n   - Next Action: Xác thực định dạng đầu ra (output format) với các yêu cầu của bên liên quan (stakeholder).\n\n3. **Task ID: cc-20240515-1210**\n   - Description: \"Tối ưu hóa hiệu năng truy vấn cơ sở dữ liệu\"\n   - Status: Completed\n   - Priority: Low\n   - Timestamp: 2024-05-15 12:10:00\n\n4. **Task ID: cc-20240515-1130**\n   - Description: \"Refactor module xác thực cũ (legacy authentication module)\"\n   - Status: Overdue (Hạn chót: 2024-05-14)\n   - Priority: High\n   - Timestamp: 2024-05-15 11:30:00\n   - Next Action: Giao cho senior developer hoặc chia nhỏ thành các subtask ít phức tạp hơn.\n\n5. **Task ID: cc-20240515-0945**\n   - Description: \"Thiết lập pipeline CI/CD cho API mới\"\n   - Status: Pending\n   - Priority: High\n   - Timestamp: 2024-05-15 09:45:00\n\nCửa sổ tự động cập nhật sau mỗi 30 giây, hiển thị các thay đổi về trạng thái tác vụ theo thời gian thực. Badge màu đỏ biểu thị các tác vụ quá hạn hoặc bị nghẽn, trong khi màu xanh lá làm nổi bật các tác vụ đã hoàn thành.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:30:27.707159Z",
+    "http_status": 200,
+    "content_hash": "de54caa67ef7c38e060b348375f05648001d136c728185e2d22de699a14ef8f1",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudetasks-spoon.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claudetasks-spoon.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Quản lý tác vụ với ClaudeTasks.spoon",
+  "short_description_vi": "Xem và quản lý các tác vụ Claude Code trong một floating window của Hammerspoon với khả năng cập nhật theo thời gian thực. Giải pháp lý tưởng cho các operations team sử dụng Hammerspoon để tự động hóa. Kết nối trực tiếp với Claude Code để quản lý tác vụ."
+}

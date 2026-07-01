@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/rails-audit-thoughtbot",
+  "slug": "rails-audit-thoughtbot",
+  "name": "Rails Audit Skill",
+  "headline": "Rails Audit Skill - Automated Code Audits",
+  "short_description": "Automates code audits for Ruby on Rails applications using thoughtbot's best practices. Benefits developers and operations teams by identifying code quality issues and ensuring adherence to standards. Integrates with Claude Code for automated analysis and reporting.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "thoughtbot",
+  "install_command": "git clone https://github.com/thoughtbot/rails-audit-thoughtbot.git",
+  "source_repo_url": "https://github.com/thoughtbot/rails-audit-thoughtbot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The Rails Audit Skill analyzes Ruby on Rails applications and generates detailed reports covering testing practices, code quality, security vulnerabilities, design patterns, Rails conventions, database optimization, and performance antipatterns. It integrates with Claude Code to provide automated analysis based on thoughtbot's Ruby Science and Testing Rails guides. The skill supports full application audits or targeted reviews of specific directories, and optionally integrates with SimpleCov for test coverage metrics and RubyCritic for code complexity analysis. Each optional data-collection step is opt-in and non-invasive, temporarily adding tools only if needed. This skill benefits developers and operations teams seeking to align their Rails codebases with industry best practices and identify refactoring opportunities.\nEvaluate test coverage and testing practices across an entire Rails application\nIdentify code smells, security vulnerabilities, and performance antipatterns in specific Rails modules\nAudit database migrations and query optimization opportunities\nReview controller design, domain models, and PORO usage patterns\nAudit performed on [COMPANY]'s Rails application. Focus area: Testing and Security.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thoughtbot/rails-audit-thoughtbot`",
+    "usage": "```\nAudit the following Ruby on Rails application codebase for adherence to thoughtbot's best practices. Focus on [SPECIFIC_AREA] (e.g., testing, security, performance). Provide a detailed report with findings and recommendations. Codebase: [CODEBASE_URL] or [PASTE_CODE].\n```\nCopy\n\n```\n# Rails Audit Report: thoughtbot Best Practices",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "rails-audit-thoughtbot#main-content",
+      "rails-audit-thoughtbot#overview",
+      "rails-audit-thoughtbot#setup",
+      "rails-audit-thoughtbot#examples",
+      "rails-audit-thoughtbot#tools",
+      "rails-audit-thoughtbot#mcp",
+      "rails-audit-thoughtbot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The Rails Audit Skill analyzes Ruby on Rails applications and generates detailed reports covering testing practices, code quality, security vulnerabilities, design patterns, Rails conventions, database optimization, and performance antipatterns. It integrates with Claude Code to provide automated analysis based on thoughtbot's Ruby Science and Testing Rails guides. The skill supports full application audits or targeted reviews of specific directories, and optionally integrates with SimpleCov for test coverage metrics and RubyCritic for code complexity analysis. Each optional data-collection step is opt-in and non-invasive, temporarily adding tools only if needed. This skill benefits developers and operations teams seeking to align their Rails codebases with industry best practices and identify refactoring opportunities.\nEvaluate test coverage and testing practices across an entire Rails application\nIdentify code smells, security vulnerabilities, and performance antipatterns in specific Rails modules\nAudit database migrations and query optimization opportunities\nReview controller design, domain models, and PORO usage patterns\nAudit performed on [COMPANY]'s Rails application. Focus area: Testing and Security.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/thoughtbot/rails-audit-thoughtbot`",
+    "usage_vi": "```\nAudit the following Ruby on Rails application codebase for adherence to thoughtbot's best practices. Focus on [SPECIFIC_AREA] (e.g., testing, security, performance). Provide a detailed report with findings and recommendations. Codebase: [CODEBASE_URL] or [PASTE_CODE].\n```\nCopy\n\n```\n# Rails Audit Report: thoughtbot Best Practices"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:39:00.334695Z",
+    "http_status": 200,
+    "content_hash": "d4af7be394f2496c14157a74f63ad43f026f98db0290466700d22deaca263d20",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rails-audit-thoughtbot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\rails-audit-thoughtbot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Rails Audit Skill - Automated Code Audits",
+  "short_description_vi": "Automates code audits for Ruby on Rails applications using thoughtbot's best practices. Benefits developers and operations teams by identifying code quality issues and ensuring adherence to standards. Integrates with Claude Code for automated analysis and reporting."
+}

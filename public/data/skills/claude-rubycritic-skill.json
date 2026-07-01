@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-rubycritic-skill",
+  "slug": "claude-rubycritic-skill",
+  "name": "Claude Rubycritic Skill",
+  "headline": "Ruby code quality analysis with Claude & RubyCritic",
+  "short_description": "Claude RubyCritic Skill automates Ruby code quality analysis. It benefits developers and operations teams by integrating RubyCritic into Claude Code workflows. The skill connects to Ruby projects and CI/CD pipelines, providing static analysis and code quality metrics.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "esparkman",
+  "install_command": "git clone https://github.com/esparkman/claude-rubycritic-skill.git",
+  "source_repo_url": "https://github.com/esparkman/claude-rubycritic-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "automation",
+    "claude-plugin",
+    "code-quality",
+    "static-analysis",
+    "rails",
+    "rubycritic",
+    "developer-tools",
+    "ai-tools",
+    "ruby",
+    "claude",
+    "claude-skills",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "The Claude RubyCritic Skill integrates RubyCritic directly into Claude Code workflows, enabling developers to analyze Ruby and Rails projects for code quality metrics without leaving their editor. The skill automatically detects when code quality analysis is needed and provides detailed breakdowns of complexity, duplication, and code smells across files and directories. It supports multiple analysis types including full project analysis, targeted path inspection, worst-files prioritization, and branch comparisons to track quality changes over time. Rails-aware guidance helps developers understand issues in models, controllers, services, and concerns. By grading code on a scale from A (90-100) to F (<60), the skill helps teams identify high-impact refactoring opportunities and maintain quality standards throughout development.\nAnalyze entire Ruby projects or specific directories for code quality metrics\nIdentify worst-performing files that need immediate refactoring attention\nCompare code quality between branches to track improvements or regressions\nRun pre-commit quality checks before staging changes\n- **Project Name**: [PROJECT_NAME]\n- **Industry**: [INDUSTRY]\n- **Company**: [COMPANY]",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/esparkman/claude-rubycritic-skill`",
+    "usage": "```\nAnalyze the following Ruby code using RubyCritic and provide a detailed report. The code is from [COMPANY]'s [PROJECT_NAME] in the [INDUSTRY] sector. Focus on complexity, duplication, and documentation issues. Format the output with clear sections and actionable recommendations.\n```\nCopy\n\n```\n# RubyCritic Analysis Report",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-rubycritic-skill#main-content",
+      "claude-rubycritic-skill#overview",
+      "claude-rubycritic-skill#setup",
+      "claude-rubycritic-skill#examples",
+      "claude-rubycritic-skill#tools",
+      "claude-rubycritic-skill#mcp",
+      "claude-rubycritic-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Claude RubyCritic tích hợp trực tiếp RubyCritic vào workflow của Claude Code, cho phép lập trình viên phân tích các chỉ số chất lượng của dự án Ruby và Rails trực tiếp ngay trong editor. Skill này tự động phát hiện khi nào cần phân tích chất lượng code, đồng thời cung cấp báo cáo chi tiết về độ phức tạp (complexity), trùng lặp code (duplication) và code smell trên các file và thư mục. Công cụ hỗ trợ nhiều hình thức phân tích bao gồm phân tích toàn bộ dự án, kiểm tra theo đường dẫn chỉ định, ưu tiên xử lý các file tệ nhất (worst-files prioritization) và so sánh giữa các branch để theo dõi thay đổi về chất lượng theo thời gian. Các hướng dẫn tối ưu riêng cho Rails giúp lập trình viên dễ dàng hiểu và xử lý các vấn đề trong model, controller, service và concern. Bằng cách xếp hạng code theo thang điểm từ A (90-100) đến F (<60), skill này giúp các đội ngũ xác định các cơ hội refactor mang lại hiệu quả cao và duy trì các tiêu chuẩn chất lượng trong suốt quá trình phát triển.\n\nPhân tích toàn bộ dự án Ruby hoặc các thư mục cụ thể để đo lường các chỉ số chất lượng code\nXác định các file có hiệu năng kém nhất cần được ưu tiên refactor ngay lập tức\nSo sánh chất lượng code giữa các branch để theo dõi tiến trình cải thiện hoặc suy giảm chất lượng\nChạy các bước kiểm tra chất lượng pre-commit trước khi stage các thay đổi\n- **Tên dự án**: [PROJECT_NAME]\n- **Lĩnh vực**: [INDUSTRY]\n- **Công ty**: [COMPANY]",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/esparkman/claude-rubycritic-skill`",
+    "usage_vi": "```\nHãy phân tích đoạn code Ruby sau bằng RubyCritic và cung cấp báo cáo chi tiết. Đoạn code này thuộc dự án [PROJECT_NAME] của [COMPANY] trong lĩnh vực [INDUSTRY]. Tập trung vào các vấn đề về độ phức tạp (complexity), trùng lặp (duplication) và tài liệu hướng dẫn (documentation). Định dạng kết quả đầu ra thành các phần rõ ràng với các khuyến nghị có thể thực hiện trực tiếp.\n```\nCopy\n\n```\n# Báo cáo phân tích RubyCritic"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:43:34.398961Z",
+    "http_status": 200,
+    "content_hash": "1d968b5dcd837faf694e8738271b915b8c672af0703057631e3d527b577ba4df",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rubycritic-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-rubycritic-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Phân tích chất lượng code Ruby với Claude & RubyCritic",
+  "short_description_vi": "Skill Claude RubyCritic giúp tự động hóa quy trình phân tích chất lượng code Ruby. Công cụ này hỗ trợ đắc lực cho các lập trình viên và đội ngũ vận hành nhờ tích hợp trực tiếp RubyCritic vào workflow của Claude Code. Skill này kết nối với các dự án Ruby và pipeline CI/CD để cung cấp các phân tích tĩnh cùng các chỉ số đo lường chất lượng code."
+}

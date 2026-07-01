@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/one",
+  "slug": "one",
+  "name": "one",
+  "headline": "ONE - Build Apps with Plain English",
+  "short_description": "Build apps, websites, and AI agents using plain English with Astro, React, Shadcn, and Cloudflare. Ideal for operations teams to automate workflows and create custom tools without extensive coding knowledge.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "one-ie",
+  "install_command": "git clone https://github.com/one-ie/one.git",
+  "source_repo_url": "https://github.com/one-ie/one",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "shadcnui",
+    "blog",
+    "cursor",
+    "starter-template",
+    "shadcn",
+    "react",
+    "vercel-ai-sdk",
+    "astro",
+    "codex",
+    "react-19",
+    "astrojs",
+    "astrojs-template",
+    "shadcn-ui",
+    "reactjs",
+    "claude",
+    "astro-5",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "ONE is a substrate for creating AI agents that improve over time. You write agents as markdown files defining personality, skills, and pricing, then deploy them instantly to Telegram, Discord, web, and API channels. Every conversation teaches your agents—success strengthens routing paths, failure weakens them, and after hundreds of interactions your agents automatically route around problems and find optimal solutions. The platform includes structured per-user memory (GDPR-compliant), native commerce with automatic escrow and settlement, and MCP integration for Claude Code and Cursor. Ideal for operations teams, support organizations, and anyone building specialized AI services that need to learn and scale.\nCustomer support agents that handle tickets and escalate intelligently\nMulti-agent teams where a CEO agent delegates to specialist agents\nPaid consultant agents that charge per query or skill\nEducational tutors that learn effective explanation strategies per student",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/one-ie/one`",
+    "usage": "```\nBuild a [TYPE OF TOOL: e.g., internal dashboard, customer portal, AI agent] for [COMPANY/TEAM NAME] using Astro, React, Shadcn, and Cloudflare. The tool should [SPECIFIC FUNCTION: e.g., track inventory, process customer requests, automate report generation]. Use plain English to outline the required features, user flows, and design preferences. Include [ANY ADDITIONAL DETAILS: e.g., color scheme, data sources, user roles].\n```\nCopy\n\n```\nHere’s the structure for a **customer support ticketing portal** built for **GreenLeaf Organics** using Astro, React, Shadcn, and Cloudflare Workers. The tool will replace their current Google Sheets-based system, reducing response times by 40% and providing real-time analytics.\n\n**Core Features:**\n1. **Ticket Submission:** Customers submit requests via a form with dropdown menus for issue type (e.g., \"Product Inquiry,\" \"Shipping Delay\"), priority levels (Low/Medium/High), and file attachments. The form integrates with their Shopify store to auto-populate order details.\n2. **Agent Dashboard:** A React-based interface with Shadcn components (tables, filters, and charts) displays open tickets, assigned agents, and SLA deadlines. Agents can bulk-update statuses (e.g., \"In Progress,\" \"Resolved\") and add internal notes.\n3. **Automated Workflows:** Cloudflare Workers handle background tasks like sending confirmation emails via SendGrid, escalating high-priority tickets after 2 hours of inactivity, and syncing data with their Zendesk account.\n4. **Analytics:** A dedicated page shows response time trends, ticket volume by issue type, and agent performance metrics (e.g., tickets resolved per hour). Charts are built with Recharts for clarity.\n\n**Design:**\n- Color scheme: GreenLeaf’s brand colors (#4CAF50 primary, #8BC34A secondary).\n- Layout: Dark mode toggle for agents working late shifts.\n- Data source: Direct API integration with their PostgreSQL database (hosted on Cloudflare Pages).\n\n**Next Steps:**\n- Deploy the Astro site to Cloudflare Pages with a custom domain (`support.greenleaforganics.com`).\n- Set up Cloudflare Workers for the automation logic and edge functions.\n- Test the ticket submission flow with 5% of customers before full rollout.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "one#main-content",
+      "one#overview",
+      "one#setup",
+      "one#examples",
+      "one#tools",
+      "one#mcp",
+      "one#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ONE là một nền tảng (substrate) để tạo các AI agent có khả năng tự cải thiện theo thời gian. Bạn viết các agent dưới dạng file markdown để định nghĩa tính cách, kỹ năng và giá cả, sau đó triển khai chúng ngay lập tức lên các kênh Telegram, Discord, web và API. Mỗi cuộc hội thoại đều giúp huấn luyện các agent của bạn—thành công giúp củng cố các luồng định tuyến (routing path), thất bại làm suy yếu chúng, và sau hàng trăm tương tác, các agent sẽ tự động định tuyến tránh các vấn đề phát sinh và tìm ra giải pháp tối ưu. Nền tảng này tích hợp bộ nhớ có cấu trúc theo từng người dùng (tuân thủ GDPR), tính năng thương mại tích hợp sẵn với cơ chế ký quỹ (escrow) và thanh toán tự động, cùng khả năng tích hợp MCP cho Claude Code và Cursor. Đây là giải pháp lý tưởng cho các đội ngũ vận hành, tổ chức hỗ trợ khách hàng và bất kỳ ai đang xây dựng các dịch vụ AI chuyên biệt cần khả năng tự học hỏi và mở rộng quy mô.\nCác agent hỗ trợ khách hàng giúp xử lý ticket và chuyển cấp (escalate) thông minh\nCác nhóm đa agent (multi-agent) nơi agent CEO ủy quyền cho các agent chuyên trách\nCác agent tư vấn trả phí, tính phí theo từng truy vấn hoặc kỹ năng\nCác gia sư giáo dục tự học hỏi các chiến lược giải thích hiệu quả cho từng học sinh",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/one-ie/one`",
+    "usage_vi": "```\nXây dựng một [LOẠI CÔNG CỤ: ví dụ: dashboard nội bộ, cổng thông tin khách hàng, AI agent] cho [TÊN CÔNG TY/ĐỘI NGŨ] bằng cách sử dụng Astro, React, Shadcn và Cloudflare. Công cụ này cần [CHỨC NĂNG CỤ THỂ: ví dụ: theo dõi kho hàng, xử lý yêu cầu của khách hàng, tự động tạo báo cáo]. Sử dụng tiếng Anh tự nhiên để phác thảo các tính năng yêu cầu, luồng người dùng (user flow) và tùy chọn thiết kế. Bao gồm [BẤT KỲ CHI TIẾT BỔ SUNG NÀO: ví dụ: bảng màu, nguồn dữ liệu, vai trò người dùng].\n```\nCopy\n\n```\nDưới đây là cấu trúc cho một **cổng tiếp nhận ticket hỗ trợ khách hàng (customer support ticketing portal)** được xây dựng cho **GreenLeaf Organics** bằng cách sử dụng Astro, React, Shadcn và Cloudflare Workers. Công cụ này sẽ thay thế hệ thống hiện tại chạy trên Google Sheets, giúp giảm 40% thời gian phản hồi và cung cấp số liệu phân tích theo thời gian thực.\n\n**Tính năng cốt lõi:**\n1. **Gửi Ticket (Ticket Submission):** Khách hàng gửi yêu cầu qua một biểu mẫu có menu thả xuống để chọn loại sự cố (ví dụ: \"Product Inquiry\", \"Shipping Delay\"), mức độ ưu tiên (Thấp/Trung bình/Cao) và tệp đính kèm. Biểu mẫu này tích hợp với cửa hàng Shopify của họ để tự động điền thông tin chi tiết đơn hàng.\n2. **Agent Dashboard:** Giao diện dựa trên React với các thành phần Shadcn (bảng, bộ lọc và biểu đồ) hiển thị các ticket đang mở, agent được phân công và thời hạn SLA. Các agent có thể cập nhật trạng thái hàng loạt (ví dụ: \"In Progress\", \"Resolved\") và thêm ghi chú nội bộ.\n3. **Quy trình tự động (Automated Workflows):** Cloudflare Workers xử lý các tác vụ nền như gửi email xác nhận qua SendGrid, chuyển cấp (escalate) các ticket có mức độ ưu tiên cao sau 2 giờ không hoạt động, và đồng bộ hóa dữ liệu với tài khoản Zendesk của họ.\n4. **Phân tích (Analytics):** Một trang riêng hiển thị xu hướng thời gian phản hồi, số lượng ticket theo loại sự cố và các chỉ số hiệu suất của agent (ví dụ: số lượng ticket được giải quyết mỗi giờ). Biểu đồ được xây dựng bằng Recharts để đảm bảo tính trực quan.\n\n**Thiết kế:**\n- Bảng màu: Màu thương hiệu của GreenLeaf (#4CAF50 chủ đạo, #8BC34A phụ).\n- Bố cục: Nút chuyển đổi chế độ tối (dark mode) cho các agent làm ca muộn.\n- Nguồn dữ liệu: Tích hợp API trực tiếp với cơ sở dữ liệu PostgreSQL của họ (được host trên Cloudflare Pages).\n\n**Các bước tiếp theo:**\n- Triển khai trang Astro lên Cloudflare Pages với tên miền tùy chỉnh (`support.greenleaforganics.com`).\n- Thiết lập Cloudflare Workers cho logic tự động hóa và các edge function.\n- Thử nghiệm luồng gửi ticket với 5% khách hàng trước khi triển khai chính thức toàn bộ.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:50.651020Z",
+    "http_status": 200,
+    "content_hash": "d110cf6452d9eb7212e5ed8854119b1975da1d7794e70bb55b2b72e2fab70f3b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\one.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\one.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ONE - Xây dựng ứng dụng bằng tiếng Anh tự nhiên",
+  "short_description_vi": "Xây dựng ứng dụng, website và AI agent bằng tiếng Anh tự nhiên với Astro, React, Shadcn và Cloudflare. Đây là giải pháp lý tưởng cho các đội ngũ vận hành để tự động hóa quy trình làm việc và tạo ra các công cụ tùy chỉnh mà không đòi hỏi kiến thức lập trình chuyên sâu."
+}

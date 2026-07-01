@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/infra-skills",
+  "slug": "infra-skills",
+  "name": "browser-use",
+  "headline": "Infra-Skills - AI Infrastructure Development",
+  "short_description": "AI infrastructure agent skills enable Claude Code to write, optimize, and debug high-performance systems. Operations teams benefit from automated infrastructure development, reducing manual effort and improving system reliability. Connects to Python-based workflows and integrates with Claude agents.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "yzlnew",
+  "install_command": "git clone https://github.com/yzlnew/infra-skills.git",
+  "source_repo_url": "https://github.com/yzlnew/infra-skills",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "infra-skills provides expert-level agent capabilities for AI infrastructure engineers working with GPU optimization, distributed training, and model deployment. The skill collection includes TileLang GPU kernel development for NVIDIA/AMD/Ascend hardware, Megatron memory estimation for MoE and dense models, SLIME post-training framework integration for RL scaling, and professional technical visualization tools like TikZ flowcharts and Material You presentations. Each skill packages domain knowledge, code examples, and best practices to help Claude agents handle specialized infrastructure workflows—from writing high-performance CUDA kernels to creating architecture diagrams and slide decks.\nWrite and optimize GPU kernels using TileLang for matrix multiplication and attention mechanisms\nEstimate GPU memory requirements for Megatron-based models with various parallelism strategies\nConfigure and implement RL training pipelines using SLIME framework with custom reward models\nGenerate professional flowcharts and architecture diagrams for technical documentation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yzlnew/infra-skills`",
+    "usage": "```\nI need help automating my [COMPANY]'s [INDUSTRY] infrastructure. Please generate a Python script to deploy and manage [SPECIFIC_INFRASTRUCTURE_COMPONENT] using [CLOUD_PROVIDER]. Ensure the script includes error handling, logging, and follows best practices for [INDUSTRY] compliance.\n```\nCopy\n\n```\n# Infrastructure Automation Script for [COMPANY]\n\n```python\nimport boto3\nimport logging\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nclass InfrastructureManager:\n    def __init__(self, region='us-west-2'):\n        self.ec2 = boto3.resource('ec2', region_name=region)\n        self.logger = logger\n\n    def deploy_ec2_instance(self, instance_type='t2.micro', key_name='my-key-pair', security_group_ids=['sg-123456']):\n        try:\n            instance = self.ec2.create_instances(\n                ImageId='ami-12345678',\n                InstanceType=instance_type,\n                KeyName=key_name,\n                SecurityGroupIds=security_group_ids,\n                MinCount=1,\n                MaxCount=1\n            )[0]\n            self.logger.info(f'Deployed EC2 instance: {instance.id}')\n            return instance\n        except Exception as e:\n            self.logger.error(f'Failed to deploy EC2 instance: {e}')\n            raise\n\n    def monitor_instance_status(self, instance_id):\n        instance = self.ec2.Instance(instance_id)\n        self.logger.info(f'Instance {instance_id} status: {instance.state[\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "infra-skills#main-content",
+      "infra-skills#overview",
+      "infra-skills#setup",
+      "infra-skills#examples",
+      "infra-skills#tools",
+      "infra-skills#mcp",
+      "infra-skills#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "infra-skills provides expert-level agent capabilities for AI infrastructure engineers working with GPU optimization, distributed training, and model deployment. The skill collection includes TileLang GPU kernel development for NVIDIA/AMD/Ascend hardware, Megatron memory estimation for MoE and dense models, SLIME post-training framework integration for RL scaling, and professional technical visualization tools like TikZ flowcharts and Material You presentations. Each skill packages domain knowledge, code examples, and best practices to help Claude agents handle specialized infrastructure workflows—from writing high-performance CUDA kernels to creating architecture diagrams and slide decks.\nWrite and optimize GPU kernels using TileLang for matrix multiplication and attention mechanisms\nEstimate GPU memory requirements for Megatron-based models with various parallelism strategies\nConfigure and implement RL training pipelines using SLIME framework with custom reward models\nGenerate professional flowcharts and architecture diagrams for technical documentation",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yzlnew/infra-skills`",
+    "usage_vi": "```\nI need help automating my [COMPANY]'s [INDUSTRY] infrastructure. Please generate a Python script to deploy and manage [SPECIFIC_INFRASTRUCTURE_COMPONENT] using [CLOUD_PROVIDER]. Ensure the script includes error handling, logging, and follows best practices for [INDUSTRY] compliance.\n```\nCopy\n\n```\n# Infrastructure Automation Script for [COMPANY]\n\n```python\nimport boto3\nimport logging\n\n# Configure logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nclass InfrastructureManager:\n    def __init__(self, region='us-west-2'):\n        self.ec2 = boto3.resource('ec2', region_name=region)\n        self.logger = logger\n\n    def deploy_ec2_instance(self, instance_type='t2.micro', key_name='my-key-pair', security_group_ids=['sg-123456']):\n        try:\n            instance = self.ec2.create_instances(\n                ImageId='ami-12345678',\n                InstanceType=instance_type,\n                KeyName=key_name,\n                SecurityGroupIds=security_group_ids,\n                MinCount=1,\n                MaxCount=1\n            )[0]\n            self.logger.info(f'Deployed EC2 instance: {instance.id}')\n            return instance\n        except Exception as e:\n            self.logger.error(f'Failed to deploy EC2 instance: {e}')\n            raise\n\n    def monitor_instance_status(self, instance_id):\n        instance = self.ec2.Instance(instance_id)\n        self.logger.info(f'Instance {instance_id} status: {instance.state[\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:33:18.187881Z",
+    "http_status": 200,
+    "content_hash": "8da6fa62178d834e81e2cb19c6d50656d6c79a11184f23effeff828c4b2bde2f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\infra-skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\infra-skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Infra-Skills - AI Infrastructure Development",
+  "short_description_vi": "AI infrastructure agent skills enable Claude Code to write, optimize, and debug high-performance systems. Operations teams benefit from automated infrastructure development, reducing manual effort and improving system reliability. Connects to Python-based workflows and integrates with Claude agents."
+}

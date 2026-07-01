@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-code",
+  "slug": "claude-code",
+  "name": "Claude Code",
+  "headline": "Claude Code: Your AI Coding Assistant",
+  "short_description": "Claude Code is your intelligent coding assistant, designed to streamline your programming tasks with precision and speed. Enhance your coding efficiency and reduce errors with its advanced AI-driven capabilities.",
+  "tier": "Silver",
+  "category": "Developers",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "sh",
+  "install_command": "git clone https://github.com/sh/agents",
+  "source_repo_url": "https://github.com/sh/agents",
+  "works_with": [
+    "Claude CodeCursorWindsurfClineCodex"
+  ],
+  "tags": [
+    "AI",
+    "automation",
+    "productivity",
+    "coding"
+  ],
+  "sections": {
+    "overview": "Claude Code is an AI-powered coding assistant that helps streamline programming tasks with precision and speed. It leverages advanced AI capabilities to enhance your coding efficiency while reducing errors in your development workflow. Designed for developers who want to accelerate their programming work, Claude Code brings intelligent assistance directly to your coding process.\nCode generation\nDebugging assistance\nDocumentation creation",
+    "setup": "Terminal\nCopy\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage": "```\nUse Claude Code to analyze the [PROJECT_DIRECTORY] repository and identify all unused or redundant dependencies listed in package.json. Generate a detailed report with: 1) List of dependencies to remove, 2) Estimated savings in bundle size and build time, 3) Potential breaking changes for each removal, and 4) Recommended replacement packages if applicable. Focus on dependencies that haven't been imported in any JavaScript/TypeScript files in the last 6 months. [PROJECT_DIRECTORY]\n```\nCopy\n\n```\n### Dependency Audit Report for Acme Corp's React Dashboard\n\n**Generated:** 2023-11-15 | **Project:** react-dashboard-v2.1.0\n**Analysis Scope:** All JS/TS files modified since 2023-05-15\n\n#### 🗑️ Unused Dependencies (12 total)\n1. **lodash@4.17.21** (1.2MB)\n   - Last imported: 2022-11-03 (8+ months ago)\n   - Potential savings: 1.2MB bundle reduction, 15% faster build time\n   - Breaking changes: None (pure utility library)\n   - Replacement: native ES6 methods (Array.prototype.flatMap, etc.)\n\n2. **moment@2.29.4** (65KB)\n   - Last imported: 2023-01-10 (10+ months ago)\n   - Potential savings: 65KB, 8% faster build\n   - Breaking changes: Date formatting may differ\n   - Replacement: date-fns@2.30.0 (modern alternative)\n\n3. **chart.js@3.9.1** (150KB)\n   - Last imported: 2022-08-15 (15+ months ago)\n   - Potential savings: 150KB, 22% faster build\n   - Breaking changes: Complete API rewrite in v4\n   - Replacement: Recharts@2.8.0 (React-specific charts)\n\n#### ⚠️ Partially Used Dependencies (3 total)\n- **axios@1.6.0**: Only used in 2/15 API service files\n- **react-router-dom@6.14.2**: Only used in 3/20 components\n- **@testing-library/react@13.4.0**: Only used in 1/8 test files\n\n#### 📊 Impact Summary\n- **Total bundle reduction:** 2.1MB (18% of current bundle)\n- **Build time improvement:** 42% faster (from 4.2s to 2.4s)\n- **Security risk reduction:** 12 fewer dependencies to audit\n- **Maintenance effort:** 3 hours to implement changes\n\n#### 🚀 Recommended Next Steps\n1. Run `npm uninstall lodash moment chart.js`\n2. Install replacements: `npm install date-fns recharts`\n3. Update import statements in affected files\n4. Run full test suite and update snapshots\n5. Deploy to staging for final validation\n\n**Note:** The analysis excluded devDependencies. Run `npm prune --production` after removing unused packages to clean up node_modules.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude Code, Cursor, Windsurf, Cline, Codex"
+    ],
+    "related_skills": [
+      "claude-code#main-content",
+      "claude-code#overview",
+      "claude-code#setup",
+      "claude-code#examples",
+      "claude-code#tools",
+      "claude-code#mcp",
+      "claude-code#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Claude Code là trợ lý lập trình tích hợp AI giúp tối ưu hóa các tác vụ phát triển phần mềm một cách nhanh chóng và chính xác. Công cụ này tận dụng các tính năng AI tiên tiến để nâng cao hiệu suất viết code, đồng thời hạn chế sai sót trong workflow phát triển. Được thiết kế dành cho các lập trình viên muốn đẩy nhanh tiến độ công việc, Claude Code mang đến sự hỗ trợ thông minh trực tiếp vào quy trình coding của bạn.\nTạo code tự động\nHỗ trợ debugging\nTạo tài liệu code",
+    "setup_vi": "Terminal\nSao chép\n`npx skills add sh/agents`\n`git clone https://github.com/sh/agents`",
+    "usage_vi": "```\nSử dụng Claude Code để phân tích kho lưu trữ (repository) [PROJECT_DIRECTORY] và xác định tất cả các dependency không sử dụng hoặc dư thừa được liệt kê trong file package.json. Tạo một báo cáo chi tiết bao gồm: 1) Danh sách các dependency cần gỡ bỏ, 2) Ước tính dung lượng bundle tiết kiệm được và thời gian build giảm thiểu, 3) Các lỗi tiềm ẩn (breaking changes) khi gỡ bỏ từng package, và 4) Đề xuất các package thay thế nếu phù hợp. Tập trung vào các dependency không được import trong bất kỳ file JavaScript/TypeScript nào trong 6 tháng qua. [PROJECT_DIRECTORY]\n```\nSao chép\n\n```\n### Báo cáo kiểm định Dependency cho React Dashboard của Acme Corp\n\n**Ngày tạo:** 2023-11-15 | **Dự án:** react-dashboard-v2.1.0\n**Phạm vi phân tích:** Tất cả các file JS/TS được sửa đổi kể từ 2023-05-15\n\n#### 🗑️ Dependency không sử dụng (tổng cộng 12)\n1. **lodash@4.17.21** (1.2MB)\n   - Import cuối cùng: 2022-11-03 (hơn 8 tháng trước)\n   - Tiết kiệm tiềm năng: giảm 1.2MB dung lượng bundle, thời gian build nhanh hơn 15%\n   - Breaking changes: Không có (thư viện tiện ích thuần túy)\n   - Giải pháp thay thế: các phương thức ES6 thuần (Array.prototype.flatMap, v.v.)\n\n2. **moment@2.29.4** (65KB)\n   - Import cuối cùng: 2023-01-10 (hơn 10 tháng trước)\n   - Tiết kiệm tiềm năng: giảm 65KB dung lượng bundle, thời gian build nhanh hơn 8%\n   - Breaking changes: Định dạng ngày tháng có thể khác biệt\n   - Giải pháp thay thế: date-fns@2.30.0 (giải pháp thay thế hiện đại)\n\n3. **chart.js@3.9.1** (150KB)\n   - Import cuối cùng: 2022-08-15 (hơn 15 tháng trước)\n   - Tiết kiệm tiềm năng: giảm 150KB dung lượng bundle, thời gian build nhanh hơn 22%\n   - Breaking changes: API bị viết lại hoàn toàn trong v4\n   - Giải pháp thay thế: Recharts@2.8.0 (biểu đồ chuyên biệt cho React)\n\n#### ⚠️ Dependency được dùng một phần (tổng cộng 3)\n- **axios@1.6.0**: Chỉ được dùng trong 2/15 file API service\n- **react-router-dom@6.14.2**: Chỉ được dùng trong 3/20 component\n- **@testing-library/react@13.4.0**: Chỉ được dùng trong 1/8 file test\n\n#### 📊 Tóm tắt tác động\n- **Tổng dung lượng bundle giảm:** 2.1MB (18% dung lượng hiện tại)\n- **Cải thiện thời gian build:** nhanh hơn 42% (từ 4.2s xuống 2.4s)\n- **Giảm thiểu rủi ro bảo mật:** bớt đi 12 dependency cần kiểm định\n- **Công sức bảo trì:** 3 giờ để triển khai các thay đổi\n\n#### 🚀 Các bước đề xuất tiếp theo\n1. Chạy lệnh `npm uninstall lodash moment chart.js`\n2. Cài đặt các package thay thế: `npm install date-fns recharts`\n3. Cập nhật các câu lệnh import trong các file bị ảnh hưởng\n4. Chạy toàn bộ test suite và cập nhật snapshot\n5. Deploy lên môi trường staging để kiểm thử lần cuối\n\n**Lưu ý:** Phân tích này không bao gồm devDependencies. Hãy chạy `npm prune --production` sau khi xóa các package không sử dụng để dọn dẹp node_modules.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:11:15.840102Z",
+    "http_status": 200,
+    "content_hash": "6110c3eb10dedb7087802d6ad4aecef2d49debe45a26422a5392d19c8849fefc",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-code.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Claude Code: Trợ lý lập trình AI của bạn",
+  "short_description_vi": "Claude Code là trợ lý lập trình thông minh được thiết kế giúp bạn tối ưu hóa các tác vụ code một cách nhanh chóng và chính xác. Nâng cao hiệu suất lập trình và giảm thiểu sai sót nhờ các tính năng hỗ trợ bằng AI tiên tiến."
+}

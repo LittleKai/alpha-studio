@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/openoutreach",
+  "slug": "openoutreach",
+  "name": "OpenOutreach",
+  "headline": "OpenOutreach: AI-Powered LinkedIn Automation Tool",
+  "short_description": "OpenOutreach is a powerful LinkedIn automation tool that uses AI to enhance your outreach efforts. It automates profile visits, connection requests, and messaging, streamlining your marketing and sales processes.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "eracle",
+  "install_command": "claude install eracle/OpenOutreach",
+  "source_repo_url": "https://github.com/eracle/OpenOutreach",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "automation",
+    "marketing-automation",
+    "scraping",
+    "linkedin",
+    "outreach"
+  ],
+  "sections": {
+    "overview": "OpenOutreach is an open-source LinkedIn automation tool that uses AI to streamline your outreach efforts. The platform automates profile visits, connection requests, and direct messaging, reducing manual work in your sales and marketing processes. It leverages LLM capabilities through multiple provider support to compose and send targeted outreach at scale. Built with Docker support and a modular architecture, OpenOutreach integrates with your existing workflow to accelerate lead generation and relationship building on LinkedIn.\nAutomate LinkedIn profile visits to boost visibility and engagement with potential leads.\nSend personalized connection requests at scale, enhancing the chances of acceptance.\nCraft AI-generated messages tailored for specific outreach campaigns, improving response rates.\nCollect and analyze data from LinkedIn profiles for targeted lead generation strategies.",
+    "setup": "Terminal\nCopy\n`claude install eracle/OpenOutreach`\n`git clone https://github.com/eracle/OpenOutreach`",
+    "usage": "```\nUse OpenOutreach to automate LinkedIn outreach for [TARGET INDUSTRY] professionals. Set up a campaign to visit profiles of [NUMBER] potential leads with [SPECIFIC TITLE] roles. Send personalized connection requests with a message highlighting [KEY BENEFIT] of your product/service. Follow up with a sequence of [NUMBER] messages over [TIME PERIOD] to nurture these leads.\n```\nCopy\n\n```\nCampaign Summary: Targeting SaaS professionals in the marketing technology space.\n\nWeek 1:\n- Visited 200 profiles of Marketing Operations Managers\n- Sent 150 connection requests with a personalized message about streamlining marketing workflows\n- 45 accepted connections\n\nWeek 2:\n- Follow-up message sent to connected leads: 'Hi [First Name], I noticed you're using [Tool]. Have you considered integrating it with [Our Solution] to [Key Benefit]? Would love to share how we've helped similar teams.'\n- 20 replies expressing interest\n\nWeek 3:\n- Follow-up with interested leads to schedule demos\n- 12 demos booked\n\nCampaign Insights:\n- Best performing message: Personalized mention of their current tool stack\n- Optimal send time: Tuesday and Thursday mornings\n- Conversion rate: 8% from connection to demo booked\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "openoutreach#main-content",
+      "openoutreach#overview",
+      "openoutreach#setup",
+      "openoutreach#examples",
+      "openoutreach#tools",
+      "openoutreach#mcp",
+      "openoutreach#related",
+      "marketingskills",
+      "copywriting",
+      "mailchamp"
+    ],
+    "overview_vi": "OpenOutreach là công cụ tự động hóa LinkedIn mã nguồn mở sử dụng AI để tinh giản các hoạt động outreach của bạn. Nền tảng tự động hóa việc ghé thăm profile, gửi yêu cầu kết nối và gửi tin nhắn trực tiếp, giảm thiểu các tác vụ thủ công trong quy trình sales và marketing. Công cụ tận dụng năng lực LLM thông qua việc hỗ trợ nhiều provider để soạn thảo và gửi các nội dung outreach mục tiêu ở quy mô lớn. Được tích hợp sẵn Docker và thiết kế theo kiến trúc modular, OpenOutreach dễ dàng tích hợp vào workflow hiện tại của bạn nhằm đẩy nhanh quá trình lead generation và xây dựng mối quan hệ trên LinkedIn.\n\nTự động hóa việc ghé thăm profile LinkedIn để tăng mức độ hiển thị và tương tác với các lead tiềm năng.\nGửi yêu cầu kết nối cá nhân hóa ở quy mô lớn, giúp tăng tỷ lệ chấp nhận.\nTự động soạn tin nhắn bằng AI được tối ưu riêng cho từng chiến dịch outreach cụ thể để cải thiện tỷ lệ phản hồi.\nThu thập và phân tích dữ liệu từ profile LinkedIn để phục vụ cho các chiến lược lead generation mục tiêu.",
+    "setup_vi": "Terminal\nSao chép\n`claude install eracle/OpenOutreach`\n`git clone https://github.com/eracle/OpenOutreach`",
+    "usage_vi": "```\nSử dụng OpenOutreach để tự động hóa hoạt động LinkedIn outreach cho các chuyên gia trong lĩnh vực [TARGET INDUSTRY]. Thiết lập chiến dịch ghé thăm profile của [NUMBER] lead tiềm năng giữ vai trò [SPECIFIC TITLE]. Gửi yêu cầu kết nối cá nhân hóa kèm tin nhắn làm nổi bật [KEY BENEFIT] từ sản phẩm/dịch vụ của bạn. Tiếp tục gửi chuỗi [NUMBER] tin nhắn follow-up trong khoảng thời gian [TIME PERIOD] để nuôi dưỡng các lead này.\n```\nSao chép\n\n```\nTóm tắt chiến dịch: Nhắm mục tiêu đến các chuyên gia SaaS trong lĩnh vực công nghệ marketing.\n\nTuần 1:\n- Đã ghé thăm 200 profile của Marketing Operations Manager\n- Đã gửi 150 yêu cầu kết nối kèm tin nhắn cá nhân hóa về việc tinh giản workflow marketing\n- 45 lượt chấp nhận kết nối\n\nTuần 2:\n- Gửi tin nhắn follow-up đến các lead đã kết nối: 'Chào [First Name], mình thấy bạn đang sử dụng [Tool]. Bạn đã từng cân nhắc tích hợp nó với [Our Solution] để [Key Benefit] chưa? Mình rất mong được chia sẻ cách bên mình đã hỗ trợ các đội ngũ tương tự.'\n- 20 lượt phản hồi thể hiện sự quan tâm\n\nTuần 3:\n- Follow-up với các lead quan tâm để đặt lịch demo\n- Đặt lịch thành công 12 buổi demo\n\nThông tin chi tiết về chiến dịch:\n- Tin nhắn hiệu quả nhất: Nhắc đến công cụ hiện tại họ đang dùng một cách cá nhân hóa\n- Khung giờ gửi tối ưu: Sáng Thứ Ba và Thứ Năm\n- Tỷ lệ chuyển đổi: 8% từ kết nối sang đặt lịch demo thành công\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:34:49.257613Z",
+    "http_status": 200,
+    "content_hash": "92a65b5896e52d3e41c6acae6d12247d32c2bda64cbc735f4a86231a0ecd7913",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openoutreach.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\openoutreach.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "OpenOutreach: Công cụ tự động hóa LinkedIn tích hợp AI",
+  "short_description_vi": "OpenOutreach là công cụ tự động hóa LinkedIn mạnh mẽ ứng dụng AI để tối ưu hóa hoạt động outreach. Công cụ giúp tự động hóa việc ghé thăm profile, gửi yêu cầu kết nối và nhắn tin, qua đó tinh giản các quy trình sales và marketing của bạn."
+}

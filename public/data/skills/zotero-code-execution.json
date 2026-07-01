@@ -1,0 +1,65 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/zotero-code-execution",
+  "slug": "zotero-code-execution",
+  "name": "browser-use",
+  "headline": "Zotero Code Execution - Automated Search",
+  "short_description": "Zotero Code Execution enables efficient multi-strategy search within Zotero using code execution patterns. Researchers and operations teams benefit from automated bibliographic searches, semantic tagging, and data extraction. It connects to Zotero MCP and integrates with Python workflows for enhanced research automation.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "kerim",
+  "install_command": "git clone https://github.com/kerim/zotero-code-execution.git",
+  "source_repo_url": "https://github.com/kerim/zotero-code-execution",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "python",
+    "anthropic",
+    "mcp",
+    "bibliography",
+    "zotero",
+    "code-execution",
+    "research",
+    "semantic-search"
+  ],
+  "sections": {
+    "overview": "Zotero Code Execution is a Python library that implements Anthropic's code execution pattern for comprehensive Zotero searches without crashes or token bloat. It performs semantic, keyword, and tag-based searches in a single orchestrated call, automatically deduplicates results, and ranks them by relevance. The library processes 100+ items in the execution environment while returning only the top results to your context, solving the crash risk and manual orchestration problems of direct MCP tool calls. Researchers, operations teams, and knowledge workers benefit from efficient bibliographic discovery integrated with Python workflows and Claude Code automation.\nMulti-term semantic searches across large research libraries with automatic deduplication\nFilter journal articles by date range, author, or tags in a single code execution\nFind papers on related topics (e.g., multiple spellings or language variants) with merged ranking\nExtract and rank recent publications with specific criteria (DOI, date, item type)",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kerim/zotero-code-execution`",
+    "usage": "```\nUse Zotero MCP and Python to execute a multi-strategy search in Zotero for [RESEARCH_TOPIC]. Apply the following strategies: [STRATEGY_1], [STRATEGY_2], and [STRATEGY_3]. Extract bibliographic metadata, generate semantic tags for each item, and compile the results into a structured CSV file named [OUTPUT_FILENAME].csv. Include a summary of search efficiency metrics (e.g., precision, recall) based on the applied strategies.\n```\nCopy\n\n```\n### Zotero Multi-Strategy Search Results: Quantum Computing in Financial Risk Management\n\n**Search Strategies Applied:**\n1. **Keyword Search:** 'quantum computing' AND 'financial risk' (127 items)\n2. **Citation Chaining:** Forward citations from seminal paper *Quantum Algorithms for Portfolio Optimization* (2021) (43 items)\n3. **Semantic Tagging:** Applied tags: 'quantum finance', 'risk modeling', 'algorithmic trading' (89 items)\n\n**Results Summary:**\n- Total unique items retrieved: 189\n- Items with semantic tags: 89 (47% coverage)\n- Top 5 most cited papers:\n  1. *Quantum Algorithms for Portfolio Optimization* (2021) - 142 citations\n  2. *Machine Learning and Quantum Computing in Finance* (2020) - 89 citations\n  3. *Risk Assessment in Quantum Financial Systems* (2019) - 67 citations\n  4. *Hybrid Quantum-Classical Models for Risk Analysis* (2022) - 54 citations\n  5. *Quantum Monte Carlo for Financial Derivatives* (2018) - 45 citations\n\n**Semantic Tag Distribution:**\n- 'quantum finance': 67 items\n- 'risk modeling': 54 items\n- 'algorithmic trading': 32 items\n- 'portfolio optimization': 28 items\n\n**Efficiency Metrics:**\n- Precision (relevance of retrieved items): 89%\n- Recall (coverage of target domain): 76%\n- Average search time per strategy: 2.3 minutes\n\n**Output File:** `quantum_finance_search_results.csv` (attached)\n\n**Next Steps:**\n1. Review items with missing semantic tags for manual tagging.\n2. Cross-reference with recent conference proceedings (e.g., QIP 2023).\n3. Validate citation counts against Google Scholar for accuracy.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "zotero-code-execution#main-content",
+      "zotero-code-execution#overview",
+      "zotero-code-execution#setup",
+      "zotero-code-execution#examples",
+      "zotero-code-execution#tools",
+      "zotero-code-execution#mcp",
+      "zotero-code-execution#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Zotero Code Execution is a Python library that implements Anthropic's code execution pattern for comprehensive Zotero searches without crashes or token bloat. It performs semantic, keyword, and tag-based searches in a single orchestrated call, automatically deduplicates results, and ranks them by relevance. The library processes 100+ items in the execution environment while returning only the top results to your context, solving the crash risk and manual orchestration problems of direct MCP tool calls. Researchers, operations teams, and knowledge workers benefit from efficient bibliographic discovery integrated with Python workflows and Claude Code automation.\nMulti-term semantic searches across large research libraries with automatic deduplication\nFilter journal articles by date range, author, or tags in a single code execution\nFind papers on related topics (e.g., multiple spellings or language variants) with merged ranking\nExtract and rank recent publications with specific criteria (DOI, date, item type)",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/kerim/zotero-code-execution`",
+    "usage_vi": "```\nUse Zotero MCP and Python to execute a multi-strategy search in Zotero for [RESEARCH_TOPIC]. Apply the following strategies: [STRATEGY_1], [STRATEGY_2], and [STRATEGY_3]. Extract bibliographic metadata, generate semantic tags for each item, and compile the results into a structured CSV file named [OUTPUT_FILENAME].csv. Include a summary of search efficiency metrics (e.g., precision, recall) based on the applied strategies.\n```\nCopy\n\n```\n### Zotero Multi-Strategy Search Results: Quantum Computing in Financial Risk Management\n\n**Search Strategies Applied:**\n1. **Keyword Search:** 'quantum computing' AND 'financial risk' (127 items)\n2. **Citation Chaining:** Forward citations from seminal paper *Quantum Algorithms for Portfolio Optimization* (2021) (43 items)\n3. **Semantic Tagging:** Applied tags: 'quantum finance', 'risk modeling', 'algorithmic trading' (89 items)\n\n**Results Summary:**\n- Total unique items retrieved: 189\n- Items with semantic tags: 89 (47% coverage)\n- Top 5 most cited papers:\n  1. *Quantum Algorithms for Portfolio Optimization* (2021) - 142 citations\n  2. *Machine Learning and Quantum Computing in Finance* (2020) - 89 citations\n  3. *Risk Assessment in Quantum Financial Systems* (2019) - 67 citations\n  4. *Hybrid Quantum-Classical Models for Risk Analysis* (2022) - 54 citations\n  5. *Quantum Monte Carlo for Financial Derivatives* (2018) - 45 citations\n\n**Semantic Tag Distribution:**\n- 'quantum finance': 67 items\n- 'risk modeling': 54 items\n- 'algorithmic trading': 32 items\n- 'portfolio optimization': 28 items\n\n**Efficiency Metrics:**\n- Precision (relevance of retrieved items): 89%\n- Recall (coverage of target domain): 76%\n- Average search time per strategy: 2.3 minutes\n\n**Output File:** `quantum_finance_search_results.csv` (attached)\n\n**Next Steps:**\n1. Review items with missing semantic tags for manual tagging.\n2. Cross-reference with recent conference proceedings (e.g., QIP 2023).\n3. Validate citation counts against Google Scholar for accuracy.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:16:17.642611Z",
+    "http_status": 200,
+    "content_hash": "3ccbe4f0c4e9907f5ab778d3f6bbdc7d56c6be17fad197e333ba06701ea9e74f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zotero-code-execution.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\zotero-code-execution.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Zotero Code Execution - Automated Search",
+  "short_description_vi": "Zotero Code Execution enables efficient multi-strategy search within Zotero using code execution patterns. Researchers and operations teams benefit from automated bibliographic searches, semantic tagging, and data extraction. It connects to Zotero MCP and integrates with Python workflows for enhanced research automation."
+}

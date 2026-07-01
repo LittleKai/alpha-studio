@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/sourcerer-mcp",
+  "slug": "sourcerer-mcp",
+  "name": "Sourcerer MCP",
+  "headline": "Sourcerer MCP - Semantic Code Search & Navigation",
+  "short_description": "Sourcerer MCP enables AI agents to perform semantic code search and navigation, reducing token usage by jumping directly to relevant functions, classes, and code chunks. Benefits developers and operations teams by improving efficiency in code analysis and navigation tasks. Connects to Claude agents via Model Context Protocol.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "st3v3nmw",
+  "install_command": "git clone https://github.com/st3v3nmw/sourcerer-mcp.git",
+  "source_repo_url": "https://github.com/st3v3nmw/sourcerer-mcp",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "code-analysis",
+    "mcp",
+    "semantic-search",
+    "model-context-protocol",
+    "code-navigation",
+    "code-search",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "Sourcerer MCP is an MCP server that builds a semantic search index of your codebase using Tree-sitter parsing and OpenAI embeddings. Instead of requiring AI agents to read entire files, it enables agents to search conceptually and retrieve only the specific functions, classes, and code chunks they need. The server automatically watches for file changes, respects .gitignore rules, and maintains a persistent vector database for fast semantic similarity matching. Supported languages include Go, JavaScript, Python, TypeScript, and Markdown, with more planned. This approach dramatically reduces token usage and cognitive load for AI code analysis and navigation tasks.\nQuickly locate relevant code functions during code review or refactoring\nNavigate large codebases without loading entire files into context\nSemantic code search across multiple files by intent or concept\nAutomated code analysis with reduced token consumption",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/st3v3nmw/sourcerer-mcp`",
+    "usage": "```\nUse sourcerer-mcp to analyze the [PROJECT_NAME] codebase and identify all instances where [FUNCTION_NAME] is called or referenced. For each instance, extract the surrounding 5 lines of context and categorize them by [CONTEXT_TYPE: e.g., 'error handling', 'performance optimization', 'legacy code']. Return the results as a structured JSON report with file paths, line numbers, and categorized snippets.\n```\nCopy\n\n```\n```json\n{\n  \"search_results\": {\n    \"project_name\": \"E-Commerce Platform\",\n    \"function_name\": \"calculate_discount\",\n    \"total_instances\": 12,\n    \"by_context_type\": {\n      \"error_handling\": [\n        {\n          \"file_path\": \"/src/services/discount_service.py\",\n          \"line_number\": 45,\n          \"context\": [\n            \"try:\",\n            \"    discount = calculate_discount(user, cart)\",\n            \"    if discount < 0:\",\n            \"        raise ValueError('Invalid discount calculated')\",\n            \"except ValueError as e:\"\n          ]\n        }\n      ],\n      \"performance_optimization\": [\n        {\n          \"file_path\": \"/src/utils/pricing_utils.py\",\n          \"line_number\": 89,\n          \"context\": [\n            \"def apply_bulk_discounts(items):\",\n            \"    discounts = [calculate_discount(item) for item in items]\",\n            \"    return sum(discounts)\",\n            \"    # Note: Parallel processing could improve performance here\"\n          ]\n        }\n      ]\n    }\n  }\n}\n```\n\n**Summary:** The `calculate_discount` function is referenced 12 times across the codebase, with 3 instances in error handling contexts and 2 in performance optimization contexts. The most complex usage is in `/src/services/discount_service.py` where it interacts with user data validation. The performance-critical path in `/src/utils/pricing_utils.py` suggests potential for parallel processing optimization.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "sourcerer-mcp#main-content",
+      "sourcerer-mcp#overview",
+      "sourcerer-mcp#setup",
+      "sourcerer-mcp#examples",
+      "sourcerer-mcp#tools",
+      "sourcerer-mcp#mcp",
+      "sourcerer-mcp#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Sourcerer MCP là một MCP server giúp xây dựng chỉ mục tìm kiếm ngữ nghĩa cho codebase của bạn bằng cách sử dụng Tree-sitter để phân tích cú pháp và OpenAI embeddings. Thay vì yêu cầu các AI agent phải đọc toàn bộ tệp, công cụ này cho phép các agent tìm kiếm theo khái niệm và chỉ lấy ra các hàm, class và đoạn code cụ thể mà chúng cần. Server tự động theo dõi các thay đổi của tệp, tuân thủ các quy tắc trong .gitignore và duy trì một persistent vector database để khớp độ tương đồng ngữ nghĩa một cách nhanh chóng. Các ngôn ngữ được hỗ trợ bao gồm Go, JavaScript, Python, TypeScript và Markdown, và sẽ có thêm nhiều ngôn ngữ khác trong tương lai. Phương pháp này giúp giảm thiểu đáng kể lượng token tiêu thụ và tải nhận thức (cognitive load) cho các tác vụ phân tích và điều hướng mã nguồn bằng AI.\nNhanh chóng xác định vị trí các hàm code liên quan trong quá trình code review hoặc refactoring\nĐiều hướng các codebase lớn mà không cần tải toàn bộ tệp vào context\nTìm kiếm code theo ngữ nghĩa trên nhiều tệp dựa theo ý định hoặc khái niệm\nTự động hóa phân tích code giúp giảm lượng token tiêu thụ",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/st3v3nmw/sourcerer-mcp`",
+    "usage_vi": "```\nSử dụng sourcerer-mcp để phân tích codebase [PROJECT_NAME] và xác định tất cả các vị trí mà [FUNCTION_NAME] được gọi hoặc tham chiếu. Với mỗi vị trí, hãy trích xuất 5 dòng ngữ cảnh xung quanh và phân loại chúng theo [CONTEXT_TYPE: ví dụ: 'error handling', 'performance optimization', 'legacy code']. Trả về kết quả dưới dạng báo cáo JSON có cấu trúc bao gồm đường dẫn tệp, số dòng và các đoạn code đã được phân loại.\n```\nCopy\n\n```json\n{\n  \"search_results\": {\n    \"project_name\": \"Nền tảng Thương mại Điện tử\",\n    \"function_name\": \"calculate_discount\",\n    \"total_instances\": 12,\n    \"by_context_type\": {\n      \"error_handling\": [\n        {\n          \"file_path\": \"/src/services/discount_service.py\",\n          \"line_number\": 45,\n          \"context\": [\n            \"try:\",\n            \"    discount = calculate_discount(user, cart)\",\n            \"    if discount < 0:\",\n            \"        raise ValueError('Invalid discount calculated')\",\n            \"except ValueError as e:\"\n          ]\n        }\n      ],\n      \"performance_optimization\": [\n        {\n          \"file_path\": \"/src/utils/pricing_utils.py\",\n          \"line_number\": 89,\n          \"context\": [\n            \"def apply_bulk_discounts(items):\",\n            \"    discounts = [calculate_discount(item) for item in items]\",\n            \"    return sum(discounts)\",\n            \"    # Lưu ý: Xử lý song song có thể cải thiện hiệu năng ở đây\"\n          ]\n        }\n      ]\n    }\n  }\n}\n```\n\n**Tóm tắt:** Hàm `calculate_discount` được tham chiếu 12 lần trong codebase, với 3 lần xuất hiện trong ngữ cảnh xử lý lỗi (error handling) và 2 lần trong ngữ cảnh tối ưu hóa hiệu năng (performance optimization). Cách sử dụng phức tạp nhất nằm ở `/src/services/discount_service.py`, nơi hàm này tương tác với việc xác thực dữ liệu người dùng. Luồng xử lý quan trọng về mặt hiệu năng (performance-critical path) trong `/src/utils/pricing_utils.py` cho thấy tiềm năng tối ưu hóa bằng xử lý song song."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:41:10.674486Z",
+    "http_status": 200,
+    "content_hash": "bd2f2d10dfc49a7d2400d53abad70dc7ea21b46cf0bbf03a4136f5ba31159bda",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sourcerer-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\sourcerer-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Sourcerer MCP - Tìm kiếm & Điều hướng Code theo Ngữ nghĩa",
+  "short_description_vi": "Sourcerer MCP cho phép các AI agent thực hiện tìm kiếm và điều hướng code theo ngữ nghĩa, giúp tiết kiệm token bằng cách di chuyển trực tiếp đến các hàm, class và đoạn code liên quan. Công cụ này mang lại lợi ích cho lập trình viên và đội ngũ vận hành nhờ nâng cao hiệu suất trong các tác vụ phân tích và điều hướng mã nguồn. Kết nối với các Claude agent thông qua Model Context Protocol."
+}

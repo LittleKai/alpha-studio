@@ -1,0 +1,68 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ifai",
+  "slug": "ifai",
+  "name": "IfAI",
+  "headline": "IfAI - AI Code Editor",
+  "short_description": "IfAI is a cross-platform AI code editor built with Tauri 2.0 and React 19. It enables developers to write, edit, and debug code with AI assistance. The editor integrates with Claude for code suggestions, completions, and explanations. It benefits software development teams by accelerating coding tasks and improving code quality.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "peterfei",
+  "install_command": "git clone https://github.com/peterfei/ifai.git",
+  "source_repo_url": "https://github.com/peterfei/ifai",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ifai",
+    "cursor",
+    "monaco-editor",
+    "ai-agent-tools",
+    "trae",
+    "ai",
+    "ai-agent-team",
+    "claude-code",
+    "ai-agent",
+    "editor",
+    "code-editor",
+    "ai-assistant",
+    "rust"
+  ],
+  "sections": {
+    "overview": "IfAI is a cross-platform code editor that combines traditional editing with AI agent orchestration capabilities. The platform coordinates 9+ specialized agents (Explore, Review, Refactor, Test, Doc, Plan, ReAct, Git Commit, Debug) through DAG-based workflows declared in YAML, enabling complex multi-step coding tasks. It features symbol-aware RAG for precise code understanding, Composer 2.0 for parallel multi-file editing with conflict detection, and Shell-level control allowing agents to execute npm, git, and cargo commands autonomously. The Rust-powered backend delivers 120 FPS performance even with thousands of records, while natural language intent routing automatically matches user requests to appropriate agents. Developers benefit from reduced coding friction through agent collaboration, integrated version control workflows, and local-first privacy support for sensitive code.\nOrchestrate multi-agent workflows for complex refactoring tasks across multiple files\nAutomate code review, testing, and documentation generation through coordinated agents\nExecute git operations with AI safety checks (secret scanning, pre-flight validation)\nParallel code editing with real-time diff preview and conflict resolution",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/peterfei/ifai`",
+    "usage": "```\nUse IfAI to [ACTION: refactor/debug/optimize/explain] the following code snippet for [PROGRAMMING_LANGUAGE]. Ensure the changes align with [CODING_STANDARD: e.g., PEP 8, SOLID principles]. Provide a before-and-after comparison with inline comments explaining the improvements. Code snippet: [CODE_SNIPPET]\n```\nCopy\n\n```\n### Code Refactor Request for IfAI\n\n**Original Code (Python - Legacy Data Processing Script):**\n```python\ndef process_data(data):\n    result = []\n    for item in data:\n        if item['status'] == 'active':\n            temp = item['value'] * 2\n            result.append(temp)\n    return result\n```\n\n**IfAI Refactored Code (PEP 8 Compliant with Type Hints & List Comprehension):**\n```python\ndef process_data(data: list[dict]) -> list[int]:\n    \"\"\"\n    Processes a list of dictionaries, filtering for 'active' items and doubling their values.\n    Args:\n        data: List of dictionaries with 'status' and 'value' keys.\n    Returns:\n        List of processed values.\n    \"\"\"\n    return [item['value'] * 2 for item in data if item['status'] == 'active']\n```\n\n**Key Improvements:**\n1. **Type Hints:** Added `list[dict]` and `list[int]` annotations for better IDE support and readability.\n2. **List Comprehension:** Replaced the explicit loop with a more Pythonic and performant list comprehension.\n3. **Docstring:** Added a clear docstring explaining the function's purpose, arguments, and return value.\n4. **Variable Naming:** Removed redundant `temp` variable and improved clarity.\n5. **Performance:** List comprehensions are generally faster than explicit loops in Python.\n\n**Testing Notes:**\n- The refactored version was tested with the same input: `[{'status': 'active', 'value': 5}, {'status': 'inactive', 'value': 3}]`\n- Output: `[10]` (matches original behavior).\n- Edge case handled: Empty input list returns `[]`.\n\n**Next Steps:**\n- Consider adding error handling for missing keys (e.g., `item.get('status')`).\n- Profile the function with large datasets to validate performance gains.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ifai#main-content",
+      "ifai#overview",
+      "ifai#setup",
+      "ifai#examples",
+      "ifai#tools",
+      "ifai#mcp",
+      "ifai#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "IfAI is a cross-platform code editor that combines traditional editing with AI agent orchestration capabilities. The platform coordinates 9+ specialized agents (Explore, Review, Refactor, Test, Doc, Plan, ReAct, Git Commit, Debug) through DAG-based workflows declared in YAML, enabling complex multi-step coding tasks. It features symbol-aware RAG for precise code understanding, Composer 2.0 for parallel multi-file editing with conflict detection, and Shell-level control allowing agents to execute npm, git, and cargo commands autonomously. The Rust-powered backend delivers 120 FPS performance even with thousands of records, while natural language intent routing automatically matches user requests to appropriate agents. Developers benefit from reduced coding friction through agent collaboration, integrated version control workflows, and local-first privacy support for sensitive code.\nOrchestrate multi-agent workflows for complex refactoring tasks across multiple files\nAutomate code review, testing, and documentation generation through coordinated agents\nExecute git operations with AI safety checks (secret scanning, pre-flight validation)\nParallel code editing with real-time diff preview and conflict resolution",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/peterfei/ifai`",
+    "usage_vi": "```\nUse IfAI to [ACTION: refactor/debug/optimize/explain] the following code snippet for [PROGRAMMING_LANGUAGE]. Ensure the changes align with [CODING_STANDARD: e.g., PEP 8, SOLID principles]. Provide a before-and-after comparison with inline comments explaining the improvements. Code snippet: [CODE_SNIPPET]\n```\nCopy\n\n```\n### Code Refactor Request for IfAI\n\n**Original Code (Python - Legacy Data Processing Script):**\n```python\ndef process_data(data):\n    result = []\n    for item in data:\n        if item['status'] == 'active':\n            temp = item['value'] * 2\n            result.append(temp)\n    return result\n```\n\n**IfAI Refactored Code (PEP 8 Compliant with Type Hints & List Comprehension):**\n```python\ndef process_data(data: list[dict]) -> list[int]:\n    \"\"\"\n    Processes a list of dictionaries, filtering for 'active' items and doubling their values.\n    Args:\n        data: List of dictionaries with 'status' and 'value' keys.\n    Returns:\n        List of processed values.\n    \"\"\"\n    return [item['value'] * 2 for item in data if item['status'] == 'active']\n```\n\n**Key Improvements:**\n1. **Type Hints:** Added `list[dict]` and `list[int]` annotations for better IDE support and readability.\n2. **List Comprehension:** Replaced the explicit loop with a more Pythonic and performant list comprehension.\n3. **Docstring:** Added a clear docstring explaining the function's purpose, arguments, and return value.\n4. **Variable Naming:** Removed redundant `temp` variable and improved clarity.\n5. **Performance:** List comprehensions are generally faster than explicit loops in Python.\n\n**Testing Notes:**\n- The refactored version was tested with the same input: `[{'status': 'active', 'value': 5}, {'status': 'inactive', 'value': 3}]`\n- Output: `[10]` (matches original behavior).\n- Edge case handled: Empty input list returns `[]`.\n\n**Next Steps:**\n- Consider adding error handling for missing keys (e.g., `item.get('status')`).\n- Profile the function with large datasets to validate performance gains.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:27:13.960502Z",
+    "http_status": 200,
+    "content_hash": "e8900552826ce596c9ac4e4a17cd37ebbf9e1127f72beb815f01996f64f34995",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ifai.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ifai.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "IfAI - AI Code Editor",
+  "short_description_vi": "IfAI is a cross-platform AI code editor built with Tauri 2.0 and React 19. It enables developers to write, edit, and debug code with AI assistance. The editor integrates with Claude for code suggestions, completions, and explanations. It benefits software development teams by accelerating coding tasks and improving code quality."
+}

@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/hello-agents",
+  "slug": "hello-agents",
+  "name": "Hello-Agents",
+  "headline": "Hello-Agents - Build Intelligent Agents",
+  "short_description": "Hello-agents is a Python-based tutorial for building intelligent agents from scratch. It benefits developers and operations teams by providing a practical guide to implementing LLM-powered agents. The skill connects to Claude and can be applied in various business workflows requiring automation and intelligent decision-making.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "15 min",
+  "author": "datawhalechina",
+  "install_command": "git clone https://github.com/datawhalechina/hello-agents.git",
+  "source_repo_url": "https://github.com/datawhalechina/hello-agents",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent",
+    "llm",
+    "tutorial",
+    "rag"
+  ],
+  "sections": {
+    "overview": "Hello-agents is a comprehensive Python tutorial designed to teach developers how to build intelligent agents from scratch using large language models. The project provides structured learning materials across multiple chapters and includes co-creation projects demonstrating real-world agent applications like stock analysis and software development assistance. It covers core agent concepts, tool integration, streaming responses, and practical implementation patterns for automating business workflows. The skill supports integration with Claude and other LLM-compatible APIs, making it suitable for teams building automation solutions that require intelligent decision-making capabilities.\nDevelop a personalized travel assistant that interacts with users and provides tailored recommendations.\nCreate a multi-agent system that collaborates to solve complex problems in real-time.\nImplement a smart agent that automates data retrieval and processing tasks using LLMs.\nBuild a context-aware agent that maintains user preferences and adapts its responses accordingly.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/datawhalechina/hello-agents`",
+    "usage": "```\nI want to build an intelligent agent using the hello-agents tutorial. The agent should [DESCRIBE TASK], and I need it to integrate with [SPECIFIC TOOLS]. Provide a step-by-step guide, including code snippets and best practices for [SPECIFIC USE CASE].\n```\nCopy\n\n```\nTo build an intelligent agent using the hello-agents tutorial, follow these steps:\n\n1. **Set Up the Environment**: Install Python and the necessary libraries. Use the following command:\n   ```bash\n   pip install hello-agents\n   ```\n\n2. **Define the Agent's Task**: Specify the task you want the agent to perform. For example, if you want the agent to automate customer support, define the task as:\n   ```python\n   task = \"Automate customer support by answering common questions and escalating complex issues to a human agent.\"\n   ```\n\n3. **Integrate with Tools**: Integrate the agent with the tools it needs to perform its task. For instance, if the agent needs to access a database, use the following code snippet:\n   ```python\n   from hello_agents import DatabaseAgent\n   db_agent = DatabaseAgent(database_url=\"your_database_url\")\n   ```\n\n4. **Test and Deploy**: Test the agent thoroughly to ensure it performs the task correctly. Once tested, deploy the agent to your production environment.\n\nBy following these steps, you can build an intelligent agent that automates tasks and makes intelligent decisions, improving efficiency and productivity in your business workflows.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "hello-agents#main-content",
+      "hello-agents#overview",
+      "hello-agents#setup",
+      "hello-agents#examples",
+      "hello-agents#tools",
+      "hello-agents#mcp",
+      "hello-agents#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Hello-agents là tài liệu hướng dẫn Python toàn diện được thiết kế để hướng dẫn lập trình viên cách xây dựng các agent thông minh từ đầu bằng các mô hình ngôn ngữ lớn (LLM). Dự án cung cấp tài liệu học tập có cấu trúc qua nhiều chương và bao gồm các dự án đồng sáng tạo minh họa các ứng dụng thực tế của agent như phân tích cổ phiếu và hỗ trợ phát triển phần mềm. Tài liệu bao gồm các khái niệm cốt lõi về agent, tích hợp công cụ, streaming response và các pattern triển khai thực tế để tự động hóa quy trình công việc của doanh nghiệp. Skill này hỗ trợ tích hợp với Claude và các API tương thích với LLM khác, giúp nó phù hợp với các đội ngũ đang xây dựng giải pháp tự động hóa yêu cầu khả năng ra quyết định thông minh.\nPhát triển một trợ lý du lịch cá nhân hóa tương tác với người dùng và đưa ra các đề xuất phù hợp.\nTạo một hệ thống multi-agent cộng tác để giải quyết các vấn đề phức tạp theo thời gian thực.\nTriển khai một agent thông minh tự động hóa các tác vụ truy xuất và xử lý dữ liệu bằng cách sử dụng LLM.\nXây dựng một agent nhận biết ngữ cảnh (context-aware) giúp duy trì các thiết lập ưu tiên của người dùng và tự động điều chỉnh phản hồi tương ứng.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/datawhalechina/hello-agents`",
+    "usage_vi": "```\nTôi muốn xây dựng một agent thông minh bằng cách sử dụng tài liệu hướng dẫn hello-agents. Agent này nên [MÔ TẢ TÁC VỤ], và tôi cần tích hợp nó với [CÔNG CỤ CỤ THỂ]. Hãy cung cấp hướng dẫn từng bước, bao gồm các đoạn mã và thực hành tốt nhất cho [TRƯỜNG HỢP SỬ DỤNG CỤ THỂ].\n```\nCopy\n\n```\nĐể xây dựng một agent thông minh bằng cách sử dụng tài liệu hướng dẫn hello-agents, hãy thực hiện theo các bước sau:\n\n1. **Thiết lập môi trường**: Cài đặt Python và các thư viện cần thiết. Sử dụng lệnh sau:\n   ```bash\n   pip install hello-agents\n   ```\n\n2. **Định nghĩa tác vụ của Agent**: Xác định tác vụ bạn muốn agent thực hiện. Ví dụ, nếu bạn muốn agent tự động hóa việc hỗ trợ khách hàng, hãy định nghĩa tác vụ như sau:\n   ```python\n   task = \"Automate customer support by answering common questions and escalating complex issues to a human agent.\"\n   ```\n\n3. **Tích hợp với công cụ**: Tích hợp agent với các công cụ cần thiết để thực hiện tác vụ của nó. Ví dụ, nếu agent cần truy cập cơ sở dữ liệu, hãy sử dụng đoạn mã sau:\n   ```python\n   from hello_agents import DatabaseAgent\n   db_agent = DatabaseAgent(database_url=\"your_database_url\")\n   ```\n\n4. **Kiểm thử và triển khai**: Kiểm thử kỹ lưỡng agent để đảm bảo nó thực hiện tác vụ một cách chính xác. Sau khi hoàn tất kiểm thử, hãy triển khai agent vào môi trường production của bạn.\n\nBằng cách thực hiện các bước này, bạn có thể xây dựng một agent thông minh giúp tự động hóa các tác vụ và đưa ra quyết định thông minh, nâng cao hiệu quả và năng suất trong quy trình công việc của doanh nghiệp.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:22:16.382380Z",
+    "http_status": 200,
+    "content_hash": "ddffb6d2b9cf1e93ceb5765f16223abc41ebe96875747616827d8b31ff319c55",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hello-agents.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hello-agents.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Hello-Agents - Xây dựng Agent thông minh",
+  "short_description_vi": "Hello-agents là tài liệu hướng dẫn dựa trên Python giúp xây dựng các agent thông minh từ đầu. Dự án mang lại lợi ích cho các lập trình viên và đội ngũ vận hành nhờ cung cấp hướng dẫn thực tế để triển khai các agent vận hành bằng LLM. Skill này kết nối với Claude và có thể áp dụng vào nhiều quy trình công việc của doanh nghiệp đòi hỏi tính tự động hóa và ra quyết định thông minh."
+}

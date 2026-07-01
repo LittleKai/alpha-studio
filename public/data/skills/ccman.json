@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ccman",
+  "slug": "ccman",
+  "name": "ccman",
+  "headline": "ccman configuration tool for Claude Code",
+  "short_description": "ccman is a tool for managing API service provider configurations for Codex, Claude Code, Gemini CLI, and OpenCode. It supports CLI and desktop interfaces, MCP server management, and WebDAV synchronization. Operations teams use it to switch between service providers, apply preset templates, and manage configurations without disruption.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "2ue",
+  "install_command": "git clone https://github.com/2ue/ccman.git",
+  "source_repo_url": "https://github.com/2ue/ccman",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claudecode-config",
+    "codex-cli",
+    "codex",
+    "claude",
+    "claude-code",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": "ccman is a configuration management tool that centralizes API service provider settings across Codex, Claude Code, Gemini CLI, and OpenCode. It supports both CLI and desktop interfaces, enabling users to switch between providers with a single command and apply built-in preset templates for common services. The tool automatically backs up critical configurations before updates and provides WebDAV synchronization for multi-device setup. Additional features include MCP server management, configuration import/export for Codex and Claude, and history cleanup utilities. Operations teams and developers managing multiple AI coding environments benefit from reduced manual configuration work and safer provider switching.\nSwitch between multiple API service providers without manual file edits\nBackup and restore configurations across Codex, Claude, Gemini, and OpenCode\nSynchronize API configurations across devices via WebDAV\nCentrally manage MCP servers for Claude and Gemini integrations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/2ue/ccman`",
+    "usage": "```\nI need to configure [SERVICE_PROVIDER] for [AI_TOOL] using ccman. Here are my requirements: [REQUIREMENTS]. Please generate the configuration file and explain any key settings.\n```\nCopy\n\n```\n# Configuration for Claude Code with AWS Service Provider",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ccman#main-content",
+      "ccman#overview",
+      "ccman#setup",
+      "ccman#examples",
+      "ccman#tools",
+      "ccman#mcp",
+      "ccman#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ccman là công cụ quản lý cấu hình giúp tập trung hóa các thiết lập của nhà cung cấp dịch vụ API trên Codex, Claude Code, Gemini CLI và OpenCode. Hỗ trợ cả giao diện CLI và desktop, ccman cho phép người dùng chuyển đổi giữa các nhà cung cấp chỉ bằng một dòng lệnh duy nhất và áp dụng các template preset tích hợp sẵn cho các dịch vụ phổ biến. Công cụ tự động sao lưu các cấu hình quan trọng trước khi cập nhật và hỗ trợ đồng bộ hóa WebDAV để setup trên nhiều thiết bị. Các tính năng bổ sung bao gồm quản lý MCP server, xuất/nhập cấu hình cho Codex và Claude, cùng các tiện ích dọn dẹp lịch sử. Các đội ngũ vận hành và nhà phát triển quản lý nhiều môi trường lập trình AI sẽ giảm thiểu được công sức cấu hình thủ công và chuyển đổi nhà cung cấp an toàn hơn.\n\nChuyển đổi giữa nhiều nhà cung cấp dịch vụ API mà không cần chỉnh sửa file thủ công\nSao lưu và khôi phục cấu hình trên Codex, Claude, Gemini và OpenCode\nĐồng bộ hóa cấu hình API giữa các thiết bị qua WebDAV\nQuản lý tập trung các MCP server cho tích hợp Claude và Gemini",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/2ue/ccman`",
+    "usage_vi": "```\nTôi cần cấu hình [SERVICE_PROVIDER] cho [AI_TOOL] bằng ccman. Dưới đây là các yêu cầu của tôi: [REQUIREMENTS]. Vui lòng tạo file cấu hình và giải thích các thiết lập quan trọng.\n```\nCopy\n\n```\n# Cấu hình cho Claude Code với AWS Service Provider\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:48:26.938192Z",
+    "http_status": 200,
+    "content_hash": "c6607aec1dcfc661b1a977de01444edb0a4b60cd960fc18179ec283a448b5f76",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccman.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ccman.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ cấu hình ccman dành cho Claude Code",
+  "short_description_vi": "ccman là công cụ quản lý cấu hình nhà cung cấp dịch vụ API dành cho Codex, Claude Code, Gemini CLI và OpenCode. Công cụ hỗ trợ cả giao diện CLI và desktop, quản lý MCP server, và đồng bộ hóa qua WebDAV. Các đội ngũ vận hành có thể sử dụng ccman để chuyển đổi linh hoạt giữa các nhà cung cấp dịch vụ, áp dụng các template preset và quản lý cấu hình mà không gây gián đoạn."
+}

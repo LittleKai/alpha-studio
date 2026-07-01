@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-fact-check-skill",
+  "slug": "claude-fact-check-skill",
+  "name": "browser-use",
+  "headline": "claude fact check skill for social media",
+  "short_description": "Automates fact-checking of social media posts by identifying claims, gathering evidence, analyzing source independence, and detecting rhetorical fallacies. Benefits operations teams by providing clear verification reports. Connects to Claude AI and other AI assistants.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "cellear",
+  "install_command": "git clone https://github.com/cellear/claude-fact-check-skill.git",
+  "source_repo_url": "https://github.com/cellear/claude-fact-check-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "ai-workflows",
+    "prompt-engineering",
+    "llm",
+    "misinformation",
+    "fact-checking",
+    "ai"
+  ],
+  "sections": {
+    "overview": "This skill provides a comprehensive methodology for verifying claims in social media posts (50-500 words) using AI assistance. It identifies primary assertions, gathers supporting and disputing evidence from multiple sources, analyzes source independence to detect circular citations, and flags rhetorical fallacies and manipulation tactics. The skill evaluates ideological alignment of sources and delivers findings in clear, actionable markdown reports with confidence levels. It works as a Claude Skill for Pro subscribers, a copy-paste prompt for free users, or as a manual checklist, making it accessible across platforms including ChatGPT and Perplexity.\nContent moderation teams evaluating user-generated content for misinformation\nJournalists fact-checking claims in real-time reporting\nTeams verifying viral social media claims before sharing\nEducators teaching critical thinking and media literacy skills",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cellear/claude-fact-check-skill`",
+    "usage": "```\nFact-check the following social media post: '[POST]'. Identify any factual claims, then gather evidence to verify each claim. For each claim, evaluate the independence of sources and check for rhetorical fallacies. Present your findings in a clear, structured report format.\n```\nCopy\n\n```\nAfter analyzing the social media post about the new 'EcoClean' laundry detergent, here's the fact-checking report:\n\n1. Claim: 'EcoClean removes 99.9% of stains in a single wash.'\n   - Verification: Independent lab tests show 92-95% stain removal efficiency, not 99.9%. The 99.9% claim appears to be an exaggeration.\n   - Sources: Manufacturer's website, Consumer Reports, Good Housekeeping Institute\n   - Fallacies: None detected\n\n2. Claim: 'EcoClean is the only detergent that's 100% biodegradable.'\n   - Verification: False. Several other brands (e.g., Seventh Generation, Ecover) also offer 100% biodegradable detergents.\n   - Sources: EPA certification database, brand websites\n   - Fallacies: Black-and-white fallacy (false dichotomy)\n\n3. Claim: 'EcoClean uses patented GreenEnzyme technology.'\n   - Verification: True. Patent US10125376B2 confirms this technology is unique to EcoClean.\n   - Sources: USPTO database\n   - Fallacies: None detected\n\nConclusion: The post contains one exaggerated claim and one false claim. The patent claim is verified.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-fact-check-skill#main-content",
+      "claude-fact-check-skill#overview",
+      "claude-fact-check-skill#setup",
+      "claude-fact-check-skill#examples",
+      "claude-fact-check-skill#tools",
+      "claude-fact-check-skill#mcp",
+      "claude-fact-check-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This skill provides a comprehensive methodology for verifying claims in social media posts (50-500 words) using AI assistance. It identifies primary assertions, gathers supporting and disputing evidence from multiple sources, analyzes source independence to detect circular citations, and flags rhetorical fallacies and manipulation tactics. The skill evaluates ideological alignment of sources and delivers findings in clear, actionable markdown reports with confidence levels. It works as a Claude Skill for Pro subscribers, a copy-paste prompt for free users, or as a manual checklist, making it accessible across platforms including ChatGPT and Perplexity.\nContent moderation teams evaluating user-generated content for misinformation\nJournalists fact-checking claims in real-time reporting\nTeams verifying viral social media claims before sharing\nEducators teaching critical thinking and media literacy skills",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cellear/claude-fact-check-skill`",
+    "usage_vi": "```\nFact-check the following social media post: '[POST]'. Identify any factual claims, then gather evidence to verify each claim. For each claim, evaluate the independence of sources and check for rhetorical fallacies. Present your findings in a clear, structured report format.\n```\nCopy\n\n```\nAfter analyzing the social media post about the new 'EcoClean' laundry detergent, here's the fact-checking report:\n\n1. Claim: 'EcoClean removes 99.9% of stains in a single wash.'\n   - Verification: Independent lab tests show 92-95% stain removal efficiency, not 99.9%. The 99.9% claim appears to be an exaggeration.\n   - Sources: Manufacturer's website, Consumer Reports, Good Housekeeping Institute\n   - Fallacies: None detected\n\n2. Claim: 'EcoClean is the only detergent that's 100% biodegradable.'\n   - Verification: False. Several other brands (e.g., Seventh Generation, Ecover) also offer 100% biodegradable detergents.\n   - Sources: EPA certification database, brand websites\n   - Fallacies: Black-and-white fallacy (false dichotomy)\n\n3. Claim: 'EcoClean uses patented GreenEnzyme technology.'\n   - Verification: True. Patent US10125376B2 confirms this technology is unique to EcoClean.\n   - Sources: USPTO database\n   - Fallacies: None detected\n\nConclusion: The post contains one exaggerated claim and one false claim. The patent claim is verified.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:46:15.710753Z",
+    "http_status": 200,
+    "content_hash": "f55084d412877b023c4dfbd4c926d6915bba37a53d7b87ac23b3c0e5de54876b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-fact-check-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-fact-check-skill.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude fact check skill for social media",
+  "short_description_vi": "Automates fact-checking of social media posts by identifying claims, gathering evidence, analyzing source independence, and detecting rhetorical fallacies. Benefits operations teams by providing clear verification reports. Connects to Claude AI and other AI assistants."
+}

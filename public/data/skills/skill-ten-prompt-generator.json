@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skill-ten-prompt-generator",
+  "slug": "skill-ten-prompt-generator",
+  "name": "Skill Ten",
+  "headline": "Skill Ten - Prompt Generator",
+  "short_description": "AI prompt engineering system with 10 scenario-specific experts. Automatically routes requests to the right expert to generate high-quality prompts for various applications like video generation, image creation, AI programming, and data analysis.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "liangdabiao",
+  "install_command": "git clone https://github.com/liangdabiao/skill-ten-prompt-generator.git",
+  "source_repo_url": "https://github.com/liangdabiao/skill-ten-prompt-generator",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skill Ten is an intelligent prompt generator built on Claude Code Agent Skills that automatically identifies your use case and routes requests to specialized experts. The system covers 10 major scenarios including video generation (Sora, Veo), image generation (Flux, Midjourney), AI programming with .cursorrules, data analysis with Python, creative writing, research, voice conversation coaching, and long-running agent orchestration. Each expert applies validated best-practice frameworks and templates to generate structured, high-quality prompts. The system supports both English and Chinese input and output, helping users create more effective prompts without manual scene selection.\nGenerate video prompts with 7-layer structure for Sora or Veo\nCreate image generation prompts using S-E-L-C framework for Midjourney or Flux\nWrite .cursorrules and coding guidance using P-R-E patterns for Cursor\nProduce JSON Schema prompts for structured API integration and batch generation",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/skill-ten-prompt-generator`",
+    "usage": "```\nI need a prompt for [SPECIFIC USE CASE] related to [INDUSTRY]. The output should be [OUTPUT FORMAT] and include [KEY DETAILS]. Can you help me generate this?\n```\nCopy\n\n```\n# Video Generation Prompt\n\n**Scenario:** Creating a promotional video for a new product launch\n\n**Target Audience:** Tech-savvy professionals aged 25-45\n\n**Key Messages:**\n- Highlight the product's unique features\n- Emphasize its problem-solving capabilities\n- Include a strong call-to-action\n\n**Tone:** Professional yet engaging\n\n**Visual Style:** Modern, sleek, and dynamic\n\n**Length:** 60 seconds\n\n**Call-to-Action:** Visit our website to learn more and sign up for a free trial.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skill-ten-prompt-generator#main-content",
+      "skill-ten-prompt-generator#overview",
+      "skill-ten-prompt-generator#setup",
+      "skill-ten-prompt-generator#examples",
+      "skill-ten-prompt-generator#tools",
+      "skill-ten-prompt-generator#mcp",
+      "skill-ten-prompt-generator#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill Ten là một trình tạo prompt thông minh được xây dựng trên Claude Code Agent Skills, tự động nhận diện use case của bạn và định tuyến yêu cầu đến các chuyên gia chuyên biệt. Hệ thống hỗ trợ 10 kịch bản chính bao gồm tạo video (Sora, Veo), tạo hình ảnh (Flux, Midjourney), lập trình AI với .cursorrules, phân tích dữ liệu bằng Python, viết lách sáng tạo, nghiên cứu, hướng dẫn hội thoại bằng giọng nói và điều phối agent chạy dài hạn (long-running agent orchestration). Mỗi chuyên gia áp dụng các framework và template best-practice đã được kiểm chứng để tạo ra các prompt có cấu trúc và chất lượng cao. Hệ thống hỗ trợ cả đầu vào và đầu ra bằng tiếng Anh và tiếng Trung, giúp người dùng tạo các prompt hiệu quả hơn mà không cần lựa chọn kịch bản thủ công.\n\nTạo prompt video với cấu trúc 7 lớp cho Sora hoặc Veo\nTạo prompt tạo ảnh sử dụng framework S-E-L-C cho Midjourney hoặc Flux\nViết .cursorrules và hướng dẫn lập trình sử dụng pattern P-R-E cho Cursor\nTạo prompt JSON Schema để tích hợp API cấu trúc và tạo hàng loạt (batch generation)",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/liangdabiao/skill-ten-prompt-generator`",
+    "usage_vi": "```\nTôi cần một prompt cho [USE CASE CỤ THỂ] liên quan đến [NGÀNH NGHỀ]. Đầu ra phải ở dạng [ĐỊNH DẠNG ĐẦU RA] và bao gồm [CHI TIẾT QUAN TRỌNG]. Bạn có thể giúp tôi tạo prompt này không?\n```\nCopy\n\n```\n# Prompt Tạo Video\n\n**Kịch bản:** Tạo video quảng bá cho buổi ra mắt sản phẩm mới\n\n**Đối tượng mục tiêu:** Các chuyên gia am hiểu công nghệ độ tuổi từ 25-45\n\n**Thông điệp chính:**\n- Làm nổi bật các tính năng độc đáo của sản phẩm\n- Nhấn mạnh khả năng giải quyết vấn đề của sản phẩm\n- Đi kèm lời kêu gọi hành động (call-to-action) rõ ràng\n\n**Tông giọng:** Chuyên nghiệp nhưng vẫn lôi cuốn\n\n**Phong cách hình ảnh:** Hiện đại, mượt mà và năng động\n\n**Thời lượng:** 60 giây\n\n**Lời kêu gọi hành động:** Truy cập website của chúng tôi để tìm hiểu thêm và đăng ký dùng thử miễn phí.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:49:54.819378Z",
+    "http_status": 200,
+    "content_hash": "15025fdbf40d8a321f00d98e7017dfa97f54d86be42cc9f4fe2ace60b12f75ee",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-ten-prompt-generator.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skill-ten-prompt-generator.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skill Ten - Trình tạo Prompt",
+  "short_description_vi": "Hệ thống prompt engineering AI tích hợp 10 chuyên gia theo từng kịch bản chuyên biệt. Hệ thống tự động định tuyến yêu cầu đến đúng chuyên gia để tạo ra các prompt chất lượng cao cho nhiều ứng dụng khác nhau như tạo video, tạo hình ảnh, lập trình AI và phân tích dữ liệu."
+}

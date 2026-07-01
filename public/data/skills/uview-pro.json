@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/uview-pro",
+  "slug": "uview-pro",
+  "name": "flutter-ui",
+  "headline": "uView Pro 组件库: uni-app UI Components",
+  "short_description": "This skill provides a library of UI components and utility functions tailored for developing uni-app pages. It is designed for developers who are working with the uView Pro UI framework.",
+  "tier": "Bronze",
+  "category": "Development",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "uview-pro",
+  "install_command": "git clone https://github.com/uview-pro/skills",
+  "source_repo_url": "https://github.com/uview-pro/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "uview",
+    "ui-development"
+  ],
+  "sections": {
+    "overview": "The uView Pro 组件库技能provides access to the uView Pro component library, a cross-platform UI framework designed for uni-app development. It includes pre-built components and utility functions that streamline page development for developers working with the uView Pro framework. This skill collection is sourced from the official uView Pro documentation and enables developers to leverage standardized components across multiple platforms. It helps reduce development time by providing ready-to-use UI elements instead of building from scratch. Developers building uni-app applications benefit from consistent component behavior and access to the full uView Pro library documentation.\nDeveloping uni-app pages efficiently\nUsing prefixed components like u-button and u-input\nUtilizing utility functions such as debounce and deep copy\nImplementing customized hooks like useToast and useModal",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/uview-pro/skills --skill uview-pro`\n`git clone https://github.com/uview-pro/skills`",
+    "usage": "```\nGenerate a [COMPONENT_NAME] component for uView Pro in uni-app. Use the props: [PROPS_LIST]. Ensure the component is responsive, follows uView Pro design guidelines, and includes TypeScript support. Provide a working example with sample data: [SAMPLE_DATA].\n```\nCopy\n\n```\n# uView Pro - Custom Card Component\n\nHere’s a responsive `u-card-pro` component for uView Pro with TypeScript support, including a working example:\n\n```vue\n<template>\n  <u-card-pro\n    title=\"Premium Plan\"\n    subtitle=\"Unlock all features\"\n    thumb=\"/static/premium-icon.png\"\n    :border-radius=\"12\"\n    :padding=\"32\"\n    @action=\"handleUpgrade\"\n  >\n    <view>\n      <text>Get access to advanced analytics, priority support, and exclusive templates.</text>\n      <text class=\"highlight\">Only $9.99/month!</text>\n    </view>\n  </u-card-pro>\n</template>\n\n<script setup>\nconst handleUpgrade = () => {\n  console.log('Upgrade clicked');\n  uni.navigateTo({ url: '/pages/upgrade' });\n};\n</script>\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "uview-pro#main-content",
+      "uview-pro#overview",
+      "uview-pro#setup",
+      "uview-pro#examples",
+      "uview-pro#related",
+      "flutter-ui"
+    ],
+    "overview_vi": "The uView Pro 组件库技能provides access to the uView Pro component library, a cross-platform UI framework designed for uni-app development. It includes pre-built components and utility functions that streamline page development for developers working with the uView Pro framework. This skill collection is sourced from the official uView Pro documentation and enables developers to leverage standardized components across multiple platforms. It helps reduce development time by providing ready-to-use UI elements instead of building from scratch. Developers building uni-app applications benefit from consistent component behavior and access to the full uView Pro library documentation.\nDeveloping uni-app pages efficiently\nUsing prefixed components like u-button and u-input\nUtilizing utility functions such as debounce and deep copy\nImplementing customized hooks like useToast and useModal",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/uview-pro/skills --skill uview-pro`\n`git clone https://github.com/uview-pro/skills`",
+    "usage_vi": "```\nGenerate a [COMPONENT_NAME] component for uView Pro in uni-app. Use the props: [PROPS_LIST]. Ensure the component is responsive, follows uView Pro design guidelines, and includes TypeScript support. Provide a working example with sample data: [SAMPLE_DATA].\n```\nCopy\n\n```\n# uView Pro - Custom Card Component\n\nHere’s a responsive `u-card-pro` component for uView Pro with TypeScript support, including a working example:\n\n```vue\n<template>\n  <u-card-pro\n    title=\"Premium Plan\"\n    subtitle=\"Unlock all features\"\n    thumb=\"/static/premium-icon.png\"\n    :border-radius=\"12\"\n    :padding=\"32\"\n    @action=\"handleUpgrade\"\n  >\n    <view>\n      <text>Get access to advanced analytics, priority support, and exclusive templates.</text>\n      <text class=\"highlight\">Only $9.99/month!</text>\n    </view>\n  </u-card-pro>\n</template>\n\n<script setup>\nconst handleUpgrade = () => {\n  console.log('Upgrade clicked');\n  uni.navigateTo({ url: '/pages/upgrade' });\n};\n</script>\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:34:28.234581Z",
+    "http_status": 200,
+    "content_hash": "3959a513d263d5524f2a57518a8262ddc4ee9e389accd16cd404681981c9c29e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\uview-pro.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\uview-pro.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "uView Pro 组件库: uni-app UI Components",
+  "short_description_vi": "This skill provides a library of UI components and utility functions tailored for developing uni-app pages. It is designed for developers who are working with the uView Pro UI framework."
+}

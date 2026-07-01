@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/unsplash-photo-search",
+  "slug": "unsplash-photo-search",
+  "name": "Related Skills",
+  "headline": "Unsplash Photo Search: Image Retrieval for AI",
+  "short_description": "The Unsplash Photo Search skill allows users to search and retrieve high-quality photos from Unsplash. It is ideal for developers looking to integrate image searching capabilities into their applications.",
+  "tier": "Bronze",
+  "category": "Marketing",
+  "difficulty": "",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "",
+  "author": "cevatkerim",
+  "install_command": "git clone https://github.com/cevatkerim/skills",
+  "source_repo_url": "https://github.com/cevatkerim/skills",
+  "works_with": [
+    "Cursor",
+    "Claude Code"
+  ],
+  "tags": [
+    "unsplash",
+    "photo-retrieval",
+    "photo",
+    "search"
+  ],
+  "sections": {
+    "overview": "The Unsplash Photo Search skill enables AI agents to search and retrieve high-quality photos from Unsplash's library with built-in filtering capabilities. Users can search by keyword and apply filters for orientation, color, and sorting preferences, or select random photos with optional filtering. The skill automatically handles download tracking as required by Unsplash's API and generates attribution in both text and HTML formats. Built with shell-based implementation, it requires no Python dependencies and integrates seamlessly into AI coding workflows. This skill solves the problem of integrating licensed image search into applications while maintaining proper attribution compliance.\nSearch for photos based on keywords\nGet random photos in specific categories\nTrack user downloads of photos",
+    "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/cevatkerim/skills --skill unsplash`\n`git clone https://github.com/cevatkerim/skills`",
+    "usage": "```\nSearch Unsplash for high-quality, royalty-free photos matching the following criteria: [KEYWORDS], [COLOR_PREFERENCE], [IMAGE_ORIENTATION]. Provide direct download links and attribution details for each result.\n```\nCopy\n\n```\n### Unsplash Photo Search Results\n\nHere are 10 high-quality, royalty-free photos matching your criteria (\"mountain landscape\", \"blue tones\", \"landscape orientation\"):\n\n**1. [Majestic Mountain Peak](https://unsplash.com/photos/a-mountain-peak-covered-in-snow-with-a-blue-sky-background-bGn9Q5a5vZI)**\n- **Photographer:** Alex Johnson\n- **Color Palette:** Dominant blues and whites with subtle orange accents\n- **Resolution:** 4000x3000px (Landscape)\n- **Attribution:** \"Photo by Alex Johnson on Unsplash\"\n\n**2. [Alpine Lake Serenity](https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-under-a-blue-sky-5fNmWej4tAA)**\n- **Photographer:** Sarah Miller\n- **Color Palette:** Cool blues and teals\n- **Resolution:** 3840x2160px (Landscape)\n- **Attribution:** \"Photo by Sarah Miller on Unsplash\"\n\n*(Additional results omitted for brevity. Full list includes 10 images with direct download links and attribution.)*\n\n### Usage Tips:\n- All images are licensed under the [Unsplash License](https://unsplash.com/license), free for commercial and non-commercial use.\n- Click the links to download high-resolution versions directly from Unsplash.\n- For attribution, include the photographer's name and \"on Unsplash\" as shown above.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent"
+    ],
+    "related_skills": [
+      "unsplash-photo-search#main-content",
+      "unsplash-photo-search#overview",
+      "unsplash-photo-search#setup",
+      "unsplash-photo-search#examples",
+      "unsplash-photo-search#tools",
+      "unsplash-photo-search#mcp",
+      "unsplash-photo-search#related"
+    ],
+    "overview_vi": "The Unsplash Photo Search skill enables AI agents to search and retrieve high-quality photos from Unsplash's library with built-in filtering capabilities. Users can search by keyword and apply filters for orientation, color, and sorting preferences, or select random photos with optional filtering. The skill automatically handles download tracking as required by Unsplash's API and generates attribution in both text and HTML formats. Built with shell-based implementation, it requires no Python dependencies and integrates seamlessly into AI coding workflows. This skill solves the problem of integrating licensed image search into applications while maintaining proper attribution compliance.\nSearch for photos based on keywords\nGet random photos in specific categories\nTrack user downloads of photos",
+    "setup_vi": "Terminal\nCopy\n`$ npx skills add https://github.com/cevatkerim/skills --skill unsplash`\n`git clone https://github.com/cevatkerim/skills`",
+    "usage_vi": "```\nSearch Unsplash for high-quality, royalty-free photos matching the following criteria: [KEYWORDS], [COLOR_PREFERENCE], [IMAGE_ORIENTATION]. Provide direct download links and attribution details for each result.\n```\nCopy\n\n```\n### Unsplash Photo Search Results\n\nHere are 10 high-quality, royalty-free photos matching your criteria (\"mountain landscape\", \"blue tones\", \"landscape orientation\"):\n\n**1. [Majestic Mountain Peak](https://unsplash.com/photos/a-mountain-peak-covered-in-snow-with-a-blue-sky-background-bGn9Q5a5vZI)**\n- **Photographer:** Alex Johnson\n- **Color Palette:** Dominant blues and whites with subtle orange accents\n- **Resolution:** 4000x3000px (Landscape)\n- **Attribution:** \"Photo by Alex Johnson on Unsplash\"\n\n**2. [Alpine Lake Serenity](https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-under-a-blue-sky-5fNmWej4tAA)**\n- **Photographer:** Sarah Miller\n- **Color Palette:** Cool blues and teals\n- **Resolution:** 3840x2160px (Landscape)\n- **Attribution:** \"Photo by Sarah Miller on Unsplash\"\n\n*(Additional results omitted for brevity. Full list includes 10 images with direct download links and attribution.)*\n\n### Usage Tips:\n- All images are licensed under the [Unsplash License](https://unsplash.com/license), free for commercial and non-commercial use.\n- Click the links to download high-resolution versions directly from Unsplash.\n- For attribution, include the photographer's name and \"on Unsplash\" as shown above.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:36:50.394610Z",
+    "http_status": 200,
+    "content_hash": "72772928129b480d6403a01e7ab0780b6505a51b83dd48194a514de5b61150b8",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\unsplash-photo-search.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\unsplash-photo-search.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Unsplash Photo Search: Image Retrieval for AI",
+  "short_description_vi": "The Unsplash Photo Search skill allows users to search and retrieve high-quality photos from Unsplash. It is ideal for developers looking to integrate image searching capabilities into their applications."
+}

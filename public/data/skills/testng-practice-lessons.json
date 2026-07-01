@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/testng-practice-lessons",
+  "slug": "testng-practice-lessons",
+  "name": "Testng Practice Lessons",
+  "headline": "TestNG Practice Lessons: SDET Training Framework",
+  "short_description": "A TestNG-based UI testing framework for SDET training. Demonstrates TestNG annotations, parallel testing, cross-browser testing, logging with Log4j2, and structured reporting. Designed to help students strengthen automation testing skills with practical examples and configuration.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "105 min",
+  "author": "cihat-kose",
+  "install_command": "git clone https://github.com/cihat-kose/testng-practice-lessons.git",
+  "source_repo_url": "https://github.com/cihat-kose/testng-practice-lessons",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "testng",
+    "java-selenium-testng",
+    "testing-automation",
+    "ui-testing"
+  ],
+  "sections": {
+    "overview": "TestNG Practice Lessons is a Java-based training framework designed to help SDET students strengthen automation testing skills through practical, hands-on examples. It demonstrates core TestNG features including annotations, data providers, parallel execution, and cross-browser testing using Selenium WebDriver. The project integrates Log4j2 for comprehensive logging and generates HTML reports to track test results. Built with Maven for easy dependency management, it supports running tests via XML configuration files or directly from test classes, making it ideal for learning structured test automation practices and Page Object Model patterns.\nLearning TestNG annotations and test lifecycle management\nPracticing parallel test execution across multiple browsers\nUnderstanding data providers and parameterized testing\nImplementing Page Object Model in UI automation\n\nThis framework is designed to help students strengthen their automation testing skills with practical examples and configuration. It includes the following features:\n\n- **TestNG Annotations**: Utilizes TestNG annotations such as @BeforeMethod, @AfterMethod, @Test, and @DataProvider for structured test case management.\n- **Parallel Testing**: Supports parallel test execution to improve test execution time and efficiency.\n- **Cross-Browser Testing**: Enables testing across different browsers to ensure compatibility and robustness.\n- **Logging with Log4j2**: Implements Log4j2 for comprehensive logging, making it easier to debug and track test execution.\n- **Structured Reporting**: Generates detailed test reports for better analysis and reporting.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cihat-kose/testng-practice-lessons`",
+    "usage": "```\nCreate a TestNG-based UI testing framework for [COMPANY] in the [INDUSTRY] sector. The framework should include TestNG annotations, parallel testing, cross-browser testing, logging with Log4j2, and structured reporting. Provide practical examples and configuration details for [DATA] to help students strengthen their automation testing skills.\n```\nCopy\n\n```\n# TestNG-Based UI Testing Framework for [COMPANY] in the [INDUSTRY] Sector\n\n\n### Example 1: TestNG Annotations\n\n```java\npublic class TestNGAnnotationsExample {\n    @BeforeMethod\n    public void setUp() {\n        System.out.println(\"Setting up the test environment\");\n    }\n    \n    @Test\n    public void testLogin() {\n        System.out.println(\"Executing login test\");\n    }\n    \n    @AfterMethod\n    public void tearDown() {\n        System.out.println(\"Cleaning up the test environment\");\n    }\n}\n```\n\n### Example 2: Parallel Testing\n\n```java\npublic class ParallelTestingExample {\n    @Test(threadPoolSize = 3, invocationCount = 5, timeOut = 1000)\n    public void parallelTest() {\n        System.out.println(\"Executing parallel test\");\n    }\n}\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "testng-practice-lessons#main-content",
+      "testng-practice-lessons#overview",
+      "testng-practice-lessons#setup",
+      "testng-practice-lessons#examples",
+      "testng-practice-lessons#tools",
+      "testng-practice-lessons#mcp",
+      "testng-practice-lessons#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "TestNG Practice Lessons is a Java-based training framework designed to help SDET students strengthen automation testing skills through practical, hands-on examples. It demonstrates core TestNG features including annotations, data providers, parallel execution, and cross-browser testing using Selenium WebDriver. The project integrates Log4j2 for comprehensive logging and generates HTML reports to track test results. Built with Maven for easy dependency management, it supports running tests via XML configuration files or directly from test classes, making it ideal for learning structured test automation practices and Page Object Model patterns.\nLearning TestNG annotations and test lifecycle management\nPracticing parallel test execution across multiple browsers\nUnderstanding data providers and parameterized testing\nImplementing Page Object Model in UI automation\n\nThis framework is designed to help students strengthen their automation testing skills with practical examples and configuration. It includes the following features:\n\n- **TestNG Annotations**: Utilizes TestNG annotations such as @BeforeMethod, @AfterMethod, @Test, and @DataProvider for structured test case management.\n- **Parallel Testing**: Supports parallel test execution to improve test execution time and efficiency.\n- **Cross-Browser Testing**: Enables testing across different browsers to ensure compatibility and robustness.\n- **Logging with Log4j2**: Implements Log4j2 for comprehensive logging, making it easier to debug and track test execution.\n- **Structured Reporting**: Generates detailed test reports for better analysis and reporting.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/cihat-kose/testng-practice-lessons`",
+    "usage_vi": "```\nCreate a TestNG-based UI testing framework for [COMPANY] in the [INDUSTRY] sector. The framework should include TestNG annotations, parallel testing, cross-browser testing, logging with Log4j2, and structured reporting. Provide practical examples and configuration details for [DATA] to help students strengthen their automation testing skills.\n```\nCopy\n\n```\n# TestNG-Based UI Testing Framework for [COMPANY] in the [INDUSTRY] Sector\n\n\n### Example 1: TestNG Annotations\n\n```java\npublic class TestNGAnnotationsExample {\n    @BeforeMethod\n    public void setUp() {\n        System.out.println(\"Setting up the test environment\");\n    }\n    \n    @Test\n    public void testLogin() {\n        System.out.println(\"Executing login test\");\n    }\n    \n    @AfterMethod\n    public void tearDown() {\n        System.out.println(\"Cleaning up the test environment\");\n    }\n}\n```\n\n### Example 2: Parallel Testing\n\n```java\npublic class ParallelTestingExample {\n    @Test(threadPoolSize = 3, invocationCount = 5, timeOut = 1000)\n    public void parallelTest() {\n        System.out.println(\"Executing parallel test\");\n    }\n}\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:28:58.022148Z",
+    "http_status": 200,
+    "content_hash": "c132989dece2f15d87ee38afce2430ad92ead7a8848c78fb383fde95744ef9e9",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\testng-practice-lessons.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\testng-practice-lessons.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "TestNG Practice Lessons: SDET Training Framework",
+  "short_description_vi": "A TestNG-based UI testing framework for SDET training. Demonstrates TestNG annotations, parallel testing, cross-browser testing, logging with Log4j2, and structured reporting. Designed to help students strengthen automation testing skills with practical examples and configuration."
+}

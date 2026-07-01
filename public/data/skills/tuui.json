@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/tuui",
+  "slug": "tuui",
+  "name": "tuui",
+  "headline": "Tuui: AI Integration Tool for Enhanced Productivity",
+  "short_description": "Tuui is a powerful desktop MCP client that streamlines AI adoption by integrating various LLM APIs through the Model Context Protocol. It facilitates orchestration across vendors, enhancing productivity and efficiency in AI-driven projects.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "AI-QL",
+  "install_command": "claude install AI-QL/tuui",
+  "source_repo_url": "https://github.com/AI-QL/tuui",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "AI integration",
+    "MCP",
+    "productivity tool",
+    "LLM orchestration",
+    "TypeScript"
+  ],
+  "sections": {
+    "overview": "Tuui is a desktop application built on the Model Context Protocol that enables users to integrate and orchestrate multiple LLM APIs from different vendors in a single interface. The client streamlines AI adoption by centralizing access to various language models, eliminating the need to manage separate integrations for each provider. It addresses the productivity challenge of context-switching between different AI tools and APIs by providing unified orchestration. Developers and AI teams benefit from simplified vendor management and enhanced efficiency when building AI-driven projects. Tuui's architecture supports common MCP primitive types and is actively maintained with regular updates.\nIntegrate multiple LLM APIs to create a unified workflow for AI applications.\nAccelerate the testing and evaluation of AI models by automating interactions with various APIs.\nFacilitate cross-vendor AI solutions for businesses, allowing for flexible and scalable AI deployments.\nStreamline the development process by managing LLM configurations and settings through a centralized interface.",
+    "setup": "Terminal\nCopy\n`claude install AI-QL/tuui`\n`git clone https://github.com/AI-QL/tuui`",
+    "usage": "```\nUsing Tuui, integrate the following LLM APIs: [API1], [API2], and [API3] to create a workflow for [SPECIFIC TASK]. Ensure the workflow includes [SPECIFIC REQUIREMENTS] and optimize for [PERFORMANCE METRIC]. Provide a step-by-step guide on how to set this up in Tuui.\n```\nCopy\n\n```\nTo create a workflow for content generation using Tuui, follow these steps:\n\n1. **API Integration**: Integrate the APIs for [API1], [API2], and [API3] into Tuui. Ensure each API is configured with the necessary authentication keys and endpoints.\n2. **Workflow Design**: Design a workflow that starts with [API1] for initial content drafting, then uses [API2] for editing, and finally [API3] for final review and optimization.\n3. **Specific Requirements**: Include specific requirements such as tone consistency, keyword inclusion, and readability checks at each stage of the workflow.\n4. **Performance Metric**: Optimize the workflow for speed and accuracy. Monitor the performance metrics to ensure the workflow meets the desired standards.\n5. **Testing and Iteration**: Test the workflow with sample inputs and iterate based on the results to improve efficiency and output quality.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "tuui#main-content",
+      "tuui#overview",
+      "tuui#setup",
+      "tuui#examples",
+      "tuui#tools",
+      "tuui#mcp",
+      "tuui#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Tuui là một ứng dụng desktop chạy trên nền tảng Model Context Protocol, cho phép người dùng tích hợp và điều phối (orchestrate) nhiều LLM API từ các nhà cung cấp khác nhau trên một giao diện duy nhất. Client này giúp đơn giản hóa việc triển khai AI bằng cách tập trung hóa quyền truy cập vào các mô hình ngôn ngữ lớn (LLM) khác nhau, loại bỏ việc phải quản lý các tích hợp riêng lẻ cho từng nhà cung cấp. Nó giải quyết bài toán giảm hiệu suất do phải chuyển đổi ngữ cảnh (context-switching) liên tục giữa các công cụ AI và API khác nhau nhờ khả năng điều phối thống nhất. Các nhà phát triển và đội ngũ làm AI sẽ được hưởng lợi từ việc quản lý nhà cung cấp một cách tinh giản và nâng cao hiệu suất khi xây dựng các dự án phát triển AI. Kiến trúc của Tuui hỗ trợ các kiểu dữ liệu nguyên bản (primitive types) phổ biến của MCP và liên tục được cập nhật, bảo trì thường xuyên.\nTích hợp nhiều LLM API để tạo ra một workflow thống nhất cho các ứng dụng AI.\nĐẩy nhanh quá trình thử nghiệm và đánh giá các mô hình AI bằng cách tự động hóa tương tác với nhiều API khác nhau.\nHỗ trợ xây dựng các giải pháp AI đa nhà cung cấp cho doanh nghiệp, cho phép triển khai AI linh hoạt và có khả năng mở rộng tốt.\nTinh giản quy trình phát triển thông qua việc quản lý các cấu hình và thiết lập LLM từ một giao diện tập trung.",
+    "setup_vi": "Terminal\nSao chép\n`claude install AI-QL/tuui`\n`git clone https://github.com/AI-QL/tuui`",
+    "usage_vi": "```\nSử dụng Tuui, hãy tích hợp các LLM API sau: [API1], [API2] và [API3] để tạo một workflow cho [SPECIFIC TASK]. Đảm bảo workflow bao gồm [SPECIFIC REQUIREMENTS] và tối ưu hóa cho [PERFORMANCE METRIC]. Cung cấp hướng dẫn từng bước để thiết lập cấu hình này trong Tuui.\n```\nSao chép\n\n```\nĐể tạo một workflow tạo nội dung bằng cách sử dụng Tuui, hãy làm theo các bước sau:\n\n1. **Tích hợp API (API Integration)**: Tích hợp các API cho [API1], [API2] và [API3] vào Tuui. Đảm bảo mỗi API đều được cấu hình các khóa xác thực (authentication key) và endpoint cần thiết.\n2. **Thiết kế Workflow (Workflow Design)**: Thiết kế một workflow bắt đầu với [API1] để nháp nội dung ban đầu, sau đó sử dụng [API2] để biên tập, và cuối cùng là [API3] để soát xét và tối ưu hóa lần cuối.\n3. **Yêu cầu cụ thể (Specific Requirements)**: Đưa vào các yêu cầu cụ thể như tính nhất quán về giọng văn, chèn từ khóa và kiểm tra tính dễ đọc ở mỗi giai đoạn của workflow.\n4. **Chỉ số hiệu suất (Performance Metric)**: Tối ưu hóa workflow về tốc độ và độ chính xác. Giám sát các chỉ số hiệu suất để đảm bảo workflow đáp ứng các tiêu chuẩn mong muốn.\n5. **Kiểm thử và Lặp lại (Testing and Iteration)**: Thử nghiệm workflow với các dữ liệu đầu vào mẫu và lặp lại điều chỉnh dựa trên kết quả để cải thiện hiệu quả và chất lượng đầu ra.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:13:44.587991Z",
+    "http_status": 200,
+    "content_hash": "e83ff2d3a96754048341917bd4d16fc010a97a3cc770449dfcff1843d7aadd23",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tuui.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\tuui.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Tuui: Công cụ tích hợp AI nâng cao hiệu suất làm việc",
+  "short_description_vi": "Tuui là một desktop MCP client mạnh mẽ giúp tối ưu hóa việc áp dụng AI thông qua tích hợp các LLM API khác nhau dựa trên Model Context Protocol. Công cụ này hỗ trợ điều phối (orchestration) giữa nhiều nhà cung cấp khác nhau, giúp nâng cao năng suất và hiệu quả cho các dự án phát triển AI."
+}

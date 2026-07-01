@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/codesyncer",
+  "slug": "codesyncer",
+  "name": "codesyncer",
+  "headline": "codesyncer: Session Memory for Claude API Users",
+  "short_description": "CodeSyncer enables Claude to retain context across sessions. Developers benefit from persistent memory for coding tasks. It connects to CLI workflows and integrates with monorepos or multi-repo setups.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "bitjaru",
+  "install_command": "git clone https://github.com/bitjaru/codesyncer.git",
+  "source_repo_url": "https://github.com/bitjaru/codesyncer",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "cursor",
+    "productivity",
+    "ai-coding",
+    "cli",
+    "developer-tools",
+    "ai",
+    "claude-code",
+    "collaboration",
+    "nodejs",
+    "documentation",
+    "ai-assistant",
+    "ai-tools",
+    "code-documentation",
+    "claude",
+    "copilot",
+    "multi-repo",
+    "monorepo"
+  ],
+  "sections": {
+    "overview": "CodeSyncer solves context loss in Claude by embedding persistent memory directly into your codebase. It uses a tag system (@codesyncer-decision, @codesyncer-inference) that Claude automatically reads when you start a new session, plus a watch mode that automatically captures untagged changes and stores them in documentation files. The tool integrates hooks that remind Claude of critical rules at optimal moments—once per session, not repeatedly—and can auto-pause on dangerous keywords to prevent unsafe inferences. It supports monorepo and multi-repo setups, works with CLI workflows, and currently has full integration with Claude Code.\nMaintaining architectural decisions across multiple coding sessions\nTracking inference choices (like API page sizes or authentication patterns) without manual notes\nPreventing Claude from re-discussing resolved issues or forgetting project guidelines\nManaging complex multi-repo projects where context fragmentation occurs",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bitjaru/codesyncer`",
+    "usage": "```\nUse CodeSyncer to [TASK] while preserving context across sessions. For example: 'Use CodeSyncer to review the changes in the [BRANCH_NAME] branch of the [REPO_NAME] repository. Identify files modified in the last 7 days, summarize the key changes, and suggest potential merge conflicts with the [MAIN_BRANCH].'\n```\nCopy\n\n```\nHere’s the CodeSyncer-assisted review for the `feature/auth-redesign` branch in the `acme-app` repository, based on the persistent context from our last session:\n\n**Files Modified (Last 7 Days):**\n1. `src/auth/components/LoginForm.tsx` – Added OAuth2 button integration and refactored form validation logic.\n2. `src/auth/hooks/useAuth.ts` – Updated token refresh mechanism to handle edge cases in Safari.\n3. `tests/auth/LoginForm.test.tsx` – Added tests for the new OAuth flow.\n\n**Key Changes:**\n- The `LoginForm` now supports both email/password and Google Sign-In. The validation logic was simplified using Zod schemas, reducing the previous 120-line validator to 40 lines.\n- The `useAuth` hook now includes a `refreshToken` retry mechanism with exponential backoff, addressing intermittent 401 errors in Safari.\n- Test coverage for the OAuth flow increased from 65% to 92%.\n\n**Potential Merge Conflicts:**\n- The `main` branch recently updated the `src/utils/apiClient.ts` file, which `LoginForm.tsx` imports. The new `apiClient` version includes breaking changes to the `post` method signature. You’ll need to update the imports in `LoginForm.tsx` to match the new signature.\n- The `useAuth` hook’s `refreshToken` function now conflicts with a new `refreshSession` function added to `src/auth/services/authService.ts`. Consider consolidating these functions to avoid duplication.\n\n**Next Steps:**\n1. Resolve the `apiClient` import mismatch by updating the `LoginForm.tsx` file.\n2. Merge the `refreshToken` and `refreshSession` functions into a single utility.\n3. Run the test suite to ensure no regressions were introduced.\n\nThis analysis builds on our previous session where we discussed the OAuth2 integration requirements and Safari compatibility issues. Would you like me to draft the conflict resolution code snippets or prioritize the next steps?\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "codesyncer#main-content",
+      "codesyncer#overview",
+      "codesyncer#setup",
+      "codesyncer#examples",
+      "codesyncer#tools",
+      "codesyncer#mcp",
+      "codesyncer#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "CodeSyncer solves context loss in Claude by embedding persistent memory directly into your codebase. It uses a tag system (@codesyncer-decision, @codesyncer-inference) that Claude automatically reads when you start a new session, plus a watch mode that automatically captures untagged changes and stores them in documentation files. The tool integrates hooks that remind Claude of critical rules at optimal moments—once per session, not repeatedly—and can auto-pause on dangerous keywords to prevent unsafe inferences. It supports monorepo and multi-repo setups, works with CLI workflows, and currently has full integration with Claude Code.\nMaintaining architectural decisions across multiple coding sessions\nTracking inference choices (like API page sizes or authentication patterns) without manual notes\nPreventing Claude from re-discussing resolved issues or forgetting project guidelines\nManaging complex multi-repo projects where context fragmentation occurs",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bitjaru/codesyncer`",
+    "usage_vi": "```\nUse CodeSyncer to [TASK] while preserving context across sessions. For example: 'Use CodeSyncer to review the changes in the [BRANCH_NAME] branch of the [REPO_NAME] repository. Identify files modified in the last 7 days, summarize the key changes, and suggest potential merge conflicts with the [MAIN_BRANCH].'\n```\nCopy\n\n```\nHere’s the CodeSyncer-assisted review for the `feature/auth-redesign` branch in the `acme-app` repository, based on the persistent context from our last session:\n\n**Files Modified (Last 7 Days):**\n1. `src/auth/components/LoginForm.tsx` – Added OAuth2 button integration and refactored form validation logic.\n2. `src/auth/hooks/useAuth.ts` – Updated token refresh mechanism to handle edge cases in Safari.\n3. `tests/auth/LoginForm.test.tsx` – Added tests for the new OAuth flow.\n\n**Key Changes:**\n- The `LoginForm` now supports both email/password and Google Sign-In. The validation logic was simplified using Zod schemas, reducing the previous 120-line validator to 40 lines.\n- The `useAuth` hook now includes a `refreshToken` retry mechanism with exponential backoff, addressing intermittent 401 errors in Safari.\n- Test coverage for the OAuth flow increased from 65% to 92%.\n\n**Potential Merge Conflicts:**\n- The `main` branch recently updated the `src/utils/apiClient.ts` file, which `LoginForm.tsx` imports. The new `apiClient` version includes breaking changes to the `post` method signature. You’ll need to update the imports in `LoginForm.tsx` to match the new signature.\n- The `useAuth` hook’s `refreshToken` function now conflicts with a new `refreshSession` function added to `src/auth/services/authService.ts`. Consider consolidating these functions to avoid duplication.\n\n**Next Steps:**\n1. Resolve the `apiClient` import mismatch by updating the `LoginForm.tsx` file.\n2. Merge the `refreshToken` and `refreshSession` functions into a single utility.\n3. Run the test suite to ensure no regressions were introduced.\n\nThis analysis builds on our previous session where we discussed the OAuth2 integration requirements and Safari compatibility issues. Would you like me to draft the conflict resolution code snippets or prioritize the next steps?\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:13:41.554657Z",
+    "http_status": 200,
+    "content_hash": "f0746721d072fa2b87eefc9b204abe0f30f4e16c18d1eafb14a81e6d3d796142",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codesyncer.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\codesyncer.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "codesyncer: Session Memory for Claude API Users",
+  "short_description_vi": "CodeSyncer enables Claude to retain context across sessions. Developers benefit from persistent memory for coding tasks. It connects to CLI workflows and integrates with monorepos or multi-repo setups."
+}

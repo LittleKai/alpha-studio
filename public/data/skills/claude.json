@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude",
+  "slug": "claude",
+  "name": ".claude",
+  "headline": "daily claude code productivity tools",
+  "short_description": "Claude Code agents, workflow commands, and skills for development productivity. Used by Weaverse team for automation. Connects to Claude AI for task execution.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "Weaverse",
+  "install_command": "git clone https://github.com/Weaverse/.claude.git",
+  "source_repo_url": "https://github.com/Weaverse/.claude",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "toolkit",
+    "claude-code-workflows",
+    "ai-agents",
+    "claude-agents",
+    "claude-tooltkit",
+    "claude-skills",
+    "claude-ai"
+  ],
+  "sections": {
+    "overview": ".agents is a markdown-based configuration system for AI coding assistants like Claude Code that automates common development tasks. It includes 11 workflow commands for GitHub integration (creating issues, pull requests, releases), 4 domain-specific skills for code review and feature planning, and 5 coding convention rules to maintain team standards. The system integrates directly with your AI tool through symlinks or file copying, enabling tasks like picking up issues with full context, auto-formatting code, generating commit messages, and creating release PRs. Teams use it to reduce manual context switching, enforce consistent coding practices, and accelerate development velocity across AI-assisted workflows.\nAutomate GitHub issue pickup with branch creation and spec generation\nGenerate well-formatted commit messages grouped by related file changes\nPerform comprehensive code reviews detecting dead code, duplications, and bugs\nCreate pull requests with AI-generated descriptions and fix review comments",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Weaverse/.claude`",
+    "usage": "```\nUse the .claude skill to automate the following task: [DESCRIBE_TASK]. Execute the workflow using the command 'claude run [WORKFLOW_NAME]' and provide a summary of the steps taken, outputs generated, and any errors encountered. Include the time taken for execution.\n```\nCopy\n\n```\n```\nTask: Automate the generation of a weekly performance report for the Weaverse marketing team.\n\nWorkflow Executed: claude run weekly_performance_report\n\nExecution Summary:\n1. **Data Collection**: Fetched analytics from Google Analytics (45,000 sessions, 12% bounce rate) and Shopify (3,200 orders, $185K revenue) for the week of 2024-05-20 to 2024-05-26.\n2. **Data Processing**: Cleaned and merged datasets, removing outliers and calculating key metrics (conversion rate: 2.8%, average order value: $57.81).\n3. **Report Generation**: Created a Markdown report with:\n   - Executive Summary: Highlighted a 15% increase in revenue YoY.\n   - Visualizations: Generated a line chart for daily sessions and a bar chart for top-performing products (Product A: 450 units sold, Product B: 380 units sold).\n   - Insights: Noted a 22% drop in mobile traffic but a 10% increase in desktop conversions.\n4. **Output**: Saved report to `/reports/weekly_performance_2024-05-26.md` and sent a Slack notification to the #marketing-alerts channel with a download link.\n\nErrors Encountered:\n- Shopify API timeout after 3 retries (resolved by increasing timeout limit in the workflow config).\n- Minor discrepancy in session counts between GA and Shopify (investigated and attributed to cross-domain tracking; no action required).\n\nTime Taken: 4 minutes 22 seconds.\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude#main-content",
+      "claude#overview",
+      "claude#setup",
+      "claude#examples",
+      "claude#tools",
+      "claude#mcp",
+      "claude#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": ".agents là một hệ thống cấu hình dựa trên markdown dành cho các trợ lý lập trình AI như Claude Code giúp tự động hóa các tác vụ phát triển phổ biến. Hệ thống này bao gồm 11 lệnh workflow để tích hợp với GitHub (tạo issue, pull request, release), 4 skill chuyên biệt cho code review và lập kế hoạch tính năng (feature planning), cùng 5 quy tắc quy chuẩn mã nguồn (coding convention) để duy trì tiêu chuẩn của đội ngũ. Hệ thống tích hợp trực tiếp với công cụ AI của bạn thông qua symlink hoặc sao chép tệp tin, cho phép thực hiện các tác vụ như tiếp nhận issue với đầy đủ context, tự động định dạng mã nguồn, tạo commit message và tạo PR release. Các đội ngũ sử dụng hệ thống này để giảm thiểu việc chuyển đổi ngữ cảnh (context switching) thủ công, áp dụng đồng nhất các quy chuẩn lập trình và tăng tốc độ phát triển trong các quy trình làm việc có sự hỗ trợ của AI.\nTự động hóa việc tiếp nhận GitHub issue đi kèm tạo branch và spec\nTạo commit message chuẩn hóa được nhóm theo các thay đổi file liên quan\nThực hiện code review toàn diện giúp phát hiện dead code, code trùng lặp và bug\nTạo pull request với mô tả do AI tự động tạo và sửa các lỗi được chỉ ra trong review",
+    "setup_vi": "Không có sẵn lệnh cài đặt trực tiếp. Vui lòng kiểm tra repository GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Weaverse/.claude`",
+    "usage_vi": "```\nSử dụng skill .claude để tự động hóa tác vụ sau: [DESCRIBE_TASK]. Thực thi workflow bằng lệnh 'claude run [WORKFLOW_NAME]' và cung cấp bản tóm tắt các bước đã thực hiện, kết quả đầu ra cùng các lỗi gặp phải. Gửi kèm thời gian thực thi.\n```\nCopy\n\n```\n```\nTác vụ: Tự động hóa việc tạo báo cáo hiệu suất hàng tuần cho đội ngũ marketing của Weaverse.\n\nWorkflow đã thực thi: claude run weekly_performance_report\n\nTóm tắt thực thi:\n1. **Thu thập dữ liệu**: Lấy dữ liệu phân tích từ Google Analytics (45.000 session, tỷ lệ thoát 12%) và Shopify (3.200 đơn hàng, doanh thu $185K) cho tuần từ 20-05-2024 đến 26-05-2024.\n2. **Xử lý dữ liệu**: Làm sạch và hợp nhất các tập dữ liệu, loại bỏ các giá trị ngoại lai (outliers) và tính toán các chỉ số chính (tỷ lệ chuyển đổi: 2,8%, giá trị đơn hàng trung bình: $57,81).\n3. **Tạo báo cáo**: Tạo báo cáo Markdown gồm:\n   - Tóm tắt chung (Executive Summary): Nổi bật mức tăng trưởng doanh thu 15% so với cùng kỳ năm ngoái (YoY).\n   - Trực quan hóa dữ liệu: Tạo biểu đồ đường cho số session hàng ngày và biểu đồ cột cho các sản phẩm bán chạy nhất (Sản phẩm A: đã bán 450 đơn vị, Sản phẩm B: đã bán 380 đơn vị).\n   - Thông tin chuyên sâu (Insights): Ghi nhận lượng truy cập từ thiết bị di động giảm 22% nhưng tỷ lệ chuyển đổi trên máy tính để bàn tăng 10%.\n4. **Kết quả**: Đã lưu báo cáo vào thư mục `/reports/weekly_performance_2024-05-26.md` và gửi thông báo Slack tới kênh #marketing-alerts kèm liên kết tải xuống.\n\nLỗi gặp phải:\n- Lỗi timeout của Shopify API sau 3 lần thử lại (đã xử lý bằng cách tăng giới hạn timeout trong cấu hình workflow).\n- Chênh lệch nhỏ về số lượng session giữa GA và Shopify (đã kiểm tra và xác định nguyên nhân do cross-domain tracking; không cần xử lý thêm).\n\nThời gian thực hiện: 4 phút 22 giây.\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T09:21:10.684727Z",
+    "http_status": 200,
+    "content_hash": "1d856cbfb1604c630dc736146b9d3e78a090407554ebc6eaea7424128f5dd167",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Công cụ tăng năng suất làm việc hàng ngày với Claude Code",
+  "short_description_vi": "Các agent, lệnh workflow và skill của Claude Code giúp nâng cao năng suất phát triển phần mềm. Được đội ngũ Weaverse sử dụng để tự động hóa và kết nối với Claude AI để thực thi tác vụ."
+}

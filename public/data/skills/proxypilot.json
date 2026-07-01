@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/proxypilot",
+  "slug": "proxypilot",
+  "name": "ProxyPilot",
+  "headline": "ProxyPilot - Secure AI Coding Proxy",
+  "short_description": "ProxyPilot is a Windows-native CLIProxyAPI fork with a TUI, system tray, and multi-provider OAuth for AI coding tools. It eliminates the need for API keys, benefiting developers and operations teams. It integrates with AI coding tools and supports multiple OAuth providers, streamlining workflows for secure, key-free access.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "50 min",
+  "author": "Finesssee",
+  "install_command": "git clone https://github.com/Finesssee/ProxyPilot.git",
+  "source_repo_url": "https://github.com/Finesssee/ProxyPilot",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "kiro",
+    "cli-proxy",
+    "factory-droids",
+    "codex",
+    "gemini",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "ProxyPilot is a Go-built local API proxy that eliminates the need for API keys by routing your existing Claude, OpenAI Codex, Gemini, Kiro, and Qwen subscriptions to any AI coding tool. It handles OAuth authentication, token management, and automatic API translation between OpenAI, Anthropic, and Gemini formats. The tool supports 10+ authentication providers with features including multi-account round-robin distribution, automatic failover, quota auto-switching, extended thinking support, and tool calling repair. Developers and operations teams benefit from unified credential management through a native Windows tray app with built-in dashboard, usage statistics tracking, and 60+ REST management APIs.\nRoute Claude subscriptions to Cursor, Claude Code, and third-party tools without API keys\nAutomatically switch between multiple AI provider accounts when quotas are exceeded\nManage OAuth tokens and handle automatic refresh across 10+ authentication providers\nTrack API usage, token consumption, and errors across different models and providers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Finesssee/ProxyPilot`",
+    "usage": "```\nUse ProxyPilot to [TASK] for [AI_TOOL] in [CONTEXT]. Ensure OAuth authentication is configured for [PROVIDER]. If credentials are missing, prompt the user to authenticate via the system tray. Example: 'Use ProxyPilot to fetch the latest GitHub repository data for Cursor IDE. Ensure OAuth is configured for GitHub. If not authenticated, prompt the user to log in via the system tray.'\n```\nCopy\n\n```\nProxyPilot v2.1.3 (Windows x64) | System Tray: Active\n\n[2024-05-15 14:30:42] INFO: Authenticating with GitHub OAuth for Cursor IDE...\n[2024-05-15 14:30:45] SUCCESS: OAuth token validated. Provider: GitHub.\n\n[2024-05-15 14:30:47] INFO: Fetching repository data for 'acme-corp/ai-tools'...\nRepository: acme-corp/ai-tools\nStars: 1,247 | Forks: 312 | Open Issues: 42\nLast Commit: 2024-05-14 10:15:22 (main branch)\nBranch Protection Rules: Enabled (Require PR approvals: 2)\n\n[2024-05-15 14:30:50] INFO: Generating Cursor IDE-compatible context file...\nSaved to: C:\\Users\\DevUser\\.cursor\\ai-tools-context.json\nSize: 4.2 KB | Format: JSON (AI-optimized)\n\n[2024-05-15 14:30:52] SUCCESS: Context file ready for Cursor IDE. No API keys required.\n\nRecommendation: Use this context file to enable AI-assisted coding for the 'ai-tools' repository. The branch protection rules suggest requiring at least 2 approvals for PRs.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "proxypilot#main-content",
+      "proxypilot#overview",
+      "proxypilot#setup",
+      "proxypilot#examples",
+      "proxypilot#tools",
+      "proxypilot#mcp",
+      "proxypilot#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ProxyPilot là một local API proxy được phát triển bằng Go, giúp loại bỏ nhu cầu sử dụng API key bằng cách định tuyến (route) các gói đăng ký Claude, OpenAI Codex, Gemini, Kiro và Qwen hiện tại của bạn đến bất kỳ công cụ lập trình AI nào. Công cụ này xử lý xác thực OAuth, quản lý token và tự động dịch API giữa các định dạng OpenAI, Anthropic và Gemini. ProxyPilot hỗ trợ hơn 10 nhà cung cấp xác thực với các tính năng bao gồm phân phối vòng tròn (round-robin) đa tài khoản, tự động failover, tự động chuyển đổi hạn mức (quota), hỗ trợ extended thinking và sửa lỗi tool calling. Các nhà phát triển và đội ngũ vận hành có thể quản lý thông tin xác thực tập trung thông qua ứng dụng tray app native trên Windows với dashboard tích hợp, theo dõi thống kê sử dụng và hơn 60 REST API quản lý.\n\nĐịnh tuyến các gói đăng ký Claude đến Cursor, Claude Code và các công cụ bên thứ ba mà không cần API key\nTự động chuyển đổi giữa nhiều tài khoản nhà cung cấp AI khi vượt quá hạn mức (quota)\nQuản lý OAuth token và tự động refresh trên hơn 10 nhà cung cấp xác thực\nTheo dõi lượng sử dụng API, mức tiêu thụ token và lỗi trên các mô hình và nhà cung cấp khác nhau",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/Finesssee/ProxyPilot`",
+    "usage_vi": "```\nSử dụng ProxyPilot để [TASK] cho [AI_TOOL] trong [CONTEXT]. Đảm bảo xác thực OAuth đã được cấu hình cho [PROVIDER]. Nếu thiếu thông tin xác thực, hãy yêu cầu người dùng xác thực qua system tray. Ví dụ: 'Sử dụng ProxyPilot để lấy dữ liệu kho lưu trữ GitHub mới nhất cho Cursor IDE. Đảm bảo OAuth được cấu hình cho GitHub. Nếu chưa xác thực, yêu cầu người dùng đăng nhập qua system tray.'\n```\n\n```\nProxyPilot v2.1.3 (Windows x64) | System Tray: Active\n\n[2024-05-15 14:30:42] INFO: Authenticating with GitHub OAuth for Cursor IDE...\n[2024-05-15 14:30:45] SUCCESS: OAuth token validated. Provider: GitHub.\n\n[2024-05-15 14:30:47] INFO: Fetching repository data for 'acme-corp/ai-tools'...\nRepository: acme-corp/ai-tools\nStars: 1,247 | Forks: 312 | Open Issues: 42\nLast Commit: 2024-05-14 10:15:22 (main branch)\nBranch Protection Rules: Enabled (Require PR approvals: 2)\n\n[2024-05-15 14:30:50] INFO: Generating Cursor IDE-compatible context file...\nSaved to: C:\\Users\\DevUser\\.cursor\\ai-tools-context.json\nSize: 4.2 KB | Format: JSON (AI-optimized)\n\n[2024-05-15 14:30:52] SUCCESS: Context file ready for Cursor IDE. No API keys required.\n\nRecommendation: Use this context file to enable AI-assisted coding for the 'ai-tools' repository. The branch protection rules suggest requiring at least 2 approvals for PRs.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:38:17.948177Z",
+    "http_status": 200,
+    "content_hash": "63b436f4dc543a85488f38985d6c9467163f4e8de3fd856d86c6fd9207cf4d53",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\proxypilot.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\proxypilot.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "ProxyPilot - Proxy lập trình AI bảo mật",
+  "short_description_vi": "ProxyPilot là một bản fork CLIProxyAPI chạy native trên Windows, tích hợp TUI, system tray và OAuth đa nhà cung cấp cho các công cụ lập trình AI. Nó giúp loại bỏ hoàn toàn việc sử dụng API key, mang lại sự tiện lợi cho lập trình viên và các đội ngũ vận hành. Nhờ khả năng tích hợp linh hoạt với các công cụ lập trình AI và hỗ trợ nhiều nhà cung cấp OAuth, ProxyPilot giúp tối ưu hóa workflow để truy cập an toàn mà không cần key."
+}

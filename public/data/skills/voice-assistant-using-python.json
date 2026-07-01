@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/voice-assistant-using-python",
+  "slug": "voice-assistant-using-python",
+  "name": "Voice Assistant Using Python",
+  "headline": "Voice Assistant Using Python - Automate Your Tasks",
+  "short_description": "Voice Assistant using Python is a versatile virtual assistant designed to automate tasks through voice commands. It enhances productivity by managing schedules, searching the web, and providing health recommendations, all while utilizing machine learning for optimal responses.",
+  "tier": "Silver",
+  "category": "GrowthCS",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "kinganupamdutta27",
+  "install_command": "claude install kinganupamdutta27/Voice-Assistant-using-Python",
+  "source_repo_url": "https://github.com/kinganupamdutta27/Voice-Assistant-using-Python",
+  "works_with": [
+    "ChatGPT"
+  ],
+  "tags": [
+    "voice recognition",
+    "Python",
+    "virtual assistant",
+    "automation",
+    "machine learning"
+  ],
+  "sections": {
+    "overview": "Voice Assistant using Python is a software agent designed to handle daily tasks through spoken commands on Linux and Windows systems. It leverages machine learning to interpret user statements and provide optimal responses for activities like web searching, calendar management, weather lookup, and health recommendations based on symptoms. The assistant supports voice input and synthesized voice output, allowing users to interact naturally without manual input. Built with Python and compatible with Jupyter Notebook and PyCharm, it functions as a personal productivity tool that automates administrative tasks, manages reminders, and retrieves information from search engines like Google, Bing, and Yahoo.\nScheduling appointments\nSearching for information online\nProviding weather updates\nReminding users of tasks",
+    "setup": "Terminal\nCopy\n`claude install kinganupamdutta27/Voice-Assistant-using-Python`\n`git clone https://github.com/kinganupamdutta27/Voice-Assistant-using-Python`",
+    "usage": "```\nCreate a Python script for a voice assistant that can perform the following tasks: [TASKS]. The assistant should use [SPEECH_RECOGNITION_LIBRARY] for voice input and [TEXT_TO_SPEECH_LIBRARY] for responses. Include error handling for common issues like network connectivity problems or unrecognized commands. The assistant should also log all interactions to a file named [LOG_FILE_NAME] for future reference.\n```\nCopy\n\n```\n# Voice Assistant Script\n\n```python\nimport speech_recognition as sr\nimport pyttsx3\nimport datetime\nimport webbrowser\nimport os\n\n# Initialize text-to-speech engine\nengine = pyttsx3.init()\n\n# Function to convert text to speech\ndef speak(text):\n    engine.say(text)\n    engine.runAndWait()\n\n# Function to recognize speech\ndef recognize_speech():\n    recognizer = sr.Recognizer()\n    with sr.Microphone() as source:\n        print(\"Listening...\")\n        audio = recognizer.listen(source)\n\n    try:\n        print(\"Recognizing...\")\n        query = recognizer.recognize_google(audio, language='en-US')\n        print(f\"User said: {query}\\n\")\n        return query.lower()\n    except Exception as e:\n        print(\"Sorry, I did not catch that.\\n\")\n        return \"None\"\n\n# Main function to handle voice commands\ndef main():\n    speak(\"Hello! I am your voice assistant. How can I help you?\")\n    while True:\n        query = recognize_speech()\n        if 'time' in query:\n            current_time = datetime.datetime.now().strftime(\"%H:%M\")\n            speak(f\"The current time is {current_time}\")\n        elif 'search' in query:\n            speak(\"What would you like to search for?\")\n            search_query = recognize_speech()\n            if search_query != \"None\":\n                webbrowser.open(f\"https://www.google.com/search?q={search_query}\")\n                speak(f\"Searching for {search_query}\")\n        elif 'exit' in query:\n            speak(\"Goodbye! Have a great day.\")\n            break\n        else:\n            speak(\"Sorry, I did not understand that command.\")\n\nif __name__ == \"__main__\":\n    main()\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT"
+    ],
+    "related_skills": [
+      "voice-assistant-using-python#main-content",
+      "voice-assistant-using-python#overview",
+      "voice-assistant-using-python#setup",
+      "voice-assistant-using-python#examples",
+      "voice-assistant-using-python#tools",
+      "voice-assistant-using-python#mcp",
+      "voice-assistant-using-python#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "Voice Assistant using Python is a software agent designed to handle daily tasks through spoken commands on Linux and Windows systems. It leverages machine learning to interpret user statements and provide optimal responses for activities like web searching, calendar management, weather lookup, and health recommendations based on symptoms. The assistant supports voice input and synthesized voice output, allowing users to interact naturally without manual input. Built with Python and compatible with Jupyter Notebook and PyCharm, it functions as a personal productivity tool that automates administrative tasks, manages reminders, and retrieves information from search engines like Google, Bing, and Yahoo.\nScheduling appointments\nSearching for information online\nProviding weather updates\nReminding users of tasks",
+    "setup_vi": "Terminal\nCopy\n`claude install kinganupamdutta27/Voice-Assistant-using-Python`\n`git clone https://github.com/kinganupamdutta27/Voice-Assistant-using-Python`",
+    "usage_vi": "```\nCreate a Python script for a voice assistant that can perform the following tasks: [TASKS]. The assistant should use [SPEECH_RECOGNITION_LIBRARY] for voice input and [TEXT_TO_SPEECH_LIBRARY] for responses. Include error handling for common issues like network connectivity problems or unrecognized commands. The assistant should also log all interactions to a file named [LOG_FILE_NAME] for future reference.\n```\nCopy\n\n```\n# Voice Assistant Script\n\n```python\nimport speech_recognition as sr\nimport pyttsx3\nimport datetime\nimport webbrowser\nimport os\n\n# Initialize text-to-speech engine\nengine = pyttsx3.init()\n\n# Function to convert text to speech\ndef speak(text):\n    engine.say(text)\n    engine.runAndWait()\n\n# Function to recognize speech\ndef recognize_speech():\n    recognizer = sr.Recognizer()\n    with sr.Microphone() as source:\n        print(\"Listening...\")\n        audio = recognizer.listen(source)\n\n    try:\n        print(\"Recognizing...\")\n        query = recognizer.recognize_google(audio, language='en-US')\n        print(f\"User said: {query}\\n\")\n        return query.lower()\n    except Exception as e:\n        print(\"Sorry, I did not catch that.\\n\")\n        return \"None\"\n\n# Main function to handle voice commands\ndef main():\n    speak(\"Hello! I am your voice assistant. How can I help you?\")\n    while True:\n        query = recognize_speech()\n        if 'time' in query:\n            current_time = datetime.datetime.now().strftime(\"%H:%M\")\n            speak(f\"The current time is {current_time}\")\n        elif 'search' in query:\n            speak(\"What would you like to search for?\")\n            search_query = recognize_speech()\n            if search_query != \"None\":\n                webbrowser.open(f\"https://www.google.com/search?q={search_query}\")\n                speak(f\"Searching for {search_query}\")\n        elif 'exit' in query:\n            speak(\"Goodbye! Have a great day.\")\n            break\n        else:\n            speak(\"Sorry, I did not understand that command.\")\n\nif __name__ == \"__main__\":\n    main()\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:25:42.758883Z",
+    "http_status": 200,
+    "content_hash": "39c5286433e1e789d8ff25eca0faa6862241efaff3fb8533480527962be65874",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\voice-assistant-using-python.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\voice-assistant-using-python.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Voice Assistant Using Python - Automate Your Tasks",
+  "short_description_vi": "Voice Assistant using Python is a versatile virtual assistant designed to automate tasks through voice commands. It enhances productivity by managing schedules, searching the web, and providing health recommendations, all while utilizing machine learning for optimal responses."
+}

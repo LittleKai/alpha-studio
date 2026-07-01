@@ -1,0 +1,64 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/loli-profiler",
+  "slug": "loli-profiler",
+  "name": "browser-use",
+  "headline": "Loli Profiler - Memory Optimization for Android",
+  "short_description": "Loli Profiler is a memory instrumentation tool for Android app and game developers. It supports CI and AI, helping developers optimize memory usage and performance. Works with Unreal Engine 4 and Unity Engine, reducing memory leaks and improving app stability.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Tencent",
+  "install_command": "git clone https://github.com/Tencent/loli_profiler.git",
+  "source_repo_url": "https://github.com/Tencent/loli_profiler",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "memory",
+    "qt5",
+    "cpp",
+    "profiler",
+    "android",
+    "unreal-engine-4",
+    "unity3d"
+  ],
+  "sections": {
+    "overview": "Loli Profiler is an open-source memory instrumentation tool designed for Android app and game developers using Unreal Engine 4 or Unity. It provides detailed heap memory analysis, memory leak detection, and performance optimization capabilities. The tool supports integration into CI/CD pipelines and works with AI-powered analysis workflows. Developers can use Loli Profiler's interactive heap explorer and CLI tools to identify memory inefficiencies, reduce memory consumption, and improve app stability. The project is maintained by Tencent and includes an MCP server for automated heap analysis workflows.\nAutomate memory leak detection in Android applications during CI/CD processes.\nProfile memory usage in real-time while developing complex games using Unreal Engine 4.\nGenerate AI-based reports on memory growth to identify optimization opportunities.\nAttach the profiler to running applications for immediate memory analysis.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Tencent/loli_profiler`",
+    "usage": "```\nProfile the memory usage of [APP_NAME] during [SPECIFIC_GAME_SCENE_OR_APP_ACTION]. Identify the top 3 memory leaks or inefficiencies. Suggest optimizations for each, including code changes and engine settings adjustments in [UNITY_OR_UNREAL_ENGINE]. Provide a step-by-step implementation plan for the development team.\n```\nCopy\n\n```\nAfter profiling \"AdventureQuest\" during the level transition from \"Forest Temple\" to \"Dragon's Lair\", the following memory issues were identified:\n\n1. **Texture Cache Bloat**: The game loads all textures for both levels simultaneously, causing a 250MB spike. Recommend implementing a texture streaming system that unloads unused textures. In Unity, use `Resources.UnloadUnusedAssets()` and implement `AssetBundles` for better control.\n\n2. **Object Pooling Inefficiency**: The game spawns and destroys 500+ enemy objects per level, causing frequent garbage collection. Implement object pooling for enemies and projectiles. In Unreal Engine, use `UObjectPool` and `UObjectPoolSubsystem` for efficient recycling.\n\n3. **Shader Compilation Overhead**: Shaders are recompiled on level load, adding 1.2 seconds of load time. Precompile shaders during the build process. In Unity, enable \"Precompile Shaders\" in Player Settings. In Unreal, use the `ShaderCompilationWorker` for background compilation.\n\n**Implementation Plan**:\n- Week 1: Refactor texture loading system.\n- Week 2: Implement object pooling for enemies and projectiles.\n- Week 3: Precompile shaders and optimize build settings.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "loli-profiler#main-content",
+      "loli-profiler#overview",
+      "loli-profiler#setup",
+      "loli-profiler#examples",
+      "loli-profiler#tools",
+      "loli-profiler#mcp",
+      "loli-profiler#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Loli Profiler is an open-source memory instrumentation tool designed for Android app and game developers using Unreal Engine 4 or Unity. It provides detailed heap memory analysis, memory leak detection, and performance optimization capabilities. The tool supports integration into CI/CD pipelines and works with AI-powered analysis workflows. Developers can use Loli Profiler's interactive heap explorer and CLI tools to identify memory inefficiencies, reduce memory consumption, and improve app stability. The project is maintained by Tencent and includes an MCP server for automated heap analysis workflows.\nAutomate memory leak detection in Android applications during CI/CD processes.\nProfile memory usage in real-time while developing complex games using Unreal Engine 4.\nGenerate AI-based reports on memory growth to identify optimization opportunities.\nAttach the profiler to running applications for immediate memory analysis.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Tencent/loli_profiler`",
+    "usage_vi": "```\nProfile the memory usage of [APP_NAME] during [SPECIFIC_GAME_SCENE_OR_APP_ACTION]. Identify the top 3 memory leaks or inefficiencies. Suggest optimizations for each, including code changes and engine settings adjustments in [UNITY_OR_UNREAL_ENGINE]. Provide a step-by-step implementation plan for the development team.\n```\nCopy\n\n```\nAfter profiling \"AdventureQuest\" during the level transition from \"Forest Temple\" to \"Dragon's Lair\", the following memory issues were identified:\n\n1. **Texture Cache Bloat**: The game loads all textures for both levels simultaneously, causing a 250MB spike. Recommend implementing a texture streaming system that unloads unused textures. In Unity, use `Resources.UnloadUnusedAssets()` and implement `AssetBundles` for better control.\n\n2. **Object Pooling Inefficiency**: The game spawns and destroys 500+ enemy objects per level, causing frequent garbage collection. Implement object pooling for enemies and projectiles. In Unreal Engine, use `UObjectPool` and `UObjectPoolSubsystem` for efficient recycling.\n\n3. **Shader Compilation Overhead**: Shaders are recompiled on level load, adding 1.2 seconds of load time. Precompile shaders during the build process. In Unity, enable \"Precompile Shaders\" in Player Settings. In Unreal, use the `ShaderCompilationWorker` for background compilation.\n\n**Implementation Plan**:\n- Week 1: Refactor texture loading system.\n- Week 2: Implement object pooling for enemies and projectiles.\n- Week 3: Precompile shaders and optimize build settings.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:53:31.188900Z",
+    "http_status": 200,
+    "content_hash": "ca1670bf400dc803c3f539e5f6db8088db77e106040ed0ddadb182f745fc0637",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\loli-profiler.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\loli-profiler.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Loli Profiler - Memory Optimization for Android",
+  "short_description_vi": "Loli Profiler is a memory instrumentation tool for Android app and game developers. It supports CI and AI, helping developers optimize memory usage and performance. Works with Unreal Engine 4 and Unity Engine, reducing memory leaks and improving app stability."
+}

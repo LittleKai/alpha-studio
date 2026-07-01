@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/compoder",
+  "slug": "compoder",
+  "name": "compoder",
+  "headline": "Compoder: AI-Powered Code Generation for Frontend",
+  "short_description": "Compoder is an innovative open-source AI code generation engine that integrates with modern frontend tech stacks. Customize it to create tailored AI-powered component code generators for specific technologies like React and Vue.",
+  "tier": "Gold",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "120 min",
+  "author": "IamLiuLv",
+  "install_command": "claude install IamLiuLv/compoder",
+  "source_repo_url": "https://github.com/IamLiuLv/compoder",
+  "works_with": [
+    "GitHub CopilotVS Code"
+  ],
+  "tags": [
+    "frontend",
+    "react",
+    "vue",
+    "code-generator",
+    "ai"
+  ],
+  "sections": {
+    "overview": "Compoder is an open-source AI-powered component code generation engine designed for frontend engineers. It generates production-ready component code by accepting text and image prompts, then customizes output based on your specific tech stack (React, Vue, HTML), component libraries (Material-UI, Ant Design, Shadcn UI, Element-Plus), and coding standards. The platform includes real-time code preview, version iteration, and online code editing capabilities. Teams can tailor Compoder to their exact needs—whether building landing pages, admin dashboards, email templates, or other specific scenarios—and choose their preferred AI model provider (OpenAI, Claude, etc.). This enables faster component development without writing boilerplate code from scratch.\nGenerate React components based on user specifications\nCreate Vue.js components with AI assistance\nAutomate frontend code generation for rapid prototyping",
+    "setup": "Terminal\nCopy\n`claude install IamLiuLv/compoder`\n`git clone https://github.com/IamLiuLv/compoder`",
+    "usage": "```\nGenerate a [FRAMEWORK] component for a [FEATURE] that includes [SPECIFIC FUNCTIONALITY]. The component should follow [DESIGN GUIDELINES] and be compatible with [TECHNOLOGY STACK]. Include necessary imports, props, and state management.\n```\nCopy\n\n```\nHere's a React component for a user profile card that includes dynamic data fetching and responsive design:\n\n```jsx\nimport React, { useState, useEffect } from 'react';\nimport axios from 'axios';\nimport { Card, Avatar, Typography, Divider } from 'antd';\n\nconst { Meta } = Card;\nconst { Text } = Typography;\n\nconst UserProfileCard = ({ userId }) => {\n  const [userData, setUserData] = useState(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const fetchUserData = async () => {\n      try {\n        const response = await axios.get(`/api/users/${userId}`);\n        setUserData(response.data);\n        setLoading(false);\n      } catch (error) {\n        console.error('Error fetching user data:', error);\n        setLoading(false);\n      }\n    };\n    fetchUserData();\n  }, [userId]);\n\n  if (loading) {\n    return <div>Loading...</div>;\n  }\n\n  return (\n    <Card\n      style={{ width: 300 }}\n      cover={\n        <img\n          alt=\"example\"\n          src={userData?.profileImage}\n        />\n      }\n    >\n      <Meta\n        avatar={<Avatar src={userData?.avatar} />}\n        title={userData?.name}\n        description={\n          <div>\n            <Text strong>Email:</Text> {userData?.email}\n            <Divider type=\"horizontal\" />\n            <Text strong>Bio:</Text> {userData?.bio}\n          </div>\n        }\n      />\n    </Card>\n  );\n};\n\nexport default UserProfileCard;\n```\n\nThis component fetches user data from an API endpoint based on the provided userId prop. It displays the user's profile image, name, email, and bio in a responsive card layout using Ant Design components. The component handles loading states and error cases gracefully.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot, VS Code"
+    ],
+    "related_skills": [
+      "compoder#main-content",
+      "compoder#overview",
+      "compoder#setup",
+      "compoder#examples",
+      "compoder#tools",
+      "compoder#mcp",
+      "compoder#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "Compoder là một engine tạo code component bằng AI mã nguồn mở được thiết kế dành riêng cho các kỹ sư frontend. Công cụ này tạo ra code component sẵn sàng cho production từ các prompt dạng văn bản và hình ảnh, sau đó tùy biến output dựa trên tech stack cụ thể (React, Vue, HTML), thư viện component (Material-UI, Ant Design, Shadcn UI, Element-Plus) và coding standard của bạn. Nền tảng tích hợp sẵn các tính năng preview code thời gian thực, quản lý và cập nhật phiên bản (version iteration) và chỉnh sửa code online. Các đội ngũ phát triển có thể tùy biến Compoder theo đúng nhu cầu thực tế—cho dù là xây dựng landing page, admin dashboard, template email hay các kịch bản chuyên biệt khác—và lựa chọn nhà cung cấp mô hình AI mong muốn (OpenAI, Claude,...). Điều này giúp tăng tốc độ phát triển component mà không cần phải viết boilerplate code từ đầu.\nTạo component React dựa trên đặc tả của người dùng\nTạo component Vue.js với sự trợ giúp của AI\nTự động hóa việc tạo code frontend để làm prototype nhanh chóng",
+    "setup_vi": "Terminal\nSao chép\n`claude install IamLiuLv/compoder`\n`git clone https://github.com/IamLiuLv/compoder`",
+    "usage_vi": "```\nTạo một component [FRAMEWORK] cho [FEATURE] bao gồm [SPECIFIC FUNCTIONALITY]. Component này phải tuân thủ [DESIGN GUIDELINES] và tương thích với [TECHNOLOGY STACK]. Hãy đi kèm các import, prop và state management cần thiết.\n```\nSao chép\n\n```\nDưới đây là component React cho thẻ thông tin người dùng (user profile card) bao gồm tính năng fetch dữ liệu động và thiết kế responsive:\n\n```jsx\nimport React, { useState, useEffect } from 'react';\nimport axios from 'axios';\nimport { Card, Avatar, Typography, Divider } from 'antd';\n\nconst { Meta } = Card;\nconst { Text } = Typography;\n\nconst UserProfileCard = ({ userId }) => {\n  const [userData, setUserData] = useState(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    const fetchUserData = async () => {\n      try {\n        const response = await axios.get(`/api/users/${userId}`);\n        setUserData(response.data);\n        setLoading(false);\n      } catch (error) {\n        console.error('Error fetching user data:', error);\n        setLoading(false);\n      }\n    };\n    fetchUserData();\n  }, [userId]);\n\n  if (loading) {\n    return <div>Loading...</div>;\n  }\n\n  return (\n    <Card\n      style={{ width: 300 }}\n      cover={\n        <img\n          alt=\"example\"\n          src={userData?.profileImage}\n        />\n      }\n    >\n      <Meta\n        avatar={<Avatar src={userData?.avatar} />}\n        title={userData?.name}\n        description={\n          <div>\n            <Text strong>Email:</Text> {userData?.email}\n            <Divider type=\"horizontal\" />\n            <Text strong>Bio:</Text> {userData?.bio}\n          </div>\n        }\n      />\n    </Card>\n  );\n};\n\nexport default UserProfileCard;\n```\n\nComponent này fetch dữ liệu người dùng từ một API endpoint dựa trên prop userId được cung cấp. Nó hiển thị ảnh đại diện, tên, email và bio của người dùng trong một bố cục card responsive sử dụng các component của Ant Design. Component cũng xử lý các trạng thái loading và trường hợp lỗi một cách mượt mà.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:57:33.252733Z",
+    "http_status": 200,
+    "content_hash": "9007c57db46ff4eef9ac406d2062d1fff855704b1bc13bba8f37c9fd9f4ed09b",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\compoder.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\compoder.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Compoder: Công cụ tạo code Frontend bằng AI",
+  "short_description_vi": "Compoder là một engine tạo code AI mã nguồn mở tiên tiến, tích hợp mượt mà với các frontend tech stack hiện đại. Bạn có thể tùy biến công cụ này để tạo ra các trình tạo code component bằng AI được thiết kế riêng cho các công nghệ cụ thể như React và Vue."
+}

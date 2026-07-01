@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mobile-mcp",
+  "slug": "mobile-mcp",
+  "name": "Mobile MCP",
+  "headline": "Mobile MCP - Automation & Scraping for Mobile",
+  "short_description": "The mobile-mcp is a powerful Model Context Protocol Server designed for mobile automation and scraping across various platforms, including iOS, Android, emulators, and real devices. It streamlines mobile testing and data extraction processes, enhancing efficiency for developers and testers.",
+  "tier": "Gold",
+  "category": "GrowthRevOps",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "100 min",
+  "author": "mobile-next",
+  "install_command": "claude install mobile-next/mobile-mcp",
+  "source_repo_url": "https://github.com/mobile-next/mobile-mcp",
+  "works_with": [
+    "GitHub Copilot"
+  ],
+  "tags": [
+    "Android",
+    "emulators",
+    "mobile automation",
+    "scraping",
+    "iOS"
+  ],
+  "sections": {
+    "overview": "mobile-mcp is a Model Context Protocol Server that enables automated mobile testing and data extraction across iOS, Android, emulators, and real devices. It provides developers and QA teams with tools for mobile automation tasks, including screenshot capture, element interaction, and app inspection. The server integrates with AI coding assistants like Claude Code and Cursor, allowing AI agents to control and analyze mobile applications programmatically. It supports both iOS simulators and Android emulators, making it suitable for cross-platform mobile development workflows. mobile-mcp reduces manual testing overhead and accelerates mobile app validation cycles.\nAutomate testing of mobile applications across different devices and platforms.\nScrape data from mobile apps for analytics or research purposes.\nSimulate user interactions to test app behavior under various conditions.\nEvaluate app performance by running tests on multiple devices simultaneously.",
+    "setup": "Terminal\nCopy\n`claude install mobile-next/mobile-mcp`\n`git clone https://github.com/mobile-next/mobile-mcp`",
+    "usage": "```\nSet up a mobile-mcp server to automate testing for a [MOBILE_APP] on [PLATFORM]. Configure the server to extract [SPECIFIC_DATA] from the app and generate a report. Ensure the server can handle [NUMBER] concurrent sessions and provide real-time analytics.\n```\nCopy\n\n```\nThe mobile-mcp server has been successfully configured to automate testing for the 'FinanceTrack' app on both iOS and Android platforms. The server is set to extract transaction data, user activity logs, and performance metrics from the app. It is currently handling 50 concurrent sessions and providing real-time analytics. The server has identified several performance bottlenecks, such as slow response times during peak usage hours and frequent crashes in the payment processing module. Recommendations include optimizing the database queries and implementing a more robust error-handling mechanism. The server also detected a significant drop in user engagement on the Android version, suggesting a need for further investigation into potential UI/UX issues.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: GitHub Copilot"
+    ],
+    "related_skills": [
+      "mobile-mcp#main-content",
+      "mobile-mcp#overview",
+      "mobile-mcp#setup",
+      "mobile-mcp#examples",
+      "mobile-mcp#tools",
+      "mobile-mcp#mcp",
+      "mobile-mcp#related",
+      "vue-best-practices",
+      "expo-dev-client",
+      "react-native-best-practices"
+    ],
+    "overview_vi": "mobile-mcp là một Model Context Protocol Server hỗ trợ tự động hóa kiểm thử di động và trích xuất dữ liệu trên iOS, Android, emulator và thiết bị thật. Nó cung cấp cho các nhà phát triển và đội ngũ QA các công cụ phục vụ tác vụ tự động hóa di động, bao gồm chụp ảnh màn hình, tương tác phần tử và inspect ứng dụng. Server này tích hợp với các trợ lý lập trình AI như Claude Code và Cursor, cho phép các AI agent điều khiển và phân tích các ứng dụng di động bằng lập trình. Nhờ hỗ trợ cả iOS simulator lẫn Android emulator, mobile-mcp cực kỳ phù hợp cho các quy trình phát triển di động đa nền tảng. mobile-mcp giúp giảm thiểu công sức kiểm thử thủ công và đẩy nhanh chu kỳ kiểm định ứng dụng di động.\n\nTự động hóa kiểm thử ứng dụng di động trên nhiều thiết bị và nền tảng khác nhau.\nScraping dữ liệu từ ứng dụng di động cho mục đích phân tích hoặc nghiên cứu.\nMô phỏng tương tác của người dùng để kiểm thử hành vi của ứng dụng dưới nhiều điều kiện khác nhau.\nĐánh giá hiệu năng ứng dụng bằng cách chạy kiểm thử đồng thời trên nhiều thiết bị.",
+    "setup_vi": "Terminal\nSao chép\n`claude install mobile-next/mobile-mcp`\n`git clone https://github.com/mobile-next/mobile-mcp`",
+    "usage_vi": "```\nThiết lập một mobile-mcp server để tự động hóa kiểm thử cho [MOBILE_APP] trên [PLATFORM]. Cấu hình server để trích xuất [SPECIFIC_DATA] từ ứng dụng và tạo báo cáo. Đảm bảo server có thể xử lý [NUMBER] phiên đồng thời và cung cấp phân tích theo thời gian thực.\n```\nSao chép\n\n```\nmobile-mcp server đã được cấu hình thành công để tự động hóa kiểm thử cho ứng dụng 'FinanceTrack' trên cả hai nền tảng iOS và Android. Server được thiết lập để trích xuất dữ liệu giao dịch, nhật ký hoạt động của người dùng và các chỉ số hiệu năng từ ứng dụng. Hiện tại, server đang xử lý 50 phiên đồng thời và cung cấp dữ liệu phân tích theo thời gian thực. Server đã phát hiện một số điểm nghẽn hiệu năng, chẳng hạn như thời gian phản hồi chậm trong giờ cao điểm và lỗi crash thường xuyên trong module xử lý thanh toán. Các khuyến nghị đưa ra bao gồm tối ưu hóa các truy vấn cơ sở dữ liệu và triển khai cơ chế xử lý lỗi mạnh mẽ hơn. Server cũng phát hiện sự sụt giảm đáng kể về mức độ tương tác của người dùng trên phiên bản Android, gợi ý cần phải điều tra thêm về các vấn đề UI/UX tiềm ẩn.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:29:56.758780Z",
+    "http_status": 200,
+    "content_hash": "9c8254b07cd57db37b64489d095fb52b6a96cdf502f10013a70e46dedb2ef543",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mobile-mcp.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\mobile-mcp.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Mobile MCP - Tự động hóa & Scraping cho thiết bị di động",
+  "short_description_vi": "mobile-mcp là một Model Context Protocol Server mạnh mẽ được thiết kế để tự động hóa và scraping di động trên nhiều nền tảng khác nhau, bao gồm iOS, Android, emulator và thiết bị thật. Nó giúp tối ưu hóa quy trình kiểm thử di động và trích xuất dữ liệu, nâng cao hiệu suất cho các nhà phát triển và kiểm thử viên."
+}

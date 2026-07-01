@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skillfish",
+  "slug": "skillfish",
+  "name": "Skillfish",
+  "headline": "Skillfish - AI Coding Agent Manager",
+  "short_description": "Skillfish manages AI coding agents, enabling installation, updates, and synchronization across Claude Code, Cursor, Copilot, and more. It streamlines workflows for developers and operations teams by maintaining consistent skill sets across multiple AI agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "knoxgraeme",
+  "install_command": "git clone https://github.com/knoxgraeme/skillfish.git",
+  "source_repo_url": "https://github.com/knoxgraeme/skillfish",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Skillfish streamlines skill management across multiple AI coding agents on your system. It detects installed agents and installs skills to all of them with a single command, eliminating manual setup across Claude Code, Cursor, Copilot, and 30+ other agents. Teams can share consistent skill sets by committing a skillfish.json manifest to their repository, enabling developers to sync skills in one step. Skills are portable packages containing instructions, prompts, and resources that extend agent capabilities with domain expertise and reusable workflows. The tool supports browsing community skills, creating new skills, searching for existing ones, and managing versions through pinned references.\nInstall agent skills across multiple coding agents simultaneously\nSynchronize team skills by sharing a skillfish.json manifest\nUpdate all installed skills with a single command\nCreate and submit custom skills for reuse across the team",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/knoxgraeme/skillfish`\n- **Skill Name**: Data Analysis Pro\n- **Version**: 2.1.0\n- **Platforms**: Claude Code, Cursor, Copilot",
+    "usage": "```\nInstall and sync the latest version of the [SKILL_NAME] skill across all my AI coding agents. Ensure compatibility with [PLATFORM_1], [PLATFORM_2], and [PLATFORM_3]. Provide a summary of changes and any potential conflicts.\n```\nCopy\n\n```\n# Skillfish Update Summary",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "skillfish#main-content",
+      "skillfish#overview",
+      "skillfish#setup",
+      "skillfish#examples",
+      "skillfish#tools",
+      "skillfish#mcp",
+      "skillfish#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skillfish giúp tối ưu hóa việc quản lý skill trên nhiều AI coding agent trong hệ thống của bạn. Công cụ tự động phát hiện các agent đã cài đặt và cài skill cho tất cả các agent đó chỉ bằng một câu lệnh duy nhất, loại bỏ việc setup thủ công trên Claude Code, Cursor, Copilot và hơn 30 agent khác. Các đội ngũ có thể chia sẻ các tập hợp skill đồng nhất bằng cách commit file manifest skillfish.json vào repository của họ, cho phép các lập trình viên đồng bộ hóa skill chỉ trong một bước. Skill là các gói di động chứa các chỉ dẫn, prompt và tài nguyên giúp mở rộng khả năng của agent bằng kiến thức chuyên môn và các quy trình công việc có thể tái sử dụng. Công cụ này hỗ trợ duyệt các skill từ cộng đồng, tạo skill mới, tìm kiếm các skill hiện có và quản lý phiên bản thông qua các tham chiếu được ghim (pinned references).\n\nCài đặt skill trên nhiều coding agent cùng một lúc\nĐồng bộ hóa các skill của đội ngũ bằng cách chia sẻ file manifest skillfish.json\nCập nhật tất cả các skill đã cài đặt chỉ bằng một câu lệnh duy nhất\nTạo và gửi các skill tùy chỉnh để tái sử dụng trong toàn đội ngũ",
+    "setup_vi": "Không có sẵn câu lệnh cài đặt. Vui lòng kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/knoxgraeme/skillfish`\n- **Tên Skill**: Data Analysis Pro\n- **Phiên bản**: 2.1.0\n- **Nền tảng**: Claude Code, Cursor, Copilot",
+    "usage_vi": "```\nCài đặt và đồng bộ hóa phiên bản mới nhất của skill [SKILL_NAME] trên tất cả các AI coding agent của tôi. Đảm bảo tính tương thích với [PLATFORM_1], [PLATFORM_2] và [PLATFORM_3]. Cung cấp bản tóm tắt các thay đổi và mọi xung đột tiềm ẩn.\n```\nSao chép\n\n```\n# Bản tóm tắt cập nhật Skillfish"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:31:42.584897Z",
+    "http_status": 200,
+    "content_hash": "83063eb6ba1be0439c62511415f2105ad0875c245d53e2ea25825dea1c3f2aec",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillfish.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\skillfish.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Skillfish - Trình quản lý AI coding agent",
+  "short_description_vi": "Skillfish quản lý các AI coding agent, hỗ trợ cài đặt, cập nhật và đồng bộ hóa trên Claude Code, Cursor, Copilot và nhiều công cụ khác. Công cụ này tối ưu hóa quy trình làm việc cho các lập trình viên và đội ngũ vận hành nhờ duy trì các tập hợp skill đồng nhất trên nhiều AI agent khác nhau."
+}

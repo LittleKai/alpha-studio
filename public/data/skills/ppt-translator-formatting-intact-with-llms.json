@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ppt-translator-formatting-intact-with-llms",
+  "slug": "ppt-translator-formatting-intact-with-llms",
+  "name": "PPT-Translator-Formatting-Intact-with-LLMs",
+  "headline": "Translate PowerPoint presentations while preserving formatting. Maintain fonts, colors, and layouts with Deepseek API integration.",
+  "short_description": "A powerful PowerPoint translation tool that preserves all formatting while translating content using the Deepseek API. This tool maintains fonts, colors, layouts, and other styling elements while providing accurate translations between languages.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Advanced",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "tristan-mcinnis",
+  "install_command": "git clone https://github.com/tristan-mcinnis/PPT-Translator-Formatting-Intact-with-LLMs.git",
+  "source_repo_url": "https://github.com/tristan-mcinnis/PPT-Translator-Formatting-Intact-with-LLMs",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "llm",
+    "powerpoint",
+    "machine-translation",
+    "pptx",
+    "productivity",
+    "skills",
+    "anthropic-claude",
+    "ppt",
+    "claude-skills",
+    "openai",
+    "ai-translation",
+    "openai-api",
+    "openapi",
+    "grok",
+    "office",
+    "deepseek",
+    "translation",
+    "claude-code",
+    "ai"
+  ],
+  "sections": {
+    "overview": "PPT Translator is a Python-based tool that converts PowerPoint presentations into multiple languages while maintaining all original formatting, fonts, colors, spacing, tables, and alignment. It supports five LLM providers—DeepSeek, OpenAI, Anthropic, Grok, and Gemini—allowing you to choose your preferred translation engine via CLI flags. The tool handles batch processing of entire presentation directories, includes smart caching to avoid duplicate API calls, and completes most translations in under two seconds. It extracts presentation content to XML, translates text through your chosen provider, and rebuilds the PPTX with translated content and intact styling. Ideal for teams, educators, and businesses that need to localize presentations for global audiences without reformatting.\nTranslate company presentations for international clients while preserving corporate branding\nLocalize educational slideshows into multiple languages for global classrooms\nBatch-convert a directory of marketing decks into regional language versions\nMaintain consistent slide design when translating multilingual conference presentations",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/tristan-mcinnis/PPT-Translator-Formatting-Intact-with-LLMs`",
+    "usage": "```\nTranslate the following PowerPoint presentation from [SOURCE_LANGUAGE] to [TARGET_LANGUAGE] while preserving all formatting, including fonts, colors, and layout. The presentation is about [TOPIC] and is intended for [AUDIENCE]. Ensure the translated content is culturally appropriate and maintains the original tone. Here is the content to translate: [PRESENTATION_CONTENT].\n```\nCopy\n\n```\n# Translated PowerPoint Presentation",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ppt-translator-formatting-intact-with-llms#main-content",
+      "ppt-translator-formatting-intact-with-llms#overview",
+      "ppt-translator-formatting-intact-with-llms#setup",
+      "ppt-translator-formatting-intact-with-llms#examples",
+      "ppt-translator-formatting-intact-with-llms#tools",
+      "ppt-translator-formatting-intact-with-llms#mcp",
+      "ppt-translator-formatting-intact-with-llms#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "PPT Translator là một công cụ dựa trên Python giúp chuyển đổi các bài thuyết trình PowerPoint sang nhiều ngôn ngữ khác nhau mà vẫn giữ nguyên toàn bộ định dạng gốc, font chữ, màu sắc, khoảng cách, bảng và căn lề. Công cụ hỗ trợ 5 nhà cung cấp LLM—DeepSeek, OpenAI, Anthropic, Grok và Gemini—cho phép bạn chọn translation engine ưa thích qua các CLI flags. Công cụ này hỗ trợ batch processing cho cả thư mục chứa bài thuyết trình, tích hợp cơ chế caching thông minh để tránh gọi API trùng lặp, và hoàn thành hầu hết các bản dịch trong chưa đầy hai giây. Nó trích xuất nội dung trình chiếu sang XML, dịch văn bản qua nhà cung cấp đã chọn, và rebuild lại file PPTX với nội dung đã dịch cùng styling nguyên vẹn. Đây là giải pháp lý tưởng cho các team, nhà giáo dục và doanh nghiệp cần localize bài thuyết trình cho tệp khán giả toàn cầu mà không mất công định dạng lại.\n\nDịch bài thuyết trình của công ty cho khách hàng quốc tế mà vẫn giữ nguyên branding doanh nghiệp\nLocalize slide bài giảng sang nhiều ngôn ngữ cho các lớp học toàn cầu\nBatch-convert thư mục chứa slide marketing sang các phiên bản ngôn ngữ khu vực\nDuy trì thiết kế slide đồng nhất khi dịch các bài thuyết trình hội thảo đa ngôn ngữ",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Kiểm tra GitHub repository để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/tristan-mcinnis/PPT-Translator-Formatting-Intact-with-LLMs`",
+    "usage_vi": "```\nDịch bài thuyết trình PowerPoint sau đây từ [SOURCE_LANGUAGE] sang [TARGET_LANGUAGE] mà vẫn giữ nguyên toàn bộ định dạng, bao gồm cả font chữ, màu sắc và layout. Bài thuyết trình này nói về [TOPIC] và dành cho đối tượng [AUDIENCE]. Hãy đảm bảo nội dung được dịch phù hợp về mặt văn hóa và duy trì được tông giọng gốc. Dưới đây là nội dung cần dịch: [PRESENTATION_CONTENT].\n```\nSao chép\n\n```\n# Bài thuyết trình PowerPoint đã dịch\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:33:22.332955Z",
+    "http_status": 200,
+    "content_hash": "606c91ad7eb8da0593deb4d2c7acb701b477df5d74474c0e8a65a1b7b21de426",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ppt-translator-formatting-intact-with-llms.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ppt-translator-formatting-intact-with-llms.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Dịch các bài thuyết trình PowerPoint nhưng vẫn giữ nguyên định dạng. Duy trì font chữ, màu sắc và layout nhờ tích hợp Deepseek API.",
+  "short_description_vi": "Công cụ dịch PowerPoint mạnh mẽ giúp giữ nguyên mọi định dạng khi dịch nội dung bằng Deepseek API. Công cụ này duy trì font chữ, màu sắc, layout và các yếu tố styling khác, đồng thời mang lại bản dịch chính xác giữa các ngôn ngữ."
+}

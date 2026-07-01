@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/flask-editablesite",
+  "slug": "flask-editablesite",
+  "name": "popsicle",
+  "headline": "Flask Editable Site - Live-Editable Marketing",
+  "short_description": "Flask Editable Site is a template for building small marketing websites in Flask with live-editable content. Marketing teams benefit from in-place editing of text, images, and other content types. It connects to Flask-based web applications and integrates with content management workflows.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "Jaza",
+  "install_command": "git clone https://github.com/Jaza/flask-editablesite.git",
+  "source_repo_url": "https://github.com/Jaza/flask-editablesite",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Flask Editable Site is a Flask-based template designed for creating small marketing websites with live-editable content capabilities. It enables marketing teams to edit text, images, and other content types directly in place without requiring backend access or technical expertise. The template integrates with Flask web applications and connects to existing content management workflows. This streamlined approach reduces the friction between content updates and website deployment.\nMarketing teams updating website copy and images without developer involvement\nSmall business websites requiring frequent content changes\nFlask applications needing in-place content editing functionality\nContent management integration for marketing-focused web properties",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Jaza/flask-editablesite`",
+    "usage": "```\nCreate a new marketing page for [PRODUCT] using Flask Editable Site. The page should include [FEATURES] and a call-to-action button. Ensure the content is editable in-place for the marketing team. Provide the necessary Flask routes and templates.\n```\nCopy\n\n```\nTo create a new marketing page for 'CloudSync Pro' using Flask Editable Site, follow these steps:\n\n1. **Create the Flask Route**:\n```python\n@app.route('/cloudsync-pro')\ndef cloudsync_pro():\n    return render_template('cloudsync_pro.html')\n```\n\n2. **Design the Template**:\n```html\n<!DOCTYPE html>\n<html>\n<head>\n    <title>CloudSync Pro - Seamless Cloud Storage</title>\n</head>\n<body>\n    <h1>CloudSync Pro</h1>\n    <p>Experience seamless cloud storage with CloudSync Pro. Our advanced features ensure your data is always secure and accessible.</p>\n    <img src=\"{{ url_for('static', filename='cloudsync_pro.jpg') }}\" alt=\"CloudSync Pro\">\n    <button onclick=\"location.href='https://example.com/signup'\">Sign Up Now</button>\n</body>\n</html>\n```\n\n3. **Enable In-Place Editing**:\n```html\n<p editable=\"text\" contenteditable=\"true\">Experience seamless cloud storage with CloudSync Pro. Our advanced features ensure your data is always secure and accessible.</p>\n<img editable=\"image\" src=\"{{ url_for('static', filename='cloudsync_pro.jpg') }}\" alt=\"CloudSync Pro\">\n```\n\n4. **Save the Changes**:\n```python\n@app.route('/save', methods=['POST'])\ndef save_changes():\n    data = request.get_json()\n    # Save the data to the database or file\n    return jsonify({'status': 'success'})\n```\n\nThis setup allows the marketing team to edit the text and images directly on the page, ensuring the content is always up-to-date and relevant.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "flask-editablesite#main-content",
+      "flask-editablesite#overview",
+      "flask-editablesite#setup",
+      "flask-editablesite#examples",
+      "flask-editablesite#tools",
+      "flask-editablesite#related",
+      "marketingskills",
+      "copywriting",
+      "popsicle"
+    ],
+    "overview_vi": "Flask Editable Site is a Flask-based template designed for creating small marketing websites with live-editable content capabilities. It enables marketing teams to edit text, images, and other content types directly in place without requiring backend access or technical expertise. The template integrates with Flask web applications and connects to existing content management workflows. This streamlined approach reduces the friction between content updates and website deployment.\nMarketing teams updating website copy and images without developer involvement\nSmall business websites requiring frequent content changes\nFlask applications needing in-place content editing functionality\nContent management integration for marketing-focused web properties",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Jaza/flask-editablesite`",
+    "usage_vi": "```\nCreate a new marketing page for [PRODUCT] using Flask Editable Site. The page should include [FEATURES] and a call-to-action button. Ensure the content is editable in-place for the marketing team. Provide the necessary Flask routes and templates.\n```\nCopy\n\n```\nTo create a new marketing page for 'CloudSync Pro' using Flask Editable Site, follow these steps:\n\n1. **Create the Flask Route**:\n```python\n@app.route('/cloudsync-pro')\ndef cloudsync_pro():\n    return render_template('cloudsync_pro.html')\n```\n\n2. **Design the Template**:\n```html\n<!DOCTYPE html>\n<html>\n<head>\n    <title>CloudSync Pro - Seamless Cloud Storage</title>\n</head>\n<body>\n    <h1>CloudSync Pro</h1>\n    <p>Experience seamless cloud storage with CloudSync Pro. Our advanced features ensure your data is always secure and accessible.</p>\n    <img src=\"{{ url_for('static', filename='cloudsync_pro.jpg') }}\" alt=\"CloudSync Pro\">\n    <button onclick=\"location.href='https://example.com/signup'\">Sign Up Now</button>\n</body>\n</html>\n```\n\n3. **Enable In-Place Editing**:\n```html\n<p editable=\"text\" contenteditable=\"true\">Experience seamless cloud storage with CloudSync Pro. Our advanced features ensure your data is always secure and accessible.</p>\n<img editable=\"image\" src=\"{{ url_for('static', filename='cloudsync_pro.jpg') }}\" alt=\"CloudSync Pro\">\n```\n\n4. **Save the Changes**:\n```python\n@app.route('/save', methods=['POST'])\ndef save_changes():\n    data = request.get_json()\n    # Save the data to the database or file\n    return jsonify({'status': 'success'})\n```\n\nThis setup allows the marketing team to edit the text and images directly on the page, ensuring the content is always up-to-date and relevant.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:10:09.546723Z",
+    "http_status": 200,
+    "content_hash": "89559bafcea459d206b3b69bec5b2dd50aa97ddc2fded3b7fa3ac79de836dc7a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\flask-editablesite.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\flask-editablesite.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Flask Editable Site - Live-Editable Marketing",
+  "short_description_vi": "Flask Editable Site is a template for building small marketing websites in Flask with live-editable content. Marketing teams benefit from in-place editing of text, images, and other content types. It connects to Flask-based web applications and integrates with content management workflows."
+}

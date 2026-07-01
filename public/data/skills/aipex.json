@@ -1,0 +1,60 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/aipex",
+  "slug": "aipex",
+  "name": "AIPex",
+  "headline": "AIPex: AI Browser Automation Assistant",
+  "short_description": "AIPex is a powerful AI browser automation assistant designed for browsing without migration hassles and prioritizing user privacy. It serves as an alternative to popular tools like Manus Browser Operator and Claude Chrome, enhancing productivity and accessibility.",
+  "tier": "Gold",
+  "category": "SDRAEMarketingRevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "AIPexStudio",
+  "install_command": "claude install AIPexStudio/AIPex",
+  "source_repo_url": "https://github.com/AIPexStudio/AIPex",
+  "works_with": [
+    "ClaudeChatGPT"
+  ],
+  "tags": [
+    "agent-skills",
+    "chrome-extension",
+    "browser-automation",
+    "tab-management",
+    "privacy-first"
+  ],
+  "sections": {
+    "overview": "AIPex is a browser automation skill that allows AI agents like Claude to interact with web browsers programmatically. It handles tasks such as navigation, clicking elements, reading page content, taking screenshots, and accessing bookmarks and history. The skill is designed as a privacy-focused alternative to existing browser automation tools, eliminating migration hassles while maintaining security through Origin header validation to prevent cross-site WebSocket hijacking. AIPex includes a browser extension and MCP bridge architecture for seamless integration with AI coding environments.\nAutomate repetitive web tasks like form submissions and data scraping.\nConduct accessibility testing on websites to ensure compliance and usability.\nManage multiple browser tabs efficiently, reducing clutter and improving focus.\nIntegrate with ChatGPT for enhanced browsing assistance and task automation.",
+    "setup": "Terminal\nCopy\n`claude install AIPexStudio/AIPex`\n`git clone https://github.com/AIPexStudio/AIPex`",
+    "usage": "```\nUse AIPex to automate my browsing tasks for [SPECIFIC FINANCIAL ANALYSIS TASK]. I need to gather data from [LIST OF WEBSITES] and summarize key findings. Ensure all data is collected privately and securely. Provide a step-by-step report of the automation process and the final summarized data.\n```\nCopy\n\n```\nAIPex Automation Report\n\nTask: Gather and analyze SaaS financial trends for Q3 2023\n\nStep 1: Accessed Productiv's financial analytics dashboard at https://productiv.com/analytics\nStep 2: Extracted quarterly revenue data for top 10 SaaS companies\nStep 3: Collected market trend reports from SaaS Capital and CB Insights\nStep 4: Compiled expense tracking data from Expensify API\n\nKey Findings:\n1. SaaS industry saw 18% YoY growth in Q3 2023\n2. Average customer acquisition cost increased by 12%\n3. Top performers invested 23% of revenue in R&D\n4. Cloud infrastructure costs accounted for 37% of operational expenses\n\nRecommendations:\n- Focus on improving customer acquisition efficiency\n- Allocate more budget to R&D for competitive advantage\n- Optimize cloud infrastructure usage to reduce costs\n\nAll data collected securely with no personal information stored.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude, ChatGPT"
+    ],
+    "related_skills": [
+      "aipex#main-content",
+      "aipex#overview",
+      "aipex#setup",
+      "aipex#examples",
+      "aipex#tools",
+      "aipex#mcp",
+      "aipex#related",
+      "brainstorming",
+      "doc-coauthoring",
+      "slack-gif-creator"
+    ],
+    "overview_vi": "AIPex là một skill tự động hóa trình duyệt cho phép các AI agent như Claude tương tác với trình duyệt web thông qua lập trình. Công cụ này xử lý các tác vụ như điều hướng, click phần tử, đọc nội dung trang, chụp ảnh màn hình, và truy cập bookmark cũng như lịch sử duyệt web. Skill này được thiết kế như một giải pháp thay thế chú trọng vào quyền riêng tư cho các công cụ tự động hóa trình duyệt hiện nay, loại bỏ rắc rối khi chuyển đổi trong khi vẫn đảm bảo an toàn thông qua việc xác thực Origin header nhằm ngăn chặn tấn công cross-site WebSocket hijacking. AIPex bao gồm một browser extension và kiến trúc MCP bridge giúp tích hợp mượt mà với các môi trường lập trình AI.\nTự động hóa các tác vụ web lặp đi lặp lại như điền form và cào dữ liệu (data scraping).\nThực hiện kiểm thử khả năng tiếp cận (accessibility testing) trên các trang web để đảm bảo tính tuân thủ và khả năng sử dụng.\nQuản lý hiệu quả nhiều tab trình duyệt, giảm lộn xộn và tăng cường sự tập trung.\nTích hợp với ChatGPT để nâng cao khả năng hỗ trợ duyệt web và tự động hóa tác vụ.",
+    "setup_vi": "Terminal\nSao chép\n`claude install AIPexStudio/AIPex`\n`git clone https://github.com/AIPexStudio/AIPex`",
+    "usage_vi": "```\nSử dụng AIPex để tự động hóa các tác vụ duyệt web của tôi cho [TÁC VỤ PHÂN TÍCH TÀI CHÍNH CỤ THỂ]. Tôi cần thu thập dữ liệu từ [DANH SÁCH TRANG WEB] và tóm tắt các phát hiện chính. Hãy đảm bảo mọi dữ liệu được thu thập một cách riêng tư và an toàn. Cung cấp báo cáo từng bước của quá trình tự động hóa và dữ liệu tóm tắt cuối cùng.\n```\nSao chép\n\n```\nBáo cáo Tự động hóa AIPex\n\nTác vụ: Thu thập và phân tích xu hướng tài chính SaaS trong Quý 3 năm 2023\n\nBước 1: Truy cập dashboard phân tích tài chính của Productiv tại https://productiv.com/analytics\nBước 2: Trích xuất dữ liệu doanh thu hàng quý của 10 công ty SaaS hàng đầu\nBước 3: Thu thập báo cáo xu hướng thị trường từ SaaS Capital và CB Insights\nBước 4: Tổng hợp dữ liệu theo dõi chi phí từ Expensify API\n\nCác phát hiện chính:\n1. Ngành SaaS tăng trưởng 18% so với cùng kỳ năm ngoái (YoY) trong Quý 3 năm 2023\n2. Chi phí thu hút khách hàng trung bình tăng 12%\n3. Các doanh nghiệp dẫn đầu đã đầu tư 23% doanh thu vào R&D\n4. Chi phí hạ tầng đám mây chiếm 37% chi phí vận hành\n\nKhuyến nghị:\n- Tập trung cải thiện hiệu quả thu hút khách hàng\n- Phân bổ thêm ngân sách cho R&D để tạo lợi thế cạnh tranh\n- Tối ưu hóa việc sử dụng hạ tầng đám mây để giảm chi phí\n\nMọi dữ liệu được thu thập an toàn và không lưu trữ thông tin cá nhân.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:59:13.757407Z",
+    "http_status": 200,
+    "content_hash": "d3a0ad400e435bc427d4e9a5f17c9f3c142e66920750cb582373fdae2d5d9d57",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aipex.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\aipex.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "AIPex: Trợ lý Tự động hóa Trình duyệt bằng AI",
+  "short_description_vi": "AIPex là trợ lý tự động hóa trình duyệt bằng AI mạnh mẽ, được thiết kế để duyệt web mà không gặp các rắc rối khi chuyển đổi (migration) và luôn ưu tiên quyền riêng tư của người dùng. Đây là giải pháp thay thế cho các công cụ phổ biến như Manus Browser Operator và Claude Chrome, giúp nâng cao hiệu suất làm việc và khả năng tiếp cận."
+}

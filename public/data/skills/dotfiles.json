@@ -1,0 +1,75 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/dotfiles",
+  "slug": "dotfiles",
+  "name": "browser-use",
+  "headline": "Dotfiles - Automate macOS Terminal Setup",
+  "short_description": "Dotfiles for macOS with Neovim, Zsh, Fish, Ghostty, and Tmux. Automates terminal setup for developers. Connects to AI agents for code editing and shell management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "joshukraine",
+  "install_command": "git clone https://github.com/joshukraine/dotfiles.git",
+  "source_repo_url": "https://github.com/joshukraine/dotfiles",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "lua",
+    "ai-agents",
+    "zsh",
+    "asdf",
+    "ruby",
+    "claude-code",
+    "neovim-config",
+    "ghostty",
+    "macos",
+    "neovim",
+    "vim",
+    "neovim-dotfiles",
+    "rails",
+    "tmux",
+    "dotfiles",
+    "fish-shell",
+    "lazyvim",
+    "kitty",
+    "fish"
+  ],
+  "sections": {
+    "overview": "This dotfiles repository automates terminal environment setup for macOS developers using Neovim with LazyVim, Zsh with abbreviations, Ghostty terminal emulator, and Tmux. The configuration uses GNU Stow for fast, idempotent symlink management and supports both Apple Silicon and Intel Macs. It includes custom Claude Code skills, permission presets, and safety hooks for AI-assisted code editing, plus intelligent Git functions that auto-detect main/master branches. Setup requires Git, Homebrew, asdf, Ruby, Node.js, Zsh, Neovim, and Starship, with a bootstrap script available for new Mac installations. Developers benefit from a unified, reproducible dev environment that integrates editor, shell, terminal multiplexing, and AI agent capabilities.\nQuickly set up a new macOS environment with pre-configured development tools and settings.\nEasily switch between Zsh and Fish shells while maintaining consistent configurations.\nAutomate the installation of essential software and dependencies using Homebrew and a custom Brewfile.\nUtilize AI-assisted development features to enhance coding efficiency and streamline workflows.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joshukraine/dotfiles`",
+    "usage": "```\nGenerate a dotfiles configuration for [OPERATING_SYSTEM] that includes [TOOLS_LIST]. The setup should automate terminal customization, shell configuration, and editor settings. Include AI agent integration for [SPECIFIC_TASKS]. Ensure the configuration is modular, version-controlled, and idempotent. Provide installation instructions and a quick-start guide.\n```\nCopy\n\n```\nHere’s a production-ready dotfiles configuration for macOS (Ventura 13.5) with Neovim 0.9.4, Zsh 5.9, Fish 3.6.1, Ghostty 1.0.0, and Tmux 3.3a. The setup includes:\n\n**Shell & Terminal:**\n- Zsh as the default shell with Oh-My-Zsh plugins (zsh-autosuggestions, zsh-syntax-highlighting)\n- Fish shell with Fisher plugins (zsh-to-fish, tide)\n- Ghostty terminal emulator with a custom Solarized Dark theme and ligatures enabled\n- Tmux 3.3a with a preconfigured session manager (tmux-resurrect, tmux-continuum)\n\n**Editor (Neovim):**\n- Lazy.nvim plugin manager with 30+ plugins (LSP, treesitter, completion, debugging)\n- Custom keybindings for AI agent integration (e.g., `,ai` for code generation, `,refactor` for AI-assisted refactoring)\n- Preconfigured LSP servers for Python, JavaScript, Go, and Rust\n- Telescope.nvim for fuzzy file finding and live grep\n\n**AI Agent Integration:**\n- Claude Code CLI for inline code editing (e.g., `claude edit --file src/utils.py --prompt \"Optimize this function\"`)\n- Shell aliases for AI tasks:\n  - `ai-edit`: Opens the current file in Claude Code for AI-assisted editing\n  - `ai-chat`: Starts a chat session with an AI agent for shell-related questions\n  - `ai-docs`: Generates documentation for a selected function or file\n\n**Installation:**\n1. Clone the repo: `git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles`\n2. Run the bootstrap script: `cd ~/.dotfiles && ./bootstrap.sh`\n3. Restart your terminal or run `exec zsh` to reload the shell\n4. For Neovim, run `:Lazy sync` to install plugins\n\n**Quick Start:**\n- Open Ghostty and press `Cmd+T` to create a new tmux session\n- Run `ai-edit` to open the current file in Claude Code\n- Use `,ai` in Neovim to trigger AI-assisted code generation\n\nThe configuration is idempotent—running the bootstrap script multiple times won’t break your setup. All changes are version-controlled in Git, and you can customize themes, plugins, and AI integrations by editing the respective config files.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "dotfiles#main-content",
+      "dotfiles#overview",
+      "dotfiles#setup",
+      "dotfiles#examples",
+      "dotfiles#tools",
+      "dotfiles#mcp",
+      "dotfiles#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "This dotfiles repository automates terminal environment setup for macOS developers using Neovim with LazyVim, Zsh with abbreviations, Ghostty terminal emulator, and Tmux. The configuration uses GNU Stow for fast, idempotent symlink management and supports both Apple Silicon and Intel Macs. It includes custom Claude Code skills, permission presets, and safety hooks for AI-assisted code editing, plus intelligent Git functions that auto-detect main/master branches. Setup requires Git, Homebrew, asdf, Ruby, Node.js, Zsh, Neovim, and Starship, with a bootstrap script available for new Mac installations. Developers benefit from a unified, reproducible dev environment that integrates editor, shell, terminal multiplexing, and AI agent capabilities.\nQuickly set up a new macOS environment with pre-configured development tools and settings.\nEasily switch between Zsh and Fish shells while maintaining consistent configurations.\nAutomate the installation of essential software and dependencies using Homebrew and a custom Brewfile.\nUtilize AI-assisted development features to enhance coding efficiency and streamline workflows.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/joshukraine/dotfiles`",
+    "usage_vi": "```\nGenerate a dotfiles configuration for [OPERATING_SYSTEM] that includes [TOOLS_LIST]. The setup should automate terminal customization, shell configuration, and editor settings. Include AI agent integration for [SPECIFIC_TASKS]. Ensure the configuration is modular, version-controlled, and idempotent. Provide installation instructions and a quick-start guide.\n```\nCopy\n\n```\nHere’s a production-ready dotfiles configuration for macOS (Ventura 13.5) with Neovim 0.9.4, Zsh 5.9, Fish 3.6.1, Ghostty 1.0.0, and Tmux 3.3a. The setup includes:\n\n**Shell & Terminal:**\n- Zsh as the default shell with Oh-My-Zsh plugins (zsh-autosuggestions, zsh-syntax-highlighting)\n- Fish shell with Fisher plugins (zsh-to-fish, tide)\n- Ghostty terminal emulator with a custom Solarized Dark theme and ligatures enabled\n- Tmux 3.3a with a preconfigured session manager (tmux-resurrect, tmux-continuum)\n\n**Editor (Neovim):**\n- Lazy.nvim plugin manager with 30+ plugins (LSP, treesitter, completion, debugging)\n- Custom keybindings for AI agent integration (e.g., `,ai` for code generation, `,refactor` for AI-assisted refactoring)\n- Preconfigured LSP servers for Python, JavaScript, Go, and Rust\n- Telescope.nvim for fuzzy file finding and live grep\n\n**AI Agent Integration:**\n- Claude Code CLI for inline code editing (e.g., `claude edit --file src/utils.py --prompt \"Optimize this function\"`)\n- Shell aliases for AI tasks:\n  - `ai-edit`: Opens the current file in Claude Code for AI-assisted editing\n  - `ai-chat`: Starts a chat session with an AI agent for shell-related questions\n  - `ai-docs`: Generates documentation for a selected function or file\n\n**Installation:**\n1. Clone the repo: `git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles`\n2. Run the bootstrap script: `cd ~/.dotfiles && ./bootstrap.sh`\n3. Restart your terminal or run `exec zsh` to reload the shell\n4. For Neovim, run `:Lazy sync` to install plugins\n\n**Quick Start:**\n- Open Ghostty and press `Cmd+T` to create a new tmux session\n- Run `ai-edit` to open the current file in Claude Code\n- Use `,ai` in Neovim to trigger AI-assisted code generation\n\nThe configuration is idempotent—running the bootstrap script multiple times won’t break your setup. All changes are version-controlled in Git, and you can customize themes, plugins, and AI integrations by editing the respective config files.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:42:22.895402Z",
+    "http_status": 200,
+    "content_hash": "c49175e225d05eac886fa12e6cca52b7cc23bc7b3636681b95e8e8aa8300394e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dotfiles.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\dotfiles.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Dotfiles - Automate macOS Terminal Setup",
+  "short_description_vi": "Dotfiles for macOS with Neovim, Zsh, Fish, Ghostty, and Tmux. Automates terminal setup for developers. Connects to AI agents for code editing and shell management."
+}

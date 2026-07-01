@@ -1,0 +1,67 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/swiftlens",
+  "slug": "swiftlens",
+  "name": "SwiftLens",
+  "headline": "SwiftLens - Semantic Swift Code Analysis",
+  "short_description": "SwiftLens is a Model Context Protocol (MCP) server that provides deep, semantic-level analysis of Swift codebases to any AI models. By integrating directly with Apple's SourceKit-LSP, SwiftLens enables AI models to understand Swift code with compiler-grade accuracy.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "swiftlens",
+  "install_command": "git clone https://github.com/swiftlens/swiftlens.git",
+  "source_repo_url": "https://github.com/swiftlens/swiftlens",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "mcp-server",
+    "cursor",
+    "lsp",
+    "swift",
+    "mcp",
+    "gemini-cli",
+    "ios-developer-tools",
+    "xcode",
+    "developer-tools",
+    "ios-development",
+    "model-context-protocol",
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "SwiftLens is a Model Context Protocol server that bridges AI agents with Swift development by integrating directly with Apple's SourceKit-LSP. It provides deep semantic analysis of Swift codebases, enabling AI models to understand code structure, symbols, type information, and cross-file references with compiler-level accuracy. The tool offers 15 specialized commands for single-file analysis, cross-file symbol navigation, code modification, and project indexing. SwiftLens works with modern Swift syntax including actors, async/await, generics, and Swift Package Manager projects, requiring only macOS, Python 3.10+, and Xcode. It solves the problem of giving AI agents genuine code comprehension beyond text patterns, making it valuable for developers using Claude Code, Cursor, or other AI tools to refactor, analyze, or maintain Swift projects.\nAI-assisted refactoring of Swift codebases with accurate symbol tracking\nCross-file code analysis and finding all references to a method or type\nAutomated code generation that understands project structure and dependencies\nCode review and validation using semantic understanding of Swift syntax",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/swiftlens/swiftlens`",
+    "usage": "```\nAnalyze the Swift codebase in [PROJECT_PATH] using SwiftLens to identify [SPECIFIC_ANALYSIS_TYPE]. Focus on [KEY_AREAS_OF_INTEREST] and highlight any potential issues, performance bottlenecks, or architectural concerns. Provide actionable recommendations for [IMPROVEMENT_AREA].\n```\nCopy\n\n```\nAfter analyzing the Swift codebase for 'AcmeWeatherApp' located at `/projects/AcmeWeatherApp`, SwiftLens identified several critical issues and optimization opportunities in the network layer and data persistence modules. The analysis revealed that the `WeatherAPIService` class contains a memory leak in its `fetchCurrentWeather` method due to improper handling of the network response callback. The leak occurs when the API response is received but the completion handler is not properly released, causing a 15% increase in memory usage after 100 API calls. Additionally, the CoreData stack in the `WeatherPersistenceManager` has inefficient batch processing that leads to a 200ms delay when saving 1000 weather entries. The tool also detected architectural concerns in the VIPER pattern implementation, where the `WeatherInteractor` is violating the single responsibility principle by handling both business logic and data formatting. For the network layer, SwiftLens recommends implementing a retry mechanism with exponential backoff and moving the response parsing to a dedicated worker thread. For the persistence layer, it suggests batching CoreData saves and using `NSFetchedResultsController` for more efficient data fetching. The architectural issues could be resolved by splitting the `WeatherInteractor` into separate components for business logic and data formatting.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "swiftlens#main-content",
+      "swiftlens#overview",
+      "swiftlens#setup",
+      "swiftlens#examples",
+      "swiftlens#tools",
+      "swiftlens#mcp",
+      "swiftlens#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SwiftLens là một MCP (Model Context Protocol) server đóng vai trò cầu nối giữa các AI agent và quá trình phát triển Swift thông qua việc tích hợp trực tiếp với SourceKit-LSP của Apple. Công cụ này cung cấp khả năng phân tích ngữ nghĩa chuyên sâu cho các codebase Swift, giúp mô hình AI hiểu cấu trúc code, các symbol, thông tin kiểu dữ liệu (type) và các tham chiếu liên file với độ chính xác tương đương trình biên dịch. SwiftLens cung cấp 15 lệnh chuyên dụng để phân tích file đơn lẻ, điều hướng symbol liên file, chỉnh sửa code và lập chỉ mục (index) dự án. SwiftLens tương thích với cú pháp Swift hiện đại bao gồm actor, async/await, generics và các dự án sử dụng Swift Package Manager, chỉ yêu cầu macOS, Python 3.10+ và Xcode. Công cụ giải quyết bài toán giúp AI agent thực sự hiểu sâu mã nguồn thay vì chỉ khớp các mẫu text đơn thuần, cực kỳ hữu ích cho các lập trình viên đang dùng Claude Code, Cursor hoặc các công cụ AI khác để refactor, phân tích hoặc bảo trì dự án Swift.\n- Hỗ trợ AI refactor các codebase Swift với khả năng theo dõi symbol chính xác\n- Phân tích code liên file và tìm tất cả tham chiếu đến một method hoặc type\n- Tự động sinh code dựa trên mức độ hiểu biết về cấu trúc dự án và các dependency\n- Review và xác thực code bằng cách hiểu sâu ngữ nghĩa của cú pháp Swift",
+    "setup_vi": "Không có sẵn lệnh cài đặt tự động. Vui lòng kiểm tra repository trên GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/swiftlens/swiftlens`",
+    "usage_vi": "```\nHãy phân tích codebase Swift tại [PROJECT_PATH] bằng cách sử dụng SwiftLens để xác định [SPECIFIC_ANALYSIS_TYPE]. Tập trung vào [KEY_AREAS_OF_INTEREST] và chỉ ra mọi vấn đề tiềm ẩn, nghẽn hiệu năng (performance bottleneck) hoặc các quan ngại về mặt kiến trúc. Đưa ra các khuyến nghị khả thi cho [IMPROVEMENT_AREA].\n```\nCopy\n\n```\nSau khi phân tích codebase Swift của 'AcmeWeatherApp' tại `/projects/AcmeWeatherApp`, SwiftLens đã phát hiện một số vấn đề nghiêm trọng và cơ hội tối ưu hóa trong network layer và các module lưu trữ dữ liệu (data persistence). Phân tích cho thấy class `WeatherAPIService` có một lỗi rò rỉ bộ nhớ (memory leak) trong method `fetchCurrentWeather` do xử lý response callback từ mạng chưa đúng cách. Lỗi rò rỉ này xảy ra khi nhận được phản hồi từ API nhưng completion handler không được giải phóng đúng cách, khiến lượng sử dụng bộ nhớ tăng 15% sau 100 lần gọi API. Ngoài ra, CoreData stack trong `WeatherPersistenceManager` xử lý batch kém hiệu quả dẫn đến độ trễ 200ms khi lưu 1000 bản ghi thời tiết. Công cụ cũng phát hiện các vấn đề về kiến trúc trong phần triển khai pattern VIPER, nơi `WeatherInteractor` đang vi phạm nguyên tắc đơn nhiệm (single responsibility principle) do xử lý cả business logic lẫn định dạng dữ liệu (data formatting). Đối với network layer, SwiftLens khuyên nên triển khai cơ chế retry với exponential backoff và chuyển phần parse phản hồi sang một worker thread chuyên dụng. Đối với persistence layer, công cụ gợi ý nên thực hiện lưu batch CoreData và sử dụng `NSFetchedResultsController` để truy xuất dữ liệu hiệu quả hơn. Các vấn đề kiến trúc có thể được giải quyết bằng cách chia nhỏ `WeatherInteractor` thành các thành phần riêng biệt cho business logic và định dạng dữ liệu.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:37:02.252944Z",
+    "http_status": 200,
+    "content_hash": "52da8152e443b8a506d9212d69237e15458b610b0e174ec25ecf82de01dd106d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\swiftlens.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\swiftlens.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SwiftLens - Phân tích ngữ nghĩa mã nguồn Swift",
+  "short_description_vi": "SwiftLens là một MCP (Model Context Protocol) server cung cấp khả năng phân tích sâu ở cấp độ ngữ nghĩa cho các codebase Swift cho mọi mô hình AI. Nhờ tích hợp trực tiếp với SourceKit-LSP của Apple, SwiftLens giúp các mô hình AI hiểu mã nguồn Swift với độ chính xác tương đương trình biên dịch."
+}

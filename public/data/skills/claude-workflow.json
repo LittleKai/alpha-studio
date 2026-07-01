@@ -1,0 +1,57 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/claude-workflow",
+  "slug": "claude-workflow",
+  "name": "browser-use",
+  "headline": "claude workflow: sdlc configuration guide",
+  "short_description": "Claude Code configuration providing a full SDLC workflow framework with GitHub Projects automation, command templates, and MCP integrations for developers.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "sbusso",
+  "install_command": "git clone https://github.com/sbusso/claude-workflow.git",
+  "source_repo_url": "https://github.com/sbusso/claude-workflow",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code"
+  ],
+  "sections": {
+    "overview": "claude-workflow is a Claude Code configuration framework that automates the software development lifecycle through GitHub Projects integration. It provides 11 command templates covering planning, feature creation, task breakdown, issue handling, PR creation, and commit workflows. The framework includes utility scripts for project status transitions, hierarchical task numbering, and parent-child GitHub issue relationships. Developers working with Python (FastAPI, uv) or TypeScript (Bun, TanStack Router, shadcn/ui) benefit from pre-configured MCP integrations including Context7, Playwright, and GitHub MCP. Installation is handled via a single curl command that syncs the shared workspace to the local .claude/ directory using a native Claude Code memory import system.\nAutomating GitHub Projects status transitions from feature planning to implementation\nBreaking down features into hierarchically numbered sub-tasks with GitHub parent-child issue relationships\nSetting up standardized PR creation, commit, and issue-handling workflows in Claude Code\nConfiguring MCP integrations (Context7, Playwright, GitHub MCP) for a project in one step",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sbusso/claude-workflow`",
+    "usage": "```\nI'm working on a software development project for [COMPANY] in the [INDUSTRY] sector. I need Claude's help to configure a workflow that will guide our team through the software development lifecycle (SDLC). Our current process includes [DATA] stages. Can you suggest a workflow configuration that integrates with our existing tools and improves our development process?\n```\nCopy\n\n```\n# Software Development Lifecycle Workflow Configuration",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "claude-workflow#main-content",
+      "claude-workflow#overview",
+      "claude-workflow#setup",
+      "claude-workflow#examples",
+      "claude-workflow#tools",
+      "claude-workflow#mcp",
+      "claude-workflow#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "claude-workflow is a Claude Code configuration framework that automates the software development lifecycle through GitHub Projects integration. It provides 11 command templates covering planning, feature creation, task breakdown, issue handling, PR creation, and commit workflows. The framework includes utility scripts for project status transitions, hierarchical task numbering, and parent-child GitHub issue relationships. Developers working with Python (FastAPI, uv) or TypeScript (Bun, TanStack Router, shadcn/ui) benefit from pre-configured MCP integrations including Context7, Playwright, and GitHub MCP. Installation is handled via a single curl command that syncs the shared workspace to the local .claude/ directory using a native Claude Code memory import system.\nAutomating GitHub Projects status transitions from feature planning to implementation\nBreaking down features into hierarchically numbered sub-tasks with GitHub parent-child issue relationships\nSetting up standardized PR creation, commit, and issue-handling workflows in Claude Code\nConfiguring MCP integrations (Context7, Playwright, GitHub MCP) for a project in one step",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sbusso/claude-workflow`",
+    "usage_vi": "```\nI'm working on a software development project for [COMPANY] in the [INDUSTRY] sector. I need Claude's help to configure a workflow that will guide our team through the software development lifecycle (SDLC). Our current process includes [DATA] stages. Can you suggest a workflow configuration that integrates with our existing tools and improves our development process?\n```\nCopy\n\n```\n# Software Development Lifecycle Workflow Configuration"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:08:43.847647Z",
+    "http_status": 200,
+    "content_hash": "ccfb1c70fce1da42bd03b1b60487a99905cc01d427709ebc051c8505e0b61363",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-workflow.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\claude-workflow.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "claude workflow: sdlc configuration guide",
+  "short_description_vi": "Claude Code configuration providing a full SDLC workflow framework with GitHub Projects automation, command templates, and MCP integrations for developers."
+}

@@ -1,0 +1,69 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/secopsagentkit",
+  "slug": "secopsagentkit",
+  "name": "SecOpsAgentKit",
+  "headline": "SecOpsAgentKit - AI Security Operations Toolkit",
+  "short_description": "SecOpsAgentKit is a security operations toolkit for AI coding agents. It provides Claude Code 25+ skills to catch vulnerabilities, scan containers, detect secrets, and enforce policies automatically. Benefits security teams and developers by integrating security checks into the coding workflow.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "AgentSecOps",
+  "install_command": "git clone https://github.com/AgentSecOps/SecOpsAgentKit.git",
+  "source_repo_url": "https://github.com/AgentSecOps/SecOpsAgentKit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "dast",
+    "shift-left",
+    "anthropic",
+    "agents",
+    "vulnerability-scanning",
+    "appsec",
+    "claude-code",
+    "ai-agents",
+    "llm-tools",
+    "sast",
+    "devsecops",
+    "security-tools",
+    "security-automation",
+    "security"
+  ],
+  "sections": {
+    "overview": "SecOpsAgentKit is a collection of specialized Claude Code skills designed to integrate security checks directly into AI-assisted coding workflows. It covers application security (SAST/DAST scanning), DevSecOps (container and infrastructure scanning), secure SDLC practices, compliance enforcement, threat modeling, incident response, and offensive security testing. The toolkit includes 25+ pre-built skills leveraging industry-standard tools like Semgrep, Trivy, Grype, Checkov, OWASP ZAP, Nuclei, and Gitleaks. Security teams and developers benefit by automating vulnerability detection, policy enforcement, and forensic analysis directly within their coding environment, enabling shift-left security practices.\nAutomated vulnerability scanning in pull requests using SAST and DAST tools\nContainer image security assessment with Grype and Trivy vulnerability detection\nInfrastructure as Code security validation with Checkov policies\nHardcoded secrets detection and prevention in git repositories",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AgentSecOps/SecOpsAgentKit`",
+    "usage": "```\nAct as a SecOpsAgentKit security expert. Use the following tools to analyze [PROJECT_PATH] for security risks: 1) Run a SCA scan with [SCANNER_TOOL] to identify vulnerable dependencies. 2) Perform a container image scan on [IMAGE_NAME:TAG] using [SCANNER_TOOL] for CVEs and misconfigurations. 3) Check for exposed secrets in [DIRECTORY_PATH] with [SCANNER_TOOL]. 4) Enforce [POLICY_NAME] policy (e.g., no hardcoded passwords) and generate a report. Prioritize findings by severity and suggest remediation steps for each. Include false positive checks where applicable.\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "secopsagentkit#main-content",
+      "secopsagentkit#overview",
+      "secopsagentkit#setup",
+      "secopsagentkit#examples",
+      "secopsagentkit#tools",
+      "secopsagentkit#mcp",
+      "secopsagentkit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "SecOpsAgentKit is a collection of specialized Claude Code skills designed to integrate security checks directly into AI-assisted coding workflows. It covers application security (SAST/DAST scanning), DevSecOps (container and infrastructure scanning), secure SDLC practices, compliance enforcement, threat modeling, incident response, and offensive security testing. The toolkit includes 25+ pre-built skills leveraging industry-standard tools like Semgrep, Trivy, Grype, Checkov, OWASP ZAP, Nuclei, and Gitleaks. Security teams and developers benefit by automating vulnerability detection, policy enforcement, and forensic analysis directly within their coding environment, enabling shift-left security practices.\nAutomated vulnerability scanning in pull requests using SAST and DAST tools\nContainer image security assessment with Grype and Trivy vulnerability detection\nInfrastructure as Code security validation with Checkov policies\nHardcoded secrets detection and prevention in git repositories",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/AgentSecOps/SecOpsAgentKit`",
+    "usage_vi": "```\nAct as a SecOpsAgentKit security expert. Use the following tools to analyze [PROJECT_PATH] for security risks: 1) Run a SCA scan with [SCANNER_TOOL] to identify vulnerable dependencies. 2) Perform a container image scan on [IMAGE_NAME:TAG] using [SCANNER_TOOL] for CVEs and misconfigurations. 3) Check for exposed secrets in [DIRECTORY_PATH] with [SCANNER_TOOL]. 4) Enforce [POLICY_NAME] policy (e.g., no hardcoded passwords) and generate a report. Prioritize findings by severity and suggest remediation steps for each. Include false positive checks where applicable.\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:19:03.275723Z",
+    "http_status": 200,
+    "content_hash": "b44b82200e4cbd1a16c455362b36e5647db2c8f329b5f252d9942835fa01cd65",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\secopsagentkit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\secopsagentkit.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "SecOpsAgentKit - AI Security Operations Toolkit",
+  "short_description_vi": "SecOpsAgentKit is a security operations toolkit for AI coding agents. It provides Claude Code 25+ skills to catch vulnerabilities, scan containers, detect secrets, and enforce policies automatically. Benefits security teams and developers by integrating security checks into the coding workflow."
+}

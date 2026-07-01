@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agentic-signal",
+  "slug": "agentic-signal",
+  "name": "Agentic Signal",
+  "headline": "agentic-signal: Workflows with AI",
+  "short_description": "Agentic Signal automates workflows using visual AI agents with local LLM integration. Operations teams build intelligent workflows via drag-and-drop, no cloud dependencies. Connects to local AI models like Llama and Gemma.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "135 min",
+  "author": "code-forge-temple",
+  "install_command": "git clone https://github.com/code-forge-temple/agentic-signal.git",
+  "source_repo_url": "https://github.com/code-forge-temple/agentic-signal",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "local-ai",
+    "typescript",
+    "workflow-builder",
+    "gemma3n",
+    "workflow-automation",
+    "hacktoberfest",
+    "visual-ai",
+    "fortheloveofcode",
+    "local-llm",
+    "privacy-first",
+    "llama",
+    "no-code",
+    "ai-automation",
+    "visual-programming",
+    "ollama",
+    "open-source",
+    "ai-agents",
+    "gemma",
+    "react-flow"
+  ],
+  "sections": {
+    "overview": "The agentic-signal skill is a powerful visual AI agent workflow automation platform designed to enable users to create intelligent workflows with ease. By integrating local large language models (LLMs), this skill allows for the construction of complex workflows using a simple drag-and-drop interface, eliminating the need for cloud dependencies. This makes it an ideal solution for developers and product managers looking to streamline their processes without the limitations of external services. One of the key benefits of using agentic-signal is the significant time savings it offers. While the exact time savings are not quantified, the ability to implement workflows in just 30 minutes can drastically reduce the time spent on manual tasks and repetitive processes. This skill is particularly advantageous for those in roles that require quick iterations and adaptability, such as AI practitioners and product managers who need to respond swiftly to market changes. This skill is best suited for developers and product managers who are seeking to enhance their workflow automation capabilities. By leveraging agentic-signal, teams can create customized workflows that cater to their specific needs, whether it be in data engineering, frontend development, or other areas requiring automation. Practical use cases include automating data processing pipelines, integrating various APIs seamlessly, or even setting up automated responses for customer interactions. With an intermediate implementation difficulty, users can expect to spend around 30 minutes to get started with agentic-signal. The skill's design aligns perfectly with AI-first workflows, allowing teams to harness the power of AI in their daily operations. As organizations increasingly prioritize automation, adopting skills like agentic-signal can significantly enhance productivity and efficiency, making it a valuable addition to any tech stack.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/code-forge-temple/agentic-signal`",
+    "usage": "```\nDesign a visual AI agent workflow in [TOOL_NAME] that automates [SPECIFIC_TASK] using a local LLM (e.g., Llama 3 or Gemma). The workflow should include [STEP_1], [STEP_2], and [STEP_3]. Ensure the agent triggers actions based on [CONDITION] and logs outputs to [OUTPUT_DESTINATION].\n```\nCopy\n\n```\nHere’s a visual AI agent workflow built in **n8n** (local instance) to automate invoice processing for a small manufacturing company. The workflow uses **Gemma 2B** (local LLM) to validate and categorize invoices from PDF attachments in Gmail before saving structured data to a local SQL database.\n\n**Workflow Steps:**\n1. **Trigger:** Monitors a dedicated Gmail label (`#invoices-to-process`) for new PDF attachments. When detected, the agent extracts the file and metadata (sender, subject, date).\n2. **LLM Validation:** The agent sends the extracted text to **Gemma 2B** with the prompt: *\"Categorize this invoice as [MATERIAL_COST, OPERATIONS, CAPEX, OTHER]. Extract the total amount, vendor name, and due date. Flag if any fields are missing or ambiguous.\"* The LLM responds with a JSON payload like:\n```json\n{\n  \"category\": \"MATERIAL_COST\",\n  \"total_amount\": 1250.00,\n  \"vendor\": \"Acme Supplies Inc.\",\n  \"due_date\": \"2024-06-15\",\n  \"missing_fields\": [],\n  \"ambiguous\": false\n}\n```\n3. **Action:** If the LLM flags missing fields, the agent sends an email to the accounts payable team with a summary and a request to resubmit. Otherwise, it logs the validated data to a local **PostgreSQL** table (`invoices_processed`) and archives the PDF in a local folder (`/processed_invoices/2024-06-10/`).\n4. **Logging:** A summary of the processed invoice (including LLM validation notes) is appended to a local **Markdown log file** (`/logs/invoice_workflow.log`).\n\n**Output Example (Markdown Log):**\n```markdown\n### Invoice Processed - 2024-06-10\n- **File:** invoice_20240610_acme.pdf\n- **Vendor:** Acme Supplies Inc.\n- **Category:** MATERIAL_COST\n- **Total Amount:** $1,250.00\n- **Due Date:** 2024-06-15\n- **LLM Notes:** No missing fields. Amount matches standard material cost range.\n- **Status:** Validated and logged to database.\n```\n\nThis workflow runs entirely on a local server (no cloud dependencies), processes 10-15 invoices/hour, and reduces manual data entry errors by 90%. The team can adjust the LLM’s categorization logic by editing the prompt in the agent’s configuration.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agentic-signal#main-content",
+      "agentic-signal#overview",
+      "agentic-signal#setup",
+      "agentic-signal#examples",
+      "agentic-signal#tools",
+      "agentic-signal#mcp",
+      "agentic-signal#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Skill agentic-signal là một nền tảng tự động hóa workflow bằng AI agent trực quan và mạnh mẽ, được thiết kế để giúp người dùng dễ dàng tạo ra các quy trình làm việc thông minh. Bằng cách tích hợp các mô hình ngôn ngữ lớn (LLM) chạy local, skill này cho phép xây dựng các workflow phức tạp thông qua giao diện kéo thả đơn giản, loại bỏ hoàn toàn sự phụ thuộc vào dịch vụ đám mây. Đây là giải pháp lý tưởng cho các nhà phát triển (developer) và quản lý sản phẩm (product manager) muốn tối ưu hóa quy trình làm việc của mình mà không bị giới hạn bởi các dịch vụ bên ngoài. Một trong những lợi ích chính khi sử dụng agentic-signal là tiết kiệm thời gian đáng kể. Mặc dù lượng thời gian tiết kiệm cụ thể chưa được định lượng, khả năng triển khai workflow chỉ trong 30 phút có thể giảm thiểu đáng kể thời gian dành cho các tác vụ thủ công và quy trình lặp đi lặp lại. Skill này đặc biệt có lợi cho những vai trò đòi hỏi sự linh hoạt và thử nghiệm nhanh (quick iterations), chẳng hạn như các chuyên gia AI và product manager cần phản ứng nhanh chóng trước những thay đổi của thị trường. Skill này phù hợp nhất với các developer và product manager đang tìm cách nâng cao khả năng tự động hóa quy trình làm việc của mình. Nhờ tận dụng agentic-signal, các đội ngũ có thể tạo ra các workflow tùy chỉnh đáp ứng nhu cầu cụ thể, dù là trong kỹ thuật dữ liệu (data engineering), phát triển frontend hay các lĩnh vực khác cần tự động hóa. Các trường hợp sử dụng thực tế bao gồm tự động hóa pipeline xử lý dữ liệu, tích hợp các API một cách liền mạch hoặc thiết lập phản hồi tự động cho các tương tác của khách hàng. Với độ khó triển khai ở mức trung bình, người dùng chỉ mất khoảng 30 phút để bắt đầu sử dụng agentic-signal. Thiết kế của skill này hoàn toàn phù hợp với các workflow định hướng AI-first, giúp các đội ngũ khai thác sức mạnh của AI trong hoạt động vận hành hàng ngày. Trong bối cảnh các tổ chức ngày càng ưu tiên tự động hóa, việc áp dụng các skill như agentic-signal sẽ giúp nâng cao đáng kể năng suất và hiệu quả công việc, biến nó thành một mảnh ghép giá trị cho bất kỳ tech stack nào.",
+    "setup_vi": "Không có lệnh cài đặt sẵn. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/code-forge-temple/agentic-signal`",
+    "usage_vi": "```\nThiết kế một workflow bằng AI agent trực quan trong [TOOL_NAME] để tự động hóa [SPECIFIC_TASK] bằng cách sử dụng LLM local (ví dụ: Llama 3 hoặc Gemma). Workflow này cần bao gồm [STEP_1], [STEP_2] và [STEP_3]. Đảm bảo agent kích hoạt các hành động dựa trên [CONDITION] và ghi nhận kết quả đầu ra (log) vào [OUTPUT_DESTINATION].\n```\nCopy\n\n```\nDưới đây là một workflow bằng AI agent trực quan được xây dựng trên **n8n** (local instance) để tự động hóa quy trình xử lý hóa đơn cho một công ty sản xuất nhỏ. Workflow này sử dụng **Gemma 2B** (LLM local) để xác thực và phân loại hóa đơn từ các tệp PDF đính kèm trong Gmail trước khi lưu dữ liệu đã được cấu trúc vào cơ sở dữ liệu SQL local.\n\n**Các bước trong workflow:**\n1. **Trigger:** Giám sát một nhãn Gmail riêng biệt (`#invoices-to-process`) để phát hiện các tệp PDF đính kèm mới. Khi phát hiện, agent sẽ trích xuất tệp và metadata (người gửi, tiêu đề, ngày gửi).\n2. **Xác thực bằng LLM (LLM Validation):** Agent gửi văn bản đã trích xuất đến **Gemma 2B** với prompt: *\"Phân loại hóa đơn này thành [MATERIAL_COST, OPERATIONS, CAPEX, OTHER]. Trích xuất tổng số tiền, tên nhà cung cấp và hạn thanh toán. Đánh dấu (flag) nếu phát hiện bất kỳ trường nào bị thiếu hoặc không rõ ràng.\"* LLM phản hồi bằng một payload JSON dạng:\n```json\n{\n  \"category\": \"MATERIAL_COST\",\n  \"total_amount\": 1250.00,\n  \"vendor\": \"Acme Supplies Inc.\",\n  \"due_date\": \"2024-06-15\",\n  \"missing_fields\": [],\n  \"ambiguous\": false\n}\n```\n3. **Action:** Nếu LLM đánh dấu phát hiện trường thông tin bị thiếu, agent sẽ gửi email đến bộ phận kế toán phải trả (accounts payable team) kèm theo bản tóm tắt và yêu cầu gửi lại. Ngược lại, agent sẽ ghi nhận dữ liệu đã được xác thực vào bảng **PostgreSQL** local (`invoices_processed`) và lưu trữ tệp PDF trong thư mục local (`/processed_invoices/2024-06-10/`).\n4. **Logging:** Bản tóm tắt hóa đơn đã xử lý (bao gồm các ghi chú xác thực của LLM) sẽ được ghi thêm (append) vào một **tệp log Markdown** local (`/logs/invoice_workflow.log`).\n\n**Ví dụ kết quả đầu ra (Log Markdown):**\n```markdown\n### Invoice Processed - 2024-06-10\n- **File:** invoice_20240610_acme.pdf\n- **Vendor:** Acme Supplies Inc.\n- **Category:** MATERIAL_COST\n- **Total Amount:** $1,250.00\n- **Due Date:** 2024-06-15\n- **LLM Notes:** Không thiếu trường thông tin nào. Số tiền khớp với khoảng chi phí nguyên vật liệu tiêu chuẩn.\n- **Status:** Đã xác thực và ghi nhận vào cơ sở dữ liệu.\n```\n\nWorkflow này chạy hoàn toàn trên máy chủ local (không phụ thuộc vào đám mây), xử lý 10-15 hóa đơn/giờ và giảm đến 90% lỗi nhập liệu thủ công. Đội ngũ phát triển có thể điều chỉnh logic phân loại của LLM bằng cách chỉnh sửa prompt trong phần cấu hình của agent.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:53:17.506218Z",
+    "http_status": 200,
+    "content_hash": "34cc81e7a0e1c98e1d39f47a5bf26fe98ff38e5ff8579de2863a638fb6a7f95d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentic-signal.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agentic-signal.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agentic-signal: Thiết lập workflow với AI",
+  "short_description_vi": "Agentic Signal tự động hóa quy trình làm việc bằng cách sử dụng các AI agent trực quan tích hợp với LLM local. Các đội ngũ vận hành có thể xây dựng các workflow thông minh thông qua giao diện kéo thả mà không phụ thuộc vào đám mây. Hỗ trợ kết nối với các mô hình AI local như Llama và Gemma."
+}

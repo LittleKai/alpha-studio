@@ -1,0 +1,63 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/ipsw-skill",
+  "slug": "ipsw-skill",
+  "name": "ipsw-skill",
+  "headline": "ipsw-skill - Apple Firmware Reverse Engineering",
+  "short_description": "AI skill for Apple firmware and binary reverse engineering using the ipsw CLI tool. Supports Claude Code, Codex CLI, and Gemini CLI. Helps operations teams analyze firmware, extract binaries, and identify vulnerabilities.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "blacktop",
+  "install_command": "git clone https://github.com/blacktop/ipsw-skill.git",
+  "source_repo_url": "https://github.com/blacktop/ipsw-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "vulnerability-research",
+    "codex",
+    "ipsw",
+    "skill",
+    "apple",
+    "claude-skills",
+    "claude-code",
+    "reverse-engineering"
+  ],
+  "sections": {
+    "overview": "ipsw-skill is an AI agent skill that integrates the ipsw CLI tool to automate Apple firmware and binary reverse engineering tasks. It enables agents to download and extract IPSWs, OTAs, kernelcaches, and dyld_shared_cache; perform userspace reverse engineering including DSC disassembly and symbol lookup; dump Objective-C headers from private frameworks; analyze kernel and KEXT binaries; research entitlements; and inspect Mach-O signatures and entitlements. The skill works with Claude Code, Codex CLI, Gemini CLI, and Pi coding agents, making it valuable for security researchers, firmware engineers, and operations teams investigating iOS vulnerabilities and system internals.\nExtract and analyze kernel and dyld_shared_cache from iOS firmware images\nDump Objective-C headers from private system frameworks for reverse engineering\nSearch for entitlements and capabilities across iOS binaries\nDisassemble functions and locate symbol addresses in system libraries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/blacktop/ipsw-skill`",
+    "usage": "```\nUse the ipsw CLI tool to analyze the iOS [VERSION] IPSW file for [DEVICE_MODEL]. Extract the kernelcache and dyld_shared_cache, then identify all executable binaries in the root filesystem. For each binary, check for known vulnerabilities using [VULNERABILITY_DATABASE] and generate a report listing: 1) Binary path and architecture, 2) Detected CVEs, 3) Potential impact, and 4) Recommended mitigation steps. Focus on binaries with high severity vulnerabilities (CVSS >= 7.0).\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "ipsw-skill#main-content",
+      "ipsw-skill#overview",
+      "ipsw-skill#setup",
+      "ipsw-skill#examples",
+      "ipsw-skill#tools",
+      "ipsw-skill#mcp",
+      "ipsw-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "ipsw-skill tích hợp bộ công cụ dòng lệnh ipsw vào quy trình làm việc của AI Agent để tự động hóa các tác vụ nghiên cứu firmware và mã nhị phân của Apple. Công cụ hỗ trợ tải và giải nén file IPSW, OTA, bộ nhớ cache kernel và dyld_shared_cache; phân tích mã nguồn người dùng (userspace reverse engineering) bao gồm dịch ngược DSC và tra cứu biểu tượng; trích xuất Objective-C header từ các framework hệ thống; nghiên cứu quyền hạn (entitlements) và chữ ký Mach-O. Hoạt động tương thích với Claude Code, Codex CLI, Gemini CLI.",
+    "setup_vi": "Tham khảo tài liệu hướng dẫn và tải từ repository:\n`git clone https://github.com/blacktop/ipsw-skill`",
+    "usage_vi": "Sử dụng ipsw CLI để phân tích tệp tin iOS IPSW, trích xuất bộ nhớ cache nhân (kernelcache) và kiểm tra các lỗ hổng bảo mật trên các tệp tin nhị phân hệ thống."
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T07:32:26.341746Z",
+    "http_status": 200,
+    "content_hash": "3bbbd5be5e80afd369d6798269dd93a1c9e6ec01fd4f40903a1cae25b6138323",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ipsw-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ipsw-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Kỹ năng IPSW - Kỹ thuật đảo ngược & Phân tích Firmware Apple",
+  "short_description_vi": "Kỹ năng AI hỗ trợ phân tích và đảo ngược firmware iOS/macOS bằng công cụ dòng lệnh ipsw. Hỗ trợ đắc lực cho chuyên gia bảo mật phân tích nhân hệ điều hành, trích xuất dyld_shared_cache và tìm kiếm lỗ hổng."
+}

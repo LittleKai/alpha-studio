@@ -1,0 +1,66 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/agent-os",
+  "slug": "agent-os",
+  "name": "Agent Os",
+  "headline": "agent-os: AI Coding Sessions",
+  "short_description": "AgentOS is a mobile-first web UI for managing AI coding sessions with Claude Code, Codex, Aider, and Gemini CLI. It offers self-hosted multi-pane terminals, git integration, and session orchestration. Ideal for developers and operations teams to streamline coding workflows and collaborate efficiently.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "210 min",
+  "author": "saadnvd1",
+  "install_command": "git clone https://github.com/saadnvd1/agent-os.git",
+  "source_repo_url": "https://github.com/saadnvd1/agent-os",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "parallel-agents",
+    "containerization",
+    "cli",
+    "ai",
+    "claude-code",
+    "parallelexecution",
+    "terminal",
+    "gitworktrees",
+    "opencode",
+    "codingagents",
+    "mobile-first"
+  ],
+  "sections": {
+    "overview": "The agent-os skill provides a mobile-first web user interface designed specifically for managing AI coding sessions across various platforms, including Claude Code, Codex, Aider, and Gemini CLI. This self-hosted solution features multi-pane terminals, git integration, and session orchestration, making it an invaluable tool for developers looking to enhance their coding efficiency. By centralizing these functionalities, agent-os simplifies the management of complex coding tasks, allowing users to focus on development rather than setup and configuration. One of the key benefits of using agent-os is the potential for significant time savings during coding sessions. Although exact time savings are not quantified, the streamlined interface and integrated tools reduce the friction typically associated with managing multiple coding environments. Developers can quickly switch between tasks and maintain a clear overview of their sessions, which ultimately leads to increased productivity. The intermediate implementation difficulty, estimated at around 30 minutes, makes it accessible for developers who are familiar with self-hosting and basic configuration. This skill is particularly suited for developers and product managers who are engaged in AI automation and workflow automation. By utilizing agent-os, teams can enhance their collaboration and streamline their development processes, making it easier to manage projects that involve multiple AI tools. For instance, a product manager overseeing a team of developers can use agent-os to monitor coding sessions in real-time, ensuring that project milestones are met without unnecessary delays. In terms of practical use cases, consider a development team working on an AI-driven application. With agent-os, they can set up a shared coding environment where team members can collaborate seamlessly, utilize version control through git integration, and orchestrate their sessions efficiently. This skill is designed to fit into AI-first workflows, allowing teams to leverage the power of AI tools while maintaining a coherent and organized coding environment. Overall, agent-os represents a valuable addition to any developer's toolkit, enhancing productivity and facilitating smoother project execution.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/saadnvd1/agent-os`",
+    "usage": "```\nUse AgentOS to [TASK: e.g., debug, refactor, or implement] the [PROJECT_NAME] codebase. Focus on [SPECIFIC_AREA: e.g., authentication module, API endpoints, or performance bottlenecks]. Follow these steps: 1) Clone the repository locally, 2) Open the project in AgentOS, 3) Use the multi-pane terminals to run tests and inspect logs, 4) Implement fixes with real-time git integration, 5) Commit changes with descriptive messages. Prioritize [CRITERIA: e.g., security, scalability, or readability].\n```\nCopy\n\n```\nI used AgentOS to refactor the authentication module in the `secure-api` project, which had been causing intermittent 401 errors. First, I cloned the repo and opened it in AgentOS, where I split the terminal into three panes: one for running tests, another for inspecting the auth middleware code, and a third for checking the database logs. The tests revealed that JWT token expiration was set to 1 hour, causing issues during long sessions. I updated the `auth.config.js` file to extend the expiration to 24 hours and added a refresh token mechanism. Using AgentOS’s git integration, I staged and committed the changes with the message 'Extend JWT expiration to 24h and add refresh token support'. The tests now pass consistently, and the error rate has dropped from 12% to 0.5%. The team can now review the changes in the AgentOS session history before merging.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "agent-os#main-content",
+      "agent-os#overview",
+      "agent-os#setup",
+      "agent-os#examples",
+      "agent-os#tools",
+      "agent-os#mcp",
+      "agent-os#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "The agent-os skill provides a mobile-first web user interface designed specifically for managing AI coding sessions across various platforms, including Claude Code, Codex, Aider, and Gemini CLI. This self-hosted solution features multi-pane terminals, git integration, and session orchestration, making it an invaluable tool for developers looking to enhance their coding efficiency. By centralizing these functionalities, agent-os simplifies the management of complex coding tasks, allowing users to focus on development rather than setup and configuration. One of the key benefits of using agent-os is the potential for significant time savings during coding sessions. Although exact time savings are not quantified, the streamlined interface and integrated tools reduce the friction typically associated with managing multiple coding environments. Developers can quickly switch between tasks and maintain a clear overview of their sessions, which ultimately leads to increased productivity. The intermediate implementation difficulty, estimated at around 30 minutes, makes it accessible for developers who are familiar with self-hosting and basic configuration. This skill is particularly suited for developers and product managers who are engaged in AI automation and workflow automation. By utilizing agent-os, teams can enhance their collaboration and streamline their development processes, making it easier to manage projects that involve multiple AI tools. For instance, a product manager overseeing a team of developers can use agent-os to monitor coding sessions in real-time, ensuring that project milestones are met without unnecessary delays. In terms of practical use cases, consider a development team working on an AI-driven application. With agent-os, they can set up a shared coding environment where team members can collaborate seamlessly, utilize version control through git integration, and orchestrate their sessions efficiently. This skill is designed to fit into AI-first workflows, allowing teams to leverage the power of AI tools while maintaining a coherent and organized coding environment. Overall, agent-os represents a valuable addition to any developer's toolkit, enhancing productivity and facilitating smoother project execution.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/saadnvd1/agent-os`",
+    "usage_vi": "```\nUse AgentOS to [TASK: e.g., debug, refactor, or implement] the [PROJECT_NAME] codebase. Focus on [SPECIFIC_AREA: e.g., authentication module, API endpoints, or performance bottlenecks]. Follow these steps: 1) Clone the repository locally, 2) Open the project in AgentOS, 3) Use the multi-pane terminals to run tests and inspect logs, 4) Implement fixes with real-time git integration, 5) Commit changes with descriptive messages. Prioritize [CRITERIA: e.g., security, scalability, or readability].\n```\nCopy\n\n```\nI used AgentOS to refactor the authentication module in the `secure-api` project, which had been causing intermittent 401 errors. First, I cloned the repo and opened it in AgentOS, where I split the terminal into three panes: one for running tests, another for inspecting the auth middleware code, and a third for checking the database logs. The tests revealed that JWT token expiration was set to 1 hour, causing issues during long sessions. I updated the `auth.config.js` file to extend the expiration to 24 hours and added a refresh token mechanism. Using AgentOS’s git integration, I staged and committed the changes with the message 'Extend JWT expiration to 24h and add refresh token support'. The tests now pass consistently, and the error rate has dropped from 12% to 0.5%. The team can now review the changes in the AgentOS session history before merging.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:41:55.983666Z",
+    "http_status": 200,
+    "content_hash": "426a11bc0c94b827492120403ca385ab8f74881be390f9f1dc4622d62831479f",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-os.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\agent-os.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "agent-os: AI Coding Sessions",
+  "short_description_vi": "AgentOS is a mobile-first web UI for managing AI coding sessions with Claude Code, Codex, Aider, and Gemini CLI. It offers self-hosted multi-pane terminals, git integration, and session orchestration. Ideal for developers and operations teams to streamline coding workflows and collaborate efficiently."
+}

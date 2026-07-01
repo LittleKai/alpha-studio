@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/auo",
+  "slug": "auo",
+  "name": "browser-use",
+  "headline": "auo automation for ease of code usage",
+  "short_description": "auo simplifies Claude Code usage by enabling easy configuration switching. It benefits developers and operations teams by streamlining workflows. It connects to CLI tools and integrates with Claude Code for efficient code generation and management.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "millylee",
+  "install_command": "git clone https://github.com/millylee/auo.git",
+  "source_repo_url": "https://github.com/millylee/auo",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "anyrouter",
+    "kimi",
+    "glm",
+    "claude",
+    "cli"
+  ],
+  "sections": {
+    "overview": "auo is a configuration management tool for Claude Code that lets you switch between multiple API endpoints, authentication tokens, and model settings without manual reconfiguration. It automatically manages environment variables (ANTHROPIC_BASE_URL, ANTHROPIC_AUTH_TOKEN, ANTHROPIC_MODEL) and upgrades legacy configuration formats automatically. The tool is particularly useful for developers and operations teams working with multiple accounts, proxy servers, or local development environments—allowing seamless switching when an account has issues or when testing different configurations. auo installs globally via npm and integrates directly with Claude Code to apply the selected configuration on each invocation.\nSwitching between multiple Anthropic API accounts when one has issues\nManaging custom proxy server configurations alongside official Anthropic API\nRunning local development environments with different model settings\nOrganizing configurations for multiple Claude Code relay stations or routers",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/millylee/auo`",
+    "usage": "```\nSwitch to [CONFIGURATION_NAME] configuration in Claude Code using auo. Then, generate [CODE_TASK_DESCRIPTION] for [PROJECT_NAME]. Ensure the code follows [CODING_STANDARDS] and includes [REQUIRED_COMPONENTS]. Verify the output with [TEST_CASES].\n```\nCopy\n\n```\nSwitched to the `typescript-strict` configuration in Claude Code using auo. Generated a REST API client for the `inventory-management` project with strict TypeScript typing, axios for HTTP requests, and proper error handling. The code includes:\n\n```typescript\ninterface InventoryItem {\n  id: string;\n  name: string;\n  quantity: number;\n  price: number;\n}\n\nclass InventoryClient {\n  private baseUrl: string;\n  private httpClient: AxiosInstance;\n\n  constructor(baseUrl: string) {\n    this.baseUrl = baseUrl;\n    this.httpClient = axios.create({\n      baseURL: baseUrl,\n      timeout: 5000,\n      headers: { 'Content-Type': 'application/json' }\n    });\n  }\n\n  async getItem(id: string): Promise<InventoryItem> {\n    const response = await this.httpClient.get<InventoryItem>(`/items/${id}`);\n    if (response.status !== 200) {\n      throw new Error(`Failed to fetch item: ${response.statusText}`);\n    }\n    return response.data;\n  }\n\n  // Additional methods for CRUD operations...\n}\n```\n\nVerified with test cases covering:\n1. Successful item retrieval\n2. Error handling for non-existent items\n3. Network timeout scenarios\n\nThe configuration switch ensured all generated code adheres to TypeScript strict mode and follows our team's coding standards.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "auo#main-content",
+      "auo#overview",
+      "auo#setup",
+      "auo#examples",
+      "auo#tools",
+      "auo#mcp",
+      "auo#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "auo is a configuration management tool for Claude Code that lets you switch between multiple API endpoints, authentication tokens, and model settings without manual reconfiguration. It automatically manages environment variables (ANTHROPIC_BASE_URL, ANTHROPIC_AUTH_TOKEN, ANTHROPIC_MODEL) and upgrades legacy configuration formats automatically. The tool is particularly useful for developers and operations teams working with multiple accounts, proxy servers, or local development environments—allowing seamless switching when an account has issues or when testing different configurations. auo installs globally via npm and integrates directly with Claude Code to apply the selected configuration on each invocation.\nSwitching between multiple Anthropic API accounts when one has issues\nManaging custom proxy server configurations alongside official Anthropic API\nRunning local development environments with different model settings\nOrganizing configurations for multiple Claude Code relay stations or routers",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/millylee/auo`",
+    "usage_vi": "```\nSwitch to [CONFIGURATION_NAME] configuration in Claude Code using auo. Then, generate [CODE_TASK_DESCRIPTION] for [PROJECT_NAME]. Ensure the code follows [CODING_STANDARDS] and includes [REQUIRED_COMPONENTS]. Verify the output with [TEST_CASES].\n```\nCopy\n\n```\nSwitched to the `typescript-strict` configuration in Claude Code using auo. Generated a REST API client for the `inventory-management` project with strict TypeScript typing, axios for HTTP requests, and proper error handling. The code includes:\n\n```typescript\ninterface InventoryItem {\n  id: string;\n  name: string;\n  quantity: number;\n  price: number;\n}\n\nclass InventoryClient {\n  private baseUrl: string;\n  private httpClient: AxiosInstance;\n\n  constructor(baseUrl: string) {\n    this.baseUrl = baseUrl;\n    this.httpClient = axios.create({\n      baseURL: baseUrl,\n      timeout: 5000,\n      headers: { 'Content-Type': 'application/json' }\n    });\n  }\n\n  async getItem(id: string): Promise<InventoryItem> {\n    const response = await this.httpClient.get<InventoryItem>(`/items/${id}`);\n    if (response.status !== 200) {\n      throw new Error(`Failed to fetch item: ${response.statusText}`);\n    }\n    return response.data;\n  }\n\n  // Additional methods for CRUD operations...\n}\n```\n\nVerified with test cases covering:\n1. Successful item retrieval\n2. Error handling for non-existent items\n3. Network timeout scenarios\n\nThe configuration switch ensured all generated code adheres to TypeScript strict mode and follows our team's coding standards.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:19:33.051818Z",
+    "http_status": 200,
+    "content_hash": "1e32f6324618241381950503351e95b340f4aea0d4f394f400ebf6ffbf5b2370",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\auo.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\auo.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "auo automation for ease of code usage",
+  "short_description_vi": "auo simplifies Claude Code usage by enabling easy configuration switching. It benefits developers and operations teams by streamlining workflows. It connects to CLI tools and integrates with Claude Code for efficient code generation and management."
+}

@@ -1,0 +1,73 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/piv-speckit",
+  "slug": "piv-speckit",
+  "name": "browser-use",
+  "headline": "PIV Spec-Kit - AI-Assisted Development Framework",
+  "short_description": "PIV Spec-Kit is a structured framework for AI-assisted development. It combines Prime-Implement-Validate methodology with strict Test-Driven Development. Benefits developers by ensuring high code quality and reducing errors. Integrates with Claude AI for code generation and validation. Suitable for Node.js, Python, React, and Spring Boot projects.",
+  "tier": "Silver",
+  "category": "Development",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "180 min",
+  "author": "galando",
+  "install_command": "git clone https://github.com/galando/piv-speckit.git",
+  "source_repo_url": "https://github.com/galando/piv-speckit",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "developer-tools",
+    "anthropic",
+    "copilot",
+    "piv-methodology",
+    "python",
+    "code-quality",
+    "claude-ai",
+    "spring-boot",
+    "ai-assisted-development",
+    "nodejs",
+    "claude",
+    "react",
+    "template",
+    "software-development-workflow",
+    "cursor",
+    "context-engineering"
+  ],
+  "sections": {
+    "overview": "PIV Spec-Kit is a Claude Code plugin that implements the Prime-Implement-Validate methodology for AI-assisted software development. It automatically generates structured specification artifacts (spec.md, plan.md, tasks.md, quickstart.md) and enforces strict Test-Driven Development by requiring tests to be written before implementation. The framework auto-primes context when planning features, auto-activates validation skills including TDD compliance checking, code review, and security scanning, and organizes all artifacts in a version-controlled .claude directory. Developers use /piv-speckit:plan-feature to create specs, /piv-speckit:execute to implement with TDD, and automatic validation ensures test coverage, security, and methodology compliance.\nPlan and implement new features with structured requirements and technical specs\nEnforce Test-Driven Development workflows across team projects\nGenerate automated validation including security scanning and code review\nOrganize project context and specifications in version-controlled artifacts",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/galando/piv-speckit`",
+    "usage": "```\nAct as a PIV Spec-Kit (Prime-Implement-Validate + Test-Driven Development) assistant for [LANGUAGE/PROJECT TYPE]. Follow this process: 1) Prime: Analyze the requirements for [FEATURE] and generate a high-level design with edge cases. 2) Implement: Write the code for [FEATURE] in [LANGUAGE] with clear comments. 3) Validate: Create unit tests using [TEST_FRAMEWORK] that cover 100% of the new code. Use [CODE_STYLE_GUIDE] for consistency. Start with: 'Prime: [REQUIREMENTS]'\n```\nCopy\n\n```\n### Prime Analysis for User Authentication Feature (Node.js/Express)\n\n**Requirements:**\n- Users must register with email/password (min 8 chars, valid email format)\n- Passwords hashed with bcrypt (cost factor 12)\n- JWT tokens expire in 24h\n- Rate limiting: 5 failed attempts per IP\n- Email verification required (token expires in 1h)\n\n**Design Decisions:**\n- Use Express middleware for auth validation\n- Store users in PostgreSQL with `created_at` and `verified_at` timestamps\n- Implement token refresh endpoint\n- Edge cases: concurrent registrations, expired tokens, SQL injection attempts\n\n### Implementation (Node.js/Express)\n```javascript\n// auth.service.js\nimport bcrypt from 'bcryptjs';\nimport jwt from 'jsonwebtoken';\nimport { pool } from './db.js';\n\nconst registerUser = async (email, password) => {\n  // Validate input\n  if (!email || !password || password.length < 8) {\n    throw new Error('Invalid credentials');\n  }\n\n  // Check existing user\n  const existing = await pool.query('SELECT id FROM users WHERE email = $1', [email]);\n  if (existing.rows[0]) throw new Error('Email already registered');\n\n  // Hash password\n  const hashed = await bcrypt.hash(password, 12);\n\n  // Create user\n  const user = await pool.query(\n    'INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id, email',\n    [email, hashed]\n  );\n\n  // Generate verification token\n  const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });\n\n  return { userId: user.rows[0].id, email: user.rows[0].email, verificationToken: token };\n};\n\nexport { registerUser };\n```\n\n### Validation (Jest + Supertest)\n```javascript\n// auth.service.test.js\ndescribe('User Registration', () => {\n  beforeAll(() => {\n    // Setup test DB\n  });\n\n  it('should create user with valid credentials', async () => {\n    const result = await registerUser('test@example.com', 'validPassword123');\n    expect(result.userId).toBeDefined();\n    expect(result.verificationToken).toBeTruthy();\n  });\n\n  it('should reject short passwords', async () => {\n    await expect(registerUser('test@example.com', 'short')).rejects.toThrow('Invalid credentials');\n  });\n\n  it('should prevent duplicate emails', async () => {\n    await registerUser('duplicate@example.com', 'password123');\n    await expect(registerUser('duplicate@example.com', 'password456')).rejects.toThrow('Email already registered');\n  });\n});\n```\n\n**Validation Results:**\n- Code coverage: 100% (8/8 branches)\n- All edge cases handled\n- Follows ESLint Airbnb style guide\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "piv-speckit#main-content",
+      "piv-speckit#overview",
+      "piv-speckit#setup",
+      "piv-speckit#examples",
+      "piv-speckit#tools",
+      "piv-speckit#mcp",
+      "piv-speckit#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "PIV Spec-Kit is a Claude Code plugin that implements the Prime-Implement-Validate methodology for AI-assisted software development. It automatically generates structured specification artifacts (spec.md, plan.md, tasks.md, quickstart.md) and enforces strict Test-Driven Development by requiring tests to be written before implementation. The framework auto-primes context when planning features, auto-activates validation skills including TDD compliance checking, code review, and security scanning, and organizes all artifacts in a version-controlled .claude directory. Developers use /piv-speckit:plan-feature to create specs, /piv-speckit:execute to implement with TDD, and automatic validation ensures test coverage, security, and methodology compliance.\nPlan and implement new features with structured requirements and technical specs\nEnforce Test-Driven Development workflows across team projects\nGenerate automated validation including security scanning and code review\nOrganize project context and specifications in version-controlled artifacts",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/galando/piv-speckit`",
+    "usage_vi": "```\nAct as a PIV Spec-Kit (Prime-Implement-Validate + Test-Driven Development) assistant for [LANGUAGE/PROJECT TYPE]. Follow this process: 1) Prime: Analyze the requirements for [FEATURE] and generate a high-level design with edge cases. 2) Implement: Write the code for [FEATURE] in [LANGUAGE] with clear comments. 3) Validate: Create unit tests using [TEST_FRAMEWORK] that cover 100% of the new code. Use [CODE_STYLE_GUIDE] for consistency. Start with: 'Prime: [REQUIREMENTS]'\n```\nCopy\n\n```\n### Prime Analysis for User Authentication Feature (Node.js/Express)\n\n**Requirements:**\n- Users must register with email/password (min 8 chars, valid email format)\n- Passwords hashed with bcrypt (cost factor 12)\n- JWT tokens expire in 24h\n- Rate limiting: 5 failed attempts per IP\n- Email verification required (token expires in 1h)\n\n**Design Decisions:**\n- Use Express middleware for auth validation\n- Store users in PostgreSQL with `created_at` and `verified_at` timestamps\n- Implement token refresh endpoint\n- Edge cases: concurrent registrations, expired tokens, SQL injection attempts\n\n### Implementation (Node.js/Express)\n```javascript\n// auth.service.js\nimport bcrypt from 'bcryptjs';\nimport jwt from 'jsonwebtoken';\nimport { pool } from './db.js';\n\nconst registerUser = async (email, password) => {\n  // Validate input\n  if (!email || !password || password.length < 8) {\n    throw new Error('Invalid credentials');\n  }\n\n  // Check existing user\n  const existing = await pool.query('SELECT id FROM users WHERE email = $1', [email]);\n  if (existing.rows[0]) throw new Error('Email already registered');\n\n  // Hash password\n  const hashed = await bcrypt.hash(password, 12);\n\n  // Create user\n  const user = await pool.query(\n    'INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id, email',\n    [email, hashed]\n  );\n\n  // Generate verification token\n  const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });\n\n  return { userId: user.rows[0].id, email: user.rows[0].email, verificationToken: token };\n};\n\nexport { registerUser };\n```\n\n### Validation (Jest + Supertest)\n```javascript\n// auth.service.test.js\ndescribe('User Registration', () => {\n  beforeAll(() => {\n    // Setup test DB\n  });\n\n  it('should create user with valid credentials', async () => {\n    const result = await registerUser('test@example.com', 'validPassword123');\n    expect(result.userId).toBeDefined();\n    expect(result.verificationToken).toBeTruthy();\n  });\n\n  it('should reject short passwords', async () => {\n    await expect(registerUser('test@example.com', 'short')).rejects.toThrow('Invalid credentials');\n  });\n\n  it('should prevent duplicate emails', async () => {\n    await registerUser('duplicate@example.com', 'password123');\n    await expect(registerUser('duplicate@example.com', 'password456')).rejects.toThrow('Email already registered');\n  });\n});\n```\n\n**Validation Results:**\n- Code coverage: 100% (8/8 branches)\n- All edge cases handled\n- Follows ESLint Airbnb style guide\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:30:44.422659Z",
+    "http_status": 200,
+    "content_hash": "bfb891fdf3965429f7e41e8d8822f4c6e38a5f46d8c678685895531a0e960a58",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\piv-speckit.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\piv-speckit.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "PIV Spec-Kit - AI-Assisted Development Framework",
+  "short_description_vi": "PIV Spec-Kit is a structured framework for AI-assisted development. It combines Prime-Implement-Validate methodology with strict Test-Driven Development. Benefits developers by ensuring high code quality and reducing errors. Integrates with Claude AI for code generation and validation. Suitable for Node.js, Python, React, and Spring Boot projects."
+}

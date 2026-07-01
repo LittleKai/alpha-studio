@@ -1,0 +1,74 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/smart-tree",
+  "slug": "smart-tree",
+  "name": "browser-use",
+  "headline": "Smart Tree - AI Directory Visualization &",
+  "short_description": "Smart Tree: not just a tree, a philosophy. A context-aware, AI-crafted replacement for 20+ tools with MEM8 quantum compression, semantic search, AST-smart editing, and partnership memory. Crafted with care by human + AI. accept no knock-offs.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "300 min",
+  "author": "8b-is",
+  "install_command": "git clone https://github.com/8b-is/smart-tree.git",
+  "source_repo_url": "https://github.com/8b-is/smart-tree",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "directory",
+    "anthropic",
+    "analysis",
+    "context",
+    "context-api",
+    "filesystem",
+    "rust",
+    "tree",
+    "compression",
+    "blazingly-fast",
+    "claude",
+    "quantum-algorithms",
+    "optimization-algorithms",
+    "mcp",
+    "ai",
+    "file",
+    "optimization"
+  ],
+  "sections": {
+    "overview": "Smart Tree is a high-performance directory visualization and AI integration tool designed for developers and AI assistants. Built in Rust, it delivers 10-24x faster performance than traditional tree commands while providing 30+ MCP tools for seamless integration with Claude Code, Cursor, and other AI agents. The tool includes a built-in security scanner that detects supply chain attacks targeting AI assistants, helping identify malicious MCP servers and hidden directories. Smart Tree offers persistent collaborative memory across sessions, token-efficient compressed formats to reduce context window usage, and an interactive dashboard with real-time MCP activity visualization. It supports Windows, Linux, and macOS with one-line installation and includes both CLI and TUI modes for flexible workflow integration.\nQuickly visualize large codebases and project structures for AI context\nDetect and remove malicious MCP integrations and supply chain attacks\nStore persistent project insights across multiple AI sessions with collaborative memory\nReduce AI token usage with compressed semantic formats and quick tree summaries",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/8b-is/smart-tree`",
+    "usage": "```\nAct as a Smart Tree system to automate [TASK] for [PROJECT/TEAM]. Use semantic search to pull relevant context from [DOCUMENTS/FILES], then apply AST-smart editing to modify code/files as needed. Finally, use MEM8 quantum compression to summarize changes and partnership memory to ensure consistency with prior work. [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```\nFor a project like 'E-Commerce Checkout Redesign', the Smart Tree system would:\n\n1. **Semantic Search**: Scan 15+ repositories (React frontend, Python backend, SQL schemas) and 47 documentation files to identify all checkout-related components, APIs, and business logic. It flags a critical inconsistency in the `PaymentService` class where the `processPayment()` method’s return type differs between the frontend (Promise<boolean>) and backend (PaymentResult).\n\n2. **AST-Smart Editing**: Using the Abstract Syntax Tree (AST) of both frontend and backend, it automatically refactors the `PaymentService` to return a standardized `PaymentResult` object across all layers. The system generates a diff showing 3 files modified (frontend: `PaymentService.ts`, backend: `payment_service.py`, schema: `payment_result.graphql`), with a 98% semantic match to prior refactors in the codebase.\n\n3. **MEM8 Compression**: Compresses the changes into a 12-line summary: 'Standardized PaymentResult across checkout flow. Added validation for `transactionId` in `processPayment()`. Updated GraphQL schema to include `paymentStatus` enum. No breaking changes to existing integrations.' This summary is stored in partnership memory for future reference.\n\n4. **Partnership Memory**: Cross-references with the team’s prior work on the 'User Authentication Overhaul' to ensure naming conventions (e.g., `snake_case` in Python, `camelCase` in JavaScript) are consistent. It also checks the Jira ticket #CHK-423 to confirm the refactor aligns with the sprint goal.\n\n**Output**: A pull request draft with:\n- 3 modified files (frontend/backend/schema)\n- 12-line summary\n- Link to MEM8-compressed changes\n- Tagged reviewers based on prior partnership memory (e.g., @dev-lead for backend, @qa-lead for testing).\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "smart-tree#main-content",
+      "smart-tree#overview",
+      "smart-tree#setup",
+      "smart-tree#examples",
+      "smart-tree#tools",
+      "smart-tree#mcp",
+      "smart-tree#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Smart Tree is a high-performance directory visualization and AI integration tool designed for developers and AI assistants. Built in Rust, it delivers 10-24x faster performance than traditional tree commands while providing 30+ MCP tools for seamless integration with Claude Code, Cursor, and other AI agents. The tool includes a built-in security scanner that detects supply chain attacks targeting AI assistants, helping identify malicious MCP servers and hidden directories. Smart Tree offers persistent collaborative memory across sessions, token-efficient compressed formats to reduce context window usage, and an interactive dashboard with real-time MCP activity visualization. It supports Windows, Linux, and macOS with one-line installation and includes both CLI and TUI modes for flexible workflow integration.\nQuickly visualize large codebases and project structures for AI context\nDetect and remove malicious MCP integrations and supply chain attacks\nStore persistent project insights across multiple AI sessions with collaborative memory\nReduce AI token usage with compressed semantic formats and quick tree summaries",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/8b-is/smart-tree`",
+    "usage_vi": "```\nAct as a Smart Tree system to automate [TASK] for [PROJECT/TEAM]. Use semantic search to pull relevant context from [DOCUMENTS/FILES], then apply AST-smart editing to modify code/files as needed. Finally, use MEM8 quantum compression to summarize changes and partnership memory to ensure consistency with prior work. [ADDITIONAL_CONTEXT].\n```\nCopy\n\n```\nFor a project like 'E-Commerce Checkout Redesign', the Smart Tree system would:\n\n1. **Semantic Search**: Scan 15+ repositories (React frontend, Python backend, SQL schemas) and 47 documentation files to identify all checkout-related components, APIs, and business logic. It flags a critical inconsistency in the `PaymentService` class where the `processPayment()` method’s return type differs between the frontend (Promise<boolean>) and backend (PaymentResult).\n\n2. **AST-Smart Editing**: Using the Abstract Syntax Tree (AST) of both frontend and backend, it automatically refactors the `PaymentService` to return a standardized `PaymentResult` object across all layers. The system generates a diff showing 3 files modified (frontend: `PaymentService.ts`, backend: `payment_service.py`, schema: `payment_result.graphql`), with a 98% semantic match to prior refactors in the codebase.\n\n3. **MEM8 Compression**: Compresses the changes into a 12-line summary: 'Standardized PaymentResult across checkout flow. Added validation for `transactionId` in `processPayment()`. Updated GraphQL schema to include `paymentStatus` enum. No breaking changes to existing integrations.' This summary is stored in partnership memory for future reference.\n\n4. **Partnership Memory**: Cross-references with the team’s prior work on the 'User Authentication Overhaul' to ensure naming conventions (e.g., `snake_case` in Python, `camelCase` in JavaScript) are consistent. It also checks the Jira ticket #CHK-423 to confirm the refactor aligns with the sprint goal.\n\n**Output**: A pull request draft with:\n- 3 modified files (frontend/backend/schema)\n- 12-line summary\n- Link to MEM8-compressed changes\n- Tagged reviewers based on prior partnership memory (e.g., @dev-lead for backend, @qa-lead for testing).\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T19:29:41.708318Z",
+    "http_status": 200,
+    "content_hash": "0e49f004517eb629f3761b60881e59693363d677fc31801d1f96c8174e36262d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\smart-tree.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\smart-tree.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Smart Tree - AI Directory Visualization &",
+  "short_description_vi": "Smart Tree: not just a tree, a philosophy. A context-aware, AI-crafted replacement for 20+ tools with MEM8 quantum compression, semantic search, AST-smart editing, and partnership memory. Crafted with care by human + AI. accept no knock-offs."
+}

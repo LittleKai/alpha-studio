@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/adala",
+  "slug": "adala",
+  "name": "browser-use",
+  "headline": "Adala: Data Labeling",
+  "short_description": "Adala is an autonomous data labeling agent framework that automates data preparation for machine learning. Operations teams use it to reduce manual labeling efforts. It integrates with Python workflows and supports GPT-4 and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "240 min",
+  "author": "HumanSignal",
+  "install_command": "git clone https://github.com/HumanSignal/Adala.git",
+  "source_repo_url": "https://github.com/HumanSignal/Adala",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "autonomous-agents",
+    "gpt-4",
+    "agent-oriented-programming",
+    "agent-based-framework",
+    "agent"
+  ],
+  "sections": {
+    "overview": "Adala is an autonomous data labeling agent framework designed to streamline the process of annotating large datasets. By leveraging AI automation, Adala allows users to create intelligent agents that can classify and categorize data efficiently. This skill is particularly beneficial for tasks such as sentiment analysis in customer feedback, image classification for machine learning training, and data preprocessing. With its intermediate complexity, Adala can be implemented in approximately 30 minutes, making it accessible for developers and data scientists looking to enhance their workflows. The key benefits of using Adala include significant time savings and improved accuracy in data labeling tasks. While the exact time savings are currently unknown, the automation of repetitive labeling tasks can free up valuable resources for teams focused on more strategic initiatives. Additionally, Adala incorporates a feedback loop mechanism where agents learn from user corrections, thus continuously improving labeling accuracy over time. This feature is crucial for ensuring high-quality datasets, which are essential for effective machine learning models. Adala is particularly suited for developers, product managers, and AI practitioners who are involved in data-intensive projects. Its ability to integrate seamlessly with existing data pipelines makes it a valuable asset for teams looking to implement AI-first workflows. By automating the labeling process, Adala enables users to focus on higher-level tasks, thereby increasing overall productivity. Practical use cases for Adala include automating the labeling of customer feedback for sentiment analysis, classifying images for training machine learning models, and developing systems for data preprocessing and cleaning. These applications highlight Adala's versatility in handling various data tasks. Given its intermediate implementation difficulty, teams should have a basic understanding of AI concepts and data workflows to effectively utilize this skill. By incorporating Adala into their processes, organizations can significantly enhance their AI automation capabilities and achieve more efficient workflow automation.\nAutomate the labeling of large datasets for sentiment analysis in customer feedback.\nCreate agents that can classify and categorize images for machine learning training.\nDevelop a system for preprocessing and cleaning data before analysis.\nImplement a feedback loop where agents learn from user corrections to improve labeling accuracy.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/HumanSignal/Adala`",
+    "usage": "```\nSet up Adala to automate data labeling for [DATASET_TYPE] using [MODEL_NAME] as the agent. Configure the labeling criteria to prioritize [KEY_METRICS]. Ensure the output format matches [OUTPUT_FORMAT] requirements. Validate the labeled data against [VALIDATION_RULES].\n```\nCopy\n\n```\nAdala has successfully processed the medical imaging dataset, labeling 5,200 X-ray images for pneumonia detection. The agent used GPT-4 to classify images based on opacity patterns, consolidation, and pleural effusion. The output format adheres to the COCO dataset structure, with each image annotated with bounding boxes and confidence scores. Validation checks confirmed 92% accuracy against the provided ground truth labels. The remaining 8% were flagged for human review, reducing manual effort by 87%. The labeled dataset is now ready for training the pneumonia detection model.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "adala#main-content",
+      "adala#overview",
+      "adala#setup",
+      "adala#examples",
+      "adala#tools",
+      "adala#mcp",
+      "adala#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Adala is an autonomous data labeling agent framework designed to streamline the process of annotating large datasets. By leveraging AI automation, Adala allows users to create intelligent agents that can classify and categorize data efficiently. This skill is particularly beneficial for tasks such as sentiment analysis in customer feedback, image classification for machine learning training, and data preprocessing. With its intermediate complexity, Adala can be implemented in approximately 30 minutes, making it accessible for developers and data scientists looking to enhance their workflows. The key benefits of using Adala include significant time savings and improved accuracy in data labeling tasks. While the exact time savings are currently unknown, the automation of repetitive labeling tasks can free up valuable resources for teams focused on more strategic initiatives. Additionally, Adala incorporates a feedback loop mechanism where agents learn from user corrections, thus continuously improving labeling accuracy over time. This feature is crucial for ensuring high-quality datasets, which are essential for effective machine learning models. Adala is particularly suited for developers, product managers, and AI practitioners who are involved in data-intensive projects. Its ability to integrate seamlessly with existing data pipelines makes it a valuable asset for teams looking to implement AI-first workflows. By automating the labeling process, Adala enables users to focus on higher-level tasks, thereby increasing overall productivity. Practical use cases for Adala include automating the labeling of customer feedback for sentiment analysis, classifying images for training machine learning models, and developing systems for data preprocessing and cleaning. These applications highlight Adala's versatility in handling various data tasks. Given its intermediate implementation difficulty, teams should have a basic understanding of AI concepts and data workflows to effectively utilize this skill. By incorporating Adala into their processes, organizations can significantly enhance their AI automation capabilities and achieve more efficient workflow automation.\nAutomate the labeling of large datasets for sentiment analysis in customer feedback.\nCreate agents that can classify and categorize images for machine learning training.\nDevelop a system for preprocessing and cleaning data before analysis.\nImplement a feedback loop where agents learn from user corrections to improve labeling accuracy.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/HumanSignal/Adala`",
+    "usage_vi": "```\nSet up Adala to automate data labeling for [DATASET_TYPE] using [MODEL_NAME] as the agent. Configure the labeling criteria to prioritize [KEY_METRICS]. Ensure the output format matches [OUTPUT_FORMAT] requirements. Validate the labeled data against [VALIDATION_RULES].\n```\nCopy\n\n```\nAdala has successfully processed the medical imaging dataset, labeling 5,200 X-ray images for pneumonia detection. The agent used GPT-4 to classify images based on opacity patterns, consolidation, and pleural effusion. The output format adheres to the COCO dataset structure, with each image annotated with bounding boxes and confidence scores. Validation checks confirmed 92% accuracy against the provided ground truth labels. The remaining 8% were flagged for human review, reducing manual effort by 87%. The labeled dataset is now ready for training the pneumonia detection model.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:24:45.266831Z",
+    "http_status": 200,
+    "content_hash": "dc15471853e64ca2e3647e44364bf04f08bd1f995fdbfc726cfabbe317560feb",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\adala.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\adala.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Adala: Data Labeling",
+  "short_description_vi": "Adala is an autonomous data labeling agent framework that automates data preparation for machine learning. Operations teams use it to reduce manual labeling efforts. It integrates with Python workflows and supports GPT-4 and Claude agents."
+}

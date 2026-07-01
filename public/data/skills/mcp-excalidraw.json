@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/mcp-excalidraw",
+  "slug": "mcp-excalidraw",
+  "name": "browser-use",
+  "headline": "mcp_excalidraw - Automate Excalidraw Diagrams",
+  "short_description": "Automate diagram creation and collaboration with Excalidraw. Operations teams use this skill to generate, edit, and share diagrams directly from their workflows. Connects to Excalidraw instances and integrates with document management systems.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "20 min",
+  "author": "yctimlin",
+  "install_command": "git clone https://github.com/yctimlin/mcp_excalidraw.git",
+  "source_repo_url": "https://github.com/yctimlin/mcp_excalidraw",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "mcp_excalidraw is a Model Context Protocol server that integrates Excalidraw with AI agents, allowing automated diagram generation and manipulation. The skill provides tools for creating, editing, and querying diagram elements on Excalidraw canvases. It supports element filtering, bounding box queries, and real-time diagram updates through a dedicated frontend interface. This integration enables developers and automation workflows to programmatically manage visual diagrams without manual intervention. The server bridges AI agents with Excalidraw's collaborative diagramming capabilities through standardized MCP tools.\nAutomate the creation of flowcharts and diagrams based on user input.\nIntegrate AI agents to dynamically update diagrams during meetings.\nEnable collaborative brainstorming sessions where multiple agents contribute to a single canvas.\nUse the MCP server to sync diagram changes across different platforms in real-time.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yctimlin/mcp_excalidraw`",
+    "usage": "```\nGenerate a diagram in Excalidraw for [TOPIC/PROCESS]. Include [KEY_ELEMENTS] and use [STYLE_GUIDELINES] (e.g., color scheme, layout). Export the diagram as a PNG and provide a shareable link. If editing an existing diagram, update [SPECIFIC_ELEMENTS] based on [NEW_DATA].\n```\nCopy\n\n```\nHere’s the Excalidraw diagram for the **customer onboarding workflow** for our SaaS product, *NexusFlow*. The diagram includes:\n\n1. **Stages**: Signup → Email Verification → Payment → Account Setup → First Login → Tutorial Completion.\n2. **Key Elements**: Decision nodes (e.g., \"Payment Failed?\"), external integrations (e.g., Stripe, Slack), and timelines (e.g., \"24-hour grace period for verification\").\n3. **Style**: Clean, modern look with a blue-to-teal gradient background, rounded corners for containers, and bold labels for stages. Arrows are labeled with actions (e.g., \"Send welcome email\").\n\n**Visual Details**:\n- The diagram is organized in a left-to-right flow, with the signup stage on the far left and tutorial completion on the far right.\n- Each stage is color-coded: blue for user actions, green for system processes, and orange for decision points.\n- The diagram includes a legend in the bottom-right corner explaining the color scheme and symbols.\n\n**Excalidraw Link**: [https://excalidraw.com/#json=1234567890abcdef](https://excalidraw.com/#json=1234567890abcdef)\n\n**PNG Export**: Attached as `nexusflow_onboarding.png`.\n\n**Collaboration Notes**: The diagram is set to \"Anyone with the link can view\" for easy sharing with the product team. If you’d like to edit it, I can update the payment integration section based on the new Stripe API changes we discussed yesterday.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "mcp-excalidraw#main-content",
+      "mcp-excalidraw#overview",
+      "mcp-excalidraw#setup",
+      "mcp-excalidraw#examples",
+      "mcp-excalidraw#tools",
+      "mcp-excalidraw#mcp",
+      "mcp-excalidraw#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "mcp_excalidraw is a Model Context Protocol server that integrates Excalidraw with AI agents, allowing automated diagram generation and manipulation. The skill provides tools for creating, editing, and querying diagram elements on Excalidraw canvases. It supports element filtering, bounding box queries, and real-time diagram updates through a dedicated frontend interface. This integration enables developers and automation workflows to programmatically manage visual diagrams without manual intervention. The server bridges AI agents with Excalidraw's collaborative diagramming capabilities through standardized MCP tools.\nAutomate the creation of flowcharts and diagrams based on user input.\nIntegrate AI agents to dynamically update diagrams during meetings.\nEnable collaborative brainstorming sessions where multiple agents contribute to a single canvas.\nUse the MCP server to sync diagram changes across different platforms in real-time.",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/yctimlin/mcp_excalidraw`",
+    "usage_vi": "```\nGenerate a diagram in Excalidraw for [TOPIC/PROCESS]. Include [KEY_ELEMENTS] and use [STYLE_GUIDELINES] (e.g., color scheme, layout). Export the diagram as a PNG and provide a shareable link. If editing an existing diagram, update [SPECIFIC_ELEMENTS] based on [NEW_DATA].\n```\nCopy\n\n```\nHere’s the Excalidraw diagram for the **customer onboarding workflow** for our SaaS product, *NexusFlow*. The diagram includes:\n\n1. **Stages**: Signup → Email Verification → Payment → Account Setup → First Login → Tutorial Completion.\n2. **Key Elements**: Decision nodes (e.g., \"Payment Failed?\"), external integrations (e.g., Stripe, Slack), and timelines (e.g., \"24-hour grace period for verification\").\n3. **Style**: Clean, modern look with a blue-to-teal gradient background, rounded corners for containers, and bold labels for stages. Arrows are labeled with actions (e.g., \"Send welcome email\").\n\n**Visual Details**:\n- The diagram is organized in a left-to-right flow, with the signup stage on the far left and tutorial completion on the far right.\n- Each stage is color-coded: blue for user actions, green for system processes, and orange for decision points.\n- The diagram includes a legend in the bottom-right corner explaining the color scheme and symbols.\n\n**Excalidraw Link**: [https://excalidraw.com/#json=1234567890abcdef](https://excalidraw.com/#json=1234567890abcdef)\n\n**PNG Export**: Attached as `nexusflow_onboarding.png`.\n\n**Collaboration Notes**: The diagram is set to \"Anyone with the link can view\" for easy sharing with the product team. If you’d like to edit it, I can update the payment integration section based on the new Stripe API changes we discussed yesterday.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:32:39.222658Z",
+    "http_status": 200,
+    "content_hash": "d26f8be50651c02bb7c44192475f0d40b2479c6dd7e8962e55168f0e97f2b3c7",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-excalidraw.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\mcp-excalidraw.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "mcp_excalidraw - Automate Excalidraw Diagrams",
+  "short_description_vi": "Automate diagram creation and collaboration with Excalidraw. Operations teams use this skill to generate, edit, and share diagrams directly from their workflows. Connects to Excalidraw instances and integrates with document management systems."
+}

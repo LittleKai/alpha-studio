@@ -1,0 +1,59 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/md-exporter",
+  "slug": "md-exporter",
+  "name": "Markdown Exporter",
+  "headline": "Markdown Exporter - Convert Markdown to Documents",
+  "short_description": "Transforms Markdown into DOCX, PPTX, XLSX, PNG, PDF, Mermaid, HTML, MD, CSV, JSON, XML. Useful for operations teams to automate document generation from Markdown. Integrates with Dify and Claude agents.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "bowenliang123",
+  "install_command": "git clone https://github.com/bowenliang123/md_exporter.git",
+  "source_repo_url": "https://github.com/bowenliang123/md_exporter",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "agent-skills",
+    "dify-plugin",
+    "markdown",
+    "dify"
+  ],
+  "sections": {
+    "overview": "Markdown Exporter is an agent skill and Dify plugin that converts Markdown text into 15+ professional document formats including DOCX, PPTX, XLSX, PDF, PNG, HTML, CSV, JSON, XML, and Mermaid diagrams. It processes all conversions locally for complete privacy, with no data leaving your environment. The tool supports customizable templates for DOCX and PPTX output, multi-language content, and works with Claude Code, agent frameworks, and CLI environments. Operations teams use it to automate document generation workflows, while developers integrate it into Claude agents and LangChain frameworks for programmatic format conversion.\nAutomate report generation from Markdown templates into DOCX for compliance documentation\nConvert meeting notes to PPTX presentations with custom branding templates\nTransform Markdown tables into XLSX spreadsheets for data analysis\nGenerate PDF invoices and forms from Markdown source documents",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bowenliang123/md_exporter`",
+    "usage": "```\nConvert the following Markdown content into a [FORMAT: DOCX/PPTX/XLSX/PNG/PDF/HTML/CSV/JSON/XML]. Include all formatting, tables, and images. [ADDITIONAL_INSTRUCTIONS: e.g., 'Use the corporate template for the DOCX output' or 'Ensure the PNG has a white background']. Markdown content: [MARKDOWN_CONTENT]\n```\nCopy\n\n```\nHere is the converted DOCX document based on your Markdown content. The document includes all the headings, bullet points, and tables from the original Markdown. The corporate template has been applied, and the company logo is included in the header. The images have been properly embedded, and the formatting matches the original Markdown structure. The document is ready for distribution to the team.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "md-exporter#main-content",
+      "md-exporter#overview",
+      "md-exporter#setup",
+      "md-exporter#examples",
+      "md-exporter#tools",
+      "md-exporter#mcp",
+      "md-exporter#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Markdown Exporter is an agent skill and Dify plugin that converts Markdown text into 15+ professional document formats including DOCX, PPTX, XLSX, PDF, PNG, HTML, CSV, JSON, XML, and Mermaid diagrams. It processes all conversions locally for complete privacy, with no data leaving your environment. The tool supports customizable templates for DOCX and PPTX output, multi-language content, and works with Claude Code, agent frameworks, and CLI environments. Operations teams use it to automate document generation workflows, while developers integrate it into Claude agents and LangChain frameworks for programmatic format conversion.\nAutomate report generation from Markdown templates into DOCX for compliance documentation\nConvert meeting notes to PPTX presentations with custom branding templates\nTransform Markdown tables into XLSX spreadsheets for data analysis\nGenerate PDF invoices and forms from Markdown source documents",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/bowenliang123/md_exporter`",
+    "usage_vi": "```\nConvert the following Markdown content into a [FORMAT: DOCX/PPTX/XLSX/PNG/PDF/HTML/CSV/JSON/XML]. Include all formatting, tables, and images. [ADDITIONAL_INSTRUCTIONS: e.g., 'Use the corporate template for the DOCX output' or 'Ensure the PNG has a white background']. Markdown content: [MARKDOWN_CONTENT]\n```\nCopy\n\n```\nHere is the converted DOCX document based on your Markdown content. The document includes all the headings, bullet points, and tables from the original Markdown. The corporate template has been applied, and the company logo is included in the header. The images have been properly embedded, and the formatting matches the original Markdown structure. The document is ready for distribution to the team.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:31:08.185134Z",
+    "http_status": 200,
+    "content_hash": "4f2268a02b978d6599f12f55054dcaa64ac88b946a38d2e5239823c1462817ec",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\md-exporter.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\md-exporter.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "Markdown Exporter - Convert Markdown to Documents",
+  "short_description_vi": "Transforms Markdown into DOCX, PPTX, XLSX, PNG, PDF, Mermaid, HTML, MD, CSV, JSON, XML. Useful for operations teams to automate document generation from Markdown. Integrates with Dify and Claude agents."
+}

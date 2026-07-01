@@ -1,0 +1,55 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/code-archaeologist",
+  "slug": "code-archaeologist",
+  "name": "browser-use",
+  "headline": "code-archaeologist: Understand code evolution",
+  "short_description": "Gives Claude Code deep understanding of codebase evolution through 10 integrated analysis capabilities, transforming static code reading into historical context awareness for faster, smarter development decisions.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "75 min",
+  "author": "udaybandaru",
+  "install_command": "git clone https://github.com/udaybandaru/code-archaeologist.git",
+  "source_repo_url": "https://github.com/udaybandaru/code-archaeologist",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "Code Archaeologist is a production-ready skill system that enables Claude Code to understand codebase evolution through git history analysis, hotspot detection, and architectural pattern tracking. It analyzes folder and file-level changes, identifies technical debt, maps dependency evolution, and generates design intelligence based on historical context. The system distinguishes meaningful commits from development noise using intelligent weighting, reducing analysis noise by 35% and accelerating research from 2-4 hours to 20 seconds. Teams with fast-moving codebases, engineers refactoring legacy code, and new contributors all benefit from accessing the historical context that acts like a tenured senior engineer's knowledge of why code was structured certain ways and what alternatives were considered.\nAnalyze hotspots in frequently-modified functions to identify stability risks before implementing features\nGenerate design docs with historical context and architectural constraints for new feature development\nCompare evolution patterns between components to understand maturity differences and refactoring priorities\nDetect circular dependencies and architectural anti-patterns that emerged over time",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/udaybandaru/code-archaeologist`",
+    "usage": "```\nAct as a code archaeologist. Analyze the evolution of [CODEBASE] in [PROGRAMMING_LANGUAGE] from [START_DATE] to [END_DATE]. Identify key architectural changes, major refactoring efforts, and significant technical debt accumulation. Provide a timeline of these changes with code examples and explain the motivations behind each change. Focus on understanding the intent of the original developers and how the codebase has adapted to new requirements over time.\n```\nCopy\n\n```\n# Codebase Evolution Analysis: E-Commerce Platform (2015-2023)",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "code-archaeologist#main-content",
+      "code-archaeologist#overview",
+      "code-archaeologist#setup",
+      "code-archaeologist#examples",
+      "code-archaeologist#tools",
+      "code-archaeologist#mcp",
+      "code-archaeologist#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Code Archaeologist is a production-ready skill system that enables Claude Code to understand codebase evolution through git history analysis, hotspot detection, and architectural pattern tracking. It analyzes folder and file-level changes, identifies technical debt, maps dependency evolution, and generates design intelligence based on historical context. The system distinguishes meaningful commits from development noise using intelligent weighting, reducing analysis noise by 35% and accelerating research from 2-4 hours to 20 seconds. Teams with fast-moving codebases, engineers refactoring legacy code, and new contributors all benefit from accessing the historical context that acts like a tenured senior engineer's knowledge of why code was structured certain ways and what alternatives were considered.\nAnalyze hotspots in frequently-modified functions to identify stability risks before implementing features\nGenerate design docs with historical context and architectural constraints for new feature development\nCompare evolution patterns between components to understand maturity differences and refactoring priorities\nDetect circular dependencies and architectural anti-patterns that emerged over time",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/udaybandaru/code-archaeologist`",
+    "usage_vi": "```\nAct as a code archaeologist. Analyze the evolution of [CODEBASE] in [PROGRAMMING_LANGUAGE] from [START_DATE] to [END_DATE]. Identify key architectural changes, major refactoring efforts, and significant technical debt accumulation. Provide a timeline of these changes with code examples and explain the motivations behind each change. Focus on understanding the intent of the original developers and how the codebase has adapted to new requirements over time.\n```\nCopy\n\n```\n# Codebase Evolution Analysis: E-Commerce Platform (2015-2023)"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T18:38:49.375449Z",
+    "http_status": 200,
+    "content_hash": "3060038acd0183b9ad16c8f6003b517182e843e77d70a6c6dbefe685073fc74d",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-archaeologist.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\code-archaeologist.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "code-archaeologist: Understand code evolution",
+  "short_description_vi": "Gives Claude Code deep understanding of codebase evolution through 10 integrated analysis capabilities, transforming static code reading into historical context awareness for faster, smarter development decisions."
+}

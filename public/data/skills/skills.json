@@ -1,0 +1,61 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/skills",
+  "slug": "skills",
+  "name": "actor-finance-monitoring-agent",
+  "headline": "Taiwan Payment Integration Skills for AI Agents",
+  "short_description": "This skill integrates popular Taiwanese payment gateways including藍新金流, 綠界科技 ECPay, and 統一金流 PAYUNi, enabling payment processing for businesses in Taiwan. Ideal for enhancing e-commerce platforms and automating financial transactions.",
+  "tier": "Gold",
+  "category": "AERevOpsGrowth",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "30 min",
+  "author": "paid-tw",
+  "install_command": "claude install paid-tw/skills",
+  "source_repo_url": "https://github.com/paid-tw/skills",
+  "works_with": [
+    "ChatGPTGitHub Copilot"
+  ],
+  "tags": [
+    "Taiwan",
+    "e-commerce",
+    "payment-integration",
+    "API",
+    "financial-automation"
+  ],
+  "sections": {
+    "overview": "This skill collection provides AI coding agents with integration capabilities for Taiwan's leading payment processors: 藍新金流 (Neweb Pay), KryptoGO stablecoin payments, 綠界科技 (ECPay), and 統一金流 (PAYUNi). It supports multiple payment methods including credit cards, mobile wallets (LINE Pay, Apple Pay, Google Pay), ATM transfers, convenience store payments, and cryptocurrency (USDT/USDC on Arbitrum). Developers can selectively install individual payment gateway skills or the entire suite via npx CLI, with automatic triggering based on keywords or manual invocation. The skill set is designed for e-commerce platforms, subscription services, and businesses requiring payment processing automation in Taiwan.\nIntegrating payment gateways into e-commerce sites\nAutomating transaction processing\nEnhancing customer checkout experiences\nStreamlining financial reporting",
+    "setup": "Terminal\nCopy\n`claude install paid-tw/skills`\n`git clone https://github.com/paid-tw/skills`",
+    "usage": "```\nIntegrate [PAYMENT_GATEWAY] into our e-commerce platform to process payments from Taiwanese customers. Ensure compliance with local regulations and provide a seamless checkout experience. Include steps for testing and troubleshooting common issues.\n```\nCopy\n\n```\nTo integrate ECPay into your e-commerce platform, follow these steps:\n\n1. **Sign Up and Get API Keys**: Register for an ECPay merchant account and obtain your API keys from the ECPay dashboard.\n2. **Install SDK**: Install the ECPay SDK compatible with your platform (e.g., PHP, Java, Python).\n3. **Configure Payment Settings**: Set up payment methods, currencies, and other relevant settings in your platform's admin panel.\n4. **Implement Checkout Flow**: Use the SDK to create a checkout flow that redirects users to ECPay's payment page.\n5. **Test Transactions**: Use ECPay's sandbox environment to test transactions and ensure everything works as expected.\n6. **Go Live**: Once testing is successful, switch to the live environment and monitor transactions for any issues.\n\nCommon issues include incorrect API keys, misconfigured payment settings, and network connectivity problems. Ensure all settings are double-checked and consult ECPay's documentation for troubleshooting.\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: ChatGPT, GitHub Copilot"
+    ],
+    "related_skills": [
+      "skills#main-content",
+      "skills#overview",
+      "skills#setup",
+      "skills#examples",
+      "skills#tools",
+      "skills#mcp",
+      "skills#related",
+      "financialanalystaiagent",
+      "quantitative-analyst-agent",
+      "actor-finance-monitoring-agent"
+    ],
+    "overview_vi": "This skill collection provides AI coding agents with integration capabilities for Taiwan's leading payment processors: 藍新金流 (Neweb Pay), KryptoGO stablecoin payments, 綠界科技 (ECPay), and 統一金流 (PAYUNi). It supports multiple payment methods including credit cards, mobile wallets (LINE Pay, Apple Pay, Google Pay), ATM transfers, convenience store payments, and cryptocurrency (USDT/USDC on Arbitrum). Developers can selectively install individual payment gateway skills or the entire suite via npx CLI, with automatic triggering based on keywords or manual invocation. The skill set is designed for e-commerce platforms, subscription services, and businesses requiring payment processing automation in Taiwan.\nIntegrating payment gateways into e-commerce sites\nAutomating transaction processing\nEnhancing customer checkout experiences\nStreamlining financial reporting",
+    "setup_vi": "Terminal\nCopy\n`claude install paid-tw/skills`\n`git clone https://github.com/paid-tw/skills`",
+    "usage_vi": "```\nIntegrate [PAYMENT_GATEWAY] into our e-commerce platform to process payments from Taiwanese customers. Ensure compliance with local regulations and provide a seamless checkout experience. Include steps for testing and troubleshooting common issues.\n```\nCopy\n\n```\nTo integrate ECPay into your e-commerce platform, follow these steps:\n\n1. **Sign Up and Get API Keys**: Register for an ECPay merchant account and obtain your API keys from the ECPay dashboard.\n2. **Install SDK**: Install the ECPay SDK compatible with your platform (e.g., PHP, Java, Python).\n3. **Configure Payment Settings**: Set up payment methods, currencies, and other relevant settings in your platform's admin panel.\n4. **Implement Checkout Flow**: Use the SDK to create a checkout flow that redirects users to ECPay's payment page.\n5. **Test Transactions**: Use ECPay's sandbox environment to test transactions and ensure everything works as expected.\n6. **Go Live**: Once testing is successful, switch to the live environment and monitor transactions for any issues.\n\nCommon issues include incorrect API keys, misconfigured payment settings, and network connectivity problems. Ensure all settings are double-checked and consult ECPay's documentation for troubleshooting.\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:44:32.780031Z",
+    "http_status": 200,
+    "content_hash": "8c7bc7bf7e465249bf25bb58708a42c978f60b967497391efeae6b1886d414d0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\skills.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Taiwan Payment Integration Skills for AI Agents",
+  "short_description_vi": "This skill integrates popular Taiwanese payment gateways including藍新金流, 綠界科技 ECPay, and 統一金流 PAYUNi, enabling payment processing for businesses in Taiwan. Ideal for enhancing e-commerce platforms and automating financial transactions."
+}

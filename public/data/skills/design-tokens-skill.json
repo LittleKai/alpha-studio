@@ -1,0 +1,54 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/design-tokens-skill",
+  "slug": "design-tokens-skill",
+  "name": "Design Tokens Skill",
+  "headline": "design-tokens-skill: Design Workflows",
+  "short_description": "A Claude skill for working with design tokens in dtcg format",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "45 min",
+  "author": "ilikescience",
+  "install_command": "git clone https://github.com/ilikescience/design-tokens-skill.git",
+  "source_repo_url": "https://github.com/ilikescience/design-tokens-skill",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [],
+  "sections": {
+    "overview": "The design-tokens-skill is an intermediate-level Claude Code skill designed to streamline the management of design tokens in dtcg format. This skill automates the process of creating, updating, and utilizing design tokens, allowing developers and product managers to maintain consistency across their design systems with ease. By integrating this skill into your workflow, you can ensure that your design assets are always in sync and easily accessible, enhancing collaboration among team members. One of the key benefits of using the design-tokens-skill is the significant reduction in manual work associated with design token management. While the exact time savings are currently unknown, the automation of repetitive tasks can lead to increased efficiency and a more agile design process. For teams that frequently update design specifications or work with multiple design tokens, this skill can save valuable time and resources, allowing them to focus on more strategic initiatives. This skill is particularly beneficial for developers and product managers who are involved in product design and development. It is suitable for teams looking to implement workflow automation in their design processes, especially those who prioritize maintaining a cohesive design language across various platforms. By leveraging this skill, users can enhance their productivity and ensure that design updates are seamlessly integrated into their development cycles. Implementing the design-tokens-skill requires an intermediate understanding of AI automation and design token concepts. While the skill can be set up in approximately 30 minutes, users should be familiar with the dtcg format to maximize its potential. This skill fits well into AI-first workflows by providing an automated solution that enhances the overall efficiency of design and development processes, making it an essential tool for teams aiming to leverage AI automation in their operations.",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/ilikescience/design-tokens-skill`",
+    "usage": "```\nCreate a design tokens file in dtcg format for [COMPANY], a [INDUSTRY] company. Include tokens for colors, typography, spacing, and shadows. Use [DATA] as a reference for the design system.\n```\nCopy\n\n```\n```json\n{\n  \"colors\": {\n    \"primary\": \"#4285F4\",\n    \"secondary\": \"#34A853\",\n    \"error\": \"#EA4335\",\n    \"text\": \"#202124\",\n    \"background\": \"#FFFFFF\"\n  },\n  \"typography\": {\n    \"fontFamily\": \"Roboto, sans-serif\",\n    \"fontSizes\": {\n      \"small\": \"12px\",\n      \"medium\": \"14px\",\n      \"large\": \"16px\"\n    },\n    \"fontWeights\": {\n      \"regular\": 400,\n      \"bold\": 700\n    }\n  },\n  \"spacing\": {\n    \"small\": \"8px\",\n    \"medium\": \"16px\",\n    \"large\": \"24px\"\n  },\n  \"shadows\": {\n    \"small\": \"0 1px 2px 0 rgba(60, 64, 67, 0.3)\",\n    \"medium\": \"0 1px 3px 0 rgba(60, 64, 67, 0.3)\",\n    \"large\": \"0 1px 6px 0 rgba(60, 64, 67, 0.3)\"\n  }\n}\n```\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "design-tokens-skill#main-content",
+      "design-tokens-skill#overview",
+      "design-tokens-skill#setup",
+      "design-tokens-skill#examples",
+      "design-tokens-skill#tools",
+      "design-tokens-skill#mcp",
+      "design-tokens-skill#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "design-tokens-skill là một Claude Code skill cấp độ trung cấp được thiết kế nhằm tối ưu hóa việc quản lý các design token ở định dạng dtcg. Skill này tự động hóa quy trình khởi tạo, cập nhật và sử dụng các design token, giúp lập trình viên và quản lý sản phẩm dễ dàng duy trì tính nhất quán trên toàn bộ hệ thống thiết kế. Bằng cách tích hợp skill này vào quy trình làm việc, bạn có thể đảm bảo các tài nguyên thiết kế luôn được đồng bộ và dễ dàng truy cập, từ đó tăng cường khả năng cộng tác giữa các thành viên trong nhóm. Một trong những lợi ích chính của việc sử dụng design-tokens-skill là giảm thiểu đáng kể các tác vụ thủ công trong việc quản lý design token. Mặc dù chưa đo lường được chính xác lượng thời gian tiết kiệm được, việc tự động hóa các tác vụ lặp đi lặp lại sẽ giúp tăng hiệu suất và tối ưu hóa quy trình thiết kế theo hướng linh hoạt hơn. Đối với các đội ngũ thường xuyên cập nhật đặc tả thiết kế hoặc làm việc với nhiều design token, skill này giúp tiết kiệm thời gian và tài nguyên quý giá, cho phép họ tập trung vào các sáng kiến mang tính chiến lược. Skill này đặc biệt hữu ích cho các lập trình viên và quản lý sản phẩm tham gia vào quá trình thiết kế và phát triển sản phẩm. Nó phù hợp cho các đội ngũ muốn áp dụng tự động hóa quy trình vào thiết kế, đặc biệt là những bên ưu tiên duy trì tính thống nhất của ngôn ngữ thiết kế trên nhiều nền tảng khác nhau. Bằng cách tận dụng skill này, người dùng có thể nâng cao năng suất và đảm bảo các cập nhật thiết kế được tích hợp liền mạch vào chu kỳ phát triển. Việc triển khai design-tokens-skill đòi hỏi hiểu biết ở mức trung cấp về tự động hóa bằng AI và các khái niệm liên quan đến design token. Mặc dù việc setup chỉ mất khoảng 30 phút, người dùng nên làm quen với định dạng dtcg để khai thác tối đa tiềm năng của nó. Skill này rất phù hợp với các quy trình làm việc ưu tiên AI (AI-first workflow) bằng cách cung cấp một giải pháp tự động giúp nâng cao hiệu quả tổng thể của quá trình thiết kế và phát triển, biến nó thành một công cụ thiết yếu cho các đội ngũ muốn ứng dụng tự động hóa AI vào vận hành.",
+    "setup_vi": "Không có sẵn lệnh cài đặt. Vui lòng kiểm tra kho lưu trữ GitHub để xem hướng dẫn cài đặt thủ công.\n`git clone https://github.com/ilikescience/design-tokens-skill`",
+    "usage_vi": "```\nTạo một file design token theo định dạng dtcg cho [COMPANY], một công ty hoạt động trong lĩnh vực [INDUSTRY]. Bao gồm các token cho màu sắc (colors), kiểu chữ (typography), khoảng cách (spacing) và bóng đổ (shadows). Sử dụng [DATA] làm tài liệu tham chiếu cho hệ thống thiết kế.\n```\nCopy\n\n```\n```json\n{\n  \"colors\": {\n    \"primary\": \"#4285F4\",\n    \"secondary\": \"#34A853\",\n    \"error\": \"#EA4335\",\n    \"text\": \"#202124\",\n    \"background\": \"#FFFFFF\"\n  },\n  \"typography\": {\n    \"fontFamily\": \"Roboto, sans-serif\",\n    \"fontSizes\": {\n      \"small\": \"12px\",\n      \"medium\": \"14px\",\n      \"large\": \"16px\"\n    },\n    \"fontWeights\": {\n      \"regular\": 400,\n      \"bold\": 700\n    }\n  },\n  \"spacing\": {\n    \"small\": \"8px\",\n    \"medium\": \"16px\",\n    \"large\": \"24px\"\n  },\n  \"shadows\": {\n    \"small\": \"0 1px 2px 0 rgba(60, 64, 67, 0.3)\",\n    \"medium\": \"0 1px 3px 0 rgba(60, 64, 67, 0.3)\",\n    \"large\": \"0 1px 6px 0 rgba(60, 64, 67, 0.3)\"\n  }\n}\n```\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T08:42:07.455068Z",
+    "http_status": 200,
+    "content_hash": "336a9201857c0ef70abdb4ab395624465c88b2282cc8765f75dd000c5358d84a",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\design-tokens-skill.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\design-tokens-skill.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "design-tokens-skill: Quy trình thiết kế",
+  "short_description_vi": "Một Claude skill hỗ trợ làm việc với các design token ở định dạng dtcg"
+}

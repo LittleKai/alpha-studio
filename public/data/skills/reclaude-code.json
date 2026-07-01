@@ -1,0 +1,58 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/reclaude-code",
+  "slug": "reclaude-code",
+  "name": "browser-use",
+  "headline": "Reclaude Code: Self-Hosted Claude Code Proxy",
+  "short_description": "Self-hostable proxy service that routes Claude Code traffic through a local mirror, enabling stable API access via Docker deployment.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "90 min",
+  "author": "adryfish",
+  "install_command": "git clone https://github.com/adryfish/reclaude-code.git",
+  "source_repo_url": "https://github.com/adryfish/reclaude-code",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "claude-code",
+    "claude"
+  ],
+  "sections": {
+    "overview": "Reclaude Code is an open-source, self-deployable proxy server that acts as a local mirror for Claude Code, allowing users to route their Claude Code client traffic through their own infrastructure. It runs as a Docker container and exposes a local API endpoint that Claude Code clients can be pointed to by configuring ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN in the Claude settings file. Users authenticate by exchanging a session key for a reclaude token via a simple REST endpoint, then configure their Claude Code client to use the local service. The service supports optional HTTP proxy passthrough, configurable ports, and a persistent data volume, making it suitable for environments where direct access to Anthropic's servers is restricted or unstable. It is intended for technical users who want more control over their Claude Code connectivity.\nRouting Claude Code API calls through a self-hosted local proxy for more stable access\nConfiguring Claude Code to use a custom ANTHROPIC_BASE_URL behind a corporate or regional network\nRunning Claude Code in environments that require HTTP proxy server passthrough\nDeploying a shared Claude Code mirror service for a team using Docker Compose",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adryfish/reclaude-code`",
+    "usage": "```\nI need to set up a self-hosted proxy service using Claude Code. Please provide step-by-step instructions for deploying [PROXY_NAME] in a [CLOUD_PLATFORM] environment. Include details about required dependencies, configuration files, and any security considerations.\n```\nCopy\n\n```\n# Claude Code Proxy Deployment Guide",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "reclaude-code#main-content",
+      "reclaude-code#overview",
+      "reclaude-code#setup",
+      "reclaude-code#examples",
+      "reclaude-code#tools",
+      "reclaude-code#mcp",
+      "reclaude-code#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "Reclaude Code is an open-source, self-deployable proxy server that acts as a local mirror for Claude Code, allowing users to route their Claude Code client traffic through their own infrastructure. It runs as a Docker container and exposes a local API endpoint that Claude Code clients can be pointed to by configuring ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN in the Claude settings file. Users authenticate by exchanging a session key for a reclaude token via a simple REST endpoint, then configure their Claude Code client to use the local service. The service supports optional HTTP proxy passthrough, configurable ports, and a persistent data volume, making it suitable for environments where direct access to Anthropic's servers is restricted or unstable. It is intended for technical users who want more control over their Claude Code connectivity.\nRouting Claude Code API calls through a self-hosted local proxy for more stable access\nConfiguring Claude Code to use a custom ANTHROPIC_BASE_URL behind a corporate or regional network\nRunning Claude Code in environments that require HTTP proxy server passthrough\nDeploying a shared Claude Code mirror service for a team using Docker Compose",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/adryfish/reclaude-code`",
+    "usage_vi": "```\nI need to set up a self-hosted proxy service using Claude Code. Please provide step-by-step instructions for deploying [PROXY_NAME] in a [CLOUD_PLATFORM] environment. Include details about required dependencies, configuration files, and any security considerations.\n```\nCopy\n\n```\n# Claude Code Proxy Deployment Guide"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-30T20:45:52.397947Z",
+    "http_status": 200,
+    "content_hash": "4fddd6b65bab1f6ceaa9c1104e2a121922eaba581690a98f656888d72cc0b00e",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reclaude-code.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\crawl4ai-skill\\output\\shyft-skills\\raw\\reclaude-code.html",
+    "schema_version": "1.0",
+    "attempts": 1
+  },
+  "headline_vi": "Reclaude Code: Self-Hosted Claude Code Proxy",
+  "short_description_vi": "Self-hostable proxy service that routes Claude Code traffic through a local mirror, enabling stable API access via Docker deployment."
+}

@@ -1,0 +1,62 @@
+{
+  "source": "shyft.ai",
+  "url": "https://shyft.ai/skills/vibe-tree",
+  "slug": "vibe-tree",
+  "name": "VibeTree",
+  "headline": "VibeTree - AI Git Worktree Collaboration",
+  "short_description": "VibeTree enables developers to collaborate with Claude AI in parallel git worktrees. It allows teams to maintain multiple branches of code simultaneously, streamlining workflows and reducing merge conflicts. Integrates with git, Claude, and TypeScript for efficient coding.",
+  "tier": "Silver",
+  "category": "Marketing",
+  "difficulty": "Intermediate",
+  "install_type": "Git Clone",
+  "estimated_time_saving": "60 min",
+  "author": "sahithvibudhi",
+  "install_command": "git clone https://github.com/sahithvibudhi/vibe-tree.git",
+  "source_repo_url": "https://github.com/sahithvibudhi/vibe-tree",
+  "works_with": [
+    "Claude"
+  ],
+  "tags": [
+    "typescript",
+    "desktop-app",
+    "claude-code",
+    "vibe-coding",
+    "gemini-cli",
+    "git-worktree",
+    "claude"
+  ],
+  "sections": {
+    "overview": "VibeTree is a cross-platform application that enhances development workflows by enabling parallel development with AI assistance across multiple git worktrees. It allows developers to work on multiple features simultaneously without context switching or stashing branches, maintaining persistent terminal sessions for each worktree. The tool integrates Claude CLI for seamless AI collaboration and supports IDE integration with VS Code and Cursor. VibeTree is accessible from desktop, web browser, and mobile devices, with Docker deployment options for cloud environments. It solves the problem of linear development workflows by enabling true parallel work on features while preserving terminal state and reducing merge conflicts.\nWork on multiple features in parallel without switching git branches or stashing code\nCollaborate with Claude AI in separate terminal sessions for each feature branch\nDeploy development environments to AWS EC2 or Digital Ocean with one-command Docker setup\nAccess code and terminals from desktop, mobile, or web browser across LAN or cloud",
+    "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sahithvibudhi/vibe-tree`\n\n**Project:** `ecommerce-dashboard` (TypeScript/React)\n**Base Branch:** `main`\n**Worktrees Created:** 3\n\n### 1. `feature/authentication` (Branch: `vibe-auth-001`)\n**Task:** Implement JWT-based authentication flow\n```typescript\n// src/auth/auth.service.ts\nimport { Injectable } from '@nestjs/common';\n\n@Injectable()\nexport class AuthService {\n  async validateUser(email: string, password: string): Promise<any> {\n    // Mock user validation\n    return { userId: 1, email: 'admin@example.com' };\n  }\n\n  async login(user: any) {\n    return {\n      access_token: 'generated.jwt.token',\n      expires_in: 3600\n    };\n  }\n}\n```\n**API Changes:** Added `/auth/login` and `/auth/refresh` endpoints\n**Documentation:** Updated `docs/api/auth.md`\n\n### 2. `feature/payment-integration` (Branch: `vibe-pay-002`)\n**Task:** Integrate Stripe payment gateway\n```typescript\n// src/payments/stripe.service.ts\nimport Stripe from 'stripe';\n\nexport class StripeService {\n  private stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {\n    apiVersion: '2023-10-16'\n  });\n\n  async createPaymentIntent(amount: number, currency: string) {\n    return this.stripe.paymentIntents.create({\n      amount,\n      currency,\n      automatic_payment_methods: { enabled: true }\n    });\n  }\n}\n```\n**Dependencies:** Added `@stripe/stripe-js` to package.json\n\n### 3. `feature/product-search` (Branch: `vibe-search-003`)\n**Task:** Implement Elasticsearch product search\n```typescript\n// src/search/search.controller.ts\nimport { Controller, Get, Query } from '@nestjs/common';\n\n@Controller('search')\nexport class SearchController {\n  @Get('products')\n  async searchProducts(@Query('q') query: string) {\n    // Mock Elasticsearch query\n    return [\n      { id: 1, name: 'Wireless Headphones', price: 99.99 },\n      { id: 2, name: 'Smart Watch', price: 199.99 }\n    ];\n  }\n}\n```\n**Setup:** Added Elasticsearch client configuration in `config/elasticsearch.ts`\n\n**Next Steps:**\n1. Run `npm install` in each worktree\n2. Test authentication flow with Postman\n3. Verify Stripe webhook endpoints\n4. Index sample products in Elasticsearch\n\nAll worktrees are ready for development at:\n- `../ecommerce-dashboard-vibe-auth-001`\n- `../ecommerce-dashboard-vibe-pay-002`\n- `../ecommerce-dashboard-vibe-search-003`\n```",
+    "usage": "```\nUse VibeTree to set up parallel git worktrees for [PROJECT_NAME] with [NUMBER] branches based on [BASE_BRANCH]. For each branch, generate a [TASK_DESCRIPTION] to implement [FEATURE_NAME]. Include TypeScript code snippets for the core logic and document the expected API changes in [DOCUMENTATION_FILE].\n```\nCopy\n\n```",
+    "requirements": [
+      "Claude Code or compatible AI agent",
+      "Works with: Claude"
+    ],
+    "related_skills": [
+      "vibe-tree#main-content",
+      "vibe-tree#overview",
+      "vibe-tree#setup",
+      "vibe-tree#examples",
+      "vibe-tree#tools",
+      "vibe-tree#mcp",
+      "vibe-tree#related",
+      "find-skills",
+      "vercel-composition-patterns",
+      "browser-use"
+    ],
+    "overview_vi": "VibeTree is a cross-platform application that enhances development workflows by enabling parallel development with AI assistance across multiple git worktrees. It allows developers to work on multiple features simultaneously without context switching or stashing branches, maintaining persistent terminal sessions for each worktree. The tool integrates Claude CLI for seamless AI collaboration and supports IDE integration with VS Code and Cursor. VibeTree is accessible from desktop, web browser, and mobile devices, with Docker deployment options for cloud environments. It solves the problem of linear development workflows by enabling true parallel work on features while preserving terminal state and reducing merge conflicts.\nWork on multiple features in parallel without switching git branches or stashing code\nCollaborate with Claude AI in separate terminal sessions for each feature branch\nDeploy development environments to AWS EC2 or Digital Ocean with one-command Docker setup\nAccess code and terminals from desktop, mobile, or web browser across LAN or cloud",
+    "setup_vi": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/sahithvibudhi/vibe-tree`\n\n**Project:** `ecommerce-dashboard` (TypeScript/React)\n**Base Branch:** `main`\n**Worktrees Created:** 3\n\n### 1. `feature/authentication` (Branch: `vibe-auth-001`)\n**Task:** Implement JWT-based authentication flow\n```typescript\n// src/auth/auth.service.ts\nimport { Injectable } from '@nestjs/common';\n\n@Injectable()\nexport class AuthService {\n  async validateUser(email: string, password: string): Promise<any> {\n    // Mock user validation\n    return { userId: 1, email: 'admin@example.com' };\n  }\n\n  async login(user: any) {\n    return {\n      access_token: 'generated.jwt.token',\n      expires_in: 3600\n    };\n  }\n}\n```\n**API Changes:** Added `/auth/login` and `/auth/refresh` endpoints\n**Documentation:** Updated `docs/api/auth.md`\n\n### 2. `feature/payment-integration` (Branch: `vibe-pay-002`)\n**Task:** Integrate Stripe payment gateway\n```typescript\n// src/payments/stripe.service.ts\nimport Stripe from 'stripe';\n\nexport class StripeService {\n  private stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {\n    apiVersion: '2023-10-16'\n  });\n\n  async createPaymentIntent(amount: number, currency: string) {\n    return this.stripe.paymentIntents.create({\n      amount,\n      currency,\n      automatic_payment_methods: { enabled: true }\n    });\n  }\n}\n```\n**Dependencies:** Added `@stripe/stripe-js` to package.json\n\n### 3. `feature/product-search` (Branch: `vibe-search-003`)\n**Task:** Implement Elasticsearch product search\n```typescript\n// src/search/search.controller.ts\nimport { Controller, Get, Query } from '@nestjs/common';\n\n@Controller('search')\nexport class SearchController {\n  @Get('products')\n  async searchProducts(@Query('q') query: string) {\n    // Mock Elasticsearch query\n    return [\n      { id: 1, name: 'Wireless Headphones', price: 99.99 },\n      { id: 2, name: 'Smart Watch', price: 199.99 }\n    ];\n  }\n}\n```\n**Setup:** Added Elasticsearch client configuration in `config/elasticsearch.ts`\n\n**Next Steps:**\n1. Run `npm install` in each worktree\n2. Test authentication flow with Postman\n3. Verify Stripe webhook endpoints\n4. Index sample products in Elasticsearch\n\nAll worktrees are ready for development at:\n- `../ecommerce-dashboard-vibe-auth-001`\n- `../ecommerce-dashboard-vibe-pay-002`\n- `../ecommerce-dashboard-vibe-search-003`\n```",
+    "usage_vi": "```\nUse VibeTree to set up parallel git worktrees for [PROJECT_NAME] with [NUMBER] branches based on [BASE_BRANCH]. For each branch, generate a [TASK_DESCRIPTION] to implement [FEATURE_NAME]. Include TypeScript code snippets for the core logic and document the expected API changes in [DOCUMENTATION_FILE].\n```\nCopy\n\n```"
+  },
+  "crawl_meta": {
+    "crawled_at": "2026-06-24T10:21:45.781399Z",
+    "http_status": 200,
+    "content_hash": "e9720a04cbb5e651d748e373ebe2b48eea485a1a45c77da9aafd3c67e945c5c0",
+    "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-tree.md",
+    "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-tree.html",
+    "schema_version": "1.0"
+  },
+  "headline_vi": "VibeTree - AI Git Worktree Collaboration",
+  "short_description_vi": "VibeTree enables developers to collaborate with Claude AI in parallel git worktrees. It allows teams to maintain multiple branches of code simultaneously, streamlining workflows and reducing merge conflicts. Integrates with git, Claude, and TypeScript for efficient coding."
+}
